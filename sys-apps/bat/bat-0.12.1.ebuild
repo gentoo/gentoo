@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ adler32-1.0.3
 aho-corasick-0.7.6
 ansi_colours-1.0.1
 ansi_term-0.11.0
-ansi_term-0.12.0
+ansi_term-0.12.1
 arrayref-0.3.5
 arrayvec-0.4.11
 assert_cmd-0.11.1
@@ -17,7 +17,7 @@ autocfg-0.1.6
 backtrace-0.3.35
 backtrace-sys-0.1.31
 base64-0.10.1
-bat-0.12.0
+bat-0.12.1
 bincode-1.1.4
 bindgen-0.50.0
 bitflags-1.1.0
@@ -151,10 +151,9 @@ inherit cargo
 
 DESCRIPTION="cat(1) clone with syntax highlighting and Git integration"
 HOMEPAGE="https://github.com/sharkdp/bat"
-SRC_URI="https://github.com/sharkdp/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	$(cargo_crate_uris ${CRATES})"
+SRC_URI="$(cargo_crate_uris ${CRATES})"
 
-LICENSE="|| ( MIT Apache-2.0 )"
+LICENSE="Apache-2.0 Boost-1.0 BSD BSD-2 CC0-1.0 ISC LGPL-3+ MIT Apache-2.0 Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
