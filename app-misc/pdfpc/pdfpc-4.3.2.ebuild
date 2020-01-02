@@ -6,7 +6,7 @@ EAPI=7
 VALA_MIN_API_VERSION="0.34"
 VALA_MAX_API_VERSION="0.42" # fix sed line if you increase this
 
-inherit vala cmake-utils
+inherit vala cmake
 
 DESCRIPTION="Presenter console with multi-monitor support for PDF files"
 HOMEPAGE="https://pdfpc.github.io"
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}"
 BDEPEND="$(vala_depend)"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e "s/valac/valac valac-0.42 valac-0.40 valac-0.36 valac-0.34/" cmake/vala/FindVala.cmake || die
 	vala_src_prepare
@@ -40,5 +40,5 @@ src_configure(){
 		-DSYSCONFDIR="${EPREFIX}/etc"
 		-DMOVIES=$(usex gstreamer on off)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils readme.gentoo-r1 xdg-utils
+inherit cmake readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="An environment and a programming language for real time audio synthesis."
 HOMEPAGE="https://supercollider.github.io/"
@@ -99,11 +99,11 @@ src_configure() {
 		-DGC_SANITYCHECK=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	use emacs && newdoc editors/scel/README.md README.emacs
 	use gedit && newdoc editors/sced/README.md README.gedit

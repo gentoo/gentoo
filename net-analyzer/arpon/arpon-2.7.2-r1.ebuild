@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="ArpON (Arp handler inspectiON) is a portable Arp handler"
 
@@ -31,7 +31,7 @@ DOCS=( AUTHOR CHANGELOG )
 S="${WORKDIR}"/${MY_P}
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 }
