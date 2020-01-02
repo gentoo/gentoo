@@ -18,7 +18,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos ~x64
 IUSE="setup"
 
 RDEPEND="
-	>=dev-lang/php-7.1[ctype,filter,json,session,unicode]
+	dev-lang/php[ctype,filter,json,session,unicode]
 	|| (
 		dev-lang/php[mysqli]
 		dev-lang/php[mysql]
