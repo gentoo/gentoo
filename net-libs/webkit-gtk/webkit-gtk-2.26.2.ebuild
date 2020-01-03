@@ -18,15 +18,12 @@ LICENSE="LGPL-2+ BSD"
 SLOT="4/37" # soname version of libwebkit2gtk-4.0
 KEYWORDS="amd64"
 
-IUSE="aqua coverage doc +egl +geolocation gles2-only gnome-keyring +gstreamer +introspection +jpeg2k +jumbo-build libnotify +opengl seccomp spell wayland +webgl +X"
+IUSE="aqua coverage doc +egl +geolocation gles2-only gnome-keyring +gstreamer +introspection +jpeg2k +jumbo-build libnotify +opengl seccomp spell wayland +X"
 
-# webgl needs gstreamer, bug #560612
 # gstreamer with opengl/gles2 needs egl
 REQUIRED_USE="
 	gles2-only? ( egl !opengl )
 	gstreamer? ( opengl? ( egl ) )
-	webgl? ( gstreamer
-		|| ( gles2-only opengl ) )
 	wayland? ( egl )
 	|| ( aqua wayland X )
 "
@@ -38,7 +35,7 @@ RESTRICT="test"
 # Aqua support in gtk3 is untested
 # Dependencies found at Source/cmake/OptionsGTK.cmake
 # Various compile-time optionals for gtk+-3.22.0 - ensure it
-# Missing OpenWebRTC checks and conditionals, but ENABLE_MEDIA_STREAM/ENABLE_WEB_RTC is experimental upstream (PRIVATE OFF)
+# Missing WebRTC support, but ENABLE_MEDIA_STREAM/ENABLE_WEB_RTC is experimental upstream (PRIVATE OFF) and shouldn't be used yet in 2.26
 # >=gst-plugins-opus-1.14.4-r1 for opusparse (required by MSE)
 wpe_depend="
 	>=gui-libs/libwpe-1.3.0:1.0
@@ -93,9 +90,6 @@ RDEPEND="
 		opengl? ( ${wpe_depend} )
 		gles2-only? ( ${wpe_depend} )
 	)
-	webgl? (
-		x11-libs/libXcomposite
-		x11-libs/libXdamage )
 
 	seccomp? (
 		>=sys-apps/bubblewrap-0.3.1
@@ -205,9 +199,6 @@ src_configure() {
 #		append-ldflags "-Wl,--reduce-memory-overheads"
 #	fi
 
-	# Multiple rendering bugs on youtube, github, etc without this, bug #547224
-	append-flags $(test-flags -fno-strict-aliasing)
-
 	# Ruby situation is a bit complicated. See bug 513888
 	local rubyimpl
 	local ruby_interpreter=""
@@ -222,8 +213,6 @@ src_configure() {
 
 	# TODO: Check Web Audio support
 	# should somehow let user select between them?
-	#
-	# FTL_JIT requires llvm
 	#
 	# opengl needs to be explicetly handled, bug #576634
 
@@ -254,11 +243,11 @@ src_configure() {
 		-DENABLE_SPELLCHECK=$(usex spell)
 		-DENABLE_WAYLAND_TARGET=$(usex wayland)
 		-DUSE_WPE_RENDERER=${use_wpe_renderer} # WPE renderer is used to implement accelerated compositing under wayland
-		-DENABLE_WEBGL=$(usex webgl)
 		$(cmake-utils_use_find_package egl EGL)
 		$(cmake-utils_use_find_package opengl OpenGL)
 		-DENABLE_X11_TARGET=$(usex X)
 		-DENABLE_OPENGL=${opengl_enabled}
+		-DENABLE_WEBGL=${opengl_enabled}
 		-DENABLE_BUBBLEWRAP_SANDBOX=$(usex seccomp)
 		-DBWRAP_EXECUTABLE="${EPREFIX}"/usr/bin/bwrap # If bubblewrap[suid] then portage makes it go-r and cmake find_program fails with that
 		-DCMAKE_BUILD_TYPE=Release
