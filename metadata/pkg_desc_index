@@ -13688,7 +13688,7 @@ media-plugins/vdr-ttxtsubs 0.3.0 0.3.0-r1: VDR Plugin: displaying, recording and
 media-plugins/vdr-undelete 0.0.7 0.0.7-r1 2.3.0_pre1: VDR Plugin: Recover deleted recordings of VDR
 media-plugins/vdr-vcd 0.9-r3 0.9-r4: VDR plugin: play video cds
 media-plugins/vdr-vdrmanager 0.14: VDR Plugin: remote programming VDR using VDR-Manager running on Android devices
-media-plugins/vdr-vompserver 0.4.1 0.4.1-r1: VDR Plugin: server part for MediaMVP device
+media-plugins/vdr-vompserver 0.4.1 0.4.1-r1 0.5.1: VDR Plugin: server part for MediaMVP device
 media-plugins/vdr-wapd 0.9_p1-r1: VDR plugin: lets VDR listen to WAP requests on WML enabled browsers
 media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specified place
 media-plugins/vdr-wirbelscan 0.0.7-r1 2018.11.04: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
@@ -15185,7 +15185,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.4 8.1.5 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.5 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
@@ -15555,7 +15555,7 @@ net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Li
 net-print/cnijfilter2 5.20 5.40 5.50 5.70: IJ Printer Driver
 net-print/cups 2.2.12 2.2.13 2.3.0 2.3.1 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
-net-print/cups-filters 1.25.11 1.25.13 1.26.0 9999: Cups filters
+net-print/cups-filters 1.25.11 1.25.13 1.26.0 1.26.1 9999: Cups filters
 net-print/cups-pdf 2.6.1 3.0.0 3.0.1: Provides a virtual printer for CUPS to produce PDF files
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
@@ -17353,7 +17353,7 @@ sys-block/nbd 3.18 3.19 3.20 9999: Userland client/server for kernel network blo
 sys-block/noflushd 2.8: A daemon to spin down your disks and force accesses to be cached
 sys-block/open-iscsi 2.0.873-r1 2.0.875 2.0.877 2.0.878 2.1.0: A performant, transport independent, multi-platform implementation of RFC3720
 sys-block/open-isns 0.97 0.98 0.99: iSNS server and client for Linux
-sys-block/parted 3.2-r1 3.2_p23 3.2_p25 3.3-r2 99999: Create, destroy, resize, check, copy partitions and file systems
+sys-block/parted 3.2-r1 3.2_p23 3.2_p25 3.3-r1 99999: Create, destroy, resize, check, copy partitions and file systems
 sys-block/partimage 0.6.9-r1: Console-based application to efficiently save raw partition data to image file
 sys-block/partitionmanager 4.0.0: Utility for management of disks, partitions and file systems
 sys-block/perccli 7.5.007.0529 7.5.007.0529-r2: LINUX PERCCLI Utility For All Dell HBA/PERC Controllers
@@ -17738,7 +17738,7 @@ sys-fs/zfs 0.7.13-r1 0.7.13-r2 0.8.2-r2 9999: Userland utilities for ZFS Linux k
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
 sys-fs/zfs-kmod 0.7.13 0.8.2-r2 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
-sys-kernel/ck-sources 5.4.2-r1 5.4.3 5.4.6: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
+sys-kernel/ck-sources 5.4.2-r1 5.4.3 5.4.6 5.4.7: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r2 049-r3 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
