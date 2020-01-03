@@ -38,7 +38,7 @@ pkg_preinst() {
 src_install() {
 	# XXX: /run should be more correct, when it's supported by baselayout
 
-	use symlink && dosym /var/run/resolv.conf /etc/resolv.conf
+	use symlink && dosym ../var/run/resolv.conf /etc/resolv.conf
 }
 
 pkg_postrm() {
