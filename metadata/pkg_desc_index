@@ -2459,7 +2459,7 @@ app-text/blogc 0.18.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 3.47.1 3.48.0 4.4.0 4.5.0 4.6.0 4.7.0: Ebook management application
+app-text/calibre 3.47.1 3.48.0 4.4.0 4.5.0 4.6.0 4.7.0 4.8.0: Ebook management application
 app-text/capyt 1.1.1: A python3 CLI utility to interface with cpy.pt paste service
 app-text/catdoc 0.95 0.95-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 1.9.8 1.9.9 2.0.0: Tool for extracting unformatted bibliographic references
