@@ -1,14 +1,14 @@
 DEFINED_PHASES=compile install prepare
-DEPEND=media-libs/libpng:0= media-libs/libsdl2:0=[joystick,opengl,video] sys-libs/zlib:0=[minizip] gles2? ( media-libs/libsdl2:0[gles] ) lirc? ( app-misc/lirc:0 ) opencv? ( media-libs/opencv:= ) osd? ( media-fonts/dejavu media-libs/freetype:2= virtual/opengl:0= virtual/glu:0= ) !<games-emulation/mupen64plus-2.0 virtual/pkgconfig
+DEPEND=media-libs/libpng:0= media-libs/libsdl2:0=[joystick,opengl,video] sys-libs/zlib:0=[minizip] gles2? ( media-libs/libsdl2:0[gles] ) lirc? ( app-misc/lirc:0 ) opencv? ( media-libs/opencv:= ) osd? ( media-fonts/dejavu media-libs/freetype:2= virtual/opengl:0= virtual/glu:0= ) virtual/pkgconfig
 DESCRIPTION=A fork of Mupen64 Nintendo 64 emulator, core library
 EAPI=7
 HOMEPAGE=https://www.mupen64plus.org/
 IUSE=debugger gles2 lirc new-dynarec opencv +osd cpu_flags_x86_sse
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2+
-RDEPEND=media-libs/libpng:0= media-libs/libsdl2:0=[joystick,opengl,video] sys-libs/zlib:0=[minizip] gles2? ( media-libs/libsdl2:0[gles] ) lirc? ( app-misc/lirc:0 ) opencv? ( media-libs/opencv:= ) osd? ( media-fonts/dejavu media-libs/freetype:2= virtual/opengl:0= virtual/glu:0= ) !<games-emulation/mupen64plus-2.0 !<games-emulation/m64py-0.2.3-r1 !<games-emulation/mupen64plus-audio-sdl-2.5 !<games-emulation/mupen64plus-input-sdl-2.5 !<games-emulation/mupen64plus-ui-console-2.5 !<games-emulation/mupen64plus-video-glide64mk2-2.5 !<games-emulation/mupen64plus-video-rice-2.5
+RDEPEND=media-libs/libpng:0= media-libs/libsdl2:0=[joystick,opengl,video] sys-libs/zlib:0=[minizip] gles2? ( media-libs/libsdl2:0[gles] ) lirc? ( app-misc/lirc:0 ) opencv? ( media-libs/opencv:= ) osd? ( media-fonts/dejavu media-libs/freetype:2= virtual/opengl:0= virtual/glu:0= )
 REQUIRED_USE=gles2? ( !osd )
 SLOT=0/2-sdl2
 SRC_URI=https://github.com/mupen64plus/mupen64plus-core/releases/download/2.5.9/mupen64plus-core-src-2.5.9.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=8d9271662e83681d3603423e948419f8
+_md5_=550d2a730744c261c770022bd9b9f031
