@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Ping-pong screensaver for Kodi"
 HOMEPAGE="https://github.com/xbmc/screensaver.pingpong"

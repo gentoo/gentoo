@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="SidPlay decoder addon for Kodi"
 HOMEPAGE="https://github.com/notspiff/audiodecoder.sidplay"
@@ -37,5 +37,5 @@ RDEPEND="
 
 src_prepare(){
 	[ -d depends ] && rm -rf depends || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }

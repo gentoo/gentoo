@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Goom visualizer for Kodi"
 HOMEPAGE="https://github.com/notspiff/visualization.goom"

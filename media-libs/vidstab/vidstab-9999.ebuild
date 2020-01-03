@@ -3,8 +3,7 @@
 
 EAPI=7
 
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
-
+CMAKE_ECLASS=cmake
 inherit cmake-multilib toolchain-funcs
 
 DESCRIPTION="Video stabilization library"
@@ -31,7 +30,7 @@ src_prepare() {
 		sed -E 's#(add_definitions.* )-g #\1#' -i ${FILE_TO_PATCH} || die
 		sed -E 's#(add_definitions.* )-O3 #\1#' -i ${FILE_TO_PATCH} || die
 	done
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -50,7 +49,7 @@ multilib_src_test() {
 	)
 	local CMAKE_USE_DIR="${CMAKE_USE_DIR}/tests"
 	local BUILD_DIR="${BUILD_DIR}/tests"
-	cmake-utils_src_configure
-	cmake-utils_src_make
+	cmake_src_configure
+	cmake_build
 	"${BUILD_DIR}"/tests || die
 }

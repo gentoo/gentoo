@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Wayland C++ bindings"
 HOMEPAGE="https://github.com/NilsBrause/waylandpp"
@@ -35,8 +35,7 @@ DEPEND="${RDEPEND}
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DOCUMENTATION=$(usex doc)
-		-DCMAKE_INSTALL_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

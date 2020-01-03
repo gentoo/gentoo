@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/RadeonOpenCompute/rocm-cmake/"
@@ -21,5 +21,5 @@ RESTRICT="test"
 
 src_prepare() {
 	sed -e "s:set(ROCM_INSTALL_LIBDIR lib):set(ROCM_INSTALL_LIBDIR $(get_libdir)):" -i "${S}/share/rocm/cmake/ROCMInstallTargets.cmake" || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }

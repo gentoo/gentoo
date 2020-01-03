@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Steam controller driver for Kodi"
 HOMEPAGE="https://github.com/kodi-game/peripheral.steamcontroller"

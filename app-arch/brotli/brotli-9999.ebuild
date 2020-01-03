@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
 DISTUTILS_OPTIONAL="1"
 DISTUTILS_IN_SOURCE_BUILD="1"
-
+CMAKE_ECLASS=cmake
 inherit cmake-multilib distutils-r1
 
 DESCRIPTION="Generic-purpose lossless compression algorithm"
@@ -37,14 +37,14 @@ RESTRICT="!test? ( test )"
 
 src_prepare() {
 	use python && distutils-r1_src_prepare
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 multilib_src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTING="$(usex test)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 src_configure() {
 	cmake-multilib_src_configure
@@ -52,7 +52,7 @@ src_configure() {
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 src_compile() {
 	cmake-multilib_src_compile
@@ -64,7 +64,7 @@ python_test(){
 }
 
 multilib_src_test() {
-	cmake-utils_src_test
+	cmake_src_test
 }
 src_test() {
 	cmake-multilib_src_test
@@ -72,7 +72,7 @@ src_test() {
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 }
 multilib_src_install_all() {
 	use python && distutils-r1_src_install

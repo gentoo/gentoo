@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/RadeonOpenCompute/ROCm-CompilerSupport/"
@@ -30,13 +30,12 @@ RDEPEND=">=dev-libs/rocm-device-libs-${PV}
 DEPEND="${RDEPEND}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DLLVM_DIR="${EPREFIX}/usr/lib/llvm/roc/"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

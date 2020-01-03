@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 if [[ ${PV} == 9999 ]] ; then
@@ -33,9 +34,9 @@ multilib_src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libnghttp3=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_CUnit=$(usex !test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_test() {
-	cmake-utils_src_make check
+	cmake_build check
 }

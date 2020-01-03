@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/RadeonOpenCompute/ROCm-OpenCL-Driver/"
@@ -30,13 +30,12 @@ src_prepare() {
 	# remove unittest, because it downloads additional file from github.com
 	sed -e "s:add_subdirectory(src/unittest):#add_subdirectory(src/unittest):" -i CMakeLists.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DLLVM_DIR="${EPREFIX}/usr/lib/llvm/roc/"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

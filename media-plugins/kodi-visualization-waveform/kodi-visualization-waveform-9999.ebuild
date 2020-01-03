@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Waveform visualizer for Kodi"
 HOMEPAGE="https://github.com/xbmc/visualization.waveform"
@@ -39,5 +39,5 @@ RDEPEND="
 
 src_prepare(){
 	[ -d depends ] && rm -rf depends || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
