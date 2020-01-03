@@ -19,9 +19,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/pytest[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/async_generator[${PYTHON_USEDEP}]' \
-		python3_5)"
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
