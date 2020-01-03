@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils systemd
+inherit cmake systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/fireice-uk/xmr-stak.git"
@@ -30,7 +30,7 @@ DEPEND="cuda? ( dev-util/nvidia-cuda-toolkit )
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -42,11 +42,11 @@ src_configure() {
 		-DOpenSSL_ENABLE=$(usex ssl)
 		-DLIBRARY_OUTPUT_PATH=$(get_libdir)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	systemd_newunit "${FILESDIR}"/${PN}.service ${PN}.service
 	doinitd "${FILESDIR}"/${PN}
 	dodir /etc/xmr-stak-rx

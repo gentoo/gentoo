@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Modplug decoder addon for Kodi"
 HOMEPAGE="https://github.com/notspiff/audiodecoder.modplug"
