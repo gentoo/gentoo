@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rick Farina <zerochaos@gentoo.com> (2020-01-03)
+# ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
+net-wireless/kismet ubertooth
+
 # Aaron Bauman <bman@gentoo.org> (2019-12-27)
 # ffmpeg does support 64 bit neon
 media-video/ffmpeg -cpu_flags_arm_neon
