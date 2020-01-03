@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,15 +14,6 @@ SLOT="2"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Internal Python project hack.  Do not copy it.  Ever.
 IUSE="${_PYTHON_ALL_IMPLS[@]/#/python_targets_}"
-
-# eselect-python because of /usr/bin/python* collisions and new config
-# python versions because of missing $scriptdir/python* symlinks
-RDEPEND="
-	!<app-eselect/eselect-python-20160206
-	!<dev-lang/python-2.7.10-r4:2.7
-	!<dev-lang/python-3.3.5-r4:3.3
-	!<dev-lang/python-3.4.3-r4:3.4
-	!<dev-lang/python-3.5.0-r3:3.5"
 
 src_configure() {
 	local pyimpls=() i EPYTHON
