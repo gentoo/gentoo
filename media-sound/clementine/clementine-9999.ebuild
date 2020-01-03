@@ -12,7 +12,7 @@ if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	inherit git-r3
 else
-	S="${WORKDIR}/${PN^}-${PV}"
+	S="${WORKDIR}/${P/_}"
 	SRC_URI_BASE="https://github.com/clementine-player/${PN^}"
 	COMMIT=""
 	if [[ -n "${COMMIT}" ]] ; then
@@ -21,7 +21,7 @@ else
 	elif [[ $(ver_cut 3) -gt 90 ]] ; then
 		SRC_URI="${SRC_URI_BASE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	else
-		SRC_URI="${SRC_URI_BASE}/releases/download/${PV}/${P}.tar.xz"
+		SRC_URI="${SRC_URI_BASE}/releases/download/${PV/_}/${P/_}.tar.xz"
 	fi
 	KEYWORDS="~amd64 ~x86"
 fi
