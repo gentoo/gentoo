@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
+CMAKE_ECLASS=cmake
 GENTOO_DEPEND_ON_PERL="no"
 inherit perl-module python-any-r1 cmake-multilib
 
@@ -47,7 +48,7 @@ python_check_deps() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# make tests optional
 	if ! use test; then
@@ -65,11 +66,11 @@ multilib_src_configure() {
 		-DGRAPHITE2_NSEGCACHE:BOOL=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	# fix perl linking
 	if multilib_is_native_abi && use perl; then
-		# we rely on the fact that cmake-utils_src_configure sets BUILD_DIR
+		# we rely on the fact that cmake_src_configure sets BUILD_DIR
 		sed -e "s:@BUILD_DIR@:\"${BUILD_DIR}/src\":" \
 			-i "${S}"/contrib/perl/Build.PL || die
 	fi
@@ -86,7 +87,7 @@ src_compile() {
 
 multilib_src_test() {
 	if multilib_is_native_abi; then
-		cmake-utils_src_test
+		cmake_src_test
 	else
 		einfo "Cannot test since python is not multilib."
 	fi
