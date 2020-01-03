@@ -23,8 +23,7 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}"
 
-BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+distutils_enable_tests unittest
 
 src_prepare() {
 	distutils-r1_python_prepare_all
