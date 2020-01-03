@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit qmake-utils
+inherit qmake-utils xdg-utils
 
 DESCRIPTION="Cross-platform libmpv-based multimedia player with uncluttered design"
 HOMEPAGE="http://bakamplayer.u8sand.net/"
@@ -16,8 +16,8 @@ IUSE=""
 
 BDEPEND="
 	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
+
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -48,4 +48,12 @@ src_configure() {
 		lrelease="$(qt5_get_bindir)"/lrelease \
 		lupdate="$(qt5_get_bindir)"/lupdate \
 		src/Baka-MPlayer.pro
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
