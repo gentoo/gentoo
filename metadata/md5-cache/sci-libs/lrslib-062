@@ -4,10 +4,10 @@ DESCRIPTION=Self-contained C implementation of the reverse search algorithm
 EAPI=6
 HOMEPAGE=http://cgm.cs.mcgill.ca/~avis/C/lrs.html
 IUSE=gmp mpi
-KEYWORDS=amd64 ~arm ~x86 ~amd64-linux ~x86-linux
+KEYWORDS=amd64 ~arm x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=gmp? ( dev-libs/gmp:0= mpi? ( virtual/mpi ) )
 SLOT=0
 SRC_URI=http://cgm.cs.mcgill.ca/~avis/C/lrslib/archive/lrslib-062.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=74ef8100706ed30e334c2cf6dfd866f5
+_md5_=2aecc48520819b3110e931be0411a9a2

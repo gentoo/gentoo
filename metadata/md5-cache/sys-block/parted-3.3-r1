@@ -10,4 +10,4 @@ RDEPEND=>=sys-fs/e2fsprogs-1.27 device-mapper? ( >=sys-fs/lvm2-2.02.45 ) readlin
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://gnu/parted/parted-3.3.tar.xz
-_md5_=564792881aae9f3bdff989b3cefd1e75
+_md5_=f770cbf913f6a62b2f12dcb134f9878d

@@ -5,10 +5,10 @@ DESCRIPTION=A package of Plan 9 compatibility libraries
 EAPI=7
 HOMEPAGE=https://www.netlib.org/research/9libs/9libs-1.0.README
 IUSE=static-libs
-KEYWORDS=amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=PLAN9
 RDEPEND=>=x11-libs/libX11-1.0.0[static-libs?] >=x11-libs/libXt-1.0.0[static-libs?]
 SLOT=0
 SRC_URI=https://www.netlib.org/research/9libs/9libs-1.0.tar.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b1f44649addd791c6282be4f513ded36
+_md5_=27c874e28b36e0672592749a7044858b

@@ -5,11 +5,11 @@ DESCRIPTION=black box tests Unix command line tools
 EAPI=7
 HOMEPAGE=https://liw.fi/cmdtest/
 IUSE=python_targets_python2_7
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86
 LICENSE=GPL-3+
 RDEPEND=dev-python/cliapp[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/markdown[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] dev-python/ttystatus[python_targets_python2_7(-)?,-python_single_target_python2_7(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,-python_single_target_python2_7(-)]
 REQUIRED_USE=|| ( python_targets_python2_7 )
 SLOT=0
 SRC_URI=http://git.liw.fi/cmdtest/snapshot/cmdtest-0.32.tar.gz
 _eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2439caf72d178f41acb235a7afb9ab0b
+_md5_=65ceacedab5beb39091f8e10144b7c89
