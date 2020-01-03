@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,6 +11,7 @@ else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
+S=${WORKDIR}/${P}/${PN}
 
 inherit distutils-r1
 
@@ -45,6 +46,6 @@ DEPEND="
 
 python_test() {
 	# acme is not installed, removing it here is fine, the dir just confuses tests
-	rm -R acme
+	rm -R ../acme
 	pytest -vv ${PN} || die
 }
