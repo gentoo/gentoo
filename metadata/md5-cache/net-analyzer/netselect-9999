@@ -1,0 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install prepare unpack
+DESCRIPTION=Ultrafast implementation of ping
+EAPI=7
+HOMEPAGE=http://apenwarr.ca/netselect/
+IUSE=ipv6
+LICENSE=BSD
+PROPERTIES=live
+SLOT=0
+SRC_URI=ipv6? ( https://dev.gentoo.org/~jer/netselect-0.4-ipv6.patch.xz )
+_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=93287d3f207d119c48db74a4cac2c79c

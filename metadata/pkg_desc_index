@@ -103,6 +103,7 @@ acct-group/tox 0: Group management for package net-libs/tox
 acct-group/transmission 0: System group: transmission
 acct-group/tss 0: Trusted Software Stack for TPMs group
 acct-group/tty 0: System group: tty
+acct-group/turnserver 0: A group for a turn server like coturn
 acct-group/unifi 0: A group for the UniFi controller
 acct-group/unrealircd 0: System group: unrealircd
 acct-group/uptimed 0: System group: uptimed
@@ -209,6 +210,7 @@ acct-user/tor 0: user for tor daemon
 acct-user/tox 0: User for package net-libs/tox
 acct-user/transmission 1: System user: transmission
 acct-user/tss 0: Trusted Software Stack for TPMs user
+acct-user/turnserver 0: A user for a turn server like coturn
 acct-user/unifi 0: A user for the UniFi Controller
 acct-user/unrealircd 0: System user: unrealircd
 acct-user/uptimed 0: user for uptime daemon
@@ -13776,7 +13778,7 @@ media-sound/cdstatus 0.97.03: Tool for diagnosing cdrom drive and digital data (
 media-sound/cdtool 2.1.8-r1: collection of command-line utilities to control cdrom devices
 media-sound/chordii 4.5.1 4.5.3: A guitar music typesetter
 media-sound/chuck 1.4.0.0: Strongly-timed, concurrent, and on-the-fly audio programming language
-media-sound/clementine 1.3.1_p20190127 1.3.1_p20191004 1.3.92 9999: Modern music player and library organizer based on Amarok 1.4 and Qt
+media-sound/clementine 1.3.1_p20190127 1.3.1_p20191004 1.4.0_rc1 9999: Modern music player and library organizer based on Amarok 1.4 and Qt
 media-sound/cmix 1.6: command line audio mixer
 media-sound/cmus 2.8.0 9999: Ncurses based music player with plugin support for many formats
 media-sound/cmusfm 0.2.5 0.3.1 0.3.3: Last.fm scrobbler for cmus music player
@@ -14443,7 +14445,7 @@ net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
 net-analyzer/netio 1.32-r1: measures net throughput with NetBIOS and TCP/IP protocols
 net-analyzer/netperf 2.7.0-r2: Network performance benchmark
 net-analyzer/netpipe 3.7.2: network protocol independent performance evaluator
-net-analyzer/netselect 0.4-r1: Ultrafast implementation of ping
+net-analyzer/netselect 0.4-r1 9999: Ultrafast implementation of ping
 net-analyzer/nettop 0.2.3-r2: top like program for network activity
 net-analyzer/netwag 5.39.0: Tcl/tk interface to netwox (Toolbox of 222 utilities for testing Ethernet/IP networks)
 net-analyzer/netwatch 1.3.0.1-r3: Ethernet/PPP IP Packet Monitor
@@ -15183,7 +15185,7 @@ net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
 net-misc/dhcp 4.4.1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
-net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.2 8.1.4 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
+net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.4 8.1.5 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
