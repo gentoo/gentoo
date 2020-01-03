@@ -10399,7 +10399,7 @@ dev-tcltk/thread 2.8.2: Tcl Thread extension
 dev-tcltk/tix 8.4.3-r1: A widget library for Tcl/Tk
 dev-tcltk/tkXwin 1.0-r4: Tcl/Tk library to detect idle periods of an X session
 dev-tcltk/tkcon 2.5-r1: Tk GUI console
-dev-tcltk/tkdnd 2.8 2.9.2: Adds native drag & drop capabilities to tk toolkit
+dev-tcltk/tkdnd 2.9.2: Adds native drag & drop capabilities to tk toolkit
 dev-tcltk/tkimg 1.4.7 1.4.9: Adds a lot of image formats to Tcl/Tk
 dev-tcltk/tklib 0.6-r1 0.6-r2: Collection of utility modules for Tk, and a companion to Tcllib
 dev-tcltk/tkpiechart 6.5-r2: create and update 2D or 3D pie charts in a Tcl/Tk application

@@ -4,11 +4,11 @@ DEPEND=>=media-libs/libpng-1.2.16:= gtk? ( dev-libs/glib:2 >=x11-libs/gtk+-3.14:
 DESCRIPTION=Graphical boot animation (splash) and logger
 EAPI=7
 HOMEPAGE=https://cgit.freedesktop.org/plymouth/
-IUSE=debug gdm +gtk +libkms +pango static-libs
+IUSE=debug gdm +gtk +libkms +pango static-libs +udev
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=>=media-libs/libpng-1.2.16:= gtk? ( dev-libs/glib:2 >=x11-libs/gtk+-3.14:3 x11-libs/cairo ) libkms? ( x11-libs/libdrm[libkms] ) pango? ( >=x11-libs/pango-1.21 ) virtual/udev !<sys-kernel/dracut-0.37-r3
+RDEPEND=>=media-libs/libpng-1.2.16:= gtk? ( dev-libs/glib:2 >=x11-libs/gtk+-3.14:3 x11-libs/cairo ) libkms? ( x11-libs/libdrm[libkms] ) pango? ( >=x11-libs/pango-1.21 ) udev? ( virtual/udev ) !<sys-kernel/dracut-0.37-r3
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~aidecoe/distfiles/sys-boot/plymouth/gentoo-logo.png
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=506fb9777b830e7ad40bae92d38c71fc
+_md5_=7b5fb8a26083a80ad042f813afcc075c
