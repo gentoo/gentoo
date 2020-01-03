@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,7 @@ RDEPEND="
 	|| ( media-sound/pulseaudio media-sound/apulse )
 	systray? ( gnome-extra/gnome-integration-spotify )
 	x11-libs/gtk+:2
+	app-accessibility/at-spi2-atk
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 "
