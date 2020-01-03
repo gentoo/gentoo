@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ DEPEND="
 	virtual/udev
 	dev-util/umockdev
 	sys-auth/polkit[introspection]
-	systemd? ( sys-apps/systemd:0= )
+	systemd? ( sys-apps/systemd )
 	doc? ( app-text/asciidoc )"
 RDEPEND="${DEPEND}"
 
@@ -31,7 +31,6 @@ src_configure() {
 		--sysconfdir=/etc
 		--localstatedir=/var
 		--sharedstatedir=/var/lib
-		-Dsystemd=$(usex systemd true false)
 	)
 	meson_src_configure
 }
