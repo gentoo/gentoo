@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,9 +11,9 @@ FORTRAN_NEEDED=fortran
 
 # NOTE:The build for multiple python versions should be possible but
 # complicated for the build system
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake-utils fortran-2 python-single-r1
+inherit cmake fortran-2 python-single-r1
 
 DESCRIPTION="A library to store and exchange meshed data or computation results"
 HOMEPAGE="https://www.salome-platform.org/user-section/about/med"
@@ -30,7 +30,6 @@ RESTRICT="!test? ( test ) python? ( test )"
 
 # dev-lang/tk is needed for wish-based xmdump utility
 RDEPEND="
-	!sci-libs/libmed
 	dev-lang/tk:0=
 	>=sci-libs/hdf5-1.10.2:=[fortran?,mpi?]
 	mpi? ( virtual/mpi[fortran=] )
@@ -68,7 +67,7 @@ src_prepare() {
 			"${cm}" || die "sed on ${cm} failed"
 	done
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -85,11 +84,11 @@ src_configure() {
 		-DMEDFILE_INSTALL_DOC=$(usex doc)
 		-DMEDFILE_USE_MPI=$(usex mpi)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# we don't need old 2.3.6 include files
 	rm -r "${ED}"/usr/include/2.3.6 || die "failed to delete obsolete include dir"
@@ -113,5 +112,5 @@ src_install() {
 src_test() {
 	# override parallel mode only for tests
 	local myctestargs=( "-j 1" )
-	cmake-utils_src_test
+	cmake_src_test
 }
