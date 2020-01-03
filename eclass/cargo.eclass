@@ -179,6 +179,7 @@ cargo_src_install() {
 		--root="${ED}/usr" $(usex debug --debug "") "$@" \
 		|| die "cargo install failed"
 	rm -f "${ED}/usr/.crates.toml"
+	rm -f "${ED}/usr/.crates2.json"
 
 	[ -d "${S}/man" ] && doman "${S}/man" || return 0
 }
