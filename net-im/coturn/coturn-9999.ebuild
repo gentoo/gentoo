@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit eutils user systemd tmpfiles
 DESCRIPTION="coturn TURN server project"
 HOMEPAGE="https://github.com/${PN}/${PN}"
@@ -20,7 +20,9 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="mongodb mysql postgres redis sqlite"
-RDEPEND="|| ( dev-libs/libevent[-ssl,libressl] dev-libs/libevent[ssl,-libressl] >dev-libs/libevent-2.1.8[ssl,libressl] )
+RDEPEND="acct-group/turnserver
+	 acct-user/turnserver
+	 || ( dev-libs/libevent[-ssl,libressl] dev-libs/libevent[ssl,-libressl] >dev-libs/libevent-2.1.8[ssl,libressl] )
 	 mongodb? ( dev-libs/mongo-c-driver )
 	 mysql?  ( dev-db/mysql-connector-c )
 	 postgres? ( dev-db/postgresql:* )
@@ -64,8 +66,6 @@ src_install() {
 
 pkg_postinst() {
 	tmpfiles_process "${PN}.conf"
-	enewgroup turnserver
-	enewuser turnserver -1 -1 -1 turnserver
 	elog "You need to copy /etc/turnserver.conf.default to"
 	elog "/etc/turnserver.conf and do your settings there."
 }
