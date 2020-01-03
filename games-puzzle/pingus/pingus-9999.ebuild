@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils toolchain-funcs flag-o-matic xdg-utils
+inherit cmake toolchain-funcs flag-o-matic xdg-utils
 
 DESCRIPTION="free Lemmings clone"
 HOMEPAGE="http://pingus.gitlab.io/"
@@ -37,7 +37,7 @@ PATCHES=(
 
 src_prepare() {
 	sed '/find_package(Boost/s@ signals@@' -i CMakeLists.txt || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	strip-flags
 }
 

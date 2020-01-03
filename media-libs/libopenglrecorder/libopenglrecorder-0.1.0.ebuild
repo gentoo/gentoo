@@ -38,5 +38,5 @@ multilib_src_configure() {
 		-DBUILD_RECORDER_WITH_SOUND=$(usex sound)
 		-DBUILD_WITH_VPX=$(usex vpx)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

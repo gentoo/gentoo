@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A simple volleyball game"
 HOMEPAGE="http://slime.tuxfamily.org/index.php"
@@ -38,8 +38,7 @@ S="${WORKDIR}/${PN}"
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
-		-DCMAKE_INSTALL_PREFIX=/usr
 		-DDATA_DIR=/usr/share/slimevolley
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
-inherit cmake-utils python-single-r1 xdg
+inherit cmake python-single-r1 xdg
 
 DESCRIPTION="Atari ST emulator"
 HOMEPAGE="https://hatari.tuxfamily.org/"
@@ -48,7 +48,7 @@ DOCS=(
 
 src_prepare() {
 	xdg_environment_reset
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i "s/\.1\.gz\b/.1/g;T;s/gzip[^\$]*/cat /g" {*/,}*/CMakeLists.txt || die
 	sed -i "s:\"doc\" + sep + \"hatari\":\"doc/${PF}\":" python-ui/uihelpers.py || die
@@ -71,10 +71,10 @@ src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Udev=$(usex !udev)
 		-DCMAKE_DISABLE_FIND_PACKAGE_ZLIB=$(usex !zlib)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_fix_shebang "${ED}"/usr/share/${PN}/
 }

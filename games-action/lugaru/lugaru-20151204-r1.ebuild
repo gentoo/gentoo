@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop
+inherit cmake desktop
 
 DESCRIPTION="3D arcade with unique fighting system and anthropomorphic characters"
 HOMEPAGE="https://bitbucket.org/osslugaru/lugaru/wiki/Home"
@@ -32,7 +32,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i \
 		-e "s:@GENTOO_DIR@:/usr/share/${PN}:" \
@@ -44,7 +44,7 @@ src_configure() {
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
 		-DLUGARU_FORCE_INTERNAL_OPENGL=False
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {

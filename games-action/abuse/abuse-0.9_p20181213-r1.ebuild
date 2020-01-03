@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg-utils
+inherit cmake desktop xdg-utils
 
 COMMIT="42b6acd19af00689e8f34355e3b13323d8ea3f79"
 DATA_PV="0.8"
@@ -26,7 +26,7 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
 	ln -snf ../../${PN}-${DATA_PV}/data/{music,sfx} data/ || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -35,11 +35,11 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	doicon -s 32 doc/${PN}.png
 	make_desktop_entry abuse Abuse
 }

@@ -4,7 +4,7 @@
 EAPI=7
 
 : ${CMAKE_MAKEFILE_GENERATOR:=emake}
-inherit cmake-utils flag-o-matic
+inherit cmake flag-o-matic
 
 MY_P="SuperTux-v${PV}-Source"
 
@@ -37,7 +37,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# This is not a developer release so switch the logo to the non-dev one.
 	sed -e 's@logo_dev@logo@' \
@@ -56,5 +56,5 @@ src_configure() {
 		-DENABLE_BOOST_STATIC_LIBS=OFF # bug! Please check if this is still required.
 		-DUSE_SYSTEM_PHYSFS=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
