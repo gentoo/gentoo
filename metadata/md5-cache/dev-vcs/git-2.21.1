@@ -4,7 +4,7 @@ DESCRIPTION=stupid content tracker: distributed VCS designed for speed and effic
 EAPI=6
 HOMEPAGE=https://www.git-scm.com/
 IUSE=+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +pcre-jit +perl +python +ppcsha1 tk +threads +webdav xinetd cvs subversion test +python_targets_python2_7 +python_single_target_python2_7
-KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~mips ppc ~ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~mips ppc ~ppc64 s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=gnome-keyring? ( app-crypt/libsecret ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) sys-libs/zlib pcre? ( pcre-jit? ( dev-libs/libpcre2[jit(+)] ) !pcre-jit? ( dev-libs/libpcre ) ) perl? ( dev-lang/perl:=[-build(-)] ) tk? ( dev-lang/tk:0= ) curl? ( net-misc/curl webdav? ( dev-libs/expat ) ) emacs? ( >=app-editors/emacs-23.1:* ) iconv? ( virtual/libiconv ) gpg? ( app-crypt/gnupg ) perl? ( dev-perl/Error dev-perl/MailTools dev-perl/Authen-SASL cgi? ( dev-perl/CGI highlight? ( app-text/highlight ) ) cvs? ( >=dev-vcs/cvsps-2.1:0 dev-perl/DBI dev-perl/DBD-SQLite ) mediawiki? ( dev-perl/DateTime-Format-ISO8601 dev-perl/HTML-Tree dev-perl/MediaWiki-API ) subversion? ( dev-vcs/subversion[-dso,perl] dev-perl/libwww-perl dev-perl/TermReadKey ) ) python? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) )
 REQUIRED_USE=cgi? ( perl ) cvs? ( perl ) mediawiki? ( perl ) mediawiki-experimental? ( mediawiki ) subversion? ( perl ) webdav? ( curl ) pcre-jit? ( pcre ) python? ( ^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 ) )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/software/scm/git/git-2.21.1.tar.xz https://www.kernel.org/pub/software/scm/git/git-manpages-2.21.1.tar.xz doc? ( https://www.kernel.org/pub/software/scm/git/git-htmldocs-2.21.1.tar.xz )
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	elisp-common	a1054cff648e1c6a806e17001d052176	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=55ac64e7e258042bf847fcccdd521dcb
+_md5_=545fd510d61a87224db4e554b703c446
