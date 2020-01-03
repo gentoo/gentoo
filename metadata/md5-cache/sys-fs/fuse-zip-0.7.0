@@ -1,13 +1,13 @@
 DEFINED_PHASES=compile install
-DEPEND=>=dev-libs/libzip-0.11.2:= >=sys-fs/fuse-2.7:=
+DEPEND=dev-libs/libzip:= sys-fs/fuse:0
 DESCRIPTION=FUSE file system to navigate, extract, create and modify ZIP archives
 EAPI=7
 HOMEPAGE=https://bitbucket.org/agalanin/fuse-zip
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=>=dev-libs/libzip-0.11.2:= >=sys-fs/fuse-2.7:=
+RDEPEND=dev-libs/libzip:= sys-fs/fuse:0
 RESTRICT=test
 SLOT=0
-SRC_URI=https://bitbucket.org/agalanin/fuse-zip/downloads/fuse-zip-0.4.5.tar.gz
+SRC_URI=https://bitbucket.org/agalanin/fuse-zip/downloads/fuse-zip-0.7.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=219e38b23863b45c81aaf85f7d3a908d
+_md5_=286b1f9ea554467a79076495f0d50be2
