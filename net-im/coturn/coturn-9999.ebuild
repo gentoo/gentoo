@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit eutils user systemd tmpfiles
+inherit eutils systemd tmpfiles
 DESCRIPTION="coturn TURN server project"
-HOMEPAGE="https://github.com/${PN}/${PN}"
+HOMEPAGE="https://github.com/coturn/coturn"
 
 if [ ${PV} = 9999 ]; then
 	KEYWORDS=""
