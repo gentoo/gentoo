@@ -15707,7 +15707,7 @@ net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/iwd 1.4 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918: Exploit Code for Mousejack
-net-wireless/kismet 2016.07.1-r2 2019.09.1-r1 9999: IEEE 802.11 wireless LAN sniffer
+net-wireless/kismet 2016.07.1-r2 2019.09.1-r1 2019.12.1 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
 net-wireless/kismet-ubertooth 2017.03.2 9999: Provides basic bluetooth support in kismet
 net-wireless/kismetdb 2019.05.05 9999: Kismetdb database log helper library
