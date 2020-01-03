@@ -14,7 +14,7 @@ HOMEPAGE="https://gohugo.io https://github.com/gohugoio/hugo"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Apache-2.0 Unlicense BSD BSD-2 MPL-2.0"
 SLOT="0"
-IUSE="+sass +bash-completion doc"
+IUSE="+bash-completion doc +sass"
 
 RESTRICT="test"
 
