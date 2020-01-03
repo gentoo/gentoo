@@ -4,7 +4,7 @@ DESCRIPTION=Encrypted P2P, messaging, and audio/video calling platform
 EAPI=7
 HOMEPAGE=https://tox.chat
 IUSE=+av daemon dht-node ipv6 log-debug +log-error log-info log-trace log-warn static-libs test
-KEYWORDS=~amd64 ~arm ~x86
+KEYWORDS=amd64 ~arm ~x86
 LICENSE=GPL-3+
 RDEPEND=av? ( media-libs/libvpx:= media-libs/opus ) daemon? ( dev-libs/libconfig ) >=dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]
 REQUIRED_USE=?? ( log-debug log-error log-info log-trace log-warn ) daemon? ( dht-node )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0/0.2
 SRC_URI=https://github.com/TokTok/c-toxcore/archive/v0.2.9.tar.gz -> c-toxcore-0.2.9.tar.gz
 _eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=acaaf1b10502abbec22e5d43efdfdeef
+_md5_=7de710c5f5d9cc2d1027e6dba74f5ff1
