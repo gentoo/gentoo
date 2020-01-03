@@ -1,0 +1,14 @@
+BDEPEND=dev-python/setuptools[python_targets_pypy3(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_pypy3? ( >=dev-python/pypy3-5:0=[ncurses] ) python_targets_python3_6? ( dev-lang/python:3.6[ncurses] ) python_targets_python3_7? ( dev-lang/python:3.7[ncurses] ) python_targets_python3_8? ( dev-lang/python:3.8[ncurses] ) >=dev-lang/python-exec-2:=[python_targets_pypy3(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] dev-python/setuptools[python_targets_pypy3(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
+DEFINED_PHASES=compile configure install prepare test
+DESCRIPTION=A flexible Python Kconfig implementation
+EAPI=7
+HOMEPAGE=https://github.com/ulfalizer/Kconfiglib https://pypi.org/project/kconfiglib/
+IUSE=python_targets_pypy3 python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=dev-python/setuptools[python_targets_pypy3(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] python_targets_pypy3? ( >=dev-python/pypy3-5:0=[ncurses] ) python_targets_python3_6? ( dev-lang/python:3.6[ncurses] ) python_targets_python3_7? ( dev-lang/python:3.7[ncurses] ) python_targets_python3_8? ( dev-lang/python:3.8[ncurses] ) >=dev-lang/python-exec-2:=[python_targets_pypy3(-)?,python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_pypy3(-),-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)]
+REQUIRED_USE=|| ( python_targets_pypy3 python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 )
+SLOT=0
+SRC_URI=https://github.com/ulfalizer/Kconfiglib/archive/v13.7.0.tar.gz -> kconfiglib-13.7.0.tar.gz
+_eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=4a01418d85016b7cddde3b0f6bc8315b
