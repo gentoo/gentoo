@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="tk?"
-inherit cmake-utils desktop flag-o-matic python-single-r1 subversion xdg
+inherit cmake desktop flag-o-matic python-single-r1 subversion xdg
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
@@ -77,7 +77,8 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	default
+	_CMAKE_SRC_PREPARE_HAS_RUN=1
 
 	rm -r codegen/cheetah scribus/third_party/hyphen || die
 
@@ -109,8 +110,6 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DHAVE_PYTHON=ON
-		-DPYTHON_INCLUDE_PATH=$(python_get_includedir)
-		-DPYTHON_LIBRARY=$(python_get_library_path)
 		-DWANT_DISTROBUILD=ON
 		-DDOCDIR="${EPREFIX}"/usr/share/doc/${PF}/
 		-DWITH_BOOST=$(usex boost)
@@ -123,11 +122,11 @@ src_configure() {
 		-DWITH_PODOFO=$(usex pdf)
 		-DWANT_NOTEMPLATES=$(usex !templates)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if ! use tk; then
 		rm "${ED}"/usr/share/scribus/scripts/{FontSample,CalendarWizard}.py || die
