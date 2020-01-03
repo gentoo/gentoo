@@ -33,10 +33,19 @@
 #--- END OF EXAMPLES ---
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-03)
+# package is broken by all version of imagemagick
+# several open bugs on upstream
+# Upstream did not reply about project status
+# wrt bug 314315
+# removal ~2020-01-31
+media-plugins/vdr-skinenigmang
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-03)
 # media-video/vdrtools-genindex
 # is an useless leftover from older media-video/vdr install
 # this function is included in the core vdr
 # use "vdr --genindex=REC" for this
+# wrt bug 704692
 # removal from tree ~31 Jan 2020
 media-video/vdrtools-genindex
 
