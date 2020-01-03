@@ -24,4 +24,5 @@ RDEPEND="
 		sys-kernel/aufs-sources
 		sys-kernel/raspberrypi-sources
 		sys-kernel/vanilla-kernel
+		sys-kernel/vanilla-kernel-bin
 	)"
