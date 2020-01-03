@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst test
+DEPEND=sys-apps/gawk test? ( app-editors/emacs app-misc/rlwrap )
+DESCRIPTION=Online command-line translator
+EAPI=7
+HOMEPAGE=https://www.soimort.org/translate-shell/
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=Unlicense
+RDEPEND=sys-apps/gawk
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/soimort/translate-shell/archive/v0.9.6.11.tar.gz -> translate-shell-0.9.6.11.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_md5_=269344d19768bdc1dd064e6f88730db5

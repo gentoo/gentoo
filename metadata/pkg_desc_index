@@ -305,7 +305,7 @@ app-admin/exo 1.6.0: Command-line tool for everything at Exoscale: compute, stor
 app-admin/fam 2.7.0-r7 2.7.0_p17_p2: FAM, the File Alteration Monitor
 app-admin/fetchlog 1.4-r1: Displays the last new messages of a logfile
 app-admin/fifo-cronolog 1.1.1-r1: cronolog wrapper for use with dumb daemons like squid, varnish and so on
-app-admin/filebeat 5.6.13 6.6.1 6.8.4 7.2.0 7.3.2 7.4.1: Lightweight log shipper for Logstash and Elasticsearch
+app-admin/filebeat 5.6.13 6.6.1 6.8.4 7.2.0 7.3.2 7.4.1 7.5.1: Lightweight log shipper for Logstash and Elasticsearch
 app-admin/filewatcher 2.4.6-r1: File control configuration system and IDS
 app-admin/fluentd 1.2.6-r1 1.3.1 1.3.2 1.3.3 1.4.0 1.4.1 1.4.2: data collector and unified logging layer (project under CNCF)
 app-admin/fsvs 1.2.5-r2: Backup/restore for subversion backends
@@ -348,7 +348,7 @@ app-admin/logmon 0.4.4-r1: Split-screen terminal/ncurses based log viewer
 app-admin/logrotate 3.13.0 3.14.0 3.15.0 3.15.1: Rotates, compresses, and mails system logs
 app-admin/logsentry 1.1.1-r2: Automatically monitor system logs and mail security violations
 app-admin/logstalgia 1.1.2: Replays or streams an access_log as a retro arcade game-like simulation
-app-admin/logstash-bin 5.6.15 6.8.4 7.2.0 7.3.2 7.4.1: Tool for managing events and logs
+app-admin/logstash-bin 5.6.15 6.8.4 7.2.0 7.3.2 7.4.1 7.5.1: Tool for managing events and logs
 app-admin/logsurfer+ 1.8-r3: Real Time Log Monitoring and Alerting
 app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon processors
 app-admin/lsyncd 2.2.0 2.2.1 2.2.2 2.2.3: Live Syncing (Mirror) Daemon
@@ -786,7 +786,7 @@ app-crypt/nitrokey-app 1.4 9999: Cross platform personalization tool for the Nit
 app-crypt/nwipe 0.25: Securely erase disks using a variety of recognized methods
 app-crypt/onak 0.5.0: onak is an OpenPGP keyserver
 app-crypt/openpgp-keys-gentoo-auth 20191030: Gentoo Authority Keys (GLEP 79)
-app-crypt/openpgp-keys-gentoo-release 20190427 20191030: OpenPGP keys used for Gentoo releases (snapshots, stages)
+app-crypt/openpgp-keys-gentoo-release 20191030: OpenPGP keys used for Gentoo releases (snapshots, stages)
 app-crypt/openssl-blacklist 0.5.3: Detection of weak ssl keys produced by certain debian versions in 2006-2008
 app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced by certain debian versions in 2006-2008
 app-crypt/ophcrack 3.6.0 3.7.0 3.8.0: A time-memory-trade-off-cracker
@@ -1793,7 +1793,7 @@ app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r4: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
 app-i18n/transifex-client 0.12.4: A command line interface for Transifex
-app-i18n/translate-shell 0.9.6.10: Online command-line translator
+app-i18n/translate-shell 0.9.6.10 0.9.6.11: Online command-line translator
 app-i18n/uchardet 0.0.6-r2 9999: An encoding detector library
 app-i18n/uim 1.8.6-r1 1.8.6-r2 1.8.8: A multilingual input method framework
 app-i18n/uim-tomoe-gtk 0.6.0: Japanese input method Tomoe IMEngine for uim
@@ -1999,7 +1999,7 @@ app-misc/dvorakng 0.6.0: Dvorak typing tutor
 app-misc/dvtm 0.14-r1 0.15-r2 0.15-r3 9999: Dynamic virtual terminal manager
 app-misc/editor-wrapper 4-r1: Wrapper scripts that will execute EDITOR or PAGER
 app-misc/egads 0.9.5-r1: Entropy Gathering And Distribution System
-app-misc/elasticsearch 5.6.16 6.7.1 6.8.4 7.2.1 7.3.2 7.4.1: Open Source, Distributed, RESTful, Search Engine
+app-misc/elasticsearch 5.6.16 6.7.1 6.8.4 7.2.1 7.3.2 7.4.1 7.5.1: Open Source, Distributed, RESTful, Search Engine
 app-misc/email2trac 2.6.2-r1 2.8.4 2.8.8: Utilities to convert emails to trac tickets
 app-misc/emelfm2 0.9.1-r1 0.9.1-r2: A file manager that implements the popular two-pane design
 app-misc/empty 0.6.20b: Small shell utility, similar to expect(1)
@@ -2376,7 +2376,7 @@ app-portage/porthole 0.6.1-r5: A GTK+-based frontend to Portage
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.27: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
-app-portage/pram 7 8: Tool to ease merging Pull Requests and git patches
+app-portage/pram 8: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 4 5: Utilities for users of Gentoo Prefix
 app-portage/repo-commit 0.4.1-r1 9999: A repository commit helper
 app-portage/repoman 2.3.11 2.3.16 2.3.17 2.3.18 2.3.19 2.3.20 9999: Repoman is a Quality Assurance tool for Gentoo ebuilds
@@ -7384,7 +7384,7 @@ dev-python/Numdifftools 0.9.17: Solves automatic numerical differentiation probl
 dev-python/PyContracts 1.7.9 1.8.0 1.8.12: Declare constraints on function parameters and return values
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.5.0 1.6.0: Messaging API for RPC and notifications over different messaging transports
-dev-python/PyGithub 1.43.8 1.44.1 1.45: Python library to access the Github API v3
+dev-python/PyGithub 1.44.1 1.45: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.12.2 5.13.2 5.14.0: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.17 4.19.19 4.19.20: Private sip module for PyQt5
@@ -10644,7 +10644,7 @@ dev-util/dbus-test-runner 19.04.0: Run executables under a new DBus session for 
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20160814 12.7.2 12.7.3: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.115 1.0.116: Debian/Ubuntu bootstrap scripts
-dev-util/debugedit 4.14.2-r2 4.15.0: Stand-alone debugedit from RPM
+dev-util/debugedit 4.15.0: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6: Framework for testing other programs
 dev-util/desktop-file-utils 0.24: Command line utilities to work with desktop menu entries
 dev-util/devhelp 3.30.1: An API documentation browser for GNOME
@@ -13233,7 +13233,7 @@ media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
 media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
 media-libs/libpgf 6.12.27: Library to load, handle and manipulate images in the PGF format
-media-libs/libplacebo 1.21.0-r1 1.29.0 9999: Reusable library for GPU-accelerated image processing primitives
+media-libs/libplacebo 1.21.0-r1 1.29.1 9999: Reusable library for GPU-accelerated image processing primitives
 media-libs/libpng 1.6.37: Portable Network Graphics library
 media-libs/libpng-compat 1.2.59 1.5.30: Portable Network Graphics library
 media-libs/libpostproc 10.20140517-r1 9999: Video post processing library
@@ -14519,7 +14519,7 @@ net-analyzer/snort 2.9.8.3-r2 2.9.12 2.9.15: The de facto standard for intrusion
 net-analyzer/snortalog 2.4.3-r1: a powerful perl script that summarizes snort logs
 net-analyzer/snortsam 2.70: Snort plugin that allows automated blocking of IP addresses on several firewalls
 net-analyzer/softflowd 0.9.9-r1: flow-based network traffic analyser capable of Cisco NetFlow data export
-net-analyzer/speedtest-cli 2.1.1 2.1.2: Command line interface for testing internet bandwidth using speedtest.net
+net-analyzer/speedtest-cli 2.1.2: Command line interface for testing internet bandwidth using speedtest.net
 net-analyzer/sqlninja 0.2.6_p1-r1: A SQL Server injection & takeover tool
 net-analyzer/squid-graph 3.2-r1: Squid logfile analyzer and traffic grapher
 net-analyzer/squidsites 1.01-r2: A tool that parses Squid access log file and generates a report of the most visited sites
@@ -14777,7 +14777,7 @@ net-im/skypeforlinux 8.52.0.138 8.52.0.138-r1 8.53.0.85 8.54.0.85 8.54.0.91 8.55
 net-im/slack-bin 2.1.2 3.1.1 3.4.2 4.0.2 4.1.1: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
-net-im/telegram-desktop-bin 1.8.8 1.8.13 1.8.15: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 1.8.15 1.9.3: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
@@ -15051,7 +15051,7 @@ net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.9 2.0: fetch, filter and deliver mail
 net-mail/fetchmail 6.3.26-r4 6.4.1 6.4.1-r2: the legendary remote-mail retrieval and forwarding utility
-net-mail/getmail 5.13 5.14: A mail retriever with reliable Maildir and mbox delivery
+net-mail/getmail 5.14: A mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.17-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
 net-mail/imapsync 1.592-r1 1.836 1.882: Tool for incremental and recursive IMAP transfers between mailboxes
@@ -17272,7 +17272,7 @@ sys-auth/libnss-nis 1.4: NSS module to provide NIS support
 sys-auth/libnss-pgsql 1.5.0_beta-r1: Name Service Switch module for use with PostgreSQL
 sys-auth/libyubikey 1.13: Yubico C low-level library
 sys-auth/munge 0.5.10-r2 0.5.13 0.5.13-r1: An authentication service for creating and validating credentials
-sys-auth/nss-mdns 0.13 0.14.1 9999: Name Service Switch module for Multicast DNS
+sys-auth/nss-mdns 0.14.1 9999: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
 sys-auth/nss-pam-ldapd 0.9.10 0.9.11 0.9.11-r1: NSS module for name lookups using LDAP
 sys-auth/nss_ldap 265-r5: NSS LDAP Module
@@ -18193,7 +18193,7 @@ www-apps/gitea 1.9.5 1.10.1 9999: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.3.5 6.3.6 6.4.3 6.4.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
-www-apps/hugo 0.50 0.58.3: The world's fastest framework for building websites
+www-apps/hugo 0.58.3 0.62.0: The world's fastest framework for building websites
 www-apps/icingaweb2 2.7.1 2.7.3 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
 www-apps/icingaweb2-module-graphite 1.0.1-r1 9999: Icinga Web 2 plugin for Graphite
@@ -18205,7 +18205,7 @@ www-apps/jekyll-sass-converter 1.5.2: A basic Sass converter for Jekyll
 www-apps/jekyll-sitemap 0.13.0: Automatically generate a sitemap.xml for your Jekyll site
 www-apps/jekyll-watch 2.2.1: Rebuild your Jekyll site when a file changes with the --watch switch
 www-apps/karma-bin 0.24 0.27 0.33 0.39 0.40 0.41 0.43: Alerts dashboard for Prometheus Alertmanager
-www-apps/kibana-bin 5.6.16 6.7.1 6.8.4 7.2.0 7.3.2 7.4.1: Analytics and search dashboard for Elasticsearch
+www-apps/kibana-bin 5.6.16 6.7.1 6.8.4 7.2.0 7.3.2 7.4.1 7.5.1: Analytics and search dashboard for Elasticsearch
 www-apps/klaus 1.4.0 1.5.1: A simple, easy-to-set-up Git web viewer
 www-apps/liquid_feedback_core 2.2.6 3.0.4: Internet platforms for proposition development and decision making
 www-apps/liquid_feedback_frontend 2.2.7 3.0.6: Internet platforms for proposition development and decision making
@@ -18739,7 +18739,7 @@ x11-misc/qarma 1: Zenity Clone for Qt5
 x11-misc/qcomicbook 0.9.1: A viewer for comic book archives containing jpeg/png images
 x11-misc/qlipper 5.0.0 5.1.2: Lightweight and cross-platform clipboard history applet
 x11-misc/qps 1.10.20: Visual process manager - Qt version of ps/top
-x11-misc/qt5ct 0.35 0.41: Qt5 configuration tool, similar to qtconfig for Qt4
+x11-misc/qt5ct 0.41: Qt5 configuration tool, similar to qtconfig for Qt4
 x11-misc/qterm 0.7.1 0.7.3: A BBS client based on Qt
 x11-misc/qtfm 6.2.0 99999: A small, lightweight file manager for desktops based on pure Qt
 x11-misc/quitcount 3.1.3: A simple applet that shows what you saved since you quit smoking.
