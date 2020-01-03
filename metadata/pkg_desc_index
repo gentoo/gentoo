@@ -14489,6 +14489,7 @@ net-analyzer/prelude-lml 3.0.0 4.0.0 4.1.0 5.1.0: The prelude log analyzer
 net-analyzer/prelude-lml-rules 3.0.1 4.0.0 4.1.0 5.1.0: Prelude LML community ruleset
 net-analyzer/prettyping 1.0.1: Ping wrapper that produces coloured, easily readable output.
 net-analyzer/pypacker 2.9 4.6 4.7 4.8 4.9: Fast and simple packet creation and parsing library for Python
+net-analyzer/python-gvm 1.1.0: Greenbone Vulnerability Management Python Library
 net-analyzer/quidscor 1.2.48-r1: Qualys IDS Correlation Daemon
 net-analyzer/raddump 0.3.1: RADIUS packet interpreter
 net-analyzer/rain 1.2.9_beta1: powerful tool for testing stability of hardware and software utilizing IP protocols
