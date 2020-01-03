@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 else
 	EGIT_COMMIT="119e7c3bbae122f6cc5d778d068fb91e0e85d6a9"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Tools-${EGIT_COMMIT}"
 fi
