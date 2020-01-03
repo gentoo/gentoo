@@ -77,8 +77,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	default
-	_CMAKE_SRC_PREPARE_HAS_RUN=1
+	cmake_src_prepare
 
 	rm -r codegen/cheetah scribus/third_party/hyphen || die
 
