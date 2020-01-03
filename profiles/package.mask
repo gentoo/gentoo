@@ -39,6 +39,7 @@
 # wrt bug 314315
 # removal ~2020-01-31
 media-plugins/vdr-skinenigmang
+x11-themes/skinenigmang-logos
 
 # Jonas Stein <jstein@gentoo.org> (2019-12-30)
 # Package masked for removal. Broken SRC_URI, 

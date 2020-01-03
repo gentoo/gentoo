@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,15 +14,17 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=dev-libs/libzip-0.11.2:=
-	>=sys-fs/fuse-2.7:="
+DEPEND="
+	dev-libs/libzip:=
+	sys-fs/fuse:0
+"
 RDEPEND="${DEPEND}"
 
 RESTRICT="test"
 
 DOCS=( changelog README.md )
 
-PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-0.4.5-makefile.patch" )
 
 src_compile() {
 	emake CXX="$(tc-getCXX)" CXXFLAGS="${CXXFLAGS} ${LDFLAGS}"
