@@ -40,15 +40,6 @@
 # removal ~2020-01-31
 media-plugins/vdr-skinenigmang
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-03)
-# media-video/vdrtools-genindex
-# is an useless leftover from older media-video/vdr install
-# this function is included in the core vdr
-# use "vdr --genindex=REC" for this
-# wrt bug 704692
-# removal from tree ~31 Jan 2020
-media-video/vdrtools-genindex
-
 # Jonas Stein <jstein@gentoo.org> (2019-12-30)
 # Package masked for removal. Broken SRC_URI, 
 # last upstream activity was ~16 years ago.
