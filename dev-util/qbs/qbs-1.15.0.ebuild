@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit qmake-utils
+inherit qmake-utils toolchain-funcs
 
 MY_P=${PN}-src-${PV}
 
@@ -48,14 +48,6 @@ src_prepare() {
 		sed -i -e '/INSTALLS +=/ s:examples::' static.pro || die
 	fi
 
-	# replace hardcoded "lib" with QBS_LIBRARY_DIRNAME
-	sed -i -e '1i include(src/library_dirname.pri)' \
-		-e '/qbslibdir =/ s:/lib:/$$QBS_LIBRARY_DIRNAME:' \
-		static-res.pro || die
-
-	# respect LDFLAGS
-	sed -i -e '/QMAKE_LFLAGS =/ s/ = / += /' src/lib/library.pri || die
-
 	echo "SUBDIRS = $(usex test auto '')" >> tests/tests.pro
 
 	# skip several tests that fail and/or have additional deps
@@ -88,10 +80,11 @@ src_test() {
 
 	export HOME=${T}
 	export LD_LIBRARY_PATH=${S}/$(get_libdir)
-	export QBS_AUTOTEST_PROFILE=autotests
+	export QBS_AUTOTEST_PROFILE=testProfile
 
-	"${S}"/bin/qbs-setup-toolchains --detect || die
-	"${S}"/bin/qbs-setup-qt "$(qt5_get_bindir)/qmake" autotests || die
+	"${S}"/bin/qbs-setup-toolchains "$(tc-getCC)" testToolchain || die
+	"${S}"/bin/qbs-setup-qt "$(qt5_get_bindir)/qmake" ${QBS_AUTOTEST_PROFILE} || die
+	"${S}"/bin/qbs-config profiles.${QBS_AUTOTEST_PROFILE}.qbs.targetPlatform linux || die
 
 	einfo "Running autotests"
 
