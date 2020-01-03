@@ -10,7 +10,7 @@ SRC_URI="https://www.netlib.org/research/9libs/${P}.tar.bz2"
 
 LICENSE="PLAN9"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="static-libs"
 
 DEPEND="
