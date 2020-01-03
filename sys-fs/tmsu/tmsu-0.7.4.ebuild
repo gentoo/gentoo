@@ -10,7 +10,7 @@ DESCRIPTION="Files tagger and virtual tag-based filesystem"
 HOMEPAGE="https://github.com/oniony/TMSU/wiki"
 SRC_URI="https://github.com/oniony/TMSU/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-3+"
+LICENSE="AGPL-3 AGPL-3+ BSD-4 GPL-3+ MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
