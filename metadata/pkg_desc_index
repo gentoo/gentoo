@@ -691,7 +691,7 @@ app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
 app-cdr/uif2iso 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
 app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
-app-cdr/xfburn 0.5.5-r3 0.6.1: GTK+ based CD and DVD burning application
+app-cdr/xfburn 0.6.1: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 0.39.0 0.40.1 1.0.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
@@ -4704,7 +4704,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.24.3-r1 5.24.4 5.26.2 5.28.2-r1 5.30.1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.1.33 7.2.24 7.2.25 7.2.26 7.3.11 7.3.12 7.3.13 7.4.0 7.4.1: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.16 2.7.17 2.7.17-r1 3.5.7 3.5.9 3.6.9 3.6.10 3.7.5-r1 3.7.6 3.8.1: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.17 2.7.17-r1 3.6.9 3.6.10 3.7.5-r1 3.7.6 3.8.1: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 9999: A compiler for the Perl 6 programming language
@@ -10581,7 +10581,7 @@ dev-util/byacc 20170201 20180609 20190617 20191125: the best variant of the Yacc
 dev-util/cargo-ebuild 0.2.0: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-tree 0.23.0 0.24.0 0.25.0 0.26.0 0.27.0 0.28.0: Cargo subcommand that visualizes crate dependency graph in a tree-like format
 dev-util/catalyst 3.0.5 3.0.6 3.0.7 3.0.8 9999: Release metatool used for creating releases based on Gentoo Linux
-dev-util/catfish 1.4.10 1.4.11 1.4.12: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
+dev-util/catfish 1.4.10 1.4.12: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.9.1 0.10.1 0.11.1: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.2 3.7.4 3.7.5 3.7.6: fast compiler cache
@@ -13972,7 +13972,7 @@ media-sound/podget 0.7.14 0.8.1 0.8.2: A simple podcast aggregator optimized for
 media-sound/podracer 1.4-r2: A simple podcast aggregator, designed for cron
 media-sound/positron 1.1-r1: Synchronization manager for the Neuros Audio Computer
 media-sound/potamus 16: A lightweight audio player with a simple interface and an emphasis on high audio quality
-media-sound/pragha 1.3.4 1.3.99.1: A lightweight music player (for Xfce)
+media-sound/pragha 1.3.99.1: A lightweight music player (for Xfce)
 media-sound/protux 0.50.100: Professional Audio Tools for GNU/Linux
 media-sound/ptabtools 0.5.0: Utilities for PowerTab Guitar files (.ptb)
 media-sound/pulseaudio 12.2-r1 13.0: A networked sound server with an advanced plugin system
@@ -14219,7 +14219,7 @@ media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and 
 media-video/openshot 2.4.0-r1 2.4.4: Free, open-source, non-linear video editor to create and edit videos and movies
 media-video/orion 1.6.6: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
-media-video/parole 1.0.4 1.0.5: A simple Xfce4 media player using GStreamer
+media-video/parole 1.0.5: A simple Xfce4 media player using GStreamer
 media-video/peek 1.3.1-r2 1.4.0: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 3.7.1: Movie slideshow creator using Ken Burns effect
@@ -19331,20 +19331,20 @@ xfce-extra/xfce4-places-plugin 1.8.1: A panel plug-in to provide quick access to
 xfce-extra/xfce4-power-manager 1.6.5: Power manager for the Xfce desktop environment
 xfce-extra/xfce4-pulseaudio-plugin 0.4.2: A panel plug-in for PulseAudio volume control
 xfce-extra/xfce4-screensaver 0.1.8: Screen saver and locker (port of MATE screensaver)
-xfce-extra/xfce4-screenshooter 1.9.6 1.9.7: Xfce4 screenshooter application and panel plugin
+xfce-extra/xfce4-screenshooter 1.9.7: Xfce4 screenshooter application and panel plugin
 xfce-extra/xfce4-sensors-plugin 1.3.0-r1 1.3.92-r1: A panel plug-in for acpi, lm-sensors and hddtemp sensors
 xfce-extra/xfce4-smartbookmark-plugin 0.5.1: Smart bookmark plug-in for the Xfce desktop environment
 xfce-extra/xfce4-statusnotifier-plugin 0.2.1: A panel area for fd.o Status Notifiers (systray replacement)
 xfce-extra/xfce4-systemload-plugin 1.2.3: System load plug-in for Xfce panel
 xfce-extra/xfce4-taskmanager 1.2.2: Easy to use task manager
-xfce-extra/xfce4-time-out-plugin 1.0.3-r3 1.1.0: A panel plug-in to take periodical breaks from the computer
+xfce-extra/xfce4-time-out-plugin 1.1.0: A panel plug-in to take periodical breaks from the computer
 xfce-extra/xfce4-timer-plugin 1.7.0: A simple timer plug-in for the Xfce desktop environment
 xfce-extra/xfce4-vala 4.10.3-r6: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.1: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.10.0: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 2.3.3 2.3.4: Alternate application launcher for Xfce
+xfce-extra/xfce4-whiskermenu-plugin 2.3.4: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.7.5: Maybe a GNOME shell like dashboard for the Xfce desktop environment
