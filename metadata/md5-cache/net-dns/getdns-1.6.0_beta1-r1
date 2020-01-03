@@ -1,0 +1,15 @@
+BDEPEND=doc? ( app-doc/doxygen ) dev-util/ninja dev-util/cmake virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=dev-libs/libbsd dev-libs/libyaml dev-libs/openssl:= idn? ( net-dns/libidn2:= ) gnutls? ( net-libs/gnutls:0=[dane,openssl] dev-libs/nettle:0= ) libev? ( dev-libs/libev:= ) libevent? ( dev-libs/libevent:= ) libuv? ( dev-libs/libuv:= ) unbound? ( >=net-dns/unbound-1.5.9:= ) filecaps? ( sys-libs/libcap )
+DESCRIPTION=Modern asynchronous DNS API
+EAPI=7
+HOMEPAGE=https://getdnsapi.net/
+IUSE=doc examples +getdns-query +getdns-server-mon gnutls +idn libev libevent libuv static-libs stubby +unbound +filecaps
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=dev-libs/libbsd dev-libs/libyaml dev-libs/openssl:= idn? ( net-dns/libidn2:= ) gnutls? ( net-libs/gnutls:0=[dane,openssl] dev-libs/nettle:0= ) libev? ( dev-libs/libev:= ) libevent? ( dev-libs/libevent:= ) libuv? ( dev-libs/libuv:= ) unbound? ( >=net-dns/unbound-1.5.9:= ) stubby? ( acct-group/stubby acct-user/stubby sys-libs/libcap )
+RESTRICT=test
+SLOT=0
+SRC_URI=https://getdnsapi.net/releases/getdns-1-6-0-beta-1/getdns-1.6.0-beta.1.tar.gz
+_eclasses_=cmake	74eb4b1178e06c0a0cf81c6562534e6d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	fcaps	9445d60c1eb084a91c38ef4c070b2f16	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=1ccc67a608991ae078bef9c4b1316a92
