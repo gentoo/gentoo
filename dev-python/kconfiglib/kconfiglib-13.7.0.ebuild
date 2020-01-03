@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} pypy3 )
+PYTHON_COMPAT=( python3_{5,6,7,8} pypy3 )
 PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1
@@ -18,12 +18,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+RDEPEND="${BDEPEND}"
 
 S=${WORKDIR}/${P/k/K}
-
-PATCHES=( "${FILESDIR}"/${P}-setup.patch )
 
 python_prepare_all() {
 	distutils-r1_python_prepare_all
