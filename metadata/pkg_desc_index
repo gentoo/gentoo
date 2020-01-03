@@ -14742,7 +14742,7 @@ net-im/centerim 5.0.1: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduG
 net-im/choqok 1.6.0_p20190726: Free/Open Source micro-blogging client by KDE
 net-im/coccinella 0.96.20: Jabber Client With a Built-in Whiteboard and VoIP (jingle)
 net-im/corebird 1.7.4: Native GTK+3 Twitter client
-net-im/coturn 4.5.0.7 4.5.0.8 9999: coturn TURN server project
+net-im/coturn 4.5.1.1 9999: coturn TURN server project
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
 net-im/dianara 1.4.2: Qt-based client for the pump.io distributed social network
 net-im/dino 9999: Modern Jabber/XMPP Client using GTK+/Vala
