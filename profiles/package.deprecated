@@ -72,3 +72,4 @@ dev-python/pytest-cov
 dev-go/go-crypto
 dev-go/go-net
 dev-go/go-sys
+dev-go/go-sqlite3
