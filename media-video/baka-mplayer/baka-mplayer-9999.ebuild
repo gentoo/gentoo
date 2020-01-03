@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit qmake-utils git-r3
+inherit qmake-utils git-r3 xdg-utils
 
 DESCRIPTION="Cross-platform libmpv-based multimedia player with uncluttered design"
 HOMEPAGE="http://bakamplayer.u8sand.net/"
@@ -18,7 +18,8 @@ BDEPEND="
 	dev-qt/linguist-tools:5
 	virtual/pkgconfig"
 
-RDEPEND="dev-qt/qtcore:5
+RDEPEND="
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
@@ -45,4 +46,12 @@ src_configure() {
 		lrelease="$(qt5_get_bindir)"/lrelease \
 		lupdate="$(qt5_get_bindir)"/lupdate \
 		src/Baka-MPlayer.pro
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
