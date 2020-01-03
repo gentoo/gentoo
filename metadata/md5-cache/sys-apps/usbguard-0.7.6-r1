@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure install postinst
+DEPEND=dev-libs/pegtl >=dev-libs/libsodium-0.4.5:= >=dev-libs/protobuf-2.5.0:= >=sys-cluster/libqb-0.16.0:= sys-devel/gcc:*[cxx] >=sys-libs/libcap-ng-0.7.0 >=sys-libs/libseccomp-2.0.0 >=sys-process/audit-2.7.7 bash-completion? ( >=app-shells/bash-completion-2.0 ) dbus? ( >=dev-libs/dbus-glib-0.100 dev-libs/glib:2 sys-apps/dbus policykit? ( sys-auth/polkit[introspection] ) ) ldap? ( net-nds/openldap ) systemd? ( sys-apps/systemd ) app-text/asciidoc dev-cpp/catch:1 dbus? ( dev-libs/libxml2 dev-libs/libxslt dev-util/gdbus-codegen )
+DESCRIPTION=Daemon protecting your computer against BadUSB
+EAPI=7
+HOMEPAGE=https://github.com/USBGuard/usbguard
+IUSE=bash-completion dbus ldap policykit systemd
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/pegtl >=dev-libs/libsodium-0.4.5:= >=dev-libs/protobuf-2.5.0:= >=sys-cluster/libqb-0.16.0:= sys-devel/gcc:*[cxx] >=sys-libs/libcap-ng-0.7.0 >=sys-libs/libseccomp-2.0.0 >=sys-process/audit-2.7.7 bash-completion? ( >=app-shells/bash-completion-2.0 ) dbus? ( >=dev-libs/dbus-glib-0.100 dev-libs/glib:2 sys-apps/dbus policykit? ( sys-auth/polkit[introspection] ) ) ldap? ( net-nds/openldap ) systemd? ( sys-apps/systemd ) virtual/udev
+REQUIRED_USE=policykit? ( dbus )
+SLOT=0
+SRC_URI=https://github.com/USBGuard/usbguard/releases/download/usbguard-0.7.6/usbguard-0.7.6.tar.gz
+_md5_=ee41885911f4b835900d62d8f840a0ee

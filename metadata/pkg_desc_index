@@ -17237,6 +17237,7 @@ sys-apps/ucspi-unix 1.0: A UCSPI implementation for Unix domain sockets
 sys-apps/udevil 0.4.4-r3: mount and unmount removable devices without a password
 sys-apps/unscd 0.52-r2 0.53: simple & stable nscd replacement
 sys-apps/usb_modeswitch 2.2.6 2.3.0 2.4.0-r1 2.5.2: A tool for controlling 'flip flop' (multiple devices) USB gear like UMTS sticks
+sys-apps/usbguard 0.7.6-r1: Daemon protecting your computer against BadUSB
 sys-apps/usbmon 6-r1 6.1: Userland for USB monitoring framework
 sys-apps/usbredir 0.7.1_p20170503 0.7.1_p20180211 0.8.0 9999: TCP daemon and set of libraries for usbredir protocol (redirecting USB traffic)
 sys-apps/usbutils 009 010-r1 012: USB enumeration utilities
