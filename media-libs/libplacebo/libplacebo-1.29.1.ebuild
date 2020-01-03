@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
 HOMEPAGE="https://github.com/haasn/libplacebo"
 
 LICENSE="LGPL-2.1+"
-SLOT="0/29" # libplacebo .so version
+SLOT="0/$(ver_cut 2)" # libplacebo.so version
 IUSE="glslang lcms +shaderc test +vulkan"
 REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
 
