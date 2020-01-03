@@ -11,4 +11,4 @@ RDEPEND=dev-libs/glib:2[dbus] dev-libs/json-glib media-libs/fontconfig sys-fs/fu
 SLOT=0
 SRC_URI=https://github.com/flatpak/xdg-desktop-portal/releases/download/1.6.0/xdg-desktop-portal-1.6.0.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=f2754f4ed9c6c82dc20c81f5ed825b2a
+_md5_=378236aa287ad49fc44407a469969fcc

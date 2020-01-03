@@ -3418,12 +3418,10 @@ dev-go/gom 0_pre20151110: Go Dependency management system similar to bundle for 
 dev-go/goptlib 1.1.0: Go Tor pluggable transports library
 dev-go/goversion 1.2.0: Print version used to build Go executables
 dev-go/gox 0.4.0: A dead simple, no frills Go cross compile tool
-dev-go/logrus 1.4.1: Structured, pluggable logging for Go
 dev-go/qr 0_p20161121: Basic QR code library for Go
 dev-go/sanitized-anchor-name 0_pre20150822 0_pre20151027 9999: A Go function to provide sanitized anchor names
 dev-go/siphash 1.0.0 1.2.1: Go implementation of SipHash-2.4
 dev-go/twofactor 0_p20180418: Two-factor authentication library for Go
-dev-go/zglob 0_p20171230: Unix-optimized file globbing and directory walking for Go
 dev-haskell/abstract-deque 0.2.2 0.3: Abstract, parameterized interface to mutable Deques
 dev-haskell/abstract-deque-tests 0.3: A test-suite for any queue or double-ended queue satisfying an interface
 dev-haskell/abstract-par 0.3.3-r1: Type classes generalizing the functionality of the 'monad-par' library
@@ -18309,12 +18307,12 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.303: Adobe Flash Player
-www-plugins/browserpass 3.0.6 3.0.6-r1: WebExtension host binary for app-admin/pass, a UNIX password manager
+www-plugins/browserpass 3.0.6-r1: WebExtension host binary for app-admin/pass, a UNIX password manager
 www-plugins/chrome-binary-plugins 79.0.3945.79_beta 79.0.3945.79 80.0.3987.7_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2: High performance flash player
-www-plugins/passff 1.9: zx2c4 pass manager extension for Firefox
+www-plugins/passff 1.9.1: zx2c4 pass manager extension for Firefox
 www-plugins/passff-host 1.2.0-r1 1.2.1: Host app for the PassFF WebExtension
 www-plugins/pdfjs 1.9.426 2.1.266: A PDF reader in JavaScript
 www-servers/adsf 1.4.1 1.4.2 1.4.3: A Dead Simple Fileserver is a static file server that can launch in a directory
