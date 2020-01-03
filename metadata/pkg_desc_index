@@ -2381,7 +2381,7 @@ app-portage/pqlop 0.02-r1: emerge.log parser written in python
 app-portage/pram 8: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 4 5: Utilities for users of Gentoo Prefix
 app-portage/repo-commit 0.4.1-r1 9999: A repository commit helper
-app-portage/repoman 2.3.11 2.3.16 2.3.17 2.3.18 2.3.19 2.3.20 9999: Repoman is a Quality Assurance tool for Gentoo ebuilds
+app-portage/repoman 2.3.11 2.3.16 2.3.20 9999: Repoman is a Quality Assurance tool for Gentoo ebuilds
 app-portage/smart-live-rebuild 1.3.6 9999: Check live packages for updates and emerge them as necessary
 app-portage/splat 0.08-r1: Simple Portage Log Analyzer Tool
 app-portage/tatt 0.5 0.6 9999: arch testing tool
@@ -10740,7 +10740,7 @@ dev-util/jenkins-bin 2.190.1 2.190.2 2.190.3 2.197 2.205: Extensible continuous 
 dev-util/jfrog-cli 1.30.4: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
-dev-util/kdbg 3.0.0-r1: Graphical debugger interface
+dev-util/kdbg 3.0.0-r1 3.0.1: Graphical debugger interface
 dev-util/kdevelop 5.4.2 5.4.5: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-clang-tidy 0.3.3-r1: KDevelop plugin for clang-tidy static analysis support
 dev-util/kdevelop-pg-qt 2.2.0: LL(1) parser generator used mainly by KDevelop language plugins
@@ -17252,7 +17252,7 @@ sys-apps/watchdog 5.15: A software watchdog and /dev/watchdog daemon
 sys-apps/which 2.21: Prints out location of specified executables that are in your path
 sys-apps/x86info 1.30: Dave Jones' handy, informative x86 CPU diagnostic utility
 sys-apps/xdg-dbus-proxy 0.1.2: Filtering proxy for D-Bus connections
-sys-apps/xdg-desktop-portal 1.4.2-r1: Desktop integration portal
+sys-apps/xdg-desktop-portal 1.4.2-r1 1.6.0: Desktop integration portal
 sys-apps/xinetd 2.3.15-r3 2.3.15.3 2.3.15.3-r2 2.3.15.4: powerful replacement for inetd
 sys-apps/xmbmon 2.0.5-r1: Mother Board Monitor Program for X Window System
 sys-apps/yarn 1.19.2 1.21.1: Fast, reliable, and secure node dependency management
