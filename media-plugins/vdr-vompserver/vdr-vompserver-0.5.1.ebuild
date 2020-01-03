@@ -11,11 +11,9 @@ SRC_URI="http://www.loggytronic.com/dl/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE=""
+KEYWORDS="~amd64 ~arm ~x86"
 
-DEPEND=">=media-video/vdr-1.7.36-r1"
-RDEPEND="${DEPEND}"
+DEPEND=">=media-video/vdr-2.4.1"
 
 KEEP_I18NOBJECT="yes"
 
@@ -31,7 +29,4 @@ pkg_postinst() {
 	vdr-plugin-2_pkg_postinst
 
 	elog "\nHave a look to the VOMP sample files in /etc/vdr/plugins.\n"
-
-	elog "You have to download the dongle file (i.e. firmware) and adapt"
-	elog "the vomp configuration files accordingly."
 }
