@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg-utils
+inherit cmake desktop xdg-utils
 
 DESCRIPTION="A kart racing game starring Tux, the linux penguin (TuxKart fork)"
 HOMEPAGE="https://supertuxkart.net/"
@@ -56,7 +56,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# remove bundled libraries, just to be sure
 	rm -r lib/{angelscript,enet,glew,jpeglib,libpng,zlib} || die
@@ -78,11 +78,11 @@ src_configure() {
 		-DSTK_INSTALL_DATA_DIR=share/${PN}
 		-DBUILD_SHARED_LIBS=OFF # build bundled libsquish as static library
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	dodoc CHANGELOG.md
 
 	doicon -s 64 "${DISTDIR}"/${PN}.png

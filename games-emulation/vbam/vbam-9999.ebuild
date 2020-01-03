@@ -4,7 +4,7 @@
 EAPI=7
 
 WX_GTK_VER="3.0-gtk3"
-inherit wxwidgets xdg cmake-utils
+inherit wxwidgets xdg cmake
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/visualboyadvance-m/visualboyadvance-m.git"
@@ -58,11 +58,11 @@ src_configure() {
 		-DENABLE_ASM_SCALERS=$(usex x86)
 		-DCMAKE_SKIP_RPATH=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use sdl ; then
 		dodoc doc/ReadMe.SDL.txt
