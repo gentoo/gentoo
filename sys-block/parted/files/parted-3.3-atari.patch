@@ -5,7 +5,7 @@
  	PED_ASSERT (sizeof (AtariRawTable) == 512);
  	/* GNU Libc doesn't support NULL instead of the locale name */
 -	PED_ASSERT ((atr_c_locale = newlocale(LC_ALL_MASK, "C", NULL)) != NULL);
-+	PED_ASSERT ((atr_c_locale = newlocale(LC_ALL_MASK, "C", (locale_t) 0)) != (locale_t) 0);
++	atr_c_locale = newlocale(LC_ALL_MASK, "C", NULL);
  
  	ped_disk_type_register (&atari_disk_type);
  }
