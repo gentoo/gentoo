@@ -16,7 +16,7 @@ else
 		MY_PV=${SNAPSHOT_COMMIT}
 		MY_P=Vulkan-Headers-${SNAPSHOT_COMMIT}
 	fi
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Headers/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/${MY_P}
 fi
