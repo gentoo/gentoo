@@ -8,6 +8,7 @@ inherit multilib
 DESCRIPTION="Wrappers for gcc tools to be used on non-native CHOSTs"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI=""
+S=${WORKDIR}
 
 LICENSE="public-domain"
 SLOT="0"
@@ -15,8 +16,6 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="sys-devel/gcc:="
-
-S=${WORKDIR}
 
 src_install() {
 	local host_prefix=${CHOST}
@@ -26,7 +25,7 @@ src_install() {
 		cpp cc gcc c++ g++ f77 g77 gcj gcjh gdc gdmd gfortran gccgo
 	)
 
-	cd "${EROOT%/}"/usr/bin || die
+	cd "${ESYSROOT}"/usr/bin || die
 	shopt -s nullglob
 
 	# same as toolchain.eclass
