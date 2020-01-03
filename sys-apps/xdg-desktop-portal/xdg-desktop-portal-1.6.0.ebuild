@@ -40,7 +40,6 @@ src_configure() {
 		$(use_enable geolocation geoclue)
 		$(use_enable screencast pipewire)
 		--disable-libportal # not packaged
-		--disable-geoclue
 	)
 	econf "${myeconfargs[@]}"
 }

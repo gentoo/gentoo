@@ -690,14 +690,6 @@ app-text/pdfshuffler
 # Removal in 30 days.  Bug #695392.
 dev-python/quixote
 
-# Matt Turner <mattst88@gentoo.org> (2019-12-01)
-# browserpass ebuild ported to go-modules, so these modules now have no reverse
-# dependencies.
-# Removal in 30 days. Bugs #683286, #683310, #687462, #700792
-=www-plugins/browserpass-3.0.6
-dev-go/zglob
-dev-go/logrus
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2019-11-29)
 # Beta for new major version with initial Python 3 support
 =app-backup/rdiff-backup-1.4.0_beta*
