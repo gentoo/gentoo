@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,8 +29,8 @@ DEPEND="
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/subunit-0.0.18[${PYTHON_USEDEP}]
-		>=dev-python/sphinx-1.5.1[$(python_gen_usedep 'python2_7' 'python3_5' 'python3_6')]
-		!~dev-python/sphinx-1.6.1[$(python_gen_usedep 'python2_7' 'python3_5' 'python3_6')]
+		>=dev-python/sphinx-1.5.1[$(python_gen_usedep 'python2_7' 'python3_6')]
+		!~dev-python/sphinx-1.6.1[$(python_gen_usedep 'python2_7' 'python3_6')]
 		>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 		>=dev-python/testrepository-0.0.18[${PYTHON_USEDEP}]
 		>=dev-python/testresources-0.2.4[${PYTHON_USEDEP}]
