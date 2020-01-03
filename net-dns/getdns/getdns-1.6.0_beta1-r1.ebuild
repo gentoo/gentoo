@@ -5,7 +5,7 @@ EAPI=7
 
 _SRCURI_P="${P/%_beta1/-beta.1}"
 
-inherit cmake-utils fcaps systemd
+inherit cmake fcaps systemd
 
 DESCRIPTION="Modern asynchronous DNS API"
 HOMEPAGE="https://getdnsapi.net/"
@@ -23,9 +23,9 @@ S="${WORKDIR}/${_SRCURI_P}"
 RESTRICT="test"
 
 DEPEND="
-	dev-libs/libbsd:=
-	dev-libs/libyaml:=
-	dev-libs/openssl:0=
+	dev-libs/libbsd
+	dev-libs/libyaml
+	dev-libs/openssl:=
 	idn? ( net-dns/libidn2:= )
 	gnutls? (
 		net-libs/gnutls:0=[dane,openssl]
@@ -41,7 +41,7 @@ RDEPEND="
 	stubby? (
 		acct-group/stubby
 		acct-user/stubby
-		sys-libs/libcap:=
+		sys-libs/libcap
 	)
 "
 BDEPEND="
@@ -60,16 +60,16 @@ src_configure() {
 		-DUSE_LIBIDN2=$(usex idn)
 		-DUSE_LIBEV=$(usex libev)
 		-DUSE_LIBEVENT2=$(usex libevent)
-		-DUSE_LIBUV=$(use_with libuv)
+		-DUSE_LIBUV=$(usex libuv)
 		-DBUILD_STUBBY=$(usex stubby)
 		-DENABLE_UNBOUND_EVENT_API=$(usex unbound)
 		-DBUILD_DOXYGEN=$(usex doc)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	if use stubby; then
 		newinitd "${FILESDIR}"/stubby.initd-r2 stubby
 		newconfd "${FILESDIR}"/stubby.confd-r1 stubby
