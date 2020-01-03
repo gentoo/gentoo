@@ -13655,7 +13655,7 @@ media-plugins/vdr-proxy 0.1.4-r1: VDR Plugin: enable grouping of menu entries, o
 media-plugins/vdr-pvr350 1.7.5: VDR plugin: use a PVR350 as output device
 media-plugins/vdr-pvrinput 2011.09.17: VDR Plugin: Use a PVR* card as input device
 media-plugins/vdr-quicktimer 0.1.1: VDR plugin: Fast generate timers with just entering Channel, Day and start time
-media-plugins/vdr-radio 0.9.1: VDR plugin: show background image for radio and decode RDS Text
+media-plugins/vdr-radio 0.9.1 1.1.0: VDR plugin: show background image for radio and decode RDS Text
 media-plugins/vdr-radiolist 0.0.2: VDR plugin: Filters channel list and only show the radio channels
 media-plugins/vdr-rcu 2.2.0: VDR plugin: Remote Control Unit consists mainly of an IR receiver, PIC 16C84
 media-plugins/vdr-recsearch 0.3.7: VDR Plugin: Search through your recordings and find the one you are looking for
