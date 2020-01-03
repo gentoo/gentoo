@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils multiprocessing python-single-r1
+inherit cmake multiprocessing python-single-r1
 
 DESCRIPTION="Open framework for storing and sharing scene data"
 HOMEPAGE="https://www.alembic.io/"
@@ -50,7 +50,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	if use doc; then
 		doxygen -u Doxyfile || die "Failed to update Doxyfile"
 		sed -i -e 's|DOT_NUM_THREADS[ \t]*= 0|DOT_NUM_THREADS = '$(makeopts_jobs)'|' Doxyfile || die "Failed to change dot threads"
@@ -73,11 +73,11 @@ src_configure() {
 		-DUSE_PYALEMBIC=$(usex python)
 		-DUSE_TESTS=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use doc; then
 		doxygen Doxyfile || die "Failed to build documentation"
 	fi
@@ -85,7 +85,7 @@ src_compile() {
 
 src_install() {
 	use doc && local HTML_DOCS=( doc/html/. )
-	cmake-utils_src_install
+	cmake_src_install
 }
 
 pkg_postinst() {
