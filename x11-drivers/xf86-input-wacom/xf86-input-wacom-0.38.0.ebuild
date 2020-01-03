@@ -12,7 +12,7 @@ EGIT_REPO_URI="https://github.com/linuxwacom/xf86-input-wacom"
 [[ ${PV} != 9999* ]] && \
 	SRC_URI="https://github.com/linuxwacom/${PN}/releases/download/${P}/${P}.tar.bz2"
 
-KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ppc64 sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ia64 ppc ppc64 sparc ~x86"
 IUSE="debug"
 
 RDEPEND="dev-libs/libwacom
