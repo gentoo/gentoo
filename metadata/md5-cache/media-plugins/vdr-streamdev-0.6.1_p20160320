@@ -3,7 +3,7 @@ DEPEND=>=media-video/vdr-1.7.25 >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linu
 DESCRIPTION=VDR Plugin: Client/Server and http streaming plugin
 EAPI=6
 HOMEPAGE=https://projects.vdr-developer.org/projects/plg-streamdev
-IUSE=client +server
+IUSE=client server
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=GPL-2
 RDEPEND=>=media-video/vdr-1.7.25 >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( client server )
 SLOT=0
 SRC_URI=https://projects.vdr-developer.org/git/vdr-plugin-streamdev.git/snapshot/vdr-plugin-streamdev-674bb5b331240de3ba2a8beb63a1276003e64e3e.tar.bz2
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	vdr-plugin-2	3719fa10a30f33eea321f9b883bd4baa
-_md5_=52cba881086dd881f92f53026aacac8f
+_md5_=000f2f826ed51c439aedee8ca7b4ff1e

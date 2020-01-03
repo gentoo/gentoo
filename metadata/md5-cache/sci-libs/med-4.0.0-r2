@@ -1,4 +1,4 @@
-BDEPEND=python? ( >=dev-lang/swig-3.0.8 ) sys-devel/make >=dev-util/cmake-3.9.6
+BDEPEND=python? ( >=dev-lang/swig-3.0.8 ) sys-devel/make dev-util/cmake
 DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=!sci-libs/libmed dev-lang/tk:0= >=sci-libs/hdf5-1.10.2:=[fortran?,mpi?] mpi? ( virtual/mpi[fortran=] ) python? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) ) fortran? ( virtual/fortran )
 DESCRIPTION=A library to store and exchange meshed data or computation results
@@ -12,5 +12,5 @@ REQUIRED_USE=python? ( ^^ ( python_single_target_python3_6 python_single_target_
 RESTRICT=!test? ( test ) python? ( test )
 SLOT=0
 SRC_URI=https://files.salome-platform.org/Salome/other/med-4.0.0.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	fortran-2	f75a2d9321053acf424991e805f32ede	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=9092848beb515d7e4739b306daa16d1a
+_eclasses_=cmake	5483484310f6be9f898c8a031b0fec1b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	fortran-2	f75a2d9321053acf424991e805f32ede	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=2e80ebd73bdda65cfdb810cafd2c1927

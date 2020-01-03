@@ -7,9 +7,9 @@ HOMEPAGE=https://www.spotify.com/ch-de/download/previews/
 IUSE=libnotify libressl systray pax_kernel
 KEYWORDS=~amd64
 LICENSE=Spotify
-RDEPEND=dev-libs/nss dev-python/dbus-python dev-python/pygobject:3 libnotify? ( x11-libs/libnotify ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) media-libs/alsa-lib media-libs/fontconfig media-libs/harfbuzz media-libs/mesa[X(+)] net-misc/curl[ssl] net-print/cups[ssl] || ( media-sound/pulseaudio media-sound/apulse ) systray? ( gnome-extra/gnome-integration-spotify ) x11-libs/gtk+:2 x11-libs/libXScrnSaver x11-libs/libXtst
+RDEPEND=dev-libs/nss dev-python/dbus-python dev-python/pygobject:3 libnotify? ( x11-libs/libnotify ) !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) media-libs/alsa-lib media-libs/fontconfig media-libs/harfbuzz media-libs/mesa[X(+)] net-misc/curl[ssl] net-print/cups[ssl] || ( media-sound/pulseaudio media-sound/apulse ) systray? ( gnome-extra/gnome-integration-spotify ) x11-libs/gtk+:2 app-accessibility/at-spi2-atk x11-libs/libXScrnSaver x11-libs/libXtst
 RESTRICT=mirror strip
 SLOT=0
 SRC_URI=http://repository.spotify.com/pool/non-free/s/spotify-client/spotify-client_1.1.10.546.ge08ef575-19_amd64.deb
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=294b5575dd7730eaf0d32e43cf063116
+_md5_=8f1592ccde15615000bdc9d081e5b7a8

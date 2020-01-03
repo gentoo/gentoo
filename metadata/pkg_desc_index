@@ -4739,7 +4739,7 @@ dev-lang/yap 6.3.3-r1: YAP is a high-performance Prolog compiler
 dev-lang/yasm 1.2.0-r1 1.3.0 9999: An assembler for x86 and x86_64 instruction sets
 dev-lang/zig 0.4.0-r1 0.5.0 9999: A robust, optimal, and maintainable programming language
 dev-libs/389-adminutil 1.1.15: 389 adminutil
-dev-libs/9libs 1.0-r3 1.0-r4: A package of Plan 9 compatibility libraries
+dev-libs/9libs 1.0-r4: A package of Plan 9 compatibility libraries
 dev-libs/Ice 3.6.4: ICE middleware C++ library and generator tools
 dev-libs/OpenNI 1.5.7.10 9999: OpenNI SDK
 dev-libs/OpenNI2 2.2_beta2 9999: OpenNI2 SDK
@@ -13678,7 +13678,7 @@ media-plugins/vdr-sndctl 0.1.5.1: VDR plugin: Control the vol level of diff cont
 media-plugins/vdr-solitaire 0.0.3: VDR Plugin: Solitaire game
 media-plugins/vdr-span 0.0.7: VDR plugin: Spectrum Analyzer (SpAn)
 media-plugins/vdr-spider 0.2.2: VDR plugin: Spider patience game
-media-plugins/vdr-streamdev 0.6.1 0.6.1_p20160320: VDR Plugin: Client/Server and http streaming plugin
+media-plugins/vdr-streamdev 0.6.1 0.6.1_p20160320 0.6.1_p20170930: VDR Plugin: Client/Server and http streaming plugin
 media-plugins/vdr-sudoku 0.3.5 0.3.5-r1: VDR plugin: to generate and solve Number Place puzzles, so called Sudokus
 media-plugins/vdr-suspendoutput 2.0.1: VDR Plugin: Show still image instead of live tv to safe cpu
 media-plugins/vdr-svdrposd 1.0.0: VDR plugin: export OSD via TCP to vdr-remoteosd
@@ -16433,7 +16433,7 @@ sci-libs/linux-gpib 4.1.0 4.2.0: Driver library for GPIB (IEEE 488.2) hardware
 sci-libs/linux-gpib-modules 4.2.0: Kernel modules for GPIB (IEEE 488.2) hardware
 sci-libs/lis 1.6.5: Library of Iterative Solvers for Linear Systems
 sci-libs/lmfit 5.1 6.4 7.0 8.2.2: library for Levenberg-Marquardt least-squares minimization and curve fitting
-sci-libs/lrslib 042c-r2 051 062: Self-contained C implementation of the reverse search algorithm
+sci-libs/lrslib 062: Self-contained C implementation of the reverse search algorithm
 sci-libs/m4ri 20140914: Method of four russian for inversion (M4RI)
 sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
 sci-libs/mathgl 2.4.1: Math Graphics Library
@@ -16472,10 +16472,10 @@ sci-libs/p4est 1.0 1.1 2.0 2.2 9999: Scalable Algorithms for Parallel Adaptive M
 sci-libs/parmetis 4.0.3: Parallel (MPI) unstructured graph partitioning library
 sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear systems
 sci-libs/pcl 1.9.1 9999: 2D/3D image and point cloud processing
-sci-libs/pgplot 5.2.2-r6 5.2.2-r7: FORTRAN/C device-independent scientific graphic library
+sci-libs/pgplot 5.2.2-r7: FORTRAN/C device-independent scientific graphic library
 sci-libs/plotmm 0.1.2: Plot widget for GTKmm
 sci-libs/plplot 5.12.0-r1 5.15.0: Multi-language scientific plotting library
-sci-libs/primegen 0.97-r1 0.97-r2: Small, fast library to generate primes in order
+sci-libs/primegen 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
 sci-libs/proj 4.9.2 5.2.0 6.0.0 6.2.0 6.2.1: PROJ coordinate transformation software
@@ -17716,7 +17716,7 @@ sys-fs/squashfs-tools-ng 0.7 0.8 9999: A new set of tools for working with Squas
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
 sys-fs/static-dev 0.1: A skeleton, statically managed /dev
 sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
-sys-fs/tmsu 0.6.1 0.7.0: Files tagger and virtual tag-based filesystem
+sys-fs/tmsu 0.6.1 0.7.0 0.7.4: Files tagger and virtual tag-based filesystem
 sys-fs/traydevice 1.6.2-r1: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
 sys-fs/udev 242 243 243-r2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
