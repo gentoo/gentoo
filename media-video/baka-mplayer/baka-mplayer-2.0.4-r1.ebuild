@@ -11,7 +11,7 @@ SRC_URI="https://github.com/u8sand/Baka-MPlayer/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 BDEPEND="
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/Baka-MPlayer-${PV}"
 
-PATCHES=( "${FILESDIR}/${P}-gcc5.patch" )
+PATCHES=( "${FILESDIR}/${P}-gcc5.patch" "${FILESDIR}/${P}-mpv23.patch" )
 
 src_prepare() {
 	default
