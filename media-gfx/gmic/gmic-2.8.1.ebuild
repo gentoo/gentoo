@@ -85,12 +85,10 @@ src_prepare() {
 	if use gimp || use krita || use qt5; then
 		# respect user flags
 		sed -i '/CMAKE_CXX_FLAGS_RELEASE/d' gmic-qt/CMakeLists.txt || die
-
+		local S="${S}/gmic-qt"
 		# fix linking with fftw when thread support is enabled
-		pushd "${S}"/gmic-qt > /dev/null || die
 		PATCHES=( "${FILESDIR}"/${PN}-2.7.1-qt-cmake.patch )
 		cmake_src_prepare
-		popd > /dev/null || die
 	fi
 }
 
