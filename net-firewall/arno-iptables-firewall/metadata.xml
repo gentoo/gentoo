@@ -11,5 +11,6 @@
 </maintainer>
 <use>
 	<flag name="plugins">Install optional plugins</flag>
+	<flag name="rsyslog">Install configuration snippet for <pkg>app-admin/rsyslog</pkg></flag>
 </use>
 </pkgmetadata>
