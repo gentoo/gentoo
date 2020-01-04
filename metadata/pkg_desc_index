@@ -15528,7 +15528,6 @@ net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: Multi-network P2P application written 
 net-p2p/ncdc 1.20 1.21 9999: ncurses directconnect client
 net-p2p/nicotine+ 1.4.1-r1: A fork of nicotine, a Soulseek client in Python
 net-p2p/opendchub 0.8.2: hub software for Direct Connect
-net-p2p/pybitmessage 0.6.3.2_p20180521: Reference client for Bitmessage: a P2P communications protocol
 net-p2p/qbittorrent 4.1.7 4.1.8 4.1.9.1 4.2.1 9999: BitTorrent client in C++ and Qt
 net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronization tool
 net-p2p/retroshare 0.6.3-r1 0.6.4 0.6.5: P2P private sharing application
@@ -15579,7 +15578,6 @@ net-print/npadmin 0.8.7-r1: Network printer command-line adminstration tool
 net-print/pkpgcounter 3.50-r2: Generic PDL (Page Description Language) parser in Python
 net-print/pnm2ppa 1.13-r1: Print driver for Hp Deskjet 710, 712, 720, 722, 820, 1000 series
 net-print/poster 20060221 20060221-r2 20060221-r3: Small utility for making a poster from an EPS file or a one-page PS document
-net-print/pykota 1.26-r1: Flexible print quota and accounting package for use with CUPS and lpd
 net-print/splix 2.0.0_p20130826 2.0.0_p20130826-r1: A set of CUPS printer drivers for SPL (Samsung Printer Language) printers
 net-print/sshlpr 1: ssh-lpr backend for cups -- print to remote systems over ssh
 net-proxy/3proxy 0.8.9 0.8.12 0.8.13: A really tiny cross-platform proxy servers set
@@ -18177,7 +18175,6 @@ www-apps/ampache 3.8.3 3.8.8: PHP-based tool for managing,updating and playing a
 www-apps/baikal 0.5.2 0.6.0: Lightweight CalDAV+CardDAV server
 www-apps/blazeblogger 1.2.0-r1: Simple, capable content management system for producing static content
 www-apps/blohg 0.13-r3 9999: A Mercurial (or Git) based blogging engine
-www-apps/blohg-tumblelog 0.2 9999: A blohg extension with reStructuredText directives to run a tumblelog
 www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.1 9999: a fast web-interface for git repositories
@@ -18700,7 +18697,6 @@ x11-misc/lineakd 0.9.0-r2: Linux support for Easy Access and Internet Keyboards
 x11-misc/lndir 1.0.3-r2 9999: create a shadow directory of symbolic links to another directory tree
 x11-misc/lsw 0.3: list window names
 x11-misc/macopix 1.7.4-r1 1.7.4-r2: MaCoPiX (Mascot Constructive Pilot for X) is a desktop mascot application
-x11-misc/magick-rotation 1.6.2-r2: Application that rotates tablet pc's screen automatically, based on orientation
 x11-misc/makedepend 1.0.6: create dependencies in makefiles
 x11-misc/matchbox-keyboard 0.1-r1: Matchbox-keyboard is an on screen 'virtual' or 'software' keyboard
 x11-misc/mate-notification-daemon 1.22.0 1.22.0-r1: MATE Notification daemon
