@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.18.16-no-werror.patch
 	"${FILESDIR}"/${PN}-5.18.16-rpath.patch
+	"${FILESDIR}"/${PN}-5.18.16-respect-TMPDIR.patch
 )
 
 src_prepare() {
