@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="The DICOM Toolkit"
 HOMEPAGE="https://dicom.offis.de/dcmtk.php.en"
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 BDEPEND="doc? ( app-doc/doxygen )"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -e "s:share/doc/dcmtk:&-${PV}:" \
 		-e "s:DIR \"/:DIR \"/usr/:" \
@@ -51,7 +51,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_SHARED_LIBS=ON
 		-DCMAKE_INSTALL_SYSCONFDIR="${EROOT}/etc"
 		-DDCMTK_WITH_ICU=ON
 		-DDCMTK_WITH_TIFF=$(usex tiff)
@@ -63,7 +62,7 @@ src_configure() {
 		-DDCMTK_WITH_THREADS=$(usex threads)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	if use doc; then
 		cd "${S}"/doxygen || die
@@ -72,7 +71,7 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if use doc; then
 		emake -C "${S}"/doxygen
@@ -85,5 +84,5 @@ src_install() {
 	if use doc; then
 		local HTML_DOCS=( "${S}"/doxygen/htmldocs/. )
 	fi
-	cmake-utils_src_install
+	cmake_src_install
 }

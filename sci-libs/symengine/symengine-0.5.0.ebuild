@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit cmake-utils flag-o-matic
+CMAKE_BUILD_TYPE=Release
+inherit cmake flag-o-matic
 
 DESCRIPTION="Fast symbolic manipulation library, written in C++"
 HOMEPAGE="https://github.com/sympy/symengine"
@@ -33,7 +34,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	sed -e "s|DESTINATION doc| DESTINATION share/doc/${PF}/html|" \
 		-e "s|/lib|/$(get_libdir)|g" \
 		-e "s|lib/|$(get_libdir)/|g" \
@@ -57,7 +58,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DARB_INCLUDE_DIR="${EPREFIX}/usr/include"
 		-DINTEGER_CLASS="${int_class}"
-		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_BENCHMARKS="$(usex benchmarks)"
 		-DBUILD_DOXYGEN="$(usex doc)"
 		-DBUILD_TESTS="$(usex test)"
@@ -75,5 +75,5 @@ src_configure() {
 		-DWITH_ECM="$(usex ecm)"
 	)
 	test-flag-CXX -std=c++11 && append-cxxflags -std=c++11
-	CMAKE_BUILD_TYPE=Release cmake-utils_src_configure
+	cmake_src_configure
 }
