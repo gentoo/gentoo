@@ -13,8 +13,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="virtual/pkgconfig
-	test? ( dev-libs/check )"
+BDEPEND="virtual/pkgconfig"
+DEPEND="test? ( dev-libs/check )"
 
 src_configure() {
 	econf $(use_enable static-libs static)
