@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -123,7 +123,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig
-	cuda? ( >=media-libs/nv-codec-headers-8.1.24.1 )
+	cuda? ( >=media-libs/nv-codec-headers-8.2.15.7 )
 	doc? (  dev-python/docutils
 			dev-python/rst2pdf )
 	dvb? ( virtual/linuxtv-dvb-headers )
