@@ -5013,7 +5013,7 @@ dev-libs/libpcre-debian 8-r1: libpcre(posix).so.3 symlinks for compatibility wit
 dev-libs/libpcre2 10.32 10.33-r1 10.34: Perl-compatible regular expression library
 dev-libs/libpeas 1.22.0: A GObject plugins library
 dev-libs/libpfm 4.4.0 4.6.0 4.8.0 4.10.1: Hardware-based performance monitoring interface for Linux
-dev-libs/libpipeline 1.4.2 1.5.0 1.5.1: a pipeline manipulation library
+dev-libs/libpipeline 1.4.2 1.5.1 1.5.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1 2.1.0.1 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
 dev-libs/libpo6 0.8.0: Hyperdex libpo6 support library
 dev-libs/libpqxx 6.4.5: Standard front-end for writing C++ programs that use PostgreSQL
@@ -17394,7 +17394,7 @@ sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r
 sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r1 1.07.1-r2: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.26.1 2.27-r1 2.28.1 2.29.1-r1 2.30-r4 2.31.1-r6 2.32-r1 2.33.1 9999: Tools necessary to build programs
+sys-devel/binutils 2.26.1 2.27-r1 2.28.1 2.29.1-r1 2.30-r4 2.31.1-r6 2.32-r1 2.32-r2 2.33.1 2.33.1-r1 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5-r4 5.1-r1 5.2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.26.1 2.27 2.28 2.28.1 2.29 2.29.1-r1 2.30-r4 2.31.1-r6 2.32-r1 2.33.1: Tools necessary to build programs
@@ -17593,7 +17593,7 @@ sys-fs/quota 4.04-r2 4.05: Linux quota tools
 sys-fs/quotatool 1.6.2: command-line utility for filesystem quotas
 sys-fs/rar2fs 1.27.2-r1 1.28.0: A FUSE based filesystem that can mount one or multiple RAR archive(s)
 sys-fs/rarfs 0.1.1-r2: Fuse module to mount uncompressed RAR archives
-sys-fs/reiser4progs 1.1.0 1.2.0 1.2.1: reiser4progs: mkfs, fsck, etc...
+sys-fs/reiser4progs 1.1.0 1.2.1 2.0.0: reiser4progs: mkfs, fsck, etc...
 sys-fs/reiserfs-defrag 0.2.2: Small defragmentation tool for reiserfs
 sys-fs/reiserfsprogs 3.6.25 3.6.27: Reiserfs Utilities
 sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files
