@@ -2541,8 +2541,6 @@ dev-python/QtPy:testlib - Build bindings for the QtTest module
 dev-python/QtPy:webengine - Build bindings for the QtWebEngine module
 dev-python/QtPy:webkit - Build bindings for the QtWebKit module
 dev-python/amqplib:extras - Install extra tools to generate initial Python mod from an AMQP XML file
-dev-python/anyvc:bazaar - Add support for Bazaar
-dev-python/anyvc:mercurial - Add support for Mercurial
 dev-python/celery:redis - Enables redis support
 dev-python/celery:sqs - Enables Amazon SQS transport module for celery
 dev-python/celery:yaml - Enable support of yaml as a configuration file format
