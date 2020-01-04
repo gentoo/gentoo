@@ -15296,7 +15296,7 @@ net-misc/ndisc6 1.0.3: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
 net-misc/ndppd 0.2.5: Proxies NDP messages between interfaces
 net-misc/nemesis 1.4-r1: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netdate 1.2-r1: utility to synchronize the time with ntp-servers
-net-misc/netifrc 0.2.2 0.2.3 0.2.4 0.3.0 0.3.1 0.4.0 0.4.0-r1 0.5.0 0.5.1 0.6.0 0.6.1 9999: Gentoo Network Interface Management Scripts
+net-misc/netifrc 0.2.2 0.2.3 0.2.4 0.3.0 0.3.1 0.4.0 0.4.0-r1 0.5.0 0.5.1 0.6.0 0.6.1 0.7.1 9999: Gentoo Network Interface Management Scripts
 net-misc/netkit-bootparamd 0.17-r4: Netkit - bootparamd
 net-misc/netkit-bootpd 2.4-r1: Netkit - bootp
 net-misc/netkit-fingerd 0.17-r3: Netkit - fingerd and finger client
