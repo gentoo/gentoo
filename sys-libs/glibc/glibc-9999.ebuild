@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -546,7 +546,11 @@ check_devpts() {
 	# If they're opting in to the old suid code, then no need to check.
 	use suid && return
 
-	if awk '$3 == "devpts" && $4 ~ /[, ]gid=5[, ]/ { exit 1 }' /proc/mounts ; then
+	# Check the GID offset in case we are running under GID namespacing
+	local offset=$(awk -e'{ print $2 }' /proc/self/gid_map 2>/dev/null || echo 0)
+	local gid=$(($offset+5))
+
+	if awk '$3 == "devpts" && $4 ~ /[, ]gid='${gid}'[, ]/ { exit 1 }' /proc/mounts ; then
 		eerror "In order to use glibc with USE=-suid, you must make sure that"
 		eerror "you have devpts mounted at /dev/pts with the gid=5 option."
 		eerror "Openrc should do this for you, so you should check /etc/fstab"
