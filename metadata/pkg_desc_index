@@ -12931,7 +12931,7 @@ media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Bl
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
 media-libs/chromaprint 1.4.3: Library implementing a custom algorithm for extracting audio fingerprints
 media-libs/cimg 2.7.2 2.8.1: C++ template image processing toolkit
-media-libs/clutter 1.26.2-r1: Clutter is a library for creating graphical user interfaces
+media-libs/clutter 1.26.2-r1 1.26.2-r2: Clutter is a library for creating graphical user interfaces
 media-libs/clutter-gst 3.0.27: GStreamer integration library for Clutter
 media-libs/clutter-gtk 1.8.4: Library for embedding a Clutter canvas (stage) in GTK+
 media-libs/codec2 0.8.1: Low bit rate speech codec
@@ -16107,7 +16107,7 @@ sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping appl
 sci-geosciences/gdal-grass 2.1.3: GDAL plugin to access GRASS data
 sci-geosciences/geocode-glib 3.26.1: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9 4.5.18: Powerful map generator
-sci-geosciences/gnome-maps 3.30.3.1 3.34.2: A map application for GNOME
+sci-geosciences/gnome-maps 3.30.3.1 3.34.3: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
