@@ -1,4 +1,4 @@
-BDEPEND=app-arch/unzip virtual/pkgconfig doc? ( app-doc/doxygen ) dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=app-arch/unzip virtual/pkgconfig doc? ( app-doc/doxygen ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=media-libs/mesa[egl?] virtual/glu virtual/opengl x11-libs/libSM x11-libs/libXext asio? ( dev-cpp/asio ) curl? ( net-misc/curl ) examples? ( fltk? ( x11-libs/fltk:1[opengl] ) fox? ( x11-libs/fox:1.6[opengl] ) glut? ( media-libs/freeglut ) gtk? ( x11-libs/gtkglext ) sdl2? ( media-libs/libsdl2 ) wxwidgets? ( x11-libs/wxGTK:3.0[opengl,X] ) ) ffmpeg? ( libav? ( media-video/libav:0= ) !libav? ( media-video/ffmpeg:0= ) ) gdal? ( sci-libs/gdal:= ) gif? ( media-libs/giflib:= ) gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 ) jpeg? ( virtual/jpeg:0 ) las? ( >=sci-geosciences/liblas-1.8.0 ) lua? ( >=dev-lang/lua-5.1.5:* ) openexr? ( media-libs/ilmbase:= media-libs/openexr:= ) openinventor? ( media-libs/coin ) pdf? ( app-text/poppler[cairo] ) png? ( media-libs/libpng:0= ) sdl? ( media-libs/libsdl ) svg? ( gnome-base/librsvg x11-libs/cairo ) tiff? ( media-libs/tiff:0 ) truetype? ( media-libs/freetype:2 ) vnc? ( net-libs/libvncserver ) xrandr? ( x11-libs/libXrandr ) zlib? ( sys-libs/zlib ) x11-base/xorg-proto
 DESCRIPTION=Open source high performance 3D graphics toolkit
@@ -11,5 +11,5 @@ RDEPEND=media-libs/mesa[egl?] virtual/glu virtual/opengl x11-libs/libSM x11-libs
 REQUIRED_USE=sdl2? ( sdl ) dicom? ( zlib ) openexr? ( zlib )
 SLOT=0/158
 SRC_URI=https://github.com/openscenegraph/OpenSceneGraph/archive/OpenSceneGraph-3.6.4.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=a588b2b4006cbcb28c4a382e99070fb2
+_eclasses_=cmake	74eb4b1178e06c0a0cf81c6562534e6d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=d6291a9d143729b41f52fc04541a4647

@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/gettext virtual/pkgconfig dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=sys-devel/gettext virtual/pkgconfig dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=>=dev-libs/boost-1.50:=[nls,threads,icu] >=media-libs/libsdl2-2.0.4:0[joystick,video,X] !dedicated? ( dev-libs/glib:2 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=media-libs/fontconfig-2.4.1 >=media-libs/sdl2-image-2.0.0[jpeg,png] >=media-libs/sdl2-mixer-2.0.0[vorbis] >=media-libs/sdl2-ttf-2.0.12 media-libs/libvorbis >=x11-libs/pango-1.22.0 >=x11-libs/cairo-1.10.0 sys-libs/readline:0= dbus? ( sys-apps/dbus ) fribidi? ( dev-libs/fribidi ) ) x11-libs/libX11
 DESCRIPTION=Battle for Wesnoth - A fantasy turn-based strategy game
@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=>=dev-libs/boost-1.50:=[nls,threads,icu] >=media-libs/libsdl2-2.0.4:0[joystick,video,X] !dedicated? ( dev-libs/glib:2 !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) >=media-libs/fontconfig-2.4.1 >=media-libs/sdl2-image-2.0.0[jpeg,png] >=media-libs/sdl2-mixer-2.0.0[vorbis] >=media-libs/sdl2-ttf-2.0.12 media-libs/libvorbis >=x11-libs/pango-1.22.0 >=x11-libs/cairo-1.10.0 sys-libs/readline:0= dbus? ( sys-apps/dbus ) fribidi? ( dev-libs/fribidi ) )
 SLOT=0
 SRC_URI=https://github.com/wesnoth/wesnoth/archive/1.14.7.tar.gz -> wesnoth-1.14.7.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c1f38372cb2ba8cf337d9eb13356f9eb
+_eclasses_=cmake	74eb4b1178e06c0a0cf81c6562534e6d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=f568cac6472c0ed58c61eb6e2c76244f

@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/make >=dev-util/cmake-3.9.6
+BDEPEND=sys-devel/make dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=>=dev-games/physfs-3.0 dev-libs/boost:= media-libs/glew:= virtual/opengl media-libs/libvorbis media-libs/openal >=media-libs/libsdl2-2.0.1[joystick,video] >=media-libs/sdl2-image-2.0.0[png,jpeg] >=net-misc/curl-7.21.7 virtual/pkgconfig
 DESCRIPTION=A game similar to Super Mario Bros.
@@ -10,5 +10,5 @@ LICENSE=GPL-2+ GPL-3+ ZLIB MIT CC-BY-SA-2.0 CC-BY-SA-3.0
 RDEPEND=>=dev-games/physfs-3.0 dev-libs/boost:= media-libs/glew:= virtual/opengl media-libs/libvorbis media-libs/openal >=media-libs/libsdl2-2.0.1[joystick,video] >=media-libs/sdl2-image-2.0.0[png,jpeg] >=net-misc/curl-7.21.7
 SLOT=0
 SRC_URI=https://github.com/SuperTux/supertux/releases/download/v0.6.0/SuperTux-v0.6.0-Source.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=5bb1069f8bb3a1f7f98745ac74995d53
+_eclasses_=cmake	74eb4b1178e06c0a0cf81c6562534e6d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=c63090d46aaee9e15d4412a90daa3da3

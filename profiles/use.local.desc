@@ -2653,7 +2653,6 @@ dev-python/twisted:http2 - include http2 support
 dev-python/twisted:serial - include serial port support
 dev-python/twisted-core:serial - include serial port support
 dev-python/urllib3:brotli - Enable support for brotli compression
-dev-python/vatnumber:vies - Enable VIES
 dev-python/ws4py:client - Install client modules
 dev-python/ws4py:server - Install server modules
 dev-python/wxpython:examples - Install interactive demo module browser and sample applets.
@@ -3103,12 +3102,6 @@ dev-vcs/mercurial:bugzilla - Support bugzilla integration.
 dev-vcs/mercurial:chg - Support Mercurial command server client
 dev-vcs/mercurial:gpg - Support signing with GnuPG.
 dev-vcs/mercurial:tk - Install dev-lang/tk for hgk script.
-dev-vcs/rabbitvcs:caja - Enable extension for mate-base/caja
-dev-vcs/rabbitvcs:cli - Eanble console based frontend
-dev-vcs/rabbitvcs:diff - Use for diff command dev-util/meld
-dev-vcs/rabbitvcs:gedit - Enable plugin for app-editors/gedit
-dev-vcs/rabbitvcs:nautilus - Enable extension for gnome-base/nautilus
-dev-vcs/rabbitvcs:thunar - Enable extension for xfce-base/thunar
 dev-vcs/subversion:ctypes-python - Build and install Ctypes Python bindings
 dev-vcs/subversion:dso - Enable runtime module search
 dev-vcs/subversion:extras - Install extra scripts (examples, tools, hooks)

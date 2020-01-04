@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=virtual/pkgconfig dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=ssl? ( >=dev-libs/openssl-1.1.1:0= ) test? ( >=dev-util/cunit-2.1[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(-)?,abi_mips_n32(-)?,abi_mips_n64(-)?,abi_mips_o32(-)?,abi_riscv_lp64d(-)?,abi_riscv_lp64(-)?,abi_s390_32(-)?,abi_s390_64(-)?] )
 DESCRIPTION=Implementation of the IETF QUIC Protocol
@@ -10,5 +10,5 @@ LICENSE=MIT
 RESTRICT=!test? ( test )
 SLOT=0/0
 SRC_URI=https://github.com/ngtcp2/ngtcp2/archive/5122d9e5e1e91c718ebc3933252ee42522c6e942.tar.gz -> ngtcp2-0_pre20190912.tar.gz
-_eclasses_=cmake-multilib	b396704c8c04bb210b7b45dff5c67fea	cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=0d3aff11ae6eee2796b9ed0e6a456003
+_eclasses_=cmake	74eb4b1178e06c0a0cf81c6562534e6d	cmake-multilib	b396704c8c04bb210b7b45dff5c67fea	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=eb64b42021083c05d7b2e28690a42c79

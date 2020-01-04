@@ -1,0 +1,15 @@
+BDEPEND=dev-libs/appstream-glib dev-util/gdbus-codegen dev-util/glib-utils dev-util/itstool >=sys-devel/gettext-0.19.8 virtual/pkgconfig app-arch/xz-utils >=dev-util/meson-0.48.2 >=dev-util/ninja-1.7.2 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare test
+DEPEND=>=dev-libs/glib-2.56.0:2 >=x11-libs/gtk+-3.24.0:3 >=dev-libs/nettle-3.4:= >=net-libs/webkit-gtk-2.24.1:4= >=x11-libs/cairo-1.2 >=app-crypt/gcr-3.5.5:=[gtk] >=x11-libs/gdk-pixbuf-2.36.5:2 gnome-base/gsettings-desktop-schemas dev-libs/icu:= >=app-text/iso-codes-0.35 >=dev-libs/json-glib-1.2.4 >=dev-libs/libdazzle-3.31.90 >=gui-libs/libhandy-0.0.9:0.0= >=x11-libs/libnotify-0.5.1 >=app-crypt/libsecret-0.14 >=net-libs/libsoup-2.48.0:2.4 >=dev-libs/libxml2-2.6.12:2 dev-db/sqlite:3 dev-libs/gmp:0= dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=GNOME webbrowser based on Webkit
+EAPI=7
+HOMEPAGE=https://wiki.gnome.org/Apps/Web
+IUSE=test test
+KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-3+
+RDEPEND=>=dev-libs/glib-2.56.0:2 >=x11-libs/gtk+-3.24.0:3 >=dev-libs/nettle-3.4:= >=net-libs/webkit-gtk-2.24.1:4= >=x11-libs/cairo-1.2 >=app-crypt/gcr-3.5.5:=[gtk] >=x11-libs/gdk-pixbuf-2.36.5:2 gnome-base/gsettings-desktop-schemas dev-libs/icu:= >=app-text/iso-codes-0.35 >=dev-libs/json-glib-1.2.4 >=dev-libs/libdazzle-3.31.90 >=gui-libs/libhandy-0.0.9:0.0= >=x11-libs/libnotify-0.5.1 >=app-crypt/libsecret-0.14 >=net-libs/libsoup-2.48.0:2.4 >=dev-libs/libxml2-2.6.12:2 dev-db/sqlite:3 dev-libs/gmp:0= x11-themes/adwaita-icon-theme
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://gnome/sources/epiphany/3.32/epiphany-3.32.6.tar.xz
+_eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	meson	b5ee7a05833ab91225acf30ffdeed006	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=fb49aabbe537c690a3faa43964480023

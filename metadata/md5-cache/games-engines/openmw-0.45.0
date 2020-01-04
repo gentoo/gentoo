@@ -1,4 +1,4 @@
-BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen[doc] dev-python/sphinx ) dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen[doc] dev-python/sphinx ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install postinst postrm prepare test
 DEPEND=dev-games/mygui >=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] dev-libs/boost:=[threads] dev-libs/tinyxml[stl] media-libs/libsdl2[joystick,opengl,video] media-libs/openal media-video/ffmpeg:= >=sci-physics/bullet-2.86:= virtual/opengl qt5? ( app-arch/unshield dev-qt/qtcore:5= dev-qt/qtgui:5= dev-qt/qtnetwork:5= dev-qt/qtopengl:5= dev-qt/qtwidgets:5= )
 DESCRIPTION=Open source reimplementation of TES III: Morrowind
@@ -10,5 +10,5 @@ LICENSE=GPL-3 MIT BitstreamVera ZLIB
 RDEPEND=dev-games/mygui >=dev-games/openscenegraph-3.5.5:=[ffmpeg,jpeg,png,sdl,svg,truetype,zlib] dev-libs/boost:=[threads] dev-libs/tinyxml[stl] media-libs/libsdl2[joystick,opengl,video] media-libs/openal media-video/ffmpeg:= >=sci-physics/bullet-2.86:= virtual/opengl qt5? ( app-arch/unshield dev-qt/qtcore:5= dev-qt/qtgui:5= dev-qt/qtnetwork:5= dev-qt/qtopengl:5= dev-qt/qtwidgets:5= )
 SLOT=0
 SRC_URI=https://github.com/OpenMW/openmw/archive/openmw-0.45.0.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c4a7fb9d18a7af289010c47631fafbc8
+_eclasses_=cmake	74eb4b1178e06c0a0cf81c6562534e6d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=dba93abe499930e55f0403ba6a78d917
