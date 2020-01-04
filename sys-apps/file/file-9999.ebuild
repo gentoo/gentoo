@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,28 +56,34 @@ multilib_src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable zlib)
 	)
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	econf "${myeconfargs[@]}"
 }
 
-src_configure() {
+build_src_configure() {
+	local myeconfargs=(
+		--disable-shared
+		--disable-libseccomp
+		--disable-bzlib
+		--disable-xzlib
+		--disable-zlib
+	)
+	tc-env_build econf "${myeconfargs[@]}"
+}
+
+need_build_file() {
 	# when cross-compiling, we need to build up our own file
 	# because people often don't keep matching host/target
 	# file versions #362941
-	if tc-is-cross-compiler && ! ROOT=/ has_version ~${CATEGORY}/${P} ; then
+	tc-is-cross-compiler && ! has_version -b "~${CATEGORY}/${P}"
+}
+
+src_configure() {
+	local ECONF_SOURCE=${S}
+
+	if need_build_file; then
 		mkdir -p "${WORKDIR}"/build || die
 		cd "${WORKDIR}"/build || die
-		tc-export_build_env BUILD_C{C,XX}
-		ECONF_SOURCE="${S}" \
-		ac_cv_header_zlib_h=no \
-		ac_cv_lib_z_gzopen=no \
-		CHOST=${CBUILD} \
-		CFLAGS=${BUILD_CFLAGS} \
-		CXXFLAGS=${BUILD_CXXFLAGS} \
-		CPPFLAGS=${BUILD_CPPFLAGS} \
-		LDFLAGS="${BUILD_LDFLAGS} -static" \
-		CC=${BUILD_CC} \
-		CXX=${BUILD_CXX} \
-		econf --disable-shared $(use_enable seccomp libseccomp)
+		build_src_configure
 	fi
 
 	multilib-minimal_src_configure
@@ -94,10 +100,10 @@ multilib_src_compile() {
 }
 
 src_compile() {
-	if tc-is-cross-compiler && ! ROOT=/ has_version "~${CATEGORY}/${P}" ; then
+	if need_build_file; then
 		emake -C "${WORKDIR}"/build/src magic.h #586444
 		emake -C "${WORKDIR}"/build/src file
-		PATH="${WORKDIR}/build/src:${PATH}"
+		local -x PATH="${WORKDIR}/build/src:${PATH}"
 	fi
 	multilib-minimal_src_compile
 
