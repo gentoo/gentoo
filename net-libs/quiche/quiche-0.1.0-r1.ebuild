@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -122,7 +122,7 @@ wincolor-1.0.2
 ws2_32-sys-0.2.1
 "
 
-inherit cargo cmake flag-o-matic multilib-minimal rust-toolchain
+inherit cargo cmake-utils flag-o-matic multilib-minimal rust-toolchain
 
 DESCRIPTION="Implementation of the QUIC transport protocol and HTTP/3"
 HOMEPAGE="https://github.com/cloudflare/quiche"
@@ -173,7 +173,7 @@ src_unpack() {
 
 src_prepare(){
 	default
-	cmake_src_prepare
+	cmake-utils_src_prepare
 	multilib_copy_sources
 }
 
@@ -183,11 +183,11 @@ multilib_src_configure(){
 		-DOPENSSL_NO_ASM=ON
 		-DBUILD_SHARED_LIBS=OFF
 	)
-	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake_src_configure
+	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake-utils_src_configure
 }
 
 multilib_src_compile(){
-	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake_src_compile bssl
+	BUILD_DIR="${BUILD_DIR}/deps/boringssl/build" cmake-utils_src_compile bssl
 	QUICHE_BSSL_PATH="${BUILD_DIR}/deps/boringssl" cargo_src_compile --features pkg-config-meta --target="$(rust_abi)"
 }
 
