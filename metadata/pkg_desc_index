@@ -2360,7 +2360,7 @@ app-portage/gpyutils 0.2.2 0.3 9999: Utitilies for maintaining Python packages
 app-portage/grs 0.6-r1 0.7 9999: Suite to build Gentoo Reference Systems
 app-portage/gs-elpa 0.1.3 0.1.3-r1 9999: g-sorcery backend for elisp packages
 app-portage/gverify 2: gentoo.git signature verification tool
-app-portage/hackport 0.5.1 0.5.2 0.5.3 0.5.4 0.5.5-r1 0.5.6 9999: Hackage and Portage integration tool
+app-portage/hackport 0.5.6 0.6.2 9999: Hackage and Portage integration tool
 app-portage/java-ebuilder 0.4.1 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
 app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE Frameworks
 app-portage/layman 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
@@ -14717,7 +14717,7 @@ net-irc/polari 3.30.2: An IRC client for Gnome
 net-irc/psybnc 2.3.2.9-r3: A multi-user and multi-server gateway to IRC networks
 net-irc/ptlink-ircd 6.19.6-r3: Secure IRC daemon with many advanced features
 net-irc/ptlink-opm 1.3.1-r1: PTlink Open Proxy Monitor
-net-irc/quassel 0.12.5-r2 0.13.1 9999: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
+net-irc/quassel 0.13.1 9999: Qt/KDE IRC client supporting a remote daemon for 24/7 connectivity
 net-irc/quassel-irssi 0_p20170107-r1: Irssi module to connect to Quassel cores.
 net-irc/quasselgrep 0_p20170411 0_p20190211 9999: Tool for searching quassel logs from the commandline
 net-irc/rbot 0.9.15_p20160325-r1: A ruby IRC bot
@@ -16954,7 +16954,7 @@ sys-apps/hbaapi 2.2: The Host Bus Adapter API for managing Fibre Channel Host Bu
 sys-apps/hd-idle 1.05: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.56 9.58: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715 070715-r1: Heirloom toolchest - original Unix tools
-sys-apps/help2man 1.47.10 1.47.11: GNU utility to convert program --help output to a man page
+sys-apps/help2man 1.47.10 1.47.11 1.47.12: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
 sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
