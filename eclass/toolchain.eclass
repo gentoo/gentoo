@@ -1207,6 +1207,14 @@ toolchain_src_configure() {
 		is-flagq -mfloat-gprs=double && confgcc+=( --enable-e500-double )
 		[[ ${CTARGET//_/-} == *-e500v2-* ]] && confgcc+=( --enable-e500-double )
 		;;
+	ppc64)
+		# On ppc64 big endian target gcc assumes elfv1 by default,
+		# and elfv2 on little endian
+		# but musl does not support elfv1 at all on any endian ppc64
+		# see https://git.musl-libc.org/cgit/musl/tree/INSTALL
+		# https://bugs.gentoo.org/704784
+		[[ ${CTARGET} == powerpc64-*-musl ]] && confgcc+=( --with-abi=elfv2 )
+		;;
 	riscv)
 		# Add --with-abi flags to set default ABI
 		confgcc+=( --with-abi=$(gcc-abi-map ${TARGET_DEFAULT_ABI}) )
