@@ -10720,7 +10720,7 @@ dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20180301 20190428: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
 dev-util/icmake 9.02.08 9.02.09: Hybrid between a make utility and a shell scripting language
-dev-util/idea-community 2019.3.193.5233.102: A complete toolset for web, mobile and enterprise development
+dev-util/idea-community 2019.3.193.5233.102-r1: A complete toolset for web, mobile and enterprise development
 dev-util/idutils 4.6: Fast, high-capacity, identifier database tool
 dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
