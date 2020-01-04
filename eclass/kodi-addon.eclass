@@ -9,13 +9,12 @@
 # @DESCRIPTION:
 # Provides a src_configure function for correct CMake configuration
 
-inherit cmake-utils
-
 case "${EAPI:-0}" in
 	4|5|6)
-		inherit multilib
+		inherit cmake-utils multilib
 		;;
 	7)
+		inherit cmake
 		;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
@@ -31,5 +30,8 @@ kodi-addon_src_configure() {
 		-DCMAKE_INSTALL_LIBDIR=${EPREFIX%/}/usr/$(get_libdir)/kodi
 	)
 
-	cmake-utils_src_configure
+	case ${EAPI} in
+		4|5|6) cmake-utils_src_configure ;;
+		7) cmake_src_configure ;;
+	esac
 }
