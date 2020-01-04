@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-utils python-any-r1
+inherit cmake python-any-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
@@ -46,7 +46,7 @@ src_configure() {
 		-DUSE_SSH=$(usex ssh)
 		-DTHREADSAFE=$(usex threads)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
@@ -56,12 +56,12 @@ src_test() {
 		ewarn "Skipping tests: non-root privileges are required for all tests to pass"
 	else
 		local TEST_VERBOSE=1
-		cmake-utils_src_test -R offline
+		cmake_src_test -R offline
 	fi
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	dodoc docs/*.{md,txt}
 
 	if use examples ; then
