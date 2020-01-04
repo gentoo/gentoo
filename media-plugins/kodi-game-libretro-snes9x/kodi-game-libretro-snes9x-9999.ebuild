@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Snes9x GameClient for Kodi"
 HOMEPAGE="https://github.com/kodi-game/game.libretro.snes9x"
@@ -34,5 +34,5 @@ RDEPEND="
 	"
 src_prepare() {
 	echo 'find_library(SNES9X_LIB NAMES snes9x_libretro${CMAKE_SHARED_LIBRARY_SUFFIX} PATH_SUFFIXES libretro)' > "${S}/Findlibretro-snes9x.cmake" || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }

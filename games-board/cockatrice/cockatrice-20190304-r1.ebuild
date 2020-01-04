@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 MY_PV="2019-03-04-Release-2.7.0"
 DESCRIPTION="An open-source multiplatform software for playing card games over a network"
@@ -67,5 +67,5 @@ src_configure() {
 	sed -e 's/^set(PROJECT_VERSION_FRIENDLY.*/set(PROJECT_VERSION_FRIENDLY \"'${SHA1}'\")/' \
 		-i cmake/getversion.cmake || die "sed failed!"
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Kodi's Adaptive inputstream addon"
 HOMEPAGE="https://github.com/peak3d/inputstream.adaptive.git"
@@ -38,5 +38,5 @@ RDEPEND="
 
 src_prepare(){
 	[ -d depends ] && rm -rf depends || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }

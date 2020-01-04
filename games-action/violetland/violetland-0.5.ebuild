@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg-utils
+inherit cmake desktop xdg-utils
 
 DESCRIPTION="Help a girl named Violet in the struggle with hordes of monsters"
 HOMEPAGE="https://violetland.github.io/"
@@ -29,7 +29,7 @@ BDEPEND="
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Bizarrely fcitx is only bundled for a CMake module to find libintl
 	# but let's make sure the rest remains unused.
@@ -42,11 +42,11 @@ src_configure() {
 		-DLOCALE_INSTALL_DIR=share/locale
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	dodoc CHANGELOG.md CONTRIBUTORS.md
 
 	# Remove duplicate READMEs.

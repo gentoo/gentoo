@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit desktop cmake-utils
+inherit desktop cmake
 
 MY_PV="build$(ver_cut 2-)"
 MY_P="${PN}-${MY_PV/_/-}"
@@ -43,7 +43,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e 's:__ppc__:__PPC__:' src/map_io/s2map.cc || die
 }
@@ -57,11 +57,11 @@ src_configure() {
 		# Game is NOT happy being moved from /usr/share/games
 		-DWL_INSTALL_DATADIR="${EPREFIX}"/usr/share/games/${PN}
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# move game binary to correct location
 	dodir /usr/bin

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils user xdg
+inherit cmake user xdg
 
 DESCRIPTION="Battle for Wesnoth - A fantasy turn-based strategy game"
 HOMEPAGE="http://www.wesnoth.org
@@ -50,7 +50,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if ! use doc ; then
 		sed -i \
@@ -100,14 +100,13 @@ src_configure() {
 		-DENABLE_NOTIFICATIONS="$(usex dbus)"
 		-DENABLE_FRIBIDI="$(usex fribidi)"
 		-DENABLE_STRICT_COMPILATION="OFF"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
 	local DOCS=( README.md changelog.md )
-	cmake-utils_src_install
+	cmake_src_install
 	if use dedicated || use server; then
 		rmdir "${ED}/run/wesnothd" || die
 		newinitd "${FILESDIR}"/wesnothd.rc-r1 wesnothd

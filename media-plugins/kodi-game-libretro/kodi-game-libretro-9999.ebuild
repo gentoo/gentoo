@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Libretro compatibility layer for the Kodi Game API"
 HOMEPAGE="https://github.com/kodi-game/game.libretro"

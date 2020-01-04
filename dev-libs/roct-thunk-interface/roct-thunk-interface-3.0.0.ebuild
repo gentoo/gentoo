@@ -30,7 +30,6 @@ src_prepare() {
 }
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/"
 		-DCPACK_PACKAGING_INSTALL_PREFIX="${EPREFIX}/usr"
 	)
 	cmake_src_configure

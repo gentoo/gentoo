@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Unofficial GOG.com downloader for Linux"
 HOMEPAGE="https://sites.google.com/site/gogdownloader/"
@@ -35,10 +35,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DUSE_QT_GUI=$(usex gui)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	gunzip "${ED}"/usr/share/man/man1/${PN}.1.gz || die
 }

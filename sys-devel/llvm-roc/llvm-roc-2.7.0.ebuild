@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Radeon Open Compute llvm,lld,clang"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm/"
@@ -42,10 +42,10 @@ src_configure() {
 		-DLLVM_VERSION_SUFFIX=roc
 		-DOCAMLFIND=NO
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 src_install(){
-	cmake-utils_src_install
+	cmake_src_install
 	cat > "99${PN}" <<-EOF
 		LDPATH="${EROOT}/usr/lib/llvm/roc/lib"
 	EOF

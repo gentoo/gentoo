@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="FCEU-Next GameClient for Kodi"
 HOMEPAGE="https://github.com/kodi-game/game.libretro.fceumm"
@@ -34,5 +34,5 @@ RDEPEND="
 	"
 src_prepare() {
 	echo 'find_library(FCEUMM_LIB NAMES fceumm_libretro${CMAKE_SHARED_LIBRARY_SUFFIX} PATH_SUFFIXES libretro)' > "${S}/Findlibretro-fceumm.cmake" || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }

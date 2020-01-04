@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Kodi's IPTVSimple client addon"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.iptvsimple"
@@ -41,5 +41,5 @@ RDEPEND="
 
 src_prepare(){
 	[ -d depends ] && rm -rf depends || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
