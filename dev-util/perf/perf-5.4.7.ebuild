@@ -122,6 +122,10 @@ src_unpack() {
 		fi
 		CC=${old_CC}
 	fi
+
+	pushd "${S_K}" >/dev/null || die
+	eapply "${FILESDIR}/perf-5.4.7-propagate-cflags.patch"
+	popd || die
 }
 
 src_prepare() {
