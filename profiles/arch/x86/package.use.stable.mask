@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,10 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-04)
+# net-libs/libktorrent:5 is not stable anymore, bug #696858
+kde-apps/kget bittorrent
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-09-13)
 # media-video/pipewire is not stable yet
