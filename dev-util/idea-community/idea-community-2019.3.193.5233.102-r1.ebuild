@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -57,15 +57,16 @@ QA_PREBUILT="opt/${PN}-${MY_PV}/*"
 
 # jbr11 binary doesn't unpack nicely into a single folder
 src_unpack() {
-if use !jbr11 ; then
-default_src_unpack
-else
-cd "${WORKDIR}"
-unpack ${MY_PN}IC-${PV_STRING}.tar.gz
-cd "${S}"
-mkdir jre64 && cd jre64 && unpack jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz
-fi
+	if use !jbr11 ; then
+		default_src_unpack
+	else
+		cd "${WORKDIR}"
+		unpack ${MY_PN}IC-${PV_STRING}.tar.gz
+		cd "${S}"
+		mkdir jre64 && cd jre64 && unpack jbr-${JRE11_BASE}-linux-x64-b${JRE11_VER}.tar.gz
+	fi
 }
+
 src_prepare() {
 	if use amd64; then
 		JRE_DIR=jre64
@@ -75,6 +76,15 @@ src_prepare() {
 	if use jbr8; then
 			mv "${WORKDIR}/jre" ./"${JRE_DIR}"
 	fi
+
+	sed -i \
+		-e "\$a\\\\" \
+		-e "\$a#-----------------------------------------------------------------------" \
+		-e "\$a# Disable automatic updates as these are handled through Gentoo's" \
+		-e "\$a# package manager. See bug #704494" \
+		-e "\$a#-----------------------------------------------------------------------" \
+		-e "\$aide.no.platform.update=Gentoo"  bin/idea.properties
+
 	eapply_user
 }
 
