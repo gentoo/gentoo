@@ -1,9 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-
-inherit ltprune
+EAPI=7
 
 DESCRIPTION="a pipeline manipulation library"
 HOMEPAGE="http://libpipeline.nongnu.org/"
@@ -15,13 +13,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
-DEPEND="virtual/pkgconfig
+BDEPEND="virtual/pkgconfig
 	test? ( dev-libs/check )"
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.4.1-gnulib-cygwin-sys_select.patch
-	"${FILESDIR}"/${PN}-1.4.1-gnulib-darwin-program_name.patch
-)
 
 src_configure() {
 	econf $(use_enable static-libs static)
@@ -29,5 +22,5 @@ src_configure() {
 
 src_install() {
 	default
-	prune_libtool_files
+	find "${ED}" -type f -name "*.la" -delete || die
 }

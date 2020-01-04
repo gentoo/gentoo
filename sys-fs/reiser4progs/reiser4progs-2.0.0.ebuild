@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit multilib eutils toolchain-funcs usr-ldscript
+inherit multilib toolchain-funcs usr-ldscript
 
 DESCRIPTION="reiser4progs: mkfs, fsck, etc..."
 HOMEPAGE="https://sourceforge.net/projects/reiser4/"
@@ -14,10 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~ppc64 -sparc ~x86"
 IUSE="debug readline static static-libs"
 
-LIB_DEPEND=">=sys-libs/libaal-1.0.6:=[static-libs(+)]
+LIB_DEPEND=">=sys-libs/libaal-1.0.7:=[static-libs(+)]
 	readline? ( sys-libs/readline:0=[static-libs(+)] )"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
-	static-libs? ( >=sys-libs/libaal-1.0.6:=[static-libs(+)] )"
+	static-libs? ( >=sys-libs/libaal-1.0.7:=[static-libs(+)] )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 
@@ -35,17 +35,20 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable static full-static) \
-		$(use_enable static-libs static) \
-		$(use_enable debug) \
-		$(use_with readline) \
-		--disable-Werror \
-		--enable-libminimal \
+	local myeconfargs=(
+		$(use_enable static full-static)
+		$(use_enable static-libs static)
+		$(use_enable debug)
+		$(use_with readline)
+		--disable-Werror
+		--enable-libminimal
 		--sbindir=/sbin
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
 	gen_usr_ldscript -a reiser4{,-minimal} repair
+	find "${ED}" -type f -name "*.la" -delete || die
 }
