@@ -807,6 +807,22 @@
     </member>
   </project>
   <project>
+    <email>dist-kernel@gentoo.org</email>
+    <name>Distribution Kernel</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Distribution_Kernel</url>
+    <description>Dist-kernel project maintains packages providing for zero-effort kernel install and upgrades</description>
+    <member is-lead="1">
+      <email>mgorny@gentoo.org</email>
+      <name>Michał Górny</name>
+      <role>Self-appointed lead</role>
+    </member>
+    <member>
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
+      <role>Minion</role>
+    </member>
+  </project>
+  <project>
     <email>dotnet@gentoo.org</email>
     <name>Dotnet Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Dotnet</url>
