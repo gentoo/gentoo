@@ -11,8 +11,6 @@ SRC_URI="http://vdr.schmirler.de/${PN#vdr-}/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~arm x86"
-IUSE=""
+KEYWORDS="~amd64 ~arm ~x86"
 
-DEPEND=">=media-video/vdr-2.0.0"
-RDEPEND="${DEPEND}"
+DEPEND="~media-video/vdr-2.2.0"
