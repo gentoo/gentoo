@@ -49,6 +49,10 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.74-ncurses.patch
+)
+
 src_prepare() {
 	use glide && eapply "${DISTDIR}"/dosbox_glide-${GLIDE_PATCH}.diff
 	default
