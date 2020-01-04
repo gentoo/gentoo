@@ -635,11 +635,6 @@ net-print/pykota
 www-apps/blohg-tumblelog
 x11-misc/magick-rotation
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-12-03)
-# Project does not exist anymore.
-# Removal in 30 days.  Bug #680452.
-dev-java/balloontip
-
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Added in 2013 and not updated since.  Unmaintained upstream since
 # inception.  Never had any keywords.
