@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2020-01-04)
+# Un-fetchable distfile, bug 704782.
+# No maintainer.
+# Removal in 30 days.
+net-misc/chrome-remote-desktop
+
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-03)
 # package is broken by all version of imagemagick
 # several open bugs on upstream
