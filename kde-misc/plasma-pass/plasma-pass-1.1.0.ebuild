@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ HOMEPAGE="https://www.dvratil.cz/2018/05/plasma-pass/ https://cgit.kde.org/plasm
 
 if [[ ${KDE_BUILD_TYPE} != live ]] ; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 fi
 
 LICENSE="LGPL-2.1+"
