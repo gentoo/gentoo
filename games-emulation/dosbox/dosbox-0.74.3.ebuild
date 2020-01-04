@@ -45,6 +45,10 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.74-ncurses.patch
+)
+
 src_prepare() {
 	default
 	eautoreconf
