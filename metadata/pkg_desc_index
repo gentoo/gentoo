@@ -14808,7 +14808,7 @@ net-libs/libiio 0.15-r1 9999: Library for interfacing with IIO devices
 net-libs/libircclient 1.8 1.10: Small but powerful library implementing the client-server IRC protocol
 net-libs/libiscsi 1.18.0 9999: iscsi client library and utilities
 net-libs/libisds 0.10.6 0.10.7 0.10.8 0.11 9999: Client library for accessing ISDS Soap services
-net-libs/libktorrent 2.1-r2 2.1.1: BitTorrent library based on KDE Frameworks
+net-libs/libktorrent 2.1.1: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 5.0.0-r1: Library for accessing the features of social networking site vkontakte.ru
 net-libs/liblockfile 1.09 1.16: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
@@ -15414,7 +15414,7 @@ net-p2p/go-ethereum 1.8.15: Official golang implementation of the Ethereum proto
 net-p2p/go-ipfs-bin 0.4.19 0.4.20 0.4.22: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.1.14 1.1.15: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
-net-p2p/ktorrent 5.1.1-r1 5.1.2-r2: Powerful BitTorrent client based on KDE Frameworks
+net-p2p/ktorrent 5.1.2-r2: Powerful BitTorrent client based on KDE Frameworks
 net-p2p/litecoind 0.10.4.0: P2P Internet currency based on Bitcoin but easier to mine
 net-p2p/mktorrent 1.0-r1 1.1_p20180502: Simple command line utility to create BitTorrent metainfo files
 net-p2p/mldonkey 3.1.5-r1 3.1.6 3.1.6-r1: Multi-network P2P application written in Ocaml, with Gtk, web & telnet interface
