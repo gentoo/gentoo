@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,6 +14,7 @@ KEYWORDS="~amd64 ~x86"
 # Pure introspection dependencies found by grepping imports.gi in ${S}
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2
+	x11-libs/pango[introspection]
 	>=dev-libs/gjs-1.50.0
 	>=dev-libs/gobject-introspection-0.10.1:=
 	>=x11-libs/gtk+-3.22:3[introspection]
