@@ -336,7 +336,7 @@ app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/integrit 4.1-r1: file integrity verification program
 app-admin/keepass 2.42.1 2.43: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassxc 2.4.3-r1 2.5.0 2.5.1 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.4.3-r1 2.5.1 2.5.2 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.3: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.2: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
@@ -13557,7 +13557,7 @@ media-plugins/vdr-recsearch 0.3.7: VDR Plugin: Search through your recordings an
 media-plugins/vdr-recstatus 0.0.8: VDR plugin: displays the recording status of the available devices
 media-plugins/vdr-remote 0.6.0-r1 0.7.0: VDR Plugin: use various devices for controlling vdr (keyboards, lirc, remotes bundled with tv-cards)
 media-plugins/vdr-remoteosd 1.0.0 1.0.0-r1: VDR Plugin: server/client remoteosd
-media-plugins/vdr-remotetimers 1.0.2: VDR plugin: edit timers on remote vdr instances
+media-plugins/vdr-remotetimers 1.0.2 1.0.2-r1: VDR plugin: edit timers on remote vdr instances
 media-plugins/vdr-rpihddevice 1.0.3 1.0.5: VDR Plugin: Output Device for Raspberry Pi
 media-plugins/vdr-rssreader 2.0.0 2.0.1 2.2.0 2.2.1 2.2.1-r1: VDR Plugin: RSS reader
 media-plugins/vdr-satip 2.2.3-r2 2.2.5 2.4.0_p20191027: VDR Plugin: integrates SAT>IP network devices seamlessly into VDR
@@ -16271,7 +16271,7 @@ sci-libs/idlmarkwardt 20130418 20160319: Craig Markwardt IDL procedures (MPFIT, 
 sci-libs/ignition-math 4.0.0-r1: A small, fast, and high performance math library for robot applications
 sci-libs/iml 1.0.5: Integer Matrix Library
 sci-libs/inchi 1.04: Program and library for generating standard and non-standard InChI and InChIKeys
-sci-libs/indilib 1.7.5 1.8.2-r2: INDI Astronomical Control Protocol library
+sci-libs/indilib 1.7.5 1.8.2-r2 1.8.3: INDI Astronomical Control Protocol library
 sci-libs/io_lib 1.14.7: General purpose trace and experiment file reading/writing interface
 sci-libs/ipopt 3.11.7 3.11.8 3.12.12: Interior-Point Optimizer for large-scale nonlinear optimization
 sci-libs/itpp 4.3.1-r1: C++ library of mathematical, signal processing and communication
@@ -17650,7 +17650,7 @@ sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 5.4.6-r1 5.4.7: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 5.4.6 5.4.7: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.80 4.4.207 4.9.207 4.14.161 4.19.92 5.4.7: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.80 4.4.208 4.9.208 4.14.162 4.19.92 5.4.7: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 4.14.9999 4.15.9999 4.16.9999: The Zen Kernel Live Sources

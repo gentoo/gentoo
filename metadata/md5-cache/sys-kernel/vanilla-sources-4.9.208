@@ -5,10 +5,10 @@ EAPI=6
 HOMEPAGE=https://www.kernel.org
 IUSE=symlink build
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
-LICENSE=GPL-2
+LICENSE=GPL-2 linux-firmware
 RDEPEND=!build? ( dev-lang/perl sys-devel/bc sys-devel/bison sys-devel/flex sys-devel/make >=sys-libs/ncurses-5.2 virtual/libelf )
 RESTRICT=binchecks strip
-SLOT=4.14.161
-SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.14.161.xz https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.14.tar.xz
+SLOT=4.9.208
+SRC_URI=https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.208.xz https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	686eaab303305a908fd57b2fd7617800	kernel-2	161e65a1e185c10599fd2c5b258be436	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=9e988693886cf9427c6bc538c9613582
+_md5_=af62ceca6b46feac79b140ba555f8fb5
