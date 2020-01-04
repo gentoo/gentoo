@@ -3141,7 +3141,7 @@ dev-cpp/tclap 1.2.1 1.2.2: Simple templatized C++ library for parsing command li
 dev-cpp/tree 2.81: An STL-like tree class
 dev-cpp/waylandpp 0.2.3 0.2.4 0.2.5 0.2.6 0.2.7 9999: Wayland C++ bindings
 dev-cpp/websocketpp 0.8.1-r1: C++/Boost Asio based websocket client/server library
-dev-cpp/yaml-cpp 0.6.2: YAML parser and emitter in C++
+dev-cpp/yaml-cpp 0.6.2 0.6.3: YAML parser and emitter in C++
 dev-db/4store 1.1.5-r1: 4store is an efficient, scalable and stable RDF database
 dev-db/SchemaSync 0.9.2-r1 0.9.4 0.9.5: MySQL Schema Versioning and Migration Utility
 dev-db/aerospike-server-community 3.13.0.9 3.14.1.8 3.15.1.4 3.16.0.6 4.0.0.1 4.0.0.4 4.1.0.1 9999: Flash-optimized, in-memory, nosql database
