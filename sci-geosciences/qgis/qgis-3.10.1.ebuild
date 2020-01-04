@@ -15,7 +15,7 @@ else
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit cmake-utils desktop python-single-r1 qmake-utils xdg
+inherit cmake desktop python-single-r1 qmake-utils xdg
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="https://www.qgis.org/"
@@ -117,7 +117,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -138,9 +138,9 @@ src_configure() {
 		-DWITH_3D=$(usex 3d)
 		-DWITH_GEOREFERENCER=$(usex georeferencer)
 		-DWITH_GRASS7=$(usex grass)
-		$(cmake-utils_use_find_package hdf5 HDF5)
+		$(cmake_use_find_package hdf5 HDF5)
 		-DWITH_SERVER=$(usex mapserver)
-		$(cmake-utils_use_find_package netcdf NetCDF)
+		$(cmake_use_find_package netcdf NetCDF)
 		-DUSE_OPENCL=$(usex opencl)
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_QWTPOLAR=$(usex polar)
@@ -163,11 +163,11 @@ src_configure() {
 	addpredict /dev/dri/renderD128
 	addpredict /dev/dri/renderD129
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	insinto /usr/share/mime/packages
 	doins debian/qgis.xml
