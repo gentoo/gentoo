@@ -11,7 +11,7 @@ if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~sparc-solaris"
 	S="${WORKDIR}/${MY_P}"
 else
-	EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" "git://git.${PN}-irc.org/${PN}" )
+	EGIT_REPO_URI=( "https://github.com/${PN}/${PN}" )
 	inherit git-r3
 fi
 
