@@ -23,8 +23,10 @@ RDEPEND="
 	media-libs/libsdl2
 	media-libs/sdl2-ttf
 	X? (
-		x11-libs/pango
 		x11-libs/libX11
+		x11-libs/libxcb
+		x11-libs/libxkbcommon
+		x11-libs/pango
 	)
 	freeimage? ( media-libs/freeimage )
 	jpeg? ( media-libs/libjpeg-turbo )
