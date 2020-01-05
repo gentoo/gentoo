@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=(python2_7 python3_5 python3_6)
+PYTHON_COMPAT=(python2_7 python3_6)
 inherit eutils prefix user python-r1 multilib multilib-minimal systemd s6
 
 DESCRIPTION="NSS module for name lookups using LDAP"

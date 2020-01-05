@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 GCONF_DEBUG="no"
-PYTHON_COMPAT=( python{3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 VALA_MIN_API_VERSION="0.26"
 
 inherit eutils gnome2 multilib python-any-r1 vala

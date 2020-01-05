@@ -11,7 +11,7 @@ FORTRAN_NEEDED=fortran
 
 # NOTE:The build for multiple python versions should be possible but
 # complicated for the build system
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit cmake fortran-2 python-single-r1
 

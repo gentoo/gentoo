@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 
 inherit distutils-r1
 
@@ -19,7 +19,7 @@ IUSE="doc test"
 
 # implementations to use for building docs, separate from PYTHON_COMPAT since
 # dev-python/sphinx might not be available everywhere
-DOCS_PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+DOCS_PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
 RDEPEND=">=dev-libs/libmemcached-0.32"
 # Older sphinx versions fail to compile the doc

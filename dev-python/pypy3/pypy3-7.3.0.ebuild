@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 inherit pax-utils python-any-r1
 
 MY_P=pypy3.6-v${PV/_/}
