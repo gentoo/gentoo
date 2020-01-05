@@ -587,7 +587,7 @@ cmake_build() {
 # @DESCRIPTION:
 # Banned. Use cmake_build instead.
 cmake-utils_src_make() {
-	die "cmake_src_make is banned. Use cmake_build instead"
+	die "cmake-utils_src_make is banned. Use cmake_build instead"
 }
 
 # @FUNCTION: cmake_src_test
