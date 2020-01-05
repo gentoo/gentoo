@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic qmake-utils
+inherit flag-o-matic xdg-utils qmake-utils
 
 DESCRIPTION="Tiny RSS and Atom feed reader"
 HOMEPAGE="https://github.com/martinrotter/rssguard"
@@ -41,4 +41,12 @@ src_configure() {
 
 src_install() {
 	emake install INSTALL_ROOT="${D}"
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
