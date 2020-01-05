@@ -567,7 +567,7 @@ cmake_build() {
 		emake)
 			[[ -e Makefile ]] || die "Makefile not found. Error during configure stage."
 			[[ "${CMAKE_VERBOSE}" != "OFF" ]] && local verbosity="VERBOSE=1"
-			emake "${verbosity} "$@"
+			emake "${verbosity}" "$@"
 			;;
 		ninja)
 			[[ -e build.ninja ]] || die "build.ninja not found. Error during configure stage."
