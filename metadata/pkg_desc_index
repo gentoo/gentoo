@@ -61,9 +61,11 @@ acct-group/nofiles 0: System group: nofiles
 acct-group/nsd 0: System group: nsd
 acct-group/ntp 0: System group: ntp
 acct-group/oidentd 0: System group: oidentd
+acct-group/openct 0: System group: openct
 acct-group/opendkim 0: Group for OpenDKIM
 acct-group/openntpd 0: System group: openntpd
 acct-group/openrct2 0: A group for the OpenRCT2 dedicated server
+acct-group/pcscd 0: System group: pcscd
 acct-group/pdnsd 0: System group: pdnsd
 acct-group/plex 0: Plex Media Server group
 acct-group/plugdev 0: Group controlling access to removable media
@@ -171,6 +173,7 @@ acct-user/oidentd 0: System user: oidentd
 acct-user/opendkim 0: User for OpenDKIM
 acct-user/openntpd 0: user for openntpd daemon
 acct-user/openrct2 0: A user for the OpenRCT2 dedicated server
+acct-user/pcscd 0: A user for pcsc-lite
 acct-user/pdnsd 0: user for pdns daemon
 acct-user/plex 0: Plex Media Server user
 acct-user/polkitd 0: System user: polkitd
