@@ -1,15 +1,15 @@
 BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install postinst prepare setup
-DEPEND=ssl? ( !libressl? ( >=dev-libs/openssl-1.0.2:= ) libressl? ( dev-libs/libressl:= ) ) kerberos? ( virtual/krb5 !libressl? ( >=dev-libs/openssl-1.0.2:= ) libressl? ( dev-libs/libressl:= ) ) nls? ( virtual/libintl ) !elibc_glibc? ( sys-libs/e2fsprogs-libs ) socks? ( net-proxy/dante ) tk? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk] >=dev-lang/python-exec-2:=[python_targets_python2_7] ) ) app-arch/xz-utils sys-devel/flex nls? ( sys-devel/gettext )
+DEPEND=acct-user/fetchmail ssl? ( !libressl? ( >=dev-libs/openssl-1.0.2:= ) libressl? ( dev-libs/libressl:= ) ) kerberos? ( virtual/krb5 !libressl? ( >=dev-libs/openssl-1.0.2:= ) libressl? ( dev-libs/libressl:= ) ) nls? ( virtual/libintl ) !elibc_glibc? ( sys-libs/e2fsprogs-libs ) socks? ( net-proxy/dante ) tk? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk] >=dev-lang/python-exec-2:=[python_targets_python2_7] ) ) app-arch/xz-utils sys-devel/flex nls? ( sys-devel/gettext )
 DESCRIPTION=the legendary remote-mail retrieval and forwarding utility
 EAPI=7
 HOMEPAGE=http://www.fetchmail.info/
 IUSE=ssl nls kerberos tk socks libressl +python_targets_python2_7 +python_single_target_python2_7
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2 public-domain
-RDEPEND=ssl? ( !libressl? ( >=dev-libs/openssl-1.0.2:= ) libressl? ( dev-libs/libressl:= ) ) kerberos? ( virtual/krb5 !libressl? ( >=dev-libs/openssl-1.0.2:= ) libressl? ( dev-libs/libressl:= ) ) nls? ( virtual/libintl ) !elibc_glibc? ( sys-libs/e2fsprogs-libs ) socks? ( net-proxy/dante ) tk? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk] >=dev-lang/python-exec-2:=[python_targets_python2_7] ) )
+RDEPEND=acct-user/fetchmail ssl? ( !libressl? ( >=dev-libs/openssl-1.0.2:= ) libressl? ( dev-libs/libressl:= ) ) kerberos? ( virtual/krb5 !libressl? ( >=dev-libs/openssl-1.0.2:= ) libressl? ( dev-libs/libressl:= ) ) nls? ( virtual/libintl ) !elibc_glibc? ( sys-libs/e2fsprogs-libs ) socks? ( net-proxy/dante ) tk? ( python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[tk] >=dev-lang/python-exec-2:=[python_targets_python2_7] ) )
 REQUIRED_USE=tk? ( ^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 ) )
 SLOT=0
 SRC_URI=mirror://sourceforge/fetchmail/fetchmail-6.4.1.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=a5cf81b06a00c22f5b5e71024ea9d5d5
+_md5_=c8c77bc42d0735f718df628d54318e3e
