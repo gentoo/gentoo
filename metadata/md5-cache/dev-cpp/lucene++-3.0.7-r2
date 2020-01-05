@@ -1,0 +1,15 @@
+BDEPEND=dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-libs/boost:=
+DESCRIPTION=C++ port of Lucene library, a high-performance, full-featured text search engine
+EAPI=7
+HOMEPAGE=https://github.com/luceneplusplus/LucenePlusPlus
+IUSE=debug
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=|| ( LGPL-3 Apache-2.0 )
+RDEPEND=dev-libs/boost:=
+RESTRICT=test
+SLOT=0
+SRC_URI=https://github.com/luceneplusplus/LucenePlusPlus/archive/rel_3.0.7.tar.gz -> lucene++-3.0.7.tar.gz
+_eclasses_=cmake	b46f14aaf01cc53227dc3010b78d11df	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=f7bb644dc7cf36ebdaca0894b0e3ade0
