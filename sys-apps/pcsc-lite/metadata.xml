@@ -14,6 +14,7 @@
   </longdescription>
 
   <use>
+    <flag name="embedded">limit RAM and CPU ressources by disabling features</flag>
     <flag name="libusb" restrict="&gt;=sys-apps/pcsc-lite-1.8.0">
       Use <pkg>dev-libs/libusb</pkg> detection to hotplug new
       smartcard readers. This flag should only be enabled if you're
