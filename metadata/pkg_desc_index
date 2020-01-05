@@ -9985,7 +9985,7 @@ dev-ruby/rbpdf-font 1.19.1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbst 0.5.1: A simple Ruby wrapper for processing rST via docutils
 dev-ruby/rcairo 1.16.2 1.16.4: Ruby bindings for cairo
 dev-ruby/rdiscount 2.2.0.1: Implementation of John Gruber's Markdown
-dev-ruby/rdoc 5.1.0 5.1.0-r1 6.1.1 6.1.2 6.2.0: An extended version of the RDoc library from Ruby 1.8
+dev-ruby/rdoc 5.1.0-r1 6.1.2 6.2.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
 dev-ruby/recog 2.3.2 2.3.4 2.3.5 2.3.6: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.4.0 3.5.0: A Ruby wrapper for Upskirt
