@@ -99,8 +99,6 @@ pkg_setup() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DUSE_QT4=OFF
-		-DUSE_QT5=ON
 		-DUSE_CCACHE=OFF
 		-DCMAKE_SKIP_RPATH=ON
 		-DEMBED_DATA=OFF
