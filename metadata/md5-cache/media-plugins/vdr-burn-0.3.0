@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile config install postinst postrm preinst prepare setup unpack
+DEPEND=media-libs/gd[png,truetype,jpeg] media-video/vdr dev-libs/boost >=media-tv/gentoo-vdr-scripts-0.4.2 virtual/linuxtv-dvb-headers
+DESCRIPTION=VDR Plugin: burn records on DVD
+EAPI=7
+HOMEPAGE=https://projects.vdr-developer.org/projects/plg-burn
+IUSE=dvdarchive
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=media-libs/gd[png,truetype,jpeg] media-video/vdr app-cdr/dvd+rw-tools dev-libs/libcdio media-fonts/corefonts media-video/dvdauthor media-video/mjpegtools[png] media-video/projectx media-video/transcode virtual/eject >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
+SLOT=0
+SRC_URI=mirror://vdr-developerorg/2028/vdr-burn-0.3.0.tgz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vdr-plugin-2	3719fa10a30f33eea321f9b883bd4baa
+_md5_=d9184bcc3d34f19016cc48d055bb69bf

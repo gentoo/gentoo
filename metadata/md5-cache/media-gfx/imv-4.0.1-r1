@@ -1,0 +1,16 @@
+BDEPEND=app-text/asciidoc test? ( dev-util/cmocka )
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=!sys-apps/renameutils media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf X? ( x11-libs/libX11 x11-libs/libxcb x11-libs/libxkbcommon x11-libs/pango ) freeimage? ( media-libs/freeimage ) jpeg? ( media-libs/libjpeg-turbo ) png? ( media-libs/libpng ) svg? ( gnome-base/librsvg ) tiff? ( media-libs/tiff ) wayland? ( dev-libs/wayland )
+DESCRIPTION=Minimal image viewer designed for tiling window manager users
+EAPI=7
+HOMEPAGE=https://github.com/eXeC64/imv
+IUSE=X +freeimage jpeg png +svg test tiff wayland
+KEYWORDS=~amd64 ~x86
+LICENSE=MIT-with-advertising
+RDEPEND=!sys-apps/renameutils media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf X? ( x11-libs/libX11 x11-libs/libxcb x11-libs/libxkbcommon x11-libs/pango ) freeimage? ( media-libs/freeimage ) jpeg? ( media-libs/libjpeg-turbo ) png? ( media-libs/libpng ) svg? ( gnome-base/librsvg ) tiff? ( media-libs/tiff ) wayland? ( dev-libs/wayland )
+REQUIRED_USE=|| ( X wayland )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/eXeC64/imv/archive/v4.0.1.tar.gz -> imv-4.0.1.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=f8bfe7cae2fc428129b018c4e24a5a04

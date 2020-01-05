@@ -427,7 +427,7 @@ app-admin/supernova 2.2.0: novaclient wrapper for multiple nova environments
 app-admin/supervisor 3.1.4 3.3.5 4.0.3 4.0.4: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r2: suid, sgid file and directory checking
-app-admin/sysklogd 1.5.1-r1 2.0.2 2.0.3: Standard log daemons
+app-admin/sysklogd 1.5.1-r1 2.0.3 2.1: Standard log daemons
 app-admin/syslog-ng 3.22.1 3.24.1 3.25.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17: Daemon providing access to the kernel sysrq functions via network
@@ -12763,7 +12763,7 @@ media-gfx/igal 2.0-r1: Static HTML image gallery generator
 media-gfx/imagemagick 6.9.10.78 7.0.9.8 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
 media-gfx/img2pdf 0.3.1 0.3.3: Losslessly convert raster images to PDF
-media-gfx/imv 2.1.3 4.0.1 9999: Minimal image viewer designed for tiling window manager users
+media-gfx/imv 4.0.1-r1 4.1.0 9999: Minimal image viewer designed for tiling window manager users
 media-gfx/inkscape 0.92.4 1.0_beta2 9999: SVG based generic vector-drawing program
 media-gfx/iscan 2.30.3.1 2.30.4.2 3.61.0: EPSON Image Scan v3 for Linux
 media-gfx/iscan-data 1.39.0.1: Image Scan! for Linux data files
@@ -13222,7 +13222,7 @@ media-libs/pymemphis 0.2.1-r2: Python bindings for the libmemphis library
 media-libs/qhull 2015.2: Geometry library
 media-libs/qimageblitz 0.0.6_p20131029: Graphical effect and filter library by KDE
 media-libs/qt-gstreamer 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
-media-libs/qtav 1.12.0: Multimedia playback framework based on Qt + FFmpeg
+media-libs/qtav 1.12.0 1.12.0-r1: Multimedia playback framework based on Qt + FFmpeg
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
 media-libs/quvi 0.9.5: A command line tool for parsing video download links
 media-libs/raptor 2.0.15-r2: The RDF Parser Toolkit
@@ -13482,7 +13482,7 @@ media-plugins/vdr-avards 0.2.4: VDR Plugin: Automatic Video Aspect Ratio Detecti
 media-plugins/vdr-beep 0.1.2: VDR plugin: Use the PC speaker to signalize some events (shutdown, cut done ...)
 media-plugins/vdr-bgprocess 0.1.0: VDR plugin: Collect information about background process status
 media-plugins/vdr-browse 0.2.0: VDR plugin: browse now/next epg info while keep watching the current channel
-media-plugins/vdr-burn 0.2.2-r1: VDR Plugin: burn records on DVD
+media-plugins/vdr-burn 0.2.2-r1 0.3.0: VDR Plugin: burn records on DVD
 media-plugins/vdr-burn-templates 0.0.3: DVD-themes (background and menu) for vdr-burn
 media-plugins/vdr-calc 0.0.1_rc5: VDR Plugin: OSD Calculator
 media-plugins/vdr-cdplayer 1.2.2: VDR Plugin: CD-PLAYER
@@ -15288,7 +15288,7 @@ net-misc/spread 4.4.1 5.0.1: Distributed network messaging system
 net-misc/srf-ip-conn-srv 9999: SharkRF IP Connector Protocol server
 net-misc/ssh-askpass-fullscreen 1.0-r1: A small SSH Askpass replacement written with GTK2
 net-misc/ssh-chain 20131217: ssh via a chain of intermediary hosts
-net-misc/sshpass 1.05 1.06: Tool for noninteractively performing password authentication with ssh
+net-misc/sshpass 1.06: Tool for noninteractively performing password authentication with ssh
 net-misc/sshrc 0.6.1 0.6.2: Bring your .bashrc, .vimrc, etc. from your local machine when you ssh
 net-misc/sslh 1.20 9999: Port multiplexer - accept both HTTPS and SSH connections on the same port
 net-misc/sstp-client 1.0.10-r1 1.0.12: A client implementation of Secure Socket Tunneling Protocol (SSTP)
