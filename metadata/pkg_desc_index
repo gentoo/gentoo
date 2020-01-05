@@ -8137,7 +8137,7 @@ dev-python/munkres 1.0.8 1.0.12 1.1.2: Module implementing munkres algorithm for
 dev-python/myghty 1.2-r1: Template and view-controller framework derived from HTML::Mason
 dev-python/myghtyutils 0.52-r1: Set of utility classes used by Myghty templating
 dev-python/mygpoclient 1.8: A gpodder.net client library
-dev-python/mypy 0.700 0.701 0.740 0.750: Optional static typing for Python
+dev-python/mypy 0.700 0.701 0.740 0.750 0.760: Optional static typing for Python
 dev-python/mypy_extensions 0.4.1 0.4.3: Optional static typing for Python
 dev-python/mysql-connector-python 2.1.7-r1 8.0.18: Python client library for MariaDB/MySQL
 dev-python/mysql-python 1.2.3-r1 1.2.5-r1 1.2.5-r2: Python interface to MySQL
