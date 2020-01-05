@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/troglobit/sysklogd/releases/download/v${PV}/${P}.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="klogd logger logrotate systemd"
+IUSE="logger logrotate systemd"
 RESTRICT="test"
 
 DEPEND="
@@ -33,7 +33,6 @@ pkg_setup() {
 src_configure() {
 	local myeconfargs=(
 		--runstatedir="${EPREFIX}"/run
-		$(use_with klogd)
 		$(use_with logger)
 		$(use_with systemd systemd $(systemd_get_systemunitdir))
 	)
@@ -47,8 +46,8 @@ src_install() {
 	doins syslog.conf
 	keepdir /etc/syslog.d
 
-	newinitd "${FILESDIR}"/sysklogd.rc8 sysklogd
-	newconfd "${FILESDIR}"/sysklogd.confd2 sysklogd
+	newinitd "${FILESDIR}"/sysklogd.rc10 sysklogd
+	newconfd "${FILESDIR}"/sysklogd.confd3 sysklogd
 
 	if use logrotate ; then
 		insinto /etc/logrotate.d
@@ -64,5 +63,9 @@ pkg_postinst() {
 		elog "Starting with version 2.0 syslogd has built in log rotation"
 		elog "functionality that does no longer require a running cron daemon."
 		elog "So we no longer install any log rotation cron files for sysklogd."
+	fi
+	if [[ -n ${REPLACING_VERSIONS} ]] && ver_test ${REPLACING_VERSIONS} -lt 2.1 ; then
+		elog "Starting with version 2.1 sysklogd no longer provides klogd."
+		elog "syslogd now also logs kernel messages."
 	fi
 }

@@ -1,0 +1,3 @@
+# Config file for /etc/init.d/sysklogd
+
+SYSLOGD="-m 0 -s -s -r 10M:10"

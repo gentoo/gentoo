@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 toolchain-funcs xdg-utils
+inherit toolchain-funcs xdg-utils
 
 DESCRIPTION="Minimal image viewer designed for tiling window manager users"
 HOMEPAGE="https://github.com/eXeC64/imv"
-EGIT_REPO_URI="https://github.com/eXeC64/imv"
+SRC_URI="https://github.com/eXeC64/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-KEYWORDS=""
-IUSE="X +freeimage jpeg libnsgif png +svg test tiff wayland"
+KEYWORDS="~amd64 ~x86"
+IUSE="X +freeimage jpeg png +svg test tiff wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( X wayland )
@@ -30,7 +30,6 @@ RDEPEND="
 	)
 	freeimage? ( media-libs/freeimage )
 	jpeg? ( media-libs/libjpeg-turbo )
-	libnsgif? ( media-libs/libnsgif )
 	png? ( media-libs/libpng )
 	svg? ( gnome-base/librsvg )
 	tiff? ( media-libs/tiff )
@@ -67,7 +66,6 @@ src_configure() {
 	BACKENDS=(
 		BACKEND_FREEIMAGE=$(usex freeimage)
 		BACKEND_JPEG=$(usex jpeg)
-		BACKEND_LIBNSGIF=$(usex libnsgif)
 		BACKEND_LIBPNG=$(usex png)
 		BACKEND_LIBRSVG=$(usex svg)
 		BACKEND_LIBTIFF=$(usex tiff)

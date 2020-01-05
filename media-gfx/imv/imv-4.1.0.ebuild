@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,10 +8,10 @@ DESCRIPTION="Minimal image viewer designed for tiling window manager users"
 HOMEPAGE="https://github.com/eXeC64/imv"
 SRC_URI="https://github.com/eXeC64/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2+"
+LICENSE="MIT-with-advertising"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X +freeimage jpeg png svg test tiff wayland"
+IUSE="X +freeimage jpeg libnsgif png +svg test tiff wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( X wayland )
@@ -23,11 +23,14 @@ RDEPEND="
 	media-libs/libsdl2
 	media-libs/sdl2-ttf
 	X? (
-		x11-libs/pango
 		x11-libs/libX11
+		x11-libs/libxcb
+		x11-libs/libxkbcommon
+		x11-libs/pango
 	)
 	freeimage? ( media-libs/freeimage )
 	jpeg? ( media-libs/libjpeg-turbo )
+	libnsgif? ( media-libs/libnsgif )
 	png? ( media-libs/libpng )
 	svg? ( gnome-base/librsvg )
 	tiff? ( media-libs/tiff )
@@ -64,6 +67,7 @@ src_configure() {
 	BACKENDS=(
 		BACKEND_FREEIMAGE=$(usex freeimage)
 		BACKEND_JPEG=$(usex jpeg)
+		BACKEND_LIBNSGIF=$(usex libnsgif)
 		BACKEND_LIBPNG=$(usex png)
 		BACKEND_LIBRSVG=$(usex svg)
 		BACKEND_LIBTIFF=$(usex tiff)
