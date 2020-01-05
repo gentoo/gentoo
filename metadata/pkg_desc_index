@@ -8045,6 +8045,7 @@ dev-python/libnacl 1.6.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.2.4 0.3.0: Small library containing various image processing algorithms
 dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
+dev-python/libsass 0.19.4: A straightforward binding of libsass for Python
 dev-python/libtmux 0.8.2 0.8.2-r1: python api for tmux
 dev-python/libvirt-python 5.2.0 5.5.0 5.6.0 5.8.0 5.10.0 9999: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
@@ -8729,11 +8730,13 @@ dev-python/pyyaml 3.12 3.13 5.1 5.1.2: YAML parser and emitter for Python
 dev-python/pyzbar 0.1.5 0.1.7: Read one-dimensional barcodes and QR codes from Python
 dev-python/pyzmq 16.0.2 17.1.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
+dev-python/qdarkstyle 2.7: A dark style sheet for QtWidgets application
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.10.8 2.11.3 2.11.4: Python bindings for QScintilla
 dev-python/qtawesome 0.4.4 0.5.2: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.3.1 4.6.0: Qt-based console for Jupyter with support for rich media output
+dev-python/qtsass 0.1.1: Compile SASS files to Qt stylesheets
 dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/rackspace-auth-openstack 1.3 9999: Rackspace Auth Plugin for OpenStack Clients
 dev-python/rackspace-monitoring 0.6.5 0.8.0: Client library for Rackspace Cloud Monitoring
@@ -11732,7 +11735,7 @@ gnome-base/gnome-extra-apps 3.32.2: Sub-meta package for the applications of GNO
 gnome-base/gnome-flashback 3.32.0: GNOME Flashback session
 gnome-base/gnome-keyring 3.28.2 3.31.91-r1: Password and keyring managing daemon
 gnome-base/gnome-light 3.22.0 3.26.2 3.30.2 3.32.2: Meta package for GNOME-Light, merge this package to install
-gnome-base/gnome-menus 3.13.3-r1: Library for the Desktop Menu fd.o specification
+gnome-base/gnome-menus 3.13.3-r1 3.32.0: Library and layout configuration for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.32.0: The GNOME Flashback Panel
 gnome-base/gnome-session 3.32.0: Gnome session manager
@@ -12731,7 +12734,7 @@ media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.8.22-r1 2.9.8-r1 2.10.8-r1 2.10.10-r1 2.10.12 2.10.14 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.7.2 2.8.1: GREYC's Magic Image Converter
-media-gfx/gnofract4d 3.14-r1 3.14.1: A program for drawing beautiful mathematically-based images known as fractals
+media-gfx/gnofract4d 3.14-r1 3.14.1 4.0.1_p1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.32.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.32.1: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
@@ -15434,6 +15437,7 @@ net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.60-r1 3.70: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cnijfilter2 5.20 5.40 5.50 5.70: IJ Printer Driver
+net-print/cnrdrvcups-lb 5.00: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.2.12 2.2.13 2.3.0 2.3.1 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.25.11 1.25.13 1.26.0 1.26.1 9999: Cups filters
@@ -16059,7 +16063,7 @@ sci-electronics/gspiceui 1.1.0: GUI frontend for Ngspice and Gnucap
 sci-electronics/gtkwave 3.3.68 3.3.73 3.3.87 3.3.99: A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files
 sci-electronics/gwave 20190116: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.93: IRSIM is a "switch-level" simulator
-sci-electronics/iverilog 0.9.6 0.9.7 10.2: A Verilog simulation and synthesis tool
+sci-electronics/iverilog 0.9.6 0.9.7 10.2 10.3: A Verilog simulation and synthesis tool
 sci-electronics/kicad 4.0.7 5.0.1 5.1.0-r1 5.1.2-r1 5.1.4 5.1.5: Electronic Schematic and PCB design tools
 sci-electronics/kicad-footprints 5.0.1 5.1.0 5.1.2 5.1.4 5.1.5: Electronic Schematic and PCB design tools footprint libraries
 sci-electronics/kicad-i18n 5.0.1 5.1.0 5.1.2 5.1.4 5.1.5: Electronic Schematic and PCB design tools GUI translations
@@ -16226,7 +16230,7 @@ sci-libs/colamd 2.8.0: Column approximate minimum degree ordering algorithm
 sci-libs/colpack 1.0.10: C++ algorithms for specialized vertex coloring problems
 sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
 sci-libs/cxsparse 3.1.2-r1: Extended sparse matrix package
-sci-libs/dcmtk 3.6.3 3.6.4-r1: The DICOM Toolkit
+sci-libs/dcmtk 3.6.3 3.6.4-r1 3.6.5: The DICOM Toolkit
 sci-libs/dealii 9.1.1 9999: Solving partial differential equations with the finite element method
 sci-libs/deap 0.9.1 1.0.0 1.0.1: Novel evolutionary computation framework
 sci-libs/djbfft 0.76-r2: Extremely fast library for floating-point convolution

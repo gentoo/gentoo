@@ -8,4 +8,4 @@ LICENSE=GPL-3
 RDEPEND=dev-python/simplejson
 SLOT=0
 SRC_URI=https://github.com/metajack/notify-webhook/archive/v0.1.0.tar.gz -> notify-webhook-0.1.0.tar.gz
-_md5_=f815f9d725768f36df1c57fd8bdb144f
+_md5_=6ead90587f6414b7a5b9bd1236008a08

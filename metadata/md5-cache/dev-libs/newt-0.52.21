@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_6 )
 SLOT=0
 SRC_URI=https://releases.pagure.org/newt/newt-0.52.21.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2befc4a5ad47cd4e0c20f1510704d4e7
+_md5_=823269fb6453a72630b4dffb0eb01ffc

@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/hughsie/libxmlb/archive/0.1.12.tar.gz -> libxmlb-0.1.12.tar.gz
 _eclasses_=meson	b5ee7a05833ab91225acf30ffdeed006	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=20927e4cc9ec06fe385ed4ce34009700
+_md5_=9356a2573f7beda0e5b5ee04402f9d92

@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_6 )
 SLOT=0
 SRC_URI=https://github.com/mhagger/git-imerge/archive/v1.0.0.tar.gz -> git-imerge-1.0.0.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0c1ea0bd529d6107727eb8791bfd607e
+_md5_=ae2dabf4c39cb3141d41ea807d893704

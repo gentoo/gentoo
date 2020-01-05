@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0/0.17
 SRC_URI=https://github.com/ArtifexSoftware/jbig2dec/archive/0.17.tar.gz -> jbig2dec-0.17.tar.gz test? ( http://jbig2dec.sourceforge.net/ubc/jb2streams.zip )
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=f89a2dc2144a59d6ad20284ee68a2638
+_md5_=8844d78d65d3e7c03e0e3246778f850b

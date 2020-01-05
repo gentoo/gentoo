@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://pypi/i/itsdangerous/itsdangerous-1.1.0.tar.gz
 _eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=96b7d40a4ae6fe78ca8c4dbb62eb828c
+_md5_=06714eca7c19fa90dd2299fc8e663708

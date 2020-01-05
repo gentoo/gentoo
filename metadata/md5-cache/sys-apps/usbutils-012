@@ -12,4 +12,4 @@ REQUIRED_USE=python? ( ^^ ( python_single_target_python3_6 python_single_target_
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/utils/usb/usbutils/usbutils-012.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=623bd8be0910304f0987b256928f5505
+_md5_=6bc4c3bca49d82085a4eacb2617cd7fa

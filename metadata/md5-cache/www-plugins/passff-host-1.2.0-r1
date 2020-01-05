@@ -10,4 +10,4 @@ REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 
 SLOT=0
 SRC_URI=https://github.com/passff/passff-host/releases/download/1.2.0/passff.py -> passff-host-1.2.0.py https://github.com/passff/passff-host/releases/download/1.2.0/passff.json -> passff-host-1.2.0.json
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=9c6604de4eec3cead0a3a800bbb9ac89
+_md5_=2b865e9c25805e6a43afc951660e2375

@@ -10,4 +10,4 @@ RDEPEND=sys-libs/ncurses:0=[unicode?]
 SLOT=0
 SRC_URI=https://github.com/hishamhm/htop/archive/3.0.0beta5.tar.gz -> htop-3.0.0_beta5.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=6556d49e5d97a809f15f527c68446f40
+_md5_=890641ad43db1170c1e99e566917d9c2

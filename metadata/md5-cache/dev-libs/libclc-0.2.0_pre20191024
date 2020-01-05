@@ -10,4 +10,4 @@ REQUIRED_USE=|| ( video_cards_nvidia video_cards_r600 video_cards_radeonsi )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/libclc-0.2.0_pre20191024.tar.xz
 _eclasses_=llvm	5dbc14df2333105b7c006124ead9bf3f	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ba6c9b0d067e93e63cdac9b4252928c1
+_md5_=2fa1b2c084edc0a7c68412c84c842ae4

@@ -11,4 +11,4 @@ REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_6 )
 SLOT=0/6
 SRC_URI=http://www.libimobiledevice.org/downloads/libimobiledevice-1.2.0.tar.bz2 https://src.fedoraproject.org/rpms/libimobiledevice/raw/master/f/0001-userpref-GnuTLS-Fix-3.6.0-SHA1-compatibility.patch -> libimobiledevice-1.2.0-userpref-GnuTLS-Fix-3.6.0-SHA1-compatibility.patch https://src.fedoraproject.org/rpms/libimobiledevice/raw/master/f/0002-userpref-GnuTLS-Use-valid-serial-for-3.6.0.patch -> libimobiledevice-1.2.0-userpref-GnuTLS-Use-valid-serial-for-3.6.0.patch https://src.fedoraproject.org/rpms/libimobiledevice/raw/master/f/344409e1d1ad917d377b256214c5411dda82e6b0...5a85432719fb3d18027d528f87d2a44b76fd3e12.patch -> libimobiledevice-1.2.0-git.patch
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=e1c935ade880403a76bc6dcd0c6d60f3
+_md5_=13d003063f5e16f5594fc210ceff1f03

@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_6 
 SLOT=0
 SRC_URI=https://github.com/wiki2beamer/wiki2beamer/archive/wiki2beamer-v0.10.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c52b393429c8815bb958b6a5c904525b
+_md5_=e7af31a0a6417d743b849536ecfe8e30

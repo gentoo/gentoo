@@ -11,4 +11,4 @@ RDEPEND=media-libs/libsamplerate media-libs/libsndfile virtual/jack osc? ( media
 SLOT=0
 SRC_URI=http://das.nasophon.de/download/klick-0.12.2.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	scons-utils	741000d14c0b59263aac3f3cf6e39909	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=63b2b970ce4305eec50a600bd9d5748b
+_md5_=8e0c4aaa8fd6af8f52b5022cecc36f0c

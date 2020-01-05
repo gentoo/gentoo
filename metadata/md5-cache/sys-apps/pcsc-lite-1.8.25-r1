@@ -12,4 +12,4 @@ REQUIRED_USE=^^ ( udev libusb ) python? ( ^^ ( python_single_target_python2_7 py
 SLOT=0
 SRC_URI=https://pcsclite.apdu.fr/files/pcsc-lite-1.8.25.tar.bz2
 _eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=e3d41f69479b9321dacff8460c8e6d2a
+_md5_=392953d321ffb310e2ed15211df1be37

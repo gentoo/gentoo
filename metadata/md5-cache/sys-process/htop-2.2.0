@@ -10,4 +10,4 @@ RDEPEND=sys-libs/ncurses:0=[unicode?]
 SLOT=0
 SRC_URI=https://hisham.hm/htop/releases/2.2.0/htop-2.2.0.tar.gz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d23d75aacb955959d6a0a1ec4a23d385
+_md5_=ff70e39513595cb148a8caeb0ea9f96c

@@ -11,4 +11,4 @@ RDEPEND=sys-libs/zlib virtual/jpeg:0 media-libs/libpng:0 media-libs/libsdl[openg
 SLOT=0
 SRC_URI=ftp://ftp.osuosl.org/pub/freedroid/freedroidRPG-1.0/freedroidRPG-1.0rc2.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=41f25dbdedeefd0ff62b81ff30fceb21
+_md5_=e783549f20ad9426cf2fe602085da709

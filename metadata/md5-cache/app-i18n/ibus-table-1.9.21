@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/kaio/ibus-table/releases/download/1.9.21/ibus-table-1.9.21.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d5c38abbabae1405ebf66fc515dd3189
+_md5_=6e5bc477d2e61fe6959844f903203e04

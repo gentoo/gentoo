@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~prometheanfire/dist/openstack/keystone/stein/keystone.conf.sample -> keystone.conf.sample-2019.1.9999 https://dev.gentoo.org/~prometheanfire/dist/openstack/keystone/stein/keystone.policy.yaml.sample -> keystone.policy.yaml.sample-2019.1.9999
 _eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=751da261c1391186bf1777c163603dcb
+_md5_=6e766a2e9b14d009f4efe3ccfcddba09

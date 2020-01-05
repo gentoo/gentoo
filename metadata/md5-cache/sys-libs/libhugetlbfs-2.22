@@ -10,4 +10,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/libhugetlbfs/libhugetlbfs/archive/2.22.tar.gz -> libhugetlbfs-2.22.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=190d2e2608be74db6e757cead66dde4c
+_md5_=2d879e5c2b886ec9162c58ecf47e0347

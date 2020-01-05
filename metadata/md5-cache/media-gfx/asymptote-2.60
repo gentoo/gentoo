@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/asymptote/asymptote-2.60.src.tgz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	elisp-common	a1054cff648e1c6a806e17001d052176	latex-package	17f13abe0de88340745e52e6b627aee7	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c89dfd0086cccf1dd82a53048783b7ee
+_md5_=36ee4207539db0bf33b6ac88459b51a5

@@ -12,4 +12,4 @@ REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 
 SLOT=0
 SRC_URI=https://github.com/Sigil-Ebook/Sigil/archive/1.0.0.tar.gz -> sigil-1.0.0.tar.gz
 _eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c2eef212334ce1c935c1359f14fcd128
+_md5_=0a39e942b200ad05140445a7afdcd021

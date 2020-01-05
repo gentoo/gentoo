@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 
 SLOT=0
 SRC_URI=https://github.com/bulletmark/libinput-gestures/archive/2.45.tar.gz -> libinput-gestures-2.45.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=597b70a2c77de6ae9b73e721b008415b
+_md5_=c7827799da4af68869373e306e3d6c7c

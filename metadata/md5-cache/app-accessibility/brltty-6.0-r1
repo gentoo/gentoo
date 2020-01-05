@@ -12,4 +12,4 @@ REQUIRED_USE=doc? ( api ) java? ( api ) ocaml? ( api ) python? ( api || ( python
 SLOT=0
 SRC_URI=https://brltty.app/archive/brltty-6.0.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	findlib	17c71a5d96323df925f9f6db1215668a	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	usr-ldscript	766f0a506b45f02361ad1b8ca205b7e1
-_md5_=d3a1289d24b4d690f4f585c8d865857e
+_md5_=bb5c278e7abcd12f7f67ee7cbbe7911d

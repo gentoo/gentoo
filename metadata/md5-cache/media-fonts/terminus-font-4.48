@@ -10,4 +10,4 @@ REQUIRED_USE=X? ( pcf )
 SLOT=0
 SRC_URI=mirror://sourceforge/terminus-font/terminus-font-4.48/terminus-font-4.48.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	font	af70de9a23b2f34d4fe4dcb222be0346	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=3f723b936db4b213a5b22cbb6f0bc804
+_md5_=eeba83fca2dc8809ff0992898fbe1f70

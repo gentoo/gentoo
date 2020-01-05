@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Kitware/ninja/archive/v1.8.2.g81279.kitware.dyndep-1.jobserver-1.tar.gz -> ninja-1.8.2.g81279.kitware.dyndep-1.jobserver-1.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	elisp-common	a1054cff648e1c6a806e17001d052176	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=24c6c1a651fa1ec25b8091deb4d940df
+_md5_=95c85ae19807be667abcd1eac84b05b9
