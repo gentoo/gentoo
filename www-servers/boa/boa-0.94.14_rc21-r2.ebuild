@@ -1,13 +1,14 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils systemd
+EAPI=7
+inherit systemd
 
 MY_P=${P/_/}
 DESCRIPTION="A very small and very fast http daemon"
 SRC_URI="http://www.boa.org/${MY_P}.tar.gz"
 HOMEPAGE="http://www.boa.org/"
+S=${WORKDIR}/${MY_P}
 
 KEYWORDS="~amd64 ~mips ~ppc ~sparc ~x86"
 LICENSE="GPL-2"
@@ -15,21 +16,21 @@ SLOT="0"
 IUSE="doc"
 
 RDEPEND=""
-DEPEND="sys-devel/bison
+BDEPEND="sys-devel/bison
 	sys-devel/flex
 	doc? ( virtual/latex-base )"
 
-S=${WORKDIR}/${MY_P}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-texi.patch
-	epatch "${FILESDIR}"/${P}-ENOSYS.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-texi.patch
+	"${FILESDIR}"/${P}-ENOSYS.patch
+)
 
 src_compile() {
 	default
 
-	use doc || sed -i -e '/^all:/s/boa.dvi //' docs/Makefile
+	if ! use doc; then
+		sed -i -e '/^all:/s/boa.dvi //' docs/Makefile || die
+	fi
 	emake docs
 }
 
