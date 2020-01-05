@@ -11189,7 +11189,7 @@ games-emulation/caps 20071115: Support library for accessing and using C.A.P.S. 
 games-emulation/desmume 0.9.11-r2: Nintendo DS emulator
 games-emulation/dgen-sdl 1.33-r1: A Linux/SDL-Port of the famous DGen MegaDrive/Genesis-Emulator
 games-emulation/dolphin 5.0 9999: Gamecube and Wii game emulator
-games-emulation/dosbox 0.74_p20160629 0.74.3 0.75_pre4302 9999: DOS emulator
+games-emulation/dosbox 0.74.3 0.75_pre4302 9999: DOS emulator
 games-emulation/emutos 0.9.12: Single-user single-tasking operating system for 32-bit Atari computer emulators
 games-emulation/fakenes 0.5.8-r3: Portable, Open Source NES emulator which is written mostly in C
 games-emulation/fbzx 3.0.0-r1: Full Screen Sinclair Spectrum emulator
