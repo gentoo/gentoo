@@ -117,7 +117,7 @@ src_configure() {
 	)
 
 	if use server || use monolithic; then
-		mycmakeargs+=(  $(cmake_use_find_package crypt QCA2-QT5) )
+		mycmakeargs+=(  $(cmake_use_find_package crypt Qca-qt5) )
 	fi
 
 	cmake_src_configure
