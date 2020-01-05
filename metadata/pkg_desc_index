@@ -10316,7 +10316,7 @@ dev-tex/biber 2.7 2.12: A BibTeX replacement for users of biblatex
 dev-tex/biblatex 3.7-r1 3.12: Reimplementation of the bibliographic facilities provided by LaTeX
 dev-tex/biblatex-apa 7.4 7.5: APA style for BibLaTeX
 dev-tex/biblatex-gost 1.17: Biblatex styles for Russian GOST 7.0.5-2008 bibliography standard
-dev-tex/bibtex2html 1.98: A bibtex to HTML converter
+dev-tex/bibtex2html 1.98 1.99: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20190410: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r2: DVI to plain text translator
 dev-tex/cdcover 1.3b: LaTeX package used to create CD case covers

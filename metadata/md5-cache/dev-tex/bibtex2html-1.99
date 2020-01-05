@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=>=dev-lang/ocaml-3.10:=[ocamlopt?] doc? ( virtual/latex-base dev-texlive/texlive-latexextra dev-tex/hevea )
+DESCRIPTION=A bibtex to HTML converter
+EAPI=7
+HOMEPAGE=https://www.lri.fr/~filliatr/bibtex2html/
+IUSE=doc +ocamlopt
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=virtual/latex-base
+RESTRICT=test
+SLOT=0
+SRC_URI=https://www.lri.fr/~filliatr/ftp/bibtex2html/bibtex2html-1.99.tar.gz
+_md5_=8a6923a522fbad3e633df425e04dedbe
