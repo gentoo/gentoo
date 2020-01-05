@@ -4922,7 +4922,7 @@ dev-libs/libdbusmenu-qt 0.9.3_pre20160218-r3: Library providing Qt implementatio
 dev-libs/libdivecomputer 0.6.0 9999: Library for communication with dive computers from various manufacturers.
 dev-libs/libdivsufsort 2.0.1-r1 9999: Suffix-sorting library (for BWT)
 dev-libs/libdnet 1.12 1.12-r1: simplified, portable interface to several low-level networking routines
-dev-libs/libdnsres 0.1a-r2: A non-blocking DNS resolver library
+dev-libs/libdnsres 0.1a-r2 0.1a-r3: A non-blocking DNS resolver library
 dev-libs/libdshconfig 0.20.13: Library for parsing dsh.style configuration files
 dev-libs/libdynd 0.7.2: C++ dynamic multi-dimensionnal array library with Python exposure
 dev-libs/libe 0.11.0: Hyperdex libe support library

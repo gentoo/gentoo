@@ -1,12 +1,12 @@
-DEFINED_PHASES=compile install prepare
-DEPEND=sys-devel/bison sys-devel/flex doc? ( virtual/latex-base ) virtual/pkgconfig
+BDEPEND=sys-devel/bison sys-devel/flex doc? ( virtual/latex-base ) virtual/pkgconfig
+DEFINED_PHASES=compile install
 DESCRIPTION=A very small and very fast http daemon
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.boa.org/
 IUSE=doc
 KEYWORDS=~amd64 ~mips ~ppc ~sparc ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.boa.org/boa-0.94.14rc21.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=16e3abaa176c6250787b3faa69fbe172
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=ee72daf7b336dbb96d5c5e92cc16c8d6

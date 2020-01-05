@@ -1,7 +1,7 @@
-DEFINED_PHASES=compile configure install prepare test
-DEPEND=lz4? ( app-arch/lz4:0= ) lzo? ( dev-libs/lzo:2= ) >=app-portage/elt-patches-20170815
+DEFINED_PHASES=configure
+DEPEND=lz4? ( app-arch/lz4:0= ) lzo? ( dev-libs/lzo:2= )
 DESCRIPTION=dev-util/squashdelta delta merge tool
-EAPI=5
+EAPI=7
 HOMEPAGE=https://github.com/mgorny/squashmerge/
 IUSE=lz4 +lzo
 KEYWORDS=~amd64 ~x86
@@ -10,5 +10,4 @@ RDEPEND=lz4? ( app-arch/lz4:0= ) lzo? ( dev-libs/lzo:2= ) dev-util/xdelta:3
 REQUIRED_USE=|| ( lz4 lzo )
 SLOT=0
 SRC_URI=https://github.com/mgorny/squashmerge/releases/download/v0.1/squashmerge-0.1.tar.bz2
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	autotools-utils	95db0904ad0f62535e18e5ccb67cce5e	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=c00b492790cf02532e06d4a3a334a476
+_md5_=b4a0e56f91ef5f3d09868b22d7b0ae47

@@ -1,11 +1,12 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure prepare unpack
-DEPEND=x11-libs/libtinynotify:0= ~x11-libs/libtinynotify-cli-9999 x11-libs/libtinynotify-systemwide:0= dev-util/gtk-doc virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=x11-libs/libtinynotify:0= ~x11-libs/libtinynotify-cli-9999 x11-libs/libtinynotify-systemwide:0= dev-util/gtk-doc virtual/pkgconfig
 DESCRIPTION=A system-wide variant of tinynotify-send
-EAPI=5
+EAPI=7
 HOMEPAGE=https://github.com/mgorny/tinynotify-send/
 LICENSE=BSD
 PROPERTIES=live
 RDEPEND=x11-libs/libtinynotify:0= ~x11-libs/libtinynotify-cli-9999 x11-libs/libtinynotify-systemwide:0=
 SLOT=0
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=795b992ed9afec0a0f5b8a3bd1b53d2a
+_md5_=7cb89c23156b3c0e4e0d4df248d6da49

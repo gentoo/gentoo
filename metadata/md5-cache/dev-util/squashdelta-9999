@@ -1,7 +1,8 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure prepare unpack
-DEPEND=lz4? ( app-arch/lz4:0= ) lzo? ( dev-libs/lzo:2= ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=lz4? ( app-arch/lz4:0= ) lzo? ( dev-libs/lzo:2= )
 DESCRIPTION=Efficient (partially uncompressed) SquashFS binary delta tool
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/mgorny/squashdelta/
 IUSE=lz4 +lzo
 LICENSE=BSD public-domain
@@ -10,4 +11,4 @@ RDEPEND=lz4? ( app-arch/lz4:0= ) lzo? ( dev-libs/lzo:2= ) dev-util/xdelta:3
 REQUIRED_USE=|| ( lz4 lzo )
 SLOT=0
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=402751767b947f72084bc2a47252a940
+_md5_=e9f05efeb95f597c6d69eca16691f43c

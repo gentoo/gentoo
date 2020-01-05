@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/libevent
+DESCRIPTION=A non-blocking DNS resolver library
+EAPI=7
+HOMEPAGE=https://www.monkey.org/~provos/libdnsres/
+IUSE=static-libs
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=BSD-4
+RDEPEND=dev-libs/libevent
+SLOT=0
+SRC_URI=https://www.monkey.org/~provos/libdnsres-0.1a.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=f48d348079fe603b335611d277956fa0
