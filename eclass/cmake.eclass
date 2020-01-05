@@ -294,6 +294,8 @@ _cmake_modify-cmakelists() {
 cmake_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	# FIXME: workaround from cmake-utils; use current working directory instead, bug #704524
+	# esp. test with 'special' pkgs like: app-arch/brotli, media-gfx/gmic, net-libs/quiche
 	pushd "${S}" > /dev/null || die
 
 	default_src_prepare
