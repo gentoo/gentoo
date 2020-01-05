@@ -569,8 +569,8 @@ cmake_build() {
 		emake)
 			[[ -e Makefile ]] || die "Makefile not found. Error during configure stage."
 			case ${CMAKE_VERBOSE} in
-				OFF) emake VERBOSE=1 "$@" ;;
-				*) emake "$@" ;;
+				OFF) emake "$@" ;;
+				*) emake VERBOSE=1 "$@" ;;
 			esac
 			;;
 		ninja)
