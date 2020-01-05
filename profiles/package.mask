@@ -707,11 +707,6 @@ sci-astronomy/casacore
 app-laptop/nvidiabl
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained.  No license and potential copyright infringement.
-# Removal in 30 days.  Bug #634318.
-games-misc/fortune-mod-smac
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Not updated since 2009 and 2004 respectively.  Suspicious license.
 # Removal in 30 days.  Bugs #691084 and #701732.
 games-misc/fortune-mod-gentoo-dev
