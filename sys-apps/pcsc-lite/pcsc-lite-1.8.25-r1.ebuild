@@ -2,9 +2,10 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
-inherit python-single-r1 systemd udev user multilib-minimal
+PYTHON_COMPAT=( python{3_6,3_7} )
+
+inherit python-single-r1 systemd udev multilib-minimal
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
 HOMEPAGE="https://pcsclite.apdu.fr/"
@@ -20,19 +21,23 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~spa
 # This is called libusb so that it doesn't fool people in thinking that
 # it is _required_ for USB support. Otherwise they'll disable udev and
 # that's going to be worse.
-IUSE="python libusb policykit selinux systemd +udev"
+IUSE="libusb policykit selinux systemd +udev"
 
-REQUIRED_USE="^^ ( udev libusb )
-	python? ( ${PYTHON_REQUIRED_USE} )"
+REQUIRED_USE="^^ ( udev libusb ) ${PYTHON_REQUIRED_USE}"
 
 # No dependencies need the MULTILIB_DEPS because the libraries are actually
 # standalone, the deps are only needed for the daemon itself.
 DEPEND="libusb? ( virtual/libusb:1 )
 	udev? ( virtual/udev )
 	policykit? ( >=sys-auth/polkit-0.111 )
-	python? ( ${PYTHON_DEPS} )"
+	acct-group/openct
+	acct-group/pcscd
+	acct-user/pcscd
+	${PYTHON_DEPS}"
+
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-pcscd )"
+
 BDEPEND="virtual/pkgconfig"
 
 PATCHES=(
@@ -42,10 +47,7 @@ PATCHES=(
 DOCS=( AUTHORS HELP README SECURITY ChangeLog )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
-	enewgroup openct # make sure it exists
-	enewgroup pcscd
-	enewuser pcscd -1 -1 /run/pcscd pcscd,openct
+	python-single-r1_pkg_setup
 }
 
 multilib_src_configure() {
@@ -73,13 +75,7 @@ multilib_src_install_all() {
 		newins "${FILESDIR}"/99-pcscd-hotplug-r1.rules 99-pcscd-hotplug.rules
 	fi
 
-	for f in "${ED}/usr/bin/pcsc-spy"; do
-		if use python; then
-			python_fix_shebang "${f}"
-		else
-			rm "${f}" || die
-		fi
-	done
+	python_fix_shebang "${ED}"/usr/bin/pcsc-spy
 }
 
 pkg_postinst() {
