@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
-inherit fcaps flag-o-matic multilib python-any-r1 qmake-utils user xdg-utils cmake-utils
+inherit fcaps flag-o-matic multilib python-any-r1 qmake-utils user xdg-utils cmake
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -168,15 +168,15 @@ src_configure() {
 		-DENABLE_ZLIB=$(usex zlib)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# FAQ is not required as is installed from help/faq.txt
 	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*
