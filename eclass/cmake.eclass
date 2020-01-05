@@ -566,8 +566,10 @@ cmake_build() {
 	case ${CMAKE_MAKEFILE_GENERATOR} in
 		emake)
 			[[ -e Makefile ]] || die "Makefile not found. Error during configure stage."
-			[[ "${CMAKE_VERBOSE}" != "OFF" ]] && local verbosity="VERBOSE=1"
-			emake "${verbosity}" "$@"
+			case ${CMAKE_VERBOSE} in
+				OFF) emake VERBOSE=1 "$@" ;;
+				*) emake "$@" ;;
+			esac
 			;;
 		ninja)
 			[[ -e build.ninja ]] || die "build.ninja not found. Error during configure stage."
