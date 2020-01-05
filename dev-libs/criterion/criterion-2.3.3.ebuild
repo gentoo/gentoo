@@ -1,10 +1,12 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+PYTHON_COMPAT=( python3_{6,7} )
+
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit cmake
+inherit cmake python-any-r1
 
 DESCRIPTION="Cross platform unit testing framework for C and C++"
 HOMEPAGE="https://github.com/Snaipe/Criterion"
@@ -18,12 +20,23 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/nanomsg:="
 DEPEND="${RDEPEND}
-	test? ( dev-util/cram )"
+	test? (
+		$(python_gen_any_dep 'dev-util/cram[${PYTHON_USEDEP}]')
+	)"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES="${FILESDIR}/${PN}-libdir.patch"
 S="${WORKDIR}/${PN}-v${PV}"
 
 QA_EXECSTACK="usr/lib*/libcriterion.so*"
+
+python_check_deps() {
+	has_version "dev-util/cram[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
 
 src_configure() {
 	local mycmakeargs=(
@@ -39,16 +52,4 @@ src_compile() {
 	if use test; then
 		cmake_build criterion_tests
 	fi
-}
-
-src_install() {
-	cmake_src_install
-
-	if [[ "/usr/lib" != "/usr/$(get_libdir)" ]]; then
-		mkdir -p "${D}/usr/$(get_libdir)" || die
-		mv "${D}"/usr/lib/libcriterion.so* "${D}/usr/$(get_libdir)/" || die
-	fi
-
-	sed -i "s@${prefix}/lib@${prefix}/$(get_libdir)@g" \
-		"${D}/usr/share/pkgconfig/criterion.pc" || die
 }
