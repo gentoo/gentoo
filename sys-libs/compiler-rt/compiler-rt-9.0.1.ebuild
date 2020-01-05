@@ -32,6 +32,10 @@ BDEPEND="
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+python_check_deps() {
+	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
+
 pkg_pretend() {
 	if ! use clang && ! tc-is-clang; then
 		ewarn "Building using a compiler other than clang may result in broken atomics"
