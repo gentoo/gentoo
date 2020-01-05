@@ -8937,7 +8937,7 @@ dev-python/sshtunnel 0.1.4-r2: Pure python SSH tunnels
 dev-python/ssl-fetch 0.4 9999: A small convenience library for fetching files securely
 dev-python/stapler 1.0_pre20191215: Suite of tools for PDF files manipulation written in Python
 dev-python/statsd 3.2.1 3.3.0: A simple statsd client
-dev-python/statsmodels 0.9.0 9999: Statistical computations and models for use with SciPy
+dev-python/statsmodels 0.9.0 0.10.2 9999: Statistical computations and models for use with SciPy
 dev-python/steadymark 0.5.3: Markdown-based test runner for python
 dev-python/stestr 2.1.0: A parallel Python test runner built around subunit
 dev-python/stevedore 1.25.1 1.28.0 1.30.1: Manage dynamic plugins for Python applications
@@ -15372,7 +15372,7 @@ net-news/liferea 1.12.3 1.12.5a 1.12.6b 1.12.7: News Aggregator for RDF/RSS/CDF/
 net-news/newsboat 2.13 2.18: An RSS/Atom feed reader for text terminals
 net-news/quiterss 0.18.12 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
-net-news/rssguard 3.5.9: Tiny RSS and Atom feed reader
+net-news/rssguard 3.5.9-r1: Tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
 net-news/rsstool 1.0.1_rc2: cmdline tool to read, parse, merge, and write RSS (and Atom) feeds
 net-news/snownews 1.5.12-r1 1.5.13 1.6.10: Command-line RSS feed reader
@@ -17639,7 +17639,7 @@ sys-kernel/linux-docs 4.19: Developer documentation generated from the Linux ker
 sys-kernel/linux-firmware 20190603 20190815 20190904 20190923 20191008 20191022 20191108 20191215 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2 5.3 5.3-r1 5.4: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.1_p7 5.2_p8 5.3_p8 5.4_p1 5.4_p2 5.4_p3: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.1_p7 5.2_p8 5.3_p8 5.4_p1 5.4_p2 5.4_p3 5.4_p4: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
@@ -17709,7 +17709,7 @@ sys-libs/libxcrypt 2.4 4.4.10-r1: Extended crypt library for descrypt, md5crypt,
 sys-libs/llvm-libunwind 7.1.0 8.0.1 9.0.0 9.0.1 10.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.5: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.22 1.1.23 1.1.24 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.23 1.1.24 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 1.0.2 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/native-uuid 1.0: .pc file for uuid
 sys-libs/ncurses 6.1_p20181020 6.1_p20190609: console display library
