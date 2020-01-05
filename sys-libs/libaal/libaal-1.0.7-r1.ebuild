@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/reiser4/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/7"
-KEYWORDS="amd64 ~arm ~ppc ~ppc64 -sparc ~x86"
+KEYWORDS="amd64 ~arm ppc ~ppc64 -sparc ~x86"
 IUSE="static-libs"
 
 DEPEND="virtual/os-headers"
