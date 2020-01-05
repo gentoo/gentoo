@@ -11,7 +11,7 @@ SRC_URI="https://github.com/eXeC64/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT-with-advertising"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X +freeimage jpeg png svg test tiff wayland"
+IUSE="X +freeimage jpeg png +svg test tiff wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( X wayland )
