@@ -707,12 +707,6 @@ sci-astronomy/casacore
 app-laptop/nvidiabl
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Not updated since 2009 and 2004 respectively.  Suspicious license.
-# Removal in 30 days.  Bugs #691084 and #701732.
-games-misc/fortune-mod-gentoo-dev
-games-misc/fortune-mod-gentoo-forums
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # The plugin is broken with multiple dependencies.  It is also dead
 # upstream.  Removing per maintainer's request.
 # Removal in 30 days.  Bug #314309.
