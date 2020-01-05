@@ -5384,8 +5384,12 @@ net-analyzer/net-snmp:ucd-compat - Build UCD compatibility library. Increases si
 net-analyzer/netdata:compression - Enable compression via zlib
 net-analyzer/netdata:dbengine - Enable the Netdata database engine
 net-analyzer/netdata:ipmi - Install sys-apps/ipmitool required for monitoring IPMI sensors.
+net-analyzer/netdata:jsonc - Enable optimization of JSON using dev-libs/json-c
+net-analyzer/netdata:kinesis - Enable support for Amazon Kenesis as a backend
+net-analyzer/netdata:mongodb - Enable support for the mongodb backend
 net-analyzer/netdata:nfacct - Enable the nfacct plugin
 net-analyzer/netdata:nodejs - Enable use of nodejs (which some plugins use)
+net-analyzer/netdata:prometheus - Enable support for the Prometheus remote write backend
 net-analyzer/netdata:tor - Enable monitoring of tor
 net-analyzer/netdata:xen - Enable monitoring of xen
 net-analyzer/netperf:demo - Emit interim results during the run. May affect results

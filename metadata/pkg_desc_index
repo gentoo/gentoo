@@ -8138,7 +8138,7 @@ dev-python/myghty 1.2-r1: Template and view-controller framework derived from HT
 dev-python/myghtyutils 0.52-r1: Set of utility classes used by Myghty templating
 dev-python/mygpoclient 1.8: A gpodder.net client library
 dev-python/mypy 0.700 0.701 0.740 0.750: Optional static typing for Python
-dev-python/mypy_extensions 0.4.1: Optional static typing for Python
+dev-python/mypy_extensions 0.4.1 0.4.3: Optional static typing for Python
 dev-python/mysql-connector-python 2.1.7-r1 8.0.18: Python client library for MariaDB/MySQL
 dev-python/mysql-python 1.2.3-r1 1.2.5-r1 1.2.5-r2: Python interface to MySQL
 dev-python/mysqlclient 1.3.14-r1 1.4.6: Fork of MySQL-python
@@ -14330,7 +14330,7 @@ net-analyzer/nessus-agent-bin 7.4.2 7.5.0: A remote security scanner for Linux -
 net-analyzer/nessus-bin 8.5.2 8.8.0: A remote security scanner for Linux
 net-analyzer/net-snmp 5.8-r1 5.8-r2 5.8-r5 5.8.1_pre1 99999999: Software for generating and retrieving SNMP data
 net-analyzer/netcat 110-r9 110.20180111: the network swiss army knife
-net-analyzer/netdata 1.18.1-r1 1.19.0-r1 9999: Linux real time system monitoring, done right!
+net-analyzer/netdata 1.18.1-r1 1.19.0-r1 1.19.0-r2 9999: Linux real time system monitoring, done right!
 net-analyzer/netdiscover 0.3_beta6-r3: An active/passive address reconnaissance tool
 net-analyzer/nethogs 0.8.5-r1: A small 'net top' tool, grouping bandwidth by process
 net-analyzer/neti 2.0-r1: NETI@Home research project from GATech
