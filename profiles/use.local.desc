@@ -3032,6 +3032,7 @@ dev-util/sccache:s3 - Enable Amazon S3 support
 dev-util/schroot:btrfs - Enable support for chroots using btrfs snapshots
 dev-util/schroot:dchroot - Enables the building of a wrapper named "dchroot", replacing sys-apps/dchroot
 dev-util/schroot:lvm - Enable support for chroots using LVM snapshots
+dev-util/schroot:zfs - Enable support for chroots using ZFS shapshots/clones
 dev-util/spirv-llvm-translator:tools - Install the command-line translator llvm-spirv
 dev-util/strace:aio - Enable dev-libs/libaio support for tracing Asynchronous I/O operations
 dev-util/strace:elfutils - Enable stack backtraces (-k flag) via dev-libs/elfutils

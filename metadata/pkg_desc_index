@@ -9868,7 +9868,7 @@ dev-ruby/minitest-hooks 1.5.0: Adds around and before_all/after_all/around_all h
 dev-ruby/minitest-power_assert 0.3.0: Power Assert for Minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
 dev-ruby/mixlib-shellout 2.4.4 3.0.4: Run external commands on Unix or Windows
-dev-ruby/mocha 0.14.0 1.8.0 1.9.0 1.10.0 1.10.1 1.10.2 1.11.1: Mocking and stubbing using a syntax like that of JMock and SchMock
+dev-ruby/mocha 0.14.0 1.8.0 1.9.0 1.10.2 1.11.1 1.11.2: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/moneta 1.1.0 1.1.1: A unified interface to key/value stores
 dev-ruby/mqtt 0.5.0: Pure Ruby gem that implements the MQTT protocol
 dev-ruby/msgpack 1.2.10 1.3.0 1.3.1: Binary-based efficient data interchange format for ruby binding
@@ -10749,7 +10749,7 @@ dev-util/sasm 2.2-r1 3.10.1: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/scanmem 0.17: Locate and modify variables in executing processes
 dev-util/sccache 0.2.8-r2 0.2.9 0.2.10 0.2.12: ccache/distcc like tool with support for rust and cloud storage
-dev-util/schroot 1.6.10-r4 1.6.10-r5: Utility to execute commands in a chroot environment
+dev-util/schroot 1.6.10-r4 1.6.10-r5 1.6.10_p7: Utility to execute commands in a chroot environment
 dev-util/scons 3.1.1 3.1.2: Extensible Python-based build utility
 dev-util/sel 0.08.4-r2: A filemanager for shell scripts
 dev-util/serialtalk 1.2 9999: simple command-line tool to talk to serial devices
