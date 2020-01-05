@@ -9,8 +9,12 @@
     <flag name="compression">Enable compression via zlib</flag>
     <flag name="dbengine">Enable the Netdata database engine</flag>
     <flag name="ipmi">Install <pkg>sys-apps/ipmitool</pkg> required for monitoring IPMI sensors.</flag>
+    <flag name="jsonc">Enable optimization of JSON using <pkg>dev-libs/json-c</pkg></flag>
+    <flag name="kinesis">Enable support for Amazon Kenesis as a backend</flag>
+    <flag name="mongodb">Enable support for the mongodb backend</flag>
     <flag name="nfacct">Enable the nfacct plugin</flag>
     <flag name="nodejs">Enable use of nodejs (which some plugins use)</flag>
+    <flag name="prometheus">Enable support for the Prometheus remote write backend</flag>
     <flag name="tor">Enable monitoring of tor</flag>
     <flag name="xen">Enable monitoring of xen</flag>
   </use>
