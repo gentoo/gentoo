@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 virtualx xdg
+inherit distutils-r1 eutils virtualx xdg
 
 COMMIT=bd600c20921afff7b02fc0a76ab79242ebd0896d
 
@@ -18,8 +18,8 @@ SRC_URI="https://github.com/edyoung/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.g
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+help video"
-REQUIRED_USE="test? ( help )"
+IUSE="+doc"
+REQUIRED_USE="test? ( doc )"
 
 COMMON_DEPEND="
 	media-libs/libpng:0=
@@ -27,14 +27,15 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	x11-libs/gtk+:3[introspection]
-	video? ( media-video/ffmpeg[vpx,zlib] )"
+	x11-libs/gtk+:3[introspection]"
 BDEPEND="virtual/pkgconfig"
 DEPEND="${COMMON_DEPEND}
-	help? ( app-text/docbook-xsl-stylesheets
+	doc? (
+		app-text/docbook-xsl-stylesheets
 		dev-python/pygobject[${PYTHON_USEDEP}]
 		dev-libs/libxslt
-		x11-libs/gtk+:3[introspection] )"
+		x11-libs/gtk+:3[introspection]
+	)"
 
 distutils_enable_tests pytest
 
@@ -49,7 +50,7 @@ python_test() {
 }
 
 python_compile_all() {
-	if use help; then
+	if use doc; then
 		ln -s "${BUILD_DIR}"/lib/fract4d/*.so fract4d/ || die
 		"${EPYTHON}" createdocs.py || die
 	fi
@@ -58,7 +59,12 @@ python_compile_all() {
 python_install_all() {
 	distutils-r1_python_install_all
 	rm -r "${ED}"/usr/share/doc/${PN} || die
-	if ! use help; then
+	if ! use doc; then
 		rm -r "${ED}"/usr/share/gnome/help/${PN} || die
 	fi
+}
+
+pkg_postinst() {
+	elog "Optional missing features:"
+	optfeature "creating videos" media-video/ffmpeg[vpx,zlib]
 }

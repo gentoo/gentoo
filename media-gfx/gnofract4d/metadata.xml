@@ -9,7 +9,6 @@
 		<remote-id type="github">edyoung/gnofract4d</remote-id>
 	</upstream>
 	<use>
-		<flag name="help">Install user manual</flag>
-		<flag name="video">Support creation of videos</flag>
+		<flag name="doc">Install user manual</flag>
 	</use>
 </pkgmetadata>
