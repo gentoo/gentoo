@@ -706,12 +706,6 @@ sci-astronomy/casacore
 # Removal in 30 days.  Bug #602024.
 app-laptop/nvidiabl
 
-# Michał Górny <mgorny@gentoo.org> (2019-12-05)
-# Unmaintained since 2016.  Last touched in 2018.  Pending bump since
-# Feb 2019.  Does not build anymore.
-# Removal in 30 days.  Bug #695580.
-net-wireless/ndiswrapper
-
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Added in 2013 and not updated since.  Unmaintained upstream since
 # inception.  Never had any keywords.
