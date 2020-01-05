@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ EGIT_REPO_URI="https://github.com/eXeC64/imv"
 LICENSE="MIT-with-advertising"
 SLOT="0"
 KEYWORDS=""
-IUSE="X +freeimage jpeg png svg test tiff wayland"
+IUSE="X +freeimage jpeg png +svg test tiff wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( X wayland )
