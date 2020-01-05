@@ -1,4 +1,4 @@
-BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
+BDEPEND=dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
 DEPEND=dev-libs/boost:= sci-geosciences/laszip sci-libs/libgeotiff:= gdal? ( sci-libs/gdal:= )
 DESCRIPTION=C/C++ library for manipulating the LAS LiDAR format common in GIS
@@ -11,5 +11,5 @@ RDEPEND=dev-libs/boost:= sci-geosciences/laszip sci-libs/libgeotiff:= gdal? ( sc
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/libLAS/libLAS/archive/1.8.1.tar.gz -> liblas-1.8.1.tar.gz
-_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=dcd13e39d3455fb4e2112faceaab1256
+_eclasses_=cmake	7b250250bd1c3cc90800ed668fb87825	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=c37fc4951b2e36a83caea86b2e131030
