@@ -1,9 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit autotools-utils
+EAPI=7
 
 DESCRIPTION="dev-util/squashdelta delta merge tool"
 HOMEPAGE="https://github.com/mgorny/squashmerge/"
@@ -13,6 +11,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="lz4 +lzo"
+# SquashDelta does not make much sense without a compression algo.
+REQUIRED_USE="|| ( lz4 lzo )"
 
 COMMON_DEPEND="
 	lz4? ( app-arch/lz4:0= )
@@ -21,16 +21,13 @@ RDEPEND="${COMMON_DEPEND}
 	dev-util/xdelta:3"
 DEPEND=${COMMON_DEPEND}
 
-# SquashDelta does not make much sense without a compression algo.
-REQUIRED_USE="|| ( lz4 lzo )"
-
 DOCS=( FORMAT )
 
 src_configure() {
-	local myeconfargs=(
+	local myconf=(
 		$(use_enable lz4)
 		$(use_enable lzo)
 	)
 
-	autotools-utils_src_configure
+	econf "${myconf[@]}"
 }
