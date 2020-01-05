@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_6 )
 SCONS_MIN_VERSION="2.3.0"
 
 inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs

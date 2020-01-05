@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ EAPI=7
 # consistency we have to force it to use one that we specify. The
 # highest version the configure script will accept is python-3.3, but
 # that's on it's way out, so we prefer to stick with python-2.7 for now.
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
 inherit python-single-r1
 

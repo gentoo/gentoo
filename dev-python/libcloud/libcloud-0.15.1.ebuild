@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 # py3 dropped due to failing tests once lockfile installed
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1

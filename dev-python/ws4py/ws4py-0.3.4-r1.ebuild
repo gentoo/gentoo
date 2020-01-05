@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # We could depend on dev-python/cherrypy when USE=server, but
@@ -7,7 +7,7 @@
 # pypy is viable but better with a cutdown set of deps
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE="threads?"
 
 inherit distutils-r1
