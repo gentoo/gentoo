@@ -11641,7 +11641,7 @@ games-strategy/darwinia-demo 1.3.0-r1: Darwinia, the hyped indie game of the yea
 games-strategy/defcon-demo 1.60-r1: Global thermonuclear war simulation with multiplayer support
 games-strategy/dominions2 2.16: Dominions 2: The Ascension Wars is an epic turn-based fantasy strategy game
 games-strategy/dopewars 1.5.12-r3: Re-Write of the game Drug Wars
-games-strategy/dunelegacy 0.96.3: Updated clone of Westood Studios' Dune2
+games-strategy/dunelegacy 0.96.4: Updated clone of Westood Studios' Dune II
 games-strategy/endless-sky 0.9.6: Space exploration, trading & combat in the tradition of Terminal Velocity
 games-strategy/freeciv 2.5.11-r1 2.5.12 2.6.0-r1 2.6.1: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.6-r1: An open source clone of the game Colonization
@@ -13481,7 +13481,7 @@ media-plugins/vamp-libxtract-plugins 0.6.6.20121204: Vamp plugin encapsulating m
 media-plugins/vco-plugins 0.3.0-r1: SAW-VCO ladspa plugin package. Anti-aliased oscillators
 media-plugins/vdr-actuator 1.2.1 2.4.1_pre20181025: VDR plugin: control an hor. or ver. actuator attached trough the parallel port
 media-plugins/vdr-atscepg 0.3.0-r1: VDR plugin: receive schedule and event information from ATSC broadcasts
-media-plugins/vdr-avards 0.2.4: VDR Plugin: Automatic Video Aspect Ratio Detection and Signaling
+media-plugins/vdr-avards 0.2.4 0.2.6: VDR Plugin: Automatic Video Aspect Ratio Detection and Signaling
 media-plugins/vdr-beep 0.1.2: VDR plugin: Use the PC speaker to signalize some events (shutdown, cut done ...)
 media-plugins/vdr-bgprocess 0.1.0: VDR plugin: Collect information about background process status
 media-plugins/vdr-browse 0.2.0: VDR plugin: browse now/next epg info while keep watching the current channel
@@ -17045,7 +17045,7 @@ sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags
 sys-apps/paxctld 1.2.3: PaX flags maintenance daemon
 sys-apps/pciutils 3.5.6-r1 3.6.1 3.6.2-r1: Various utilities dealing with the PCI bus
 sys-apps/pcmciautils 018_p8-r1: PCMCIA userspace utilities for Linux
-sys-apps/pcsc-lite 1.8.25-r1: PC/SC Architecture smartcard middleware library
+sys-apps/pcsc-lite 1.8.25-r1 1.8.26: PC/SC Architecture smartcard middleware library
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.3: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
