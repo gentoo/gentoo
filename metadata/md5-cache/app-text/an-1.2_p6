@@ -1,0 +1,12 @@
+DEFINED_PHASES=install prepare
+DEPEND=dev-libs/icu:= sys-apps/miscfiles[-minimal] virtual/pkgconfig
+DESCRIPTION=Very fast anagram generator with dictionary lookup
+EAPI=7
+HOMEPAGE=https://packages.debian.org/unstable/games/an
+KEYWORDS=~amd64 ~hppa ~ppc ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/icu:= sys-apps/miscfiles[-minimal]
+SLOT=0
+SRC_URI=mirror://debian/pool/main/a/an/an_1.2.orig.tar.xz mirror://debian/pool/main/a/an/an_1.2-6.debian.tar.xz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=f8175990a5b9f586be6fa99c44068cf9
