@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake gnome2-utils pax-utils systemd user
+inherit cmake xdg-utils pax-utils systemd user
 
 if [[ ${PV} != *9999* ]]; then
 	MY_P=${PN}-${PV/_/-}
@@ -161,11 +161,11 @@ pkg_postinst() {
 		einfo "Consider installing it if you want to run quassel within identd daemon."
 	fi
 
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_config() {
