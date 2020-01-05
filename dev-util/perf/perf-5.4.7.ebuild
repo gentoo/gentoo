@@ -75,11 +75,6 @@ S="${S_K}/tools/perf"
 
 CONFIG_CHECK="~PERF_EVENTS ~KALLSYMS"
 
-pkg_setup() {
-	linux-info_pkg_setup
-	use python && python-r1_pkg_setup
-}
-
 src_unpack() {
 	local paths=(
 		tools/arch tools/build tools/include tools/lib tools/perf tools/scripts
