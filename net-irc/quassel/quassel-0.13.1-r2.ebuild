@@ -25,6 +25,7 @@ snorenotify +ssl syslog urlpreview X"
 SERVER_DEPEND="
 	acct-group/quassel
 	acct-user/quassel
+	dev-qt/qtscript:5
 	crypt? ( app-crypt/qca:2[ssl] )
 	ldap? ( net-nds/openldap )
 	postgres? ( dev-qt/qtsql:5[postgres] )
@@ -89,8 +90,12 @@ REQUIRED_USE="
 	syslog? ( || ( server monolithic ) )
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt5.14.patch" )
+
 src_configure() {
 	local mycmakeargs=(
+		-DUSE_QT4=OFF
+		-DUSE_QT5=ON
 		-DUSE_CCACHE=OFF
 		-DCMAKE_SKIP_RPATH=ON
 		-DEMBED_DATA=OFF
@@ -109,7 +114,7 @@ src_configure() {
 	)
 
 	if use server || use monolithic; then
-		mycmakeargs+=( $(cmake_use_find_package crypt Qca-qt5) )
+		mycmakeargs+=( $(cmake_use_find_package crypt QCA2-QT5) )
 	fi
 
 	cmake_src_configure
