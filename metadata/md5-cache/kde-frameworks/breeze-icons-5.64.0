@@ -10,5 +10,5 @@ LICENSE=LGPL-3
 RESTRICT=!test? ( test )
 SLOT=5/5.64
 SRC_URI=mirror://kde/stable/frameworks/5.64/breeze-icons-5.64.0.tar.xz
-_eclasses_=cmake	b46f14aaf01cc53227dc3010b78d11df	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	kde.org	12c2d7da2a75330ff5de0154686dbf4b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake	7b250250bd1c3cc90800ed668fb87825	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	kde.org	12c2d7da2a75330ff5de0154686dbf4b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=1b3bd5a7a7e8387aec330816718a2b53
