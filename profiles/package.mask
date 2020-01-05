@@ -707,12 +707,6 @@ sci-astronomy/casacore
 app-laptop/nvidiabl
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Added in 2013 and not updated since.  Unmaintained upstream since
-# inception.  Never had any keywords.
-# Removal in 30 days.  Bug #701462.
-net-dns/pdns-ldap-backend
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Unmaintained.  Incorrect license and potential copyright infringement.
 # Removal in 30 days.  Bug #634332.
 games-misc/fortune-mod-powerpuff
