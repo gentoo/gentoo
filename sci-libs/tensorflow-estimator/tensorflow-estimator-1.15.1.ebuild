@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 MY_PN="estimator"
 MY_PV=${PV/_rc/-rc}
 MY_P=${MY_PN}-${MY_PV}
