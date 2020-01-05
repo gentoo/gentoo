@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,6 +28,7 @@ RESTRICT="!test? ( test )"
 # We replace the original ipmi plugins with the freeipmi_ plugin which at least works.
 DEPEND_COM="
 	acct-user/munin
+	acct-user/munin-async
 	acct-group/munin
 	dev-lang/perl:=[berkdb]
 	dev-perl/DBI
