@@ -8,7 +8,7 @@ DESCRIPTION="Minimal image viewer designed for tiling window manager users"
 HOMEPAGE="https://github.com/eXeC64/imv"
 EGIT_REPO_URI="https://github.com/eXeC64/imv"
 
-LICENSE="GPL-2+"
+LICENSE="MIT-with-advertising"
 SLOT="0"
 KEYWORDS=""
 IUSE="X +freeimage jpeg png svg test tiff wayland"
