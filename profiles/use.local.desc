@@ -8820,13 +8820,6 @@ www-servers/civetweb:server - Build standalone server
 www-servers/fnord:auth - Enable HTTP authentication support
 www-servers/gatling:diet - Compile against dev-libs/dietlibc
 www-servers/h2o:mruby - Enable support for mruby
-www-servers/hiawatha:cache - Enable caching of content
-www-servers/hiawatha:monitor - Pull in www-apps/hiawatha-monitor
-www-servers/hiawatha:rewrite - Enable the rewrite toolkit
-www-servers/hiawatha:rproxy - Enable reverse proxy support
-www-servers/hiawatha:ssl - Enable TLS support via net-libs/mbedtls
-www-servers/hiawatha:tomahawk - Enable Tomahawk control server
-www-servers/hiawatha:xslt - Enable XSLT support. This is also needed for directory listings
 www-servers/lighttpd:libev - Enable fdevent handler
 www-servers/lighttpd:mmap - Use mmap with files owned by lighttpd. This is a dangerous option as it may allow local users to trigger SIGBUS crashes.
 www-servers/lighttpd:rrdtool - Enable rrdtool support via mod_rrdtool

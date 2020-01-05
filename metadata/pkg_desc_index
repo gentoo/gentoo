@@ -8735,7 +8735,6 @@ dev-python/qscintilla-python 2.10.8 2.11.3 2.11.4: Python bindings for QScintill
 dev-python/qtawesome 0.4.4 0.5.2: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.3.1 4.6.0: Qt-based console for Jupyter with support for rich media output
 dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
-dev-python/quixote 2.8: Python HTML templating framework for developing web applications
 dev-python/rackspace-auth-openstack 1.3 9999: Rackspace Auth Plugin for OpenStack Clients
 dev-python/rackspace-monitoring 0.6.5 0.8.0: Client library for Rackspace Cloud Monitoring
 dev-python/rackspace-monitoring-cli 0.6.10: Command Line Utility for Rackspace Cloud Monitoring (MaaS)
@@ -11354,8 +11353,6 @@ games-misc/fortune-mod-firefly 2.1.1: Quotes from FireFly
 games-misc/fortune-mod-flashrider 1.10: Quotes from Prolinux articles and comments
 games-misc/fortune-mod-futurama 0.2: Quotes from the TV-Series -Futurama-
 games-misc/fortune-mod-fvl 20030120: Quotes from Felix von Leitner (fefe)
-games-misc/fortune-mod-gentoo-dev 20090306: Fortune database of #gentoo-dev quotes
-games-misc/fortune-mod-gentoo-forums 20041207: Fortune database of quotes from forums.gentoo.org
 games-misc/fortune-mod-hitchhiker 0.1: Quotes from Hitchhikers Guide to the Galaxy
 games-misc/fortune-mod-homer 0.1: Quotes from Homer Simpson
 games-misc/fortune-mod-humorixfortunes 1.4-r1: Extra fortune cookies for fortune
@@ -11364,13 +11361,11 @@ games-misc/fortune-mod-kernelcookies 9: A collection of funny lines from the Lin
 games-misc/fortune-mod-mormon 1.1.0: Fortune modules from the LDS scriptures (KJV Bible, Book of Mormon, D&C, PGP)
 games-misc/fortune-mod-norbert-tretkowski 20030120: Quotes from Norbert Tretkowski
 games-misc/fortune-mod-osfortune 1: Open sources fortune file
-games-misc/fortune-mod-powerpuff 0.3: Quotes taken from the Power Puff Girls series from Cartoon Network
 games-misc/fortune-mod-pqf 6.0: Fortune database of Terry Pratchett's Discworld related quotes
 games-misc/fortune-mod-rss 20030120: Fortune database of Robin S. Socha quotes
 games-misc/fortune-mod-scriptures 1.1.0: Fortune modules from the King James Bible scriptures
 games-misc/fortune-mod-simpsons-chalkboard 0.1: Quotes from Bart Simpson's Chalkboard, shown at the opening of Simpsons episode
 games-misc/fortune-mod-slackware 1.15: This fortune mod is a collection of quotes seen on AOLS (Slackware)
-games-misc/fortune-mod-smac 0.1: Quotes from the Alpha Centauri: Alien Crossfire tech tree
 games-misc/fortune-mod-sp-fortunes 0.2: South Park Fortunes
 games-misc/fortune-mod-starwars 0.1: Quotes from StarWars, The Empire Strikes Back, and Return of the Jedi
 games-misc/fortune-mod-strangelove 20041203: Quotes from Dr. Strangelove
@@ -13492,7 +13487,6 @@ media-plugins/vdr-chanman 0.0.9: VDR plugin: change channel with a multi level c
 media-plugins/vdr-cinebars 0.0.5: VDR Plugin: Show black bars to hide station logo
 media-plugins/vdr-clock 1.0.0-r1 1.0.0-r2: VDR Plugin: Tea clock, clock
 media-plugins/vdr-console 0.6.0: vdr Plugin: Shows linux console on vdr's output device
-media-plugins/vdr-coverviewer 0.0.2: VDR plugin: coverviewer for vdr-music
 media-plugins/vdr-cpumon 0.0.6_p1: VDR Plugin: Show cpu-usage on OSD
 media-plugins/vdr-ddci2 1.0.4 1.0.5 9999: VDR plugin: DDCI2 - Digital Devices CI support
 media-plugins/vdr-decruft 0.0.4-r1: VDR Plugin: Clean unwanted entries from channels.conf
@@ -13532,7 +13526,6 @@ media-plugins/vdr-mlist 1.0.2: VDR plugin: Show a history of the last OSD messag
 media-plugins/vdr-mount 0.0.2: VDR plugin: (Un)Mount removable media via osd
 media-plugins/vdr-mp3ng 0.0.1_pre5-r2: VDR Plugin: play mp3 and ogg on VDR
 media-plugins/vdr-mplayer 0.10.2: VDR Plugin: Play video files not supported by VDR with mplayer (divx and more)
-media-plugins/vdr-music 0.9.9: VDR plugin: music
 media-plugins/vdr-newsticker 0.0.4: VDR plugin: Show rdf Newsticker on TV
 media-plugins/vdr-noepg 0.0.4 0.0.5: VDR Plugin: will replace the noepg-patch with the new cEpgHandler
 media-plugins/vdr-nordlichtsepg 0.9_pre1: vdr Plugin: Better EPG view than default vdr
@@ -14538,7 +14531,6 @@ net-dns/odsclient 1.03-r1: Client for the Open Domain Server's dynamic dns
 net-dns/opendnssec 1.3.18-r1 1.4.8.2 1.4.12-r1 2.0.1-r1 2.0.3-r1: An open-source turn-key solution for DNSSEC
 net-dns/openresolv 3.9.0 3.9.2: A framework for managing DNS information
 net-dns/pdns 4.1.13 4.2.0 4.2.1: The PowerDNS Daemon
-net-dns/pdns-ldap-backend 0.2: Fork of the official but unmaintained LDAP backend
 net-dns/pdns-recursor 4.1.14 4.1.15 4.2.0 4.2.1: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
 net-dns/rbldnsd 0.998b: DNS server designed to serve blacklist zones
@@ -15610,7 +15602,6 @@ net-wireless/mfoc 0.10.7: Mifare Classic Offline Cracker
 net-wireless/mousejack 0.0_p20160726-r1: Firmware and research tools for nRF24LU1+ based USB dongles and breakout boards
 net-wireless/multimode 1.4_p20140831-r1 9999: multimode radio decoder for rtl-sdr devices using gnuradio
 net-wireless/nanovna-saver 0.1.5 9999: tool for reading, displaying and saving data from the NanoVNA
-net-wireless/ndiswrapper 1.61: Wrapper for using Windows drivers for some wireless cards
 net-wireless/neard 0.15-r1: Near Field Communication (NFC) management daemon
 net-wireless/openbsc 9999: OpenBSC, OsmoSGSN, OsmoBSC and other programs
 net-wireless/openggsn 9999: Gateway GPRS Support Node
@@ -17442,7 +17433,6 @@ sys-devel/sparse 0.5.1 0.5.2_rc1 0.6.0 9999: C semantic parser
 sys-devel/ucpp 1.3.4 1.3.5: Library for preprocessing C compliant to ISO-C99
 sys-fabric/dapl 2.0.40: OpenIB - Direct Access Provider Library
 sys-fabric/ibacm 1.0.8: IB CM pre-connection service application
-sys-fabric/ibutils 1.5.7-r3: OpenIB userspace tools
 sys-fabric/infiniband-diags 1.6.4: OpenIB diagnostic programs and scripts needed to diagnose an IB subnet
 sys-fabric/infinipath-psm 3.2: OpenIB userspace driver for the PathScale InfiniBand HCAs
 sys-fabric/libcxgb3 1.3.1-r2: OpenIB - driver for Chelsio T3-based iWARP (RDMA over IP/ethernet)
@@ -18082,7 +18072,6 @@ www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/gitea 1.9.5 1.10.1 9999: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
 www-apps/grafana-bin 6.3.5 6.3.6 6.4.3 6.4.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
-www-apps/hiawatha-monitor 1.6: Monitoring application for www-servers/hiawatha
 www-apps/hugo 0.58.3 0.62.0: The world's fastest framework for building websites
 www-apps/icingaweb2 2.7.1 2.7.3 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration
@@ -18216,7 +18205,6 @@ www-servers/fnord 1.11-r1: Yet another small httpd
 www-servers/gatling 0.15: High performance web server
 www-servers/gunicorn 19.8.1 19.9.0: A WSGI HTTP Server for UNIX
 www-servers/h2o 2.2.5 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
-www-servers/hiawatha 9.15: Advanced and secure webserver
 www-servers/lighttpd 1.4.53 1.4.54 9999: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
