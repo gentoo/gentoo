@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/reiser4/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/7"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 -sparc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 -sparc ~x86"
 IUSE="static-libs"
 
 DEPEND="virtual/os-headers"
