@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -19,8 +20,11 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 DEPEND="dev-libs/libsass
-		dev-python/six[${PYTHON_USEDEP}]
-		test? ( dev-python/PyQt5[testlib,${PYTHON_USEDEP}] )"
+	dev-python/six[${PYTHON_USEDEP}]
+	test? (
+		dev-python/PyQt5[testlib,${PYTHON_USEDEP}]
+		dev-python/werkzeug[${PYTHON_USEDEP}]
+	)"
 
 # Remove sassc, in favour of pysassc, see: https://github.com/sass/libsass-python/issues/134
 # This avoids a file collision with dev-lang/sassc
