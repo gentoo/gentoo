@@ -4,7 +4,8 @@
 EAPI="7"
 WANT_LIBTOOL="none"
 
-inherit autotools flag-o-matic pax-utils python-utils-r1 toolchain-funcs
+inherit autotools check-reqs flag-o-matic pax-utils python-utils-r1 \
+	toolchain-funcs
 
 MY_P="Python-${PV/_alpha/a}"
 PYVER=$(ver_cut 1-2)
@@ -57,10 +58,19 @@ DEPEND="${RDEPEND}
 RDEPEND+=" !build? ( app-misc/mime-types )"
 PDEPEND=">=app-eselect/eselect-python-20140125-r1"
 
+# large file tests involve a 2.5G file being copied (duplicated)
+CHECKREQS_DISK_BUILD=5500M
+
 pkg_pretend() {
+	use test && check-reqs_pkg_pretend
+
 	ewarn "This is an early developer preview of Python 3.9.  New features"
 	ewarn "can still be added up to 2020-05-18.  It's not suitable for production"
 	ewarn "use, and it is not supported for Gentoo packages."
+}
+
+pkg_setup() {
+	use test && check-reqs_pkg_setup
 }
 
 src_prepare() {
