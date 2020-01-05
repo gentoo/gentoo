@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
 
 inherit autotools fcaps linux-info python-r1 systemd
 
@@ -82,6 +82,10 @@ DEPEND="${RDEPEND}
 
 FILECAPS=(
 	'cap_dac_read_search,cap_sys_ptrace+ep' 'usr/libexec/netdata/plugins.d/apps.plugin'
+)
+
+PATCHES=(
+	"${FILESDIR}/${P}-prometheus-spelling.patch"
 )
 
 pkg_setup() {
