@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>amynka@gentoo.org</email>
+		<name>Amy Liffey</name>
+	</maintainer>
 	<use>
 		<flag name="client">Build network client</flag>
 		<flag name="examples">Include example scripts</flag>
