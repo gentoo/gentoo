@@ -2628,7 +2628,6 @@ app-text/pdfgrep 1.4.1-r1 2.0.1 2.1.2: A tool similar to grep which searches tex
 app-text/pdfjam 2.08-r1: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20140328 20140328-r1 20191020: Python tool for extracting information from PDF documents
 app-text/pdfsandwich 0.1.4-r1: generator of sandwich OCR pdf files
-app-text/pdfshuffler 0.6.0-r1: GUI app that can merge or split pdfs and rotate, crop and rearrange their pages
 app-text/pdftk 3.0.0 3.0.8 9999: gcj-free version of pdftk written in Java
 app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG grammar
 app-text/pelican 3.7.1 4.0.0 4.0.1 4.1.2 9999: A tool to generate a static blog, with restructured text or markdown input files
@@ -7785,7 +7784,6 @@ dev-python/flask-babel 0.11.2-r1 0.11.2-r2: i18n and l10n support for Flask base
 dev-python/flask-babelex 0.9.3: Adds i18n/l10n support to Flask applications
 dev-python/flask-bootstrap 3.3.7.1: An extension that includes Bootstrap in your project, without boilerplate code
 dev-python/flask-cors 1.8.0 1.9.0 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
-dev-python/flask-dashed 0.1b_p2 0.1b_p2-r1: Admin app framework for flask
 dev-python/flask-debug 0.4.3: Flask extension that displays various debugging insights during development
 dev-python/flask-evolution 0.5-r1 0.6: Simple migrations for Flask/SQLAlchemy projects
 dev-python/flask-gravatar 0.4.2 0.5.0: Small extension for Flask to make usage of Gravatar service easy
