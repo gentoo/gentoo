@@ -126,6 +126,11 @@ src_configure() {
 		use hardened && replace-flags -O3 -O2
 	fi
 
+	# https://bugs.gentoo.org/700012
+	if is-flagq -flto; then
+		append-cflags $(test-flags-CC -ffat-lto-objects)
+	fi
+
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
 	tc-export CXX
 
