@@ -707,12 +707,6 @@ sci-astronomy/casacore
 app-laptop/nvidiabl
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained.  Not bumped since 2015.
-# Removal in 30 days.  Bug #585126.
-www-servers/hiawatha
-www-apps/hiawatha-monitor
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Unmaintained.  Last release in 2012.  Buggy ebuild.
 # Removal in 30 days.  Bug #658302.
 app-text/pdfshuffler
