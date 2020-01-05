@@ -32,6 +32,213 @@
 
 #--- END OF EXAMPLES ---
 
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# The Maintainer give up this projecet and
+# it is dead on upstream since ~2008
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703900
+media-plugins/vdr-fepg
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin is dead on upstream
+# No HOMEPAGE and upstream SRC_URI
+# You could use as replacement for this plugin
+# media-plugins/vdr-devstatus
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703962
+media-plugins/vdr-recstatus
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin is dead on upstream
+# request about the project status to upstream was 
+# not answered
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703966
+media-plugins/vdr-zaphistory
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin is for an a very old version of
+# media-video/vdr
+# dead on upstream
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703970
+media-plugins/vdr-wapd
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# No Homepage and upstream SRC_URI
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703972
+media-plugins/vdr-nordlichtsepg
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin is for an a very old version of
+# media-video/vdr
+# No upstream available
+# No Homepage and SRC_URI
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703974
+media-plugins/vdr-pilotskin
+
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# several open bugs on upstream, the oldest is from
+# ~2010, the latest is from ~2016
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703990
+media-plugins/vdr-sudoku
+
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# there are several open bugs up from ~2010 on
+# upstream
+# request about the project status to upstream was 
+# not answered
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704000
+media-plugins/vdr-pvrinput
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# this plugin is from ~2008 and depends on a very
+# old version of vdr
+# As there is no upstream email, it is not possible to
+# request for fixing this issues
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704006
+media-plugins/vdr-lcr
+
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin needs a KDE kicker applet
+# We do not have this applet in the tree anymore
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704008
+media-plugins/vdr-kvdrmon
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# Requested to upstream, pstream answered to this:
+# “vdr-infosatepg was useful many years ago. 
+# today it delivers only additional EPG 
+# for "Eurosport" channel.”
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704010
+media-plugins/vdr-infosatepg
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin is from ~2004
+# An Upstream url and src_uri is not available
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704014
+media-plugins/vdr-extb
+
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# this plugin is from ~2005 and depends 
+# on a very old version of vdr
+# No upstream is available 
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704016
+media-plugins/vdr-decruft
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# The last commit on upstream is from ~2012
+# request about the project status to upstream was 
+# not answered
+# https://projects.vdr-developer.org/issues/2597
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704018
+media-plugins/vdr-chanman
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# this plugin is from ~2008 and depends 
+# on a very old version of vdr
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704028
+media-plugins/vdr-spider
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# The last commit on upstream is from ~2012
+# upstream has several open bugs on ffmpeg/libav depends
+# request about the project status to upstream was 
+# not answered
+# https://projects.vdr-developer.org/issues/2596
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704034
+media-plugins/vdr-osdpip
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# Last commmit on upstream is from ~2008
+# The plugin function is still available in the core vdr
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704050
+media-plugins/vdr-browse
+
+
+# Mike Gilbert <floppym@gentoo.org> (2020-01-04)
+# Un-fetchable distfile, bug 704782.
+# No maintainer.
+# Removal in 30 days.
+net-misc/chrome-remote-desktop
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-03)
+# package is broken by all version of imagemagick
+# several open bugs on upstream
+# Upstream did not reply about project status
+# wrt bug 314315
+# removal ~2020-01-31
+media-plugins/vdr-skinenigmang
+x11-themes/skinenigmang-logos
+
 # Jonas Stein <jstein@gentoo.org> (2019-12-30)
 # Package masked for removal. Broken SRC_URI, 
 # last upstream activity was ~16 years ago.
@@ -626,11 +833,6 @@ net-print/pykota
 www-apps/blohg-tumblelog
 x11-misc/magick-rotation
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-12-03)
-# Project does not exist anymore.
-# Removal in 30 days.  Bug #680452.
-dev-java/balloontip
-
 # Michał Górny <mgorny@gentoo.org> (2019-12-01)
 # Added in 2013 and not updated since.  Unmaintained upstream since
 # inception.  Never had any keywords.
@@ -680,14 +882,6 @@ app-text/pdfshuffler
 # Not updated since 2015.  No reverse dependencies.
 # Removal in 30 days.  Bug #695392.
 dev-python/quixote
-
-# Matt Turner <mattst88@gentoo.org> (2019-12-01)
-# browserpass ebuild ported to go-modules, so these modules now have no reverse
-# dependencies.
-# Removal in 30 days. Bugs #683286, #683310, #687462, #700792
-=www-plugins/browserpass-3.0.6
-dev-go/zglob
-dev-go/logrus
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2019-11-29)
 # Beta for new major version with initial Python 3 support

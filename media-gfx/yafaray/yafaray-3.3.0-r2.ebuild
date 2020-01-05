@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit cmake-utils flag-o-matic python-single-r1
+inherit cmake flag-o-matic python-single-r1
 
 DESCRIPTION="A free open-source montecarlo raytracing engine"
 HOMEPAGE="http://www.yafaray.org"
@@ -41,7 +41,7 @@ pkg_setup() {
 
 src_prepare() {
 	append-flags "-pthread"
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e "s/@YAFARAY_BLENDER_EXPORTER_VERSION@/v${PV}/" "${WORKDIR}/Blender-Exporter-${PV}/__init__.py" || die
 
@@ -72,11 +72,11 @@ src_configure() {
 		-DWITH_Freetype="$(usex truetype)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	python_domodule "${BUILD_DIR}/src/bindings/yafaray_v3_interface.py"
 	python_domodule "${BUILD_DIR}/src/bindings/_yafaray_v3_interface.so"

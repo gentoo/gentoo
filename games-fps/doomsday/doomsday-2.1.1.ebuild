@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit cmake-utils python-any-r1 readme.gentoo-r1
+inherit cmake python-any-r1 readme.gentoo-r1
 
 DESCRIPTION="A modern gaming engine for Doom, Heretic, and Hexen"
 HOMEPAGE="https://www.dengine.net"
@@ -45,7 +45,7 @@ S="${WORKDIR}/${P}/${PN}"
 DOC_CONTENTS="You need to copy Doom, Doom 2, Chex Quest, Heretic, Hexen, HexenDD, or Doom64 wads to a folder of your choice and then tell the game engine where that folder is. This is different to older versions, which had separate launchers for each game and required the files to be in a specific place."
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Fix QA warning for "installing to one or more unexpected paths"
 	sed -e "10s:/texc:/${PF}:" -i tools/texc/CMakeLists.txt || die
@@ -58,11 +58,11 @@ src_configure() {
 		-DDENG_ENABLE_TOOLS="$(usex tools)"
 		-DPYTHON_EXECUTABLE="${PYTHON}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use tools; then
 		mv -v "${ED}"/usr/bin/md2tool{,.${PN}} || die

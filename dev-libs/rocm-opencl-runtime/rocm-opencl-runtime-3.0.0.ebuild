@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 OPENCL_ICD_COMMIT="6c03f8b58fafd9dd693eaac826749a5cfad515f8"
 SRC_URI="https://github.com/KhronosGroup/OpenCL-ICD-Loader/archive/${OPENCL_ICD_COMMIT}.tar.gz -> OpenCL-ICD-Loader-${OPENCL_ICD_COMMIT}.tar.gz"
@@ -44,7 +44,7 @@ src_prepare() {
 	mkdir -p "${S}"/api/opencl/khronos/ || die
 	mv "${WORKDIR}/OpenCL-ICD-Loader-${OPENCL_ICD_COMMIT}" "${S}"/api/opencl/khronos/icd || die
 	[ -d tools/clinfo ] && rm -rf tools/clinfo || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -52,7 +52,6 @@ src_configure() {
 		-DUSE_COMGR_LIBRARY=yes
 		-DLLVM_DIR="${EPREFIX}/usr/lib/llvm/roc/"
 		-DClang_DIR="${EPREFIX}/usr/lib/llvm/roc/lib/cmake/clang/"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

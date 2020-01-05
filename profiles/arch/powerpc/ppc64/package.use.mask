@@ -1,11 +1,6 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-01)
-# low-memory requires pypy2 which is not keyworded
-# sandbox does not build at all #704376
-dev-python/pypy3-exe low-memory sandbox
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-28)
 # not keyworded or irrelevant on ~ppc64, bug 679888
 app-emulation/libvirt virtualbox xen

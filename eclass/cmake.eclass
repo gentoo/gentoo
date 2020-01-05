@@ -294,6 +294,8 @@ _cmake_modify-cmakelists() {
 cmake_src_prepare() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	pushd "${S}" > /dev/null || die
+
 	default_src_prepare
 	_cmake_check_build_dir
 
@@ -326,6 +328,8 @@ cmake_src_prepare() {
 
 	# Remove dangerous things.
 	_cmake_modify-cmakelists
+
+	popd > /dev/null || die
 
 	# make ${S} read-only in order to detect broken build-systems
 	if [[ ${CMAKE_QA_SRC_DIR_READONLY} && ! ${CMAKE_IN_SOURCE_BUILD} ]]; then

@@ -37,7 +37,9 @@ DEPEND="
 	)
 "
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs \
+	dev-python/alabaster \
+	dev-python/mock
 
 python_prepare_all() {
 	# skip appengine tests

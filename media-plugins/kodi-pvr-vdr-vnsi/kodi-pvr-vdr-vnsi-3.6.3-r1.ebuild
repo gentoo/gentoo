@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Kodi PVR addon VNSI"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.vdr.vnsi"

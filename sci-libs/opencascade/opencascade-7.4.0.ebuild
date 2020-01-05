@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO:
@@ -7,7 +7,7 @@
 
 EAPI=7
 
-inherit check-reqs cmake-utils flag-o-matic java-pkg-opt-2 multilib
+inherit check-reqs cmake flag-o-matic java-pkg-opt-2
 
 DESCRIPTION="Development platform for CAD/CAE, 3D surface/solid modeling and data exchange"
 HOMEPAGE="https://www.opencascade.com"
@@ -77,7 +77,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	use java && java-pkg-opt-2_src_prepare
 }
 
@@ -104,7 +104,7 @@ src_configure() {
 
 	use examples && mycmakeargs+=( -DBUILD_SAMPLES_QT=$(usex qt5) )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 
 	# prepare /etc/env.d file
 	sed -e 's|VAR_CASROOT|'${EROOT%}'/usr/'$(get_libdir)'/'${P}'/ros|g' < "${FILESDIR}/${P}.env.in" >> "${T}/${PV}" || die
@@ -122,7 +122,7 @@ src_configure() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# respect slotting
 	insinto "/etc/env.d/${PN}"

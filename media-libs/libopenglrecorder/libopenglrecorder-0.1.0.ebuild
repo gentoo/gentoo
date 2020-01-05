@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Library for asynchronous OpenGL recording with audio"
@@ -38,5 +39,5 @@ multilib_src_configure() {
 		-DBUILD_RECORDER_WITH_SOUND=$(usex sound)
 		-DBUILD_WITH_VPX=$(usex vpx)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

@@ -14,7 +14,7 @@ S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="bzip2 +jit low-memory ncurses cpu_flags_x86_sse2"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
@@ -70,20 +70,18 @@ pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		check_env
 
-		if has_version -b dev-python/pypy ||
-				has_version -b dev-python/pypy-bin
+		use low-memory && local EPYTHON=
+		if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] &&
+				{ has_version -b dev-python/pypy ||
+				has_version -b dev-python/pypy-bin; }
 		then
-			if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] ||
-					use low-memory
-			then
-				einfo "Using already-installed PyPy to perform the translation."
-				EPYTHON=pypy
-			else
-				einfo "Using ${EPYTHON} to perform the translation. Please note that upstream"
-				einfo "recommends using PyPy for that. If you wish to do so, please unset"
-				einfo "the EPYTHON variable."
-				python-any-r1_pkg_setup
-			fi
+			einfo "Using already-installed PyPy to perform the translation."
+			EPYTHON=pypy
+		else
+			einfo "Using ${EPYTHON} to perform the translation. Please note that upstream"
+			einfo "recommends using PyPy for that. If you wish to do so, please unset"
+			einfo "the EPYTHON variable."
+			python-any-r1_pkg_setup
 		fi
 	fi
 }

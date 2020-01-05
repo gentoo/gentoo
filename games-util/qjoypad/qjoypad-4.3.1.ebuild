@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop
+inherit cmake desktop
 
 DESCRIPTION="Translate gamepad/joystick input into key strokes/mouse actions in X"
 HOMEPAGE="https://github.com/panzi/qjoypad"
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/${PN}-4.3.0-cmake.patch" )
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	local i
 	cd icons || die
