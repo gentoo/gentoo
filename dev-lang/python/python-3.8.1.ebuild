@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -108,6 +108,11 @@ src_configure() {
 	if is-flagq -O3; then
 		is-flagq -fstack-protector-all && replace-flags -O3 -O2
 		use hardened && replace-flags -O3 -O2
+	fi
+
+	# https://bugs.gentoo.org/700012
+	if is-flagq -flto; then
+		append-cflags $(test-flags-CC -ffat-lto-objects)
 	fi
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.
