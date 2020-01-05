@@ -17,7 +17,8 @@ KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
 IUSE="ssl nls kerberos tk socks libressl"
 REQUIRED_USE="tk? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="ssl? (
+RDEPEND="acct-user/fetchmail
+	ssl? (
 		!libressl? ( >=dev-libs/openssl-1.0.2:= )
 		libressl?  ( dev-libs/libressl:= )
 	)
