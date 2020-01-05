@@ -9,4 +9,4 @@ PROPERTIES=live
 RDEPEND=curl? ( net-misc/curl ) X? ( media-gfx/scrot x11-apps/xdpyinfo )
 SLOT=0
 _eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
-_md5_=f84cc4cdabf23621de28685485dbbb01
+_md5_=a33a3161079d324261963c0dfd74fd10

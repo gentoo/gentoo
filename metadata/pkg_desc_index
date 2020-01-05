@@ -373,7 +373,7 @@ app-admin/openrc-settingsd 1.0.1-r1: System settings D-Bus service for OpenRC
 app-admin/packagekit 1.1.12: PackageKit Package Manager interface (meta package)
 app-admin/packagekit-base 1.1.12: Manage packages in a secure way using a cross-distro and cross-architecture API
 app-admin/packagekit-gtk 1.1.12: Gtk3 PackageKit backend library
-app-admin/packagekit-qt 1.0.1: Qt PackageKit backend library
+app-admin/packagekit-qt 1.0.1 1.0.1-r1: Qt PackageKit backend library
 app-admin/pass 1.7.3 9999: Stores, retrieves, generates, and synchronizes passwords securely
 app-admin/pass-otp 1.2.0: A pass extension for managing one-time-password (OTP) tokens.
 app-admin/passook 20121001: Password generator capable of generating pronounceable and/or secure passwords
@@ -2161,7 +2161,7 @@ app-misc/rundeck-bin 2.6.8: Job Scheduler and Runbook Automation
 app-misc/rundeck-cli-bin 0.1.8 0.1.11: Command line tool for rundeck
 app-misc/scope 0.04-r1: Serial Line Analyser
 app-misc/screen 4.4.0 4.5.1 4.6.0 4.6.1 4.6.2 4.6.2-r1 4.7.0 9999: screen manager with VT100/ANSI terminal emulation
-app-misc/screenfetch 3.8.0-r1 3.9.0 9999: Bash Screenshot Information Tool
+app-misc/screenfetch 3.8.0-r1 3.9.1 9999: Bash Screenshot Information Tool
 app-misc/screenie 1.30.0-r1: screen(1) frontend that is designed to be a session handler
 app-misc/scrub 2.5.2 2.6.1: Overwrite files with iterative patterns.
 app-misc/selecta 0.0.7 9999: A fuzzy text selector for files and anything else you need to select
