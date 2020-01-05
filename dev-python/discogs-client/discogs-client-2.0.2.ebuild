@@ -3,7 +3,7 @@
 
 EAPI=5
 # Not py3 capable due to oauth2 supports py2 pypy only
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 

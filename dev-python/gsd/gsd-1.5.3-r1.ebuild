@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="GSD - file format specification and a library to read and write it"

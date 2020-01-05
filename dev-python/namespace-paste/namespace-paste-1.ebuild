@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 inherit python-r1
 
 DESCRIPTION="Namespace package declaration for paste"

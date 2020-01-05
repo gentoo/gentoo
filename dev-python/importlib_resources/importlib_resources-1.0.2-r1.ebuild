@@ -4,7 +4,7 @@
 EAPI=7
 
 # This is a backport of Python 3.7's importlib.resources
-PYTHON_COMPAT=( pypy{,3} python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( pypy3 python{2_7,3_6} )
 
 inherit distutils-r1
 

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 FORTRAN_NEEDED=test
 
 inherit cmake-utils python-single-r1 toolchain-funcs fortran-2

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit font python-any-r1
 
 DESCRIPTION="A clean fixed font for the console and X11"

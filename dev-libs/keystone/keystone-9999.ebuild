@@ -5,7 +5,7 @@ EAPI=6
 
 DISTUTILS_OPTIONAL=1
 CMAKE_MIN_VERSION=3.8.7
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit cmake-utils distutils-r1
 

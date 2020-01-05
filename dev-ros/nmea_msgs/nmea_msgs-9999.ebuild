@@ -5,7 +5,7 @@ EAPI=5
 
 ROS_REPO_URI="https://github.com/ros-drivers/nmea_msgs"
 KEYWORDS="~amd64"
-PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 CATKIN_HAS_MESSAGES=yes
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"
 VER_PREFIX=${PN}-

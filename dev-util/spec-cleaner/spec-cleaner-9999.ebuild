@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/openSUSE/spec-cleaner.git"
 inherit distutils-r1
 [[ ${PV} == 9999 ]] && inherit git-r3

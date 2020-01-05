@@ -4,7 +4,7 @@
 EAPI=7
 
 # networkx-2.4 supports up to python3_8
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Python tools to manipulate graphs and complex networks"

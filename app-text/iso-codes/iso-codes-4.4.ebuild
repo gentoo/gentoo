@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PLOCALES="ab ace ach af ak am an ar as ast ay az ba bar be bg bi bn bn_IN br bs byn ca ce ch chr ckb crh cs csb cv cy da de dv dz ee el en eo es et eu fa ff fi fo fr frp fur fy ga gez gl gn gu gv ha haw he hi hr ht hu hy ia id io is it iu ja jam ka kab ki kk kl km kn ko kok ku kv kw ky lo lt lv mai mhr mi mk ml mn mo mr ms mt my na nah nb nb_NO ne nl nn nso nv oc or pa pap pi pl ps pt pt_BR ro ru rw sc sd si sk sl so son sq sr sr@latin sv sw ta te tg th ti tig tk tl tr tt tt@iqtelif ug uk ur uz ve vi wa wal wo xh yo zh_CN zh_HK zh_Hant zh_TW zu"
 
 inherit python-any-r1

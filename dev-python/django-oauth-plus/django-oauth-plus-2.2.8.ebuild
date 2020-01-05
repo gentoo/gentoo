@@ -3,7 +3,7 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 # Testsuite written for py2 only, no indication given in source
 
 inherit distutils-r1

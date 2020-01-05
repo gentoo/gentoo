@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_5 python3_6 python3_7 )
+PYTHON_COMPAT=( python2_7 python3_6 python3_7 )
 inherit distutils-r1
 
 DESCRIPTION="Distutils command to view/validate packages's rst text long_descriptions."

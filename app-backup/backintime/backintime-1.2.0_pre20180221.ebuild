@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 COMMIT=45ec81c185789b2dbafd7348d1af039b5183c9ff
 inherit python-single-r1 gnome2-utils vcs-snapshot

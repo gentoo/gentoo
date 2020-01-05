@@ -3,7 +3,7 @@
 
 EAPI=5
 # Although setup.py claims to support py3, python-ldap does not
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 

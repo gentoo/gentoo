@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit meson python-r1 xdg
 
 DESCRIPTION="A lightweight compositor for X11 (previously a compton fork)"

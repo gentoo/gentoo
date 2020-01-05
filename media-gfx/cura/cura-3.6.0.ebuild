@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 inherit cmake-utils fdo-mime gnome2-utils python-single-r1
 
 MY_PN=Cura

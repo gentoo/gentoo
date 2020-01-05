@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( pypy3 python3_{5,6} )
+PYTHON_COMPAT=( pypy3 python3_6 )
 inherit eutils python-single-r1 systemd
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit gnome2-utils meson python-single-r1 virtualx xdg-utils
 
 DESCRIPTION="Two-factor authentication code generator for GNOME"

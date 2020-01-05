@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_OPTIONAL=1
 inherit cmake-utils cuda distutils-r1
 

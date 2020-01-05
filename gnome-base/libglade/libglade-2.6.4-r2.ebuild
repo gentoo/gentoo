@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 GNOME_TARBALL_SUFFIX="bz2"
 GNOME2_LA_PUNT="yes"
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='xml(+)'
 
 inherit autotools eutils gnome2 multilib-minimal python-single-r1 virtualx

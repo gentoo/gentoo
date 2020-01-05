@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="Test suite for an implementation of asyncio (PEP 3156)"

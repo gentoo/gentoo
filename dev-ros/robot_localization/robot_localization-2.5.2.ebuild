@@ -5,7 +5,7 @@ EAPI=5
 ROS_REPO_URI="https://github.com/cra-ros-pkg/robot_localization"
 KEYWORDS="~amd64"
 CATKIN_HAS_MESSAGES=yes
-PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs dev-ros/geographic_msgs dev-ros/geometry_msgs"
 
 inherit ros-catkin

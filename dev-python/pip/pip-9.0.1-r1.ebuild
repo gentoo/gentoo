@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit eutils bash-completion-r1 distutils-r1

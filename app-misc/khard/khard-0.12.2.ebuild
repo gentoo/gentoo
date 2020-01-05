@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 DESCRIPTION="Console CardDAV client"
 HOMEPAGE="https://github.com/scheibler/khard"

@@ -5,7 +5,7 @@ EAPI=7
 
 # PyPy is not properly supported:
 # https://github.com/karanlyons/chump/issues/17
-PYTHON_COMPAT=( pypy3 python3_{5,6,7} )
+PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
 inherit distutils-r1
 

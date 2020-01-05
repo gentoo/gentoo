@@ -4,7 +4,7 @@
 EAPI=6
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
 inherit bash-completion-r1 elisp-common eutils flag-o-matic pax-utils \
 	distutils-r1 toolchain-funcs

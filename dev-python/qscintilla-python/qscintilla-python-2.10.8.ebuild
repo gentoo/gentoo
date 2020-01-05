@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 inherit python-r1 qmake-utils
 
 MY_P=QScintilla_gpl-${PV/_pre/.dev}

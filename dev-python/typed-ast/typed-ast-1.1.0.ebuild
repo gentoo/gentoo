@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="A fork of Python 2 and 3 ast modules with type comment support"

@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ncurses(+),threads(+)"
 inherit distutils-r1 multilib
 

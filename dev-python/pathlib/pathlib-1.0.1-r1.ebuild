@@ -4,7 +4,7 @@
 EAPI=5
 
 # In Python 3.4, pathlib is now part of the standard library.
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 

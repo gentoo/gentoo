@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 EGIT_REPO_URI="https://github.com/Robpol86/${PN}.git"
 inherit distutils-r1 git-r3
 

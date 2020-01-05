@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1 eutils linux-info

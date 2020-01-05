@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
 inherit distutils-r1 libtool multilib-minimal
 

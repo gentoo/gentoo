@@ -7,7 +7,7 @@ ROS_REPO_URI="https://github.com/ros/nodelet_core"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"
-PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
 inherit ros-catkin
 

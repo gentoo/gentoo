@@ -6,7 +6,7 @@ ROS_REPO_URI="https://github.com/ros-drivers/audio_common"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=${PN}
 CATKIN_HAS_MESSAGES=yes
-PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
 inherit ros-catkin
 

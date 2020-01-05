@@ -4,7 +4,7 @@
 EAPI=5
 # This is a backport from python3.5+
 # Do not add python3.5 or later support here, there's no need for it.
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 

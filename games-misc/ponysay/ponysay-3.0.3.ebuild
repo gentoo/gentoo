@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit bash-completion-r1 python-single-r1
 
 DESCRIPTION="cowsay reimplemention for ponies"

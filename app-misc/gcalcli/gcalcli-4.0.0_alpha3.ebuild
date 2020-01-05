@@ -3,7 +3,7 @@
 
 EAPI=5
 # google-api-python-client only supports these
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
 inherit python-r1 versionator
 

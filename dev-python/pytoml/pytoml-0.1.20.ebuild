@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 inherit distutils-r1
 
 TOML_TEST_COMMIT="b212790a6b7367489f389411bda009e5ff765f20"

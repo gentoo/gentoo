@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
 EGIT_REPO_URI="https://github.com/mgorny/gpyutils.git"
 inherit distutils-r1 git-r3

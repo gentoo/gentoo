@@ -5,7 +5,7 @@ EAPI=5
 CATKIN_HAS_MESSAGES=yes
 ROS_REPO_URI="https://github.com/ros/dynamic_reconfigure"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_5} )
+PYTHON_COMPAT=( python2_7 )
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/std_msgs"
 
 inherit ros-catkin

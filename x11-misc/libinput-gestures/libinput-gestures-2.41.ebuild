@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5..7} )
+PYTHON_COMPAT=( python3_{6..7} )
 
 inherit gnome2-utils python-single-r1
 

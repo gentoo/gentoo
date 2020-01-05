@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit autotools ltprune multilib multilib-minimal toolchain-funcs preserve-libs python-r1 linux-info systemd usr-ldscript
 

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 inherit git-r3 python-single-r1
 
 DESCRIPTION="Convert your system to SYMLINK_LIB=no"

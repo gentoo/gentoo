@@ -4,7 +4,7 @@
 EAPI=6
 
 # Compatibility with Python 3 is declared by upstream, but it is broken in fact, check on bump
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit cmake-utils python-single-r1 vcs-snapshot
 

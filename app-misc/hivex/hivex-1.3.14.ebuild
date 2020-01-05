@@ -6,7 +6,7 @@ EAPI=6
 USE_RUBY="ruby23 ruby24 ruby25"
 RUBY_OPTIONAL=yes
 
-PYTHON_COMPAT=(python2_7 python3_{5,6})
+PYTHON_COMPAT=(python2_7 python3_6)
 
 inherit eutils perl-module ruby-ng python-single-r1
 

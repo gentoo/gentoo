@@ -4,7 +4,7 @@
 EAPI=7
 
 # Tests fail with PyPy: https://github.com/wbolster/plyvel/issues/38
-PYTHON_COMPAT=( pypy3 python3_{5,6,7} )
+PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
 inherit distutils-r1
 

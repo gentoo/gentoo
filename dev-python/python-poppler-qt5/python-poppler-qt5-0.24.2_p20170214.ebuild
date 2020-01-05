@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 COMMIT=50fb2eb9ea34cf94e3756b7ddfc601af023267d5
 inherit distutils-r1 flag-o-matic qmake-utils vcs-snapshot
 

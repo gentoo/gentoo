@@ -5,7 +5,7 @@ EAPI=5
 
 ROS_REPO_URI="https://github.com/ros/gencpp"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
 inherit ros-catkin
 

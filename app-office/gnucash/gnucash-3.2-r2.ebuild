@@ -5,7 +5,7 @@ EAPI=6
 
 # google{test,mock} version
 GV="1.8.0"
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
 

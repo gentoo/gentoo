@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit autotools flag-o-matic python-single-r1 systemd \
 	toolchain-funcs user xdg-utils prefix

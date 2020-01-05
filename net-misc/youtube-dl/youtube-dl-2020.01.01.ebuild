@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=(python{2_7,3_{5,6,7,8}})
+PYTHON_COMPAT=(python{2_7,3_{6,7,8}})
 inherit bash-completion-r1 distutils-r1 readme.gentoo-r1
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"

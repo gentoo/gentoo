@@ -4,7 +4,7 @@
 EAPI=7
 
 # Python is required for tests and some build tasks.
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
 CMAKE_ECLASS=cmake
 GOOGLETEST_COMMIT=da10da05c262af0a9e8fa91789a272a3dec67655

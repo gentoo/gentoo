@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit python-any-r1 cmake virtualx
 
 DESCRIPTION="Qt bindings for the Telepathy D-Bus protocol"

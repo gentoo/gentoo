@@ -4,7 +4,7 @@
 EAPI=7
 
 # Support for 3.7 needs support from dependencies, first
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 

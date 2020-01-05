@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7,8} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1

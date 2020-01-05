@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_5 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_6 )
 inherit cmake-utils python-single-r1
 
 if [[ ${PV} == 9999* ]] ; then

@@ -4,7 +4,7 @@
 EAPI=5
 
 # setup.py is written only for py2, which suits pypy
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 multilib
 

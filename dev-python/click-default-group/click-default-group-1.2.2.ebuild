@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7,8}} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Extends click. Group to invoke a command without explicit subcommand name"

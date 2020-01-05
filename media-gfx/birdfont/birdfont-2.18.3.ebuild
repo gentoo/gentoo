@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 PLOCALES="cs de it nl pt_BR sv"
 
 inherit python-any-r1 vala l10n toolchain-funcs multiprocessing

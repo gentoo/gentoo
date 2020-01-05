@@ -4,7 +4,7 @@
 EAPI=6
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1 waf-utils
 

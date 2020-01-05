@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE='wide-unicode(+)'
 DISTUTILS_OPTIONAL=1
 inherit autotools distutils-r1

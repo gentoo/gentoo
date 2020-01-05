@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{5,6,7} )
+PYTHON_COMPAT=( pypy3 python3_{6,7} )
 PYTHON_REQ_USE="xml(+)"
 
 inherit distutils-r1

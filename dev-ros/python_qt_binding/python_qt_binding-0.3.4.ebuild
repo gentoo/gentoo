@@ -5,7 +5,7 @@ EAPI=5
 
 ROS_REPO_URI="https://github.com/ros-visualization/python_qt_binding"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_5} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit ros-catkin
 

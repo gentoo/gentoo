@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} pypy3 )
 
 if [[ ${PV} == *9999 ]]; then
 	inherit autotools git-r3

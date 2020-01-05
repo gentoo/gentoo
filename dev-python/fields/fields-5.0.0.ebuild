@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python{3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Container class boilerplate killer"

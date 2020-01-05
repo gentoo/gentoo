@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 USE_RUBY="ruby26 ruby25 ruby24"
 RUBY_OPTIONAL="yes"
 

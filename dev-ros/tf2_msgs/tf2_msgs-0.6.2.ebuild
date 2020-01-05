@@ -5,7 +5,7 @@ EAPI=5
 CATKIN_HAS_MESSAGES=yes
 ROS_REPO_URI="https://github.com/ros/geometry2"
 KEYWORDS="~amd64 ~arm"
-PYTHON_COMPAT=( python{2_7,3_5} )
+PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/actionlib_msgs dev-ros/geometry_msgs"
 

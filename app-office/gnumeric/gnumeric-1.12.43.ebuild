@@ -3,7 +3,7 @@
 
 EAPI="6"
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python2_7 python{3_5,3_6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit gnome2 flag-o-matic python-r1
 

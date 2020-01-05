@@ -4,7 +4,7 @@
 EAPI=6
 
 # jython depends on java-config, so don't add it or things will break
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
 inherit distutils-r1
 

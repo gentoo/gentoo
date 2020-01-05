@@ -4,7 +4,7 @@
 EAPI=7
 
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{5,6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
 inherit autotools perl-module distutils-r1 flag-o-matic java-pkg-opt-2 toolchain-funcs
 

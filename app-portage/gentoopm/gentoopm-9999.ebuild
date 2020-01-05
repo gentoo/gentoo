@@ -4,7 +4,7 @@
 EAPI=6
 
 DISTUTILS_USE_SETUPTOOLS=no
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7,3_8} pypy )
+PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} )
 
 EGIT_REPO_URI="https://github.com/mgorny/gentoopm.git"
 inherit distutils-r1 git-r3

@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 DESCRIPTION="A python parser for the Coffeescript Object Notation (CSON)"
 HOMEPAGE="https://github.com/avakar/pycson/"

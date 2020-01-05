@@ -4,7 +4,7 @@
 EAPI=6
 
 DISTUTILS_SINGLE_IMPL=1
-PYTHON_COMPAT=( python{3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1
 
