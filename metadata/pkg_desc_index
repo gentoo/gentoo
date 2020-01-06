@@ -11327,7 +11327,7 @@ games-fps/worldofpadman 1.6-r1: A cartoon style multiplayer first-person shooter
 games-fps/xonotic 0.8.2: Fork of Nexuiz, Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
 games-fps/yamagi-quake2 7.41: Quake 2 engine focused on single player
 games-kids/childsplay 0.90.2-r1: A suite of educational games for young children
-games-kids/gcompris 0.97: Full featured educational application for children from 2 to 10
+games-kids/gcompris 0.97-r1: Full featured educational application for children from 2 to 10
 games-kids/gmult 8.0-r1: Multiplication Puzzle emulates the multiplication game found in Emacs
 games-kids/lletters 0.1.95-r3: Game that helps young kids learn their letters and numbers
 games-kids/memonix 1.6-r1: Brain teasers, puzzle and memory games for kid's in one pack
