@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	>=x11-misc/rofi-1.5
+	x11-misc/rofi
 	>=sci-libs/libqalculate-2.0
 "
 RDEPEND="${DEPEND}"
