@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<!-- maintainer-needed -->
+    <use>
+        <flag name="debug">Raises log-level to DEBUG, enables runtime checks and address sanitizer</flag>
+        <flag name="doc">Compiles and installs the documentation as PDF and HTML</flag>
+        <flag name="examples">Compiles and installs the provided example binaries and sources</flag>
+        <flag name="opencl">Compiles against the provided opencl implementation</flag>
+        <flag name="openssl">Use dev-libs/openssl to provide support communication over TLS</flag>
+        <flag name="test">Builds the provided unit tests</flag>
+        <flag name="tools">Builds caf-run and caf-vec tools</flag>
+    </use>
+    <upstream>
+        <remote-id type="github">actor-framework/actor-framework</remote-id>
+    </upstream>
+    <longdescription lang="en">
+        An implementation of the Actor Model of distributed computation in C++.
+    </longdescription>
+</pkgmetadata>
