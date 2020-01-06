@@ -124,8 +124,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/tensorflow-1.15.0_rc0-0001-WORKSPACE-add-rules-docker-http_archive-bazel-toolch.patch"
-	"${FILESDIR}"/${P}-jsoncpp-1.9.2.patch
-
+	"${FILESDIR}/tensorflow-2.0.0-jsoncpp-1.9.2.patch"
 )
 DOCS=( AUTHORS CONTRIBUTING.md ISSUE_TEMPLATE.md README.md RELEASE.md )
 CHECKREQS_MEMORY="5G"

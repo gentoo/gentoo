@@ -60,7 +60,7 @@ RDEPEND="
 	dev-db/sqlite
 	dev-libs/double-conversion
 	dev-libs/icu
-	~dev-libs/jsoncpp-1.9.1
+	>=dev-libs/jsoncpp-1.9.2
 	dev-libs/libpcre
 	dev-libs/nsync
 	dev-libs/openssl:0=
@@ -131,6 +131,7 @@ PATCHES=(
 	"${FILESDIR}/tensorflow-1.15.0_rc0-0001-WORKSPACE-add-rules-docker-http_archive-bazel-toolch.patch"
 	"${FILESDIR}/tensorflow-2.1.0-external_libs.patch"
 	"${FILESDIR}/tensorflow-2.1.0-python3.8-pywrap_tensor.patch"
+	"${FILESDIR}/tensorflow-2.0.0-jsoncpp-1.9.2.patch"
 )
 DOCS=( AUTHORS CONTRIBUTING.md ISSUE_TEMPLATE.md README.md RELEASE.md )
 CHECKREQS_MEMORY="5G"
