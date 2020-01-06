@@ -8661,7 +8661,7 @@ dev-python/python-memcached 1.53-r1 1.58 1.59: Pure python memcached client
 dev-python/python-meteor 0.1.6: An event driven meteor client
 dev-python/python-mistralclient 3.8.0 3.8.1: A client for the OpenStack Mistral API
 dev-python/python-monascaclient 1.14.0 1.15.0: A client for the OpenStack Monasca API
-dev-python/python-mpd 0.5.5 1.0.0: Python MPD client library
+dev-python/python-mpd 1.0.0: Python MPD client library
 dev-python/python-musicbrainz 0.7.4-r1: Python Bindings for the MusicBrainz XML Web Service
 dev-python/python-musicbrainz-ngs 0.6: Python bindings for the MusicBrainz NGS and the Cover Art Archive webservices
 dev-python/python-nbxmpp 0.5.6 0.6.1 0.6.6 0.6.10 0.6.10-r1: Python library to use Jabber/XMPP networks in a non-blocking way
