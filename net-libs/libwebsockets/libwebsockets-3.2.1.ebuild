@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,6 +41,7 @@ BDEPEND="dev-lang/perl"
 
 PATCHES=(
 	"${FILESDIR}/libwebsockets-3.2.0-check_chown_result.patch"
+	"${FILESDIR}/libwebsockets-3.2.1-socks5-noclient-compilefailure.patch"
 )
 
 src_configure() {
