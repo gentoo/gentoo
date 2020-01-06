@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 eutils autotools
+inherit git-r3 autotools
 
 DESCRIPTION="Do live calculations in rofi!"
 HOMEPAGE="https://github.com/svenstaro/rofi-calc"

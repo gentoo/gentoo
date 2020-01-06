@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="Do live calculations in rofi!"
 HOMEPAGE="https://github.com/svenstaro/rofi-calc"
