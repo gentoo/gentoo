@@ -9,5 +9,5 @@ RDEPEND=app-crypt/gnupg
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/browserpass/browserpass-native/archive/3.0.6.tar.gz -> browserpass-3.0.6.tar.gz https://github.com/mattn/go-zglob/archive/a8912a37f9e7.tar.gz -> github.com-mattn-go-zglob-a8912a37f9e7.tar.gz https://github.com/sirupsen/logrus/archive/v1.4.2.tar.gz -> github.com-sirupsen-logrus-v1.4.2.tar.gz https://github.com/golang/sys/archive/6d18c012aee9febd81bbf9806760c8c4480e870d.tar.gz -> github.com-golang-sys-6d18c012aee9febd81bbf9806760c8c4480e870d.tar.gz
-_eclasses_=go-module	ab2b956f1b3888b8418581b8662fe211
+_eclasses_=go-module	488438da42f039cd5990a0186492c3f5
 _md5_=74943a4f8b60cd61bb7ae8ec81cc5441
