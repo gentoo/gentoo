@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-01-06)
+# Snapshots from Git, masked for testing.
+=app-editors/emacs-27.0.50_pre*
+
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
 # media-video/vdr-2.4.x
