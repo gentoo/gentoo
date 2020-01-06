@@ -1,0 +1,44 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 6243ac2..8c50934 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -363,12 +363,6 @@ install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/zeek-config DESTINATION bin)
+ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/cmake DESTINATION share/zeek
+         USE_SOURCE_PERMISSIONS)
+
+-# Install wrapper script for Bro-to-Zeek renaming.
+-include(InstallShellScript)
+-include(InstallSymlink)
+-InstallShellScript("bin" "zeek-wrapper.in" "zeek-wrapper")
+-InstallSymlink("${CMAKE_INSTALL_PREFIX}/bin/zeek-wrapper" "${CMAKE_INSTALL_PREFIX}/bin/bro-config")
+-
+ ########################################################################
+ ## Recurse on sub-directories
+
+diff --git a/aux/zeek-aux/zeek-cut/CMakeLists.txt b/aux/zeek-aux/zeek-cut/CMakeLists.txt
+index e7a1b1b..7cce85d 100644
+--- a/aux/zeek-aux/zeek-cut/CMakeLists.txt
++++ b/aux/zeek-aux/zeek-cut/CMakeLists.txt
+@@ -5,7 +5,3 @@ set(zeekcut_SRCS
+ add_executable(zeek-cut ${zeekcut_SRCS})
+
+ install(FILES zeek-cut.1 DESTINATION ${ZEEK_MAN_INSTALL_PATH}/man1)
+-
+-# Install wrapper script for Bro-to-Zeek renaming.
+-include(InstallSymlink)
+-InstallSymlink("${CMAKE_INSTALL_PREFIX}/bin/zeek-wrapper" "${CMAKE_INSTALL_PREFIX}/bin/bro-cut")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index a9b3b10..8ceac34 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -365,10 +365,6 @@ endif ()
+
+ install(TARGETS zeek DESTINATION bin)
+
+-# Install wrapper script for Bro-to-Zeek renaming.
+-include(InstallSymlink)
+-InstallSymlink("${CMAKE_INSTALL_PREFIX}/bin/zeek-wrapper" "${CMAKE_INSTALL_PREFIX}/bin/bro")
+-
+ set(BRO_EXE zeek
+     CACHE STRING "Zeek executable binary" FORCE)
+

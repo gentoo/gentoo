@@ -1,0 +1,13 @@
+diff --git a/aux/zeek-aux/rst/rst.c b/aux/zeek-aux/rst/rst.c
+index dbf31b2..cb95a26 100644
+--- a/aux/zeek-aux/rst/rst.c
++++ b/aux/zeek-aux/rst/rst.c
+@@ -113,7 +113,7 @@ in_cksum(register u_short *addr, register int len)
+ 
+ // - adapted from tcpdump
+ // Returns the ones-complement checksum of a chunk of b short-aligned bytes.
+-int ones_complement_checksum(const void *p, int b, u_int32_t sum)
++int __attribute__ ((noinline)) ones_complement_checksum(const void *p, int b, u_int32_t sum)
+ {
+ 	const u_short *sp = (u_short *) p;	// better be aligned!
+ 
