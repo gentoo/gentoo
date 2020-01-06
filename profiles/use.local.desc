@@ -6783,11 +6783,6 @@ net-nds/rpcbind:remotecalls - Enable remote calls
 net-nds/rpcbind:warmstarts - Enables rpcbind to cache configuration for warm restarts
 net-nds/tac_plus:finger - Adds support for checking user counts via fingering the NAS
 net-nds/tac_plus:maxsess - Enforce a limit on maximum sessions per user
-net-news/liferea:gnome-keyring - Enable support for Libsecret Support plugin that allows Liferea to use app-crypt/libsecret as password store
-net-news/liferea:mediaplayer - Enable support for Media Player plugin that allows to play music and videos directly from Liferea
-net-news/liferea:networkmanager - Use NetworkManager to monitor nerwork status
-net-news/liferea:notification - Enable support for Popup Notifications plugin that display popups informing about new updates
-net-news/liferea:tray - Enable support for Tray Icon (GNOME Classic) plugin that display a small system tray icon to hide/unhide Liferea
 net-news/rssguard:webengine - Use dev-qt/qtwebengine for embedded web browser
 net-nntp/nzbget:parcheck - Enable support for checking PAR archives
 net-nntp/sabnzbd:7za - Add support for extracting 7za files
