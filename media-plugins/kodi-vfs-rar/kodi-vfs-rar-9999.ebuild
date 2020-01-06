@@ -13,6 +13,7 @@ case ${PV} in
 9999)
 	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/xbmc/vfs.rar.git"
+	EGIT_BRANCH="Matrix"
 	inherit git-r3
 	;;
 *)
