@@ -1,0 +1,13 @@
+diff -ur a/configure.ac b/configure.ac
+--- a/configure.ac	2019-05-23 23:37:12.000000000 +0300
++++ b/configure.ac	2020-01-06 12:30:41.621264633 +0300
+@@ -559,8 +559,7 @@
+                            [with_python="no"])
+                     ])
+              ]
+-      )],
+-      [with_python="auto"]
++      )]
+ )
+ 
+ AS_IF([test "x$with_python" != "xno"],
