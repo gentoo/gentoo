@@ -56,7 +56,7 @@ pkg_pretend() {
 pkg_setup() {
 	check_space
 	llvm_pkg_setup
-	python-any-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 src_prepare() {
