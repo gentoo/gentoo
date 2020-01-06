@@ -41,6 +41,7 @@ BDEPEND="dev-lang/perl"
 
 PATCHES=(
 	"${FILESDIR}/libwebsockets-3.2.0-check_chown_result.patch"
+	"${FILESDIR}/libwebsockets-3.2.1-socks5-noclient-compilefailure.patch"
 )
 
 src_configure() {
