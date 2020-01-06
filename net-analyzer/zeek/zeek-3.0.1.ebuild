@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-no-wrapper-scripts.patch
 	"${FILESDIR}"/${PN}-no-strip.patch
 	"${FILESDIR}"/${PN}-no-uninitialized-warning.patch
+	"${FILESDIR}"/${PN}-remove-unnecessary-remove.patch
 )
 
 src_prepare() {
