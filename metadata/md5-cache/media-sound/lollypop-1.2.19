@@ -11,6 +11,6 @@ RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6[sqlite] ) >=dev-lang/pyt
 REQUIRED_USE=|| ( python_targets_python3_6 )
 RESTRICT=test
 SLOT=0
-SRC_URI=https://gitlab.gnome.org/World/lollypop/uploads/70aab11cf17a8966a5bb188b4173b240/lollypop-1.2.16.tar.xz
+SRC_URI=https://gitlab.gnome.org/World/lollypop/uploads/5918e6040337c71b8b88932301c7de0e/lollypop-1.2.19.tar.xz
 _eclasses_=gnome2-utils	532371cfcba45b2ab0d2950547c97d95	meson	b5ee7a05833ab91225acf30ffdeed006	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1e7b679db0d152aa6ad0e6dc4af6a0ed
+_md5_=1cd82f2e83a0b4c5172c68b164a9c1d0
