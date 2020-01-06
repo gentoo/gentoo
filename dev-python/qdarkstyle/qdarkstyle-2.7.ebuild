@@ -39,5 +39,5 @@ python_install_all() {
 }
 
 pkg_postinst() {
-		optfeature "To use qdarkstyle.utils please install" dev-python/qtsass
+		optfeature "qdarkstyle.utils" dev-python/qtsass
 }
