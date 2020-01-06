@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,9 +11,7 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="app-dicts/sword-ab
-	app-dicts/sword-abbott
-	app-dicts/sword-abs_essay_goodsam_swb
+RDEPEND="app-dicts/sword-abbott
 	app-dicts/sword-acv
 	app-dicts/sword-afr1953
 	app-dicts/sword-akjv
@@ -24,24 +22,14 @@ RDEPEND="app-dicts/sword-ab
 	app-dicts/sword-asv
 	app-dicts/sword-barnes
 	app-dicts/sword-bbe
-	app-dicts/sword-br_en
-	app-dicts/sword-bulcarigradnt
 	app-dicts/sword-bulveren
-	app-dicts/sword-bwe
 	app-dicts/sword-byz
 	app-dicts/sword-cbc
 	app-dicts/sword-chamorro
-	app-dicts/sword-chincvs
-	app-dicts/sword-chincvt
-	app-dicts/sword-chiun
-	app-dicts/sword-chiuns
 	app-dicts/sword-clarke
 	app-dicts/sword-common
 	app-dicts/sword-cro
 	app-dicts/sword-czebkr
-	app-dicts/sword-czecep
-	app-dicts/sword-czekms
-	app-dicts/sword-czenkb
 	app-dicts/sword-daily
 	app-dicts/sword-dan
 	app-dicts/sword-darby
@@ -52,12 +40,10 @@ RDEPEND="app-dicts/sword-ab
 	app-dicts/sword-dutsvv
 	app-dicts/sword-easton
 	app-dicts/sword-esperanto
-	app-dicts/sword-est
 	app-dicts/sword-farsiopv
 	app-dicts/sword-finbiblia
 	app-dicts/sword-finney
 	app-dicts/sword-finpr
-	app-dicts/sword-frecrl
 	app-dicts/sword-frelsg
 	app-dicts/sword-geneva1599
 	app-dicts/sword-gerelb1871
@@ -65,14 +51,11 @@ RDEPEND="app-dicts/sword-ab
 	app-dicts/sword-gerlut1545
 	app-dicts/sword-gersch
 	app-dicts/sword-greekhebrew
-	app-dicts/sword-hebmodern
 	app-dicts/sword-hebrewgreek
 	app-dicts/sword-heretics
 	app-dicts/sword-hitchcock
 	app-dicts/sword-hnv
 	app-dicts/sword-hunkar
-	app-dicts/sword-hunuj
-	app-dicts/sword-icelandic
 	app-dicts/sword-institutes
 	app-dicts/sword-isbe
 	app-dicts/sword-isv
@@ -83,21 +66,16 @@ RDEPEND="app-dicts/sword-ab
 	app-dicts/sword-jps
 	app-dicts/sword-jst
 	app-dicts/sword-jubilee2000
-	app-dicts/sword-kekchi
 	app-dicts/sword-kjv
 	app-dicts/sword-kjvd
 	app-dicts/sword-klv
 	app-dicts/sword-klven_iklingon
 	app-dicts/sword-klviklingon_en
-	app-dicts/sword-korean
-	app-dicts/sword-la_en
-	app-dicts/sword-latvian
 	app-dicts/sword-lightfoot
 	app-dicts/sword-litv
 	app-dicts/sword-luther
 	app-dicts/sword-mak
 	app-dicts/sword-manxgaelic
-	app-dicts/sword-maori
 	app-dicts/sword-mhc
 	app-dicts/sword-mhcc
 	app-dicts/sword-mkjv
@@ -115,7 +93,6 @@ RDEPEND="app-dicts/sword-ab
 	app-dicts/sword-rkjnt
 	app-dicts/sword-rnkjv
 	app-dicts/sword-robinson
-	app-dicts/sword-romcor
 	app-dicts/sword-rotherham
 	app-dicts/sword-rst
 	app-dicts/sword-rusmakarij
@@ -147,7 +124,6 @@ RDEPEND="app-dicts/sword-ab
 	app-dicts/sword-ukjv
 	app-dicts/sword-ukrainian
 	app-dicts/sword-uma
-	app-dicts/sword-umgreek
 	app-dicts/sword-vulgate
 	app-dicts/sword-vulgate_hebps
 	app-dicts/sword-web
@@ -159,5 +135,4 @@ RDEPEND="app-dicts/sword-ab
 	app-dicts/sword-wlc
 	app-dicts/sword-wulfila
 	app-dicts/sword-wycliffe
-	app-dicts/sword-xhosa
 	app-dicts/sword-ylt"
