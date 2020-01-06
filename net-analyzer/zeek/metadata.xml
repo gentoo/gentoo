@@ -4,7 +4,7 @@
 <!-- maintainer-needed -->
     <use>
         <flag name="zeekctl">Enable ZeekControl, a tool for operating Zeek installations</flag>
-        <flag name="geoipv2">Enable support for Maxmind's GeoIP library</flag>
+        <flag name="geoip2">Enable support for Maxmind's GeoIP library</flag>
         <flag name="python">Enable Python bindings for broker</flag>
         <flag name="tcmalloc">Enable Google's performance analysis tools</flag>
         <flag name="tools">Auxiliary tools for Bro: adtrace, zeek-cut, rst</flag>

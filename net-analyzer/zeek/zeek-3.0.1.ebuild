@@ -12,22 +12,22 @@ SRC_URI="https://www.zeek.org/downloads/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="curl debug geoipv2 ipsumdump ipv6 jemalloc kerberos +python sendmail \
+IUSE="curl debug geoip2 ipsumdump ipv6 jemalloc kerberos +python sendmail \
 	static-libs tcmalloc +tools +zeekctl"
 
 RDEPEND=">=sys-libs/glibc-2.10
-	curl? ( net-misc/curl )
-	dev-libs/actor-framework
+	dev-libs/actor-framework:0
 	dev-libs/openssl:0
-	geoipv2? ( dev-libs/libmaxminddb )
-	ipsumdump? ( net-analyzer/ipsumdump[ipv6?] )
-	jemalloc? ( dev-libs/jemalloc )
-	kerberos? ( virtual/krb5 )
 	net-libs/libpcap
+	sys-libs/zlib
+	curl? ( net-misc/curl )
+	geoip2? ( dev-libs/libmaxminddb )
+	ipsumdump? ( net-analyzer/ipsumdump[ipv6?] )
+	jemalloc? ( dev-libs/jemalloc:0 )
+	kerberos? ( virtual/krb5 )
 	python? ( ${PYTHON_DEPS}
 		dev-python/pybind11[${PYTHON_USEDEP}] )
 	sendmail? ( virtual/mta )
-	sys-libs/zlib
 	tcmalloc? ( dev-util/google-perftools )"
 
 DEPEND="${RDEPEND}"
@@ -82,7 +82,7 @@ src_configure() {
 		-DENABLE_DEBUG=$(usex debug)
 		-DENABLE_JEMALLOC=$(usex jemalloc)
 		-DENABLE_KRB5=$(usex kerberos)
-		-DENABLE_MMDB=$(usex geoipv2)
+		-DENABLE_MMDB=$(usex geoip2)
 		-DENABLE_PERFTOOLS=$(usex tcmalloc)
 		-DENABLE_STATIC=$(usex static-libs)
 		-DBUILD_STATIC_BROKER=$(usex static-libs)
@@ -116,9 +116,9 @@ src_install() {
 	keepdir /var/log/"${PN}" /var/spool/"${PN}"/tmp
 
 	# Doesn't exist
-	rm -f "${ED}"/var/spool/zeek/zeekctl-config.sh
-	rm -f "${ED}"/usr/share/zeekctl/scripts/zeekctl-config.sh
+	rm -f "${ED}"/var/spool/zeek/zeekctl-config.sh || die
+	rm -f "${ED}"/usr/share/zeekctl/scripts/zeekctl-config.sh || die
 
 	# Remove compat symlinks
-	rm -f "${ED}"/usr/bin/broctl "${ED}"/usr/lib/broctl
+	rm -f "${ED}"/usr/bin/broctl "${ED}"/usr/lib/broctl || die
 }
