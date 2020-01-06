@@ -18143,9 +18143,9 @@ www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0 68.2.0 68.3.0 71.0-r1 72.0: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.2.0 68.3.0 71.0 72.0: Firefox Web Browser
-www-client/google-chrome 79.0.3945.79: The web browser from Google
-www-client/google-chrome-beta 79.0.3945.79: The web browser from Google
-www-client/google-chrome-unstable 80.0.3987.7: The web browser from Google
+www-client/google-chrome 79.0.3945.88: The web browser from Google
+www-client/google-chrome-beta 80.0.3987.16: The web browser from Google
+www-client/google-chrome-unstable 81.0.4000.3: The web browser from Google
 www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.14-r1 2.16 2.17 2.18: A fast and lightweight web browser running in both graphics and text mode
@@ -18193,7 +18193,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.303: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r1: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 79.0.3945.79_beta 79.0.3945.79 80.0.3987.7_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 79.0.3945.88 80.0.3987.16_beta 81.0.4000.3_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2: High performance flash player
