@@ -43,6 +43,13 @@ src_configure() {
 	gnome2_src_configure --disable-schemas-compile
 }
 
+src_compile() {
+	# Workaround crash in libwebkit2gtk-4.0.so
+	# https://bugs.gentoo.org/704594
+	WEBKIT_DISABLE_COMPOSITING_MODE=1 \
+                gnome2_src_compile
+}
+
 src_install() {
 	gnome2_src_install
 
