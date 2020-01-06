@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
-HASH="70aab11cf17a8966a5bb188b4173b240"
+HASH="5918e6040337c71b8b88932301c7de0e"
 inherit python-r1 gnome2-utils meson xdg-utils
 
 DESCRIPTION="Modern music player for GNOME"
@@ -46,6 +46,11 @@ RESTRICT="test"
 
 pkg_preinst() {
 	gnome2_schemas_savelist
+}
+
+src_install() {
+	meson_src_install
+	python_foreach_impl python_optimize
 }
 
 pkg_postinst() {

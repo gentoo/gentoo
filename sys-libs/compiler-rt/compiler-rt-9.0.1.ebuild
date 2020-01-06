@@ -33,6 +33,7 @@ BDEPEND="
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
 python_check_deps() {
+	use test || return 0
 	has_version "dev-python/lit[${PYTHON_USEDEP}]"
 }
 
@@ -45,7 +46,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	llvm_pkg_setup
-	use test && python-any-r1_pkg_setup
+	python-any-r1_pkg_setup
 }
 
 test_compiler() {
