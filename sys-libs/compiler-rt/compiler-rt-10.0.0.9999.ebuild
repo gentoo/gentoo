@@ -45,7 +45,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	llvm_pkg_setup
-	python-any-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 test_compiler() {
