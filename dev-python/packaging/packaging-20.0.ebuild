@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3  )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3  )
 
 inherit distutils-r1
 
@@ -33,7 +33,7 @@ PATCHES=(
 )
 
 python_test() {
-	py.test --capture=no --strict -v || die
+	pytest --capture=no --strict -vv || die
 }
 
 pkg_preinst() {
@@ -44,8 +44,7 @@ pkg_preinst() {
 		local pyver=$("${PYTHON}" -c "from distutils.sysconfig import get_python_version; print(get_python_version())")
 		local egginfo="${ROOT}$(python_get_sitedir)/${P}-py${pyver}.egg-info"
 		if [[ -d ${egginfo} ]]; then
-			echo rm -r "${egginfo}"
-			rm -r "${egginfo}" || die "Failed to remove egg-info directory"
+			rm -rv "${egginfo}" || die "Failed to remove egg-info directory"
 		fi
 	}
 	python_foreach_impl _cleanup

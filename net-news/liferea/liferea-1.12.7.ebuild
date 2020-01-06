@@ -34,6 +34,13 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
 
+src_compile() {
+	# Workaround crash in libwebkit2gtk-4.0.so
+	# https://bugs.gentoo.org/704594
+	WEBKIT_DISABLE_COMPOSITING_MODE=1 \
+		gnome2_src_compile
+}
+
 pkg_postinst() {
 	gnome2_pkg_postinst
 
