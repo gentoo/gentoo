@@ -33,6 +33,44 @@
 #--- END OF EXAMPLES ---
 
 # Ulrich Müller <ulm@gentoo.org> (2020-01-06)
+# No license, therefore we have no permission to redistribute
+# these packages on Gentoo mirrors. Distfiles are unversioned
+# zipballs, which are updated in place when a new version is
+# released. Since this will break digests, mirror restriction
+# is not feasible.
+# Masked for removal in 30 days. Bug #703604.
+app-dicts/sword-ab
+app-dicts/sword-abs_essay_goodsam_swb
+app-dicts/sword-br_en
+app-dicts/sword-bulcarigradnt
+app-dicts/sword-bwe
+app-dicts/sword-chincvs
+app-dicts/sword-chincvt
+app-dicts/sword-chiun
+app-dicts/sword-chiuns
+app-dicts/sword-czecep
+app-dicts/sword-czekms
+app-dicts/sword-czenkb
+app-dicts/sword-dbd
+app-dicts/sword-emtv
+app-dicts/sword-est
+app-dicts/sword-family
+app-dicts/sword-finpr92
+app-dicts/sword-frecrl
+app-dicts/sword-geneva
+app-dicts/sword-hebmodern
+app-dicts/sword-hunuj
+app-dicts/sword-icelandic
+app-dicts/sword-kekchi
+app-dicts/sword-korean
+app-dicts/sword-la_en
+app-dicts/sword-latvian
+app-dicts/sword-maori
+app-dicts/sword-romcor
+app-dicts/sword-umgreek
+app-dicts/sword-xhosa
+
+# Ulrich Müller <ulm@gentoo.org> (2020-01-06)
 # Snapshots from Git, masked for testing.
 =app-editors/emacs-27.0.50_pre*
 
