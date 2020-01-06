@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="AWS SDK for C++"
 HOMEPAGE="https://aws.amazon.com/sdk-for-cpp/"
@@ -25,8 +25,8 @@ MODULES=(
 )
 
 IUSE="+http libressl +rtti +ssl static-libs test unity-build ${MODULES[*]}"
-RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	http? ( net-misc/curl:= )
@@ -147,5 +147,5 @@ src_configure() {
 		-DNO_ENCRYPTION=$(usex !ssl)
 		-DNO_HTTP_CLIENT=$(usex !http)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
