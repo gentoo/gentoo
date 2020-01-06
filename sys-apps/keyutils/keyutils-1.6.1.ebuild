@@ -11,7 +11,7 @@ SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/dhowells/keyutils.git/s
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/1.9"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static static-libs test"
 RESTRICT="!test? ( test )"
 
