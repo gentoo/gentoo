@@ -7189,8 +7189,6 @@ net-wireless/yatebts:bladerf - Build bladeRF transceiver
 net-wireless/yatebts:rad1 - Build RAD1 transceiver
 net-wireless/yatebts:uhd - Build UHD transceiver
 net-wireless/yatebts:usrp1 - Build USRP1 transceiver
-sci-astronomy/casacore:c++11 - Build casacore using the C++11 standard
-sci-astronomy/casacore:data - Installs measures and data (pulls sci-astronomy/casa-data)
 sci-astronomy/cpl:gasgano - Enable support for sci-astronomy/gasgano file organizer
 sci-astronomy/esomidas:libtirpc - Build against net-libs/libtirpc for RPC support
 sci-astronomy/healpix:idl - Install healpix IDL/GDL routines

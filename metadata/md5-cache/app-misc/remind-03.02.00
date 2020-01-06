@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=tk? ( dev-lang/tk dev-tcltk/tcllib )
 SLOT=0
-SRC_URI=https://dianne.skoll.ca/projects/remind/download/remind-03.01.16.tar.gz
-_md5_=c937c6d3c83f0396ffd0e405037548b9
+SRC_URI=https://dianne.skoll.ca/projects/remind/download/remind-03.02.00.tar.gz
+_md5_=7d46aad3f30dc536a98f42c234f3f18e

@@ -2151,7 +2151,7 @@ app-misc/realpath 1.17 1.18: Return the canonicalized absolute pathname
 app-misc/recoll 1.25.19: A personal full text search package
 app-misc/regex-markup 0.10.0-r1: A tool to color syslog files as well
 app-misc/regionset 0.2: Sets the region on DVD drives
-app-misc/remind 03.01.15 03.01.16 03.01.17: Ridiculously functional reminder program
+app-misc/remind 03.01.15 03.01.17 03.02.00: Ridiculously functional reminder program
 app-misc/reptyr 0.6.2 0.7.0: A utility to attach a running program to a new terminal
 app-misc/resolve-march-native 0.9 0.9.2 0.9.3 0.9.4: Resolve GCC flag -march=native
 app-misc/rioutil 1.5.0-r2 1.5.4: A utility for accessing various Rio media players
@@ -15753,7 +15753,6 @@ ros-meta/visualization_tutorials 0.9.2 0.10.1 0.10.2 0.10.3 9999: Metapackage re
 ros-meta/viz 1.4.0 1.4.1 9999: Metapackage for ROS visualization packages
 sci-astronomy/aatm 0.6: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/casa-data 99999 20160222 20170703: Data and tables for the CASA software
-sci-astronomy/casacore 2.3.0-r1: Core libraries for the Common Astronomy Software Applications
 sci-astronomy/cdsclient 3.8.1 3.8.4: Collection of scripts to access the CDS databases
 sci-astronomy/celestia 1.6.1-r1 9999: OpenGL 3D space simulator
 sci-astronomy/cpl 6.4.2 6.6.1 7.0: ESO common pipeline library for astronomical data reduction
@@ -18505,7 +18504,6 @@ x11-misc/bbweather 0.6.3-r2: blackbox weather monitor
 x11-misc/blockdpy 1-r1: Tool to block access via the physical display while x11vnc is running
 x11-misc/bumblebee 3.2.1 3.2.1_p20170123 3.2.1_p20170130 9999: Service providing elegant and stable means of managing Optimus graphics chipsets
 x11-misc/cairo-clock 0.3.4-r1: An analog clock displaying the system-time
-x11-misc/calise 0.4.2: Computes ambient brightness and sets screen's correct backlight using a webcam
 x11-misc/cbatticon 1.6.5 1.6.9 1.6.10: A lightweight and fast battery icon that sits in your system tray
 x11-misc/cdm 0.6.1_pre20180107 0.7: The Console Display Manager
 x11-misc/chgres 0.1-r2: A very simple command line utility for changing X resolutions
