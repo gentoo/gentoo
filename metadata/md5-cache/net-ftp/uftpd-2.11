@@ -1,4 +1,4 @@
-DEFINED_PHASES=install
+DEFINED_PHASES=-
 DEPEND=>=dev-libs/libite-1.5 >=dev-libs/libuev-2.2
 DESCRIPTION=The no nonsense TFTP/FTP server
 EAPI=7
@@ -7,5 +7,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=>=dev-libs/libite-1.5 >=dev-libs/libuev-2.2 !net-misc/uftp !net-ftp/atftp
 SLOT=0
-SRC_URI=https://github.com/troglobit/uftpd/releases/download/v2.7/uftpd-2.7.tar.xz
-_md5_=e68446be33014958bb8ac6bb575105fb
+SRC_URI=https://github.com/troglobit/uftpd/releases/download/v2.11/uftpd-2.11.tar.xz
+_md5_=b0b6ed1fd9ffb917892fdf9ab159e576

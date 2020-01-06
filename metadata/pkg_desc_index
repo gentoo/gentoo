@@ -14623,7 +14623,7 @@ net-ftp/pybootd 1.5.0_pre20110524131526: Simplified BOOTP/DHCP/PXE/TFTP server
 net-ftp/tftp-hpa 5.2-r1: port of the OpenBSD TFTP server
 net-ftp/tlswrap 1.04-r3: FTP wrapper which supports TLS with every FTP client
 net-ftp/tnftp 20141104 20151004: NetBSD FTP client with several advanced features
-net-ftp/uftpd 2.7 2.8 2.10: The no nonsense TFTP/FTP server
+net-ftp/uftpd 2.10 2.11: The no nonsense TFTP/FTP server
 net-ftp/vsftpd 3.0.3-r2: Very Secure FTP Daemon written with speed, size and security in mind
 net-ftp/yafc 1.3.7: Console ftp client with a lot of nifty features
 net-im/bitlbee 3.5.1 3.6 9999: irc to IM gateway that support multiple IM protocols
@@ -15512,7 +15512,7 @@ net-vpn/badvpn 1.999.126 1.999.127 1.999.128 1.999.129 1.999.130: Peer-to-peer V
 net-vpn/corkscrew 2.0: a tool for tunneling SSH through HTTP proxies
 net-vpn/freelan 2.2: Peer-to-peer VPN software that abstracts a LAN over the Internet
 net-vpn/httptunnel 3.3-r2: httptunnel can create IP tunnels through firewalls/proxies using HTTP
-net-vpn/i2p 0.9.40 0.9.42: A privacy-centric, anonymous network
+net-vpn/i2p 0.9.42 0.9.44: A privacy-centric, anonymous network
 net-vpn/i2pd 2.27.0 2.28.0 2.29.0: A C++ daemon for accessing the I2P anonymous network
 net-vpn/iodine 0.7.0-r2: IP over DNS tunnel
 net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 IPsec implementation
@@ -18572,7 +18572,7 @@ x11-misc/kbdd 0.7.1: Very simple layout switcher
 x11-misc/kdocker 5.0-r1 5.2: Helper to dock any application into the system tray
 x11-misc/kronometer 2.2.3: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
-x11-misc/libinput-gestures 2.41 2.45 2.48 9999: Actions gestures on your touchpad using libinput
+x11-misc/libinput-gestures 2.48 9999: Actions gestures on your touchpad using libinput
 x11-misc/light-locker 1.8.0-r1 1.9.0-r2: A simple locker using lightdm
 x11-misc/lightdm 1.28.0 1.30.0: A lightweight display manager
 x11-misc/lightdm-gtk-greeter 2.0.6 2.0.7-r1: LightDM GTK+ Greeter
