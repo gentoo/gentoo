@@ -2681,7 +2681,7 @@ app-text/sloccount 2.26-r3: Tools for counting Source Lines of Code (SLOC) for a
 app-text/spellutils 0.7: spellutils includes 'newsbody' (useful for spellchecking in mails, etc.)
 app-text/stardict 3.0.6-r3 4.0.0_pre20170304: A international dictionary supporting fuzzy and glob style matching
 app-text/sword 1.7.4-r1 1.8.1-r1: Library for Bible reading software
-app-text/sword-modules 1: A collection of modules for the SWORD project
+app-text/sword-modules 1-r1: A collection of modules for the SWORD project
 app-text/t1utils 1.41-r2: Type 1 Font utilities
 app-text/tabler 2-r1: A utility to create text art tables from delimited input
 app-text/talkfilters 2.3.8-r1: Convert ordinary English text into text that mimics a stereotyped dialect
@@ -7149,7 +7149,7 @@ dev-php/PEAR-Cache_Lite 1.8.2 1.8.3: Fast and safe little cache system
 dev-php/PEAR-Config 2.0.0_pre20140323-r1: Provides multiple methods for configuration manipulation
 dev-php/PEAR-Console_CommandLine 1.2.2: A full-featured command-line options and arguments parser
 dev-php/PEAR-Console_Getargs 1.4.0: A command-line arguments parser
-dev-php/PEAR-Console_Getopt 1.4.1-r1: Command-line option parser
+dev-php/PEAR-Console_Getopt 1.4.1-r1 1.4.3: Command-line option parser
 dev-php/PEAR-Console_Table 1.3.0-r1 1.3.1: Class that makes it easy to build console style tables
 dev-php/PEAR-Crypt_CHAP 1.5.0-r3: Generating CHAP packets
 dev-php/PEAR-Crypt_GPG 1.6.2 1.6.3: PHP interface to the GNU Privacy Guard (GnuPG)
