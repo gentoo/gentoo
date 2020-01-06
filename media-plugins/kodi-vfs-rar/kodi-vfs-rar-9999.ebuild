@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,8 +27,9 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-DEPEND="
-	=dev-libs/libplatform-2*
+RDEPEND="
+	dev-libs/tinyxml
 	~media-libs/kodi-platform-9999
 	~media-tv/kodi-9999
 	"
+DEPEND="${RDEPEND}"
