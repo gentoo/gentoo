@@ -13,7 +13,7 @@ LICENSE="BSD-2 GPL-2 LGPL-2.1 ZLIB"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~hppa ~ppc x86"
 IUSE="X bmp connman dds debug doc +drm +eet elogind examples fbcon fontconfig
-	fribidi gif gles2 gnutls glib +gstreamer harfbuzz hyphen ibus ico libressl
+	fribidi gif +gles2 gnutls glib +gstreamer harfbuzz hyphen ibus ico libressl
 	lua +luajit jpeg2k json nls mono opengl +pdf physics pmaps postscript psd
 	pulseaudio raw scim sdl +sound +ssl static-libs +svg +system-lz4 systemd
 	tga tgv tiff tslib unwind v4l vlc vnc wayland webp xcf xim xine xpm
