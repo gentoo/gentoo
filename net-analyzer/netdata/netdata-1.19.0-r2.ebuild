@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
 inherit autotools fcaps linux-info python-r1 systemd
 
@@ -50,7 +50,7 @@ RDEPEND="
 	compression? ( sys-libs/zlib )
 	ipmi? ( sys-libs/freeipmi )
 	jsonc? ( dev-libs/json-c )
-	kinesis? ( dev-libs/aws-sdk-cpp )
+	kinesis? ( dev-libs/aws-sdk-cpp[kinesis] )
 	mongodb? ( dev-libs/mongo-c-driver )
 	nfacct? (
 		net-firewall/nfacct
