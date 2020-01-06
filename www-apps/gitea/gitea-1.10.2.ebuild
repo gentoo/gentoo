@@ -1,48 +1,68 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit golang-vcs-snapshot tmpfiles systemd
+
+if [[ ${PV} != 9999* ]] ; then
+	SCM="golang-vcs-snapshot"
+else
+	SCM="git-r3"
+fi
+
+inherit golang-base tmpfiles systemd ${SCM}
+unset SCM
 
 EGO_PN="code.gitea.io/gitea"
 
 DESCRIPTION="A painless self-hosted Git service"
 HOMEPAGE="https://gitea.io"
-SRC_URI="https://github.com/go-gitea/gitea/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+
+if [[ ${PV} != 9999* ]] ; then
+	SRC_URI="https://github.com/go-gitea/gitea/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64"
+else
+	EGIT_REPO_URI="https://github.com/go-gitea/gitea"
+	EGIT_CHECKOUT_DIR="${WORKDIR}/${P}/src/${EGO_PN}"
+	has test ${FEATURES} && EGIT_MIN_CLONE_TYPE="mirror"
+fi
 
 LICENSE="Apache-2.0 BSD BSD-2 ISC MIT MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64"
 IUSE="+acct pam sqlite"
 
-BDEPEND="<dev-lang/go-1.13"
-COMMON_DEPEND="
+BDEPEND="dev-lang/go"
+DEPEND="pam? ( sys-libs/pam )"
+RDEPEND="${DEPEND}
 	acct? (
 		acct-group/git
 		acct-user/git[gitea]
 	)
-	pam? ( sys-libs/pam )"
-DEPEND="${COMMON_DEPEND}"
-RDEPEND="${COMMON_DEPEND}
 	dev-vcs/git"
 
 DOCS=( custom/conf/app.ini.sample CONTRIBUTING.md README.md )
 S="${WORKDIR}/${P}/src/${EGO_PN}"
 
-PATCHES=( "${FILESDIR}/gitea-mod-vendor.patch" "${FILESDIR}/gitea-logflags.patch" )
+PATCHES=( "${FILESDIR}/gitea-logflags.patch" )
 
 gitea_make() {
-	local my_tags=(
+	local gitea_tags=(
 		bindata
 		$(usev pam)
 		$(usex sqlite 'sqlite sqlite_unlock_notify' '')
 	)
-	local my_makeopt=(
-		DRONE_TAG=${PV}
-		TAGS="${my_tags[@]}"
-		LDFLAGS="-extldflags \"${LDFLAGS}\""
+	local gitea_settings=(
+		"-X code.gitea.io/gitea/modules/setting.CustomConf=${EPREFIX}/etc/gitea/app.ini"
+		"-X code.gitea.io/gitea/modules/setting.CustomPath=${EPREFIX}/var/lib/gitea/custom"
+		"-X code.gitea.io/gitea/modules/setting.AppWorkPath=${EPREFIX}/var/lib/gitea"
 	)
-	GOPATH=${WORKDIR}/${P}:$(get_golibdir_gopath) emake "${my_makeopt[@]}" "$@"
+	local makeenv=(
+		TAGS="${gitea_tags[@]}"
+		LDFLAGS="-extldflags \"${LDFLAGS}\" ${gitea_settings[@]}"
+		GOPATH="${WORKDIR}/${P}:$(get_golibdir_gopath)"
+	)
+	[[ ${PV} != 9999* ]] && makeenv+=("DRONE_TAG=${PV}")
+
+	env "${makeenv[@]}" emake "$@"
 }
 
 src_prepare() {
@@ -74,6 +94,21 @@ src_compile() {
 	gitea_make build
 }
 
+src_test() {
+	if has network-sandbox ${FEATURES}; then
+		einfo "Remove tests which are known to fail with network-sandbox enabled."
+		rm ./modules/migrations/github_test.go || die
+	fi
+
+	if [[ ${PV} != 9999* ]] ; then
+		einfo "Remove tests which depend on gitea git-repo."
+		rm ./modules/git/blob_test.go || die
+		rm ./modules/git/repo_test.go || die
+	fi
+
+	default
+}
+
 src_install() {
 	dobin gitea
 
@@ -95,17 +130,5 @@ src_install() {
 		diropts -m0750 -o git -g git
 		keepdir /var/lib/gitea /var/lib/gitea/custom /var/lib/gitea/data
 		keepdir /var/log/gitea
-	fi
-}
-
-pkg_postinst() {
-	if [[ -e "${EROOT}/var/lib/gitea/conf/app.ini" ]]; then
-		ewarn "The configuration path has been changed to ${EROOT}/etc/gitea/app.ini."
-		ewarn "Please move your configuration from ${EROOT}/var/lib/gitea/conf/app.ini"
-		ewarn "and adapt the gitea-repositories hooks and ssh authorized_keys."
-		ewarn "Depending on your configuration you should run something like:"
-		ewarn "sed -i -e 's#${EROOT}/var/lib/gitea/conf/app.ini#${EROOT}/etc/gitea/app.ini#' \\"
-		ewarn "  /var/lib/gitea/gitea-repositories/*/*/hooks/*/* \\"
-		ewarn "  /var/lib/gitea/.ssh/authorized_keys"
 	fi
 }

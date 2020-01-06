@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Simple command line utility to create BitTorrent metainfo files"
@@ -11,18 +11,24 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/Rudde/mktorrent.git"
 else
-	COMMIT_ID="96090fb175f3cef17ae2499e98c2868363106927"
+	COMMIT_ID="4c221a05d949a3767a2671de139c6014909daf6b"
 	SRC_URI="https://github.com/Rudde/${PN}/archive/${COMMIT_ID}.tar.gz -> ${PN}-${COMMIT_ID}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 	S="${WORKDIR}/${PN}-${COMMIT_ID}"
 fi
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="threads +ssl debug"
+IUSE="threads +ssl libressl debug"
 
-RDEPEND="ssl? ( dev-libs/openssl:0= )"
+RDEPEND="
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
+"
+
 DEPEND="${RDEPEND}"
 
 src_compile() {
