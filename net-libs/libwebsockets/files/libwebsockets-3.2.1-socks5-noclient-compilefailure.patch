@@ -16,14 +16,14 @@ index 69fe26a5..283b802e 100644
 --- a/lib/core-net/vhost.c
 +++ b/lib/core-net/vhost.c
 @@ -437,7 +437,7 @@ lws_create_vhost(struct lws_context *context,
- 	struct lws_protocols *lwsp;
- 	int m, f = !info->pvo, fx = 0, abs_pcol_count = 0;
- 	char buf[96];
+	struct lws_protocols *lwsp;
+	int m, f = !info->pvo, fx = 0, abs_pcol_count = 0;
+	char buf[96];
 -#if !defined(LWS_WITHOUT_CLIENT) && defined(LWS_HAVE_GETENV)
 +#if (!defined(LWS_WITHOUT_CLIENT) || defined(LWS_WITH_SOCKS5)) && defined(LWS_HAVE_GETENV)
- 	char *p;
+	char *p;
  #endif
- 	int n;
+	int n;
 -- 
 2.23.0
 
