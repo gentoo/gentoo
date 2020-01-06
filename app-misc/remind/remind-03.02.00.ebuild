@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,8 +35,12 @@ src_install() {
 	dobin www/rem2html
 
 	if ! use tk ; then
-		rm "${D}"/usr/bin/tkremind "${D}"/usr/share/man/man1/tkremind* \
-			"${D}"/usr/bin/cm2rem*  "${D}"/usr/share/man/man1/cm2rem*
+		rm \
+			"${D}"/usr/bin/cm2rem* \
+			"${D}"/usr/bin/tkremind \
+			"${D}"/usr/share/man/man1/cm2rem* \
+			"${D}"/usr/share/man/man1/tkremind* \
+			|| die
 	fi
 
 	rm "${S}"/contrib/rem2ics-*/{Makefile,rem2ics.spec} || die
