@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-01-06)
+# Snapshots from Git, masked for testing.
+=app-editors/emacs-27.0.50_pre*
+
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
 # media-video/vdr-2.4.x
@@ -690,198 +694,11 @@ sci-mathematics/factmsieve
 # has QA issues, bug #598840. Removal in 30 days.
 sci-mathematics/xmds
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-07)
-# Runtime errors/segfaults, ancient, unmaintained, depends on py27.
-# Bug 590986, removal in 30 days.
-x11-misc/calise
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-07)
-# Fails to build against dev-libs/boost-1.71.0, depends on py27.
-# Bug 624222, removal in 30 days.
-sci-astronomy/casacore
-
 # Michał Górny <mgorny@gentoo.org> (2019-12-05)
 # Last maintainer activity in 2016.  Does not build for quite some time
 # already.  Needs a version bump, at the very least.
 # Removal in 30 days.  Bug #602024.
 app-laptop/nvidiabl
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-05)
-# Unmaintained since 2016.  Last touched in 2018.  Pending bump since
-# Feb 2019.  Does not build anymore.
-# Removal in 30 days.  Bug #695580.
-net-wireless/ndiswrapper
-
-# Aaron Bauman <bman@gentoo.org> (2019-12-04)
-# These are (mostly) leaf packages with only py2.7
-# Please review commit msg. Removal in 30 days
-# THIS MASK HAS BEEN CONFIRMED BY THE QA TEAM VIA
-# MAJORITY VOTE. YOU CAN REMOVE SINGLE PACKAGES
-# IF YOU PERSONALLY STEP IN TO MAINTAIN THEM (AND
-# ADD YOURSELF TO THEIR METADATA).
-app-misc/hachoir-subfile
-app-misc/yworklog
-app-text/pdfshuffler
-dev-python/anyvc
-dev-python/asciitree
-dev-python/beanstalkc
-dev-python/bicyclerepair
-dev-python/buzhug
-dev-python/cement
-dev-python/cherrytemplate
-dev-python/clientcookie
-dev-python/dib-utils
-dev-python/dirq
-dev-python/disqus-python
-dev-python/figleaf
-dev-python/flask-dashed
-dev-python/foolscap
-dev-python/gdmodule
-dev-python/graphy
-dev-python/guppy
-dev-python/hachoir-regex
-dev-python/happydoc
-dev-python/hcluster
-dev-python/hcs-utils
-dev-python/hp3parclient
-dev-python/htmlgen
-dev-python/inotifyx
-dev-python/irman-python
-dev-python/jonpy
-dev-python/keyczar
-dev-python/keyrings_alt
-dev-python/libextractor-python
-dev-python/libiscsi-python
-dev-python/libnatpmp
-dev-python/log4py
-dev-python/louie
-dev-python/lp_solve
-dev-python/lupy
-dev-python/m2secret
-dev-python/mwlib-ext
-dev-python/newt_syrup
-dev-python/numdisplay
-dev-python/optcomplete
-dev-python/piddle
-dev-python/pp
-dev-python/pyamf
-dev-python/pyao
-dev-python/pycdf
-dev-python/pychef
-dev-python/pyclamav
-dev-python/pycryptopp
-dev-python/pydvdread
-dev-python/pyelemental
-dev-python/pyifp
-dev-python/pykota
-dev-python/pylibpcap
-dev-python/pyml
-dev-python/pynag
-dev-python/pyndex
-dev-python/py-notify
-dev-python/pyoembed
-dev-python/pyPdf
-dev-python/pyrax
-dev-python/py-smbpasswd
-dev-python/pystatgrab
-dev-python/python-caja
-dev-python/python-catcher
-dev-python/python-cdb
-dev-python/python-exconsole
-dev-python/python-fastcgi
-dev-python/python-mhash
-dev-python/python-oembed
-dev-python/python-pam
-dev-python/python-pluginloader
-dev-python/pyvtk
-dev-python/PyZilla
-dev-python/qserve
-dev-python/RecSQL
-dev-python/rlcompleter2
-dev-python/ropeide
-dev-python/ropemacs
-dev-python/sancho
-dev-python/sclapp
-dev-python/simplesettings
-dev-python/slowaes
-dev-python/snakefood
-dev-python/sphinxcontrib-ditaa
-dev-python/sqlitecachec
-dev-python/stripogram
-dev-python/sudsds
-dev-python/superlance
-dev-python/supervisor-quick
-dev-python/telarchive
-dev-python/tgmochikit
-dev-python/ttfquery
-dev-python/turbolift
-dev-python/ushlex
-dev-python/vatnumber
-dev-python/weberror
-dev-python/webhelpers
-dev-python/webpy
-dev-python/workerpool
-dev-util/Orange
-dev-vcs/hg-fast-export
-dev-vcs/rabbitvcs
-net-analyzer/namebench
-net-fs/tahoe-lafs
-net-misc/irrtree
-net-misc/pycnb
-net-p2p/pybitmessage
-net-print/pykota
-www-apps/blohg-tumblelog
-x11-misc/magick-rotation
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Added in 2013 and not updated since.  Unmaintained upstream since
-# inception.  Never had any keywords.
-# Removal in 30 days.  Bug #701462.
-net-dns/pdns-ldap-backend
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained.  Incorrect license and potential copyright infringement.
-# Removal in 30 days.  Bug #634332.
-games-misc/fortune-mod-powerpuff
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained.  No license and potential copyright infringement.
-# Removal in 30 days.  Bug #634318.
-games-misc/fortune-mod-smac
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Not updated since 2009 and 2004 respectively.  Suspicious license.
-# Removal in 30 days.  Bugs #691084 and #701732.
-games-misc/fortune-mod-gentoo-dev
-games-misc/fortune-mod-gentoo-forums
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# The plugin is broken with multiple dependencies.  It is also dead
-# upstream.  Removing per maintainer's request.
-# Removal in 30 days.  Bug #314309.
-media-plugins/vdr-coverviewer
-media-plugins/vdr-music
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unresolved vulnerability.  Also apparently fails to build (#574048).
-# Removal in 30 days.  Bug #463338.
-sys-fabric/ibutils
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained.  Not bumped since 2015.
-# Removal in 30 days.  Bug #585126.
-www-servers/hiawatha
-www-apps/hiawatha-monitor
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained.  Last release in 2012.  Buggy ebuild.
-# Removal in 30 days.  Bug #658302.
-app-text/pdfshuffler
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Not updated since 2015.  No reverse dependencies.
-# Removal in 30 days.  Bug #695392.
-dev-python/quixote
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2019-11-29)
 # Beta for new major version with initial Python 3 support

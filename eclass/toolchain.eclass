@@ -1213,6 +1213,7 @@ toolchain_src_configure() {
 		# but musl does not support elfv1 at all on any endian ppc64
 		# see https://git.musl-libc.org/cgit/musl/tree/INSTALL
 		# https://bugs.gentoo.org/704784
+		# https://gcc.gnu.org/PR93157
 		[[ ${CTARGET} == powerpc64-*-musl ]] && confgcc+=( --with-abi=elfv2 )
 		;;
 	riscv)

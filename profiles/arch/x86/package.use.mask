@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
+# zfs is not keyworded on x86
+dev-util/schroot zfs
+
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
 # dev-libs/criterion is not keyworded yet
 app-admin/syslog-ng test

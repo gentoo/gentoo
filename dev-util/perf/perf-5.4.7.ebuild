@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 inherit bash-completion-r1 estack eutils toolchain-funcs python-r1 linux-info
 
 MY_PV="${PV/_/-}"
@@ -74,11 +74,6 @@ S_K="${WORKDIR}/linux-${LINUX_VER}"
 S="${S_K}/tools/perf"
 
 CONFIG_CHECK="~PERF_EVENTS ~KALLSYMS"
-
-pkg_setup() {
-	linux-info_pkg_setup
-	use python && python-r1_pkg_setup
-}
 
 src_unpack() {
 	local paths=(

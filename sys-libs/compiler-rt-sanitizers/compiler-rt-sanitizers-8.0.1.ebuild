@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,6 +45,10 @@ S=${WORKDIR}/${MY_P}
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+python_check_deps() {
+	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
+
 check_space() {
 	if use test; then
 		local CHECKREQS_DISK_BUILD=11G
@@ -59,7 +63,7 @@ pkg_pretend() {
 pkg_setup() {
 	check_space
 	llvm_pkg_setup
-	python-any-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 src_unpack() {

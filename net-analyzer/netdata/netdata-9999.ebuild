@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
 inherit autotools fcaps linux-info python-r1 systemd
 
@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="caps +compression cpu_flags_x86_sse2 cups +dbengine ipmi mysql nfacct nodejs postgres +python tor xen"
+IUSE="caps +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc kinesis mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
 REQUIRED_USE="
 	mysql? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -49,11 +49,18 @@ RDEPEND="
 	)
 	compression? ( sys-libs/zlib )
 	ipmi? ( sys-libs/freeipmi )
+	jsonc? ( dev-libs/json-c )
+	kinesis? ( dev-libs/aws-sdk-cpp[kinesis] )
+	mongodb? ( dev-libs/mongo-c-driver )
 	nfacct? (
 		net-firewall/nfacct
 		net-libs/libmnl
 	)
 	nodejs? ( net-libs/nodejs )
+	prometheus? (
+		dev-libs/protobuf:=
+		app-arch/snappy
+	)
 	python? (
 		${PYTHON_DEPS}
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -90,11 +97,14 @@ src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=netdata \
-		--disable-jsonc \
+		$(use_enable jsonc) \
 		$(use_enable cups plugin-cups) \
 		$(use_enable dbengine) \
 		$(use_enable nfacct plugin-nfacct) \
 		$(use_enable ipmi plugin-freeipmi) \
+		$(use_enable kinesis backend-kinesis) \
+		$(use_enable mongodb backend-mongodb) \
+		$(use_enable prometheus backend-prometheus-remote-write) \
 		$(use_enable xen plugin-xenstat) \
 		$(use_enable cpu_flags_x86_sse2 x86-sse) \
 		$(use_with compression zlib)

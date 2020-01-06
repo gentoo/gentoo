@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,6 +36,10 @@ S=${WORKDIR}/${P/_/}.src
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+python_check_deps() {
+	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
+
 pkg_pretend() {
 	if ! use clang && ! tc-is-clang; then
 		ewarn "Building using a compiler other than clang may result in broken atomics"
@@ -45,7 +49,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	llvm_pkg_setup
-	python-any-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
 
 test_compiler() {
