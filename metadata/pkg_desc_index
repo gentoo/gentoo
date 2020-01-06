@@ -13453,7 +13453,7 @@ media-plugins/kodi-screensaver-pingpong 1.1.0 2.0.0 9999: Ping-pong screensaver 
 media-plugins/kodi-screensaver-pyro 2.0.0 3.0.0 9999: Pyro screensaver for Kodi
 media-plugins/kodi-screensaver-rsxs 9999: RSXS screensaver for Kodi
 media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 9999: Libarchive VFS add-on for Kodi
-media-plugins/kodi-vfs-rar 2.0.5 2.0.6 2.0.7 9999: RAR VFS addon for Kodi
+media-plugins/kodi-vfs-rar 2.0.5 2.0.6 2.0.7 2.0.8 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 9999: SFTP VFS addon for Kodi
 media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 9999: Fische visualizer for Kodi
