@@ -5,5 +5,5 @@ HOMEPAGE=http://troglobit.com/projects/editline/
 KEYWORDS=~amd64 ~x86
 LICENSE=Apache-2.0
 SLOT=0
-SRC_URI=https://github.com/troglobit/editline/releases/download/1.16.0/editline-1.16.0.tar.xz
-_md5_=5cca1da599f2be6aaea5a3085def71dc
+SRC_URI=https://github.com/troglobit/editline/releases/download/1.17.0/editline-1.17.0.tar.xz
+_md5_=883c623842e5b7dc604f37ad85109327

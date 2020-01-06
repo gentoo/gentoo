@@ -4,9 +4,9 @@ DESCRIPTION=Byzantine/Majority Text (2000)
 EAPI=5
 HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=Byz
 KEYWORDS=~amd64 ~ppc ~x86
-LICENSE=freedist
+LICENSE=public-domain
 RDEPEND=app-text/sword
 SLOT=0
 SRC_URI=mirror://gentoo/Byz-1.10.zip
 _eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
-_md5_=830cbc3b68d34836c9281327541b22e1
+_md5_=b3067b15ce49e4b900b4425d7a90a2a9

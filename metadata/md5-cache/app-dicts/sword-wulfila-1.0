@@ -4,9 +4,9 @@ DESCRIPTION=Bishop Wulfila Gothic Bible
 EAPI=5
 HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=Wulfila
 KEYWORDS=~amd64 ~ppc ~x86
-LICENSE=freedist
+LICENSE=public-domain
 RDEPEND=app-text/sword
 SLOT=0
 SRC_URI=mirror://gentoo/Wulfila-1.0.zip
 _eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
-_md5_=fb9d979349b44eb9061295b22dfac03d
+_md5_=181ce393f746c2d76b2f613aa71b9451

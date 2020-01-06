@@ -4,9 +4,9 @@ DESCRIPTION=Italian Giovanni Diodati Bibbia 1649
 EAPI=5
 HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=ItaDio
 KEYWORDS=~amd64 ~ppc ~x86
-LICENSE=freedist
+LICENSE=public-domain
 RDEPEND=app-text/sword
 SLOT=0
 SRC_URI=mirror://gentoo/ItaDio-1.0.zip
 _eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
-_md5_=56bd3611e9e5daee7bc2e1fae756867f
+_md5_=7b968856b1d0c0dbcf5ab5f9c6218351

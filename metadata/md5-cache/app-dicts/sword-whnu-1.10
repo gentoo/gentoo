@@ -4,9 +4,9 @@ DESCRIPTION=Westcott-Hort with NA27/UBS4 variants (1881)
 EAPI=5
 HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=WHNU
 KEYWORDS=~amd64 ~ppc ~x86
-LICENSE=freedist
+LICENSE=public-domain
 RDEPEND=app-text/sword
 SLOT=0
 SRC_URI=mirror://gentoo/WHNU-1.10.zip
 _eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
-_md5_=22d851766d6207ab8e727567068c1188
+_md5_=3262b368938be333c32aa72b5d9bb873

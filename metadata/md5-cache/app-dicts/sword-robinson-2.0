@@ -4,9 +4,9 @@ DESCRIPTION=Robinson's Morphological Analysis Codes
 EAPI=5
 HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=Robinson
 KEYWORDS=~amd64 ~ppc ~x86
-LICENSE=public-domain
+LICENSE=CC-BY-SA-3.0
 RDEPEND=app-text/sword
 SLOT=0
 SRC_URI=mirror://gentoo/Robinson-2.0.zip
 _eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
-_md5_=797417a9b9c31c2a04bed5cd12d55fd7
+_md5_=b6f1277a428ea27354c161fff82899a6

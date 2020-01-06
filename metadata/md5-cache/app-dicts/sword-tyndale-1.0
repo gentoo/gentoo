@@ -4,9 +4,9 @@ DESCRIPTION=William Tyndale Bible (1525/1530)
 EAPI=5
 HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=Tyndale
 KEYWORDS=~amd64 ~ppc ~x86
-LICENSE=freedist
+LICENSE=public-domain
 RDEPEND=app-text/sword
 SLOT=0
 SRC_URI=mirror://gentoo/Tyndale-1.0.zip
 _eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
-_md5_=745536bb199d0e34df52f91714f6d8eb
+_md5_=4d7bbfaebb7d243b399fe7234b68d968

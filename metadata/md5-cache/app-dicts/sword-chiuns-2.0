@@ -4,9 +4,10 @@ DESCRIPTION=Chinese Union Version Simplified
 EAPI=5
 HOMEPAGE=http://crosswire.org/sword/modules/ModInfo.jsp?modName=ChiUns
 KEYWORDS=~amd64 ~ppc ~x86
-LICENSE=freedist
+LICENSE=all-rights-reserved
 RDEPEND=app-text/sword
+RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=mirror://gentoo/ChiUns-2.0.zip
 _eclasses_=sword-module	f93b38348e60d75f292f55df132bbac4
-_md5_=71bfc5a40eb216f900976b6791e5e525
+_md5_=935f1b005426d80b2a22e1724b9d56fd
