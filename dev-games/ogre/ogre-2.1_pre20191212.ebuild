@@ -53,10 +53,14 @@ RDEPEND="
 # Dependencies for USE flags that do not work, yet.
 #	cg? ( media-gfx/nvidia-cg-toolkit )
 
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="
+	${RDEPEND}
 	x11-base/xorg-proto
-	doc? ( app-doc/doxygen )"
+"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.1-samples.patch"

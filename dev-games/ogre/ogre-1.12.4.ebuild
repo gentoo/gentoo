@@ -49,10 +49,14 @@ RDEPEND="
 	)
 	tools? ( dev-libs/tinyxml[stl] )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="
+	${RDEPEND}
 	x11-base/xorg-proto
-	doc? ( app-doc/doxygen )"
+"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-media_path.patch
