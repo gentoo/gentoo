@@ -60,7 +60,7 @@ src_compile() {
 
 src_install() {
 	local DOCS=( *.txt )
-	# Default build fails with parallel jobs, 
+	# Default build fails with parallel jobs,
 	# https://github.com/steveicarus/iverilog/pull/294
 	emake installdirs DESTDIR="${D}"
 	default
