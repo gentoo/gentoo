@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -79,7 +79,10 @@ src_configure() {
 src_compile() {
 	default
 
-	use doc && emake -C doc html
+	if use doc; then
+		emake -C doc html
+		HTML_DOCS=( doc/_build/html/{*.html,*.js,_sources,_static} )
+	fi
 }
 
 src_test() {
@@ -87,8 +90,6 @@ src_test() {
 }
 
 src_install() {
-	use doc && local HTML_DOCS=( doc/_build/html/{*.html,*.js,_sources,_static} )
-
 	default
 
 	rmdir "${D}/var/run/${PN}" "${D}/var/run/" || die
