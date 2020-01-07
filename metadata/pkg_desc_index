@@ -14269,7 +14269,7 @@ net-analyzer/ipaudit 1.0_beta2-r1: IPAudit monitors network activity on a networ
 net-analyzer/ipband 0.8.1-r1: A pcap based IP traffic and bandwidth monitor with configurable reporting and alarm abilities
 net-analyzer/ipcad 3.7.3: IP Cisco Accounting Daemon
 net-analyzer/ipgen 9999: Generate list of IP addresses from a network specification
-net-analyzer/ipguard 1.04: Tool designed to protect LAN IP adress space by ARP spoofing
+net-analyzer/ipguard 1.04-r1: Tool designed to protect LAN IP adress space by ARP spoofing
 net-analyzer/iplog 2.2.3-r2: iplog is a TCP/IP traffic logger
 net-analyzer/ippl 1.4.14-r3 1.4.14-r5: A daemon which logs TCP/UDP/ICMP packets
 net-analyzer/ipsumdump 1.85 1.86 1.86-r1: Simple TCP/IP Dump summarizer/analyzer
