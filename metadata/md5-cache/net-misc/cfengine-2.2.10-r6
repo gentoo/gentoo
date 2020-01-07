@@ -1,0 +1,13 @@
+DEFINED_PHASES=config configure install postinst prepare
+DEPEND=>=sys-libs/db-4:= <dev-libs/openssl-1.1:= app-portage/portage-utils net-libs/libnsl:= virtual/yacc sys-devel/flex
+DESCRIPTION=An automated suite of programs for configuring and maintaining Unix-like computers
+EAPI=7
+HOMEPAGE=http://www.cfengine.org/
+IUSE=vim-syntax
+KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~s390 ~sparc ~x86
+LICENSE=GPL-2
+PDEPEND=vim-syntax? ( app-vim/cfengine-syntax )
+RDEPEND=>=sys-libs/db-4:= <dev-libs/openssl-1.1:= app-portage/portage-utils net-libs/libnsl:=
+SLOT=0
+SRC_URI=http://cfengine.com/source_code/download?file=cfengine-2.2.10.tar.gz -> cfengine-2.2.10.tar.gz
+_md5_=bdbfc2f77edcec158a0e2fb8e857a6eb
