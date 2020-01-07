@@ -167,7 +167,15 @@ pkg_postinst() {
 	fi
 
 	use ffmpeg || ewarn "USE=-ffmpeg : HTML5 video will not render without media-video/ffmpeg installed"
-	use pulseaudio || ewarn "USE=-pulseaudio : audio will not play without pulseaudio installed"
+	if ! use pulseaudio; then
+		ewarn "USE=-pulseaudio : audio will not play without pulseaudio installed,"
+		ewarn "to stick with ALSA:"
+		ewarn "emerge media-sound/apulse"
+		ewarn "emerge dev-util/patchelf"
+		ewarn "and"
+		ewarn "patchelf --set-rpath /usr/lib/apulse /opt/firefox/libxul.so"
+		ewarn "after every update."
+	fi
 
 	local show_doh_information
 
