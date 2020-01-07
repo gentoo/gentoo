@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/linux-nvme/nvme-cli/archive/v1.9.tar.gz -> nvme-cli-1.9.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=5aafa74c83325329e187b9a78eb140ad
+_md5_=1e64eb89f7e32c620ef7c24f48f4eb1c

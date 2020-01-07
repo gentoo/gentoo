@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile configure install postinst
+DEPEND=>=x11-libs/gtk+-2.10:2 >=dev-lang/ocaml-3.10:=[ocamlopt?] svg? ( >=gnome-base/librsvg-2.2:2 ) glade? ( >=gnome-base/libglade-2.0.1 ) gnomecanvas? ( >=gnome-base/libgnomecanvas-2.2 ) opengl? ( >=dev-ml/lablgl-0.98:= >=x11-libs/gtkglarea-1.9:2 ) spell? ( app-text/gtkspell:2 ) sourceview? ( x11-libs/gtksourceview:2.0 ) dev-ml/camlp4:= virtual/pkgconfig >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Objective CAML interface for Gtk+2
+EAPI=5
+HOMEPAGE=http://lablgtk.forge.ocamlcore.org/
+IUSE=debug examples glade gnomecanvas sourceview +ocamlopt opengl spell svg
+KEYWORDS=~amd64 ~x86
+LICENSE=LGPL-2.1-with-linking-exception examples? ( lablgtk-examples )
+RDEPEND=>=x11-libs/gtk+-2.10:2 >=dev-lang/ocaml-3.10:=[ocamlopt?] svg? ( >=gnome-base/librsvg-2.2:2 ) glade? ( >=gnome-base/libglade-2.0.1 ) gnomecanvas? ( >=gnome-base/libgnomecanvas-2.2 ) opengl? ( >=dev-ml/lablgl-0.98:= >=x11-libs/gtkglarea-1.9:2 ) spell? ( app-text/gtkspell:2 ) sourceview? ( x11-libs/gtksourceview:2.0 ) dev-ml/camlp4:=
+SLOT=2/2.18.8
+SRC_URI=https://github.com/garrigue/lablgtk/releases/download/lablgtk2188/lablgtk-2.18.8.tar.gz
+_eclasses_=findlib	17c71a5d96323df925f9f6db1215668a	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=307291d4e73225964a614d55c175bb48

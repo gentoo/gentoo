@@ -11,4 +11,4 @@ RDEPEND=dev-libs/boost dev-libs/libconfig net-misc/lksctp-tools net-libs/mbedtls
 SLOT=0
 SRC_URI=https://github.com/srsLTE/srsLTE/archive/release_19_09.tar.gz -> srslte-19.09.tar.gz
 _eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=199833fdd08b861f065ca835f26e3b5f
+_md5_=3dff7047b318af744d3c9c10ef187a59

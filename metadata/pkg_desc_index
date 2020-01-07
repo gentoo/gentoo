@@ -5117,7 +5117,7 @@ dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r1 0.7: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.20 4.22 4.24: Netscape Portable Runtime
-dev-libs/nss 3.47.1-r1 3.48-r1: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.47.1-r1 3.48-r1 3.49: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loaders
@@ -5373,7 +5373,7 @@ dev-ml/js_of_ocaml 2.8.4-r2 3.0.0 9999: A compiler from OCaml bytecode to javasc
 dev-ml/jsonm 1.0.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/kaputt 1.2: Unit testing tool for the Objective Caml language
 dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
-dev-ml/lablgtk 2.18.5: Objective CAML interface for Gtk+2
+dev-ml/lablgtk 2.18.5 2.18.8: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.2 8.06.7: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/lambda-term 1.11: A cross-platform library for manipulating the terminal
 dev-ml/llvm-ocaml 7.1.0 8.0.1 9.0.1 10.0.0.9999: OCaml bindings for LLVM
@@ -5391,6 +5391,7 @@ dev-ml/merlin-extend 0.3: SDK to extend Merlin
 dev-ml/mirage-profile 0.7.0-r1: Collect profiling information
 dev-ml/mongo 0.67.2: An ocaml driver for mongodb
 dev-ml/mtime 1.1.0: OCaml module to access monotonic wall-clock time
+dev-ml/num 1.3: Library for arbitrary-precision integer and rational arithmetic
 dev-ml/oasis 0.4.8 0.4.10: Tool to integrate a configure, build and install system in OCaml project
 dev-ml/ocaml-augeas 0.5: Ocaml bindings for Augeas
 dev-ml/ocaml-autoconf 1.1-r1: autoconf macros to support configuration of OCaml programs and libraries
@@ -16426,7 +16427,7 @@ sci-mathematics/axiom 200805: Axiom is a general purpose Computer Algebra system
 sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
 sci-mathematics/calc 2.12.4.13-r1 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.11.3: C++ library for geometric algorithms and data structures
-sci-mathematics/coq 8.6.1-r1 8.9.1-r1: Proof assistant written in O'Caml
+sci-mathematics/coq 8.6.1-r1 8.9.1-r1 8.9.1-r2: Proof assistant written in O'Caml
 sci-mathematics/cvc4 1.6 1.7: automatic theorem prover for satisfiability modulo theories (SMT) problems
 sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization and statistical analyis
 sci-mathematics/diagrtb 2.64: Calculation of some eigenvectors of a large real, symmetrical, matrix
@@ -17031,7 +17032,7 @@ sys-apps/netloc 0.5: Portable Network Locality (netloc)
 sys-apps/netplug 1.2.9.2-r2 1.2.9.2-r3: Brings up/down ethernet ports automatically with cable detection
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
-sys-apps/nvme-cli 1.6-r1 1.9-r2: NVM-Express user space tooling for Linux
+sys-apps/nvme-cli 1.6-r1 1.9-r3: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r2: Software for the Open Hardware Random Number Generator called OneRNG
 sys-apps/opal-utils 6.5 6.5.2: OPAL firmware utilities
 sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
