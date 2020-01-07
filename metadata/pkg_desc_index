@@ -18236,7 +18236,7 @@ x11-apps/beforelight 1.0.5: Sample implementation of screen saver
 x11-apps/bitmap 1.0.9: X.Org bitmap application
 x11-apps/copyq 3.7.2 3.8.0: Clipboard manager with advanced features
 x11-apps/editres 1.0.6 1.0.7: a dynamic resource editor for X Toolkit applications
-x11-apps/fonttosfnt 1.0.5: X.Org fonttosfnt application
+x11-apps/fonttosfnt 1.0.5 1.1.0: X.Org fonttosfnt application
 x11-apps/fslsfonts 1.0.5-r1: list fonts served by X font server
 x11-apps/fstobdf 1.0.6: generate BDF font from X font server
 x11-apps/iceauth 1.0.8: ICE authority file utility
