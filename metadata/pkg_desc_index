@@ -3375,7 +3375,7 @@ dev-games/mercator 0.3.3: WorldForge library primarily aimed at terrain
 dev-games/mygui 3.2.2: A library for creating GUIs for games
 dev-games/newton 3.14: Integrated solution for real time simulation of physics environments
 dev-games/ode 0.11.1 0.12 0.14-r1: Open Dynamics Engine SDK
-dev-games/ogre 1.9.0-r1 1.10.12 1.11.2 2.1_pre20180901: Object-oriented Graphics Rendering Engine
+dev-games/ogre 1.9.0-r1 1.9.0-r2 1.12.4 2.1_pre20191212: Object-oriented Graphics Rendering Engine
 dev-games/ois 1.3: Object-oriented Input System - A cross-platform C++ input handling library
 dev-games/openscenegraph 3.5.5 3.6.4: Open source high performance 3D graphics toolkit
 dev-games/openscenegraph-qt 3.5.5 3.5.7: Qt support for OpenSceneGraph
@@ -11281,7 +11281,7 @@ games-fps/freedm-data 0.12.1: Game resources for FreeDM
 games-fps/freedoom 0.12.1: A complete free-content single-player focused game based on the Doom engine
 games-fps/freedoom-data 0.12.1: Game resources for Freedoom: Phase 1+2
 games-fps/glxquake-bin 0-r2: A binary that works with any 3D-graphics-card that supports the glx X-extension
-games-fps/gzdoom 4.2.4: A modder-friendly OpenGL source port based on the DOOM engine
+games-fps/gzdoom 4.3.1: A modder-friendly OpenGL source port based on the DOOM engine
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine

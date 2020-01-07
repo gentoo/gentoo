@@ -1539,7 +1539,6 @@ dev-games/ogre:mobile - Build for OpenGL ES 2.0 only and use the mobile variants
 dev-games/ogre:ois - Pull in Object-oriented Input System library dev-games/ois for samples
 dev-games/ogre:poco - When USE=threads, use poco for threading
 dev-games/ogre:resman-pedantic - Resource Manager PEDANTIC : require an explicit resource group. Case sensitive lookup. Some demos might not work with this setting. (default: case-insensitive + sensitive lookup in all groups)
-dev-games/ogre:resman-strict - Resource Manager STRICT : search in default group if not specified otherwise. Case sensitive lookup. Some demos might not work with this setting. (default: case-insensitive + sensitive lookup in all groups)
 dev-games/ogre:tbb - When USE=threads, use tbb for threading
 dev-games/ogre:tools - Build and install helper tools
 dev-games/openscenegraph:asio - Enable support for dev-cpp/asio library
@@ -3265,8 +3264,10 @@ games-fps/eduke32:tools - Install the support tools for mapster32.
 games-fps/eduke32:voxels - Install the Duke Nukem 3D Voxels Pack.
 games-fps/eduke32:vpx - Enable support for media-libs/libvpx.
 games-fps/eduke32:xmp - Enable support for media-libs/exempi.
+games-fps/gzdoom:fluidsynth - Enable support for MIDI via media-sound/fluidsynth
 games-fps/gzdoom:gtk2 - Enable support for GTK+2 instead of GTK+3
-games-fps/gzdoom:nonfree - Enable non-free components
+games-fps/gzdoom:mpg123 - Enable support for MPEG audio playback via media-sound/mpg123
+games-fps/gzdoom:non-free - Enable non-free components
 games-fps/nexuiz:maps - Install the community map pack
 games-fps/prboom-plus:dumb - Enable support for various tracker-style music formats via media-libs/dumb
 games-fps/prboom-plus:fluidsynth - Enable support for MIDI via media-sound/fluidsynth

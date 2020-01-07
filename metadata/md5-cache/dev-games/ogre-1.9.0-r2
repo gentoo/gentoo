@@ -1,0 +1,16 @@
+BDEPEND=virtual/pkgconfig doc? ( app-doc/doxygen ) dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install prepare test unpack
+DEPEND=media-libs/freetype:2 virtual/opengl virtual/glu x11-libs/libX11 x11-libs/libXaw x11-libs/libXrandr x11-libs/libXt boost? ( dev-libs/boost:= ) cg? ( media-gfx/nvidia-cg-toolkit ) freeimage? ( media-libs/freeimage ) gles2? ( >=media-libs/mesa-9.0.0[gles2] ) gles3? ( >=media-libs/mesa-10.0.0[gles2] ) gl3plus? ( >=media-libs/mesa-9.2.5 ) ois? ( dev-games/ois ) threads? ( poco? ( dev-libs/poco ) tbb? ( dev-cpp/tbb ) ) tools? ( dev-libs/tinyxml[stl] ) zip? ( sys-libs/zlib dev-libs/zziplib ) x11-base/xorg-proto
+DESCRIPTION=Object-oriented Graphics Rendering Engine
+EAPI=7
+HOMEPAGE=https://www.ogre3d.org/
+IUSE=+boost cg doc double-precision examples +freeimage gl3plus gles2 gles3 ois +opengl poco profile tbb threads tools +zip
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=MIT public-domain
+RDEPEND=media-libs/freetype:2 virtual/opengl virtual/glu x11-libs/libX11 x11-libs/libXaw x11-libs/libXrandr x11-libs/libXt boost? ( dev-libs/boost:= ) cg? ( media-gfx/nvidia-cg-toolkit ) freeimage? ( media-libs/freeimage ) gles2? ( >=media-libs/mesa-9.0.0[gles2] ) gles3? ( >=media-libs/mesa-10.0.0[gles2] ) gl3plus? ( >=media-libs/mesa-9.2.5 ) ois? ( dev-games/ois ) threads? ( poco? ( dev-libs/poco ) tbb? ( dev-cpp/tbb ) ) tools? ( dev-libs/tinyxml[stl] ) zip? ( sys-libs/zlib dev-libs/zziplib )
+REQUIRED_USE=threads? ( ^^ ( boost poco tbb ) ) examples? ( ois ) poco? ( threads ) tbb? ( threads ) gl3plus? ( !gles2 !gles3 ) gles3? ( gles2 ) gl3plus? ( opengl )
+RESTRICT=test
+SLOT=0/1.9.0
+SRC_URI=https://bitbucket.org/sinbad/ogre/get/v1-9-0.tar.bz2 -> ogre-1.9.0.tar.bz2
+_eclasses_=cmake	7b250250bd1c3cc90800ed668fb87825	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=81a0ee7fb83c463138207ace734505ba
