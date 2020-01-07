@@ -23,6 +23,8 @@ src_prepare() {
 	sed -e 's|^LIBUUID =|LIBUUID ?=|' \
 		-e 's|^install-hostparams:$|\0 install-etc|' \
 		-i Makefile || die
+	sed -e "s|/usr/lib/udev|$(get_udevdir)|" \
+		-i nvmf-autoconnect/dracut-conf/70-nvmf-autoconnect.conf || die
 }
 
 src_configure() {
