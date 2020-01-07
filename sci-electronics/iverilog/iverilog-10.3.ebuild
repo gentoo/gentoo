@@ -45,9 +45,6 @@ src_prepare() {
 	# Here translate the autoconf.sh, equivalent to the following code
 	# > sh autoconf.sh
 
-	# Fix build fail problem when using large job number, make it parallel safe
-	echo ".NOTPARALLEL: install" >> ./Makefile.in || die
-
 	# Autoconf in root ...
 	eautoconf --force
 	# Precompiling lexor_keyword.gperf
@@ -59,6 +56,9 @@ src_prepare() {
 
 src_install() {
 	local DOCS=( *.txt )
+	# Default build fails with parallel jobs,
+	# https://github.com/steveicarus/iverilog/pull/294
+	emake installdirs DESTDIR="${D}"
 	default
 
 	if use examples; then
