@@ -1,3 +1,4 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=compile configure install prepare
 DEPEND=tcl? ( dev-lang/tcl:0= ) tk? ( dev-lang/tk:0= )
 DESCRIPTION=HFS FS Access utils
@@ -10,5 +11,5 @@ RDEPEND=tcl? ( dev-lang/tcl:0= ) tk? ( dev-lang/tk:0= )
 REQUIRED_USE=tk? ( tcl )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/h/hfsutils/hfsutils_3.2.6.orig.tar.gz mirror://debian/pool/main/h/hfsutils/hfsutils_3.2.6-14.debian.tar.xz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=03d2516e9d24f03a7a3512c3417b485b
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=f4f53e3db209094a8f92b41304630147
