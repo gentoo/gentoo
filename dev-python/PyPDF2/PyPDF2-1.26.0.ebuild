@@ -3,12 +3,12 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit distutils-r1
 
 DESCRIPTION="Python library to work with pdf files"
-HOMEPAGE="https://pypi.org/project/${PN}/ https://github.com/mstamy2/PyPDF2"
+HOMEPAGE="https://pypi.org/project/PyPDF2/ https://github.com/mstamy2/PyPDF2"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD-2"
