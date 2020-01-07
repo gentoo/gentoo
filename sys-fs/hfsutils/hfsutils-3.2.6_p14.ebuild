@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs
+inherit autotools toolchain-funcs
 
 DESCRIPTION="HFS FS Access utils"
 HOMEPAGE="https://www.mars.org/home/rob/proj/hfs/"
@@ -39,11 +39,14 @@ src_prepare() {
 		done
 	)
 	default
+	eautoreconf
 }
 
 src_configure() {
 	tc-export CC
-	econf $(use_with tcl) $(use_with tk)
+	econf \
+		$(use_with tcl tcl /usr/$(get_libdir) no) \
+		$(use_with tk tk /usr/$(get_libdir) no)
 }
 
 src_compile() {
