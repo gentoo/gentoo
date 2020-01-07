@@ -1,9 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
 
 inherit cmake-utils python-single-r1
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://gnome/sources/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -31,6 +31,17 @@ RDEPEND="${PYTHON_DEPS}
 src_configure() {
 	local mycmakeargs=( -DBUILD_EXTENSION=OFF )
 	cmake-utils_src_configure
+}
+
+src_install() {
+	cmake-utils_src_install
+
+	if [[ $(get_libdir) != "lib" && "${SYMLINK_LIB}" != yes ]]; then
+		# Workaround www-client/firefox-bin manifests location
+		# Bug: https://bugs.gentoo.org/643522
+		insinto /usr/lib/mozilla/native-messaging-hosts
+		doins "${ED}"/usr/$(get_libdir)/mozilla/native-messaging-hosts/org.gnome.chrome_gnome_shell.json
+	fi
 }
 
 pkg_postinst() {
