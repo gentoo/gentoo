@@ -10642,11 +10642,11 @@ dev-util/jfrog-cli 1.30.4: Command line utility foroperations on container image
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.0-r1 3.0.1: Graphical debugger interface
-dev-util/kdevelop 5.4.2 5.4.5: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.4.2 5.4.5 5.4.6: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-clang-tidy 0.3.3-r1: KDevelop plugin for clang-tidy static analysis support
 dev-util/kdevelop-pg-qt 2.2.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.4.2 5.4.5: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.4.2 5.4.5: Python plugin for KDevelop
+dev-util/kdevelop-php 5.4.2 5.4.5 5.4.6: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.4.2 5.4.5 5.4.6: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
@@ -13183,7 +13183,7 @@ media-libs/lv2 1.14.0-r1 1.16.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 19.1.8 19.2.7 19.2.8 19.3.0 19.3.1 9999: OpenGL-like graphic library for Linux
-media-libs/mlt 6.16.0-r1 6.16.0-r2 6.18.0: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.16.0-r1 6.16.0-r2 6.18.0 6.18.0-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.42.0 1.43.0: Audio metadata tag reader and writer implemented in pure Python
@@ -14901,7 +14901,7 @@ net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
 net-libs/ripe-atlas-sagan 1.1.11: A parsing library for RIPE Atlas result strings
 net-libs/rpc2 2.14: Remote procedure call package for IP/UDP (used by Coda)
-net-libs/rpcsvc-proto 0 1.4: rpcsvc protocol definitions from glibc
+net-libs/rpcsvc-proto 0 1.4 1.4-r1: rpcsvc protocol definitions from glibc
 net-libs/serf 1.3.8 1.3.8-r1 1.3.9 1.3.9-r1: HTTP client library
 net-libs/shairplay 0_pre20170118 0_pre20180824 0_pre20180824-r1 9999: Apple airplay and raop protocol server
 net-libs/signon-oauth2 0.24: OAuth2 plugin for Signon daemon
@@ -17523,7 +17523,7 @@ sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
 sys-fs/duperemove 0.11.1: Btrfs deduplication utility
-sys-fs/e2fsprogs 1.44.5 1.45.2 1.45.3 1.45.4: Standard EXT2/EXT3/EXT4 filesystem utilities
+sys-fs/e2fsprogs 1.45.4 1.45.5: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16.4: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
 sys-fs/ecryptfs-utils 108-r3 111_p20170609: eCryptfs userspace utilities
@@ -17657,7 +17657,7 @@ sys-libs/csu 79 85-r1: Darwin Csu (crt1.o) - Mac OS X 10.10 version
 sys-libs/cygwin-crypt 1.4: Cygwin Encryption/Decryption utility and library
 sys-libs/darwin-libc-headers 1158.50.2-r4 1244.50.9-r4 1272.250.1-r4: Darwin system headers from Libc 1272.250.1, macOS 10.14.3
 sys-libs/db 1.85-r4 3.2.9_p2-r1 4.2.52_p5-r2 4.3.29_p1-r2 4.4.20_p4-r2 4.5.20_p2-r2 4.6.21_p4-r1 4.7.25_p4-r1 4.8.30-r3 5.1.29-r2 5.3.28-r2 5.3.28-r4 6.0.35-r2 6.1.38 6.2.38 18.1.32: Oracle Berkeley DB
-sys-libs/e2fsprogs-libs 1.44.5 1.45.2 1.45.3 1.45.4: e2fsprogs libraries (common error and subsystem)
+sys-libs/e2fsprogs-libs 1.45.4 1.45.5: e2fsprogs libraries (common error and subsystem)
 sys-libs/efivar 37: Tools and library to manipulate EFI variables
 sys-libs/fortify-headers 0.6 0.7 9999: A standalone implementation of fortify source.
 sys-libs/freeipmi 1.5.7 1.6.3 1.6.4: Provides Remote-Console and System Management Software as per IPMI v1.5/2.0

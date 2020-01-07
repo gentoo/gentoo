@@ -4,10 +4,10 @@ DEPEND=virtual/perl-version >=dev-perl/DBI-1.614.0 dev-db/postgresql:* virtual/p
 DESCRIPTION=PostgreSQL database driver for the DBI module
 EAPI=7
 HOMEPAGE=https://metacpan.org/release/DBD-Pg
-KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-version >=dev-perl/DBI-1.614.0 dev-db/postgresql:* dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TU/TURNSTEP/DBD-Pg-3.10.0.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=e5e573d40d8b02a8c07c898b129499c8
+_md5_=6008c3b401694d3a618f37fa5f785d0b
