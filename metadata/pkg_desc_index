@@ -7925,7 +7925,7 @@ dev-python/hvac 0.2.17: Python client for HashiCorp Vault
 dev-python/hyper-h2 2.5.1 3.0.1 3.1.1: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.1.0 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 17.1.1 17.3.1 18.0.0 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 4.15.0 4.47.5 4.50.8 4.55.4 4.57.1: A library for property based testing
+dev-python/hypothesis 4.15.0 4.47.5 4.50.8 4.55.4 4.57.1 5.1.1: A library for property based testing
 dev-python/icalendar 3.9.2 3.11.7 3.11.7-r1 4.0.3: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.5 2.6 2.7 2.8: Internationalized Domain Names in Applications (IDNA)
@@ -17871,7 +17871,7 @@ virtual/libintl 0 0-r1 0-r2: Virtual for the GNU Internationalization Library
 virtual/libstdc++ 3.3: Virtual for the GNU Standard C++ Library for <gcc-3.4
 virtual/libudev 215-r1 232-r1 232-r2 232-r3: Virtual for libudev providers
 virtual/libusb 0-r2 1-r1 1-r2: Virtual for libusb
-virtual/linux-sources 3 3-r3: Virtual for Linux kernel sources
+virtual/linux-sources 3-r3: Virtual for Linux kernel sources
 virtual/linuxtv-dvb-headers 5.8: Virtual Package installing the Header files for DVB
 virtual/logger 0-r1: Virtual for system loggers
 virtual/mailx 1 2: Virtual for mail implementations
