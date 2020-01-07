@@ -3272,6 +3272,11 @@
       <role>multilib</role>
     </member>
     <member>
+      <email>bkohler@gentoo.org</email>
+      <name>Ben Kohler</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>polynomial-c@gentoo.org</email>
       <name>Lars Wendler</name>
       <role>Member</role>
