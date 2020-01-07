@@ -10,13 +10,13 @@
         <name>Proxy Maintainers</name>
     </maintainer>
     <use>
-        <flag name="zeekctl">Enable ZeekControl, a tool for operating Zeek installations</flag>
         <flag name="geoip2">Enable support for Maxmind's GeoIP library</flag>
+        <flag name="ipsumdump">Enables ipsumdump support for trace-summary</flag>
         <flag name="python">Enable Python bindings for broker</flag>
+        <flag name="sendmail">Enables Zeek and ZeekControl to send mail</flag>
         <flag name="tcmalloc">Enable Google's performance analysis tools</flag>
         <flag name="tools">Auxiliary tools for Bro: adtrace, zeek-cut, rst</flag>
-        <flag name="sendmail">Enables Zeek and ZeekControl to send mail</flag>
-        <flag name="ipsumdump">Enables ipsumdump support for trace-summary</flag>
+        <flag name="zeekctl">Enable ZeekControl, a tool for operating Zeek installations</flag>
     </use>
     <upstream>
         <remote-id type="github">zeek/zeek</remote-id>
