@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1 vcs-snapshot
 
@@ -20,7 +20,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	dev-python/PyPDF2[${PYTHON_USEDEP}]
-	dev-python/more-itertools[${PYTHON_USEDEP}]"
+	<dev-python/more-itertools-6.0.0[${PYTHON_USEDEP}]"
 
 DEPEND="
 	${RDEPEND}
