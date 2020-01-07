@@ -16,14 +16,14 @@ IUSE="curl debug geoip2 ipsumdump ipv6 jemalloc kerberos +python sendmail \
 	static-libs tcmalloc +tools +zeekctl"
 
 RDEPEND=">=sys-libs/glibc-2.10
-	dev-libs/actor-framework:0
-	dev-libs/openssl:0
+	dev-libs/actor-framework:0=
+	dev-libs/openssl:0=
 	net-libs/libpcap
-	sys-libs/zlib
+	sys-libs/zlib:0=
 	curl? ( net-misc/curl )
 	geoip2? ( dev-libs/libmaxminddb )
 	ipsumdump? ( net-analyzer/ipsumdump[ipv6?] )
-	jemalloc? ( dev-libs/jemalloc:0 )
+	jemalloc? ( dev-libs/jemalloc:0= )
 	kerberos? ( virtual/krb5 )
 	python? ( ${PYTHON_DEPS}
 		dev-python/pybind11[${PYTHON_USEDEP}] )
@@ -116,7 +116,7 @@ src_install() {
 
 	keepdir /var/log/"${PN}" /var/spool/"${PN}"/tmp
 
-	# Doesn't exist
+	# Created at runtime by zeectl
 	rm -f "${ED}"/var/spool/zeek/zeekctl-config.sh || die
 	rm -f "${ED}"/usr/share/zeekctl/scripts/zeekctl-config.sh || die
 
