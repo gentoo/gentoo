@@ -15282,7 +15282,7 @@ net-misc/smb4k 3.0.2: Advanced network neighborhood browser
 net-misc/smbc 1.2.2-r3: Text mode (ncurses) SMB network commander. Features: resume and UTF-8
 net-misc/snarf 7.0-r4: Small and fast CLI resource grabber for http, gopher, finger, ftp
 net-misc/sobby 0.4.8-r1: Standalone Obby server
-net-misc/socat 1.7.3.2 1.7.3.3 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
+net-misc/socat 1.7.3.2 1.7.3.3 1.7.3.4 2.0.0_beta9 9999: Multipurpose relay (SOcket CAT)
 net-misc/sock 1.1-r1: A shell interface to network sockets
 net-misc/socket 1.5: A shell-level interface to TCP sockets
 net-misc/socket-burst-dampener 1.2.0 1.2.1: A daemon that spawns one command per connection, and dampens connection bursts
