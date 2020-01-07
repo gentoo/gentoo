@@ -3,9 +3,9 @@ DEPEND=app-arch/unzip
 DESCRIPTION=Dutch dictionaries for myspell/hunspell
 EAPI=7
 HOMEPAGE=https://www.opentaal.org
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 mips ppc ppc64 sh sparc x86
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sh sparc x86
 LICENSE=BSD-2 CC-BY-3.0
 SLOT=0
 SRC_URI=https://www.opentaal.org/bestanden/license_result/20-woordenlijst-v-210g-voor-openofficeorg-3?bid=20&agree=1 -> myspell-nl-2.10g.oxt https://data.opentaal.org/opentaalbank/thesaurus/download/thes_nl.oxt -> myspell-nl-2.10g_thes.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=257a4fac2192102051f8330044f11f1c
+_md5_=6ac573b304e89eff1647ab40c471861c

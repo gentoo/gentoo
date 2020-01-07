@@ -4,7 +4,7 @@ DESCRIPTION=Linux firmware files
 EAPI=7
 HOMEPAGE=https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git
 IUSE=initramfs +redistributable savedconfig unknown-license savedconfig
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 mips ppc ppc64 s390 sh sparc x86
+KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86
 LICENSE=GPL-2 GPL-2+ GPL-3 BSD MIT || ( MPL-1.1 GPL-2 ) redistributable? ( linux-fw-redistributable ( BSD-2 BSD BSD-4 ISC MIT no-source-code ) ) unknown-license? ( all-rights-reserved )
 RDEPEND=!savedconfig? ( redistributable? ( !sys-firmware/alsa-firmware[alsa_cards_ca0132] !media-tv/cx18-firmware !<sys-firmware/ivtv-firmware-20080701-r1 !media-tv/linuxtv-dvb-firmware[dvb_cards_cx231xx] !media-tv/linuxtv-dvb-firmware[dvb_cards_cx23885] !media-tv/linuxtv-dvb-firmware[dvb_cards_usb-dib0700] !net-dialup/ueagle-atm !net-dialup/ueagle4-atm !net-wireless/ar9271-firmware !net-wireless/i2400m-fw !net-wireless/libertas-firmware !sys-firmware/rt61-firmware !net-wireless/rt73-firmware !net-wireless/rt2860-firmware !net-wireless/rt2870-firmware !sys-block/qla-fc-firmware !sys-firmware/amd-ucode !sys-firmware/iwl1000-ucode !sys-firmware/iwl2000-ucode !sys-firmware/iwl2030-ucode !sys-firmware/iwl3945-ucode !sys-firmware/iwl4965-ucode !sys-firmware/iwl5000-ucode !sys-firmware/iwl5150-ucode !sys-firmware/iwl6000-ucode !sys-firmware/iwl6005-ucode !sys-firmware/iwl6030-ucode !sys-firmware/iwl6050-ucode !sys-firmware/iwl3160-ucode !sys-firmware/iwl7260-ucode !sys-firmware/iwl7265-ucode !sys-firmware/iwl3160-7260-bt-ucode !sys-firmware/radeon-ucode ) unknown-license? ( !sys-firmware/alsa-firmware[alsa_cards_korg1212] !sys-firmware/alsa-firmware[alsa_cards_maestro3] !sys-firmware/alsa-firmware[alsa_cards_sb16] !sys-firmware/alsa-firmware[alsa_cards_ymfpci] ) )
 REQUIRED_USE=initramfs? ( redistributable )
@@ -12,4 +12,4 @@ RESTRICT=binchecks strip unknown-license? ( bindist )
 SLOT=0
 SRC_URI=https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/snapshot/linux-firmware-f1100ddf581f49aa79a54b56fe6ef0815a7ae57e.tar.gz -> linux-firmware-20191108.tar.gz
 _eclasses_=mount-boot	e30bb691fbb26137f3d46438542bffe4	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	a3c113056e77e36a1d78ff4eb475dfd1
-_md5_=5c47af83502656c0b2f026f2f59aca2e
+_md5_=e9fc3889f01ed4bd123086931d547b18
