@@ -2339,7 +2339,7 @@ app-portage/distpatch 0.1.2-r1: Distfile Patching Support for Gentoo Linux (tool
 app-portage/eix 0.33.8 0.33.9-r1: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2: Curses based utility to parse the contents of elogs created by Portage
-app-portage/elogviewer 2.9: Elog viewer for Gentoo
+app-portage/elogviewer 2.9 3.0: Elog viewer for Gentoo
 app-portage/elt-patches 20170317 20170422 20170815 20170826.1: Collection of patches for libtool.eclass
 app-portage/emerge-delta-webrsync 3.7.5 3.7.6: emerge-webrsync using patches to minimize bandwidth
 app-portage/epkg 0.4-r1: A simple portage wrapper which works like other package managers
