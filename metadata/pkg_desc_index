@@ -12348,7 +12348,7 @@ mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2-r1 1.12.2-r2 1.13.1: A small but ve
 mail-client/neomutt 20180512 20180622 20180716 20180716-r1 20191102 20191111 20191129 20191207 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1: A browser-based multilingual IMAP client with an application-like user interface
-mail-client/s-nail 14.9.13 14.9.15: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
+mail-client/s-nail 14.9.13 14.9.15 14.9.16: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 52.9.1 68.3.1: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.3.1: Thunderbird Mail Client
