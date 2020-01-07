@@ -698,7 +698,7 @@ app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.6.1: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.40.1 1.0.0 9999: An implementation of the ACME protocol
+app-crypt/acme 0.39.0 0.40.1 1.0.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.8.0 2.8.3 9999: An ACME Shell script
 app-crypt/acme-tiny 4.0.3 4.0.4 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
@@ -715,7 +715,7 @@ app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.30 1.4.31: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
-app-crypt/certbot 0.40.1 1.0.0-r1 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot 0.39.0 0.40.1 1.0.0-r1 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 0.40.1 1.0.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-dns-nsone 0.39.0: NS1 DNS Authenticator plugin for Certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 0.40.1 1.0.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
@@ -8935,7 +8935,7 @@ dev-python/sqlobject 3.4.0: Object-Relational Manager, aka database wrapper
 dev-python/squaremap 1.0.4: Hierarchic data-visualisation control for wxPython
 dev-python/sshtunnel 0.1.4-r2: Pure python SSH tunnels
 dev-python/ssl-fetch 0.4 9999: A small convenience library for fetching files securely
-dev-python/stapler 1.0_pre20191215: Suite of tools for PDF files manipulation written in Python
+dev-python/stapler 1.0_pre20191215-r1: Suite of tools for PDF files manipulation written in Python
 dev-python/statsd 3.2.1 3.3.0: A simple statsd client
 dev-python/statsmodels 0.9.0 0.10.2 9999: Statistical computations and models for use with SciPy
 dev-python/steadymark 0.5.3: Markdown-based test runner for python
