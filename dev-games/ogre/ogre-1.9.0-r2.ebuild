@@ -50,10 +50,14 @@ RDEPEND="
 	)
 	tools? ( dev-libs/tinyxml[stl] )
 	zip? ( sys-libs/zlib dev-libs/zziplib )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
+DEPEND="
+	${RDEPEND}
 	x11-base/xorg-proto
-	doc? ( app-doc/doxygen )"
+"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( app-doc/doxygen )
+"
 
 PATCHES=(
 	"${FILESDIR}/${P}-remove_resource_path_to_bindir.patch"
