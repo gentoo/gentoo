@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="Tool designed to protect LAN IP adress space by ARP spoofing"
@@ -13,12 +13,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
-	net-libs/libnet
+	net-libs/libnet:1.1
 	net-libs/libpcap
 "
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+"
 
 src_prepare() {
+	default
+
 	sed -i \
 		-e 's|-g ||g' \
 		-e 's|	@$(CC)|	$(CC)|g' \
@@ -38,11 +42,19 @@ src_prepare() {
 }
 
 src_compile() {
-	emake LIBNET_CONFIG=libnet-config CC=$(tc-getCC) PREFIX=\"${EPREFIX:-/usr}\"
+	emake \
+		CC=$(tc-getCC) \
+		LIBNET_CONFIG="$(tc-getPKG_CONFIG) libnet" \
+		PREFIX=\"${EPREFIX:-/usr}\"
 }
 
 src_install() {
-	emake LIBNET_CONFIG=libnet-config DESTDIR="${D}" PREFIX=\"${EPREFIX:-/usr}\" install
+	emake \
+		DESTDIR="${D}" \
+		LIBNET_CONFIG="$(tc-getPKG_CONFIG) libnet" \
+		PREFIX=\"${EPREFIX:-/usr}\" \
+		install
+
 	newinitd doc/${PN}.gentoo ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	dodoc doc/{NEWS,README*,ethers.sample}
