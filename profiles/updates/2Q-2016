@@ -34,7 +34,6 @@ slotmove >=dev-php/pecl-rrd-2.0 0 7
 slotmove >=dev-php/pecl-oauth-2.0 0 7
 move sys-infiniband/dapl sys-fabric/dapl
 move sys-infiniband/ibacm sys-fabric/ibacm
-move sys-infiniband/ibutils sys-fabric/ibutils
 move sys-infiniband/infiniband-diags sys-fabric/infiniband-diags
 move sys-infiniband/infinipath-psm sys-fabric/infinipath-psm
 move sys-infiniband/libcxgb3 sys-fabric/libcxgb3
