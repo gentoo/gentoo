@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1)"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="alsa debug cups doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source +webstart"
+IUSE="alsa debug cups doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source webstart"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
