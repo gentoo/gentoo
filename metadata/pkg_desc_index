@@ -14525,7 +14525,7 @@ net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r1: Modern asynchronous DNS API
 net-dns/hash-slinger 2.6-r1 2.7-r1: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.8.4 2.9.0 2.9.1 2.9.2: High-performance authoritative-only DNS server
+net-dns/knot 2.8.5 2.9.2: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1 1.7.1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.35: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.1.1a-r1 2.3.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
@@ -16066,7 +16066,7 @@ sci-electronics/gspiceui 1.1.0: GUI frontend for Ngspice and Gnucap
 sci-electronics/gtkwave 3.3.68 3.3.73 3.3.87 3.3.99: A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files
 sci-electronics/gwave 20190116: Analog waveform viewer for SPICE-like simulations
 sci-electronics/irsim 9.7.93: IRSIM is a "switch-level" simulator
-sci-electronics/iverilog 0.9.6 0.9.7 10.2 10.3: A Verilog simulation and synthesis tool
+sci-electronics/iverilog 0.9.6 0.9.7 10.2 10.3 9999: A Verilog simulation and synthesis tool
 sci-electronics/kicad 4.0.7 5.0.1 5.1.0-r1 5.1.2-r1 5.1.4 5.1.5: Electronic Schematic and PCB design tools
 sci-electronics/kicad-footprints 5.0.1 5.1.0 5.1.2 5.1.4 5.1.5: Electronic Schematic and PCB design tools footprint libraries
 sci-electronics/kicad-i18n 5.0.1 5.1.0 5.1.2 5.1.4 5.1.5: Electronic Schematic and PCB design tools GUI translations
