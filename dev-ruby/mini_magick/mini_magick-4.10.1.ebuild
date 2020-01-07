@@ -1,12 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
-RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
 RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
@@ -45,11 +44,8 @@ all_ruby_prepare() {
 	# Avoid broken spec that does not assume . in path name
 	sed -i -e '/reformats a layer/,/end/ s:^:#:' spec/lib/mini_magick/image_spec.rb || die
 
-	# Avoid failing spec that also fails in upstream Travis
-	sed -i -e '/returns a hash of verbose information/,/^        end/ s:^:#:' spec/lib/mini_magick/image_spec.rb || die
-
-	# Make spec more lenient to imagemagick quoting
-	sed -i -e "/unable to open image/ s/'foo'/.foo./" spec/lib/mini_magick/shell_spec.rb || die
+	# Avoid spec broken by recent imagemagick updates
+	sed -i -e '/cache files generated from .mpc/askip' spec/lib/mini_magick/image_spec.rb || die
 
 	# Avoid graphicsmagick tests because installing both in parallel for
 	# tests is hard.
