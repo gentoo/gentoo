@@ -4,7 +4,7 @@
 EAPI=5
 
 DESCRIPTION="Manages the /bin/sh (POSIX shell) symlink"
-HOMEPAGE="https://www.gentoo.org/proj/en/eselect/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI=""
 
 LICENSE="GPL-2"

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -30,11 +30,3 @@ DEPEND="${RDEPEND}
 		dev-python/flaky[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
-
-python_install() {
-	distutils-r1_python_install
-
-	# bug 628222, specify python 2 or 3.
-	sed -e "/language/!s:python:${EPYTHON%.*}:" \
-		-i "${ED}"/usr/share/jupyter/kernels/${EPYTHON%.*}/kernel.json || die
-}

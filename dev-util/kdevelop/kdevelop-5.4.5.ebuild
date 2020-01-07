@@ -13,7 +13,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
@@ -103,14 +103,14 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package gdbui KF5SysGuard)
+		$(cmake_use_find_package gdbui KF5SysGuard)
 		-DBUILD_executeplasmoid=$(usex plasma)
-		$(cmake-utils_use_find_package plasma KF5Plasma)
-		$(cmake-utils_use_find_package hex OktetaKastenControllers)
-		$(cmake-utils_use_find_package qmake KDevelop-PG-Qt)
-		$(cmake-utils_use_find_package reviewboard KF5Purpose)
-		$(cmake-utils_use_find_package subversion SubversionLibrary)
-		$(cmake-utils_use_find_package !webkit Qt5WebEngineWidgets)
+		$(cmake_use_find_package plasma KF5Plasma)
+		$(cmake_use_find_package hex OktetaKastenControllers)
+		$(cmake_use_find_package qmake KDevelop-PG-Qt)
+		$(cmake_use_find_package reviewboard KF5Purpose)
+		$(cmake_use_find_package subversion SubversionLibrary)
+		$(cmake_use_find_package !webkit Qt5WebEngineWidgets)
 	)
 
 	use reviewboard || mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_KDEExperimentalPurpose=ON )

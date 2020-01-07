@@ -13,20 +13,6 @@
 	Liferea is a news aggregator for RDF/RSS/CDF/Atom/Echo/etc feeds.  It's
 	based on gnome and xulrunner/webkit.
 	</longdescription>
-	<use>
-		<flag name="gnome-keyring">Enable support for Libsecret Support 
-			plugin that allows Liferea to use <pkg>app-crypt/libsecret</pkg>
-			as password store</flag>
-		<flag name="mediaplayer">Enable support for Media Player plugin 
-			that allows to play music and videos directly from Liferea</flag>
-		<flag name="networkmanager">Use NetworkManager to monitor 
-			nerwork status</flag>
-		<flag name="notification">Enable support for Popup Notifications 
-			plugin that display popups informing about new updates</flag>
-		<flag name="tray">Enable support for Tray Icon (GNOME Classic) 
-			plugin that display a small system tray icon to hide/unhide 
-			Liferea</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">lwindolf/liferea</remote-id>
 	</upstream>

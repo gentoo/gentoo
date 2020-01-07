@@ -1,6 +1,11 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rick Farina <zerochaos@gentoo.com> (2020-01-03)
+# ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
+# rtl-sdr needs net-wireless/rtl-sdr
+net-wireless/kismet rtlsdr ubertooth
+
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
 # dev-libs/criterion is not keyworded yet
 app-admin/syslog-ng test

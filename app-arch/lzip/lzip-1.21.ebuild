@@ -7,8 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="lossless data compressor based on the LZMA algorithm"
 HOMEPAGE="https://www.nongnu.org/lzip/lzip.html"
-SRC_URI="https://download.savannah.gnu.org/releases-noredirect/${PN}/${P/_/-}.tar.gz
-	https://download.savannah.gnu.org/releases/${PN}/${P/_/-}.tar.gz"
+SRC_URI="https://download.savannah.gnu.org/releases/${PN}/${P/_/-}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

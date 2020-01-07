@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 inherit cmake-utils flag-o-matic llvm llvm.org multiprocessing \
 	python-any-r1 toolchain-funcs
 
@@ -31,6 +31,11 @@ BDEPEND="
 
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
+
+python_check_deps() {
+	use test || return 0
+	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
 
 pkg_pretend() {
 	if ! use clang && ! tc-is-clang; then

@@ -32,6 +32,341 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-01-06)
+# No license, therefore we have no permission to redistribute
+# these packages on Gentoo mirrors. Distfiles are unversioned
+# zipballs, which are updated in place when a new version is
+# released. Since this will break digests, mirror restriction
+# is not feasible.
+# Masked for removal in 30 days. Bug #703604.
+app-dicts/sword-ab
+app-dicts/sword-abs_essay_goodsam_swb
+app-dicts/sword-br_en
+app-dicts/sword-bulcarigradnt
+app-dicts/sword-bwe
+app-dicts/sword-chincvs
+app-dicts/sword-chincvt
+app-dicts/sword-chiun
+app-dicts/sword-chiuns
+app-dicts/sword-czecep
+app-dicts/sword-czekms
+app-dicts/sword-czenkb
+app-dicts/sword-dbd
+app-dicts/sword-emtv
+app-dicts/sword-est
+app-dicts/sword-family
+app-dicts/sword-finpr92
+app-dicts/sword-frecrl
+app-dicts/sword-geneva
+app-dicts/sword-hebmodern
+app-dicts/sword-hunuj
+app-dicts/sword-icelandic
+app-dicts/sword-kekchi
+app-dicts/sword-korean
+app-dicts/sword-la_en
+app-dicts/sword-latvian
+app-dicts/sword-maori
+app-dicts/sword-romcor
+app-dicts/sword-umgreek
+app-dicts/sword-xhosa
+
+# Ulrich Müller <ulm@gentoo.org> (2020-01-06)
+# Snapshots from Git, masked for testing.
+=app-editors/emacs-27.0.50_pre*
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# The Maintainer give up this projecet and
+# it is dead on upstream since ~2008
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703900
+media-plugins/vdr-fepg
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin is dead on upstream
+# No HOMEPAGE and upstream SRC_URI
+# You could use as replacement for this plugin
+# media-plugins/vdr-devstatus
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703962
+media-plugins/vdr-recstatus
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin is dead on upstream
+# request about the project status to upstream was 
+# not answered
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703966
+media-plugins/vdr-zaphistory
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin is for an a very old version of
+# media-video/vdr
+# dead on upstream
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703970
+media-plugins/vdr-wapd
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# No Homepage and upstream SRC_URI
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703972
+media-plugins/vdr-nordlichtsepg
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin is for an a very old version of
+# media-video/vdr
+# No upstream available
+# No Homepage and SRC_URI
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703974
+media-plugins/vdr-pilotskin
+
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# several open bugs on upstream, the oldest is from
+# ~2010, the latest is from ~2016
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 703990
+media-plugins/vdr-sudoku
+
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# there are several open bugs up from ~2010 on
+# upstream
+# request about the project status to upstream was 
+# not answered
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704000
+media-plugins/vdr-pvrinput
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# this plugin is from ~2008 and depends on a very
+# old version of vdr
+# As there is no upstream email, it is not possible to
+# request for fixing this issues
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704006
+media-plugins/vdr-lcr
+
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin needs a KDE kicker applet
+# We do not have this applet in the tree anymore
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704008
+media-plugins/vdr-kvdrmon
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# Requested to upstream, pstream answered to this:
+# “vdr-infosatepg was useful many years ago. 
+# today it delivers only additional EPG 
+# for "Eurosport" channel.”
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704010
+media-plugins/vdr-infosatepg
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# This plugin is from ~2004
+# An Upstream url and src_uri is not available
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704014
+media-plugins/vdr-extb
+
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# this plugin is from ~2005 and depends 
+# on a very old version of vdr
+# No upstream is available 
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704016
+media-plugins/vdr-decruft
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# The last commit on upstream is from ~2012
+# request about the project status to upstream was 
+# not answered
+# https://projects.vdr-developer.org/issues/2597
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704018
+media-plugins/vdr-chanman
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# this plugin is from ~2008 and depends 
+# on a very old version of vdr
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704028
+media-plugins/vdr-spider
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# The last commit on upstream is from ~2012
+# upstream has several open bugs on ffmpeg/libav depends
+# request about the project status to upstream was 
+# not answered
+# https://projects.vdr-developer.org/issues/2596
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704034
+media-plugins/vdr-osdpip
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
+# plugin is broken by update to
+# media-video/vdr-2.4.x
+# Last commmit on upstream is from ~2008
+# The plugin function is still available in the core vdr
+# No packages have a reverse RDEPEND on it
+# removal from tree ~4 Feb 2020
+# wrt bug 704050
+media-plugins/vdr-browse
+
+
+# Mike Gilbert <floppym@gentoo.org> (2020-01-04)
+# Un-fetchable distfile, bug 704782.
+# No maintainer.
+# Removal in 30 days.
+net-misc/chrome-remote-desktop
+
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-03)
+# package is broken by all version of imagemagick
+# several open bugs on upstream
+# Upstream did not reply about project status
+# wrt bug 314315
+# removal ~2020-01-31
+media-plugins/vdr-skinenigmang
+x11-themes/skinenigmang-logos
+
+# Jonas Stein <jstein@gentoo.org> (2019-12-30)
+# Package masked for removal. Broken SRC_URI, 
+# last upstream activity was ~16 years ago.
+# Bug #704316.
+# Removal after 2020-03-01
+app-backup/tob
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-30)
+# The PyPy packages have been restructured and dev-python/pypy is now
+# used unconditionally as the main package.  If you wish to continue
+# using prebuilt executables, install dev-python/pypy{,3}-exe-bin
+# along with it.
+# Removal in 30 days.
+dev-python/pypy-bin
+dev-python/pypy3-bin
+
+# Hans de Graaff <graaff@gentoo.org> (2019-12-27)
+# Causes compatibility issues with the bundled versions in some
+# dev-lang/ruby slots. Use the bundled version instead. The only
+# reverse dependency is dev-ruby/jeweler, which is no longer
+# maintained upstream and ruby24-only.
+# Removal in 30 days. Bug #703950.
+dev-ruby/psych
+dev-ruby/jeweler
+
+# Miroslav Šulc <fordfrog@gentoo.org> (2019-12-26)
+# Deprecated by upstream, not used anymore in the tree.
+# Removal in 30 days.  Bug #703196.
+media-libs/libclalsadrv
+
+# David Seifert <soap@gentoo.org> (2019-12-25)
+# Py2 only, dead upstream, no py3 port in sight.
+# Removal in 30 days.  Bug #703792.
+games-rpg/dragonhunt
+
+# David Seifert <soap@gentoo.org> (2019-12-25)
+# Py2 only, dead upstream, no py3 port in sight.
+# Removal in 30 days.  Bug #703784.
+games-puzzle/jools
+
+# David Seifert <soap@gentoo.org> (2019-12-25)
+# Py2 only, dead upstream, no py3 port in sight.
+# Removal in 30 days.  Bug #703782.
+games-puzzle/hexamine
+
+# David Seifert <soap@gentoo.org> (2019-12-25)
+# Py2 only, dead upstream, no py3 port in sight.
+# Removal in 30 days.  Bug #703780.
+games-puzzle/4stattack
+
+# David Seifert <soap@gentoo.org> (2019-12-25)
+# Py2 only, dead upstream, no py3 port in sight.
+# Removal in 30 days.  Bug #703774.
+games-arcade/watermelons
+
+# David Seifert <soap@gentoo.org> (2019-12-25)
+# Py2 only, dead upstream, no py3 port in sight.
+# Removal in 30 days.  Bug #703772.
+games-arcade/triplexinvaders
+
+# David Seifert <soap@gentoo.org> (2019-12-25)
+# Py2 only, dead upstream, no py3 port in sight.
+# Removal in 30 days.  Bug #703770.
+games-arcade/pydance
+games-arcade/pydance-songs
+
+# David Seifert <soap@gentoo.org> (2019-12-25)
+# Py2 only, no other distro packages it anymore.
+# Removal in 30 days.  Bug #703768.
+games-arcade/pycadia
+
+# David Seifert <soap@gentoo.org> (2019-12-25)
+# Py2 only, no other distro packages it anymore.
+# Removal in 30 days.  Bug #703764.
+games-arcade/bub-n-bros
+
+# David Seifert <soap@gentoo.org> (2019-12-25)
+# Py2 only, upstream abandoned since 2005.
+# Removal in 30 days.  Bug #703762.
+games-action/accelerator3d
+
+# David Seifert <soap@gentoo.org> (2019-12-25)
+# Py2 only, upstream abandoned further development, Broken.
+# Removal in 30 days.  Bug #693032.
+games-kids/tuxmathscrabble
+
 # Ulrich Müller <ulm@gentoo.org> (2019-12-25)
 # Broken SRC_URI. Most distfiles have no license,
 # so we cannot distribute them on mirrors.
@@ -90,15 +425,15 @@ app-editors/emacs-vcs
 app-benchmarks/spew
 
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-16)
-# Simplify FOX packages. Nobody uses the demo apps or the "stable" branch.
+# Simplify FOX packages. Adie, calculator, pathfinder, and shutterbug
+# can now be found behind x11-libs/fox[tools], and reswrap is always
+# installed by it.
 # Removal in 30 days.  Bug #703088. Bug #703084.
 app-editors/adie
 dev-util/reswrap
 sci-calculators/calculator
-x11-libs/fox:1.6
 x11-misc/pathfinder
 x11-misc/shutterbug
-x11-misc/xfe
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-15)
 # Live ebuild only.  Not touched since 2012.  Unsurprisingly,
@@ -397,342 +732,21 @@ sci-mathematics/factmsieve
 # has QA issues, bug #598840. Removal in 30 days.
 sci-mathematics/xmds
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-07)
-# Runtime errors/segfaults, ancient, unmaintained, depends on py27.
-# Bug 590986, removal in 30 days.
-x11-misc/calise
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-07)
-# Fails to build against dev-libs/boost-1.71.0, depends on py27.
-# Bug 624222, removal in 30 days.
-sci-astronomy/casacore
-
 # Michał Górny <mgorny@gentoo.org> (2019-12-05)
 # Last maintainer activity in 2016.  Does not build for quite some time
 # already.  Needs a version bump, at the very least.
 # Removal in 30 days.  Bug #602024.
 app-laptop/nvidiabl
 
-# Michał Górny <mgorny@gentoo.org> (2019-12-05)
-# Unmaintained since 2016.  Last touched in 2018.  Pending bump since
-# Feb 2019.  Does not build anymore.
-# Removal in 30 days.  Bug #695580.
-net-wireless/ndiswrapper
-
-# Aaron Bauman <bman@gentoo.org> (2019-12-04)
-# These are (mostly) leaf packages with only py2.7
-# Please review commit msg. Removal in 30 days
-# THIS MASK HAS BEEN CONFIRMED BY THE QA TEAM VIA
-# MAJORITY VOTE. YOU CAN REMOVE SINGLE PACKAGES
-# IF YOU PERSONALLY STEP IN TO MAINTAIN THEM (AND
-# ADD YOURSELF TO THEIR METADATA).
-app-misc/hachoir-subfile
-app-misc/yworklog
-app-text/pdfshuffler
-dev-python/anyvc
-dev-python/asciitree
-dev-python/beanstalkc
-dev-python/bicyclerepair
-dev-python/buzhug
-dev-python/cement
-dev-python/cherrytemplate
-dev-python/clientcookie
-dev-python/dib-utils
-dev-python/dirq
-dev-python/disqus-python
-dev-python/figleaf
-dev-python/flask-dashed
-dev-python/foolscap
-dev-python/gdmodule
-dev-python/graphy
-dev-python/guppy
-dev-python/hachoir-regex
-dev-python/happydoc
-dev-python/hcluster
-dev-python/hcs-utils
-dev-python/hp3parclient
-dev-python/htmlgen
-dev-python/inotifyx
-dev-python/irman-python
-dev-python/jonpy
-dev-python/keyczar
-dev-python/keyrings_alt
-dev-python/libextractor-python
-dev-python/libiscsi-python
-dev-python/libnatpmp
-dev-python/log4py
-dev-python/louie
-dev-python/lp_solve
-dev-python/lupy
-dev-python/m2secret
-dev-python/mwlib-ext
-dev-python/newt_syrup
-dev-python/numdisplay
-dev-python/optcomplete
-dev-python/piddle
-dev-python/pp
-dev-python/pyamf
-dev-python/pyao
-dev-python/pycdf
-dev-python/pychef
-dev-python/pyclamav
-dev-python/pycryptopp
-dev-python/pydvdread
-dev-python/pyelemental
-dev-python/pyifp
-dev-python/pykota
-dev-python/pylibpcap
-dev-python/pyml
-dev-python/pynag
-dev-python/pyndex
-dev-python/py-notify
-dev-python/pyoembed
-dev-python/pyPdf
-dev-python/pyrax
-=dev-python/PySensors-0.0.3
-dev-python/py-smbpasswd
-dev-python/pystatgrab
-dev-python/python-caja
-dev-python/python-catcher
-dev-python/python-cdb
-dev-python/python-exconsole
-dev-python/python-fastcgi
-dev-python/python-mhash
-dev-python/python-oembed
-dev-python/python-pam
-dev-python/python-pluginloader
-dev-python/pyvtk
-dev-python/PyZilla
-dev-python/qserve
-dev-python/RecSQL
-dev-python/rlcompleter2
-dev-python/ropeide
-dev-python/ropemacs
-dev-python/sancho
-dev-python/sclapp
-dev-python/simplesettings
-dev-python/slowaes
-dev-python/snakefood
-dev-python/sphinxcontrib-ditaa
-dev-python/sqlitecachec
-dev-python/stapler
-dev-python/stripogram
-dev-python/sudsds
-dev-python/superlance
-dev-python/supervisor-quick
-dev-python/telarchive
-dev-python/tgmochikit
-dev-python/ttfquery
-dev-python/turbolift
-dev-python/ushlex
-dev-python/vatnumber
-dev-python/weberror
-dev-python/webhelpers
-dev-python/webpy
-dev-python/workerpool
-dev-util/Orange
-dev-vcs/hg-fast-export
-dev-vcs/rabbitvcs
-net-analyzer/namebench
-net-fs/tahoe-lafs
-net-misc/irrtree
-net-misc/pycnb
-net-p2p/pybitmessage
-net-print/pykota
-www-apps/blohg-tumblelog
-x11-misc/magick-rotation
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-12-03)
-# Project does not exist anymore.
-# Removal in 30 days.  Bug #680452.
-dev-java/balloontip
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained Rust packages with incorrect license information.
-# Removal in 30 days.  Bug #694414.
-app-misc/rq
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Multiple unmaintained Go packages with incorrect license information.
-# No reverse dependencies.
-#
-# app-admin/linux-bench: #699274
-# dev-go/glide: #694384
-# dev-util/drone{,-cli}: #695240  // TODO: promu?
-# net-misc/istioctl: #695288
-#
-# Removal in 30 days.
-app-admin/linux-bench
-dev-go/glide
-net-misc/istioctl
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Added in 2013 and not updated since.  Unmaintained upstream since
-# inception.  Never had any keywords.
-# Removal in 30 days.  Bug #701462.
-net-dns/pdns-ldap-backend
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained.  Incorrect license and potential copyright infringement.
-# Removal in 30 days.  Bug #634332.
-games-misc/fortune-mod-powerpuff
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained.  No license and potential copyright infringement.
-# Removal in 30 days.  Bug #634318.
-games-misc/fortune-mod-smac
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Not updated since 2009 and 2004 respectively.  Suspicious license.
-# Removal in 30 days.  Bugs #691084 and #701732.
-games-misc/fortune-mod-gentoo-dev
-games-misc/fortune-mod-gentoo-forums
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# The plugin is broken with multiple dependencies.  It is also dead
-# upstream.  Removing per maintainer's request.
-# Removal in 30 days.  Bug #314309.
-media-plugins/vdr-coverviewer
-media-plugins/vdr-music
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unresolved vulnerability.  Also apparently fails to build (#574048).
-# Removal in 30 days.  Bug #463338.
-sys-fabric/ibutils
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained.  Not bumped since 2015.
-# Removal in 30 days.  Bug #585126.
-www-servers/hiawatha
-www-apps/hiawatha-monitor
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Unmaintained.  Last release in 2012.  Buggy ebuild.
-# Removal in 30 days.  Bug #658302.
-app-text/pdfshuffler
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-01)
-# Not updated since 2015.  No reverse dependencies.
-# Removal in 30 days.  Bug #695392.
-dev-python/quixote
-
-# Matt Turner <mattst88@gentoo.org> (2019-12-01)
-# browserpass ebuild ported to go-modules, so these modules now have no reverse
-# dependencies.
-# Removal in 30 days. Bugs #683286, #683310, #687462, #700792
-=www-plugins/browserpass-3.0.6
-dev-go/zglob
-dev-go/logrus
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-30)
-# Version in Gentoo is multiple years old, broken by several dependencies
-# Bugs aren't being fixed: #497412, #509334, #511794, #651010, #654484, #701022
-# Removal in 30 days.
-media-libs/mediastreamer
-media-plugins/mediastreamer-amr
-media-plugins/mediastreamer-bcg729
-media-plugins/mediastreamer-ilbc
-media-plugins/mediastreamer-x264
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2019-11-29)
 # Beta for new major version with initial Python 3 support
 =app-backup/rdiff-backup-1.4.0_beta*
-
-# Lars Wendler <polynomial-c@gentoo.org> (2019-11-29)
-# Breaks at least libreoffice, inkscape and perhaps more revdeps
-~app-text/poppler-0.83.0
-
-# Michał Górny <mgorny@gentoo.org> (2019-11-29)
-# Astronomy-related Python packages and their revdeps.  They are
-# unmaintained.  Most of them are outdated.  None of them were tested
-# on Python 3.7, some even on 3.6.  The leaf packages are 2.7-only.
-# All of them depend on astropy which has an unconditional dependency
-# on ipython, which in turn dropped py2 support.
-# Bug #701454.  Removal in 30 days.
-dev-python/aplpy
-dev-python/asdf
-dev-python/astlib
-dev-python/astrodendro
-dev-python/astroml-addons
-dev-python/astroml
-dev-python/astroplan
-dev-python/astropy-helpers
-dev-python/astropy
-dev-python/astroquery
-dev-python/astroscrappy
-dev-python/atpy
-dev-python/ccdproc
-dev-python/gammapy
-dev-python/ginga
-dev-python/glue-vispy-viewers
-dev-python/glueviz
-dev-python/gwcs
-dev-python/healpy
-dev-python/imexam
-dev-python/montage-wrapper
-dev-python/naima
-dev-python/photutils
-dev-python/pyavm
-dev-python/pydl
-dev-python/pyfits
-dev-python/pymoc
-dev-python/pyregion
-dev-python/regions
-dev-python/reproject
-dev-python/spectral-cube
-dev-python/specutils
-dev-python/stsci-distutils
-dev-python/stsci-sphinxext
-dev-python/sunpy
-dev-python/wcsaxes
-sci-astronomy/astrometry
-sci-astronomy/kapteyn
-
-# David Seifert <soap@gentoo.org> (2019-11-28)
-# No revdeps, blocking move to python 3.7, unnecessary maintenance
-# burden, bug #701426. Removal in 30 days.
-dev-python/pytest-datafiles
-dev-python/pytest-pythonpath
-dev-python/pytest-qt
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
-# Multiple build failures, automagic, missing deps, no one to fix them
-# Bugs #542756, #554388, #555768, #557974, #574854, #574890 #589182,
-# #590640, #612302, #622574, #698940; Removal in 30 days.
-=sci-libs/vtk-6*
-sci-libs/vtkdata
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
-# Depends on broken =sci-libs/vtk-6*, needs to be bumped to 3.0.2, bug #657952
-# Removal in 30 days.
-=sci-visualization/visit-2*
 
 # Jonas Stein <jstein@gentoo.org> (2019-11-26)
 # Package is obsolete. Successor is net-wireless/b43-fwcutter
 # Bug #537786.
 # Removal after 2020-01-01
 net-wireless/bcm43xx-fwcutter
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-25)
-# Mask for removal from main tree into ::nix-guix overlay.
-# Removal in 30 days.
-sys-apps/nix
-sys-apps/guix
-
-# Mart Raudsepp <leio@gentoo.org> (2019-11-17)
-# Obsolete library with no remaining consumers.
-# Only older dev-libs/libreport versions used it.
-# Removal in 30 days.  Bug #700380.
-dev-libs/btparser
-
-# Mart Raudsepp <leio@gentoo.org> (2019-11-17)
-# Obsolete library with no consumers.
-# Removal in 30 days.  Bug #700332.
-dev-libs/qof
-
-# Aaron Bauman <bman@gentoo.org> (2019-11-16)
-# EAPI=4 and fails to build
-dev-util/ccglue
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
@@ -744,13 +758,6 @@ dev-util/ccglue
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
 ~xfce-base/xfce4-panel-4.15.0
-
-# Mikle Kolyada <zlogene@gentoo.org> (2019-10-16)
-# not needed due to openpam removal. Please
-# update your packages running emerge with the
-# --changed-deps option if you have problems
-# with your system.
-virtual/pam
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-10-16)
 # Depends on apache-2.2
@@ -783,59 +790,6 @@ dev-libs/gmp:3
 # Please migrate to sys-apps/man-db.
 sys-apps/man
 
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# End of life.  Please upgrade.
-# Removal in 90 days. Bug 651784
-dev-lang/php:5.6
-virtual/httpd-php:5.6
-
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# Requires end of life PHP 5.6.  Please upgrade.
-# Removal in 90 days. Bug 651784
-=www-apps/rutorrent-3.4-r1
-
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# Old slots for support of PHP <7
-# Removal in 90 days. Bug 651784
-dev-php/pecl-apcu:0
-dev-php/pecl-dbase:0
-dev-php/pecl-http:2
-dev-php/pecl-mailparse:0
-dev-php/pecl-memcache:0
-dev-php/pecl-memcached:0
-dev-php/pecl-oauth:0
-dev-php/pecl-propro:0
-dev-php/pecl-ps:0
-dev-php/pecl-raphf:0
-dev-php/pecl-rrd:0
-dev-php/pecl-ssh2:0
-dev-php/pecl-stomp:0
-dev-php/pecl-xdiff:0
-dev-php/pecl-yaml:0
-
-# Brian Evans <grknight@gentoo.org> (2019-10-01)
-# Old extensions which only work with PHP <7
-# pecl-mongo is replaced by pecl-monogodb
-# Removal in 90 days. Bug 651784
-dev-php/PEAR-MDB2_Driver_mysql
-dev-php/magickwand
-dev-php/pecl-bbcode
-dev-php/pecl-cairo
-dev-php/pecl-dbx
-dev-php/pecl-haru
-dev-php/pecl-htscanner
-dev-php/pecl-libevent
-dev-php/pecl-mongo
-dev-php/pecl-mysqlnd_ms
-dev-php/pecl-mysqlnd_qc
-dev-php/pecl-sphinx
-dev-php/pecl-spl_types
-dev-php/pecl-svn
-dev-php/pecl-xrange
-dev-php/suhosin
-dev-php/xcache
-<dev-php/xhprof-0.9.10
-
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
@@ -863,11 +817,6 @@ app-office/texmacs
 # Mart Raudsepp <leio@gentoo.org> (2019-08-18)
 # Fails to dbus activate properly for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
-
-# Mart Raudsepp <leio@gentoo.org> (2019-07-28)
-# GNOME 3.33 development release packages
->=dev-libs/vala-common-0.45
-dev-lang/vala:0.46
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-07-26)
 # Mask 5.x version
@@ -1055,13 +1004,6 @@ dev-java/eclipse-ecj:4.10
 # <glibc-2.26.
 ~net-libs/libnsl-0
 ~net-libs/rpcsvc-proto-0
-
-# Michał Górny <mgorny@gentoo.org> (2018-08-01)
-# Multiprocessing versions of gemato.  They are known to hang on some
-# users, so let's keep them masked until somebody figures out what's
-# wrong.  Bug #647964.
-~app-portage/gemato-14.1m
-~app-portage/gemato-9999m
 
 # James Le Cuirot <chewi@gentoo.org> (2017-12-17)
 # Java 9+ is not yet fully supported on Gentoo. Packages cannot depend

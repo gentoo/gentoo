@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -13,7 +13,7 @@ else
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${PN}_${PV}"
 fi
-inherit cmake-utils fortran-2 python-any-r1
+inherit cmake fortran-2 python-any-r1
 
 DESCRIPTION="C++ runtime system for parallel and distributed applications"
 HOMEPAGE="https://stellar.cct.lsu.edu/tag/hpx/"
@@ -64,16 +64,16 @@ src_configure() {
 		mycmakeargs+=( -DHPX_WITH_MALLOC=system )
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
 	# avoid over-suscribing
-	cmake-utils_src_make -j1 tests
+	cmake_build -j1 tests
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	if use examples; then
 		mv "${D}/usr/bin/spin" "${D}/usr/bin/hpx_spin" || die
 		insinto /usr/share/doc/${PF}

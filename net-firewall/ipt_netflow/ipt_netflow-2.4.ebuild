@@ -13,7 +13,7 @@ SRC_URI="https://github.com/aabc/ipt-netflow/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="debug natevents snmp"
 
@@ -31,12 +31,23 @@ PATCHES=(
 )
 
 pkg_setup() {
+	linux-info_pkg_setup
+
+	local CONFIG_CHECK="~IP_NF_IPTABLES VLAN_8021Q"
+	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
+	if use natevents; then
+		CONFIG_CHECK+=" NF_CONNTRACK_EVENTS"
+		if kernel_is lt 5 2; then
+			CONFIG_CHECK+=" NF_NAT_NEEDED"
+		else
+			CONFIG_CHECK+=" NF_NAT"
+		fi
+	fi
+
 	BUILD_TARGETS="all"
 	MODULE_NAMES="ipt_NETFLOW(ipt_netflow:${S})"
 	IPT_LIB="/usr/$(get_libdir)/xtables"
-	local CONFIG_CHECK="~IP_NF_IPTABLES VLAN_8021Q"
-	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
-	use natevents && CONFIG_CHECK+=" NF_CONNTRACK_EVENTS NF_NAT_NEEDED"
+
 	linux-mod_pkg_setup
 }
 

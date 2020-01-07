@@ -1,5 +1,5 @@
---- a/configure.seed	2018-10-08 21:33:09.403001834 -0600
-+++ b/configure.seed	2018-10-08 21:35:47.404002203 -0600
+--- a/configure.seed
++++ b/configure.seed
 @@ -129,9 +129,9 @@
  fi
  

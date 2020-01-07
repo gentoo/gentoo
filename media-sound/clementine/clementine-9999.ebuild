@@ -1,21 +1,30 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PLOCALES="af ar be bg bn br bs ca cs cy da de el en en_CA en_GB eo es et eu fa fi fr ga gl he he_IL hi hr hu hy ia id is it ja ka kk ko lt lv mk_MK mr ms my nb nl oc pa pl pt pt_BR ro ru si_LK sk sl sr sr@latin sv te tr tr_TR uk uz vi zh_CN zh_TW"
 
+inherit cmake flag-o-matic l10n virtualx xdg
+
 MY_P="${P/_}"
 if [[ ${PV} == *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/clementine-player/Clementine.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/${P/_}"
+	SRC_URI_BASE="https://github.com/clementine-player/${PN^}"
+	COMMIT=""
+	if [[ -n "${COMMIT}" ]] ; then
+		SRC_URI="${SRC_URI_BASE}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+		S="${WORKDIR}/${PN^}-${COMMIT}"
+	elif [[ $(ver_cut 3) -gt 90 ]] ; then
+		SRC_URI="${SRC_URI_BASE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	else
+		SRC_URI="${SRC_URI_BASE}/releases/download/${PV/_}/${P/_}.tar.xz"
+	fi
 	KEYWORDS="~amd64 ~x86"
-	S="${WORKDIR}/${PN^}-${COMMIT}"
 fi
-inherit cmake-utils flag-o-matic l10n virtualx xdg
-
 DESCRIPTION="Modern music player and library organizer based on Amarok 1.4 and Qt"
 HOMEPAGE="https://www.clementine-player.org https://github.com/clementine-player/Clementine"
 
@@ -98,7 +107,7 @@ DOCS=( Changelog README.md )
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	# some tests fail or hang
 	sed -i \
 		-e '/add_test_file(translations_test.cpp/d' \
@@ -148,7 +157,7 @@ src_configure() {
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {

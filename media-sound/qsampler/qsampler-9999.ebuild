@@ -38,7 +38,7 @@ PATCHES=( "${FILESDIR}/${PN}-0.5.3-Makefile.patch" )
 src_prepare() {
 	default
 
-	emake -f Makefile.svn
+	emake -f Makefile.git
 	eautoreconf
 }
 

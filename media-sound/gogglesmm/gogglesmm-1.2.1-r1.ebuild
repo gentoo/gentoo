@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Fast and light music player"
 HOMEPAGE="https://gogglesmm.github.io"
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+dbus +flac +mad +vorbis +ogg +opus +aac +pulseaudio +opengl nls"
 
-RDEPEND="x11-libs/fox:=
+RDEPEND="x11-libs/fox:1.7
 		x11-libs/libSM
 		x11-libs/libICE
 		dev-db/sqlite
@@ -41,5 +41,5 @@ src_configure() {
 		-DWITH_NLS="$(usex nls)"
 		-DWITH_CFOX=OFF
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

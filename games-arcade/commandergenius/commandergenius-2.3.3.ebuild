@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake-utils desktop python-single-r1 xdg-utils
+inherit cmake desktop python-single-r1 xdg-utils
 
 MY_PN="Commander-Genius"
 MY_P="${MY_PN}-v${PV}"
@@ -58,11 +58,11 @@ src_configure() {
 		-DBUILD_SHARED_LIBS=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# The normal executable name is weird.
 	dosym CGeniusExe /usr/bin/${PN}

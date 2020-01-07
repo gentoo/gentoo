@@ -9,7 +9,7 @@ DESCRIPTION="Generating CHAP packets"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm"
+KEYWORDS="amd64 ~arm ~hppa ~sparc"
 IUSE="test"
 RESTRICT="!test? ( test )"
 # Crypt_CHAP_MSv1 needs mcrypt which is gone in 7.2+

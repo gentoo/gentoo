@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>arfrever.fta@gmail.com</email>
+		<name>Arfrever Frehtes Taifersar Arahesis</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>floppym@gentoo.org</email>
+		<name>Mike Gilbert</name>
+		<description>Proxy</description>
+	</maintainer>
 	<use>
 		<flag name="gflags">Use <pkg>dev-cpp/gflags</pkg> for flag parsing</flag>
 		<flag name="unwind">Use <pkg>sys-libs/libunwind</pkg> for stack unwinding instead of glibc/gcc (may be more reliable on x86_64)</flag>
 	</use>
 	<upstream>
-		<remote-id type="google-code">google-glog</remote-id>
 		<remote-id type="github">google/glog</remote-id>
 	</upstream>
 </pkgmetadata>

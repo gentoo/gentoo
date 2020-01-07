@@ -10,7 +10,7 @@ HOMEPAGE="http://postfixadmin.sourceforge.net"
 SRC_URI="https://github.com/postfixadmin/postfixadmin/archive/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="+mysql postgres +vacation"
 REQUIRED_USE="|| ( mysql postgres )"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -16,6 +16,10 @@
 #
 
 #--- END OF EXAMPLES ---
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-04)
+# net-libs/libktorrent:5 is not stable anymore, bug #696858
+kde-apps/kget bittorrent
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-09-13)
 # media-video/pipewire is not stable yet
@@ -41,10 +45,6 @@ media-libs/opencv contrib contribcvv contribdnn contribhdf contribsfm contribxfe
 # Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo
 app-admin/sudo -sssd
-
-# Mart Raudsepp <leio@gentoo.org> (2018-11-01)
-# net-wireless/iwd not stable yet
-net-misc/networkmanager iwd
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-09-27)
 # sys-devel/lld is unstable
@@ -94,5 +94,4 @@ dev-cpp/eigen test
 # Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy
 dev-lang/python-exec -python_targets_pypy3

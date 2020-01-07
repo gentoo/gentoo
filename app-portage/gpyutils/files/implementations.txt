@@ -14,7 +14,7 @@ python3_1	3.1	dead	3.1
 python3_2	3.2	dead	3.2
 python3_3	3.3	dead	3.3
 python3_4		dead	3.4
-python3_5		supported	3.5
+python3_5		dead	3.5
 python3_6		current	3.6
 python3_7		supported	3.7
 python3_8		supported	3.8
@@ -23,10 +23,10 @@ pypy1_8	2.7-pypy-1.8	dead	p1.8
 pypy1_9	2.7-pypy-1.9	dead	p1.9
 pypy2_0	2.7-pypy-2.0	dead	p2.0
 
-pypy		supported	pypy
+pypy		dead	pypy
 pypy3		supported	pypy3
 
 jython2_5	2.5-jython	dead	j2.5
-jython2_7	2.7-jython	experimental	j2.7
+jython2_7	2.7-jython	dead	j2.7
 
 # vim:ts=16:sts=16:noet:ft=conf

@@ -1,25 +1,25 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit pax-utils python-utils-r1
 
-# note: remember to update this to newest dev-lang/python:2.7 on bump
-CPY_PATCHSET_VERSION="2.7.17"
 MY_P=pypy2.7-v${PV/_/}
+# note: remember to update this to newest dev-lang/python:2.7 on bump
+PATCHSET="python-gentoo-patches-2.7.17-r1"
 
 DESCRIPTION="A fast, compliant alternative implementation of the Python language"
 HOMEPAGE="https://pypy.org/"
 SRC_URI="https://bitbucket.org/pypy/pypy/downloads/${MY_P}-src.tar.bz2
-	https://dev.gentoo.org/~mgorny/dist/python-gentoo-patches-${CPY_PATCHSET_VERSION}.tar.xz"
+	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
 S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
 # pypy -c 'import sysconfig; print sysconfig.get_config_var("SOABI")'
 SLOT="0/73"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gdbm +jit libressl ncurses sandbox sqlite tk"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="bzip2 gdbm +jit libressl ncurses sqlite tk"
 
 RDEPEND="
 	|| (
@@ -49,7 +49,7 @@ src_prepare() {
 	# TODO: cpy turkish locale patch now fixes C code
 	# probably needs better port to pypy, if it is broken there
 	eapply "${FILESDIR}"/5.8.0_all_distutils_cxx.patch
-	eapply -p2 "${WORKDIR}"/patches/0010-use_pyxml.patch
+	eapply -p2 "${WORKDIR}/${PATCHSET}"/0010-use_pyxml.patch
 	popd > /dev/null || die
 
 	eapply_user

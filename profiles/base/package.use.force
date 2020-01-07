@@ -50,6 +50,7 @@ sys-libs/ncurses-compat tinfo
 gnome-base/gnome-desktop seccomp
 app-misc/tracker-miners seccomp
 >gnome-base/nautilus-3.29 seccomp
+net-libs/webkit-gtk seccomp
 
 # Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
@@ -105,12 +106,9 @@ app-shells/bash:0 readline
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
 dev-lang/python-exec python_targets_python2_7
-dev-lang/python-exec python_targets_python3_5
 dev-lang/python-exec python_targets_python3_6
 dev-lang/python-exec python_targets_python3_7
 dev-lang/python-exec python_targets_python3_8
-dev-lang/python-exec python_targets_jython2_7
-dev-lang/python-exec python_targets_pypy
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

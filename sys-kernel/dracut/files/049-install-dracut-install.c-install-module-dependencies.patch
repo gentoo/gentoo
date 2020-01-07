@@ -1,0 +1,79 @@
+From c38f9e980c1ee03151dd1c6602907c6228b78d30 Mon Sep 17 00:00:00 2001
+From: Harald Hoyer <harald@redhat.com>
+Date: Tue, 4 Dec 2018 10:02:45 +0100
+Subject: [PATCH] install/dracut-install.c: install module dependencies of
+ dependencies
+To: <initramfs@vger.kernel.org>
+
+---
+ install/dracut-install.c | 28 +++++++++++++++++++++++++---
+ 1 file changed, 25 insertions(+), 3 deletions(-)
+
+diff --git a/install/dracut-install.c b/install/dracut-install.c
+index 5f352b36..d64de545 100644
+--- a/install/dracut-install.c
++++ b/install/dracut-install.c
+@@ -84,6 +84,11 @@ static bool arg_mod_filter_noname = false;
+ static int dracut_install(const char *src, const char *dst, bool isdir, bool resolvedeps, bool hashdst);
+ 
+ 
++static inline void kmod_module_unrefp(struct kmod_module **p) {
++        if (*p)
++                kmod_module_unref(*p);
++}
++#define _cleanup_kmod_module_unref_ _cleanup_(kmod_module_unrefp)
+ 
+ static inline void kmod_module_unref_listp(struct kmod_list **p) {
+         if (*p)
+@@ -1230,28 +1235,45 @@ static bool check_module_path(const char *path)
+ static int install_dependent_modules(struct kmod_list *modlist)
+ {
+         struct kmod_list *itr;
+-        struct kmod_module *mod;
+         const char *path = NULL;
+         const char *name = NULL;
+         int ret = 0;
+ 
+         kmod_list_foreach(itr, modlist) {
++		_cleanup_kmod_module_unref_ struct kmod_module *mod = NULL;
+                 mod = kmod_module_get_module(itr);
+                 path = kmod_module_get_path(mod);
+ 
++		if (check_hashmap(items_failed, path))
++			return -1;
++
++		if (check_hashmap(items, path)) {
++			continue;
++		}
++
+                 name = kmod_module_get_name(mod);
++
+                 if ((path == NULL) || (arg_mod_filter_noname && (regexec(&mod_filter_noname, name, 0, NULL, 0) == 0))) {
+-                        kmod_module_unref(mod);
+                         continue;
+                 }
++
+                 ret = dracut_install(path, &path[kerneldirlen], false, false, true);
+                 if (ret == 0) {
++			_cleanup_kmod_module_unref_list_ struct kmod_list *modlist = NULL;
++			_cleanup_kmod_module_unref_list_ struct kmod_list *modpre = NULL;
++			_cleanup_kmod_module_unref_list_ struct kmod_list *modpost = NULL;
+                         log_debug("dracut_install '%s' '%s' OK", path, &path[kerneldirlen]);
+                         install_firmware(mod);
++			modlist = kmod_module_get_dependencies(mod);
++			ret = install_dependent_modules(modlist);
++			if (ret == 0) {
++				ret = kmod_module_get_softdeps(mod, &modpre, &modpost);
++				if (ret == 0)
++					ret = install_dependent_modules(modpre);
++			}
+                 } else {
+                         log_error("dracut_install '%s' '%s' ERROR", path, &path[kerneldirlen]);
+                 }
+-                kmod_module_unref(mod);
+         }
+ 
+         return ret;
+-- 
+2.24.1
+

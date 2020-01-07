@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools elisp-common latex-package multilib python-r1
 
@@ -143,7 +143,6 @@ src_install() {
 		insinto /usr/share/${PN}/examples
 		doins \
 			examples/*.asy \
-			examples/*.eps \
 			doc/*.asy \
 			doc/*.csv \
 			doc/*.dat \
@@ -160,6 +159,8 @@ src_install() {
 		if use examples; then
 			insinto /usr/share/${PN}/examples
 			doins latexusage.tex
+			insinto /usr/share/${PN}/examples/animations
+			doins ../examples/animations/*.tex
 		fi
 		cd .. || die
 	fi

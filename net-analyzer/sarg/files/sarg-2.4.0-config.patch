@@ -1,0 +1,81 @@
+--- a/log.c
++++ b/log.c
+@@ -151,7 +151,7 @@
+ 	strcpy(FontSize,"9px");
+ 	strcpy(TempDir,"/tmp");
+ 	TempDirPath[0] = '\0';
+-	strcpy(OutputDir,"/var/www/html/squid-reports");
++	strcpy(OutputDir,"/var/www/localhost/htdocs/squid-reports");
+ 	AnonymousOutputFiles=false;
+ 	Ip2Name=false;
+ 	DateFormat='u';
+--- a/htaccess
++++ b/htaccess
+@@ -1,4 +1,4 @@
+-AuthUserFile /usr/local/sarg/passwd
++AuthUserFile /etc/sarg/passwd
+ AuthName "SARG, Squid Analysis Report Generator"
+ AuthType Basic
+ <Limit GET POST>
+--- a/sarg.conf
++++ b/sarg.conf
+@@ -17,7 +17,7 @@
+ #       If some files are passed on the command line with "sarg -l file" or
+ #       "sarg file", the files listed here are ignored.
+ #
+-#access_log /usr/local/squid/var/logs/access.log
++#access_log /var/log/squid/access.log
+ 
+ # TAG: graphs yes|no
+ #	Use graphics where is possible.
+@@ -147,7 +147,7 @@
+ #       The reports will be saved in that directory
+ #       sarg -o dir
+ #
+-#output_dir /var/www/html/squid-reports
++#output_dir /var/www/localhost/htdocs/squid-reports
+ 
+ # TAG:  anonymous_output_files yes/no
+ #       Use anonymous file and directory names in the report. If it is set to
+@@ -632,7 +632,7 @@
+ #      Generate reports from SquidGuard logs.
+ #      Use 'none' to disable.
+ #      You can use sarg -L filename to use an alternate squidGuard log.
+-#      squidguard_conf /usr/local/squidGuard/squidGuard.conf
++#      squidguard_conf /etc/squidGuard/squidGuard.conf
+ #
+ #squidguard_conf none
+ 
+--- a/user_limit_block
++++ b/user_limit_block
+@@ -24,8 +24,8 @@
+ #
+ #
+ 
+-conf="/usr/local/sarg/sarg.conf"
+-squid_password_file="/usr/local/squid/etc/passwd"
++conf="/etc/sarg/sarg.conf"
++squid_password_file="/etc/squid/passwd"
+ tmp="/tmp/sarg_limit.$$"
+ 
+ limit_file=`grep "per_user_limit" $conf|grep -v "#"|awk '{print $2}'`
+--- a/sarg-php/config.php.inc
++++ b/sarg-php/config.php.inc
+@@ -1,13 +1,13 @@
+ <?php
+ 
+ // Change to squidGuard and sarg config file paths
+-$SargConf = "/usr/local/sarg/sarg.conf";
+-$squidGuardConf = "/usr/local/squidGuard/squidGuard.conf";
++$SargConf = "/etc/sarg/sarg.conf";
++$squidGuardConf = "/etc/squidGuard/squidGuard.conf";
+ 
+ // File where URL to block will be appended
+-$DefaultSquidBlock = "/usr/local/squid/etc/block.txt";
++$DefaultSquidBlock = "/etc/squid/etc/block.txt";
+ 
+ // Choose the locale you want to use to display messages (it must exist on your system)
+-$language = "fr_BE.utf-8";
++$language = "POSIX";
+ 
+ ?>

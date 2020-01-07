@@ -88,11 +88,6 @@ prefix-stack
 # masking flags that only apply to FreeBSD
 kqueue
 
-# Ralph Sennhauser <sera@gentoo.org> (2012-07-31)
-# Unmask in arch specific profiles when jython implementaton is available.
-python_targets_jython2_7
-python_single_target_jython2_7
-
 # Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-18)
 # Prelude is being masked for removal
 prelude

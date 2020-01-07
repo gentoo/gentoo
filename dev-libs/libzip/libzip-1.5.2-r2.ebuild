@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils multibuild
+inherit cmake multibuild
 
 DESCRIPTION="Library for manipulating zip archives"
 HOMEPAGE="https://nih.at/libzip/"
@@ -11,7 +11,7 @@ SRC_URI="https://www.nih.at/libzip/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0/5"
-KEYWORDS="~alpha amd64 arm arm64 hppa ~ia64 ~mips ~ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="bzip2 doc gnutls libressl mbedtls ssl static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -90,20 +90,20 @@ src_configure() {
 				-DENABLE_OPENSSL=OFF
 			)
 		fi
-		cmake-utils_src_configure
+		cmake_src_configure
 	}
 
 	multibuild_foreach_variant myconfigure
 }
 
 src_compile() {
-	multibuild_foreach_variant cmake-utils_src_compile
+	multibuild_foreach_variant cmake_src_compile
 }
 
 src_test() {
-	[[ ${MULTIBUILD_VARIANT} = shared ]] && cmake-utils_src_test
+	[[ ${MULTIBUILD_VARIANT} = shared ]] && cmake_src_test
 }
 
 src_install() {
-	multibuild_foreach_variant cmake-utils_src_install
+	multibuild_foreach_variant cmake_src_install
 }

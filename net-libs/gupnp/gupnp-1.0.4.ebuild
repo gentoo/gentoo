@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 VALA_USE_DEPEND="vapigen"
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 PYTHON_REQ_USE="xml"
 
 inherit gnome2 multilib-minimal python-single-r1 vala
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP"
 
 LICENSE="LGPL-2"
 SLOT="0/4"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 hppa ~ia64 ~ppc ppc64 ~sparc x86"
 
 IUSE="connman +introspection kernel_linux networkmanager"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}

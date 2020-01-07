@@ -16,7 +16,7 @@ SRC_URI="https://github.com/arc-design/${PN}/releases/download/${PV}/${P}.tar.xz
 	pre-rendered? ( https://dev.gentoo.org/~chewi/distfiles/${P}-pngs.tar.xz )"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE="cinnamon gnome-shell +gtk2 +gtk3 mate +pre-rendered xfce"
 
 SASSC_DEPEND="

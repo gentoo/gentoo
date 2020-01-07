@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ PATCHES=(
 )
 
 if [[ ${PV} == *9999 ]] ; then
-	PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+	PYTHON_COMPAT=( python2_7 python3_{6,7} )
 	EGIT_REPO_URI="https://github.com/xbmc/xbmc.git"
 	inherit git-r3
 else
@@ -34,7 +34,7 @@ else
 	S=${WORKDIR}/xbmc-${MY_PV}-${CODENAME}
 fi
 
-inherit autotools cmake-utils desktop linux-info pax-utils python-single-r1 xdg
+inherit autotools cmake desktop linux-info pax-utils python-single-r1 xdg
 
 DESCRIPTION="A free and open source media-player and entertainment hub"
 HOMEPAGE="https://kodi.tv/ https://kodi.wiki/"
@@ -194,7 +194,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# avoid long delays when powerkit isn't running #348580
 	sed -i \
@@ -293,19 +293,19 @@ src_configure() {
 		mycmakeargs+=( -DCORE_PLATFORM_NAME="x11" )
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile all
+	cmake_src_compile all
 }
 
 src_test() {
-	cmake-utils_src_make check
+	cmake_build check
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	pax-mark Em "${ED}"/usr/$(get_libdir)/${PN}/${PN}.bin
 

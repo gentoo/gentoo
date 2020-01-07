@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} pypy )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
@@ -122,7 +122,7 @@ CDEPEND="
 		php_targets_php7-2? ( dev-lang/php:7.2[embed] )
 		php_targets_php7-3? ( dev-lang/php:7.3[embed] )
 	)
-	pypy? ( virtual/pypy )
+	pypy? ( dev-python/pypy )
 	python? ( ${PYTHON_DEPS} )
 	python_asyncio? ( virtual/python-greenlet[${PYTHON_USEDEP}] )
 	python_gevent? ( >=dev-python/gevent-1.3.5[${PYTHON_USEDEP}] )

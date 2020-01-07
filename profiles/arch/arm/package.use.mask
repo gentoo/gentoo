@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
+# zfs is not keyworded on arm
+dev-util/schroot zfs
+
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
 # dev-libs/criterion is not keyworded yet
 app-admin/syslog-ng test
@@ -64,7 +68,7 @@ sys-apps/fwupd dell thunderbolt
 www-apps/nextcloud imagemagick
 
 # Corentin Pazdera <nado@troglodyte.be> (2018-12-28)
-# Requires virtual/pypy which isn't keyworded for ARM.
+# Requires dev-python/pypy which isn't keyworded for ARM.
 www-servers/uwsgi pypy
 
 # Davide Pesavento <pesa@gentoo.org> (2018-12-27)

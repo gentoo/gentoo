@@ -64,7 +64,7 @@ SRC_URI="https://github.com/Peltoche/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 DEPEND=""
@@ -74,6 +74,6 @@ BDEPEND=">=virtual/rust-1.31.0"
 QA_FLAGS_IGNORED="/usr/bin/lsd"
 
 src_install() {
-	cargo_src_install --path .
+	cargo_src_install
 	einstalldocs
 }

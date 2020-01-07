@@ -19,6 +19,10 @@ BUILD_TARGETS="modules"
 CONFIG_CHECK="!R8169"
 ERROR_R8169="${P} requires Realtek 8169 PCI Gigabit Ethernet adapter (CONFIG_R8169) to be DISABLED"
 
+PATCHES=(
+	"${FILESDIR}"/linux-5.4.patch
+)
+
 pkg_nofetch() {
 	einfo "Please download ${SRC_URI} from:"
 	einfo "  ${HOMEPAGE}"

@@ -17,6 +17,24 @@
 
 #--- END OF EXAMPLES ---
 
+# Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-30)
+# Directly install net-vpn/wireguard-tools and net-vpn/wireguard-modules.
+# This may be accomplished by running:
+#     emerge -nO net-vpn/wireguard-tools net-vpn/wireguard-modules
+#     emerge -C virtual/wireguard
+virtual/wireguard
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-30)
+# PyPy packages have been restructured, and the virtual is no longer
+# necessary.  Depend on dev-python/pypy{,3} instead.
+virtual/pypy
+virtual/pypy3
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-29)
+# consumers should depend on virtual/rust,
+# bug https://bugs.gentoo.org/695698
+virtual/cargo
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
 # Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
 # requires agreement to restrictive license
@@ -54,3 +72,4 @@ dev-python/pytest-cov
 dev-go/go-crypto
 dev-go/go-net
 dev-go/go-sys
+dev-go/go-sqlite3

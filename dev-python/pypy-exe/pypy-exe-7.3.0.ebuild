@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 inherit check-reqs pax-utils python-any-r1 toolchain-funcs
 
 MY_P=pypy2.7-v${PV/_/}
@@ -14,8 +14,8 @@ S="${WORKDIR}/${MY_P}-src"
 
 LICENSE="MIT"
 SLOT="${PV}"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 +jit low-memory ncurses sandbox cpu_flags_x86_sse2"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="bzip2 +jit low-memory ncurses cpu_flags_x86_sse2"
 
 RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	virtual/libffi:0=
@@ -26,11 +26,11 @@ RDEPEND=">=sys-libs/zlib-1.1.3:0=
 	!dev-python/pypy-exe-bin:${PV}"
 # don't enforce the dep on pypy with USE=low-memory since it's going
 # to cause either collisions or circular dep on itself
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	!low-memory? (
 		|| (
 			dev-python/pypy
-			dev-python/pypy-bin
 			(
 				dev-lang/python:2.7
 				dev-python/pycparser[python_targets_python2_7(-),python_single_target_python2_7(+)]
@@ -40,9 +40,11 @@ DEPEND="${RDEPEND}
 
 check_env() {
 	if use low-memory; then
-		if ! python_is_installed pypy; then
+		if ! has_version -b dev-python/pypy &&
+				! has_version -b dev-python/pypy-bin
+		then
 			eerror "USE=low-memory requires a (possibly old) version of dev-python/pypy"
-			eerror "or dev-python/pypy-bin being installed. Please install it using e.g.:"
+			eerror "being installed. Please install it using e.g.:"
 			eerror
 			eerror "  $ emerge -1v dev-python/pypy dev-python/pypy-exe-bin"
 			eerror
@@ -68,18 +70,19 @@ pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		check_env
 
-		if python_is_installed pypy; then
-			if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] || use low-memory; then
-				einfo "Using already-installed PyPy to perform the translation."
-				local EPYTHON=pypy
-			else
-				einfo "Using ${EPYTHON} to perform the translation. Please note that upstream"
-				einfo "recommends using PyPy for that. If you wish to do so, please unset"
-				einfo "the EPYTHON variable."
-			fi
+		use low-memory && local EPYTHON=
+		if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] &&
+				{ has_version -b dev-python/pypy ||
+				has_version -b dev-python/pypy-bin; }
+		then
+			einfo "Using already-installed PyPy to perform the translation."
+			EPYTHON=pypy
+		else
+			einfo "Using ${EPYTHON} to perform the translation. Please note that upstream"
+			einfo "recommends using PyPy for that. If you wish to do so, please unset"
+			einfo "the EPYTHON variable."
+			python-any-r1_pkg_setup
 		fi
-
-		python-any-r1_pkg_setup
 	fi
 }
 
@@ -109,7 +112,6 @@ src_configure() {
 	local args=(
 		--no-shared
 		$(usex jit -Ojit -O2)
-		$(usex sandbox --sandbox '')
 
 		${jit_backend}
 
@@ -132,10 +134,10 @@ src_configure() {
 		)
 	done
 
-	local interp=( "${PYTHON}" )
+	local interp=( "${EPYTHON}" )
 	if use low-memory; then
 		interp=( env PYPY_GC_MAX_DELTA=200MB
-			"${PYTHON}" --jit loop_longevity=300 )
+			"${EPYTHON}" --jit loop_longevity=300 )
 	fi
 
 	# translate into the C sources

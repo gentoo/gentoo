@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -8,12 +8,12 @@ inherit autotools flag-o-matic pax-utils python-utils-r1 toolchain-funcs
 
 MY_P="Python-${PV}"
 PYVER=$(ver_cut 1-2)
-PATCHSET_VERSION="3.8.0"
+PATCHSET="python-gentoo-patches-${PV}-r2"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
 SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~mgorny/dist/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
+	https://dev.gentoo.org/~mgorny/dist/python/${PATCHSET}.tar.xz"
 S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
@@ -64,8 +64,7 @@ src_prepare() {
 	rm -fr Modules/zlib || die
 
 	local PATCHES=(
-		"${FILESDIR}/python-3.7.5-hashlib.patch"
-		"${WORKDIR}/patches"
+		"${WORKDIR}/${PATCHSET}"
 	)
 
 	default
@@ -109,6 +108,11 @@ src_configure() {
 	if is-flagq -O3; then
 		is-flagq -fstack-protector-all && replace-flags -O3 -O2
 		use hardened && replace-flags -O3 -O2
+	fi
+
+	# https://bugs.gentoo.org/700012
+	if is-flagq -flto; then
+		append-cflags $(test-flags-CC -ffat-lto-objects)
 	fi
 
 	# Export CXX so it ends up in /usr/lib/python3.X/config/Makefile.

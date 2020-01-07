@@ -1,9 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7,3_8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit flag-o-matic distutils-r1 virtualx
 
@@ -16,17 +15,14 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~sparc ~x86"
 IUSE="doc examples midi X"
 
-DEPEND="
+DEPEND="dev-python/numpy[${PYTHON_USEDEP}]
 	>=media-libs/sdl-image-1.2.2[png,jpeg]
 	>=media-libs/sdl-mixer-1.2.4
 	>=media-libs/sdl-ttf-2.0.6
 	>=media-libs/smpeg-0.4.4-r1
 	midi? ( media-libs/portmidi )
 	X? ( >=media-libs/libsdl-1.2.5[X,video] )
-	!X? ( >=media-libs/libsdl-1.2.5 )
-	$(python_gen_cond_dep 'dev-python/numpy-python2:0[${PYTHON_USEDEP}]' 'python2*')
-	$(python_gen_cond_dep 'dev-python/numpy:0[${PYTHON_USEDEP}]' 'python3*')
-"
+	!X? ( >=media-libs/libsdl-1.2.5 )"
 RDEPEND="${DEPEND}"
 
 # various module import and data path issues

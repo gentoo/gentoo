@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Nestopia GameClient for Kodi"
 HOMEPAGE="https://github.com/kodi-game/game.libretro.nestopia"
@@ -34,5 +34,5 @@ RDEPEND="
 	"
 src_prepare() {
 	echo 'find_library(NESTOPIA_LIB NAMES nestopia_libretro${CMAKE_SHARED_LIBRARY_SUFFIX} PATH_SUFFIXES libretro)' > "${S}/Findlibretro-nestopia.cmake" || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }

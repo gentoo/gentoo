@@ -78,9 +78,9 @@ HOMEPAGE="https://github.com/BurntSushi/ripgrep"
 SRC_URI="https://github.com/BurntSushi/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
-LICENSE="|| ( MIT Unlicense )"
+LICENSE="Apache-2.0 BSD-2 Boost-1.0 || ( MIT Unlicense )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ppc64 ~x86"
 IUSE="+man pcre"
 
 DEPEND=""
@@ -95,11 +95,14 @@ BDEPEND="${RDEPEND}
 QA_FLAGS_IGNORED="usr/bin/rg"
 
 src_compile() {
+	# allow building on musl with dynamic linking support
+	# https://github.com/BurntSushi/rust-pcre2/issues/7
+	use elibc_musl && export PCRE2_SYS_STATIC=0
 	cargo_src_compile $(usex pcre "--features pcre2" "")
 }
 
 src_install() {
-	cargo_src_install --path=. $(usex pcre "--features pcre2" "")
+	cargo_src_install $(usex pcre "--features pcre2" "")
 
 	# hack to find/install generated files
 	# stamp file can be present in multiple dirs if we build additional features

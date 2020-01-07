@@ -103,7 +103,7 @@ src_configure() {
 		-DK3B_ENABLE_TAGLIB=$(usex taglib)
 		-DK3B_BUILD_OGGVORBIS_DECODER_PLUGIN=$(usex vorbis)
 		-DK3B_BUILD_OGGVORBIS_ENCODER_PLUGIN=$(usex vorbis)
-		$(cmake-utils_use_find_package webkit Qt5WebKitWidgets)
+		$(cmake_use_find_package webkit Qt5WebKitWidgets)
 	)
 
 	ecm_src_configure

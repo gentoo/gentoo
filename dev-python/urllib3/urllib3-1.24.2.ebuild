@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -19,8 +19,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-python/PySocks-1.5.6[${PYTHON_USEDEP}]
-	!~dev-python/PySocks-1.5.7[${PYTHON_USEDEP}]
+	>=dev-python/PySocks-1.5.8[${PYTHON_USEDEP}]
 	<dev-python/PySocks-2.0[${PYTHON_USEDEP}]
 	dev-python/certifi[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-1.3.4[${PYTHON_USEDEP}]
@@ -38,7 +37,9 @@ DEPEND="
 	)
 "
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs \
+	dev-python/alabaster \
+	dev-python/mock
 
 python_prepare_all() {
 	# skip appengine tests

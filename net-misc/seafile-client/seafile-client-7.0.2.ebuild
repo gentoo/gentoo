@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Seafile desktop client"
 HOMEPAGE="https://github.com/haiwen/seafile-client/ http://www.seafile.com/"
@@ -33,7 +33,7 @@ BDEPEND="dev-qt/linguist-tools:5"
 
 src_prepare() {
 	eapply "${FILESDIR}/${PN}-select-qt5.patch"
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -41,7 +41,7 @@ src_configure() {
 		-DBUILD_SHIBBOLETH_SUPPORT="$(usex shibboleth)"
 		-DBUILD_TESTING="$(usex test)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

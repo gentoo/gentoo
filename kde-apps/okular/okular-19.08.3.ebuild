@@ -82,19 +82,19 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package chm CHM)
-		$(cmake-utils_use_find_package crypt Qca-qt5)
-		$(cmake-utils_use_find_package djvu DjVuLibre)
-		$(cmake-utils_use_find_package epub EPub)
-		$(cmake-utils_use_find_package image-backend KF5KExiv2)
-		$(cmake-utils_use_find_package markdown Discount)
-		$(cmake-utils_use_find_package mobi QMobipocket)
-		$(cmake-utils_use_find_package pdf Poppler)
-		$(cmake-utils_use_find_package plucker JPEG)
-		$(cmake-utils_use_find_package postscript LibSpectre)
-		$(cmake-utils_use_find_package share KF5Purpose)
-		$(cmake-utils_use_find_package speech Qt5TextToSpeech)
-		$(cmake-utils_use_find_package tiff TIFF)
+		$(cmake_use_find_package chm CHM)
+		$(cmake_use_find_package crypt Qca-qt5)
+		$(cmake_use_find_package djvu DjVuLibre)
+		$(cmake_use_find_package epub EPub)
+		$(cmake_use_find_package image-backend KF5KExiv2)
+		$(cmake_use_find_package markdown Discount)
+		$(cmake_use_find_package mobi QMobipocket)
+		$(cmake_use_find_package pdf Poppler)
+		$(cmake_use_find_package plucker JPEG)
+		$(cmake_use_find_package postscript LibSpectre)
+		$(cmake_use_find_package share KF5Purpose)
+		$(cmake_use_find_package speech Qt5TextToSpeech)
+		$(cmake_use_find_package tiff TIFF)
 	)
 
 	ecm_src_configure

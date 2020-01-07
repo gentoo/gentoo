@@ -163,7 +163,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD-2 Boost-1.0 MIT MPL-2.0 Unlicense ZLIB"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 IUSE=""
 
 BDEPEND="
@@ -183,6 +183,6 @@ DEPEND="${RDEPEND}
 "
 
 src_install(){
-	cargo_src_install --path=.
+	cargo_src_install
 	einstalldocs
 }

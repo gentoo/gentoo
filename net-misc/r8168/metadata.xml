@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>chewi@gentoo.org</email>
-		<name>James Le Cuirot</name>
-	</maintainer>
+	<!--maintainer-needed-->
 	<longdescription>Official Realtek r8168 linux driver. The following cards are currently supported:
 RTL8111B RTL8168B RTL8111 RTL8168 RTL8111C RTL8111CP RTL8111D(L) RTL8168C
 RTL8111DP RTL8111E RTL8168E RTL8111F RTL8411</longdescription>

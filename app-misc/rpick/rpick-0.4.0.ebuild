@@ -90,7 +90,7 @@ DOCS=( CHANGELOG.md README.md )
 QA_FLAGS_IGNORED="usr/bin/rpick"
 
 src_install() {
-	cargo_src_install --path=.
+	cargo_src_install
 
 	einstalldocs
 }

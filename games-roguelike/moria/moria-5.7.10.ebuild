@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_IN_SOURCE_BUILD="yes"
-inherit cmake-utils prefix
+inherit cmake prefix
 
 DESCRIPTION="The Dungeons of Moria, a single player roguelike game, also known as Umoria"
 HOMEPAGE="https://umoria.org/"
@@ -28,7 +28,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	sed -i "s/@PF@/${PF}/" src/config.cpp || die
 	hprefixify src/config.cpp
 }

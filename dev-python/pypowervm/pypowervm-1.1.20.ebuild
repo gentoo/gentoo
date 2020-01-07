@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
 
+PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Python binding for the PowerVM REST API"
@@ -18,7 +18,7 @@ IUSE=""
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-		${CDEPEND}"
+	${CDEPEND}"
 RDEPEND="${DEPEND}
 	>=dev-python/lxml-3.4.1[${PYTHON_USEDEP}]
 	!~dev-python/lxml-3.7.0[${PYTHON_USEDEP}]

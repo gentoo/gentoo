@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python2_7 )
 inherit cmake-multilib python-single-r1
 
@@ -49,7 +50,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# The apitrace code grubs around in the internal zlib structures.
 	# We have to extract this header and clean it up to keep that working.
@@ -79,7 +80,7 @@ src_configure() {
 				-DENABLE_GUI=OFF
 			)
 		fi
-		cmake-utils_src_configure
+		cmake_src_configure
 	}
 
 	multilib_parallel_foreach_abi my_configure

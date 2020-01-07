@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit meson python-any-r1
 
@@ -35,7 +35,7 @@ src_compile() {
 	meson_src_compile
 
 	if use doc; then
-		cp "${BUILD_DIR}"/version . || die
+		echo "${PV}" > version || die
 		"${EPYTHON}" doxybuild.py --doxygen="${EPREFIX}"/usr/bin/doxygen || die
 		HTML_DOCS=( dist/doxygen/jsoncpp*/. )
 	fi

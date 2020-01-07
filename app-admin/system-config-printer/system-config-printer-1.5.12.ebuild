@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="xml"
 inherit gnome2 python-single-r1 systemd
 
@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/OpenPrinting/system-config-printer"
 SRC_URI="https://github.com/OpenPrinting/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~sh ~sparc x86"
 SLOT="0"
 IUSE="doc gnome-keyring policykit"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -36,6 +36,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	>=app-text/xmlto-0.0.22
+	dev-perl/XML-Parser
 	dev-util/desktop-file-utils
 	dev-util/intltool
 	sys-devel/gettext

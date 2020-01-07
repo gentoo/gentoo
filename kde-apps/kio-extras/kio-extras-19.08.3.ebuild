@@ -69,14 +69,14 @@ PATCHES=( "${FILESDIR}/${P}-libssh-0.9.2.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package activities KF5Activities)
-		$(cmake-utils_use_find_package man Gperf)
-		$(cmake-utils_use_find_package mtp Mtp)
-		$(cmake-utils_use_find_package openexr OpenEXR)
-		$(cmake-utils_use_find_package phonon Phonon4Qt5)
-		$(cmake-utils_use_find_package samba Samba)
-		$(cmake-utils_use_find_package sftp libssh)
-		$(cmake-utils_use_find_package taglib Taglib)
+		$(cmake_use_find_package activities KF5Activities)
+		$(cmake_use_find_package man Gperf)
+		$(cmake_use_find_package mtp Mtp)
+		$(cmake_use_find_package openexr OpenEXR)
+		$(cmake_use_find_package phonon Phonon4Qt5)
+		$(cmake_use_find_package samba Samba)
+		$(cmake_use_find_package sftp libssh)
+		$(cmake_use_find_package taglib Taglib)
 	)
 
 	ecm_src_configure

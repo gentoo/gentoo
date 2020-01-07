@@ -5,6 +5,9 @@
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
+  <use>
+    <flag name="lto">Build with link time optimization enabled</flag>
+  </use>
   <upstream>
     <remote-id type="github">diasurgical/devilutionX</remote-id>
   </upstream>

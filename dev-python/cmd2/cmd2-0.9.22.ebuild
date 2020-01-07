@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1 virtualx
 
@@ -28,7 +28,6 @@ DEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python3_5)
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)
 "

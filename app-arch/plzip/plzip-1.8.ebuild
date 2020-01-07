@@ -6,12 +6,12 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Parallel lzip compressor"
-HOMEPAGE="http://www.nongnu.org/lzip/plzip.html"
-SRC_URI="http://download.savannah.gnu.org/releases/lzip/${PN}/${P}.tar.gz"
+HOMEPAGE="https://www.nongnu.org/lzip/plzip.html"
+SRC_URI="https://download.savannah.gnu.org/releases/lzip/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE=""
 
 RDEPEND="app-arch/lzlib:0="

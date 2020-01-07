@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
+# Ben Kohler <bkohler@gentoo.org> (2019-12-30)
+# Masked until we get a stable net-wireless/iwd version
+iwd
+
 # Matt Turner <mattst88@gentoo.org> (2019-12-05)
 # Mask for testing. Bug 606924
 libglvnd
@@ -17,12 +21,11 @@ php_targets_php7-4
 postgres_targets_postgres12
 
 # Zac Medico <zmedico@gentoo.org> (2016-09-01)
-# Needs virtual/pypy* stable
-python_targets_pypy
-python_single_target_pypy
+# Needs dev-python/pypy* stable
 python_targets_pypy3
 python_single_target_pypy3
 
-# Hans de Graaff <graaff@gentoo.org> (2018-12-25)
+# Hans de Graaff <graaff@gentoo.org> (2019-12-26)
 # Currently in testing and not ready to go stable yet.
 ruby_targets_ruby26
+ruby_targets_ruby27

@@ -14,6 +14,7 @@ SRC_URI="https://gitlab.com/automx/automx2/-/archive/${PV}/${P}.tar.bz2"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="doc"
 
 BDEPEND="acct-user/automx2
 	$(python_gen_cond_dep \
@@ -32,6 +33,10 @@ python_test() {
 }
 
 python_install_all() {
+	if use doc; then
+		DOCS="*.adoc doc/*.adoc contrib/*sample.conf"
+		HTML_DOCS="doc/*.html doc/*.svg"
+	fi
 	sed -e "s/@EPYTHON@/${EPYTHON}/" "${FILESDIR}/init" | newinitd - "${PN}"
 	newconfd "${FILESDIR}/confd" "${PN}"
 	insinto /etc

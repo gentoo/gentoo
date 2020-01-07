@@ -78,7 +78,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="+git"
 
 DEPEND="
@@ -99,7 +99,7 @@ src_compile() {
 }
 
 src_install() {
-	cargo_src_install --path=./ $(usex git "" --no-default-features)
+	cargo_src_install $(usex git "" --no-default-features)
 
 	newbashcomp contrib/completions.bash exa
 

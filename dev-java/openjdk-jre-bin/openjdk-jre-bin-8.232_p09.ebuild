@@ -82,18 +82,3 @@ src_install() {
 	java-vm_revdep-mask
 	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
 }
-
-pkg_postinst() {
-	java-vm-2_pkg_postinst
-
-	if use gentoo-vm ; then
-		ewarn "WARNING! You have enabled the gentoo-vm USE flag, making this JRE"
-		ewarn "recognised by the system. This will almost certainly break things."
-	else
-		ewarn "The experimental gentoo-vm USE flag has not been enabled so this JRE"
-		ewarn "will not be recognised by the system. For example, simply calling"
-		ewarn "\"java\" will launch a different JVM. This is necessary until Gentoo"
-		ewarn "fully supports OpenJDK 8. This JRE must therefore be invoked using its"
-		ewarn "absolute location under ${EPREFIX}/opt/${P}."
-	fi
-}

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 inherit pax-utils python-any-r1
 
 MY_P=pypy3.6-v${PV/_/}
@@ -16,8 +16,8 @@ S="${WORKDIR}/${MY_P}-src"
 LICENSE="MIT"
 # pypy3 -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))'
 SLOT="0/pypy36-pp73"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="bzip2 gdbm +jit libressl ncurses sandbox sqlite test tk"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="bzip2 gdbm +jit libressl ncurses sqlite test tk"
 RESTRICT="!test? ( test )"
 
 RDEPEND="

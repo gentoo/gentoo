@@ -16,10 +16,10 @@ IUSE="debug"
 RDEPEND="
 	dev-libs/crypto++:=
 	dev-libs/quazip
-	dev-qt/qtcore:5=
-	dev-qt/qtgui:5=
-	dev-qt/qtnetwork:5=
-	dev-qt/qtwidgets:5=
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtwidgets:5
 	media-libs/speex
 	media-libs/speexdsp
 	virtual/libusb:1

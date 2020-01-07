@@ -1,5 +1,0 @@
-move net-misc/mirall net-misc/owncloud-client
-slotmove sys-block/kvpm 0 4
-move media-sound/audio-entropyd sys-apps/audio-entropyd
-move dev-libs/libusbx dev-libs/libusb
-slotmove =mate-base/mate-control-center-1.6.2 2 0

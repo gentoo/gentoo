@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Low bit rate speech codec"
@@ -18,7 +19,7 @@ PATCHES=( "${FILESDIR}/${P}-unused-deps.patch" )
 
 multilib_src_configure() {
 	local mycmakeargs=( -DUNITTEST=OFF )
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {

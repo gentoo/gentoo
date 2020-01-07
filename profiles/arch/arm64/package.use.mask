@@ -1,6 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Rick Farina <zerochaos@gentoo.com> (2020-01-03)
+# ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
+net-wireless/kismet ubertooth
+
+# Aaron Bauman <bman@gentoo.org> (2019-12-27)
+# ffmpeg does support 64 bit neon
+media-video/ffmpeg -cpu_flags_arm_neon
+
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
 # dev-libs/criterion is not keyworded yet
 app-admin/syslog-ng test
@@ -74,7 +82,6 @@ kde-plasma/discover firmware
 app-emulation/qemu -sdl
 dev-libs/zziplib -sdl
 media-libs/libmpeg2 -sdl
-media-libs/mediastreamer -sdl
 media-libs/mlt -sdl
 media-libs/openal -sdl
 media-sound/mpg123 -sdl
@@ -259,17 +266,9 @@ media-sound/mumble g15
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
 media-libs/mesa vulkan vulkan-overlay
 
-# Alexis Ballier <aballier@gentoo.org> (2017-07-31)
-# Passes -mfpu=neon with neon enabled
-mail-client/thunderbird neon
-
 # Alexis Ballier <aballier@gentoo.org> (2017-07-20)
 # media-libs/libemf fails with #error unknown CPU.
 media-gfx/pstoedit emf
-
-# Alexis Ballier <aballier@gentoo.org> (2017-07-14)
-# Appends -mfpu=neon and asm seems arm32
-net-misc/freerdp cpu_flags_arm_neon
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-14)
 # zfs does not build on arm64 (yet?)
@@ -315,27 +314,9 @@ app-crypt/libsecret test
 app-shells/bash-completion test
 
 # Alexis Ballier <aballier@gentoo.org> (2017-06-21)
-# Appends -mfpu=neon that doesnt work on arm64
-media-libs/speexdsp cpu_flags_arm_neon
-
-# Alexis Ballier <aballier@gentoo.org> (2017-06-21)
 # net-fs/openafs-kernel does not recognize arm64 properly
 # Need to check if this has a chance to work with in-kernel drivers
 app-crypt/heimdal afs
-
-# Alexis Ballier <aballier@gentoo.org> (2017-06-20)
-# Jory A. Pratt <anarchy@gentoo.org> (2019-11-29)
-# Appends -mfpu=neon which is only valid for arm32 and suggests this is arm32
-# only
-media-sound/pulseaudio neon cpu_flags_arm_neon
-
-# Alexis Ballier <aballier@gentoo.org> (2017-06-19)
-# This is for arm32 only neon asm
-media-libs/vo-aacenc cpu_flags_arm_neon
-
-# Alexis Ballier <aballier@gentoo.org> (2017-06-16)
-# pixman's neon code is armv7 only.
-x11-libs/pixman cpu_flags_arm_neon neon
 
 # James Le Cuirot <chewi@gentoo.org> (2017-05-22)
 # Only available on some architectures.

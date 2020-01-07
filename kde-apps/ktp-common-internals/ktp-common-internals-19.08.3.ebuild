@@ -60,10 +60,10 @@ PATCHES=( "${FILESDIR}/${P}-telepathy-0.9.8.patch" )
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package sso KAccounts)
-		$(cmake-utils_use_find_package sso AccountsQt5)
-		$(cmake-utils_use_find_package otr Libgcrypt)
-		$(cmake-utils_use_find_package otr LibOTR)
+		$(cmake_use_find_package sso KAccounts)
+		$(cmake_use_find_package sso AccountsQt5)
+		$(cmake_use_find_package otr Libgcrypt)
+		$(cmake_use_find_package otr LibOTR)
 	)
 
 	ecm_src_configure

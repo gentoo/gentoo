@@ -1,0 +1,31 @@
+From 8193f85dc3caeae23e5931c10f52ac9c5324d9d9 Mon Sep 17 00:00:00 2001
+From: Stef Walter <stefw@redhat.com>
+Date: Fri, 8 Jun 2018 12:40:09 +0200
+Subject: [PATCH] Remove libgnome-keyring dependency
+
+It's not needed by seahorse-nautilus
+---
+ configure.ac | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 471b34d..8d1f39f 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -146,13 +146,6 @@ else
+ fi
+ AC_SUBST(NAUTILUS_EXTENSION_DIR)
+ 
+-# -----------------------------------------------------------------------------
+-# Keyring
+-
+-PKG_CHECK_MODULES([GNOME_KEYRING], [gnome-keyring-1])
+-SEAHORSE_CFLAGS="$SEAHORSE_CFLAGS $GNOME_KEYRING_CFLAGS"
+-SEAHORSE_LIBS="$SEAHORSE_LIBS $GNOME_KEYRING_LIBS"
+-
+ # -----------------------------------------------------------------------------
+ # DBus
+ 
+-- 
+2.14.4
+

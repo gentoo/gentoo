@@ -4,10 +4,6 @@
 # Unmask the flag which corresponds to ARCH.
 -sparc
 
-# Matt Turner <mattst88@gentoo.org> (2019-12-05)
-# media-libs/libglvnd is not keyworded
-libglvnd
-
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependency not keyworded (dev-libs/libappindicator).
 ayatana

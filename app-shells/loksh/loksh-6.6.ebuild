@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dimkr/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 
 DEPEND="sys-libs/ncurses:0="
 BDEPEND="virtual/pkgconfig"

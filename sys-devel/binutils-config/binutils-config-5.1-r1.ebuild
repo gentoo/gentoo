@@ -6,7 +6,7 @@ EAPI=6
 inherit prefix
 
 DESCRIPTION="Utility to change the binutils version being used"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Toolchain"
 SRC_URI=""
 
 LICENSE="GPL-2"

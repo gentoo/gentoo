@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="C library for automatically solving Freecell and some other solitaire variants"
 HOMEPAGE="https://fc-solve.shlomifish.org/"
@@ -37,7 +37,7 @@ src_prepare() {
 
 	python_fix_shebang board_gen
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -48,5 +48,5 @@ src_configure() {
 		-DFCS_AVOID_TCMALLOC=$(usex !tcmalloc)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

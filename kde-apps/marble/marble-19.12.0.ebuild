@@ -91,6 +91,6 @@ src_configure() {
 	if use kde; then
 		ecm_src_configure
 	else
-		cmake-utils_src_configure
+		cmake_src_configure
 	fi
 }

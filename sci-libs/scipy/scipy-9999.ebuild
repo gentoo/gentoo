@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 DOC_PV=${PV}
@@ -93,7 +93,7 @@ python_prepare_all() {
 python_compile() {
 	${EPYTHON} tools/cythonize.py || die
 	distutils-r1_python_compile \
-		$(usex python_targets_python3_5 "" "-j $(makeopts_jobs)") \
+		"-j $(makeopts_jobs)" \
 		${SCIPY_FCONFIG}
 }
 

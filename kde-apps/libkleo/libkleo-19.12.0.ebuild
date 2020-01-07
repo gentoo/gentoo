@@ -42,5 +42,5 @@ src_configure() {
 		$(cmake_use_find_package fancyviewer KF5PimTextEdit)
 	)
 
-	cmake-utils_src_configure
+	ecm_src_configure
 }

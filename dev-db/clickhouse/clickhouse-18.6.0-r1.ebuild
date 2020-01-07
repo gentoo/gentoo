@@ -71,7 +71,6 @@ DEPEND="${RDEPEND}
 			sys-libs/ncurses:0=[static-libs]
 			sys-libs/readline:0=[static-libs]
 		)
-		dev-libs/double-conversion[static-libs]
 		dev-libs/capnproto[static-libs]
 		dev-libs/libltdl[static-libs]
 		sys-libs/libunwind:7[static-libs]

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit readme.gentoo-r1 cmake-utils udev user xdg
+inherit readme.gentoo-r1 cmake flag-o-matic udev user xdg
 
 DESCRIPTION="Utility for advanced configuration of Roccat devices"
 
@@ -62,6 +62,9 @@ RDEPEND="
 DEPEND="
 	${RDEPEND}
 "
+BDEPEND="
+	virtual/pkgconfig
+"
 
 DOCS=( Changelog KNOWN_LIMITATIONS README )
 
@@ -74,12 +77,17 @@ pkg_setup() {
 	done
 }
 
-# Required because xdg.eclass overrides src_prepare() from cmake-utils.eclass
+# Required because xdg.eclass overrides src_prepare() from cmake.eclass
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
+	if has_version \>=x11-libs/pango-1.44.0 ; then
+		# Fix build with pango-1.44
+		append-cflags "$(pkg-config --cflags harfbuzz)"
+	fi
+
 	mycmakeargs=(
 		-DDEVICES="${USED_MODELS/;/}"
 		-DUDEVDIR="${EPREFIX}$(get_udevdir)/rules.d"
@@ -98,11 +106,11 @@ src_configure() {
 		fi
 	done
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	local stat_dir=/var/lib/roccat
 	keepdir ${stat_dir}
 	fowners root:roccat ${stat_dir}

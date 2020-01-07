@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Run Time Type Reflection - library adding reflection to C++"
 HOMEPAGE="https://www.rttr.org/"
@@ -28,7 +28,7 @@ src_configure() {
 		-DBUILD_DOCUMENTATION=off #broken
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {

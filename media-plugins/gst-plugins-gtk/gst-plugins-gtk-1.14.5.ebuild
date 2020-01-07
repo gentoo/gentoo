@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ GST_ORG_MODULE=gst-plugins-good
 inherit gstreamer
 
 DESCRIPTION="Video sink plugin for GStreamer that renders to a GtkWidget"
-KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+egl gles2 +opengl wayland +X" # Keep default IUSE mirrored with gst-plugins-base
 # egl, wayland and X only matters if gst-plugins-bad is build with USE=opengl and/or USE=gles2
 # We mirror egl/gles2/opengl/wayland/X due to automagic detection from gstreamer-gl.pc variables;

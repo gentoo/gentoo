@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License, v2 or later
+
+extra_started_commands="reload"
+pidfile="/run/${RC_SVCNAME}.pid"
+command="/usr/sbin/syslogd"
+command_background="true"
+command_args="-F ${SYSLOGD}"
+
+depend() {
+	need clock hostname
+	provide logger
+}
+
+reload() {
+	ebegin "Reloading configuration"
+	start-stop-daemon --signal HUP --pidfile ${pidfile}
+	eend $?
+}

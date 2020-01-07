@@ -39,7 +39,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package readline Readline)
+		$(cmake_use_find_package readline Readline)
 	)
 
 	ecm_src_configure

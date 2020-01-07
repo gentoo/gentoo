@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 GNOME2_EAUTORECONF="yes"
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit gnome2 pax-utils python-single-r1
 
@@ -41,6 +41,13 @@ S="${WORKDIR}"/${MY_P}
 
 src_configure() {
 	gnome2_src_configure --disable-schemas-compile
+}
+
+src_compile() {
+	# Workaround crash in libwebkit2gtk-4.0.so
+	# https://bugs.gentoo.org/704594
+	WEBKIT_DISABLE_COMPOSITING_MODE=1 \
+                gnome2_src_compile
 }
 
 src_install() {

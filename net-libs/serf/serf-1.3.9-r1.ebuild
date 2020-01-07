@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
 
 inherit python-any-r1 scons-utils toolchain-funcs flag-o-matic
 

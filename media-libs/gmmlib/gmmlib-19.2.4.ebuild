@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 if [[ ${PV} == *9999 ]] ; then
@@ -37,5 +38,5 @@ multilib_src_configure() {
 #		-DMEDIA_RUN_TEST_SUITE=OFF
 #	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

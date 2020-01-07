@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -ia64
 
+# # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-28)
+# ruby-2.7 dropped ia64 support.
+ruby_targets_ruby27
+
 # Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
 # Dependency not keyworded (dev-libs/libindicate).
 ayatana

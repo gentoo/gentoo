@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CHECKREQS_DISK_BUILD=3500M
-inherit git-r3 cmake-utils xdg check-reqs
+inherit git-r3 cmake xdg check-reqs
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="https://musescore.org/"
@@ -54,6 +54,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.1-man-pages.patch"
+	"${FILESDIR}/5583.patch"
 )
 
 src_unpack() {
@@ -62,7 +63,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Move soundfonts to the correct directory
 	mv "${WORKDIR}"/sound/* "${S}"/share/sound/ || die "Failed to move soundfont files"
@@ -84,11 +85,11 @@ src_configure() {
 		-DSOUNDFONT3="$(usex vorbis)"
 		-DBUILD_WEBENGINE="$(usex webengine)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	cd "${BUILD_DIR}" || die
-	cmake-utils_src_make -j1 lrelease manpages
-	cmake-utils_src_compile
+	cmake_build -j1 lrelease manpages
+	cmake_src_compile
 }
