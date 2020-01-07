@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install postinst postrm preinst prepare setup
+DEPEND=virtual/udev virtual/pkgconfig kernel_linux? ( virtual/modutils ) sys-apps/sed kernel_linux? ( virtual/linux-sources virtual/libelf )
+DESCRIPTION=Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
+EAPI=7
+HOMEPAGE=https://cdemu.sourceforge.io
+IUSE=kernel_linux kernel_linux
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=virtual/udev kernel_linux? ( virtual/modutils )
+SLOT=0
+SRC_URI=https://download.sourceforge.net/cdemu/vhba-module/vhba-module-20200106.tar.bz2
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	6c7b3e7b9d39bd049bf23a991c16315e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=a4b35ddaaaf2f8ef31905d96cb7c44bc

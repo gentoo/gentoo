@@ -1,0 +1,14 @@
+BDEPEND=dev-util/desktop-file-utils dev-util/intltool sys-devel/gettext virtual/pkgconfig doc? ( dev-util/gtk-doc ) introspection? ( >=dev-libs/gobject-introspection-1.30 ) dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=>=app-arch/bzip2-1:= >=app-arch/xz-utils-5:= >=dev-libs/glib-2.38:2 >=media-libs/libsamplerate-0.1:= >=media-libs/libsndfile-1.0:= sys-libs/zlib:= introspection? ( >=dev-libs/gobject-introspection-1.30 )
+DESCRIPTION=CD and DVD image access library
+EAPI=7
+HOMEPAGE=https://cdemu.sourceforge.io
+IUSE=doc +introspection
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=>=app-arch/bzip2-1:= >=app-arch/xz-utils-5:= >=dev-libs/glib-2.38:2 >=media-libs/libsamplerate-0.1:= >=media-libs/libsndfile-1.0:= sys-libs/zlib:= introspection? ( >=dev-libs/gobject-introspection-1.30 )
+SLOT=0/11
+SRC_URI=https://download.sourceforge.net/cdemu/libmirage/libmirage-3.2.4.tar.bz2
+_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=a0e99e3c9cbbcb0e65f7128453c60ca7

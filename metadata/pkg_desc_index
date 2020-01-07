@@ -658,8 +658,8 @@ app-cdr/ccd2iso 0.3: Convert CD images from ccd (CloneCD) to iso
 app-cdr/cdck 0.7.0-r2: Measure the read time per sector on CD or DVD to check the quality
 app-cdr/cdcover 0.7.4-r1: cdcover allows the creation of inlay-sheets for jewel cd-cases
 app-cdr/cddetect 2.1: Tool for detecting the type of a CD/DVD without mounting it
-app-cdr/cdemu 3.2.3: Command-line tool for controlling cdemu-daemon
-app-cdr/cdemu-daemon 3.2.3: Daemon of the CDEmu optical media image mounting suite
+app-cdr/cdemu 3.2.3 3.2.4: Command-line tool for controlling cdemu-daemon
+app-cdr/cdemu-daemon 3.2.3 3.2.4: Daemon of the CDEmu optical media image mounting suite
 app-cdr/cdlabelgen 4.3.0: CD cover, tray card and envelope generator
 app-cdr/cdrdao 1.2.4: Burn CDs in disk-at-once mode -- with optional GUI frontend
 app-cdr/cdrtools 3.02_alpha09 3.02_alpha09-r2: A set of tools for CD/DVD reading and recording, including cdrecord
@@ -676,7 +676,7 @@ app-cdr/dvdisaster 0.79.5: Tool for creating error correction data (ecc) for opt
 app-cdr/dvdshrink 2.6.1_p10: Scriptable DVD copy software
 app-cdr/extract-xiso 2.7.1: Tool for extracting and creating optimised Xbox ISO images
 app-cdr/gaffitter 0.6.0-r1: Genetic Algorithm File Fitter
-app-cdr/gcdemu 3.2.3: Gtk+ GUI for controlling cdemu-daemon
+app-cdr/gcdemu 3.2.3 3.2.4: Gtk+ GUI for controlling cdemu-daemon
 app-cdr/geteltorito 0.6: El Torito boot image extractor
 app-cdr/graveman 0.3.12_p5-r2: Graphical frontend for cdrecord, mkisofs, readcd and sox using GTK+2
 app-cdr/gtkcdlabel 1.15: A GUI for cdlabelgen that generates CD labels
@@ -4991,7 +4991,7 @@ dev-libs/libmba 0.9.1-r3: A library of generic C modules
 dev-libs/libmcrypt 2.5.8-r4: libmcrypt provides uniform interface to access several encryption algorithms
 dev-libs/libmelf 0.4.0-r1: libmelf is a library interface for manipulating ELF object files
 dev-libs/libmemcached 1.0.18-r3: a C client library to the memcached server
-dev-libs/libmirage 3.2.3: CD and DVD image access library
+dev-libs/libmirage 3.2.3 3.2.4: CD and DVD image access library
 dev-libs/libmissing 1.1.0: Library with missing functions based on GNUlib
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
 dev-libs/libmodbus 3.1.4: Modbus library which supports RTU communication over a serial line or a TCP link
@@ -9691,7 +9691,7 @@ dev-ruby/ddmetrics 1.0.1: Non-timeseries measurements for Ruby programs
 dev-ruby/ddplugin 1.0.2: Provides plugin management for Ruby projects
 dev-ruby/debug_inspector 0.0.3: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/deep_merge 1.2.1: A simple set of utility functions for Hash
-dev-ruby/delayer 0.0.2 1.0.0: Delay the processing
+dev-ruby/delayer 0.0.2 1.0.0 1.1.1: Delay the processing
 dev-ruby/delayer-deferred 2.0.0 2.1.0 2.1.1: Ruby implementation of JSDeferred
 dev-ruby/dependor 1.0.1: Reduces duplication when doing manual dependency injection
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
@@ -9862,7 +9862,7 @@ dev-ruby/method_source 0.9.0 0.9.2: Retrieve the source code for a method
 dev-ruby/mime-types 1.25.1 2.99.2 3.2.2 3.3 3.3.1: Provides a mailcap-like MIME Content-Type lookup for Ruby
 dev-ruby/mime-types-data 3.2019.0331 3.2019.0904 3.2019.1009: Registry for information about MIME media type definitions
 dev-ruby/mimemagic 0.3.3: Fast mime detection by extension or content
-dev-ruby/mini_magick 4.9.3 4.9.4 4.9.5: Manipulate images with minimal use of memory
+dev-ruby/mini_magick 4.9.5 4.10.1: Manipulate images with minimal use of memory
 dev-ruby/mini_mime 1.0.1 1.0.2: A lightweight mime type lookup toy
 dev-ruby/minispec-metadata 3.3.1: Define and access metadata in MiniTest::Spec descriptions and specs
 dev-ruby/minitar 0.8 0.9: Provides POSIX tarchive management from Ruby programs
@@ -9873,7 +9873,7 @@ dev-ruby/minitest-global_expectations 1.0.1: Support minitest expectation method
 dev-ruby/minitest-hooks 1.5.0: Adds around and before_all/after_all/around_all hooks for Minitest
 dev-ruby/minitest-power_assert 0.3.0: Power Assert for Minitest
 dev-ruby/minitest-pretty_diff 0.1: Pretty-print hashes and arrays before diffing them in MiniTest
-dev-ruby/mixlib-shellout 2.4.4 3.0.4: Run external commands on Unix or Windows
+dev-ruby/mixlib-shellout 2.4.4 3.0.4 3.0.9: Run external commands on Unix or Windows
 dev-ruby/mocha 0.14.0 1.8.0 1.9.0 1.10.2 1.11.1 1.11.2: Mocking and stubbing using a syntax like that of JMock and SchMock
 dev-ruby/moneta 1.1.0 1.1.1: A unified interface to key/value stores
 dev-ruby/mqtt 0.5.0: Pure Ruby gem that implements the MQTT protocol
@@ -17611,7 +17611,7 @@ sys-fs/udiskie 1.7.7 2.0.2-r1: An automatic disk mounting service using udisks
 sys-fs/udisks 1.0.5-r3 2.8.2 2.8.3 2.8.4: Daemon providing interfaces to work with storage devices
 sys-fs/ufsutils 8.2_p3: FFS/UFS/UFS2 filesystem utilities from FreeBSD
 sys-fs/unionfs-fuse 1.0 2.0 9999: Self-syncing tree-merging file system based on FUSE
-sys-fs/vhba 20190831: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
+sys-fs/vhba 20190831 20200106: Virtual (SCSI) Host Bus Adapter kernel module for the CDEmu suite
 sys-fs/vzquota 3.1: OpenVZ VPS disk quota utility
 sys-fs/xfsdump 3.1.6 3.1.8: xfs dump/restore utilities
 sys-fs/xfsprogs 4.19.0 5.3.0 5.4.0: xfs filesystem utilities
