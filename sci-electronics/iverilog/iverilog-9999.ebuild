@@ -54,10 +54,6 @@ src_prepare() {
 	gperf -o -i 7 --ignore-case -C -k 1-4,6,9,\$ -H keyword_hash -N check_identifier -t ./lexor_keyword.gperf > lexor_keyword.cc || die
 }
 
-src_compile() {
-	default
-}
-
 src_install() {
 	local DOCS=( *.txt )
 	# Default build fails with parallel jobs,
