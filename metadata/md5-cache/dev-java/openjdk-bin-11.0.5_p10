@@ -3,7 +3,7 @@ DEPEND=>=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
 DESCRIPTION=Prebuilt Java JDK binaries provided by AdoptOpenJDK
 EAPI=6
 HOMEPAGE=https://adoptopenjdk.net
-IUSE=alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source +webstart
+IUSE=alsa cups doc examples +gentoo-vm headless-awt nsplugin selinux source webstart
 KEYWORDS=~amd64 ~arm ~ppc64
 LICENSE=GPL-2-with-classpath-exception
 PDEPEND=webstart? ( >=dev-java/icedtea-web-1.6.1:0 ) nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )
@@ -12,4 +12,4 @@ RESTRICT=preserve-libs splitdebug
 SLOT=11
 SRC_URI=arm? ( https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.5+10/OpenJDK11U-jdk_arm_linux_hotspot_11.0.5_10.tar.gz ) ppc64? ( https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.5+10/OpenJDK11U-jdk_ppc64le_linux_hotspot_11.0.5_10.tar.gz ) amd64? ( https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.5+10/OpenJDK11U-jdk_x64_linux_hotspot_11.0.5_10.tar.gz )
 _eclasses_=java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=42e477f11a60fbb07c326054c4ba7125
+_md5_=a4051fab62e832d3399462774b5db77a

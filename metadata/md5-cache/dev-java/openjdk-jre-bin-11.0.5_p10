@@ -3,7 +3,7 @@ DEPEND=>=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
 DESCRIPTION=Prebuilt Java JRE binaries provided by AdoptOpenJDK
 EAPI=6
 HOMEPAGE=https://adoptopenjdk.net
-IUSE=alsa cups +gentoo-vm headless-awt nsplugin selinux +webstart
+IUSE=alsa cups +gentoo-vm headless-awt nsplugin selinux webstart
 KEYWORDS=~amd64
 LICENSE=GPL-2-with-classpath-exception
 PDEPEND=webstart? ( >=dev-java/icedtea-web-1.6.1:0 ) nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )
@@ -12,4 +12,4 @@ RESTRICT=preserve-libs splitdebug
 SLOT=11
 SRC_URI=amd64? ( https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.5+10/OpenJDK11U-jre_x64_linux_hotspot_11.0.5_10.tar.gz )
 _eclasses_=java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=cbf8ec24f9733d0965bf1bb304c551f1
+_md5_=6f3dc7aed70631989d4ffb3266691240

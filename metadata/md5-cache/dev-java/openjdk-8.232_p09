@@ -3,7 +3,7 @@ DEPEND=media-libs/freetype:2= media-libs/giflib:0/7 sys-libs/zlib app-arch/zip m
 DESCRIPTION=Open source implementation of the Java programming language
 EAPI=6
 HOMEPAGE=https://openjdk.java.net
-IUSE=alsa debug cups doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source +webstart elibc_FreeBSD
+IUSE=alsa debug cups doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source webstart elibc_FreeBSD
 KEYWORDS=~amd64 ~ppc64 ~x86
 LICENSE=GPL-2
 PDEPEND=webstart? ( >=dev-java/icedtea-web-1.6.1:0 ) nsplugin? ( >=dev-java/icedtea-web-1.6.1:0[nsplugin] )
@@ -11,4 +11,4 @@ RDEPEND=media-libs/freetype:2= media-libs/giflib:0/7 sys-libs/zlib >=sys-apps/ba
 SLOT=8
 SRC_URI=https://hg.openjdk.java.net/jdk8u/jdk8u/archive/jdk8u232-b09.tar.bz2 -> openjdk-8.232_p09.tar.bz2 https://hg.openjdk.java.net/jdk8u/jdk8u/corba/archive/jdk8u232-b09.tar.bz2 -> openjdk-corba-8.232_p09.tar.bz2 https://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/archive/jdk8u232-b09.tar.bz2 -> openjdk-hotspot-8.232_p09.tar.bz2 https://hg.openjdk.java.net/jdk8u/jdk8u/jaxp/archive/jdk8u232-b09.tar.bz2 -> openjdk-jaxp-8.232_p09.tar.bz2 https://hg.openjdk.java.net/jdk8u/jdk8u/jaxws/archive/jdk8u232-b09.tar.bz2 -> openjdk-jaxws-8.232_p09.tar.bz2 https://hg.openjdk.java.net/jdk8u/jdk8u/jdk/archive/jdk8u232-b09.tar.bz2 -> openjdk-jdk-8.232_p09.tar.bz2 https://hg.openjdk.java.net/jdk8u/jdk8u/langtools/archive/jdk8u232-b09.tar.bz2 -> openjdk-langtools-8.232_p09.tar.bz2 https://hg.openjdk.java.net/jdk8u/jdk8u/nashorn/archive/jdk8u232-b09.tar.bz2 -> openjdk-nashorn-8.232_p09.tar.bz2
 _eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=108aed81d4d5ac6914e797b38b3f59bd
+_md5_=25c8ffe1da2e3a728264c0efcc6b7390
