@@ -3,14 +3,14 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 vcs-snapshot
 
 COMMIT="9f54e1aa3a87ec176ce8b71f02673e0d8293b344"
 
 DESCRIPTION="A utility to report core memory usage per program"
-HOMEPAGE="https://github.com/pixelb/${PN}"
+HOMEPAGE="https://github.com/pixelb/ps_mem"
 SRC_URI="https://github.com/pixelb/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
