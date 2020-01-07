@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-01-07)
+# No upstream SRC_URI. No license, so it cannot be mirrored.
+# Masked for removal in 30 days. Bug #702936.
+media-fonts/nepali-fonts
+
 # Ulrich Müller <ulm@gentoo.org> (2020-01-06)
 # No license, therefore we have no permission to redistribute
 # these packages on Gentoo mirrors. Distfiles are unversioned
