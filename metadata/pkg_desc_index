@@ -8416,7 +8416,7 @@ dev-python/pycuda 2017.1 2018.1.1 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r1 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0 7.43.0.2 7.43.0.3: python binding for curl/libcurl
 dev-python/pycxx 6.2.6: Set of facilities to extend Python with C++
-dev-python/pydecomp 0.2 0.3 9999: A python library of common (de)compression and contents handling
+dev-python/pydecomp 0.3 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.0.5 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
 dev-python/pydns 2.3.6-r1 3.1.1: Python DNS (Domain Name System) library
@@ -10483,7 +10483,7 @@ dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
 dev-util/byacc 20170201 20180609 20190617 20191125: the best variant of the Yacc parser generator
 dev-util/cargo-ebuild 0.2.0: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-tree 0.23.0 0.24.0 0.25.0 0.26.0 0.27.0 0.28.0: Cargo subcommand that visualizes crate dependency graph in a tree-like format
-dev-util/catalyst 3.0.5 3.0.6 3.0.7 3.0.8 9999: Release metatool used for creating releases based on Gentoo Linux
+dev-util/catalyst 3.0.8 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.10 1.4.12: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 9999: Cmake macros and associated python code used to build some parts of ROS
 dev-util/cbindgen 0.9.1 0.10.1 0.11.1: A tool for generating C bindings to Rust code
