@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Göktürk Yüksek <gokturk@gentoo.org> (2020-01-08)
+# Declared deprecated by upstream and is no longer being maintained.
+# Use app-crypt/yubikey-manager[,-qt] to configure a Yubikey device
+# over CCID.
+# Removal in 30 days.
+app-crypt/libykneomgr
+
 # Ulrich Müller <ulm@gentoo.org> (2020-01-07)
 # No upstream SRC_URI. No license, so it cannot be mirrored.
 # Masked for removal in 30 days. Bug #702936.
