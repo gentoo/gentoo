@@ -12980,7 +12980,7 @@ media-libs/gexiv2 0.10.10-r1 0.12.0 9999: GObject-based wrapper around the Exiv2
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.1.4 5.2.1-r1: Library to handle, display and manipulate GIF images
 media-libs/glew 1.6.0-r100 1.10.0-r100 2.1.0-r1: The OpenGL Extension Wrangler Library
-media-libs/glfw 3.2.1: The Portable OpenGL FrameWork
+media-libs/glfw 3.2.1 3.3.1: The Portable OpenGL FrameWork
 media-libs/glm 0.9.9.2 0.9.9.4 0.9.9.5 0.9.9.6-r1 0.9.9.7: OpenGL Mathematics
 media-libs/glpng 1.46-r1: An OpenGL PNG image library
 media-libs/glu 9.0.1 9999: The OpenGL Utility Library
