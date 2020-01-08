@@ -1558,6 +1558,7 @@ app-emulation/open-vm-tools 11.0.1-r1: Opensourced tools for VMware guests
 app-emulation/pcem 15: A PC emulator that specializes in running old operating systems and software
 app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PHP
 app-emulation/playonlinux 4.2.12 4.3.4: Set of scripts to easily install and use Windows games and software
+app-emulation/protontricks 1.3.1: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.104 0.105: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.11: Qt GUI configuration tool for Wine
 app-emulation/qemu 4.0.0-r50 4.1.0-r1 4.2.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
@@ -2741,7 +2742,7 @@ app-text/xournal 0.4.8 0.4.8-r1 0.4.8.2016 9999: An application for notetaking, 
 app-text/xpdf 4.02: The PDF viewer and tools
 app-text/yelp-tools 3.18.0 3.32.2: Collection of tools for building and converting documentation
 app-text/yodl 4.02.01 4.02.02: Your Own Document Language: a pre-document language and tools to process it
-app-text/zathura 0.4.3 0.4.4 9999: A highly customizable and functional document viewer
+app-text/zathura 0.4.3 0.4.4 0.4.5 9999: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
 app-text/zathura-djvu 0.2.8 9999: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
@@ -4831,7 +4832,7 @@ dev-libs/gdl 3.28.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11 1.6.12: GeoIP Legacy C API
 dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois Field Arithmetic
 dev-libs/gf2x 1.0-r1 1.1 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
-dev-libs/girara 0.3.1 0.3.2 0.3.3 9999: UI library that focuses on simplicity and minimalism
+dev-libs/girara 0.3.3 0.3.4 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.48.7 1.56.2: Javascript bindings for GNOME
 dev-libs/glib 2.58.3-r1 2.60.7 2.60.7-r1: The GLib library of C routines
 dev-libs/gmime 2.6.23-r1 3.2.4 3.2.5: Utilities for creating and parsing messages using MIME

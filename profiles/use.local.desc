@@ -598,6 +598,7 @@ app-emulation/open-vm-tools:resolutionkms - Build the linux/unix resolutionkms m
 app-emulation/open-vm-tools:vgauth - Build vgauth
 app-emulation/pcem:networking - Enable support for emulation of network cards.
 app-emulation/playonlinux:winbind - Enables support for the winbind auth daemon
+app-emulation/protontricks:gui - Enable the graphical user interface (requires gnome-extra/zenity)
 app-emulation/punes:cg - Add support for Nvidia CG Toolkit
 app-emulation/q4wine:ico - Enable ico support via media-gfx/icoutils
 app-emulation/q4wine:iso - Support unprivileged mounting of ISO9660 images via sys-fs/fuseiso
