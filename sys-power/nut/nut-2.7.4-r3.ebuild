@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ppc ppc64 x86"
 
-IUSE="cgi gui ipmi snmp +usb selinux ssl tcpd xml zeroconf"
+IUSE="cgi gui ipmi snmp +usb selinux split-usr ssl tcpd xml zeroconf"
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
@@ -169,7 +169,7 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 
 	dodir /sbin
-	dosym ../usr/sbin/upsdrvctl /sbin/upsdrvctl
+	use split-usr && dosym ../usr/sbin/upsdrvctl /sbin/upsdrvctl
 
 	if use cgi; then
 		elog "CGI monitoring scripts are installed in /usr/share/nut/cgi."
