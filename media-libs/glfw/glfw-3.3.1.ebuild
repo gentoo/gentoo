@@ -12,7 +12,7 @@ SRC_URI="https://github.com/glfw/glfw/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~x86"
-IUSE="examples wayland"
+IUSE="wayland"
 
 RDEPEND="
 	x11-libs/libxkbcommon
@@ -39,7 +39,7 @@ BDEPEND="
 
 src_configure() {
 	local mycmakeargs=(
-		-DGLFW_BUILD_EXAMPLES="$(usex examples)"
+		-DGLFW_BUILD_EXAMPLES=no
 		-DGLFW_USE_WAYLAND="$(usex wayland)"
 		-DBUILD_SHARED_LIBS=1
 	)
