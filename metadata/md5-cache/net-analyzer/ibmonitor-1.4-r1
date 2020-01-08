@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Interactive bandwidth monitor
+EAPI=7
+HOMEPAGE=http://ibmonitor.sourceforge.net
+KEYWORDS=~amd64 ~hppa ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-perl/TermReadKey
+SLOT=0
+SRC_URI=mirror://sourceforge/ibmonitor/ibmonitor-1.4.tar.gz
+_md5_=7426c3165e50bfeba7ea8308a723b4d3
