@@ -85,6 +85,7 @@ acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
 acct-group/sogo 0: Group for gnustep-apps/sogo
 acct-group/spectrum 0: A group for the Spectrum messaging transport
 acct-group/spire 0: System group: spire
+acct-group/sqlgrey 0: Group for SQLGrey
 acct-group/stdiscosrv 0: Group for the Syncthing discovery server
 acct-group/steamcmd 0: A group for the SteamCMD server
 acct-group/strelaysrv 0: Group for the Syncthing relay server
@@ -196,6 +197,7 @@ acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
 acct-user/sogo 0: User for gnustep-apps/sogo
 acct-user/spectrum 0: A user for the Spectrum messaging transport
 acct-user/spire 0: user for spiffe runtime environment
+acct-user/sqlgrey 0: User for SQLGrey
 acct-user/stdiscosrv 0: User for the Syncthing discovery server
 acct-user/steamcmd 0: A user for the SteamCMD server
 acct-user/strelaysrv 0: User for the Syncthing relay server
@@ -11237,7 +11239,7 @@ games-emulation/nestopia 1.47_p20170105 9999: A portable Nintendo Entertainment 
 games-emulation/nestra 0.66-r3: NES emulation for Linux/x86
 games-emulation/openmsx 0.14.0: MSX emulator that aims for perfection
 games-emulation/pcsx2 1.4.0-r1 1.4.0-r2 9999: A PlayStation 2 emulator
-games-emulation/pcsxr 1.9.94-r2: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
+games-emulation/pcsxr 1.9.94-r2 9999: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/ppsspp 1.5.4-r2 9999: A PSP emulator written in C++
 games-emulation/snes9x 1.58 1.59.2: Super Nintendo Entertainment System (SNES) emulator
 games-emulation/stella 5.1.3: Multi-platform Atari 2600 VCS Emulator
@@ -12410,7 +12412,7 @@ mail-filter/spambayes 1.1_beta2: An anti-spam filter using on Bayesian filtering
 mail-filter/spamdyke 4.3.0 5.0.1: A drop-in connection-time spam filter for qmail
 mail-filter/spampd 2.42: spampd is a program to scan messages for Unsolicited Commercial E-mail content
 mail-filter/spamprobe 1.4d-r1: Fast, intelligent, automatic spam detector using Bayesian analysis
-mail-filter/sqlgrey 1.7.6-r2: A postfix policy service implementing a grey-listing policy
+mail-filter/sqlgrey 1.7.6-r2 1.8.0: A postfix policy service implementing a grey-listing policy
 mail-filter/tmda 1.1.12-r2: Python-based SPAM reduction system
 mail-filter/zdkimfilter 1.8: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs

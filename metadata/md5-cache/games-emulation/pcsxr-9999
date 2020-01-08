@@ -1,0 +1,14 @@
+BDEPEND=app-arch/unzip dev-util/intltool sys-devel/gettext:0 dev-util/ninja >=dev-util/cmake-3.9.6 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
+DEPEND=dev-libs/glib:2 media-libs/libsdl2[joystick] sys-libs/zlib:= x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libXext x11-libs/libXtst x11-libs/libXv x11-libs/libXxf86vm virtual/libintl virtual/opengl archive? ( app-arch/libarchive:= ) alsa? ( media-libs/alsa-lib:= ) cdio? ( dev-libs/libcdio:= ) ccdda? ( !libav? ( >=media-video/ffmpeg-3:= ) libav? ( media-video/libav:= ) ) openal? ( media-libs/openal:= ) pulseaudio? ( media-sound/pulseaudio:= ) sdl? ( media-libs/libsdl2:=[sound] ) x11-base/xorg-proto
+DESCRIPTION=PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
+EAPI=7
+HOMEPAGE=https://github.com/iCatButler/pcsxr
+IUSE=alsa archive ccdda cdio libav openal oss pulseaudio +sdl
+LICENSE=GPL-2 public-domain
+PROPERTIES=live
+RDEPEND=dev-libs/glib:2 media-libs/libsdl2[joystick] sys-libs/zlib:= x11-libs/gtk+:3 x11-libs/libX11 x11-libs/libXext x11-libs/libXtst x11-libs/libXv x11-libs/libXxf86vm virtual/libintl virtual/opengl archive? ( app-arch/libarchive:= ) alsa? ( media-libs/alsa-lib:= ) cdio? ( dev-libs/libcdio:= ) ccdda? ( !libav? ( >=media-video/ffmpeg-3:= ) libav? ( media-video/libav:= ) ) openal? ( media-libs/openal:= ) pulseaudio? ( media-sound/pulseaudio:= ) sdl? ( media-libs/libsdl2:=[sound] )
+REQUIRED_USE=?? ( alsa openal oss pulseaudio sdl )
+SLOT=0
+_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=7d560b0ef7e431ee6a34e17af6d7ea52
