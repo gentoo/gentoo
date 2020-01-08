@@ -6,8 +6,8 @@ EAPI="6"
 inherit multilib toolchain-funcs
 
 DESCRIPTION="Suite of tools compiling mdoc and man"
-HOMEPAGE="http://mdocml.bsd.lv/"
-SRC_URI="http://mdocml.bsd.lv/snapshots/${P}.tar.gz"
+HOMEPAGE="https://mdocml.bsd.lv/"
+SRC_URI="https://mdocml.bsd.lv/snapshots/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
