@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install postinst postrm preinst
+DESCRIPTION=icon theme for Linux
+EAPI=7
+HOMEPAGE=https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://github.com/PapirusDevelopmentTeam/papirus-icon-theme/archive/20200102.tar.gz -> papirus-icon-theme-20200102.tar.gz
+_eclasses_=gnome2-utils	532371cfcba45b2ab0d2950547c97d95	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=6e5eb1a2fbb136c4d94e149fc1eedf96

@@ -2746,7 +2746,7 @@ app-text/yelp-tools 3.18.0 3.32.2: Collection of tools for building and converti
 app-text/yodl 4.02.01 4.02.02: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 0.4.5 9999: A highly customizable and functional document viewer
 app-text/zathura-cb 0.1.8 9999: Comic book plug-in for zathura with 7zip, rar, tar and zip support
-app-text/zathura-djvu 0.2.8 9999: DjVu plug-in for zathura
+app-text/zathura-djvu 0.2.8 0.2.9 9999: DjVu plug-in for zathura
 app-text/zathura-meta 0: Meta package for app-text/zathura plugins
 app-text/zathura-pdf-mupdf 0.3.5 9999: PDF plug-in for zathura
 app-text/zathura-pdf-poppler 0.2.9 0.3.0 9999: PDF plug-in for zathura
@@ -17542,7 +17542,7 @@ sys-fs/exfat-utils 1.3.0: exFAT filesystem utilities
 sys-fs/ext3grep 0.10.2: Recover deleted files on an ext3 file system
 sys-fs/ext4magic 0.3.2-r1: Tool for recovery of deleted or overwritten files on ext3/ext4 filesystems
 sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 partition
-sys-fs/f2fs-tools 1.10.0 1.11.0-r1 1.12.0-r1 1.13.0: Tools for Flash-Friendly File System (F2FS)
+sys-fs/f2fs-tools 1.13.0: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatcat 1.0.6 1.1.0: FAT filesystems explore, extract, repair, and forensic tool
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
 sys-fs/fatsort 1.5.0: Sorts files on FAT16/32 partitions, ideal for basic audio players
@@ -19076,7 +19076,7 @@ x11-themes/nuovo-icon-theme 0.5: A scalable icon theme called Nuovo
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
 x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen widget style
-x11-themes/papirus-icon-theme 20191009 20191101 20191201: icon theme for Linux
+x11-themes/papirus-icon-theme 20191009 20191101 20191201 20200102: icon theme for Linux
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
 x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme
