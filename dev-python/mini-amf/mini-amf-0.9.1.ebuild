@@ -26,24 +26,9 @@ DEPEND="${RDEPEND}
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
 	)"
-BDEPEND="doc? ( dev-python/sphinx )"
+
+distutils_enable_sphinx doc
 
 python_test() {
 	coverage run --source=miniamf setup.py test || die
-}
-
-python_compile_all() {
-	distutils-r1_python_compile
-
-	if use doc ; then
-		cd doc/ || die
-		sphinx-build -b html . _build || die
-	fi
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/_build/. )
-	einstalldocs
-
-	distutils-r1_python_install_all
 }
