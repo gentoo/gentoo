@@ -1,0 +1,59 @@
+From ae471bea14c8e05bcf368168649399b116a69992 Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Tue, 7 Jan 2020 17:44:08 -0500
+Subject: [PATCH] CMakeLists.txt: Do not unconditionally use ccache
+
+This causes build failures in Gentoo because we don't allow access to ccache files if ccache is not enabled for build.
+
+Fix this by adding a WITH_CCACHE cmake option and change behavior so that cmake fails if WITH_CCACHE is enabled but ccache program cannot be found.
+
+Gentoo-bug: https://bugs.gentoo.org/704560
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ CMakeLists.txt | 19 ++++++++++++-------
+ 1 file changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c2f9b5bfe..1c5746c59 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -27,13 +27,6 @@ string(TOLOWER "${CMAKE_BUILD_TYPE}" CMAKE_BUILD_TYPE_LOWER)
+ 
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+ 
+-# Use the Compiler Cache (ccache) if it is installed
+-# (install with: sudo apt get ccache)
+-find_program (CCACHE_FOUND ccache)
+-if (CCACHE_FOUND)
+-    set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+-endif (CCACHE_FOUND)
+-
+ # Support Visual Studio Code
+ include(CMakeToolsHelpers OPTIONAL)
+ include(FeatureSummary)
+@@ -48,6 +41,7 @@ option(WITH_DEV_BUILD "Use only for development. Disables/warns about deprecated
+ option(WITH_ASAN "Enable address sanitizer checks (Linux / macOS only)" OFF)
+ option(WITH_COVERAGE "Use to build with coverage tests (GCC only)." OFF)
+ option(WITH_APP_BUNDLE "Enable Application Bundle for macOS" ON)
++option(WITH_CCACHE "Use ccache for build" OFF)
+ 
+ set(WITH_XC_ALL OFF CACHE BOOL "Build in all available plugins")
+ 
+@@ -65,6 +59,17 @@ if(APPLE)
+     option(WITH_XC_TOUCHID "Include TouchID support for macOS." OFF)
+ endif()
+ 
++if(WITH_CCACHE)
++    # Use the Compiler Cache (ccache) program
++    # (install with: sudo apt get ccache)
++    find_program (CCACHE_FOUND ccache)
++    if(CCACHE_FOUND)
++        set_property(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
++    else()
++        message(FATAL_ERROR "ccache requested but cannot be found.")
++    endif()
++endif()
++
+ if(WITH_XC_ALL)
+     # Enable all options (except update check)
+     set(WITH_XC_AUTOTYPE ON)
