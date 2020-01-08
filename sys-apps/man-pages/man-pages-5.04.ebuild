@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ SRC_URI="https://www.kernel.org/pub/linux/docs/man-pages/Archive/${P}.tar.xz
 LICENSE="man-pages GPL-2+ BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
-IUSE_L10N=" da de fr it ja nl pl ru zh-CN"
+IUSE_L10N=" de fr it ja nl pl ru zh-CN"
 IUSE="nls ${IUSE_L10N// / l10n_}"
 RESTRICT="binchecks"
 
@@ -26,7 +26,6 @@ RDEPEND="virtual/man
 	!<dev-libs/libaio-0.3.109-r2
 	!<dev-libs/libbsd-0.8.3-r1"
 PDEPEND="nls? (
-	l10n_da? ( app-i18n/man-pages-da )
 	l10n_de? ( app-i18n/man-pages-de )
 	l10n_fr? ( app-i18n/man-pages-fr )
 	l10n_it? ( app-i18n/man-pages-it )
