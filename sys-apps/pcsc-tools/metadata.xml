@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-    <email>crypto@gentoo.org</email>
-    <name>Crypto</name>
+    <email>zlogene@gentoo.org</email>
+    <name>Mikle Kolyada</name>
   </maintainer>
   <longdescription>User tools for PC/SC SmartCard access (including pcsc_scan and the gscriptor GUI).</longdescription>
 
