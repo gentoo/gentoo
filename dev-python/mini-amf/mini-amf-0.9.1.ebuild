@@ -4,6 +4,8 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6..8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+
 inherit distutils-r1
 
 DESCRIPTION="Minimal AMF encoder and decoder for Python"
@@ -17,11 +19,9 @@ IUSE="doc test"
 
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="dev-python/defusedxml[${PYTHON_USEDEP}]
+RDEPEND="dev-python/defusedxml[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
-RDEPEND="${COMMON_DEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
