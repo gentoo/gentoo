@@ -10,4 +10,4 @@ RDEPEND=dev-texlive/texlive-latexrecommended virtual/latex-base
 SLOT=0
 SRC_URI=https://github.com/pgf-tikz/pgf/archive/3.1.4b.tar.gz -> pgf-3.1.4b.tar.gz https://dev.gentoo.org/~zlogene/distfiles/dev-tex/pgf/pgf-3.1.4b-revisioned.xz doc? ( https://github.com/pgf-tikz/pgf/releases/download/3.1.4b/pgfmanual.pdf -> pgf-3.1.4b-pgfmanual.pdf )
 _eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
-_md5_=0856069299d89f869030a7eaabe371fc
+_md5_=d4daefd5f1c2008a3bb6c8556e0958b5
