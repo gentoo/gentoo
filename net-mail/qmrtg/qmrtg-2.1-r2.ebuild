@@ -1,8 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils
+EAPI=7
 
 DESCRIPTION="A tool to analyze qmail activity with the goal to graph everything through MRTG"
 HOMEPAGE="http://dev.publicshout.org/qmrtg"
@@ -12,41 +11,33 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
-
-RDEPEND="net-analyzer/mrtg"
+PATCHES=(
+	"${FILESDIR}"/mrtg.cfg.patch
+	"${FILESDIR}"/qmrtg.conf.sample.patch
+	"${FILESDIR}"/${P}-TAI_STR_LEN.patch
+)
 
 src_prepare() {
+	default
 	sed -i \
 		-e 's|^CFLAGS =|CFLAGS ?=|g' \
 		analyzers/Makefile.in filters/Makefile.in || die
-
-	epatch "${FILESDIR}"/mrtg.cfg.patch
-	epatch "${FILESDIR}"/qmrtg.conf.sample.patch
-	epatch "${FILESDIR}"/${P}-TAI_STR_LEN.patch
 }
 
 DOCS=( INSTALL.txt )
 
 src_install () {
 	default
+
 	keepdir /var/lib/qmrtg
+
 	if use doc ; then
 		docinto txt
 		dodoc doc/*.txt
 		docinto html
-		dohtml -r html/*
+		dodoc -r html/*
 	fi
 
 	insinto /usr/share/qmrtg2
 	doins examples/*
-
-}
-
-pkg_postinst () {
-	elog
-	elog "You need to configure manually qmrtg in order to run it."
-	elog "The configuration templates in /usr/share/qmrtg2/ and"
-	elog "the INSTALL file in /usr/share/doc/qmrtg-2.1/"
-	elog "will be useful."
-	elog
 }
