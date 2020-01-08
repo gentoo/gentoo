@@ -1,10 +1,10 @@
-BDEPEND=dev-util/ninja dev-util/cmake >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=ccache? ( dev-util/ccache ) dev-util/ninja dev-util/cmake >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare test unpack
 DEPEND=app-crypt/argon2:= dev-libs/libgcrypt:= >=dev-libs/libsodium-1.0.12:= dev-qt/qtconcurrent:5 dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtnetwork:5 dev-qt/qtsvg:5 dev-qt/qtwidgets:5 media-gfx/qrencode:= sys-libs/readline:0= sys-libs/zlib:= autotype? ( dev-qt/qtx11extras:5 x11-libs/libX11 x11-libs/libXi x11-libs/libXtst ) keeshare? ( dev-libs/quazip ) yubikey? ( sys-auth/ykpers ) dev-qt/linguist-tools:5 dev-qt/qttest:5 dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=KeePassXC - KeePass Cross-platform Community Edition
 EAPI=7
 HOMEPAGE=https://keepassxc.org
-IUSE=autotype browser debug keeshare +network test yubikey
+IUSE=autotype browser ccache debug keeshare +network test yubikey
 LICENSE=LGPL-2.1 GPL-2 GPL-3
 PDEPEND=x11-misc/xsel
 PROPERTIES=live
@@ -12,4 +12,4 @@ RDEPEND=app-crypt/argon2:= dev-libs/libgcrypt:= >=dev-libs/libsodium-1.0.12:= de
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=cmake	7b250250bd1c3cc90800ed668fb87825	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f975094bfb30cf9a9cf00fee843bfa6a
+_md5_=320a955be7195ce0b16a4c33b42471b8

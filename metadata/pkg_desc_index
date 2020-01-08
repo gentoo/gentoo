@@ -14197,7 +14197,7 @@ net-analyzer/arpwatch 2.1.15-r8 2.1.15-r9 2.1.15-r11: An ethernet monitor progra
 net-analyzer/authforce 0.9.9-r2: An HTTP authentication brute forcer
 net-analyzer/barnyard 0.2.0-r5: Fast output system for Snort
 net-analyzer/barnyard2 1.9-r2 1.13: Parser for Snort unified/unified2 files
-net-analyzer/bigeye 0.3-r3: network utility dump and simple honeypot utility
+net-analyzer/bigeye 0.3-r3 0.3-r4: network utility dump and simple honeypot utility
 net-analyzer/bing 1.1.3-r2: A point-to-point bandwidth measurement tool
 net-analyzer/bmon 4.0 999: interface bandwidth monitor
 net-analyzer/braa 0.82 0.82-r1: Quick and dirty mass SNMP scanner
@@ -14228,7 +14228,7 @@ net-analyzer/driftnet 0.1.6_p20090401 0.1.6_p20090401-r1: Listen to network traf
 net-analyzer/echoping 6.0.2_p434-r2 6.0.2_p434-r3: Small program to test performances of remote servers
 net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.14 0.9.17 0.9.18: A graphical network monitor for Unix modeled after etherman
-net-analyzer/ethloop 10-r3: Local simulator for testing Linux QoS disciplines
+net-analyzer/ethloop 10-r3 10-r4: Local simulator for testing Linux QoS disciplines
 net-analyzer/ettercap 0.8.3 9999: A suite for man in the middle attacks
 net-analyzer/fail2ban 0.10.4 0.10.4-r2 99999999: scans log files and bans IPs that show malicious signs
 net-analyzer/firewalk 5.0-r1: A tool for determining a firewall's rule set
@@ -19127,7 +19127,7 @@ x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 9999: A manual tiling window manager for X
 x11-wm/i3 4.14 4.15 4.16 4.16.1 4.17.1 9999: An improved dynamic tiling window manager
 x11-wm/i3-gaps 4.16.1 4.16.1-r1 4.17.1: i3 fork with gaps and some more features
-x11-wm/icewm 1.5.5 1.6.2-r1 1.6.3: Ice Window Manager with Themes
+x11-wm/icewm 1.5.5 1.6.3 1.6.4: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
 x11-wm/lumina 1.3.0_p1 1.4.0_p1-r1 1.5.0-r1 9999: Lumina desktop environment

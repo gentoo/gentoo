@@ -77,6 +77,7 @@ app-admin/hddtemp:network-cron - Monthly cronjob to update hddtemp.db.
 app-admin/keepass:aot - Generate native code at build time, rather than runtime.
 app-admin/keepassxc:autotype - Add support to autotype the passwords into other applications
 app-admin/keepassxc:browser - Enables browser plugin support
+app-admin/keepassxc:ccache - Use dev-util/ccache to build keepassxc
 app-admin/keepassxc:keeshare - Enable KeeShare sharing integration
 app-admin/keepassxc:network - Enable network support
 app-admin/keepassxc:yubikey - Enable database unlocking via YubiKey.
