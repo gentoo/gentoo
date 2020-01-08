@@ -733,27 +733,6 @@
     <name>Crypto</name>
     <url>https://wiki.gentoo.org/wiki/Project:Crypto</url>
     <description>Project for maintaining crypto related packages</description>
-    <member>
-      <email>alonbl@gentoo.org</email>
-      <name>Alon Bar-Lev</name>
-    </member>
-    <member>
-      <email>k_f@gentoo.org</email>
-      <name>Kristian Fiskerstrand</name>
-      <role>GnuPG, libgcrypt and related packages</role>
-    </member>
-    <member>
-      <email>radhermit@gentoo.org</email>
-      <name>Tim Harder</name>
-    </member>
-    <member>
-      <email>robbat2@gentoo.org</email>
-      <name>Robin Johnson</name>
-    </member>
-    <member>
-      <email>zerochaos@gentoo.org</email>
-      <name>Rick Farina</name>
-    </member>
   </project>
   <project>
     <email>deb-tools@gentoo.org</email>
