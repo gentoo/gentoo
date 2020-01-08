@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,8 +13,8 @@ if [[ ${PV} == *999 ]]; then
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
 	EGIT_BRANCH="develop"
 else
-	SRC_URI="https://pwmt.org/projects/girara/download/${P}.tar.xz"
-	KEYWORDS="amd64 arm x86"
+	SRC_URI="https://github.com/pwmt/girara/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="ZLIB"
@@ -42,9 +42,9 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Denable-json=true
-		-Denable-docs=$(usex doc true false)
-		-Denable-notify=$(usex libnotify true false)
+		-Djson=enabled
+		-Ddocs=$(usex doc enabled disabled)
+		-Dnotify=$(usex libnotify enabled disabled)
 		)
 		meson_src_configure
 }
