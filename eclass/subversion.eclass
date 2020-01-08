@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: subversion.eclass
@@ -6,35 +6,41 @@
 # Akinori Hattori <hattya@gentoo.org>
 # @AUTHOR:
 # Original Author: Akinori Hattori <hattya@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
-# @BLURB: The subversion eclass is written to fetch software sources from subversion repositories
+# @SUPPORTED_EAPIS: 4 5 6 7
+# @BLURB: Fetch software sources from subversion repositories
 # @DESCRIPTION:
 # The subversion eclass provides functions to fetch, patch and bootstrap
 # software sources from subversion repositories.
 
-inherit eutils
-
 ESVN="${ECLASS}"
 
-case "${EAPI:-0}" in
-	0|1)
-		EXPORT_FUNCTIONS src_unpack pkg_preinst
-		DEPEND="dev-vcs/subversion"
-		;;
-	2|3|4|5)
+case ${EAPI:-0} in
+	4|5)
+		inherit eutils
 		EXPORT_FUNCTIONS src_unpack src_prepare pkg_preinst
-		DEPEND="|| ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] )"
 		;;
-	6)
+	6|7)
+		inherit estack
 		EXPORT_FUNCTIONS src_unpack pkg_preinst
-		DEPEND="|| ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] )"
 		;;
 	*)
-		die "EAPI ${EAPI} is not supported in subversion.eclass"
+		die "${ESVN}: EAPI ${EAPI:-0} is not supported"
 		;;
 esac
 
-DEPEND+=" net-misc/rsync"
+PROPERTIES+=" live"
+
+DEPEND="|| (
+		dev-vcs/subversion[http]
+		dev-vcs/subversion[webdav-neon]
+		dev-vcs/subversion[webdav-serf]
+	)
+	net-misc/rsync"
+
+case ${EAPI} in
+	4|5|6) ;;
+	*) BDEPEND="${DEPEND}"; DEPEND="" ;;
+esac
 
 # @ECLASS-VARIABLE: ESVN_STORE_DIR
 # @DESCRIPTION:
@@ -434,12 +440,9 @@ subversion_wc_info() {
 
 # @FUNCTION: subversion_src_unpack
 # @DESCRIPTION:
-# Default src_unpack. Fetch and, in older EAPIs, bootstrap.
+# Default src_unpack. Fetch.
 subversion_src_unpack() {
 	subversion_fetch || die "${ESVN}: unknown problem occurred in subversion_fetch."
-	if has "${EAPI:-0}" 0 1; then
-		subversion_bootstrap || die "${ESVN}: unknown problem occurred in subversion_bootstrap."
-	fi
 }
 
 # @FUNCTION: subversion_src_prepare
@@ -458,10 +461,9 @@ subversion_src_prepare() {
 # want the logs to stick around if packages are uninstalled without messing with
 # config protection.
 subversion_pkg_preinst() {
-	has "${EAPI:-0}" 0 1 2 && ! use prefix && EROOT="${ROOT}"
 	local pkgdate=$(date "+%Y%m%d %H:%M:%S")
 	if [[ -n ${ESCM_LOGDIR} ]]; then
-		local dir="${EROOT}/${ESCM_LOGDIR}/${CATEGORY}"
+		local dir="${EROOT%/}${ESCM_LOGDIR}/${CATEGORY}"
 		if [[ ! -d ${dir} ]]; then
 			mkdir -p "${dir}" || eerror "Failed to create '${dir}' for logging svn revision"
 		fi

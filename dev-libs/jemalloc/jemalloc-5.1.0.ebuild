@@ -12,7 +12,7 @@ SRC_URI="https://github.com/jemalloc/jemalloc/releases/download/${PV}/${P}.tar.b
 LICENSE="BSD"
 SLOT="0/2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x64-solaris"
-IUSE="debug hardened lazy-lock static-libs stats xmalloc"
+IUSE="debug hardened lazy-lock prof static-libs stats xmalloc"
 HTML_DOCS=( doc/jemalloc.html )
 PATCHES=( "${FILESDIR}/${PN}-5.0.1-strip-optimization.patch"
 	"${FILESDIR}/${PN}-4.5.0-fix_html_install.patch"
@@ -39,6 +39,7 @@ multilib_src_configure() {
 	econf  \
 		$(use_enable debug) \
 		$(use_enable lazy-lock) \
+		$(use_enable prof) \
 		$(use_enable stats) \
 		$(use_enable xmalloc) \
 		"${myconf[@]}"

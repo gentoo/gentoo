@@ -1,0 +1,52 @@
+https://sourceforge.net/p/lirc/git/merge-requests/39/
+
+commit 8fab503abb3fdababb1875fdc2373afe8534770e
+Author: Craig Andrews <candrews@integralblue.com>
+Date:   Sat May 11 11:39:44 2019 -0400
+
+    Use pyyaml safe_load instead of load
+    
+    Using load on untrusted user input could lead to arbitrary code execution.
+    Therefore, upstream has disabled load, requiring the use of either
+    safe_load or full_load
+    See https://github.com/yaml/pyyaml/issues/265
+
+diff --git a/python-pkg/lirc/database.py b/python-pkg/lirc/database.py
+index d464c2ab..bd567181 100644
+--- a/python-pkg/lirc/database.py
++++ b/python-pkg/lirc/database.py
+@@ -66,7 +66,7 @@ def _load_kerneldrivers(configdir):
+     '''
+ 
+     with open(os.path.join(configdir, "kernel-drivers.yaml")) as f:
+-        cf = yaml.load(f.read())
++        cf = yaml.safe_load(f.read())
+     drivers = cf['drivers'].copy()
+     for driver in cf['drivers']:
+         if driver == 'default':
+@@ -132,14 +132,14 @@ class Database(object):
+             yamlpath = configdir
+         db = {}
+         with open(os.path.join(yamlpath, "confs_by_driver.yaml")) as f:
+-            cf = yaml.load(f.read())
++            cf = yaml.safe_load(f.read())
+         db['lircd_by_driver'] = cf['lircd_by_driver'].copy()
+         db['lircmd_by_driver'] = cf['lircmd_by_driver'].copy()
+ 
+         db['kernel-drivers'] = _load_kerneldrivers(configdir)
+         db['drivers'] = db['kernel-drivers'].copy()
+         with open(os.path.join(yamlpath, "drivers.yaml")) as f:
+-            cf = yaml.load(f.read())
++            cf = yaml.safe_load(f.read())
+         db['drivers'].update(cf['drivers'].copy())
+         for key, d in db['drivers'].items():
+             d['id'] = key
+@@ -158,7 +158,7 @@ class Database(object):
+         configs = {}
+         for path in glob.glob(configdir + '/*.conf'):
+             with open(path) as f:
+-                cf = yaml.load(f.read())
++                cf = yaml.safe_load(f.read())
+             configs[cf['config']['id']] = cf['config']
+         db['configs'] = configs
+         self.db = db

@@ -1,35 +1,39 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-S=${WORKDIR}/${PN}
 DESCRIPTION="A Linux shell program that talks the date and system uptime"
 HOMEPAGE="http://unihedron.com/projects/saydate/saydate.php"
 SRC_URI="http://unihedron.com/projects/saydate/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-
 KEYWORDS="amd64 ~ppc ppc64 sparc x86"
 
-DEPEND="=sys-apps/sed-4*"
-IUSE=""
+S=${WORKDIR}/${PN}
 
-# Don't leave this empty or it tries to install directly
-# on livefs
-src_compile() { :; }
+src_prepare() {
+	default
 
-src_install () {
-	insinto /usr/share/man/man1
-	doins "${S}"/man/saydate.1.gz "${S}"/man/au2raw.1.gz
+	sed -i 's:/dev/audio:/dev/dsp:' saydate au2raw DESIGN || die
 
-	dodir /usr/share/saydate
+	# don't install pre-compressed files
+	gunzip man/{saydate,au2raw}.1.gz || die
+}
+
+src_compile() {
+	# Don't leave this empty or it tries
+	# to install directly on livefs
+	:
+}
+
+src_install() {
+	dobin saydate au2raw
+
 	insinto /usr/share/saydate
-	doins "${S}"/data/*.raw
+	doins data/*.raw
 
-	sed -i "s:/dev/audio:/dev/dsp:" "${S}"/saydate
-	sed -i "s:/dev/audio:/dev/dsp:" "${S}"/au2raw
-	sed -i "s:/dev/audio:/dev/dsp:" "${S}"/DESIGN
+	doman man/{saydate,au2raw}.1
 	dodoc README TODO HISTORY DESIGN
-	dobin saydate au2raw || die "dobin failed"
 }

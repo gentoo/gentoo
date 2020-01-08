@@ -5,6 +5,10 @@
 		<email>tamiko@gentoo.org</email>
 		<name>Matthias Maier</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>virtualization@gentoo.org</email>
 		<name>Gentoo Virtualization Project</name>
@@ -30,6 +34,7 @@
 		<flag name="pin-upstream-blobs">Pin the versions of BIOS firmware to the version included in the upstream release.
 		This is needed to sanely support migration/suspend/resume/snapshotting/etc... of instances.
 		When the blobs are different, random corruption/bugs/crashes/etc... may be observed.</flag>
+		<flag name="plugins">Enable qemu plugin API via shared library loading.</flag>
 		<flag name="pulseaudio">Enable pulseaudio output for sound emulation</flag>
 		<flag name="rbd">Enable rados block device backend support, see http://ceph.newdream.net/wiki/QEMU-RBD</flag>
 		<flag name="sdl">Enable the SDL-based console</flag>
@@ -37,15 +42,16 @@
 		<flag name="ssh">Enable SSH based block device support via <pkg>net-libs/libssh2</pkg></flag>
 		<flag name="static-user">Build the User targets as static binaries</flag>
 		<flag name="static">Build the User and Software MMU (system) targets as well as tools as static binaries</flag>
-		<flag name="snappy">Enable support for snappy compression</flag>
 		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
 		<flag name="tci">Enable the TCG Interpreter which can speed up or slowdown workloads depending on the host and guest CPUs being emulated. In the future it will be a runtime option but for now its compile time.</flag>
+		<flag name="jemalloc">Enable jemalloc allocator support</flag>
 		<flag name="jpeg">Enable jpeg image support for the VNC console server</flag>
 		<flag name="png">Enable png image support for the VNC console server</flag>
 		<flag name="usb">Enable USB passthrough via <pkg>dev-libs/libusb</pkg></flag>
 		<flag name="usbredir">Use <pkg>sys-apps/usbredir</pkg> to redirect USB devices to another machine over TCP</flag>
 		<flag name="vde">Enable VDE-based networking</flag>
 		<flag name="vhost-net">Enable accelerated networking using vhost-net, see http://www.linux-kvm.org/page/VhostNet</flag>
+		<flag name="vhost-user-fs">Enable shared file system access using the FUSE protocol carried over virtio.</flag>
 		<flag name="virgl">Enable experimental Virgil 3d (virtual software GPU)</flag>
 		<flag name="virtfs">Enable VirtFS via virtio-9p-pci / fsdev. See http://wiki.qemu.org/Documentation/9psetup</flag>
 		<flag name="vte">Enable terminal support (<pkg>x11-libs/vte</pkg>) in the GTK+ interface</flag>
@@ -55,5 +61,6 @@
 		<flag name="xen">Enables support for Xen backends</flag>
 		<flag name="xfs">Support xfsctl() notification and syncing for XFS backed
 		virtual disks.</flag>
+		<flag name="xkb">Depend on x11-libs/libxkbcommon to build qemu-keymap tool for converting xkb keymaps</flag>
 	</use>
 </pkgmetadata>

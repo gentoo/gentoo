@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -18,12 +18,13 @@ SRC_URI="${SRC_URI}/${TWISTED_RELEASE}/${TWISTED_P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/twisted-regen-cache.gz"
 
 # Dropped keywords due to new deps not keyworded
-#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~x86 ~x86-fbsd ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~x86 ~amd64-fbsd"
+#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~x86 ~ia64-hpux ~x86-interix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~x86"
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="conch crypt http2 serial +soap test"
+RESTRICT="!test? ( test )"
 
 # openssh-7.6_p1 test failures: bug https://twistedmatrix.com/trac/ticket/9311
 RDEPEND="
@@ -119,7 +120,8 @@ python_test() {
 	# workaround for the eclass not installing the entry points
 	# in the test environment.  copy the old 16.3.2 start script
 	# to run the tests with
-	cp "${FILESDIR}"/trial "${TEST_DIR}"
+	cp "${FILESDIR}"/trial "${TEST_DIR}" || die
+	chmod +x "${TEST_DIR}"/trial || die
 
 	pushd "${TEST_DIR}" > /dev/null || die
 

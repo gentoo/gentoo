@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
 inherit bash-completion-r1 multilib python-r1
 
@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/kernel/${PN}/${PN}.git"
 	inherit autotools git-r3
 else
-	SRC_URI="mirror://kernel/linux/utils/kernel/kmod/${P}.tar.xz"
+	SRC_URI="https://www.kernel.org/pub/linux/utils/kernel/kmod/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 	inherit libtool
 fi
@@ -21,7 +21,7 @@ HOMEPAGE="https://git.kernel.org/?p=utils/kernel/kmod/kmod.git"
 
 LICENSE="LGPL-2"
 SLOT="0"
-IUSE="debug doc lzma python ssl static-libs +tools zlib"
+IUSE="debug doc libressl lzma pkcs7 python static-libs +tools zlib"
 
 # Upstream does not support running the test suite with custom configure flags.
 # I was also told that the test suite is intended for kmod developers.
@@ -36,7 +36,10 @@ RDEPEND="!sys-apps/module-init-tools
 	!<sys-apps/systemd-216-r3
 	lzma? ( >=app-arch/xz-utils-5.0.4-r1 )
 	python? ( ${PYTHON_DEPS} )
-	ssl? ( >=dev-libs/openssl-1.1.0:0= )
+	pkcs7? (
+		!libressl? ( >=dev-libs/openssl-1.1.0:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
 	zlib? ( >=sys-libs/zlib-1.2.6 )" #427130
 DEPEND="${RDEPEND}
 	doc? ( dev-util/gtk-doc )
@@ -86,7 +89,7 @@ src_configure() {
 		$(use_enable static-libs static)
 		$(use_enable tools)
 		$(use_with lzma xz)
-		$(use_with ssl openssl)
+		$(use_with pkcs7 openssl)
 		$(use_with zlib)
 	)
 
@@ -143,14 +146,14 @@ src_install() {
 	find "${ED}" -name "*.la" -delete || die
 
 	if use tools; then
-		local bincmd sbincmd
-		for sbincmd in depmod insmod lsmod modinfo modprobe rmmod; do
-			dosym ../bin/kmod /sbin/${sbincmd}
+		local cmd
+		for cmd in depmod insmod modprobe rmmod; do
+			dosym ../bin/kmod /sbin/${cmd}
 		done
 
 		# These are also usable as normal user
-		for bincmd in lsmod modinfo; do
-			dosym kmod /bin/${bincmd}
+		for cmd in lsmod modinfo; do
+			dosym kmod /bin/${cmd}
 		done
 	fi
 

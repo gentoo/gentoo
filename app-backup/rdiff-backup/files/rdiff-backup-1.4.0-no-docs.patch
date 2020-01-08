@@ -1,0 +1,22 @@
+diff -Naur rdiff-backup-1.4.0b0.orig/setup.py rdiff-backup-1.4.0b0/setup.py
+--- rdiff-backup-1.4.0b0.orig/setup.py	2019-11-22 22:34:17.000000000 +0100
++++ rdiff-backup-1.4.0b0/setup.py	2019-11-29 18:24:40.251407907 +0100
+@@ -152,18 +152,6 @@
+     scripts=["src/rdiff-backup", "src/rdiff-backup-statistics"],
+     data_files=[
+         ("share/man/man1", ["build/rdiff-backup.1", "build/rdiff-backup-statistics.1"]),
+-        (
+-            "share/doc/rdiff-backup",
+-            [
+-                "CHANGELOG",
+-                "COPYING",
+-                "README.md",
+-                "docs/FAQ.md",
+-                "docs/examples.md",
+-                "docs/DEVELOP.md",
+-                "docs/Windows-README.md",
+-            ],
+-        ),
+         ("share/bash-completion/completions", ["tools/bash-completion/rdiff-backup"]),
+     ],
+     # options is a hash of hash with command -> option -> value

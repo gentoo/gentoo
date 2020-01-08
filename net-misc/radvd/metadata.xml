@@ -5,4 +5,7 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:litech:router_advertisement_daemon</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit toolchain-funcs
 
-DESCRIPTION="Take a list of prefixes and perform two optimisations to reduce the length of the prefix list"
-HOMEPAGE="http://dist.automagic.org/"
+DESCRIPTION="Perform two optimisations on a list of prefixes to reduce the length of the list"
+HOMEPAGE="https://ftp.isc.org/isc/aggregate"
 SRC_URI="${HOMEPAGE}/${P}.tar.gz"
 
 LICENSE="ISC"

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
@@ -26,7 +26,7 @@ LICENSE="BSD LGPL-2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 SLOT="0"
 IUSE="
-	all-modules aqua boost doc examples imaging ffmpeg gdal java json kaapi mpi
+	all-modules aqua boost doc examples imaging ffmpeg gdal java json mpi
 	mysql odbc offscreen postgres python qt5 rendering tbb theora tk tcl
 	video_cards_nvidia views web R +X xdmf2"
 
@@ -69,7 +69,6 @@ RDEPEND="
 	ffmpeg? ( virtual/ffmpeg )
 	gdal? ( sci-libs/gdal )
 	java? ( >=virtual/jdk-1.7:* )
-	kaapi? ( <sci-libs/xkaapi-3 )
 	mpi? (
 		virtual/mpi[cxx,romio]
 		python? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
@@ -225,9 +224,7 @@ src_configure() {
 		mycmakeargs+=( -DJAVAC_OPTIONS=${javacargs// /;} )
 	fi
 
-	if use kaapi; then
-		mycmakeargs+=( -DVTK_SMP_IMPLEMENTATION_TYPE="Kaapi" )
-	elif use tbb; then
+	if use tbb; then
 		mycmakeargs+=( -DVTK_SMP_IMPLEMENTATION_TYPE="TBB" )
 	else
 		mycmakeargs+=( -DVTK_SMP_IMPLEMENTATION_TYPE="Sequential" )

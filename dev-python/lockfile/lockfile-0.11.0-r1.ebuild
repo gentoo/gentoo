@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -16,6 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>dev-python/pbr-0.7[${PYTHON_USEDEP}]
@@ -33,7 +34,7 @@ python_prepare_all() {
 python_compile_all() {
 	if use doc; then
 		einfo "Generation of documentation"
-		emake -C doc/source html || die "Generation of documentation failed"
+		emake -C doc/source html
 	fi
 }
 

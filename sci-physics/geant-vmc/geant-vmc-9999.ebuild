@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils eapi7-ver
+inherit cmake
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -11,8 +11,8 @@ if [[ ${PV} == *9999* ]]; then
 else
 	DOWN_PV=$(ver_cut 2-)
 	SRC_URI="http://root.cern.ch/download/vmc/geant4_vmc.${DOWN_PV}.tar.gz"
-	SOURCE_PV=$(ver_rs 1- - ${DOWN_PV})
-	S="${WORKDIR}/geant4_vmc-${SOURCE_PV}"
+	SOURCE_PV=$(ver_rs 1- . ${DOWN_PV})
+	S="${WORKDIR}/geant4_vmc.${SOURCE_PV}"
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
@@ -23,18 +23,19 @@ LICENSE="GPL-2"
 SLOT="4"
 IUSE="doc examples geant3 +g4root +mtroot vgm test"
 
-# sci-physics/root[root7] flag activates std=c++14, which we could only support if also Geant is built with it.
-# Disable for now.
+# sci-physics/root[c++11] required to match sci-physics/geant flags.
 RDEPEND="
 	>=sci-physics/geant-4.10.03:=[opengl,geant3?]
-	sci-physics/root:=[-root7]
+	sci-physics/root:=[c++11,vmc]
 	vgm? ( >=sci-physics/vgm-4.4:= )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 RESTRICT="
+	!examples? ( test )
 	!geant3? ( test )
 	!g4root? ( test )
 	!mtroot? ( test )
+	!test? ( test )
 	!vgm? ( test )"
 
 DOCS=(
@@ -51,11 +52,11 @@ src_configure() {
 		-DGeant4VMC_BUILD_EXAMPLES="$(usex test)"
 		-DGeant4VMC_INSTALL_EXAMPLES="$(usex examples)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use doc ; then
 		local dirs=(
 			source
@@ -77,12 +78,12 @@ src_test() {
 	# see e.g. https://sft.its.cern.ch/jira/browse/ROOT-8146 .
 	addwrite /dev/random
 	cd examples || die
-	./test_suite.sh --g3=off --builddir="${BUILD_DIR}" || die
-	./test_suite_exe.sh --g3=off --builddir="${BUILD_DIR}" || die
+	./test_suite.sh --debug --g3=off --garfield=off --builddir="${BUILD_DIR}" || die
+	./test_suite_exe.sh -debug --g3=off --garfield=off --builddir="${BUILD_DIR}" || die
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use doc && local HTML_DOCS=(doc/.)
 	einstalldocs
 }

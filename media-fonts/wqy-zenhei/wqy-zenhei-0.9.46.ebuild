@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/project/wqy/${PN}-snapshot/${PV}-May/${P}-May.tar.
 
 LICENSE="GPL-2-with-font-exception"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE=""
 
 S="${WORKDIR}/${PN}"

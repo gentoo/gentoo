@@ -27,5 +27,5 @@ src_install() {
 	java-pkg_newjar ${MY_PN}-${PV}.jar
 	java-pkg_dolauncher ${MY_PN}
 
-	dodoc README.txt RELEASE-NOTES.txt || die
+	dodoc README.txt RELEASE-NOTES.txt
 }

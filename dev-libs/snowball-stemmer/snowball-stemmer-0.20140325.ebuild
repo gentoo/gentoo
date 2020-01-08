@@ -20,7 +20,7 @@ S="${WORKDIR}/libstemmer_c"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
 
 # This could be used to package both libstemmer_c and libstemmer_java together.
 IUSE="static-libs"
@@ -30,10 +30,10 @@ src_prepare() {
 }
 
 src_compile() {
-	CC=$(tc-getCC) emake libstemmer.so stemwords || die "Make failed!"
+	CC=$(tc-getCC) emake libstemmer.so stemwords
 
 	if use static-libs; then
-		CC=$(tc-getCC) AR=$(tc-getAR) emake libstemmer.a || die "Make failed!"
+		CC=$(tc-getCC) AR=$(tc-getAR) emake libstemmer.a
 	fi
 }
 

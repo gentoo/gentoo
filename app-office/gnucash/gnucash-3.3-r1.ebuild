@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # google{test,mock} version
 GV="1.8.0"
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils gnome2-utils python-single-r1 xdg-utils
+inherit cmake-utils flag-o-matic gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="A personal finance manager"
 HOMEPAGE="http://www.gnucash.org/"
@@ -109,6 +109,8 @@ src_configure() {
 		-DWITH_GNUCASH=$(usex gui)
 	)
 
+	append-cflags -Wno-error
+	append-cxxflags -Wno-error
 	cmake-utils_src_configure
 }
 

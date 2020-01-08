@@ -4,210 +4,226 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
-# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-07-19)
+# gdbserver is not implemented yet for hppa target.
+sys-devel/gdb server
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-07-07)
+# Test dependencies are no longer keyworded due to dropped Rails
+# keyword.
+dev-ruby/asciidoctor test
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-05-25)
+# libgo needs an explicit port to hppa: bug #686624
+sys-devel/gcc go
+
+# Jeroen Roovers (jer@gentoo.org) (2018-03-22)
 # HiPE does not work on HPPA
 dev-lang/erlang hipe
 
-# Thomas Deutschmann <whissi@gentoo.org> (04 Jul 2018)
+# Thomas Deutschmann <whissi@gentoo.org> (2018-07-04)
 # dev-libs/xxhash not keyworded for hppa
 app-admin/rsyslog xxhash
 
-# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# Jeroen Roovers (jer@gentoo.org) (2018-03-22)
 # dev-ruby/capybara depends on www-client/firefox which has not been ported to
 # HPPA
 dev-ruby/capybara test
 
-# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# Jeroen Roovers (jer@gentoo.org) (2018-03-22)
 # dev-ruby/haml depends on dev-ruby/action* which lost their keywords, so that
 # kills the fun
 dev-ruby/haml test
 
-# Jeroen Roovers (jer@gentoo.org) (22 Mar 2018)
+# Jeroen Roovers (jer@gentoo.org) (2018-03-22)
 # dev-ruby/tilt requires dev-ruby/coffee-script which requires net-libs/nodejs
 # which has not been ported to HPPA
 dev-ruby/tilt test
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (4 Oct 2017)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-10-04)
 # -fstack-protector is not supported for hppa, bug 630702
 >=sys-devel/gcc-6.0 ssp
 
-# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Michael Palimaka <kensington@gentoo.org> (2017-09-30)
 # Required dependencies are not keyworded.
 x11-themes/qtcurve plasma
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2017)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-09-11)
 # Systemtap has no hppa keywords
 sys-libs/glibc systemtap
 
-# Göktürk Yüksek <gokturk@gentoo.org> (15 Aug 2017)
+# Göktürk Yüksek <gokturk@gentoo.org> (2017-08-15)
 # Requires java
 app-forensics/sleuthkit java
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan
+media-libs/mesa vulkan vulkan-overlay
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=redis that is masked in this profile.
 dev-python/pyzor test
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=systemd that is masked in this profile.
 net-wireless/bluez user-session
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
-# Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
+# Robin H. Johnson <robbat2@gentoo.org> (2017-08-05)
 # Upstream Git is switching to PCRE2 w/ JIT.
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
 dev-vcs/git pcre-jit
 
-# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-06-28)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
 # no point in pursuing it right now.
 app-shells/bash-completion test
 
-# Jeroen Roovers <jer@gentoo.org> (4 Feb 2017)
+# Jeroen Roovers <jer@gentoo.org> (2017-02-04)
 # media-libs/libilbc has not been ported to HPPA
 # media-libs/zimg triggers a toolchain issue (bug #597152)
-# sofalizer needs sci-libs/netcdf and sci-libs/hdf5 (bug #615510)
-media-video/ffmpeg libilbc sofalizer zimg
+media-video/ffmpeg libilbc zimg
 
-# Jeroen Roovers <jer@gentoo.org> (3 Feb 2017)
+# Jeroen Roovers <jer@gentoo.org> (2017-02-03)
 # net-mail/notmuch is not keyworded
 mail-client/mutt notmuch
 
-# Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
+# Justin Lecher <jlec@gentoo.org> (2017-01-15)
 # unkeyworded rev deps
 dev-games/openscenegraph gdal las
 
-# Jeroen Roovers <jer@gentoo.org> (28 Dec 2016)
+# Jeroen Roovers <jer@gentoo.org> (2016-12-28)
 # "#error Unsupported architecture"
 dev-libs/libpcre2 jit
 
-# Jeroen Roovers <jer@gentoo.org> (31 May 2016)
+# Jeroen Roovers <jer@gentoo.org> (2016-05-31)
 # Mask kde-frameworks/kapidox (bug #568972)
 kde-frameworks/extra-cmake-modules doc
 
-# Jeroen Roovers <jer@gentoo.org> (19 May 2016)
+# Jeroen Roovers <jer@gentoo.org> (2016-05-19)
 # pulls in many dev-ruby/asciidoctor dependencies (bug #583390)
 net-misc/chrony html
 
-# Jeroen Roovers <jer@gentoo.org> (16 Aug 2015)
+# Jeroen Roovers <jer@gentoo.org> (2015-08-16)
 # Bundles luajit which has not been ported to HPPA (bug #554376)
 app-text/texlive-core luajittex
 dev-texlive/texlive-basic luajittex
 
-# Jeroen Roovers <jer@gentoo.org> (3 Jul 2015)
+# Jeroen Roovers <jer@gentoo.org> (2015-07-03)
 # net-libs/nghttp2 fails to compile (bug #552898)
 net-libs/nghttp2 cxx
 
-# Jeroen Roovers <jer@gentoo.org> (17 May 2015)
+# Jeroen Roovers <jer@gentoo.org> (2015-05-17)
 # Mask USE=rados for net-analyzer/rrdtool since sys-cluster/ceph is not
 # keyworded (bug #549516)
 net-analyzer/rrdtool rados
 
-# Jeroen Roovers <jer@gentoo.org> (26 Apr 2015)
+# Jeroen Roovers <jer@gentoo.org> (2015-04-26)
 # Contact us if you want or have an HPPA cluster with dev-db/mariadb
 # (bug #544378)
 dev-db/mariadb galera
 
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
+# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
 # Needs sci-physics/bullet tested #499974
 dev-libs/efl physics
 
-# Jeroen Roovers <jer@gentoo.org> (2 Feb 2015)
+# Jeroen Roovers <jer@gentoo.org> (2015-02-02)
 # dev-python/gevent requires dev-python/greenlet which has not been ported to
 # HPPA (bug #538510)
 dev-python/pyzor gevent
 
-# Jeroen Roovers <jer@gentoo.org> (19 Oct 2014)
+# Jeroen Roovers <jer@gentoo.org> (2014-10-19)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires
 # dev-python/greenlet which has not been ported to HPPA (bug #525246)
 dev-python/wsgiproxy2 test
 
-# Jeroen Roovers <jer@gentoo.org> (29 Jul 2014)
+# Jeroen Roovers <jer@gentoo.org> (2014-07-29)
 # Test phase requires dev-db/mongodb which requires dev-util/google-perftools
 # which has not been ported to HPPA (bug #517880, bug #525246)
 dev-libs/mongo-c-driver test
 dev-python/pymongo test
 
-# Jeroen Roovers <jer@gentoo.org> (6 Mar 2014)
+# Jeroen Roovers <jer@gentoo.org> (2014-03-06)
 # USE=gui requires x11-libs/qscintilla,
 sci-mathematics/octave gui
 
-# Julian Ospald <hasufell@gentoo.org> (23 Nov 2013)
+# Julian Ospald <hasufell@gentoo.org> (2013-11-23)
 # needs app-arch/innoextract (bug #492326)
 games-fps/duke3d-data gog
 
-# Jeroen Roovers <jer@gentoo.org> (23 Jul 2013)
+# Jeroen Roovers <jer@gentoo.org> (2013-07-23)
 # graphite is not implemented on HPPA
 sys-devel/gcc graphite
 
-# Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
+# Julian Ospald <hasufell@gentoo.org> (2013-03-31)
 # depends on mono
 >=net-irc/hexchat-2.9.4-r1 theme-manager
 
-# Jeroen Roovers <jer@gentoo.org> (22 Jan 2013)
+# Jeroen Roovers <jer@gentoo.org> (2013-01-22)
 # dev-python/greenlet has not been ported to HPPA but is needed for
 # dev-python/restkit which is needed for dev-python/pyquery's test phase
 # (bug #452764)
 dev-python/pyquery test
 
-# Jeroen Roovers <jer@gentoo.org> (2 Jan 2013)
+# Jeroen Roovers <jer@gentoo.org> (2013-01-02)
 # Mask non-keyworded sci-libs/hdf5 for sci-mathematics/octave
 sci-mathematics/octave hdf5 qhull
 
-# Jeroen Roovers <jer@gentoo.org> (8 Jul 2012)
+# Jeroen Roovers <jer@gentoo.org> (2012-07-08)
 # media-libs/devil has not been fully tested on HPPA
 media-gfx/graphviz devil
 
-# Jeroen Roovers <jer@gentoo.org> (3 Jul 2012)
+# Jeroen Roovers <jer@gentoo.org> (2012-07-03)
 # Mask USE=connman for net-libs/gupnp (bug #424225)
 net-libs/gupnp connman
 
-# Jeroen Roovers <jer@gentoo.org> (21 May 2012)
+# Jeroen Roovers <jer@gentoo.org> (2012-05-21)
 # HPPA is an unsupported architecture
 dev-libs/libpcre jit
 
-# Arun Raghavan <ford_prefect@gentoo.org> (24 May 2012)
+# Arun Raghavan <ford_prefect@gentoo.org> (2012-05-24)
 # media-sound/pulseaudio needs PyQt5[dbus] for making the equalizer module
 # usable. Mask until this is available.
-# Jeroen Roovers <jer@gentoo.org> (18 Feb 2014)
+# Jeroen Roovers <jer@gentoo.org> (2014-02-18)
 # OSS is the only kernel audio interface that works on HPPA
 media-sound/pulseaudio equalizer -oss
 
-# Jeroen Roovers <jer@gentoo.org> (21 May 2012)
+# Jeroen Roovers <jer@gentoo.org> (2012-05-21)
 # media-sound/lilypond has problems running mpost (bug #416961)
 app-text/asciidoc test
 
-# Jeroen Roovers <jer@gentoo.org> (19 Apr 2012)
+# Jeroen Roovers <jer@gentoo.org> (2012-04-19)
 # Requires sys-power/upower or sys-power/upower-pm-utils which are
 # not much use on HPPA
 xfce-extra/xfce4-systemload-plugin upower
 xfce-base/xfce4-session upower
 xfce-base/xfce4-settings upower
 
-# Jeroen Roovers <jer@gentoo.org> (25 Oct 2011)
+# Jeroen Roovers <jer@gentoo.org> (2011-10-25)
 # Depends upon an as yet unsupported version of dev-libs/dietlibc
 dev-libs/libowfat diet
 
-# Jeroen Roovers <jer@gentoo.org> (5 Jun 2011)
+# Jeroen Roovers <jer@gentoo.org> (2011-06-05)
 # app-office/gnumeric is not keyworded (bug #367513)
 app-office/lyx gnumeric
 
-# Jeroen Roovers <jer@gentoo.org> (24 Feb 2011)
+# Jeroen Roovers <jer@gentoo.org> (2011-02-24)
 # Needs Java (bug #355353)
 app-text/texlive pdfannotextractor
 
-# Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
+# Justin Lecher <jlec@gentoo.org> (2010-08-13)
 # MKL not available on this arch
 media-gfx/povray mkl
 
-# Pacho Ramos <pacho@gentoo.org> (11 Jul 2010)
+# Pacho Ramos <pacho@gentoo.org> (2010-07-11)
 # Mask due bug #324511, this will be general once needed by more packages.
 net-im/pidgin gstreamer
 x11-misc/xscreensaver gdm new-login
@@ -215,20 +231,20 @@ x11-libs/wxGTK gstreamer
 net-p2p/mldonkey guionly gtk
 net-im/pidgin eds
 
-# Jeroen Roovers <jer@gentoo.org> (15 Apr 2008)
+# Jeroen Roovers <jer@gentoo.org> (2008-04-15)
 # media-sound/fluidsynth fails to build with stable libtool, so it can't be
 # tested for ~hppa keywording right now
 media-sound/mpd fluidsynth
 
-# Jeroen Roovers <jer@gentoo.org> (16 Sep 2008)
+# Jeroen Roovers <jer@gentoo.org> (2008-09-16)
 # cpudetection and custom-cpuopts does not apply
 # to HPPA (bug #234629)
 media-video/mplayer cpudetection
 
-# Jeroen Roovers <jer@gentoo.org> (16 Sep 2008)
+# Jeroen Roovers <jer@gentoo.org> (2008-09-16)
 # app-text/xindy needs dev-lisp/clisp and clisp does not build (bug #229217)
 app-text/texlive xindy
 
-# Mart Raudsepp <leio@gentoo.org> (02 Apr 2008)
+# Mart Raudsepp <leio@gentoo.org> (2008-04-02)
 # media-plugins/gst-plugins-{dvb,fluendo-mpegdemux,bad} not keyworded
 media-plugins/gst-plugins-meta dvb

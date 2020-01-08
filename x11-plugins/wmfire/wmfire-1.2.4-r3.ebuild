@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,6 +30,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-1.2.3-stringh.patch
 	eapply "${FILESDIR}"/${P}-no_display.patch
 	eapply "${FILESDIR}"/${P}-lastprocessor_SMP.patch
+	eapply "${FILESDIR}"/${P}-inline_c99.patch
 	eautoreconf
 }
 

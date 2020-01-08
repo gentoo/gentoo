@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,13 +6,14 @@ EAPI=6
 inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="A parallel implementation of gzip"
-HOMEPAGE="http://www.zlib.net/pigz/"
-SRC_URI="http://www.zlib.net/pigz/${P}.tar.gz"
+HOMEPAGE="https://www.zlib.net/pigz/"
+SRC_URI="https://www.zlib.net/pigz/${P}.tar.gz"
 
 LICENSE="ZLIB"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~ppc-macos ~sparc64-solaris"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~ppc-macos ~sparc64-solaris"
 IUSE="static symlink test"
+RESTRICT="!test? ( test )"
 
 LIB_DEPEND="sys-libs/zlib[static-libs(+)]"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"

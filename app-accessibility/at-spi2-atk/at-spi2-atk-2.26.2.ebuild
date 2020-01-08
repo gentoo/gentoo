@@ -11,8 +11,9 @@ HOMEPAGE="https://wiki.gnome.org/Accessibility"
 
 LICENSE="LGPL-2+"
 SLOT="2"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=sys-apps/dbus-1.5[${MULTILIB_USEDEP}]

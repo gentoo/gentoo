@@ -1,0 +1,21 @@
+From 683788d49eb9cee391984659c39c3e2ac236b420 Mon Sep 17 00:00:00 2001
+From: Thomas Klausner <tk@giga.or.at>
+Date: Thu, 23 May 2019 08:11:34 +0200
+Subject: [PATCH] Fix PCH-less compilation on Unix (#576)
+
+---
+ src/welcomescreen.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/welcomescreen.cpp b/src/welcomescreen.cpp
+index 65eb7d0d92..a24b4d7d23 100644
+--- a/src/welcomescreen.cpp
++++ b/src/welcomescreen.cpp
+@@ -26,6 +26,7 @@
+ #include "welcomescreen.h"
+ 
+ #include "colorscheme.h"
++#include "customcontrols.h"
+ #include "crowdin_gui.h"
+ #include "edapp.h"
+ #include "edframe.h"

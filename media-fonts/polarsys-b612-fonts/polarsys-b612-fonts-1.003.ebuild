@@ -11,7 +11,7 @@ SRC_URI="https://git.polarsys.org/c/b612/b612.git/snapshot/b612-bd14fde2544566e6
 
 LICENSE="EPL-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 IUSE=""
 
 FONT_S="${S}/TTF"

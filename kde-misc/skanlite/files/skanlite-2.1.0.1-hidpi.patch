@@ -1,0 +1,67 @@
+From cb382f87d63bdc3736696ee289875bde2ecee9e5 Mon Sep 17 00:00:00 2001
+From: Alexander Volkov <a.volkov@rusbitech.ru>
+Date: Thu, 25 Apr 2019 18:09:59 +0300
+Subject: Add HiDPI support
+
+Reviewers: sars, davidedmundson, ngraham
+
+Reviewed By: sars
+
+Differential Revision: https://phabricator.kde.org/D20821
+---
+ src/ImageViewer.cpp | 14 +++++++++++---
+ src/main.cpp        |  1 +
+ 2 files changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/src/ImageViewer.cpp b/src/ImageViewer.cpp
+index 09f9b3d..5cf1439 100644
+--- a/src/ImageViewer.cpp
++++ b/src/ImageViewer.cpp
+@@ -87,14 +87,19 @@ void ImageViewer::setQImage(QImage *img)
+     }
+ 
+     d->img = img;
+-    d->scene->setSceneRect(0, 0, img->width(), img->height());
++    const auto dpr = devicePixelRatioF();
++    d->img->setDevicePixelRatio(dpr);
++    d->scene->setSceneRect(0, 0, img->width() / dpr, img->height() / dpr);
+ }
+ 
+ // ------------------------------------------------------------------------
+ void ImageViewer::drawBackground(QPainter *painter, const QRectF &rect)
+ {
+     painter->fillRect(rect, QColor(0x70, 0x70, 0x70));
+-    painter->drawImage(rect, *d->img, rect);
++    QRectF r = rect & sceneRect();
++    const auto dpr = d->img->devicePixelRatio();
++    QRectF srcRect = QRectF(r.topLeft() * dpr, r.size() * dpr);
++    painter->drawImage(r, *d->img, srcRect);
+ }
+ 
+ // ------------------------------------------------------------------------
+@@ -118,7 +123,10 @@ void ImageViewer::zoomActualSize()
+ // ------------------------------------------------------------------------
+ void ImageViewer::zoom2Fit()
+ {
+-    fitInView(d->img->rect(), Qt::KeepAspectRatio);
++    QRectF r = d->img->rect();
++    const auto dpr = d->img->devicePixelRatio();
++    r = QRectF(r.topLeft() / dpr, r.size() / dpr);
++    fitInView(r, Qt::KeepAspectRatio);
+ }
+ 
+ // ------------------------------------------------------------------------
+diff --git a/src/main.cpp b/src/main.cpp
+index aa704be..ae0d9b6 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -34,6 +34,7 @@
+ 
+ int main(int argc, char *argv[])
+ {
++    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+     QApplication app(argc, argv);
+ 
+     Kdelibs4ConfigMigrator migrate(QLatin1String("Skanlite"));
+-- 
+cgit v1.1

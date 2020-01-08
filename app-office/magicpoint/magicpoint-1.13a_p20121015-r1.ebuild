@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,7 @@ COMMON_DEPEND="x11-libs/libICE
 		x11-libs/libXft
 		media-libs/fontconfig
 	)
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	m17n-lib? (
 		dev-libs/m17n-lib
 		fontconfig? ( media-libs/fontconfig )

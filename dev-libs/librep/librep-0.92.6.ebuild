@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,12 +11,12 @@ SRC_URI="http://download.tuxfamily.org/librep/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE="emacs readline"
 
 RDEPEND="
 	>=sys-libs/gdbm-1.8.0
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	readline? ( sys-libs/readline:0= )
 "
 DEPEND="${RDEPEND}

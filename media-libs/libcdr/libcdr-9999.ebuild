@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,7 @@ HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libcdr"
 LICENSE="MPL-2.0"
 SLOT="0"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/icu:=

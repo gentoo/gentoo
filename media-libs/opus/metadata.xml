@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>sound@gentoo.org</email>
-    <name>Gentoo Sound project</name>
-  </maintainer>
-  <use>
-    <flag name="ambisonics">Enable ambisonics support (experimental).</flag>
-    <flag name="custom-modes">Build with custom-modes.</flag>
-  </use>
+	<maintainer type="project">
+		<email>sound@gentoo.org</email>
+		<name>Gentoo Sound project</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>steils@gentoo.org</email>
+		<name>Stefan Strogin</name>
+	</maintainer>
+	<use>
+		<flag name="custom-modes">Enable non-Opus modes, e.g. 44.1 kHz and 2^n frames</flag>
+	</use>
 </pkgmetadata>

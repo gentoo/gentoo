@@ -15,7 +15,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 # Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
 [[ ${PV} = 9999 ]] || \
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc examples static-libs"
 
 RDEPEND=""

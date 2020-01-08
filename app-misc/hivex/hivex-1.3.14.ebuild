@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 USE_RUBY="ruby23 ruby24 ruby25"
 RUBY_OPTIONAL=yes
 
-PYTHON_COMPAT=(python2_7 python3_{4,5,6})
+PYTHON_COMPAT=(python2_7 python3_6)
 
 inherit eutils perl-module ruby-ng python-single-r1
 
@@ -27,7 +27,10 @@ RDEPEND="
 			 dev-ml/findlib[ocamlopt]
 			 )
 	readline? ( sys-libs/readline:0 )
-	perl? ( dev-perl/IO-stringy )
+	perl? (
+		dev-lang/perl:=
+		dev-perl/IO-stringy
+	)
 	ruby? ( $(ruby_implementations_depend) )
 	python? ( ${PYTHON_DEPS} )
 	"

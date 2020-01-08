@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription>A program implementing the DKIM signing/verification for Courier
-</longdescription>
-<use>
-	<flag name="debug">
-	Log process and signal information. Also leave the child process running for
-	gdb examination.
-	</flag>
-	<flag name="opendbx">
-	An alternate statistics based storage engine.
-	</flag>
-</use>
-
-
+  <maintainer type="person">
+    <email>hanno@gentoo.org</email>
+  </maintainer>
 </pkgmetadata>

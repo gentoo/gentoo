@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="https://www.kernel.org/pub/linux/utils/kbd/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
 fi
 
 inherit eutils ${SCM}
@@ -21,8 +21,9 @@ HOMEPAGE="http://kbd-project.org/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="nls pam test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="pam? ( virtual/pam )
+RDEPEND="pam? ( sys-libs/pam )
 	app-arch/gzip"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

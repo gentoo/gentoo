@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 inherit autotools fdo-mime flag-o-matic gnome2-utils python-single-r1
 
 DESCRIPTION="Graphical IRC client based on XChat"
@@ -31,7 +31,7 @@ COMMON_DEPEND="dev-libs/glib:2
 	libnotify? ( x11-libs/libnotify )
 	lua? ( dev-lang/lua:= )
 	nls? ( virtual/libintl )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	plugin-sysinfo? ( sys-apps/pciutils )
 	python? ( ${PYTHON_DEPS} )
 	spell? ( app-text/iso-codes )

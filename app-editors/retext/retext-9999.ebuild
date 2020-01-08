@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-# no pypy{,3} support as PyQt5 does not support it at 2018-11-18
+# no pypy{,3} support as PyQt5 does not support it at 2019-05-15
 # https://bitbucket.org/pypy/compatibility/wiki/Home#!gui-library-bindings
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 gnome2-utils virtualx xdg-utils
+inherit distutils-r1 virtualx xdg-utils
 
 MY_PN="ReText"
 MY_P="${MY_PN}-${PV/_/~}"
@@ -36,13 +36,18 @@ RDEPEND="
 	dev-python/markups[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 	dev-python/python-markdown-math[${PYTHON_USEDEP}]
-	dev-python/PyQt5[gui,network,printsupport,webengine,widgets,${PYTHON_USEDEP}]
+	dev-python/PyQt5[gui,network,printsupport,widgets,${PYTHON_USEDEP}]
+	|| (
+		dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+		<dev-python/PyQt5-5.12[webengine]
+		)
 	spell? ( dev-python/pyenchant[${PYTHON_USEDEP}] )
 "
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( x11-base/xorg-server[xvfb] )
 "
 
 src_test() {
@@ -55,7 +60,7 @@ python_test() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 
 	einfo "Starting with retext-7.0.4 the markdown-math plugin is installed."
 	einfo "Note that you can use different math delimiters, e.g. \(...\) for inline math."
@@ -64,6 +69,6 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 }

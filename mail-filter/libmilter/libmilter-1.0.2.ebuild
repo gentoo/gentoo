@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="2"
+EAPI=7
 
-inherit eutils multilib toolchain-funcs
+inherit multilib toolchain-funcs
 
 # This library is part of sendmail, but it does not share the version number with it.
 # In order to find the right libmilter version number, check SMFI_VERSION definition
@@ -17,7 +17,7 @@ SRC_URI="ftp://ftp.sendmail.org/pub/sendmail/sendmail.${SENDMAIL_VER}.tar.gz"
 
 LICENSE="Sendmail"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="ipv6 poll"
 
 DEPEND="!mail-mta/sendmail
@@ -27,8 +27,9 @@ RDEPEND="!mail-mta/sendmail"
 S="${WORKDIR}/sendmail-${SENDMAIL_VER}"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-build-system.patch
-	epatch "${FILESDIR}"/${PN}-sharedlib.patch
+	eapply "${FILESDIR}"/${PN}-build-system.patch
+	eapply "${FILESDIR}"/${PN}-sharedlib.patch
+	default
 
 	local CC="$(tc-getCC)"
 	local ENVDEF="-DNETUNIX -DNETINET"
@@ -45,7 +46,7 @@ src_prepare() {
 
 src_compile() {
 	pushd libmilter
-	emake -j1 MILTER_SOVER=${PV} || die "libmilter compilation failed"
+	emake -j1 MILTER_SOVER=${PV}
 	popd
 }
 
@@ -58,9 +59,8 @@ src_install () {
 		MANOWN=root MANGRP=0 INCOWN=root INCGRP=0 \
 		MSPQOWN=root CFOWN=root CFGRP=0 \
 		MILTER_SOVER=${PV} \
-		install -C obj.*/libmilter \
-		|| die "install failed"
+		install -C obj.*/libmilter
 
 	dodoc libmilter/README
-	dohtml libmilter/docs/*
+	dodoc libmilter/docs/*
 }

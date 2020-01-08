@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/mormon/${P}.tar.bz2"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc64 ~sh ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc64 ~sh ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 RDEPEND="games-misc/fortune-mod"

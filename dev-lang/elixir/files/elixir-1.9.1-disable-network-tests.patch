@@ -1,0 +1,20 @@
+diff --git a/lib/mix/test/mix/tasks/release_test.exs b/lib/mix/test/mix/tasks/release_test.exs
+index f200c3e..9b2c75c 100644
+--- a/lib/mix/test/mix/tasks/release_test.exs
++++ b/lib/mix/test/mix/tasks/release_test.exs
+@@ -268,6 +268,7 @@ defmodule Mix.Tasks.ReleaseTest do
+     end)
+   end
+ 
++  @tag :skip
+   @tag :epmd
+   test "executes rpc instructions" do
+     in_fixture("release_test", fn ->
+@@ -333,6 +334,7 @@ defmodule Mix.Tasks.ReleaseTest do
+     end)
+   end
+ 
++  @tag :skip
+   @tag :unix
+   test "runs in daemon mode" do
+     in_fixture("release_test", fn ->

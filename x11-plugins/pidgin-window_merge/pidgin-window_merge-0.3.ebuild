@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A Pidgin plugin that merges the Buddy List window with a conversation window"
 HOMEPAGE="https://github.com/dm0-/window_merge"
-SRC_URI="mirror://github/dm0-/${PN#pidgin-}/${P#pidgin-}.tar.gz"
+SRC_URI="https://github.com/downloads/dm0-/${PN#pidgin-}/${P#pidgin-}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

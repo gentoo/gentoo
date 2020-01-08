@@ -11,7 +11,7 @@ SRC_URI="https://github.com/ImageOptim/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0/0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_sse2 debug openmp static-libs"
 
 DEPEND=""
@@ -40,8 +40,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake shared imagequant.pc || die "make failed"
-	use static-libs && (emake static || die "make failed")
+	emake shared imagequant.pc
+	use static-libs && emake static
 }
 
 src_install() {

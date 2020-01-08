@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 else
 	SRC_URI="https://github.com/sadko4u/lsp-plugins/archive/${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${P}"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="LGPL-3"

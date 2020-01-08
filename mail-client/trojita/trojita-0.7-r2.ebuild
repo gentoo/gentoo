@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ fi
 LICENSE="|| ( GPL-2 GPL-3 )"
 SLOT="0"
 IUSE="+crypt +dbus debug +password test +zlib"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="password? ( dbus )"
 

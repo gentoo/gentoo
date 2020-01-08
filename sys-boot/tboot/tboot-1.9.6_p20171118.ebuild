@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~perfinion/distfiles/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 -*"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="custom-cflags selinux"
 
 # requires patching the kernel src
@@ -51,7 +51,7 @@ src_install() {
 	emake DISTDIR="${D}" install
 
 	dodoc "${DOCS[@]}"
-	dodoc docs/*.txt lcptools/*.{txt,pdf} || die "docs failed"
+	dodoc docs/*.txt lcptools/*.{txt,pdf}
 
 	cd "${D}"
 	mkdir -p usr/lib/tboot/ || die
@@ -59,11 +59,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	mount-boot_mount_boot_partition
-
 	cp ${ROOT%/}/usr/lib/tboot/boot/* ${ROOT%/}/boot/
-
-	mount-boot_pkg_postinst
 
 	ewarn "Please remember to download the SINIT AC Module relevant"
 	ewarn "for your platform from:"

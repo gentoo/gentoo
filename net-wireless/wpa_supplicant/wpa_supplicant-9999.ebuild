@@ -13,12 +13,12 @@ if [ "${PV}" = "9999" ]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://w1.fi/hostap.git"
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 	SRC_URI="https://w1.fi/releases/${P}.tar.gz"
 fi
 
 SLOT="0"
-IUSE="ap bindist dbus eap-sim eapol_test fasteap +hs2-0 libressl macsec p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+IUSE="ap bindist dbus eap-sim eapol_test fasteap +fils +hs2-0 libressl macsec p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	kernel_linux? (
@@ -138,6 +138,8 @@ src_configure() {
 	Kconfig_style_config OCV
 	Kconfig_style_config TLSV11
 	Kconfig_style_config TLSV12
+	Kconfig_style_config GETRANDOM
+	Kconfig_style_config MBO
 
 	# Basic authentication methods
 	# NOTE: we don't set GPSK or SAKE as they conflict
@@ -166,6 +168,10 @@ src_configure() {
 		Kconfig_style_config CTRL_IFACE_DBUS
 		Kconfig_style_config CTRL_IFACE_DBUS_NEW
 		Kconfig_style_config CTRL_IFACE_DBUS_INTRO
+	else
+		Kconfig_style_config CTRL_IFACE_DBUS n
+		Kconfig_style_config CTRL_IFACE_DBUS_NEW n
+		Kconfig_style_config CTRL_IFACE_DBUS_INTRO n
 	fi
 
 	if use eapol_test ; then
@@ -211,10 +217,12 @@ src_configure() {
 
 	Kconfig_style_config TLS openssl
 	Kconfig_style_config FST
-	if ! use bindist; then
+	if ! use bindist || use libressl; then
 		Kconfig_style_config EAP_PWD
-		Kconfig_style_config FILS
-		Kconfig_style_config FILS_SK_PFS
+		if use fils; then
+			Kconfig_style_config FILS
+			Kconfig_style_config FILS_SK_PFS
+		fi
 		# Enabling mesh networks.
 		Kconfig_style_config MESH
 		#WPA3

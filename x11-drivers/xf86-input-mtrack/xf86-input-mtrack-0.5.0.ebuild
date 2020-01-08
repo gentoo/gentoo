@@ -7,7 +7,7 @@ inherit vcs-snapshot
 
 DESCRIPTION="Xorg Driver for Multitouch Trackpads"
 HOMEPAGE="https://github.com/p2rkw/xf86-input-mtrack"
-SRC_URI="https://github.com/p2rkw/xf86-input-mtrack/tarball/v${PV/_/-} -> ${P}.tar.gz"
+SRC_URI="https://github.com/p2rkw/xf86-input-mtrack/archive/v${PV/_/-}.tar.gz -> ${P}.tar.gz"
 IUSE="debug"
 
 LICENSE="GPL-2"

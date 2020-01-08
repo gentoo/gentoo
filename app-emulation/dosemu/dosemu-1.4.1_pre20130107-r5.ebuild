@@ -1,44 +1,49 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2002-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI="7"
 
 inherit autotools eutils flag-o-matic pax-utils toolchain-funcs
 
 P_FD="dosemu-freedos-1.0-bin"
 COMMIT="15cfb41ff20a052769d753c3262c57ecb050ad71"
+# snapshot is downloaded as:
+# https://sourceforge.net/code-snapshots/git/d/do/dosemu/code.git/dosemu-code-${COMMIT}.zip
 
 DESCRIPTION="DOS Emulator"
 HOMEPAGE="http://www.dosemu.org/"
 SRC_URI="mirror://sourceforge/dosemu/${P_FD}.tgz
-	https://sourceforge.net/code-snapshots/git/d/do/dosemu/code.git/dosemu-code-${COMMIT}.zip -> ${P}.zip"
+	https://dev.gentoo.org/~slyfox/distfiles/${P}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* amd64 x86"
-IUSE="X svga gpm debug alsa sndfile fluidsynth"
+IUSE="X alsa debug fluidsynth gpm svga"
 
-RDEPEND="X? ( x11-libs/libX11
-		x11-libs/libXxf86vm
-		x11-libs/libXau
-		x11-libs/libXext
-		x11-libs/libXdmcp
-		x11-apps/xset
-		x11-apps/xlsfonts
+BDEPEND="app-arch/unzip
+	X? (
 		x11-apps/bdftopcf
-		x11-apps/mkfontdir )
-	svga? ( media-libs/svgalib )
-	gpm? ( sys-libs/gpm )
+		>=x11-apps/mkfontscale-1.2.0
+	)"
+COMMON_DEPEND="media-libs/libsdl
+	>=sys-libs/slang-1.4
+	X? (
+		x11-libs/libX11
+		x11-libs/libXext
+		x11-libs/libXxf86vm
+	)
 	alsa? ( media-libs/alsa-lib )
-	sndfile? ( media-libs/libsndfile )
-	fluidsynth? ( media-sound/fluidsynth
-		media-sound/fluid-soundfont )
-	media-libs/libsdl
-	>=sys-libs/slang-1.4"
-
-DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )
-	>=sys-devel/autoconf-2.57"
+	fluidsynth? (
+		media-sound/fluid-soundfont
+		media-sound/fluidsynth
+	)
+	gpm? ( sys-libs/gpm )
+	svga? ( media-libs/svgalib )"
+#	sndfile? ( media-libs/libsndfile )
+DEPEND="${COMMON_DEPEND}
+	X? ( x11-base/xorg-proto )"
+RDEPEND="${COMMON_DEPEND}
+	X? ( x11-apps/xset )"
 
 S="${WORKDIR}/${PN}-code-${COMMIT}"
 
@@ -49,6 +54,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-flex-2.6.3.patch
 	"${FILESDIR}"/${P}-ia16-ldflags.patch
 	"${FILESDIR}"/${P}-fix-inline.patch
+	"${FILESDIR}"/${P}-lto.patch
 )
 
 src_prepare() {
@@ -76,13 +82,14 @@ src_configure() {
 		fi
 	fi
 
+	# sndfile support is unconditionally disabled in src/plugin/sndfile/snd_o_wav.c
 	econf $(use_with X x) \
 		$(use_with svga svgalib) \
 		$(use_enable debug) \
 		$(use_with gpm) \
 		$(use_with alsa) \
-		$(use_with sndfile) \
 		$(use_with fluidsynth) \
+		--without-sndfile \
 		--with-fdtarball="${DISTDIR}"/${P_FD}.tgz \
 		--sysconfdir="${EPREFIX}"/etc/dosemu/ \
 		--with-docdir="${EPREFIX}"/usr/share/doc/${PF} \

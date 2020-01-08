@@ -2,7 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>jsbronder@gentoo.org</email>
+		<email>whissi@gentoo.org</email>
+		<name>Thomas Deutschmann</name>
 	</maintainer>
 	<use>
 		<flag name="7za">Add support for extracting 7za files</flag>

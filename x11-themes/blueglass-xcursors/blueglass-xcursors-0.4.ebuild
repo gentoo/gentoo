@@ -1,27 +1,27 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 MY_P="5532-BlueGlass-XCursors-3D-${PV}"
+
 DESCRIPTION="A high quality set of Xfree 4.3.0 animated mouse cursors"
 HOMEPAGE="http://www.kde-look.org/content/show.php?content=5532"
 SRC_URI="http://kde-look.org/content/files/$MY_P.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
-IUSE=""
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
 
-RDEPEND=""
-DEPEND="${RDEPEND}"
+S="${WORKDIR}/${MY_P:5}"
 
 # Note: although the package name is BlueGlass, the tarball & authors directions
 # use the directory 'Blue'.
 src_install() {
-	dodir /usr/share/cursors/xorg-x11/Blue/cursors/
-	cp -R "${WORKDIR}"/${MY_P:5}/Blue/cursors "${D}"/usr/share/cursors/xorg-x11/Blue/ || die
-	dodoc "${WORKDIR}"/${MY_P:5}/README
+	insinto /usr/share/cursors/xorg-x11/Blue
+	doins -r Blue/cursors
+
+	einstalldocs
 }
 
 pkg_postinst() {
@@ -33,14 +33,15 @@ pkg_postinst() {
 	einfo "Xcursor.size: 48"
 	einfo ""
 	einfo "To globally use this set of mouse cursors edit the file:"
-	einfo "   /usr/share/cursors/xorg-x11/default/index.theme"
+	einfo "   ${EROOT}/usr/share/cursors/xorg-x11/default/index.theme"
 	einfo "and change the line:"
 	einfo "    Inherits=[current setting]"
 	einfo "to"
 	einfo "    Inherits=Blue"
 	einfo ""
 	einfo "Note this will be overruled by a user's ~/.Xdefaults file."
-	einfo ""
+	einfo
+
 	ewarn "If you experience flickering, try setting the following line in"
 	ewarn "the Device section of your XF86Config:"
 	ewarn "Option  \"HWCursor\"  \"false\""

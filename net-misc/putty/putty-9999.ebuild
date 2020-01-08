@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils gnome2-utils git-r3 toolchain-funcs
+EAPI=7
+inherit autotools desktop git-r3 toolchain-funcs xdg-utils
 
 DESCRIPTION="A Free Telnet/SSH Client"
 HOMEPAGE="https://www.chiark.greenend.org.uk/~sgtatham/putty/"
@@ -42,7 +42,6 @@ src_prepare() {
 	default
 
 	sed -i \
-		-e '/AM_PATH_GTK(/d' \
 		-e 's|-Werror||g' \
 		configure.ac || die
 
@@ -89,14 +88,10 @@ src_install() {
 	fi
 }
 
-pkg_preinst() {
-	use gtk && gnome2_icon_savelist
-}
-
 pkg_postinst() {
-	use gtk && gnome2_icon_cache_update
+	use gtk && xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	use gtk && gnome2_icon_cache_update
+	use gtk && xdg_icon_cache_update
 }

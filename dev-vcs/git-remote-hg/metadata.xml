@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>wizardedit@gentoo.org</email>
-		<name>Austin English</name>
+		<email>realnc@gmail.com</email>
+		<name>Nikos Chantziaras</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		'git-remote-hg' is the semi-official Mercurial bridge from Git project,
@@ -11,6 +15,6 @@
 		Mercurial repositories as if they were Git ones.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">felipec/git-remote-hg</remote-id>
+		<remote-id type="github">mnauw/git-remote-hg</remote-id>
 	</upstream>
 </pkgmetadata>

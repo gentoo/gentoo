@@ -39,7 +39,7 @@ src_compile() {
 
 	if use doc ; then
 		cd "${S}/doc"
-		emake gendoc || die
+		emake gendoc
 	fi
 }
 

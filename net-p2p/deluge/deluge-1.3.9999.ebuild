@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
-inherit distutils-r1 systemd user
+inherit distutils-r1 systemd
 
 DESCRIPTION="BitTorrent client with a client/server model"
 HOMEPAGE="https://deluge-torrent.org/"
@@ -35,7 +35,9 @@ PATCHES=(
 
 DEPEND="<net-libs/libtorrent-rasterbar-1.2[python,${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-util/intltool"
+	dev-util/intltool
+	acct-group/deluge
+	acct-user/deluge"
 RDEPEND="<net-libs/libtorrent-rasterbar-1.2[python,${PYTHON_USEDEP}]
 	dev-python/chardet[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
@@ -112,8 +114,6 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
 	elog
 	elog "If, after upgrading, deluge doesn't work, please remove the"
 	elog "'~/.config/deluge' directory and try again, but make a backup"

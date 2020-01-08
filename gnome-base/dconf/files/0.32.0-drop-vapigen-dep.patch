@@ -1,0 +1,44 @@
+From 22d4c12d73238d24b91a753c414c5f5a5a9c76b6 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 8 Sep 2019 14:17:20 +0300
+Subject: [PATCH] build: Don't hard require vapigen.pc
+
+.. by having a fallback to the well known location of packages shipped
+vapi files
+---
+ client/meson.build | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+
+diff --git a/client/meson.build b/client/meson.build
+index f3b7122..7dbca97 100644
+--- a/client/meson.build
++++ b/client/meson.build
+@@ -57,17 +57,21 @@ pkg.generate(
+ )
+ 
+ if get_option('vapi')
+-  vapigen_dep = dependency('vapigen')
++  vapigen_dep = dependency('vapigen', required: false)
+ 
+   vapi_data = files(
+     'dconf.vapi',
+     'dconf.deps',
+   )
+ 
+-  vapi_dir = vapigen_dep.get_pkgconfig_variable(
+-    'vapidir',
+-    define_variable: ['datadir', dconf_datadir]
++  if vapigen_dep.found()
++    vapi_dir = vapigen_dep.get_pkgconfig_variable(
++      'vapidir',
++      define_variable: ['datadir', dconf_datadir]
+   )
++  else
++    vapi_dir = join_paths(dconf_datadir, 'vala', 'vapi')
++  endif
+ 
+   install_data(
+     vapi_data,
+-- 
+2.20.1
+

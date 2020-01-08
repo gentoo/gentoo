@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit eutils autotools linux-info perl-functions python-single-r1 versionator
 
@@ -20,6 +20,7 @@ SLOT="0/"${MY_PV_1}""
 
 KEYWORDS="~amd64"
 IUSE="bash-completion debug doc erlang +fuse gtk inspect-icons introspection lua ocaml +perl python ruby selinux static-libs systemtap test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -33,7 +34,7 @@ COMMON_DEPEND="
 	>=app-misc/hivex-1.3.1
 	dev-libs/libpcre:3
 	app-arch/cpio
-	dev-lang/perl
+	dev-lang/perl:=
 	virtual/cdrtools
 	>=app-emulation/qemu-2.0[qemu_softmmu_targets_x86_64,systemtap?,selinux?,filecaps]
 	sys-apps/fakeroot

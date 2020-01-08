@@ -1,12 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 DESCRIPTION="Some nice themes for Sawfish"
 HOMEPAGE="http://themes.freshmeat.net/"
 THEME_URI="http://download.freshmeat.net/themes/"
-SRC_URI="${THEME_URI}/absolutedarkness/absolutedarkness-0.30.tar.gz
+SRC_URI="
+	${THEME_URI}/absolutedarkness/absolutedarkness-0.30.tar.gz
 	${THEME_URI}/adaptblue/adaptblue-0.30.tar.gz
 	${THEME_URI}/ampullacu/ampullacu-0.30.tar.gz
 	${THEME_URI}/antarctic_/antarctic_-0.30.tar.gz
@@ -59,17 +60,18 @@ SRC_URI="${THEME_URI}/absolutedarkness/absolutedarkness-0.30.tar.gz
 	${THEME_URI}/whistlerk_/whistlerk_-0.30.tar.gz
 	${THEME_URI}/win98/win98-0.30.tar.gz"
 
-SLOT="1"
 LICENSE="GPL-2"
+SLOT="1"
 KEYWORDS="alpha ~amd64 ia64 ppc ~ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="=x11-wm/sawfish-1*"
-S=${WORKDIR}
+
+S="${WORKDIR}"
 
 src_compile() { :; }
 
 src_install() {
-	dodir /usr/share/sawfish/themes
-	cp -pPR * "${D}"/usr/share/sawfish/themes
+	insinto /usr/share/sawfish/themes
+	doins -r .
 }

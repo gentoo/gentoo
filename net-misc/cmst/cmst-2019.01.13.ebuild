@@ -6,11 +6,11 @@ inherit gnome2-utils qmake-utils
 
 DESCRIPTION="Qt GUI for Connman with system tray icon"
 HOMEPAGE="https://github.com/andrew-bibb/cmst"
-SRC_URI="${HOMEPAGE}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/andrew-bibb/cmst/archive/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="dev-qt/qtcore:5

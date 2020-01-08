@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit versionator eutils autotools toolchain-funcs multilib flag-o-matic
+inherit versionator eutils autotools toolchain-funcs multilib flag-o-matic usr-ldscript
 
 DESCRIPTION="Light-weight 'standard library' of C functions"
 HOMEPAGE="https://launchpad.net/libnih"
@@ -11,7 +11,7 @@ SRC_URI="https://launchpad.net/${PN}/$(get_version_component_range 1-2)/${PV}/+d
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="+dbus nls static-libs +threads"
 
 # The configure phase will check for valgrind headers, and the tests will use

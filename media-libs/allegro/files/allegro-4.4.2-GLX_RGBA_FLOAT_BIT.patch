@@ -1,0 +1,20 @@
+--- a/addons/allegrogl/src/x.c	2019-01-27 20:35:26.209055856 +0100
++++ b/addons/allegrogl/src/x.c	2019-01-27 20:38:54.135570782 +0100
+@@ -650,7 +650,7 @@
+ 		return -1;
+ 	}
+ 
+-	if (!(render_type & GLX_RGBA_BIT) && !(render_type & GLX_RGBA_FLOAT_BIT)) {
++	if (!(render_type & GLX_RGBA_BIT) && !(render_type & GLX_RGBA_FLOAT_BIT_ARB)) {
+ 		TRACE(PREFIX_I "decode_fbconfig: Not RGBA mode\n");
+ 		return -1;
+ 	}
+@@ -674,7 +674,7 @@
+ 	/* Floating-point depth is not supported as glx extension (yet). */
+ 	i->float_depth = 0;
+ 
+-	i->float_color = (render_type & GLX_RGBA_FLOAT_BIT);
++	i->float_color = (render_type & GLX_RGBA_FLOAT_BIT_ARB);
+ 
+ 	v = glXGetVisualFromFBConfig(_xwin.display, fbc);
+ 	if (!v) {

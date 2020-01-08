@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ DESCRIPTION="Moose types that check against Perl syntax"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 # MooseX::Types::Moose -> MooseX-Types
 RDEPEND="
 	dev-perl/MooseX-Types

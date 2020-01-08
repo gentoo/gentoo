@@ -14,10 +14,10 @@ LICENSE="CC-BY-SA-3.0"
 SLOT="live"
 IUSE="html twoside"
 
-# texlive-bibtexextra: plainurl.bst
-# texlive-latexextra: chngcntr, isodate, marginnote, paralist, tocbibind
-# texlive-mathscience: algorithm, algorithmic
-# leaflet used by eapi-cheatsheet
+# leaflet: used by eapi-cheatsheet
+# tl-bibtexextra: unsrturl.bst
+# tl-latexextra: chngcntr, gitinfo2, isodate, marginnote, paralist, tocbibind
+# tl-mathscience: algorithm, algorithmic
 BDEPEND="dev-tex/leaflet
 	dev-texlive/texlive-bibtexextra
 	dev-texlive/texlive-fontsrecommended
@@ -26,6 +26,7 @@ BDEPEND="dev-tex/leaflet
 	dev-texlive/texlive-latexrecommended
 	dev-texlive/texlive-mathscience
 	html? ( >=dev-tex/tex4ht-20090611_p1038-r5 )"
+RDEPEND="!app-doc/pms-bin"
 
 src_compile() {
 	# just in case; we shouldn't be generating any fonts

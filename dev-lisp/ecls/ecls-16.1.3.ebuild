@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ CDEPEND="dev-libs/gmp:0
 		>=dev-lisp/asdf-2.33-r3:="
 DEPEND="${CDEPEND}
 		app-text/texi2html
-		emacs? ( virtual/emacs >=app-eselect/eselect-emacs-1.12 )"
+		emacs? ( >=app-editors/emacs-23.1:* >=app-eselect/eselect-emacs-1.12 )"
 RDEPEND="${CDEPEND}"
 
 S="${WORKDIR}"/${MY_P}
@@ -81,11 +81,11 @@ src_compile() {
 	fi
 
 	#parallel make fails
-	emake -j1 || die "Compilation failed"
+	emake -j1
 }
 
 src_install () {
-	emake DESTDIR="${D}" install || die "Installation failed"
+	emake DESTDIR="${D}" install
 
 	dodoc README.md CHANGELOG
 	dodoc "${FILESDIR}"/README.Gentoo

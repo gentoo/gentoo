@@ -9,7 +9,7 @@ SRC_URI="http://pubwww.hsz-t.ch/~mgloor/data/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm hppa ia64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm hppa ia64 sparc x86"
 IUSE=""
 
 RDEPEND="app-misc/screen"
@@ -17,6 +17,6 @@ RDEPEND="app-misc/screen"
 PATCHES=( "${FILESDIR}/${PN}-CVE-2008-5371.patch" )
 
 src_install() {
-	dobin screenie || die "dobin failed"
+	dobin screenie
 	default
 }

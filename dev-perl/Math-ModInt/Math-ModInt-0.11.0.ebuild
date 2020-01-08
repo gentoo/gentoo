@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ DESCRIPTION="modular integer arithmetic"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="minimal test"
+RESTRICT="!test? ( test )"
 
 PERL_RM_FILES=(
 	"t/90_pod.t"

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/nextcloud/desktop/archive/v${PV/_/-}.tar.gz -> ${P}.
 
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc dolphin nautilus shibboleth test"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3
@@ -48,6 +48,8 @@ DEPEND="${COMMON_DEPEND}
 		dev-util/cmocka
 		dev-qt/qttest:5
 	)"
+
+RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/desktop-${PV/_/-}
 

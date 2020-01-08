@@ -4,10 +4,6 @@
 
 extra_started_commands="reload"
 
-# This variable is used for controlling whether or not to run exportfs -ua;
-# see stop() for more information
-restarting=no
-
 # The binary locations
 exportfs=/usr/sbin/exportfs
   mountd=/usr/sbin/rpc.mountd
@@ -88,7 +84,7 @@ start() {
 	# Exportfs likes to hang if networking isn't working.
 	# If that's the case, then try to kill it so the
 	# bootup process can continue.
-	if grep -qs '^[[:space:]]*/' /etc/exports /etc/exports.d/*.exports ; then
+	if grep -qs '^[[:space:]]*"\?/' /etc/exports /etc/exports.d/*.exports ; then
 		ebegin "Exporting NFS directories"
 		${exportfs} -r &
 		waitfor_exportfs $!
@@ -131,7 +127,7 @@ stop() {
 	# then "exportfs -r" will reread the xtab, and all the current
 	# clients will be able to resume NFS activity, *without* needing
 	# to umount/(re)mount the filesystem.
-	if [ "${restarting}" = no -o "${RC_CMD}" = "restart" ] ; then
+	if [ "${RC_CMD}" != "restart" ] ; then
 		ebegin "Unexporting NFS directories"
 		# Exportfs likes to hang if networking isn't working.
 		# If that's the case, then try to kill it so the
@@ -155,8 +151,6 @@ reload() {
 }
 
 restart() {
-	# See long comment in stop() regarding "restarting" and exportfs -ua
-	restarting=yes
 	svc_stop
 	svc_start
 }

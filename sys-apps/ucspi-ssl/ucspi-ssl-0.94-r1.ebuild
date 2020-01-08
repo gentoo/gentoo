@@ -11,7 +11,7 @@ SRC_URI="http://www.fehcom.de/ipnet/ucspi-ssl/${P}.tgz"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ppc ppc64 s390 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ppc ppc64 s390 ~sh sparc x86"
 IUSE="perl"
 
 DEPEND="
@@ -48,6 +48,6 @@ src_compile() {
 src_install() {
 	dodoc ../doc/*
 	doman ../man/*.*
-	dobin sslserver sslclient sslcat sslconnect https\@ || die
+	dobin sslserver sslclient sslcat sslconnect https\@
 	use perl && dobin sslperl
 }

@@ -1,11 +1,14 @@
-# Copyright 1999-2018 Gentoo Authors.
-# Distributed under the terms of the GNU General Public License, v2
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
 
-# Matt Turner <mattst88@gentoo.org> (22 Dec 2018)
+# Unmask the flag which corresponds to ARCH.
+-alpha
+
+# Matt Turner <mattst88@gentoo.org> (2018-12-22)
 # net-libs/zeromq is not keyworded
 zeromq
 
-# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-07-16)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.
 # bug #661306: dev-python/pytest
@@ -13,36 +16,33 @@ zeromq
 python_targets_python3_7
 python_single_target_python3_7
 
-# Andrey Utkin <andrey_utkin@gentoo.org> (13 Jun 2018)
+# Andrey Utkin <andrey_utkin@gentoo.org> (2018-06-13)
 # No ACPI support on alpha. Bug #657332
 acpi
 
-# Tobias Klausmann <klausman@gentoo.org> (03 March 2017)
+# Tobias Klausmann <klausman@gentoo.org> (2017-03-03)
 # There is no luajit support on alpha. Bugs #554376, #608322.
 luajit
 luajittex
 
-# Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-25)
 # kwallet integration split from kde to distinct flag
 kwallet
 
-# Tobias Klausmann <klausman@gentoo.org> (07 Jun 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
 # We currently do not have the resources to AT qt5 packages.
 # This may change when/if qt4 goes away.
 qt5
 
-# Tobias Klausmann <klausman@gentoo.org> (05 Feb 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-02-05)
 # Newer versions of libgadu depend on protobuf-c, which doesn't
 # compile on alpha as of slot:0.
 gadu
 
-# Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
+# Julian Ospald <hasufell@gentoo.org> (2015-09-20)
 # no LibreSSL support yet
 curl_ssl_libressl
 libressl
-
-# Unmask the flag which corresponds to ARCH.
--alpha
 
 # This file masks out USE flags that are simply NOT allowed in the default
 # profile for any architecture.  This works, for example, if a non-default
@@ -87,6 +87,7 @@ valgrind
 vaapi
 librtmp
 rtmp
+v4l
 vpx
 kde
 quvi
@@ -104,7 +105,6 @@ openexr
 afs
 ots
 frei0r
-libev
 prelude
 libtar
 aacplus
@@ -113,15 +113,15 @@ gts
 
 # Other
 
-# Raúl Porcel <armin76@gentoo.org> (23 Apr 2011)
+# Raúl Porcel <armin76@gentoo.org> (2011-04-23)
 # Needs to be tested
 video_cards_nouveau
 
-# Ben de Groot <yngwin@gentoo.org> (11 Feb 2009)
+# Ben de Groot <yngwin@gentoo.org> (2009-02-11)
 # Both dev-qt/qtphonon and media-sound/phonon are unkeyworded
 phonon
 
-# 14 May 2007 Raúl Porcel <armin76@gentoo.org>
+# Raúl Porcel <armin76@gentoo.org> (2007-05-14)
 # Alpha doesn't have wpa_supplicant keyworded, bug 175714
 networkmanager
 
@@ -155,39 +155,43 @@ d
 # uses gnat/ada which is too big to support currently
 topal
 
-# Matt Turner <mattst88@gentoo.org> (13 Dec 2010)
+# Matt Turner <mattst88@gentoo.org> (2010-12-13)
 # We don't have sys-devel/llvm
 llvm
 
-# Matt Turner <mattst88@gentoo.org (27 May 2012)
+# Matt Turner <mattst88@gentoo.org (2012-05-27)
 # net-misc/connman is not keyworded
 connman
 
-# Matt Turner <mattst88@gentoo.org (27 May 2012)
+# Matt Turner <mattst88@gentoo.org (2012-05-27)
 # sys-apps/entropy is not keyworded
 entropy
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# Anthony G. Basile <blueness@gentoo.org> (2012-04-15)
+# Pulls in net-libs/axtls which is not keyworded for arch
+curl_ssl_axtls
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # media-libs/xine-lib is not keyworded
 xine
 
-template_haskell
+template-haskell
 
 # nvidia cg toolkit for binary drivers
 cg
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 
 # Unmask once sys-libs/libunwind gets ported & keyworded.
 unwind
 
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-01-08)
 # Unmask systemd since it is keyworded here.
 -systemd
 
-# Tobias Klausmann <klausman@gentoo.org> (20 Jul 2014)
+# Tobias Klausmann <klausman@gentoo.org> (2014-07-20)
 # Mask redis USE flag everywhere since redis depends on google-perftools,
 # which are not supported on Alpha at all (assembly).
 redis

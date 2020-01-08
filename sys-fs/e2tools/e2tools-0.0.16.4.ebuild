@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools toolchain-funcs
 
 DESCRIPTION="utilities to read, write, and manipulate files in an ext2/ext3 filesystem"
-HOMEPAGE="http://home.earthlink.net/~k_sheff/sw/e2tools/"
+HOMEPAGE="https://github.com/ndim/e2tools"
 SRC_URI="https://github.com/ndim/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"

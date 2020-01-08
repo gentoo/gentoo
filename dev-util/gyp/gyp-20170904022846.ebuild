@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2017-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 PYTHON_COMPAT=(python2_7)
 DISTUTILS_SINGLE_IMPL="1"
 
@@ -27,9 +27,10 @@ KEYWORDS="amd64 ~ppc64 x86"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="${PYTHON_DEPS}
+BDEPEND="${PYTHON_DEPS}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="${DEPEND}"
+DEPEND=""
+RDEPEND="${BDEPEND}"
 
 src_test() {
 	# More errors when DeprecationWarnings enabled.

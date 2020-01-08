@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: texlive-module.eclass
@@ -6,7 +6,7 @@
 # tex@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
-# @SUPPORTED_EAPIS: 3 4 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Provide generic install functions so that modular texlive's texmf ebuild will only have to inherit this eclass
 # @DESCRIPTION:
 # Purpose: Provide generic install functions so that modular texlive's texmf ebuilds will
@@ -24,53 +24,53 @@
 # bash array.
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_CONTENTS
+# @REQUIRED
 # @DESCRIPTION:
 # The list of packages that will be installed. This variable will be expanded to
 # SRC_URI:
 # foo -> texlive-module-foo-${PV}.tar.xz
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_DOC_CONTENTS
+# @REQUIRED
 # @DESCRIPTION:
 # The list of packages that will be installed if the doc useflag is enabled.
 # Expansion to SRC_URI is the same as for TEXLIVE_MODULE_CONTENTS.
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_SRC_CONTENTS
+# @REQUIRED
 # @DESCRIPTION:
 # The list of packages that will be installed if the source useflag is enabled.
 # Expansion to SRC_URI is the same as for TEXLIVE_MODULE_CONTENTS.
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_BINSCRIPTS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A space separated list of files that are in fact scripts installed in the
 # texmf tree and that we want to be available directly. They will be installed in
 # /usr/bin.
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_BINLINKS
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A space separated list of links to add for BINSCRIPTS.
 # The systax is: foo:bar to create a symlink bar -> foo.
 
 # @ECLASS-VARIABLE: TL_PV
+# @INTERNAL
 # @DESCRIPTION:
 # Normally the module's PV reflects the TeXLive release it belongs to.
 # If this is not the case, TL_PV takes the version number for the
 # needed app-text/texlive-core.
 
 # @ECLASS-VARIABLE: TL_MODULE_INFORMATION
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # Information to display about the package.
 # e.g. for enabling/disabling a feature
 
-# @ECLASS-VARIABLE: PATCHES
-# @DESCRIPTION:
-# Array variable specifying any patches to be applied.
-
 case "${EAPI:-0}" in
-	0|1|2)
+	0|1|2|3|4|5|6)
 		die "EAPI='${EAPI}' is not supported anymore"
-		;;
-	3|4|5)
-		inherit texlive-common eutils
 		;;
 	*)
 		inherit texlive-common
@@ -85,19 +85,12 @@ IUSE="source"
 
 # Starting from TeX Live 2009, upstream provides .tar.xz modules.
 PKGEXT=tar.xz
-case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
-		DEPEND="${COMMON_DEPEND}
-			app-arch/xz-utils"
-		;;
-	*)
-		# We do not need anything from SYSROOT:
-		#   Everything is built from the texlive install in /
-		#   Generated files are noarch
-		BDEPEND="${COMMON_DEPEND}
-			app-arch/xz-utils"
-		;;
-esac
+
+# We do not need anything from SYSROOT:
+#   Everything is built from the texlive install in /
+#   Generated files are noarch
+BDEPEND="${COMMON_DEPEND}
+	app-arch/xz-utils"
 
 for i in ${TEXLIVE_MODULE_CONTENTS}; do
 	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
@@ -124,6 +117,7 @@ RDEPEND="${COMMON_DEPEND}"
 IUSE="${IUSE} doc"
 
 # @ECLASS-VARIABLE: TEXLIVE_MODULE_OPTIONAL_ENGINE
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # A space separated list of Tex engines that can be made optional.
 # e.g. "luatex luajittex"
@@ -154,22 +148,6 @@ texlive-module_src_unpack() {
 	for i in $(<"${T}/reloclist"); do
 		mv "${i}" "${RELOC_TARGET}"/$(dirname "${i}") || die "failed to relocate ${i} to ${RELOC_TARGET}/$(dirname ${i})"
 	done
-}
-
-# @FUNCTION: texlive-module_src_prepare
-# @DESCRIPTION:
-# Apply patches from the PATCHES array and user patches, if any.
-
-texlive-module_src_prepare() {
-	case "${EAPI:-0}" in
-		0|1|2|3|4|5)
-			[[ ${#PATCHES[@]} -gt 0 ]] && epatch "${PATCHES[@]}"
-			epatch_user
-			;;
-		*)
-			die "texlive-module_src_prepare is not to be used in EAPI ${EAPI}"
-			;;
-	esac
 }
 
 # @FUNCTION: texlive-module_add_format
@@ -320,6 +298,10 @@ texlive-module_src_compile() {
 		esac
 	done
 
+	# Determine texlive-core version for fmtutil call
+        fmt_call="$(has_version '>=app-text/texlive-core-2019' \
+         && echo "fmtutil-user" || echo "fmtutil")"
+
 	# Build format files
 	for i in texmf-dist/fmtutil/format*.cnf; do
 		if [ -f "${i}" ]; then
@@ -327,14 +309,14 @@ texlive-module_src_compile() {
 			[ -d texmf-var ] || mkdir texmf-var
 			[ -d texmf-var/web2c ] || mkdir texmf-var/web2c
 			VARTEXFONTS="${T}/fonts" TEXMFHOME="${S}/texmf:${S}/texmf-dist:${S}/texmf-var"\
-				env -u TEXINPUTS fmtutil --cnffile "${i}" --fmtdir "${S}/texmf-var/web2c" --all\
+				env -u TEXINPUTS $fmt_call --cnffile "${i}" --fmtdir "${S}/texmf-var/web2c" --all\
 				|| die "failed to build format ${i}"
 		fi
 	done
 
 	# Delete ls-R files, these should not be created but better be certain they
 	# do not end up being installed.
-	find . -name 'ls-R' -delete
+	find . -name 'ls-R' -delete || die
 }
 
 # @FUNCTION: texlive-module_src_install
@@ -417,12 +399,4 @@ texlive-module_pkg_postrm() {
 	etexmf-update
 }
 
-case "${EAPI:-0}" in
-	0|1|2|3|4|5)
-		EXPORT_FUNCTIONS src_unpack src_prepare src_compile src_install \
-			pkg_postinst pkg_postrm
-		;;
-	*)
-		EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm
-		;;
-esac
+EXPORT_FUNCTIONS src_unpack src_compile src_install pkg_postinst pkg_postrm

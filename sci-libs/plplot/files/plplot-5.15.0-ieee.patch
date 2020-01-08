@@ -1,0 +1,19 @@
+diff -up plplot-plplot-a9d9500c732d4eae47ed7fca687e02ec8a48d02c/cmake/modules/csiro.cmake.ieee plplot-plplot-a9d9500c732d4eae47ed7fca687e02ec8a48d02c/cmake/modules/csiro.cmake
+--- plplot-plplot-a9d9500c732d4eae47ed7fca687e02ec8a48d02c/cmake/modules/csiro.cmake.ieee	2018-09-19 20:31:11.333168883 -0600
++++ plplot-plplot-a9d9500c732d4eae47ed7fca687e02ec8a48d02c/cmake/modules/csiro.cmake	2018-09-19 20:31:56.323728783 -0600
+@@ -27,15 +27,6 @@ option(WITH_CSA "Enable use of the csa l
+ # expanded to a lot more cases as we gain platform experience.
+ set(NAN_CFLAGS ${CMAKE_C_FLAGS})
+ if(PL_HAVE_QHULL OR WITH_CSA)
+-  if(CMAKE_SYSTEM_PROCESSOR MATCHES "i[0-9]86" AND NOT CMAKE_C_COMPILER MATCHES "gcc")
+-    set(NAN_CFLAGS "${NAN_CFLAGS} -mieee-fp")
+-  elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "alpha.*")
+-    if(CMAKE_C_COMPILER MATCHES "gcc")
+-      set(NAN_CFLAGS "${NAN_CFLAGS} -mieee")
+-    else(CMAKE_C_COMPILER MATCHES "gcc")
+-      set(NAN_CFLAGS "${NAN_CFLAGS} -ieee")
+-    endif(CMAKE_C_COMPILER MATCHES "gcc")
+-  endif(CMAKE_SYSTEM_PROCESSOR MATCHES "i[0-9]86" AND NOT CMAKE_C_COMPILER MATCHES "gcc")
+   if(NOT DEFINED NaNAwareCCompiler)
+     message(STATUS "Check for NaN awareness in C compiler")
+     try_run(RUN_RESULT COMPILE_RESULT

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit udev
 
 DESCRIPTION="ASEKey USB SIM Card Reader"
 HOMEPAGE="http://www.athena-scs.com/"
-SRC_URI="${HOMEPAGE}/docs/reader-drivers/${PN}-${PV/./-}-tar.bz2 -> ${P}.tar.bz2"
+SRC_URI="http://www.athena-scs.com/docs/reader-drivers/${PN}-${PV/./-}-tar.bz2 -> ${P}.tar.bz2"
 LICENSE="BSD LGPL-2.1"
 
 SLOT="0"

@@ -8,7 +8,6 @@
 	<use>
 		<flag name="freesound">Enable freesound.org credentials support via <pkg>dev-qt/qtwebkit</pkg> to download files</flag>
 		<flag name="gles2">Use GLES 2.0 or later instead of full OpenGL</flag>
-		<flag name="jogshuttle">Enable support for Jog-Shuttle devices</flag>
 		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
 	</use>
 </pkgmetadata>

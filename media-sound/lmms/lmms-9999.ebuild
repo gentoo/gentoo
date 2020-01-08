@@ -3,9 +3,9 @@
 
 EAPI=7
 
-# The order is important here! Both, cmake-utils and xdg define src_prepare.
-# We need the one from cmake-utils
-inherit xdg cmake-utils
+# The order is important here! Both, cmake and xdg define src_prepare.
+# We need the one from cmake
+inherit xdg cmake
 
 DESCRIPTION="Cross-platform music production software"
 HOMEPAGE="https://lmms.io"
@@ -52,7 +52,9 @@ COMMON_DEPEND="
 	stk? ( media-libs/stk )
 	vst? ( virtual/wine )
 "
-DEPEND="${COMMON_DEPEND}"
+DEPEND="${COMMON_DEPEND}
+	dev-qt/qtx11extras:5
+"
 BDEPEND="
 	dev-qt/linguist-tools:5
 "
@@ -69,7 +71,6 @@ DOCS=( README.md doc/AUTHORS )
 src_configure() {
 	local mycmakeargs+=(
 		-DUSE_WERROR=FALSE
-		-DWANT_SYSTEM_SR=TRUE
 		-DWANT_CAPS=FALSE
 		-DWANT_TAP=FALSE
 		-DWANT_SWH=FALSE
@@ -89,7 +90,7 @@ src_configure() {
 		-DWANT_VST=$(usex vst)
 		-DWANT_SF2=$(usex fluidsynth)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_preinst() {

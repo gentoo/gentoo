@@ -6,16 +6,16 @@ EAPI=6
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="The MATE image viewer"
 LICENSE="GPL-2"
 SLOT="0"
 
-IUSE="X debug dbus exif +introspection jpeg lcms svg tiff xmp"
+IUSE="X debug exif +introspection jpeg lcms svg tiff xmp"
 
-COMMON_DEPEND="
+RDEPEND="
 	dev-libs/atk
 	>=dev-libs/glib-2.50:2
 	>=dev-libs/libpeas-1.8.0[gtk]
@@ -29,7 +29,6 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	>=x11-misc/shared-mime-info-0.20
 	virtual/libintl
-	dbus? ( >=dev-libs/dbus-glib-0.71 )
 	exif? (
 		>=media-libs/libexif-0.6.14
 		virtual/jpeg:0
@@ -41,22 +40,20 @@ COMMON_DEPEND="
 	xmp? ( >=media-libs/exempi-1.99.5:2 )
 	!!media-gfx/mate-image-viewer"
 
-RDEPEND="${COMMON_DEPEND}"
-
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	app-text/yelp-tools
+	dev-util/glib-utils
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.50.1
-	sys-devel/gettext:*
-	virtual/pkgconfig:*"
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 src_configure() {
 	mate_src_configure \
 		$(use_enable debug) \
 		$(use_enable introspection) \
 		$(use_with X x) \
-		$(use_with dbus) \
 		$(use_with exif libexif) \
 		$(use_with jpeg libjpeg) \
 		$(use_with lcms cms) \

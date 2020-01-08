@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ SLOT="0"
 
 # Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
 [[ ${PV} == 9999 ]] || \
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86"
 
 IUSE="doc static-libs"
 

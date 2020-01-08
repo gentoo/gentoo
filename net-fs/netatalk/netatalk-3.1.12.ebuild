@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/project/${PN}/${PN}/$(ver_cut 1-3)/${P}.tar.bz2"
 
 LICENSE="GPL-2 BSD"
 SLOT="0/18.0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~ppc ~ppc64 x86"
 IUSE="acl cracklib dbus debug kerberos ldap pam pgp quota samba +shadow ssl static-libs tracker tcpd +utils zeroconf"
 
 CDEPEND="
@@ -33,7 +33,7 @@ CDEPEND="
 	dbus? ( sys-apps/dbus dev-libs/dbus-glib )
 	kerberos? ( virtual/krb5 )
 	ldap? ( net-nds/openldap )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	ssl? ( dev-libs/openssl:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
 	tracker? ( app-misc/tracker )
@@ -144,11 +144,11 @@ pkg_postinst() {
 	for v in ${REPLACING_VERSIONS}; do
 		if [[ $(ver_test ${v} -lt 3) ]]; then
 			for fle in afp_signature.conf afp_voluuid.conf; do
-				if [[ -f "${ROOT}"etc/netatalk/${fle} ]]; then
-					if [[ ! -f "${ROOT}"var/lib/netatalk/${fle} ]]; then
+				if [[ -f "${ROOT}"/etc/netatalk/${fle} ]]; then
+					if [[ ! -f "${ROOT}"/var/lib/netatalk/${fle} ]]; then
 						mv \
-							"${ROOT}"etc/netatalk/${fle} \
-							"${ROOT}"var/lib/netatalk/
+							"${ROOT}"/etc/netatalk/${fle} \
+							"${ROOT}"/var/lib/netatalk/
 					fi
 				fi
 			done

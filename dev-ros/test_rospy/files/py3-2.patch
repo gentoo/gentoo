@@ -1,0 +1,40 @@
+From 1933acfa8107a164ec825d3223d14589fefd1b5b Mon Sep 17 00:00:00 2001
+From: Dirk Thomas <dirk-thomas@users.noreply.github.com>
+Date: Tue, 6 Aug 2019 16:06:51 -0700
+Subject: [PATCH] more Python 3 compatibility (#1783)
+
+---
+ test/test_rospy/test/unit/test_genmsg_py.py   |  6 +--
+ tools/rosgraph/src/rosgraph/roslogging.py     |  2 +-
+ .../test/test_roslogging_user_logger.py       |  8 +++-
+ tools/roslaunch/test/unit/test_xmlloader.py   |  2 +-
+ tools/rosmsg/src/rosmsg/__init__.py           |  2 +-
+ tools/rosmsg/test/test_rosmsg_command_line.py | 46 +++++++++----------
+ .../test/test_rosmsgproto_command_line.py     | 20 ++++----
+ .../test_rostopic_command_line_offline.py     | 44 +++++++++---------
+ 8 files changed, 67 insertions(+), 63 deletions(-)
+
+diff --git a/test/test_rospy/test/unit/test_genmsg_py.py b/test/test_rospy/test/unit/test_genmsg_py.py
+index 397b35cee..38be1648e 100644
+--- a/test/test_rospy/test/unit/test_genmsg_py.py
++++ b/test/test_rospy/test/unit/test_genmsg_py.py
+@@ -95,8 +95,8 @@ def test_test_rospy_TestFixedArray(self):
+         self.assertEquals([0., 0., 0.], m.f64_3)        
+         self.assertEquals([0], m.i8_1)
+         self.assertEquals([0, 0, 0], m.i8_3)        
+-        self.assertEquals(chr(0), m.u8_1)
+-        self.assertEquals(chr(0)*3, m.u8_3)        
++        self.assertEquals(chr(0).encode(), m.u8_1)
++        self.assertEquals((chr(0)*3).encode(), m.u8_3)
+         self.assertEquals([0], m.i32_1)
+         self.assertEquals([0, 0, 0], m.i32_3)        
+         self.assertEquals([0], m.u32_1)
+@@ -358,7 +358,7 @@ def test_std_msgs_MultiArray(self):
+         # test. the buff was with the uint8[] type consistency
+         buff = StringIO()
+         self.assertEquals(UInt8MultiArray(),UInt8MultiArray())
+-        self.assertEquals('',UInt8MultiArray().data)        
++        self.assertEquals(b'', UInt8MultiArray().data)
+         UInt8MultiArray().serialize(buff)
+         self.assertEquals(UInt8MultiArray(layout=MultiArrayLayout()),UInt8MultiArray())
+         UInt8MultiArray(layout=MultiArrayLayout()).serialize(buff)

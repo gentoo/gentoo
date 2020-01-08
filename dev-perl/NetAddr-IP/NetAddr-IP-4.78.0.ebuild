@@ -11,7 +11,7 @@ DESCRIPTION="Manipulation and operations on IP addresses"
 
 SLOT="0"
 LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="ipv6"
 
 RDEPEND="ipv6? ( dev-perl/Socket6 )"

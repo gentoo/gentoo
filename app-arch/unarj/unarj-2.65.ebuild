@@ -7,11 +7,11 @@ inherit toolchain-funcs
 
 DESCRIPTION="Utility for opening arj archives"
 HOMEPAGE="http://www.arjsoftware.com/"
-SRC_URI="mirror://freebsd/ports/local-distfiles/ache/${P}.tgz"
+SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="arj"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 PATCHES=(

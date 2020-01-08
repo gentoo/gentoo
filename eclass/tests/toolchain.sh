@@ -150,7 +150,7 @@ test_var_assert() {
 	var_name=${1}
 	exp=${2}
 
-	tbegin "asserv variable value: ${var_name} => ${exp}"
+	tbegin "assert variable value: ${var_name} => ${exp}"
 
 	if [[ ${!var_name} != ${exp} ]]; then
 		msg="Failure - Expected: \"${exp}\" Got: \"${!var_name}\""
@@ -168,7 +168,6 @@ test_var_assert GCC_BRANCH_VER  7.3
 test_var_assert GCCMAJOR        7
 test_var_assert GCCMINOR        3
 test_var_assert GCCMICRO        0
-test_var_assert BRANCH_UPDATE   ''
 test_var_assert GCC_CONFIG_VER  7.3.0
 test_var_assert PREFIX          /usr
 

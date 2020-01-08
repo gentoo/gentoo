@@ -1,6 +1,5 @@
-diff -ur mt-daapd-0.2.4.1.orig/src/main.c mt-daapd-0.2.4.1/src/main.c
---- mt-daapd-0.2.4.1.orig/src/main.c	2007-10-22 02:27:57.000000000 +0300
-+++ mt-daapd-0.2.4.1/src/main.c	2007-10-28 23:54:29.000000000 +0200
+--- a/src/main.c
++++ b/src/main.c
 @@ -551,6 +551,7 @@
      printf("  -m             Disable mDNS\n");
      printf("  -c <file>      Use configfile specified\n");

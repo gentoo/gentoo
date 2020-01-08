@@ -7,7 +7,7 @@ SLOT="0"
 DESCRIPTION="FSF Emacs compatibility files"
 XEMACS_PKG_CAT="standard"
 
-KEYWORDS="alpha amd64 ~arm64 hppa ppc ppc64 sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 ~arm64 hppa ppc ppc64 sparc x86"
 
 inherit xemacs-packages
 

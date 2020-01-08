@@ -10,6 +10,8 @@
 	<flag name="egl">Enable EGL support</flag>
 	<flag name="geolocation">Enable geolocation support through <pkg>app-misc/geoclue</pkg></flag>
 	<flag name="gles2">Enable GLESv2 support</flag>
+	<flag name="gles2-only">Use GLES 2.0 or later instead of full OpenGL</flag>
+	<flag name="jumbo-build">Combine source files to speed up build process</flag>
 	<flag name="nsplugin">Enable full nsplugin support (GTK2 plugins)</flag>
 	<flag name="webgl">Build support for the WebGL HTML API using <pkg>virtual/opengl</pkg></flag>
 </use>

@@ -11,13 +11,13 @@ MY_PV="${MY_PV//_rc/rc}"
 MY_PV="${MY_PV//_p/-P}"
 MY_P="${PN}-${MY_PV}"
 DESCRIPTION="ISC Dynamic Host Configuration Protocol (DHCP) client/server"
-HOMEPAGE="http://www.isc.org/products/DHCP"
+HOMEPAGE="https://www.isc.org/dhcp"
 SRC_URI="ftp://ftp.isc.org/isc/dhcp/${MY_P}.tar.gz
 	ftp://ftp.isc.org/isc/dhcp/${MY_PV}/${MY_P}.tar.gz"
 
 LICENSE="MPL-2.0 BSD SSLeay GPL-2" # GPL-2 only for init script
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="+client ipv6 kernel_linux ldap libressl selinux +server ssl vim-syntax"
 
 DEPEND="

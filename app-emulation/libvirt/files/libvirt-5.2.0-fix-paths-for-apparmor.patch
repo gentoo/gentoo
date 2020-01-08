@@ -1,0 +1,116 @@
+From 563706143779166624812b3faf498d869f5dd383 Mon Sep 17 00:00:00 2001
+Message-Id: <563706143779166624812b3faf498d869f5dd383.1547196492.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Fri, 11 Jan 2019 09:41:06 +0100
+Subject: [PATCH] gentoo: fix paths for apparmor
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ src/security/Makefile.inc.am                           | 10 +++++-----
+ src/security/apparmor/libvirt-qemu                     |  2 ++
+ ...bvirt.virt-aa-helper => usr.libexec.virt-aa-helper} |  4 ++--
+ src/security/apparmor/usr.sbin.libvirtd                |  6 ++++--
+ 4 files changed, 13 insertions(+), 9 deletions(-)
+ rename src/security/apparmor/{usr.lib.libvirt.virt-aa-helper => usr.libexec.virt-aa-helper} (93%)
+
+diff --git a/src/security/Makefile.inc.am b/src/security/Makefile.inc.am
+index b24cdfd083..ae8e979b84 100644
+--- a/src/security/Makefile.inc.am
++++ b/src/security/Makefile.inc.am
+@@ -36,7 +36,7 @@ EXTRA_DIST += \
+ 	security/apparmor/TEMPLATE.lxc \
+ 	security/apparmor/libvirt-qemu \
+ 	security/apparmor/libvirt-lxc \
+-	security/apparmor/usr.lib.libvirt.virt-aa-helper \
++	security/apparmor/usr.libexec.virt-aa-helper \
+ 	security/apparmor/usr.sbin.libvirtd \
+ 	$(NULL)
+ 
+@@ -90,7 +90,7 @@ endif WITH_SECDRIVER_APPARMOR
+ if WITH_APPARMOR_PROFILES
+ apparmordir = $(sysconfdir)/apparmor.d/
+ apparmor_DATA = \
+-	security/apparmor/usr.lib.libvirt.virt-aa-helper \
++	security/apparmor/usr.libexec.virt-aa-helper \
+ 	security/apparmor/usr.sbin.libvirtd \
+ 	$(NULL)
+ 
+@@ -110,11 +110,11 @@ APPARMOR_LOCAL_DIR = "$(DESTDIR)$(apparmordir)/local"
+ install-apparmor-local:
+ 	$(MKDIR_P) "$(APPARMOR_LOCAL_DIR)"
+ 	echo "# Site-specific additions and overrides for \
+-		'usr.lib.libvirt.virt-aa-helper'" \
+-		>"$(APPARMOR_LOCAL_DIR)/usr.lib.libvirt.virt-aa-helper"
++		'usr.libexec.virt-aa-helper'" \
++		>"$(APPARMOR_LOCAL_DIR)/usr.libexec.virt-aa-helper"
+ 
+ uninstall-apparmor-local:
+-	rm -f "$(APPARMOR_LOCAL_DIR)/usr.lib.libvirt.virt-aa-helper"
++	rm -f "$(APPARMOR_LOCAL_DIR)/usr.libexec.virt-aa-helper"
+ 	rmdir "$(APPARMOR_LOCAL_DIR)" || :
+ 
+ INSTALL_DATA_LOCAL += install-apparmor-local
+diff --git a/src/security/apparmor/libvirt-qemu b/src/security/apparmor/libvirt-qemu
+index eaa5167525..9be50bbbe0 100644
+--- a/src/security/apparmor/libvirt-qemu
++++ b/src/security/apparmor/libvirt-qemu
+@@ -87,6 +87,8 @@
+   /usr/share/AAVMF/** r,
+   /usr/share/qemu-efi/** r,
+   /usr/share/slof/** r,
++  /usr/share/seavgabios/** r,
++  /usr/share/edk2-ovmf/** r,
+ 
+   # pki for libvirt-vnc and libvirt-spice (LP: #901272, #1690140)
+   /etc/pki/CA/ r,
+diff --git a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper b/src/security/apparmor/usr.libexec.virt-aa-helper
+similarity index 93%
+rename from src/security/apparmor/usr.lib.libvirt.virt-aa-helper
+rename to src/security/apparmor/usr.libexec.virt-aa-helper
+index de9436872c..99ab4ea527 100644
+--- a/src/security/apparmor/usr.lib.libvirt.virt-aa-helper
++++ b/src/security/apparmor/usr.libexec.virt-aa-helper
+@@ -1,7 +1,7 @@
+ # Last Modified: Mon Apr  5 15:10:27 2010
+ #include <tunables/global>
+ 
+-profile virt-aa-helper /usr/{lib,lib64}/libvirt/virt-aa-helper {
++profile virt-aa-helper /usr/libexec/virt-aa-helper {
+   #include <abstractions/base>
+ 
+   # needed for searching directories
+@@ -36,7 +36,7 @@
+   deny /dev/mapper/ r,
+   deny /dev/mapper/* r,
+ 
+-  /usr/{lib,lib64}/libvirt/virt-aa-helper mr,
++  /usr/libexec/virt-aa-helper mr,
+   /{usr/,}sbin/apparmor_parser Ux,
+ 
+   /etc/apparmor.d/libvirt/* r,
+@@ -66,5 +66,5 @@
+   /**.[iI][sS][oO] r,
+   /**/disk{,.*} r,
+ 
+-  #include <local/usr.lib.libvirt.virt-aa-helper>
++  #include <local/usr.libexec.virt-aa-helper>
+ }
+diff --git a/src/security/apparmor/usr.sbin.libvirtd b/src/security/apparmor/usr.sbin.libvirtd
+index f0ffc53008..8a402bd6ec 100644
+--- a/src/security/apparmor/usr.sbin.libvirtd
++++ b/src/security/apparmor/usr.sbin.libvirtd
+@@ -98,8 +98,10 @@
+   audit deny /sys/kernel/security/apparmor/.* rwxl,
+   /sys/kernel/security/apparmor/profiles r,
+   /usr/{lib,lib64}/libvirt/* PUxr,
+-  /usr/{lib,lib64}/libvirt/libvirt_parthelper ix,
+-  /usr/{lib,lib64}/libvirt/libvirt_iohelper ix,
++  /usr/libexec/virt-aa-helper PUxr,
++  /usr/libexec/libvirt_lxc PUxr,
++  /usr/libexec/libvirt_parthelper ix,
++  /usr/libexec/libvirt_iohelper ix,
+   /etc/libvirt/hooks/** rmix,
+   /etc/xen/scripts/** rmix,
+ 
+-- 
+2.19.2

@@ -1,0 +1,93 @@
+From 04f776e73248d19d9beaf4ea8d407b7c85ecc9c9 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 24 Feb 2019 20:25:34 +0000
+Subject: [PATCH] Allow use of external minizip library instead of linking just
+ zlib
+
+Some distributions package the minizip part of zlib, as well as zlib
+itself, so allow that to be used with help from pkg-config.
+---
+ src/engine/unzip/CMakeLists.txt | 42 +++++++++++++++++++++------------
+ src/engine/unzip/miniunz.c      |  4 ++--
+ 2 files changed, 29 insertions(+), 17 deletions(-)
+
+diff --git a/src/engine/unzip/CMakeLists.txt b/src/engine/unzip/CMakeLists.txt
+index 5f2b8a959..24833abb7 100644
+--- a/src/engine/unzip/CMakeLists.txt
++++ b/src/engine/unzip/CMakeLists.txt
+@@ -1,23 +1,35 @@
+-find_package( ZLIB REQUIRED )
+-if ( ZLIB_FOUND )
+-    include_directories( ${ZLIB_INCLUDE_DIRS} )
+-else ( ZLIB_FOUND )
+-    Message(FATAL_ERROR "Zlib development packages not found!")
+-endif( ZLIB_FOUND )
++find_package(PkgConfig)
+ 
++if ( PKGCONFIG_FOUND )
++    pkg_check_modules(ZLIB minizip)
++else ( PKGCONFIG_FOUND )
++    unset(ZLIB_FOUND)
++endif ( PKGCONFIG_FOUND )
+ 
++if ( ZLIB_FOUND )
++    set(CXXSRC miniunz.c)
++    unset(HSRC)
++else ( ZLIB_FOUND )
++    find_package(ZLIB REQUIRED)
++    include_directories( ${CMAKE_CURRENT_SOURCE_DIR} )
+ 
++    set(CXXSRC
++        miniunz.c
++        ioapi.c
++        iowin32.c
++        unzip.c)
+ 
+-set(CXXSRC
+-    miniunz.c
+-    ioapi.c
+-    iowin32.c
+-    unzip.c)
++    set(HSRC
++        ioapi.h
++        iowin32.h
++        unzip.h)
++endif ( ZLIB_FOUND )
+ 
+-set(HSRC
+-    ioapi.h
+-    iowin32.h
+-    unzip.h)
++if ( ZLIB_FOUND )
++    include_directories( ${ZLIB_INCLUDE_DIRS} )
++else ( ZLIB_FOUND )
++    Message(FATAL_ERROR "Zlib development packages not found!")
++endif( ZLIB_FOUND )
+ 
+ add_library(unzip ${CXXSRC} ${HSRC})
+ 
+diff --git a/src/engine/unzip/miniunz.c b/src/engine/unzip/miniunz.c
+index 694aa8e60..0f289c96c 100644
+--- a/src/engine/unzip/miniunz.c
++++ b/src/engine/unzip/miniunz.c
+@@ -56,7 +56,7 @@
+ #endif
+ 
+ 
+-#include "unzip.h"
++#include <unzip.h>
+ 
+ #define CASESENSITIVITY (0)
+ #define WRITEBUFFERSIZE (8192)
+@@ -64,7 +64,7 @@
+ 
+ #ifdef _WIN32
+ #define USEWIN32IOAPI
+-#include "iowin32.h"
++#include <iowin32.h>
+ #endif
+ /*
+   mini unzip, demo of unzip package
+-- 
+2.20.1
+

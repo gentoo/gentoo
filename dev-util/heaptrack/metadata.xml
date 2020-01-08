@@ -6,6 +6,6 @@
 		<name>Andreas Sturmlechner</name>
 	</maintainer>
 	<use>
-		<flag name="zstd">Enable support for ZSTD compression using <pkg>app-arch/zstd</pkg></flag>
+		<flag name="gui">Install Qt5-based analyzer tool</flag>
 	</use>
 </pkgmetadata>

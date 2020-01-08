@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+    <maintainer type="person">
+        <email>bernardo@standard.ai</email>
+        <name>Bernardo Meurer</name>
+    </maintainer>
+    <maintainer type="person">
+        <email>bman@gentoo.org</email>
+        <name>Aaron Bauman</name>
+    </maintainer>
+    <longdescription lang="en">
+        Highly customizable Wayland bar for Sway and Wlroots based compositors.
+    </longdescription>
+    <use>
+        <flag name="mpd">Enable support for the Music Player Daemon</flag>
+        <flag name="network">Enable libnl support for network related features</flag>
+        <flag name="tray">Enable support for tray</flag>
+    </use>
+    <upstream>
+        <remote-id type="github">Alexays/Waybar</remote-id>
+        <bugs-to>https://github.com/Alexays/Waybar/issues</bugs-to>
+        <changelog>https://github.com/Alexays/Waybar/releases</changelog>
+    </upstream>
+</pkgmetadata>

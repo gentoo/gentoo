@@ -6,13 +6,10 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<use>
-		<flag name="tremor">
-			Use <pkg>media-libs/tremor</pkg> as ogg decoder
-			instead of <pkg>media-libs/libvorbis</pkg>
-		</flag>
+		<flag name="downloader">Allows some Keen games to be downloaded from the menu</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">clonekeenplus</remote-id>
-		<remote-id type="github">gerstrong/Commander-Genius</remote-id>
+		<remote-id type="gitlab">Dringgstein/Commander-Genius</remote-id>
 	</upstream>
 </pkgmetadata>

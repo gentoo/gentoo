@@ -2,12 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ck+gentoo@bl4ckb0x.de</email>
+		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<longdescription>
 		LCD4Linux is a small program that grabs information from the kernel
@@ -16,7 +12,7 @@
 	<use>
 		<flag name="apm">Enable the APM plugin.</flag>
 		<flag name="asterisk">Enable the Asterisk plugin.</flag>
-		<flag name="button_exec">Enable the Button plugin, to execute something on keypress.</flag>
+		<flag name="button-exec">Enable the Button plugin, to execute something on keypress.</flag>
 		<flag name="cpuinfo">Enable the cpuinfo plugin.</flag>
 		<flag name="dbus">Enable the dbus plugin.</flag>
 		<flag name="diskstats">Enable the diskstats plugin.</flag>
@@ -29,20 +25,20 @@
 		<flag name="gps">Enable the gps plugin, for reading gps coordinates.</flag>
 		<flag name="hddtemp">Enable the hddtemp plugin, to read from the hddtemp daemon.</flag>
 		<flag name="huawei">Enable the huawei plugin, to read from a huawei device.</flag>
-		<flag name="i2c_sensors">Enable the i2c_sensors plugin, to read sensor data.</flag>
+		<flag name="i2c-sensors">Enable the i2c_sensors plugin, to read sensor data.</flag>
 		<flag name="iconv">Enable the iconv plugin, to convert between encodings.</flag>
 		<flag name="isdn">Enable the isdn plugin, to get information about ISDN.</flag>
 		<flag name="kvv">Enable the kvv plugin, to get realtime train schedule from the Karlsruher Verkehrsverbund.</flag>
 		<flag name="loadavg">Enable the loadavg plugin, to get stats load</flag>
 		<flag name="meminfo">Enable the meminfo plugin, to get memory statistics.</flag>
 		<flag name="mpd">Enable the mpd plugin, to read from the Music Player Daemon.</flag>
-		<flag name="mpris_dbus">Enable the mpris plugin, to read data via dbus for mpris.</flag>
+		<flag name="mpris-dbus">Enable the mpris plugin, to read data via dbus for mpris.</flag>
 		<flag name="mysql">Enable the mysql plugin, to get mysql database information.</flag>
 		<flag name="netdev">Enable the netdev plugin, to get interface statistics.</flag>
 		<flag name="netinfo">Enable the netinfo plugin, to get more interface statistic.</flag>
 		<flag name="outb">Enable raw i/o access.</flag>
 		<flag name="pop3">Enable the pop3 plugin, to get notified about new mails.</flag>
-		<flag name="proc_stat">Enable the proc_stat plugin, to read data from the proc file system.</flag>
+		<flag name="proc-stat">Enable the proc_stat plugin, to read data from the proc file system.</flag>
 		<flag name="python">Enable support for dev-lang/python and enable the python plugin, to execute own python scripts.</flag>
 		<flag name="qnaplog">Enable the qnaplog plugin, to read a log from a QNAP device.</flag>
 		<flag name="raspi">Enable the raspi plugin, to read sensor data from a Raspberry Pi.</flag>

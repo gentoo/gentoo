@@ -1,16 +1,16 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2 flag-o-matic
 
-MY_PV="${PV/_/-}"
+MY_PV="$(ver_rs 3 -)"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="VDR plugin: show weather for specified place"
-HOMEPAGE="http://www.vdr.glaserei-franz.de/vdrplugins.htm"
-SRC_URI="mirror://vdrfiles/${PN}/${MY_P}.tgz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="http://vdr.websitec.de/download/${PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2 stardock-images"
 SLOT="0"
@@ -34,11 +34,11 @@ src_prepare() {
 	# wrt bug 595390
 	append-cxxflags $(test-flags-CXX -std=gnu++03) -std=gnu++03
 
-	epatch "${FILESDIR}/${P}-gentoo.diff"
-	epatch "${FILESDIR}/${P}-timeout.diff"
-	epatch "${FILESDIR}/${P}-gcc43.patch"
+	eapply "${FILESDIR}/${P}-gentoo.diff"
+	eapply "${FILESDIR}/${P}-timeout.diff"
+	eapply "${FILESDIR}/${P}-gcc43.patch"
 
-	use dxr3 && epatch "${FILESDIR}/${P}-dxr3.diff"
+	use dxr3 && eapply "${FILESDIR}/${P}-dxr3.diff"
 
 	# /bin/sh is not necessaryly bash, so explicitly use /bin/bash
 	sed -e 's#/bin/sh#/bin/bash#' -i examples/weatherng.sh

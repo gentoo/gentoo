@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP"
 #HOMEPAGE="http://research.iat.sfu.ca/custom-software/diradm/"
-#SRC_URI="${HOMEPAGE}/${P}.tar.bz2"
+#SRC_URI="http://research.iat.sfu.ca/custom-software/diradm/${P}.tar.bz2"
 HOMEPAGE="http://orbis-terrarum.net/~robbat2/"
 SRC_URI="http://orbis-terrarum.net/~robbat2/${P}.tar.bz2"
 
@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="automount irixpasswd samba test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( automount irixpasswd samba )"
 
 RDEPEND=">=net-nds/openldap-2.3

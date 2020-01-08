@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,9 +9,9 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/ros/catkin"
 fi
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
-inherit ${SCM} cmake-utils python-r1 python-utils-r1
+inherit ${SCM} cmake-utils python-r1
 
 DESCRIPTION="Cmake macros and associated python code used to build some parts of ROS"
 HOMEPAGE="http://wiki.ros.org/catkin"
@@ -26,6 +26,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -94,7 +95,7 @@ catkin_src_install_internal() {
 	if [ ! -f "${T}/.catkin_python_symlinks_generated" ]; then
 		dodir /usr/bin
 		for i in "${D}/${PYTHON_SCRIPTDIR}"/* ; do
-			dosym ../lib/python-exec/python-exec2 "/usr/bin/${i##*/}" || die
+			dosym ../lib/python-exec/python-exec2 "/usr/bin/${i##*/}"
 		done
 		touch "${T}/.catkin_python_symlinks_generated"
 	fi

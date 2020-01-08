@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,12 +27,12 @@ COMMON_DEPEND=">=x11-libs/wxGTK-3.0.2:${WX_GTK_VER}[X,opengl]
 		dev-python/wxpython:${WX_GTK_VER}[opengl,${PYTHON_USEDEP}]
 		${PYTHON_DEPS}
 	)
-	>=dev-libs/boost-1.61[context,nls,threads,python?,${PYTHON_USEDEP}]
+	>=dev-libs/boost-1.61:=[context,nls,threads,python?,${PYTHON_USEDEP}]
 	github? ( net-misc/curl:=[ssl] )
 	media-libs/glew:0=
-	<=media-libs/glm-0.9.9.2
+	media-libs/glm
 	media-libs/freeglut
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	ngspice? (
 		sci-electronics/ngspice[shared]
 	)
@@ -50,7 +50,7 @@ CHECKREQS_DISK_BUILD="800M"
 
 PATCHES=(
 	"${FILESDIR}"/"${PN}-5.0.0-curl.patch"
-	"${FILESDIR}"/"${PN}-help-path.patch"
+	"${FILESDIR}"/"${PN}-5.0.0-help.patch"
 )
 
 pkg_setup() {

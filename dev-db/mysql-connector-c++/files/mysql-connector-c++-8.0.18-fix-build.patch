@@ -1,0 +1,275 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -463,7 +463,7 @@ set_target_properties(connector PROPERTIES
+ 
+ 
+ install(TARGETS connector
+-  CONFIGURATIONS Release RelWithDebInfo
++  CONFIGURATIONS Release RelWithDebInfo Gentoo
+   ARCHIVE DESTINATION "${INSTALL_LIB_DIR_STATIC}" COMPONENT XDevAPIDev
+   RUNTIME DESTINATION "${INSTALL_LIB_DIR}" COMPONENT XDevAPIDll
+   LIBRARY DESTINATION "${INSTALL_LIB_DIR}" COMPONENT XDevAPIDll
+--- a/cdk/cmake/DepFindProtobuf.cmake
++++ b/cdk/cmake/DepFindProtobuf.cmake
+@@ -48,197 +48,7 @@ if(TARGET Protobuf::pb)
+   return()
+ endif()
+ 
+-message(STATUS "Setting up Protobuf.")
+-
+-set(PB_SOURCE_DIR "${PROJECT_SOURCE_DIR}/protobuf")
+-set(PB_BINARY_DIR "${PROJECT_BINARY_DIR}/protobuf")
+-set(config_stamp "${PB_BINARY_DIR}/config.stamp")
+-set(build_stamp "${PB_BINARY_DIR}/build.stamp")
+-
+-
+-#
+-# Pick build configuration for the protobuf build. Normally we build using the
+-# same build configuration that is used for building CDK (Release/Debug/etc.).
+-# But we also support building CDK under non-standard build configuration
+-# named 'Static' (this is a dirty trick we use to simplify building our MSIs).
+-# Since protobuf does not know 'Static' build configuration, we build protobuf
+-# under 'Release' configuration in that case.
+-#
+-# We need to handle two cases. For some build systems, like Makefiles,
+-# the build configuration is specified at cmake time using CMAKE_BUILD_TYPE
+-# variable. In that case we also set it during protobuf build configuration.
+-# Another case is a multi-configuration build system like MSVC. In this case
+-# we use generator expression to pick correct  configuration when the build
+-# command is invoked below.
+-#
+-
+-set(build_type)
+-if(CMAKE_BUILD_TYPE)
+-  if(CMAKE_BUILD_TYPE MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
+-    set(set_build_type -DCMAKE_BUILD_TYPE=Release)
+-  else()
+-    set(set_build_type -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE})
+-  endif()
+-endif()
+-
+-set(CONFIG_EXPR
+-  $<$<CONFIG:Static>:Release>$<$<NOT:$<CONFIG:Static>>:$<CONFIG>>
+-)
+-
+-
+-if(NOT EXISTS "${PB_BINARY_DIR}/exports.cmake")
+-
+-  message("==== Configuring Protobuf build using cmake generator: ${CMAKE_GENERATOR}")
+-
+-  file(REMOVE "${PB_BINARY_DIR}/CMakeCache.txt")
+-  file(MAKE_DIRECTORY "${PB_BINARY_DIR}")
+-
+-  # Dirty trick to speed up cmake set up time.
+-  #file(
+-  #  COPY "${CMAKE_BINARY_DIR}/CMakeFiles/${CMAKE_VERSION}"
+-  #  DESTINATION "${PB_BINARY_DIR}/CMakeFiles"
+-  #)
+-
+-  execute_process(
+-    COMMAND ${CMAKE_COMMAND}
+-      -G "${CMAKE_GENERATOR}"
+-      ${set_build_type}
+-      -DSTATIC_MSVCRT=${STATIC_MSVCRT}
+-      -DCMAKE_POSITION_INDEPENDENT_CODE=${CMAKE_POSITION_INDEPENDENT_CODE}
+-      -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
+-      -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}
+-      -DCMAKE_CXX_FLAGS_DEBUG=${CMAKE_CXX_FLAGS_DEBUG}
+-      -DCMAKE_CXX_FLAGS_RELEASE=${CMAKE_CXX_FLAGS_RELEASE}
+-      -DCMAKE_CXX_FLAGS_RELWITHDEBINFO=${CMAKE_CXX_FLAGS_RELWITHDEBINFO}
+-      -DCMAKE_CXX_FLAGS_MINSIZEREL=${CMAKE_CXX_FLAGS_MINSIZEREL}
+-      -DCMAKE_STATIC_LINKER_FLAGS=${CMAKE_STATIC_LINKER_FLAGS}
+-      ${PB_SOURCE_DIR}
+-    WORKING_DIRECTORY ${PB_BINARY_DIR}
+-    RESULT_VARIABLE protobuf_config
+-  )
+-
+-  if(protobuf_config)
+-    message(FATAL_ERROR "Could not configure Protobuf build: ${protobuf_config}")
+-  endif()
+-
+-  message("==== Protobuf build configured.")
+-
+-endif()
+-
+-
+-include(${PB_BINARY_DIR}/exports.cmake)
+-
+-#
+-# Protobuf library targets imported above (pb_protobuf
+-# and pb_protobuf-lite) are local to the directory from which
+-# they were imported. This is not good if cdk is used as
+-# a sub-project of a parent project, because the parent project
+-# must have access to these targets.
+-#
+-# For that reason below we create global protobuf/protobuf-lite targets
+-# and copy their locations from the imported targets.
+-#
+-# Note: we can't use ALIAS library because it does not work with imported
+-# targets
+-#
+-
+-add_library(Protobuf::pb-full STATIC IMPORTED GLOBAL)
+-add_library(Protobuf::pb-lite STATIC IMPORTED GLOBAL)
+-add_executable(Protobuf::protoc IMPORTED GLOBAL)
+-
+-set(TGT_protobuf Protobuf::pb-full)
+-set(TGT_protobuf-lite Protobuf::pb-lite)
+-set(TGT_protoc Protobuf::protoc)
+-
+-foreach(tgt protobuf protobuf-lite protoc)
+-
+-  #message("processing: ${tgt}")
+-
+-  set(loc_list)
+-
+-  foreach(CONF NOCONFIG DEBUG RELEASE MINSIZEREL RELWITHDEBINFO)
+-
+-    #message("- CONF: ${CONF}")
+-
+-    get_target_property(LOC pb_${tgt} IMPORTED_LOCATION_${CONF})
+-
+-    if(LOC)
+-
+-      #message("- setting imported location to: ${LOC}")
+-      list(APPEND loc_list "${LOC}")
+-
+-      set_target_properties(${TGT_${tgt}} PROPERTIES
+-        IMPORTED_LOCATION_${CONF} "${LOC}"
+-      )
+-
+-      set_property(TARGET ${TGT_${tgt}} APPEND PROPERTY
+-        IMPORTED_CONFIGURATIONS ${CONF}
+-      )
+-
+-    endif()
+-
+-  endforeach(CONF)
+-
+-  #
+-  # To support 'Static' build configuration the targets imported from the
+-  # Protobuf project need to have IMPORTED_LOCATION_STATIC defined. We use
+-  # 'Release' locations as Protobuf is built using 'Release' configuration in
+-  # that case.
+-  #
+-
+-  get_target_property(LOC ${TGT_${tgt}} IMPORTED_LOCATION_RELEASE)
+-  set_property(TARGET ${TGT_${tgt}} PROPERTY IMPORTED_LOCATION_STATIC ${LOC})
+-
+-endforeach(tgt)
+-
+-
+-#message("Protobuf include path: ${PROTOBUF_INCLUDE_DIR}")
+-set(PROTOBUF_INCLUDE_DIR ${PROTOBUF_INCLUDE_DIR} CACHE INTERNAL "")
+-
+-set_target_properties(Protobuf::pb-lite PROPERTIES
+-  INTERFACE_INCLUDE_DIRECTORIES "${PROTOBUF_INCLUDE_DIR}"
+-)
+-
+-set_target_properties(Protobuf::pb-full PROPERTIES
+-  INTERFACE_LINK_LIBRARIES Protobuf::pb-lite
+-)
+-
+-# On UNIX Protobuf uses pthread library
+-if(UNIX)
+-  set_property(TARGET Protobuf::pb-lite APPEND PROPERTY
+-    INTERFACE_LINK_LIBRARIES pthread
+-  )
+-endif()
+-
+-#
+-# Note: This is needed to correctly compile headers generated by protobuf
+-# with sunpro compiler.
+-#
+-
+-if(SUNPRO)
+-  set_property(TARGET Protobuf::pb-lite APPEND PROPERTY
+-    INTERFACE_COMPILE_DEFINITIONS SOLARIS_64BIT_ENABLED
+-  )
+-endif()
+-
+-
+-add_custom_command(OUTPUT "${build_stamp}"
+-  COMMAND ${CMAKE_COMMAND} --build . --config ${CONFIG_EXPR}
+-  COMMAND ${CMAKE_COMMAND} -E touch "${build_stamp}"
+-  WORKING_DIRECTORY "${PB_BINARY_DIR}"
+-  COMMENT "Building protobuf"
+-)
+-
+-add_custom_target(build_protobuf
+-  SOURCES "${build_stamp}"
+-)
+-
+-add_dependencies(Protobuf::pb-full build_protobuf)
+-add_dependencies(Protobuf::pb-lite build_protobuf)
+-add_dependencies(Protobuf::protoc  build_protobuf)
+-
+-# TODO: Handle lite/full version
+-
++find_package(Protobuf REQUIRED)
+ 
+ 
+ # Standard PROTOBUF_GENERATE_CPP modified to our usage
+@@ -268,11 +78,11 @@ function(mysqlx_protobuf_generate_cpp SRCS HDRS)
+              "${CMAKE_CURRENT_BINARY_DIR}/protobuf/${FIL_WE}.pb.h"
+       COMMAND ${CMAKE_COMMAND}
+             -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/protobuf"
+-      COMMAND Protobuf::protoc
++      COMMAND ${Protobuf_PROTOC_EXECUTABLE}
+       ARGS --cpp_out "${CMAKE_CURRENT_BINARY_DIR}/protobuf"
+            -I ${ABS_PATH} ${ABS_FIL}
+-           --proto_path=${PROJECT_SOURCE_DIR}/protobuf/protobuf-3.6.1/src
+-      DEPENDS ${ABS_FIL} #${PROTOBUF_PROTOC_EXECUTABLE}
++           --proto_path=${Protobuf_INCLUDE_DIR}
++      DEPENDS ${ABS_FIL} #${Protobuf_PROTOC_EXECUTABLE}
+       COMMENT "Running C++ protocol buffer compiler on ${FIL}"
+       VERBATIM
+     )
+--- a/cdk/core/CMakeLists.txt
++++ b/cdk/core/CMakeLists.txt
+@@ -44,7 +44,7 @@ add_library(cdk STATIC ${cdk_sources} ${HEADERS})
+ 
+ target_link_libraries(cdk
+   PUBLIC  cdk_mysqlx cdk_parser
+-  PRIVATE Protobuf::pb-lite  # required by codecc.cc
++  PRIVATE protobuf  # required by codecc.cc
+ )
+ 
+ add_coverage(cdk)
+--- a/cdk/protocol/mysqlx/CMakeLists.txt
++++ b/cdk/protocol/mysqlx/CMakeLists.txt
+@@ -125,11 +125,7 @@ target_include_directories(cdk_proto_mysqlx PRIVATE
+   ${CMAKE_CURRENT_BINARY_DIR}
+ )
+ 
+-if(use_full_protobuf)
+-  target_link_libraries(cdk_proto_mysqlx PRIVATE Protobuf::pb-full)
+-else()
+-  target_link_libraries(cdk_proto_mysqlx PRIVATE Protobuf::pb-lite)
+-endif()
++target_link_libraries(cdk_proto_mysqlx PRIVATE protobuf)
+ 
+ target_link_libraries(cdk_proto_mysqlx PRIVATE cdk_foundation)
+ 
+--- a/jdbc.cmake
++++ b/jdbc.cmake
+@@ -66,7 +66,7 @@ if(MYSQL_CONFIG_EXECUTABLE)
+   list(APPEND jdbc_cmake_opts -DMYSQL_CONFIG_EXECUTABLE=${MYSQL_CONFIG_EXECUTABLE})
+ endif()
+ 
+-list(APPEND jdbc_cmake_opts -DMYSQLCLIENT_STATIC_LINKING=ON)
++list(APPEND jdbc_cmake_opts -DMYSQLCLIENT_STATIC_LINKING=OFF)
+ 
+ if(CMAKE_BUILD_TYPE)
+   if(CMAKE_BUILD_TYPE MATCHES "[Ss][Tt][Aa][Tt][Ii][Cc]")
+--- a/jdbc/CMakeLists.txt
++++ b/jdbc/CMakeLists.txt
+@@ -272,7 +272,7 @@ set_target_properties(connector-jdbc
+ 
+ 
+ install(TARGETS connector-jdbc
+-  CONFIGURATIONS Release RelWithDebInfo
++  CONFIGURATIONS Release RelWithDebInfo Gentoo
+   ARCHIVE DESTINATION "${INSTALL_LIB_DIR_STATIC}" COMPONENT JDBCDev
+   RUNTIME DESTINATION "${INSTALL_LIB_DIR}" COMPONENT JDBCDll
+   LIBRARY DESTINATION "${INSTALL_LIB_DIR}" COMPONENT JDBCDll

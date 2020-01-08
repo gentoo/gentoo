@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit toolchain-funcs cmake-utils
+inherit toolchain-funcs linux-info cmake-utils
 
 DESCRIPTION="High-level tracing language for eBPF"
 HOMEPAGE="https://github.com/iovisor/bpftrace"
@@ -13,9 +13,8 @@ if [[ ${PV} =~ 9{4,} ]]; then
 	EGIT_REPO_URI="https://github.com/iovisor/${PN}"
 	BDEPEND=""
 else
-	SRC_URI="mirror://gentoo/${P}.tar.xz"
-	#SRC_URI="https://github.com/iovisor/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://github.com/iovisor/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	BDEPEND="app-arch/xz-utils "
 fi
 
@@ -23,9 +22,11 @@ LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="test"
 
-COMMON_DEPEND="sys-devel/clang:=
+COMMON_DEPEND="dev-util/systemtap
+	sys-devel/clang:=
+	dev-libs/libbpf:=
 	>=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)]
-	>=dev-util/bcc-0.9.0:=
+	>=dev-util/bcc-0.10.0:=
 	virtual/libelf"
 DEPEND="${COMMON_DEPEND}
 	test? ( dev-cpp/gtest )"
@@ -34,14 +35,21 @@ BDEPEND+="dev-util/cmake
 	sys-devel/flex
 	sys-devel/bison"
 
+QA_DT_NEEDED="/usr/lib.*/libbpftraceresources.so"
+
 PATCHES=(
-	"${FILESDIR}/bpftrace-0.9_pre20190311-bcc-0.9.patch"
-	"${FILESDIR}/bpftrace-0.9_pre20190311-install-libs.patch"
+	"${FILESDIR}/bpftrace-0.9.3-install-libs.patch"
 	"${FILESDIR}/bpftrace-mandir.patch"
 )
 
 # lots of fixing needed
 RESTRICT="test"
+
+pkg_pretend() {
+	local CONFIG_CHECK="~BPF ~BPF_SYSCALL ~BPF_JIT ~BPF_EVENTS"
+
+	check_extra_config
+}
 
 src_prepare() {
 	cmake-utils_src_prepare

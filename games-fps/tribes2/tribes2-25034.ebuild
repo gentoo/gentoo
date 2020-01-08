@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,8 +6,7 @@ inherit eutils unpacker cdrom games
 
 DESCRIPTION="Tribes 2 - Team Combat on an Epic Scale"
 HOMEPAGE="http://www.lokigames.com/products/tribes2/"
-SRC_URI="http://www.libsdl.org/projects/${PN}/release/${P}-cdrom-x86.run
-	mirror://3dgamers/${PN}/${P}-cdrom-x86.run"
+SRC_URI="http://www.libsdl.org/projects/${PN}/release/${P}-cdrom-x86.run"
 
 LICENSE="LOKI-EULA"
 SLOT="0"
@@ -16,7 +15,7 @@ SLOT="0"
 # someone does fix the patching.
 KEYWORDS="-amd64 ~x86"
 IUSE=""
-RESTRICT="mirror strip"
+RESTRICT="mirror bindist strip"
 
 DEPEND="sys-libs/glibc
 	games-util/loki_patch"

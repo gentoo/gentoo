@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 git-r3 gnome2-utils xdg-utils
@@ -24,6 +24,7 @@ RDEPEND="
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	x11-libs/libnotify[introspection]
+	x11-libs/libwnck:3[introspection]
 	x11-libs/vte:2.91[introspection]
 	utempter? ( sys-libs/libutempter )
 "
@@ -37,7 +38,6 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.2-paths.patch
-	"${FILESDIR}"/${PN}-3.4.0-paths.patch
 )
 
 python_compile_all() {

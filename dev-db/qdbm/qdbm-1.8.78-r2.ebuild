@@ -13,7 +13,7 @@ SRC_URI="https://fallabs.com/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sh sparc x86"
 IUSE="bzip2 cxx debug java lzo perl ruby zlib"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )

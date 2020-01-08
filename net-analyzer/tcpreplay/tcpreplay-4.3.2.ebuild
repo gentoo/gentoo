@@ -10,7 +10,7 @@ LICENSE="BSD GPL-3"
 SRC_URI="https://github.com/appneta/${PN}/releases/download/v${PV/_/-}/${P/_/-}.tar.xz -> ${P}.tar.xz"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~sparc x86"
 IUSE="debug pcapnav +tcpdump"
 
 DEPEND="
@@ -65,7 +65,7 @@ src_test() {
 		ewarn "Some tests were disabled due to FEATURES=userpriv"
 		ewarn "To run all tests issue the following command as root:"
 		ewarn " # make -C ${S}/test"
-		emake -j1 -C test tcpprep || die "self test failed - see ${S}/test/test.log"
+		emake -j1 -C test tcpprep
 	else
 		emake -j1 test || {
 			ewarn "Note that some tests require eth0 iface to be up." ;

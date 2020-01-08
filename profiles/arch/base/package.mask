@@ -1,0 +1,56 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-08-30)
+# Perl 5.26 will be removed soon. Please upgrade.
+# This block is here (and not in ../../package.mask) since we still need
+# it and unmask it on hppa and sparc. See bug 676062 and bug 683018.
+<dev-lang/perl-5.28.2-r1
+~virtual/perl-Archive-Tar-2.240.0
+~virtual/perl-Attribute-Handlers-0.990.0
+~virtual/perl-B-Debug-1.240.0
+~virtual/perl-CPAN-2.180.0
+~virtual/perl-Carp-1.420.0
+~virtual/perl-Compress-Raw-Zlib-2.74.0
+~virtual/perl-Data-Dumper-2.167.0
+~virtual/perl-Devel-PPPort-3.350.0
+~virtual/perl-Digest-SHA-5.960.0
+~virtual/perl-Encode-2.880.0
+~virtual/perl-Exporter-5.720.0
+~virtual/perl-ExtUtils-CBuilder-0.280.225
+~virtual/perl-ExtUtils-Constant-0.230.0
+~virtual/perl-ExtUtils-Install-2.40.0
+~virtual/perl-ExtUtils-MakeMaker-7.240.0
+~virtual/perl-ExtUtils-ParseXS-3.340.0
+~virtual/perl-File-Spec-3.670.0
+~virtual/perl-Filter-Simple-0.930.0
+~virtual/perl-Getopt-Long-2.490.0
+~virtual/perl-I18N-LangTags-0.420.0
+~virtual/perl-IO-1.380.0
+~virtual/perl-IO-Socket-IP-0.380.0
+~virtual/perl-IPC-Cmd-0.960.0
+~virtual/perl-JSON-PP-2.274.0.200_rc
+~virtual/perl-Locale-Maketext-1.280.0
+~virtual/perl-Math-BigInt-1.999.806
+~virtual/perl-Math-BigInt-FastCalc-0.500.500
+~virtual/perl-Math-BigRat-0.261.100
+~virtual/perl-Module-CoreList-5.201.804.140
+~virtual/perl-Net-Ping-2.550.0
+~virtual/perl-Scalar-List-Utils-1.460.200_rc
+~virtual/perl-Socket-2.20.30_rc
+~virtual/perl-Storable-2.620.0
+~virtual/perl-Test-1.300.0
+~virtual/perl-Test-Harness-3.380.0
+~virtual/perl-Test-Simple-1.302.73
+~virtual/perl-Time-HiRes-1.974.100
+~virtual/perl-Time-Piece-1.310.0
+~virtual/perl-Unicode-Collate-1.190.0
+~virtual/perl-Unicode-Normalize-1.250.0
+~virtual/perl-XSLoader-0.270.0
+~virtual/perl-bignum-0.470.0
+~virtual/perl-if-0.60.600
+~virtual/perl-libnet-3.100.0
+~virtual/perl-podlators-4.90.0
+~virtual/perl-threads-2.150.0
+~virtual/perl-threads-shared-1.560.0
+~virtual/perl-version-0.991.700

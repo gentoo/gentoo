@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_4 python3_5 python3_6 )
+PYTHON_COMPAT=( python2_7 python3_6 )
 inherit cmake-utils python-single-r1
 
 MY_P="${PN}1-${PV}"
@@ -21,6 +21,7 @@ HOMEPAGE="http://www.intra2net.com/en/developer/libftdi/"
 LICENSE="LGPL-2"
 SLOT="1"
 IUSE="cxx doc examples python static-libs test tools"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="virtual/libusb:1

@@ -5,7 +5,7 @@ EAPI=7
 
 inherit toolchain-funcs
 
-DESCRIPTION="Linux Fleetsync / MCD1200 decoder"
+DESCRIPTION="Linux Fleetsync / MDC1200 decoder"
 HOMEPAGE="https://github.com/russinnes/fsync-mdc1200-decode"
 
 LICENSE="GPL-2+"

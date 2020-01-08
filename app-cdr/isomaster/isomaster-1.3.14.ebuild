@@ -11,7 +11,7 @@ SRC_URI="http://littlesvr.ca/${PN}/releases/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 RDEPEND=">=dev-libs/iniparser-4.1:4
@@ -45,7 +45,7 @@ src_compile() {
 
 _apply_linguas() {
 	mv "${D}"/usr/share/locale{,_ALL} || die
-	dodir /usr/share/locale || die
+	dodir /usr/share/locale
 	for lingua in ${LINGUAS}; do
 		[[ -d "${D}"/usr/share/locale_ALL/${lingua} ]] || break
 		mv "${D}"/usr/share/{locale_ALL/${lingua},locale/} || die

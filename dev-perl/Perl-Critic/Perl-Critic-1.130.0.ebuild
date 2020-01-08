@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="Critique Perl source code for best-practices"
 SLOT="0"
 KEYWORDS="alpha amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 IUSE="test minimal examples emacs"
+RESTRICT="!test? ( test )"
 SITEFILE="50${PN}-gentoo.el"
 RDEPEND="
 	>=dev-perl/B-Keywords-1.50.0
@@ -43,7 +44,7 @@ RDEPEND="
 	>=virtual/perl-Text-ParseWords-3
 	dev-perl/Perl-Tidy
 	>=virtual/perl-version-0.770.0
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 "
 DEPEND="${RDEPEND}
 	>=dev-perl/Module-Build-0.402.400

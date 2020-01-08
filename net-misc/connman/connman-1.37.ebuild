@@ -6,16 +6,16 @@ inherit autotools systemd tmpfiles
 
 DESCRIPTION="Provides a daemon for managing internet connections"
 HOMEPAGE="https://01.org/connman"
-SRC_URI="mirror://kernel/linux/network/${PN}/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/network/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86"
 
-IUSE="${IUSE} bluetooth debug doc examples +ethernet iptables iwd l2tp nftables"
+IUSE="${IUSE} bluetooth debug doc examples +ethernet +iptables iwd l2tp nftables"
 IUSE="${IUSE} ofono openvpn openconnect pptp policykit tools vpnc +wifi wispr networkmanager"
 
-REQUIRED_USE="|| ( iptables nftables )"
+REQUIRED_USE="^^ ( iptables nftables )"
 RDEPEND=">=dev-libs/glib-2.16
 	>=sys-apps/dbus-1.2.24
 	sys-libs/readline:0=

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} pypy3 )
 
 inherit distutils-r1
 
@@ -19,8 +19,9 @@ SRC_URI="
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/python-cffi[${PYTHON_USEDEP}]"
 DEPEND="
@@ -32,6 +33,10 @@ DEPEND="
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/brotlipy-0.7.0-test-deadline.patch
+)
+
 src_prepare() {
 	# Inject the brotli lib.
 	rm -r "${WORKDIR}/${P}/libbrotli" || die "Could not remove the bundled brotli lib folder."
@@ -40,9 +45,9 @@ src_prepare() {
 	# Tests fail if we have this folder preserved within the lib.
 	rm -r "${WORKDIR}/${P}/libbrotli/python" || die "Could not remove 'python' subfolder."
 
-	eapply_user
+	distutils-r1_src_prepare
 }
 
 python_test() {
-	py.test -v || die "Testing failed"
+	pytest -vv || die "Testing failed"
 }

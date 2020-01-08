@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE='threads(+)'
 inherit python-any-r1 waf-utils multilib-build multilib-minimal
 
@@ -13,8 +13,9 @@ SRC_URI="http://download.drobilla.net/${P}.tar.bz2"
 
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 DEPEND="${RDEPEND}

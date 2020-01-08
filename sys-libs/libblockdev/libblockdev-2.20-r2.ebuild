@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 inherit autotools python-single-r1 xdg-utils
 
 MY_PV="${PV}-1"
@@ -14,8 +14,9 @@ HOMEPAGE="https://github.com/storaged-project/libblockdev"
 SRC_URI="https://github.com/storaged-project/${PN}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~ia64 ~mips ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm arm64 ia64 ~mips ppc ppc64 sparc x86"
 IUSE="bcache +cryptsetup device-mapper dmraid doc escrow lvm kbd test vdo"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.2
@@ -45,7 +46,10 @@ RDEPEND="
 
 DEPEND="
 	${RDEPEND}
+"
+BDEPEND="
 	>=dev-libs/gobject-introspection-1.3.0
+	sys-devel/autoconf-archive
 	doc? ( dev-util/gtk-doc )
 "
 

@@ -1,58 +1,66 @@
-# Copyright 2018-2019 Gentoo Authors
+# Copyright 2018-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/NVIDIA/${PN}.git"
+EGIT_REPO_URI="https://gitlab.freedesktop.org/glvnd/libglvnd.git"
 
 if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python2_7 )
-inherit autotools ${GIT_ECLASS} multilib-minimal python-any-r1
+PYTHON_COMPAT=( python3_{6,7,8} )
+VIRTUALX_REQUIRED=manual
+
+inherit ${GIT_ECLASS} meson multilib-minimal python-any-r1 virtualx
 
 DESCRIPTION="The GL Vendor-Neutral Dispatch library"
-HOMEPAGE="https://github.com/NVIDIA/libglvnd"
+HOMEPAGE="https://gitlab.freedesktop.org/glvnd/libglvnd"
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~amd64"
-	COMMIT=""
-	SRC_URI="https://github.com/NVIDIA/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
-	S=${WORKDIR}/${PN}-${COMMIT}
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	SRC_URI="https://gitlab.freedesktop.org/glvnd/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2"
+	S=${WORKDIR}/${PN}-v${PV}
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE=""
+IUSE="test X"
+RESTRICT="!test? ( test )"
 
+BDEPEND="${PYTHON_DEPS}
+	test? ( X? ( ${VIRTUALX_DEPEND} ) )"
 RDEPEND="
 	!media-libs/mesa[-libglvnd(-)]
-	x11-libs/libX11[${MULTILIB_USEDEP}]
-	"
-DEPEND="${PYTHON_DEPS}
-	${RDEPEND}"
-
-src_unpack() {
-	default
-	[[ $PV = 9999* ]] && git-r3_src_unpack
-}
-
-src_prepare() {
-	default
-	eautoreconf
-}
+	!<media-libs/mesa-19.2.2
+	X? (
+		x11-libs/libX11[${MULTILIB_USEDEP}]
+		x11-libs/libXext[${MULTILIB_USEDEP}]
+	)"
+DEPEND="${RDEPEND}
+	X? ( x11-base/xorg-proto )"
 
 multilib_src_configure() {
-	ECONF_SOURCE=${S} econf
+	local emesonargs=(
+		$(meson_feature X x11)
+		$(meson_feature X glx)
+	)
+	meson_src_configure
 }
 
-multilib_src_install() {
-	default
-	find "${D}" -name '*.la' -delete || die
+multilib_src_compile() {
+	meson_src_compile
 }
 
 multilib_src_test() {
-	emake check
+	if use X; then
+		virtx meson_src_test
+	else
+		meson_src_test
+	fi
+}
+
+multilib_src_install() {
+	meson_src_install
 }

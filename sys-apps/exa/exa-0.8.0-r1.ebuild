@@ -76,7 +76,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+git"
 
 DEPEND="

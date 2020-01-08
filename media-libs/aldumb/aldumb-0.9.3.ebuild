@@ -7,7 +7,7 @@ DESCRIPTION="Allegro support for DUMB (an IT, XM, S3M, and MOD player library)"
 HOMEPAGE="http://dumb.sourceforge.net/"
 SRC_URI="mirror://sourceforge/dumb/dumb-${PV}.tar.gz"
 
-LICENSE="DUMB-0.9.2"
+LICENSE="DUMB-0.9.3"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
 IUSE="debug"

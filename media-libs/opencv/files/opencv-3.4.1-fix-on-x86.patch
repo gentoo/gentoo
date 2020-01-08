@@ -1,0 +1,27 @@
+From 7dc162cb4252ccf461f1c63650abde3c8807b79c Mon Sep 17 00:00:00 2001
+From: Alexander Alekhin <alexander.alekhin@intel.com>
+Date: Mon, 9 Apr 2018 18:25:51 +0300
+Subject: [PATCH] core: fix mm_pause() for non-SSE i386 builds
+
+replaced to safe binary compatible 'rep; nop' asm instruction
+---
+ modules/core/src/parallel_impl.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/modules/core/src/parallel_impl.cpp b/modules/core/src/parallel_impl.cpp
+index 78d9eb63694..bc64fce7a81 100644
+--- a/modules/core/src/parallel_impl.cpp
++++ b/modules/core/src/parallel_impl.cpp
+@@ -49,7 +49,11 @@ DECLARE_CV_YIELD
+ DECLARE_CV_PAUSE
+ #endif
+ #ifndef CV_PAUSE
+-#if defined __GNUC__ && (defined __i386__ || defined __x86_64__)
++# if defined __GNUC__ && (defined __i386__ || defined __x86_64__)
++#   if !defined(__SSE__)
++      static inline void cv_non_sse_mm_pause() { __asm__ __volatile__ ("rep; nop"); }
++#     define _mm_pause cv_non_sse_mm_pause
++#   endif
+ #   define CV_PAUSE(v) do { for (int __delay = (v); __delay > 0; --__delay) { _mm_pause(); } } while (0)
+ # elif defined __GNUC__ && defined __aarch64__
+ #   define CV_PAUSE(v) do { for (int __delay = (v); __delay > 0; --__delay) { asm volatile("yield" ::: "memory"); } } while (0)

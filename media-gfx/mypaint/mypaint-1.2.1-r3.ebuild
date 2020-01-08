@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mypaint/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE=""
 REQUIRED_USE=${PYTHON_REQUIRED_USE}

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ if [[ ${PV} == *9999* ]]; then
 	[[ ${PV%9999} != "" ]] && EGIT_BRANCH="release/${PV%.9999}"
 	inherit autotools git-r3
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+	KEYWORDS="amd64 arm arm64 ppc ppc64 x86 ~x64-macos"
 	if [[ ${PV%_p*} != ${PV} ]]; then # Gentoo snapshot
 		SRC_URI="mirror://gentoo/${P}.tar.xz"
 	else # Official release

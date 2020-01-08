@@ -3,8 +3,11 @@
 
 EAPI="7"
 
+inherit autotools
+
 if [[ "${PV}" == "9999" ]]; then
-	inherit autotools git-r3
+#	inherit autotools git-r3
+	inherit git-r3
 
 	EGIT_REPO_URI="https://github.com/chewing/libchewing"
 fi
@@ -27,12 +30,17 @@ RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}
 	test? ( sys-libs/ncurses[unicode] )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-0.5.1-autoconf-archive-2019.01.06.patch"
+)
+
 src_prepare() {
 	default
+	eautoreconf
 
-	if [[ "${PV}" == "9999" ]]; then
-		eautoreconf
-	fi
+#	if [[ "${PV}" == "9999" ]]; then
+#		eautoreconf
+#	fi
 }
 
 src_configure() {
@@ -48,6 +56,8 @@ src_test() {
 
 src_install() {
 	default
-	find "${D}" -name "*.la" -delete || die
-	use static-libs || find "${D}" -name "*.a" -delete || die
+	find "${D}" -name "*.la" -type f -delete || die
+	if ! use static-libs; then
+		find "${D}" -name "*.a" -type f -delete || die
+	fi
 }

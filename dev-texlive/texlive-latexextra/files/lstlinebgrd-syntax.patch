@@ -1,0 +1,16 @@
+--- a/texmf-dist/tex/latex/lstaddons/lstlinebgrd.sty	2019-06-21 16:32:09.158990775 +0200
++++ b/texmf-dist/tex/latex/lstaddons/lstlinebgrd.sty	2019-06-21 16:31:45.408991817 +0200
+@@ -27,10 +27,10 @@
+ \lst@Key{numbers}{none}{%
+     \def\lst@PlaceNumber{\lst@linebgrd}%
+     \lstKV@SwitchCases{#1}%
+-    {none&\\%
+-     left&\def\lst@PlaceNumber{\llap{\normalfont
++    {none:\\%
++     left:\def\lst@PlaceNumber{\llap{\normalfont
+                 \lst@numberstyle{\thelstnumber}\kern\lst@numbersep}\lst@linebgrd}\\%
+-     right&\def\lst@PlaceNumber{\rlap{\normalfont
++     right:\def\lst@PlaceNumber{\rlap{\normalfont
+                 \kern\linewidth \kern\lst@numbersep
+                 \lst@numberstyle{\thelstnumber}}\lst@linebgrd}%
+     }{\PackageError{Listings}{Numbers #1 unknown}\@ehc}}

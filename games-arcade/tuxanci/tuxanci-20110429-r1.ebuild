@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,13 +6,13 @@ EAPI=6
 inherit cmake-utils
 
 DESCRIPTION="Tuxanci is first tux shooter inspired by game Bulanci"
-HOMEPAGE="http://www.tuxanci.org/"
+HOMEPAGE="https://repo.or.cz/w/tuxanci.git"
 
 if [[ ${PV} = *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="git://repo.or.cz/tuxanci.git"
+	EGIT_REPO_URI="https://repo.or.cz/tuxanci.git"
 else
-	SRC_URI="http://dev.gentooexperimental.org/~scarabeus/${P}.tar.xz"
+	SRC_URI="mirror://gentoo/${P}.tar.xz"
 	KEYWORDS="~amd64 ~ppc64 ~x86"
 fi
 

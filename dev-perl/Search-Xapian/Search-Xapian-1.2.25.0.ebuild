@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"
 SLOT="0"
 KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 sparc x86"
 IUSE="examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/xapian:0/1.2.22
 	!dev-libs/xapian-bindings[perl]"

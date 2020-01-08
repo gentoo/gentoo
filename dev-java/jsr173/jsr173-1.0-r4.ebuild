@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="Yet another Java library for parsing and writing XML"
 HOMEPAGE="http://dev2dev.bea.com/xml/stax.html"
-SRC_URI="http://ftpna2.bea.com/pub/downloads/${PN}.jar"
+SRC_URI="mirror://gentoo/${P}.jar"
 
 LICENSE="bea.ri.jsr173"
 SLOT="0"

@@ -12,8 +12,9 @@ SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha amd64 ia64 ppc ppc64 ~sparc x86 ~x86-linux"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-linux"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	|| (

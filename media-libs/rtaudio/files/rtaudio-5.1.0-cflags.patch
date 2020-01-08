@@ -1,0 +1,17 @@
+diff --git a/configure.ac b/configure.ac
+index 43c054a..27a809a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -101,12 +101,10 @@ AS_CASE([${enable_debug}],
+   [ yes ], [
+     AC_MSG_RESULT([yes])
+     AC_DEFINE([__RTAUDIO_DEBUG__])
+-    debugflags="${debugflags} -g -O0"
+     object_path=Debug
+   ],
+   [ no ], [
+     AC_MSG_RESULT([no!])
+-    debugflags="${debugflags} -O3"
+   ], [
+     AC_MSG_RESULT([no])
+   ])

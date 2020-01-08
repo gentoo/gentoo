@@ -26,8 +26,8 @@ java_prepare() {
 
 src_install() {
 	java-pkg_newjar dist/jdepend-2.9.jar
-	dodoc README || die
-	dohtml -r docs/* || die
+	dodoc README
+	dohtml -r docs/*
 	use doc && java-pkg_dojavadoc build/docs/api
 	use source && java-pkg_dosrc src/*
 }

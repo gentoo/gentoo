@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+USE_RUBY="ruby22 ruby23 ruby24 ruby25"
 
 # Tests require a live MySQL database but should all pass.
 RUBY_FAKEGEM_TASK_TEST=""
@@ -18,24 +18,14 @@ HOMEPAGE="https://github.com/brianmario/mysql2"
 
 LICENSE="MIT"
 SLOT="0.4"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~x86"
-IUSE="mysql mariadb"
-REQUIRED_USE="^^ ( mariadb mysql )"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+IUSE=""
 
-MDEPEND="mysql? ( dev-db/mysql-connector-c ) mariadb? ( dev-db/mariadb-connector-c )"
-DEPEND="${DEPEND} ${MDEPEND}"
-RDEPEND="${RDEPEND} ${MDEPEND}"
+DEPEND="${DEPEND} dev-db/mysql-connector-c"
+RDEPEND="${RDEPEND} dev-db/mysql-connector-c:="
 
 each_ruby_configure() {
-	local config
-	if use mysql ; then
-		config="${EPREFIX}/usr/bin/mysql_config"
-	fi
-	if use mariadb ; then
-		config="${EPREFIX}/usr/bin/mariadb_config"
-	fi
-
-	${RUBY} -Cext/mysql2 extconf.rb --with-mysql-config=${config} || die
+	${RUBY} -Cext/mysql2 extconf.rb --with-mysql-config "${EPREFIX}/usr/bin/mysqlconfig" || die
 }
 
 each_ruby_compile() {

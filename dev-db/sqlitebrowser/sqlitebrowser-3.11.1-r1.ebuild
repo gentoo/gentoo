@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop xdg
+inherit cmake desktop xdg
 
 DESCRIPTION="SQLite Database Browser"
 HOMEPAGE="https://sqlitebrowser.org"
@@ -13,6 +13,7 @@ LICENSE="GPL-3 MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -40,7 +41,7 @@ RDEPEND="${DEPEND}
 PATCHES=( "${FILESDIR}"/${PN}-3.11.1-unbundle.patch )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	rm -r libs || die
 	sed -i 's#"src/qhexedit.h"#<qhexedit.h>#' src/EditDialog.cpp || die
 	#find libs/{antlr-2.7.7,qcustomplot-source,qscintilla} -delete || die
@@ -48,7 +49,8 @@ src_prepare() {
 	sed -e "/^project/ s/\".*\"/sqlitebrowser/" -i CMakeLists.txt || die
 
 	if ! use test; then
-		sed -e "/qt5_use_modules/ s/ Test//" -i CMakeLists.txt || die
+		sed -e "/find_package/ s/ Test//" -i CMakeLists.txt || die
+		sed -e "/set/ s/ Qt5::Test//" -i CMakeLists.txt || die
 	fi
 }
 
@@ -56,10 +58,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_TESTING=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	doicon images/sqlitebrowser.svg
 }

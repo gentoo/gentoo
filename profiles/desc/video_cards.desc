@@ -18,12 +18,14 @@ i965 - VIDEO_CARDS setting to build driver for Intel i965 video cards
 imx - VIDEO_CARDS setting to build driver for Freescale i.MX video cards
 intel - VIDEO_CARDS setting to build driver for Intel video cards
 iris - VIDEO_CARDS setting to build driver for Intel video cards Gen8 / Broadwell or newer
+lima - VIDEO_CARDS setting to build driver for Mali 200/400 video cards
 mga - VIDEO_CARDS setting to build driver for mga video cards
 nouveau - VIDEO_CARDS setting to build reverse-engineered driver for nvidia cards
 nvidia - VIDEO_CARDS setting to build driver for nvidia video cards
 nv - VIDEO_CARDS setting to build driver for nv video cards
 omap - VIDEO_CARDS setting to build DRM driver for TI OMAP video cards
 qxl - VIDEO_CARDS setting to build driver for qxl (QEMU virtual GPU)
+panfrost - VIDEO_CARDS setting to build driver for Mali 600/700/800 video cards
 r100 - VIDEO_CARDS setting to build only r100 based chips code for radeon
 r128 - VIDEO_CARDS setting to build driver for ATI r128 video cards
 r200 - VIDEO_CARDS setting to build only r200 based chips code for radeon
@@ -32,7 +34,6 @@ r600 - VIDEO_CARDS setting to build only r600, r700, Evergreen and Northern Isla
 radeon - VIDEO_CARDS setting to build driver for ATI radeon video cards
 radeonsi - VIDEO_CARDS setting to build only Southern Islands based chips code for radeon
 siliconmotion - VIDEO_CARDS setting to build driver for siliconmotion video cards
-tdfx - VIDEO_CARDS setting to build driver for tdfx video cards
 tegra - VIDEO_CARDS setting to build driver for tegra video cards
 vc4 - VIDEO_CARDS setting to build driver for vc4 video cards
 vesa - VIDEO_CARDS setting to build driver for vesa video cards
@@ -41,4 +42,3 @@ virgl - VIDEO_CARDS setting to build driver for virgil (virtual 3D GPU)
 virtualbox - VIDEO_CARDS setting to build driver for virtualbox emulation
 vivante - VIDEO_CARDS setting to build etnaviv driver for vivante video cards
 vmware - VIDEO_CARDS setting to build driver for vmware video cards
-voodoo - VIDEO_CARDS setting to build driver for voodoo video cards

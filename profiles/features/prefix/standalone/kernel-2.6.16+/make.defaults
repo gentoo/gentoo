@@ -17,7 +17,3 @@ ac_cv_func_pipe2=no
 ac_cv_func_dup3=no
 # epoll_create1 requires >=linux-2.6.27.
 ac_cv_func_epoll_create1=no
-
-# >=python-3 is masked.
-PYTHON_TARGETS=python2_7
-PYTHON_SINGLE_TARGET=python2_7

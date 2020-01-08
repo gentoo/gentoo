@@ -8,10 +8,6 @@
 	<flag name="amr">Enables Adaptive Multi-Rate Audio support</flag>
 	<flag name="amrenc">Enables Adaptive Multi-Rate Audio encoding support with <pkg>media-libs/vo-amrwbenc</pkg>.</flag>
 	<flag name="appkit">Enables Apple AppKit framework</flag>
-	<flag name="armv5te">Enables optimizations for armv5te processors.</flag>
-	<flag name="armv6">Enables optimizations for armv6 processors.</flag>
-	<flag name="armv6t2">Enables optimizations for armv6t2 processors.</flag>
-	<flag name="armvfp">Enables VFP optimizations for ARM processors.</flag>
 	<flag name="bluray">Enable playback of Blu-ray filesystems</flag>
 	<flag name="bs2b">Enables <pkg>media-libs/libbs2b</pkg> based Bauer stereo-to-binaural filter.</flag>
 	<flag name="cdio">Enables audio CD grabbing with <pkg>dev-libs/libcdio</pkg>.</flag>
@@ -19,7 +15,8 @@
 	<flag name="chromium">Builds libffmpeg.so to enable media playback in Chromium-based browsers like Opera and Vivaldi.</flag>
 	<flag name="codec2">Enables codec2 low bit rate speech codec support via <pkg>media-libs/codec2</pkg>.</flag>
 	<flag name="cpudetection">Enables runtime CPU detection (useful for bindist, compatibility on other CPUs)</flag>
-	<flag name="ebur128">Enables EBU R128 loudness normalization filter via <pkg>media-libs/libebur128</pkg></flag>
+	<flag name="cuda">Enables CUDA-based acceleration. Mostly used for specific filters.</flag>
+	<flag name="dav1d">Enables AV1 decoding via <pkg>media-libs/dav1d</pkg>.</flag>
 	<flag name="fdk">Use external fdk-aac library for AAC encoding</flag>
 	<flag name="flite">Adds a text-to-speech filter based on <pkg>app-accessibility/flite</pkg>.</flag>
 	<flag name="frei0r">Enable frei0r wrapping in libavfilter</flag>
@@ -31,10 +28,12 @@
 	<flag name="iec61883"> Support for FireWire DV/HDV input device using <pkg>media-libs/libiec61883</pkg>.</flag>
 	<flag name="kvazaar">Enables <pkg>media-libs/kvazaar</pkg> based HEVC encoder.</flag>
 	<flag name="libaom">Enables <pkg>media-libs/libaom</pkg> based AV1 codec support.</flag>
+	<flag name="libaribb24">Enables ARIB text and caption decoding via <pkg>media-libs/aribb24</pkg>.</flag>
 	<flag name="libdrm">Enables <pkg>x11-libs/libdrm</pkg> support for better screen grabbing and hardware accelerated codecs.</flag>
 	<flag name="libilbc">Enables iLBC de/encoding via <pkg>media-libs/libilbc</pkg>.</flag>
 	<flag name="librtmp">Enables Real Time Messaging Protocol using librtmp (<pkg>media-video/rtmpdump</pkg>) in addition to FFmpeg's native implementation.</flag>
 	<flag name="libsoxr">Enables audio resampling through <pkg>media-libs/soxr</pkg>.</flag>
+	<flag name="libtesseract">Enables the OCR filter via <pkg>app-text/tesseract</pkg>.</flag>
 	<flag name="libv4l">Uses <pkg>media-libs/libv4l</pkg> for video4linux instead of direct calls. Adds support for more devices via the userspace library.</flag>
 	<flag name="libxml2">Uses <pkg>dev-libs/libxml2</pkg> to enable dash demuxing support.</flag>
 	<flag name="lv2">Enables lv2 audio filter wrapper.</flag>
@@ -51,7 +50,6 @@
 	<flag name="postproc">Build and install libpostproc.</flag>
 	<flag name="rubberband">Adds time-stretching and pitch-shifting audio filter based on <pkg>media-libs/rubberband</pkg>.</flag>
 	<flag name="snappy">Enable <pkg>app-arch/snappy</pkg> support. Required for e.g. Vidvox Hap encoder.</flag>
-	<flag name="sofalizer">Enables Sofalizer filter</flag>
 	<flag name="srt">Enable support for Secure Reliable Transport (SRT) via <pkg>net-libs/srt</pkg></flag>
 	<flag name="ssh">Enable SSH/sftp support via <pkg>net-libs/libssh</pkg>.</flag>
 	<flag name="twolame">Enables MP2 encoding via <pkg>media-sound/twolame</pkg> as an alternative to the internal encoder.</flag>

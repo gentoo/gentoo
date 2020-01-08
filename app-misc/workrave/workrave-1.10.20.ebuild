@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ KEYWORDS="amd64 ~ppc x86"
 
 # dbus support looks to be used only for trying to use panel applets on gnome3!
 IUSE="ayatana doc gnome gstreamer introspection mate nls pulseaudio test xfce"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="ayatana? ( introspection ) ${PYTHON_REQUIRED_USE}"
 
 RDEPEND="

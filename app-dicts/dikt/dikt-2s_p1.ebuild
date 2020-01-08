@@ -1,13 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 MY_P=${P/_p/}
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm
 
-inherit kde5
-
-DESCRIPTION="A dictionary application that implements the Dict protocol"
+DESCRIPTION="Dictionary application that implements the Dict protocol"
 HOMEPAGE="https://www.dikt.tv/"
 SRC_URI="https://bitbucket.org/dikt/code/downloads/${MY_P}.txz -> ${MY_P}.tar.xz"
 
@@ -17,21 +18,21 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="
-	$(add_frameworks_dep kcodecs)
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kconfigwidgets)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kdbusaddons)
-	$(add_frameworks_dep kguiaddons)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kiconthemes)
-	$(add_frameworks_dep kio)
-	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtprintsupport)
-	$(add_qt_dep qtwidgets)
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qtprintsupport-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=kde-frameworks/kcodecs-${KFMIN}:5
+	>=kde-frameworks/kconfig-${KFMIN}:5
+	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/kdbusaddons-${KFMIN}:5
+	>=kde-frameworks/kguiaddons-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kiconthemes-${KFMIN}:5
+	>=kde-frameworks/kio-${KFMIN}:5
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
 "
 RDEPEND="${DEPEND}
 	!app-dicts/dikt:4

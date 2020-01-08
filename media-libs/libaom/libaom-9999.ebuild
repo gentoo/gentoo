@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 if [[ ${PV} == *9999* ]]; then
@@ -17,7 +18,7 @@ else
 		SRC_URI="mirror://gentoo/${P}.tar.gz"
 		S="${WORKDIR}"
 	fi
-	KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Alliance for Open Media AV1 Codec SDK"
@@ -63,12 +64,12 @@ multilib_src_configure() {
 		-DENABLE_AVX=$(usex cpu_flags_x86_avx ON OFF)
 		-DENABLE_AVX2=$(usex cpu_flags_x86_avx2 ON OFF)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_install() {
 	if multilib_is_native_abi && use doc ; then
 		local HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
 	fi
-	cmake-utils_src_install
+	cmake_src_install
 }

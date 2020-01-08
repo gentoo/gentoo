@@ -1,0 +1,6 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# File a bug if you need these provided for your OS version
+-*sys-kernel/xnu-headers
+-*sys-libs/darwin-libc-headers

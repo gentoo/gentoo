@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_EXTRADOC="README.md CHANGELOG.md PLUGINS.md"
@@ -22,6 +22,7 @@ IUSE="test"
 
 ruby_add_rdepend ">=dev-ruby/highline-1.6.19:*"
 ruby_add_rdepend "dev-ruby/optimist"
+ruby_add_rdepend "!!dev-ruby/hiera-eyaml:0" # both install the /usr/bin/eyaml binary
 
 ruby_add_bdepend "test? ( dev-util/cucumber ~dev-util/aruba-0.6.2 <app-admin/puppet-6 dev-ruby/hiera-eyaml-plaintext )"
 

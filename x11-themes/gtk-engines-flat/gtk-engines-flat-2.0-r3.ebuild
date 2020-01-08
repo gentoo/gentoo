@@ -15,7 +15,7 @@ SRC_URI="http://download.freshmeat.net/themes/gtk2flat/gtk2flat-default.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2"

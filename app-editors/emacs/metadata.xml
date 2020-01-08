@@ -33,17 +33,20 @@
     system font name</flag>
   <flag name="gtk2">Prefer version 2 of the GIMP Toolkit to version 3
     (<pkg>x11-libs/gtk+</pkg>)</flag>
-  <flag name="gtk3">Prefer version 3 of the GIMP Toolkit to version 2
-    (<pkg>x11-libs/gtk+</pkg>)</flag>
   <flag name="gzip-el">Compress bundled Emacs Lisp source</flag>
+  <flag name="harfbuzz">Use <pkg>media-libs/harfbuzz</pkg> as text shaping
+    engine</flag>
   <flag name="imagemagick">Use <pkg>media-gfx/imagemagick</pkg> for image
     processing</flag>
+  <flag name="json">Compile with native JSON support using
+    <pkg>dev-libs/jansson</pkg></flag>
   <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> to parse XML instead
     of the internal Lisp implementations</flag>
   <flag name="mailutils">Retrieve e-mail using <pkg>net-mail/mailutils</pkg>
     instead of the internal movemail substitute</flag>
   <flag name="source">Install C source files and make them available for
     find-function</flag>
+  <flag name="threads">Add elisp threading support</flag>
   <flag name="toolkit-scroll-bars">Use the selected toolkit's scrollbars in
     preference to Emacs' own scrollbars</flag>
   <flag name="wide-int">Prefer wide Emacs integers (typically 62-bit).

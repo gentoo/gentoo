@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>alexander@tsoy.me</email>
+		<name>Alexander Tsoy</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription>
-If you don't know VNC, have a look at the original VNC or at Tridia 
-VNC, who also have commercial support for it.
-
-Now that you know what it is, maybe you want to make your own server. If 
-this is not the case, you can ignore the rest of this page an go on 
-surfing the internet.
-
-Now that you want to make a VNC server, that is, a server which speaks 
-the RFB protocol, you can download this library from sourceforge.
+		LibVNCServer/LibVNCClient are cross-platform C libraries that allow you
+		to easily implement VNC server or client functionality in your program.
 	</longdescription>
 	<use>
-		<flag name="24bpp">enable 24bpp support</flag>
-		<flag name="gcrypt">enable support for gcrypt</flag>
+		<flag name="24bpp">Enable 24bpp support</flag>
+		<flag name="gcrypt">Enable support for additional authentication methods via <pkg>dev-libs/libgcrypt</pkg></flag>
+		<flag name="lzo">Enable LZO support via <pkg>dev-libs/lzo</pkg> instead of using internal miniLZO implementation</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">LibVNC/libvncserver</remote-id>

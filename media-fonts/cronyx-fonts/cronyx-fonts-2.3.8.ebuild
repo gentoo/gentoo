@@ -1,25 +1,27 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-FONT_PN="cronyx"
-inherit eutils font font-ebdftopcf
+EAPI=7
+
+inherit font font-ebdftopcf
 
 MY_P="xfonts-cronyx_${PV}"
+
 DESCRIPTION="Cronyx Cyrillic bitmap fonts for X"
-HOMEPAGE="http://packages.debian.org/source/sid/xfonts-cronyx"
-SRC_URI="mirror://debian/pool/main/x/xfonts-cronyx/${MY_P}.orig.tar.gz
+HOMEPAGE="https://packages.debian.org/source/sid/xfonts-cronyx"
+SRC_URI="
+	mirror://debian/pool/main/x/xfonts-cronyx/${MY_P}.orig.tar.gz
 	mirror://debian/pool/main/x/xfonts-cronyx/${MY_P}-6.diff.gz"
 
-LICENSE="freedist"
+LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
-IUSE=""
+KEYWORDS="alpha amd64 arm ia64 ppc s390 sh sparc x86"
 
 S="${WORKDIR}/${MY_P//_/-}.orig"
-FONT_S="${S}/75dpi ${S}/100dpi ${S}/misc"
-DOCS="Changelog.en xcyr.README.* xrus.README"
 
-src_prepare() {
-	epatch "${WORKDIR}"/${MY_P}-6.diff
-}
+PATCHES=( "${WORKDIR}"/${MY_P}-6.diff )
+
+DOCS="Changelog.en xcyr.README.* xrus.README"
+FONT_PN="cronyx"
+FONT_S="${S}/75dpi ${S}/100dpi ${S}/misc"
+FONTDIR="/usr/share/fonts/cronyx"

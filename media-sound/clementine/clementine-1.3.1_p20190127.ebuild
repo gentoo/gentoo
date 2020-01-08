@@ -15,7 +15,7 @@ else
 	SRC_URI="https://github.com/${PN}-player/${PN^}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="amd64 x86"
 fi
-inherit cmake-utils flag-o-matic l10n virtualx xdg
+inherit cmake flag-o-matic l10n virtualx xdg
 
 DESCRIPTION="Modern music player and library organizer based on Amarok 1.4 and Qt"
 HOMEPAGE="https://www.clementine-player.org https://github.com/clementine-player/Clementine"
@@ -42,7 +42,7 @@ BDEPEND="
 COMMON_DEPEND="
 	app-crypt/qca:2[qt5(+)]
 	dev-db/sqlite:=
-	dev-libs/crypto++[asm]
+	dev-libs/crypto++:=[asm]
 	dev-libs/glib:2
 	dev-libs/libxml2
 	dev-libs/protobuf:=
@@ -68,7 +68,7 @@ COMMON_DEPEND="
 	mtp? ( >=media-libs/libmtp-1.0.0 )
 	projectm? (
 		media-libs/glew:=
-		>=media-libs/libprojectm-1.2.0
+		>=media-libs/libprojectm-1.2.0:=
 		virtual/opengl
 	)
 "
@@ -108,7 +108,7 @@ DOCS=( Changelog README.md )
 src_prepare() {
 	l10n_find_plocales_changes "src/translations" "" ".po"
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	# some tests fail or hang
 	sed -i \
 		-e '/add_test_file(translations_test.cpp/d' \
@@ -158,7 +158,7 @@ src_configure() {
 
 	use !debug && append-cppflags -DQT_NO_DEBUG_OUTPUT
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {

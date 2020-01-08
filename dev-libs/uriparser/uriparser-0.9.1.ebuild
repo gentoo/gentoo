@@ -19,6 +19,7 @@ DEPEND="virtual/pkgconfig
 	test? ( >=dev-cpp/gtest-1.8.1 )"
 
 REQUIRED_USE="test? ( unicode )"
+RESTRICT="!test? ( test )"
 
 DOCS=( AUTHORS ChangeLog THANKS )
 

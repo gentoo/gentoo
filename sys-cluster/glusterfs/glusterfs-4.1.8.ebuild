@@ -12,7 +12,7 @@ if [[ ${PV#9999} != ${PV} ]]; then
 	EGIT_REPO_URI="https://github.com/gluster/glusterfs.git"
 else
 	SRC_URI="https://download.gluster.org/pub/gluster/${PN}/$(ver_cut '1-2')/${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 fi
 
 DESCRIPTION="GlusterFS is a powerful network/cluster filesystem"
@@ -32,7 +32,7 @@ RESTRICT="test"
 # sys-apps/util-linux is required for libuuid
 RDEPEND="bd-xlator? ( sys-fs/lvm2 )
 	!elibc_glibc? ( sys-libs/argp-standalone )
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	fuse? ( >=sys-fs/fuse-2.7.0:0 )
 	georeplication? ( ${PYTHON_DEPS} )
 	infiniband? ( sys-fabric/libibverbs:* sys-fabric/librdmacm:* )

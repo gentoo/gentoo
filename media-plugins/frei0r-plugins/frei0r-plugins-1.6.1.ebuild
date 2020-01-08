@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://files.dyne.org/frei0r/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ppc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 ~arm arm64 ~hppa ppc x86"
 IUSE="doc +facedetect +scale0tilt"
 
 RDEPEND="x11-libs/cairo

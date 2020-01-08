@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 VIM_VERSION="8.1"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 PYTHON_REQ_USE="threads(+)"
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit vim-doc flag-o-matic xdg-utils gnome2-utils bash-completion-r1 prefix python-single-r1 ruby-single
 
@@ -16,7 +16,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> vim-${PV}.tar.gz
 		https://dev.gentoo.org/~radhermit/vim/vim-8.0.0938-gentoo-patches.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 fi
 
 DESCRIPTION="GUI version of the Vim text editor"
@@ -24,9 +24,8 @@ HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
-IUSE="acl aqua cscope debug gnome gtk gtk3 lua luajit motif neXt netbeans nls perl python racket ruby selinux session tcl"
+IUSE="acl aqua cscope debug gtk gtk2 lua luajit motif neXt netbeans nls perl python racket ruby selinux session sound tcl"
 REQUIRED_USE="
-	luajit? ( lua )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
@@ -40,16 +39,16 @@ RDEPEND="
 	x11-libs/libXt
 	acl? ( kernel_linux? ( sys-apps/acl ) )
 	!aqua? (
-		gtk3? (
+		gtk? (
 			x11-libs/gtk+:3
 			x11-libs/libXft
 		)
-		!gtk3? (
-			gtk? (
+		!gtk? (
+			gtk2? (
 				>=x11-libs/gtk+-2.6:2
 				x11-libs/libXft
 			)
-			!gtk? (
+			!gtk2? (
 				motif? ( >=x11-libs/motif-2.3:0 )
 				!motif? (
 					neXt? ( x11-libs/neXtaw )
@@ -70,14 +69,17 @@ RDEPEND="
 	ruby? ( ${RUBY_DEPS} )
 	selinux? ( sys-libs/libselinux )
 	session? ( x11-libs/libSM )
+	sound? ( media-libs/libcanberra )
 	tcl? ( dev-lang/tcl:0= )
 "
 DEPEND="${RDEPEND}
-	dev-util/ctags
 	sys-devel/autoconf
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
+
+# various failures (bugs #630042 and #682320)
+RESTRICT="test"
 
 S=${WORKDIR}/vim-${PV}
 
@@ -188,7 +190,8 @@ src_configure() {
 	myconf=(
 		--with-features=huge
 		--disable-gpm
-		--enable-multibyte
+		--with-gnome=no
+		$(use_enable sound canberra)
 		$(use_enable acl)
 		$(use_enable cscope)
 		$(use_enable lua luainterp)
@@ -215,13 +218,12 @@ src_configure() {
 	fi
 
 	# gvim's GUI preference order is as follows:
-	# aqua                          CARBON (not tested)
-	# -aqua gtk3                    GTK3
-	# -aqua -gtk3 gnome             GNOME2
-	# -aqua -gtk3 -gnome gtk        GTK2
-	# -aqua -gtk -gtk3 motif        MOTIF
-	# -aqua -gtk -gtk3 -motif neXt  NEXTAW
-	# -aqua -gtk -gtk3 -motif -neXt ATHENA
+	# aqua                         CARBON (not tested)
+	# -aqua gtk                    GTK3
+	# -aqua -gtk gtk2              GTK2
+	# -aqua -gtk -gtk motif        MOTIF
+	# -aqua -gtk -gtk -motif neXt  NEXTAW
+	# -aqua -gtk -gtk -motif -neXt ATHENA
 	echo ; echo
 	if use aqua; then
 		einfo "Building gvim with the Carbon GUI"
@@ -229,19 +231,14 @@ src_configure() {
 			--enable-darwin
 			--enable-gui=carbon
 		)
-	elif use gtk3; then
+	elif use gtk; then
 		myconf+=( --enable-gtk3-check )
 		einfo "Building gvim with the gtk+-3 GUI"
 		myconf+=( --enable-gui=gtk3 )
-	elif use gtk; then
+	elif use gtk2; then
 		myconf+=( --enable-gtk2-check )
-		if use gnome; then
-			einfo "Building gvim with the Gnome 2 GUI"
-			myconf+=( --enable-gui=gnome2 )
-		else
-			einfo "Building gvim with the gtk+-2 GUI"
-			myconf+=( --enable-gui=gtk2 )
-		fi
+		einfo "Building gvim with the gtk+-2 GUI"
+		myconf+=( --enable-gui=gtk2 )
 	elif use motif; then
 		einfo "Building gvim with the MOTIF GUI"
 		myconf+=( --enable-gui=motif )

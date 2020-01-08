@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -10,11 +10,11 @@ SRC_URI="http://awesome.naquadah.org/download/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="dbus doc elibc_FreeBSD gnome"
 
 COMMON_DEPEND="
-	>=dev-lang/lua-5.1:0
+	|| ( >=dev-lang/lua-5.1:0 dev-lang/lua:5.1 )
 	dev-libs/glib:2
 	>=dev-libs/libxdg-basedir-1
 	>=dev-lua/lgi-0.7
@@ -53,13 +53,18 @@ PATCHES=(
 	"${FILESDIR}/${PN}-xsession.patch"
 	"${FILESDIR}/${PN}-3.5.5-util.lua-xdg-icons-fix.patch"
 	"${FILESDIR}/${PN}-3.5.5-cflag-cleanup.patch"
+	"${FILESDIR}/${PN}-3.5.9-slotted-lua.patch"
 )
 
 src_configure() {
+	has_version 'dev-lang/lua:5.1' \
+		&& LUA=lua5.1 \
+		|| LUA=lua
 	mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		$(cmake-utils_use_with dbus DBUS)
 		$(cmake-utils_use doc GENERATE_DOC)
+		-DLUA_EXECUTABLE="${EPREFIX}"/usr/bin/${LUA}
 		)
 
 	cmake-utils_src_configure
@@ -81,7 +86,7 @@ src_install() {
 		(
 			cd "${CMAKE_BUILD_DIR}"/doc
 			mv html doxygen
-			dohtml -r doxygen || die
+			dohtml -r doxygen
 		)
 	fi
 	rm -rf "${ED}"/usr/share/doc/${PN} || die "Cleanup of dupe docs failed"
@@ -93,12 +98,12 @@ src_install() {
 	if use gnome ; then
 		# GNOME session
 		insinto /usr/share/gnome-session/sessions
-		newins "${FILESDIR}/${PN}-gnome-3.session" "${PN}-gnome.session" || die
+		newins "${FILESDIR}/${PN}-gnome-3.session" "${PN}-gnome.session"
 		# Application launcher
 		domenu "${FILESDIR}/${PN}-gnome.desktop" || die
 		# X Session
 		insinto /usr/share/xsessions/
-		doins "${FILESDIR}/${PN}-gnome-xsession.desktop" || die
+		doins "${FILESDIR}/${PN}-gnome-xsession.desktop"
 	fi
 }
 

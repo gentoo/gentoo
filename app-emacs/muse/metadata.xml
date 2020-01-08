@@ -31,4 +31,7 @@
   CamelCase words are no longer special by default.
 </longdescription>
 <stabilize-allarches/>
+<upstream>
+  <remote-id type="github">alexott/muse</remote-id>
+</upstream>
 </pkgmetadata>

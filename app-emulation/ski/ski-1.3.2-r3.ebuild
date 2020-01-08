@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,9 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 	sys-devel/flex
 	dev-util/gperf"
+
+# games-sports/ski and app-emulation/ski both install 'ski' binary, bug #653110
+RDEPEND="${RDEPEND} !!games-sports/ski"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-syscall-linux-includes.patch

@@ -1,16 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+EAPI=7
+
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
-inherit autotools distutils-r1 eutils git-r3 libtool multilib multilib-minimal
+inherit autotools distutils-r1 git-r3 libtool multilib multilib-minimal
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
 HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
-EGIT_REPO_URI="
-	https://github.com/thom311/libnl.git
-"
+EGIT_REPO_URI="https://github.com/thom311/libnl"
 LICENSE="LGPL-2.1 utils? ( GPL-2 )"
 SLOT="3"
 KEYWORDS=""
@@ -84,7 +83,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	if multilib_is_native_abi && use python; then
 		# Unset DOCS= since distutils-r1.eclass interferes
@@ -96,5 +95,5 @@ multilib_src_install() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files --modules
+	find "${D}" -name '*.la' -delete || die
 }

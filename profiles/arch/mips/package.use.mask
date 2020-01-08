@@ -1,7 +1,7 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=collab requires unkeyworded net-libs/loudmouth & dev-cpp/asio.
 # USE=grammar requires dev-libs/link-grammar.
 # USE=map requires media-libs/libchamplain.
@@ -9,135 +9,139 @@
 # dev-libs/rasqal. None of them keyworded here.
 app-office/abiword collab grammar map redland
 
-# Brian Evans <grknight@gentoo.org> (15 Jan 2018)
+# Brian Evans <grknight@gentoo.org> (2018-01-15)
 # app-arch/snappy is not tested
 dev-db/mariadb innodb-snappy
 
-# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # Requires dependency flags that are masked in this profile.
 media-libs/sdl-mixer midi
 
-# Michał Górny <mgorny@gentoo.org> (30 Dec 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since they are flags local to one package.
 sys-kernel/mips-sources -ip27 -ip28 -ip30
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan
+media-libs/mesa vulkan vulkan-overlay
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=opencl that is masked in this profile.
-net-misc/bfgminer adl lm_sensors
+net-misc/bfgminer adl lm-sensors
 
-# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-06-28)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
 # no point in pursuing it right now.
 app-shells/bash-completion test
 
-# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-05-27)
 # app-pda/libimobiledevice, app-pda/libplist and co not tested
 sys-power/upower ios
 gnome-base/gvfs ios
 
-# Mart Raudsepp <leio@gentoo.org> (27 May 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-05-27)
 # dev-libs/libgdata and net-libs/gnome-online-accounts not tested
 gnome-base/gvfs google
 
-# Jason Zaman <perfinion@gentoo.org> (09 May 2017)
+# Jason Zaman <perfinion@gentoo.org> (2017-05-09)
 # x11-libs/libXpresent is not keyworded on mips
 xfce-base/xfwm4 xpresent
 
-# Brian Dolbec <dolsen@gentoo.org> (21 Mar 2017)
+# Brian Dolbec <dolsen@gentoo.org> (2017-03-21)
 # This is masked as mongo-db needed for bson use flag
 # which is not keyworded on many arches.
 app-portage/g-sorcery bson
 
-# Mart Raudsepp <leio@gentoo.org> (07 Feb 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-02-07)
 # dev-python/gmpy fails tests about sizeof (conch), bug 608496
 # dev-python/attrs fails tests on slow mips, couldn't test service_identity test path (crypt), bug 608570
 # dev-python/gmpy also a test depend, so minimize the features until can test properly (http2 soap test)
 dev-python/twisted conch crypt http2 soap test
 
-# Felix Janda <felix.janda@posteo.de> (24 Sep 2016)
+# Fabian Groffen <grobian@gentoo.org> (2016-12-07)
+# unkeyworded notmuch dependency, bug #587560
+mail-client/mutt notmuch
+
+# Felix Janda <felix.janda@posteo.de> (2016-09-24)
 # net-libs/libnetfilter_conntrack is not keyworded on mips
 net-dns/dnsmasq conntrack
 
-# Thomas Deutschmann <whissi@gentoo.org> (23 Aug 2016)
+# Thomas Deutschmann <whissi@gentoo.org> (2016-08-23)
 # net-libs/openpgm is not keyworded on mips
 net-libs/zeromq pgm
 
-# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
+# Davide Pesavento <pesa@gentoo.org> (2015-10-26)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
 
-# Mike Frysinger <vapier@gentoo.org> (10 Sep 2015)
+# Mike Frysinger <vapier@gentoo.org> (2015-09-10)
 # Requires matplotlib which requires a bit more.
 dev-python/numpydoc test
 
-# Mikle Kolyada <zlogene@gentoo.org> (12 Apr 2015)
+# Mikle Kolyada <zlogene@gentoo.org> (2015-04-12)
 # GNOME Shell does not work on mips
 net-misc/wicd gnome-shell
 
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
+# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
 # Needs sci-physics/bullet tested #499974
 dev-libs/efl physics
 
-# Matthias Maier <tamiko@gentoo.org> (24 Dec 2014)
+# Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded
 app-doc/doxygen clang
 
-# Sergey Popov <pinkbyte@gentoo.org> (02 Feb 2014)
+# Sergey Popov <pinkbyte@gentoo.org> (2014-02-02)
 # media-gfx/nvidia-texture-tools is not keyworded on mips
 media-libs/devil	nvtt
 
-# Ryan Hill <dirtyepic@gentoo.org> (07 Jan 2014)
+# Ryan Hill <dirtyepic@gentoo.org> (2014-01-07)
 # req net-libs/webkit-gtk:2
 x11-libs/wxGTK webkit
 
-# Markos Chandras <hwoarang@gentoo.org> (05 Jan 2014)
+# Markos Chandras <hwoarang@gentoo.org> (2014-01-05)
 # Perl is heavily unkeyworded on MIPS. See 497068
 dev-vcs/git mediawiki mediawiki-experimental
 
-# Sergey Popov <pinkbyte@gentoo.org> (02 Sep 2013)
+# Sergey Popov <pinkbyte@gentoo.org> (2013-09-02)
 # Not tested
 media-libs/leptonica	webp
 app-text/tesseract	webp
 
-# Pacho Ramos <pacho@gentoo.org> (01 Sep 2013)
+# Pacho Ramos <pacho@gentoo.org> (2013-09-01)
 # CONFIG_AUDITSYSCALL=y is not implemented, bug #438368
 sys-auth/consolekit pam
 sys-auth/pambase consolekit
 
-# Richard Brown <rbrown@gentoo.org> (21 Jan 2008)
+# Richard Brown <rbrown@gentoo.org> (2008-01-21)
 # Needs dev-ruby/builder, which isn't keyworded
 dev-ruby/rubygems server
 
-# Wolfram Schlich <wschlich@gentoo.org> (20 Nov 2007)
+# Wolfram Schlich <wschlich@gentoo.org> (2007-11-20)
 # dependency can't be fulfilled at the moment
 net-im/mcabber otr
 
-# Jim Ramsay <lack@gentoo.org> (7 Sep 2007)
+# Jim Ramsay <lack@gentoo.org> (2007-09-07)
 # app-admin/gkrellm may pull in hddtemp, which is not yet available here
 app-admin/gkrellm hddtemp
 
-# Christian Heim <phreak@gentoo.org> (07 Jul 2007)
+# Christian Heim <phreak@gentoo.org> (2007-07-07)
 # virtual/mysql-5 not keyworded yet, still apr-util has the mips keyword.
 dev-libs/apr-util mysql
 
-# Stuart Longland <redhatter@gentoo.org> (07 Sep 2007)
+# Stuart Longland <redhatter@gentoo.org> (2007-09-07)
 # mplayer not tested with these flags yet.  I may remove these slowly as I test
 # more functions of mplayer.
 media-video/mplayer bidi bl cddb cdio cdparanoia cpudetection dga dv dvb enca joystick live mad openal pnm pvr radio rar rtc tga xinerama zoran
 
-# Steve Dibb <beandog@gentoo.org> (01 Nov 2007)
+# Steve Dibb <beandog@gentoo.org> (2007-11-01)
 # needs media-libs/ladspa-sdk keyworded
 media-video/mplayer ladspa
 
-# Richard Brown <rbrown@gentoo.org> (23 Dec 2007)
+# Richard Brown <rbrown@gentoo.org> (2007-12-23)
 # app-xemacs/ruby-modes is not keyworded on this arch
 dev-lang/ruby xemacs
 
-# Sebastian Pipping <sping@gentoo.org> (27 Jan 2010)
+# Sebastian Pipping <sping@gentoo.org> (2010-01-27)
 # dev-vcs/bzr is not keyworded on this arch
 # dev-vcs/darcs is not keyworded on this arch
 app-portage/layman bazaar
@@ -146,31 +150,31 @@ app-portage/layman darcs
 # deps missing keywords
 games-strategy/freeciv auth
 
-# Mart Raudsepp <leio@gentoo.org> (27 Sept 2010)
+# Mart Raudsepp <leio@gentoo.org> (2010-09-27)
 # Extra functionality that has external unkeyworded dependencies
 # and is not tested yet
 net-fs/samba ads cluster
 
-# Matt Turner <mattst88@gentoo.org> (06 Dec 2010)
+# Matt Turner <mattst88@gentoo.org> (2010-12-06)
 # dev-db/tokyocabinet not keyworded
 mail-client/mutt tokyocabinet
 
-# Matt Turner <mattst88@gentoo.org> (26 Dec 2010)
+# Matt Turner <mattst88@gentoo.org> (2010-12-26)
 # dev-lang/spidermonkey not keyworded
 www-client/elinks javascript
 
-# Matt Turner <mattst88@gentoo.org> (26 Dec 2010)
+# Matt Turner <mattst88@gentoo.org> (2010-12-26)
 # media-gfx/ufraw not keyworded
 media-gfx/imagemagick raw
 
-# Matt Turner <mattst88@gentoo.org> (12 Jun 2011)
+# Matt Turner <mattst88@gentoo.org> (2011-06-12)
 # dev-python/mysql-python not keyworded
 dev-vcs/mercurial bugzilla
 
-# Matt Turner <mattst88@gentoo.org> (09 Feb 2012)
+# Matt Turner <mattst88@gentoo.org> (2012-02-09)
 # dev-vcs/git[cgi] requires app-text/highlight which requires boost
 dev-vcs/git cgi
 
-# Matt Turner <mattst88@gentoo.org> (09 Feb 2012)
+# Matt Turner <mattst88@gentoo.org> (2012-02-09)
 # mips only use flags
 >=sci-libs/fftw-3 -zbus

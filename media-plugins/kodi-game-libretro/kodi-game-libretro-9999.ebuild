@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Libretro compatibility layer for the Kodi Game API"
 HOMEPAGE="https://github.com/kodi-game/game.libretro"
@@ -17,8 +17,9 @@ case ${PV} in
 	;;
 *)
 	KEYWORDS="~amd64 ~x86"
-	SRC_URI="https://github.com/kodi-game/game.libretro/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/game.libretro-${PV}"
+	CODENAME="Leia"
+	SRC_URI="https://github.com/kodi-game/game.libretro/archive/${PV}-${CODENAME}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}/game.libretro-${PV}-${CODENAME}"
 	;;
 esac
 
@@ -27,8 +28,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	=media-tv/kodi-9999
-	=media-libs/kodi-platform-9999
+	~media-tv/kodi-9999
+	~media-libs/kodi-platform-9999
 	=dev-libs/libplatform-2*
 	"
 RDEPEND="

@@ -2,8 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>pabloorduna98@gmail.com</email>
+		<name>Pablo Orduna</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 	<use>
 		<flag name="imagemagick">Support displaying images in the terminal with icat</flag>

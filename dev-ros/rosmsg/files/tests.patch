@@ -1,0 +1,15 @@
+Index: rosmsg/test/test_rosmsg_command_line.py
+===================================================================
+--- rosmsg.orig/test/test_rosmsg_command_line.py
++++ rosmsg/test/test_rosmsg_command_line.py
+@@ -168,8 +168,8 @@ class TestRosmsg(unittest.TestCase):
+ 
+             # test as search
+             type_ = t
+-            text = "[test_rosmaster/%s]:\n%s"%(t, text)
+-            text_raw = "[test_rosmaster/%s]:\n%s"%(t, text_raw)
++            text = ("[test_rosmaster/%s]:\n%s"%(t, text))*2
++            text_raw = ("[test_rosmaster/%s]:\n%s"%(t, text_raw))*2
+             output = Popen(['rosmsg', 'show', type_], stdout=PIPE).communicate()[0].decode()
+             self.assertEquals(text, output)
+             output = Popen(['rosmsg', 'show', '-r',type_], stdout=PIPE, stderr=PIPE).communicate()

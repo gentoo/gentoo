@@ -1,0 +1,50 @@
+diff --git a/pm_python/setup.py b/pm_python/setup.py
+index 14ab1c7..5b1e7c0 100644
+--- a/pm_python/setup.py
++++ b/pm_python/setup.py
+@@ -15,12 +15,10 @@ except ImportError:
+ 
+ 
+ DESCRIPTION = open('README_PYTHON.txt').read()
+-CHANGES = open('CHANGES.txt').read()
+-TODO = open('TODO.txt').read()
+ 
+ EXTRAS = {}
+ 
+-long_description = DESCRIPTION + CHANGES + TODO
++long_description = DESCRIPTION
+ #import sys
+ #if "checkdocs" in sys.argv:
+ #    print long_description
+@@ -142,7 +140,7 @@ PACKAGEDATA.update(EXTRAS)
+ 
+ 
+ if sys.platform == 'win32':
+-    print "Found Win32 platform"
++    print("Found Win32 platform")
+     EXTENSION = dict(
+         ext_modules=[ 
+             Extension("pyportmidi._pyportmidi", [os.path.join("pyportmidi", "_pyportmidi.pyx")],
+@@ -154,7 +152,7 @@ if sys.platform == 'win32':
+         ]
+     )
+ elif sys.platform == 'darwin':
+-    print "Found darwin (OS X) platform"
++    print("Found darwin (OS X) platform")
+     library_dirs = ["/usr/local/lib"]
+     include_dirs = ["/usr/local/include"]
+     EXTENSION = dict(
+@@ -169,11 +167,12 @@ elif sys.platform == 'darwin':
+         ]
+     )
+ else:
+-    print "Assuming Linux platform"
++    print("Assuming Linux platform")
+     EXTENSION = dict(
+         ext_modules=[ 
+             Extension("pyportmidi._pyportmidi", [os.path.join("pyportmidi", "_pyportmidi.pyx")],
+                       library_dirs=["./linux"],
++                      include_dirs=["../pm_common", "../porttime"],
+                       libraries = ["portmidi", "asound", "pthread"]
+                       )
+         ]

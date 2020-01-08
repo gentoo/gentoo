@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
 inherit distutils-r1
 
@@ -15,8 +15,9 @@ SRC_URI="mirror://pypi/p/path.py/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/appdirs[${PYTHON_USEDEP}]"
@@ -31,6 +32,8 @@ S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
 	sed '/setuptools_scm/d' -i setup.py || die
+	sed -r -i "s:setuptools_scm[[:space:]]*([><=]{1,2}[[:space:]]*[0-9.a-zA-Z]+)[[:space:]]*::" \
+		setup.cfg || die
 
 	# disable flake8 tests
 	sed -i 's/ --flake8//' pytest.ini || die

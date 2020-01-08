@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 VALA_MIN_API_VERSION="0.36"
 DISABLE_AUTOFORMATTING=1
 FORCE_PRINT_ELOG=1
@@ -15,8 +15,9 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Builder"
 # FIXME: Review licenses at some point
 LICENSE="GPL-3+ GPL-2+ LGPL-3+ LGPL-2+ MIT CC-BY-SA-3.0 CC0-1.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="clang +devhelp doc +git gtk-doc sysprof test vala webkit"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # When bumping, pay attention to all the included plugins/*/meson.build (and other) build files and the requirements within.

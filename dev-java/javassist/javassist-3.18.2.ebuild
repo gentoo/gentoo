@@ -32,7 +32,7 @@ java_prepare() {
 
 src_install() {
 	java-pkg_dojar ${PN}.jar
-	dohtml Readme.html || die
+	dohtml Readme.html
 	use doc && java-pkg_dojavadoc html
 	use source && java-pkg_dosrc src/main/javassist
 	use examples && java-pkg_doexamples sample/*

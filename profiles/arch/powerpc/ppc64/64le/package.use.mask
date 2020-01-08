@@ -1,0 +1,14 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-29)
+# PGO works on ppc64le
+>=www-client/firefox-68 -pgo
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
+# works on ppc64le
+media-libs/mesa -llvm -video_cards_radeonsi

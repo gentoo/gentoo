@@ -1,5 +1,5 @@
---- xdesktopwaves-1.3/Makefile.org	2004-12-18 06:47:40.000000000 +0100
-+++ xdesktopwaves-1.3/Makefile	2010-02-08 20:05:31.000000000 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -11,14 +11,13 @@
  
  #=========================== C compiler configuration ==========================
@@ -19,8 +19,8 @@
  
  #============================ Installer configuration ==========================
  
---- xdesktopwaves-1.3/xdwapi/Makefile.org	2004-12-18 06:47:40.000000000 +0100
-+++ xdesktopwaves-1.3/xdwapi/Makefile	2010-02-08 20:08:14.000000000 +0100
+--- a/xdwapi/Makefile
++++ b/xdwapi/Makefile
 @@ -1,10 +1,9 @@
  # Makefile for the xdesktopwaves API and its demo program
  

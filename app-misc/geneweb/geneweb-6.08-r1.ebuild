@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils user
 
 DESCRIPTION="Genealogy software program with a Web interface"
-HOMEPAGE="http://opensource.geneanet.org/projects/geneweb"
+HOMEPAGE="https://github.com/geneanet/geneweb"
 SRC_URI="https://github.com/geneweb/geneweb/archive/v6.08.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~tupone/${P}-ocaml-4.patch.gz"
 
@@ -17,8 +17,7 @@ RESTRICT="strip"
 
 RDEPEND="dev-lang/ocaml[ocamlopt?]
 	dev-ml/camlp5[ocamlopt?]"
-DEPEND="${RDEPEND}
-	!net-p2p/ghostwhitecrab"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-ocaml-4.patch
@@ -59,8 +58,8 @@ src_install() {
 	doman man/*
 
 	# Install doc
-	insinto /usr/share/doc/${PF}/contrib
-	doins -r contrib/{gwdiff,misc}
+	dodoc -r contrib
+	docompress -x /usr/share/doc/${PF}/contrib
 
 	newinitd "${FILESDIR}/geneweb.initd" geneweb
 	newconfd "${FILESDIR}/geneweb.confd" geneweb

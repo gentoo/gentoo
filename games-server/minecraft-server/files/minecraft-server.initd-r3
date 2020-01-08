@@ -1,0 +1,47 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+if [ "${SVCNAME}" = "minecraft-server" ]; then
+	instance="main"
+else
+	instance="${SVCNAME#minecraft-server.}"
+fi
+
+dtach_tmpfile="$(mktemp -u)"
+minecraft_command="/usr/bin/minecraft-server"
+minecraft_logs="/var/log/minecraft-server"
+minecraft_logs_instance="${minecraft_logs}/${instance}"
+minecraft_path="/var/lib/minecraft-server"
+minecraft_path_instance="${minecraft_path}/${instance}"
+name="Minecraft Server (World: ${instance})"
+pidfile="/run/minecraft-server.${instance}.pid"
+start_stop_daemon_args="--chdir ${minecraft_path_instance} --env JAVA_OPTS='${MINECRAFT_OPTS}'"
+
+command="/usr/bin/dtach"
+command_background="true"
+command_args="-N ${dtach_tmpfile} ${minecraft_command}"
+command_group="minecraft"
+command_user="minecraft"
+
+depend() {
+	use net
+}
+
+start_pre() {
+	checkpath -d -o "${command_user}:${command_group}" -q "${minecraft_path}" "${minecraft_path_instance}"
+
+	checkpath -f -o "${command_user}:${command_group}" -q "${minecraft_path_instance}"/eula.txt
+	echo "eula=true" > "${minecraft_path_instance}"/eula.txt
+
+	checkpath -d -o "${command_user}:${command_group}" -q "${minecraft_logs}" "${minecraft_logs_instance}"
+
+	if [ ! -L "${minecraft_path_instance}"/logs ]; then
+		cd "${minecraft_path_instance}" && ln -s ../../../log/minecraft-server/"${instance}" logs
+	fi
+
+	if [ -z "${MINECRAFT_OPTS}" ]; then
+		eerror "You must define MINECRAFT_OPTS in /etc/conf.d/minecraft.${SVCNAME}!"
+		return 1
+	fi
+}

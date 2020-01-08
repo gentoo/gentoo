@@ -1,22 +1,19 @@
-# Copyright 1999-2018 Gentoo Authors.
+# Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/uclibc-ng
 sys-libs/glibc
 
-# 0.40 is broken on musl, 0.38 and 0.41 are okay
-=sys-apps/openrc-0.40*
-
 # We use eudev which is tested on both uclibc and musl
+=virtual/libudev-232-r1
 sys-apps/systemd
 sys-fs/udev
-
-# dev-libs/elfutils needs a port to musl, bug #602126
-dev-libs/elfutils
->virtual/libelf-2
 
 # Ian Stakenvicius, 2017-06-14
 # on behalf of mozilla@gentoo.org
 # Mask firefox-54 and above as it requires rust
 # now, and rust reportedly will not build yet.
 >=www-client/firefox-54.0
+
+# rust-bin requires a glibc system
+dev-lang/rust-bin

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Consonance implements WhatsApp's handshake process
+		which makes use of Noise Pipes with Curve25519, AES-GCM,
+		and SHA256 from Noise Protocol.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/tgalal/consonance/issues</bugs-to>
+		<remote-id type="github">tgalal/consonance</remote-id>
+	</upstream>
+</pkgmetadata>

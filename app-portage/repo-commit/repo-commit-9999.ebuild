@@ -21,11 +21,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
-	|| (
-		>=sys-apps/portage-2.2.0_alpha86
-		sys-apps/portage-mgorny
-	)"
+RDEPEND=">=sys-apps/portage-2.2.0_alpha86"
 #if LIVE
 
 KEYWORDS=

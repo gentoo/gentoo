@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="Automate telnet sessions w/ routers&switches"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ia64 ~mips ~ppc ppc64 sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/Net-Telnet-3.20.0"
 DEPEND="${RDEPEND}

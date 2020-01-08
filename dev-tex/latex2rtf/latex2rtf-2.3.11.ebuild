@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 S="${WORKDIR}/${P%b}"
 
 RDEPEND="
@@ -32,7 +33,7 @@ src_compile() {
 	export VARTEXFONTS="${T}/fonts"
 	tc-export CC
 	# Set DESTDIR here too so that compiled-in paths are correct.
-	emake DESTDIR="${EPREFIX}/usr" || die "emake failed"
+	emake DESTDIR="${EPREFIX}/usr"
 
 	cd "${S}/doc"
 	emake realclean

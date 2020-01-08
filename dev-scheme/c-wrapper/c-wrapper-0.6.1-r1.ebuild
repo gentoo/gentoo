@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ia64 x86"
 IUSE="examples"
 
-RDEPEND="dev-scheme/gauche
+RDEPEND="dev-scheme/gauche:=
 	virtual/libffi"
 DEPEND="${RDEPEND}"
 
@@ -23,6 +23,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-gcc-5.patch
 	"${FILESDIR}"/${PN}-gentoo.patch
 	"${FILESDIR}"/${PN}-glibc-2.25.patch
+	"${FILESDIR}"/${PN}-info.patch
 )
 HTML_DOCS=( doc/${PN}-ref{e,j}.html )
 

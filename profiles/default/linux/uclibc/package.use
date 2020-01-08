@@ -1,6 +1,6 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# 17 Aug 2014; Anthony G. Basile <blueness@gentoo.org>
+# Anthony G. Basile <blueness@gentoo.org> (2014-08-17)
 # Avoid pulling in glib
 dev-util/pkgconfig internal-glib

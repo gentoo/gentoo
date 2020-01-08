@@ -6,9 +6,8 @@ EAPI=5
 inherit linux-info xorg-2
 
 DESCRIPTION="Driver for Synaptics touchpads"
-HOMEPAGE="https://cgit.freedesktop.org/xorg/driver/xf86-input-synaptics/"
 
-KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 x86"
+KEYWORDS="amd64 arm arm64 ~mips ppc ppc64 x86"
 IUSE="kernel_linux"
 
 RDEPEND="kernel_linux? ( >=dev-libs/libevdev-0.4 )

@@ -14,7 +14,7 @@ SRC_URI="https://software.sil.org/downloads/r/scheherazade/${MY_P1}.zip
 
 LICENSE="OFL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 ~s390 ~sh ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 ~s390 ~sh ~sparc x86"
 
 DEPEND="app-arch/unzip"
 RDEPEND=""

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,4 +19,7 @@ RDEPEND="
 	dev-libs/console_bridge:=
 "
 DEPEND="${RDEPEND}"
-PATCHES=( "${FILESDIR}/logging.patch" )
+PATCHES=(
+	"${FILESDIR}/logging.patch"
+	"${FILESDIR}/boost170.patch"
+)

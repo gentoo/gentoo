@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Netboot enables a computer with a compatible CPU to boot without access to a hdd or floppy.
+		The computer has to be equipped so it can load the operating system over an IP network from a server.
+		All tools required for this are included in the netboot package. 
+	</longdescription>
 	<upstream>
+		<bugs-to>https://sourceforge.net/p/netboot/bugs/</bugs-to>
 		<remote-id type="sourceforge">netboot</remote-id>
 	</upstream>
+	<use>
+		<flag name="bootrom">Install the bootrom binary for creation of rom files, which can be used for booting via floppy or rom.</flag>
+	</use>
 </pkgmetadata>

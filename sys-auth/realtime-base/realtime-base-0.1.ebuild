@@ -11,11 +11,11 @@ SRC_URI=""
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="virtual/pam"
+RDEPEND="sys-libs/pam"
 
 S=${WORKDIR}
 

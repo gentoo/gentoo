@@ -44,9 +44,6 @@
 			Enables dependencies for the "overlay" graph driver, including
 			necessary kernel flags.
 		</flag>
-		<flag name="pkcs11">
-			Enables pkcs-11 support.
-		</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">docker/docker</remote-id>

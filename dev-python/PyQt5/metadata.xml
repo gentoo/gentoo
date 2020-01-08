@@ -26,7 +26,6 @@
 		<flag name="svg">Build bindings for the QtSvg module</flag>
 		<flag name="testlib">Build bindings for the QtTest module</flag>
 		<flag name="webchannel">Build bindings for the QtWebChannel module</flag>
-		<flag name="webengine">Build bindings for the QtWebEngine module</flag>
 		<flag name="webkit">Build bindings for the QtWebKit module</flag>
 		<flag name="websockets">Build bindings for the QtWebSockets module</flag>
 		<flag name="widgets">Build bindings for the QtWidgets module</flag>
@@ -38,7 +37,6 @@
 			<email>phil@riverbankcomputing.com</email>
 			<name>Phil Thompson</name>
 		</maintainer>
-		<changelog>https://www.riverbankcomputing.com/static/Downloads/PyQt5/ChangeLog</changelog>
 		<doc>https://www.riverbankcomputing.com/static/Docs/PyQt5/</doc>
 		<bugs-to>mailto:pyqt@riverbankcomputing.com</bugs-to>
 		<remote-id type="pypi">PyQt5</remote-id>

@@ -1,65 +1,76 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
-# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# dev-util/systemtap is not keyworded on sh
+sys-libs/glibc systemtap
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# media-libs/gd is not keyworded on sh
+sys-libs/glibc gd
+
+# Hans de Graaff <graaff@gentoo.org> (2019-04-08)
+# Obsolete ruby version, no newer versions keyworded or stable.
+dev-vcs/subversion ruby
+
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
+# Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
+media-libs/mesa vulkan vulkan-overlay
+
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
-# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=bluetooth that is masked in this profile.
 media-sound/pulseaudio native-headset ofono-headset
 
-# Matt Turner <mattst88@gentoo.org> (25 Feb 2017)
+# Matt Turner <mattst88@gentoo.org> (2017-02-25)
 # Needs libepoxy keywording, bug #510940
-x11-base/xorg-server glamor wayland
-x11-drivers/xf86-video-ati glamor
+x11-base/xorg-server wayland
 
-# Sergey Popov <pinkbyte@gentoo.org> (24 Oct 2015)
+# Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
 # Not tested
 net-mail/dovecot lz4
 
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
+# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
 # Needs sci-physics/bullet tested #499974
 dev-libs/efl physics
 
-# Brian Evans <grknight@gentoo.org> (03 Jun 2014)
+# Brian Evans <grknight@gentoo.org> (2014-06-03)
 # unkeworded dependencies (bug #429708)
 >=dev-db/mysql-5.5 jemalloc
 >=dev-db/mariadb-5.5 jemalloc
 
-# Mikle Kolyada <zlogene@gentoo.org> (11 Jan 2014)
+# Mikle Kolyada <zlogene@gentoo.org> (2014-01-11)
 # too much unkeyworded dependencies (bug #497068)
 dev-vcs/git mediawiki mediawiki-experimental
 
-# Raúl Porcel <armin76@gentoo.org> (28 May 2012)
+# Raúl Porcel <armin76@gentoo.org> (2012-05-28)
 # Needs x11-misc/lightdm(which also requires some other deps)
 x11-misc/xscreensaver new-login
 
-# Raúl Porcel <armin76@gentoo.org> (05 Nov 2011)
+# Raúl Porcel <armin76@gentoo.org> (2011-11-05)
 # jit not supported on sh
 dev-libs/libpcre jit
 
-# Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
+# Sebastian Pipping <sping@gentoo.org> (2011-02-22)
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
 
-# Raúl Porcel <armin76@gentoo.org> (13 Feb 2011)
+# Raúl Porcel <armin76@gentoo.org> (2011-02-13)
 # Fails to build, pending to send a report upstream
 media-libs/mesa gallium
 
-# Alon Bar-Lev <alonbl@gentoo.org> (24 Jan 2007)
+# Alon Bar-Lev <alonbl@gentoo.org> (2007-01-24)
 # pkcs11-helper is not keyworded
 net-vpn/openvpn pkcs11
 
-# Christoph Mende <angelos@gentoo.org> (14 May 2008)
+# Christoph Mende <angelos@gentoo.org> (2008-05-14)
 # media-sound/wavpack is not keyworded
 media-sound/mpd wavpack
 
-# Peter Alfredsen <loki_val@gentoo.org> (20 Jun 2008)
+# Peter Alfredsen <loki_val@gentoo.org> (2008-06-20)
 # cppunit is not keyworded, needed by test. Bug 228559.
 media-libs/taglib test
 

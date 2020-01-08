@@ -1,0 +1,13 @@
+diff --git a/Makefile.config b/Makefile.config
+index a853705..27bb91f 100644
+--- a/Makefile.config
++++ b/Makefile.config
+@@ -2,7 +2,7 @@ include $(__nmk_dir)utils.mk
+ include $(__nmk_dir)msg.mk
+ include scripts/feature-tests.mak
+ 
+-ifeq ($(call try-cc,$(FEATURE_TEST_LIBBSD_DEV),-lbsd),true)
++ifeq ($(SETPROCTITLE)$(call try-cc,$(FEATURE_TEST_LIBBSD_DEV),-lbsd),yestrue)
+         LIBS_FEATURES	+= -lbsd
+         FEATURE_DEFINES	+= -DCONFIG_HAS_LIBBSD
+ else

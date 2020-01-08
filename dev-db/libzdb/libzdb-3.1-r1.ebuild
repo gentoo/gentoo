@@ -6,12 +6,12 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="A thread safe high level multi-database connection pool library"
-HOMEPAGE="http://www.tildeslash.com/libzdb/"
-SRC_URI="http://www.tildeslash.com/${PN}/dist/${P}.tar.gz"
+HOMEPAGE="https://www.tildeslash.com/libzdb/"
+SRC_URI="https://www.tildeslash.com/${PN}/dist/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug doc mysql postgres +sqlite ssl static-libs"
 REQUIRED_USE=" || ( postgres mysql sqlite )"
 

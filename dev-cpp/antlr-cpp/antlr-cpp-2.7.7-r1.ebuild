@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,11 +14,11 @@ inherit autotools multilib-minimal
 
 MY_P="${PN%-cpp}-${PV}"
 DESCRIPTION="The ANTLR 2 C++ Runtime"
-HOMEPAGE="http://www.antlr2.org/"
-SRC_URI="http://www.antlr2.org/download/${MY_P}.tar.gz"
+HOMEPAGE="https://www.antlr2.org/"
+SRC_URI="https://www.antlr2.org/download/${MY_P}.tar.gz"
 LICENSE="public-domain"
 SLOT="2"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ppc x86"
 IUSE="doc examples static-libs"
 RESTRICT="test" # No tests but test target blows up!
 

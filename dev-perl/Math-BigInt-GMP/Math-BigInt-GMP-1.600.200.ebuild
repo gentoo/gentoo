@@ -12,6 +12,7 @@ DESCRIPTION="Use the GMP library for Math::BigInt routines"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=virtual/perl-Math-BigInt-1.999.801

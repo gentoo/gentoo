@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 KV_min=2.6.39
 
-inherit autotools linux-info multilib multilib-minimal user
+inherit autotools linux-info multilib multilib-minimal
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/gentoo/eudev.git"
@@ -21,6 +21,7 @@ HOMEPAGE="https://github.com/gentoo/eudev"
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
 IUSE="+hwdb +kmod introspection rule-generator selinux static-libs test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=sys-apps/util-linux-2.20
 	introspection? ( >=dev-libs/gobject-introspection-1.38 )
@@ -39,6 +40,9 @@ DEPEND="${COMMON_DEPEND}
 	test? ( app-text/tree dev-lang/perl )"
 
 RDEPEND="${COMMON_DEPEND}
+	acct-group/input
+	acct-group/kvm
+	acct-group/render
 	!<sys-fs/lvm2-2.02.103
 	!<sec-policy/selinux-base-2.20120725-r10
 	!sys-fs/udev
@@ -184,12 +188,6 @@ pkg_postinst() {
 		ewarn "else losetup may be confused when looking for unused devices."
 	fi
 
-	# https://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
-	# https://bugs.gentoo.org/246847
-	# https://bugs.gentoo.org/514174
-	enewgroup input
-
-	# REPLACING_VERSIONS should only ever have zero or 1 values but in case it doesn't,
 	# process it as a list.  We only care about the zero case (new install) or the case where
 	# the same version is being re-emerged.  If there is a second version, allow it to abort.
 	local rv rvres=doitnew

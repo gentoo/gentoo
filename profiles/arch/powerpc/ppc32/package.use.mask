@@ -1,36 +1,48 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Feb 2019)
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is stable on ppc
+sys-firmware/seabios -debug
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-05-15)
+# sys-cluster/hpx, sci-libs/silo not keyworded
+sci-libs/libgeodecomp hpx silo
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # app-text/libwpd and app-text/libwpg are not keyworded
 media-gfx/inkscape cdr visio wpg
 
-# Matt Turner <mattst88@gentoo.org> (07 Oct 2018)
+# Matt Turner <mattst88@gentoo.org> (2018-10-07)
 # media-libs/x265[power8] fails to build on 32-bit ppc.
 media-libs/x265 power8
 
-# Mikle Kolyada <zlogene@gentoo.org> (01 Sep 2018)
+# Mikle Kolyada <zlogene@gentoo.org> (2018-09-01)
 # The dependency is not keyworded
 net-analyzer/wireshark bcg729
 
-# Sergei Trofimovich <slyfox@gentoo.org> (3 Oct 2017)
+# Sergei Trofimovich <slyfox@gentoo.org> (2017-10-03)
 # Incomplete support, bug #605878.
 net-vpn/tor seccomp
 
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
 sys-devel/clang-runtime openmp sanitize
 sys-libs/libcxx libcxxrt
 
-# Michael Weber <xmw@gentoo.org> (15 Mar 2017)
+# Michael Weber <xmw@gentoo.org> (2017-03-15)
 # Cannot test non-free dependency dev-libs/device-atlas-api-c
 net-proxy/haproxy device-atlas
 
-# Bernard Cafarelli <voyageur@gentoo.org> <25 Jan 2017)
+# Bernard Cafarelli <voyageur@gentoo.org> (2017-01-25)
 # Requires a Java dependency
 app-text/tesseract scrollview
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (13 Dec 2016)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2016-12-13)
 # Dropping ppc from sci-libs/armadillo, bug 555896
 sci-libs/gdal armadillo
 
@@ -38,52 +50,48 @@ sci-libs/gdal armadillo
 # sci-libs/gdal[mdb] requires dev-java/jackcess which is not keyworded
 sci-libs/gdal mdb
 
-# Michał Górny <mgorny@gentoo.org> (18 Nov 2016)
+# Michał Górny <mgorny@gentoo.org> (2016-11-18)
 # libomp does not support 32-bit PPC, #600148.
 sys-devel/clang-runtime openmp
 
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Aug 2016)
+# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (2016-08-01)
 # kde-frameworks/*:5 not keyworded.
 net-irc/kvirc kde
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2016-06-28)
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
 
-# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (2016-01-30)
 # scrollview requires Java, which is unsupported on ppc.
 app-text/tesseract scrollview
 
-# James Le Cuirot <chewi@gentoo.org> (12 Jan 2015)
+# James Le Cuirot <chewi@gentoo.org> (2015-01-12)
 # Java is no longer supported on ppc.
 app-text/texlive pdfannotextractor
 dev-lang/logtalk fop
 gnome-extra/libgda reports
 
-# Anthony G. Basile <blueness@gentoo.org> (26 Oct 2015)
-# Mask x265 on vlc for bug #564138
-media-video/vlc x265
-
-# Ben de Groot <yngwin@gentoo.org> (20 Jul 2015)
+# Ben de Groot <yngwin@gentoo.org> (2015-07-20)
 # missing keyword
 media-sound/audacity midi soundtouch
 
-# Pacho Ramos <pacho@gentoo.org> (02 Jun 2015)
-# Missing keywords (02 Jun 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-06-02)
+# Missing keywords (2015-06-02)
 net-misc/connman openconnect
 
-# Michał Górny <mgorny@gentoo.org> (01 Mar 2015)
+# Michał Górny <mgorny@gentoo.org> (2015-03-01)
 # pidgin-opensteamworks is only available for amd64, ppc32 and x86
 net-im/telepathy-connection-managers -steam
 
-# Pacho Ramos <pacho@gentoo.org> (14 Jan 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-01-14)
 # Missing keywords
 app-misc/workrave mate
 
-# Julian Ospald <hasufell@gentoo.org> (23 Nov 2013)
+# Julian Ospald <hasufell@gentoo.org> (2013-11-23)
 # FIXME: app-arch/innoextract not available under ppc yet
 games-fps/duke3d-data gog
 
-# Maciej Mrozowski <reavertm@gentoo.org> (26 Jun 2010)
+# Maciej Mrozowski <reavertm@gentoo.org> (2010-06-26)
 # Needs media-libs/simage keyworded, bug 325623
 media-libs/coin simage

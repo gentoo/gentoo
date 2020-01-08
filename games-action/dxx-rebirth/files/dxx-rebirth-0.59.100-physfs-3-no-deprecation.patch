@@ -1,0 +1,30 @@
+From 8838b46e65c830e8d9ebaeaf568f186eff57d5c7 Mon Sep 17 00:00:00 2001
+From: Kp <kp@valhallalegends.com>
+Date: Sun, 22 Oct 2017 04:20:35 +0000
+Subject: [PATCH] Suppress PhysFS deprecation errors
+
+PhysFS 2.0 only offers PHYSFS_read/PHYSFS_write for I/O.  PhysFS 3.0
+deprecates PHYSFS_read / PHYSFS_write and offers PHYSFS_readBytes /
+PHYSFS_writeBytes.  Converting Rebirth to use the new API is somewhat
+invasive, and would require dropping support for PhysFS 2.0.
+
+For now, for compatibility with PhysFS 2.0, disable the deprecation
+errors and continue to use the older functions.
+
+Reported-by: gabeotisbenson <https://github.com/dxx-rebirth/dxx-rebirth/issues/352>
+---
+ SConstruct | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/SConstruct b/SConstruct
+index 560a6ef1a..78491cb1a 100644
+--- a/SConstruct
++++ b/SConstruct
+@@ -3177,6 +3177,7 @@
+ 		def adjust_environment(self,program,env):
+ 			env.Append(
+ 				CXXFLAGS = ['-pthread'],
++				CPPDEFINES = [('PHYSFS_DEPRECATED', '')],
+ 			)
+ 
+ 	def __init__(self,__program_instance=itertools.count(1)):

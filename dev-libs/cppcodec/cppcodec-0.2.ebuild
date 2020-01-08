@@ -16,7 +16,7 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_SUBMODULES=()
 else
 	SRC_URI="https://github.com/tplgy/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="MIT"

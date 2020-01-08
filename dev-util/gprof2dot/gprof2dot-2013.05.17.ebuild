@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE='xml'
 
 inherit eutils python-r1
@@ -36,19 +36,19 @@ _make_call_script() {
 	Main().main()
 	EOF
 
-	fperms a+x "$1" || die
+	fperms a+x "$1"
 }
 
 src_install() {
 	abi_specific_install() {
 		local sitedir="$(python_get_sitedir)"
 		insinto ${sitedir#"${EPREFIX}"}
-		doins ${PN}.py || die
+		doins ${PN}.py
 		python_optimize || die
 	}
 	python_foreach_impl abi_specific_install
 
-	dodir /usr/bin || die
+	dodir /usr/bin
 	_make_call_script /usr/bin/${PN} || die
 	python_replicate_script "${ED}"/usr/bin/${PN} || die
 }

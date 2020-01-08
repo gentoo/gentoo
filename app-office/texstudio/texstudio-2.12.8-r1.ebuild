@@ -11,7 +11,7 @@ SRC_URI="https://github.com/texstudio-org/texstudio/archive/2.12.8.tar.gz -> ${P
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="video"
 
 COMMON_DEPEND="

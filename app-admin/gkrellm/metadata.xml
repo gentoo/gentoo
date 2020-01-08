@@ -9,7 +9,7 @@
 		<flag name="hddtemp">Enable monitoring harddrive temperatures via <pkg>app-admin/hddtemp</pkg></flag>
 		<flag name="gnutls">Enable SSL support for mail checking with <pkg>net-libs/gnutls</pkg> (overrides 'ssl' USE flag)</flag>
 		<flag name="ssl">Enable SSL support for mail checking with <pkg>dev-libs/openssl</pkg></flag>
-		<flag name="lm_sensors">Enable monitoring sensors via <pkg>sys-apps/lm_sensors</pkg></flag>
+		<flag name="lm-sensors">Enable monitoring sensors via <pkg>sys-apps/lm-sensors</pkg></flag>
 		<flag name="X">Build both the X11 gui (gkrellm) and the server (gkrellmd). Disabling this flag builds the server only</flag>
 		<flag name="ntlm">Enable NTLM authentication for mail checking with <pkg>net-libs/libntlm</pkg></flag>
 	</use>

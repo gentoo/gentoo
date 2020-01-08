@@ -1,0 +1,23 @@
+From d713ce77e077b426d9d81a22f558f71dfa832615 Mon Sep 17 00:00:00 2001
+From: Thomas Friedrichsmeier <thomas.friedrichsmeier@ruhr-uni-bochum.de>
+Date: Fri, 26 Jul 2019 22:32:42 +0200
+Subject: Another missing include file
+
+---
+ rkward/windows/rktoolwindowbar.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/rkward/windows/rktoolwindowbar.cpp b/rkward/windows/rktoolwindowbar.cpp
+index a8f5cbd..03c405e 100644
+--- a/rkward/windows/rktoolwindowbar.cpp
++++ b/rkward/windows/rktoolwindowbar.cpp
+@@ -27,6 +27,7 @@
+ 
+ #include <QSplitter>
+ #include <QContextMenuEvent>
++#include <QHBoxLayout>
+ 
+ #include "rkworkplace.h"
+ #include "rkworkplaceview.h"
+-- 
+cgit v1.1

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ HOMEPAGE="https://www.gnome.org/"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="acl gnutls ipv6 kerberos libressl samba ssl zeroconf"
 
 RDEPEND="
@@ -37,7 +37,7 @@ RDEPEND="
 			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
 			libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 			!gnome-extra/gnome-vfs-sftp ) )
-	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
+	zeroconf? ( >=net-dns/avahi-0.6.31-r2[dbus,${MULTILIB_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils

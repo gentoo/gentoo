@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,13 +33,13 @@ multilib_src_install() {
 	default
 
 	# Drop .la files
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -name '*.la' -delete || die
 
 	OCL_DIR="/usr/$(get_libdir)/OpenCL/vendors/ocl-icd"
 	dodir ${OCL_DIR}/{,include}
 
 	# Install vendor library
-	mv -f "${D}/usr/$(get_libdir)"/libOpenCL* "${ED}${OCL_DIR}" || die "Can't install vendor library"
+	mv -f "${ED}/usr/$(get_libdir)"/libOpenCL* "${ED}${OCL_DIR}" || die "Can't install vendor library"
 
 	# Install vendor headers
 	if use khronos-headers; then

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE="threads(+)"
 
 USE_PHP="php7-1 php7-2 php7-3"
@@ -18,8 +18,8 @@ RUBY_OPTIONAL="yes"
 inherit java-pkg-opt-2 mono-env multibuild php-ext-source-r3 python-r1 ruby-ng toolchain-funcs
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
-HOMEPAGE="http://www.xapian.org/"
-SRC_URI="http://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
+HOMEPAGE="https://www.xapian.org/"
+SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -94,7 +94,7 @@ src_unpack() {
 src_prepare() {
 	use java && java-pkg-opt-2_src_prepare
 
-	# http://trac.xapian.org/ticket/702
+	# https://trac.xapian.org/ticket/702
 	export XAPIAN_CONFIG="/usr/bin/xapian-config"
 
 	if use php; then

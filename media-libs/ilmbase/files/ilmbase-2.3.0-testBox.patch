@@ -1,0 +1,104 @@
+Subject: testBox: allow fuzzy comparison of floats, doubles
+From: Steven Chamberlain <steven@pyro.eu.org>
+Date: Wed, 24 Feb 2016 01:10:11 +0000
+
+Allow for inexact values, as long as the error is smaller than the
+epsilon of the data type.
+
+On 32-bit x86, allow even greater discrepency at double
+precision, due to possible double-rounding.  See
+https://lists.nongnu.org/archive/html/openexr-devel/2015-12/msg00001.html
+
+Index: ilmbase/ImathTest/testBox.cpp
+===================================================================
+--- ilmbase.orig/ImathTest/testBox.cpp
++++ ilmbase/ImathTest/testBox.cpp
+@@ -47,6 +47,58 @@ using namespace IMATH_INTERNAL_NAMESPACE
+ 
+ namespace {
+ 
++template <class T>
++bool
++approximatelyEqual (const T &p1, const T &p2)
++{
++	/* int and short should be exact */
++	return (p1 == p2);
++}
++
++bool
++approximatelyEqual (const Vec2<float> &p1, const Vec2<float> &p2)
++{
++    float e = limits<float>::epsilon();
++    float m = 0;
++
++    for (int i = 0; i < 2; ++i)
++    {
++	m = max (m, abs (p1[i]));
++	m = max (m, abs (p2[i]));
++    }
++
++    for (int i = 0; i < 2; ++i)
++	if (!equalWithAbsError (p1[i], p2[i], m * e))
++	    return false;
++
++    return true;
++}
++
++bool
++approximatelyEqual (const Vec2<double> &p1, const Vec2<double> &p2)
++{
++#if defined(__i386__) || defined(_M_IX86)
++    /* double-rounding on 32-bit x86 may cause larger error:
++       use epsilon of float rather than double */
++    double e = limits<float>::epsilon();
++#else
++    double e = limits<double>::epsilon();
++#endif
++    double m = 0;
++
++    for (int i = 0; i < 2; ++i)
++    {
++	m = max (m, abs (p1[i]));
++	m = max (m, abs (p2[i]));
++    }
++
++    for (int i = 0; i < 2; ++i)
++	if (!equalWithAbsError (p1[i], p2[i], m * e))
++	    return false;
++
++    return true;
++}
++
+ //
+ // Test case generation utility - create a vector of IMATH_INTERNAL_NAMESPACE::Vec{2,3,4}
+ // with all permutations of integers 1..T::dimensions().
+@@ -250,7 +302,8 @@ testExtendByPoint(const char *type)
+                               
+         IMATH_INTERNAL_NAMESPACE::Box<T> b;
+         b.extendBy(p);
+-        assert(b.min == p && b.max == p);
++        assert (approximatelyEqual (b.min, p));
++        assert (approximatelyEqual (b.max, p));
+     }
+ 
+     //
+@@ -283,7 +336,8 @@ testExtendByPoint(const char *type)
+ 
+             b.extendBy(p);
+ 
+-            assert(b.min == min && b.max == max);
++            assert (approximatelyEqual (b.min, min));
++            assert (approximatelyEqual (b.max, max));
+         }
+     }
+ }
+@@ -358,7 +412,8 @@ testExtendByBox(const char *type)
+             }
+             b.extendBy(IMATH_INTERNAL_NAMESPACE::Box<T>(p0, p1));
+ 
+-            assert(b.min == min && b.max == max);
++            assert (approximatelyEqual (b.min, min));
++            assert (approximatelyEqual (b.max, max));
+         }
+     }
+ }

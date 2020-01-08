@@ -33,9 +33,9 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog README TODO
 
 	insinto /etc
-	doins shrip.conf || die
+	doins shrip.conf
 }

@@ -24,7 +24,7 @@ if [[ ${PV} == "99999999" ]] ; then
 else
 	SRC_URI="https://github.com/iputils/iputils/archive/s${MY_PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~whissi/dist/iputils/${PN}-manpages-${MY_PV}.tar.xz"
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="Network monitoring tools including ping and ping6"
@@ -32,7 +32,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/networking/iputils"
 
 LICENSE="BSD GPL-2+ rdisc"
 SLOT="0"
-IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute"
+IUSE="+arping caps clockdiff doc gcrypt idn ipv6 libressl nettle rarpd rdisc SECURITY_HAZARD ssl static tftpd tracepath traceroute6"
 
 LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
 	idn? ( net-dns/libidn2:=[static-libs(+)] )
@@ -51,7 +51,7 @@ LIB_DEPEND="caps? ( sys-libs/libcap[static-libs(+)] )
 "
 RDEPEND="arping? ( !net-misc/arping )
 	rarpd? ( !net-misc/rarpd )
-	traceroute? ( !net-analyzer/traceroute )
+	traceroute6? ( !net-analyzer/traceroute )
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
@@ -82,7 +82,7 @@ src_configure() {
 	)
 	if use ipv6 ; then
 		TARGETS+=(
-			$(usex traceroute 'traceroute6' '')
+			$(usex traceroute6 'traceroute6' '')
 		)
 	fi
 
@@ -156,7 +156,7 @@ src_install() {
 		dosym tracepath.8 /usr/share/man/man8/tracepath6.8
 	fi
 
-	if use traceroute && use ipv6 ; then
+	if use traceroute6 && use ipv6 ; then
 		dosbin traceroute6
 		doman doc/traceroute6.8
 	fi

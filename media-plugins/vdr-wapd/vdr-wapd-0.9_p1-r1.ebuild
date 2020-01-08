@@ -1,20 +1,20 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
 MY_P="${PN}-${PV%_p*}"
 
-DESCRIPTION="VDR plugin: lets VDR listen to WAP requests to allow remote control by WML enabled browsers"
-HOMEPAGE="http://www.heiligenmann.de/vdr/vdr/plugins/wapd.html"
+DESCRIPTION="VDR plugin: lets VDR listen to WAP requests on WML enabled browsers"
+HOMEPAGE="http://www.heiligenmann.de/"
 SRC_URI="http://www.heiligenmann.de/vdr/download/${MY_P}.tgz
-	http://www.heiligenmann.de/vdr/download/${MY_P#vdr-}-patch1.diff.gz"
+		http://www.heiligenmann.de/vdr/download/${MY_P#vdr-}-patch1.diff.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=">=media-video/vdr-1.3.44"

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>ml@gentoo.org</email>
-		<name>Gentoo ML Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		React is an OCaml module for functional reactive programming (FRP). It
 		provides support to program with time varying values : applicative

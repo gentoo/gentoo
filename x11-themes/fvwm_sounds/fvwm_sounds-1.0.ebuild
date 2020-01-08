@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Sounds for use with FVWM"
 HOMEPAGE="http://www.fvwm.org/"
-SRC_URI="http://www.fvwm.org/generated/sounds_download/fvwm_sounds.tgz"
+SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"

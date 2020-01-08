@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,6 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~ppc-macos ~x86-macos ~sparc-solaris ~sparc64-solaris"
 IUSE="debug id64 mysql odbc postgres stemmer syslog test xml"
+RESTRICT="!test? ( test )"
 
 RDEPEND="mysql? ( virtual/mysql )
 	postgres? ( dev-db/postgresql:* )
@@ -64,9 +65,9 @@ src_configure() {
 }
 
 src_compile() {
-	emake AR="$(tc-getAR)" || die "emake failed"
+	emake AR="$(tc-getAR)"
 
-	emake -j 1 -C api/libsphinxclient || die "emake libsphinxclient failed"
+	emake -j 1 -C api/libsphinxclient
 }
 
 src_test() {
@@ -75,8 +76,8 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	emake DESTDIR="${D}" -C api/libsphinxclient install || die "install libsphinxclient failed"
+	emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" -C api/libsphinxclient install
 
 	dodoc doc/*
 

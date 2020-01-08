@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ SLOT="2"
 DESCRIPTION="gtk bindings for mono"
 LICENSE="GPL-2"
 HOMEPAGE="http://www.mono-project.com/GtkSharp"
-KEYWORDS="amd64 ~arm64 ppc x86"
+KEYWORDS="amd64 arm64 ppc x86"
 SRC_URI="http://download.mono-project.com/sources/gtk-sharp212/${P}.tar.gz"
 IUSE="debug"
 

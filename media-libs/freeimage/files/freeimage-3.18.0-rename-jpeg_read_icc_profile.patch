@@ -1,0 +1,34 @@
+From 27c02a3ed6196b4b0bab5524f2825da58a76d706 Mon Sep 17 00:00:00 2001
+From: Patrick Nicolas <xytovl@laposte.net>
+Date: Tue, 13 Nov 2018 20:28:51 +0100
+Subject: [PATCH 3/4] rename jpeg_read_icc_profile
+
+---
+ Source/FreeImage/PluginJPEG.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Source/FreeImage/PluginJPEG.cpp b/Source/FreeImage/PluginJPEG.cpp
+index dd97e63..569f71e 100644
+--- a/Source/FreeImage/PluginJPEG.cpp
++++ b/Source/FreeImage/PluginJPEG.cpp
+@@ -507,7 +507,7 @@ marker_is_icc(jpeg_saved_marker_ptr marker) {
+   return FALSE.  You might want to issue an error message instead.
+ */
+ static BOOL 
+-jpeg_read_icc_profile(j_decompress_ptr cinfo, JOCTET **icc_data_ptr, unsigned *icc_data_len) {
++_jpeg_read_icc_profile(j_decompress_ptr cinfo, JOCTET **icc_data_ptr, unsigned *icc_data_len) {
+ 	jpeg_saved_marker_ptr marker;
+ 	int num_markers = 0;
+ 	int seq_no;
+@@ -749,7 +749,7 @@ read_markers(j_decompress_ptr cinfo, FIBITMAP *dib) {
+ 	BYTE *icc_profile = NULL;
+ 	unsigned icc_length = 0;
+ 
+-	if( jpeg_read_icc_profile(cinfo, &icc_profile, &icc_length) ) {
++	if( _jpeg_read_icc_profile(cinfo, &icc_profile, &icc_length) ) {
+ 		// copy ICC profile data
+ 		FreeImage_CreateICCProfile(dib, icc_profile, icc_length);
+ 		// clean up
+-- 
+2.19.1
+

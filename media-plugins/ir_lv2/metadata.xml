@@ -5,4 +5,7 @@
 	<email>proaudio@gentoo.org</email>
 	<name>Gentoo ProAudio Project</name>
 </maintainer>
+<use>
+	<flag name="tools">Build convert4chan tool</flag>
+</use>
 </pkgmetadata>

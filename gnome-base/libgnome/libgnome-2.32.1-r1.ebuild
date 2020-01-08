@@ -13,7 +13,7 @@ HOMEPAGE="https://library.gnome.org/devel/libgnome/stable/"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE="branding"
 
 SRC_URI="${SRC_URI}

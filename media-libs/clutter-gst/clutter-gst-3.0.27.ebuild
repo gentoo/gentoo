@@ -12,7 +12,7 @@ DESCRIPTION="GStreamer integration library for Clutter"
 
 LICENSE="LGPL-2.1+"
 SLOT="3.0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="X debug examples +introspection udev"
 
 # >=cogl-1.18 provides cogl-2.0-experimental
@@ -24,7 +24,7 @@ COMMON_DEPEND="
 	>=media-libs/gst-plugins-bad-1.4:1.0
 	>=media-libs/gst-plugins-base-1.4:1.0[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-0.6.8:= )
-	udev? ( virtual/libgudev )
+	udev? ( dev-libs/libgudev )
 "
 # uses goom from gst-plugins-good
 RDEPEND="${COMMON_DEPEND}

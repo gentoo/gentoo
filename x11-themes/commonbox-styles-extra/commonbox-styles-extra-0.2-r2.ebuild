@@ -10,7 +10,7 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 # xv is there so *box can convert backgrounds/textures to use

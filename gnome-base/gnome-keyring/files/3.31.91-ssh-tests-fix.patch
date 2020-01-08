@@ -1,0 +1,112 @@
+From 91bc9368ca2eedef0dec3f5aa81f641ced07a9b6 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Sat, 9 Mar 2019 17:56:55 +0000
+Subject: [PATCH] test-gkd-ssh-agent-service: Avoid race condition with server
+ thread
+
+These tests create a server thread in setup() and join it in teardown(),
+but there are various race conditions between them that can cause the
+test to hang. These are particularly reproducible when building on a
+single-CPU machine or VM, and particularly in the startup_shutdown
+test (which doesn't do anything, so it runs teardown() immediately
+after setup()).
+
+It's possible to get this preemption pattern:
+
+     ___ Main thread ___                ___ Server thread ___
+     g_thread_new()                     (starts)
+     g_cond_wait() (blocks)
+                                        ...
+                                        g_cond_signal()
+                                        (gets preempted here)
+     exit setup()
+     enter teardown()
+     g_main_loop_quit()
+                                        g_main_loop_run()
+
+which means g_main_loop_run() will never terminate, because it wasn't
+running yet when the main thread told the GMainLoop to quit, and the
+main thread won't tell it to quit again.
+
+One way to solve this would be for the server thread to signal
+test->cond from an idle callback instead of directly from
+server_thread(), to guarantee that the GMainLoop is already running.
+However, it seems easier to reason about if we avoid GMainLoop and
+iterate the main context directly.
+
+Signed-off-by: Simon McVittie <smcv@debian.org>
+Bug-Debian: https://bugs.debian.org/909416
+---
+ daemon/ssh-agent/test-gkd-ssh-agent-service.c | 23 +++++++++----------
+ 1 file changed, 11 insertions(+), 12 deletions(-)
+
+diff --git a/daemon/ssh-agent/test-gkd-ssh-agent-service.c b/daemon/ssh-agent/test-gkd-ssh-agent-service.c
+index 9a9ead99..5c7a6179 100644
+--- a/daemon/ssh-agent/test-gkd-ssh-agent-service.c
++++ b/daemon/ssh-agent/test-gkd-ssh-agent-service.c
+@@ -38,7 +38,8 @@ typedef struct {
+ 	EggBuffer req;
+ 	EggBuffer resp;
+ 	GkdSshAgentService *service;
+-	GMainLoop *loop;
++	GMainContext *server_thread_context;
++	volatile gint server_thread_stop;
+ 	GSocketConnection *connection;
+ 	GThread *thread;
+ 	GMutex lock;
+@@ -49,13 +50,9 @@ static gpointer
+ server_thread (gpointer data)
+ {
+ 	Test *test = data;
+-	GMainContext *context;
+ 	gboolean ret;
+ 
+-	context = g_main_context_new ();
+-	test->loop = g_main_loop_new (context, FALSE);
+-
+-	g_main_context_push_thread_default (context);
++	g_main_context_push_thread_default (test->server_thread_context);
+ 
+ 	ret = gkd_ssh_agent_service_start (test->service);
+ 	g_assert_true (ret);
+@@ -64,12 +61,10 @@ server_thread (gpointer data)
+ 	g_cond_signal (&test->cond);
+ 	g_mutex_unlock (&test->lock);
+ 
+-	g_main_loop_run (test->loop);
++	while (g_atomic_int_get (&test->server_thread_stop) == 0)
++		g_main_context_iteration (test->server_thread_context, TRUE);
+ 
+-	g_main_context_pop_thread_default (context);
+-
+-	g_main_context_unref (context);
+-	g_main_loop_unref (test->loop);
++	g_main_context_pop_thread_default (test->server_thread_context);
+ 
+ 	return NULL;
+ }
+@@ -139,6 +134,7 @@ setup (Test *test, gconstpointer unused)
+ 
+ 	g_mutex_init (&test->lock);
+ 	g_cond_init (&test->cond);
++	test->server_thread_context = g_main_context_new ();
+ 
+ 	test->thread = g_thread_new ("ssh-agent", server_thread, test);
+ 
+@@ -151,9 +147,12 @@ setup (Test *test, gconstpointer unused)
+ static void
+ teardown (Test *test, gconstpointer unused)
+ {
+-	g_main_loop_quit (test->loop);
++	g_atomic_int_set (&test->server_thread_stop, 1);
++	g_main_context_wakeup (test->server_thread_context);
+ 	g_thread_join (test->thread);
+ 
++	g_main_context_unref (test->server_thread_context);
++
+ 	g_clear_object (&test->connection);
+ 
+ 	gkd_ssh_agent_service_stop (test->service);
+-- 
+2.20.1
+

@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription>A program for Milter supported mail servers that implements antispam, antivirus and other customizable filtering on email messages</longdescription>
-<use>
-	<flag name="poll">Use poll instead of select</flag>
-</use>
+	<maintainer type="person">
+		<email>rentorbuy@yahoo.com</email>
+		<name>Vieri Di Paola</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		A program for Milter supported mail servers that implements antispam,
+		antivirus and other customizable filtering on email messages.
+	</longdescription>
+	<use>
+		<flag name="poll">Use poll instead of select</flag>
+	</use>
 </pkgmetadata>

@@ -1,4 +1,0 @@
-# Set the user and group under which motion will be ran
-
-MOTION_USER="motion"
-MOTION_GROUP="video"

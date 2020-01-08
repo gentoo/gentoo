@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit autotools flag-o-matic python-single-r1
 
@@ -12,9 +12,11 @@ SRC_URI="https://github.com/dell/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2 OSL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~ia64 ~x86"
+KEYWORDS="amd64 ia64 x86"
 IUSE="doc graphviz nls python static-libs test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libxml2
 	sys-libs/zlib
@@ -63,7 +65,7 @@ src_install() {
 
 	if use python ; then
 		python_scriptinto /usr/sbin
-		python_doscript "${ED%/}"/usr/sbin/smbios-{{keyboard,thermal,token,wakeup,wireless}-ctl,lcd-brightness,passwd,sys-info}
+		python_doscript "${ED}"/usr/sbin/smbios-{{keyboard,thermal,token,wakeup,wireless}-ctl,lcd-brightness,passwd,sys-info}
 	fi
 
 	insinto /usr/include/

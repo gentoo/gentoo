@@ -1,0 +1,17 @@
+Index: gazebo_plugins/src/gazebo_ros_prosilica.cpp
+===================================================================
+--- gazebo_plugins.orig/src/gazebo_ros_prosilica.cpp
++++ gazebo_plugins/src/gazebo_ros_prosilica.cpp
+@@ -44,10 +44,8 @@
+ #include <diagnostic_updater/diagnostic_updater.h>
+ #include <sensor_msgs/RegionOfInterest.h>
+ 
+-#include <opencv/cv.h>
+-#include <opencv/highgui.h>
+-
+-#include <opencv/cvwimage.h>
++#include <opencv2/core/core_c.h>
++#include <opencv2/highgui/highgui_c.h>
+ 
+ #include <boost/scoped_ptr.hpp>
+ #include <boost/bind.hpp>

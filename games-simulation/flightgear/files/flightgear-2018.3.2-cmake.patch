@@ -1,0 +1,24 @@
+diff -ruN flightgear-2018.3.2/CMakeLists.txt my/CMakeLists.txt
+--- flightgear-2018.3.2/CMakeLists.txt	2019-01-29 14:17:49.000000000 +0100
++++ my/CMakeLists.txt	2019-08-18 05:29:04.762138013 +0200
+@@ -323,7 +323,7 @@
+ ## Qt5 setup setup
+ if (ENABLE_QT)
+     message(STATUS "Qt launcher enabled, checking for Qt >= 5.4 / qmake")
+-    find_package(Qt5 5.4 COMPONENTS Widgets Network Qml Quick Svg)
++    find_package(Qt5 5.4 COMPONENTS Widgets Network Qml Quick)
+     if (Qt5Widgets_FOUND)
+         message(STATUS "Will enable Qt launcher GUI")
+         message(STATUS "  Qt5Widgets version: ${Qt5Widgets_VERSION_STRING}")
+diff -ruN flightgear-2018.3.2/src/GUI/CMakeLists.txt my/src/GUI/CMakeLists.txt
+--- flightgear-2018.3.2/src/GUI/CMakeLists.txt	2019-01-29 14:17:50.000000000 +0100
++++ my/src/GUI/CMakeLists.txt	2019-08-18 05:38:19.607822998 +0200
+@@ -127,7 +127,7 @@
+                             ${qml_sources})
+ 
+     set_property(TARGET fglauncher PROPERTY AUTOMOC ON)
+-    target_link_libraries(fglauncher Qt5::Core Qt5::Widgets Qt5::Network Qt5::Qml Qt5::Quick Qt5::Svg SimGearCore)
++    target_link_libraries(fglauncher Qt5::Core Qt5::Widgets Qt5::Network Qt5::Qml Qt5::Quick SimGearCore)
+     target_include_directories(fglauncher PRIVATE ${PROJECT_BINARY_DIR}/src/GUI)
+ 
+     add_library(fgqmlui QQuickDrawable.cxx

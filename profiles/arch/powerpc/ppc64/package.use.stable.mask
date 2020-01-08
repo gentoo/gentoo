@@ -8,7 +8,7 @@
 #
 ## Example:
 ##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
 ## # Masking foo USE flag until we can get the
 ## # foo stuff to work properly again (bug 12345)
 ## =media-video/mplayer-0.90_pre5 foo
@@ -17,11 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Feb 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
 # app-text/libwpd and app-text/libwpg are not stable
 media-gfx/inkscape cdr visio wpg
 
-# Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-07-02)
 # Mask due Gnome3 not going to be stabilized on this arch
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google

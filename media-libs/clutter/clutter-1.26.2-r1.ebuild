@@ -13,6 +13,7 @@ LICENSE="LGPL-2.1+ FDL-1.1+"
 SLOT="1.0"
 
 IUSE="aqua debug doc egl gtk +introspection test wayland X"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( aqua wayland X )
 	wayland? ( egl )
@@ -37,7 +38,7 @@ RDEPEND="
 	egl? (
 		>=dev-libs/libinput-0.19.0
 		media-libs/cogl[gles2,kms]
-		>=virtual/libgudev-136
+		>=dev-libs/libgudev-136
 		x11-libs/libxkbcommon
 	)
 	gtk? ( >=x11-libs/gtk+-3.22.6:3[aqua?] )

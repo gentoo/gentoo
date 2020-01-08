@@ -1,5 +1,13 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # Unmask the flag which corresponds to ARCH.
 -arm64
+
+# Aaron Bauman <bman@gentoo.org> (2019-12-27)
+# Mask cpu_flags_arm_neon for all of arm64
+# A neon64 USE is being discussed
+cpu_flags_arm_neon
 
 # Unmask arm specific USE flags
 -cpu_flags_arm_v4
@@ -12,7 +20,6 @@
 -cpu_flags_arm_aes
 -cpu_flags_arm_crc32
 -cpu_flags_arm_edsp
--cpu_flags_arm_neon
 -cpu_flags_arm_sha1
 -cpu_flags_arm_sha2
 -cpu_flags_arm_thumb
@@ -23,74 +30,49 @@
 -cpu_flags_arm_vfp-d32
 
 # Unmask [old] arm specific USE flags
--neon
 -armvfp
 
-# Mart Raudsepp <leio@gentoo.org> (07 Jan 2019)
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
+# Dependency not keyworded (dev-libs/libindicate).
+ayatana
+
+# Mart Raudsepp <leio@gentoo.org> (2019-01-07)
 # Does not work on arm64 until dev-lang/luajit-2.1
 # https://github.com/LuaJIT/LuaJIT/issues/26
 luajit
 
-# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
-# Python 3.7 support requires fresh versions of packages which are stuck
-# at keywordreqs.
-# bug #661306: dev-python/pytest
-# bug #661320: dev-python/twisted
-python_targets_python3_7
-python_single_target_python3_7
-
-# Michał Górny <mgorny@gentoo.org> (09 Jul 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-07-09)
 # No OpenCL provider is available on arm64.
 opencl
 
-# Brian Evans <grknight@gentoo.org> (02 Mar 2018)
-# dev-db/qdbm is net yet keyworded
-qdbm
-
-# Michał Górny <mgorny@gentoo.org> (17 Feb 2018)
-# net-dialup/freeradius{,-client} not keyworded.
-radius
-
-# Mart Raudsepp <leio@gentoo.org> (13 Feb 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-02-13)
 # net-libs/libsmi not tested on arm64 yet
 smi
 
-# Michał Górny <mgorny@gentoo.org> (23 Jan 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # sci-geosciences/gpsd is not keyworded here.
 gps
 
-# Mart Raudsepp <leio@gentoo.org> (01 Feb 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-02-01)
 # Unmask systemd since it is keyworded here.
 -systemd
 
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-01-28)
 # dev-util/valgrind not tested on arm64 yet
 # Upstream seems to have architecture support, however
 valgrind
 
-# Markus Meier <maekke@gentoo.org> (22 Aug 2010)
+# Markus Meier <maekke@gentoo.org> (2010-08-22)
 # net-wireless/wimax not tested
 wimax
 
-# Markus Meier <maekke@gentoo.org> (21 Aug 2010)
-# app-antivirus/clamav not tested
-clamav
-
-# Kacper Kowalik <xarthisius@gentoo.org> (9 Aug 2010)
+# Kacper Kowalik <xarthisius@gentoo.org> (2010-08-09)
 # cblas-external as virtual/cblas is also masked
 cblas-external
-
-# Raúl Porcel <armin76@gentoo.org>
-# Fails to build/work
-openexr
 
 # Samuli Suominen <drac@gentoo.org>
 # media-libs/amrnb and media-libs/amrwb not tested.
 amr
-
-# Samuli Suominen <drac@gentoo.org>
-# media-gfx/gimp not tested.
-gimp
 
 # No hardware to test by the team
 dvb
@@ -114,34 +96,20 @@ prelude
 mssql
 
 # havent tested yet
-ruby
-ctypes-python
 libproxy
-pkcs11
-bazaar
 darcs
-mercurial
-gpg
-emacs
-gphoto2
 afs
-mono
 lirc
-lm_sensors
-xemacs
-rpm
+lm-sensors
 scanner
 zvbi
-mysql
 fluidsynth
 sid
 mms
-mtp
 ieee1394
 pm-utils
 darcs
 bs2b
-toolame
 ladspa
 ldns
 ggi
@@ -152,45 +120,34 @@ tokyocabinet
 rtmp
 vpx
 lpsol
-upnp
 quvi
-bluray
 libtar
 zvbi
-aacplus
 devil
 gts
 anthy
-R
 sdl
-vim-syntax
 
 # Unmask ARM-only video-cards
-# e.g. exynos5433
 -video_cards_exynos
-# e.g. Snapdragon 410E (dragonboard)
 -video_cards_freedreno
-# e.g. NXP i.MX
 -video_cards_imx
-# e.g. Nvidia's Tegra K1 T132 Denver
 -video_cards_nouveau
+-video_cards_panfrost
 -video_cards_tegra
-# e.g. Raspeberry Pi 3
 -video_cards_vc4
 
 # James Le Cuirot <chewi@gentoo.org>
 # Unmask as Vivante is available for arm.
 -video_cards_vivante
 
-# 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-02-05)
 # Modular X: mask for architectures on which they aren't available
 video_cards_glint
 video_cards_mga
 video_cards_nv
 video_cards_r128
 video_cards_radeon
-video_cards_tdfx
-video_cards_voodoo
 
 # Matt Turner <mattst88@gentoo.org>
 # Mask more VIDEO_CARDs added with mesa-8.0
@@ -202,10 +159,6 @@ video_cards_r600
 video_cards_radeonsi
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
-# Bug #184563, 18 Sep 2007
+# Bug #184563, (2007-09-18)
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
-# media-libs/xine-lib is not keyworded
-xine

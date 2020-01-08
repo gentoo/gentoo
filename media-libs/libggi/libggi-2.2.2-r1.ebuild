@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/ggi/${P}.src.tar.bz2"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 ~sh sparc x86"
 IUSE="3dfx aalib cpu_flags_x86_mmx debug fbcon svga vis X"
 
 RDEPEND=">=media-libs/libgii-1.0.2

@@ -1,0 +1,34 @@
+From 1bf633e71b7b5d8e5965971036d66e1d18552b49 Mon Sep 17 00:00:00 2001
+From: Michael Niggli <m.niggli@gmail.com>
+Date: Fri, 31 May 2019 17:04:46 +0200
+Subject: [PATCH] Fix blank window when restoring from systray
+
+This applies the fix qBittorrent used for this same issue:
+https://github.com/qbittorrent/qBittorrent/issues/9240,
+so credit goes to those guys
+---
+ src/ui/mainwindow.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ui/mainwindow.cpp b/src/ui/mainwindow.cpp
+index 2944d46ec..ad603fd64 100644
+--- a/src/ui/mainwindow.cpp
++++ b/src/ui/mainwindow.cpp
+@@ -1441,7 +1441,7 @@ void MainWindow::closeEvent(QCloseEvent* event) {
+     keep_running = s.value("keeprunning", tray_icon_->IsVisible()).toBool();
+ 
+   if (keep_running && event->spontaneous()) {
+-    event->accept();
++    event->ignore();
+     SetHiddenInTray(true);
+   } else {
+     Exit();
+@@ -1454,7 +1454,7 @@ void MainWindow::SetHiddenInTray(bool hidden) {
+   // Some window managers don't remember maximized state between calls to
+   // hide() and show(), so we have to remember it ourself.
+   if (hidden) {
+-    hide();
++    QTimer::singleShot(0, this, &QWidget::hide);
+   } else {
+     if (was_maximized_)
+       showMaximized();

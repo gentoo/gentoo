@@ -1,9 +1,0 @@
-# Copyright 1999-2018 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License v2
-
-# Arfrever Frehtes Taifersar Arahesis <arfrever.fta@gmail.com> (01 Aug 2016)
-# kde-frameworks/*:5 not keyworded.
-net-irc/kvirc kde
-
-dev-libs/libpcre cxx
-sys-libs/ncurses cxx

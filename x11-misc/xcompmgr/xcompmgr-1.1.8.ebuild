@@ -3,15 +3,14 @@
 
 EAPI=7
 
+XORG_MODULE=app/
 XORG_STATIC=no
 inherit xorg-3
 
 DESCRIPTION="X Compositing manager"
-HOMEPAGE="https://freedesktop.org/wiki/Software/xapps"
-SRC_URI="https://www.x.org/releases/individual/app/${P}.tar.bz2"
 
 LICENSE="BSD"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="

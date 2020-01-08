@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://raw.githubusercontent.com/wiki/TresysTechnology/refpolicy/files/refpolicy-${PV}.tar.bz2
-			https://dev.gentoo.org/~swift/patches/${PN}/patchbundle-${PN}-${PVR}.tar.bz2"
+			https://dev.gentoo.org/~perfinion/patches/${PN}/patchbundle-${PN}-${PVR}.tar.bz2"
 	KEYWORDS="~amd64 -arm ~arm64 ~mips ~x86"
 fi
 
@@ -75,7 +75,7 @@ src_prepare() {
 
 src_compile() {
 	for i in ${POLICY_TYPES}; do
-		emake NAME=$i SHAREDIR="${ROOT%/}"/usr/share/selinux -C "${S}"/${i} || die "${i} compile failed"
+		emake NAME=$i SHAREDIR="${ROOT%/}"/usr/share/selinux -C "${S}"/${i}
 	done
 }
 
@@ -86,7 +86,7 @@ src_install() {
 		for j in ${MODS}; do
 			einfo "Installing ${i} ${j} policy package"
 			insinto ${BASEDIR}/${i}
-			doins "${S}"/${i}/${j}.pp || die "Failed to add ${j}.pp to ${i}"
+			doins "${S}"/${i}/${j}.pp
 		done
 	done
 }

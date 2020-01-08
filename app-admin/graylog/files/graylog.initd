@@ -1,0 +1,30 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+command="/usr/bin/java"
+command_args="${JAVA_OPTS} -jar ${GRAYLOG_INSTALL_DIR}/graylog.jar server -f ${GRAYLOG_CONFIG_FILE} --no-pid-file ${GRAYLOG_OPTIONS}"
+command_background="true"
+command_user="${GRAYLOG_USER}:${GRAYLOG_GROUP}"
+pidfile="/run/${RC_SVCNAME}.pid"
+
+output_log="${GRAYLOG_LOG_DIR}/graylog.stdout.log"
+error_log="${GRAYLOG_LOG_DIR}/graylog.stderr.log"
+directory="${GRAYLOG_INSTALL_DIR}"
+required_files="${GRAYLOG_CONFIG_FILE}"
+
+depend() {
+	use dns
+}
+
+start_pre() {
+	local d
+	for d in \
+		"${GRAYLOG_DATA_DIR}" \
+		"${GRAYLOG_DATA_DIR}/data" \
+		"${GRAYLOG_DATA_DIR}/data/journal" \
+		"${GRAYLOG_LOG_DIR}"; do
+
+		checkpath -d -o "${GRAYLOG_USER}":"${GRAYLOG_GROUP}" -m750 "${d}"
+	done
+}

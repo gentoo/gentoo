@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/ninvaders/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="sys-libs/ncurses:0="
@@ -21,7 +21,8 @@ PATCHES=( "${FILESDIR}"/${P}-compile.patch )
 src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
-		CFLAGS="${CFLAGS}"
+		CFLAGS="${CFLAGS}" \
+		LIBS="$($(tc-getPKG_CONFIG) --libs ncurses)"
 }
 
 src_install() {

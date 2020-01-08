@@ -9,6 +9,7 @@
 		<flag name="natspec">Use <pkg>dev-libs/libnatspec</pkg> to correctly decode non-ascii file names archived in Windows.</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:info-zip:unzip</remote-id>
 		<remote-id type="sourceforge">infozip</remote-id>
 	</upstream>
 </pkgmetadata>

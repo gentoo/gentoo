@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,10 +10,10 @@ SRC_URI="mirror://sourceforge/xine/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="l10n_cs l10n_de lirc nls nsplugin udev +xcb xinerama"
 
-COMMON_DEPEND=">=media-libs/xine-lib-1.1.20
+COMMON_DEPEND=">=media-libs/xine-lib-1.1.20[gtk]
 	x11-libs/gtk+:2
 	>=dev-libs/glib-2
 	>=dev-lang/spidermonkey-1.8.2.15:0
@@ -25,7 +25,7 @@ COMMON_DEPEND=">=media-libs/xine-lib-1.1.20
 	nsplugin? ( dev-libs/nspr
 		x11-libs/libXaw
 		x11-libs/libXt )
-	udev? ( virtual/libgudev:= )
+	udev? ( dev-libs/libgudev:= )
 	xcb? ( x11-libs/libxcb )
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${COMMON_DEPEND}

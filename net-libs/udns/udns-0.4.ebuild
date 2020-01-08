@@ -11,7 +11,7 @@ SRC_URI="http://www.corpit.ru/mjt/udns/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ppc ~ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~hppa ppc ~ppc64 sparc x86"
 IUSE="ipv6 static +tools"
 
 # Yes, this doesn't depend on any other library beside "system" set

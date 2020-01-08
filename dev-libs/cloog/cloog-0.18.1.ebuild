@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,12 +11,11 @@ SRC_URI="http://www.bastoul.net/cloog/pages/download/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/4"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="static-libs"
 
 RDEPEND=">=dev-libs/gmp-5.1.3-r1[${MULTILIB_USEDEP}]
-	>=dev-libs/isl-0.12.2:0/10[${MULTILIB_USEDEP}]
-	!dev-libs/cloog-ppl"
+	>=dev-libs/isl-0.12.2:0/10[${MULTILIB_USEDEP}]"
 DEPEND="${DEPEND}
 	virtual/pkgconfig"
 

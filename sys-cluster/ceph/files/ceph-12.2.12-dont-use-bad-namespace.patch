@@ -1,0 +1,13 @@
+diff --git a/src/rgw/rgw_crypt.cc b/src/rgw/rgw_crypt.cc
+index cf4e38995e..7a4089fca9 100644
+--- a/src/rgw/rgw_crypt.cc
++++ b/src/rgw/rgw_crypt.cc
+@@ -31,7 +31,7 @@ using namespace CryptoPP;
+ #define dout_subsys ceph_subsys_rgw
+ 
+ using namespace rgw;
+-using ceph::crypto::PK11_ImportSymKey_FIPS;
++//using ceph::crypto::PK11_ImportSymKey_FIPS;
+ 
+ /**
+  * Encryption in CTR mode. offset is used as IV for each block.

@@ -1,0 +1,53 @@
+From ea95d667907e1c9d4ee3ad8b33b452d60059e3c8 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 16 Jul 2019 17:30:38 +0200
+Subject: [PATCH] Fix build with boost-1.70 (get_io_service() removed)
+
+Fixes https://github.com/supercollider/supercollider/issues/4490
+
+---
+ server/supernova/sc/sc_osc_handler.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/server/supernova/sc/sc_osc_handler.cpp b/server/supernova/sc/sc_osc_handler.cpp
+index 5116a1be8..8c2418b09 100644
+--- a/server/supernova/sc/sc_osc_handler.cpp
++++ b/server/supernova/sc/sc_osc_handler.cpp
+@@ -728,7 +728,7 @@ void sc_osc_handler::tcp_connection::handle_message() {
+ 
+ void sc_osc_handler::start_tcp_accept(void)
+ {
+-    tcp_connection::pointer new_connection = tcp_connection::create(tcp_acceptor_.get_io_service());
++    tcp_connection::pointer new_connection = tcp_connection::create((boost::asio::io_context&)tcp_acceptor_.get_executor().context());
+ 
+     tcp_acceptor_.async_accept(
+         new_connection->socket(),
+-- 
+2.22.0
+
+From 53909b1ff2983442dd8d2fdeff6b4331767237f1 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 16 Jul 2019 17:47:44 +0200
+Subject: [PATCH] Fix build with boost-1.70 (missing checked_delete.hpp
+ include)
+
+See also: https://www.boost.org/doc/libs/1_70_0/libs/core/doc/html/core/checked_delete.html
+---
+ server/supernova/utilities/utils.hpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/server/supernova/utilities/utils.hpp b/server/supernova/utilities/utils.hpp
+index 35b8ab5ad..a7c191f2d 100644
+--- a/server/supernova/utilities/utils.hpp
++++ b/server/supernova/utilities/utils.hpp
+@@ -23,6 +23,7 @@
+ 
+ #include <type_traits>
+ 
++#include <boost/checked_delete.hpp>
+ #include <boost/intrusive_ptr.hpp>
+ #include <boost/noncopyable.hpp>
+ #include <boost/detail/atomic_count.hpp>
+-- 
+2.22.0
+

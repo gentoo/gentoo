@@ -1,26 +1,25 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 vcs-snapshot
 
+MY_PN="${PN//-/.}"
+
 DESCRIPTION="Ruamel enhancements to pathlib and pathlib2"
 HOMEPAGE="https://pypi.org/project/ruamel.std.pathlib/ https://bitbucket.org/ruamel/std.pathlib"
-MY_PN="${PN//-/.}"
 SRC_URI="https://bitbucket.org/${MY_PN/.//}/get/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="
-	${PYTHON_DEPS}
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python3_4)
-"
+RDEPEND=""
 DEPEND="
 	${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -30,11 +29,11 @@ DEPEND="
 	)
 "
 
+python_test() {
+	py.test -v _test/test_*.py || die
+}
+
 python_install() {
 	distutils-r1_python_install --single-version-externally-managed
 	find "${ED}" -name '*.pth' -delete || die
-}
-
-python_test() {
-	py.test -v _test/test_*.py || die
 }

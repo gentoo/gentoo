@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic
 
@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-iostream.patch #527658
 	"${FILESDIR}"/${P}-boost-ver-check.patch #548310
+	"${FILESDIR}"/${P}-boost-1.67.patch #671768
 )
 
 src_configure() {

@@ -9,6 +9,7 @@ SRC_URI="https://www.opendnssec.org/files/source/${P}.tar.gz"
 
 KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="bindist gost libressl migration-tool test"
+RESTRICT="!test? ( test )"
 SLOT="2"
 LICENSE="BSD"
 

@@ -15,6 +15,7 @@
 	</maintainer>
 	<use>
 		<flag name="password">Store passwords securely via <pkg>dev-libs/qtkeychain</pkg></flag>
+		<flag name="pim">Enable support for KDE PIM resources integration via <pkg>kde-apps/akonadi</pkg> addressbook plugin</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">trojita</remote-id>

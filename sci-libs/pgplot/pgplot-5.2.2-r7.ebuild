@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="ftp://ftp.astro.caltech.edu/pub/pgplot/${MY_P}.tar.gz"
 
 SLOT="0"
 LICENSE="free-noncomm"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc motif static-libs tk"
 
 RDEPEND="

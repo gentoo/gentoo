@@ -1,0 +1,87 @@
+other inits have moved to not requiring the -h flag when used with -H/-P.
+modify sysvinit to be the same since it really doesn't matter.
+
+https://bugs.gentoo.org/449354
+
+patch by Doug Goldstein
+
+---
+ man/shutdown.8 |   11 ++++-------
+ src/shutdown.c |   12 ++++--------
+ 2 files changed, 8 insertions(+), 15 deletions(-)
+
+--- sysvinit-2.95/man/shutdown.8
++++ sysvinit-2.95/man/shutdown.8
+@@ -66,22 +66,19 @@
+ .\"}}}
+ .\"{{{  -h
+ .IP \fB\-h\fP
+-Halt or power off after shutdown. Usually used with the -P or -H flags,
+-depending on whether we want to poweroff or simply stop the operating system.
++Equivalent to -P, unless -H is specified.
+ .\"}}}
+ .\"{{{  -P
+ .IP \fB\-P\fP
+-Modifier to the -h flag. Halt action is to turn off the power. 
+-Must be used with the -h flag.
++Halt action is to turn off the power. 
+ .\"}}}
+ .\"{{{  -H
+ .IP \fB\-H\fP
+-Modifier to the -h flag.  Halt action is to halt or drop into boot
+-monitor on systems that support it.  Must be used with the -h flag.
++Action is to halt or drop into boot monitor on systems that support it.
+ Halting is often used to run through the shutdown process and leave
+ output on the screen for debugging purposes. Or when the user wants the OS to
+ stop, but leave the power on. To power off at the end of the shutdown sequence
+-use the -P modifier instead.
++use the -P option instead.
+ .\"}}}
+ .\"{{{  -f
+ .IP \fB\-f\fP
+--- sysvinit-2.95/src/shutdown.c
++++ sysvinit-2.95/src/shutdown.c
+@@ -144,9 +144,7 @@
+ 	"\t\t  -r:      reboot after shutdown.\n"
+ 	"\t\t  -h:      halt after shutdown.\n"
+ 	"\t\t  -P:      halt action is to turn off power.\n"
+-        "\t\t           can only be used along with -h flag.\n"
+ 	"\t\t  -H:      halt action is to just halt.\n"
+-        "\t\t           can only be used along with -h flag.\n"
+ 	"\t\t  -f:      do a 'fast' reboot (skip fsck).\n"
+ 	"\t\t  -F:      Force fsck on reboot.\n"
+ 	"\t\t  -n:      do not go through \"init\" but go down real fast.\n"
+@@ -556,9 +554,11 @@
+   		switch(c) {
+ 			case 'H':
+ 				halttype = "HALT";
++				down_level[0] = '0';
+ 				break;
+ 			case 'P':
+ 				halttype = "POWEROFF";
++				down_level[0] = '0';
+ 				break;
+ 			case 'a': /* Access control. */
+ 				useacl = 1;
+@@ -574,6 +574,8 @@
+   				break;
+   			case 'h': /* Halt after shutdown */
+ 				down_level[0] = '0';
++				if (!halttype)
++					halttype = "POWEROFF";
+   				break;
+   			case 'f': /* Don't perform fsck after next boot */
+   				fastboot = 1;
+@@ -613,12 +615,6 @@
+   		}
+ 	}
+ 
+-	if (NULL != halttype && down_level[0] != '0') {
+-		fprintf(stderr, "shutdown: -H and -P flags can only be used along with -h flag.\n");
+-		usage();
+-  		exit(1);
+-	}
+-
+ 	/* Do we need to use the shutdown.allow file ? */
+ 	if (useacl && (fp = fopen(SDALLOW, "r")) != NULL) {
+ 

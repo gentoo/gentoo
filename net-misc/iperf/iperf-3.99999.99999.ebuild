@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,18 +13,19 @@ SLOT="3"
 KEYWORDS=""
 IUSE="libressl profiling sctp static-libs"
 
-DEPEND="!libressl? ( dev-libs/openssl:0= )
+DEPEND="
+	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	sctp? ( net-misc/lksctp-tools )"
+	sctp? ( net-misc/lksctp-tools )
+"
 RDEPEND="${DEPEND}"
-
 S=${WORKDIR}/${P/_/}
 
 src_configure() {
 	use sctp || export ac_cv_header_netinet_sctp_h=no
 	econf \
-		$(use_enable static-libs static) \
-		$(use_enable profiling)
+		$(use_enable profiling) \
+		$(use_enable static-libs static)
 }
 
 src_install() {

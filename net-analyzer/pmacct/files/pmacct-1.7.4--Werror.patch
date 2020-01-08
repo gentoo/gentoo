@@ -1,0 +1,14 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -1109,9 +1109,9 @@
+ 			AC_MSG_RESULT(yes)
+ 			tmp_CFLAGS=`echo $CFLAGS | sed 's/O2/O0/g'`
+ 			CFLAGS="$tmp_CFLAGS"
+-			CFLAGS="$CFLAGS -g -Wall -Werror"
++			CFLAGS="$CFLAGS -g -Wall"
+ 		else
+-			CFLAGS="$CFLAGS -Wall -Werror"
++			CFLAGS="$CFLAGS -Wall"
+ 			AC_MSG_RESULT(no)
+ 		fi
+ 	],

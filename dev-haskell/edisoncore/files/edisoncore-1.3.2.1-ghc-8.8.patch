@@ -1,0 +1,1268 @@
+diff --git a/EdisonCore.cabal b/EdisonCore.cabal
+index 901cd83..ad1af00 100644
+--- a/EdisonCore.cabal
++++ b/EdisonCore.cabal
+@@ -62,8 +62,10 @@ Library
+      array
+ 
+   if impl(ghc < 8.0)
+-    -- Provide/emulate Data.Semigroups` API for pre-GHC-8
+-    Build-Depends: semigroups == 0.18.*
++    Build-Depends:
++      fail,
++      -- Provide/emulate Data.Semigroups` API for pre-GHC-8
++      semigroups == 0.18.*
+ 
+   Default-Language: Haskell2010
+   Default-Extensions:
+diff --git a/src/Data/Edison/Assoc/AssocList.hs b/src/Data/Edison/Assoc/AssocList.hs
+index c577492..15d9884 100644
+--- a/src/Data/Edison/Assoc/AssocList.hs
++++ b/src/Data/Edison/Assoc/AssocList.hs
+@@ -58,8 +58,9 @@ import Prelude hiding (null,map,lookup,foldr,foldl,foldr1,foldl1,filter)
+ import qualified Prelude
+ import Data.Monoid
+ import Data.Semigroup as SG
+-import Control.Monad.Identity
++import qualified Control.Monad.Fail as Fail
+ import qualified Data.Edison.Assoc as A
++import Data.Edison.Prelude ( runFail_ )
+ import qualified Data.Edison.Seq as S
+ import qualified Data.Edison.Seq.BinaryRandList as RL
+ import Data.Edison.Assoc.Defaults
+@@ -82,10 +83,10 @@ size          :: Eq k => FM k a -> Int
+ member        :: Eq k => k -> FM k a -> Bool
+ count         :: Eq k => k -> FM k a -> Int
+ lookup        :: Eq k => k -> FM k a -> a
+-lookupM       :: (Eq k, Monad rm) => k -> FM k a -> rm a
++lookupM       :: (Eq k, Fail.MonadFail rm) => k -> FM k a -> rm a
+ lookupAll     :: (Eq k,S.Sequence seq) => k -> FM k a -> seq a
+ lookupAndDelete    :: Eq k => k -> FM k a -> (a,FM k a)
+-lookupAndDeleteM   :: (Eq k,Monad rm)   => k -> FM k a -> rm (a,FM k a)
++lookupAndDeleteM   :: (Eq k, Fail.MonadFail rm)   => k -> FM k a -> rm (a,FM k a)
+ lookupAndDeleteAll :: (Eq k,S.Sequence seq) => k -> FM k a -> (seq a,FM k a)
+ lookupWithDefault  :: Eq k => a -> k -> FM k a -> a
+ adjust             :: Eq k => (a -> a) -> k -> FM k a -> FM k a
+@@ -143,11 +144,11 @@ unionSeqWithKey  :: (Eq k,S.Sequence seq) =>
+                         (k -> a -> a -> a) -> seq (FM k a) -> FM k a
+ intersectionWithKey :: Eq k => (k -> a -> b -> c) -> FM k a -> FM k b -> FM k c
+ 
+-minView          :: (Ord k,Monad m) => FM k a -> m (a,FM k a)
++minView          :: (Ord k, Fail.MonadFail m) => FM k a -> m (a,FM k a)
+ minElem          :: Ord k => FM k a -> a
+ deleteMin        :: Ord k => FM k a -> FM k a
+ unsafeInsertMin  :: Ord k => k -> a -> FM k a -> FM k a
+-maxView          :: (Ord k,Monad m) => FM k a -> m (a,FM k a)
++maxView          :: (Ord k, Fail.MonadFail m) => FM k a -> m (a,FM k a)
+ maxElem          :: Ord k => FM k a -> a
+ deleteMax        :: Ord k => FM k a -> FM k a
+ unsafeInsertMax  :: Ord k => k -> a -> FM k a -> FM k a
+@@ -169,9 +170,9 @@ partitionLT_GE   :: Ord k => k -> FM k a -> (FM k a,FM k a)
+ partitionLE_GT   :: Ord k => k -> FM k a -> (FM k a,FM k a)
+ partitionLT_GT   :: Ord k => k -> FM k a -> (FM k a,FM k a)
+ 
+-minViewWithKey    :: (Ord k,Monad m) => FM k a -> m ((k, a), FM k a)
++minViewWithKey    :: (Ord k, Fail.MonadFail m) => FM k a -> m ((k, a), FM k a)
+ minElemWithKey    :: Ord k => FM k a -> (k,a)
+-maxViewWithKey    :: (Ord k,Monad m) => FM k a -> m ((k, a), FM k a)
++maxViewWithKey    :: (Ord k, Fail.MonadFail m) => FM k a -> m ((k, a), FM k a)
+ maxElemWithKey    :: Ord k => FM k a -> (k,a)
+ foldrWithKey      :: Ord k => (k -> a -> b -> b) -> b -> FM k a -> b
+ foldlWithKey      :: Ord k => (b -> k -> a -> b) -> b -> FM k a -> b
+@@ -309,7 +310,7 @@ count _ E = 0
+ count key (I k _ m) | key == k  = 1
+                     | otherwise = count key m
+ 
+-lookup key m = runIdentity (lookupM key m)
++lookup key m = runFail_ (lookupM key m)
+ 
+ lookupM _ E = fail "AssocList.lookup: lookup failed"
+ lookupM key (I k x m) | key == k  = return x
+@@ -319,7 +320,7 @@ lookupAll _ E = S.empty
+ lookupAll key (I k x m) | key == k  = S.singleton x
+                         | otherwise = lookupAll key m
+ 
+-lookupAndDelete key m = runIdentity (lookupAndDeleteM key m)
++lookupAndDelete key m = runFail_ (lookupAndDeleteM key m)
+ 
+ lookupAndDeleteM _ E = fail "AssocList.lookupAndDeleteM: lookup failed"
+ lookupAndDeleteM key (I k x m)
+diff --git a/src/Data/Edison/Assoc/Defaults.hs b/src/Data/Edison/Assoc/Defaults.hs
+index a9ef520..8e2b37d 100644
+--- a/src/Data/Edison/Assoc/Defaults.hs
++++ b/src/Data/Edison/Assoc/Defaults.hs
+@@ -15,6 +15,8 @@ module Data.Edison.Assoc.Defaults where
+ 
+ import Prelude hiding (null,map,lookup,foldr,foldl,foldr1,foldl1,filter)
+ 
++import qualified Control.Monad.Fail as Fail
++
+ import Data.Edison.Assoc
+ import qualified Data.Edison.Seq as S
+ import qualified Data.Edison.Seq.ListSeq as L
+@@ -190,7 +192,7 @@ lookupAndDeleteDefault k m =
+      Nothing -> error (instanceName m ++ ".lookupAndDelete: lookup failed")
+      Just x  -> (x, delete k m)
+ 
+-lookupAndDeleteMDefault :: (Monad rm, AssocX m k) => k -> m a -> rm (a, m a)
++lookupAndDeleteMDefault :: (Fail.MonadFail rm, AssocX m k) => k -> m a -> rm (a, m a)
+ lookupAndDeleteMDefault k m =
+   case lookupM k m of
+      Nothing -> fail (instanceName m ++ ".lookupAndDelete: lookup failed")
+diff --git a/src/Data/Edison/Assoc/PatriciaLoMap.hs b/src/Data/Edison/Assoc/PatriciaLoMap.hs
+index 3073f83..43c2d85 100644
+--- a/src/Data/Edison/Assoc/PatriciaLoMap.hs
++++ b/src/Data/Edison/Assoc/PatriciaLoMap.hs
+@@ -55,10 +55,11 @@ module Data.Edison.Assoc.PatriciaLoMap (
+ 
+ import Prelude hiding (null,map,lookup,foldr,foldl,foldr1,foldl1,filter)
+ import qualified Prelude
+-import Control.Monad.Identity (runIdentity)
++import qualified Control.Monad.Fail as Fail
+ import Data.Monoid
+ import Data.Semigroup as SG
+ import qualified Data.Edison.Assoc as A
++import Data.Edison.Prelude ( runFail_ )
+ import qualified Data.Edison.Seq as S
+ import qualified Data.Edison.Seq.ListSeq as L
+ import Data.Edison.Assoc.Defaults
+@@ -210,9 +211,9 @@ member k (L j _) = (j == k)
+ member k (B _ m t0 t1) = if zeroBit k m then member k t0 else member k t1
+ 
+ lookup :: Int -> FM a -> a
+-lookup k m = runIdentity (lookupM k m)
++lookup k m = runFail_ (lookupM k m)
+ 
+-lookupM :: (Monad rm) => Int -> FM a -> rm a
++lookupM :: (Fail.MonadFail rm) => Int -> FM a -> rm a
+ lookupM _ E = fail "PatriciaLoMap.lookup: lookup failed"
+ lookupM k (L j x)
+   | j == k    = return x
+@@ -233,7 +234,7 @@ lookupAndDelete        = doLookupAndDelete
+                            (error "PatriciaLoMap.lookupAndDelete: lookup failed")
+                            (,)
+ 
+-lookupAndDeleteM :: Monad m => Int -> FM a -> m (a, FM a)
++lookupAndDeleteM :: Fail.MonadFail m => Int -> FM a -> m (a, FM a)
+ lookupAndDeleteM       = doLookupAndDelete
+                            (fail "PatriciaLoMap.lookupAndDelete: lookup failed")
+                            (\x m -> return (x,m))
+@@ -583,25 +584,25 @@ ordListFM_rev (B _ _ t0 t1) = merge (ordListFM_rev t0) (ordListFM_rev t1)
+             GT -> x : merge xs (y:ys)
+             EQ -> error "PatriciaLoMap: bug in ordListFM_rev"
+ 
+-minView :: Monad m => FM a -> m (a, FM a)
++minView :: Fail.MonadFail m => FM a -> m (a, FM a)
+ minView fm =
+    case ordListFM fm of
+      [] -> fail $ moduleName++".minView: empty map"
+      ((k,x):_) -> return (x,delete k fm)
+ 
+-minViewWithKey :: Monad m => FM a -> m ((Int, a), FM a)
++minViewWithKey :: Fail.MonadFail m => FM a -> m ((Int, a), FM a)
+ minViewWithKey fm =
+    case ordListFM fm of
+      [] -> fail $ moduleName++".minViewWithKey: empty map"
+      ((k,x):_) -> return ((k,x),delete k fm)
+ 
+-maxView :: Monad m => FM a -> m (a, FM a)
++maxView :: Fail.MonadFail m => FM a -> m (a, FM a)
+ maxView fm =
+   case ordListFM_rev fm of
+      [] -> fail $ moduleName++".maxView: empty map"
+      ((k,x):_) -> return (x,delete k fm)
+ 
+-maxViewWithKey :: Monad m => FM a -> m ((Int, a), FM a)
++maxViewWithKey :: Fail.MonadFail m => FM a -> m ((Int, a), FM a)
+ maxViewWithKey fm =
+    case ordListFM_rev fm of
+      [] -> fail $ moduleName++".maxViewWithKey: empty map"
+diff --git a/src/Data/Edison/Assoc/StandardMap.hs b/src/Data/Edison/Assoc/StandardMap.hs
+index 5ca48c5..e7b6a0e 100644
+--- a/src/Data/Edison/Assoc/StandardMap.hs
++++ b/src/Data/Edison/Assoc/StandardMap.hs
+@@ -51,6 +51,7 @@ module Data.Edison.Assoc.StandardMap (
+ 
+ import Prelude hiding (null,map,lookup,foldr,foldl,foldr1,foldl1,filter)
+ import qualified Prelude
++import qualified Control.Monad.Fail as Fail
+ import qualified Data.Edison.Assoc as A
+ import qualified Data.Edison.Seq as S
+ import qualified Data.Edison.Seq.ListSeq as L
+@@ -81,10 +82,10 @@ member            :: Ord k => k -> FM k a -> Bool
+ count             :: Ord k => k -> FM k a -> Int
+ lookup            :: Ord k => k -> FM k a -> a
+ lookupAll         :: (Ord k,S.Sequence seq) => k -> FM k a -> seq a
+-lookupM           :: (Ord k,Monad m) => k -> FM k a -> m a
++lookupM           :: (Ord k, Fail.MonadFail m) => k -> FM k a -> m a
+ lookupWithDefault :: Ord k => a -> k -> FM k a -> a
+ lookupAndDelete   :: Ord k => k -> FM k a -> (a, FM k a)
+-lookupAndDeleteM  :: (Ord k,Monad m) => k -> FM k a -> m (a, FM k a)
++lookupAndDeleteM  :: (Ord k, Fail.MonadFail m) => k -> FM k a -> m (a, FM k a)
+ lookupAndDeleteAll :: (Ord k,S.Sequence seq) => k -> FM k a -> (seq a,FM k a)
+ adjust            :: Ord k => (a->a) -> k -> FM k a -> FM k a
+ adjustAll         :: Ord k => (a->a) -> k -> FM k a -> FM k a
+@@ -103,11 +104,11 @@ filter            :: Ord k => (a -> Bool) -> FM k a -> FM k a
+ partition         :: Ord k => (a -> Bool) -> FM k a -> (FM k a,FM k a)
+ elements          :: (Ord k,S.Sequence seq) => FM k a -> seq a
+ 
+-minView           :: (Ord k,Monad m) => FM k a -> m (a, FM k a)
++minView           :: (Ord k, Fail.MonadFail m) => FM k a -> m (a, FM k a)
+ minElem           :: Ord k => FM k a -> a
+ deleteMin         :: Ord k => FM k a -> FM k a
+ unsafeInsertMin   :: Ord k => k -> a -> FM k a -> FM k a
+-maxView           :: (Ord k,Monad m) => FM k a -> m (a, FM k a)
++maxView           :: (Ord k, Fail.MonadFail m) => FM k a -> m (a, FM k a)
+ maxElem           :: Ord k => FM k a -> a
+ deleteMax         :: Ord k => FM k a -> FM k a
+ unsafeInsertMax   :: Ord k => k -> a -> FM k a -> FM k a
+@@ -165,9 +166,9 @@ foldWithKey'      :: Ord k => (k -> a -> b -> b) -> b -> FM k a -> b
+ filterWithKey     :: Ord k => (k -> a -> Bool) -> FM k a -> FM k a
+ partitionWithKey  :: Ord k => (k -> a -> Bool) -> FM k a -> (FM k a,FM k a)
+ 
+-minViewWithKey    :: (Ord k,Monad m) => FM k a -> m ((k, a), FM k a)
++minViewWithKey    :: (Ord k, Fail.MonadFail m) => FM k a -> m ((k, a), FM k a)
+ minElemWithKey    :: Ord k => FM k a -> (k,a)
+-maxViewWithKey    :: (Ord k,Monad m) => FM k a -> m ((k, a), FM k a)
++maxViewWithKey    :: (Ord k, Fail.MonadFail m) => FM k a -> m ((k, a), FM k a)
+ maxElemWithKey    :: Ord k => FM k a -> (k,a)
+ foldrWithKey      :: (k -> a -> b -> b) -> b -> FM k a -> b
+ foldlWithKey      :: (b -> k -> a -> b) -> b -> FM k a -> b
+diff --git a/src/Data/Edison/Assoc/TernaryTrie.hs b/src/Data/Edison/Assoc/TernaryTrie.hs
+index 8b2dd57..431b348 100644
+--- a/src/Data/Edison/Assoc/TernaryTrie.hs
++++ b/src/Data/Edison/Assoc/TernaryTrie.hs
+@@ -55,8 +55,10 @@ module Data.Edison.Assoc.TernaryTrie (
+ import Prelude hiding (null,map,lookup,foldr,foldl,foldr1,foldl1,filter)
+ import qualified Prelude
+ import qualified Data.Edison.Assoc as A
++import Data.Edison.Prelude ( runFail_ )
+ import qualified Data.Edison.Seq as S
+ import qualified Data.List as L
++import qualified Control.Monad.Fail as Fail
+ import Control.Monad.Identity
+ import Data.Monoid
+ import Data.Semigroup as SG
+@@ -83,10 +85,10 @@ size          :: Ord k => FM k a -> Int
+ member        :: Ord k => [k] -> FM k a -> Bool
+ count         :: Ord k => [k] -> FM k a -> Int
+ lookup        :: Ord k => [k] -> FM k a -> a
+-lookupM       :: (Ord k, Monad rm) => [k] -> FM k a -> rm a
++lookupM       :: (Ord k, Fail.MonadFail rm) => [k] -> FM k a -> rm a
+ lookupAll     :: (Ord k,S.Sequence seq) => [k] -> FM k a -> seq a
+ lookupAndDelete    :: Ord k => [k] -> FM k a -> (a, FM k a)
+-lookupAndDeleteM   :: (Ord k, Monad rm) => [k] -> FM k a -> rm (a, FM k a)
++lookupAndDeleteM   :: (Ord k, Fail.MonadFail rm) => [k] -> FM k a -> rm (a, FM k a)
+ lookupAndDeleteAll :: (Ord k, S.Sequence seq) => [k] -> FM k a -> (seq a,FM k a)
+ lookupWithDefault  :: Ord k => a -> [k] -> FM k a -> a
+ adjust        :: Ord k => (a -> a) -> [k] -> FM k a -> FM k a
+@@ -527,7 +529,7 @@ member = memberUsingLookupM
+ 
+ count = countUsingMember
+ 
+-lookup m k = runIdentity (lookupM m k)
++lookup m k = runFail_ (lookupM m k)
+ 
+ lookupM [] (FM Nothing _)
+   = fail "TernaryTrie.lookup: lookup failed"
+@@ -854,18 +856,18 @@ intersectionWithKey f
+ 
+ -- OrdAssocX
+ 
+-minViewFMB :: Monad m => FMB k a -> (FMB k a -> FM k a) -> m (a, FM k a)
++minViewFMB :: Fail.MonadFail m => FMB k a -> (FMB k a -> FM k a) -> m (a, FM k a)
+ minViewFMB E _ = fail $ moduleName++".minView: empty map"
+ minViewFMB (I i k (Just v) E m r)        f = return (v, f (I i k Nothing E m r))
+ minViewFMB (I _ _ Nothing  E (FMB' E) _) _ = error $ moduleName++".minView: bug!"
+ minViewFMB (I _ k Nothing  E (FMB' m) r) f = minViewFMB m (\m' -> f (mkVBalancedFMB k Nothing E (FMB' m') r))
+ minViewFMB (I _ k mv l m r)              f = minViewFMB l (\l' -> f (mkVBalancedFMB k mv l' m r))
+ 
+-minView :: Monad m => FM k a -> m (a,FM k a)
++minView :: Fail.MonadFail m => FM k a -> m (a,FM k a)
+ minView (FM (Just v) fmb) = return (v, FM Nothing fmb)
+ minView (FM Nothing fmb)  = minViewFMB fmb (FM Nothing)
+ 
+-minViewWithKeyFMB :: Monad m => FMB k a -> ([k] -> [k]) -> (FMB k a -> FM k a) -> m (([k],a),FM k a)
++minViewWithKeyFMB :: Fail.MonadFail m => FMB k a -> ([k] -> [k]) -> (FMB k a -> FM k a) -> m (([k],a),FM k a)
+ minViewWithKeyFMB E _ _ = fail $ moduleName++".minView: empty map"
+ minViewWithKeyFMB (I i k (Just v) E m r)        kf f = return ((kf [k],v),f (I i k Nothing E m r))
+ minViewWithKeyFMB (I _ _ Nothing  E (FMB' E) _) _ _ = error $ moduleName++".minViewWithKey: bug!"
+@@ -874,7 +876,7 @@ minViewWithKeyFMB (I _ k Nothing  E (FMB' m) r) kf f = minViewWithKeyFMB m (kf .
+ minViewWithKeyFMB (I _ k mv l m r)              kf f = minViewWithKeyFMB l kf
+                                                         (\l' -> f (mkVBalancedFMB k mv l' m r))
+ 
+-minViewWithKey :: Monad m => FM k a -> m (([k],a),FM k a)
++minViewWithKey :: Fail.MonadFail m => FM k a -> m (([k],a),FM k a)
+ minViewWithKey (FM (Just v) fmb) = return (([],v),FM Nothing fmb)
+ minViewWithKey (FM Nothing fmb)  = minViewWithKeyFMB fmb id (FM Nothing)
+ 
+@@ -906,7 +908,7 @@ deleteMin = deleteMinUsingMinView
+ unsafeInsertMin :: Ord k => [k] -> a -> FM k a -> FM k a
+ unsafeInsertMin = insert
+ 
+-maxViewFMB :: Monad m => FMB k a -> (FMB k a -> FM k a) -> m (a, FM k a)
++maxViewFMB :: Fail.MonadFail m => FMB k a -> (FMB k a -> FM k a) -> m (a, FM k a)
+ maxViewFMB (I _ _ (Just v) l (FMB' E) E) f = return (v, f l)
+ --maxViewFMB (I i k (Just v) l (FMB' E) E) f = return (v, f (I i k Nothing l (FMB' E) E))
+ maxViewFMB (I _ _ Nothing  _ (FMB' E) E) _ = error $ moduleName++".maxView: bug!"
+@@ -914,7 +916,7 @@ maxViewFMB (I i k mv l (FMB' m) E)       f = maxViewFMB m (\m' -> f (I i k mv l
+ maxViewFMB (I _ k mv l m r)              f = maxViewFMB r (\r' -> f (mkVBalancedFMB k mv l m r'))
+ maxViewFMB E                             _ = error $ moduleName++".maxView: bug!"
+ 
+-maxView :: Monad m => FM k a -> m (a, FM k a)
++maxView :: Fail.MonadFail m => FM k a -> m (a, FM k a)
+ maxView (FM Nothing E)  = fail $ moduleName++".maxView: empty map"
+ maxView (FM (Just v) E) = return (v,FM Nothing E)
+ maxView (FM mv fmb)     = maxViewFMB fmb (FM mv)
+@@ -930,7 +932,7 @@ maxViewWithKeyFMB (I _ k mv l m r)              kf f = maxViewWithKeyFMB r kf
+ maxViewWithKeyFMB E                             _ _ = error $ moduleName++".maxViewWithKey: bug!"
+ 
+ 
+-maxViewWithKey :: Monad m => FM k a -> m (([k],a), FM k a)
++maxViewWithKey :: Fail.MonadFail m => FM k a -> m (([k],a), FM k a)
+ maxViewWithKey (FM Nothing E)  = fail $ moduleName++".maxViewWithKey: empty map"
+ maxViewWithKey (FM (Just v) E) = return (([],v),FM Nothing E)
+ maxViewWithKey (FM mv fmb)     = maxViewWithKeyFMB fmb id (FM mv)
+diff --git a/src/Data/Edison/Coll/Defaults.hs b/src/Data/Edison/Coll/Defaults.hs
+index 213ed36..d927f38 100644
+--- a/src/Data/Edison/Coll/Defaults.hs
++++ b/src/Data/Edison/Coll/Defaults.hs
+@@ -14,8 +14,9 @@
+ module Data.Edison.Coll.Defaults where
+ 
+ import Prelude hiding (null,foldr,foldl,foldr1,foldl1,lookup,filter)
+-import Control.Monad.Identity
++import qualified Control.Monad.Fail as Fail
+ 
++import Data.Edison.Prelude ( runFail_ )
+ import Data.Edison.Coll
+ import qualified Data.Edison.Seq as S
+ import qualified Data.Edison.Seq.ListSeq as L
+@@ -81,7 +82,7 @@ disjointUsingToOrdList xs ys = disj (toOrdList xs) (toOrdList ys)
+         disj _ _ = True
+ 
+ intersectWitnessUsingToOrdList ::
+-        (OrdColl c a, Monad m) => c -> c -> m (a,a)
++        (OrdColl c a, Fail.MonadFail m) => c -> c -> m (a,a)
+ intersectWitnessUsingToOrdList as bs = witness (toOrdList as) (toOrdList bs)
+   where witness a@(x:xs) b@(y:ys) =
+           case compare x y of
+@@ -92,7 +93,7 @@ intersectWitnessUsingToOrdList as bs = witness (toOrdList as) (toOrdList bs)
+         witness _ _ = fail $ instanceName as ++ ".intersect: failed"
+ 
+ lookupUsingLookupM :: Coll c a => a -> c -> a
+-lookupUsingLookupM x ys = runIdentity (lookupM x ys)
++lookupUsingLookupM x ys = runFail_ (lookupM x ys)
+ 
+ lookupUsingLookupAll :: Coll c a => a -> c -> a
+ lookupUsingLookupAll x ys =
+@@ -100,7 +101,7 @@ lookupUsingLookupAll x ys =
+     (y:_) -> y
+     [] -> error $ instanceName ys ++ ".lookup: lookup failed"
+ 
+-lookupMUsingLookupAll :: (Coll c a, Monad m) => a -> c -> m a
++lookupMUsingLookupAll :: (Coll c a, Fail.MonadFail m) => a -> c -> m a
+ lookupMUsingLookupAll x ys =
+   case lookupAll x ys of
+     (y:_) -> return y
+diff --git a/src/Data/Edison/Coll/EnumSet.hs b/src/Data/Edison/Coll/EnumSet.hs
+index c93ab07..cce68e6 100644
+--- a/src/Data/Edison/Coll/EnumSet.hs
++++ b/src/Data/Edison/Coll/EnumSet.hs
+@@ -157,6 +157,7 @@ module Data.Edison.Coll.EnumSet (
+ 
+ import qualified Prelude
+ import Prelude hiding (filter,foldl,foldr,null,map,lookup,foldl1,foldr1)
++import qualified Control.Monad.Fail as Fail
+ import qualified Data.Bits as Bits
+ import Data.Bits hiding (complement)
+ import Data.Word
+@@ -251,7 +252,7 @@ count = countUsingMember
+ lookup :: (Eq a, Enum a) => a -> Set a -> a
+ lookup = lookupUsingLookupAll
+ 
+-lookupM :: (Eq a, Enum a, Monad m) => a -> Set a -> m a
++lookupM :: (Eq a, Enum a, Fail.MonadFail m) => a -> Set a -> m a
+ lookupM x s
+    | member x s = return x
+    | otherwise  = fail (moduleName++".lookupM: lookup failed")
+@@ -340,12 +341,12 @@ deleteMax (Set w)
+    | w == 0    = empty
+    | otherwise = Set $ clearBit w $ msb w
+ 
+-minView :: (Enum a, Monad m) => Set a -> m (a, Set a)
++minView :: (Enum a, Fail.MonadFail m) => Set a -> m (a, Set a)
+ minView (Set w)
+    | w == 0    = fail (moduleName++".minView: empty set")
+    | otherwise = let i = lsb w in return (toEnum i,Set $ clearBit w i)
+ 
+-maxView :: (Enum a, Monad m) => Set a -> m (a, Set a)
++maxView :: (Enum a, Fail.MonadFail m) => Set a -> m (a, Set a)
+ maxView (Set w)
+    | w == 0    = fail (moduleName++".maxView: empty set")
+    | otherwise = let i = msb w in return (toEnum i, Set $ clearBit w i)
+diff --git a/src/Data/Edison/Coll/LazyPairingHeap.hs b/src/Data/Edison/Coll/LazyPairingHeap.hs
+index e41ce2e..3dcebe4 100644
+--- a/src/Data/Edison/Coll/LazyPairingHeap.hs
++++ b/src/Data/Edison/Coll/LazyPairingHeap.hs
+@@ -49,6 +49,7 @@ import Data.List (sort)
+ import Data.Monoid
+ import Data.Semigroup as SG
+ import Control.Monad
++import qualified Control.Monad.Fail as Fail
+ import Test.QuickCheck
+ 
+ moduleName :: String
+@@ -359,7 +360,7 @@ lookupAll y h = look h S.empty
+             EQ -> S.lcons x $ look i $ look xs rest
+             GT -> rest
+ 
+-minView :: (Ord a, Monad m) => Heap a -> m (a, Heap a)
++minView :: (Ord a, Fail.MonadFail m) => Heap a -> m (a, Heap a)
+ minView E = fail "LazyPairingHeap.minView: empty heap"
+ minView (H1 x xs) = return (x,xs)
+ minView (H2 x h xs) = return (x,union h xs)
+@@ -369,7 +370,7 @@ minElem E = error "LazyPairingHeap.minElem: empty heap"
+ minElem (H1 x _) = x
+ minElem (H2 x _ _) = x
+ 
+-maxView :: (Ord a, Monad m) => Heap a -> m (a, Heap a)
++maxView :: (Ord a, Fail.MonadFail m) => Heap a -> m (a, Heap a)
+ maxView E = fail "LazyPairingHeap.maxView: empty heap"
+ maxView xs = return (y,xs')
+   where (xs', y) = maxView' xs
+@@ -474,7 +475,7 @@ deleteMax = deleteMaxUsingMaxView
+ lookup :: Ord a => a -> Heap a -> a
+ lookup = lookupUsingLookupAll
+ 
+-lookupM :: (Ord a, Monad m) => a -> Heap a -> m a
++lookupM :: (Ord a, Fail.MonadFail m) => a -> Heap a -> m a
+ lookupM = lookupMUsingLookupAll
+ 
+ lookupWithDefault :: Ord a => a -> a -> Heap a -> a
+diff --git a/src/Data/Edison/Coll/LeftistHeap.hs b/src/Data/Edison/Coll/LeftistHeap.hs
+index 751394b..10ccf5a 100644
+--- a/src/Data/Edison/Coll/LeftistHeap.hs
++++ b/src/Data/Edison/Coll/LeftistHeap.hs
+@@ -47,6 +47,7 @@ import Data.Edison.Coll.Defaults
+ import Data.Monoid
+ import Data.Semigroup as SG
+ import Control.Monad
++import qualified Control.Monad.Fail as Fail
+ import Test.QuickCheck
+ 
+ moduleName :: String
+@@ -173,7 +174,7 @@ toSeq h = tol h S.empty
+   where tol E rest = rest
+         tol (L _ x a b) rest = S.lcons x (tol b (tol a rest))
+ 
+-lookupM :: (Ord a, Monad m) => a -> Heap a -> m a
++lookupM :: (Ord a, Fail.MonadFail m) => a -> Heap a -> m a
+ lookupM _ E = fail "LeftistHeap.lookupM: XXX"
+ lookupM x (L _ y a b) =
+   case compare x y of
+@@ -299,7 +300,7 @@ partitionLT_GT y h = (h', C.unionList hs)
+                       (b', hs'') = collect b hs'
+                   in (node x a' b', hs'')
+ 
+-minView :: (Ord a, Monad m) => Heap a -> m (a, Heap a)
++minView :: (Ord a, Fail.MonadFail m) => Heap a -> m (a, Heap a)
+ minView E = fail "LeftistHeap.minView: empty collection"
+ minView (L _ x a b) = return (x, union a b)
+ 
+@@ -307,7 +308,7 @@ minElem :: Ord a => Heap a -> a
+ minElem E = error "LeftistHeap.minElem: empty collection"
+ minElem (L _ x _ _) = x
+ 
+-maxView :: (Ord a, Monad m) => Heap a -> m (a, Heap a)
++maxView :: (Ord a, Fail.MonadFail m) => Heap a -> m (a, Heap a)
+ maxView E = fail "LeftistHeap.maxView: empty collection"
+ maxView (L _ x E _) = return (x, E)
+ maxView (L _ x a E) = return (y, L 1 x a' E)
+diff --git a/src/Data/Edison/Coll/MinHeap.hs b/src/Data/Edison/Coll/MinHeap.hs
+index ba38960..94e2f1b 100644
+--- a/src/Data/Edison/Coll/MinHeap.hs
++++ b/src/Data/Edison/Coll/MinHeap.hs
+@@ -46,6 +46,7 @@ import Data.Edison.Seq.Defaults (tokenMatch,maybeParens)
+ import Data.Monoid
+ import qualified Data.Semigroup as SG
+ import Control.Monad
++import qualified Control.Monad.Fail as Fail
+ import Test.QuickCheck
+ 
+ data Min h a = E | M a h  deriving (Eq)
+@@ -75,7 +76,7 @@ strict    :: (C.CollX h a,Ord a) => Min h a -> Min h a
+ 
+ toSeq     :: (C.Coll h a,S.Sequence s) => Min h a -> s a
+ lookup    :: (C.Coll h a,Ord a) => a -> Min h a -> a
+-lookupM   :: (C.Coll h a,Ord a,Monad m) => a -> Min h a -> m a
++lookupM   :: (C.Coll h a, Ord a, Fail.MonadFail m) => a -> Min h a -> m a
+ lookupAll :: (C.Coll h a,Ord a,S.Sequence s) => a -> Min h a -> s a
+ lookupWithDefault :: (C.Coll h a,Ord a) => a -> a -> Min h a -> a
+ fold      :: (C.Coll h a) => (a -> b -> b) -> b -> Min h a -> b
+@@ -100,9 +101,9 @@ partitionLT_GE :: (C.OrdColl h a,Ord a) => a -> Min h a -> (Min h a, Min h a)
+ partitionLE_GT :: (C.OrdColl h a,Ord a) => a -> Min h a -> (Min h a, Min h a)
+ partitionLT_GT :: (C.OrdColl h a,Ord a) => a -> Min h a -> (Min h a, Min h a)
+ 
+-minView :: (C.OrdColl h a,Ord a,Monad m) => Min h a -> m (a, Min h a)
++minView :: (C.OrdColl h a, Ord a, Fail.MonadFail m) => Min h a -> m (a, Min h a)
+ minElem :: (C.OrdColl h a,Ord a) => Min h a -> a
+-maxView :: (C.OrdColl h a,Ord a,Monad m) => Min h a -> m (a, Min h a)
++maxView :: (C.OrdColl h a, Ord a, Fail.MonadFail m) => Min h a -> m (a, Min h a)
+ maxElem :: (C.OrdColl h a,Ord a) => Min h a -> a
+ foldr :: (C.OrdColl h a,Ord a) => (a -> b -> b) -> b -> Min h a -> b
+ foldl :: (C.OrdColl h a,Ord a) => (b -> a -> b) -> b -> Min h a -> b
+diff --git a/src/Data/Edison/Coll/SkewHeap.hs b/src/Data/Edison/Coll/SkewHeap.hs
+index 1a05ebe..e55ba58 100644
+--- a/src/Data/Edison/Coll/SkewHeap.hs
++++ b/src/Data/Edison/Coll/SkewHeap.hs
+@@ -47,6 +47,7 @@ import Data.Edison.Coll.Defaults
+ import Data.Monoid
+ import Data.Semigroup as SG
+ import Control.Monad
++import qualified Control.Monad.Fail as Fail
+ 
+ import Test.QuickCheck
+ 
+@@ -142,7 +143,7 @@ toSeq h = tol h S.empty
+   where tol E rest = rest
+         tol (T x a b) rest = S.lcons x (tol b (tol a rest))
+ 
+-lookupM :: (Ord a, Monad m) => a -> Heap a -> m a
++lookupM :: (Ord a, Fail.MonadFail m) => a -> Heap a -> m a
+ lookupM _ E = fail "SkewHeap.lookupM: XXX"
+ lookupM x (T y a b) =
+   case compare x y of
+@@ -267,7 +268,7 @@ partitionLT_GT y h = (h', C.unionList hs)
+                       (b', hs'') = collect b hs'
+                   in (T x a' b', hs'')
+ 
+-minView :: (Ord a, Monad m) => Heap a -> m (a, Heap a)
++minView :: (Ord a, Fail.MonadFail m) => Heap a -> m (a, Heap a)
+ minView E = fail "SkewHeap.minView: empty heap"
+ minView (T x a b) = return (x, union a b)
+ 
+@@ -275,7 +276,7 @@ minElem :: Ord a => Heap a -> a
+ minElem E = error "SkewHeap.minElem: empty collection"
+ minElem (T x _ _) = x
+ 
+-maxView :: (Ord a, Monad m) => Heap a -> m (a, Heap a)
++maxView :: (Ord a, Fail.MonadFail m) => Heap a -> m (a, Heap a)
+ maxView E = fail "SkewHeap.maxView: empty heap"
+ maxView (T x E E) = return (x, E)
+ maxView (T x a E) = return (y, T x a' E)
+diff --git a/src/Data/Edison/Coll/SplayHeap.hs b/src/Data/Edison/Coll/SplayHeap.hs
+index 4e3b061..6c950b7 100644
+--- a/src/Data/Edison/Coll/SplayHeap.hs
++++ b/src/Data/Edison/Coll/SplayHeap.hs
+@@ -50,6 +50,7 @@ import Data.Edison.Coll.Defaults
+ import Data.Monoid
+ import Data.Semigroup as SG
+ import Control.Monad
++import qualified Control.Monad.Fail as Fail
+ import Test.QuickCheck
+ 
+ moduleName :: String
+@@ -93,7 +94,7 @@ strict    :: Heap a -> Heap a
+ 
+ toSeq     :: (Ord a, S.Sequence s) => Heap a -> s a
+ lookup    :: Ord a => a -> Heap a -> a
+-lookupM   :: (Ord a,Monad m) => a -> Heap a -> m a
++lookupM   :: (Ord a, Fail.MonadFail m) => a -> Heap a -> m a
+ lookupAll :: (Ord a,S.Sequence s) => a -> Heap a -> s a
+ lookupWithDefault :: Ord a => a -> a -> Heap a -> a
+ fold      :: Ord a => (a -> b -> b) -> b -> Heap a -> b
+@@ -118,9 +119,9 @@ partitionLT_GE   :: Ord a => a -> Heap a -> (Heap a, Heap a)
+ partitionLE_GT   :: Ord a => a -> Heap a -> (Heap a, Heap a)
+ partitionLT_GT   :: Ord a => a -> Heap a -> (Heap a, Heap a)
+ 
+-minView  :: (Ord a,Monad m) => Heap a -> m (a, Heap a)
++minView  :: (Ord a, Fail.MonadFail m) => Heap a -> m (a, Heap a)
+ minElem  :: Ord a => Heap a -> a
+-maxView  :: (Ord a,Monad m) => Heap a -> m (a, Heap a)
++maxView  :: (Ord a, Fail.MonadFail m) => Heap a -> m (a, Heap a)
+ maxElem  :: Ord a => Heap a -> a
+ foldr    :: Ord a => (a -> b -> b) -> b -> Heap a -> b
+ foldl    :: Ord a => (b -> a -> b) -> b -> Heap a -> b
+diff --git a/src/Data/Edison/Coll/StandardSet.hs b/src/Data/Edison/Coll/StandardSet.hs
+index fcaf715..56df4bf 100644
+--- a/src/Data/Edison/Coll/StandardSet.hs
++++ b/src/Data/Edison/Coll/StandardSet.hs
+@@ -43,6 +43,7 @@ module Data.Edison.Coll.StandardSet (
+ 
+ import Prelude hiding (null,foldr,foldl,foldr1,foldl1,lookup,filter)
+ import qualified Prelude
++import qualified Control.Monad.Fail as Fail
+ import qualified Data.List
+ 
+ import qualified Data.Edison.Coll as C
+@@ -73,7 +74,7 @@ strict     :: Ord a => Set a -> Set a
+ 
+ toSeq      :: (Ord a,S.Sequence seq) => Set a -> seq a
+ lookup     :: Ord a => a -> Set a -> a
+-lookupM    :: (Ord a,Monad m) => a -> Set a -> m a
++lookupM    :: (Ord a, Monad m, Fail.MonadFail m) => a -> Set a -> m a
+ lookupAll  :: (Ord a,S.Sequence seq) => a -> Set a -> seq a
+ lookupWithDefault :: Ord a => a -> a -> Set a  -> a
+ fold       :: (a -> b -> b) -> b -> Set a -> b
+@@ -98,9 +99,9 @@ partitionLT_GE   :: Ord a => a -> Set a -> (Set a, Set a)
+ partitionLE_GT   :: Ord a => a -> Set a -> (Set a, Set a)
+ partitionLT_GT   :: Ord a => a -> Set a -> (Set a, Set a)
+ 
+-minView       :: (Ord a,Monad m) => Set a -> m (a, Set a)
++minView       :: (Ord a, Monad m, Fail.MonadFail m) => Set a -> m (a, Set a)
+ minElem       :: Set a -> a
+-maxView       :: (Ord a,Monad m) => Set a -> m (a, Set a)
++maxView       :: (Ord a, Monad m, Fail.MonadFail m) => Set a -> m (a, Set a)
+ maxElem       :: Set a -> a
+ foldr         :: (a -> b -> b) -> b -> Set a -> b
+ foldl         :: (b -> a -> b) -> b -> Set a -> b
+diff --git a/src/Data/Edison/Coll/UnbalancedSet.hs b/src/Data/Edison/Coll/UnbalancedSet.hs
+index 03cb856..d7975d0 100644
+--- a/src/Data/Edison/Coll/UnbalancedSet.hs
++++ b/src/Data/Edison/Coll/UnbalancedSet.hs
+@@ -43,6 +43,7 @@ module Data.Edison.Coll.UnbalancedSet (
+ 
+ import Prelude hiding (null,foldr,foldl,foldr1,foldl1,lookup,filter)
+ import qualified Prelude
++import qualified Control.Monad.Fail as Fail
+ import qualified Data.Edison.Coll as C
+ import qualified Data.Edison.Seq as S
+ import Data.Edison.Coll.Defaults
+@@ -70,7 +71,7 @@ strict     :: Set a -> Set a
+ 
+ toSeq      :: (Ord a,S.Sequence seq) => Set a -> seq a
+ lookup     :: Ord a => a -> Set a -> a
+-lookupM    :: (Ord a,Monad m) => a -> Set a -> m a
++lookupM    :: (Ord a, Fail.MonadFail m) => a -> Set a -> m a
+ lookupAll  :: (Ord a,S.Sequence seq) => a -> Set a -> seq a
+ lookupWithDefault :: Ord a => a -> a -> Set a -> a
+ fold       :: (a -> b -> b) -> b -> Set a -> b
+@@ -95,9 +96,9 @@ partitionLT_GE   :: Ord a => a -> Set a -> (Set a, Set a)
+ partitionLE_GT   :: Ord a => a -> Set a -> (Set a, Set a)
+ partitionLT_GT   :: Ord a => a -> Set a -> (Set a, Set a)
+ 
+-minView       :: (Monad m) => Set a -> m (a, Set a)
++minView       :: (Fail.MonadFail m) => Set a -> m (a, Set a)
+ minElem       :: Set a -> a
+-maxView       :: (Monad m) => Set a -> m (a, Set a)
++maxView       :: (Fail.MonadFail m) => Set a -> m (a, Set a)
+ maxElem       :: Set a -> a
+ foldr         :: (a -> b -> b) -> b -> Set a -> b
+ foldl         :: (b -> a -> b) -> b -> Set a -> b
+diff --git a/src/Data/Edison/Concrete/FingerTree.hs b/src/Data/Edison/Concrete/FingerTree.hs
+index 47f766c..c6a2ac0 100644
+--- a/src/Data/Edison/Concrete/FingerTree.hs
++++ b/src/Data/Edison/Concrete/FingerTree.hs
+@@ -81,6 +81,7 @@ import Test.QuickCheck
+ import Data.Edison.Prelude
+ 
+ import Control.Monad (liftM2, liftM3, liftM4)
++import qualified Control.Monad.Fail as Fail
+ 
+ 
+ infixr 5 `lcons`
+@@ -334,7 +335,7 @@ null Empty = True
+ null _ = False
+ 
+ -- | /O(1)/. Analyse the left end of a sequence.
+-lview :: (Measured v a, Monad m) => FingerTree v a -> m (a,FingerTree v a)
++lview :: (Measured v a, Fail.MonadFail m) => FingerTree v a -> m (a,FingerTree v a)
+ lview Empty                 =  fail "FingerTree.lview: empty tree"
+ lview (Single x)            =  return (x, Empty)
+ lview (Deep _ (One x) m sf) =  return . (,) x $
+@@ -357,7 +358,7 @@ ltailDigit (Four _ b c d) = Three b c d
+ ltailDigit _ = error "FingerTree.ltailDigit: bug!"
+ 
+ -- | /O(1)/. Analyse the right end of a sequence.
+-rview :: (Measured v a, Monad m) => FingerTree v a -> m (a, FingerTree v a)
++rview :: (Measured v a, Fail.MonadFail m) => FingerTree v a -> m (a, FingerTree v a)
+ rview Empty                  = fail "FingerTree.rview: empty tree"
+ rview (Single x)             = return (x, Empty)
+ rview (Deep _ pr m (One x))  = return . (,) x $
+diff --git a/src/Data/Edison/Seq/BankersQueue.hs b/src/Data/Edison/Seq/BankersQueue.hs
+index 6dac746..0ab24c9 100644
+--- a/src/Data/Edison/Seq/BankersQueue.hs
++++ b/src/Data/Edison/Seq/BankersQueue.hs
+@@ -51,11 +51,13 @@ import Prelude hiding (concat,reverse,map,concatMap,foldr,foldl,foldr1,foldl1,
+ 
+ import qualified Control.Applicative as App
+ 
++import Data.Edison.Prelude ( runFail_ )
+ import qualified Data.Edison.Seq as S ( Sequence(..) )
+ import Data.Edison.Seq.Defaults
+ import qualified Data.Edison.Seq.ListSeq as L
+ import Data.Monoid
+ import Data.Semigroup as SG
++import qualified Control.Monad.Fail as Fail
+ import Control.Monad.Identity
+ import Test.QuickCheck
+ 
+@@ -66,16 +68,16 @@ singleton      :: a -> Seq a
+ lcons          :: a -> Seq a -> Seq a
+ rcons          :: a -> Seq a -> Seq a
+ append         :: Seq a -> Seq a -> Seq a
+-lview          :: (Monad m) => Seq a -> m (a, Seq a)
++lview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ lhead          :: Seq a -> a
+-lheadM         :: (Monad m) => Seq a -> m a
++lheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ ltail          :: Seq a -> Seq a
+-ltailM         :: (Monad m) => Seq a -> m (Seq a)
+-rview          :: (Monad m) => Seq a -> m (a, Seq a)
++ltailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
++rview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ rhead          :: Seq a -> a
+-rheadM         :: (Monad m) => Seq a -> m a
++rheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ rtail          :: Seq a -> Seq a
+-rtailM         :: (Monad m) => Seq a -> m (Seq a)
++rtailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
+ null           :: Seq a -> Bool
+ size           :: Seq a -> Int
+ concat         :: Seq (Seq a) -> Seq a
+@@ -106,7 +108,7 @@ reduce1'       :: (a -> a -> a) -> Seq a -> a
+ copy           :: Int -> a -> Seq a
+ inBounds       :: Int -> Seq a -> Bool
+ lookup         :: Int -> Seq a -> a
+-lookupM        :: (Monad m) => Int -> Seq a -> m a
++lookupM        :: (Fail.MonadFail m) => Int -> Seq a -> m a
+ lookupWithDefault :: a -> Int -> Seq a -> a
+ update         :: Int -> a -> Seq a -> Seq a
+ adjust         :: (a -> a) -> Int -> Seq a -> Seq a
+@@ -263,7 +265,7 @@ copy n x
+ 
+ -- reduce1: given sizes could do more effective job of dividing evenly!
+ 
+-lookup idx q = runIdentity (lookupM idx q)
++lookup idx q = runFail_ (lookupM idx q)
+ 
+ lookupM idx (Q i xs ys j)
+   | idx < i   = L.lookupM idx xs
+diff --git a/src/Data/Edison/Seq/BinaryRandList.hs b/src/Data/Edison/Seq/BinaryRandList.hs
+index b01b9b8..e772b65 100644
+--- a/src/Data/Edison/Seq/BinaryRandList.hs
++++ b/src/Data/Edison/Seq/BinaryRandList.hs
+@@ -55,14 +55,15 @@ import Prelude hiding (concat,reverse,map,concatMap,foldr,foldl,foldr1,foldl1,
+                        zip,zip3,zipWith,zipWith3,unzip,unzip3,null)
+ 
+ import qualified Control.Applicative as App
+-import Control.Monad.Identity
+ import Data.Maybe
+ 
++import Data.Edison.Prelude ( runFail_ )
+ import qualified Data.Edison.Seq as S ( Sequence(..) )
+ import Data.Edison.Seq.Defaults
+ import Data.Monoid
+ import Data.Semigroup as SG
+ import Control.Monad
++import qualified Control.Monad.Fail as Fail
+ import Test.QuickCheck
+ 
+ -- signatures for exported functions
+@@ -72,16 +73,16 @@ singleton      :: a -> Seq a
+ lcons          :: a -> Seq a -> Seq a
+ rcons          :: a -> Seq a -> Seq a
+ append         :: Seq a -> Seq a -> Seq a
+-lview          :: (Monad m) => Seq a -> m (a, Seq a)
++lview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ lhead          :: Seq a -> a
+-lheadM         :: (Monad m) => Seq a -> m a
++lheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ ltail          :: Seq a -> Seq a
+-ltailM         :: (Monad m) => Seq a -> m (Seq a)
+-rview          :: (Monad m) => Seq a -> m (a, Seq a)
++ltailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
++rview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ rhead          :: Seq a -> a
+-rheadM         :: (Monad m) => Seq a -> m a
++rheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ rtail          :: Seq a -> Seq a
+-rtailM         :: (Monad m) => Seq a -> m (Seq a)
++rtailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
+ null           :: Seq a -> Bool
+ size           :: Seq a -> Int
+ concat         :: Seq (Seq a) -> Seq a
+@@ -112,7 +113,7 @@ reduce1'       :: (a -> a -> a) -> Seq a -> a
+ copy           :: Int -> a -> Seq a
+ inBounds       :: Int -> Seq a -> Bool
+ lookup         :: Int -> Seq a -> a
+-lookupM        :: (Monad m) => Int -> Seq a -> m a
++lookupM        :: (Fail.MonadFail m) => Int -> Seq a -> m a
+ lookupWithDefault :: a -> Int -> Seq a -> a
+ update         :: Int -> a -> Seq a -> Seq a
+ adjust         :: (a -> a) -> Int -> Seq a -> Seq a
+@@ -267,7 +268,7 @@ inBounds i xs = (i >= 0) && inb xs i
+         inb (Even ps) i = inb ps (half i)
+         inb (Odd _ ps) i = (i == 0) || inb ps (half (i-1))
+ 
+-lookup i xs = runIdentity (lookupM i xs)
++lookup i xs = runFail_ (lookupM i xs)
+ 
+ lookupM i xs
+     | i < 0     = fail "BinaryRandList.lookup: bad subscript"
+diff --git a/src/Data/Edison/Seq/BraunSeq.hs b/src/Data/Edison/Seq/BraunSeq.hs
+index 7f6f33b..11236e3 100644
+--- a/src/Data/Edison/Seq/BraunSeq.hs
++++ b/src/Data/Edison/Seq/BraunSeq.hs
+@@ -72,6 +72,7 @@ import Prelude hiding (concat,reverse,map,concatMap,foldr,foldl,foldr1,foldl1,
+                        zip,zip3,zipWith,zipWith3,unzip,unzip3,null)
+ 
+ import qualified Control.Applicative as App
++import qualified Control.Monad.Fail as Fail
+ import Control.Monad.Identity
+ import Data.Maybe
+ import Data.Monoid
+@@ -79,6 +80,7 @@ import Data.Semigroup as SG
+ import Test.QuickCheck
+ 
+ 
++import Data.Edison.Prelude ( runFail_ )
+ import qualified Data.Edison.Seq as S ( Sequence(..) )
+ import Data.Edison.Seq.Defaults
+ import qualified Data.Edison.Seq.ListSeq as L
+@@ -91,16 +93,16 @@ singleton      :: a -> Seq a
+ lcons          :: a -> Seq a -> Seq a
+ rcons          :: a -> Seq a -> Seq a
+ append         :: Seq a -> Seq a -> Seq a
+-lview          :: (Monad m) => Seq a -> m (a, Seq a)
++lview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ lhead          :: Seq a -> a
+-lheadM         :: (Monad m) => Seq a -> m a
++lheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ ltail          :: Seq a -> Seq a
+-ltailM         :: (Monad m) => Seq a -> m (Seq a)
+-rview          :: (Monad m) => Seq a -> m (a, Seq a)
++ltailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
++rview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ rhead          :: Seq a -> a
+-rheadM         :: (Monad m) => Seq a -> m a
++rheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ rtail          :: Seq a -> Seq a
+-rtailM         :: (Monad m) => Seq a -> m (Seq a)
++rtailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
+ null           :: Seq a -> Bool
+ size           :: Seq a -> Int
+ concat         :: Seq (Seq a) -> Seq a
+@@ -131,7 +133,7 @@ reduce1'       :: (a -> a -> a) -> Seq a -> a
+ copy           :: Int -> a -> Seq a
+ inBounds       :: Int -> Seq a -> Bool
+ lookup         :: Int -> Seq a -> a
+-lookupM        :: (Monad m) => Int -> Seq a -> m a
++lookupM        :: (Fail.MonadFail m) => Int -> Seq a -> m a
+ lookupWithDefault :: a -> Int -> Seq a -> a
+ update         :: Int -> a -> Seq a -> Seq a
+ adjust         :: (a -> a) -> Int -> Seq a -> Seq a
+@@ -344,7 +346,7 @@ inBounds i xs = (i >= 0) && inb xs i
+           | i == 0    = True
+           | otherwise = inb b (half i - 1)
+ 
+-lookup i xs = runIdentity (lookupM i xs)
++lookup i xs = runFail_ (lookupM i xs)
+ 
+ lookupM i xs
+   | i < 0     = fail "BraunSeq.lookupM: bad subscript"
+diff --git a/src/Data/Edison/Seq/Defaults.hs b/src/Data/Edison/Seq/Defaults.hs
+index ed593dc..eae6a09 100644
+--- a/src/Data/Edison/Seq/Defaults.hs
++++ b/src/Data/Edison/Seq/Defaults.hs
+@@ -17,9 +17,11 @@ import Prelude hiding (concat,reverse,map,concatMap,foldr,foldl,foldr1,foldl1,
+                        filter,takeWhile,dropWhile,lookup,take,drop,splitAt,
+                        zip,zip3,zipWith,zipWith3,unzip,unzip3,null)
+ 
++import qualified Control.Monad.Fail as Fail
+ import Control.Monad.Identity
+ import Data.Char (isSpace)
+ 
++import Data.Edison.Prelude ( runFail_ )
+ import Data.Edison.Seq
+ import qualified Data.Edison.Seq.ListSeq as L
+ 
+@@ -33,7 +35,7 @@ appendUsingFoldr :: Sequence s => s a -> s a -> s a
+ appendUsingFoldr s t | null t = s
+                             | otherwise = foldr lcons t s
+ 
+-rviewDefault :: (Monad m, Sequence s) => s a -> m (a, s a)
++rviewDefault :: (Fail.MonadFail m, Sequence s) => s a -> m (a, s a)
+ rviewDefault xs
+   | null xs   = fail $ instanceName xs ++ ".rview: empty sequence"
+   | otherwise = return (rhead xs, rtail xs)
+@@ -49,7 +51,7 @@ rtailUsingLview xs =
+             Nothing      -> empty
+             Just (y, ys) -> lcons x (rt y ys)
+ 
+-rtailMUsingLview :: (Monad m,Sequence s) => s a -> m (s a)
++rtailMUsingLview :: (Fail.MonadFail m, Sequence s) => s a -> m (s a)
+ rtailMUsingLview xs =
+     case lview xs of
+       Nothing      -> fail $ instanceName xs ++ ".rtailM: empty sequence"
+@@ -200,7 +202,7 @@ inBoundsUsingSize :: Sequence s => Int -> s a -> Bool
+ inBoundsUsingSize i s = i >= 0 && i < size s
+ 
+ lookupUsingLookupM :: Sequence s => Int -> s a -> a
+-lookupUsingLookupM i s = runIdentity (lookupM i s)
++lookupUsingLookupM i s = runFail_ (lookupM i s)
+ 
+ lookupUsingDrop :: Sequence s => Int -> s a -> a
+ lookupUsingDrop i s
+@@ -220,7 +222,7 @@ lookupWithDefaultUsingDrop d i s
+   | otherwise = lhead s'
+   where s' = drop i s
+ 
+-lookupMUsingDrop :: (Monad m, Sequence s) => Int -> s a -> m a
++lookupMUsingDrop :: (Fail.MonadFail m, Sequence s) => Int -> s a -> m a
+ lookupMUsingDrop i s
+   -- XXX better error message!
+   | i < 0 || null s' = fail $ instanceName s
+diff --git a/src/Data/Edison/Seq/FingerSeq.hs b/src/Data/Edison/Seq/FingerSeq.hs
+index c74c70b..a34254c 100644
+--- a/src/Data/Edison/Seq/FingerSeq.hs
++++ b/src/Data/Edison/Seq/FingerSeq.hs
+@@ -37,9 +37,10 @@ import Prelude hiding (concat,reverse,map,concatMap,foldr,foldl,foldr1,foldl1,
+                        zip,zip3,zipWith,zipWith3,unzip,unzip3,null)
+ 
+ import qualified Control.Applicative as App
+-import Data.Edison.Prelude (measure, Measured())
++import Data.Edison.Prelude (measure, Measured(), runFail_)
+ import qualified Data.Edison.Seq as S
+ import Data.Edison.Seq.Defaults
++import qualified Control.Monad.Fail as Fail
+ import Control.Monad.Identity
+ import Data.Monoid
+ import Data.Semigroup as SG
+@@ -87,16 +88,16 @@ singleton      :: a -> Seq a
+ lcons          :: a -> Seq a -> Seq a
+ rcons          :: a -> Seq a -> Seq a
+ append         :: Seq a -> Seq a -> Seq a
+-lview          :: (Monad m) => Seq a -> m (a, Seq a)
++lview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ lhead          :: Seq a -> a
+-lheadM         :: (Monad m) => Seq a -> m a
++lheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ ltail          :: Seq a -> Seq a
+-ltailM         :: (Monad m) => Seq a -> m (Seq a)
+-rview          :: (Monad m) => Seq a -> m (a, Seq a)
++ltailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
++rview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ rhead          :: Seq a -> a
+-rheadM         :: (Monad m) => Seq a -> m a
++rheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ rtail          :: Seq a -> Seq a
+-rtailM         :: (Monad m) => Seq a -> m (Seq a)
++rtailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
+ null           :: Seq a -> Bool
+ size           :: Seq a -> Int
+ concat         :: Seq (Seq a) -> Seq a
+@@ -127,7 +128,7 @@ reduce1'       :: (a -> a -> a) -> Seq a -> a
+ copy           :: Int -> a -> Seq a
+ inBounds       :: Int -> Seq a -> Bool
+ lookup         :: Int -> Seq a -> a
+-lookupM        :: (Monad m) => Int -> Seq a -> m a
++lookupM        :: (Fail.MonadFail m) => Int -> Seq a -> m a
+ lookupWithDefault :: a -> Int -> Seq a -> a
+ update         :: Int -> a -> Seq a -> Seq a
+ adjust         :: (a -> a) -> Int -> Seq a -> Seq a
+@@ -206,10 +207,10 @@ lheadM xs = lview xs >>= return . fst
+ ltailM xs = lview xs >>= return . snd
+ rheadM xs = rview xs >>= return . fst
+ rtailM xs = rview xs >>= return . snd
+-lhead = runIdentity . lheadM
+-ltail = runIdentity . ltailM
+-rhead = runIdentity . rheadM
+-rtail = runIdentity . rtailM
++lhead = runFail_ . lheadM
++ltail = runFail_ . ltailM
++rhead = runFail_ . rheadM
++rtail = runFail_ . rtailM
+ 
+ fold     = foldr
+ fold'    = foldr'
+diff --git a/src/Data/Edison/Seq/JoinList.hs b/src/Data/Edison/Seq/JoinList.hs
+index 6922023..05855ba 100644
+--- a/src/Data/Edison/Seq/JoinList.hs
++++ b/src/Data/Edison/Seq/JoinList.hs
+@@ -57,6 +57,7 @@ import qualified Control.Applicative as App
+ 
+ import Data.Edison.Seq.Defaults
+ import Control.Monad
++import qualified Control.Monad.Fail as Fail
+ import Data.Monoid
+ import Data.Semigroup as SG
+ import Test.QuickCheck
+@@ -68,16 +69,16 @@ singleton      :: a -> Seq a
+ lcons          :: a -> Seq a -> Seq a
+ rcons          :: a -> Seq a -> Seq a
+ append         :: Seq a -> Seq a -> Seq a
+-lview          :: (Monad m) => Seq a -> m (a, Seq a)
++lview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ lhead          :: Seq a -> a
+-lheadM         :: (Monad m) => Seq a -> m a
++lheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ ltail          :: Seq a -> Seq a
+-ltailM         :: (Monad m) => Seq a -> m (Seq a)
+-rview          :: (Monad m) => Seq a -> m (a, Seq a)
++ltailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
++rview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ rhead          :: Seq a -> a
+-rheadM         :: (Monad m) => Seq a -> m a
++rheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ rtail          :: Seq a -> Seq a
+-rtailM         :: (Monad m) => Seq a -> m (Seq a)
++rtailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
+ null           :: Seq a -> Bool
+ size           :: Seq a -> Int
+ concat         :: Seq (Seq a) -> Seq a
+@@ -108,7 +109,7 @@ reduce1'       :: (a -> a -> a) -> Seq a -> a
+ copy           :: Int -> a -> Seq a
+ inBounds       :: Int -> Seq a -> Bool
+ lookup         :: Int -> Seq a -> a
+-lookupM        :: (Monad m) => Int -> Seq a -> m a
++lookupM        :: (Fail.MonadFail m) => Int -> Seq a -> m a
+ lookupWithDefault :: a -> Int -> Seq a -> a
+ update         :: Int -> a -> Seq a -> Seq a
+ adjust         :: (a -> a) -> Int -> Seq a -> Seq a
+diff --git a/src/Data/Edison/Seq/MyersStack.hs b/src/Data/Edison/Seq/MyersStack.hs
+index 30eb197..eca46a5 100644
+--- a/src/Data/Edison/Seq/MyersStack.hs
++++ b/src/Data/Edison/Seq/MyersStack.hs
+@@ -49,8 +49,10 @@ import Prelude hiding (concat,reverse,map,concatMap,foldr,foldl,foldr1,foldl1,
+                        zip,zip3,zipWith,zipWith3,unzip,unzip3,null)
+ 
+ import qualified Control.Applicative as App
++import Data.Edison.Prelude ( runFail_ )
+ import qualified Data.Edison.Seq as S ( Sequence(..) )
+ import Data.Edison.Seq.Defaults
++import qualified Control.Monad.Fail as Fail
+ import Control.Monad.Identity
+ import Data.Monoid
+ import Data.Semigroup as SG
+@@ -63,16 +65,16 @@ singleton      :: a -> Seq a
+ lcons          :: a -> Seq a -> Seq a
+ rcons          :: a -> Seq a -> Seq a
+ append         :: Seq a -> Seq a -> Seq a
+-lview          :: (Monad m) => Seq a -> m (a, Seq a)
++lview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ lhead          :: Seq a -> a
+-lheadM         :: (Monad m) => Seq a -> m a
++lheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ ltail          :: Seq a -> Seq a
+-ltailM         :: (Monad m) => Seq a -> m (Seq a)
+-rview          :: (Monad m) => Seq a -> m (a, Seq a)
++ltailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
++rview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ rhead          :: Seq a -> a
+-rheadM         :: (Monad m) => Seq a -> m a
++rheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ rtail          :: Seq a -> Seq a
+-rtailM         :: (Monad m) => Seq a -> m (Seq a)
++rtailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
+ null           :: Seq a -> Bool
+ size           :: Seq a -> Int
+ concat         :: Seq (Seq a) -> Seq a
+@@ -103,7 +105,7 @@ reduce1'       :: (a -> a -> a) -> Seq a -> a
+ copy           :: Int -> a -> Seq a
+ inBounds       :: Int -> Seq a -> Bool
+ lookup         :: Int -> Seq a -> a
+-lookupM        :: (Monad m) => Int -> Seq a -> m a
++lookupM        :: (Fail.MonadFail m) => Int -> Seq a -> m a
+ lookupWithDefault :: a -> Int -> Seq a -> a
+ update         :: Int -> a -> Seq a -> Seq a
+ adjust         :: (a -> a) -> Int -> Seq a -> Seq a
+@@ -246,7 +248,7 @@ inBounds i xs = inb xs i
+           | i < j     = (i >= 0)
+           | otherwise = inb xs' (i - j)
+ 
+-lookup i xs = runIdentity (lookupM i xs)
++lookup i xs = runFail_ (lookupM i xs)
+ 
+ lookupM i xs = look xs i
+   where look E _ = fail "MyersStack.lookup: bad subscript"
+diff --git a/src/Data/Edison/Seq/RandList.hs b/src/Data/Edison/Seq/RandList.hs
+index 8fe97bd..8d2d38b 100644
+--- a/src/Data/Edison/Seq/RandList.hs
++++ b/src/Data/Edison/Seq/RandList.hs
+@@ -55,8 +55,10 @@ import Prelude hiding (concat,reverse,map,concatMap,foldr,foldl,foldr1,foldl1,
+ 
+ import qualified Control.Applicative as App
+ 
++import Data.Edison.Prelude ( runFail_ )
+ import qualified Data.Edison.Seq as S( Sequence(..) )
+ import Data.Edison.Seq.Defaults
++import qualified Control.Monad.Fail as Fail
+ import Control.Monad.Identity
+ import Data.Monoid
+ import Data.Semigroup as SG
+@@ -69,16 +71,16 @@ singleton      :: a -> Seq a
+ lcons          :: a -> Seq a -> Seq a
+ rcons          :: a -> Seq a -> Seq a
+ append         :: Seq a -> Seq a -> Seq a
+-lview          :: (Monad m) => Seq a -> m (a, Seq a)
++lview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ lhead          :: Seq a -> a
+-lheadM         :: (Monad m) => Seq a -> m a
++lheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ ltail          :: Seq a -> Seq a
+-ltailM         :: (Monad m) => Seq a -> m (Seq a)
+-rview          :: (Monad m) => Seq a -> m (a, Seq a)
++ltailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
++rview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ rhead          :: Seq a -> a
+-rheadM         :: (Monad m) => Seq a -> m a
++rheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ rtail          :: Seq a -> Seq a
+-rtailM         :: (Monad m) => Seq a -> m (Seq a)
++rtailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
+ null           :: Seq a -> Bool
+ size           :: Seq a -> Int
+ concat         :: Seq (Seq a) -> Seq a
+@@ -109,7 +111,7 @@ reduce1'       :: (a -> a -> a) -> Seq a -> a
+ copy           :: Int -> a -> Seq a
+ inBounds       :: Int -> Seq a -> Bool
+ lookup         :: Int -> Seq a -> a
+-lookupM        :: (Monad m) => Int -> Seq a -> m a
++lookupM        :: (Fail.MonadFail m) => Int -> Seq a -> m a
+ lookupWithDefault :: a -> Int -> Seq a -> a
+ update         :: Int -> a -> Seq a -> Seq a
+ adjust         :: (a -> a) -> Int -> Seq a -> Seq a
+@@ -269,7 +271,7 @@ inBounds i xs = inb xs i
+           | i < j     = (i >= 0)
+           | otherwise = inb xs (i - j)
+ 
+-lookup i xs = runIdentity (lookupM i xs)
++lookup i xs = runFail_ (lookupM i xs)
+ 
+ lookupM i xs = look xs i
+   where look E _ = fail "RandList.lookup bad subscript"
+diff --git a/src/Data/Edison/Seq/RevSeq.hs b/src/Data/Edison/Seq/RevSeq.hs
+index 3652c7b..87deea6 100644
+--- a/src/Data/Edison/Seq/RevSeq.hs
++++ b/src/Data/Edison/Seq/RevSeq.hs
+@@ -62,6 +62,7 @@ import qualified Data.Edison.Seq as S
+ import qualified Data.Edison.Seq.ListSeq as L
+ import Data.Edison.Seq.Defaults -- only used by concatMap
+ import Control.Monad
++import qualified Control.Monad.Fail as Fail
+ import Data.Monoid
+ import Data.Semigroup as SG
+ import Test.QuickCheck
+@@ -75,16 +76,16 @@ singleton      :: S.Sequence s => a -> Rev s a
+ lcons          :: S.Sequence s => a -> Rev s a -> Rev s a
+ rcons          :: S.Sequence s => a -> Rev s a -> Rev s a
+ append         :: S.Sequence s => Rev s a -> Rev s a -> Rev s a
+-lview          :: (S.Sequence s, Monad m) => Rev s a -> m (a, Rev s a)
++lview          :: (S.Sequence s, Fail.MonadFail m) => Rev s a -> m (a, Rev s a)
+ lhead          :: S.Sequence s => Rev s a -> a
+-lheadM         :: (S.Sequence s, Monad m) => Rev s a -> m a
++lheadM         :: (S.Sequence s, Fail.MonadFail m) => Rev s a -> m a
+ ltail          :: S.Sequence s => Rev s a -> Rev s a
+-ltailM         :: (S.Sequence s, Monad m) => Rev s a -> m (Rev s a)
+-rview          :: (S.Sequence s, Monad m) => Rev s a -> m (a, Rev s a)
++ltailM         :: (S.Sequence s, Fail.MonadFail m) => Rev s a -> m (Rev s a)
++rview          :: (S.Sequence s, Fail.MonadFail m) => Rev s a -> m (a, Rev s a)
+ rhead          :: S.Sequence s => Rev s a -> a
+-rheadM         :: (S.Sequence s, Monad m) => Rev s a -> m a
++rheadM         :: (S.Sequence s, Fail.MonadFail m) => Rev s a -> m a
+ rtail          :: S.Sequence s => Rev s a -> Rev s a
+-rtailM         :: (S.Sequence s, Monad m) => Rev s a -> m (Rev s a)
++rtailM         :: (S.Sequence s, Fail.MonadFail m) => Rev s a -> m (Rev s a)
+ null           :: S.Sequence s => Rev s a -> Bool
+ size           :: S.Sequence s => Rev s a -> Int
+ concat         :: S.Sequence s => Rev s (Rev s a) -> Rev s a
+@@ -115,7 +116,7 @@ reduce1'       :: S.Sequence s => (a -> a -> a) -> Rev s a -> a
+ copy           :: S.Sequence s => Int -> a -> Rev s a
+ inBounds       :: S.Sequence s => Int -> Rev s a -> Bool
+ lookup         :: S.Sequence s => Int -> Rev s a -> a
+-lookupM        :: (S.Sequence s, Monad m) => Int -> Rev s a -> m a
++lookupM        :: (S.Sequence s, Fail.MonadFail m) => Int -> Rev s a -> m a
+ lookupWithDefault :: S.Sequence s => a -> Int -> Rev s a -> a
+ update         :: S.Sequence s => Int -> a -> Rev s a -> Rev s a
+ adjust         :: S.Sequence s => (a -> a) -> Int -> Rev s a -> Rev s a
+diff --git a/src/Data/Edison/Seq/SimpleQueue.hs b/src/Data/Edison/Seq/SimpleQueue.hs
+index 64592b6..754108f 100644
+--- a/src/Data/Edison/Seq/SimpleQueue.hs
++++ b/src/Data/Edison/Seq/SimpleQueue.hs
+@@ -59,6 +59,7 @@ import qualified Data.Edison.Seq.ListSeq as L
+ import Data.Monoid
+ import Data.Semigroup as SG
+ import Control.Monad
++import qualified Control.Monad.Fail as Fail
+ import Test.QuickCheck
+ 
+ -- signatures for exported functions
+@@ -68,16 +69,16 @@ singleton      :: a -> Seq a
+ lcons          :: a -> Seq a -> Seq a
+ rcons          :: a -> Seq a -> Seq a
+ append         :: Seq a -> Seq a -> Seq a
+-lview          :: (Monad m) => Seq a -> m (a, Seq a)
++lview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ lhead          :: Seq a -> a
+-lheadM         :: (Monad m) => Seq a -> m a
++lheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ ltail          :: Seq a -> Seq a
+-ltailM         :: (Monad m) => Seq a -> m (Seq a)
+-rview          :: (Monad m) => Seq a -> m (a, Seq a)
++ltailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
++rview          :: (Fail.MonadFail m) => Seq a -> m (a, Seq a)
+ rhead          :: Seq a -> a
+-rheadM         :: (Monad m) => Seq a -> m a
++rheadM         :: (Fail.MonadFail m) => Seq a -> m a
+ rtail          :: Seq a -> Seq a
+-rtailM         :: (Monad m) => Seq a -> m (Seq a)
++rtailM         :: (Fail.MonadFail m) => Seq a -> m (Seq a)
+ null           :: Seq a -> Bool
+ size           :: Seq a -> Int
+ concat         :: Seq (Seq a) -> Seq a
+@@ -108,7 +109,7 @@ reduce1'       :: (a -> a -> a) -> Seq a -> a
+ copy           :: Int -> a -> Seq a
+ inBounds       :: Int -> Seq a -> Bool
+ lookup         :: Int -> Seq a -> a
+-lookupM        :: (Monad m) => Int -> Seq a -> m a
++lookupM        :: (Fail.MonadFail m) => Int -> Seq a -> m a
+ lookupWithDefault :: a -> Int -> Seq a -> a
+ update         :: Int -> a -> Seq a -> Seq a
+ adjust         :: (a -> a) -> Int -> Seq a -> Seq a
+diff --git a/src/Data/Edison/Seq/SizedSeq.hs b/src/Data/Edison/Seq/SizedSeq.hs
+index a50b800..65c0ee9 100644
+--- a/src/Data/Edison/Seq/SizedSeq.hs
++++ b/src/Data/Edison/Seq/SizedSeq.hs
+@@ -54,6 +54,7 @@ import Data.Edison.Seq.Defaults -- only used by concatMap
+ import Data.Monoid
+ import Data.Semigroup as SG
+ import Control.Monad
++import qualified Control.Monad.Fail as Fail
+ import Test.QuickCheck
+ 
+ 
+@@ -65,16 +66,16 @@ singleton      :: S.Sequence s => a -> Sized s a
+ lcons          :: S.Sequence s => a -> Sized s a -> Sized s a
+ rcons          :: S.Sequence s => a -> Sized s a -> Sized s a
+ append         :: S.Sequence s => Sized s a -> Sized s a -> Sized s a
+-lview          :: (S.Sequence s, Monad m) => Sized s a -> m (a, Sized s a)
++lview          :: (S.Sequence s, Fail.MonadFail m) => Sized s a -> m (a, Sized s a)
+ lhead          :: S.Sequence s => Sized s a -> a
+-lheadM         :: (S.Sequence s, Monad m) => Sized s a -> m a
++lheadM         :: (S.Sequence s, Fail.MonadFail m) => Sized s a -> m a
+ ltail          :: S.Sequence s => Sized s a -> Sized s a
+-ltailM         :: (S.Sequence s, Monad m) => Sized s a -> m (Sized s a)
+-rview          :: (S.Sequence s, Monad m) => Sized s a -> m (a, Sized s a)
++ltailM         :: (S.Sequence s, Fail.MonadFail m) => Sized s a -> m (Sized s a)
++rview          :: (S.Sequence s, Fail.MonadFail m) => Sized s a -> m (a, Sized s a)
+ rhead          :: S.Sequence s => Sized s a -> a
+-rheadM         :: (S.Sequence s, Monad m) => Sized s a -> m a
++rheadM         :: (S.Sequence s, Fail.MonadFail m) => Sized s a -> m a
+ rtail          :: S.Sequence s => Sized s a -> Sized s a
+-rtailM         :: (S.Sequence s, Monad m) => Sized s a -> m (Sized s a)
++rtailM         :: (S.Sequence s, Fail.MonadFail m) => Sized s a -> m (Sized s a)
+ null           :: S.Sequence s => Sized s a -> Bool
+ size           :: S.Sequence s => Sized s a -> Int
+ concat         :: S.Sequence s => Sized s (Sized s a) -> Sized s a
+@@ -105,7 +106,7 @@ reduce1'       :: S.Sequence s => (a -> a -> a) -> Sized s a -> a
+ copy           :: S.Sequence s => Int -> a -> Sized s a
+ inBounds       :: S.Sequence s => Int -> Sized s a -> Bool
+ lookup         :: S.Sequence s => Int -> Sized s a -> a
+-lookupM        :: (S.Sequence s, Monad m) => Int -> Sized s a -> m a
++lookupM        :: (S.Sequence s, Fail.MonadFail m) => Int -> Sized s a -> m a
+ lookupWithDefault :: S.Sequence s => a -> Int -> Sized s a -> a
+ update         :: S.Sequence s => Int -> a -> Sized s a -> Sized s a
+ adjust         :: S.Sequence s => (a -> a) -> Int -> Sized s a -> Sized s a
+

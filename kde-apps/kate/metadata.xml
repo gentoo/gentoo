@@ -6,6 +6,13 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="activities">Enable Plasma Activities support via <pkg>kde-frameworks/kactivities</pkg></flag>
 		<flag name="addons">Build and install additional plugins</flag>
+		<flag name="filebrowser">Enable File System browser tool view</flag>
+		<flag name="lspclient">Enable LSP (Language Server Protocol) client plugin</flag>
+		<flag name="plasma">Enable Session Applet addon for KDE Plasma</flag>
+		<flag name="projects">Enable Project plugin for executing queries on SQL DBs</flag>
+		<flag name="snippets">Enable Snippets Tool View plugin to manage or download code snippets</flag>
+		<flag name="sql">Enable SQL plugin for executing queries on SQL DBs</flag>
 	</use>
 </pkgmetadata>

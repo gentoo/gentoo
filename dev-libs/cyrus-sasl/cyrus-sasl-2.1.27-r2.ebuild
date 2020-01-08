@@ -14,7 +14,7 @@ SRC_URI="https://github.com/cyrusimap/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD-with-attribution"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="authdaemond berkdb gdbm kerberos ldapdb libressl openldap mysql pam postgres sample selinux sqlite srp ssl static-libs urandom"
 
 CDEPEND="
@@ -25,7 +25,7 @@ CDEPEND="
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	openldap? ( >=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}] )
 	mysql? ( dev-db/mysql-connector-c:0=[${MULTILIB_USEDEP}] )
-	pam? ( >=virtual/pam-0-r1[${MULTILIB_USEDEP}] )
+	pam? ( >=sys-libs/pam-0-r1[${MULTILIB_USEDEP}] )
 	postgres? ( dev-db/postgresql:* )
 	sqlite? ( >=dev-db/sqlite-3.8.2:3[${MULTILIB_USEDEP}] )
 	ssl? (
@@ -33,6 +33,8 @@ CDEPEND="
 		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
 	)
 	java? ( >=virtual/jdk-1.6:= )"
+
+REQUIRED_USE="ldapdb? ( openldap )"
 
 RDEPEND="
 	${CDEPEND}

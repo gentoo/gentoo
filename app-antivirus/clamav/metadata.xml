@@ -7,8 +7,9 @@
   </maintainer>
   <use>
     <flag name="clamdtop">A Top like tool which shows what clamd is currently scanning amongst other things</flag>
+    <flag name="clamsubmit">A tool to submit false positives / negatives</flag>
+    <flag name="libclamav-only">Bypass building of libfreshclam and the ClamAV CLI applications.</flag>
     <flag name="metadata-analysis-api">Enables collection of file property metadata using ClamAV API for analysis by ClamAV bytecode programs.</flag>
-    <flag name="system-libmspack">Use system libmspack instead of built in</flag>
     <flag name="xml">DMG and XAR support</flag>
   </use>
   <upstream>

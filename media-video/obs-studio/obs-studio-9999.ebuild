@@ -1,11 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6,3_7} )
+CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake-utils gnome2-utils python-single-r1
+inherit cmake-utils python-single-r1 xdg-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -21,7 +22,7 @@ HOMEPAGE="https://obsproject.com"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+alsa fdk imagemagick jack luajit nvenc pulseaudio python speex truetype v4l"
+IUSE="+alsa fdk imagemagick jack luajit nvenc pulseaudio python speex +ssl truetype v4l vlc"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="
@@ -37,7 +38,7 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtsql:5
-	dev-qt/qttest:5
+	dev-qt/qtsvg:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-video/ffmpeg:=[x264]
@@ -59,15 +60,15 @@ DEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	python? ( ${PYTHON_DEPS} )
 	speex? ( media-libs/speexdsp )
+	ssl? ( net-libs/mbedtls )
 	truetype? (
 		media-libs/fontconfig
 		media-libs/freetype
 	)
 	v4l? ( media-libs/libv4l )
+	vlc? ( media-video/vlc:= )
 "
 RDEPEND="${DEPEND}"
-
-CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -83,9 +84,11 @@ src_configure() {
 		-DDISABLE_PULSEAUDIO=$(usex !pulseaudio)
 		-DDISABLE_SPEEXDSP=$(usex !speex)
 		-DDISABLE_V4L2=$(usex !v4l)
+		-DDISABLE_VLC=$(usex !vlc)
 		-DLIBOBS_PREFER_IMAGEMAGICK=$(usex imagemagick)
 		-DOBS_MULTIARCH_SUFFIX=${libdir#lib}
 		-DUNIX_STRUCTURE=1
+		-DWITH_RTMPS=$(usex ssl)
 	)
 
 	if use luajit || use python; then
@@ -102,7 +105,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 
 	if ! use alsa && ! use pulseaudio; then
 		elog
@@ -124,5 +127,5 @@ pkg_postinst() {
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

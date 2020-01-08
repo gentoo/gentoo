@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 linux-info
 
@@ -15,11 +15,11 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.gz
 	https://dev.gentoo.org/~blueness/${PN}/${ISO}"
-	KEYWORDS="amd64 arm x86"
+	KEYWORDS="amd64 arm arm64 x86"
 fi
 
 DESCRIPTION="Suite to build Gentoo Reference Systems"
-HOMEPAGE="https://dev.gentoo.org/~blueness/${PN}"
+HOMEPAGE="https://dev.gentoo.org/~blueness/grs"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,10 +27,7 @@ IUSE="server"
 
 DEPEND=""
 RDEPEND="
-	|| (
-		sys-apps/portage
-		sys-apps/portage-mgorny
-	)
+	sys-apps/portage
 	server? (
 		app-arch/tar[xattr]
 		app-crypt/md5deep

@@ -1,0 +1,124 @@
+From 4944c498633f913c07a2680563a64d47c233630d Mon Sep 17 00:00:00 2001
+From: Sobhan Mohammadpour <sobhan@gentoo.org>
+Date: Sun, 14 Jul 2019 20:18:45 -0400
+Subject: [PATCH] 3.32.1 control plugins
+
+update From 5bdfac8a4a34e3edec05439fa3cd5544e0515e24 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9mi=20Cardona?= <remi@gentoo.org>
+Date: Sun, 10 Jun 2018 10:09:16 +0200
+Subject: [PATCH] Allow full control over which plugins are built
+---
+ meson_options.txt       | 24 +++++++++++++++++++++++-
+ src/plugins/meson.build | 30 +++++++++++++++++++++---------
+ 2 files changed, 44 insertions(+), 10 deletions(-)
+
+diff --git a/meson_options.txt b/meson_options.txt
+index e1c5909..085380e 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,5 +1,27 @@
+ option('enable-easy-codec-installation', type: 'combo', choices: ['yes', 'no', 'auto'], value: 'auto', description: 'Whether to enable easy codec installation support for GStreamer')
+ option('enable-python', type: 'combo', choices: ['yes', 'no', 'auto'], value: 'auto', description: 'Enable python support')
+-option('with-plugins', type: 'combo', choices: ['all', 'none', 'auto'], value: 'auto', description: 'Which Totem plugins to compile (default: auto; "all", "none" and "auto" are valid)')
++option('with-plugins', type: 'array', choices: [
++  'all',
++  'auto',
++  'apple-trailers',
++  'autoload-subtitles',
++  'brasero-disc-recorder',
++  'dbusservice',
++  'im-status',
++  'lirc',
++  'media-player-keys',
++  'opensubtitles',
++  'properties',
++  'pythonconsole',
++  'recent',
++  'rotation',
++  'samplepython',
++  'save-file',
++  'screensaver',
++  'screenshot',
++  'skipto',
++  'variable-rate',
++  'vimeo',
++], value: ['auto'], description: 'Which Totem plugins to compile (default: auto; "all", "none" and "auto" are valid)')
+ option('enable-gtk-doc', type: 'boolean', value: false, description: 'use gtk-doc to build documentation')
+ option('enable-introspection', type: 'combo', choices: ['yes', 'no', 'auto'], value: 'auto', description: 'Enable GObject Introspection (depends on GObject)')
+diff --git a/src/plugins/meson.build b/src/plugins/meson.build
+index 552cc22..cddda3f 100644
+--- a/src/plugins/meson.build
++++ b/src/plugins/meson.build
+@@ -37,8 +37,8 @@ allowed_plugins = [
+ plugins = []
+ 
+ plugins_option = get_option('with-plugins')
+-if plugins_option != 'none'
+-  plugins += [
++if plugins_option.length() > 0
++  foreach plugin: [
+     'apple-trailers',
+     'autoload-subtitles',
+     'im-status',
+@@ -53,15 +53,22 @@ if plugins_option != 'none'
+     'variable-rate',
+     'vimeo'
+   ]
++    if plugins_option.contains('all') or plugins_option.contains('auto') or plugins_option.contains(plugin)
++      plugins += plugin
++    endif
++  endforeach
++  
++  if plugins_option.contains('all') or plugins_option.contains('auto') or plugins_option.contains('lirc')
++    lirc_dep = dependency('lirc', required: false)
++  else
++    lirc_dep = disabler()
++  endif
+ 
+-  plugin_error = (plugins_option == 'all')
+-
+-  lirc_dep = dependency('lirc', required: false)
+   if lirc_dep.found() and cc.has_function('lirc_init', dependencies: lirc_dep) and cc.has_header('lirc/lirc_client.h')
+     plugins += 'lirc'
+   else
+     str = 'you need lirc_client installed for the lirc plugin'
+-    if plugin_error
++    if plugins_option.contains('all') or plugins_option.contains('lirc')
+       error(str)
+     endif
+     message(str)
+@@ -70,23 +77,28 @@ if plugins_option != 'none'
+   libxml_req_version = '>= 2.6.0'
+   libxml_dep = dependency('libxml-2.0', version: libxml_req_version, required: false)
+   gtk_x11_dep = dependency('gtk+-x11-3.0', version: gtk_req_version, required: false)
+-  if libxml_dep.found() and gtk_x11_dep.found()
++  if libxml_dep.found() and gtk_x11_dep.found() and (plugins_option.contains('all') or plugins_option.contains('auto') or plugins_option.contains('brasero-disc-recorder'))
+     plugins += 'brasero-disc-recorder'
+   else
+     str = 'you need libxml-2.0 ' + libxml_req_version + ' and gtk+-x11-3.0 to use the brasero-disc-recorder plugin'
+-    if plugin_error
++    if plugins_option.contains('all') or plugins_option.contains('brasero-disc-recorder')
+       error(str)
+     endif
+     message(str)
+   endif
+ 
+   if have_python
+-    plugins += [
++    foreach plugin: [
+       'dbusservice',
+       'opensubtitles',
+       'pythonconsole',
+       'samplepython'
+     ]
++      if plugins_option.contains('all') or plugins_option.contains('auto') or plugins_option.contains(plugin)
++        plugins += plugin
++      endif
++    endforeach
++
+   endif
+ endif
+ 
+-- 
+2.22.0
+

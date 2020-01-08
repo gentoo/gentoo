@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic multilib-minimal toolchain-funcs
+inherit flag-o-matic multilib-minimal toolchain-funcs usr-ldscript
 
 # Official patches
 # See ftp://ftp.cwru.edu/pub/bash/readline-7.0-patches/
@@ -28,7 +28,7 @@ patches() {
 }
 
 DESCRIPTION="Another cute console display library"
-HOMEPAGE="http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/readline/rltop.html"
 
 case ${PV} in
 	*_alpha*|*_beta*|*_rc*)
@@ -41,7 +41,7 @@ esac
 
 LICENSE="GPL-3"
 SLOT="0/8"  # subslot matches SONAME major
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs utils"
 
 RDEPEND=">=sys-libs/ncurses-5.9-r3:0=[static-libs?,${MULTILIB_USEDEP}]"

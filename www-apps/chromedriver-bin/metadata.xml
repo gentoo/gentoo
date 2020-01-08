@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>wizardedit@gentoo.org</email>
-    <name>Austin English</name>
+    <email>zmedico@gentoo.org</email>
   </maintainer>
   <longdescription>
     ChromeDriver is an open source tool for automated testing of webapps across many browsers.

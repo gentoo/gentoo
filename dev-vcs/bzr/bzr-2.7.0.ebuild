@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="http://bazaar-vcs.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris"
 IUSE="curl doc +sftp test"
 PLOCALES="ar ast bs ca cs de el en_AU en_GB es fa fo fr gl he id it ja ko ms my nb nl oc pl pt_BR ro ru sco si sk sr sv tr ug uk vi zh_CN"
 
@@ -82,10 +82,10 @@ python_install_all() {
 
 	if use doc; then
 		docinto developers
-		dodoc -r doc/developers/* || die
+		dodoc -r doc/developers/*
 		for doc in mini-tutorial tutorials user-{guide,reference}; do
 			docinto ${doc}
-			dodoc -r doc/en/${doc}/* || die
+			dodoc -r doc/en/${doc}/*
 		done
 	fi
 

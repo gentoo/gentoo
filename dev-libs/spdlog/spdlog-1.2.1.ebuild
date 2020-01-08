@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,9 +19,10 @@ fi
 LICENSE="MIT"
 SLOT="0/1"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
-	>=dev-libs/libfmt-5.0.0
+	dev-libs/libfmt:0/5
 "
 RDEPEND="${DEPEND}"
 

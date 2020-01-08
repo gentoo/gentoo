@@ -6,7 +6,7 @@
 # tex@gentoo.org
 # @AUTHOR:
 # Original Author: Alexis Ballier <aballier@gentoo.org>
-# @SUPPORTED_EAPIS: 3 4 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Provide various functions used by both texlive-core and texlive modules
 # @DESCRIPTION:
 # Purpose: Provide various functions used by both texlive-core and texlive
@@ -15,7 +15,7 @@
 # Note that this eclass *must* not assume the presence of any standard tex tool
 
 case "${EAPI:-0}" in
-	0|1|2)
+	0|1|2|3|4|5|6)
 		die "EAPI='${EAPI}' is not supported anymore"
 		;;
 	*)
@@ -140,7 +140,7 @@ dobin_texmf_scripts() {
 
 etexmf-update() {
 	if has_version 'app-text/texlive-core' ; then
-		if [ "$ROOT" = "/" ] && [ -x "${EPREFIX}"/usr/sbin/texmf-update ] ; then
+		if [ -z "${ROOT%/}" ] && [ -x "${EPREFIX}"/usr/sbin/texmf-update ] ; then
 			"${EPREFIX}"/usr/sbin/texmf-update
 		else
 			ewarn "Cannot run texmf-update for some reason."
@@ -158,7 +158,7 @@ etexmf-update() {
 
 efmtutil-sys() {
 	if has_version 'app-text/texlive-core' ; then
-		if [ "$ROOT" = "/" ] && [ -x "${EPREFIX}"/usr/bin/fmtutil-sys ] ; then
+		if [ -z "${ROOT%/}" ] && [ -x "${EPREFIX}"/usr/bin/fmtutil-sys ] ; then
 			einfo "Rebuilding formats"
 			"${EPREFIX}"/usr/bin/fmtutil-sys --all &> /dev/null
 		else

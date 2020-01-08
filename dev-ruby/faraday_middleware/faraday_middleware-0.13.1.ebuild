@@ -3,7 +3,7 @@
 
 EAPI=6
 
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 
@@ -37,7 +37,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/addressable
 	dev-ruby/rake
 	dev-ruby/webmock:3
-	dev-ruby/json:0
+	dev-ruby/json
 	>=dev-ruby/multi_xml-0.5.3
 	>=dev-ruby/rack-cache-1.1
 	>=dev-ruby/simple_oauth-0.1

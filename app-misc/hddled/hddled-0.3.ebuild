@@ -32,9 +32,9 @@ src_compile() {
 }
 
 src_install() {
-	dobin ${PN} || die
+	dobin ${PN}
 	if use X ; then
-		dobin x${PN} || die
+		dobin x${PN}
 		elog "X version was renamed to x${PN}"
 	fi
 }

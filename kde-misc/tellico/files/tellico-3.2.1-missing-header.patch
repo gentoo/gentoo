@@ -1,0 +1,48 @@
+From 43851a0a655a3a961f289087bdea989aa32cc028 Mon Sep 17 00:00:00 2001
+From: Luca Beltrame <lbeltrame@kde.org>
+Date: Sun, 21 Jul 2019 09:21:16 +0200
+Subject: Fix build with Qt 5.13
+
+(cherry picked from commit 43e6bbb4721adc83d8b2a77bd51d9efaf7aefd6b)
+---
+ src/gui/datewidget.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/gui/datewidget.cpp b/src/gui/datewidget.cpp
+index 724370e..e6502bb 100644
+--- a/src/gui/datewidget.cpp
++++ b/src/gui/datewidget.cpp
+@@ -35,6 +35,7 @@
+ #include <QPushButton>
+ #include <QHBoxLayout>
+ #include <QFrame>
++#include <QDate>
+ #include <QEvent>
+ #include <QMenu>
+ #include <QWidgetAction>
+-- 
+cgit v1.1
+
+From d3c56eca11cd059d4348ab6696822c23d85af61a Mon Sep 17 00:00:00 2001
+From: Robby Stephenson <robby@periapsis.org>
+Date: Sun, 21 Jul 2019 19:17:35 -0400
+Subject: Fix apparent build problem on Jenkins
+
+---
+ src/mainwindow.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/mainwindow.cpp b/src/mainwindow.cpp
+index d8348e8..8250c56 100644
+--- a/src/mainwindow.cpp
++++ b/src/mainwindow.cpp
+@@ -108,6 +108,7 @@
+ #include <QMimeType>
+ #include <QMenuBar>
+ #include <QFileDialog>
++#include <QMetaMethod>
+ 
+ #include <unistd.h>
+ 
+-- 
+cgit v1.1

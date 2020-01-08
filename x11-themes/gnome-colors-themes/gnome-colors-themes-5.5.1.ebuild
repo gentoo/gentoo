@@ -31,7 +31,7 @@ src_install() {
 	insinto /usr/share/icons
 	for i in gnome*; do
 		if [ "$i" != "gnome-colors-common" ]; then
-			doins -r "${i}" || die
+			doins -r "${i}"
 		fi
 	done
 	einstalldocs

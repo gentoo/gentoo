@@ -45,7 +45,7 @@ SRC_URI="
 
 LICENSE="GPL-3 GPL-2 LGPL-3+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
 
 src_prepare() {
 	# fixing file names

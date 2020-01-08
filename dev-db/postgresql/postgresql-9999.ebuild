@@ -1,21 +1,21 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
 PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN
 		 zh_TW"
 PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt-BR ro ru sk sl sv tr zh-CN
 		 zh-TW"
 inherit flag-o-matic git-r3 linux-info multilib pam prefix python-single-r1 \
-		systemd user versionator
+		systemd user
 
 KEYWORDS=""
 
 # Bump when rc released.
-SLOT="12"
+SLOT="13"
 
 EGIT_REPO_URI="https://git.postgresql.org/git/postgresql.git"
 
@@ -23,8 +23,9 @@ LICENSE="POSTGRESQL GPL-2"
 DESCRIPTION="PostgreSQL RDBMS"
 HOMEPAGE="https://www.postgresql.org/"
 
-IUSE="kerberos kernel_linux ldap libressl llvm nls pam perl python +readline
-	  selinux systemd ssl static-libs tcl threads uuid xml zlib"
+IUSE="debug icu kerberos kernel_linux ldap libressl llvm nls pam perl
+	  python +readline selinux systemd ssl static-libs tcl threads uuid
+	  xml zlib"
 for my_locale in ${PLOCALES}; do
 	IUSE+=" l10n_${my_locale}"
 done
@@ -35,13 +36,14 @@ CDEPEND="
 >=app-eselect/eselect-postgresql-2.0
 sys-apps/less
 virtual/libintl
+icu? ( dev-libs/icu:= )
 kerberos? ( virtual/krb5 )
 ldap? ( net-nds/openldap )
 llvm? (
 	sys-devel/llvm:=
 	sys-devel/clang:=
 )
-pam? ( virtual/pam )
+pam? ( sys-libs/pam )
 perl? ( >=dev-lang/perl-5.8:= )
 python? ( ${PYTHON_DEPS} )
 readline? ( sys-libs/readline:0= )
@@ -178,8 +180,10 @@ src_configure() {
 		--sysconfdir="${PO}/etc/postgresql-${SLOT}" \
 		--with-system-tzdata="${PO}/usr/share/zoneinfo" \
 		$(use_enable !alpha spinlocks) \
+		$(use_enable debug) \
 		$(use_enable nls nls "'$(my_get_locales)'") \
 		$(use_enable threads thread-safety) \
+		$(use_with icu) \
 		$(use_with kerberos gssapi) \
 		$(use_with ldap) \
 		$(use_with llvm) \
@@ -208,7 +212,11 @@ src_install() {
 	insinto /etc/postgresql-${SLOT}
 	newins src/bin/psql/psqlrc.sample psqlrc
 
-	use static-libs || find "${ED}" -name '*.a' -delete
+	# Don't delete libpg{port,common}.a (Bug #571046). They're always
+	# needed by extensions utilizing PGXS.
+	use static-libs || \
+		find "${ED}" -name '*.a' ! -name libpgport.a ! -name libpgcommon.a \
+			 -delete
 
 	sed -e "s|@SLOT@|${SLOT}|g" -e "s|@LIBDIR@|$(get_libdir)|g" \
 		"${FILESDIR}/${PN}.confd-9.3" | newconfd - ${PN}-${SLOT}

@@ -1,37 +1,30 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="HTML Include System by Ulli Meybohm"
 HOMEPAGE="http://www.meybohm.de/"
-SRC_URI="http://meybohm.de/files/${PN}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc sparc x86 ~x86-linux ~ppc-macos ~x86-macos"
-IUSE=""
 
-S=${WORKDIR}/htmlinc
+S="${WORKDIR}/${PN}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-gcc3-gentoo.patch
+	"${FILESDIR}"/${P}-fix-build-system.patch
+)
 
-src_prepare() {
-	epatch "${FILESDIR}"/htmlinc-gcc3-gentoo.patch
-	sed -i Makefile \
-		-e 's| -o | $(LDFLAGS)&|g' \
-		|| die "sed Makefile"
-}
-
-src_compile() {
-	# This is C++ not C source
-	emake \
-		CC=$(tc-getCXX) \
-		CFLAGS="${CXXFLAGS} -Wall" \
-		LDFLAGS="${LDFLAGS}"
+src_configure() {
+	tc-export CXX
+	append-cxxflags -Wall
 }
 
 src_install() {
 	dobin htmlinc
-	dodoc README
+	einstalldocs
 }

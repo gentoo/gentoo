@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/plotutils/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 ~s390 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+png static-libs X"
 
 DEPEND="

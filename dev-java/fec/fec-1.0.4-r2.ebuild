@@ -57,7 +57,7 @@ src_compile() {
 
 	cd "${S}"/src/csrc || die
 	append-flags -fPIC
-	emake CC=$(tc-getCC) CFLAGS="${CFLAGS} $(java-pkg_get-jni-cflags)" || die
+	emake CC=$(tc-getCC) CFLAGS="${CFLAGS} $(java-pkg_get-jni-cflags)"
 	einfo "Sucessfully compiled C files!"
 }
 
@@ -65,5 +65,5 @@ src_install() {
 	java-pkg_newjar "lib/onion-${PN}.jar" "${PN}.jar"
 	use doc && java-pkg_dojavadoc javadoc
 	use source && java-pkg_dosrc src/com
-	dolib.so src/csrc/libfec{8,16}.so || die
+	dolib.so src/csrc/libfec{8,16}.so
 }

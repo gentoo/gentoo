@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 PYTHON_REQ_USE="xml"
 
 inherit linux-info python-any-r1 readme.gentoo-r1
@@ -15,7 +15,7 @@ else
 	ARCHIVE_URI="ftp://ftp.infradead.org/pub/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
-VPNC_VER=20190117
+VPNC_VER=20190611
 SRC_URI="${ARCHIVE_URI}
 	ftp://ftp.infradead.org/pub/vpnc-scripts/vpnc-scripts-${VPNC_VER}.tar.gz"
 
@@ -81,7 +81,7 @@ src_configure() {
 	if use doc; then
 		python_setup
 	else
-		export PYTHON=/bin/false
+		export ac_cv_path_PYTHON=
 	fi
 
 	# Used by tests if userpriv is disabled

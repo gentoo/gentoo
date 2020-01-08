@@ -5,6 +5,10 @@
 		<email>base-system@gentoo.org</email>
 		<name>Gentoo Base System</name>
 	</maintainer>
+	<use>
+		<flag name="bcrypt">build the bcrypt password encryption algorithm</flag>
+		<flag name="su">build the su program</flag>
+	</use>
 	<!-- only for USE=pam -->
 	<upstream>
 		<remote-id type="cpe">cpe:/a:debian:shadow</remote-id>

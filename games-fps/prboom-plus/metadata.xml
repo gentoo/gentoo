@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		PrBoom+ is a Doom source port developed from the original PrBoom project.
+	</longdescription>
+	<maintainer type="person">
+		<email>vilhelm.gray@gmail.com</email>
+		<name>William Breathitt Gray</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<use>
+		<flag name="dumb">Enable support for various tracker-style music formats via <pkg>media-libs/dumb</pkg></flag>
+		<flag name="fluidsynth">Enable support for MIDI via <pkg>media-sound/fluidsynth</pkg></flag>
+		<flag name="net">Enable support for network play</flag>
+		<flag name="nonfree">Enable non-free components</flag>
+		<flag name="portmidi">Enable support for MIDI via <pkg>media-libs/portmidi</pkg></flag>
+		<flag name="sdl-image">Enable support for high-resolution texture support via <pkg>media-libs/sdl-image</pkg></flag>
+		<flag name="sdl-mixer">Enable support for MIDI via <pkg>media-libs/sdl-mixer</pkg></flag>
+	</use>
+	<upstream>
+		<bugs-to>https://sourceforge.net/p/prboom-plus/bugs</bugs-to>
+		<doc lang="en">https://prboom-plus.sourceforge.net</doc>
+		<remote-id type="sourceforge">prboom-plus</remote-id>
+	</upstream>
+</pkgmetadata>

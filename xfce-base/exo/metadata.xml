@@ -5,4 +5,7 @@
     <email>xfce@gentoo.org</email>
     <name>XFCE Team</name>
   </maintainer>
+  <use>
+    <flag name='gtk2'>Build deprecated GTK+2 libexo-1 library.</flag>
+  </use>
 </pkgmetadata>

@@ -13,7 +13,7 @@ SRC_URI="https://github.com/fancycode/pylzma/archive/v${PV}.tar.gz -> ${P}.gh.ta
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND=""

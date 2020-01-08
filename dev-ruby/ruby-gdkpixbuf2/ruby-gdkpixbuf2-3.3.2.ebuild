@@ -11,7 +11,7 @@ inherit ruby-ng-gnome2
 RUBY_S=ruby-gnome2-all-${PV}/${RUBY_FAKEGEM_NAME}
 
 DESCRIPTION="Ruby GdkPixbuf2 bindings"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND+=" x11-libs/gtk+:2"

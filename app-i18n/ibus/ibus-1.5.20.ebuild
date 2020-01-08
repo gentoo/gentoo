@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 VALA_MIN_API_VERSION="0.34"
 VALA_USE_DEPEND="vapigen"
 
@@ -14,8 +14,9 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 ia64 ppc ppc64 sparc x86"
 IUSE="+X +emoji gconf +gtk +gtk2 +introspection kde nls +python test +unicode vala wayland"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="emoji? ( gtk )
 	gtk2? ( gtk )
 	kde? ( gtk )
@@ -62,7 +63,6 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	$(vala_depend)
 	dev-util/glib-utils
-	dev-util/intltool
 	virtual/pkgconfig
 	emoji? (
 		app-i18n/unicode-cldr

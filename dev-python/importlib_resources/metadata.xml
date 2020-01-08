@@ -9,6 +9,14 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>sbraz@gentoo.org</email>
+		<name>Louis Sautier</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>python@gentoo.org</email>
+		<name>Python</name>
+	</maintainer>
 	<longdescription>
 		Backport of Python 3.7’s standard library importlib.resources
 		module for Python 2.7, and 3.4 through 3.6. Users of Python
@@ -18,5 +26,7 @@
 	</longdescription>
 	<upstream>
 		<remote-id type="gitlab">python-devs/importlib_resources</remote-id>
+		<remote-id type="pypi">importlib_resources</remote-id>
+		<bugs-to>https://gitlab.com/python-devs/importlib_resources/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

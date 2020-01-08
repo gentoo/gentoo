@@ -8,4 +8,7 @@
 	<upstream>
 		<remote-id type="github">FluidSynth/fluidsynth</remote-id>
 	</upstream>
+	<use>
+		<flag name="network">enable network support (requires BSD sockets)</flag>
+	</use>
 </pkgmetadata>

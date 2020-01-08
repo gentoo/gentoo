@@ -29,11 +29,10 @@ IUSE="client-libs debug extraengine jemalloc latin1 libressl numa
 	test yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="libressl? ( test )"
+RESTRICT="!test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )
-	?? ( yassl libressl )
-	static? ( yassl !libressl )"
+	static? ( yassl )"
 
 KEYWORDS="~amd64 ~x86"
 
@@ -486,13 +485,13 @@ src_test() {
 
 	local t
 	for t in main.mysql_client_test \
-                        binlog.binlog_statement_insert_delayed main.information_schema \
-                        main.mysqld--help-notwin main.flush_read_lock_kill \
-                        sys_vars.plugin_dir_basic main.openssl_1 \
-			binlog.binlog_mysqlbinlog_filter \
-			perfschema.binlog_edge_mix perfschema.binlog_edge_stmt \
-			funcs_1.is_columns_mysql funcs_1.is_tables_mysql funcs_1.is_triggers \
-                        main.mysqlhotcopy_archive main.mysqlhotcopy_myisam ; do
+				binlog.binlog_statement_insert_delayed main.information_schema \
+				main.mysqld--help-notwin main.flush_read_lock_kill \
+				sys_vars.plugin_dir_basic main.openssl_1 \
+				binlog.binlog_mysqlbinlog_filter \
+				perfschema.binlog_edge_mix perfschema.binlog_edge_stmt \
+				funcs_1.is_columns_mysql funcs_1.is_tables_mysql funcs_1.is_triggers \
+				main.mysqlhotcopy_archive main.mysqlhotcopy_myisam ; do
 			_disable_test  "$t" "False positives in Gentoo"
 	done
 

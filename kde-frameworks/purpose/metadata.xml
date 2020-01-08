@@ -6,6 +6,7 @@
 		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<use>
+		<flag name="dolphin">Enable support for sharing files from <pkg>kde-apps/dolphin</pkg></flag>
 		<flag name="kaccounts">Enable support for system-wide defined KAccounts</flag>
 	</use>
 </pkgmetadata>

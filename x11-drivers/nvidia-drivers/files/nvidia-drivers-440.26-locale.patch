@@ -1,0 +1,13 @@
+--- a/kernel/conftest.sh
++++ b/kernel/conftest.sh
+@@ -6,6 +6,10 @@
+ SCRIPTDIR=`dirname $0`
+ cd $SCRIPTDIR
+ 
++# translate_and_compile_header_files() expects the default locale
++# https://bugs.gentoo.org/698238
++export LC_ALL=C
++
+ CC="$1"
+ ARCH=$2
+ ISYSTEM=`$CC -print-file-name=include 2> /dev/null`

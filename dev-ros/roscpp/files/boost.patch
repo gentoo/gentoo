@@ -1,0 +1,26 @@
+commit 41f18edc9f2f0b1ef304ea25f148bd56a6bf3d70
+Author: Maarten de Vries <maarten@de-vri.es>
+Date:   Thu Jan 31 00:58:29 2019 +0100
+
+    Remove signals from find_package(Boost COMPONENTS ...) (#1580)
+    
+    The packages use signals2, not signals. Only boost libraries with
+    compiled code should be passed to find_package(Boost COMPONENTS ...),
+    and the signals2 library has always been header only.
+    
+    Boost 1.69 has removed the deprecated signals library, so the otherwise
+    useless but harmless `signals` component now breaks the build.
+
+diff --git a/clients/roscpp/CMakeLists.txt b/clients/roscpp/CMakeLists.txt
+index a5d354ea6..8f462df2c 100644
+--- a/clients/roscpp/CMakeLists.txt
++++ b/clients/roscpp/CMakeLists.txt
+@@ -22,7 +22,7 @@ list(GET roscpp_VERSION_LIST 2 roscpp_VERSION_PATCH)
+ 
+ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/include/ros/common.h.in ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION}/ros/common.h)
+ 
+-find_package(Boost REQUIRED COMPONENTS chrono filesystem signals system)
++find_package(Boost REQUIRED COMPONENTS chrono filesystem system)
+ 
+ include_directories(include ${CATKIN_DEVEL_PREFIX}/${CATKIN_GLOBAL_INCLUDE_DESTINATION}/ros ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+ 

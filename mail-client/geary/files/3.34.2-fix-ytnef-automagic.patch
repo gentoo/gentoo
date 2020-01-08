@@ -1,0 +1,32 @@
+From 91f78fb411bc2bf1e2269ceab02740e9cb969c9b Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Thu, 26 Dec 2019 19:28:07 +0200
+Subject: [PATCH] build: Fix automagic dependency on ytnef library
+
+It would be best to use meson feature option type for ytnef and unwind,
+but for now fix the automagic dependency on ytnef with the existing
+meson_options.txt setup.
+It was adding ytnef to list of dependencies unconditionally, and then
+also if tnef-support was enabled. So if the option was disabled, but the
+pkg-config file was present, it would still link to it surprisingly.
+Just remove the unconditional addition to dep, and rely on the already
+existing conditional addition to deps.
+---
+ src/engine/meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/engine/meson.build b/src/engine/meson.build
+index cb61c2aa..23b5fa48 100644
+--- a/src/engine/meson.build
++++ b/src/engine/meson.build
+@@ -325,7 +325,6 @@ geary_engine_dependencies = [
+   gmime,
+   libmath,
+   libxml,
+-  libytnef,
+   posix,
+   sqlite
+ ]
+-- 
+2.20.1
+

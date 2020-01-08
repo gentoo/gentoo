@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ DESCRIPTION="GNU C library compatible strftime for loggers and servers"
 SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE="test minimal"
+RESTRICT="!test? ( test )"
 
 # POSIX -> perl
 RDEPEND="

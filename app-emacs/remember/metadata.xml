@@ -20,4 +20,7 @@
   <flag name="bbdb">Include support for <pkg>app-emacs/bbdb</pkg></flag>
   <flag name="planner">Include support for <pkg>app-emacs/planner</pkg></flag>
 </use>
+<upstream>
+  <remote-id type="github">jwiegley/remember</remote-id>
+</upstream>
 </pkgmetadata>

@@ -1,0 +1,32 @@
+From 7d00e58157bc61168a057cde91a6e5b54dca573b Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Mon, 2 Dec 2019 20:52:04 +0100
+Subject: build: remove stray @ sign in manpage
+
+Because the sed command was not matching the trailing @, it
+was left in the manpage, leading to
+
+NAME
+       ebtables-legacy (2.0.11@) - Ethernet bridge frame table administration (legacy)
+
+Signed-off-by: Jan Engelhardt <jengelh@inai.de>
+Signed-off-by: Pablo Neira Ayuso <pablo@netfilter.org>
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index b879941..6181003 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -64,6 +64,6 @@ ebtables-legacy-save: ebtables-save.in ${top_builddir}/config.status
+ 	${AM_V_GEN}sed -e 's![@]sbindir@!${sbindir}!g' <$< >$@
+ 
+ ebtables-legacy.8: ebtables-legacy.8.in ${top_builddir}/config.status
+-	${AM_V_GEN}sed -e 's![@]PACKAGE_VERSION!${PACKAGE_VERSION}!g' \
++	${AM_V_GEN}sed -e 's![@]PACKAGE_VERSION@!${PACKAGE_VERSION}!g' \
+ 		-e 's![@]PACKAGE_DATE@!${PROGDATE}!g' \
+ 		-e 's![@]LOCKFILE@!${LOCKFILE}!g' <$< >$@
+-- 
+cgit v1.2.1
+

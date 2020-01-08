@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 CMAKE_BUILD_TYPE="None"
-inherit cmake-utils eutils gnome2-utils python-single-r1 python-utils-r1 xdg-utils
+inherit cmake-utils eutils gnome2-utils python-single-r1 xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="https://www.gnuradio.org/"
@@ -25,6 +25,7 @@ if [[ ${PV} == "3.7.9999" ]]; then
 fi
 
 IUSE="+audio +alsa atsc +analog +digital channels doc dtv examples fcd fec +filter grc jack log noaa oss pager performance-counters portaudio +qt5 sdl test trellis uhd vocoder +utils wavelet wxwidgets zeromq"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		audio? ( || ( alsa oss jack portaudio ) )

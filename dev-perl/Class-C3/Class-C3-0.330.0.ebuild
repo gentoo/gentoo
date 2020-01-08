@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="A pragma to use the C3 method resolution order algortihm"
 SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~ppc-aix ~ppc-macos ~x64-macos ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Algorithm-C3-0.70.0

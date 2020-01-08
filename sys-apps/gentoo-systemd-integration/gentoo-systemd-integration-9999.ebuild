@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,10 +25,6 @@ RDEPEND=">=sys-apps/systemd-207
 	!sys-fs/udev"
 DEPEND=">=sys-apps/systemd-207
 	virtual/pkgconfig"
-
-if [[ ${PV} == 9999 ]]; then
-	DEPEND+=" sys-devel/systemd-m4"
-fi
 
 src_prepare() {
 	default

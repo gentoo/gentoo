@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 RESTRICT="test"
 
@@ -18,12 +18,12 @@ HOMEPAGE="https://weasyprint.org https://github.com/Kozea/WeasyPrint"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="jpeg jpeg2k test tiff"
+IUSE="jpeg test tiff"
 
 # Note: specific subslot of pango since it inlines some of pango headers.
 RDEPEND="
 	x11-libs/cairo
-	x11-libs/gdk-pixbuf[jpeg?,jpeg2k?,tiff?]
+	x11-libs/gdk-pixbuf[jpeg?,tiff?]
 	x11-libs/pango:0/0
 	>=dev-python/cairocffi-0.5[${PYTHON_USEDEP}]
 	>=dev-python/cffi-0.6:=[${PYTHON_USEDEP}]

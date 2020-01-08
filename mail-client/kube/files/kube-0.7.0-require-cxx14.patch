@@ -1,0 +1,37 @@
+Upstream commits combined (and backported) to save space:
+c38edcfe12b68585641eb925321067e3db811766
+6b15ef07013259176aac938ac529715aaf88fdfe
+fceffd0d10ff203334a933e99a3ea52593ea14d5
+
+Subject: [PATCH] Properly require c++ 14
+
+--- b/extensions/api/src/CMakeLists.txt
++++ b/extensions/api/src/CMakeLists.txt
+@@ -1,5 +1,4 @@
+ set(CMAKE_CXX_VISIBILITY_PRESET default)
+-set(CMAKE_CXX_STANDARD_REQUIRED 14)
+ 
+ find_package(Qt5 COMPONENTS REQUIRED Core Concurrent Quick Qml WebEngineWidgets Test WebEngine Gui)
+ find_package(KF5Mime 4.87.0 CONFIG REQUIRED)
+--- b/framework/src/CMakeLists.txt
++++ b/framework/src/CMakeLists.txt
+@@ -11,7 +11,6 @@
+ include(GenerateExportHeader)
+ 
+ set(CMAKE_CXX_VISIBILITY_PRESET default)
+-set(CMAKE_CXX_STANDARD_REQUIRED 14)
+ 
+ include_directories(. domain/mime/mimetreeparser domain/ domain/mime)
+ 
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -50,6 +50,9 @@ configure_file(kube_version.h.in ${CMAKE_BINARY_DIR}/kube_version.h)
+ 
+ enable_testing()
+ 
++set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
++
+ include_directories(${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_BINARY_DIR})
+ add_subdirectory(framework)
+ add_subdirectory(components)

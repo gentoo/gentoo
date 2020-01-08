@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Large Vocabulary Continuous Speech Recognition Engine"
-HOMEPAGE="http://julius.sourceforge.jp/"
+HOMEPAGE="https://github.com/julius-speech/julius"
 SRC_URI="mirror://sourceforge.jp/julius/56549/${P}.tar.gz"
 
 LICENSE="julius"

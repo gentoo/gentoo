@@ -11,7 +11,7 @@ HOMEPAGE="https://cgit.kde.org/kwebkitpart.git"
 SRC_URI="https://github.com/KDE/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-2"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 DEPEND="

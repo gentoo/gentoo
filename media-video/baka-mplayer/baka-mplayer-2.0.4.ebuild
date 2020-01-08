@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils qmake-utils
+EAPI=7
+
+inherit qmake-utils
 
 DESCRIPTION="Cross-platform libmpv-based multimedia player with uncluttered design"
 HOMEPAGE="http://bakamplayer.u8sand.net/"
@@ -13,7 +14,12 @@ SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE=""
 
-RDEPEND="dev-qt/qtcore:5
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
+RDEPEND="
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
@@ -21,18 +27,18 @@ RDEPEND="dev-qt/qtcore:5
 	dev-qt/qtx11extras:5
 	media-video/mpv[libmpv]
 	x11-libs/libX11"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/Baka-MPlayer-${PV}"
 
+PATCHES=( "${FILESDIR}/${P}-gcc5.patch" )
+
 src_prepare() {
+	default
 	# no need to install license
 	sed -e '/^INSTALLS/s:license::' -i src/Baka-MPlayer.pro || die
 	# put manual in our docdir
 	sed -e '/^manual.path/s:'${PN}':'${PF}':' -i src/Baka-MPlayer.pro || die
-
-	epatch "${FILESDIR}/${P}-gcc5.patch"
 }
 
 src_configure() {

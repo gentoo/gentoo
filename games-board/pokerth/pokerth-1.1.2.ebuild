@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit desktop gnome2-utils qmake-utils
+inherit desktop qmake-utils xdg
 
 DESCRIPTION="Texas Hold'em poker game"
 HOMEPAGE="https://www.pokerth.net/"
@@ -31,19 +31,27 @@ RDEPEND="dev-db/sqlite:3
 		media-libs/sdl-mixer[mod,vorbis]
 	)"
 DEPEND="${RDEPEND}
-	!dedicated? ( dev-qt/qtsql:5 )
-	virtual/pkgconfig"
+	dev-cpp/websocketpp
+	!dedicated? ( dev-qt/qtsql:5 )"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${P}-rc"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.1.1-boost-1.65-ambiguous-advance.patch
 	"${FILESDIR}"/${PN}-1.1.2-protobuf.patch
+	"${FILESDIR}"/${PN}-1.1.2-boost-1.66.patch
+	"${FILESDIR}"/${PN}-1.1.2-fix-includes.patch
+	# unbundle dev-cpp/websocketpp
+	"${FILESDIR}"/${PN}-1.1.2-system-websockets.patch
 )
 
 src_prepare() {
-	default
+	xdg_src_prepare
 	sed -i 's/!client//' *.pro || die
+
+	# delete bundled dev-cpp/websocketpp to be safe
+	rm -r src/third_party/websocketpp || die
 }
 
 src_configure() {
@@ -65,7 +73,3 @@ src_install() {
 		doicon -s 128 ${PN}.png
 	fi
 }
-
-pkg_preinst() { gnome2_icon_savelist; }
-pkg_postinst() { gnome2_icon_cache_update; }
-pkg_postrm() { gnome2_icon_cache_update; }

@@ -10,7 +10,7 @@ LICENSE="GPL-2"
 SRC_URI="mirror://sourceforge/squid-graph/${P}.tar.gz"
 
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND="dev-perl/GD[png]"
 

@@ -1,19 +1,33 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (26 Mar 2019)
-# LLVM/clang 8 cannot compile itself, fails with the linker complaining
-# about a missing symbol (clang::clangd::detail::log(..,..))
-=sys-devel/clang-8.0.0*
-=sys-devel/llvm-8.0.0*
+# Fabian Groffen <grobian@gentoo.org> (2019-11-11)
+# We mask all system headers, and only unmask the slot matching the OS
+# install in the version profiles
+sys-kernel/xnu-headers:10.12
+sys-libs/darwin-libc-headers:10.12
+sys-kernel/xnu-headers:10.13
+sys-libs/darwin-libc-headers:10.13
+sys-kernel/xnu-headers:10.14
+sys-libs/darwin-libc-headers:10.14
 
-# Fabian Groffen <grobian@gentoo.org> (22 Mar 2019)
+# Fabian Groffen <grobian@gentoo.org> (2019-04-30)
+# Fails to install, bug #684030
+=dev-lang/perl-5.28.2*
+
+# Fabian Groffen <grobian@gentoo.org> (2019-04-26)
+# LLVM/clang 7.1 crashes at runtime
+# llvm::optional_detail::OptionalStorage<llvm::ArrayRef<llvm::StringRef>,
+=sys-devel/clang-7.1.0*
+=sys-devel/llvm-7.1.0*
+
+# Fabian Groffen <grobian@gentoo.org> (2019-03-22)
 # Newer versions break because they insist on sysroot usage lacking
 # -lSystem as looked for by clang/llvm.  If your system got this
 # package, you have to emerge -C cmake and re-emerge it.
->dev-util/cmake-3.13.4
+>=dev-util/cmake-3.14
 
-# James Le Cuirot <chewi@gentoo.org> (29 Jul 2015)
+# James Le Cuirot <chewi@gentoo.org> (2015-07-29)
 # Recent Oracle releases only support recent Mac OS releases. We can't
 # keep old versions due to vulnerabilities.
 dev-java/oracle-jdk-bin

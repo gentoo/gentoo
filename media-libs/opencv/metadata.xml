@@ -13,22 +13,26 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 	<use>
 		<flag name="contrib">Install user contributed scripts from opencv_contrib (Experimental!)</flag>
 		<flag name="cuda">Enable NVIDIA Cuda computations support (Experimental!)</flag>
+		<flag restrict="&gt;=media-libs/opencv-4.1.2" name="download">Enable download during cmake configure</flag>
 		<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
+		<flag name="features2d">Enable features2d module</flag>
 		<flag name="gdal">Enable support for sci-libs/gdal library</flag>
+		<flag restrict="&gt;=media-libs/opencv-4.1.2" name="opencvapps">Enable compilation with opencvapps</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="gflags">Use Google's C++ argument parsing library</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="glog">Use Google's C++ loggin library</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_xfeatures2d">Enables xfeatures2d and autodownload of samples in contrib</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_cvv">CVV module requires Qt5</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.3.0" name="contrib_dnn">DNN module contrib requires tiny dnn</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_hdf">HDF module requires <pkg>sci-libs/hdf5</pkg></flag>
-		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contrib_sfm">SFM module requires eigen, gflags, and glog</flag>
-		<flag restrict="&gt;=media-libs/opencv-3.4.0" name="dnn_samples">Download dnn caffeemodel samples</flag>
+		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contribxfeatures2d">Enables xfeatures2d and autodownload of samples in contrib</flag>
+		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contribcvv">CVV module requires Qt5</flag>
+		<flag restrict="&gt;=media-libs/opencv-3.3.0" name="contribdnn">DNN module contrib requires tiny dnn</flag>
+		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contribhdf">HDF module requires <pkg>sci-libs/hdf5</pkg></flag>
+		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="contribsfm">SFM module requires eigen, gflags, and glog</flag>
+		<flag restrict="&gt;=media-libs/opencv-3.4.0" name="dnnsamples">Download dnn caffeemodel samples</flag>
 		<flag name="opencl">Add support for OpenCL</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="tesseract">Use Google's OCR Engine</flag>
 		<flag name="testprograms">Build and install programs for testing OpenCV (performance)</flag>
 		<flag name="vtk">Build new 3D visualization module viz based on sci-libs/vtk</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:opencv:opencv</remote-id>
 		<remote-id type="sourceforge">opencvlibrary</remote-id>
 		<remote-id type="github">Itseez/opencv_contrib</remote-id>
 	</upstream>

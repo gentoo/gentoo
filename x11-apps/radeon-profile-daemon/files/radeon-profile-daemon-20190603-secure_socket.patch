@@ -1,0 +1,26 @@
+From 47ddfbb7b85c3e99eb0d132078c989c0dfa2ea9b Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 13 Jun 2019 15:58:44 +0200
+Subject: [PATCH] Don't make the socket world writable
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ radeon-profile-daemon/rpdthread.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/radeon-profile-daemon/rpdthread.cpp b/radeon-profile-daemon/rpdthread.cpp
+index 8785efa..94a0d6f 100644
+--- a/radeon-profile-daemon/rpdthread.cpp
++++ b/radeon-profile-daemon/rpdthread.cpp
+@@ -47,7 +47,7 @@ void rpdThread::createServer()
+ 
+     QLocalServer::removeServer(serverSocketPath);
+     daemonServer.listen(serverSocketPath);
+-    QFile::setPermissions(serverSocketPath, QFile(serverSocketPath).permissions() | QFile::WriteOther | QFile::ReadOther);
++    QFile::setPermissions(serverSocketPath, QFile(serverSocketPath).permissions() | QFile::WriteGroup | QFile::ReadGroup);
+ }
+ 
+ void rpdThread::closeConnection()
+-- 
+2.22.0
+

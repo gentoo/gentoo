@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
+PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="Another form generation library"
@@ -36,5 +36,5 @@ src_install() {
 	# the docs would not actually work offline). Install the
 	# source, which is somewhat readable.
 	docinto docs
-	dodoc docs/*.rst || die
+	dodoc docs/*.rst
 }

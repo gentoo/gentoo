@@ -15,7 +15,7 @@ SRC_URI="mirror://idsoftware/${MY_PN}/${FILE}"
 # See license.txt - it's a bit different to Q2EULA in Portage
 LICENSE="quake2-demodata"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE="symlink"
 
 RDEPEND=""

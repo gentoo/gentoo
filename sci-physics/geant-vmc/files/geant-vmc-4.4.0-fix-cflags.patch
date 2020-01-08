@@ -1,0 +1,15 @@
+diff --git a/g4root/test/OpNovice/CMakeLists.txt b/g4root/test/OpNovice/CMakeLists.txt
+index 1a8f316c..a2e144b6 100644
+--- a/g4root/test/OpNovice/CMakeLists.txt
++++ b/g4root/test/OpNovice/CMakeLists.txt
+@@ -44,7 +44,9 @@ endif()
+ #----------------------------------------------------------------------------
+ # Setup Geant4 include directories and compile definitions
+ #
+-include(${Geant4_USE_FILE})
++# Workaround for upstream bug: http://bugzilla-geant4.kek.jp/show_bug.cgi?id=1663
++#include(${Geant4_USE_FILE})
++include(UseGeant4)
+ 
+ #----------------------------------------------------------------------------
+ # Locate sources and headers for this project

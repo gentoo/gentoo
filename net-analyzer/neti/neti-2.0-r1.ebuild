@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ DESCRIPTION="NETI@Home research project from GATech"
 HOMEPAGE="http://www.neti.gatech.edu"
 SRC_URI="mirror://sourceforge/neti/${P}.tar.gz"
 
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~ppc x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="zlib java"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,8 +10,8 @@ SRC_URI="mirror://sourceforge/zsnes/${PN}${PV//./}src.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="ao custom-cflags +debug opengl pax_kernel png"
+KEYWORDS="-* ~amd64 ~x86 ~amd64-linux ~x86-linux"
+IUSE="ao custom-cflags +debug opengl png"
 
 RDEPEND="
 	media-libs/libsdl[sound,video,abi_x86_32(-)]
@@ -105,10 +105,11 @@ src_compile() {
 }
 
 src_install() {
+	# Uses pic-unfriendly assembly code, bug #427104
+	QA_TEXTRELS="usr/bin/zsnes"
+
 	dobin zsnes
-	if use pax_kernel; then
-		pax-mark m "${D}""${GAMES_BINDIR}"/zsnes || die
-	fi
+	pax-mark m "${ED}${GAMES_BINDIR}"/zsnes
 
 	newman linux/zsnes.1 zsnes.6
 

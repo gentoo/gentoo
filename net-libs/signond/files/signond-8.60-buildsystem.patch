@@ -1,0 +1,51 @@
+From 43e953418a5a08c3492d1160e4268dbcf82e7be9 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 8 Dec 2019 20:35:11 +0100
+Subject: [PATCH] Fix build system for Gentoo
+
+1) remove unused dependency Qt5Xml
+2) don't install example plugin
+3) don't install static libs
+---
+ lib/SignOn/SignOn.pro   | 4 +---
+ src/plugins/plugins.pro | 1 -
+ src/signond/signond.pro | 1 -
+ 3 files changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/lib/SignOn/SignOn.pro b/lib/SignOn/SignOn.pro
+index f6a1d61..28af041 100644
+--- a/lib/SignOn/SignOn.pro
++++ b/lib/SignOn/SignOn.pro
+@@ -1,7 +1,5 @@
+ TEMPLATE = subdirs
+ CONFIG   += ordered
+-SUBDIRS = \
+-    libsignon-qt-shared.pro \
+-    libsignon-qt-static.pro
++SUBDIRS = libsignon-qt-shared.pro
+ 
+ include(doc/doc.pri)
+diff --git a/src/plugins/plugins.pro b/src/plugins/plugins.pro
+index dfccc4a..ca1c1ae 100644
+--- a/src/plugins/plugins.pro
++++ b/src/plugins/plugins.pro
+@@ -1,4 +1,3 @@
+ TEMPLATE = subdirs
+ SUBDIRS = password \
+-          example \
+           test
+diff --git a/src/signond/signond.pro b/src/signond/signond.pro
+index 60ee5e7..211dab6 100644
+--- a/src/signond/signond.pro
++++ b/src/signond/signond.pro
+@@ -4,7 +4,6 @@ TEMPLATE = app
+ TARGET = signond
+ QT += core \
+     sql \
+-    xml \
+     network \
+     dbus
+ 
+-- 
+2.24.0
+

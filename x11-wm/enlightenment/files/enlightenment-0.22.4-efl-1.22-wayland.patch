@@ -1,0 +1,65 @@
+From ea3f6ed68f948cea4b64432a6cdb72fca85e6987 Mon Sep 17 00:00:00 2001
+From: "Carsten Haitzler (Rasterman)" <raster@rasterman.com>
+Date: Fri, 22 Feb 2019 11:12:00 +0000
+Subject: e - unbreak build due to efl changes
+
+---
+ src/bin/e.h         | 1 +
+ src/bin/e_comp_wl.c | 8 ++++----
+ 2 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/bin/e.h b/src/bin/e.h
+index 7d00d819e..abe5ed731 100644
+--- a/src/bin/e.h
++++ b/src/bin/e.h
+@@ -17,6 +17,7 @@
+ # endif
+ 
+ #ifdef HAVE_WAYLAND
++# define EFL_EO_API_SUPPORT
+ # define EFL_BETA_API_SUPPORT
+ #endif
+ 
+diff --git a/src/bin/e_comp_wl.c b/src/bin/e_comp_wl.c
+index a9adad104..e56e4e6f8 100644
+--- a/src/bin/e_comp_wl.c
++++ b/src/bin/e_comp_wl.c
+@@ -2188,7 +2188,7 @@ _cb_early_frame_cb(void *data, const Efl_Event *event EINA_UNUSED)
+    if (ec->comp_data->early_frame++ > 15)
+      {
+        ec->comp_data->early_frame = 0;
+-       efl_event_callback_del(e_comp->evas, EFL_EVENT_ANIMATOR_TICK,
++       efl_event_callback_del(e_comp->evas, EFL_CANVAS_OBJECT_EVENT_ANIMATOR_TICK,
+                               _cb_early_frame_cb, data);
+      }
+ }
+@@ -2198,14 +2198,14 @@ _e_comp_wl_surface_early_frame(E_Client *ec)
+ {
+    if (e_comp_object_damage_exists(ec->frame))
+      {
+-        efl_event_callback_del(e_comp->evas, EFL_EVENT_ANIMATOR_TICK,
++        efl_event_callback_del(e_comp->evas, EFL_CANVAS_OBJECT_EVENT_ANIMATOR_TICK,
+                                _cb_early_frame_cb, ec);
+         ec->comp_data->early_frame = 0;
+         return;
+      }
+    if (ec->on_post_updates) return;
+    if (!ec->comp_data->early_frame)
+-       efl_event_callback_add(e_comp->evas, EFL_EVENT_ANIMATOR_TICK,
++       efl_event_callback_add(e_comp->evas, EFL_CANVAS_OBJECT_EVENT_ANIMATOR_TICK,
+                               _cb_early_frame_cb, ec);
+    ec->comp_data->early_frame = 1;
+ }
+@@ -2582,7 +2582,7 @@ _e_comp_wl_client_cb_del(void *data EINA_UNUSED, E_Client *ec)
+    /* make sure this is a wayland client */
+    if (e_pixmap_type_get(ec->pixmap) != E_PIXMAP_TYPE_WL) return;
+ 
+-   efl_event_callback_del(e_comp->evas, EFL_EVENT_ANIMATOR_TICK,
++   efl_event_callback_del(e_comp->evas, EFL_CANVAS_OBJECT_EVENT_ANIMATOR_TICK,
+                           _cb_early_frame_cb, ec);
+    ec->comp_data->early_frame = 0;
+ 
+-- 
+cgit v1.2.1
+
+

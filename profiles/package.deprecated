@@ -1,0 +1,75 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# This file specifies packages that are considered deprecated (but not
+# masked yet).  This will cause QA tools to report dependencies on those
+# packages as requiring replacement.
+#
+# When you add an entry to the top of this file, add your name, the date
+# in the UTC timezone, and an explanation of why something is getting
+# deprecated.
+#
+## Example:
+##
+## # Dev E. Loper <developer@gentoo.org> (2019-07-01)
+## # This is no longer supported upstream, please switch to dev-foo/bar.
+## dev-foo/foo
+
+#--- END OF EXAMPLES ---
+
+# Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-30)
+# Directly install net-vpn/wireguard-tools and net-vpn/wireguard-modules.
+# This may be accomplished by running:
+#     emerge -nO net-vpn/wireguard-tools net-vpn/wireguard-modules
+#     emerge -C virtual/wireguard
+virtual/wireguard
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-30)
+# PyPy packages have been restructured, and the virtual is no longer
+# necessary.  Depend on dev-python/pypy{,3} instead.
+virtual/pypy
+virtual/pypy3
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-29)
+# consumers should depend on virtual/rust,
+# bug https://bugs.gentoo.org/695698
+virtual/cargo
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
+# Unmaintained, vulnerable oracle java ebuilds, even fetching distfiles
+# requires agreement to restrictive license
+# Most things that still depend on oracle variants require javafx
+# https://bugs.gentoo.org/681828
+dev-java/oracle-jdk-bin
+dev-java/oracle-jre-bin
+
+# Ulrich Müller <ulm@gentoo.org> (2019-12-21)
+# Live ebuilds for Emacs from Git have been consolidated into the
+# app-editors/emacs package, which makes the virtual unnecessary.
+# Packages should depend on >=app-editors/emacs-23.1:* instead.
+# See the documentation of elisp-common.eclass for details.
+# Removal (without prior masking) in 90 days, or after the release
+# of Emacs 27.1, whatever will occur later. Bug #291296.
+virtual/emacs
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-09)
+# The pycrypto project is long dead, and has been forked into
+# dev-python/pycryptodome that's not entirely API compatible.  Many
+# upstreams prefer switching to dev-python/cryptography instead.
+dev-python/pycrypto
+
+# Michał Górny <mgorny@gentoo.org> (2019-12-09)
+# Test coverage reporting is not useful for Gentoo ebuilds.  The deps
+# against coverage plugins are either entirely spurious, or the build
+# systems need to be fixed to work without them.
+dev-python/nose-cover3
+dev-python/nosexcover
+dev-python/pytest-cov
+
+# Zac Medico <zmedico@gentoo.org> (2019-12-06)
+# These golang libraries should be vendored either by upstream or via
+# the EGO_VENDOR variable.
+dev-go/go-crypto
+dev-go/go-net
+dev-go/go-sys
+dev-go/go-sqlite3

@@ -1,5 +1,5 @@
---- te_subs.c.orig	2007-03-18 19:58:40 +0100
-+++ te_subs.c	2007-03-18 19:58:57 +0100
+--- teco-orig/te_subs.c
++++ teco/te_subs.c
 @@ -231,7 +231,7 @@
      char c;
      {

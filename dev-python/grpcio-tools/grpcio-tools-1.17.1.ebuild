@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
-inherit distutils-r1
+PYTHON_COMPAT=( python2_7 python3_6 )
+inherit distutils-r1 multiprocessing
 
 DESCRIPTION="Protobuf code generator for gRPC"
 HOMEPAGE="https://grpc.io"
@@ -24,6 +24,7 @@ DEPEND="${RDEPEND}
 "
 
 python_compile() {
+	export GRPC_PYTHON_BUILD_EXT_COMPILER_JOBS="$(makeopts_jobs)"
 	export GRPC_PYTHON_BUILD_WITH_CYTHON=1
 	distutils-r1_python_compile
 }

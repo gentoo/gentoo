@@ -6,7 +6,7 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="A program which listens to network traffic and picks out images from TCP streams it observes"
 HOMEPAGE="http://www.ex-parrot.com/~chris/driftnet/"
-SRC_URI="mirror://github/rbu/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/downloads/rbu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ppc -sparc x86"

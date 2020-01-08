@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>mips@gentoo.org</email>
 		<name>Mips Team</name>
 	</maintainer>
-
 	<longdescription>
-		Provides utilities for Cobalt Microserver systems to write to the LCD and read button input
+		Provides utilities for the (Sun) Cobalt Microserver Systems
+		to write to the LCD and read the button input.
 	</longdescription>
 </pkgmetadata>

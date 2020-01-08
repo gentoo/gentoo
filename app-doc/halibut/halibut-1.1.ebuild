@@ -20,15 +20,14 @@ src_compile() {
 	LFLAGS="${LDFLAGS}" \
 	emake -j1 \
 		BUILDDIR="${S}/build" \
-		VERSION="${PV}" \
-		|| die "make failed"
+		VERSION="${PV}"
 
-	emake -C doc || die "make in doc failed"
+	emake -C doc
 }
 
 src_install() {
-	dobin build/halibut || die
-	doman doc/halibut.1 || die
+	dobin build/halibut
+	doman doc/halibut.1
 	dodoc doc/halibut.txt
 	dohtml doc/*.html
 }

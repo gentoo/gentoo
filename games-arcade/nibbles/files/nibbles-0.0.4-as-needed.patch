@@ -1,12 +1,12 @@
---- Makefile.old	2009-02-02 12:40:36.000000000 +0100
-+++ Makefile	2009-02-02 12:41:22.000000000 +0100
+--- a/Makefile
++++ b/Makefile
 @@ -1,19 +1,14 @@
 -CC = gcc -Wall -g
 -
  SRCS = player.c main.c loadMap.c cmdline.c ncdrawlib.c scoring.c 
  OBJS = $(SRCS:.c=.o)
 -LIBS = -lncurses
-+LDLIBS = -lncurses
++LDLIBS = $(shell $(PKGCONFIG) --libs ncurses)
  
  INSTALL=/usr/bin/install -c
  INSTALL_FOLDER=/usr/games

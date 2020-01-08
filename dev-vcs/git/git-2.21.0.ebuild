@@ -37,7 +37,7 @@ DESCRIPTION="stupid content tracker: distributed VCS designed for speed and effi
 HOMEPAGE="https://www.git-scm.com/"
 if [[ ${PV} != *9999 ]]; then
 	SRC_URI_SUFFIX="xz"
-	SRC_URI_KORG="mirror://kernel/software/scm/git"
+	SRC_URI_KORG="https://www.kernel.org/pub/software/scm/git"
 	[[ "${PV/rc}" != "${PV}" ]] && SRC_URI_KORG+='/testing'
 	SRC_URI="${SRC_URI_KORG}/${MY_P}.tar.${SRC_URI_SUFFIX}
 			${SRC_URI_KORG}/${PN}-manpages-${DOC_VER}.tar.${SRC_URI_SUFFIX}
@@ -45,12 +45,12 @@ if [[ ${PV} != *9999 ]]; then
 			${SRC_URI_KORG}/${PN}-htmldocs-${DOC_VER}.tar.${SRC_URI_SUFFIX}
 			)"
 	[[ "${PV}" = *_rc* ]] || \
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +pcre-jit +perl +python ppcsha1 tk +threads +webdav xinetd cvs subversion test"
+IUSE="+blksha1 +curl cgi doc emacs gnome-keyring +gpg highlight +iconv libressl mediawiki mediawiki-experimental +nls +pcre +pcre-jit +perl +python +ppcsha1 tk +threads +webdav xinetd cvs subversion test"
 
 # Common to both DEPEND and RDEPEND
 CDEPEND="
@@ -68,7 +68,8 @@ CDEPEND="
 		net-misc/curl
 		webdav? ( dev-libs/expat )
 	)
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
+	iconv? ( virtual/libiconv )
 "
 
 RDEPEND="${CDEPEND}
@@ -76,7 +77,6 @@ RDEPEND="${CDEPEND}
 	perl? (
 		dev-perl/Error
 		dev-perl/MailTools
-		dev-perl/Net-SMTP-SSL
 		dev-perl/Authen-SASL
 		cgi? (
 			dev-perl/CGI
@@ -135,6 +135,8 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	# bug #350330 - automagic CVS when we don't want it is bad.
 	"${FILESDIR}"/git-2.18.0_rc1-optional-cvs.patch
@@ -165,7 +167,7 @@ exportmakeopts() {
 		$(usex perl 'INSTALLDIRS=vendor NO_PERL_CPAN_FALLBACKS=YesPlease' NO_PERL=YesPlease)
 		$(usex python '' NO_PYTHON=YesPlease)
 		$(usex subversion '' NO_SVN_TESTS=YesPlease)
-		$(usex threads THREADED_DELTA_SEARCH=YesPlease NO_PTHREAD=YesPlease)
+		$(usex threads '' NO_PTHREAD=YesPlease)
 		$(usex tk '' NO_TCLTK=YesPlease)
 	)
 
@@ -242,8 +244,10 @@ exportmakeopts() {
 
 	# Bug 290465:
 	# builtin-fetch-pack.c:816: error: 'struct stat' has no member named 'st_mtim'
-	[[ "${CHOST}" == *-uclibc* ]] && \
+	if [[ "${CHOST}" == *-uclibc* ]] ; then
 		myopts+=( NO_NSEC=YesPlease )
+		use iconv && myopts+=( NEEDS_LIBICONV=YesPlease )
+	fi
 
 	export MY_MAKEOPTS="${myopts[@]}"
 	export EXTLIBS="${extlibs[@]}"
@@ -531,7 +535,7 @@ src_install() {
 		# but upstream installs in /usr/share/gitweb
 		# so we will install a symlink and use their location for compat with other
 		# distros
-		dosym /usr/share/gitweb /usr/share/${PN}/gitweb
+		dosym ../gitweb /usr/share/${PN}/gitweb
 
 		# INSTALL discusses configuration issues, not just installation
 		docinto /

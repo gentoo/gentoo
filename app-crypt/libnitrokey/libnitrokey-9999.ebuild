@@ -1,9 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-: ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 inherit cmake-utils udev
 
 DESCRIPTION="Support library for the Nitrokey"
@@ -30,14 +29,12 @@ RDEPEND="
 	virtual/udev"
 DEPEND="
 	${RDEPEND}
-	virtual/pkgconfig
-	test? ( >=dev-cpp/catch-2.2.0:0 )"
+	test? ( >=dev-cpp/catch-2.5.0:0 )"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_UDEVRULESDIR="$(get_udevdir)"/rules.d
-		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
-		-DBUILD_SHARED_LIBS=ON
 
 		# actual hardware tests
 		#   1. require a connected Nitrokey

@@ -1,52 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>thebitpit@earthlink.net</email>
+		<name>Wilson Michaels</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<use>
-		<flag name="alsa">Allows MythTV to directly output sound to ALSA devices,
-		this is needed if you are using ALSA dmix or SPDIF. Note, you will have
-		to physically type your device into the MythTV configuration since it
-		will only give you /dev/dsp devices in the drop down.</flag>
-		<flag name="altivec">Builds ffmpeg's codec libraries with altivec
-		support.</flag>
-		<flag name="autostart">Uses a custom autostart configuration gleaned from
-		experience with MythTV since its early versions and discussed with
-		other MythTV maintainers and users. Does not rely on KDE being installed
-		like most methods do.</flag>
-		<flag name="bluray">Pulls in libbluray for BluRay support.</flag>
-		<flag name="cec">Allows you to control CEC enabled TVs via HDMI. Currently
-		requires a USB based CEC -&gt; HDMI injector between your TV and video
-		card since no graphics drivers support CEC natively.</flag>
-		<flag name="crystalhd">Allows you to utilize a Broadcom CrystalHD hardware
-		based video decoder to improve the performance of video decode.</flag>
-		<flag name="debug">Instructs Qt to use the 'debug' target instead of
-		'release' target. If your MythTV is crashing or you need a backtrace,
-		you need to compile it with this option otherwise the debugging data is
-		useless.</flag>
-		<flag name="egl">Support EGL video output.</flag>
+		<flag name="alsa">Allows MythTV to directly output sound to ALSA devices</flag>
+		<flag name="asi">Support for DVEO ASI recorder</flag>
+		<flag name="autostart">Use a custom autostart configuration</flag>
+		<flag name="bluray">Use the system libbluray for BluRay support</flag>
+		<flag name="cec">Allows control of CEC enabled TVs via HDMI</flag>
+		<flag name="ceton">Ceton InfiniTV 4 a CableCARD-enabled tuner support</flag>
+		<flag name="debug">Instructs Qt to use the 'debug' target</flag>
+		<flag name="egl">EGL video output support</flag>
 		<flag name="fftw">Support visualizations via <pkg>sci-libs/fftw</pkg></flag>
+		<flag name="hdhomerun">Silicondust USA Inc.network-attached tuner support</flag>
+		<flag name="hdpvr">Hauppauge HD-PVR?</flag>
 		<flag name="hls">HTTP Live Streaming support</flag>
-		<flag name="ieee1394">Allows MythTV to communicate and use Firewire enabled
-		Cable boxes. These are typically found in the United States, where such
-		support is required by law. This will also install Firewire test
-		programs and external channel changers if the internal changer does not
-		work.</flag>
-		<flag name="jack">Allows MythTV to use JACK as your sound output device. You
-		will have to manually configure the path to your JACK settings.</flag>
-		<flag name="lcd">Tells MythTV that you have an instance of
-		<pkg>app-misc/lcdproc</pkg> configured on your machine and it should
-		output information such as current time, show name, episode name, etc to
-		that LCD.</flag>
-		<flag name="lirc">Adds LIRC support directly to MythTV allowing for built in
-		control via a LIRC device.</flag>
-		<flag name="mythlogserver">Enable support for syslog and file logging. Not
-		used with systemd.</flag>
-		<flag name="perl">Builds the perl bindings for MythTV. Allows you to write
-		scripts in Perl to control your MythTV setup or communicate with
-		it.</flag>
-		<flag name="wrapper">Use Ubuntu mythtfrontend wrapper.</flag>
-		<flag name="xmltv">Pulls in the <pkg>media-tv/xmltv</pkg> TV listing
-		grabbers for users not using Schedules Direct.</flag>
+		<flag name="ieee1394">Firewire enabled Cable boxe support</flag>
+		<flag name="ivtv">Support kernel driver for the iTVC15 family of MPEG codecs</flag>
+		<flag name="jack">Allows MythTV to use JACK as your sound output device</flag>
+		<flag name="java">BD-J support for Blu-ray discs</flag>
+		<flag name="lcd">Enable use of <pkg>app-misc/lcdproc</pkg> data display</flag>
+		<flag name="lirc">LIRC remote control device support</flag>
+		<flag name="mythlogserver">Enable support for syslog and file logging</flag>
+		<flag name="perl">Build the perl bindings for MythTV</flag>
+		<flag name="vbox">V@Box Communications network-attached tuner devices support</flag>
+		<flag name="vpx">Enable VP8/VP9 support for <pkg>media-libs/libvpx</pkg></flag>
+		<flag name="wrapper">Use Ubuntu mythtfrontend wrapper</flag>
+		<flag name="x265">Enable h265 encoding using x265</flag>
+		<flag name="xmltv">Support <pkg>media-tv/xmltv</pkg> TV listing - not used by Schedules Direct]</flag>
+		<flag name="xnvctrl">External XNVCtrl support using Nvidia proprietary driver</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">MythTV/mythtv</remote-id>

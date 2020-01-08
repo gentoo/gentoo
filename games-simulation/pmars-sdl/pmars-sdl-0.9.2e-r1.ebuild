@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,7 +46,7 @@ src_compile() {
 		LIB="-L/usr/X11R6/lib -lX11"
 	else
 		CFLAGS="${CFLAGS} -DCURSESGRAPHX"
-		LIB="-lcurses"
+		LIB="-lcurses -ltinfo"
 	fi
 
 	cd src

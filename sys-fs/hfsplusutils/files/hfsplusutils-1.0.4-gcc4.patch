@@ -1,5 +1,5 @@
---- hfsplus-1.0.4/libhfsp/src/btree.c~	2002-03-05 19:50:28.000000000 +0000
-+++ hfsplus-1.0.4/libhfsp/src/btree.c	2005-04-30 12:48:48.000000000 +0100
+--- a/libhfsp/src/btree.c
++++ b/libhfsp/src/btree.c
 @@ -393,7 +393,7 @@ static int btree_init(btree* bt, volume*
  	{
  	    p = volume_readfromfork(vol, nodebuf, fork, 0, bt->blkpernode,
@@ -9,8 +9,8 @@
  	}
  	
  	bt->alloc_bits = malloc(alloc_size);
---- hfsplus-1.0.4/libhfsp/src/swab.h~	2002-03-05 19:50:29.000000000 +0000
-+++ hfsplus-1.0.4/libhfsp/src/swab.h	2005-04-30 12:48:05.000000000 +0100
+--- a/libhfsp/src/swab.h
++++ b/libhfsp/src/swab.h
 @@ -36,28 +36,28 @@
  
  #define bswabU16(val) bswap_16(val)
@@ -56,8 +56,8 @@
 -#define bstoreU8_inc(ptr,val)	(*((UInt8*) (ptr))++) = val
 +#define bswabU8_inc(ptr)	(*(*((UInt8**) (void *)(&ptr)))++)
 +#define bstoreU8_inc(ptr,val)	(*(*((UInt8**) (void *)(&ptr)))++) = val
---- hfsplus-1.0.4/libhfsp/src/btreecheck.c~	2002-03-05 19:50:29.000000000 +0000
-+++ hfsplus-1.0.4/libhfsp/src/btreecheck.c	2005-04-30 12:49:22.000000000 +0100
+--- a/libhfsp/src/btreecheck.c
++++ b/libhfsp/src/btreecheck.c
 @@ -264,7 +264,7 @@ static int fscheck_btree_init(btree* bt,
  	{
  	    p = volume_readfromfork(vol, nodebuf, fork, 0, bt->blkpernode,
@@ -67,8 +67,8 @@
  	}
  	
  	bt->alloc_bits = malloc(alloc_size);
---- hfsplus-1.0.4/libhfsp/src/fscheck.c~	2002-03-25 15:48:37.000000000 +0000
-+++ hfsplus-1.0.4/libhfsp/src/fscheck.c	2005-04-30 12:50:26.000000000 +0100
+--- a/libhfsp/src/fscheck.c
++++ b/libhfsp/src/fscheck.c
 @@ -230,7 +230,7 @@ static int fscheck_volume_readbuf(volume
      vh->write_count	= bswabU32_inc(p);
      vh->encodings_bmp	= bswabU64_inc(p);
@@ -94,8 +94,8 @@
  	signature = bswabU16_inc(p);	/* offset 0x7C, drEmbedSigWord */
  	if (signature != HFSP_VOLHEAD_SIG)
  	    HFSP_ERROR(-1, "This looks like a normal HFS volume");
---- hfsplus-1.0.4/libhfsp/src/volume.c~	2002-03-26 18:00:29.000000000 +0000
-+++ hfsplus-1.0.4/libhfsp/src/volume.c	2005-04-30 12:51:41.000000000 +0100
+--- a/libhfsp/src/volume.c
++++ b/libhfsp/src/volume.c
 @@ -345,7 +345,7 @@ static int volume_readbuf(hfsp_vh* vh, v
      vh->write_count	= bswabU32_inc(p);
      vh->encodings_bmp	= bswabU64_inc(p);

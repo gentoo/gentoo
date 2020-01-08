@@ -1,0 +1,13 @@
+https://sourceforge.net/p/alleg/bugs/398/
+
+--- a/addons/jpgalleg/src/decode.c	2008-02-13 14:04:57.000000000 +0100
++++ b/addons/jpgalleg/src/decode.c	2015-09-03 14:57:57.888485546 +0200
+@@ -477,7 +477,7 @@
+  *  Reads a string of bits from the input stream and returns a properly signed
+  *  number given the category.
+  */
+-INLINE int
++static INLINE int
+ get_value(int category)
+ {
+ 	int result = get_bits(category);

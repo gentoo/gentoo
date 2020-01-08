@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,9 @@ SRC_URI="https://libopenraw.freedesktop.org/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="2/3"
-KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm arm64 ~hppa ~ia64 ppc ppc64 ~sh sparc x86"
 IUSE="examples static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/expat-2:=

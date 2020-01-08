@@ -12,7 +12,7 @@ SRC_URI="
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="convert-mozilla-cookies +gnutls idn ipv6 libressl nls socks5 +ssl verify-file"
 RESTRICT="test"
 
@@ -25,7 +25,7 @@ RDEPEND="
 	idn? ( net-dns/libidn2:= )
 	socks5? (
 		>=net-proxy/dante-1.1.12
-		virtual/pam
+		sys-libs/pam
 	)
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-1.2.3:0= )

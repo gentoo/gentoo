@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>thebitpit@earthlink.net</email>
+		<name>Wilson Michaels</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="cdr">Allows MythMusic to burn CD-Rs</flag>
+		<flag name="exif">Allows MythGallery to read EXIF data from photos</flag>
+		<flag name="fftw">Adds visual effects to MythMusic when playing back music</flag>
+		<flag name="hls">HTTP Live Streaming support</flag>
+		<flag name="raw">Allows MythGallery to view photos saved in RAW format</flag>
+		<flag name="mytharchive">Allows you to archive recorded content to CD or DVD</flag>
+		<flag name="mythbrowser">Adds a web browser within MythTV</flag>
+		<flag name="mythgallery">Adds a picture viewing gallery within MythTV</flag>
+		<flag name="mythgame">Adds a frontend to various ROM emulators within MythTV</flag>
+		<flag name="mythmusic">Adds the ability for MythTV to act as a music player</flag>
+		<flag name="mythnetvision">Adds the ability to view netvision devices within MythTV</flag>
+		<flag name="mythnews">Adds a news viewer within MythTV</flag>
+		<flag name="mythweather">Adds weather information within MythTV</flag>
+		<flag name="mythzmserver">Build mythzmserver daemon needed by zoneminder on LAN</flag>
+		<flag name="mythzoneminder">Adds support for zoneminder (requires active mythzmserver daemon on LAN).</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">MythTV/mythtv</remote-id>
+	</upstream>
+</pkgmetadata>

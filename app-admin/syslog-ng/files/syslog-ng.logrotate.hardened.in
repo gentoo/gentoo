@@ -6,6 +6,7 @@
 
 # Generic
 /var/log/debug /var/log/syslog /var/log/kern.log {
+    delaycompress
     sharedscripts
     missingok
     postrotate
@@ -15,6 +16,7 @@
 
 # System services
 /var/log/cron.log /var/log/daemon.log /var/log/lpr.log /var/log/uucp.log {
+    delaycompress
     sharedscripts
     missingok
     postrotate
@@ -24,6 +26,7 @@
 
 # User log
 /var/log/user.log {
+    delaycompress
     sharedscripts
     missingok
     postrotate
@@ -33,6 +36,7 @@
 
 # News system
 /var/log/news/news.crit /var/log/news/news.err /var/log/news/news.notice {
+    delaycompress
     sharedscripts
     missingok
     postrotate
@@ -42,6 +46,7 @@
 
 # Mail system
 /var/log/mail.log /var/log/mail.info /var/log/mail.err /var/log/mail.warn {
+    delaycompress
     sharedscripts
     missingok
     postrotate
@@ -51,6 +56,7 @@
 
 # Hardened logs
 /var/log/avc.log /var/log/audit.log /var/log/pax.log /var/log/grsec.log {
+    delaycompress
     sharedscripts
     missingok
     postrotate
@@ -60,6 +66,7 @@
 
 # Authentication
 /var/log/auth.log {
+    delaycompress
     sharedscripts
     postrotate
         @GENTOO_RESTART@ > /dev/null 2>&1 || true
@@ -68,6 +75,7 @@
 
 # the rest
 /var/log/messages {
+    delaycompress
     sharedscripts
     postrotate
         @GENTOO_RESTART@ > /dev/null 2>&1 || true

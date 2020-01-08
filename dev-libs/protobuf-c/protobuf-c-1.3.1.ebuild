@@ -17,12 +17,18 @@ LICENSE="BSD-2"
 SLOT="0/1.0.0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-libs/protobuf-2.6.0:0=[${MULTILIB_USEDEP}]"
-DEPEND="${RDEPEND}
+BDEPEND="dev-libs/protobuf:0
 	virtual/pkgconfig[${MULTILIB_USEDEP}]"
+DEPEND="dev-libs/protobuf:0=[${MULTILIB_USEDEP}]"
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.3.1-protobuf-3.7.patch"
+)
 
 src_prepare() {
 	default

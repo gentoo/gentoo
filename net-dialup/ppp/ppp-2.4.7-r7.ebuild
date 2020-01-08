@@ -14,13 +14,13 @@ SRC_URI="https://download.samba.org/pub/ppp/${P}.tar.gz
 
 LICENSE="BSD GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh sparc ~x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~riscv ~s390 ~sh sparc x86"
 IUSE="activefilter atm dhcp eap-tls gtk ipv6 libressl pam radius"
 
 DEPEND="
 	activefilter? ( net-libs/libpcap )
 	atm? ( net-dialup/linux-atm )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	gtk? ( x11-libs/gtk+:2 )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:= )

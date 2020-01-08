@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit cmake-utils flag-o-matic python-single-r1 toolchain-funcs versionator
 
@@ -21,6 +21,7 @@ LICENSE="GPL-3 free-noncomm"
 SLOT="0/16"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cpu_flags_x86_sse doc examples lua octave opencl python R ruby static-libs test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )

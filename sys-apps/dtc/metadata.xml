@@ -8,4 +8,7 @@
 	<email>ppc@gentoo.org</email>
 	<name>Gentoo Linux PowerPC Development</name>
 </maintainer>
+<upstream>
+	<remote-id type="cpe">cpe:/a:dtc_project:dtc</remote-id>
+</upstream>
 </pkgmetadata>

@@ -10,7 +10,7 @@ if [[ ${PV} == 99999999 ]]; then
 else
 	SHA="4ffcf184bb71c6c3512b3a8c144dcf4a3a76d23c"
 	SRC_URI="https://github.com/wine-compholio/wine-staging/archive/${SHA}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 x86 ~x86-fbsd"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/wine-staging-${SHA}"
 fi
 

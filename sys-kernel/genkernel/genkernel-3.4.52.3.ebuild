@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # genkernel-9999        -> latest Git branch "master"
@@ -23,7 +23,7 @@ BB_HOME="https://busybox.net/downloads"
 
 COMMON_URI="${DM_HOME}/dmraid-${VERSION_DMRAID}.tar.bz2
 		${DM_HOME}/old/dmraid-${VERSION_DMRAID}.tar.bz2
-		mirror://kernel/linux/utils/raid/mdadm/mdadm-${VERSION_MDADM}.tar.bz2
+		https://www.kernel.org/pub/linux/utils/raid/mdadm/mdadm-${VERSION_MDADM}.tar.bz2
 		${RH_HOME}/lvm2/LVM2.${VERSION_LVM}.tgz
 		${RH_HOME}/lvm2/old/LVM2.${VERSION_LVM}.tgz
 		${BB_HOME}/busybox-${VERSION_BUSYBOX}.tar.bz2
@@ -43,7 +43,7 @@ then
 else
 	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz
 		${COMMON_URI}"
-	KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
 fi
 
 DESCRIPTION="Gentoo automatic kernel building scripts"

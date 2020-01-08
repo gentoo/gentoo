@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dwosky@zoho.com</email>
+		<email>dwosky@pm.me</email>
 		<name>Pedro Arizmendi</name>
 	</maintainer>
 	<maintainer type="project">
@@ -10,11 +10,6 @@
 		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
 	<longdescription>A lightweight system monitoring tool</longdescription>
-	<use>
-		<flag name="apcupsd">Make use of a daemon that controls APC UPSes with <pkg>sys-power/apcupsd</pkg>.</flag>
-		<flag name="httpd">Enables the CGI webserver with any package that satisfies <pkg>virtual/httpd-cgi</pkg>.</flag>
-		<flag name="postfix">Analyze postfix logs with <pkg>net-mail/pflogsumm</pkg>.</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">mikaku/Monitorix</remote-id>
 	</upstream>

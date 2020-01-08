@@ -1,11 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-ESVN_REPO_URI="http://kuroo.svn.sourceforge.net/svnroot/kuroo/kuroo4/trunk"
-ESVN_PROJECT="kuroo4"
-inherit cmake-utils subversion
+ESVN_REPO_URI="https://svn.code.sf.net/p/kuroo/code/kuroo4/trunk"
+inherit ecm subversion
 
 DESCRIPTION="Graphical Portage frontend based on KDE Frameworks"
 HOMEPAGE="https://sourceforge.net/projects/kuroo/"
@@ -15,11 +14,11 @@ KEYWORDS=""
 SLOT="0"
 IUSE=""
 
-COMMON_DEPEND="
+DEPEND="
 	dev-db/sqlite:3
-	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtwidgets:5
+	kde-frameworks/kauth:5
 	kde-frameworks/kconfig:5
 	kde-frameworks/kconfigwidgets:5
 	kde-frameworks/kcoreaddons:5
@@ -33,13 +32,10 @@ COMMON_DEPEND="
 	kde-frameworks/kxmlgui:5
 	kde-frameworks/threadweaver:5
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	app-portage/gentoolkit
 	kde-apps/kompare:5
 	kde-plasma/kde-cli-tools:5[kdesu]
-"
-DEPEND="${COMMON_DEPEND}
-	kde-frameworks/extra-cmake-modules:5
 "
 
 pkg_postinst() {
@@ -48,11 +44,5 @@ pkg_postinst() {
 		elog "portage's summary.log size reasonable to view in the history page."
 	fi
 
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	ecm_pkg_postinst
 }

@@ -1,0 +1,11 @@
+--- a/tensorflow/python/eager/pywrap_tensor.cc.ORIG	2019-09-27 23:56:33.000000000 +0200
++++ b/tensorflow/python/eager/pywrap_tensor.cc	2019-11-27 16:39:00.996713385 +0100
+@@ -839,7 +839,7 @@
+     sizeof(EagerTensor),                /* tp_basicsize */
+     0,                                  /* tp_itemsize */
+     (destructor)EagerTensor_dealloc,    /* tp_dealloc */
+-    nullptr,                            /* tp_print */
++    0,                                  /* tp_vectorcall_offset */
+     nullptr,                            /* tp_getattr */
+     nullptr,                            /* tp_setattr */
+     nullptr,                            /* tp_compare */

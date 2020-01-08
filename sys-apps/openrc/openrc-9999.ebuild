@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic pam toolchain-funcs
 
@@ -13,25 +13,23 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 fi
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux static-libs
-	unicode kernel_linux kernel_FreeBSD"
+IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux sysv-utils
+	unicode"
 
-COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd ) )
+COMMON_DEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
 	pam? (
 		sys-auth/pambase
-		virtual/pam
+		sys-libs/pam
 	)
 	audit? ( sys-process/audit )
-	kernel_linux? (
-		sys-process/psmisc
-		!<sys-process/procps-3.3.9-r2
-	)
+	sys-process/psmisc
+	!<sys-process/procps-3.3.9-r2
 	selinux? (
 		sys-apps/policycoreutils
 		>=sys-libs/libselinux-2.6
@@ -40,15 +38,13 @@ COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-proc
 	!<sys-fs/udev-init-scripts-27"
 DEPEND="${COMMON_DEPEND}
 	virtual/os-headers
-	bash? ( app-shells/bash )
 	ncurses? ( virtual/pkgconfig )"
 RDEPEND="${COMMON_DEPEND}
+	bash? ( app-shells/bash )
 	!prefix? (
-		kernel_linux? (
-			>=sys-apps/sysvinit-2.86-r6[selinux?]
-			virtual/tmpfiles
-		)
-		kernel_FreeBSD? ( sys-freebsd/freebsd-sbin )
+		sysv-utils? ( !sys-apps/sysvinit )
+		!sysv-utils? ( >=sys-apps/sysvinit-2.86-r6[selinux?] )
+		virtual/tmpfiles
 	)
 	selinux? (
 		>=sec-policy/selinux-base-policy-2.20170204-r4
@@ -77,20 +73,16 @@ src_compile() {
 		MKBASHCOMP=yes
 		MKNET=$(usex newnet)
 		MKSELINUX=$(usex selinux)
+		MKSYSVINIT=$(usex sysv-utils)
 		MKAUDIT=$(usex audit)
 		MKPAM=$(usev pam)
-		MKSTATICLIBS=$(usex static-libs)
+		MKSTATICLIBS=no
 		MKZSHCOMP=yes
 		SH=$(usex bash /bin/bash /bin/sh)"
 
 	local brand="Unknown"
-	if use kernel_linux ; then
-		MAKE_ARGS="${MAKE_ARGS} OS=Linux"
-		brand="Linux"
-	elif use kernel_FreeBSD ; then
-		MAKE_ARGS="${MAKE_ARGS} OS=FreeBSD"
-		brand="FreeBSD"
-	fi
+	MAKE_ARGS="${MAKE_ARGS} OS=Linux"
+	brand="Linux"
 	export BRANDING="Gentoo ${brand}"
 	use prefix && MAKE_ARGS="${MAKE_ARGS} MKPREFIX=yes PREFIX=${EPREFIX}"
 	export DEBUG=$(usev debug)
@@ -116,17 +108,6 @@ set_config_yes_no() {
 src_install() {
 	emake ${MAKE_ARGS} DESTDIR="${D}" install
 
-	# move the shared libs back to /usr so ldscript can install
-	# more of a minimal set of files
-	# disabled for now due to #270646
-	#mv "${ED}"/$(get_libdir)/lib{einfo,rc}* "${ED}"/usr/$(get_libdir)/ || die
-	#gen_usr_ldscript -a einfo rc
-	gen_usr_ldscript libeinfo.so
-	gen_usr_ldscript librc.so
-
-	if ! use kernel_linux; then
-		keepdir /lib/rc/init.d
-	fi
 	keepdir /lib/rc/tmp
 
 	# Setup unicode defaults for silly unicode users
@@ -157,10 +138,10 @@ src_install() {
 
 pkg_preinst() {
 	# avoid default thrashing in conf.d files when possible #295406
-	if [[ -e "${EROOT}"etc/conf.d/hostname ]] ; then
+	if [[ -e "${EROOT}"/etc/conf.d/hostname ]] ; then
 		(
 		unset hostname HOSTNAME
-		source "${EROOT}"etc/conf.d/hostname
+		source "${EROOT}"/etc/conf.d/hostname
 		: ${hostname:=${HOSTNAME}}
 		[[ -n ${hostname} ]] && set_config /etc/conf.d/hostname hostname "${hostname}"
 		)
@@ -179,13 +160,9 @@ pkg_postinst() {
 	fi
 
 	# Added for 0.35.
-	if use kernel_linux && [[ ! -h "${EROOT}"/lib ]]; then
-		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
-			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
-		fi
-	elif ! use kernel_linux; then
-		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
-			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
+	if [[ ! -h "${EROOT}"/lib ]]; then
+		if [[ -d "${EROOT}/$(get_libdir)"/rc ]]; then
+			cp -RPp "${EROOT}/$(get_libdir)/rc" "${EROOT}"/lib
 		fi
 	fi
 
@@ -200,7 +177,7 @@ pkg_postinst() {
 		ewarn
 	fi
 
-	if use newnet && [ ! -e "${EROOT}"etc/runlevels/boot/network ]; then
+	if use newnet && [ ! -e "${EROOT}"/etc/runlevels/boot/network ]; then
 		ewarn "Please add the network service to your boot runlevel"
 		ewarn "as soon as possible. Not doing so could leave you with a system"
 		ewarn "without networking."

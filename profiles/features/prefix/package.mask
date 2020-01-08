@@ -1,22 +1,25 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Jeremy Olexa <darkside@gentoo.org> (30 Jun 2009)
-# The PAM auth system just will not work in Gentoo Prefix, instead the host auth
-# system should be used.
-sys-libs/pam
-sys-auth/pambase
+# Benda Xu <heroxbd@gentoo.org> (2019-08-20)
+# systemd is set to invade pid 1, which is not possible for Prefix.
+# The following are its reverse dependencies.
+sys-apps/systemd
+dev-libs/libreport
+app-admin/abrt
+app-admin/gnome-abrt
+app-admin/systemdgenie
+dev-python/python-systemd
+games-util/gamemode
+gnome-extra/gnome-logs
+gnome-extra/gnome-user-share
+gnome-extra/office-runner
+kde-misc/systemd-kcm
+sys-apps/gentoo-systemd-integration
+sys-apps/systemd-readahead
+sys-process/systemd-cron
+www-misc/profile-sync-daemon
+<x11-wm/mutter-3.30
+<gnome-base/gnome-shell-3.30
+<virtual/service-manager-1
 
-# Jeremy Olexa <darkside@gentoo.org> (02 Jun 2009)
-# If you have MacFuse or some other implementation of fuse installed, you can
-# probably use this by placing sys-fs/fuse in package.provided, bug 272210
-net-fs/curlftpfs
-
-# Jeremy Olexa <darkside@gentoo.org> (02 Dec 2008)
-# Reported to work. However, you will need to package.provide some deps. 
-# See bug 248809 for more details.
-net-fs/openafs
-
-# Fabian Groffen <grobian@gentoo.org> (11 Jan 2008)
-# Screws up things, see bug #204998
-<sys-devel/gcc-3.4.0

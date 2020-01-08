@@ -13,7 +13,7 @@ SRC_URI="https://www.openal-soft.org/openal-releases/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="
 	alsa coreaudio debug jack oss portaudio pulseaudio sdl qt5
 	cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1
@@ -43,13 +43,13 @@ src_configure() {
 	# -DEXAMPLES=OFF to avoid FFmpeg dependency wrt #481670
 	my_configure() {
 		local mycmakeargs=(
-			-DALSOFT_BACKEND_SDL2=$(usex sdl)
 			-DALSOFT_REQUIRE_ALSA=$(usex alsa)
 			-DALSOFT_REQUIRE_COREAUDIO=$(usex coreaudio)
 			-DALSOFT_REQUIRE_JACK=$(usex jack)
 			-DALSOFT_REQUIRE_OSS=$(usex oss)
 			-DALSOFT_REQUIRE_PORTAUDIO=$(usex portaudio)
 			-DALSOFT_REQUIRE_PULSEAUDIO=$(usex pulseaudio)
+			-DALSOFT_REQUIRE_SDL2=$(usex sdl)
 			-DALSOFT_CPUEXT_SSE=$(usex cpu_flags_x86_sse)
 			-DALSOFT_CPUEXT_SSE2=$(usex cpu_flags_x86_sse2)
 			-DALSOFT_CPUEXT_SSE4_1=$(usex cpu_flags_x86_sse4_1)

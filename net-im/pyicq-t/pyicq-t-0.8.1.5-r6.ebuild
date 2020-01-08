@@ -48,7 +48,7 @@ src_install() {
 	newins config_example.xml ${PN}.xml
 	fperms 600 /etc/jabber/${PN}.xml
 	fowners jabber:jabber /etc/jabber/${PN}.xml
-	fperms 755 "$(python_get_sitedir)/${PN}/${PN}.py"
+	chmod 755 "${D}$(python_get_sitedir)/${PN}/${PN}.py" || die
 	sed -i \
 		-e "s:<spooldir>[^\<]*</spooldir>:<spooldir>/var/spool/jabber</spooldir>:" \
 		-e "s:<pid>[^\<]*</pid>:<pid>/var/run/jabber/${PN}.pid</pid>:" \
@@ -57,7 +57,7 @@ src_install() {
 	newinitd "${FILESDIR}/${PN}-0.8-initd-r1" ${PN}
 	systemd_dounit "${FILESDIR}/${PN}.service"
 	sed -i -e "s:INSPATH:$(python_get_sitedir)/${PN}:" \
-		"${ED}/etc/init.d/${PN}" "${ED}/$(systemd_get_systemunitdir)/${PN}.service" || die
+		"${ED}/etc/init.d/${PN}" "${D%/}/$(systemd_get_systemunitdir)/${PN}.service" || die
 
 	python_fix_shebang "${D}$(python_get_sitedir)/${PN}"
 }

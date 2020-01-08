@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/swaywm/${PN}.git"
 else
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 arm64 x86"
 fi
 
 LICENSE="MIT"
@@ -25,7 +25,7 @@ DEPEND="
 	x11-libs/cairo
 	x11-libs/libxkbcommon
 	gdk-pixbuf? ( x11-libs/gdk-pixbuf:2 )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 "
 RDEPEND="
 	${DEPEND}

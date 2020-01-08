@@ -3,8 +3,8 @@ https://bugs.gentoo.org/show_bug.cgi?id=289818
 
 Index: work/texmf-dist/scripts/vpe/vpe.pl
 ===================================================================
---- work.orig/texmf-dist/scripts/vpe/vpe.pl
-+++ work/texmf-dist/scripts/vpe/vpe.pl
+--- a/texmf-dist/scripts/vpe/vpe.pl
++++ b/texmf-dist/scripts/vpe/vpe.pl
 @@ -1,5 +1,4 @@
 -eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}' && eval 'exec perl -S $0 $argv:q'
 -  if 0;

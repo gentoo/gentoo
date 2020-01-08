@@ -5,7 +5,4 @@
 		<email>reavertm@gentoo.org</email>
 		<name>Maciej Mrozowski</name>
 	</maintainer>
-	<use>
-		<flag name="utils">Enables building cabrip, chmextract, msexpand and oabextract</flag>
-	</use>
 </pkgmetadata>

@@ -13,8 +13,9 @@ SRC_URI="https://github.com/${PN}-shell/${PN}-shell/releases/download/${MY_PV}/$
 LICENSE="GPL-2"
 SLOT="0"
 [[ "${PV}" = *_* ]] || \
-KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 ~arm arm64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="nls test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libpcre2-10.21[pcre32]

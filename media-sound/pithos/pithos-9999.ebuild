@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 inherit autotools gnome2-utils python-r1
 
 if [[ ${PV} =~ [9]{4,} ]]; then
@@ -19,8 +19,10 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="libnotify appindicator +keybinder"
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
+	${PYTHON_DEPS}
 	dev-python/pylast[${PYTHON_USEDEP}]
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	>=dev-python/pygobject-3.12[${PYTHON_USEDEP}]

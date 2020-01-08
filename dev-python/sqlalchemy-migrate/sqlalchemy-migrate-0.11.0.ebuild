@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit distutils-r1
 
@@ -39,7 +39,7 @@ python_compile_all() {
 	if use doc; then
 		einfo ""; einfo "The build seeks to import modules from an installed state of the package"
 		einfo "simply ignore all warnings / errors of failure to import module migrate.<module>"; einfo ""
-		emake -C doc/source html || die "Generation of documentation failed"
+		emake -C doc/source html
 	fi
 }
 

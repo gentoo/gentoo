@@ -1,11 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PLOCALES="ar cs de en es et fr hr hu id_ID it ja nl pl pt_BR pt ru sk sv uk vi zh_CN zh_TW"
-
-inherit gnome2-utils l10n qmake-utils xdg-utils
+inherit flag-o-matic l10n qmake-utils xdg-utils
 
 DESCRIPTION="Qt based map editor for the openstreetmap.org project"
 HOMEPAGE="http://www.merkaartor.be https://github.com/openstreetmap/merkaartor"
@@ -16,7 +15,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug exif gps libproxy webengine"
 
-RDEPEND="
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
+DEPEND="
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -33,14 +36,13 @@ RDEPEND="
 	libproxy? ( net-libs/libproxy )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
-DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
-"
+RDEPEND="${DEPEND}"
+
 PATCHES=(
 	"${FILESDIR}"/${P}-sharedir-pluginsdir.patch # bug 621826
 	"${FILESDIR}"/${P}-desktopfile.patch
 	"${FILESDIR}"/${P}-webengine{1,2,3}.patch
+	"${FILESDIR}"/${P}-exiv2-0.27.1.patch # bug 689098
 )
 
 DOCS=( AUTHORS CHANGELOG )
@@ -61,17 +63,19 @@ src_prepare() {
 	fi
 
 	# build system expects to be building from git
-	sed -i "${S}"/src/Config.pri -e "s:SION = .*:SION = \"${PV}\":g" || die
+	sed -i src/Config.pri -e "s:SION = .*:SION = \"${PV}\":g" || die
 }
 
 src_configure() {
+	append-flags -DACCEPT_USE_OF_DEPRECATED_PROJ_API_H
+
 	# TRANSDIR_SYSTEM is for bug #385671
 	eqmake5 \
-		PREFIX="${ED%/}/usr" \
-		LIBDIR="${ED%/}/usr/$(get_libdir)" \
+		PREFIX="${ED}/usr" \
+		LIBDIR="${ED}/usr/$(get_libdir)" \
 		PLUGINS_DIR="/usr/$(get_libdir)/${PN}/plugins" \
 		SHARE_DIR_PATH="/usr/share/${PN}" \
-		TRANSDIR_MERKAARTOR="${ED%/}/usr/share/${PN}/translations" \
+		TRANSDIR_MERKAARTOR="${ED}/usr/share/${PN}/translations" \
 		TRANSDIR_SYSTEM="${EPREFIX}/usr/share/qt5/translations" \
 		SYSTEM_QTSA=1 \
 		RELEASE=1 \
@@ -86,10 +90,10 @@ src_configure() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

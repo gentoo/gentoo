@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://www.alsaplayer.org/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~mips ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~mips ~ppc ~sparc x86"
 IUSE="+alsa audiofile doc flac gtk id3tag jack mad mikmod nas nls ogg opengl oss vorbis xosd"
 
 RDEPEND="

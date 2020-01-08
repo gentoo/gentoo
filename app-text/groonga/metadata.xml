@@ -18,6 +18,5 @@
    <flag name="sphinx">Enable document generation by <pkg>app-misc/sphinx</pkg></flag>
    <flag name="uyield">Build for detecting race conditions</flag>
    <flag name="zeromq">Enable <pkg>net-libs/zeromq</pkg> used for suggestion</flag>
-   <flag name="zstd">Utilize <pkg>app-arch/zstd</pkg> for Zstandard compression</flag>
 </use>
 </pkgmetadata>

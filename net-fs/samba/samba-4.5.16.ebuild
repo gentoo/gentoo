@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -65,7 +65,7 @@ CDEPEND="${PYTHON_DEPS}
 	>=sys-libs/tevent-0.9.31-r1[${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	acl? ( virtual/acl )
 	addns? ( net-dns/bind-tools[gssapi] )
 	cluster? (
@@ -83,7 +83,8 @@ CDEPEND="${PYTHON_DEPS}
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( app-crypt/mit-krb5[${MULTILIB_USEDEP}] )
-	systemd? ( sys-apps/systemd:0= )"
+	systemd? ( sys-apps/systemd:0= )
+	zeroconf? ( net-dns/avahi )"
 DEPEND="${CDEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt

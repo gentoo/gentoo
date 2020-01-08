@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit autotools eutils gnome2 python-single-r1
 
 DESCRIPTION="A collection of libraries and utilites used by Cinnamon"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/cinnamon-desktop/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+ FDL-1.1+ LGPL-2+"

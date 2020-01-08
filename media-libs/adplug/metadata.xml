@@ -6,6 +6,6 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">adplug</remote-id>
+		<remote-id type="github">adplug/adplug</remote-id>
 	</upstream>
 </pkgmetadata>

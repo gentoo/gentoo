@@ -5,7 +5,7 @@ EAPI="7"
 
 DESCRIPTION="Reading phar.io manifest information from a PHP Archive (PHAR)"
 HOMEPAGE="https://github.com/phar-io/manifest"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/phar-io/manifest/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

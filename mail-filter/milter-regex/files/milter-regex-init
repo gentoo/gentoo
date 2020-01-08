@@ -1,41 +1,31 @@
 #!/sbin/openrc-run
-# Copyright 1999-2008 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+pidfile="/run/${RC_SVCNAME}.pid"
+command="/usr/bin/milter-regex"
+command_args="-c ${MR_CONF} -r ${pidfile} -u ${MR_USER} -p ${MR_SOCKET} -P ${MR_PERM} -U ${MR_USER} -G ${MR_GROUP} ${MR_OPTS}"
+extra_commands="configtest"
+description_configtest="Test configuration file correctness."
+
 depend() {
-	use dns logger net
+	before mta
 }
 
-check_cfg() {
-	if [ -z "${USER}" ] ; then
-		eerror "USER is unset"
-		return 1
-	fi
+configtest() {
+	ebegin "Checking configuration file ${MR_CONF}"
+	${command} -d -t -c "${MR_CONF}" || eend "Configuration errors found"
+}
 
-	if [ ! -s "${CONFIG}" ]; then
-		eerror "configuration file ${CONFIG} doesn't seem to be valid"
-		return 1
+start_pre() {
+	if [ "${RC_CMD}" != "restart" ]; then
+		configtest || return 1
+		checkpath --directory --mode 0755 --owner ${MR_USER}:${MR_GROUP} ${MR_RUNDIR}
 	fi
 }
 
-start() {
-	check_cfg || return 1
-
-	# Remove stalled Unix socket if no other process is using it
-	if [ -S "${SOCKET}" ] && ! fuser -s "${SOCKET}"; then
-		rm "${SOCKET}"
+stop_pre() {
+	if [ "${RC_CMD}" = "restart" ]; then
+		configtest || return 1
 	fi
-	
-	ebegin "Starting milter-regex"
-	start-stop-daemon --start --exec /usr/bin/milter-regex -- \
-		-u "${USER}" -p "${SOCKET}" -c "${CONFIG}"
-	EXIT=$?
-	[ $? == 0 ] && chmod a+rw "${SOCKET}"
-	eend ${EXIT}
-}
-
-stop() {
-	ebegin "Stopping milter-regex"
-	start-stop-daemon --stop --exec /usr/bin/milter-regex
-	eend $?
 }

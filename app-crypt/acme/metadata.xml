@@ -6,6 +6,7 @@
 		<name>Matthew Thode</name>
 	</maintainer>
 	<upstream>
+		<remote-id type="pypi">acme</remote-id>
 		<remote-id type="github">letsencrypt/letsencrypt</remote-id>
 	</upstream>
 </pkgmetadata>

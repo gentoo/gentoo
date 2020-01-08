@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>slis@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
-    <flag name="camera">
-      Install libraries needed to support camera
-    </flag>
     <flag name="garden">
       Install garden tool to manage user maintained widgets
     </flag>

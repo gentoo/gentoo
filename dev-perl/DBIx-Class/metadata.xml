@@ -9,7 +9,7 @@
     <flag name="admin">
       Modules required for the DBIx::Class administrative library
     </flag>
-    <flag name="admin_script">
+    <flag name="admin-script">
       Modules required for the CLI DBIx::Class interface dbicadmin
     </flag>
     <flag name="deploy">

@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge.jp/${PN}/41436/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ppc sparc x86"
 IUSE="nls"
 
 RDEPEND="app-i18n/anthy

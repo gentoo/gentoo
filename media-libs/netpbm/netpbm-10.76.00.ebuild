@@ -11,12 +11,11 @@ SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~mips ~ppc ~ppc64 s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="doc jbig jpeg jpeg2k png postscript rle cpu_flags_x86_sse2 static-libs svga tiff X xml zlib"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ~ppc ~ppc64 s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+IUSE="doc jbig jpeg png postscript rle cpu_flags_x86_sse2 static-libs svga tiff X xml zlib"
 
 RDEPEND="jbig? ( media-libs/jbigkit )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper )
 	png? ( >=media-libs/libpng-1.4:0 )
 	postscript? ( app-text/ghostscript-gpl )
 	rle? ( media-libs/urt )
@@ -137,7 +136,7 @@ src_configure() {
 	XML2_LIBS = $(netpbm_config xml xml2)
 	JBIGLIB = $(netpbm_config jbig)
 	JBIGHDR_DIR =
-	JASPERLIB = $(netpbm_config jpeg2k jasper)
+	JASPERLIB = NONE
 	JASPERHDR_DIR =
 	URTLIB = $(netpbm_config rle)
 	URTHDR_DIR =

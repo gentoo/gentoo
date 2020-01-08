@@ -1,0 +1,17 @@
+diff -ur a/setup.py b/setup.py
+--- a/setup.py	2019-08-17 14:23:16.000000000 +0300
++++ b/setup.py	2019-11-17 15:33:44.243070851 +0300
+@@ -195,7 +195,7 @@
+                       ("share/mime-info", ["linux/cherrytree.mime", "linux/cherrytree.keys"]),
+                       ("share/application-registry", ["linux/cherrytree.applications"]),
+                       ("share/metainfo", ["linux/cherrytree.appdata.xml"]),
+-                      ("share/man/man1", ["linux/cherrytree.1.gz"])
++                      ("share/man/man1", ["linux/cherrytree.1"])
+                    ],
+        cmdclass={
+             'build': BuildData,
+@@ -205,4 +205,3 @@
+           },
+        distclass=CherryTreeDist
+     )
+-    subprocess.call("update-desktop-database")

@@ -1,0 +1,39 @@
+From 04edc7738cc3dc675c3896f4a8de0851b174d4ca Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?M=C3=A9ven=20Car?= <meven29@gmail.com>
+Date: Fri, 22 Nov 2019 12:39:48 +0100
+Subject: Ftp ioslave: Fix ProxyUrls parameter passing
+
+Summary:
+QVariant stored in mapConfig always contain QByteArray values.
+So QVariant needs to be converted string before splitting to StringList
+
+Relates to D25432
+
+Reviewers: trufanov, #frameworks
+
+Reviewed By: trufanov
+
+Subscribers: kde-frameworks-devel
+
+Tags: #frameworks
+
+Differential Revision: https://phabricator.kde.org/D25438
+---
+ src/ioslaves/ftp/ftp.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/ioslaves/ftp/ftp.cpp b/src/ioslaves/ftp/ftp.cpp
+index 8cd58c9..4266a6c 100644
+--- a/src/ioslaves/ftp/ftp.cpp
++++ b/src/ioslaves/ftp/ftp.cpp
+@@ -317,7 +317,7 @@ void FtpInternal::setHost(const QString &_host, quint16 _port, const QString &_u
+     qCDebug(KIO_FTP) << _host << "port=" << _port << "user=" << _user;
+ 
+     m_proxyURL.clear();
+-    m_proxyUrls = q->mapConfig().value(QStringLiteral("ProxyUrls"), QStringList()).toStringList();
++    m_proxyUrls = q->mapConfig().value(QStringLiteral("ProxyUrls"), QString()).toString().split(QLatin1Char(','));
+     qCDebug(KIO_FTP) << "proxy urls:" << m_proxyUrls;
+ 
+     if (m_host != _host || m_port != _port ||
+-- 
+cgit v1.1

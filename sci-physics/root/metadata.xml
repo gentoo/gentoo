@@ -33,6 +33,7 @@
     <flag name="libcxx">Build ROOT against <pkg>sys-libs/libcxx</pkg></flag>
     <flag name="memstat">Build memory statistics library, helps to detect memory leaks</flag>
     <flag name="minuit">Build ROOT's internal versions of minuit (fortran) and minuit2 (C++)</flag>
+    <flag name="nosplash">Disable ROOT's splash screen by default</flag>
     <flag name="pythia6">Build the interface for <pkg>sci-physics/pythia</pkg> version 6.x </flag>
     <flag name="pythia8">Build the interface for <pkg>sci-physics/pythia</pkg> version 8.x </flag>
     <flag name="R">Enable support for <pkg>dev-lang/R</pkg></flag>
@@ -44,6 +45,7 @@
     <flag name="tmva">Built TMVA (ROOT's multi-variate analysis toolkit for machine learning)</flag>
     <flag name="unuran">Enable support for <pkg>sci-mathematics/unuran</pkg></flag>
     <flag name="vc">Enable support for <pkg>dev-libs/vc</pkg> with VecCore</flag>
+    <flag name="vmc">Built the Virtual Monte Carlo library</flag>
     <flag name="xrootd">Build the interface for <pkg>net-libs/xrootd</pkg> </flag>
   </use>
 </pkgmetadata>

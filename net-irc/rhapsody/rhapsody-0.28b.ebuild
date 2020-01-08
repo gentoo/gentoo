@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit toolchain-funcs eutils
+inherit toolchain-funcs
 
 DESCRIPTION="IRC client intended to be displayed on a text console"
 HOMEPAGE="http://rhapsody.sourceforge.net/"
@@ -14,25 +14,28 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-DEPEND=">=sys-libs/ncurses-5.0"
+DEPEND=">=sys-libs/ncurses-5.0:0="
+BDEPEND="virtual/pkgconfig"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+PATCHES=(
+	"${FILESDIR}"/${P}-uclibc.patch
+	"${FILESDIR}"/${P}-tinfo.patch
+)
 
-	epatch "${FILESDIR}"/${P}-uclibc.patch
+src_configure() {
+	PKGCONFIG="$(tc-getPKG_CONFIG)" \
+	./configure -i /usr/share/rhapsody || die "configure failed"
 }
 
 src_compile() {
-	./configure -i /usr/share/rhapsody || die "configure failed"
-	emake CC="$(tc-getCC)" LOCALFLAGS="${CFLAGS}" || die "emake failed"
+	emake CC="$(tc-getCC)" LOCALFLAGS="${CFLAGS}"
 }
 
 src_install() {
-	dobin rhapsody || die "dobin failed"
+	dobin rhapsody
 
 	insinto /usr/share/rhapsody/help
-	doins help/*.hlp || die "doins failed"
+	doins help/*.hlp
 
-	dodoc docs/CHANGELOG || die "dodoc failed"
+	dodoc docs/CHANGELOG
 }

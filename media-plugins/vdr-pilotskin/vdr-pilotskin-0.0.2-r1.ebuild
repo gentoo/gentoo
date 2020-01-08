@@ -1,13 +1,13 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: fork of vdr-pilot - navigate through channels with skinnable design"
-HOMEPAGE="http://vdrwiki.free.fr/vdr/pilotskin/"
-SRC_URI="http://vdrwiki.free.fr/vdr/pilotskin/files/${P}.tgz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="http://vdr.websitec.de/download/${PN}/${P}.tgz"
 
 KEYWORDS="~amd64 ~x86"
 SLOT="0"

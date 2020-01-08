@@ -12,6 +12,7 @@ DESCRIPTION="Stream TAP from pgTAP test scripts"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Test-Harness

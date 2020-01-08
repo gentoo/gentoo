@@ -1,8 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="GTK+ frontend to the libexif library (parsing, editing, and saving EXIF data)"
 HOMEPAGE="http://libexif.sf.net"
@@ -11,30 +12,35 @@ SRC_URI="mirror://sourceforge/libexif/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="nls static-libs"
+IUSE="nls"
 
-RDEPEND="x11-libs/gtk+:2
-	>=media-libs/libexif-0.6.12"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="
+	dev-libs/glib:2
+	x11-libs/gtk+:2
+	media-libs/libexif:="
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-DOCS=( ChangeLog )
+PATCHES=(
+	"${FILESDIR}"/${P}-confcheck.patch
+	"${FILESDIR}"/${P}-gtk212.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-confcheck.patch \
-		"${FILESDIR}"/${P}-gtk212.patch
-
+	default
+	mv configure.{in,ac} || die
 	AT_M4DIR="m4" eautoreconf
 }
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static) \
+		--disable-static \
 		$(use_enable nls)
 }
 
 src_install() {
 	default
-	rm -f "${ED}"usr/lib*/${PN}.la
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }

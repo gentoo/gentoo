@@ -1,24 +1,24 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit multilib multilib-minimal toolchain-funcs pam
+inherit multilib multilib-minimal toolchain-funcs pam usr-ldscript
 
 DESCRIPTION="POSIX 1003.1e capabilities"
-HOMEPAGE="http://www.friedhoff.org/posixfilecaps.html"
-SRC_URI="mirror://kernel/linux/libs/security/linux-privs/libcap2/${P}.tar.xz"
+HOMEPAGE="https://sites.google.com/site/fullycapable/"
+SRC_URI="https://www.kernel.org/pub/linux/libs/security/linux-privs/libcap2/${P}.tar.xz"
 
 # it's available under either of the licenses
 LICENSE="|| ( GPL-2 BSD )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="pam static-libs"
 
 # While the build system optionally uses gperf, we don't DEPEND on it because
 # the build automatically falls back when it's unavailable.  #604802
 RDEPEND=">=sys-apps/attr-2.4.47-r1[${MULTILIB_USEDEP}]
-	pam? ( virtual/pam[${MULTILIB_USEDEP}] )"
+	pam? ( sys-libs/pam[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	sys-kernel/linux-headers"
 

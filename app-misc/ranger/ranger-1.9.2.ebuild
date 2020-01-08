@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+EAPI=7
+PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} )
 PYTHON_REQ_USE="ncurses"
 
 inherit distutils-r1
@@ -19,20 +19,16 @@ DESCRIPTION="A vim-inspired file manager for the console"
 HOMEPAGE="https://ranger.github.io/"
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="test"
 
 RDEPEND="virtual/pager"
-DEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
 
 src_prepare() {
 	# use versioned doc path
 	sed -i "s|share/doc/ranger|share/doc/${PF}|" setup.py doc/ranger.1 || die
 
 	distutils-r1_src_prepare
-}
-
-python_test() {
-	py.test -v tests/ranger || die "Tests failed under ${EPYTHON}"
 }
 
 pkg_postinst() {

@@ -10,7 +10,7 @@ SRC_URI="https://${PN}.googlecode.com/files/${P}.tar.bz2"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="debug libressl mysql postgres ssl static-libs"
 
 RDEPEND="sys-apps/tcp-wrappers

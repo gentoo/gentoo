@@ -6,6 +6,7 @@
 	<name>Gentoo Base System</name>
 </maintainer>
 <upstream>
+	<remote-id type="cpe">cpe:/a:e2fsprogs_project:e2fsprogs</remote-id>
 	<remote-id type="sourceforge">e2fsprogs</remote-id>
 </upstream>
 </pkgmetadata>

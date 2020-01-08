@@ -10,5 +10,5 @@ SRC_URI="http://www.nongnu.org/${PN}/releases/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~x86-fbsd ~amd64-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux"
 IUSE="static-libs"

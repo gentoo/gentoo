@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils user
+inherit autotools eutils
 
 MY_P=Maelstrom-${PV}
 DESCRIPTION="An asteroids battle game"
@@ -14,8 +14,9 @@ SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
 
-DEPEND="media-libs/libsdl[sound,joystick,video]
-		media-libs/sdl-net"
+DEPEND="acct-group/gamestat
+	media-libs/libsdl[sound,joystick,video]
+	media-libs/sdl-net"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
@@ -27,10 +28,6 @@ PATCHES=(
 	"${FILESDIR}"/${P}-warnings.patch
 	"${FILESDIR}"/${P}-gcc53.patch
 )
-
-pkg_setup(){
-	enewgroup gamestat 36
-}
 
 src_prepare() {
 	default

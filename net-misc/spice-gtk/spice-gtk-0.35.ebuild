@@ -48,10 +48,10 @@ RDEPEND="
 	sasl? ( dev-libs/cyrus-sasl )
 	smartcard? ( app-emulation/qemu[smartcard] )
 	usbredir? (
+		dev-libs/libgudev:=
 		sys-apps/hwids
 		>=sys-apps/usbredir-0.4.2
 		virtual/libusb:1
-		virtual/libgudev:=
 		policykit? (
 			sys-apps/acl
 			>=sys-auth/polkit-0.110-r1
@@ -79,7 +79,6 @@ PATCHES=(
 src_prepare() {
 	# bug 558558
 	export GIT_CEILING_DIRECTORIES="${WORKDIR}"
-	echo GIT_CEILING_DIRECTORIES=${GIT_CEILING_DIRECTORIES}
 
 	default
 

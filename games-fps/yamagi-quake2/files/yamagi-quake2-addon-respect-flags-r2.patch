@@ -1,0 +1,33 @@
+--- quake2-xatrix-2.06.orig/Makefile	2019-02-05 10:56:06.000000000 +0300
++++ quake2-xatrix-2.06/Makefile	2019-04-08 01:24:04.124176498 +0300
+@@ -75,11 +75,11 @@
+ #
+ # -MMD to generate header dependencies.
+ ifeq ($(OSTYPE), Darwin)
+-CFLAGS := -O2 -fno-strict-aliasing -fomit-frame-pointer \
+-		  -Wall -pipe -g -fwrapv -arch i386 -arch x86_64
++CFLAGS += -fno-strict-aliasing -fomit-frame-pointer \
++		  -Wall -fwrapv -arch i386 -arch x86_64
+ else
+-CFLAGS := -O2 -fno-strict-aliasing -fomit-frame-pointer \
+-		  -Wall -pipe -g -MMD -fwrapv
++CFLAGS += -fno-strict-aliasing -fomit-frame-pointer \
++		  -Wall -MMD -fwrapv
+ endif
+ 
+ # ----------
+@@ -107,11 +107,11 @@
+ 
+ # Base LDFLAGS.
+ ifeq ($(OSTYPE), Darwin)
+-LDFLAGS := -shared -arch i386 -arch x86_64
++LDFLAGS += -shared -arch i386 -arch x86_64
+ else ifeq ($(OSTYPE), Windows)
+-LDFLAGS := -shared -static-libgcc
++LDFLAGS += -shared -static-libgcc
+ else
+-LDFLAGS := -shared
++LDFLAGS += -shared
+ endif
+ 
+ # ----------

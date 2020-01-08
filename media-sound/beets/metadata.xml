@@ -1,43 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>sound@gentoo.org</email>
-	</maintainer>
-	<longdescription lang="en">
-		The purpose of beets is to get your music collection right once and for
-		all. It catalogs your collection, automatically improving its metadata as
-		it goes using the MusicBrainz database. (It also downloads cover art for
-		albums it imports.) Then it provides a bouquet of tools for manipulating
-		and accessing your music.
+  <maintainer type="person">
+    <email>bernardo@standard.ai</email>
+    <name>Bernardo Meurer</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Gentoo Proxy Maintainers Project</name>
+  </maintainer>
+  <longdescription lang="en">
+        The purpose of beets is to get your music collection right once and for
+        all. It catalogs your collection, automatically improving its metadata as
+        it goes using the MusicBrainz database. (It also downloads cover art for
+        albums it imports.) Then it provides a bouquet of tools for manipulating
+        and accessing your music.
 
-		Because beets is designed as a library, it can do almost anything you can
-		imagine for your music collection. Via plugins, beets becomes a panacea:
-		* Embed and extract album art from files’ tags.
-		* Listen to your library with a music player that speaks the MPD protocol
-		and works with a staggering variety of interfaces.
-		* Fetch lyrics for all your songs from databases on the Web.
-		* Manage your MusicBrainz music collection.
-		* Analyze music files’ metadata from the command line.
-		* Clean up crufty tags left behind by other, less-awesome tools.
-		* Browse your music library graphically through a Web browser and play it
-		in any browser that supports HTML5 Audio.
+        Because beets is designed as a library, it can do almost anything you can
+        imagine for your music collection. Via plugins, beets becomes a panacea:
+        * Embed and extract album art from files’ tags.
+        * Listen to your library with a music player that speaks the MPD protocol
+        and works with a staggering variety of interfaces.
+        * Fetch lyrics for all your songs from databases on the Web.
+        * Manage your MusicBrainz music collection.
+        * Analyze music files’ metadata from the command line.
+        * Clean up crufty tags left behind by other, less-awesome tools.
+        * Browse your music library graphically through a Web browser and play it
+        in any browser that supports HTML5 Audio.
 
-		If beets doesn’t do what you want yet, writing your own plugin is
-		shockingly simple if you know a little Python.
-	</longdescription>
-	<use>
-		<flag name="badfiles">Validate MP3 &amp; FLAC files</flag>
-		<flag name="chromaprint">Enable support for acoustic fingerprinting plugin using <pkg>media-libs/chromaprint</pkg></flag>
-		<flag name="ffmpeg">Enable support for the convert plugin to transcode files via <pkg>media-video/ffmpeg</pkg></flag>
-		<flag name="discogs">Enable support for the discogs API plugin</flag>
-		<flag name="lastfm">Enable support for importing personal last.fm playcounts and music genres from last.fm tags</flag>
-		<flag name="mpd">Enable support for <pkg>media-sound/mpd</pkg> server emulation and statistic gathered from <pkg>media-sound/mpd</pkg></flag>
-		<flag name="replaygain">Enable support for Replay Gain metadata calculation during import</flag>
-		<flag name="thumbnail">Enable album thumbnails generation</flag>
-		<flag name="webserver">Enable embedded webserver support through <pkg>dev-python/flask</pkg></flag>
-	</use>
-	<upstream>
-		<remote-id type="pypi">beets</remote-id>
-	</upstream>
+        If beets doesn’t do what you want yet, writing your own plugin is
+        shockingly simple if you know a little Python.
+  </longdescription>
+  <use>
+    <flag name="badfiles">Validate MP3 &amp; FLAC files</flag>
+    <flag name="chromaprint">Enable support for acoustic fingerprinting plugin using <pkg>media-libs/chromaprint</pkg></flag>
+    <flag name="ffmpeg">Enable support for the convert plugin to transcode files via <pkg>media-video/ffmpeg</pkg></flag>
+    <flag name="discogs">Enable support for the discogs API plugin</flag>
+    <flag name="lastfm">Enable support for importing personal last.fm playcounts and music genres from last.fm tags</flag>
+    <flag name="mpd">Enable support for <pkg>media-sound/mpd</pkg> server emulation and statistic gathered from <pkg>media-sound/mpd</pkg></flag>
+    <flag name="replaygain">Enable support for Replay Gain metadata calculation during import</flag>
+    <flag name="thumbnail">Enable album thumbnails generation</flag>
+    <flag name="webserver">Enable embedded webserver support through <pkg>dev-python/flask</pkg></flag>
+  </use>
+  <upstream>
+    <remote-id type="pypi">beets</remote-id>
+  </upstream>
 </pkgmetadata>

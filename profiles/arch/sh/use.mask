@@ -1,7 +1,22 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # Unmask the flag which corresponds to ARCH.
 -sh
 
-# Kacper Kowalik <xarthisius@gentoo.org> (9 Aug 2010)
+# Matt Turner <mattst88@gentoo.org> (2019-12-05)
+# media-libs/libglvnd is not keyworded
+libglvnd
+
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
+# Dependencies not keyworded.
+ayatana
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
+# sys-auth/elogind is not yet keyworded here. bug #681200
+elogind
+
+# Kacper Kowalik <xarthisius@gentoo.org> (2010-08-09)
 # cblas-external as virtual/cblas is also masked
 cblas-external
 
@@ -34,7 +49,6 @@ fits
 networkmanager
 lpsol
 openexr
-libev
 clang
 
 # Stuff that doesn't make sense on this arch
@@ -50,7 +64,7 @@ diet
 lirc
 afs
 mono
-lm_sensors
+lm-sensors
 qdbm
 fftw
 eds
@@ -79,7 +93,7 @@ rtmp
 metalink
 lucene
 
-# 2006/02/05 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-02-05)
 # Modular X: mask for architectures on which they aren't available
 video_cards_glint
 video_cards_mga
@@ -87,8 +101,6 @@ video_cards_nouveau
 video_cards_nv
 video_cards_r128
 video_cards_radeon
-video_cards_tdfx
-video_cards_voodoo
 
 # Matt Turner <mattst88@gentoo.org>
 # Mask more VIDEO_CARDs added with mesa-8.0
@@ -99,8 +111,8 @@ video_cards_r300
 video_cards_r600
 video_cards_radeonsi
 
-# 2006/03/07 - Donnie Berkholz <dberkholz@gentoo.org>
-# Modular X: mask for architectures lacking direct rendering      
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-07)
+# Modular X: mask for architectures lacking direct rendering
 dri
 
 # nspr isnt ported to SuperH which means no seamonkey/firefox/etc...
@@ -108,11 +120,11 @@ nsplugin
 nss
 
 # USE=audit masked prior to testing on alpha, arm, hppa, ppc64, s390, sh.
-# Bug #184563, 18 Sep 2007 
+# Bug #184563, 2007-09-18
 # Robin H. Johnson <robbat2@gentoo.org>
 audit
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 

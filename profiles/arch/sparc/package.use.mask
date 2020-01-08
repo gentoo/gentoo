@@ -1,210 +1,234 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sergei Trofimovich <slyfox@gentoo.org> (28 Sep 2018)
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Matt Turner <mattst88@gentoo.org> (2019-12-01)
+# Fails to build, bug #676060
+dev-libs/openssl asm
+
+# Eugene Bright <eugene@bright.gdn> (2019-09-09)
+# Missing keyword on dev-embedded/libjaylink
+sys-apps/flashrom jlink-spi
+
+# Mart Raudsepp <leio@gentoo.org> (2019-08-18)
+# media-video/pipewire is not keyworded yet
+x11-wm/mutter screencast
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-05-05)
+# No sparc arch support for jit.
+dev-lang/spidermonkey jit
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-04-20)
+# No ffmpeg keywords on sparc
+media-sound/dir2ogg aac wma
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-09-28)
 # No stable nftables yet. Let new iptables stabilization
 # to pick nftables up. Meanwhile keep old iptables off
 # nftables.
 <net-firewall/iptables-1.6.2 nftables
 
-# Virgil Dupras <vdupras@gentoo.org> (08 Oct 2018)
+# Virgil Dupras <vdupras@gentoo.org> (2018-10-08)
 # app-text/mupdf sparc keyword was dropped in bug #631970
 net-print/cups-filters pdf
 
-# Sergei Trofimovich <slyfox@gentoo.org> (28 Sep 2018)
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-09-28)
 # mpir fails to build at least on sparc: bug #640424
 dev-python/gmpy mpir
 
-# Sergei Trofimovich <slyfox@gentoo.org> (30 Aug 2018)
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-08-30)
 # dev-games/openscenegraph is a heavy unkeyworded dependency.
 # Skip keywording it for now.
 app-office/scribus osg
 
-# Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2018)
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-06-17)
 # Mask broken HIPE support on sparc32 (bug #656618)
 dev-lang/erlang hipe
 
-# Sergei Trofimovich <slyfox@gentoo.org> (08 May 2018)
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-05-08)
 # Mask USE=games to avoid unkeyworded games-util/qstat.
 net-analyzer/monitoring-plugins game
 
-# Sergei Trofimovich <slyfox@gentoo.org> (20 Dec 2017)
+# Sergei Trofimovich <slyfox@gentoo.org> (2017-12-20)
 # Mask USE=rados for net-analyzer/rrdtool since sys-cluster/ceph is not
 # keyworded (bug #597174)
 net-analyzer/rrdtool rados
 
-# Sergei Trofimovich <slyfox@gentoo.org> (09 Nov 2017)
-# pulls in many dev-ruby/asciidoctor dependencies (bug #599048)
-net-misc/chrony html
-
-# Mart Raudsepp <leio@gentoo.org> (02 Sep 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-09-02)
 # Failure to re-keyword ffmpeg/gst-plugins-libav in a timely
 # fashion; bugs #574786, #608868, #610810
 media-plugins/gst-plugins-meta ffmpeg
 
-# Brian Evans <grknight@gentoo.org> (21 Aug 2017)
+# Brian Evans <grknight@gentoo.org> (2017-08-21)
 # No keywords for sys-process/numactl
 dev-db/mariadb numa
 
-# Gilles Dartiguelongue <eva@gentoo.org> (16 Aug 2017)
+# Gilles Dartiguelongue <eva@gentoo.org> (2017-08-16)
 # missing keyword on dev-python/dbusmock, bug #620024
 >=gnome-base/gnome-settings-daemon-3.24 test
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan
+media-libs/mesa vulkan vulkan-overlay
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=redis that is masked in this profile.
 dev-python/pyzor test
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
-# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=bluetooth that is masked in this profile.
 media-sound/pulseaudio native-headset ofono-headset
 net-misc/ofono dundee
 
-# Michał Górny <mgorny@gentoo.org> (07 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-07)
 # Requires USE=hdf5 that is masked in this profile.
 media-libs/vigra doc python test
 
-# Michał Górny <mgorny@gentoo.org> (28 Jun 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-06-28)
 # app-misc/dtach is not keyworded, and tests are restricted anyway, so
 # no point in pursuing it right now.
 app-shells/bash-completion test
 
-# Jason Zaman <perfinion@gentoo.org> (09 May 2017)
+# Jason Zaman <perfinion@gentoo.org> (2017-05-09)
 # x11-libs/libXpresent is not keyworded on sparc
 xfce-base/xfwm4 xpresent
 
-# Michał Górny <mgorny@gentoo.org> (23 Mar 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-03-23)
 # Most of clang runtimes are not supported here
 sys-devel/clang-runtime openmp sanitize
 sys-libs/libcxx libunwind libcxxrt
 sys-libs/libcxxabi libunwind
 
-# Pacho Ramos <pacho@gentoo.org> (04 Feb 2017)
+# Pacho Ramos <pacho@gentoo.org> (2017-02-04)
 # Missing keywords, bug #599572
 net-libs/gnome-online-accounts gnome
 x11-terms/gnome-terminal gnome-shell
 
-# Pacho Ramos <pacho@gentoo.org> (15 Jan 2017)
+# Pacho Ramos <pacho@gentoo.org> (2017-01-15)
 # Missing keywords, bug #559770
 >=net-misc/networkmanager-1.4.4 consolekit
 
-# Justin Lecher <jlec@gentoo.org> (15 Jan 2017)
+# Justin Lecher <jlec@gentoo.org> (2017-01-15)
 # unkeyworded rev deps
 dev-games/openscenegraph gdal las
 
-# Pacho Ramos <pacho@gentoo.org> (02 Jan 2017)
+# Pacho Ramos <pacho@gentoo.org> (2017-01-02)
 # Don't keyword redis
 dev-libs/hiredis test
 
-# James Le Cuirot <chewi@gentoo.org> (14 Dec 2016)
+# James Le Cuirot <chewi@gentoo.org> (2016-12-14)
 # DOSBox + OpenGLide is untested on this arch.
 games-emulation/dosbox glide
 
-# Michał Górny <mgorny@gentoo.org> (18 Nov 2016)
+# Fabian Groffen <grobian@gentoo.org> (2016-12-07)
+# unkeyworded notmuch dependency, bug #587560
+mail-client/mutt notmuch
+
+# Michał Górny <mgorny@gentoo.org> (2016-11-18)
 # libomp does not support SPARC, #600148.
 sys-devel/clang-runtime openmp
 
-# Christian Ruppert <idl0r@gentoo.org> (14 Oct 2016)
+# Christian Ruppert <idl0r@gentoo.org> (2016-10-14)
 # dnstap USE masked due to missing keywords
 net-dns/bind dnstap
 
-# Gilles Dartiguelongue <eva@gentoo.org> (11 Sep 2016)
+# Gilles Dartiguelongue <eva@gentoo.org> (2016-09-11)
 # networkmanager USE masked due to missing keywords
 gnome-extra/nm-applet teamd
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (28 Jun 2016)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2016-06-28)
 # Missing keywords on app-text/gspell - bug #587368
 >=app-editors/gedit-3.20 spell
 
-# Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
+# Justin Lecher <jlec@gentoo.org> (2016-02-22)
 # Missing test deps keyword #575366
 dev-cpp/eigen test
 
-# Pacho Ramos <pacho@gentoo.org> (20 Feb 2016)
+# Pacho Ramos <pacho@gentoo.org> (2016-02-20)
 # Missing keywords, bug #551580
 app-office/planner eds
 
-# Pacho Ramos <pacho@gentoo.org> (31 Jan 2016)
+# Pacho Ramos <pacho@gentoo.org> (2016-01-31)
 # Missing keywords, bug #560382
 media-video/ffmpeg snappy
 
-# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (2016-01-30)
 # scrollview requires Java, which is unsupported on SPARC.
 app-text/tesseract scrollview
 
-# Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
+# Justin Lecher <jlec@gentoo.org> (2015-11-18)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires
 # dev-python/greenlet which has not been ported
 dev-python/wsgiproxy2 test
 dev-python/pyquery test
 
-# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
 
-# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
+# Davide Pesavento <pesa@gentoo.org> (2015-10-26)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
 
-# Sergey Popov <pinkbyte@gentoo.org> (24 Oct 2015)
+# Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
 # Not tested
 net-mail/dovecot lz4
 
-# Justin Lecher <jlec@gentoo.org> (14 Oct 2015)
+# Justin Lecher <jlec@gentoo.org> (2015-10-14)
 # Requires dev-python/ipython which triggers a long dep chain
 dev-python/restkit cli
 
-# Brian Evans <grknight@gentoo.org> (14 Sep 2015)
+# Brian Evans <grknight@gentoo.org> (2015-09-14)
 # Mask new USE flags for mariadb which all arches do not yet have dependencies
 >=dev-db/mariadb-10.1.0 innodb-snappy
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (10 Sep 2015)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2015-09-10)
 # Requires wifi USE flag, which is masked for this arch
 net-misc/networkmanager wext
 
-# Pacho Ramos <pacho@gentoo.org> (13 Jun 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-06-13)
 # Missing keywords, bug #513108
 net-misc/spice-gtk smartcard webdav
 
-# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
+# Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
 # net-fs/libnfs lacks sparc keyword, bug #551576
 gnome-base/gvfs nfs
 
-# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
+# Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
 # dev-lua/lgi lacks sparc keyword, bug #551540
 dev-libs/libpeas lua
 
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
+# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
 # Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
 dev-libs/efl physics sdl
 
-# Alexis Ballier <aballier@gentoo.org> (11 Feb 2015)
+# Alexis Ballier <aballier@gentoo.org> (2015-02-11)
 # Missing ffmpeg deps, bug #510340
 media-video/ffmpeg x265
 
-# Patrick Lauer <patrick@gentoo.org> (10 Feb 2015)
+# Patrick Lauer <patrick@gentoo.org> (2015-02-10)
 # Missing keywords for media-libs/x265
 media-video/libav x265
 
-# Pacho Ramos <pacho@gentoo.org> (10 Jan 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-01-10)
 # Missing keywords
 net-misc/networkmanager teamd
 
-# Gilles Dartiguelongue <eva@gentoo.org> (23 Dec 2014)
+# Gilles Dartiguelongue <eva@gentoo.org> (2014-12-23)
 # New dependencies for wayland support in Gnome 3.14
 # See bug #533420.
 media-libs/clutter egl wayland
 media-libs/clutter-gtk wayland
 
-# Mark Wright <gienah@gentoo.org> (14-23 Dec 2014, 1 Apr 2015)
+# Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-23, 2015-04-01)
 # test dependencies need keywording
 dev-haskell/binary test
 dev-haskell/dlist test
@@ -212,135 +236,132 @@ dev-haskell/haskell-src-exts test
 dev-haskell/text test
 dev-haskell/vector test
 
-# Pacho Ramos <pacho@gentoo.org> (03 Oct 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-10-03)
 # Missing keywords, bug #524352
 >=app-accessibility/orca-3.12.3 braille
 
-# Christoph Junghans <junghans@gentoo.org> (21 Jul 2014)
+# Christoph Junghans <junghans@gentoo.org> (2014-07-21)
 # Missing keywords on sci-libs/libcerf (bug 517726)
 sci-visualization/gnuplot libcerf
 
-# Pacho Ramos <pacho@gentoo.org> (12 Apr 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-04-12)
 # Missing keywords, bug #507490
 net-misc/modemmanager mbim
 
-# Pacho Ramos <pacho@gentoo.org> (15 Mar 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-03-15)
 # Missing keywords, bug #504672
 >=net-misc/vinagre-3.10 rdp
 
-# Pacho Ramos <pacho@gentoo.org> (22 Feb 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-02-22)
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
 
-# Pacho Ramos <pacho@gentoo.org> (10 Feb 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-02-10)
 # Missing keywords, bug #495254
 >=dev-libs/totem-pl-parser-3.10 quvi
 
-# Raúl Porcel <armin76@gentoo.org> (1 Feb 2014)
+# Raúl Porcel <armin76@gentoo.org> (2014-02-01)
 # Sigbuses
 net-misc/openssh hpn
 
-# Pacho Ramos <pacho@gentoo.org> (19 Jan 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-01-19)
 # Missing keywords, bug #478254
 gnome-base/gnome classic extras
 
-# Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
+# Pacho Ramos <pacho@gentoo.org> (2013-12-02)
 # Missing keywords, bug #493156
 media-libs/libgphoto2 serial
 
-# Pacho Ramos <pacho@gentoo.org> (28 Nov 2013)
+# Pacho Ramos <pacho@gentoo.org> (2013-11-28)
 # Missing keywords, bug #492820
 net-im/telepathy-connection-managers sipe
 
-# Mark Wright <gienah@gentoo.org> (26 Oct 2013)
+# Mark Wright <gienah@gentoo.org> (2013-10-26)
 # template-haskell not yet available
 dev-haskell/dataenc test
 
-# Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
+# Pacho Ramos <pacho@gentoo.org> (2013-07-20)
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
 
-# Patrick Lauer <patrick@gentoo.org> (27 May 2013)
+# Patrick Lauer <patrick@gentoo.org> (2013-05-27)
 # stable keywords missing on tagpy/coherence
 media-sound/rhythmbox upnp-av
 
-# Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
+# Julian Ospald <hasufell@gentoo.org> (2013-03-31)
 # depends on mono
 >=net-irc/hexchat-2.9.4-r1 theme-manager
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-31)
 # remove mask when net-libs/libqmi is keyworded here
 net-misc/modemmanager qmi
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
-# requires firefox, which is not keyworded on sparc
-app-misc/tracker firefox-bookmarks
-
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # requires app-office/unoconv, which requires virtual/ooo, which is not
 # keyworded here. Remove mask if this situation changes.
 gnome-extra/sushi office
 
-# Raúl Porcel <armin76@gentoo.org> (30 Dec 2012)
+# Raúl Porcel <armin76@gentoo.org> (2012-12-30)
 # Needs testing
 media-libs/phonon gstreamer vlc
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (27 Dec 2012)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-27)
 # remove mask when dev-java/fop is keyworded here
 gnome-extra/libgda reports
 
-# Robin H Johnson <robbat2@gentoo.org> (01 Nov 2012)
+# Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
 >=dev-db/mysql-5.5 systemtap tcmalloc jemalloc
 >=dev-db/mariadb-5.5 systemtap tcmalloc jemalloc
 >=dev-db/percona-server-5.5 systemtap tcmalloc jemalloc
 
-# Diego Elio Pettenò <flameeyes@gentoo.org> (24 Jun 2012)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-06-24)
 # Requires libpcre with jit
 www-apache/mod_security jit
 
-# Raúl Porcel <armin76@gentoo.org> (28 May 2012)
+# Raúl Porcel <armin76@gentoo.org> (2012-05-28)
 # Needs x11-misc/lightdm(which also requires some other deps)
 x11-misc/xscreensaver new-login
 
-# Pacho Ramos <pacho@gentoo.org> (07 May 2012)
+# Pacho Ramos <pacho@gentoo.org> (2012-05-07)
 # libhid is not keyworded
-app-misc/lcdproc hid lcd_devices_mdm166a
+app-misc/lcdproc lcd_devices_mdm166a
 
-# Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
+# Anthony G. Basile <blueness@gentoo.org> (2011-12-21)
+# Mask the vde flag on tinc because net-misc/vde is not
+# keyworded for sparc
+net-vpn/tinc vde
+
+# Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # Mask use numa for openmpi
 sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
-# Raúl Porcel <armin76@gentoo.org> (08 Oct 2011)
+# Raúl Porcel <armin76@gentoo.org> (2011-10-08)
 # Needs media-sound/lilypond
 app-text/asciidoc test
 
-# Patrick McLean <chutzpah@gentoo.org> (07 Sep 2011)
+# Patrick McLean <chutzpah@gentoo.org> (2011-09-07)
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
 
-# Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
+# Alexey Shvetsov <alexxy@gentoo.org> (2011-08-31)
 # Mask numa use flag per bug #381313
 sys-apps/hwloc numa
 sys-cluster/openmpi numa
 
-# Pacho Ramos <pacho@gentoo.org> (27 Jan 2011)
+# Pacho Ramos <pacho@gentoo.org> (2011-01-27)
 # missing keywords on needed plugins
 media-plugins/gst-plugins-meta dts dv libvisual modplug vcd wavpack
 
-# Michael Weber <xmw@gentoo.org> (03 Jan 2011)
-# dev-libs/libev is not keyworded
-www-servers/lighttpd libev
-
-# Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
+# Justin Lecher <jlec@gentoo.org> (2010-08-13)
 # MKL not available on this arch
 media-gfx/povray mkl
 
-# Ben de Groot <yngwin@gentoo.org> (11 Nov 2009)
+# Ben de Groot <yngwin@gentoo.org> (2009-11-11)
 # Requires qthelp, which requires qtwebkit, bug 292838
 dev-libs/uriparser doc
 
@@ -363,10 +384,10 @@ net-im/pidgin zephyr
 # Mask srtp for ortp because libsrtp is marked -sparc
 net-libs/ortp srtp
 
-# Ultrabug <ultrabug@gentoo.org> (05 Sept 2011)
+# Ultrabug <ultrabug@gentoo.org> (2011-09-05)
 # missing keyword for net-libs/zeromq
 app-admin/rsyslog zeromq
 
-# Marius Brehler <marfbre@linux.sungazer.de> (13 Aug 2015)
+# Marius Brehler <marfbre@linux.sungazer.de> (2015-08-13)
 # missing keyword
 >=sci-misc/boinc-7.4.42-r1 X

@@ -14,7 +14,7 @@ SLOT="0"
 IUSE="gtk +introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=app-arch/libarchive-3.2.0

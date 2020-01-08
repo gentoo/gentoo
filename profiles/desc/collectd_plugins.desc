@@ -103,6 +103,7 @@ snmp - Build the snmp input plugin (reads values from network devices using SNMP
 snmp_agent - Build an input plugin which implements an SNMP AgentX subagent that receives and handles queries from SNMP master agent and returns configured metrics
 statsd - Build the statsd input plugin (accepts statsd-type metrics from a UDP socket)
 swap - Build the swap input plugin (collects amount of memory currently written to swap)
+sysevent - Build the rsyslog input plugin (collects system events from rsyslog)
 syslog - Build the syslog output plugin (receives messages from collectd and dispatches them to syslog)
 table - Build the table input plugin (parses table-like structured plain text)
 tail - Build the tail input plugin (follows logfiles, e.g. tail -f)

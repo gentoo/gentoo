@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # note: wxGTK interface has been removed wrt #391685. this ebuild is only for
@@ -20,7 +20,7 @@ SRC_URI="http://download2.bittornado.com/download/${MY_P}.tar.gz"
 LICENSE="MIT GPL-2"
 SLOT="0"
 
-KEYWORDS="alpha amd64 ~hppa ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 ~hppa ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE=""
 
 RDEPEND="dev-python/pycrypto[${PYTHON_USEDEP}]"
@@ -45,7 +45,7 @@ python_install() {
 
 	# get rid of any reference to the not-installed gui version
 	rm "${ED%/}"/usr/bin/*gui.py || die
-	rm "${ED%/}$(python_get_scriptdir)"/*gui.py || die
+	rm "${D}/$(python_get_scriptdir)"/*gui.py || die
 }
 
 python_install_all() {

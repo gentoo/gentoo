@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 GCONF_DEBUG="no"
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 VALA_MIN_API_VERSION="0.26"
 
 inherit eutils gnome2 multilib python-any-r1 vala
@@ -17,6 +17,7 @@ KEYWORDS="amd64"
 IUSE="nls totem vala"
 
 RDEPEND=">=dev-libs/glib-2.32.0:2
+	dev-libs/libgudev:0
 	>=media-libs/gstreamer-1.4.0:1.0
 	>=media-libs/gst-plugins-good-1.4.0:1.0
 	>=media-libs/gst-plugins-bad-1.4.0:1.0
@@ -28,7 +29,6 @@ RDEPEND=">=dev-libs/glib-2.32.0:2
 	>=dev-python/pygobject-3.2.1:3
 	>=dev-libs/gobject-introspection-1.44.0:0
 	x11-libs/gtk+:3[introspection]
-	virtual/libgudev:0
 	vala? ( $(vala_depend) )
 	totem? ( media-video/totem )"
 DEPEND="${RDEPEND}

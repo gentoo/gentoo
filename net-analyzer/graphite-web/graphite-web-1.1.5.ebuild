@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )  # 3.7 dropped due to dep-hell
+PYTHON_COMPAT=( python{2_7,3_6} )  # 3.7 dropped due to dep-hell
 
-inherit distutils-r1 python-utils-r1 prefix
+inherit distutils-r1 prefix
 
 DESCRIPTION="Enterprise scalable realtime graphing"
 HOMEPAGE="https://graphiteapp.org/"

@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs versionator vcs-snapshot
+inherit toolchain-funcs versionator vcs-snapshot eutils
 
 MY_PV="$(delete_all_version_separators)"
 DESCRIPTION="A stream editor for manipulating CSV files"
@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch
 	"${FILESDIR}"/${PN}-1.10a-tests.patch
+	"${FILESDIR}"/${P}-shuffle-test.patch
 )
 
 src_prepare() {

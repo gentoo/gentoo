@@ -9,7 +9,7 @@ DESCRIPTION="Computer-aided number theory C library and tools"
 HOMEPAGE="http://pari.math.u-bordeaux.fr/"
 LICENSE="GPL-2"
 SLOT="0/5"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="data doc fltk gmp X"
 SRC_URI="http://pari.math.u-bordeaux.fr/pub/${PN}/unix/${P}.tar.gz"
 

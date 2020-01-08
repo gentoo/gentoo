@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,14 +13,13 @@ TGPPDIST=26410-800.zip
 DESCRIPTION="HE-AAC+ v2 library, based on the reference implementation"
 HOMEPAGE="http://tipok.org.ua/node/17"
 SRC_URI="
+	https://tipok.org.ua/downloads/media/aacplus/libaacplus/${P}.tar.gz
 	https://dev.gentoo.org/~aballier/${P}.tar.gz
-	http://tipok.ath.cx/downloads/media/aac+/libaacplus/${P}.tar.gz
-	http://217.20.164.161/~tipok/aacplus/${P}.tar.gz
 	http://www.3gpp.org/ftp/Specs/archive/26_series/26.410/${TGPPDIST}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 arm hppa ppc ppc64 x86"
 IUSE="fftw static-libs"
 RESTRICT="bindist mirror"
 

@@ -3,7 +3,7 @@
 <pkgmetadata>
   <!-- maintainer-needed -->
   <use>
-    <flag name="switch_user">Enable support for switching user</flag>
+    <flag name="switch-user">Enable support for switching user</flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">dbhub</remote-id>

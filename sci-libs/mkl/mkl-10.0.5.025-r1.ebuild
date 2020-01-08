@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ LICENSE="Intel-SDP"
 KEYWORDS="-* ~amd64 ~ia64 ~x86"
 IUSE="doc fftw fortran95 int64 mpi"
 
-RESTRICT="strip mirror"
+RESTRICT="bindist strip mirror"
 
 DEPEND="
 	app-eselect/eselect-blas
@@ -307,7 +307,7 @@ src_install() {
 	# install license
 	if  [[ ! -f ${INTEL_LIC_DIR}/${MKL_LIC} ]]; then
 		insinto ${INTEL_LIC_DIR}
-		doins "${WORKDIR}"/${MKL_LIC} || die "install license failed"
+		doins "${WORKDIR}"/${MKL_LIC}
 	fi
 
 	# install main stuff: cp faster than doins
@@ -317,7 +317,7 @@ src_install() {
 	cp -pPR ${cpdirs} "${D}"${MKL_DIR} \
 		|| die "installing mkl failed"
 	insinto ${MKL_DIR}
-	doins -r ${doinsdirs} || die "doins ${doinsdirs} failed"
+	doins -r ${doinsdirs}
 	dosym mkl_cblas.h ${MKL_DIR}/include/cblas.h
 
 	# install blas/lapack profiles

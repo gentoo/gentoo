@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/yrutschle/sslh.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~m68k ~mips ~s390 ~sh ~x86"
+	KEYWORDS="amd64 ~arm ~m68k ~mips ~s390 ~sh x86"
 	MY_P="${PN}-v${PV}"
 	SRC_URI="https://www.rutschle.net/tech/${PN}/${MY_P}.tar.gz"
 	S=${WORKDIR}/${MY_P}

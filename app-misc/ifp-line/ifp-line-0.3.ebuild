@@ -18,11 +18,11 @@ DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}/${P}-fix-warnings.patch" )
 
 src_install() {
-	dobin ifp || die
+	dobin ifp
 	doman ifp.1
 
 	exeinto /usr/share/${PN}
-	doexe nonroot.sh || die
+	doexe nonroot.sh
 	default
 }
 

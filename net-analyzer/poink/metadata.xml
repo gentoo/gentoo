@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>robbat2@gentoo.org</email>
-</maintainer>
+	<maintainer type="person">
+		<email>robbat2@gentoo.org</email>
+	</maintainer>
+	<longdescription lang="en">
+		A TCP/IP-based ping implementation. It does not require special
+		privileges and is designed for multiuser shell systems. It is
+		meant to be a secure replacement for the standard IPv4 network
+		monitoring tool.
+	</longdescription>
 </pkgmetadata>

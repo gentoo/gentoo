@@ -1,0 +1,22 @@
+--- a/libnetutil/EthernetHeader.cc
++++ b/libnetutil/EthernetHeader.cc
+@@ -284,7 +284,7 @@ int EthernetHeader::setEtherType(u16 val){
+ 
+ 
+ /** Returns destination port in HOST byte order */
+-u16 EthernetHeader::getEtherType() const {
++const u16 EthernetHeader::getEtherType() const {
+   return ntohs(this->h.eth_type);
+ } /* End of getEtherType() */
+ 
+--- a/scan_engine.cc
++++ b/scan_engine.cc
+@@ -166,7 +166,7 @@ extern "C" int g_has_npcap_loopback;
+ #endif
+ 
+ 
+-int HssPredicate::operator() (const HostScanStats *lhs, const HostScanStats *rhs) const {
++const int HssPredicate::operator() (const HostScanStats *lhs, const HostScanStats *rhs) const {
+   const struct sockaddr_storage *lss, *rss;
+   lss = (lhs) ? lhs->target->TargetSockAddr() : ss;
+   rss = (rhs) ? rhs->target->TargetSockAddr() : ss;

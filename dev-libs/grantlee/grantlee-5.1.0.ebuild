@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 VIRTUALX_REQUIRED="test"
 inherit cmake-utils virtualx
@@ -12,25 +12,29 @@ SRC_URI="http://downloads.grantlee.org/${P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
 IUSE="debug doc test"
 
+BDEPEND="
+	doc? ( app-doc/doxygen[dot] )
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtscript:5
 "
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[dot] )
 	test? ( dev-qt/qttest:5 )
 "
 
-DOCS=( AUTHORS CHANGELOG README.md )
+# bug 682258
+RESTRICT="test"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.3.0-nonfatal-warnings.patch"
 	"${FILESDIR}/${P}-slot.patch"
 	"${FILESDIR}/${P}-qt-5.13.patch"
+	"${FILESDIR}/${P}-cxx11.patch"
 )
 
 src_prepare() {

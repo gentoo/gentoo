@@ -23,7 +23,6 @@ move app-admin/eselect-chuck app-eselect/eselect-chuck
 move app-admin/eselect-ctags app-eselect/eselect-ctags
 move app-admin/eselect-emacs app-eselect/eselect-emacs
 move app-admin/eselect-fontconfig app-eselect/eselect-fontconfig
-move app-admin/eselect-gnat app-eselect/eselect-gnat
 move app-admin/eselect-gnome-shell-extensions app-eselect/eselect-gnome-shell-extensions
 move app-admin/eselect-infinality app-eselect/eselect-infinality
 move app-admin/eselect-java app-eselect/eselect-java

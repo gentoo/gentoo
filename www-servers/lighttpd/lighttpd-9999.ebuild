@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -13,6 +13,7 @@ LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="bzip2 doc fam gdbm ipv6 kerberos ldap libev libressl lua minimal mmap memcached mysql pcre php rrdtool selinux ssl test webdav xattr zlib"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="kerberos? ( ssl !libressl )"
 
@@ -29,7 +30,7 @@ CDEPEND="
 	php?      ( dev-lang/php:*[cgi] )
 	rrdtool?  ( net-analyzer/rrdtool )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.7:0=[kerberos?] )
+		!libressl? ( >=dev-libs/openssl-0.9.7:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
 	webdav? (
@@ -151,7 +152,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
+	default
 
 	# init script stuff
 	newinitd "${FILESDIR}"/lighttpd.initd lighttpd
@@ -174,7 +175,7 @@ src_install() {
 	newdoc doc/config//lighttpd.conf lighttpd.conf.distrib
 	use ipv6 && readme.gentoo_create_doc
 
-	use doc && dohtml -r doc/*
+	use doc && dodoc -r doc
 
 	docinto txt
 	dodoc doc/outdated/*.txt

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mount-boot.eclass
@@ -10,23 +10,28 @@
 #
 # If the live system has a separate /boot partition configured, then this
 # function tries to ensure that it's mounted in rw mode, exiting with an
-# error if it can't. It does nothing if /boot isn't a separate partition.
+# error if it can't.  It does nothing if /boot isn't a separate partition.
+
+case ${EAPI:-0} in
+	4|5|6|7) ;;
+	*) die "${ECLASS}: EAPI ${EAPI:-0} not supported" ;;
+esac
 
 EXPORT_FUNCTIONS pkg_pretend pkg_preinst pkg_postinst pkg_prerm pkg_postrm
 
-# @FUNCTION: mount-boot_disabled
+# @FUNCTION: mount-boot_is_disabled
 # @INTERNAL
 # @DESCRIPTION:
 # Detect whether the current environment/build settings are such that we do not
 # want to mess with any mounts.
 mount-boot_is_disabled() {
-	# Since this eclass only deals with /boot, skip things when ROOT is active.
-	if [[ "${ROOT:-/}" != "/" ]] ; then
+	# Since this eclass only deals with /boot, skip things when EROOT is active.
+	if [[ ${EROOT:-/} != / ]] ; then
 		return 0
 	fi
 
 	# If we're only building a package, then there's no need to check things.
-	if [[ "${MERGE_TYPE}" == "buildonly" ]] ; then
+	if [[ ${MERGE_TYPE} == buildonly ]] ; then
 		return 0
 	fi
 
@@ -42,115 +47,62 @@ mount-boot_is_disabled() {
 # @FUNCTION: mount-boot_check_status
 # @INTERNAL
 # @DESCRIPTION:
-# Figure out what kind of work we need to do in order to have /boot be sane.
-# Return values are:
-# 0 - Do nothing at all!
-# 1 - It's mounted, but is currently ro, so need to remount rw.
-# 2 - It's not mounted, so need to mount it rw.
+# Check if /boot is sane, i.e., mounted as read-write if on a separate
+# partition.  Die if conditions are not fulfilled.
 mount-boot_check_status() {
 	# Get out fast if possible.
-	mount-boot_is_disabled && return 0
+	mount-boot_is_disabled && return
 
 	# note that /dev/BOOT is in the Gentoo default /etc/fstab file
-	local fstabstate=$(awk '!/^#|^[[:blank:]]+#|^\/dev\/BOOT/ {print $2}' /etc/fstab | egrep "^/boot$" )
-	local procstate=$(awk '$2 ~ /^\/boot$/ {print $2}' /proc/mounts)
-	local proc_ro=$(awk '{ print $2 " ," $4 "," }' /proc/mounts | sed -n '/\/boot .*,ro,/p')
+	local fstabstate=$(awk '!/^[[:blank:]]*#|^\/dev\/BOOT/ && $2 == "/boot" \
+		{ print 1; exit }' /etc/fstab || die "awk failed")
 
-	if [ -n "${fstabstate}" ] && [ -n "${procstate}" ] ; then
-		if [ -n "${proc_ro}" ] ; then
-			echo
-			einfo "Your boot partition, detected as being mounted at /boot, is read-only."
-			einfo "It will be remounted in read-write mode temporarily."
-			return 1
-		else
-			echo
-			einfo "Your boot partition was detected as being mounted at /boot."
-			einfo "Files will be installed there for ${PN} to function correctly."
-			return 0
-		fi
-	elif [ -n "${fstabstate}" ] && [ -z "${procstate}" ] ; then
-		echo
-		einfo "Your boot partition was not mounted at /boot, so it will be automounted for you."
-		einfo "Files will be installed there for ${PN} to function correctly."
-		return 2
-	else
-		echo
+	if [[ -z ${fstabstate} ]] ; then
 		einfo "Assuming you do not have a separate /boot partition."
-		return 0
+		return
 	fi
+
+	local procstate=$(awk '$2 == "/boot" \
+		{ print gensub(/^(.*,)?(ro|rw)(,.*)?$/, "\\2", 1, $4); exit }' \
+		/proc/mounts || die "awk failed")
+
+	if [[ -z ${procstate} ]] ; then
+		eerror "Your boot partition is not mounted at /boot."
+		eerror "Please mount it and retry."
+		die "/boot not mounted"
+	fi
+
+	if [[ ${procstate} == ro ]] ; then
+		eerror "Your boot partition, detected as being mounted at /boot," \
+			"is read-only."
+		eerror "Please remount it as read-write and retry."
+		die "/boot mounted read-only"
+	fi
+
+	einfo "Your boot partition was detected as being mounted at /boot."
+	einfo "Files will be installed there for ${PN} to function correctly."
 }
 
 mount-boot_pkg_pretend() {
-	# Get out fast if possible.
-	mount-boot_is_disabled && return 0
-
-	elog "To avoid automounting and auto(un)installing with /boot,"
-	elog "just export the DONT_MOUNT_BOOT variable."
 	mount-boot_check_status
-}
-
-mount-boot_mount_boot_partition() {
-	mount-boot_check_status
-	case $? in
-	0)	# Nothing to do.
-		;;
-	1)	# Remount it rw.
-		mount -o remount,rw /boot
-		if [ $? -ne 0 ] ; then
-			echo
-			eerror "Unable to remount in rw mode. Please do it manually!"
-			die "Can't remount in rw mode. Please do it manually!"
-		fi
-		touch /boot/.e.remount
-		;;
-	2)	# Mount it rw.
-		mount /boot -o rw
-		if [ $? -ne 0 ] ; then
-			echo
-			eerror "Cannot automatically mount your /boot partition."
-			eerror "Your boot partition has to be mounted rw before the installation"
-			eerror "can continue. ${PN} needs to install important files there."
-			die "Please mount your /boot partition manually!"
-		fi
-		touch /boot/.e.mount
-		;;
-	esac
 }
 
 mount-boot_pkg_preinst() {
-	# Handle older EAPIs.
-	case ${EAPI:-0} in
-	[0-3]) mount-boot_pkg_pretend ;;
-	esac
-
-	mount-boot_mount_boot_partition
+	mount-boot_check_status
 }
 
 mount-boot_pkg_prerm() {
-	touch "${ROOT}"/boot/.keep 2>/dev/null
-	mount-boot_mount_boot_partition
-	touch "${ROOT}"/boot/.keep 2>/dev/null
-}
+	mount-boot_check_status
 
-mount-boot_umount_boot_partition() {
-	# Get out fast if possible.
-	mount-boot_is_disabled && return 0
-
-	if [ -e /boot/.e.remount ] ; then
-		einfo "Automatically remounting /boot as ro as it was previously."
-		rm -f /boot/.e.remount
-		mount -o remount,ro /boot
-	elif [ -e /boot/.e.mount ] ; then
-		einfo "Automatically unmounting /boot as it was previously."
-		rm -f /boot/.e.mount
-		umount /boot
+	if [[ -z ${EPREFIX} ]] \
+		&& ! ( shopt -s failglob; : "${EROOT}"/boot/.keep* ) 2>/dev/null
+	then
+		# Create a .keep file, in case it is shadowed at the mount point
+		touch "${EROOT}"/boot/.keep 2>/dev/null
 	fi
 }
 
-mount-boot_pkg_postinst() {
-	mount-boot_umount_boot_partition
-}
+# No-op phases for backwards compatibility
+mount-boot_pkg_postinst() { :; }
 
-mount-boot_pkg_postrm() {
-	mount-boot_umount_boot_partition
-}
+mount-boot_pkg_postrm() { :; }

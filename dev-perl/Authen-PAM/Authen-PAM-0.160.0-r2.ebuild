@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
 IUSE="examples"
 
-RDEPEND="virtual/pam"
+RDEPEND="sys-libs/pam"
 DEPEND="${RDEPEND}"
 PATCHES=("${FILESDIR}/no-dot-inc.patch")
 export OPTIMIZE="$CFLAGS"

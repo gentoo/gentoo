@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ HOMEPAGE="https://rubygems.org/gems/ruby-oci8/"
 
 LICENSE="Ruby"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
 RDEPEND+=" dev-db/oracle-instantclient-basic"
@@ -29,12 +29,12 @@ each_ruby_configure() {
 
 each_ruby_compile() {
 	# compile the native libraries
-	emake -C ${EXT_DIR} V=1 || die "could not compile native library"
+	emake -C ${EXT_DIR} V=1
 }
 
 each_ruby_install() {
 	# install the native libraries
-	emake -C ${EXT_DIR} install DESTDIR="${D}" || die "could not install native library"
+	emake -C ${EXT_DIR} install DESTDIR="${D}"
 	# install the gem files
 	each_fakegem_install
 }

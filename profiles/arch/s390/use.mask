@@ -1,13 +1,25 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -s390
 
+# Matt Turner <mattst88@gentoo.org> (2019-12-05)
+# media-libs/libglvnd is not keyworded
+libglvnd
+
 # Unmask ABI flags for this arch.
 -abi_s390_32
 
-# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
+# Dependencies not keyworded.
+ayatana
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-03-31)
+# sys-auth/elogind is not yet keyworded here. bug #681200
+elogind
+
+# Michał Górny <mgorny@gentoo.org> (2018-07-16)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.
 # bug #661306: dev-python/pytest
@@ -15,7 +27,7 @@
 python_targets_python3_7
 python_single_target_python3_7
 
-# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian
 
@@ -53,7 +65,6 @@ acpi
 afs
 alsa
 apm
-directfb
 lirc
 llvm
 java
@@ -83,7 +94,7 @@ motif
 mono
 ocaml
 sdl
-lm_sensors
+lm-sensors
 wxwidgets
 
 # Many X drivers make no sense on this platform.
@@ -109,9 +120,8 @@ video_cards_r300
 video_cards_r600
 video_cards_radeon
 video_cards_radeonsi
-video_cards_tdfx
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 

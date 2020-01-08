@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 DISTUTILS_OPTIONAL=1
 
 inherit check-reqs cmake-utils distutils-r1 flag-o-matic multiprocessing \
@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
@@ -53,10 +53,7 @@ COMMON_DEPEND="
 	fuse? ( sys-fs/fuse:0=[static-libs?] )
 	xfs? ( sys-fs/xfsprogs:=[static-libs?] )
 	zfs? ( sys-fs/zfs:=[static-libs?] )
-	ssl? (
-		<dev-libs/openssl-1.1:=[static-libs?]
-		!dev-libs/openssl:1.0.0
-	)
+	ssl? ( <dev-libs/openssl-1.1:0=[static-libs?] )
 	radosgw? (
 		dev-libs/expat:=[static-libs?]
 		<dev-libs/openssl-1.1:=[static-libs?]

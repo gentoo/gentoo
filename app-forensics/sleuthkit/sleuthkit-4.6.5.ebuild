@@ -23,6 +23,7 @@ LICENSE="BSD CPL-1.0 GPL-2+ IBM java? ( Apache-2.0 )"
 SLOT="0/13" # subslot = major soname version
 KEYWORDS="~amd64 ~hppa ~ppc ~x86"
 IUSE="aff doc ewf java postgres static-libs test +threads zlib"
+RESTRICT="!test? ( test )"
 
 # Note: It is not possible to move the dep on dev-java/jdbc-postgresql
 # inside a conditional postgres? block because java sources import
@@ -139,6 +140,20 @@ tsk_compile_libewf() {
 		--without-openssl
 		--without-libuuid
 		--without-libfuse
+
+		--with-libcstring=no
+		--with-libcerror=no
+		--with-libcdata=no
+		--with-libclocale=no
+		--with-libcnotify=no
+		--with-libcsplit=no
+		--with-libuna=no
+		--with-libcfile=no
+		--with-libcpath=no
+		--with-libbfio=no
+		--with-libfcache=no
+		--with-libfvalue=no
+
 	)
 	# We want to contain our build flags
 	local CFLAGS="${CFLAGS}"

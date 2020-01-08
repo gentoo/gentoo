@@ -13,8 +13,8 @@ SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
-IUSE="+edit gpm mclib nls samba sftp +slang spell test unicode X +xdg"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+IUSE="+edit gpm nls samba sftp +slang spell test unicode X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
 
@@ -38,6 +38,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	"
 
+RESTRICT="!test? ( test )"
+
 S=${WORKDIR}/${MY_P}
 
 pkg_pretend() {
@@ -57,7 +59,11 @@ src_configure() {
 		--with-homedir=$(usex xdg 'XDG' '.mc')
 		--with-screen=$(usex slang 'slang' "ncurses$(usex unicode 'w' '')")
 		$(use_enable kernel_linux vfs-undelfs)
-		$(use_enable mclib)
+		# Today mclib does not expose any headers and is linked to
+		# single 'mc' binary. Thus there is no advantage of having
+		# a library. Let's avoid shared library altogether
+		# as it also conflicts with sci-libs/mc: bug #685938
+		--disable-mclib
 		$(use_enable nls)
 		$(use_enable samba vfs-smb)
 		$(use_enable sftp vfs-sftp)
@@ -91,7 +97,7 @@ src_install() {
 
 	if ! use xdg ; then
 		sed 's@MC_XDG_OPEN="xdg-open"@MC_XDG_OPEN="/bin/false"@' \
-			-i "${ED%/}"/usr/libexec/mc/ext.d/*.sh || die
+			-i "${ED}"/usr/libexec/mc/ext.d/*.sh || die
 	fi
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DESCRIPTION="VDR Plugin: remote programming VDR using VDR-Manager running on And
 HOMEPAGE="https://projects.vdr-developer.org/projects/vdr-manager/wiki"
 SRC_URI="mirror://vdr-developerorg/${VERSION}/${P}.tgz"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE="gzip +ssl -stream zlib"

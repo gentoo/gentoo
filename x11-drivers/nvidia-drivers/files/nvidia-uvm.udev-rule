@@ -1,1 +1,1 @@
-KERNEL=="nvidia_uvm", RUN+="/bin/bash -c '/bin/mknod -m 660 /dev/nvidia-uvm c $(grep nvidia-uvm /proc/devices | cut -d \  -f 1) 0; /bin/chgrp video /dev/nvidia-uvm'"
+KERNEL=="nvidia_uvm", RUN+="/bin/bash -c '/bin/mknod -m 660 /dev/nvidia-uvm c $$(grep nvidia-uvm /proc/devices | cut -d \  -f 1) 0; /bin/chgrp video /dev/nvidia-uvm'"

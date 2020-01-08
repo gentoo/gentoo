@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/sidplay2/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="static-libs"
 
 MULTILIB_WRAPPED_HEADERS=(

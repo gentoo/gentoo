@@ -5,9 +5,6 @@
 		<email>chainsaw@gentoo.org</email>
 		<name>Tony Vroon</name>
 	</maintainer>
-	<use>
-		<flag name="zstd">Enable support for ZSTD compression using <pkg>app-arch/zstd</pkg></flag>
-	</use>
 	<upstream>
 		<remote-id type="github">rpm-software-management/rpm</remote-id>
 	</upstream>

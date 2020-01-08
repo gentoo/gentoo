@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo//${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
 DEPEND="dev-lang/perl
@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-display.patch )
 
 src_install() {
-	dobin genlop || die "failed to install genlop (via dobin)"
+	dobin genlop
 	dodoc README Changelog
 	doman genlop.1
 	newbashcomp genlop.bash-completion genlop

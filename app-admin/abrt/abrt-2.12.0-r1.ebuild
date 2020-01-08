@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit autotools gnome2-utils python-single-r1 systemd user
 
@@ -18,7 +18,7 @@ IUSE="debug selinux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="${PYTHON_DEPS}
-	>=dev-libs/glib-2.43.4:2
+	>=dev-libs/glib-2.56:2
 	>=dev-libs/libreport-2.10.0[python]
 	dev-libs/libxml2:2
 	>=gnome-base/gsettings-desktop-schemas-3.15.1

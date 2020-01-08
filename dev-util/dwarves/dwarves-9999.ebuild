@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 EGIT_REPO_URI="https://git.kernel.org/pub/scm/devel/pahole/pahole.git"
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 inherit multilib cmake-utils git-r3 python-single-r1
 
 DESCRIPTION="pahole (Poke-a-Hole) and other DWARF2 utilities"
@@ -19,6 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/elfutils-0.131
+	<=dev-libs/elfutils-0.177
 	sys-libs/zlib"
 DEPEND="${RDEPEND}"
 
@@ -34,6 +35,4 @@ src_test() { :; }
 
 src_install() {
 	cmake-utils_src_install
-	python_fix_shebang "${D}"/usr/bin/ostra-cg \
-		"${D}"/usr/share/dwarves/runtime/python/ostra.py
 }

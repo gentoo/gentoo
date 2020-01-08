@@ -4,20 +4,23 @@
 # This file contains descriptions of APACHE2_MODULES USE_EXPAND flags.
 
 # Keep it sorted.
-access_compat - Backwards-compatibility for obsolete authorization directives
+access_compat - Group authorizations based on host (name or IP address). Available as a compatibility module with previous versions
 actions - Provides for executing CGI scripts based on media type or request method
 alias - Provides for mapping different parts of the host filesystem in the document tree and for URL redirection
 asis - Sends files that contain their own HTTP headers
 auth_basic - Basic authentication
 auth_digest - User authentication using MD5 Digest Authentication
+auth_form - Allows the use of an HTML login form to restrict access by looking up users in the given providers
 authn_alias - Provides the ability to create extended authentication providers based on actual providers
 authn_anon - Allows "anonymous" user access to authenticated areas
-authn_core - Provides core authentication capabilities
+authn_core - Provides core authentication capabilities common to all authentication providers (functionality provided by authn_alias in previous versions)
 authn_dbd - User authentication using an SQL database
 authn_dbm - User authentication using DBM files
 authn_default - Authentication fallback module
 authn_file - User authentication using text files
-authz_core - Provides core authorization capabilities
+authn_socache - Maintains a cache of authentication credentials, so that a new backend lookup is not required for every authenticated request
+authz_core - Provides core authorization capabilities to various authorization/authorization modules, such as authn_file and authz_user
+authz_dbd - Provides authorization capabilities via SQL database so that authenticated users can be allowed or denied access to portions of the web site by group membership
 authz_dbm - Group authorization using DBM files
 authz_default - Authorization fallback module
 authz_groupfile - Group authorization using plaintext files
@@ -25,8 +28,10 @@ authz_host - Group authorizations based on host (name or IP address)
 authz_owner - Authorization based on file ownership
 authz_user - User Authorization
 autoindex - Generates directory indexes, automatically, similar to the Unix ls command
+brotli - Enable brotli compression support
 cache - Content cache keyed to URIs
-cache_disk - Disk based storage module for the HTTP caching filter
+cache_disk - Disk based storage module for the HTTP caching filter (similar to mem_cache in previous versions)
+cache_socache - Shared object cache (socache) based storage module for the HTTP caching filter
 cern_meta - CERN httpd metafile semantics
 cgi - Enable CGI module (used by non-multithreaded MPMs, for eg. prefork)
 cgid - Enable CGI module (used by multithreaded MPMs, for eg. worker)
@@ -45,6 +50,7 @@ ext_filter - Pass the response body through an external program before delivery 
 file_cache - Caches a static list of files in memory
 filter - Context-sensitive smart filter configuration module
 headers - Customization of HTTP request and response headers
+http2 - Enable http2/alpn module
 ident - RFC 1413 ident lookups
 imagemap - Server-side imagemap processing
 include - Server-parsed html documents (Server Side Includes)
@@ -56,6 +62,8 @@ lbmethod_heartbeat - Heartbeat Traffic Counting load balancer scheduler algorith
 log_config - Logging of the requests made to the server
 log_forensic - Forensic Logging of the requests made to the server
 logio - Logging of input and output bytes per request
+macro - Macros for the Apache config file
+md - Managing domains across virtual hosts, certificate provisioning via the ACME protocol
 mem_cache - Content cache keyed to URIs
 mime - Associates the requested filename's extensions with the file's behavior (handlers and filters) and content (mime-type, language, character set and encoding)
 mime_magic - Determines the MIME type of a file by looking at a few bytes of its contents
@@ -66,16 +74,22 @@ proxy_balancer - mod_proxy extension for load balancing
 proxy_connect - mod_proxy extension for CONNECT request handling
 proxy_fcgi - FastCGI support module for mod_proxy
 proxy_ftp - FTP support module for mod_proxy
+proxy_html - Module to rewrite links in html pages behind a reverse proxy
 proxy_http - HTTP support module for mod_proxy
+proxy_http2 - HTTP2 support module for mod_proxy
 proxy_scgi - SCGI gateway module for mod_proxy
-proxy_wstunnel - Websockets support module for mod_proxy
+proxy_wstunnel - Provides support for the tunnelling of web socket connections to a backend websockets server
 ratelimit - Bandwidth Rate Limiting for Clients
 remoteip - Replaces the original client IP address for the connection with the useragent IP address list presented by a proxies or a load balancer via the request headers
 reqtimeout - Set timeout and minimum data rate for receiving requests
 rewrite - Provides a rule-based rewriting engine to rewrite requested URLs on the fly
+session - Provides support for a server wide per user session interface
+session_crypto - Provides support for the encryption of user sessions before being written to a local database, or written to a remote browser via an HTTP cookie
+session_cookie - Provides support for the storage of user sessions on the remote browser within HTTP cookies
+session_dbd - Provides support for the storage of user sessions within a SQL database using the mod_dbd module
 setenvif - Allows the setting of environment variables based on characteristics of the request
 slotmem_shm - Slot-based shared memory provider
-socache_shmcb - Cyclic buffer shared-memory-based shared object cache provider
+socache_shmcb - A shared object cache provider using a high-performance cyclic buffer inside a shared memory segment
 speling - Attempts to correct mistaken URLs that users might have entered by ignoring capitalization and by allowing up to one misspelling
 status - Provides information on server activity and performance
 substitute - Perform search and replace operations on response bodies
@@ -85,3 +99,5 @@ userdir - User-specific directories
 usertrack - Clickstream logging of user activity on a site
 version - Version dependent configuration
 vhost_alias - Provides for dynamically configured mass virtual hosting
+watchdog - Provides infrastructure for other modules to periodically run tasks
+xml2enc - Enable xml2 encoding module

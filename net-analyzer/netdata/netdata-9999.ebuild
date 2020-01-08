@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
-inherit autotools fcaps linux-info python-r1 systemd user
+inherit autotools fcaps linux-info python-r1 systemd
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
@@ -19,7 +19,7 @@ HOMEPAGE="https://github.com/netdata/netdata https://my-netdata.io/"
 
 LICENSE="GPL-3+ MIT BSD"
 SLOT="0"
-IUSE="caps +compression cpu_flags_x86_sse2 ipmi mysql nfacct nodejs postgres +python tor"
+IUSE="caps +compression cpu_flags_x86_sse2 cups +dbengine ipmi +jsonc kinesis mongodb mysql nfacct nodejs postgres prometheus +python tor xen"
 REQUIRED_USE="
 	mysql? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -27,26 +27,40 @@ REQUIRED_USE="
 
 # most unconditional dependencies are for plugins.d/charts.d.plugin:
 RDEPEND="
+	acct-group/netdata
+	acct-user/netdata
+	app-misc/jq
 	>=app-shells/bash-4:0
 	|| (
 		net-analyzer/openbsd-netcat
-		net-analyzer/netcat6
 		net-analyzer/netcat
 	)
-	net-analyzer/tcpdump
-	net-analyzer/traceroute
 	net-misc/curl
 	net-misc/wget
 	sys-apps/util-linux
 	virtual/awk
 	caps? ( sys-libs/libcap )
+	cups? ( net-print/cups )
+	dbengine? (
+		dev-libs/libuv
+		app-arch/lz4
+		dev-libs/judy
+		dev-libs/openssl:=
+	)
 	compression? ( sys-libs/zlib )
 	ipmi? ( sys-libs/freeipmi )
+	jsonc? ( dev-libs/json-c )
+	kinesis? ( dev-libs/aws-sdk-cpp[kinesis] )
+	mongodb? ( dev-libs/mongo-c-driver )
 	nfacct? (
 		net-firewall/nfacct
 		net-libs/libmnl
 	)
 	nodejs? ( net-libs/nodejs )
+	prometheus? (
+		dev-libs/protobuf:=
+		app-arch/snappy
+	)
 	python? (
 		${PYTHON_DEPS}
 		dev-python/pyyaml[${PYTHON_USEDEP}]
@@ -58,12 +72,13 @@ RDEPEND="
 		)
 		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		tor? ( net-libs/stem[${PYTHON_USEDEP}] )
+	)
+	xen? (
+		app-emulation/xen-tools
+		dev-libs/yajl
 	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-: ${NETDATA_USER:=netdata}
-: ${NETDATA_GROUP:=netdata}
 
 FILECAPS=(
 	'cap_dac_read_search,cap_sys_ptrace+ep' 'usr/libexec/netdata/plugins.d/apps.plugin'
@@ -71,9 +86,6 @@ FILECAPS=(
 
 pkg_setup() {
 	linux-info_pkg_setup
-
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 / ${PN}
 }
 
 src_prepare() {
@@ -84,9 +96,16 @@ src_prepare() {
 src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}"/var \
-		--with-user=${NETDATA_USER} \
+		--with-user=netdata \
+		$(use_enable jsonc) \
+		$(use_enable cups plugin-cups) \
+		$(use_enable dbengine) \
 		$(use_enable nfacct plugin-nfacct) \
 		$(use_enable ipmi plugin-freeipmi) \
+		$(use_enable kinesis backend-kinesis) \
+		$(use_enable mongodb backend-mongodb) \
+		$(use_enable prometheus backend-prometheus-remote-write) \
+		$(use_enable xen plugin-xenstat) \
 		$(use_enable cpu_flags_x86_sse2 x86-sse) \
 		$(use_with compression zlib)
 }
@@ -99,16 +118,24 @@ src_install() {
 	# Remove unneeded .keep files
 	find "${ED}" -name ".keep" -delete || die
 
-	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/log/netdata
+	fowners -Rc netdata:netdata /var/log/netdata
 	keepdir /var/log/netdata
-	fowners -Rc ${NETDATA_USER}:${NETDATA_GROUP} /var/lib/netdata
+	fowners -Rc netdata:netdata /var/lib/netdata
 	keepdir /var/lib/netdata
 	keepdir /var/lib/netdata/registry
 
-	fowners -Rc root:${NETDATA_GROUP} /usr/share/${PN}
+	fowners -Rc root:netdata /usr/share/${PN}
 
 	newinitd system/netdata-openrc ${PN}
 	systemd_dounit system/netdata.service
 	insinto /etc/netdata
 	doins system/netdata.conf
+}
+
+pkg_postinst() {
+	fcaps_pkg_postinst
+
+	if use xen ; then
+		fcaps 'cap_dac_override' 'usr/libexec/netdata/plugins.d/xenstat.plugin'
+	fi
 }

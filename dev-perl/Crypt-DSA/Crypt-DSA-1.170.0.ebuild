@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,6 +12,7 @@ DESCRIPTION="DSA Signatures and Key Generation"
 SLOT="0"
 KEYWORDS="alpha amd64 hppa ppc sparc x86 ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-perl/Data-Buffer
 	dev-perl/Digest-SHA1

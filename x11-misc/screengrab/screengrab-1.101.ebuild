@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="Qt application for getting screenshots"
 HOMEPAGE="https://lxqt.org/"
@@ -11,7 +11,7 @@ SRC_URI="https://downloads.lxqt.org/downloads/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 x86"
 IUSE=""
 
 BDEPEND="dev-qt/linguist-tools:5"

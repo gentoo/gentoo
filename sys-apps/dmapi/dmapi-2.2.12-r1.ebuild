@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils toolchain-funcs multilib multilib-minimal
+inherit eutils toolchain-funcs multilib multilib-minimal usr-ldscript
 
 DESCRIPTION="XFS data management API library"
 HOMEPAGE="https://xfs.wiki.kernel.org/"

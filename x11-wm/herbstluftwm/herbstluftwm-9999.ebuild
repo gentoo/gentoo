@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit toolchain-funcs bash-completion-r1
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/herbstluftwm/herbstluftwm.git"
-	EXTRA_DEPEND="app-text/asciidoc"
+	BDEPEND="app-text/asciidoc"
 else
 	SRC_URI="https://herbstluftwm.org/tarballs/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
-	EXTRA_DEPEND=""
+	BDEPEND=""
 fi
 
 DESCRIPTION="A manual tiling window manager for X"
@@ -21,19 +21,23 @@ LICENSE="BSD-2"
 SLOT="0"
 IUSE="examples xinerama zsh-completion"
 
-CDEPEND=">=dev-libs/glib-2.24:2
+DEPEND="
+	>=dev-libs/glib-2.24:2
 	x11-libs/libX11
 	x11-libs/libXext
-	xinerama? ( x11-libs/libXinerama )"
-RDEPEND="${CDEPEND}
+	xinerama? ( x11-libs/libXinerama )
+"
+RDEPEND="
+	${DEPEND}
 	app-shells/bash
-	zsh-completion? ( app-shells/zsh )"
-DEPEND="${CDEPEND}
-	${EXTRA_DEPEND}
-	virtual/pkgconfig"
+	zsh-completion? ( app-shells/zsh )
+"
+BDEPEND+="
+	virtual/pkgconfig
+"
 
 src_compile() {
-	tc-export CC LD CXX
+	tc-export CC CXX LD PKG_CONFIG
 
 	emake LDXX="$(tc-getCXX)" COLOR=0 VERBOSE= \
 		$(use xinerama || echo XINERAMAFLAGS= XINERAMALIBS= )

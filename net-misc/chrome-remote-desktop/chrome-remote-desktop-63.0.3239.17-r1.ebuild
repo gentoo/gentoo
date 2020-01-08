@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Base URL: https://dl.google.com/linux/chrome-remote-desktop/deb/
@@ -29,8 +29,9 @@ SRC_URI="amd64? ( ${BASE_URI}_amd64.deb )"
 LICENSE="google-chrome"
 SLOT="0"
 KEYWORDS="-* amd64"
-IUSE=""
+IUSE="xrandr"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+RESTRICT="bindist mirror"
 
 # All the libs this package links against.
 RDEPEND="app-admin/sudo
@@ -61,6 +62,7 @@ RDEPEND="app-admin/sudo
 # Settings we just need at runtime.
 # TODO: Look at switching to xf86-video-dummy & xf86-input-void instead of xvfb.
 RDEPEND+="
+	xrandr? ( x11-apps/xrandr )
 	x11-base/xorg-server[xvfb]"
 DEPEND=""
 

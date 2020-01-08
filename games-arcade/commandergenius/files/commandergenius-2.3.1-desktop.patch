@@ -1,0 +1,52 @@
+From 84243052d0b9409b4d5b28e751e598287b00bab9 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 24 Feb 2019 21:26:38 +0000
+Subject: [PATCH 1/2] Remove deprecated "Application" entry from desktop
+ categories
+
+The desktop-file-validate tool says it is deprecated.
+---
+ share/cgenius.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/share/cgenius.desktop b/share/cgenius.desktop
+index 8d0771522..b7b39ffef 100644
+--- a/share/cgenius.desktop
++++ b/share/cgenius.desktop
+@@ -6,4 +6,4 @@ Icon=/usr/share/icons/hicolor/512x512/apps/CGLogo.png
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-Categories=Application;Game;ArcadeGame;
++Categories=Game;ArcadeGame;
+-- 
+2.20.1
+
+From e9d6157210015b4aa5efcb9ba0c57842ae4ef266 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Sun, 24 Feb 2019 21:31:28 +0000
+Subject: [PATCH 2/2] Remove unnecessary absolute icon path from desktop entry
+
+We should not assume that the game has been installed to /usr and
+there is no need to specify an absolute path for the icon anyway as
+the standard says that bare icon names should be looked up.
+---
+ share/cgenius.desktop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/share/cgenius.desktop b/share/cgenius.desktop
+index b7b39ffef..9b09ec9fc 100644
+--- a/share/cgenius.desktop
++++ b/share/cgenius.desktop
+@@ -2,7 +2,7 @@
+ Name=Commander Genius
+ Comment=Play natively Commander Keen Games
+ Exec=CGeniusExe
+-Icon=/usr/share/icons/hicolor/512x512/apps/CGLogo.png
++Icon=CGLogo
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-- 
+2.20.1
+

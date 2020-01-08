@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,6 +12,7 @@ DESCRIPTION="Capture STDOUT and STDERR from Perl code, subprocesses or XS"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm ~arm64 hppa ~ia64 ~mips ppc ppc64 ~sparc x86 ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp

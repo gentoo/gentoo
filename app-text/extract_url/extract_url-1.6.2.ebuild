@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="extracts URLs from correctly-encoded MIME email messages or plain text"
 HOMEPAGE="https://www.memoryhole.net/~kyle/extract_url/ https://github.com/m3m0ryh0l3/extracturl/"

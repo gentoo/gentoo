@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -9,7 +9,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="git://repo.or.cz/cloog.git"
 	inherit autotools git-r3
 else
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 	SRC_URI="http://www.bastoul.net/cloog/pages/download/${P}.tar.gz"
 fi
 
@@ -21,8 +21,7 @@ SLOT="0/4"
 IUSE="static-libs"
 
 RDEPEND=">=dev-libs/gmp-6.0.0[${MULTILIB_USEDEP}]
-	>=dev-libs/isl-0.15:0=[${MULTILIB_USEDEP}]
-	!dev-libs/cloog-ppl"
+	>=dev-libs/isl-0.15:0=[${MULTILIB_USEDEP}]"
 DEPEND="${DEPEND}
 	virtual/pkgconfig"
 

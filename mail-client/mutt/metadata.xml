@@ -18,9 +18,9 @@
 		<flag name="smtp">Enable support for direct SMTP delivery</flag>
 		<flag name="tokyocabinet">Enable <pkg>dev-db/tokyocabinet</pkg>
 			database backend for header caching</flag>
-		<flag name="crypt">Add support for encryption -- using mcrypt or gpg
-			where applicable</flag>
 		<flag name="pgp_classic">Build classic_pgp backend to support PGP/MIME
+			and traditional/inline PGP</flag>
+		<flag name="pgp-classic">Build classic_pgp backend to support PGP/MIME
 			and traditional/inline PGP</flag>
 		<flag name="gpg">Enable support for <pkg>app-crypt/gpgme</pkg></flag>
 		<flag name="gpgme">Build gpgme backend to support S/MIME, PGP/MIME and
@@ -28,12 +28,10 @@
 		<flag name="smime">Enable support for smime</flag>
 		<flag name="smime_classic">Build classic_smime backend to support
 			S/MIME</flag>
+		<flag name="smime-classic">Build classic_smime backend to support
+			S/MIME</flag>
 	</use>
 	<upstream>
-		<!-- for releases before 1.9.2 -->
-		<remote-id type="sourceforge">mutt</remote-id>
-		<remote-id type="bitbucket">mutt/mutt</remote-id>
-		<!-- from 1.9.2 onwards -->
 		<remote-id type="gitlab">muttmua/mutt</remote-id>
 	</upstream>
 </pkgmetadata>

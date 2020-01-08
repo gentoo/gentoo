@@ -16,7 +16,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.gz
 	https://dev.gentoo.org/~hwoarang/distfiles/${PN}-extra-artwork-${ARTWORK_PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE="doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -71,7 +71,7 @@ src_install() {
 	cd "${WORKDIR}/${PN}-extra-artwork-${ARTWORK_PV}/" || die
 	emake DESTDIR="${D}" install
 	# This carries over from -0.13 but appears to have no effect.
-	python_optimize "${ED}"usr/share/${PN}
+	python_optimize "${ED}"/usr/share/${PN}
 }
 
 pkg_postinst() {

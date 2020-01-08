@@ -59,7 +59,7 @@ CDEPEND="
 	>=sys-libs/tevent-0.9.36[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	acl? ( virtual/acl )
 	addns? (
 		net-dns/bind-tools[gssapi]
@@ -83,6 +83,7 @@ CDEPEND="
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( >=app-crypt/mit-krb5-1.15.1[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd:0= )
+	zeroconf? ( net-dns/avahi )
 "
 DEPEND="${CDEPEND}
 	${PYTHON_DEPS}
@@ -272,7 +273,7 @@ multilib_src_install() {
 		newpamd "${CONFDIR}/system-auth-winbind.pam" system-auth-winbind
 		# bugs #376853 and #590374
 		insinto /etc/security
-		doins examples/pam_winbind/pam_winbind.conf || die
+		doins examples/pam_winbind/pam_winbind.conf
 	fi
 
 	keepdir /var/cache/samba

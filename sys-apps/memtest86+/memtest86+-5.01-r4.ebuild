@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -18,7 +18,7 @@ BOOTDIR="/boot/memtest86plus"
 QA_PRESTRIPPED="${BOOTDIR}/memtest /usr/share/${PN}/memtest"
 QA_FLAGS_IGNORED="${BOOTDIR}/memtest /usr/share/${PN}/memtest"
 
-RDEPEND="floppy? ( >=sys-boot/grub-0.95:0 sys-fs/mtools )"
+RDEPEND="floppy? ( sys-fs/mtools )"
 DEPEND="iso? ( app-cdr/cdrtools )"
 
 pkg_pretend() {

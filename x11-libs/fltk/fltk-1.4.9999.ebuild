@@ -1,14 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools fdo-mime flag-o-matic multilib-minimal subversion
+EAPI=7
+
+inherit autotools flag-o-matic git-r3 xdg-utils multilib-minimal
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
-HOMEPAGE="http://www.fltk.org/"
-ESVN_REPO_URI="http://seriss.com/public/fltk/fltk/branches/branch-1.4/"
-ESVN_USER=""
-ESVN_PASSWORD=""
+HOMEPAGE="https://www.fltk.org/"
+EGIT_REPO_URI="https://github.com/fltk/fltk"
 
 SLOT="1"
 LICENSE="FLTK LGPL-2"
@@ -26,6 +25,7 @@ RDEPEND="
 	x11-libs/libXfixes[${MULTILIB_USEDEP}]
 	x11-libs/libXt[${MULTILIB_USEDEP}]
 	cairo? ( x11-libs/cairo[${MULTILIB_USEDEP},X] )
+	games? ( !sys-block/blocks )
 	opengl? (
 		virtual/glu[${MULTILIB_USEDEP}]
 		virtual/opengl[${MULTILIB_USEDEP}]
@@ -35,27 +35,41 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
+	virtual/pkgconfig
 	x11-base/xorg-proto
 	doc? ( app-doc/doxygen )
 "
-
 DOCS=(
 	ANNOUNCEMENT
-	CHANGES
-	CREDITS
-	README
+	CHANGES.txt
+	CHANGES_1.0.txt
+	CHANGES_1.1.txt
+	CHANGES_1.3.txt
+	CREDITS.txt
+	README.Android.md
+	README.CMake.txt
+	README.Cairo.txt
+	README.IDE.txt
+	README.Pico.txt
+	README.Unix.txt
+	README.Windows.txt
+	README.abi-version.txt
+	README.bundled-libs.txt
+	README.macOS.md
+	README.md
+	README.txt
 )
-
 FLTK_GAMES="
 	blocks
 	checkers
 	sudoku
 "
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.0-share.patch
 	"${FILESDIR}"/${PN}-1.3.3-makefile-dirs.patch
 	"${FILESDIR}"/${PN}-1.3.4-conf-tests.patch
+	"${FILESDIR}"/${PN}-1.3.5-cmake.patch
+	"${FILESDIR}"/${PN}-1.3.5-optim.patch
 )
 
 pkg_setup() {
@@ -80,10 +94,6 @@ src_prepare() {
 		-e "/^docdir/s:fltk:${PF}/html:" \
 		-e "/SILENT:/d" \
 		makeinclude.in || die
-	sed -e "s/7/${PV}/" \
-		< "${FILESDIR}"/FLTKConfig.cmake \
-		> CMake/FLTKConfig.cmake || die
-	sed -e 's:-Os::g' -i configure.ac || die
 
 	# also in Makefile:config.guess config.sub:
 	cp misc/config.{guess,sub} . || die
@@ -117,7 +127,9 @@ multilib_src_configure() {
 		--enable-xdbe \
 		--enable-xfixes \
 		--includedir=${FLTK_INCDIR} \
-		--libdir=${FLTK_LIBDIR}
+		--libdir=${FLTK_LIBDIR} \
+		DSOFLAGS="${LDFLAGS}" \
+		LDFLAGS="${LDFLAGS}"
 }
 
 multilib_src_compile() {
@@ -143,27 +155,28 @@ multilib_src_install() {
 
 	if multilib_is_native_abi; then
 		emake -C fluid \
-			  DESTDIR="${D}" install-linux
+			DESTDIR="${D}" install-linux install
 
 		use doc &&
 			emake -C documentation \
-				  DESTDIR="${D}" install
+				DESTDIR="${D}" install
 
 		use games &&
 			emake -C test \
-				  DESTDIR="${D}" install-linux
+				DESTDIR="${D}" install-linux
 	fi
 }
 
 multilib_src_install_all() {
 	for app in fluid $(usex games "${FLTK_GAMES}" ''); do
-		dosym /usr/share/icons/hicolor/32x32/apps/${app}.png \
-			  /usr/share/pixmaps/${app}.png
+		dosym \
+			../icons/hicolor/32x32/apps/${app}.png \
+			/usr/share/pixmaps/${app}.png
 	done
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins test/*.{h,cxx,fl} test/demo.menu
+		docinto examples
+		dodoc -r test/*.{h,cxx,fl} test/demo.menu
 	fi
 
 	insinto /usr/share/cmake/Modules
@@ -179,13 +192,15 @@ multilib_src_install_all() {
 		rm "${ED}"/usr/lib*/fltk/*.a || die
 	fi
 
-	prune_libtool_files
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }

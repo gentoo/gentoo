@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -19,10 +19,11 @@ SRC_URI="https://www.freedesktop.org/software/${MY_PN}/releases/${MY_P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0/18"
 KEYWORDS="~alpha amd64 ~arm ~mips ~ppc ~ppc64 x86"
-IUSE="cron command-not-found elogind +introspection entropy systemd test vala"
+IUSE="command-not-found consolekit cron elogind entropy +introspection systemd test vala"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
-	?? ( elogind systemd )
+	^^ ( consolekit elogind systemd )
 	vala? ( introspection )
 	entropy? ( $(python_gen_useflags 'python2*' ) )
 "
@@ -58,12 +59,9 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	>=app-portage/layman-2[${PYTHON_USEDEP}]
-	|| (
-		>=sys-apps/portage-2.2[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)
+	>=sys-apps/portage-2.2[${PYTHON_USEDEP}]
+	consolekit? ( sys-auth/consolekit )
 	entropy? ( >=sys-apps/entropy-234[${PYTHON_USEDEP}] )
-	!systemd? ( !elogind? ( sys-auth/consolekit ) )
 "
 
 PATCHES=(

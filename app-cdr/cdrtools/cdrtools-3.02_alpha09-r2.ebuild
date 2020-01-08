@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/$([[ -z ${PV/*_alpha*} ]] && echo 'alpha')/$
 
 LICENSE="GPL-2 LGPL-2.1 CDDL-Schily"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="acl caps nls unicode selinux"
 
 BDEPEND="
@@ -55,7 +55,7 @@ src_prepare() {
 	# going to include this so let's try to carry it forward.
 	# Contact me if it needs updating.  Bug #486782.
 	# Anthony G. Basile <blueness@gentoo.org>.
-	use elibc_uclibc && epatch "${FILESDIR}"/${PN}-fix-clone-uclibc.patch
+	use elibc_uclibc && eapply "${FILESDIR}"/${PN}-fix-clone-uclibc.patch
 
 	# Remove profiled make files.
 	find -name '*_p.mk' -delete || die "delete *_p.mk"

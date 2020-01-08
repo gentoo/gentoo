@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: xemacs currently does not work with position independent code
@@ -15,7 +15,7 @@ SRC_URI="http://ftp.xemacs.org/xemacs-21.5/${P}.tar.gz
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="alsa debug eolconv gif gpm pop postgres ldap libressl xface nas dnd X jpeg tiff png mule motif freewnn canna xft xim athena neXt Xaw3d gdbm berkdb"
 
 X_DEPEND="x11-libs/libXt x11-libs/libXmu x11-libs/libXext x11-misc/xbitmaps"
@@ -66,6 +66,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-ncurses-tinfo.patch"
 	epatch "${FILESDIR}/${P}-gcc5.patch"
 	epatch "${FILESDIR}/${P}-glibc-macro.patch"
+	epatch "${FILESDIR}/${P}-as-needed.patch"
 
 	# Some binaries and man pages are installed under suffixed names
 	# to avoid collions with their GNU Emacs counterparts (see below).
@@ -179,8 +180,7 @@ src_configure() {
 		--with-newgc \
 		--with-system-malloc \
 		--enable-option-checking=no \
-		--with-last-packages=/usr/lib/xemacs \
-		|| die "configuration failed"
+		--with-last-packages=/usr/lib/xemacs
 }
 
 src_compile() {
@@ -193,7 +193,7 @@ src_install() {
 		infodir="${D}"/usr/share/info \
 		libdir="${D}"/usr/$(get_libdir) \
 		datadir="${D}"/usr/share \
-		install || die
+		install
 
 	# Rename some applications installed in bin so that it is clear
 	# which application installed them and so that conflicting

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ DESCRIPTION="a tool to scan your Perl code for its prerequisites"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test minimal"
+RESTRICT="!test? ( test )"
 # r: File::Find -> perl
 # r: File::Spec::Functions -> File-Spec
 # r: FindBin  -> perl

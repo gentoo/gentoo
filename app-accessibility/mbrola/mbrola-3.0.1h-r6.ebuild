@@ -1,11 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 IUSE="l10n_de l10n_es l10n_fr l10n_it l10n_la l10n_pl l10n_ro l10n_sv"
-
-S=${WORKDIR}
 
 DESCRIPTION="Speech synthesizer based on the concatenation of diphones. Includes samples"
 HOMEPAGE="http://tcts.fpms.ac.be/synthesis/mbrola.html"
@@ -35,26 +33,25 @@ SRC_URI="http://tcts.fpms.ac.be/synthesis/${PN}/bin/pclinux/mbr${MY_PV}.zip
 	l10n_ro? ( ${TCTS}/mbrola/dba/ro1/ro1-980317.zip )
 	l10n_sv? ( ${TCTS}/mbrola/dba/sw1/sw1-980623.zip
 		${TCTS}/mbrola/dba/sw2/sw2-140102.zip )"
+S=${WORKDIR}
+
+LICENSE="MBROLA"
+SLOT="0"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86"
+RESTRICT="strip"
 
 DEPEND="app-arch/unzip"
 
-RDEPEND=""
-
-RESTRICT="strip"
 QA_PREBUILT="/usr/bin/mbrola"
 
-SLOT="0"
-LICENSE="MBROLA"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
-
-src_unpack () {
-	unpack ${A}
+src_unpack() {
+	default
 
 	if [[ -f pl1 ]]; then
-		mkdir pl1DIR
-		mv pl1 pl1.txt pl1DIR
-		mv test pl1DIR/TEST
-		mv pl1DIR pl1
+		mkdir pl1DIR || die
+		mv pl1 pl1.txt pl1DIR || die
+		mv test pl1DIR/TEST || die
+		mv pl1DIR pl1 || die
 	fi
 
 	case ${ARCH} in
@@ -75,10 +72,9 @@ src_unpack () {
 	esac
 }
 
-src_install () {
-
+src_install() {
 	# Take care of main binary
-	if [[ -f "mbrola" ]]; then
+	if [[ -f mbrola ]]; then
 		dobin mbrola
 		dosym ../../bin/mbrola "/usr/share/${PN}/mbrola"
 	fi
@@ -90,12 +86,7 @@ src_install () {
 		[[ -f "${voice}/license.txt" ]] && doins ${voice}/license.txt
 		[[ -f "${voice}/${voice}" ]] && doins ${voice}/${voice}
 		[[ -f "${voice}/${voice}mrpa" ]] && doins ${voice}/${voice}mrpa
-
-		if [[ -d "${voice}/TEST" ]]; then
-			insinto /usr/share/${PN}/${voice}/TEST
-			doins ${voice}/TEST/*
-		fi
-
+		[[ -d "${voice}/TEST" ]] && doins -r ${voice}/TEST
 		[[ -f "${voice}/${voice}.txt" ]] && dodoc ${voice}/${voice}.txt
 	done
 }

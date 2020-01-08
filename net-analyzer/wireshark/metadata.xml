@@ -30,6 +30,7 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="adns">Use <pkg>net-dns/c-ares</pkg> to resolve DNS names</flag>
 <flag name="androiddump">Install androiddump, an extcap interface to capture from Android devices</flag>
 <flag name="bcg729">Use <pkg>media-libs/bcg729</pkg> for G.729 codec support in RTP Player</flag>
+<flag name="brotli">Use <pkg>app-arch/brotli</pkg> for compression/decompression</flag>
 <flag name="capinfos">Install capinfos, to print information about capture files</flag>
 <flag name="captype">Install captype, to print the file types of capture files</flag>
 <flag name="ciscodump">Install ciscodump, extcap interface to capture from a remote Cisco router</flag>
@@ -37,13 +38,15 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="dpauxmon">Install dpauxmon, an external capture interface (extcap) that captures DisplayPort AUX channel data from linux kernel drivers</flag>
 <flag name="dumpcap">Install dumpcap, to dump network traffic from inside wireshark</flag>
 <flag name="editcap">Install editcap, to edit and/or translate the format of capture files</flag>
+<flag name="http2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
 <flag name="libxml2">Use <pkg>dev-libs/libxml2</pkg> for handling XML configuration in dissectors</flag>
-<flag name="lz4">Use <pkg>app-arch/lz4</pkg> for compression/decompression</flag>
 <flag name="maxminddb">Use <pkg>dev-libs/libmaxminddb</pkg> for IP address geolocation</flag>
 <flag name="mergecap">Install mergecap, to merge two or more capture files into one</flag>
+<flag name="minizip">Build with zip file compression support</flag>
 <flag name="netlink">Use <pkg>dev-libs/libnl</pkg></flag>
-<flag name="nghttp2">Use <pkg>net-libs/nghttp2</pkg> for HTTP/2 support</flag>
 <flag name="pcap">Use <pkg>net-libs/libpcap</pkg> for network packet capturing (build dumpcap, rawshark)</flag>
+<flag name="plugin-ifdemo">Install plugin interface demo</flag>
+<flag name="plugins">Install plugins</flag>
 <flag name="randpkt">Install randpkt, a utility for creating pcap trace files full of random packets</flag>
 <flag name="randpktdump">Install randpktdump, an extcap interface to provide access to the random packet generator (randpkt)</flag>
 <flag name="reordercap">Install reordercap, to reorder input file by timestamp into output file</flag>
@@ -51,7 +54,6 @@ be exported to XML, PostScript®, CSV, or plain text.
 <flag name="sdjournal">Install sdjournal, an extcap that captures systemd journal entries</flag>
 <flag name="sharkd">Install sharkd, the daemon variant of wireshark</flag>
 <flag name="smi">Use <pkg>net-libs/libsmi</pkg> to resolve numeric OIDs into human readable format</flag>
-<flag name="snappy">Use <pkg>app-arch/snappy</pkg> for snappy compression and decompression</flag>
 <flag name="spandsp">Use <pkg>media-libs/spandsp</pkg> for for G.722 and G.726 codec support in the RTP Player</flag>
 <flag name="sshdump">Install sshdump, an extcap interface to capture from a remote host through SSH</flag>
 <flag name="text2pcap">Install text2pcap, to generate a capture file from an ASCII hexdump of packets</flag>

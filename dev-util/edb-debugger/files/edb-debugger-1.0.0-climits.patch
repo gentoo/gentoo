@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/701112
+
+From f5e0bce1c1d33e11062fd61a3bbad52ee18e8a8b Mon Sep 17 00:00:00 2001
+From: Evan Teran <evan.teran@gmail.com>
+Date: Mon, 15 Jul 2019 14:44:25 -0400
+Subject: [PATCH] fix for issue #719
+
+---
+ src/ByteShiftArray.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+--- a/src/ByteShiftArray.cpp
++++ b/src/ByteShiftArray.cpp
+@@ -17,6 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+ 
+ #include "ByteShiftArray.h"
++#include <climits>
+ 
+ //------------------------------------------------------------------------------
+ // Name: ByteShiftArray
+-- 
+2.24.0
+

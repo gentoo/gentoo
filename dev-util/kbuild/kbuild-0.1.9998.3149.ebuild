@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/${MY_P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DEPEND="
@@ -31,6 +31,11 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.1.9998_pre20110817-kash-link-pthread.patch"
 	"${FILESDIR}/${PN}-0.1.9998_pre20171020-gold.patch"
 )
+
+pkg_setup() {
+	# Package fails with distcc (bug #255371)
+	export DISTCC_DISABLE=1
+}
 
 src_prepare() {
 	rm -rf "${S}/kBuild/bin"

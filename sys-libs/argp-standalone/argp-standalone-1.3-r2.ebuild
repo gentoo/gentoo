@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://www.lysator.liu.se/~nisse/misc/argp-standalone-1.3.tar.gz"
 
 LICENSE="public-domain GPL-2 GPL-3 XC"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~m68k ~mips ~ppc ~s390 ~sh x86"
+KEYWORDS="amd64 arm arm64 ~m68k ~mips ~ppc ~s390 ~sh x86"
 IUSE="static-libs"
 
 DEPEND="!sys-libs/glibc"

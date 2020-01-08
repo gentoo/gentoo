@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 VIM_VERSION="8.1"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 PYTHON_REQ_USE="threads(+)"
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit vim-doc flag-o-matic bash-completion-r1 python-single-r1 ruby-single desktop xdg-utils
 
@@ -15,7 +15,7 @@ if [[ ${PV} == 9999* ]] ; then
 else
 	SRC_URI="https://github.com/vim/vim/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://dev.gentoo.org/~radhermit/vim/vim-8.0.0938-gentoo-patches.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Vim, an improved vi-style text editor"
@@ -23,10 +23,10 @@ HOMEPAGE="https://vim.sourceforge.io/ https://github.com/vim/vim"
 
 SLOT="0"
 LICENSE="vim"
-IUSE="X acl cscope debug gpm lua luajit minimal nls perl python racket ruby selinux tcl terminal vim-pager"
+IUSE="X acl cscope debug gpm lua luajit minimal nls perl python racket ruby selinux sound tcl terminal vim-pager"
 REQUIRED_USE="
-	luajit? ( lua )
 	python? ( ${PYTHON_REQUIRED_USE} )
+	vim-pager? ( !minimal )
 "
 
 RDEPEND="
@@ -40,15 +40,14 @@ RDEPEND="
 		luajit? ( dev-lang/luajit:2= )
 		!luajit? ( dev-lang/lua:0[deprecated] )
 	)
-	!minimal? (
-		~app-editors/vim-core-${PV}
-		dev-util/ctags
-	)
+	!minimal? ( ~app-editors/vim-core-${PV} )
+	vim-pager? ( app-editors/vim-core[-minimal] )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS} )
 	racket? ( dev-scheme/racket )
 	ruby? ( ${RUBY_DEPS} )
 	selinux? ( sys-libs/libselinux )
+	sound? ( media-libs/libcanberra )
 	tcl? ( dev-lang/tcl:0= )
 	X? ( x11-libs/libXt )
 "
@@ -176,7 +175,7 @@ src_configure() {
 		myconf=(
 			--with-features=tiny
 			--disable-nls
-			--disable-multibyte
+			--disable-canberra
 			--disable-acl
 			--enable-gui=no
 			--without-x
@@ -195,7 +194,7 @@ src_configure() {
 
 		myconf=(
 			--with-features=huge
-			--enable-multibyte
+			$(use_enable sound canberra)
 			$(use_enable acl)
 			$(use_enable cscope)
 			$(use_enable gpm)

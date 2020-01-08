@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="KVM driver for docker-machine"
 
 HOMEPAGE="https://github.com/dhiltgen/docker-machine-kvm"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD CC-BY-SA-4.0 MIT MPL-2.0 ZLIB"
 SLOT="0"
 IUSE=""
 COMMON_DEPEND="app-emulation/libvirt:=[qemu,virt-network]"
@@ -29,7 +29,7 @@ SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 src_compile() {
 	export GOPATH=${S}
 	cd "${S}"/src/${EGO_PN}/cmd/${PN/kvm/driver-kvm} || die
-	emake build || die
+	emake build
 }
 
 src_install() {

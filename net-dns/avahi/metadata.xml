@@ -15,10 +15,9 @@
 		avahi utilities under USE=utils</flag>
 		<flag name="mdnsresponder-compat">Enable compat libraries for
 		mDNSResponder</flag>
-		<flag name="utils">Install the avahi gtk+ utils avahi-discover, bssh, and
-		bvnc</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">lathiat/avahi</remote-id>
+		<remote-id type="cpe">cpe:/a:avahi:avahi</remote-id>
 	</upstream>
 </pkgmetadata>

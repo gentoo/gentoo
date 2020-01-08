@@ -1,5 +1,5 @@
---- spark-gpl-2017-src/gnat2why/gnat2why_c.gpr.old	2017-10-04 21:41:41.613376056 +0200
-+++ spark-gpl-2017-src/gnat2why/gnat2why_c.gpr	2017-10-04 21:42:30.582572536 +0200
+--- a/gnat2why/gnat2why_c.gpr	2017-10-04 21:41:41.613376056 +0200
++++ b/gnat2why/gnat2why_c.gpr	2017-10-04 21:42:30.582572536 +0200
 @@ -1,4 +1,7 @@
  project Gnat2Why_C is
     for Languages use ("C");
@@ -8,3 +8,16 @@
 +      for Driver ("C") use External ("CC", "gcc");
 +   end Compiler;
  end Gnat2Why_C;
+--- a/gnatprove/configuration.adb	2019-11-08 19:20:16.876198539 +0100
++++ b/gnatprove/configuration.adb	2019-11-08 19:21:13.550201663 +0100
+@@ -694,7 +694,9 @@
+          Tree         : Project_Tree;
+ 
+       begin
+-         Set_Path_From_Gnatls (Proj_Env.all, "gnatls", GNAT_Version);
++         Set_Path_From_Gnatls (Proj_Env.all,
++                               "gnatls",
++                               GNAT_Version);
+          Free (GNAT_Version);
+          Set_Object_Subdir (Proj_Env.all, Subdir_Name);
+          Proj_Env.Register_Default_Language_Extension ("C", ".h", ".c");

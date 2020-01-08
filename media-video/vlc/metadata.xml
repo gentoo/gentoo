@@ -25,13 +25,13 @@
 		<flag name="gstreamer">Enable GStreamer based decoding support (currently supports only video decoding)</flag>
 		<flag name="kate">Adds support for Ogg Kate subtitles via libkate</flag>
 		<flag name="kms">Enable kernel mode setting video output plugin via <pkg>x11-libs/libdrm</pkg></flag>
+		<flag name="libplacebo">Enable support for GPU accelerated video rendering with <pkg>media-libs/libplacebo</pkg></flag>
 		<flag name="libtar">Uses libtar instead of the built-in tar reader for reading custom skins</flag>
 		<flag name="libtiger">Enable Ogg Kate subtitles rendering using libtiger</flag>
 		<flag name="linsys">Enable support for Linux Linear Systems Ltd. SDI and HD-SDI input cards</flag>
 		<flag name="live">Enable live555 streaming media support (client support for rtsp)</flag>
 		<flag name="lua">Enable Lua scripting support, needed for including support for Jamendo (online music platform) and similar things</flag>
 		<flag name="macosx-notifications">Enable Mac OS X notifications module (formerly growl)</flag>
-		<flag name="macosx-qtkit">Enable Mac OS X qtkit module: qtcapture (video) and qtsound (audio) module</flag>
 		<flag name="matroska">Enable matroska support using reference libraries (fallback on other existing matroska support if disabled, i.e., matroska enabled FFmpeg)</flag>
 		<flag name="mpeg">Add libmpeg2 support for mpeg-1 and mpeg-2 video streams</flag>
 		<flag name="nfs">Enable support for nfs protocol via <pkg>net-fs/libnfs</pkg></flag>
@@ -52,7 +52,6 @@
 		<flag name="twolame">Enable twolame support (MPEG Audio Layer 2 encoder)</flag>
 		<flag name="upnp">Enable support for the Intel SDK stack based UPnP discovery module instead of CyberLink</flag>
 		<flag name="vpx">Enable the decoder(s) from the WebM VP8 / VP9 Codec SDK</flag>
-		<flag name="wma-fixed">Enable fixed point WMA decoder</flag>
 		<flag name="X">Enable support for e.g. fullscreen mode via X and the X C-language binding. It does not build a graphical interface</flag>
 		<flag name="x265">Support X265 Encoder</flag>
 		<flag name="zeroconf">Enable support for zero-configuration networking via avahi</flag>

@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="Virtual for Linear Algebra Package FORTRAN 77 (LAPACK) implementation"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 
 RDEPEND="|| (
 		sci-libs/lapack-reference

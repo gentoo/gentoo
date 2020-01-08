@@ -1,16 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>itumaykin+gentoo@gmail.com</email>
-		<name>Coacher</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<upstream>
-		<changelog>https://flacon.github.io/changelog/</changelog>
 		<remote-id type="github">flacon/flacon</remote-id>
 	</upstream>
 </pkgmetadata>

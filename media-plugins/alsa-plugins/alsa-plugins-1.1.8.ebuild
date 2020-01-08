@@ -6,11 +6,11 @@ inherit autotools flag-o-matic multilib multilib-minimal
 
 DESCRIPTION="ALSA extra plugins"
 HOMEPAGE="http://www.alsa-project.org/"
-SRC_URI="mirror://alsaproject/plugins/${P}.tar.bz2"
+SRC_URI="https://www.alsa-project.org/files/pub/plugins/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux"
 IUSE="arcam_av debug ffmpeg jack libav libsamplerate +mix oss pulseaudio speex +usb_stream"
 
 RDEPEND="
@@ -82,7 +82,7 @@ multilib_src_install_all() {
 		# seems to work fine without any path
 		sed -i \
 			-e "s:/usr/lib/alsa-lib/::" \
-			"${ED%/}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf || die #410261
+			"${ED}"/usr/share/alsa/alsa.conf.d/51-pulseaudio-probe.conf || die #410261
 	fi
 
 	find "${ED}" \( -name '*.a' -o -name '*.la' \) -delete || die

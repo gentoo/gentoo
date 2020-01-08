@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SRC_URI="http://www.quivira-font.com/files/${MY_PN}.otf -> ${P}.otf
 		http://www.quivira-font.com/files/${MY_PN}Testpage.pdf -> ${P}-Testpage.pdf
 		http://www.quivira-font.com/files/${MY_PN}Combining.pdf -> ${P}-Combining.pdf
 		http://www.quivira-font.com/files/${MY_PN}PUA.pdf -> ${P}-PUA.pdf )"
-LICENSE="freedist"
+LICENSE="public-domain"
 
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc ~x86"

@@ -12,7 +12,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Attic/GnomeUtils"
 LICENSE="GPL-2+ CC-BY-SA-3.0"
 SLOT="0"
 IUSE=""
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.31:2

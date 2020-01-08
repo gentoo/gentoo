@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,8 @@ EGIT_SUBMODULES=()
 LICENSE="BSD MIT"
 SLOT="0"
 KEYWORDS=""
-IUSE="+alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet"
+IUSE="+alsa debug +fftw openal oss portaudio pulseaudio spell +uchardet"
+RESTRICT="test"
 
 # aegisub bundles luabins (https://github.com/agladysh/luabins).
 # Unfortunately, luabins upstream is practically dead since 2010.
@@ -46,11 +47,6 @@ DEPEND="${RDEPEND}
 	dev-util/intltool
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? (
-		~dev-cpp/gtest-1.7.0
-		dev-lua/busted
-		dev-lua/luarocks
-	)
 "
 
 REQUIRED_USE="|| ( alsa openal oss portaudio pulseaudio )"
@@ -58,7 +54,7 @@ REQUIRED_USE="|| ( alsa openal oss portaudio pulseaudio )"
 PATCHES=(
 	"${FILESDIR}/3.2.2_p20160518/${PN}-3.2.2_p20160518-fix-system-luajit-build.patch"
 	"${FILESDIR}/3.2.2_p20160518/${PN}-3.2.2_p20160518-respect-compiler-flags.patch"
-	"${FILESDIR}/3.2.2_p20160518/${PN}-3.2.2_p20160518-support-system-gtest.patch"
+	"${FILESDIR}/3.2.2_p20160518/${PN}-3.2.2_p20160518-fix-boost170-build.patch"
 )
 
 src_prepare() {
@@ -103,7 +99,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake WITH_SYSTEM_GTEST=$(usex test)
+	emake
 }
 
 src_test() {

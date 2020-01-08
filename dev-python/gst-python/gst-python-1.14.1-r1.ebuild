@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
 inherit ltprune python-r1 xdg-utils
 
@@ -13,7 +13,7 @@ SRC_URI="https://gstreamer.freedesktop.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2+"
 SLOT="1.0"
-KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -40,18 +40,18 @@ src_compile() {
 	# Python plugin support is of limited use (GIL gets in the way). If it's ever requested or needed, it should be a
 	# separate python-single-r1 media-plugins/gst-plugins-python package that only builds the plugin directory.
 	compile_gst() {
-		emake -C common || die "emake common failed"
-		emake -C gi || die "emake gi failed"
-		emake -C testsuite || die "emake testsuite failed"
+		emake -C common
+		emake -C gi
+		emake -C testsuite
 	}
 	python_foreach_impl run_in_build_dir compile_gst
 }
 
 src_install() {
 	install_gst() {
-		emake DESTDIR="${D}" install -C common || die "emake install common failed"
-		emake DESTDIR="${D}" install -C gi || die "emake install gi failed"
-		emake DESTDIR="${D}" install -C testsuite || die "emake install testsuite failed"
+		emake DESTDIR="${D}" install -C common
+		emake DESTDIR="${D}" install -C gi
+		emake DESTDIR="${D}" install -C testsuite
 	}
 	python_foreach_impl run_in_build_dir install_gst
 	prune_libtool_files --modules
@@ -60,7 +60,7 @@ src_install() {
 
 src_test() {
 	test_gst() {
-		emake check -C testsuite || die "emake check failed"
+		emake check -C testsuite
 	}
 	python_foreach_impl run_in_build_dir default
 }

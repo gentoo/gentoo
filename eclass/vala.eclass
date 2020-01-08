@@ -26,13 +26,13 @@ esac
 
 # @ECLASS-VARIABLE: VALA_MIN_API_VERSION
 # @DESCRIPTION:
-# Minimum vala API version (e.g. 0.32).
-VALA_MIN_API_VERSION=${VALA_MIN_API_VERSION:-0.32}
+# Minimum vala API version (e.g. 0.36).
+VALA_MIN_API_VERSION=${VALA_MIN_API_VERSION:-0.36}
 
 # @ECLASS-VARIABLE: VALA_MAX_API_VERSION
 # @DESCRIPTION:
-# Maximum vala API version (e.g. 0.32).
-VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.44}
+# Maximum vala API version (e.g. 0.36).
+VALA_MAX_API_VERSION=${VALA_MAX_API_VERSION:-0.46}
 
 # @ECLASS-VARIABLE: VALA_USE_DEPEND
 # @DEFAULT_UNSET
@@ -50,7 +50,7 @@ vala_api_versions() {
 	local minimal_supported_minor_version minor_version
 
 	# Dependency atoms are not generated for Vala versions older than 0.${minimal_supported_minor_version}.
-	minimal_supported_minor_version="32"
+	minimal_supported_minor_version="36"
 
 	for ((minor_version = ${VALA_MAX_API_VERSION#*.}; minor_version >= ${VALA_MIN_API_VERSION#*.}; minor_version = minor_version - 2)); do
 		# 0.38 was never in main tree; remove the special case once minimal_supported_minor_version >= 40

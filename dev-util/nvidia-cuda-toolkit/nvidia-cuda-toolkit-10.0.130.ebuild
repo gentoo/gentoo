@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}
 	>=x11-drivers/nvidia-drivers-396.24[X,uvm]
 	debugger? (
 		sys-libs/libtermcap-compat
-		sys-libs/ncurses:5/5[tinfo]
+		sys-libs/ncurses-compat:5[tinfo]
 		)
 	eclipse? ( >=virtual/jre-1.6 )
 	profiler? ( >=virtual/jre-1.6 )"

@@ -1,0 +1,91 @@
+Index: dump-0.4b46/common/transformation_ssl.c
+===================================================================
+--- dump-0.4b46.orig/common/transformation_ssl.c
++++ dump-0.4b46/common/transformation_ssl.c
+@@ -215,7 +215,10 @@ generateIV(Transformation *xform, unsign
+ 	/* to be exposed to any attacker anyway. */
+ 	*saltlen = 16;
+ 	if (xform->enc == 1) {
+-		RAND_pseudo_bytes(salt, *saltlen);
++		if (!RAND_bytes(salt, *saltlen) != 1) {
++			/* PRNG not sufficiently seeded */
++			return -1;
++		}
+ 	}
+ 	memcpy(ivbuffer, salt, 16);
+ 
+@@ -274,7 +277,7 @@ ssl_compress(Transformation *xform, stru
+ 	digestlen = sizeof(digest);
+ 
+ 	/* generate salt, put it in header */
+-	generateIV(xform, salt, &saltlen, iv, &ivlen);
++	generateIV(xform, salt, &saltlen, iv, &ivlen); /* TODO: check return value */
+ 	memcpy(tpbin->buf, salt, saltlen);
+ 
+ 	/* compress the buffer first - increase the entropy */
+@@ -351,7 +354,7 @@ ssl_decompress(Transformation *xform, st
+ 
+ 	// how to know salt length?
+ 	memcpy(salt, src, saltlen);
+-	generateIV(xform, salt, &saltlen, iv, &ivlen);
++	generateIV(xform, salt, &saltlen, iv, &ivlen); /* TODO: check return value */
+ 
+ 	EVP_DecryptInit_ex(xform->state.ssl.dataCtx, xform->state.ssl.cipher,  xform->state.ssl.engine, NULL, NULL);
+ 	//EVP_CIPHER_CTX_set_key_length(&ctx, 8);
+@@ -515,7 +518,7 @@ Transformation
+ 		//EVP_CIPHER_CTX_rand_key(ctx, t->state.ssl.key);
+ 		//EVP_CIPHER_CTX_cleanup(ctx);
+ 		//EVP_CIPHER_CTX_free(ctx);
+-		RAND_bytes(t->state.ssl.key, t->state.ssl.cipher->key_len);
++		RAND_bytes(t->state.ssl.key, EVP_CIPHER_key_length(t->state.ssl.cipher));
+ 	} else {
+ 		// how do we get keys?
+ 	}
+Index: dump-0.4b46/rmt/cipher.c
+===================================================================
+--- dump-0.4b46.orig/rmt/cipher.c
++++ dump-0.4b46/rmt/cipher.c
+@@ -23,7 +23,7 @@
+ char *
+ cipher(char *buf, int buflen, int do_encrypt)
+ {
+-	static EVP_CIPHER_CTX ctx;
++	EVP_CIPHER_CTX *ctx = EVP_CIPHER_CTX_new();
+ 	static char *out = NULL;	/* return value, grown as necessary */
+ 	static int outlen = 0;
+ 	static int init = 0, which, blocksize;
+@@ -71,13 +71,13 @@ cipher(char *buf, int buflen, int do_enc
+ 		}
+ 		EVP_BytesToKey(cipher, EVP_md5(), NULL,
+ 			buf, strlen(buf), 1, key, iv);
+-		EVP_CIPHER_CTX_init(&ctx);
+-		EVP_CipherInit_ex(&ctx, cipher, NULL, key, iv, do_encrypt);
+-		EVP_CIPHER_CTX_set_padding(&ctx, 0);	// -nopad
++		EVP_CIPHER_CTX_init(ctx);
++		EVP_CipherInit_ex(ctx, cipher, NULL, key, iv, do_encrypt);
++		EVP_CIPHER_CTX_set_padding(ctx, 0);	// -nopad
+ 		OPENSSL_cleanse(buf, sizeof buf);
+ 		OPENSSL_cleanse(key, sizeof key);
+ 		OPENSSL_cleanse(iv, sizeof iv);
+-		blocksize = EVP_CIPHER_CTX_block_size(&ctx);
++		blocksize = EVP_CIPHER_CTX_block_size(ctx);
+ 		which = do_encrypt;
+ 		init = 1;
+ 	}
+@@ -95,7 +95,7 @@ cipher(char *buf, int buflen, int do_enc
+ 		outlen = (buflen+blocksize) * 2;
+ 		out = realloc(out, outlen);
+ 	}
+-	if (!EVP_CipherUpdate(&ctx, out, &n, buf, buflen)) {
++	if (!EVP_CipherUpdate(ctx, out, &n, buf, buflen)) {
+ 		syslog(LOG_ERR, "EVP_CipherUpdate failed");
+ 		errno = EINVAL;
+ 		return NULL;
+@@ -106,6 +106,7 @@ cipher(char *buf, int buflen, int do_enc
+ 		return NULL;
+ 	}
+ 	// assert(ctx->buf_len == 0);
++	EVP_CIPHER_CTX_free(ctx);
+ 	return out;
+ }
+ 

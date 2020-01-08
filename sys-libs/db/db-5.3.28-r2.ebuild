@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,6 +16,8 @@ else
 	MY_P=${PN}-${MY_PV}
 fi
 
+RESTRICT="!test? ( test )"
+
 S_BASE="${WORKDIR}/${MY_P}"
 S="${S_BASE}/build_unix"
 DESCRIPTION="Oracle Berkeley DB"
@@ -27,7 +29,7 @@ done
 
 LICENSE="Sleepycat"
 SLOT="5.3"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ppc ppc64 ~riscv ~s390 ~sh sparc x86"
 IUSE="doc java cxx tcl test"
 
 REQUIRED_USE="test? ( tcl )"
@@ -56,7 +58,7 @@ src_prepare() {
 
 	# use the includes from the prefix
 	epatch "${FILESDIR}"/${PN}-4.6-jni-check-prefix-first.patch
-	epatch "${FILESDIR}"/${PN}-4.3-listen-to-java-options.patch
+	epatch "${FILESDIR}"/${PN}-4.2-listen-to-java-options.patch
 
 	# sqlite configure call has an extra leading ..
 	# upstreamed:5.2.36, missing in 5.3.x
@@ -159,13 +161,19 @@ multilib_src_configure() {
 		--enable-sql \
 		--enable-sql_codegen \
 		--disable-sql_compat \
-		$([[ ${ABI} == arm ]] && echo --with-mutex=ARM/gcc-assembly) \
 		$([[ ${ABI} == amd64 ]] && echo --with-mutex=x86/gcc-assembly) \
 		$(use_enable cxx) \
 		$(use_enable cxx stl) \
 		$(multilib_native_use_enable java) \
 		"${myconf[@]}" \
 		$(use_enable test)
+	# The embedded assembly on ARM does not work on newer hardware
+	# so you CANNOT use --with-mutex=ARM/gcc-assembly anymore.
+	# Specifically, it uses the SWPB op, which was deprecated:
+	# http://www.keil.com/support/man/docs/armasm/armasm_dom1361289909499.htm
+	# The op ALSO cannot be used in ARM-Thumb mode.
+	# Trust the compiler instead.
+	# >=db-6.1 uses LDREX instead.
 }
 
 multilib_src_install() {

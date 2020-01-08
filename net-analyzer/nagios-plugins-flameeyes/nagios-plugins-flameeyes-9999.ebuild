@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit git-2 multilib
+inherit git-r3 multilib
 
 EGIT_REPO_URI="https://github.com/Flameeyes/${PN}.git"
 SRC_URI=""
@@ -18,10 +18,7 @@ IUSE="smart samba"
 
 RDEPEND="
 	dev-perl/Monitoring-Plugin
-	|| (
-		sys-apps/portage
-		sys-apps/portage-mgorny
-	)
+	sys-apps/portage
 	dev-perl/Time-Duration
 	dev-perl/TimeDate
 	smart? (

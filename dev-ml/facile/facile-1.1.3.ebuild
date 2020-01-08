@@ -10,7 +10,7 @@ SRC_URI="http://opti.recherche.enac.fr/facile/distrib/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 
-KEYWORDS="alpha amd64 ~arm64 hppa ia64 ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm64 hppa ia64 ppc ppc64 ~sparc x86"
 IUSE="+ocamlopt"
 
 RDEPEND=">=dev-lang/ocaml-4:=[ocamlopt?]"

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,16 +14,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+http2 +ssl client ipv6 libev libressl libuv static-libs"
 
-REQUIRED_USE="libressl? ( ssl  )"
-
 RDEPEND="
 	sys-libs/zlib
-	libev?      ( dev-libs/libev )
-	libuv?      ( dev-libs/libuv )
+	libev? ( dev-libs/libev )
+	libuv? ( dev-libs/libuv )
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
-		libressl?  ( dev-libs/libressl:0= )
-		)
+		libressl? ( dev-libs/libressl:0= )
+	)
 "
 DEPEND="${RDEPEND}
 	dev-lang/perl

@@ -29,7 +29,7 @@ REQUIRED_USE="libcanberra? ( notification )
 	smime? ( pgp )"
 
 COMMONDEPEND="
-	dev-libs/nettle
+	dev-libs/nettle:=
 	net-mail/ytnef
 	sys-libs/zlib:=
 	x11-libs/cairo
@@ -72,7 +72,7 @@ COMMONDEPEND="
 	)
 	smime? ( >=app-crypt/gpgme-1.0.0 )
 	spam-report? ( >=net-misc/curl-7.9.7 )
-	spell? ( >=app-text/enchant-1.0.0 )
+	spell? ( >=app-text/enchant-1.0.0:= )
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-util/valgrind )

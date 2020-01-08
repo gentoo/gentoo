@@ -59,7 +59,7 @@ SLOT="0"
 KEYWORDS="-* amd64 x86"
 IUSE=""
 
-RESTRICT="strip primaryuri"
+RESTRICT="strip"
 QA_PREBUILT="/opt/tw_cli/tw_cli"
 
 # binary packages

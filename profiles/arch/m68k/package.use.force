@@ -1,6 +1,0 @@
-# Copyright 1999-2016 Gentoo Foundation
-# Distributed under the terms of the GNU General Public License v2
-
-# Ulrich Müller <ulm@gentoo.org> (10 Aug 2013)
-# Building from source requires TeX Live as dependency
-app-doc/pms binary

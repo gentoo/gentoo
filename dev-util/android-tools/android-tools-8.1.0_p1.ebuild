@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit flag-o-matic bash-completion-r1 ninja-utils toolchain-funcs cmake-utils python-r1 python-utils-r1
+inherit flag-o-matic bash-completion-r1 ninja-utils toolchain-funcs cmake-utils python-r1
 
 MY_PV="${PV/_p/_r}"
 MY_P=${PN}-${MY_PV}
@@ -30,6 +30,7 @@ LICENSE="Apache-2.0 BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86 ~x86-linux"
 IUSE="python"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="sys-libs/zlib:=
 	dev-libs/libpcre2:=

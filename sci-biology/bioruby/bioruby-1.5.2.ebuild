@@ -17,6 +17,6 @@ HOMEPAGE="http://bioruby.org/"
 
 SLOT="0"
 IUSE=""
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 
 ruby_add_rdepend "dev-ruby/libxml"

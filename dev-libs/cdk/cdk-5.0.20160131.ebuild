@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,12 +7,12 @@ inherit versionator
 
 MY_P="${PN}-$(replace_version_separator 2 -)"
 DESCRIPTION="A library of curses widgets"
-HOMEPAGE="http://dickey.his.com/cdk/cdk.html"
+HOMEPAGE="https://dickey.his.com/cdk/cdk.html"
 SRC_URI="ftp://invisible-island.net/cdk/${MY_P}.tgz"
 
 LICENSE="BSD"
 SLOT="0/6" # subslot = soname version
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~s390 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="examples static-libs unicode"
 
 DEPEND=">=sys-libs/ncurses-5.2:0=[unicode?]"

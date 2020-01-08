@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,7 +12,7 @@ SRC_URI="
 	x86? ( https://www.batronix.com/exe/Batronix/Prog-Express/deb/${P}-1.i386.deb )
 "
 
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="prog-express"
 SLOT="0"
 

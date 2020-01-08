@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,12 +10,12 @@ inherit haskell-cabal
 
 DESCRIPTION="Binding to the GLIB library for Gtk2Hs"
 HOMEPAGE="http://projects.haskell.org/gtk2hs/"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 ~ia64 ~ppc ~ppc64 ~sparc x86"
-IUSE="+closure_signals"
+IUSE="+closure-signals"
 
 RDEPEND=">=dev-haskell/text-1.0.0.0:=[profile?] <dev-haskell/text-1.3:=[profile?]
 	>=dev-haskell/utf8-string-0.2:=[profile?] <dev-haskell/utf8-string-1.1:=[profile?]
@@ -30,5 +30,5 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	haskell-cabal_src_configure \
-		$(cabal_flag closure_signals closure_signals)
+		$(cabal_flag closure-signals closure_signals)
 }

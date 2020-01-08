@@ -4,7 +4,7 @@
 # Vagrant installation directory. This sets up proper environmental variables
 # so that everything loads and compiles to proper directories.
 
-for r in ruby25 ruby24 ruby23; do
+for r in ruby26 ruby25 ruby24; do
   # not all ruby versions are guaranteed to be installed
   if ! command -v "${r}" >/dev/null 2>&1; then
     continue

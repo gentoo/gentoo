@@ -10,7 +10,7 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
     </maintainer>
-    <bugs-to>https://bitbucket.org/mgorny/pymountboot/issues/</bugs-to>
-    <remote-id type="bitbucket">mgorny/pymountboot</remote-id>
+    <bugs-to>https://github.com/mgorny/pymountboot/issues/</bugs-to>
+    <remote-id type="github">mgorny/pymountboot</remote-id>
   </upstream>
 </pkgmetadata>

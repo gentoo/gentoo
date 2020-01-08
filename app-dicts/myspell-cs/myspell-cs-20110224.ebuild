@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,9 +21,9 @@ inherit myspell-r2
 
 DESCRIPTION="Czech dictionaries for myspell/hunspell"
 HOMEPAGE="http://www.liberix.cz/doplnky/slovniky/ooo/"
-SRC_URI="${HOMEPAGE}/dict-cs-2.oxt -> ${P}.zip"
+SRC_URI="http://www.liberix.cz/doplnky/slovniky/ooo/dict-cs-2.oxt -> ${P}.zip"
 
 LICENSE="GPL-2 MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86"
 IUSE=""

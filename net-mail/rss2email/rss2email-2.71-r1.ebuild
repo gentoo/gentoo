@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -44,16 +44,16 @@ src_prepare() {
 
 src_install() {
 	my_install() {
-		insinto "$(python_get_sitedir)"/${PN}
-		newins rss2email.py main.py || die
+		python_moduleinto ${PN}
+		python_newscript rss2email.py main.py
 	}
 	python_foreach_impl my_install
 
 	insinto /etc/${PN}
-	doins config.py.example || die
+	doins config.py.example
 
-	dodoc CHANGELOG readme.html || die
-	doman r2e.1 || die
+	dodoc CHANGELOG readme.html
+	doman r2e.1
 
 	# Replace r2e wrapper
 	cat <<-"EOF" >r2e
@@ -64,5 +64,5 @@ src_install() {
 		exec python2 "${SITE_PACKAGES}"/rss2email/main.py "${CONF_DIR}"/feeds.dat $*
 	EOF
 
-	dobin r2e || die
+	dobin r2e
 }

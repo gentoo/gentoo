@@ -1,0 +1,44 @@
+From dc25406853353320078eca22cf817fb052c97082 Mon Sep 17 00:00:00 2001
+From: Marc Jeanmougin <marc@jeanmougin.fr>
+Date: Wed, 24 Apr 2019 14:11:26 +0200
+Subject: [PATCH] Tentative fix for poppler 0.76
+
+---
+ src/extension/internal/pdfinput/pdf-parser.cpp           | 2 +-
+ src/extension/internal/pdfinput/poppler-transition-api.h | 7 +++++++
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/src/extension/internal/pdfinput/pdf-parser.cpp b/src/extension/internal/pdfinput/pdf-parser.cpp
+index 2981d6ee51..ddbff7671f 100644
+--- a/src/extension/internal/pdfinput/pdf-parser.cpp
++++ b/src/extension/internal/pdfinput/pdf-parser.cpp
+@@ -426,7 +426,7 @@ void PdfParser::parse(Object *obj, GBool topLevel) {
+ 	error(errInternal, -1, "Weird page contents");
+     	return;
+   }
+-  parser = new Parser(xref, new Lexer(xref, obj), gFalse);
++  parser = new _POPPLER_NEW_PARSER(xref, obj);
+   go(topLevel);
+   delete parser;
+   parser = NULL;
+diff --git a/src/extension/internal/pdfinput/poppler-transition-api.h b/src/extension/internal/pdfinput/poppler-transition-api.h
+index 6e4dde7dee..21a60702fa 100644
+--- a/src/extension/internal/pdfinput/poppler-transition-api.h
++++ b/src/extension/internal/pdfinput/poppler-transition-api.h
+@@ -3,6 +3,13 @@
+ 
+ #include <glib/poppler-features.h>
+ 
++#if POPPLER_CHECK_VERSION(0, 76, 0)
++#define _POPPLER_NEW_PARSER(xref, obj) Parser(xref, obj, gFalse)
++#else
++#define _POPPLER_NEW_PARSER(xref, obj) Parser(xref, new Lexer(xref, obj), gFalse)
++#endif
++
++
+ #if POPPLER_CHECK_VERSION(0, 72, 0)
+ #define getCString c_str
+ #endif
+-- 
+2.18.1
+

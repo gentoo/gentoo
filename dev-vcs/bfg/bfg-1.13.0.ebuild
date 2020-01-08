@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,9 @@ SRC_URI="https://repo1.maven.org/maven2/com/madgag/${PN}/${PV}/${P}.jar"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
+DEPEND="app-arch/unzip"
 RDEPEND=">=virtual/jre-1.7"
 
 S=${WORKDIR}

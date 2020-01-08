@@ -1,20 +1,18 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 MY_P=glw-"${PV}"
-
-inherit autotools-utils
 
 DESCRIPTION="Mesa GLw library"
 HOMEPAGE="http://mesa3d.sourceforge.net/"
 SRC_URI="ftp://ftp.freedesktop.org/pub/mesa/glw/${MY_P}.tar.bz2"
 
-SLOT="0"
 LICENSE="MIT"
+SLOT="0"
 KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
-IUSE="+motif static-libs"
+IUSE="+motif"
 
 RDEPEND="
 	!media-libs/mesa[motif]
@@ -22,14 +20,20 @@ RDEPEND="
 	x11-libs/libXt
 	x11-libs/motif:0
 	virtual/opengl"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-S="${WORKDIR}"/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 src_configure() {
-	local myeconfargs=(
+	econf \
+		--disable-static \
 		--enable-motif
-		)
-	autotools-utils_src_configure
+}
+
+src_install() {
+	default
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }

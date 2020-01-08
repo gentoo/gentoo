@@ -1,41 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>juippis@gmail.com</email>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<use>
-		<flag name="bmp">Enable WBMP image loader</flag>
-		<flag name="dds">Enable DDS image loader</flag>
-		<flag name="drm">Enable DRM engine</flag>
-		<flag name="eet">Enable Eet image loader</flag>
-		<flag name="fribidi">Enable bidirectional text support</flag>
-		<flag name="gles2">Enable the OpenGL ES GL implementation</flag>
-		<flag name="glib">Enable <pkg>dev-libs/glib</pkg> support</flag>
-		<flag name="harfbuzz">Enable complex text shaping and layout support</flag>
-		<flag name="hyphen">Enable text hyphenation support</flag>
-		<flag name="ibus">Enable Intelligent Input Bus</flag>
-		<flag name="ico">Enable Ico image loader</flag>
-		<flag name="ivi">Enable ivi-shell support</flag>
-		<flag name="libuv">Enable <pkg>dev-libs/libuv</pkg> support</flag>
-		<flag name="luajit">USE <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
-		<flag name="physics">Enable Bullet physics effects and support</flag>
-		<flag name="pixman">Enable PixMan for software rendering</flag>
-		<flag name="ppm">Enable PMAPS image loader</flag>
-		<flag name="psd">Enable PSD image loader</flag>
-		<flag name="scim">Enable Smart Common Input Method</flag>
-		<flag name="system-lz4">Use system liblz4 instead of bundled one</flag>
-		<flag name="tga">Enable Tga image loader</flag>
-		<flag name="tslib">Enable <pkg>x11-libs/tslib</pkg> for touchscreen events</flag>
-		<flag name="unwind">Enable debug support via <pkg>sys-libs/libunwind</pkg></flag>
-		<flag name="valgrind">Enable usage of <pkg>dev-util/valgrind</pkg> in debug</flag>
-		<flag name="vlc">Enable <pkg>media-video/vlc</pkg> support</flag>
-		<flag name="xcf">Enable XCF image loader</flag>
-		<flag name="xim">Enable X Input Method</flag>
-		<flag name="xpresent">Enable <pkg>x11-libs/libXpresent</pkg> support</flag>
-	</use>
+  <maintainer type="person">
+    <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
+  </maintainer>
+  <use>
+    <flag name="bmp">Enable WBMP image loader</flag>
+    <flag name="dds">Enable DDS image loader</flag>
+    <flag name="drm">Enable DRM engine</flag>
+    <flag name="eet">Enable Eet image loader</flag>
+    <flag name="fribidi">Enable bidirectional text support</flag>
+    <flag name="gles2">Enable the OpenGL ES GL implementation</flag>
+    <flag name="glib">Enable <pkg>dev-libs/glib</pkg> support</flag>
+    <flag name="harfbuzz">Enable complex text shaping and layout support</flag>
+    <flag name="hyphen">Enable text hyphenation support</flag>
+    <flag name="ibus">Enable Intelligent Input Bus</flag>
+    <flag name="ico">Enable Ico image loader</flag>
+    <flag name="json">Enable lottie animation support</flag>
+    <flag name="libuv">Enable <pkg>dev-libs/libuv</pkg> support</flag>
+    <flag name="luajit">USE <pkg>dev-lang/luajit</pkg> instead of <pkg>dev-lang/lua</pkg></flag>
+    <flag name="mono">Enable mono bindings</flag>
+    <flag name="physics">Enable Bullet physics effects and support</flag>
+    <flag name="pmaps">Enable PMAPS image loader</flag>
+    <flag name="ppm">Enable PMAPS image loader</flag>
+    <flag name="psd">Enable PSD image loader</flag>
+    <flag name="scim">Enable Smart Common Input Method</flag>
+    <flag name="system-lz4">Use system liblz4 instead of bundled one</flag>
+    <flag name="tga">Enable Tga image loader</flag>
+    <flag name="tgv">Enable Tgv image loader</flag>
+    <flag name="tslib">Enable <pkg>x11-libs/tslib</pkg> for touchscreen events</flag>
+    <flag name="unwind">Enable debug support via <pkg>sys-libs/libunwind</pkg></flag>
+    <flag name="valgrind">Enable usage of <pkg>dev-util/valgrind</pkg> in debug</flag>
+    <flag name="vlc">Enable <pkg>media-video/vlc</pkg> support</flag>
+    <flag name="xcf">Enable XCF image loader</flag>
+    <flag name="xim">Enable X Input Method</flag>
+    <flag name="xpresent">Enable <pkg>x11-libs/libXpresent</pkg> support</flag>
+  </use>
 </pkgmetadata>

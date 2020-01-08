@@ -7,5 +7,7 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="pypi">WebOb</remote-id>
+		<remote-id type="github">Pylons/webob</remote-id>
+		<bugs-to>https://github.com/Pylons/webob/issues</bugs-to>
 	</upstream>
 </pkgmetadata>

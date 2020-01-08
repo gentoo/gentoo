@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ LICENSE="GPL-3"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="dap gsl hdf5 ncap2 openmp static-libs test udunits"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=sci-libs/netcdf-4:=[dap=,hdf5?,tools]

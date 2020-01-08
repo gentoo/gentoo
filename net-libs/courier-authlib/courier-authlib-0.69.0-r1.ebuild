@@ -4,7 +4,7 @@
 EAPI=7
 inherit flag-o-matic
 
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
 
 DESCRIPTION="Courier authentication library"
 SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
@@ -23,7 +23,7 @@ DEPEND="net-mail/mailbase
 		libressl? ( dev-libs/libressl:= )
 		ldap? ( >=net-nds/openldap-1.2.11 )
 		mysql? ( dev-db/mysql-connector-c )
-		pam? ( virtual/pam )
+		pam? ( sys-libs/pam )
 		postgres? ( dev-db/postgresql:= )
 		sqlite? ( dev-db/sqlite:3 )"
 

@@ -10,7 +10,8 @@ HOMEPAGE="https://developer.gnome.org/totem-pl-parser/stable/"
 LICENSE="LGPL-2+"
 SLOT="0/18"
 IUSE="archive crypt gtk-doc +introspection +quvi test"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+RESTRICT="!test? ( test )"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.36:2

@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 inherit distutils-r1 git-r3 qmake-utils toolchain-funcs
 
 DESCRIPTION="Static analyzer of C/C++ code"
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.75-tinyxml2.patch
+	"${FILESDIR}"/${PN}-9999-tinyxml2.patch
 )
 
 src_prepare() {
@@ -108,4 +108,5 @@ src_install() {
 		rm "${ED}/usr/bin/cppcheck-htmlreport" || die
 	fi
 	doman ${PN}.1
+	dodoc -r tools/triage
 }

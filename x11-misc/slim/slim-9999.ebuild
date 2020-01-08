@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} = 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://sourceforge/project/${PN}.berlios/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 DESCRIPTION="Simple Login Manager"
@@ -30,7 +30,7 @@ RDEPEND="x11-libs/libXmu
 	x11-apps/sessreg
 	consolekit? ( sys-auth/consolekit
 		sys-apps/dbus )
-	pam? ( virtual/pam
+	pam? ( sys-libs/pam
 		!x11-misc/slimlock )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig

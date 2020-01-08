@@ -10,7 +10,7 @@ SRC_URI="http://www.oberhumer.com/opensource/ucl/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="static-libs"
 
 DEPEND="!!dev-libs/libucl"

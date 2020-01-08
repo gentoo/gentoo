@@ -6,10 +6,14 @@
 		<name>Anthony G. Basile</name>
 	</maintainer>
 	<use>
+		<flag name="alt-svc">Enable alt-svc support</flag>
 		<flag name="brotli">Enable brotli compression support</flag>
-		<flag name="http2">Enabled HTTP/2.0 support</flag>
-		<flag name="ssh">Enabled SSH urls in curl using libssh2</flag>
+		<flag name="http2">Enable HTTP/2.0 support</flag>
+		<flag name="nghttp3">Enable HTTP/3.0 support using <pkg>net-libs/nghttp3</pkg> and <pkg>net-libs/ngtcp2</pkg></flag>
+		<flag name="quiche">Enable HTTP/3.0 support using <pkg>net-libs/quiche</pkg></flag>
+		<flag name="ssh">Enable SSH urls in curl using libssh2</flag>
 		<flag name="metalink">Enable metalink support</flag>
+		<flag name="progress-meter">Enable the progress meter</flag>
 		<flag name="ssl">Enable crypto engine support (via openssl if USE='-gnutls -nss')</flag>
 		<flag name="rtmp">Enable RTMP Streaming Media support</flag>
 	</use>

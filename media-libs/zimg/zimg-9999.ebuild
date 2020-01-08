@@ -1,36 +1,33 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_AUTORECONF=yes
-
-SCM=""
-
-if [ "${PV#9999}" != "${PV}" ] ; then
-	SCM="git-r3"
+if [[ ${PV} = *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/sekrit-twc/zimg"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/sekrit-twc/zimg/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+	S="${WORKDIR}/${PN}-release-${PV}/"
 fi
-
-inherit autotools-multilib ${SCM}
+inherit autotools multilib-minimal
 
 DESCRIPTION="Scaling, colorspace conversion, and dithering library"
 HOMEPAGE="https://github.com/sekrit-twc/zimg"
 
-if [ "${PV#9999}" = "${PV}" ] ; then
-	SRC_URI="https://github.com/sekrit-twc/zimg/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-	S="${WORKDIR}/${PN}-release-${PV}/"
-fi
-
 LICENSE="WTFPL-2"
 SLOT="0"
-IUSE="static-libs cpu_flags_x86_sse"
+IUSE="cpu_flags_x86_sse debug static-libs"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+src_prepare() {
+	default
+	eautoreconf
+}
 
-src_configure() {
-	autotools-multilib_src_configure \
-		$(use_enable cpu_flags_x86_sse x86simd)
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" econf \
+		$(use_enable debug) \
+		$(use_enable cpu_flags_x86_sse x86simd) \
+		$(use_enable static-libs static)
 }

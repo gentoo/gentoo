@@ -435,29 +435,69 @@ test-flag-PROG() {
 
 	[[ -z ${comp} || -z $1 ]] && return 1
 
+	# verify selected compiler exists before using it
+	comp=($(tc-get${comp}))
+	# 'comp' can already contain compiler options.
+	# 'type' needs a binary name
+	type -p ${comp[0]} >/dev/null || return 1
+
+	# Set up test file.
+	local in_src in_ext cmdline_extra=()
+	case "${lang}" in
+		# compiler/assembler only
+		c)
+			in_ext='.c'
+			in_src='int main(void) { return 0; }'
+			cmdline_extra+=(-xc -c)
+			;;
+		c++)
+			in_ext='.cc'
+			in_src='int main(void) { return 0; }'
+			cmdline_extra+=(-xc++ -c)
+			;;
+		f77)
+			in_ext='.f'
+			# fixed source form
+			in_src='      end'
+			cmdline_extra+=(-xf77 -c)
+			;;
+		f95)
+			in_ext='.f90'
+			in_src='end'
+			cmdline_extra+=(-xf95 -c)
+			;;
+
+		# C compiler/assembler/linker
+		c+ld)
+			in_ext='.c'
+			in_src='int main(void) { return 0; }'
+			cmdline_extra+=(-xc)
+			;;
+	esac
+	local test_in=${T}/test-flag-${comp}.${lang}
+	local test_out=${T}/test-flag-${comp}.exe
+
+	printf "%s\n" "${in_src}" > "${test_in}" || return 1
+
 	local cmdline=(
-		$(tc-get${comp})
+		"${comp[@]}"
 		# Clang will warn about unknown gcc flags but exit 0.
 		# Need -Werror to force it to exit non-zero.
 		-Werror
-		# Use -c so we can test the assembler as well.
-		-c -o /dev/null
-	)
-	if "${cmdline[@]}" -x${lang} - </dev/null &>/dev/null ; then
-		cmdline+=( "$@" -x${lang} - )
-	else
-		# XXX: what's the purpose of this? does it even work with
-		# any compiler?
-		cmdline+=( "$@" -c -o /dev/null /dev/null )
-	fi
+		"$@"
+		# -x<lang> options need to go before first source file
+		"${cmdline_extra[@]}"
 
-	if ! "${cmdline[@]}" </dev/null &>/dev/null; then
+		"${test_in}" -o "${test_out}"
+	)
+
+	if ! "${cmdline[@]}" &>/dev/null; then
 		# -Werror makes clang bail out on unused arguments as well;
 		# try to add -Qunused-arguments to work-around that
 		# other compilers don't support it but then, it's failure like
 		# any other
 		cmdline+=( -Qunused-arguments )
-		"${cmdline[@]}" </dev/null &>/dev/null
+		"${cmdline[@]}" &>/dev/null
 	fi
 }
 
@@ -485,6 +525,12 @@ test-flag-F77() { test-flag-PROG "F77" f77 "$@"; }
 # Returns shell true if <flag> is supported by the Fortran 90 compiler, else returns shell false.
 test-flag-FC() { test-flag-PROG "FC" f95 "$@"; }
 
+# @FUNCTION: test-flag-CCLD
+# @USAGE: <flag>
+# @DESCRIPTION:
+# Returns shell true if <flag> is supported by the C compiler and linker, else returns shell false.
+test-flag-CCLD() { test-flag-PROG "CC" c+ld "$@"; }
+
 test-flags-PROG() {
 	local comp=$1
 	local flags=()
@@ -496,7 +542,8 @@ test-flags-PROG() {
 
 	while (( $# )); do
 		case "$1" in
-			--param)
+			# '-B /foo': bug # 687198
+			--param|-B)
 				if test-flag-${comp} "$1" "$2"; then
 					flags+=( "$1" "$2" )
 				fi
@@ -541,6 +588,12 @@ test-flags-F77() { test-flags-PROG "F77" "$@"; }
 # Returns shell true if <flags> are supported by the Fortran 90 compiler, else returns shell false.
 test-flags-FC() { test-flags-PROG "FC" "$@"; }
 
+# @FUNCTION: test-flags-CCLD
+# @USAGE: <flags>
+# @DESCRIPTION:
+# Returns shell true if <flags> are supported by the C compiler and default linker, else returns shell false.
+test-flags-CCLD() { test-flags-PROG "CCLD" "$@"; }
+
 # @FUNCTION: test-flags
 # @USAGE: <flags>
 # @DESCRIPTION:
@@ -569,9 +622,7 @@ strip-unsupported-flags() {
 	export CXXFLAGS=$(test-flags-CXX ${CXXFLAGS})
 	export FFLAGS=$(test-flags-F77 ${FFLAGS})
 	export FCFLAGS=$(test-flags-FC ${FCFLAGS})
-	# note: this does not verify the linker flags but it is enough
-	# to strip invalid C flags which are much more likely, #621274
-	export LDFLAGS=$(test-flags-CC ${LDFLAGS})
+	export LDFLAGS=$(test-flags-CCLD ${LDFLAGS})
 }
 
 # @FUNCTION: get-flag

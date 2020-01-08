@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
-	</maintainer>
+	<!--maintainer-needed-->
 	<use>
 		<flag name="libevent">Use libevent for event handling</flag>
+		<flag name="msn">Enable MSN Messenger IM protocol support.</flag>
 		<flag name="nss">Use NSS for SSL support in MSN and Jabber</flag>
+		<flag name="oscar">Enable Oscar (AIM/ICQ) IM protocol support</flag>
 		<flag name="otr">Enable support for encrypted conversations</flag>
 		<flag name="plugins">Enable support for plugins</flag>
 		<flag name="purple">Use libpurple instead of the built-in IM protocol support</flag>

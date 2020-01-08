@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ inherit haskell-cabal
 
 DESCRIPTION="ASN1 data reader and writer in RAW, BER and DER forms"
 HOMEPAGE="https://github.com/vincenthz/hs-asn1/tree/master/data"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"

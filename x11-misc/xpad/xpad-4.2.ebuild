@@ -9,7 +9,7 @@ SRC_URI="https://launchpad.net/${PN}/trunk/${PV}/+download/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ppc x86"
 IUSE=""
 
 RDEPEND="

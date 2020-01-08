@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -73,6 +73,9 @@ DEPEND="${RDEPEND}
 	sys-devel/flex
 	virtual/yacc
 "
+
+RESTRICT="!test? ( test )"
+
 if is_cross ; then
 	# The build assumes the host has libiberty and such when cross-compiling
 	# its build tools.  We should probably make binutils itself build a local
@@ -319,7 +322,7 @@ src_install() {
 		objalloc.h
 		splay-tree.h
 	)
-	doins "${libiberty_headers[@]/#/${S}/include/}" || die
+	doins "${libiberty_headers[@]/#/${S}/include/}"
 	if [[ -d ${ED}/${LIBPATH}/lib ]] ; then
 		mv "${ED}"/${LIBPATH}/lib/* "${ED}"/${LIBPATH}/
 		rm -r "${ED}"/${LIBPATH}/lib

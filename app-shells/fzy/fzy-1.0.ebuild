@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/jhawthorn/fzy.git"
 else
 	SRC_URI="https://github.com/jhawthorn/${PN}/releases/download/${PV}/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 x86"
+	KEYWORDS="amd64 arm arm64 ~ppc64 x86"
 fi
 
 DESCRIPTION="Fuzzy text selector (interactive grep) for console"
@@ -19,6 +19,7 @@ HOMEPAGE="https://github.com/jhawthorn/fzy"
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 PATCHES=( "${FILESDIR}"/fzy-0.9-cflags.patch )
 

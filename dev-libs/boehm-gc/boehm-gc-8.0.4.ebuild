@@ -8,19 +8,19 @@ inherit multilib-minimal libtool
 MY_P="gc-${PV}"
 
 DESCRIPTION="The Boehm-Demers-Weiser conservative garbage collector"
-HOMEPAGE="http://www.hboehm.info/gc/ https://github.com/ivmai/bdwgc/"
+HOMEPAGE="https://www.hboehm.info/gc/ https://github.com/ivmai/bdwgc/"
 SRC_URI="https://github.com/ivmai/bdwgc/releases/download/v${PV}/${MY_P}.tar.gz"
 
 LICENSE="boehm-gc"
 # SONAME: libgc.so.1 libgccpp.so.1
 # We've been using subslot 0 for these instead of "1.1".
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~riscv s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="cxx static-libs +threads"
 
-DEPEND="
-	>=dev-libs/libatomic_ops-7.4[${MULTILIB_USEDEP}]
-	virtual/pkgconfig"
+RDEPEND=">=dev-libs/libatomic_ops-7.4[${MULTILIB_USEDEP}]"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 

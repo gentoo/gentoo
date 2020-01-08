@@ -13,9 +13,10 @@ LICENSE="GPL-2 || ( Ruby MIT )"
 
 SRC_URI="https://rubygems.org/rubygems/${P}.tgz"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="0"
 IUSE="server test"
+RESTRICT="!test? ( test )"
 
 PDEPEND="server? ( =dev-ruby/builder-3* )"
 
@@ -94,17 +95,17 @@ each_ruby_install() {
 
 	local sld=$(ruby_rbconfig_value 'sitelibdir')
 	insinto "${sld#${EPREFIX}}"  # bug #320813
-	newins "${FILESDIR}/auto_gem.rb.ruby19" auto_gem.rb || die
+	newins "${FILESDIR}/auto_gem.rb.ruby19" auto_gem.rb
 
-	newbin bin/gem $(basename ${RUBY} | sed -e 's:ruby:gem:') || die
+	newbin bin/gem $(basename ${RUBY} | sed -e 's:ruby:gem:')
 }
 
 all_ruby_install() {
 	dodoc History.txt README.md
 
 	if use server; then
-		newinitd "${FILESDIR}/init.d-gem_server2" gem_server || die "newinitd failed"
-		newconfd "${FILESDIR}/conf.d-gem_server" gem_server || die "newconfd failed"
+		newinitd "${FILESDIR}/init.d-gem_server2" gem_server
+		newconfd "${FILESDIR}/conf.d-gem_server" gem_server
 	fi
 }
 

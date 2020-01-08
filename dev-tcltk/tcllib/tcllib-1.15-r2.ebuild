@@ -14,7 +14,7 @@ SRC_URI="
 LICENSE="BSD"
 SLOT="0"
 IUSE="examples"
-KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="dev-lang/tcl:0="
 DEPEND="${RDEPEND}"

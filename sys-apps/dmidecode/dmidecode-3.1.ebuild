@@ -11,7 +11,7 @@ SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* amd64 arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~x86-solaris"
+KEYWORDS="-* amd64 arm ~arm64 ia64 ppc ppc64 sparc x86 ~x86-solaris"
 IUSE="selinux"
 
 RDEPEND="selinux? ( sec-policy/selinux-dmidecode )"

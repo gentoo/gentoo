@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 DISTUTILS_OPTIONAL="1"
 DISTUTILS_IN_SOURCE_BUILD="1"
 
@@ -29,9 +29,11 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/google/${PN}.git"
 	inherit git-r3
 else
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris"
 	SRC_URI="https://github.com/google/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
+
+RESTRICT="!test? ( test )"
 
 src_prepare() {
 	use python && distutils-r1_src_prepare

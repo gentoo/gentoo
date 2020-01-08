@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,8 +14,9 @@ SRC_URI="https://www.freedesktop.org/software/${MY_PN}/dist/${MY_P}.tar.xz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="acl debug doc kernel_linux pam policykit selinux systemd-units test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
 	>=dev-libs/glib-2.38.2-r1:2=
@@ -25,7 +26,7 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100:=
 		sys-apps/acl:=
 		>=virtual/udev-200
 		)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	policykit? ( >=sys-auth/polkit-0.110 )"
 RDEPEND="${COMMON_DEPEND}
 	kernel_linux? ( sys-apps/coreutils[acl?] )

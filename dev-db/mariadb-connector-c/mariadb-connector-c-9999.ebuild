@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 VCS_INHERIT=""
 if [[ "${PV}" == 9999 ]] ; then
@@ -30,6 +30,8 @@ LICENSE="LGPL-2.1"
 SLOT="0/3"
 IUSE="+curl gnutls kerberos libressl +ssl static-libs test"
 
+RESTRICT="!test? ( test )"
+
 DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libiconv:=[${MULTILIB_USEDEP}]
 	curl? ( net-misc/curl:0=[${MULTILIB_USEDEP}] )
@@ -43,9 +45,7 @@ DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 		)
 	)
 	"
-RDEPEND="${DEPEND}
-	!>=dev-db/mariadb-10.2.0[client-libs(+)]
-	"
+RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/gentoo-layout-3.0.patch
 	"${FILESDIR}"/${PN}-3.0.8-fix-pkconfig-file.patch
@@ -63,7 +63,7 @@ multilib_src_configure() {
 		-DWITH_SSL:STRING=$(usex ssl $(usex gnutls GNUTLS OPENSSL) OFF)
 		-DWITH_CURL=$(usex curl ON OFF)
 		-DCLIENT_PLUGIN_AUTH_GSSAPI_CLIENT:STRING=$(usex kerberos DYNAMIC OFF)
-		-DMARIADB_UNIX_ADDR="${EPREFIX%/}/var/run/mysqld/mysqld.sock"
+		-DMARIADB_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
 		-DINSTALL_LIBDIR="$(get_libdir)"
 		-DINSTALL_PCDIR="$(get_libdir)/pkgconfig"
 		-DINSTALL_PLUGINDIR="$(get_libdir)/mariadb/plugin"

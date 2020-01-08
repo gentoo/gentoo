@@ -2,23 +2,20 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>juippis@gmail.com</email>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
+    <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
   </maintainer>
   <use>
     <flag name="eet">Enable Eet image loader</flag>
     <flag name="xcf">Enable XCF image loader</flag>
   </use>
   <longdescription>
-    This package contains image loader plugins for Imlib2 that are not 
+    This package contains image loader plugins for Imlib2 that are not
     distributed together with the Imlib2 package itself.
 
-    The XCF loader cannot be packaged together with Imlib2 because 
-    Imlib2 is distributed under the BSD license, whereas the XCF loader 
-    is using elements of the Gimp's (www.gimp.org) codebase, which is 
-    distributed under the GPL. The XCF loader therefore is GPL'd as well.
+    The XCF loader cannot be packaged together with Imlib2 because Imlib2 is
+    distributed under the BSD license, whereas the XCF loader is using elements
+    of the Gimp's (www.gimp.org) codebase, which is distributed under the GPL.
+    The XCF loader therefore is GPL'd as well.
   </longdescription>
 </pkgmetadata>

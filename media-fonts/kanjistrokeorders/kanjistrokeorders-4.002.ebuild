@@ -13,7 +13,7 @@ SRC_URI="https://sites.google.com/site/nihilistorguk/${MY_P}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 RESTRICT="binchecks"
 

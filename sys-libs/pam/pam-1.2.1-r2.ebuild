@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit libtool multilib multilib-minimal eutils pam toolchain-funcs flag-o-matic db-use fcaps
+inherit libtool multilib multilib-minimal eutils pam toolchain-funcs flag-o-matic db-use fcaps usr-ldscript
 
 MY_PN="Linux-PAM"
 MY_P="${MY_PN}-${PV}"
@@ -15,8 +15,9 @@ SRC_URI="http://www.linux-pam.org/library/${MY_P}.tar.bz2
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="audit berkdb +cracklib debug nis nls +pie selinux test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )
 	cracklib? ( >=sys-libs/cracklib-2.9.1-r1[${MULTILIB_USEDEP}] )
@@ -32,10 +33,7 @@ DEPEND="${RDEPEND}
 	nis? ( >=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}] )"
 PDEPEND="sys-auth/pambase"
 
-RDEPEND="${RDEPEND}
-	!<sys-apps/openrc-0.11.8
-	!sys-auth/openpam
-	!sys-auth/pam_userdb"
+RDEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 

@@ -26,12 +26,11 @@ src_prepare() {
 src_compile() {
 	emake -C apps/unix/client \
 		CC=$(tc-getCC) \
-		LDFLAGS="${LDFLAGS}" \
-		|| die
+		LDFLAGS="${LDFLAGS}"
+
 	emake -C apps/unix/server \
 		CC=$(tc-getCC) \
-		LDFLAGS="${LDFLAGS}" \
-		|| die
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {

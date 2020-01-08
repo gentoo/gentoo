@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 CMAKE_REMOVE_MODULES_LIST="${CMAKE_REMOVE_MODULES_LIST} FindXcm FindCUPS"
-inherit cmake-utils flag-o-matic
+inherit cmake-utils flag-o-matic xdg
 
 DESCRIPTION="Colour management system allowing to share settings across apps and services"
 HOMEPAGE="https://www.oyranos.org/"
@@ -69,7 +69,11 @@ DOCS=( {AUTHORS,ChangeLog,README}.md )
 
 RESTRICT="test"
 
-PATCHES=( "${WORKDIR}/patches" )
+PATCHES=(
+	"${WORKDIR}/patches"
+	"${FILESDIR}/${P}-mesa-18.3.1.patch" # bug 671996
+	"${FILESDIR}/${P}-underlinking.patch"
+)
 
 src_prepare() {
 	# remove bundled libs
@@ -77,7 +81,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 }
 
-multilib_src_configure() {
+src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_DOCDIR=share/doc/${PF}
 		-DUSE_SYSTEM_ELEKTRA=ON

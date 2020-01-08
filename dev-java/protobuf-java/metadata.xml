@@ -9,13 +9,6 @@
 		<email>java@gentoo.org</email>
 		<name>Java</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<use>
-		<flag name="nano">Enable code generator and runtime library designed specifically for resource-constrained systems, like Android</flag>
-	</use>
 	<slots>
 		<subslots>Soname version number of Protobuf</subslots>
 	</slots>

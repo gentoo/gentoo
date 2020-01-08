@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit check-reqs distutils-r1
 
@@ -15,6 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~hppa x86"
 IUSE="doc kerberos test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	kerberos? ( dev-python/pykerberos[${PYTHON_USEDEP}] )
@@ -106,7 +107,7 @@ python_test() {
 	fi
 	DB_PORT2=$(( DB_PORT + 1 )) DB_PORT3=$(( DB_PORT + 2 )) esetup.py test || failed=1
 
-	mongod --dbpath "${dbpath}" --shutdown || die
+	mongod --dbpath "${dbpath}" --shutdown || die
 
 	[[ ${failed} ]] && die "Tests fail with ${EPYTHON}"
 

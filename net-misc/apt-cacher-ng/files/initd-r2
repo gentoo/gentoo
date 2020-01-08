@@ -1,0 +1,34 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+CACHEDIR="var/cache/${RC_SVCNAME}"
+DAEMON="/usr/sbin/${RC_SVCNAME}"
+RUNDIR="/var/run/${RC_SVCNAME}"
+PIDFILE="${RUNDIR}/${RC_SVCNAME}.pid"
+SOCKETFILE="${RUNDIR}/${RC_SVCNAME}.socket"
+DAEMON_OPTS="${DAEMON_OPTS} pidfile=${PIDFILE} SocketPath=${SOCKETFILE} foreground=0"
+
+depend() {
+	use net
+}
+
+start() {
+	ebegin "Starting ${RC_SVCNAME}"
+	checkpath -d -m 0755 -o ${RC_SVCNAME}:${RC_SVCNAME} "${RUNDIR}"
+	checkpath -d -m 0755 -o ${RC_SVCNAME}:${RC_SVCNAME} "${CACHEDIR}"
+	[ -z "${LOGDIR}" ] && checkpath -d -m 0755 -o ${RC_SVCNAME}:${RC_SVCNAME} "/var/log/${RC_SVCNAME}"
+	start-stop-daemon --start --exec ${DAEMON} \
+	    --user ${RC_SVCNAME} --group ${RC_SVCNAME} \
+	    --pidfile ${PIDFILE} \
+	    -- ${DAEMON_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping ${RC_SVCNAME}"
+	start-stop-daemon --stop --retry 15 --exec ${DAEMON} \
+	    --pidfile ${PIDFILE}
+	rm -f ${PIDFILE}
+	eend $?
+}

@@ -15,7 +15,7 @@ SRC_URI="https://people.redhat.com/nalin/MAKEDEV/${MY_P}-${MY_REL}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
 IUSE="build selinux"
 
 RDEPEND="!<sys-apps/baselayout-2.0.0_rc"

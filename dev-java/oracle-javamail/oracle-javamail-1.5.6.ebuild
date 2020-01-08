@@ -36,8 +36,8 @@ EANT_EXTRA_ARGS="-Dspec.dir=doc/spec"
 src_install() {
 	java-pkg_dojar target/release/mail.jar
 
-	dodoc doc/release/{CHANGES,COMPAT,NOTES,NTLMNOTES,README,SSLNOTES}.txt || die
-	dohtml -r doc/release/{*.html,images} || die
+	dodoc doc/release/{CHANGES,COMPAT,NOTES,NTLMNOTES,README,SSLNOTES}.txt
+	dohtml -r doc/release/{*.html,images}
 
 	use doc && java-pkg_dojavadoc target/release/docs/javadocs
 	use source && java-pkg_dosrc mail/src/main/java

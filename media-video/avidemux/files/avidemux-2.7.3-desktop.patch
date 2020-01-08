@@ -1,0 +1,20 @@
+From 4ea6b2e4199eddef7748de4fd58c1f4d8bfbedd2 Mon Sep 17 00:00:00 2001
+From: eumagga0x2a <eumagga0x2a@users.noreply.github.com>
+Date: Sun, 4 Aug 2019 15:34:19 +0800
+Subject: [PATCH] [appImage] Add missing Type entry to the .desktop file
+
+Upstream-Status: Accepted
+[https://github.com/mean00/avidemux2/commit/4ea6b2e4199eddef7748de4fd58c1f4d8bfbedd2]
+---
+ appImage/avidemux.desktop | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/appImage/avidemux.desktop b/appImage/avidemux.desktop
+index 3006e4335..d017ff309 100644
+--- a/appImage/avidemux.desktop
++++ b/appImage/avidemux.desktop
+@@ -2,3 +2,4 @@
+ Name=AVIDEMUX
+ Exec=avidemux3_portable
+ Icon=avidemux.png
++Type=Application

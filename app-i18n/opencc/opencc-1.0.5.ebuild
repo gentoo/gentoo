@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -20,8 +20,9 @@ HOMEPAGE="https://github.com/BYVoid/OpenCC"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-KEYWORDS="amd64 hppa ppc ppc64 x86"
+KEYWORDS="amd64 arm64 hppa ppc ppc64 ~sparc x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 DEPEND="doc? ( app-doc/doxygen )"
 

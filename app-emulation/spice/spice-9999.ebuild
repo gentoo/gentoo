@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+EAPI=7
+PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit autotools eutils git-r3 ltprune python-any-r1 readme.gentoo-r1 xdg-utils
+inherit autotools eutils git-r3 python-any-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
 HOMEPAGE="https://www.spice-space.org/"
@@ -34,18 +34,18 @@ RDEPEND="
 		media-libs/gst-plugins-base:1.0
 	)"
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
-	=app-emulation/spice-protocol-9999
+	~app-emulation/spice-protocol-9999
+	smartcard? ( app-emulation/qemu[smartcard] )"
+BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig
 	$(python_gen_any_dep '
 		>=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]
 		dev-python/six[${PYTHON_USEDEP}]
-	')
-	smartcard? ( app-emulation/qemu[smartcard] )"
+	')"
 
 python_check_deps() {
-	has_version ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"
-	has_version "dev-python/six[${PYTHON_USEDEP}]"
+	has_version -b ">=dev-python/pyparsing-1.5.6-r2[${PYTHON_USEDEP}]"
+	has_version -b "dev-python/six[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
@@ -54,6 +54,10 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# Delete repo-only Makefile that causes build to fail.
+	# https://gitlab.freedesktop.org/spice/spice/issues/35
+	rm GNUmakefile || die
 
 	eautoreconf
 }
@@ -88,7 +92,7 @@ src_compile() {
 
 src_install() {
 	default
-	use static-libs || prune_libtool_files
+	use static-libs || find "${D}" -name '*.la' -type f -delete || die
 	readme.gentoo_create_doc
 }
 

@@ -1,0 +1,63 @@
+#!/bin/bash
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+SCRIPT_NAME='udk-workspace'
+[ -n "${BASH_SOURCE}" ] && SCRIPT_NAME="${BASH_SOURCE}"
+
+show_usage() {
+	if [ ! -z "${1}" ]; then
+		echo "${1}" >&2
+		echo >&2
+	fi
+	echo "Usage:"
+	echo ". ${SCRIPT_NAME} [folder]"
+	echo "where folder is the workspace folder - current directory is used if unspecified"
+}
+
+create_workspace() {
+	local workspace_dir="${PWD}"
+	if [ ! -z "${1}" ]; then
+		workspace_dir="${1}"
+		if ! mkdir -p "${1}"; then
+			show_usage "Cannot create directory ${1}"
+			return 1
+		fi
+	fi
+
+	pushd "${workspace_dir}" >/dev/null
+	if ! mkdir -p Conf; then
+		show_usage "Cannot create configuration directory"
+		return 1
+	fi
+	export WORKSPACE="${PWD}"
+	popd >/dev/null
+}
+
+if [ "${1}" = "-h" ] || [ "${1}" = "--help" ]; then
+	show_usage
+	# Script may have been sourced
+	return 0 2>/dev/null
+	exit 0
+elif [ "${SCRIPT_NAME}" = "${0}" ]; then
+	show_usage "Script must be sourced"
+	exit 1
+elif [ $# -gt 1 ]; then
+	show_usage "Too many arguments"
+	return 1
+fi
+
+if ! create_workspace "${1}"; then
+	return 1
+fi
+unset -f show_usage
+unset -f create_workspace
+shift $#
+
+export EDK_TOOLS_PATH="{EDK_BASE}/BaseTools"
+. "{EDK_BASE}/edksetup.sh"
+
+echo "Do not forget to call this script each time you open a new terminal or work on"
+echo "another workspace."
+echo "For more information, type:"
+echo "${SCRIPT_NAME} --help"

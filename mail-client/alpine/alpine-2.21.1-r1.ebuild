@@ -16,7 +16,7 @@ SLOT="0"
 KEYWORDS="alpha amd64 ia64 ppc sparc x86"
 IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads"
 
-DEPEND="virtual/pam
+DEPEND="sys-libs/pam
 	>=sys-libs/ncurses-5.1:0=
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )

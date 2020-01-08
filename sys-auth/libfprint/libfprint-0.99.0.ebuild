@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,8 @@ SRC_URI="https://github.com/freedesktop/libfprint/archive/V_$(ver_rs 0-3 '_').ta
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
-IUSE="doc examples"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86"
+IUSE="examples"
 
 RDEPEND="dev-libs/glib:2
 	 dev-libs/nss
@@ -33,7 +33,7 @@ S="${WORKDIR}/${PN}-V_$(ver_rs 0-3 '_')"
 
 src_configure() {
 		local emesonargs=(
-			-Ddoc=$(usex doc true false)
+			-Ddoc=false
 			-Dx11-examples=$(usex examples true false)
 			-Ddrivers=all
 			-Dudev_rules=true

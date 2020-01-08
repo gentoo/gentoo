@@ -10,7 +10,7 @@ inherit ruby-fakegem eapi7-ver
 
 DESCRIPTION="Metasploit concern allows you to define concerns in app/concerns. "
 HOMEPAGE="https://github.com/rapid7/metasploit-concern"
-SRC_URI="mirror://rubygems/${P}.gem"
+SRC_URI="https://rubygems.org/gems/${P}.gem"
 
 LICENSE="BSD"
 SLOT="$(ver_cut 1-2)"

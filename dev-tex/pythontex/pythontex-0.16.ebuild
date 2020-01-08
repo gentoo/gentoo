@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
 inherit latex-package python-r1
 
@@ -22,7 +22,7 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-texlive/texlive-latexextra-2016
 	dev-tex/pgf"
 RDEPEND="${DEPEND}
-	highlighting? ( dev-python/pygments[${PYTHON_USEDEP}] )"
+	dev-python/pygments[${PYTHON_USEDEP}]"
 
 TEXMF=/usr/share/texmf-site
 

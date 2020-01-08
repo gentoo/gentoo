@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
@@ -18,8 +18,9 @@ SLOT="0"
 # matplotlib/backends/qt4_editor: MIT
 # Fonts: BitstreamVera, OFL-1.1
 LICENSE="BitstreamVera BSD matplotlib MIT OFL-1.1"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 x86"
 IUSE="cairo doc excel examples gtk2 gtk3 latex qt5 test tk wxwidgets"
+RESTRICT="!test? ( test )"
 
 PY2_FLAGS="|| ( $(python_gen_useflags python2_7) )"
 REQUIRED_USE="

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,12 +10,12 @@ inherit haskell-cabal
 
 DESCRIPTION="A class of monads which can log messages"
 HOMEPAGE="https://github.com/kazu-yamamoto/logger"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+template_haskell"
+IUSE="+template-haskell"
 
 RDEPEND="dev-haskell/blaze-builder:=[profile?]
 	>=dev-haskell/conduit-1.0:=[profile?] <dev-haskell/conduit-1.3:=[profile?]
@@ -40,5 +40,5 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	haskell-cabal_src_configure \
-		$(cabal_flag template_haskell template_haskell)
+		$(cabal_flag template-haskell template_haskell)
 }

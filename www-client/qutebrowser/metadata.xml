@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>guillaumeseren@gmail.com</email>
+		<name>Guillaume Seren</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>jsbronder@gentoo.org</email>
-		<name>Justin Bronder</name>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">qutebrowser/qutebrowser</remote-id>

@@ -5,6 +5,10 @@
 		<email>fordfrog@gentoo.org</email>
 		<name>Miroslav Šulc</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>candrews@gentoo.org</email>
+		<name>Craig Andrews</name>
+	</maintainer>
 	<longdescription>Kodi platform support library</longdescription>
 	<upstream>
 		<remote-id type="github">xbmc/kodi-platform</remote-id>

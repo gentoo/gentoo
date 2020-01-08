@@ -15,7 +15,7 @@ SRC_URI="http://effbot.org/downloads/${MY_P}.tar.gz"
 
 LICENSE="ElementTree"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris"
 IUSE="examples"
 
 RDEPEND=">=dev-python/elementtree-1.2[${PYTHON_USEDEP}]

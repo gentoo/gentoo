@@ -1,0 +1,365 @@
+--- a/libs/libmyth/test/test_audioutils/test_audioutils.h
++++ b/libs/libmyth/test/test_audioutils/test_audioutils.h
+@@ -204,42 +204,48 @@ class TestAudioUtils: public QObject
+             arrays1[i] = j;
+         }
+ 
+-        uint32_t pattern        = 0xbcbcbcbc;
+-        arrays2[offsetshort-4]  = *(short*)&pattern;
+-        arrays2[offsetshort-3]  = *(short*)&pattern;
+-        arrays2[offsetshort-2]  = *(short*)&pattern;
+-        arrays2[offsetshort-1]  = *(short*)&pattern;
+-        arrayf[offsetfloat-4]   = *(float*)&pattern;
+-        arrayf[offsetfloat-3]   = *(float*)&pattern;
+-        arrayf[offsetfloat-2]   = *(float*)&pattern;
+-        arrayf[offsetfloat-1]   = *(float*)&pattern;
+-        arrays2[SAMPLES+offsetshort+0]    = *(short*)&pattern;
+-        arrays2[SAMPLES+offsetshort+1]    = *(short*)&pattern;
+-        arrays2[SAMPLES+offsetshort+2]    = *(short*)&pattern;
+-        arrays2[SAMPLES+offsetshort+3]    = *(short*)&pattern;
+-        arrayf[SAMPLES+offsetfloat+0]     = *(float*)&pattern;
+-        arrayf[SAMPLES+offsetfloat+1]     = *(float*)&pattern;
+-        arrayf[SAMPLES+offsetfloat+2]     = *(float*)&pattern;
+-        arrayf[SAMPLES+offsetfloat+3]     = *(float*)&pattern;
++	const union
++	{
++	    uint32_t pattern;
++	    short shortpattern;
++	    float floatpattern;
++	} pattern = { .pattern = 0xbcbcbcbc };
++
++        arrays2[offsetshort-4]  = *&pattern.shortpattern;
++        arrays2[offsetshort-3]  = *&pattern.shortpattern;
++        arrays2[offsetshort-2]  = *&pattern.shortpattern;
++        arrays2[offsetshort-1]  = *&pattern.shortpattern;
++        arrayf[offsetfloat-4]   = *(float*)&pattern.floatpattern;
++        arrayf[offsetfloat-3]   = *(float*)&pattern.floatpattern;
++        arrayf[offsetfloat-2]   = *(float*)&pattern.floatpattern;
++        arrayf[offsetfloat-1]   = *(float*)&pattern.floatpattern;
++        arrays2[SAMPLES+offsetshort+0]    = *&pattern.shortpattern;
++        arrays2[SAMPLES+offsetshort+1]    = *&pattern.shortpattern;
++        arrays2[SAMPLES+offsetshort+2]    = *&pattern.shortpattern;
++        arrays2[SAMPLES+offsetshort+3]    = *&pattern.shortpattern;
++        arrayf[SAMPLES+offsetfloat+0]     = *(float*)&pattern.floatpattern;
++        arrayf[SAMPLES+offsetfloat+1]     = *(float*)&pattern.floatpattern;
++        arrayf[SAMPLES+offsetfloat+2]     = *(float*)&pattern.floatpattern;
++        arrayf[SAMPLES+offsetfloat+3]     = *(float*)&pattern.floatpattern;
+ 
+         // sanity tests
+         QCOMPARE(SAMPLES*2, SAMPLES * ISIZEOF(arrays1[0]));
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+0],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+3],pattern);
+-        QCOMPARE(*(short*)&arrays2[offsetshort-4],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[offsetshort-3],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[offsetshort-2],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[offsetshort-1],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+0],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+1],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+2],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+3],*(short*)&pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+0],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(short*)&arrays2[offsetshort-4],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[offsetshort-3],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[offsetshort-2],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[offsetshort-1],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+0],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+1],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+2],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+3],*&pattern.shortpattern);
+         QCOMPARE(arrayf+4,&arrayf[4]);
+         QCOMPARE(arrays2+4,&arrays2[4]);
+ 
+@@ -248,22 +254,22 @@ class TestAudioUtils: public QObject
+         int val2 = AudioOutputUtil::fromFloat(FORMAT_S16, arrays2+offsetshort, arrayf+offsetfloat, SAMPLES * ISIZEOF(float));
+         QCOMPARE(val2, SAMPLES * ISIZEOF(short));
+ 
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+0],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+3],pattern);
+-        QCOMPARE(*(short*)&arrays2[offsetshort-4],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[offsetshort-3],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[offsetshort-2],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[offsetshort-1],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+0],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+1],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+2],*(short*)&pattern);
+-        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+3],*(short*)&pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+0],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SAMPLES+offsetfloat+3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(short*)&arrays2[offsetshort-4],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[offsetshort-3],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[offsetshort-2],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[offsetshort-1],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+0],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+1],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+2],*&pattern.shortpattern);
++        QCOMPARE(*(short*)&arrays2[SAMPLES+offsetshort+3],*&pattern.shortpattern);
+ 
+         av_free(arrays1);
+         av_free(arrays2);
+@@ -505,42 +511,48 @@ class TestAudioUtils: public QObject
+             arrays1[i] = j;
+         }
+ 
+-        uint32_t pattern        = 0xbcbcbcbc;
+-        arrays2[offsetuchar-4]  = *(uchar*)&pattern;
+-        arrays2[offsetuchar-3]  = *(uchar*)&pattern;
+-        arrays2[offsetuchar-2]  = *(uchar*)&pattern;
+-        arrays2[offsetuchar-1]  = *(uchar*)&pattern;
+-        arrayf[offsetfloat-4]   = *(float*)&pattern;
+-        arrayf[offsetfloat-3]   = *(float*)&pattern;
+-        arrayf[offsetfloat-2]   = *(float*)&pattern;
+-        arrayf[offsetfloat-1]   = *(float*)&pattern;
+-        arrays2[SIZEARRAY+offsetuchar+0]    = *(uchar*)&pattern;
+-        arrays2[SIZEARRAY+offsetuchar+1]    = *(uchar*)&pattern;
+-        arrays2[SIZEARRAY+offsetuchar+2]    = *(uchar*)&pattern;
+-        arrays2[SIZEARRAY+offsetuchar+3]    = *(uchar*)&pattern;
+-        arrayf[SIZEARRAY+offsetfloat+0]     = *(float*)&pattern;
+-        arrayf[SIZEARRAY+offsetfloat+1]     = *(float*)&pattern;
+-        arrayf[SIZEARRAY+offsetfloat+2]     = *(float*)&pattern;
+-        arrayf[SIZEARRAY+offsetfloat+3]     = *(float*)&pattern;
++	const union
++	{
++	    uint32_t pattern;
++	    uchar ucharpattern;
++	    float floatpattern;
++	} pattern = { .pattern = 0xbcbcbcbc };
++
++        arrays2[offsetuchar-4]  = *(uchar*)&pattern.ucharpattern;
++        arrays2[offsetuchar-3]  = *(uchar*)&pattern.ucharpattern;
++        arrays2[offsetuchar-2]  = *(uchar*)&pattern.ucharpattern;
++        arrays2[offsetuchar-1]  = *(uchar*)&pattern.ucharpattern;
++        arrayf[offsetfloat-4]   = *(float*)&pattern.floatpattern;
++        arrayf[offsetfloat-3]   = *(float*)&pattern.floatpattern;
++        arrayf[offsetfloat-2]   = *(float*)&pattern.floatpattern;
++        arrayf[offsetfloat-1]   = *(float*)&pattern.floatpattern;
++        arrays2[SIZEARRAY+offsetuchar+0]    = *(uchar*)&pattern.ucharpattern;
++        arrays2[SIZEARRAY+offsetuchar+1]    = *(uchar*)&pattern.ucharpattern;
++        arrays2[SIZEARRAY+offsetuchar+2]    = *(uchar*)&pattern.ucharpattern;
++        arrays2[SIZEARRAY+offsetuchar+3]    = *(uchar*)&pattern.ucharpattern;
++        arrayf[SIZEARRAY+offsetfloat+0]     = *(float*)&pattern.floatpattern;
++        arrayf[SIZEARRAY+offsetfloat+1]     = *(float*)&pattern.floatpattern;
++        arrayf[SIZEARRAY+offsetfloat+2]     = *(float*)&pattern.floatpattern;
++        arrayf[SIZEARRAY+offsetfloat+3]     = *(float*)&pattern.floatpattern;
+ 
+         // sanity tests
+         QCOMPARE(SIZEARRAY*1, SIZEARRAY * ISIZEOF(arrays1[0]));
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+0],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+3],pattern);
+-        QCOMPARE(*(uchar*)&arrays2[offsetuchar-4],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[offsetuchar-3],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[offsetuchar-2],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[offsetuchar-1],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+0],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+1],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+2],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+3],*(uchar*)&pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+0],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uchar*)&arrays2[offsetuchar-4],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[offsetuchar-3],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[offsetuchar-2],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[offsetuchar-1],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+0],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+1],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+2],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+3],*(uchar*)&pattern.ucharpattern);
+         QCOMPARE(arrayf+4,&arrayf[4]);
+         QCOMPARE(arrays2+4,&arrays2[4]);
+ 
+@@ -549,22 +561,22 @@ class TestAudioUtils: public QObject
+         int val2 = AudioOutputUtil::fromFloat(FORMAT_U8, arrays2+offsetuchar, arrayf+offsetfloat, SIZEARRAY * ISIZEOF(float));
+         QCOMPARE(val2, SIZEARRAY * ISIZEOF(uchar));
+ 
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+0],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+3],pattern);
+-        QCOMPARE(*(uchar*)&arrays2[offsetuchar-4],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[offsetuchar-3],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[offsetuchar-2],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[offsetuchar-1],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+0],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+1],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+2],*(uchar*)&pattern);
+-        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+3],*(uchar*)&pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+0],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uchar*)&arrays2[offsetuchar-4],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[offsetuchar-3],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[offsetuchar-2],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[offsetuchar-1],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+0],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+1],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+2],*(uchar*)&pattern.ucharpattern);
++        QCOMPARE(*(uchar*)&arrays2[SIZEARRAY+offsetuchar+3],*(uchar*)&pattern.ucharpattern);
+ 
+         av_free(arrays1);
+         av_free(arrays2);
+@@ -686,42 +698,48 @@ class TestAudioUtils: public QObject
+             arrays1[i] = j;
+         }
+ 
+-        uint32_t pattern        = 0xbcbcbcbc;
+-        arrays2[offsetint32_t-4]  = *(int32_t*)&pattern;
+-        arrays2[offsetint32_t-3]  = *(int32_t*)&pattern;
+-        arrays2[offsetint32_t-2]  = *(int32_t*)&pattern;
+-        arrays2[offsetint32_t-1]  = *(int32_t*)&pattern;
+-        arrayf[offsetfloat-4]   = *(float*)&pattern;
+-        arrayf[offsetfloat-3]   = *(float*)&pattern;
+-        arrayf[offsetfloat-2]   = *(float*)&pattern;
+-        arrayf[offsetfloat-1]   = *(float*)&pattern;
+-        arrays2[SIZEARRAY+offsetint32_t+0]    = *(int32_t*)&pattern;
+-        arrays2[SIZEARRAY+offsetint32_t+1]    = *(int32_t*)&pattern;
+-        arrays2[SIZEARRAY+offsetint32_t+2]    = *(int32_t*)&pattern;
+-        arrays2[SIZEARRAY+offsetint32_t+3]    = *(int32_t*)&pattern;
+-        arrayf[SIZEARRAY+offsetfloat+0]     = *(float*)&pattern;
+-        arrayf[SIZEARRAY+offsetfloat+1]     = *(float*)&pattern;
+-        arrayf[SIZEARRAY+offsetfloat+2]     = *(float*)&pattern;
+-        arrayf[SIZEARRAY+offsetfloat+3]     = *(float*)&pattern;
++	const union
++	{
++	    uint32_t pattern;
++	    int32_t int32pattern;
++	    float floatpattern;
++	} pattern = { .pattern = 0xbcbcbcbc };
++
++        arrays2[offsetint32_t-4]  = *(int32_t*)&pattern.int32pattern;
++        arrays2[offsetint32_t-3]  = *(int32_t*)&pattern.int32pattern;
++        arrays2[offsetint32_t-2]  = *(int32_t*)&pattern.int32pattern;
++        arrays2[offsetint32_t-1]  = *(int32_t*)&pattern.int32pattern;
++        arrayf[offsetfloat-4]   = *(float*)&pattern.floatpattern;
++        arrayf[offsetfloat-3]   = *(float*)&pattern.floatpattern;
++        arrayf[offsetfloat-2]   = *(float*)&pattern.floatpattern;
++        arrayf[offsetfloat-1]   = *(float*)&pattern.floatpattern;
++        arrays2[SIZEARRAY+offsetint32_t+0]    = *(int32_t*)&pattern.int32pattern;
++        arrays2[SIZEARRAY+offsetint32_t+1]    = *(int32_t*)&pattern.int32pattern;
++        arrays2[SIZEARRAY+offsetint32_t+2]    = *(int32_t*)&pattern.int32pattern;
++        arrays2[SIZEARRAY+offsetint32_t+3]    = *(int32_t*)&pattern.int32pattern;
++        arrayf[SIZEARRAY+offsetfloat+0]     = *(float*)&pattern.floatpattern;
++        arrayf[SIZEARRAY+offsetfloat+1]     = *(float*)&pattern.floatpattern;
++        arrayf[SIZEARRAY+offsetfloat+2]     = *(float*)&pattern.floatpattern;
++        arrayf[SIZEARRAY+offsetfloat+3]     = *(float*)&pattern.floatpattern;
+ 
+         // sanity tests
+         QCOMPARE(SIZEARRAY*4, SIZEARRAY * ISIZEOF(arrays1[0]));
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+0],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+3],pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-4],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-3],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-2],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-1],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+0],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+1],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+2],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+3],*(int32_t*)&pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+0],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-4],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-3],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-2],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-1],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+0],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+1],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+2],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+3],*(int32_t*)&pattern.int32pattern);
+         QCOMPARE(arrayf+4,&arrayf[4]);
+         QCOMPARE(arrays2+4,&arrays2[4]);
+ 
+@@ -730,22 +748,22 @@ class TestAudioUtils: public QObject
+         int val2 = AudioOutputUtil::fromFloat(FORMAT_S32, arrays2+offsetint32_t, arrayf+offsetfloat, SIZEARRAY * ISIZEOF(float));
+         QCOMPARE(val2, SIZEARRAY * ISIZEOF(int32_t));
+ 
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+0],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+1],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+2],pattern);
+-        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+3],pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-4],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-3],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-2],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-1],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+0],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+1],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+2],*(int32_t*)&pattern);
+-        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+3],*(int32_t*)&pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-4],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[offsetfloat-1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+0],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+1],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+2],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(uint32_t*)&arrayf[SIZEARRAY+offsetfloat+3],*(uint32_t*)&pattern.pattern);
++        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-4],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-3],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-2],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[offsetint32_t-1],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+0],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+1],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+2],*(int32_t*)&pattern.int32pattern);
++        QCOMPARE(*(int32_t*)&arrays2[SIZEARRAY+offsetint32_t+3],*(int32_t*)&pattern.int32pattern);
+ 
+         av_free(arrays1);
+         av_free(arrays2);

@@ -1,10 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 aes - Use the AES cryptography instruction set
 crc32 - Use the CRC32 instruction set
 edsp - Use the enhanced DSP instructions (ARMv*E and ARMv6+)
 iwmmxt - Use the iwMMXt instruction set
+iwmmxt2 - Use the iwMMXt2 instruction set
 neon - Use the NEON (ASIMD) instruction set
 sha1 - Use the SHA-1 cryptography instruction set
 sha2 - Use the SHA-2 cryptography instruction set

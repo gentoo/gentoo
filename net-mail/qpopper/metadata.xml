@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<pkgmetadata>
-  <!-- maintainer-needed -->
-  <use>
-    <flag name="apop">Enables the pop.auth file in /etc/pop.auth</flag>
-    <flag name="mailbox">Enables mail spool file is in home directory ~/Mailbox</flag>
-  </use>
-</pkgmetadata>

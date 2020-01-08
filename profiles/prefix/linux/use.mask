@@ -1,7 +1,7 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michael Haubenwallner <haubi@gentoo.org> (19 Apr 2016)
+# Michael Haubenwallner <haubi@gentoo.org> (2016-04-19)
 # Unmask the linux-glibc combo, or we get bug#574822.
 -elibc_glibc
 -kernel_linux

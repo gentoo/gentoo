@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit haskell-cabal
 
 DESCRIPTION="A variety of alternative parser combinator libraries"
 HOMEPAGE="http://code.haskell.org/~malcolm/polyparse/"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"

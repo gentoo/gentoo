@@ -6,10 +6,6 @@
 		<name>Alexis Ballier</name>
 	</maintainer>
 	<maintainer type="project">
-		<email>bsd@gentoo.org</email>
-		<name>BSD Project</name>
-	</maintainer>
-	<maintainer type="project">
 		<email>llvm@gentoo.org</email>
 		<name>LLVM Project</name>
 	</maintainer>

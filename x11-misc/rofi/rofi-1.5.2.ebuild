@@ -5,13 +5,14 @@ EAPI=7
 inherit autotools toolchain-funcs
 
 DESCRIPTION="A window switcher, run dialog and dmenu replacement"
-HOMEPAGE="https://github.com/DaveDavenport/rofi/"
+HOMEPAGE="https://github.com/davatorium/rofi"
 SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 ~arm64 x86"
 IUSE="test windowmode"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/glib:2

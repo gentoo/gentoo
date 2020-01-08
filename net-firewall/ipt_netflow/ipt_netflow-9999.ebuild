@@ -25,39 +25,48 @@ DEPEND="${RDEPEND}
 	virtual/linux-sources
 	virtual/pkgconfig
 "
-
-# set S before MODULE_NAMES
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
+	"${FILESDIR}/${PN}-9999-flags.patch"
 )
 
 pkg_setup() {
+	linux-info_pkg_setup
+
+	local CONFIG_CHECK="~IP_NF_IPTABLES VLAN_8021Q"
+	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
+	if use natevents; then
+		CONFIG_CHECK+=" NF_CONNTRACK_EVENTS"
+		if kernel_is lt 5 2; then
+			CONFIG_CHECK+=" NF_NAT_NEEDED"
+		else
+			CONFIG_CHECK+=" NF_NAT"
+		fi
+	fi
+
 	BUILD_TARGETS="all"
 	MODULE_NAMES="ipt_NETFLOW(ipt_netflow:${S})"
 	IPT_LIB="/usr/$(get_libdir)/xtables"
-	local CONFIG_CHECK="~IP_NF_IPTABLES"
-	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
-	use natevents && CONFIG_CHECK+=" NF_CONNTRACK_EVENTS NF_NAT_NEEDED"
+
 	linux-mod_pkg_setup
 }
 
 src_prepare() {
-	sed -i \
-		-e 's:make -C:$(MAKE) -C:g' \
-		-e 's:gcc -O2:$(CC) $(CFLAGS) $(LDFLAGS):' \
-		-e 's:gcc:$(CC) $(CFLAGS) $(LDFLAGS):' \
-		Makefile.in || die
+	default
 
 	# Fix incorrect module version in sources
-	sed -i -e "/IPT_NETFLOW_VERSION/s/2.2/${PV}/" ipt_NETFLOW.c || die
+	sed -i \
+		-e '/IPT_NETFLOW_VERSION/s#"[0-9.]*"#"'${PV}'"#' \
+		ipt_NETFLOW.c || die
 
 	# Checking for directory is enough
-	sed -i -e 's:-s /etc/snmp/snmpd.conf:-d /etc/snmp:' configure || die
-
-	default
+	sed -i \
+		-e 's:-s /etc/snmp/snmpd.conf:-d /etc/snmp:' \
+		configure || die
 }
 
 do_conf() {
+	tc-export CC
 	echo ./configure $*
 	./configure $* ${EXTRA_ECONF} || die 'configure failed'
 }

@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Attic/LibUnique"
 
 LICENSE="LGPL-2.1"
 SLOT="3"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="debug +introspection"
 
 RDEPEND="
@@ -42,5 +42,5 @@ src_configure() {
 src_test() {
 	cd "${S}/tests"
 	cp "${FILESDIR}/run-tests" . || die "Unable to cp \${FILESDIR}/run-tests"
-	virtx emake -f run-tests || die "Tests failed"
+	virtx emake -f run-tests
 }

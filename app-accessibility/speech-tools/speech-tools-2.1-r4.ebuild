@@ -15,7 +15,7 @@ SRC_URI="http://www.festvox.org/packed/festival/${PV}/${MY_P}-release.tar.gz
 
 LICENSE="FESTIVAL HPND BSD rc regexp-UofT"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="nas X"
 
 RDEPEND="

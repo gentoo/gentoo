@@ -1,15 +1,14 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit prefix eutils versionator toolchain-funcs flag-o-matic gnuconfig \
+inherit prefix eutils toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
-RESTRICT="strip" # Strip ourself #46186
 SLOT="2.2"
 
 EMULTILIB_PKG="true"
@@ -18,7 +17,7 @@ if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
-	KEYWORDS=""
+	KEYWORDS="~amd64"
 	SRC_URI="mirror://gnu/glibc/${P}.tar.xz"
 fi
 
@@ -32,7 +31,7 @@ PATCH_VER=9
 SRC_URI+=" https://dev.gentoo.org/~dilfridge/distfiles/${P}-patches-${PATCH_VER}.tar.bz2"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-${GCC_BOOTSTRAP_VER}-multilib-bootstrap.tar.bz2 )"
 
-IUSE="audit caps compile-locales debug doc gd hardened headers-only multilib nscd profile selinux suid systemtap vanilla"
+IUSE="audit caps compile-locales debug doc gd headers-only multilib nscd profile selinux suid systemtap vanilla"
 
 # Minimum kernel version that glibc requires
 # hppa requires 2.6.20
@@ -60,6 +59,28 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 	fi
 fi
 
+# Note [Disable automatic stripping]
+# Disabling automatic stripping for a few reasons:
+# - portage's attempt to strip breaks non-native binaries at least on
+#   arm: bug #697428
+# - portage's attempt to strip libpthread.so.0 breaks gdb thread
+#   enumeration: bug #697910. This is quite subtle:
+#   * gdb uses glibc's libthread_db-1.0.so to enumerate threads.
+#   * libthread_db-1.0.so needs access to libpthread.so.0 local symbols
+#     via 'ps_pglobal_lookup' symbol defined in gdb.
+#   * 'ps_pglobal_lookup' uses '.symtab' section table to resolve all
+#     known symbols in 'libpthread.so.0'. Specifically 'nptl_version'
+#     (unexported) is used to sanity check compatibility before enabling
+#     debugging.
+#     Also see https://sourceware.org/gdb/wiki/FAQ#GDB_does_not_see_any_threads_besides_the_one_in_which_crash_occurred.3B_or_SIGTRAP_kills_my_program_when_I_set_a_breakpoint
+#   * normal 'strip' command trims '.symtab'
+#   Thus our main goal here is to prevent 'libpthread.so.0' from
+#   losing it's '.symtab' entries.
+# As Gentoo's strip does not allow us to pass less aggressive stripping
+# options and does not check the machine target we disable stripping
+# entirely.
+RESTRICT=strip
+
 # We need a new-enough binutils/gcc to match upstream baseline.
 # Also we need to make sure our binutils/gcc supports TLS.
 COMMON_DEPEND="
@@ -73,15 +94,11 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
-	!<sys-apps/sandbox-1.6
-	!<sys-apps/portage-2.1.2
 	!<sys-devel/bison-2.7
 	doc? ( sys-apps/texinfo )
 "
 RDEPEND="${COMMON_DEPEND}
 	sys-apps/gentoo-functions
-	!sys-kernel/ps3-sources
-	!sys-libs/nss-db
 "
 
 if [[ ${CATEGORY} == cross-* ]] ; then
@@ -255,20 +272,10 @@ setup_target_flags() {
 			sparc64-*)
 				case $(get-flag mcpu) in
 				niagara[234])
-					if version_is_at_least 2.8 ; then
-						cpu="sparc64v2"
-					elif version_is_at_least 2.4 ; then
-						cpu="sparc64v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparc64b"
-					fi
+					cpu="sparc64v2"
 					;;
 				niagara)
-					if version_is_at_least 2.4 ; then
-						cpu="sparc64v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparc64b"
-					fi
+					cpu="sparc64v"
 					;;
 				ultrasparc3)
 					cpu="sparc64b"
@@ -284,24 +291,10 @@ setup_target_flags() {
 			sparc-*)
 				case $(get-flag mcpu) in
 				niagara[234])
-					if version_is_at_least 2.8 ; then
-						cpu="sparcv9v2"
-					elif version_is_at_least 2.4 ; then
-						cpu="sparcv9v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
+					cpu="sparcv9v2"
 					;;
 				niagara)
-					if version_is_at_least 2.4 ; then
-						cpu="sparcv9v"
-					elif version_is_at_least 2.2.3 ; then
-						cpu="sparcv9b"
-					else
-						cpu="sparcv9"
-					fi
+					cpu="sparcv9v"
 					;;
 				ultrasparc3)
 					cpu="sparcv9b"
@@ -368,21 +361,6 @@ setup_flags() {
 
 	filter-flags '-fstack-protector*'
 	append-flags '-fno-stack-protector'
-
-	# Starting with gcc-6 (and fully upstreamed pie patches) we control
-	# default enabled/disabled pie via use flags. So nothing to do
-	# here then. #618160
-	if [[ $(gcc-major-version) -lt 6 ]]; then
-		if use hardened && tc-enables-pie ; then
-			# Force PIC macro definition for all compilations since they're all
-			# either -fPIC or -fPIE with the default-PIE compiler.
-			append-cppflags -DPIC
-		else
-			# Don't build -fPIE without the default-PIE compiler and the
-			# hardened-pie patch
-			filter-flags -fPIE
-		fi
-	fi
 }
 
 want_tls() {
@@ -410,25 +388,6 @@ want__thread() {
 	WANT__THREAD=$?
 
 	return ${WANT__THREAD}
-}
-
-use_multiarch() {
-	# Make sure binutils is new enough to support indirect functions,
-	# #336792. This funky sed supports gold and bfd linkers.
-	local bver nver
-	bver=$($(tc-getLD ${CTARGET}) -v | sed -n -r '1{s:[^0-9]*::;s:^([0-9.]*).*:\1:;p}')
-	case $(tc-arch ${CTARGET}) in
-	amd64|x86) nver="2.20" ;;
-	arm)       nver="2.22" ;;
-	hppa)      nver="2.23" ;;
-	ppc|ppc64) nver="2.20" ;;
-	# ifunc support was added in 2.23, but glibc also needs
-	# machinemode which is in 2.24.
-	s390)      nver="2.24" ;;
-	sparc)     nver="2.21" ;;
-	*)         return 1 ;;
-	esac
-	version_is_at_least ${nver} ${bver}
 }
 
 # Setup toolchain variables that had historically been defined in the
@@ -598,7 +557,7 @@ sanity_prechecks() {
 		if has_version ">${CATEGORY}/${P}-r10000" ; then
 			eerror "Sanity check to keep you from breaking your system:"
 			eerror " Downgrading glibc is not supported and a sure way to destruction."
-			die "Aborting to save your system."
+			[[ ${I_ALLOW_TO_BREAK_MY_SYSTEM} = yes ]] || die "Aborting to save your system."
 		fi
 
 		if ! do_run_test '#include <unistd.h>\n#include <sys/syscall.h>\nint main(){return syscall(1000)!=-1;}\n' ; then
@@ -757,6 +716,9 @@ src_prepare() {
 
 	gnuconfig_update
 
+	eapply "${FILESDIR}"/2.19/glibc-2.19-kernel-2.6.16-compat.patch
+	eapply "${FILESDIR}"/2.19/glibc-2.19-kernel-2.6.16-hide-pipe2.patch
+
 	cd "${WORKDIR}"
 	find . -name configure -exec touch {} +
 
@@ -764,25 +726,6 @@ src_prepare() {
 
 	# Fix permissions on some of the scripts.
 	chmod u+x "${S}"/scripts/*.sh
-
-	cd "${S}"
-
-	if use hardened ; then
-		# We don't enable these for non-hardened as the output is very terse --
-		# it only states that a crash happened.  The default upstream behavior
-		# includes backtraces and symbols.
-		einfo "Installing Hardened Gentoo SSP and FORTIFY_SOURCE handler"
-		cp "${FILESDIR}"/2.20/glibc-2.20-gentoo-stack_chk_fail.c debug/stack_chk_fail.c || die
-		cp "${FILESDIR}"/2.25/glibc-2.25-gentoo-chk_fail.c debug/chk_fail.c || die
-
-		if use debug ; then
-			# Allow SIGABRT to dump core on non-hardened systems, or when debug is requested.
-			sed -i \
-				-e '/^CFLAGS-backtrace.c/ iCPPFLAGS-stack_chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
-				-e '/^CFLAGS-backtrace.c/ iCPPFLAGS-chk_fail.c = -DSSP_SMASH_DUMPS_CORE' \
-				debug/Makefile || die
-		fi
-	fi
 }
 
 glibc_do_configure() {
@@ -892,7 +835,6 @@ glibc_do_configure() {
 		--libexecdir='$(libdir)'/misc/glibc
 		--with-bugurl=https://bugs.gentoo.org/
 		--with-pkgversion="$(glibc_banner)"
-		$(use_multiarch || echo --disable-multi-arch)
 		$(use_enable systemtap)
 		$(use_enable nscd)
 		${EXTRA_ECONF}
@@ -1042,7 +984,7 @@ src_configure() {
 }
 
 do_src_compile() {
-	emake -C "$(builddir nptl)" || die "make nptl for ${ABI} failed"
+	emake -C "$(builddir nptl)"
 }
 
 src_compile() {
@@ -1091,7 +1033,7 @@ glibc_do_src_install() {
 	local builddir=$(builddir nptl)
 	cd "${builddir}"
 
-	emake install_root="${D}$(alt_prefix)" install || die
+	emake install_root="${D}$(alt_prefix)" install
 
 	# This version (2.26) provides some compatibility libraries for the NIS/NIS+ support
 	# which come without headers etc. Only needed for binary packages since the
@@ -1273,23 +1215,6 @@ glibc_headers_install() {
 	dosym usr/include $(alt_prefix)/sys-include
 }
 
-src_strip() {
-	# gdb is lame and requires some debugging information to remain in
-	# libpthread, so we need to strip it by hand.  libthread_db makes no
-	# sense stripped as it is only used when debugging.
-	local pthread=$(has splitdebug ${FEATURES} && echo "libthread_db" || echo "lib{pthread,thread_db}")
-	env \
-		-uRESTRICT \
-		CHOST=${CTARGET} \
-		STRIP_MASK="/*/{,tls/}${pthread}*" \
-		prepallstrip
-	# if user has stripping enabled and does not have split debug turned on,
-	# then leave the debugging sections in libpthread.
-	if ! has nostrip ${FEATURES} && ! has splitdebug ${FEATURES} ; then
-		${STRIP:-${CTARGET}-strip} --strip-debug "${ED}"/*/libpthread-*.so
-	fi
-}
-
 src_install() {
 	if just_headers ; then
 		export ABI=default
@@ -1298,7 +1223,6 @@ src_install() {
 	fi
 
 	foreach_abi glibc_do_src_install
-	src_strip
 }
 
 # Simple test to make sure our new glibc isn't completely broken.

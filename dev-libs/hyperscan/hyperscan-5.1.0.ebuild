@@ -23,9 +23,10 @@ RDEPEND="
 	>=dev-libs/boost-1.57:=
 	net-libs/libpcap"
 
-DEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}"
 
-REQUIRED_USE="cpu_flags_x86_ssse3"
+REQUIRED_USE="cpu_flags_x86_ssse3
+	${PYTHON_REQUIRED_USE}"
 
 src_configure() {
 	local mycmakeargs=(

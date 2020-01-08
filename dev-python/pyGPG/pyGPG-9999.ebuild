@@ -1,34 +1,32 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI=7
 
-PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-EGIT_BRANCH="master"
+inherit distutils-r1
 
-inherit distutils-r1 python-r1 git-2
-
-EGIT_REPO_URI="https://github.com/dol-sen/pyGPG.git"
+if [[ ${PV} == *9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/dol-sen/pyGPG.git"
+	EGIT_BRANCH="master"
+else
+	SRC_URI="https://dev.gentoo.org/~dolsen/releases/pyGPG/${P}.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+fi
 
 DESCRIPTION="A python interface wrapper for gnupg's gpg command"
 HOMEPAGE="https://github.com/dol-sen/pyGPG"
-SRC_URI=""
 
 LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-KEYWORDS=""
-
 DEPEND=""
 RDEPEND="${DEPEND}
 	app-crypt/gnupg
 	"
-
-python_install_all() {
-	distutils-r1_python_install_all
-}
 
 pkg_postinst() {
 	einfo

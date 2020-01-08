@@ -56,12 +56,12 @@ if [[ ${GNOME_ORG_MODULE} != "gnome-python" ]]; then
 	DOCS="${DOCS} MAINTAINERS"
 fi
 
-RDEPEND="~dev-python/${GNOME_ORG_MODULE}-base-${PV}
+RDEPEND="~dev-python/${GNOME_ORG_MODULE}-base-${PV}[${PYTHON_USEDEP}]
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-REQUIRED_USE=${PYTHON_REQUIRED_USE}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 gnome-python-common-r1_src_prepare() {
 	gnome2_src_prepare

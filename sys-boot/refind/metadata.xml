@@ -1,10 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>wraeth@gentoo.org</email>
-		<name>Sam Jorna</name>
-	</maintainer>
 	<maintainer type="person">
 		<email>sveyret@gmail.com</email>
 		<name>Stéphane Veyret</name>

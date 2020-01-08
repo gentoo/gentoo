@@ -1,0 +1,31 @@
+From 706b6aad06a112f55105f08b6acd130b276a06ca Mon Sep 17 00:00:00 2001
+From: William Breathitt Gray <vilhelm.gray@gmail.com>
+Date: Sat, 16 Nov 2019 13:14:24 -0500
+Subject: [PATCH] Fix find_path for newer jsoncpp installations
+
+The upstream JsonCpp project has renamed the `json/features.h` file to
+`json/json_features.h`. This patch fixes the JsonCpp installation search
+by looking for `json/allocator.h` which has not been renamed on newer
+versions of JsonCpp.
+
+Fixes: https://github.com/minetest/minetest/issues/9119
+---
+ cmake/Modules/FindJson.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/Modules/FindJson.cmake b/cmake/Modules/FindJson.cmake
+index 26339a29..53ddf459 100644
+--- a/cmake/Modules/FindJson.cmake
++++ b/cmake/Modules/FindJson.cmake
+@@ -8,7 +8,7 @@ option(ENABLE_SYSTEM_JSONCPP "Enable using a system-wide JSONCPP.  May cause seg
+ 
+ if(ENABLE_SYSTEM_JSONCPP)
+ 	find_library(JSON_LIBRARY NAMES jsoncpp)
+-	find_path(JSON_INCLUDE_DIR json/features.h PATH_SUFFIXES jsoncpp)
++	find_path(JSON_INCLUDE_DIR json/allocator.h PATH_SUFFIXES jsoncpp)
+ 
+ 	include(FindPackageHandleStandardArgs)
+ 	find_package_handle_standard_args(JSONCPP DEFAULT_MSG JSON_LIBRARY JSON_INCLUDE_DIR)
+-- 
+2.24.0
+

@@ -13,7 +13,7 @@ HOMEPAGE="https://www.mono-project.com/archived/gtkglarea/"
 
 LICENSE="LGPL-2+ GPL-2+" # examples are GPL-2+, library is LGPL-2+
 SLOT="2"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="examples"
 
 RDEPEND=">=x11-libs/gtk+-2.0.3:2
@@ -41,6 +41,6 @@ src_install() {
 	if use examples; then
 		cd "${S}"/examples
 		insinto /usr/share/doc/${PF}/examples
-		doins *.c *.h *.lwo README || die "doins failed"
+		doins *.c *.h *.lwo README
 	fi
 }

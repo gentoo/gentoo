@@ -1,42 +1,45 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-if [[ ${PV} == *9999 ]] ; then
-	SCM="git-2"
+inherit flag-o-matic multilib-minimal
+
+if [[ ${PV} == *9999 ]]; then
+	inherit autotools git-r3
 	EGIT_REPO_URI="https://github.com/mstorsjo/${PN}.git"
-	[[ ${PV%9999} != "" ]] && EGIT_BRANCH="release/${PV%.9999}"
-	AUTOTOOLS_AUTORECONF=yes
+else
+	SRC_URI="mirror://sourceforge/opencore-amr/${P}.tar.gz"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
-
-inherit autotools-multilib flag-o-matic ${SCM}
 
 DESCRIPTION="VisualOn AAC encoder library"
 HOMEPAGE="https://sourceforge.net/projects/opencore-amr/"
 
-if [[ ${PV} == *9999 ]] ; then
-	SRC_URI=""
-elif [[ ${PV%_p*} != ${PV} ]] ; then # Gentoo snapshot
-	SRC_URI="mirror://gentoo/${P}.tar.xz"
-else # Official release
-	SRC_URI="mirror://sourceforge/opencore-amr/${P}.tar.gz"
-fi
-
 LICENSE="Apache-2.0"
 SLOT="0"
+IUSE="cpu_flags_arm_neon examples static-libs"
 
-[[ ${PV} == *9999 ]] || \
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
-IUSE="examples static-libs cpu_flags_arm_neon"
+src_prepare() {
+	default
+	[[ ${PV} == *9999 ]] && eautoreconf
+}
 
-AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
+multilib_src_configure() {
+	if use cpu_flags_arm_neon; then
+		local -x CFLAGS="${CFLAGS}"
+		append-cflags -mfpu=neon
+	fi
 
-src_configure() {
-	use cpu_flags_arm_neon && append-flags '-mfpu=neon'
-	local myeconfargs=(
-		"$(use_enable examples example)"
-		"$(use_enable cpu_flags_arm_neon armv7neon)"
-	)
-	autotools-multilib_src_configure
+	ECONF_SOURCE="${S}" econf \
+		$(use_enable cpu_flags_arm_neon armv7neon) \
+		$(use_enable examples example) \
+		$(use_enable static-libs static)
+}
+
+multilib_src_install_all() {
+	einstalldocs
+
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
 }

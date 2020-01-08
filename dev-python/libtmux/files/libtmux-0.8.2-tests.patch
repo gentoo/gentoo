@@ -1,0 +1,47 @@
+diff --git a/tests/test_session.py b/tests/test_session.py
+index 79c9861..d83b095 100644
+--- a/tests/test_session.py
++++ b/tests/test_session.py
+@@ -131,8 +131,8 @@ def test_empty_session_option_returns_None(session):
+ 
+ 
+ def test_show_option_unknown(session):
+-    """Session.show_option raises UnknownOption for invalid option."""
+-    with pytest.raises(exc.UnknownOption):
++    """Session.show_option raises InvalidOption for invalid option."""
++    with pytest.raises(exc.InvalidOption):
+         session.show_option('moooz')
+ 
+ 
+@@ -149,12 +149,12 @@ def test_set_option_ambigous(session):
+ 
+ 
+ def test_set_option_invalid(session):
+-    """Session.set_option raises UnknownOption for invalid option."""
++    """Session.set_option raises InvalidOption for invalid option."""
+     if has_gte_version('2.4'):
+         with pytest.raises(exc.InvalidOption):
+             session.set_option('afewewfew', 43)
+     else:
+-        with pytest.raises(exc.UnknownOption):
++        with pytest.raises(exc.InvalidOption):
+             session.set_option('afewewfew', 43)
+ 
+ 
+diff --git a/tests/test_window.py b/tests/test_window.py
+index 5d0a674..896fadf 100644
+--- a/tests/test_window.py
++++ b/tests/test_window.py
+@@ -210,10 +210,10 @@ def test_show_window_option(session):
+ 
+ 
+ def test_show_window_option_unknown(session):
+-    """Window.show_window_option raises UnknownOption for bad option key."""
++    """Window.show_window_option raises InvalidOption for bad option key."""
+     window = session.new_window(window_name='test_window')
+ 
+-    with pytest.raises(exc.UnknownOption):
++    with pytest.raises(exc.InvalidOption):
+         window.show_window_option('moooz')
+ 
+ 

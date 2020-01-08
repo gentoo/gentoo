@@ -9,6 +9,6 @@
 		<flag name="lv2">Add support for Ladspa V2</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">yoshimi</remote-id>
+		<remote-id type="github">Yoshimi/yoshimi</remote-id>
 	</upstream>
 </pkgmetadata>

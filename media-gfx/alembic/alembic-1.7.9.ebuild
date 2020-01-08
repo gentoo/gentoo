@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,11 +14,9 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="BSD"
 
 SLOT="0"
-# TODO: ~x86 currently depends on new =dev-python/pyilmbase-2.3.0 which has
-# ~x86 keyword. As soon as it's updated in the tree, the keyword can be
-# added here.
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="arnold +boost doc examples hdf5 maya prman python test zlib"
+RESTRICT="!test? ( test )"
 
 # pyalembic python bindings need boost
 REQUIRED_USE="
@@ -49,6 +47,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-prman.patch"
 	"${FILESDIR}/${P}-fix-python-import.patch"
 	"${FILESDIR}/${P}-find-pyilmbase-python-module.patch"
+	"${FILESDIR}/${P}-find-boost-python-for-cmake-ge-3.11.patch"
+	"${FILESDIR}/${P}-fix-boost-python-naming.patch"
 )
 
 src_configure() {

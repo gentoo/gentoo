@@ -1,0 +1,83 @@
+From 9d29c28941ca629e223d0d4f20a833f10375d331 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Thu, 5 Dec 2019 10:28:40 -0500
+Subject: [PATCH 2/3] Add support for SRV records.
+
+There is a patch for djbdns that adds support for SRV records to both
+tinydns-data and axfr-get:
+
+  From: Michael Handler <handler@sub-rosa.com>
+  To: dns@list.cr.yp.to
+  Subject: tinydns-data SRV & axfr-get SRV/PTR patches
+  Date: Thu, 14 Sep 2000 20:37:50 -040
+
+Many distributions carry the patch, but valtz rejects the SRV records
+because it doesn't recognize the "S" indicator or know how to validate
+the port, weight, or priority fields.
+
+This commit adds support for the new record type, and adds validation
+routines for the three new fields. All of them are the same: ports,
+weights, and priorities are all integers between 0 and 65536.
+---
+ valtz | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
+ mode change 100644 => 100755 valtz
+
+diff --git a/valtz b/valtz
+old mode 100644
+new mode 100755
+index eebda76..92aaa40
+--- a/valtz
++++ b/valtz
+@@ -100,6 +100,9 @@ my %token_name = (
+     'min' => 'Minimum time',
+     'n' => 'Record type number',
+     'rdata' => 'Resource data',
++    'port' => 'Port',
++    'priority' => 'Priority',
++    'weight' => 'Weight'
+ );
+ 
+ my %record_type = (
+@@ -114,6 +117,7 @@ my %record_type = (
+     "'" => 'TXT',
+     '^' => 'PTR',
+     'C' => 'CNAME',
++    'S' => 'SRV',
+     'Z' => 'SOA',
+     ':' => 'GENERIC'
+ );
+@@ -131,6 +135,8 @@ my %line_type = (
+     "'" => [ 'TXT', 'fqdn:s:ttl:timestamp:lo', 'fqdn:s' ],
+     '^' => [ 'PTR', 'fqdn:p:ttl:timestamp:lo', 'fqdn:p' ],
+     'C' => [ 'CNAME', 'fqdn:p:ttl:timestamp:lo', 'fqdn:p' ],
++    'S' => [ 'SRV', 'fqdn:ip:x:port:weight:priority:ttl:timestamp:lo',
++	     'fqdn:x:port' ],
+     'Z' => [ 'SOA', 'fqdn:mname:rname:ser:ref:ret:exp:min:ttl:timestamp:lo',
+             'fqdn:mname:rname' ],
+     ':' => [ 'GENERIC', 'fqdn:n:rdata:ttl:timestamp:lo', 'fqdn:n:rdata' ]
+@@ -340,6 +346,21 @@ my %token_validator = (
+         # TODO : Validation needed? 
+         my $result = 0;
+         return $result;
++     }],
++    'port' => [ 21, sub {
++        my ($type, $s) = @_;
++        my $result = validate_integer($s, 65536);
++        return $result;
++    }],
++    'priority' => [ 22, sub {
++        my ($type, $s) = @_;
++        my $result = validate_integer($s, 65536);
++        return $result;
++    }],
++    'weight' => [ 23, sub {
++        my ($type, $s) = @_;
++        my $result = validate_integer($s, 65536);
++        return $result;
+     }],
+ 
+ 
+-- 
+2.23.0
+

@@ -20,7 +20,6 @@
 		<flag name="osmesa">Build the Mesa library for off-screen rendering.</flag>
 		<flag name="pax_kernel">Enable if the user plans to run the package under a pax enabled hardened kernel</flag>
 		<flag name="pic">disable optimized assembly code that is not PIC friendly</flag>
-		<flag name="unwind">Add support for stack trace unwinding and function name resolution</flag>
 		<flag name="valgrind">Compile in valgrind memory hints</flag>
 		<flag name="vdpau">Enable the VDPAU acceleration interface for the Gallium3D Video Layer.</flag>
 		<flag name="vulkan">Enable Vulkan drivers</flag>
@@ -30,6 +29,7 @@
 		<flag name="xvmc">Enable the XvMC acceleration interface for the Gallium3D Video Layer.</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:mesa3d:mesa</remote-id>
 		<remote-id type="sourceforge">mesa3d</remote-id>
 	</upstream>
 </pkgmetadata>

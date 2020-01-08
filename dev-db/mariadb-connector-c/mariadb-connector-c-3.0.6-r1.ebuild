@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ else
 	MY_PV=${PV/_b/-b}
 	SRC_URI="https://downloads.mariadb.org/f/${MY_PN}-${PV%_beta}/${PN}-${MY_PV}-src.tar.gz?serve -> ${P}-src.tar.gz"
 	S="${WORKDIR%/}/${PN}-${MY_PV}-src"
-	KEYWORDS="amd64 arm ~arm64 hppa ia64 ppc64 s390 sparc x86"
+	KEYWORDS="amd64 arm arm64 hppa ia64 ppc64 s390 sparc x86"
 fi
 
 inherit cmake-utils multilib-minimal toolchain-funcs ${VCS_INHERIT}
@@ -29,6 +29,7 @@ LICENSE="LGPL-2.1"
 
 SLOT="0/3"
 IUSE="+curl gnutls kerberos libressl mysqlcompat +ssl static-libs test"
+RESTRICT="!test? ( test )"
 
 DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libiconv:=[${MULTILIB_USEDEP}]

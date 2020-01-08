@@ -1,0 +1,56 @@
+From 4a7739f4b6442814696bbd0706ab9a1ce1462d80 Mon Sep 17 00:00:00 2001
+From: Havard Graff <havard.graff@gmail.com>
+Date: Wed, 31 Oct 2018 10:27:23 +0100
+Subject: [PATCH] tests/uri: fix test after GHashTable changes in GLib 2.59
+
+Maybe the implementation should not be dependent on a "random" hash-table
+ordering, but at least this shows the problem clearly.
+---
+ tests/check/gst/gsturi.c | 16 +++++++++++++++-
+ 1 file changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/tests/check/gst/gsturi.c b/tests/check/gst/gsturi.c
+index ee623dbcf..fa87c7c77 100644
+--- a/tests/check/gst/gsturi.c
++++ b/tests/check/gst/gsturi.c
+@@ -414,7 +414,11 @@ static const struct URITest url_presenting_tests[] = {
+   {.uri = {"scheme", "user:pass", "host", 1234, "/path/to/dir",
+           {{"query", NULL}, {"key", "value"}}, "fragment"},
+       .str =
++#if GLIB_CHECK_VERSION(2, 59, 0)
++      "scheme://user:pass@host:1234/path/to/dir?key=value&query#fragment"},
++#else
+       "scheme://user:pass@host:1234/path/to/dir?query&key=value#fragment"},
++#endif
+ 
+   /* IPv6 literal should render in square brackets */
+   {.uri = {"scheme", "user:pass", "12:34:56:78:9a:bc:de:f0", 1234,
+@@ -977,14 +981,24 @@ GST_START_TEST (test_url_get_set)
+ 
+   fail_unless (gst_uri_set_query_value (url, "key", "value"));
+   tmp_str = gst_uri_to_string (url);
++#if GLIB_CHECK_VERSION(2, 59, 0)
++  fail_unless_equals_string (tmp_str,
++     "//example.com/path/to/file/there/segment?key=value&query#fragment");
++#else
+   fail_unless_equals_string (tmp_str,
+-      "//example.com/path/to/file/there/segment?query&key=value#fragment");
++     "//example.com/path/to/file/there/segment?query&key=value#fragment");
++#endif
+   g_free (tmp_str);
+ 
+   fail_unless (gst_uri_set_query_value (url, "key", NULL));
+   tmp_str = gst_uri_to_string (url);
++#if GLIB_CHECK_VERSION(2, 59, 0)
++  fail_unless_equals_string (tmp_str,
++      "//example.com/path/to/file/there/segment?key&query#fragment");
++#else
+   fail_unless_equals_string (tmp_str,
+       "//example.com/path/to/file/there/segment?query&key#fragment");
++#endif
+   g_free (tmp_str);
+ 
+   fail_unless (!gst_uri_set_query_value (NULL, "key", "value"));
+-- 
+2.20.1
+

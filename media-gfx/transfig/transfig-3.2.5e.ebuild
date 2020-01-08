@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/mcj/${MY_P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND="x11-libs/libXpm
@@ -81,7 +81,7 @@ src_install() {
 	newins "${WORKDIR}/${P}-gentoo-patchset/transfig-ru_RU.KOI8-R.ps" ru_RU.KOI8-R.ps
 	newins "${WORKDIR}/${P}-gentoo-patchset/transfig-uk_UA.KOI8-U.ps" uk_UA.KOI8-U.ps
 
-	dohtml "${WORKDIR}/fig2mpdf/doc/"* || die
+	dohtml "${WORKDIR}/fig2mpdf/doc/"*
 
 	mv "${ED}"/usr/bin/fig2ps2tex{.sh,} || die #338295
 

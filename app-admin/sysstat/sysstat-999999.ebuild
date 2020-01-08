@@ -1,8 +1,8 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit eutils flag-o-matic git-r3 multilib systemd toolchain-funcs
+EAPI=7
+inherit flag-o-matic git-r3 systemd toolchain-funcs
 
 DESCRIPTION="System performance tools for Linux"
 HOMEPAGE="http://pagesperso-orange.fr/sebastien.godard/"
@@ -11,11 +11,11 @@ EGIT_REPO_URI="https://github.com/sysstat/sysstat"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="debug nls lm_sensors selinux static"
+IUSE="debug nls lm-sensors selinux static"
 
 CDEPEND="
 	nls? ( virtual/libintl )
-	lm_sensors? ( sys-apps/lm_sensors:= )
+	lm-sensors? ( sys-apps/lm-sensors:= )
 "
 DEPEND="
 	${CDEPEND}
@@ -29,8 +29,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-11.0.4-cron.patch
 	"${FILESDIR}"/${PN}-11.7.3-flags.patch
 )
-
-SYSSTAT_FAKE_RC_DIR=Gentoo-does-not-use-rc.d
 
 src_prepare() {
 	if use nls; then
@@ -52,13 +50,12 @@ src_configure() {
 	tc-export AR
 	use static && append-ldflags -static
 
-	sa_lib_dir=/usr/$(get_libdir)/sa \
+	sa_lib_dir=/usr/lib/sa \
 		conf_dir=/etc \
-		rcdir=${SYSSTAT_FAKE_RC_DIR} \
 		econf \
-			$(use_enable debug debuginfo) \
-			$(use_enable lm_sensors sensors) \
+			$(use_enable lm-sensors sensors) \
 			$(use_enable nls) \
+			$(usex debug --enable-debuginfo '') \
 			--enable-copy-only \
 			--enable-documentation \
 			--enable-install-cron \
@@ -77,9 +74,8 @@ src_install() {
 
 	dodoc -r contrib/
 
-	rm -r "${D}/${SYSSTAT_FAKE_RC_DIR}" || die
 	newinitd "${FILESDIR}"/${PN}.init.d ${PN}
 	systemd_dounit ${PN}.service
 
-	rm -f "${D}"usr/share/doc/${PF}/COPYING
+	rm "${D}"/usr/share/doc/${PF}/COPYING || die
 }

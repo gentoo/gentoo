@@ -1,18 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2011-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} != 9999 ]]; then
 	MY_P=${P/_/-}
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 else
 	inherit git-r3
-	SRC_URI=""
 	EGIT_REPO_URI="https://github.com/FreeRDP/FreeRDP.git"
 fi
 
@@ -21,7 +20,8 @@ HOMEPAGE="http://www.freerdp.com/"
 
 LICENSE="Apache-2.0"
 SLOT="0/2"
-IUSE="alsa +client cups debug doc ffmpeg gstreamer jpeg libav libressl neon openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+IUSE="alsa +client cpu_flags_arm_neon cups debug doc +ffmpeg gstreamer jpeg libav libressl openh264 pulseaudio server smartcard systemd test usb wayland X xinerama xv"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
@@ -48,6 +48,9 @@ RDEPEND="
 	ffmpeg? (
 		libav? ( media-video/libav:0= )
 		!libav? ( media-video/ffmpeg:0= )
+	)
+	!ffmpeg? (
+		x11-libs/cairo:0=
 	)
 	gstreamer? (
 		media-libs/gstreamer:1.0
@@ -79,7 +82,8 @@ RDEPEND="
 		x11-libs/libxkbfile
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	client? ( X? ( doc? (
 		app-text/docbook-xml-dtd:4.1.2
@@ -89,28 +93,30 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		-DBUILD_TESTING=$(usex test)
-		-DCHANNEL_URBDRC=$(usex usb)
-		-DWITH_ALSA=$(usex alsa)
+		-DBUILD_TESTING=$(usex test ON OFF)
+		-DCHANNEL_URBDRC=$(usex usb ON OFF)
+		-DWITH_ALSA=$(usex alsa ON OFF)
 		-DWITH_CCACHE=OFF
-		-DWITH_CLIENT=$(usex client)
-		-DWITH_CUPS=$(usex cups)
-		-DWITH_DEBUG_ALL=$(usex debug)
-		-DWITH_MANPAGES=$(usex doc)
-		-DWITH_FFMPEG=$(usex ffmpeg)
-		-DWITH_DSP_FFMPEG=$(usex ffmpeg)
-		-DWITH_GSTREAMER_1_0=$(usex gstreamer)
-		-DWITH_JPEG=$(usex jpeg)
-		-DWITH_NEON=$(usex neon)
-		-DWITH_OPENH264=$(usex openh264)
-		-DWITH_PULSE=$(usex pulseaudio)
-		-DWITH_SERVER=$(usex server)
-		-DWITH_PCSC=$(usex smartcard)
-		-DWITH_LIBSYSTEMD=$(usex systemd)
-		-DWITH_X11=$(usex X)
-		-DWITH_XINERAMA=$(usex xinerama)
-		-DWITH_XV=$(usex xv)
-		-DWITH_WAYLAND=$(usex wayland)
+		-DWITH_CLIENT=$(usex client ON OFF)
+		-DWITH_CUPS=$(usex cups ON OFF)
+		-DWITH_DEBUG_ALL=$(usex debug ON OFF)
+		-DWITH_MANPAGES=$(usex doc ON OFF)
+		-DWITH_FFMPEG=$(usex ffmpeg ON OFF)
+		-DWITH_SWSCALE=$(usex ffmpeg ON OFF)
+		-DWITH_CAIRO=$(usex ffmpeg OFF ON)
+		-DWITH_DSP_FFMPEG=$(usex ffmpeg ON OFF)
+		-DWITH_GSTREAMER_1_0=$(usex gstreamer ON OFF)
+		-DWITH_JPEG=$(usex jpeg ON OFF)
+		-DWITH_NEON=$(usex cpu_flags_arm_neon ON OFF)
+		-DWITH_OPENH264=$(usex openh264 ON OFF)
+		-DWITH_PULSE=$(usex pulseaudio ON OFF)
+		-DWITH_SERVER=$(usex server ON OFF)
+		-DWITH_PCSC=$(usex smartcard ON OFF)
+		-DWITH_LIBSYSTEMD=$(usex systemd ON OFF)
+		-DWITH_X11=$(usex X ON OFF)
+		-DWITH_XINERAMA=$(usex xinerama ON OFF)
+		-DWITH_XV=$(usex xv ON OFF)
+		-DWITH_WAYLAND=$(usex wayland ON OFF)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

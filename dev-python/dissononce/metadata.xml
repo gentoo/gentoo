@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		Dissononce is a python implementation for Noise Protocol Framework.
+		A main goal of this project is to provide a simple,
+		easy to read and understand practical reference for Noise enthusiasts,
+		implementers and users.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/tgalal/dissononce/issues</bugs-to>
+		<remote-id type="github">tgalal/dissononce</remote-id>
+	</upstream>
+</pkgmetadata>

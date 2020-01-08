@@ -14,7 +14,7 @@ SRC_URI="http://www.abisource.com/downloads/${PN}/${PV}/source/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="2"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~mips x86 ~amd64-linux ~x86-linux"
 
 IUSE="calendar collab cups debug eds +goffice grammar +introspection latex map math ots +plugins readline redland spell wordperfect wmf thesaurus"
 # You need 'plugins' enabled if want to enable the extra plugins
@@ -104,6 +104,10 @@ PATCHES=(
 
 	# https://bugzilla.abisource.com/show_bug.cgi?id=13697
 	"${WORKDIR}"/${P}-patchset/${PN}-3.0.2-bool-boolean.patch
+
+	# https://gitlab.gnome.org/World/AbiWord/issues/2
+	# https://bugs.gentoo.org/690162
+	"${FILESDIR}"/${P}-extern-C-template.patch
 )
 
 src_configure() {

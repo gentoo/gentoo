@@ -2,14 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>juippis@gmail.com</email>
-  </maintainer>
-  <maintainer type="project">
-    <email>proxy-maint@gentoo.org</email>
-    <name>Proxy Maintainers</name>
+    <email>juippis@gentoo.org</email>
+    <name>Joonas Niilola</name>
   </maintainer>
   <use>
     <flag name="packagekit">Enable module for package manager integration</flag>
+    <flag name="xwayland">Enable XWayland application support</flag>
   </use>
   <longdescription>
     Enlightenment is classed as a "desktop shell" as it provides everything you need to 

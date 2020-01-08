@@ -12,7 +12,7 @@ HOMEPAGE="https://www.gtkmm.org"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.4"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~sh sparc x86"
 IUSE="doc examples"
 
 RDEPEND="
@@ -46,7 +46,7 @@ multilib_src_compile() {
 	gnome2_src_compile
 
 	if multilib_is_native_abi && use doc; then
-		emake -C "docs/reference" all || die "emake doc failed"
+		emake -C "docs/reference" all
 	fi
 }
 
@@ -54,7 +54,7 @@ multilib_src_install() {
 	gnome2_src_install
 
 	if use examples; then
-		emake -C "examples" distclean || die "examples clean up failed"
+		emake -C "examples" distclean
 	fi
 }
 
@@ -69,6 +69,6 @@ multilib_src_install_all() {
 		find "${S}/examples" -name "Makefile*" -delete \
 			|| die "examples cleanup failed"
 		insinto "/usr/share/doc/${PF}"
-		doins -r examples || die "doins failed"
+		doins -r examples
 	fi
 }

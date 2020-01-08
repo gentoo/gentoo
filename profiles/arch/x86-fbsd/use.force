@@ -1,3 +1,0 @@
-# Force the flag which corresponds to ARCH.
-x86-fbsd
-abi_x86_32

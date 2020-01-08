@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils flag-o-matic multilib multilib-minimal toolchain-funcs versionator
+EAPI=7
+
+inherit flag-o-matic multilib-minimal toolchain-funcs
 
 DESCRIPTION="Lossy speech compression library and tool"
 HOMEPAGE="https://packages.qa.debian.org/libg/libgsm.html"
@@ -10,25 +11,32 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="gsm"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86 ~amd64-fbsd ~x86-fbsd"
-IUSE=""
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 sparc x86"
 
-S=${WORKDIR}/${PN}-"$(replace_version_separator 2 '-pl' )"
+S="${WORKDIR}/${PN}-$(ver_rs 2 '-pl' )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-shared.patch
+	"${FILESDIR}"/${PN}-1.0.12-memcpy.patch
+	"${FILESDIR}"/${PN}-1.0.12-64bit.patch
+)
 
 DOCS=( ChangeLog MACHINES MANIFEST README )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-shared.patch \
-		"${FILESDIR}"/${PN}-1.0.12-memcpy.patch \
-		"${FILESDIR}"/${PN}-1.0.12-64bit.patch
+	default
+	sed -e 's/\$(GSM_INSTALL_LIB)\/libgsm.a	//g' -i Makefile || die
+
 	multilib_copy_sources
 }
 
-multilib_src_compile() {
+src_configure() {
 	# From upstream Makefile. Define this if your host multiplies
 	# floats faster than integers, e.g. on a SPARCstation.
 	use sparc && append-flags -DUSE_FLOAT_MUL -DFAST
+}
 
+multilib_src_compile() {
 	emake -j1 CCFLAGS="${CFLAGS} -c -DNeedFunctionPrototypes=1" \
 		LD="$(tc-getCC)" AR="$(tc-getAR)" CC="$(tc-getCC)"
 }
@@ -36,15 +44,15 @@ multilib_src_compile() {
 multilib_src_install() {
 	dodir /usr/bin /usr/$(get_libdir) /usr/include/gsm /usr/share/man/man{1,3}
 
-	emake -j1 INSTALL_ROOT="${D}"/usr \
+	emake -j1 INSTALL_ROOT="${ED}"/usr \
 		LD="$(tc-getCC)" AR="$(tc-getAR)" CC="$(tc-getCC)" \
-		GSM_INSTALL_LIB="${D}"/usr/$(get_libdir) \
-		GSM_INSTALL_INC="${D}"/usr/include/gsm \
-		GSM_INSTALL_MAN="${D}"/usr/share/man/man3 \
-		TOAST_INSTALL_MAN="${D}"/usr/share/man/man1 \
+		GSM_INSTALL_LIB="${ED}"/usr/$(get_libdir) \
+		GSM_INSTALL_INC="${ED}"/usr/include/gsm \
+		GSM_INSTALL_MAN="${ED}"/usr/share/man/man3 \
+		TOAST_INSTALL_MAN="${ED}"/usr/share/man/man1 \
 		install
 
-	dolib lib/libgsm.so*
+	dolib.so lib/libgsm.so*
 
 	dosym ../gsm/gsm.h /usr/include/libgsm/gsm.h
 }

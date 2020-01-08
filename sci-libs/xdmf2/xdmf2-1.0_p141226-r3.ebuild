@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ SLOT="0"
 LICENSE="VTK"
 KEYWORDS="amd64 ~arm x86 ~amd64-linux ~x86-linux"
 IUSE="doc python test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="

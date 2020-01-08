@@ -11,7 +11,7 @@ SRC_URI="http://0pointer.de/lennart/projects/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/5"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
 IUSE="doc examples static-libs"
 
 RDEPEND=""

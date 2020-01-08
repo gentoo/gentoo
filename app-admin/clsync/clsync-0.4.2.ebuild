@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -84,9 +84,9 @@ src_install() {
 	newconfd "${FILESDIR}/${PN}.confd" "${PN}"
 
 	# filter rules and sync scripts are supposed to be here
-	keepdir "${EPREFIX}/etc/${PN}"
-	insinto "/etc/${PN}"
+	insinto /etc/${PN}
 	newins "${FILESDIR}/${PN}.conf" "${PN}.conf"
+	keepdir /etc/${PN}
 }
 
 pkg_postinst() {

@@ -13,13 +13,15 @@ if [[ ${PV} == *999 ]]; then
 	EGIT_REPO_URI="https://git.pwmt.org/pwmt/${PN}.git"
 	EGIT_BRANCH="develop"
 else
-	SRC_URI="https://pwmt.org/projects/girara/download/${P}.tar.xz"
+	SRC_URI="https://github.com/pwmt/girara/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="ZLIB"
 SLOT="0"
 IUSE="doc libnotify test"
+
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/glib:2
 	 dev-libs/json-c
@@ -40,9 +42,9 @@ src_prepare() {
 
 src_configure() {
 	local emesonargs=(
-		-Denable-json=true
-		-Denable-docs=$(usex doc true false)
-		-Denable-notify=$(usex libnotify true false)
+		-Djson=enabled
+		-Ddocs=$(usex doc enabled disabled)
+		-Dnotify=$(usex libnotify enabled disabled)
 		)
 		meson_src_configure
 }

@@ -16,7 +16,7 @@ SRC_URI="https://libdnet.googlecode.com/files/${P}.tgz
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="ipv6 python static-libs test"
 
 #DEPEND="test? ( dev-libs/check )"

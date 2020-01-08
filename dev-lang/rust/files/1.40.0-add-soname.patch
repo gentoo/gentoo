@@ -1,0 +1,36 @@
+Description: Set DT_SONAME when building dylibs
+ In Rust, library filenames include a version-specific hash to help
+ the run-time linker find the correct version.  Unlike in C/C++, the
+ compiler looks for all libraries matching a glob that ignores the
+ hash and reads embedded metadata to work out versions, etc.
+ .
+ The upshot is that there is no need for the usual "libfoo.so ->
+ libfoo-1.2.3.so" symlink common with C/C++ when building with Rust,
+ and no need to communicate an alternate filename to use at run-time
+ vs compile time.  If linking to a Rust dylib from C/C++ however, a
+ "libfoo.so -> libfoo-$hash.so" symlink may well be useful and in
+ this case DT_SONAME=libfoo-$hash.so would be required.  More
+ mundanely, various tools (eg: dpkg-shlibdeps) complain if they don't
+ find DT_SONAME on shared libraries in public directories.
+ .
+ This patch passes -Wl,-soname=$outfile when building dylibs (and
+ using a GNU linker).
+Author: Angus Lees <gus@debian.org>
+Forwarded: no
+
+--- a/src/librustc_codegen_ssa/back/link.rs
++++ b/src/librustc_codegen_ssa/back/link.rs
+@@ -1034,6 +1034,13 @@
+         cmd.args(&rpath::get_rpath_flags(&mut rpath_config));
+     }
+ 
++    if (crate_type == config::CrateType::Dylib || crate_type == config::CrateType::Cdylib)
++       && t.options.linker_is_gnu {
++        let filename = String::from(out_filename.file_name().unwrap().to_str().unwrap());
++        let soname = [String::from("-Wl,-soname=") + &filename];
++        cmd.args(&soname);
++    }
++
+     // Finally add all the linker arguments provided on the command line along
+     // with any #[link_args] attributes found inside the crate
+     if let Some(ref args) = sess.opts.cg.link_args {

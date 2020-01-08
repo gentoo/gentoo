@@ -1,0 +1,161 @@
+From d72f33a14c22480b28c0f35d53293826f6ec787b Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Sat, 14 Dec 2019 19:49:09 +0100
+Subject: Port pykig to python 3
+
+Differential Revision: https://phabricator.kde.org/D25982
+---
+ pykig/pykig.py | 42 +++++++++++++++++++++---------------------
+ 1 file changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/pykig/pykig.py b/pykig/pykig.py
+index 02f637d..3ee6e97 100644
+--- a/pykig/pykig.py
++++ b/pykig/pykig.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ # -*- coding: utf-8 -*-
+ #-------------------------------python------------------------pykig.py--#
+ #                                                                       #
+@@ -170,9 +170,9 @@ class KigDocument(object):
+     self.of=of
+     try:
+       self.outfile = open(outfilename, 'w')
+-    except IOError, value:
++    except IOError as value:
+ #      print >> sys.stderr, outfilename, 'unwritable'
+-      print >> sys.stderr, value
++      print(value,  file=sys.stderr)
+       sys.exit(2)
+ #    KigOut._kigdocument=self
+     KigDOP._kd=self
+@@ -212,14 +212,14 @@ class KigDocument(object):
+       self.outfile.write(" </View>\n</KigDocument>\n")
+       if self.outfile != sys.stdout:
+         self.outfile.close()
+-    except IOError, value:
+-      print >> sys.stderr, value
++    except IOError as value:
++      print(value, file=sys.stderr)
+       sys.exit(2)
+     try:
+       if self.callkig:
+         err = os.system('kig ' + self.outfilename)
+-    except Exception, value:
+-      print >> sys.stderr, value      
++    except Exception as value:
++      print(value, file=sys.stderr)
+     if not self.of:
+       os.system('rm ' + self.outfilename)
+ 
+@@ -501,7 +501,7 @@ def databuild(nomeclasse, nomekig, v="val"):
+ 
+ for d in data:
+   p1, p2, p3 = d
+-  exec databuild(p1, p2, p3)
++  exec (databuild(p1, p2, p3))
+ 
+ #####
+ # Objects
+@@ -645,7 +645,7 @@ def objectbuild(nameclass, namekig, params, objparams):
+ 
+ for o in objects:
+   p1, p2, p3, p4 = o
+-  exec objectbuild(p1, p2, p3, p4)
++  exec (objectbuild(p1, p2, p3, p4))
+ 
+ #####
+ # Properties
+@@ -688,7 +688,7 @@ def propertybuild(nameclass, namekig, params, objparams):
+ 
+ for p in property:
+   p1, p2, p3, p4 = p
+-  exec propertybuild(p1, p2, p3, p4)
++  exec (propertybuild(p1, p2, p3, p4))
+ 
+ #####
+ # Start of properties definitions as Object's methods
+@@ -734,7 +734,7 @@ def methodsbuild(namekig):
+ 
+ for p in methods:
+   p1, p2, cl = p
+-  exec methodsbuild(p1)
++  exec (methodsbuild(p1))
+   for c in cl:
+     setattr(c, p2, method)
+ 
+@@ -743,7 +743,7 @@ for p in methods:
+ #####
+ 
+ def usage(codexit):
+-  print >> sys.stderr, """
++  print ("""
+ usage: pykig.py [options...] file ...
+ 
+ Options:
+@@ -757,7 +757,7 @@ examples:
+     $ pykig.py my_file.kpy
+     $ pykig.py -o output_file.kig my_file.kpy
+     $ ...
+-"""
++""", file=sys.stderr)
+   sys.exit(codexit)
+ 
+ #####
+@@ -776,7 +776,7 @@ def prog():
+     _opts, _args = getopt.getopt(sys.argv[1:], "hvno:",\
+                                  ["help", "version", "nokig", "output="])
+   except getopt.GetoptError:
+-    print "GetoptError"
++    print ("GetoptError")
+     usage(2)
+   _callKig=True
+   _of=False
+@@ -784,7 +784,7 @@ def prog():
+     if _opt in ("-h", "--help"):
+       usage(0)
+     if _opt in ("-v", "--version"):
+-      print "Version:", version
++      print ("Version:", version)
+       sys.exit(0)
+     if _opt in ("-n", "--nokig"):
+       _callKig=False
+@@ -793,19 +793,19 @@ def prog():
+       _of=True
+       _callKig=False   # if there's an output file, don't call Kig
+   if len(_args)==0:
+-    _infilename=raw_input("Input file name: ")
++    _infilename=input("Input file name: ")
+     if not _infilename:
+-      print "No input file name."
++      print ("No input file name.")
+       usage(2)
+   elif len(_args)==1:
+     _infilename=_args[0]
+   else:
+-    print "No input file name."
++    print ("No input file name.")
+     usage(2)
+   try:
+     _infile = open(_infilename, 'r')
+   except:
+-    print >> sys.stderr, _infilename, "input file can't be read."
++    print (_infilename, "input file can't be read.", file=sys.stderr)
+     sys.exit(2)
+   if _of:
+     if _outfilename=="-":
+@@ -817,9 +817,9 @@ def prog():
+   kigdocument=KigDocument(_outfilename, _callKig, _of)
+   kd=kigdocument
+   try:
+-    execfile(_infilename, globals())
++    exec(open(_infilename).read(), globals())
+   except:
+-    print >> sys.stderr, 'Syntax error in', _infilename
++    print ('Syntax error in', _infilename, file=sys.stderr)
+     _info = sys.exc_info()    # print out the traceback
+     traceback.print_exc()
+     sys.exit(3)
+-- 
+cgit v1.1

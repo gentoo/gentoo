@@ -15,6 +15,7 @@ LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc +mysql readline +signer sqlite test ${PKCS11_IUSE}"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-lang/perl

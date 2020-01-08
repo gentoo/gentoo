@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils virtualx
+inherit cmake virtualx
 
 DESCRIPTION="A Qt implementation of XDG standards"
 HOMEPAGE="https://lxqt.org/"
@@ -13,12 +13,13 @@ if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
 else
 	SRC_URI="https://downloads.lxqt.org/downloads/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="LGPL-2.1+ Nokia-Qt-LGPL-Exception-1.1"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	>=dev-util/lxqt-build-tools-0.6.0
@@ -41,10 +42,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
 	# Tests don't work with C
-	LC_ALL=en_US.utf8 virtx cmake-utils_src_test
+	LC_ALL=en_US.utf8 virtx cmake_src_test
 }

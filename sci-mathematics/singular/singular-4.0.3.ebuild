@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,7 @@ IUSE="boost doc emacs examples python +readline"
 
 RDEPEND="dev-libs/gmp:0
 	>=dev-libs/ntl-5.5.1
-	emacs? ( >=virtual/emacs-22 )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	sci-mathematics/flint
 	sci-mathematics/4ti2
 	sci-libs/cddlib"
@@ -42,11 +42,6 @@ pkg_setup() {
 	append-flags "-fPIC"
 	append-ldflags "-fPIC"
 	tc-export AR CC CPP CXX
-
-	# Ensure that >=emacs-22 is selected
-	if use emacs; then
-		elisp-need-emacs 22 || die "Emacs version too low"
-	fi
 }
 
 src_prepare () {
@@ -74,7 +69,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die "emake failed"
+	emake
 
 	if use emacs; then
 		cd "${S}"/emacs/

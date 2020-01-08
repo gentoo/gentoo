@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2018-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/Haivision/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ppc ppc64 -sparc x86 ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
 LICENSE="LGPL-2.1"
@@ -21,7 +21,10 @@ SLOT="0"
 IUSE="gnutls libressl"
 
 DEPEND="
-	gnutls? ( net-libs/gnutls:=[${MULTILIB_USEDEP}] )
+	gnutls? (
+		dev-libs/nettle:0=[${MULTILIB_USEDEP}]
+		net-libs/gnutls:0=[${MULTILIB_USEDEP}]
+	)
 	!gnutls? (
 		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 		libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )

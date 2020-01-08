@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -51,6 +51,19 @@ src_prepare() {
 	if ! use examples ; then
 		sed -i -e 's/\texamples$//' Makefile.in || die
 	fi
+
+	# add missing GIO_LIB Bug #684870
+	sed -i -e 's/gsymcheck_LDFLAGS =/gsymcheck_LDFLAGS = $(GIO_LIBS)/' \
+		gsymcheck/src/Makefile.am || die
+
+	sed -i -e 's/gnetlist_LDFLAGS =/gnetlist_LDFLAGS = $(GIO_LIBS)/' \
+		gnetlist/src/Makefile.am || die
+
+	sed -i -e 's/gschlas_LDFLAGS =/gschlas_LDFLAGS = $(GIO_LIBS)/' \
+		utils/gschlas/Makefile.am || die
+
+	sed -i -e 's/sarlacc_schem_LDFLAGS =/sarlacc_schem_LDFLAGS = $(GIO_LIBS)/' \
+		contrib/sarlacc_schem/Makefile.am || die
 
 	eautoreconf
 }

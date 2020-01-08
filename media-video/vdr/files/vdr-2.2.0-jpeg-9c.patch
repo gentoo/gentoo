@@ -1,0 +1,36 @@
+https://bugs.gentoo.org/667934
+
+Signed-off-by: Martin Dummer <martin.dummer@gmx.net>
+Reviewed-by: Joerg Bornkessel <hd_brummy@gentoo.org>
+--- a/tools.c
++++ b/tools.c
+@@ -1221,15 +1221,15 @@
+         }
+      else {
+         esyslog("ERROR: out of memory");
+-        return false;
++        return FALSE;
+         }
+      if (jcd->mem) {
+         cinfo->dest->next_output_byte = jcd->mem + Used;
+         cinfo->dest->free_in_buffer = jcd->size - Used;
+-        return true;
++        return TRUE;
+         }
+      }
+-  return false;
++  return FALSE;
+ }
+ 
+ static void JpegCompressTermDestination(j_compress_ptr cinfo)
+@@ -1274,8 +1274,8 @@
+   cinfo.in_color_space = JCS_RGB;
+ 
+   jpeg_set_defaults(&cinfo);
+-  jpeg_set_quality(&cinfo, Quality, true);
+-  jpeg_start_compress(&cinfo, true);
++  jpeg_set_quality(&cinfo, Quality, TRUE);
++  jpeg_start_compress(&cinfo, TRUE);
+ 
+   int rs = Width * 3;
+   JSAMPROW rp[Height];

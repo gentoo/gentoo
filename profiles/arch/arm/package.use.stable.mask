@@ -1,146 +1,152 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-02)
+# media-video/pipewire is not stable yet
+dev-libs/weston pipewire
+kde-apps/krfb wayland
+kde-plasma/xdg-desktop-portal-kde screencast
+sys-apps/xdg-desktop-portal screencast
+x11-wm/mutter screencast
+
+# Michał Górny <mgorny@gentoo.org> (2019-09-08)
+# virtual/jdk is not stable here.
+sci-mathematics/z3 java
+
+# Mart Raudsepp <leio@gentoo.org> (2019-08-27)
+# Missing stable net-libs/webkit-gtk
+dev-util/glade webkit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
 # Needs kde-frameworks/{kwallet,ki18n,kconfig} stable
 dev-vcs/subversion kwallet
 net-libs/libproxy kde
 
-# Andreas Sturmlechner <asturm@gentoo.org> (10 Feb 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-10)
 # Needs kde-plasma/{polkit-kde-agent,plasma-workspace stable
 sys-auth/polkit kde
 virtual/notification-daemon kde
 
-# Andreas Sturmlechner <asturm@gentoo.org> (04 Nov 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-11-04)
 # media-libs/libmtp stabilisation timeout, bug #661162
 gnome-base/gvfs mtp
 
-# Ulrich Müller <ulm@gentoo.org> (09 Aug 2018)
+# Ulrich Müller <ulm@gentoo.org> (2018-08-09)
 # Needs net-libs/webkit-gtk which is not stable, bug #663248
 app-editors/emacs xwidgets
 
-# Mikle Kolyada <zlogene@gentoo.org> (16 Jul 2018)
+# Mikle Kolyada <zlogene@gentoo.org> (2018-07-16)
 # No stable qtnetwork
 net-irc/znc test
 
-# Akinori Hattori <hattya@gentoo.org> (23 Jun 2018)
+# Akinori Hattori <hattya@gentoo.org> (2018-06-23)
 # No stable Java
 dev-db/qdbm java
 
-# Pacho Ramos <pacho@gentoo.org> (28 May 2018)
+# Pacho Ramos <pacho@gentoo.org> (2018-05-28)
 # Don't rely on stable inkscape
 app-text/dblatex inkscape
 
-# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
 # Requires not stabilised dev-python/restkit
 dev-python/wsgiproxy2 test
 dev-python/pyquery test
 
-# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
-# Requires not stabilised Qt5
-app-i18n/ibus kde
-dev-qt/qtchooser test
-
-# Andreas Sturmlechner <asturm@gentoo.org> (07 May 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-07)
 # Requires not stabilised dev-python/matplotlib
 dev-python/numpydoc test
 dev-python/ipython matplotlib
 
-# Andreas Sturmlechner <asturm@gentoo.org> (25 Jan 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-01-25)
 # Requires not stabilised app-text/libexttextcat, bug #637086
 net-mail/dovecot textcat
 
-# Brian Evans <grknight@gentoo.org> (9 Jun 2017)
+# Brian Evans <grknight@gentoo.org> (2017-06-09)
 # sys-cluster/galera needs additional deps stable
 dev-db/mariadb galera
 
-# Alexis Ballier <aballier@gentoo.org> (30 May 2017)
+# Alexis Ballier <aballier@gentoo.org> (2017-05-30)
 # No stable fluidsynth yet
 media-libs/sdl-mixer fluidsynth
 media-sound/mpd fluidsynth
 
-# Alexis Ballier <aballier@gentoo.org> (29 May 2017)
+# Alexis Ballier <aballier@gentoo.org> (2017-05-29)
 # frei0r-plugins is not stable yet, mask it on stable versions
 <media-video/libav-13 frei0r
-<=media-video/ffmpeg-3.4.5 frei0r sofalizer
+<=media-video/ffmpeg-4.1.3 frei0r
 
-# Alexis Ballier <aballier@gentoo.org> (18 Apr 2017)
-# No gst-plugins-vp8:0.10, gst-plugins-musepack:0.10 stable
-media-plugins/gst-plugins-meta:0.10 musepack vpx
-
-# Michael Weber <xmw@gentoo.org> (1 Apr 2017)
+# Michael Weber <xmw@gentoo.org> (2017-04-01)
 # no stable jdk
 media-libs/libbluray java
 
-# Thomas Deutschmann <whissi@gentoo.org> (20 Mar 2017)
+# Thomas Deutschmann <whissi@gentoo.org> (2017-03-20)
 # Requires dev-java/java-config and deps which is not stable on arm
 # Requires app-emulation/xen-tools which is not stable on arm
 app-metrics/collectd collectd_plugins_java collectd_plugins_xencpu
 
-# Michael Palimaka <kensington@gentoo.org> (19 Mar 2017)
+# Michael Palimaka <kensington@gentoo.org> (2017-03-19)
 # Required media-plugins/gst-plugins-x264 is not stable
 media-plugins/gst-plugins-meta x264
 
-# Michael Weber <xmw@gentoo.org> (01 Mar 2017)
+# Michael Weber <xmw@gentoo.org> (2017-03-01)
 # Mask until >sys-cluster/ceph-0.94 goes stable
 net-analyzer/rrdtool rados
 
-# Michael Weber <xmw@gentoo.org> (27 Feb 2017)
+# Michael Weber <xmw@gentoo.org> (2017-02-27)
 # Stable mask dev-ruby/haml test till rails is stabilized.
 dev-ruby/haml test
 
-# Brian Evans <grknight@gentoo.org> (17 Jan 2017)
+# Brian Evans <grknight@gentoo.org> (2017-01-17)
 # Stable mask galera since dev-libs/asio is not stable on arm
 dev-db/mariadb galera
 
-# Pacho Ramos <pacho@gentoo.org> (31 Dec 2016)
+# Pacho Ramos <pacho@gentoo.org> (2016-12-31)
 # Not going to be stable for now
 dev-util/geany-plugins gtkspell
 
-# Pacho Ramos <pacho@gentoo.org> (31 Dec 2016)
+# Pacho Ramos <pacho@gentoo.org> (2016-12-31)
 # No stable for arm
 sys-fs/dmraid dietlibc klibc
 
-# Christoph Junghans <junghans@gentoo.org> (27 Nov 2016)
+# Christoph Junghans <junghans@gentoo.org> (2016-11-27)
 # no stable mpi on arm yet, but maybe in the future
-<=app-crypt/johntheripper-1.7.9-r6 mpi
 <=sci-libs/fftw-3.3.4 mpi
 
-# Markus Meier <maekke@gentoo.org> (27 Sep 2016)
+# Markus Meier <maekke@gentoo.org> (2016-09-27)
 # Missing stable
 dev-db/mariadb jdbc
 
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (13 Apr 2016)
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2016-04-13)
 # Requires special hardware to test and stabilize properly.
 media-video/mpv raspberry-pi
 
-# Brian Evans <grknight@gentoo.org> (08 Jan 2016)
+# Brian Evans <grknight@gentoo.org> (2016-01-08)
 # net-misc/libteam is not yet stable on arm
 net-misc/networkmanager teamd
 
-# Pacho Ramos <pacho@gentoo.org> (03 Oct 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-10-03)
 # Missing stable, bug #529462
 media-gfx/graphviz java
 
-# Markus Meier <maekke@gentoo.org> (30 Jul 2015)
+# Markus Meier <maekke@gentoo.org> (2015-07-30)
 # Missing stable
 x11-libs/wxGTK webkit
 
-# Markus Meier <maekke@gentoo.org> (19 Jul 2015)
+# Markus Meier <maekke@gentoo.org> (2015-07-19)
 # Missing stable
 media-libs/gegl umfpack
 
-# Pacho Ramos <pacho@gentoo.org> (02 Jun 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-06-02)
 # Missing stable
 net-misc/connman l2tp pptp
 
-# Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-07-02)
 # Mask due Gnome3 not going to be stabilized on this arch
 >=gnome-base/gnome-desktop-2.32.1-r2 license-docs
 gnome-base/gvfs google
 net-libs/libproxy webkit
 >=x11-libs/gtk+-3.12.2 cloudprint
 
-# Ian Whyman <thev00d00@gentoo.org> (22 May 2016)
+# Ian Whyman <thev00d00@gentoo.org> (2016-05-22)
 # RPI support on arm
 dev-libs/libcec -raspberry-pi

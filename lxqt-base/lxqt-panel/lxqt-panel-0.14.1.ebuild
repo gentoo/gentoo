@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="LXQt desktop panel and plugins"
 HOMEPAGE="https://lxqt.org/"
@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
 else
 	SRC_URI="https://downloads.lxqt.org/downloads/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 fi
 
 LICENSE="LGPL-2.1+"
@@ -23,7 +23,12 @@ SLOT="0"
 IUSE="+alsa colorpicker cpuload +desktopswitch +directorymenu dom +kbindicator +mainmenu
 	+mount networkmonitor pulseaudio +quicklaunch sensors +showdesktop
 	+spacer statusnotifier sysstat +taskbar +tray +volume +worldclock"
-REQUIRED_USE="volume? ( || ( alsa pulseaudio ) )"
+
+# Work around a missing header issue: https://bugs.gentoo.org/666278
+REQUIRED_USE="
+	|| ( desktopswitch mainmenu showdesktop taskbar )
+	volume? ( || ( alsa pulseaudio ) )
+"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -49,7 +54,7 @@ DEPEND="
 	kbindicator? ( x11-libs/libxkbcommon )
 	mount? ( kde-frameworks/solid:5 )
 	networkmonitor? ( sys-libs/libstatgrab )
-	sensors? ( sys-apps/lm_sensors )
+	sensors? ( sys-apps/lm-sensors )
 	statusnotifier? ( dev-libs/libdbusmenu-qt[qt5(+)] )
 	sysstat? ( >=lxqt-base/libsysstat-0.4.1 )
 	tray? (
@@ -102,10 +107,10 @@ src_configure() {
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install(){
-	cmake-utils_src_install
+	cmake_src_install
 	doman panel/man/*.1
 }

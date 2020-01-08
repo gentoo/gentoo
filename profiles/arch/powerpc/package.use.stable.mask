@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -8,7 +8,7 @@
 #
 ## Example:
 ##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
 ## # Masking foo USE flag until we can get the
 ## # foo stuff to work properly again (bug 12345)
 ## =media-video/mplayer-0.90_pre5 foo
@@ -17,67 +17,75 @@
 
 #--- END OF EXAMPLES ---
 
-# Andreas Sturmlechner <asturm@gentoo.org> (02 Dec 2018)
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-12)
+# Needs stable net-libs/webkit-gtk, bug #684702
+dev-util/geany-plugins markdown
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-17)
+# media-video/pipewire is not stable yet
+x11-wm/mutter screencast
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-12-02)
 # gnome-base/nautilus is not stable
 media-sound/easytag nautilus
 
-# Michał Górny <mgorny@gentoo.org> (26 Aug 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-08-26)
 # Non-stable dependency.  Used to be masked completely.
 media-sound/abcde replaygain
 
-# Ulrich Müller <ulm@gentoo.org> (09 Aug 2018)
-# Needs net-mail/mailutils and net-libs/webkit-gtk which are not
-# stable (yet?), bug #663248
-app-editors/emacs mailutils xwidgets
+# Ulrich Müller <ulm@gentoo.org> (2018-08-09)
+# Needs net-libs/webkit-gtk which is not stable, bug #663248
+app-editors/emacs xwidgets
 
-# Andreas Sturmlechner <asturm@gentoo.org> (20 Jun 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-20)
 # dev-python/PyQt5 is not stable.
 dev-python/matplotlib qt5 test
 media-sound/pulseaudio qt5
 net-print/hplip qt5
 
-# Andreas Sturmlechner <asturm@gentoo.org> (15 Mar 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-03-15)
 # Requires media-libs/portmidi which is not stable
 media-sound/hydrogen portmidi
 
-# David Seifert <soap@gentoo.org> (23 Sep 2017)
+# David Seifert <soap@gentoo.org> (2017-09-23)
 # MPI does not have stable keywords on ppc/ppc64
 sci-libs/fftw mpi
 
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Sep 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-09-03)
 # Stable-masking mpi support so Boost stabilization can go ahead
 # Boost 1.63 (bug 624662), Boost 1.62 (bug 590244)
 dev-libs/boost mpi
 
-# Mikle Kolyada <zlogene@gentoo.org> (25 Aug 2017)
+# Mikle Kolyada <zlogene@gentoo.org> (2017-08-25)
 # ceph has never been stabilized under either ~ppc or ~ppc64
 sys-fs/multipath-tools rbd
 
-# Pacho Ramos <grknight@gentoo.org> (01 Nov 2016)
+# Pacho Ramos <grknight@gentoo.org> (2016-11-01)
 # Dependencies not going to stable for now
 dev-util/geany-plugins gtkspell
 
-# Pacho Ramos <grknight@gentoo.org> (01 Nov 2016)
+# Pacho Ramos <grknight@gentoo.org> (2016-11-01)
 # net-misc/libteam is now ~ppc ~ppc64
 net-misc/networkmanager teamd
 
-# Michael Palimaka <kensington@gentoo.org> (21 Oct 2016)
+# Michael Palimaka <kensington@gentoo.org> (2016-10-21)
 # Requires media-libs/opencv which is not stable
 media-plugins/frei0r-plugins facedetect
 media-video/vlc opencv
 
-# Michael Palimaka <kensington@gentoo.org> (25 May 2016)
+# Michael Palimaka <kensington@gentoo.org> (2016-05-25)
 # Dependencies not stable
 app-arch/p7zip kde
 dev-vcs/subversion kwallet
 x11-misc/xscreensaver new-login
 
-# Pacho Ramos <pacho@gentoo.org> (06 Sep 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-09-06)
 # webkit-gtk is going to stay in ~all but amd64/x86
 # that are the only arches upstream is taking care
 >=x11-libs/wxGTK-3.0.2.0-r1 webkit
+dev-util/glade webkit
 
-# Justin Lecher <jlec@gentoo.org> (21 Feb 2015)
+# Justin Lecher <jlec@gentoo.org> (2015-02-21)
 # Needs stable GNOME-3
 net-fs/netatalk tracker
 app-office/homebank ofx

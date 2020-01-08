@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 SLOT="0/${PV}"
 IUSE="curl doc fftw +glpk gnuplot graphicsmagick gui hdf5 +imagemagick java libressl opengl
 	portaudio postscript +qhull +qrupdate readline sndfile +sparse ssl static-libs X zlib"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	app-arch/bzip2
@@ -39,7 +39,7 @@ RDEPEND="
 	)
 	hdf5? ( sci-libs/hdf5:0= )
 	imagemagick? (
-		!graphicsmagick? ( media-gfx/imagemagick:=[cxx] )
+		!graphicsmagick? ( >=media-gfx/imagemagick-7:=[cxx] )
 		graphicsmagick? ( media-gfx/graphicsmagick:=[cxx] )
 	)
 	java? ( >=virtual/jre-1.6.0:* )

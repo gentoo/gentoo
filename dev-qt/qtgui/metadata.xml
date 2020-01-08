@@ -14,6 +14,7 @@
 		<flag name="libinput">Enable support for input devices via <pkg>dev-libs/libinput</pkg></flag>
 		<flag name="tslib">Enable support for touchscreen devices via <pkg>x11-libs/tslib</pkg></flag>
 		<flag name="tuio">Build plugin to receive touch events over the TUIO protocol</flag>
+		<flag name="wayland">Provide <pkg>dev-qt/qtwayland</pkg> to ensure Qt applications can be run as Wayland clients</flag>
 		<flag name="xcb">Build the XCB platform plugin and enable X11 integration</flag>
 	</use>
 	<upstream>

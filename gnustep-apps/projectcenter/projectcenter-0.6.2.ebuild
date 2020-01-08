@@ -11,7 +11,7 @@ DESCRIPTION="An IDE for GNUstep"
 HOMEPAGE="http://www.gnustep.org/experience/ProjectCenter.html"
 SRC_URI="http://ftpmain.gnustep.org/pub/gnustep/dev-apps/${MY_P}.tar.gz"
 
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""

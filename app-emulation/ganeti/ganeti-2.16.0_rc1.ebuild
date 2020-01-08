@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,6 +41,7 @@ HOMEPAGE="http://www.ganeti.org/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="drbd experimental haskell-daemons htools ipv6 kvm lxc monitoring multiple-users rbd syslog test xen restricted-commands"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="|| ( kvm xen lxc )
 	test? ( ipv6 )
@@ -62,7 +63,10 @@ DEPEND="
 	dev-python/bitarray[${PYTHON_USEDEP}]
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/fdsend[${PYTHON_USEDEP}]
-	net-analyzer/arping
+	|| (
+		net-misc/iputils[arping]
+		net-analyzer/arping
+	)
 	net-analyzer/fping
 	net-misc/bridge-utils
 	net-misc/curl[ssl]
@@ -342,5 +346,5 @@ src_test () {
 	PATH="${S}/scripts:${S}/src:${PATH}" \
 		TMPDIR="/tmp" \
 		GANETI_MASTER="$(hostname -f)" \
-		emake check || die "emake check failed"
+		emake check
 }

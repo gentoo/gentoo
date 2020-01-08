@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="av">Adds support for audio and video.</flag>
+		<flag name="dht-node">Enables DHT Bootstrap Node.</flag> 
 		<flag name="no-log">Log level: 0 (no debug info logged)</flag>
 		<flag name="log-error">Log level: 1</flag>
 		<flag name="log-warn">Log level: 2</flag>

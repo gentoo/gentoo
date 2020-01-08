@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,9 +11,10 @@ HOMEPAGE="https://www.gtk.org/gtk-doc/"
 
 LICENSE="GPL-2 FDL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris"
 
-IUSE="debug doc emacs highlight vim"
+IUSE="debug doc emacs highlight test vim"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -26,11 +27,12 @@ RDEPEND="
 	app-text/docbook-xsl-stylesheets
 	~app-text/docbook-sgml-dtd-3.0
 	>=app-text/docbook-dsssl-stylesheets-1.40
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	highlight? (
 		vim? ( || ( app-editors/vim app-editors/gvim ) )
 		!vim? ( dev-util/source-highlight )
 	)
+	test? ( sys-devel/bc )
 "
 DEPEND="${RDEPEND}
 	~dev-util/gtk-doc-am-${PV}

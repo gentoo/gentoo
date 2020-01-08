@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ RESTRICT="test"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit bash-completion-r1 eutils flag-o-matic pax-utils python-single-r1 toolchain-funcs
+inherit bash-completion-r1 eutils flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -15,10 +15,9 @@ SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc ppc64 x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ppc ppc64 x86 ~amd64-linux ~x64-macos"
 IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test"
 REQUIRED_USE="
-	${PYTHON_REQUIRED_USE}
 	inspector? ( icu ssl )
 	npm? ( ssl )
 "
@@ -93,6 +92,8 @@ src_prepare() {
 }
 
 src_configure() {
+	xdg_environment_reset
+
 	local myconf=( --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )

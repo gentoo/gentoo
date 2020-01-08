@@ -11,11 +11,11 @@ SRC_URI="mirror://sourceforge/pam-ssh/${P}.tar.xz"
 
 LICENSE="BSD-2 BSD ISC"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 # Only supports OpenSSH via `ssh-agent` #282993
-DEPEND="virtual/pam
+DEPEND="sys-libs/pam
 	dev-libs/openssl:0="
 RDEPEND="${DEPEND}
 	net-misc/openssh"
@@ -34,6 +34,9 @@ src_configure() {
 	# Set the cache var so the configure script doesn't go probing hardcoded
 	# file system paths and picking up the wrong thing.
 	export ac_cv_openssldir=''
+
+	# not needed now
+	export ac_cv_exeext=no
 
 	# Avoid cross-compiling funkiness and requiring openssh at build time.
 	export PATH_SSH_AGENT="${EPREFIX}/usr/bin/ssh-agent"

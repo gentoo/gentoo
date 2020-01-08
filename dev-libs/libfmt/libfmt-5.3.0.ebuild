@@ -10,6 +10,7 @@ HOMEPAGE="https://github.com/fmtlib/fmt"
 
 LICENSE="BSD-2"
 IUSE="test"
+RESTRICT="!test? ( test )"
 SLOT="0/$(ver_cut 1)"
 
 if [[ ${PV} == *9999 ]] ; then
@@ -17,7 +18,7 @@ if [[ ${PV} == *9999 ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/fmtlib/fmt/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 ppc ppc64 x86"
 	S="${WORKDIR}/fmt-${PV}"
 fi
 

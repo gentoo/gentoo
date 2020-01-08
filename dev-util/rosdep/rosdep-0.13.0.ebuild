@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
 SCM=""
 if [ "${PV#9999}" != "${PV}" ] ; then
@@ -27,6 +27,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/catkin_pkg[${PYTHON_USEDEP}]

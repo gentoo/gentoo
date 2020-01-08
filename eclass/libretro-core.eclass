@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2018-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: libretro-core.eclass
@@ -44,9 +44,13 @@ IUSE="debug"
 # @DESCRIPTION:
 # Name of this Libretro core. The libretro-core_src_install() phase function
 # will install the shared library "${S}/${LIBRETRO_CORE_NAME}_libretro.so" as a
-# Libretro core. Defaults to the name of the current package excluding the
-# "libretro-" prefix (e.g., "mgba" for the package "libretro-mgba").
-: ${LIBRETRO_CORE_NAME:=${PN#libretro-}}
+# Libretro core. Defaults to the name of the current package with the
+# "libretro-" prefix excluded and hyphens replaced with underscores
+# (e.g. genesis_plus_gx for libretro-genesis-plus-gx)
+if [[ -z "${LIBRETRO_CORE_NAME}" ]]; then
+	LIBRETRO_CORE_NAME=${PN#libretro-}
+	LIBRETRO_CORE_NAME=${LIBRETRO_CORE_NAME//-/_}
+fi
 
 # @ECLASS-VARIABLE: LIBRETRO_COMMIT_SHA
 # @DESCRIPTION:
@@ -71,12 +75,6 @@ else
 	: ${SRC_URI:="https://github.com/${LIBRETRO_REPO_NAME}/archive/${LIBRETRO_COMMIT_SHA}.tar.gz -> ${P}.tar.gz"}
 fi
 inherit flag-o-matic
-
-# @ECLASS-VARIABLE: LIBRETRO_CORE_LIB_FILE
-# @REQUIRED
-# @DESCRIPTION:
-# Absolute path of this Libretro core's shared library.
-: ${LIBRETRO_CORE_LIB_FILE:="${S}/${LIBRETRO_CORE_NAME}_libretro.so"}
 
 case "${EAPI:-0}" in
 	6|7)
@@ -130,6 +128,7 @@ libretro-core_src_prepare() {
 			-e 's/\r$//g' \
 			-e "/flags.*=/s:-O[[:digit:]]:${CFLAGS}:g" \
 			-e "/CFLAGS.*=/s:-O[[:digit:]]:${CFLAGS}:g" \
+			-e "/CXXFLAGS.*=/s:-O[[:digit:]]:${CXXFLAGS}:g" \
 			-e "/.*,--version-script=.*/s:$: ${LDFLAGS} ${LIBS}:g" \
 			-e "/\$(CC)/s:\(\$(SHARED)\):\1 ${LDFLAGS} ${LIBS}:" \
 			-e 's:\(\$(CC)\):\1 \$(CFLAGS):g' \
@@ -168,12 +167,27 @@ libretro-core_src_compile() {
 		$([[ -f Makefile.libretro ]] && echo '-f Makefile.libretro')
 }
 
+# @VARIABLE: LIBRETRO_CORE_LIB_FILE
+# @DEFAULT_UNSET
+# @DESCRIPTION:
+# Absolute path of this Libretro core's shared library.
+# src_install.
+# @CODE
+# src_install() {
+# 	local LIBRETRO_CORE_LIB_FILE="${S}/somecore_libretro.so"
+#
+# 	libretro-core_src_install
+# }
+# @CODE
+
 # @FUNCTION: libretro-core_src_install
 # @DESCRIPTION:
 # The libretro-core src_install function which is exported.
 #
 # This function installs the shared library for this Libretro core.
 libretro-core_src_install() {
+	local LIBRETRO_CORE_LIB_FILE=${LIBRETRO_CORE_LIB_FILE:-"${S}/${LIBRETRO_CORE_NAME}_libretro.so"}
+
 	# Absolute path of the directory containing Libretro shared libraries.
 	local libretro_lib_dir="/usr/$(get_libdir)/libretro"
 	# If this core's shared library exists, install that.

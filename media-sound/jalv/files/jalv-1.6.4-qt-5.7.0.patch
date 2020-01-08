@@ -1,0 +1,13 @@
+diff --git a/wscript b/wscript
+index af363ca..5060b4d 100644
+--- a/wscript
++++ b/wscript
+@@ -235,7 +235,7 @@ def build(bld):
+                   lib          = ['pthread'],
+                   uselib       = libs + ' QT5',
+                   install_path = '${BINDIR}',
+-                  cxxflags     = ['-fPIC'])
++                  cxxflags     = ['-fPIC', '-std=c++11'])
+ 
+     # Man pages
+     bld.install_files('${MANDIR}/man1', bld.path.ant_glob('doc/*.1'))

@@ -9,7 +9,7 @@ SRC_URI="ftp://ftp.pluto.it/pub/pluto/ildp/man/${P}.tar.xz"
 
 LICENSE="man-pages GPL-2+ BSD MIT FDL-1.1+ public-domain man-pages-posix"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
 IUSE=""
 
 RDEPEND="virtual/man"

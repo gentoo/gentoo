@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit font
 
@@ -13,22 +13,19 @@ SRC_URI="http://www.geocities.jp/teardrops_in_aquablue/fnt/${MY_P}.zip"
 
 LICENSE="aquafont"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 s390 sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="X"
-
-S="${WORKDIR}/${MY_P}"
-FONT_S="${S}"
-FONT_SUFFIX="ttf"
-
-DEPEND="app-arch/unzip"
-RDEPEND=""
-
-DOCS="readme.txt"
-
 # Only installs fonts
 RESTRICT="strip binchecks"
 
-FONT_CONF=( "${FILESDIR}/60-aquafont.conf" )
+BDEPEND="app-arch/unzip"
+
+S="${WORKDIR}/${MY_P}"
+
+DOCS="readme.txt"
+FONT_CONF=( "${FILESDIR}"/60-aquafont.conf )
+FONT_S="${S}"
+FONT_SUFFIX="ttf"
 
 pkg_postinst() {
 	font_pkg_postinst

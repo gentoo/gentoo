@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy{,3} )
+PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 inherit distutils-r1
 
 MY_PN=${PN/-/.}
@@ -17,6 +17,7 @@ LICENSE="ZPL"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # TODO: extras?
 RDEPEND="dev-python/namespace-zope[${PYTHON_USEDEP}]

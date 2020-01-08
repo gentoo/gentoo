@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
 inherit distutils-r1 toolchain-funcs
 
@@ -16,7 +16,9 @@ LICENSE="BSD"
 SLOT="0/4" # libcapstone.so.4
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
-IUSE="python"
+RESTRICT="!test? ( test )"
+
+IUSE="python test"
 RDEPEND="python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
@@ -59,8 +61,14 @@ src_configure() {
 		LDFLAGS = ${LDFLAGS}
 		#  libs
 		LIBDIRARCH = $(get_libdir)
+		PREFIX = ${EPREFIX}/usr
 		EOF
 	} >> config.mk || die
+
+	if ! use test; then
+		# Don't build tests if not requested: bug #663006
+		sed -i tests/Makefile -e 's@all: $(BINARY)@all:@' || die
+	fi
 
 	wrap_python ${FUNCNAME}
 }

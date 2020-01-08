@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 pypy )
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
@@ -17,6 +17,8 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="gtk ncurses"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RESTRICT="test"
 
 RDEPEND="
 	gtk? ( dev-python/pygtk:2 )
@@ -47,6 +49,10 @@ python_prepare_all() {
 		    -i pysize/main.py || die "Failed to remove ncurses support"
 		rm -rf pysize/ui/curses || die "Failed to remove ncurses support"
 	fi
+
+	sed \
+		-e "s:/tmp:${T}:g" \
+		-i tests/tests/*.py tests/*py || die
 
 	sed \
 		-e '/for ui_run in/s:ui_ascii.run:ui_ascii.run, ui_ascii.run:g' \

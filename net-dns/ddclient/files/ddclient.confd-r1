@@ -1,2 +1,0 @@
-# No need to specify a pid in /etc/ddclient/ddclient.conf
-#PIDFILE=/var/run/ddclient/ddclient.pid

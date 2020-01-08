@@ -1,0 +1,29 @@
+From c1b6d29b95a373108e8d03ac629dcb03fcec854c Mon Sep 17 00:00:00 2001
+From: Andrew Borodin <aborodin@vmail.ru>
+Date: Sun, 7 Jul 2019 15:51:28 +0300
+Subject: [PATCH 2/2] iso9660: report errors in copyout in case of isoinfo
+ usage.
+
+Signed-off-by: Andrew Borodin <aborodin@vmail.ru>
+---
+ src/vfs/extfs/helpers/iso9660.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/vfs/extfs/helpers/iso9660.in b/src/vfs/extfs/helpers/iso9660.in
+index 76273522e..f9c6e50ef 100644
+--- a/src/vfs/extfs/helpers/iso9660.in
++++ b/src/vfs/extfs/helpers/iso9660.in
+@@ -222,8 +222,8 @@ case "$cmd" in
+     ;;
+   copyout)
+     xorriso_copyout "$@" || {
+-        test_iso "$@";
+-        mcisofs_copyout "$@";
++        test_iso "$@" || exit 1
++        mcisofs_copyout "$@" || exit 1
+     }
+     exit 0
+     ;;
+-- 
+2.22.0
+

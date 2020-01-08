@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="berkdb crypt debug filelog memtrace lzo snappy"
 
 RDEPEND="

@@ -43,7 +43,7 @@ src_install() {
 		"com.jcraft.jsch, com.jcraft.jsch.jce;x-internal:=true, \
 		com.jcraft.jsch.jcraft;x-internal:=true"
 
-	dodoc README ChangeLog || die
+	dodoc README ChangeLog
 	use doc && java-pkg_dojavadoc javadoc
 	use source && java-pkg_dosrc src/*
 	use examples && java-pkg_doexamples examples

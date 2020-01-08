@@ -1,12 +1,15 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Mikle Kolyada <zlogene@gentoo.org> (03 Jun 2018)
+# Hans de Graaff <graaff@gentoo.org> (2019-04-08)
+# Obsolete ruby version, no newer versions keyworded or stable.
+dev-vcs/subversion ruby
+
+# Mikle Kolyada <zlogene@gentoo.org> (2018-06-03)
 # Not tested
 app-crypt/pinentry fltk
 dev-python/cssselect doc
 dev-vcs/subversion kwallet
-app-text/ghostscript-gpl cups
 # not really interested in supporting alternative
 # VCS for oberlays yet.
 app-portage/layman bazaar darcs mercurial
@@ -27,64 +30,59 @@ app-arch/rpm test
 net-analyzer/rrdtool rados
 
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan
+media-libs/mesa vulkan vulkan-overlay
 
-# Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
+# Robin H. Johnson <robbat2@gentoo.org> (2017-08-05)
 # Upstream Git is switching to PCRE2 w/ JIT.
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
 dev-vcs/git pcre-jit
 
-# Lars Wendler <polynomial-c@gentoo.org> (17 Nov 2016)
+# Lars Wendler <polynomial-c@gentoo.org> (2016-11-17)
 # jit not supported on ia64 (bug #600052).
 dev-libs/libpcre2 jit
 
-# Sergey Popov <pinkbyte@gentoo.org> (24 Oct 2015)
+# Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
 # Not tested
 net-mail/dovecot lz4
 
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
+# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
 # Needs sci-physics/bullet tested #499974
 dev-libs/efl physics
 
-# Sergey Popov <pinkbyte@gentoo.org> (18 Feb 2015)
+# Sergey Popov <pinkbyte@gentoo.org> (2015-02-18)
 # Not tested
 app-portage/layman g-sorcery
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (16 Sep 2014)
-# Needs libepoxy keywording, bug #510940
-x11-base/xorg-server glamor wayland
-x11-drivers/xf86-video-ati glamor
-
-# Mikle Kolyada <zlogene@gentoo.org> (11 Jan 2014)
+# Mikle Kolyada <zlogene@gentoo.org> (2014-01-11)
 # too much unkeyworded dependencies (bug #497068)
 dev-vcs/git mediawiki mediawiki-experimental
 
-# Agostino Sarubbo <ago@gentoo.org< (10 Apr 2013)
+# Agostino Sarubbo <ago@gentoo.org< (2013-04-10)
 # It requires too much unstable dep.
 x11-libs/gtk+ colord
 
-# Justin Lecher <jlec@gentoo.org> (09 Jan 2013)
+# Justin Lecher <jlec@gentoo.org> (2013-01-09)
 # x11-base/xorg-server[xvfb] is not keyworded
 dev-lang/tk test
 
-# Raúl Porcel <armin76@gentoo.org> (05 Nov 2011)
+# Raúl Porcel <armin76@gentoo.org> (2011-11-05)
 # jit not supported on s390
 dev-libs/libpcre jit
 
-# Sebastian Pipping <sping@gentoo.org> (22 Feb 2011)
+# Sebastian Pipping <sping@gentoo.org> (2011-02-22)
 # No media-sound/lilypond here, yet (bug #356069)
 app-text/asciidoc test
 
-# Raúl Porcel <armin76@gentoo.org> (27 Mar 2008)
+# Raúl Porcel <armin76@gentoo.org> (2008-03-27)
 # Needs gtk USE-flag
 net-dns/avahi python
 
 # missing keyword for sys-cluster/openmpi sys-cluster/mpich2
 dev-libs/boost mpi
 
-# Robin H Johnson <robbat2@gentoo.org> (01 Nov 2012)
+# Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
 >=dev-db/mysql-5.5 tcmalloc
 >=dev-db/mariadb-5.5 tcmalloc

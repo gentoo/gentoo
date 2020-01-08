@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ REQUIRED_USE="device-mapper-only? ( !lvm1 !lvm2create_initrd !thin )
 DEPEND_COMMON="
 	readline? ( sys-libs/readline:0= )
 	systemd? ( >=sys-apps/systemd-205:0= )
-	udev? ( >=virtual/libudev-208:=[static-libs?] )"
+	udev? ( >=virtual/libudev-208:=[static-libs(-)?] )"
 # /run is now required for locking during early boot. /var cannot be assumed to
 # be available -- thus, pull in recent enough baselayout for /run.
 # This version of LVM is incompatible with cryptsetup <1.1.2.
@@ -222,9 +222,7 @@ src_install() {
 		dolib.a libdm/ioctl/libdevmapper.a
 		if use !device-mapper-only ; then
 			dolib.a libdaemon/client/libdaemonclient.a #462908
-			#gen_usr_ldscript libdevmapper.so
 			dolib.a daemons/dmeventd/libdevmapper-event.a
-			#gen_usr_ldscript libdevmapper-event.so
 		fi
 	else
 		rm -f "${ED}"usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a

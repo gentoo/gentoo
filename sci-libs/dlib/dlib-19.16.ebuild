@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_OPTIONAL=1
 inherit cmake-utils cuda distutils-r1
 
@@ -15,6 +15,7 @@ LICENSE="Boost-1.0"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="cblas cuda debug examples gif jpeg lapack mkl png python sqlite static-libs test X cpu_flags_x86_avx cpu_flags_x86_sse2 cpu_flags_x86_sse4_1"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 # doc needs a bunch of deps not in portage

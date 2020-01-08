@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: displays the recording status of the available devices"
-HOMEPAGE="http://www.constabel.net/projects/recstatus/wiki"
-SRC_URI="https://www.constabel.net/files/vdr/${P}.tgz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="http://vdr.websitec.de/download/${PN}/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"

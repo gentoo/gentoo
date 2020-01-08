@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
-inherit eutils gnome2-utils python-single-r1 java-pkg-opt-2 xdg-utils
+inherit eutils gnome2-utils python-single-r1 java-pkg-opt-2 udev xdg-utils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -20,7 +20,8 @@ HOMEPAGE="https://sigrok.org/wiki/Libsigrok"
 
 LICENSE="GPL-3"
 SLOT="0/4"
-IUSE="cxx ftdi java parport python serial static-libs test usb"
+IUSE="cxx ftdi java parport python serial static-libs test +udev usb"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="java? ( cxx ) python? ( cxx ${PYTHON_REQUIRED_USE} )"
 
 # We also support librevisa, but that isn't in the tree ...
@@ -78,6 +79,7 @@ src_test() {
 
 src_install() {
 	default
+	use udev && udev_dorules contrib/*.rules
 	prune_libtool_files
 }
 

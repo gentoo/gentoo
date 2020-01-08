@@ -14,13 +14,12 @@ SRC_URI="https://wxmacmolplt.googlecode.com/files/${P}.tar.gz"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="flash"
+IUSE=""
 
 RDEPEND="
 	media-libs/glew:0=
-	media-libs/mesa
-	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
-	flash? ( media-libs/ming )"
+	media-libs/mesa[X(+)]
+	x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
@@ -36,7 +35,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--with-glew \
-		$(use_with flash ming)
+		--without-ming
 }
 
 src_install() {

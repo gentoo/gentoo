@@ -12,8 +12,8 @@ SRC_URI="https://bitbucket.org/eigen/eigen/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="MPL-2.0"
 SLOT="3"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
-IUSE="altivec c++11 cuda debug doc neon openmp test" #zvector vsx
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+IUSE="altivec c++11 cpu_flags_arm_neon cuda debug doc openmp test" #zvector vsx
 RESTRICT="!test? ( test )"
 
 RDEPEND="!dev-cpp/eigen:0"
@@ -81,7 +81,7 @@ src_test() {
 		-DEIGEN_TEST_CXX11="$(usex c++11)"
 		-DEIGEN_TEST_CUDA="$(usex cuda)"
 		-DEIGEN_TEST_OPENMP="$(usex openmp)"
-		-DEIGEN_TEST_NEON64="$(usex neon)"
+		-DEIGEN_TEST_NEON64="$(usex cpu_flags_arm_neon)"
 	)
 	cmake-utils_src_configure
 	cmake-utils_src_compile blas

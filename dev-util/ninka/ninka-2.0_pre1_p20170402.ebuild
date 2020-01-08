@@ -13,8 +13,8 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 LICENSE="GPL-2+ myspell-en_CA-KevinAtkinson public-domain Princeton Ispell"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="sqlite"
-RESTRICT="test"
+IUSE="sqlite test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-perl/IO-CaptureOutput
 	dev-perl/Spreadsheet-WriteExcel
@@ -24,13 +24,13 @@ RDEPEND="dev-perl/IO-CaptureOutput
 		dev-perl/DBI
 	)"
 
-DEPEND="virtual/perl-ExtUtils-MakeMaker"
-#	test? (
-#		${RDEPEND}
-#		virtual/perl-Test-Simple
-#		dev-perl/Test-Pod
-#	)"
-# Test::Strict not packaged yet
+DEPEND="virtual/perl-ExtUtils-MakeMaker
+	test? (
+		${RDEPEND}
+		dev-perl/Test-Pod
+		dev-perl/Test-Strict
+		virtual/perl-Test-Simple
+	)"
 
 S="${WORKDIR}/${PN}"
 

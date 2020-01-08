@@ -1,7 +1,11 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # Those packages require net-libs/nodejs.
 dev-python/nbdime webtools
 dev-ruby/ammeter test
@@ -13,7 +17,7 @@ net-analyzer/netdata nodejs
 dev-lang/nim test
 www-apps/jekyll test
 
-# Davide Pesavento <pesa@gentoo.org> (30 Nov 2011)
+# Davide Pesavento <pesa@gentoo.org> (2011-11-30)
 # The QML (V4) and JSC JITs do not work on x32.
 dev-qt/qtdeclarative jit
 dev-qt/qtscript jit

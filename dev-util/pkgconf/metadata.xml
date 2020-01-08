@@ -5,6 +5,10 @@
 		<email>floppym@gentoo.org</email>
 		<name>Mike Gilbert</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
+	</maintainer>
 	<slots>
 		<subslots>SONAME version of libpkgconf</subslots>
 	</slots>

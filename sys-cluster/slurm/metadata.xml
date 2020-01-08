@@ -3,6 +3,11 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<email>alexxy@gentoo.org</email>
+		<name>Alexey Shvetsov</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>cluster@gentoo.org</email>
@@ -17,6 +22,8 @@
 		<flag name="netloc">Add support for netloc (amd64 only)</flag>
 		<flag name="numa">Add NUMA awareness</flag>
 		<flag name="ofed">Add Infiniband support via ofed</flag>
+		<flag name="slurmdbd">Install SQL server for slurmdbd</flag>
 		<flag name="torque">Enable perl scripts that emulates pbs (qstat, qsub etc.)</flag>
+		<flag name="ucx">Enable Unified Communication X library support</flag>
 	</use>
 </pkgmetadata>

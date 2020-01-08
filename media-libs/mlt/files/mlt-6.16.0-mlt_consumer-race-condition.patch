@@ -1,0 +1,30 @@
+From 9b89b781b9d06181c8d486605ed4c2b3089d64d6 Mon Sep 17 00:00:00 2001
+From: alcinos <nicolas.carion@ens-lyon.fr>
+Date: Wed, 1 May 2019 23:50:41 +0200
+Subject: [PATCH] Fix race in mlt_consumer
+
+---
+ src/framework/mlt_consumer.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/src/framework/mlt_consumer.c b/src/framework/mlt_consumer.c
+index 491bc5e99..0e36bde3c 100644
+--- a/src/framework/mlt_consumer.c
++++ b/src/framework/mlt_consumer.c
+@@ -31,6 +31,7 @@
+ #include <string.h>
+ #include <stdlib.h>
+ #include <sys/time.h>
++#include <stdatomic.h>
+ 
+ /** Define this if you want an automatic deinterlace (if necessary) when the
+  * consumer's producer is not running at normal speed.
+@@ -65,7 +66,7 @@ typedef struct
+ 	double fps;
+ 	int channels;
+ 	int frequency;
+-	int speed;
++	atomic_int speed;
+ 	/* additional fields added for the parallel work queue */
+ 	mlt_deque worker_threads;
+ 	pthread_mutex_t done_mutex;

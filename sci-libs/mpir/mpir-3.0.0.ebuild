@@ -11,7 +11,7 @@ SRC_URI="http://www.mpir.org/${P}.tar.bz2"
 
 LICENSE="LGPL-3"
 SLOT="0/23"
-KEYWORDS="amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh x86 ~amd64-linux ~x86-linux"
 IUSE="+cxx cpudetection static-libs"
 
 DEPEND="
@@ -59,12 +59,16 @@ src_configure() {
 	# beware that cpudetection aka fat binaries is x86/amd64 only.
 	# Place mpir in profiles/arch/$arch/package.use.mask
 	# when making it available on $arch.
-	local myeconfargs+=(
+	local myeconfargs=(
 		$(use_enable cxx)
 		$(use_enable cpudetection fat)
 		$(use_enable static-libs static)
 	)
-	econf ${myeconfargs[@]}
+	# https://bugs.gentoo.org/661430
+	if !use amd64 && !use x86; then
+		myeconfargs+=( --with-yasm=/bin/false )
+	fi
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {

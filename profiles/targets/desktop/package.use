@@ -1,99 +1,91 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2019)
+# Lars Wendler <polynomial-c@gentoo.org> (2019-03-20)
 # Enable client by default. Usually desktop users need the client.
 net-fs/samba client
 
-# Andreas Sturmlechner <asturm@gentoo.org> (09 Jun 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-09)
 # Required by app-office/libreoffice
 dev-libs/xmlsec nss
 
-# Andreas Sturmlechner <asturm@gentoo.org> (09 Jun 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-06-09)
 # Enable sensible defaults for desktop users
 dev-qt/qtwebkit:5 printsupport
 
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Not required, but makes life easier with Qt; bug #457934
 app-arch/unzip natspec
 
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Required by dev-qt/qtcore
 dev-libs/libpcre pcre16
 dev-libs/libpcre2 pcre16
 
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
-# Required by kde-frameworks/kcoreaddons
-dev-qt/qtcore:5 icu
-
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Required by kde-frameworks/kwayland
 dev-qt/qtgui:5 egl libinput
 
 # Required by dev-qt/qtwebengine
 media-libs/libvpx svc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Nov 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-30)
 # Avoid circular dependency when installing from scratch
 dev-util/cmake -qt5
 
-# Andreas Sturmlechner <asturm@gentoo.org> (19 Nov 2017)
-# Required by opengl, theora, v4l and X
-media-libs/mediastreamer video
-
-# Andreas Sturmlechner <asturm@gentoo.org> (04 Aug 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-08-04)
 # Required by flac and mp3
 kde-apps/k3b taglib
 kde-frameworks/kfilemetadata taglib
 
-# Brian Evans <grknight@gentoo.org> (18 Jul 2017)
+# Brian Evans <grknight@gentoo.org> (2017-07-18)
 # Don't force users to enable gd on PHP due to desktop defaults
 dev-lang/php -exif -truetype
 
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (02 Feb 2017)
+# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (2017-02-02)
 # Enable luajit for OSC and youtube-dl support by default.
 # Override default +sdl from desktop profile and disable sdl outputs.
 # These outputs are for systems without a proper audio/video support.
 media-video/mpv lua luajit -sdl
 
-# Mike Gilbert <floppym@gentoo.org> (04 Jan 2017)
+# Mike Gilbert <floppym@gentoo.org> (2017-01-04)
 # Needed by x11-misc/xdg-utils.
 app-text/xmlto text
 
-# Ben de Groot <yngwin@gentoo.org> (18 Feb 2015)
+# Ben de Groot <yngwin@gentoo.org> (2015-02-18)
 # Enable sensible defaults for desktop users (bug #540046)
 dev-python/PyQt5 gui network printsupport widgets
 
-# Samuli Suominen <ssuominen@gentoo.org> (24 Jul 2014)
+# Samuli Suominen <ssuominen@gentoo.org> (2014-07-24)
 # Because targets/desktop/make.defaults has USE="bluetooth" but net-libs/libpcap doesn't
 # support BlueZ 5.x, disable USE="bluetooth" by default to avoid conflicting packages:
 net-libs/libpcap -bluetooth
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (08 May 2014)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2014-05-08)
 # Enable x11-libs/libxcb[xkb] as it is needed by x11-libs/libxkbcommon[X]
 # and the X flag is enabled by default in the desktop profile
 x11-libs/libxcb xkb
 
-# Jeremy Olexa <darkside@gentoo.org> (07 Oct 2011)
+# Jeremy Olexa <darkside@gentoo.org> (2011-10-07)
 # Required by mesa, ultimately by xorg-server (every desktop) bug 385843
 dev-libs/libxml2 python
 
-# Samuli Suominen <ssuominen@gentoo.org> (27 Sep 2011)
+# Samuli Suominen <ssuominen@gentoo.org> (2011-09-27)
 # Required by mozilla browsers wrt #372419
 media-libs/libpng apng
 
-# Samuli Suominen <ssuominen@gentoo.org> (19 Dec 2010)
+# Samuli Suominen <ssuominen@gentoo.org> (2010-12-19)
 # gudev, required by freedesktop.org udev helpers like udisks and upower
 # introspection, exception, enabled from here instead of ebuild to skip extra deps for a system package
 dev-libs/libgudev introspection
 sys-fs/eudev introspection
 virtual/libgudev introspection
 
-# Samuli Suominen <ssuominen@gentoo.org> (19 Dec 2010)
+# Samuli Suominen <ssuominen@gentoo.org> (2010-12-19)
 # Support for desktop file icons
 xfce-base/xfdesktop thunar
 
-# Chris Gianelloni <wolf31o2@gentoo.org> (26 Mar 2008)
+# Chris Gianelloni <wolf31o2@gentoo.org> (2008-03-26)
 # While we may need LDAP client support, who needs the server on a desktop?
 # Did I mention that this also fixes the horrible perl dependency hell, too?
 net-nds/openldap minimal

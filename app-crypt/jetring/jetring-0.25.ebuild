@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -22,6 +22,11 @@ RDEPEND="
 
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-0.21-parallel.patch
+}
+
+src_compile() {
+	addpredict "/run/user/$(id -u)/gnupg/"
+	default
 }
 
 src_install() {

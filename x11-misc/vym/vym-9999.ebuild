@@ -1,15 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
+EAPI=7
 PLOCALES="cs_CZ de_DE el es fr ia it ja pt_BR ru sv zh_CN zh_TW"
-
-inherit eutils git-r3 l10n qmake-utils
+inherit desktop git-r3 l10n qmake-utils
 
 DESCRIPTION="View Your Mind, a mindmap tool"
 HOMEPAGE="http://www.insilmaril.de/vym/"
-EGIT_REPO_URI="git://git.code.sf.net/p/${PN}/code"
+EGIT_REPO_URI="https://git.code.sf.net/p/vym/code"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -28,16 +26,22 @@ DEPEND="
 	${RDEPEND}
 	dev-qt/linguist-tools:5
 "
-
 DOCS=( README.md )
 
 src_prepare() {
 	default
 
+	if has es ${LINGUAS-es} ; then
+		DOCS+=( doc/vym_es.pdf )
+	fi
+	if has fr ${LINGUAS-fr} ; then
+		DOCS+=( doc/vym_fr.pdf )
+	fi
+
 	remove_locale() {
 		sed -i \
 			-e "/TRANSLATIONS += lang\/vym.${1}.ts/d" \
-			vym.pro || die
+			vym.pro || die
 	}
 
 	gunzip doc/vym.1.gz || die

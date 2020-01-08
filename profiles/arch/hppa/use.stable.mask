@@ -1,20 +1,32 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Sergei Trofimovich <slyfox@gentoo.org> (03 Mar 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-08)
+# sys-auth/elogind is not stable here.
+elogind
+
+# Hans de Graaff <graaff@gentoo.org> (2019-07-17)
+# Temporary mask for stable bug 688976
+ruby_targets_ruby25
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-06-05)
+# sys-auth/consolekit will not be stabilised anymore.
+consolekit
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-03-03)
 # No stable sys-apps/systemd on hppa.
 systemd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
 openal
 
-# Matt Turner <mattst88@gentoo.org> (22 Apr 2018)
+# Matt Turner <mattst88@gentoo.org> (2018-04-22)
 # media-gfx/gimp is ~hppa only
 gimp
 
-# Andreas Sturmlechner <asturm@gentoo.org> (29 Oct 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-10-29)
 # Mask qt5 for stabilisation timeout, bug #620334
 qt5

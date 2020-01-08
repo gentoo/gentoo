@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit autotools eutils
+EAPI=7
+
+inherit autotools
 
 DESCRIPTION="a graphical music player daemon (MPD) client using GTK+2"
 HOMEPAGE="https://launchpad.net/gimmix"
@@ -13,25 +14,32 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="cover lyrics taglib"
 
-RDEPEND=">=media-libs/libmpd-0.17
-	gnome-base/libglade
+RDEPEND="
+	media-libs/libmpd:=
+	gnome-base/libglade:=
 	x11-libs/gtk+:2
-	cover? ( net-libs/libnxml net-misc/curl )
-	lyrics? ( net-libs/libnxml net-misc/curl )
-	taglib? ( >=media-libs/taglib-1.5 )"
-DEPEND="${RDEPEND}
+	cover? (
+		net-libs/libnxml:=
+		net-misc/curl:=
+	)
+	lyrics? (
+		net-libs/libnxml:=
+		net-misc/curl:=
+	)
+	taglib? ( media-libs/taglib:= )"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	dev-util/intltool"
 
-DOCS=( AUTHORS ChangeLog README TODO )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.5.7.1-curl-headers.patch
+	"${FILESDIR}"/${P}-format-security.patch
+	"${FILESDIR}"/${PN}-0.5.7.2-QA-desktop-file.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.5.7.1-curl-headers.patch \
-		"${FILESDIR}"/${P}-format-security.patch
-	sed -i -e "/^Icon/s/\.png$//" \
-		-e "/^Categories/s/Application;//" data/gimmix.desktop
-
-	# broken build system in tarball
+	default
 	eautoreconf
 }
 

@@ -11,7 +11,7 @@ HOMEPAGE="https://store.kde.org/p/998916/"
 SRC_URI="https://github.com/kotelnik/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_PN}-${PV}.tar.gz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 DEPEND="$(add_frameworks_dep plasma)"

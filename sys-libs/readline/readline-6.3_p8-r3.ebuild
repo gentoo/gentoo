@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils multilib toolchain-funcs flag-o-matic multilib-minimal
+inherit eutils multilib toolchain-funcs flag-o-matic multilib-minimal usr-ldscript
 
 # Official patches
 # See ftp://ftp.cwru.edu/pub/bash/readline-6.3-patches/
@@ -28,12 +28,12 @@ patches() {
 }
 
 DESCRIPTION="Another cute console display library"
-HOMEPAGE="http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html"
+HOMEPAGE="https://tiswww.case.edu/php/chet/readline/rltop.html"
 SRC_URI="mirror://gnu/${PN}/${MY_P}.tar.gz $(patches)"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs utils"
 
 RDEPEND=">=sys-libs/ncurses-5.9-r3:0=[${MULTILIB_USEDEP}]"

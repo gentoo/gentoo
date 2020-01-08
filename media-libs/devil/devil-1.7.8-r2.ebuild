@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,15 +13,14 @@ SRC_URI="mirror://sourceforge/openil/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~hppa ~mips ppc ppc64 x86"
-IUSE="allegro cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 gif glut jpeg jpeg2k mng nvtt openexr opengl png sdl static-libs tiff X xpm"
+KEYWORDS="amd64 ~arm arm64 ~hppa ~mips ppc ppc64 x86"
+IUSE="allegro cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 gif glut jpeg mng nvtt openexr opengl png sdl static-libs tiff X xpm"
 
 RDEPEND="
 	allegro? ( media-libs/allegro:0 )
 	gif? ( media-libs/giflib:= )
 	glut? ( media-libs/freeglut )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper:= )
 	mng? ( media-libs/libmng:= )
 	nvtt? ( media-gfx/nvidia-texture-tools )
 	openexr? ( media-libs/openexr:= )
@@ -65,7 +64,7 @@ src_configure() {
 		$(use_enable openexr exr) \
 		$(use_enable gif) \
 		$(use_enable jpeg) \
-		$(use_enable jpeg2k jp2) \
+		--enable-jp2 \
 		$(use_enable mng) \
 		$(use_enable png) \
 		$(use_enable tiff) \

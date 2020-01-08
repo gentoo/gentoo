@@ -9,7 +9,7 @@ DESCRIPTION="Shamir's Secret Sharing Scheme"
 HOMEPAGE="http://point-at-infinity.org/ssss/"
 SRC_URI="http://point-at-infinity.org/${PN}/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2"
 SLOT="0"
 

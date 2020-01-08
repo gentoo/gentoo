@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/infozip/${MY_P}.zip"
 
 LICENSE="Info-ZIP"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux"
 IUSE="bzip2 crypt natspec unicode"
 
 RDEPEND="bzip2? ( app-arch/bzip2 )

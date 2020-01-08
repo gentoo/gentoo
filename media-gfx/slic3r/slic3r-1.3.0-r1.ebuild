@@ -13,6 +13,7 @@ LICENSE="AGPL-3 CC-BY-3.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+gui test"
+RESTRICT="!test? ( test )"
 
 # check Build.PL for dependencies
 RDEPEND="!=dev-lang/perl-5.16*
@@ -74,6 +75,7 @@ src_prepare() {
 	pushd "${WORKDIR}/Slic3r-${PV}" || die
 	sed -i lib/Slic3r.pm -e "s@FindBin::Bin@FindBin::RealBin@g" || die
 	eapply "${FILESDIR}"/${P}-no-locallib.patch
+	eapply "${FILESDIR}"/${P}-boost.patch
 	eapply_user
 	popd || die
 	# drop std=c++11 to compiler defaults...

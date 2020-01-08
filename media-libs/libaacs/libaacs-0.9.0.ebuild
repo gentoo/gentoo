@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ SRC_URI="https://downloads.videolan.org/pub/videolan/libaacs/${PV}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="amd64 arm arm64 ppc ppc64 sparc x86"
 IUSE="static-libs"
 
 RDEPEND=">=dev-libs/libgcrypt-1.5.3:0=[${MULTILIB_USEDEP}]

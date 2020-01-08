@@ -5,6 +5,7 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<stabilize-allarches/>
 	<upstream>
 		<maintainer status="active">
 			<email>mgorny@gentoo.org</email>

@@ -1,0 +1,42 @@
+--- a/libsandbox/trace.c
++++ b/libsandbox/trace.c
+@@ -10,7 +10,16 @@
+ #include "sb_nr.h"
+ 
+ static long do_peekdata(long offset);
+-static long _do_ptrace(enum __ptrace_request request, const char *srequest, void *addr, void *data);
++/* Note on _do_ptrace argument types:
++   glibc defines ptrace as:
++     long ptrace(enum __ptrace_request request, pid_t pid, void *addr, void *data);
++   musl defines ptrace as:
++     long ptrace(int, ...);
++
++   Let's clobber to 'int' lowest common denominator.
++ */
++typedef int sb_ptrace_req_t;
++static long _do_ptrace(sb_ptrace_req_t request, const char *srequest, void *addr, void *data);
+ #define do_ptrace(request, addr, data) _do_ptrace(request, #request, addr, data)
+ #define _trace_possible(data) true
+ 
+@@ -44,7 +53,7 @@ static void trace_exit(int status)
+ 	_exit(status);
+ }
+ 
+-static long _do_ptrace(enum __ptrace_request request, const char *srequest, void *addr, void *data)
++static long _do_ptrace(sb_ptrace_req_t request, const char *srequest, void *addr, void *data)
+ {
+ 	long ret;
+  try_again:
+--- a/scripts/gen_symbol_header.awk
++++ b/scripts/gen_symbol_header.awk
+@@ -117,6 +117,10 @@ END {
+ 				gsub(/@|\./, "_", sym_real_name);
+ 			}
+ 
++			# Avoid libc's symbol rename via #define. musl defines aliases as:
++			# #define mkstemp64 mkstemp
++			# #define mkstemps64 mkstemps
++			printf("#undef %s\n", sym_index);
+ 			printf("#define symname_%s \"%s\"\n", sym_real_name, sym_index);
+ 
+ 			# We handle non-versioned libc's by setting symver_*

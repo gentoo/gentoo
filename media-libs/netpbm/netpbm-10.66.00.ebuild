@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -11,12 +11,11 @@ SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="doc jbig jpeg jpeg2k png rle cpu_flags_x86_sse2 static-libs svga tiff X xml zlib"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+IUSE="doc jbig jpeg png rle cpu_flags_x86_sse2 static-libs svga tiff X xml zlib"
 
 RDEPEND="jbig? ( media-libs/jbigkit )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper )
 	png? ( >=media-libs/libpng-1.4:0 )
 	rle? ( media-libs/urt )
 	svga? ( media-libs/svgalib )
@@ -81,7 +80,7 @@ src_prepare() {
 	del=(
 		pnmtofiasco fiascotopnm # We always disable fiasco
 		$(usex jbig '' 'jbigtopnm pnmtojbig')
-		$(usex jpeg2k '' 'jpeg2ktopam pamtojpeg2k')
+		jpeg2ktopam pamtojpeg2k # jasper has been removed
 		$(usex rle '' 'pnmtorle rletopnm')
 		$(usex tiff '' 'pamtotiff pnmtotiff pnmtotiffcmyk tifftopnm')
 	)
@@ -148,7 +147,7 @@ src_configure() {
 	XML2_LIBS = $(netpbm_config xml xml2)
 	JBIGLIB = $(netpbm_config jbig)
 	JBIGHDR_DIR =
-	JASPERLIB = $(netpbm_config jpeg2k jasper)
+	JASPERLIB = NONE
 	JASPERHDR_DIR =
 	URTLIB = $(netpbm_config rle)
 	URTHDR_DIR =

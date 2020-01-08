@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -14,7 +14,7 @@ SRC_URI="mirror://gentoo/${MY_P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="|| ( net-analyzer/nagios-plugins net-analyzer/monitoring-plugins )

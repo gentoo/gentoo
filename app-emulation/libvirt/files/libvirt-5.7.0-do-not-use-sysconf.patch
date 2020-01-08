@@ -1,0 +1,170 @@
+From e387be8671d0de88632d063e2ecd2c12eb1b2fdf Mon Sep 17 00:00:00 2001
+Message-Id: <e387be8671d0de88632d063e2ecd2c12eb1b2fdf.1567522968.git.mprivozn@redhat.com>
+From: Michal Privoznik <mprivozn@redhat.com>
+Date: Sat, 16 Mar 2019 12:33:00 +0100
+Subject: [PATCH] gentoo: do not use sysconf
+
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ src/Makefile.am                  | 21 ++-------------------
+ src/locking/virtlockd.service.in |  3 +--
+ src/logging/virtlogd.service.in  |  3 +--
+ src/remote/libvirtd.service.in   |  3 +--
+ tools/Makefile.am                | 13 ++-----------
+ tools/libvirt-guests.service.in  |  2 +-
+ tools/libvirt-guests.sysconf     |  7 +++++++
+ 7 files changed, 15 insertions(+), 37 deletions(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index f5093b9c90..e2ebc51c87 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -672,23 +672,6 @@ libvirt_lxc_la_LIBADD = libvirt.la $(CYGWIN_EXTRA_LIBADD)
+ 
+ EXTRA_DIST += $(SYSCONF_FILES)
+ 
+-install-sysconfig:
+-	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/sysconfig
+-	for f in $(SYSCONF_FILES:%.sysconf=%) ; \
+-	do \
+-	  tgt=`basename $$f`; \
+-	  $(INSTALL_DATA) $(srcdir)/$$f.sysconf \
+-	      $(DESTDIR)$(sysconfdir)/sysconfig/$$tgt; \
+-	done
+-
+-uninstall-sysconfig:
+-	for f in $(SYSCONF_FILES:%.sysconf=%) ; \
+-	do \
+-	  tgt=`basename $$f`; \
+-	  rm -f $(DESTDIR)$(sysconfdir)/sysconfig/$$tgt; \
+-	done
+-	rmdir $(DESTDIR)$(sysconfdir)/sysconfig || :
+-
+ LOGROTATE_FILES := $(LOGROTATE_FILES_IN:remote/%.in=%)
+ 
+ EXTRA_DIST += $(LOGROTATE_FILES_IN)
+@@ -746,14 +729,14 @@ SYSTEMD_UNIT_DIR = $(prefix)/lib/systemd/system
+ BUILT_SOURCES += $(SYSTEMD_UNIT_FILES)
+ DISTCLEANFILES += $(SYSTEMD_UNIT_FILES)
+ 
+-install-systemd: $(SYSTEMD_UNIT_FILES) install-sysconfig
++install-systemd: $(SYSTEMD_UNIT_FILES)
+ 	$(MKDIR_P) $(DESTDIR)$(SYSTEMD_UNIT_DIR)
+ 	for f in $(SYSTEMD_UNIT_FILES); \
+ 	do \
+ 	  $(INSTALL_DATA) $$f $(DESTDIR)$(SYSTEMD_UNIT_DIR)/ ; \
+ 	done
+ 
+-uninstall-systemd: uninstall-sysconfig
++uninstall-systemd:
+ 	rm -f $(SYSTEMD_UNIT_FILES:%=$(DESTDIR)$(SYSTEMD_UNIT_DIR)/%)
+ 	rmdir $(DESTDIR)$(SYSTEMD_UNIT_DIR) || :
+ 
+diff --git a/src/locking/virtlockd.service.in b/src/locking/virtlockd.service.in
+index e7f8057c06..2449b201d9 100644
+--- a/src/locking/virtlockd.service.in
++++ b/src/locking/virtlockd.service.in
+@@ -7,8 +7,7 @@ Documentation=man:virtlockd(8)
+ Documentation=https://libvirt.org
+ 
+ [Service]
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtlockd
+-ExecStart=@sbindir@/virtlockd $VIRTLOCKD_ARGS
++ExecStart=@sbindir@/virtlockd
+ ExecReload=/bin/kill -USR1 $MAINPID
+ # Loosing the locks is a really bad thing that will
+ # cause the machine to be fenced (rebooted), so make
+diff --git a/src/logging/virtlogd.service.in b/src/logging/virtlogd.service.in
+index daff48e67d..43736191d5 100644
+--- a/src/logging/virtlogd.service.in
++++ b/src/logging/virtlogd.service.in
+@@ -7,8 +7,7 @@ Documentation=man:virtlogd(8)
+ Documentation=https://libvirt.org
+ 
+ [Service]
+-EnvironmentFile=-@sysconfdir@/sysconfig/virtlogd
+-ExecStart=@sbindir@/virtlogd $VIRTLOGD_ARGS
++ExecStart=@sbindir@/virtlogd
+ ExecReload=/bin/kill -USR1 $MAINPID
+ # Loosing the logs is a really bad thing that will
+ # cause the machine to be fenced (rebooted), so make
+diff --git a/src/remote/libvirtd.service.in b/src/remote/libvirtd.service.in
+index 9c8c54a2ef..a042280cef 100644
+--- a/src/remote/libvirtd.service.in
++++ b/src/remote/libvirtd.service.in
+@@ -25,8 +25,7 @@ Documentation=https://libvirt.org
+ 
+ [Service]
+ Type=notify
+-EnvironmentFile=-@sysconfdir@/sysconfig/libvirtd
+-ExecStart=@sbindir@/libvirtd $LIBVIRTD_ARGS
++ExecStart=@sbindir@/libvirtd
+ ExecReload=/bin/kill -HUP $MAINPID
+ KillMode=process
+ Restart=on-failure
+diff --git a/tools/Makefile.am b/tools/Makefile.am
+index 29fdbfe846..04b21eb54a 100644
+--- a/tools/Makefile.am
++++ b/tools/Makefile.am
+@@ -360,15 +360,6 @@ install-data-local: install-systemd install-nss \
+ uninstall-local: uninstall-systemd uninstall-nss \
+ 	uninstall-bash-completion
+ 
+-install-sysconfig:
+-	$(MKDIR_P) $(DESTDIR)$(sysconfdir)/sysconfig
+-	$(INSTALL_DATA) $(srcdir)/libvirt-guests.sysconf \
+-	  $(DESTDIR)$(sysconfdir)/sysconfig/libvirt-guests
+-
+-uninstall-sysconfig:
+-	rm -f $(DESTDIR)$(sysconfdir)/sysconfig/libvirt-guests
+-	rmdir $(DESTDIR)$(sysconfdir)/sysconfig ||:
+-
+ EXTRA_DIST += libvirt-guests.sh.in
+ 
+ libvirt-guests.sh: libvirt-guests.sh.in $(top_builddir)/config.status
+@@ -388,12 +379,12 @@ EXTRA_DIST += libvirt-guests.service.in
+ SYSTEMD_UNIT_DIR = $(prefix)/lib/systemd/system
+ 
+ if LIBVIRT_INIT_SCRIPT_SYSTEMD
+-install-systemd: libvirt-guests.service install-sysconfig libvirt-guests.sh
++install-systemd: libvirt-guests.service libvirt-guests.sh
+ 	$(MKDIR_P) $(DESTDIR)$(SYSTEMD_UNIT_DIR)
+ 	$(INSTALL_DATA) libvirt-guests.service \
+ 	  $(DESTDIR)$(SYSTEMD_UNIT_DIR)/libvirt-guests.service
+ 
+-uninstall-systemd: uninstall-sysconfig
++uninstall-systemd:
+ 	rm -f $(DESTDIR)$(SYSTEMD_UNIT_DIR)/libvirt-guests.service
+ 	rmdir $(DESTDIR)$(SYSTEMD_UNIT_DIR) ||:
+ 
+diff --git a/tools/libvirt-guests.service.in b/tools/libvirt-guests.service.in
+index 10c664016a..f0f417bffb 100644
+--- a/tools/libvirt-guests.service.in
++++ b/tools/libvirt-guests.service.in
+@@ -10,7 +10,7 @@ Documentation=man:libvirtd(8)
+ Documentation=https://libvirt.org
+ 
+ [Service]
+-EnvironmentFile=-@sysconfdir@/sysconfig/libvirt-guests
++EnvironmentFile=-/etc/libvirt/libvirt-guests.conf
+ # Hack just call traditional service until we factor
+ # out the code
+ ExecStart=@libexecdir@/libvirt-guests.sh start
+diff --git a/tools/libvirt-guests.sysconf b/tools/libvirt-guests.sysconf
+index 669b046507..45b0b9ea46 100644
+--- a/tools/libvirt-guests.sysconf
++++ b/tools/libvirt-guests.sysconf
+@@ -1,3 +1,10 @@
++#
++# Warning: This configuration file is only sourced by the systemd
++# libvirt-guests.service unit. The coresponding openrc facility is in
++# /etc/init.d/libvirtd and /etc/conf.d/libvirtd
++#
++
++
+ # URIs to check for running guests
+ # example: URIS='default xen:///system vbox+tcp://host/system lxc:///system'
+ #URIS=default
+-- 
+2.21.0
+

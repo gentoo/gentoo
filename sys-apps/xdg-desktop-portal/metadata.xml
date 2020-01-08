@@ -5,4 +5,7 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
+	<use>
+		<flag name="screencast">Enable screencast portal using <pkg>media-video/pipewire</pkg></flag>
+	</use>
 </pkgmetadata>

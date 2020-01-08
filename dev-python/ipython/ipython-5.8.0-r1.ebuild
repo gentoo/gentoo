@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='readline,sqlite,threads(+)'
 
 inherit distutils-r1 eutils virtualx
@@ -15,7 +15,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc examples matplotlib notebook nbconvert qt5 +smp test wxwidgets"
+IUSE="doc examples matplotlib notebook nbconvert qt5 +smp test"
 RESTRICT="!test? ( test )"
 
 CDEPEND="
@@ -29,7 +29,6 @@ CDEPEND="
 	dev-python/simplegeneric[${PYTHON_USEDEP}]
 	>=dev-python/traitlets-4.2.1[${PYTHON_USEDEP}]
 	matplotlib? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
-	wxwidgets? ( $(python_gen_cond_dep 'dev-python/wxpython:*[${PYTHON_USEDEP}]' 'python2*') )
 "
 
 RDEPEND="${CDEPEND}

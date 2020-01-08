@@ -23,3 +23,7 @@ SLOT="0"
 IUSE=""
 
 ruby_add_rdepend ">=dev-ruby/rack-2.0.6:*"
+
+all_ruby_prepare() {
+	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
+}

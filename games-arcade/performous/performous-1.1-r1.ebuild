@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -55,6 +55,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	sys-apps/help2man
 	sys-devel/gettext
+	songs? ( app-arch/unzip )
 "
 
 DOCS=( docs/{Authors,instruments}.txt )
@@ -63,6 +64,8 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-linguas.patch
 	"${FILESDIR}"/${P}-nomancompress.patch
+	"${FILESDIR}"/${P}-jpeg-9c.patch
+	"${FILESDIR}"/${P}-boost-1.70.patch
 )
 
 src_prepare() {

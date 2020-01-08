@@ -18,6 +18,6 @@ DEPEND="${RDEPEND}
 
 src_install() {
 	dodir /usr/bin
-	emake bindir="${ED}/usr/bin" install || die
+	emake bindir="${ED}/usr/bin" install
 	dodoc README.MD
 }

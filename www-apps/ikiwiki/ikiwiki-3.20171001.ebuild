@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,6 +12,7 @@ SRC_URI="mirror://debian/pool/main/i/ikiwiki/${PN}_${PV}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="extras minimal test"
+RESTRICT="!test? ( test )"
 KEYWORDS="~amd64 ~x86"
 
 S=${WORKDIR}/${PN}-${PV}

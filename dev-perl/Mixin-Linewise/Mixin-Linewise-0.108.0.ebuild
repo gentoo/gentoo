@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,6 +10,7 @@ DESCRIPTION="write your linewise code for handles; this does the rest"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test minimal"
+RESTRICT="!test? ( test )"
 # r: IO::File -> IO
 # r: strict, warnings -> perl
 # t: lib, utf8 -> perl

@@ -6,7 +6,7 @@ EAPI=6
 # Force users doing their own patches to install their own tools
 AUTOTOOLS_AUTO_DEPEND=no
 
-inherit ltprune multilib systemd toolchain-funcs autotools flag-o-matic
+inherit ltprune multilib systemd toolchain-funcs autotools flag-o-matic usr-ldscript
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://www.netfilter.org/projects/iptables/"

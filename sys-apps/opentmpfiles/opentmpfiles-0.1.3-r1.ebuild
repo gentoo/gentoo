@@ -10,7 +10,7 @@ if [[ ${PV} = 9999* ]]; then
 else
 	SRC_URI="https://github.com/openrc/${PN}/archive/${PV}.tar.gz ->
 		${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="A standalone utility to process systemd-style tmpfiles.d files"

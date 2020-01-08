@@ -17,7 +17,7 @@ SRC_URI="ftp://ftp.stunnel.org/stunnel/archive/${PV%%.*}.x/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha"
 IUSE="ipv6 libressl selinux stunnel3 tcpd"
 
 DEPEND="tcpd? ( sys-apps/tcp-wrappers )

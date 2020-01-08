@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (11 Nov 2016)
+# Michał Górny <mgorny@gentoo.org> (2016-11-11)
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_SystemZ
 sys-devel/clang llvm_targets_SystemZ

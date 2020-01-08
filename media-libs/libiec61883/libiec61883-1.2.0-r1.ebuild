@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,11 +7,11 @@ inherit autotools-multilib eutils unpacker autotools
 
 DESCRIPTION="Library for capturing video (dv or mpeg2) over the IEEE 1394 bus"
 HOMEPAGE="http://dennedy.org/cgi-bin/gitweb.cgi?p=dennedy.org/libiec61883.git"
-SRC_URI="mirror://kernel/linux/libs/ieee1394/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/libs/ieee1394/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 arm arm64 ia64 ppc ppc64 sparc x86"
 IUSE="examples static-libs"
 
 RDEPEND=">=sys-libs/libraw1394-2.1.0-r1[${MULTILIB_USEDEP}]"

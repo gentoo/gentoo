@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="mirror://apache/${PN}/tomcat-9/v${PV}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="9"
-KEYWORDS="amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="extra-webapps"
 
 RESTRICT="test" # can we run them on a production system?
@@ -24,9 +24,8 @@ ECJ_SLOT="4.5"
 SAPI_SLOT="4.0"
 
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
-	=dev-java/tomcat-servlet-api-${PV}:${SAPI_SLOT}"
+	~dev-java/tomcat-servlet-api-${PV}:${SAPI_SLOT}"
 RDEPEND="${COMMON_DEP}
-	!<dev-java/tomcat-native-1.1.24
 	>=virtual/jre-1.8"
 DEPEND="${COMMON_DEP}
 	app-admin/pwgen

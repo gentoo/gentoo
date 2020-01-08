@@ -1,14 +1,14 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-EGIT_REPO_URI="git://git.zapb.de/libjaylink.git"
+EGIT_REPO_URI="https://gitlab.zapb.de/zapb/libjaylink.git"
 
 inherit git-r3 autotools eutils
 
 DESCRIPTION="Library to access J-Link devices"
-HOMEPAGE="http://git.zapb.de/libjaylink.git"
+HOMEPAGE="https://gitlab.zapb.de/zapb/libjaylink"
 
 LICENSE="GPL-2"
 SLOT="0"

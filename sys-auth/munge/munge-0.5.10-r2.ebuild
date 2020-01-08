@@ -40,23 +40,23 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	# 450830
 	if [ -d "${D}"/var/run ]; then
 		rm -rf "${D}"/var/run || die
 	fi
 
-	dodir /etc/munge || die
+	dodir /etc/munge
 
 	[ -d "${D}"/etc/init.d ] && rm -r "${D}"/etc/init.d
 	[ -d "${D}"/etc/default ] && rm -r "${D}"/etc/default
 	[ -d "${D}"/etc/sysconfig ] && rm -r "${D}"/etc/sysconfig
 
-	newconfd "${FILESDIR}"/${PN}d.confd ${PN}d || die
-	newinitd "${FILESDIR}"/${PN}d.initd ${PN}d || die
+	newconfd "${FILESDIR}"/${PN}d.confd ${PN}d
+	newinitd "${FILESDIR}"/${PN}d.initd ${PN}d
 }
 
 src_test() {
-	emake check || die
+	emake check
 }

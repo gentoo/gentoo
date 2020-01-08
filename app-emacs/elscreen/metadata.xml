@@ -13,11 +13,15 @@
   etc. These applications likely consist of two or more windows, so when you
   switch among applications, you may want to save or restore how windows are
   located (this is called as "window-configuration"). For this purpose, Emacs
-  has two functions, window-configuratin-to-register and jump-to-register, but
-  these are too primitive to use on a daily basis.
+  has two functions, window-configuration-to-register and jump-to-register,
+  but these are too primitive to use on a daily basis.
 
   ElScreen provides the ease-to-use environment to save or restore several
   window-configurations.
 </longdescription>
 <stabilize-allarches/>
+<use>
+  <flag name="wanderlust">Include support for <pkg>app-emacs/wanderlust</pkg>
+  </flag>
+</use>
 </pkgmetadata>

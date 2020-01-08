@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>heroxbd@gentoo.org</email>
+  </maintainer>
   <longdescription lang="en">
   CMT is a configuration management environment, based on some
   management conventions and comprises several shell-based

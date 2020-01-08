@@ -13,11 +13,11 @@ CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
 
-# Michał Górny <mgorny@gentoo.org> (30 Jan 2015)
+# Michał Górny <mgorny@gentoo.org> (2015-01-30)
 # Unhide the CPU_FLAGS_X86 USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_X86"
 
-# Michał Górny <mgorny@gentoo.org> (20 Jun 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-06-20)
 # Provide values for ABI-related variables that are compatible with
 # multilib amd64, to make consistent ebuild writing easier.
 MULTILIB_ABIS="x86"
@@ -26,24 +26,24 @@ ABI="x86"
 CHOST_x86="${CHOST}"
 LIBDIR_x86="lib"
 
-# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
 VIDEO_CARDS="amdgpu fbdev intel nouveau radeon radeonsi vesa"
 
-# 2006/12/21 - Andrej Kacian <ticho@gentoo.org>
+# Andrej Kacian <ticho@gentoo.org> (2006-12-21)
 # Defaults for audio drivers
 ALSA_CARDS="ali5451 als4000 atiixp atiixp-modem bt87x ca0106 cmipci emu10k1 emu10k1x ens1370 ens1371 es1938 es1968 fm801 hda-intel intel8x0 intel8x0m maestro3 trident usb-audio via82xx via82xx-modem ymfpci"
 
-# Michał Górny <mgorny@gentoo.org> (25 Jun 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-06-25)
 # Make the native ABI implicit so that MULTILIB_USEDEP can be satisfied
 # by non-multilib ebuilds when non-native ABIs are disabled.
 IUSE_IMPLICIT="abi_x86_32"
 
-# Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
 # Default to abi_x86_32 for packages that don't have it forced.
 ABI_X86="32"
 
-# Thomas Deutschmann <whissi@gentoo.org> (6 Jun 2018)
+# Thomas Deutschmann <whissi@gentoo.org> (2018-06-06)
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"

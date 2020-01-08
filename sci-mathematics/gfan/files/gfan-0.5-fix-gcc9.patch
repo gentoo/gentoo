@@ -1,0 +1,68 @@
+https://bugs.gentoo.org/686484
+
+polyhedralfan.h: At global scope:
+polyhedralfan.h:77:24: error: friend declaration of ‘PolyhedralFan refinement(const PolyhedralFan&, const PolyhedralFan&, int, bool)’ specifies default arguments and isn’t a definition [-fpermissive]
+   77 |   friend PolyhedralFan refinement(const PolyhedralFan &a, const PolyhedralFan &b, int cutOffDimension=-1, bool allowASingleConeOfCutOffDimension=false);
+      |                        ^~~~~~~~~~
+
+--- a/gfanlib_polyhedralfan.h
++++ b/gfanlib_polyhedralfan.h
+@@ -24,6 +24,8 @@
+ typedef std::map<int,IntVectorList> IncidenceList;
+ 
+ 
++class PolyhedralFan;
++PolyhedralFan refinement(const PolyhedralFan &a, const PolyhedralFan &b, int cutOffDimension=-1, bool allowASingleConeOfCutOffDimension=false);
+ 
+ /** A PolyhedralFan is simply a collection of canonicalized PolyhedralCones.
+  * It contains no combinatorial information in the sense of a polyhedral complex.
+@@ -52,7 +54,7 @@
+   int getAmbientDimension()const;
+   int getMaxDimension()const;
+   int getMinDimension()const;
+-  friend PolyhedralFan refinement(const PolyhedralFan &a, const PolyhedralFan &b, int cutOffDimension=-1, bool allowASingleConeOfCutOffDimension=false);
++  friend PolyhedralFan refinement(const PolyhedralFan &a, const PolyhedralFan &b, int cutOffDimension, bool allowASingleConeOfCutOffDimension);
+   ZMatrix getRays(int dim=1);//This can be called for other dimensions than 1. The term "Rays" still makes sense modulo the common linearity space
+   ZMatrix getRelativeInteriorPoints();
+   void insert(ZCone const &c);
+--- a/halfopencone.h
++++ b/halfopencone.h
+@@ -6,6 +6,9 @@
+ 
+ #include "polyhedralfan.h"
+ 
++class HalfOpenCone;
++HalfOpenCone intersection(const HalfOpenCone &a, const HalfOpenCone &b, bool findFacets=false);
++
+ class HalfOpenCone{
+   static void appendList(IntegerVectorList &to, IntegerVectorList const &from, int appendValue);
+   int liftedDimension;//ambient
+@@ -18,7 +21,7 @@
+   HalfOpenCone(int dimension_, IntegerVectorList const &equations, IntegerVectorList const &nonstrict, IntegerVectorList const &strict, bool findFacets=false, bool canonicalize=false);
+   HalfOpenCone(int ambientDimension);//full space
+   bool isEmpty();
+-  friend HalfOpenCone intersection(const HalfOpenCone &a, const HalfOpenCone &b, bool findFacets=false);
++  friend HalfOpenCone intersection(const HalfOpenCone &a, const HalfOpenCone &b, bool findFacets);
+   friend bool haveEmptyIntersection(const HalfOpenCone &a, const HalfOpenCone &b);
+   PolyhedralCone closure();
+   void splitIntoRelativelyOpenCones(list<HalfOpenCone> &l);
+--- a/polyhedralfan.h
++++ b/polyhedralfan.h
+@@ -30,6 +30,8 @@
+   FPF_default=2+4+8
+ };
+ 
++class PolyhedralFan;
++PolyhedralFan refinement(const PolyhedralFan &a, const PolyhedralFan &b, int cutOffDimension=-1, bool allowASingleConeOfCutOffDimension=false);
+ 
+ /** A PolyhedralFan is simply a collection of canonicalized PolyhedralCones.
+  * It contains no combinatorial information in the sense of a polyhedral complex.
+@@ -74,7 +76,7 @@
+   int getAmbientDimension()const;
+   int getMaxDimension()const;
+   int getMinDimension()const;
+-  friend PolyhedralFan refinement(const PolyhedralFan &a, const PolyhedralFan &b, int cutOffDimension=-1, bool allowASingleConeOfCutOffDimension=false);
++  friend PolyhedralFan refinement(const PolyhedralFan &a, const PolyhedralFan &b, int cutOffDimension, bool allowASingleConeOfCutOffDimension);
+   friend PolyhedralFan product(const PolyhedralFan &a, const PolyhedralFan &b);
+   IntegerVectorList getRays(int dim=1);//This can be called for other dimensions than 1. The term "Rays" still makes sense modulo the common linearity space
+   IntegerVectorList getRelativeInteriorPoints();

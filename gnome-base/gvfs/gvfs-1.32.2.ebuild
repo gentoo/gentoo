@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ REQUIRED_USE="
 	udisks? ( udev )
 	systemd? ( !elogind udisks )
 "
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 RDEPEND="
 	app-crypt/gcr:=
@@ -57,10 +57,10 @@ RDEPEND="
 	systemd? ( >=sys-apps/systemd-206:0= )
 	udev? (
 		cdda? ( dev-libs/libcdio-paranoia )
-		>=virtual/libgudev-147:=
+		>=dev-libs/libgudev-147:=
 		virtual/libudev:= )
 	udisks? ( >=sys-fs/udisks-1.97:2 )
-	zeroconf? ( >=net-dns/avahi-0.6 )
+	zeroconf? ( >=net-dns/avahi-0.6[dbus] )
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-xsl-stylesheets

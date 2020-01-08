@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="https://dev.gentoo.org/~ssuominen/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
+KEYWORDS="amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="low-accuracy static-libs"
 
 RDEPEND=">=media-libs/libogg-1.3.0:=[${MULTILIB_USEDEP}]"

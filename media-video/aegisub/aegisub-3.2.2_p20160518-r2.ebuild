@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ LICENSE="BSD MIT"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="+alsa debug +fftw openal oss portaudio pulseaudio spell test +uchardet"
+RESTRICT="!test? ( test )"
 
 # aegisub bundles luabins (https://github.com/agladysh/luabins).
 # Unfortunately, luabins upstream is practically dead since 2010.
@@ -46,7 +47,7 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig
 	test? (
-		~dev-cpp/gtest-1.7.0
+		>=dev-cpp/gtest-1.8.1
 		dev-lua/busted
 		dev-lua/luarocks
 	)

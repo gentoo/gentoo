@@ -13,7 +13,7 @@ SRC_URI="http://www.kiecza.net/daniel/linux/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_P}"

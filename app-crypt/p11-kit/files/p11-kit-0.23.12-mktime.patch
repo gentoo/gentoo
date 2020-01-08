@@ -1,0 +1,26 @@
+From 3d009fda4cb39157d6876e7d16cbc57f7b59bc86 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Mon, 1 Jul 2019 13:38:25 +0300
+Subject: [PATCH] trust: do not allow daylight to invalidate date validation
+
+Issue: 235
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ trust/builder.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/trust/builder.c b/trust/builder.c
+index d819dc8..2fc0c40 100644
+--- a/trust/builder.c
++++ b/trust/builder.c
+@@ -261,6 +261,7 @@ type_date (p11_builder *builder,
+ 		return false;
+ 
+ 	memcpy (&two, &tm, sizeof (tm));
++	two.tm_isdst = -1;	// do not perform tz fixup
+ 	if (mktime (&two) < 0)
+ 		return false;
+ 
+-- 
+2.21.0
+

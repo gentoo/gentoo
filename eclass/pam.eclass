@@ -3,7 +3,7 @@
 
 # @ECLASS: pam.eclass
 # @MAINTAINER:
-# zlogene@gentoo.org
+# Mikle Kolyada <zlogene@gentoo.org>
 # @AUTHOR:
 # Diego Pettenò <flameeyes@gentoo.org>
 # @BLURB: Handles pam related tasks
@@ -94,7 +94,7 @@ newpamsecurity() {
 # @DESCRIPTION:
 # Returns the pam modules' directory for current implementation
 getpam_mod_dir() {
-	if has_version sys-libs/pam || has_version sys-libs/openpam; then
+	if has_version sys-libs/pam; then
 		PAM_MOD_DIR=/$(get_libdir)/security
 	else
 		# Unable to find PAM implementation... defaulting

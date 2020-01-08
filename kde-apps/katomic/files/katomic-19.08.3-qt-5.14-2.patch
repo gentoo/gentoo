@@ -1,0 +1,24 @@
+From d8cf83cf8554914ea357920473ff4c722cf794bf Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Thu, 31 Oct 2019 13:30:42 +0100
+Subject: Make it compile against 5.15. This enum was unused
+
+---
+ gamewidget.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/gamewidget.cpp b/gamewidget.cpp
+index d70213b..3639847 100644
+--- a/gamewidget.cpp
++++ b/gamewidget.cpp
+@@ -58,7 +58,7 @@ GameWidget::GameWidget ( const QString& levelSet, QWidget *parent )
+     // TODO uncomment DontSavePainterState optimization back after this bug in Qt 4.6 preview will be
+     // fixed (darktears promised it will get fixed in 4.6.0 release). Bug is about wrong coordinates
+     // for QPainter passed to QGS::drawForeground() function
+-    m_view->setOptimizationFlags( QGraphicsView::DontClipPainter |
++    m_view->setOptimizationFlags( 
+             //QGraphicsView::DontSavePainterState |
+             QGraphicsView::DontAdjustForAntialiasing );
+ 
+-- 
+cgit v1.1

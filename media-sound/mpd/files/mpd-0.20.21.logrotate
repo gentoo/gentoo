@@ -1,9 +1,0 @@
-/var/lib/mpd/log {
-	missingok
-	weekly
-	delaycompress
-	compress
-	postrotate
-	/etc/init.d/mpd reload
-	endscript
-}

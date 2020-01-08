@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/scim/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ppc ppc64 sparc x86"
 IUSE="doc gtk3"
 
 RDEPEND="x11-libs/libX11

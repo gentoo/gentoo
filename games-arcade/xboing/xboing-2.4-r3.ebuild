@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils user
+inherit eutils
 
 DESCRIPTION="Blockout type game where you bounce a ball trying to destroy blocks"
 HOMEPAGE="http://www.techrescue.org/xboing/"
@@ -12,10 +12,11 @@ SRC_URI="http://www.techrescue.org/xboing/${PN}${PV}.tar.gz
 
 LICENSE="xboing"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE=""
 
-RDEPEND="x11-libs/libXpm"
+RDEPEND="acct-group/gamestat
+	x11-libs/libXpm"
 DEPEND="${RDEPEND}
 	app-text/rman
 	x11-misc/gccmakedep
@@ -23,10 +24,6 @@ DEPEND="${RDEPEND}
 "
 
 S=${WORKDIR}/${PN}
-
-pkg_setup(){
-	enewgroup gamestat 36
-}
 
 src_prepare() {
 	epatch "${WORKDIR}"/xboing-${PV}-debian.patch

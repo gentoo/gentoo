@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit multilib python-r1 toolchain-funcs
 
@@ -12,7 +12,7 @@ DESCRIPTION="A C++ crypto library"
 HOMEPAGE="https://botan.randombit.net/"
 SRC_URI="https://botan.randombit.net/releases/${MY_P}.tgz"
 
-KEYWORDS="~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~ppc-macos"
+KEYWORDS="amd64 ~arm hppa ~ia64 ppc ppc64 ~sparc x86 ~ppc-macos"
 SLOT="2/$(ver_cut 1-2)" # soname version
 LICENSE="BSD"
 IUSE="bindist doc boost python bzip2 libressl lzma sqlite ssl static-libs zlib"
@@ -33,6 +33,10 @@ RDEPEND="${DEPEND}
 	)"
 BDEPEND="dev-lang/python:*
 	doc? ( dev-python/sphinx )"
+
+PATCHES=(
+	"${FILESDIR}/${P}-build.patch"
+)
 
 src_configure() {
 	local disable_modules=()

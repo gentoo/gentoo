@@ -1,20 +1,27 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Anthony G. Basile <blueness@gentoo.org>
+# sanitize is broken on at least all hardened uclibc
+sys-devel/gcc sanitize
+
+# Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # Those require USE=java that is masked in this profile.
 app-emulation/virtualbox vboxwebsrv
 app-office/libreoffice libreoffice_extensions_wiki-publisher
 
-# Thomas Deutschmann <whissi@gentoo.org> (21 Jan 2017)
+# Thomas Deutschmann <whissi@gentoo.org> (2017-01-21)
 # Mask due Gnome3 not going to be stabilized on this arch
 # due to uclibc
 dev-util/geany-plugins gtkspell
 
-# Joshua Kinard <kumba@gentoo.org> (18 Jan 2016)
+# Joshua Kinard <kumba@gentoo.org> (2016-01-18)
 # Fails linking to gettext/libintl for symbol 'libintl_gettext'.
 # Is fixable by using 'append-ldflags' from flag-o-matic to force
 # -lintl, but that's a QA violation.  Real solution is to use
 # 'append-libs', but xfsdump's build system doesn't honor $LIBS.
 # So this is the best way for now.  See 570548.
 sys-fs/xfsdump nls
+
+# static linking works with uClibc
+app-shells/mksh -static

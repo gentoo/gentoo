@@ -1,5 +1,0 @@
-# Force the flag which corresponds to ARCH.
-amd64-fbsd
-
-# Multilib flag for default ABI
-abi_x86_64

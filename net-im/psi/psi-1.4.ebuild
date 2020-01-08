@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="be bg ca cs de en eo es et fa fi fr he hu it ja kk mk nl pl pt pt_BR ru sk sl sr@latin sv sw uk ur_PK vi zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit l10n qmake-utils gnome2-utils xdg-utils
+inherit l10n qmake-utils xdg
 
 DESCRIPTION="Qt XMPP client"
 HOMEPAGE="https://psi-im.org"
@@ -113,12 +113,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	xdg_pkg_postinst
 	einfo "For GPG support make sure app-crypt/qca is compiled with gpg USE flag."
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
 }

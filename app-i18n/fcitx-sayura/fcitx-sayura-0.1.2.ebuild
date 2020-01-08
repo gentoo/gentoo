@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2016-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit cmake-utils gnome2-utils
+inherit cmake-utils xdg-utils
 
 if [[ "${PV}" =~ (^|\.)9999$ ]]; then
 	inherit git-r3
@@ -24,18 +24,18 @@ SLOT="4"
 KEYWORDS="amd64 ~hppa ppc ppc64 x86"
 IUSE=""
 
-RDEPEND=">=app-i18n/fcitx-4.2.9:4
+BDEPEND="virtual/pkgconfig"
+DEPEND=">=app-i18n/fcitx-4.2.9:4
 	virtual/libiconv
 	virtual/libintl"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="${DEPEND}"
 
 DOCS=()
 
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

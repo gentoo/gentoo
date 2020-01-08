@@ -18,5 +18,5 @@ HOMEPAGE="https://github.com/sinatra/mustermann"
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE=""

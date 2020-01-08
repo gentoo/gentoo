@@ -1,0 +1,77 @@
+From a21993d750396d755717df21e331df87af8a0c6a Mon Sep 17 00:00:00 2001
+From: Bruce Stephens <bruce.stephens@isode.com>
+Date: Wed, 9 Jan 2019 16:21:20 +0000
+Subject: [PATCH] Don't assume that tribool has an implicit bool conversion
+
+In boost 1.68.0 the conversion is implicit, but in 1.69.0 it's
+explicit and we must explicitly call it.
+
+Change-Id: I24eb78be7510c89b88342d28c539cad4977f99fd
+---
+ Swiften/Network/PlatformNATTraversalWorker.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Swiften/Network/PlatformNATTraversalWorker.cpp b/Swiften/Network/PlatformNATTraversalWorker.cpp
+index f56de0b78b..eaa13b30d3 100644
+--- a/Swiften/Network/PlatformNATTraversalWorker.cpp
++++ b/Swiften/Network/PlatformNATTraversalWorker.cpp
+@@ -157,7 +157,7 @@ NATTraversalInterface* PlatformNATTraversalWorker::getNATTraversalInterface() co
+         miniUPnPInterface = new MiniUPnPInterface();
+         miniUPnPSupported = miniUPnPInterface->isAvailable();
+     }
+-    SWIFT_LOG(debug) << "UPnP NAT traversal supported: " << miniUPnPSupported << std::endl;
++    SWIFT_LOG(debug) << "UPnP NAT traversal supported: " << static_cast<bool>(miniUPnPSupported) << std::endl;
+     if (miniUPnPSupported) {
+         return miniUPnPInterface;
+     }
+@@ -168,7 +168,7 @@ NATTraversalInterface* PlatformNATTraversalWorker::getNATTraversalInterface() co
+         natPMPInterface = new NATPMPInterface();
+         natPMPSupported = natPMPInterface->isAvailable();
+     }
+-    SWIFT_LOG(debug) << "NAT-PMP NAT traversal supported: " << natPMPSupported << std::endl;
++    SWIFT_LOG(debug) << "NAT-PMP NAT traversal supported: " << static_cast<bool>(natPMPSupported) << std::endl;
+     if (natPMPSupported) {
+         return natPMPInterface;
+     }
+From bb3bd8a32b220b9c1ffd566da00bcd0ba546156c Mon Sep 17 00:00:00 2001
+From: Miroslaw Stein <miroslaw.stein@isode.com>
+Date: Fri, 18 Jan 2019 14:30:24 +0000
+Subject: [PATCH] Avoid deprecated boost endianess include
+
+As of Boost 1.69.0, boost/detail/endian.h is deprecated in favour of
+boost/predef/other/endian.h, and BOOST_(LITTLE|BIG)_ENDIAN by
+BOOST_ENDIAN_(LITTLE|BIG)_BYTE.
+
+Test-Information:
+
+Unit tests pass on Debian 9
+
+Change-Id: If7076c559a4e35219ff97603f50b80cfbe05b29b
+---
+ Swiften/Base/Platform.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/Swiften/Base/Platform.h b/Swiften/Base/Platform.h
+index 4deba2bdda..22dff30b14 100644
+--- a/Swiften/Base/Platform.h
++++ b/Swiften/Base/Platform.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2010 Isode Limited.
++ * Copyright (c) 2010-2019 Isode Limited.
+  * All rights reserved.
+  * See the COPYING file for more information.
+  */
+@@ -43,9 +43,9 @@
+ #endif
+ 
+ // Endianness
+-#include <boost/detail/endian.hpp>
+-#if defined(BOOST_LITTLE_ENDIAN)
++#include <boost/predef/other/endian.h>
++#if defined(BOOST_ENDIAN_LITTLE_BYTE)
+ #define SWIFTEN_LITTLE_ENDIAN
+-#elif defined(BOOST_BIG_ENDIAN)
++#elif defined(BOOST_ENDIAN_BIG_BYTE)
+ #define SWIFTEN_BIG_ENDIAN
+ #endif

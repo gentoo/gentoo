@@ -1,0 +1,11 @@
+--- a/main.c
++++ b/main.c
+@@ -28,6 +28,8 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <unistd.h>
++#include <stdio.h>
++#include <stdlib.h>
+ 
+ // use the first one of these that exists
+ static char *default_device[] = {"/dev/midi00", "/dev/midi", NULL};

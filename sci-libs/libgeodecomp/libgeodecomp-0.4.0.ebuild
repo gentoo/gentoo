@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://www.libgeodecomp.org/archive/${P}.tar.bz2"
 
 SLOT="0"
 LICENSE="Boost-1.0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="doc mpi cuda opencl opencv silo hpx visit"
 
 RDEPEND=">=dev-libs/boost-1.48"
@@ -21,12 +21,13 @@ DEPEND="${RDEPEND}
 		app-text/texlive
 		media-gfx/graphviz
 		)
+	hpx? ( sys-cluster/hpx )
+	<=dev-libs/libflatarray-0.2.0
 	mpi? ( virtual/mpi )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	opencl? ( virtual/opencl )
 	opencv? ( media-libs/opencv )
 	silo? ( sci-libs/silo )
-	hpx? ( sys-cluster/hpx )
 	visit? ( sci-visualization/visit )"
 
 S="${WORKDIR}/${P}"

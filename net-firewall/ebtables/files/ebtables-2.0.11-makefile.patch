@@ -1,0 +1,13 @@
+diff --git a/Makefile.am b/Makefile.am
+index 6181003..de01139 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -50,7 +50,7 @@ ebtables_legacy_LDADD = libebtc.la
+ ebtablesd_LDADD = libebtc.la
+ ebtables_legacy_restore_SOURCES = ebtables-restore.c
+ ebtables_legacy_restore_LDADD = libebtc.la
+-static_SOURCES = ebtables.c
++static_SOURCES = ebtables.c ebtables-standalone.c
+ static_LDFLAGS = -static
+ static_LDADD = libebtc.la
+ examples_ulog_test_ulog_SOURCES = examples/ulog/test_ulog.c getethertype.c

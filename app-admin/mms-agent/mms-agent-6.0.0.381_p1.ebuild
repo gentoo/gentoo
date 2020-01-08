@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit eutils user
 MY_PV=${PV/_p/-}
 
 DESCRIPTION="MongoDB MMS agents"
-HOMEPAGE="http://cloud.mongodb.com"
+HOMEPAGE="https://www.mongodb.com/cloud"
 SRC_URI="
 	monitoring? (
 		https://cloud.mongodb.com/download/agent/monitoring/mongodb-mms-monitoring-agent-${MY_PV}.linux_x86_64.tar.gz

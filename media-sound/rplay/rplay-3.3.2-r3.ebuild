@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}dist/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86"
 IUSE=""
 
 RDEPEND="media-sound/gsm"

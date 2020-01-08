@@ -18,5 +18,6 @@
   </upstream>
   <use>
     <flag name='pv'>Use sys-apps/pv to enable progress bar functionality</flag>
+    <flag name='squashfuse'>Use sys-fs/squashfuse for the SquashFS workflow</flag>
   </use>
 </pkgmetadata>

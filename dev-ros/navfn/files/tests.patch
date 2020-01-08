@@ -1,0 +1,13 @@
+Index: navfn/test/path_calc_test.cpp
+===================================================================
+--- navfn.orig/test/path_calc_test.cpp
++++ navfn/test/path_calc_test.cpp
+@@ -38,7 +38,7 @@
+ navfn::NavFn* make_willow_nav()
+ {
+   int sx,sy;
+-  std::string path = ros::package::getPath( ROS_PACKAGE_NAME ) + "/test/willow_costmap.pgm";
++  std::string path = @PGM_PATH@ ;
+ 
+   COSTTYPE *cmap = readPGM( path.c_str(), &sx, &sy, true );
+   if( cmap == NULL )

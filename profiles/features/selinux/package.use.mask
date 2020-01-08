@@ -1,23 +1,22 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Jeroen Roovers <jer@gentoo.org> (23 Feb 2019)
+# Jeroen Roovers <jer@gentoo.org> (2019-02-23)
 # sdjournal links against sys-apps/systemd's libraries
 net-analyzer/wireshark sdjournal
 
-# Brian Dolbec <dolsen@gentoo.org> (17 Sep 2014)
+# Brian Dolbec <dolsen@gentoo.org> (2014-09-17)
 # mask pypy for several utilities due to incompatibility with libselinux
-sys-apps/portage python_targets_pypy python_targets_pypy3
-sys-apps/portage-mgorny python_targets_pypy python_targets_pypy3
-app-portage/gentoolkit python_targets_pypy python_targets_pypy3
-app-portage/layman python_targets_pypy python_targets_pypy3
-app-admin/webapp-config python_targets_pypy python_targets_pypy3
-app-portage/diffmask python_targets_pypy python_targets_pypy3
-app-portage/flaggie python_targets_pypy python_targets_pypy3
-app-portage/gentoopm python_targets_pypy python_targets_pypy3
-app-portage/gpyutils python_targets_pypy python_targets_pypy3
+sys-apps/portage python_targets_pypy3
+app-portage/gentoolkit python_targets_pypy3
+app-portage/layman python_targets_pypy3
+app-admin/webapp-config python_targets_pypy3
+app-portage/diffmask python_targets_pypy3
+app-portage/flaggie python_targets_pypy3
+app-portage/gentoopm python_targets_pypy3
+app-portage/gpyutils python_targets_pypy3
 
-# Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
+# Jason Zaman <perfinion@gentoo.org> (2015-06-27)
 # SystemD has no support in the SELinux policy at the moment.
 # Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
 app-emulation/libvirt firewalld
@@ -26,14 +25,43 @@ net-firewall/fwknop firewalld
 www-servers/uwsgi uwsgi_plugins_systemd_logger
 >=x11-wm/mutter-3.22 wayland
 x11-misc/xscreensaver gdm
-xfce-extra/xfswitch-plugin gdm
 app-misc/workrave gnome
 net-misc/wicd gnome-shell
 x11-misc/gpaste gnome
 x11-terms/gnome-terminal gnome-shell
+x11-themes/arc-theme gnome-shell
 x11-themes/zukitwo gnome-shell
 net-wireless/bluez user-session
 
-# Alex Brandt <alunduil@gentoo.org> (6 Sep 2015)
-# app-emulation/rkt[rkt_stage1_src] requires systemd which isn't available with selinux.
-app-emulation/rkt rkt_stage1_src
+# Jason Zaman <perfinion@gentoo.org> (2019-12-01)
+# SELinux userspace 3.0 dropped python2.7 support
+app-admin/equo python_targets_python2_7
+app-admin/matter python_targets_python2_7
+app-admin/packagekit-base python_targets_python2_7
+app-admin/salt python_targets_python2_7
+app-admin/webapp-config python_targets_python2_7
+app-portage/diffmask python_targets_python2_7
+app-portage/distpatch python_targets_python2_7
+app-portage/elicense python_targets_python2_7
+app-portage/elogviewer python_targets_python2_7
+app-portage/euscan python_targets_python2_7
+app-portage/flaggie python_targets_python2_7
+app-portage/g-sorcery python_targets_python2_7
+app-portage/gentoolkit python_targets_python2_7
+app-portage/gentoopm python_targets_python2_7
+app-portage/gpyutils python_targets_python2_7
+app-portage/gs-elpa python_targets_python2_7
+app-portage/layman python_targets_python2_7
+app-portage/metagen python_targets_python2_7
+app-portage/overlint python_targets_python2_7
+app-portage/porthole python_targets_python2_7
+app-portage/portpeek python_targets_python2_7
+app-portage/repoman python_targets_python2_7
+app-portage/smart-live-rebuild python_targets_python2_7
+app-portage/unsymlink-lib python_targets_python2_7
+dev-java/java-config python_targets_python2_7
+kde-frameworks/frameworkintegration appstream
+net-proxy/http-replicator python_targets_python2_7
+sys-apps/entropy python_targets_python2_7
+sys-apps/entropy-server python_targets_python2_7
+sys-apps/portage python_targets_python2_7

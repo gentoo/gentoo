@@ -12,6 +12,7 @@ DESCRIPTION="Modules to streamline Nagios, Icinga, Shinken, etc. plugins"
 SLOT="0"
 KEYWORDS="~amd64 ~hppa ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp

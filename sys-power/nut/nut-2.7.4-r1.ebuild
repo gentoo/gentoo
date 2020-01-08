@@ -14,7 +14,7 @@ SRC_URI="http://random.networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc ppc64 x86"
 
 IUSE="cgi ipmi snmp +usb selinux ssl tcpd xml zeroconf"
 CDEPEND="
@@ -155,7 +155,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	find "${D}" -name '*.la' -exec rm -f {} +
 
@@ -174,19 +174,19 @@ src_install() {
 		mv "${i}" "${i/.sample/}"
 	done
 
-	dodoc AUTHORS ChangeLog docs/*.txt MAINTAINERS NEWS README TODO UPGRADING || die
+	dodoc AUTHORS ChangeLog docs/*.txt MAINTAINERS NEWS README TODO UPGRADING
 
 	newdoc lib/README README.lib || die
 	newdoc "${FILESDIR}"/lighttpd_nut.conf-2.2.0 lighttpd_nut.conf || die
 
 	docinto cables
-	dodoc docs/cables/* || die
+	dodoc docs/cables/*
 
-	newinitd "${FILESDIR}"/nut-2.6.5-init.d-upsd upsd || die
-	newinitd "${FILESDIR}"/nut-2.2.2-init.d-upsdrv upsdrv || die
-	newinitd "${FILESDIR}"/nut-2.6.5-init.d-upsmon upsmon || die
-	newinitd "${FILESDIR}"/nut-2.6.5-init.d-upslog upslog || die
-	newinitd "${FILESDIR}"/nut.powerfail.initd nut.powerfail || die
+	newinitd "${FILESDIR}"/nut-2.6.5-init.d-upsd upsd
+	newinitd "${FILESDIR}"/nut-2.2.2-init.d-upsdrv upsdrv
+	newinitd "${FILESDIR}"/nut-2.6.5-init.d-upsmon upsmon
+	newinitd "${FILESDIR}"/nut-2.6.5-init.d-upslog upslog
+	newinitd "${FILESDIR}"/nut.powerfail.initd nut.powerfail
 
 	keepdir /var/lib/nut
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ IUSE="boost doc emacs examples python +readline"
 
 RDEPEND="dev-libs/gmp:0
 	>=dev-libs/ntl-5.5.1
-	emacs? ( >=virtual/emacs-22 )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	sci-mathematics/flint
 	sci-mathematics/4ti2
 	sci-libs/cddlib"
@@ -43,11 +43,6 @@ pkg_setup() {
 	append-flags "-fPIC"
 	append-ldflags "-fPIC"
 	tc-export AR CC CPP CXX
-
-	# Ensure that >=emacs-22 is selected
-	if use emacs; then
-		elisp-need-emacs 22 || die "Emacs version too low"
-	fi
 }
 
 src_prepare () {
@@ -80,7 +75,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake || die "emake failed"
+	emake
 
 	if use emacs; then
 		cd "${MY_SHARE_DIR}"singular/emacs/
@@ -92,26 +87,24 @@ src_compile() {
 # 	dodoc README
 # 	# execs and libraries
 # 	cd "${S}"/build/bin
-# 	dobin ${MY_PN}* gen_test change_cost solve_IP toric_ideal LLL \
-# 		|| die "failed to install binaries"
+# 	dobin ${MY_PN}* gen_test change_cost solve_IP toric_ideal LLL
 # 	insinto /usr/$(get_libdir)/${PN}
-# 	doins *.so || die "failed to install libraries"
+# 	doins *.so
 #
-# 	dosym ${MY_PN}-${MY_DIR} /usr/bin/${MY_PN} \
-# 		|| die "failed to create symbolic link"
+# 	dosym ${MY_PN}-${MY_DIR} /usr/bin/${MY_PN}
 #
 # 	# stuff from the share tar ball
 # 	cd "${WORKDIR}"/${MY_PN}/${MY_SHARE_DIR}
 # 	insinto /usr/share/${PN}
-# 	doins -r LIB  || die "failed to install lib files"
+# 	doins -r LIB
 # 	if use examples; then
 # 		insinto /usr/share/doc/${PF}
-# 		doins -r examples || die "failed to install examples"
+# 		doins -r examples
 # 	fi
 # 	if use doc; then
-# 		dohtml -r html/* || die "failed to install html docs"
+# 		dohtml -r html/*
 # 		insinto /usr/share/${PN}
-# 		doins doc/singular.idx || die "failed to install idx file"
+# 		doins doc/singular.idx
 # 		cp info/${PN}.hlp info/${PN}.info &&
 # 		doinfo info/${PN}.info \
 # 			|| die "failed to install info files"

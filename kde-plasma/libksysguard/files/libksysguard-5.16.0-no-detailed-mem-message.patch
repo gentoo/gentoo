@@ -1,0 +1,26 @@
+From 49c5fdcc3bfdfedfaeaabac4f0070b986a166ce2 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Fri, 7 Jun 2019 22:58:55 +0200
+Subject: [PATCH] Gentooify message about QtWebEngineWidgets
+
+Translations can not be provided for this.
+---
+ processui/scripting.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/processui/scripting.cpp b/processui/scripting.cpp
+index 83cf895..647194a 100644
+--- a/processui/scripting.cpp
++++ b/processui/scripting.cpp
+@@ -242,7 +242,7 @@ new QWebChannel(window.qt.webChannelTransport, function(channel) {
+     mScriptingHtmlDialog->webView()->load(fileName);
+ #else
+     QMessageBox::critical(this, i18n("QtWebEngineWidgets not available"),
+-            i18n("KSysGuard library was compiled without QtWebEngineWidgets, please contact your distribution."));
++            QStringLiteral("kde-plasma/libksysguard was built without USE \"webengine\" by user choice, detailed memory information not available."));
+ #endif
+ }
+ #if HAVE_QTWEBENGINEWIDGETS
+-- 
+2.21.0
+

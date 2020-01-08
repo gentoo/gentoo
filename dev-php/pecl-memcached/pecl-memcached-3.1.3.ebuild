@@ -12,12 +12,13 @@ USE_PHP="php7-0 php7-1 php7-2 php7-3" # But only truly build for these three.
 DESCRIPTION="Interface PHP with memcached via libmemcached library"
 LICENSE="PHP-3"
 SLOT="7"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE="examples igbinary json sasl +session test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=dev-libs/libmemcached-1.0.14[sasl?]
 	sys-libs/zlib
-	igbinary? ( dev-php/igbinary[php_targets_php7-0?,php_targets_php7-1?,php_targets_php7-2?,php_targets_php7-3?] )
+	igbinary? ( dev-php/igbinary[php_targets_php7-0(-)?,php_targets_php7-1(-)?,php_targets_php7-2(-)?,php_targets_php7-3(-)?] )
 "
 
 DEPEND="

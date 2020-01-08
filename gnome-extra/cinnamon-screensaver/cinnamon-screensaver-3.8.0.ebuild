@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit autotools gnome2 multilib python-single-r1
 
 DESCRIPTION="Screensaver for Cinnamon"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/cinnamon-screensaver/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
@@ -40,7 +40,7 @@ COMMON_DEPEND="
 
 	${PYTHON_DEPS}
 
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	systemd? ( >=sys-apps/systemd-31:0= )
 	xinerama? ( x11-libs/libXinerama )
 "

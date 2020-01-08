@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit distutils-r1
 
 SRC_URI="https://dev.gentoo.org/~twitch153/${PN}/${P}.tar.bz2"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
 DESCRIPTION="Gentoo's installer for web-based applications"
 HOMEPAGE="https://sourceforge.net/projects/webapp-config/"

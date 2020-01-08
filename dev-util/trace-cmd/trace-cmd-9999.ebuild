@@ -2,24 +2,25 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=(python2_7)
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
+DISTUTILS_OPTIONAL=1
 
-inherit linux-info python-single-r1 toolchain-funcs
+inherit linux-info python-r1 toolchain-funcs
 
 DESCRIPTION="User-space front-end for Ftrace"
-HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/rostedt/trace-cmd.git"
+HOMEPAGE="http://trace-cmd.org/"
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/rostedt/${PN}.git"
+	EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git"
 	inherit git-r3
 else
-	SRC_URI="https://git.kernel.org/pub/scm/linux/kernel/git/rostedt/${PN}.git/snapshot/${PN}-v${PV}.tar.gz"
+	SRC_URI="https://git.kernel.org/pub/scm/utils/trace-cmd/trace-cmd.git/snapshot/${PN}-v${PV}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 	S="${WORKDIR}/${PN}-v${PV}"
 fi
 
 LICENSE="GPL-2+ LGPL-2.1+"
-SLOT="0"
+SLOT="0/${PV}"
 IUSE="+audit doc python udis86"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -32,7 +33,6 @@ DEPEND="${RDEPEND}
 		virtual/pkgconfig
 		dev-lang/swig
 	)
-
 	doc? ( app-text/asciidoc )"
 
 CONFIG_CHECK="
@@ -40,41 +40,64 @@ CONFIG_CHECK="
 	~FTRACE
 	~BLK_DEV_IO_TRACE"
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.7-makefile.patch
-	"${FILESDIR}"/${PN}-2.7-soname.patch
-)
-
 pkg_setup() {
 	linux-info_pkg_setup
-	use python && python-single-r1_pkg_setup
 }
 
 src_configure() {
-	MAKEOPTS+=" prefix=/usr
-		libdir=/usr/$(get_libdir)
-		CC=$(tc-getCC)
-		AR=$(tc-getAR)
-		$(usex audit '' '' 'NO_AUDIT=1')"
-
-	if use python; then
-		MAKEOPTS+=" PYTHON_VERS=${EPYTHON//python/python-}"
-		MAKEOPTS+=" python_dir=$(python_get_sitedir)/${PN}"
-	else
-		MAKEOPTS+=" NO_PYTHON=1"
-	fi
-
-	use udis86 || MAKEOPTS+=" NO_UDIS86=1"
+	EMAKE_FLAGS=(
+		BUILD_OUTPUT="${WORKDIR}/${P}_build"
+		"prefix=${EPREFIX}/usr"
+		"libdir=${EPREFIX}/usr/$(get_libdir)"
+		"CC=$(tc-getCC)"
+		"AR=$(tc-getAR)"
+		$(usex audit '' '' '' 'NO_AUDIT=1')
+		$(usex udis86 '' '' '' 'NO_UDIS86=1')
+		VERBOSE=1
+	)
 }
 
 src_compile() {
-	emake V=1 all_cmd libs
-	use doc && emake doc
+	emake "${EMAKE_FLAGS[@]}" NO_PYTHON=1 \
+		trace-cmd
 
+	if use python; then
+		python_copy_sources
+		python_foreach_impl python_compile
+	fi
+
+	use doc && emake doc
+}
+
+python_compile() {
+	pushd "${BUILD_DIR}" > /dev/null || die
+
+	emake "${EMAKE_FLAGS[@]}" \
+		PYTHON_VERS="${EPYTHON}" \
+		PYTHON_PKGCONFIG_VERS="${EPYTHON//python/python-}" \
+		python_dir=$(python_get_sitedir)/${PN} \
+		python python-plugin
+
+	popd > /dev/null || die
 }
 
 src_install() {
-	emake DESTDIR="${D}" V=1 install install_libs
-	use doc && emake DESTDIR="${D}" install_doc
+	emake "${EMAKE_FLAGS[@]}" NO_PYTHON=1 \
+		DESTDIR="${D}" \
+		install install_libs
 
+	use doc && emake DESTDIR="${D}" install_doc
+	use python && python_foreach_impl python_install
+}
+
+python_install() {
+	pushd "${BUILD_DIR}" > /dev/null || die
+
+	emake "${EMAKE_FLAGS[@]}" DESTDIR="${D}" \
+		PYTHON_VERS="${EPYTHON}" \
+		PYTHON_PKGCONFIG_VERS="${EPYTHON//python/python-}" \
+		python_dir=$(python_get_sitedir)/${PN} \
+		install_python
+
+	popd > /dev/null || die
 }

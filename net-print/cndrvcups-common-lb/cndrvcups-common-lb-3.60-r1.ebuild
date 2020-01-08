@@ -14,7 +14,7 @@ SRC_URI="http://gdlp01.c-wss.com/gds/0/0100009240/02/${SOURCES_NAME}.tar.gz"
 # GPL-2 License inside LICENSE-EN.txt files
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND="
@@ -77,7 +77,8 @@ src_compile() {
 	change_dir emake
 
 	# Cannot be moved to 'change_dir' as it doesn't need eautoreconf
-	( cd "${S}/c3plmod_ipc" && emake ) || die
+	cd "${S}/c3plmod_ipc" || die
+	emake
 }
 
 src_install() {

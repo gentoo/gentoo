@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/lxde/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 
 IUSE="consolekit debug elogind +gtk3 nls pam systemd"
 
@@ -21,7 +21,7 @@ DEPEND="consolekit? ( sys-auth/consolekit )
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( x11-libs/gtk+:2 )
 	nls? ( sys-devel/gettext )
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 # We only use the pam modules and not actually link to the code
 RDEPEND="${DEPEND}
 	elogind? ( sys-auth/elogind[pam] )

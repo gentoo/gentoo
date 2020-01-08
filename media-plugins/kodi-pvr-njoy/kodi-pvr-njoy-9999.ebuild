@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Kodi's Njoy N7 client addon"
 HOMEPAGE="https://github.com/kodi-pvr/pvr.njoy"
@@ -28,8 +28,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	=media-tv/kodi-9999
-	=media-libs/kodi-platform-9999
+	~media-tv/kodi-9999
+	~media-libs/kodi-platform-9999
 	dev-libs/tinyxml
 	"
 

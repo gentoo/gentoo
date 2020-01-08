@@ -14,6 +14,7 @@
 		<flag name="pcre2">Use <pkg>dev-libs/libpcre2</pkg> for fcontext regexes</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:selinuxproject:libselinux</remote-id>
 		<remote-id type="github">SELinuxProject/selinux</remote-id>
 	</upstream>
 </pkgmetadata>

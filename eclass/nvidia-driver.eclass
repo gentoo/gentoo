@@ -6,14 +6,15 @@
 # Jeroen Roovers <jer@gentoo.org>
 # @AUTHOR:
 # Original author: Doug Goldstein <cardoe@gentoo.org>
-# @BLURB: Provide useful messages for nvidia-drivers based on currently installed Nvidia card
+# @BLURB: Provide useful messages for nvidia-drivers
 # @DESCRIPTION:
-# Provide useful messages for nvidia-drivers based on currently installed Nvidia
-# card. It inherits versionator.
+# Provide useful messages for nvidia-drivers based on currently installed
+# Nvidia GPU and Linux kernel.
 
-inherit readme.gentoo-r1 versionator
+inherit readme.gentoo-r1
 
 DEPEND="sys-apps/pciutils"
+RESTRICT="bindist mirror test"
 
 # Variables for readme.gentoo.eclass:
 DISABLE_AUTOFORMATTING="yes"
@@ -104,10 +105,10 @@ mask_304x=">=x11-drivers/nvidia-drivers-305.0.0"
 mask_340x=">=x11-drivers/nvidia-drivers-341.0.0"
 mask_390x=">=x11-drivers/nvidia-drivers-391.0.0"
 
-# @FUNCTION: nvidia-driver-get-card
+# @FUNCTION: nvidia-driver_get_gpu
 # @DESCRIPTION:
-# Retrieve the PCI device ID for each Nvidia video card you have
-nvidia-driver-get-card() {
+# Retrieve the PCI device ID for each Nvidia GPU you have
+nvidia-driver_get_gpu() {
 	local NVIDIA_CARD=$(
 		[ -x /usr/sbin/lspci ] && /usr/sbin/lspci -d 10de: -n \
 			| awk -F'[: ]' '/ 03[0-9][0-9]: /{print $6}'
@@ -120,48 +121,48 @@ nvidia-driver-get-card() {
 	fi
 }
 
-nvidia-driver-get-mask() {
-	local NVIDIA_CARDS="$(nvidia-driver-get-card)"
-	local card drv
+nvidia-driver_get_mask() {
+	local nvidia_gpus="$(nvidia-driver_get_gpu)"
+	local nvidia_gpu drv
 
-	for card in ${NVIDIA_CARDS}; do
+	for nvidia_gpu in ${nvidia_gpus}; do
 		for drv in ${drv_71xx}; do
-			if [ "x${card}" = "x${drv}" ]; then
+			if [ "x${nvidia_gpu}" = "x${drv}" ]; then
 				echo "${mask_71xx}"
 				return 0
 			fi
 		done
 
 		for drv in ${drv_96xx}; do
-			if [ "x${card}" = "x${drv}" ]; then
+			if [ "x${nvidia_gpu}" = "x${drv}" ]; then
 				echo "${mask_96xx}"
 				return 0
 			fi
 		done
 
 		for drv in ${drv_173x}; do
-			if [ "x${card}" = "x${drv}" ]; then
+			if [ "x${nvidia_gpu}" = "x${drv}" ]; then
 				echo "${mask_173x}"
 				return 0
 			fi
 		done
 
 		for drv in ${drv_304x}; do
-			if [ "x${card}" = "x${drv}" ]; then
+			if [ "x${nvidia_gpu}" = "x${drv}" ]; then
 				echo "${mask_304x}"
 				return 0
 			fi
 		done
 
 		for drv in ${drv_340x}; do
-			if [ "x${card}" = "x${drv}" ]; then
+			if [ "x${nvidia_gpu}" = "x${drv}" ]; then
 				echo "${mask_340x}"
 				return 0
 			fi
 		done
 
 		for drv in ${drv_390x}; do
-			if [ "x${card}" = "x${drv}" ]; then
+			if [ "x${nvidia_gpu}" = "x${drv}" ]; then
 				echo "${mask_390x}"
 				return 0
 			fi
@@ -172,27 +173,26 @@ nvidia-driver-get-mask() {
 	return 1
 }
 
-# @FUNCTION: nvidia-driver-check-warning
+# @FUNCTION: nvidia-driver_check_gpu
 # @DESCRIPTION:
-# Prints out a warning if the driver does not work w/ the installed video card
-nvidia-driver-check-warning() {
-	local NVIDIA_MASK="$(nvidia-driver-get-mask)"
+# Prints out a warning if the driver does not work with the installed GPU
+nvidia-driver_check_gpu() {
+	local nvidia_mask="$(nvidia-driver_get_mask)"
 
-	if [ -n "${NVIDIA_MASK}" ]; then
-		version_compare "${NVIDIA_MASK##*-}" "${PV}"
-		if [ x"${?}" = x1 ]; then
+	if [ -n "${nvidia_mask}" ]; then
+		if ver_test "${nvidia_mask##*-}" -lt "${PV}" ; then
 			ewarn "***** WARNING *****"
 			ewarn
 			ewarn "You are currently installing a version of nvidia-drivers that is"
-			ewarn "known not to work with a video card you have installed on your"
-			ewarn "system. If this is intentional, please ignore this. If it is not"
-			ewarn "please perform the following steps:"
+			ewarn "known not to work with a GPU you have installed on your system."
+			ewarn "If this is intentional, please ignore this. If it is not please"
+			ewarn "perform the following steps:"
 			ewarn
-			ewarn "Add the following mask entry to /etc/portage/package.mask by"
+			ewarn "Add the following mask entry to the local package.mask file:"
 			if [ -d "${ROOT}/etc/portage/package.mask" ]; then
-				ewarn "echo \"${NVIDIA_MASK}\" > /etc/portage/package.mask/nvidia-drivers"
+				ewarn "echo \"${nvidia_mask}\" > /etc/portage/package.mask/nvidia-drivers"
 			else
-				ewarn "echo \"${NVIDIA_MASK}\" >> /etc/portage/package.mask"
+				ewarn "echo \"${nvidia_mask}\" >> /etc/portage/package.mask"
 			fi
 			ewarn
 			ewarn "Failure to perform the steps above could result in a non-working"
@@ -202,4 +202,38 @@ nvidia-driver-check-warning() {
 			ewarn "http://www.nvidia.com/object/IO_32667.html"
 		fi
 	fi
+}
+
+nvidia-driver_check_kernel() {
+	if kernel_is ge $(ver_cut 1 ${NV_KV_MAX_PLUS}) $(ver_cut 2 ${NV_KV_MAX_PLUS}); then
+		ewarn "Gentoo supports kernels which are supported by NVIDIA"
+		ewarn "which are limited to the following kernels:"
+		ewarn "<sys-kernel/gentoo-sources-${NV_KV_MAX_PLUS}"
+		ewarn "<sys-kernel/vanilla-sources-${NV_KV_MAX_PLUS}"
+		ewarn ""
+		ewarn "You are free to utilize eapply_user to provide whatever"
+		ewarn "support you feel is appropriate, but will not receive"
+		ewarn "support as a result of those changes."
+		ewarn ""
+		ewarn "Do not file a bug report about this."
+		ewarn ""
+	fi
+
+	check_extra_config
+}
+
+nvidia-driver_check() {
+	if use amd64 && has_multilib_profile && \
+		[ "${DEFAULT_ABI}" != "amd64" ]; then
+		eerror "This ebuild doesn't currently support changing your default ABI"
+		die "Unexpected \${DEFAULT_ABI} = ${DEFAULT_ABI}"
+	fi
+
+	# Since Nvidia ships many different series of drivers, we need to give the user
+	# some kind of guidance as to what version they should install. This tries
+	# to point the user in the right direction but can't be perfect. check
+	# nvidia-driver.eclass
+	nvidia-driver_check_gpu
+
+	use kernel_linux && nvidia-driver_check_kernel
 }

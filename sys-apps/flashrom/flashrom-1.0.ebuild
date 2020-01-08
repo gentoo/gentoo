@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 if [[ ${PV} == "9999" ]] ; then
@@ -21,42 +21,69 @@ SLOT="0"
 # Note: Do not list bitbang_spi as it is not a programmer; it's a backend used
 # by some other spi programmers.
 IUSE_PROGRAMMERS="
-atahpt +atapromise +atavia +buspirate_spi +ch341a_spi +dediprog +drkaiser +dummy
-+ft2232_spi +gfxnvidia +internal +it8212 +linux_spi mstarddc_spi +nic3com
-+nicintel +nicintel_eeprom +nicintel_spi nicnatsemi +nicrealtek +ogp_spi
-+pickit2_spi +pony_spi +rayer_spi +satamv +satasii +serprog +usbblaster_spi"
-IUSE="${IUSE_PROGRAMMERS} +internal_dmi static tools +wiki"
+	atahpt
+	+atapromise
+	+atavia
+	+buspirate-spi
+	+ch341a-spi
+	+dediprog
+	+drkaiser
+	+dummy
+	+ft2232-spi
+	+gfxnvidia
+	+internal
+	+it8212
+	+linux-spi
+	mstarddc-spi
+	+nic3com
+	+nicintel
+	+nicintel-eeprom
+	+nicintel-spi
+	nicnatsemi
+	+nicrealtek
+	+ogp-spi
+	+pickit2-spi
+	+pony-spi
+	+rayer-spi
+	+satamv
+	+satasii
+	+serprog
+	+usbblaster-spi
+"
+IUSE="${IUSE_PROGRAMMERS} +internal-dmi static tools +wiki"
 
-LIB_DEPEND="atahpt? ( sys-apps/pciutils[static-libs(+)] )
+LIB_DEPEND="
+	atahpt? ( sys-apps/pciutils[static-libs(+)] )
 	atapromise? ( sys-apps/pciutils[static-libs(+)] )
 	atavia? ( sys-apps/pciutils[static-libs(+)] )
-	ch341a_spi? ( virtual/libusb:1[static-libs(+)] )
+	ch341a-spi? ( virtual/libusb:1[static-libs(+)] )
 	dediprog? ( virtual/libusb:1[static-libs(+)] )
 	drkaiser? ( sys-apps/pciutils[static-libs(+)] )
-	ft2232_spi? ( dev-embedded/libftdi:=[static-libs(+)] )
+	ft2232-spi? ( dev-embedded/libftdi:=[static-libs(+)] )
 	gfxnvidia? ( sys-apps/pciutils[static-libs(+)] )
-	it8212? ( sys-apps/pciutils[static-libs(+)] )
 	internal? ( sys-apps/pciutils[static-libs(+)] )
+	it8212? ( sys-apps/pciutils[static-libs(+)] )
 	nic3com? ( sys-apps/pciutils[static-libs(+)] )
+	nicintel-eeprom? ( sys-apps/pciutils[static-libs(+)] )
+	nicintel-spi? ( sys-apps/pciutils[static-libs(+)] )
 	nicintel? ( sys-apps/pciutils[static-libs(+)] )
-	nicintel_eeprom? ( sys-apps/pciutils[static-libs(+)] )
-	nicintel_spi? ( sys-apps/pciutils[static-libs(+)] )
 	nicnatsemi? ( sys-apps/pciutils[static-libs(+)] )
 	nicrealtek? ( sys-apps/pciutils[static-libs(+)] )
-	ogp_spi? ( sys-apps/pciutils[static-libs(+)] )
-	pickit2_spi? ( virtual/libusb:0[static-libs(+)] )
-	rayer_spi? ( sys-apps/pciutils[static-libs(+)] )
+	ogp-spi? ( sys-apps/pciutils[static-libs(+)] )
+	pickit2-spi? ( virtual/libusb:0[static-libs(+)] )
+	rayer-spi? ( sys-apps/pciutils[static-libs(+)] )
 	satamv? ( sys-apps/pciutils[static-libs(+)] )
 	satasii? ( sys-apps/pciutils[static-libs(+)] )
-	usbblaster_spi? ( dev-embedded/libftdi:=[static-libs(+)] )"
+	usbblaster-spi? ( dev-embedded/libftdi:=[static-libs(+)] )
+"
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 	sys-apps/diffutils"
-RDEPEND+=" !internal_dmi? ( sys-apps/dmidecode )"
+RDEPEND+=" !internal-dmi? ( sys-apps/dmidecode )"
 
 _flashrom_enable() {
-	local c="CONFIG_${2:-$(echo "$1" | tr [:lower:] [:upper:])}"
+	local c="CONFIG_${2:-$(echo "$1" | tr '[:lower:]-' '[:upper:]_')}"
 	args+=( "${c}=$(usex $1 yes no)" )
 }
 flashrom_enable() {
@@ -70,8 +97,8 @@ src_compile() {
 		grep -o 'CONFIG_[A-Z0-9_]*' flashrom.c | \
 			sort -u | \
 			sed 's:^CONFIG_::' | \
-			tr '[:upper:]' '[:lower:]'))
-	local eprogs=$(echo ${IUSE_PROGRAMMERS//[+-]})
+			tr '[:upper:]_' '[:lower:]-'))
+	local eprogs=$(echo ${IUSE_PROGRAMMERS} | sed -E 's/\B[-+]\b//g')
 	if [[ ${sprogs} != "${eprogs}" ]] ; then
 		eerror "The ebuild needs to be kept in sync."
 		eerror "IUSE set to: ${eprogs}"

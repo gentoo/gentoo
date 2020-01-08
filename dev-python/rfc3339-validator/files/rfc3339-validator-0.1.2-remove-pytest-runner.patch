@@ -1,0 +1,24 @@
+diff --git a/requirements_dev.txt b/requirements_dev.txt
+index c4f59fc..f8da57f 100644
+--- a/requirements_dev.txt
++++ b/requirements_dev.txt
+@@ -7,6 +7,5 @@ coverage==4.5.4
+ twine==1.14.0
+ 
+ pytest==4.6.5
+-pytest-runner==5.1
+ hypothesis==4.41.3
+ strict_rfc3339==0.7
+diff --git a/setup.py b/setup.py
+index ada5c92..fb0df5a 100644
+--- a/setup.py
++++ b/setup.py
+@@ -14,7 +14,7 @@ requirements = [
+ 
+ setup_requirements = []
+ 
+-test_requirements = ['pytest>=3', 'pytest-runner']
++test_requirements = ['pytest>=3']
+ 
+ setup(
+     author="Nicolas Aimetti",

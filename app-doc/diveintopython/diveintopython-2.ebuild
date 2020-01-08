@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,9 +15,10 @@ pdf? ( http://www.diveintopython.net/download/${PN}-pdf-${MY_PV}.zip -> ${P}-pdf
 
 LICENSE="FDL-1.1"
 SLOT="2"
-
 KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="pdf"
+
+DEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${MY_P}"
 

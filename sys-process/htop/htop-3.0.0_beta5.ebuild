@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
 inherit autotools linux-info python-any-r1
 
@@ -14,7 +14,7 @@ if [[ "${PV}" = *_beta* ]] ; then
 	S="${WORKDIR}/${P/_}"
 else
 	SRC_URI="https://hisham.hm/htop/releases/${PV}/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 fi
 LICENSE="BSD GPL-2"
 SLOT="0"

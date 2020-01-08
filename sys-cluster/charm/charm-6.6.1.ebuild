@@ -4,7 +4,7 @@
 EAPI=5
 
 FORTRAN_STANDARD="90"
-PYTHON_COMPAT=( python{2_7,3_4} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit eutils flag-o-matic fortran-2 multilib multiprocessing python-any-r1 toolchain-funcs
 

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,22 +12,24 @@ SRC_URI="mirror://sourceforge/flake-enc/${P}.tar.bz2"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="debug"
+
+src_configure() {
+	# NIH configure script
+	./configure \
+		--cc="$(tc-getCC)" \
+		--prefix="${D}"/usr \
+		--disable-opts \
+		--disable-debug \
+		--disable-strip || die "configure failed"
+}
 
 src_compile() {
-	local myconf
-
-	if ! use debug; then
-		myconf="${myconf} --disable-debug"
-	fi
-
-	./configure --cc="$(tc-getCC)" --prefix="${D}"/usr \
-		--disable-opts --disable-strip ${myconf} || die "configure failed."
-
-	emake -j1 || die "emake failed."
+	emake -j1
 }
 
 src_install() {
-	emake install || die "emake install failed."
+	dobin flake/flake
+	doheader libflake/flake.h
+	dolib.a libflake/libflake.a
 	dodoc Changelog README
 }

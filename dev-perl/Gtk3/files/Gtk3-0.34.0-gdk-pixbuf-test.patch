@@ -1,0 +1,63 @@
+From 88bc49e7a21da0131b10546aa07ebdf98d18a37e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Torsten=20Sch=C3=B6nfeld?= <kaffeetisch@gmx.de>
+Date: Sun, 6 Jan 2019 15:18:02 +0100
+Subject: [PATCH] Load GdkPixdata introspection data if gdk-pixbuf >= 2.38.0
+
+In gdk-pixbuf 2.38.0, the GdkPixdata introspection data was split out into its
+own file.
+
+Based on a patch by gregor herrmann <gregoa@debian.org>.
+
+https://rt.cpan.org/Ticket/Display.html?id=127071
+---
+ lib/Gtk3.pm                      | 14 ++++++++++++++
+ perl-Gtk3.doap => perl-gtk3.doap |  0
+ 2 files changed, 14 insertions(+)
+ rename perl-Gtk3.doap => perl-gtk3.doap (100%)
+
+diff --git a/lib/Gtk3.pm b/lib/Gtk3.pm
+index 6a65487..f90af7e 100644
+--- a/lib/Gtk3.pm
++++ b/lib/Gtk3.pm
+@@ -60,6 +60,7 @@ and Perl packages:
+   Gtk-3.0       | Gtk3
+   Gdk-3.0       | Gtk3::Gdk
+   GdkPixbuf-2.0 | Gtk3::Gdk
++  GdkPixdata-2.0| Gtk3::Gdk
+   Pango-1.0     | Pango
+ 
+ =cut
+@@ -84,6 +85,10 @@ my $_GDK_PIXBUF_BASENAME = 'GdkPixbuf';
+ my $_GDK_PIXBUF_VERSION = '2.0';
+ my $_GDK_PIXBUF_PACKAGE = 'Gtk3::Gdk';
+ 
++my $_GDK_PIXDATA_BASENAME = 'GdkPixdata';
++my $_GDK_PIXDATA_VERSION = '2.0';
++my $_GDK_PIXDATA_PACKAGE = 'Gtk3::Gdk';
++
+ my $_PANGO_BASENAME = 'Pango';
+ my $_PANGO_VERSION = '1.0';
+ my $_PANGO_PACKAGE = 'Pango';
+@@ -471,6 +476,15 @@ sub import {
+     package => $_GDK_PIXBUF_PACKAGE,
+     flatten_array_ref_return_for => \@_GDK_PIXBUF_FLATTEN_ARRAY_REF_RETURN_FOR);
+ 
++  # In gdk-pixbuf 2.38.0, the GdkPixdata introspection information was split
++  # out into its own file.
++  if (Gtk3::Gdk::Pixbuf::CHECK_VERSION (2, 38, 0)) {
++    Glib::Object::Introspection->setup (
++      basename => $_GDK_PIXDATA_BASENAME,
++      version => $_GDK_PIXDATA_VERSION,
++      package => $_GDK_PIXDATA_PACKAGE);
++  }
++
+   Glib::Object::Introspection->setup (
+     basename => $_PANGO_BASENAME,
+     version => $_PANGO_VERSION,
+diff --git a/perl-Gtk3.doap b/perl-gtk3.doap
+similarity index 100%
+rename from perl-Gtk3.doap
+rename to perl-gtk3.doap
+-- 
+2.18.1
+

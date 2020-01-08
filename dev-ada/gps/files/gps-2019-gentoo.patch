@@ -1,0 +1,77 @@
+--- a/gps/Makefile	2018-07-09 20:27:34.950424490 +0200
++++ b/gps/Makefile	2018-07-09 20:37:39.510558817 +0200
+@@ -47,7 +47,8 @@
+ 	for f in ../kernel/generated/*; do cat $$f | tr -d '\015' > $$f-aux; mv -f $$f-aux $$f; done
+ endif
+ 	$(GPRBUILD) $(GPRBUILD_FLAGS) -m -p -ws \
+-	  $(GPRBUILD_BUILD_TYPE_FLAGS) -Pgps -largs `pkg-config gmodule-2.0 --libs`
++	  $(GPRBUILD_BUILD_TYPE_FLAGS) -Pgps -largs `pkg-config gmodule-2.0 --libs` -lpython2.7 \
++    -cargs:Ada ${ADAFLAGS} -cargs:C ${CFLAGS}
+ 
+ resources:
+ ifeq ($(OS),Windows_NT)
+--- a/Makefile.in	2018-07-09 21:51:08.422550386 +0200
++++ b/Makefile.in	2018-07-09 21:51:32.187225891 +0200
+@@ -10,7 +10,7 @@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+ INSTALL_DATA    = @INSTALL_DATA@
+ GNATCOLL_INSTALL  = @GNATCOLL_INSTALL@
+-prefix          = @prefix@
++prefix          = $(DESTDIR)@prefix@
+ bindir          = $(prefix)/bin
+ sharedir        = $(prefix)/share
+ examplesdir     = $(prefix)/share/examples/gps
+--- a/docs/Makefile.in	2018-07-09 21:53:33.074572729 +0200
++++ b/docs/Makefile.in	2018-07-09 21:53:52.149311484 +0200
+@@ -1,4 +1,4 @@
+-prefix = @prefix@
++prefix = $(DESTDIR)@prefix@
+ docdir = $(prefix)/share/doc/gps
+ sharedir = $(prefix)/share/gps
+ 
+--- a/share/support/core/toolchains.py	2018-07-11 12:15:18.758674244 +0200
++++ b/share/support/core/toolchains.py	2018-07-11 12:20:20.389220849 +0200
+@@ -16,11 +16,11 @@
+        nullified by using an empty value in the corresponding tag
+   -->
+   <toolchain_default>
+-    <gnat_driver>gnat</gnat_driver>
+-    <gnat_list>gnatls</gnat_list>
++    <gnat_driver>@GNAT@</gnat_driver>
++    <gnat_list>@GNATLS@</gnat_list>
+     <debugger>gdb</debugger>
+     <cpp_filt>c++filt</cpp_filt>
+-    <compiler lang="ada">gnatmake</compiler>
++    <compiler lang="ada">@GNATMAKE@</compiler>
+     <compiler lang="c">gcc</compiler>
+     <compiler lang="c++">g++</compiler>
+     <compiler lang="asm">gcc</compiler>
+--- a/share/support/core/projects.py	2018-07-11 13:49:29.631289680 +0200
++++ b/share/support/core/projects.py	2018-07-11 13:51:46.568252607 +0200
+@@ -146,7 +146,7 @@
+           <string />
+        </index>
+        <specialized_index value="Ada">
+-          <choice default="true" >gnatmake</choice>
++          <choice default="true" >@GNATMAKE@</choice>
+        </specialized_index>
+    </project_attribute>
+ 
+@@ -166,7 +166,7 @@
+        description="The gnatls command used to find where the Ada run time files are installed (including optional arguments, e.g. gnatls --RTS=sjlj)."
+        hide_in="all"
+        label="Gnatls">
+-       <choice default="true" >gnatls</choice>
++       <choice default="true" >@GNATLS@</choice>
+        <string />
+    </project_attribute>
+ 
+@@ -206,7 +206,7 @@
+        description="The gnat driver used to run the various commands associated with the GNAT toolchain."
+        hide_in="all"
+        label="GNAT">
+-       <choice default="true" >gnat</choice>
++       <choice default="true" >@GNAT@</choice>
+        <string />
+    </project_attribute>
+ 

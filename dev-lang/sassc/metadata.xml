@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription lang="en">
-	SassC is a wrapper around libsass (http://github.com/sass/libsass)
-	used to generate a useful command-line application that can be
-	installed and packaged for several operating systems.
-</longdescription>
-<upstream>
-	<remote-id type="github">sass/sassc</remote-id>
-</upstream>
+	<!-- maintainer-needed -->
+	<longdescription lang="en">
+		SassC is a wrapper around libsass (http://github.com/sass/libsass)
+		used to generate a useful command-line application that can be
+		installed and packaged for several operating systems.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sass/sassc</remote-id>
+	</upstream>
 </pkgmetadata>

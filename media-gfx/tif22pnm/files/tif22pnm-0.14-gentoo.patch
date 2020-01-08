@@ -1,5 +1,5 @@
---- configure.in
-+++ configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -21,7 +21,6 @@
  dnl Checks for programs.
  AC_PROG_CC
@@ -8,8 +8,8 @@
  dnl ^^^ set it to non-empty, so AC_PROG_CXX won't include `-g'
  dnl AC_PROG_CXX
  dnl AC_PTS_PROG_CFLAGS(fs, -fsigned-char)
---- do.sh
-+++ do.sh
+--- a/do.sh
++++ b/do.sh
 @@ -35,8 +35,8 @@
  if [ x"$CMD" != x ]; then echo "Executing: $CMD"; fi
  

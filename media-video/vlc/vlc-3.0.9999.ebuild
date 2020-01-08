@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2000-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ else
 	else
 		SRC_URI="https://download.videolan.org/pub/videolan/testing/${MY_P}/${MY_P}.tar.xz"
 	fi
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 -sparc ~x86"
 fi
 inherit autotools flag-o-matic toolchain-funcs virtualx xdg
 
@@ -32,12 +32,12 @@ SLOT="0/5-9" # vlc - vlccore
 IUSE="a52 alsa altivec aom archive aribsub bidi bluray cddb chromaprint chromecast
 	dav1d dbus dc1394 debug directx dts +dvbpsi dvd +encode faad fdk +ffmpeg flac
 	fluidsynth fontconfig +gcrypt gme gnome-keyring gstreamer ieee1394 jack jpeg kate
-	libass libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc live lua
-	macosx-notifications macosx-qtkit mad matroska modplug mp3 mpeg mtp musepack ncurses
-	neon nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5
-	rdp run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl
-	svg taglib theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx
-	wayland wma-fixed +X x264 x265 xml zeroconf zvbi cpu_flags_x86_mmx cpu_flags_x86_sse
+	libass libav libcaca libnotify +libsamplerate libtar libtiger linsys lirc
+	live lua macosx-notifications mad matroska modplug mp3 mpeg mtp musepack ncurses
+	nfs ogg omxil opencv optimisememory opus png postproc projectm pulseaudio +qt5 rdp
+	run-as-root samba sdl-image sftp shout sid skins soxr speex srt ssl svg taglib
+	theora tremor truetype twolame udev upnp vaapi v4l vdpau vnc vorbis vpx wayland +X
+	x264 x265 xml zeroconf zvbi cpu_flags_arm_neon cpu_flags_x86_mmx cpu_flags_x86_sse
 "
 REQUIRED_USE="
 	chromecast? ( encode )
@@ -81,7 +81,7 @@ RDEPEND="
 		>=dev-libs/protobuf-2.5.0:=
 		>=net-libs/libmicrodns-0.0.9:=
 	)
-	dav1d? ( media-libs/dav1d )
+	dav1d? ( media-libs/dav1d:= )
 	dbus? ( sys-apps/dbus )
 	dc1394? (
 		media-libs/libdc1394:2
@@ -90,8 +90,8 @@ RDEPEND="
 	dts? ( media-libs/libdca )
 	dvbpsi? ( >=media-libs/libdvbpsi-1.2.0:= )
 	dvd? (
-		>=media-libs/libdvdnav-4.9
-		>=media-libs/libdvdread-4.9
+		>=media-libs/libdvdnav-4.9:0=
+		>=media-libs/libdvdread-4.9:0=
 	)
 	faad? ( media-libs/faad2 )
 	fdk? ( media-libs/fdk-aac:= )
@@ -139,10 +139,10 @@ RDEPEND="
 	lua? ( >=dev-lang/lua-5.1:0= )
 	mad? ( media-libs/libmad )
 	matroska? (
-		dev-libs/libebml:=
+		>=dev-libs/libebml-1.3.6:=
 		media-libs/libmatroska:=
 	)
-	modplug? ( media-libs/libmodplug )
+	modplug? ( >=media-libs/libmodplug-0.8.9.0 )
 	mp3? ( media-sound/mpg123 )
 	mpeg? ( media-libs/libmpeg2 )
 	mtp? ( media-libs/libmtp:= )
@@ -180,7 +180,7 @@ RDEPEND="
 		x11-libs/libXinerama
 		x11-libs/libXpm
 	)
-	soxr? ( media-libs/soxr )
+	soxr? ( >=media-libs/soxr-0.1.2 )
 	speex? (
 		>=media-libs/speex-1.2.0
 		media-libs/speexdsp
@@ -231,6 +231,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.1.0-fix-libtremor-libs.patch # build system
 	"${FILESDIR}"/${PN}-2.2.8-freerdp-2.patch # bug 590164
+	"${FILESDIR}"/${PN}-3.0.6-fdk-aac-2.0.0.patch # bug 672290
 )
 
 DOCS=( AUTHORS THANKS NEWS README doc/fortunes.txt )
@@ -240,7 +241,7 @@ S="${WORKDIR}/${MY_P}"
 src_prepare() {
 	xdg_src_prepare # bug 608256
 
-	has_version '>=net-libs/libupnp-1.8.0' && \
+	has_version 'net-libs/libupnp:1.8' && \
 		eapply "${FILESDIR}"/${PN}-2.2.8-libupnp-slot-1.8.patch
 
 	# Bootstrap when we are on a git checkout.
@@ -293,6 +294,7 @@ src_configure() {
 		$(use_enable chromaprint)
 		$(use_enable chromecast)
 		$(use_enable chromecast microdns)
+		$(use_enable cpu_flags_arm_neon neon)
 		$(use_enable cpu_flags_x86_mmx mmx)
 		$(use_enable cpu_flags_x86_sse sse)
 		$(use_enable dav1d)
@@ -336,7 +338,6 @@ src_configure() {
 		$(use_enable live live555)
 		$(use_enable lua)
 		$(use_enable macosx-notifications osx-notifications)
-		$(use_enable macosx-qtkit)
 		$(use_enable mad)
 		$(use_enable matroska)
 		$(use_enable modplug mod)
@@ -345,7 +346,6 @@ src_configure() {
 		$(use_enable mtp)
 		$(use_enable musepack mpc)
 		$(use_enable ncurses)
-		$(use_enable neon)
 		$(use_enable ogg)
 		$(use_enable omxil)
 		$(use_enable omxil omxil-vout)
@@ -384,7 +384,6 @@ src_configure() {
 		$(use_enable vorbis)
 		$(use_enable vpx)
 		$(use_enable wayland)
-		$(use_enable wma-fixed)
 		$(use_with X x)
 		$(use_enable X xcb)
 		$(use_enable X xvideo)
@@ -395,7 +394,7 @@ src_configure() {
 		$(use_enable zeroconf avahi)
 		$(use_enable zvbi)
 		$(use_enable !zvbi telx)
-		--with-kde-solid=/usr/share/solid/actions
+		--with-kde-solid="${EPREFIX}"/usr/share/solid/actions
 		--disable-asdcp
 		--disable-coverage
 		--disable-cprof
@@ -406,6 +405,7 @@ src_configure() {
 		--disable-kai
 		--disable-kva
 		--disable-libplacebo
+		--disable-macosx-qtkit
 		--disable-maintainer-mode
 		--disable-merge-ffmpeg
 		--disable-mfx
@@ -419,6 +419,7 @@ src_configure() {
 		--disable-spatialaudio
 		--disable-vsxu
 		--disable-wasapi
+		--disable-wma-fixed
 	)
 	# ^ We don't have these disabled libraries in the Portage tree yet.
 
@@ -445,7 +446,7 @@ src_configure() {
 	fi
 
 	if use truetype || use projectm; then
-		local dejavu="/usr/share/fonts/dejavu/"
+		local dejavu="${EPREFIX}/usr/share/fonts/dejavu/"
 		myeconfargs+=(
 			--with-default-font=${dejavu}/DejaVuSans.ttf
 			--with-default-font-family=Sans

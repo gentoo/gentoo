@@ -23,6 +23,8 @@ LICENSE="GPL-2 LGPL-2.1 CC-BY-SA-3.0"
 SLOT="0"
 IUSE=""
 
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
 RDEPEND="
 	>=dev-libs/boost-1.56:=[python,threads,${PYTHON_USEDEP}]
 	media-libs/freealut
@@ -37,11 +39,11 @@ RDEPEND="
 	sci-physics/bullet
 	sys-libs/zlib
 	virtual/opengl
+	${PYTHON_DEPS}
 	!dev-games/gigi"
 	# Use bundled gigi as of freeorion-0.4.3
 
 DEPEND="${RDEPEND}
-	${PYTHON_DEPS}
 	virtual/pkgconfig"
 
 PATCHES=( "${FILESDIR}/${P}-backport-sdl2-include-dir-fix.patch" )

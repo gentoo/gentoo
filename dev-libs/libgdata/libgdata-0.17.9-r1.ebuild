@@ -14,12 +14,13 @@ LICENSE="LGPL-2.1+"
 SLOT="0/22" # subslot = libgdata soname version
 
 IUSE="+crypt gnome-online-accounts +introspection static-libs test vala"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	gnome-online-accounts? ( crypt )
 	vala? ( introspection )
 "
 
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="alpha amd64 ~arm arm64 hppa ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.44.0:2
@@ -36,15 +37,15 @@ DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
 	>=dev-util/intltool-0.40
-	sys-devel/autoconf-archive
 	virtual/pkgconfig
 	test? ( >=net-libs/uhttpmock-0.5 )
 	vala? ( $(vala_depend) )
 "
-# eautoreconf needs autoconf-archive
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.17.8-disable-demos.patch
+	# don't overwrite m4/ax_* with newer breaking versions
+	"${FILESDIR}"/${P}-ax2019-compat.patch
 )
 
 src_prepare() {

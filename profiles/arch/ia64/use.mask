@@ -1,9 +1,18 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # Unmask the flag which corresponds to ARCH.
 -ia64
 
-# This is a list of USE flags that should not be used on ia64.
+# # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-28)
+# ruby-2.7 dropped ia64 support.
+ruby_targets_ruby27
 
-# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
+# Dependency not keyworded (dev-libs/libindicate).
+ayatana
+
+# Michał Górny <mgorny@gentoo.org> (2018-07-16)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.
 # bug #661306: dev-python/pytest
@@ -11,16 +20,16 @@
 python_targets_python3_7
 python_single_target_python3_7
 
-# Sergei Trofimovich <slyfox@gentoo.org> (17 Jun 2017)
+# Sergei Trofimovich <slyfox@gentoo.org> (2017-06-17)
 # There is no luajit support on ia64. Bug #554376
 luajit
 luajittex
 
-# Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-25)
 # kwallet integration split from kde to distinct flag
 kwallet
 
-# Julian Ospald <hasufell@gentoo.org> (20 Sep 2015)
+# Julian Ospald <hasufell@gentoo.org> (2015-09-20)
 # no LibreSSL support yet
 curl_ssl_libressl
 libressl
@@ -46,7 +55,7 @@ wifi
 # Hardware not available on ia64
 apm
 battery
-lm_sensors
+lm-sensors
 pm-utils
 
 # Stuff that doesn't work on ia64, or not tested
@@ -93,7 +102,6 @@ rtmp
 vpx
 frei0r
 lpsol
-libev
 prelude
 ladspa
 aacplus
@@ -110,24 +118,24 @@ xemacs
 
 # Other
 
-# Raúl Porcel <armin76@gentoo.org> (20 Aug 2014)
+# Raúl Porcel <armin76@gentoo.org> (2014-08-20)
 # Upstream drops support on ia64 from 4.0 onwards, bug #430352
 ocamlopt
 
 
-# Raúl Porcel <armin76@gentoo.org> (23 Apr 2011)
+# Raúl Porcel <armin76@gentoo.org> (2011-04-23)
 # Needs to be tested
 video_cards_nouveau
 
-# Samuli Suominen <ssuominen@gentoo.org> (02 Dec 2009)
+# Samuli Suominen <ssuominen@gentoo.org> (2009-12-02)
 # This will need media-sound/musepack-tools
 musepack
 
-# Raúl Porcel <armin76@gentoo.org> (20 Mar 2009)
+# Raúl Porcel <armin76@gentoo.org> (2009-03-20)
 # Current webkit segfaults
 webkit
 
-# Ben de Groot <yngwin@gentoo.org> (11 Feb 2009)
+# Ben de Groot <yngwin@gentoo.org> (2009-02-11)
 # Both dev-qt/qtphonon and media-sound/phonon are unkeyworded
 phonon
 
@@ -137,7 +145,7 @@ phonon
 # architecture.
 qdbm
 
-# James Le Cuirot <chewi@gentoo.org> (11 Jul 2015)
+# James Le Cuirot <chewi@gentoo.org> (2015-07-11)
 # We don't support java on ia64.
 java
 pdfannotextractor
@@ -147,7 +155,7 @@ pdfannotextractor
 video_cards_amdgpu
 video_cards_radeonsi
 
-# Diego Pettenò <flameeyes@gentoo.org> (6 Dec 2006)
+# Diego Pettenò <flameeyes@gentoo.org> (2006-12-06)
 # Mask ALSA drivers for ISA cards
 alsa_cards_msnd-pinnacle
 alsa_cards_sb16
@@ -155,36 +163,40 @@ alsa_cards_sbawe
 alsa_cards_sscape
 alsa_cards_wavefront
 
-# Diego Elio Pettenò <flameeyes@gentoo.org> (21 Aug 2012)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-21)
 # IPMI is only implemented for x86, amd64 and ia64
 -ipmi
 
-# Michael Sterrett <mr_bones_@gentoo.org> (24 Aug 2012)
+# Michael Sterrett <mr_bones_@gentoo.org> (2012-08-24)
 # media-sound/fluidsynth isn't keyworded
 fluidsynth
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# Anthony G. Basile <blueness@gentoo.org> (2012-04-15)
+# Pulls in net-libs/axtls which is not keyworded for arch
+curl_ssl_axtls
+
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # net-misc/connman is not keyworded, bug 348308
 connman
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # media-libs/xine-lib is not keyworded
 xine
 
-template_haskell
+template-haskell
 
 # toolkit for nvidia binary drivers
 cg
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (22 Aug 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-08-22)
 # virtual/opencl is not keyworded
 opencl
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (10 Nov 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
 # sys-devel/llvm s not keyworded, bug #320221
 llvm
 
-# Pacho Ramos <pacho@gentoo.org> (08 Jan 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-01-08)
 # Unmask systemd since it is keyworded here.
 -systemd
 
@@ -197,6 +209,6 @@ glusterfs
 # need to test ceph and friends #519618
 rbd
 
-# Ben de Groot <yngwin@gentoo.org> (01 Feb 2015)
+# Ben de Groot <yngwin@gentoo.org> (2015-02-01)
 # please remove when keyworded
 qt5

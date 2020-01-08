@@ -11,6 +11,7 @@
 		of Mumble is called Murmur, hence the name uMurmur.
 	</longdescription>
 	<use>
+		<flag name="mbedtls">Use <pkg>net-libs/mbedtls</pkg> as TLS provider</flag>
 		<flag name="shm">Enable shared memory support</flag>
 	</use>
 	<upstream>

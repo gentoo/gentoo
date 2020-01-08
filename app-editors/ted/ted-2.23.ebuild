@@ -52,7 +52,7 @@ src_configure() {
 	local dir
 	for dir in appFrame appUtil bitmap docBuf ind Ted tedPackage; do
 		cd "${S}"/${dir}
-		econf --cache-file=../config.cache || die "configure in ${dir} failed"
+		econf --cache-file=../config.cache
 	done
 }
 

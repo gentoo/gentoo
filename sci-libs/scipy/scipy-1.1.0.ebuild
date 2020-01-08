@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 DOC_PV=${PV}
@@ -22,7 +22,8 @@ SRC_URI="
 LICENSE="BSD LGPL-2"
 SLOT="0"
 IUSE="doc sparse test"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+RESTRICT="!test? ( test )"
+KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 CDEPEND="
 	>=dev-python/numpy-1.10[lapack,${PYTHON_USEDEP}]
@@ -106,7 +107,6 @@ python_prepare_all() {
 
 python_compile() {
 	# FIXME: parallel python building fails, bug #614464
-	# $(usex python_targets_python3_5 "" "-j $(makeopts_jobs)") \
 	${EPYTHON} tools/cythonize.py || die
 	distutils-r1_python_compile \
 		${SCIPY_FCONFIG}

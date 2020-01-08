@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,8 +18,8 @@ IUSE=""
 
 RDEPEND="net-misc/curl
 	|| ( dev-libs/libressl dev-libs/openssl:0 )
-	|| ( net-analyzer/netcat6 net-analyzer/openbsd-netcat )
-	|| ( net-misc/socat www-servers/apache:2 www-servers/nginx:0 )
+	|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )
+	|| ( net-misc/socat www-servers/apache:2 www-servers/nginx )
 	virtual/cron"
 
 src_install() {
@@ -38,6 +38,8 @@ src_install() {
 	doins -r dnsapi/*.sh
 	insinto /usr/share/acme.sh/deploy
 	doins -r deploy/*.sh
+	insinto /usr/share/acme.sh/notify
+	doins -r notify/*.sh
 
 	dosym ../share/acme.sh/acme.sh usr/bin/acme.sh
 }

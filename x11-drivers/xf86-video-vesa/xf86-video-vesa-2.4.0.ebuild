@@ -5,7 +5,7 @@ EAPI=5
 inherit linux-info xorg-2
 
 DESCRIPTION="Generic VESA video driver"
-KEYWORDS="-* alpha amd64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="-* alpha amd64 x86"
 IUSE=""
 
 RDEPEND=">=x11-base/xorg-server-1.6

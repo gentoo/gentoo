@@ -1,15 +1,15 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
-
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r1
 
 DESCRIPTION="console colouring for python"
 HOMEPAGE="http://gfxmonk.net/dist/0install/python-termstyle.xml"
 SRC_URI="https://github.com/gfxmonk/${PN#*-}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/termstyle-${PV}"
 
 LICENSE="BSD"
 SLOT="0"

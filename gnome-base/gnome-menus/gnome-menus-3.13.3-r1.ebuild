@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,9 +11,10 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-menus"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="3"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 
 IUSE="+introspection test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.29.15:2

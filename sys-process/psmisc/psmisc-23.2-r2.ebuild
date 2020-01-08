@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="ipv6 nls selinux X"
 
 RDEPEND=">=sys-libs/ncurses-5.7-r7:0=
@@ -34,12 +34,6 @@ src_configure() {
 		$(use_enable selinux)
 	)
 	econf "${myeconfargs[@]}"
-}
-
-src_compile() {
-	# peekfd is a fragile crap hack #330631
-	nonfatal emake -C src peekfd || touch src/peekfd{.o,}
-	emake
 }
 
 src_install() {

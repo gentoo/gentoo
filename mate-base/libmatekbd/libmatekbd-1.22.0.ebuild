@@ -8,7 +8,7 @@ MATE_LA_PUNT="yes"
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="MATE keyboard configuration library"
@@ -16,8 +16,9 @@ LICENSE="LGPL-2"
 SLOT="0"
 
 IUSE="X +introspection test"
+RESTRICT="!test? ( test )"
 
-COMMON_DEPEND=">=dev-libs/glib-2.50:2
+RDEPEND=">=dev-libs/glib-2.50:2
 	x11-libs/cairo
 	>=x11-libs/gdk-pixbuf-2.24:2
 	x11-libs/libX11
@@ -27,12 +28,11 @@ COMMON_DEPEND=">=dev-libs/glib-2.50:2
 	>=x11-libs/gtk+-3.22:3[introspection?]
 	introspection? ( >=dev-libs/gobject-introspection-0.6.7:= )"
 
-RDEPEND="${COMMON_DEPEND}"
-
-DEPEND="${COMMON_DEPEND}
-	sys-devel/gettext:*
-	>=dev-util/intltool-0.50.1:*
-	virtual/pkgconfig:*"
+DEPEND="${RDEPEND}
+	dev-util/glib-utils
+	>=dev-util/intltool-0.50.1
+	sys-devel/gettext
+	virtual/pkgconfig"
 
 src_configure() {
 	mate_src_configure \

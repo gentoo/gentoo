@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation.
+# Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 AArch64 - AArch64 CPU target (arm64 in Gentoo)
 AMDGPU - AMDGPU target (supports R600 and GCN GPUs)
+ARC - ARC (Argonaut RISC Core) embedded CPU target [EXPERIMENTAL]
 ARM - ARM CPU target
 AVR - 8-bit Atmel AVR microcontroller target [EXPERIMENTAL]
 BPF - Berkeley Packet Filter target
@@ -10,12 +11,11 @@ Hexagon - Qualcomm Hexagon DSP target
 Lanai - Lanai CPU target
 Mips - MIPS CPU target (includes MIPS64)
 MSP430 - MSP430 CPU target (experimental)
-Nios2 - Nios2 CPU target [EXPERIMENTAL]
 NVPTX - NVIDIA PTX (GPU) target (32-bit and 64-bit)
 PowerPC - PowerPC CPU target (PPC32 and PPC64)
-RISCV - RISC-V CPU target [EXPERIMENTAL]
+RISCV - RISC-V CPU target
 Sparc - Sparc CPU target
 SystemZ - SystemZ (s390x) CPU target
-WebAssembly - WebAssembly backend [EXPERIMENTAL]
+WebAssembly - WebAssembly backend
 X86 - X86 CPU target (includes amd64)
 XCore - XCore CPU target

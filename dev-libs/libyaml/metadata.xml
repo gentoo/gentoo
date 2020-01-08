@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
 	</maintainer>
 	<longdescription lang="en">
 		LibYAML is a YAML 1.1 parser and emitter written in C.

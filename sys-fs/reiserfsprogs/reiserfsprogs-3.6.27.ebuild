@@ -1,18 +1,18 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic usr-ldscript
 
 DESCRIPTION="Reiserfs Utilities"
 HOMEPAGE="https://www.kernel.org/pub/linux/utils/fs/reiserfs/"
-SRC_URI="mirror://kernel/linux/utils/fs/reiserfs/${P}.tar.xz
-	mirror://kernel/linux/kernel/people/jeffm/${PN}/v${PV}/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/utils/fs/reiserfs/${P}.tar.xz
+	https://www.kernel.org/pub/linux/kernel/people/jeffm/${PN}/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ~ia64 ~mips ppc ppc64 -sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 -sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 PATCHES=(

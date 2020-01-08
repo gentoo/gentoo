@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <bugs-to>https://github.com/flame/blis/issues/</bugs-to>
+    <doc>https://github.com/flame/blis</doc>
+  </upstream>
+  <maintainer type="person">
+    <name>Mo Zhou</name>
+    <email>lumin@debian.org</email>
+  </maintainer>
+  <maintainer type="project">
+    <email>sci@gentoo.org</email>
+    <name>Gentoo Science Project</name>
+  </maintainer>
+  <longdescription>
+    BLIS is a portable software framework for instantiating high-performance
+    BLAS-like dense linear algebra libraries. The framework was designed to
+    isolate essential kernels of computation that, when optimized, immediately
+    enable optimized implementations of most of its commonly used and
+    computationally intensive operations. BLIS is written in ISO C99 and
+    available under a new/modified/3-clause BSD license. While BLIS exports a
+    new BLAS-like API, it also includes a BLAS compatibility layer which gives
+    application developers access to BLIS implementations via traditional BLAS
+    routine calls. An object-based API unique to BLIS is also available.
+  </longdescription>
+  <use>
+    <flag name="openmp">Use openmp threadding model</flag>
+    <flag name="pthread">Use pthread threadding model</flag>
+    <flag name="serial">Use no threadding model</flag>
+    <flag name="eselect-ldso">Enable runtime library switching by eselect and ld.so.</flag>
+    <flag name="64bit-index">Enable 64bit array indexing, incompatible with runtime switching</flag>
+  </use>
+</pkgmetadata>

@@ -4,15 +4,21 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Mike Gilbert <floppym@gentoo.org> (08 Jun 2017)
+# Hans de Graaff <graaff@gentoo.org> (2019-07-17)
+# Temporary mask for stable bug 688976
+ruby_targets_ruby25
+
+# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
 # dev-lang/python:3.7 is not stable.
 python_targets_python3_7
 python_single_target_python3_7
+python_targets_python3_8
+python_single_target_python3_8
 
 # Not stable
 mkl
 
-# Pacho Ramos <pacho@gentoo.org> (17 Apr 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-04-17)
 # Dropped stable keywords after the discussion caused by
 # Gnome 3.8/3.10 stabilization on this arch
 colord
@@ -24,6 +30,6 @@ gusb
 upnp
 upnp-av
 
-# Pacho Ramos <pacho@gentoo.org> (13 Apr 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-04-13)
 # Not going to be stabilized on this arch
 gnome-online-accounts

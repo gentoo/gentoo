@@ -11,7 +11,7 @@ SRC_URI="http://www.jedrea.com/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 hppa ~ia64 ppc ppc64 x86"
+KEYWORDS="alpha amd64 ~arm arm64 hppa ~ia64 ppc ppc64 x86"
 IUSE="+examples static-libs"
 
 PATCHES=(

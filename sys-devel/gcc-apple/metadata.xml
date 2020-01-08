@@ -6,8 +6,8 @@
     <name>Gentoo Prefix</name>
   </maintainer>
   <use>
+    <flag name="bootstrap">!DO NOT SET THIS FLAG YOURSELF! avoids need for autoconf during bootstrap stage2</flag>
     <flag name="objc">Build support for the Objective C code language</flag>
     <flag name="objc++">Build support for the Objective C++ language</flag>
-    <flag name="regression-test">Run the testsuite and install the results (requires FEATURES=test)</flag>
   </use>
 </pkgmetadata>

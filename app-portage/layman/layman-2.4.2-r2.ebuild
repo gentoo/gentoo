@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} pypy )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 PYTHON_REQ_USE="xml(+),sqlite?"
 
 inherit eutils distutils-r1 linux-info prefix
@@ -22,6 +22,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Layman"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="bazaar cvs darcs +git gpg g-sorcery mercurial sqlite squashfs subversion sync-plugin-portage test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( dev-vcs/subversion )
 	"
@@ -41,18 +42,8 @@ RDEPEND="
 		)
 	)
 	gpg? ( >=dev-python/pyGPG-0.2 )
-	sync-plugin-portage? (
-		|| (
-			>=sys-apps/portage-2.2.16[${PYTHON_USEDEP}]
-			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-		)
-	)
-	!sync-plugin-portage? (
-		|| (
-			sys-apps/portage[${PYTHON_USEDEP}]
-			sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-		)
-	)
+	sync-plugin-portage? ( >=sys-apps/portage-2.2.16[${PYTHON_USEDEP}] )
+	!sync-plugin-portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	>=dev-python/ssl-fetch-0.4[${PYTHON_USEDEP}]
 	"
 

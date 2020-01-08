@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
 
+PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1 eutils linux-info multilib user
 
 DESCRIPTION="Cloud computing fabric controller (main part of an IaaS system) in Python"
@@ -22,7 +22,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+compute compute-only iscsi +memcached mysql +novncproxy openvswitch postgres +rabbitmq sqlite"
+IUSE="+compute compute-only iscsi +memcached +mysql +novncproxy openvswitch postgres +rabbitmq sqlite"
 REQUIRED_USE="
 	!compute-only? ( || ( mysql postgres sqlite ) )
 	compute-only? ( compute !rabbitmq !memcached !mysql !postgres !sqlite )"
@@ -151,7 +151,6 @@ RDEPEND="
 	>=dev-python/taskflow-2.16.0[${PYTHON_USEDEP}]
 	>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
 	>=dev-python/zVMCloudConnector-1.1.1[${PYTHON_USEDEP}]
-	>=dev-python/futures-3.0.0[$(python_gen_usedep 'python2_7')]
 	dev-python/libvirt-python[${PYTHON_USEDEP}]
 	app-emulation/libvirt[iscsi?]
 	novncproxy? ( www-apps/novnc )
@@ -242,8 +241,8 @@ python_install_all() {
 python_install() {
 	distutils-r1_python_install
 	# copy migration conf file (not coppied on install via setup.py script)
-	insinto "$(python_get_sitedir)/db/sqlalchemy/migrate_repo/"
-	doins "nova/db/sqlalchemy/migrate_repo/migrate.cfg"
+	python_moduleinto db/sqlalchemy/migrate_repo
+	python_domodule nova/db/sqlalchemy/migrate_repo/migrate.cfg
 }
 
 pkg_postinst() {

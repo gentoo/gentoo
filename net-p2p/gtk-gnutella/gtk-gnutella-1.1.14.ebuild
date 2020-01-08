@@ -14,7 +14,7 @@ HOMEPAGE="http://gtk-gnutella.sourceforge.net/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ~ppc ~ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc ~ppc64 x86"
 
 RDEPEND="
 	sys-libs/binutils-libs:=
@@ -82,7 +82,7 @@ src_compile() {
 
 src_install() {
 	dodir /usr/bin
-	emake INSTALL_PREFIX="${D}" install || die "Install failed"
+	emake INSTALL_PREFIX="${D}" install
 	dodoc AUTHORS ChangeLog README TODO
 
 	# Touch the symbols file into the future to avoid warnings from

@@ -1,38 +1,30 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils
-
-DEBIAN_PV="1"
-DEBIAN_P="${P/-/_}-${DEBIAN_PV}"
 DESCRIPTION="Autoresponder add on package for qmailadmin"
-HOMEPAGE="http://inter7.com/devel/"
+HOMEPAGE="http://inter7.com/software/"
 SRC_URI="mirror://sourceforge/qmailadmin/${P}.tar.gz
-	mirror://debian/pool/contrib/${PN:0:1}/${PN}/${DEBIAN_P}.diff.gz"
+	mirror://gentoo/${PN}_${PV}-1.diff.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc s390 sh sparc x86"
-IUSE=""
 
 RDEPEND="virtual/qmail"
-DEPEND=""
-
-src_unpack() {
-	unpack ${P}.tar.gz
-	epatch "${DISTDIR}"/${DEBIAN_P}.diff.gz
-}
+PATCHES=(
+	"${WORKDIR}/autorespond_2.0.4-1.diff"
+)
+DOCS=( README help_message qmail-auto ChangeLog )
 
 src_compile() {
-	emake CFLAGS="${CFLAGS}" || die
+	emake CFLAGS="${CFLAGS}"
 }
 
 src_install () {
 	into /var/qmail
-	dobin autorespond || die "dobin failed"
-	into /usr
-	dodoc README help_message qmail-auto ChangeLog
+	dobin autorespond
 	doman *.1
+	einstalldocs
 }

@@ -6,12 +6,7 @@
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 	<use>
-		<flag name="colord">Support color management using <pkg>x11-misc/colord</pkg></flag>
 		<flag name="elogind">Rely on <pkg>sys-auth/elogind</pkg> as runtime logind provider</flag>
 		<flag name="systemd">Rely on <pkg>sys-apps/systemd</pkg> as runtime logind provider</flag>
-		<flag name="openrc-force">Skip systemd dependency (#480336),
-			enabling this flag will become your setup to be fully
-			unsupported by upstream and downstream Gnome team. Do not
-			try to enable it unless completely needed</flag>
 	</use>
 </pkgmetadata>

@@ -14,7 +14,10 @@ SLOT="0"
 KEYWORDS="amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
 IUSE="clearpasswd ipalias maildrop mysql spamassassin"
 
-DEPEND="virtual/qmail
+DEPEND="
+	acct-group/vpopmail
+	acct-user/vpopmail
+	virtual/qmail
 	maildrop? ( mail-filter/maildrop )
 	mysql? ( virtual/mysql )
 	spamassassin? ( mail-filter/spamassassin )"
@@ -36,7 +39,6 @@ vpopmail_set_homedir() {
 }
 
 pkg_setup() {
-	enewgroup vpopmail 89
 	enewuser vpopmail 89 -1 ${VPOP_DEFAULT_HOME} vpopmail
 	upgradewarning
 }

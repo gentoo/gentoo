@@ -1,0 +1,64 @@
+diff --git a/tests/test_virtualenv.py b/tests/test_virtualenv.py
+index 620c0cb..3284cea 100644
+--- a/tests/test_virtualenv.py
++++ b/tests/test_virtualenv.py
+@@ -5,6 +5,7 @@ import optparse
+ import os
+ import shutil
+ import subprocess
++import platform
+ import sys
+ import tempfile
+ import textwrap
+@@ -342,6 +343,11 @@ def test_install_python_bin():
+ 
+         if virtualenv.IS_WIN:
+             required_executables = ["python.exe", "pythonw.exe"]
++        elif platform.python_implementation() == 'PyPy':
++            if sys.version_info.major < 3:
++                required_executables = ["pypy"]
++            else:
++                required_executables = ["pypy3"]
+         else:
+             py_exe_no_version = "python"
+             py_exe_version_major = "python%s" % sys.version_info[0]
+@@ -549,7 +555,7 @@ def check_pypy_pre_import():
+             assert module in sys.modules, "missing {!r} in sys.modules".format(module)
+ 
+ 
+-@pytest.mark.skipif("platform.python_implementation() != 'PyPy'")
++@pytest.mark.skipif("platform.python_implementation() == 'PyPy'")
+ def test_pypy_pre_import(tmp_path):
+     """For PyPy, some built-in modules should be pre-imported because
+     some programs expect them to be in sys.modules on startup.
+@@ -622,7 +628,7 @@ def test_create_environment_from_venv(tmpdir):
+     builder.setup_python(ctx)
+     builder.setup_scripts(ctx)
+     subprocess.check_call([ctx.env_exe, virtualenv.__file__, "--no-setuptools", "--no-pip", "--no-wheel", ve_venv_dir])
+-    ve_exe = os.path.join(bin_dir, "python")
++    ve_exe = os.path.join(bin_dir, os.getenv('EPYTHON'))
+     out = subprocess.check_output([ve_exe, "-c", "import sys; print(sys.real_prefix)"], universal_newlines=True)
+     # Test against real_prefix if present - we might be running the test from a virtualenv (e.g. tox).
+     assert out.strip() == getattr(sys, "real_prefix", sys.prefix)
+@@ -639,7 +645,7 @@ def test_create_environment_from_venv_no_pip(tmpdir):
+     builder.setup_python(ctx)
+     builder.setup_scripts(ctx)
+     subprocess.check_call([ctx.env_exe, virtualenv.__file__, "--no-pip", ve_venv_dir])
+-    ve_exe = os.path.join(bin_dir, "python")
++    ve_exe = os.path.join(bin_dir, os.getenv('EPYTHON'))
+     out = subprocess.check_output([ve_exe, "-c", "import sys; print(sys.real_prefix)"], universal_newlines=True)
+     # Test against real_prefix if present - we might be running the test from a virtualenv (e.g. tox).
+     assert out.strip() == getattr(sys, "real_prefix", sys.prefix)
+@@ -657,10 +663,11 @@ def test_create_environment_with_old_pip(tmpdir):
+     virtualenv.create_environment(venvdir, search_dirs=[support_dir], no_wheel=True)
+ 
+ 
++@pytest.mark.skipif("platform.python_implementation() == 'PyPy'")
+ def test_license_builtin(clean_python):
+     _, bin_dir, _ = clean_python
+     proc = subprocess.Popen(
+-        (os.path.join(bin_dir, "python"), "-c", "license()"), stdin=subprocess.PIPE, stdout=subprocess.PIPE
++        (os.path.join(bin_dir, os.getenv('EPYTHON')), "-c", "license()"), stdin=subprocess.PIPE, stdout=subprocess.PIPE
+     )
+     out_b, _ = proc.communicate(b"q\n")
+     out = out_b.decode()

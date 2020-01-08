@@ -17,7 +17,4 @@
 	<upstream>
 		<remote-id type="github">skeeto/endlessh</remote-id>
 	</upstream>
-	<use>
-		<flag name="tools">Install additional python script which can be used to parse logs and save summary to sqlite database</flag>
-	</use>
 </pkgmetadata>

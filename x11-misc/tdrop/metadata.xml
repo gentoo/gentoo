@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">octuid/tdrop</remote-id>
+	</upstream>
+</pkgmetadata>

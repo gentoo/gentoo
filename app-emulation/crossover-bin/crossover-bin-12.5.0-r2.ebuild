@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads"
 inherit python-single-r1 unpacker
 
 DESCRIPTION="Commercial version of app-emulation/wine with paid support"
-HOMEPAGE="http://www.codeweavers.com/products/crossover/"
+HOMEPAGE="https://www.codeweavers.com/products/"
 SRC_URI="install-crossover-${PV}.bin"
 
 LICENSE="CROSSOVER-2"
@@ -64,7 +64,7 @@ RDEPEND="${DEPEND}
 	>=media-libs/freetype-2.0.0[abi_x86_32(-)]
 	media-libs/mesa[abi_x86_32(-)]
 	sys-apps/util-linux[abi_x86_32(-)]
-	sys-libs/ncurses:5/5[abi_x86_32(-)]
+	sys-libs/ncurses-compat:5[abi_x86_32(-)]
 	sys-libs/zlib[abi_x86_32(-)]
 	x11-libs/libICE[abi_x86_32(-)]
 	x11-libs/libSM[abi_x86_32(-)]

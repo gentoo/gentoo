@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-PYTHON_COMPAT=( python2_7 pypy )
+EAPI=7
+
+PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1
 
@@ -29,6 +30,10 @@ python_compile_all() {
 	if use doc; then
 		einfo "Generation of documentation"
 		esetup.py docs
+
+		# remove cruft
+		rm -f html/api-objects.txt || die
+		HTML_DOCS=( html/. )
 	fi
 }
 
@@ -37,16 +42,12 @@ python_test() {
 }
 
 python_install_all() {
-	dodoc AUTHORS.txt CHANGES.txt README.txt
+	distutils-r1_python_install_all
 
-	if use doc; then
-		dohtml html/*
-	fi
+	dodoc AUTHORS.txt CHANGES.txt README.txt
 
 	if use examples; then
 		docinto examples
-		dodoc examples/*.txt
-		insinto /usr/share/doc/${PF}/examples
-		doins examples/*.py
+		dodoc examples/*.{txt,py}
 	fi
 }

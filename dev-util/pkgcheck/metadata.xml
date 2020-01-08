@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>radhermit@gentoo.org</email>
-    <name>Tim Harder</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">pkgcore/pkgcheck</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>radhermit@gentoo.org</email>
+		<name>Tim Harder</name>
+	</maintainer>
+	<use>
+		<flag name="network">Enable support for network checks using <pkg>dev-python/requests</pkg></flag>
+		<flag name="perl">Enable support for perl checks using <pkg>dev-perl/Gentoo-PerlMod-Version</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="github">pkgcore/pkgcheck</remote-id>
+	</upstream>
 </pkgmetadata>

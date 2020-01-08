@@ -1,0 +1,55 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,7 +1,5 @@
+ ALL: default
+ 
+-# GPROFFLAG = -pg
+- GPROFFLAG = -g
+ 
+ PREFIX?=/usr/local
+ 
+@@ -77,16 +75,13 @@
+ 
+ SHELL       = /bin/sh
+ #ARCH        = LINUX
+-CC          = gcc
+ CLINKER     = $(CC)
+-CXX         = g++
+ CCLINKER    = $(CXX)
+-#OPTFLAGS    = -O2 -DGMPRATIONAL -DNDEBUG
+-OPTFLAGS    = -O2 -DGMPRATIONAL -Wuninitialized
+ 
+-CFLAGS	  = $(OPTFLAGS) $(GPROFFLAG) $(ADDITIONALINCLUDEOPTIONS) #-pedantic
+-CCFLAGS	  = $(CFLAGS)
+-FFLAGS	  = $(OPTFLAGS)
++
++CFLAGS      += $(GPROFFLAG) $(ADDITIONALINCLUDEOPTIONS) -Wuninitialized
++CXXFLAGS    += $(GPROFFLAG) $(ADDITIONALINCLUDEOPTIONS) -Wuninitialized
++CPPFLAGS    += -DGMPRATIONAL -DNDEBUG
+ 
+ CATSOBJECTS =	$(GCATSPATH)lp_cdd.o \
+ 		$(SOPLEX_OBJECTS) \
+@@ -317,7 +312,7 @@
+ default: $(OBJECTS) $(ADDITIONALOBJECTS) $(EXECS)
+ 
+ $(MAIN): $(OBJECTS)
+-	$(CCLINKER) $(OBJECTS) $(ADDITIONALLINKOPTIONS) $(GPROFFLAG) -o $(MAIN)
++	$(CCLINKER) $(LDFLAGS) $(OBJECTS) $(ADDITIONALLINKOPTIONS) $(GPROFFLAG) -o $(MAIN)
+ 
+ release:
+ 	rm -f -r $(RELEASEDIR)/*
+@@ -430,14 +425,6 @@
+ 	cp gfanlib.h gfanlib/
+ 	cp gfanlib_* gfanlib/
+ 	tar zcf -  gfanlib > gfanlib.tar.gz
+-.c.o:
+-	$(CC) $(CFLAGS) -c $<
+-.cc.o:
+-	$(CXX) -c $<
+-.cpp.o:
+-	$(CXX) $(CFLAGS) -c $<
+-.C.o:
+-	$(CXX) -c $<
+ # wget http://ftp.sunet.se/pub/gnu/gmp/gmp-4.2.2.tar.gz
+ # tar -xzvf gmp-4.2.2.tar.gz
+ # cd gmp-4.2.2

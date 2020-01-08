@@ -1,0 +1,36 @@
+From 538d873571d7a682852dc1d70e5f4478f4d64e85 Mon Sep 17 00:00:00 2001
+From: Jiri Denemark <jdenemar@redhat.com>
+Date: Fri, 5 Apr 2019 15:11:20 +0200
+Subject: [PATCH] cpu_map: Define md-clear CPUID bit
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+CVE-2018-12126, CVE-2018-12127, CVE-2018-12130, CVE-2019-11091
+
+The bit is set when microcode provides the mechanism to invoke a flush
+of various exploitable CPU buffers by invoking the VERW instruction.
+
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+Signed-off-by: Jiri Denemark <jdenemar@redhat.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ src/cpu_map/x86_features.xml                                | 3 +++
+
+diff --git a/src/cpu_map/x86_features.xml b/src/cpu_map/x86_features.xml
+index efcc10b1ae..370807f88e 100644
+--- a/src/cpu_map/x86_features.xml
++++ b/src/cpu_map/x86_features.xml
+@@ -320,6 +320,9 @@
+   <feature name='avx512-4fmaps'>
+     <cpuid eax_in='0x07' ecx_in='0x00' edx='0x00000008'/>
+   </feature>
++  <feature name='md-clear'> <!-- md_clear -->
++    <cpuid eax_in='0x07' ecx_in='0x00' edx='0x00000400'/>
++  </feature>
+   <feature name='pconfig'>
+     <cpuid eax_in='0x07' ecx_in='0x00' edx='0x00040000'/>
+   </feature>
+-- 
+2.21.0
+

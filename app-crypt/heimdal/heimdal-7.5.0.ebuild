@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 VIRTUALX_REQUIRED="manual"
 
 inherit autotools db-use multilib multilib-minimal python-any-r1 virtualx flag-o-matic
@@ -14,8 +14,9 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh ~sparc x86 ~amd64-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh ~sparc x86"
 IUSE="afs +berkdb caps hdb-ldap ipv6 libressl otp +pkinit selinux ssl static-libs test X"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	ssl? (

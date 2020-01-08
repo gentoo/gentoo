@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
 inherit distutils-r1
 
@@ -16,12 +16,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
-
 python_install_all() {
+	distutils-r1_python_install_all
+
 	if use examples; then
-		docompress -x usr/share/doc/${P}/demo
-		dodoc -r demo/
+		dodoc -r demo
+		docompress -x /usr/share/doc/${PF}/demo
 	fi
 }

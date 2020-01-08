@@ -5,7 +5,4 @@
 		<email>kde@gentoo.org</email>
 		<name>Gentoo KDE Project</name>
 	</maintainer>
-	<use>
-		<flag name="kwallet">Enable encrypted storage of passwords with <pkg>kde-frameworks/kwallet</pkg></flag>
-	</use>
 </pkgmetadata>

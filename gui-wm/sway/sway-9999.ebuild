@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV=${PV/_rc/-rc}
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
@@ -35,16 +35,16 @@ DEPEND="
 	x11-libs/pixman
 	elogind? ( >=sys-auth/elogind-239 )
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
-	swaybg? ( x11-libs/gdk-pixbuf:2 )
+	swaybg? ( gui-apps/swaybg )
 	swayidle? ( gui-apps/swayidle )
 	swaylock? ( gui-apps/swaylock )
 	systemd? ( >=sys-apps/systemd-239 )
 	X? ( x11-libs/libxcb:0= )
 "
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+="~gui-libs/wlroots-9999[elogind=,systemd=,X=]"
+	DEPEND+="~gui-libs/wlroots-9999:=[elogind=,systemd=,X=]"
 else
-	DEPEND+=">=gui-libs/wlroots-0.5.0[elogind=,systemd=,X=]"
+	DEPEND+=">=gui-libs/wlroots-0.7.0:=[elogind=,systemd=,X=]"
 fi
 RDEPEND="
 	x11-misc/xkeyboard-config
@@ -65,7 +65,6 @@ src_prepare() {
 
 	use swaybar || sed -e "s/subdir('swaybar')//g" -e "/sway-bar.[0-9].scd/d" \
 		-e "/completions\/[a-z]\+\/_\?swaybar/d" -i meson.build || die
-	use swaybg || sed -e "s/subdir('swaybg')//g" -i meson.build || die
 	use swaymsg || sed -e "s/subdir('swaymsg')//g" -e "/swaymsg.[0-9].scd/d" \
 		-e "/completions\/[a-z]\+\/_\?swaymsg/d" -i meson.build || die
 	use swaynag || sed -e "s/subdir('swaynag')//g" -e "/swaynag.[0-9].scd/d" \
@@ -84,7 +83,7 @@ src_configure() {
 		"-Dwerror=false"
 	)
 
-	if use swaybar || use swaybg; then
+	if use swaybar; then
 		emesonargs+=("-Dgdk-pixbuf=enabled")
 	else
 		emesonargs+=("-Dgdk-pixbuf=disabled")

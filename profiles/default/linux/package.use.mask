@@ -1,49 +1,57 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Jason Zaman <perfinion@gentoo.org> (06 Sep 2015)
+# Alexey Shvetsov <alexxy@gentoo.org> (2019-12-24)
+# Gromacs python module install br0ken
+sci-chemistry/gromacs python
+
+# Peter Levine <plevine457@gmail.com> (2019-10-01)
+# Native inotify support is preferred on linux.
+# https://bugs.gentoo.org/697476
+net-fs/samba fam
+
+# Patrick McLean <chutzpah@gentoo.org> (2019-09-17)
+# Masked due to upstream build failures (bug #693018)
+# One example: https://tracker.ceph.com/issues/41523
+>=sys-cluster/ceph-14.2 dpdk
+
+# Jason Zaman <perfinion@gentoo.org> (2015-09-06)
 # This is masked in base/package.use.mask as Linux only.
 sys-auth/consolekit -cgroups
 
-# Michael Palimaka <kensington@gentoo.org> (03 Sep 2015)
+# Michael Palimaka <kensington@gentoo.org> (2015-09-03)
 # Native inotify support is preferred on linux.
 kde-frameworks/kcoreaddons fam
 
-# Christian Ruppert <idl0r@gentoo.org> (23 Aug 2015)
-# seccomp seems completely broken currently but has been added as global default
-# apparently... #558100
-# https://archives.gentoo.org/gentoo-dev/message/38503d86a1c41bccfa607745467b1be7
-net-dns/bind seccomp
-
-# Diego Elio Pettenò (27 Aug 2012)
+# Diego Elio Pettenò (2012-08-27)
 # The libpci access is only used for linux.
 net-analyzer/net-snmp -pci
 
-# Richard Yao <ryao@gentoo.org> (22 August 2012)
+# Richard Yao <ryao@gentoo.org> (2012-08-22)
 # USE=kernel-builtin is dangerous. Only those that know what they are doing
 # should use it until documentation improves.
 sys-fs/zfs kernel-builtin
 
-# Diego Elio Pettenò (20 Aug 2012)
+# Diego Elio Pettenò (2012-08-20)
 # The prevent-removal USE flag is only implemented for Linux.
 sys-auth/pam_mktemp -prevent-removal
 
 sys-devel/gcc hardened
 sys-libs/glibc hardened
 
-# Samuli Suominen <ssuominen@gentoo.org> (30 Apr 2012)
+# Samuli Suominen <ssuominen@gentoo.org> (2012-04-30)
 # This is replaced by native CONFIG_INOTIFY_USER support wrt #413403
 =dev-libs/glib-2* fam
 
-# Samuli Suominen <ssuominen@gentoo.org (20 Mar 2012)
+# Samuli Suominen <ssuominen@gentoo.org (2012-03-20)
 # This is masked in base/package.use.mask as Linux only.
 sys-auth/consolekit -acl
 
-# Samuli Suominen <ssuominen@gentoo.org> (10 Jan 2012)
+# Samuli Suominen <ssuominen@gentoo.org> (2012-01-10)
 # Masked in base/package.use.mask as Linux -only feature
 app-arch/libarchive -e2fsprogs
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (20 Aug 2009)
+# Diego E. Pettenò <flameeyes@gentoo.org> (2009-08-20)
 #
 # Mask oss USE flag for PulseAudio; it's present for compatibility
 # with FreeBSD and other operating systems that have no better
@@ -53,7 +61,7 @@ app-arch/libarchive -e2fsprogs
 # they are excluded.
 >=media-sound/pulseaudio-0.9.16_rc5 oss
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (27 Mar 2011)
+# Diego E. Pettenò <flameeyes@gentoo.org> (2011-03-27)
 #
 # Unmask pdnsd's Linux-specific USE flags.
 net-dns/pdnsd -isdn -urandom

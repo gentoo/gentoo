@@ -5,9 +5,6 @@
 		<email>graphics@gentoo.org</email>
 		<name>Gentoo Graphics Project</name>
 	</maintainer>
-	<use>
-		<flag name="zstd">Enable zstd compression support.</flag>
-	</use>
 	<longdescription>
 		TIFF image library and tools, mostly for scanner and fax
 		support, but also used by GIS and other imaging tools.

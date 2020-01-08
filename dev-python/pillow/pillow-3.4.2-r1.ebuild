@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE='tk?,threads(+)'
 
 inherit distutils-r1 eutils virtualx
@@ -17,8 +17,9 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.zip"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE="doc examples jpeg jpeg2k lcms test tiff tk truetype webp zlib"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="test? ( jpeg tiff )"
 

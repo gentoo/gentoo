@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit eutils toolchain-funcs
 
@@ -30,23 +30,25 @@ src_unpack() {
 	cd "${S}"/include
 	ln -s asm-alpha asm || die
 	touch linux/config.h || die
-	cd "${S}"
-	epatch "${FILESDIR}/aboot-gcc-3.4.patch"
-	epatch "${FILESDIR}/aboot-pt_note.patch"
+}
+
+src_prepare() {
+	eapply "${FILESDIR}/aboot-gcc-3.4.patch"
+	eapply "${FILESDIR}/aboot-pt_note.patch"
 	# Bug 364697
-	epatch "${FILESDIR}/aboot-define_stat_only_in_userspace.patch"
-	epatch "${FILESDIR}"/aboot-respect-AR.patch
-	epatch "${FILESDIR}"/aboot-gnu90.patch
+	eapply "${FILESDIR}/aboot-define_stat_only_in_userspace.patch"
+	eapply "${FILESDIR}"/aboot-respect-AR.patch
+	eapply "${FILESDIR}"/aboot-gnu90.patch
 
 	# Modified patch from Debian to add netboot support
-	epatch "${WORKDIR}"/aboot_gentoo.diff
+	eapply "${WORKDIR}"/aboot_gentoo.diff
 
-	epatch_user
+	eapply_user
 }
 
 src_compile() {
 	# too many problems with parallel building
-	emake -j1 AR=$(tc-getAR) CC=$(tc-getCC) LD=$(tc-getLD) || die "emake failed"
+	emake -j1 AR=$(tc-getAR) CC=$(tc-getCC) LD=$(tc-getLD)
 }
 
 src_install() {

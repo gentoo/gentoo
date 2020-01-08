@@ -1,21 +1,27 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6} )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7} )
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/Vulkan-Loader.git"
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	KEYWORDS="~amd64"
-	EGIT_COMMIT="979f925d939e4daa3c823bd2b9d46ca479481fe9"
-	SRC_URI="https://github.com/KhronosGroup/Vulkan-Loader/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
-	S="${WORKDIR}/Vulkan-Loader-${EGIT_COMMIT}"
+	if [[ -z ${SNAPSHOT_COMMIT} ]]; then
+		MY_PV=v${PV}
+		MY_P=Vulkan-Loader-${PV}
+	else
+		MY_PV=${SNAPSHOT_COMMIT}
+		MY_P=Vulkan-Loader-${SNAPSHOT_COMMIT}
+	fi
+	KEYWORDS="~amd64 ~x86"
+	SRC_URI="https://github.com/KhronosGroup/Vulkan-Loader/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
+	S="${WORKDIR}"/${MY_P}
 fi
 
-inherit python-any-r1 cmake-multilib
+inherit toolchain-funcs python-any-r1 cmake-multilib
 
 DESCRIPTION="Vulkan Installable Client Driver (ICD) Loader"
 HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Loader"
@@ -26,7 +32,7 @@ IUSE="layers wayland X"
 
 PDEPEND="layers? ( media-libs/vulkan-layers:=[${MULTILIB_USEDEP}] )"
 DEPEND="${PYTHON_DEPS}
-	>=dev-util/vulkan-headers-1.1.92.0
+	>=dev-util/vulkan-headers-${PV}
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
@@ -34,6 +40,11 @@ DEPEND="${PYTHON_DEPS}
 	)"
 
 multilib_src_configure() {
+	# Integrated clang assembler doesn't work with x86 - Bug #698164
+	if tc-is-clang && [[ ${ABI} == x86 ]]; then
+		append-cflags -fno-integrated-as
+	fi
+
 	local mycmakeargs=(
 		-DCMAKE_SKIP_RPATH=True
 		-DBUILD_TESTS=False

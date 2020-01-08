@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit latex-package elisp-common toolchain-funcs multilib eutils flag-o-matic
+inherit latex-package elisp-common toolchain-funcs flag-o-matic
 
 MY_P="${P/-latex/}"
 
@@ -16,19 +16,22 @@ SRC_URI="ftp://ftp.ffii.org/pub/cjk/${MY_P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="doc emacs"
 
 RDEPEND="virtual/latex-base
 	dev-libs/kpathsea
-	emacs? ( virtual/emacs )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	app-arch/unzip"
+	emacs? ( >=app-editors/emacs-23.1:* )"
+
+DEPEND="${RDEPEND}"
+
+BDEPEND="app-arch/unzip
+	virtual/pkgconfig"
 
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
+	default
 	for i in "${WORKDIR}"/CJK/*.tar.gz; do
 		tar -xzf ${i} || die "failed to unpack $i"
 	done
@@ -40,43 +43,43 @@ src_prepare() {
 
 src_configure() {
 	has_version '>=dev-libs/kpathsea-6.2.1' && append-cppflags "$($(tc-getPKG_CONFIG) --cflags kpathsea)"
-	cd utils
+	cd utils || die
 	for d in *conv; do
-		cd $d
-		local f=`echo $d | tr '[:upper:]' '[:lower:]'`
+		cd ${d} || die
+		local f=`echo ${d} | tr '[:upper:]' '[:lower:]'`
 		echo "all: $f" >> Makefile
-		if [ $d = CEFconv ] ; then
+		if [ ${d} = CEFconv ] ; then
 			echo "all: cef5conv cefsconv" >> Makefile
 		fi
-		cd -
+		cd - || die
 	done
-	cd hbf2gf
+	cd hbf2gf || die
 	econf --with-kpathsea-lib="${EPREFIX}"/usr/$(get_libdir) \
 		--with-kpathsea-include="${EPREFIX}"/usr/include/kpathsea
 }
 
 src_compile() {
 	tc-export CC
-	cd utils
+	cd utils || die
 	for d in *conv; do
-		cd $d
-		emake || die
-		cd -
+		cd ${d} || die
+		emake
+		cd - || die
 	done
-	cd hbf2gf
-	emake || die
-	cd -
+	cd hbf2gf || die
+	emake
+	cd - || die
 
 	if use emacs ; then
-		cd lisp
+		cd lisp || die
 		elisp-compile *.el
-		cd emacs
+		cd emacs || die
 		elisp-compile *.el
-		cd ../mule-2.3
+		cd ../mule-2.3 || die
 		elisp-compile *.el
 	fi
 
-	cd "${T}"
+	cd "${T}" || die
 
 	for f in "${S}"/texmf/hbf2gf/*.cfg ; do
 	env TEXMFCNF="${EPREFIX}/etc/texmf/web2c" HBF_TARGET="${S}/texmf/fonts" "${S}/utils/hbf2gf/hbf2gf" $f || die
@@ -90,39 +93,41 @@ src_compile() {
 }
 
 src_install() {
-	cd utils
+	cd utils || die
 	for d in *conv; do
-		cd $d
+		cd ${d} || die
 		local f=`echo $d | tr '[:upper:]' '[:lower:]'`
 		dobin *latex *conv
 		doman *.1
-		cd -
+		cd - || die
 	done
-	cd hbf2gf
-	einstall || die "einstall failed"
+	cd hbf2gf || die
+	doman hbf2gf.1
+	dobin hbf2gf
+	dodir "${TEXMF}/fonts/hbf"
 
-	cd "${S}"
+	cd "${S}" || die
 
 	# Install pk fonts
-	pushd texmf &>/dev/null
+	pushd texmf &>/dev/null || die
 	for d in fonts/pk/modeless/*/* ; do
 		insinto ${TEXMF}/${d}
 		for f in "${T}"/${d##*/}*.pk ; do
-			newins $f `basename ${f/.pk/.500pk}` || die "newins failed"
+			newins ${f} `basename ${f/.pk/.500pk}`
 		done
 	done
-	popd &>/dev/null
+	popd &>/dev/null || die
 
 	insinto "${TEXMF}/tex/latex/${PN}"
-	doins -r texinput/* || die "installing texinput files failed"
-	doins -r contrib/wadalab || die "installing wadalab failed"
+	doins -r texinput
+	doins -r contrib/wadalab
 
 	if use emacs ; then
-		cd utils/lisp
+		cd utils/lisp || die
 		elisp-install ${PN} *.el{,c} emacs/*.el{,c} mule-2.3/*.el{,c}
 	fi
 
-	cd "${S}"
+	cd "${S}" || die
 
 	# uwpatch stuff
 	insinto ${TEXMF}/scripts/uwpatch
@@ -132,30 +137,30 @@ src_install() {
 
 	# jisksp40 stuff
 	insinto ${TEXMF}
-	doins -r jisksp40/texmf/*
+	doins -r jisksp40/texmf
 
 	# kanji48 stuff
 	insinto ${TEXMF}
-	doins -r kanji48/texmf/*
+	doins -r kanji48/texmf
 
 	use doc || rm -rf texmf/doc
 	insinto ${TEXMF}
-	doins -r texmf/* || die "installing texmf failed"
+	doins -r texmf
 
 	# Move fonts because hbf2gf expects them in MISCFONTS
 	mv "${ED}/${TEXMF}/fonts/hbf" "${ED}/${TEXMF}/fonts/misc" || die "mv font failed"
 
 	insinto ${TEXMF}/hbf2gf
-	doins utils/hbf2gf/cfg/*
+	doins -r utils/hbf2gf/cfg/
 
 	insinto ${TEXMF}/scripts/subfonts
-	doins utils/subfonts/*
+	doins -r utils/subfonts/
 
-	rm -f doc/COPYING doc/INSTALL
+	rm -f doc/COPYING doc/INSTALL || die
 	dodoc ChangeLog README
 	if use doc ; then
 		insinto /usr/share/doc/${PF}
-		doins -r doc/*
+		doins -r doc
 		doins -r examples
 	fi
 	docinto uwpatch

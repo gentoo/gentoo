@@ -1,0 +1,25 @@
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,5 +1,4 @@
+-appdefaultdir=$(shell pkg-config --variable=appdefaultdir xt)
+-datarootdir=$(shell pkg-config --variable=datarootdir xt)
++appdefaultdir = $(shell $(PKG_CONFIG) --variable=appdefaultdir xt)
+ 
+ SUBDIRS = .
+ bin_PROGRAMS = xvkbd
+@@ -17,11 +16,12 @@
+ 	[ which ad2c > /dev/null ] || ad2c XVkbd-common.ad > XVkbd-common.h
+ 
+ install-data-hook:
++	[ -d $(DESTDIR)/$(appdefaultdir)/xvkbd/ ] || mkdir $(DESTDIR)/$(appdefaultdir)/xvkbd/
+ 	for file in *.ad; do \
+-		$(INSTALL_DATA) $$file $(appdefaultdir)/$${file%.ad}; \
++		$(INSTALL_DATA) $$file $(DESTDIR)/$(appdefaultdir)/$${file%.ad}; \
+ 	done
+-	[ -d $(datarootdir)/xvkbd/ ] || mkdir $(datarootdir)/xvkbd/
+-	$(INSTALL_DATA) words.english $(datarootdir)/xvkbd/words.english
++	[ -d $(DESTDIR)/$(datarootdir)/xvkbd/ ] || mkdir $(DESTDIR)/$(datarootdir)/xvkbd/
++	$(INSTALL_DATA) words.english $(DESTDIR)/$(datarootdir)/xvkbd/words.english
+ 
+ EXTRA_DIST = XVkbd-common.h *.ad *.xbm xvkbd.man README ChangeLog Imakefile words.english
+ 

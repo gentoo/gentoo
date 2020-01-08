@@ -22,6 +22,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
 IUSE="+asm +bip70 +bitcoin_policy_rbf dbus kde knots libressl +qrcode +system-leveldb test upnp +wallet zeromq"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/boost-1.52.0:=[threads(+)]
@@ -84,6 +85,7 @@ src_prepare() {
 
 	local knots_patchdir="${WORKDIR}/${KNOTS_P}.patches/"
 
+	eapply "${FILESDIR}"/${PN}-0.16.3-boost-1.72-missing-include.patch
 	eapply "${knots_patchdir}/${KNOTS_P}.syslibs.patch"
 
 	if use knots; then

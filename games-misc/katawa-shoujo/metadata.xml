@@ -5,9 +5,6 @@
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
-	<use>
-		<flag name="system-renpy">Use <pkg>games-engines/renpy</pkg> instead of the bundled one (experimental)</flag>
-	</use>
 	<longdescription>
 		Katawa Shoujo is a bishoujo-style visual novel set in the fictional
 		Yamaku High School for disabled children, located somewhere in modern

@@ -1,0 +1,29 @@
+https://gcc.gnu.org/PR90419
+
+diff -ruN gcc-8.3.0.orig/gcc/config/riscv/t-linux-multilib gcc-8.3.0/gcc/config/riscv/t-linux-multilib
+--- gcc-8.3.0.orig/gcc/config/riscv/t-linux-multilib	2017-02-06 22:38:37.000000000 +0100
++++ gcc-8.3.0/gcc/config/riscv/t-linux-multilib	2019-04-28 16:37:44.377841943 +0200
+@@ -20,21 +20,9 @@
+ ilp32d \
+ lp64 \
+ lp64d
+-MULTILIB_REQUIRED = march=rv32imac/mabi=ilp32 \
+-march=rv32imafdc/mabi=ilp32d \
+-march=rv64imac/mabi=lp64 \
++MULTILIB_REQUIRED = march=rv64imac/mabi=lp64 \
+ march=rv64imafdc/mabi=lp64d
+-MULTILIB_REUSE = march.rv32imac/mabi.ilp32=march.rv32ima/mabi.ilp32 \
+-march.rv32imac/mabi.ilp32=march.rv32imaf/mabi.ilp32 \
+-march.rv32imac/mabi.ilp32=march.rv32imafd/mabi.ilp32 \
+-march.rv32imac/mabi.ilp32=march.rv32imafc/mabi.ilp32 \
+-march.rv32imac/mabi.ilp32=march.rv32imafdc/mabi.ilp32 \
+-march.rv32imac/mabi.ilp32=march.rv32g/mabi.ilp32 \
+-march.rv32imac/mabi.ilp32=march.rv32gc/mabi.ilp32 \
+-march.rv32imafdc/mabi.ilp32d=march.rv32imafd/mabi.ilp32d \
+-march.rv32imafdc/mabi.ilp32d=march.rv32gc/mabi.ilp32d \
+-march.rv32imafdc/mabi.ilp32d=march.rv32g/mabi.ilp32d \
+-march.rv64imac/mabi.lp64=march.rv64ima/mabi.lp64 \
++MULTILIB_REUSE = march.rv64imac/mabi.lp64=march.rv64ima/mabi.lp64 \
+ march.rv64imac/mabi.lp64=march.rv64imaf/mabi.lp64 \
+ march.rv64imac/mabi.lp64=march.rv64imafd/mabi.lp64 \
+ march.rv64imac/mabi.lp64=march.rv64imafc/mabi.lp64 \

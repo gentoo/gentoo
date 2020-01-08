@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="http://openbox.org/dist/openbox/${P}.tar.gz
 	branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86 ~x86-fbsd ~x86-linux"
+	KEYWORDS="alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86 ~x86-linux"
 fi
 
 LICENSE="GPL-2"
@@ -50,7 +50,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
 src_prepare() {
-	use xdg && python_export_best
+	use xdg && python_setup
 	epatch "${FILESDIR}"/${PN}-3.5.2-gnome-session.patch
 	sed -i \
 		-e "s:-O0 -ggdb ::" \

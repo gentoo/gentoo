@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: virtualx.eclass
@@ -89,6 +89,8 @@ case ${VIRTUALX_REQUIRED} in
 		fi
 		RDEPEND=""
 		IUSE="${VIRTUALX_REQUIRED}"
+		[[ ${VIRTUALX_REQUIRED} == test ]] &&
+			RESTRICT+=" !test? ( test )"
 		;;
 esac
 
@@ -178,7 +180,10 @@ virtx() {
 	# Xvfb is started, else bump the display number
 	#
 	# Azarah - 5 May 2002
-	XDISPLAY=$(i=0; while [[ -f /tmp/.X${i}-lock ]] ; do ((i++));done; echo ${i})
+	# GNOME GDM may have started X on DISPLAY :0 with a
+	# lock file /tmp/.X1024-lock, therefore start the search at 1.
+	# Else a leftover /tmp/.X1-lock will prevent finding an available display.
+	XDISPLAY=$(i=1; while [[ -f /tmp/.X${i}-lock ]] ; do ((i++));done; echo ${i})
 	debug-print "${FUNCNAME}: XDISPLAY=${XDISPLAY}"
 
 	# We really do not want SANDBOX enabled here

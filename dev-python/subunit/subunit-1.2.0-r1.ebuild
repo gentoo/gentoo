@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
 inherit distutils-r1 eutils multilib-minimal versionator
 
@@ -13,8 +13,9 @@ SRC_URI="https://launchpad.net/${PN}/trunk/$(get_version_component_range 1-2)/+d
 
 LICENSE="Apache-2.0 BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/testtools-0.9.34[${PYTHON_USEDEP}]

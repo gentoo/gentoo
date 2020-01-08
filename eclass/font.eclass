@@ -1,17 +1,19 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: font.eclass
 # @MAINTAINER:
 # fonts@gentoo.org
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Eclass to make font installation uniform
 
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
-	*)             die "EAPI ${EAPI} is not supported by font.eclass." ;;
+	[56]) inherit eutils ;;
+	7) ;;
+	*) die "EAPI ${EAPI} is not supported by font.eclass." ;;
 esac
 
-inherit eutils
+if [[ ! ${_FONT_ECLASS} ]]; then
 
 EXPORT_FUNCTIONS pkg_setup src_install pkg_postinst pkg_postrm
 
@@ -52,32 +54,31 @@ FONT_CONF=( "" )
 # COPYRIGHT README{,.txt} NEWS AUTHORS BUGS ChangeLog FONTLOG.txt
 DOCS=${DOCS:-}
 
-IUSE="X"
-
-DEPEND="X? (
-		|| ( >=x11-apps/mkfontscale-1.2.0 x11-apps/mkfontdir )
-		media-fonts/encodings
+if [[ ${CATEGORY}/${PN} != media-fonts/encodings ]]; then
+	IUSE="X"
+	DEPEND="X? (
+			>=x11-apps/mkfontscale-1.2.0
+			media-fonts/encodings
 	)"
-RDEPEND=""
+	RDEPEND=""
+fi
 
 # @FUNCTION: font_xfont_config
 # @DESCRIPTION:
 # Generate Xorg font files (mkfontscale/mkfontdir).
 font_xfont_config() {
 	local dir_name
-	if has X ${IUSE//+} && use X ; then
+	if in_iuse X && use X ; then
 		dir_name="${1:-${FONT_PN}}"
-		ebegin "Creating fonts.scale & fonts.dir in ${dir_name##*/}"
-		rm -f "${ED}${FONTDIR}/${1//${S}/}"/{fonts.{dir,scale},encodings.dir}
-		mkfontscale "${ED}${FONTDIR}/${1//${S}/}"
+		rm -f "${ED%/}/${FONTDIR}/${1//${S}/}"/{fonts.{dir,scale},encodings.dir} \
+			|| die "failed to prepare ${FONTDIR}/${1//${S}/}"
+		einfo "Creating fonts.scale & fonts.dir in ${dir_name##*/}"
+		mkfontscale "${ED%/}/${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.scale"
 		mkfontdir \
 			-e ${EPREFIX}/usr/share/fonts/encodings \
 			-e ${EPREFIX}/usr/share/fonts/encodings/large \
-			"${ED}${FONTDIR}/${1//${S}/}"
-		eend $?
-		if [[ -e fonts.alias ]] ; then
-			doins fonts.alias
-		fi
+			"${ED%/}/${FONTDIR}/${1//${S}/}" || eerror "failed to create fonts.dir"
+		[[ -e fonts.alias ]] && doins fonts.alias
 	fi
 }
 
@@ -89,7 +90,7 @@ font_fontconfig() {
 	if [[ -n ${FONT_CONF[@]} ]]; then
 		insinto /etc/fonts/conf.avail/
 		for conffile in "${FONT_CONF[@]}"; do
-			[[ -e  ${conffile} ]] && doins ${conffile}
+			[[ -e ${conffile} ]] && doins "${conffile}"
 		done
 	fi
 }
@@ -103,20 +104,18 @@ font_cleanup_dirs() {
 	local d f g generated candidate otherfile
 
 	ebegin "Cleaning up font directories"
-	find -L "${EROOT}"usr/share/fonts/ -type d -print0 | while read -d $'\0' d; do
+	while read -d $'\0' -r; do
 		candidate=false
 		otherfile=false
 		for f in "${d}"/*; do
 			generated=false
 			# make sure this is a file and not a subdir
 			[[ -e ${f} || -L ${f} ]] || continue
-			for g in ${genfiles}; do
-				if [[ ${f##*/} == ${g} ]]; then
-					# this is a generated file
-					generated=true
-					break
-				fi
-			done
+			if has ${f##*/} ${genfiles}; then
+				# this is a generated file
+				generated=true
+				break
+			fi
 			# if the file is a generated file then we know this is a font dir (as
 			# opposed to something like encodings or util) and a candidate for
 			# removal.  if it's not generated then it's an "otherfile".
@@ -131,36 +130,27 @@ font_cleanup_dirs() {
 			# media-fonts/font-alias. any other fonts.alias files will have
 			# already been unmerged with their packages.
 			for g in ${genfiles}; do
-				[[ ${g} != fonts.alias && ( -e ${d}/${g} || -L ${d}/${g} ) ]] \
-					&& rm "${d}"/${g}
+				if [[ ${g} != fonts.alias && ( -e ${d}/${g} || -L ${d}/${g} ) ]] ; then
+					rm "${d}"/${g} || eerror "failed to remove ${d}/${g}"
+				fi
 			done
 			# if there's nothing left remove the directory
-			find "${d}" -maxdepth 0 -type d -empty -exec rmdir '{}' \;
+			find "${d}" -maxdepth 0 -type d -empty -delete || eerror "failed to purge ${d}"
 		fi
-	done
+	done < <(find -L "${EROOT%/}"/usr/share/fonts/ -type d -print0)
 	eend 0
 }
 
 # @FUNCTION: font_pkg_setup
 # @DESCRIPTION:
 # The font pkg_setup function.
-# Collision protection and Prefix compat for eapi < 3.
+# Collision protection
 font_pkg_setup() {
-	# Prefix compat
-	case ${EAPI:-0} in
-		0|1|2)
-			if ! use prefix; then
-				EPREFIX=
-				ED=${D}
-				EROOT=${ROOT}
-				[[ ${EROOT} = */ ]] || EROOT+="/"
-			fi
-			;;
-	esac
-
 	# make sure we get no collisions
 	# setup is not the nicest place, but preinst doesn't cut it
-	[[ -e "${EROOT}/${FONTDIR}/fonts.cache-1" ]] && rm -f "${EROOT}/${FONTDIR}/fonts.cache-1"
+	if [[ -e "${EROOT%/}/${FONTDIR}/fonts.cache-1" ]] ; then
+		rm "${EROOT%/}/${FONTDIR}/fonts.cache-1" || die "failed to remove fonts.cache-1"
+	fi
 }
 
 # @FUNCTION: font_src_install
@@ -194,44 +184,54 @@ font_src_install() {
 
 	font_fontconfig
 
-	[[ -n ${DOCS} ]] && { dodoc ${DOCS} || die "docs installation failed" ; }
+	einstalldocs
 
 	# install common docs
-	for commondoc in COPYRIGHT README{,.txt} NEWS AUTHORS BUGS ChangeLog FONTLOG.txt; do
+	for commondoc in COPYRIGHT FONTLOG.txt; do
 		[[ -s ${commondoc} ]] && dodoc ${commondoc}
 	done
+}
+
+# @FUNCTION: _update_fontcache
+# @DESCRIPTION:
+# Updates fontcache if !prefix and media-libs/fontconfig installed
+_update_fontcache() {
+	# unreadable font files = fontconfig segfaults
+	find "${EROOT%/}"/usr/share/fonts/ -type f '!' -perm 0644 \
+		-exec chmod -v 0644 2>/dev/null {} + || die "failed to fix font files perms"
+
+	if [[ -z ${ROOT%/} ]] ; then
+		if has_version media-libs/fontconfig ; then
+			ebegin "Updating global fontcache"
+			fc-cache -fs
+			if ! eend $? ; then
+				die "failed to update global fontcache"
+			fi
+		else
+			einfo "Skipping fontcache update (media-libs/fontconfig not installed)"
+		fi
+	else
+		einfo "Skipping fontcache update (ROOT != /)"
+	fi
 }
 
 # @FUNCTION: font_pkg_postinst
 # @DESCRIPTION:
 # The font pkg_postinst function.
 font_pkg_postinst() {
-	# unreadable font files = fontconfig segfaults
-	find "${EROOT}"usr/share/fonts/ -type f '!' -perm 0644 -print0 \
-		| xargs -0 chmod -v 0644 2>/dev/null
-
 	if [[ -n ${FONT_CONF[@]} ]]; then
 		local conffile
-		echo
 		elog "The following fontconfig configuration files have been installed:"
 		elog
 		for conffile in "${FONT_CONF[@]}"; do
-			if [[ -e ${EROOT}etc/fonts/conf.avail/$(basename ${conffile}) ]]; then
-				elog "  $(basename ${conffile})"
-			fi
+			[[ -e "${EROOT%/}"/etc/fonts/conf.avail/${conffile##*/} ]] &&
+				elog "  ${conffile##*/}"
 		done
 		elog
 		elog "Use \`eselect fontconfig\` to enable/disable them."
-		echo
 	fi
 
-	if has_version media-libs/fontconfig && [[ ${ROOT} == / ]]; then
-		ebegin "Updating global fontcache"
-		fc-cache -fs
-		eend $?
-	else
-		einfo "Skipping fontcache update (media-libs/fontconfig is not installed or ROOT != /)"
-	fi
+	_update_fontcache
 }
 
 # @FUNCTION: font_pkg_postrm
@@ -239,16 +239,8 @@ font_pkg_postinst() {
 # The font pkg_postrm function.
 font_pkg_postrm() {
 	font_cleanup_dirs
-
-	# unreadable font files = fontconfig segfaults
-	find "${EROOT}"usr/share/fonts/ -type f '!' -perm 0644 -print0 \
-		| xargs -0 chmod -v 0644 2>/dev/null
-
-	if has_version media-libs/fontconfig && [[ ${ROOT} == / ]]; then
-		ebegin "Updating global fontcache"
-		fc-cache -fs
-		eend $?
-	else
-		einfo "Skipping fontcache update (media-libs/fontconfig is not installed or ROOT != /)"
-	fi
+	_update_fontcache
 }
+
+_FONT_ECLASS=1
+fi

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,11 +8,11 @@ inherit gnome2 eutils
 
 DESCRIPTION="A widget toolkit using Clutter"
 HOMEPAGE="http://clutter-project.org/"
-SRC_URI="mirror://github/clutter-project/${PN}/${P}.tar.xz"
+SRC_URI="https://github.com/downloads/clutter-project/${PN}/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="1.0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="dbus +gtk +introspection startup-notification"
 
 RDEPEND="

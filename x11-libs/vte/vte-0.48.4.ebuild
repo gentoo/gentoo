@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"
 LICENSE="LGPL-2+"
 SLOT="2.91"
 IUSE="+crypt debug glade +introspection vala vanilla"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 REQUIRED_USE="vala? ( introspection )"
 
 SRC_URI="${SRC_URI} !vanilla? ( https://dev.gentoo.org/~eva/distfiles/${PN}/${P}-command-notify.patch.xz )"
@@ -51,6 +51,9 @@ src_prepare() {
 		# Adds OSC 777 support for desktop notifications in gnome-terminal or elsewhere
 		eapply "${WORKDIR}"/${P}-command-notify.patch
 	fi
+
+	# Fix bindings test compilation with vala:0.44 and newer - https://gitlab.gnome.org/GNOME/vte/issues/76
+	eapply "${FILESDIR}"/0.54.4-vala-0.44-compat.patch
 
 	use vala && vala_src_prepare
 

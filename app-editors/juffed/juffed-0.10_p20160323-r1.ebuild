@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 COMMIT=5ba17f90ec173e773470bc80ea26bca9a3f093fd
-inherit cmake-utils vcs-snapshot xdg-utils
+inherit cmake xdg
 
 DESCRIPTION="QScintilla-based tabbed text editor with syntax highlighting"
 HOMEPAGE="http://juffed.com/en/"
@@ -29,16 +29,19 @@ DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog README )
 
+S="${WORKDIR}/Mezomish-${PN}-5ba17f9"
+
 PATCHES=(
 	"${FILESDIR}/${P}-qscintilla-2.10.patch"
 	"${FILESDIR}/${P}-qt-5.11.patch"
+	"${FILESDIR}/${P}-qscintilla-2.10.3.patch"
 )
 
 src_prepare() {
 	# Upstream version outdated/dysfunctional and CRLF terminated
 	cp "${FILESDIR}"/FindQtSingleApplication.cmake cmake/ || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -i -e '/set(CMAKE_CXX_FLAGS/d' CMakeLists.txt || die
 }
@@ -51,15 +54,5 @@ src_configure() {
 		-DUSE_SYSTEM_QTSINGLEAPPLICATION=ON
 		-DLIB_SUFFIX=${libdir/lib/}
 	)
-	cmake-utils_src_configure
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
+	cmake_src_configure
 }

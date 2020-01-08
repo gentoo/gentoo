@@ -1,22 +1,22 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 
 inherit python-r1 mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Mozo menu editor for MATE"
 LICENSE="GPL-2"
 SLOT="0"
-
 IUSE=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-python/pygobject-3:3[${PYTHON_USEDEP}]

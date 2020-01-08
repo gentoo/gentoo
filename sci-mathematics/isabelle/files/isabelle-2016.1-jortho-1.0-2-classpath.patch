@@ -1,8 +1,0 @@
---- Isabelle2016-1-orig/contrib/jortho-1.0-2/etc/settings	2014-04-16 06:03:34.000000000 +1000
-+++ Isabelle2016-1/contrib/jortho-1.0-2/etc/settings	2017-01-02 00:13:01.619790577 +1100
-@@ -3,4 +3,4 @@
- JORTHO_HOME="$COMPONENT"
- JORTHO_DICTIONARIES="$JORTHO_HOME/dictionaries/en.gz:$JORTHO_HOME/dictionaries/en_US.gz:$JORTHO_HOME/dictionaries/en_GB-ise.gz:$JORTHO_HOME/dictionaries/en_GB-ize.gz:$JORTHO_HOME/dictionaries/en_CA.gz"
- 
--classpath "$JORTHO_HOME/jortho.jar"
-+classpath "$(java-config -p jortho)"

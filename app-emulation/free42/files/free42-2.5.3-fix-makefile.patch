@@ -1,0 +1,62 @@
+diff -Naur free42-nologo-2.5.3.orig/gtk/Makefile free42-nologo-2.5.3/gtk/Makefile
+--- free42-nologo-2.5.3.orig/gtk/Makefile	2019-09-01 17:44:47.000000000 +0200
++++ free42-nologo-2.5.3/gtk/Makefile	2019-09-04 00:27:16.761482125 +0200
+@@ -15,7 +15,7 @@
+ # along with this program; if not, see http://www.gnu.org/licenses/.
+ ###############################################################################
+ 
+-CFLAGS = -MMD \
++CFLAGS := -MMD \
+ 	 -Wall \
+ 	 -Wno-parentheses \
+ 	 -Wno-write-strings \
+@@ -34,15 +34,17 @@
+ 	 -DDECIMAL_GLOBAL_ROUNDING=1 \
+ 	 -DDECIMAL_GLOBAL_ROUNDING_ACCESS_FUNCTIONS=1 \
+ 	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS=1 \
+-	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1
++	 -DDECIMAL_GLOBAL_EXCEPTION_FLAGS_ACCESS_FUNCTIONS=1 \
++	 ${CFLAGS}
+ 
+-CXXFLAGS = $(CFLAGS) \
++CXXFLAGS := $(CFLAGS) \
+ 	 -fno-exceptions \
+ 	 -fno-rtti \
+-	 -D_WCHAR_T_DEFINED
++	 -D_WCHAR_T_DEFINED \
++	 ${CXXFLAGS}
+ 
+-LDFLAGS = -L/usr/X11R6/lib
+-LIBS = gcc111libbid.a $(shell pkg-config --libs gtk+-2.0) -lXmu -lX11
++MYLDFLAGS = -L/usr/X11R6/lib
++LIBS = gcc111libbid.a -ldl -lpthread -lX11 -lXmu $(shell pkg-config --libs gtk+-2.0)
+ 
+ ifeq "$(shell uname -s)" "FreeBSD"
+ ifdef AUDIO_ALSA
+@@ -54,6 +56,8 @@
+ CFLAGS += -DF42_BIG_ENDIAN -DBID_BIG_ENDIAN
+ endif
+ 
++MYLDFLAGS += ${LDFLAGS}
++
+ SRCS = shell_main.cc shell_skin.cc skins.cc keymap.cc shell_loadimage.cc \
+ 	shell_spool.cc core_main.cc core_commands1.cc core_commands2.cc \
+ 	core_commands3.cc core_commands4.cc core_commands5.cc \
+@@ -95,7 +99,7 @@
+ endif
+ 
+ $(EXE): $(OBJS)
+-	$(CXX) -o $(EXE) $(LDFLAGS) $(OBJS) $(LIBS)
++	$(CXX) -o $(EXE) $(MYLDFLAGS) $(OBJS) $(LIBS)
+ 
+ $(SRCS) skin2cc.cc keymap2cc.cc skin2cc.conf: symlinks
+ 
+@@ -119,7 +123,7 @@
+ 
+ symlinks:
+ 	for fn in `cd ../common; /bin/ls`; do ln -s ../common/$$fn; done
+-	sh ./build-intel-lib.sh
++	+sh ./build-intel-lib.sh
+ 	ln -s IntelRDFPMathLib20U1/TESTS/readtest.c
+ 	touch symlinks
+ 

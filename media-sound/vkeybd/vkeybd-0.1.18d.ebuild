@@ -1,8 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=2
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="A virtual MIDI keyboard for X"
 HOMEPAGE="http://www.alsa-project.org/~iwai/alsa.html"
@@ -13,44 +14,30 @@ SLOT="0"
 KEYWORDS="amd64 ~sparc x86"
 IUSE="alsa lash oss"
 
-RDEPEND="alsa? ( media-libs/alsa-lib )
-	>=dev-lang/tk-8.3
-	lash? ( media-sound/lash )
-	x11-libs/libX11"
+RDEPEND="
+	>=dev-lang/tk-8.3:=
+	x11-libs/libX11
+	alsa? ( media-libs/alsa-lib:= )
+	lash? ( media-sound/lash:= )"
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto"
+	x11-base/xorg-proto
+	virtual/pkgconfig"
 
 S=${WORKDIR}/${PN}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.1.18c-desktop_entry.patch
+	"${FILESDIR}"/${PN}-0.1.18c-fix-buildsystem.patch
+)
 
-pkg_setup() {
-	TCL_VERSION=`echo 'puts [info tclversion]' | tclsh`
+src_configure() {
+	export TCL_VERSION="$(echo 'puts [info tclversion]' | tclsh)"
 
-	vkeybconf="PREFIX=/usr"
+	export USE_ALSA=$(usex alsa 1 0)
+	export USE_AWE=$(usex alsa $(usex oss 1 0) 1)
+	export USE_MIDI=$(usex alsa $(usex oss 1 0) 1)
+	export USE_LASH=$(usex lash 1 0)
 
-	if use alsa; then
-		vkeybconf+=" USE_ALSA=1"
-		use oss || vkeybconf+=" USE_AWE=0 USE_MIDI=0"
-	else
-		vkeybconf+=" USE_ALSA=0 USE_AWE=1 USE_MIDI=1"
-	fi
-
-	use lash && vkeybconf+=" USE_LASH=1"
-
-	vkeybconf+=" TCL_VERSION=${TCL_VERSION}"
-}
-
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.1.18c-desktop_entry.patch
-}
-
-src_compile() {
-	tc-export CC
-	emake ${vkeybconf} COPTFLAGS="${CFLAGS}" || die
-}
-
-src_install() {
-	emake ${vkeybconf} DESTDIR="${D}" install-all || die
-	dodoc ChangeLog README
+	tc-export CC PKG_CONFIG
 }
 
 pkg_postinst() {

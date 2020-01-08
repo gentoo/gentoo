@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ EAPI=5
 ROS_REPO_URI="https://github.com/ros/ros_comm"
 KEYWORDS="~amd64 ~arm"
 ROS_SUBDIR=tools/${PN}
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
 inherit ros-catkin user
 
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-ros/test_rosmaster
 	)"
-PATCHES=( "${FILESDIR}/timeout.patch" )
+PATCHES=( "${FILESDIR}/timeout.patch" "${FILESDIR}/yaml.patch" )
 
 src_test() {
 	rosdep update

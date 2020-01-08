@@ -59,6 +59,12 @@
     <flag name="lmdb">
       Add support for using <pkg>dev-db/lmdb</pkg>
     </flag>
+    <flag name="querycache">
+      Add support for query caching (requires 'berkdb' flag)
+    </flag>
+    <flag name="stats">
+      Add support for statistics (requires 'opendbx' flag)
+    </flag>
   </use>
   <upstream>
     <remote-id type="sourceforge">opendkim</remote-id>

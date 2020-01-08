@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -27,11 +27,11 @@ fi
 DESCRIPTION="Advanced framework for developing, testing, and using vulnerability exploit code"
 HOMEPAGE="http://www.metasploit.org/"
 LICENSE="BSD"
-IUSE="development +java nexpose openvas oracle +pcap test"
+IUSE="development +java nexpose oracle +pcap test"
 
 #multiple known bugs with tests reported upstream and ignored
 #http://dev.metasploit.com/redmine/issues/8418 - worked around (fix user creation when possible)
-RESTRICT="test"
+RESTRICT="strip test"
 
 #grep spec.add_runtime_dependency metasploit-framework.gemspec | sort
 RUBY_COMMON_DEPEND="virtual/ruby-ssl
@@ -44,7 +44,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/bit-struct
 	dev-ruby/bundler
 	dev-ruby/dnsruby
-	dev-ruby/faker
+	dev-ruby/faker:0
 	dev-ruby/filesize:*
 	dev-ruby/jsobfu:*
 	dev-ruby/json:*
@@ -91,7 +91,7 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/ruby-macho
 	dev-ruby/rubyntlm
 	dev-ruby/ruby_smb:*
-	dev-ruby/rubyzip
+	dev-ruby/rubyzip:*
 	dev-ruby/sqlite3
 	dev-ruby/sshkey
 	dev-ruby/tzinfo:*
@@ -100,7 +100,6 @@ RUBY_COMMON_DEPEND="virtual/ruby-ssl
 	dev-ruby/xmlrpc
 	java? ( dev-ruby/rjb )
 	nexpose? ( dev-ruby/nexpose )
-	openvas? ( dev-ruby/openvas-omp )
 	oracle? ( dev-ruby/ruby-oci8 )
 	pcap? ( dev-ruby/pcaprub:*
 		dev-ruby/network_interface )
@@ -123,12 +122,10 @@ ruby_add_bdepend "${RUBY_COMMON_DEPEND}
 ruby_add_rdepend "${RUBY_COMMON_DEPEND}"
 
 COMMON_DEPEND="dev-db/postgresql[server]
-	|| ( app-crypt/johntheripper-jumbo >=app-crypt/johntheripper-1.7.9-r1[-minimal] )
+	|| ( app-crypt/johntheripper-jumbo >=app-crypt/johntheripper-1.7.9-r1[-minimal(-)] )
 	net-analyzer/nmap"
 RDEPEND+=" ${COMMON_DEPEND}
 	>=app-eselect/eselect-metasploit-0.16"
-
-RESTRICT="strip"
 
 QA_PREBUILT="
 	usr/lib*/${PN}${SLOT}/data/templates/template_x86_linux.bin
@@ -215,9 +212,12 @@ all_ruby_prepare() {
 	#if ! use nessus; then
 		sed -i -e "/nessus/d" metasploit-framework.gemspec || die
 	#fi
-	if ! use openvas; then
-		sed -i -e "/openvas-omp/d" metasploit-framework.gemspec || die
-	fi
+
+	#OpenVAS support dropped on net-analyzer/metasploit. Bug:692076
+	#openvas-omp is deprecated and masked for removal. Bug:692076
+	#Remove openvas-omp in gemspec. Bug:698762
+	sed -i -e "/openvas-omp/d" metasploit-framework.gemspec || die
+
 	#even if we pass --without=blah bundler still calculates the deps and messes us up
 	if ! use development; then
 		sed -i -e "/^group :development do/,/^end$/d" Gemfile || die

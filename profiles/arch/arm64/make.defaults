@@ -17,11 +17,11 @@ LIBDIR_arm64="lib64"
 # Defaults for video drivers
 VIDEO_CARDS="fbdev"
 
-# Mart Raudsepp <leio@gentoo.org> (5 Jun 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-06-05)
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"
 
-# Michał Górny <mgorny@gentoo.org> (14 Mar 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-03-14)
 # Unhide the ARM-specific USE_EXPANDs.
 USE_EXPAND_HIDDEN="-CPU_FLAGS_ARM"

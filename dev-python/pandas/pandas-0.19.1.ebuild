@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -18,6 +18,7 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc -minimal full-support test X"
+RESTRICT="!test? ( test )"
 
 MINIMAL_DEPEND="
 	>dev-python/numpy-1.7[${PYTHON_USEDEP}]
@@ -117,7 +118,7 @@ python_compile_all() {
 	if use doc; then
 		cd "${BUILD_DIR}"/lib || die
 		cp -ar "${S}"/doc . && cd doc || die
-		LANG=C PYTHONPATH=. virtx ${EPYTHON} make.py html || die
+		LANG=C PYTHONPATH=. virtx ${EPYTHON} make.py html
 	fi
 }
 

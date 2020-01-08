@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,10 +12,9 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="virtual/cargo
-	>=virtual/rust-1.23
-	>=net-libs/zeromq-3.2
-	virtual/pkgconfig"
+DEPEND=">=net-libs/zeromq-3.2
+	virtual/pkgconfig
+	>=virtual/rust-1.23"
 
 RESTRICT="test"
 

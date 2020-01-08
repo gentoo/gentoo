@@ -1,0 +1,31 @@
+diff --git a/source/Makefile b/source/Makefile
+index f9e75bd..8390bd2 100644
+--- a/source/Makefile
++++ b/source/Makefile
+@@ -24,7 +24,7 @@ LIBDIR ?= $(PREFIX)/lib$(SUFFIX)
+ 
+ VERSION = 0.9.7
+ CPPFLAGS += -MMD -MP -DVERSION=\"$(VERSION)\" -DLIBDIR=\"$(LIBDIR)\"
+-CXXFLAGS += -O2 -Wall
++CXXFLAGS += -Wall
+ CXXFLAGS += -march=native
+ 
+ 
+@@ -45,7 +45,7 @@ $(AEOLUS_O):
+ XIFACE_O =	styles.o mainwin.o midiwin.o audiowin.o instrwin.o editwin.o \
+ 	midimatrix.o multislider.o functionwin.o xiface.o addsynth.o
+ aeolus_x11.so:	CPPFLAGS += -D_REENTRANT
+-aeolus_x11.so:	CPPFLAGS += $(shell pkgconf --cflags freetype2)
++aeolus_x11.so:	CPPFLAGS += $(shell pkg-config --cflags freetype2)
+ aeolus_x11.so:	CXXFLAGS += -shared -fPIC
+ aeolus_x11.so:	LDFLAGS += -shared
+ aeolus_x11.so:	LDLIBS += -lclthreads -lclxclient -lpthread -lXft -lX11
+@@ -74,7 +74,7 @@ install:	aeolus aeolus_x11.so aeolus_txt.so
+ 	install -m 755 aeolus $(DESTDIR)$(BINDIR)
+ 	install -m 755 aeolus_x11.so $(DESTDIR)$(LIBDIR)
+ 	install -m 755 aeolus_txt.so $(DESTDIR)$(LIBDIR)
+-	ldconfig $(PREFIX)/$(LIBDIR)
++	true $(PREFIX)/$(LIBDIR)
+ 
+ 
+ clean:

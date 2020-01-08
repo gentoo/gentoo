@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		A lightweight, object-oriented state machine implementation in Python.
+		A state machine is a mathematical model of computation.
+		It is an abstract machine that can be in exactly one of a
+		finite number of states at any given time.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/pytransitions/transitions/issues</bugs-to>
+		<remote-id type="github">pytransitions/transitions</remote-id>
+	</upstream>
+</pkgmetadata>

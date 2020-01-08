@@ -1,25 +1,26 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit flag-o-matic toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
 HOMEPAGE="
-	http://www.tcpdump.org/
+	https://www.tcpdump.org/
 	${EGIT_REPO_URI}
 "
 
 LICENSE="BSD"
 SLOT="0"
 IUSE="+drop-root libressl smi ssl samba suid test"
+RESTRICT="!test? ( test )"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	KEYWORDS=""
 else
 	SRC_URI="https://github.com/the-${PN}-group/${PN}/archive/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 RDEPEND="
@@ -66,7 +67,7 @@ src_configure() {
 		$(use_enable samba smb) \
 		$(use_with drop-root chroot '') \
 		$(use_with smi) \
-		$(use_with ssl crypto "${EPREFIX}/usr") \
+		$(use_with ssl crypto "${ESYSROOT}/usr") \
 		$(usex drop-root "--with-user=tcpdump" "")
 }
 

@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit gnome.org gnome2-utils meson pax-utils python-single-r1 virtualx xdg
 
@@ -60,7 +60,7 @@ COMMON_DEPEND="
 
 	${PYTHON_DEPS}
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 "
 # Runtime-only deps are probably incomplete and approximate.
 # Introspection deps generated using:

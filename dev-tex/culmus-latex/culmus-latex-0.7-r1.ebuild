@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/ivritex/${P}_src.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~hppa ~ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 sparc x86"
 IUSE="examples"
 
 RDEPEND="virtual/latex-base"

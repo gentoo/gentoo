@@ -10,7 +10,4 @@ Opera is a graphical Web browser available on several platforms. The desktop
 version runs on GNU/Linux and FreeBSD. Versions for Macintosh and
 Windows are also available.
 </longdescription>
-<use>
-<flag name="gtk">Install support libraries and runtime dependencies to support GTK+/GNOME desktop integration</flag>
-</use>
 </pkgmetadata>

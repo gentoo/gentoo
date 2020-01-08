@@ -4,31 +4,29 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
-# Matt Turner <mattst88@gentoo.org> (02 Mar 2019)
-# For ancient hardware. Tired of maintaining. Masked for removal in 30 days.
-# Bug #679256
-video_cards_tdfx
-video_cards_voodoo
+# Brian Evans <grknight@gentoo.org> (2019-12-19)
+# PHP 7.1 is end of life and has security issues Bug 703326
+php_targets_php7-1
 
-# Brian Evans <grknight@gentoo.org> (11 Jan 2019)
+# Brian Evans <grknight@gentoo.org> (2019-10-01)
+# Mask PHP 5.6 target for EOL
+php_targets_php5-6
+
+# Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# app-office/texmacs is package.mask'd. Bug #436400
+texmacs
+
+# Hans de Graaff <graaff@gentoo.org> (2019-04-07)
+# Mask Ruby 2.3 as EOL
+ruby_targets_ruby23
+
+# Brian Evans <grknight@gentoo.org> (2019-01-11)
 # Mask PHP 7.0 target as EOL
 php_targets_php7-0
 
-# Matt Turner <mattst88@gentoo.org> (11 Nov 2018)
+# Matt Turner <mattst88@gentoo.org> (2018-11-11)
 # d3d9 only works on amd64/x86.
 d3d9
-
-# Aaron W. Swenson <titanofold@gentoo.org> (09 Sep 2018)
-# Mask PostgreSQL 12 while in (pre-)alpha.
-postgres_targets_postgres12
-
-# Andreas K. Hüttel <dilfridge@gentoo.org> (04 Nov 2017)
-# Unkeyworded on most arches, unmasked in supported arch profiles.
-audacious
-
-# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
-# Unkeyworded on most arches, unmasked in supported arch profiles.
-elogind
 
 # CURL_SSL=winssl is for prefix/windows/winnt only
 curl_ssl_winssl
@@ -75,7 +73,7 @@ kernel_OpenBSD
 kernel_SunOS
 kernel_Winnt
 
-# Diego Pettenò <flameeyes@gentoo.org> (30 Dec 2006)
+# Diego Pettenò <flameeyes@gentoo.org> (2006-12-30)
 # These are specific of Mac OS X
 aqua
 coreaudio
@@ -86,27 +84,14 @@ prefix
 prefix-guest
 prefix-stack
 
-# Diego E. Pettenò <flameeyes@gentoo.org> (19 Oct 2010)
+# Diego E. Pettenò <flameeyes@gentoo.org> (2010-10-19)
 # masking flags that only apply to FreeBSD
 kqueue
 
-# Ralph Sennhauser <sera@gentoo.org> (31 Jul 2012)
-# Unmask in arch specific profiles when jython implementaton is available.
-python_targets_jython2_7
-python_single_target_jython2_7
-
-# Diego Elio Pettenò <flameeyes@gentoo.org> (18 Aug 2012)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-18)
 # Prelude is being masked for removal
 prelude
 
-# Diego Elio Pettenò <flameeyes@gentoo.org> (27 Aug 2012)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-27)
 # netlink is a Linux-specific interface
 netlink
-
-# Pacho Ramos <pacho@gentoo.org> (28 Sep 2013)
-# This USE flag is available after long dicussion in
-# http://www.gossamer-threads.com/lists/gentoo/dev/276077
-# to let some prople not able to run systemd to skip the dep (#480336).
-# Enabling this you will get a fully unsupported Gnome setup that
-# could suffer unexpected problem, don't expect support for it then.
-openrc-force

@@ -1,37 +1,33 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit font eutils font-ebdftopcf
+inherit font font-ebdftopcf
 
 DESCRIPTION="Linux Font Project fixed-width fonts"
 SRC_URI="mirror://sourceforge/xfonts/${PN}-src-${PV}.tar.bz2"
 HOMEPAGE="https://sourceforge.net/projects/xfonts/"
+
 LICENSE="public-domain"
-
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc s390 sh sparc x86 ~x86-fbsd"
-IUSE=""
-
-S="${WORKDIR}/${PN}-src"
-
-FONT_S="${S}/src"
-
-DOCS="${S}/doc/*"
-
+KEYWORDS="alpha amd64 arm ia64 ppc s390 sh sparc x86"
 # Only installs fonts
 RESTRICT="strip binchecks"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch ${FILESDIR}/${PN}-0.83-noglyph.patch
+S="${WORKDIR}/${PN}-src"
+
+PATCHES=( "${FILESDIR}"/${PN}-0.83-noglyph.patch )
+
+DOCS="doc/*"
+FONT_S="${S}/src"
+
+src_prepare() {
+	default
+	sed -i -e '/^FONT /s/\(.*-\)C*-/\1C-/' src/*.bdf || die
 }
 
 src_compile() {
-	cd "${FONT_S}"
-	sed -i -e '/^FONT /s/\(.*-\)C*-/\1C-/' *.bdf || die "sed failed"
-
+	cd "${FONT_S}" || die
 	font-ebdftopcf_src_compile
 }

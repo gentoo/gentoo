@@ -1,0 +1,33 @@
+From 27947d92157b0987ceef9ae31fe0d3e7f8b653df Mon Sep 17 00:00:00 2001
+From: Kirill Burtsev <kirill.burtsev@qt.io>
+Date: Fri, 23 Aug 2019 15:09:25 +0200
+Subject: Fix compilation with system ICU
+
+ICU upstream now requires that ICU4C API macros are used with a
+trailing semicolon.
+
+- https://unicode-org.atlassian.net/browse/ICU-20601
+- https://github.com/unicode-org/icu/pull/759
+
+Change-Id: Ie05c005ebcded9a228386db5d9abe9863787ec2b
+Fixes: QTBUG-78911
+Reviewed-by: Jimi Huotari <chiitoo@gentoo.org>
+Reviewed-by: Allan Sandfeld Jensen <allan.jensen@qt.io>
+---
+ .../blink/renderer/core/dom/document.cc            |  2 +-
+ chromium/third_party/icu/BUILD.gn                  | 28 +++++++++++++++-------
+ 2 files changed, 21 insertions(+), 9 deletions(-)
+
+diff --git a/chromium/third_party/blink/renderer/core/dom/document.cc b/chromium/third_party/blink/renderer/core/dom/document.cc
+index 920dab7c48d..43fd422393c 100644
+--- a/src/3rdparty/chromium/third_party/blink/renderer/core/dom/document.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/core/dom/document.cc
+@@ -6065,7 +6065,7 @@ static ParseQualifiedNameResult ParseQualifiedNameInternal(
+ 
+   for (unsigned i = 0; i < length;) {
+     UChar32 c;
+-    U16_NEXT(characters, i, length, c)
++    U16_NEXT(characters, i, length, c);
+     if (c == ':') {
+       if (saw_colon)
+         return ParseQualifiedNameResult(kQNMultipleColons);

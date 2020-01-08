@@ -6,49 +6,29 @@
     <name>Gentoo Games Project</name>
   </maintainer>
   <longdescription>
-Hello, and welcome to the Freedroid page.
+FreedroidRPG is an open source role playing game
 
-THE CLASSICAL FREEDROID: Freedroid is a clone of the classic game
-"Paradroid" on Commodore 64 with some improvements and extensions to
-the classic version. 
+The game tells the story of a world destroyed by a conflict between robots and
+their human masters. Play as Tux in a quest to save the world from the
+murderous rebel bots who know no mercy. You get to choose which path you wish
+to follow, and freedom of choice is everywhere in the game.
 
-In this game, you control a robot, depicted by a small white ball with
-a few numbers within an interstellar spaceship consisting of several
-decks connected by elevators. 
+FreedroidRPG features a real time combat system with melee and ranged weapons,
+fairly similar to the proprietary game Diablo. There is an innovative system of
+programs that can be run in order to take control of enemy robots, alter their
+behavior, or improve one's characteristics. You can use over 50 different kinds
+of items and fight countless enemies on your way to your destiny. An advanced
+dialog system provides story background and immersive role playing situations.
 
-The aim of the game is to destroy all enemy robots, depicted by small
-black balls with a few numbers, by either shooting them or seizing
-control over them by creating connections in a short subgame of
-electric circuits. 
-
-Development of this game is now complete.  The final version came out
-in august 2003 and runs on Linux, Mac OSX, Sharp Zaurus and even that
-strange Windows wannabe of an operating system.  Thanks to all who 
-helped.
-Minor fixes and maintainance will of course still continue though...
-
-FREEDROID RPG:  The Freedroid RPG is an extension/modification of the
-classical freedroid engine into an RPG.  The main differences to the
-classical version are as follows: 
-* The Tux is the main character of the rpg.  He is not displayed as a
-   ball like in Freedroid but rather as an animated character, while
-   other droids and humans in the game are still represented as the balls
-   with some number or code in them. 
-* Dialogs and chatting with friendly droids and humans:
-   Multiple-choice menus and voice samples (with subtitles for those
-   without sound). 
-* Melee weapons, armour and other items to be equipped have been
-   added. 
-* An automap feature was added.
-* Saving and loading of games.
-* A shop to trade things.
-* Controls are different:  Mouse can be used to do everything.
-   Joystick is not supported for moving around any more. 
-* The archive size (including sound samples) is about 10 times as big
-   as for the classical version.  I'd like to appologize to all 56K modem
-   owners at this point. 
+The game is complete, fully playable, and can provide about 10 hours of fun. It
+is still being actively developed, and help is welcome in many areas. People
+having - or trying to acquire - programming, map editing, or writing skills
+will find FreedroidRPG to be an exciting, fast-moving project in which they can
+fully express their creativity.
 </longdescription>
-  <upstream>
-    <remote-id type="sourceforge">freedroid</remote-id>
-  </upstream>
+<use>
+  <flag name="devtools">Compile the additional dev tools</flag>
+  <flag name="profile">Enable the integration of the ingame real-time profiler</flag>
+  <flag name="sanitize">Compile with address sanitizer</flag>
+</use>
 </pkgmetadata>

@@ -1,0 +1,26 @@
+https://sources.debian.org/data/main/n/nullmailer/1:2.2-3/debian/patches/0006-Disable-DNS-using-test.patch
+
+From: David Bremner <david@tethera.net>
+Date: Wed, 31 Oct 2018 09:18:53 -0300
+Subject: Disable DNS using test.
+
+This is probably against policy, and causes build failures in pbuilder
+---
+ test/tests/protocols | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/test/tests/protocols b/test/tests/protocols
+index 52209d7..8f67b0a 100644
+--- a/test/tests/protocols
++++ b/test/tests/protocols
+@@ -28,8 +28,8 @@ do
+ 
+ 	stop server
+ 
+-	echo "Testing host not found error with $p."
+-	error 2 protocol $p --host=this.host.can.not.exist 3<$testmail
++#	echo "Testing host not found error with $p."
++#	error 2 protocol $p --host=this.host.can.not.exist 3<$testmail
+ 
+ 	echo "Testing connection refused error with $p."
+ 	error 7 protocol $p -p $port --host=localhost 3<$testmail

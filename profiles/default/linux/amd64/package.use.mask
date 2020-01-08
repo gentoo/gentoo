@@ -1,10 +1,10 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Mike Frysinger <vapier@gentoo.org> (08 May 2016)
+# Mike Frysinger <vapier@gentoo.org> (2016-05-08)
 # This target supports VTV #547040.
 >=sys-devel/gcc-4.9 -vtv
 
-# Mike Frysinger <vapier@gentoo.org> (21 Oct 2014)
+# Mike Frysinger <vapier@gentoo.org> (2014-10-21)
 # This target supports ASAN/etc... #504200.
 sys-devel/gcc -sanitize

@@ -1,17 +1,25 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (14 May 2018)
+# Aaron Bauman <bman@gentoo.org> (2019-12-27)
+# ffmpeg does support 64 bit neon
+media-video/ffmpeg cpu_flags_arm_neon
+
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is keyworded ~arm64
+sys-firmware/seabios -binary
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2018-05-14)
 # Force the host target to avoid dependency hell
 dev-lang/rust llvm_targets_AArch64
 
-# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_AArch64
 sys-devel/clang llvm_targets_AArch64
 sys-devel/llvm llvm_targets_AArch64
 
-# James Le Cuirot <chewi@gentoo.org> (16 May 2016)
+# James Le Cuirot <chewi@gentoo.org> (2016-05-16)
 # For reasons best known to themselves, Oracle do not ship the
 # libawt_xawt.so library on arm64 even though they do on arm32.
 dev-java/oracle-jdk-bin headless-awt

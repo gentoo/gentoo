@@ -1,0 +1,22 @@
+From 32ce9bc334580de7df3a97b106189145744e3726 Mon Sep 17 00:00:00 2001
+From: Ullrich Koethe <ullrich.koethe@iwr.uni-heidelberg.de>
+Date: Tue, 16 Oct 2018 19:10:56 +0200
+Subject: [PATCH] cmake: add boost_python${MAJOR}${MINOR} (fixes #445)
+
+---
+ config/FindVIGRANUMPY_DEPENDENCIES.cmake | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/config/FindVIGRANUMPY_DEPENDENCIES.cmake b/config/FindVIGRANUMPY_DEPENDENCIES.cmake
+index f6f9d563b..47cf4237c 100644
+--- a/config/FindVIGRANUMPY_DEPENDENCIES.cmake
++++ b/config/FindVIGRANUMPY_DEPENDENCIES.cmake
+@@ -115,6 +115,8 @@ IF(PYTHONINTERP_FOUND)
+                 boost_python-${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}
+                 # Mac with Python 3
+                 boost_python${PYTHON_VERSION_MAJOR}
++                # conda-forge
++                boost_python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}
+                 # default
+                 boost_python)
+ 

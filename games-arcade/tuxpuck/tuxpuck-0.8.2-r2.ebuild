@@ -10,7 +10,7 @@ SRC_URI="http://home.no.net/munsuun/tuxpuck/files/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~x86"
 IUSE=""
 
 RDEPEND="

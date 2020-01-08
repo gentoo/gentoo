@@ -13,11 +13,10 @@
     purpose by default. All this tools shouldn't be used. Then, please
     notify upstream about you still need them to let them know the
     situation.</flag>
-  <flag name="mesh">Add support for Bluetooth Mesh control application and advertising
-    bearer.</flag>
-  <flag name="obex">Enable OBEX transfer support.</flag>
-  <flag name="test-programs">Install tools for testing of
-    various Bluetooth functions</flag>
+  <flag name="mesh">Add support for Bluetooth Mesh control application and advertising bearer.</flag>
+  <flag name="midi">Enable MIDI support</flag>
+  <flag name="obex">Enable OBEX transfer support</flag>
+  <flag name="test-programs">Install tools for testing of various Bluetooth functions</flag>
   <flag name="user-session">Allow compatibility with user-session semantics for session bus under systemd</flag>
 </use>
 <upstream>

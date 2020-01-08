@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -11,11 +11,11 @@ SRC_URI="http://mirror.httrack.com/historical/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 RDEPEND=">=sys-libs/zlib-1.2.5.1-r1
-	dev-libs/openssl:="
+	<dev-libs/openssl-1.1.0:="
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README greetings.txt history.txt )

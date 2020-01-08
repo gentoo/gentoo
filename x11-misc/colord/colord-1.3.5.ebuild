@@ -13,7 +13,7 @@ SRC_URI="https://www.freedesktop.org/software/colord/releases/${P}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0/2" # subslot = libcolord soname version
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 
 # We prefer policykit enabled by default, bug #448058
 IUSE="argyllcms examples extra-print-profiles +gusb +introspection +policykit scanner systemd +udev vala"
@@ -36,8 +36,8 @@ COMMON_DEPEND="
 		sys-apps/dbus )
 	systemd? ( >=sys-apps/systemd-44:0= )
 	udev? (
+		dev-libs/libgudev:=[${MULTILIB_USEDEP}]
 		virtual/udev
-		virtual/libgudev:=[${MULTILIB_USEDEP}]
 		virtual/libudev:=[${MULTILIB_USEDEP}]
 	)
 "

@@ -1,0 +1,160 @@
+--- rstudio-1.2.1335-orig/src/cpp/session/SessionClientInit.cpp	2019-03-28 16:08:20.000000000 +1100
++++ rstudio-1.2.1335/src/cpp/session/SessionClientInit.cpp	2019-04-09 18:15:37.746363789 +1000
+@@ -87,13 +87,13 @@
+       boost::shared_ptr<http::Cookie>* pCookie)
+ {
+    // extract the base URL
+-   json::JsonRpcRequest request;
++   core::json::JsonRpcRequest request;
+    Error error = parseJsonRpcRequest(ptrConnection->request().body(), &request);
+    if (error)
+       return error;
+    std::string baseURL;
+ 
+-   error = json::readParams(request.params, &baseURL);
++   error = core::json::readParams(request.params, &baseURL);
+    if (error)
+       return error;
+ 
+@@ -161,7 +161,7 @@
+    }
+ 
+    // prepare session info 
+-   json::Object sessionInfo ;
++   core::json::Object sessionInfo ;
+    sessionInfo["clientId"] = clientId;
+    sessionInfo["mode"] = options.programMode();
+    
+@@ -175,8 +175,8 @@
+    }
+ 
+    // temp dir
+-   FilePath tempDir = rstudio::r::session::utils::tempDir();
+-   Error error = tempDir.ensureDirectory();
++   core::FilePath tempDir = rstudio::r::session::utils::tempDir();
++   core::Error error = tempDir.ensureDirectory();
+    if (error)
+       LOG_ERROR(error);
+    sessionInfo["temp_dir"] = tempDir.absolutePath();
+@@ -194,12 +194,12 @@
+    sessionInfo["prompt"] = rstudio::r::options::getOption<std::string>("prompt");
+ 
+    // client state
+-   json::Object clientStateObject;
++   core::json::Object clientStateObject;
+    rstudio::r::session::clientState().currentState(&clientStateObject);
+    sessionInfo["client_state"] = clientStateObject;
+    
+    // source documents
+-   json::Array jsonDocs;
++   core::json::Array jsonDocs;
+    error = modules::source::clientInitDocuments(&jsonDocs);
+    if (error)
+       LOG_ERROR(error);
+@@ -224,7 +224,7 @@
+    if (resumed)
+    {
+       // console actions
+-      json::Object actionsObject;
++     core::json::Object actionsObject;
+       consoleActions.asJson(&actionsObject);
+       sessionInfo["console_actions"] = actionsObject;
+    }
+@@ -290,12 +290,12 @@
+    }
+    else
+    {
+-      sessionInfo["active_project_file"] = json::Value();
+-      sessionInfo["project_ui_prefs"] = json::Value();
+-      sessionInfo["project_open_docs"] = json::Value();
++      sessionInfo["active_project_file"] = core::json::Value();
++      sessionInfo["project_ui_prefs"] = core::json::Value();
++      sessionInfo["project_open_docs"] = core::json::Value();
+       sessionInfo["project_supports_sharing"] = false;
+       sessionInfo["project_owned_by_user"] = false;
+-      sessionInfo["project_user_data_directory"] = json::Value();
++      sessionInfo["project_user_data_directory"] = core::json::Value();
+    }
+ 
+    sessionInfo["system_encoding"] = std::string(::locale2charset(NULL));
+@@ -332,20 +332,20 @@
+       sessionInfo["build_tools_bookdown_website"] =
+                               module_context::isBookdownWebsite();
+ 
+-      FilePath buildTargetDir = projects::projectContext().buildTargetPath();
++      core::FilePath buildTargetDir = projects::projectContext().buildTargetPath();
+       if (!buildTargetDir.empty())
+       {
+          sessionInfo["build_target_dir"] = module_context::createAliasedPath(
+                                                                 buildTargetDir);
+-         sessionInfo["has_pkg_src"] = (type == r_util::kBuildTypePackage) &&
++         sessionInfo["has_pkg_src"] = (type == core::r_util::kBuildTypePackage) &&
+                                       buildTargetDir.childPath("src").exists();
+          sessionInfo["has_pkg_vig"] =
+-               (type == r_util::kBuildTypePackage) &&
++               (type == core::r_util::kBuildTypePackage) &&
+                buildTargetDir.childPath("vignettes").exists();
+       }
+       else
+       {
+-         sessionInfo["build_target_dir"] = json::Value();
++         sessionInfo["build_target_dir"] = core::json::Value();
+          sessionInfo["has_pkg_src"] = false;
+          sessionInfo["has_pkg_vig"] = false;
+       }
+@@ -353,9 +353,9 @@
+    }
+    else
+    {
+-      sessionInfo["build_tools_type"] = r_util::kBuildTypeNone;
++      sessionInfo["build_tools_type"] = core::r_util::kBuildTypeNone;
+       sessionInfo["build_tools_bookdown_website"] = false;
+-      sessionInfo["build_target_dir"] = json::Value();
++      sessionInfo["build_target_dir"] = core::json::Value();
+       sessionInfo["has_pkg_src"] = false;
+       sessionInfo["has_pkg_vig"] = false;
+    }
+@@ -364,7 +364,7 @@
+    sessionInfo["presentation_commands"] = options.allowPresentationCommands();
+ 
+    sessionInfo["tutorial_api_available"] = false;
+-   sessionInfo["tutorial_api_client_origin"] = json::Value();
++   sessionInfo["tutorial_api_client_origin"] = core::json::Value();
+ 
+    sessionInfo["build_state"] = modules::build::buildStateAsJson();
+    sessionInfo["devtools_installed"] = module_context::isMinimumDevtoolsInstalled();
+@@ -375,7 +375,7 @@
+ 
+    // console history -- we do this at the end because
+    // restoreBuildRestartContext may have reset it
+-   json::Array historyArray;
++   core::json::Array historyArray;
+    rstudio::r::session::consoleHistory().asJson(&historyArray);
+    sessionInfo["console_history"] = historyArray;
+    sessionInfo["console_history_capacity"] =
+@@ -447,14 +447,14 @@
+ 
+    sessionInfo["multi_session"] = options.multiSession();
+ 
+-   json::Object rVersionsJson;
++   core::json::Object rVersionsJson;
+    rVersionsJson["r_version"] = module_context::rVersion();
+    rVersionsJson["r_version_label"] = module_context::rVersionLabel();
+    rVersionsJson["r_home_dir"] = module_context::rHomeDir();
+    sessionInfo["r_versions_info"] = rVersionsJson;
+ 
+    sessionInfo["show_user_home_page"] = options.showUserHomePage();
+-   sessionInfo["user_home_page_url"] = json::Value();
++   sessionInfo["user_home_page_url"] = core::json::Value();
+    
+    sessionInfo["r_addins"] = modules::r_addins::addinRegistryAsJson();
+    sessionInfo["package_provided_extensions"] = modules::ppe::indexer().getPayload();
+@@ -491,7 +491,7 @@
+ 
+    // create response  (we always set kEventsPending to false so that the client
+    // won't poll for events until it is ready)
+-   json::JsonRpcResponse jsonRpcResponse;
++   core::json::JsonRpcResponse jsonRpcResponse;
+    jsonRpcResponse.setField(kEventsPending, "false");
+    jsonRpcResponse.setResult(sessionInfo);
+ 

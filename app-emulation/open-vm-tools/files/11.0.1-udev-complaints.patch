@@ -1,0 +1,60 @@
+From f1dab8ded45aaaa4b6993a4d96d0aefc700f1796 Mon Sep 17 00:00:00 2001
+From: Oliver Kurth <okurth@vmware.com>
+Date: Mon, 28 Oct 2019 16:12:42 -0700
+Subject: [PATCH] stop systemd-243 udev complaints #371
+
+Address issues from pull request #371 on github:
+- fix substiution variables for systemd-243
+- fix permissions of rules file
+See https://github.com/vmware/open-vm-tools/pull/371
+---
+ open-vm-tools/AUTHORS                        | 4 ++++
+ open-vm-tools/udev/99-vmware-scsi-udev.rules | 6 +++---
+ open-vm-tools/udev/Makefile.am               | 4 ++--
+ 3 files changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/open-vm-tools/AUTHORS b/open-vm-tools/AUTHORS
+index 08cc28ef2..026de07e6 100644
+--- a/open-vm-tools/AUTHORS
++++ b/open-vm-tools/AUTHORS
+@@ -49,3 +49,7 @@ Josh Paetzel    Additional changes to vmmemctl.ko for FreeBSD 12.0 API changes.
+ 
+ Haruki Tsurumoto        Fix Asianux identification
+                 - https://github.com/vmware/open-vm-tools/pull/325
++
++MilhouseVH      stop systemd-243 udev complaints
++                - https://github.com/vmware/open-vm-tools/pull/371
++
+diff --git a/open-vm-tools/udev/99-vmware-scsi-udev.rules b/open-vm-tools/udev/99-vmware-scsi-udev.rules
+index 053b59706..fb4ed6844 100644
+--- a/open-vm-tools/udev/99-vmware-scsi-udev.rules
++++ b/open-vm-tools/udev/99-vmware-scsi-udev.rules
+@@ -1,7 +1,7 @@
+-# Copyright (C) 2016 VMware, Inc.  All rights reserved.
++# Copyright (C) 2016,2019 VMware, Inc.  All rights reserved.
+ #
+ # This file is part of open-vm-tools
+ 
+-ACTION=="add", SUBSYSTEMS=="scsi", ATTRS{vendor}=="VMware*", ATTRS{model}=="Virtual disk*", ENV{DEVTYPE}=="disk", RUN+="/bin/sh -c 'echo 180 >/sys$DEVPATH/device/timeout'"
+-ACTION=="add", SUBSYSTEMS=="scsi", ATTRS{vendor}=="VMware*", ATTRS{model}=="VMware Virtual S", ENV{DEVTYPE}=="disk", RUN+="/bin/sh -c 'echo 180 >/sys$DEVPATH/device/timeout'"
++ACTION=="add", SUBSYSTEMS=="scsi", ATTRS{vendor}=="VMware*", ATTRS{model}=="Virtual disk*", ENV{DEVTYPE}=="disk", RUN+="/bin/sh -c 'echo 180 >/sys$env{DEVPATH}/device/timeout'"
++ACTION=="add", SUBSYSTEMS=="scsi", ATTRS{vendor}=="VMware*", ATTRS{model}=="VMware Virtual S", ENV{DEVTYPE}=="disk", RUN+="/bin/sh -c 'echo 180 >/sys$env{DEVPATH}/device/timeout'"
+ 
+diff --git a/open-vm-tools/udev/Makefile.am b/open-vm-tools/udev/Makefile.am
+index 68fbc3e27..c3baadf16 100644
+--- a/open-vm-tools/udev/Makefile.am
++++ b/open-vm-tools/udev/Makefile.am
+@@ -1,5 +1,5 @@
+ ################################################################################
+-### Copyright (C) 2016 VMware, Inc.  All rights reserved.
++### Copyright (C) 2016,2019 VMware, Inc.  All rights reserved.
+ ###
+ ### This program is free software; you can redistribute it and/or modify
+ ### it under the terms of version 2 of the GNU General Public License as
+@@ -17,5 +17,5 @@
+ 
+ install-data-local:
+ 	$(INSTALL) -d $(DESTDIR)$(UDEVRULESDIR)
+-	$(INSTALL) $(srcdir)/99-vmware-scsi-udev.rules $(DESTDIR)$(UDEVRULESDIR)
++	$(INSTALL) -m 644 $(srcdir)/99-vmware-scsi-udev.rules $(DESTDIR)$(UDEVRULESDIR)
+ 

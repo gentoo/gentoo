@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,13 +6,13 @@ EAPI=7
 inherit vdr-plugin-2
 
 DESCRIPTION="VDR PLUGIN: support the Powermate device"
-HOMEPAGE="http://home.arcor.de/andreas.regel/vdr_plugins.htm"
-SRC_URI="http://home.arcor.de/andreas.regel/files/powermate/${P}.tgz"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
+SRC_URI="http://vdr.websitec.de/download/${PN}/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND=">=media-video/vdr-1.5.8"
+RDEPEND="media-video/vdr"
 DEPEND="${RDEPEND}"

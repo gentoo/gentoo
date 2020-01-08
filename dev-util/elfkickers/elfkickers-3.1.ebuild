@@ -14,7 +14,7 @@ SRC_URI="http://www.muppetlabs.com/~breadbox/pub/software/${MY_PN}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~hppa ~mips ~sparc ~x86"
 IUSE="doc"
 
 DEPEND="app-misc/pax-utils"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,14 +11,14 @@ SRC_URI="mirror://debian/pool/main/a/at/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="pam selinux"
 
 DEPEND="virtual/mta
 	>=sys-devel/autoconf-2.64
 	sys-devel/bison
 	>=sys-devel/flex-2.5.4a
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 RDEPEND="virtual/mta
 	virtual/logger
 	selinux? ( sec-policy/selinux-at )"

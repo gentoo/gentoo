@@ -2,13 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>rich0@gentoo.org</email>
 		<name>Rich Freeman</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>gentoo@seichter.de</email>
+		<name>Ralph Seichter</name>
+	</maintainer>
+	<longdescription>Encrypted bandwidth-efficient backup using the rsync algorithm</longdescription>
 	<use>
 		<flag name="s3">Support for backing up to the Amazon S3 system</flag>
 	</use>

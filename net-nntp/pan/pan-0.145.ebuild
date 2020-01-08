@@ -10,7 +10,7 @@ SRC_URI="http://pan.rebelbase.com/download/releases/${PV}/source/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 hppa ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="dbus gnome-keyring libnotify spell ssl"
 
 RDEPEND="
@@ -21,7 +21,7 @@ RDEPEND="
 	gnome-keyring? ( >=gnome-base/libgnome-keyring-3.2 )
 	libnotify? ( >=x11-libs/libnotify-0.4.1:0= )
 	spell? (
-		>=app-text/enchant-1.6
+		>=app-text/enchant-1.6:0/0
 		>=app-text/gtkspell-2.0.7:2 )
 	ssl? ( >=net-libs/gnutls-3:0= )
 "

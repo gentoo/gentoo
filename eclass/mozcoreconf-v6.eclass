@@ -103,12 +103,6 @@ moz_pkgsetup() {
 	# false positives when toplevel configure passes downwards.
 	export QA_CONFIGURE_OPTIONS=".*"
 
-	if [[ $(gcc-major-version) -eq 3 ]]; then
-		ewarn "Unsupported compiler detected, DO NOT file bugs for"
-		ewarn "outdated compilers. Bugs opened with gcc-3 will be closed"
-		ewarn "invalid."
-	fi
-
 	python-any-r1_pkg_setup
 	# workaround to set python3 into PYTHON3 until mozilla doesn't need py2
 	if [[ "${PYTHON_COMPAT[@]}" != "${PYTHON_COMPAT[@]#python3*}" ]]; then
@@ -198,17 +192,21 @@ mozconfig_init() {
 	# Strip optimization so it does not end up in compile string
 	filter-flags '-O*'
 
+	if is-flagq '-g*' ; then
+		mozconfig_annotate 'elf-hack broken with -g* flags' --disable-elf-hack
+	fi
+
 	# Strip over-aggressive CFLAGS
 	use custom-cflags || strip-flags
 
 	# Additional ARCH support
 	case "${ARCH}" in
-	arm)
+	arm | ppc64)
 		# Reduce the memory requirements for linking
 		if use clang ; then
 			# Nothing to do
 			:;
-		elif tc-ld-is-gold ; then
+		elif tc-ld-is-gold; then
 			append-ldflags -Wl,--no-keep-memory
 		else
 			append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
@@ -224,23 +222,11 @@ mozconfig_init() {
 		# Historically we have needed to add this manually for 64-bit
 		append-flags -fPIC
 		;;
-	ppc64)
-		append-flags -fPIC -mminimal-toc
-		# Reduce the memory requirements for linking
-		if use clang ; then
-			# Nothing to do
-			:;
-		elif tc-ld-is-gold ; then
-			append-ldflags -Wl,--no-keep-memory
-		else
-			append-ldflags -Wl,--no-keep-memory -Wl,--reduce-memory-overheads
-		fi
-		;;
 	esac
 
 	# We need to append flags for gcc-6 support
 	if [[ $(gcc-major-version) -ge 6 ]]; then
-		append-cxxflags -fno-delete-null-pointer-checks -fno-lifetime-dse -fno-schedule-insns -fno-schedule-insns2
+		append-cxxflags -flifetime-dse=1
 	fi
 
 	# Use the MOZILLA_FIVE_HOME for the rpath

@@ -10,3 +10,4 @@ postgres9_6 - Build against PostgreSQL 9.6
 postgres10 - Build against PostgreSQL 10
 postgres11 - Build against PostgreSQL 11
 postgres12 - Build against PostgreSQL 12
+postgres13 - Build against PostgreSQL 13

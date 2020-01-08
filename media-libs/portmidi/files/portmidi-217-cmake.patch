@@ -1,6 +1,8 @@
---- portmidi/CMakeLists.txt
-+++ portmidi/CMakeLists.txt
-@@ -9,12 +9,11 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4919b78..9dc6e58 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,12 +9,11 @@ if(UNIX)
    set(CMAKE_BUILD_TYPE Release CACHE STRING 
        "Semicolon-separate list of supported configuration types")
    # set default directories but don't override cached values...
@@ -16,7 +18,7 @@
        CACHE STRING "executables go here")
  
  else(UNIX)
-@@ -68,10 +67,20 @@
+@@ -68,10 +67,20 @@ endif(UNIX)
  include_directories(pm_common porttime)
  add_subdirectory(pm_common)
  
@@ -39,9 +41,11 @@
 +  add_subdirectory(pm_java)
 +endif(PORTMIDI_ENABLE_JAVA)
  
---- portmidi/pm_common/CMakeLists.txt
-+++ portmidi/pm_common/CMakeLists.txt
-@@ -44,9 +44,6 @@
+diff --git a/pm_common/CMakeLists.txt b/pm_common/CMakeLists.txt
+index e171047..d23442d 100644
+--- a/pm_common/CMakeLists.txt
++++ b/pm_common/CMakeLists.txt
+@@ -44,9 +44,6 @@ set(CMAKE_C_FLAGS_RELEASE "${DEFAULT_RELEASE_FLAGS} ${LINUX_FLAGS}"
  
  # first include the appropriate system-dependent file:
  if(UNIX)
@@ -51,7 +55,7 @@
    if(APPLE)
      set(MACSRC pmmacosxcm pmmac readbinaryplist finddefault)
      prepend_path(LIBSRC ../pm_mac/ ${MACSRC})
-@@ -62,19 +59,23 @@
+@@ -62,19 +59,23 @@ if(UNIX)
                               ${COREMIDI_LIB} ${CORESERVICES_LIB}
          CACHE INTERNAL "")
  
@@ -85,7 +89,7 @@
  
      set(LINUXSRC pmlinuxalsa pmlinux finddefault)
      prepend_path(LIBSRC ../pm_linux/ ${LINUXSRC})
-@@ -88,10 +89,12 @@
+@@ -88,10 +89,12 @@ else(UNIX)
      # /MD is multithread DLL, /MT is multithread. Change to static:
      include(../pm_win/static.cmake)
      
@@ -101,7 +105,7 @@
  
      set(WINSRC pmwin pmwinmm)
      prepend_path(LIBSRC ../pm_win/ ${WINSRC})
-@@ -99,29 +102,43 @@
+@@ -99,29 +102,43 @@ else(UNIX)
      set(PM_NEEDED_LIBS winmm.lib)
    endif(WIN32)
  endif(UNIX)
@@ -160,9 +164,11 @@
  # .h files installed by pm_dylib/CMakeLists.txt, so don't need them here
  #  INSTALL(FILES portmidi.h ../porttime/porttime.h
  #    DESTINATION /usr/local/include)
---- portmidi/pm_dylib/CMakeLists.txt
-+++ portmidi/pm_dylib/CMakeLists.txt
-@@ -39,9 +39,6 @@
+diff --git a/pm_dylib/CMakeLists.txt b/pm_dylib/CMakeLists.txt
+index f693dd6..c0e1449 100644
+--- a/pm_dylib/CMakeLists.txt
++++ b/pm_dylib/CMakeLists.txt
+@@ -39,9 +39,6 @@ set(CMAKE_C_FLAGS_RELEASE "${DEFAULT_RELEASE_FLAGS} ${LINUX_FLAGS}"
  
  # first include the appropriate system-dependent file:
  if(UNIX)
@@ -172,7 +178,7 @@
    if(APPLE)
      set(MACSRC pmmacosxcm pmmac readbinaryplist finddefault)
      prepend_path(LIBSRC ../pm_mac/ ${MACSRC})
-@@ -63,7 +60,8 @@
+@@ -63,7 +60,8 @@ if(UNIX)
      message(STATUS "SYSROOT: " ${CMAKE_OSX_SYSROOT})
    else(APPLE)
      # LINUX settings...
@@ -182,7 +188,7 @@
      # message(STATUS "JAVA_JVM_LIB_PATH is " ${JAVA_JVM_LIB_PATH})
      # message(STATUS "JAVA_INCLUDE_PATH is " ${JAVA_INCLUDE_PATH})
      # note: should use JAVA_JVM_LIB_PATH, but it is not set properly
-@@ -75,11 +73,8 @@
+@@ -75,11 +73,8 @@ if(UNIX)
      # JAVA_INCLUDE_PATH2; if no, then we need to make both JAVA_INCLUDE_PATH
      # and JAVA_INCLUDE_PATH2 set by user (will need clear documentation
      # because JAVA_INCLUDE_PATH2 is pretty obscure)
@@ -196,7 +202,7 @@
  
      set(LINUXSRC pmlinuxalsa pmlinux finddefault)
      prepend_path(LIBSRC ../pm_linux/ ${LINUXSRC})
-@@ -91,13 +86,15 @@
+@@ -91,13 +86,15 @@ else(UNIX)
    if(WIN32)
      # /MDd is multithread debug DLL, /MTd is multithread debug
      # /MD is multithread DLL, /MT is multithread 
@@ -218,7 +224,7 @@
  
      set(WINSRC pmwin pmwinmm)
      prepend_path(LIBSRC ../pm_win/ ${WINSRC})
-@@ -106,7 +103,10 @@
+@@ -106,7 +103,10 @@ else(UNIX)
      # message(STATUS "JAVAVM_LIB: " ${JAVAVM_LIB})
    endif(WIN32)
  endif(UNIX)
@@ -229,7 +235,7 @@
  
  # this completes the list of library sources by adding shared code
  set(SHARED_FILES pmutil portmidi)
-@@ -120,8 +120,8 @@
+@@ -120,8 +120,8 @@ target_link_libraries(portmidi-dynamic ${PM_NEEDED_LIBS})
  # install the libraries (Linux and Mac OS X command line)
  if(UNIX)
    INSTALL(TARGETS portmidi-dynamic
@@ -241,9 +247,11 @@
 -    DESTINATION /usr/local/include)
 +    DESTINATION include)
  endif(UNIX)
---- portmidi/pm_java/CMakeLists.txt
-+++ portmidi/pm_java/CMakeLists.txt
-@@ -5,43 +5,24 @@
+diff --git a/pm_java/CMakeLists.txt b/pm_java/CMakeLists.txt
+index a350620..9cbee1c 100644
+--- a/pm_java/CMakeLists.txt
++++ b/pm_java/CMakeLists.txt
+@@ -5,43 +5,24 @@ if(UNIX)
      # java not dealt with in CMake -- see pm_mac/pm_mac.xcodeproj
    else(APPLE)
      # linux
@@ -303,16 +311,22 @@
    endif(APPLE)
  endif(UNIX)
  # In windows, use pm_java/make.bat
---- portmidi/pm_test/CMakeLists.txt
-+++ portmidi/pm_test/CMakeLists.txt
-@@ -12,8 +12,8 @@
+diff --git a/pm_test/CMakeLists.txt b/pm_test/CMakeLists.txt
+index b89074b..236ff49 100644
+--- a/pm_test/CMakeLists.txt
++++ b/pm_test/CMakeLists.txt
+@@ -10,10 +10,12 @@ if(WIN32)
+ include(../pm_win/static.cmake)
+ endif(WIN32)
  
++set(CMAKE_SKIP_BUILD_RPATH TRUE)
++
  macro(make_a_test name)
    add_executable(${name} ${name}.c)
 -  target_link_libraries(${name} portmidi-static ${PM_NEEDED_LIBS})
 -  add_dependencies(${name} portmidi-static)
-+  target_link_libraries(${name} portmidi ${PM_NEEDED_LIBS})
-+  add_dependencies(${name} portmidi)
++  target_link_libraries(${name} portmidi-dynamic ${PM_NEEDED_LIBS})
++  add_dependencies(${name} portmidi-dynamic)
  endmacro(make_a_test)
  
  make_a_test(test)

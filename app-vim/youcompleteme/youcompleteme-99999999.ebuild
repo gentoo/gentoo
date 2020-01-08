@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,6 +20,7 @@ HOMEPAGE="https://valloric.github.io/YouCompleteMe/"
 
 LICENSE="GPL-3"
 IUSE="+clang test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
@@ -88,7 +89,7 @@ src_test() {
 	LD_LIBRARY_PATH="${EROOT}"/usr/$(get_libdir)/llvm \
 		./ycm_core_tests || die
 
-	cd "${S}"/python/ycm || die
+	cd "${S}"/python/ycm || die
 
 	local dirs=( "${S}"/third_party/*/ "${S}"/third_party/ycmd/third_party/*/ )
 	local -x PYTHONPATH=${PYTHONPATH}:$(IFS=:; echo "${dirs[*]}")

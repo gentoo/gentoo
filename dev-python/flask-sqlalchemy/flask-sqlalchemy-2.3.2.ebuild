@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit distutils-r1
 
@@ -17,6 +17,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/flask-0.10[${PYTHON_USEDEP}]

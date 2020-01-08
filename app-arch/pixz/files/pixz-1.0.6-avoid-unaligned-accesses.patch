@@ -1,0 +1,44 @@
+https://github.com/vasi/pixz/pull/82
+
+From 8b9a198d86e435929ed0c2246217d241ed1e707c Mon Sep 17 00:00:00 2001
+From: Matt Turner <mattst88@gmail.com>
+Date: Sun, 1 Sep 2019 23:58:26 -0700
+Subject: [PATCH] Avoid unaligned accesses
+
+Architectures like SPARC do not allow unaligned accesses. Avoid them by
+memcpy()ing the data to an aligned buffer. On x86 systems where
+unaligned loads are fast, the memcpy() will be compiled away and the
+same code generated as before.
+---
+ src/endian.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/src/endian.c b/src/endian.c
+index 51aea58..122c7da 100644
+--- a/src/endian.c
++++ b/src/endian.c
+@@ -13,6 +13,7 @@ void xle64enc(uint8_t *d, uint64_t n) {
+ #elif defined(__linux__) || defined(__FreeBSD__)
+ 
+ #include <stdint.h>
++#include <string.h>
+ #ifdef __linux__
+ 	#include <endian.h>
+ 	#include <byteswap.h>
+@@ -37,11 +38,14 @@ void xle64enc(uint8_t *d, uint64_t n) {
+ #endif
+ 
+ uint64_t xle64dec(const uint8_t *d) {
+-    return le64toh(*(uint64_t*)d);
++    uint64_t tmp;
++    memcpy(&tmp, d, sizeof(tmp));
++    return le64toh(tmp);
+ }
+ 
+ void xle64enc(uint8_t *d, uint64_t n) {
+-    *(uint64_t*)d = htole64(n);
++    uint64_t tmp = htole64(n);
++    memcpy(d, &tmp, sizeof(tmp));
+ }
+ 
+ #else

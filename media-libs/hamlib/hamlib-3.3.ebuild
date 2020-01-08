@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit autotools python-single-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://www.github.com/${PN}/${PN}/releases/download/${PVR}/${P}.tar.gz
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE="doc perl python tcl"
 
 RESTRICT="test"
@@ -82,8 +82,8 @@ src_install() {
 	einstalldocs
 
 	insinto /usr/$(get_libdir)/pkgconfig
-	doins hamlib.pc || die "doins failed"
+	doins hamlib.pc
 
 	echo "LDPATH=/usr/$(get_libdir)/hamlib" > "${T}"/73hamlib
-	doenvd "${T}"/73hamlib || die "doenvd failed"
+	doenvd "${T}"/73hamlib
 }

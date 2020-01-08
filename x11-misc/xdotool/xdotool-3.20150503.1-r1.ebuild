@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit toolchain-funcs flag-o-matic multilib
 
 DESCRIPTION="Simulate keyboard input and mouse activity, move and resize windows"
-HOMEPAGE="http://www.semicomplete.com/projects/xdotool/"
+HOMEPAGE="https://www.semicomplete.com/projects/xdotool/"
 SRC_URI="https://github.com/jordansissel/xdotool/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"

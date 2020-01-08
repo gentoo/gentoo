@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -23,7 +23,7 @@ CDEPEND=">=dev-lang/ocaml-3.12:=[ocamlopt?]
 	dev-ml/menhir:=[ocamlopt?]
 	dev-ml/camlp4:=[ocamlopt?]
 	dev-ml/parmap:=[ocamlopt?]
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	ocaml? ( dev-ml/findlib:= )
 	pcre? ( dev-ml/pcre-ocaml:=[ocamlopt(+)?] )
 	python? ( ${PYTHON_DEPS} )"
@@ -42,6 +42,7 @@ DEPEND="${CDEPEND}
 
 DOCS=( authors.txt bugs.txt changes.txt credits.txt readme.txt )
 
+RESTRICT="strip !test? ( test )"
 S=${WORKDIR}/${MY_P}
 
 SITEFILE=50coccinelle-gentoo.el
@@ -109,8 +110,6 @@ src_install() {
 	fi
 
 	use python && python_optimize
-
-	export STRIP_MASK='*/coccinelle/spatch'
 }
 
 pkg_postinst() {

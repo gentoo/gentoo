@@ -34,8 +34,8 @@ src_configure() {
 }
 
 src_compile() {
-	emake shared || die "make failed"
-	use static-libs && (emake static || die "make failed")
+	emake shared
+	use static-libs && emake static
 }
 
 src_install() {

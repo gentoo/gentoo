@@ -11,14 +11,14 @@ HOMEPAGE="https://wiki.gnome.org/Design/Apps/Contacts"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="telepathy v4l"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 VALA_DEPEND="
 	$(vala_depend)
 	>=dev-libs/gobject-introspection-1.54
 	dev-libs/folks[vala(+)]
 	net-libs/gnome-online-accounts[vala]
-	gnome-extra/evolution-data-server[vala]
+	gnome-extra/evolution-data-server[gtk,vala]
 	net-libs/telepathy-glib[vala]
 "
 # Configure is wrong; it needs cheese-3.5.91, not 3.3.91

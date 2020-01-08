@@ -6,14 +6,16 @@ EAPI=6
 inherit mate
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="The MATE System Monitor"
+
 LICENSE="GPL-2"
 SLOT="0"
+IUSE="elogind systemd"
 
-IUSE="systemd"
+REQUIRED_USE="?? ( elogind systemd )"
 
 COMMON_DEPEND="
 	>=dev-cpp/glibmm-2.26:2
@@ -28,6 +30,7 @@ COMMON_DEPEND="
 	>=x11-libs/gtk+-3.22:3
 	>=x11-libs/libwnck-3.0:3
 	virtual/libintl
+	elogind? ( sys-auth/elogind )
 	systemd? ( sys-apps/systemd )"
 
 RDEPEND="${COMMON_DEPEND}
@@ -41,6 +44,19 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig:*"
 
 src_configure() {
-	mate_src_configure \
-		$(use_enable systemd)
+	local myconf=()
+
+	if use elogind || use systemd; then
+		myconf+=( --enable-systemd )
+		if use elogind; then
+			myconf+=(
+				SYSTEMD_CFLAGS=`pkg-config --cflags "libelogind" 2>/dev/null`
+				SYSTEMD_LIBS=`pkg-config --libs "libelogind" 2>/dev/null`
+			)
+		fi
+	else
+		myconf+=( --disable-systemd )
+	fi
+
+	mate_src_configure "${myconf[@]}"
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,8 +10,9 @@ inherit perl-module
 DESCRIPTION="Refresh %INC files when updated on disk"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ~arm ~hppa ia64 ppc ppc64 sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 DEPEND="test? ( dev-perl/Path-Class )"
