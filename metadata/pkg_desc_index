@@ -2303,7 +2303,7 @@ app-office/skrooge 2.20.0 2.21.1: Personal finances manager, aiming at being sim
 app-office/taskcoach 1.4.3-r1 1.4.6: Simple personal tasks and todo lists manager
 app-office/texmacs 1.99.6-r2 1.99.9 1.99.10 1.99.11: Wysiwyg text processor with high-quality maths
 app-office/texmaker 5.0-r1 5.0.3: A nice LaTeX-IDE
-app-office/texstudio 2.11.2-r2 2.12.2-r1 2.12.4-r1 2.12.6-r1 2.12.8-r1 2.12.10 2.12.14 2.12.16_beta2-r1 2.12.16: Free cross-platform LaTeX editor (fork from texmakerX)
+app-office/texstudio 2.11.2-r2 2.12.2-r1 2.12.4-r1 2.12.6-r1 2.12.8-r1 2.12.10 2.12.14 2.12.16_beta2-r1 2.12.16 2.12.18: Free cross-platform LaTeX editor (fork from texmakerX)
 app-office/unoconv 0.8.2 0.9 0.9.0: Convert between document formats supported by LibreOffice
 app-office/upwork 5.2.3.771: Project collaboration and tracking software for upwork.com
 app-office/worklog-assistant-bin 2.1.3580: Hassle-free time tracking for JIRA self-hosted and OnDemand
@@ -14267,7 +14267,7 @@ net-analyzer/ifstatus 1.1.0-r2 2.0.0: A simple CLI program for displaying networ
 net-analyzer/iftop 1.0_pre4-r2 1.0_pre4-r3 1.0_pre4-r4 9999999: display bandwidth usage on an interface
 net-analyzer/ike-scan 1.9-r2: A utility for finding, fingerprinting and testing IKE VPN servers
 net-analyzer/ipaudit 1.0_beta2-r1: IPAudit monitors network activity on a network by host, protocol and port
-net-analyzer/ipband 0.8.1-r1: A pcap based IP traffic and bandwidth monitor with configurable reporting and alarm abilities
+net-analyzer/ipband 0.8.1-r1 0.8.1-r2: A pcap based IP traffic and bandwidth monitor
 net-analyzer/ipcad 3.7.3: IP Cisco Accounting Daemon
 net-analyzer/ipgen 9999: Generate list of IP addresses from a network specification
 net-analyzer/ipguard 1.04-r1: Tool designed to protect LAN IP adress space by ARP spoofing
@@ -14276,7 +14276,7 @@ net-analyzer/ippl 1.4.14-r3 1.4.14-r5: A daemon which logs TCP/UDP/ICMP packets
 net-analyzer/ipsumdump 1.85 1.86 1.86-r1: Simple TCP/IP Dump summarizer/analyzer
 net-analyzer/iptraf-ng 1.1.4-r1 1.1.4-r2 1.1.4-r3 9999: A console-based network monitoring utility
 net-analyzer/iptstate 2.2.5 2.2.6: IP Tables State displays states being kept by iptables in a top-like format
-net-analyzer/ipv6toolkit 2.0_p20160422: Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets
+net-analyzer/ipv6toolkit 2.0_p20160422 2.1_p20190919 99999999: Set of IPv6 security/trouble-shooting tools to send arbitrary IPv6-based packets
 net-analyzer/isic 0.07-r1: IP Stack Integrity Checker
 net-analyzer/jffnms 0.9.4-r1: Network Management and Monitoring System
 net-analyzer/jmx2munin 1.0_p20120811-r1: JMX Monitoring plugin for Munin
@@ -17673,7 +17673,7 @@ sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.3: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.20-r2 2.22 2.23 9999: A library for manipulating block devices
-sys-libs/libcap 2.26-r2 2.27 2.28-r1 2.29-r1 2.29-r3: POSIX 1003.1e capabilities
+sys-libs/libcap 2.26-r2 2.27 2.28-r1 2.29-r3 2.30: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8 0.7.9 0.7.10: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.4 5.1.4_rc1: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 7.1.0 8.0.1 9.0.1 10.0.0.9999: New implementation of the C++ standard library, targeting C++11
