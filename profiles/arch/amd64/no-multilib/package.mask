@@ -26,6 +26,7 @@ app-benchmarks/cpuburn
 app-editors/emacs:18
 app-emulation/crossover-bin
 app-emulation/playonlinux
+app-emulation/protontricks
 app-emulation/q4wine
 app-emulation/winetricks
 app-office/ooextras
