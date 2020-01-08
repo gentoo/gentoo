@@ -1,25 +1,230 @@
-From 198e62063ed817357204284a15f95ffc7230044c Mon Sep 17 00:00:00 2001
-From: Aleksey <rhash.admin@gmail.com>
-Date: Thu, 2 Jan 2020 21:16:51 +0300
-Subject: [PATCH] fix segfault on rhash -rc
-
----
- file.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
-
+diff --git a/ChangeLog b/ChangeLog
+index 8537968..9724c9d 100644
+--- a/ChangeLog
++++ b/ChangeLog
+@@ -1,3 +1,7 @@
++Tue 07 Jan 2020 Aleksey
++	* Bugfix: restore behavior of 'rhash -rc' to be the same as in v1.3.8
++	* Bugfix: fix a segfault and memory errors
++
+ Sat 14 Dec 2019 Aleksey
+ 	* === Version 1.3.9 ===
+ 
+diff --git a/calc_sums.c b/calc_sums.c
+index a76c8c9..0f25224 100644
+--- a/calc_sums.c
++++ b/calc_sums.c
+@@ -535,6 +535,7 @@ int check_hash_file(file_t* file, int chdir)
+ 			log_error_msg_file_t(_("file is binary: %s\n"), file);
+ 			if (fd != stdin)
+ 				fclose(fd);
++			file_cleanup(&parent_dir);
+ 			return -1;
+ 		}
+ 
+@@ -586,6 +587,7 @@ int check_hash_file(file_t* file, int chdir)
+ 			rhash_data.miss++;
+ 		rhash_data.processed++;
+ 	}
++	file_cleanup(&parent_dir);
+ 	time = rsh_timer_stop(&timer);
+ 
+ 	if (res >= -1 && (rsh_fprintf(rhash_data.out, "%s\n", str_set(buf, '-', 80)) < 0 ||
 diff --git a/file.c b/file.c
-index 6f593f9..0d18f45 100644
+index 6f593f9..2f0eb2a 100644
 --- a/file.c
 +++ b/file.c
-@@ -361,8 +361,9 @@ int file_init_by_print_path(file_t* file, file_t* prepend_dir, const char* print
- 		const char* path = make_path(prepend_dir->real_path, print_path, 0);
- 		file_init(file, path, init_flags & ~FileInitReusePath);
+@@ -266,7 +266,7 @@ static int detect_path_encoding(file_t* file, wchar_t* dir_path, const char* pri
+ 	int i;
+ 	assert(file && !file->real_path);
+ 	file->mode &= ~FileMaskStatBits;
+-	if (!dir_path && ascii)
++	if (ascii)
+ 		file->mode |= FileIsAsciiPrintPath;
+ 	/* detect encoding in two or four steps */
+ 	for (i = 0; i < 4; i += step) {
+@@ -333,45 +333,39 @@ int file_init_by_print_path(file_t* file, file_t* prepend_dir, const char* print
+ #ifdef _WIN32
+ 	{
+ 		const char** primary_path;
+-		const char* dir_primary_path;
+ 		wchar_t* dir_path = (prepend_dir && !IS_DOT_TSTR(prepend_dir->real_path) ? prepend_dir->real_path : NULL);
+ 		int encoding = detect_path_encoding(file, dir_path, print_path, init_flags);
+ 		if (encoding < 0)
+ 			return -1;
+ 		if (encoding == 0) {
+ 			primary_path = &file->print_path;
+-			dir_primary_path = (prepend_dir ? file_get_print_path(prepend_dir, FPathUtf8) : NULL);
+ 		} else {
+ 			primary_path = &file->native_path;
+-			dir_primary_path = (prepend_dir ? file_get_print_path(prepend_dir, FPathNative) : NULL);
+ 		}
+-		if ((!dir_primary_path || IS_DOT_TSTR(dir_primary_path)) &&
+-				(init_flags & (FileInitReusePath | FileInitUpdatePrintPathLastSlash)) == FileInitReusePath) {
++		if ((init_flags & (FileInitReusePath | FileInitUpdatePrintPathLastSlash)) == FileInitReusePath) {
+ 			*primary_path = print_path;
+ 			file->mode |= (encoding == 0 ? FileDontFreePrintPath : FileDontFreeNativePath);
+ 		} else {
+-			*primary_path = make_path(dir_primary_path, print_path, 1);
++			*primary_path = rsh_strdup(print_path);
+ 		}
+-		return 0;
+ 	}
+ #else
+ 	if (!prepend_dir || IS_DOT_STR(prepend_dir->real_path)) {
+-		file_init(file, print_path, init_flags);
++		file_init(file, print_path, init_flags & (FileInitReusePath | FileMaskModeBits));
+ 	} else {
+-		const char* path = make_path(prepend_dir->real_path, print_path, 0);
+-		file_init(file, path, init_flags & ~FileInitReusePath);
++		file->real_path = make_path(prepend_dir->real_path, print_path, 0);
++		file->mode = init_flags & FileMaskModeBits;
  	}
 -	if (!prepend_dir || IS_DOT_STR(prepend_dir->print_path) ||
 -			(!prepend_dir->print_path && opt.path_separator != ALIEN_PATH_SEPARATOR)) {
-+	if (!prepend_dir || (prepend_dir->print_path ?
-+			IS_DOT_STR(prepend_dir->print_path) :
-+			opt.path_separator != ALIEN_PATH_SEPARATOR)) {
- 		if ((init_flags & FileInitReusePath) != 0) {
- 			file->print_path = print_path;
- 			file->mode |= FileDontFreePrintPath;
+-		if ((init_flags & FileInitReusePath) != 0) {
+-			file->print_path = print_path;
+-			file->mode |= FileDontFreePrintPath;
+-		} else
+-			file->print_path = rsh_strdup(print_path);
++	assert(file->print_path == NULL);
++	if ((init_flags & (FileInitReusePath | FileInitUpdatePrintPathLastSlash)) == FileInitReusePath) {
++		file->print_path = print_path;
++		file->mode |= FileDontFreePrintPath;
+ 	} else {
+-		file->print_path = make_path(file_get_print_path(prepend_dir, FPathPrimaryEncoding), print_path, 1);
++		file->print_path = rsh_strdup(print_path);
+ 	}
+ #endif
++	/* note: flag FileInitUpdatePrintPathLastSlash is used only with file_init() */
++	assert((init_flags & FileInitUpdatePrintPathLastSlash) == 0);
+ 	if ((init_flags & (FileInitRunFstat | FileInitRunLstat)) &&
+ 			file_stat(file, (init_flags & FileInitRunLstat)) < 0)
+ 		return -1;
+@@ -544,9 +538,10 @@ static char* get_modified_path(const char* path, const char* str, int operation)
+ 			end_pos = strlen(path);
+ 			start_pos = (end_pos > 0 ? end_pos - 1 : 0);
+ 			for (; start_pos > 0 && !IS_ANY_SLASH(path[start_pos]); start_pos--);
+-			for (; start_pos > 0 && IS_ANY_SLASH(path[start_pos]); start_pos--);
+-			if (start_pos == 0)
++			if (start_pos == 0 && !IS_ANY_SLASH(path[start_pos]))
+ 				return rsh_strdup(".");
++			for (; start_pos > 0 && IS_ANY_SLASH(path[start_pos]); start_pos--);
++			start_pos++;
+ 		} else {
+ 			char* point = strrchr(path, '.');
+ 			if (!point)
+@@ -580,9 +575,10 @@ static tpath_t get_modified_tpath(ctpath_t path, const char* str, int operation)
+ 			end_pos = wcslen(path);
+ 			start_pos = (end_pos > 0 ? end_pos - 1 : 0);
+ 			for (; start_pos > 0 && !IS_ANY_TSLASH(path[start_pos]); start_pos--);
+-			for (; start_pos > 0 && IS_ANY_TSLASH(path[start_pos]); start_pos--);
+-			if (start_pos == 0)
++			if (start_pos == 0 && !IS_ANY_TSLASH(path[start_pos]))
+ 				return rsh_wcsdup(L".");
++			for (; start_pos > 0 && IS_ANY_TSLASH(path[start_pos]); start_pos--);
++			start_pos++;
+ 		} else {
+ 			rsh_tchar* point = wcsrchr(path, L'.');
+ 			if (!point)
+diff --git a/hash_check.c b/hash_check.c
+index 1f9c936..582a09d 100644
+--- a/hash_check.c
++++ b/hash_check.c
+@@ -210,9 +210,9 @@ static int detect_hash_type(char** ptr, char* end, int* p_len)
+ 	} else {
+ 		/* search backward (but no more then 129 symbols) */
+ 		if ((p - end) >= 129) end = p - 129;
+-		for (; p >= end && p[-1] == '='; eq_num++, p--)
++		for (; p > end && p[-1] == '='; eq_num++, p--)
+ 			char_type = FmtBase64;
+-		for (; p >= end && (next_type &= test_hash_char(p[-1])); len++, p--)
++		for (; p > end && (next_type &= test_hash_char(p[-1])); len++, p--)
+ 			char_type = next_type;
+ 	}
+ 	if ((char_type & FmtBase64) != 0)
+diff --git a/tests/test_rhash.sh b/tests/test_rhash.sh
+index 8c6e40d..db41b19 100755
+--- a/tests/test_rhash.sh
++++ b/tests/test_rhash.sh
+@@ -84,12 +84,9 @@ remove_tmpdir()
+ trap remove_tmpdir EXIT
+ 
+ # prepare test files
+-SUBDIR=$RHASH_TMP/dir1
+-mkdir $RHASH_TMP $SUBDIR || die "Unable to create tmp dir."
++mkdir $RHASH_TMP || die "Unable to create tmp dir."
++cp "$SCRIPT_DIR/test1K.data" $RHASH_TMP/test1K.data
+ cd "$RHASH_TMP"
+-cp "$SCRIPT_DIR/test1K.data" test1K.data
+-FILE_A=dir1/a.txt
+-printf "a" > $FILE_A
+ 
+ # get the list of supported hash options
+ HASHOPT="`$rhash --list-hashes|sed 's/ .*$//;/[^23]-/s/-\([0-9R]\)/\1/'|tr A-Z a-z`"
+@@ -207,14 +204,13 @@ TEST_EXPECTED="(message) 1 E8B7BE43 5c334qy BTAXLOOA6G3KQMODTHRGS5ZGME hvfkN/qlp
+ check "$TEST_RESULT" "$TEST_EXPECTED"
+ 
+ new_test "test %u modifier:           "
+-cp $FILE_A "dir1/=@+.txt"
++mkdir dir1 && printf "a" > "dir1/=@+.txt"
+ TEST_RESULT=$( $rhash -p '%uf %Uf %up %Up %uxc %uxC %ubc %ubC\n' "dir1/=@+.txt" )
+ TEST_EXPECTED="%3d%40%2b.txt %3D%40%2B.txt dir1%2f%3d%40%2b.txt dir1%2F%3D%40%2B.txt e8b7be43 E8B7BE43 5c334qy 5C334QY"
+ check "$TEST_RESULT" "$TEST_EXPECTED" .
+ TEST_RESULT=$( $rhash -p '%uBc %UBc %Bc %u@c %U@c\n' -m "a" )
+ TEST_EXPECTED="6Le%2bQw%3d%3d 6Le%2BQw%3D%3D 6Le+Qw== %e8%b7%beC %E8%B7%BEC"
+ check "$TEST_RESULT" "$TEST_EXPECTED"
+-rm -f "dir1/=@+.txt"
+ 
+ new_test "test special characters:    "
+ TEST_RESULT=$( $rhash -p '\63\1\277\x0f\x1\t\\ \x34\r' -m "" )
+@@ -252,7 +248,9 @@ TEST_RESULT=$( $rhash --simple -a test1K.data | $rhash -vc - 2>/dev/null | grep
+ match "$TEST_RESULT" "^test1K.data *OK"
+ 
+ new_test "test checking magnet link:  "
+-TEST_RESULT=$( $rhash --magnet -a test1K.data | $rhash -vc - 2>&1 | grep test1K.data )
++# also test that '--check' verifies files in the current directory
++mkdir magnet_dir && $rhash --magnet -a test1K.data > magnet_dir/t.magnet
++TEST_RESULT=$( $rhash -vc magnet_dir/t.magnet 2>&1 | grep test1K.data )
+ TEST_EXPECTED="^test1K.data *OK"
+ match "$TEST_RESULT" "$TEST_EXPECTED"
+ 
+@@ -283,6 +281,20 @@ TEST_RESULT=$( $rhash --simple --embed-crc --embed-crc-delimiter=_ 'test.data' 2
+ check "$TEST_RESULT" "d3d99e8b  test_[D3D99E8B].data"
+ rm 'test_[D3D99E8B].data' 'test_[D3D99E8C].data'
+ 
++new_test "test checking recursively:  "
++mkdir -p check/a && cp test1K.data check/a/b.data
++echo "a/b.data B70B4C26" > check/b.sfv
++TEST_RESULT=$( $rhash -Crc check/ | grep b.data )
++match "$TEST_RESULT" "^a/b.data *OK" .
++echo "B70B4C26" > check/a/b.data.crc32
++TEST_RESULT=$( $rhash --crc-accept=.crc32 -Crc check/a | grep "data.*OK" )
++match "$TEST_RESULT" "^check/a.b.data *OK" .
++# test that hash-files specified explicitly by command line are checked
++# in the current directory even with '--recursive' option
++echo "test1K.data B70B4C26" > check/t.sfv
++TEST_RESULT=$( $rhash -Crc check/t.sfv | grep "data.*OK" )
++match "$TEST_RESULT" "^test1K.data *OK"
++
+ new_test "test wrong sums detection:  "
+ $rhash -p '%c\n%m\n%e\n%h\n%g\n%t\n%a\n%w\n' -m WRONG > t.sum
+ TEST_RESULT=$( $rhash -vc t.sum 2>&1 | grep 'OK' )
+@@ -290,8 +302,7 @@ check "$TEST_RESULT" ""
+ rm t.sum
+ 
+ new_test "test *accept options:       "
+-rm -rf test_dir/
+-mkdir -p test_dir && touch test_dir/file.txt test_dir/file.bin
++mkdir test_dir && touch test_dir/file.txt test_dir/file.bin
+ # correctly handle MIGW posix path conversion
+ echo "$MSYSTEM" | grep -q '^MINGW[36][24]' && SLASH=// || SLASH="/"
+ # test also --path-separator option
+@@ -301,7 +312,6 @@ TEST_RESULT=$( $rhash -rC --simple --accept=.txt --path-separator=\\ test_dir )
+ check "$TEST_RESULT" "00000000  test_dir\\file.txt" .
+ TEST_RESULT=$( $rhash -rc --crc-accept=.bin test_dir 2>/dev/null | sed -n '/Verifying/s/-//gp' )
+ match "$TEST_RESULT" "( Verifying test_dir.file\\.bin )"
+-rm -rf test_dir/
+ 
+ new_test "test ignoring of log files: "
+ touch t1.out t2.out
