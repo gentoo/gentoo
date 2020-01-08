@@ -17247,7 +17247,7 @@ sys-block/raid-check 20140719-r1: Script to do "scrubbing" on software RAID syst
 sys-block/rts5229 1.07-r6: PCIE RTS5229 card reader driver for Linux
 sys-block/rts_pstor 1.10_p20160103: PCI-E RTS5209 card reader driver for Linux
 sys-block/sas2ircu 19 20: LSI MPT-SAS2 controller management tool
-sys-block/sas3flash 15: Flash utility for LSI MPT-SAS3 controller
+sys-block/sas3flash 15 15-r1 16: Flash utility for LSI MPT-SAS3 controller
 sys-block/sas3ircu 5 14 15 16: LSI MPT-SAS3 controller management tool
 sys-block/scsiadd 1.97-r1: Add and remove SCSI devices from your Linux system during runtime
 sys-block/scsiping 0.0.1-r1: SCSIPing pings a host on the SCSI-chain
