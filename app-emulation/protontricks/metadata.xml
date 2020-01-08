@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>marecki@gentoo.org</email>
+		<name>Marek Szuba</name>
+	</maintainer>
+	<longdescription lang="en">
+		A simple wrapper script that allows you to easily run Winetricks commands for Steam Play/Proton
+		games. This is often useful when a game requires closed-source runtime libraries that are not
+		included with Proton, or to activate Gallium Nine (native Direct3D 9 support) for a Proton game,
+		without all the tedious messing around with Wine prefixes.
+	</longdescription>
+	<use>
+		<flag name="gui">Enable the graphical user interface (requires <pkg>gnome-extra/zenity</pkg>)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">Matoking/protontricks</remote-id>
+		<remote-id type="pypi">protontricks</remote-id>
+	</upstream>
+</pkgmetadata>
