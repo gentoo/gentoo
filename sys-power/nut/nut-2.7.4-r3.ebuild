@@ -34,8 +34,7 @@ DEPEND="
 	zeroconf? ( net-dns/avahi )"
 
 BDEPEND="
-	virtual/pkgconfig
-	>=sys-apps/sed-4"
+	virtual/pkgconfig"
 
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-nut )"
@@ -80,10 +79,10 @@ NUT_PRIVATE_FILES="/etc/nut/{upsd.conf,upsd.users,upsmon.conf}"
 NUT_CGI_FILES="/etc/nut/{{hosts,upsset}.conf,upsstats{,-single}.html}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.7.2-no-libdummy.patch"
-	"${FILESDIR}/${PN}-2.7.1-snmpusb-order.patch"
-	"${FILESDIR}/${PN}-2.6.2-lowspeed-buffer-size.patch"
-	"${FILESDIR}/nut-openssl-1.1-support.patch"
+	"${FILESDIR}"/${PN}-2.7.2-no-libdummy.patch
+	"${FILESDIR}"/${PN}-2.7.1-snmpusb-order.patch
+	"${FILESDIR}"/${PN}-2.6.2-lowspeed-buffer-size.patch
+	"${FILESDIR}"/nut-openssl-1.1-support.patch
 )
 
 pkg_setup() {
