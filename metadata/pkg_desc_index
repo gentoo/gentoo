@@ -4866,7 +4866,7 @@ dev-libs/iniparser 3.1-r1 4.1: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.2.0: Dependency injection framework for Qt5
 dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters with mouse
 dev-libs/intel-neo 19.38.14237 19.46.14807 19.48.14977: Intel Graphics Compute Runtime for OpenCL, for Gen8 (Broadwell) and beyond
-dev-libs/isl 0.12.2 0.21 0.22: A library for manipulating integer points bounded by linear constraints
+dev-libs/isl 0.12.2 0.21 0.22 0.22-r1: A library for manipulating integer points bounded by linear constraints
 dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness notification
 dev-libs/jansson 2.10 2.11 2.12: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
@@ -4963,7 +4963,7 @@ dev-libs/libgpg-error 1.27-r1 1.29 1.32 1.32-r1 1.36: Contains error handling fu
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 232 233-r1: GObject bindings for libudev
-dev-libs/libgusb 0.2.11 0.3.1: GObject wrapper for libusb
+dev-libs/libgusb 0.2.11 0.3.1 0.3.2: GObject wrapper for libusb
 dev-libs/libgweather 3.32.2-r1: Location and timezone database and weather-lookup library
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libical 3.0.5 3.0.6 3.0.7: An implementation of basic iCAL protocols
@@ -15092,7 +15092,7 @@ net-misc/dleyna-server 0.5.0: library for implementing services that allow clien
 net-misc/dmr_utils 9999: Python utilities for working with DMR
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2017.75 2018.76 2019.78: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 83.4.152 84.4.170 85.3.138 85.4.155 86.4.146 87.4.138: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 83.4.152 88.4.172: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0 1.6.0-r1 19: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
