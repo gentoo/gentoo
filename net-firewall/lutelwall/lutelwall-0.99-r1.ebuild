@@ -1,12 +1,12 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="IPTables firewall setup script"
 LICENSE="GPL-2"
-HOMEPAGE="http://www.lutel.pl/lutelwall/"
-SRC_URI="http://www.lutel.pl/wp-content/uploads/${PV}/${P}.tar.gz"
+HOMEPAGE="https://www.lutel.pl/lutelwall/"
+SRC_URI="https://www.lutel.pl/wp-content/uploads/${PV}/${P}.tar.gz"
 SLOT="0"
 KEYWORDS="alpha ~amd64 ~ppc ~sparc x86"
 
