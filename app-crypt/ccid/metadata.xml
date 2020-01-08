@@ -5,10 +5,6 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>crypto@gentoo.org</email>
-		<name>Crypto</name>
-	</maintainer>
 	<use>
 		<flag name="kobil-midentity">Build and install Kobil_mIDentity_switch tool</flag>
 		<flag name="twinserial">Enable twinserial reader</flag>

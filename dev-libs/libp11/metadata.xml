@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>crypto@gentoo.org</email>
-		<name>Crypto</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 		Library implementing a small layer on top of PKCS#11 API to make
 		using PKCS#11 implementations easier.

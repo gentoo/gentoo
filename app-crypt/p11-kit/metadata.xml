@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>crypto@gentoo.org</email>
-		<name>Crypto</name>
+		<email>zlogene@gentoo.org</email>
+		<name>Mikle Kolyada</name>
 	</maintainer>
 	<use>
 		<flag name="asn1">Enable ASN.1 certificate support</flag>
