@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 DISTUTILS_OPTIONAL="1"
 
 inherit distutils-r1 flag-o-matic toolchain-funcs
 
 DESCRIPTION="I2C tools for bus probing, chip dumping, EEPROM decoding, and more"
 HOMEPAGE="https://www.kernel.org/pub/software/utils/i2c-tools"
-SRC_URI="${HOMEPAGE}/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/software/utils/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -18,7 +18,7 @@ KEYWORDS="amd64 arm ~arm64 ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="python"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="!<sys-apps/lm_sensors-3
+RDEPEND="
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}"
 

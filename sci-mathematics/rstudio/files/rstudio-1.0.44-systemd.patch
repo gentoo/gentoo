@@ -1,7 +1,7 @@
---- rstudio-1.0.44-orig/src/cpp/server/CMakeLists.txt	2016-10-19 08:32:41.000000000 +1100
-+++ rstudio-1.0.44/src/cpp/server/CMakeLists.txt	2016-12-02 11:11:45.259050839 +1100
-@@ -203,17 +203,12 @@
-            DESTINATION ${RSERVER_UPSTART_DIR})
+--- a/src/cpp/server/CMakeLists.txt
++++ b/src/cpp/server/CMakeLists.txt
+@@ -232,17 +232,12 @@
+            DESTINATION ${DISTRO_SHARE}/${RSERVER_UPSTART_DIR})
  
      # install configured systemd profile
 -   set(RSERVER_SYSTEMD_DIR "extras/systemd")

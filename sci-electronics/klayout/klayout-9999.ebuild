@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ RUBY_OPTIONAL=no
 USE_RUBY="ruby24"
 # note: define maximally ONE implementation here
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit toolchain-funcs python-single-r1 ruby-ng
 
@@ -25,6 +25,7 @@ HOMEPAGE="https://www.klayout.de/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	dev-qt/designer:5

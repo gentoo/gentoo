@@ -12,7 +12,7 @@ FEATURES="sandbox sfperms strict"
 
 USE="cups foomaticdb fortran gdbm gpm imlib libwww spell firefox"
 
-# Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
 # Set ABI & DEFAULT_ABI consistently with ${ARCH}, to make ebuild
 # checks simpler.
 ABI="hppa"
@@ -21,6 +21,10 @@ MULTILIB_ABIS="hppa"
 LIBDIR_hppa="lib"
 CHOST_hppa="${CHOST}"
 
-# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
 VIDEO_CARDS="fbdev"
+
+# Hans de Graaff <graaff@gentoo.org) (2019-07-17)
+# Temporary RUBY_TARGETS for bug 688976
+RUBY_TARGETS="ruby24 -ruby25"

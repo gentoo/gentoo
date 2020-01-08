@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>mrueg@gentoo.org</email>
-		<name>Manuel Rüger</name>
-	</maintainer>
-	<use>
-		<flag name="sass">Enable SASS/SCSS support</flag>
-	</use>
+    <maintainer type="person">
+        <email>g4s8.public@gmail.com</email>
+        <name>Kirill Che</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <use>
+        <flag name="sass">Enable SASS/SCSS support</flag>
+    </use>
+    <upstream>
+        <remote-id type="github">https://github.com/gohugoio/hugo</remote-id>
+    </upstream>
+    <longdescription lang="en">
+      Hugo is a static HTML and CSS website generator written in Go.
+      It is optimized for speed, ease of use, and configurability.
+    </longdescription>
 </pkgmetadata>

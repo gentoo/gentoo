@@ -6,6 +6,7 @@
 # java@gentoo.org
 # @AUTHOR:
 # Vlastimil Babka <caster@gentoo.org>
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: Eclass for building dev-java/ant-* packages
 # @DESCRIPTION:
 # This eclass provides functionality and default ebuild variables for building
@@ -53,7 +54,9 @@ ANT_TASK_NAME="${PN#ant-}"
 # @DESCRIPTION:
 # Specifies JAVA_PKG_NAME (PN{-SLOT} used with java-pkg_jar-from) of the package
 # that this one depends on. Defaults to the name of ant task, ebuild can
-# override it before inheriting this eclass.
+# override it before inheriting this eclass. In case there is more than one
+# dependency, the variable can be specified as bash array with multiple strings,
+# one for each dependency.
 ANT_TASK_DEPNAME=${ANT_TASK_DEPNAME-${ANT_TASK_NAME}}
 
 # @ECLASS-VARIABLE: ANT_TASK_DISABLE_VM_DEPS
@@ -104,7 +107,7 @@ S="${WORKDIR}/${MY_P}"
 # base: performs the unpack, build.xml replacement and symlinks ant.jar from
 #	ant-core
 #
-# jar-dep: symlinks the jar file(s) from dependency package
+# jar-dep: symlinks the jar file(s) from dependency package(s)
 ant-tasks_src_unpack() {
 	[[ -z "${1}" ]] && ant-tasks_src_unpack all
 
@@ -128,9 +131,11 @@ ant-tasks_src_unpack() {
 				# ant.jar to build against
 				java-pkg_jar-from --build-only ant-core ant.jar;;
 			jar-dep)
-				# get jar from the dependency package
+				# get jar from the dependency package(s)
 				if [[ -n "${ANT_TASK_DEPNAME}" ]]; then
-					java-pkg_jar-from ${ANT_TASK_DEPNAME}
+					for depname in "${ANT_TASK_DEPNAME[@]}"; do
+						java-pkg_jar-from ${depname}
+					done
 				fi;;
 			all)
 				ant-tasks_src_unpack base jar-dep;;

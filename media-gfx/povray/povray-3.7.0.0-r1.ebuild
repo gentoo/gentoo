@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,7 @@ SRC_URI="https://github.com/POV-Ray/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="AGPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 ~arm ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug +io-restrictions openexr static-libs tiff X"
 
 DEPEND="
@@ -67,12 +67,14 @@ src_prepare() {
 
 	rm -rf libraries || die
 
-	# Change some destination directories that cannot be adjusted via configure
+	# Change some directories that cannot be adjusted via configure
 	sed \
 		-e 's:${povsysconfdir}/$PACKAGE/$VERSION_BASE:${povsysconfdir}/'${PN}':g' \
 		-e 's:${povdatadir}/$PACKAGE-$VERSION_BASE:${povdatadir}/'${PN}':g' \
 		-e 's:${povdatadir}/doc/$PACKAGE-$VERSION_BASE:${povdatadir}/doc/'${PF}':g' \
 		-e 's:BOOST_THREAD_LIBS $LIBS:BOOST_THREAD_LIBS $LIBS -lboost_date_time:g' \
+		-e 's:"/usr/include":"'${EPREFIX}'/usr/include":' \
+		-e 's:"/usr/lib":"'${EPREFIX}'/usr/'$(get_libdir)'":' \
 		-i configure.ac || die
 
 	sed \

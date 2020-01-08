@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="${HOMEPAGE}archive/${PV/_/}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="3"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint"
+KEYWORDS="amd64 ~arm hppa ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint"
 IUSE="libressl sctp static-libs"
 
 DEPEND="!libressl? ( dev-libs/openssl:0= )

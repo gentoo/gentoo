@@ -1,14 +1,14 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+inherit autotools
 
 LTRACE_V=${PV/_p*/}
 DB_V=${PV/*_p/}
 
 DESCRIPTION="trace library calls made at runtime"
-HOMEPAGE="https://www.ltrace.org/"
+HOMEPAGE="https://gitlab.com/cespedes/ltrace"
 SRC_URI="
 	mirror://debian/pool/main/l/${PN}/${PN}_${LTRACE_V}.orig.tar.bz2
 	mirror://debian/pool/main/l/${PN}/${PN}_${LTRACE_V}-${DB_V}.debian.tar.gz
@@ -26,15 +26,23 @@ DEPEND="${RDEPEND}
 	sys-libs/binutils-libs
 	test? ( dev-util/dejagnu )"
 
+RESTRICT="!test? ( test )"
+
 S=${WORKDIR}/${PN}-${LTRACE_V}
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.7.3-test-protos.patch #bug 421649
+	"${FILESDIR}"/${PN}-0.7.3-alpha-protos.patch
+	"${FILESDIR}"/${PN}-0.7.3-ia64.patch
+	"${FILESDIR}"/${PN}-0.7.3-print-test-pie.patch
+	"${FILESDIR}"/${PN}-0.7.3-ia64-pid_t.patch
+)
+
 src_prepare() {
-	epatch "${WORKDIR}"/debian/patches/[0-9]*
-	epatch "${FILESDIR}"/${PN}-0.7.3-test-protos.patch #bug 421649
-	epatch "${FILESDIR}"/${PN}-0.7.3-alpha-protos.patch
-	epatch "${FILESDIR}"/${PN}-0.7.3-ia64.patch
-	epatch "${FILESDIR}"/${PN}-0.7.3-print-test-pie.patch
-	epatch "${FILESDIR}"/${PN}-0.7.3-ia64-pid_t.patch
+	eapply "${WORKDIR}"/debian/patches/[0-9]*
+
+	default
+
 	sed -i '/^dist_doc_DATA/d' Makefile.am || die
 	eautoreconf
 }

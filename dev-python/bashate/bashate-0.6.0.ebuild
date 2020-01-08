@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 DISTUTILS_IN_SOURCE_BUILD=TRUE
 
 # time
@@ -26,7 +26,7 @@ DEPEND="
 "
 RDEPEND="
 	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
-	!~dev-pythn/Babel-2.4.0
+	!~dev-python/Babel-2.4.0
 "
 
 python_install_all() {

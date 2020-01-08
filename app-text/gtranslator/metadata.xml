@@ -5,10 +5,6 @@
 		<email>gnome@gentoo.org</email>
 		<name>Gentoo GNOME Desktop</name>
 	</maintainer>
-	<use>
-		<flag name="gnome-dictionary">Enable plugin for dictionary lookups using <pkg>app-dicts/gnome-dictionary</pkg>.</flag>
-		<flag name="gucharmap">Enable plugin for unicode symbols selection using <pkg>gnome-extra/gucharmap</pkg>.</flag>
-	</use>
 	<longdescription lang="en">
 		Gtranslator is an enhanced gettext po file editor for the GNOME desktop
 		environment.

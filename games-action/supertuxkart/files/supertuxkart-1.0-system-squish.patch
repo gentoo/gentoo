@@ -1,0 +1,43 @@
+From e1601b1ae07e3c1ac05cffe05b82e0c60998bc72 Mon Sep 17 00:00:00 2001
+From: James Le Cuirot <chewi@gentoo.org>
+Date: Mon, 13 May 2019 22:51:21 +0100
+Subject: [PATCH] CMake: Add option to use system Squish library
+
+The system version was preferred before but it wasn't possible to
+explicitly disable it, making its use automagic, which is bad for
+packaging.
+
+Closes: https://github.com/supertuxkart/stk-code/pull/3916
+---
+ CMakeLists.txt | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8a7f03264..40e7790fe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -31,6 +31,8 @@ CMAKE_DEPENDENT_OPTION(BUILD_RECORDER "Build opengl recorder" ON
+     "NOT SERVER_ONLY;NOT APPLE" OFF)
+ CMAKE_DEPENDENT_OPTION(USE_FRIBIDI "Support for right-to-left languages" ON
+     "NOT SERVER_ONLY" OFF)
++CMAKE_DEPENDENT_OPTION(USE_SYSTEM_SQUISH "Use system Squish library instead of the built-in version, when available." ON
++    "NOT SERVER_ONLY" OFF)
+ CMAKE_DEPENDENT_OPTION(USE_WIIUSE "Support for wiimote input devices" ON
+     "NOT SERVER_ONLY;NOT MINGW;NOT CYGWIN" OFF)
+ 
+@@ -247,8 +249,10 @@ if(NOT SERVER_ONLY)
+ endif()
+ 
+ if(NOT SERVER_ONLY)
+-    find_library(SQUISH_LIBRARY NAMES squish libsquish)
+-    find_path(SQUISH_INCLUDEDIR NAMES squish.h PATHS)
++    if(USE_SYSTEM_SQUISH)
++        find_library(SQUISH_LIBRARY NAMES squish libsquish)
++        find_path(SQUISH_INCLUDEDIR NAMES squish.h PATHS)
++    endif()
+     if (NOT SQUISH_LIBRARY OR NOT SQUISH_INCLUDEDIR)
+         add_subdirectory("${PROJECT_SOURCE_DIR}/lib/libsquish")
+         include_directories("${PROJECT_SOURCE_DIR}/lib/libsquish")
+-- 
+2.20.1
+

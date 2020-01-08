@@ -12,6 +12,7 @@
     <remote-id type="cpan-module">BSON::Bool</remote-id>
     <remote-id type="cpan-module">BSON::Bytes</remote-id>
     <remote-id type="cpan-module">BSON::Code</remote-id>
+    <remote-id type="cpan-module">BSON::DBPointer</remote-id>
     <remote-id type="cpan-module">BSON::DBRef</remote-id>
     <remote-id type="cpan-module">BSON::Decimal128</remote-id>
     <remote-id type="cpan-module">BSON::Doc</remote-id>
@@ -26,6 +27,7 @@
     <remote-id type="cpan-module">BSON::Raw</remote-id>
     <remote-id type="cpan-module">BSON::Regex</remote-id>
     <remote-id type="cpan-module">BSON::String</remote-id>
+    <remote-id type="cpan-module">BSON::Symbol</remote-id>
     <remote-id type="cpan-module">BSON::Time</remote-id>
     <remote-id type="cpan-module">BSON::Timestamp</remote-id>
     <remote-id type="cpan-module">BSON::Types</remote-id>

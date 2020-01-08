@@ -11,8 +11,9 @@ inherit perl-module
 DESCRIPTION="Expand template text with embedded Perl"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ppc ~x86"
+KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/perl-Carp
 	virtual/perl-Encode

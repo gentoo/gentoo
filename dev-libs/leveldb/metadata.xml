@@ -5,9 +5,6 @@
     <email>patrick@gentoo.org</email>
     <name>Patrick Lauer</name>
   </maintainer>
-  <use>
-    <flag name="snappy">support the snappy compression library</flag>
-  </use>
   <upstream>
     <remote-id type="github">google/leveldb</remote-id>
     <bugs-to>https://github.com/google/leveldb/issues</bugs-to>

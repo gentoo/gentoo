@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,13 +11,13 @@ DESCRIPTION="HTTP web service mocking library"
 HOMEPAGE="https://gitlab.com/uhttpmock/uhttpmock"
 SRC_URI="http://tecnocode.co.uk/downloads/${PN}/${P}.tar.xz"
 
-LICENSE="LGPL-2"
+LICENSE="LGPL-2+"
 SLOT="0"
 
 IUSE="+introspection vala"
 REQUIRED_USE="vala? ( introspection )"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~ppc ~ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~arm arm64 hppa ~ia64 ~ppc ~ppc64 sparc x86"
 
 RDEPEND="
 	>=dev-libs/glib-2.36.0:2

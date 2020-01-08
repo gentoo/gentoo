@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils savedconfig toolchain-funcs
+EAPI=7
+inherit savedconfig toolchain-funcs
 
 DESCRIPTION="A simple dynamic window manager, with features nicked from ratpoison and dwm"
 HOMEPAGE="https://launchpad.net/musca"
@@ -10,17 +10,24 @@ SRC_URI="mirror://gentoo/${P}.tgz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="apis xlisten"
 
-COMMON="x11-libs/libX11"
-DEPEND="${COMMON}
-	sys-apps/sed"
+DEPEND="
+	x11-libs/libX11
+"
 RDEPEND="
-	${COMMON}
+	${DEPEND}
 	>=x11-misc/dmenu-4.4
 	apis? ( x11-misc/xbindkeys )
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.24-make.patch
+	"${FILESDIR}"/${PN}-0.9.24_p20100226-dmenu-4.4.patch
+	"${FILESDIR}"/${PN}-0.9.24_p20100226-null.patch
+	"${FILESDIR}"/${PN}-0.9.24_p20100226-fix-cycle.patch
+	"${FILESDIR}"/${PN}-0.9.24_p20100226-fix-pad.patch
+)
 
 src_prepare() {
 	restore_config config.h
@@ -30,12 +37,7 @@ src_prepare() {
 		-e 's:sed.*exec.*-i::g' \
 		|| die
 
-	epatch \
-		"${FILESDIR}"/${PN}-0.9.24-make.patch \
-		"${FILESDIR}"/${PN}-0.9.24_p20100226-dmenu-4.4.patch \
-		"${FILESDIR}"/${PN}-0.9.24_p20100226-null.patch \
-		"${FILESDIR}"/${PN}-0.9.24_p20100226-fix-cycle.patch \
-		"${FILESDIR}"/${PN}-0.9.24_p20100226-fix-pad.patch
+	default
 
 	local i
 	for i in apis xlisten; do
@@ -49,13 +51,9 @@ src_prepare() {
 
 src_install() {
 	dobin musca
+	use xlisten && dobin xlisten
+	use apis && dobin apis
 
-	local i
-	for i in xlisten apis; do
-		if use ${i}; then
-			dobin ${i}
-		fi
-	done
 	doman musca.1
 
 	exeinto /etc/X11/Sessions

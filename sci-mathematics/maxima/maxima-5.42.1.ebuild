@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 # Supported lisps
 LISPS=(     sbcl cmucl gcl             ecls clozurecl clisp )
@@ -35,7 +35,7 @@ RDEPEND="!app-emacs/imaxima
 	X? ( x11-misc/xdg-utils
 		 sci-visualization/gnuplot[gd]
 		 tk? ( dev-lang/tk:0 ) )
-	emacs? ( virtual/emacs
+	emacs? ( >=app-editors/emacs-23.1:*
 		virtual/latex-base
 		app-emacs/auctex
 		app-text/ghostscript-gpl

@@ -1,0 +1,45 @@
+From 5917ba8bc645a2b105ec089101b8a664481b5b61 Mon Sep 17 00:00:00 2001
+From: Peter Levine <plevine457@gmail.com>
+Date: Thu, 17 Oct 2019 23:08:57 -0400
+Subject: Fix building against MySQL Connector/C 8
+
+In MySQL Connector/C 8, my_bool is replaced by bool. It was
+previously defined as char. When building against
+MySQL Connector/C 8, this leads to type punning build errors.
+Redefine affected members of struct BindMetaData as bool if using
+version 8 of greater. Otherwise, default to char.
+
+Change-Id: If12b975d95afae86502867cb334cb4195802f91d
+Reviewed-on: https://gerrit.libreoffice.org/81002
+Reviewed-by: Samuel Mehrbrodt <Samuel.Mehrbrodt@cib.de>
+Tested-by: Samuel Mehrbrodt <Samuel.Mehrbrodt@cib.de>
+---
+ .../source/drivers/mysqlc/mysqlc_preparedstatement.hxx         | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/connectivity/source/drivers/mysqlc/mysqlc_preparedstatement.hxx b/connectivity/source/drivers/mysqlc/mysqlc_preparedstatement.hxx
+index 1df2c70..3450473 100644
+--- a/connectivity/source/drivers/mysqlc/mysqlc_preparedstatement.hxx
++++ b/connectivity/source/drivers/mysqlc/mysqlc_preparedstatement.hxx
+@@ -39,11 +39,17 @@ using ::com::sun::star::uno::Reference;
+ using ::com::sun::star::uno::RuntimeException;
+ using ::com::sun::star::uno::Type;
+ 
++#if defined MYSQL_VERSION_ID && (MYSQL_VERSION_ID >= 80000) && !defined MARIADB_BASE_VERSION
++using my_bool = bool;
++#else
++using my_bool = char;
++#endif
++
+ struct BindMetaData
+ {
+-    char is_null = 0;
++    my_bool is_null = 0;
+     unsigned long length = 0;
+-    char error = 0;
++    my_bool error = 0;
+ };
+ 
+ typedef ::cppu::ImplHelper5<css::sdbc::XPreparedStatement, css::sdbc::XParameters,
+-- 
+cgit v1.1

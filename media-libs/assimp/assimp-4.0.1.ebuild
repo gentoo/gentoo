@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,9 +10,10 @@ HOMEPAGE="https://github.com/assimp/assimp"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="samples static test tools"
 SLOT="0"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/boost:=

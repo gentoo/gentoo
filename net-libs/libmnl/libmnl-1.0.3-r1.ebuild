@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs usr-ldscript
 
 DESCRIPTION="Minimalistic netlink library"
 HOMEPAGE="https://netfilter.org/projects/libmnl/"
@@ -20,11 +20,13 @@ src_configure() {
 
 src_install() {
 	default
+
 	gen_usr_ldscript -a mnl
-	prune_libtool_files
+
+	find "${D}" -name '*.la' -delete || die
 
 	if use examples; then
-		find examples/ -name 'Makefile*' -delete
+		find examples/ -name 'Makefile*' -delete || die
 		dodoc -r examples/
 		docompress -x /usr/share/doc/${PF}/examples
 	fi

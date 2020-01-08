@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,10 +13,13 @@ S="${WORKDIR}/${PN}-rel$(replace_all_version_separators '')"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ppc x86"
 IUSE="doc +ocamlopt"
 
-DEPEND=">=dev-lang/ocaml-3.10:=[ocamlopt?]"
+DEPEND="
+	>=dev-lang/ocaml-3.10:=[ocamlopt?]
+	<=dev-lang/ocaml-4.4.2
+"
 RDEPEND="${DEPEND}"
 
 PATCHLEVEL=${PV#*_p}
@@ -44,7 +47,7 @@ src_configure() {
 	./configure \
 		--strict \
 		-prefix /usr \
-	    -bindir /usr/bin \
+		-bindir /usr/bin \
 		-libdir /usr/$(get_libdir)/ocaml \
 		-mandir /usr/share/man || die "configure failed"
 }

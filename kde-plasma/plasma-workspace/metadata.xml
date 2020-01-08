@@ -8,7 +8,7 @@
 	<use>
 		<flag name="appstream">Enable AppStream software metadata support</flag>
 		<flag name="geolocation">Enables dataengine providing location information</flag>
-		<flag name="prison">Enable support for barcodes/QRcodes</flag>
 		<flag name="qalculate">Enable Qalculate runner using <pkg>sci-libs/libqalculate</pkg></flag>
+		<flag name="qrcode">Enable support for creating QR codes from clipboard data using <pkg>kde-frameworks/prison</pkg></flag>
 	</use>
 </pkgmetadata>

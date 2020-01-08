@@ -1,0 +1,3 @@
+# Jaco Kroon <jaco@uls.co.za> (2019-11-28)
+# Unfortunately net-libs/bcg729 isn't available for ppc
+net-libs/pjproject g729

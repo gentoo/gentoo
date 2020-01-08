@@ -8,7 +8,7 @@ DESCRIPTION="A clone of the NeXTstep Interface Builder application for GNUstep"
 HOMEPAGE="http://www.gnustep.org/experience/Gorm.html"
 SRC_URI="ftp://ftp.gnustep.org/pub/gnustep/dev-apps/${P}.tar.gz"
 
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""

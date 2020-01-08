@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ CDEPEND="
 	>=x11-libs/fltk-1.3.1
 	gnutls? ( net-libs/gnutls:= )
 	nls? ( virtual/libiconv )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	x11-libs/libX11
 	x11-libs/libXext
 	x11-libs/libXrender
@@ -85,12 +85,17 @@ src_prepare() {
 		cp -r "${WORKDIR}"/xorg-server-${XSERVER_VERSION}/. unix/xserver || die
 	fi
 
+	# do not rely on the build system to install docs
+	sed -i 's:^\(install(.* DESTINATION ${DOC_DIR})\):#\1:' \
+		cmake/BuildPackages.cmake || die
+
 	cmake-utils_src_prepare
 
 	if use server ; then
 		cd unix/xserver || die
 		eapply "${FILESDIR}"/xserver120.patch
 		eapply "${FILESDIR}"/xserver120-drmfourcc-header.patch
+		sed -i -e 's/"gl >= .*"/"gl"/' configure.ac || die
 		eautoreconf
 	fi
 }

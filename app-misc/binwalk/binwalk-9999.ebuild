@@ -1,30 +1,35 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+EAPI=7
+PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} )
 
 inherit distutils-r1
 
 if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/devttys0/binwalk.git"
+	EGIT_REPO_URI="https://github.com/ReFirmLabs/binwalk.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/devttys0/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/ReFirmLabs/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86 ~x64-macos"
 fi
 
 DESCRIPTION="A tool for identifying files embedded inside firmware images"
-HOMEPAGE="https://github.com/devttys0/binwalk"
+HOMEPAGE="https://github.com/ReFirmLabs/binwalk"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="graph"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="
-	$(python_gen_cond_dep 'dev-python/backports-lzma[${PYTHON_USEDEP}]' python2_7)
-	graph? ( dev-python/pyqtgraph[opengl,${PYTHON_USEDEP}] )
-"
+RDEPEND="$(python_gen_cond_dep 'dev-python/backports-lzma[${PYTHON_USEDEP}]' python2_7)"
+BDEPEND="test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+
+PATCHES=( "${FILESDIR}"/${PN}-2.2.0-disable-test-coverage.patch )
+
+python_test() {
+	esetup.py test
+}
 
 python_install_all() {
 	local DOCS=( API.md INSTALL.md README.md )

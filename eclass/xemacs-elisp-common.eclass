@@ -10,6 +10,11 @@
 # Copyright 2003 Jeremy Maitin-Shepard <jbms@attbi.com>
 # Copyright 2007 Ulrich Müller <ulm@gentoo.org>
 #
+# @DEAD
+# Ulrich Müller <ulm@gentoo.org> (2019-12-16)
+# No longer used by any ebuild in the Gentoo repository.
+# Removal in 30 days.
+#
 # @ECLASS: xemacs-elisp-common.eclass
 # @MAINTAINER:
 # xemacs@gentoo.org

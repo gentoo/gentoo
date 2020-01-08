@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,6 @@ DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
 
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
-RESTRICT="strip" # Strip ourself #46186
 EMULTILIB_PKG="true"
 
 # Configuration variables
@@ -59,6 +58,28 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 	fi
 fi
 
+# Note [Disable automatic stripping]
+# Disabling automatic stripping for a few reasons:
+# - portage's attempt to strip breaks non-native binaries at least on
+#   arm: bug #697428
+# - portage's attempt to strip libpthread.so.0 breaks gdb thread
+#   enumeration: bug #697910. This is quite subtle:
+#   * gdb uses glibc's libthread_db-1.0.so to enumerate threads.
+#   * libthread_db-1.0.so needs access to libpthread.so.0 local symbols
+#     via 'ps_pglobal_lookup' symbol defined in gdb.
+#   * 'ps_pglobal_lookup' uses '.symtab' section table to resolve all
+#     known symbols in 'libpthread.so.0'. Specifically 'nptl_version'
+#     (unexported) is used to sanity check compatibility before enabling
+#     debugging.
+#     Also see https://sourceware.org/gdb/wiki/FAQ#GDB_does_not_see_any_threads_besides_the_one_in_which_crash_occurred.3B_or_SIGTRAP_kills_my_program_when_I_set_a_breakpoint
+#   * normal 'strip' command trims '.symtab'
+#   Thus our main goal here is to prevent 'libpthread.so.0' from
+#   losing it's '.symtab' entries.
+# As Gentoo's strip does not allow us to pass less aggressive stripping
+# options and does not check the machine target we disable stripping
+# entirely.
+RESTRICT=strip
+
 is_crosscompile() {
 	[[ ${CHOST} != ${CTARGET} ]]
 }
@@ -78,14 +99,10 @@ COMMON_DEPEND="
 "
 DEPEND="${COMMON_DEPEND}
 	>=app-misc/pax-utils-0.1.10
-	!<sys-apps/sandbox-1.6
-	!<sys-apps/portage-2.1.2
 	doc? ( sys-apps/texinfo )
 "
 RDEPEND="${COMMON_DEPEND}
-	!sys-kernel/ps3-sources
 	sys-apps/gentoo-functions
-	!sys-libs/nss-db
 "
 
 if [[ ${CATEGORY} == cross-* ]] ; then
@@ -123,7 +140,7 @@ pkg_pretend() {
 		if has_version ">${CATEGORY}/${P}-r10000" ; then
 			eerror "Sanity check to keep you from breaking your system:"
 			eerror " Downgrading glibc is not supported and a sure way to destruction"
-			die "Aborting to save your system"
+			[[ ${I_ALLOW_TO_BREAK_MY_SYSTEM} = yes ]] || die "Aborting to save your system."
 		fi
 
 		if ! glibc_run_test '#include <pwd.h>\nint main(){return getpwuid(0)==0;}\n'
@@ -560,7 +577,7 @@ src_configure() {
 }
 
 do_src_compile() {
-	emake -C "$(builddir nptl)" || die "make nptl for ${ABI} failed"
+	emake -C "$(builddir nptl)"
 }
 
 src_compile() {
@@ -599,7 +616,7 @@ glibc_do_src_install() {
 	local builddir=$(builddir nptl)
 	cd "${builddir}"
 
-	emake install_root="${D}$(alt_prefix)" install || die
+	emake install_root="${D}$(alt_prefix)" install
 
 	# This version (2.26) provides some compatibility libraries for the NIS/NIS+ support
 	# which come without headers etc. Only needed for binary packages since the
@@ -784,7 +801,6 @@ src_install() {
 	fi
 
 	foreach_abi glibc_do_src_install
-	src_strip
 }
 
 pkg_preinst() {

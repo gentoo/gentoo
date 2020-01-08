@@ -1,0 +1,70 @@
+https://github.com/bitcoin/bitcoin/pull/16564
+
+From 272855746b18de76f51e84945d675904e9b907af Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Wed, 7 Aug 2019 11:38:11 -0400
+Subject: [PATCH] Always define the raii_event_tests test suite
+
+The test suite must always be defined (even when EVENT_SET_MEM_FUNCTIONS_IMPLEMENTED is not defined) so that the test harness doesn't fail due to not being able to find the raii_event_tests test.
+
+This improves upon 95f97f4 actually fixing https://github.com/bitcoin/bitcoin/issues/9493
+---
+ src/test/raii_event_tests.cpp | 24 +++++++++++++++---------
+ 1 file changed, 15 insertions(+), 9 deletions(-)
+
+diff --git a/src/test/raii_event_tests.cpp b/src/test/raii_event_tests.cpp
+index bdb411d53f57..6691de882930 100644
+--- a/src/test/raii_event_tests.cpp
++++ b/src/test/raii_event_tests.cpp
+@@ -4,20 +4,28 @@
+ 
+ #include <event2/event.h>
+ 
++#include <test/test_bitcoin.h>
++
++#include <boost/test/unit_test.hpp>
++
++BOOST_FIXTURE_TEST_SUITE(raii_event_tests, BasicTestingSetup)
++
++#ifndef EVENT_SET_MEM_FUNCTIONS_IMPLEMENTED
++BOOST_AUTO_TEST_CASE(raii_event_creation)
++{
++    // dummy; do nothing
++}
++#endif  // EVENT_SET_MEM_FUNCTIONS_IMPLEMENTED
++
+ #ifdef EVENT_SET_MEM_FUNCTIONS_IMPLEMENTED
+-// It would probably be ideal to define dummy test(s) that report skipped, but boost::test doesn't seem to make that practical (at least not in versions available with common distros)
+ 
+ #include <map>
+ #include <stdlib.h>
+ 
+ #include <support/events.h>
+ 
+-#include <test/test_bitcoin.h>
+-
+ #include <vector>
+ 
+-#include <boost/test/unit_test.hpp>
+-
+ static std::map<void*, short> tags;
+ static std::map<void*, uint16_t> orders;
+ static uint16_t tagSequence = 0;
+@@ -36,8 +44,6 @@ static void tag_free(void* mem) {
+     free(mem);
+ }
+ 
+-BOOST_FIXTURE_TEST_SUITE(raii_event_tests, BasicTestingSetup)
+-
+ BOOST_AUTO_TEST_CASE(raii_event_creation)
+ {
+     event_set_mem_functions(tag_malloc, realloc, tag_free);
+@@ -89,6 +95,6 @@ BOOST_AUTO_TEST_CASE(raii_event_order)
+     event_set_mem_functions(malloc, realloc, free);
+ }
+ 
+-BOOST_AUTO_TEST_SUITE_END()
+-
+ #endif  // EVENT_SET_MEM_FUNCTIONS_IMPLEMENTED
++
++BOOST_AUTO_TEST_SUITE_END()

@@ -302,7 +302,7 @@ src_install() {
 	source ${TMPENVFILE}
 
 	einfo "Doing stock install"
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	# Build the envdir file
 	# Don't forget this..

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,9 @@ SRC_URI="http://download.qt.io/official_releases/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( LGPL-2.1 GPL-3 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? (
 		dev-qt/qtcore:5

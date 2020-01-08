@@ -1,19 +1,21 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2018)
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is stable on ppc
+sys-firmware/seabios -binary
+
+# Joonas Niilola <juippis@gentoo.org> (2019-01-12)
+# Force 'unwind' on for ppc and ppc64 with dev-libs/efl
+# #668486, #657750
+dev-libs/efl unwind
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-12-25)
 # Enable powerpc target by default.
 dev-lang/rust llvm_targets_PowerPC
 
-# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_PowerPC
 sys-devel/clang llvm_targets_PowerPC
 sys-devel/llvm llvm_targets_PowerPC
-
-# Kacper Kowalik <xarthisius@gentoo.org> (16 Jan 2011)
-# bug 303931
-# sci-chemistry/arp-warp-bin is not available for ppc
-# sci-chemistry/solve-resolve-bin is not available for ppc
-# sci-chemistry/cns is not available for ppc
-sci-libs/cctbx minimal

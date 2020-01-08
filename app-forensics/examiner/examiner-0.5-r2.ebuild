@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -9,7 +9,7 @@ DESCRIPTION="Utilizes the objdump command to disassemble and comment foreign bin
 HOMEPAGE="http://www.academicunderground.org/examiner/"
 SRC_URI="http://www.academicunderground.org/examiner/${P}.tar.gz"
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 KEYWORDS="amd64 ppc x86"
 IUSE=""
 

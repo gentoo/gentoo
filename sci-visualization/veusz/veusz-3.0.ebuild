@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit eutils distutils-r1 virtualx xdg-utils gnome2-utils
 
@@ -14,13 +14,12 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="dbus doc emf fits hdf5 minuit"
+IUSE="dbus doc fits hdf5 minuit"
 
 CDEPEND="dev-python/PyQt5[widgets,svg,printsupport,${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
 	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
-	emf? ( dev-python/pyemf[$(python_gen_usedep 'python2*')] )
 	fits? ( dev-python/astropy[${PYTHON_USEDEP}] )
 	hdf5? ( dev-python/h5py[${PYTHON_USEDEP}] )
 	minuit? ( || ( dev-python/iminuit[${PYTHON_USEDEP}] dev-python/pyminuit[${PYTHON_USEDEP}] ) )"

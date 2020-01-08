@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,12 +10,12 @@ inherit haskell-cabal
 
 DESCRIPTION="A command-line interface for user input, written in Haskell"
 HOMEPAGE="https://github.com/judah/haskeline"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 # keep in sync with ghc-8.0.1
-KEYWORDS="amd64 x86 ~x86-fbsd ~x86-macos"
+KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="legacy-encoding libiconv +terminfo"
 
 RDEPEND=">=dev-haskell/transformers-0.2:=[profile?] <dev-haskell/transformers-0.6:=[profile?]

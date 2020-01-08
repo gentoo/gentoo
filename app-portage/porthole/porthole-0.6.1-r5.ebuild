@@ -14,15 +14,12 @@ SRC_URI="mirror://sourceforge/porthole/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ppc ppc64 sparc x86"
 IUSE="nls"
 LANGS="de pl ru vi it fr tr"
 
 RDEPEND="
-	|| (
-		>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)
+	>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
 	dev-python/pygtk:2[${PYTHON_USEDEP}]
 	gnome-base/libglade:2.0
 	dev-python/pygtksourceview:2[${PYTHON_USEDEP}]

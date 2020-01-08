@@ -2,19 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dpisklov@gmail.com</email>
-		<name>Dmitry Pisklov</name>
+		<email>polynomial-c@gentoo.org</email>
+		<name>Lars Wendler</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<use>
-		<flag name="input_devices_roccat_ryosmkfx">Enable support for Ryos Mk FX keyboard.</flag>
-		<flag name="input_devices_roccat_skeltr">Enable support for Skeltr keyboard.</flag>
-		<flag name="input_devices_roccat_sova">Enable support for Sova keyboard.</flag>
-		<flag name="input_devices_roccat_suora">Enable support for Suora keyboard.</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">roccat</remote-id>
 	</upstream>

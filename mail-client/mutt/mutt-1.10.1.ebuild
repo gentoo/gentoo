@@ -28,7 +28,7 @@ REQUIRED_USE="
 	kerberos?         ( || ( imap pop smtp nntp ) )"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # yes, we overdepend on the backend impls here, hopefully one day we can
 # have REQUIRED_USE do what it is made for again. bug #607360
 CDEPEND="
@@ -153,7 +153,7 @@ src_configure() {
 		$(use !ssl &&                echo --without-gnutls --without-ssl)
 
 		$(use_with sasl)
-		$(use_with idn)
+		$(use_with idn) --without-idn  # avoid automagic libidn dep
 		$(use_with kerberos gss)
 		"$(use slang && echo --with-slang="${EPREFIX}"/usr || echo a=b)"
 		"$(use_with !slang curses "${EPREFIX}"/usr)"
@@ -208,11 +208,11 @@ src_configure() {
 		myconf+=( "--with-homespool=Maildir" )
 	fi
 
-	econf "${myconf[@]}" || die "configure failed"
+	econf "${myconf[@]}"
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${D}" install
 	if use mbox; then
 		insinto /etc/mutt
 		newins "${FILESDIR}"/Muttrc.mbox Muttrc
@@ -227,7 +227,7 @@ src_install() {
 
 	# A man-page is always handy, so fake one
 	if use !doc; then
-		emake -C doc DESTDIR="${D}" muttrc.man || die
+		emake -C doc DESTDIR="${D}" muttrc.man
 		# make the fake slightly better, bug #413405
 		sed -e 's#@docdir@/manual.txt#http://www.mutt.org/doc/devel/manual.html#' \
 			-e 's#in @docdir@,#at http://www.mutt.org/,#' \
@@ -277,6 +277,6 @@ pkg_postinst() {
 	if use gpgme ; then
 		ewarn "Note: in order for Mutt to actually use the gpgme backend"
 		ewarn "      you MUST include 'set crypt_use_gpgme=yes' in .muttrc"
-		ewarn "      https://dev.mutt.org/doc/manual.html#crypt-use-gpgme"
+		ewarn "      https://www.mutt.org/doc/manual/#crypt-use-gpgme"
 	fi
 }

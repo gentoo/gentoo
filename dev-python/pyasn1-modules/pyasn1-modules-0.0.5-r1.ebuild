@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
 inherit distutils-r1
 
@@ -33,5 +33,5 @@ python_test() {
 python_install_all() {
 	distutils-r1_python_install_all
 	insinto /usr/share/doc/${PF}/tools
-	doins tools/* || die "doins failed"
+	doins tools/*
 }

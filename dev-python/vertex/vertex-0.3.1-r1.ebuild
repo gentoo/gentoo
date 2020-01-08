@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,6 +12,7 @@ SRC_URI="mirror://pypi/${TWISTED_PN:0:1}/${TWISTED_PN}/${TWISTED_P}.tar.gz"
 
 KEYWORDS="~amd64 ~x86"
 IUSE="libressl test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0 )

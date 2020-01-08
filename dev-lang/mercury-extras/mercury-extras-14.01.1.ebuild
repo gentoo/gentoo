@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 inherit eutils multilib
 
-PATCHSET_VER="1"
+PATCHSET_VER="2"
 MY_P=mercury-srcdist-${PV}
 
 DESCRIPTION="Additional libraries and tools that are not part of the Mercury standard library"
@@ -129,71 +129,71 @@ src_install() {
 	cd "${S}"
 	if use examples; then
 		insinto /usr/share/doc/${PF}/samples/base64
-		doins base64/*.m || die
+		doins base64/*.m
 
 		insinto /usr/share/doc/${PF}/samples/complex_numbers
-		doins complex_numbers/samples/* || die
+		doins complex_numbers/samples/*
 
 		insinto /usr/share/doc/${PF}/samples/dynamic_linking
-		doins dynamic_linking/hello.m || die
+		doins dynamic_linking/hello.m
 
 		insinto /usr/share/doc/${PF}/samples/error
-		doins error/* || die
+		doins error/*
 
 		insinto /usr/share/doc/${PF}/samples/fixed
-		doins fixed/*.m || die
+		doins fixed/*.m
 
 		insinto /usr/share/doc/${PF}/samples/gator
-		doins -r gator/* || die
+		doins -r gator/*
 
 		insinto /usr/share/doc/${PF}/samples/lex
-		doins lex/samples/* || die
+		doins lex/samples/*
 
 		insinto /usr/share/doc/${PF}/samples/log4m
-		doins log4m/*.m || die
+		doins log4m/*.m
 
 		insinto /usr/share/doc/${PF}/samples/monte
-		doins monte/*.m || die
+		doins monte/*.m
 
 		insinto /usr/share/doc/${PF}/samples/moose
-		doins moose/samples/* || die
+		doins moose/samples/*
 
 		insinto /usr/share/doc/${PF}/samples/net
-		doins net/*.m || die
+		doins net/*.m
 
 		if use ncurses; then
 			insinto /usr/share/doc/${PF}/samples/curs
-			doins curs/samples/* || die
+			doins curs/samples/*
 
 			insinto /usr/share/doc/${PF}/samples/curses
-			doins curses/sample/* || die
+			doins curses/sample/*
 		fi
 
 		if use X; then
 			insinto /usr/share/doc/${PF}/samples/graphics
-			doins graphics/easyx/samples/*.m || die
+			doins graphics/easyx/samples/*.m
 		fi
 
 		if use glut && use opengl; then
 			insinto /usr/share/doc/${PF}/samples/graphics
-			doins graphics/samples/calc/* || die
-			doins graphics/samples/gears/* || die
-			doins graphics/samples/maze/* || die
-			doins graphics/samples/pent/* || die
+			doins graphics/samples/calc/*
+			doins graphics/samples/gears/*
+			doins graphics/samples/maze/*
+			doins graphics/samples/pent/*
 		fi
 
 		if use opengl && use tcl && use tk; then
 			insinto /usr/share/doc/${PF}/samples/graphics
-			doins graphics/samples/pent/*.m || die
+			doins graphics/samples/pent/*.m
 		fi
 
 		if use ssl; then
 			insinto /usr/share/doc/${PF}/samples/mopenssl
-			doins mopenssl/*.m || die
+			doins mopenssl/*.m
 		fi
 
 		ecvs_clean
 	fi
 
-	dodoc README || die
+	dodoc README
 }

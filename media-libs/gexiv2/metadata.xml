@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>graphics@gentoo.org</email>
-    <name>Gentoo Graphics Project</name>
-  </maintainer>
+	<maintainer type="person">
+		<email>bernardo@standard.ai</email>
+		<name>Bernardo Meurer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<longdescription lang="en">
+		gexiv2 is a GObject wrapper around the Exiv2 photo metadata library.
+		It allows for GNOME applications to easily inspect and update EXIF,
+		IPTC, and XMP metadata in photo and video files of various formats.
+	</longdescription>
 </pkgmetadata>

@@ -1,0 +1,37 @@
+From 687e17aa7f2f40d21717be9a04302c749e139d4a Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Wed, 30 Oct 2019 19:25:51 +0100
+Subject: [PATCH] network-manager: fix getting of ifname from the sysfs path
+To: <initramfs@vger.kernel.org>
+
+commit 5e0f8c8a4ced ('network-manager: remove useless use of basename')
+somewhat carelessly didn't take into account that $_i has a slash at
+the end which made the result of the ## substitution be just an empty
+string.
+
+The slash was put to the end of /sys/class/net/*/ to make sure we're only
+iterating directories, but it's not strictly necessary. In an unlikely case
+something else than a directory appears in /sys/class/net/, we'll already deal
+with it gracefully. Remove it.
+
+This fixes the TEST-30-ISCSI test.
+---
+ modules.d/35network-manager/nm-run.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules.d/35network-manager/nm-run.sh b/modules.d/35network-manager/nm-run.sh
+index a539d5b2..b33e0992 100755
+--- a/modules.d/35network-manager/nm-run.sh
++++ b/modules.d/35network-manager/nm-run.sh
+@@ -6,7 +6,7 @@ else
+     /usr/sbin/NetworkManager --configure-and-quit=initrd --no-daemon
+ fi
+ 
+-for _i in /sys/class/net/*/
++for _i in /sys/class/net/*
+ do
+     state=/run/NetworkManager/devices/$(cat $_i/ifindex)
+     grep -q connection-uuid= $state 2>/dev/null || continue
+-- 
+2.24.1
+

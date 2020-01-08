@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/libHX-${PV}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="~amd64 ppc ~x86"
 IUSE="doc"
 
 DEPEND="app-arch/xz-utils"

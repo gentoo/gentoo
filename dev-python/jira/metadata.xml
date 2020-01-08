@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>wizardedit@gentoo.org</email>
-    <name>Austin English</name>
-  </maintainer>
-  <maintainer type="person">
     <email>calchan@gentoo.org</email>
     <name>Denis Dupeyron</name>
   </maintainer>
@@ -17,8 +13,6 @@
     <remote-id type="github">pycontribs/jira</remote-id>
   </upstream>
   <use>
-    <flag name="filemagic">Include filemagic support (for identifying uploaded filetypes)</flag>
-    <flag name="ipython">Include Interactive Python (IPython)</flag>
     <flag name="jirashell">Include dependencies for jirashell (ipython, oauthlib)</flag>
     <flag name="kerberos">Support Kerberos authentication</flag>
     <flag name="oauth">Support OAuth authentication</flag>

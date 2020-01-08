@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: The comments in this file are for instruction and documentation.
@@ -19,8 +19,8 @@ EAPI=7
 # without the following line:
 #inherit autotools
 #
-# eclasses tend to list descriptions of how to use their functions properly.
-# take a look at /usr/portage/eclass/ for more examples.
+# Eclasses tend to list descriptions of how to use their functions properly.
+# Take a look at the eclass/ directory for more examples.
 
 # Short one-line description of this package.
 DESCRIPTION="This is a sample skeleton ebuild file"
@@ -32,9 +32,15 @@ HOMEPAGE="https://foo.example.org/"
 # Portage.
 SRC_URI="ftp://foo.example.org/${P}.tar.gz"
 
+# Source directory; the dir where the sources can be found (automatically
+# unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
+# If you don't need to change it, leave the S= line out of the ebuild
+# to keep it tidy.
+#S="${WORKDIR}/${P}"
 
-# License of the package.  This must match the name of file(s) in
-# /usr/portage/licenses/.  For complex license combination see the developer
+
+# License of the package.  This must match the name of file(s) in the
+# licenses/ directory.  For complex license combination see the developer
 # docs on gentoo.org for details.
 LICENSE=""
 
@@ -52,14 +58,15 @@ LICENSE=""
 SLOT="0"
 
 # Using KEYWORDS, we can record masking information *inside* an ebuild
-# instead of relying on an external package.mask file.  Right now, you should
-# set the KEYWORDS variable for every ebuild so that it contains the names of
-# all the architectures with which the ebuild works.  All of the official
-# architectures can be found in the arch.list file which is in
-# /usr/portage/profiles/.  Usually you should just set this to "~amd64".
-# The ~ in front of the architecture indicates that the package is new and
-# should be considered unstable until testing proves its stability.  So, if
-# you've confirmed that your ebuild works on amd64 and ppc, you'd specify:
+# instead of relying on an external package.mask file.  Right now, you
+# should set the KEYWORDS variable for every ebuild so that it contains
+# the names of all the architectures with which the ebuild works.
+# All of the official architectures can be found in the arch.list file
+# which is in the profiles/ directory.  Usually you should just set this
+# to "~amd64".  The ~ in front of the architecture indicates that the
+# package is new and should be considered unstable until testing proves
+# its stability.  So, if you've confirmed that your ebuild works on
+# amd64 and ppc, you'd specify:
 # KEYWORDS="~amd64 ~ppc"
 # Once packages go stable, the ~ prefix is removed.
 # For binary packages, use -* and then list the archs the bin package
@@ -96,13 +103,6 @@ IUSE="gnome X"
 # Build-time dependencies that are executed during the emerge process, and
 # only need to be present in the native build system (CBUILD). Example:
 #BDEPEND="virtual/pkgconfig"
-
-
-# Source directory; the dir where the sources can be found (automatically
-# unpacked) inside ${WORKDIR}.  The default value for S is ${WORKDIR}/${P}
-# If you don't need to change it, leave the S= line out of the ebuild
-# to keep it tidy.
-#S="${WORKDIR}/${P}"
 
 
 # The following src_configure function is implemented as default by portage, so

@@ -1,0 +1,11 @@
+https://bugs.gentoo.org/695954
+
+--- a/mmm.texinfo
++++ b/mmm.texinfo
+@@ -1,5 +1,6 @@
+ \input texinfo
+ @c %**start of header
++@documentencoding ISO-8859-1
+ @setfilename mmm.info
+ @settitle MMM Mode Manual
+ @c %**end of header

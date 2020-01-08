@@ -1,0 +1,32 @@
+From caf88fd638f67b505aa28521b6abda430f03e7c8 Mon Sep 17 00:00:00 2001
+From: Heiko Becker <heirecka@exherbo.org>
+Date: Thu, 31 Oct 2019 20:33:54 +0100
+Subject: [PATCH] Fix build with Qt 5.14
+
+std::hash<QString> is already specialized in Qt 5.14 [1], so we need
+to avoid redifining it with this version.
+
+[1] 4469e36d7203a55a4e158a50f0e9effc3f2fa3c2 in qtbase.git
+---
+ src/definitions.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/definitions.h b/src/definitions.h
+index a55ec8df7..d2f67815b 100644
+--- a/src/definitions.h
++++ b/src/definitions.h
+@@ -252,10 +252,12 @@ QDebug operator<<(QDebug qd, const ItemInfo &info);
+ 
+ // we provide hash function for qstring and QPersistentModelIndex
+ namespace std {
++#if (QT_VERSION < QT_VERSION_CHECK(5, 14, 0))
+ template <> struct hash<QString>
+ {
+     std::size_t operator()(const QString &k) const { return qHash(k); }
+ };
++#endif
+ template <> struct hash<QPersistentModelIndex>
+ {
+     std::size_t operator()(const QPersistentModelIndex &k) const { return qHash(k); }
+-- 
+2.17.1

@@ -1,0 +1,24 @@
+From 7361a17fa8ffe607ad7f050062a5e4a1eda24f26 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Wed, 30 Oct 2019 13:33:58 +0100
+Subject: Make it compile against qt5.15, This enum is unused
+
+---
+ src/gameview.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/gameview.cpp b/src/gameview.cpp
+index a9bbbac..2ca126d 100644
+--- a/src/gameview.cpp
++++ b/src/gameview.cpp
+@@ -52,7 +52,7 @@ GameView::GameView(const QSize &size, int advancePeriod, QGraphicsScene *scene,
+     // Cache on
+     setCacheMode(QGraphicsView::CacheBackground);
+     setViewportUpdateMode(QGraphicsView::SmartViewportUpdate);
+-    setOptimizationFlags(QGraphicsView::DontClipPainter |
++    setOptimizationFlags(
+                          QGraphicsView::DontSavePainterState |
+                          QGraphicsView::DontAdjustForAntialiasing);
+ 
+-- 
+cgit v1.1

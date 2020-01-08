@@ -1,0 +1,37 @@
+From 8a948b3ac17f7d1b0ff31b0cf22e655054eb5c6b Mon Sep 17 00:00:00 2001
+From: Benjamin Berg <bberg@redhat.com>
+Date: Tue, 14 May 2019 17:36:56 +0200
+Subject: [PATCH 1/2] dbus-environment: Log Setenv call failure after
+ initialization
+
+When the GNOME session is already initialized at the point that Setenv
+is called, then an error is returned. Hidding this error makes it hard
+to understand why the environment was not setup if things failed.
+---
+ daemon/dbus/gkd-dbus-environment.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/daemon/dbus/gkd-dbus-environment.c b/daemon/dbus/gkd-dbus-environment.c
+index 93e2b878..051de953 100644
+--- a/daemon/dbus/gkd-dbus-environment.c
++++ b/daemon/dbus/gkd-dbus-environment.c
+@@ -49,15 +49,11 @@ on_setenv_reply (GObject *source,
+ 	res = g_dbus_connection_call_finish (G_DBUS_CONNECTION (source), result, &error);
+ 
+ 	if (error != NULL) {
+-		gchar *dbus_error;
+-		dbus_error = g_dbus_error_get_remote_error (error);
+-		if (g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_SERVICE_UNKNOWN) ||
+-		    g_strcmp0 (dbus_error, "org.gnome.SessionManager.NotInInitialization") == 0)
++		if (g_error_matches (error, G_DBUS_ERROR, G_DBUS_ERROR_SERVICE_UNKNOWN))
+ 			g_debug ("couldn't set environment variable in session: %s", error->message);
+ 		else
+ 			g_message ("couldn't set environment variable in session: %s", error->message);
+ 		g_error_free (error);
+-		g_free (dbus_error);
+ 	}
+ 
+ 	g_clear_pointer (&res, g_variant_unref);
+-- 
+2.20.1
+

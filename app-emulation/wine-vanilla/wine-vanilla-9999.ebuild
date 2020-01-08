@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PLOCALES="ar bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru si sk sl sr_RS@cyrillic sr_RS@latin sv te th tr uk wa zh_CN zh_TW"
+PLOCALES="ar ast bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru si sk sl sr_RS@cyrillic sr_RS@latin sv ta te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
 inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx xdg-utils
@@ -20,11 +20,11 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MAJOR_V=$(ver_cut 1)
 	SRC_URI="https://dl.winehq.org/wine/source/${MAJOR_V}.x/${MY_P}.tar.xz"
-	KEYWORDS="-* ~amd64 ~x86 ~x86-fbsd"
+	KEYWORDS="-* ~amd64 ~x86"
 fi
 S="${WORKDIR}/${MY_P}"
 
-GWP_V="20190316"
+GWP_V="20191222"
 PATCHDIR="${WORKDIR}/gentoo-wine-patches"
 
 DESCRIPTION="Free implementation of Windows(tm) on Unix, without external patchsets"
@@ -35,7 +35,7 @@ SRC_URI="${SRC_URI}
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc faudio +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks v4l vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl test +threads +truetype udev +udisks v4l vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -109,7 +109,7 @@ RDEPEND="${COMMON_DEPEND}
 	!app-emulation/wine:0
 	dos? ( >=games-emulation/dosbox-0.74_p20160629 )
 	gecko? ( app-emulation/wine-gecko:2.47[abi_x86_32?,abi_x86_64?] )
-	mono? ( app-emulation/wine-mono:4.8.0 )
+	mono? ( app-emulation/wine-mono:4.9.4 )
 	perl? (
 		dev-lang/perl
 		dev-perl/XML-Simple
@@ -139,9 +139,9 @@ usr/share/applications/wine-uninstaller.desktop
 usr/share/applications/wine-winecfg.desktop"
 
 PATCHES=(
-	"${PATCHDIR}/patches/${MY_PN}-4.4-winegcc.patch" #260726
-	"${PATCHDIR}/patches/${MY_PN}-1.9.5-multilib-portage.patch" #395615
-	"${PATCHDIR}/patches/${MY_PN}-1.6-memset-O3.patch" #480508
+	"${PATCHDIR}/patches/${MY_PN}-5.0-winegcc.patch" #260726
+	"${PATCHDIR}/patches/${MY_PN}-4.7-multilib-portage.patch" #395615
+	"${PATCHDIR}/patches/${MY_PN}-5.0-memset-O3.patch" #480508
 	"${PATCHDIR}/patches/${MY_PN}-2.0-multislot-apploader.patch" #310611
 )
 PATCHES_BIN=()
@@ -368,7 +368,7 @@ multilib_src_configure() {
 		--libexecdir="${MY_LIBEXECDIR}"
 		--localstatedir="${MY_LOCALSTATEDIR}"
 		--mandir="${MY_MANDIR}"
-		--sysconfdir=/etc/wine
+		--sysconfdir="${EPREFIX}/etc/wine"
 		$(use_with alsa)
 		$(use_with capi)
 		$(use_with lcms cms)
@@ -387,6 +387,7 @@ multilib_src_configure() {
 		$(use_with jpeg)
 		$(use_with kerberos krb5)
 		$(use_with ldap)
+		--without-mingw # linux LDFLAGS leak in mingw32: bug #685172
 		$(use_enable mono mscoree)
 		$(use_with mp3 mpg123)
 		$(use_with netapi)
@@ -405,7 +406,7 @@ multilib_src_configure() {
 		$(use_enable test tests)
 		$(use_with truetype freetype)
 		$(use_with udev)
-		$(use_with v4l)
+		$(use_with v4l v4l2)
 		$(use_with vkd3d)
 		$(use_with vulkan)
 		$(use_with X x)
@@ -480,6 +481,9 @@ multilib_src_install_all() {
 	use abi_x86_32 && pax-mark psmr "${D%/}${MY_PREFIX}"/bin/wine{,-preloader} #255055
 	use abi_x86_64 && pax-mark psmr "${D%/}${MY_PREFIX}"/bin/wine64{,-preloader}
 
+	# Avoid double prefix from dosym and make_wrapper
+	MY_PREFIX=${MY_PREFIX#${EPREFIX}}
+
 	if use abi_x86_64 && ! use abi_x86_32; then
 		dosym wine64 "${MY_PREFIX}"/bin/wine # 404331
 		dosym wine64-preloader "${MY_PREFIX}"/bin/wine-preloader
@@ -490,7 +494,7 @@ multilib_src_install_all() {
 	# Make wrappers for binaries for handling multiple variants
 	# Note: wrappers instead of symlinks because some are shell which use basename
 	local b
-	for b in "${D%/}${MY_PREFIX}"/bin/*; do
+	for b in "${ED%/}${MY_PREFIX}"/bin/*; do
 		make_wrapper "${b##*/}-${WINE_VARIANT}" "${MY_PREFIX}/bin/${b##*/}"
 	done
 	eshopts_pop

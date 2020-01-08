@@ -12,6 +12,6 @@ SRC_URI="https://github.com/KhronosGroup/SPIRV-Headers/archive/${EGIT_COMMIT}.ta
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 S="${WORKDIR}/SPIRV-Headers-${EGIT_COMMIT}"

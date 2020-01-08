@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 DESCRIPTION="ephemeris files for optional extended accuracy of astrolog's calculations"
 HOMEPAGE="http://www.astrolog.org/astrolog.htm"
@@ -16,10 +16,9 @@ IUSE=""
 S="${WORKDIR}"
 
 RDEPEND="app-misc/astrolog"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 src_install() {
-	dodir /usr/share/astrolog
-	cp * "${D}"/usr/share/astrolog || die "cp failed"
+	insinto /usr/share/astrolog
+	doins -r .
 }

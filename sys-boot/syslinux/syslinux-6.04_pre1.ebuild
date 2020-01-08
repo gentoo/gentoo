@@ -15,7 +15,7 @@ SRC_URI_TESTING=Testing/${PV:0:4}
 [[ ${PV/_beta} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
 [[ ${PV/_pre} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
 [[ ${PV/_rc} != $PV ]] && SRC_URI_DIR=$SRC_URI_TESTING
-SRC_URI="mirror://kernel/linux/utils/boot/syslinux/${SRC_URI_DIR}/${P/_/-}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/utils/boot/syslinux/${SRC_URI_DIR}/${P/_/-}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -45,6 +45,7 @@ src_prepare() {
 	rm -f gethostip #bug 137081
 
 	epatch "${FILESDIR}"/${PN}-6.03-sysmacros.patch #579928
+	epatch "${FILESDIR}"/${P}-singleloadsegment.patch #662678
 
 	# Don't prestrip or override user LDFLAGS, bug #305783
 	local SYSLINUX_MAKEFILES="extlinux/Makefile linux/Makefile mtools/Makefile \

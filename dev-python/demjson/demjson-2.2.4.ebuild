@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy pypy3 )
+PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
 inherit distutils-r1
 
@@ -30,6 +30,6 @@ python_install_all() {
 	distutils-r1_python_install_all
 	# Docs are .txt files
 	if use doc; then
-		dodoc docs/*.txt || die "Installation of documentation failed"
+		dodoc docs/*.txt
 	fi
 }

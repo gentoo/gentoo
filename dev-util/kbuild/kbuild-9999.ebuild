@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,11 @@ DEPEND="sys-devel/gettext
 RDEPEND=""
 
 S="${WORKDIR}/${MY_P/-src}"
+
+pkg_setup() {
+	# Package fails with distcc (bug #255371)
+	export DISTCC_DISABLE=1
+}
 
 src_prepare() {
 	default

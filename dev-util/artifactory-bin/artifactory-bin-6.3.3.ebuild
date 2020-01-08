@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Using a binary ebuild until a source ebuild is doable.
@@ -22,7 +22,7 @@ SRC_URI="https://bintray.com/artifact/download/jfrog/artifactory/jfrog-artifacto
 
 LICENSE="AGPL-3+"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="ssl"
 
 RDEPEND=">=virtual/jre-1.8"

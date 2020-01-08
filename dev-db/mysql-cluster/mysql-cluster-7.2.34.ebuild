@@ -29,7 +29,7 @@ IUSE="bindist client-libs debug extraengine java jemalloc latin1 libressl
 	test yassl"
 
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
-RESTRICT="!bindist? ( bindist ) libressl? ( test )"
+RESTRICT="!bindist? ( bindist ) !test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc )
 	static? ( yassl )"
@@ -481,11 +481,11 @@ src_test() {
 
 	local t
 	for t in main.mysql_client_test \
-                        binlog.binlog_statement_insert_delayed main.information_schema \
-                        main.mysqld--help-notwin main.flush_read_lock_kill \
-                        sys_vars.plugin_dir_basic main.openssl_1 \
-                        main.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
-                        ndb.ndbinfo ndb_binlog.ndb_binlog_index ; do
+				binlog.binlog_statement_insert_delayed main.information_schema \
+				main.mysqld--help-notwin main.flush_read_lock_kill \
+				sys_vars.plugin_dir_basic main.openssl_1 \
+				main.mysqlhotcopy_archive main.mysqlhotcopy_myisam \
+				ndb.ndbinfo ndb_binlog.ndb_binlog_index ; do
 			_disable_test  "$t" "False positives in Gentoo"
 	done
 

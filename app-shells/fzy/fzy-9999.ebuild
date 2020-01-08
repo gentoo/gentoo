@@ -19,6 +19,7 @@ HOMEPAGE="https://github.com/jhawthorn/fzy"
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 PATCHES=( "${FILESDIR}"/fzy-0.9-cflags.patch )
 

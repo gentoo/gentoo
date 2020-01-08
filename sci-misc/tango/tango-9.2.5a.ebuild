@@ -1,10 +1,10 @@
-# Copyright 2018 Gentoo Authors
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Tango is an Open Source solution for SCADA and DCS"
-HOMEPAGE="http://www.tango-controls.org/"
+HOMEPAGE="https://www.tango-controls.org/"
 SRC_URI="mirror://sourceforge/tango-cs/${P}.tar.gz"
 
 LICENSE="GPL-3"

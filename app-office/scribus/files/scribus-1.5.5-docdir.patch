@@ -1,0 +1,29 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f5b3e77..4c5fd3f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -313,14 +313,16 @@ else()
+ endif()
+ 
+ #SHARE - use the default on Apple as TAG_VERSION is empty
+-if(WIN32 OR OS2)
+-	set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/")
+-elseif(TAG_VERSION OR BUILD_OSX_BUNDLE)
+-	set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}${TAG_VERSION}/")
+-elseif(NOT WANT_VERSIONING)
+-	set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}/")
+-else()
+-	set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}-${VERSION}/")
++if(NOT DOCDIR)
++	if(WIN32 OR OS2)
++		set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/")
++	elseif(TAG_VERSION OR BUILD_OSX_BUNDLE)
++		set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}${TAG_VERSION}/")
++	elseif(NOT WANT_VERSIONING)
++		set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}/")
++	else()
++		set(DOCDIR "${CMAKE_INSTALL_DATAROOTDIR}/doc/${MAIN_DIR_NAME}-${VERSION}/")
++	endif()
+ endif()
+ 
+ if(IS_ABSOLUTE ${DOCDIR} AND WANT_RELOCATABLE)

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils python-single-r1
@@ -11,10 +11,9 @@ HOMEPAGE="https://sdr.osmocom.org/trac/wiki/fosphor"
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
-	SRC_URI=""
 	#EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
 	EGIT_REPO_URI="https://github.com/osmocom/${PN}.git"
-	KEYWORDS=""
+	EGIT_BRANCH="gr3.7-qt5"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.xz"
 	KEYWORDS="~amd64 ~x86"
@@ -24,10 +23,15 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 LICENSE="GPL-3+"
 SLOT="0"
-IUSE="+glfw wxwidgets"
+IUSE="glfw qt5 wxwidgets"
 
-RDEPEND="
-	>=net-wireless/gnuradio-3.7_rc:0=[wxwidgets?,${PYTHON_USEDEP}]
+RDEPEND="qt5? (
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtopengl:5
+		dev-qt/qtwidgets:5
+	)
+	>=net-wireless/gnuradio-3.7_rc:0=[qt5,wxwidgets?,${PYTHON_USEDEP}]
 	media-libs/freetype
 	dev-libs/boost:=
 	glfw? ( >=media-libs/glfw-3 )
@@ -52,10 +56,9 @@ src_configure() {
 	local mycmakeargs=(
 		-DENABLE_DEFAULT=OFF
 		-DENABLE_GLFW="$(usex glfw)"
-		-DENABLE_QT=OFF
+		-DENABLE_QT="$(usex qt5)"
 		-DENABLE_WX="$(usex wxwidgets)"
 		-DENABLE_PYTHON=ON
 	)
-	# re-enable Qt if port to Qt5 is ever finished
 	cmake-utils_src_configure
 }

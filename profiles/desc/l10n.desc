@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 2016-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # This file contains descriptions of L10N USE_EXPAND flags.
 
-# Keep it sorted. Entries must be valid IETF language tags (BCP 47).
+# Keep it sorted. Entries must be valid IETF language tags (BCP 47):
+# https://www.iana.org/assignments/language-subtag-registry
 
 # The following are considered duplicates. Use the generic language
 # tag without region subtag instead.
@@ -41,8 +42,10 @@ bs - Bosnian
 ca - Catalan
 ca-valencia - Catalan (Valencian)
 cak - Kaqchikel
+ceb - Cebuano
 chr - Cherokee
 cnr - Montenegrin
+co - Corsican
 cs - Czech
 cy - Welsh
 da - Danish
@@ -53,12 +56,14 @@ de-DE - German (Germany)
 dgo - Dogri (individual language)
 doi - Dogri (macrolanguage)
 dsb - Lower Sorbian
+dv - Dhivehi
 dz - Dzongkha
 el - Modern Greek
 en - English
 en-AU - English (Australia)
 en-CA - English (Canada)
 en-GB - English (United Kingdom)
+en-NZ - English (New Zealand)
 en-US - English (United States)
 en-ZA - English (South Africa)
 eo - Esperanto
@@ -68,6 +73,7 @@ es-AR - Spanish (Argentina)
 es-CL - Spanish (Chile)
 es-ES - Spanish (Spain)
 es-MX - Spanish (Mexico)
+es-PE - Spanish (Peru)
 et - Estonian
 eu - Basque
 fa - Persian
@@ -88,13 +94,18 @@ he - Hebrew
 hi - Hindi
 hr - Croatian
 hsb - Upper Sorbian
+ht - Haitian
 hu - Hungarian
 hy - Armenian
 ia - Interlingua
 id - Indonesian
+io - Ido
 is - Icelandic
 it - Italian
+iu - Inuktitut
 ja - Japanese
+jbo - Lojban
+jv - Javanese
 ka - Georgian
 kab - Kabyle
 kk - Kazakh
@@ -120,6 +131,7 @@ mn - Mongolian
 mni - Manipuri
 mr - Marathi
 ms - Malay (macrolanguage)
+mt - Maltese
 my - Burmese
 nan - Min Nan Chinese
 nb - Norwegian Bokmål
@@ -134,15 +146,18 @@ om - Oromo
 or - Oriya (macrolanguage)
 pa - Punjabi
 pl - Polish
+ps - Pushto
 pt - Portuguese
 pt-BR - Portuguese (Brazil)
 pt-PT - Portuguese (Portugal)
+qu - Quechua
 rm - Romansh
 ro - Romanian
 ru - Russian
 rw - Kinyarwanda
 sa - Sanskrit
 sat - Santali
+sc - Sardinian
 sco - Scots
 sd - Sindhi
 si - Sinhala
@@ -156,6 +171,7 @@ sr - Serbian
 sr-Latn - Serbian (Latin script)
 ss - Swati
 st - Southern Sotho
+su - Sundanese
 sv - Swedish
 sw - Swahili (macrolanguage)
 sw-TZ - Swahili (Tanzania)
@@ -165,9 +181,11 @@ ta-LK - Tamil (Sri Lanka)
 te - Telugu
 tg - Tajik
 th - Thai
+ti - Tigrinya
 tk - Turkmen
 tl - Tagalog
 tn - Tswana
+to - Tonga (Tonga Islands)
 tr - Turkish
 ts - Tsonga
 tt - Tatar
@@ -178,6 +196,8 @@ uz - Uzbek
 ve - Venda
 vi - Vietnamese
 xh - Xhosa
+yi - Yiddish
+yo - Yoruba
 zh - Chinese
 zh-CN - Chinese (China)
 zh-TW - Chinese (Taiwan)

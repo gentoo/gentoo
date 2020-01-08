@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
@@ -6,55 +6,50 @@
 
 # SECTION: Unmask
 
-# Andreas Sturmlechner <asturm@gentoo.org> (17 Nov 2018)
-# media-sound/audacious is keyworded on amd64
--audacious
+# Michał Górny <mgorny@gentoo.org> (2019-11-13)
+# Python 3.8 has reasonably keyworded packages here.
+-python_targets_python3_8
+-python_single_target_python3_8
 
-# Matt Turner <mattst88@gentoo.org> (11 Nov 2018)
+# Matt Turner <mattst88@gentoo.org> (2018-11-11)
 # d3d9 works on amd64
 -d3d9
 
-# Michael Orlitzky <mjo@gentoo.org> (07 Jan 2018)
+# Michael Orlitzky <mjo@gentoo.org> (2018-01-07)
 # Oracle database stuff should work on amd64.
 -oci8
 -oci8-instant-client
 -oracle
 
-# Michael Palimaka <kensington@gentoo.org> (03 Jun 2017)
-# Unmask elogind since it is keyworded here.
--elogind
-
-# Sven Wegener <swegener@gentoo.org> (31 May 2017)
+# Sven Wegener <swegener@gentoo.org> (2017-05-31)
 # libvirt is supported on amd64
 -libvirt
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
 # dev-db/firebird is keyworded ~amd64
 -firebird
 
 # cilk has been ported to this arch.
 -cilk
 
-# Mike Gilbert <floppym@gentoo.org> (19 Oct 2014)
+# Mike Gilbert <floppym@gentoo.org> (2014-10-19)
 # sys-libs/libapparmor
 -apparmor
 
-# Alexey Shvetsov <alexxy@gentoo.org> (08 Apr 2014)
+# Alexey Shvetsov <alexxy@gentoo.org> (2014-04-08)
 # Cuda works here
 -cuda
 
-# Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is keyworded on this arch.
--python_targets_pypy
--python_single_target_pypy
 -python_targets_pypy3
 -python_single_target_pypy3
 
-# Michał Górny <mgorny@gentoo.org> (4 May 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-05-04)
 # Unmask systemd since it is keyworded here.
 -systemd
 
-# Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
+# Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # keyworded on amd64
 -clisp
 -clozurecl
@@ -62,63 +57,58 @@
 -gcl
 -sbcl
 
-# Michał Górny <mgorny@gentoo.org> (26 Jan 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-01-26)
 # Unmask the multilib flags for this arch.
 -abi_x86_32
 -abi_x86_64
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (09 Dec 2012)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-09)
 # Orc optimisations work fine on amd64 and x86
 -orc
 
-# Diego Elio Pettenò <flameeyes@gentoo.org> (21 Aug 2012)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2012-08-21)
 # IPMI is only implemented for x86, amd64 and ia64
 -ipmi
 
-# Ralph Sennhauser <sera@gentoo.org> (31 Jul 2012)
-# Keyworded on amd64
--python_targets_jython2_7
--python_single_target_jython2_7
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (05. Mar 2012)
+# Joerg Bornkessel <hd_brummy@gentoo.org> (2012-03-05)
 # Unmask, works with v4l2, #350211
 -dxr3
 
-# 2011/12/22 - Alexis Ballier <aballier@gentoo.org>
+# Alexis Ballier <aballier@gentoo.org> (2011-12-22)
 # Unmask vdpau as its supported here
 -vdpau
 
-# 2011/07/01 - Alexey Shvetsov <alexxy@gentoo.org>
+# Alexey Shvetsov <alexxy@gentoo.org> (2011-07-01)
 # Infiniband stuff works here
 -infiniband
 
-# 2010/02/14 - Samuli Suominen <ssuominen@gentoo.org>
+# Samuli Suominen <ssuominen@gentoo.org> (2010-02-14)
 # Unmask amd64/x86 only SANE_BACKENDS
 -sane_backends_canon_pp
 -sane_backends_hpsj5s
 -sane_backends_mustek_pp
 -sane_backends_qcam
 
-# 2010/05/03 - Alex Legler <a3li@gentoo.org>
+# Alex Legler <a3li@gentoo.org> (2010-05-03)
 # Add support for Ruby Enterprise Edition targets where rubyee is available
 # -ruby_targets_ree18
 
-# 2011/10/21 - Hans de Graaff <graaff@gentoo.org>
+# Hans de Graaff <graaff@gentoo.org> (2011-10-21)
 # Add support for Rubinius targets where rbx is available
 #-ruby_targets_rbx
 
 # Lilo works on amd64, so ...
 -lilo
 
-# 2007/03/10 - Mike Frysinger <vapier@gentoo.org>
+# Mike Frysinger <vapier@gentoo.org> (2007-03-10)
 # NVRAM works on x86/amd64 hosts
 -nvram
 
-# 2005/09/14 - Diego Pettenò <flameeyes@gentoo.org>
+# Diego Pettenò <flameeyes@gentoo.org> (2005-09-14)
 # nVidia XvMC support works on amd64
 -nvidia
 
-# 2006/01/28 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-01-28)
 # Modular X: unmask for architectures on which they are available
 -input_devices_synaptics
 -input_devices_vmmouse
@@ -135,7 +125,7 @@
 -video_cards_vmware
 -video_cards_qxl
 
-# Feb 16th 2007; Simon Stelling <blubb@gentoo.org>
+# Simon Stelling <blubb@gentoo.org> (2007-02-16)
 # Since this profile forces >=portage-2.1.2, we can unmask all
 # SIMD assembler flags
 -mpx
@@ -159,23 +149,19 @@
 -cpu_flags_x86_ssse3
 -cpu_flags_x86_xop
 
-# George Shapovalov <george@gentoo.org> (8 Apr 2007)
+# George Shapovalov <george@gentoo.org> (2007-04-08)
 # supported on amd64
 -ada
 
-# Robert Buchholz <rbu@gentoo.org> (03 Jun 2007)
+# Robert Buchholz <rbu@gentoo.org> (2007-06-03)
 # Unmask as it works on amd64
 -lcd_devices_luise
 
 # SECTION: Unavailable/Broken
 
-# 2004/06/22 - Taken from 2004.0 profile
+# 2004-06-22 - Taken from 2004.0 profile
 # masked
 3dfx
-
-# 2007/02/04 - Simon Stelling <blubb@gentoo.org>
-# games-emulation/caps is 32bit only, while app-emulation/e-uae is 64bit; bug 158416
-capslib
 
 # fdk-aac is already keyworded here
 -fdk

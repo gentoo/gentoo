@@ -1,46 +1,54 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Tobias Klausmann <klausman@gentoo.rog> (23/Nov/2018)
+# Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
+# dev-libs/criterion is not keyworded yet
+app-admin/syslog-ng test
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Mart Raudsepp <leio@gentoo.org> (2019-08-18)
+# media-video/pipewire is not keyworded yet
+x11-wm/mutter screencast
+
+# Lars Wendler <polynomial-c@gentoo.org> (2019-04-29)
+# Requires net-libs/webkit-gtk which has no keywords on alpha
+dev-util/geany-plugins markdown
+
+# Tobias Klausmann <klausman@gentoo.rog> (2018-11-23)
 # Requires sys-cluster/ceph, which is unlikely to be used on Alpha
 # and a rather large dependency.
 sys-fs/multipath-tools rbd
 
-# Thomas Deutschmann <whissi@gentoo.org> (15 Oct 2018)
+# Thomas Deutschmann <whissi@gentoo.org> (2018-10-15)
 # Requires app-text/mecab which isn't yet keyworded
 # on alpha, bug 668674
 dev-db/mysql cjk
 dev-db/percona-server cjk
 
-# Mikle Kolyada <zlogene@gentoo.org> (05 Oct 2018)
+# Mikle Kolyada <zlogene@gentoo.org> (2018-10-05)
 # Not keyworded (see bug #540540c#8)
 app-admin/sudo sssd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-09-30)
 # Optional dependency blocking security cleanup, bug #627316
 media-sound/mpd wildmidi
 
-# Joonas Niilola <juippis@gmail.com> (09 Sep 2018)
-# Optional dependency blocking updates.
-media-plugins/imlib2_loaders eet
-
-# Joonas Niilola <juippis@gmail.com> (17 Jun 2018)
-# Optional dependency not available for this arch
-dev-libs/efl vlc
-
-# Thomas Deutschmann <whissi@gentoo.org> (06 Jun 2018)
+# Thomas Deutschmann <whissi@gentoo.org> (2018-06-06)
 # Needs sys-apps/fakechroot which isn't keyworded
 app-arch/rpm test
 
-# Tomáš Mózes <hydrapolic@gmail.com> (05 Jun 2018)
+# Tomáš Mózes <hydrapolic@gmail.com> (2018-06-05)
 # Unkeyworded dependencies.
-app-admin/syslog-ng amqp mongodb
+app-admin/syslog-ng amqp kafka mongodb
 
-# Thomas Deutschmann <whissi@gentoo.org> (02 Jun 2018)
+# Thomas Deutschmann <whissi@gentoo.org> (2018-06-02)
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
 net-analyzer/wireshark doc
 
-# Tobias Klausmann <klausman@gentoo.org> (22 Mar 2018)
+# Tobias Klausmann <klausman@gentoo.org> (2018-03-22)
 # Masked due to missing deps. Some *could* have their deps keyworded,
 # but we're trying to keep the maintenance load low.
 app-metrics/collectd collectd_plugins_amqp
@@ -61,159 +69,160 @@ app-metrics/collectd collectd_plugins_write_mongodb
 app-metrics/collectd collectd_plugins_xencpu
 app-metrics/collectd collectd_plugins_java
 
-# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Michael Palimaka <kensington@gentoo.org> (2017-09-30)
 # Required dependencies are not keyworded.
 x11-themes/qtcurve plasma
 
-# Brian Evans <grknight@gentoo.org> (21 Aug 2017)
+# Brian Evans <grknight@gentoo.org> (2017-08-21)
 # No keywords for sys-process/numactl
 dev-db/mariadb numa
 
-# Gilles Dartiguelongue <eva@gentoo.org> (16 Aug 2017)
+# Gilles Dartiguelongue <eva@gentoo.org> (2017-08-16)
 # missing keyword on dev-python/dbusmock, bug #620024
 >=gnome-base/gnome-settings-daemon-3.24 test
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Required VIDEO_CARDS=i965/radeonsi, both masked in this profile.
-media-libs/mesa vulkan
+media-libs/mesa vulkan vulkan-overlay
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=bluetooth that is masked in this profile.
 media-sound/pulseaudio native-headset
 
-# Robin H. Johnson <robbat2@gentoo.org> (05 Aug 2017)
+# Robin H. Johnson <robbat2@gentoo.org> (2017-08-05)
 # Upstream Git is switching to PCRE2 w/ JIT.
 # This is not available on some arches, where a fallback to PCRE1 without JIT is used.
 dev-vcs/git pcre-jit
 
-# Tobias Klausmann <klausman@gentoo.org> (18 May 2017)
+# Fabian Groffen <grobian@gentoo.org> (2017-06-15)
+# net-mail/notmuch is not keyworded, and holds back stabilisation, see
+# bug https://bugs.gentoo.org/show_bug.cgi?id=604902
+mail-client/mutt notmuch
+
+# Tobias Klausmann <klausman@gentoo.org> (2017-05-18)
 # Stack protector code is not ported to alpha (and may not ever be)
 >=sys-devel/gcc-6 ssp
 
-# Tobias Klausmann <klausman@gentoo.org> (02 Mar 2017)
+# Tobias Klausmann <klausman@gentoo.org> (2017-03-02)
 # libilbc has not been ported to alpha and likely never will be.
 media-video/ffmpeg libilbc
 
-# Tobias Klausmann <klausman@gentoo.org> (02 Mar 2017)
+# Tobias Klausmann <klausman@gentoo.org> (2017-03-02)
 # BSON requires pymongo and assorted other packages that are not available on
 # alpha.
 app-portage/g-sorcery bson
 
-# Tobias Klausmann <klausman@gentoo.org> (27 Jan 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-01-27)
 # USE=test transitively pulls in greenlet, which is not available on alpha.
 dev-python/pyquery test
 
-# Tobias Klausmann <klausman@gentoo.org> (25 Jan 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-01-25)
 # The tests use hypothesis which complains about too-slow tests on
 # hardware that is "too slow".
 dev-python/attrs test
 
-# Tobias Klausmann <klausman@gentoo.org> (22 Jan 2016)
-# Requires guile2 which is keyworded nowhere
-media-sound/lilypond guile2
-
-# Tobias Klausmann <klausman@gentoo.org> (15 Nov 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-11-15)
 # JITing for libpcre{,2} is not supported on Alpha
 dev-libs/libpcre jit
 dev-libs/libpcre2 jit
 
-# Tobias Klausmann <klausman@gentoo.org> (22 Oct 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-10-22)
 # Pulls in dev-db/redis which is not keyworded on alpha.
 dev-python/pyzor test
 
-# Tobias Klausmann <klausman@gentoo.org> (03 Oct 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-10-03)
 # Pulls in dev-db/redis which is not keyworded on alpha.
 >=dev-libs/hiredis-0.13.1 test
 
-# Tobias Klausmann <klausman@gentoo.org> (02 Oct 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-10-02)
 # For the one single version noted hereunder, the ebuild does not pull in
 # sys-apps/fakeroot as a test dependency (bug #593768).
 =dev-util/debhelper-9.20160814 test
 
-# Gilles Dartiguelongue <eva@gentoo.org> (11 Sep 2016)
+# Gilles Dartiguelongue <eva@gentoo.org> (2016-09-11)
 # networkmanager USE masked due to missing keywords
 gnome-extra/nm-applet teamd
 
-# Gilles Dartiguelongue <eva@gentoo.org> (11 Sep 2016)
+# Gilles Dartiguelongue <eva@gentoo.org> (2016-09-11)
 # Opt-out of ofono support until there is a user request,
 # see also pulseaudio/connman
 net-misc/networkmanager ofono
 
-# Tobias Klausmann <klausman@gentoo.org> (04 Jul 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-07-04)
 # Mask USE=test since it implies USE=valgrind
 net-mail/notmuch test
 
-# Tobias Klausmann <klausman@gentoo.org> (14 Jun 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-06-14)
 # asciidoctor pulls in a lot of Ruby deps
 >=net-misc/chrony-2.4_pre1 html
 
-# Tobias Klausmann <klausman@gentoo.org> (07 Jun 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
 # cmus is one amongst many. When-if a user wants it, we'll reconsider it.
 # Same goes for libircclient
 app-admin/conky cmus irc
 
-# Tobias Klausmann <klausman@gentoo.org> (07 Jun 2016)
+# Tobias Klausmann <klausman@gentoo.org> (2016-06-07)
 # the nvidia SDK needs nvidia-drivers and thus can never work on alpha
 # Likewise, nasm is x86/x86-64 only
 media-video/ffmpeg nvenc openh264
 
-# Justin Lecher <jlec@gentoo.org> (22 Feb 2016)
+# Justin Lecher <jlec@gentoo.org> (2016-02-22)
 # Missing test deps keyword #575366
 dev-cpp/eigen test
 
-# Tobias Klausmann <klausman@gentoo.org> 04 Feb 2016
+# Tobias Klausmann <klausman@gentoo.org> (2016-02-04)
 # sys-cluster/ceph is not broken per se, but a maintenance burden.
 net-analyzer/rrdtool rados
 
-# James Le Cuirot <chewi@gentoo.org> (30 Jan 2016)
+# James Le Cuirot <chewi@gentoo.org> (2016-01-30)
 # scrollview requires Java, which is unsupported on Alpha.
 app-text/tesseract scrollview
 
-# Justin Lecher <jlec@gentoo.org> (18 Nov 2015)
+# Justin Lecher <jlec@gentoo.org> (2015-11-18)
 # requires dev-python/restkit which requires
 # dev-python/socketpool which requires dev-python/gevent which requires
 # dev-python/greenlet which has not been ported to ALPHA
 dev-python/wsgiproxy2 test
 dev-python/pyquery test
 
-# Matt Turner <mattst88@gentoo.org> (15 Nov 2015)
+# Matt Turner <mattst88@gentoo.org> (2015-11-15)
 # Missing keywords
 dev-util/perf numa
 
-# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
 media-sound/rhythmbox upnp-av
 
-# Pacho Ramos <pacho@gentoo.org> (15 Nov 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-11-15)
 # Missing keywords
 >=media-plugins/grilo-plugins-0.2.14 upnp-av
 
-# Davide Pesavento <pesa@gentoo.org> (26 Oct 2015)
+# Davide Pesavento <pesa@gentoo.org> (2015-10-26)
 # Tests require non-keyworded qt5
 dev-qt/qtchooser test
 
-# Justin Lecher <jlec@gentoo.org> (14 Oct 2015)
+# Justin Lecher <jlec@gentoo.org> (2015-10-14)
 # Requires dev-python/ipython which triggers a long dep chain
 dev-python/restkit cli
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (10 Sep 2015)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2015-09-10)
 # Requires wifi USE flag, which is masked for this arch
 net-misc/networkmanager wext
 
-# Tobias Klausmann <klausman@gentoo.org> (10 Aug 2015)
+# Tobias Klausmann <klausman@gentoo.org> (2015-08-10)
 # Opting out of the net-misc/ofono dep tree until we have a user request
 >=media-sound/pulseaudio-6.0 ofono-headset
 
-# Tobias Klausmann <klausman@gentoo.org> (08 Aug 2015)
+# Tobias Klausmann <klausman@gentoo.org> (2015-08-08)
 # It's unlikely that greenlet will ever be ported to Alpha. Mask USE=gevent for
 # pyzor to avoid that dependency. See bug 538510
 >=dev-python/pyzor-1.0.0 gevent
 
-# Tobias Klausmann <klausman@gentoo.org> (11 Jul 2015)
+# Tobias Klausmann <klausman@gentoo.org> (2015-07-11)
 # The test suite has ridiculous (transitive) requirements like
 # sci-mathematics/octave.
 >=dev-python/pyquery-1.2.9 test
@@ -222,57 +231,49 @@ dev-python/webtest test
 dev-python/wsgiproxy2 test
 dev-python/urllib3 test
 
-# Gilles Dartiguelongue <eva@gentoo.org> (09 Jun 2015)
+# Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
 # dev-lua/lgi lacks alpha keyword, bug #551540
 dev-libs/libpeas lua
 
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
-
-# Michał Górny <mgorny@gentoo.org> (22 Feb 2015)
+# Michał Górny <mgorny@gentoo.org> (2015-02-22)
 # Dependency not keyworded for some reason.
 media-libs/gegl umfpack
 
-# Patrick Lauer <patrick@gentoo.org> (10 Feb 2015)
+# Patrick Lauer <patrick@gentoo.org> (2015-02-10)
 # Missing keywords for media-libs/x265
 media-video/libav x265
 
-# Johannes Huber <johu@gentoo.org> (28 Jan 2015)
+# Johannes Huber <johu@gentoo.org> (2015-01-28)
 # Missing keyword on dev-libs/botan
 app-crypt/qca botan
 
-# Pacho Ramos <pacho@gentoo.org> (10 Jan 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-01-10)
 # Missing keywords
 net-misc/networkmanager teamd
 
-# Gilles Dartiguelongue <eva@gentoo.org> (23 Dec 2014)
+# Gilles Dartiguelongue <eva@gentoo.org> (2014-12-23)
 # New dependencies for wayland support in Gnome 3.14
 # See bug #533420.
 media-libs/clutter egl wayland
 media-libs/clutter-gtk wayland
 
-# Mark Wright <gienah@gentoo.org> (14-23 Dec 2014)
+# Mark Wright <gienah@gentoo.org> (2014-12-14/2014-12-23)
 # test dependencies need keywording
 dev-haskell/binary test
 dev-haskell/text test
 dev-haskell/vector test
 
-# Tobias Klausmann <klausman@gentoo.org> (20 Nov 2014)
+# Tobias Klausmann <klausman@gentoo.org> (2014-11-20)
 # OpenCV likely will never work on Alpha
 media-video/vlc opencv
 media-gfx/shotwell opencv
 
-# Pacho Ramos <pacho@gentoo.org> (11 Nov 2014)
-# Missing keywords, bug #523686
->=dev-libs/libgdata-0.16.1 test
-
-# Tobias Klausmann <klausman@gentoo.org> (11 Oct 2014)
+# Tobias Klausmann <klausman@gentoo.org> (2014-10-11)
 # app-emulation/qemu is not keyworded on alpha, masking flag that triggers
 # dependency
 net-misc/spice-gtk smartcard
 
-# Gilles Dartiguelongue <eva@gentoo.org> (05 Oct 2014)
+# Gilles Dartiguelongue <eva@gentoo.org> (2014-10-05)
 # Missing keyword on app-accessibility/brltty
 app-accessibility/orca braille
 
@@ -280,133 +281,133 @@ app-accessibility/orca braille
 # media-libs/x265 doesn't work on alpha (bug 519046)
 media-video/ffmpeg x265
 
-# Tobias Klausmann <klausman@gentoo.org (16 Jul 2014)
+# Tobias Klausmann <klausman@gentoo.org (2014-07-16)
 # neither dietlibc nor klibc will likely ever build/work on alpha, bug #487672
 >=sys-fs/dmraid-1.0.0_rc16-r3 dietlibc klibc
 
-# Pacho Ramos <pacho@gentoo.org> (22 Feb 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-02-22)
 # Missing keywords, bug #495250
 >=gnome-base/gnome-extra-apps-3.10 tracker
 
-# Pacho Ramos <pacho@gentoo.org> (02 Dec 2013)
+# Pacho Ramos <pacho@gentoo.org> (2013-12-02)
 # Missing keywords, bug #493156
 media-libs/libgphoto2 serial
 
-# Pacho Ramos <pacho@gentoo.org> (28 Nov 2013)
+# Pacho Ramos <pacho@gentoo.org> (2013-11-28)
 # Missing keywords, bug #492820
 net-im/telepathy-connection-managers sipe
 
-# Pacho Ramos <pacho@gentoo.org> (13 Nov 2013)
+# Pacho Ramos <pacho@gentoo.org> (2013-11-13)
 # Missing keywords, bug #478254
 >=gnome-base/gnome-3.8 classic
 
-# Mark Wright <gienah@gentoo.org> (26 Oct 2013)
+# Mark Wright <gienah@gentoo.org> (2013-10-26)
 # template-haskell not yet available
 dev-haskell/dataenc test
 
-# Pacho Ramos <pacho@gentoo.org> (20 Jul 2013)
+# Pacho Ramos <pacho@gentoo.org> (2013-07-20)
 # Keywords pending, bug #476710
 >=gnome-base/gnome-extra-apps-3.8 games
 
-# William Hubbs <williamh@gentoo.org> (22 Jun 2013)
+# William Hubbs <williamh@gentoo.org> (2013-06-22)
 # dev-python/cython is not keyworded for alpha
 >=app-accessibility/brltty-4.5 python
 
-# Gilles Dartiguelongue <eva@gentoo.org> (1 Apr 2013)
+# Gilles Dartiguelongue <eva@gentoo.org> (2013-04-01)
 # missing keyword on media-libs/tremor, bug #453200
 media-libs/gst-plugins-base ivorbis
 
-# Julian Ospald <hasufell@gentoo.org> (31 Mar 2013)
+# Julian Ospald <hasufell@gentoo.org> (2013-03-31)
 # depends on mono
 >=net-irc/hexchat-2.9.4-r1 theme-manager
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Jan 2013)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-31)
 # remove mask when net-libs/libqmi is keyworded here
 net-misc/modemmanager qmi
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (22 Jan 2013)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2013-01-22)
 # remove mask if/when media-gfx/argyllcms is keywored here.
 x11-misc/colord argyllcms extra-print-profiles
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (31 Dec 2012)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-31)
 # requires app-office/unoconv, which requires virtual/ooo, which is not
 # keyworded here. Remove mask if this situation changes.
 gnome-extra/sushi office
 
-# Raúl Porcel <armin76@gentoo.org> (30 Dec 2012)
+# Raúl Porcel <armin76@gentoo.org> (2012-12-30)
 # Needs testing
 media-libs/phonon gstreamer vlc
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (27 Dec 2012)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2012-12-27)
 # remove mask when dev-java/fop is keyworded here
 gnome-extra/libgda reports
 
-# Luca Barbato <lu_zero@gentoo.org> (11 Nov 2012)
+# Luca Barbato <lu_zero@gentoo.org> (2012-11-11)
 # Libav 9 can use fdk-aac
 >=media-video/libav-9_beta2 fdk
 
-# Robin H Johnson <robbat2@gentoo.org> (01 Nov 2012)
+# Robin H Johnson <robbat2@gentoo.org> (2012-11-01)
 # MySQL 5.5 wants systemtap, tcmalloc & jemalloc
 >=dev-db/mysql-5.5 tcmalloc
 >=dev-db/mariadb-5.5 tcmalloc
 >=dev-db/percona-server-5.5 tcmalloc
 
-# Raúl Porcel <armin76@gentoo.org> (28 May 2012)
+# Raúl Porcel <armin76@gentoo.org> (2012-05-28)
 # Needs x11-misc/lightdm(which also requires some other deps)
 x11-misc/xscreensaver new-login
 
-# Alexey Shvetsov <alexxy@gentoo.org> (17 Dec 2011)
+# Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # mask use numa for openmpi
 sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
-# Tobias Klausmann <klausman@gentoo.org> (02 Nov 2011)
+# Tobias Klausmann <klausman@gentoo.org> (2011-11-02)
 # libpcre jit is not supported on alpha
 dev-libs/libpcre jit
 
-# Raúl Porcel <armin76@gentoo.org> (08 Oct 2011)
+# Raúl Porcel <armin76@gentoo.org> (2011-10-08)
 # Needs media-sound/lilypond
 app-text/asciidoc test
 
-# Patrick McLean <chutzpah@gentoo.org> (07 Sep 2011)
+# Patrick McLean <chutzpah@gentoo.org> (2011-09-07)
 # missing keywords on dependencies
 media-video/x264-encoder ffmpegsource
 
-# Alexey Shvetsov <alexxy@gentoo.org> (31 Aug 2011)
+# Alexey Shvetsov <alexxy@gentoo.org> (2011-08-31)
 # Mask numa use flag per bug #381313
 sys-apps/hwloc numa
 # This mask also implies masking the numa flag on openmpi
 sys-cluster/openmpi numa
 
-# Pacho Ramos <pacho@gentoo.org> (30 Jun 2011)
+# Pacho Ramos <pacho@gentoo.org> (2011-06-30)
 # Needed plugins are not keyworded on this arch
 media-plugins/gst-plugins-meta dts libvisual
 
-# Diego Elio Pettenò <flameeyes@gentoo.org> (17 Dec 2010)
+# Diego Elio Pettenò <flameeyes@gentoo.org> (2010-12-17)
 # needs sys-libs/libcap-ng that is masked right now
 sys-apps/smartmontools caps
 
 # legacy mask
 www-client/elinks javascript
 
-# Justin Lecher <jlec@gentoo.org> (13 Aug 2010)
+# Justin Lecher <jlec@gentoo.org> (2010-08-13)
 # MKL not available on this arch, 
 media-gfx/povray mkl 
 
-# Raúl Porcel <armin76@gentoo.org> (26 Jun 2010)
+# Raúl Porcel <armin76@gentoo.org> (2010-06-26)
 # custom-optimization doesn't work on alpha
 mail-client/thunderbird custom-optimization
 www-client/firefox custom-optimization
 www-client/seamonkey custom-optimization
 
-# Kacper Kowalik <xarthisius@gentoo.org> (30 May 2010)
+# Kacper Kowalik <xarthisius@gentoo.org> (2010-05-30)
 # quesoglc is not keyworded
 x11-misc/rss-glx quesoglc
 
-# Raúl Porcel <armin76@gentoo.org> (07 Jul 2008)
+# Raúl Porcel <armin76@gentoo.org> (2008-07-07)
 # Make clisp deps minimal
 dev-lisp/clisp hyperspec svm
 
-# Tobias Klausmann <klausman@gentoo.org> (15 Jun 2008)
+# Tobias Klausmann <klausman@gentoo.org> (2008-06-15)
 # No hardware to test net-dialup/linux-atm on alpha, so mask atm use flag
 # on those.
 sys-apps/iproute2 atm
@@ -415,6 +416,6 @@ net-dialup/ppp atm
 # Needs nut and qstat respectively, neither is keyworded on alpha.
 net-analyzer/nagios-plugins nagios-game
 
-# Matt Turner <mattst88@gentoo.org> (26 Dec 2010)
+# Matt Turner <mattst88@gentoo.org> (2010-12-26)
 # No idea why. Bug 347827
 www-client/elinks javascript

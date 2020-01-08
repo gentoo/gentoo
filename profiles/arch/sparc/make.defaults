@@ -27,6 +27,9 @@ CTARGET_sparc32="sparc-unknown-linux-gnu"
 # do NOT set CFLAGS_sparc64 here it'd break linux-headers for non-multilib
 # profiles
 
+LIBDIR_sparc32="lib"
+LIBDIR_sparc64="lib64"
+
 # Compiler flags
 CFLAGS="-O2 -mcpu=ultrasparc -pipe"
 CXXFLAGS="${CFLAGS}"
@@ -35,11 +38,15 @@ CXXFLAGS="${CFLAGS}"
 FEATURES="-multilib-strict"
 MULTILIB_STRICT_DIRS="/lib32 /usr/lib32 /usr/kde/*/lib32 /usr/qt/*/lib32 /usr/X11R6/lib32"
 
-# 2006/10/05 - Gustavo Zacarias <gustavoz@gentoo.org>
+# Gustavo Zacarias <gustavoz@gentoo.org> (2006-10-05)
 # Defaults for video drivers
-VIDEO_CARDS="fbdev glint mga r128 radeon tdfx voodoo"
+VIDEO_CARDS="fbdev glint mga r128 radeon"
 
-# Sergei Trofimovich <slyfox@gentoo.org> (24 Jun 2018)
+# Sergei Trofimovich <slyfox@gentoo.org> (2018-06-24)
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"
+
+# Hans de Graaff <graaff@gentoo.org) (2019-07-17)
+# Temporary RUBY_TARGETS for bug 688976
+RUBY_TARGETS="ruby24 -ruby25"

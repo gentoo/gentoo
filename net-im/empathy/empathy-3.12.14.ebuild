@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit gnome2 python-any-r1 virtualx
 
@@ -13,6 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Empathy"
 LICENSE="GPL-2 CC-BY-SA-3.0 FDL-1.3 LGPL-2.1"
 SLOT="0"
 IUSE="debug +geolocation gnome gnome-online-accounts +map spell test +v4l"
+RESTRICT="!test? ( test )"
 KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-linux"
 
 # False positives caused by nested configure scripts
@@ -62,9 +63,9 @@ COMMON_DEPEND="
 		>=app-text/enchant-1.2
 		>=app-text/iso-codes-0.35 )
 	v4l? (
+		dev-libs/libgudev:=
 		media-plugins/gst-plugins-v4l2:1.0
-		>=media-video/cheese-3.4:=
-		virtual/libgudev:= )
+		>=media-video/cheese-3.4:= )
 "
 
 # >=empathy-3.4 is incompatible with telepathy-rakia-0.6, bug #403861

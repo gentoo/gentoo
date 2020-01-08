@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>nimiux@gentoo.org</email>
-    <name>Chema Alonso</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription lang="en">
     Stumpwm is a tiling, keyboard driven X11 Window Manager written entirely in
     Common Lisp.
@@ -50,7 +47,6 @@
   <use>
     <flag name="contrib">Install contrib modules</flag>
     <flag name="doc">Include documentation</flag>
-    <flag name="emacs">Add support for GNU Emacs</flag>
   </use>
   <upstream>
     <remote-id type="github">stumpwm/stumpwm</remote-id>

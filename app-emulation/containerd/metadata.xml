@@ -26,6 +26,6 @@
 	<flag name="cri">Support for Kubernetes CRI</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">docker/containerd</remote-id>
+		<remote-id type="github">containerd/containerd</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,0 +1,13 @@
+diff --git a/tests/ephy-file-helpers-test.c b/tests/ephy-file-helpers-test.c
+index b3139b67e..10c884ea5 100644
+--- a/tests/ephy-file-helpers-test.c
++++ b/tests/ephy-file-helpers-test.c
+@@ -87,7 +87,7 @@ test_ephy_file_helpers_init (void)
+     if (keep_dir) {
+       /* As a safety measure, only try recursive delete on paths
+        * prefixed with /tmp. */
+-      if (g_str_has_prefix (tmp_dir, "/tmp"))
++      if (g_str_has_prefix (tmp_dir, "/tmp") || g_str_has_prefix (tmp_dir, "/var/tmp"))
+         g_assert_true (ephy_file_delete_dir_recursively (tmp_dir, NULL));
+       else
+         g_warning ("INIT: dangerous path returned as tmp_dir: %s", tmp_dir);

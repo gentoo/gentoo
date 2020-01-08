@@ -2,9 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>ultrabug@gentoo.org</email>
-  </maintainer>
-  <maintainer type="person">
     <email>robbat2@gentoo.org</email>
   </maintainer>
   <use>

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,12 +10,12 @@ inherit haskell-cabal
 
 DESCRIPTION="Conversion between markup formats"
 HOMEPAGE="http://pandoc.org"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="embed_data_files +https +network-uri trypandoc"
+IUSE="embed-data-files +https +network-uri trypandoc"
 
 RESTRICT=test # fails to load dynamic libraries
 
@@ -73,7 +73,7 @@ DEPEND="${RDEPEND}
 		>=dev-haskell/test-framework-0.3 <dev-haskell/test-framework-0.9
 		>=dev-haskell/test-framework-hunit-0.2 <dev-haskell/test-framework-hunit-0.4
 		>=dev-haskell/test-framework-quickcheck2-0.2.9 <dev-haskell/test-framework-quickcheck2-0.4 )
-	embed_data_files? ( dev-haskell/hsb2hs )
+	embed-data-files? ( dev-haskell/hsb2hs )
 "
 
 src_prepare() {
@@ -86,7 +86,7 @@ src_prepare() {
 
 src_configure() {
 	haskell-cabal_src_configure \
-		$(cabal_flag embed_data_files embed_data_files) \
+		$(cabal_flag embed-data-files embed_data_files) \
 		$(cabal_flag https https) \
 		$(cabal_flag network-uri network-uri) \
 		$(cabal_flag trypandoc trypandoc)

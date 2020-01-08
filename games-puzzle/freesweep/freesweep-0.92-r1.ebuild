@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit toolchain-funcs
 
 DESCRIPTION="Console Minesweeper"
-HOMEPAGE="http://freshmeat.net/projects/freesweep"
+HOMEPAGE="https://github.com/rwestlund/freesweep"
 SRC_URI="http://www.upl.cs.wisc.edu/~hartmann/sweep/${P}.tar.gz"
 
 LICENSE="GPL-2"

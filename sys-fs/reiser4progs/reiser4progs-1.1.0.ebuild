@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit multilib eutils toolchain-funcs
+inherit multilib eutils toolchain-funcs usr-ldscript
 
 DESCRIPTION="reiser4progs: mkfs, fsck, etc..."
 HOMEPAGE="https://sourceforge.net/projects/reiser4/"

@@ -1,35 +1,40 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit toolchain-funcs user
 
 DESCRIPTION="Digital vinyl emulation software"
-HOMEPAGE="http://xwax.org/"
-SRC_URI="http://xwax.org/releases/${P}.tar.gz"
+HOMEPAGE="https://xwax.org/"
+SRC_URI="https://xwax.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="alsa jack oss cdda mp3 +fallback"
+
 REQUIRED_USE="|| ( cdda mp3 fallback )
 	|| ( alsa jack oss )"
 
-RDEPEND="sys-libs/glibc
-	sys-libs/pam
+DEPEND="
+	media-fonts/dejavu
 	media-libs/libsdl
 	media-libs/sdl-ttf
-	media-fonts/dejavu
+	sys-libs/glibc
+	sys-libs/pam
 	alsa? ( media-libs/alsa-lib )
-	jack? ( media-sound/jack-audio-connection-kit )
 	cdda? ( media-sound/cdparanoia )
+	fallback? ( virtual/ffmpeg )
+	jack? ( media-sound/jack-audio-connection-kit )
 	mp3? ( media-sound/mpg123 )
-	fallback? ( virtual/ffmpeg )"
-DEPEND="${RDEPEND}"
+"
+RDEPEND="${DEPEND}"
 
-DOCS="README CHANGES"
+DOCS=( README CHANGES )
 
 src_prepare() {
+	default
 	# Remove the forced optimization from 'CFLAGS' and 'LDFLAGS' in
 	# the Makefile
 	# Also remove the dependency on the .version target so we don't need
@@ -42,7 +47,7 @@ src_prepare() {
 src_configure() {
 	tc-export CC
 	econf \
-		--prefix "${EROOT}usr" \
+		--prefix "${EROOT}/usr" \
 		$(use_enable alsa) \
 		$(use_enable jack) \
 		$(use_enable oss)
@@ -62,12 +67,12 @@ src_install() {
 	# This is easier than setting all the environment variables
 	# needed, running the sed script required to get the man directory
 	# correct, and removing the GPL-2 after a 'make install' run
-	dobin xwax || die "failed to install xwax"
-	newbin scan xwax-scan || die "failed to install xwax-scan"
-	newbin import xwax-import || die "failed to install xwax-import"
-	doman xwax.1 || die "failed to install man page"
+	dobin xwax
+	newbin scan xwax-scan
+	newbin import xwax-import
+	doman xwax.1
 
-	dodoc ${DOCS} || die "failed to install docs"
+	dodoc ${DOCS}
 
 	insinto "/etc/security/limits.d"
 	newins "${FILESDIR}/xwax-etc-security-limits.conf" xwax.conf

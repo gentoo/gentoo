@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=(python{2_7,3_4,3_5,3_6})
+PYTHON_COMPAT=(python{2_7,3_6})
 
 inherit vcs-snapshot distutils-r1
 
@@ -13,12 +13,13 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]"

@@ -23,10 +23,7 @@ RDEPEND=">=app-misc/pax-utils-0.7
 	net-misc/rsync
 	sys-apps/diffutils
 	sys-apps/sandbox
-	|| (
-		>=sys-apps/portage-2.1.9[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}]
-	)
+	>=sys-apps/portage-2.1.9[${PYTHON_USEDEP}]
 	sys-devel/gettext
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
@@ -53,7 +50,7 @@ pkg_setup() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" LIBDIR="usr/lib" install || die "make install failed"
+	emake DESTDIR="${D}" LIBDIR="usr/lib" install
 
 	python_optimize "${D}/usr/lib/entropy/lib/entropy"
 }

@@ -1,23 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="https://github.com/waffle-gl/${PN}.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/mesa/${PN}"
 	GIT_ECLASS="git-r3"
 else
-	SRC_URI="https://people.freedesktop.org/~chadversary/${PN}/files/release/${P}/${P}.tar.xz"
+	SRC_URI="http://www.waffle-gl.org/files/release/${P}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 fi
-inherit cmake-multilib ${GIT_ECLASS}
+inherit meson multilib-minimal ${GIT_ECLASS}
 
 DESCRIPTION="Library that allows selection of GL API and of window system at runtime"
-HOMEPAGE="https://people.freedesktop.org/~chadversary/waffle/"
+HOMEPAGE="http://www.waffle-gl.org/ https://gitlab.freedesktop.org/mesa/waffle"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="doc egl gbm test wayland"
+IUSE="doc egl gbm test wayland X"
+RESTRICT="test" # gl_basic tests don't work when run from portage
 
 RDEPEND="
 	>=media-libs/mesa-9.1.6[egl?,gbm?,${MULTILIB_USEDEP}]
@@ -35,20 +36,34 @@ DEPEND="${RDEPEND}
 	)
 "
 
-src_configure() {
-	local mycmakeargs=(
-		-Dwaffle_has_glx=ON
-		-Dwaffle_build_examples=OFF
-		-Dwaffle_build_manpages=$(usex doc )
-		-Dwaffle_has_x11_egl=$(usex egl)
-		-Dwaffle_has_gbm=$(usex gbm)
-		-Dwaffle_build_tests=$(usex test)
-		-Dwaffle_has_wayland=$(usex wayland)
-	)
-
-	cmake-multilib_src_configure
+src_unpack() {
+	default
+	[[ $PV = 9999* ]] && git-r3_src_unpack
 }
 
-src_test() {
-	emake -C "${CMAKE_BUILD_DIR}" check
+multilib_src_configure() {
+	local emesonargs=(
+		$(meson_feature X glx)
+		$(meson_feature wayland)
+		$(meson_feature X x11_egl)
+		$(meson_feature gbm)
+		$(meson_feature egl surfaceless_egl)
+		$(meson_use test build-tests)
+		$(meson_use doc build-manpages)
+	)
+	meson_src_configure
+}
+
+multilib_src_compile() {
+	meson_src_compile
+}
+
+multilib_src_test() {
+	meson_src_test
+}
+
+multilib_src_install() {
+	meson_src_install
+
+	rm -rf "${D}"/usr/share/doc/waffle1
 }

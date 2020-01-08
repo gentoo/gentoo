@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -19,9 +19,3 @@ DEPEND=">=dev-libs/hiredis-0.13.1"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-r1-system-libs.patch )
-
-python_compile() {
-	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-
-	distutils-r1_python_compile
-}

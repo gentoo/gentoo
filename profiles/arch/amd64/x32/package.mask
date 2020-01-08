@@ -1,30 +1,40 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Thomas Deutschmann <whissi@gentoo.org> (23 Oct 2018)
+# Hasan ÇALIŞIR <hasan.calisir@psauxit.com> (2019-10-28)
+# requires net-libs/nodejs | sys-apps/yarn
+>=net-analyzer/greenbone-security-assistant-8.0.1
+net-analyzer/gvm
+
+# Marek Szuba <marecki@gentoo.org> (2019-07-26)
+# Binary-only package with no x32 support
+dev-libs/amdgpu-pro-opencl
+
+# Thomas Deutschmann <whissi@gentoo.org> (2018-10-23)
 # requires net-libs/nodejs
 >=www-client/firefox-63.0
+>=mail-client/thunderbird-68.0
 
-# Patrick McLean <chutzpah@gentoo.org> (12 Jul 2018)
+# Patrick McLean <chutzpah@gentoo.org> (2018-07-12)
 # requires nodejs
 >=sys-cluster/ceph-13
 
-# Michał Górny <mgorny@gentoo.org> (15 Apr 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-04-15)
 # Broken multilib dependencies.
 net-im/mattermost-desktop-bin
 net-im/skypeforlinux
+net-im/skype-dbus-mock
 net-im/slack-bin
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (07 Oct 2012)
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (2012-10-07)
 # V8 upstream said they won't support x32, bug #423815
 # Masked packages containing V8.
-# Michał Górny <mgorny@gentoo.org> (12 Jan 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-01-12)
 # ...and their reverse dependencies.
 app-editors/atom
 dev-lang/coffee-script
 dev-python/bokeh
 dev-python/blaze
-<dev-python/dask-0.15.1
 dev-ruby/autoprefixer-rails
 dev-ruby/coffee-rails
 dev-ruby/coffee-script

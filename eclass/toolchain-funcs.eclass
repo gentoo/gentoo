@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2002-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: toolchain-funcs.eclass
@@ -207,14 +207,13 @@ tc-cpp-is-true() {
 	local CONDITION=${1}
 	shift
 
-	local RESULT=$($(tc-getTARGET_CPP) "${@}" -P - <<-EOF 2>/dev/null
-			#if ${CONDITION}
-			true
-			#endif
-		EOF
-	)
-
-	[[ ${RESULT} == true ]]
+	$(tc-getTARGET_CPP) "${@}" -P - <<-EOF >/dev/null 2>&1
+		#if ${CONDITION}
+		true
+		#else
+		#error false
+		#endif
+	EOF
 }
 
 # @FUNCTION: tc-detect-is-softfloat
@@ -450,6 +449,36 @@ tc-ld-is-gold() {
 	fi
 
 	# No gold here!
+	return 1
+}
+
+# @FUNCTION: tc-ld-is-lld
+# @USAGE: [toolchain prefix]
+# @DESCRIPTION:
+# Return true if the current linker is set to lld.
+tc-ld-is-lld() {
+	local out
+
+	# First check the linker directly.
+	out=$($(tc-getLD "$@") --version 2>&1)
+	if [[ ${out} == *"LLD"* ]] ; then
+		return 0
+	fi
+
+	# Then see if they're selecting lld via compiler flags.
+	# Note: We're assuming they're using LDFLAGS to hold the
+	# options and not CFLAGS/CXXFLAGS.
+	local base="${T}/test-tc-lld"
+	cat <<-EOF > "${base}.c"
+	int main() { return 0; }
+	EOF
+	out=$($(tc-getCC "$@") ${CFLAGS} ${CPPFLAGS} ${LDFLAGS} -Wl,--version "${base}.c" -o "${base}" 2>&1)
+	rm -f "${base}"*
+	if [[ ${out} == *"LLD"* ]] ; then
+		return 0
+	fi
+
+	# No lld here!
 	return 1
 }
 
@@ -695,6 +724,7 @@ tc-endian() {
 		mips*)		echo big;;
 		powerpc*le)	echo little;;
 		powerpc*)	echo big;;
+		riscv*)		echo little;;
 		s390*)		echo big;;
 		sh*b*)		echo big;;
 		sh*)		echo little;;
@@ -949,18 +979,11 @@ tc-enables-ssp-all() {
 # @FUNCTION: gen_usr_ldscript
 # @USAGE: [-a] <list of libs to create linker scripts for>
 # @DESCRIPTION:
-# This function generate linker scripts in /usr/lib for dynamic
-# libs in /lib.  This is to fix linking problems when you have
-# the .so in /lib, and the .a in /usr/lib.  What happens is that
-# in some cases when linking dynamic, the .a in /usr/lib is used
-# instead of the .so in /lib due to gcc/libtool tweaking ld's
-# library search path.  This causes many builds to fail.
-# See bug #4411 for more info.
-#
-# Note that you should in general use the unversioned name of
-# the library (libfoo.so), as ldconfig should usually update it
-# correctly to point to the latest version of the library present.
+# This function is deprecated. Use the version from
+# usr-ldscript.eclass instead.
 gen_usr_ldscript() {
+	ewarn "${FUNCNAME}: Please migrate to usr-ldscript.eclass"
+
 	local lib libdir=$(get_libdir) output_format="" auto=false suffix=$(get_libname)
 	[[ -z ${ED+set} ]] && local ED=${D%/}${EPREFIX}/
 

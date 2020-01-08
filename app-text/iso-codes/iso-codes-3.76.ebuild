@@ -1,19 +1,19 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PLOCALES="af am ar as ast az be bg bn bn_IN br bs byn ca crh cs cy da de dz el en eo es et eu fa fi fo fr ga gez gl gu haw he hi hr hu hy ia id is it ja ka kk km kn ko kok ku lt lv mi mk ml mn mr ms mt nb ne nl nn nso oc or pa pl ps pt pt_BR ro ru rw si sk sl so sq sr sr@latin sv sw ta te th ti tig tk tl tr tt tt@iqtelif ug uk ve vi wa wal wo xh zh_CN zh_HK zh_TW zu"
 
 inherit eutils l10n python-any-r1
 
 DESCRIPTION="ISO language, territory, currency, script codes and their translations"
-HOMEPAGE="http://pkg-isocodes.alioth.debian.org/"
+HOMEPAGE="https://salsa.debian.org/iso-codes-team/iso-codes"
 SRC_URI="http://pkg-isocodes.alioth.debian.org/downloads/${P}.tar.xz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 IUSE=""
 
 RDEPEND=""

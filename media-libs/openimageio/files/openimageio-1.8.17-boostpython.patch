@@ -1,0 +1,28 @@
+From 22ce65bfbaa24d79427852755c4bf8a1d77159b4 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Tue, 16 Jul 2019 17:03:40 +0200
+Subject: [PATCH] Find Boost_PYTHON
+
+---
+ src/python/CMakeLists.txt | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/src/python/CMakeLists.txt b/src/python/CMakeLists.txt
+index e58d372d..98d91c48 100644
+--- a/src/python/CMakeLists.txt
++++ b/src/python/CMakeLists.txt
+@@ -16,9 +16,8 @@ find_package (PythonLibs ${PYTHON_VERSION_FOUND} REQUIRED)
+ if (NOT BOOST_CUSTOM)
+     # Finding the python component for boost is a little tricky, since it has
+     # different names on different systems. Try the most common ones.
+-    foreach (_py_lib python-${PYTHON_VERSION_FOUND} python
+-             python${PYTHON_VERSION_MAJOR}
+-             python-py${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR})
++    foreach (_py_lib python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}
++             python${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR})
+         find_package (Boost QUIET COMPONENTS ${_py_lib})
+         string (TOUPPER ${_py_lib} _py_lib_name)
+         if (Boost_${_py_lib_name}_FOUND)
+-- 
+2.22.0
+

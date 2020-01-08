@@ -1,0 +1,21 @@
+diff -ur iscan-2.30.3/backend/cfg-obj.c b/iscan-2.30.3/backend/cfg-obj.c
+--- iscan-2.30.3/backend/cfg-obj.c	2019-05-31 13:26:41.530042108 +0200
++++ iscan-2.30.3/backend/cfg-obj.c	2019-05-31 14:05:13.040056748 +0200
+@@ -1026,7 +1026,7 @@
+       char *vendor = NULL;
+       char *model  = NULL;
+ 
+-      sscanf (string, "%*s %as %as", &vendor, &model);
++      sscanf (string, "%*s %ms %ms", &vendor, &model);
+ 
+       if (list_append (_cfg->seen[CFG_KEY_SCSI], info))
+         {
+@@ -1108,7 +1108,7 @@
+       char *library  = NULL;
+       char *firmware = NULL;
+ 
+-      sscanf (string, "%*s %*s %x %x %as %as",
++      sscanf (string, "%*s %*s %x %x %ms %ms",
+               &vendor, &product, &library, &firmware);
+ 
+       if (library && _cfg_have_interpreter (library, firmware)

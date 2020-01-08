@@ -16,7 +16,7 @@ REQUIRED_USE="
 	flickr? ( gnome-online-accounts )
 	^^ ( elogind systemd )
 " # Theoretically "?? ( elogind systemd )" is fine too, lacking some functionality at runtime, but needs testing if handled gracefully enough
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 # kerberos unfortunately means mit-krb5; build fails with heimdal
 # display panel requires colord and gnome-settings-daemon[colord]
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	>=gnome-base/gsettings-desktop-schemas-3.27.2
 	dev-libs/libxml2:2
 	>=sys-auth/polkit-0.114
-	>=sys-power/upower-0.99:=
+	>=sys-power/upower-0.99.6:=
 	x11-libs/libX11
 	>=x11-libs/libXi-1.2
 	flickr? ( >=media-libs/grilo-0.3.0:0.3= )
@@ -50,7 +50,7 @@ COMMON_DEPEND="
 		${clutter_gtk_dep}
 		>=media-video/cheese-3.28.0 )
 	ibus? ( >=app-i18n/ibus-1.5.2 )
-	wayland? ( virtual/libgudev )
+	wayland? ( dev-libs/libgudev )
 	networkmanager? (
 		>=gnome-extra/nm-applet-1.8.0
 		>=net-misc/networkmanager-1.10.0:=[modemmanager]

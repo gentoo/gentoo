@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Some USE-flags that only die-hards don't want:
@@ -9,11 +9,11 @@
 USE="readline zlib ncurses ssl"
 
 
-# Python 3.6 is unmasked for us, build stuff by default with latest to
-# avoid unnecessary builds
+# In Prefix, aim for Python 3 only, leaving out 2 to avoid unnecessary
+# builds
 # NOTE: Both are incremental variables: Need to drop obsolete base values.
-PYTHON_TARGETS="python2_7 -python3_5 python3_6"
-PYTHON_SINGLE_TARGET="-python3_5 python3_6"
+PYTHON_TARGETS="-python2_7 python3_6"
+PYTHON_SINGLE_TARGET="python3_6"
 
 # Move away from ruby22 fast forward to ruby24, we don't have ruby23
 RUBY_TARGETS="ruby24"

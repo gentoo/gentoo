@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+),xml"
 
 MY_PV="${PV/_alpha/.alpha}"
@@ -21,7 +21,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && inherit git-r3
-inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 multiprocessing pax-utils python-single-r1 qmake-utils toolchain-funcs xdg
+inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 multiprocessing python-single-r1 qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="A full office productivity suite"
 HOMEPAGE="https://www.libreoffice.org"
@@ -63,7 +63,7 @@ unset ADDONS_SRC
 LO_EXTS="nlpsolver scripting-beanshell scripting-javascript wiki-publisher"
 
 IUSE="accessibility bluetooth +branding coinmp +cups dbus debug eds firebird
-googledrive gstreamer +gtk gtk2 kde ldap +mariadb odk pdfimport postgres test vlc
+googledrive gstreamer +gtk kde ldap +mariadb odk pdfimport postgres test
 $(printf 'libreoffice_extensions_%s ' ${LO_EXTS})"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -73,6 +73,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	libreoffice_extensions_scripting-javascript? ( java )
 	libreoffice_extensions_wiki-publisher? ( java )
 "
+
+RESTRICT="!test? ( test )"
 
 LICENSE="|| ( LGPL-3 MPL-1.1 )"
 SLOT="0"
@@ -109,7 +111,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=app-text/libwps-0.4
 	app-text/mythes
 	>=dev-cpp/clucene-2.3.3.4-r2
-	=dev-cpp/libcmis-0.5*
+	>=dev-cpp/libcmis-0.5.2
 	dev-db/unixODBC
 	dev-lang/perl
 	dev-libs/boost:=[nls]
@@ -125,7 +127,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/nspr
 	dev-libs/nss
 	>=dev-libs/redland-1.0.16
-	>=dev-libs/xmlsec-1.2.24[nss]
+	>=dev-libs/xmlsec-1.2.28[nss]
 	media-gfx/fontforge
 	media-gfx/graphite2
 	media-libs/fontconfig
@@ -176,16 +178,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		x11-libs/gtk+:3
 		x11-libs/pango
 	)
-	gtk2? (
-		x11-libs/gdk-pixbuf
-		>=x11-libs/gtk+-2.24:2
-		x11-libs/pango
-	)
 	kde? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
-		dev-qt/qtx11extras:5
 		dev-qt/qtwidgets:5
+		dev-qt/qtx11extras:5
 		kde-frameworks/kconfig:5
 		kde-frameworks/kcoreaddons:5
 		kde-frameworks/ki18n:5
@@ -208,7 +205,7 @@ DEPEND="${COMMON_DEPEND}
 	>=dev-libs/libatomic_ops-7.2d
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
-	>=dev-util/gperf-3
+	>=dev-util/gperf-3.1
 	>=dev-util/mdds-1.4.1:1=
 	media-libs/glm
 	sys-devel/ucpp
@@ -217,7 +214,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-libs/libXtst
 	java? (
 		dev-java/ant-core
-		>=virtual/jdk-1.6
+		>=virtual/jdk-1.8
 	)
 	test? (
 		app-crypt/gnupg
@@ -232,9 +229,8 @@ RDEPEND="${COMMON_DEPEND}
 	!app-office/openoffice
 	media-fonts/liberation-fonts
 	|| ( x11-misc/xdg-utils kde-plasma/kde-cli-tools )
-	java? ( >=virtual/jre-1.6 )
+	java? ( >=virtual/jre-1.8 )
 	kde? ( kde-frameworks/breeze-icons:* )
-	vlc? ( media-video/vlc )
 "
 if [[ ${MY_PV} != *9999* ]] && [[ ${PV} != *_* ]]; then
 	PDEPEND="=app-office/libreoffice-l10n-$(ver_cut 1-2)*"
@@ -266,8 +262,11 @@ _check_reqs() {
 }
 
 pkg_pretend() {
-	use java || \
-		ewarn "If you plan to use Base application you should enable java or you will get various crashes."
+	if ! use java && ! use firebird; then
+		ewarn "If you plan to use Base application you must enable either firebird or java."
+	fi
+
+	use java || ewarn "Without java, several wizards are not going to be available."
 
 	if has_version "<app-office/libreoffice-5.3.0[firebird]"; then
 		ewarn "Firebird has been upgraded to version 3. It is unable to read back Firebird 2.5 data, so"
@@ -281,6 +280,7 @@ pkg_pretend() {
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
 	python-single-r1_pkg_setup
+	xdg_environment_reset
 
 	[[ ${MERGE_TYPE} != binary ]] && _check_reqs pkg_setup
 }
@@ -304,7 +304,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	xdg_src_prepare
+	default
 
 	# sandbox violations on many systems, we don't need it. Bug #646406
 	sed -i \
@@ -406,10 +406,13 @@ src_configure() {
 		--disable-epm
 		--disable-fetch-external
 		--disable-gstreamer-0-10
+		--disable-gtk
+		--disable-gtk3-kde5
 		--disable-online-update
 		--disable-openssl
 		--disable-pdfium
 		--disable-report-builder
+		--disable-vlc
 		--with-build-version="${gentoo_buildid}"
 		--enable-extension-integration
 		--with-external-dict-dir="${EPREFIX}/usr/share/myspell"
@@ -424,8 +427,8 @@ src_configure() {
 		--with-x
 		--without-fonts
 		--without-myspell-dicts
-		--without-help
-		--with-helppack-integration
+		--with-help="html"
+		--without-helppack-integration
 		--with-system-gpgmepp
 		--without-system-sane
 		$(use_enable bluetooth sdremote-bluetooth)
@@ -437,14 +440,12 @@ src_configure() {
 		$(use_enable firebird firebird-sdbc)
 		$(use_enable gstreamer gstreamer-1-0)
 		$(use_enable gtk gtk3)
-		$(use_enable gtk2 gtk)
-		$(use_enable kde kde5)
+		$(use_enable kde kf5)
 		$(use_enable kde qt5)
 		$(use_enable ldap)
 		$(use_enable odk)
 		$(use_enable pdfimport)
 		$(use_enable postgres postgresql-sdbc)
-		$(use_enable vlc)
 		$(use_with accessibility lxml)
 		$(use_with coinmp system-coinmp)
 		$(use_with googledrive gdrive-client-id ${google_default_client_id})
@@ -452,10 +453,6 @@ src_configure() {
 		$(use_with java)
 		$(use_with odk doxygen)
 	)
-
-	if use gtk && use kde; then
-		myeconfargs+=( --enable-gtk3-kde5 )
-	fi
 
 	if use eds || use gtk; then
 		myeconfargs+=( --enable-dconf --enable-gio )
@@ -502,24 +499,6 @@ src_compile() {
 	addpredict /dev/ati
 	addpredict /dev/nvidiactl
 
-	# hack for offlinehelp, this needs fixing upstream at some point
-	# it is broken because we send --without-help
-	# https://bugs.freedesktop.org/show_bug.cgi?id=46506
-	(
-		grep "^export" "${S}/config_host.mk" > "${T}/config_host.mk" || die
-		source "${T}/config_host.mk" 2&> /dev/null
-
-		local path="${WORKDIR}/helpcontent2/source/auxiliary/"
-		mkdir -p "${path}" || die
-
-		echo "perl \"${S}/helpcontent2/helpers/create_ilst.pl\" -dir=helpcontent2/source/media/helpimg > \"${path}/helpimg.ilst\""
-		perl "${S}/helpcontent2/helpers/create_ilst.pl" \
-			-dir=helpcontent2/source/media/helpimg \
-			> "${path}/helpimg.ilst"
-		[[ -s "${path}/helpimg.ilst" ]] || \
-			ewarn "The help images list is empty, something is fishy, report a bug."
-	)
-
 	local target
 	use test && target="build" || target="build-nocheck"
 
@@ -553,18 +532,16 @@ src_install() {
 		dodir /etc/env.d
 		echo "CONFIG_PROTECT=/usr/$(get_libdir)/${PN}/program/sofficerc" > "${ED}"/etc/env.d/99${PN} || die
 	fi
-
-	# Hack for offlinehelp, this needs fixing upstream at some point.
-	# It is broken because we send --without-help
-	# https://bugs.freedesktop.org/show_bug.cgi?id=46506
-	insinto /usr/$(get_libdir)/libreoffice/help
-	doins xmlhelp/util/*.xsl
-
-	pax-mark -m "${ED}"/usr/$(get_libdir)/libreoffice/program/soffice.bin
-	pax-mark -m "${ED}"/usr/$(get_libdir)/libreoffice/program/unopkg.bin
 }
 
-pkg_preinst() {
-	java-utils-2_pkg_preinst
-	xdg_pkg_preinst
+pkg_postinst() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }

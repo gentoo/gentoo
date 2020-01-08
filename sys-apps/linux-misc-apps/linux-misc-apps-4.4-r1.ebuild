@@ -22,19 +22,19 @@ if [ ${PV/_rc} != ${PV} ]; then
 	LINUX_VER=$(get_version_component_range 1-2).$(($(get_version_component_range 3)-1))
 	PATCH_VERSION=$(get_version_component_range 1-3)
 	LINUX_PATCH=patch-${PV//_/-}.xz
-	SRC_URI="mirror://kernel/linux/kernel/v3.x/testing/${LINUX_PATCH}
-		mirror://kernel/linux/kernel/v3.x/testing/v${PATCH_VERSION}/${LINUX_PATCH}"
+	SRC_URI="https://www.kernel.org/pub/linux/kernel/v3.x/testing/${LINUX_PATCH}
+		https://www.kernel.org/pub/linux/kernel/v3.x/testing/v${PATCH_VERSION}/${LINUX_PATCH}"
 elif [ $(get_version_component_count) == 4 ]; then
 	# stable-release series
 	LINUX_VER=$(get_version_component_range 1-3)
 	LINUX_PATCH=patch-${PV}.xz
-	SRC_URI="mirror://kernel/linux/kernel/v3.x/${LINUX_PATCH}"
+	SRC_URI="https://www.kernel.org/pub/linux/kernel/v3.x/${LINUX_PATCH}"
 else
 	LINUX_VER=${PV}
 fi
 
 LINUX_SOURCES=linux-${LINUX_VER}.tar.xz
-SRC_URI="${SRC_URI} mirror://kernel/linux/kernel/v3.x/${LINUX_SOURCES}"
+SRC_URI="${SRC_URI} https://www.kernel.org/pub/linux/kernel/v3.x/${LINUX_SOURCES}"
 
 # pmtools also provides turbostat
 # usbip available in seperate package now

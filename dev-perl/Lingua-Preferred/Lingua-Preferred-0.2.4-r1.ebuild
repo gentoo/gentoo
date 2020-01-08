@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ inherit perl-module
 DESCRIPTION="Pick a language based on user's preferences"
 
 SLOT="0"
-LICENSE="|| ( Artistic GPL-2 GPL-3 )" # GPL-2+
+LICENSE="|| ( Artistic GPL-2+ )"
 KEYWORDS="amd64 ~arm ppc x86"
 IUSE=""
 

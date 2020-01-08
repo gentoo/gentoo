@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>dev-zero@gentoo.org</email>
-    <name>Tiziano Müller</name>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="cli">Install the restcli command line interface/tool, based on <pkg>dev-python/ipython</pkg></flag>
   </use>

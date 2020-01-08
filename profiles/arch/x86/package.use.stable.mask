@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -8,7 +8,7 @@
 #
 ## Example:
 ##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
 ## # Masking foo USE flag until we can get the
 ## # foo stuff to work properly again (bug 12345)
 ## =media-video/mplayer-0.90_pre5 foo
@@ -17,73 +17,81 @@
 
 #--- END OF EXAMPLES ---
 
-# Amy Liffey <amynka@gentoo.org> (15 Jan 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-04)
+# net-libs/libktorrent:5 is not stable anymore, bug #696858
+kde-apps/kget bittorrent
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-13)
+# media-video/pipewire is not stable yet
+dev-libs/weston pipewire
+kde-apps/krfb wayland
+kde-plasma/xdg-desktop-portal-kde screencast
+sys-apps/xdg-desktop-portal screencast
+x11-wm/mutter screencast
+
+# Brian Evans <grknight@gentoo.org> (2019-05-22)
+# Allow python-exec to install all targets
+# Ack by mgorny
+dev-lang/python-exec -python_targets_python3_7 -python_targets_python3_8
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-05-21)
+# dev-db/oracle-instantclient ain't stable
+dev-qt/qtsql oci8
+
+# Amy Liffey <amynka@gentoo.org> (2019-01-15)
 # Mask experimental contrib repo
-media-libs/opencv contrib contrib_cvv contrib_dnn contrib_hdf contrib_sfm contrib_xfeatures2d gflags glog tesseract
+media-libs/opencv contrib contribcvv contribdnn contribhdf contribsfm contribxfeatures2d gflags glog tesseract
 
-# Brian Evans <grknight@gentoo.org> (06 Dec 2018)
-# Unmask argon2 for php
-dev-lang/php -argon2
-
-# Mikle Kolyada <zlogene@gentoo.org> (07 Nov 2018)
+# Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # unmask sssd for sudo
 app-admin/sudo -sssd
 
-# Mart Raudsepp <leio@gentoo.org> (01 Nov 2018)
-# net-wireless/iwd not stable yet
-net-misc/networkmanager iwd
-
-# Thomas Deutschmann <whissi@gentoo.org> (27 Sep 2018)
+# Thomas Deutschmann <whissi@gentoo.org> (2018-09-27)
 # sys-devel/lld is unstable
 www-client/firefox clang
 
-# Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
+# Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 net-analyzer/wireshark -doc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (21 Nov 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-11-21)
 # Requires not yet stabilised media-libs/qtav
 media-gfx/digikam mediaplayer
 
-# Thomas Deutschmann <whissi@gentoo.org> (01 Oct 2017)
+# Thomas Deutschmann <whissi@gentoo.org> (2017-10-01)
 # Stable mask dev-ruby/haml test till rails is stabilized.
 dev-ruby/haml test
 
-# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Michael Palimaka <kensington@gentoo.org> (2017-09-30)
 # Required dependeny is not stable
 sci-libs/gdal oracle
 
-# NP-Hardass <NP-Hardass@gentoo.org> (27 Sep 2017)
+# NP-Hardass <NP-Hardass@gentoo.org> (2017-09-27)
 # patchset variants are not stable
-virtual/wine d3d9 staging
+virtual/wine staging
 
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Mar 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-03-01)
 # Requires not yet stabilised dev-db/oracle-instantclient.
 sci-geosciences/qgis oracle
 
-# Christoph Junghans <junghans@gentoo.org> (26 Feb 2017)
+# Christoph Junghans <junghans@gentoo.org> (2017-02-26)
 # Stable mask some fabrics (bug #525534)
 sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
-# Brian Evans <grknight@gentoo.org> (17 Jan 2017)
+# Brian Evans <grknight@gentoo.org> (2017-01-17)
 # Stable mask groonga on mariadb as I don't know how stable
 # the dependencies really are
 dev-db/mariadb mroonga
 
-# Bernard Cafarelli <voyageur@gentoo.org> (09 Jan 2017)
+# Bernard Cafarelli <voyageur@gentoo.org> (2017-01-09)
 # Requires more testing
 # and additional unstable dependencies
 gnustep-base/gnustep-make libobjc2
 
-# Michael Palimaka <kensington@gentoo.org> (26 May 2016)
+# Michael Palimaka <kensington@gentoo.org> (2016-05-26)
 # Dependencies not yet stable
 dev-cpp/eigen test
 
-# Pacho Ramos <pacho@gentoo.org> (08 Mar 2015)
-# mayavi is broken, bug #500104
-dev-python/apptools test
-
-# Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # Don't apply stable masks to python-exec since we're forcing every
 # impl there anyway. Please keep this in sync with use.stable.mask.
-dev-lang/python-exec -python_targets_pypy
 dev-lang/python-exec -python_targets_pypy3

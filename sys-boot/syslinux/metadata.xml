@@ -8,4 +8,7 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
+<upstream>
+	<remote-id type="cpe">cpe:/a:gentoo:syslinux</remote-id>
+</upstream>
 </pkgmetadata>

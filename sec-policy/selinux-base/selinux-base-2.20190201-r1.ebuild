@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
-			https://dev.gentoo.org/~swift/patches/selinux-base-policy/patchbundle-selinux-base-policy-${PVR}.tar.bz2"
+			https://dev.gentoo.org/~perfinion/patches/selinux-base-policy/patchbundle-selinux-base-policy-${PVR}.tar.bz2"
 
 	KEYWORDS="~amd64 -arm ~arm64 ~mips ~x86"
 fi
@@ -72,7 +72,7 @@ src_configure() {
 
 	# Prepare initial configuration
 	cd "${S}/refpolicy" || die
-	emake conf || die "Make conf failed"
+	emake conf
 
 	# Setup the policies based on the types delivered by the end user.
 	# These types can be "targeted", "strict", "mcs" and "mls".
@@ -125,11 +125,8 @@ src_install() {
 	for i in ${POLICY_TYPES}; do
 		cd "${S}/${i}" || die
 
-		emake DESTDIR="${D}" install \
-			|| die "${i} install failed."
-
-		emake DESTDIR="${D}" install-headers \
-			|| die "${i} headers install failed."
+		emake DESTDIR="${D}" install
+		emake DESTDIR="${D}" install-headers
 
 		echo "run_init_t" > "${D}/etc/selinux/${i}/contexts/run_init_type" || die
 

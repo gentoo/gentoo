@@ -1,0 +1,48 @@
+Some updates taken from https://www.emacswiki.org/emacs/color-theme.el
+in order to make this work with Emacs 26. EmacsWiki calls this
+version 6.6.1, but doesn't package any other files from the upstream
+tarball.
+
+--- color-theme-6.6.0-orig/color-theme.el
++++ color-theme-6.6.0/color-theme.el
+@@ -1077,13 +1077,11 @@
+   (let ((rules '((font-lock-builtin-face font-lock-reference-face)
+ 		 (font-lock-doc-face font-lock-doc-string-face)
+ 		 (font-lock-constant-face font-lock-preprocessor-face)
+-		 ;; In Emacs 21 `modeline' is just an alias for
+-		 ;; `mode-line'.  I recommend the use of
+-		 ;; `modeline' until further notice.
+-		 (modeline mode-line)
+-		 (modeline modeline-buffer-id)
+-		 (modeline modeline-mousable)
+-		 (modeline modeline-mousable-minor-mode)
++		 ;; D.ADAMS - Emacs 24.3 made `modeline' obsolete, so I've just commented-out these four lines.
++		 ;; (modeline mode-line)
++		 ;; (modeline modeline-buffer-id)
++		 ;; (modeline modeline-mousable)
++		 ;; (modeline modeline-mousable-minor-mode)
+ 		 (region primary-selection)
+ 		 (region zmacs-region)
+ 		 (font-lock-string-face dired-face-boring "^dired")
+@@ -1254,7 +1252,9 @@
+ 	   (val (cdr (assq param params)))
+ 	   (frame (if color-theme-is-global nil (selected-frame))))
+       (when val
+-	(set-face-property face prop val frame)))))
++	(if (fboundp 'set-face-property)
++	    (set-face-property face prop val frame)
++	  (set-face-attribute face frame prop val))))))
+ 
+ (defun color-theme-alist-reduce (old-list)
+   "Reduce OLD-LIST.
+@@ -1332,7 +1332,9 @@
+     (dolist (var vars)
+       (if (or color-theme-is-global color-theme-xemacs-p)
+ 	  (set (car var) (cdr var))
+-	(make-variable-frame-local (car var))
++	;; DADAMS
++	;; `make-variable-frame-local' was removed from Emacs C code in Emacs 26.
++	(when (fboundp 'make-variable-frame-local) (make-variable-frame-local (car var)))
+ 	(modify-frame-parameters (selected-frame) (list var))))))
+ 
+ (defun color-theme-install-faces (faces)

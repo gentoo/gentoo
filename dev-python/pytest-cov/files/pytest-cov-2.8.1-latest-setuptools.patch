@@ -1,0 +1,40 @@
+diff --git a/setup.py b/setup.py
+index 1305b23..3a5803e 100644
+--- a/setup.py
++++ b/setup.py
+@@ -29,7 +29,7 @@ def read(*names, **kwargs):
+ 
+ 
+ class BuildWithPTH(build):
+-    def run(self):
++    def run(self, **kwargs):
+         build.run(self)
+         path = join(dirname(__file__), 'src', 'pytest-cov.pth')
+         dest = join(self.build_lib, basename(path))
+@@ -37,7 +37,7 @@ class BuildWithPTH(build):
+ 
+ 
+ class EasyInstallWithPTH(easy_install):
+-    def run(self):
++    def run(self, **kwargs):
+         easy_install.run(self)
+         path = join(dirname(__file__), 'src', 'pytest-cov.pth')
+         dest = join(self.install_dir, basename(path))
+@@ -45,7 +45,7 @@ class EasyInstallWithPTH(easy_install):
+ 
+ 
+ class InstallLibWithPTH(install_lib):
+-    def run(self):
++    def run(self, **kwargs):
+         install_lib.run(self)
+         path = join(dirname(__file__), 'src', 'pytest-cov.pth')
+         dest = join(self.install_dir, basename(path))
+@@ -57,7 +57,7 @@ class InstallLibWithPTH(install_lib):
+ 
+ 
+ class DevelopWithPTH(develop):
+-    def run(self):
++    def run(self, **kwargs):
+         develop.run(self)
+         path = join(dirname(__file__), 'src', 'pytest-cov.pth')
+         dest = join(self.install_dir, basename(path))

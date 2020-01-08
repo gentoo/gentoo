@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
 inherit multilib-minimal python-any-r1
 
 DESCRIPTION="Handler library for evdev events"
-HOMEPAGE="https://www.freedesktop.org/wiki/Software/libevdev/"
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/libevdev/ https://gitlab.freedesktop.org/libevdev/libevdev"
 
 if [[ ${PV} == 9999* ]] ; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/libevdev.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/libevdev/libevdev.git"
 	inherit autotools git-r3
 else
 	SRC_URI="https://www.freedesktop.org/software/libevdev/${P}.tar.xz"

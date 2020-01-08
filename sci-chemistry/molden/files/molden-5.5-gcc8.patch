@@ -1,0 +1,9 @@
+--- a/rdchx.f	2016-01-25 17:56:49.000000000 +0600
++++ b/rdchx.f	2018-08-24 16:51:14.000000000 +0700
+@@ -6004,5 +6004,5 @@
+       implicit double precision (a-h,p-z),integer (i-n),logical (o)
+       parameter (mxcon=10)
+-      dimension iconn(mxcon+1,*),icnn(mxcon+1)
++      dimension iconn(mxcon+1,*),icnn(*)
+ 
+       ibnds = 0

@@ -5,4 +5,7 @@
 		<email>mgorny@gentoo.org</email>
 		<name>Michał Górny</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="launchpad">pmount</remote-id>
+	</upstream>
 </pkgmetadata>

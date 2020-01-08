@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}/download/mvapich2/mvapich2-${PV/_/-}.tgz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="debug fortran large-cluster medium-cluster romio threads"
 
 RDEPEND="
@@ -125,7 +125,7 @@ src_configure() {
 }
 
 src_install() {
-	emake  DESTDIR="${D}"|| die
+	emake  DESTDIR="${D}"
 	dodoc CHANGES_MPICH2 COPYRIGHT COPYRIGHT_MVAPICH2 LICENSE.TXT \
 		README* RELEASE_NOTES*
 }

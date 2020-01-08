@@ -13,7 +13,7 @@ SRC_URI="http://www.galago-project.org/files/releases/source/${PN}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86"
 IUSE="examples"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

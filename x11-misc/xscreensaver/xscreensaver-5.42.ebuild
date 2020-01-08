@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~x64-solaris ~x86-solaris"
 IUSE="gdm jpeg new-login offensive opengl pam +perl selinux suid xinerama"
 
 COMMON_DEPEND="
@@ -41,7 +41,7 @@ COMMON_DEPEND="
 		virtual/glu
 		virtual/opengl
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	xinerama? ( x11-libs/libXinerama )
 "
 # For USE="perl" see output of `qlist xscreensaver | grep bin | xargs grep '::'`

@@ -23,7 +23,6 @@ CDEPEND="sys-libs/ncurses:0=
 	otr? (
 		>=dev-libs/libgcrypt-1.2.0:0=
 		>=net-libs/libotr-4.1.0
-		!net-irc/irssi-otr
 	)
 	perl? ( dev-lang/perl:= )
 	socks5? ( >=net-proxy/dante-1.1.18 )"
@@ -39,8 +38,7 @@ DEPEND="
 
 RDEPEND="
 	${CDEPEND}
-	selinux? ( sec-policy/selinux-irc )
-	perl? ( !net-im/silc-client )"
+	selinux? ( sec-policy/selinux-irc )"
 
 src_prepare() {
 	sed -i -e /^autoreconf/d autogen.sh || die

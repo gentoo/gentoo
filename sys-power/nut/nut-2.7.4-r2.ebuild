@@ -13,7 +13,7 @@ HOMEPAGE="https://www.networkupstools.org/"
 SRC_URI="https://networkupstools.org/source/${PV%.*}/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
 
 IUSE="cgi gui ipmi snmp +usb selinux ssl tcpd xml zeroconf"
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
@@ -23,7 +23,8 @@ DEPEND="
 	net-libs/libnsl
 	virtual/udev
 	cgi? ( >=media-libs/gd-2[png] )
-	gui? ( dev-python/pygtk[${PYTHON_USEDEP}] )
+	gui? ( ${PYTHON_DEPS}
+		dev-python/pygtk[${PYTHON_USEDEP}] )
 	ipmi? ( sys-libs/freeipmi )
 	snmp? ( net-analyzer/net-snmp )
 	ssl? ( >=dev-libs/openssl-1:= )

@@ -1,0 +1,61 @@
+--- stress-ng-0.10.13.orig/Makefile	2019-12-09 13:42:13.000000000 +0100
++++ stress-ng-0.10.13/Makefile	2019-12-14 00:51:33.390034647 +0100
+@@ -21,7 +21,7 @@
+ # Codename "systematic system smasher"
+ #
+ 
+-CFLAGS += -Wall -Wextra -DVERSION='"$(VERSION)"' -O2 -std=gnu99
++CFLAGS += -Wall -Wextra -DVERSION='"$(VERSION)"' -std=gnu99
+ 
+ #
+ # Pedantic flags
+@@ -359,12 +359,10 @@
+ .o: stress-ng.h Makefile
+ 
+ .c.o: stress-ng.h Makefile $(SRC)
+-	@echo "CC $<"
+-	@$(CC) $(CFLAGS) -c -o $@ $<
++	$(CC) $(CFLAGS) -c -o $@ $<
+ 
+ stress-ng: $(OBJS)
+-	@echo "LD $@"
+-	@$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJS) -lm $(LDFLAGS) -o $@
++	$(CC) $(CPPFLAGS) $(CFLAGS) $(OBJS) -lm $(LDFLAGS) -o $@
+ 	@sync
+ 
+ makeconfig:
+@@ -385,7 +383,7 @@
+ 		sed '$$ s/.$$//' >> apparmor-data.c
+ 	@echo "};" >> apparmor-data.c
+ 	@echo "const size_t g_apparmor_data_len = sizeof(g_apparmor_data);" >> apparmor-data.c
+-	@echo "CC $<"
++	echo "CC $<"
+ 	@$(CC) -c apparmor-data.c -o apparmor-data.o
+ 	@rm -rf apparmor-data.c apparmor-data.bin
+ 
+@@ -401,12 +399,12 @@
+ core-perf.o: core-perf.c core-perf-event.c
+ 	@$(CC) $(CFLAGS) -E core-perf-event.c | grep "PERF_COUNT" | sed 's/,/ /' | \
+ 	awk {'print "#define _SNG_" $$1 " (1)"'} > core-perf-event.h
+-	@echo CC $<
+-	@$(CC) $(CFLAGS) -c -o $@ $<
++	echo CC $<
++	$(CC) $(CFLAGS) -c -o $@ $<
+ 
+ stress-vecmath.o: stress-vecmath.c
+-	@echo CC $<
+-	@$(CC) $(CFLAGS) -fno-builtin -c -o $@ $<
++	echo CC $<
++	$(CC) $(CFLAGS) -fno-builtin -c -o $@ $<
+ 	@touch stress-ng.c
+ 
+ $(OBJS): stress-ng.h Makefile
+@@ -455,7 +453,7 @@
+ 	mkdir -p ${DESTDIR}${BINDIR}
+ 	cp stress-ng ${DESTDIR}${BINDIR}
+ 	mkdir -p ${DESTDIR}${MANDIR}
+-	cp stress-ng.1.gz ${DESTDIR}${MANDIR}
++	cp stress-ng.1 ${DESTDIR}${MANDIR}
+ 	mkdir -p ${DESTDIR}${JOBDIR}
+ 	cp -rp example-jobs/*.job ${DESTDIR}${JOBDIR}
+ 	mkdir -p ${DESTDIR}${BASHDIR}

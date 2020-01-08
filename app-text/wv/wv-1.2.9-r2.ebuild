@@ -9,7 +9,7 @@ SRC_URI="http://abiword.org/downloads/${PN}/${PV}/${P}.tar.gz"
 HOMEPAGE="http://wvware.sourceforge.net/"
 
 IUSE="tools wmf"
-KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
+KEYWORDS="alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-solaris"
 SLOT="0"
 LICENSE="GPL-2"
 
@@ -57,6 +57,6 @@ src_install () {
 
 	rm -f "${ED}"/usr/share/man/man1/wvConvert.1
 	if use tools; then
-		dosym  /usr/share/man/man1/wvWare.1 /usr/share/man/man1/wvConvert.1 || die
+		dosym  /usr/share/man/man1/wvWare.1 /usr/share/man/man1/wvConvert.1
 	fi
 }

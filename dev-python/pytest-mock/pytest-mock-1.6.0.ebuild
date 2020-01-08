@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy pypy3 )
+PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
 inherit distutils-r1
 
@@ -15,13 +15,9 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE=""
 
-RDEPEND="dev-python/pytest[${PYTHON_USEDEP}]
-	python_targets_python2_7? (
-		>=dev-python/mock-2[python_targets_python2_7]
-	)
-	python_targets_pypy? (
-		>=dev-python/mock-2[python_targets_pypy]
-	)"
+RDEPEND="
+	dev-python/pytest[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '>=dev-python/mock-2[${PYTHON_USEDEP}]' -2)"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]"

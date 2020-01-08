@@ -6,10 +6,11 @@
 <name>Gentoo network monitoring and analysis project</name>
 </maintainer>
 <upstream>
+<remote-id type="cpe">cpe:/a:iperf_project:iperf</remote-id>
 <remote-id type="github">esnet/iperf</remote-id>
 <remote-id type="sourceforge">iperf</remote-id>
 </upstream>
 <use>
-<flag name='profiling'>Create a profiled iperf3 binary</flag>
+<flag name='profiling'>Install profiled iperf3 binary iperf3_profile</flag>
 </use>
 </pkgmetadata>

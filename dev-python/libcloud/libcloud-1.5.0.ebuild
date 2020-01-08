@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 # py3 dropped due to failing tests once lockfile installed
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
+PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE="ssl(+)"
 
 inherit distutils-r1
@@ -23,7 +23,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/lockfile[${PYTHON_USEDEP}]
-		 $(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' python{2_7,3_4} pypy)
+		 $(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' python2_7 pypy)
 	)"
 
 # Known test failures

@@ -15,7 +15,7 @@ HOMEPAGE="https://github.com/mperham/connection_pool"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 x86"
 IUSE=""
 
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5 )"

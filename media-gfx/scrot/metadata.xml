@@ -5,4 +5,7 @@
 	<email>graphics@gentoo.org</email>
 	<name>Gentoo Graphics Project</name>
 </maintainer>
+<maintainer type="person">
+	<email>jer@gentoo.org</email>
+</maintainer>
 </pkgmetadata>

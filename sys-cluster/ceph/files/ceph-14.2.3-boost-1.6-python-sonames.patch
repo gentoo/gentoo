@@ -1,0 +1,26 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 05d1e61270..8b939b8af6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -640,7 +640,7 @@ set(BOOST_HEADER_COMPONENTS container)
+ 
+ if(WITH_MGR)
+   list(APPEND BOOST_COMPONENTS
+-    python${MGR_PYTHON_VERSION_MAJOR}${MGR_PYTHON_VERSION_MINOR})
++    python-${MGR_PYTHON_VERSION_MAJOR}.${MGR_PYTHON_VERSION_MINOR})
+ endif()
+ if(WITH_BOOST_CONTEXT)
+   list(APPEND BOOST_COMPONENTS context coroutine)
+diff --git a/cmake/modules/BuildBoost.cmake b/cmake/modules/BuildBoost.cmake
+index f46cc0d485..3cc6340b2c 100644
+--- a/cmake/modules/BuildBoost.cmake
++++ b/cmake/modules/BuildBoost.cmake
+@@ -205,7 +205,7 @@ macro(build_boost version)
+     endif()
+     add_dependencies(Boost::${c} Boost)
+     if(c MATCHES "^python")
+-      set(c "python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}")
++      set(c "python-${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}")
+     endif()
+     if(Boost_USE_STATIC_LIBS)
+       set(Boost_${upper_c}_LIBRARY

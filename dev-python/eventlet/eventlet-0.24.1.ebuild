@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit distutils-r1
 
@@ -15,6 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/dnspython-1.15.0[${PYTHON_USEDEP}]
@@ -33,7 +34,7 @@ python_prepare_all() {
 	sed -i '/enum-compat/d' setup.py || die
 
 	if use doc; then
-		local PYTHON_DOC_ATOM=$(best_version --host-root dev-python/python-docs:2.7)
+		local PYTHON_DOC_ATOM=$(best_version -b dev-python/python-docs:2.7)
 		local PYTHON_DOC_VERSION="${PYTHON_DOC_ATOM#dev-python/python-docs-}"
 		local PYTHON_DOC="/usr/share/doc/python-docs-${PYTHON_DOC_VERSION}/html"
 		local PYTHON_DOC_INVENTORY="${PYTHON_DOC}/objects.inv"
@@ -66,6 +67,10 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/_build/html/. )
-	use examples && local EXAMPLES=( examples/. )
+	if use examples; then
+		docompress -x "/usr/share/doc/${PF}/examples"
+		docinto examples
+		dodoc -r examples/.
+	fi
 	distutils-r1_python_install_all
 }

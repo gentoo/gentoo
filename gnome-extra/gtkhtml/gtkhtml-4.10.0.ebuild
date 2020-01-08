@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -7,11 +7,11 @@ GCONF_DEBUG="no"
 inherit gnome2
 
 DESCRIPTION="Lightweight HTML rendering/printing/editing engine"
-HOMEPAGE="https://git.gnome.org/browse/gtkhtml"
+HOMEPAGE="https://gitlab.gnome.org/Archive/gtkhtml"
 
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="4.0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 # orbit is referenced in configure, but is not used anywhere else

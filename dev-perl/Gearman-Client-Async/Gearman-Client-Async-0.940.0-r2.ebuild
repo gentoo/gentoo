@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="Asynchronous client module for Gearman for Danga::Socket applicatio
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-perl/Gearman-1.07
 	>=dev-perl/Danga-Socket-1.57"

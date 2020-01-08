@@ -1,0 +1,25 @@
+diff --git a/pynslcd/pynslcd.py b/pynslcd/pynslcd.py
+index 0691b61..df2ca4a 100755
+--- a/pynslcd/pynslcd.py
++++ b/pynslcd/pynslcd.py
+@@ -30,13 +30,13 @@ import threading
+ import daemon
+ import ldap
+ 
+-import cfg
+-import common
+-import constants
+-import invalidator
+-import mypidfile
+-import search
+-from tio import TIOStream
++import pynslcd.cfg
++import pynslcd.common
++import pynslcd.constants
++import pynslcd.invalidator
++import pynslcd.mypidfile
++import pynslcd.search
++from pynslcd.tio import TIOStream
+ 
+ 
+ # the name of the program

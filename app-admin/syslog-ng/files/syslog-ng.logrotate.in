@@ -4,6 +4,7 @@
 #
 
 /var/log/messages {
+    delaycompress
     missingok
     sharedscripts
     postrotate

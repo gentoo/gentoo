@@ -5,7 +5,4 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
-<use>
-	<flag name="json">Supports parsing of JSON</flag>
-</use>
 </pkgmetadata>

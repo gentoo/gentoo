@@ -86,10 +86,10 @@ src_install() {
 	dosym /usr/bin/jamvm ${JDK_DIR}/bin/java
 	for files in ${CLASSPATH_DIR}/g*; do
 		if [ $files = "${CLASSPATH_DIR}/bin/gjdoc" ] ; then
-			dosym $files ${JDK_DIR}/bin/javadoc || die
+			dosym $files ${JDK_DIR}/bin/javadoc
 		else
 			dosym $files \
-				${JDK_DIR}/bin/$(echo $files|sed "s#$(dirname $files)/g##") || die
+				${JDK_DIR}/bin/$(echo $files|sed "s#$(dirname $files)/g##")
 		fi
 	done
 

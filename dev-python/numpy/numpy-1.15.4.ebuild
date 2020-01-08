@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 FORTRAN_NEEDED=lapack
@@ -24,8 +24,9 @@ SRC_URI="
 	)"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc lapack test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="lapack? ( virtual/cblas virtual/lapack )"
 DEPEND="${RDEPEND}
@@ -67,10 +68,11 @@ pc_libs() {
 python_prepare_all() {
 	if use lapack; then
 		append-ldflags "$($(tc-getPKG_CONFIG) --libs-only-other cblas lapack)"
+		local incdir="${EPREFIX}"/usr/include
 		local libdir="${EPREFIX}"/usr/$(get_libdir)
 		cat >> site.cfg <<-EOF || die
 			[blas]
-			include_dirs = $(pc_incdir cblas)
+			include_dirs = $(pc_incdir cblas):${incdir}
 			library_dirs = $(pc_libdir cblas blas):${libdir}
 			blas_libs = $(pc_libs cblas blas)
 			[lapack]

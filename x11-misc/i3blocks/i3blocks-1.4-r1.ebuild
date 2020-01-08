@@ -21,7 +21,7 @@ LICENSE="GPL-3"
 
 RDEPEND="app-admin/sysstat
 	media-sound/playerctl
-	sys-apps/lm_sensors
+	sys-apps/lm-sensors
 	sys-power/acpi
 	|| ( x11-wm/i3 x11-wm/i3-gaps )"
 

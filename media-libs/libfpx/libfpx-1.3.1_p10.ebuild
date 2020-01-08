@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils flag-o-matic libtool
 
 DESCRIPTION="A library for manipulating FlashPIX images"
-HOMEPAGE="http://www.i3a.org/"
+HOMEPAGE="https://github.com/ImageMagick/libfpx"
 SRC_URI="mirror://imagemagick/delegates/${P/_p/-}.tar.bz2"
 
 LICENSE="Flashpix"
 SLOT="0/1"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-solaris"
 IUSE="static-libs"
 
 S=${WORKDIR}/${P/_p/-}

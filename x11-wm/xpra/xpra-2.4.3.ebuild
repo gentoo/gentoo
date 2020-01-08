@@ -15,6 +15,7 @@ LICENSE="GPL-2 BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+client +clipboard csc cups dbus dec_avcodec2 enc_ffmpeg enc_x264 enc_x265 jpeg libav +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam webp"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	clipboard? ( || ( server client ) )
@@ -65,6 +66,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 RDEPEND="${COMMON_DEPEND}
 	dev-python/netifaces[${PYTHON_USEDEP}]
 	dev-python/rencode[${PYTHON_USEDEP}]
+	dev-python/pillow[jpeg?,${PYTHON_USEDEP}]
 	virtual/ssh
 	x11-apps/xmodmap
 	cups? ( dev-python/pycups[${PYTHON_USEDEP}] )
@@ -74,7 +76,6 @@ RDEPEND="${COMMON_DEPEND}
 	opengl? (
 		client? ( dev-python/pyopengl_accelerate[${PYTHON_USEDEP}] )
 	)
-	pillow? ( dev-python/pillow[${PYTHON_USEDEP}] )
 	server? ( x11-base/xorg-server[-minimal,xvfb]
 		x11-drivers/xf86-input-void
 	)

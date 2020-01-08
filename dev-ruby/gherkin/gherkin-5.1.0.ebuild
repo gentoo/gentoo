@@ -19,6 +19,6 @@ DESCRIPTION="Fast Gherkin lexer and parser"
 HOMEPAGE="https://github.com/cucumber/gherkin"
 LICENSE="MIT"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sparc x86"
 SLOT="5"
 IUSE=""

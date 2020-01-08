@@ -1,0 +1,29 @@
+Remove dbus functionality if USE=dbus is not specified.
+
+Index: xpra-3.0.2/xpra/scripts/server.py
+===================================================================
+--- xpra-3.0.2.orig/xpra/scripts/server.py
++++ xpra-3.0.2/xpra/scripts/server.py
+@@ -748,14 +748,9 @@ def do_run_server(error_cb, opts, mode,
+         log("chdir(%s)", opts.chdir)
+         os.chdir(opts.chdir)
+ 
+-    dbus_pid, dbus_env = 0, {}
+     if not shadowing and POSIX and not OSX and not clobber:
+         no_gtk()
+         assert starting or starting_desktop or proxying
+-        from xpra.server.dbus.dbus_start import start_dbus
+-        dbus_pid, dbus_env = start_dbus(opts.dbus_launch)
+-        if dbus_env:
+-            os.environ.update(dbus_env)
+ 
+     display = None
+     if not proxying:
+@@ -835,7 +830,6 @@ def do_run_server(error_cb, opts, mode,
+         app.display_name = display_name
+         app.init(opts)
+         app.init_sockets(sockets)
+-        app.init_dbus(dbus_pid, dbus_env)
+         if not shadowing and (xvfb_pid or clobber):
+             app.init_display_pid(xvfb_pid)
+         app.original_desktop_display = desktop_display

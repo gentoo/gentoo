@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,11 +10,11 @@ SRC_URI="http://www.padl.com/download/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 LGPL-2 )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86"
 IUSE="ssl sasl"
 
 DEPEND="|| ( >=sys-libs/glibc-2.1.3 >=sys-freebsd/freebsd-lib-9.1 )
-	>=virtual/pam-0-r1[${MULTILIB_USEDEP}]
+	sys-libs/pam[${MULTILIB_USEDEP}]
 	>=net-nds/openldap-2.4.38-r1[${MULTILIB_USEDEP}]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1.26-r3[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"

@@ -38,9 +38,6 @@
 	<flag name="openvz">
 		Support management of OpenVZ virtualisation (openvz-sources)
 	</flag>
-	<flag name="uml">
-		Support management of User Mode Linux virtualisation
-	</flag>
 	<flag name="qemu">
 		Support management of QEMU virtualisation (<pkg>app-emulation/qemu</pkg>)
 	</flag>
@@ -56,6 +53,7 @@
 	</flag>
 	<!-- Miscellaneous flags -->
 	<flag name="apparmor">Enable AppArmor support</flag>
+	<flag name="dtrace">Enable dtrace support via <pkg>dev-util/systemtap</pkg></flag>
 	<flag name="fuse">Allow LXC to use <pkg>sys-fs/fuse</pkg> for mount
 		points</flag>
 	<flag name="numa">
@@ -73,11 +71,12 @@
 	<flag name="pcap">
 		Support auto learning IP addreses for routing
 	</flag>
+	<flag name="pm-utils">
+		Add runtime support for <pkg>sys-power/pm-utils</pkg>
+	</flag>
 	<flag name="macvtap">
 		Support for MAC-based TAP (macvlan/macvtap). For networking instead
-		of the normal TUN/TAP. It has its advantages and disadvantages.
-		macvtap support requires very new kernels and is
-		currently evolving. Support for this is experimental at best.
+		of the normal TUN/TAP.
 	</flag>
 	<flag name="vepa">Virtual Ethernet Port Aggregator (VEPA) / 802.1Qbg
 		support. Relies on macvtap support.</flag>

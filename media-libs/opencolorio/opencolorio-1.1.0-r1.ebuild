@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # Compatibility with Python 3 is declared by upstream, but it is broken in fact, check on bump
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit cmake-utils python-single-r1 vcs-snapshot
 
@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-use-GNUInstallDirs-and-fix-cmake-install-location.patch"
 	"${FILESDIR}/${P}-remove-building-of-bundled-programs.patch"
 	"${FILESDIR}/${P}-yaml-cpp-0.6.patch"
+	"${FILESDIR}/${P}-remove-Werror.patch"
 )
 
 pkg_setup() {

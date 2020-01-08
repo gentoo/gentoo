@@ -1,8 +1,6 @@
 Don't rely on debian's way to multilib/multiarch.
 
 https://bugs.gentoo.org/550344
-diff --git a/eatmydata.in b/eatmydata.in
-index 40468db..aa143f0 100644
 --- a/eatmydata.in
 +++ b/eatmydata.in
 @@ -17,5 +17,4 @@

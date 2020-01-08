@@ -1,8 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# REQUIRED_USE constraint when pulseaudio is enabled
+dev-libs/efl sound
+
 # Needed by gnome-photos
-media-libs/gegl jpeg2k raw
+media-libs/gegl raw
 
 # Needed by a global USE=wayland right now; some REQUIRED_USE may be outdated and need review
 >=media-libs/cogl-1.18.2-r1 gles2
@@ -31,9 +34,6 @@ app-accessibility/speech-dispatcher python
 # Pulled in by grilo-plugins which is needed for gnome-music
 media-libs/grilo playlist
 
-# Required for webkit-gtk-2
-media-libs/harfbuzz icu
-
 # Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt5 )"
 media-libs/libmediaart gtk -qt5
 
@@ -44,7 +44,7 @@ net-libs/libproxy python
 # For net-misc/vinagre-3.4 and gnome-boxes
 net-misc/spice-gtk gtk3
 
-# Alexandre Rostovtsev <tetromino@gentoo.org> (19 Feb 2015)
+# Alexandre Rostovtsev <tetromino@gentoo.org> (2015-02-19)
 # Set reasonable default toolkit for gnome users to prevent emerge error
 # when USE=tools
 x11-drivers/nvidia-drivers gtk3

@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
+PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="Simplified object-oriented Python extension module for libpcap"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/pynetwork/pypcap/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
 	net-libs/libpcap

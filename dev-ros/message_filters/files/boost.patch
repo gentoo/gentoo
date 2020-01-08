@@ -1,0 +1,26 @@
+commit 41f18edc9f2f0b1ef304ea25f148bd56a6bf3d70
+Author: Maarten de Vries <maarten@de-vri.es>
+Date:   Thu Jan 31 00:58:29 2019 +0100
+
+    Remove signals from find_package(Boost COMPONENTS ...) (#1580)
+    
+    The packages use signals2, not signals. Only boost libraries with
+    compiled code should be passed to find_package(Boost COMPONENTS ...),
+    and the signals2 library has always been header only.
+    
+    Boost 1.69 has removed the deprecated signals library, so the otherwise
+    useless but harmless `signals` component now breaks the build.
+
+diff --git a/utilities/message_filters/CMakeLists.txt b/utilities/message_filters/CMakeLists.txt
+index 5694ac57e..d2b1477ad 100644
+--- a/utilities/message_filters/CMakeLists.txt
++++ b/utilities/message_filters/CMakeLists.txt
+@@ -13,7 +13,7 @@ catkin_package(
+ )
+ catkin_python_setup()
+ 
+-find_package(Boost REQUIRED COMPONENTS signals thread)
++find_package(Boost REQUIRED COMPONENTS thread)
+ 
+ include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+ link_directories(${catkin_LIBRARY_DIRS})

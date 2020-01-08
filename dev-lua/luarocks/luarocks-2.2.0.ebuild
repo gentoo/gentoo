@@ -39,12 +39,12 @@ src_configure() {
 
 src_compile() {
 	# -j1 b/c make tries to delete files it has yet to create (bug #402005)
-	emake DESTDIR="${D}" -j1 || die "make failed"
+	emake DESTDIR="${D}" -j1
 }
 
 src_install() {
 	# -j1 b/c otherwise it fails to find src/bin/luarocks
-	emake DESTDIR="${D}" -j1 install || die "einstall"
+	emake DESTDIR="${D}" -j1 install
 }
 
 pkg_preinst() {

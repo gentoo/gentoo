@@ -1,0 +1,131 @@
+From f7c177d35242311ea7a2cf49a0980c61664f27ba Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Fri, 25 Oct 2019 15:07:09 +0000
+Subject: [PATCH] IWYU: include algorithm to use std::lower_bound in ui/gfx/font.cc
+
+Fix GCC build because of missing include:
+../../ui/gfx/font.cc: In function ‘gfx::Font::Weight gfx::FontWeightFromInt(int)’:
+../../ui/gfx/font.cc:114:8: error: no matching function for call to ‘lower_bound(const gfx::Font::Weight*, const gfx::Font::Weight*, int&, gfx::FontWeightFromInt(int)::<lambda(const gfx::Font::Weight&, const int&)>)’
+       });
+        ^
+In file included from /usr/include/c++/8/bits/char_traits.h:39,
+                 from /usr/include/c++/8/string:40,
+                 from ../../ui/gfx/font.h:8,
+                 from ../../ui/gfx/font.cc:5:
+/usr/include/c++/8/bits/stl_algobase.h:984:5: note: candidate: ‘template<class _ForwardIterator, class _Tp> _ForwardIterator std::lower_bound(_ForwardIterator, _ForwardIterator, const _Tp&)’
+     lower_bound(_ForwardIterator __first, _ForwardIterator __last,
+     ^~~~~~~~~~~
+/usr/include/c++/8/bits/stl_algobase.h:984:5: note:   template argument deduction/substitution failed:
+../../ui/gfx/font.cc:114:8: note:   candidate expects 3 arguments, 4 provided
+       });
+        ^
+
+Bug: 819294
+Change-Id: Ic59dcf3a06bdd54d1d426c08a61624873a0ff30c
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1879909
+Commit-Queue: Alexei Svitkine <asvitkine@chromium.org>
+Reviewed-by: Alexei Svitkine <asvitkine@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#709472}
+---
+
+diff --git a/ui/gfx/font.cc b/ui/gfx/font.cc
+index 21367fd7..92b159e 100644
+--- a/ui/gfx/font.cc
++++ b/ui/gfx/font.cc
+@@ -4,6 +4,8 @@
+ 
+ #include "ui/gfx/font.h"
+ 
++#include <algorithm>
++
+ #include "base/strings/utf_string_conversions.h"
+ #include "build/build_config.h"
+ #include "ui/gfx/platform_font.h"
+
+From 97eb905ba262382bc3583078761c68f4452aea71 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Fri, 25 Oct 2019 09:27:53 +0000
+Subject: [PATCH] IWYU: launch_manager.h uses std::vector
+
+Add #include <vector> for using std::vector. This fixes GCC build.
+
+./../chrome/browser/apps/launch_service/launch_manager.h:46:15: error: ‘vector’ in namespace ‘std’ does not name a template type
+   static std::vector<base::FilePath> GetLaunchFilesFromCommandLine(
+               ^~~~~~
+
+Bug: 819294
+Change-Id: I02ec3a2914a8fbe3aa0041017a0228f4b0ca1ec9
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1879289
+Reviewed-by: Alexey Baskakov <loyso@chromium.org>
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Cr-Commit-Position: refs/heads/master@{#709411}
+---
+
+diff --git a/chrome/browser/apps/launch_service/launch_manager.h b/chrome/browser/apps/launch_service/launch_manager.h
+index 00aeb9d..76570ea 100644
+--- a/chrome/browser/apps/launch_service/launch_manager.h
++++ b/chrome/browser/apps/launch_service/launch_manager.h
+@@ -6,6 +6,7 @@
+ #define CHROME_BROWSER_APPS_LAUNCH_SERVICE_LAUNCH_MANAGER_H_
+ 
+ #include <string>
++#include <vector>
+ 
+ #include "base/macros.h"
+ 
+From e7407ce7fa262e9fd1a19dd0957e5a950520ee3a Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jose.dapena@lge.com>
+Date: Fri, 25 Oct 2019 08:25:45 +0000
+Subject: [PATCH] IWYU: include cstdint in register_context.h as it uses uintptr_t
+
+GCC build fix as build fails with this:
+../../base/profiler/register_context.h:31:1: error: ‘uintptr_t’ does not name a type; did you mean ‘intptr_t’?
+ uintptr_t& AsUintPtr(T* value) {
+ ^~~~~~~~~
+ intptr_t
+../../base/profiler/register_context.h:110:3: error: ‘uintptr_t’ does not name a type; did you mean ‘intptr_t’?
+   uintptr_t stack_pointer;
+   ^~~~~~~~~
+   intptr_t
+../../base/profiler/register_context.h:111:3: error: ‘uintptr_t’ does not name a type; did you mean ‘intptr_t’?
+   uintptr_t frame_pointer;
+   ^~~~~~~~~
+   intptr_t
+../../base/profiler/register_context.h:112:3: error: ‘uintptr_t’ does not name a type; did you mean ‘intptr_t’?
+   uintptr_t instruction_pointer;
+   ^~~~~~~~~
+   intptr_t
+../../base/profiler/register_context.h:115:8: error: ‘uintptr_t’ does not name a type; did you mean ‘intptr_t’?
+ inline uintptr_t& RegisterContextStackPointer(RegisterContext* context) {
+        ^~~~~~~~~
+        intptr_t
+../../base/profiler/register_context.h:119:8: error: ‘uintptr_t’ does not name a type; did you mean ‘intptr_t’?
+ inline uintptr_t& RegisterContextFramePointer(RegisterContext* context) {
+        ^~~~~~~~~
+        intptr_t
+../../base/profiler/register_context.h:123:8: error: ‘uintptr_t’ does not name a type; did you mean ‘intptr_t’?
+ inline uintptr_t& RegisterContextInstructionPointer(RegisterContext* context) {
+        ^~~~~~~~~
+        intptr_t
+
+
+Bug: 819294
+Change-Id: I49567b00a6f021686c52053a22fb9c502c84f1bc
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/1879908
+Reviewed-by: Mike Wittman <wittman@chromium.org>
+Commit-Queue: José Dapena Paz <jose.dapena@lge.com>
+Cr-Commit-Position: refs/heads/master@{#709398}
+---
+
+diff --git a/base/profiler/register_context.h b/base/profiler/register_context.h
+index 46c4250..7dd86ff 100644
+--- a/base/profiler/register_context.h
++++ b/base/profiler/register_context.h
+@@ -9,6 +9,7 @@
+ #ifndef BASE_PROFILER_REGISTER_CONTEXT_H_
+ #define BASE_PROFILER_REGISTER_CONTEXT_H_
+ 
++#include <cstdint>
+ #include <type_traits>
+ 
+ #include "build/build_config.h"

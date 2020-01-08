@@ -20,7 +20,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RESTRICT="test"
-RDEPEND="dev-libs/protobuf
+RDEPEND="dev-cpp/gtest
+	dev-libs/protobuf:=
 	dev-libs/crc32c
 	net-misc/curl
 	net-libs/grpc"

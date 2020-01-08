@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,12 +6,12 @@ EAPI=6
 S=${WORKDIR}/dlx
 
 DESCRIPTION="DLX Simulator"
-HOMEPAGE="http://www.davidviner.com/dlx.php"
-SRC_URI="http://www.davidviner.com/dlx/dlx.tar.gz"
+HOMEPAGE="https://www.davidviner.com/dlx"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc"
+KEYWORDS="ppc x86"
 IUSE=""
 
 src_install() {

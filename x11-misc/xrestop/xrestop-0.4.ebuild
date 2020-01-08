@@ -10,7 +10,7 @@ SRC_URI="http://projects.o-hand.com/sources/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ~ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 hppa ppc ~ppc64 sparc x86"
 
 RDEPEND="
 	x11-libs/libX11

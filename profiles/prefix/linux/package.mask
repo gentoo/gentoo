@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Michael Haubenwallner <haubi@gentoo.org> (08 Jan 2019)
+# Michael Haubenwallner <haubi@gentoo.org> (2019-01-08)
 # Prefix Guest does use host libc and host kernel's headers,
 # hence packages should depend on virtual/os-headers instead.
 sys-kernel/linux-headers

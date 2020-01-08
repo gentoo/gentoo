@@ -3,12 +3,12 @@
 
 EAPI="5"
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic usr-ldscript
 
 DESCRIPTION="Reiserfs Utilities"
 HOMEPAGE="https://www.kernel.org/pub/linux/utils/fs/reiserfs/"
-SRC_URI="mirror://kernel/linux/utils/fs/reiserfs/${P}.tar.xz
-	mirror://kernel/linux/kernel/people/jeffm/${PN}/v${PV}/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/utils/fs/reiserfs/${P}.tar.xz
+	https://www.kernel.org/pub/linux/kernel/people/jeffm/${PN}/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -208,7 +208,7 @@ use_m() {
 
 	# if the kernel version is greater than 2.6.6 then we should use
 	# M= instead of SUBDIRS=
-	[ ${KV_MAJOR} -eq 3 ] && return 0
+	[ ${KV_MAJOR} -ge 3 ] && return 0
 	[ ${KV_MAJOR} -eq 2 -a ${KV_MINOR} -gt 5 -a ${KV_PATCH} -gt 5 ] && \
 		return 0 || return 1
 }

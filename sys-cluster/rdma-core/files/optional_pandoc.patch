@@ -1,0 +1,54 @@
+The master "CMakeLists.txt" listed "pandoc" as an optional dependency,
+but subsequent "make install" fails if "pandoc" is missing.
+This patch makes "pandoc" really optional.
+diff -ru rdma-core-25.0.orig/CMakeLists.txt rdma-core-25.0/CMakeLists.txt
+--- a/CMakeLists.txt	2019-07-26 02:17:21.000000000 +0800
++++ b/CMakeLists.txt	2019-07-31 00:08:41.485085990 +0800
+@@ -602,11 +602,17 @@
+ add_subdirectory(kernel-headers)
+ # Libraries
+ add_subdirectory(libibumad)
++if (PANDOC_FOUND)
+ add_subdirectory(libibumad/man)
++endif()
+ add_subdirectory(libibverbs)
++if (PANDOC_FOUND)
+ add_subdirectory(libibverbs/man)
++endif()
+ add_subdirectory(librdmacm)
++if (PANDOC_FOUND)
+ add_subdirectory(librdmacm/man)
++endif()
+ 
+ # Providers
+ if (HAVE_COHERENT_DMA)
+@@ -614,13 +620,19 @@
+ add_subdirectory(providers/cxgb3) # NO SPARSE
+ add_subdirectory(providers/cxgb4) # NO SPARSE
+ add_subdirectory(providers/efa)
++if (PANDOC_FOUND)
+ add_subdirectory(providers/efa/man)
++endif()
+ add_subdirectory(providers/hns)
+ add_subdirectory(providers/i40iw) # NO SPARSE
+ add_subdirectory(providers/mlx4)
++if (PANDOC_FOUND)
+ add_subdirectory(providers/mlx4/man)
++endif()
+ add_subdirectory(providers/mlx5)
++if (PANDOC_FOUND)
+ add_subdirectory(providers/mlx5/man)
++endif()
+ add_subdirectory(providers/mthca)
+ add_subdirectory(providers/nes) # NO SPARSE
+ add_subdirectory(providers/ocrdma)
+@@ -639,7 +651,9 @@
+ add_subdirectory(libibnetdisc/man)
+ add_subdirectory(infiniband-diags)
+ add_subdirectory(infiniband-diags/scripts)
++if (PANDOC_FOUND)
+ add_subdirectory(infiniband-diags/man)
++endif()
+ 
+ if (CYTHON_EXECUTABLE)
+   add_subdirectory(pyverbs)

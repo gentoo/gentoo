@@ -1,23 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Compare two latex files and mark up significant differences"
-HOMEPAGE="http://www.ctan.org/tex-archive/support/latexdiff/ https://github.com/ftilmann/latexdiff/"
+HOMEPAGE="https://www.ctan.org/tex-archive/support/latexdiff/ https://github.com/ftilmann/latexdiff/"
 
 if [[ ${PV} == *9999* ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/ftilmann/latexdiff.git"
 else
 	SRC_URI="https://github.com/ftilmann/latexdiff/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
 LICENSE="GPL-3"
 SLOT="0"
 
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/perl-5.8
@@ -27,6 +28,8 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-perl/Pod-LaTeX
+"
+BDEPEND="
 	test? ( app-shells/tcsh )
 "
 

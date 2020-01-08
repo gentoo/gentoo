@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r1 multiprocessing
 
 MYP=${PN}-gpl-${PV}
 
@@ -24,6 +24,7 @@ DEPEND="${PYTHON_DEPS}
 	dev-ada/gnatcoll-bindings[iconv,shared]
 	dev-python/mako
 	dev-python/pyyaml
+	<dev-python/pyyaml-5
 	dev-python/enum34
 	dev-python/funcy
 	dev-python/docutils
@@ -35,7 +36,8 @@ S="${WORKDIR}"/${MYP}-src
 PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_test() {
-	testsuite/testsuite.py | grep FAILED && die "Test failed"
+	testsuite/testsuite.py -j $(makeopts_jobs) --show-error-output | tee testsuite.log
+	grep -q FAILED testsuite.log && die "Test failed"
 }
 
 src_install() {

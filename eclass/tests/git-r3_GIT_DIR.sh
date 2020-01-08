@@ -1,6 +1,8 @@
 #!/bin/bash
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+EAPI=7
 
 source tests-common.sh
 
@@ -12,6 +14,8 @@ cd "${testdir}" || die "unable to cd to testdir"
 
 EGIT3_STORE_DIR=store
 mkdir "${EGIT3_STORE_DIR}" || die "unable to mkdir store"
+
+git() { :; }
 
 # Test cleaning up canonical repo URI
 test_repouri() {

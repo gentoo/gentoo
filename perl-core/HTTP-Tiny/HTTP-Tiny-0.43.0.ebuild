@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,6 +11,7 @@ LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
 KEYWORDS=""
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=virtual/perl-ExtUtils-MakeMaker-6.30

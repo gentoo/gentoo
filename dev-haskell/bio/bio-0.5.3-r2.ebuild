@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,12 +10,13 @@ inherit eutils haskell-cabal
 
 DESCRIPTION="A bioinformatics library"
 HOMEPAGE="http://biohaskell.org/Libraries/Bio"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/binary-0.4:=[profile?]
 		dev-haskell/mtl:=[profile?]

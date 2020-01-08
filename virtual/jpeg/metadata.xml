@@ -5,10 +5,4 @@
 		<email>graphics@gentoo.org</email>
 		<name>Gentoo Graphics Project</name>
 	</maintainer>
-	<slots>
-		<slot name="0">For building against. This is the only slot
-			that provides headers and command line tools.</slot>
-		<slot name="62">For binary compatibility, provides
-			libjpeg.so.62 only.</slot>
-	</slots>
 </pkgmetadata>

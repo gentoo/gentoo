@@ -12,8 +12,11 @@
   <longdescription lang="en">
   Validating URI References per RFC 3986
   </longdescription>
+  <use>
+    <flag name="idna">enable support for the IDNA specification (RFC 5891)</flag>
+  </use>
   <upstream>
     <remote-id type="pypi">rfc3986</remote-id>
-    <remote-id type="github">sigmavirus24/rfc3986</remote-id>
+    <remote-id type="github">python-hyper/rfc3986</remote-id>
   </upstream>
 </pkgmetadata>

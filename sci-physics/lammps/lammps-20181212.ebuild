@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit cmake-utils fortran-2 python-r1
 
@@ -16,7 +16,7 @@ MY_PV="patch_$((10#${PV:6:2}))$(convert_month ${PV:4:2})${PV:0:4}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="Large-scale Atomic/Molecular Massively Parallel Simulator"
-HOMEPAGE="http://lammps.sandia.gov/"
+HOMEPAGE="https://lammps.sandia.gov/"
 TCOMMIT=7869c75cac38cb8a3d2ef7747ea12ec5812f5151
 SRC_URI="https://github.com/lammps/lammps/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz
 	test? ( https://github.com/lammps/lammps-testing/archive/${TCOMMIT}.tar.gz -> ${PN}-testing-${TCOMMIT}.tar.gz )"
@@ -25,6 +25,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cuda examples gzip lammps-memalign mpi netcdf python test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	app-arch/gzip

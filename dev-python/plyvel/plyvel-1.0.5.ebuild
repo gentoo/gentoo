@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 # Tests fail with PyPy: https://github.com/wbolster/plyvel/issues/38
-PYTHON_COMPAT=( pypy3 python{2_7,3_{4,5,6,7}} )
+PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
 inherit distutils-r1
 
@@ -16,6 +16,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/leveldb-1.20:="
 DEPEND="
@@ -26,12 +27,6 @@ DEPEND="
 	)
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
-
-python_compile() {
-	# https://wiki.gentoo.org/wiki/Project:Python/Strict_aliasing
-	python_is_python3 || local -x CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
-}
 
 python_compile_all() {
 	if use doc; then

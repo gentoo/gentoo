@@ -9,12 +9,14 @@ A set of user space utilities that should be used together with the
 zSeries (s390) Linux kernel and device drivers
 	</longdescription>
 	<use>
+		<flag name="cryptsetup">build the zkey-cryptsetup utility (requires USE=openssl)</flag>
 		<flag name="fuse">build cmsfs-fuse to read files stored on a z/VM CMS disk</flag>
 		<flag name="ncurses">build hyptop monitoring program</flag>
+		<flag name="openssl">build the zkey utility</flag>
 		<flag name="pfm">build the cpacfstats tool</flag>
-		<flag name="zlib">build the zgetdump utility</flag>
+		<flag name="zlib">build the zgetdump and dump2tar utilities</flag>
 	</use>
 	<upstream>
-		<remote-id type="sourceforge">e2fsprogs</remote-id>
+		<remote-id type="github">ibm-s390-tools/s390-tools</remote-id>
 	</upstream>
 </pkgmetadata>

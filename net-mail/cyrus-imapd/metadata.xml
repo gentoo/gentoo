@@ -9,8 +9,6 @@
     <flag name="server">Enable building server binaries</flag>
     <flag name="backup">Enable backup service support</flag>
     <flag name="calalarm">Enable CalDAV alarm support</flag>
-    <flag name="jmap">Enable JMAP support</flag>
-    <flag name="sphinx">Enable Sphinx search engine support</flag>
     <flag name="xapian">Enable Xapian search engine support</flag>
     <flag name="lmdb">Enable support for using <pkg>dev-db/lmdb</pkg></flag>
   </use>

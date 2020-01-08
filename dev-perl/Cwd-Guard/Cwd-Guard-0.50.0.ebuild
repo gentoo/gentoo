@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="Temporary changing working directory (chdir)"
 SLOT="0"
 KEYWORDS="amd64 hppa ~ppc x86"
 IUSE="test minimal"
+RESTRICT="!test? ( test )"
 # Cwd -> perl-File-Spec
 RDEPEND="
 	virtual/perl-File-Spec

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit gnome2 distutils-r1
@@ -30,6 +30,7 @@ RDEPEND="!app-emulation/virtinst
 	app-cdr/cdrtools
 	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	dev-libs/libxml2[python,${PYTHON_USEDEP}]
+	dev-python/argcomplete[${PYTHON_USEDEP}]
 	dev-python/ipaddr[${PYTHON_USEDEP}]
 	dev-python/libvirt-python[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]

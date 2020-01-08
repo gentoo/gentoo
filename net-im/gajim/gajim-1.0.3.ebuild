@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite,xml"
 DISTUTILS_SINGLE_IMPL=1
 
@@ -15,13 +15,13 @@ SRC_URI="https://www.gajim.org/downloads/$(get_version_component_range 1-2)/${P}
 
 LICENSE="GPL-3"
 SLOT="0"
-#KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86 ~x86-fbsd"
-KEYWORDS="~amd64 ~x86"
+#KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+crypt geolocation jingle keyring networkmanager remote rst +spell upnp
 	+webp"
 
 COMMON_DEPEND="
-	dev-libs/gobject-introspection[cairo,${PYTHON_USEDEP}]
+	dev-libs/gobject-introspection[cairo]
 	>=x11-libs/gtk+-3.22:3[introspection]"
 DEPEND="${COMMON_DEPEND}
 	app-arch/unzip
@@ -66,12 +66,6 @@ RDEPEND="${COMMON_DEPEND}
 	webp? ( dev-python/pillow[${PYTHON_USEDEP}] )"
 
 RESTRICT="test"
-
-src_prepare() {
-	default
-
-	use spell || eapply "${FILESDIR}/${PV}-0001-disable-gspell.patch"
-}
 
 pkg_postinst() {
 	gnome2_icon_cache_update

@@ -9,7 +9,7 @@ DESCRIPTION="User space utilities for the zSeries (s390) Linux kernel and device
 HOMEPAGE="https://www.ibm.com/developerworks/linux/linux390/s390-tools.html"
 SRC_URI="https://github.com/ibm-s390-tools/s390-tools/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPL-2 MIT"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="-* s390"
 IUSE="fuse ncurses pfm snmp zlib"
@@ -22,6 +22,11 @@ RDEPEND="fuse? ( sys-fs/fuse:0= )
 DEPEND="${RDEPEND}
 	dev-util/indent
 	app-admin/genromfs"
+
+src_prepare() {
+	default
+	sed -i -e 's/-lncurses/-lncurses -ltinfo/' "${S}"/hyptop/Makefile || die
+}
 
 src_configure() {
 	export MAKEOPTS+=" V=1"

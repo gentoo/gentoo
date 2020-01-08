@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -27,7 +27,7 @@ RDEPEND="app-eselect/eselect-opencl
 	)"
 DEPEND=""
 
-RESTRICT="mirror"
+RESTRICT="bindist mirror"
 QA_EXECSTACK="${INTEL_CL/\//}libcpu_device.so
 	${INTEL_CL/\//}libOclCpuBackEnd.so
 	${INTEL_CL/\//}libtask_executor.so"

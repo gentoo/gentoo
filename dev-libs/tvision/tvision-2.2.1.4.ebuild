@@ -1,12 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+MY_PV=$(ver_rs 3 -)
 
 DESCRIPTION="Text User Interface that implements the well known CUA widgets"
 HOMEPAGE="http://tvision.sourceforge.net/"
-MY_PVR=${PVR:0:5}-${PVR:6}
-SRC_URI="mirror://sourceforge/tvision/rhtvision_${MY_PVR}.tar.gz"
+SRC_URI="mirror://sourceforge/tvision/rhtvision_${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -33,7 +34,7 @@ RDEPEND="
 		x11-libs/libXext
 		x11-libs/libXmu
 		x11-libs/libXt
-		x11-libs/libxcb
+		x11-libs/libxcb:=
 	)"
 DEPEND="${RDEPEND}"
 
@@ -43,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-build-system.patch"
 	"${FILESDIR}/${P}-gcc6.patch"
 	"${FILESDIR}/${P}-flags.patch"
+	"${FILESDIR}/${P}-fix-overloaded-abs.patch"
 )
 
 src_configure() {
@@ -63,8 +65,5 @@ src_install() {
 	dosym rhtvision /usr/include/tvision
 
 	# remove CVS directory which gets copied over
-	rm -rf "${ED%/}/usr/share/doc/${P}/html/CVS" || die
-
-	# TODO: remove locales which are not needed, depending on current user
-	# locale settings. How?
+	rm -r "${ED}/usr/share/doc/${P}/html/CVS" || die
 }

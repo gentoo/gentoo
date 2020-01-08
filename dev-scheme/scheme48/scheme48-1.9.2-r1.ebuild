@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,10 +10,10 @@ SRC_URI="http://www.s48.org/${PV}/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="doc emacs"
 
-DEPEND="emacs? ( virtual/emacs )"
+DEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 RDEPEND="${DEPEND}"
 SITEFILE=50scheme48-gentoo.el
 

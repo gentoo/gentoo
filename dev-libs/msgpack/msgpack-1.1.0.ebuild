@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}-c.git"
 else
 	SRC_URI="https://github.com/${PN}/${PN}-c/releases/download/cpp-${PV}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="MessagePack is a binary-based efficient data interchange format"
@@ -19,6 +19,7 @@ HOMEPAGE="https://msgpack.org/ https://github.com/msgpack/msgpack-c/"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+cxx static-libs test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	test? (

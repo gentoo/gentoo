@@ -1,29 +1,26 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-BASHCOMP_P=bashcomp-2.0.2
-PYTHON_COMPAT=( python3_{5,6} )
-inherit autotools eapi7-ver git-r3 python-any-r1
+PYTHON_COMPAT=( python3_{6,7} )
+inherit autotools git-r3 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
 EGIT_REPO_URI="https://github.com/scop/bash-completion"
-SRC_URI="https://bitbucket.org/mgorny/bashcomp2/downloads/${BASHCOMP_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="test"
+IUSE="+eselect test"
 RESTRICT="!test? ( test )"
 
 # completion collision with net-fs/mc
 RDEPEND=">=app-shells/bash-4.3_p30-r1:0
 	sys-apps/miscfiles
-	!app-eselect/eselect-bashcomp
 	!!net-fs/mc"
-DEPEND="app-arch/xz-utils
+DEPEND="
 	test? (
 		${RDEPEND}
 		app-misc/dtach
@@ -36,41 +33,69 @@ DEPEND="app-arch/xz-utils
 	)"
 PDEPEND=">=app-shells/gentoo-bashcomp-20140911"
 
-# Remove unwanted completions.
-STRIP_COMPLETIONS=(
-	# Slackware package stuff, quite generic names cause collisions
-	# (e.g. with sys-apps/pacman)
-	explodepkg installpkg makepkg pkgtool removepkg upgradepkg
+strip_completions() {
+	# Remove unwanted completions.
+	local strip_completions=(
+		# Slackware package stuff, quite generic names cause collisions
+		# (e.g. with sys-apps/pacman)
+		explodepkg installpkg makepkg pkgtool removepkg upgradepkg
 
-	# Debian/Red Hat network stuff
-	ifdown ifup ifstatus
+		# Debian/Red Hat network stuff
+		ifdown ifup ifquery ifstatus
 
-	# Installed in app-editors/vim-core
-	xxd
+		# Installed in app-editors/vim-core
+		xxd
 
-	# Now-dead symlinks to deprecated completions
-	hd ncal
+		# Now-dead symlinks to deprecated completions
+		hd ncal
+	)
+	if [[ ${ARCH} != *-fbsd && ${ARCH} != *-freebsd ]]; then
+		strip_completions+=(
+			freebsd-update kldload kldunload portinstall portsnap
+			pkg_deinstall pkg_delete pkg_info
+		)
+	fi
 
-	# Installed by sys-apps/util-linux-2.28 (and now deprecated)
-	_mount _umount _mount.linux _umount.linux
+	local file
+	for file in "${strip_completions[@]}"; do
+		rm "${ED}"/usr/share/bash-completion/completions/${file} ||
+			die "stripping ${file} failed"
+	done
 
-	# Deprecated in favor of sys-apps/util-linux-2.31
-	_rfkill
-)
+	# remove deprecated completions (moved to other packages)
+	rm "${ED}"/usr/share/bash-completion/completions/_* || die
+}
 
 python_check_deps() {
 	has_version "dev-python/pexpect[${PYTHON_USEDEP}]" &&
 	has_version "dev-python/pytest[${PYTHON_USEDEP}]"
 }
 
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
 src_unpack() {
-	git-r3_src_unpack
-	default
+	use eselect && git-r3_fetch https://github.com/mgorny/bashcomp2
+	git-r3_fetch
+
+	use eselect && git-r3_checkout https://github.com/mgorny/bashcomp2 \
+		"${WORKDIR}"/bashcomp2
+	git-r3_checkout
 }
 
 src_prepare() {
-	eapply "${WORKDIR}/${BASHCOMP_P}/${PN}"-2.1_p*.patch
 	eapply_user
+	if use eselect; then
+		# generate and apply patch
+		emake -C "${WORKDIR}"/bashcomp2 bash-completion-blacklist-support.patch
+		eapply "${WORKDIR}"/bashcomp2/bash-completion-blacklist-support.patch
+	fi
+
+	# our setup is close enough to container to cause the same tests
+	# to fail
+	sed -i -e '/def in_container/a \
+    return True' test/t/conftest.py || die
 
 	eautoreconf
 }
@@ -90,7 +115,7 @@ src_test() {
 	# than upstream anticipated (they run tests on pristine docker
 	# installs of binary distros)
 	nonfatal dtach -N "${T}/dtach.sock" \
-		bash -c 'emake check RUNTESTFLAGS="OPT_TIMEOUT=300 OPT_BUFFER_SIZE=1000000" \
+		bash -c 'emake check RUNTESTFLAGS="OPT_TIMEOUT=300 OPT_BUFFER_SIZE=1000000" PYTESTFLAGS="-vv" \
 			&> "${T}"/dtach-test.log; echo ${?} > "${T}"/dtach-test.out'
 
 	kill "${tail_pid}"
@@ -104,20 +129,14 @@ src_install() {
 
 	emake DESTDIR="${D}" profiledir="${EPREFIX}"/etc/bash/bashrc.d install
 
-	local file
-	for file in "${STRIP_COMPLETIONS[@]}"; do
-		rm "${ED}"/usr/share/bash-completion/completions/${file} ||
-			die "stripping ${file} failed"
-	done
-	# remove deprecated completions (moved to other packages)
-	rm "${ED}"/usr/share/bash-completion/completions/_* || die
+	strip_completions
 
 	dodoc AUTHORS CHANGES CONTRIBUTING.md README.md
 
 	# install the eselect module
-	insinto /usr/share/eselect/modules
-	doins "${WORKDIR}/${BASHCOMP_P}/bashcomp.eselect"
-	doman "${WORKDIR}/${BASHCOMP_P}/bashcomp.eselect.5"
+	use eselect &&
+		emake -C "${WORKDIR}"/bashcomp2 DESTDIR="${D}" \
+			PREFIX="${EPREFIX}/usr" install
 }
 
 pkg_postinst() {

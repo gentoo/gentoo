@@ -1,7 +1,7 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-#Note: this is Gentoo Prefix specific! (13 Jul 2008, darkside)
+#Note: this is Gentoo Prefix specific! (2008-07-13, darkside)
 
 # The base profile sets ACCEPT_KEYWORDS=amd64 and we don't have that in prefix.
 ACCEPT_KEYWORDS="-amd64 ~amd64-linux"

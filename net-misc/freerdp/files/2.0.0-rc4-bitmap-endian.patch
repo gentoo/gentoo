@@ -1,0 +1,30 @@
+From 18b193a1cf083b92279c3952f4f907a07cd92834 Mon Sep 17 00:00:00 2001
+From: Armin Novak <armin.novak@thincast.com>
+Date: Wed, 13 Feb 2019 09:30:34 +0100
+Subject: [PATCH] Fixed endianess issue with GETPIXEL16 and GETPIXEL32
+
+---
+ libfreerdp/codec/bitmap.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/libfreerdp/codec/bitmap.c b/libfreerdp/codec/bitmap.c
+index 7524bb99ce..479c965e52 100644
+--- a/libfreerdp/codec/bitmap.c
++++ b/libfreerdp/codec/bitmap.c
+@@ -26,12 +26,14 @@
+ 
+ static INLINE UINT16 GETPIXEL16(const void* d, UINT32 x, UINT32 y, UINT32 w)
+ {
+-	return (*(((const unsigned short*)d) + ((y) * (w) + (x))));
++	const BYTE* src = (const BYTE*)d + ((y * w + x) * sizeof(UINT16));
++	return (UINT16)(((UINT16)src[1] << 8) | (UINT16)src[0]);
+ }
+ 
+ static INLINE UINT32 GETPIXEL32(const void* d, UINT32 x, UINT32 y, UINT32 w)
+ {
+-	return (*(((const unsigned int*)d) + ((y) * (w) + (x))));
++	const BYTE* src = (const BYTE*)d + ((y * w + x) * sizeof(UINT32));
++	return (((UINT32)src[3]) << 24) | (((UINT32)src[2]) << 16) | (((UINT32)src[1]) << 8) | (src[0] & 0xFF);
+ }
+ 
+ /*****************************************************************************/

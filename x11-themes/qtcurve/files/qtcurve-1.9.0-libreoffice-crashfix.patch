@@ -1,0 +1,58 @@
+From 293a822b2fc0572f826a819d9ad8df858c4ed1ee Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ren=C3=A9=20J=2EV=2E=20Bertin?= <rjvbertin@gmail.com>
+Date: Sun, 3 Feb 2019 11:14:47 +0100
+Subject: Fix the LibreOffice fix
+
+My previous commit was a bit overzealous and didn't take into account
+the fact that there are legitimate reasons for the widget argument to
+Style::drawPrimitive() to be NULL.
+---
+ qt5/style/qtcurve_api.cpp | 16 +++-------------
+ 2 files changed, 15 insertions(+), 19 deletions(-)
+
+diff --git a/qt5/style/qtcurve_api.cpp b/qt5/style/qtcurve_api.cpp
+index 155d159..f26c438 100644
+--- a/qt5/style/qtcurve_api.cpp
++++ b/qt5/style/qtcurve_api.cpp
+@@ -2036,6 +2036,7 @@ QPalette Style::standardPalette() const
+ 
+ static bool initFontTickData(Options &opts, QFont font, const QWidget *widget=0)
+ {
++    Q_UNUSED(widget);
+     if (opts.onlyTicksInMenu && opts.fontTickWidth <= 0) {
+         opts.tickFont = font;
+ #ifndef Q_OS_MACOS
+@@ -2047,8 +2048,6 @@ static bool initFontTickData(Options &opts, QFont font, const QWidget *widget=0)
+         // adjust the size so the tickmark looks just about right
+         opts.tickFont.setPointSizeF(opts.tickFont.pointSizeF() * 1.3);
+         opts.fontTickWidth = QFontMetrics(opts.tickFont).width(opts.menuTick);
+-        // qDebug() << widget << "font->tickFont:" << font.toString() << opts.tickFont.toString() << "tickMark:" << opts.menuTick
+-        //    << "width=" << opts.fontTickWidth << "/" << QFontMetrics(opts.tickFont).boundingRect(opts.menuTick).width();
+         return true;
+     }
+     return false;
+@@ -2123,9 +2117,7 @@ Style::drawPrimitive(PrimitiveElement element, const QStyleOption *option,
+         break;
+     case PE_FrameStatusBar:
+     case PE_FrameMenu:
+-        if (widget) {
+-            initFontTickData(opts, widget->font(), widget);
+-        }
++        initFontTickData(opts, widget ? widget->font() : QApplication::font("QMenu"), widget);
+         drawFunc = &Style::drawPrimitiveFrameStatusBarOrMenu;
+         break;
+     case PE_FrameDockWidget:
+@@ -2182,9 +2174,7 @@ Style::drawPrimitive(PrimitiveElement element, const QStyleOption *option,
+         drawFunc = &Style::drawPrimitivePanelTipLabel;
+         break;
+     case PE_PanelMenu:
+-        if (widget) {
+-            initFontTickData(opts, widget->font(), widget);
+-        }
++        initFontTickData(opts, widget ? widget->font() : QApplication::font("QMenu"), widget);
+         drawFunc = &Style::drawPrimitivePanelMenu;
+         break;
+     default:
+-- 
+cgit v1.1
+

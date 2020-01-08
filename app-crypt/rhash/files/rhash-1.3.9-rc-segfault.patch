@@ -1,0 +1,25 @@
+From 198e62063ed817357204284a15f95ffc7230044c Mon Sep 17 00:00:00 2001
+From: Aleksey <rhash.admin@gmail.com>
+Date: Thu, 2 Jan 2020 21:16:51 +0300
+Subject: [PATCH] fix segfault on rhash -rc
+
+---
+ file.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/file.c b/file.c
+index 6f593f9..0d18f45 100644
+--- a/file.c
++++ b/file.c
+@@ -361,8 +361,9 @@ int file_init_by_print_path(file_t* file, file_t* prepend_dir, const char* print
+ 		const char* path = make_path(prepend_dir->real_path, print_path, 0);
+ 		file_init(file, path, init_flags & ~FileInitReusePath);
+ 	}
+-	if (!prepend_dir || IS_DOT_STR(prepend_dir->print_path) ||
+-			(!prepend_dir->print_path && opt.path_separator != ALIEN_PATH_SEPARATOR)) {
++	if (!prepend_dir || (prepend_dir->print_path ?
++			IS_DOT_STR(prepend_dir->print_path) :
++			opt.path_separator != ALIEN_PATH_SEPARATOR)) {
+ 		if ((init_flags & FileInitReusePath) != 0) {
+ 			file->print_path = print_path;
+ 			file->mode |= FileDontFreePrintPath;

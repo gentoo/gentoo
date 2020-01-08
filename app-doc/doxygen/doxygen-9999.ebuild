@@ -1,8 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
+
+CMAKE_MAKEFILE_GENERATOR="emake"
 
 inherit cmake-utils eutils python-any-r1
 if [[ ${PV} = *9999* ]]; then
@@ -11,13 +13,12 @@ if [[ ${PV} = *9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/doxygen/doxygen/archive/Release_${PV//\./_}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
-	S="${WORKDIR}/${PN}-Release_${PV//\./_}"
+	SRC_URI="http://doxygen.nl/files/${P}.src.tar.gz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="Documentation system for most programming languages"
-HOMEPAGE="https://www.stack.nl/~dimitri/doxygen/"
+HOMEPAGE="http://www.doxygen.org"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -32,7 +33,7 @@ RDEPEND="app-text/ghostscript-gpl
 		media-gfx/graphviz
 		media-libs/freetype
 	)
-	doxysearch? ( dev-libs/xapian )
+	doxysearch? ( dev-libs/xapian:= )
 	latex? (
 		dev-texlive/texlive-bibtexextra
 		dev-texlive/texlive-fontsextra
@@ -102,6 +103,7 @@ src_configure() {
 		-Dbuild_search=$(usex doxysearch)
 		-Dbuild_wizard=$(usex qt5)
 		-Duse_sqlite3=$(usex sqlite)
+		-DGIT_EXECUTABLE="false"
 		)
 	use doc && mycmakeargs+=(
 		-DDOC_INSTALL_DIR="share/doc/${P}"

@@ -1,11 +1,11 @@
 --- a/ping.c
 +++ b/ping.c
-@@ -813,7 +813,7 @@
- 	int    rv;
+@@ -913,7 +913,7 @@
+ 	struct hostent result;
  
  	buf = malloc(len*sizeof(char));
 -	memset(buf, 0, sizeof(buf));
 +	memset(buf, 0, len*sizeof(char));
  
  	while (1) {
- 		rv = gethostbyname_r(hostname, &result_buf, buf, len,
+ 		hostinfo = gethostbyname_r(hostname, &result, buf, len, &h_errno);

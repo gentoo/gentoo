@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
-inherit eutils toolchain-funcs versionator flag-o-matic multilib-minimal
+inherit eutils toolchain-funcs versionator flag-o-matic multilib-minimal usr-ldscript
 
 MY_PV=$(get_version_component_range 1-2)
 DEB_PV=$(get_version_component_range 3)
@@ -15,7 +15,7 @@ SRC_URI="ftp://ftp.porcupine.org/pub/security/${MY_P}.tar.gz
 
 LICENSE="tcp_wrappers_license"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="ipv6 netgroups static-libs"
 
 RDEPEND=""
@@ -50,7 +50,7 @@ temake() {
 		RANLIB="$(tc-getRANLIB)" \
 		COPTS="${CFLAGS} ${CPPFLAGS} ${mycppflags}" \
 		LDFLAGS="${LDFLAGS}" \
-		"$@" || die
+		"$@"
 }
 
 multilib_src_configure() {

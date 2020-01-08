@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,7 +18,7 @@ SRC_URI="ftp://ftp.openldap.org/pub/OpenLDAP/openldap-release/${P}.tgz
 
 LICENSE="OPENLDAP GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~x86-solaris"
 
 IUSE_DAEMON="crypt samba slp tcpd experimental minimal"
 IUSE_BACKEND="+berkdb"
@@ -29,7 +29,6 @@ IUSE_CONTRIB="${IUSE_CONTRIB} -cxx"
 IUSE="${IUSE_DAEMON} ${IUSE_BACKEND} ${IUSE_OVERLAY} ${IUSE_OPTIONAL} ${IUSE_CONTRIB}"
 
 REQUIRED_USE="cxx? ( sasl )
-	?? ( gnutls libressl )
 	pbkdf2? ( ssl )"
 
 # always list newer first
@@ -45,10 +44,13 @@ CDEPEND="
 	ssl? (
 		!gnutls? (
 			!libressl? ( >=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}] )
+			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
 		)
-		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP}]
-		libressl? ( dev-libs/libressl[${MULTILIB_USEDEP}] )
-		>=dev-libs/libgcrypt-1.5.3:0[${MULTILIB_USEDEP}] ) )
+		gnutls? (
+			>=net-libs/gnutls-2.12.23-r6:=[${MULTILIB_USEDEP}]
+			>=dev-libs/libgcrypt-1.5.3:0=[${MULTILIB_USEDEP}]
+		)
+	)
 	sasl? ( dev-libs/cyrus-sasl:= )
 	!minimal? (
 		sys-devel/libtool
@@ -701,7 +703,7 @@ multilib_src_compile() {
 multilib_src_test() {
 	if multilib_is_native_abi; then
 		cd tests || die
-		emake tests || die "make tests failed"
+		emake tests
 	fi
 }
 

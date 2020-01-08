@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-	<email>alicef@gentoo.org</email>
-	<name>Ferrazzi Alice</name>
-</maintainer>
-<longdescription lang="en">
+	<maintainer type="person">
+		<email>alicef@gentoo.org</email>
+		<name>Ferrazzi Alice</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>mpagano@gentoo.org</email>
+		<name>Mike Pagano</name>
+	</maintainer>
+	<longdescription lang="en">
 	Excel at enterprise, mobile and web development with Java, Scala and Groovy, with all the latest modern technologies and frameworks available out of the box.
-</longdescription>
-<use>
-	<flag name="custom-jdk">Install and use IntelliJ's custom JRE.</flag>
-</use>
+	</longdescription>
+	<use>
+		<flag name="jbr8">Install and use the Java 8 based version of JetBrains Runtime.</flag>
+		<flag name="jbr11">Install and use the Java 11 based version of JetBrains Runtime.</flag>
+	</use>
 </pkgmetadata>

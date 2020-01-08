@@ -19,8 +19,9 @@ SRC_URI="https://archive.mozilla.org/pub/js/${TARBALL_P}.tar.gz
 
 LICENSE="NPL-1.1"
 SLOT="0/mozjs185"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh ~sparc x86 ~x64-macos"
 IUSE="debug minimal static-libs test"
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}/${MY_P}"
 BUILDDIR="${S}/js/src"

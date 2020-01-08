@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -9,7 +9,7 @@ DESCRIPTION="A device I/O monitoring tool"
 HOMEPAGE="https://github.com/donaldmcintosh/dio"
 SRC_URI="https://github.com/donaldmcintosh/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 

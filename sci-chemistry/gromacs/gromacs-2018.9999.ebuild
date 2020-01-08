@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
@@ -11,7 +11,7 @@ if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
 		https://gerrit.gromacs.org/gromacs.git
 		https://github.com/gromacs/gromacs.git
-		http://repo.or.cz/r/gromacs.git"
+		https://repo.or.cz/r/gromacs.git"
 	[[ $PV = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
 	inherit git-r3
 else
@@ -26,7 +26,7 @@ DESCRIPTION="The ultimate molecular dynamics simulation package"
 HOMEPAGE="http://www.gromacs.org/"
 
 # see COPYING for details
-# http://repo.or.cz/w/gromacs.git/blob/HEAD:/COPYING
+# https://repo.or.cz/w/gromacs.git/blob/HEAD:/COPYING
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
@@ -47,7 +47,7 @@ CDEPEND="
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
 	"
-DEPEND="${CDEPEND}
+BDEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
@@ -64,6 +64,8 @@ REQUIRED_USE="
 	mkl? ( !blas !fftw !lapack )"
 
 DOCS=( AUTHORS README )
+
+RESTRICT="!test? ( test )"
 
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
@@ -111,6 +113,27 @@ src_prepare() {
 	fi
 
 	DOC_CONTENTS="Gromacs can use sci-chemistry/vmd to read additional file formats"
+	# try to create policy for imagemagik
+	mkdir -p ${HOME}/.config/ImageMagick
+	cat >> ${HOME}/.config/ImageMagick/policy.xml <<- EOF
+	<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE policymap [
+	<!ELEMENT policymap (policy)+>
+	!ATTLIST policymap xmlns CDATA #FIXED ''>
+	<!ELEMENT policy EMPTY>
+	<!ATTLIST policy xmlns CDATA #FIXED '' domain NMTOKEN #REQUIRED
+			name NMTOKEN #IMPLIED pattern CDATA #IMPLIED rights NMTOKEN #IMPLIED
+			stealth NMTOKEN #IMPLIED value CDATA #IMPLIED>
+	]>
+	<policymap>
+		<policy domain="coder" rights="read | write" pattern="PS" />
+		<policy domain="coder" rights="read | write" pattern="PS2" />
+		<policy domain="coder" rights="read | write" pattern="PS3" />
+		<policy domain="coder" rights="read | write" pattern="EPS" />
+		<policy domain="coder" rights="read | write" pattern="PDF" />
+		<policy domain="coder" rights="read | write" pattern="XPS" />
+	</policymap>
+	EOF
 }
 
 src_configure() {
@@ -194,11 +217,13 @@ src_configure() {
 		mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
 			-DGMX_THREAD_MPI=OFF
-			-DGMX_MPI=ON ${cuda}
+			-DGMX_MPI=ON
 			-DGMX_OPENMM=OFF
 			-DGMX_BUILD_MDRUN_ONLY=ON
 			-DBUILD_SHARED_LIBS=OFF
 			-DGMX_BUILD_MANUAL=OFF
+			"${opencl[@]}"
+			"${cuda[@]}"
 			-DGMX_BINARY_SUFFIX="_mpi${suffix}"
 			-DGMX_LIBS_SUFFIX="_mpi${suffix}"
 			)
@@ -249,14 +274,14 @@ src_install() {
 		doins src/external/tng_io/include/tng/*h
 	fi
 	# drop unneeded stuff
-	rm "${ED}"usr/bin/GMXRC* || die
-	for x in "${ED}"usr/bin/gmx-completion-*.bash ; do
+	rm "${ED}"/usr/bin/GMXRC* || die
+	for x in "${ED}"/usr/bin/gmx-completion-*.bash ; do
 		local n=${x##*/gmx-completion-}
 		n="${n%.bash}"
-		cat "${ED}"usr/bin/gmx-completion.bash "$x" > "${T}/${n}" || die
+		cat "${ED}"/usr/bin/gmx-completion.bash "$x" > "${T}/${n}" || die
 		newbashcomp "${T}"/"${n}" "${n}"
 	done
-	rm "${ED}"usr/bin/gmx-completion*.bash || die
+	rm "${ED}"/usr/bin/gmx-completion*.bash || die
 	readme.gentoo_create_doc
 }
 

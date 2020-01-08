@@ -13,6 +13,7 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 IUSE="cpu_flags_x86_sse2 +dns debug gdal openmp subversion test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-libs/expat
@@ -30,6 +31,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
 "
+
+PATCHES=( "${FILESDIR}/${P}-boost-1.69.patch" )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp

@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>steils@gentoo.org</email>
+		<name>Stefan Strogin</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>media-video@gentoo.org</email>
+		<name>Gentoo Video project</name>
+	</maintainer>
 	<upstream>
-		<remote-id type="launchpad">libopenshot</remote-id>
 		<remote-id type="github">OpenShot/libopenshot-audio</remote-id>
 		<bugs-to>https://github.com/OpenShot/libopenshot-audio/issues</bugs-to>
 	</upstream>

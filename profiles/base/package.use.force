@@ -1,17 +1,58 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Lars Wendler <polynomial-c@gentoo.org> (20 Mar 2019)
-# USE="-gnutls" is broken (#675694)
->=net-fs/samba-4.10.0_rc1 gnutls
+# Lars Wendler <polynomial-c@gentoo.org> (2019-12-23)
+# This release does no longer build with x11-libs/gtk+:2
+# and upstream has no intention to fix this.
+# https://bugs.gentoo.org/703592
+~www-client/seamonkey-2.49.5 force-gtk3
 
-# Mart Raudsepp <leio@gentoo.org> (14 Dec 2018)
+# Michał Górny <mgorny@gentoo.org> (2019-12-06)
+# Non-initramfs builds do not work with the default .config.  Force
+# the mask, so that users don't brick their systems.  If somebody wants
+# to avoid initramfs, he needs to use a custom .config and unforce
+# the flag.
+sys-kernel/vanilla-kernel initramfs
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-06)
+# Upstream plans to drop libcrypt.so.1/crypt.h from glibc
+# distribution and rely on external providers lke libxcrypt.
+# Gentoo will follow the suit but today we are not ready.
+# Unmask at your risk. Bug #699422 tracks the effort.
+sys-libs/glibc crypt
+
+# Matt Turner <mattst88@gentoo.org> (2019-09-01)
+# <dev-scheme/guile-2 is package.mask'd, so force USE=guile2
+media-sound/lilypond guile2
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-08-17)
+# USE=-cxx us a sure way to break native install as modern gcc
+# requires C++ to bootstrap. But in rare cases it's useful
+# to have a compiler not capable of C++, bug #692126.
+sys-devel/gcc cxx
+
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-04-14)
+# Make sure glibc static libs are installed for now. Not installing
+# them is an experimental feature and needs testing.
+sys-libs/glibc static-libs
+
+# Michał Górny <mgorny@gentoo.org> (2019-03-22)
+# Force building separate tinfo to maintain stable library API.  This
+# is backwards-compatible with packages linked to -lncurses, so neither
+# installed packages nor pre-built software should be negatively
+# affected.  On the other hand, disabling USE=tinfo is capable of
+# breaking installed packages.
+sys-libs/ncurses tinfo
+sys-libs/ncurses-compat tinfo
+
+# Mart Raudsepp <leio@gentoo.org> (2018-12-14)
 # Security is not optional if available for the architecture/kernel.
 gnome-base/gnome-desktop seccomp
 app-misc/tracker-miners seccomp
 >gnome-base/nautilus-3.29 seccomp
+net-libs/webkit-gtk seccomp
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (11 Sep 2018)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2018-09-11)
 # All glibc versions that include RPC code are masked now.
 dev-libs/libspt libtirpc
 dev-perl/Lab-VXI11 libtirpc
@@ -23,74 +64,60 @@ net-misc/netkit-bootparamd libtirpc
 sci-astronomy/esomidas libtirpc
 sys-cluster/glusterfs libtirpc
 
-# Matt Turner <mattst88@gentoo.org> (13 Jun 2018)
-# Upstream is transitioning to Meson, but does not yet have any configuration
-# options. Until those configuration options are provided, force USE flags on
-# to avoid automagic deps.
->=x11-apps/igt-gpu-tools-1.23 alsa chamelium doc glib gsl sound valgrind video_cards_amdgpu video_cards_intel video_cards_nouveau X xrandr xv
-
-# NP-Hardass <NP-Hardass@gentoo.org> (10 Apr 2017)
-# Always force patch on appropriate variant to ensure
-# similar experience when using app-emulation/wine-any
+# NP-Hardass <NP-Hardass@gentoo.org> (2017-04-10)
+# Always force patch on appropriate variant
 app-emulation/wine-staging staging
-app-emulation/wine-d3d9 d3d9
 
-# David Seifert <soap@gentoo.org> (07 Mar 2017)
+# David Seifert <soap@gentoo.org> (2017-03-07)
 # Only ever use system ffmpeg, allow kodi bundled ffmpeg
 # only for debug pruposes.
 media-tv/kodi system-ffmpeg
 
-# Sam Jorna <wraeth@gentoo.org> (15 Dec 2016)
+# Sam Jorna <wraeth@gentoo.org> (2016-12-15)
 # Known to build unbootable EFI binaries on some systems when built with
-# UDK. Forcing use of gnu-efi until it's more stable.
+# UDK. Forcing use of gnu-efi until it's more stable
+# (probably after stabilization of refind-0.11.4).
 sys-boot/refind gnuefi
 
-# Mike Gilbert <floppym@gentoo.org> (13 Oct 2016)
+# Mike Gilbert <floppym@gentoo.org> (2016-10-13)
 # Python without threads breaks in many ways.
 dev-lang/python threads
 
-# Maciej Mrozowski <reavertm@gentoo.org> (1 Sept 2016)
+# Maciej Mrozowski <reavertm@gentoo.org> (2016-09-01)
 # Workaround until resolved upstream (bug #586840)
 >=dev-games/simgear-2016.2.1 dns
 
-# Lars Wendler <polynomial-c@gentoo.org> (11 Sep 2015)
-# Package fails to build with dbus USE flag being disabled (bug #560208)
-=x11-wm/afterstep-2.2.12 dbus
-
-# Justin Lecher <jlec@gentoo.org> (10 Aug 2014)
+# Justin Lecher <jlec@gentoo.org> (2014-08-10)
 # Doesn't work without acl support
 # No patch yet, #516626
 >=net-fs/netatalk-3.1.3 acl
 
-# Pawel Hajdan jr <phajdan.jr@gentoo.org> (12 Jun 2014)
+# Pawel Hajdan jr <phajdan.jr@gentoo.org> (2014-06-12)
 # Chromium builds in PIC mode on most arches anyway,
 # i.e. this use flag has no effect on them.
 www-client/chromium pic
 
-# Zac Medico <zmedico@gentoo.org> (4 Dec 2012)
+# Zac Medico <zmedico@gentoo.org> (2012-12-04)
 # Force app-shells/bash[readline] in stage1 builds, so that compgen is
 # available for sys-apps/portage (see bug #445576).
 app-shells/bash:0 readline
 
-# Michał Górny <mgorny@gentoo.org> (14 Oct 2012)
+# Michał Górny <mgorny@gentoo.org> (2012-10-14)
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
 dev-lang/python-exec python_targets_python2_7
-dev-lang/python-exec python_targets_python3_5
 dev-lang/python-exec python_targets_python3_6
 dev-lang/python-exec python_targets_python3_7
-dev-lang/python-exec python_targets_jython2_7
-dev-lang/python-exec python_targets_pypy
+dev-lang/python-exec python_targets_python3_8
 dev-lang/python-exec python_targets_pypy3
 
-# Zac Medico <zmedico@gentoo.org> (20 Oct 2010)
+# Zac Medico <zmedico@gentoo.org> (2010-10-20)
 # Force ipc USE flag since it should remain enabled unless
 # it is found to be incompatible with a specific profile
 # or environment. When enabled, it fixes bug #278895,
 # bug #315615, and makes subshell die support more robust
 # (so that repoman's ebuild.nesteddie check is irrelevant).
 sys-apps/portage ipc
-sys-apps/portage-mgorny ipc
 
 # Arfrever Frehtes Taifersar Arahesis <arfrever@gentoo.org>
 # Python should use wide Unicode implementation by default.
@@ -98,7 +125,7 @@ sys-apps/portage-mgorny ipc
 # and requires reinstallation of many Python modules.
 dev-lang/python wide-unicode
 
-# Peter Alfredsen <loki_val@gentoo.org> (11 Apr 2009)
+# Peter Alfredsen <loki_val@gentoo.org> (2009-04-11)
 # Forcing w.r.t. bug 265336. When unicode use-flag is
 # turned off, ABI is broken without a .so bump.
 dev-libs/libpcre unicode

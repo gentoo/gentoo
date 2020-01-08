@@ -1,0 +1,45 @@
+From bae9f01ed5ad0ef5d6c0b48cbc1a7fde73ae45ae Mon Sep 17 00:00:00 2001
+From: Oliver Freyermuth <o.freyermuth@googlemail.com>
+Date: Mon, 15 Jul 2019 18:36:24 +0200
+Subject: [PATCH] test/Makefile: Remove hardcoded call to gcc, error out if
+ CC=icc.
+
+---
+ test/Makefile | 13 +++++++++----
+ 1 file changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/test/Makefile b/test/Makefile
+index 97a9316b..7c28ce2a 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -10,7 +10,7 @@ images_eg := $(sort $(wildcard ../examples/*/*/Build)) \
+              $(sort $(wildcard ../examples/*/*/Docker_Pull)) \
+              $(sort $(wildcard ../examples/*/*/Docker_Pull.*))
+ images := $(images_ch) $(images_eg)
+-sotests := sotest/bin/sotest sotest/lib/libsotest.so.1.0
++sotests := check-no-icc sotest/bin/sotest sotest/lib/libsotest.so.1.0
+ 
+ # Favor embedded Bats, if installed, over system Bats.
+ export PATH := $(CURDIR)/bats/bin:$(PATH)
+@@ -76,13 +76,18 @@ sotest/bin/sotest: sotest/sotest
+ sotest/lib/libsotest.so.1.0: sotest/libsotest.so.1.0
+ 	cp -a $^ $@
+ 
+-# We hardcode gcc here because some other compilers (hello, Intel) link the
++# We exclude icc here because it links the
+ # resulting binaries with extra shared libraries that are then not copied into
+ # the container. (Issue #227.)
+ 
++check-no-icc:
++ifeq ($(patsubst %icc,,$(lastword $(CC))),)
++	$(error ICC not supported since it overlinks extra shared libraries)
++endif
++
+ sotest/sotest: sotest/sotest.c sotest/libsotest.so.1.0
+-	gcc -o $@ $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -L./sotest -lsotest $^
++	$(CC) -o $@ $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -L./sotest -lsotest $^
+ sotest/libsotest.so.1.0: sotest/libsotest.c
+-	gcc -o $@ $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -shared -fPIC -Wl,-soname,libsotest.so.1 -lc $^
++	$(CC) -o $@ $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -shared -fPIC -Wl,-soname,libsotest.so.1 -lc $^
+ 	ln -f -s libsotest.so.1.0 sotest/libsotest.so
+ 	ln -f -s libsotest.so.1.0 sotest/libsotest.so.1

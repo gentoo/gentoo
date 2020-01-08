@@ -2,57 +2,67 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>juippis@gmail.com</email>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
+		<email>juippis@gentoo.org</email>
+		<name>Joonas Niilola</name>
 	</maintainer>
 	<use>
-		<flag name="shm">Use MIT shared memory support for X image transfer.</flag>
+		<flag name="X">Use the X window system</flag>
+		<flag name="bzip2">Bzip2 loader support</flag>
+		<flag name="gif">Gif image loader support</flag>
+		<flag name="jpeg">Jpeg image loader support</flag>
+		<flag name="mp3">ID3 loader support</flag>
+		<flag name="png">PNG image loader support</flag>
+		<flag name="shm">Use MIT shared memory support for X image transfer</flag>
+		<flag name="tiff">TIFF image loader support</flag>
+		<flag name="webp">WEBP image loader support</flag>
+		<flag name="zlib">Zlib loader support</flag>
 	</use>
 	<longdescription>
-Imlib 2 is the successor to Imlib. It is not just a newer version - it is a
-completely new library. Imlib2 can be installed alongside Imlib 1.x without any
-problems since they are effectively different libraries - but they Have very
-similar functionality.
+		Imlib 2 is the successor to Imlib. It is not just a newer version - it
+		is a completely new library. Imlib2 can be installed alongside Imlib
+		1.x without any problems since they are effectively different libraries
+		- but they Have very similar functionality.
 
-Imlib2 can do the following:
-* Load image files from disk in one of many formats
-* Save images to disk in one of many formats
-* Render image data onto other images
-* Render images to an X-Windows drawable
-* Produce pixmaps and pixmap masks of Images
-* Apply filters to images
-* Rotate images
-* Accept RGBA Data for images
-* Scale images
-* Alpha blend Images on other images or drawables
-* Apply color correction and modification tables and factors to images
-* Render images onto images with color correction and modification tables
-* Render truetype anti-aliased text
-* Render truetype anti-aliased text at any angle
-* Render anti-aliased lines
-* Render rectangles
-* Render linear multi-colored gradients
-* Cache data intelligently for maximum performance
-* Allocate colors automatically
-* Allow full control over caching and color allocation
-* Provide highly optimized MMX assembly for core routines
-* Provide plug-in filter interface
-* Provide on-the-fly runtime plug-in image loading and saving interface
-* Fastest image compositing, rendering and manipulation library for X
+		Imlib2 can do the following:
+		* Load image files from disk in one of many formats,
+		* Save images to disk in one of many formats,
+		* Render image data onto other images,
+		* Render images to an X-Windows drawable,
+		* Produce pixmaps and pixmap masks of Images,
+		* Apply filters to images,
+		* Rotate images,
+		* Accept RGBA Data for images,
+		* Scale images,
+		* Alpha blend Images on other images or drawables,
+		* Apply color correction and modification tables and factors to
+		images,
+		* Render images onto images with color correction and modification
+		tables,
+		* Render truetype anti-aliased text,
+		* Render truetype anti-aliased text at any angle,
+		* Render anti-aliased lines,
+		* Render rectangles,
+		* Render linear multi-colored gradients,
+		* Cache data intelligently for maximum performance,
+		* Allocate colors automatically,
+		* Allow full control over caching and color allocation,
+		* Provide highly optimized MMX assembly for core routines,
+		* Provide plug-in filter interface,
+		* Provide on-the-fly runtime plug-in image loading and saving
+		interface,
+		* Fastest image compositing, rendering and manipulation library for X.
 
-If what you want isn't in the list above somewhere then likely Imlib 2 does not
-do it. If it does it it likely does it faster than any other library you can find
-(this includes gdk-pixbuf, gdkrgb, etc.) primarily because of highly optimized
-code and a smart subsystem that does the dirty work for you and picks up the
-pieces for you so you can be lazy and let all the optimizations for you.
+		If what you want isn't in the list above somewhere then likely Imlib 2
+		does not do it. If it does it it likely does it faster than any other
+		library you can find (this includes gdk-pixbuf, gdkrgb, etc.) primarily
+		because of highly optimized code and a smart subsystem that does the
+		dirty work for you and picks up the pieces for you so you can be lazy
+		and let all the optimizations for you.
 
-Imlib 2 can run without a display, so it can be easily used for background image
-processing for web sites or servers - it only requires the X libraries to be
-installed - that is all - it does not require an XServer to run unless you wish
-to display images.
+		Imlib 2 can run without a display, so it can be easily used for
+		background image processing for web sites or servers - it only requires
+		the X libraries to be installed - that is all - it does not require an
+		XServer to run unless you wish to display images.
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">enlightenment</remote-id>

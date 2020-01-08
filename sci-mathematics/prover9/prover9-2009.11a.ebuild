@@ -1,19 +1,19 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit eutils toolchain-funcs versionator
+inherit eutils toolchain-funcs
 
 MY_PN="LADR"
 typeset -u MY_PV
-MY_PV=$(replace_all_version_separators '-')
+MY_PV=$(ver_rs 1 '-')
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="Automated theorem prover for first-order and equational logic"
-HOMEPAGE="http://www.cs.unm.edu/~mccune/mace4/"
+HOMEPAGE="https://www.cs.unm.edu/~mccune/mace4/"
 SRC_URI="
-	http://www.cs.unm.edu/~mccune/mace4/download/${MY_P}.tar.gz
+	https://www.cs.unm.edu/~mccune/mace4/download/${MY_P}.tar.gz
 	https://dev.gentoo.org/~jlec/distfiles/${MY_PN}-2009-11A-makefile.patch.xz"
 
 SLOT="0"
@@ -29,8 +29,8 @@ PATCHES=(
 S="${WORKDIR}/${MY_P}/"
 
 src_prepare() {
+	default
 	MAKEOPTS+=" -j1"
-	epatch "${PATCHES[@]}"
 	sed \
 		-e "/^CC =/s:gcc:$(tc-getCC):g" \
 		-i */Makefile || die
@@ -38,6 +38,12 @@ src_prepare() {
 
 src_compile() {
 	emake all
+}
+
+src_test() {
+	emake test1
+	emake test2
+	emake test3
 }
 
 src_install () {
@@ -95,7 +101,8 @@ src_install () {
 		manpages/rewriter.1 \
 		manpages/prover9-apps.1
 
-	dohtml ladr/index.html.master ladr/html/*
+	docinto html
+	dodoc -r ladr/index.html.master ladr/html/*
 
 	insinto /usr/$(get_libdir)
 	dolib.so ladr/.libs/libladr.so.4.0.0

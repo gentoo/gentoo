@@ -18,7 +18,7 @@ SRC_URI="https://github.com/crypto-rb/ed25519/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="1"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE=""
 
 all_ruby_prepare() {

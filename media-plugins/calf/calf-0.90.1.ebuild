@@ -13,7 +13,7 @@ if [[ "${PV}" = "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/calf-studio-gear/calf.git"
 else
 	SRC_URI="https://github.com/calf-studio-gear/calf/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="LGPL-2.1"
@@ -46,6 +46,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-no-automagic.patch"
 	"${FILESDIR}/${P}-htmldir.patch"
 	"${FILESDIR}/${P}-desktop.patch"
+	"${FILESDIR}/${P}-fluidsynth-2.patch"
 )
 
 src_prepare() {
@@ -72,5 +73,5 @@ src_configure() {
 src_install() {
 	default
 	mv "${ED}"/usr/share/bash-completion/completions/calf \
-		"${ED}"/usr/share/bash-completion/completions/calfjackhost
+		"${ED}"/usr/share/bash-completion/completions/calfjackhost || die
 }

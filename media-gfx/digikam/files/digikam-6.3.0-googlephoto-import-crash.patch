@@ -1,0 +1,85 @@
+From ea22af510d62c85224ed430611db8818f97ecc69 Mon Sep 17 00:00:00 2001
+From: Maik Qualmann <metzpinguin@gmail.com>
+Date: Wed, 4 Sep 2019 20:59:20 +0200
+Subject: fix crash  when close/reopen Google import window BUGS: 411587
+ FIXED-IN: 6.3.0
+
+---
+ .../generic/webservices/google/gphoto/gptalker.cpp     |  3 ++-
+ core/dplugins/generic/webservices/google/gswindow.cpp  | 18 ++++++++++++++----
+ 3 files changed, 17 insertions(+), 5 deletions(-)
+
+diff --git a/core/dplugins/generic/webservices/google/gphoto/gptalker.cpp b/core/dplugins/generic/webservices/google/gphoto/gptalker.cpp
+index 1cddfbd..b5e68ef 100644
+--- a/core/dplugins/generic/webservices/google/gphoto/gptalker.cpp
++++ b/core/dplugins/generic/webservices/google/gphoto/gptalker.cpp
+@@ -160,6 +160,7 @@ GPTalker::~GPTalker()
+     if (m_reply)
+     {
+         m_reply->abort();
++        m_reply = nullptr;
+     }
+ 
+     WSToolUtils::removeTemporaryDir("google");
+@@ -637,7 +638,7 @@ void GPTalker::slotFinished(QNetworkReply* reply)
+         {
+             emit signalAddPhotoDone(reply->error(), reply->errorString());
+         }
+-        else
++        else if (reply->error() != QNetworkReply::OperationCanceledError)
+         {
+             QMessageBox::critical(QApplication::activeWindow(),
+                                   i18n("Error"), reply->errorString());
+diff --git a/core/dplugins/generic/webservices/google/gswindow.cpp b/core/dplugins/generic/webservices/google/gswindow.cpp
+index 424aee2..d5af448 100644
+--- a/core/dplugins/generic/webservices/google/gswindow.cpp
++++ b/core/dplugins/generic/webservices/google/gswindow.cpp
+@@ -266,11 +266,10 @@ GSWindow::GSWindow(DInfoInterface* const iface,
+ 
+ GSWindow::~GSWindow()
+ {
+-    delete d->widget;
+-    delete d->albumDlg;
+-    delete d->gphotoAlbumDlg;
+-    delete d->talker;
++    d->transferQueue.clear();
++
+     delete d->gphotoTalker;
++    delete d->talker;
+     delete d;
+ }
+ 
+@@ -851,6 +850,11 @@ void GSWindow::downloadNextPhoto()
+ void GSWindow::slotGetPhotoDone(int errCode, const QString& errMsg,
+                                 const QByteArray& photoData, const QString& fileName)
+ {
++    if (d->transferQueue.isEmpty())
++    {
++        return;
++    }
++
+     GSPhoto item = d->transferQueue.first().second;
+ 
+     /**
+@@ -982,6 +986,11 @@ void GSWindow::slotGetPhotoDone(int errCode, const QString& errMsg,
+ 
+ void GSWindow::slotAddPhotoDone(int err, const QString& msg)
+ {
++    if (d->transferQueue.isEmpty())
++    {
++        return;
++    }
++
+     if (err == 0)
+     {
+         d->widget->imagesList()->processed(d->transferQueue.first().first,false);
+@@ -1245,6 +1254,7 @@ void GSWindow::buttonStateChange(bool state)
+ void GSWindow::slotFinished()
+ {
+     writeSettings();
++    d->transferQueue.clear();
+     d->widget->imagesList()->listView()->clear();
+ }
+ 
+-- 
+cgit v1.1

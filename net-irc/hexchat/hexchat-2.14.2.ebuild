@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit gnome2-utils meson mono-env python-single-r1 xdg-utils
 
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	libproxy? ( net-libs/libproxy )
 	libnotify? ( x11-libs/libnotify )
 	lua? ( dev-lang/lua:= )
-	perl? ( dev-lang/perl )
+	perl? ( dev-lang/perl:= )
 	plugin-sysinfo? ( sys-apps/pciutils )
 	python? ( ${PYTHON_DEPS} )
 	ssl? (

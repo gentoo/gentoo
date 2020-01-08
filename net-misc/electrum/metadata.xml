@@ -2,6 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
+		<email>mgorny@gentoo.org</email>
+		<name>Michał Górny</name>
+	</maintainer>
+	<maintainer type="person">
 		<email>blueness@gentoo.org</email>
 		<name>Anthony G. Basile</name>
 	</maintainer>
@@ -11,17 +15,6 @@
 	</maintainer>
 	<use>
 		<flag name="cli">Enables the CLI interface</flag>
-		<flag name="audio_modem">Enable plugin to support Audio Modem</flag>
-		<flag name="coldcard">Enable plugin to support Coldcard Hardware Wallet</flag>
-		<flag name="cosign">Enable plugin to support multisig wallets between multiple Electrum clients</flag>
-		<flag name="digitalbitbox">Enable plugin to support Digital Bitbox hardware wallet</flag>
-		<flag name="email">Enable plugin to support emailing invoices</flag>
-		<flag name="greenaddress_it">Enable plugin to verify GreenAddress.it instant transactions</flag>
 		<flag name="qrcode">Enable QR code scanning with <pkg>media-gfx/zbar</pkg></flag>
-		<flag name="revealer">Enable revealer plugin for extra security. https://revealer.cc/</flag>
-		<flag name="safe_t">Enable plugin to support Safe-T mini Wallet</flag>
-		<flag name="sync">Enable plugin to sync wallet metadata across multiple Electrum clients</flag>
-		<flag name="trustedcoin_com">Enable plugin to use two-factor service by TrustedCoin.com</flag>
-		<flag name="vkb">Enable plugin for virtual keyboard</flag>
 	</use>
 </pkgmetadata>

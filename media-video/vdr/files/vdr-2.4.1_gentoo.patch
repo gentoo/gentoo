@@ -1,0 +1,66 @@
+this patch will disable some handling in the core Makefile
+as we use for Linux FHS a different handling in gentoo
+demoplugins from core vdr install disabled
+support from Linguas variable
+
+Signed-off-by: Martin Dummer <martin.dummer@gmx.net>
+Reviewed-by: Joerg Bornkessel <hd_brummy@gentoo.org>
+--- a/Makefile
++++ b/Makefile
+@@ -182,7 +182,7 @@
+ 
+ PODIR     = po
+ LOCALEDIR = locale
+-I18Npo    = $(wildcard $(PODIR)/*.po)
++I18Npo    = $(foreach dir,$(LINGUAS),$(wildcard $(PODIR)/$(dir)*.po))
+ I18Nmo    = $(addsuffix .mo, $(foreach file, $(I18Npo), $(basename $(file))))
+ I18Nmsgs  = $(addprefix $(LOCALEDIR)/, $(addsuffix /LC_MESSAGES/vdr.mo, $(notdir $(foreach file, $(I18Npo), $(basename $(file))))))
+ I18Npot   = $(PODIR)/vdr.pot
+@@ -209,7 +209,7 @@
+ 
+ install-i18n: i18n
+ 	@mkdir -p $(DESTDIR)$(LOCDIR)
+-	cp -r $(LOCALEDIR)/* $(DESTDIR)$(LOCDIR)
++	@(cd $(LOCALEDIR); for linguas in $(LINGUAS); do [ "$$linguas" = "en" ] && continue; cp -r --parents $$linguas* $(DESTDIR)$(LOCDIR); done)
+ 
+ # The 'include' directory (for plugins):
+ 
+@@ -283,12 +283,11 @@
+ 
+ install-dirs:
+ 	@mkdir -p $(DESTDIR)$(VIDEODIR)
+-	@mkdir -p $(DESTDIR)$(CONFDIR)
+ 	@mkdir -p $(DESTDIR)$(ARGSDIR)
+-	@mkdir -p $(DESTDIR)$(CACHEDIR)
+ 	@mkdir -p $(DESTDIR)$(RESDIR)
+ 
+ install-conf: install-dirs
++	@mkdir -p $(DESTDIR)$(CONFDIR)
+ 	@cp -pn *.conf $(DESTDIR)$(CONFDIR)
+ 
+ # Documentation:
+@@ -296,9 +295,9 @@
+ install-doc:
+ 	@mkdir -p $(DESTDIR)$(MANDIR)/man1
+ 	@mkdir -p $(DESTDIR)$(MANDIR)/man5
+-	@gzip -c vdr.1 > $(DESTDIR)$(MANDIR)/man1/vdr.1.gz
+-	@gzip -c vdr.5 > $(DESTDIR)$(MANDIR)/man5/vdr.5.gz
+-	@gzip -c svdrpsend.1 > $(DESTDIR)$(MANDIR)/man1/svdrpsend.1.gz
++	@cp vdr.1 $(DESTDIR)$(MANDIR)/man1/
++	@cp vdr.5 $(DESTDIR)$(MANDIR)/man5/
++	@cp svdrpsend.1 $(DESTDIR)$(MANDIR)/man1/
+ 
+ # Plugins:
+ 
+@@ -315,8 +314,9 @@
+ # Includes:
+ 
+ install-includes: include-dir
+-	@mkdir -p $(DESTDIR)$(INCDIR)
+-	@cp -pLR include/vdr include/libsi $(DESTDIR)$(INCDIR)
++	@mkdir -p $(DESTDIR)$(INCDIR)/vdr $(DESTDIR)$(INCDIR)/vdr/libsi
++	@cp -pLR include/vdr $(DESTDIR)$(INCDIR)
++	@cp -pLR include/libsi Make.config $(DESTDIR)$(INCDIR)/vdr
+ 
+ # pkg-config file:
+ 

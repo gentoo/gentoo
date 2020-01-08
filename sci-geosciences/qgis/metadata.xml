@@ -17,7 +17,10 @@
 		<flag name="3d">Build QGIS 3D library using <pkg>dev-qt/qt3d</pkg></flag>
 		<flag name="georeferencer">Determines whether georeferencer plugin should be built</flag>
 		<flag name="grass">Add support for <pkg>sci-geosciences/grass</pkg></flag>
+		<flag name="hdf5">Enable MDAL support for <pkg>sci-libs/hdf5</pkg></flag>
 		<flag name="mapserver">Determines whether mapserver should be built</flag>
+		<flag name="netcdf">Enable MDAL support for GRIB and XMDF formats</flag>
+		<flag name="opencl">Enable OpenCL support</flag>
 		<flag name="polar">Enable support for the polar coordinate system via <pkg>x11-libs/qwtpolar</pkg></flag>
 		<flag name="qml">Enable support Qml-based plugins using <pkg>dev-qt/qtdeclarative</pkg></flag>
 	</use>

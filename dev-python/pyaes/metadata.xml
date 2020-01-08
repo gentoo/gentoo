@@ -5,6 +5,9 @@
     <email>blueness@gentoo.org</email>
     <name>Anthony G. Basile</name>
   </maintainer>
+  <maintainer type="project">
+    <email>python@gentoo.org</email>
+  </maintainer>
   <upstream>
     <remote-id type="pypi">pyaes</remote-id>
   </upstream>

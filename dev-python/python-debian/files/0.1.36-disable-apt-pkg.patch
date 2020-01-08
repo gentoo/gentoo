@@ -1,0 +1,140 @@
+From 76b7c4e7d16e8f792323f8d14ebdb1678d9d12b0 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 30 Nov 2019 23:18:05 -0500
+Subject: [PATCH] Disable apt_pkg support
+
+---
+ lib/debian/deb822.py            |  4 +--
+ lib/debian/tests/test_deb822.py | 53 ---------------------------------
+ 2 files changed, 2 insertions(+), 55 deletions(-)
+
+diff --git a/lib/debian/deb822.py b/lib/debian/deb822.py
+index c679f4b..2e85956 100644
+--- a/lib/debian/deb822.py
++++ b/lib/debian/deb822.py
+@@ -1913,7 +1913,7 @@ class Sources(Dsc, _PkgRelationMixin):
+     def iter_paragraphs(cls,
+                         sequence,                # type: IterableInputDataType
+                         fields=None,             # type: Optional[List[str]]
+-                        use_apt_pkg=True,        # type: bool
++                        use_apt_pkg=False,       # type: bool
+                         shared_storage=False,    # type: bool
+                         encoding="utf-8",        # type: str
+                         strict=None,             # type: Optional[Dict]
+@@ -1955,7 +1955,7 @@ class Packages(Deb822, _PkgRelationMixin, _VersionAccessorMixin):
+     def iter_paragraphs(cls,
+                         sequence,              # type: IterableInputDataType
+                         fields=None,           # type: Optional[List[str]]
+-                        use_apt_pkg=True,      # type: bool
++                        use_apt_pkg=False,     # type: bool
+                         shared_storage=False,  # type: bool
+                         encoding="utf-8",      # type: str
+                         strict=None,           # type: Optional[Dict]
+diff --git a/lib/debian/tests/test_deb822.py b/lib/debian/tests/test_deb822.py
+index 7101727..64a724c 100755
+--- a/lib/debian/tests/test_deb822.py
++++ b/lib/debian/tests/test_deb822.py
+@@ -40,8 +40,6 @@ else:
+     from StringIO import StringIO
+     BytesIO = StringIO
+ 
+-import apt_pkg   #type: ignore
+-
+ from debian import deb822
+ from debian.debian_support import Version
+ 
+@@ -465,11 +463,6 @@ class TestDeb822(unittest.TestCase):
+         for d in deb822.Deb822.iter_paragraphs(text, use_apt_pkg=False):
+             self.assertWellParsed(d, PARSED_PACKAGE)
+ 
+-        with self.assertWarns(UserWarning):
+-            # The StringIO is not a real file so this will raise a warning
+-            for d in deb822.Deb822.iter_paragraphs(text, use_apt_pkg=True):
+-                self.assertWellParsed(d, PARSED_PACKAGE)
+-
+     def test_iter_paragraphs_file(self):
+         text = StringIO()
+         text.write(UNPARSED_PACKAGE)
+@@ -487,10 +480,6 @@ class TestDeb822(unittest.TestCase):
+             for d in deb822.Deb822.iter_paragraphs(fh, use_apt_pkg=False):
+                 self.assertWellParsed(d, PARSED_PACKAGE)
+ 
+-            fh.seek(0)
+-            for d in deb822.Deb822.iter_paragraphs(fh, use_apt_pkg=True):
+-                self.assertWellParsed(d, PARSED_PACKAGE)
+-
+ 
+     def test_iter_paragraphs_with_gpg(self):
+         for string in GPG_SIGNED:
+@@ -556,12 +545,7 @@ class TestDeb822(unittest.TestCase):
+                 test_count(deb822.Deb822.iter_paragraphs, 2)
+                 test_count(deb822.Deb822.iter_paragraphs, 2, use_apt_pkg=False)
+ 
+-                # apt_pkg used, should not split
+-                test_count(deb822.Deb822.iter_paragraphs, 1, use_apt_pkg=True)
+-
+                 # Specialised iter_paragraphs force use of apt_pkg and don't split
+-                test_count(deb822.Packages.iter_paragraphs, 1, use_apt_pkg=True)
+-                test_count(deb822.Sources.iter_paragraphs, 1, use_apt_pkg=True)
+                 test_count(deb822.Packages.iter_paragraphs, 1, use_apt_pkg=False)
+                 test_count(deb822.Sources.iter_paragraphs, 1, use_apt_pkg=False)
+ 
+@@ -607,27 +591,11 @@ class TestDeb822(unittest.TestCase):
+                 s.write(b"\n")
+             self.assertEqual(s.getvalue(), packages_content)
+ 
+-    def test_iter_paragraphs_apt_shared_storage_packages(self):
+-        self._test_iter_paragraphs(find_test_file("test_Packages"),
+-                                   deb822.Packages,
+-                                   use_apt_pkg=True, shared_storage=True)
+-    def test_iter_paragraphs_apt_no_shared_storage_packages(self):
+-        self._test_iter_paragraphs(find_test_file("test_Packages"),
+-                                   deb822.Packages,
+-                                   use_apt_pkg=True, shared_storage=False)
+     def test_iter_paragraphs_no_apt_no_shared_storage_packages(self):
+         self._test_iter_paragraphs(find_test_file("test_Packages"),
+                                    deb822.Packages,
+                                    use_apt_pkg=False, shared_storage=False)
+ 
+-    def test_iter_paragraphs_apt_shared_storage_sources(self):
+-        self._test_iter_paragraphs(find_test_file("test_Sources"),
+-                                   deb822.Sources,
+-                                   use_apt_pkg=True, shared_storage=True)
+-    def test_iter_paragraphs_apt_no_shared_storage_sources(self):
+-        self._test_iter_paragraphs(find_test_file("test_Sources"),
+-                                   deb822.Sources,
+-                                   use_apt_pkg=True, shared_storage=False)
+     def test_iter_paragraphs_no_apt_no_shared_storage_sources(self):
+         self._test_iter_paragraphs(find_test_file("test_Sources"),
+                                    deb822.Sources,
+@@ -973,27 +941,6 @@ Description: python modules to work with Debian-related data formats
+             self.assertWellParsed(paragraphs[i],
+                                   PARSED_PARAGRAPHS_WITH_COMMENTS[i])
+ 
+-    def test_iter_paragraphs_comments_use_apt_pkg(self):
+-        """ apt_pkg does not support comments within multiline fields
+-
+-        This test checks that a file with comments inside multiline fields
+-        generates an error from the apt_pkg parser.
+-
+-        See also https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=750247#35
+-                 https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=807351
+-        """
+-        try:
+-            fd, filename = tempfile.mkstemp()
+-            fp = os.fdopen(fd, 'wb')
+-            fp.write(UNPARSED_PARAGRAPHS_WITH_COMMENTS.encode('utf-8'))
+-            fp.close()
+-
+-            with open_utf8(filename) as fh:
+-                with self.assertRaises(apt_pkg.Error):
+-                    list(deb822.Deb822.iter_paragraphs(fh, use_apt_pkg=True))
+-        finally:
+-            os.remove(filename)
+-
+     def test_iter_paragraphs_comments_native(self):
+         paragraphs = list(deb822.Deb822.iter_paragraphs(
+             UNPARSED_PARAGRAPHS_WITH_COMMENTS.splitlines(), use_apt_pkg=False))
+-- 
+2.24.0
+

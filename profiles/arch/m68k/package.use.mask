@@ -1,38 +1,45 @@
 # Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michał Górny <mgorny@gentoo.org> (08 Aug 2017)
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# dev-util/systemtap is not keyworded on m68k
+sys-libs/glibc systemtap
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# media-libs/gd is not keyworded on m68k
+sys-libs/glibc gd
+
+# Michał Górny <mgorny@gentoo.org> (2017-08-08)
 # Requires USE=seccomp that is masked in this profile.
 net-libs/gnutls test-full
 
-# Matt Turner <mattst88@gentoo.org> (25 Feb 2017)
+# Matt Turner <mattst88@gentoo.org> (2017-02-25)
 # Needs libepoxy keywording, bug #510940
-x11-base/xorg-server glamor wayland
-x11-drivers/xf86-video-ati glamor
+x11-base/xorg-server wayland
 
-# Mike Frysinger <vapier@gentoo.org> (16 Mar 2015)
+# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
 # Needs sci-physics/bullet tested #499974
 dev-libs/efl physics
 
-# Mikle Kolyada <zlogene@gentoo.org> (11 Jul 2013)
+# Mikle Kolyada <zlogene@gentoo.org> (2013-07-11)
 # Tests for dev-perl/Error require >=dev-perl/Test-Pod-Coverage-1.40.0 (bug #351636)
 dev-perl/Error test
 
-# Raúl Porcel <armin76@gentoo.org> (23 Jan 2013)
+# Raúl Porcel <armin76@gentoo.org> (2013-01-23)
 # Architecture is unsupported
 dev-libs/libpcre jit
 dev-libs/libpcre2 jit
 
-# Ryan Hill <dirtyepic@gentoo.org> (20 Jul 2011)
+# Ryan Hill <dirtyepic@gentoo.org> (2011-07-20)
 # graphite requires dev-libs/ppl & dev-libs/cloog-ppl
 # (bugs #269087 and #269088)
 sys-devel/gcc graphite awt
 
-# Mike Frysinger <vapier@gentoo.org> (10 Feb 2011)
+# Mike Frysinger <vapier@gentoo.org> (2011-02-10)
 # Waiting for keywording #354309
 net-firewall/iptables netlink
 
-# Diego Pettenò <flameeyes@gentoo.org> (10 Nov 2007)
+# Diego Pettenò <flameeyes@gentoo.org> (2007-11-10)
 # Tests for Linux-PAM 0.99 require >=sys-libs/glibc-2.4
 >=sys-libs/pam-0.99.8 test
 

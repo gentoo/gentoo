@@ -10,7 +10,6 @@
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
 	<use>
-		<flag name="experimental">Build with -DWEBP_EXPERIMENTAL_FEATURES</flag>
 		<flag name="swap-16bit-csp">Enable byte swapping for 16 bit colorspace</flag>
 	</use>
 	<upstream>

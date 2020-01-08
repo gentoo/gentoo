@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit distutils-r1
 
@@ -15,6 +15,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 x86"
 IUSE="doc examples mongodb msgpack redis sqs test yaml"
+RESTRICT="!test? ( test )"
 
 # couchdb backend support possible via dev-python/couchdb-python
 # ditto dev-python/kazoo(>=1.3.1)
@@ -60,7 +61,7 @@ python_prepare_all() {
 python_compile_all() {
 	# Doc build misses and skips only content re librabbitmq which is not in portage
 	if use doc; then
-		emake -C docs html || die "kombu docs failed installation"
+		emake -C docs html
 	fi
 }
 

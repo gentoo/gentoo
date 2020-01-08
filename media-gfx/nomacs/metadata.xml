@@ -11,7 +11,6 @@
 		<remote-id type="sourceforge">nomacs</remote-id>
 	</upstream>
 	<use>
-		<flag name="heif">Enable support for ISO/IEC 23008-12:2017 HEIF/HEIC image format using <pkg>media-libs/libheif</pkg></flag>
 		<flag name="opencv">Build support for <pkg>media-libs/opencv</pkg></flag>
 	</use>
 </pkgmetadata>

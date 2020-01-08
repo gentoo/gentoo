@@ -1,10 +1,10 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Michael Haubenwallner <haubi@gentoo.org> (03 Mar 2017)
+# Michael Haubenwallner <haubi@gentoo.org> (2017-03-03)
 # Breaks (openssh, ...) because of PR target/65058
 >=sys-devel/gcc-4.8.5
 
-# Fabian Groffen <grobian@gentoo.org> (04 Apr 2007)
+# Fabian Groffen <grobian@gentoo.org> (2007-04-04)
 # This is the only linker for AIX
 -sys-devel/native-cctools

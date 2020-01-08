@@ -1,0 +1,14 @@
+X-Git-Url: https://code.x2go.org/gitweb?p=x2goclient.git;a=blobdiff_plain;f=src%2Fonmainwindow.cpp;h=cd97e6c7f28a6ab4e9495f7a9ba4b447f2b47a2f;hp=cb6bb72918cdc1d54f57cbf0b426adb03a6f4dc8;hb=567223f;hpb=fc5c93518b9023e2499a945740cd6559233ed301
+
+diff --git a/src/onmainwindow.cpp b/src/onmainwindow.cpp
+index cb6bb72..cd97e6c 100644
+--- a/src/onmainwindow.cpp
++++ b/src/onmainwindow.cpp
+@@ -10754,6 +10754,7 @@ void ONMainWindow::generateEtcFiles()
+                      << "/usr/libexec/openssh" /* Fedora, CentOS, hopefully also RHEL */
+                      << "/usr/lib/ssh" /* Mageia, OpenSUSE, SLE{S,D} < 12 x86, SLE{S,D} 12, Arch */
+                      << "/usr/lib64/ssh" /* SLE{S,D} < 12 x86_64 */
++                     << "/usr/lib64/misc" /* Gentoo *64 with 17.1 profile - has no lib compat-symlink. */
+                      << "/usr/lib/misc" /* Gentoo */
+                      << "/run/current-system/sw/bin" /* NixOS */
+                      << "/usr/libexec"; /* Slackware, OS X */

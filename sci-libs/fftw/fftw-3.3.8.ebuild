@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,12 +17,13 @@ if [[ ${PV} = *9999 ]]; then
 	EGIT_REPO_URI="https://github.com/FFTW/fftw3.git"
 else
 	SRC_URI="http://www.fftw.org/${PN}-${PV/_p/-pl}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
 LICENSE="GPL-2+"
 SLOT="3.0/3"
 IUSE="altivec cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 doc fortran mpi neon openmp quad static-libs test threads zbus"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	mpi? ( >=virtual/mpi-2.0-r4[${MULTILIB_USEDEP}] )"
@@ -131,7 +132,7 @@ multilib_src_configure() {
 			;;
 	esac
 
-	ECONF_SOURCE="${S}" econf "${myconf[@]}" MPICC="$(tc-getCC -lmpi)"
+	ECONF_SOURCE="${S}" econf "${myconf[@]}" MPICC="$(tc-getCC) -lmpi"
 }
 
 src_configure() {

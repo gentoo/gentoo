@@ -34,5 +34,5 @@ src_install()
 	findlib_src_preinst
 	emake install
 
-	dodoc CHANGES README VERSION || die
+	dodoc CHANGES README VERSION
 }

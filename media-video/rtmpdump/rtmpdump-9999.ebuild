@@ -14,7 +14,10 @@ SLOT="0"
 IUSE="gnutls ssl libressl"
 
 DEPEND="ssl? (
-		gnutls? ( >=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)] )
+		gnutls? (
+			>=net-libs/gnutls-2.12.23-r6[${MULTILIB_USEDEP},nettle(+)]
+			dev-libs/nettle:0=[${MULTILIB_USEDEP}]
+		)
 		!gnutls? (
 			!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
 			libressl? ( dev-libs/libressl:0=[${MULTILIB_USEDEP}] )
@@ -29,12 +32,11 @@ PATCHES=(
 )
 
 if [[ ${PV} == *9999 ]] ; then
-	KEYWORDS=""
 	SRC_URI=""
 	EGIT_REPO_URI="https://git.ffmpeg.org/rtmpdump.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 	SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
 fi
 

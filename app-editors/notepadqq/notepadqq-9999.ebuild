@@ -20,6 +20,7 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	app-i18n/uchardet
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
@@ -32,6 +33,7 @@ DEPEND="
 	${RDEPEND}
 	dev-qt/linguist-tools:5
 	dev-qt/qtsvg:5
+	dev-qt/qttest:5
 "
 
 src_prepare() {

@@ -1,6 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 #
+# @DEAD
+# All consumers are gone.  Removal in 14 days
+#
 # @ECLASS: mozconfig-v6.60.eclass
 # @MAINTAINER:
 # mozilla team <mozilla@gentoo.org>
@@ -160,6 +163,14 @@ DEPEND="app-arch/zip
 	sys-apps/findutils
 	|| (
 		(
+			sys-devel/clang:9
+			!clang? ( sys-devel/llvm:9 )
+			clang? (
+				=sys-devel/lld-9*
+				sys-devel/llvm:9[gold]
+			)
+		)
+		(
 			sys-devel/clang:8
 			!clang? ( sys-devel/llvm:8 )
 			clang? (
@@ -186,11 +197,9 @@ DEPEND="app-arch/zip
 	)
 	pulseaudio? ( media-sound/pulseaudio )
 	elibc_glibc? (
-		virtual/cargo
 		virtual/rust
 	)
 	elibc_musl? (
-		virtual/cargo
 		virtual/rust
 	)
 	${RDEPEND}"
@@ -361,8 +370,6 @@ mozconfig_config() {
 	if use clang ; then
 		# https://bugzilla.mozilla.org/show_bug.cgi?id=1423822
 		mozconfig_annotate 'elf-hack is broken when using Clang' --disable-elf-hack
-	elif use arm ; then
-		mozconfig_annotate 'elf-hack is broken on arm' --disable-elf-hack
 	fi
 
 	# Modifications to better support ARM, bug 553364

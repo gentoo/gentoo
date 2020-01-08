@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>zx2c4@gentoo.org</email>
-		<name>Jason A. Donenfeld</name>
+		<email>asturm@gentoo.org</email>
+		<name>Andreas Sturmlechner</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>sound@gentoo.org</email>
@@ -16,12 +16,14 @@
 		<flag name="cue">Support CUE sheets using the libcue library</flag>
 		<flag name="fluidsynth">Support FluidSynth as MIDI synth backend</flag>
 		<flag name="gme">Support various gaming console music formats</flag>
+		<flag name="gtk">Build with GTK interface instead of Qt5</flag>
 		<flag name="http">Support HTTP streams through neon</flag>
-		<flag name="qt5">Build with Qt5 interface instead Gtk+</flag>
+		<flag name="qt5">Build with Qt5 interface instead of GTK</flag>
 		<flag name="qtmedia">Enable playback via <pkg>dev-qt/qtmultimedia</pkg></flag>
 		<flag name="scrobbler">Build with scrobbler/LastFM submission support</flag>
 		<flag name="sid">Build with SID (Commodore 64 Audio) support</flag>
 		<flag name="soxr">Build with SoX Resampler support</flag>
 		<flag name="speedpitch">Enable speed/pitch effects</flag>
+		<flag name="streamtuner">Build the streamtuner plugin</flag>
 	</use>
 </pkgmetadata>

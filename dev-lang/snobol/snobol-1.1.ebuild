@@ -8,7 +8,7 @@ HOMEPAGE="http://www.snobol4.org/csnobol4/"
 MY_PN="snobol4"
 MY_P="${MY_PN}-${PV}"
 #SRC_URI="ftp://ftp.snobol4.org/snobol4/${MY_P}.tar.gz ftp://ftp.ultimate.com/snobol/${MY_P}.tar.gz"
-SRC_URI="mirror://snobol4/${MY_P}.tar.gz"
+SRC_URI="ftp://ftp.snobol4.org/snobol/old/${MY_P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

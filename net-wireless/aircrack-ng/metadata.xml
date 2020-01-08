@@ -24,6 +24,5 @@
 	<flag name="airgraph-ng">Build airgraph-ng</flag>
 	<flag name="experimental">Build the "experimental" tools which may randomly fail to run properly</flag>
 	<flag name="netlink">Use netlink for channel control instead of WEXT</flag>
-	<flag name="unstable">Build the "unstable" tools which may randomly fail to run properly</flag>
 </use>
 </pkgmetadata>

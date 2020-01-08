@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="The extensible self-documenting text editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="ftp://ftp.gnu.org/old-gnu/emacs/${P}.tar.gz
 	ftp://ftp.splode.com/pub/users/friedman/emacs/${P}-linux22x-elf-glibc21.diff.gz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-11.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-12.tar.xz"
 
 LICENSE="GPL-1+ GPL-2+ BSD HPND"
 SLOT="18"
@@ -83,7 +83,7 @@ src_configure() {
 }
 
 src_compile() {
-	addpredict /var/lib/emacs/lock
+	addpredict /var/lib/emacs/lock		#nowarn
 	emake --jobs=1 \
 		CC="$(tc-getCC)" CFLAGS="${CFLAGS} -Demacs" \
 		LD="$(tc-getCC) -nostdlib" LDFLAGS="${LDFLAGS}"

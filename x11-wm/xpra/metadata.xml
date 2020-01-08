@@ -5,6 +5,14 @@
 	<email>dilfridge@gentoo.org</email>
 	<name>Andreas K. Huettel</name>
 </maintainer>
+<maintainer type="person">
+	<email>heroxbd@gentoo.org</email>
+	<name>Benda Xu</name>
+</maintainer>
+<maintainer type="person">
+	<email>alexxy@gentoo.org</email>
+	<name>Alexey Shvetsov</name>
+</maintainer>
 <upstream>
 	<bugs-to>https://www.xpra.org/trac/report</bugs-to>
 </upstream>
@@ -16,7 +24,6 @@
 	<flag name="enc_ffmpeg">Enable advanced ffmpeg/libav encoder support</flag>
 	<flag name="enc_x264">Enable x264 encoder support</flag>
 	<flag name="enc_x265">Enable x265 encoder support</flag>
-	<flag name="lz4">Enable support for lz4 compression</flag>
 	<flag name="pillow">Enable pillow support</flag>
 	<flag name="server">Build server-side code</flag>
 	<flag name="vpx">Enable vpx image format support</flag>

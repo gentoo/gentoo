@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} ) # Tests crash with pypy
+PYTHON_COMPAT=( python{2_7,3_6} ) # Tests crash with pypy
 
 inherit distutils-r1 flag-o-matic prefix
 
@@ -14,11 +14,11 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples"
 
 RDEPEND="
-	>=dev-python/pillow-2.4.0[tiff,truetype,jpeg(+),${PYTHON_USEDEP}]
+	<dev-python/pillow-6[tiff,truetype,jpeg(+),${PYTHON_USEDEP}]
 	media-libs/libart_lgpl
 	sys-libs/zlib
 "

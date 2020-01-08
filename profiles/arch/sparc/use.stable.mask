@@ -4,25 +4,34 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Sergei Trofimovich <slyfox@gentoo.org> (02 Feb 2019)
+# Ben Kohler <bkohler@gentoo.org> (2019-06-11)
+# Pulls in net-libs/axtls which is not stable for sparc
+curl_ssl_axtls
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-02-02)
+# No stable app-arch/rpm on sparc.
+rpm
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-04-23)
+openal
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-02-02)
 # clamav has no stable versions yet
 clamav
 
-# Mike Gilbert <floppym@gentoo.org> (08 Jun 2017)
+# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
 # dev-lang/python:3.7 is not stable.
 python_targets_python3_7
 python_single_target_python3_7
+python_targets_python3_8
+python_single_target_python3_8
 
-# Hans de Graaff <graaff@gentoo.org> (13 Aug 2017)
-# Drop stable ruby on sparc
-ruby
-
-# Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
+# Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # no stable version on sparc
 ecls
 sbcl
 
-# Pacho Ramos <pacho@gentoo.org> (17 Apr 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-04-17)
 # Dropped stable keywords after the discussion caused by
 # Gnome 3.8/3.10 stabilization on this arch   
 devhelp
@@ -32,6 +41,6 @@ gnumeric
 upnp
 upnp-av
 
-# Pacho Ramos <pacho@gentoo.org> (13 Apr 2014)
+# Pacho Ramos <pacho@gentoo.org> (2014-04-13)
 # Not going to be stabilized on this arch
 gnome-online-accounts

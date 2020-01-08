@@ -9,6 +9,7 @@
     <email>mgorny@gentoo.org</email>
     <name>Michał Górny</name>
   </maintainer>
+  <stabilize-allarches/>
   <use>
     <flag name="ignore-glep31">Remove GLEP 31 (UTF-8 file encodings) settings</flag>
   </use>

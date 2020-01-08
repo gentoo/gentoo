@@ -8,9 +8,13 @@
 <use>
 	<flag name="caps">build setpriv helper (run programs with diff capabilities)</flag>
 	<flag name="cramfs">build mkfs/fsck helpers for cramfs filesystems</flag>
+	<flag name="cryptsetup">Use <pkg>sys-fs/cryptsetup</pkg> to have built-in dm-verity in libmount</flag>
 	<flag name="fdformat">build fdformat (floppy disk format)</flag>
+	<flag name="hardlink">build hardlink program</flag>
 	<flag name="kill">build the kill program</flag>
+	<flag name="logger">build the logger program</flag>
 	<flag name="pam">build runuser helper</flag>
+	<flag name="su">build the su program</flag>
 	<flag name="suid">
 		install mount/umount as setuid so non-root users may mount/umount devices,
 		and wall/write as setgid so non-root users can notify other users

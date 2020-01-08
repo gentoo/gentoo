@@ -44,5 +44,5 @@ all_ruby_install() {
 	all_fakegem_install
 
 	insinto /usr/share/doc/${PF}/
-	doins -r examples || die "Failed to install examples"
+	doins -r examples
 }

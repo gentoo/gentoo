@@ -13,12 +13,13 @@ DESCRIPTION="Collection of utilities and tests for VA-API"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
 if [[ ${PV} != *9999* ]] ; then
 	SRC_URI="https://github.com/intel/libva-utils/releases/download/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
 SLOT="0"
 IUSE="+drm test wayland X"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="|| ( drm wayland X )"
 

@@ -5,4 +5,8 @@
 		<email>grobian@gentoo.org</email>
 		<name>Fabian Groffen</name>
 	</maintainer>
+	<use>
+		<flag name="qmanifest">Build qmanifest applet, this adds additional dependencies for GPG, OpenSSL and BLAKE2B hashing</flag>
+		<flag name="qtegrity">Build qtegrity applet, this adds additional dependencies for OpenSSL</flag>
+	</use>
 </pkgmetadata>

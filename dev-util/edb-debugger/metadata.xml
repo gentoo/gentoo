@@ -9,9 +9,11 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>slyfox@gentoo.org</email>
+		<name>Sergei Trofimovich</name>
+	</maintainer>
 	<use>
-	<flag name="legacy-mem-write">Probe if writes to /proc/PID/mem are broken.</flag>
-	<flag name="graphviz">Add support for the Graphviz library</flag>
-	<flag name="pax_kernel">Enable building under a PaX enabled kernel</flag>
+		<flag name="jumbo-build">Experimental jumbo (also known as unity) build capability</flag>
 	</use>
 </pkgmetadata>

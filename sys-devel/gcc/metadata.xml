@@ -14,6 +14,7 @@
     <flag name="d">Enable support for the D programming language</flag>
     <flag name="fixed-point">Enable fixed-point arithmetic support for MIPS targets 
       in gcc (Warning: significantly increases compile time!)</flag>
+    <flag name="gcj">Build the GCJ Java language frontend.</flag>
     <flag name="go">Build the GCC Go language frontend.</flag>
     <flag name="graphite">Add support for the framework for loop
       optimizations based on a polyhedral intermediate representation</flag>
@@ -21,16 +22,17 @@
       This will slow down the compiler a bit as it forces all of the toolchain to be shared libs.</flag>
     <flag name="libssp">Build SSP support into a dedicated library rather than use the
       code in the C library (DO NOT ENABLE THIS IF YOU DON'T KNOW WHAT IT DOES)</flag>
+    <flag name="lto">Build using Link Time Optimizations (LTO)</flag>
     <flag name="mpx">Enable support for Intel Memory Protection Extensions (MPX)</flag>
     <flag name="mudflap">Add support for mudflap, a pointer use checking library</flag>
     <flag name="nopie">Disable PIE support (NOT FOR GENERAL USE)</flag>
     <flag name="nossp">Disable SSP support (NOT FOR GENERAL USE)</flag>
+    <flag name="nptl">Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)</flag>
     <flag name="objc">Build support for the Objective C code language</flag>
     <flag name="objc++">Build support for the Objective C++ language</flag>
     <flag name="objc-gc">Build support for the Objective C code language Garbage
       Collector</flag>
     <flag name="pgo">Build GCC using Profile Guided Optimization (PGO)</flag>
-    <flag name="regression-test">Run the testsuite and install the results (requires FEATURES=test)</flag>
     <flag name="sanitize">Build support for various sanitizer functions (ASAN/TSAN/etc...)</flag>
     <flag name="ssp">Build packages with stack smashing protector on by default</flag>
     <flag name="systemtap">enable systemtap static probe points</flag>

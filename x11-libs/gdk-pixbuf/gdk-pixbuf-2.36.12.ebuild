@@ -11,8 +11,9 @@ HOMEPAGE="https://git.gnome.org/browse/gdk-pixbuf"
 
 LICENSE="LGPL-2+"
 SLOT="2"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="X debug +introspection jpeg jpeg2k tiff test"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+IUSE="X debug +introspection jpeg tiff test"
+RESTRICT="!test? ( test )"
 
 # Remove SRC_URI when gnome bug #795069 is fixed
 SRC_URI="${SRC_URI} test? ( https://git.gnome.org/browse/gdk-pixbuf/plain/tests/bug753605-atsize.jpg?h=2.36.12 -> ${PN}-2.36.12-bug753605-atsize.jpg )"
@@ -22,7 +23,6 @@ COMMON_DEPEND="
 	>=media-libs/libpng-1.4:0=[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-0.9.3:= )
 	jpeg? ( virtual/jpeg:0=[${MULTILIB_USEDEP}] )
-	jpeg2k? ( media-libs/jasper:=[${MULTILIB_USEDEP}] )
 	tiff? ( >=media-libs/tiff-3.9.2:0=[${MULTILIB_USEDEP}] )
 	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
 "
@@ -74,7 +74,7 @@ multilib_src_configure() {
 	gnome2_src_configure \
 		$(usex debug --enable-debug=yes "") \
 		$(use_with jpeg libjpeg) \
-		$(use_with jpeg2k libjasper) \
+		--without-libjasper \
 		$(use_with tiff libtiff) \
 		$(multilib_native_use_enable introspection) \
 		$(use_with X x11) \

@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
+EAPI=7
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -12,33 +12,25 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="PSF-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
-IUSE="doc examples"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+IUSE="examples"
 
-DEPEND="
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
-
-# Usual avoid d'loading un-needed objects.inv file
-PATCHES=( "${FILESDIR}"/mapping.patch )
 
 DOCS=( CHANGES.rst README.rst )
 
-python_compile_all() {
-	use doc && emake -C documentation html
-}
+distutils_enable_sphinx documentation --no-autodoc
 
 python_test() {
-	${EPYTHON} test/run_all_tests.py || die "Testing failed with ${EPYTHON}"
+	"${EPYTHON}" test/run_all_tests.py loop:// -v || die "Testing failed with ${EPYTHON}"
 }
 
 python_install_all() {
-	use doc && local HTML_DOCS=( documentation/_build/html/. )
 	distutils-r1_python_install_all
 	if use examples; then
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 }

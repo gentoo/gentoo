@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python2_7 python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit gnome2 flag-o-matic python-r1
 
@@ -12,11 +12,13 @@ HOMEPAGE="http://www.gnumeric.org/"
 LICENSE="GPL-2"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="+introspection libgda perl python"
 # python-loader plugin is python2.7 only
-REQUIRED_USE="python? ( $(python_gen_useflags -2) )"
+REQUIRED_USE="
+	introspection? ( ${PYTHON_REQUIRED_USE} )
+	python? ( || ( $(python_gen_useflags -2) ) )"
 
 # Missing gnome-extra/libgnomedb required version in tree
 # but its upstream is dead and will be dropped soon.
@@ -37,9 +39,10 @@ RDEPEND="
 	>=x11-libs/gtk+-3.8.7:3
 	x11-libs/cairo:=[svg]
 
-	introspection? ( >=dev-libs/gobject-introspection-1:= )
+	introspection? ( ${PYTHON_DEPS}
+	>=dev-libs/gobject-introspection-1:= )
 	perl? ( dev-lang/perl:= )
-	python? ( ${PYTHON_DEPS}
+	python? ( $(python_gen_impl_dep '' -2)
 		>=dev-python/pygobject-3:3[${PYTHON_USEDEP}] )
 	libgda? ( gnome-extra/libgda:5[gtk] )
 "
@@ -59,7 +62,7 @@ src_prepare() {
 
 src_configure() {
 	if use python ; then
-		python_setup 'python2*'
+		python_setup -2
 	fi
 	gnome2_src_configure \
 		--disable-static \
@@ -72,6 +75,8 @@ src_configure() {
 
 src_install() {
 	gnome2_src_install
-	python_moduleinto gi.overrides
-	python_foreach_impl python_domodule introspection/gi/overrides/Gnm.py
+	if use introspection; then
+		python_moduleinto gi.overrides
+		python_foreach_impl python_domodule introspection/gi/overrides/Gnm.py
+	fi
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,6 +10,8 @@ RUBY_FAKEGEM_TASK_TEST="test:units"
 
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
+
+RUBY_FAKEGEM_BINWRAP=""
 
 inherit ruby-fakegem
 
@@ -31,4 +33,5 @@ ruby_add_bdepend "test? (
 all_ruby_prepare() {
 	sed -i -e '/\(bundler\|byebug\)/ s:^:#:' Rakefile spec/spec_helper.rb || die
 	sed -i -e '3igem "actionpack"' spec/spec_helper.rb || die
+	sed -i -e '/rubocop/I s:^:#:' Rakefile || die
 }

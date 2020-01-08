@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<!--maintainer-needed-->
 	<use>
 		<flag name="gles2">Use system GLESv2 libraries instead of ANGLE for shader translation</flag>
-		<flag name="gtk3">Build with GTK+ 3 instead of GTK+ 2</flag>
 		<flag name="v4l">Use libv4l2 for colorspace conversion</flag>
 	</use>
 	<upstream>

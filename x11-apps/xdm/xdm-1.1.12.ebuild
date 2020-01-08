@@ -11,7 +11,7 @@ DEFAULTVT=vt7
 
 DESCRIPTION="X.Org xdm application"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="consolekit ipv6 pam systemd truetype xinerama xpm"
 
 RDEPEND="
@@ -26,7 +26,7 @@ RDEPEND="
 	x11-libs/libXmu
 	x11-libs/libXt
 	consolekit? ( sys-auth/consolekit )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	systemd? ( >=sys-apps/systemd-209 )
 	truetype? (
 		x11-libs/libXrender

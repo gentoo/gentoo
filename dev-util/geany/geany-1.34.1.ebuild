@@ -15,7 +15,7 @@ if [[ "${PV}" = 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/geany/geany.git"
 else
 	SRC_URI="https://download.geany.org/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 fi
 LICENSE="GPL-2+ HPND"
 SLOT="0"
@@ -56,6 +56,7 @@ src_configure() {
 	local myeconfargs=(
 		--disable-html-docs
 		--disable-dependency-tracking
+		--disable-pdf-docs
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		$(use_enable gtk3)
 		$(use_enable vte)

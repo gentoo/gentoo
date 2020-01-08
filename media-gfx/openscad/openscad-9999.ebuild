@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit elisp-common git-r3 qmake-utils xdg-utils
+inherit elisp-common git-r3 qmake-utils xdg
 
 SITEFILE="50${PN}-gentoo.el"
 
@@ -21,10 +21,13 @@ DEPEND="
 	dev-libs/boost:=
 	dev-libs/glib:2
 	dev-libs/gmp:0=
+	dev-libs/libzip:=
 	dev-libs/mpfr:0=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtgui:5[-gles2]
+	dev-qt/qtmultimedia:5[-gles2]
 	dev-qt/qtopengl:5
 	media-gfx/opencsg
 	media-libs/fontconfig:1.0
@@ -33,7 +36,7 @@ DEPEND="
 	media-libs/harfbuzz
 	sci-mathematics/cgal:=
 	>=x11-libs/qscintilla-2.9.4:=[qt5(+)]
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 "
 RDEPEND="${DEPEND}"
 
@@ -67,14 +70,4 @@ src_install() {
 	fi
 
 	einstalldocs
-}
-
-pkg_postinst() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_mimeinfo_database_update
-	xdg_desktop_database_update
 }

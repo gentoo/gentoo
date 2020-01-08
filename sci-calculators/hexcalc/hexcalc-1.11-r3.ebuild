@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A simple hex calculator for X"
 HOMEPAGE="ftp://ftp.x.org/R5contrib/"
-SRC_URI="ftp://ftp.x.org/R5contrib/${PN}.tar.Z"
+SRC_URI="mirror://gentoo/${P}.tar.Z"
 
 LICENSE="GPL-2"
 SLOT="0"

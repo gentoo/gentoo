@@ -1,26 +1,30 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit toolchain-funcs
 
-DESCRIPTION="An AudioScrobbler client for MPD written in C++"
-HOMEPAGE="http://50hz.ws/mpdas/"
-SRC_URI="http://50hz.ws/${PN}/${P}.tar.gz"
+DESCRIPTION="AudioScrobbler client for MPD written in C++"
+HOMEPAGE="https://50hz.ws/mpdas/"
+SRC_URI="https://50hz.ws/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="media-libs/libmpdclient
+BDEPEND="
+	virtual/pkgconfig
+"
+DEPEND="
+	media-libs/libmpdclient
 	net-misc/curl"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
-	sed -i -e 's/@//' Makefile || die
 	default
+	sed -i -e 's/@//' Makefile || die
 }
 
 src_compile() {

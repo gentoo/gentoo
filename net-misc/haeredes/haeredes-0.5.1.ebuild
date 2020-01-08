@@ -8,7 +8,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Confirm delegation of NS and MX records"
 HOMEPAGE="http://michael.orlitzky.com/code/haeredes.xhtml"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

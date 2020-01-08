@@ -3,14 +3,14 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/lxqt/${PN}.git"
 else
 	SRC_URI="https://downloads.lxqt.org/downloads/${PN}/${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 fi
 
 DESCRIPTION="Fast lightweight tabbed filemanager (Qt port)"
@@ -42,6 +42,13 @@ RDEPEND="${DEPEND}
 
 pkg_postinst() {
 	xdg_desktop_database_update
+
+	if ! has_version lxqt-base/lxqt-meta && ! has_version gnome-base/gvfs; then
+		elog
+		elog "To make use of the 'trash' functionality, please install"
+		elog "the 'gnome-base/gvfs' package."
+		elog
+	fi
 }
 
 pkg_postrm() {

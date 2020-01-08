@@ -1,7 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
+inherit flag-o-matic
 
 MY_PN="lib${PN}"
 MY_P="${MY_PN}-${PV}"
@@ -12,14 +14,15 @@ SRC_URI="https://www.gaia-gis.it/gaia-sins/${MY_PN}-sources/${MY_P}.tar.gz"
 
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
 IUSE="+geos iconv +proj test +xls +xml"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-db/sqlite-3.7.5:3[extensions(+)]
 	sys-libs/zlib
 	geos? ( >=sci-libs/geos-3.4 )
-	proj? ( sci-libs/proj )
+	proj? ( sci-libs/proj:= )
 	xls? ( dev-libs/freexl )
 	xml? ( dev-libs/libxml2 )
 "
@@ -30,6 +33,9 @@ REQUIRED_USE="test? ( iconv )"
 S="${WORKDIR}/${MY_P}"
 
 src_configure() {
+	if use proj && has_version ">=sci-libs/proj-6.0.0"; then
+		append-flags "-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H"
+	fi
 	econf \
 		--disable-examples \
 		--disable-static \

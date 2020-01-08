@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,8 +11,9 @@ SRC_URI="https://github.com/OpenSC/OpenSC/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="alpha amd64 arm hppa ia64 ~m68k ppc ppc64 ~s390 ~sh ~sparc x86"
 IUSE="ctapi doc libressl openct notify +pcsc-lite readline secure-messaging ssl test zlib"
+RESTRICT="!test? ( test )"
 
 RDEPEND="zlib? ( sys-libs/zlib )
 	readline? ( sys-libs/readline:0= )
@@ -44,6 +45,7 @@ src_configure() {
 		--with-completiondir="$(get_bashcompdir)" \
 		--disable-openpace \
 		--disable-static \
+		--disable-strict \
 		--enable-man \
 		$(use_enable ctapi) \
 		$(use_enable doc) \

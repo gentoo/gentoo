@@ -12,5 +12,6 @@
 	<upstream>
 		<bugs-to>https://github.com/rsyslog/libestr/issues</bugs-to>
 		<remote-id type="github">rsyslog/libestr</remote-id>
+		<remote-id type="cpe">cpe:/a:adiscon:libestr</remote-id>
 	</upstream>
 </pkgmetadata>

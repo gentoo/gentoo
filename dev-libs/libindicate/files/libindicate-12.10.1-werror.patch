@@ -1,0 +1,13 @@
+--- a/libindicate-gtk/Makefile.am
++++ b/libindicate-gtk/Makefile.am
+@@ -45,3 +45,3 @@ libindicate_gtk_la_CFLAGS = \
+ 	-I $(top_srcdir) \
+-	-Wall -Werror \
++	-Wall \
+ 	$(LIBINDICATEGTK_CFLAGS)
+--- a/libindicate/Makefile.am
++++ b/libindicate/Makefile.am
+@@ -76,3 +76,3 @@ libindicate_la_CFLAGS = \
+ 	$(COVERAGE_CFLAGS) \
+-	-Wall -Werror
++	-Wall

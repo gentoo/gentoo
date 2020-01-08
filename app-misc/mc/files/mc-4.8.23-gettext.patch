@@ -1,0 +1,56 @@
+https://bugs.gentoo.org/693850
+https://midnight-commander.org/raw-attachment/ticket/3629/mc-3629-Linking-fix-for-gettext.patch
+
+From 2a97524b42eeececd2ecd928a1154da1f5b7378a Mon Sep 17 00:00:00 2001
+From: Andreas Mohr <and@gmx.li>
+Date: Fri, 1 Apr 2016 06:44:22 +0000
+Subject: [PATCH] Linking fix for non-default gettext package
+
+mc lost the linking game if gettext package pulled from outside of system paths.
+(Pulling can be done by suitable C-/CPP/LDFLAGS settings)
+
+Furthermore gettext package depends on libintl (if system lib
+don't provide needed functions) then gettext prepare INITLIBS/LIBINTL variable
+for working libintl pull in from gettext libdir.
+
+https://www.gnu.org/software/gettext/FAQ.html#integrating_undefined
+
+Let respect LIBINTL variable at linking (it is empty if not needed).
+
+Failure example for Solaris 10 with non-system-default gettext package:
+
+Undefined                       first referenced
+ symbol                             in file
+ libintl_bind_textdomain_codeset     ./.libs/libinternal.a(args.o)
+ libintl_gettext                     main.o
+ libintl_textdomain                  main.o
+ libintl_bindtextdomain              main.o
+ libintl_ngettext                    ./.libs/libinternal.a(midnight.o)
+
+Signed-off-by: Andreas Mohr <and@gmx.li>
+---
+ src/Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -53,7 +53,8 @@ libinternal_la_LIBADD = \
+ 
+ mc_LDADD = \
+ 	libinternal.la \
+-	$(top_builddir)/lib/libmc.la
++	$(top_builddir)/lib/libmc.la \
++	$(LIBINTL)
+ 
+ if ENABLE_VFS_SMB
+ # this is a hack for linking with own samba library in simple way
+--- a/src/Makefile.in
++++ b/src/Makefile.in
+@@ -556,7 +557,7 @@ libinternal_la_LIBADD = \
+ 	viewer/libmcviewer.la \
+ 	$(DIFFLIB) $(EDITLIB) $(SUBSHELLLIB)
+ 
+-mc_LDADD = libinternal.la $(top_builddir)/lib/libmc.la $(am__append_6)
++mc_LDADD = libinternal.la $(top_builddir)/lib/libmc.la $(LIBINTL) $(am__append_6)
+ SRC_mc_conssaver = \
+ 	cons.handler.c consaver/cons.saver.h

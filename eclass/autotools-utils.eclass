@@ -5,7 +5,7 @@
 # @MAINTAINER:
 # Maciej Mrozowski <reavertm@gentoo.org>
 # Michał Górny <mgorny@gentoo.org>
-# @SUPPORTED_EAPIS: 2 3 4 5
+# @SUPPORTED_EAPIS: 4 5
 # @BLURB: common ebuild functions for autotools-based packages
 # @DESCRIPTION:
 # autotools-utils.eclass is autotools.eclass(5) and base.eclass(5) wrapper

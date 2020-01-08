@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+<!--maintainer-needed-->
 <longdescription lang="en">
 This is a source service for Open Build Service. This service runs all checks from osc-source_validator. This can be used to guarantee that all checks succeed also on the service side. This plugin can be used via project wide defined services.
 </longdescription>

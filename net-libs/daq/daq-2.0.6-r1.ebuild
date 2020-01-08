@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -10,7 +10,7 @@ SRC_URI="https://www.snort.org/downloads/snort/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~mips ~ppc ~ppc64 ~sparc x86"
 IUSE="ipv6 +afpacket +dump +pcap nfq ipq static-libs"
 
 PCAP_DEPEND=">=net-libs/libpcap-1.0.0"
@@ -66,7 +66,7 @@ src_install() {
 	# This has been bugged upstream
 	if ! use static-libs; then
 		for z in libdaq_static libdaq_static_modules; do
-			rm "${D}"usr/$(get_libdir)/${z}.a
+			rm "${D}"/usr/$(get_libdir)/${z}.a
 		done
 	fi
 }

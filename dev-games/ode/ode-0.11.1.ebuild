@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/opende/${P}.tar.bz2"
 
 LICENSE="|| ( LGPL-2.1 BSD )"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE="debug doc double-precision examples gyroscopic static-libs"
 
 RDEPEND="examples? (

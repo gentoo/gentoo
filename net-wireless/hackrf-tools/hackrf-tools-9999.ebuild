@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit cmake-utils
 
@@ -24,12 +24,13 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-DEPEND="=net-libs/libhackrf-${PV}:=
+DEPEND="~net-libs/libhackrf-${PV}:=
 		sci-libs/fftw:3.0="
 RDEPEND="${DEPEND}"
 
 src_install() {
 	cmake-utils_src_install
+	dosbin "${FILESDIR}/hackrf_easy_flash"
 	if [[ ${PV} != "9999" ]] ; then
 		insinto /usr/share/hackrf
 		newins "${WORKDIR}/hackrf-${PV}/firmware-bin/hackrf_jawbreaker_usb.bin" hackrf_jawbreaker_usb-${PV}.bin
@@ -43,5 +44,6 @@ src_install() {
 		ln -s hackrf_one_usb-${PV}.dfu "${ED}/usr/share/hackrf/hackrf_one_usb.dfu"
 	else
 		ewarn "The compiled firmware files are only available in the versioned releases, you are on your own for this."
+		ewarn "A hackrf-firmware ebuild is available in the pentoo overlay, if you feel adventurous."
 	fi
 }

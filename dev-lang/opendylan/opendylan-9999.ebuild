@@ -46,12 +46,12 @@ src_configure() {
 	else
 		PATH=/opt/opendylan/bin/:$PATH
 	fi
-	econf --prefix=/opt/opendylan || die
+	econf --prefix=/opt/opendylan
 }
 
 src_compile() {
 	ulimit -s 32000 # this is naughty build system
-	emake -j1 || die
+	emake -j1
 }
 
 src_install() {

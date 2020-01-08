@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit autotools db-use flag-o-matic
 
-DESCRIPTION="Vi clone"
+DESCRIPTION="Re-implementation of the classic 4BSD ex/vi"
 HOMEPAGE="https://sites.google.com/a/bostic.com/keithbostic/vi"
 SRC_URI="http://garage.linux.student.kuleuven.be/~skimo/nvi/devel/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm hppa ~mips ppc ppc64 sparc x86 ~x64-macos ~amd64-fbsd"
+KEYWORDS="alpha amd64 ~arm hppa ~mips ppc ppc64 sparc x86 ~x64-macos"
 IUSE="perl tcl unicode"
 
 CDEPEND=">=sys-libs/db-4.2.52_p5:=

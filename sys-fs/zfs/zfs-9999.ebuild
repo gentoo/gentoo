@@ -1,43 +1,64 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+EAPI=7
 
-if [ ${PV} == "9999" ] ; then
-	inherit git-r3 linux-mod
-	AUTOTOOLS_AUTORECONF="1"
-	EGIT_REPO_URI="https://github.com/zfsonlinux/${PN}.git"
-else
-	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64"
-fi
+DISTUTILS_OPTIONAL=1
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
-inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-r1 systemd toolchain-funcs udev
+inherit bash-completion-r1 flag-o-matic linux-info linux-mod distutils-r1 systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://zfsonlinux.org/"
 
+if [[ ${PV} == "9999" ]] ; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
+else
+	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm64 ~ppc64"
+fi
+
 LICENSE="BSD-2 CDDL MIT"
 SLOT="0"
-IUSE="custom-cflags debug kernel-builtin +rootfs test-suite static-libs"
-RESTRICT="test"
+IUSE="custom-cflags debug kernel-builtin libressl python +rootfs test-suite static-libs"
 
-COMMON_DEPEND="
-	net-libs/libtirpc
+DEPEND="
+	${PYTHON_DEPS}
+	net-libs/libtirpc[static-libs?]
 	sys-apps/util-linux[static-libs?]
 	sys-libs/zlib[static-libs(+)?]
 	virtual/awk
-"
-DEPEND="${COMMON_DEPEND}
-	virtual/pkgconfig
+	virtual/libudev[static-libs(-)?]
+	libressl? ( dev-libs/libressl:0=[static-libs?] )
+	!libressl? ( dev-libs/openssl:0=[static-libs?] )
+	python? (
+		virtual/python-cffi[${PYTHON_USEDEP}]
+	)
 "
 
-RDEPEND="${COMMON_DEPEND}
+BDEPEND="virtual/awk
+	virtual/pkgconfig
+	python? (
+		dev-python/setuptools[${PYTHON_USEDEP}]
+	)
+"
+
+RDEPEND="${DEPEND}
 	!=sys-apps/grep-2.13*
-	!kernel-builtin? ( =sys-fs/zfs-kmod-${PV}* )
+	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV} )
 	!sys-fs/zfs-fuse
 	!prefix? ( virtual/udev )
+	sys-fs/udev-init-scripts
+	rootfs? (
+		app-arch/cpio
+		app-misc/pax-utils
+		!<sys-boot/grub-2.00-r2:2
+		!<sys-kernel/genkernel-3.5.1.1
+		!<sys-kernel/genkernel-next-67
+		!<sys-kernel/bliss-initramfs-7.1.0
+		!<sys-kernel/dracut-044-r1
+	)
 	test-suite? (
 		sys-apps/util-linux
 		sys-devel/bc
@@ -46,24 +67,22 @@ RDEPEND="${COMMON_DEPEND}
 		sys-fs/mdadm
 		sys-process/procps
 		virtual/modutils
-		)
-	rootfs? (
-		app-arch/cpio
-		app-misc/pax-utils
-		!<sys-boot/grub-2.00-r2:2
-		)
+	)
 "
 
-AT_M4DIR="config"
-AUTOTOOLS_IN_SOURCE_BUILD="1"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/bash-completion-sudo.patch" )
 
 pkg_setup() {
 	if use kernel_linux && use test-suite; then
 		linux-info_pkg_setup
+
 		if  ! linux_config_exists; then
 			ewarn "Cannot check the linux kernel configuration."
 		else
-			# recheck that we don't have usblp to collide with libusb
 			if use test-suite; then
 				if linux_chkconfig_present BLK_DEV_LOOP; then
 					eerror "The ZFS test suite requires loop device support enabled."
@@ -72,34 +91,43 @@ pkg_setup() {
 					eerror "in /usr/src/linux/.config or"
 					eerror "    Device Drivers --->"
 					eerror "        Block devices --->"
-					eerror "            [ ] Loopback device support"
+					eerror "            [X] Loopback device support"
 				fi
 			fi
 		fi
 	fi
-
 }
 
 src_prepare() {
-	# Update paths
-	sed -e "s|/sbin/lsmod|/bin/lsmod|" \
-		-e "s|/usr/bin/scsi-rescan|/usr/sbin/rescan-scsi-bus|" \
-		-e "s|/sbin/parted|/usr/sbin/parted|" \
-		-i scripts/common.sh.in
+	default
 
-	if use kernel-builtin
-	then
-		einfo "kernel-builtin enabled, removing module loading from"
-		einfo "systemd units."
-		sed -i -e '/modprobe\ zfs/d' etc/systemd/system/*.service.in || die
+	if [[ ${PV} == "9999" ]]; then
+		eautoreconf
+	else
+		# Set revision number
+		sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-gentoo/" META || die "Could not set Gentoo release"
 	fi
-	autotools-utils_src_prepare
+
+	if use python; then
+		pushd contrib/pyzfs >/dev/null || die
+		distutils-r1_src_prepare
+		popd >/dev/null || die
+	fi
+
+	# prevent errors showing up on zfs-mount stop, #647688
+	# openrc will unmount all filesystems anyway.
+	sed -i "/^ZFS_UNMOUNT=/ s/yes/no/" etc/init.d/zfs.in || die
 }
 
 src_configure() {
 	use custom-cflags || strip-flags
-	local myeconfargs=(
+
+	local myconf=(
 		--bindir="${EPREFIX}/bin"
+		--enable-shared
+		--enable-systemd
+		--enable-sysvinit
+		--localstatedir="${EPREFIX}/var"
 		--sbindir="${EPREFIX}/sbin"
 		--with-config=user
 		--with-dracutdir="${EPREFIX}/usr/lib/dracut"
@@ -109,109 +137,84 @@ src_configure() {
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		$(use_enable debug)
+		$(use_enable python pyzfs)
+		$(use_enable static-libs static)
 	)
-	autotools-utils_src_configure
 
-	# prepare systemd unit and helper script
-	cat "${FILESDIR}/zfs.service.in" | \
-		sed -e "s:@sbindir@:${EPREFIX}/sbin:g" \
-			-e "s:@sysconfdir@:${EPREFIX}/etc:g" \
-		> "${T}/zfs.service" || die
-	cat "${FILESDIR}/zfs-init.sh.in" | \
-		sed -e "s:@sbindir@:${EPREFIX}/sbin:g" \
-			-e "s:@sysconfdir@:${EPREFIX}/etc:g" \
-		> "${T}/zfs-init.sh" || die
-	if use kernel-builtin
-	then
-		sed -i -e '/modprobe\ zfs/d' "${T}/zfs.service" || die
+	econf "${myconf[@]}"
+}
+
+src_compile() {
+	default
+	if use python; then
+		pushd contrib/pyzfs >/dev/null || die
+		distutils-r1_src_compile
+		popd >/dev/null || die
 	fi
 }
 
 src_install() {
-	autotools-utils_src_install
-	gen_usr_ldscript -a uutil nvpair zpool zfs zfs_core
-	use test-suite || rm -rf "${ED}usr/share/zfs"
+	default
 
-	newbashcomp "${FILESDIR}/bash-completion-r1" zfs
+	gen_usr_ldscript -a uutil nvpair zpool zfs zfs_core
+
+	use test-suite || rm -rf "${ED}/usr/share/zfs"
+
+	if ! use static-libs; then
+		find "${ED}/" -name '*.la' -delete || die
+	fi
+
+	dobashcomp contrib/bash_completion.d/zfs
 	bashcomp_alias zfs zpool
 
-	exeinto /usr/libexec
-	doexe "${T}/zfs-init.sh"
-	systemd_dounit "${T}/zfs.service"
+	# strip executable bit from conf.d file
+	fperms 0644 /etc/conf.d/zfs
+
+	if use python; then
+		pushd contrib/pyzfs >/dev/null || die
+		distutils-r1_src_install
+		popd >/dev/null || die
+	fi
+
+	# enforce best available python implementation
+	python_setup
+	python_fix_shebang "${ED}/bin"
 }
 
 pkg_postinst() {
-	if ! use kernel-builtin && [ ${PV} = "9999" ]
-	then
+	if use rootfs; then
+		if ! has_version sys-kernel/genkernel && ! has_version sys-kernel/dracut; then
+			elog "root on zfs requires initramfs to boot"
+			elog "the following packages known to provide one and tested on regular basis:"
+			elog "  sys-kernel/dracut"
+			elog "  sys-kernel/genkernel"
+		fi
+
+		if has_version "<=sys-kernel/genkernel-3.5.3.3"; then
+			einfo "genkernel version 3.5.3.3 and earlier does NOT support"
+			einfo " unlocking pools with native zfs encryption enabled at boot"
+			einfo " use dracut or >=genkernel-4 if you requre this functionality"
+		fi
+	fi
+
+	if ! use kernel-builtin && [[ ${PV} = "9999" ]]; then
 		einfo "Adding ${P} to the module database to ensure that the"
 		einfo "kernel modules and userland utilities stay in sync."
 		update_moduledb
 	fi
 
-	if [ -e "${EROOT}etc/runlevels/boot/zfs" ]
-	then
-		einfo 'The zfs boot script has been split into the zfs-import,'
-		einfo 'zfs-mount and zfs-share scripts.'
-		einfo
-		einfo 'You had the zfs script in your boot runlevel. For your'
-		einfo 'convenience, it has been automatically removed and the three'
-		einfo 'scripts that replace it have been configured to start.'
-		einfo 'The zfs-import and zfs-mount scripts have been added to the boot'
-		einfo 'runlevel while the zfs-share script is in the default runlevel.'
-
-		rm "${EROOT}etc/runlevels/boot/zfs"
-		ln -snf "${EROOT}etc/init.d/zfs-import" \
-			"${EROOT}etc/runlevels/boot/zfs-import"
-		ln -snf "${EROOT}etc/init.d/zfs-mount" \
-			"${EROOT}etc/runlevels/boot/zfs-mount"
-		ln -snf "${EROOT}etc/init.d/zfs-share" \
-			"${EROOT}etc/runlevels/default/zfs-share"
-	else
-		[ -e "${EROOT}etc/runlevels/boot/zfs-import" ] || \
-			einfo "You should add zfs-import to the boot runlevel."
-		[ -e "${EROOT}etc/runlevels/boot/zfs-mount" ] || \
-			einfo "You should add zfs-mount to the boot runlevel."
-		[ -e "${EROOT}etc/runlevels/default/zfs-share" ] || \
-			einfo "You should add zfs-share to the default runlevel."
-	fi
-
-	if [ -e "${EROOT}etc/runlevels/default/zed" ]
-	then
-		einfo 'The downstream OpenRC zed script has replaced by the upstream'
-		einfo 'OpenRC zfs-zed script.'
-		einfo
-		einfo 'You had the zed script in your default runlevel. For your'
-		einfo 'convenience, it has been automatically removed and the zfs-zed'
-		einfo 'script that replaced it has been configured to start.'
-
-		rm "${EROOT}etc/runlevels/boot/zed"
-		ln -snf "${EROOT}etc/init.d/zfs-sed" \
-			"${EROOT}etc/runlevels/default/zfs-zed"
-	else
-		[ -e "${EROOT}etc/runlevels/default/zfs-zed" ] || \
-			einfo "You should add zfs-zed to the default runlevel."
-	fi
-
-	if [ -e "${EROOT}etc/runlevels/shutdown/zfs-shutdown" ]
-	then
-		einfo "The zfs-shutdown script is obsolete. Removing it from runlevel."
-		rm "${EROOT}etc/runlevels/shutdown/zfs-shutdown"
-	fi
-
-	systemd_reenable zfs-zed.service
-	systemd_reenable zfs-import-cache.service
-	systemd_reenable zfs-import-scan.service
-	systemd_reenable zfs-mount.service
-	systemd_reenable zfs-share.service
-	systemd_reenable zfs-import.target
-	systemd_reenable zfs.target
-	systemd_reenable zfs.service
-
+	[[ -e "${EROOT}/etc/runlevels/boot/zfs-import" ]] || \
+		einfo "You should add zfs-import to the boot runlevel."
+	[[ -e "${EROOT}/etc/runlevels/boot/zfs-mount" ]]|| \
+		einfo "You should add zfs-mount to the boot runlevel."
+	[[ -e "${EROOT}/etc/runlevels/default/zfs-share" ]] || \
+		einfo "You should add zfs-share to the default runlevel."
+	[[ -e "${EROOT}/etc/runlevels/default/zfs-zed" ]] || \
+		einfo "You should add zfs-zed to the default runlevel."
 }
 
 pkg_postrm() {
-	if ! use kernel-builtin && [ ${PV} = "9999" ]
-	then
+	if ! use kernel-builtin && [[ ${PV} == "9999" ]]; then
 		remove_moduledb
 	fi
 }

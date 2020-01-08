@@ -1,14 +1,14 @@
-# Copyright 1999-2019 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Brian Evans <grknight@gentoo.org> (23 Nov 2015)
+# Brian Evans <grknight@gentoo.org> (2015-11-23)
 # unmask galera for dev-db/mariadb
 >=dev-db/mariadb-10.1.0 -galera
 
-# Brent Baude <ranger@gentoo.org> (06 Jan 2010)
+# Brent Baude <ranger@gentoo.org> (2010-01-06)
 # masking toolame for mplayer bug 280281
 media-video/mplayer toolame
 
-# Brent Baude <ranger@gentoo.org> (31 Dec 2009)
+# Brent Baude <ranger@gentoo.org> (2009-12-31)
 # Masking for bug 274847
 app-admin/conky apcupsd

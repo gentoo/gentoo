@@ -13,9 +13,15 @@ EGIT_REPO_URI="${HOMEPAGE}"
 LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS=""
+REQUIRED_USE=${PYTHON_REQUIRED_USE}
+
 BDEPEND="
 	dev-python/beautifulsoup[${PYTHON_USEDEP}]
 	dev-python/markdown[${PYTHON_USEDEP}]
+	${PYTHON_DEPS}
+"
+RDEPEND="
+	${BDEPEND}
 "
 
 src_compile() {
@@ -23,6 +29,7 @@ src_compile() {
 }
 
 src_test() {
+	local ARCH= CFLAGS= CXXFLAGS= LDFLAGS=
 	./do -j$(makeopts_jobs) test || die
 }
 

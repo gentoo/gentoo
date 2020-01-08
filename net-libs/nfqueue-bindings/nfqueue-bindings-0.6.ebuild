@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ DESCRIPTION="High-level language bindings for libnetfilter_queue"
 HOMEPAGE="https://github.com/chifflier/nfqueue-bindings"
 SRC_URI="https://github.com/chifflier/nfqueue-bindings/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-3"
 IUSE="perl python examples"
@@ -61,7 +61,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install PREFIX=/usr || die
+	emake DESTDIR="${D}" install PREFIX=/usr
 	docinto examples
 	use examples && dodoc examples/*
 }

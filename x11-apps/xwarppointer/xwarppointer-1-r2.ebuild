@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Program to move the mouse cursor"
 HOMEPAGE="http://www.ishiboo.com/~nirva/Projects/xwarppointer/"
-SRC_URI="http://www.ishiboo.com/~nirva/Projects/xwarppointer/${PN}.tar.gz"
+SRC_URI="http://www.ishiboo.com/~nirva/Projects/xwarppointer/${PN}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

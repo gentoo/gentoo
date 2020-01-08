@@ -1,0 +1,29 @@
+Missing #include, as the split_member.hpp include is not
+part of the nvp.hpp interface, and hence cannot be relied
+upon to be included transitively.
+
+Confirmed on
+https://github.com/boostorg/serialization/commit/c32a663c9963385430abc563f9c85f94d8da43a9#r36528430
+
+Bug: https://bugs.gentoo.org/703294
+
+--- a/boost/bimap/detail/map_view_iterator.hpp
++++ b/boost/bimap/detail/map_view_iterator.hpp
+@@ -22,6 +22,7 @@
+ 
+ #ifndef BOOST_BIMAP_DISABLE_SERIALIZATION
+   #include <boost/serialization/nvp.hpp>
++  #include <boost/serialization/split_member.hpp>
+ #endif // BOOST_BIMAP_DISABLE_SERIALIZATION
+ 
+ #include <boost/iterator/detail/enable_if.hpp>
+--- a/boost/bimap/detail/set_view_iterator.hpp
++++ b/boost/bimap/detail/set_view_iterator.hpp
+@@ -22,6 +22,7 @@
+ 
+ #ifndef BOOST_BIMAP_DISABLE_SERIALIZATION 
+   #include <boost/serialization/nvp.hpp>
++  #include <boost/serialization/split_member.hpp>
+ #endif // BOOST_BIMAP_DISABLE_SERIALIZATION
+ 
+ #include <boost/iterator/detail/enable_if.hpp>

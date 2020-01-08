@@ -10,8 +10,7 @@
 	</longdescription>
 	<use>
 		<flag name="cuda">Enable support for nVidia CUDA</flag>
-		<flag name="mpi">Enable support for MPI</flag>
-		<flag name="system-libs">Link with system instead of bundled libraries</flag>
+		<flag name="xla">XLA (Accelerated Linear Algebra) Optimizing Compiler for TensorFlow</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">tensorflow/tensorflow</remote-id>

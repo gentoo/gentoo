@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/689988
+--- a/configure.ac
++++ b/configure.ac
+@@ -31,7 +31,8 @@ dnl does it.
+ AC_CHECK_LIB(curses, tgetent, HaveLibTermcap=YES; LibTermcap=curses,
+   [AC_CHECK_LIB(ncurses, tgetent, HaveLibTermcap=YES; LibTermcap=ncurses,
+     [AC_CHECK_LIB(termcap, tgetent, HaveLibTermcap=YES; LibTermcap=termcap,
+-      HaveLibTermcap=NO; LibTermcap=not-installed)])])
++      [AC_CHECK_LIB(tinfo, tgetent, HaveLibTermcap=YES; LibTermcap=tinfo,
++        HaveLibTermcap=NO; LibTermcap=not-installed)])])])
+ 
+ if test "x$HaveLibTermcap" = xYES ; then
+   HaveLibEdit=YES

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ DESCRIPTION="MonMotha IPTables-based firewall script"
 HOMEPAGE="http://monmotha.mplug.org/firewall/"
 LICENSE="GPL-2"
 
-KEYWORDS="x86 ~amd64"
+KEYWORDS="~amd64 x86"
 IUSE=""
 SLOT="0"
 RDEPEND=">=net-firewall/iptables-1.2.5"

@@ -27,6 +27,7 @@ HOMEPAGE="https://github.com/Winetricks/winetricks https://wiki.winehq.org/Winet
 LICENSE="LGPL-2.1+"
 SLOT="0"
 IUSE="gtk kde rar test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	test? (

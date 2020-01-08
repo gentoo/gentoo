@@ -11,5 +11,6 @@
 		<flag name="kipi">Enable support for the KDE Image Plugin Interface</flag>
 		<flag name="mpris">Enable support for MPRIS2 interface, requiring <pkg>dev-qt/qtdbus</pkg> as dependency.
 		</flag>
+		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
 	</use>
 </pkgmetadata>

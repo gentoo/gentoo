@@ -1,0 +1,15 @@
+#
+# Service file corresponding to clamav-unofficial-sigs.timer.
+# Upstream provides a similar file, but with the wrong path
+# and running as root, so it's just less of a headache to
+# include our own.
+#
+
+[Unit]
+Description=ClamAV unofficial signature update service
+Documentation=man:clamav-unofficial-sigs(8)
+
+[Service]
+ExecStart=bash /usr/sbin/clamav-unofficial-sigs.sh
+User=clamav
+WorkingDirectory=/var/lib/clamav-unofficial-sigs

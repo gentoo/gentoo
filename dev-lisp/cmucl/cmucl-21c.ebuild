@@ -98,7 +98,7 @@ src_install() {
 		> "${D}"/usr/$(get_libdir)/cmucl/site-init.lisp \
 		|| die "Cannot fix site-init.lisp"
 	insinto /etc/common-lisp
-	doins "${FILESDIR}"/cmuclrc || die "Failed to install cmuclrc"
+	doins "${FILESDIR}"/cmuclrc
 
 	# Documentation
 	dodoc doc/cmucl/README

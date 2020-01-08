@@ -1,0 +1,53 @@
+From 20c3fc7cb4a4ec2a67642bd83ddb6e403488b0fe Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Tue, 22 Oct 2019 13:11:57 +0200
+Subject: [PATCH] PDF: fix build against Poppler 0.82.0dev
+
+---
+ gdal/frmts/pdf/pdfdataset.cpp | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/frmts/pdf/pdfdataset.cpp b/frmts/pdf/pdfdataset.cpp
+index 15537ca7fd7..8f944c40d30 100644
+--- a/frmts/pdf/pdfdataset.cpp
++++ b/frmts/pdf/pdfdataset.cpp
+@@ -205,7 +205,11 @@ class GDALPDFOutputDev : public SplashOutputDev
+         virtual void drawChar(GfxState *state, double x, double y,
+                               double dx, double dy,
+                               double originX, double originY,
+-                              CharCode code, int nBytes, Unicode *u, int uLen) override
++                              CharCode code, int nBytes,
++#if POPPLER_MAJOR_VERSION >= 1 || POPPLER_MINOR_VERSION >= 82
++                              const
++#endif
++                              Unicode *u, int uLen) override
+         {
+             if (bEnableText)
+                 SplashOutputDev::drawChar(state, x, y, dx, dy,
+From 94daceefebd464858888ddc85170c1a8c4bd50d7 Mon Sep 17 00:00:00 2001
+From: Even Rouault <even.rouault@spatialys.com>
+Date: Sun, 29 Sep 2019 23:55:18 +0200
+Subject: [PATCH] PDF: fix build against Poppler 0.82.0dev
+
+---
+ gdal/frmts/pdf/pdfdataset.cpp | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/frmts/pdf/pdfdataset.cpp b/frmts/pdf/pdfdataset.cpp
+index 3d68f92abe8..b3db5374227 100644
+--- a/frmts/pdf/pdfdataset.cpp
++++ b/frmts/pdf/pdfdataset.cpp
+@@ -265,7 +265,12 @@ class GDALPDFOutputDev : public SplashOutputDev
+ 
+         virtual void drawImage(GfxState *state, Object *ref, Stream *str,
+                                int width, int height, GfxImageColorMap *colorMap,
+-                               GBool interpolate, int *maskColors, GBool inlineImg) override
++                               GBool interpolate,
++#if POPPLER_MAJOR_VERSION >= 1 || POPPLER_MINOR_VERSION >= 82
++                               const
++#endif
++                               int *maskColors,
++                               GBool inlineImg) override
+         {
+             if (bEnableBitmap)
+                 SplashOutputDev::drawImage(state, ref, str,

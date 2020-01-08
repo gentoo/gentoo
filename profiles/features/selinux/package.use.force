@@ -1,25 +1,19 @@
 # Copyright 1999-2014 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Sven Vermeulen <swift@gentoo.org> (19 Apr 2013)
+# Sven Vermeulen <swift@gentoo.org> (2013-04-19)
 # sys-apps/policycoreutils (semanage command) uses sepolgen, which requires libselinux with USE="python". 
 # sys-apps/policycoreutils also requires libsemanage with USE="python"
 sys-libs/libselinux python
 sys-libs/libsemanage python
 
-# Sven Vermeulen <swift@gentoo.org> (21 May 2013)
+# Sven Vermeulen <swift@gentoo.org> (2013-05-21)
 # sys-apps/policycoreutils has PYTHON_USE_WITH="xml" set, so we force it
 # here to allow stages to build with USE=xml on python
 dev-lang/python xml
 
-# Jason Zaman <perfinion@gentoo.org> (03 Dec 2014)
+# Jason Zaman <perfinion@gentoo.org> (2014-12-03)
 # sys-apps/busybox has IUSE="+static", so force static-libs on its deps
 # so stages can build with no interacton. Bug #527938
 sys-libs/libselinux static-libs
 dev-libs/libpcre static-libs
-
-# Jason Zaman <perfinion@gentoo.org> (27 Jun 2015)
-# SystemD has no support in the SELinux policy at the moment.
-# Please see: https://wiki.gentoo.org/wiki/SELinux/FAQ#Can_I_use_SELinux_with_SystemD.3F
-gnome-base/gnome-settings-daemon openrc-force
-gnome-base/gnome-shell openrc-force

@@ -1,38 +1,41 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (14 May 2018)
+# Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
+# iasl is stable on amd64
+sys-firmware/seabios -binary
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2018-05-14)
 # Force the host target to avoid dependency hell
 dev-lang/rust llvm_targets_X86
 
-# NP-Hardass <NP-Hardass@gentoo.org> (23 May 2017)
+# NP-Hardass <NP-Hardass@gentoo.org> (2017-05-23)
 # Packages with optional 64-bit variant
 app-emulation/wine-vanilla -abi_x86_64
 app-emulation/wine-staging -abi_x86_64
-app-emulation/wine-d3d9 -abi_x86_64
-app-emulation/wine-any -abi_x86_64
 virtual/wine -abi_x86_64
 
-# Michał Górny <mgorny@gentoo.org> (08 Apr 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-04-08)
 # Require sandbox to be multilib-capable to avoid failures when building
 # multilib packages, #611292.
 sys-apps/sandbox abi_x86_32
 
-# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_X86
 sys-devel/clang llvm_targets_X86
 sys-devel/llvm llvm_targets_X86
 
-# Michał Górny <mgorny@gentoo.org> (02 Sep 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-09-02)
 # Packages with optional 64-bit variant.
 www-plugins/adobe-flash -abi_x86_64
 
-# Diego Elio Pettenò <flameeyes@gmail.com> (21 Apr 2011)
+# Diego Elio Pettenò <flameeyes@gmail.com> (2011-04-21)
 # The plugin is 32-bit only (and I'm not even sure if it works with
 # modern iscan); make sure it only installs the firmware for amd64!
 media-gfx/iscan-plugin-gt-f500 minimal
 
-# <blubb@gentoo.org> (23 Oct 2006)
+# <blubb@gentoo.org> (2006-10-23)
 # upstream forces sse2 on regardless of what the use flag is
 dev-libs/openssl cpu_flags_x86_sse2
+dev-libs/openssl-compat cpu_flags_x86_sse2

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit eutils python-single-r1
 
@@ -36,7 +36,7 @@ src_prepare() {
 src_compile() { :; }
 
 src_install() {
-	emake -j1 doc-install install install-links DESTDIR="${D}" || die
+	emake -j1 doc-install install install-links DESTDIR="${D}"
 
-	dodoc ChangeLog CHANGELOG.md README.adoc || die
+	dodoc ChangeLog CHANGELOG.md README.adoc
 }

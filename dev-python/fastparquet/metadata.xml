@@ -19,8 +19,5 @@
   </upstream>
   <use>
     <flag name="brotli">Enable support for brotli compression</flag>    
-    <flag name="lz4">Enable support for lz4 compression</flag>
-    <flag name="snappy">Enable support for snappy compression</flag>
-    <flag name="zstd">Enable support for zstandard compression</flag>
   </use>
 </pkgmetadata>

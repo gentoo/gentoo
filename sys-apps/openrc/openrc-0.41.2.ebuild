@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic pam toolchain-funcs
+inherit flag-o-matic pam toolchain-funcs usr-ldscript
 
 DESCRIPTION="OpenRC manages the services, startup and shutdown of a host"
 HOMEPAGE="https://github.com/openrc/openrc/"
@@ -13,25 +13,23 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sh sparc x86"
 fi
 
 LICENSE="BSD-2"
 SLOT="0"
 IUSE="audit bash debug ncurses pam newnet prefix +netifrc selinux static-libs
-	unicode kernel_linux kernel_FreeBSD"
+	unicode"
 
-COMMON_DEPEND="kernel_FreeBSD? ( || ( >=sys-freebsd/freebsd-ubin-9.0_rc sys-process/fuser-bsd ) )
+COMMON_DEPEND="
 	ncurses? ( sys-libs/ncurses:0= )
 	pam? (
 		sys-auth/pambase
-		virtual/pam
+		sys-libs/pam
 	)
 	audit? ( sys-process/audit )
-	kernel_linux? (
-		sys-process/psmisc
-		!<sys-process/procps-3.3.9-r2
-	)
+	sys-process/psmisc
+	!<sys-process/procps-3.3.9-r2
 	selinux? (
 		sys-apps/policycoreutils
 		>=sys-libs/libselinux-2.6
@@ -44,11 +42,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	bash? ( app-shells/bash )
 	!prefix? (
-		kernel_linux? (
-			>=sys-apps/sysvinit-2.86-r6[selinux?]
-			virtual/tmpfiles
-		)
-		kernel_FreeBSD? ( sys-freebsd/freebsd-sbin )
+		>=sys-apps/sysvinit-2.86-r6[selinux?]
+		virtual/tmpfiles
 	)
 	selinux? (
 		>=sec-policy/selinux-base-policy-2.20170204-r4
@@ -84,13 +79,8 @@ src_compile() {
 		SH=$(usex bash /bin/bash /bin/sh)"
 
 	local brand="Unknown"
-	if use kernel_linux ; then
-		MAKE_ARGS="${MAKE_ARGS} OS=Linux"
-		brand="Linux"
-	elif use kernel_FreeBSD ; then
-		MAKE_ARGS="${MAKE_ARGS} OS=FreeBSD"
-		brand="FreeBSD"
-	fi
+	MAKE_ARGS="${MAKE_ARGS} OS=Linux"
+	brand="Linux"
 	export BRANDING="Gentoo ${brand}"
 	use prefix && MAKE_ARGS="${MAKE_ARGS} MKPREFIX=yes PREFIX=${EPREFIX}"
 	export DEBUG=$(usev debug)
@@ -124,9 +114,6 @@ src_install() {
 	gen_usr_ldscript libeinfo.so
 	gen_usr_ldscript librc.so
 
-	if ! use kernel_linux; then
-		keepdir /lib/rc/init.d
-	fi
 	keepdir /lib/rc/tmp
 
 	# Setup unicode defaults for silly unicode users
@@ -179,11 +166,7 @@ pkg_postinst() {
 	fi
 
 	# Added for 0.35.
-	if use kernel_linux && [[ ! -h "${EROOT}"/lib ]]; then
-		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
-			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
-		fi
-	elif ! use kernel_linux; then
+	if [[ ! -h "${EROOT}"/lib ]]; then
 		if [[ -d "${EROOT}$(get_libdir)"/rc ]]; then
 			cp -RPp "${EROOT}$(get_libdir)/rc" "${EROOT}"lib
 		fi

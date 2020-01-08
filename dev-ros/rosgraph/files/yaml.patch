@@ -1,0 +1,53 @@
+From 29053c4832229efa7160fb944c05e3bc82e11540 Mon Sep 17 00:00:00 2001
+From: Martijn Buijs <Martijn.buijs@gmail.com>
+Date: Tue, 23 Apr 2019 18:20:12 +0200
+Subject: [PATCH] Switch to yaml.safe_load(_all) to prevent YAMLLoadWarning
+ (#1688)
+
+* Switch to yaml.safe_load(_all) to prevent YAMLLoadWarning
+
+* Change all usages of yaml.load to yaml.safe_load
+
+* Extend PyYAML's SafeLoader and use it with `yaml.load`
+
+Also added convenience functions for using this loader for reuse in
+`roslaunch`
+
+* fix typo in rosparam.yaml_load_all
+
+* Modify Loader and SafeLoader in yaml module directly
+
+* Revert whitespace change
+
+* Revert unrelated change to import through global variable construction
+---
+ clients/rospy/src/rospy/client.py             |  2 +-
+ .../test/test_roslib_message.py               |  2 +-
+ .../client_verification/test_slave_api.py     |  2 +-
+ test/test_rosparam/test/check_rosparam.py     |  8 ++---
+ .../check_rosparam_command_line_online.py     |  2 +-
+ .../check_rosservice_command_line_online.py   |  4 +--
+ test/test_rostopic/test/test_rostopic_unit.py | 30 +++++++++----------
+ tools/rosbag/src/rosbag/bag.py                |  2 +-
+ tools/rosgraph/src/rosgraph/roslogging.py     |  2 +-
+ tools/roslaunch/src/roslaunch/loader.py       |  4 +--
+ .../test/unit/test_roslaunch_dump_params.py   |  4 +--
+ tools/rosparam/src/rosparam/__init__.py       |  7 ++++-
+ tools/rosservice/src/rosservice/__init__.py   |  4 +--
+ tools/rostopic/src/rostopic/__init__.py       |  6 ++--
+ tools/topic_tools/scripts/relay_field         |  2 +-
+ 15 files changed, 43 insertions(+), 38 deletions(-)
+
+diff --git a/tools/rosgraph/src/rosgraph/roslogging.py b/tools/rosgraph/src/rosgraph/roslogging.py
+index ffe975dab..bbf1d9f49 100644
+--- a/tools/rosgraph/src/rosgraph/roslogging.py
++++ b/tools/rosgraph/src/rosgraph/roslogging.py
+@@ -178,7 +178,7 @@ def configure_logging(logname, level=logging.INFO, filename=None, env=None):
+     os.environ['ROS_LOG_FILENAME'] = log_filename
+     if config_file.endswith(('.yaml', '.yml')):
+         with open(config_file) as f:
+-            dict_conf = yaml.load(f)
++            dict_conf = yaml.safe_load(f)
+         dict_conf.setdefault('version', 1)
+         logging.config.dictConfig(dict_conf)
+     else:

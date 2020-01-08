@@ -4,210 +4,250 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Feb 2019)
-# Unstable dependencies.
-media-gfx/digikam vkontakte
-media-plugins/kipi-plugins mediawiki vkontakte
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-21)
+# For bleeding edge features and testing, not generally suitable
+# for stable systems
+dev-lang/rust nightly parallel-compiler system-bootstrap
 
-# Brian Evans <grknight@gentoo.org> (06 Dec 2018)
-# Mask USE flag since argon2 dependency is not stable on most arches
-dev-lang/php argon2
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-18)
+# Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are stable
+kde-plasma/plasma-meta thunderbolt
 
-# Mikle Kolyada <zlogene@gentoo.org> (07 Nov 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-12-09)
+# Declared experimental, and dev-cpp/websocketpp not stable yet
+sci-libs/indilib websocket
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
+# sci-libs/vtk is not stable anymore
+media-libs/opencv vtk
+
+# Kent Fredric <kentnl@gentoo.org> (2019-08-29)
+# Support for DBD-mysql to use mariadb is sketchy. Use DBD-MariaDB
+# instead if you can.
+dev-perl/DBD-mysql mariadb
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-08-16)
+# dev-libs/libical[glib] was not stable tested, bug #689434
+=dev-libs/libical-3.0.5 glib
+
+# Michał Górny <mgorny@gentoo.org> (2019-07-31)
+# Freshly added test dependency for a test-restricted package.  Mask
+# the flag to avoid stabilizing it for the time being.
+dev-python/aiohttp-socks test
+
+# Kent Fredric <kentnl@gentoo.org> (2019-07-30)
+# These features require dev-perl/GD, which currently can't be
+# considered stable due to serious defects upstream. Bug #661634
+app-misc/gcstar stats
+app-misc/g15daemon perl
+dev-lang/php coverage
+dev-util/lcov png
+dev-perl/Business-ISBN barcode
+dev-perl/Template-Toolkit gd
+media-fonts/unifont utils fontforge
+media-video/vdrsync dvdr
+www-apps/bugzilla extras
+www-apps/otrs gd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-07-16)
+# sci-libs/dcmtk is not stable
+media-libs/openimageio dicom
+
+# Bernd Waibel <waebbl@gmail.com> (2019-05-22)
+# Marked experimental, needs build and runtime testing. Due to non-
+# available licenses for arnold and maya I can not test these addons.
+# Build and functional tests and reports on issues are appreciated!
+media-gfx/alembic arnold maya
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-05-10)
+# needs llvm slots which are not stable #678908
+# also prone to weird compilation failures
+# masking this for now, will readjust as situation changes
+>=dev-lang/rust-1.34 system-llvm
+
+# Mart Raudsepp <leio@gentoo.org> (2019-04-14)
+# Needs media-plugins/gst-plugins-chromaprint, which is not stable
+# anywhere yet.
+media-plugins/grilo-plugins chromaprint
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-02-16)
+# media-libs/opencv[contrib,contribdnn], net-libs/libmediawiki,
+# net-libs/libkvkontakte all not stable anywhere.
+kde-apps/kipi-plugins mediawiki vkontakte
+media-gfx/digikam dnn vkontakte
+
+# Mikle Kolyada <zlogene@gentoo.org> (2018-11-07)
 # sssd is only stable for amd64 and x86
 app-admin/sudo sssd
 
-# Andreas Sturmlechner <asturm@gentoo.org> (16 Oct 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-10-16)
 # app-misc/ddcutil is not yet stable.
 kde-plasma/powerdevil brightness-control
 
-# Michał Górny <mgorny@gentoo.org> (07 Jun 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-06-07)
 # sys-libs/netbsd-csu not stable yet.
 sys-devel/clang-runtime crt
 
-# Thomas Deutschmann <whissi@gentoo.org> (01 Jun 2018)
+# Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
 net-analyzer/wireshark doc
 
-# Andreas Sturmlechner <asturm@gentoo.org> (29 May 2018)
-# Depends on unstable media-libs/libaom, net-libs/srt
-media-video/vlc aom srt
-
-# Andreas Sturmlechner <asturm@gentoo.org> (21 May 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-21)
 # Depends on lots of unstable dependencies
 dev-python/s3fs test
 
-# Andreas Sturmlechner <asturm@gentoo.org> (03 Mar 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-03-03)
 # sci-geosciences/grass is not stable
 sci-geosciences/qgis grass
 
-# Thomas Beierlein <tomjbe@gentoo.org> (21 Mar 2018)
-# ~app-backup/bacula-9.0.6 does not compile with USE=libressl (bug #641492)
-~app-backup/bacula-9.0.6 libressl
-
-# Matthias Maier <tamiko@gentoo.org> (18 Mar 2018)
+# Matthias Maier <tamiko@gentoo.org> (2018-03-18)
 # dev-libs/capstone hasn't been stabilized yet
 app-emulation/qemu capstone
 
-# Kent Fredric <kentnl@gentoo.org> (3 Mar 2018)
+# Kent Fredric <kentnl@gentoo.org> (2018-03-03)
 # Not an officially supported configuration, as it causes unpredictable
 # fragility and/or dependency headaches due to the very narrow interop window
 # Bugs #649408, #641108, #640724
 dev-perl/DBD-SQLite system-sqlite
 
-# Ilya Tumaykin <itumaykin+gentoo@gmail.com> (13 Feb 2018)
-# Requires >=dev-lang/mujs-1.0.0 stabilized. mpv-0.27.2 is stabilized
-# due to a security bug, so we won't bother with javascript this time.
-~media-video/mpv-0.27.2 javascript
-
-# Andrey Grozin <grozin@gentoo.org> (24 Jan 2018)
+# Andrey Grozin <grozin@gentoo.org> (2018-01-24)
 # Depends on unstable dev-python/sphinx-gallery.
 # Bug #643840.
 dev-python/matplotlib doc
 
-# Michał Górny <mgorny@gentoo.org> (20 Jan 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-01-20)
 # Requires proprietary fetch-restricted package that is not suitable
 # for stabilization. Bug #645092.
 net-proxy/haproxy device-atlas
 
-# Bernard Cafarelli <voyageur@gentoo.org> (27 Nov 2017)
+# Bernard Cafarelli <voyageur@gentoo.org> (2017-11-27)
 # Dependencies have no stable keyword
 app-backup/backup-manager s3
 
-# Brian Evans <grknight@gentoo.org (6 Nov 2017)
+# Brian Evans <grknight@gentoo.org (2017-11-06)
 # Requires stable phpunit
 dev-php/PEAR-Text_Password test
 
-# Andreas Sturmlechner <asturm@gentoo.org> (22 Oct 2017)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-11-04)
+# Requires audacious, which is masked. Bug 632513
+media-libs/freeverb3 audacious jack
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-10-22)
 # Requires unmaintained unstable dependency net-libs/gloox.
 # The go flag requires stable masked dev-lang/go[gccgo].
 www-servers/uwsgi go pypy uwsgi_plugins_alarm_xmpp
 
-# Michael Palimaka <kensington@gentoo.org> (30 Sep 2017)
+# Michael Palimaka <kensington@gentoo.org> (2017-09-30)
 # Required dependeny is not stable
 sci-libs/gdal mdb
 
-# Tim Harder <radhermit@gentoo.org> (11 Sep 2017)
+# Tim Harder <radhermit@gentoo.org> (2017-09-11)
 # Requires guile-2 which is still unstable.
 >=net-irc/weechat-1.7 guile
 
-# Michael Palimaka <kensington@gentoo.org) (11 Aug 2017)
+# Michael Palimaka <kensington@gentoo.org) (2017-08-11)
 # Unstable dependencies.
 dev-util/rpmdevtools emacs
 
-# Andreas Sturmlechner <asturm@gentoo.org> (23 Mar 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-03-23)
 # Requires dev-lang/julia stabilisation, bug #613576
 kde-apps/cantor julia
 
-# Brian Dolbec <dolsen@gentoo.org> (14 Feb 2017)
+# Brian Dolbec <dolsen@gentoo.org> (2017-02-14)
 # This is stable masked as g-sorcery is being not actively developed.
 app-portage/layman g-sorcery
 
-# David Seifert <soap@gentoo.org> (12 Feb 2017)
+# David Seifert <soap@gentoo.org> (2017-02-12)
 # Unknown future, stable deps are hopelessly
 # broken, only allow for unstable keywords
 # Bug: #581058
 net-misc/asterisk osplookup
 
-# Michael Palimaka <kensington@gentoo.org (26 Jan 2017)
+# Michael Palimaka <kensington@gentoo.org (2017-01-26)
 # Requires testing version of media-libs/opencv
 media-libs/mlt opencv
 
-# Michael Palimaka <kensington@gentoo.org (18 Jan 2017)
+# Michael Palimaka <kensington@gentoo.org (2017-01-18)
 # www-client/weboob is horribly outdated and not stable
 app-office/kmymoney weboob
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (15 Jan 2017)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-01-15)
 # Has no stable reverse deps requiring this useflag
 # Stable-masking it so Boost 1.62 stabilization can go ahead
 sci-libs/vtk mpi
 
-# Alon Bar-Lev <alonbl@gentoo.org> (01 Jan 2017)
+# Alon Bar-Lev <alonbl@gentoo.org> (2017-01-01)
 # Will always require unstable packages.
 net-libs/gnutls test-full
 
-# Lars Wendler <polynomial-c@gentoo.org> (15 Dev 2016)
+# Lars Wendler <polynomial-c@gentoo.org> (2016-12-15)
 # Requires php:7.0 and ruby:2.2 being stable
 >=dev-libs/Ice-3.6.3 php ruby
 
-# Pacho Ramos <pacho@gentoo.org> (19 Aug 2016)
+# Pacho Ramos <pacho@gentoo.org> (2016-08-19)
 # Not ready to be stabilized yet.
 app-admin/packagekit-base entropy
 
-# Kristian Fiskerstrand <k_f@gentoo.org> (18 Aug 2016)
+# Kristian Fiskerstrand <k_f@gentoo.org> (2016-08-18)
 # Dropping stable for xtrabackup-bin, stable masking use
 # flag until a source based version that doesn't depend
 # on a vulnerable libgcrypt version is in tree
 dev-db/mariadb sst-xtrabackup
-dev-db/mariadb-galera sst-xtrabackup
 
-# William Hubbs <williamh@gentoo.org (13 Apr 2016)
-# Needs gcc-5 which is currently unstable
-dev-lang/go gccgo
-
-# Sergey Popov <pinkbyte@gentoo.org> (15 Feb 2016)
+# Sergey Popov <pinkbyte@gentoo.org> (2016-02-15)
 # Mask monitoring capabilities of Ganeti on stable branches
 app-emulation/ganeti monitoring
 
-# Pacho Ramos <pacho@gentoo.org> (15 May 2015)
+# Pacho Ramos <pacho@gentoo.org> (2015-05-15)
 # Version compatible with current ffmpeg is not ready to be stabilized
 # bug #539212
 app-emulation/vice ffmpeg
 
-# Jeroen Roovers <jer@gentoo.org> (26 Apr 2015)
+# Jeroen Roovers <jer@gentoo.org> (2015-04-26)
 # mongodb support is nice, but dev-libs/mongo-c-driver upstream is not ready
 # yet (bug #542210)
 net-analyzer/pmacct mongodb
-
-# Pacho Ramos <pacho@gentoo.org>
-# sci-visualization/paraview is not ready for stabilization yet
-# See bug #541012
-sci-libs/openfoam paraview
 
 # Ben de Groot <yngwin@gentoo.org>
 # Mask experimental feature on stable. This also needs not yet stable mupdf.
 app-text/qpdfview fitz
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (12 Feb 2015)
+# Andreas K. Huettel <dilfridge@gentoo.org> (2015-02-12)
 # Pulls in way too many unstable sci packages
 app-office/libreoffice coinmp
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (30 Oct 2014)
+# Andreas K. Huettel <dilfridge@gentoo.org> (2014-10-30)
 # Pulls in sci-libs/vtk with a lot of new dependencies; stabilizing
 # that will take some more time
 media-libs/opencv vtk
 
-# Mikle Kolyada <zlogene@gentoo.org> (16 Aug 2014)
+# Mikle Kolyada <zlogene@gentoo.org> (2014-08-16)
 # Not yet stabilized dependency, need more testing
 >=dev-perl/PDL-2.4.11 pdl2 pgplot
 
-# Samuli Suominen <ssuominen@gentoo.org> (01 Aug 2014)
+# Samuli Suominen <ssuominen@gentoo.org> (2014-08-01)
 # Optional (not required by anything in gentoo-x86) and fragile (based on
 # host system, like Java JRE version). Keep masked indefinately until
 # something starts requiring these.
 # https://bugs.gentoo.org/483372 and https://bugs.gentoo.org/508564
 media-libs/libcaca java mono
 
-# Alon Bar-Lev <alonbl@gentoo.org> (21 Jul 2014)
+# Alon Bar-Lev <alonbl@gentoo.org> (2014-07-21)
 # dev-libs/opencryptoki will not be stabile any time soon (bug#510204)
 app-crypt/tpm-tools pkcs11
 
-# Doug Goldstein <cardoe@gentoo.org> (12 Sep 2013)
-# Waiting on glusterfs maintainers in bug #484016
-app-emulation/qemu glusterfs
-
-# Ian Delaney <idella4@gentoo.org> (09 Dec 2013)
+# Ian Delaney <idella4@gentoo.org> (2013-12-09)
 # subsequent to the total inaction of the maintainer of
 # ocaml to honour / respond in any way to
 # Bug #486076, ocaml masked to allow xen to once again
 # become a stabilisable package
 app-emulation/xen-tools ocaml
 
-# Samuli Suominen <ssuominen@gentoo.org> (19 Mar 2014)
+# Samuli Suominen <ssuominen@gentoo.org> (2014-03-19)
 # Some open source OpenCL providers cause sandbox violation while accessing /dev/dri/card*
 # from a command like eg. `/usr/bin/mogrify -version`, see bug #472766
 media-gfx/imagemagick opencl
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (28 Mar 2013)
+# Andreas K. Huettel <dilfridge@gentoo.org> (2013-03-28)
 # Depends on unstable sci-libs/avogadrolibs
 kde-apps/kalzium editor

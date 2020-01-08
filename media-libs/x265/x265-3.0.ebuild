@@ -10,7 +10,7 @@ if [[ ${PV} = 9999* ]]; then
 	EHG_REPO_URI="https://bitbucket.org/multicoreware/x265"
 else
 	SRC_URI="https://bitbucket.org/multicoreware/x265/downloads/${PN}_${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="Library for encoding video streams into the H.265/HEVC format"
@@ -20,6 +20,7 @@ LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/169"
 IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 test"
+RESTRICT="!test? ( test )"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"

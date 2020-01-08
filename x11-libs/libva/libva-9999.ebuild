@@ -1,20 +1,19 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-if [[ ${PV} = *9999* ]] ; then # Live ebuild
-	inherit git-r3
-	EGIT_BRANCH=master
-	EGIT_REPO_URI="https://github.com/intel/libva"
-	AUTOTOOLS_AUTORECONF="yes"
-fi
-inherit autotools-multilib eapi7-ver multilib
+inherit multilib-minimal
 
 DESCRIPTION="Video Acceleration (VA) API for Linux"
 HOMEPAGE="https://01.org/linuxmedia/vaapi"
 
-if [[ ${PV} != *9999* ]] ; then
+if [[ ${PV} = *9999* ]] ; then # Live ebuild
+	inherit autotools git-r3
+	EGIT_BRANCH=master
+	EGIT_REPO_URI="https://github.com/intel/libva"
+	AUTOTOOLS_AUTORECONF="yes"
+else
 	SRC_URI="https://github.com/intel/libva/releases/download/${PV}/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
 fi
@@ -38,7 +37,8 @@ RDEPEND="
 		>=x11-libs/libXfixes-5.0.1[${MULTILIB_USEDEP}]
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 "
 PDEPEND="video_cards_nvidia? ( >=x11-libs/libva-vdpau-driver-0.7.4-r1[${MULTILIB_USEDEP}] )
@@ -62,6 +62,11 @@ MULTILIB_WRAPPED_HEADERS=(
 /usr/include/va/va_glx.h
 )
 
+src_prepare() {
+	default
+	[[ "${PV}" == *9999* ]] && eautoreconf
+}
+
 multilib_src_configure() {
 	local myeconfargs=(
 		--with-drivers-path="${EPREFIX}/usr/$(get_libdir)/va/drivers"
@@ -70,5 +75,9 @@ multilib_src_configure() {
 		$(use_enable wayland)
 		$(use_enable drm)
 	)
-	autotools-utils_src_configure
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+}
+
+multilib_src_install_all() {
+	find "${ED}" -type f -name "*.la" -delete || die
 }

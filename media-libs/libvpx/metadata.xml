@@ -13,4 +13,7 @@
 		<flag name="postproc">Enable additional post processing filters</flag>
 		<flag name="svc">Enable spatial-svc support (experimental)</flag>
 	</use>
+	<upstream>
+		<remote-id type="cpe">cpe:/a:john_koleszar:libvpx</remote-id>
+	</upstream>
 </pkgmetadata>

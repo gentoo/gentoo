@@ -14,13 +14,12 @@ DESCRIPTION="HE-AAC+ v2 library, based on the reference implementation"
 HOMEPAGE="http://tipok.org.ua/node/17"
 SRC_URI="
 	https://dev.gentoo.org/~aballier/${P}.tar.gz
-	http://tipok.ath.cx/downloads/media/aac+/libaacplus/${P}.tar.gz
 	http://217.20.164.161/~tipok/aacplus/${P}.tar.gz
 	http://www.3gpp.org/ftp/Specs/archive/26_series/26.410/${TGPPDIST}"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 arm hppa ppc ppc64 x86"
 IUSE="fftw static-libs"
 RESTRICT="bindist mirror"
 

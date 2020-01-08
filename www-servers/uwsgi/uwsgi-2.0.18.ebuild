@@ -1,13 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 RUBY_OPTIONAL="yes"
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 PHP_EXT_INI="no"
 PHP_EXT_NAME="dummy"
@@ -103,7 +103,7 @@ CDEPEND="
 	uwsgi_plugins_emperor_pg? ( dev-db/postgresql:= )
 	uwsgi_plugins_geoip? ( dev-libs/geoip )
 	uwsgi_plugins_ldap? ( net-nds/openldap )
-	uwsgi_plugins_pam? ( virtual/pam )
+	uwsgi_plugins_pam? ( sys-libs/pam )
 	uwsgi_plugins_sqlite? ( dev-db/sqlite:3 )
 	uwsgi_plugins_rados? ( sys-cluster/ceph )
 	uwsgi_plugins_router_access? ( sys-apps/tcp-wrappers )
@@ -111,17 +111,18 @@ CDEPEND="
 	uwsgi_plugins_systemd_logger? ( sys-apps/systemd )
 	uwsgi_plugins_webdav? ( dev-libs/libxml2 )
 	uwsgi_plugins_xslt? ( dev-libs/libxslt )
-	go? ( dev-lang/go:=[gccgo] )
+	go? ( sys-devel/gcc:=[go] )
 	lua? ( dev-lang/lua:= )
 	mono? ( dev-lang/mono:= )
 	perl? ( dev-lang/perl:= )
 	php? (
+		net-libs/libnsl
 		php_targets_php5-6? ( dev-lang/php:5.6[embed] )
 		php_targets_php7-1? ( dev-lang/php:7.1[embed] )
 		php_targets_php7-2? ( dev-lang/php:7.2[embed] )
 		php_targets_php7-3? ( dev-lang/php:7.3[embed] )
 	)
-	pypy? ( virtual/pypy )
+	pypy? ( dev-python/pypy )
 	python? ( ${PYTHON_DEPS} )
 	python_asyncio? ( virtual/python-greenlet[${PYTHON_USEDEP}] )
 	python_gevent? ( >=dev-python/gevent-1.3.5[${PYTHON_USEDEP}] )
@@ -389,12 +390,10 @@ pkg_postinst() {
 	use python && python_foreach_impl python_pkg_postinst
 
 	if use ruby ; then
-		for ruby in $USE_RUBY; do
-			if use ruby_targets_${ruby} ; then
-				elog "  '--plugins rack_${ruby/.}' for ${ruby}"
-				elog "  '--plugins fiber_${ruby/.}' for ${ruby} fibers"
-				elog "  '--plugins rbthreads_${ruby/.}' for ${ruby} rbthreads"
-			fi
+		for ruby in $(ruby_get_use_implementations) ; do
+			elog "  '--plugins rack_${ruby/.}' for ${ruby}"
+			elog "  '--plugins fiber_${ruby/.}' for ${ruby} fibers"
+			elog "  '--plugins rbthreads_${ruby/.}' for ${ruby} rbthreads"
 		done
 	fi
 }

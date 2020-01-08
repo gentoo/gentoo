@@ -1,0 +1,15 @@
+'For DEB', so why do they install it by default?
+Only redundant here, and a minor QA offence.
+
+--- a/CMakeLists.txt	2018-02-14 09:42:31.000000000 +0100
++++ b/CMakeLists.txt	2019-09-30 23:47:11.529985366 +0200
+@@ -102,9 +102,4 @@
+ set(CPACK_PACKAGE_FILE_NAME
+     "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_PACKAGE_RELEASE}.${CMAKE_SYSTEM_PROCESSOR}")
+ 
+-# For DEB
+-install(FILES ${CPACK_RESOURCE_FILE_LICENSE}
+-        DESTINATION share/doc/${CPACK_PACKAGE_NAME}
+-        RENAME copyright)
+-
+ include(CPack)

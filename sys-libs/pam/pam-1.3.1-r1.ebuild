@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools db-use fcaps multilib-minimal toolchain-funcs
+inherit autotools db-use fcaps multilib-minimal toolchain-funcs usr-ldscript
 
 DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
 HOMEPAGE="https://github.com/linux-pam/linux-pam"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/linux-pam/linux-pam/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="|| ( BSD GPL-2 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="audit berkdb +cracklib debug nis nls +pie selinux static-libs"
 
 BDEPEND="app-text/docbook-xml-dtd:4.1.2
@@ -22,6 +22,7 @@ BDEPEND="app-text/docbook-xml-dtd:4.1.2
 	sys-devel/flex
 	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	nls? ( sys-devel/gettext )"
+
 DEPEND="
 	audit? ( >=sys-process/audit-2.2.2[${MULTILIB_USEDEP}] )
 	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
@@ -29,9 +30,8 @@ DEPEND="
 	selinux? ( >=sys-libs/libselinux-2.2.2-r4[${MULTILIB_USEDEP}] )
 	nis? ( >=net-libs/libtirpc-0.2.4-r2[${MULTILIB_USEDEP}] )
 	nls? ( >=virtual/libintl-0-r1[${MULTILIB_USEDEP}] )"
-RDEPEND="${DEPEND}
-	!sys-auth/openpam
-	!sys-auth/pam_userdb"
+
+RDEPEND="${DEPEND}"
 
 PDEPEND="sys-auth/pambase"
 
@@ -81,21 +81,7 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install \
 		sepermitlockdir="${EPREFIX}/run/sepermit"
 
-	local prefix
-	if multilib_is_native_abi; then
-		prefix=
-		gen_usr_ldscript -a pam pamc pam_misc
-	else
-		prefix=/usr
-	fi
-
-	# create extra symlinks just in case something depends on them...
-	local lib
-	for lib in pam pamc pam_misc; do
-		if ! [[ -f "${ED}"${prefix}/$(get_libdir)/lib${lib}$(get_libname) ]]; then
-			dosym lib${lib}$(get_libname 0) ${prefix}/$(get_libdir)/lib${lib}$(get_libname)
-		fi
-	done
+	gen_usr_ldscript -a pam pam_misc pamc
 }
 
 multilib_src_install_all() {

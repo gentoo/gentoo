@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="mirror://gnu/guile/${P}.tar.gz"
 
 LICENSE="LGPL-3+"
 SLOT="12/2.2-1" # libguile-2.2.so.1 => 2.2-1
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug debug-malloc +deprecated +networking +nls +regex +threads" # upstream recommended +networking +nls
 REQUIRED_USE="regex" # workaround for bug 596322
 RESTRICT="strip"
@@ -37,6 +37,9 @@ DOCS=( GUILE-VERSION HACKING README )
 src_configure() {
 	# see bug #178499
 	filter-flags -ftree-vectorize
+
+	# see bug #676468
+	mv prebuilt/32-bit-big-endian{,.broken} || die
 
 	econf \
 		--disable-error-on-warning \

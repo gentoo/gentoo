@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Eukaryotic gene predictor"
 HOMEPAGE="http://augustus.gobics.de/"
@@ -15,30 +15,31 @@ KEYWORDS="amd64 x86"
 IUSE="examples"
 
 S="${WORKDIR}/${PN}.${PV}"
+PATCHES=( "${FILESDIR}"/${P}-sane-build.patch )
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-sane-build.patch
+src_configure() {
 	tc-export CC CXX
 }
 
 src_compile() {
-	emake clean && emake
+	emake clean
+	default
 }
 
 src_install() {
 	dobin bin/*
-#	dobin src/{augustus,etraining,consensusFinder,curve2hints,fastBlockSearch,prepareAlign}
 
 	exeinto /usr/libexec/${PN}
 	doexe scripts/*.p*
+
 	insinto /usr/libexec/${PN}
 	doins scripts/*.conf
 
 	insinto /usr/share/${PN}
 	doins -r config
 
-	echo "AUGUSTUS_CONFIG_PATH=\"/usr/share/${PN}/config\"" > "${S}/99${PN}"
-	doenvd "${S}/99${PN}"
+	echo "AUGUSTUS_CONFIG_PATH=\"/usr/share/${PN}/config\"" > 99${PN} || die
+	doenvd 99${PN}
 
 	dodoc -r README.TXT HISTORY.TXT docs/*.{pdf,txt}
 

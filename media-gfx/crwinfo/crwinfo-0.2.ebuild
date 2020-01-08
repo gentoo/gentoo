@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Canon raw image (CRW) information and thumbnail extractor"
 HOMEPAGE="http://freshmeat.net/projects/crwinfo/"
@@ -11,17 +11,15 @@ SRC_URI="http://neuemuenze.heim1.tu-clausthal.de/~sven/crwinfo/CRWInfo-${PV}.tar
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="x86 ppc sparc amd64 alpha ia64 hppa ppc64"
-IUSE=""
+KEYWORDS="alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 
 S="${WORKDIR}/CRWInfo-${PV}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}.patch
-	sed \
-		-e '/gcc/s:^.*$:\t$(CC) $(CFLAGS) -Wall -c crwinfo.c\n\t$(CC) $(LDFLAGS) -o crwinfo crwinfo.o:g' \
-		-i Makefile || die
+PATCHES=( "${FILESDIR}"/${P}.patch )
+
+src_compile() {
 	tc-export CC
+	emake crwinfo
 }
 
 src_install() {

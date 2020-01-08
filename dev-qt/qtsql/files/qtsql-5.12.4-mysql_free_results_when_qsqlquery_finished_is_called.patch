@@ -1,0 +1,43 @@
+From 97d8be10cd97cf997286ed0ca0a5d8b360fa942e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Daniel=20Vr=C3=A1til?= <dvratil@kde.org>
+Date: Sat, 1 Dec 2018 17:56:41 +0100
+Subject: [PATCH] MySQL: Free the results when QSqlQuery::finished() is called
+
+Calling mysql_stmt_free_result() frees the results of the last
+executed query while keeping the prepared statement valid. This
+allows one to keep around prepared QSqlQueries without the overhead
+of keeping all the results in memory.
+
+Change-Id: I4589e90857cc4e9a6f9612799bfca967a67e2ab2
+Reviewed-by: Thiago Macieira <thiago.macieira@intel.com>
+Reviewed-by: Andy Shaw <andy.shaw@qt.io>
+---
+ src/plugins/sqldrivers/mysql/qsql_mysql.cpp |   10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+--- a/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
++++ b/src/plugins/sqldrivers/mysql/qsql_mysql.cpp
+@@ -197,6 +197,7 @@ protected:
+     QSqlRecord record() const override;
+     void virtual_hook(int id, void *data) override;
+     bool nextResult() override;
++    void detachFromResultSet() override;
+ 
+ #if MYSQL_VERSION_ID >= 40108
+     bool prepare(const QString &stmt) override;
+@@ -804,6 +805,15 @@ int QMYSQLResult::numRowsAffected()
+     return d->rowsAffected;
+ }
+ 
++void QMYSQLResult::detachFromResultSet()
++{
++    Q_D(QMYSQLResult);
++
++    if (d->preparedQuery) {
++        mysql_stmt_free_result(d->stmt);
++    }
++}
++
+ QVariant QMYSQLResult::lastInsertId() const
+ {
+     Q_D(const QMYSQLResult);

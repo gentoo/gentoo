@@ -48,6 +48,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="tmux vim test"
+RESTRICT="!test? ( test )"
 
 DEPEND="virtual/rust"
 RDEPEND="

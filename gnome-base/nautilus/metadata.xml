@@ -6,13 +6,12 @@
 	<name>Gentoo GNOME Desktop</name>
 </maintainer>
 <use>
+	<flag name="gstreamer">Enable the Audio/Video file properties page</flag>
 	<flag name="packagekit">Use packagekit to search for programs to open
 		unknown file types</flag>
 	<flag name="previewer">Use <pkg>gnome-extra/sushi</pkg> to preview files
 		from the file mananger</flag>
 	<flag name="sendto">Enable the nautilus-sendto extension to send files to
 		various locations/devices</flag>
-	<flag name="tracker">Add support for <pkg>app-misc/tracker</pkg> search</flag>
-	<flag restrict="&gt;=gnome-base/nautilus-3.22" name="tracker">Add support for <pkg>app-misc/tracker</pkg> search and batch rename</flag>
 </use>
 </pkgmetadata>

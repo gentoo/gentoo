@@ -6,6 +6,7 @@
 		<name>Gentoo MATE Desktop</name>
 	</maintainer>
 	<use>
+		<flag name="accountsservice">Add support for AccountsService</flag>
 		<flag name="appindicator">Add support for AppIndicator</flag>
 	</use>
 	<upstream>

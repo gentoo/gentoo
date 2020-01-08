@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Re-add Winnt libc
@@ -19,7 +19,6 @@ caps
 cdr
 coreaudio
 dga
-directfb
 djbfft
 dri
 dvdr
@@ -36,7 +35,7 @@ ibm
 ieee1394
 ipod
 ipv6
-lm_sensors
+lm-sensors
 ncurses
 opengl
 oss

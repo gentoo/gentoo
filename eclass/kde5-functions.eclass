@@ -4,115 +4,41 @@
 # @ECLASS: kde5-functions.eclass
 # @MAINTAINER:
 # kde@gentoo.org
-# @SUPPORTED_EAPIS: 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: Common ebuild functions for packages based on KDE Frameworks 5.
 # @DESCRIPTION:
 # This eclass contains functions shared by the other KDE eclasses and forms
 # part of their public API.
 #
-# This eclass should (almost) never be inherited directly by an ebuild.
+# This eclass must not be inherited directly by an ebuild.
 
 if [[ -z ${_KDE5_FUNCTIONS_ECLASS} ]]; then
 _KDE5_FUNCTIONS_ECLASS=1
 
-inherit toolchain-funcs
-
 case ${EAPI} in
 	7) ;;
-	6) inherit eapi7-ver ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
-esac
-
-# @ECLASS-VARIABLE: KDE_BUILD_TYPE
-# @DESCRIPTION:
-# If PV matches "*9999*", this is automatically set to "live".
-# Otherwise, this is automatically set to "release".
-KDE_BUILD_TYPE="release"
-if [[ ${PV} = *9999* ]]; then
-	KDE_BUILD_TYPE="live"
-fi
-export KDE_BUILD_TYPE
-
-case ${CATEGORY} in
-	kde-frameworks)
-		[[ ${KDE_BUILD_TYPE} = live ]] && : ${FRAMEWORKS_MINIMAL:=9999}
-		;;
-	kde-plasma)
-		[[ ${PV} = 5.14.5 ]] && : ${FRAMEWORKS_MINIMAL:=5.52.0}
-		if [[ ${KDE_BUILD_TYPE} = live && ${PV} != 5.??.49* ]]; then
-			: ${FRAMEWORKS_MINIMAL:=9999}
-			: ${QT_MINIMAL:=5.12.1}
-		fi
-		;;
-	kde-apps)
-		[[ ${PV} = 19.04* ]] && : ${FRAMEWORKS_MINIMAL:=5.56.0}
-		;;
 esac
 
 # @ECLASS-VARIABLE: QT_MINIMAL
 # @DESCRIPTION:
 # Minimum version of Qt to require. This affects add_qt_dep.
-: ${QT_MINIMAL:=5.11.1}
+: ${QT_MINIMAL:=5.12.3}
 
 # @ECLASS-VARIABLE: FRAMEWORKS_MINIMAL
 # @DESCRIPTION:
 # Minimum version of Frameworks to require. This affects add_frameworks_dep.
-: ${FRAMEWORKS_MINIMAL:=5.54.0}
+: ${FRAMEWORKS_MINIMAL:=5.60.0}
 
 # @ECLASS-VARIABLE: PLASMA_MINIMAL
 # @DESCRIPTION:
 # Minimum version of Plasma to require. This affects add_plasma_dep.
-: ${PLASMA_MINIMAL:=5.14.5}
+: ${PLASMA_MINIMAL:=5.15.5}
 
 # @ECLASS-VARIABLE: KDE_APPS_MINIMAL
 # @DESCRIPTION:
 # Minimum version of KDE Applications to require. This affects add_kdeapps_dep.
-: ${KDE_APPS_MINIMAL:=18.12.3}
-
-# @ECLASS-VARIABLE: KDE_GCC_MINIMAL
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# Minimum version of active GCC to require. This is checked in kde5.eclass in
-# kde5_pkg_pretend and kde5_pkg_setup.
-
-# @ECLASS-VARIABLE: KDEBASE
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# This gets set to a non-zero value when a package is considered a
-# kdevelop ebuild.
-if [[ ${KMNAME-${PN}} = kdevelop ]]; then
-	KDEBASE=kdevelop
-fi
-
-debug-print "${ECLASS}: ${KDEBASE} ebuild recognized"
-
-# @FUNCTION: _check_gcc_version
-# @INTERNAL
-# @DESCRIPTION:
-# Determine if the current GCC version is acceptable, otherwise die.
-_check_gcc_version() {
-	if [[ ${MERGE_TYPE} != binary && -v KDE_GCC_MINIMAL ]] && tc-is-gcc; then
-
-		local version=$(gcc-version)
-		local major=${version%.*}
-		local minor=${version#*.}
-		local min_major=${KDE_GCC_MINIMAL%.*}
-		local min_minor=${KDE_GCC_MINIMAL#*.}
-
-		debug-print "GCC version check activated"
-		debug-print "Version detected:"
-		debug-print "	- Full: ${version}"
-		debug-print "	- Major: ${major}"
-		debug-print "	- Minor: ${minor}"
-		debug-print "Version required:"
-		debug-print "	- Major: ${min_major}"
-		debug-print "	- Minor: ${min_minor}"
-
-		[[ ${major} -lt ${min_major} ]] || \
-				( [[ ${major} -eq ${min_major} && ${minor} -lt ${min_minor} ]] ) \
-			&& die "Sorry, but gcc-${KDE_GCC_MINIMAL} or later is required for this package (found ${version})."
-	fi
-}
+: ${KDE_APPS_MINIMAL:=19.04.3}
 
 # @FUNCTION: _add_category_dep
 # @INTERNAL
@@ -158,6 +84,7 @@ _add_category_dep() {
 # The output of this should be added directly to DEPEND/RDEPEND, and may be
 # wrapped in a USE conditional (but not an || conditional without an extra set
 # of parentheses).
+# PORTING: no replacement
 add_frameworks_dep() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -190,6 +117,7 @@ add_frameworks_dep() {
 # The output of this should be added directly to DEPEND/RDEPEND, and may be
 # wrapped in a USE conditional (but not an || conditional without an extra set
 # of parentheses).
+# PORTING: no replacement
 add_plasma_dep() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -222,6 +150,7 @@ add_plasma_dep() {
 # The output of this should be added directly to DEPEND/RDEPEND, and may be
 # wrapped in a USE conditional (but not an || conditional without an extra set
 # of parentheses).
+# PORTING: no replacement
 add_kdeapps_dep() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -254,6 +183,7 @@ add_kdeapps_dep() {
 # The output of this should be added directly to DEPEND/RDEPEND, and may be
 # wrapped in a USE conditional (but not an || conditional without an extra set
 # of parentheses).
+# PORTING: no replacement
 add_qt_dep() {
 	debug-print-function ${FUNCNAME} "$@"
 
@@ -266,10 +196,6 @@ add_qt_dep() {
 
 	if [[ -z ${version} ]]; then
 		version=${QT_MINIMAL}
-		if [[ ${1} = qtwebkit ]]; then
-			version=5.9.1
-			[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is disallowed for 'qtwebkit' in EAPI 7 and later"
-		fi
 	fi
 	if [[ -z ${slot} ]]; then
 		slot="5"
@@ -278,51 +204,11 @@ add_qt_dep() {
 	_add_category_dep dev-qt "${1}" "${2}" "${version}" "${slot}"
 }
 
-# @FUNCTION: get_kde_version [version]
-# @DESCRIPTION:
-# Translates an ebuild version into a major.minor KDE release version, taking
-# into account KDE's prerelease versioning scheme.
-# For example, get_kde_version 17.07.80 will return "17.08".
-# If the version equals 9999, "live" is returned.
-# If no version is specified, ${PV} is used.
-get_kde_version() {
-	[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is banned in EAPI 7 and later"
-	local ver=${1:-${PV}}
-	local major=$(ver_cut 1 ${ver})
-	local minor=$(ver_cut 2 ${ver})
-	local micro=$(ver_cut 3 ${ver})
-	if [[ ${ver} == 9999 ]]; then
-		echo live
-	else
-		(( micro < 50 )) && echo ${major}.${minor} || echo ${major}.$((minor + 1))
-	fi
-}
-
-# @FUNCTION: kde_l10n2lingua
-# @USAGE: <l10n>...
-# @INTERNAL
-# @DESCRIPTION:
-# Output KDE lingua flag name(s) (without prefix(es)) appropriate for
-# given l10n(s).
-kde_l10n2lingua() {
-	[[ ${EAPI} != 6 ]] && die "${FUNCNAME} is banned in EAPI 7 and later"
-	local l
-	for l; do
-		case ${l} in
-			ca-valencia) echo ca@valencia;;
-			sr-ijekavsk) echo sr@ijekavian;;
-			sr-Latn-ijekavsk) echo sr@ijekavianlatin;;
-			sr-Latn) echo sr@latin;;
-			uz-Cyrl) echo uz@cyrillic;;
-			*) echo "${l/-/_}";;
-		esac
-	done
-}
-
 # @FUNCTION: punt_bogus_dep
 # @USAGE: <prefix> <dependency>
 # @DESCRIPTION:
 # Removes a specified dependency from a find_package call with multiple components.
+# PORTING: Use ecm_punt_bogus_dep from ecm.eclass instead.
 punt_bogus_dep() {
 	local prefix=${1}
 	local dep=${2}

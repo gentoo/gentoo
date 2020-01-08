@@ -5,6 +5,9 @@
 		<email>polynomial-c@gentoo.org</email>
 		<name>Lars Wendler</name>
 	</maintainer>
+	<use>
+		<flag name="gdk-pixbuf">Enable gdk-pixbuf rendering</flag>
+	</use>
 	<longdescription>
 		IceWM is a window manager designed for speed, usability, and consistency.
 		It is able to emulate the looks of Motif, OS/2, and Windows, and allows you

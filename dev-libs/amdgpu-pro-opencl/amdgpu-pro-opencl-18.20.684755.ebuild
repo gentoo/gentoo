@@ -16,9 +16,9 @@ SRC_URI="${SUPER_PN}-${MY_PV}-ubuntu-16.04.tar.xz"
 
 LICENSE="AMD-GPU-PRO-EULA"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 
-RESTRICT="mirror fetch strip"
+RESTRICT="bindist mirror fetch strip"
 
 COMMON="app-eselect/eselect-opencl
 	dev-libs/ocl-icd"
@@ -74,6 +74,11 @@ pkg_postinst() {
 		ewarn "will almost certainly conflict with it. This might change once AMDGPU-Pro"
 		ewarn "has become officially supported by Gentoo."
 	fi
+
+	elog ""
+	elog "This package is now DEPRECATED on amd64 in favour of dev-libs/rocm-opencl-runtime."
+	elog "Moreover, it only provides legacy AMDGPU-Pro OpenCL libraries which are not compatible with Vega 10 and newer GPUs."
+	elog ""
 
 	"${ROOT}"/usr/bin/eselect opencl set --use-old ocl-icd
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ DESCRIPTION="efficient generation of subroutines via string eval"
 SLOT="0"
 KEYWORDS="amd64 ~arm hppa ~ia64 ppc ~ppc64 ~sparc x86"
 IUSE="test minimal"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!<dev-perl/Moo-2.3.0

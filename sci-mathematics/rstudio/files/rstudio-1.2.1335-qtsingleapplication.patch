@@ -1,0 +1,60 @@
+--- rstudio-1.2.1335-orig/src/cpp/desktop/CMakeLists.txt	2019-03-28 16:08:20.000000000 +1100
++++ rstudio-1.2.1335/src/cpp/desktop/CMakeLists.txt	2019-04-09 18:04:57.783616412 +1000
+@@ -140,6 +140,13 @@
+ get_filename_component(QT_LIBRARY_PATH "${QT_BIN_DIR}/../lib"     ABSOLUTE CACHE)
+ get_filename_component(QT_INSTALL_PATH "${QT_BIN_DIR}/.."         ABSOLUTE CACHE)
+ 
++find_path(QTSINGLEAPPLIB_INCLUDE_DIR NAMES QtSingleApplication
++  PATH_SUFFIXES QtSolutions
++  PATHS
++  /usr/include/qt5)
++find_library(QTSINGLEAPPLIB Qt5Solutions_SingleApplication-2.6
++  libQt5Solutions_SingleApplication-2.6)
++
+ # disable clang warnings for qt sources
+ if(APPLE)
+    add_definitions(-Wno-unused-private-field
+@@ -158,7 +165,6 @@
+ 
+ set(MOC_DESKTOP_HEADER_FILES ${DESKTOP_HEADER_FILES})
+ list(REMOVE_ITEM MOC_DESKTOP_HEADER_FILES
+-  ${CMAKE_CURRENT_SOURCE_DIR}/3rdparty/qtsingleapplication/qtlockedfile.h
+   ${CMAKE_CURRENT_SOURCE_DIR}/DesktopDetectRHome.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/DesktopOptions.hpp
+   ${CMAKE_CURRENT_SOURCE_DIR}/DesktopRVersion.hpp
+@@ -224,8 +230,6 @@
+   DesktopSlotBinders.cpp
+   DesktopSubMenu.cpp
+   DesktopSynctex.cpp
+-  3rdparty/qtsingleapplication/qtsingleapplication.cpp
+-  3rdparty/qtsingleapplication/qtlocalpeer.cpp
+ )
+ 
+ if(WIN32)
+@@ -280,6 +284,7 @@
+   ${CORE_SOURCE_DIR}/include
+   ${CMAKE_CURRENT_SOURCE_DIR}
+   ${CMAKE_CURRENT_BINARY_DIR}
++  ${QTSINGLEAPPLIB_INCLUDE_DIR}
+   ${TESTS_INCLUDE_DIR}
+ )
+ 
+@@ -384,6 +389,7 @@
+    # set link dependencies
+    target_link_libraries(rstudio
+       ${RSTUDIO_QTMODULES}
++      ${QTSINGLEAPPLIB}
+       ${QT_LIBRARIES}
+       ${Boost_LIBRARIES}
+       rstudio-core
+--- rstudio-1.2.1335-orig/src/cpp/desktop/DesktopPosixApplication.hpp	2019-03-28 16:08:20.000000000 +1100
++++ rstudio-1.2.1335/src/cpp/desktop/DesktopPosixApplication.hpp	2019-04-09 18:01:39.333920927 +1000
+@@ -16,7 +16,7 @@
+ #ifndef DESKTOP_POSIX_APPLICATION_HPP
+ #define DESKTOP_POSIX_APPLICATION_HPP
+ 
+-#include "3rdparty/qtsingleapplication/QtSingleApplication"
++#include <QtSingleApplication>
+ 
+ #include "DesktopApplicationLaunch.hpp"
+ 

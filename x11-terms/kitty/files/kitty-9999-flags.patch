@@ -1,0 +1,49 @@
+Respect user CFLAGS.
+
+--- kitty-0.15.0/setup.py
++++ kitty-0.15.0/setup.py
+@@ -204,7 +204,7 @@
+     if ccver >= (5, 0):
+         df += ' -Og'
+         float_conversion = '-Wfloat-conversion'
+-    optimize = df if debug or sanitize else '-O3'
++    optimize = ''
+     sanitize_args = get_sanitize_args(cc, ccver) if sanitize else set()
+     cppflags = os.environ.get(
+         'OVERRIDE_CPPFLAGS', '-D{}DEBUG'.format('' if debug else 'N'),
+@@ -217,7 +217,7 @@
+     cflags = os.environ.get(
+         'OVERRIDE_CFLAGS', (
+             '-Wextra {} -Wno-missing-field-initializers -Wall -Wstrict-prototypes -D_POSIX_C_SOURCE=200809L -std=c11'
+-            ' -pedantic-errors -Werror {} {} -fwrapv {} {} -pipe {} -fvisibility=hidden'
++            ' -pedantic-errors {} {} -fwrapv {} {} {} -fvisibility=hidden'
+         ).format(
+             float_conversion, std,
+             optimize,
+@@ -232,7 +232,7 @@
+     )
+     ldflags = os.environ.get(
+         'OVERRIDE_LDFLAGS',
+-        '-Wall ' + ' '.join(sanitize_args) + ('' if debug else ' -O3')
++        '-Wall ' + ' '.join(sanitize_args)
+     )
+     ldflags = shlex.split(ldflags)
+     ldflags.append('-shared')
+@@ -611,7 +611,7 @@
+ 
+ 
+ def build_launcher(args, launcher_dir='.', bundle_type='source'):
+-    cflags = '-Wall -Werror -fpie'.split()
++    cflags = '-Wall -fpie'.split()
+     cppflags = []
+     libs = []
+     if args.profile or args.sanitize:
+@@ -623,8 +623,6 @@
+             cflags.append('-g')
+         if args.profile:
+             libs.append('-lprofiler')
+-    else:
+-        cflags.append('-O3')
+     if bundle_type.endswith('-freeze'):
+         cppflags.append('-DFOR_BUNDLE')
+         cppflags.append('-DPYVER="{}"'.format(sysconfig.get_python_version()))

@@ -1,13 +1,13 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit vdr-plugin-2
 
-DESCRIPTION="VDR Plugin: takes screenshots of the current video or tv screen by one keypress on your remote"
-HOMEPAGE="http://www.joachim-wilke.de/?alias=vdr-screenshot"
-SRC_URI="http://www.joachim-wilke.de/downloads/${PN}/${P}.tgz"
+DESCRIPTION="VDR Plugin: takes screenshots of the current video or tv screen"
+HOMEPAGE="https://github.com/jowi24/vdr-screenshot"
+SRC_URI="https://github.com/jowi24/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -16,3 +16,5 @@ IUSE=""
 
 DEPEND=">=media-video/vdr-2.0"
 RDEPEND="${DEPEND}"
+
+S="${WORKDIR}/${P}"

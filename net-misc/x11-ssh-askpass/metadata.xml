@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-  <email>cardoe@gentoo.org</email>
-  <description>I guess I'll maintain it since I fixed it last</description>
-</maintainer>
+	<maintainer type="person">
+		<email>spiderx@spiderx.dp.ua</email>
+		<name>Vladimir Pavljuchenkov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	This is an X11-based passphrase dialog for use with OpenSSH.
+	These dialogs are intended to be called from the ssh-add program
+	and not invoked directly.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sigmavirus24/x11-ssh-askpass</remote-id>
+	</upstream>
 </pkgmetadata>

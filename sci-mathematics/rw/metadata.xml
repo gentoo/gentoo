@@ -32,4 +32,8 @@
   <use>
     <flag name="executable">Build the 'rw' program.</flag>
   </use>
+
+  <upstream>
+    <remote-id type="sourceforge">rankwidth</remote-id>
+  </upstream>
 </pkgmetadata>

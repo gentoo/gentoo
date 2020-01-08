@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,12 +14,9 @@ SRC_URI="mirror://sourceforge/fluxbox/${P}.tar.xz"
 HOMEPAGE="http://www.fluxbox.org"
 SLOT="0"
 LICENSE="MIT"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
-	!!<=x11-misc/fbdesk-1.2.1
-	!!<=x11-misc/fluxconf-0.9.9
-	!!<x11-themes/fluxbox-styles-fluxmod-20040809-r1
 	bidi? ( >=dev-libs/fribidi-0.19.2 )
 	imlib? ( >=media-libs/imlib2-1.2.0[X] )
 	truetype? ( media-libs/freetype )

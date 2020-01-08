@@ -8,7 +8,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="mirror://sourceforge/ltp/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-linux ~x64-macos"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-linux ~x64-macos"
 fi
 
 inherit prefix
@@ -22,6 +22,8 @@ IUSE="png"
 
 RDEPEND="
 	dev-lang/perl
+	dev-perl/JSON
+	dev-perl/PerlIO-gzip
 	png? ( dev-perl/GD[png] )
 "
 

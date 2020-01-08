@@ -4,22 +4,28 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Brian Evans <grknight@gentoo.org> (11 Jan 2019)
-# Mask PHP 7.3 target while unstable
-php_targets_php7-3
+# Ben Kohler <bkohler@gentoo.org> (2019-12-30)
+# Masked until we get a stable net-wireless/iwd version
+iwd
 
-# Zac Medico <zmedico@gentoo.org> (01 Sep 2016)
-# Needs virtual/pypy* stable
-python_targets_pypy
-python_single_target_pypy
+# Matt Turner <mattst88@gentoo.org> (2019-12-05)
+# Mask for testing. Bug 606924
+libglvnd
+
+# Thomas Deutschmann <whissi@gentoo.org> (28 Nov  2019)
+# Mask PHP 7.4 target while unstable
+php_targets_php7-4
+
+# Patrick Lauer <patrick@gentoo.org> (2019-10-04)
+# No postgres-12 stable yet
+postgres_targets_postgres12
+
+# Zac Medico <zmedico@gentoo.org> (2016-09-01)
+# Needs dev-python/pypy* stable
 python_targets_pypy3
 python_single_target_pypy3
 
-# Hans de Graaff <graaff@gentoo.org> (25 Dec 2018)
+# Hans de Graaff <graaff@gentoo.org> (2019-12-26)
 # Currently in testing and not ready to go stable yet.
-ruby_targets_ruby25
 ruby_targets_ruby26
-
-# Patrick Lauer <patrick@gentoo.org> (28 Apr 2015)
-# dependencies not stable yet
-ayatana
+ruby_targets_ruby27

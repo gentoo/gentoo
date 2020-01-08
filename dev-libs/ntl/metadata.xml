@@ -5,10 +5,6 @@
 		<email>sci-mathematics@gentoo.org</email>
 		<name>Gentoo Mathematics Project</name>
 	</maintainer>
-	<maintainer type="project">
-		<email>cpp@gentoo.org</email>
-		<name>Gentoo C++ Project</name>
-	</maintainer>
 	<longdescription lang="en">
 		NTL is a high-performance, portable C++ library providing data
 		structures and algorithms for manipulating signed, arbitrary length

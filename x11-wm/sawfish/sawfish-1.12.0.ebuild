@@ -11,11 +11,11 @@ SRC_URI="http://download.tuxfamily.org/sawfish/${MY_P}.tar.xz"
 
 LICENSE="GPL-2 Artistic-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc ~ppc64 ~sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 ia64 ppc ~ppc64 ~sh sparc x86"
 IUSE="emacs kde nls xinerama"
 
 RDEPEND="
-	emacs? ( virtual/emacs !app-emacs/sawfish )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	>=dev-libs/librep-0.92.1
 	>=x11-libs/rep-gtk-0.90.7
 	x11-libs/pangox-compat

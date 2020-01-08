@@ -1,32 +1,35 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit latex-package
 
-S="${WORKDIR}/${PN}"
-LICENSE="LPPL-1.2"
 DESCRIPTION="A LaTeX module to format envelopes"
-HOMEPAGE="http://planck.psu.edu/~boris/"
-# downloaded from
+HOMEPAGE="https://ctan.org/pkg/envlab"
+# downloaded from:
 # ftp://ftp.ctan.org/pub/tex-archive/macros/latex/contrib/${PN}.tar.gz
 SRC_URI="mirror://gentoo/${P}.tar.gz"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+
+LICENSE="LPPL-1.2"
 SLOT="0"
-DEPEND=""
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE=""
 
+DEPEND=""
+
 TEXMF=/usr/share/texmf-site
+
+S="${WORKDIR}/${PN}"
 
 src_compile() {
 	export VARTEXFONTS="${T}/fonts"
 	ebegin "Compiling ${PN}"
-	latex envlab.ins || die
-	pdflatex elguide.tex || die
-	pdflatex elguide.tex || die
-	pdflatex envlab.drv || die
-	pdflatex envlab.drv || die
+	latex envlab.ins || die "compiling #1 failed"
+	pdflatex elguide.tex || die "compiling #2 failed"
+	pdflatex elguide.tex || die "compiling #2 failed"
+	pdflatex envlab.drv || die "compiling #3 failed"
+	pdflatex envlab.drv || die "compiling #3 failed"
 	eend
 }
 

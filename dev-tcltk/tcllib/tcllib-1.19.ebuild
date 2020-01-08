@@ -12,7 +12,8 @@ SRC_URI="mirror://sourceforge/${PN}/${PN}/${PV}/${P}.tar.xz"
 LICENSE="BSD"
 SLOT="0"
 IUSE="examples"
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ~ia64 ~mips ~ppc s390 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc s390 sparc x86 ~amd64-linux ~x86-linux"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-lang/tcl:0=
@@ -26,6 +27,20 @@ DOCS=(
 	devdoc/indexing.txt devdoc/installation.txt
 )
 HTML_DOCS=( devdoc/devguide.html devdoc/releaseguide.html )
+
+PATCHES=( "${FILESDIR}"/${P}-test.patch )
+
+src_prepare() {
+	default
+	if has_version ">=dev-lang/tcl-8.6.9"; then
+		sed -i \
+			-e "s|::hook::call|call|" \
+			-e "s|::string::token::shell|shell|" \
+			"${S}"/modules/hook/hook.test \
+			"${S}"/modules/string/token_shell.test \
+			|| die
+	fi
+}
 
 src_test() {
 	USER= virtx emake test_batch

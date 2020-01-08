@@ -23,7 +23,7 @@ IUSE="gles2 qt5 sdl"
 
 RDEPEND="gles2? ( media-libs/mesa[gles2] )
 	media-libs/glm
-	media-libs/mesa
+	media-libs/mesa[X(+)]
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5

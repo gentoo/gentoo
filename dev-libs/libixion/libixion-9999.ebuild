@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit python-single-r1
 
 DESCRIPTION="General purpose formula parser & interpreter"
@@ -23,12 +23,14 @@ IUSE="debug python static-libs +threads"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-DEPEND="
+RDEPEND="
 	dev-libs/boost:=
-	>=dev-util/mdds-1.4.1:1=
+	>=dev-util/mdds-1.5.0:1=
 	python? ( ${PYTHON_DEPS} )
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/spdlog
+"
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
@@ -49,5 +51,5 @@ src_configure() {
 
 src_install() {
 	default
-	find "${D}" -name '*.la' -delete || die
+	find "${D}" -name '*.la' -type f -delete || die
 }

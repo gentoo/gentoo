@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: golang-vcs.eclass
@@ -25,6 +25,8 @@ EXPORT_FUNCTIONS src_unpack
 if [[ -z ${_GOLANG_VCS} ]]; then
 
 _GOLANG_VCS=1
+
+PROPERTIES+=" live"
 
 # @ECLASS-VARIABLE: EGO_PN
 # @REQUIRED

@@ -7,7 +7,7 @@ EAPI="5"
 
 MY_P="gettext-${PV}"
 
-inherit multilib-minimal toolchain-funcs libtool
+inherit multilib-minimal toolchain-funcs libtool usr-ldscript
 
 DESCRIPTION="the GNU international library (split out of gettext)"
 HOMEPAGE="https://www.gnu.org/software/gettext/"
@@ -15,7 +15,7 @@ SRC_URI="mirror://gnu/gettext/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 IUSE="static-libs +threads"
 
 DEPEND=">=virtual/libiconv-0-r1[${MULTILIB_USEDEP}]"

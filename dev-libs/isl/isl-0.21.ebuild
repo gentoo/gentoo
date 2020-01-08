@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="6"
 
 inherit eutils multilib-minimal preserve-libs
 
@@ -11,7 +11,7 @@ SRC_URI="http://isl.gforge.inria.fr/${P}.tar.xz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/21"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
 IUSE="static-libs"
 
 RDEPEND=">=dev-libs/gmp-5.1.3-r1[${MULTILIB_USEDEP}]"
@@ -21,13 +21,9 @@ DEPEND="${RDEPEND}
 
 DOCS=( ChangeLog AUTHORS doc/manual.pdf )
 
-src_prepare() {
-	epatch "${FILESDIR}"/${PN}-0.19-gdb-autoload-dir.patch
-
-	# m4/ax_create_pkgconfig_info.m4 is broken but avoid eautoreconf
-	# https://groups.google.com/group/isl-development/t/37ad876557e50f2c
-	sed -i -e '/Libs:/s:@LDFLAGS@ ::' configure || die #382737
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.19-gdb-autoload-dir.patch
+)
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf $(use_enable static-libs static)
@@ -35,7 +31,7 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${ED}" -type f -name '*.la' -delete
 }
 
 pkg_preinst() {

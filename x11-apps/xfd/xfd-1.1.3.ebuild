@@ -6,7 +6,7 @@ EAPI=7
 inherit xorg-3
 
 DESCRIPTION="X.Org xfd application"
-KEYWORDS="~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="amd64 arm hppa ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE=""
 
 DEPEND="media-libs/freetype:2
@@ -15,6 +15,7 @@ DEPEND="media-libs/freetype:2
 	x11-libs/libXt
 	x11-libs/libXmu
 	x11-libs/libXrender
-	x11-libs/libXaw"
+	x11-libs/libXaw
+	x11-libs/libxkbfile"
 RDEPEND="${DEPEND}"
 BDEPEND="sys-devel/gettext"

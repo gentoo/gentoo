@@ -12,10 +12,11 @@
 		A high performance, open-source universal RPC framework
 	</longdescription>
 	<use>
+		<flag name="perftools">Enable profiling using <pkg>dev-util/google-perftools</pkg></flag>
 		<flag name="systemtap">Enable SystemTAP/DTrace tracing</flag>
-		<flag name="tools">Install gRPC python tools</flag>
 	</use>
 	<upstream>
+		<remote-id type="cpe">cpe:/a:grpc:grpc</remote-id>
 		<remote-id type="github">grpc/grpc</remote-id>
 	</upstream>
 </pkgmetadata>

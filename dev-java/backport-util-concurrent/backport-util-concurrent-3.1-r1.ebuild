@@ -47,7 +47,7 @@ EANT_TEST_TARGET="test"
 
 src_install() {
 	java-pkg_dojar ${PN}.jar
-	dohtml README.html || die
+	dohtml README.html
 
 	use doc && java-pkg_dojavadoc doc/api
 	use source && java-pkg_dosrc src/*

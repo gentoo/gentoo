@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/openSUSE/spec-cleaner.git"
 inherit distutils-r1
 [[ ${PV} == 9999 ]] && inherit git-r3
@@ -17,6 +17,7 @@ SLOT="0"
 [[ ${PV} != 9999 ]] &&
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	test? (

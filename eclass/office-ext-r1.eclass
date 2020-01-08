@@ -1,22 +1,23 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: office-ext-r1.eclass
 # @MAINTAINER:
-# The office team <openoffice@gentoo.org>
+# The office team <office@gentoo.org>
 # @AUTHOR:
 # Tomáš Chvátal <scarabeus@gentoo.org>
-# @SUPPORTED_EAPIS: 5 6
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: Eclass for installing libreoffice/openoffice extensions
 # @DESCRIPTION:
 # Eclass for easing maintenance of libreoffice/openoffice extensions.
 
 case "${EAPI:-0}" in
-	5|6) OEXT_EXPORTED_FUNCTIONS="src_unpack src_install pkg_postinst pkg_prerm" ;;
+	5|6) inherit eutils multilib ;;
+	7) ;;
 	*) die "EAPI=${EAPI} is not supported" ;;
 esac
 
-inherit eutils multilib
+OEXT_EXPORTED_FUNCTIONS="src_unpack src_install pkg_postinst pkg_prerm"
 
 # @ECLASS-VARIABLE: OFFICE_REQ_USE
 # @DESCRIPTION:
@@ -183,7 +184,7 @@ office-ext-r1_add_extension() {
 		"-env:JFW_PLUGIN_DO_NOT_CHECK_ACCESSIBILITY=1"
 	eend $?
 	${UNOPKG_BINARY} list --shared > /dev/null
-	rm -rf "${tmpdir}"
+	rm -r "${tmpdir}" || dir "failed to clean up"
 }
 
 # @FUNCTION: office-ext-r1_remove_extension
@@ -202,7 +203,7 @@ office-ext-r1_remove_extension() {
 		"-env:JFW_PLUGIN_DO_NOT_CHECK_ACCESSIBILITY=1"
 	eend $?
 	${UNOPKG_BINARY} list --shared > /dev/null
-	rm -rf "${tmpdir}"
+	rm -r "${tmpdir}" || dir "failed to clean up"
 }
 
 # @FUNCTION: office-ext-r1_pkg_postinst

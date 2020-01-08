@@ -1,0 +1,34 @@
+From 8f22c20e418abe4abe23e789eef517a16a50604d Mon Sep 17 00:00:00 2001
+From: Dirk Thomas <dirk-thomas@users.noreply.github.com>
+Date: Tue, 6 Aug 2019 12:50:24 -0700
+Subject: [PATCH] more Python 3 compatibility (#1782)
+
+---
+ test/test_rosmaster/test/nodes/testAllCommonFlows  | 2 +-
+ test/test_rosmaster/test/nodes/testMaster          | 2 +-
+ test/test_rosmaster/test/nodes/testSlave           | 2 +-
+ test/test_rospy/test/unit/test_genmsg_py.py        | 8 +++++++-
+ tools/rosgraph/test/test_roslogging.py             | 5 ++++-
+ tools/rosgraph/test/test_roslogging_user_logger.py | 5 ++++-
+ tools/roslaunch/src/roslaunch/depends.py           | 8 ++++----
+ 7 files changed, 22 insertions(+), 10 deletions(-)
+
+diff --git a/test/test_rospy/test/unit/test_genmsg_py.py b/test/test_rospy/test/unit/test_genmsg_py.py
+index aebf95b22..397b35cee 100644
+--- a/test/test_rospy/test/unit/test_genmsg_py.py
++++ b/test/test_rospy/test/unit/test_genmsg_py.py
+@@ -44,7 +44,13 @@
+ import math
+ 
+ from roslib.message import SerializationError
+-        
++
++try:
++    long
++except NameError:
++    long = int
++
++
+ class TestGenmsgPy(unittest.TestCase):
+ 
+     def test_PythonKeyword(self):

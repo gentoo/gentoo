@@ -1,0 +1,38 @@
+Use a system-wide (uncompressed) GeoIP database instead of trying to
+download one at build time.
+
+diff -Naur a/Makefile b/Makefile
+--- a/Makefile	2019-03-14 19:32:26.000000000 +0000
++++ b/Makefile	2019-05-11 23:41:19.520479107 +0100
+@@ -300,7 +300,7 @@
+ 	@ $(CP_R) thirdparty/download/*.dll .
+ 	@ $(CP_R) thirdparty/download/*.dll.config .
+ 
+-linux-dependencies: cli-dependencies geoip-dependencies linux-native-dependencies
++linux-dependencies: cli-dependencies linux-native-dependencies
+ 
+ linux-native-dependencies:
+ 	@./thirdparty/configure-native-deps.sh
+@@ -341,7 +341,6 @@
+ 	@$(INSTALL_DIR) "$(DATA_INSTALL_DIR)"
+ 	@$(INSTALL_PROGRAM) $(foreach prog,$(CORE),$($(prog)_TARGET)) "$(DATA_INSTALL_DIR)"
+ 
+-	@$(INSTALL_DATA) "GeoLite2-Country.mmdb.gz" "$(DATA_INSTALL_DIR)/GeoLite2-Country.mmdb.gz"
+ 	@$(INSTALL_DATA) VERSION "$(DATA_INSTALL_DIR)/VERSION"
+ 	@$(INSTALL_DATA) AUTHORS "$(DATA_INSTALL_DIR)/AUTHORS"
+ 	@$(INSTALL_DATA) COPYING "$(DATA_INSTALL_DIR)/COPYING"
+diff -Naur a/OpenRA.Game/Network/GeoIP.cs b/OpenRA.Game/Network/GeoIP.cs
+--- a/OpenRA.Game/Network/GeoIP.cs	2019-03-14 19:32:26.000000000 +0000
++++ b/OpenRA.Game/Network/GeoIP.cs	2019-05-11 23:40:33.919599297 +0100
+@@ -55,9 +55,8 @@
+ 		{
+ 			try
+ 			{
+-				using (var fileStream = new FileStream("GeoLite2-Country.mmdb.gz", FileMode.Open, FileAccess.Read))
+-					using (var gzipStream = new GZipInputStream(fileStream))
+-						database = new Reader(gzipStream);
++				using (var fileStream = new FileStream(Path.Combine(Platform.GameDir, "..", "GeoIP", "GeoLite2-Country.mmdb"), FileMode.Open, FileAccess.Read))
++					database = new Reader(fileStream);
+ 			}
+ 			catch (Exception e)
+ 			{

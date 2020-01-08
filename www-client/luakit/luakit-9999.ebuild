@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="doc luajit test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-db/sqlite:3
@@ -40,9 +41,6 @@ DEPEND="${RDEPEND}
 src_compile() {
 	emake \
 		CC=$(tc-getCC) \
-		PREFIX="${EPREFIX}/usr" \
-		DOCDIR="${EPREFIX}/usr/share/doc/${PF}" \
-		XDGPREFIX="${EPREFIX}/etc/xdg" \
 		LUA_PKG_NAME=$(usex luajit 'luajit' 'lua') \
 		LUA_BIN_NAME=$(usex luajit 'luajit' 'lua') \
 		all
@@ -60,8 +58,8 @@ src_install() {
 	emake \
 		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
-		DOCDIR="${ED}/usr/share/doc/${PF}" \
-		XDGPREFIX="${ED}/etc/xdg" \
+		DOCDIR="${EPREFIX}/usr/share/doc/${PF}" \
+		XDGPREFIX="${EPREFIX}/etc/xdg" \
 		install
 
 	rm "${ED}/usr/share/doc/${PF}/COPYING.GPLv3" || die

@@ -16,9 +16,9 @@ SRC_URI="https://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.bz2"
 
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
-IUSE="cairo debug ffmpeg jpeg jpeg2k lensfun libav cpu_flags_x86_mmx openexr png raw sdl cpu_flags_x86_sse svg umfpack" # +introspection vala
+IUSE="cairo debug ffmpeg jpeg lensfun libav cpu_flags_x86_mmx openexr png raw sdl cpu_flags_x86_sse svg umfpack" # +introspection vala
 
 RDEPEND="
 	>=media-libs/babl-0.1.10
@@ -32,7 +32,6 @@ RDEPEND="
 		!libav? ( >=media-video/ffmpeg-4:0= )
 	)
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( >=media-libs/jasper-1.900.1:= )
 	openexr? ( media-libs/openexr )
 	png? ( media-libs/libpng:0= )
 	raw? ( >=media-libs/libopenraw-0.1:0= )
@@ -136,7 +135,7 @@ src_configure() {
 		$(use_with ffmpeg libavformat) \
 		--without-graphviz \
 		$(use_with jpeg libjpeg) \
-		$(use_with jpeg2k jasper) \
+		--without-jasper \
 		--without-lua \
 		$(use_with openexr) \
 		$(use_with png libpng) \

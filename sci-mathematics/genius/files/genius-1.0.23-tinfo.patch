@@ -1,0 +1,24 @@
+https://bugs.gentoo.org/675670
+
+--- genius-1.0.23/configure.ac
++++ genius-1.0.23/configure.ac
+@@ -15,6 +15,8 @@
+ 
+ AC_PROG_INTLTOOL([0.21])
+ 
++PKG_PROG_PKG_CONFIG
++
+ dnl ================= Requirements ================================================
+ 
+ VTE_REQUIRED=0.26.0
+@@ -64,8 +66,8 @@
+ 
+ dnl Check for termcap
+ AC_CHECK_LIB(termcap, tgetent,[TERMCAP_LIB="-ltermcap"],
+-	     [AC_CHECK_LIB(ncurses, tgetent,
+-                           [TERMCAP_LIB="-lncurses"
++	     [PKG_CHECK_MODULES(NCURSES, ncurses,
++                           [TERMCAP_LIB="$NCURSES_LIBS"
+                             AC_DEFINE(USE_NCURSES,[1], [Use ncurses library])
+                             AC_CHECK_HEADER(ncurses/curses.h, [
+ 					    AC_DEFINE(INC_NCURSES,[1],[ncurses include])])], [

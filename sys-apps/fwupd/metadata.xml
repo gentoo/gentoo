@@ -2,21 +2,27 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
+    <email>bernardo@standard.ai</email>
+    <name>Bernardo Meurer</name>
+  </maintainer>
+  <maintainer type="person">
     <email>polynomial-c@gentoo.org</email>
     <name>Lars Wendler</name>
   </maintainer>
   <use>
     <flag name="agent">Enable update notification agent</flag>
-    <flag name="colorhug">Enable ColorHug support through
-      <pkg>x11-misc/colord</pkg> package.</flag>
+    <flag name="amt">Build and install Intel AMT plugin</flag>
+    <flag name="colorhug">Enable ColorHug support through<pkg>x11-misc/colord</pkg> package</flag>
+    <flag name="consolekit">Use <pkg>sys-auth/consolekit</pkg> for session tracking</flag>
     <flag name="dell">Enable Dell-specific support.</flag>
-    <flag name="elogind">Use <pkg>sys-auth/elogind</pkg> instead of <pkg>sys-auth/consolekit</pkg> for session tracking</flag>
     <flag name="gpg">Enable GPG support.</flag>
     <flag name="man">Build and install man pages</flag>
-    <flag name="nvme">Build and install nvme plugin</flag>
+    <flag name="nvme">Build and install NVMe plugin</flag>
     <flag name="pkcs7">Enable PKCS7 verification support via <pkg>net-libs/gnutls</pkg></flag>
     <flag name="redfish">Install redfish plugin</flag>
-    <flag name="thunderbolt">Install thunderbolt plugin</flag>
+    <flag name="synaptics">Install synaptics plugin</flag>
+    <flag name="thunderbolt">Install Thunderbolt plugin</flag>
+    <flag name="tpm">Install Trusted Platform Module plugin</flag>
     <flag name="uefi">Enable UEFI support</flag>
   </use>
   <upstream>

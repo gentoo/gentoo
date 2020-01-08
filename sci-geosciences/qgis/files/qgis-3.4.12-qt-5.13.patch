@@ -1,0 +1,22 @@
+From ef8f06330f57882f740cfe7f8f3659b54b1bb1fb Mon Sep 17 00:00:00 2001
+From: Matthias Kuhn <matthias@opengis.ch>
+Date: Sat, 22 Jun 2019 10:11:31 +0200
+Subject: [PATCH] Add missing include
+
+Fix https://github.com/qgis/QGIS/issues/30316
+---
+ src/analysis/interpolation/qgsinterpolator.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/analysis/interpolation/qgsinterpolator.h b/src/analysis/interpolation/qgsinterpolator.h
+index 35343ccdf7f..5d694418299 100644
+--- a/src/analysis/interpolation/qgsinterpolator.h
++++ b/src/analysis/interpolation/qgsinterpolator.h
+@@ -19,6 +19,7 @@
+ #define QGSINTERPOLATOR_H
+ 
+ #include <QVector>
++#include <QList>
+ #include "qgis_sip.h"
+ #include "qgis_analysis.h"
+ 

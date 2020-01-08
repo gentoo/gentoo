@@ -1,16 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools eutils gnome2
 
 DESCRIPTION="Compositing window manager forked from Mutter for use with Cinnamon"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/muffin/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="+introspection test xinerama"
+RESTRICT="!test? ( test )"
 KEYWORDS="amd64 x86"
 
 COMMON_DEPEND="

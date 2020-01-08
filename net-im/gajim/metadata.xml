@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>aidecoe@gentoo.org</email>
+    <email>hanno@gentoo.org</email>
   </maintainer>
   <longdescription>
     A fully featured and easy to use GTK+ Jabber client written in PyGTK.
@@ -18,10 +18,5 @@
     <flag name="spell">Spellchecking of composed messages</flag>
     <flag name="upnp">Ability to request your router to forward port for file transfer</flag>
     <flag name="webp">Support WebP avatars</flag>
-    <flag name="zeroconf">Serverless chatting with autodetected clients in a local network</flag>
-
-    <flag name="idle">Enable idle module</flag>
-    <flag name="srv">SRV capabilities</flag>
-    <flag name="xhtml">Enable XHTML support</flag>
   </use>
 </pkgmetadata>

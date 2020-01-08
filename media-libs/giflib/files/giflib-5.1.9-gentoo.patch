@@ -1,0 +1,10 @@
+--- giflib-5.1.9/Makefile
++++ giflib-5.1.9/Makefile
+@@ -63,7 +63,6 @@
+ LDLIBS=libgif.a -lm
+ 
+ all: libgif.so libgif.a libutil.so libutil.a $(UTILS)
+-	$(MAKE) -C doc
+ 
+ $(UTILS):: libgif.a libutil.a
+ 

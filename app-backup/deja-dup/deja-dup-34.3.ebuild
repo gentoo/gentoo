@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GCONF_DEBUG="no"
+VALA_MAX_API_VERSION="0.42"
 
 inherit cmake-utils eutils gnome2 vala
 

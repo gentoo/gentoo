@@ -13,7 +13,7 @@ KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh sparc x86 ~amd64-
 IUSE=""
 
 src_configure () {
-	econf --enable-shared || die "Configure phase failed"
+	econf --enable-shared
 }
 
 src_test () {
@@ -22,10 +22,10 @@ src_test () {
 		ewarn "Skipped tests. Please disable sandbox to run tests."
 		return 0
 	fi
-	emake check ||  die "Tests failed"
+	emake check
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog* NEWS PORTING README
 }

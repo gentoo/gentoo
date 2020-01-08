@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/ampasctl/${P}.tar.gz"
 
 LICENSE="AMPAS"
 SLOT="0"
-KEYWORDS="amd64 hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~hppa ia64 ppc ppc64 sparc x86"
 IUSE="static-libs"
 
 RDEPEND=">=media-libs/ilmbase-2.0.1:=

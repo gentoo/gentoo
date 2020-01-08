@@ -6,8 +6,8 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="library for parsing command line options"
-HOMEPAGE="http://shh.thathost.com/pub-unix/"
-SRC_URI="http://shh.thathost.com/pub-unix/files/${P}.tar.gz"
+HOMEPAGE="https://shh.thathost.com/pub-unix/"
+SRC_URI="https://shh.thathost.com/pub-unix/files/${P}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"

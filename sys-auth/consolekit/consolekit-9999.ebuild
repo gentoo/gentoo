@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,6 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="acl cgroups debug doc evdev kernel_linux pam pm-utils policykit selinux test udev"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 	>=sys-devel/gettext-0.19
@@ -34,7 +35,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.40:2=[dbus]
 		virtual/libudev
 		x11-libs/libdrm:=
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	policykit? ( >=sys-auth/polkit-0.110 )
 	selinux? ( sys-libs/libselinux )"
 # pm-utils: bug 557432

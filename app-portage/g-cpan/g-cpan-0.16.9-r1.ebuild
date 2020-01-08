@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Perl/g-cpan"
 LICENSE="|| ( Artistic GPL-2 )"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 COMMONDEPEND="
 	virtual/perl-File-Path
@@ -31,10 +32,7 @@ COMMONDEPEND="
 	>=dev-perl/YAML-0.60
 "
 RDEPEND="${COMMONDEPEND}
-	|| (
-		>=sys-apps/portage-2.0.0
-		sys-apps/portage-mgorny
-	)
+	>=sys-apps/portage-2.0.0
 "
 DEPEND="${COMMONDEPEND}
 	virtual/perl-ExtUtils-MakeMaker

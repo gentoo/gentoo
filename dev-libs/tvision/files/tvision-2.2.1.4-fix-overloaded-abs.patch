@@ -1,0 +1,100 @@
+From 85185e7787b34545faf095b64935d80982b5cf81 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Wed, 12 Jun 2019 11:52:16 +0200
+Subject: [PATCH] Patches from upstream to address abs issue with >gcc-6 See
+ https://sourceforge.net/p/tvision/bugs/17/
+
+The patches declare inline static abs functions where they are
+needed to make gcc happy.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ classes/dos/sescreen.cc | 6 ++++++
+ classes/tdesktop.cc     | 6 ++++++
+ classes/x11/x11src.cc   | 6 ++++++
+ 3 files changed, 18 insertions(+)
+
+diff --git a/classes/dos/sescreen.cc b/classes/dos/sescreen.cc
+index 4dd3195..8a500d5 100644
+--- a/classes/dos/sescreen.cc
++++ b/classes/dos/sescreen.cc
+@@ -248,6 +248,12 @@ static int is_plane_mode = 0;
+ static int TextModeXres;
+ static int TextModeYres;
+ 
++inline
++static unsigned abs(unsigned v)
++{
++ return unsigned(abs(int(v)));
++}
++
+ /*****************************************************************************
+ 
+ ***************************  VESA BIOS ROUTINES ******************************
+diff --git a/classes/tdesktop.cc b/classes/tdesktop.cc
+index 38f1be4..26447eb 100644
+--- a/classes/tdesktop.cc
++++ b/classes/tdesktop.cc
+@@ -26,6 +26,12 @@ Modified cursor behavior while desktop locked by Salvador E. Tropea (SET)
+ #define Uses_TVCodePage
+ #include <tv.h>
+ 
++inline
++static unsigned abs(unsigned v)
++{
++ return unsigned(abs(int(v)));
++}
++
+ TDeskInit::TDeskInit( TBackground *(*cBackground)( TRect ) ) :
+     createBackground( cBackground )
+ {
+diff --git a/classes/x11/x11src.cc b/classes/x11/x11src.cc
+index 538457e..dc350df 100644
+--- a/classes/x11/x11src.cc
++++ b/classes/x11/x11src.cc
+@@ -141,6 +141,12 @@ void    (*TScreenX11::writeLine)(int x, int y, int w, void *str, unsigned color)
+ void    (*TScreenX11::redrawBuf)(int x, int y, unsigned w, unsigned off)=
+                 TScreenX11::redrawBufCP;
+ 
++inline
++static unsigned abs(unsigned v)
++{
++ return unsigned(abs(int(v)));
++}
++
+ TScreenX11::~TScreenX11()
+ {
+  STOP_UPDATE_THREAD;
+-- 
+2.21.0
+
+From 9b9f1aea8c9972ab9c1e633835ed4359d7fe000c Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Wed, 12 Jun 2019 12:05:58 +0200
+Subject: [PATCH] classes/tdisplay.c: Also add abs patch to tdisplay.cc
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ classes/tdisplay.cc | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/classes/tdisplay.cc b/classes/tdisplay.cc
+index 9225d48..569bc1d 100644
+--- a/classes/tdisplay.cc
++++ b/classes/tdisplay.cc
+@@ -22,6 +22,12 @@ same used in original Turbo Vision for compatibility purposes.
+ #define Uses_TVCodePage
+ #include <tv.h>
+ 
++inline
++static unsigned abs(unsigned v)
++{
++	return unsigned(abs(int(v)));
++}
++
+ // Remove me please!
+ int TDisplay::dual_display=0;
+ 
+-- 
+2.21.0
+

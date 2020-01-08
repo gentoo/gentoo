@@ -1,0 +1,20 @@
+diff --git a/cmake/config/config_debug.pc.in b/cmake/config/config_debug.pc.in
+index 5ea03885cd..32e45d8121 100644
+--- a/cmake/config/config_debug.pc.in
++++ b/cmake/config/config_debug.pc.in
+@@ -8,4 +8,4 @@ Version: @DEAL_II_VERSION@
+ URL: https://dealii.org/
+ 
+ Cflags: @DEAL_II_CXX_FLAGS@ @DEAL_II_CXX_FLAGS_DEBUG@ @CONFIG_INCLUDE_DIRS_PC@
+-Libs: @DEAL_II_LINKER_FLAGS@ @DEAL_II_LINKER_FLAGS_DEBUG@ @CONFIG_LIBRARIES_DEBUG_PC@ @CONFIG_RPATH_DEBUG_PC@
++Libs: @CONFIG_LIBRARIES_DEBUG_PC@ @CONFIG_RPATH_DEBUG_PC@
+diff --git a/cmake/config/config_release.pc.in b/cmake/config/config_release.pc.in
+index 726a35d040..8a879d07e8 100644
+--- a/cmake/config/config_release.pc.in
++++ b/cmake/config/config_release.pc.in
+@@ -8,4 +8,4 @@ Version: @DEAL_II_VERSION@
+ URL: https://dealii.org/
+ 
+ Cflags: @DEAL_II_CXX_FLAGS@ @DEAL_II_CXX_FLAGS_RELEASE@ @CONFIG_INCLUDE_DIRS_PC@
+-Libs: @DEAL_II_LINKER_FLAGS@ @DEAL_II_LINKER_FLAGS_RELEASE@ @CONFIG_LIBRARIES_RELEASE_PC@ @CONFIG_RPATH_RELEASE_PC@
++Libs: @CONFIG_LIBRARIES_RELEASE_PC@ @CONFIG_RPATH_RELEASE_PC@

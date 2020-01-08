@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<use>
-		<flag name="lz4">Enable lz4 compression support</flag>
-		<flag name="zstd">Enable zstd compression support</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">fsarchiver</remote-id>
 		<remote-id type="github">fdupoux/fsarchiver</remote-id>

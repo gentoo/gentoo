@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: pax-utils.eclass
@@ -15,10 +15,10 @@
 # The eclass wraps the use of paxctl-ng, paxctl, set/getattr and scanelf utilities,
 # deciding which to use depending on what's installed on the build host, and
 # whether we're working with PT_PAX, XATTR_PAX or both.
+# Legacy PT_PAX markings no longer supported.
 #
 # To control what markings are made, set PAX_MARKINGS in /etc/portage/make.conf
-# to contain either "PT", "XT" or "none".  The default is to attempt both
-# PT_PAX and XATTR_PAX.
+# to contain either "PT", "XT" or "none".  The default is none
 
 if [[ -z ${_PAX_UTILS_ECLASS} ]]; then
 _PAX_UTILS_ECLASS=1
@@ -27,8 +27,8 @@ _PAX_UTILS_ECLASS=1
 # @DESCRIPTION:
 # Control which markings are made:
 # PT = PT_PAX markings, XT = XATTR_PAX markings
-# Default to PT markings.
-PAX_MARKINGS=${PAX_MARKINGS:="PT XT"}
+# Default to none markings.
+PAX_MARKINGS=${PAX_MARKINGS:="none"}
 
 # @FUNCTION: pax-mark
 # @USAGE: <flags> <ELF files>

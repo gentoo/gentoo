@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~ppc ~x86"
+KEYWORDS="~ppc x86"
 IUSE=""
 
 DEPEND=">=sys-libs/pam-0.75"
@@ -39,7 +39,7 @@ src_install() {
 	docinto pam.d
 	dodoc pam_smb.conf*
 
-	newinitd "${FILESDIR}/pamsmbd-init pamsmbd"
+	newinitd "${FILESDIR}/pamsmbd-init" pamsmbd
 }
 
 pkg_postinst() {

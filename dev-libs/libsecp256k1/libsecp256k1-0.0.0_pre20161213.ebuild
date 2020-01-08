@@ -14,13 +14,14 @@ SRC_URI="https://github.com/bitcoin/${MyPN}/archive/${COMMITHASH}.tar.gz -> ${PN
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~x86 ~amd64-linux ~x86-linux"
-IUSE="+asm ecdh endomorphism experimental gmp java +recovery test test_openssl"
+IUSE="+asm ecdh endomorphism experimental gmp java +recovery test test-openssl"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	asm? ( || ( amd64 arm ) arm? ( experimental ) )
 	ecdh? ( experimental )
 	java? ( ecdh )
-	test_openssl? ( test )
+	test-openssl? ( test )
 "
 RDEPEND="
 	gmp? ( dev-libs/gmp:0= )
@@ -28,7 +29,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	java? ( virtual/jdk )
-	test_openssl? ( dev-libs/openssl:0 )
+	test-openssl? ( dev-libs/openssl:0 )
 "
 
 S="${WORKDIR}/${MyPN}-${COMMITHASH}"
@@ -53,7 +54,7 @@ src_configure() {
 		$(use_enable experimental) \
 		$(use_enable java jni) \
 		$(use_enable test tests) \
-		$(use_enable test_openssl openssl-tests) \
+		$(use_enable test-openssl openssl-tests) \
 		$(use_enable ecdh module-ecdh) \
 		$(use_enable endomorphism)  \
 		--with-asm=$asm_opt \

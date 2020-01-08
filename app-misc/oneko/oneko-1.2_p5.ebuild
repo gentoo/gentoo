@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit desktop toolchain-funcs
 DESCRIPTION="A cat, dog and others which chase the mouse or windows around the screen"
 HOMEPAGE="http://www.daidouji.com/oneko/"
 SRC_URI="
-	${HOMEPAGE}distfiles/${P/_p*}.sakura.${PV/*_p}.tar.gz
+	http://www.daidouji.com/oneko/distfiles/${P/_p*}.sakura.${PV/*_p}.tar.gz
 	mirror://gentoo/${P/_p*}-cat.png
 	mirror://gentoo/${P/_p*}-dog.png
 	mirror://gentoo/${P/_p*}-sakura-nobsd.patch.bz2

@@ -14,6 +14,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 arm hppa ia64 ppc ppc64 sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="app-crypt/gnupg
 	dev-lang/php:*[posix,unicode]

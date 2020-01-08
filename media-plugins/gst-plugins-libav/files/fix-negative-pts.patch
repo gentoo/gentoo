@@ -1,0 +1,40 @@
+From 1d293764e55fb9c3901c9dfa903fa5ae0021ab10 Mon Sep 17 00:00:00 2001
+From: Guillaume Desmottes <guillaume.desmottes@collabora.com>
+Date: Thu, 21 Feb 2019 08:48:31 +0100
+Subject: [PATCH] avdemux: fix negative pts if start_time is bigger than the ts
+
+The start time is supposed to be the ts of the first frame.
+FFmpeg uses fractions to represent timestamps and the start time may use a
+different base than the frame pts. So we may end up having the start
+time bigger than the pts because of rounding when converting to gst ts.
+
+See https://gitlab.freedesktop.org/gstreamer/gst-libav/issues/51
+for details.
+---
+ ext/libav/gstavdemux.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/ext/libav/gstavdemux.c b/ext/libav/gstavdemux.c
+index 30e0360..3b74f92 100644
+--- a/ext/libav/gstavdemux.c
++++ b/ext/libav/gstavdemux.c
+@@ -1473,8 +1473,14 @@ gst_ffmpegdemux_loop (GstFFMpegDemux * demux)
+     goto drop;
+ #endif
+ 
+-  if (GST_CLOCK_TIME_IS_VALID (timestamp))
+-    timestamp -= demux->start_time;
++  if (GST_CLOCK_TIME_IS_VALID (timestamp)) {
++    /* start_time should be the ts of the first frame but it may actually be
++     * higher because of rounding when converting to gst ts. */
++    if (demux->start_time >= timestamp)
++      timestamp = 0;
++    else
++      timestamp -= demux->start_time;
++  }
+ 
+   /* check if we ran outside of the segment */
+   if (demux->segment.stop != -1 && timestamp > demux->segment.stop)
+-- 
+2.17.0
+

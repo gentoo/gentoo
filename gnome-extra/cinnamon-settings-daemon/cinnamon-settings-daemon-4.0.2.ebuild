@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,18 +7,19 @@ GNOME2_LA_PUNT="yes"
 inherit autotools eutils gnome2 virtualx
 
 DESCRIPTION="Cinnamon's settings daemon"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/cinnamon-settings-daemon/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+colord cups input_devices_wacom smartcard systemd"
 RESTRICT=test
 
 # udev is non-optional since lots of plugins, not just gudev, pull it in
 RDEPEND="
 	>=dev-libs/glib-2.38:2
+	dev-libs/libgudev:=
 	>=gnome-base/libgnomekbd-3.6
 	>=gnome-base/librsvg-2.36.2
 	>=gnome-extra/cinnamon-desktop-2.8.0:0=
@@ -35,7 +36,6 @@ RDEPEND="
 	x11-libs/libXfixes
 	x11-libs/libXi
 	x11-libs/libxklavier
-	virtual/libgudev:=
 	>=sys-power/upower-0.9.11
 
 	colord? ( >=x11-misc/colord-0.1.27:= )

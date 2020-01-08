@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/muennich/sxiv/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~ppc64 x86"
 fi
 
 DESCRIPTION="Simple (or small or suckless) X Image Viewer"
@@ -28,6 +28,8 @@ RDEPEND="
 	x11-libs/libXft
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
 
 src_prepare() {
 	restore_config config.h

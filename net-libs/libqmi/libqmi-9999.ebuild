@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -20,7 +20,7 @@ SLOT="0/5.1"	# soname of libqmi-glib.so
 IUSE="doc +mbim static-libs"
 
 RDEPEND=">=dev-libs/glib-2.36
-	virtual/libgudev
+	dev-libs/libgudev
 	mbim? ( >=net-libs/libmbim-1.14.0 )"
 DEPEND="${RDEPEND}
 	doc? ( dev-util/gtk-doc )

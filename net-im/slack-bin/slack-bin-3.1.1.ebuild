@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-
 
 LICENSE="all-rights-reserved"
 SLOT="0"
-KEYWORDS="~amd64 -*"
+KEYWORDS="-* ~amd64"
 IUSE="ayatana gnome-keyring pax_kernel"
 RESTRICT="bindist mirror"
 

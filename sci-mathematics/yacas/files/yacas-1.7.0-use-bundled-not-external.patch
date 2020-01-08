@@ -1,0 +1,112 @@
+From deda267cd182e48c8af657c0d26dbeeb04879d6f Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 24 Jul 2019 09:58:58 +0200
+Subject: [PATCH] Install bundled files from repacked tarball, disable external
+ downloads
+
+Signed-off-by: Andreas Sturmlechner <asturm@gentoo.org>
+---
+ cyacas/yacas-gui/resources/CMakeLists.txt | 77 +++++------------------
+ 1 file changed, 17 insertions(+), 60 deletions(-)
+
+diff --git a/cyacas/yacas-gui/resources/CMakeLists.txt b/cyacas/yacas-gui/resources/CMakeLists.txt
+index ca3bf32..bae7076 100644
+--- a/cyacas/yacas-gui/resources/CMakeLists.txt
++++ b/cyacas/yacas-gui/resources/CMakeLists.txt
+@@ -1,49 +1,6 @@
+ include (ExternalProject)
+ 
+-ExternalProject_Add (yacas-gui_codemirror
+-    PREFIX external_packages
+-    URL https://github.com/codemirror/CodeMirror/archive/5.35.0.zip
+-    CONFIGURE_COMMAND npm install --no-progress
+-    BUILD_IN_SOURCE 1
+-    BUILD_COMMAND npm run-script build
+-    INSTALL_COMMAND "")
+-
+-ExternalProject_Add (yacas-gui_flot
+-    PREFIX external_packages
+-    URL https://github.com/flot/flot/archive/v0.8.3.zip
+-    CONFIGURE_COMMAND ""
+-    BUILD_COMMAND ""
+-    INSTALL_COMMAND "")
+-
+-ExternalProject_Add (yacas-gui_three
+-    PREFIX external_packages
+-    URL https://github.com/mrdoob/three.js/archive/r90.zip
+-    CONFIGURE_COMMAND ""
+-    BUILD_COMMAND ""
+-    INSTALL_COMMAND "")
+-
+-ExternalProject_Add (yacas-gui_vis
+-    PREFIX external_packages
+-    URL https://github.com/almende/vis/archive/v4.21.0.zip
+-    CONFIGURE_COMMAND ""
+-    BUILD_COMMAND ""
+-    INSTALL_COMMAND "")
+-
+-ExternalProject_Add (yacas-gui_mathjax
+-    PREFIX external_packages
+-    URL https://github.com/mathjax/MathJax/archive/2.7.3.zip
+-    CONFIGURE_COMMAND ""
+-    BUILD_COMMAND ""
+-    INSTALL_COMMAND "")
+-
+-ExternalProject_Add (yacas-gui_delanuay
+-    PREFIX external_packages
+-    URL https://github.com/ironwallaby/delaunay/archive/1.0.1.zip
+-    CONFIGURE_COMMAND ""
+-    BUILD_COMMAND ""
+-    INSTALL_COMMAND "")
+-
+-install (FILES ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_delanuay/delaunay.js DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/plot3d)
++install (FILES yacas-gui_delanuay/delaunay.js DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/plot3d)
+ 
+ if (NOT APPLE)
+     install (FILES plot3d/plot3d.js DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/plot3d)
+@@ -55,26 +12,26 @@ if (NOT APPLE)
+     install (DIRECTORY pixmaps DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
+     install (DIRECTORY icons DESTINATION ${CMAKE_INSTALL_DATAROOTDIR})
+ 
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/lib DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/mode/yacas DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror/mode)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/addon/edit DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror/addon)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_codemirror/addon/hint DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror/addon)
++    install (DIRECTORY yacas-gui_codemirror/lib DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror)
++    install (DIRECTORY yacas-gui_codemirror/mode/yacas DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror/mode)
++    install (DIRECTORY yacas-gui_codemirror/addon/edit DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror/addon)
++    install (DIRECTORY yacas-gui_codemirror/addon/hint DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/codemirror/addon)
+ 
+-    install (FILES ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_flot/jquery.flot.js ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_flot/jquery.flot.resize.js DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/flot)
++    install (FILES yacas-gui_flot/jquery.flot.js yacas-gui_flot/jquery.flot.resize.js DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/flot)
+ 
+     install (FILES
+-            ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_three/build/three.min.js
+-            ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_three/examples/js/Detector.js
+-            ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_three/examples/js/controls/TrackballControls.js
+-            ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_three/examples/js/renderers/CanvasRenderer.js
+-            ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_three/examples/js/renderers/Projector.js
+-            ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_three/examples/js/utils/SceneUtils.js
++            yacas-gui_three/build/three.min.js
++            yacas-gui_three/examples/js/Detector.js
++            yacas-gui_three/examples/js/controls/TrackballControls.js
++            yacas-gui_three/examples/js/renderers/CanvasRenderer.js
++            yacas-gui_three/examples/js/renderers/Projector.js
++            yacas-gui_three/examples/js/utils/SceneUtils.js
+             DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/three)
+ 
+-    install (FILES ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_vis/dist/vis.min.css ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_vis/dist/vis.min.js DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/vis)
++    install (FILES yacas-gui_vis/dist/vis.min.css yacas-gui_vis/dist/vis.min.js DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/vis)
+ 
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/fonts/HTML-CSS/STIX-Web/otf DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax/fonts/HTML-CSS/STIX-Web)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/fonts/HTML-CSS/STIX-Web/woff DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax/fonts/HTML-CSS/STIX-Web)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/fonts/HTML-CSS/TeX/otf DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax/fonts/HTML-CSS/TeX)
+-    install (DIRECTORY ${CMAKE_BINARY_DIR}/cyacas/yacas-gui/resources/external_packages/src/yacas-gui_mathjax/unpacked DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax)
++    install (DIRECTORY yacas-gui_mathjax/fonts/HTML-CSS/STIX-Web/otf DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax/fonts/HTML-CSS/STIX-Web)
++    install (DIRECTORY yacas-gui_mathjax/fonts/HTML-CSS/STIX-Web/woff DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax/fonts/HTML-CSS/STIX-Web)
++    install (DIRECTORY yacas-gui_mathjax/fonts/HTML-CSS/TeX/otf DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax/fonts/HTML-CSS/TeX)
++    install (DIRECTORY yacas-gui_mathjax/unpacked DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/yacas/resources/mathjax)
+ endif ()
+-- 
+2.22.0
+

@@ -1,0 +1,52 @@
+From 3598b8b9c1a6ef4a31e2c179a6be3e3a69cce357 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Sun, 7 Jul 2019 15:57:03 +0300
+Subject: [PATCH] meson: Make vapi generation optional and remove explicit
+ vapigen check
+
+meson gnome.generate_vapi properly handles VAPIGEN and other vala
+environment variables. It is counter-productive to check for an
+unversioned vapigen, as that breaks versioned VAPIGEN usages.
+---
+ libgeoclue/meson.build | 3 +--
+ meson_options.txt      | 3 +++
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/libgeoclue/meson.build b/libgeoclue/meson.build
+index e228ec3..d053bc1 100644
+--- a/libgeoclue/meson.build
++++ b/libgeoclue/meson.build
+@@ -58,7 +58,6 @@ libgeoclue_dep = declare_dependency(link_with: libgeoclue,
+                                     sources: [ libgeoclue_sources, libgeoclue_headers ])
+ 
+ gir = find_program('g-ir-scanner', required: false)
+-vapigen = find_program('vapigen', required: false)
+ enable_gir = get_option('introspection')
+ pkg_requirements = ['glib-2.0', 'gio-2.0', 'gio-unix-2.0']
+ gir_sources = [ libgeoclue_sources,
+@@ -78,7 +77,7 @@ if gir.found() and enable_gir
+                                install: true,
+                                header: 'geoclue.h',
+                                extra_args: [ '--quiet' ])
+-  if vapigen.found()
++  if get_option('vapi')
+     gnome.generate_vapi('libgeoclue-' + gclue_api_version,
+                         sources: geo_gir[0],
+                         packages: pkg_requirements,
+diff --git a/meson_options.txt b/meson_options.txt
+index 83bc60e..3a832d5 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -4,6 +4,9 @@ option('libgeoclue',
+ option('introspection',
+         type: 'boolean', value: true,
+         description: 'Enable convenience library introspection generation')
++option('vapi',
++       type: 'boolean', value: true,
++       description: 'Generate vapi data for convenience library (requires vapigen and introspection)')
+ option('gtk-doc',
+        type: 'boolean', value: true,
+        description: 'Whether to generate the API reference for Geocode-GLib')
+-- 
+2.20.1
+

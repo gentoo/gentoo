@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit distutils-r1 flag-o-matic
 
@@ -22,11 +22,14 @@ IUSE=""
 S="${WORKDIR}"/${PN}
 
 src_configure() {
-	cd "${WORKDIR}"/Minuit-1_7_9 && econf --disable-static || die
+	cd "${WORKDIR}"/Minuit-1_7_9 || die
+	econf --disable-static
 }
+
 src_compile() {
-	cd "${WORKDIR}"/Minuit-1_7_9 && emake
-	cd "${S}"
+	cd "${WORKDIR}"/Minuit-1_7_9 || die
+	emake
+	cd "${S}" || die
 	distutils-r1_src_compile
 }
 

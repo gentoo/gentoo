@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit eutils distutils-r1
 
@@ -20,7 +20,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc hdf5"
 
 RDEPEND="
-	dev-python/PyQt5[${PYTHON_USEDEP},svg,webkit]
 	dev-python/QtPy[${PYTHON_USEDEP},svg,webkit]
 	dev-python/qtconsole[${PYTHON_USEDEP}]
 	>=dev-python/rope-0.10.7[${PYTHON_USEDEP}]

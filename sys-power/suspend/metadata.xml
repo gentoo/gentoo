@@ -10,5 +10,6 @@
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">suspend</remote-id>
+		<remote-id type="github">bircoph/suspend</remote-id>
 	</upstream>
 </pkgmetadata>

@@ -1,60 +1,6 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# When you add an entry to the top of this file, add your name, the date, and
-# an explanation of why something is getting masked. Please be extremely
-# careful not to commit atoms that are not valid, as it can cause large-scale
-# breakage, especially if it ends up in the daily snapshot.
-#
-## Example:
-##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
-## # Masking foo USE flag until we can get the
-## # foo stuff to work properly again (bug 12345)
-## =media-video/mplayer-0.90_pre5 foo
-## =media-video/mplayer-0.90_pre5-r1 foo
-#
-
-#--- END OF EXAMPLES ---
-
-# Sergei Trofimovich <slyfox@gentoo.org> (25 Dec 2018)
-# Needs net-mail/mailutils and net-libs/webkit-gtk which are not
-# stable (yet?), bug #663248
-app-editors/emacs mailutils xwidgets
-
-# Andreas Sturmlechner <asturm@gentoo.org> (14 Sep 2018)
-# media-libs/libraw is not stable
-media-gfx/imagemagick raw
-
-# Andreas Sturmlechner <asturm@gentoo.org> (7 May 2018)
-# sci-visualization/gnuplot is not stable.
-app-admin/sysstat isag
-dev-util/ddd gnuplot
-sci-libs/libqalculate gnuplot
-sci-mathematics/octave gnuplot
-
-# Mart Raudsepp <leio@gentoo.org> (02 Sep 2017)
-# Drop stable gstreamer on sparc, can move to use.stable.mask
-# after gstreamer:0.10 is gone; #601354
-dev-libs/efl gstreamer
-media-sound/mp3splt-gtk gstreamer
-net-im/pidgin gstreamer
-media-libs/libcanberra gstreamer
-
-# Hans de Graaff <graaff@gentoo.org> (13 Aug 2017)
-# Drop stable ruby on sparc
-app-admin/augeas test
-app-text/texlive context l10n_ja
-sys-block/thin-provisioning-tools test
-
-# Pacho Ramos <pacho@gentoo.org> (02 Aug 2015)
-# Missing keywords
-dev-python/pyquery test
-sys-fs/dmraid klibc
-
-# Pacho Ramos <pacho@gentoo.org> (02 Jul 2014)
-# Mask due Gnome3 not going to be stabilized on this arch
-dev-util/geany-plugins gtkspell
->=gnome-base/gnome-desktop-2.32.1-r2 license-docs
-gnome-base/gvfs google
->=x11-libs/gtk+-3.12.2 cloudprint
+# Matt Turner <mattst88@gentoo.org> (2019-08-27)
+# No stable nftables yet.
+net-firewall/iptables nftables

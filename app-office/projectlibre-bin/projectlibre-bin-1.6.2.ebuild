@@ -40,11 +40,11 @@ src_prepare() {
 src_install() {
 	local d="/opt/${MY_PN}"
 	insinto ${d}
-	doins -r * || die
+	doins -r *
 	fperms a+rx ${d}/${MY_PN}.sh
 
 	dodir /opt/bin
-	dosym ../${MY_PN}/${MY_PN}.sh /opt/bin/${MY_PN} || die
+	dosym ../${MY_PN}/${MY_PN}.sh /opt/bin/${MY_PN}
 
 	newmenu ../${MY_PN}.desktop ${MY_PN}.desktop || die
 	newicon ../${MY_PN}.png ${MY_PN}.png || die

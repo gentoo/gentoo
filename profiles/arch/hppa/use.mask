@@ -1,9 +1,21 @@
-# Copyright 1999-2017 Gentoo Foundation; Distributed under the GPL v2
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Unmask the flag which corresponds to ARCH.
+-hppa
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
-# Michał Górny <mgorny@gentoo.org> (16 Jul 2018)
+# Matt Turner <mattst88@gentoo.org> (2019-12-05)
+# media-libs/libglvnd is not keyworded
+libglvnd
+
+# Mattéo Rossillol‑‑Laruelle <beatussum@protonmail.com> (2019‑08‑31)
+# Dependency not keyworded (dev-libs/libappindicator).
+ayatana
+
+# Michał Górny <mgorny@gentoo.org> (2018-07-16)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.
 # bug #661306: dev-python/pytest
@@ -11,142 +23,133 @@
 python_targets_python3_7
 python_single_target_python3_7
 
-# Matt Turner <mattst88@gentoo.org> (26 May 2018)
+# Matt Turner <mattst88@gentoo.org> (2018-05-26)
 # Unmask systemd since it is keyworded here.
 -systemd
 
 #
-# Jeroen Roovers <jer@gentoo.org> (22 Mar 2018)
+# Jeroen Roovers <jer@gentoo.org> (2018-03-22)
 # sys-cluster/ceph is not supported
 ceph
 
-# Matt Turner <mattst88@gentoo.org> (10 Mar 2018)
+# Matt Turner <mattst88@gentoo.org> (2018-03-10)
 # sys-block/open-iscsi has not been tested on HPPA
 iscsi
 
-# Matt Turner <mattst88@gentoo.org> (10 Mar 2018)
+# Matt Turner <mattst88@gentoo.org> (2018-03-10)
 # sys-boot/plymouth has not been tested on HPPA
 plymouth
 
-# Matt Turner <mattst88@gentoo.org> (10 Mar 2018)
+# Matt Turner <mattst88@gentoo.org> (2018-03-10)
 # sys-fs/dmraid has not been tested on HPPA
 dmraid
 
-# James Le Cuirot <chewi@gentoo.org> (29 Jun 2017)
+# James Le Cuirot <chewi@gentoo.org> (2017-06-29)
 # Unmask as this profile is big endian.
 -big-endian
 
-# Andreas Sturmlechner <asturm@gentoo.org> (25 Feb 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-02-25)
 # kwallet integration split from kde to distinct flag
 kwallet
 
-# Jeroen Roovers <jer@gentoo.org> (31 Jan 2016)
+# Jeroen Roovers <jer@gentoo.org> (2016-01-31)
 # USE=xwidgets requires net-libs/webkit-gtk
 xwidgets
 
-# Jeroen Roovers <jer@gentoo.org> (16 Oct 2015)
+# Jeroen Roovers <jer@gentoo.org> (2015-10-16)
 # HPPA has no NUMA support in the kernel
 numa
 
-# Jeroen Roovers <jer@gentoo.org> (3 Feb 2015)
+# Jeroen Roovers <jer@gentoo.org> (2015-02-03)
 # app-misc/geoclue has not been tested on HPPA
 geoclue
 
-# Jeroen Roovers <jer@gentoo.org> (3 Feb 2015)
+# Jeroen Roovers <jer@gentoo.org> (2015-02-03)
 # net-misc/connman has not been tested on HPPA
 connman
 
-# Jeroen Roovers <jer@gentoo.org> (18 Jan 2015)
+# Jeroen Roovers <jer@gentoo.org> (2015-01-18)
 # No video acceleration is available so video decoding acceleration will not
 # work either (bug #536956)
 vaapi
 
-# Jeroen Roovers <jer@gentoo.org> (24 Dec 2014)
+# Jeroen Roovers <jer@gentoo.org> (2014-12-24)
 # sys-devel/clang has not been ported to HPPA
 clang
 
-# Jeroen Roovers <jer@gentoo.org> (7 Nov 2014)
+# Jeroen Roovers <jer@gentoo.org> (2014-11-07)
 # dev-lang/luajit has not been ported to HPPA
 luajit
 
-# Jeroen Roovers <jer@gentoo.org> (30 Sep 2014)
-# sys-libs/libseccomp has not been ported to HPPA (bug #524148)
-seccomp
-
-# Jeroen Roovers <jer@gentoo.org> (19 Sep 2014)
+# Jeroen Roovers <jer@gentoo.org> (2014-09-19)
 # >=net-libs/libgadu-1.12.0 (bug #519854) requires dev-libs/protobuf-c (bug #519772)
 gadu
 
-# Jeroen Roovers <jer@gentoo.org> (20 May 2014)
+# Jeroen Roovers <jer@gentoo.org> (2014-05-20)
 # Mask USE=systemtap generally until proper kernel support is in place
 systemtap
 
-# Jeroen Roovers <jer@gentoo.org> (20 May 2014)
+# Jeroen Roovers <jer@gentoo.org> (2014-05-20)
 # USE=tcmalloc needs dev-util/google-perftools
 tcmalloc
 
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (10 Nov 2013)
+# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2013-11-10)
 # sys-devel/llvm is not keyworded, bug #320221
 llvm
 
-# Jeroen Roovers <jer@gentoo.org> (22 Aug 2013)
+# Jeroen Roovers <jer@gentoo.org> (2013-08-22)
 # No known OpenCL providers (bug #482096)
 opencl
 
-# Samuli Suominen <ssuominen@gentoo.org> (12 Mar 2013)
+# Samuli Suominen <ssuominen@gentoo.org> (2013-03-12)
 # NVIDIA Cg toolkit for binary drivers
 cg
 
-# Jeroen Roovers <jer@gentoo.org> (13 Nov 2012)
+# Jeroen Roovers <jer@gentoo.org> (2012-11-13)
 # media-libs/fdk-aac is not supported on HPPA (bug #442806)
 fdk
 
-# Jeroen Roovers <jer@gentoo.org> (23 May 2012)
-# sys-apps/gptfdisk creates partition tables incompatible with the HPPA
-# bootloader (bug #412801).
-gptfdisk
-
-# Jeroen Roovers <jer@gentoo.org> (4 Apr 2012)
+# Jeroen Roovers <jer@gentoo.org> (2012-04-04)
 # media-video/vlc is not tested
 vlc
 
-# Jeroen Roovers <jer@gentoo.org> (27 Mar 2012)
+# Jeroen Roovers <jer@gentoo.org> (2012-03-27)
 # app-i18n/ibus is not tested
 ibus
 
-# Jeroen Roovers <jer@gentoo.org> (8 Mar 2012)
+# Jeroen Roovers <jer@gentoo.org> (2012-03-08)
 # The crash reporting facility in www-client/firefox does not compile
 crashreporter
 
-# Jeroen Roovers <jer@gentoo.org> (4 Jan 2012)
+# Jeroen Roovers <jer@gentoo.org> (2012-01-04)
 # dvb is untested on HPPA
 dvb
 
-# Jeroen Roovers <jer@gentoo.org> (4 Jan 2012)
+# Jeroen Roovers <jer@gentoo.org> (2012-01-04)
 # No support for Blu-ray (bug #397531).
 bluray
 
-# Jeroen Roovers <jer@gentoo.org> (15 Sep 2011)
+# Jeroen Roovers <jer@gentoo.org> (2011-09-15)
 # Prelude has not been tested on HPPA.
 prelude
 
-# Jeroen Roovers <jer@gentoo.org> (9 Jun 2011)
+# Jeroen Roovers <jer@gentoo.org> (2011-06-09)
 # Lots of untested dependencies (bug #365451)
 facedetect
 
-# Jeroen Roovers <jer@gentoo.org> (2 May 2011)
+# Jeroen Roovers <jer@gentoo.org> (2011-05-02)
 # No support for CUDA on HPPA
 cuda
 
-# Samuli Suominen <ssuominen@gentoo.org> (25 Dec 2010)
+# Samuli Suominen <ssuominen@gentoo.org> (2010-12-25)
 # This will need stable gnome-base/gvfs.
 thunar
 
-# Jeroen Roovers <jer@gentoo.org> (29 Oct 2010)
+# Jeroen Roovers <jer@gentoo.org> (2010-10-29)
 # Webkit does not work on HPPA right now.
 webkit
 
-# Jeroen Roovers <jer@gentoo.org> (20 Jul 2010)
+# Jeroen Roovers <jer@gentoo.org> (2010-07-20)
 # Mask USE=gnome entirely (bug #324511)
 glade
 libnotify
@@ -155,80 +158,77 @@ gnome
 gnome-keyring
 gnome-online-accounts
 
-# Jeroen Roovers <jer@gentoo.org> (19 Jul 2010)
+# Jeroen Roovers <jer@gentoo.org> (2010-07-19)
 # Masked because of missing gnome-base/gnome-panel
 # dependency (bug #324511)
 applet
 
-# Jeroen Roovers <jer@gentoo.org> (10 Jul 2010)
+# Jeroen Roovers <jer@gentoo.org> (2010-07-10)
 # No known hardware support for video decoding
 vaapi
 vdpau
 
-# Jeroen Roovers <jer@gentoo.org> (1 Jul 2010)
+# Jeroen Roovers <jer@gentoo.org> (2010-07-01)
 # Drop support for ghc and darcs
 darcs
 
-# Jeroen Roovers <jer@gentoo.org> (5 Apr 2010)
+# Jeroen Roovers <jer@gentoo.org> (2010-04-05)
 # Mask USE=kde (bug #304363).
 kde
 
-# Jeroen Roovers <jer@gentoo.org> (28 Feb 2010)
+# Jeroen Roovers <jer@gentoo.org> (2010-02-28)
 # app-accessibility/flite does not work (bug #307241)
 flite
 
-# Jeroen Roovers <jer@gentoo.org> (4 Aug 2009)
+# Jeroen Roovers <jer@gentoo.org> (2009-08-04)
 # net-misc/wicd and sys-power/pm-utils are currently not supported (bug #280312)
 pm-utils
 
-# Unmask the flag which corresponds to ARCH.
--hppa
-
-# Jeroen Roovers <jer@gentoo.org> (7 Jun 2008)
+# Jeroen Roovers <jer@gentoo.org> (2008-06-07)
 # dev-util/valgrind has not been ported to HPPA.
 valgrind
 
-# Jeroen Roovers <jer@gentoo.org> (4 Jan 2008)
+# Jeroen Roovers <jer@gentoo.org> (2008-01-04)
 # Bug 179895: HPPA's gcc cannot build native code / lacking upstream support
 ocamlopt
 
-# 2007/05/17 Jeroen Roovers <jer@gentoo.org>
+# Jeroen Roovers <jer@gentoo.org> (2007-05-17)
 # sys-devel/gcc fails to build with USE=d (bug #178896).
 d
 
-# 2007/05/02 Jeroen Roovers <jer@gentoo.org>
+# Jeroen Roovers <jer@gentoo.org> (2007-05-02)
 # Lack of user/dev support for WiFi (bug #176517)
 networkmanager
 
-# 2007/04/07 Jeroen Roovers <jer@gentoo.org>
+# Jeroen Roovers <jer@gentoo.org> (2007-04-07)
 # libffi has not been ported to hppa, therefore gcc fails to build with USE=gcj
 gcj
 
-# 2007/03/02 Samuli Suominen <drac@gentoo.org>
+# Samuli Suominen <drac@gentoo.org> (2007-03-02)
 # See https://bugs.gentoo.org/show_bug.cgi?id=157881#c3
 battery
 
-# 2006/08/18 Saleem Abdulrasool <compnerd@gentoo.org>
+# Saleem Abdulrasool <compnerd@gentoo.org> (2006-08-18)
 # dvdr hardware not available - masking with permission from GMsoft
 dvdr
 
-# 2006/05/25 Jeroen Roovers <jer@gentoo.org>
+# Jeroen Roovers <jer@gentoo.org> (2006-05-25)
 # libemf is not ported to hppa
 emf
 
-# 2006/05/25 Guy Martin <gmsoft@gentoo.org>
+# Guy Martin <gmsoft@gentoo.org> (2006-05-25)
 # libaio is not ported on hppa
 aio
 
-# 2006/04/26 Saleem Abdulrasool <compnerd@gentoo.org>
+# Saleem Abdulrasool <compnerd@gentoo.org> (2006-04-26)
 # sys-apps/dmidecode: masking with vapier's blessings
 dmi
 
-# 2006/03/07 Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-03-07)
 # Modular X: mask for architectures lacking direct rendering
 dri
 
-# 2006/02/05 Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-02-05)
 # Modular X: mask for architectures on which they aren't available
 video_cards_amdgpu
 video_cards_glint
@@ -242,49 +242,47 @@ video_cards_r300
 video_cards_r600
 video_cards_radeon
 video_cards_radeonsi
-video_cards_tdfx
-video_cards_voodoo
 
-# 25 Jul 2005 Guy Martin <gmsoft@gentoo.org>
-# lm_sensors not supported on hppa and ieee1394 not tested
-lm_sensors
+# Guy Martin <gmsoft@gentoo.org> (2005-07-25)
+# lm-sensors not supported on hppa and ieee1394 not tested
+lm-sensors
 iec61883
 ieee1394
 
-# 25 Jun 2005 Guy Martin <gmsoft@gentoo.org>
+# Guy Martin <gmsoft@gentoo.org> (2005-06-25)
 # mono is not yet supported on hppa
 mono
 
-# 18 Feb 2005 Guy Martin <gmsoft@gentoo.org>
+# Guy Martin <gmsoft@gentoo.org> (2005-02-18)
 # No emboss support on hppa for now
 emboss
 
-# 08 Aug 2004 Guy Martin <gmsoft@gentoo.org>
+# Guy Martin <gmsoft@gentoo.org> (2004-08-08)
 # Wifi stuff not test yet because of lack of hardware
 wifi
 
-# 26 Feb 2003 Guy Martin <gmsoft@gentoo.org>
+# Guy Martin <gmsoft@gentoo.org> (2003-02-26)
 # No lirc support on hppa
 lirc
 
-# 22 Jul 2003 Guy Martin <gmsoft@gentoo.org>
+# Guy Martin <gmsoft@gentoo.org> (2003-07-22)
 # Scanner and gphoto2 not yet tested
 gphoto2
 scanner
 
-# 13 Apr 2003 Guy Martin <gmsoft@gentoo.org>
+# Guy Martin <gmsoft@gentoo.org> (2003-04-13)
 # Selinux patches not tested on hppa and no kernel sources are emergeables with this patch.
 selinux
 
-# 20 Mar 2003 Guy Martin <gmsoft@gentoo.org>
+# Guy Martin <gmsoft@gentoo.org> (2003-03-20)
 # Many java apps need java => 1.3 and hppa has only 1.1 right now
 java
 
-# 5 Jan 2005 Ciaran McCreesh <ciaranm@gentoo.org>
+# Ciaran McCreesh <ciaranm@gentoo.org> (2005-01-05)
 # No reliable java, no netbeans. bug 66762
 netbeans
 
-# 14 Mar 2003 Guy Martin <gmsoft@gentoo.org>
+# Guy Martin <gmsoft@gentoo.org> (2003-03-14)
 # USE flags not related to hppa
 acpi
 apm

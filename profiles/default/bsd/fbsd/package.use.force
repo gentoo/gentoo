@@ -1,4 +1,0 @@
-# app-arch/xz-utils[threads=] required by app-arch/libarchive
-# https://bugs.gentoo.org/show_bug.cgi?id=594980
-app-arch/libarchive threads
-app-arch/xz-utils threads

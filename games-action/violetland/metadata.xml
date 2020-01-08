@@ -6,6 +6,6 @@
 		<name>Gentoo Games Project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="github">violetland</remote-id>
+		<remote-id type="github">ooxi/violetland</remote-id>
 	</upstream>
 </pkgmetadata>

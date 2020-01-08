@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>reagentoo@gmail.com</email>
+		<name>Dmitry Baranov</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>email@linxon.ru</email>
+		<name>Yury Martynov</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">zaps166/QMPlay2</remote-id>
+	</upstream>
+	<use>
+		<flag name="audiofilters">Build with AudioFilters module</flag>
+		<flag name="avdevice">Build FFmpeg module with libavdevice suport</flag>
+		<flag name="avresample">Use libavresample instead of libswresample</flag>
+		<flag name="cdio">Build with AudioCD module</flag>
+		<flag name="cuvid">Build with CUVID module</flag>
+		<flag name="extensions">Build with Extensions module</flag>
+		<flag name="gme">Build Chiptune with GME support</flag>
+		<flag name="inputs">Build with Inputs module</flag>
+		<flag name="lastfm">Build with LastFM support</flag>
+		<flag name="lyrics">Build with lyrics support</flag>
+		<flag name="mediabrowser">Build with MediaBrowser support</flag>
+		<flag name="mpris2">Build Extensions with MPRIS2 support</flag>
+		<flag name="notifications">Build additional notifications module</flag>
+		<flag name="sid">Build Chiptune with SIDPLAY support</flag>
+		<flag name="videofilters">Build with VideoFilters module</flag>
+		<flag name="visualizations">Build with Visualizations module</flag>
+	</use>
+</pkgmetadata>

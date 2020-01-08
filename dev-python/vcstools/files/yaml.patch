@@ -1,0 +1,25 @@
+https://github.com/vcstools/vcstools/issues/158
+https://bugs.gentoo.org/698668
+
+Index: vcstools-0.1.42/src/vcstools/tar.py
+===================================================================
+--- vcstools-0.1.42.orig/src/vcstools/tar.py
++++ vcstools-0.1.42/src/vcstools/tar.py
+@@ -77,7 +77,7 @@ class TarClient(VcsClientBase):
+         """
+         if self.detect_presence():
+             with open(self.metadata_path, 'r') as metadata_file:
+-                metadata = yaml.load(metadata_file.read())
++                metadata = yaml.full_load(metadata_file.read())
+                 if 'url' in metadata:
+                     return metadata['url']
+         return None
+@@ -165,7 +165,7 @@ class TarClient(VcsClientBase):
+ 
+         if self.detect_presence():
+             with open(self.metadata_path, 'r') as metadata_file:
+-                metadata = yaml.load(metadata_file.read())
++                metadata = yaml.full_load(metadata_file.read())
+                 if 'version' in metadata:
+                     return metadata['version']
+         return None

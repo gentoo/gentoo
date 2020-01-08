@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="bidi brltty cairo canna debug fbcon fcitx freewnn gtk gtk2 harfbuzz ibus libssh2 m17n-lib nls regis scim skk static-libs uim utempter wayland xft"
 REQUIRED_USE="gtk2? ( gtk )"
 

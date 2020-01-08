@@ -2,23 +2,21 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dracwyrm@gentoo.org</email>
-		<name>Jonathan Scruggs</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>agrigo2001@yahoo.com.au</email>
 		<name>Adrian Grigo</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>graphics@gentoo.org</email>
 		<name>Gentoo Graphics Project</name>
 	</maintainer>
-
 	<longdescription>
 		Blender, the open source software for 3D modeling, animation,
 		rendering, post-production, interactive creation and playback.
 	</longdescription>
-
 	<use>
 		<flag name="bullet">
 			Enable Bullet (Physics Engine).
@@ -27,10 +25,7 @@
 			Add support for Collada interchange format through
 			<pkg>media-libs/opencollada</pkg>.
 		</flag>
-		<flag name="colorio">
-			Enable OpenColorIO color management through
-			<pkg>media-libs/opencolorio</pkg>.
-		</flag>
+		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg>.</flag>
 		<flag name="cuda">
 			Build cycles renderer with nVidia CUDA support.
 		</flag>

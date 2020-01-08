@@ -8,12 +8,12 @@
 <use>
 	<flag name="dmx">Build the Distributed Multiheaded X server</flag>
 	<flag name="elogind">Use elogind to get control over framebuffer when running as regular user</flag>
-	<flag name="glamor">Enable Glamor OpenGL 2D acceleration</flag>
 	<flag name="kdrive">Build the kdrive X servers</flag>
+	<flag name="libglvnd">Use libglvnd for dispatch.</flag>
 	<flag name="unwind">Enable libunwind usage for backtraces</flag>
 	<flag name="xcsecurity">Build Security extension</flag>
-	<flag name="xnest">Build the Xnest server</flag>
 	<flag name="xephyr">Build the Xephyr server</flag>
+	<flag name="xnest">Build the Xnest server</flag>
 	<flag name="xorg">Build the Xorg X server (HIGHLY RECOMMENDED)</flag>
 	<flag name="xvfb">Build the Xvfb server</flag>
 </use>

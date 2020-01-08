@@ -1,0 +1,39 @@
+From f08e87623368134c6541af12995b811ef9aff069 Mon Sep 17 00:00:00 2001
+From: albert-github <albert.tests@gmail.com>
+Date: Tue, 12 Nov 2019 11:42:22 +0100
+Subject: [PATCH] issue #7290 error: Problem running ghostscript gs -q -g562x56
+ -r384x384x -sDEVICE=ppmraw -sOutputFile=_form0.pnm -dNOPAUSE -dBATCH --
+ _form0.ps. Check your installation!
+
+@maehr had a talk with Robin Watts and Ken Sharp at IRC and there seem to be basically 3 different problems:
+* `-r%dx%d` (the dimension for `r` shouldn't be `-r384x384x`, but `-r384x384`),
+* misuse / unnecessary use of `--` and
+* since 9.50 the command needs more control access (that might be worked around by either whitelisting the file via `--permit-file-read=_form0.eps` (only works from 9.50 and upwards) or generally accepting any file with `-dNOSAFER` (works since quite some time). The second option is considered to be unsafe if we would process any file, but in this case we process self produced / controlled files. I don't know if doxygen has any threat model that it assumes. ).
+
+> Ken Sharp: Yeah the %dx is wrong, as Robin says its sheer luck that works
+the -- isn't needed and is what's causing the first problem
+and file control is the new bugbear
+
+The suggestions have been implemented and test / docs works now with old and new version.
+---
+ src/formula.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/formula.cpp b/src/formula.cpp
+index 534f56ac..3d8e6ce1 100644
+--- a/src/formula.cpp
++++ b/src/formula.cpp
+@@ -193,8 +193,8 @@ void FormulaList::generateBitmaps(const char *path)
+       // used.  
+ 
+       char gsArgs[4096];
+-      sprintf(gsArgs,"-q -g%dx%d -r%dx%dx -sDEVICE=ppmraw "
+-                    "-sOutputFile=%s.pnm -dNOPAUSE -dBATCH -- %s.ps",
++      sprintf(gsArgs,"-q -g%dx%d -r%dx%d -sDEVICE=ppmraw "
++                    "-sOutputFile=%s.pnm -dNOPAUSE -dBATCH -dNOSAFER %s.ps",
+                     gx,gy,(int)(scaleFactor*72),(int)(scaleFactor*72),
+                     formBase.data(),formBase.data()
+              );
+-- 
+2.24.1
+

@@ -6,9 +6,9 @@
 		<name>X11</name>
 	</maintainer>
 	<use>
-		<flag name="minimal">
+		<flag name="twm">
 			Control dependencies on legacy apps (xterm, twm, ...). Safe to
-			enable if you use a modern desktop environment.
+			disable if you use a modern desktop environment.
 		</flag>
 	</use>
 	<upstream>

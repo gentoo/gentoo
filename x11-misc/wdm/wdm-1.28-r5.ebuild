@@ -18,7 +18,7 @@ COMMON_DEPEND="
 	x11-libs/libXmu
 	x11-libs/libXpm
 	x11-libs/libXt
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	truetype? ( x11-libs/libXft )
 "
 DEPEND="

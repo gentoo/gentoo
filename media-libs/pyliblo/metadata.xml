@@ -2,11 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<name>Karl Linden</name>
-		<email>karl.j.linden@gmail.com</email>
+		<email>alexander@tsoy.me</email>
+		<name>Alexander Tsoy</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<upstream>
+		<remote-id type="github">dsacre/pyliblo</remote-id>
+	</upstream>
 </pkgmetadata>

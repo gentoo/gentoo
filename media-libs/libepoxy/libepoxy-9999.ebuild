@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 EGIT_REPO_URI="https://github.com/anholt/${PN}.git"
 
@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 PYTHON_REQ_USE='xml(+)'
 inherit ${GIT_ECLASS} meson multilib-minimal python-any-r1
 
@@ -18,19 +18,19 @@ HOMEPAGE="https://github.com/anholt/libepoxy"
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 	SRC_URI="https://github.com/anholt/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test +X"
+RESTRICT="!test? ( test )"
+IUSE="+egl test +X"
 
-RDEPEND="media-libs/mesa[egl,${MULTILIB_USEDEP}]"
-DEPEND="${PYTHON_DEPS}
-	${RDEPEND}
-	>=dev-util/meson-0.47.0
-	X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
+RDEPEND="egl? ( media-libs/mesa[egl,${MULTILIB_USEDEP}] )"
+DEPEND="X? ( x11-libs/libX11[${MULTILIB_USEDEP}] )
+	${RDEPEND}"
+BDEPEND="${PYTHON_DEPS}
 	virtual/pkgconfig"
 
 src_unpack() {
@@ -40,9 +40,10 @@ src_unpack() {
 
 multilib_src_configure() {
 	local emesonargs=(
-		-Degl=yes
+		-Degl=$(usex egl)
 		-Dglx=$(usex X)
-		-Dx11=$(usex X true false)
+		$(meson_use X x11)
+		$(meson_use test tests)
 	)
 	meson_src_configure
 }

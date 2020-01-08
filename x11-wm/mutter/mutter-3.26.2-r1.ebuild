@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ LICENSE="GPL-2+"
 SLOT="0/1" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 
 IUSE="debug gles2 input_devices_wacom +introspection test udev wayland"
+RESTRICT="!test? ( test )"
 
 KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
@@ -30,6 +31,7 @@ RDEPEND="
 	>=x11-libs/startup-notification-0.7
 	>=x11-libs/libXcomposite-0.2
 	>=gnome-base/gsettings-desktop-schemas-3.21.4[introspection?]
+	<gnome-base/gsettings-desktop-schemas-3.31
 	gnome-base/gnome-desktop:3=
 	>sys-power/upower-0.99:=
 
@@ -56,14 +58,14 @@ RDEPEND="
 	gles2? ( media-libs/mesa[gles2] )
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13 )
 	introspection? ( >=dev-libs/gobject-introspection-1.42:= )
-	udev? ( >=virtual/libgudev-232:= )
+	udev? ( >=dev-libs/libgudev-232:= )
 	wayland? (
+		>=dev-libs/libgudev-232:=
 		>=dev-libs/libinput-1.4
 		>=dev-libs/wayland-1.13.0
 		>=dev-libs/wayland-protocols-1.9
 		>=media-libs/mesa-10.3[egl,gbm,wayland]
 		sys-apps/systemd
-		>=virtual/libgudev-232:=
 		>=virtual/libudev-136:=
 		x11-base/xorg-server[wayland]
 		x11-libs/libdrm:=

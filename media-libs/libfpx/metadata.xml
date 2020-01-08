@@ -8,4 +8,7 @@
   <slots>
     <subslots>Reflect major ABI of libfpx.so.</subslots>
   </slots>
+  <upstream>
+    <remote-id type="github">ImageMagick/libfpx</remote-id>
+  </upstream>
 </pkgmetadata>

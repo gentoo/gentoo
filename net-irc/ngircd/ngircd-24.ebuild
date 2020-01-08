@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,7 +17,7 @@ IUSE="debug gnutls iconv ident ipv6 libressl pam ssl tcpd test zlib"
 RDEPEND="
 	iconv? ( virtual/libiconv )
 	ident? ( net-libs/libident )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	ssl? (
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? (

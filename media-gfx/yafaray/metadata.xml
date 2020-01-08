@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!--maintainer-needed-->
+	<maintainer type="person">
+		<email>waebbl@gmail.com</email>
+		<name>Bernd Waibel</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<description>Proxy Maintainer Team</description>
+	</maintainer>
 	<longdescription lang="en">
 		YafaRay is a raytracing open source render engine. Raytracing is a rendering technique for generating realistic images by tracing the path of light through a 3D scene.
 		An render engine consists of a "faceless" computer program that interacts with a host 3D application to provide very specific raytracing capabilties "on demand". Blender 3D is the host application of YafaRay.

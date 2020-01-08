@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{4,5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit linux-info autotools python-single-r1 user
 
@@ -13,15 +13,14 @@ SRC_URI="https://www.sourceware.org/${PN}/ftp/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="avahi libvirt selinux sqlite +ssl"
+KEYWORDS="alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 s390 sparc x86"
+IUSE="libvirt selinux sqlite +ssl zeroconf"
 
 RDEPEND=">=dev-libs/elfutils-0.142
 	dev-libs/json-c:=
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
 	${PYTHON_DEPS}
-	avahi? ( net-dns/avahi )
 	libvirt? ( >=app-emulation/libvirt-1.0.2 )
 	selinux? ( sys-libs/libselinux )
 	sqlite? ( dev-db/sqlite:3 )
@@ -29,6 +28,7 @@ RDEPEND=">=dev-libs/elfutils-0.142
 		dev-libs/nspr
 		dev-libs/nss
 	)
+	zeroconf? ( net-dns/avahi )
 "
 DEPEND="${RDEPEND}
 	app-arch/cpio
@@ -97,7 +97,7 @@ src_configure() {
 		--without-rpm
 		$(use_enable libvirt virt)
 		$(use_enable sqlite)
-		$(use_with avahi)
+		$(use_with zeroconf avahi)
 		$(use_with ssl nss)
 		$(use_with selinux)
 	)

@@ -28,5 +28,6 @@
 	<use>
 		<flag name="gre">Enable GRE support</flag>
 		<flag name="mpls">Enable support for mpls networks</flag>
+		<flag name="sguil">Enable sguil (The Analyst Console for Network Security Monitoring) support</flag>
 	</use>
 </pkgmetadata>

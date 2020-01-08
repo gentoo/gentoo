@@ -23,7 +23,7 @@ diff -ur exim-4.92.orig/src/EDITME exim-4.92/src/EDITME
 +# to be recompiled with the desired local_scan function. For a full
 +# description of the API to this function, see the Exim specification.
 +
-+DLOPEN_LOCAL_SCAN=yes
++#DLOPEN_LOCAL_SCAN=yes
 +
 +# If you set DLOPEN_LOCAL_SCAN, then you need to include -rdynamic in the
 +# linker flags.  Without it, the loaded .so won't be able to access any

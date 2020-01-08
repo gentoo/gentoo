@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,10 +10,10 @@ SRC_URI="http://dist.schmorp.de/rxvt-unicode/Attic/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris"
 IUSE="
-	256-color blink fading-colors +font-styles iso14755 +mousewheel +perl
-	pixbuf startup-notification unicode3 xft
+	256-color blink fading-colors +font-styles gdk-pixbuf iso14755 +mousewheel
+	+perl startup-notification unicode3 xft
 "
 RESTRICT="test"
 
@@ -22,7 +22,7 @@ RDEPEND="
 	kernel_Darwin? ( dev-perl/Mac-Pasteboard )
 	media-libs/fontconfig
 	perl? ( dev-lang/perl:= )
-	pixbuf? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 )
+	gdk-pixbuf? ( x11-libs/gdk-pixbuf x11-libs/gtk+:2 )
 	startup-notification? ( x11-libs/startup-notification )
 	x11-libs/libX11
 	x11-libs/libXrender
@@ -55,10 +55,10 @@ src_configure() {
 		$(use_enable blink text-blink) \
 		$(use_enable fading-colors fading) \
 		$(use_enable font-styles) \
+		$(use_enable gdk-pixbuf pixbuf) \
 		$(use_enable iso14755) \
 		$(use_enable mousewheel) \
 		$(use_enable perl) \
-		$(use_enable pixbuf) \
 		$(use_enable startup-notification) \
 		$(use_enable unicode3) \
 		$(use_enable xft)

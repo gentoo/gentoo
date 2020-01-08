@@ -5,6 +5,3 @@
 
 # extra arguments for the consul agent
 command_args="-config-dir=/etc/consul.d"
-
-# upstream strongly recommends > 1
-GOMAXPROCS=2

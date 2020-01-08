@@ -13,6 +13,7 @@ SLOT="2/${PV}"
 KEYWORDS="amd64 hppa ppc x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="doc? ( virtual/latex-base )"
 

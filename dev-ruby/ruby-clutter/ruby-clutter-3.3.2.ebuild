@@ -7,7 +7,7 @@ USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 inherit virtualx ruby-ng-gnome2
 
 DESCRIPTION="Ruby Clutter bindings"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 IUSE=""
 
 RUBY_S=ruby-gnome2-all-${PV}/clutter
@@ -44,7 +44,7 @@ each_ruby_compile() {
 }
 
 each_ruby_test() {
-	virtx ${RUBY} test/run-test.rb || die
+	virtx ${RUBY} test/run-test.rb
 }
 
 each_ruby_install() {

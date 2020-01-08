@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,7 +9,7 @@ SRC_URI="http://www.reportmagic.org/rmagic-${PV}.tar.gz"
 
 LICENSE="Artistic"
 SLOT="0"
-KEYWORDS="x86 ppc amd64"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="truetype"
 
 DEPEND="sys-libs/zlib

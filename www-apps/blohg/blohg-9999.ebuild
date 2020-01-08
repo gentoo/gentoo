@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,6 +26,7 @@ fi
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc git +mercurial test"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="|| ( git mercurial )
 	test? ( git mercurial )"

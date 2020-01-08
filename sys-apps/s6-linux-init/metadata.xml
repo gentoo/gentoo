@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>aranea@aixah.de</email>
-		<name>Luis Ressel</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>samuel@sholland.org</email>
 		<name>Samuel Holland</name>
 	</maintainer>
@@ -17,4 +13,7 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
+	<use>
+		<flag name="sysv-utils">Install sysvinit compatibility symlinks for telinit, halt, poweroff, reboot, and shutdown</flag>
+	</use>
 </pkgmetadata>

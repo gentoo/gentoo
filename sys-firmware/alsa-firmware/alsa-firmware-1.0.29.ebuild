@@ -6,7 +6,7 @@ inherit udev
 
 DESCRIPTION="Advanced Linux Sound Architecture firmware"
 HOMEPAGE="https://alsa-project.org/"
-SRC_URI="mirror://alsaproject/firmware/${P}.tar.bz2"
+SRC_URI="https://www.alsa-project.org/files/pub/firmware/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

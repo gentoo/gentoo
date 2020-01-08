@@ -1,9 +1,0 @@
-# Copyright 1999-2018 Gentoo Foundation.
-# Distributed under the terms of the GNU General Public License, v2
-
-# Brian Evans <grknight@gentoo.org> (15 Jan 2018)
-# Mask innodb-snappy as app-arch/snappy is untested
-# Mask innodb-lz4 as app-arch/lz4 is untested
-# Mask oqgraph as dev-libs/judy is untested
-# Mask numa as sys-process-numactl is untested
-dev-db/mariadb innodb-snappy innodb-lz4 oqgraph numa

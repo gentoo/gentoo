@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ IUSE="+pam"
 
 DEPEND="
 	dev-libs/openssl:0=
-	pam? ( virtual/pam )"
+	pam? ( sys-libs/pam )"
 
 SIAB_CERT_DIR="/etc/shellinabox/cert"
 SIAB_SSL_BASH="${SIAB_CERT_DIR}/gen_ssl_cert.bash"
@@ -66,7 +66,7 @@ src_install() {
 	newinitd "${FILESDIR}/${SIAB_DAEMON}.init" "${SIAB_DAEMON}"
 	newconfd "${FILESDIR}/${SIAB_DAEMON}.conf" "${SIAB_DAEMON}"
 
-	# Install systemd unit files
+	# Install systemd unit file.
 	systemd_dounit "${FILESDIR}"/shellinaboxd.service
 
 	# Install CSS files.

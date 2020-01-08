@@ -13,7 +13,7 @@ HOMEPAGE="https://github.com/pommi/CGP"
 SRC_URI="https://github.com/pommi/${MY_PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="CC-BY-2.0 GPL-2+ GPL-3 MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-lang/php[json]

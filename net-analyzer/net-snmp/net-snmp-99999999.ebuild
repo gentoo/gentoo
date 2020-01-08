@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=yesplz
 DISTUTILS_OPTIONAL=yesplz
@@ -9,11 +9,11 @@ WANT_AUTOMAKE=none
 PATCHSET=3
 GENTOO_DEPEND_ON_PERL=no
 
-inherit autotools distutils-r1 eutils git-r3 perl-module systemd
+inherit autotools distutils-r1 git-r3 perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
-EGIT_REPO_URI="https://git.code.sf.net/p/net-snmp/code"
+EGIT_REPO_URI="https://github.com/net-snmp/net-snmp"
 SRC_URI="
 	https://dev.gentoo.org/~jer/${PN}-5.7.3-patches-3.tar.xz
 "
@@ -22,34 +22,38 @@ SRC_URI="
 LICENSE="HPND BSD GPL-2"
 SLOT="0/35"
 KEYWORDS=""
-IUSE="X bzip2 doc elf ipv6 libressl lm_sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
+IUSE="
+	X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql
+	netlink pcap pci perl python rpm selinux smux ssl tcpd ucd-compat zlib
+"
 REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )
 	rpm? ( bzip2 zlib )
 "
 
 COMMON_DEPEND="
+	bzip2? ( app-arch/bzip2 )
+	elf? ( dev-libs/elfutils )
+	lm-sensors? ( sys-apps/lm-sensors )
+	mysql? ( dev-db/mysql-connector-c:0= )
+	netlink? ( dev-libs/libnl:3 )
+	pcap? ( net-libs/libpcap )
+	pci? ( sys-apps/pciutils )
+	perl? ( dev-lang/perl:= )
+	python? (
+		dev-python/setuptools[${PYTHON_USEDEP}]
+		${PYTHON_DEPS}
+	)
+	rpm? (
+		app-arch/rpm
+		dev-libs/popt
+	)
 	ssl? (
 		!libressl? ( >=dev-libs/openssl-0.9.6d:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
 	tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
-	rpm? (
-		app-arch/rpm
-		dev-libs/popt
-	)
-	bzip2? ( app-arch/bzip2 )
 	zlib? ( >=sys-libs/zlib-1.1.4 )
-	elf? ( dev-libs/elfutils )
-	python? (
-		dev-python/setuptools[${PYTHON_USEDEP}]
-		${PYTHON_DEPS}
-	)
-	pci? ( sys-apps/pciutils )
-	lm_sensors? ( sys-apps/lm_sensors )
-	netlink? ( dev-libs/libnl:3 )
-	mysql? ( dev-db/mysql-connector-c:0= )
-	perl? ( dev-lang/perl:= )
 "
 DEPEND="
 	${COMMON_DEPEND}
@@ -68,7 +72,10 @@ S=${WORKDIR}/${P/_p*/}
 RESTRICT=test
 PATCHES=(
 	"${FILESDIR}"/${PN}-5.7.3-include-limits.patch
+	"${FILESDIR}"/${PN}-5.8-do-not-conflate-LDFLAGS-and-LIBS.patch
+	"${FILESDIR}"/${PN}-5.8-pcap.patch
 	"${FILESDIR}"/${PN}-5.8-tinfo.patch
+	"${FILESDIR}"/${PN}-5.8.1-pkg-config.patch
 )
 
 pkg_setup() {
@@ -96,7 +103,7 @@ src_prepare() {
 src_configure() {
 	# keep this in the same line, configure.ac arguments are passed down to config.h
 	local mibs="host ucd-snmp/dlmod ucd-snmp/diskio ucd-snmp/extensible mibII/mta_sendmail etherlike-mib/dot3StatsTable"
-	use lm_sensors && mibs="${mibs} ucd-snmp/lmsensorsMib"
+	use lm-sensors && mibs="${mibs} ucd-snmp/lmsensorsMib"
 	use smux && mibs="${mibs} smux"
 
 	# Assume /etc/mtab is not present with a recent baselayout/openrc (bug #565136)
@@ -110,8 +117,10 @@ src_configure() {
 		$(use_enable ucd-compat ucd-snmp-compatibility) \
 		$(use_with bzip2) \
 		$(use_with elf) \
+		$(use_with kmem kmem-usage) \
 		$(use_with mysql) \
 		$(use_with netlink nl) \
+		$(use_with pcap) \
 		$(use_with pci) \
 		$(use_with perl perl-modules INSTALLDIRS=vendor) \
 		$(use_with python python-modules) \
@@ -141,6 +150,8 @@ src_compile() {
 src_install () {
 	# bug #317965
 	emake -j1 DESTDIR="${D}" install
+
+	use python && python_optimize
 
 	if use perl ; then
 		perl_delete_localpod
@@ -196,5 +207,5 @@ src_install () {
 			|| die
 	fi
 
-	prune_libtool_files
+	find "${ED}" -name '*.la' -delete || die
 }

@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription lang="en">
+		FreeDM is a fast-paced competitive deathmatch game, part of the Freedoom
+		project. Rather than the usual single-player focused levels, these
+		contain no monsters and are intended for deathmatch only. It is
+		compatible with mods for Doom II.
+
+		The Freedoom project aims to create a complete free content first person
+		shooter game. But Freedoom by itself is just the raw material for a
+		game: it must be paired with a compatible game engine to be played.
+
+		id Software released the source code to their classic game, Doom, under
+		the GNU General Public License. This means that the program code that
+		powers Doom is free; Freedoom complements this with free levels,
+		artwork, sound effects and music to make a completely free game.
+	</longdescription>
+	<maintainer type="person">
+		<email>vilhelm.gray@gmail.com</email>
+		<name>William Breathitt Gray</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://github.com/freedoom/freedoom/issues</bugs-to>
+		<doc lang="en">https://freedoom.github.io</doc>
+		<remote-id type="github">freedoom/freedoom</remote-id>
+	</upstream>
+</pkgmetadata>

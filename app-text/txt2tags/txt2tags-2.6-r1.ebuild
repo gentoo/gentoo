@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ DEPEND="${PYTHON_DEPS}
 			app-editors/gvim
 		)
 	)
-	emacs? ( virtual/emacs )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 
 RDEPEND="${DEPEND}"
 
@@ -61,11 +61,11 @@ src_install() {
 
 	if use vim-syntax; then
 		insinto /usr/share/vim/vimfiles/syntax/
-		doins extras/txt2tags.vim || die
+		doins extras/txt2tags.vim
 
 		echo 'au BufNewFile,BufRead *.t2t set ft=txt2tags' > "${T}/${PN}.vim"
 		insinto /usr/share/vim/vimfiles/ftdetect
-		doins "${T}/${PN}.vim" || die
+		doins "${T}/${PN}.vim"
 	fi
 
 	python_fix_shebang "${D}"

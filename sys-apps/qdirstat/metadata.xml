@@ -1,9 +1,9 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>dracwyrm@gentoo.org</email>
-		<name>Jonathan Scruggs</name>
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
 	</maintainer>
 	<longdescription>
 		Qt-based directory statistics: KDirStat without any KDE -- from
@@ -18,6 +18,7 @@
 		and other Unix-like systems.
 	</longdescription>
 	<upstream>
+		<bugs-to>https://github.com/shundhammer/qdirstat/issues</bugs-to>
 		<remote-id type="github">shundhammer/qdirstat</remote-id>
 	</upstream>
 </pkgmetadata>

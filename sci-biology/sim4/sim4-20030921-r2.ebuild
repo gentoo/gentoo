@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
 DESCRIPTION="A program to align cDNA and genomic DNA"
 HOMEPAGE="http://globin.cse.psu.edu/html/docs/sim4.html"
-SRC_URI="http://globin.cse.psu.edu/ftp/dist/sim4/sim4.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,11 +1,21 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>radhermit@gentoo.org</email>
-    <name>Tim Harder</name>
-  </maintainer>
-  <upstream>
-    <remote-id type="github">jonas/tig</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>chutzpah@gentoo.org</email>
+		<name>Patrick McLean</name>
+	</maintainer>
+	<longdescription lang="en">
+		Tig is an ncurses-based text-mode interface for git.
+		It functions mainly as a Git repository browser,
+		but can also assist in staging changes for commit at chunk level
+		and act as a pager for output from various Git commands.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jonas/tig</remote-id>
+	</upstream>
 </pkgmetadata>

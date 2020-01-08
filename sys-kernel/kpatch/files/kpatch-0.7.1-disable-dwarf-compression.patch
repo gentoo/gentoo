@@ -1,0 +1,32 @@
+From fe6e3f51bfe17945205445904c1fc602008ac7dd Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Mon, 29 Jul 2019 13:20:20 +0300
+Subject: [PATCH] create-diff-object: disable DWARF compression explicitly
+
+On some systems the linker produces compressed debug sections by
+default. It is not supported by create-diff-object for now.
+
+Fixes: #877
+
+Upstream-Status: Submitted [https://github.com/dynup/kpatch/pull/1011]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ kpatch-build/kpatch-build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/kpatch-build/kpatch-build b/kpatch-build/kpatch-build
+index 9ef3809..365655c 100755
+--- a/kpatch-build/kpatch-build
++++ b/kpatch-build/kpatch-build
+@@ -748,7 +748,7 @@ if [[ "$ARCH" = "ppc64le" ]]; then
+ 	ARCH_KCFLAGS="-mcmodel=large -fplugin=$PLUGINDIR/ppc64le-plugin.so"
+ fi
+ 
+-export KCFLAGS="-I$DATADIR/patch -ffunction-sections -fdata-sections $ARCH_KCFLAGS"
++export KCFLAGS="-I$DATADIR/patch -ffunction-sections -fdata-sections -gz=none $ARCH_KCFLAGS"
+ 
+ echo "Reading special section data"
+ find_special_section_data
+-- 
+2.22.0
+

@@ -13,7 +13,7 @@ SRC_URI="http://gdlp01.c-wss.com/gds/0/0100009240/02/${SOURCES_NAME}.tar.gz"
 
 LICENSE="Canon-UFR-II"
 SLOT="0"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND="
@@ -22,7 +22,6 @@ RDEPEND="
 	>=net-print/cups-1.1.17
 	~net-print/cndrvcups-common-lb-${PV}
 	>=x11-libs/gtk+-2.4:2
-	virtual/jpeg:62[abi_x86_32(-)]
 "
 DEPEND="${DEPEND}"
 

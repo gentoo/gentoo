@@ -16,21 +16,21 @@ diff --git a/tests/check_fstab/a b/tests/check_fstab/a
 new file mode 100644
 index 0000000..d16d1c5
 --- /dev/null
-+++ tests/check_fstab/a
++++ b/tests/check_fstab/a
 @@ -0,0 +1 @@
 +This file is a 'dummy device file' for the fstab check
 diff --git a/tests/check_fstab/d b/tests/check_fstab/d
 new file mode 100644
 index 0000000..d16d1c5
 --- /dev/null
-+++ tests/check_fstab/d
++++ b/tests/check_fstab/d
 @@ -0,0 +1 @@
 +This file is a 'dummy device file' for the fstab check
 diff --git a/tests/check_fstab/fstab b/tests/check_fstab/fstab
 new file mode 100644
 index 0000000..8ba6f6c
 --- /dev/null
-+++ tests/check_fstab/fstab
++++ b/tests/check_fstab/fstab
 @@ -0,0 +1,6 @@
 +# A dummy fstab file for 
 +

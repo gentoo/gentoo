@@ -8,12 +8,12 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-any-r1 systemd user
 
 DESCRIPTION="RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang"
-HOMEPAGE="http://www.rabbitmq.com/"
+HOMEPAGE="https://www.rabbitmq.com/"
 SRC_URI="https://github.com/rabbitmq/rabbitmq-server/releases/download/v${PV}/rabbitmq-server-${PV}.tar.xz"
 
 LICENSE="GPL-2 MPL-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 RESTRICT="test"
 
@@ -95,12 +95,12 @@ pkg_preinst() {
 		elog
 		elog "Please read release notes before upgrading:"
 		elog
-		elog "http://www.rabbitmq.com/release-notes/README-3.0.0.txt"
+		elog "https://www.rabbitmq.com/release-notes/README-3.0.0.txt"
 	fi
 	if has_version "<net-misc/rabbitmq-server-3.3.0"; then
 		elog
 		elog "This release changes the behaviour of the default guest user:"
 		elog
-		elog "http://www.rabbitmq.com/access-control.html"
+		elog "https://www.rabbitmq.com/access-control.html"
 	fi
 }

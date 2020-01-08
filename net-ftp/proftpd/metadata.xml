@@ -23,7 +23,7 @@ server.</longdescription>
 		<flag name="ident">Enable support for the mod_ident module</flag>
 		<flag name="ifsession">Enable support for the ifsession module</flag>
 		<flag name="ifversion">Enable support for the mod_ifversion module</flag>
-		<flag name="log_forensic">Enable support for the mod_log_forensic module, log only suspicious actions.</flag>
+		<flag name="log-forensic">Enable support for the mod_log_forensic module, log only suspicious actions.</flag>
 		<flag name="memcache">Enable support for the mod_memcache module, for using memcached servers</flag>
 		<flag name="msg">Enable support for the mod_msg module, allows system users to send messages to connected clients via the ftpdctl program.</flag>
 		<flag name="qos">Enable support for the mod_qos module</flag>
@@ -35,8 +35,7 @@ server.</longdescription>
 		<flag name="sitemisc">Enable support for the sitemisc module</flag>
 		<flag name="sodium">Use <pkg>dev-libs/libsodium</pkg> for password encryption an key exchange</flag>
 		<flag name="softquota">Enable support for the quotatab module</flag>
-		<flag name="trace">Build with trace support. Should not be enabled on production servers</flag>
-		<flag name="unique_id">Enable support for the mod_unique_id module, every connection gets unique ID.</flag>
+		<flag name="unique-id">Enable support for the mod_unique_id module, every connection gets unique ID.</flag>
 		<flag name="vroot">Enable support for the virtual root module</flag>
 	</use>
 	<upstream>

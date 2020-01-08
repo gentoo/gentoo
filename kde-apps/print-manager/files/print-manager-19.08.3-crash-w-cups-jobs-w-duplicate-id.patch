@@ -1,0 +1,87 @@
+From c93f2f16c30d10fbd0f4bfb4c0bf0cec07a4c93b Mon Sep 17 00:00:00 2001
+From: Albert Astals Cid <aacid@kde.org>
+Date: Mon, 2 Dec 2019 23:04:42 +0100
+Subject: Fix crash when cups returns jobs with duplicate id
+
+Summary:
+For some reason my cups was giving me two withheld jobs with id 33 and two with id 40
+
+That made the JobModel code crash, because it went like this
+
+ * First job with id 33 found
+ * insertRow with 0 called
+ * Row 0 inserted
+ * Job at row 0 updated (from inside insertRow)
+ * Second job with id 33 found
+ * The "oh i already have this job code triggers", updates the job, then takesRow 0 and inserts at row 1. QStandardItemModel doesn't like getting a row add at 1 inserted when empty
+ * First job with id 40 found
+ * insertRow with 2 called
+ * Row 2 inserted, it fails, QStandardItemModel doesn't like getting a row add at 2 when empty
+ * Job at row 2 updated (from iniside insertRow)
+ * Crash because there's no row 2 in the model
+
+BUGS: 326289
+
+Test Plan: Doesn't crash anymore with my weird cups list of pending jobs
+
+Reviewers: dantti
+
+Reviewed By: dantti
+
+Subscribers: ngraham, marcelm, fvogt, broulik, nicolasfella, kmaterka, kde-utils-devel
+
+Differential Revision: https://phabricator.kde.org/D25623
+---
+ libkcups/JobModel.cpp | 23 +++++++++++++++++++++--
+ 1 file changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/libkcups/JobModel.cpp b/libkcups/JobModel.cpp
+index 73c5174..3c4878b 100644
+--- a/libkcups/JobModel.cpp
++++ b/libkcups/JobModel.cpp
+@@ -174,6 +174,25 @@ void JobModel::getJobs()
+     m_processingJob.clear();
+ }
+ 
++static KCupsJobs sanitizeJobs(KCupsJobs jobs)
++{
++    // For some reason sometimes cups has broken job queues with jobs with duplicated id
++    // our model doesn't like that at all so sanitize the job list before processing it
++    QVector<int> seenIds;
++    int i = 0;
++    while (i < jobs.count()) {
++        const int jobId = jobs.at(i).id();
++        if (seenIds.contains(jobId)) {
++            qCWarning(LIBKCUPS) << "Found job with duplicated id" << jobId;
++            jobs.removeAt(i);
++        } else {
++            seenIds << jobId;
++            ++i;
++        }
++    }
++    return jobs;
++}
++
+ void JobModel::getJobFinished(KCupsRequest *request)
+ {
+     if (request) {
+@@ -181,7 +200,7 @@ void JobModel::getJobFinished(KCupsRequest *request)
+             // clear the model after so that the proper widget can be shown
+             clear();
+         } else {
+-            const KCupsJobs jobs = request->jobs();
++            const KCupsJobs jobs = sanitizeJobs(request->jobs());
+             qCDebug(LIBKCUPS) << jobs.size();
+             for (int i = 0; i < jobs.size(); ++i) {
+                 const KCupsJob job = jobs.at(i);
+@@ -207,7 +226,7 @@ void JobModel::getJobFinished(KCupsRequest *request)
+                 }
+             }
+ 
+-            // remove old printers
++            // remove old jobs
+             // The above code starts from 0 and make sure
+             // dest == modelIndex(x) and if it's not the
+             // case it either inserts or moves it.
+-- 
+cgit v1.1

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="alpha amd64 ~arm arm64 ia64 ppc ppc64 sparc x86"
 IUSE="doc examples nls python"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )
@@ -37,13 +37,13 @@ src_configure () {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install || die "emake install failed."
-	dodoc AUTHORS ChangeLog NEWS README TODO || die "dodoc failed."
+	emake DESTDIR="${D}" install
+	dodoc AUTHORS ChangeLog NEWS README TODO
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}/python
-		doins python/README || die "doins failed"
-		doins -r python/examples || die "doins 2 failed"
+		doins python/README
+		doins -r python/examples
 	fi
 
 	find "${D}" -name '*.la' -delete || die "failed to remove *.la files"

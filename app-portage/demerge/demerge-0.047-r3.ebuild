@@ -17,10 +17,7 @@ DEPEND="dev-lang/perl
 		dev-perl/TermReadKey
 		dev-perl/Shell-EnvImporter"
 RDEPEND="${DEPEND}
-		|| (
-			sys-apps/portage
-			sys-apps/portage-mgorny
-		)"
+		sys-apps/portage"
 
 src_prepare() {
 	# Fix path for new make.conf location
@@ -29,7 +26,7 @@ src_prepare() {
 }
 
 src_install() {
-	dobin demerge || die
+	dobin demerge
 	dodoc Changelog
 	doman demerge.3
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation.
+# Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/musl
@@ -15,15 +15,15 @@ dev-libs/elfutils
 
 # These binary pkgs have a hard dep on glibc; make repoman shut up
 app-arch/rar
-dev-games/gtkradiant
 dev-games/ps2-packer
+games-action/crimsonland
 games-action/descent3
 games-action/descent3-demo
+games-action/guacamelee
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/trine
 games-fps/enemy-territory
-games-fps/enemy-territory-etpro
 games-fps/enemy-territory-truecombat
 games-fps/etqw-bin
 games-fps/glxquake-bin
@@ -37,24 +37,15 @@ games-fps/soldieroffortune
 games-fps/transfusion-bin
 games-fps/tribes2
 games-fps/ut2004
-games-fps/ut2004-action
-games-fps/ut2004-airbuccaneers
 games-fps/ut2004-bonuspack-cbp1
 games-fps/ut2004-bonuspack-cbp2
 games-fps/ut2004-bonuspack-ece
 games-fps/ut2004-bonuspack-mega
-games-fps/ut2004-cor
-games-fps/ut2004-crossfire
 games-fps/ut2004-data
-games-fps/ut2004-deathball
-games-fps/ut2004-fragops
-games-fps/ut2004-hamsterbash
-games-fps/ut2004-muralis
-games-fps/ut2004-strikeforce
-games-fps/ut2004-troopers
-games-fps/ut2004-unwheel
 games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
+games-roguelike/neon-chrome
+games-rpg/costume-quest
 games-rpg/wasteland2
 games-server/etqw-ded
 games-server/ut2004-ded

@@ -34,7 +34,7 @@ src_prepare() {
 
 src_compile() {
 	# respect user's LDFLAGS
-	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}" || die "emake failed"
+	emake CC="$(tc-getCC)" LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {

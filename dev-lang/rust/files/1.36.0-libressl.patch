@@ -1,0 +1,68 @@
+diff --git a/vendor/openssl-sys/.cargo-checksum.json b/vendor/openssl-sys/.cargo-checksum.json
+index 5c961bcbc..a0ea2d357 100644
+--- a/vendor/openssl-sys/.cargo-checksum.json
++++ b/vendor/openssl-sys/.cargo-checksum.json
+@@ -1 +1 @@
+-{"files":{"CHANGELOG.md":"a3e7e4750fe6130a93e9423d5b1b68c659dd29246602f71583c7a101c4d647be","Cargo.toml":"5fdba4ce7cf40abec303651694e79a5ae551f040a7bbaad134ed9ab54d26a613","LICENSE-MIT":"378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397","README.md":"96a414be6e7e061a21a9e39a61449039f6791225264032641dd044a1a9b88111","build/cfgs.rs":"61b741c4fe9612f5a70b19bec53d3ab7ec2d7038b163c35b54f0664caa104a31","build/expando.c":"c4fa8a4424b2321f1857edfc5ce1ac1f03eda54440367d3142310c0eb5553004","build/find_normal.rs":"0a2dc417eace7fc72c27b9046ebaf53c75e418b27baa877434925a81fe6c23ed","build/find_vendored.rs":"d88c47f4cf851aa67c0e3dec679910c5c7ba239bc5a1aa89e507a875b4c4ca0f","build/main.rs":"681a1f8a8f389c82bbd3d2498a3692c201c63db658e7c3d162f09d5d81892fd4","src/aes.rs":"660efd70f809cb2f5dbbf527be8f9592911776bab7dafa1fc4cc72dd9a576b67","src/asn1.rs":"f72d6871d38865d9e7378882135cdc6f1acd66c48a4fc846502b7f488dbbf111","src/bio.rs":"5c6f394a78f258af3babb68330fa3571610476c4c3ba3404359db928f2f706ee","src/bn.rs":"c71b9c79f704a94a889d27bf75e7e5b1f9f10b0df0aeb485aef509cf05d7467f","src/cms.rs":"95a0803286d1efbe709a3668443b5001f5cce6f9db216165b1e08950972e0bfd","src/conf.rs":"511e008c18039f54d856d70b80009426fc7f4ce34fe4304e2c58ebf465031de0","src/crypto.rs":"f6e8a116940755b2b53e3d0d49d1b451fc6e4269831fd1cfcee9d6ed404cf487","src/dh.rs":"7cc334e86d16b3eae165dfa3a6c8e488bc0fe590c17beda38893d2e9d784d5a6","src/dsa.rs":"ae79baf231681900ea76304285b3ffacf5298c90b8c04d371269cf4adbb5b9fa","src/dtls1.rs":"45e1dbf94a42d587fd948d553dc30187aa6aa2b5b82d554cf725ff36df768aa0","src/ec.rs":"5341787b108f4e9acb12428fbf993aa507e9d77b97284912f7eab414ec6aeff9","src/err.rs":"f6641be5df397086a9db80667e191fb1d92972c29151e617df86672c1a16d3ad","src/evp.rs":"300007bcf00eaff03cb1d113547a79c9495b498ede9e1b2f709a9e6e1ba42ac1","src/hmac.rs":"fa3976d94a1383f300bdec228270afb8b47c97bb019d727c7d59ba783be3c42e","src/lib.rs":"e8931dd7e59a56a247823201f52828ec15d0b8dbd15ba297cacd3dcb3ca747cf","src/macros.rs":"638fb9098f6024e82b331eeee50c64cefdb58456dba28ee42560be655a0c2bf6","src/obj_mac.rs":"9c20609db7115c9edb99185375426169cb5b7caee839d892b556e92285e65309","src/object.rs":"7539eb2164c3fe2162a339ef5b45f1c835010a1522307803815779a01825eed7","src/ocsp.rs":"1db59566d2f072f7ae981f0c07e1604fcdf60e66845afe0689d588f8e4272115","src/ossl_typ.rs":"fc7366e75c78707650c8667593ed183eca6a8ce8dd6b911e342f644d1bcf98bd","src/pem.rs":"83bb7745615a99fe2a8d5f8f51addba2024c7e6be847ab6c9244bfd04388c4f9","src/pkcs12.rs":"93aab2820008ad90dc346a7dcc02f9201d94bff0bb7d1d71031c097850287c50","src/pkcs7.rs":"5370c8d4bfbf1502fa33aff635cb730e7c87814580f1df9bdb1412a492377813","src/rand.rs":"469601b4fbb56d4dbf5cf5d7bb8483e3bde411edea18601e7d1ed6ef27180fd3","src/rsa.rs":"0e8c1f0bc37620a9208175542143bfd411ae88188974d2d5b37a2b8b77d0e2c8","src/safestack.rs":"6c39e28565d34efad707d77561d4caa99e3f028fcac3a2ef6fd403a78de1190c","src/sha.rs":"05044d221d8d205010a4e3760c0b5c0e2e923e165db0d65f9a8c9bcedaad9961","src/srtp.rs":"306047f3f31828fe7d15de154b375f071ae07012a94c0b5c909f5fe57962a11b","src/ssl.rs":"18c0c0c5ef02329be90fd279968da61d3e1a6b3a3aec102d6fefd99021d1822a","src/ssl3.rs":"9336c816e00847d552dea22587d4ac72ff3cbd469fa5ff750423a19ea11e68eb","src/stack.rs":"1a509907283e5a2bf88cf193ce607f49ce7d2d95547c2ce2abc0fd4567aad334","src/tls1.rs":"60ca3dea1bbfda645bde563b4a878dac129c3f760e3ad572381000fc7a8ef522","src/x509.rs":"20e221731587221aab00aef21b4e4bebb7635603d265d424f3dd3c60d4c511e2","src/x509_vfy.rs":"5609f6300ab37a4d4755c81f7af1e6bb93a2f1a6f333c6e42f1e73ebf83ddc05","src/x509v3.rs":"30c58ce7d80670cc597d041e0f59862c1100e38743fc9dde2aec6dc811a4a558"},"package":"33c86834957dd5b915623e94f2f4ab2c70dd8f6b70679824155d5ae21dbd495d"}
+\ No newline at end of file
++{"files":{"CHANGELOG.md":"a3e7e4750fe6130a93e9423d5b1b68c659dd29246602f71583c7a101c4d647be","Cargo.toml":"5fdba4ce7cf40abec303651694e79a5ae551f040a7bbaad134ed9ab54d26a613","LICENSE-MIT":"378f5840b258e2779c39418f3f2d7b2ba96f1c7917dd6be0713f88305dbda397","README.md":"96a414be6e7e061a21a9e39a61449039f6791225264032641dd044a1a9b88111","build/cfgs.rs":"61b741c4fe9612f5a70b19bec53d3ab7ec2d7038b163c35b54f0664caa104a31","build/expando.c":"c4fa8a4424b2321f1857edfc5ce1ac1f03eda54440367d3142310c0eb5553004","build/find_normal.rs":"0a2dc417eace7fc72c27b9046ebaf53c75e418b27baa877434925a81fe6c23ed","build/find_vendored.rs":"d88c47f4cf851aa67c0e3dec679910c5c7ba239bc5a1aa89e507a875b4c4ca0f","build/main.rs":"f2cd4ca8fde8298211581f9e1ca61668706d7681a38b95a63591450e1d8366a3","src/aes.rs":"660efd70f809cb2f5dbbf527be8f9592911776bab7dafa1fc4cc72dd9a576b67","src/asn1.rs":"f72d6871d38865d9e7378882135cdc6f1acd66c48a4fc846502b7f488dbbf111","src/bio.rs":"5c6f394a78f258af3babb68330fa3571610476c4c3ba3404359db928f2f706ee","src/bn.rs":"c71b9c79f704a94a889d27bf75e7e5b1f9f10b0df0aeb485aef509cf05d7467f","src/cms.rs":"95a0803286d1efbe709a3668443b5001f5cce6f9db216165b1e08950972e0bfd","src/conf.rs":"511e008c18039f54d856d70b80009426fc7f4ce34fe4304e2c58ebf465031de0","src/crypto.rs":"f6e8a116940755b2b53e3d0d49d1b451fc6e4269831fd1cfcee9d6ed404cf487","src/dh.rs":"7cc334e86d16b3eae165dfa3a6c8e488bc0fe590c17beda38893d2e9d784d5a6","src/dsa.rs":"ae79baf231681900ea76304285b3ffacf5298c90b8c04d371269cf4adbb5b9fa","src/dtls1.rs":"45e1dbf94a42d587fd948d553dc30187aa6aa2b5b82d554cf725ff36df768aa0","src/ec.rs":"5341787b108f4e9acb12428fbf993aa507e9d77b97284912f7eab414ec6aeff9","src/err.rs":"f6641be5df397086a9db80667e191fb1d92972c29151e617df86672c1a16d3ad","src/evp.rs":"300007bcf00eaff03cb1d113547a79c9495b498ede9e1b2f709a9e6e1ba42ac1","src/hmac.rs":"fa3976d94a1383f300bdec228270afb8b47c97bb019d727c7d59ba783be3c42e","src/lib.rs":"e8931dd7e59a56a247823201f52828ec15d0b8dbd15ba297cacd3dcb3ca747cf","src/macros.rs":"638fb9098f6024e82b331eeee50c64cefdb58456dba28ee42560be655a0c2bf6","src/obj_mac.rs":"9c20609db7115c9edb99185375426169cb5b7caee839d892b556e92285e65309","src/object.rs":"7539eb2164c3fe2162a339ef5b45f1c835010a1522307803815779a01825eed7","src/ocsp.rs":"1db59566d2f072f7ae981f0c07e1604fcdf60e66845afe0689d588f8e4272115","src/ossl_typ.rs":"fc7366e75c78707650c8667593ed183eca6a8ce8dd6b911e342f644d1bcf98bd","src/pem.rs":"83bb7745615a99fe2a8d5f8f51addba2024c7e6be847ab6c9244bfd04388c4f9","src/pkcs12.rs":"93aab2820008ad90dc346a7dcc02f9201d94bff0bb7d1d71031c097850287c50","src/pkcs7.rs":"5370c8d4bfbf1502fa33aff635cb730e7c87814580f1df9bdb1412a492377813","src/rand.rs":"469601b4fbb56d4dbf5cf5d7bb8483e3bde411edea18601e7d1ed6ef27180fd3","src/rsa.rs":"0e8c1f0bc37620a9208175542143bfd411ae88188974d2d5b37a2b8b77d0e2c8","src/safestack.rs":"6c39e28565d34efad707d77561d4caa99e3f028fcac3a2ef6fd403a78de1190c","src/sha.rs":"05044d221d8d205010a4e3760c0b5c0e2e923e165db0d65f9a8c9bcedaad9961","src/srtp.rs":"306047f3f31828fe7d15de154b375f071ae07012a94c0b5c909f5fe57962a11b","src/ssl.rs":"18c0c0c5ef02329be90fd279968da61d3e1a6b3a3aec102d6fefd99021d1822a","src/ssl3.rs":"9336c816e00847d552dea22587d4ac72ff3cbd469fa5ff750423a19ea11e68eb","src/stack.rs":"1a509907283e5a2bf88cf193ce607f49ce7d2d95547c2ce2abc0fd4567aad334","src/tls1.rs":"60ca3dea1bbfda645bde563b4a878dac129c3f760e3ad572381000fc7a8ef522","src/x509.rs":"20e221731587221aab00aef21b4e4bebb7635603d265d424f3dd3c60d4c511e2","src/x509_vfy.rs":"5609f6300ab37a4d4755c81f7af1e6bb93a2f1a6f333c6e42f1e73ebf83ddc05","src/x509v3.rs":"30c58ce7d80670cc597d041e0f59862c1100e38743fc9dde2aec6dc811a4a558"},"package":"33c86834957dd5b915623e94f2f4ab2c70dd8f6b70679824155d5ae21dbd495d"}
+diff --git a/vendor/openssl-sys/build/main.rs b/vendor/openssl-sys/build/main.rs
+index 02b93b90a..f0cf4b4ff 100644
+--- a/vendor/openssl-sys/build/main.rs
++++ b/vendor/openssl-sys/build/main.rs
+@@ -183,27 +183,31 @@ See rust-openssl README for more information:
+     if let Some(libressl_version) = libressl_version {
+         println!("cargo:libressl_version_number={:x}", libressl_version);
+ 
++        let major = (libressl_version >> 28) as u8;
+         let minor = (libressl_version >> 20) as u8;
+         let fix = (libressl_version >> 12) as u8;
+-        let (minor, fix) = match (minor, fix) {
+-            (5, 0) => ('5', '0'),
+-            (5, 1) => ('5', '1'),
+-            (5, 2) => ('5', '2'),
+-            (5, _) => ('5', 'x'),
+-            (6, 0) => ('6', '0'),
+-            (6, 1) => ('6', '1'),
+-            (6, 2) => ('6', '2'),
+-            (6, _) => ('6', 'x'),
+-            (7, _) => ('7', 'x'),
+-            (8, 0) => ('8', '0'),
+-            (8, 1) => ('8', '1'),
+-            (8, _) => ('8', 'x'),
+-            (9, 0) => ('9', '0'),
++        let (major, minor, fix) = match (major, minor, fix) {
++            (2, 5, 0) => ('2', '5', '0'),
++            (2, 5, 1) => ('2', '5', '1'),
++            (2, 5, 2) => ('2', '5', '2'),
++            (2, 5, _) => ('2', '5', 'x'),
++            (2, 6, 0) => ('2', '6', '0'),
++            (2, 6, 1) => ('2', '6', '1'),
++            (2, 6, 2) => ('2', '6', '2'),
++            (2, 6, _) => ('2', '6', 'x'),
++            (2, 7, _) => ('2', '7', 'x'),
++            (2, 8, 0) => ('2', '8', '0'),
++            (2, 8, 1) => ('2', '8', '1'),
++            (2, 8, _) => ('2', '8', 'x'),
++            (2, 9, 0) => ('2', '9', '0'),
++            (2, 9, _) => ('2', '9', 'x'),
++            (3, 0, 0) => ('3', '0', '0'),
++            (3, 0, _) => ('3', '0', 'x'),
+             _ => version_error(),
+         };
+ 
+         println!("cargo:libressl=true");
+-        println!("cargo:libressl_version=2{}{}", minor, fix);
++        println!("cargo:libressl_version={}{}{}", major, minor, fix);
+         println!("cargo:version=101");
+         Version::Libressl
+     } else {
+@@ -239,7 +243,7 @@ fn version_error() -> ! {
+         "
+ 
+ This crate is only compatible with OpenSSL 1.0.1 through 1.1.1, or LibreSSL 2.5
+-through 2.9.0, but a different version of OpenSSL was found. The build is now aborting
++through 3.0.x, but a different version of OpenSSL was found. The build is now aborting
+ due to this version mismatch.
+ 
+ "

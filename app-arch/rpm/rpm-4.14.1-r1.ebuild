@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit autotools flag-o-matic perl-module python-single-r1 eapi7-ver
 
 DESCRIPTION="Red Hat Package Management Utils"
-HOMEPAGE="http://www.rpm.org
+HOMEPAGE="https://rpm.org
 	https://github.com/rpm-software-management/rpm"
 SRC_URI="http://ftp.rpm.org/releases/rpm-$(ver_cut 1-2).x/${P}.tar.bz2"
 

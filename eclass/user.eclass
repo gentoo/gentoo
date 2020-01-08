@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: user.eclass
 # @MAINTAINER:
 # base-system@gentoo.org (Linux)
+# Michał Górny <mgorny@gentoo.org> (NetBSD)
 # @BLURB: user management in ebuilds
 # @DESCRIPTION:
 # The user eclass contains a suite of functions that allow ebuilds
@@ -17,10 +18,10 @@ _USER_ECLASS=1
 # @USAGE: <calling func name>
 _assert_pkg_ebuild_phase() {
 	case ${EBUILD_PHASE} in
-	setup|preinst|postinst) ;;
+	setup|preinst|postinst|prerm|postrm) ;;
 	*)
 		eerror "'$1()' called from '${EBUILD_PHASE}' phase which is not OK:"
-		eerror "You may only call from pkg_{setup,preinst,postinst} functions."
+		eerror "You may only call from pkg_{setup,{pre,post}{inst,rm}} functions."
 		eerror "Package fails at QA and at life.  Please file a bug."
 		die "Bad package!  $1 is only for use in some pkg_* functions!"
 	esac
@@ -44,32 +45,6 @@ egetent() {
 	esac
 
 	case ${CHOST} in
-	*-darwin[678])
-		case ${key} in
-		*[!0-9]*) # Non numeric
-			nidump ${db} . | awk -F: "(\$1 ~ /^${key}\$/) {print;exit;}"
-			;;
-		*)	# Numeric
-			nidump ${db} . | awk -F: "(\$3 == ${key}) {print;exit;}"
-			;;
-		esac
-		;;
-	*-darwin*)
-		local mykey
-		case ${db} in
-		passwd) db="Users"  mykey="UniqueID" ;;
-		group)  db="Groups" mykey="PrimaryGroupID" ;;
-		esac
-
-		case ${key} in
-		*[!0-9]*) # Non numeric
-			dscl . -read /${db}/${key} 2>/dev/null |grep RecordName
-			;;
-		*)	# Numeric
-			dscl . -search /${db} ${mykey} ${key} 2>/dev/null
-			;;
-		esac
-		;;
 	*-freebsd*|*-dragonfly*)
 		case ${db} in
 		passwd) db="user" ;;
@@ -84,7 +59,7 @@ egetent() {
 
 		pw show ${db} ${opts} "${key}" -q
 		;;
-	*-netbsd*|*-openbsd*)
+	*-openbsd*)
 		grep "${key}:\*:" /etc/${db}
 		;;
 	*)
@@ -95,19 +70,59 @@ egetent() {
 	esac
 }
 
+# @FUNCTION: user_get_nologin
+# @INTERNAL
+# @DESCRIPTION:
+# Find an appropriate 'nologin' shell for the platform, and output
+# its path.
+user_get_nologin() {
+	local eshell
+
+	for eshell in /sbin/nologin /usr/sbin/nologin /bin/false /usr/bin/false /dev/null ; do
+		[[ -x ${ROOT}${eshell} ]] && break
+	done
+
+	if [[ ${eshell} == "/dev/null" ]] ; then
+		ewarn "Unable to identify the shell to use, proceeding with userland default."
+		case ${USERLAND} in
+			GNU)    eshell="/bin/false" ;;
+			BSD)    eshell="/sbin/nologin" ;;
+			Darwin) eshell="/usr/sbin/nologin" ;;
+			*) die "Unable to identify the default shell for userland ${USERLAND}"
+		esac
+	fi
+
+	echo "${eshell}"
+}
+
 # @FUNCTION: enewuser
-# @USAGE: <user> [uid] [shell] [homedir] [groups]
+# @USAGE: <user> [-F] [-M] [uid] [shell] [homedir] [groups]
 # @DESCRIPTION:
 # Same as enewgroup, you are not required to understand how to properly add
 # a user to the system.  The only required parameter is the username.
 # Default uid is (pass -1 for this) next available, default shell is
 # /bin/false, default homedir is /dev/null, and there are no default groups.
+#
+# If -F is passed, enewuser will always enforce specified UID and fail if it
+# can not be assigned.
+# If -M is passed, enewuser does not create the home directory if it does not
+# exist.
 enewuser() {
 	if [[ ${EUID} != 0 ]] ; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
 	_assert_pkg_ebuild_phase ${FUNCNAME}
+
+	local create_home=1 force_uid=
+	while [[ $1 == -* ]]; do
+		case $1 in
+			-F) force_uid=1;;
+			-M) create_home=;;
+			*) die "${FUNCNAME}: invalid option ${1}";;
+		esac
+		shift
+	done
 
 	# get the username
 	local euser=$1; shift
@@ -130,6 +145,7 @@ enewuser() {
 	if [[ -n ${euid} && ${euid} != -1 ]] ; then
 		if [[ ${euid} -gt 0 ]] ; then
 			if [[ -n $(egetent passwd ${euid}) ]] ; then
+				[[ -n ${force_uid} ]] && die "${FUNCNAME}: UID ${euid} already taken"
 				euid="next"
 			fi
 		else
@@ -137,12 +153,14 @@ enewuser() {
 			die "${euid} is not a valid UID"
 		fi
 	else
+		[[ -n ${force_uid} ]] && die "${FUNCNAME}: -F with uid==-1 makes no sense"
 		euid="next"
 	fi
 	if [[ ${euid} == "next" ]] ; then
-		for ((euid = 101; euid <= 999; euid++)); do
+		for ((euid = 999; euid >= 101; euid--)); do
 			[[ -z $(egetent passwd ${euid}) ]] && break
 		done
+		[[ ${euid} -ge 101 ]] || die "${FUNCNAME}: no free UID found"
 	fi
 	opts+=( -u ${euid} )
 	einfo " - Userid: ${euid}"
@@ -159,19 +177,7 @@ enewuser() {
 			die "Pass '-1' as the shell parameter"
 		fi
 	else
-		for eshell in /sbin/nologin /usr/sbin/nologin /bin/false /usr/bin/false /dev/null ; do
-			[[ -x ${ROOT}${eshell} ]] && break
-		done
-
-		if [[ ${eshell} == "/dev/null" ]] ; then
-			eerror "Unable to identify the shell to use, proceeding with userland default."
-			case ${USERLAND} in
-				GNU)    eshell="/bin/false" ;;
-				BSD)    eshell="/sbin/nologin" ;;
-				Darwin) eshell="/usr/sbin/nologin" ;;
-				*) die "Unable to identify the default shell for userland ${USERLAND}"
-			esac
-		fi
+		eshell=$(user_get_nologin)
 	fi
 	einfo " - Shell: ${eshell}"
 	opts+=( -s "${eshell}" )
@@ -219,18 +225,6 @@ enewuser() {
 
 	# add the user
 	case ${CHOST} in
-	*-darwin*)
-		### Make the user
-		dscl . create "/users/${euser}" uid ${euid}
-		dscl . create "/users/${euser}" shell "${eshell}"
-		dscl . create "/users/${euser}" home "${ehome}"
-		dscl . create "/users/${euser}" realname "added by portage for ${PN}"
-		### Add the user to the groups specified
-		for g in "${egroups_arr[@]}" ; do
-			dscl . merge "/groups/${g}" users "${euser}"
-		done
-		;;
-
 	*-freebsd*|*-dragonfly*)
 		pw useradd "${euser}" "${opts[@]}" || die
 		;;
@@ -246,11 +240,11 @@ enewuser() {
 		;;
 
 	*)
-		useradd -r "${opts[@]}" "${euser}" || die
+		useradd -M -N -r "${opts[@]}" "${euser}" || die
 		;;
 	esac
 
-	if [[ ! -e ${ROOT}/${ehome} ]] ; then
+	if [[ -n ${create_home} && ! -e ${ROOT}/${ehome} ]] ; then
 		einfo " - Creating ${ehome} in ${ROOT}"
 		mkdir -p "${ROOT}/${ehome}"
 		chown "${euser}" "${ROOT}/${ehome}"
@@ -265,12 +259,24 @@ enewuser() {
 # group to the system.  Just give it a group name to add and enewgroup will
 # do the rest.  You may specify the gid for the group or allow the group to
 # allocate the next available one.
+#
+# If -F is passed, enewgroup will always enforce specified GID and fail if it
+# can not be assigned.
 enewgroup() {
 	if [[ ${EUID} != 0 ]] ; then
 		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
 	_assert_pkg_ebuild_phase ${FUNCNAME}
+
+	local force_gid=
+	while [[ $1 == -* ]]; do
+		case $1 in
+			-F) force_gid=1;;
+			*) die "${FUNCNAME}: invalid option ${1}";;
+		esac
+		shift
+	done
 
 	# get the group
 	local egroup=$1; shift
@@ -290,6 +296,7 @@ enewgroup() {
 	if [[ ! -z ${egid} ]] ; then
 		if [[ ${egid} -gt 0 ]] ; then
 			if [[ -n $(egetent group ${egid}) ]] ; then
+				[[ -n ${force_gid} ]] && die "${FUNCNAME}: GID ${egid} already taken"
 				egid="next available; requested gid taken"
 			fi
 		else
@@ -297,6 +304,7 @@ enewgroup() {
 			die "${egid} is not a valid GID"
 		fi
 	else
+		[[ -n ${force_gid} ]] && die "${FUNCNAME}: -F with gid==-1 makes no sense"
 		egid="next available"
 	fi
 	einfo " - Groupid: ${egid}"
@@ -310,20 +318,15 @@ enewgroup() {
 	_enewgroup_next_gid() {
 		if [[ ${egid} == *[!0-9]* ]] ; then
 			# Non numeric
-			for ((egid = 101; egid <= 999; egid++)) ; do
+			for ((egid = 999; egid >= 101; egid--)) ; do
 				[[ -z $(egetent group ${egid}) ]] && break
 			done
+			[[ ${egid} -ge 101 ]] || die "${FUNCNAME}: no free GID found"
 		fi
 	}
 
 	# add the group
 	case ${CHOST} in
-	*-darwin*)
-		_enewgroup_next_gid
-		dscl . create "/groups/${egroup}" gid ${egid}
-		dscl . create "/groups/${egroup}" passwd '*'
-		;;
-
 	*-freebsd*|*-dragonfly*)
 		_enewgroup_next_gid
 		pw groupadd "${egroup}" -g ${egid} || die
@@ -348,6 +351,26 @@ enewgroup() {
 	esac
 }
 
+# @FUNCTION: egetusername
+# @USAGE: <uid>
+# @DESCRIPTION:
+# Gets the username for given UID.
+egetusername() {
+	[[ $# -eq 1 ]] || die "usage: egetusername <uid>"
+
+	egetent passwd "$1" | cut -d: -f1
+}
+
+# @FUNCTION: egetgroupname
+# @USAGE: <gid>
+# @DESCRIPTION:
+# Gets the group name for given GID.
+egetgroupname() {
+	[[ $# -eq 1 ]] || die "usage: egetgroupname <gid>"
+
+	egetent group "$1" | cut -d: -f1
+}
+
 # @FUNCTION: egethome
 # @USAGE: <user>
 # @DESCRIPTION:
@@ -358,7 +381,7 @@ egethome() {
 	[[ $# -eq 1 ]] || die "usage: egethome <user>"
 
 	case ${CHOST} in
-	*-darwin*|*-freebsd*|*-dragonfly*)
+	*-freebsd*|*-dragonfly*)
 		pos=9
 		;;
 	*)	# Linux, NetBSD, OpenBSD, etc...
@@ -379,7 +402,7 @@ egetshell() {
 	[[ $# -eq 1 ]] || die "usage: egetshell <user>"
 
 	case ${CHOST} in
-	*-darwin*|*-freebsd*|*-dragonfly*)
+	*-freebsd*|*-dragonfly*)
 		pos=10
 		;;
 	*)	# Linux, NetBSD, OpenBSD, etc...
@@ -388,6 +411,46 @@ egetshell() {
 	esac
 
 	egetent passwd "$1" | cut -d: -f${pos}
+}
+
+# @FUNCTION: egetcomment
+# @USAGE: <user>
+# @DESCRIPTION:
+# Gets the comment field for the specified user.
+egetcomment() {
+	local pos
+
+	[[ $# -eq 1 ]] || die "usage: egetshell <user>"
+
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pos=8
+		;;
+	*)	# Linux, NetBSD, OpenBSD, etc...
+		pos=5
+		;;
+	esac
+
+	egetent passwd "$1" | cut -d: -f${pos}
+}
+
+# @FUNCTION: egetgroups
+# @USAGE: <user>
+# @DESCRIPTION:
+# Gets all the groups user belongs to.  The primary group is returned
+# first, then all supplementary groups.  Groups are ','-separated.
+egetgroups() {
+	[[ $# -eq 1 ]] || die "usage: egetgroups <user>"
+
+	local egroups_arr
+	read -r -a egroups_arr < <(id -G -n "$1")
+
+	local g groups=${egroups_arr[0]}
+	# sort supplementary groups to make comparison possible
+	while read -r g; do
+		[[ -n ${g} ]] && groups+=",${g}"
+	done < <(printf '%s\n' "${egroups_arr[@]:1}" | sort)
+	echo "${groups}"
 }
 
 # @FUNCTION: esethome
@@ -444,10 +507,6 @@ esethome() {
 
 	# update the home directory
 	case ${CHOST} in
-	*-darwin*)
-		dscl . change "/users/${euser}" home "${ehome}"
-		;;
-
 	*-freebsd*|*-dragonfly*)
 		pw usermod "${euser}" -d "${ehome}" && return 0
 		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update home"
@@ -462,6 +521,193 @@ esethome() {
 		eerror "There was an error when attempting to update the home directory for ${euser}"
 		eerror "Please update it manually on your system (as root):"
 		eerror "\t usermod -d \"${ehome}\" \"${euser}\""
+		;;
+	esac
+}
+
+# @FUNCTION: esetshell
+# @USAGE: <user> <shell>
+# @DESCRIPTION:
+# Update the shell in a platform-agnostic way.
+# Required parameters is the username and the new shell.
+# Specify -1 if you want to set shell to platform-specific nologin.
+esetshell() {
+	_assert_pkg_ebuild_phase ${FUNCNAME}
+
+	# get the username
+	local euser=$1; shift
+	if [[ -z ${euser} ]] ; then
+		eerror "No username specified !"
+		die "Cannot call esetshell without a username"
+	fi
+
+	# lets see if the username already exists
+	if [[ -z $(egetent passwd "${euser}") ]] ; then
+		ewarn "User does not exist, cannot set shell -- skipping."
+		return 1
+	fi
+
+	# handle shell
+	local eshell=$1; shift
+	if [[ -z ${eshell} ]] ; then
+		eerror "No shell specified !"
+		die "Cannot call esetshell without a shell or '-1'"
+	fi
+
+	if [[ ${eshell} == "-1" ]] ; then
+		eshell=$(user_get_nologin)
+	fi
+
+	# exit with no message if shell is up to date
+	if [[ $(egetshell "${euser}") == ${eshell} ]]; then
+		return 0
+	fi
+
+	einfo "Updating shell for user '${euser}' ..."
+	einfo " - Shell: ${eshell}"
+
+	# update the shell
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pw usermod "${euser}" -s "${eshell}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update shell"
+		eerror "There was an error when attempting to update the shell for ${euser}"
+		eerror "Please update it manually on your system:"
+		eerror "\t pw usermod \"${euser}\" -s \"${eshell}\""
+		;;
+
+	*)
+		usermod -s "${eshell}" "${euser}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update shell"
+		eerror "There was an error when attempting to update the shell for ${euser}"
+		eerror "Please update it manually on your system (as root):"
+		eerror "\t usermod -s \"${eshell}\" \"${euser}\""
+		;;
+	esac
+}
+
+# @FUNCTION: esetcomment
+# @USAGE: <user> <comment>
+# @DESCRIPTION:
+# Update the comment field in a platform-agnostic way.
+# Required parameters is the username and the new comment.
+esetcomment() {
+	_assert_pkg_ebuild_phase ${FUNCNAME}
+
+	# get the username
+	local euser=$1; shift
+	if [[ -z ${euser} ]] ; then
+		eerror "No username specified !"
+		die "Cannot call esetcomment without a username"
+	fi
+
+	# lets see if the username already exists
+	if [[ -z $(egetent passwd "${euser}") ]] ; then
+		ewarn "User does not exist, cannot set comment -- skipping."
+		return 1
+	fi
+
+	# handle comment
+	local ecomment=$1; shift
+	if [[ -z ${ecomment} ]] ; then
+		eerror "No comment specified !"
+		die "Cannot call esetcomment without a comment"
+	fi
+
+	# exit with no message if comment is up to date
+	if [[ $(egetcomment "${euser}") == ${ecomment} ]]; then
+		return 0
+	fi
+
+	einfo "Updating comment for user '${euser}' ..."
+	einfo " - Comment: ${ecomment}"
+
+	# update the comment
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pw usermod "${euser}" -c "${ecomment}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update comment"
+		eerror "There was an error when attempting to update the comment for ${euser}"
+		eerror "Please update it manually on your system:"
+		eerror "\t pw usermod \"${euser}\" -c \"${ecomment}\""
+		;;
+
+	*)
+		usermod -c "${ecomment}" "${euser}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update comment"
+		eerror "There was an error when attempting to update the comment for ${euser}"
+		eerror "Please update it manually on your system (as root):"
+		eerror "\t usermod -c \"${ecomment}\" \"${euser}\""
+		;;
+	esac
+}
+
+# @FUNCTION: esetgroups
+# @USAGE: <user> <groups>
+# @DESCRIPTION:
+# Update the group field in a platform-agnostic way.
+# Required parameters is the username and the new list of groups,
+# primary group first.
+esetgroups() {
+	_assert_pkg_ebuild_phase ${FUNCNAME}
+
+	[[ ${#} -eq 2 ]] || die "Usage: ${FUNCNAME} <user> <groups>"
+
+	# get the username
+	local euser=$1; shift
+
+	# lets see if the username already exists
+	if [[ -z $(egetent passwd "${euser}") ]] ; then
+		ewarn "User does not exist, cannot set group -- skipping."
+		return 1
+	fi
+
+	# handle group
+	local egroups=$1; shift
+
+	local g egroups_arr=()
+	IFS="," read -r -a egroups_arr <<<"${egroups}"
+	[[ ${#egroups_arr[@]} -gt 0 ]] || die "${FUNCNAME}: no groups specified"
+
+	for g in "${egroups_arr[@]}" ; do
+		if [[ -z $(egetent group "${g}") ]] ; then
+			eerror "You must add group ${g} to the system first"
+			die "${g} is not a valid GID"
+		fi
+	done
+
+	local defgroup=${egroups_arr[0]} exgroups_arr=()
+	# sort supplementary groups to make comparison possible
+	readarray -t exgroups_arr < <(printf '%s\n' "${egroups_arr[@]:1}" | sort)
+	local exgroups=${exgroups_arr[*]}
+	exgroups=${exgroups// /,}
+	egroups=${defgroup}${exgroups:+,${exgroups}}
+
+	# exit with no message if group membership is up to date
+	if [[ $(egetgroups "${euser}") == ${egroups} ]]; then
+		return 0
+	fi
+
+	local opts=( -g "${defgroup}" -G "${exgroups}" )
+	einfo "Updating groups for user '${euser}' ..."
+	einfo " - Groups: ${egroups}"
+
+	# update the group
+	case ${CHOST} in
+	*-freebsd*|*-dragonfly*)
+		pw usermod "${euser}" "${opts[@]}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update groups"
+		eerror "There was an error when attempting to update the groups for ${euser}"
+		eerror "Please update it manually on your system:"
+		eerror "\t pw usermod \"${euser}\" ${opts[*]}"
+		;;
+
+	*)
+		usermod "${opts[@]}" "${euser}" && return 0
+		[[ $? == 8 ]] && eerror "${euser} is in use, cannot update groups"
+		eerror "There was an error when attempting to update the groups for ${euser}"
+		eerror "Please update it manually on your system (as root):"
+		eerror "\t usermod ${opts[*]} \"${euser}\""
 		;;
 	esac
 }

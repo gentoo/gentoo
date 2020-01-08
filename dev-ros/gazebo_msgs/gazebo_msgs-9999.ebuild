@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-simulation/gazebo_ros_pkgs"
 KEYWORDS="~amd64"
-PYTHON_COMPAT=( python{2_7,3_4,3_5} )
+PYTHON_COMPAT=( python2_7 )
 CATKIN_HAS_MESSAGES=yes
 ROS_SUBDIR=${PN}
 CATKIN_MESSAGES_TRANSITIVE_DEPS="dev-ros/geometry_msgs dev-ros/sensor_msgs dev-ros/trajectory_msgs dev-ros/std_msgs dev-ros/std_srvs"

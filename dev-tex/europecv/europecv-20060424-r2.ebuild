@@ -1,7 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
+
 inherit latex-package
 
 DESCRIPTION="LaTeX class for the standard model for curricula vitae as recommended by the EC"
@@ -12,13 +13,16 @@ SRC_URI="mirror://gentoo/${P}.zip"
 
 LICENSE="LPPL-1.2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 
 IUSE="examples"
 
 RDEPEND=">=dev-texlive/texlive-latexextra-2008"
-DEPEND="${RDEPEND}
-	app-arch/unzip"
+
+DEPEND="${RDEPEND}"
+
+BDEPEND="app-arch/unzip"
+
 S="${WORKDIR}/${PN}"
 
 TEXMF=/usr/share/texmf-site

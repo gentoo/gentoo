@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -81,24 +81,23 @@ src_prepare() {
 }
 
 src_compile() {
-	elisp-compile *.el || die
+	elisp-compile *.el
 	BYTECOMPFLAGS="${BYTECOMPFLAGS} -L contrib -l slime" \
-		elisp-compile contrib/*.el lib/*.el || die
-	emake -j1 -C doc slime.info || die "Cannot build info docs"
+		elisp-compile contrib/*.el lib/*.el
+	emake -j1 -C doc slime.info
 
 	if use doc; then
 		VARTEXFONTS="${T}"/fonts \
-			emake -j1 -C doc slime.pdf || die "emake doc failed"
+			emake -j1 -C doc slime.pdf
 	fi
 }
 
 src_install() {
 	## install core
-	elisp-install ${PN} *.{el,elc} "${FILESDIR}"/swank-loader.lisp \
-		|| die "Cannot install SLIME core"
+	elisp-install ${PN} *.{el,elc} "${FILESDIR}"/swank-loader.lisp
 	sed "s:/usr/:${EPREFIX}&:g" "${FILESDIR}"/2.0_p20110617/${SITEFILE} \
 		>"${T}"/${SITEFILE} || die "sed failed"
-	elisp-site-file-install "${T}"/${SITEFILE} || die
+	elisp-site-file-install "${T}"/${SITEFILE}
 	cp "${FILESDIR}"/2.0_p20110617/swank.asd "${S}"
 	# remove upstream swank-loader, since it won't be used
 	rm "${S}"/swank-loader.lisp
@@ -106,13 +105,11 @@ src_install() {
 	common-lisp-install-asdf swank.asd
 
 	## install contribs
-	elisp-install ${PN}/contrib/ contrib/*.{el,elc,scm,goo} \
-		|| die "Cannot install contribs"
+	elisp-install ${PN}/contrib/ contrib/*.{el,elc,scm,goo}
 	common-lisp-install-sources contrib/*.lisp
 
 	## install lib
-	elisp-install ${PN}/lib/ lib/*.{el,elc} \
-		|| die "Cannot install libs"
+	elisp-install ${PN}/lib/ lib/*.{el,elc}
 
 	## install docs
 	dodoc README.md ChangeLog CONTRIBUTING.md NEWS PROBLEMS

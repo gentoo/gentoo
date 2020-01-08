@@ -11,5 +11,6 @@
 	<upstream>
 		<bugs-to>https://github.com/rsyslog/libfastjson/issues</bugs-to>
 		<remote-id type="github">rsyslog/libfastjson</remote-id>
+		<remote-id type="cpe">cpe:/a:rsyslog:libfastjson</remote-id>
 	</upstream>
 </pkgmetadata>

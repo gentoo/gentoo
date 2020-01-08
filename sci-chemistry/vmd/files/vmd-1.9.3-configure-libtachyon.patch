@@ -1,0 +1,13 @@
+--- a/configure.old	2019-05-16 17:26:05.347560700 +0200
++++ b/configure	2019-05-16 17:30:25.478455770 +0200
+@@ -1105,8 +1105,8 @@
+ # This may be commented out if not required.
+ $libtachyon_defines     = "-DVMDLIBTACHYON";
+ $libtachyon_dir         = "$vmd_library_dir/tachyon";
+-$libtachyon_include     = "-I$libtachyon_dir/include";
+-$libtachyon_library     = "-L$libtachyon_dir/lib_$config_arch";
++$libtachyon_include     = "-Igentoo-libtachyon-include";
++$libtachyon_library     = "-Lgentoo-libtachyon-libs";
+ $libtachyon_libs        = "-ltachyon";
+ @libtachyon_cc          = ();
+ @libtachyon_cu          = ();

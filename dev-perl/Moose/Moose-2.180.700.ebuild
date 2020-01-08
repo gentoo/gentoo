@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,8 +11,9 @@ inherit perl-module
 DESCRIPTION="A postmodern object system for Perl 5"
 
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~x64-macos"
+KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86 ~x64-macos"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 CONFLICTS="
 	!<=dev-perl/Catalyst-5.900.499.990

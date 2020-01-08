@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN%-*}/${MY_P}.tar.gz"
 
 LICENSE="ipadic"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 arm arm64 hppa ia64 ppc ppc64 s390 sparc x86"
 IUSE="unicode"
 
 DEPEND="app-text/mecab[unicode=]"

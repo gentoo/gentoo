@@ -26,6 +26,7 @@ DEPEND="
 	${RDEPEND}
 	dev-qt/linguist-tools:5
 	dev-qt/qtsvg:5
+	dev-qt/qttest:5
 "
 
 src_prepare() {

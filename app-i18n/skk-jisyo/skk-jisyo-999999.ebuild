@@ -1,19 +1,16 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-USE_RUBY="ruby21 ruby22 ruby23 ruby24"
+EAPI="7"
+USE_RUBY="ruby24 ruby25 ruby26"
 
-inherit cvs ruby-single
+inherit git-r3 ruby-single
 
 MY_PN=${PN^^}
 
 DESCRIPTION="Jisyo (dictionary) files for the SKK Japanese-input software"
-HOMEPAGE="http://openlab.ring.gr.jp/skk/dic.html"
-ECVS_SERVER="openlab.jp:/circus/cvsroot"
-ECVS_MODULE="skk/dic"
-ECVS_USER="guest"
-ECVS_PASS="guest"
+HOMEPAGE="https://skk-dev.github.io/dict"
+EGIT_REPO_URI="https://github.com/skk-dev/dict"
 
 LICENSE="GPL-2 freedist public-domain"
 SLOT="0"
@@ -30,9 +27,8 @@ DEPEND="${RUBY_DEPS}
 		)
 	)"
 RDEPEND=""
-S="${WORKDIR}/${ECVS_MODULE}"
 
-DOCS=( ChangeLog{,.{1..3}} READMEs/committers.txt edict_doc.txt zipcode/README.ja )
+DOCS=( ChangeLog{,.{1..3}} committers.txt edict_doc.txt )
 
 SKKTOOLS_DIR="${EPREFIX}/usr/share/skktools/convert2skk"
 
@@ -82,4 +78,8 @@ src_compile() {
 src_install() {
 	insinto /usr/share/skk
 	doins {,zipcode/}${MY_PN}.*
+
+	einstalldocs
+	docinto zipcode
+	dodoc zipcode/README.md
 }

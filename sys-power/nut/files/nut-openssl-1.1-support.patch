@@ -1,0 +1,333 @@
+From da1f5aa699f54e0f6977ab64a3bc2f90a51c3104 Mon Sep 17 00:00:00 2001
+From: Arjen de Korte <build+lede@de-korte.org>
+Date: Mon, 27 Nov 2017 21:10:13 +0100
+Subject: [PATCH 1/7] Add support for openssl-1.1.0
+
+---
+ clients/upsclient.c        | 4 ++++
+ m4/nut_check_libopenssl.m4 | 5 +++--
+ server/netssl.c            | 4 ++++
+ 3 files changed, 11 insertions(+), 2 deletions(-)
+
+diff --git a/clients/upsclient.c b/clients/upsclient.c
+index b90587b00..fc5e7523c 100644
+--- a/clients/upsclient.c
++++ b/clients/upsclient.c
+@@ -316,7 +316,11 @@ int upscli_init(int certverify, const char *certpath,
+ 	
+ #ifdef WITH_OPENSSL
+ 	
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	SSL_library_init();
++#else
++	OPENSSL_init_ssl(0, NULL);
++#endif
+ 	SSL_load_error_strings();
+ 
+ 	ssl_method = TLSv1_client_method();
+diff --git a/m4/nut_check_libopenssl.m4 b/m4/nut_check_libopenssl.m4
+index 1b875077b..5f29f4a38 100644
+--- a/m4/nut_check_libopenssl.m4
++++ b/m4/nut_check_libopenssl.m4
+@@ -57,8 +57,9 @@ if test -z "${nut_have_libopenssl_seen}"; then
+ 	AC_MSG_RESULT([${LIBS}])
+ 
+ 	dnl check if openssl is usable
+-	AC_CHECK_HEADERS(openssl/ssl.h, [nut_have_openssl=yes], [nut_have_openssl=no], [AC_INCLUDES_DEFAULT])
+-	AC_CHECK_FUNCS(SSL_library_init, [], [nut_have_openssl=no])
++	AC_CHECK_FUNCS(OPENSSL_init_ssl, [nut_have_openssl=yes], [nut_have_openssl=no])
++	AC_CHECK_FUNCS(SSL_library_init, [nut_have_openssl=yes], [])
++	AC_CHECK_HEADERS(openssl/ssl.h, [], [nut_have_openssl=no], [AC_INCLUDES_DEFAULT])
+ 
+ 	if test "${nut_have_openssl}" = "yes"; then
+ 		nut_with_ssl="yes"
+diff --git a/server/netssl.c b/server/netssl.c
+index c2f409899..0f9a70acf 100644
+--- a/server/netssl.c
++++ b/server/netssl.c
+@@ -388,7 +388,11 @@ void ssl_init(void)
+ #ifdef WITH_OPENSSL
+ 
+ 	SSL_load_error_strings();
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	SSL_library_init();
++#else
++	OPENSSL_init_ssl(0, NULL);
++#endif
+ 
+ 	if ((ssl_method = TLSv1_server_method()) == NULL) {
+ 		ssl_debug();
+
+From b15656efb2575647ca0e0b6439b6380373767b8f Mon Sep 17 00:00:00 2001
+From: Arjen de Korte <build+lede@de-korte.org>
+Date: Tue, 28 Nov 2017 20:00:52 +0100
+Subject: [PATCH 2/7] Allow TLSv1 and higher (not just TLSv1)
+
+---
+ clients/upsclient.c | 30 +++++++++++++++++-------------
+ server/netssl.c     | 26 +++++++++++++++-----------
+ 2 files changed, 32 insertions(+), 24 deletions(-)
+
+diff --git a/clients/upsclient.c b/clients/upsclient.c
+index fc5e7523c..bd951e854 100644
+--- a/clients/upsclient.c
++++ b/clients/upsclient.c
+@@ -299,11 +299,6 @@ int upscli_init(int certverify, const char *certpath,
+ {
+ #ifdef WITH_OPENSSL
+ 	int ret, ssl_mode = SSL_VERIFY_NONE;
+-#if OPENSSL_VERSION_NUMBER >= 0x10000000L
+-	const SSL_METHOD	*ssl_method;
+-#else
+-	SSL_METHOD	*ssl_method;
+-#endif
+ #elif defined(WITH_NSS) /* WITH_OPENSSL */
+ 	SECStatus	status;
+ #endif /* WITH_OPENSSL | WITH_NSS */
+@@ -315,26 +310,35 @@ int upscli_init(int certverify, const char *certpath,
+ 	}
+ 	
+ #ifdef WITH_OPENSSL
++
++	SSL_load_error_strings();
+ 	
+ #if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	SSL_library_init();
++
++	ssl_ctx = SSL_CTX_new(SSLv23_client_method());
+ #else
+ 	OPENSSL_init_ssl(0, NULL);
+-#endif
+-	SSL_load_error_strings();
+ 
+-	ssl_method = TLSv1_client_method();
+-
+-	if (!ssl_method) {
+-		return 0;
+-	}
++	ssl_ctx = SSL_CTX_new(TLS_client_method());
++#endif
+ 
+-	ssl_ctx = SSL_CTX_new(ssl_method);
+ 	if (!ssl_ctx) {
+ 		upslogx(LOG_ERR, "Can not initialize SSL context");
+ 		return -1;
+ 	}
+ 	
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++	/* set minimum protocol TLSv1 */
++	SSL_CTX_set_options(ssl_ctx, SSL_OP_NO_SSLv2 | SSL_OP_NO_SSLv3);
++#else
++	ret = SSL_CTX_set_min_proto_version(ssl_ctx, TLS1_VERSION);
++	if (ret != 1) {
++		upslogx(LOG_ERR, "Can not set minimum protocol to TLSv1");
++		return -1;
++	}
++#endif
++
+ 	if (!certpath) {
+ 		if (certverify == 1) {
+ 			upslogx(LOG_ERR, "Can not verify certificate if any is specified");
+diff --git a/server/netssl.c b/server/netssl.c
+index 0f9a70acf..98680d25e 100644
+--- a/server/netssl.c
++++ b/server/netssl.c
+@@ -371,13 +371,7 @@ void ssl_init(void)
+ {
+ #ifdef WITH_NSS
+ 	SECStatus status;
+-#elif defined(WITH_OPENSSL)
+-#if OPENSSL_VERSION_NUMBER >= 0x10000000L
+-	const SSL_METHOD	*ssl_method;
+-#else
+-	SSL_METHOD	*ssl_method;
+-#endif
+-#endif /* WITH_NSS|WITH_OPENSSL */
++#endif /* WITH_NSS */
+ 
+ 	if (!certfile) {
+ 		return;
+@@ -388,21 +382,31 @@ void ssl_init(void)
+ #ifdef WITH_OPENSSL
+ 
+ 	SSL_load_error_strings();
++
+ #if OPENSSL_VERSION_NUMBER < 0x10100000L
+ 	SSL_library_init();
++
++	ssl_ctx = SSL_CTX_new(SSLv23_server_method());
+ #else
+ 	OPENSSL_init_ssl(0, NULL);
++
++	ssl_ctx = SSL_CTX_new(TLS_server_method());
+ #endif
+ 
+-	if ((ssl_method = TLSv1_server_method()) == NULL) {
++	if (!ssl_ctx) {
+ 		ssl_debug();
+-		fatalx(EXIT_FAILURE, "TLSv1_server_method failed");
++		fatalx(EXIT_FAILURE, "SSL_CTX_new failed");
+ 	}
+ 
+-	if ((ssl_ctx = SSL_CTX_new(ssl_method)) == NULL) {
++#if OPENSSL_VERSION_NUMBER < 0x10100000L
++	/* set minimum protocol TLSv1 */
++	SSL_CTX_set_options(ssl_ctx, SSL_OP_NO_SSLv2 | SSL_OP_NO_SSLv3);
++#else
++	if (SSL_CTX_set_min_proto_version(ssl_ctx, TLS1_VERSION) != 1) {
+ 		ssl_debug();
+-		fatalx(EXIT_FAILURE, "SSL_CTX_new failed");
++		fatalx(EXIT_FAILURE, "SSL_CTX_set_min_proto_version(TLS1_VERSION)");
+ 	}
++#endif
+ 
+ 	if (SSL_CTX_use_certificate_chain_file(ssl_ctx, certfile) != 1) {
+ 		ssl_debug();
+
+From 5a8308aef9884017754fb70620c8ded34fa44290 Mon Sep 17 00:00:00 2001
+From: Arjen de Korte <build+lede@de-korte.org>
+Date: Tue, 28 Nov 2017 22:01:41 +0100
+Subject: [PATCH 3/7] Fix check for empty string
+
+---
+ clients/upssched.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/clients/upssched.c b/clients/upssched.c
+index 97b3ed42d..3fdf118ed 100644
+--- a/clients/upssched.c
++++ b/clients/upssched.c
+@@ -794,7 +794,7 @@ static void parse_at(const char *ntype, const char *un, const char *cmd,
+ 	}
+ 
+ 	if (!strcmp(cmd, "EXECUTE")) {
+-		if (ca1 == '\0') {
++		if (ca1[0] == '\0') {
+ 			upslogx(LOG_ERR, "Empty EXECUTE command argument");
+ 			return;
+ 		}
+
+From 5ecfb0ffe3d89a5116dd287ff2c3f60de67ecbb9 Mon Sep 17 00:00:00 2001
+From: Arjen de Korte <build+github@de-korte.org>
+Date: Fri, 1 Dec 2017 12:24:00 +0100
+Subject: [PATCH 4/7] Report TLS handshake in debug mode
+
+---
+ clients/upsclient.c | 2 +-
+ server/netssl.c     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/clients/upsclient.c b/clients/upsclient.c
+index bd951e854..b7dd8f424 100644
+--- a/clients/upsclient.c
++++ b/clients/upsclient.c
+@@ -745,7 +745,7 @@ static int upscli_sslinit(UPSCONN_t *ups, int verifycert)
+ 	switch(res)
+ 	{
+ 	case 1:
+-		upsdebugx(3, "SSL connected");
++		upsdebugx(3, "SSL connected (%s)", SSL_get_version(ups->ssl));
+ 		break;
+ 	case 0:
+ 		upslog_with_errno(1, "SSL_connect do not accept handshake.");
+diff --git a/server/netssl.c b/server/netssl.c
+index 98680d25e..6ae13e8d3 100644
+--- a/server/netssl.c
++++ b/server/netssl.c
+@@ -275,7 +275,7 @@ void net_starttls(nut_ctype_t *client, int numarg, const char **arg)
+ 	{
+ 	case 1:
+ 		client->ssl_connected = 1;
+-		upsdebugx(3, "SSL connected");
++		upsdebugx(3, "SSL connected (%s)", SSL_get_version(client->ssl));
+ 		break;
+ 		
+ 	case 0:
+
+From ab0c8b41c0530d3706e4997257939026cfd29ccc Mon Sep 17 00:00:00 2001
+From: Arjen de Korte <build+github@de-korte.org>
+Date: Sun, 24 Feb 2019 18:31:21 +0100
+Subject: [PATCH 5/7] Update nut_check_libopenssl.m4
+
+---
+ m4/nut_check_libopenssl.m4 | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/m4/nut_check_libopenssl.m4 b/m4/nut_check_libopenssl.m4
+index 5f29f4a38..7eb401cd9 100644
+--- a/m4/nut_check_libopenssl.m4
++++ b/m4/nut_check_libopenssl.m4
+@@ -57,9 +57,8 @@ if test -z "${nut_have_libopenssl_seen}"; then
+ 	AC_MSG_RESULT([${LIBS}])
+ 
+ 	dnl check if openssl is usable
+-	AC_CHECK_FUNCS(OPENSSL_init_ssl, [nut_have_openssl=yes], [nut_have_openssl=no])
+-	AC_CHECK_FUNCS(SSL_library_init, [nut_have_openssl=yes], [])
+-	AC_CHECK_HEADERS(openssl/ssl.h, [], [nut_have_openssl=no], [AC_INCLUDES_DEFAULT])
++	AC_CHECK_HEADERS(openssl/ssl.h, [nut_have_openssl=yes], [nut_have_openssl=no], [AC_INCLUDES_DEFAULT])
++	AC_CHECK_FUNCS(SSL_CTX_new, [], [nut_have_openssl=no])
+ 
+ 	if test "${nut_have_openssl}" = "yes"; then
+ 		nut_with_ssl="yes"
+
+From 1dc34a5da7308f0f85537a6761fefb3ff3098863 Mon Sep 17 00:00:00 2001
+From: Arjen de Korte <build+github@de-korte.org>
+Date: Sun, 24 Feb 2019 18:34:53 +0100
+Subject: [PATCH 6/7] Update upsclient.c
+
+---
+ clients/upsclient.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/clients/upsclient.c b/clients/upsclient.c
+index b7dd8f424..541664f36 100644
+--- a/clients/upsclient.c
++++ b/clients/upsclient.c
+@@ -311,15 +311,12 @@ int upscli_init(int certverify, const char *certpath,
+ 	
+ #ifdef WITH_OPENSSL
+ 
+-	SSL_load_error_strings();
+-	
+ #if OPENSSL_VERSION_NUMBER < 0x10100000L
++	SSL_load_error_strings();
+ 	SSL_library_init();
+ 
+ 	ssl_ctx = SSL_CTX_new(SSLv23_client_method());
+ #else
+-	OPENSSL_init_ssl(0, NULL);
+-
+ 	ssl_ctx = SSL_CTX_new(TLS_client_method());
+ #endif
+ 
+
+From 108c31c9b170da2ee34a25fd373d21837d4d10a3 Mon Sep 17 00:00:00 2001
+From: Arjen de Korte <build+github@de-korte.org>
+Date: Sun, 24 Feb 2019 18:37:42 +0100
+Subject: [PATCH 7/7] Update netssl.c
+
+---
+ server/netssl.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/server/netssl.c b/server/netssl.c
+index 6ae13e8d3..cf9419edf 100644
+--- a/server/netssl.c
++++ b/server/netssl.c
+@@ -381,15 +381,12 @@ void ssl_init(void)
+ 
+ #ifdef WITH_OPENSSL
+ 
+-	SSL_load_error_strings();
+-
+ #if OPENSSL_VERSION_NUMBER < 0x10100000L
++	SSL_load_error_strings();
+ 	SSL_library_init();
+ 
+ 	ssl_ctx = SSL_CTX_new(SSLv23_server_method());
+ #else
+-	OPENSSL_init_ssl(0, NULL);
+-
+ 	ssl_ctx = SSL_CTX_new(TLS_server_method());
+ #endif
+ 

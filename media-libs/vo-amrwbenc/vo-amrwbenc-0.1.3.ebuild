@@ -1,40 +1,39 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
+inherit multilib-minimal
 
-if [[ ${PV} == *9999 ]] ; then
-	SCM="git-2"
-	EGIT_REPO_URI="https://github.com/mstorsjo/${PN}.git"
-	[[ ${PV%9999} != "" ]] && EGIT_BRANCH="release/${PV%.9999}"
-	AUTOTOOLS_AUTORECONF=1
+if [[ ${PV} == *9999 ]]; then
+	inherit autotools git-r3
+	EGIT_REPO_URI="https://github.com/mstorsjo/vo-amrwbenc.git"
+else
+	SRC_URI="mirror://sourceforge/opencore-amr/${P}.tar.gz"
+	KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~x64-macos"
 fi
-
-inherit autotools-multilib ${SCM}
 
 DESCRIPTION="VisualOn AMR-WB encoder library"
 HOMEPAGE="https://sourceforge.net/projects/opencore-amr/"
 
-if [[ ${PV} == *9999 ]] ; then
-	SRC_URI=""
-elif [[ ${PV%_p*} != ${PV} ]] ; then # Gentoo snapshot
-	SRC_URI="mirror://gentoo/${P}.tar.xz"
-else # Official release
-	SRC_URI="mirror://sourceforge/opencore-amr/${P}.tar.gz"
-fi
-
 LICENSE="Apache-2.0"
 SLOT="0"
-
-[[ ${PV} == *9999 ]] || \
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~x64-macos"
 IUSE="examples static-libs"
 
-src_configure() {
-	local myeconfargs=(
+src_prepare() {
+	default
+	[[ ${PV} == *9999 ]] && eautoreconf
+}
+
+multilib_src_configure() {
+	ECONF_SOURCE="${S}" econf \
 		$(use_enable examples example) \
-	)
-	autotools-multilib_src_configure
+		$(use_enable static-libs static)
+}
+
+multilib_src_install_all() {
+	einstalldocs
+
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
 }

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit user autotools systemd python-r1
 
@@ -13,7 +13,7 @@ SRC_URI="http://varnish-cache.org/_downloads/${P}.tgz"
 
 LICENSE="BSD-2 GPL-2"
 SLOT="0/2"
-KEYWORDS="~amd64 ~mips ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~mips ~ppc ~ppc64 x86"
 IUSE="jemalloc jit static-libs"
 
 CDEPEND="

@@ -17,12 +17,15 @@
 	<email>office@gentoo.org</email>
 	<description>Please CC on stabilisation bugs</description>
 </maintainer>
+<upstream>
+	<remote-id type="cpe">cpe:/a:freedesktop:poppler</remote-id>
+</upstream>
 <use>
 	<flag name="nss">Enable signatures handling with <pkg>dev-libs/nss</pkg></flag>
 	<flag name="utils">Install command-line PDF converters and various utilities.</flag>
 </use>
 <slots>
 	<subslots>Reflects ABI compatibility of libpoppler.so only,
-		NOT libpoppler-{glib,qt4,cpp}.so!</subslots>
+		NOT libpoppler-{glib,qt5,cpp}.so!</subslots>
 </slots>
 </pkgmetadata>

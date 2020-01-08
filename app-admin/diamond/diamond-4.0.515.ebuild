@@ -9,7 +9,7 @@ if [[ ${PV} = 9999* ]]; then
 	S=${WORKDIR}/diamond-${PV}
 else
 	SRC_URI="https://github.com/python-diamond/Diamond/archive/v${PV}.tar.gz -> python-diamond-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="amd64 ~arm x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	S=${WORKDIR}/Diamond-${PV}
 fi
 
@@ -23,6 +23,7 @@ HOMEPAGE="https://github.com/python-diamond/Diamond"
 LICENSE="MIT"
 SLOT="0"
 IUSE="test mongo mysql snmp redis"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/configobj
 	dev-python/setproctitle

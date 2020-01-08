@@ -1,0 +1,37 @@
+From 674d17b100f7b8a471d65b61749ca892567f8d58 Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Fri, 16 Aug 2019 16:02:59 +0200
+Subject: [PATCH] setup.py: add posbility to disable compilation of gschema
+
+When you install fluxgui, it also compiles the gschema, which is for
+most distros fine. But on source distros like Gentoo, which do the
+compilation of gschema separately, this will lead to a file collision,
+as packages unter Gentoo are not allowed to install such files.
+
+So we introduce a new env variable called DISABLE_GSCHEMA_COMPILED which
+needs to be set to disable this behaviour.
+
+Closes: https://github.com/xflux-gui/fluxgui/issues/124
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ setup.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/setup.py b/setup.py
+index 8a8fa14..4bd404d 100755
+--- a/setup.py
++++ b/setup.py
+@@ -76,9 +76,10 @@ def run(self):
+         super().run()
+ 
+         # Compile '*.gschema.xml' to update or create 'gschemas.compiled'.
+-        info("compiling gsettings schemas")
+-        gschema_dir = os.path.join(self.install_dir, gschema_dir_suffix)
+-        self.spawn(["glib-compile-schemas", gschema_dir])
++        if os.environ.get('DISABLE_GSCHEMAS_COMPILED', None) is None:
++            info("compiling gsettings schemas")
++            gschema_dir = os.path.join(self.install_dir, gschema_dir_suffix)
++            self.spawn(["glib-compile-schemas", gschema_dir])
+ 
+ setup(name = "f.lux indicator applet",
+     version = "1.2.1~pre",

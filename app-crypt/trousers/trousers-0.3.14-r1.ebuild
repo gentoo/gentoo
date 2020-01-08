@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/trousers/${PN}/${P}.tar.gz"
 
 LICENSE="CPL-1.0 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~m68k ~ppc ~ppc64 ~s390 ~sh x86"
+KEYWORDS="amd64 arm arm64 ~m68k ~ppc ppc64 ~s390 ~sh x86"
 IUSE="doc libressl selinux" # gtk
 
 # gtk support presently does NOT compile.

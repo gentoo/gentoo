@@ -7,7 +7,7 @@ inherit xorg-2
 DESCRIPTION="X.Org Bigelow & Holmes bitmap fonts"
 
 LICENSE="public-domain" # bitmap font, not copyrightable
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86"
 IUSE=""
 
 DEPEND="x11-apps/bdftopcf"

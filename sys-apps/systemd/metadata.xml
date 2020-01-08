@@ -11,21 +11,21 @@
 	<use>
 		<flag name="apparmor">Enable AppArmor support</flag>
 		<flag name="audit">Enable support for <pkg>sys-process/audit</pkg></flag>
+		<flag name="cgroup-hybrid">Default to hybrid (legacy) cgroup hierarchy instead of unified (modern).</flag>
 		<flag name="curl">Enable support for uploading journals</flag>
 		<flag name="cryptsetup">Enable cryptsetup tools (includes unit generator for crypttab)</flag>
+		<flag name="dns-over-tls">Enable DNS-over-TLS support</flag>
 		<flag name="gnuefi">Enable EFI boot manager and stub loader (built using <pkg>sys-boot/gnu-efi</pkg>)</flag>
 		<flag name="elfutils">Enable coredump stacktraces in the journal</flag>
 		<flag name="gcrypt">Enable sealing of journal files using gcrypt</flag>
 		<flag name="http">Enable embedded HTTP server in journald</flag>
 		<flag name="importd">Enable import daemon</flag>
 		<flag name="kmod">Enable kernel module loading via <pkg>sys-apps/kmod</pkg></flag>
-		<flag name="libidn2">If IDN support is enabled, use <pkg>net-dns/libidn2</pkg> instead of <pkg>net-dns/libidn</pkg></flag>
 		<flag name="lz4">Enable lz4 compression for the journal</flag>
 		<flag name="nat">Enable support for network address translation in networkd</flag>
 		<flag name="qrcode">Enable qrcode output support in journal</flag>
 		<flag name="resolvconf">Install resolvconf symlink for systemd-resolve</flag>
 		<flag name="sysv-utils">Install sysvinit compatibility symlinks and manpages for init, telinit, halt, poweroff, reboot, runlevel, and shutdown</flag>
-		<flag name="split-usr">Enable this if /bin and /usr/bin are separate directories</flag>
 		<flag name="vanilla">Disable Gentoo-specific behavior and compatibility quirks</flag>
 		<flag name="xkb">Depend on <pkg>x11-libs/libxkbcommon</pkg> to allow logind to control the X11 keymap</flag>
 	</use>

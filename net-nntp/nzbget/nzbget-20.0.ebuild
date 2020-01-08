@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,6 +16,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm ppc x86"
 IUSE="debug gnutls ncurses +parcheck ssl test zlib"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libxml2:=
 	ncurses? ( sys-libs/ncurses:0= )

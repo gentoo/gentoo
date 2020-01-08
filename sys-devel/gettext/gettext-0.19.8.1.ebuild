@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: Keep version bumps in sync with dev-libs/libintl.
@@ -15,7 +15,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 # so put that license behind USE=cxx.
 LICENSE="GPL-3+ cxx? ( LGPL-2.1+ )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
 IUSE="acl -cvs +cxx doc emacs git java ncurses nls openmp static-libs"
 
 # only runtime goes multilib
@@ -42,6 +42,8 @@ MULTILIB_WRAPPED_HEADERS=(
 	# only installed for native ABI
 	/usr/include/gettext-po.h
 )
+
+QA_SONAME_NO_SYMLINK=".*/preloadable_libintl.so"
 
 pkg_setup() {
 	mono-env_pkg_setup

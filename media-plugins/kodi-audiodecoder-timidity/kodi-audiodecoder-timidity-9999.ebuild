@@ -1,9 +1,9 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils kodi-addon
+inherit cmake kodi-addon
 
 DESCRIPTION="Timidity decoder addon for Kodi"
 HOMEPAGE="https://github.com/notspiff/audiodecoder.timidity"
@@ -29,7 +29,6 @@ IUSE=""
 
 DEPEND="
 	~media-tv/kodi-9999
-	=dev-libs/libplatform-2*
 	"
 RDEPEND="
 	${DEPEND}

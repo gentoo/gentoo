@@ -28,13 +28,16 @@ fi
 
 # If we're a font package, but not the font.alias one
 FONT_ECLASS=""
-if [[ ${PN} == font* \
-	&& ${CATEGORY} = media-fonts \
-	&& ${PN} != font-alias \
-	&& ${PN} != font-util ]]; then
-	# Activate font code in the rest of the eclass
-	FONT="yes"
-	FONT_ECLASS="font"
+if [[ ${CATEGORY} = media-fonts ]]; then
+	case ${PN} in
+	font-alias|font-util)
+		;;
+	font*)
+		# Activate font code in the rest of the eclass
+		FONT="yes"
+		FONT_ECLASS="font"
+		;;
+	esac
 fi
 
 # @ECLASS-VARIABLE: XORG_MULTILIB
@@ -137,10 +140,10 @@ unset EAUTORECONF_DEPEND
 
 if [[ ${FONT} == yes ]]; then
 	RDEPEND+=" media-fonts/encodings
-		|| ( >=x11-apps/mkfontscale-1.2.0 ( x11-apps/mkfontscale x11-apps/mkfontdir ) )"
+		>=x11-apps/mkfontscale-1.2.0"
 	PDEPEND+=" media-fonts/font-alias"
 	DEPEND+=" >=media-fonts/font-util-1.2.0
-		|| ( >=x11-apps/mkfontscale-1.2.0 ( x11-apps/mkfontscale x11-apps/mkfontdir ) )"
+		>=x11-apps/mkfontscale-1.2.0"
 
 	# @ECLASS-VARIABLE: FONT_DIR
 	# @DESCRIPTION:
@@ -172,7 +175,7 @@ fi
 # QA: configure: WARNING: unrecognized options: --disable-static
 : ${XORG_STATIC:="yes"}
 
-# Add static-libs useflag where usefull.
+# Add static-libs useflag where useful.
 if [[ ${XORG_STATIC} == yes \
 		&& ${FONT} != yes \
 		&& ${CATEGORY} != app-doc \
@@ -186,7 +189,11 @@ if [[ ${XORG_STATIC} == yes \
 	IUSE+=" static-libs"
 fi
 
-DEPEND+=" virtual/pkgconfig"
+if [[ ${XORG_MULTILIB} == yes ]]; then
+	DEPEND+=" virtual/pkgconfig[${MULTILIB_USEDEP}]"
+else
+	DEPEND+=" virtual/pkgconfig"
+fi
 
 # @ECLASS-VARIABLE: XORG_DRI
 # @DESCRIPTION:

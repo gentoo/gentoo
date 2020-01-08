@@ -45,7 +45,7 @@ src_install() {
 
 	newlib.so ${tslib} ${tslibx}
 	dosym ${tslibx} /usr/$(get_libdir)/${tslib}
-	dodoc Manual.txt || die "dodoc failed"
+	dodoc Manual.txt
 
 	if use static-libs; then
 		dolib.a libtinyscheme.a

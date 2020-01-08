@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal toolchain-funcs udev user
+inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal toolchain-funcs udev usr-ldscript
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/systemd/systemd.git"
@@ -21,7 +21,7 @@ HOMEPAGE="https://www.freedesktop.org/wiki/Software/systemd"
 
 LICENSE="LGPL-2.1 MIT GPL-2"
 SLOT="0"
-IUSE="acl +kmod selinux"
+IUSE="acl +kmod selinux static-libs"
 
 RESTRICT="test"
 
@@ -47,6 +47,18 @@ DEPEND="${COMMON_DEPEND}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt"
 RDEPEND="${COMMON_DEPEND}
+	acct-group/kmem
+	acct-group/tty
+	acct-group/audio
+	acct-group/cdrom
+	acct-group/dialout
+	acct-group/disk
+	acct-group/input
+	acct-group/kvm
+	acct-group/lp
+	acct-group/render
+	acct-group/tape
+	acct-group/video
 	!<sys-fs/lvm2-2.02.103
 	!<sec-policy/selinux-base-2.20120725-r10"
 PDEPEND=">=sys-apps/hwids-20140304[udev]
@@ -85,7 +97,6 @@ src_prepare() {
 	fi
 
 	local PATCHES=(
-		"${FILESDIR}/236-uucp-group.patch"
 	)
 
 	default
@@ -107,6 +118,8 @@ multilib_src_configure() {
 		-Dselinux=$(meson_multilib_native_use selinux)
 		-Dlink-udev-shared=false
 		-Dsplit-usr=true
+		-Drootlibdir="${EPREFIX}/usr/$(get_libdir)"
+		-Dstatic-libudev=$(usex static-libs true false)
 
 		# Prevent automagic deps
 		-Dgcrypt=false
@@ -134,6 +147,9 @@ multilib_src_compile() {
 	local targets=(
 		src/udev/${libudev}
 	)
+	if use static-libs; then
+		targets+=( src/udev/libudev.a )
+	fi
 	if multilib_is_native_abi; then
 		targets+=(
 			systemd-udevd
@@ -157,8 +173,9 @@ multilib_src_compile() {
 multilib_src_install() {
 	local libudev=$(readlink src/udev/libudev.so.1)
 
-	into /
 	dolib.so src/udev/{${libudev},libudev.so.1,libudev.so}
+	gen_usr_ldscript -a udev
+	use static-libs && dolib.a src/udev/libudev.a
 
 	insinto "/usr/$(get_libdir)/pkgconfig"
 	doins src/libudev/libudev.pc
@@ -173,9 +190,9 @@ multilib_src_install() {
 		exeinto /lib/udev
 		doexe src/udev/{ata_id,cdrom_id,mtd_probe,scsi_id,v4l_id}
 
-		rm rules/99-systemd.rules || die
+		rm rules.d/99-systemd.rules || die
 		insinto /lib/udev/rules.d
-		doins rules/*.rules
+		doins rules.d/*.rules
 
 		insinto /usr/share/pkgconfig
 		doins src/udev/udev.pc
@@ -199,7 +216,7 @@ multilib_src_install_all() {
 	# see src_prepare() for content of 40-gentoo.rules
 	insinto /lib/udev/rules.d
 	doins "${T}"/40-gentoo.rules
-	doins "${S}"/rules/*.rules
+	doins "${S}"/rules.d/*.rules
 
 	dobashcomp shell-completion/bash/udevadm
 
@@ -310,11 +327,6 @@ pkg_postinst() {
 		fi
 		eend $?
 	fi
-
-	# https://cgit.freedesktop.org/systemd/systemd/commit/rules/50-udev-default.rules?id=3dff3e00e044e2d53c76fa842b9a4759d4a50e69
-	# https://bugs.gentoo.org/246847
-	# https://bugs.gentoo.org/514174
-	enewgroup input
 
 	# Update hwdb database in case the format is changed by udev version.
 	if has_version 'sys-apps/hwids[udev]'; then

@@ -1,17 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
-inherit eutils
 if [[ ${PV} == "99999999" ]] ; then
-	EGIT_REPO_URI="git://git.savannah.gnu.org/config.git
-		http://git.savannah.gnu.org/r/config.git"
+	EGIT_REPO_URI="https://git.savannah.gnu.org/r/config.git"
 
 	inherit git-r3
 else
-	SRC_URI="mirror://gentoo/${P}.tar.bz2"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
+	SRC_URI="https://dev.gentoo.org/~whissi/dist/${PN}/${P}.tar.bz2"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris ~x86-winnt"
 	S="${WORKDIR}"
 fi
 
@@ -31,9 +29,9 @@ maint_pkg_create() {
 	cp "${FILESDIR}"/${PV}/*.patch . || die
 
 	local tar="${T}/gnuconfig-${ver}.tar.bz2"
-	tar -jcf ${tar} ./* || die "creating tar failed"
+	tar -jcf "${tar}" ./* || die "creating tar failed"
 	einfo "Packaged tar now available:"
-	einfo "$(du -b ${tar})"
+	einfo "$(du -b "${tar}")"
 }
 
 src_unpack() {
@@ -46,7 +44,8 @@ src_unpack() {
 }
 
 src_prepare() {
-	epatch "${S}"/*.patch
+	default
+	eapply "${S}"/*.patch
 	use elibc_uclibc && sed -i 's:linux-gnu:linux-uclibc:' testsuite/config-guess.data #180637
 }
 
@@ -58,7 +57,7 @@ src_test() {
 
 src_install() {
 	insinto /usr/share/${PN}
-	doins config.{sub,guess} || die
+	doins config.{sub,guess}
 	fperms +x /usr/share/${PN}/config.{sub,guess}
 	dodoc ChangeLog
 }

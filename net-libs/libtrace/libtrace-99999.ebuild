@@ -22,16 +22,17 @@ RDEPEND="
 "
 DEPEND="
 	${RDEPEND}
-	app-doc/doxygen
+	app-doc/doxygen[dot]
 	sys-devel/flex
+	virtual/os-headers
 	virtual/pkgconfig
 	virtual/yacc
 "
 PATCHES=(
 		"${FILESDIR}"/${PN}-3.0.20-autoconf-1.13.patch
-		"${FILESDIR}"/${PN}-3.0.20-tinfo.patch
 		"${FILESDIR}"/${PN}-4.0.0-no-examples.patch
 		"${FILESDIR}"/${PN}-4.0.0-with-numa.patch
+		"${FILESDIR}"/${PN}-4.0.9_p1-tinfo.patch
 )
 S=${WORKDIR}/${P/_beta/}
 

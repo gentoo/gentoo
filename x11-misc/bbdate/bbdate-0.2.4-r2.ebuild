@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/bbtools/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc sparc x86"
 IUSE=""
 
 RDEPEND="x11-libs/libX11"
@@ -34,5 +34,5 @@ src_install () {
 	# since multiple bbtools packages provide this file, install
 	# it in /usr/share/doc/${PF}
 	mv "${ED%/}"/usr/share/bbtools/bbtoolsrc.in \
-		"${ED%/}"/usr/share/doc/${PF}/bbtoolsrc.example || die
+		"${ED%/}"/usr/share/doc/${PF}/bbtoolsrc.example || die
 }

@@ -1,38 +1,38 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (06 Apr 2016)
+# Fabian Groffen <grobian@gentoo.org> (2016-04-06)
 # dev-libs/re2 needs love, bug #563932
 app-misc/sphinx re2
 
-# Fabian Groffen <grobian@gentoo.org> (10 Jan 2016)
+# Fabian Groffen <grobian@gentoo.org> (2016-01-10)
 # libutempter isn't ported for Darwin, bug #506494
 net-misc/mosh utempter
 
-# Fabian Groffen <grobian@gentoo.org> (26 May 2015)
+# Fabian Groffen <grobian@gentoo.org> (2015-05-26)
 # Avoid pulling in broken and unnecessary ossp-uuid, bug #324527
 dev-db/postgresql uuid
 
-# Christoph Junghans <junghans@gentoo.org> (26 Aug 2012)
+# Christoph Junghans <junghans@gentoo.org> (2012-08-26)
 # libutempter support does not work on Darwin (bug #388791)
 x11-terms/eterm utempter
 
-# Fabian Groffen <grobian@gentoo.org> (24 Mar 2012)
+# Fabian Groffen <grobian@gentoo.org> (2012-03-24)
 # There's no upstream support for MPI on Darwin
 media-gfx/tachyon mpi
 
-# Fabian Groffen <grobian@gentoo.org> (01 Jan 2012)
+# Fabian Groffen <grobian@gentoo.org> (2012-01-01)
 # gdb server is not supported on this platform
 sys-devel/gdb server
 
-# Fabian Groffen <grobian@gentoo.org> (08 Jan 2011)
+# Fabian Groffen <grobian@gentoo.org> (2011-01-08)
 # Darwin has libuuid from util-linux
 x11-libs/libSM -uuid
 
-# Fabian Groffen <grobian@gentoo.org> (30 Oct 2009)
+# Fabian Groffen <grobian@gentoo.org> (2009-10-30)
 # linux only
 media-video/mplayer dvb lirc jack joystick
 
-# Elias Pipping <pipping@gentoo.org> (16 Nov 2007)
+# Elias Pipping <pipping@gentoo.org> (2007-11-16)
 # make fails
 sys-devel/gcc objc-gc

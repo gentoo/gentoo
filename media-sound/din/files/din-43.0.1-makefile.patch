@@ -1,0 +1,12 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index bcbd601..12ca52b 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,5 +1,5 @@
+-AM_CXXFLAGS = -I ../include -I /usr/include/tcl8.6 -Wall -D_THREAD_SAFE -DHAVE_OPENGL -D__LICENSED__ -D __SVG__ -D__GPL20__ -DPREFIX=\"@prefix@\"
+-LIBS +=  -ltcl8.6 -lSDL -lGL -lpthread -lasound
++AM_CXXFLAGS = -I ../include -Wall -D_THREAD_SAFE -DHAVE_OPENGL -D__LICENSED__ -D __SVG__ -D__GPL20__ -DPREFIX=\"@prefix@\"
++LIBS +=  -ltcl -lSDL -lGL -lpthread -lasound
+ 
+ AM_CFLAGS = -I ../include
+ bin_PROGRAMS = din

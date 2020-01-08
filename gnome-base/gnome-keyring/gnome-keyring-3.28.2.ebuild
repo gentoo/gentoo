@@ -13,7 +13,8 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeKeyring"
 LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 IUSE="+caps pam selinux +ssh-agent test"
-KEYWORDS="alpha amd64 arm ~arm64 ia64 ~mips ~ppc ppc64 ~sh ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+RESTRICT="!test? ( test )"
+KEYWORDS="alpha amd64 arm arm64 ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 
 # Replace gkd gpg-agent with pinentry[gnome-keyring] one, bug #547456
 RDEPEND="
@@ -22,7 +23,7 @@ RDEPEND="
 	app-misc/ca-certificates
 	>=dev-libs/libgcrypt-1.2.2:0=
 	caps? ( sys-libs/libcap-ng )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	selinux? ( sec-policy/selinux-gnome )
 	>=app-crypt/gnupg-2.0.28:=
 	ssh-agent? ( net-misc/openssh )

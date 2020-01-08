@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,7 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="doc luajit test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-db/sqlite:3
@@ -56,12 +57,15 @@ src_compile() {
 
 src_test() {
 	emake \
+		LUA_PKG_NAME=$(usex luajit 'luajit' 'lua') \
 		LUA_BIN_NAME=$(usex luajit 'luajit' 'lua') \
 		run-tests
 }
 
 src_install() {
 	emake \
+		LUA_PKG_NAME=$(usex luajit 'luajit' 'lua') \
+		LUA_BIN_NAME=$(usex luajit 'luajit' 'lua') \
 		DESTDIR="${D}" \
 		PREFIX="${EPREFIX}/usr" \
 		DOCDIR="${ED}/usr/share/doc/${PF}" \

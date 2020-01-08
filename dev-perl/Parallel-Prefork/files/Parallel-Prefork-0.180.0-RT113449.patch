@@ -1,0 +1,40 @@
+From 0e51495b41c913ba2474d95ed7668a2190e7bd8e Mon Sep 17 00:00:00 2001
+From: Slaven Rezic <slaven@rezic.de>
+Date: Sat, 18 Nov 2017 21:04:26 +0000
+Subject: [PATCH] workaround for race condition in t/01-base.t [RT #113449]
+
+It's possible that the TERM signal handler is not yet installed
+in some workers when the last worker runs and sends the final
+TERM signal to the parent. The effect is that the number
+stored in the temporary file is not as expected, as in this report:
+http://www.cpantesters.org/cpan/report/86348529
+
+This failure seems to occur quite frequently on (virtual?) FreeBSD
+systems.
+---
+ t/01-base.t | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/t/01-base.t b/t/01-base.t
+index 5137791..80e447d 100755
+--- a/t/01-base.t
++++ b/t/01-base.t
+@@ -39,7 +39,6 @@ until ($pm->signal_received) {
+     $c++;
+     seek $fh, 0, 0;
+     syswrite $fh, $c, length($c);
+-    flock $fh, LOCK_UN;
+     local $SIG{TERM} = sub {
+         flock $fh, LOCK_EX;
+         seek $fh, 0, 0;
+@@ -50,6 +49,7 @@ until ($pm->signal_received) {
+         flock $fh, LOCK_UN;
+         exit 0;
+     };
++    flock $fh, LOCK_UN;
+     if ($c == $pm->max_workers) {
+         kill 'TERM', $ppid;
+     }
+-- 
+2.1.2
+

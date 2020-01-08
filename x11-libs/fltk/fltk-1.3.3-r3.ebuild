@@ -1,16 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
+
 inherit autotools eutils fdo-mime flag-o-matic
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
-HOMEPAGE="http://www.fltk.org/"
-SRC_URI="http://fltk.org/pub/${PN}/${PV}/${P}-source.tar.gz"
+HOMEPAGE="https://www.fltk.org/"
+SRC_URI="https://www.fltk.org/pub/${PN}/${PV}/${P}-source.tar.gz"
 
 SLOT="1"
 LICENSE="FLTK LGPL-2"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="cairo debug doc examples games +opengl static-libs +threads +xft +xinerama"
 
 RDEPEND="
@@ -22,6 +23,7 @@ RDEPEND="
 	x11-libs/libXext
 	x11-libs/libXt
 	cairo? ( x11-libs/cairo[X] )
+	games? ( !sys-block/blocks )
 	opengl? ( virtual/glu virtual/opengl )
 	xft? ( x11-libs/libXft )
 	xinerama? ( x11-libs/libXinerama )
@@ -111,6 +113,7 @@ src_install() {
 
 	emake -C fluid \
 			DESTDIR="${D}" install-linux
+
 	if use doc; then
 		emake -C documentation \
 			DESTDIR="${D}" install
@@ -133,8 +136,8 @@ src_install() {
 	dodoc CHANGES README CREDITS ANNOUNCEMENT
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins test/*.{h,cxx,fl} test/demo.menu
+		docinto examples
+		dodoc -r test/*.{h,cxx,fl} test/demo.menu
 	fi
 
 	insinto /usr/share/cmake/Modules

@@ -5,10 +5,6 @@
 		<email>chithanh@gentoo.org</email>
 		<name>Chí-Thanh Christopher Nguyễn</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>tupone@gentoo.org</email>
-		<name>Tupone Alfredo</name>
-	</maintainer>
 	<upstream>
 		<remote-id type="github">raspberrypi/userland</remote-id>
 	</upstream>

@@ -18,13 +18,11 @@
   </longdescription>
   <use>
     <flag name="babeltrace">Add support for LTTng babeltrace</flag>
-    <flag name="cryptopp">Use <pkg>dev-libs/crypto++</pkg> for cryptography</flag>
     <flag name="cephfs">Build support for cephfs, a POSIX compatible filesystem built on top of ceph</flag>
     <flag name="dpdk">Enable DPDK messaging</flag>
+    <flag name="spdk">Enable SPDK user-mode storage driver toolkit</flag>
     <flag name="fuse">Build fuse client</flag>
     <flag name="grafana">Install grafana dashboards</flag>
-    <flag name="libatomic">Use libatomic instead of builtin atomic operations</flag>
-    <flag name="libaio">Use libaio as asynchronous input/output library</flag>
     <flag name="lttng">Add support for LTTng</flag>
     <flag name="mgr">Build the ceph-mgr daemon</flag>
     <flag name="nss">Use <pkg>dev-libs/nss</pkg> for cryptography</flag>

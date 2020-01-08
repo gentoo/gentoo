@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1 udev user linux-info gnome2-utils
+inherit distutils-r1 udev linux-info gnome2-utils
 
 DESCRIPTION="A Linux device manager for Logitech's Unifying Receiver peripherals"
 HOMEPAGE="https://pwr.github.com/Solaar/"
@@ -15,7 +15,9 @@ SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="doc"
 
-RDEPEND=">=dev-python/pyudev-0.13[${PYTHON_USEDEP}]
+RDEPEND="
+	acct-group/plugdev
+	>=dev-python/pyudev-0.13[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]"
 
@@ -45,8 +47,6 @@ python_install_all() {
 }
 
 pkg_postinst() {
-	enewgroup plugdev
-
 	if [[ -z ${REPLACING_VERSIONS} ]] ; then
 		elog "Users must be in the plugdev group to use this application."
 	fi

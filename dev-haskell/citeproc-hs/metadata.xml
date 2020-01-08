@@ -7,11 +7,11 @@
 	</maintainer>
 	<use>
 		<flag name="bibutils">use Chris Putnam's <pkg>app-text/bibutils</pkg></flag>
-		<flag name="embed_data_files">Embed locale files into the library (needed for windows packaging)</flag>
+		<flag name="embed-data-files">Embed locale files into the library (needed for windows packaging)</flag>
 		<flag name="network">use <pkg>dev-haskell/network</pkg> and <pkg>dev-haskell/http</pkg> to retrieve CSL file from URIs</flag>
 		<flag name="hexpat">use <pkg>dev-haskell/hexpat</pkg> instead of <pkg>dev-haskell/xml</pkg> for XML parsing</flag>
-		<flag name="small_base">Choose the new smaller, split-up base package.</flag>
-		<flag name="unicode_collation">Use Haskell bindings to the <pkg>dev-libs/icu</pkg></flag>
+		<flag name="small-base">Choose the new smaller, split-up base package.</flag>
+		<flag name="unicode-collation">Use Haskell bindings to the <pkg>dev-libs/icu</pkg></flag>
 	</use>
 	<longdescription>
 		citeproc-hs is a library for rendering

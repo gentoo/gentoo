@@ -15,7 +15,7 @@
 		Wayland protocols: wlr-layer-shell, wlr-input-inhibitor, xdg-output,
 		xdg-shell.
 
-		Swaylock is the official screen locker for <pkg>dev-libs/sway</pkg>.
+		Swaylock is the official screen locker for <pkg>gui-wm/sway</pkg>.
 	</longdescription>
 	<use>
 		<flag name="fish-completion">Enable fish completion support</flag>

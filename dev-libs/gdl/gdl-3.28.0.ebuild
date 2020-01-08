@@ -10,7 +10,7 @@ HOMEPAGE="https://git.gnome.org/browse/gdl"
 LICENSE="LGPL-2.1+"
 SLOT="3/5" # subslot = libgdl-3 soname version
 IUSE="+introspection"
-KEYWORDS="~alpha amd64 hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86"
 
 RDEPEND="
 	dev-libs/glib:2

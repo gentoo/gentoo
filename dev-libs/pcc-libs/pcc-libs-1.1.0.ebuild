@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,7 +11,7 @@ HOMEPAGE="http://pcc.ludd.ltu.se"
 SRC_URI="ftp://pcc.ludd.ltu.se/pub/pcc-releases/${P}.tgz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~x86 ~amd64 ~amd64-fbsd"
+KEYWORDS="~amd64 ~x86"
 
 IUSE=""
 DEPEND=""
@@ -20,9 +20,9 @@ S=${WORKDIR}/${PN}-${PVR/*_pre/}/
 
 src_compile() {
 	# not parallel-safe yet
-	emake -j1 || die "emake failed"
+	emake -j1
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install
 }

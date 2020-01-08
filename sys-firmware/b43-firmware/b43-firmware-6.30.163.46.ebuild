@@ -28,5 +28,5 @@ src_compile() {
 
 src_install() {
 	insinto /lib/firmware
-	doins -r ebuild-output/* || die
+	doins -r ebuild-output/*
 }

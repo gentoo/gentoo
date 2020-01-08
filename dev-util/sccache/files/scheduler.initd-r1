@@ -1,0 +1,17 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+SCCACHE_SCHEDULER_CONF="${SCCACHE_SCHEDULER_CONF:-/etc/sccache/scheduler.conf}"
+
+depend() {
+	need localmount
+	use net
+}
+
+description="Starts sccache build scheduler server"
+
+command="/usr/bin/sccache-dist"
+command_args="--config ${SCCACHE_SCHEDULER_CONF} ${SCCACHE_SCHEDULER_LOGLEVEL:+--syslog ${SCCACHE_SCHEDULER_LOGLEVEL}}"
+procname="${command} scheduler"
+required_files="${SCCACHE_SCHEDULER_CONF}"

@@ -10,12 +10,12 @@ CXXFLAGS="${CFLAGS}"
 FFLAGS="${CFLAGS}"
 FCFLAGS="${CFLAGS}"
 
-# Sergei Trofimovich <slyfox@gentoo.org> (3 Jun 2017)
+# Sergei Trofimovich <slyfox@gentoo.org> (2017-06-03)
 # Enable USE=libtirpc by default, to ease dependency resolution during
 # the stabilization of glibc-2.26. Bug 657148
 USE="libtirpc"
 
-# Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
 # Set ABI & DEFAULT_ABI consistently with ${ARCH}, to make ebuild
 # checks simpler.
 ABI="ia64"
@@ -24,10 +24,14 @@ MULTILIB_ABIS="ia64"
 LIBDIR_ia64="lib"
 CHOST_ia64="${CHOST}"
 
-# 2006/08/18 - Donnie Berkholz <dberkholz@gentoo.org>
+# Donnie Berkholz <dberkholz@gentoo.org> (2006-08-18)
 # Defaults for video drivers
-VIDEO_CARDS="fbdev glint mga nv r128 radeon tdfx voodoo"
+VIDEO_CARDS="fbdev glint mga nv r128 radeon"
 
-# 2006/12/23 - Diego Pettenò <flameeyes@gentoo.org>
+# Diego Pettenò <flameeyes@gentoo.org> (2006-12-23)
 # Defaults for audio drivers - Took from x86 profile
 ALSA_CARDS="ali5451 als4000 atiixp atiixp-modem bt87x ca0106 cmipci emu10k1x ens1370 ens1371 es1938 es1968 fm801 hda-intel intel8x0 intel8x0m maestro3 trident usb-audio via82xx via82xx-modem ymfpci"
+
+# Hans de Graaff <graaff@gentoo.org) (2019-07-17)
+# Temporary RUBY_TARGETS for bug 688976
+RUBY_TARGETS="ruby24 -ruby25"

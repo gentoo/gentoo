@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
 IUSE="static-libs"
 
 RDEPEND=""
@@ -25,6 +25,7 @@ CONFIG_CHECK="~ATM"
 
 src_prepare() {
 	epatch "${FILESDIR}"/${P}-headers.patch
+	epatch "${FILESDIR}"/${P}-linux-5.2-SIOCGSTAMP.patch
 
 	sed -i '/#define _LINUX_NETDEVICE_H/d' \
 		src/arpd/*.c || die "sed command on arpd/*.c files failed"

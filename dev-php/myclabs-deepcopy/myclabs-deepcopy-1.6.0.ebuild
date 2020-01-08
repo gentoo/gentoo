@@ -11,7 +11,7 @@ SRC_URI="https://github.com/myclabs/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
 IUSE=""
 
 S="${WORKDIR}/${MY_PN}-${PV}"

@@ -1,0 +1,57 @@
+From f2d55bc9a9398ed1c36e1b856bcb33080abbf7c0 Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <leio@gentoo.org>
+Date: Thu, 19 Sep 2019 22:26:08 +0300
+Subject: [PATCH] build: Optional gstreamer
+
+---
+ extensions/meson.build | 4 +++-
+ meson.build            | 2 ++
+ meson_options.txt      | 6 ++++++
+ 3 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/extensions/meson.build b/extensions/meson.build
+index 5c6f64cef..bd8c41d3e 100644
+--- a/extensions/meson.build
++++ b/extensions/meson.build
+@@ -1,3 +1,5 @@
+ subdir('image-properties')
+-subdir('audio-video-properties')
++if get_option('gstreamer')
++  subdir('audio-video-properties')
++endif
+ subdir('sendto')
+diff --git a/meson.build b/meson.build
+index 0a267d670..ccb2b8cc1 100644
+--- a/meson.build
++++ b/meson.build
+@@ -122,8 +122,10 @@ libm = cc.find_library('m')
+ 
+ if get_option('extensions')
+   gexiv = dependency('gexiv2', version: '>= 0.10.0')
++ if get_option('gstreamer')
+   gst_tag_dep = dependency('gstreamer-tag-1.0')
+   gst_pbutils_dep = dependency('gstreamer-pbutils-1.0')
++ endif
+ endif
+ gio = dependency('gio-2.0', version: glib_ver)
+ gio_unix = dependency('gio-unix-2.0', version: glib_ver)
+diff --git a/meson_options.txt b/meson_options.txt
+index fce5f16f9..1fa8f8952 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -13,6 +13,12 @@ option(
+   value: true,
+   description: 'Build stock extensions',
+ )
++option(
++  'gstreamer',
++  type: 'boolean',
++  value: true,
++  description: 'Build audio-video properties extension (requires "extensions")',
++)
+ option(
+   'introspection',
+   type: 'boolean',
+-- 
+2.20.1
+

@@ -16,8 +16,8 @@
 		shakespeare-js was originally called julius, and shakespeare originated from the hamlet template package.
 	</longdescription>
 	<use>
-		<flag name="test_coffee">Test coffee.</flag>
-		<flag name="test_export">Test export.</flag>
-		<flag name="test_roy">Test roy.</flag>
+		<flag name="test-coffee">Test coffee.</flag>
+		<flag name="test-export">Test export.</flag>
+		<flag name="test-roy">Test roy.</flag>
 	</use>
 </pkgmetadata>

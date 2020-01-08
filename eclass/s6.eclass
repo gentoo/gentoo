@@ -48,7 +48,7 @@ s6_get_servicedir() {
 }
 
 # @FUNCTION: s6_install_service
-# @USAGE: servicename run finish
+# @USAGE: <servicename> <run> [finish]
 # @DESCRIPTION:
 # Install an s6 service.
 # servicename is the name of the service.
@@ -75,7 +75,7 @@ s6_install_service() {
 }
 
 # @FUNCTION: s6_service_down
-# @USAGE: servicename
+# @USAGE: <servicename>
 # @DESCRIPTION:
 # Install the "down" flag so this service will not be started by
 # default.
@@ -97,7 +97,7 @@ s6_service_down() {
 }
 
 # @FUNCTION: s6_service_nosetsid
-# @USAGE: servicename
+# @USAGE: <servicename>
 # @DESCRIPTION:
 # Install the "nosetsid" flag so this service will not be made a session
 # leader.

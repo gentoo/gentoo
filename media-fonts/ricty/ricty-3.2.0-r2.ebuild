@@ -13,7 +13,7 @@ SRC_URI="https://github.com/yascentur/${MY_PN}/tarball/${PV} -> ${MY_PN}-${PV}.t
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="media-fonts/inconsolata

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 python3_7 )
 PYTHON_REQ_USE="threads(+)"
 inherit python-single-r1 waf-utils multilib-minimal
 
@@ -23,7 +23,7 @@ fi
 
 LICENSE="GPL-2"
 SLOT="2"
-IUSE="alsa +classic dbus doc ieee1394 libsamplerate opus pam readline sndfile"
+IUSE="alsa +classic dbus doc ieee1394 libsamplerate metadata opus pam readline sndfile"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( classic dbus )"
@@ -38,6 +38,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		sys-apps/dbus[${MULTILIB_USEDEP}]
 	)
 	ieee1394? ( media-libs/libffado:=[${MULTILIB_USEDEP}] )
+	metadata? ( sys-libs/db:* )
 	opus? ( media-libs/opus[custom-modes,${MULTILIB_USEDEP}] )"
 DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
@@ -61,6 +62,7 @@ multilib_src_configure() {
 		$(usex classic --classic "")
 		--alsa=$(usex alsa yes no)
 		--celt=no
+		--db=$(usex metadata yes no)
 		--doxygen=$(multilib_native_usex doc yes no)
 		--firewire=$(usex ieee1394 yes no)
 		--iio=no

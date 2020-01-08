@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 # At some point URW++ released fonts under GPL license. After that they were took
 # and improved by Valek Filippov and this work was somehow related with AFPL...
@@ -23,31 +23,31 @@ EAPI=0
 # Tue Jan 8 23:00:00 2008 Than Ngo 2.4-2
 #  - update to 1.0.7pre44
 
-inherit eutils rpm font versionator
+inherit estack rpm font
 
-MY_PV=$(replace_version_separator 2 -)
+MY_PV=$(ver_rs 2 -)
 
 DESCRIPTION="free good quality fonts gpl'd by URW++"
 HOMEPAGE="http://www.urwpp.de/"
 SRC_URI="mirror://gentoo/${PN}-${MY_PV}.fc13.src.rpm"
 
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x64-cygwin ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x64-solaris ~x86-solaris"
-
 LICENSE="GPL-2"
 SLOT="0"
-IUSE=""
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~x64-solaris ~x86-solaris"
 
-RDEPEND="${DEPEND}
+RDEPEND="
 	!media-fonts/gnu-gs-fonts-std
 	!media-fonts/gnu-gs-fonts-other"
 
-S=${WORKDIR}
-FONT_S=${S}
-FONT_SUFFIX="afm pfb pfm"
+S="${WORKDIR}"
+
 DOCS="ChangeLog README*"
+FONT_S="${S}"
+FONT_SUFFIX="afm pfb pfm"
 
 pkg_postinst() {
 	font_pkg_postinst
+
 	elog "If you upgraded from ${PN}-2.1-r2 some fonts will look a bit"
 	elog "different. Take a look at bug #208990 if interested."
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,8 +33,8 @@ CDEPEND="dev-db/sqlite:3
 	dev-libs/popt
 	dev-libs/jansson
 	dev-libs/libxml2
-	!libressl? ( dev-libs/openssl:0 )
-	libressl? ( dev-libs/libressl )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	sys-libs/ncurses:*
 	sys-libs/zlib
 	alsa? ( media-libs/alsa-lib )

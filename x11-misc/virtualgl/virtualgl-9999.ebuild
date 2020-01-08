@@ -1,8 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit cmake-multilib flag-o-matic multilib systemd
+EAPI=7
+
+CMAKE_ECLASS=cmake
+inherit cmake-multilib flag-o-matic systemd
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/VirtualGL/${PN}.git"
@@ -30,6 +32,7 @@ RDEPEND="
 	media-libs/libjpeg-turbo[${MULTILIB_USEDEP}]
 	x11-libs/libX11[${MULTILIB_USEDEP}]
 	x11-libs/libXext[${MULTILIB_USEDEP}]
+	x11-libs/libXtst[${MULTILIB_USEDEP}]
 	x11-libs/libXv[${MULTILIB_USEDEP}]
 	virtual/glu[${MULTILIB_USEDEP}]
 	virtual/opengl[${MULTILIB_USEDEP}]
@@ -37,6 +40,7 @@ RDEPEND="
 		>=media-libs/libjpeg-turbo-1.3.0-r3[abi_x86_32]
 		>=x11-libs/libX11-1.6.2[abi_x86_32]
 		>=x11-libs/libXext-1.3.2[abi_x86_32]
+		>=x11-libs/libXtst-1.2.3[abi_x86_32]
 		>=x11-libs/libXv-1.0.10[abi_x86_32]
 		>=virtual/glu-9.0-r1[abi_x86_32]
 		>=virtual/opengl-7.0-r1[abi_x86_32]
@@ -49,7 +53,7 @@ src_prepare() {
 	sed -e "s#/etc/opt#/var/lib#g" -i doc/unixconfig.txt doc/index.html doc/advancedopengl.txt \
 		server/vglrun.in server/vglgenkey server/vglserver_config || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -62,11 +66,11 @@ src_configure() {
 			-DVGL_USESSL="$(usex ssl)"
 			-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/"${PF}"
 			-DTJPEG_INCLUDE_DIR=/usr/include
-			-DCMAKE_INSTALL_LIBDIR=/usr/$(get_libdir)
+			-DCMAKE_INSTALL_LIBDIR=/usr/$(get_libdir)/VirtualGL
 			-DTJPEG_LIBRARY=/usr/$(get_libdir)/libturbojpeg.so
 			-DCMAKE_LIBRARY_PATH=/usr/$(get_libdir)
 		)
-		cmake-utils_src_configure
+		cmake_src_configure
 	}
 	multilib_parallel_foreach_abi abi_configure
 }

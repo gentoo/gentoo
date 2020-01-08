@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils toolchain-funcs flag-o-matic user
+inherit eutils toolchain-funcs flag-o-matic
 
 MY_PV=${PV//.}
 DESCRIPTION="The ultimate old-school single player dungeon exploration game"
@@ -11,10 +11,11 @@ SRC_URI="mirror://sourceforge/nethack/${PN}-${MY_PV}-src.tgz"
 
 LICENSE="nethack"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~hppa ~x86"
 IUSE="experimental X"
 
-RDEPEND="sys-libs/ncurses:0=
+RDEPEND="acct-group/gamestat
+	sys-libs/ncurses:0=
 	X? (
 		x11-libs/libXaw
 		x11-libs/libXpm
@@ -25,7 +26,7 @@ DEPEND="${RDEPEND}
 	X? (
 		x11-base/xorg-proto
 		x11-apps/bdftopcf
-		x11-apps/mkfontdir
+		>=x11-apps/mkfontscale-1.2.0
 	)"
 
 BINDIR="/usr/bin"
@@ -35,8 +36,6 @@ NETHACK_GROUP="gamestat"
 
 pkg_setup() {
 	HACKDIR="/usr/$(get_libdir)/${PN}"
-
-	enewgroup gamestat 36
 }
 
 src_prepare() {

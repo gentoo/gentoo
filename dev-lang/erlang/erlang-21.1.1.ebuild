@@ -18,14 +18,17 @@ SRC_URI="https://github.com/erlang/otp/archive/OTP-${PV}.tar.gz -> ${P}.tar.gz
 	doc? ( http://erlang.org/download/otp_doc_html_${UPSTREAM_V}.tar.gz -> ${PN}_doc_html_${UPSTREAM_V}.tar.gz )"
 
 LICENSE="Apache-2.0"
-SLOT="0"
-KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+# We use this subslot because Compiled HiPE Code can be loaded on the exact
+# same build of ERTS that was used when compiling the code.  See
+# http://erlang.org/doc/system_principles/misc.html for more information.
+SLOT="0/${PV}"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 IUSE="doc emacs +hipe java +kpoll libressl odbc pgo sctp ssl systemd tk wxwidgets"
 
 RDEPEND="
 	sys-libs/ncurses:0
 	sys-libs/zlib
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	java? ( >=virtual/jdk-1.8:* )
 	odbc? ( dev-db/unixODBC )
 	sctp? ( net-misc/lksctp-tools )
@@ -70,8 +73,7 @@ src_configure() {
 		$(use_with java javac)
 		$(use_with odbc)
 		$(use_enable sctp)
-		$(use_with ssl)
-		$(usex ssl "--with-ssl-rpath" "")
+		$(use_with ssl ssl "${EPREFIX}"/usr)
 		$(use_enable ssl dynamic-ssl-lib)
 		$(use_enable systemd)
 		$(use_enable pgo)
@@ -113,7 +115,7 @@ src_install() {
 	[[ -z "${erl_erts_ver}" ]] && die "Couldn't determine erts version"
 	[[ -z "${erl_interface_ver}" ]] && die "Couldn't determine interface version"
 
-	emake INSTALL_PREFIX="${ED}" install
+	emake INSTALL_PREFIX="${D}" install
 
 	if use doc ; then
 		local DOCS=( "AUTHORS" "HOWTO"/* "README.md" "CONTRIBUTING.md" "${WORKDIR}"/doc/. "${WORKDIR}"/lib/. "${WORKDIR}"/erts-* )

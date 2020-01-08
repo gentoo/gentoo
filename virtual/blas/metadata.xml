@@ -6,7 +6,11 @@
     <name>Gentoo Science Project</name>
   </maintainer>
   <longdescription lang="en">
-Gentoo virtual package for the Basic Linear Algebra Subprograms
-FORTRAN 77 implementation.
-</longdescription>
+    Gentoo virtual package for the Basic Linear Algebra Subprograms
+    FORTRAN 77 implementation.
+  </longdescription>
+  <use>
+    <flag name="eselect-ldso">Enable runtime library switching by
+    eselect and ld.so.</flag>
+  </use>
 </pkgmetadata>

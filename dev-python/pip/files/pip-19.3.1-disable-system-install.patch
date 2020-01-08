@@ -1,0 +1,17 @@
+install: Raise an error to avoid breaking python-exec
+
+Running pip without --target, --root, or --user will result in packages
+being installed systemwide. This has a tendency to break python-exec if
+setuptools gets installed or upgraded.
+
+--- pip-19.1/src/pip/_internal/commands/install.py
++++ pip-19.1/src/pip/_internal/commands/install.py
+@@ -246,6 +246,9 @@ class InstallCommand(RequirementCommand):
+         if options.upgrade:
+             upgrade_strategy = options.upgrade_strategy
+
++        if not any((options.use_user_site, options.target_dir, options.root_path, options.prefix_path)):
++            raise CommandError("(Gentoo) Please run pip with the --user option to avoid breaking python-exec")
++
+         if options.build_dir:
+             options.build_dir = os.path.abspath(options.build_dir)

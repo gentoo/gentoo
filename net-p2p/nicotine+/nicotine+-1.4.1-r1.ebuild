@@ -14,7 +14,7 @@ SRC_URI="https://github.com/Nicotine-Plus/nicotine-plus/archive/1.4.1.tar.gz -> 
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="

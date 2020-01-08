@@ -19,7 +19,7 @@ radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_
 tga theora tremor +truetype toolame twolame +unicode v4l vcd vdpau vidix
 vorbis +X x264 xinerama +xscreensaver +xv xvid yuv4mpeg zoran"
 
-VIDEO_CARDS="mga tdfx"
+VIDEO_CARDS="mga"
 for x in ${VIDEO_CARDS}; do
 	IUSE+=" video_cards_${x}"
 done
@@ -71,8 +71,8 @@ RDEPEND+="
 	dga? ( x11-libs/libXxf86dga )
 	dts? ( media-libs/libdca )
 	dv? ( media-libs/libdv )
-	dvd? ( >=media-libs/libdvdread-4.1.3 )
-	dvdnav? ( >=media-libs/libdvdnav-4.1.3 )
+	dvd? ( >=media-libs/libdvdread-4.1.3:0= )
+	dvdnav? ( >=media-libs/libdvdnav-4.1.3:0= )
 	encode? (
 		!twolame? ( toolame? ( media-sound/toolame ) )
 		twolame? ( media-sound/twolame )
@@ -150,7 +150,7 @@ RDEPEND+="
 SLOT="0"
 LICENSE="GPL-2"
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+	KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 fi
 
 # faac codecs are nonfree
@@ -425,18 +425,11 @@ src_configure() {
 		 myconf+=" --disable-mga --disable-xmga"
 	fi
 
-	if use video_cards_tdfx; then
-		myconf+="
-			$(use_enable video_cards_tdfx tdfxvid)
-			$(use_enable fbcon tdfxfb)
-		"
-	else
-		myconf+="
-			--disable-3dfx
-			--disable-tdfxvid
-			--disable-tdfxfb
-		"
-	fi
+	myconf+="
+		--disable-3dfx
+		--disable-tdfxvid
+		--disable-tdfxfb
+	"
 
 	# sun card, disable by default, see bug #258729
 	myconf+=" --disable-xvr100"

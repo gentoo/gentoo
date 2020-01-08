@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,12 +15,11 @@ S="${WORKDIR}/felinks-${EGIT_COMMIT}"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="bittorrent brotli bzip2 debug finger ftp gopher gpm guile idn ipv6
-	  javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
+	javascript libressl lua +mouse nls nntp perl ruby samba ssl tre unicode X xml zlib"
 
-DEPEND="
-	${PYTHON_DEPS}
+RDEPEND="
 	brotli? ( app-arch/brotli )
 	bzip2? ( >=app-arch/bzip2-1.0.2 )
 	gpm? ( >=sys-libs/ncurses-5.2:0= >=sys-libs/gpm-1.20.0-r5 )
@@ -39,7 +38,8 @@ DEPEND="
 	X? ( x11-libs/libX11 x11-libs/libXt )
 	xml? ( >=dev-libs/expat-1.95.4 )
 	zlib? ( >=sys-libs/zlib-1.1.4 )"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	${PYTHON_DEPS}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-9999-parallel-make.patch

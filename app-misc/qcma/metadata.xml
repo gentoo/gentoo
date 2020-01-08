@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>mva@gentoo.org</email>
+		<name>Vadim Misbakh-Soloviov</name>
+	</maintainer>
+	<longdescription lang="en">
+		Cross-platform content manager assistant for the PS Vita.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">codestation/qcma</remote-id>
+	</upstream>
+</pkgmetadata>

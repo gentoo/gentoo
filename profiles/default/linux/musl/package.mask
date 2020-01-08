@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors.
+# Copyright 1999-2019 Gentoo Authors.
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/uclibc-ng
@@ -13,12 +13,13 @@ dev-libs/elfutils
 >virtual/libelf-2
 
 # packages that need masked packages or multilib
-dev-games/gtkradiant
 dev-games/ps2-packer
 games-action/beathazardultra
 games-action/brutal-legend
+games-action/crimsonland
 games-action/descent3
 games-action/descent3-demo
+games-action/guacamelee
 games-action/heretic2-demo
 games-action/hotline-miami
 games-action/intrusion2
@@ -26,7 +27,6 @@ games-action/rune
 games-action/shadowgrounds-bin
 games-action/shadowgrounds-survivor-bin
 games-action/solar2
-games-action/spacetripper-demo
 games-action/swordandsworcery
 games-action/trine
 games-action/trine-enchanted-edition
@@ -40,7 +40,6 @@ games-emulation/nestra
 games-emulation/zinc
 games-emulation/zsnes
 games-fps/enemy-territory
-games-fps/enemy-territory-etpro
 games-fps/enemy-territory-truecombat
 games-fps/etqw-demo
 games-fps/glxquake-bin
@@ -58,28 +57,19 @@ games-fps/ut2003-bonuspack-de
 games-fps/ut2003-bonuspack-epic
 games-fps/ut2003-demo
 games-fps/ut2004
-games-fps/ut2004-action
-games-fps/ut2004-airbuccaneers
 games-fps/ut2004-bonuspack-cbp1
 games-fps/ut2004-bonuspack-cbp2
 games-fps/ut2004-bonuspack-ece
 games-fps/ut2004-bonuspack-mega
-games-fps/ut2004-cor
-games-fps/ut2004-crossfire
 games-fps/ut2004-data
-games-fps/ut2004-deathball
 games-fps/ut2004-demo
-games-fps/ut2004-fragops
-games-fps/ut2004-hamsterbash
-games-fps/ut2004-muralis
-games-fps/ut2004-strikeforce
-games-fps/ut2004-troopers
-games-fps/ut2004-unwheel
 games-misc/little-inferno
 games-misc/papers-please
 games-puzzle/world-of-goo
 games-puzzle/world-of-goo-demo
 games-roguelike/adom
+games-roguelike/neon-chrome
+games-rpg/costume-quest
 games-rpg/dear-esther
 games-rpg/dungeon-defenders
 games-rpg/eschalon-book-1-demo

@@ -29,7 +29,7 @@ SRC_URI="http://support.epson.net/linux/src/scanner/iscan/${PN}_$(ver_rs 3 -).ta
 
 LICENSE="GPL-2 AVASYS"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc gimp l10n_ja X"
 
 REQUIRED_USE="gimp? ( X )"
@@ -69,6 +69,7 @@ PATCHES=(
 	"${FILESDIR}"/iscan-2.29.1-png-libs.patch
 	"${FILESDIR}"/iscan-2.30.1-fix-g++-test.patch
 	"${FILESDIR}"/iscan-2.30.1.1-gcc6.patch
+	"${FILESDIR}"/iscan-2.30.3.1-fix-x86-unknown-types.patch
 )
 
 QA_PRESTRIPPED="usr/lib.*/libesmod.so.*"
@@ -115,7 +116,7 @@ src_install() {
 	if use gimp; then
 		local plugindir="$(gimptool-2.0 --gimpplugindir)/plug-ins"
 		dodir "${plugindir}"
-		dosym /usr/bin/iscan "${plugindir}"/iscan
+		dosym "${ED}"/usr/bin/iscan "${plugindir}"/iscan
 	fi
 
 	use X && make_desktop_entry iscan "Image Scan! for Linux ${PV}" scanner

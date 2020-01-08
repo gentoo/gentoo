@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+		<description>Please assign bugs to this mail alias.</description>
+	</maintainer>
 	<maintainer type="person">
 		<email>robbat2@gentoo.org</email>
 		<name>Robin H. Johnson</name>
@@ -9,11 +14,6 @@
 		<email>agk@redhat.com</email>
 		<name>Alasdair Kergon</name>
 		<description>Upstream Maintainer (please CC on bugs)</description>
-	</maintainer>
-	<maintainer type="person">
-		<email>cardoe@gentoo.org</email>
-		<name>Doug Goldstein</name>
-		<description>Backup to Robin. Please CC on bugs.</description>
 	</maintainer>
 	<use>
 		<flag name="lvm1">Allow users to build lvm2 with lvm1 support</flag>

@@ -4,4 +4,7 @@
 	<maintainer type="person">
 		<email>perfinion@gentoo.org</email>
 	</maintainer>
+	<use>
+		<flag name="custom-jdk">Install and use Android Studio's custom JRE.</flag>
+	</use>
 </pkgmetadata>

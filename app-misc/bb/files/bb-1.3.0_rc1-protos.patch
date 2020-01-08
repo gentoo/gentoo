@@ -1,13 +1,9 @@
-diff --git a/bb.c b/bb.c
-index 95850ef..a394d00 100644
 --- a/bb.c
 +++ b/bb.c
 @@ -27,2 +27,3 @@
  #include <aalib.h>
 +#include <time.h>
  #include "bb.h"
-diff --git a/main.c b/main.c
-index 417ff62..c0648b4 100644
 --- a/main.c
 +++ b/main.c
 @@ -23,2 +23,3 @@

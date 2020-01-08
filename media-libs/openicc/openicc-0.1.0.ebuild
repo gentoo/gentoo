@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Config database to store, share and manipulate colour management informations"
@@ -13,14 +14,16 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
-RDEPEND="
-	dev-libs/yajl[${MULTILIB_USEDEP}]
-"
-DEPEND="${RDEPEND}
+BDEPEND="
 	sys-devel/gettext
 	doc? ( app-doc/doxygen )
 "
+DEPEND="
+	dev-libs/yajl[${MULTILIB_USEDEP}]
+"
+RDEPEND="${DEPEND}"
 
 REQUIRED_USE="test? ( static-libs )"
 
@@ -41,5 +44,5 @@ multilib_src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=$(multilib_native_usex doc OFF ON)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

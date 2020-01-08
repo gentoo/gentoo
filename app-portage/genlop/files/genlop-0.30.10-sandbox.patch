@@ -1,0 +1,29 @@
+From af0fccf158a0a5d0c300be2eae167eace93cc1d3 Mon Sep 17 00:00:00 2001
+From: Joe Breuer <gentoo@jmbreuer.net>
+Date: Sat, 11 May 2019 21:08:21 -0700
+Subject: [PATCH] genlop -c: filter pid-ns-init duplicates (bug 677890)
+
+The latest stable version of portage introduces a pid-ns-init
+process which must be filtered in order to avoid duplicates.
+
+Bug: https://bugs.gentoo.org/677890
+Signed-off-by: Zac Medico <zmedico@gentoo.org>
+---
+ genlop | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/genlop b/genlop
+index b28c9d6..c154aa4 100755
+--- a/genlop
++++ b/genlop
+@@ -706,7 +706,7 @@ sub current()
+ 	# not check for sanity and have users check their FEATURES instead.
+ 	my @targets      = ();
+ 	my @sandbox_pids = ();
+-	my @sandbox_procs = qx{ps ax -o pid,args | tail -n +2 | sed -e's/^ *//' | grep ' sandbox ' | grep -v ' grep '};
++	my @sandbox_procs = qx{ps ax -o pid,args | tail -n +2 | sed -e's/^ *//' | grep ' sandbox ' | grep -v -e ' grep ' -e 'pid-ns-init '};
+ 	my ($e_curmerge, $e_lastmerge);
+ 	foreach (@sandbox_procs)
+ 	{
+--
+2.21.0

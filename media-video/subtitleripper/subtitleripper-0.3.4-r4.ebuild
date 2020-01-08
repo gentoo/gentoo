@@ -1,19 +1,21 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit versionator eutils toolchain-funcs
+inherit toolchain-funcs
 
-MY_PV="$(replace_version_separator 2 "-")"
+MY_PV="$(ver_rs 2 "-")"
 
 DESCRIPTION="DVD Subtitle Ripper for Linux"
 HOMEPAGE="http://subtitleripper.sourceforge.net/"
-LICENSE="GPL-2"
-KEYWORDS="amd64 ppc ppc64 x86"
 SRC_URI="mirror://sourceforge/${PN}/${PN}-${MY_PV}.tgz"
+
+LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE=""
+
 RDEPEND=">=media-libs/netpbm-10.41.0
 	media-libs/libpng
 	sys-libs/zlib
@@ -22,23 +24,28 @@ DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	# PPM library is libnetppm
-	sed -i -e "s:ppm:netpbm:g" Makefile
-	# fix for bug 210435
-	sed -i -e "s:#include <ppm.h>:#include <netpbm/ppm.h>:g" spudec.c subtitle2pgm.c
-	# we will install the gocrfilters into /usr/share/subtitleripper
-	sed -i -e 's:~/sourceforge/subtitleripper/src/:/usr/share/subtitleripper:' pgm2txt
+PATCHES=(
+	"${FILESDIR}"/${P}-linkingorder.patch
+	"${FILESDIR}"/${P}-libpng.patch
+	"${FILESDIR}"/${P}-glibc210.patch
+	"${FILESDIR}"/${P}-respect-ldflags.patch
+)
 
-	epatch "${FILESDIR}/${P}-linkingorder.patch"
-	epatch "${FILESDIR}"/${P}-libpng.patch
-	epatch "${FILESDIR}"/${P}-glibc210.patch
-	# respect CC and LDFLAGS
+src_prepare() {
+	# PPM library is libnetppm
+	sed -i -e "s:ppm:netpbm:g" Makefile || die
+	# fix for bug 210435
+	sed -i -e "s:#include <ppm.h>:#include <netpbm/ppm.h>:g" \
+		spudec.c subtitle2pgm.c || die
+	# we will install the gocrfilters into /usr/share/subtitleripper
+	sed -i -e 's:~/sourceforge/subtitleripper/src/:/usr/share/subtitleripper:' \
+		pgm2txt || die
+
+	default
+
+	# respect CC
 	sed -i -e "s:CC =.*:CC = $(tc-getCC):" \
 		-e "/^CFLAGS/s: = :& ${CFLAGS} :" "${S}"/Makefile
-	epatch "${FILESDIR}"/${P}-respect-ldflags.patch
 }
 
 src_install () {

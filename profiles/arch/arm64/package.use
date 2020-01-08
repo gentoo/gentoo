@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Alexis Ballier <aballier@gentoo.org> (10 Jul 2017)
+# Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # Enable the native arch as the default qemu target
 app-emulation/qemu qemu_softmmu_targets_aarch64

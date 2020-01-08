@@ -122,7 +122,7 @@ SRC_URI="https://alioth.debian.org/frs/download.php/file/${FRS_ID}/${P}.tar.gz"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	sane_backends_dc210? ( >=virtual/jpeg-0-r2:0=[${MULTILIB_USEDEP}] )
@@ -141,7 +141,7 @@ RDEPEND="
 	)
 	v4l? ( >=media-libs/libv4l-0.9.5[${MULTILIB_USEDEP}] )
 	xinetd? ( sys-apps/xinetd )
-	snmp? ( net-analyzer/net-snmp )
+	snmp? ( net-analyzer/net-snmp:0= )
 	systemd? ( sys-apps/systemd:0= )
 	zeroconf? ( >=net-dns/avahi-0.6.31-r2[${MULTILIB_USEDEP}] )
 "
@@ -235,10 +235,10 @@ multilib_src_configure() {
 	fi
 
 	# relative path must be used for tests to work properly
-        # All distributions pass --disable-locking because /var/lock/sane/ would be a world-writable directory
-        # --without-api-spec to not automagically depend on tons of stuff
-        # that break in many ways, bug #636202, #668232, #668350
-        # People can refer to the "Programmer's Documentation" at http://www.sane-project.org/docs.html
+	# All distributions pass --disable-locking because /var/lock/sane/ would be a world-writable directory
+	# --without-api-spec to not automagically depend on tons of stuff
+	# that break in many ways, bug #636202, #668232, #668350
+	# People can refer to the "Programmer's Documentation" at http://www.sane-project.org/docs.html
 	ECONF_SOURCE=${S} \
 	SANEI_JPEG="sanei_jpeg.o" SANEI_JPEG_LO="sanei_jpeg.lo" \
 	BACKENDS="${BACKENDS}" \

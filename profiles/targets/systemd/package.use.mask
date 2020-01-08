@@ -1,11 +1,11 @@
 # Copyright 1999-2018 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Rick Farina <zerochaos@gentoo.org> (04 Mar 2017)
+# Rick Farina <zerochaos@gentoo.org> (2017-03-04)
 # requires libusb[static-libs] which requires libudev[static-libs], all masked
 net-wireless/ubertooth static-libs
 
-# Rick Farina <zerochaos@gentoo.org> (03 Feb 2016)
+# Rick Farina <zerochaos@gentoo.org> (2016-02-03)
 # dev-libs/libusb[static-libs] requires libudev[static-libs] which is masked below
 dev-libs/libusb static-libs
 
@@ -15,6 +15,7 @@ virtual/libudev static-libs
 sys-fs/cryptsetup static static-libs
 sys-fs/lvm2 static static-libs
 sys-fs/dmraid static
+sys-fs/zfs static-libs
 dev-libs/libgudev static-libs
 # These are actually possible, but only if you USE=-udev when building pciutils.
 # But package.use.mask doesn't have a way to express that, so this profile loses.

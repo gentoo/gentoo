@@ -35,8 +35,8 @@ src_install () {
 	java-pkg_dolauncher ${PN} -pre "${FILESDIR}/${PN}.pre" \
 		--main henplus.HenPlus
 
-	dodoc README || die
-	dohtml doc/HenPlus.html || die
+	dodoc README
+	dohtml doc/HenPlus.html
 
 	use doc && java-pkg_dojavadoc javadoc/api
 	use source && java-pkg_dosrc "src/${PN}"

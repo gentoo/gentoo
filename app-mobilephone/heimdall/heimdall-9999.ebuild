@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils udev
 
 if [[ ${PV} != 9999 ]]; then
-	SRC_URI="https://gitlab.com/BenjaminDobell/Heimdall/-/archive/v${PV}/Heimdall-v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://gitlab.com/BenjaminDobell/Heimdall/-/archive/v${PV}/Heimdall-v${PV}.tar.bz2 -> ${P}.tar.bz2"
 	KEYWORDS="~amd64"
 	S="${WORKDIR}/Heimdall-v${PV}"
 else
@@ -25,9 +25,9 @@ IUSE="qt5"
 RDEPEND="
 	>=dev-libs/libusb-1.0.18:1=
 	qt5? (
-		dev-qt/qtcore:5=
-		dev-qt/qtgui:5=
-		dev-qt/qtwidgets:5=
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
 	)
 	sys-libs/zlib
 "

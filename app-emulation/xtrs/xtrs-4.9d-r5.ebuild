@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,7 @@ SRC_URI="http://www.tim-mann.org/trs80/${P}.tar.gz
 
 LICENSE="xtrs ls-dos? ( freedist )"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 IUSE="ls-dos"
 RESTRICT="ls-dos? ( bindist )"
 

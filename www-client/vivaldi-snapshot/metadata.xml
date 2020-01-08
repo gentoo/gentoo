@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="person">
-<email>jer@gentoo.org</email>
-<name>Jeroen Roovers</name>
-</maintainer>
-<use>
-<flag name='l10n_es-PE'>Spanish, Peru locale</flag>
-<flag name='l10n_io'>Ido locale</flag>
-<flag name='l10n_jbo'>Lojban locale</flag>
-<flag name='l10n_sc'>Sardinian locale</flag>
-</use>
+	<maintainer type="person">
+		<email>jer@gentoo.org</email>
+		<name>Jeroen Roovers</name>
+	</maintainer>
 </pkgmetadata>

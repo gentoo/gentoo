@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit cuda distutils-r1
 
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 
 # We need write acccess /dev/nvidia0 and /dev/nvidiactl and the portage
 # user is (usually) not in the video group
-RESTRICT="userpriv"
+RESTRICT="userpriv !test? ( test )"
 
 python_prepare_all() {
 	cuda_sanitize

@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,17 +13,14 @@ inherit autotools eutils flag-o-matic subversion
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="blas gwnum -openmp test"
+IUSE="blas -openmp test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/gmp:0=
 	blas? ( sci-libs/gsl )
-	gwnum? ( sci-mathematics/gwnum )
 	openmp? ( sys-devel/gcc:*[openmp] )"
 RDEPEND="${DEPEND}"
-
-# can't be both enabled
-REQUIRED_USE="gwnum? ( !openmp )"
 
 S=${WORKDIR}/ecm-${PV}
 
@@ -34,7 +31,6 @@ src_prepare() {
 }
 
 src_configure() {
-	if use gwnum; then myconf="--with-gwnum=/usr/lib"; fi
 	# --enable-shellcmd is broken
 	econf $(use_enable openmp) $myconf
 }

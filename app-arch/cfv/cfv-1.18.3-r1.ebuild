@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/cfv/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="bittorrent"
-KEYWORDS="amd64 hppa ~ppc ~sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
+KEYWORDS="amd64 hppa ~ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 
 DEPEND=""
 RDEPEND="${PYTHON_DEPS}

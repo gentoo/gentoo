@@ -14,7 +14,7 @@ KEYWORDS="~amd64"
 DESCRIPTION="Elasticsearch stats exporter for Prometheus"
 HOMEPAGE="https://github.com/justwatchcom/elasticsearch_exporter"
 SRC_URI="${ARCHIVE_URI}"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD MIT"
 SLOT="0"
 IUSE=""
 

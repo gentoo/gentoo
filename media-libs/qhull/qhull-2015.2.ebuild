@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}/download/${PN}-2015-src-7.2.0.tgz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm arm64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc static-libs"
 
 DOCS=( Announce.txt File_id.diz README.txt REGISTER.txt )

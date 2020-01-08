@@ -4,7 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2
+inherit autotools gnome2
 
 DESCRIPTION="Genius Mathematics Tool and the GEL Language"
 HOMEPAGE="https://www.jirka.org/genius.html"
@@ -30,10 +30,21 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-util/gtk-update-icon-cache
 	dev-util/intltool
-	virtual/yacc
+	sys-devel/autoconf-archive
 	sys-devel/flex
-" # eautoreconf needs autoconf-archive
+	virtual/yacc
+" # eautoreconf needs sys-devel/autoconf-archive
 # dev-util/gtk-update-icon-cache because configure checks for it for some reason and never calls it with DESTDIR set..
+
+PATCHES=(
+	"${FILESDIR}/${PN}-1.0.23-tinfo.patch"
+	"${FILESDIR}/${PN}-1.0.24-no_scrollkeeper.patch"
+)
+
+src_prepare() {
+	gnome2_src_prepare
+	eautoreconf
+}
 
 src_configure() {
 	# Unrecognized --disable-scrollkeeper warning comes from gnome2.eclass adding it based on grep, but upstream has them commented out in .ac with "#" instead of "dnl"

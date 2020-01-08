@@ -16,7 +16,7 @@ SRC_URI="http://download-1.gingerall.cz/download/sablot/${MY_P}.tar.gz"
 # Sablotron can optionally be built under GPL, using MPL for now
 LICENSE="MPL-1.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE="perl"
 
 RDEPEND=">=dev-libs/expat-1.95.6-r1"

@@ -8,7 +8,7 @@
 #
 ## Example:
 ##
-## # Dev E. Loper <developer@gentoo.org> (28 Jun 2012)
+## # Dev E. Loper <developer@gentoo.org> (2012-06-28)
 ## # Masking foo USE flag until we can get the
 ## # foo stuff to work properly again (bug 12345)
 ## =media-video/mplayer-0.90_pre5 foo
@@ -17,50 +17,59 @@
 
 #--- END OF EXAMPLES ---
 
-# Sergei Trofimovich <slyfox@gentoo.org> (17 Mar 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-06-05)
+# sys-auth/polkit stable timeout, bug #661470
+sys-apps/pcsc-lite policykit
+x11-misc/colord policykit
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-05-03)
+# net-wireless/bluez has no stable keywords, bug #676430
+app-pda/pilot-link bluetooth
+dev-lang/python bluetooth
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-03-17)
 # net-analyzer/nagios (or icinga) has no stable keywords, bug #676222
 sys-libs/freeipmi nagios
 
-# Andreas Sturmlechner <asturm@gentoo.org> (02 Dec 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-12-02)
 # gnome-base/nautilus is not stable
 media-sound/easytag nautilus
 
-# Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
 # media-libs/libraw is not stable
 media-gfx/imagemagick raw
 
-# Andreas Sturmlechner <asturm@gentoo.org> (20 May 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
 # media-video/faac is not stable.
 # media-libs/{libdc1394,x264} is not stable.
 # media-libs/game-music-emu is not stable.
 media-video/libav faac ieee1394 x264
 media-video/ffmpeg gme ieee1394 x264
 
-# Andreas Sturmlechner <asturm@gentoo.org> (6 May 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-05-06)
 # sci-visualization/gnuplot is not stable.
-app-admin/sysstat isag
 sci-mathematics/octave gnuplot
 sci-libs/libqalculate gnuplot
 
-# Andreas Sturmlechner <asturm@gentoo.org> (12 Feb 2018)
+# Andreas Sturmlechner <asturm@gentoo.org> (2018-02-12)
 # dev-libs/libical stabilisation timeout, bug #621724
 app-mobilephone/gnokii ical
-net-mail/cyrus-imapd calalarm http jmap
+net-mail/cyrus-imapd calalarm http
 net-wireless/bluez obex
 
-# Hans de Graaff <graaff@gentoo.org> (26 Nov 2017)
+# Hans de Graaff <graaff@gentoo.org> (2017-11-26)
 # Several packages no longer have stable keywords due
 # to bug 626682
 dev-ruby/bundler doc
 dev-ruby/rspec-core highlight test
 sys-block/thin-provisioning-tools test
 
-# Andreas Sturmlechner <asturm@gentoo.org> (30 Sep 2017)
+# Andreas Sturmlechner <asturm@gentoo.org> (2017-09-30)
 # Mask pdf support so net-print/cups-filters stabilisation
 # can go ahead (bug 627392)
 net-print/cups-filters pdf
 
-# David Seifert <soap@gentoo.org> (23 Sep 2017)
+# David Seifert <soap@gentoo.org> (2017-09-23)
 #  >=virtual/mpi-2.0-r4 does not have stable keywords on hppa
 # Boost 1.63 (bug 624662), Boost 1.62 (bug 590244)
 sci-libs/fftw mpi

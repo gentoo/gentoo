@@ -68,6 +68,11 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	virtual/pkgconfig"
 
+# vulkan-loader required for vulkan backend which can be selected
+# at runtime.
+RDEPEND="${RDEPEND}
+	media-libs/vulkan-loader"
+
 src_prepare() {
 	cmake-utils_src_prepare
 
@@ -77,6 +82,8 @@ src_prepare() {
 		Bochs_disasm
 		FreeSurround
 		cpp-optparse
+		# no support for for using system library
+		fmt
 		glslang
 		imgui
 		# FIXME: xxhash can't be found by cmake

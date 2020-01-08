@@ -9,7 +9,4 @@
 	<email>base-system@gentoo.org</email>
 	<name>Gentoo Base System</name>
 </maintainer>
-<use>
-	<flag name="split-usr">Enable this if /bin and /usr/bin are separate directories</flag>
-</use>
 </pkgmetadata>

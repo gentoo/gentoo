@@ -1,30 +1,26 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="ongoing 'King of the Hill' (KotH) tournament"
 HOMEPAGE="http://www.gamerz.net/c++robots/"
-SRC_URI="http://www.gamerz.net/c++robots/c++robots.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~x86"
-IUSE="static"
 
 S=${WORKDIR}/${PN}
+PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
 
-PATCHES=(
-	"${FILESDIR}/proper-coding.patch"
-)
-
-src_compile() {
-	local myldflags="${LDFLAGS}"
-	use static && myldflags="${myldflags} -static"
-	emake CFLAGS="${CFLAGS}" LDFLAGS="${myldflags}"
+src_configure() {
+	tc-export CXX
 }
 
 src_install() {
 	dobin combat cylon target tracker
-	dodoc README
+	einstalldocs
 }

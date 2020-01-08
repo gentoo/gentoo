@@ -8,6 +8,9 @@
   <upstream>
     <remote-id type="pypi">nose</remote-id>
     <remote-id type="github">nose-devs/nose</remote-id>
-    <remote-id type="bitbucket">jpellerin/nose</remote-id>
   </upstream>
+  <use>
+    <flag name="coverage">Pull in <pkg>dev-python/coverage</pkg> needed
+      for nose-xcover plugin.</flag>
+  </use>
 </pkgmetadata>

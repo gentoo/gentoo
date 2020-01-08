@@ -3,12 +3,12 @@
 
 EAPI=7
 DESCRIPTION="The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay"
-HOMEPAGE="http://www.lesbonscomptes.com/upmpdcli"
+HOMEPAGE="https://www.lesbonscomptes.com/upmpdcli"
 SRC_URI="https://www.lesbonscomptes.com/upmpdcli/downloads/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 DEPEND="
 	dev-libs/expat

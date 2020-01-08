@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit meson python-r1 vala xdg-utils
 
@@ -15,18 +15,18 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="mirror://gnome/sources/${PN}/$(ver_cut 1-2)/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~amd64-fbsd"
+	KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ppc ppc64 sparc x86"
 fi
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 IUSE="gtk-doc +introspection python static-libs test +vala"
-
 REQUIRED_USE="
 	python? ( introspection ${PYTHON_REQUIRED_USE} )
 	test? ( python introspection )
 	vala? ( introspection )
 "
+RESTRICT="!test? ( test )"
 
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.38.0:2

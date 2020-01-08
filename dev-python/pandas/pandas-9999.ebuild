@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="manual"
 inherit distutils-r1 eutils flag-o-matic git-r3 virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
-HOMEPAGE="http://pandas.pydata.org/"
+HOMEPAGE="https://pandas.pydata.org/"
 SRC_URI=""
 EGIT_REPO_URI="https://github.com/pydata/pandas.git"
 
@@ -19,6 +19,7 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS=""
 IUSE="doc full-support minimal test X"
+RESTRICT="!test? ( test )"
 
 RECOMMENDED_DEPEND="
 	dev-python/bottleneck[${PYTHON_USEDEP}]
@@ -127,7 +128,7 @@ python_compile_all() {
 	if use doc; then
 		cd "${BUILD_DIR}"/lib || die
 		cp -ar "${S}"/doc . && cd doc || die
-		LANG=C PYTHONPATH=. virtx ${EPYTHON} make.py html || die
+		LANG=C PYTHONPATH=. virtx ${EPYTHON} make.py html
 	fi
 }
 

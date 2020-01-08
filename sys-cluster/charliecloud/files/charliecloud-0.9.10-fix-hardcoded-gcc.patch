@@ -1,0 +1,21 @@
+From d42f3201bb91c582d4533c732e167961030091f9 Mon Sep 17 00:00:00 2001
+From: Oliver Freyermuth <o.freyermuth@googlemail.com>
+Date: Sat, 6 Jul 2019 17:01:06 +0200
+Subject: [PATCH] examples/syscall/Makefile: Fix hardcoded call to gcc.
+
+To be open for choice of different C compilers,
+honour CC variable.
+---
+ examples/syscalls/Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/examples/syscalls/Makefile b/examples/syscalls/Makefile
+index 177ab42a..7dc9a4b8 100644
+--- a/examples/syscalls/Makefile
++++ b/examples/syscalls/Makefile
+@@ -10,4 +10,4 @@ clean:
+ $(BINS): Makefile
+ 
+ %: %.c
+-	gcc $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< -o $@

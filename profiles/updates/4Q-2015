@@ -5,9 +5,7 @@ slotmove =dev-ruby/recog-2.0.12 2 2.0.12
 slotmove =dev-ruby/recog-2.0.14 2 2.0.14
 move media-libs/libkgeomap kde-apps/libkgeomap
 slotmove =dev-python/pyfltk-1.3.3 1 0
-move virtual/dnspython virtual/python-dnspython
 move virtual/funcsigs virtual/python-funcsigs
-move virtual/pmw virtual/python-pmw
 move kde-apps/oxygen-icons kde-frameworks/oxygen-icons
 slotmove =dev-ruby/rack-cache-1.3.0 1.3 1.2
 move dev-perl/module-info dev-perl/Module-Info
@@ -19,7 +17,6 @@ move kde-base/kaddressbook kde-apps/kaddressbook
 move kde-base/kalarm kde-apps/kalarm
 move kde-base/kdepim-meta kde-apps/kdepim-meta
 move kde-base/kdepim-runtime kde-apps/kdepim-runtime
-move kde-base/kjots kde-apps/kjots
 move kde-base/kleopatra kde-apps/kleopatra
 move kde-base/kmail kde-apps/kmail
 move kde-base/knotes kde-apps/knotes

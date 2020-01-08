@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit autotools
+inherit autotools eapi7-ver
 
 MY_P="${P^g}"
 
@@ -12,12 +12,13 @@ HOMEPAGE="http://practical-scheme.net/gauche/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tgz"
 
 LICENSE="BSD"
-SLOT="0"
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
+SLOT="0/$(ver_cut 1-2)"
+KEYWORDS="~alpha amd64 ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="ipv6 libressl mbedtls test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/gdbm
-	mbedtls? ( net-libs/mbedtls )"
+	mbedtls? ( net-libs/mbedtls:= )"
 DEPEND="${RDEPEND}
 	test? (
 		!libressl? ( dev-libs/openssl:0 )
@@ -29,7 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-gauche.m4.patch
 	"${FILESDIR}"/${PN}-ext-ldflags.patch
 	"${FILESDIR}"/${PN}-xz-info.patch
-	"${FILESDIR}"/${PN}-rfc.tls.patch
+	"${FILESDIR}"/${P}-rfc.tls.patch
 )
 DOCS=( AUTHORS ChangeLog HACKING README )
 

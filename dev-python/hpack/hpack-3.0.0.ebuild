@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy)
+PYTHON_COMPAT=( python2_7 python3_{6,7,8})
 
 inherit distutils-r1
 
@@ -12,8 +12,9 @@ SRC_URI="https://github.com/python-hyper/${PN}/archive/v${PV}.tar.gz -> ${P}.tar
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd"
+KEYWORDS="~alpha amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 # dev-python/pytest-relaxed causes tests to fail
@@ -25,6 +26,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/hpack-3.0.0-hypothesis-healthcheck.patch
+)
+
 python_prepare_all() {
 	# Remove a test that is not part of the mainstream tests
 	# Also, it's data directory is not included in the release
@@ -33,5 +38,5 @@ python_prepare_all() {
 }
 
 python_test() {
-	py.test -vv hpack test || die "Tests fail with ${EPYTHON}"
+	pytest -vv hpack test || die "Tests fail with ${EPYTHON}"
 }

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit desktop distutils-r1
 
 if [[ ${PV} != *9999* ]]; then
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	SRC_URI="https://www.bitbucket.org/${PN}/targz/downloads/${P}.tar.gz"
 	HG_DEPEND=">=dev-vcs/mercurial-4.8 <dev-vcs/mercurial-4.10"
 else
@@ -62,7 +62,8 @@ python_install_all() {
 	distutils-r1_python_install_all
 	dodoc doc/ReadMe*.txt doc/TODO contrib/mergetools.rc
 	if use doc ; then
-		dohtml -r doc/build/html/
+		docinto html
+		dodoc -r doc/build/html/.
 	fi
 	newicon -s scalable icons/scalable/apps/thg.svg thg_logo.svg
 	domenu contrib/thg.desktop

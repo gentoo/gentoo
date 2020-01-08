@@ -15,7 +15,7 @@ SRC_URI="http://www.deb-multimedia.org/pool/main/m/monkeys-audio/${MY_P}.orig.ta
 
 LICENSE="mac"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 ~x86"
+KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
 IUSE="cpu_flags_x86_mmx static-libs"
 
 RDEPEND=""

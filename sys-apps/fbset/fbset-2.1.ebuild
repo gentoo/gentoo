@@ -27,11 +27,11 @@ src_prepare() {
 src_compile() {
 	use static && append-ldflags -static
 	tc-export CC
-	emake || die "emake failed"
+	emake
 }
 
 src_install() {
-	dobin fbset modeline2fb || die "dobin failed"
+	dobin fbset modeline2fb
 	doman *.[58]
 	dodoc etc/fb.modes.* INSTALL
 }

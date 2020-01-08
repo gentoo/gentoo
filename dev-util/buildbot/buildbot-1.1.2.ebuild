@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 PYTHON_REQ_USE="sqlite"
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
@@ -26,6 +26,7 @@ else
 fi
 
 IUSE="crypt docker examples irc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/jinja-2.1[${PYTHON_USEDEP}]

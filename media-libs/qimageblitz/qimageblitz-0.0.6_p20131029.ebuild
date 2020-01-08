@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Graphical effect and filter library by KDE"
 HOMEPAGE="https://websvn.kde.org/trunk/kdesupport/qimageblitz/"
@@ -21,7 +21,10 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${P}-gcc.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-gcc.patch"
+	"${FILESDIR}/${P}-cxx11.patch" # bug 690360
+)
 
 src_configure() {
 	local mycmakeargs=(
@@ -33,5 +36,5 @@ src_configure() {
 	)
 	use ppc && mycmakeargs+=( -DHAVE_ALTIVEC=$(usex altivec) )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

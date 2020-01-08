@@ -15,7 +15,8 @@
     <remote-id type="cpan-module">DBD::mysql::st</remote-id>
   </upstream>
   <use>
-    <flag name="embedded">Support embedded server (libmysqld)</flag>
     <flag name="ssl">Compile in support for SSL connections via libmysqlclient</flag>
+    <flag name="mariadb">Use <pkg>dev-db/mariadb-connector-c</pkg> as the client library</flag>
+    <flag name="mysql">Use <pkg>dev-db/mysql-connector-c</pkg> as the client library</flag>
   </use>
 </pkgmetadata>

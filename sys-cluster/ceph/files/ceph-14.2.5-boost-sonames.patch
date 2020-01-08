@@ -1,0 +1,471 @@
+diff --git a/cmake/modules/BuildBoost.cmake b/cmake/modules/BuildBoost.cmake
+index f46cc0d485..39bb081b1b 100644
+--- a/cmake/modules/BuildBoost.cmake
++++ b/cmake/modules/BuildBoost.cmake
+@@ -199,13 +199,13 @@ macro(build_boost version)
+   foreach(c ${Boost_BUILD_COMPONENTS})
+     string(TOUPPER ${c} upper_c)
+     if(Boost_USE_STATIC_LIBS)
+-      add_library(Boost::${c} STATIC IMPORTED)
++      add_library(Boost_${c} STATIC IMPORTED)
+     else()
+-      add_library(Boost::${c} SHARED IMPORTED)
++      add_library(Boost_${c} SHARED IMPORTED)
+     endif()
+-    add_dependencies(Boost::${c} Boost)
++    add_dependencies(Boost_${c} Boost)
+     if(c MATCHES "^python")
+-      set(c "python${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}")
++      set(c "python-${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}")
+     endif()
+     if(Boost_USE_STATIC_LIBS)
+       set(Boost_${upper_c}_LIBRARY
+@@ -215,7 +215,7 @@ macro(build_boost version)
+         ${install_dir}/lib/${CMAKE_SHARED_LIBRARY_PREFIX}boost_${c}${CMAKE_SHARED_LIBRARY_SUFFIX})
+     endif()
+     unset(buildid)
+-    set_target_properties(Boost::${c} PROPERTIES
++    set_target_properties(Boost_${c} PROPERTIES
+       INTERFACE_INCLUDE_DIRECTORIES "${Boost_INCLUDE_DIRS}"
+       IMPORTED_LINK_INTERFACE_LANGUAGES "CXX"
+       IMPORTED_LOCATION "${Boost_${upper_c}_LIBRARY}")
+@@ -224,19 +224,19 @@ macro(build_boost version)
+   foreach(c ${Boost_BUILD_COMPONENTS})
+     if(Boost_${c}_DEPENDENCIES)
+       foreach(dep ${Boost_${c}_DEPENDENCIES})
+-        list(APPEND dependencies Boost::${dep})
++        list(APPEND dependencies Boost_${dep})
+       endforeach()
+-      set_target_properties(Boost::${c} PROPERTIES
++      set_target_properties(Boost_${c} PROPERTIES
+         INTERFACE_LINK_LIBRARIES "${dependencies}")
+       unset(dependencies)
+     endif()
+   endforeach()
+ 
+   # for header-only libraries
+-  add_library(Boost::boost INTERFACE IMPORTED)
+-  set_target_properties(Boost::boost PROPERTIES
++  add_library(Boost_boost INTERFACE IMPORTED)
++  set_target_properties(Boost_boost PROPERTIES
+     INTERFACE_INCLUDE_DIRECTORIES "${Boost_INCLUDE_DIRS}")
+-  add_dependencies(Boost::boost Boost)
++  add_dependencies(Boost_boost Boost)
+   find_package_handle_standard_args(Boost DEFAULT_MSG
+     Boost_INCLUDE_DIRS Boost_LIBRARIES)
+   mark_as_advanced(Boost_LIBRARIES BOOST_INCLUDE_DIRS)
+@@ -253,7 +253,7 @@ function(maybe_add_boost_dep target)
+     get_filename_component(ext ${src} EXT)
+     # assuming all cxx source files include boost header(s)
+     if(ext MATCHES ".cc|.cpp|.cxx")
+-      add_dependencies(${target} Boost::boost)
++      add_dependencies(${target} Boost_boost)
+       return()
+     endif()
+   endforeach()
+diff --git a/cmake/modules/FindBoost.cmake b/cmake/modules/FindBoost.cmake
+index e2525b8934..e728e5a9d2 100644
+--- a/cmake/modules/FindBoost.cmake
++++ b/cmake/modules/FindBoost.cmake
+@@ -340,10 +340,6 @@ macro(_Boost_ADJUST_LIB_VARS basename)
+ 
+     if(Boost_${basename}_LIBRARY AND Boost_${basename}_HEADER)
+       set(Boost_${basename}_FOUND ON)
+-      if("x${basename}" STREQUAL "xTHREAD" AND NOT TARGET Threads::Threads)
+-        string(APPEND Boost_ERROR_REASON_THREAD " (missing dependency: Threads)")
+-        set(Boost_THREAD_FOUND OFF)
+-      endif()
+     endif()
+ 
+   endif()
+@@ -919,7 +915,7 @@ function(_Boost_COMPONENT_DEPENDENCIES component _ret)
+   if (NOT _boost_DEPS_STRING)
+     set(_boost_DEPS_STRING "(none)")
+   endif()
+-  # message(STATUS "Dependencies for Boost::${component}: ${_boost_DEPS_STRING}")
++  # message(STATUS "Dependencies for Boost_${component}: ${_boost_DEPS_STRING}")
+ endfunction()
+ 
+ #
+@@ -1003,7 +999,7 @@ function(_Boost_COMPONENT_HEADERS component _hdrs)
+   if (NOT _boost_HDRS_STRING)
+     set(_boost_HDRS_STRING "(none)")
+   endif()
+-  # message(STATUS "Headers for Boost::${component}: ${_boost_HDRS_STRING}")
++  # message(STATUS "Headers for Boost_${component}: ${_boost_HDRS_STRING}")
+ endfunction()
+ 
+ #
+@@ -1051,7 +1047,7 @@ endfunction()
+ 
+ #
+ # Some boost libraries may require particular set of compler features.
+-# The very first one was `boost::fiber` introduced in Boost 1.62.
++# The very first one was `boost_fiber` introduced in Boost 1.62.
+ # One can check required compiler features of it in
+ # - `${Boost_ROOT}/libs/fiber/build/Jamfile.v2`;
+ # - `${Boost_ROOT}/libs/context/build/Jamfile.v2`.
+@@ -1178,7 +1174,7 @@ else()
+   # _Boost_COMPONENT_HEADERS.  See the instructions at the top of
+   # _Boost_COMPONENT_DEPENDENCIES.
+   set(_Boost_KNOWN_VERSIONS ${Boost_ADDITIONAL_VERSIONS}
+-    "1.70.0" "1.70" "1.69.0" "1.69"
++    "1.71.0" "1.71" "1.70.0" "1.70" "1.69.0" "1.69"
+     "1.68.0" "1.68" "1.67.0" "1.67" "1.66.0" "1.66" "1.65.1" "1.65.0" "1.65"
+     "1.64.0" "1.64" "1.63.0" "1.63" "1.62.0" "1.62" "1.61.0" "1.61" "1.60.0" "1.60"
+     "1.59.0" "1.59" "1.58.0" "1.58" "1.57.0" "1.57" "1.56.0" "1.56" "1.55.0" "1.55"
+@@ -1235,10 +1231,10 @@ endif()
+ # on all platforms to keep end user code free from platform dependent
+ # code.  Also provide convenience targets to disable autolinking and
+ # enable dynamic linking.
+-if(NOT TARGET Boost::diagnostic_definitions)
+-  add_library(Boost::diagnostic_definitions INTERFACE IMPORTED)
+-  add_library(Boost::disable_autolinking INTERFACE IMPORTED)
+-  add_library(Boost::dynamic_linking INTERFACE IMPORTED)
++if(NOT TARGET boost_diagnostic_definitions)
++  add_library(boost_diagnostic_definitions INTERFACE IMPORTED)
++  add_library(boost_disable_autolinking INTERFACE IMPORTED)
++  add_library(boost_dynamic_linking INTERFACE IMPORTED)
+ endif()
+ if(WIN32)
+   # In windows, automatic linking is performed, so you do not have
+@@ -1259,11 +1255,11 @@ if(WIN32)
+   # code to emit a #pragma message each time a library is selected
+   # for linking.
+   set(Boost_LIB_DIAGNOSTIC_DEFINITIONS "-DBOOST_LIB_DIAGNOSTIC")
+-  set_target_properties(Boost::diagnostic_definitions PROPERTIES
++  set_target_properties(boost_diagnostic_definitions PROPERTIES
+     INTERFACE_COMPILE_DEFINITIONS "BOOST_LIB_DIAGNOSTIC")
+-  set_target_properties(Boost::disable_autolinking PROPERTIES
++  set_target_properties(boost_disable_autolinking PROPERTIES
+     INTERFACE_COMPILE_DEFINITIONS "BOOST_ALL_NO_LIB")
+-  set_target_properties(Boost::dynamic_linking PROPERTIES
++  set_target_properties(boost_dynamic_linking PROPERTIES
+     INTERFACE_COMPILE_DEFINITIONS "BOOST_ALL_DYN_LINK")
+ endif()
+ 
+@@ -1738,7 +1734,7 @@ if("thread" IN_LIST Boost_FIND_COMPONENTS)
+   else()
+     set(_Boost_find_quiet "")
+   endif()
+-  find_package(Threads ${_Boost_find_quiet})
++  find_package(boost_thread ${_Boost_find_quiet})
+   unset(_Boost_find_quiet)
+ endif()
+ 
+@@ -2079,61 +2075,61 @@ endif()
+ 
+ if(Boost_FOUND)
+   # For header-only libraries
+-  if(NOT TARGET Boost::boost)
+-    add_library(Boost::boost INTERFACE IMPORTED)
++  if(NOT TARGET Boost_boost)
++    add_library(Boost_boost INTERFACE IMPORTED)
+     if(Boost_INCLUDE_DIRS)
+-      set_target_properties(Boost::boost PROPERTIES
++      set_target_properties(Boost_boost PROPERTIES
+         INTERFACE_INCLUDE_DIRECTORIES "${Boost_INCLUDE_DIRS}")
+     endif()
+   endif()
+ 
+   foreach(COMPONENT ${Boost_FIND_COMPONENTS})
+-    if(_Boost_IMPORTED_TARGETS AND NOT TARGET Boost::${COMPONENT})
++    if(_Boost_IMPORTED_TARGETS AND NOT TARGET Boost_${COMPONENT})
+       string(TOUPPER ${COMPONENT} UPPERCOMPONENT)
+       if(Boost_${UPPERCOMPONENT}_FOUND)
+         if(Boost_USE_STATIC_LIBS)
+-          add_library(Boost::${COMPONENT} STATIC IMPORTED)
++          add_library(Boost_${COMPONENT} STATIC IMPORTED)
+         else()
+           # Even if Boost_USE_STATIC_LIBS is OFF, we might have static
+           # libraries as a result.
+-          add_library(Boost::${COMPONENT} UNKNOWN IMPORTED)
++          add_library(Boost_${COMPONENT} UNKNOWN IMPORTED)
+         endif()
+         if(Boost_INCLUDE_DIRS)
+-          set_target_properties(Boost::${COMPONENT} PROPERTIES
++          set_target_properties(Boost_${COMPONENT} PROPERTIES
+             INTERFACE_INCLUDE_DIRECTORIES "${Boost_INCLUDE_DIRS}")
+         endif()
+         if(EXISTS "${Boost_${UPPERCOMPONENT}_LIBRARY}")
+-          set_target_properties(Boost::${COMPONENT} PROPERTIES
++          set_target_properties(Boost_${COMPONENT} PROPERTIES
+             IMPORTED_LINK_INTERFACE_LANGUAGES "CXX"
+             IMPORTED_LOCATION "${Boost_${UPPERCOMPONENT}_LIBRARY}")
+         endif()
+         if(EXISTS "${Boost_${UPPERCOMPONENT}_LIBRARY_RELEASE}")
+-          set_property(TARGET Boost::${COMPONENT} APPEND PROPERTY
++          set_property(TARGET Boost_${COMPONENT} APPEND PROPERTY
+             IMPORTED_CONFIGURATIONS RELEASE)
+-          set_target_properties(Boost::${COMPONENT} PROPERTIES
++          set_target_properties(Boost_${COMPONENT} PROPERTIES
+             IMPORTED_LINK_INTERFACE_LANGUAGES_RELEASE "CXX"
+             IMPORTED_LOCATION_RELEASE "${Boost_${UPPERCOMPONENT}_LIBRARY_RELEASE}")
+         endif()
+         if(EXISTS "${Boost_${UPPERCOMPONENT}_LIBRARY_DEBUG}")
+-          set_property(TARGET Boost::${COMPONENT} APPEND PROPERTY
++          set_property(TARGET Boost_${COMPONENT} APPEND PROPERTY
+             IMPORTED_CONFIGURATIONS DEBUG)
+-          set_target_properties(Boost::${COMPONENT} PROPERTIES
++          set_target_properties(Boost_${COMPONENT} PROPERTIES
+             IMPORTED_LINK_INTERFACE_LANGUAGES_DEBUG "CXX"
+             IMPORTED_LOCATION_DEBUG "${Boost_${UPPERCOMPONENT}_LIBRARY_DEBUG}")
+         endif()
+         if(_Boost_${UPPERCOMPONENT}_DEPENDENCIES)
+           unset(_Boost_${UPPERCOMPONENT}_TARGET_DEPENDENCIES)
+           foreach(dep ${_Boost_${UPPERCOMPONENT}_DEPENDENCIES})
+-            list(APPEND _Boost_${UPPERCOMPONENT}_TARGET_DEPENDENCIES Boost::${dep})
++            list(APPEND _Boost_${UPPERCOMPONENT}_TARGET_DEPENDENCIES Boost_${dep})
+           endforeach()
+           if(COMPONENT STREQUAL "thread")
+-            list(APPEND _Boost_${UPPERCOMPONENT}_TARGET_DEPENDENCIES Threads::Threads)
++            list(APPEND _Boost_${UPPERCOMPONENT}_TARGET_DEPENDENCIES boost_thread)
+           endif()
+-          set_target_properties(Boost::${COMPONENT} PROPERTIES
++          set_target_properties(Boost_${COMPONENT} PROPERTIES
+             INTERFACE_LINK_LIBRARIES "${_Boost_${UPPERCOMPONENT}_TARGET_DEPENDENCIES}")
+         endif()
+         if(_Boost_${UPPERCOMPONENT}_COMPILER_FEATURES)
+-          set_target_properties(Boost::${COMPONENT} PROPERTIES
++          set_target_properties(Boost_${COMPONENT} PROPERTIES
+             CXX_STANDARD 17)
+         endif()
+       endif()
+diff --git a/cmake/modules/Finddpdk.cmake b/cmake/modules/Finddpdk.cmake
+index 964ae5dfb0..92bf07c14e 100644
+--- a/cmake/modules/Finddpdk.cmake
++++ b/cmake/modules/Finddpdk.cmake
+@@ -102,9 +102,9 @@ if(dpdk_FOUND)
+ 
+   if(NOT TARGET dpdk::dpdk)
+     add_library(dpdk::dpdk INTERFACE IMPORTED)
+-    find_package(Threads QUIET)
++    find_package(boost_thread QUIET)
+     list(APPEND dpdk_LIBRARIES
+-      Threads::Threads
++      boost_thread
+       dpdk::cflags)
+     set_target_properties(dpdk::dpdk PROPERTIES
+       INTERFACE_LINK_LIBRARIES "${dpdk_LIBRARIES}"
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 28ec9835f8..31a1efa19f 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -356,12 +356,12 @@ set(ceph_common_objs
+ set(ceph_common_deps
+   json_spirit erasure_code arch crc32
+   ${LIB_RESOLV}
+-  Boost::thread
+-  Boost::system
+-  Boost::random
+-  Boost::program_options
+-  Boost::date_time
+-  Boost::iostreams
++  boost_thread
++  boost_system
++  boost_random
++  boost_program_options
++  boost_date_time
++  boost_iostreams
+   ${BLKID_LIBRARIES}
+   ${Backtrace_LIBRARIES}
+   ${BLKIN_LIBRARIES}
+@@ -522,7 +522,7 @@ if (WITH_CEPHFS)
+     ceph_mds.cc)
+   add_executable(ceph-mds ${ceph_mds_srcs})
+   target_link_libraries(ceph-mds mds ${CMAKE_DL_LIBS} global-static ceph-common
+-    Boost::thread)
++    boost_thread)
+   install(TARGETS ceph-mds DESTINATION bin)
+ endif()
+ 
+diff --git a/src/crimson/CMakeLists.txt b/src/crimson/CMakeLists.txt
+index d7b58521d4..e1533af33f 100644
+--- a/src/crimson/CMakeLists.txt
++++ b/src/crimson/CMakeLists.txt
+@@ -106,8 +106,8 @@ target_link_libraries(crimson-common
+   PRIVATE
+     crc32
+     crimson::cflags
+-    Boost::iostreams
+-    Boost::random
++    boost_iostreams
++    boost_random
+     ${NSS_LIBRARIES} ${NSPR_LIBRARIES} OpenSSL::Crypto)
+ 
+ set(crimson_auth_srcs
+diff --git a/src/mgr/CMakeLists.txt b/src/mgr/CMakeLists.txt
+index 252fb3e5e3..213482da16 100644
+--- a/src/mgr/CMakeLists.txt
++++ b/src/mgr/CMakeLists.txt
+@@ -26,7 +26,7 @@ target_include_directories(ceph-mgr SYSTEM PRIVATE "${PYTHON_INCLUDE_DIRS}")
+ target_link_libraries(ceph-mgr
+   osdc client heap_profiler
+   global-static ceph-common
+-  Boost::python${MGR_PYTHON_VERSION_MAJOR}${MGR_PYTHON_VERSION_MINOR}
++  boost_python${MGR_PYTHON_VERSION_MAJOR}${MGR_PYTHON_VERSION_MINOR}
+   ${MGR_PYTHON_LIBRARIES} ${CMAKE_DL_LIBS} ${GSSAPI_LIBRARIES})
+ set_target_properties(ceph-mgr PROPERTIES
+   POSITION_INDEPENDENT_CODE ${EXE_LINKER_USE_PIE})
+diff --git a/src/rbd_replay/CMakeLists.txt b/src/rbd_replay/CMakeLists.txt
+index e9d3804c5f..5c6eb58de1 100644
+--- a/src/rbd_replay/CMakeLists.txt
++++ b/src/rbd_replay/CMakeLists.txt
+@@ -36,7 +36,7 @@ if(HAVE_BABELTRACE)
+     global
+     babeltrace
+     babeltrace-ctf
+-    Boost::date_time
++    boost_date_time
+     )
+   install(TARGETS rbd-replay-prep DESTINATION bin)
+ endif(HAVE_BABELTRACE)
+diff --git a/src/rgw/CMakeLists.txt b/src/rgw/CMakeLists.txt
+index 82f5181f5b..8a51f140fb 100644
+--- a/src/rgw/CMakeLists.txt
++++ b/src/rgw/CMakeLists.txt
+@@ -202,7 +202,7 @@ if(WITH_CURL_OPENSSL)
+ endif()
+ 
+ if(WITH_BOOST_CONTEXT)
+-  target_link_libraries(rgw_a PRIVATE Boost::coroutine Boost::context)
++  target_link_libraries(rgw_a PRIVATE boost_coroutine boost_context)
+ endif()
+ 
+ set(rgw_libs rgw_a)
+@@ -353,7 +353,7 @@ if(WITH_RADOSGW_AMQP_ENDPOINT)
+   target_link_libraries(rgw_admin_user PRIVATE RabbitMQ::RabbitMQ)
+ endif()
+ if(WITH_BOOST_CONTEXT)
+-  target_link_libraries(rgw_admin_user PRIVATE Boost::coroutine Boost::context)
++  target_link_libraries(rgw_admin_user PRIVATE boost_coroutine boost_context)
+ endif()
+ 
+ if(WITH_TESTS)
+diff --git a/src/test/CMakeLists.txt b/src/test/CMakeLists.txt
+index 5dcee1694d..60743be698 100644
+--- a/src/test/CMakeLists.txt
++++ b/src/test/CMakeLists.txt
+@@ -159,7 +159,7 @@ add_executable(ceph_omapbench
+   )
+ target_link_libraries(ceph_omapbench
+   librados
+-  Boost::program_options
++  boost_program_options
+   global
+   ${BLKID_LIBRARIES}
+   ${CMAKE_DL_LIBS}
+diff --git a/src/test/common/CMakeLists.txt b/src/test/common/CMakeLists.txt
+index 71fb77cda9..aff8fb6565 100644
+--- a/src/test/common/CMakeLists.txt
++++ b/src/test/common/CMakeLists.txt
+@@ -315,8 +315,8 @@ add_ceph_unittest(unittest_hobject)
+ 
+ add_executable(unittest_async_completion test_async_completion.cc)
+ add_ceph_unittest(unittest_async_completion)
+-target_link_libraries(unittest_async_completion Boost::system)
++target_link_libraries(unittest_async_completion boost_system)
+ 
+ add_executable(unittest_async_shared_mutex test_async_shared_mutex.cc)
+ add_ceph_unittest(unittest_async_shared_mutex)
+-target_link_libraries(unittest_async_shared_mutex ceph-common Boost::system)
++target_link_libraries(unittest_async_shared_mutex ceph-common boost_system)
+diff --git a/src/test/erasure-code/CMakeLists.txt b/src/test/erasure-code/CMakeLists.txt
+index 721f6c3675..1cd9635c77 100644
+--- a/src/test/erasure-code/CMakeLists.txt
++++ b/src/test/erasure-code/CMakeLists.txt
+@@ -2,15 +2,15 @@
+ add_executable(ceph_erasure_code_benchmark 
+   ${CMAKE_SOURCE_DIR}/src/erasure-code/ErasureCode.cc
+   ceph_erasure_code_benchmark.cc)
+-target_link_libraries(ceph_erasure_code_benchmark ceph-common Boost::program_options global ${CMAKE_DL_LIBS})
++target_link_libraries(ceph_erasure_code_benchmark ceph-common boost_program_options global ${CMAKE_DL_LIBS})
+ install(TARGETS ceph_erasure_code_benchmark
+   DESTINATION bin)
+ 
+ add_executable(ceph_erasure_code_non_regression ceph_erasure_code_non_regression.cc)
+-target_link_libraries(ceph_erasure_code_non_regression ceph-common Boost::program_options global ${CMAKE_DL_LIBS})
++target_link_libraries(ceph_erasure_code_non_regression ceph-common boost_program_options global ${CMAKE_DL_LIBS})
+ 
+ add_executable(ceph_erasure_code ceph_erasure_code.cc)
+-target_link_libraries(ceph_erasure_code ceph-common Boost::program_options global ${CMAKE_DL_LIBS})
++target_link_libraries(ceph_erasure_code ceph-common boost_program_options global ${CMAKE_DL_LIBS})
+ install(TARGETS ceph_erasure_code
+   DESTINATION bin)
+ 
+diff --git a/src/test/librados/CMakeLists.txt b/src/test/librados/CMakeLists.txt
+index 4fc53d2406..e6304394f8 100644
+--- a/src/test/librados/CMakeLists.txt
++++ b/src/test/librados/CMakeLists.txt
+@@ -62,7 +62,7 @@ add_executable(ceph_test_rados_api_asio asio.cc)
+ target_link_libraries(ceph_test_rados_api_asio global
+   librados ${UNITTEST_LIBS})
+ if(WITH_BOOST_CONTEXT)
+-  target_link_libraries(ceph_test_rados_api_asio Boost::coroutine Boost::context)
++  target_link_libraries(ceph_test_rados_api_asio boost_coroutine boost_context)
+ endif()
+ 
+ add_executable(ceph_test_rados_api_list
+@@ -132,7 +132,7 @@ add_executable(ceph_test_rados_api_tier_pp
+   tier_cxx.cc
+   $<TARGET_OBJECTS:unit-main>)
+ target_link_libraries(ceph_test_rados_api_tier_pp
+-  librados global ${UNITTEST_LIBS} Boost::system radostest-cxx)
++  librados global ${UNITTEST_LIBS} boost_system radostest-cxx)
+ 
+ add_executable(ceph_test_rados_api_snapshots
+   snapshots.cc)
+diff --git a/src/test/librbd/CMakeLists.txt b/src/test/librbd/CMakeLists.txt
+index 3c3e9db6c1..2c208c1a4f 100644
+--- a/src/test/librbd/CMakeLists.txt
++++ b/src/test/librbd/CMakeLists.txt
+@@ -27,7 +27,7 @@ target_link_libraries(rbd_test PRIVATE
+   radostest
+   radostest-cxx
+   librados
+-  Boost::thread
++  boost_thread
+   GMock::GMock
+   GTest::GTest)
+ 
+diff --git a/src/test/rgw/CMakeLists.txt b/src/test/rgw/CMakeLists.txt
+index cde6348d57..e6ce738834 100644
+--- a/src/test/rgw/CMakeLists.txt
++++ b/src/test/rgw/CMakeLists.txt
+@@ -144,7 +144,7 @@ add_ceph_unittest(unittest_rgw_dmclock_scheduler)
+ target_link_libraries(unittest_rgw_dmclock_scheduler radosgw_a dmclock)
+ if(WITH_BOOST_CONTEXT)
+   target_compile_definitions(unittest_rgw_dmclock_scheduler PRIVATE BOOST_COROUTINES_NO_DEPRECATION_WARNING)
+-  target_link_libraries(unittest_rgw_dmclock_scheduler Boost::coroutine Boost::context)
++  target_link_libraries(unittest_rgw_dmclock_scheduler boost_coroutine boost_context)
+ endif()
+ 
+ if(WITH_RADOSGW_AMQP_ENDPOINT)
+diff --git a/src/tools/CMakeLists.txt b/src/tools/CMakeLists.txt
+index d31f3d2408..6945018b11 100644
+--- a/src/tools/CMakeLists.txt
++++ b/src/tools/CMakeLists.txt
+@@ -35,20 +35,20 @@ install(PROGRAMS
+ endif(WITH_TESTS)
+ 
+ add_executable(ceph-osdomap-tool ceph_osdomap_tool.cc)
+-target_link_libraries(ceph-osdomap-tool os global Boost::program_options)
++target_link_libraries(ceph-osdomap-tool os global boost_program_options)
+ install(TARGETS ceph-osdomap-tool DESTINATION bin)
+ 
+ add_executable(ceph-monstore-tool
+   ceph_monstore_tool.cc
+   ../mgr/mgr_commands.cc)
+-target_link_libraries(ceph-monstore-tool os global Boost::program_options)
++target_link_libraries(ceph-monstore-tool os global boost_program_options)
+ install(TARGETS ceph-monstore-tool DESTINATION bin)
+ 
+ add_executable(ceph-objectstore-tool
+   ceph_objectstore_tool.cc
+   rebuild_mondb.cc
+   RadosDump.cc)
+-target_link_libraries(ceph-objectstore-tool osd os global Boost::program_options ${CMAKE_DL_LIBS})
++target_link_libraries(ceph-objectstore-tool osd os global boost_program_options ${CMAKE_DL_LIBS})
+ if(WITH_FUSE)
+   target_link_libraries(ceph-objectstore-tool ${FUSE_LIBRARIES})
+ endif(WITH_FUSE)

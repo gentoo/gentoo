@@ -4,11 +4,11 @@
 EAPI=6
 
 SRC_URI="https://github.com/Sabayon/genkernel-next/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~hppa ia64 ppc ppc64 x86"
 inherit bash-completion-r1
 
 DESCRIPTION="Gentoo automatic kernel building scripts, reloaded"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://github.com/Sabayon/genkernel-next/"
 
 LICENSE="GPL-2"
 SLOT="0"

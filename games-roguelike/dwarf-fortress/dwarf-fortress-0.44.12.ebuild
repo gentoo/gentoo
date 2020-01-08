@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="amd64? ( http://www.bay12games.com/dwarves/${MY_P}_linux.tar.bz2 )
 
 LICENSE="free-noncomm BSD BitstreamVera"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 -*"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="media-libs/glew:0
@@ -31,7 +31,7 @@ RDEPEND="media-libs/glew:0
 DEPEND="${RDEPEND}
 	media-libs/libsndfile
 	media-libs/openal
-	sys-libs/ncurses:5[unicode]
+	sys-libs/ncurses-compat:5[unicode]
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_PN}_linux

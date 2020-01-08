@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python{3_5,3_6} )
+EAPI=7
 
-inherit distutils-r1 eutils gnome2-utils xdg-utils
+PYTHON_COMPAT=( python{3_6,3_7} )
+
+inherit desktop distutils-r1 eutils xdg-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
@@ -21,16 +22,20 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="scripts test"
 
-COMMON_DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${COMMON_DEPEND}
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="
 	app-text/asciidoc
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
 	>=dev-python/jinja-2.8[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.1.3[${PYTHON_USEDEP}]
 	>=dev-python/pypeg2-2.15.2[${PYTHON_USEDEP}]
-	>=dev-python/PyQt5-5.7.1[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,webengine,widgets]
+	|| (  (
+			>=dev-python/PyQt5-5.12[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
+			dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )
+		<dev-python/PyQt5-5.12[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,webengine,widgets]
+	)
 	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP},libyaml]
 "
 
@@ -40,7 +45,7 @@ RESTRICT="test"
 
 python_compile_all() {
 	if [[ ${PV} == "9999" ]]; then
-		"${PYTHON}" scripts/asciidoc2html.py || die "Failed generating docs"
+		"${EPYTHON}" scripts/asciidoc2html.py || die "Failed generating docs"
 	fi
 
 	a2x -f manpage doc/${PN}.1.asciidoc || die "Failed generating man page"
@@ -72,12 +77,12 @@ python_install_all() {
 pkg_postinst() {
 	optfeature "PDF display support" www-plugins/pdfjs
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }

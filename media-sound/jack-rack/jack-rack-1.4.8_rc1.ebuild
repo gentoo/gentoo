@@ -1,8 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit autotools eutils flag-o-matic toolchain-funcs
+EAPI=7
+
+inherit autotools flag-o-matic toolchain-funcs
 
 MY_P=${PN}_${PV/_/\~}
 DEB_URI="mirror://debian/pool/main/j/${PN}"
@@ -16,40 +17,38 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE="alsa gnome lash +xml"
 
-RDEPEND=">=x11-libs/gtk+-2.12:2
-	>=media-libs/ladspa-sdk-1.12
-	media-sound/jack-audio-connection-kit
-	alsa? ( media-libs/alsa-lib )
-	lash? ( >=media-sound/lash-0.5 )
-	gnome? ( >=gnome-base/libgnomeui-2 )
+RDEPEND="
+	media-libs/ladspa-sdk
+	virtual/jack
 	virtual/libintl
-	xml? ( dev-libs/libxml2
-		media-libs/liblrdf )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	sys-devel/gettext"
+	x11-libs/gtk+:2
+	alsa? ( media-libs/alsa-lib:= )
+	gnome? ( gnome-base/libgnomeui:= )
+	lash? ( media-sound/lash:= )
+	xml? (
+		dev-libs/libxml2:=
+		media-libs/liblrdf:=
+	)"
+DEPEND="${RDEPEND}"
+BDEPEND="
+	sys-devel/gettext
+	virtual/pkgconfig"
 
-DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO WISHLIST )
+S="${WORKDIR}/${PN}-f9fb65d"
 
-src_unpack() {
-	unpack ${A}
-	mv ${PN}-* "${S}"
-}
+PATCHES=(
+	"${WORKDIR}"/debian/patches/01-desktop_file.patch
+	"${WORKDIR}"/debian/patches/02-gcc45_binutils_gold.patch
+	"${WORKDIR}"/debian/patches/03-remove_midi_when_replacing_plugin.patch
+	"${FILESDIR}"/${PN}-1.4.6-noalsa.patch
+	"${FILESDIR}"/${PN}-1.4.7-disable_deprecated.patch
+	"${FILESDIR}"/${P}-noxml.patch
+	"${FILESDIR}"/${P}-underlinking.patch
+	"${FILESDIR}"/${P}-QA-fix-desktop-file.patch
+)
 
 src_prepare() {
-	EPATCH_FORCE=yes EPATCH_SUFFIX=patch epatch "${WORKDIR}"/debian/patches
-
-	epatch \
-		"${FILESDIR}"/${PN}-1.4.6-noalsa.patch \
-		"${FILESDIR}"/${PN}-1.4.7-disable_deprecated.patch \
-		"${FILESDIR}"/${P}-noxml.patch \
-		"${FILESDIR}"/${P}-underlinking.patch
-
-	sed -i \
-		-e '/Categories/s:Application:GTK:' \
-		-e '/Icon/s:.png::' \
-		${PN}.desktop || die
-
+	default
 	eautopoint
 	eautoreconf
 }

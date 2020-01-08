@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,10 +6,10 @@ EAPI=6
 inherit multilib toolchain-funcs
 
 DESCRIPTION="Vamp plugin encapsulating many of the functions of the LibXtract library"
-HOMEPAGE="http://www.vamp-plugins.org/"
-SRC_URI="http://code.soundsoftware.ac.uk/attachments/download/618/${P}.tar.gz"
+HOMEPAGE="https://www.vamp-plugins.org/"
+SRC_URI="https://code.soundsoftware.ac.uk/attachments/download/618/${P}.tar.gz"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ppc64 x86"
 IUSE=""

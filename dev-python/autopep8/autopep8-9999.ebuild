@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} pypy{,3} )
+PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -20,14 +20,9 @@ fi
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="test"
 
-RDEPEND="
-	>=dev-python/pep8-1.5.7[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${DEPEND}
-	test? ( >=dev-python/pydiff-0.1.2[${PYTHON_USEDEP}] )"
+RDEPEND=">=dev-python/pycodestyle-2.5.0[${PYTHON_USEDEP}]"
+BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	test? ( dev-python/pydiff[${PYTHON_USEDEP}] )"
 
-python_test() {
-	"${PYTHON}" setup.py test || die
-}
+distutils_enable_tests setup.py

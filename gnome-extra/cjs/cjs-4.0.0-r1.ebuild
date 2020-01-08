@@ -5,20 +5,20 @@ EAPI=6
 inherit autotools gnome2 pax-utils virtualx
 
 DESCRIPTION="Linux Mint's fork of gjs for Cinnamon"
-HOMEPAGE="http://cinnamon.linuxmint.com/"
+HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"
 SRC_URI="https://github.com/linuxmint/cjs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT || ( MPL-1.1 LGPL-2+ GPL-2+ )"
 SLOT="0"
 IUSE="+cairo examples gtk test"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-lang/spidermonkey:52
 	>=dev-libs/glib-2.37.3:2
 	>=dev-libs/gobject-introspection-1.38:=
 	sys-libs/readline:0=
-	virtual/libffi
+	virtual/libffi:0=
 	cairo? ( x11-libs/cairo[X,glib] )
 	gtk? ( x11-libs/gtk+:3 )
 "

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>voyageur@gentoo.org</email>
+    <name>Bernard Cafarelli</name>
+  </maintainer>
+  <longdescription lang="en">Trained models for app-text/tesseract compatible with the legacy engine</longdescription>
+  <upstream>
+    <remote-id type="github">tesseract-ocr/tessdata</remote-id>
+  </upstream>
+  <use>
+    <flag name="math"> Enable support for recognition of equations.</flag>
+    <flag name="osd"> Enable support orientation and script detection.</flag>
+  </use>
+</pkgmetadata>

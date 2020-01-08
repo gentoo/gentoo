@@ -1,9 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils virtualx
+VIRTUALX_REQUIRED="test"
+inherit ecm
 
 DESCRIPTION="Multi platform Qt notification framework"
 HOMEPAGE="https://techbase.kde.org/Projects/Snorenotify"
@@ -13,9 +14,12 @@ LICENSE="LGPL-3+"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="sound test"
+RESTRICT="!test? ( test )"
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+"
 RDEPEND="
-	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
@@ -25,8 +29,6 @@ RDEPEND="
 	sound? ( dev-qt/qtmultimedia:5 )
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	kde-frameworks/extra-cmake-modules
 	test? ( dev-qt/qttest:5 )
 "
 
@@ -35,23 +37,17 @@ PATCHES=(
 	"${FILESDIR}/${P}-include.patch"
 )
 
+src_prepare() {
+	ecm_src_prepare
+	sed -e "/Categories/s/;Qt//" \
+		-i src/{settings/snoresettings,daemon/snorenotify}.desktop.in || die
+}
+
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package sound Qt5Multimedia)
-		$(cmake-utils_use_find_package test Qt5Test)
+		$(cmake_use_find_package sound Qt5Multimedia)
+		$(cmake_use_find_package test Qt5Test)
 	)
 
-	cmake-utils_src_configure
-}
-
-src_test() {
-	virtx cmake-utils_src_test
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+	ecm_src_configure
 }

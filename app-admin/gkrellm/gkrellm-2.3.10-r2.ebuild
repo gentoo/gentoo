@@ -13,8 +13,8 @@ SRC_URI="http://gkrellm.srcbox.net/${MY_P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux"
-IUSE="gnutls hddtemp libressl lm_sensors nls ntlm ssl kernel_FreeBSD X"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+IUSE="gnutls hddtemp libressl lm-sensors nls ntlm ssl kernel_FreeBSD X"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -26,7 +26,7 @@ RDEPEND="
 			libressl? ( dev-libs/libressl:0= )
 		)
 	)
-	lm_sensors? ( sys-apps/lm_sensors:= )
+	lm-sensors? ( sys-apps/lm-sensors:= )
 	nls? ( virtual/libintl )
 	ntlm? ( net-libs/libntlm )
 	X? (
@@ -89,7 +89,7 @@ src_compile() {
 			INCLUDEDIR="${EPREFIX}/usr/include/gkrellm2" \
 			LOCALEDIR="${EPREFIX}/usr/share/locale" \
 			$(usex nls "" "enable_nls=0") \
-			$(usex lm_sensors "" "without-libsensors=yes") \
+			$(usex lm-sensors "" "without-libsensors=yes") \
 			$(usex ntlm "" "without-ntlm=yes") \
 			$(usex ssl $(usex gnutls 'without-ssl=yes' 'without-gnutls=yes') 'without-ssl=yes without-gnutls=yes')
 	else
@@ -100,7 +100,7 @@ src_compile() {
 			LINK_FLAGS="$LDFLAGS -Wl,-E" \
 			STRIP="" \
 			$(usex nls "" "enable_nls=0") \
-			$(usex lm_sensors "" "without-libsensors=yes")
+			$(usex lm-sensors "" "without-libsensors=yes")
 	fi
 }
 

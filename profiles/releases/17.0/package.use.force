@@ -1,6 +1,6 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (27 May 2017)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-27)
 # Force default-PIE build on 17.0 profiles.
 sys-devel/gcc pie

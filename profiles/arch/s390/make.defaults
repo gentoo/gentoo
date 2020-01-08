@@ -20,7 +20,7 @@ LIBDIR_s390="lib"
 INPUT_DEVICES="void"
 VIDEO_CARDS="dummy"
 
-# Michał Górny <mgorny@gentoo.org> (01 Jul 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-07-01)
 # Make the native ABI implicit so that MULTILIB_USEDEP can be satisfied
 # by non-multilib ebuilds when non-native ABIs are disabled.
 IUSE_IMPLICIT="abi_s390_32"
@@ -31,3 +31,7 @@ ABI_S390="32"
 # While multilib is available, we don't default it to on.
 BOOTSTRAP_USE="${BOOTSTRAP_USE} -multilib"
 USE="-multilib"
+
+# Hans de Graaff <graaff@gentoo.org) (2019-07-17)
+# Temporary RUBY_TARGETS for bug 688976
+RUBY_TARGETS="ruby24 -ruby25"

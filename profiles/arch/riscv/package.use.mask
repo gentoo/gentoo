@@ -1,0 +1,80 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# dev-util/systemtap is not keyworded on riscv
+sys-libs/glibc systemtap
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
+# media-libs/gd is not keyworded on riscv
+sys-libs/glibc gd
+
+# Dependency resolution is broken because
+# sys-fs/lvm2 has no riscv keyword
+sys-fs/e2fsprogs cron
+
+# This doesn't work for (any) riscv yet.
+dev-libs/libpcre2 jit
+dev-libs/libpcre jit
+dev-vcs/git pcre-jit
+
+# Not yet tested / unkeyworded dependencies
+# This includes also packages which do not support python-3 or
+# do not support python-3.7 yet.
+
+app-admin/syslog-ng amqp dbi geoip geoip2 json kafka mongodb python redis spoof-source smtp snmp test
+app-admin/sysstat lm-sensors
+app-arch/libarchive lz4 lzo zstd
+app-arch/unzip natspec
+app-crypt/gnupg smartcard tofu wks-server
+app-crypt/mit-krb5 doc test xinetd
+app-crypt/pinentry fltk gnome-keyring
+app-doc/doxygen latex dot
+app-editors/emacs alsa json lcms mailutils
+app-editors/emacs-vcs alsa json lcms mailutils
+app-misc/pax-utils python
+app-text/asciidoc graphviz test
+app-text/po4a test
+app-text/xmlto text
+dev-lang/python tk
+dev-libs/check doc subunit
+dev-libs/glib gtk-doc test
+dev-libs/icu doc
+dev-libs/iniparser doc
+dev-libs/libgcrypt doc
+dev-libs/libnl python
+dev-libs/libusb doc
+dev-libs/libxslt python
+dev-libs/libyaml doc
+dev-python/cython doc test
+dev-python/lxml test
+dev-python/pygments doc test
+dev-python/setuptools test
+dev-python/snakeoil test
+dev-util/catalyst iso
+dev-util/meson test
+dev-util/ninja doc test
+dev-util/patchutils test
+dev-util/pkgconf test
+dev-util/strace unwind
+dev-vcs/git cvs highlight gnome-keyring subversion tk xinetd
+media-libs/freetype harfbuzz png
+media-libs/tiff jbig jpeg test webp zstd
+net-fs/nfs-utils nfsv41
+net-libs/gnutls doc test-full
+net-libs/ldns doc python
+net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss http2 rtmp ssh
+net-misc/ntp openntpd snmp vim-syntax zeroconf
+net-nds/openldap cxx kerberos sasl
+sys-apps/kmod doc
+sys-apps/portage epydoc
+sys-apps/rng-tools nistbeacon pkcs11
+sys-auth/pambase pam_krb5 pam_ssh passwdqc mktemp
+sys-devel/automake test
+sys-devel/gdb source-highlight
+sys-devel/gettext cvs
+sys-fs/squashfs-tools lz4 lzma lzo zstd
+sys-libs/libcap-ng python
+sys-process/audit gssapi python
+sys-process/procps test
+sys-fs/squashfs-tools-ng lz4 lzo zstd

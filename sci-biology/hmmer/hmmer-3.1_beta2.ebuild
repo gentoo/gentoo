@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ SRC_URI="http://eddylab.org/software/${PN}3/${MY_PV}/hmmer-${MY_PV}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="altivec cpu_flags_x86_sse gsl mpi test +threads"
+RESTRICT="!test? ( test )"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
 RDEPEND="

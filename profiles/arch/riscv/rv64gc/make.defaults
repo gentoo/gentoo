@@ -1,0 +1,42 @@
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# RISC-V profile for rv64gc multilib
+
+CFLAGS="-O2 -pipe"
+CXXFLAGS="${CFLAGS}"
+FFLAGS="${CFLAGS}"
+FCFLAGS="${CFLAGS}"
+
+# Multilib ABIs
+MULTILIB_ABIS="lp64d lp64"
+DEFAULT_ABI="lp64d"
+ABI="lp64d"
+
+# Library directories
+LIBDIR_lp64d="lib64/lp64d"
+LIBDIR_lp64="lib64/lp64"
+SYMLINK_LIB="no"
+
+# Flags for lp64d
+CFLAGS_lp64d="-mabi=lp64d"
+LDFLAGS_lp64d="-m elf64lriscv"
+CHOST_lp64d="riscv64-unknown-linux-gnu"
+
+# Flags for lp64
+CFLAGS_lp64="-mabi=lp64"
+LDFLAGS_lp64="-m elf64lriscv_lp64"
+CHOST_lp64="riscv64-unknown-linux-gnu"
+
+# Enable lp64d by default
+ABI_RISCV="lp64d"
+
+# Unhide the riscv/rv64gc-specific USE_EXPANDs
+USE_EXPAND_HIDDEN="-ABI_RISCV"
+
+# Implicitly enable lp64d in ebuilds without multilib support
+IUSE_IMPLICIT="abi_riscv_lp64d"
+
+# Enable Python 3.7 since we can't use earlier versions
+PYTHON_TARGETS="python3_7"
+PYTHON_SINGLE_TARGET="python3_7"

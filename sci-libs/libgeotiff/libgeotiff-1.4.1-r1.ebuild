@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,13 +13,13 @@ SRC_URI="http://download.osgeo.org/geotiff/${PN}/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug doc static-libs"
 
 RDEPEND="
 	virtual/jpeg:=
 	>=media-libs/tiff-3.9.1:0
-	sci-libs/proj
+	sci-libs/proj:=
 	sys-libs/zlib"
 
 DEPEND="${RDEPEND}

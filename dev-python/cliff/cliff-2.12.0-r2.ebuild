@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 VIRTUALX_REQUIRED="test"
 
 inherit distutils-r1 virtualx
@@ -14,7 +14,8 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~mips ~s390 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc test"
+IUSE="test"
+RESTRICT="!test? ( test )"
 
 CDEPEND=">=dev-python/pbr-2.0.0[${PYTHON_USEDEP}]
 	!~dev-python/pbr-2.1.0"
@@ -32,9 +33,6 @@ DEPEND="
 		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
 		>=dev-python/stestr-2.1.0[${PYTHON_USEDEP}]
 	)
-	doc? (
-		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
-	)
 "
 # source files stipulate <sphinx-1.3 however build effected perfectly with sphinx-1.3.1
 RDEPEND="
@@ -49,17 +47,8 @@ RDEPEND="
 	>=dev-python/pyyaml-3.10.0[${PYTHON_USEDEP}]
 	"
 
-python_compile() {
-	use doc && esetup.py build_sphinx
-}
-
 python_test() {
 	stestr init || die "stestr init failed under ${EPYTHON}"
 	# needs outside access, so blacklist the test
-	virtx stestr run --black-regex cliff.tests.test_app.TestIO.test_writer_encoding || die "stestr run failed under ${EPYTHON}"
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/build/html/. )
-	distutils-r1_python_install_all
+	virtx stestr run --black-regex cliff.tests.test_app.TestIO.test_writer_encoding
 }

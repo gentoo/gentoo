@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<longdescription lang="en">
-	LibSass is a C++ port of the original Ruby Sass CSS compiler with a C
-	API. It is coded with portability and efficiency in mind. You can
-	expect LibSass to be a lot faster than Ruby Sass and on par or faster
-	than the best alternative CSS compilers around.
-</longdescription>
-<upstream>
-	<remote-id type="github">sass/libsass</remote-id>
-</upstream>
+	<maintainer type="person">
+		<email>andrewammerlaan@riseup.net</email>
+		<name>Andrew Ammerlaan</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		LibSass is a C++ port of the original Ruby Sass CSS compiler with a C
+		API. It is coded with portability and efficiency in mind. You can
+		expect LibSass to be a lot faster than Ruby Sass and on par or faster
+		than the best alternative CSS compilers around.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">sass/libsass</remote-id>
+	</upstream>
 </pkgmetadata>

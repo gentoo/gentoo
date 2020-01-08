@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
@@ -15,19 +15,21 @@ SLOT="0"
 LICENSE="BSD"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+client doc server test +zeromq"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	server? ( client )
 	test? ( server )"
 
+BDEPEND="
+	doc? ( app-doc/doxygen )"
 RDEPEND="${PYTHON_DEPS}
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 	zeromq? ( net-libs/cppzmq:0= )"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/${P}-qt-5.11b3.patch )
 

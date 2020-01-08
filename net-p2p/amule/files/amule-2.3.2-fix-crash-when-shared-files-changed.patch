@@ -1,0 +1,50 @@
+From 110a056fa4bcfc0fe8c1f8eadcc2bd5df0bbf5e1 Mon Sep 17 00:00:00 2001
+From: xinhuang <xinhuang.abc@gmail.com>
+Date: Thu, 4 Jan 2018 00:44:35 -0800
+Subject: [PATCH] fix crash when shared files changed on Shared files tab
+
+---
+ src/extern/wxWidgets/listctrl.cpp | 10 ----------
+ src/extern/wxWidgets/listctrl.h   |  5 -----
+ 2 files changed, 15 deletions(-)
+
+diff --git a/src/extern/wxWidgets/listctrl.cpp b/src/extern/wxWidgets/listctrl.cpp
+index 18a30f205..460700691 100644
+--- a/src/extern/wxWidgets/listctrl.cpp
++++ b/src/extern/wxWidgets/listctrl.cpp
+@@ -5803,16 +5803,6 @@ bool wxGenericListCtrl::DoPopupMenu( wxMenu *menu, int x, int y )
+ #endif
+ }
+ 
+-void wxGenericListCtrl::DoClientToScreen( int *x, int *y ) const
+-{
+-    m_mainWin->DoClientToScreen(x, y);
+-}
+-
+-void wxGenericListCtrl::DoScreenToClient( int *x, int *y ) const
+-{
+-    m_mainWin->DoScreenToClient(x, y);
+-}
+-
+ void wxGenericListCtrl::SetFocus()
+ {
+     // The test in window.cpp fails as we are a composite
+diff --git a/src/extern/wxWidgets/listctrl.h b/src/extern/wxWidgets/listctrl.h
+index b18a61866..e72f7eaf0 100644
+--- a/src/extern/wxWidgets/listctrl.h
++++ b/src/extern/wxWidgets/listctrl.h
+@@ -232,11 +232,6 @@ public:
+ protected:
+     virtual bool DoPopupMenu( wxMenu *menu, int x, int y );
+ 
+-    // take into account the coordinates difference between the container
+-    // window and the list control window itself here
+-    virtual void DoClientToScreen( int *x, int *y ) const;
+-    virtual void DoScreenToClient( int *x, int *y ) const;
+-
+     virtual wxSize DoGetBestSize() const;
+ 
+     // return the text for the given column of the given item
+-- 
+2.21.0
+

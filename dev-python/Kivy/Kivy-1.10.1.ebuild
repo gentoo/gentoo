@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -16,13 +16,13 @@ SRC_URI="https://github.com/kivy/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
-IUSE="cairo camera doc examples garden gstreamer +sdl spell test"
+IUSE="cairo doc examples garden gstreamer +sdl spell test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	media-libs/mesa[gles2]
 	dev-python/pillow[${PYTHON_USEDEP}]
 	cairo? ( dev-python/pycairo[${PYTHON_USEDEP}] )
-	camera? ( media-libs/opencv:0/2.4[$(python_gen_usedep 'python2_7')] )
 	garden? ( dev-python/kivy-garden[${PYTHON_USEDEP}] )
 	gstreamer? ( dev-python/gst-python:1.0[${PYTHON_USEDEP}] )
 	sdl? ( media-libs/libsdl2

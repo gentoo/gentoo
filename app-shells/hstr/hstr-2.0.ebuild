@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,17 +11,18 @@ SRC_URI="https://github.com/dvorka/hstr/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 x86 ~amd64-fbsd"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
-	sys-libs/ncurses:0="
+	sys-libs/ncurses:0=[unicode]"
 
 DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig"
 
 DOCS=( CONFIGURATION.md README.md )
-PATCHES=( "${FILESDIR}/${PN}-1.23-tinfo.patch" )
+
+PATCHES=( ${FILESDIR}/${P}-fix-ncurses-configure.patch )
 
 src_prepare() {
 	default

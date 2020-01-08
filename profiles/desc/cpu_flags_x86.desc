@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation.
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Whenever the flag name does not correspond to /proc/cpuinfo flags,
@@ -10,6 +10,8 @@
 aes - Enable support for Intel's AES instruction set (AES-NI)
 avx - Adds support for Advanced Vector Extensions instructions
 avx2 - Adds support for Advanced Vector Extensions 2 instructions
+avx512f - Adds support for AVX-512 Foundation instructions
+f16c - Adds support for F16C instruction set for converting between half-precision and single-precision floats
 fma3 - Use the Fused Multiply Add 3 instruction set ([fma] in cpuinfo)
 fma4 - Use the Fused Multiply Add 4 instruction set
 mmx - Use the MMX instruction set
@@ -17,6 +19,7 @@ mmxext - Use the Extended MMX instruction set (a subset of SSE) ([mmxext] or [ss
 padlock - Use VIA padlock instructions ([phe] in cpuinfo)
 pclmul - Use Carry-less Multiplication instructions ([pclmulqdq] in cpuinfo)
 popcnt - Enable popcnt instruction support ([abm] or [popcnt] in cpuinfo)
+sha - Use the SHA-NI instruction set
 sse - Use the SSE instruction set
 sse2 - Use the SSE2 instruction set
 sse3 - Use the SSE3 instruction set ([pni] in cpuinfo, NOT ssse3)

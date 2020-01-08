@@ -1,8 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-	<flag name="fortune">Installs the fortune-mod xcow binary</flag>
-</use>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		xcowsay displays a cute cow and message on your desktop.
+		Inspired by the original cowsay. It includes all these amazing features:
+		- Fully configurable!
+		- Calculates display time from amount of text
+		- Dream mode - display images in the bubble
+		- Can draw thought and speech bubbles
+		- Daemon mode! Send your cow messages over DBus!
+		- Three different sized cows provided
+		- fortune(6) wrapper program: xcowfortune - cow will deliver pearls of wisdom!
+		- Replace the naffness that is xmessage(1)
+		- Should work with any window manager
+		- Supports UTF-8 characters properly
+		- Automatic word wrapping
+		- Use alternative non-cow images if you like
+	</longdescription>
+	<use>
+		<flag name="fortune">Enable support for fortune cookies via <pkg>games-misc/fortune-mod</pkg></flag>
+	</use>
 </pkgmetadata>

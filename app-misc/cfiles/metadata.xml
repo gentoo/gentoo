@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>yumi.tanaka@miraclelinux.com</email>
+	<name>Yumi Tanaka</name>
+</maintainer>
+<maintainer type="person">
+	<email>alicef@gentoo.org</email>
+	<name>Alice Ferrazzi</name>
+</maintainer>
+<longdescription lang="en">
+cfiles is a terminal file manager with vim like keybindings, written in C using the ncurses library. It aims to provide an interface like ranger while being lightweight, fast and minimal.
+</longdescription>
+</pkgmetadata>

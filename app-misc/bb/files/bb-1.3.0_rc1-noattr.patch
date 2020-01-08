@@ -1,7 +1,7 @@
 # remove __attribute__
 
---- timers.h	Thu Apr 26 18:04:22 2001
-+++ timers.h	Sun Dec  9 18:44:31 2007
+--- a/timers.h	Thu Apr 26 18:04:22 2001
++++ b/timers.h	Sun Dec  9 18:44:31 2007
 @@ -49,8 +49,8 @@
  extern tl_group *syncgroup, *asyncgroup;
  void tl_sleep (int);

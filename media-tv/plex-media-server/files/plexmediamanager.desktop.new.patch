@@ -1,0 +1,8 @@
+--- ./usr/share/applications/plexmediaserver.desktop	2019-01-02 13:53:51.000000000 +0100
++++ ./usr/share/applications/plexmediaserver.desktop	2019-01-04 07:52:25.910331212 +0100
+@@ -6,4 +6,4 @@
+ Icon=plexmediaserver
+ Terminal=false
+ Type=Application
+-Categories=Audio;Music;Video;Player;Media;
++Categories=Audio;Music;Video;Player;AudioVideo;X-Media

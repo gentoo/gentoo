@@ -54,10 +54,10 @@ src_install() {
 	insinto /usr/share/${PF}
 	if use doc; then
 		cd "${WORKDIR}/${TUT_P}/doc"
-		doins soya_guide.pdf pudding/pudding.pdf || die "doins failed"
+		doins soya_guide.pdf pudding/pudding.pdf
 	fi
 	if use examples; then
 		cd "${WORKDIR}/${TUT_P}"
-		doins -r tutorial || die "doins failed"
+		doins -r tutorial
 	fi
 }

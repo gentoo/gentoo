@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{2_7,3_{4,5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 PYTHON_REQ_USE='threads(+)'
 inherit distutils-r1 waf-utils
 
@@ -16,6 +16,7 @@ LICENSE="GPL-3"
 SLOT="0/5"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc double-precision examples ffmpeg fftw jack libav libsamplerate sndfile python test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	ffmpeg? (

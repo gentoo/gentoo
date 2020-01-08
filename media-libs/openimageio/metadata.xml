@@ -6,20 +6,11 @@
 		<name>Gentoo Graphics Project</name>
 	</maintainer>
 	<use>
-		<flag name="cpu_flags_x86_avx512f" restrict="&gt;=media-libs/openimageio-1.7.11">
-			SIMD Optimization
-		</flag>
-		<flag name="cpu_flags_x86_f16c" restrict="&gt;=media-libs/openimageio-1.7.11">
-			SIMD Optimization
-		</flag>
-		<flag name="colorio">Use <pkg>media-libs/opencolorio</pkg></flag>
-		<flag name="field3d" restrict="&gt;=media-libs/openimageio-1.6.18">
-			Use <pkg>media-libs/Field3D</pkg>
-		</flag>
-		<flag name="opencv">Use <pkg>media-libs/opencv</pkg></flag>
-		<flag name="ptex" restrict="&gt;=media-libs/openimageio-1.6.18">
-			Use <pkg>media-libs/ptex</pkg>
-		</flag>
+		<flag name="color-management">Enable color management via <pkg>media-libs/opencolorio</pkg></flag>
+		<flag name="dicom">Enable DICOM medical image file support via <pkg>sci-libs/dcmtk</pkg></flag>
+		<flag name="field3d">Enable f3d file (write) support via <pkg>media-libs/Field3D</pkg></flag>
+		<flag name="opencv">Enable OpenCV support via <pkg>media-libs/opencv</pkg></flag>
+		<flag name="ptex">Enable Ptex texture mapping system file support via <pkg>media-libs/ptex</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="github">OpenImageIO/oiio</remote-id>

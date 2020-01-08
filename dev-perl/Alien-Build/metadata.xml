@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Alien-Build</remote-id>
+    <remote-id type="cpan-module">Alien::Base</remote-id>
+    <remote-id type="cpan-module">Alien::Base::PkgConfig</remote-id>
+    <remote-id type="cpan-module">Alien::Base::Wrapper</remote-id>
+    <remote-id type="cpan-module">Alien::Build</remote-id>
+    <remote-id type="cpan-module">Alien::Build::CommandSequence</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Interpolate</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Interpolate::Default</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Interpolate::Helper</remote-id>
+    <remote-id type="cpan-module">Alien::Build::MM</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Meta</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Build::Autoconf</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Build::CMake</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Build::MSYS</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Build::Make</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Build::SearchDep</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Core::CleanInstall</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Core::Download</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Core::FFI</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Core::Gather</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Core::Legacy</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Core::Override</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Core::Setup</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Core::Tail</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Decode::DirListing</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Decode::DirListingFtpcopy</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Decode::HTML</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Decode::Mojo</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Download::Negotiate</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Extract::ArchiveTar</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Extract::ArchiveZip</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Extract::CommandLine</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Extract::Directory</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Extract::Negotiate</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Fetch::CurlCommand</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Fetch::HTTPTiny</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Fetch::LWP</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Fetch::Local</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Fetch::LocalDir</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Fetch::NetFTP</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Fetch::Wget</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Gather::IsolateDynamic</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::PkgConfig::CommandLine</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::PkgConfig::LibPkgConf</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::PkgConfig::MakeStatic</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::PkgConfig::Negotiate</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::PkgConfig::PP</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Prefer::BadVersion</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Prefer::GoodVersion</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Prefer::SortVersions</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Probe::CBuilder</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Probe::CommandLine</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Plugin::Test::Mock</remote-id>
+    <remote-id type="cpan-module">Alien::Build::PluginMeta</remote-id>
+    <remote-id type="cpan-module">Alien::Build::TempDir</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Util</remote-id>
+    <remote-id type="cpan-module">Alien::Build::Version::Basic</remote-id>
+    <remote-id type="cpan-module">Alien::Build::rc</remote-id>
+    <remote-id type="cpan-module">Alien::Role</remote-id>
+    <remote-id type="cpan-module">Test::Alien</remote-id>
+    <remote-id type="cpan-module">Test::Alien::Build</remote-id>
+    <remote-id type="cpan-module">Test::Alien::CanCompile</remote-id>
+    <remote-id type="cpan-module">Test::Alien::CanPlatypus</remote-id>
+    <remote-id type="cpan-module">Test::Alien::Run</remote-id>
+    <remote-id type="cpan-module">Test::Alien::Synthetic</remote-id>
+    <remote-id type="cpan-module">alienfile</remote-id>
+  </upstream>
+</pkgmetadata>

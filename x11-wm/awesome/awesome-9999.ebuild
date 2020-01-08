@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils eutils git-r3 pax-utils
+inherit cmake-utils desktop git-r3 pax-utils
 
 DESCRIPTION="A dynamic floating and tiling window manager"
 HOMEPAGE="https://awesomewm.org/"
@@ -11,7 +11,9 @@ EGIT_REPO_URI="https://github.com/awesomeWM/${PN}.git"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS=""
 IUSE="dbus doc elibc_FreeBSD gnome luajit test"
+RESTRICT="test"
 
 RDEPEND="
 	>=dev-lang/lua-5.1:0

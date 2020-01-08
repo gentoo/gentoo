@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ SRC_URI="https://github.com/mauke/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="LGPL-3+ MIT"
 SLOT="0/4"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm x86"
 IUSE="static-libs"
 
 DEPEND="

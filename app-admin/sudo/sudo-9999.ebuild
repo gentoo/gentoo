@@ -1,29 +1,28 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils pam multilib libtool tmpfiles
-if [[ ${PV} == "9999" ]] ; then
-	EHG_REPO_URI="https://www.sudo.ws/repos/sudo"
-	inherit mercurial
-fi
+inherit pam multilib libtool tmpfiles
 
-MY_P=${P/_/}
-MY_P=${MY_P/beta/b}
-
-uri_prefix=
-case ${P} in
-	*_beta*|*_rc*) uri_prefix=beta/ ;;
-esac
+MY_P="${P/_/}"
+MY_P="${MY_P/beta/b}"
 
 DESCRIPTION="Allows users or groups to run commands as other users"
 HOMEPAGE="https://www.sudo.ws/"
-if [[ ${PV} != "9999" ]] ; then
+if [[ ${PV} == "9999" ]] ; then
+	inherit mercurial
+	EHG_REPO_URI="https://www.sudo.ws/repos/sudo"
+else
+	uri_prefix=
+	case ${P} in
+		*_beta*|*_rc*) uri_prefix=beta/ ;;
+	esac
+
 	SRC_URI="https://www.sudo.ws/sudo/dist/${uri_prefix}${MY_P}.tar.gz
 		ftp://ftp.sudo.ws/pub/sudo/${uri_prefix}${MY_P}.tar.gz"
 	if [[ ${PV} != *_beta* ]] && [[ ${PV} != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~sparc-solaris"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~sparc-solaris"
 	fi
 fi
 
@@ -33,13 +32,16 @@ LICENSE="ISC BSD"
 SLOT="0"
 IUSE="gcrypt ldap libressl nls offensive pam sasl +secure-path selinux +sendmail skey sssd system-digest"
 
-CDEPEND="
+DEPEND="
 	sys-libs/zlib:=
 	ldap? (
 		>=net-nds/openldap-2.1.30-r1
-		dev-libs/cyrus-sasl
+		sasl? (
+			dev-libs/cyrus-sasl
+			net-nds/openldap[sasl]
+		)
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	sasl? ( dev-libs/cyrus-sasl )
 	skey? ( >=sys-auth/skey-1.1.5-r1 )
 	sssd? ( sys-auth/sssd[sudo] )
@@ -52,7 +54,7 @@ CDEPEND="
 	)
 "
 RDEPEND="
-	${CDEPEND}
+	${DEPEND}
 	>=app-misc/editor-wrapper-3
 	virtual/editor
 	ldap? ( dev-lang/perl )
@@ -60,8 +62,7 @@ RDEPEND="
 	selinux? ( sec-policy/selinux-sudo )
 	sendmail? ( virtual/mta )
 "
-DEPEND="
-	${CDEPEND}
+BDEPEND="
 	sys-devel/bison
 "
 
@@ -103,7 +104,7 @@ set_secure_path() {
 		local newpath thisp IFS=:
 		for thisp in $1 ; do
 			if [[ :${newpath}: != *:${thisp}:* ]] ; then
-				newpath+=:$thisp
+				newpath+=:${thisp}
 			else
 				einfo "   Duplicate entry ${thisp} removed..."
 			fi
@@ -116,8 +117,8 @@ set_secure_path() {
 	rmpath() {
 		local e newpath thisp IFS=:
 		for thisp in ${SECURE_PATH} ; do
-			for e ; do [[ $thisp == $e ]] && continue 2 ; done
-			newpath+=:$thisp
+			for e ; do [[ ${thisp} == ${e} ]] && continue 2 ; done
+			newpath+=:${thisp}
 		done
 		SECURE_PATH=${newpath#:}
 	}
@@ -142,8 +143,7 @@ src_configure() {
 		--with-env-editor
 		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/sudo
 		--with-rundir="${EPREFIX}"/run/sudo
-		$(use_with secure-path secure-path ${SECURE_PATH})
-		--with-secure-path="${SECURE_PATH}"
+		$(use_with secure-path secure-path "${SECURE_PATH}")
 		--with-vardir="${EPREFIX}"/var/db/sudo
 		--without-linux-audit
 		--without-opie
@@ -185,6 +185,14 @@ src_install() {
 		# tls_{checkpeer,cacertfile,cacertdir,randfile,ciphers,cert,key}
 		EOF
 
+		if use sasl ; then
+			cat <<-EOF >> "${T}"/ldap.conf.sudo
+
+			# SASL directives: use_sasl, sasl_mech, sasl_auth_id
+			# sasl_secprops, rootuse_sasl, rootsasl_auth_id, krb5_ccname
+			EOF
+		fi
+
 		insinto /etc
 		doins "${T}"/ldap.conf.sudo
 		fperms 0440 /etc/ldap.conf.sudo
@@ -201,7 +209,9 @@ src_install() {
 
 	# Don't install into /run as that is a tmpfs most of the time
 	# (bug #504854)
-	rm -rf "${ED%/}"/run
+	rm -rf "${ED}"/run
+
+	find "${ED}" -type f -name "*.la" -delete || die #697812
 }
 
 pkg_postinst() {

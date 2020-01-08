@@ -46,10 +46,10 @@ RDEPEND="
 	bs2b? ( media-libs/libbs2b )
 	cdda? (
 		dev-libs/libcdio:=
-		dev-libs/libcdio-paranoia
+		dev-libs/libcdio-paranoia:=
 		>=media-libs/libcddb-1.2.1
 	)
-	cue? ( media-libs/libcue )
+	cue? ( media-libs/libcue:= )
 	ffmpeg? ( >=virtual/ffmpeg-0.7.3 )
 	flac? (
 		>=media-libs/flac-1.2.1-r1

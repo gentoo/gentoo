@@ -1,0 +1,14 @@
+https://bugs.gentoo.org/682170
+
+--- a/data/Makefile.in
++++ b/data/Makefile.in
+@@ -148,7 +148,8 @@
+ # and convert it to the current type.
+ ifneq ($(ICUDATA_ARCHIVE),)
+ ICUDATA_SOURCE_ARCHIVE = $(OUTDIR)/$(ICUDATA_PLATFORM_NAME).dat
+-$(ICUDATA_SOURCE_ARCHIVE): $(ICUDATA_ARCHIVE) $(OUTDIR)
++$(ICUDATA_SOURCE_ARCHIVE): $(ICUDATA_ARCHIVE)
++	$(MKINSTALLDIRS) $(OUTDIR)
+ 	$(INVOKE) $(TOOLBINDIR)/icupkg -t$(ICUDATA_CHAR) $(ICUDATA_ARCHIVE) $(ICUDATA_SOURCE_ARCHIVE)
+ endif
+ else

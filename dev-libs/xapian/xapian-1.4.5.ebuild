@@ -8,8 +8,8 @@ inherit eutils multilib-minimal
 MY_P="${PN}-core-${PV}"
 
 DESCRIPTION="Xapian Probabilistic Information Retrieval library"
-HOMEPAGE="http://www.xapian.org/"
-SRC_URI="http://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
+HOMEPAGE="https://www.xapian.org/"
+SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/30" # ABI version of libxapian.so
@@ -63,9 +63,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	# bug #573466
-	ln -sf "${D}usr/bin/xapian-config" "${D}usr/bin/xapian-config-1.3"
-
 	use doc || rm -rf "${D}usr/share/doc/xapian-core-${PV}"
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS

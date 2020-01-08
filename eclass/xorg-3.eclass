@@ -72,6 +72,7 @@ IUSE=""
 if [[ ${XORG_MODULE} == auto ]]; then
 	case ${CATEGORY} in
 		app-doc)             XORG_MODULE=doc/     ;;
+		media-fonts)         XORG_MODULE=font/    ;;
 		x11-apps|x11-wm)     XORG_MODULE=app/     ;;
 		x11-misc|x11-themes) XORG_MODULE=util/    ;;
 		x11-base)            XORG_MODULE=xserver/ ;;
@@ -89,10 +90,16 @@ fi
 
 HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}"
 
+# @ECLASS-VARIABLE: XORG_TARBALL_SUFFIX
+# @DESCRIPTION:
+# Most X11 projects provide tarballs as tar.bz2 or tar.xz. This eclass defaults
+# to bz2.
+: ${XORG_TARBALL_SUFFIX:="bz2"}
+
 if [[ -n ${GIT_ECLASS} ]]; then
 	: ${EGIT_REPO_URI:="https://gitlab.freedesktop.org/xorg/${XORG_MODULE}${XORG_PACKAGE_NAME}.git"}
 elif [[ -n ${XORG_BASE_INDIVIDUAL_URI} ]]; then
-	SRC_URI="${XORG_BASE_INDIVIDUAL_URI}/${XORG_MODULE}${P}.tar.bz2"
+	SRC_URI="${XORG_BASE_INDIVIDUAL_URI}/${XORG_MODULE}${P}.tar.${XORG_TARBALL_SUFFIX}"
 fi
 
 : ${SLOT:=0}
@@ -116,7 +123,8 @@ WANT_AUTOMAKE="latest"
 for arch in ${XORG_EAUTORECONF_ARCHES}; do
 	EAUTORECONF_DEPENDS+=" ${arch}? ( ${EAUTORECONF_DEPEND} )"
 done
-DEPEND+=" ${EAUTORECONF_DEPENDS}"
+unset arch
+BDEPEND+=" ${EAUTORECONF_DEPENDS}"
 [[ ${XORG_EAUTORECONF} != no ]] && BDEPEND+=" ${EAUTORECONF_DEPEND}"
 unset EAUTORECONF_DEPENDS
 unset EAUTORECONF_DEPEND
@@ -133,6 +141,7 @@ if [[ ${XORG_STATIC} == yes \
 		&& ${CATEGORY} != app-doc \
 		&& ${CATEGORY} != x11-apps \
 		&& ${CATEGORY} != x11-drivers \
+		&& ${CATEGORY} != media-fonts \
 		&& ${PN} != util-macros \
 		&& ${PN} != xbitmaps \
 		&& ${PN} != xorg-cf-files \
@@ -140,7 +149,11 @@ if [[ ${XORG_STATIC} == yes \
 	IUSE+=" static-libs"
 fi
 
-DEPEND+=" virtual/pkgconfig"
+if [[ ${XORG_MULTILIB} == yes ]]; then
+	BDEPEND+=" virtual/pkgconfig[${MULTILIB_USEDEP}]"
+else
+	BDEPEND+=" virtual/pkgconfig"
+fi
 
 # @ECLASS-VARIABLE: XORG_DRI
 # @DESCRIPTION:
@@ -365,6 +378,16 @@ xorg-3_src_install() {
 		multilib-minimal_src_install "$@"
 	else
 		emake DESTDIR="${D}" "${install_args[@]}" "$@" install || die "emake install failed"
+	fi
+
+	# Many X11 libraries unconditionally install developer documentation
+	if [[ -d "${D}"/usr/share/man/man3 ]]; then
+		! in_iuse doc && eqawarn "ebuild should set XORG_DOC=doc since package installs library documentation"
+	fi
+
+	if in_iuse doc && ! use doc; then
+		rm -rf "${D}"/usr/share/man/man3
+		rmdir "${D}"/usr{/share{/man,},} 2>/dev/null
 	fi
 
 	# Don't install libtool archives (even for modules)

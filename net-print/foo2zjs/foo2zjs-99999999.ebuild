@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS=""
 IUSE="test"
 
-RESTRICT="bindist"
+RESTRICT="bindist !test? ( test )"
 
 RDEPEND="net-print/cups
 	net-print/foomatic-db-engine

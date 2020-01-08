@@ -1,0 +1,38 @@
+From 566df54a3f7458559b75455a95b1991b515ba6bf Mon Sep 17 00:00:00 2001
+From: Zygo Blaxell <zblaxell@thirteen.furryterror.org>
+Date: Wed, 12 Jun 2019 21:27:50 -0400
+Subject: [PATCH 1/2] lib: fix non-local lambda expression cannot have a
+ capture-default
+
+We got away with this because GCC 4.8 (and apparently every GCC prior
+to 9) didn't notice or care, and because there is nothing referenced
+inside the lambda function body that isn't accessible from any other
+kind of function body (i.e. the capture wasn't needed at all).
+
+GCC 9 now enforces what the C++ standard said all along:  there is
+no need to allow capture-default in this case, so it is not.
+
+Fix by removing the offending capture-default.
+
+Fixes: https://github.com/Zygo/bees/issues/112
+Signed-off-by: Zygo Blaxell <bees@furryterror.org>
+---
+ lib/error.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/error.cc b/lib/error.cc
+index f2a6db0..1d16a0a 100644
+--- a/lib/error.cc
++++ b/lib/error.cc
+@@ -32,7 +32,7 @@ namespace crucible {
+ 
+ 	// FIXME:  could probably avoid some of these levels of indirection
+ 	static
+-	function<void(string s)> current_catch_explainer = [&](string s) {
++	function<void(string s)> current_catch_explainer = [](string s) {
+ 		cerr << s << endl;
+ 	};
+ 
+-- 
+2.23.0
+

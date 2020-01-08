@@ -23,6 +23,7 @@ IUSE="web"
 
 DEPEND="
 	dev-python/numpy[${PYTHON_USEDEP}]
+	dev-python/pmw:py2[${PYTHON_USEDEP}]
 	dev-python/pyopengl[${PYTHON_USEDEP}]
 	media-libs/freeglut
 	media-libs/freetype:2
@@ -30,7 +31,6 @@ DEPEND="
 	media-libs/libpng:0=
 	media-video/mpeg-tools
 	sys-libs/zlib
-	virtual/python-pmw[${PYTHON_USEDEP}]
 	!sci-chemistry/pymol-apbs-plugin[${PYTHON_USEDEP}]
 	web? ( !dev-python/webpy[${PYTHON_USEDEP}] )"
 RDEPEND="${DEPEND}"

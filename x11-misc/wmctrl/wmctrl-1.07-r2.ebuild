@@ -9,7 +9,7 @@ SRC_URI="http://sweb.cz/tripie/utils/${PN}/dist/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ppc ~ppc64 ~sparc x86 ~x86-linux"
+KEYWORDS="amd64 arm64 ppc ~ppc64 ~sparc x86 ~x86-linux"
 IUSE=""
 
 RDEPEND="

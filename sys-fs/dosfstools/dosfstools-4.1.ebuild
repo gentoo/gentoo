@@ -11,8 +11,9 @@ SRC_URI="https://github.com/dosfstools/dosfstools/releases/download/v${PV}/${P}.
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-linux ~x86-linux"
 IUSE="compat test +udev"
+RESTRICT="!test? ( test )"
 
 CDEPEND="udev? ( virtual/libudev )"
 DEPEND="${CDEPEND}

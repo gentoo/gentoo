@@ -32,11 +32,11 @@ src_prepare() {
 }
 
 src_compile() {
-	emake prefix="${D}"/usr target=/usr || die
+	emake prefix="${D}"/usr target=/usr
 }
 
 src_install() {
-	emake prefix="${D}"/usr docdir="${D}"/usr/share/doc/${PF} install || die
+	emake prefix="${D}"/usr docdir="${D}"/usr/share/doc/${PF} install
 
 	python_fix_shebang "${D}"
 

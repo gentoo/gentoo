@@ -5,7 +5,4 @@
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
-	<use>
-		<flag name="widevine">Install the Widevine DRM library</flag>
-	</use>
 </pkgmetadata>

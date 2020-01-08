@@ -1,9 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
-
-S=${WORKDIR}/eawpats
+EAPI=7
 
 DESCRIPTION="Eric Welsh's GUS patches for TiMidity"
 HOMEPAGE="http://www.stardate.bc.ca/eawpatches/html/default.htm"
@@ -11,42 +9,33 @@ SRC_URI="http://5hdumat.samizdat.net/music/eawpats${PV}_full.tar.gz"
 
 LICENSE="free-noncomm"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 sparc x86 ~x86-fbsd"
-IUSE=""
+KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 sparc x86"
+RESTRICT="binchecks strip"
 
 # These can be used for libmodplug too, so don't depend on timidity++
 DEPEND="app-eselect/eselect-timidity"
 RDEPEND=""
 
-RESTRICT="binchecks strip"
+S="${WORKDIR}/eawpats"
 
-src_unpack() {
-	unpack ${A}
-	sed -i -e "s:dir /home/user/eawpats/:dir /usr/share/timidity/eawpatches:" "${S}/linuxconfig/timidity.cfg"
-}
+PATCHES=( "${FILESDIR}"/${P}-fix-dir.patch )
 
 src_install() {
-	local instdir=/usr/share/timidity
+	# Install documentation, including subdirs
+	local f
+	while IFS="" read -d $'\0' -r f; do
+		dodoc "${f}"
+		rm "${f}" || die
+	done < <(find . -type f -name '*.txt' -print0)
 
 	# Set our installation directory
-	insinto ${instdir}/eawpatches
+	insinto /usr/share/timidity/eawpatches
 
 	# Install base timidity configuration for timidity-update
 	doins linuxconfig/timidity.cfg
-	rm -rf linuxconfig/ winconfig/
+	rm -rf linuxconfig/ winconfig/ patref24.hlp ultrasnd.ini || die
 
-	# Install base eawpatches
-	doins *.cfg *.pat
-	rm *.cfg *.pat
-
-	# Install patches from subdirectories
-	for d in `find . -type f -name \*.pat | sed 's,/[^/]*$,,' | sort -u`; do
-		insinto ${instdir}/eawpatches/${d}
-		doins ${d}/*.pat
-	done
-
-	# Install documentation, including subdirs
-	dodoc $(find . -name \*.txt)
+	doins -r .
 }
 
 pkg_postinst() {

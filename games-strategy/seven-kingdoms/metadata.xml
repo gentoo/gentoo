@@ -7,5 +7,6 @@
 	</maintainer>
 	<upstream>
 		<remote-id type="sourceforge">skfans</remote-id>
+		<remote-id type="github">the3dfxdude/7kaa</remote-id>
 	</upstream>
 </pkgmetadata>

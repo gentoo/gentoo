@@ -14,6 +14,7 @@
 	</longdescription>
 	<use>
 		<flag name="asio">Enable support for <pkg>dev-cpp/asio</pkg> library</flag>
+		<flag name="dicom">Enable DICOM medical image file support via <pkg>sci-libs/dcmtk</pkg></flag>
 		<flag name="egl">Enable EGL support</flag>
 		<flag name="fox">Build examples using <pkg>x11-libs/fox</pkg> library</flag>
 		<flag name="gdal">Enable support for <pkg>sci-libs/gdal</pkg> library</flag>

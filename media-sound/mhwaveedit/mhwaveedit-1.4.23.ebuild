@@ -1,35 +1,37 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 DESCRIPTION="GTK+ Sound file editor (wav, and a few others.)"
-HOMEPAGE="https://gna.org/projects/mhwaveedit"
-SRC_URI="http://download.gna.org/${PN}/${P}.tar.bz2"
+HOMEPAGE="https://github.com/magnush/mhwaveedit/"
+SRC_URI="https://github.com/magnush/mhwaveedit/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="alsa jack ladspa libsamplerate nls oss pulseaudio sdl sndfile sox"
 
-RDEPEND="x11-libs/gtk+:2
+RDEPEND="
+	x11-libs/gtk+:2
 	x11-libs/pango
-	sndfile? ( >=media-libs/libsndfile-1.0.10 )
-	sdl? ( >=media-libs/libsdl-1.2.3 )
-	alsa? ( media-libs/alsa-lib )
-	jack? ( >=media-sound/jack-audio-connection-kit-0.98 )
-	libsamplerate? ( media-libs/libsamplerate )
+	sndfile? ( media-libs/libsndfile:= )
+	sdl? ( media-libs/libsdl:= )
+	alsa? ( media-libs/alsa-lib:= )
+	jack? ( virtual/jack )
+	libsamplerate? ( media-libs/libsamplerate:= )
 	ladspa? ( media-libs/ladspa-sdk )
-	pulseaudio? ( >=media-sound/pulseaudio-0.9.10 )
-	sox? ( media-sound/sox )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+	pulseaudio? ( media-sound/pulseaudio )
+	sox? ( media-sound/sox:= )"
+DEPEND="${RDEPEND}"
+BDEPEND="virtual/pkgconfig"
 
-DOCS="AUTHORS BUGS ChangeLog HACKING NEWS README TODO"
+PATCHES=( "${FILESDIR}"/${PN}-1.4.23-missing-include.patch )
 
 src_configure() {
 	econf \
 		--without-arts \
+		--without-esound \
 		--without-portaudio \
 		$(use_enable nls) \
 		$(use_with sndfile libsndfile) \
@@ -38,6 +40,5 @@ src_configure() {
 		$(use_with alsa alsalib) \
 		$(use_with oss) \
 		$(use_with jack) \
-		$(use_with pulseaudio pulse) \
-		--without-esound
+		$(use_with pulseaudio pulse)
 }

@@ -8,7 +8,7 @@ inherit autotools linux-info toolchain-funcs
 DESCRIPTION="Tools for configuring the Linux kernel 802.1d Ethernet Bridge"
 HOMEPAGE="http://bridge.sourceforge.net/"
 #SRC_URI="mirror://sourceforge/bridge/${P}.tar.gz"
-SRC_URI="mirror://kernel/linux/utils/net/${PN}/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/utils/net/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

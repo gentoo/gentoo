@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,6 +20,7 @@ LICENSE="GPL-2"
 # subslot = libx265 soname
 SLOT="0/165"
 IUSE="+10bit +12bit cpu_flags_arm_neon numa pic power8 test"
+RESTRICT="!test? ( test )"
 
 ASM_DEPEND=">=dev-lang/yasm-1.2.0"
 RDEPEND="numa? ( >=sys-process/numactl-2.0.10-r1[${MULTILIB_USEDEP}] )"

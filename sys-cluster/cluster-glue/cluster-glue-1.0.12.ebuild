@@ -79,7 +79,7 @@ src_install() {
 	sed -i \
 		-e "s:%libdir%:$(get_libdir):" \
 		"${T}/heartbeat-logd.init" || die
-# 	newinitd "${T}/heartbeat-logd.init" heartbeat-logd || die
+# 	newinitd "${T}/heartbeat-logd.init" heartbeat-logd
 	rm "${D}"/etc/init.d/logd
 
 	use static-libs || find "${D}" -type f -name "*.la" -delete

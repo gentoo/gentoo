@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://anongit.freedesktop.org/git/plymouth"
 else
 	SRC_URI="${SRC_URI} https://www.freedesktop.org/software/plymouth/releases/${P}.tar.xz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
+	KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 fi
 
 inherit autotools readme.gentoo-r1 systemd toolchain-funcs
@@ -21,7 +21,7 @@ HOMEPAGE="https://cgit.freedesktop.org/plymouth/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="debug gdm +gtk +libkms +pango +split-usr static-libs"
+IUSE="debug gdm +gtk +libkms +pango +split-usr static-libs +udev"
 
 CDEPEND="
 	>=media-libs/libpng-1.2.16:=
@@ -41,7 +41,7 @@ DEPEND="${CDEPEND}
 "
 # Block due bug #383067
 RDEPEND="${CDEPEND}
-	virtual/udev
+	udev? ( virtual/udev )
 	!<sys-kernel/dracut-0.37-r3
 "
 
@@ -75,6 +75,7 @@ src_configure() {
 		$(use_enable libkms drm)
 		$(use_enable pango)
 		$(use_enable gdm gdm-transition)
+		$(use_with udev)
 	)
 	econf "${myconf[@]}"
 }

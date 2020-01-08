@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,12 +10,12 @@ inherit haskell-cabal
 
 DESCRIPTION="A Citation Style Language implementation in Haskell"
 HOMEPAGE="http://istitutocolli.org/repos/citeproc-hs/"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
-IUSE="+bibutils embed_data_files +hexpat +network +small_base unicode_collation"
+IUSE="+bibutils embed-data-files +hexpat +network +small-base unicode-collation"
 
 RDEPEND="dev-haskell/json:=[profile?]
 	dev-haskell/mtl:=[profile?]
@@ -25,13 +25,13 @@ RDEPEND="dev-haskell/json:=[profile?]
 	dev-haskell/utf8-string:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
 	bibutils? ( >=dev-haskell/hs-bibutils-0.3:=[profile?] )
-	embed_data_files? ( dev-haskell/file-embed:=[profile?] )
+	embed-data-files? ( dev-haskell/file-embed:=[profile?] )
 	hexpat? ( >=dev-haskell/hexpat-0.20.2:=[profile?] )
 	!hexpat? ( dev-haskell/xml:=[profile?] )
 	network? ( >=dev-haskell/http-4000.0.9:=[profile?]
 			>=dev-haskell/network-2.6:=[profile?]
 			>=dev-haskell/network-uri-2.6:=[profile?] )
-	unicode_collation? ( dev-haskell/text:=[profile?]
+	unicode-collation? ( dev-haskell/text:=[profile?]
 				dev-haskell/text-icu:=[profile?] )
 "
 DEPEND="${RDEPEND}
@@ -46,9 +46,9 @@ src_prepare() {
 src_configure() {
 	haskell-cabal_src_configure \
 		$(cabal_flag bibutils bibutils) \
-		$(cabal_flag embed_data_files embed_data_files) \
+		$(cabal_flag embed-data-files embed_data_files) \
 		$(cabal_flag hexpat hexpat) \
 		$(cabal_flag network network) \
-		$(cabal_flag small_base small_base) \
-		$(cabal_flag unicode_collation unicode_collation)
+		$(cabal_flag small-base small_base) \
+		$(cabal_flag unicode-collation unicode_collation)
 }

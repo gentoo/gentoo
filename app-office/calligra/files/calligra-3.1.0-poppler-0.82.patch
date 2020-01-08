@@ -1,0 +1,35 @@
+Patch stolen from Mageia Cauldron but had to be modified quite a bit.
+
+diff --git a/filters/karbon/pdf/SvgOutputDev.cpp b/filters/karbon/pdf/SvgOutputDev.cpp
+index ffdbf01..70bc9f8 100644
+--- a/filters/karbon/pdf/SvgOutputDev.cpp
++++ b/filters/karbon/pdf/SvgOutputDev.cpp
+@@ -405,7 +405,7 @@ void SvgOutputDev::drawString(GfxState * state, GooString * s)
+     const char * p = s->c_str();
+     int len = s->getLength();
+     CharCode code;
+-    Unicode *u = nullptr;
++    const Unicode *u = nullptr;
+     int uLen;
+     double dx, dy, originX, originY;
+     while (len > 0) {
+@@ -545,7 +545,7 @@ void SvgOutputDev::drawImage(GfxState *state, Object */*ref*/, Stream *str,
+ 
+ void SvgOutputDev::drawImage(GfxState *state, Object *ref, Stream *str,
+                              int width, int height, GfxImageColorMap *colorMap,
+-                             bool /*interpolate*/, int *maskColors, bool inlineImg)
++                             bool /*interpolate*/, const int *maskColors, bool inlineImg)
+ {
+     drawImage(state, ref, str, width, height, colorMap, maskColors, inlineImg);
+ }
+--- a/filters/karbon/pdf/SvgOutputDev.h
++++ b/filters/karbon/pdf/SvgOutputDev.h
+@@ -63,7 +63,7 @@ public:
+     // images
+     void drawImage(GfxState *state, Object *ref, Stream *str,
+                            int width, int height, GfxImageColorMap *colorMap,
+-                           bool interpolate, int *maskColors, bool inlineImg) override;
++                           bool interpolate, const int *maskColors, bool inlineImg) override;
+ 
+     // styles
+     virtual void updateAll(GfxState *state);

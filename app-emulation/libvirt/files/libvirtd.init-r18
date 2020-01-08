@@ -1,0 +1,33 @@
+#!/sbin/openrc-run
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+description="Virtual Machine Management daemon (libvirt)"
+
+LIBVIRTD_OPTS=${LIBVIRTD_OPTS:-"${LIBVIRTD_OPTS}"}
+LIBVIRTD_TIMEOUT=${LIBVIRTD_TERMTIMEOUT:-"TERM/25/KILL/5"}
+
+command="/usr/sbin/libvirtd"
+command_args="-d ${LIBVIRTD_OPTS}"
+start_stop_daemon_args="--env KRB5_KTNAME=/etc/libvirt/krb5.tab"
+pidfile="/run/libvirtd.pid"
+retry="${LIBVIRTD_TERMTIMEOUT}"
+
+depend() {
+	need virtlogd
+	use ceph dbus iscsid virtlockd
+	after cgconfig corosync ebtables iptables ip6tables nfs nfsmount ntp-client ntpdportmap rpc.statd sanlock xenconsoled
+	USE_FLAG_FIREWALLD
+}
+
+start_pre() {
+	# Test configuration directories in /etc/libvirt/ to be either not
+	# present or a directory, i.e. not a regular file, bug #532892
+
+	checkpath --directory /etc/libvirt/lxc || return 1
+	checkpath --directory /etc/libvirt/nwfilter || return 1
+	[ -L /etc/libvirt/qemu ] ||
+		checkpath --directory /etc/libvirt/qemu || return 1
+	[ -L /etc/libvirt/storage ] ||
+		checkpath --directory /etc/libvirt/storage || return 1
+}

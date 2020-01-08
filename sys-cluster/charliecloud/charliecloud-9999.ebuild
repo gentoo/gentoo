@@ -1,10 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# User namespaces don't play well with the sandbox.
-RESTRICT="test"
+PYTHON_COMPAT=( python3_{6,7} )
+
+inherit python-single-r1
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -20,19 +21,24 @@ HOMEPAGE="https://hpc.github.io/charliecloud/"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-IUSE="doc examples +pv test"
+IUSE="doc examples +pv squashfuse"
 
-RDEPEND=""
-DEPEND="${RDEPEND}
+# Extensive test suite exists, but downloads container images
+# directly and via Docker and installs packages inside using apt/yum.
+# Additionally, clashes with portage namespacing and sandbox.
+RESTRICT="test"
+
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RDEPEND="${PYTHON_DEPS}
 	pv? ( sys-apps/pv )
-	doc? ( dev-python/sphinx
-	       dev-python/sphinx_rtd_theme
-	       net-misc/rsync )
-	test? ( app-arch/pigz )"
-
-DOCS=(
-	README.rst
-)
+	squashfuse? ( sys-fs/squashfuse )
+"
+DEPEND="doc? (
+		dev-python/sphinx[${PYTHON_USEDEP}]
+		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+		net-misc/rsync
+	)"
 
 src_compile() {
 	emake
@@ -40,28 +46,10 @@ src_compile() {
 }
 
 src_install() {
-	emake install PREFIX="${EPREFIX}/usr" DESTDIR="${ED}"
-	if use doc; then
-		mv doc html || die
-		local HTML_DOCS=(html/.)
-	fi
+	emake install PREFIX="${EPREFIX}/usr" DESTDIR="${D}" DOCDIR="${ED}/usr/share/doc/${PF}" LIBEXEC_DIR="libexec/${PF}"
 	if use examples; then
-		docompress -x "${EPREFIX}/usr/share/doc/${PF}/examples"
-		DOCS+=(examples)
+		docompress -x "/usr/share/doc/${PF}/examples"
+		dodoc -r examples
 	fi
-	rm -rf "${ED}/usr/share/doc/charliecloud" || die
 	einstalldocs
-}
-
-src_test() {
-	cd "${S}/test" || die
-	export CH_TEST_TARDIR="${T}/tarballs"
-	export CH_TEST_IMGDIR="${T}/images"
-
-	# Do not run tests requiring root.
-	export CH_TEST_PERMDIRS="skip"
-	export CH_TEST_SKIP_DOCKER=yes
-	sed -i 's/CHTEST_HAVE_SUDO=yes/CHTEST_HAVE_SUDO=no/' "${S}/test/common.bash" || die
-
-	emake test-quick
 }

@@ -16,7 +16,7 @@ DESCRIPTION="A JSON implementation as a Ruby extension"
 HOMEPAGE="https://github.com/flori/json"
 LICENSE="Ruby"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 SLOT="2"
 IUSE=""
 
@@ -25,7 +25,8 @@ DEPEND="${DEPEND}
 	dev-util/ragel"
 
 ruby_add_bdepend "dev-ruby/rake
-	doc? ( dev-ruby/rdoc )"
+	doc? ( dev-ruby/rdoc )
+	test? ( dev-ruby/test-unit:2 )"
 
 all_ruby_prepare() {
 	# Avoid building the extension twice!

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -9,11 +9,11 @@ MY_P=${P/p/P}
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="A set of Objective-C classes that model a mail system"
-HOMEPAGE="http://www.collaboration-world.com/pantomime/"
-SRC_URI="http://download.gna.org/gnustep-nonfsf/${MY_P}.tar.gz"
+HOMEPAGE="http://www.nongnu.org/gnustep-nonfsf/gnumail/"
+SRC_URI="mirror://nongnu/gnustep-nonfsf/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1 Elm"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 SLOT="0"
 IUSE=""
 

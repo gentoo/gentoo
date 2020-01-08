@@ -11,7 +11,7 @@ HOMEPAGE="http://libdbi.sourceforge.net/"
 LICENSE="LGPL-2.1"
 
 IUSE="doc static-libs"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 SLOT=0
 
 DOCS="AUTHORS ChangeLog README README.osx TODO"

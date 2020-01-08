@@ -1,17 +1,17 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 FINDLIB_USE="ocaml"
 
-inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic \
+inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic usr-ldscript \
 	autotools udev systemd python-r1
 
 DESCRIPTION="Daemon that provides access to the Linux/Unix console for a blind person"
-HOMEPAGE="http://brltty.com/"
-SRC_URI="http://brltty.com/archive/${P}.tar.xz"
+HOMEPAGE="https://brltty.app/"
+SRC_URI="https://brltty.app/archive/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

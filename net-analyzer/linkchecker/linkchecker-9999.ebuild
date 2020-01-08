@@ -19,9 +19,9 @@ KEYWORDS=""
 IUSE="sqlite"
 
 RDEPEND="
+	dev-python/dnspython[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.4[${PYTHON_USEDEP}]
-	virtual/python-dnspython[${PYTHON_USEDEP}]
 "
 DEPEND=""
 

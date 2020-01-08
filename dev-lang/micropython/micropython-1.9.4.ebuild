@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ KEYWORDS="~amd64 ~x86"
 LICENSE="MIT"
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	virtual/libffi
@@ -45,6 +46,8 @@ src_install() {
 	pushd ports/unix > /dev/null || die
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" DESTDIR="${D}" install
 	popd > /dev/null || die
+
+	dobin "${S}/mpy-cross/mpy-cross"
 
 	# remove .git files
 	find tools -type f -name '.git*' -exec rm {} \; || die

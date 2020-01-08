@@ -1,10 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,xml"
-inherit autotools flag-o-matic git-r3 python-single-r1 toolchain-funcs user
+inherit autotools desktop flag-o-matic git-r3 python-single-r1 toolchain-funcs user
 
 MY_P=${P/_beta/BETA}
 
@@ -65,7 +65,9 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.25-CXXFLAGS.patch
 	"${FILESDIR}"/${PN}-7.25-libpcre.patch
 	"${FILESDIR}"/${PN}-7.31-libnl.patch
-	"${FILESDIR}"/${PN}-7.70-time.patch
+	"${FILESDIR}"/${PN}-7.80-ac-config-subdirs.patch
+	"${FILESDIR}"/${PN}-9999-constify-continued.patch
+	"${FILESDIR}"/${PN}-9999-netutil-else.patch
 )
 S="${WORKDIR}/${MY_P}"
 
@@ -106,11 +108,6 @@ src_prepare() {
 		-e 's|^Categories=.*|Categories=Network;System;Security;|g' \
 		zenmap/install_scripts/unix/zenmap-root.desktop \
 		zenmap/install_scripts/unix/zenmap.desktop || die
-
-	sed -i \
-		-e '/AC_CONFIG_SUBDIRS(libz)/d' \
-		-e '/AC_CONFIG_SUBDIRS(libssh2)/d' \
-		configure.ac
 
 	cp libdnet-stripped/include/config.h.in{,.nmap-orig} || die
 

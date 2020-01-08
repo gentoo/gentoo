@@ -1,0 +1,37 @@
+From f0b867bb3bb527150e86a891c0c84dff3acc39e8 Mon Sep 17 00:00:00 2001
+From: Peter Wienemann <wienemann@physik.uni-bonn.de>
+Date: Mon, 1 Jul 2019 19:17:25 +0200
+Subject: [PATCH] PR #462 from @wiene: Add missing compiler flags for examples
+
+This patch ensures that CFLAGS, CPPFLAGS and LDFLAGS settings are
+respected when compiling/linking (lib)sotest, pivot_root and userns.
+---
+ examples/syscalls/Makefile | 2 +-
+ test/Makefile              | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/examples/syscalls/Makefile b/examples/syscalls/Makefile
+index 4dbef21b..177ab42a 100644
+--- a/examples/syscalls/Makefile
++++ b/examples/syscalls/Makefile
+@@ -10,4 +10,4 @@ clean:
+ $(BINS): Makefile
+ 
+ %: %.c
+-	gcc $(CFLAGS) $< -o $@
++	gcc $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $< -o $@
+diff --git a/test/Makefile b/test/Makefile
+index 50f24596..97a9316b 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -81,8 +81,8 @@ sotest/lib/libsotest.so.1.0: sotest/libsotest.so.1.0
+ # the container. (Issue #227.)
+ 
+ sotest/sotest: sotest/sotest.c sotest/libsotest.so.1.0
+-	gcc -o $@ -L./sotest -lsotest $^
++	gcc -o $@ $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -L./sotest -lsotest $^
+ sotest/libsotest.so.1.0: sotest/libsotest.c
+-	gcc -o $@ -shared -fPIC -Wl,-soname,libsotest.so.1 -lc $^
++	gcc -o $@ $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) -shared -fPIC -Wl,-soname,libsotest.so.1 -lc $^
+ 	ln -f -s libsotest.so.1.0 sotest/libsotest.so
+ 	ln -f -s libsotest.so.1.0 sotest/libsotest.so.1

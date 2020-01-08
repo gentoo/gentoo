@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit golang-build systemd
 
 DESCRIPTION="Modern SSH server for teams managing distributed infrastructure"
@@ -19,11 +20,11 @@ else
 fi
 
 IUSE="pam"
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 MIT BSD ISC"
 RESTRICT="test strip"
 SLOT="0"
 
-DEPEND="app-arch/zip"
+BDEPEND="app-arch/zip"
 RDEPEND="pam? ( sys-libs/pam )"
 
 src_compile() {

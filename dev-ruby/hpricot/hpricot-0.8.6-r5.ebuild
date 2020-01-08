@@ -15,7 +15,7 @@ HOMEPAGE="https://wiki.github.com/hpricot/hpricot"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
 ruby_add_bdepend "dev-ruby/rake
@@ -56,6 +56,6 @@ each_ruby_compile() {
 	local modname=$(get_modname)
 
 	${RUBY} -S rake ragel || die
-	emake V=1 -Cext/hpricot_scan CFLAGS="${CFLAGS} -fPIC" archflag="${LDFLAGS}" || die "make hpricot_scan failed"
+	emake V=1 -Cext/hpricot_scan CFLAGS="${CFLAGS} -fPIC" archflag="${LDFLAGS}"
 	cp ext/hpricot_scan/hpricot_scan${modname} lib/ || die
 }

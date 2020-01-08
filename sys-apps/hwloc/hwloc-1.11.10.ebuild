@@ -13,7 +13,7 @@ SRC_URI="http://www.open-mpi.org/software/${PN}/${MY_PV}/downloads/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0/5"
-KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="cairo cuda debug gl +numa +pci plugins svg static-libs xml X"
 
 # opencl support dropped with x11-drivers/ati-drivers being removed (#582406).

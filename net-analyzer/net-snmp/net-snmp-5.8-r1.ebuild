@@ -23,8 +23,8 @@ S=${WORKDIR}/${P/_/.}
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
 SLOT="0/35"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
-IUSE="X bzip2 doc elf ipv6 libressl lm_sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
+IUSE="X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
 
 COMMON_DEPEND="
 	ssl? (
@@ -44,7 +44,7 @@ COMMON_DEPEND="
 		${PYTHON_DEPS}
 	)
 	pci? ( sys-apps/pciutils )
-	lm_sensors? ( sys-apps/lm_sensors )
+	lm-sensors? ( sys-apps/lm-sensors )
 	netlink? ( dev-libs/libnl:3 )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	perl? ( dev-lang/perl:= )
@@ -93,7 +93,7 @@ src_prepare() {
 src_configure() {
 	# keep this in the same line, configure.ac arguments are passed down to config.h
 	local mibs="host ucd-snmp/dlmod ucd-snmp/diskio ucd-snmp/extensible mibII/mta_sendmail etherlike-mib/dot3StatsTable"
-	use lm_sensors && mibs="${mibs} ucd-snmp/lmsensorsMib"
+	use lm-sensors && mibs="${mibs} ucd-snmp/lmsensorsMib"
 	use smux && mibs="${mibs} smux"
 
 	# Assume /etc/mtab is not present with a recent baselayout/openrc (bug #565136)
@@ -107,6 +107,7 @@ src_configure() {
 		$(use_enable ucd-compat ucd-snmp-compatibility) \
 		$(use_with bzip2) \
 		$(use_with elf) \
+		$(use_with kmem kmem-usage) \
 		$(use_with mysql) \
 		$(use_with netlink nl) \
 		$(use_with pci) \

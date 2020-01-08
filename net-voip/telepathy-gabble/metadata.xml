@@ -6,6 +6,7 @@
 	<name>Gentoo GNOME Desktop</name>
 	</maintainer>
 <use>
+	<flag name="jingle">Enable voice calls for jabber</flag>
 	<flag name="plugins">Enable plugin loader</flag>
 </use>
 </pkgmetadata>

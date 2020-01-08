@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
+	<maintainer type="person">
+		<email>hydrapolic@gmail.com</email>
+		<name>Tomáš Mózes</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>xen@gentoo.org</email>
 		<name>Gentoo Xen Project</name>
@@ -9,14 +17,17 @@
 		<flag name="api">Build the C libxenapi bindings</flag>
 		<flag name="flask">Enable the Flask XSM module from NSA</flag>
 		<flag name="hvm">Enable support for hardware based virtualization (VT-x,AMD-v)</flag>
-		<flag name="qemu">Enable IOEMU support via the use of qemu-dm</flag>
-		<flag name="qemu-traditional">Build the old qemu traditional device model (useful only if you cannot change to the new device model e.g. Windows VMs)</flag>
-		<flag name="pygrub">Install the pygrub boot loader</flag>
-		<flag name="screen">Enable support for running domain U console in an <pkg>app-misc/screen</pkg> session</flag>
-		<flag name="system-qemu">Using <pkg>app-emulation/qemu</pkg> instead of the bundled one</flag>
-		<flag name="system-seabios">Using <pkg>sys-firmware/seabios</pkg> instead of the bundled one</flag>
+		<flag name="ipxe">Enable ipxe support</flag>
 		<flag name="ocaml">Enable support for the ocaml language</flag>
 		<flag name="ovmf">Enable support to boot UEFI guest vm, needed by hvm</flag>
 		<flag name="pam">Enable pam support</flag>
+		<flag name="pygrub">Install the pygrub boot loader</flag>
+		<flag name="qemu">Enable IOEMU support via the use of qemu-dm</flag>
+		<flag name="qemu-traditional">Build the old qemu traditional device model (useful only if you cannot change to the new device model e.g. Windows VMs)</flag>
+		<flag name="rombios">Enable rombios support, needed by ipxe</flag>
+		<flag name="screen">Enable support for running domain U console in an <pkg>app-misc/screen</pkg> session</flag>
+		<flag name="system-ipxe">Using <pkg>sys-firmware/ipxe</pkg> instead of the bundled one</flag>
+		<flag name="system-qemu">Using <pkg>app-emulation/qemu</pkg> instead of the bundled one</flag>
+		<flag name="system-seabios">Using <pkg>sys-firmware/seabios</pkg> instead of the bundled one</flag>
 	</use>
 </pkgmetadata>

@@ -120,7 +120,7 @@ src_install () {
 	#Install mgetty into /sbin (#119078)
 	dodir /sbin && \
 		mv "${D}"/usr/sbin/mgetty "${D}"/sbin && \
-		dosym /sbin/mgetty /usr/sbin/mgetty || die "failed to install /sbin/mgetty"
+		dosym /sbin/mgetty /usr/sbin/mgetty
 	#Don't install ct (#106337)
 	rm "${D}"/usr/bin/ct || die "failed to remove useless ct program"
 

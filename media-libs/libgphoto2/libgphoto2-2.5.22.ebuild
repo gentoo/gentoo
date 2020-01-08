@@ -6,7 +6,7 @@
 #    https://sourceforge.net/p/gphoto/bugs/643/
 
 EAPI=6
-inherit eutils multilib multilib-minimal udev user
+inherit eutils multilib multilib-minimal udev
 
 DESCRIPTION="Library that implements support for numerous digital cameras"
 HOMEPAGE="http://www.gphoto.org/"
@@ -17,7 +17,7 @@ LICENSE="GPL-2"
 # FIXME: should we also bump for libgphoto2_port.so soname version?
 SLOT="0/6" # libgphoto2.so soname version
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ~ia64 ppc ppc64 ~s390 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="doc examples exif gd jpeg nls serial"
 
 # By default, drivers for all supported cameras will be compiled.
@@ -50,6 +50,7 @@ done
 
 # libgphoto2 actually links to libltdl
 RDEPEND="
+	acct-group/plugdev
 	>=dev-libs/libxml2-2.9.1-r4:2[${MULTILIB_USEDEP}]
 	dev-libs/libltdl:0[${MULTILIB_USEDEP}]
 	>=virtual/libusb-1-r1:1[${MULTILIB_USEDEP}]
@@ -78,10 +79,6 @@ pkg_pretend() {
 	if ! echo "${USE}" | grep "cameras_" > /dev/null 2>&1; then
 		einfo "No camera drivers will be built since you did not specify any."
 	fi
-}
-
-pkg_setup() {
-	enewgroup plugdev
 }
 
 src_prepare() {

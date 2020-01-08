@@ -7,9 +7,7 @@
 </maintainer>
 <stabilize-allarches/>
 <use>
-  <flag name="binary">Download pre-built files instead of building
-    from sources</flag>
-  <flag name="html">Generate PMS as .html as well</flag>
+  <flag name="html">Generate and install PMS as .html as well</flag>
   <flag name="twoside">Enable two-sided layout suitable for printing</flag>
 </use>
 </pkgmetadata>

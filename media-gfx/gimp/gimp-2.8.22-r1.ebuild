@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,7 @@ SLOT="2"
 KEYWORDS="alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 LANGS="am ar ast az be bg br ca ca@valencia cs csb da de dz el en_CA en_GB eo es et eu fa fi fr ga gl gu he hi hr hu id is it ja ka kk km kn ko lt lv mk ml ms my nb nds ne nl nn oc pa pl pt pt_BR ro ru rw si sk sl sr sr@latin sv ta te th tr tt uk vi xh yi zh_CN zh_HK zh_TW"
-IUSE="alsa aalib altivec aqua bzip2 curl dbus debug doc exif gnome postscript jpeg jpeg2k lcms cpu_flags_x86_mmx mng pdf png python smp cpu_flags_x86_sse svg tiff udev wmf xpm"
+IUSE="alsa aalib altivec aqua bzip2 curl dbus debug doc exif gnome postscript jpeg lcms cpu_flags_x86_mmx mng pdf png python smp cpu_flags_x86_sse svg tiff udev wmf xpm"
 
 RDEPEND=">=dev-libs/glib-2.30.2:2
 	>=dev-libs/atk-2.2.0
@@ -38,7 +38,6 @@ RDEPEND=">=dev-libs/glib-2.30.2:2
 	dbus? ( dev-libs/dbus-glib )
 	gnome? ( gnome-base/gvfs )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper:= )
 	exif? ( >=media-libs/libexif-0.6.15 )
 	lcms? ( >=media-libs/lcms-2.2:2 )
 	mng? ( media-libs/libmng )
@@ -55,7 +54,7 @@ RDEPEND=">=dev-libs/glib-2.30.2:2
 	sys-libs/zlib
 	bzip2? ( app-arch/bzip2 )
 	postscript? ( app-text/ghostscript-gpl )
-	udev? ( virtual/libgudev:= )"
+	udev? ( dev-libs/libgudev:= )"
 DEPEND="${RDEPEND}
 	sys-apps/findutils
 	virtual/pkgconfig
@@ -85,7 +84,7 @@ pkg_setup() {
 		$(use_with gnome gvfs) \
 		--without-webkit \
 		$(use_with jpeg libjpeg) \
-		$(use_with jpeg2k libjasper) \
+		--without-libjasper \
 		$(use_with exif libexif) \
 		$(use_with lcms lcms lcms2) \
 		$(use_with postscript gs) \

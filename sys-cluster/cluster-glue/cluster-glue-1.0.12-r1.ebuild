@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ RDEPEND="
 	app-text/docbook-xml-dtd:4.4
 	dev-libs/glib:2
 	dev-libs/libaio
+	dev-libs/libltdl:=
 	dev-libs/libxml2
 	ipmilan? ( sys-libs/openipmi )
 	libnet? ( net-libs/libnet:1.1 )
@@ -84,7 +85,7 @@ src_install() {
 	sed -i \
 		-e "s:%libdir%:$(get_libdir):" \
 		"${T}/heartbeat-logd.init" || die
-# 	newinitd "${T}/heartbeat-logd.init" heartbeat-logd || die
+# 	newinitd "${T}/heartbeat-logd.init" heartbeat-logd
 	rm "${D}"/etc/init.d/logd
 
 	use static-libs || find "${D}" -type f -name "*.la" -delete

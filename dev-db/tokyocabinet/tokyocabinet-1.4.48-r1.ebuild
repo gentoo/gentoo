@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 ~sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
+KEYWORDS="alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris"
 IUSE="bzip2 debug doc examples threads zlib"
 
 DEPEND="bzip2? ( app-arch/bzip2 )
@@ -42,19 +42,19 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "Install failed"
+	emake DESTDIR="${D}" install
 
 	if use examples; then
 		insinto /usr/share/${PF}/example
-		doins example/* || die "Install failed"
+		doins example/*
 	fi
 
 	if use doc; then
 		insinto /usr/share/doc/${PF}
-		doins -r doc/* || die "Install failed"
+		doins -r doc/*
 	fi
 }
 
 src_test() {
-	emake -j1 check || die "Tests failed"
+	emake -j1 check
 }

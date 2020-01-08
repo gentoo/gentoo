@@ -23,7 +23,7 @@ fi
 S=${WORKDIR}/${MY_P}
 
 LICENSE="GPL-2"
-KEYWORDS="~alpha amd64 hppa ppc ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 hppa ppc ~sparc x86"
 IUSE="geoip ipv6"
 
 SLOT="0"
@@ -92,7 +92,7 @@ src_install() {
 	newbin maillogconvert.pl awstats_maillogconvert.pl
 	newbin urlaliasbuilder.pl awstats_urlaliasbuilder.pl
 
-	dosym ../share/awstats/wwwroot/cgi-bin/awstats.pl /usr/bin/awstats.pl || die
+	dosym ../share/awstats/wwwroot/cgi-bin/awstats.pl /usr/bin/awstats.pl
 }
 
 pkg_postinst() {

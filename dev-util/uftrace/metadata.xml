@@ -5,4 +5,7 @@
 	<upstream>
 		<remote-id type="github">namhyung/uftrace</remote-id>
 	</upstream>
+	<use>
+		<flag name="capstone">Use capstone to provide dynamic tracing without recompilation</flag>
+	</use>
 </pkgmetadata>

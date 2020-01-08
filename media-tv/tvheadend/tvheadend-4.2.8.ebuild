@@ -47,8 +47,10 @@ REQUIRED_USE="dvbcsa? ( || ( capmt constcw cwc dvben50221 ) )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.9-use_system_queue.patch
-	"${FILESDIR}"/${PN}-4.2.1-hdhomerun.patch
+	"${FILESDIR}"/${PN}-4.2.{1,8}-hdhomerun.patch
 	"${FILESDIR}"/${PN}-4.2.2-dtv_scan_tables.patch
+	"${FILESDIR}"/${PN}-4.2.7-python3.patch
+	"${FILESDIR}"/${PN}-4.2.8-gcc9.patch
 )
 
 DOCS=( README.md )

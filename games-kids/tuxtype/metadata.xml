@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer type="project">
-	<email>games@gentoo.org</email>
-	<name>Gentoo Games Project</name>
-</maintainer>
+	<maintainer type="project">
+		<email>games@gentoo.org</email>
+		<name>Gentoo Games Project</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">tux4kids/tuxtype</remote-id>
+	</upstream>
+	<use>
+		<flag name="pango">Render fonts using <pkg>media-libs/sdl-pango</pkg> instead of <pkg>media-libs/sdl-ttf</pkg></flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hasan.calisir@psauxit.com</email>
+		<name>Hasan ÇALIŞIR</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="extras">Html docs support</flag>
+	</use>
+	<longdescription lang="en">
+	This is the libraries module for the Greenbone Vulnerability Management Solution.
+	It is used for the Greenbone Security Manager appliances and provides various 
+	functionalities to support the integrated service daemons.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">greenbone/gvm-libs</remote-id>
+	</upstream>
+</pkgmetadata>

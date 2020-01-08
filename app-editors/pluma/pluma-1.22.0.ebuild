@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit mate python-single-r1 virtualx
 
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm ~arm64 x86"
 fi
 
 DESCRIPTION="Pluma text editor for the MATE desktop"
@@ -54,12 +54,13 @@ DEPEND="${COMMON_DEPEND}
 	app-text/rarian
 	>=app-text/scrollkeeper-dtd-1:1.0
 	app-text/yelp-tools
+	dev-util/glib-utils
 	dev-util/gtk-doc
 	dev-util/gtk-doc-am
 	>=dev-util/intltool-0.50.1
 	>=sys-devel/libtool-2.2.6:2
-	>=sys-devel/gettext-0.17:*
-	virtual/pkgconfig:*"
+	>=sys-devel/gettext-0.17
+	virtual/pkgconfig"
 
 src_configure() {
 	mate_src_configure \

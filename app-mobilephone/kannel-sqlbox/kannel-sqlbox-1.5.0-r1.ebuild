@@ -49,16 +49,15 @@ src_configure() {
 		--without-ctlib \
 		--without-mssql \
 		$(use_enable ssl) \
-		$(use_enable doc docs) \
-		|| die "econf failed"
+		$(use_enable doc docs)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "failed emake install"
+	emake DESTDIR="${D}" install
 
 	if use doc; then
-		emake doc/userguide.html || die "emake docs failed"
-		dohtml doc/userguide.html || die "userguide.html not found"
+		emake doc/userguide.html
+		dohtml doc/userguide.html
 	fi
 
 	newinitd "${FILESDIR}"/kannel-sqlbox.initd kannel-sqlbox

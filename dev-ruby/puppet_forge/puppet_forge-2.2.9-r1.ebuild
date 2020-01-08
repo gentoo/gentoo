@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25"
+USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
@@ -40,4 +40,6 @@ all_ruby_prepare() {
 		-e '/faraday/ s/0.14.0/0.99.0/' \
 		-e '/faraday_middleware/ s/0.13.0/0.99.0/' \
 		${RUBY_FAKEGEM_GEMSPEC} || die
+
+	sed -i -e 's/git ls-files -z/find . -print0/' ${RUBY_FAKEGEM_GEMSPEC} || die
 }

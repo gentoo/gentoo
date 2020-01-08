@@ -1,23 +1,23 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 FINDLIB_USE="ocaml"
 JAVA_PKG_WANT_SOURCE="1.8"
 JAVA_PKG_WANT_TARGET="1.8"
 
-inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic \
+inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic usr-ldscript \
 	autotools udev systemd python-r1
 
 DESCRIPTION="Daemon that provides access to the Linux/Unix console for a blind person"
-HOMEPAGE="http://brltty.com/"
-SRC_URI="http://brltty.com/archive/${P}.tar.xz"
+HOMEPAGE="https://brltty.app/"
+SRC_URI="https://brltty.app/archive/${P}.tar.xz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86"
 IUSE="+api +beeper bluetooth +contracted-braille doc +fm gpm iconv icu
 		java louis +midi ncurses nls ocaml +pcm policykit python
 		usb systemd +speech tcl xml X"
@@ -208,7 +208,7 @@ src_install() {
 
 pkg_postinst() {
 	elog
-	elog "please be sure ${ROOT}etc/brltty.conf is correct for your system."
+	elog "please be sure ${ROOT}/etc/brltty.conf is correct for your system."
 	elog
 	elog "To make brltty start on boot, type this command as root:"
 	elog

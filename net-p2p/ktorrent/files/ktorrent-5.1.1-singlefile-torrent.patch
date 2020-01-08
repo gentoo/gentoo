@@ -1,0 +1,140 @@
+From dab5abcd2172155c511e0666d867c37382829226 Mon Sep 17 00:00:00 2001
+From: Jiva Totin <jiva.totin@gmail.com>
+Date: Sun, 17 Feb 2019 20:00:11 +0000
+Subject: Allow creating torrent for a single file.
+
+Added 2 new radio buttons. One for choosing directory and the other one for
+choosing files.
+
+BUG: 384452
+Differential Revision: https://phabricator.kde.org/D11728
+---
+ ktorrent/dialogs/torrentcreatordlg.cpp | 18 ++++++++++-
+ ktorrent/dialogs/torrentcreatordlg.h   |  3 ++
+ ktorrent/dialogs/torrentcreatordlg.ui  | 56 +++++++++++++++++++++++-----------
+ 3 files changed, 58 insertions(+), 19 deletions(-)
+
+diff --git a/ktorrent/dialogs/torrentcreatordlg.cpp b/ktorrent/dialogs/torrentcreatordlg.cpp
+index bb3710d..b46b291 100644
+--- a/ktorrent/dialogs/torrentcreatordlg.cpp
++++ b/ktorrent/dialogs/torrentcreatordlg.cpp
+@@ -54,12 +54,17 @@ namespace kt
+         adjustSize();
+         loadGroups();
+ 
+-        m_url->setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly | KFile::Directory);
++        m_url->setMode(KFile::ExistingOnly | KFile::LocalOnly | KFile::Directory);
++        m_selectDirectory->setChecked(true);
++
+         m_dht_tab->setEnabled(false);
+ 
+         connect(m_buttonBox, &QDialogButtonBox::accepted, this, &QDialog::accept);
+         connect(m_buttonBox, &QDialogButtonBox::rejected, this, &QDialog::reject);
+ 
++        connect(m_selectDirectory, &QRadioButton::clicked, this, &TorrentCreatorDlg::selectDirectory);
++        connect(m_selectFile, &QRadioButton::clicked, this, &TorrentCreatorDlg::selectFile);
++
+         connect(m_dht, &QCheckBox::toggled, this, &TorrentCreatorDlg::dhtToggled);
+ 
+         // tracker box stuff
+@@ -428,4 +433,15 @@ namespace kt
+         m_progress->setValue(mktor->getCurrentChunk());
+     }
+ 
++    void TorrentCreatorDlg::selectFile()
++    {
++        m_url->setMode(KFile::File | KFile::ExistingOnly | KFile::LocalOnly);
++    }
++
++    void TorrentCreatorDlg::selectDirectory()
++    {
++        m_url->setMode(KFile::ExistingOnly | KFile::LocalOnly | KFile::Directory);
++    }
++
++
+ }
+diff --git a/ktorrent/dialogs/torrentcreatordlg.h b/ktorrent/dialogs/torrentcreatordlg.h
+index 12a1a43..b59d880 100644
+--- a/ktorrent/dialogs/torrentcreatordlg.h
++++ b/ktorrent/dialogs/torrentcreatordlg.h
+@@ -73,6 +73,9 @@ namespace kt
+         void accept() override;
+         void reject() override;
+ 
++        void selectFile();// required for radio button for new torrent creation
++        void selectDirectory();
++
+     private:
+         void loadGroups();
+         void loadCompleterData();
+diff --git a/ktorrent/dialogs/torrentcreatordlg.ui b/ktorrent/dialogs/torrentcreatordlg.ui
+index b954aed..02bf390 100644
+--- a/ktorrent/dialogs/torrentcreatordlg.ui
++++ b/ktorrent/dialogs/torrentcreatordlg.ui
+@@ -15,26 +15,46 @@
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+-    <widget class="QLabel" name="label">
+-     <property name="text">
++    <widget class="QGroupBox" name="groupBox">
++     <property name="title">
+       <string>File or directory to create torrent from:</string>
+      </property>
+-    </widget>
+-   </item>
+-   <item>
+-    <widget class="KUrlRequester" name="m_url">
+-     <property name="sizePolicy">
+-      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+-       <horstretch>0</horstretch>
+-       <verstretch>0</verstretch>
+-      </sizepolicy>
+-     </property>
+-     <property name="minimumSize">
+-      <size>
+-       <width>0</width>
+-       <height>0</height>
+-      </size>
+-     </property>
++     <layout class="QVBoxLayout" name="verticalLayout_2">
++      <item>
++       <widget class="KUrlRequester" name="m_url">
++        <property name="sizePolicy">
++         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
++          <horstretch>0</horstretch>
++          <verstretch>0</verstretch>
++         </sizepolicy>
++        </property>
++        <property name="minimumSize">
++         <size>
++          <width>0</width>
++          <height>0</height>
++         </size>
++        </property>
++       </widget>
++      </item>
++      <item>
++       <layout class="QHBoxLayout" name="horizontalLayout_2">
++        <item>
++         <widget class="QRadioButton" name="m_selectDirectory">
++          <property name="text">
++           <string>Select Directory</string>
++          </property>
++         </widget>
++        </item>
++        <item>
++         <widget class="QRadioButton" name="m_selectFile">
++          <property name="text">
++           <string>Select File</string>
++          </property>
++         </widget>
++        </item>
++       </layout>
++      </item>
++     </layout>
+     </widget>
+    </item>
+    <item>
+-- 
+cgit v1.1

@@ -13,11 +13,11 @@ USE_EXPAND_VALUES_USERLAND="BSD GNU"
 
 # Env vars to expand into USE vars.  Modifying this requires prior
 # discussion on gentoo-dev@lists.gentoo.org.
-USE_EXPAND="ABI_MIPS ABI_PPC ABI_S390 ABI_X86 ALSA_CARDS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_ARM CPU_FLAGS_X86 CURL_SSL ELIBC ENLIGHTENMENT_MODULES FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LIRC_DEVICES LLVM_TARGETS MONKEYD_PLUGINS NETBEANS_MODULES NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFED_DRIVERS OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PHP_TARGETS POSTGRES_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS ROS_MESSAGES RUBY_TARGETS SANE_BACKENDS USERLAND UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XFCE_PLUGINS XTABLES_ADDONS"
+USE_EXPAND="ABI_MIPS ABI_PPC ABI_RISCV ABI_S390 ABI_X86 ADA_TARGET ALSA_CARDS APACHE2_MODULES APACHE2_MPMS CALLIGRA_FEATURES CAMERAS COLLECTD_PLUGINS CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86 CURL_SSL ELIBC ENLIGHTENMENT_MODULES FFTOOLS GPSD_PROTOCOLS GRUB_PLATFORMS INPUT_DEVICES KERNEL L10N LCD_DEVICES LIBREOFFICE_EXTENSIONS LIRC_DEVICES LLVM_TARGETS MONKEYD_PLUGINS NETBEANS_MODULES NGINX_MODULES_HTTP NGINX_MODULES_MAIL NGINX_MODULES_STREAM OFED_DRIVERS OFFICE_IMPLEMENTATION OPENMPI_FABRICS OPENMPI_OFED_FEATURES OPENMPI_RM PHP_TARGETS POSTGRES_TARGETS PYTHON_SINGLE_TARGET PYTHON_TARGETS QEMU_SOFTMMU_TARGETS QEMU_USER_TARGETS ROS_MESSAGES RUBY_TARGETS SANE_BACKENDS USERLAND UWSGI_PLUGINS VIDEO_CARDS VOICEMAIL_STORAGE XFCE_PLUGINS XTABLES_ADDONS"
 
 # USE_EXPAND variables whose contents are not shown in package manager
 # output. Changes need discussion on gentoo-dev.
-USE_EXPAND_HIDDEN="USERLAND KERNEL ELIBC ABI_MIPS ABI_PPC ABI_S390 ABI_X86 CPU_FLAGS_ARM CPU_FLAGS_X86"
+USE_EXPAND_HIDDEN="USERLAND KERNEL ELIBC ABI_MIPS ABI_PPC ABI_RISCV ABI_S390 ABI_X86 CPU_FLAGS_ARM CPU_FLAGS_PPC CPU_FLAGS_X86"
 
 CONFIG_PROTECT="/etc"
 CONFIG_PROTECT_MASK="/etc/env.d /etc/gconf"
@@ -52,59 +52,61 @@ KERNEL="linux"
 USERLAND="GNU"
 INPUT_DEVICES="keyboard mouse"
 
-# Accept any license except those in the EULA license group.
-ACCEPT_LICENSE="* -@EULA"
+# Accept only licenses in the FREE license group, i.e., with
+# the freedom to use, share, modify and share modifications
+ACCEPT_LICENSE="-* @FREE"
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (23 Mar 2013)
+# Tomáš Chvátal <scarabeus@gentoo.org> (2013-03-23)
 # By default enable libreoffice implementation only.
 OFFICE_IMPLEMENTATION="libreoffice"
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (12 Aug 2011)
+# Tomáš Chvátal <scarabeus@gentoo.org> (2011-08-12)
 # By default do not build any grub platform and let it guess.
 GRUB_PLATFORMS=""
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (05 May 2013)
+# Tomáš Chvátal <scarabeus@gentoo.org> (2013-05-05)
 # By default enable all extensions with no dependencies
 LIBREOFFICE_EXTENSIONS="presenter-console presenter-minimizer"
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (19 Aug 2011, 25 Mar 2012)
-# Johannes Huber <johu@gentoo.org> (15 Apr 2018)
-# Andreas Sturmlechner <asturm@gentoo.org> (01 Jan 2019)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2011-08-19, 2012-03-25)
+# Johannes Huber <johu@gentoo.org> (2018-04-15)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-01-01)
 # By default build all calligra features (except unmaintained: stage).
 CALLIGRA_FEATURES="karbon sheets words"
 
-# Andreas K. Huettel <dilfridge@gentoo.org> (28 Sep 2010)
+# Andreas K. Huettel <dilfridge@gentoo.org> (2010-09-28)
 # Small default list of enabled plugins for collectd
 COLLECTD_PLUGINS="df interface irq load memory rrdtool swap syslog"
 
-# Tomáš Chvátal <scarabeus@gentoo.org> (26 Oct 2010)
+# Tomáš Chvátal <scarabeus@gentoo.org> (2010-10-26)
 # By default enable all protocols for average GPS user
-GPSD_PROTOCOLS="ashtech aivdm earthmate evermore fv18 garmin garmintxt gpsclock isync itrax mtk3301 nmea ntrip navcom oceanserver oldstyle oncore rtcm104v2 rtcm104v3 sirf skytraq superstar2 timing tsip tripmate tnt ublox ubx"
+GPSD_PROTOCOLS="ashtech aivdm earthmate evermore fv18 garmin garmintxt gpsclock greis isync itrax mtk3301 nmea ntrip navcom oceanserver oldstyle oncore rtcm104v2 rtcm104v3 sirf skytraq superstar2 timing tsip tripmate tnt ublox ubx"
 
-# Benedikt Böhm <hollow@gentoo.org> (27 Nov 2007)
+# Benedikt Böhm <hollow@gentoo.org> (2007-11-27)
 # Sane defaults for built-in apache modules
-# Patrick Lauer <patrick@gentoo.org> (12 Oct 2012)
+# Patrick Lauer <patrick@gentoo.org> (2012-10-12)
 # extend for apache 2.4
 APACHE2_MODULES="authn_core authz_core socache_shmcb unixd actions alias auth_basic authn_alias authn_anon authn_dbm authn_default authn_file authz_dbm authz_default authz_groupfile authz_host authz_owner authz_user autoindex cache cgi cgid dav dav_fs dav_lock deflate dir disk_cache env expires ext_filter file_cache filter headers include info log_config logio mem_cache mime mime_magic negotiation rewrite setenvif speling status unique_id userdir usertrack vhost_alias"
 
-# Peter Volkov <pva@gentoo.org> (29 Apr 2010)
+# Peter Volkov <pva@gentoo.org> (2010-04-29)
 # Set some defaults or package will fail to build (Check mconfig in package sources)
 XTABLES_ADDONS="quota2 psd pknock lscan length2 ipv4options ipset ipp2p iface geoip fuzzy condition tee tarpit sysrq steal rawnat logmark ipmark dhcpmac delude chaos account"
 
-# Robert Buchholz <rbu@gentoo.org> (17 Jan 2006)
+# Robert Buchholz <rbu@gentoo.org> (2006-01-17)
 # Some common lcd devices
 LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses text"
 
-# Miroslav Šulc <fordfrog@gentoo.org> (19 Nov 2008)
+# Miroslav Šulc <fordfrog@gentoo.org> (2008-11-19)
 # Netbeans modules/clusters
 NETBEANS_MODULES="apisupport cnd groovy gsf harness ide identity j2ee java mobility nb php profiler soa visualweb webcommon websvccommon xml"
 
-# Manuel Rüger <mrueg@gentoo.org> (09 Sep 2015)
+# Manuel Rüger <mrueg@gentoo.org> (2015-09-09)
 # Default Ruby build target(s)
-# Updated to include ruby24 on 12 Nov 2018
-RUBY_TARGETS="ruby24"
+# Updated to include ruby24 on 2018-11-12
+# Updated to include ruby25 on 2019-07-17
+RUBY_TARGETS="ruby24 ruby25"
 
-# Samuli Suominen <ssuominen@gentoo.org> (03 Dec 2009)
+# Samuli Suominen <ssuominen@gentoo.org> (2009-12-03)
 # Enable USE cxx by default so base-system and toolchain pkgs can start using USE cxx
 # instead of USE nocxx.
 # https://archives.gentoo.org/gentoo-dev/msg_a181cd0d36600067b599f4b996c6989f.xml
@@ -114,27 +116,31 @@ USE="${USE} cxx"
 # https://archives.gentoo.org/gentoo-dev/message/ba0e3457e4b807e79816f0df03566af0
 USE="${USE} xattr"
 
-# Tiziano Müller <dev-zero@gentoo.org> (24 Jan 2010)
+# Mike Gilbert <floppym@gentoo.org> (2019-07-14)
+# Enable split-usr by default to keep existing installs as-is.
+USE="${USE} split-usr"
+
+# Tiziano Müller <dev-zero@gentoo.org> (2010-01-24)
 # We usually don't want python to (re)write .py[co] files during phase runs
 # since it could cause sandbox violations
 PYTHONDONTWRITEBYTECODE="1"
 
-# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (16 Nov 2011)
+# Jorge Manuel B. S. Vicetto <jmbsvicetto@gentoo.org> (2011-11-16)
 # Add default USE value for bootstrap and rename it from STAGE1_USE to BOOTSTRAP_USE
 # Add in expanded PYTHON_TARGETS or stage1 builds break because of USE="-* ${BOOTSTRAP_USE}"
 # This MUST be kept in sync with the PYTHON_TARGETS below
-# Mike Gilbert <floppym@gentoo.org> (23 May 2018)
+# Mike Gilbert <floppym@gentoo.org> (2018-05-23)
 # sys-apps/baslayout-2.5 needs split-usr enabled.
 BOOTSTRAP_USE="unicode internal-glib pkg-config split-usr python_targets_python3_6 python_targets_python2_7"
 
-# Mike Gilbert <floppym@gentoo.org> (15 May 2012)
+# Mike Gilbert <floppym@gentoo.org> (2012-05-15)
 # Default target(s) for python-r1.eclass
-# Mikle Kolyada <zlogene@gentoo.org> (24 Jul 2018)
+# Mikle Kolyada <zlogene@gentoo.org> (2018-07-24)
 # Updated to python3_6
 PYTHON_TARGETS="python2_7 python3_6"
 PYTHON_SINGLE_TARGET="python3_6"
 
-# Michał Górny <mgorny@gentoo.org> (10 Aug 2013)
+# Michał Górny <mgorny@gentoo.org> (2013-08-10)
 # Moved from portage's make.globals.
 # 1) do not uninstall kernel modules and therefore allow replacing them,
 # 2,3) removed wrt bug #663170,
@@ -142,20 +148,20 @@ PYTHON_SINGLE_TARGET="python3_6"
 COLLISION_IGNORE="/lib/modules/*"
 UNINSTALL_IGNORE="/lib/modules/* /var/run /var/lock"
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (23 Aug 2013)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2013-08-23)
 # Make emerge messages default to English as per Council decision
 LC_MESSAGES="C"
 
-# Brian Dolbec <dolsen@gentoo.org> (16 Jun 2017)
+# Brian Dolbec <dolsen@gentoo.org> (2017-06-16)
 # disable twisted's plugin cache update to prevent access violations
 # call /usr/bin/twisted-regen-cache in pkg_postinst()
 TWISTED_DISABLE_WRITING_OF_PLUGIN_CACHE="1"
 
-# Aaron W. Swenson <titanofold@gentoo.org> (9 Jul 2017)
+# Aaron W. Swenson <titanofold@gentoo.org> (2017-07-09)
 # Default target(s) for postgres{,-multi}.eclass
-POSTGRES_TARGETS="postgres9_5 postgres10"
+POSTGRES_TARGETS="postgres10 postgres11"
 
-# Michael Orlitzky <mjo@gentoo.org> (17 Nov 2017)
+# Michael Orlitzky <mjo@gentoo.org> (2017-11-17)
 #
 # Default PHP targets, used only for extensions at the moment.
 #
@@ -168,4 +174,9 @@ POSTGRES_TARGETS="postgres9_5 postgres10"
 # Moreover, it should only contain targets that have a stable version
 # of PHP, to avoid pulling in an unstable PHP on stable systems.
 #
-PHP_TARGETS="php5-6 php7-1"
+PHP_TARGETS="php7-2"
+
+# Alfredo Tupone <tupone@gentoo.org> (2019-09-03)
+#
+# Default ADA target
+ADA_TARGET="gnat_2018"

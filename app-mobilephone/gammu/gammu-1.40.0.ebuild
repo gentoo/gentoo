@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A tool to handle your cellular phone"
 HOMEPAGE="https://wammu.eu/gammu/"
@@ -16,7 +16,7 @@ IUSE="bluetooth curl dbi debug irda mysql nls odbc postgres usb"
 
 DEPEND="
 	dev-libs/glib:2=
-	virtual/libgudev:=
+	dev-libs/libgudev:=
 	bluetooth? ( net-wireless/bluez:= )
 	curl? ( net-misc/curl:= )
 	dbi? ( >=dev-db/libdbi-0.8.3:= )
@@ -47,18 +47,17 @@ src_configure() {
 		-DWITH_ODBC=$(usex odbc)
 		-DWITH_Postgres=$(usex postgres)
 		-DWITH_USB=$(usex usb)
-		-DBUILD_SHARED_LIBS=ON
 		-DINSTALL_DOC_DIR="share/doc/${PF}"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
 	addwrite "/run/lock/LCK..bar"
-	LD_LIBRARY_PATH="${BUILD_DIR}/libgammu" cmake-utils_src_test -j1
+	LD_LIBRARY_PATH="${BUILD_DIR}/libgammu" cmake_src_test -j1
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	docompress -x /usr/share/doc/${PF}/examples/
 }

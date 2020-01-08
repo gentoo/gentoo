@@ -1,0 +1,48 @@
+From 656306d3e68f7f1f1441f03e1765530f34ea2611 Mon Sep 17 00:00:00 2001
+From: Julian Ospald <hasufell@gentoo.org>
+Date: Thu, 27 Mar 2014 21:16:02 +0000
+Subject: [PATCH] unbundle miniupnpc
+
+---
+ CMakeLists.txt        | 1 -
+ server/CMakeLists.txt | 5 ++---
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0cafdbd5..00e033a9 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -124,7 +124,6 @@ if (USE_MINIUPNP)
+   set(UPNPC_BUILD_TESTS OFF CACHE INTERNAL "" FORCE)
+   set(UPNPC_INSTALL OFF CACHE INTERNAL "" FORCE)
+   mark_as_advanced(FORCE UPNPC_INSTALL)
+-  add_subdirectory(libraries/libminiupnpc)
+ endif()
+ 
+ # Subdirectories for Odamex projects
+diff --git a/server/CMakeLists.txt b/server/CMakeLists.txt
+index d8e57257..5badceef 100644
+--- a/server/CMakeLists.txt
++++ b/server/CMakeLists.txt
+@@ -35,8 +35,7 @@ set(JSONCPP_SOURCE ${JSONCPP_DIR}/jsoncpp.cpp)
+ 
+ # MiniUPnPc
+ if (USE_MINIUPNP)
+-  set(MINIUPNPC_DIR ../libraries/libminiupnpc)
+-  set(MINIUPNPC_STATIC_LIBRARIES upnpc-static)
++  set(MINIUPNPC_DIR /usr/include/miniupnpc)
+ endif()
+ 
+ # git describe
+@@ -74,7 +73,7 @@ add_executable(odasrv
+   ${SERVER_WIN32_HEADERS} ${SERVER_WIN32_RESOURCES})
+ 
+ if (USE_MINIUPNP)
+-  target_link_libraries(odasrv ${MINIUPNPC_STATIC_LIBRARIES})
++  target_link_libraries(odasrv -lminiupnpc)
+ endif()
+ 
+ if(WIN32)
+-- 
+2.23.0
+

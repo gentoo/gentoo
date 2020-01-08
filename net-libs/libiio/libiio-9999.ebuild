@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,10 +18,10 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
-IUSE="+aio +avahi"
+IUSE="+aio +zeroconf"
 
 RDEPEND="dev-libs/libxml2:=
 	virtual/libusb:1=
 	aio? ( dev-libs/libaio )
-	avahi? ( net-dns/avahi )"
+	zeroconf? ( net-dns/avahi )"
 DEPEND="${RDEPEND}"

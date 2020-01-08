@@ -1,6 +1,9 @@
-diff -ruN grantlee-0.3.0.orig/CMakeLists.txt grantlee-0.3.0/CMakeLists.txt
---- grantlee-0.3.0.orig/CMakeLists.txt	2012-11-01 21:14:18.000000000 +0100
-+++ grantlee-0.3.0/CMakeLists.txt	2013-03-09 12:25:56.498096399 +0100
+Do not make linker warnings fatal.
+
+Gentoo-bug: 430968
+
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
 @@ -62,8 +62,8 @@
    endif()
  

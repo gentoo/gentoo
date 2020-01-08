@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="http://www.tcl3d.org/download/${P}.distrib/${PN}-src-${PV}.zip"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="debug ode osg sdl truetype"
 
 RDEPEND="dev-lang/tcl:0=
@@ -25,7 +25,8 @@ RDEPEND="dev-lang/tcl:0=
 	truetype? ( media-libs/ftgl )
 	sdl? ( media-libs/libsdl )"
 DEPEND="${RDEPEND}
-	>=dev-lang/swig-1.3.38:0="
+	>=dev-lang/swig-1.3.38:0=
+	app-arch/unzip"
 
 S="${WORKDIR}/${PN}"
 PATCHES=( "${FILESDIR}/${P}-include-tk-dir-and-permissive.patch" )

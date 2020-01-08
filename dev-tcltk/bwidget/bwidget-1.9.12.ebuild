@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,8 +14,9 @@ SRC_URI="mirror://sourceforge/tcllib/${MY_PN}/${PV}/${P}.tar.gz"
 
 LICENSE="tcltk"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="doc"
+RESTRICT="!test? ( test )"
 
 DEPEND="dev-lang/tk:0"
 RDEPEND="${DEPEND}"
@@ -31,8 +32,7 @@ src_install() {
 	doins *.tcl
 	doins -r images lang
 
-	insinto /usr/share/doc/${PF}/
-	doins -r demo
+	dodoc -r demo
 	dodoc ChangeLog README.txt
 
 	docinto html

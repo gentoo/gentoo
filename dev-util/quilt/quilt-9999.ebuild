@@ -1,13 +1,13 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=6
 
 EGIT_REPO_URI="git://git.sv.gnu.org/quilt.git"
 
-[[ ${PV} == 9999 ]] && inherit git-2
+[[ ${PV} == 9999 ]] && inherit git-r3
 
-inherit bash-completion-r1 eutils
+inherit bash-completion-r1
 
 DESCRIPTION="quilt patch manager"
 HOMEPAGE="https://savannah.nongnu.org/projects/quilt"
@@ -30,8 +30,11 @@ RDEPEND="
 "
 
 src_prepare() {
+
+	default
+
 	# Add support for USE=graphviz
-	use graphviz || epatch "${FILESDIR}/${PN}-0.60-no-graphviz.patch"
+	use graphviz || eapply "${FILESDIR}/${PN}-0.66-no-graphviz.patch"
 
 	# remove failing test, because it fails on root-build
 	rm -rf test/delete.test
@@ -45,14 +48,13 @@ src_configure() {
 }
 
 src_install() {
-	emake BUILD_ROOT="${ED}" install
-
-	rm -rf "${ED}"/usr/share/doc/${P}
-	dodoc AUTHORS TODO quilt.changes doc/README doc/README.MAIL \
-		doc/quilt.pdf
+	emake BUILD_ROOT="${D}" install
 
 	rm -rf "${ED}"/etc/bash_completion.d
 	newbashcomp bash_completion ${PN}
+
+	rm -rf "${ED}"usr/share/doc/${PN}
+	dodoc AUTHORS TODO "doc/README" "doc/README.MAIL" "doc/quilt.pdf"
 
 	# Remove the compat symlinks
 	rm -rf "${ED}"/usr/share/quilt/compat

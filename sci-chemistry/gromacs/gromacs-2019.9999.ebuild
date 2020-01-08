@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
@@ -13,7 +13,7 @@ if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
 		https://gerrit.gromacs.org/gromacs.git
 		https://github.com/gromacs/gromacs.git
-		http://repo.or.cz/r/gromacs.git"
+		https://repo.or.cz/r/gromacs.git"
 	[[ $PV = 9999 ]] && EGIT_BRANCH="master" || EGIT_BRANCH="release-${PV:0:4}"
 	inherit git-r3
 else
@@ -28,7 +28,7 @@ DESCRIPTION="The ultimate molecular dynamics simulation package"
 HOMEPAGE="http://www.gromacs.org/"
 
 # see COPYING for details
-# http://repo.or.cz/w/gromacs.git/blob/HEAD:/COPYING
+# https://repo.or.cz/w/gromacs.git/blob/HEAD:/COPYING
 #        base,    vmd plugins, fftpack from numpy,  blas/lapck from netlib,        memtestG80 library,  mpi_thread lib
 LICENSE="LGPL-2.1 UoI-NCSA !mkl? ( !fftw? ( BSD ) !blas? ( BSD ) !lapack? ( BSD ) ) cuda? ( LGPL-3 ) threads? ( BSD )"
 SLOT="0/${PV}"
@@ -49,13 +49,15 @@ CDEPEND="
 	lmfit? ( sci-libs/lmfit )
 	mkl? ( sci-libs/mkl )
 	mpi? ( virtual/mpi )
+	${PYTHON_DEPS}
 	"
-DEPEND="${CDEPEND}
+BDEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		media-gfx/mscgen
+		media-gfx/graphviz
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 		media-gfx/imagemagick
@@ -66,9 +68,12 @@ REQUIRED_USE="
 	|| ( single-precision double-precision )
 	cuda? ( single-precision )
 	cuda? ( !opencl )
-	mkl? ( !blas !fftw !lapack )"
+	mkl? ( !blas !fftw !lapack )
+	${PYTHON_REQUIRED_USE}"
 
 DOCS=( AUTHORS README )
+
+RESTRICT="!test? ( test )"
 
 if [[ ${PV} != *9999 ]]; then
 	S="${WORKDIR}/${PN}-${PV/_/-}"
@@ -230,9 +235,11 @@ src_configure() {
 		mycmakeargs=(
 			${mycmakeargs_pre[@]} ${p}
 			-DGMX_THREAD_MPI=OFF
-			-DGMX_MPI=ON ${cuda}
+			-DGMX_MPI=ON
 			-DGMX_OPENMM=OFF
 			-DGMXAPI=OFF
+			"${opencl[@]}"
+			"${cuda[@]}"
 			-DGMX_BUILD_MDRUN_ONLY=ON
 			-DBUILD_SHARED_LIBS=OFF
 			-DGMX_BUILD_MANUAL=OFF
@@ -286,14 +293,14 @@ src_install() {
 		doins src/external/tng_io/include/tng/*h
 	fi
 	# drop unneeded stuff
-	rm "${ED}"usr/bin/GMXRC* || die
-	for x in "${ED}"usr/bin/gmx-completion-*.bash ; do
+	rm "${ED}"/usr/bin/GMXRC* || die
+	for x in "${ED}"/usr/bin/gmx-completion-*.bash ; do
 		local n=${x##*/gmx-completion-}
 		n="${n%.bash}"
-		cat "${ED}"usr/bin/gmx-completion.bash "$x" > "${T}/${n}" || die
+		cat "${ED}"/usr/bin/gmx-completion.bash "$x" > "${T}/${n}" || die
 		newbashcomp "${T}"/"${n}" "${n}"
 	done
-	rm "${ED}"usr/bin/gmx-completion*.bash || die
+	rm "${ED}"/usr/bin/gmx-completion*.bash || die
 	readme.gentoo_create_doc
 }
 

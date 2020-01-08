@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: cdrom.eclass
@@ -28,9 +28,9 @@ inherit portability
 # conditionally based on USE="cdinstall".
 if [[ ${CDROM_OPTIONAL} == "yes" ]] ; then
 	IUSE="cdinstall"
-	PROPERTIES="cdinstall? ( interactive )"
+	PROPERTIES+=" cdinstall? ( interactive )"
 else
-	PROPERTIES="interactive"
+	PROPERTIES+=" interactive"
 fi
 
 # @FUNCTION: cdrom_get_cds

@@ -1,0 +1,22 @@
+diff --git a/checker/src/plugincandidates.cpp b/checker/src/plugincandidates.cpp
+index 2990905..8297253 100644
+--- a/checker/src/plugincandidates.cpp
++++ b/checker/src/plugincandidates.cpp
+@@ -37,7 +37,7 @@
+ 
+ #include <QProcess>
+ #include <QDir>
+-#include <QTime>
++#include <QElapsedTimer>
+ 
+ #if defined(_WIN32)
+ #define PLUGIN_GLOB "*.dll"
+@@ -231,7 +231,7 @@ PluginCandidates::runHelper(vector<string> libraries, string descriptor)
+         process.write("\n", 1);
+     }
+ 
+-    QTime t;
++    QElapsedTimer t;
+     t.start();
+     int timeout = 15000; // ms
+ 

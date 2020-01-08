@@ -5,8 +5,8 @@ EAPI=7
 inherit flag-o-matic udev xdg-utils
 
 DESCRIPTION="Separate utilities ebuild from upstream v4l-utils package"
-HOMEPAGE="http://git.linuxtv.org/v4l-utils.git"
-SRC_URI="http://linuxtv.org/downloads/v4l-utils/${P}.tar.bz2"
+HOMEPAGE="https://git.linuxtv.org/v4l-utils.git"
+SRC_URI="https://linuxtv.org/downloads/v4l-utils/${P}.tar.bz2"
 
 LICENSE="GPL-2+ LGPL-2.1+"
 SLOT="0"

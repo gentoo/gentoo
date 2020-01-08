@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,7 @@ inherit autotools bash-completion-r1 eutils flag-o-matic ghc-package
 inherit multilib pax-utils toolchain-funcs versionator
 
 DESCRIPTION="The Glasgow Haskell Compiler"
-HOMEPAGE="http://www.haskell.org/ghc/"
+HOMEPAGE="https://www.haskell.org/ghc/"
 
 # we don't have any binaries yet
 arch_binaries=""
@@ -58,7 +58,7 @@ GHC_PV=${PV}
 #GHC_PV=7.8.3.20141119 # uncomment only for -rc ebuilds
 GHC_P=${PN}-${GHC_PV} # using ${P} is almost never correct
 
-SRC_URI="!binary? ( http://downloads.haskell.org/~ghc/${PV/_rc/-rc}/${GHC_P}-src.tar.bz2 )"
+SRC_URI="!binary? ( https://downloads.haskell.org/~ghc/${PV/_rc/-rc}/${GHC_P}-src.tar.bz2 )"
 S="${WORKDIR}"/${GHC_P}
 
 [[ -n $arch_binaries ]] && SRC_URI+=" !ghcbootstrap? ( $arch_binaries )"
@@ -79,7 +79,7 @@ RDEPEND="
 
 PREBUILT_BINARY_DEPENDS="
 	!prefix? ( elibc_glibc? ( >=sys-libs/glibc-2.17 ) )
-	sys-libs/ncurses:5/5
+	sys-libs/ncurses-compat:5
 "
 
 RDEPEND+="binary? ( ${PREBUILT_BINARY_DEPENDS} )"
@@ -177,11 +177,11 @@ ghc_setup_cflags() {
 	gcc-specs-ssp && append-ghc-cflags persistent compile      -fno-stack-protector
 
 	# prevent from failind building unregisterised ghc:
-	# http://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg171602.html
+	# https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg171602.html
 	use ppc64 && append-ghc-cflags persistent compile -mminimal-toc
 	# fix the similar issue as ppc64 TOC on ia64. ia64 has limited size of small data
 	# currently ghc fails to build haddock
-	# http://osdir.com/ml/gnu.binutils.bugs/2004-10/msg00050.html
+	# https://osdir.com/ml/gnu.binutils.bugs/2004-10/msg00050.html
 	use ia64 && append-ghc-cflags persistent compile -G0
 }
 

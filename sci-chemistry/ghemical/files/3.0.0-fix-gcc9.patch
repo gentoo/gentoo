@@ -1,0 +1,37 @@
+https://bugs.gentoo.org/687450
+
+project.h:210:14: error: friend declaration of ‘bool ReadGPR_OLD(project&, std::istream&, bool, bool)’ specifies default arguments and isn’t a definition [-fpermissive]
+  210 |  friend bool ReadGPR_OLD(project &, istream &, bool, bool = false);  ///< this is for the very old version.
+      |              ^~~~~~~~~~~
+
+--- a/src/project.h
++++ b/src/project.h
+@@ -122,6 +122,12 @@
+ 	graphical user interface.
+ */
+ 
++class project;
++bool ReadGPR_OLD(project &, istream &, bool, bool = false);
++bool ReadGPR_v100(project &, istream &, bool, bool = false);
++bool ReadGPR_v110(project &, istream &, bool, bool = false);
++bool ReadGPR(project &, istream &, bool, bool = false);
++
+ class project :
+ 	public custom_transformer_client,
+ 	public model
+@@ -207,11 +213,11 @@
+ 
+ // methods for file I/O : ReadGPR and WriteGPR are friend functions so that it would be easier to "borrow" them elsewhere...
+ // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-	friend bool ReadGPR_OLD(project &, istream &, bool, bool = false);		///< this is for the very old version.
+-	friend bool ReadGPR_v100(project &, istream &, bool, bool = false);		///< this is for the version 1.00.
+-	friend bool ReadGPR_v110(project &, istream &, bool, bool = false);		///< this is for the version 1.10.
++	friend bool ReadGPR_OLD(project &, istream &, bool, bool);		///< this is for the very old version.
++	friend bool ReadGPR_v100(project &, istream &, bool, bool);		///< this is for the version 1.00.
++	friend bool ReadGPR_v110(project &, istream &, bool, bool);		///< this is for the version 1.10.
+ /// This is an input function for the v1.11 ghemical file format.
+-	friend bool ReadGPR(project &, istream &, bool, bool = false);
++	friend bool ReadGPR(project &, istream &, bool, bool);
+ 	
+ 	friend void WriteGPR_v100(project &, ostream &);	///< this is for the version 1.00.
+ /// This is an output function for the v1.11 ghemical file format.

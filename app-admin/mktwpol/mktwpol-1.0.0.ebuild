@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/mktwpol/${P}.tar.gz"
 
 LICENSE="CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 
 RDEPEND="app-admin/tripwire"

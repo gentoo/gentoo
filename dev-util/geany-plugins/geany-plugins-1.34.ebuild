@@ -13,7 +13,7 @@ SRC_URI="https://plugins.geany.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
 
 IUSE="+gtk3 ctags debugger enchant git gpg gtkspell lua markdown multiterm nls pretty-printer python scope soup"
 REQUIRED_USE="

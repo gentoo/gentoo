@@ -6,13 +6,10 @@ EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="A Linux interactivity benchmark"
-HOMEPAGE="
-	http://interbench.kolivas.org/
-	https://github.com/ckolivas/interbench/
-"
+HOMEPAGE="https://github.com/ckolivas/interbench/"
 SRC_URI="https://github.com/ckolivas/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="GPL-2+"
 SLOT="0"
 

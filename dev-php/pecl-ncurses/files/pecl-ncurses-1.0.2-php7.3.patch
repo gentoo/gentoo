@@ -1,0 +1,175 @@
+diff -aurN a/ncurses_fe.c b/ncurses_fe.c
+--- a/ncurses_fe.c	2012-06-16 13:05:19.000000000 -0400
++++ b/ncurses_fe.c	2019-02-06 10:41:09.000000000 -0500
+@@ -123,7 +123,9 @@
+ 	PHP_FE(ncurses_savetty,			NULL)
+ 	PHP_FE(ncurses_termattrs,		NULL)
+ 	PHP_FE(ncurses_use_default_colors,	NULL)
++#ifdef HAVE_NCURSES_SLK_ATTR
+ 	PHP_FE(ncurses_slk_attr,		NULL)
++#endif
+ 	PHP_FE(ncurses_slk_clear,		NULL)
+ 	PHP_FE(ncurses_slk_noutrefresh,		NULL)
+ 	PHP_FE(ncurses_slk_refresh,		NULL)
+@@ -191,7 +193,9 @@
+ #ifdef HAVE_NCURSES_ASSUME_DEFAULT_COLORS
+ 	PHP_FE(ncurses_assume_default_colors,	NULL)
+ #endif
++#ifdef HAVE_NCURSES_DEFINE_KEY
+ 	PHP_FE(ncurses_define_key,	NULL)
++#endif
+ 	PHP_FE(ncurses_hline,		NULL)
+ 	PHP_FE(ncurses_vline,		NULL)
+ 	PHP_FE(ncurses_keyok,		NULL)
+@@ -205,6 +209,10 @@
+ 	PHP_FE(ncurses_waddstr,		NULL)
+ 	PHP_FE(ncurses_wnoutrefresh,	NULL)
+ 	PHP_FE(ncurses_wclear,		NULL)
++	PHP_FE(ncurses_wscrl,			NULL)
++	PHP_FE(ncurses_wsetscrreg, 		NULL)
++	PHP_FE(ncurses_scrollok, 		NULL)
++
+ #ifdef HAVE_NCURSES_COLOR_SET
+ 	PHP_FE(ncurses_wcolor_set,	NULL)
+ #endif
+diff -aurN a/ncurses_functions.c b/ncurses_functions.c
+--- a/ncurses_functions.c	2019-06-07 11:00:54.713250845 -0400
++++ b/ncurses_functions.c	2019-02-06 10:41:09.000000000 -0500
+@@ -163,16 +163,25 @@
+ 		*pscr = stdscr;
+ 		zscr = zend_register_resource(pscr, le_ncurses_windows);
+ 		ZVAL_RES(&c.value, zscr);
++#if PHP_VERSION_ID < 70300
+ 		c.flags = CONST_CS;
++#endif
+ 		c.name = zend_string_init("STDSCR", sizeof("STDSCR")-1, 0);
+ 		zend_register_constant(&c);
+ 
++#if PHP_VERSION_ID < 70300
+ #define PHP_NCURSES_DEF_CONST(x)    \
+ 		ZVAL_LONG(&c.value, x);         \
+ 		c.flags = CONST_CS;         \
+ 		c.name = zend_string_init("NCURSES_" #x, sizeof("NCURSES_" #x)-1, 0); \
+ 		zend_register_constant(&c)
+ #else
++#define PHP_NCURSES_DEF_CONST(x)    \
++		ZVAL_LONG(&c.value, x);         \
++		c.name = zend_string_init("NCURSES_" #x, sizeof("NCURSES_" #x)-1, 0); \
++		zend_register_constant(&c)
++#endif
++#else
+ 		zval *zscr;
+ 
+ 		*pscr = stdscr;
+@@ -188,7 +197,6 @@
+ 		/* we need this "interesting" arrangement because the
+ 		 * underlying values of the ACS_XXX defines are not
+ 		 * initialized until after ncurses has been initialized */
+-		
+ #define PHP_NCURSES_DEF_CONST(x)    \
+ 		ZVAL_LONG(zscr, x);         \
+ 		c.value = *zscr;            \
+@@ -1904,6 +1912,66 @@
+ }
+ /* }}} */
+ 
++/* {{{ proto int ncurses_wscrl(resource window, int count)
++   Scrolls window content up or down without changing current position */
++PHP_FUNCTION(ncurses_wscrl)
++{
++	zval *handle;
++	zend_long intarg;
++	WINDOW **w;
++
++	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "rl", &handle, &intarg) == FAILURE) {
++		return;
++	}
++
++	IS_NCURSES_INITIALIZED();
++
++	FETCH_WINRES(w, &handle);
++
++	RETURN_LONG(wscrl(*w, intarg));
++}
++/* }}} */
++
++/* {{{ proto int ncurses_wsetscrreg(resource window, int top, int bot)
++   Set region for scrolling */
++PHP_FUNCTION(ncurses_wsetscrreg)
++{
++	zval *handle;
++	zend_long top, bot;
++	WINDOW **w;
++
++	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "rll", &handle, &top, &bot) == FAILURE) {
++		return;
++	}
++
++	IS_NCURSES_INITIALIZED();
++
++	FETCH_WINRES(w, &handle);
++
++	RETURN_LONG(wsetscrreg(*w, top, bot));
++}
++/* }}} */
++
++/* {{{ proto int ncurses_scrollok(resource window, bool bf)
++   Enable or disable scrolling of window content */
++PHP_FUNCTION(ncurses_scrollok)
++{
++	zval *handle;
++	zend_bool bf;
++	WINDOW **w;
++
++	if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "rb", &handle, &bf) == FAILURE) {
++		return;
++	}
++
++	IS_NCURSES_INITIALIZED();
++
++	FETCH_WINRES(w, &handle);
++
++	RETURN_LONG(scrollok(*w, bf));
++}
++/* }}} */
++
+ /* {{{ proto string ncurses_termname(void)
+    Returns terminal name */
+ PHP_FUNCTION(ncurses_termname)
+@@ -2609,7 +2677,11 @@
+ 	if (above) {
+ #if PHP_MAJOR_VERSION >= 7
+ 		zend_resource *id = (zend_resource *)panel_userptr(above);
++#if PHP_VERSION_ID < 70300
+ 		GC_REFCOUNT(id)++;
++#else
++		GC_ADDREF(id);
++#endif
+ 		RETURN_RES(id);
+ #else
+ 		long id = (long)panel_userptr(above);
+@@ -2643,7 +2715,11 @@
+ 	if (below) {
+ #if PHP_MAJOR_VERSION >= 7
+ 		zend_resource *id = (zend_resource *)panel_userptr(below);
++#if PHP_VERSION_ID < 70300
+ 		GC_REFCOUNT(id)++;
++#else
++		GC_ADDREF(id);
++#endif
+ 		RETURN_RES(id);
+ #else
+ 		long id = (long)panel_userptr(below);
+diff -aurN a/php_ncurses_fe.h b/php_ncurses_fe.h
+--- a/php_ncurses_fe.h	2012-06-16 13:05:19.000000000 -0400
++++ b/php_ncurses_fe.h	2019-02-06 10:41:09.000000000 -0500
+@@ -158,6 +158,9 @@
+ PHP_FUNCTION(ncurses_prefresh);
+ PHP_FUNCTION(ncurses_pnoutrefresh);
+ 
++PHP_FUNCTION(ncurses_wscrl);
++PHP_FUNCTION(ncurses_wsetscrreg);
++PHP_FUNCTION(ncurses_scrollok);
+ PHP_FUNCTION(ncurses_wstandout);
+ PHP_FUNCTION(ncurses_wstandend);
+ PHP_FUNCTION(ncurses_wattrset);

@@ -4,6 +4,8 @@
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 VALA_MIN_API_VERSION="0.36"
+# 0.46 has problems with spice-client-glib-2.0.vapi exposing a bad constructor
+VALA_MAX_API_VERSION="0.44"
 
 inherit gnome.org gnome2-utils linux-info meson readme.gentoo-r1 vala xdg
 
@@ -14,7 +16,7 @@ LICENSE="LGPL-2+ CC-BY-2.0"
 SLOT="0"
 
 IUSE="rdp"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 # FIXME: ovirt is not available in tree; though it seems the gnome-boxes ovirt broker is too buggy atm anyways (would need rest[vala] as well)
 # FIXME: qemu probably needs to depend on spice[smartcard] directly with USE=spice
@@ -26,21 +28,27 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.52:2
 	>=dev-libs/gobject-introspection-1.54:=
 	>=x11-libs/gtk+-3.22.20:3[introspection]
-	>=net-libs/gtk-vnc-0.8.0-r1[gtk3(+),vala]
-	>=sys-libs/libosinfo-1.1.0[vala]
-	app-crypt/libsecret[vala]
-	>=net-libs/libsoup-2.44:2.4[vala]
+	>=net-libs/gtk-vnc-0.8.0-r1[gtk3(+)]
+	>=dev-libs/libgudev-165:=
+	>=sys-libs/libosinfo-1.1.0
+	app-crypt/libsecret
+	>=net-libs/libsoup-2.44:2.4
 	virtual/libusb:1
-	>=app-emulation/libvirt-glib-0.2.3[vala]
+	>=app-emulation/libvirt-glib-0.2.3
 	>=dev-libs/libxml2-2.7.8:2
-	>=net-misc/spice-gtk-0.32[gtk3(+),smartcard,usbredir,vala]
+	>=net-misc/spice-gtk-0.32[gtk3(+),smartcard,usbredir]
 	app-misc/tracker:0/2.0
 	net-libs/webkit-gtk:4
-	>=virtual/libgudev-165:=
 	rdp? ( net-misc/freerdp:= )
 "
 DEPEND="${COMMON_DEPEND}
 	$(vala_depend)
+	net-libs/gtk-vnc[vala]
+	sys-libs/libosinfo[vala]
+	app-crypt/libsecret[vala]
+	net-libs/libsoup:2.4[vala]
+	app-emulation/libvirt-glib[vala]
+	net-misc/spice-gtk[vala]
 	dev-libs/appstream-glib
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8

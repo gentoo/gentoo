@@ -1,17 +1,22 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (16 Feb 2019)
+# Joonas Niilola <juippis@gentoo.org> (2019-07-31)
+# Force 'unwind' on for arm with dev-libs/efl
+# 618232
+dev-libs/efl unwind
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-02-16)
 # Force the host target
 dev-lang/rust llvm_targets_ARM
 
-# Michał Górny <mgorny@gentoo.org> (24 Sep 2016)
+# Michał Górny <mgorny@gentoo.org> (2016-09-24)
 # Force the host target to avoid dependency hell
 dev-ml/llvm-ocaml llvm_targets_ARM
 sys-devel/clang llvm_targets_ARM
 sys-devel/llvm llvm_targets_ARM
 
-# Anthony G. Basile <blueness@gentoo.org> (11 Nov 2012)
+# Anthony G. Basile <blueness@gentoo.org> (2012-11-11)
 # Only gnome-base/gdm has stable keywording. If x11-misc/lightdm or kde-plasma/kdm
 # gets stable keyword, this line can be removed.
 x11-misc/xscreensaver gdm

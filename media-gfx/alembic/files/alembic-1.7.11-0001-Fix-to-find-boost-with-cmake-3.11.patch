@@ -1,0 +1,60 @@
+From 2060f95c43685895f36269667c30acf7499b81b6 Mon Sep 17 00:00:00 2001
+From: Bernd Waibel <waebbl@gmail.com>
+Date: Sat, 15 Jun 2019 13:19:57 +0200
+Subject: [PATCH 1/5] Fix to find boost with >=cmake-3.11
+
+Cmake version 3.11 and later has a new syntax introduced, when
+looking for boost libraries.
+This patches adds this syntax if an appropriate cmake version is used.
+
+Signed-off-by: Bernd Waibel <waebbl@gmail.com>
+---
+ cmake/AlembicBoost.cmake        | 10 +++++++++-
+ python/PyAlembic/CMakeLists.txt |  8 ++++----
+ 2 files changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/cmake/AlembicBoost.cmake b/cmake/AlembicBoost.cmake
+index 21b3515..db59157 100644
+--- a/cmake/AlembicBoost.cmake
++++ b/cmake/AlembicBoost.cmake
+@@ -79,7 +79,15 @@ IF (USE_PYALEMBIC AND APPLE)
+ ENDIF()
+ 
+ IF (USE_PYALEMBIC)
+-    FIND_PACKAGE(Boost 1.42.0 COMPONENTS program_options python)
++    # cmake>=3.11 has a new syntax when searching for boost, which
++    # needs to add the python version.
++    # Hardcode the python version number, as PYTHON_VERSION_{MAJOR,MINOR}
++    # are not yet know in the configuration phase.
++    IF(CMAKE_MINOR_VERSION VERSION_GREATER 10)
++         FIND_PACKAGE(Boost 1.42.0 COMPONENTS program_options python27)
++    ELSE()
++         FIND_PACKAGE(Boost 1.42.0 COMPONENTS program_options python)
++    ENDIF()
+ ELSE()
+     FIND_PACKAGE(Boost 1.42.0 COMPONENTS program_options)
+ ENDIF()
+diff --git a/python/PyAlembic/CMakeLists.txt b/python/PyAlembic/CMakeLists.txt
+index a3fdb31..af8dcb5 100644
+--- a/python/PyAlembic/CMakeLists.txt
++++ b/python/PyAlembic/CMakeLists.txt
+@@ -33,12 +33,12 @@
+ ##
+ ##-*****************************************************************************
+ 
+-MESSAGE(STATUS "Boost_PYTHON_LIBRARY: ${Boost_PYTHON_LIBRARY}")
++MESSAGE(STATUS "Boost_PYTHON${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}_LIBRARY: ${Boost_PYTHON${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}_LIBRARY_RELEASE}")
+ 
+ # set core libs
+-IF (Boost_PYTHON_LIBRARY AND ALEMBIC_PYTHON_LIBRARY)
+-    MESSAGE(STATUS "Found libboost_python: ${Boost_PYTHON_LIBRARY}")
+-    SET(PLIBS ${ALEMBIC_PYTHON_LIBRARY} ${Boost_PYTHON_LIBRARY})
++IF (Boost_PYTHON${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}_LIBRARY_RELEASE AND ALEMBIC_PYTHON_LIBRARY)
++    MESSAGE(STATUS "Found libboost_python: ${Boost_PYTHON${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}_LIBRARY_RELEASE}")
++    SET(PLIBS ${ALEMBIC_PYTHON_LIBRARY} ${Boost_PYTHON${PYTHON_VERSION_MAJOR}${PYTHON_VERSION_MINOR}_LIBRARY_RELEASE})
+ 
+     # lots of warnings coming from unused local typedefs inside boost python
+     IF (NOT WINDOWS)
+-- 
+2.22.0
+

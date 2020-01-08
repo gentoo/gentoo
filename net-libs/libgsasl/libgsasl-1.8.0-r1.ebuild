@@ -10,7 +10,7 @@ HOMEPAGE="https://www.gnu.org/software/gsasl/"
 SRC_URI="mirror://gnu/${PN/lib}/${P}.tar.gz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="idn gcrypt kerberos nls ntlm static-libs"
 DEPEND="
 	gcrypt? ( dev-libs/libgcrypt:0 )

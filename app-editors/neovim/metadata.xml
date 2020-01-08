@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>vim@gentoo.org</email>
-    <name>Gentoo Vim Project</name>
-  </maintainer>
-  <use>
-    <flag name="clipboard">Enable clipboard support through a provider</flag>
-    <flag name="nvimpager">Install nvimpager symlink to less.sh macro</flag>
-    <flag name="remote">Enable support for remote options using nvr</flag>
-    <flag name="tui">Build the neovim unix tui</flag>
-  </use>
-  <upstream>
-    <remote-id type="github">neovim/neovim</remote-id>
-  </upstream>
+	<maintainer type="person">
+		<email>bernardo@standard.ai</email>
+		<name>Bernardo Meurer</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Gentoo Proxy Maintainers Project</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>vim@gentoo.org</email>
+		<name>Gentoo Vim Project</name>
+	</maintainer>
+	<use>
+		<flag name="clipboard">Enable clipboard support through a provider</flag>
+		<flag name="nvimpager">Install nvimpager symlink to less.sh macro</flag>
+		<flag name="remote">Enable support for remote options using nvr</flag>
+		<flag name="tui">Build the neovim unix tui</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">neovim/neovim</remote-id>
+	</upstream>
 </pkgmetadata>

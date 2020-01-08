@@ -1,4 +1,4 @@
-# Copyright 2001-2019 Arfrever Frehtes Taifersar Arahesis and others
+# Copyright 2001-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,25 +11,26 @@ SRC_URI="http://webdav.org/neon/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/27"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc expat gnutls kerberos libproxy libressl nls pkcs11 ssl static-libs zlib"
 RESTRICT="test"
 
 RDEPEND="expat? ( dev-libs/expat:0=[${MULTILIB_USEDEP}] )
 	!expat? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
-	gnutls? (
-		app-misc/ca-certificates
-		net-libs/gnutls:0=[${MULTILIB_USEDEP}]
-		pkcs11? ( dev-libs/pakchois:0=[${MULTILIB_USEDEP}] )
-	)
-	!gnutls? ( ssl? (
-		libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
-		!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
-		pkcs11? ( dev-libs/pakchois:0=[${MULTILIB_USEDEP}] )
-	) )
 	kerberos? ( virtual/krb5:0=[${MULTILIB_USEDEP}] )
 	libproxy? ( net-libs/libproxy:0=[${MULTILIB_USEDEP}] )
 	nls? ( virtual/libintl:0=[${MULTILIB_USEDEP}] )
+	ssl? (
+		gnutls? (
+			app-misc/ca-certificates
+			net-libs/gnutls:0=[${MULTILIB_USEDEP}]
+		)
+		!gnutls? (
+			libressl? ( dev-libs/libressl:=[${MULTILIB_USEDEP}] )
+			!libressl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP}] )
+		)
+		pkcs11? ( dev-libs/pakchois:0=[${MULTILIB_USEDEP}] )
+	)
 	zlib? ( sys-libs/zlib:0=[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig[${MULTILIB_USEDEP}]"
@@ -45,10 +46,12 @@ src_prepare() {
 	# Fix compatibility with OpenSSL >=1.1.
 	sed -e "s/RSA_F_RSA_PRIVATE_ENCRYPT/RSA_F_RSA_OSSL_PRIVATE_ENCRYPT/" -i src/ne_pkcs11.c || die "sed failed"
 
-	# Use OpenSSL <1.1 compatibility code with LibreSSL.
-	# Functions EVP_PKEY_up_ref(), EVP_PKEY_get0_RSA(), RSA_meth_get0_app_data(), RSA_meth_new(), RSA_meth_free(),
-	# RSA_meth_set_priv_enc(), RSA_meth_set0_app_data() are not implemented in LibreSSL 2.5.1.
-	sed -e "s/#if OPENSSL_VERSION_NUMBER < 0x10100000L/& || defined(LIBRESSL_VERSION_NUMBER)/" -i src/ne_openssl.c src/ne_pkcs11.c || die "sed failed"
+	if has_version "<dev-libs/libressl-3.0.0"; then
+		# Support LibreSSL.
+		# Functions RSA_meth_get0_app_data() and RSA_meth_set0_app_data() are not implemented in LibreSSL 2.9.2.
+		sed -e "1202s/#if OPENSSL_VERSION_NUMBER < 0x10100000L/& || defined(LIBRESSL_VERSION_NUMBER)/" -i src/ne_openssl.c || die "sed failed"
+		sed -e "97a #if defined(LIBRESSL_VERSION_NUMBER)\nstatic void *RSA_meth_get0_app_data(const RSA_METHOD *meth)\n{\n    return meth->app_data;\n}\nstatic int RSA_meth_set0_app_data(RSA_METHOD *meth, void *app_data)\n{\n    meth->app_data = app_data;\n    return 1;\n}\n#endif" -i src/ne_pkcs11.c || die "sed failed"
+	fi
 
 	eapply_user
 
@@ -73,10 +76,12 @@ multilib_src_configure() {
 		myconf+=(--with-libxml2)
 	fi
 
-	if use gnutls; then
-		myconf+=(--with-ssl=gnutls --with-ca-bundle="${EPREFIX}/etc/ssl/certs/ca-certificates.crt")
-	elif use ssl; then
-		myconf+=(--with-ssl=openssl)
+	if use ssl; then
+		if use gnutls; then
+			myconf+=(--with-ssl=gnutls --with-ca-bundle="${EPREFIX}/etc/ssl/certs/ca-certificates.crt")
+		else
+			myconf+=(--with-ssl=openssl)
+		fi
 	fi
 
 	econf \
@@ -103,7 +108,7 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	find "${ED}" -name "*.la" -delete
+	find "${D}" -name "*.la" -type f -delete || die
 
 	dodoc AUTHORS BUGS NEWS README THANKS TODO
 }

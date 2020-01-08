@@ -15,7 +15,7 @@ SRC_URI="https://freedesktop.org/software/pulseaudio/releases/${P}.tar.xz"
 LICENSE="!gdbm? ( LGPL-2.1 ) gdbm? ( GPL-2 )"
 
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ppc ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
 
 # +alsa-plugin as discussed in bug #519530
 IUSE="+alsa +alsa-plugin +asyncns bluetooth +caps dbus doc equalizer elogind gconf
@@ -23,6 +23,7 @@ IUSE="+alsa +alsa-plugin +asyncns bluetooth +caps dbus doc equalizer elogind gco
 ofono-headset +orc oss qt5 realtime selinux sox ssl systemd system-wide tcpd test
 +udev +webrtc-aec +X zeroconf"
 
+RESTRICT="!test? ( test )"
 # See "*** BLUEZ support not found (requires D-Bus)" in configure.ac
 REQUIRED_USE="
 	?? ( elogind systemd )

@@ -30,7 +30,7 @@ SRC_URI="mirror://sourceforge/project/slim.berlios/slim-1.2.3-themepack1a.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~mips ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 arm ~mips ppc ppc64 sparc x86"
 IUSE=""
 
 RDEPEND="x11-misc/slim"

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
 inherit distutils-r1
 
@@ -18,36 +18,21 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux"
 LICENSE="BSD-2"
 IUSE="doc test"
-
-REQUIRED_USE="doc? ( || ( $(python_gen_useflags 'python2*') ) )"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-		)"
-# Required for running tests
-DISTUTILS_IN_SOURCE_BUILD=1
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}"/${P#python-}
-
-pkg_setup() {
-	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
-}
 
 python_compile_all() {
 	use doc && emake -C docs html
 }
 
 python_test() {
-	if python_is_python3; then
-		2to3 -w --no-diffs -n tests/ sqlparse/
-		py.test ./tests || die "testsuite failed ${EPYTHON}"
-	else
-		py.test tests || die "testsuite failed under ${EPYTHON}"
-	fi
+	pytest tests || die "testsuite failed under ${EPYTHON}"
 }
 
 python_install_all() {

@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 if [[ ${PV} = 9999* ]]; then
-	EGIT_REPO_URI="https://anongit.freedesktop.org/git/wayland/weston.git"
+	EGIT_REPO_URI="https://gitlab.freedesktop.org/wayland/weston.git"
 	GIT_ECLASS="git-r3"
 	EXPERIMENTAL="true"
 fi
@@ -12,7 +12,7 @@ fi
 inherit autotools readme.gentoo-r1 toolchain-funcs $GIT_ECLASS
 
 DESCRIPTION="Wayland reference compositor"
-HOMEPAGE="https://wayland.freedesktop.org/"
+HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/weston"
 
 if [[ $PV = 9999* ]]; then
 	SRC_URI="${SRC_PATCHES}"
@@ -26,6 +26,7 @@ LICENSE="MIT CC-BY-SA-3.0"
 SLOT="0"
 
 IUSE="colord dbus +drm editor examples fbdev +gles2 headless ivi jpeg +launch lcms rdp +resize-optimization screen-sharing static-libs +suid systemd test unwind wayland-compositor webp +X xwayland"
+RESTRICT="!test? ( test )"
 
 REQUIRED_USE="
 	drm? ( gles2 )

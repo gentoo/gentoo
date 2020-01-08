@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="http://download.savannah.gnu.org/releases/fbi-improved/${P/_rc/-rc}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="aalib bmp dia djvu exif fbcon gif graphicsmagick imagemagick jpeg jpeg2k pcx pdf png postscript readline sdl static svg tiff xfig"
+IUSE="aalib bmp dia djvu exif fbcon gif graphicsmagick imagemagick jpeg pcx pdf png postscript readline sdl static svg tiff xfig"
 
 RDEPEND="media-fonts/terminus-font
 	aalib? ( media-libs/aalib[slang] )
@@ -23,7 +23,6 @@ RDEPEND="media-fonts/terminus-font
 	graphicsmagick? ( media-gfx/graphicsmagick )
 	imagemagick? ( virtual/imagemagick-tools )
 	jpeg? ( virtual/jpeg:0 )
-	jpeg2k? ( media-libs/jasper:= )
 	pdf? ( >=app-text/poppler-0.31 )
 	png? ( media-libs/libpng:0= )
 	postscript? ( app-text/libspectre )
@@ -42,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.4_rc3-poppler031.patch"
 	"${FILESDIR}/${PN}-0.5_rc3-jpeg.patch"
 	"${FILESDIR}/${PN}-0.5_rc3-libsdl.patch"
+	"${FILESDIR}/${PN}-0.5_rc3-jpeg-9c.patch"
 )
 
 src_prepare() {
@@ -61,7 +61,6 @@ src_configure() {
 		$(use_enable graphicsmagick) \
 		$(use_enable imagemagick convert) \
 		$(use_enable jpeg) \
-		$(use_enable jpeg2k jasper) \
 		$(use_enable pcx) \
 		$(use_enable pdf poppler) \
 		$(use_enable png) \
@@ -74,6 +73,7 @@ src_configure() {
 		$(use_enable xfig) \
 		--disable-hardcoded-font \
 		--disable-imlib2 \
+		--disable-jasper \
 		--disable-matrices-rendering \
 		--disable-xcftopnm \
 		--enable-fimrc \
@@ -82,8 +82,6 @@ src_configure() {
 		--enable-mark-and-dump \
 		--enable-output-console \
 		--enable-raw-bits-rendering \
-		--enable-read-dirs \
-		--enable-recursive-dirs \
 		--enable-resize-optimizations \
 		--enable-scan-consolefonts \
 		--enable-screen \

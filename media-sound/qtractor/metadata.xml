@@ -14,6 +14,7 @@
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
+		<flag name="aubio">Enable <pkg>media-libs/aubio</pkg> support</flag>
 		<flag name="dssi">Enable support for DSSI Soft Synth Interface</flag>
 		<flag name="rubberband">Enable support for in-place audio clip pitch-shifting through the rubberband library</flag>
 	</use>

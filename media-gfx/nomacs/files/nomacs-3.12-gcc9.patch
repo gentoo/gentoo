@@ -1,0 +1,39 @@
+From 37805e3bc8753970127db101f4aa0c061bc5a70d Mon Sep 17 00:00:00 2001
+From: Michael Palimaka <kensington@gentoo.org>
+Date: Sun, 9 Jun 2019 19:15:28 +1000
+Subject: [PATCH] Fix build with GCC9
+
+---
+ ImageLounge/src/DkCore/DkMetaData.cpp | 2 ++
+ ImageLounge/src/DkGui/DkNoMacs.cpp    | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/ImageLounge/src/DkCore/DkMetaData.cpp b/ImageLounge/src/DkCore/DkMetaData.cpp
+index 7540f7b9..fe2bc7ec 100644
+--- a/src/DkCore/DkMetaData.cpp
++++ b/src/DkCore/DkMetaData.cpp
+@@ -42,6 +42,8 @@
+ #include <QApplication>
+ #pragma warning(pop)		// no warnings from includes - end
+ 
++#include <iostream>
++
+ namespace nmc {
+ 
+ // DkMetaDataT --------------------------------------------------------------------
+diff --git a/ImageLounge/src/DkGui/DkNoMacs.cpp b/ImageLounge/src/DkGui/DkNoMacs.cpp
+index edda14cd..8fcdb59c 100644
+--- a/src/DkGui/DkNoMacs.cpp
++++ b/src/DkGui/DkNoMacs.cpp
+@@ -99,6 +99,8 @@
+ 
+ #include <assert.h>
+ 
++#include <iostream>
++
+ namespace nmc {
+ 
+ DkNomacsOSXEventFilter::DkNomacsOSXEventFilter(QObject *parent) : QObject(parent) {
+-- 
+2.21.0
+

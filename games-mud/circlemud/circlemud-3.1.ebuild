@@ -1,12 +1,12 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils games
 
 DESCRIPTION="a multi-user dungeon game system server"
-HOMEPAGE="http://www.circlemud.org/"
-SRC_URI="http://www.circlemud.org/pub/CircleMUD/3.x/circle-${PV}.tar.bz2"
+HOMEPAGE="https://www.circlemud.org/"
+SRC_URI="https://www.circlemud.org/pub/CircleMUD/3.x/circle-${PV}.tar.bz2"
 
 LICENSE="circlemud"
 SLOT="0"

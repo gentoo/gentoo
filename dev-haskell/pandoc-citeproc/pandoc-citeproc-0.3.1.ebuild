@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,12 +11,13 @@ inherit haskell-cabal
 
 DESCRIPTION="Supports using pandoc with citeproc"
 HOMEPAGE="http://hackage.haskell.org/package/pandoc-citeproc"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
-IUSE="+bibutils embed_data_files +hexpat +network test_citeproc unicode_collation"
+IUSE="+bibutils embed-data-files +hexpat +network test-citeproc unicode_collation"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-text/pandoc-1.12.1:=[profile?]
 	dev-haskell/aeson:=[profile?]
@@ -66,10 +67,10 @@ src_configure() {
 
 	haskell-cabal_src_configure \
 		$(cabal_flag bibutils bibutils) \
-		$(cabal_flag embed_data_files embed_data_files) \
+		$(cabal_flag embed-data-files embed_data_files) \
 		$(cabal_flag hexpat hexpat) \
 		$(cabal_flag network network) \
 		--flag=-small_base \
-		$(cabal_flag test_citeproc test_citeproc) \
+		$(cabal_flag test-citeproc test_citeproc) \
 		$(cabal_flag unicode_collation unicode_collation)
 }

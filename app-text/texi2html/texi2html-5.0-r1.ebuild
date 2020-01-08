@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -9,9 +9,9 @@ DESCRIPTION="Perl script that converts Texinfo to HTML"
 HOMEPAGE="http://www.nongnu.org/texi2html/"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.bz2"
 
-LICENSE="CC-SA-1.0 FDL-1.3 GPL-2"
+LICENSE="GPL-2+ || ( GPL-2 CC-BY-SA-1.0 ) Texinfo-manual LGPL-2+ MIT"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="unicode"
 
 RDEPEND=">=dev-lang/perl-5.10.1

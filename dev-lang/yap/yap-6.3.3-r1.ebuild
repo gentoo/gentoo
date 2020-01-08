@@ -5,7 +5,7 @@ EAPI=6
 
 inherit flag-o-matic java-pkg-opt-2
 
-PATCHSET_VER="11"
+PATCHSET_VER="12"
 
 DESCRIPTION="YAP is a high-performance Prolog compiler"
 HOMEPAGE="http://www.dcc.fc.up.pt/~vsc/Yap/"
@@ -14,7 +14,7 @@ SRC_URI="http://www.dcc.fc.up.pt/~vsc/Yap/${P}.tar.gz
 
 LICENSE="Artistic LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="R debug doc examples gmp java mpi mysql odbc readline static threads"
 
 RDEPEND="sys-libs/zlib
@@ -61,6 +61,7 @@ src_configure() {
 
 	econf \
 		--libdir=/usr/$(get_libdir) \
+		--disable-chr \
 		--disable-prism \
 		--disable-gecode \
 		$(use_enable !static dynamic-loading) \

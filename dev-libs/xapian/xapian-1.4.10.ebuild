@@ -8,8 +8,8 @@ inherit eutils multilib-minimal
 MY_P="${PN}-core-${PV}"
 
 DESCRIPTION="Xapian Probabilistic Information Retrieval library"
-HOMEPAGE="http://www.xapian.org/"
-SRC_URI="http://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
+HOMEPAGE="https://www.xapian.org/"
+SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/30" # ABI version of libxapian.so
@@ -58,21 +58,20 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/xapian/registry.h
 )
 
+multilib_src_test() {
+	emake check VALGRIND=
+}
+
 multilib_src_install() {
 	emake DESTDIR="${D}" install
 }
 
 multilib_src_install_all() {
-	# bug #573466
-	ln -sf "${D}usr/bin/xapian-config" "${D}usr/bin/xapian-config-1.3"
-
-	use doc || rm -rf "${D}usr/share/doc/xapian-core-${PV}"
+	if use doc; then
+		rm -rf "${D}/usr/share/doc/xapian-core-${PV}" || die
+	fi
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS
 
 	find "${D}" -name "*.la" -type f -delete || die
-}
-
-multilib_src_test() {
-	emake check VALGRIND=
 }

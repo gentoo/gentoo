@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Fabian Groffen <grobian@gentoo.org> (30 Sep 2012)
-# Requires XQuartz, since Apple dropped much of X-support in 10.8
-# (a.k.a. Mountain Lion), bug #431182
-media-libs/opengl-apple
+# Fabian Groffen <grobian@gentoo.org> (2019-11-11)
+# Unmask versions matching the OS profile
+-sys-kernel/xnu-headers:10.14
+-sys-libs/darwin-libc-headers:10.14

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,6 +20,7 @@ HOMEPAGE="https://valloric.github.io/YouCompleteMe/"
 
 LICENSE="GPL-3"
 IUSE="+clang test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
@@ -55,7 +56,7 @@ src_configure() {
 
 src_test() {
 	# TODO: use system gtest
-	cd "${S}"/cpp || die
+	cd "${S}"/cpp || die
 	emake ycm_core_tests
 	cd ycm/tests || die
 	LD_LIBRARY_PATH="${EROOT}"/usr/$(get_libdir)/llvm \

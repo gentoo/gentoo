@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -18,12 +18,10 @@ alsa - Add support for media-libs/alsa-lib (Advanced Linux Sound Architecture)
 altivec - Add support for optimizations for G4 and G5/ppc970 processors
 ao - Use libao audio output library for sound playback
 apache2 - Add Apache2 support
-apm - Add APM (Advanced Power Management) support
 aqua - Include support for the Mac OS X Aqua (Carbon/Cocoa) GUI
 atm - Enable Asynchronous Transfer Mode protocol support
 audiofile - Add support for libaudiofile where applicable
 audit - Enable support for Linux audit subsystem using sys-process/audit
-avahi - Add avahi/Zeroconf support
 ayatana - Build in support for Ayatana notification using the libindicate or libappindicator plugin
 bash-completion - Enable bash-completion support
 berkdb - Add support for sys-libs/db (Berkeley DB for MySQL)
@@ -32,7 +30,6 @@ big-endian - Big-endian toolchain support
 bindist - Flag to enable or disable options for prebuilt (GRP) packages (eg. due to licensing issues)
 blas - Add support for the virtual/blas numerical library
 bluetooth - Enable Bluetooth Support
-bootstrap - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during original system bootstrapping [make stage2]
 branding - Enable Gentoo specific branding
 build - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used for creating build images and the first half of bootstrapping [make stage1]
 bzip2 - Use the bzlib compression library
@@ -44,11 +41,11 @@ cdb - Add support for the CDB database engine from the author of qmail
 cdda - Add Compact Disk Digital Audio (Standard Audio CD) support
 cddb - Access cddb servers to retrieve and submit information about compact disks
 cdinstall - Copy files from the CD rather than asking the user to copy them, mostly used with games
-cdparanoia - Enable cdparanoia (audio CD ripper) support
 cdr - Add support for CD writer hardware
 cgi - Add CGI script support
 cjk - Add support for Multi-byte character languages (Chinese, Japanese, Korean)
 clamav - Add support for Clam AntiVirus software (usually with a plugin)
+colord - Support color management using x11-misc/colord
 connman - Add support for net-misc/connman
 coreaudio - Build the CoreAudio driver on Mac OS X systems
 cracklib - Support for cracklib strong password checking
@@ -65,7 +62,6 @@ dbus - Enable dbus support for anything that needs it (gpsd, gnomemeeting, etc)
 debug - Enable extra debug codepaths, like asserts and extra output. If you want to get meaningful backtraces see https://wiki.gentoo.org/wiki/Project:Quality_Assurance/Backtraces
 dedicated - Add support for dedicated game servers (some packages do not provide clients and servers at the same time)
 dga - Add DGA (Direct Graphic Access) support for X
-directfb - Add support for DirectFB layer (library for FB devices)
 djvu - Support DjVu, a PDF-like document format esp. suited for scanned documents
 doc - Add extra documentation (API, Javadoc, etc). It is recommended to enable per package instead of globally
 dri - Enable direct rendering: used for accelerated 3D and some 2D, like DMA
@@ -96,7 +92,6 @@ fortran - Add support for fortran
 freetds - Add support for the TDS protocol to connect to MSSQL/Sybase databases
 freewnn - Add support for FreeWnn kana to kanji conversion engine
 ftp - Add FTP (File Transfer Protocol) support
-gcj - Enable building with gcj (The GNU Compiler for the Javatm Programming Language)
 gd - Add support for media-libs/gd (to generate graphics on the fly)
 gdbm - Add support for sys-libs/gdbm (GNU database libraries)
 geoip - Add geoip support for country and city lookup based on IPs
@@ -114,7 +109,7 @@ gnutls - Prefer net-libs/gnutls as SSL/TLS provider (ineffective with USE=-ssl)
 gphoto2 - Add digital camera support
 gpm - Add support for sys-libs/gpm (Console-based mouse driver)
 gps - Add support for Global Positioning System
-graphicsmagick - Build and link against GraphicsMagick instead of ImageMagick (might require USE=imagemagick if optional)
+graphicsmagick - Build and link against GraphicsMagick instead of ImageMagick (requires USE=imagemagick if optional)
 graphviz - Add support for the Graphviz library
 gsl - Use the GNU scientific library for calculations
 gsm - Add support for the gsm lossy speech compression codec
@@ -131,7 +126,6 @@ headers-only - Install only C headers instead of whole package. Mainly used by s
 hscolour - Include coloured haskell sources to generated documentation (dev-haskell/hscolour)
 ibm - Add support for IBM ppc64 specific systems
 iconv - Enable support for the iconv character set conversion library
-icq - Enable ICQ IM protocol support
 icu - Enable ICU (Internationalization Components for Unicode) support, using dev-libs/icu
 idn - Enable support for Internationalized Domain Names
 ieee1394 - Enable FireWire/iLink IEEE1394 support (dv, camera, ...)
@@ -150,7 +144,6 @@ java - Add support for Java
 javascript - Enable javascript support
 jbig - Enable jbig-kit support for tiff, Hylafax, ImageMagick, etc
 jemalloc - Use dev-libs/jemalloc for memory management
-jingle - Enable voice calls for jabber
 jit - Enable just-in-time compilation for improved performance. May prevent use of some PaX memory protection features in Gentoo Hardened.
 joystick - Add support for joysticks in all packages
 jpeg - Add JPEG image support
@@ -175,13 +168,15 @@ libsamplerate - Build with support for converting sample rates using libsamplera
 libwww - Add libwww support (General purpose WEB API)
 lirc - Add support for lirc (Linux's Infra-Red Remote Control)
 livecd - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during livecd building
-lm_sensors - Add linux lm_sensors (hardware sensors) support
+lm-sensors - Add linux lm-sensors (hardware sensors) support
 lua - Enable Lua scripting support
 luajit - Use dev-lang/luajit instead of dev-lang/lua (ineffective with USE=-lua)
 lzma - Support for LZMA (de)compression algorithm
+lz4 - Enable support for lz4 compression (as implemented in app-arch/lz4)
 lzo - Enable support for lzo compression
 m17n-lib - Enable m17n-lib support
 mad - Add support for mad (high-quality mp3 decoder library and cli frontend)
+magic - Add support for file type detection via magic bytes (usually via libmagic from sys-apps/file)
 maildir - Add support for maildir (~/.maildir) style mail spools
 matroska - Add support for the matroska container format (extensions .mkv, .mka and .mks)
 mbox - Add support for mbox (/var/spool/mail) style mail spools
@@ -202,7 +197,6 @@ mp4 - Support for MP4 container format
 mpeg - Add libmpeg3 support to various packages
 mpi - Add MPI (Message Passing Interface) layer to the apps that support it
 mplayer - Enable mplayer support for playback or encoding
-msn - Enable MSN Messenger IM protocol support
 mssql - Add support for Microsoft SQL Server database
 mtp - Enable support for Media Transfer Protocol
 multilib - On 64bit systems, if you want to be able to compile 32bit and 64bit binaries
@@ -220,7 +214,6 @@ nis - Support for NIS/YP services
 nls - Add Native Language Support (using gettext - GNU locale utilities)
 nntp - Add support for newsgroups (Network News Transfer Protocol)
 nocd - Install all files required to run the application without a CD mounted
-nptl - Enable support for Native POSIX Threads Library, the new threading module (requires linux-2.6 or better usually)
 nsplugin - Build plugin for browsers supporting the Netscape plugin architecture (that is almost any modern browser)
 ocaml - Add support/bindings for the Ocaml language
 ocamlopt - Enable ocamlopt support (ocaml native code compiler) -- Produces faster programs (Warning: you have to disable/enable it at a global scale)
@@ -238,7 +231,6 @@ opus - Enable Opus audio codec support
 oracle - Enable Oracle Database support
 orc - Use dev-lang/orc for just-in-time optimization of array operations
 osc - Enable support for Open Sound Control
-oscar - Enable Oscar (AIM/ICQ) IM protocol support
 oss - Add support for OSS (Open Sound System)
 pam - Add support for PAM (Pluggable Authentication Modules) - DANGEROUS to arbitrarily flip
 pch - Enable precompiled header support for faster compilation at the expense of disk space and memory (>=sys-devel/gcc-3.4 only)
@@ -259,7 +251,6 @@ postgres - Add support for the postgresql database
 postscript - Enable support for the PostScript language (often with ghostscript-gpl or libspectre)
 ppds - Add support for automatically generated ppd (printing driver) files
 prefix - Defines if a Gentoo Prefix offset installation is used
-prelude - Add support/bindings for the Prelude Intrusion Detection System
 profile - Add support for software performance analysis (will likely vary from ebuild to ebuild)
 pulseaudio - Add support for PulseAudio sound server
 python - Add optional support/bindings for the Python language
@@ -289,6 +280,7 @@ slang - Add support for the slang text display library (it's like ncurses, but d
 slp - Add Service Locator Protocol support
 smartcard - Enable smartcard support
 smp - Enable support for multiprocessors or multicore systems
+snappy - Enable support for Snappy compression (as implemented in app-arch/snappy)
 sndfile - Add support for libsndfile
 snmp - Add support for the Simple Network Management Protocol if available
 soap - Add support for SOAP (Simple Object Access Protocol)
@@ -299,6 +291,7 @@ source - Zip the sources and install them
 sox - Add support for Sound eXchange (SoX)
 speex - Add support for the speex audio codec (used for speech)
 spell - Add dictionary support
+split-usr - Enable behavior to support maintaining /bin, /lib*, /sbin and /usr/sbin  separately from /usr/bin and /usr/lib*
 sqlite - Add support for sqlite - embedded sql database
 ssl - Add support for SSL/TLS connections (Secure Socket Layer / Transport Layer Security)
 startup-notification - Enable application startup event feedback mechanism
@@ -370,8 +363,8 @@ xpm - Add support for XPM graphics format
 xscreensaver - Add support for XScreenSaver extension
 xv - Add in optional support for the Xvideo extension (an X API for video playback)
 xvid - Add support for xvid.org's open-source mpeg-4 codec
-yahoo - Enable Yahoo Messenger IM protocol support
 zeroconf - Support for DNS Service Discovery (DNS-SD)
 zip - Enable support for ZIP archives
 zlib - Add support for zlib (de)compression
 zsh-completion - Enable zsh completion support
+zstd - Enable support for ZSTD compression

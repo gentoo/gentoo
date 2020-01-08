@@ -1,16 +1,16 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils
 
 DESCRIPTION="A generic game engine for 2D double-buffering animation"
-HOMEPAGE="http://perso.b2b2c.ca/sarrazip/dev"
-SRC_URI="http://perso.b2b2c.ca/sarrazip/dev/${P}.tar.gz"
+HOMEPAGE="https://perso.b2b2c.ca/~sarrazip/dev/batrachians.html"
+SRC_URI="https://perso.b2b2c.ca/~sarrazip/dev/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE="static-libs"
 
 RDEPEND="media-libs/libsdl[video]

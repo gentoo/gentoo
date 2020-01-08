@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="${HOMEPAGE}/archive/ctl-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="AMPAS"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 hppa ia64 ppc ppc64 sparc x86"
 
 RDEPEND="media-libs/ilmbase:=
 	media-libs/openexr:=
@@ -22,6 +22,9 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/CTL-ctl-${PV}"
 
-PATCHES=( "${FILESDIR}/${P}-Use-GNUInstallDirs-and-fix-PkgConfig-files-1.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-Use-GNUInstallDirs-and-fix-PkgConfig-files-1.patch"
+	"${FILESDIR}/${P}-openexr-2.3.patch"
+)
 
 mycmakeargs=( -DCMAKE_INSTALL_DOCDIR="share/doc/${PF}" )

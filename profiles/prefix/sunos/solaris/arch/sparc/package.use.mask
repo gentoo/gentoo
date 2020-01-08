@@ -4,7 +4,7 @@
 # All the Solaris profiles inherit from their matching arch profile here.
 
 
-# Fabian Groffen <grobian@gentoo.org> (16 Nov 2011)
+# Fabian Groffen <grobian@gentoo.org> (2011-11-16)
 # jit not supported on sparc
 dev-libs/libpcre jit
 

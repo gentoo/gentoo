@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{4,5,6}} )
+PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit distutils-r1 systemd toolchain-funcs
 
@@ -31,7 +31,7 @@ src_compile() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" LDCONFIG=: PYTHON2=: PYTHON3=: libdir="$(get_libdir)" prefix="/usr" mandir="/usr/share/man" install
+	emake DESTDIR="${D}" LDCONFIG=: PYTHON2=: PYTHON3=: libdir="/usr/$(get_libdir)" prefix="/usr" mandir="/usr/share/man" install
 	einstalldocs
 	newinitd "${FILESDIR}"/pigpiod.initd pigpiod
 	newconfd "${FILESDIR}"/pigpiod.confd pigpiod

@@ -1,10 +1,7 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="project">
-		<email>cpp@gentoo.org</email>
-		<name>Gentoo C++ Project</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription>
 POCO, the C++ Portable Components, is a collection of open source
 C++ class libraries that simplify and accelerate the development of
@@ -27,7 +24,6 @@ done quickly and working on the features that make their application unique.
 	</upstream>
 	<use>
 		<flag name="7z">Add Support for the 7z archive format</flag>
-		<flag name="apache">Enable support to write Apache modules using POCO</flag>
 		<flag name="cppparser">Build and install a minimal C++ parser</flag>
 		<flag name="crypto">Encryption and digital signing classes</flag>
 		<flag name="data">Database abstraction layer to easily send/retrieve data to/from various databases</flag>

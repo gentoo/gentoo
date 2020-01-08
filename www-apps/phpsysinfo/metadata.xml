@@ -2,34 +2,13 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ck+gentoo@bl4ckb0x.de</email>
+		<email>conikost@gentoo.org</email>
 		<name>Conrad Kostecki</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>web-apps@gentoo.org</email>
 		<name>Gentoo Webapps</name>
 	</maintainer>
-	<use>
-		<flag name="apcupsd">Install <pkg>sys-power/apcupsd</pkg> to display those stats.</flag>
-		<flag name="dmraid">Install <pkg>sys-fs/dmraid</pkg> to display those stats.</flag>
-		<flag name="freeipmi">Install <pkg>sys-libs/freeipmi</pkg> to display those stats.</flag>
-		<flag name="hddtemp">Install <pkg>app-admin/hddtemp</pkg> to display those stats.</flag>
-		<flag name="ipmitool">Install <pkg>sys-apps/ipmitool</pkg> to display those stats.</flag>
-		<flag name="ipmiutil">Install <pkg>sys-apps/ipmiutil</pkg> to display those stats.</flag>
-		<flag name="iptables">Install <pkg>net-firewall/iptables</pkg> to display those stats.</flag>
-		<flag name="lm_sensors">Install <pkg>sys-apps/lm_sensors</pkg> to display those stats.</flag>
-		<flag name="mdadm">Install <pkg>sys-fs/mdadm</pkg> to display those stats.</flag>
-		<flag name="megactl">Install <pkg>sys-block/megactl</pkg> to display those stats.</flag>
-		<flag name="nut">Install <pkg>sys-power/nut</pkg> to display those stats.</flag>
-		<flag name="quota">Install <pkg>sys-fs/quota</pkg> to display those stats.</flag>
-		<flag name="smart">Install <pkg>sys-apps/smartmontools</pkg> to display those stats.</flag>
-		<flag name="snmp">Install <pkg>net-analyzer/net-snmp</pkg> to display those stats.</flag>
-		<flag name="uptime">Install <pkg>app-misc/uptimed</pkg> to display those stats.</flag>
-	</use>
 	<upstream>
 		<bugs-to>https://github.com/phpsysinfo/phpsysinfo/issues</bugs-to>
 		<remote-id type="github">rk4an/phpsysinfo</remote-id>

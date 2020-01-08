@@ -11,7 +11,7 @@ HOMEPAGE="http://freshmeat.net/projects/longrun/"
 DEBIAN_PATCH_VERSION="19"
 DEBIAN_PATCH="${PN}_${PV}-${DEBIAN_PATCH_VERSION}.diff"
 SRC_URI="
-	mirror://kernel/linux/utils/cpu/crusoe/${P}.tar.bz2
+	https://www.kernel.org/pub/linux/utils/cpu/crusoe/${P}.tar.bz2
 	mirror://debian/pool/main/l/${PN}/${DEBIAN_PATCH}.gz"
 
 LICENSE="GPL-2"

@@ -1,20 +1,21 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools eutils
+inherit autotools
 
 DESCRIPTION="C++ library offering portable support for system-related services"
-SRC_URI="mirror://gnu/commoncpp/${P}.tar.gz"
 HOMEPAGE="https://www.gnu.org/software/commoncpp/"
+SRC_URI="mirror://gnu/commoncpp/${P}.tar.gz"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ppc ppc64 x86"
 IUSE="debug doc examples gnutls ipv6 libressl ssl static-libs"
 
 RDEPEND="
-	sys-libs/zlib
+	sys-libs/zlib:=
 	ssl? (
 		gnutls? (
 			dev-libs/libgcrypt:0=
@@ -28,8 +29,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( >=app-doc/doxygen-1.3.6 )"
 
-HTML_DOCS=()
-
 PATCHES=(
 	"${FILESDIR}/1.8.1-configure_detect_netfilter.patch"
 	"${FILESDIR}/1.8.0-glibc212.patch"
@@ -40,11 +39,8 @@ PATCHES=(
 	"${FILESDIR}/1.8.1-fix-c++14.patch"
 	"${FILESDIR}/1.8.1-gnutls-3.4.patch"
 	"${FILESDIR}/1.8.1-libressl.patch" # bug 674416
+	"${FILESDIR}/1.8.1-fix-gcc9.patch" # bug 686012
 )
-
-pkg_setup() {
-	use doc && HTML_DOCS+=( doc/html/. )
-}
 
 src_prepare() {
 	default
@@ -52,19 +48,20 @@ src_prepare() {
 }
 
 src_configure() {
-	use ssl && local myconf=( $(usex gnutls '--with-gnutls' '--with-openssl') )
-
 	econf \
 		$(use_enable debug) \
 		$(use_with ipv6) \
+		$(use_with ssl $(usex gnutls gnutls openssl)) \
 		$(use_enable static-libs static) \
-		$(use_with doc doxygen) \
-		"${myconf[@]}"
+		$(use_with doc doxygen)
 }
 
-src_install () {
+src_install() {
+	use doc && local HTML_DOCS=( doc/html/. )
 	default
-	prune_libtool_files
+
+	# package provides .pc files
+	find "${D}" -name '*.la' -delete || die
 
 	dodoc COPYING.addendum
 

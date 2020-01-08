@@ -12,6 +12,7 @@ DESCRIPTION="A Perl interface to the uulib library"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="system-uulib test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	system-uulib? ( >=dev-libs/uulib-0.5.20-r1 )

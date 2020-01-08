@@ -1,0 +1,20 @@
+diff --git a/cmake/AlembicBoost.cmake b/cmake/AlembicBoost.cmake
+index 21b3515..ba6f396 100644
+--- a/cmake/AlembicBoost.cmake
++++ b/cmake/AlembicBoost.cmake
+@@ -79,7 +79,14 @@ IF (USE_PYALEMBIC AND APPLE)
+ ENDIF()
+ 
+ IF (USE_PYALEMBIC)
+-    FIND_PACKAGE(Boost 1.42.0 COMPONENTS program_options python)
++    # At least cmake-3.11 has introduced a new syntax while looking for
++    # boost python libraries. It might apply to version 10 too, but I
++    # couldn't check due to cmake-3.10 compile error.
++    IF (CMAKE_MINOR_VERSION VERSION_GREATER 10)
++        FIND_PACKAGE(Boost 1.42.0 COMPONENTS program_options python2.7)
++    ELSE()
++        FIND_PACKAGE(Boost 1.42.0 COMPONENTS program_options python)
++    ENDIF()
+ ELSE()
+     FIND_PACKAGE(Boost 1.42.0 COMPONENTS program_options)
+ ENDIF()

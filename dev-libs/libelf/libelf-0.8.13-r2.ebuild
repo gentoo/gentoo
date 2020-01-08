@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ SRC_URI="http://www.mr511.de/software/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ~mips ppc ppc64 sparc x86 -amd64-fbsd -x86-fbsd ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="alpha amd64 arm arm64 hppa ~mips ppc ppc64 sparc x86 ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="debug nls elibc_FreeBSD"
 
 RDEPEND="!dev-libs/elfutils"
@@ -44,7 +44,7 @@ multilib_src_install() {
 		libdir="${ED}usr/$(get_libdir)" \
 		install \
 		install-compat \
-		-j1 || die
+		-j1
 
 	# Stop libelf from stamping on the system nlist.h
 	use elibc_FreeBSD && rm "${ED}"/usr/include/nlist.h

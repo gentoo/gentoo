@@ -1,19 +1,19 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6} pypy )
+PYTHON_COMPAT=( python{2_7,3_6} )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 eutils systemd vcs-snapshot
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
-HOMEPAGE="http://www.fail2ban.org/"
+HOMEPAGE="https://www.fail2ban.org/"
 SRC_URI="https://github.com/${PN}/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="alpha amd64 arm hppa ppc ppc64 sparc x86"
 IUSE="selinux systemd"
 
 # TODO support ipfw and ipfilter
@@ -29,7 +29,7 @@ RDEPEND="
 		sys-apps/systemd[python(-),${PYTHON_USEDEP}]
 	)' 'python*' ) )
 "
-REQUIRED_USE="systemd? ( !python_single_target_pypy )"
+
 RESTRICT="test"
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 

@@ -1,5 +1,8 @@
 # Check whether ebuilds are not installing new, non-Gentoo-ey paths.
 
+# QA check: validate Gentoo's filesystem layout policies
+# Maintainer: Portage team <dev-portage@gentoo.org>
+
 gentoo_path_check() {
 	# allowed path definitions
 	# ------------------------
@@ -14,6 +17,8 @@ gentoo_path_check() {
 	local allowed_paths_toplevel=(
 		"${allowed_common_dirs[@]}"
 		boot dev etc opt srv usr var
+		nix # sys-apps/nix, bug #670902
+		gnu # sys-apps/guix, bug #670902
 	)
 
 	# directories in /usr which can be installed to by ebuilds

@@ -1,0 +1,33 @@
+mjo: cherry-picked from https://github.com/wKovacs64/valtz
+
+From 422cc33cf0da52d10c271a75cda271d5963da4eb Mon Sep 17 00:00:00 2001
+From: wKovacs64 <justin.r.hall@gmail.com>
+Date: Tue, 16 Dec 2014 17:13:17 -0700
+Subject: [PATCH] Fix support for generic records
+
+---
+ valtz | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/valtz b/valtz
+index e9b831f..c68c120 100644
+--- a/valtz
++++ b/valtz
+@@ -75,7 +75,7 @@ my %validation_msg = (
+     1007 => 'parts must not end with the - character',
+     1008 => 'integer out of bounds',
+     1009 => 'must have at least three labels to be valid as mail address',
+-    1010 => 'must not 2(NS), 5(CNAME), 6(SOA), 12(PTR), 15(MX) or 252(AXFR)',
++    1010 => 'must not be 2(NS), 5(CNAME), 6(SOA), 12(PTR), 15(MX) or 252(AXFR)',
+ );
+ 
+ # NOTE : ONLY translate the right-hand part
+@@ -331,7 +331,7 @@ my %token_validator = (
+         my ($type, $s) = @_;
+         my $result = validate_integer($s, 65535);
+     
+-        return 1010 if ($s==2)||($s==5)||($s==6)||($s==12)||($s==15)||($s=252);
++        return 1010 if ($s==2)||($s==5)||($s==6)||($s==12)||($s==15)||($s==252);
+ 
+         return $result;
+     }],

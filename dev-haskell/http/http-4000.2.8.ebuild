@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,11 +13,11 @@ MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A library for client-side HTTP"
 HOMEPAGE="https://github.com/haskell/HTTP"
-SRC_URI="mirror://hackage/packages/archive/${MY_PN}/${PV}/${MY_P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${MY_P}/${MY_P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-fbsd ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~ppc-macos ~x86-macos"
 # hackport-args: --always-disabled='mtl1 network23 old-base warn-as-error'
 IUSE=""
 

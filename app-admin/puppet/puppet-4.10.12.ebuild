@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -9,10 +9,10 @@ USE_RUBY="ruby23 ruby24"
 
 RUBY_FAKEGEM_EXTRAINSTALL="locales"
 
-inherit xemacs-elisp-common eutils user ruby-fakegem versionator
+inherit eutils user ruby-fakegem versionator
 
 DESCRIPTION="A system automation and configuration management software."
-HOMEPAGE="http://puppetlabs.com/"
+HOMEPAGE="https://puppet.com/"
 SRC_URI="http://downloads.puppetlabs.com/puppet/${P}.tar.gz"
 
 LICENSE="Apache-2.0 GPL-2"
@@ -46,8 +46,6 @@ ruby_add_rdepend "
 # 		>=dev-ruby/webmock-1.24:0
 # 	)"
 
-DEPEND+=" ${DEPEND}
-	xemacs? ( app-editors/xemacs )"
 RDEPEND+=" ${RDEPEND}
 	rrdtool? ( >=net-analyzer/rrdtool-1.2.23[ruby] )
 	selinux? (
@@ -106,13 +104,7 @@ all_ruby_prepare() {
 }
 
 all_ruby_compile() {
-	if use xemacs ; then
-		# Create a separate version for xemacs to be able to install
-		# emacs and xemacs in parallel.
-		mkdir ext/xemacs
-		cp ext/emacs/* ext/xemacs/
-		xemacs-elisp-compile ext/xemacs/puppet-mode.el
-	fi
+	:
 }
 
 each_ruby_install() {
@@ -150,11 +142,6 @@ all_ruby_install() {
 	fowners -R :puppet /etc/puppetlabs
 	fowners -R :puppet /var/lib/puppet
 
-	if use xemacs ; then
-		xemacs-elisp-install ${PN} ext/xemacs/puppet-mode.el*
-		xemacs-elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-	fi
-
 	if use ldap ; then
 		insinto /etc/openldap/schema; doins ext/ldap/puppet.schema
 	fi
@@ -187,10 +174,4 @@ pkg_postinst() {
 			elog
 		fi
 	done
-
-	use xemacs && xemacs-elisp-site-regen
-}
-
-pkg_postrm() {
-	use xemacs && xemacs-elisp-site-regen
 }

@@ -9,11 +9,11 @@ PYTHON_REQ_USE="threads"
 inherit distutils-r1
 
 DESCRIPTION="Generate test data for backup software testing."
-HOMEPAGE="http://liw.fi/genbackupdata/"
+HOMEPAGE="https://liw.fi/genbackupdata/"
 #SRC_URI="http://git.liw.fi/cgi-bin/cgit/cgit.cgi/$PN/snapshot/${P}.tar.gz"
 SRC_URI="mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV}.orig.tar.xz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

@@ -1,78 +1,36 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
-# app-misc/tracker not stable yet
-tracker
+# Aaron Bauman <bman@gentoo.org> (2019-05-20)
+# Does not build on arm64
+ocamlopt
 
-# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-04-20)
+# sys-auth/consolekit will not be stabilised anymore.
+consolekit
+
+# Mart Raudsepp <leio@gentoo.org> (2019-02-07)
 # media-sound/musepack-tools not stable yet
 musepack
 
-# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
-# media-libs/portaudio not stable yet
-portaudio
-
-# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
-# net-fs/samba not stable yet
-samba
-
-# Mart Raudsepp <leio@gentoo.org> (07 Feb 2019)
-# x11-misc/colord not stable yet
-colord
-
-# Mart Raudsepp <leio@gentoo.org> (18 Jan 2019)
-# x11-libs/libva not stable yet
-vaapi
-
-# Mart Raudsepp <leio@gentoo.org> (27 Nov 2018)
+# Mart Raudsepp <leio@gentoo.org> (2018-11-27)
 # x11-libs/fltk not stable yet
 fltk
 
-# Mike Gilbert <floppym@gentoo.org> (08 Jun 2017)
+# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
 # dev-lang/python:3.7 is not stable.
 python_targets_python3_7
 python_single_target_python3_7
+python_targets_python3_8
+python_single_target_python3_8
 
-# Mart Raudsepp <leio@gentoo.org> (06 May 2018)
-# net-print/cups not stable yet
-cups
-
-# Michał Górny <mgorny@gentoo.org> (16 Apr 2018)
-# Not stable yet.
-vala
-
-# Mart Raudsepp <leio@gentoo.org> (02 Mar 2018)
-# app-crypt/libsecret and co not marked stable yet
-gnome-keyring
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# virtual/{jdk,jre} are not stable here.
-java
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
-# dev-db/postgresql is not stable here.
-postgres
-
-# Michał Górny <mgorny@gentoo.org> (19 Feb 2018)
+# Michał Górny <mgorny@gentoo.org> (2018-02-19)
 # dev-lang/tk is not stable here.
 tk
 
-# Mart Raudsepp <leio@gentoo.org> (24 Dec 2017)
-# dev-libs/libressl not marked stable yet
-libressl
-
-# Mart Raudsepp <leio@gentoo.org> (04 Feb 2017)
-# dev-vcs/subversion not marked stable yet
-subversion
-
-# Mart Raudsepp <leio@gentoo.org> (28 Jan 2017)
+# Mart Raudsepp <leio@gentoo.org> (2017-01-28)
 # sys-auth/skey not marked stable yet
 skey
-
-# Ben de Groot <yngwin@gentoo.org> (24 Aug 2015)
-# Not yet stable, bug #543326
-qt5

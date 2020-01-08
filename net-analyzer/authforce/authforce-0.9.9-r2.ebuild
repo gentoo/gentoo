@@ -9,7 +9,7 @@ SRC_URI="http://www.divineinvasion.net/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="curl nls"
 
 RDEPEND="sys-libs/readline:0=

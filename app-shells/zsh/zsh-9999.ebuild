@@ -3,13 +3,13 @@
 
 EAPI=7
 
-inherit flag-o-matic prefix
+inherit autotools flag-o-matic prefix
 
 if [[ ${PV} == 9999* ]] ; then
-	inherit git-r3 autotools
+	inherit git-r3
 	EGIT_REPO_URI="https://git.code.sf.net/p/zsh/code"
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	SRC_URI="https://www.zsh.org/pub/${P}.tar.xz
 		https://www.zsh.org/pub/old/${P}.tar.xz
 		mirror://sourceforge/${PN}/${P}.tar.xz
@@ -64,10 +64,11 @@ src_prepare() {
 
 	default
 
+	hprefixify configure.ac
 	if [[ ${PV} == 9999* ]] ; then
 		sed -i "/^VERSION=/s/=.*/=${PV}/" Config/version.mk || die
-		eautoreconf
 	fi
+	eautoreconf
 }
 
 src_configure() {
@@ -80,6 +81,7 @@ src_configure() {
 		--enable-site-fndir="${EPREFIX}"/usr/share/zsh/site-functions
 		--enable-function-subdirs
 		--with-tcsetpgrp
+		--with-term-lib="$(usex unicode 'tinfow ncursesw' 'tinfo ncurses')"
 		$(use_enable maildir maildir-support)
 		$(use_enable pcre)
 		$(use_enable caps cap)
@@ -175,10 +177,9 @@ src_install() {
 
 	if use doc ; then
 		pushd "${WORKDIR}/${PN}-${PV%_*}" >/dev/null
+		dodoc Doc/zsh.{dvi,pdf}
 		docinto html
 		dodoc Doc/*.html
-		insinto /usr/share/doc/${PF}
-		doins Doc/zsh.{dvi,pdf}
 		popd >/dev/null
 	fi
 

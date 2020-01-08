@@ -14,7 +14,7 @@ SRC_URI="http://${PN}.sourcearchive.com/downloads/${MY_PV}/${PN}_0.8.orig.tar.gz
 
 LICENSE="feh LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="alpha amd64 arm ~arm64 ~hppa ppc ppc64 ~sh sparc x86"
 IUSE=""
 
 RDEPEND=">=media-libs/imlib2-1.0.3

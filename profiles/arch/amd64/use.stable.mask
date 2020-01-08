@@ -4,30 +4,26 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in use.mask
 
-# Andreas Sturmlechner <asturm@gentoo.org> (17 Nov 2018)
-# media-sound/audacious is not yet stabilised
-audacious
-
-# Mike Gilbert <floppym@gentoo.org> (08 Jun 2017)
+# Mike Gilbert <floppym@gentoo.org> (2017-06-08)
 # dev-lang/python:3.7 is not stable.
 python_targets_python3_7
 python_single_target_python3_7
+python_targets_python3_8
+python_single_target_python3_8
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (26 May 2017)
+# Andreas K. Hüttel <dilfridge@gentoo.org> (2017-05-26)
 # dev-db/firebird is keyworded ~amd64
 firebird
 
-# Michał Górny <mgorny@gentoo.org> (20 May 2017)
+# Michał Górny <mgorny@gentoo.org> (2017-05-20)
 # The modern versions of CUDA SDK are not suitable for stabilization.
 cuda
 
-# Andrey Grozin <grozin@gentoo.org> (25 Jun 2014)
+# Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # no stable versions on amd64
 clozurecl
 
-# Michał Górny <mgorny@gentoo.org> (30 Mar 2014)
+# Michał Górny <mgorny@gentoo.org> (2014-03-30)
 # PyPy is unstable on this arch.
-python_targets_pypy
-python_single_target_pypy
 python_targets_pypy3
 python_single_target_pypy3

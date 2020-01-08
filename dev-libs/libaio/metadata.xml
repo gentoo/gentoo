@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>gokturk@gentoo.org</email>
-    <name>Göktürk Yüksek</name>
-  </maintainer>
-  <longdescription>Library to provide user-level kernel Asynchronous I/O (AIO)
- support for Linux (needs kernel patches as of 2.6.12)</longdescription>
-  <upstream>
-    <remote-id type="sourceforge">lse</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>base-system@gentoo.org</email>
+		<name>Gentoo Base System</name>
+	</maintainer>
+	<longdescription>
+		Library to provide user-level kernel Asynchronous I/O (AIO)
+		support for Linux (needs kernel patches as of 2.6.12)
+	</longdescription>
 </pkgmetadata>

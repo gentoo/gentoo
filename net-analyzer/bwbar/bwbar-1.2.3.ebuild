@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="The kernel.org \"Current bandwidth utilization\" bar"
 HOMEPAGE="https://www.kernel.org/pub/software/web/bwbar/"
-SRC_URI="mirror://kernel/software/web/bwbar/${P}.tar.bz2"
+SRC_URI="https://www.kernel.org/pub/software/web/bwbar/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

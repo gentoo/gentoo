@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples"
 
 RDEPEND="
@@ -65,6 +65,6 @@ src_install() {
 
 	if use examples; then
 		insinto "/usr/share/doc/${PF}/examples"
-		doins datafiles/*.circ datafiles/*.load || die
+		doins datafiles/*.circ datafiles/*.load
 	fi
 }

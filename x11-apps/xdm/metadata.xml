@@ -7,6 +7,5 @@
   </maintainer>
   <use>
     <flag name="consolekit">Enable native <pkg>sys-auth/consolekit</pkg> support</flag>
-    <flag name="xdm-auth">Enable XDM-AUTHENTICATION-1 support</flag>
   </use>
 </pkgmetadata>

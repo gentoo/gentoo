@@ -25,8 +25,7 @@ src_compile() {
 	emake \
 		CC=$(tc-getCC) \
 		CFLAGS="${CFLAGS}" \
-		LDFLAGS="${LDFLAGS}" \
-		|| die
+		LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {

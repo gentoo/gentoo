@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>cpp@gentoo.org</email>
-    <name>Gentoo C++ Project</name>
+  <maintainer type="person">
+    <email>soap@gentoo.org</email>
+    <name>David Seifert</name>
   </maintainer>
   <upstream>
     <remote-id type="sourceforge">boost</remote-id>

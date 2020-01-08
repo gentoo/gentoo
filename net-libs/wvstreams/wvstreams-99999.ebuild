@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,14 +12,15 @@ EGIT_REPO_URI="${HOMEPAGE}"
 LICENSE="GPL-2"
 SLOT="0/5.0"
 KEYWORDS=""
-IUSE="+dbus debug doc pam static-libs +zlib"
+IUSE="+dbus debug doc libressl pam static-libs +zlib"
 
 RDEPEND="
-	<dev-libs/openssl-1.1:0=
 	sys-libs/readline:0=
 	sys-libs/zlib
 	dbus? ( >=sys-apps/dbus-1.4.20 )
-	pam? ( virtual/pam )
+	!libressl? ( <dev-libs/openssl-1.1:0= )
+	libressl? ( dev-libs/libressl:0= )
+	pam? ( sys-libs/pam )
 "
 DEPEND="
 	${RDEPEND}

@@ -1,0 +1,111 @@
+From 7e2bf26af99f5b242b2e4bb2ee5e62914d5d5861 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Wed, 10 Jul 2019 11:38:44 +0200
+Subject: [PATCH] libkworkspace: Allow standalone build
+
+---
+ CMakeLists.txt | 70 +++++++++++++++++++++++++++++++++---
+ 1 file changed, 66 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 3c4c47870..53bc780b5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1,3 +1,56 @@
++project(libkworkspace)
++
++if(${CMAKE_SOURCE_DIR} STREQUAL ${libkworkspace_SOURCE_DIR})
++    set(PROJECT_VERSION "GENTOO_PV")
++    set(PROJECT_VERSION_MAJOR 5)
++
++    cmake_minimum_required(VERSION 3.0)
++
++    set(QT_MIN_VERSION "5.12.0")
++    set(KF5_MIN_VERSION "5.58.0")
++    find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED COMPONENTS Core DBus)
++    find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
++    set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
++
++    include(KDEInstallDirs)
++    include(KDECMakeSettings)
++    include(KDECompilerSettings NO_POLICY_SCOPE)
++    include(ECMMarkNonGuiExecutable)
++    include(CMakePackageConfigHelpers)
++    include(WriteBasicConfigVersionFile)
++    include(CheckIncludeFiles)
++    include(FeatureSummary)
++    include(ECMQtDeclareLoggingCategory)
++    include(KDEPackageAppTemplates)
++    include(ECMMarkAsTest)
++    include(GenerateExportHeader)
++
++    find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS CoreAddons I18n Plasma WindowSystem)
++
++    find_package(KWinDBusInterface CONFIG REQUIRED)
++    find_package(KScreenLocker 5.13.80 REQUIRED)
++    find_package(ScreenSaverDBusInterface CONFIG REQUIRED)
++
++    find_package(X11)
++    set_package_properties(X11 PROPERTIES DESCRIPTION "X11 libraries"
++                URL "http://www.x.org"
++                TYPE OPTIONAL
++                PURPOSE "Required for X11 support")
++
++    if(X11_FOUND)
++        find_package(Qt5X11Extras ${QT_MIN_VERSION} CONFIG REQUIRED)
++        set(HAVE_X11 1)
++    endif()
++
++    if(BUILD_TESTING)
++        find_package(Qt5Test ${QT_MIN_VERSION} CONFIG REQUIRED)
++    endif()
++
++    check_include_files(unistd.h HAVE_UNISTD_H)
++
++    configure_file(../config-workspace.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-workspace.h)
++    configure_file(../config-X11.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/config-X11.h)
++endif()
+ 
+ set(kworkspace_LIB_SRCS kdisplaymanager.cpp
+                         kworkspace.cpp
+@@ -14,8 +67,16 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
+ 
+ qt5_add_dbus_interface(kworkspace_LIB_SRCS ${KSCREENLOCKER_DBUS_INTERFACES_DIR}/kf5_org.freedesktop.ScreenSaver.xml screenlocker_interface )
+ qt5_add_dbus_interface(kworkspace_LIB_SRCS ${KSCREENLOCKER_DBUS_INTERFACES_DIR}/org.kde.screensaver.xml kscreenlocker_interface )
++if(${CMAKE_SOURCE_DIR} STREQUAL ${libkworkspace_SOURCE_DIR})
++qt5_add_dbus_interface(kworkspace_LIB_SRCS ../ksmserver/org.kde.LogoutPrompt.xml logoutprompt_interface)
++qt5_add_dbus_interface(kworkspace_LIB_SRCS ../startkde/plasma-session/org.kde.Shutdown.xml shutdown_interface)
++set(ksmserver_xml ../ksmserver/org.kde.KSMServerInterface.xml)
++else()
+ qt5_add_dbus_interface(kworkspace_LIB_SRCS ${plasma-workspace_SOURCE_DIR}/ksmserver/org.kde.LogoutPrompt.xml logoutprompt_interface)
+ qt5_add_dbus_interface(kworkspace_LIB_SRCS ${plasma-workspace_SOURCE_DIR}/startkde/plasma-session/org.kde.Shutdown.xml shutdown_interface)
++set(ksmserver_xml ${plasma-workspace_SOURCE_DIR}/ksmserver/org.kde.KSMServerInterface.xml)
++set_source_files_properties(${KWIN_INTERFACE} PROPERTIES INCLUDE "interface_util.h")
++endif()
+ 
+ set_source_files_properties("${CMAKE_CURRENT_SOURCE_DIR}/org.freedesktop.login1.Manager.xml"
+                             "${CMAKE_SOURCE_DIR}/data/interfaces/org.freedesktop.login1.Seat.xml"
+@@ -31,11 +92,7 @@ list(APPEND kworkspace_LIB_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/login1_manager_inte
+ qt5_add_dbus_interface(kworkspace_LIB_SRCS "org.freedesktop.UPower.xml" upower_interface)
+ qt5_add_dbus_interface(kworkspace_LIB_SRCS "org.freedesktop.ConsoleKit.Manager.xml" consolekit_manager_interface)
+ 
+-set(ksmserver_xml ${plasma-workspace_SOURCE_DIR}/ksmserver/org.kde.KSMServerInterface.xml)
+ qt5_add_dbus_interface( kworkspace_LIB_SRCS ${ksmserver_xml} ksmserver_interface )
+-
+-set_source_files_properties(${KWIN_INTERFACE} PROPERTIES INCLUDE "interface_util.h")
+-
+ qt5_add_dbus_interface( kworkspace_LIB_SRCS ${KWIN_INTERFACE} kwin_interface )
+ 
+ 
+@@ -101,3 +158,8 @@ if(BUILD_TESTING)
+     add_subdirectory(autotests)
+     add_subdirectory(tests)
+ endif()
++
++if ("${CMAKE_BINARY_DIR}" STREQUAL "${CMAKE_CURRENT_BINARY_DIR}")
++    install( FILES sessionmanagementbackend.h DESTINATION ${KDE_INSTALL_INCLUDEDIR}/kworkspace5 COMPONENT Devel )
++    feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)
++endif()
+-- 
+2.22.0
+

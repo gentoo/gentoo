@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{4,5,6,7} pypy )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1 eutils
@@ -18,6 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="doc examples test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/astroid-1.6.0[${PYTHON_USEDEP}]
@@ -31,7 +32,7 @@ RDEPEND="
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( ${RDEPEND}
-		<dev-python/pytest-3.3[${PYTHON_USEDEP}] )"
+		<dev-python/pytest-4[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# remove unused dep

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -21,9 +21,10 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc examples +geant4 +root test"
 
+# sci-physics/root[c++11] required to match sci-physics/geant
 RDEPEND="
 	sci-physics/clhep:=
-	root? ( sci-physics/root:= )
+	root? ( sci-physics/root:=[c++11] )
 	geant4? ( >=sci-physics/geant-4.10.03 )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[dot] )
@@ -43,7 +44,7 @@ DOCS=(
 
 src_configure() {
 	local mycmakeargs=(
-		-DCLHEP_DIR="${EROOT}usr"
+		-DCLHEP_DIR="${EPREFIX}/usr"
 		-DWITH_EXAMPLES="$(usex examples)"
 		-DINSTALL_EXAMPLES="$(usex examples)"
 		-DWITH_GEANT4="$(usex geant4)"
@@ -55,11 +56,11 @@ src_configure() {
 	else
 		mycmakeargs+=( -DWITH_G4ROOT=no )
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use doc; then
 		cd packages
 		doxygen || die
@@ -72,7 +73,7 @@ src_test() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use doc && local HTML_DOCS=( doc/html/. )
 	einstalldocs
 }

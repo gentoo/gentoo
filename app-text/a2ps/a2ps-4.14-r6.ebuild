@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="cjk emacs latex nls static-libs userland_BSD userland_GNU vanilla"
 
 RESTRICT=test
@@ -20,11 +20,10 @@ RDEPEND="app-text/ghostscript-gpl
 	app-text/libpaper
 	>=app-text/psutils-1.17
 	app-text/wdiff
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	latex? ( virtual/latex-base )
 	nls? ( virtual/libintl )
-	userland_GNU? ( >=sys-apps/coreutils-6.10-r1 )
-	userland_BSD? ( sys-freebsd/freebsd-ubin )"
+	userland_GNU? ( >=sys-apps/coreutils-6.10-r1 )"
 DEPEND="${RDEPEND}
 	>=dev-util/gperf-2.7.2
 	virtual/yacc
@@ -76,6 +75,9 @@ src_prepare() {
 
 	# fix CVE-2001-1593, bug 507024
 	eapply "${FILESDIR}"/${P}-CVE-2001-1593.patch
+
+	# specify encoding explicitly, bug #695918
+	eapply "${FILESDIR}"/${P}-texinfo-6.7-encoding.patch
 
 	# fix building with sys-devel/automake >= 1.12, bug 420503
 	rm -f {.,ogonkify}/aclocal.m4 || die

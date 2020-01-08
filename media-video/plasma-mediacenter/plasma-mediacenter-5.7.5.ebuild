@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 KDE_TEST="forceoptional"
 inherit kde5
@@ -40,7 +40,7 @@ RDEPEND="${DEPEND}
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake-utils_use_find_package semantic-desktop KF5Baloo)
+		$(cmake_use_find_package semantic-desktop KF5Baloo)
 	)
 
 	kde5_src_configure

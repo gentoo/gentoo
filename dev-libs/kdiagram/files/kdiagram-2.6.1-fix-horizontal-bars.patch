@@ -1,0 +1,75 @@
+From d3783f643367b264800e853c7c55c515f17c2a3d Mon Sep 17 00:00:00 2001
+From: Dag Andersen <danders@get2net.dk>
+Date: Thu, 23 Aug 2018 10:47:05 +0200
+Subject: Fix painting bar diagrams with horizontal bars
+
+---
+ .../Cartesian/DiagramFlavors/KChartNormalLyingBarDiagram_p.cpp       | 5 +++--
+ .../Cartesian/DiagramFlavors/KChartPercentLyingBarDiagram_p.cpp      | 4 ++--
+ .../Cartesian/DiagramFlavors/KChartStackedLyingBarDiagram_p.cpp      | 4 ++--
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/KChart/Cartesian/DiagramFlavors/KChartNormalLyingBarDiagram_p.cpp b/src/KChart/Cartesian/DiagramFlavors/KChartNormalLyingBarDiagram_p.cpp
+index 0a262ee..d2343ee 100644
+--- a/src/KChart/Cartesian/DiagramFlavors/KChartNormalLyingBarDiagram_p.cpp
++++ b/src/KChart/Cartesian/DiagramFlavors/KChartNormalLyingBarDiagram_p.cpp
+@@ -158,13 +158,13 @@ void NormalLyingBarDiagram::paint( PaintContext* ctx )
+             }
+         }
+ 
+-        for ( int column = 0; column < colCount; column++ ) {
++        for ( int column = colCount-1; column >= 0; --column ) {
+             // paint one group
+             const CartesianDiagramDataCompressor::CachePosition position( row,  column );
+             const CartesianDiagramDataCompressor::DataPoint point = compressor().data( position );
+             const QModelIndex sourceIndex = attributesModel()->mapToSource( point.index );
+ 
+-            QPointF dataPoint( 0, rowCount - ( point.key + 0.5 ) );
++            QPointF dataPoint( 0, ( point.key + 0.5 ) );
+             const QPointF topLeft = ctx->coordinatePlane()->translate( dataPoint );
+             dataPoint.rx() += point.value;
+             const QPointF bottomRight = ctx->coordinatePlane()->translate( dataPoint ) +
+@@ -173,6 +173,7 @@ void NormalLyingBarDiagram::paint( PaintContext* ctx )
+             const QRectF rect = QRectF( topLeft, bottomRight ).translated( 1.0, offset );
+             m_private->addLabel( &lpc, sourceIndex, 0, PositionPoints( rect ), Position::North,
+                                  Position::South, point.value );
++
+             paintBars( ctx, sourceIndex, rect, maxDepth );
+ 
+             offset += barWidth + spaceBetweenBars;
+diff --git a/src/KChart/Cartesian/DiagramFlavors/KChartPercentLyingBarDiagram_p.cpp b/src/KChart/Cartesian/DiagramFlavors/KChartPercentLyingBarDiagram_p.cpp
+index fee53d3..10dca65 100644
+--- a/src/KChart/Cartesian/DiagramFlavors/KChartPercentLyingBarDiagram_p.cpp
++++ b/src/KChart/Cartesian/DiagramFlavors/KChartPercentLyingBarDiagram_p.cpp
+@@ -192,11 +192,11 @@ void PercentLyingBarDiagram::paint( PaintContext* ctx )
+ 
+             QPointF point, previousPoint;
+             if ( sumValuesVector.at( curRow ) != 0 && value > 0 ) {
+-                QPointF dataPoint( ( stackedValues / sumValuesVector.at( curRow ) * maxValue ), rowCount - key );
++                QPointF dataPoint( ( stackedValues / sumValuesVector.at( curRow ) * maxValue ), key + 1 );
+                 point = ctx->coordinatePlane()->translate( dataPoint );
+                 point.ry() += offset / 2 + threeDOffset;
+ 
+-                previousPoint = ctx->coordinatePlane()->translate( QPointF( ( ( stackedValues - value) / sumValuesVector.at( curRow ) * maxValue ), rowCount - key ) );
++                previousPoint = ctx->coordinatePlane()->translate( QPointF( ( ( stackedValues - value) / sumValuesVector.at( curRow ) * maxValue ), key + 1 ) );
+             }
+             
+             const qreal barHeight = point.x() - previousPoint.x();
+diff --git a/src/KChart/Cartesian/DiagramFlavors/KChartStackedLyingBarDiagram_p.cpp b/src/KChart/Cartesian/DiagramFlavors/KChartStackedLyingBarDiagram_p.cpp
+index 70cbba0..1a5b003 100644
+--- a/src/KChart/Cartesian/DiagramFlavors/KChartStackedLyingBarDiagram_p.cpp
++++ b/src/KChart/Cartesian/DiagramFlavors/KChartStackedLyingBarDiagram_p.cpp
+@@ -184,9 +184,9 @@ void StackedLyingBarDiagram::paint( PaintContext* ctx )
+                     stackedValues += point.value;
+                 key = point.key;
+             }
+-            QPointF point = ctx->coordinatePlane()->translate( QPointF( stackedValues, rowCount - key ) );
++            QPointF point = ctx->coordinatePlane()->translate( QPointF( stackedValues, key + 1 ) );
+             point.ry() += offset / 2 + threeDOffset;
+-            const QPointF previousPoint = ctx->coordinatePlane()->translate( QPointF( stackedValues - value, rowCount - key ) );
++            const QPointF previousPoint = ctx->coordinatePlane()->translate( QPointF( stackedValues - value, key + 1 ) );
+             const qreal barHeight = point.x() - previousPoint.x();
+             point.rx() -= barHeight;
+ 
+-- 
+cgit v1.1

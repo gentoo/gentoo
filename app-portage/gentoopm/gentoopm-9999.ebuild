@@ -1,8 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_4,3_5,3_6,3_7} pypy )
+
+DISTUTILS_USE_SETUPTOOLS=no
+PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} )
 
 EGIT_REPO_URI="https://github.com/mgorny/gentoopm.git"
 inherit distutils-r1 git-r3
@@ -19,8 +21,7 @@ IUSE=""
 RDEPEND="
 	|| (
 		>=sys-apps/pkgcore-0.9.4[${PYTHON_USEDEP}]
-		>=sys-apps/portage-2.1.10.3[${PYTHON_USEDEP}]
-		sys-apps/portage-mgorny[${PYTHON_USEDEP}] )"
+		>=sys-apps/portage-2.1.10.3[${PYTHON_USEDEP}] )"
 PDEPEND="app-eselect/eselect-package-manager"
 
 python_test() {

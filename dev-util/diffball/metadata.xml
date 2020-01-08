@@ -2,10 +2,10 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>rafaelmartins@gentoo.org</email>
-		<name>Rafael G. Martins</name>
+		<email>zmedico@gentoo.org</email>
+		<name>Zac Medico</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="google-code">diffball</remote-id>
+		<remote-id type="github">zmedico/diffball</remote-id>
 	</upstream>
 </pkgmetadata>

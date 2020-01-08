@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit udev user
+inherit udev
 
 if [[ ${PV} == 9999* ]]; then
 	EGIT_REPO_URI="https://git.code.sf.net/p/${PN}/code"
 	inherit autotools git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~hppa ia64 ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+	KEYWORDS="amd64 ~arm arm64 ~hppa ia64 ppc ppc64 x86"
 fi
 
 DESCRIPTION="Implementation of Microsoft's Media Transfer Protocol (MTP)"
@@ -20,7 +20,9 @@ LICENSE="LGPL-2.1" # LGPL-2+ and LGPL-2.1+ ?
 SLOT="0/9" # Based on SONAME of libmtp shared library
 IUSE="+crypt doc examples static-libs"
 
-RDEPEND="virtual/libusb:1
+RDEPEND="
+	acct-group/plugdev
+	virtual/libusb:1
 	crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )"
 DEPEND="${RDEPEND}"
 BDEPEND="
@@ -29,10 +31,6 @@ BDEPEND="
 	doc? ( app-doc/doxygen )"
 
 DOCS=( AUTHORS README TODO )
-
-pkg_setup() {
-	enewgroup plugdev
-}
 
 src_prepare() {
 	default

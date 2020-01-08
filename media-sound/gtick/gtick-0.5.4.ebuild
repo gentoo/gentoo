@@ -11,7 +11,7 @@ SRC_URI="https://www.antcom.de/gtick/download/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc ~sparc x86"
 IUSE="nls sndfile"
 
 RDEPEND="x11-libs/gtk+:2

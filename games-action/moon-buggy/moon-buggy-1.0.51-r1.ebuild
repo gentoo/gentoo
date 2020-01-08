@@ -1,8 +1,8 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils user
+inherit autotools eutils
 
 DESCRIPTION="A simple console game, where you drive a car across the moon's surface"
 HOMEPAGE="http://www.seehuhn.de/comp/moon-buggy.html"
@@ -13,13 +13,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-RDEPEND="sys-libs/ncurses:0"
+RDEPEND="acct-group/gamestat
+	sys-libs/ncurses:0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-pkg_setup(){
-	enewgroup gamestat 36
-}
 
 src_prepare() {
 	default

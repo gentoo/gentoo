@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ if [[ ${PV} = 9999 ]]; then
 	KEYWORDS=""
 else
 	SRC_URI="ftp://pcc.ludd.ltu.se/pub/pcc-releases/${P}.tgz"
-	KEYWORDS="~x86 ~amd64 ~amd64-fbsd"
+	KEYWORDS="~amd64 ~x86"
 fi
 LICENSE="BSD"
 SLOT="0"
@@ -27,9 +27,9 @@ RDEPEND="${DEPEND}"
 
 src_compile() {
 	# not parallel-safe yet
-	emake -j1 || die "emake failed"
+	emake -j1
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "emake install failed"
+	emake DESTDIR="${D}" install
 }

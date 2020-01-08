@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit multilib
+inherit pam
 
 DESCRIPTION="Library for authenticating against PAM with a Yubikey"
 HOMEPAGE="https://github.com/Yubico/yubico-pam"
@@ -13,9 +13,10 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="ldap test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/pam
+	sys-libs/pam
 	sys-auth/libyubikey
 	>=sys-auth/ykclient-2.15
 	>=sys-auth/ykpers-1.6
@@ -28,7 +29,7 @@ src_configure() {
 	#challenge response could be optional but that seems horribly dangerous to me
 	local myeconfargs=(
 		--with-cr
-		--with-pam-dir=/$(get_libdir)/security
+		--with-pam-dir="$(getpam_mod_dir)"
 		$(use_with ldap)
 	)
 	econf "${myeconfargs[@]}"

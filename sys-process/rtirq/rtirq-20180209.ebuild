@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -6,8 +6,8 @@ EAPI="7"
 inherit linux-info systemd
 
 DESCRIPTION="Modify realtime scheduling policy and priority of IRQ handlers"
-HOMEPAGE="http://www.rncbc.org/archive/#rtirq"
-SRC_URI="http://www.rncbc.org/archive/${P}.tar.gz"
+HOMEPAGE="https://www.rncbc.org/archive/#rtirq"
+SRC_URI="https://www.rncbc.org/archive/old/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

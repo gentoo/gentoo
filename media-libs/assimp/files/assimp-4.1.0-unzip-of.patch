@@ -1,0 +1,11 @@
+--- a/contrib/unzip/unzip.h	2019-08-21 21:38:10.991542891 +0200
++++ b/contrib/unzip/unzip.h	2019-08-21 21:38:24.507543226 +0200
+@@ -45,6 +45,8 @@
+ #ifndef _unz_H
+ #define _unz_H
+ 
++#define OF _Z_OF
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif

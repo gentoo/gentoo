@@ -1,0 +1,10 @@
+--- src/config.mak.in	2019-10-25 23:32:43.196353940 +0300
++++ src/config.mak.in	2019-10-25 23:32:33.935249226 +0300
+@@ -1,6 +1,6 @@
+ prefix=@prefix@
+ exec_prefix=@exec_prefix@
+-CONFDIR=@localstatedir@/lib/@target@
++CONFDIR=@localstatedir@/@target@
+ 
+ CC=@CC@
+ CFLAGS_USER=@CFLAGS@

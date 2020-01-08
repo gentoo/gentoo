@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -11,30 +11,31 @@ SRC_URI="http://www.tm.uka.de/~bless/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
-IUSE=""
+KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 
-DEPEND=""
-RDEPEND="app-text/ghostscript-gpl
+RDEPEND="
+	app-text/ghostscript-gpl
 	!<app-text/texlive-core-2007-r7"
 
 S="${WORKDIR}/${PN}"
 
-src_compile() {
+src_configure() {
 	tc-export CC
-	cd "${S}/src/C"
-	echo "all: bbox" > Makefile
-	emake || die "making bbox failed"
+}
+
+src_compile() {
+	cd src/C || die
+	emake bbox
 }
 
 src_install() {
-	dobin "${S}/src/C/bbox"
-	dobin "${S}/bin/ps2eps"
-	doman "${S}/doc/man/man1/bbox.1"
-	doman "${S}/doc/man/man1/ps2eps.1"
+	dobin src/C/bbox
+	dobin bin/ps2eps
 
-	dodoc Changes.txt README.txt
-	dohtml "${S}/doc/html/"*
-	docinto pdf
-	dodoc "${S}/doc/pdf/"*
+	doman doc/man/man1/bbox.1
+	doman doc/man/man1/ps2eps.1
+
+	local DOCS=( Changes.txt README.txt doc/pdf )
+	local HTML_DOCS=( doc/html/. )
+	einstalldocs
 }

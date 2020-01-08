@@ -29,12 +29,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 src_compile() {
 	cd "${S}"/client || die
-	emake || die "make failed"
+	emake
 }
 
 src_install() {
 	cd "${S}"/client || die
-	emake DESTDIR="${D}" LIBDIR="usr/lib" install || die "make install failed"
+	emake DESTDIR="${D}" LIBDIR="usr/lib" install
 	newbashcomp "${S}/misc/equo-completion.bash" equo
 
 	python_optimize "${D}/usr/lib/entropy/client"

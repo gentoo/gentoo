@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit git-r3 xdg cmake-utils
+inherit git-r3 xdg cmake
 
 DESCRIPTION="Advanced drum machine"
 HOMEPAGE="http://www.hydrogen-music.org/"
@@ -43,8 +43,6 @@ RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog DEVELOPERS README.txt )
 
-PATCHES=( "${FILESDIR}/${P}-gnuinstalldirs.patch" )
-
 src_configure() {
 	local mycmakeargs=(
 		-DWANT_ALSA=$(usex alsa)
@@ -64,15 +62,15 @@ src_configure() {
 		-DWANT_RUBBERBAND=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
-	use doc && cmake-utils_src_compile doc
+	cmake_src_compile
+	use doc && cmake_src_compile doc
 }
 
 src_install() {
 	use doc && local HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
-	cmake-utils_src_install
+	cmake_src_install
 }
