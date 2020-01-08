@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ####################################################################
@@ -144,7 +144,6 @@ media-plugins/vdr-nordlichtsepg
 # wrt bug 703974
 media-plugins/vdr-pilotskin
 
-
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
 # media-video/vdr-2.4.x
@@ -154,7 +153,6 @@ media-plugins/vdr-pilotskin
 # removal from tree ~4 Feb 2020
 # wrt bug 703990
 media-plugins/vdr-sudoku
-
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
@@ -179,7 +177,6 @@ media-plugins/vdr-pvrinput
 # removal from tree ~4 Feb 2020
 # wrt bug 704006
 media-plugins/vdr-lcr
-
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
@@ -212,7 +209,6 @@ media-plugins/vdr-infosatepg
 # removal from tree ~4 Feb 2020
 # wrt bug 704014
 media-plugins/vdr-extb
-
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
@@ -269,7 +265,6 @@ media-plugins/vdr-osdpip
 # removal from tree ~4 Feb 2020
 # wrt bug 704050
 media-plugins/vdr-browse
-
 
 # Mike Gilbert <floppym@gentoo.org> (2020-01-04)
 # Un-fetchable distfile, bug 704782.
@@ -631,13 +626,6 @@ dev-libs/mps
 # Multiple QA issues and docs no longer build
 # Removal in 30 days
 dev-util/cmt
-
-# Ulrich Müller <ulm@gentoo.org> (2019-12-11)
-# No license. HOMEPAGE and SRC_URI are dead.
-# Last visible upstream activity in 2000.
-# The package contains only 7 man pages in total.
-# Masked for removal in 30 days. Bug #702468
-app-i18n/man-pages-da
 
 # Aaron Bauman <bman@gentoo.org> (2019-12-10)
 # EAPI=4, dead upstream/srcurl/homepage. cannot find new home
