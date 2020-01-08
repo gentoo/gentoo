@@ -19,7 +19,6 @@ IUSE="cjk test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/wcwidth[${PYTHON_USEDEP}]
