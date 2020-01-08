@@ -18157,8 +18157,8 @@ www-client/lynx 2.8.9_p1 2.9.0_pre1 2.9.0_pre4: An excellent console-based web b
 www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
-www-client/opera 65.0.3467.69: A fast and secure web browser
-www-client/opera-beta 66.0.3515.14 66.0.3515.21: A fast and secure web browser
+www-client/opera 65.0.3467.69 66.0.3515.27: A fast and secure web browser
+www-client/opera-beta 66.0.3515.21: A fast and secure web browser
 www-client/opera-developer 67.0.3541.0 67.0.3554.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
