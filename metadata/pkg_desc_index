@@ -14369,7 +14369,7 @@ net-analyzer/ossec-hids 3.1.0 3.2.0 3.2.0-r1 3.3.0: Open Source Host-based Intru
 net-analyzer/ostinato 0.9_p20180522: A packet generator and analyzer
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
 net-analyzer/packit 1.6.1: network packet generator and capture tool
-net-analyzer/pathload 1.3.2: Non-intrusive utility for estimation of available bandwidth of Internet paths
+net-analyzer/pathload 1.3.2-r1: Non-intrusive utility for estimation of available bandwidth of Internet paths
 net-analyzer/pbgpp 0.2.10: PCAP BGP Parser
 net-analyzer/pbnj 2.04: A tool for running Nmap scans and diff'ing the results
 net-analyzer/pchar 1.5-r1: Internet bandwidth, latency, and loss of links analyzer
