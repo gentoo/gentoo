@@ -15,13 +15,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="curl debug geoip2 ipsumdump ipv6 jemalloc kerberos +python sendmail \
 	static-libs tcmalloc +tools +zeekctl"
 
-RDEPEND=">=sys-libs/glibc-2.10
-	dev-libs/actor-framework:0=
+RDEPEND="dev-libs/actor-framework:0=
 	dev-libs/openssl:0=
 	net-libs/libpcap
 	sys-libs/zlib:0=
 	curl? ( net-misc/curl )
-	geoip2? ( dev-libs/libmaxminddb )
+	geoip2? ( dev-libs/libmaxminddb:0= )
 	ipsumdump? ( net-analyzer/ipsumdump[ipv6?] )
 	jemalloc? ( dev-libs/jemalloc:0= )
 	kerberos? ( virtual/krb5 )
@@ -33,10 +32,7 @@ RDEPEND=">=sys-libs/glibc-2.10
 DEPEND="${RDEPEND}"
 
 BDEPEND=">=dev-lang/swig-3.0
-	>=dev-util/cmake-2.8.12
-	>=sys-devel/bison-2.5
-	>=sys-devel/gcc-4.8
-	sys-devel/flex"
+	>=sys-devel/bison-2.5"
 
 REQUIRED_USE="zeekctl? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )"
