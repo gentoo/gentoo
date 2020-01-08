@@ -18146,8 +18146,8 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced 
 www-client/epiphany 3.30.5 3.32.5 3.32.6: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 52.9.0 68.2.0 68.3.0 68.4.0 71.0-r1 72.0: Firefox Web Browser
-www-client/firefox-bin 52.9.0 68.2.0 68.3.0 68.4.0 71.0 72.0: Firefox Web Browser
+www-client/firefox 52.9.0 68.2.0 68.3.0 68.4.1 71.0-r1 72.0.1: Firefox Web Browser
+www-client/firefox-bin 52.9.0 68.2.0 68.3.0 68.4.1 71.0 72.0.1: Firefox Web Browser
 www-client/google-chrome 79.0.3945.88: The web browser from Google
 www-client/google-chrome-beta 80.0.3987.16: The web browser from Google
 www-client/google-chrome-unstable 81.0.4000.3: The web browser from Google
