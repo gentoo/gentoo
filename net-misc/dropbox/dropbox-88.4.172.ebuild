@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="BSD-2 CC-BY-ND-3.0 FTL MIT LGPL-2 openssl dropbox"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~x86-linux"
+KEYWORDS="amd64 x86 ~x86-linux"
 IUSE="+librsync-bundled selinux X"
 RESTRICT="mirror strip"
 
