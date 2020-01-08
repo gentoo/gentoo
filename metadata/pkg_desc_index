@@ -2627,6 +2627,7 @@ app-text/pastebinit 1.5: A software that lets you send anything you want directl
 app-text/pdf2djvu 0.9.8 0.9.11 0.9.12 0.9.15: A tool to create DjVu files from PDF files
 app-text/pdf2html 1.4: Converts pdf files to html files
 app-text/pdf2oo 20090715-r1: Converts pdf files to odf
+app-text/pdfarranger 1.3.1: Merge or split pdfs; rearrange, rotate, crop pages.
 app-text/pdfgrep 1.4.1-r1 2.0.1 2.1.2: A tool similar to grep which searches text in PDFs
 app-text/pdfjam 2.08-r1: pdfnup, pdfjoin and pdf90
 app-text/pdfminer 20140328 20140328-r1 20191020: Python tool for extracting information from PDF documents
@@ -6295,6 +6296,7 @@ dev-perl/List-MoreUtils-XS 0.418.0 0.426.0 0.428.0: Compiled List::MoreUtils fun
 dev-perl/List-SomeUtils 0.560.0: A colletion of List utilities missing from List::Util
 dev-perl/List-SomeUtils-XS 0.550.0: XS implementation for List::SomeUtils
 dev-perl/List-UtilsBy 0.100.0: Higher-order list utility functions
+dev-perl/Locale-Codes 3.620.0: A distribution of Perl modules to handle locale codes
 dev-perl/Locale-Maketext-Fuzzy 0.110.0-r1: Maketext from already interpolated strings
 dev-perl/Locale-Maketext-Lexicon 1.0.0: Use other catalog formats in Maketext
 dev-perl/Locale-Msgfmt 0.150.0-r1: Compile .po files to .mo files
@@ -6836,7 +6838,7 @@ dev-perl/Test-File-Contents 0.230.0: Test routines for examining the contents of
 dev-perl/Test-File-ShareDir 1.1.2: Create a Fake ShareDir for your modules for testing.
 dev-perl/Test-Files 0.140.0: A Test::Builder based module to ease testing with files and dirs
 dev-perl/Test-Inline 2.213.0-r2: Inline test suite support for Perl
-dev-perl/Test-Inter 1.60.0: Framework for more readable interactive test scripts
+dev-perl/Test-Inter 1.60.0 1.90.0: Framework for more readable interactive test scripts
 dev-perl/Test-LeakTrace 0.150.0 0.160.0: Traces memory leaks
 dev-perl/Test-LectroTest 0.500.100: Easy, automatic, specification-based tests
 dev-perl/Test-LongString 0.170.0: A library to test long strings
@@ -8308,6 +8310,7 @@ dev-python/pid 2.2.0 2.2.5: Pidfile featuring stale detection and file-locking
 dev-python/piexif 1.0.12 1.0.13 1.1.0_beta0 1.1.3: Exif manipulation with pure Python
 dev-python/pika 0.10.0 0.13.0: Pure-Python implementation of the AMQP
 dev-python/pika-pool 0.1.3: A connection pool for pika.
+dev-python/pikepdf 1.8.3: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 3.4.2-r1 5.4.1 6.2.1 6.2.2 7.0.0: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
@@ -9062,6 +9065,7 @@ dev-python/uvloop 0.8.1 0.12.2 0.13.0 0.14.0: Ultra-fast implementation of async
 dev-python/vcrpy 1.11.1 1.12.0: Automatically mock your HTTP interactions to simplify and speed up testing
 dev-python/vcstools 0.1.42: Python library for interacting with various VCS systems
 dev-python/vcversioner 2.16.0.0: Use version control tags to discover version numbers
+dev-python/vdf 3.2: A module for (de)serialization to and from VDF, Valve's key-value text format
 dev-python/vdirsyncer 0.16.3 0.16.4 0.16.6 0.16.7: Synchronize calendars and contacts
 dev-python/venusian 1.0 1.0_p20161030: A library for deferring decorator actions
 dev-python/verboselogs 1.6: Verbose logging for Python's logging module
@@ -14355,7 +14359,7 @@ net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
 net-analyzer/nrpe 3.2.1-r1 3.2.1-r2: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r5: Network Security Analysis Tool, an application-level network security scanner
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
-net-analyzer/nstats 0.4-r2: Displays statistics about ethernet traffic including protocol breakdown
+net-analyzer/nstats 0.4-r2 0.4-r3: Displays statistics about ethernet traffic including protocol breakdown
 net-analyzer/ntopng 3.8-r1 3.8.1-r2: Network traffic analyzer with web interface
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/nuttcp 8.1.4: Network performance measurement tool
