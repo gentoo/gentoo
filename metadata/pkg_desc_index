@@ -17754,7 +17754,7 @@ sys-power/hibernate-script 2.0-r6: Hibernate script supporting multiple suspend 
 sys-power/iasl 20180810 20190215 20190703: Intel ACPI Source Language (ASL) compiler
 sys-power/intel-undervolt 1.6 1.7 9999: Intel CPU undervolting and throttling configuration tool
 sys-power/ncpufreqd 2.4: Daemon controlling CPU speed and temperature
-sys-power/nut 2.7.4-r1 2.7.4-r2 2.7.4-r3: Network-UPS Tools
+sys-power/nut 2.7.4-r3: Network-UPS Tools
 sys-power/nvclock 0.8_p20110102-r2: NVIDIA Overclocking Utility
 sys-power/nvram-reboot 2004.10.03-r1: PowerOff Boot-Images for nvram-wakeup (not needed for GRUB)
 sys-power/nvram-wakeup 1.1: read and write the WakeUp time in the BIOS
