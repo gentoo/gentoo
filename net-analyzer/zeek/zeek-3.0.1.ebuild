@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 DESCRIPTION="The Zeek Network Security Monitor"
 HOMEPAGE="https://www.zeek.org"
@@ -69,7 +69,7 @@ src_prepare() {
 	sed -i 's:  if (LIBKRB5_FOUND):  if (LIBKRB5_FOUND AND ENABLE_KRB5):' \
 		-i CMakeLists.txt || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -102,11 +102,11 @@ src_configure() {
 		-DZEEK_SPOOL_DIR="/var/spool/${PN}"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	python_optimize
 
