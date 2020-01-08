@@ -7641,7 +7641,7 @@ dev-python/decorator 4.3.2 4.4.0 4.4.1: Simplifies the usage of decorators for t
 dev-python/decoratortools 1.8-r1: Class, function, and metaclass decorators
 dev-python/defcon 0.6.0: A set of UFO based objects for use in font editing applications
 dev-python/deform 0.9.9: Another form generation library
-dev-python/defusedxml 0.5.0: XML bomb protection for Python stdlib modules, an xml serialiser
+dev-python/defusedxml 0.5.0 0.6.0: XML bomb protection for Python stdlib modules, an xml serialiser
 dev-python/demjson 2.2.4: Encoder, decoder, and lint/validator for JSON compliant with RFC 4627
 dev-python/denonavr 0.7.9 0.7.10: Automation Library for Denon AVR receivers
 dev-python/deprecated 1.2.6 1.2.7: Python @deprecated decorator to deprecate old API
