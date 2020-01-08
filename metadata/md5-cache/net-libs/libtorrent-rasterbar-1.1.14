@@ -1,15 +1,15 @@
 DEFINED_PHASES=compile configure install prepare
-DEPEND=dev-libs/boost:=[threads] virtual/libiconv examples? ( !net-p2p/mldonkey ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) python_targets_python3_6? ( dev-lang/python:3.6[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] dev-libs/boost:=[python,python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) sys-devel/libtool
+DEPEND=dev-libs/boost:=[threads] virtual/libiconv examples? ( !net-p2p/mldonkey ) python? ( python_targets_python3_6? ( dev-lang/python:3.6[threads] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-libs/boost:=[python,python_targets_python3_6(-)?,-python_single_target_python3_6(-)] ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) ) sys-devel/libtool
 DESCRIPTION=C++ BitTorrent implementation focusing on efficiency and scalability
 EAPI=7
 HOMEPAGE=https://libtorrent.org
-IUSE=debug +dht doc examples libressl python +ssl static-libs test python_targets_python2_7 python_targets_python3_6
+IUSE=debug +dht doc examples libressl python +ssl static-libs test python_targets_python3_6
 KEYWORDS=~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86
 LICENSE=BSD
-RDEPEND=dev-libs/boost:=[threads] virtual/libiconv examples? ( !net-p2p/mldonkey ) python? ( python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[threads] ) python_targets_python3_6? ( dev-lang/python:3.6[threads] ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] dev-libs/boost:=[python,python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
-REQUIRED_USE=python? ( || ( python_targets_python2_7 python_targets_python3_6 ) )
+RDEPEND=dev-libs/boost:=[threads] virtual/libiconv examples? ( !net-p2p/mldonkey ) python? ( python_targets_python3_6? ( dev-lang/python:3.6[threads] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-libs/boost:=[python,python_targets_python3_6(-)?,-python_single_target_python3_6(-)] ) ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:= ) )
+REQUIRED_USE=python? ( || ( python_targets_python3_6 ) )
 RESTRICT=!test? ( test )
 SLOT=0/9
 SRC_URI=https://github.com/arvidn/libtorrent/releases/download/libtorrent-1_1_14/libtorrent-rasterbar-1.1.14.tar.gz
 _eclasses_=distutils-r1	48c123e514b2cd2128d36eb3bbb9a6fa	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=badba62fff4028e00c322880fcc1e148
+_md5_=4b3ab61a1ca8bee13f2b2c118bbd7ac9
