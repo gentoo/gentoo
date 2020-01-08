@@ -144,7 +144,6 @@ media-plugins/vdr-nordlichtsepg
 # wrt bug 703974
 media-plugins/vdr-pilotskin
 
-
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
 # media-video/vdr-2.4.x
@@ -154,7 +153,6 @@ media-plugins/vdr-pilotskin
 # removal from tree ~4 Feb 2020
 # wrt bug 703990
 media-plugins/vdr-sudoku
-
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
@@ -179,7 +177,6 @@ media-plugins/vdr-pvrinput
 # removal from tree ~4 Feb 2020
 # wrt bug 704006
 media-plugins/vdr-lcr
-
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
@@ -212,7 +209,6 @@ media-plugins/vdr-infosatepg
 # removal from tree ~4 Feb 2020
 # wrt bug 704014
 media-plugins/vdr-extb
-
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
@@ -269,7 +265,6 @@ media-plugins/vdr-osdpip
 # removal from tree ~4 Feb 2020
 # wrt bug 704050
 media-plugins/vdr-browse
-
 
 # Mike Gilbert <floppym@gentoo.org> (2020-01-04)
 # Un-fetchable distfile, bug 704782.
