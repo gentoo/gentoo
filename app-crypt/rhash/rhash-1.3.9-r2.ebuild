@@ -32,6 +32,8 @@ S="${WORKDIR}/RHash-${PV}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-nls.patch
+	# Fixes for https://github.com/rhash/RHash/issues/104
+	# and https://github.com/rhash/RHash/issues/106
 	"${FILESDIR}"/${P}-rc-segfault.patch
 )
 
@@ -69,9 +71,9 @@ multilib_src_configure() {
 multilib_src_install() {
 	# -j1 needed due to race condition.
 	emake DESTDIR="${D}" -j1 \
-		  install{,-lib-headers,-pkg-config} \
-		  $(use nls && echo install-gmo) \
-		  $(use kernel_Winnt || echo install-lib-so-link)
+		install{,-lib-headers,-pkg-config} \
+		$(use nls && echo install-gmo) \
+		$(use kernel_Winnt || echo install-lib-so-link)
 }
 
 multilib_src_test() {
