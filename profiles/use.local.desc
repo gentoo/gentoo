@@ -3215,6 +3215,8 @@ games-emulation/mupen64plus-video-glide64mk2:gles2 - Use GLES2 instead of OpenGL
 games-emulation/mupen64plus-video-glide64mk2:hires - Support hi-resolution textures (requires dev-libs/boost)
 games-emulation/mupen64plus-video-rice:gles2 - Use GLES2 instead of OpenGL
 games-emulation/nestopia:gui - Enable GUI
+games-emulation/pcsxr:archive - Support compressed files (via libarchive)
+games-emulation/pcsxr:ccdda - Support compressed CDDA (requires ffmpeg)
 games-emulation/pcsxr:cdio - Use libcdio for CD support
 games-emulation/pcsxr:sdl - Use SDL sound backend (other parts of SDL are used unconditionally)
 games-emulation/ppsspp:headless - Build headless version of the PPSSPP

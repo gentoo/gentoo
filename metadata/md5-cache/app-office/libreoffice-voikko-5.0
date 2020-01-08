@@ -8,4 +8,4 @@ LICENSE=GPL-3
 RDEPEND=app-office/libreoffice[odk] dev-libs/voikko-fi dev-libs/libvoikko
 SLOT=0
 SRC_URI=https://www.puimula.org/voikko-sources/libreoffice-voikko/libreoffice-voikko-5.0.tar.gz
-_md5_=30ab15da59c9666f5fb4434007674f5d
+_md5_=517ebb7448d5421c674a80de08e9a1b3
