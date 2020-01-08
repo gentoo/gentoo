@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0/10
 SRC_URI=https://sources.archlinux.org/other/pacman/pacman-5.0.2.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=6ea8e5c540fae972b76f92067eaa889b
+_md5_=b323fe6630eeee688c83711ef5610085
