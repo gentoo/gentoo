@@ -17651,7 +17651,7 @@ sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 5.4.7: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 5.4.7: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.80 4.4.208 4.9.208 4.14.162 4.19.93 5.4.8: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.80 4.4.208 4.9.208 4.14.163 4.19.94 5.4.10: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 4.14.9999 4.15.9999 4.16.9999: The Zen Kernel Live Sources
