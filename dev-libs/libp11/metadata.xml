@@ -3,7 +3,7 @@
 <pkgmetadata>
 	<maintainer type="person">
 		<name>Lars Wendler</name>
-		<email>polynomial-c@gentool.org</email>
+		<email>polynomial-c@gentoo.org</email>
 	</maintainer>
 	<longdescription>
 		Library implementing a small layer on top of PKCS#11 API to make
