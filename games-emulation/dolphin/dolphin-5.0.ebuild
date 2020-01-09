@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ RESTRICT=test
 RDEPEND="
 	>=media-libs/libsfml-2.1
 	>net-libs/enet-1.3.7
-	>=net-libs/mbedtls-2.1.1:=
+	>=net-libs/mbedtls-2.1.1:0=
 	dev-libs/lzo
 	media-libs/libpng:0=
 	sys-libs/readline:0=
