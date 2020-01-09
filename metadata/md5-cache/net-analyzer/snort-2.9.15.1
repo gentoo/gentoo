@@ -1,0 +1,15 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=configure install postinst prepare setup
+DEPEND=>=net-libs/libpcap-1.3.0 >=net-libs/daq-2.0.2 >=dev-libs/libpcre-8.33 dev-libs/libdnet net-libs/libnsl:0= sys-libs/zlib !libtirpc? ( sys-libs/glibc[rpc(-)] ) libtirpc? ( net-libs/libtirpc ) open-appid? ( dev-lang/luajit:= )
+DESCRIPTION=The de facto standard for intrusion detection/prevention
+EAPI=7
+HOMEPAGE=https://www.snort.org
+IUSE=static +gre +ppm +perfprofiling +non-ether-decoders control-socket file-inspect high-availability shared-rep side-channel sourcefire linux-smp-stats inline-init-failopen +threads debug +active-response reload-error-restart open-appid +react +flexresp3 large-pcap-64bit selinux +libtirpc
+KEYWORDS=~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=>=net-libs/libpcap-1.3.0 >=net-libs/daq-2.0.2 >=dev-libs/libpcre-8.33 dev-libs/libdnet net-libs/libnsl:0= sys-libs/zlib !libtirpc? ( sys-libs/glibc[rpc(-)] ) libtirpc? ( net-libs/libtirpc ) open-appid? ( dev-lang/luajit:= ) selinux? ( sec-policy/selinux-snort ) virtual/tmpfiles
+REQUIRED_USE=!kernel_linux? ( !shared-rep )
+SLOT=0
+SRC_URI=https://www.snort.org/downloads/archive/snort/snort-2.9.15.1.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_md5_=c75278c4e871e1377152e2feefb7ce62
