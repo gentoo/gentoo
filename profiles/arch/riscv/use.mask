@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -riscv
 
+# Ben Kohler <bkohler@gentoo.org> (2019-01-09)
+# no fam providers keyworded yet
+fam
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-11-27)
 # valgrind has no RISCV port.
 valgrind
