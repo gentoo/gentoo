@@ -1,0 +1,13 @@
+BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DEFINED_PHASES=compile install postinst postrm
+DESCRIPTION=The TeX Portable Graphic Format
+EAPI=7
+HOMEPAGE=https://github.com/pgf-tikz/pgf
+IUSE=doc source
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+LICENSE=GPL-2 LPPL-1.3c FDL-1.2
+RDEPEND=dev-texlive/texlive-latexrecommended virtual/latex-base
+SLOT=0
+SRC_URI=https://github.com/pgf-tikz/pgf/archive/3.1.5b.tar.gz -> pgf-3.1.5b.tar.gz https://dev.gentoo.org/~zlogene/distfiles/dev-tex/pgf/pgf-3.1.5b-revisioned.xz doc? ( https://github.com/pgf-tikz/pgf/releases/download/3.1.5b/pgfmanual.pdf -> pgf-3.1.5b-pgfmanual.pdf )
+_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
+_md5_=4708f1c6ca41915f6372f88eac89b298

@@ -11,4 +11,4 @@ RDEPEND=>=dev-tex/pgf-1.10 dev-texlive/texlive-latexrecommended !dev-tex/transla
 SLOT=0
 SRC_URI=https://github.com/josephwright/beamer/archive/v3.57.tar.gz -> latex-beamer-3.57.tar.gz
 _eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
-_md5_=970c1917fc470d99692e5985ae090e0d
+_md5_=01792fc3b2df498c6e21885ced5b33f8

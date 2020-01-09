@@ -11,4 +11,4 @@ RDEPEND=>=dev-tex/pgf-1.10 dev-texlive/texlive-latexrecommended !dev-tex/transla
 SLOT=0
 SRC_URI=https://github.com/josephwright/beamer/archive/v3.56.tar.gz -> latex-beamer-3.56.tar.gz
 _eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
-_md5_=32748a3b105a6c71e3e2d4f109a1b81f
+_md5_=aed23ebcbea2bcd89888977981a3091c

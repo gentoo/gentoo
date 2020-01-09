@@ -10374,7 +10374,7 @@ dev-tex/lgrind 3.67-r3: A pretty printer for various programming languages with 
 dev-tex/metapost 1.803 1.902: System for producing graphics
 dev-tex/newlfm 8.3-r1: Extensive LaTeX class for writing letters
 dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
-dev-tex/pgf 3.1.4b-r2: The TeX Portable Graphic Format
+dev-tex/pgf 3.1.4b-r2 3.1.5b: The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2-r1: tabular-like environments with named columns
 dev-tex/pscyr 0.4d_beta9: Type1 cyrillic fonts collection
 dev-tex/pythontex 0.16: Fast Access to Python from within LaTeX
