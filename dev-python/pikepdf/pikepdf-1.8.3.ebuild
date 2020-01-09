@@ -8,12 +8,11 @@ inherit distutils-r1
 DESCRIPTION="Python library to work with pdf files based on qpdf"
 HOMEPAGE="https://pypi.org/project/pikepdf/ https://github.com/pikepdf/pikepdf"
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 RDEPEND="app-text/qpdf
-	dev-python/pybind11"
+	dev-python/pybind11[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools_scm_git_archive"
+	dev-python/setuptools_scm_git_archive[${PYTHON_USEDEP}]"
