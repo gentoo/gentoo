@@ -8,11 +8,10 @@ inherit distutils-r1
 DESCRIPTION="Merge or split pdfs; rearrange, rotate, crop pages."
 HOMEPAGE="https://github.com/jeromerobert/pdfarranger"
 SRC_URI="https://github.com/jeromerobert/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-RDEPEND="dev-python/pikepdf"
+RDEPEND="dev-python/pikepdf[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/python-distutils-extra"
+	dev-python/python-distutils-extra[${PYTHON_USEDEP}]"
