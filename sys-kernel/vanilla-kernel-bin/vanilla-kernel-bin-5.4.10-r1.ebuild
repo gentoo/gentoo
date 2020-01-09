@@ -5,7 +5,7 @@ EAPI=7
 
 inherit kernel-install
 
-MY_P=${PF/-bin/}-1
+MY_P=${P/-bin/}-1
 DESCRIPTION="Pre-built vanilla Linux kernel"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+="
