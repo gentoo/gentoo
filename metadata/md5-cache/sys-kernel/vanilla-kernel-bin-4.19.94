@@ -1,0 +1,14 @@
+BDEPEND=test? ( dev-tcltk/expect sys-kernel/dracut amd64? ( app-emulation/qemu[qemu_softmmu_targets_x86_64] ) x86? ( app-emulation/qemu[qemu_softmmu_targets_i386] ) )
+DEFINED_PHASES=install postinst postrm preinst prerm pretend test unpack
+DESCRIPTION=Pre-built vanilla Linux kernel
+EAPI=7
+HOMEPAGE=https://www.kernel.org/
+IUSE=+initramfs test
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=!sys-kernel/vanilla-kernel:4.19.94 || ( sys-kernel/installkernel-gentoo sys-kernel/installkernel-systemd-boot ) initramfs? ( >=sys-kernel/dracut-049-r3 )
+RESTRICT=!test? ( test ) test? ( userpriv )
+SLOT=4.19.94
+SRC_URI=test? ( amd64? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-amd64.qcow2 ) x86? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-x86.qcow2 ) ) amd64? ( https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/vanilla-kernel/vanilla-kernel-4.19.94-1.xpak -> vanilla-kernel-4.19.94-1.amd64.xpak ) x86? ( https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/vanilla-kernel/vanilla-kernel-4.19.94-1.xpak -> vanilla-kernel-4.19.94-1.x86.xpak )
+_eclasses_=kernel-install	f02cff0fb25d3c58170745051b0ba500	mount-boot	e30bb691fbb26137f3d46438542bffe4
+_md5_=fac883dc726d4e871c939e09b46ebc92
