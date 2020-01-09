@@ -14015,7 +14015,7 @@ media-tv/linuxtv-dvb-apps 1.1.1.20140321: Small utils for DVB to scan, zap, view
 media-tv/mythtv 29.1-r2 30.0_p20190808-r1: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
-media-tv/plex-media-server 1.13.2-r1 1.14.1 1.16.4 1.18.3: A free media library that is intended for use with a plex client
+media-tv/plex-media-server 1.13.2-r1 1.14.1 1.16.4 1.18.3 1.18.4: A free media library that is intended for use with a plex client
 media-tv/shoutcast2vdr 0.0.8-r1: VDR script: generate shoutcast playlists
 media-tv/tvbrowser-bin 4.0.1: Themeable and easy to use TV Guide - written in Java
 media-tv/tvheadend 4.2.8 9999: Tvheadend is a TV streaming server and digital video recorder
@@ -14557,7 +14557,7 @@ net-dns/unbound 1.9.4 1.9.5 1.9.6: A validating, recursive and caching DNS resol
 net-dns/updatedd 2.6-r5: Dynamic DNS client with plugins for several dynamic dns services
 net-dns/validns 0.8: A high performance DNS/DNSSEC zone validator
 net-dns/valtz 0.7-r3: Validation tool for tinydns-data zone files
-net-firewall/arno-iptables-firewall 2.0.3: Arno's iptables firewall script
+net-firewall/arno-iptables-firewall 2.0.3 2.1.0: Arno's iptables firewall script
 net-firewall/arptables 0.0.4 0.0.5: set up, maintain, and inspect the tables of ARP rules in the Linux kernel
 net-firewall/conntrack-tools 1.4.4-r1 1.4.5: Connection tracking userspace tools
 net-firewall/dshieldpy 3.2-r2: Python script to submit firewall logs to dshield.org
@@ -18958,7 +18958,7 @@ x11-terms/cool-retro-term 1.1.0 1.1.1: terminal emulator which mimics the look a
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.32.2: The Gnome Terminal
 x11-terms/guake 3.3.2 3.4.0-r1 3.6.1-r1 3.6.3 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.14.6-r1 0.15.0 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty 0.14.6-r1 0.15.0 0.15.1 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.0 1.22.1: The MATE Terminal

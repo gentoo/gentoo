@@ -5680,6 +5680,7 @@ net-dns/unbound:ecs - Enable EDNS client subnet support
 net-dns/unbound:gost - Enable GOST support
 net-dns/unbound:redis - Enable cache db backend which uses dev-libs/hiredis
 net-firewall/arno-iptables-firewall:plugins - Install optional plugins
+net-firewall/arno-iptables-firewall:rsyslog - Install configuration snippet for app-admin/rsyslog
 net-firewall/conntrack-tools:cthelper - Use net-libs/libnetfilter_cthelper for userspace conntrack helper support
 net-firewall/conntrack-tools:cttimeout - Use net-libs/libnetfilter_cttimeout for conntrack timeout support
 net-firewall/conntrack-tools:libtirpc - Use net-libs/libtirpc for RPC support
