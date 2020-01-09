@@ -72,7 +72,7 @@ ESVN_OPTIONS="${ESVN_OPTIONS:-}"
 # @DESCRIPTION:
 # repository uri
 #
-# e.g. http://foo/trunk, svn://bar/trunk, svn://bar/branch/foo@1234
+# e.g. http://example.org/trunk, svn://example.org/branch/foo@1234
 #
 # supported URI schemes:
 #   http://
