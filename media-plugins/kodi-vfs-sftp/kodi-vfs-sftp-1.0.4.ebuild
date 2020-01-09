@@ -12,8 +12,7 @@ SRC_URI=""
 case ${PV} in
 9999)
 	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/xbmc/vfs.sftp.git"
-	EGIT_BRANCH="Matrix"
+	EGIT_REPO_URI="git://github.com/xbmc/vfs.sftp.git"
 	inherit git-r3
 	;;
 *)
@@ -30,8 +29,8 @@ IUSE=""
 
 DEPEND="
 	net-libs/libssh[sftp]
-	~media-libs/kodi-platform-9999
-	~media-tv/kodi-9999
+	=media-libs/kodi-platform-18*
+	=media-tv/kodi-18*
 	"
 RDEPEND="${DEPEND}"
 
