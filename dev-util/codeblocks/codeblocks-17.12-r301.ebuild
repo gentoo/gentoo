@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="http://www.codeblocks.org/"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~ppc ~x86"
 SRC_URI="mirror://sourceforge/${PN}/${P/-/_}.tar.xz
 https://dev.gentoo.org/~leio/distfiles/${P}-fortran.tar.xz
 https://dev.gentoo.org/~leio/distfiles/${P}_update_astyle_plugin_to_v3.1.patch.xz"
