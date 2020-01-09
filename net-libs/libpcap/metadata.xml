@@ -7,6 +7,7 @@
 </maintainer>
 <use>
 <flag name="netlink">Use <pkg>dev-libs/libnl</pkg> to put wireless interfaces in monitor mode.</flag>
+<flag name="remote">Enable remote packet capture which may expose libpcap-based applications to attacks by malicious remote capture servers!</flag>
 </use>
 <upstream>
 <remote-id type="cpe">cpe:/a:tcpdump:libpcap</remote-id>
