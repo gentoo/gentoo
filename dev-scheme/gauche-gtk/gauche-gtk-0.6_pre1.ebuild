@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,7 +6,7 @@ EAPI="6"
 inherit autotools vcs-snapshot
 
 MY_P="${PN^g}2-${PV}"
-PV_COMMIT="6fca535f7bb950f81db066bd1afdca9d55e9b460"
+PV_COMMIT="0220722c44ef85f2e1b9b14745702c1b923258e8"
 
 DESCRIPTION="GTK2 binding for Gauche"
 HOMEPAGE="http://practical-scheme.net/gauche/"
