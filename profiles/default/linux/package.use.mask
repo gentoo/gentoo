@@ -39,10 +39,6 @@ sys-auth/pam_mktemp -prevent-removal
 sys-devel/gcc hardened
 sys-libs/glibc hardened
 
-# Samuli Suominen <ssuominen@gentoo.org> (2012-04-30)
-# This is replaced by native CONFIG_INOTIFY_USER support wrt #413403
-=dev-libs/glib-2* fam
-
 # Samuli Suominen <ssuominen@gentoo.org (2012-03-20)
 # This is masked in base/package.use.mask as Linux only.
 sys-auth/consolekit -acl
