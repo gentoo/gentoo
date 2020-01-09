@@ -6134,6 +6134,8 @@ net-libs/liboping:ncurses - Build ncurses-based version of oping utility (requir
 net-libs/libosmocore:embedded - Build for embedded use and disable unsupported features
 net-libs/libosmocore:pcsc-lite - Enable smartcard support with sys-apps/pcsc-lite
 net-libs/libpcap:netlink - Use dev-libs/libnl to put wireless interfaces in monitor mode.
+net-libs/libpcap:remote - Enable remote packet capture which may expose libpcap-based applications to attacks by malicious remote capture servers!
+net-libs/libpcap:yydebug - Enable parser debugging code
 net-libs/libprotoident:tools - Build and install command-line tools
 net-libs/libproxy:gnome - Enable support for reading proxy settings from GNOME
 net-libs/libproxy:kde - Enable support for reading proxy settings from KDE

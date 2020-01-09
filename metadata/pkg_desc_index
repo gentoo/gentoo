@@ -2639,7 +2639,7 @@ app-text/peg-markdown 0.4.14: Implementation of markdown in C, using a PEG gramm
 app-text/pelican 3.7.1 4.0.0 4.0.1 4.1.2 9999: A tool to generate a static blog, with restructured text or markdown input files
 app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r7 0.6.13 99999: Hypertext info and man viewer based on (n)curses
-app-text/po4a 0.47-r1 0.55 0.56: Tools to ease the translation of documentation
+app-text/po4a 0.47-r1 0.56 0.57: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20171027 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
 app-text/poppler 0.82.0 0.83.0 0.84.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
@@ -14848,7 +14848,7 @@ net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
 net-libs/libosmo-netif 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libosmocore 0.8.0 0.10.2 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
-net-libs/libpcap 1.9.1 9999: A system-independent library for user-level network packet capture
+net-libs/libpcap 1.9.1 1.9.1-r1 1.9.1-r2 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.4.12-r2 1.4.15 1.5.0 1.6.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.12 2.0.13 2.0.14_p1 9999: A library that performs application layer protocol identification for flows
@@ -18962,7 +18962,7 @@ x11-terms/kitty 0.14.6-r1 0.15.0 0.15.1 9999: A modern, hackable, featureful, Op
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.0 1.22.1: The MATE Terminal
-x11-terms/mlterm 3.8.7 3.8.8-r1: A multi-lingual terminal emulator
+x11-terms/mlterm 3.8.7 3.8.8-r1 3.8.9: A multi-lingual terminal emulator
 x11-terms/mrxvt 0.5.4: Multi-tabbed rxvt clone with XFT, transparent background and CJK support
 x11-terms/multi-aterm 0.2.1-r1: rxvt compatible terminal emulator with transparency and tab support
 x11-terms/pangoterm 0.0_pre20150323 0.0_pre20150913 0.0_pre20151022 0.0_pre20160305 0.0_pre20171111: A GTK/Pango-based terminal that uses libvterm to provide terminal emulation
