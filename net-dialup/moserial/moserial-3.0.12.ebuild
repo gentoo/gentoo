@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,6 @@ RDEPEND="
 	>=x11-libs/gtk+-3.0.0:3
 "
 DEPEND="${RDEPEND}
-	>=app-text/gnome-doc-utils-0.3.2
 	>=dev-util/intltool-0.35
 	dev-util/itstool
 	virtual/pkgconfig
