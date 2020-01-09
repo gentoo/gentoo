@@ -76,7 +76,7 @@ src_prepare() {
 		rm -vrf PyQt5* *pyqt5* images || die
 	fi
 	if use librsync-bundled ; then
-		patchelf --set-rpath '$ORIGIN' librsyncffi.compiled._librsyncffi*.so || die
+		patchelf --set-rpath '$ORIGIN' librsyncffi_native.*.so || die
 	else
 		rm -vf librsync.so.1 || die
 	fi
