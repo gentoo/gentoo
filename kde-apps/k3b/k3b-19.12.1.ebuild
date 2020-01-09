@@ -17,7 +17,7 @@ https://userbase.kde.org/K3b"
 LICENSE="GPL-2 FDL-1.2"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="dvd emovix encode ffmpeg flac libav mad mp3 musepack sndfile sox taglib vcd vorbis webkit"
+IUSE="dvd encode ffmpeg flac libav mad mp3 musepack sndfile sox taglib vcd vorbis webkit"
 
 REQUIRED_USE="
 	flac? ( taglib )
@@ -78,7 +78,6 @@ RDEPEND="${DEPEND}
 		>=app-cdr/dvd+rw-tools-7
 		encode? ( media-video/transcode[dvd] )
 	)
-	emovix? ( media-video/emovix )
 	sox? ( media-sound/sox )
 	vcd? ( media-video/vcdimager )
 "
