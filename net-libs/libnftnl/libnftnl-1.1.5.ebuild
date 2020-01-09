@@ -20,6 +20,8 @@ RDEPEND=">=net-libs/libmnl-1.0.3"
 BDEPEND="virtual/pkgconfig"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-fix-nft-flowtable-test.patch )
+
 pkg_setup() {
 	if kernel_is ge 3 13; then
 		CONFIG_CHECK="~NF_TABLES"
