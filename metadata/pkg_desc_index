@@ -15261,7 +15261,7 @@ net-misc/rclone 1.45 1.47.0 1.49.1 9999: A program to sync files to and from var
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.3.4 1.3.6-r1 1.3.9-r1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.3.4 1.3.6-r1 1.3.9-r1 1.3.10: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
@@ -17649,8 +17649,8 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
-sys-kernel/vanilla-kernel 4.19.94 5.4.7 5.4.10: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-kernel-bin 4.19.94 5.4.7 5.4.10: Pre-built vanilla Linux kernel
+sys-kernel/vanilla-kernel 4.19.94-r1 5.4.7 5.4.10-r1: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel-bin 4.19.94-r1 5.4.7 5.4.10-r1: Pre-built vanilla Linux kernel
 sys-kernel/vanilla-sources 3.16.80 4.4.208 4.9.208 4.14.163 4.19.94 5.4.10: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
