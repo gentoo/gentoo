@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="sourceforge">ssdeep</remote-id>
-	</upstream>
+    <maintainer type="person">
+        <email>ikelos@gentoo.org</email>
+        <name>Mike Auty</name>
+    </maintainer>
+    <upstream>
+        <remote-id type="github">ssdeep-project/ssdeep</remote-id>
+    </upstream>
 </pkgmetadata>
