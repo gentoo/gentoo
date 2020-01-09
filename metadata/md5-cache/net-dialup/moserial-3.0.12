@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare
-DEPEND=>=dev-libs/glib-2.16:2[dbus] gnome-base/gsettings-desktop-schemas >=x11-libs/gtk+-3.0.0:3 >=app-text/gnome-doc-utils-0.3.2 >=dev-util/intltool-0.35 dev-util/itstool virtual/pkgconfig >=app-portage/elt-patches-20170815 app-arch/xz-utils dev-util/desktop-file-utils x11-misc/shared-mime-info
+DEPEND=>=dev-libs/glib-2.16:2[dbus] gnome-base/gsettings-desktop-schemas >=x11-libs/gtk+-3.0.0:3 >=dev-util/intltool-0.35 dev-util/itstool virtual/pkgconfig >=app-portage/elt-patches-20170815 app-arch/xz-utils dev-util/desktop-file-utils x11-misc/shared-mime-info
 DESCRIPTION=A clean and friendly gtk-based serial terminal
 EAPI=6
 HOMEPAGE=https://wiki.gnome.org/moserial
@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/glib-2.16:2[dbus] gnome-base/gsettings-desktop-schemas >=x11-
 SLOT=0
 SRC_URI=mirror://gnome/sources/moserial/3.0/moserial-3.0.12.tar.xz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome.org	532d56d07b9eace4831aaa817d2b756a	gnome2	1a42e8c41af42cb294817dcc5b7e3df6	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=114db986536e52a3779cd1b28999efb7
+_md5_=e35986a635cf9a5062332389f02645ca
