@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/kovidgoyal/kitty"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug imagemagick wayland"
+IUSE="debug wayland"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
