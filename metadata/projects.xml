@@ -729,12 +729,6 @@
     </member>
   </project>
   <project>
-    <email>crypto@gentoo.org</email>
-    <name>Crypto</name>
-    <url>https://wiki.gentoo.org/wiki/Project:Crypto</url>
-    <description>Project for maintaining crypto related packages</description>
-  </project>
-  <project>
     <email>deb-tools@gentoo.org</email>
     <name>Debian Tools Project</name>
     <url>https://wiki.gentoo.org/wiki/Project:Debian_Tools</url>
