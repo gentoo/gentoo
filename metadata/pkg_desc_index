@@ -8234,14 +8234,14 @@ dev-python/osc-lib 1.12.1: A package of common support modules for writing OSC p
 dev-python/osc-placement 1.3.0: OpenStackClient plugin for the Placement service
 dev-python/oslo-cache 1.33.2-r1 1.33.3: Oslo Caching around dogpile.cache
 dev-python/oslo-concurrency 3.27.0 3.29.1: library for running multi-thread, multi-process applications
-dev-python/oslo-config 6.4.1 6.8.1: Oslo Configuration API
+dev-python/oslo-config 6.4.1 6.8.1 6.11.2: Oslo Configuration API
 dev-python/oslo-context 2.21.0 2.22.1: Helpers to maintain useful information about a request context
 dev-python/oslo-db 4.40.0 4.45.0: OpenStack Common DB Code
 dev-python/oslo-i18n 3.19.0 3.23.1: Oslo i18n library
 dev-python/oslo-log 3.39.2 3.42.3 3.44.1: OpenStack logging config library, configuration for all openstack projects.
-dev-python/oslo-messaging 8.1.2 9.5.0 10.2.0: Messaging API for RPC and notifications over different messaging transports
+dev-python/oslo-messaging 8.1.2 9.5.0 9.5.1 10.2.0: Messaging API for RPC and notifications over different messaging transports
 dev-python/oslo-middleware 3.34.0 3.37.1: Components injected into wsgi pipelines to intercept request/response flows.
-dev-python/oslo-policy 1.38.1 2.1.1 2.3.2: Support for RBAC policy enforcement across all OpenStack services
+dev-python/oslo-policy 1.38.1 2.1.1 2.3.2 2.3.3: Support for RBAC policy enforcement across all OpenStack services
 dev-python/oslo-privsep 1.29.2 1.32.1 1.33.3: OpenStack library for privilege separation.
 dev-python/oslo-reports 1.26.0 1.29.2: generified reports for openstack
 dev-python/oslo-rootwrap 5.13.0 5.15.2: Allows fine filtering of shell commands to run as root from OpenStack services
@@ -8249,7 +8249,7 @@ dev-python/oslo-serialization 2.24.0-r1 2.28.2: Oslo Serialization library
 dev-python/oslo-service 1.31.8 1.38.0 1.40.2: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 0.2.1: Oslo i18n library
-dev-python/oslo-utils 3.41.3: Oslo Utility library
+dev-python/oslo-utils 3.41.3 3.41.4: Oslo Utility library
 dev-python/oslo-versionedobjects 1.33.3 1.35.1: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.26.0 2.32.2: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.2.0 3.7.1: Oslo test framework
@@ -13462,7 +13462,7 @@ media-plugins/kodi-screensaver-rsxs 9999: RSXS screensaver for Kodi
 media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 9999: Libarchive VFS add-on for Kodi
 media-plugins/kodi-vfs-rar 2.0.5 2.0.6 2.0.7 2.0.8 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 9999: SACD VFS addon for Kodi
-media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 9999: SFTP VFS addon for Kodi
+media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 9999: SFTP VFS addon for Kodi
 media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 9999: Fische visualizer for Kodi
 media-plugins/kodi-visualization-goom 2.1.0 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
@@ -14902,7 +14902,7 @@ net-libs/pacparser 1.3.7: Library to parse proxy auto-config files
 net-libs/phodav 2.2: WebDav server implementation using libsoup
 net-libs/pjproject 2.7.1 2.7.2-r1 2.9-r1: Open source SIP, Media, and NAT Traversal Library
 net-libs/quasselc 0_p20170111: API for accessing Quassel using C
-net-libs/quiche 0.1.0_alpha4_p20190912 0.1.0-r1 9999: Implementation of the QUIC transport protocol and HTTP/3
+net-libs/quiche 0.1.0_alpha4_p20190912 0.1.0-r1 0.2.0 9999: Implementation of the QUIC transport protocol and HTTP/3
 net-libs/qxmpp 0.9.3-r2 1.0.1 9999: A cross-platform C++ XMPP client library based on the Qt framework
 net-libs/rabbitmq-c 0.10.0: RabbitMQ C client
 net-libs/rest 0.8.1: Helper library for RESTful services
@@ -15167,7 +15167,7 @@ net-misc/l7-protocols 2009.05.28-r1: Protocol definitions of l7-filter kernel mo
 net-misc/lambdamoo 1.8.1-r3: networked mud that can be used for different types of collaborative software
 net-misc/lanmap 81-r1 81-r2: lanmap sits quietly on a network and builds a picture of what it sees
 net-misc/lcr 9999: Linux Call Router
-net-misc/libteam 1.22 1.29 9999: Library and tools set for controlling team network device
+net-misc/libteam 1.22 1.29 1.30 9999: Library and tools set for controlling team network device
 net-misc/linux-eoip 0.5: Linux support for proprietary MIkrotik EoIP protocol
 net-misc/linuxptp 1.8 2.0: The Linux Precision Time Protocol (PTP) implementation
 net-misc/liveice 2000530-r2: Live Source Client For IceCast
@@ -15406,7 +15406,7 @@ net-p2p/bitcoind 0.16.3 0.17.1 0.18.0: Original Bitcoin crypto-currency wallet f
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925-r1: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.11 0.12 0.13: Program for displaying classified advertisement items
-net-p2p/cpuminer-opt 3.11.1 9999: Optimized multi algo CPU miner
+net-p2p/cpuminer-opt 3.11.1 3.11.2 9999: Optimized multi algo CPU miner
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/deluge 1.3.15-r2 1.3.15-r3 1.3.15-r4 1.3.9999 2.0.3-r1 2.0.3-r2 9999: BitTorrent client with a client/server model
@@ -19051,7 +19051,7 @@ x11-themes/human-icon-theme 0.36: A nice and well polished icon theme
 x11-themes/iceicons 0.10.0-r1: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-extra-themes 1.1 1.2: Extra themes for IceWM
 x11-themes/kfaenza 0.8.9-r2: Faenza-Cupertino icon theme for KDE Plasma
-x11-themes/kvantum 0.13.0-r2 0.14.0: SVG-based theme engine for Qt5, KDE and LXQt
+x11-themes/kvantum 0.14.0 0.14.1: SVG-based theme engine for Qt5, KDE and LXQt
 x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
 x11-themes/laughlin-backgrounds 14.1.0.3-r1: Fedora 14 official background artwork
 x11-themes/leonidas-backgrounds 11.0.0.2-r1: Fedora 11 official background artwork
