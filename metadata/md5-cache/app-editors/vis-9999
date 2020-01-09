@@ -10,4 +10,4 @@ RDEPEND=dev-libs/libtermkey ncurses? ( sys-libs/ncurses:0= ) tre? ( dev-libs/tre
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
-_md5_=25fbb13cbbc96efbe1f1f9b052997d1a
+_md5_=2f387828a96d1bbdf7c3fcca5c349e70
