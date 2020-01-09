@@ -5,6 +5,10 @@
 		<name>Lars Wendler</name>
 		<email>polynomial-c@gentoo.org</email>
 	</maintainer>
+    <maintainer type="person">
+        <email>k_f@gentoo.org</email>
+        <name>Kristian Fiskerstrand</name>
+    </maintainer>
 	<use>
 		<flag name="common-lisp">Install common-lisp files</flag>
 	</use>
