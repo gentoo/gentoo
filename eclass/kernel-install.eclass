@@ -269,15 +269,17 @@ kernel-install_pkg_postinst() {
 	if [[ -z ${ROOT} ]]; then
 		mount-boot_pkg_preinst
 
+		local image_path=$(kernel-install_get_image_path)
 		if use initramfs; then
 			# putting it alongside kernel image as 'initrd' makes
 			# kernel-install happier
 			kernel-install_build_initramfs \
-				"${EROOT}/usr/src/linux-${PV}/initrd" "${PV}"
+				"${EROOT}/usr/src/linux-${PV}/${image_path%/*}/initrd" \
+				"${PV}"
 		fi
 
 		kernel-install_install_kernel "${PV}" \
-			"${EROOT}/usr/src/linux-${PV}/$(kernel-install_get_image_path)" \
+			"${EROOT}/usr/src/linux-${PV}/${image_path}" \
 			"${EROOT}/usr/src/linux-${PV}/System.map"
 	fi
 
