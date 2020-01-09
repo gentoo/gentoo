@@ -1,7 +1,10 @@
 #!/sbin/openrc-run
 
 PIDDIR=/run/tox-bootstrapd
-PIDFILE="${PIDDIR}"/tox-bootstrap.pid
+PIDFILE="${PIDDIR}"/tox-bootstrapd.pid
+KEYSDIR=/var/lib/tox-bootstrapd
+TOX_USER=tox
+TOX_GROUP=tox
 
 depend() {
 	need net
@@ -11,6 +14,7 @@ start() {
 	ebegin "Starting tox-dht-bootstrap daemon"
 
 	checkpath -d -q -o "${TOX_USER}":"${TOX_GROUP}" "${PIDDIR}"
+	checkpath -d -q -o "${TOX_USER}":"${TOX_GROUP}" "${KEYSDIR}"
 
 	start-stop-daemon --start \
 		--pidfile "${PIDFILE}" \
