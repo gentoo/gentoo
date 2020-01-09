@@ -4959,7 +4959,7 @@ dev-libs/libgee 0.6.8 0.20.1 0.20.2: GObject-based interfaces and classes for co
 dev-libs/libgit2 0.28.4 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.28.0.1: Git library for GLib
 dev-libs/libgnome-games-support 1.4.4: Library for code common to Gnome games
-dev-libs/libgpg-error 1.27-r1 1.29 1.32 1.32-r1 1.36: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.36: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 232 233-r1: GObject bindings for libudev
