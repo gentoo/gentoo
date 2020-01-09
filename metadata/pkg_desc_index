@@ -9796,7 +9796,7 @@ dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response pa
 dev-ruby/httparty 0.17.1 0.17.3: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.0.1-r1 1.6.0 1.7.0 1.7.1: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.0.1-r1 1.6.0 1.7.0 1.7.1 1.8.0: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/idn-ruby 0.1.0: LibIDN Ruby Bindings
 dev-ruby/image_processing 1.9.3 1.10.0: High-level image processing helper methods with libvips and ImageMagick
@@ -9933,7 +9933,7 @@ dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.1.0 2.1.1: Terminal painter
 dev-ruby/parallel 1.17.0 1.18.0 1.19.0 1.19.1: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
-dev-ruby/parser 2.6.4.0 2.6.4.1 2.6.5.0 2.7.0.0 2.7.0.1: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.6.5.0 2.7.0.0 2.7.0.1 2.7.0.2: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
 dev-ruby/pastel 0.7.2 0.7.3: Terminal strings styling with intuitive and clean API
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
@@ -9970,7 +9970,7 @@ dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.14 1.4.16-r1: A LALR(1) parser generator for Ruby
 dev-ruby/rack 1.6.11 1.6.12 2.0.6 2.0.7 2.0.8: A modular Ruby webserver interface
 dev-ruby/rack-attack 5.4.2 6.2.0 6.2.1 6.2.2: A DSL for blocking & throttling abusive clients
-dev-ruby/rack-cache 1.9.0 1.10.0: Enable HTTP caching for Rack-based applications that produce freshness info
+dev-ruby/rack-cache 1.9.0 1.10.0 1.11.0: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
 dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid library
 dev-ruby/rack-protection 1.5.5 2.0.5 2.0.7: This gem protects against typical web attacks
