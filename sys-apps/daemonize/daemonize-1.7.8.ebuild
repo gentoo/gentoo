@@ -9,7 +9,7 @@ SRC_URI="https://github.com/bmc/${PN}/archive/release-${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 DOCS=( CHANGELOG.md README.md )
