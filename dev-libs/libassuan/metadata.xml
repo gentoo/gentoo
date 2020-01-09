@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<name>Lars Wendler</name>
+		<email>polynomial-c@gentoo.org</email>
+	</maintainer>
 <longdescription>
 In an ideal world, Assuan is irrelevant.  Assuan's primary use is to
 allow a client to interact with a non-persistent server.  Using Assuan,
