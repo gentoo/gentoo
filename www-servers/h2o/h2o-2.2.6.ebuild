@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -15,13 +15,15 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="libressl +mruby"
+IUSE="libh2o libressl +mruby"
 
 RDEPEND="dev-lang/perl
 	sys-libs/zlib
+	libh2o? ( dev-libs/libuv )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
+	libh2o? ( virtual/pkgconfig )
 	mruby? (
 		${RUBY_DEPS}
 		|| (
@@ -71,7 +73,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}"/etc/${PN}
 		-DWITH_MRUBY=$(usex mruby)
-		-DWITHOUT_LIBS=ON
+		-DWITHOUT_LIBS=$(usex !libh2o)
+		-DBUILD_SHARED_LIBS=$(usex libh2o)
 	)
 	cmake-utils_src_configure
 }
