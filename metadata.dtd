@@ -7,7 +7,7 @@
 <!ATTLIST pkgmetadata pkgname CDATA "">
 
   <!-- One tag for each maintainer of a package, multiple allowed-->
-  <!ELEMENT maintainer ( email, (description| name)* )>
+  <!ELEMENT maintainer (email|name|description)+>
   <!-- type attribute determines whether the maintainer is a person or a project.
     Unknown is added to handle <maintainer/>s in <upstream/>s. Using it (or no
     explicit type) for Gentoo maintainers is prohibited. -->
