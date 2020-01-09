@@ -13,7 +13,7 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="bluetooth dbus netlink -remote static-libs usb"
+IUSE="bluetooth dbus netlink -remote static-libs usb -yydebug"
 KEYWORDS=""
 
 RDEPEND="
@@ -30,7 +30,7 @@ DEPEND="
 "
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.0-pcap-config-includedir.patch
+	"${FILESDIR}"/${PN}-1.9.1-pcap-config.patch
 	"${FILESDIR}"/${PN}-9999-prefix-darwin.patch
 )
 
@@ -47,7 +47,9 @@ multilib_src_configure() {
 		$(use_enable dbus) \
 		$(use_enable remote) \
 		$(use_enable usb) \
-		$(use_with netlink libnl)
+		$(use_enable yydebug) \
+		$(use_with netlink libnl) \
+		--enable-ipv6
 }
 
 multilib_src_compile() {
