@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python{3_6,3_7} )
 inherit python-single-r1 systemd udev multilib-minimal
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
-HOMEPAGE="https://pcsclite.apdu.fr/"
+HOMEPAGE="https://pcsclite.apdu.fr https://github.com/LudovicRousseau/PCSC"
 
 SRC_URI="https://pcsclite.apdu.fr/files/${P}.tar.bz2"
 

@@ -3,7 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6..7} )
+PYTHON_COMPAT=( python2_7 python3_{6..8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+
 inherit distutils-r1
 
 DESCRIPTION="Minimal AMF encoder and decoder for Python"
@@ -17,33 +19,16 @@ IUSE="doc test"
 
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="dev-python/defusedxml[${PYTHON_USEDEP}]
+RDEPEND="dev-python/defusedxml[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
-RDEPEND="${COMMON_DEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${COMMON_DEPEND}
+DEPEND="${RDEPEND}
 	test? (
 		dev-python/coverage[${PYTHON_USEDEP}]
 		dev-python/flake8[${PYTHON_USEDEP}]
 	)"
-BDEPEND="doc? ( dev-python/sphinx )"
+
+distutils_enable_sphinx doc
 
 python_test() {
 	coverage run --source=miniamf setup.py test || die
-}
-
-python_compile_all() {
-	distutils-r1_python_compile
-
-	if use doc ; then
-		cd doc/ || die
-		sphinx-build -b html . _build || die
-	fi
-}
-
-python_install_all() {
-	use doc && local HTML_DOCS=( doc/_build/. )
-	einstalldocs
-
-	distutils-r1_python_install_all
 }

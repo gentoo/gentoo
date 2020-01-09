@@ -5,6 +5,9 @@
     <email>perl@gentoo.org</email>
     <name>Gentoo Perl Project</name>
   </maintainer>
+  <maintainer type="project">
+    <email>netmon@gentoo.org</email>
+  </maintainer>
   <upstream>
     <remote-id type="cpan">Nmap-Parser</remote-id>
     <remote-id type="cpan-module">Nmap::Parser</remote-id>

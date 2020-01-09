@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm ppc ppc64 x86"
 
-IUSE="cgi gui ipmi snmp +usb selinux ssl tcpd xml zeroconf"
+IUSE="cgi gui ipmi snmp +usb selinux split-usr ssl tcpd xml zeroconf"
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="
@@ -34,8 +34,7 @@ DEPEND="
 	zeroconf? ( net-dns/avahi )"
 
 BDEPEND="
-	virtual/pkgconfig
-	>=sys-apps/sed-4"
+	virtual/pkgconfig"
 
 RDEPEND="${DEPEND}
 	selinux? ( sec-policy/selinux-nut )"
@@ -80,10 +79,10 @@ NUT_PRIVATE_FILES="/etc/nut/{upsd.conf,upsd.users,upsmon.conf}"
 NUT_CGI_FILES="/etc/nut/{{hosts,upsset}.conf,upsstats{,-single}.html}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.7.2-no-libdummy.patch"
-	"${FILESDIR}/${PN}-2.7.1-snmpusb-order.patch"
-	"${FILESDIR}/${PN}-2.6.2-lowspeed-buffer-size.patch"
-	"${FILESDIR}/nut-openssl-1.1-support.patch"
+	"${FILESDIR}"/${PN}-2.7.2-no-libdummy.patch
+	"${FILESDIR}"/${PN}-2.7.1-snmpusb-order.patch
+	"${FILESDIR}"/${PN}-2.6.2-lowspeed-buffer-size.patch
+	"${FILESDIR}"/nut-openssl-1.1-support.patch
 )
 
 pkg_setup() {
@@ -169,7 +168,7 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 
 	dodir /sbin
-	dosym ../usr/sbin/upsdrvctl /sbin/upsdrvctl
+	use split-usr && dosym ../usr/sbin/upsdrvctl /sbin/upsdrvctl
 
 	if use cgi; then
 		elog "CGI monitoring scripts are installed in /usr/share/nut/cgi."

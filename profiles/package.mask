@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 ####################################################################
@@ -31,6 +31,56 @@
 ## app-misc/some-package
 
 #--- END OF EXAMPLES ---
+
+# Göktürk Yüksek <gokturk@gentoo.org> (2020-01-08)
+# Declared deprecated by upstream and is no longer being maintained.
+# Use app-crypt/yubikey-manager[,-qt] to configure a Yubikey device
+# over CCID.
+# Removal in 30 days.
+app-crypt/libykneomgr
+
+# Ulrich Müller <ulm@gentoo.org> (2020-01-07)
+# No upstream SRC_URI. No license, so it cannot be mirrored.
+# Masked for removal in 30 days. Bug #702936.
+media-fonts/nepali-fonts
+
+# Ulrich Müller <ulm@gentoo.org> (2020-01-06)
+# No license, therefore we have no permission to redistribute
+# these packages on Gentoo mirrors. Distfiles are unversioned
+# zipballs, which are updated in place when a new version is
+# released. Since this will break digests, mirror restriction
+# is not feasible.
+# Masked for removal in 30 days. Bug #703604.
+app-dicts/sword-ab
+app-dicts/sword-abs_essay_goodsam_swb
+app-dicts/sword-br_en
+app-dicts/sword-bulcarigradnt
+app-dicts/sword-bwe
+app-dicts/sword-chincvs
+app-dicts/sword-chincvt
+app-dicts/sword-chiun
+app-dicts/sword-chiuns
+app-dicts/sword-czecep
+app-dicts/sword-czekms
+app-dicts/sword-czenkb
+app-dicts/sword-dbd
+app-dicts/sword-emtv
+app-dicts/sword-est
+app-dicts/sword-family
+app-dicts/sword-finpr92
+app-dicts/sword-frecrl
+app-dicts/sword-geneva
+app-dicts/sword-hebmodern
+app-dicts/sword-hunuj
+app-dicts/sword-icelandic
+app-dicts/sword-kekchi
+app-dicts/sword-korean
+app-dicts/sword-la_en
+app-dicts/sword-latvian
+app-dicts/sword-maori
+app-dicts/sword-romcor
+app-dicts/sword-umgreek
+app-dicts/sword-xhosa
 
 # Ulrich Müller <ulm@gentoo.org> (2020-01-06)
 # Snapshots from Git, masked for testing.
@@ -101,7 +151,6 @@ media-plugins/vdr-nordlichtsepg
 # wrt bug 703974
 media-plugins/vdr-pilotskin
 
-
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
 # media-video/vdr-2.4.x
@@ -111,7 +160,6 @@ media-plugins/vdr-pilotskin
 # removal from tree ~4 Feb 2020
 # wrt bug 703990
 media-plugins/vdr-sudoku
-
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
@@ -136,7 +184,6 @@ media-plugins/vdr-pvrinput
 # removal from tree ~4 Feb 2020
 # wrt bug 704006
 media-plugins/vdr-lcr
-
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
@@ -169,7 +216,6 @@ media-plugins/vdr-infosatepg
 # removal from tree ~4 Feb 2020
 # wrt bug 704014
 media-plugins/vdr-extb
-
 
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
 # plugin is broken by update to
@@ -226,7 +272,6 @@ media-plugins/vdr-osdpip
 # removal from tree ~4 Feb 2020
 # wrt bug 704050
 media-plugins/vdr-browse
-
 
 # Mike Gilbert <floppym@gentoo.org> (2020-01-04)
 # Un-fetchable distfile, bug 704782.
@@ -589,13 +634,6 @@ dev-libs/mps
 # Removal in 30 days
 dev-util/cmt
 
-# Ulrich Müller <ulm@gentoo.org> (2019-12-11)
-# No license. HOMEPAGE and SRC_URI are dead.
-# Last visible upstream activity in 2000.
-# The package contains only 7 man pages in total.
-# Masked for removal in 30 days. Bug #702468
-app-i18n/man-pages-da
-
 # Aaron Bauman <bman@gentoo.org> (2019-12-10)
 # EAPI=4, dead upstream/srcurl/homepage. cannot find new home
 # Compression has come along way. Removal in 30 days
@@ -709,12 +747,6 @@ app-laptop/nvidiabl
 # Bug #537786.
 # Removal after 2020-01-01
 net-wireless/bcm43xx-fwcutter
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-11-25)
-# Mask for removal from main tree into ::nix-guix overlay.
-# Removal in 30 days.
-sys-apps/nix
-sys-apps/guix
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths

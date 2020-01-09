@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD=90
@@ -30,7 +30,7 @@ RDEPEND="
 	python? (
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
-	<sci-libs/sundials-5.0.0:0=
+	<sci-libs/sundials-5.1.0:0=
 "
 
 DEPEND="
