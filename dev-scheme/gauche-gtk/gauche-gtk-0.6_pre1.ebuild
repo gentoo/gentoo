@@ -28,6 +28,8 @@ RDEPEND="x11-libs/gtk+:2
 	)"
 S="${WORKDIR}/${MY_P}"
 
+PATCHES=( "${FILESDIR}"/${PN}-glgd.patch )
+
 src_prepare() {
 	default
 	eautoconf
