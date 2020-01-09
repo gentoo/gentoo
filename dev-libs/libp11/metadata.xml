@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<name>Lars Wendler</name>
+		<email>polynomial-c@gentool.org</email>
+	</maintainer>
 	<longdescription>
 		Library implementing a small layer on top of PKCS#11 API to make
 		using PKCS#11 implementations easier.
