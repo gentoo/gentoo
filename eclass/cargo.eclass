@@ -39,16 +39,13 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
 cargo_crate_uris() {
+	readonly regex='^(.*)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
 	local crate
 	for crate in "$@"; do
-		local name version url pretag
-		name="${crate%-*}"
-		version="${crate##*-}"
-		pretag="^[a-zA-Z]+"
-		if [[ $version =~ $pretag ]]; then
-			version="${name##*-}-${version}"
-			name="${name%-*}"
-		fi
+		local name version url
+		[[ $crate =~ $regex ]] || die "Could not parse name and version from crate: $crate"
+		name="${BASH_REMATCH[1]}"
+		version="${BASH_REMATCH[2]}"
 		url="https://crates.io/api/v1/crates/${name}/${version}/download -> ${crate}.crate"
 		echo "${url}"
 	done
