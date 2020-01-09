@@ -13189,7 +13189,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 9999: Linux Studio Plugins
 media-libs/lv2 1.14.0-r1 1.16.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 19.1.8 19.2.7 19.2.8 19.3.0 19.3.1 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.1.8 19.2.7 19.2.8 19.3.0 19.3.1 19.3.2 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.16.0-r1 6.16.0-r2 6.18.0 6.18.0-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
