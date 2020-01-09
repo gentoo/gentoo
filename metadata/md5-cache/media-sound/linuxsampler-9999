@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=>=media-libs/libgig-4.2.0 media-libs/libsndfile[-minimal] alsa? ( media-libs/alsa-lib ) jack? ( virtual/jack ) lv2? ( media-libs/lv2 ) sqlite? ( >=dev-db/sqlite-3.3 )
 REQUIRED_USE=|| ( alsa jack )
 SLOT=0
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	estack	686eaab303305a908fd57b2fd7617800	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	76e4ab6ae9cda8407c34d0b9a086f81c	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	estack	686eaab303305a908fd57b2fd7617800	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	1086a6c20b5a06e9f05f3128525fa694	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=edeb417d02f138b2297c034b385e53d7

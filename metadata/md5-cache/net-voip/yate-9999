@@ -8,5 +8,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=postgres? ( dev-db/postgresql:* ) mysql? ( virtual/mysql ) gsm? ( media-sound/gsm ) speex? ( media-libs/speex ) ssl? ( dev-libs/openssl:0 ) zlib? ( sys-libs/zlib ) ilbc? ( dev-libs/ilbc-rfc3951 ) spandsp? ( >=media-libs/spandsp-0.0.3 ) dahdi? ( net-misc/dahdi )
 SLOT=0/9999
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	estack	686eaab303305a908fd57b2fd7617800	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	76e4ab6ae9cda8407c34d0b9a086f81c	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	estack	686eaab303305a908fd57b2fd7617800	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	1086a6c20b5a06e9f05f3128525fa694	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d5c2151a3e60849020883926ced8f4a5

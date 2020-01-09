@@ -11,5 +11,5 @@ RDEPEND=dev-libs/boost:= sys-libs/ncurses:= sys-libs/readline:0= >=dev-embedded/
 REQUIRED_USE=avr? ( sdbinutils ) ds390? ( sdbinutils ) ds400? ( sdbinutils ) gbz80? ( sdbinutils ) hc08? ( sdbinutils ) mcs51? ( sdbinutils ) pic14? ( sdbinutils ) pic16? ( sdbinutils ) r2k? ( sdbinutils ) r3ka? ( sdbinutils ) s08? ( sdbinutils ) stm8? ( sdbinutils ) tlcs90? ( sdbinutils ) z180? ( sdbinutils ) z80? ( sdbinutils ) || ( avr ds390 ds400 gbz80 hc08 mcs51 pic14 pic16 r2k r3ka s08 stm8 tlcs90 z180 z80 )
 RESTRICT=strip
 SLOT=0
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	estack	686eaab303305a908fd57b2fd7617800	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	76e4ab6ae9cda8407c34d0b9a086f81c	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	estack	686eaab303305a908fd57b2fd7617800	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	1086a6c20b5a06e9f05f3128525fa694	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=fd9dd1dba018caba24de7450476b03ae
