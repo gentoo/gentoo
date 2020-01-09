@@ -13,4 +13,4 @@ REQUIRED_USE=valgrind? ( debug )
 SLOT=0
 SRC_URI=https://download.sourceforge.net/accel-ppp/accel-ppp-1.12.0.tar.bz2 -> accel-ppp-1.12.0.tar
 _eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	linux-info	953c3b1c472dcadbf62098a9301327f2	linux-mod	6c7b3e7b9d39bd049bf23a991c16315e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=02f6cf0c6fe54a2ef1aa321b50260ab2
+_md5_=1f4a6f54c80cccf968739d7cf2b40320

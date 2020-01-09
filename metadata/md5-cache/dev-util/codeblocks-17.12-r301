@@ -4,10 +4,10 @@ DESCRIPTION=The open source, cross platform, free C, C++ and Fortran IDE
 EAPI=6
 HOMEPAGE=http://www.codeblocks.org/
 IUSE=contrib debug fortran pch
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=GPL-3
 RDEPEND=app-arch/zip x11-libs/wxGTK:3.0-gtk3[X] contrib? ( app-admin/gamin app-text/hunspell dev-libs/boost:= )
 SLOT=0
 SRC_URI=mirror://sourceforge/codeblocks/codeblocks_17.12.tar.xz https://dev.gentoo.org/~leio/distfiles/codeblocks-17.12-fortran.tar.xz https://dev.gentoo.org/~leio/distfiles/codeblocks-17.12_update_astyle_plugin_to_v3.1.patch.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=d637009b78129e811944d3b731459b78
+_md5_=478708239a848d4dc4013bb7d5364df4

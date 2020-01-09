@@ -8821,6 +8821,7 @@ www-servers/cherokee:rrdtool - Enable rrdtool support
 www-servers/civetweb:server - Build standalone server
 www-servers/fnord:auth - Enable HTTP authentication support
 www-servers/gatling:diet - Compile against dev-libs/dietlibc
+www-servers/h2o:libh2o - Build and install libh2o
 www-servers/h2o:mruby - Enable support for mruby
 www-servers/lighttpd:libev - Enable fdevent handler
 www-servers/lighttpd:mmap - Use mmap with files owned by lighttpd. This is a dangerous option as it may allow local users to trigger SIGBUS crashes.
