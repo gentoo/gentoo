@@ -5,7 +5,7 @@ DESCRIPTION=A JavaScript runtime built on Chrome's V8 JavaScript engine
 EAPI=7
 HOMEPAGE=https://nodejs.org/
 IUSE=cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test
-KEYWORDS=~amd64 ~arm arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos
+KEYWORDS=~amd64 ~arm arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x64-macos
 LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
 RDEPEND=>=dev-libs/libuv-1.23.2:= >=net-dns/c-ares-1.10.1 >=net-libs/http-parser-2.9.0:= >=net-libs/nghttp2-1.39.2 sys-libs/zlib icu? ( >=dev-libs/icu-60.1:= ) ssl? ( =dev-libs/openssl-1.0.2*:0=[-bindist] )
 REQUIRED_USE=inspector? ( icu ssl ) npm? ( ssl )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://nodejs.org/dist/v8.17.0/node-v8.17.0.tar.xz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=9d69d1a4b368aa1e80e2f01f0a4378aa
+_md5_=bc40494160a20b731c67886c59eb0d01
