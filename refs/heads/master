@@ -1,17 +1,25 @@
 certificate version 0.1
-pusher Kristian Fiskerstrand <k_f@gentoo.org> 1578666112 +0100
-pushee git+ssh://git.gentoo.org/repo/gentoo.git
-nonce 1578666112-734240f915ea3e2e5bd23f896ce2ebbdf6accce0
+pusher 0x3AFFCE974D34BD8C 1578667158 +0700
+pushee git.gentoo.org:repo/gentoo.git
+nonce 1578667158-2a47e18ca681923122544ba986056ef47473a3fd
 
-562bfdf572540c0476219acd85ad77784f1cace5 2cbf328ec5328db00a4ea21b29c0195486e6dfc8 refs/heads/master
+2cbf328ec5328db00a4ea21b29c0195486e6dfc8 fa3562e44e75c75cea9d5269be43e221040ee3da refs/heads/master
 -----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
 
-iQFDBAABCgAtFiEEICl/zzfUVEdaBsDU24F+DhePmz8FAl4YiIAPHGtfZkBnZW50
-b28ub3JnAAoJENuBfg4Xj5s/9rUIAIREaIaK/cEeRZ1CEvQ220JLQwAJ+Jhf3OhN
-tP9qNdZKHRidqW0qRQ2QAfICtDL5j8kTyZur3XiGG/WRlN9ec+05wllnLpPU7+wf
-6GvCQF/V0VZDjOKfpxEVzeFZDkquxsjbOYqGuHX+75122nXSIWtmX6mJ0evMCoU4
-5+PJJTBeyHuz9cNShxlGXMdm8J9MbS3rIp1XxR0W72kis2B2lf7e3x2x88ydMwLM
-jjilN1x7ryDr0sgwqI+PTWaUgcFGrBVyykaZsqII4+DI0je++waqWwScRKnI7Qop
-xK2yadNU/FfBLuJG0whvjSFkmVj9vyccNckFojEUq5V5WRt41Rw=
-=bhSk
+iQKTBAABCgB9FiEECMTt9mnFpjD+feuUOv/Ol000vYwFAl4YjJZfFIAAAAAALgAo
+aXNzdWVyLWZwckBub3RhdGlvbnMub3BlbnBncC5maWZ0aGhvcnNlbWFuLm5ldDA4
+QzRFREY2NjlDNUE2MzBGRTdERUI5NDNBRkZDRTk3NEQzNEJEOEMACgkQOv/Ol000
+vYyf4A/+JGebcz9hgf52v8yqQ7Sur6wb6YALNO8gK1w/DIwgCInef+0wVe9uwoxW
+AORPQrvRB1XTRkJo+aQHomtfc30yTSMRqxy+1oDNXm4Rsry4fXHEDbZyyskXHGW0
+bJWxmxWetSiZK/2eJJh1kw1E4ysuuxRtdrnyHPD9NSitevhi5/TxkHvnDKYdBtvu
+H9wbiRMikm9FOoXzFyvCZr8YOn5N0z8mr9wSl+Y7vfbxPDtWuvGxTcXy45K74UgE
+c/xMXIPzP77O6QlpXsA+RBixf6YMwNgxCGDpRsdTSdVKx5e9brWYS9TJkQZwukf3
+9X2Fjx/UHTrKcgT8lGiA4zuLDSBSWAG5v+vEeypYA3OxTF5DhGnTn28zx51y7KX6
+wKBPAObaKqBEUlmW84Rt14Yt1CDJdXok/G5SNsxj+VuCtrj94cYhYwvfluZH98oa
+bYUQT7XYY8SHyef/B3IadRUVb3daBo4Upd9hERhNBbFqsOqqEuNZvtlioHWYqqWJ
+GsJtXEBelbufT8dV78jPvnEDyh32uvI+WRETGFYV62Trp4ReW7sIXUitnu9McmRV
+2Ydwn/VToRuMFaKCy8f+WAKP1mdbSZfPzaX6vBJerAAWzp8ROa/j4xTTbQAQkg5f
+SwMsk1gBCDzN+kFf5V5ZZbY8eZswyigZv3bJ+TjcGNgCb9mWNqc=
+=jaxW
 -----END PGP SIGNATURE-----
