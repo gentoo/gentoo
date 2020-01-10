@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm arm64 ~ppc ~ppc64 x86 ~amd64-linux ~x64-macos"
 IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test"
 REQUIRED_USE="
 	inspector? ( icu ssl )
