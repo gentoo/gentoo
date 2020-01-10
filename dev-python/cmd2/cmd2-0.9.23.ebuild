@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1 virtualx
 
@@ -13,8 +13,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/attrs[${PYTHON_USEDEP}]
@@ -23,21 +21,15 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/wcwidth[${PYTHON_USEDEP}]
 "
-DEPEND="
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
-	test? (
-		${RDEPEND}
-		dev-python/pytest[${PYTHON_USEDEP}]
-	)
 "
 
-python_test() {
-	# test rely on very specific text wrapping...
-	local -x COLUMNS=80
-	pytest -vv || die
-}
+distutils_enable_tests pytest
 
 src_test() {
+	# tests rely on very specific text wrapping...
+	local -x COLUMNS=80
 	virtx distutils-r1_src_test
 }
