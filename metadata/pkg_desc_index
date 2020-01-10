@@ -2069,7 +2069,7 @@ app-misc/i2bits 0.1.0: Utility to convert hex or dec to binary format
 app-misc/icdiff 1.9.1: Colourized diff that supports side-by-side diffing
 app-misc/ifp-line 0.3: iRiver iFP open-source driver
 app-misc/ignuit 2.24.3: Memorization aid based on the Leitner flashcard system
-app-misc/imgurbash2 2.1 9999: Bash script that uploads/deletes images to/from imgur
+app-misc/imgurbash2 3.1 9999: Bash script that uploads/deletes images to/from imgur
 app-misc/inputlircd 0.0.1_pre15-r2: Inputlirc daemon to utilize /dev/input/event*
 app-misc/interceptty 0.6-r1: a program that can sit between a serial port and an application
 app-misc/irtrans-irclient 6.01.05-r1: ASCII Client for the IRTrans Server
@@ -12760,7 +12760,7 @@ media-gfx/graphite2 1.3.13: Library providing rendering capabilities for complex
 media-gfx/graphviz 2.42.3: Open Source Graph Visualization Software
 media-gfx/greycstoration 2.9-r2: Image regularization algorithm for denoising, inpainting and resizing
 media-gfx/grub-splashes 20091109: Collection of grub splashes
-media-gfx/gscan2pdf 1.8.11 2.6.1 2.6.2: Scan documents, perform OCR, produce PDFs and DjVus
+media-gfx/gscan2pdf 1.8.11 2.6.2 2.6.3: Scan documents, perform OCR, produce PDFs and DjVus
 media-gfx/gthumb 3.6.2-r1: Image viewer and browser for Gnome
 media-gfx/gtkam 1.0: A frontend for gPhoto 2
 media-gfx/gtkimageview 1.6.4: A simple image viewer widget for GTK
@@ -14979,7 +14979,7 @@ net-mail/mlmmj 1.2.19.0-r1 1.3.0: Mailing list managing made joyful
 net-mail/mpack 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.4.4: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
-net-mail/mu 0.9.18-r2 1.0 1.3.5: Set of tools to deal with Maildirs, in particular, searching and indexing
+net-mail/mu 0.9.18-r2 1.0 1.3.5 1.3.6: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 3 4 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.28.4 0.29.2 0.29.3: Thread-based e-mail indexer, supporting quick search and tagging
@@ -15077,8 +15077,8 @@ net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for 
 net-misc/crossbar 17.6.1_p3-r1 17.8.1 17.9.1 17.12.1 18.3.1: Crossbar.io - The Unified Application Router for the twisted framework
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
 net-misc/curl 7.65.0 7.65.3 7.66.0 7.67.0-r1 7.68.0: A Client that groks URLs
-net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1 2.11.1-r1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
-net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2 2.11.1: Userspace tools to configure the kernel modules from net-misc/dahdi
+net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1 2.11.1-r1 3.1.0: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
+net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2 2.11.1 3.1.0: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN

@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/newt net-misc/dahdi sys-kernel/linux-headers virtual/libusb:0 ppp? ( net-dialup/ppp )
+DESCRIPTION=Userspace tools to configure the kernel modules from net-misc/dahdi
+EAPI=7
+HOMEPAGE=https://www.asterisk.org
+IUSE=ppp
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=dev-libs/newt net-misc/dahdi sys-kernel/linux-headers virtual/libusb:0 ppp? ( net-dialup/ppp )
+SLOT=0
+SRC_URI=https://downloads.asterisk.org/pub/telephony/dahdi-tools/releases/dahdi-tools-3.1.0.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=0990da8b4beec00e2f5617eca098535f
