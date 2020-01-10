@@ -6,7 +6,7 @@
 		<name>Marek Szuba</name>
 	</maintainer>
 	<longdescription>
-		RainbowCrack is a general propose implementation of Philippe Oechslin's faster time-memory trade-off technique.
+		RainbowCrack is a general-purpose implementation of Philippe Oechslin's faster time-memory trade-off technique.
 		In short, the RainbowCrack tool is a password cracker. A traditional brute force cracker try all possible
 		plaintexts one by one in cracking time. It is time consuming to break complex password in this way. The idea of
 		time-memory trade-off is to do all cracking time computation in advance and store the result in files so called
