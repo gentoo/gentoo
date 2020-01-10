@@ -41,6 +41,13 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
+python_compile() {
+	if python_is_python3; then
+		./fail2ban-2to3 || die
+	fi
+	distutils-r1_python_compile
+}
+
 python_install_all() {
 	distutils-r1_python_install_all
 
@@ -49,8 +56,8 @@ python_install_all() {
 	# not FILESDIR
 	newconfd files/gentoo-confd ${PN}
 	newinitd files/gentoo-initd ${PN}
-	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}"/${PN}.service || die
-	systemd_dounit "${T}"/${PN}.service
+	sed -e "s:@BINDIR@:${EPREFIX}/usr/bin:g" files/${PN}.service.in > "${T}/${PN}.service" || die
+	systemd_dounit "${T}/${PN}.service"
 	systemd_dotmpfilesd files/${PN}-tmpfiles.conf
 	doman man/*.{1,5}
 
