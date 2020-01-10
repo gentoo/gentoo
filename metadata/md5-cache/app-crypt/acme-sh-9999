@@ -7,5 +7,5 @@ LICENSE=GPL-3
 PROPERTIES=live
 RDEPEND=net-misc/curl || ( dev-libs/libressl dev-libs/openssl:0 ) || ( net-analyzer/netcat net-analyzer/openbsd-netcat ) || ( net-misc/socat www-servers/apache:2 www-servers/nginx ) virtual/cron
 SLOT=0
-_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
+_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33
 _md5_=5235a9c244d7e36d2ed7ddd34366abd0

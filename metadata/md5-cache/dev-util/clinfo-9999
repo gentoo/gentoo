@@ -7,5 +7,5 @@ LICENSE=CC0-1.0
 PROPERTIES=live
 RDEPEND=>=app-eselect/eselect-opencl-1.1.0-r4 virtual/opencl
 SLOT=0
-_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
+_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33
 _md5_=5c7f85382c06fc156aed219cc3948351

@@ -8,5 +8,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=net-analyzer/icinga2-2.4.0 >=www-apps/icingaweb2-2.5.0
 SLOT=0
-_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b
+_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33
 _md5_=7f883890d58b1c68fcf6436c2c98b750
