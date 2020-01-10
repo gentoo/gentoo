@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/${PN}/${MY_PN}/archive/${MY_P}.tar.gz"
 LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/145" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
 KEYWORDS="amd64 ~hppa ~ia64 ppc ppc64 x86"
-IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gstreamer gtk jpeg
+IUSE="asio curl debug doc examples ffmpeg fltk fox gdal gif glut gstreamer jpeg
 las libav lua openexr openinventor osgapps pdf png sdl sdl2 svg tiff
 truetype vnc wxwidgets xine xrandr zlib"
 
@@ -34,7 +34,6 @@ RDEPEND="
 		fltk? ( x11-libs/fltk:1[opengl] )
 		fox? ( x11-libs/fox:1.6[opengl] )
 		glut? ( media-libs/freeglut )
-		gtk? ( x11-libs/gtkglext )
 		sdl2? ( media-libs/libsdl2 )
 		wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[opengl,X] )
 	)
@@ -109,7 +108,7 @@ src_configure() {
 		-DWITH_GIFLIB=$(usex gif)
 		-DWITH_GStreamer=$(usex gstreamer)
 		-DWITH_GLIB=$(usex gstreamer)
-		-DWITH_GtkGl=$(usex gtk)
+		-DWITH_GtkGl=OFF
 		-DWITH_JPEG=$(usex jpeg)
 		-DWITH_Jasper=OFF
 		-DWITH_LIBLAS=$(usex las)
