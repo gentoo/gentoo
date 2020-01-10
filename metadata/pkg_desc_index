@@ -7579,7 +7579,7 @@ dev-python/cligj 0.4.0: Click-based argument and option decorators for Python GI
 dev-python/clint 0.5.1 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 0.3.1 1.2.1 1.2.2: Extended pickling support for Python objects
-dev-python/cmd2 0.7.9 0.8.9 0.9.21 0.9.22: Extra features for standard library's cmd module
+dev-python/cmd2 0.7.9 0.8.9 0.9.22 0.9.23: Extra features for standard library's cmd module
 dev-python/colander 1.3.1: A simple schema-based serialization and deserialization library
 dev-python/collectd-rabbitmq 1.19.0-r1: Collectd plugin to gather statistics from RabbitMQ
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
@@ -8401,7 +8401,7 @@ dev-python/pycadf 2.9.0-r1: python implementation of DMTF Cloud Audit (CADF) dat
 dev-python/pycairo 1.16.3-r1 1.17.0-r1 1.18.1 1.18.2: Python bindings for the cairo library
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pycapnp 0.6.2 0.6.3 0.6.4: Python wrapping of the Cap'n Proto library
-dev-python/pycares 2.1.1 2.3.0 2.4.0 3.0.0 3.0.0_p20190709 3.1.0_p3: Python interface for c-ares
+dev-python/pycares 3.1.0_p3 3.1.1: Python interface for c-ares
 dev-python/pycdio 2.1.0: Python OO interface to libcdio (CD Input and Control library)
 dev-python/pychart 1.39-r1: Python library for creating charts
 dev-python/pychecker 0.8.19-r1: Python source code checking tool
@@ -8518,7 +8518,7 @@ dev-python/pyparted 3.10.7 3.11.2 3.11.3 999999: Python bindings for sys-block/p
 dev-python/pypax 0.9.5 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pypcap 1.2.1 1.2.2 1.2.3: Simplified object-oriented Python extension module for libpcap
 dev-python/pypeg2 2.15.2: An intrinsic PEG Parser-Interpreter for Python
-dev-python/pyperclip 1.5.27 1.6.0 1.6.4 1.7.0: A cross-platform clipboard module for Python.
+dev-python/pyperclip 1.5.27 1.7.0: A cross-platform clipboard module for Python.
 dev-python/pypgsql 2.5.1-r1: Python Interface to PostgreSQL
 dev-python/pyphen 0.9.4: Python module for hyphenation using hunspell dictionaries
 dev-python/pypiserver 1.3.1-r1: Minimal PyPI server
@@ -9791,7 +9791,7 @@ dev-ruby/htmlentities 4.3.4: A simple library for encoding/decoding entities in 
 dev-ruby/http 0.9.8-r2 3.3.0 4.1.1: An easy-to-use client library for making requests from Ruby
 dev-ruby/http-accept 1.7.0 2.1.0 2.1.1: Parse Accept and Accept-Language HTTP headers
 dev-ruby/http-cookie 1.0.3: A ruby library to handle HTTP cookies
-dev-ruby/http-form_data 1.0.3 2.1.1: Utility-belt to build form data request bodies
+dev-ruby/http-form_data 1.0.3 2.1.1 2.2.0: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
 dev-ruby/httparty 0.17.1 0.17.3: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
