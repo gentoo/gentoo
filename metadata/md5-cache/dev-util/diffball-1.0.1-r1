@@ -12,4 +12,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/zmedico/diffball/archive/v1.0.1.tar.gz -> diffball-1.0.1.tar.gz https://github.com/zmedico/diffball/pull/1.patch -> diffball-1.0.1-bug_543310_stack_buffer_overflows.patch
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=15fa393040202cd75768152413459e14
+_md5_=dd3b8c715a3f6efc9958f9ae93a6e972

@@ -79,6 +79,7 @@ acct-group/redis 0: Redis program group
 acct-group/redmine 0: System group: redmine
 acct-group/render 0: System group: render
 acct-group/rspamd 0: Group for rspamd - Rapid spam filtering system
+acct-group/rstudio-server 0: group for sci-mathematics/rstudio
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
 acct-group/shellinaboxd 0: shellinabox group
 acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
@@ -191,6 +192,7 @@ acct-user/radius 0: FreeRadius program user
 acct-user/redis 0: Redis program user
 acct-user/redmine 0: Redmine application user
 acct-user/rspamd 0: User for rspamd - Rapid spam filtering system
+acct-user/rstudio-server 0: user for sci-mathematics/rstudio
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
 acct-user/shellinaboxd 0: shellinabox user
 acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
@@ -824,7 +826,7 @@ app-crypt/seahorse-sharing 3.8.0_p20151117 3.8.0_p20181216: Daemon for PGP publi
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 20 23 24: Cryptographically sign and verify files
-app-crypt/signing-party 2.9 2.10-r1: A collection of several tools related to OpenPGP
+app-crypt/signing-party 2.10-r1: A collection of several tools related to OpenPGP
 app-crypt/simple-tpm-pk11 0.06: Simple PKCS11 provider for TPM chips
 app-crypt/ssdeep 2.14.1: Computes context triggered piecewise hashes (fuzzy hashes)
 app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authentication agent
@@ -1186,6 +1188,7 @@ app-doc/linkers-and-loaders 1 1-r1: The Linkers and Loaders book
 app-doc/linux-device-drivers 2 3: howto write linux device drivers (updated for Linux 2.6)
 app-doc/linux-kernel-in-a-nutshell 1-r1: Linux Kernel in a Nutshell: A Desktop Quick Reference
 app-doc/linuxfromscratch 7.10 8.0 8.2: LFS documents building a Linux system entirely from source
+app-doc/mathjax-docs 2.7.7: MathJax documentation
 app-doc/motif-reference-manual 2.3.0-r2: Motif Reference Manual
 app-doc/php-docs 20101029-r1 20190203: HTML documentation for PHP
 app-doc/phrack 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69: A Hacker magazine by the community, for the community
@@ -4255,6 +4258,7 @@ dev-java/freemarker 2.3.25: A Java tool to generate text output based on templat
 dev-java/fscript 1.17-r1: Java based scripting engine designed to be embedded into other Java applications
 dev-java/gcj-jdk 5.4.0-r1: Java wrappers around GCJ
 dev-java/geoip-java 1.3.0: Java library for lookup countries by IP addresses
+dev-java/gin 2.1.2: Google Gin (GWT INjection)
 dev-java/glassfish-deployment-api 3.1.1: J2EE Application Deployment Specification V.1.2
 dev-java/glassfish-ejb-api 3.2: Project GlassFish Enterprise JavaBean API
 dev-java/glassfish-interceptor-api 3.1: Project GlassFish Interceptor API
@@ -4273,6 +4277,7 @@ dev-java/gradle-bin 3.3 3.4.1 5.2.1: A project automation and build tool with a 
 dev-java/gson 2.3.1 2.6.2 2.7: Java library to convert JSON to Java objects and vice-versa
 dev-java/guava 20.0: A collection of Google's core Java libraries
 dev-java/guice 4.1: A lightweight dependency injection framework for Java 5 and above
+dev-java/gwt 2.8.2: Google Web Toolkit library
 dev-java/hamcrest-core 1.1-r1 1.3: Core library of matchers for building test expressions
 dev-java/hamcrest-generator 1.1 1.3-r1: Code generator for Hamcrest's library of matchers for building test expressions
 dev-java/hamcrest-integration 1.3: Integration library of hamcrest
@@ -4599,7 +4604,7 @@ dev-java/txw2-runtime 20110809: TXW is a library that allows you to write XML do
 dev-java/typesafe-config 1.2.1 1.3.0-r2: A library of arguably useful Java utilities
 dev-java/unkrig-nullanalysis 0_pre1644: Some classes to test for various null conditions
 dev-java/upnplib 1.0.7: UPnP port mapping library for Java based on sbbi-upnplib
-dev-java/validation-api 1.1.0: Bean Validation (JSR-303) API
+dev-java/validation-api 1.0.0 1.1.0: Bean Validation (JSR-303) API
 dev-java/vecmath 1.6.0_pre12: Sun J3D: 3D vector math package
 dev-java/velocity 1.7-r2: Java framework for easy creation/rendering of documents
 dev-java/velocity-dvsl 1.0: Declarative Velocity Style Language.
@@ -5102,7 +5107,7 @@ dev-libs/lzo 2.10: An extremely fast compression and decompression library
 dev-libs/m17n-lib 1.7.0 1.8.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
 dev-libs/marisa 0.2.4 0.2.5 9999: Matching Algorithm with Recursively Implemented StorAge
-dev-libs/mathjax 2.7.0 2.7.4: JavaScript display engine for LaTeX, MathML and AsciiMath
+dev-libs/mathjax 2.7.0 2.7.4 2.7.7: JavaScript display engine for LaTeX, MathML and AsciiMath
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
@@ -16492,7 +16497,7 @@ sci-mathematics/pymc3 3.1: Bayesian Modeling and Probabilistic Machine Learning 
 sci-mathematics/relational 2.5: Educational tool for relational algebra
 sci-mathematics/rkward 0.7.0b: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
-sci-mathematics/rstudio 1.1.463-r1 1.2.1335: IDE for the R language
+sci-mathematics/rstudio 1.1.463-r1 1.2.1335 1.2.5033: IDE for the R language
 sci-mathematics/rw 0.8-r1: Compute rank-width decompositions of graphs
 sci-mathematics/sha1-polyml 5.5.0 5.6_p1: implementation of SHA1 is taken from the GNU coreutils package
 sci-mathematics/singular 4.0.2 4.0.3: Computer algebra system for polynomial computations

@@ -4,10 +4,10 @@ DEPEND=dev-lang/perl app-crypt/libmd
 DESCRIPTION=A collection of several tools related to OpenPGP
 EAPI=7
 HOMEPAGE=https://salsa.debian.org/signing-party-team/signing-party
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=dev-lang/perl app-crypt/libmd >=app-crypt/gnupg-1.3.92 dev-perl/GnuPG-Interface dev-perl/Text-Template dev-perl/MIME-tools net-mail/qprint >=dev-perl/MailTools-1.62 dev-perl/Net-IDN-Encode virtual/mailx virtual/mta || ( dev-perl/libintl-perl dev-perl/Text-Iconv app-text/recode )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/s/signing-party/signing-party_2.10.orig.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=cadabf857d3d34d82b01f56d09b26905
+_md5_=36cb5ed35450f5c42421357bed1d2412

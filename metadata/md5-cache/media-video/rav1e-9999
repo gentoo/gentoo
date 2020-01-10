@@ -9,5 +9,5 @@ LICENSE=BSD-2
 PROPERTIES=live
 RESTRICT=mirror
 SLOT=0
-_eclasses_=cargo	7a9f426c330a836616f8c239bd44145e	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multiprocessing	cac3169468f893670dac3e7cb940e045
+_eclasses_=cargo	b3bac18f5f7e424b691700ed49f3c5a0	git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multiprocessing	cac3169468f893670dac3e7cb940e045
 _md5_=a800da6eb1d94382c5b7d662ab16053e
