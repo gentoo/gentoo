@@ -18,7 +18,9 @@ RESTRICT="!test? ( test )"
 RDEPEND="virtual/opengl"
 
 src_prepare() {
-	sed -e "s:@CMAKE_INSTALL_PREFIX@:${EPREFIX}/usr:" \
+	sed \
+		-e "s:@CMAKE_INSTALL_PREFIX@:${EPREFIX}/usr:" \
+		-e "s:@GLM_VERSION@:0.9.9:" \
 		"${FILESDIR}"/glm.pc.in \
 		> glm.pc
 	cmake-utils_src_prepare
