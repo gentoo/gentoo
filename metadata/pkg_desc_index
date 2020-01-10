@@ -9014,7 +9014,7 @@ dev-python/tqdm 4.23.3 4.33.0 4.40.0 9999: Add a progress meter to your loops in
 dev-python/traceback2 1.4.0: Backports of the traceback module
 dev-python/traitlets 4.3.2: A configuration system for Python applications
 dev-python/transitions 0.7.1: A lightweight, object-oriented state machine implementation in Python
-dev-python/translate-toolkit 2.3.1 2.4.0: Toolkit to convert between many translation formats
+dev-python/translate-toolkit 2.4.0: Toolkit to convert between many translation formats
 dev-python/translationstring 1.3: Utility library for i18n relied on by various Repoze packages
 dev-python/transmissionrpc 0.11 9999: Python module that implements the Transmission bittorrent client RPC protocol
 dev-python/treq 17.8.0: A requests-like API built on top of twisted.web's Agent
@@ -10654,11 +10654,11 @@ dev-util/jfrog-cli 1.30.4: Command line utility foroperations on container image
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.0-r1 3.0.1: Graphical debugger interface
-dev-util/kdevelop 5.4.2 5.4.5 5.4.6: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
+dev-util/kdevelop 5.4.5 5.4.6: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-clang-tidy 0.3.3-r1: KDevelop plugin for clang-tidy static analysis support
 dev-util/kdevelop-pg-qt 2.2.0: LL(1) parser generator used mainly by KDevelop language plugins
-dev-util/kdevelop-php 5.4.2 5.4.5 5.4.6: PHP plugin for KDevelop
-dev-util/kdevelop-python 5.4.2 5.4.5 5.4.6: Python plugin for KDevelop
+dev-util/kdevelop-php 5.4.5 5.4.6: PHP plugin for KDevelop
+dev-util/kdevelop-python 5.4.5 5.4.6: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
 dev-util/kelbt 0.15: A backtracking LR parser by the author of Ragel
 dev-util/kernelshark 1.0 9999: Graphical reader for trace-cmd output
@@ -12018,7 +12018,7 @@ kde-apps/kgpg 19.08.3 19.12.1: Frontend for GnuPG, a powerful encryption utility
 kde-apps/khangman 19.08.3 19.12.1: Classical hangman game by KDE
 kde-apps/khelpcenter 19.08.3 19.12.1: Application to read documentation for KDE Plasma, Applications, Utilities
 kde-apps/kidentitymanagement 19.08.3 19.12.1: Library for managing identitites
-kde-apps/kig 19.08.3 19.08.3-r1 19.12.1: KDE Interactive Geometry tool
+kde-apps/kig 19.08.3-r1 19.12.1: KDE Interactive Geometry tool
 kde-apps/kigo 19.08.3 19.12.1: Go game by KDE
 kde-apps/killbots 19.08.3 19.12.1: Kill the bots or they kill you!
 kde-apps/kimagemapeditor 19.08.3 19.12.1: Generator of HTML image maps
@@ -12159,7 +12159,7 @@ kde-frameworks/kapidox 5.64.0 5.65.0: Framework for building KDE API documentati
 kde-frameworks/karchive 5.64.0 5.65.0: Framework for reading, creation, and manipulation of various archive formats
 kde-frameworks/kauth 5.64.0 5.65.0: Framework to let applications perform actions as a privileged user
 kde-frameworks/kbookmarks 5.64.0 5.65.0: Framework for managing bookmarks stored in XBEL format
-kde-frameworks/kcalendarcore 5.64.0 5.64.0-r1 5.65.0-r1: Library for interfacing with calendars
+kde-frameworks/kcalendarcore 5.64.0-r1 5.65.0-r1: Library for interfacing with calendars
 kde-frameworks/kcmutils 5.64.0 5.65.0: Framework to work with KDE System Settings modules
 kde-frameworks/kcodecs 5.64.0 5.65.0: Framework for manipulating strings using various encodings
 kde-frameworks/kcompletion 5.64.0 5.65.0: Framework for common completion tasks such as filename or URL completion
@@ -12189,7 +12189,7 @@ kde-frameworks/kiconthemes 5.64.0 5.65.0: Framework for icon theming and configu
 kde-frameworks/kidletime 5.64.0 5.65.0: Framework for detection and notification of device idle time
 kde-frameworks/kimageformats 5.64.0 5.65.0: Framework providing additional format plugins for Qt's image I/O system
 kde-frameworks/kinit 5.64.0 5.65.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.64.0 5.64.0-r2 5.65.0: Framework providing transparent file and data management
+kde-frameworks/kio 5.64.0-r2 5.65.0: Framework providing transparent file and data management
 kde-frameworks/kirigami 5.64.1 5.65.0: Lightweight user interface framework for mobile and convergent applications
 kde-frameworks/kitemmodels 5.64.0 5.65.0: Framework providing data models to help with tasks such as sorting and filtering
 kde-frameworks/kitemviews 5.64.0 5.65.0: Framework providing additional widgets for item models
@@ -12223,7 +12223,7 @@ kde-frameworks/networkmanager-qt 5.64.0 5.65.0: NetworkManager bindings for Qt
 kde-frameworks/oxygen-icons 5.64.0 5.65.0: Oxygen SVG icon theme
 kde-frameworks/plasma 5.64.0 5.65.0 5.65.0-r1: Plasma framework
 kde-frameworks/prison 5.64.0 5.65.0: QRCode and data matrix barcode library
-kde-frameworks/purpose 5.64.0 5.64.0-r2 5.65.0: Library for providing abstractions to get the developer's purposes fulfilled
+kde-frameworks/purpose 5.64.0-r2 5.65.0: Library for providing abstractions to get the developer's purposes fulfilled
 kde-frameworks/qqc2-desktop-style 5.64.0 5.65.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
 kde-frameworks/solid 5.64.0-r1 5.65.0: Provider for platform independent hardware discovery, abstraction and management
 kde-frameworks/sonnet 5.64.0 5.65.0: Framework for providing spell-checking through abstraction of popular backends
@@ -12258,7 +12258,7 @@ kde-misc/plasma-redshift-control 1.0.18-r1: Plasma 5 applet for controlling reds
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.11: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1-r1: Simple image scanning application based on libksane and KDE Frameworks
-kde-misc/tellico 3.2.1 3.2.3: Collection manager based on KDE Frameworks
+kde-misc/tellico 3.2.3: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
 kde-misc/zanshin 0.5.71: Getting things done application by KDE
 kde-plasma/bluedevil 5.17.4 5.17.5: Bluetooth stack for KDE Plasma
@@ -14895,7 +14895,7 @@ net-libs/nfqueue-bindings 0.5 0.6: High-level language bindings for libnetfilter
 net-libs/nghttp2 1.39.2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 8.16.2 8.17.0 10.17.0 10.18.0 10.18.1 12.13.0 12.14.0 12.14.1 13.4.0 13.5.0-r1 13.6.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 8.16.2 8.17.0 10.17.0 10.18.0 10.18.1 12.13.0 12.14.0 12.14.1 13.5.0-r1 13.6.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4 3.0: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -14923,10 +14923,10 @@ net-libs/socket_wrapper 1.1.6 1.1.7 1.1.9 1.2.1 1.2.3: A library passing all soc
 net-libs/sofia-sip 1.12.11: RFC3261 compliant SIP User-Agent library
 net-libs/srt 1.3.2 1.4.0 9999: Open-source implementation of the Secure Real-time Transport Protocol (SRTP)
 net-libs/stem 1.5.4 1.6.0 1.7.0 1.7.1 1.8.0: Stem is a Python controller library for Tor
-net-libs/telepathy-accounts-signon 2.0 2.1: Mission control plugin for Telepathy to provide IM accounts and authentication
+net-libs/telepathy-accounts-signon 2.1: Mission control plugin for Telepathy to provide IM accounts and authentication
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
 net-libs/telepathy-glib 0.24.1 0.24.1-r1: GLib bindings for the Telepathy D-Bus protocol
-net-libs/telepathy-logger-qt 17.08.0 17.08.0-r1: Qt bindings for the Telepathy logger
+net-libs/telepathy-logger-qt 17.08.0-r1: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.8 9999: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0.2.8 0.2.9 0.2.9-r1 0.2.10 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
@@ -15214,7 +15214,7 @@ net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 0.01c: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
 net-misc/networkmanager 1.18.4-r1: A set of co-operative tools that make networking simple and straightforward
-net-misc/nextcloud-client 2.5.2 2.6.0 2.6.1: Desktop Syncing Client for Nextcloud
+net-misc/nextcloud-client 2.5.2 2.6.0 2.6.1 2.6.2: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
 net-misc/ntp 4.2.8_p13 4.2.8_p13-r1 4.2.8_p13-r2: Network Time Protocol suite/programs
