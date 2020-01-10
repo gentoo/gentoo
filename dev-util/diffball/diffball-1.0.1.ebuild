@@ -30,5 +30,5 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable debug asserts)
+	econf --disable-static $(use_enable debug asserts)
 }
