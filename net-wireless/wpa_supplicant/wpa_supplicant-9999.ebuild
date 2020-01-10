@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,14 @@ fi
 
 SLOT="0"
 IUSE="ap bindist dbus eap-sim eapol_test fasteap +fils +hs2-0 libressl macsec p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+
+# CONFIG_PRIVSEP=y does not have sufficient support for the new driver
+# interface functions used for MACsec, so this combination cannot be used
+# at least for now.
+REQUIRED_USE="
+	macsec? ( !privsep )
+	privsep? ( !macsec )
+"
 
 CDEPEND="dbus? ( sys-apps/dbus )
 	kernel_linux? (
@@ -157,6 +165,7 @@ src_configure() {
 	Kconfig_style_config EAP_LEAP
 	Kconfig_style_config EAP_MSCHAPV2
 	Kconfig_style_config EAP_PEAP
+	Kconfig_style_config EAP_TEAP
 	Kconfig_style_config EAP_TLS
 	Kconfig_style_config EAP_TTLS
 
@@ -235,6 +244,8 @@ src_configure() {
 
 	if use smartcard ; then
 		Kconfig_style_config SMARTCARD
+	else
+		Kconfig_style_config SMARTCARD n
 	fi
 
 	if use tdls ; then
@@ -279,6 +290,13 @@ src_configure() {
 		Kconfig_style_config WPS_UPNP
 		# Near Field Communication
 		Kconfig_style_config WPS_NFC
+	else
+		Kconfig_style_config WPS n
+		Kconfig_style_config WPS2 n
+		Kconfig_style_config WPS_UFD n
+		Kconfig_style_config WPS_ER n
+		Kconfig_style_config WPS_UPNP n
+		Kconfig_style_config WPS_NFC n
 	fi
 
 	# Wi-Fi Direct (WiDi)
@@ -290,6 +308,8 @@ src_configure() {
 	# Access Point Mode
 	if use ap ; then
 		Kconfig_style_config AP
+	else
+		Kconfig_style_config AP n
 	fi
 
 	# Enable essentials for AP/P2P
