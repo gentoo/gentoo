@@ -93,10 +93,6 @@ app-i18n/xcin unicode
 net-libs/ngtcp2 ssl
 net-misc/curl nghttp3
 
-# Michał Górny <mgorny@gentoo.org> (2019-09-08)
-# LLVM 5 is being removed.
-~dev-ada/gps-2018 gnat_2017
-
 # Michał Górny <mgorny@gentoo.org> (2019-09-07)
 # media-libs/libnut is slated for removal.
 media-video/mplayer nut
