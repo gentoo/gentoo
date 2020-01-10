@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils systemd user
+inherit cmake-utils systemd
 
 MY_P="c-toxcore-${PV}"
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
@@ -12,19 +12,21 @@ SRC_URI="https://github.com/TokTok/c-toxcore/archive/v${PV}.tar.gz -> ${MY_P}.ta
 
 LICENSE="GPL-3+"
 SLOT="0/0.2"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="+av daemon dht-node ipv6 log-debug +log-error log-info log-trace log-warn static-libs test"
-RESTRICT="!test? ( test )"
 
 REQUIRED_USE="?? ( log-debug log-error log-info log-trace log-warn )
 		daemon? ( dht-node )"
+RESTRICT="!test? ( test )"
 
-RDEPEND="
-	av? ( media-libs/libvpx:=
-		media-libs/opus )
-	daemon? ( dev-libs/libconfig )
-	>=dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]"
 BDEPEND="virtual/pkgconfig"
+DEPEND=">=dev-libs/libsodium-0.6.1:=[asm,urandom,-minimal]
+	av? ( media-libs/libvpx
+		media-libs/opus )
+	daemon? ( dev-libs/libconfig )"
+RDEPEND="${DEPEND}
+	daemon? ( acct-group/tox
+		  acct-user/tox )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -97,8 +99,6 @@ pkg_postinst() {
 		ewarn "consider disabling the DHT-node use flag."
 	fi
 	if use daemon; then
-		enewgroup tox
-		enewuser tox -1 -1 -1 tox
 		if [[ -f ${EROOT}/var/lib/tox-dht-bootstrap/key ]]; then
 			ewarn "Backwards compatability with the bootstrap daemon might have been"
 			ewarn "broken a while ago. To resolve this issue, REMOVE the following files:"
