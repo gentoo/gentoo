@@ -39,7 +39,7 @@ ECARGO_VENDOR="${ECARGO_HOME}/gentoo"
 # @DESCRIPTION:
 # Generates the URIs to put in SRC_URI to help fetch dependencies.
 cargo_crate_uris() {
-	readonly regex='^(.*)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
+	local -r regex='^(.*)-([0-9]+\.[0-9]+\.[0-9]+.*)$'
 	local crate
 	for crate in "$@"; do
 		local name version url
