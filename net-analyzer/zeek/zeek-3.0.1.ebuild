@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="curl debug geoip2 ipsumdump ipv6 jemalloc kerberos +python sendmail \
 	static-libs tcmalloc +tools +zeekctl"
 
-RDEPEND="dev-libs/actor-framework:0=
+RDEPEND="dev-libs/caf:0=
 	dev-libs/openssl:0=
 	net-libs/libpcap
 	sys-libs/zlib:0=
