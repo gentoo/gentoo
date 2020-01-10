@@ -1409,7 +1409,7 @@ app-emacs/muse 3.20-r1: An authoring and publishing environment for Emacs
 app-emacs/nagios-mode 0.3-r1: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.4-r1: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 5.0 5.1: Add support for DocBook 5 schemas to NXML
-app-emacs/nxml-gentoo-schemas 20180611 20191227: Extension for nxml-mode with Gentoo-specific schemas
+app-emacs/nxml-gentoo-schemas 20180611 20191227 20200109: Extension for nxml-mode with Gentoo-specific schemas
 app-emacs/nxml-libvirt-schemas 5.8.0: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 4.05.0: Emacs mode for OCaml

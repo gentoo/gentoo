@@ -1,0 +1,12 @@
+BDEPEND=>=app-editors/emacs-23.1:*
+DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
+DESCRIPTION=Extension for nxml-mode with Gentoo-specific schemas
+EAPI=7
+HOMEPAGE=https://gitweb.gentoo.org/proj/nxml-gentoo-schemas.git/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=HPND
+RDEPEND=>=app-editors/emacs-23.1:*
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~ulm/distfiles/nxml-gentoo-schemas-20200109.tar.xz
+_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
+_md5_=9f3d24680f1314cc48bccd306831f03c
