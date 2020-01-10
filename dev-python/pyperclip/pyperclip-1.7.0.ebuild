@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7})
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 inherit distutils-r1 virtualx
 
 DESCRIPTION="A cross-platform clipboard module for Python."
@@ -24,13 +24,11 @@ RDEPEND="
 	)
 "
 
-python_prepare_all() {
-	# make tests a proper module so setuptools can find the test suite
-	touch tests/__init__.py || die
-
-	distutils-r1_python_prepare_all
+python_test() {
+	"${EPYTHON}" tests/test_pyperclip.py -vv ||
+		die "Tests fail on ${EPYTHON}"
 }
 
-python_test() {
-	virtx esetup.py test
+src_test() {
+	virtx distutils-r1_src_test
 }
