@@ -54,7 +54,6 @@ RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.1-man-pages.patch"
-	"${FILESDIR}/5583.patch"
 )
 
 src_unpack() {
