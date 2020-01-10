@@ -21,8 +21,8 @@ DEPEND="
 	emacs? ( >=app-editors/emacs-24.4:* )
 	guile? ( >=dev-scheme/guile-2.0 )
 	mug? (
-		 net-libs/webkit-gtk:4
-		 x11-libs/gtk+:3
+		net-libs/webkit-gtk:4
+		x11-libs/gtk+:3
 	)"
 # net-mail/mailutils also installes /usr/bin/mu.  Block it until somebody
 # really wants both installed at the same time.
@@ -59,17 +59,17 @@ src_install() {
 	fi
 
 	doman man/mu-add.1 man/mu-bookmarks.5 man/mu-cfind.1 man/mu-easy.1 \
-		  man/mu-extract.1 man/mu-find.1 man/mu-help.1 man/mu-index.1 \
-		  man/mu-mkdir.1 man/mu-query.7 man/mu-remove.1 \
-		  man/mu-script.1 man/mu-server.1 man/mu-verify.1 \
-		  man/mu-view.1 man/mu.1
+		man/mu-extract.1 man/mu-find.1 man/mu-help.1 man/mu-index.1 \
+		man/mu-mkdir.1 man/mu-query.7 man/mu-remove.1 \
+		man/mu-script.1 man/mu-server.1 man/mu-verify.1 \
+		man/mu-view.1 man/mu.1
 
 	if use guile; then
-			  doinfo guile/mu-guile.info
+		  doinfo guile/mu-guile.info
 	fi
 
 	if use mug; then
-			  dobin toys/mug/mug
+		  dobin toys/mug/mug
 	fi
 }
 
