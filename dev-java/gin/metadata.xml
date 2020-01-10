@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gienah@gentoo.org</email>
+		<name>Mark Wright</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>java@gentoo.org</email>
+		<name>Java</name>
+	</maintainer>
+	<longdescription lang="en">
+		Gin (GWT INjection) brings automatic dependency injection to
+		GWT client-side code. Gin is built on top of Guice and uses (a
+		subset of) Guice's binding language.
+	</longdescription>
+</pkgmetadata>
