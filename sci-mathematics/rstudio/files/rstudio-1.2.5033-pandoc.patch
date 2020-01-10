@@ -1,0 +1,32 @@
+--- rstudio-1.2.5033-orig/src/cpp/session/CMakeLists.txt	2019-12-04 17:22:17.000000000 +1100
++++ rstudio-1.2.5033/src/cpp/session/CMakeLists.txt	2020-01-07 12:29:20.174304185 +1100
+@@ -25,9 +25,6 @@
+ if(NOT EXISTS "${RSTUDIO_DEPENDENCIES_DIR}/common/mathjax-26")
+   message(FATAL_ERROR "Mathjax 2.6 not found (re-run install-dependencies script to install)")
+ endif()
+-if(NOT EXISTS "${RSTUDIO_DEPENDENCIES_DIR}/common/pandoc")
+-  message(FATAL_ERROR "pandoc not found (re-run install-dependencies script to install)")
+-endif()
+ 
+ # we often install embedded versions of these packages but don't do so currently
+ 
+@@ -490,19 +487,6 @@
+    install(DIRECTORY "resources/connections"
+            DESTINATION ${RSTUDIO_INSTALL_SUPPORTING}/resources)
+ 
+-   # install pandoc
+-   if(WIN32)
+-      set(PANDOC_VERSION "2.7.2" CACHE INTERNAL "Pandoc version")
+-   else()
+-      set(PANDOC_VERSION "2.3.1" CACHE INTERNAL "Pandoc version")
+-   endif()
+-
+-   set(PANDOC_BIN "${RSTUDIO_DEPENDENCIES_DIR}/common/pandoc/${PANDOC_VERSION}")
+-   file(GLOB PANDOC_FILES "${PANDOC_BIN}/pandoc*")
+-   install(FILES ${PANDOC_FILES}
+-           PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE
+-           DESTINATION  ${RSTUDIO_INSTALL_BIN}/pandoc)
+-
+    # install rmarkdown package
+    # file(GLOB RMARKDOWN_PACKAGE "${RSTUDIO_DEPENDENCIES_DIR}/common/rmarkdown*.tar.gz")
+    # install(FILES ${RMARKDOWN_PACKAGE}
