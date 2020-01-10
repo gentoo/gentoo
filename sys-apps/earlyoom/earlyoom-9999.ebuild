@@ -22,11 +22,6 @@ IUSE="systemd docs"
 DEPEND="docs? ( app-text/pandoc )"
 RDEPEND=""
 
-src_prepare() {
-	eapply "${FILESDIR}/${P}-test-fixed.patch"
-	default
-}
-
 src_compile() {
 	VERSION="v${PV}" emake earlyoom
 	use docs && VERSION="v${PV}" emake earlyoom.1
