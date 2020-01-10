@@ -13,7 +13,7 @@ LICENSE="BSD-2"
 SLOT="1.0"
 IUSE=""
 
-KEYWORDS="amd64 ~sparc"
+KEYWORDS="amd64 ~sparc x86"
 
 RDEPEND="
 	media-libs/mesa[egl]
