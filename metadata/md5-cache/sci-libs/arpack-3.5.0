@@ -10,5 +10,5 @@ LICENSE=BSD
 RDEPEND=virtual/blas virtual/lapack mpi? ( virtual/mpi[fortran] ) virtual/fortran
 SLOT=0
 SRC_URI=https://github.com/opencollab/arpack-ng/archive/3.5.0.tar.gz -> arpack-3.5.0.tar.gz doc? ( http://www.caam.rice.edu/software/ARPACK/SRC/ug.ps.gz http://www.caam.rice.edu/software/ARPACK/DOCS/tutorial.ps.gz )
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	fortran-2	f75a2d9321053acf424991e805f32ede	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	fortran-2	216ce6fa0e81c0c91667aee598c792dd	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=23db85d4afff12014229a14d02ace711

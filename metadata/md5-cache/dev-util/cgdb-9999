@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=sys-libs/ncurses:0= sys-libs/readline:0= sys-devel/gdb
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=git-r3	7d6c351ee8b1feb12ed8c8b0adae088b	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	02d2553a7a1865bb34733f40f54b9491	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=119c034fce18ac0cbaec429a70df4b68

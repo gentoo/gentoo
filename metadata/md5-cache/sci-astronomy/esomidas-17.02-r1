@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=sys-libs/readline:0= x11-libs/motif:0= x11-libs/libX11:= x11-libs/libXt:= !libtirpc? ( sys-libs/glibc[rpc(-)] ) libtirpc? ( net-libs/libtirpc ) virtual/fortran
 SLOT=0/8
 SRC_URI=ftp://ftp.eso.org/pub/midaspub/17FEB/sources/17FEBpl1.2.tar.gz -> esomidas-17.02.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	fortran-2	f75a2d9321053acf424991e805f32ede	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	fortran-2	216ce6fa0e81c0c91667aee598c792dd	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
 _md5_=166b0be2794f92439b32a679ae585829

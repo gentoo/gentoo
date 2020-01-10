@@ -7,5 +7,5 @@ KEYWORDS=amd64 arm ~arm64 ppc x86
 LICENSE=MIT
 SLOT=0/1
 SRC_URI=http://git.1wt.eu/web?p=libslz.git;a=snapshot;h=v1.1.0;sf=tbz2 -> libslz-1.1.0.tar.bz2
-_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	0d0c25170069d06d0eb233154229af97	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	02d2553a7a1865bb34733f40f54b9491	multilib-minimal	8bddda43703ba94d8341f4e247f97566	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=53cccde18525cc2ee3e75f5a61ff6078
