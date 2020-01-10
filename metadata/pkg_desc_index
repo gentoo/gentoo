@@ -7414,7 +7414,7 @@ dev-python/absl-py 0.7.1 0.8.1: Abseil Python Common Libraries
 dev-python/abstract_rendering 0.5.1: Rendering as a binning process
 dev-python/addons 0.7: Dynamically extend other objects (formerly ObjectRoles)
 dev-python/aiocontextvars 0.2.2: Asyncio support for PEP-567 contextvars backport
-dev-python/aiodns 1.1.1 1.2.0 2.0.0-r1: Simple DNS resolver for asyncio
+dev-python/aiodns 2.0.0-r1: Simple DNS resolver for asyncio
 dev-python/aioeventlet 0.5.1-r1: asyncio event loop scheduling callbacks in eventlet
 dev-python/aiohttp 2.3.10 3.5.4 3.6.0 3.6.1: http client/server for asyncio
 dev-python/aiohttp-cors 0.6.0 0.7.0: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
