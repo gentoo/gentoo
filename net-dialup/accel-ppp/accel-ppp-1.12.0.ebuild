@@ -31,7 +31,7 @@ REQUIRED_USE="valgrind? ( debug )"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.11.1-socklen.patch"
-	"${FILESDIR}/${PV}-kernel-5.2.patch"
+	"${FILESDIR}/${P}-kernel-5.2.patch"
 )
 
 pkg_setup() {
