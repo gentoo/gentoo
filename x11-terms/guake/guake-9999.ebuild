@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_6 )
 DISTUTILS_SINGLE_IMPL=1
 
@@ -41,13 +41,13 @@ PATCHES=(
 )
 
 python_compile_all() {
-	emake prepare-install prefix=/usr
-	emake generate-paths prefix=/usr DATA_DIR='$(datadir)/guake' DEV_SCHEMA_DIR='$(gsettingsschemadir)'
+	emake prepare-install PREFIX=/usr
+	emake generate-paths PREFIX=/usr DATA_DIR='$(datadir)/guake' DEV_SCHEMA_DIR='$(gsettingsschemadir)'
 	default
 }
 
 python_install_all() {
-	emake install-schemas install-locale prefix=/usr DESTDIR="${D}"
+	emake install-schemas install-locale PREFIX=/usr DESTDIR="${D}"
 	distutils-r1_python_install_all
 }
 
