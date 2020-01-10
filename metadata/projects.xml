@@ -1701,7 +1701,7 @@
     <member is-lead="1">
       <email>alicef@gentoo.org</email>
       <name>Alice Ferrazzi</name>
-      <role>Leader (Kernel, gentoo-sources, genpatches)</role>
+      <role>Leader (Kernel, gentoo-sources, genpatches, rt-sources)</role>
     </member>
     <member>
       <email>blueness@gentoo.org</email>
