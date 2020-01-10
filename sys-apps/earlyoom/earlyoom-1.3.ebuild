@@ -11,14 +11,16 @@ SRC_URI="https://github.com/rfjakob/earlyoom/archive/v$PV.tar.gz -> $P.tar.gz"
 
 LICENSE="MIT-with-advertising"
 SLOT="0"
-#KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="systemd docs"
 
 DEPEND="docs? ( app-text/pandoc )"
 RDEPEND=""
 
-#https://github.com/rfjakob/earlyoom/issues/156
-RESTRICT="test"
+src_prepare() {
+	eapply "${FILESDIR}/${P}-test-fixed.patch"
+	default
+}
 
 src_compile() {
 	VERSION="v${PV}" emake earlyoom
