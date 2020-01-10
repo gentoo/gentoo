@@ -18952,7 +18952,7 @@ x11-plugins/wmwifi 0.6-r1: wireless network interface monitor dockapp
 x11-plugins/wmwork 0.2.5-r1: a dockapp that lets you easily track time spent on different projects
 x11-plugins/wmxkb 1.2.2-r1: Dockable keyboard layout switcher for Window Maker
 x11-plugins/wmxres 1.2-r1: Dock application to select your display mode among those possible
-x11-terms/alacritty 0.4.0 9999: GPU-accelerated terminal emulator
+x11-terms/alacritty 0.4.0 0.4.1 9999: GPU-accelerated terminal emulator
 x11-terms/aterm 1.0.1-r3: rxvt compatible terminal emulator with transparency support
 x11-terms/cool-retro-term 1.1.0 1.1.1: terminal emulator which mimics the look and feel of the old cathode tube screens
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
