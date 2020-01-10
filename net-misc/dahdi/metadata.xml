@@ -2,10 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>chainsaw@gentoo.org</email>
-    <name>Tony Vroon</name>
+    <email>jaco@uls.co.za</email>
+    <name>Jaco Kroon</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
   </maintainer>
   <use>
     <flag name="flash">Support (short) flash on FXS</flag>
+    <flag name="oslec">Enable OSLEC (software) echo canceller (require ECHO in kernel)</flag>
   </use>
 </pkgmetadata>
