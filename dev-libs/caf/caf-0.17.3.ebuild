@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{6,7,8} )
 inherit cmake-multilib python-single-r1
 
@@ -33,6 +34,11 @@ BDEPEND="doc? ( app-doc/doxygen[dot]
 
 RESTRICT="!test? ( test )"
 
+src_unpack() {
+	default
+	mv * "${P}" || die
+}
+
 src_prepare() {
 	append-cflags "-std=c++11 -Wextra -Wall -pedantic"
 	append-cxxflags "-std=c++11 -Wextra -Wall -pedantic"
@@ -46,7 +52,7 @@ src_prepare() {
 			libcaf_python/src/main.cpp || die
 	fi
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 multilib_src_configure() {
@@ -71,13 +77,13 @@ multilib_src_configure() {
 		-DLIBRARY_OUTPUT_PATH="$(get_libdir)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
-	use doc && cmake-utils_src_make doxygen manual
+	use doc && cmake_src_make doxygen manual
 }
 
 multilib_src_test() {
@@ -91,12 +97,12 @@ multilib_src_test() {
 		use python && libs="${libs}:${BUILD_DIR}/libcaf_python/${libdir}"
 
 		einfo "LD_LIBRARY_PATH is set to ${libs}"
-		LD_LIBRARY_PATH="${libs}" cmake-utils_src_test
+		LD_LIBRARY_PATH="${libs}" cmake_src_test
 	fi
 }
 
 multilib_src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if multilib_is_native_abi; then
 		dobin bin/*
