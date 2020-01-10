@@ -5,15 +5,15 @@ EAPI=7
 PYTHON_COMPAT=( python{2_7,3_6} )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 git-r3 systemd
+inherit distutils-r1 systemd
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
 HOMEPAGE="https://www.fail2ban.org/"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}"
+SRC_URI="https://github.com/${PN}/${PN}/tarball/${PV} -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="selinux systemd"
 
 RDEPEND="
@@ -28,6 +28,11 @@ RDEPEND="
 
 RESTRICT="test"
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
+
+src_unpack() {
+	default
+	mv ${PN}-${PN}-* ${P} || die
+}
 
 python_prepare_all() {
 	default
