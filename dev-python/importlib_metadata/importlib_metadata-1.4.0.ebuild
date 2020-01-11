@@ -26,7 +26,7 @@ BDEPEND="
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' pypy{,3} python{2_7,3_{5,6}})
+		$(python_gen_cond_dep 'dev-python/importlib_resources[${PYTHON_USEDEP}]' pypy3 python{2_7,3_6})
 		dev-python/packaging[${PYTHON_USEDEP}]
 	)
 "
