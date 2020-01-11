@@ -438,9 +438,9 @@ toolchain_pkg_setup() {
 toolchain_src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
 		git-r3_src_unpack
-	else
-		gcc_quick_unpack
 	fi
+
+	gcc_quick_unpack
 }
 
 gcc_quick_unpack() {
@@ -455,6 +455,8 @@ gcc_quick_unpack() {
 	# 'GCC_A_FAKEIT' to specify it's own source and binary tarballs.
 	if [[ -n ${GCC_A_FAKEIT} ]] ; then
 		unpack ${GCC_A_FAKEIT}
+	elif [[ ${PV} == *9999* ]]; then
+		: # sources comes from git, not tarball
 	elif [[ -n ${PRERELEASE} ]] ; then
 		unpack gcc-${PRERELEASE}.tar.bz2
 	elif [[ -n ${SNAPSHOT} ]] ; then
