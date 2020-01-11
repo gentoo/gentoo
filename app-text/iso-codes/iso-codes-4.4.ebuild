@@ -23,6 +23,8 @@ S="${WORKDIR}/${PN}-${P}"
 # This ebuild does not install any binaries.
 RESTRICT="binchecks strip"
 
+DOCS=( ChangeLog.md README.md )
+
 # l10n_find_plocales_changes doesn't support multiple directories,
 # so need to do the update scan ourselves.
 check_existing_locales() {
