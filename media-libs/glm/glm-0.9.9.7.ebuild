@@ -17,6 +17,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/opengl"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.9.6-simd.patch
+)
+
 src_prepare() {
 	sed \
 		-e "s:@CMAKE_INSTALL_PREFIX@:${EPREFIX}/usr:" \
