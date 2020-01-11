@@ -207,12 +207,6 @@ net-misc/wicd pm-utils
 sys-apps/razercfg pm-utils
 sys-power/powermgmt-base pm-utils
 
-# Pacho Ramos <pacho@gentoo.org> (2018-11-11)
-# sci-libs/spqr is going to be removed
-dev-cpp/eigen test
-kde-apps/cantor julia
-sci-libs/ceres-solver sparse
-
 # Alfredo Tupone <tupone@gentoo.org> (2018-10-24)
 # jit brokes build of gnat-gpl
 dev-lang/gnat-gpl jit
