@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 inherit cmake-utils bash-completion-r1 toolchain-funcs
 
 DESCRIPTION="Open Source Flight Simulator"
-HOMEPAGE="http://www.flightgear.org/"
+HOMEPAGE="https://www.flightgear.org/"
 SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 
 LICENSE="GPL-2"
