@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,10 +16,11 @@ SRC_URI="
 	doc? ( http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/${METISP}.tar.gz )
 	examples? ( http://glaros.dtc.umn.edu/gkhome/fetch/sw/metis/${METISP}.tar.gz )"
 
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="amd64 arm64 x86 ~amd64-linux ~x86-linux"
-LICENSE="free-noncomm"
 IUSE="doc double-precision examples int64 mpi openmp pcre static-libs"
+RESTRICT="mirror bindist"
 
 DEPEND="mpi? ( virtual/mpi )"
 RDEPEND="${DEPEND}
