@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,7 @@ DEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
+	media-libs/mesa[gles2]
 	elogind? ( >=sys-auth/elogind-239 )
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
 	swaybg? ( gui-apps/swaybg )
@@ -44,7 +45,8 @@ DEPEND="
 if [[ ${PV} == 9999 ]]; then
 	DEPEND+="~gui-libs/wlroots-9999:=[elogind=,systemd=,X=]"
 else
-	DEPEND+=">=gui-libs/wlroots-0.7.0:=[elogind=,systemd=,X=]"
+	DEPEND+=">=gui-libs/wlroots-0.9.0:=[elogind=,systemd=,X=]"
+	DEPEND+="<gui-libs/wlroots-0.10.0:=[elogind=,systemd=,X=]"
 fi
 RDEPEND="
 	x11-misc/xkeyboard-config
