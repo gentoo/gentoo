@@ -9927,7 +9927,7 @@ dev-ruby/nokogumbo 1.5.0 2.0.1: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.5.4: A RubyGem for implementing both OAuth clients and servers
-dev-ruby/oauth2 1.4.0-r2 1.4.1: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
+dev-ruby/oauth2 1.4.0-r2 1.4.1 1.4.2: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.14.0 4.15.0: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.9.0: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
@@ -12493,7 +12493,7 @@ media-fonts/culmus 0.120-r5 0.133: Hebrew Type1 fonts
 media-fonts/dejavu 2.35 2.37: DejaVu fonts, bitstream vera with ISO-8859-2 characters
 media-fonts/dina 2.93: A monospace bitmap font, primarily aimed at programmers
 media-fonts/droid 113-r5: Font family from Google's Android project
-media-fonts/dzongkha-fonts 2009.09: Bhutanese/Tibetan fonts for dzongkha script provided by the Bhutanese government
+media-fonts/dzongkha-fonts 2009.09-r1: Bhutanese/Tibetan fonts for dzongkha script provided by the Bhutanese government
 media-fonts/eb-garamond 0.016: Claude Garamont's humanist typeface from the mid-16th century
 media-fonts/efont-unicode 0.4.2-r1: The /efont/ Unicode Bitmap Fonts
 media-fonts/ekushey-bangla-fonts 20070420: A collection of Free fonts for the Bangla (Bengali) script
@@ -12548,7 +12548,7 @@ media-fonts/font-xfree86-type1 1.0.4-r1: X.Org XFree86 Type 1 font
 media-fonts/fontawesome 4.7.0 5.1.0 5.11.2: The iconic font
 media-fonts/free-bangla-font 0.2: Unicode compliant Open Type Bangla fonts
 media-fonts/freefont 20120503: OpenType and TrueType Unicode fonts from the Free UCS Outline Fonts Project
-media-fonts/freefonts 0.10-r3: A Collection of Free Type1 Fonts
+media-fonts/freefonts 0.10-r4: A Collection of Free Type1 Fonts
 media-fonts/fs-fonts 0.1_alpha3: Japanese TrueType fonts designed for screen and print
 media-fonts/gidole 2.0.2: Open source modern DIN fonts
 media-fonts/glass-tty-vt220 001.3-r2: Hacking with Style: TrueType VT220 Font
