@@ -489,7 +489,7 @@ app-arch/engrampa 1.22.1-r1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
 app-arch/file-roller 3.32.2-r1 3.32.3: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
-app-arch/gcab 0.8 1.3: Library and tool for working with Microsoft Cabinet (CAB) files
+app-arch/gcab 1.3: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gnome-autoar 0.2.3 0.2.4: Automatic archives creating and extracting library
 app-arch/gtk-splitter 2.2.1-r1: Split files into smaller pieces and combine them back together
 app-arch/gzip 1.9 1.10: Standard GNU compressor
@@ -4843,7 +4843,7 @@ dev-libs/gf-complete 0.0.0 2.0.0: A Comprehensive Open Source Library for Galois
 dev-libs/gf2x 1.0-r1 1.1 1.2: C/C++ routines for fast arithmetic in GF(2)[x]
 dev-libs/girara 0.3.3 0.3.4 9999: UI library that focuses on simplicity and minimalism
 dev-libs/gjs 1.48.7 1.56.2: Javascript bindings for GNOME
-dev-libs/glib 2.58.3-r1 2.60.7 2.60.7-r1: The GLib library of C routines
+dev-libs/glib 2.60.7 2.60.7-r1: The GLib library of C routines
 dev-libs/gmime 2.6.23-r1 3.2.4 3.2.5: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.1.2 6.1.2-r1: Library for arbitrary-precision arithmetic on different type of numbers
 dev-libs/gnulib 2016.12.21.08.39.01 2017.12.19.15.53.47 2019.03.17.09.24.57 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
@@ -10605,13 +10605,13 @@ dev-util/ftjam 2.5.3_rc2-r2: A 100% compatible, enhanced implementation of the m
 dev-util/ftnchek 3.3.1-r2: Static analyzer a la 'lint' for Fortran 77
 dev-util/fuzz 0.6-r1: Stress-tests programs by giving them random input
 dev-util/gcovr 3.3 4.1 4.2: A Python script for summarizing gcov data
-dev-util/gdbus-codegen 2.58.3 2.60.7: GDBus code and documentation generator
+dev-util/gdbus-codegen 2.60.7: GDBus code and documentation generator
 dev-util/geany 1.30.1 1.34.1 1.35 1.36 9999: GTK+ based fast and lightweight IDE
 dev-util/geany-plugins 1.30 1.34 1.35 1.36: A collection of different plugins for Geany
 dev-util/gengetopt 2.23: A tool to write command line option parsing code for C programs
 dev-util/gertty 1.3.2 1.4.0 1.5.0 1.6.0 9999: Gertty is a console-based interface to the Gerrit Code Review system.
 dev-util/glade 3.20.4 3.22.1: A user interface designer for GTK+ and GNOME
-dev-util/glib-utils 2.58.3 2.60.7: Build utilities for GLib using projects
+dev-util/glib-utils 2.60.7: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 7.11.3114_pre20190415-r1 7.12.3353_pre20191027-r1 7.12.3353_pre20191027-r2 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463 0.1544 0.1616: GN is a meta-build system that generates build files for Ninja
