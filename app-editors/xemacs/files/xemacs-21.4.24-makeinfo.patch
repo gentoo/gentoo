@@ -1,0 +1,65 @@
+diff -r e2da872593c0 man/lispref/ldap.texi
+--- a/man/lispref/ldap.texi	Tue Mar 24 22:15:53 2015 -0400
++++ b/man/lispref/ldap.texi	Wed Jan 01 22:53:19 2020 +0100
+@@ -105,7 +105,7 @@
+ library XEmacs was compiled with, they may include @code{simple},
+ @code{krbv41} and @code{krbv42}.
+ @item base
+-The base for the search. This may look like @samp{cÿ, o¬me}, see
++The base for the search. This may look like @samp{cÃ¿, oÂ¬me}, see
+ RFC 1779 for syntax details.
+ @item scope
+ One of the symbols @code{base}, @code{onelevel} or @code{subtree}
+diff -r e2da872593c0 man/xemacs-faq.texi
+--- a/man/xemacs-faq.texi	Tue Mar 24 22:15:53 2015 -0400
++++ b/man/xemacs-faq.texi	Wed Jan 01 22:53:19 2020 +0100
+@@ -1,4 +1,4 @@
+-\input texinfo.tex      @c -*- mode: texinfo; coding: iso-2022-8 -*-
++\input texinfo.tex      @c -*- mode: texinfo; coding: utf-8 -*-
+ @c %**start of header
+ @setfilename ../info/xemacs-faq.info
+ @settitle Frequently asked questions about XEmacs
+@@ -2831,7 +2831,7 @@
+ all of the ISO 8859 family, the Indic languages, Thai, and so on), and
+ SKK, for Japanese.  (SKK also supports an interface to an external
+ "dictionary server" process.)  Quail supports both typical "dead-key"
+-methods (eg, in the "latin-1-prefix" method, @kbd{" a} produces ä, LATIN
++methods (eg, in the "latin-1-prefix" method, @kbd{" a} produces Ã¤, LATIN
+ SMALL LETTER A WITH DIAERESIS), and the complex dictionary-based phonetic
+ methods used for Asian ideographic languages like Chinese.
+ 
+@@ -2877,7 +2877,7 @@
+ Wnn and SJ3 use the @code{egg} user interface.  The interface for Canna
+ is specialized to Canna.
+ 
+-Wnn supports Japanese, Chinese and Korean. It is made by OMRON and Kyôto
++Wnn supports Japanese, Chinese and Korean. It is made by OMRON and KyÃ´to
+ University. It is a powerful and complex system.  Wnn4 is free and Wnn6
+ is not.  Wnn uses grammatical hints and probability of word association,
+ so in principle Wnn can be cleverer than other methods.
+@@ -4800,10 +4800,10 @@
+ @node Q3.0.6, Q3.0.7, Q3.0.5, Editing
+ @unnumberedsubsec Q3.0.6: How can you type in special characters in XEmacs?
+ One way is to use the package @code{x-compose}.  Then you can use
+-sequences like @kbd{Compose " a} to get ä, etc.
++sequences like @kbd{Compose " a} to get Ã¤, etc.
+ 
+ Another way is to use the @code{iso-insert} package. Then you can use
+-sequences like @kbd{C-x 8 " a} to get ä, etc.
++sequences like @kbd{C-x 8 " a} to get Ã¤, etc.
+ 
+ @email{glynn@@sensei.co.uk, Glynn Clements} writes:
+ 
+@@ -4826,9 +4826,9 @@
+ 
+ Once you have Multi_key defined, you can use e.g.
+ @example
+-        Multi a '       => á
+-        Multi e "       => ë
+-        Multi c ,       => ç
++        Multi a '       => Ã¡
++        Multi e "       => Ã«
++        Multi c ,       => Ã§
+ @end example
+ 
+ etc.
