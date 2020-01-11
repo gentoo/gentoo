@@ -14244,7 +14244,7 @@ net-analyzer/egressor 1.0-r2: tool for checking router configuration
 net-analyzer/etherape 0.9.14 0.9.17 0.9.18: A graphical network monitor for Unix modeled after etherman
 net-analyzer/ethloop 10-r3 10-r4: Local simulator for testing Linux QoS disciplines
 net-analyzer/ettercap 0.8.3 9999: A suite for man in the middle attacks
-net-analyzer/fail2ban 0.10.4 0.10.4-r2 0.10.5 99999999: scans log files and bans IPs that show malicious signs
+net-analyzer/fail2ban 0.10.4 0.10.4-r2 0.10.5 0.11.1 99999999: scans log files and bans IPs that show malicious signs
 net-analyzer/firewalk 5.0-r1 5.0-r2: A tool for determining a firewall's rule set
 net-analyzer/flent 1.0.1-r1: The FLExible Network Tester
 net-analyzer/flow-tools 0.68.5.1-r10: library and programs to process reports from NetFlow data
@@ -18341,7 +18341,7 @@ x11-base/xorg-drivers 1.20-r1 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2019.2 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.5 1.20.6 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.107-r1 340.108 390.132-r1 430.64-r1 435.21-r1 440.44-r1: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.108 390.132-r1 430.64-r1 435.21-r1 440.44-r1: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
