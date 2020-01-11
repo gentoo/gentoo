@@ -77,8 +77,8 @@ SLOT="0/${PV}"
 # to be rekeyworded when most of revdeps are updated
 #KEYWORDS="~amd64 ~x86"
 IUSE="big-endian doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test"
-RESTRICT="!test? ( test )"
 IUSE+=" binary"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/perl-5.6.1

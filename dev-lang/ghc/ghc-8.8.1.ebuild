@@ -77,6 +77,7 @@ SLOT="0/${PV}"
 KEYWORDS=""
 IUSE="big-endian doc elfutils ghcbootstrap ghcmakebinary +gmp numa profile test"
 IUSE+=" binary"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/perl-5.6.1
