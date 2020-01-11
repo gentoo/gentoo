@@ -153,7 +153,7 @@ IUSE=""
 DOCS=( CODEOWNERS  COPYING README.md )
 
 BDEPEND="
-	>=virtual/rust-1.38.0[${MULTILIB_USEDEP}]
+	>=virtual/rust-1.39.0[${MULTILIB_USEDEP}]
 	dev-util/cmake
 	dev-lang/go
 	dev-lang/perl
