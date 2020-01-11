@@ -36,6 +36,7 @@
 # Upstream considers this too broken to the point of thinking to
 # even deleting the tarballs and downgrading in pip.
 # https://github.com/mesonbuild/meson/issues/6442
+# https://bugs.gentoo.org/705144
 =dev-util/meson-0.53.0
 
 # Göktürk Yüksek <gokturk@gentoo.org> (2020-01-08)
