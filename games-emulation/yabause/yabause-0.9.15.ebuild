@@ -1,47 +1,40 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
-DESCRIPTION="A Sega Saturn emulator"
+DESCRIPTION="Sega Saturn emulator"
 HOMEPAGE="https://yabause.org/"
 SRC_URI="https://download.tuxfamily.org/${PN}/releases/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="openal opengl +qt5 sdl"
+IUSE="openal opengl sdl"
 
-# Qt5 is the recommended UI and 0.9.15 the last release w/ GTK+
+BDEPEND="
+	virtual/pkgconfig
+"
 RDEPEND="
-	sys-libs/zlib:=
+	dev-qt/qtcore:5
+	dev-qt/qtgui:5
+	dev-qt/qtmultimedia:5
+	dev-qt/qtwidgets:5
+	sys-libs/zlib
 	x11-libs/libXrandr
 	x11-libs/libX11
 	openal? ( media-libs/openal )
 	opengl? (
+		dev-qt/qtopengl:5
 		media-libs/freeglut
 		virtual/glu
 		virtual/opengl
 	)
-	qt5? (
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtmultimedia:5
-		dev-qt/qtwidgets:5
-		opengl? ( dev-qt/qtopengl:5 )
-	)
-	!qt5? (
-		dev-libs/glib:2
-		x11-libs/gtk+:2
-		x11-libs/gtkglext
-	)
 	sdl? ( media-libs/libsdl2[opengl?,video] )
 "
-DEPEND="${RDEPEND}
-	virtual/pkgconfig
-"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-RWX.patch
@@ -61,7 +54,7 @@ src_configure() {
 		-DYAB_WANT_SDL=$(usex sdl)
 		-DYAB_WANT_OPENAL=$(usex openal)
 		-DYAB_WANT_OPENGL=$(usex opengl)
-		-DYAB_PORTS=$(usex qt5 "qt" "gtk")
+		-DYAB_PORTS=qt
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
