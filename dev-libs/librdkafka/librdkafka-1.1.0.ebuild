@@ -22,12 +22,15 @@ LICENSE="BSD-2"
 # subslot = soname version
 SLOT="0/1"
 
-IUSE="lz4 sasl ssl static-libs zstd"
+IUSE="lz4 sasl ssl libressl static-libs zstd"
 
 LIB_DEPEND="
 	lz4? ( app-arch/lz4:=[static-libs(+)] )
 	sasl? ( dev-libs/cyrus-sasl:=[static-libs(+)] )
-	ssl? ( dev-libs/openssl:0=[static-libs(+)] )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0=[static-libs(+)] )
+		libressl? ( dev-libs/libressl:0=[static-libs(+)] )
+	)
 	zstd? ( app-arch/zstd:=[static-libs(+)] )
 	sys-libs/zlib:=[static-libs(+)]
 "
@@ -44,6 +47,11 @@ PATCHES=( "${FILESDIR}"/${PN}-1.1.0-remove-automagic-on-zstd.patch )
 
 src_configure() {
 	tc-export CC CXX LD NM OBJDUMP PKG_CONFIG STRIP
+
+	# fix missuse of linker flags
+	sed -i 's/-Wl,-Bstatic//' mklove/modules/configure.cc
+
+	use lz4 && WITH_LZ4_EXT=y
 
 	local myeconf=(
 		--no-cache
