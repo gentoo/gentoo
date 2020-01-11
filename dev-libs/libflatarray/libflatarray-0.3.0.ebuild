@@ -27,7 +27,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_CUDA=$(usex cuda)
-		-DWITH_SILO=false
 	)
 	cmake-utils_src_configure
 }
