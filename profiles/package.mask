@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Anthony G. Basile <blueness@gentoo.org> (2020-01-11)
+# Awaiting a fix from upstream, bug #705038
+=net-libs/mbedtls-2.18.1
+=net-libs/mbedtls-2.19.1
+
+# Mart Raudsepp <leio@gentoo.org> (2020-01-11)
+# End of life vala:0.42 series, please depclean.
+# This message shall be kept until 2020-02-11.
+dev-lang/vala:0.42
+
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # Upstream considers this too broken to the point of thinking to
 # even deleting the tarballs and downgrading in pip.
