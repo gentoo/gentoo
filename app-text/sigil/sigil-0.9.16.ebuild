@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="tk"
 
-inherit cmake-utils python-single-r1 readme.gentoo-r1 xdg-utils
+inherit cmake python-single-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="Multi-platform WYSIWYG ebook editor for ePub format"
 HOMEPAGE="https://sigil-ebook.com/"
@@ -72,7 +72,7 @@ for best performance with Sigil."
 src_prepare() {
 	# bundled is a exact copy of the package, and upstream plan to switch soon
 	rm -r src/Resource_Files/plugin_launchers/python/css_parser/ || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -87,11 +87,11 @@ src_configure() {
 	)
 	use system-mathjax && mycmakeargs+=( -DMATHJAX_DIR="${EPREFIX}"/usr/share/mathjax )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_fix_shebang "${ED}"/usr/share/sigil/
 	python_optimize "${ED}"/usr/share/sigil/
 	DISABLE_AUTOFORMATTING=true readme.gentoo_create_doc
