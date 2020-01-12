@@ -1652,7 +1652,7 @@ app-eselect/eselect-php 0.9.4-r5 0.9.5 9999: PHP eselect module
 app-eselect/eselect-pinentry 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 2.4: Utility to select the default PostgreSQL slot
 app-eselect/eselect-python 20160516 20171204 20190417 99999999: Eselect module for management of multiple Python versions
-app-eselect/eselect-rails 0.23 0.24: Manages Ruby on Rails symlinks
+app-eselect/eselect-rails 0.24: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
 app-eselect/eselect-repository 7: Manage repos.conf via eselect
 app-eselect/eselect-ruby 20170723 20190121 20191222: Manages multiple Ruby versions
@@ -9653,7 +9653,7 @@ dev-ruby/bundler-audit 0.6.1: Provides patch-level verification for Bundled apps
 dev-ruby/bunny 2.13.0 2.14.2 2.14.3: Another synchronous Ruby AMQP client
 dev-ruby/c21e 1.1.8 1.1.9 1.2.1: Run cross-platform executables
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
-dev-ruby/capistrano 2.15.5-r2 3.11.0 3.11.1 3.11.2: A distributed application deployment system
+dev-ruby/capistrano 2.15.5-r2 3.11.0 3.11.2: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
 dev-ruby/capybara 2.18.0 3.26.0 3.27.0 3.28.0 3.29.0 3.30.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
