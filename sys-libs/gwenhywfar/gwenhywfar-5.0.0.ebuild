@@ -11,7 +11,7 @@ HOMEPAGE="https://www.aquamaniac.de/sites/aqbanking/index.php"
 SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/228/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
-SLOT="0/78" # correspond with libgwenhywfar.so version
+SLOT="0/79" # correspond with libgwenhywfar.so version
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug designer doc fox gtk libressl qml qt5 sensors serialport test webkit"
 
