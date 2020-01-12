@@ -1,5 +1,8 @@
---- stress-ng-0.10.13.orig/Makefile	2019-12-09 13:42:13.000000000 +0100
-+++ stress-ng-0.10.13/Makefile	2019-12-14 00:51:33.390034647 +0100
+Always respect users CFLAGS, enable verbose output when compiling
+and don't install compressed man pages.
+
+--- a/Makefile
++++ b/Makefile
 @@ -21,7 +21,7 @@
  # Codename "systematic system smasher"
  #
