@@ -11221,7 +11221,7 @@ games-emulation/snes9x 1.58 1.59.2: Super Nintendo Entertainment System (SNES) e
 games-emulation/stella 5.1.3: Multi-platform Atari 2600 VCS Emulator
 games-emulation/vbam 2.1.0 2.1.4 9999: Game Boy, GBC, and GBA emulator forked from VisualBoyAdvance
 games-emulation/vgba 4.8-r1: Gameboy Advance (GBA) emulator for Linux
-games-emulation/yabause 0.9.15: A Sega Saturn emulator
+games-emulation/yabause 0.9.15: Sega Saturn emulator
 games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades
 games-emulation/zsnes 1.51-r7: SNES (Super Nintendo) emulator that uses x86 assembly
 games-engines/box2d 2.1.2 2.2.1 2.3.1: A C++ engine for simulating rigid bodies in 2D games
@@ -13261,7 +13261,7 @@ media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1 3.1b-r3: the Utah Raster Toolkit is a library for dealing with raster images
 media-libs/vamp-plugin-sdk 2.7.1: Audio processing system for plugins to extract information from audio data
 media-libs/vidstab 1.1.0-r2 9999: Video stabilization library
-media-libs/vigra 1.11.1-r2 1.11.1-r3 9999: C++ computer vision library emphasizing customizable algorithms and structures
+media-libs/vigra 1.11.1-r3 9999: C++ computer vision library emphasizing customizable algorithms and structures
 media-libs/virglrenderer 0.6.0 0.7.0 9999: library used implement a virtual 3D GPU used by qemu
 media-libs/vitamtp 2.5.9_pre20160829 9999: Library to interact with PS Vita's USB MTP protocol
 media-libs/vo-aacenc 0.1.3 9999: VisualOn AAC encoder library
@@ -16897,7 +16897,7 @@ sys-apps/entropy-server 302: Entropy Package Manager server-side tools
 sys-apps/epoch 1.2.1 1.2.2 1.3.0 9999: An init system, a /sbin/init replacement; designed for simplicity
 sys-apps/etckeeper 1.18.6 1.18.8: A collection of tools to let /etc be stored in a repository
 sys-apps/ethq 0.5.0 0.6.1 9999: Ethernet NIC Queue stats viewer
-sys-apps/ethtool 4.19 5.1 5.2 5.3: Utility for examining and tuning ethernet-based network interfaces
+sys-apps/ethtool 4.19 5.3 5.4: Utility for examining and tuning ethernet-based network interfaces
 sys-apps/exa 0.8.0-r1 0.9.0: A modern replacement for 'ls' written in Rust
 sys-apps/fakechroot 2.19 2.20.1: Provide a faked chroot environment without requiring root privileges
 sys-apps/fakeroot 1.22 1.23 1.24: A fake root environment by means of LD_PRELOAD and SysV IPC (or TCP) trickery
@@ -17614,7 +17614,7 @@ sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 4.19.94 5.4.10: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 4.19.94 5.4.10: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.4.207 4.4.208 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.9.208 4.14.143 4.14.156 4.14.159 4.14.161 4.14.162 4.14.163 4.19.72 4.19.86 4.19.92 4.19.93 4.19.94 5.3.18 5.4.6 5.4.7 5.4.8 5.4.10: Full sources including the Gentoo patchset for the 5.4 kernel tree
+sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.4.207 4.4.208 4.4.209 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.9.208 4.9.209 4.14.143 4.14.156 4.14.159 4.14.161 4.14.162 4.14.163 4.19.72 4.19.86 4.19.92 4.19.93 4.19.94 5.3.18 5.4.6 5.4.7 5.4.8 5.4.10: Full sources including the Gentoo patchset for the 5.4 kernel tree
 sys-kernel/git-sources 5.5_rc1 5.5_rc2 5.5_rc3 5.5_rc4 5.5_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
