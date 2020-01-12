@@ -8,15 +8,14 @@ inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
 SRC_URI="mirror://gnu/emacs/${P}.tar.xz
-	https://dev.gentoo.org/~ulm/emacs/${P}-patches-5.tar.xz"
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-2.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="24"
-KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="acl alsa aqua athena dbus games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm zlib"
-REQUIRED_USE="?? ( aqua X )"
+SLOT="25"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gtk2 gui gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm zlib"
 
-RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
 	net-libs/liblockfile
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
@@ -30,13 +29,15 @@ RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
 	zlib? ( sys-libs/zlib )
-	X? (
+	gui? ( !aqua? (
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
 		x11-libs/libXext
+		x11-libs/libXfixes
 		x11-libs/libXinerama
 		x11-libs/libXrandr
+		x11-libs/libxcb
 		x11-misc/xbitmaps
 		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gsettings? ( >=dev-libs/glib-2.28.6 )
@@ -52,6 +53,7 @@ RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 			media-libs/freetype
 			x11-libs/libXft
 			x11-libs/libXrender
+			cairo? ( >=x11-libs/cairo-1.12.18 )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
 				>=dev-libs/m17n-lib-1.5.1
@@ -81,16 +83,17 @@ RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 				) )
 			)
 		)
-	)"
+	) )"
 
 DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )"
+	gui? ( !aqua? ( x11-base/xorg-proto ) )"
 
 BDEPEND="app-eselect/eselect-emacs
 	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
 RDEPEND="${RDEPEND}
+	!<app-editors/emacs-vcs-${PV}
 	app-eselect/eselect-emacs"
 
 EMACS_SUFFIX="emacs-${SLOT}"
@@ -116,7 +119,6 @@ src_prepare() {
 src_configure() {
 	strip-flags
 	filter-flags -pie					#526948
-	append-ldflags $(test-flags -no-pie)	#639570
 
 	if use ia64; then
 		replace-flags "-O[2-9]" -O1		#325373
@@ -137,7 +139,14 @@ src_configure() {
 		myconf+=" --with-sound=$(usex sound oss)"
 	fi
 
-	if use X; then
+	if ! use gui; then
+		einfo "Configuring to build without window system support"
+		myconf+=" --without-x --without-ns"
+	elif use aqua; then
+		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
+		myconf+=" --with-ns --disable-ns-self-contained"
+		myconf+=" --without-x"
+	else
 		myconf+=" --with-x --without-ns"
 		myconf+=" $(use_with gconf)"
 		myconf+=" $(use_with gsettings)"
@@ -152,11 +161,15 @@ src_configure() {
 
 		if use xft; then
 			myconf+=" --with-xft"
+			myconf+=" $(use_with cairo)"
 			myconf+=" $(use_with m17n-lib libotf)"
 			myconf+=" $(use_with m17n-lib m17n-flt)"
 		else
 			myconf+=" --without-xft"
+			myconf+=" --without-cairo"
 			myconf+=" --without-libotf --without-m17n-flt"
+			use cairo && ewarn \
+				"USE flag \"cairo\" has no effect if \"xft\" is not set."
 			use m17n-lib && ewarn \
 				"USE flag \"m17n-lib\" has no effect if \"xft\" is not set."
 		fi
@@ -174,6 +187,7 @@ src_configure() {
 				Motif toolkit instead.
 			EOF
 			myconf+=" --with-x-toolkit=$(usex gtk2 gtk2 gtk3)"
+			myconf+=" --without-xwidgets"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -194,12 +208,6 @@ src_configure() {
 		fi
 		! use gtk && use gtk2 && ewarn \
 			"USE flag \"gtk2\" has no effect if \"gtk\" is not set."
-	elif use aqua; then
-		einfo "Configuring to build with Nextstep (Cocoa) support"
-		myconf+=" --with-ns --disable-ns-self-contained"
-		myconf+=" --without-x"
-	else
-		myconf+=" --without-x --without-ns"
 	fi
 
 	econf \
@@ -213,6 +221,7 @@ src_configure() {
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		$(use_enable acl) \
 		$(use_with dbus) \
+		$(use_with dynamic-loading modules) \
 		$(use_with gpm) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
 		$(use_with libxml2 xml2) \
@@ -244,7 +253,7 @@ src_install() {
 
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
-	rm -rf "${ED}"/usr/share/{applications,icons}
+	rm -rf "${ED}"/usr/share/{appdata,applications,icons}
 	rm -rf "${ED}"/var
 
 	# remove unused <version>/site-lisp dir
@@ -291,7 +300,7 @@ src_install() {
 	EOF
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 
-	dodoc README BUGS
+	dodoc README BUGS CONTRIBUTE
 
 	if use aqua; then
 		dodir /Applications/Gentoo
@@ -304,10 +313,11 @@ src_install() {
 		/usr/bin/emacs through the Emacs eselect module, which also
 		redirects man and info pages. Therefore, several Emacs versions can
 		be installed at the same time. \"man emacs.eselect\" for details.
-		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
-		strongly recommended that you use app-admin/emacs-updater to rebuild
-		all byte-compiled elisp files of the installed Emacs packages."
-	use X && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
+		\\n\\nIf you upgrade from a previous major version of Emacs, then
+		it is strongly recommended that you use app-admin/emacs-updater
+		to rebuild all byte-compiled elisp files of the installed Emacs
+		packages."
+	use gui && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
 		Installing media-fonts/font-adobe-{75,100}dpi on the X server's
 		machine would satisfy basic Emacs requirements under X11.
 		See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs

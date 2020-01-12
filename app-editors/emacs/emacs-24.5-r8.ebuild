@@ -7,15 +7,16 @@ inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
-SRC_URI="mirror://gnu/emacs/${P}.tar.xz"
+SRC_URI="mirror://gnu/emacs/${P}.tar.xz
+	https://dev.gentoo.org/~ulm/emacs/${P}-patches-5.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
-SLOT="26"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ~ia64 ~mips ppc ppc64 ~riscv sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
-REQUIRED_USE="?? ( aqua X )"
+SLOT="24"
+KEYWORDS="~alpha amd64 arm ~hppa ~ia64 ~mips ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+IUSE="acl alsa aqua athena dbus games gconf gfile gif gpm gsettings gtk gtk2 gui gzip-el imagemagick +inotify jpeg kerberos libxml2 livecd m17n-lib motif png selinux sound source ssl svg tiff toolkit-scroll-bars wide-int Xaw3d xft +xpm zlib"
 
-RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
+RDEPEND="app-emacs/emacs-common-gentoo[games?,gui(-)?]
+	net-libs/liblockfile
 	sys-libs/ncurses:0=
 	acl? ( virtual/acl )
 	alsa? ( media-libs/alsa-lib )
@@ -24,23 +25,17 @@ RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 	gpm? ( sys-libs/gpm )
 	!inotify? ( gfile? ( >=dev-libs/glib-2.28.6 ) )
 	kerberos? ( virtual/krb5 )
-	lcms? ( media-libs/lcms:2 )
 	libxml2? ( >=dev-libs/libxml2-2.2.0 )
-	mailutils? ( net-mail/mailutils[clients] )
-	!mailutils? ( net-libs/liblockfile )
 	selinux? ( sys-libs/libselinux )
 	ssl? ( net-libs/gnutls:0= )
-	systemd? ( sys-apps/systemd )
 	zlib? ( sys-libs/zlib )
-	X? (
+	gui? ( !aqua? (
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
 		x11-libs/libXext
-		x11-libs/libXfixes
 		x11-libs/libXinerama
 		x11-libs/libXrandr
-		x11-libs/libxcb
 		x11-misc/xbitmaps
 		gconf? ( >=gnome-base/gconf-2.26.2 )
 		gsettings? ( >=dev-libs/glib-2.28.6 )
@@ -56,7 +51,6 @@ RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 			media-libs/freetype
 			x11-libs/libXft
 			x11-libs/libXrender
-			cairo? ( >=x11-libs/cairo-1.12.18 )
 			m17n-lib? (
 				>=dev-libs/libotf-0.9.4
 				>=dev-libs/m17n-lib-1.5.1
@@ -64,13 +58,7 @@ RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 		)
 		gtk? (
 			gtk2? ( x11-libs/gtk+:2 )
-			!gtk2? (
-				x11-libs/gtk+:3
-				xwidgets? (
-					net-libs/webkit-gtk:4=
-					x11-libs/libXcomposite
-				)
-			)
+			!gtk2? ( x11-libs/gtk+:3 )
 		)
 		!gtk? (
 			motif? (
@@ -92,17 +80,16 @@ RDEPEND=">=app-emacs/emacs-common-gentoo-1.5[games?,X?]
 				) )
 			)
 		)
-	)"
+	) )"
 
 DEPEND="${RDEPEND}
-	X? ( x11-base/xorg-proto )"
+	gui? ( !aqua? ( x11-base/xorg-proto ) )"
 
 BDEPEND="app-eselect/eselect-emacs
 	virtual/pkgconfig
 	gzip-el? ( app-arch/gzip )"
 
 RDEPEND="${RDEPEND}
-	!<app-editors/emacs-vcs-${PV}
 	app-eselect/eselect-emacs"
 
 EMACS_SUFFIX="emacs-${SLOT}"
@@ -114,24 +101,30 @@ FULL_VERSION="${PV%%_*}"
 S="${WORKDIR}/emacs-${FULL_VERSION}"
 
 src_prepare() {
-	#eapply ../patch
+	eapply ../patch
 	eapply_user
 
 	# Fix filename reference in redirected man page
-	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 || die
+	sed -i -e "/^\\.so/s/etags/&-${EMACS_SUFFIX}/" doc/man/ctags.1 \
+		|| die "unable to sed ctags.1"
 
-	#AT_M4DIR=m4 eautoreconf
+	AT_M4DIR=m4 eautoreconf
+	touch src/stamp-h.in || die
 }
 
 src_configure() {
 	strip-flags
 	filter-flags -pie					#526948
+	append-ldflags $(test-flags -no-pie)	#639570
 
 	if use ia64; then
 		replace-flags "-O[2-9]" -O1		#325373
 	else
 		replace-flags "-O[3-9]" -O2
 	fi
+
+	# Don't trigger a floating point exception for NaNs on alpha
+	use alpha && append-flags -mieee
 
 	local myconf
 
@@ -143,7 +136,14 @@ src_configure() {
 		myconf+=" --with-sound=$(usex sound oss)"
 	fi
 
-	if use X; then
+	if ! use gui; then
+		einfo "Configuring to build without window system support"
+		myconf+=" --without-x --without-ns"
+	elif use aqua; then
+		einfo "Configuring to build with Nextstep (Macintosh Cocoa) support"
+		myconf+=" --with-ns --disable-ns-self-contained"
+		myconf+=" --without-x"
+	else
 		myconf+=" --with-x --without-ns"
 		myconf+=" $(use_with gconf)"
 		myconf+=" $(use_with gsettings)"
@@ -158,15 +158,11 @@ src_configure() {
 
 		if use xft; then
 			myconf+=" --with-xft"
-			myconf+=" $(use_with cairo)"
 			myconf+=" $(use_with m17n-lib libotf)"
 			myconf+=" $(use_with m17n-lib m17n-flt)"
 		else
 			myconf+=" --without-xft"
-			myconf+=" --without-cairo"
 			myconf+=" --without-libotf --without-m17n-flt"
-			use cairo && ewarn \
-				"USE flag \"cairo\" has no effect if \"xft\" is not set."
 			use m17n-lib && ewarn \
 				"USE flag \"m17n-lib\" has no effect if \"xft\" is not set."
 		fi
@@ -183,13 +179,7 @@ src_configure() {
 				recommended that you compile Emacs with the Athena/Lucid or the
 				Motif toolkit instead.
 			EOF
-			if use gtk2; then
-				myconf+=" --with-x-toolkit=gtk2 --without-xwidgets"
-				use xwidgets && ewarn \
-					"USE flag \"xwidgets\" has no effect if \"gtk2\" is set."
-			else
-				myconf+=" --with-x-toolkit=gtk3 $(use_with xwidgets)"
-			fi
+			myconf+=" --with-x-toolkit=$(usex gtk2 gtk2 gtk3)"
 			for f in motif Xaw3d athena; do
 				use ${f} && ewarn \
 					"USE flag \"${f}\" has no effect if \"gtk\" is set."
@@ -208,43 +198,26 @@ src_configure() {
 			einfo "Configuring to build with no toolkit"
 			myconf+=" --with-x-toolkit=no"
 		fi
-		if ! use gtk; then
-			use gtk2 && ewarn \
-				"USE flag \"gtk2\" has no effect if \"gtk\" is not set."
-			use xwidgets && ewarn \
-				"USE flag \"xwidgets\" has no effect if \"gtk\" is not set."
-		fi
-	elif use aqua; then
-		einfo "Configuring to build with Nextstep (Cocoa) support"
-		myconf+=" --with-ns --disable-ns-self-contained"
-		myconf+=" --without-x"
-	else
-		myconf+=" --without-x --without-ns"
+		! use gtk && use gtk2 && ewarn \
+			"USE flag \"gtk2\" has no effect if \"gtk\" is not set."
 	fi
 
 	econf \
 		--program-suffix="-${EMACS_SUFFIX}" \
-		--includedir="${EPREFIX}"/usr/include/${EMACS_SUFFIX} \
 		--infodir="${EPREFIX}"/usr/share/info/${EMACS_SUFFIX} \
 		--localstatedir="${EPREFIX}"/var \
 		--enable-locallisppath="${EPREFIX}/etc/emacs:${EPREFIX}${SITELISP}" \
+		--with-gameuser=":gamestat" \
 		--without-compress-install \
 		--without-hesiod \
-		--without-pop \
 		--with-file-notification=$(usev inotify || usev gfile || echo no) \
 		$(use_enable acl) \
 		$(use_with dbus) \
-		$(use_with dynamic-loading modules) \
-		$(use_with games gameuser ":gamestat") \
 		$(use_with gpm) \
 		$(use_with kerberos) $(use_with kerberos kerberos5) \
-		$(use_with lcms lcms2) \
 		$(use_with libxml2 xml2) \
-		$(use_with mailutils) \
 		$(use_with selinux) \
 		$(use_with ssl gnutls) \
-		$(use_with systemd libsystemd) \
-		$(use_with threads) \
 		$(use_with wide-int) \
 		$(use_with zlib) \
 		${myconf}
@@ -258,19 +231,20 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D}" NO_BIN_LINK=t install
 
-	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die
-	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 || die
-	mv "${ED}"/usr/share/metainfo/{emacs-,}${EMACS_SUFFIX}.appdata.xml || die
+	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} \
+		|| die "moving emacs executable failed"
+	mv "${ED}"/usr/share/man/man1/{emacs-,}${EMACS_SUFFIX}.1 \
+		|| die "moving emacs man page failed"
 
 	# move info dir to avoid collisions with the dir file generated by portage
-	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} || die
+	mv "${ED}"/usr/share/info/${EMACS_SUFFIX}/dir{,.orig} \
+		|| die "moving info dir failed"
 	touch "${ED}"/usr/share/info/${EMACS_SUFFIX}/.keepinfodir
 	docompress -x /usr/share/info/${EMACS_SUFFIX}/dir.orig
 
 	# avoid collision between slots, see bug #169033 e.g.
 	rm "${ED}"/usr/share/emacs/site-lisp/subdirs.el
-	rm -rf "${ED}"/usr/share/{appdata,applications,icons}
-	rm -rf "${ED}/usr/$(get_libdir)"
+	rm -rf "${ED}"/usr/share/{applications,icons}
 	rm -rf "${ED}"/var
 
 	# remove unused <version>/site-lisp dir
@@ -278,15 +252,6 @@ src_install() {
 
 	# remove COPYING file (except for etc/COPYING used by describe-copying)
 	rm "${ED}"/usr/share/emacs/${FULL_VERSION}/lisp/COPYING
-
-	if use systemd; then
-		insinto /usr/lib/systemd/user
-		sed -e "/^##/d" \
-			-e "/^ExecStart/s,emacs,${EPREFIX}/usr/bin/${EMACS_SUFFIX}," \
-			-e "/^ExecStop/s,emacsclient,${EPREFIX}/usr/bin/&-${EMACS_SUFFIX}," \
-			etc/emacs.service | newins - ${EMACS_SUFFIX}.service
-		assert
-	fi
 
 	if use gzip-el; then
 		# compress .el files when a corresponding .elc exists
@@ -326,7 +291,7 @@ src_install() {
 	EOF
 	elisp-site-file-install "${T}/${SITEFILE}" || die
 
-	dodoc README BUGS CONTRIBUTE
+	dodoc README BUGS
 
 	if use aqua; then
 		dodir /Applications/Gentoo
@@ -339,11 +304,10 @@ src_install() {
 		/usr/bin/emacs through the Emacs eselect module, which also
 		redirects man and info pages. Therefore, several Emacs versions can
 		be installed at the same time. \"man emacs.eselect\" for details.
-		\\n\\nIf you upgrade from a previous major version of Emacs, then
-		it is strongly recommended that you use app-admin/emacs-updater
-		to rebuild all byte-compiled elisp files of the installed Emacs
-		packages."
-	use X && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
+		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
+		strongly recommended that you use app-admin/emacs-updater to rebuild
+		all byte-compiled elisp files of the installed Emacs packages."
+	use gui && DOC_CONTENTS+="\\n\\nYou need to install some fonts for Emacs.
 		Installing media-fonts/font-adobe-{75,100}dpi on the X server's
 		machine would satisfy basic Emacs requirements under X11.
 		See also https://wiki.gentoo.org/wiki/Xft_support_for_GNU_Emacs
