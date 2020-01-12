@@ -5,7 +5,7 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit cmake-utils
+inherit cmake-utils eutils multilib
 
 if [ "${PV}" != "9999" ]; then
 	SRC_URI="https://github.com/${PN/-//}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -17,7 +17,7 @@ else
 	KEYWORDS=""
 fi
 
-DESCRIPTION="Extra applications for votca-csg"
+DESCRIPTION="Votca tools library"
 HOMEPAGE="http://www.votca.org"
 
 LICENSE="Apache-2.0"
@@ -25,9 +25,22 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
+	dev-libs/boost:=
+	dev-libs/expat
 	>=dev-cpp/eigen-3.3
-	~sci-chemistry/${PN%apps}-${PV}"
+	sci-libs/fftw:3.0"
 
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	>=app-text/txt2tags-2.5
+	virtual/pkgconfig"
 
-DOCS=( README.md )
+DOCS=( NOTICE )
+
+PATCHES=( "${FILESDIR}/197.patch" )
+
+src_configure() {
+	mycmakeargs=(
+		-DWITH_RC_FILES=OFF
+	)
+	cmake-utils_src_configure
+}
