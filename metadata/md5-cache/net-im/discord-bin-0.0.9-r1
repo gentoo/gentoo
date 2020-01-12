@@ -9,4 +9,4 @@ RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://dl.discordapp.net/apps/linux/0.0.9/discord-0.0.9.deb
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=125707d3d983e8f4b8037c4c216eb235
+_md5_=2f796aae409262ae30d546ed9e0be976
