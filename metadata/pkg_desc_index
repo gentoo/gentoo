@@ -10731,7 +10731,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 4.14.33-r1 4.20.3 5.3.7 5.4.7: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.2 0.7.3 9999: pkgcore-based QA utility
+dev-util/pkgcheck 0.7.3 0.7.4 9999: pkgcore-based QA utility
 dev-util/pkgconf 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
@@ -12155,7 +12155,7 @@ kde-frameworks/bluez-qt 5.64.0 5.65.0 5.66.0: Qt wrapper for Bluez 5 DBus API
 kde-frameworks/breeze-icons 5.64.0 5.65.0 5.66.0: Breeze SVG icon theme
 kde-frameworks/breeze-icons-rcc 5.64.0 5.65.0 5.66.0: Breeze SVG icon theme binary resource
 kde-frameworks/extra-cmake-modules 5.64.0 5.65.0 5.66.0: Extra modules and scripts for CMake
-kde-frameworks/frameworkintegration 5.64.0 5.65.0 5.66.0: Framework for integrating Qt applications with KDE Plasma workspaces
+kde-frameworks/frameworkintegration 5.64.0 5.65.0 5.66.0-r1: Framework for integrating Qt applications with KDE Plasma workspaces
 kde-frameworks/kactivities 5.64.0 5.65.0 5.66.0: Framework for working with KDE activities
 kde-frameworks/kactivities-stats 5.64.0 5.65.0 5.66.0: Framework for getting the usage statistics collected by the activities service
 kde-frameworks/kapidox 5.64.0 5.65.0 5.66.0: Framework for building KDE API documentation in a standard format and style
@@ -14536,7 +14536,7 @@ net-dns/dnsviz 0.8.2: Tool suite for analysis and visualization of DNS and DNSSE
 net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic dns services
 net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
-net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r1: Modern asynchronous DNS API
+net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r2: Modern asynchronous DNS API
 net-dns/hash-slinger 2.6-r1 2.7-r1: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
