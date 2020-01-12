@@ -1,0 +1,39 @@
+diff --git a/unix/vncserver b/unix/vncserver
+index c98fb91f..ab9110bd 100755
+--- a/unix/vncserver
++++ b/unix/vncserver
+@@ -678,6 +678,7 @@ sub Usage
+ 	"                 [-geometry <width>x<height>]\n".
+ 	"                 [-pixelformat rgbNNN|bgrNNN]\n".
+ 	"                 [-fp <font-path>]\n".
++	"                 [-cc <visual>]\n".
+ 	"                 [-fg]\n".
+ 	"                 [-autokill]\n".
+ 	"                 [-noxstartup]\n".
+diff --git a/vncviewer/vncviewer.man b/vncviewer/vncviewer.man
+index 5b49f9bd..8a6d4f0e 100644
+--- a/vncviewer/vncviewer.man
++++ b/vncviewer/vncviewer.man
+@@ -253,6 +253,10 @@ This option specifies the preferred encoding to use from one of "Tight", "ZRLE",
+ Disable lossy JPEG compression in Tight encoding. Default is off.
+ .
+ .TP
++.B \-ImprovedHextile
++Try harder to compress data (default).
++.
++.TP
+ .B \-QualityLevel \fIlevel\fP
+ JPEG quality level. 0 = Low, 9 = High. May be adjusted automatically if
+ \fB-AutoSelect\fP is turned on. Default is 8.
+@@ -309,6 +313,11 @@ respectively.
+ .B \-AlertOnFatalError
+ Display a dialog with any fatal error before exiting. Default is on.
+ 
++.
++.TP
++.B \-ZlibLevel
++Zlib compression level.
++
+ .SH FILES
+ .TP
+ $HOME/.vnc/default.tigervnc
