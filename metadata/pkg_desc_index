@@ -4669,7 +4669,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r1: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.12.13 1.12.14 1.13.4 1.13.5 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.12.13 1.12.14 1.12.15 1.13.4 1.13.5 1.13.6 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/helium 1.8.1: The Helium Compiler
 dev-lang/hy 0.14.0 0.15.0 0.16.0 0.17.0: A LISP dialect running in python
@@ -9174,7 +9174,7 @@ dev-qt/qtopengl 5.12.3 5.12.5 5.13.2 5.14.0: OpenGL support library for the Qt5 
 dev-qt/qtpaths 5.12.3 5.12.5 5.13.2 5.14.0: Command line client to QStandardPaths
 dev-qt/qtplugininfo 5.12.3 5.12.5 5.13.2 5.14.0: Qt5 plugin metadata dumper
 dev-qt/qtpositioning 5.12.3 5.12.5 5.13.2 5.14.0: Physical position determination library for the Qt5 framework
-dev-qt/qtprintsupport 5.12.3 5.12.5 5.13.2 5.14.0: Printing support library for the Qt5 framework
+dev-qt/qtprintsupport 5.12.3 5.12.5 5.13.2 5.13.2-r1 5.14.0-r1: Printing support library for the Qt5 framework
 dev-qt/qtquickcontrols 5.12.3 5.12.5 5.13.2 5.14.0: Set of Qt Quick controls to create complete user interfaces (deprecated)
 dev-qt/qtquickcontrols2 5.12.3 5.12.5 5.13.2 5.14.0: Set of next generation Qt Quick controls for the Qt5 framework
 dev-qt/qtscript 5.12.3 5.12.5 5.13.2 5.14.0: Application scripting library for the Qt5 framework (deprecated)
@@ -10657,7 +10657,7 @@ dev-util/meld 3.20.1: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.51.1 0.51.2 0.52.0 0.52.1 0.53.0 9999: Open source build system
 dev-util/min-cscope 16.1.0: Interactively examine a C program
-dev-util/mingw64-runtime 5.0.4 6.0.0-r1 6.0.0-r3: Free Win64 runtime and import library definitions
+dev-util/mingw64-runtime 6.0.0-r3 7.0.0: Free Win64 runtime and import library definitions
 dev-util/molecule 2: Meta package for dev-util/molecule-core and dev-util/molecule-plugins
 dev-util/molecule-core 1.0.2-r1: Sabayon distro-agnostic images build tool
 dev-util/molecule-plugins 1.0.3: A set of base plugins for Molecule
@@ -12263,7 +12263,7 @@ kde-plasma/libkworkspace 5.17.4 5.17.5: Workspace library to interact with the P
 kde-plasma/milou 5.17.4 5.17.5: Dedicated search application built on top of Baloo
 kde-plasma/oxygen 5.17.4 5.17.5: Oxygen visual style for the Plasma desktop
 kde-plasma/plasma-browser-integration 5.17.4 5.17.5: Integrate Chrome/Firefox better into Plasma through browser extensions
-kde-plasma/plasma-desktop 5.17.4-r1 5.17.5: KDE Plasma desktop
+kde-plasma/plasma-desktop 5.17.4-r2 5.17.5-r1: KDE Plasma desktop
 kde-plasma/plasma-integration 5.17.4-r1 5.17.5: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.17.4 5.17.5: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 5.17.4 5.17.5: KDE Plasma applet for NetworkManager
@@ -17614,7 +17614,7 @@ sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 4.19.94 5.4.10: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 4.19.94 5.4.10: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.4.207 4.4.208 4.4.209 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.9.208 4.9.209 4.14.143 4.14.156 4.14.159 4.14.161 4.14.162 4.14.163 4.14.164 4.19.72 4.19.86 4.19.92 4.19.93 4.19.94 4.19.95 5.3.18 5.4.6 5.4.7 5.4.8 5.4.10: Full sources including the Gentoo patchset for the 5.4 kernel tree
+sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.4.207 4.4.208 4.4.209 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.9.208 4.9.209 4.14.143 4.14.156 4.14.159 4.14.161 4.14.162 4.14.163 4.14.164 4.19.72 4.19.86 4.19.92 4.19.93 4.19.94 4.19.95 5.3.18 5.4.6 5.4.7 5.4.8 5.4.10 5.4.11: Full sources including the Gentoo patchset for the 5.4 kernel tree
 sys-kernel/git-sources 5.5_rc1 5.5_rc2 5.5_rc3 5.5_rc4 5.5_rc5: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
