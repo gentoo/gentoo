@@ -9,7 +9,8 @@ QTMIN=5.12.3
 inherit ecm kde.org
 
 DESCRIPTION="Program to create cross stitch patterns"
-HOMEPAGE="https://userbase.kde.org/KXStitch"
+HOMEPAGE="https://kde.org/applications/graphics/org.kde.kxstitch
+https://userbase.kde.org/KXStitch"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2+"
