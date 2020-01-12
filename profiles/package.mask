@@ -520,42 +520,6 @@ dev-util/suse-build
 media-plugins/vdr-console
 
 # Aaron Bauman <bman@gentoo.org> (2019-12-13)
-# These are (mostly) leaf packages with only py2.7
-# Please review commit msg. Removal in 30 days
-dev-python/arrayterator
-dev-python/bjoern
-dev-python/carrot
-dev-python/cfgparse
-dev-python/dbutils
-dev-python/dingus
-dev-python/ed2551911
-dev-python/flask-evolution
-dev-python/fpconst
-dev-python/functest
-dev-python/librharris
-dev-python/mocker
-dev-python/pyamazon
-dev-python/pychart
-dev-python/pychecker
-dev-python/pyosd
-dev-python/pyptlib
-dev-python/pysctp
-dev-python/python-biggles
-dev-python/python-daap
-dev-python/python-digest
-dev-python/pyutmp
-dev-python/pyxenstore
-dev-python/py-xmlrpc
-dev-python/quixote
-dev-python/rackspace-monitoring-cli
-dev-python/reconfigure
-dev-python/sampy
-dev-python/shm
-dev-python/simples3
-dev-python/yolk
-dev-python/yolk-portage
-
-# Aaron Bauman <bman@gentoo.org> (2019-12-13)
 # Dead upstream. Fork is available as sci-electronics/drahnr-oregano
 # Removal in 30 days
 sci-electronics/oregano
