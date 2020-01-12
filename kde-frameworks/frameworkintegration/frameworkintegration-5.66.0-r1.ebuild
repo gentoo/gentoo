@@ -10,6 +10,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Framework for integrating Qt applications with KDE Plasma workspaces"
+
 LICENSE="LGPL-2+"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="appstream"
