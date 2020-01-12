@@ -28,7 +28,6 @@ SUBVERSION="$(ver_cut 1-2)"
 
 ruby_add_rdepend "
 	=dev-ruby/rspec-support-${SUBVERSION}*
-	!!<dev-ruby/rspec-core-2.14.8-r4
 	highlight? ( >=dev-ruby/coderay-1.1.1 )
 "
 
