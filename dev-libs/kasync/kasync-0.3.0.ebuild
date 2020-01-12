@@ -1,14 +1,18 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-KDE_TEST="forceoptional"
-inherit kde5
+ECM_TEST="forceoptional"
+inherit ecm kde.org
 
 DESCRIPTION="C++ library for controlling asynchronous tasks"
-SRC_URI="mirror://kde/unstable/${PN}/${PV}/src/${P}.tar.xz"
+HOMEPAGE="https://api.kde.org/kasync/html/index.html"
+
+if [[ ${KDE_BUILD_TYPE} = release ]]; then
+	SRC_URI="mirror://kde/unstable/${PN}/${PV}/src/${P}.tar.xz"
+	KEYWORDS="~amd64"
+fi
 
 LICENSE="LGPL-2+"
-KEYWORDS="~amd64"
-IUSE=""
+SLOT="5"
