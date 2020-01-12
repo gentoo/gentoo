@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-12)
+# Unmaintained upstream and redundant. Use kde-apps/kamera instead.
+# Only revdep of ancient media-libs/qimageblitz. Removal in 30 days.
+media-video/kamerka
+media-libs/qimageblitz
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-12)
 # Ancient, blocks x11-libs/gtkglext cleanup, open bug #649066
 # Masked for removal in 30 days.
 dev-cpp/gtkglextmm
