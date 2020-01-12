@@ -25,6 +25,7 @@ CDEPEND=">=net-libs/libtirpc-0.2.3:=
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )"
 DEPEND="${CDEPEND}
+	net-libs/libnsl
 	sys-fs/quota[rpc]
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
