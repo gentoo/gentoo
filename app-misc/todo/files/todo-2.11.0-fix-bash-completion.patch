@@ -1,0 +1,15 @@
+diff --git a/todo_completion b/todo_completion
+index 644be6e..964383e 100755
+--- a/todo_completion
++++ b/todo_completion
+@@ -85,6 +85,10 @@ _todo()
+ }
+ complete -F _todo todo.sh
+ 
++# Gentoo bug 614400
++complete -F _todo todocli
++complete -F _todo todotxt
++
+ # If you define an alias (e.g. "t") to todo.sh, you need to explicitly enable
+ # completion for it, too:
+ #complete -F _todo t
