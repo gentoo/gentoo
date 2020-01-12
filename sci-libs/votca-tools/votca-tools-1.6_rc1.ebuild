@@ -36,6 +36,8 @@ DEPEND="${RDEPEND}
 
 DOCS=( NOTICE )
 
+PATCHES=( "${FILESDIR}/197.patch" )
+
 src_configure() {
 	mycmakeargs=(
 		-DWITH_RC_FILES=OFF
