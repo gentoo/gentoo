@@ -76,7 +76,7 @@ src_install() {
 	fperms +x /opt/${MY_PN}/${MY_BIN}
 	dosym ../../opt/${MY_PN}/${MY_BIN} usr/bin/${MY_PN}
 
-	pax-mark -m "${ED%/}"/opt/${MY_PN}/${MY_PN}
+	pax-mark -m "${ED}"/opt/${MY_PN}/${MY_PN}
 }
 
 pkg_postinst() {
