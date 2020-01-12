@@ -17619,7 +17619,7 @@ sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.94-r1 5.4.7 5.4.10-r1: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 4.19.94-r1 5.4.7 5.4.10-r1: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.81 4.4.208 4.9.208 4.14.163 4.19.94 5.4.10: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.81 4.4.209 4.9.209 4.14.164 4.19.95 5.4.11: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 4.14.9999 4.15.9999 4.16.9999: The Zen Kernel Live Sources
@@ -19019,7 +19019,7 @@ x11-themes/human-icon-theme 0.36: A nice and well polished icon theme
 x11-themes/iceicons 0.10.0-r1: IceWM Icons is a set of XPM 16x16, 32x32, and 48x48 XPM and PNG icons for IceWM
 x11-themes/icewm-extra-themes 1.1 1.2: Extra themes for IceWM
 x11-themes/kfaenza 0.8.9-r2: Faenza-Cupertino icon theme for KDE Plasma
-x11-themes/kvantum 0.14.0 0.14.1: SVG-based theme engine for Qt5, KDE and LXQt
+x11-themes/kvantum 0.14.0 0.14.1: SVG-based theme engine for Qt5, KDE Plasma and LXQt
 x11-themes/larry-backgrounds 20110822-r1: Wallpapers featuring Gentoo mascot Larry the cow
 x11-themes/laughlin-backgrounds 14.1.0.3-r1: Fedora 14 official background artwork
 x11-themes/leonidas-backgrounds 11.0.0.2-r1: Fedora 11 official background artwork
