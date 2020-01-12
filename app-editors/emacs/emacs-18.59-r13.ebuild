@@ -14,17 +14,17 @@ SRC_URI="ftp://ftp.gnu.org/old-gnu/emacs/${P}.tar.gz
 LICENSE="GPL-1+ GPL-2+ BSD HPND"
 SLOT="18"
 KEYWORDS="amd64 x86"
-IUSE="abi_x86_x32 X"
+IUSE="abi_x86_x32 gui"
 
 RDEPEND="sys-libs/ncurses:0=
 	amd64? (
 		abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_x32(-)?] )
 		!abi_x86_x32? ( >=sys-libs/ncurses-5.9-r3:0=[abi_x86_32(-)] )
 	)
-	X? ( x11-libs/libX11 )"
+	gui? ( x11-libs/libX11 )"
 
 DEPEND="${RDEPEND}
-	X? (
+	gui? (
 		x11-base/xorg-proto
 		x11-misc/xbitmaps
 	)"
@@ -62,7 +62,7 @@ src_configure() {
 		*) die "Architecture ${ARCH} not yet supported" ;;
 	esac
 	local cmd="s/\"s-.*\.h\"/\"s-linux.h\"/;s/\"m-.*\.h\"/\"m-${arch}.h\"/"
-	use X && cmd="${cmd};s/.*\(#define HAVE_X_WINDOWS\).*/\1/"
+	use gui && cmd="${cmd};s/.*\(#define HAVE_X_WINDOWS\).*/\1/"
 	sed -e "${cmd}" src/config.h-dist >src/config.h || die
 
 	cat <<-END >src/paths.h
