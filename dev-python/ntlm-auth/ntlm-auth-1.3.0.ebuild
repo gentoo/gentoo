@@ -17,6 +17,5 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="dev-python/cryptography[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/ordereddict[${PYTHON_USEDEP}]' python2_7)"
+	dev-python/six[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
