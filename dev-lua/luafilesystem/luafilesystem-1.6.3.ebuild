@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,11 +12,11 @@ SRC_URI="https://github.com/keplerproject/luafilesystem/archive/v${MY_PV}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 x86"
+KEYWORDS="amd64 arm ~arm64 ~hppa ~mips ppc ppc64 ~sparc x86"
 IUSE="luajit"
 
 RDEPEND="
-	!luajit? ( >=dev-lang/lua-5.1 )
+	!luajit? ( >=dev-lang/lua-5.1:0 )
 	luajit? ( dev-lang/luajit:2 )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
