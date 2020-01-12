@@ -9,7 +9,4 @@
 		<remote-id type="github">rdanbrook/nestopia</remote-id>
 		<remote-id type="sourceforge">nestopiaue</remote-id>
 	</upstream>
-	<use>
-		<flag name="gui">Enable GUI</flag>
-	</use>
 </pkgmetadata>
