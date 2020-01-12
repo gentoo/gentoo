@@ -11215,7 +11215,7 @@ games-emulation/nestopia 1.47_p20170105 9999: A portable Nintendo Entertainment 
 games-emulation/nestra 0.66-r3: NES emulation for Linux/x86
 games-emulation/openmsx 0.14.0: MSX emulator that aims for perfection
 games-emulation/pcsx2 1.4.0-r1 1.4.0-r2 9999: A PlayStation 2 emulator
-games-emulation/pcsxr 1.9.94-r2 9999: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
+games-emulation/pcsxr 1.9.94-r2 1.9.94_p20190306 9999: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/ppsspp 1.5.4-r2 9999: A PSP emulator written in C++
 games-emulation/snes9x 1.58 1.59.2: Super Nintendo Entertainment System (SNES) emulator
 games-emulation/stella 5.1.3: Multi-platform Atari 2600 VCS Emulator
