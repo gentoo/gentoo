@@ -5,6 +5,14 @@
 		<email>monsieurp@gentoo.org</email>
 		<name>Patrice Clement</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>erkiferenc@gmail.com</email>
+		<name>Ferenc Erki</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<upstream>
 		<remote-id type="github">ginatrapani/todo.txt-cli</remote-id>
 	</upstream>
