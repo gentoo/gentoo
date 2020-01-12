@@ -20,7 +20,4 @@
 		scanners and all-in-ones. However, the scanner driver it provides can
 		be used by any other SANE standard compliant scanner utility.
 	</longdescription>
-	<use>
-		<flag name="gui">Builds gtk-based minimal scan GUI</flag>
-	</use>
 </pkgmetadata>
