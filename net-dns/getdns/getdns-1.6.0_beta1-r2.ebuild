@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,7 +34,7 @@ DEPEND="
 	libev? ( dev-libs/libev:= )
 	libevent? ( dev-libs/libevent:= )
 	libuv? ( dev-libs/libuv:= )
-	unbound? ( >=net-dns/unbound-1.5.9:= )
+	>=net-dns/unbound-1.5.9:=
 "
 RDEPEND="
 	${DEPEND}
@@ -53,17 +53,17 @@ PATCHES=( "${FILESDIR}/${PN}-1.4.2-stubby.service.patch" )
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_RUNSTATEDIR=/var/run
-		-DENABLE_STATIC=$(usex static-libs)
+		-DBUILD_DOXYGEN=$(usex doc)
 		-DBUILD_GETDNS_QUERY=$(usex getdns-query)
 		-DBUILD_GETDNS_SERVER_MON=$(usex getdns-server-mon)
+		-DBUILD_STUBBY=$(usex stubby)
+		-DENABLE_STATIC=$(usex static-libs)
+		-DENABLE_UNBOUND_EVENT_API=$(usex unbound)
 		-DUSE_GNUTLS=$(usex gnutls)
-		-DUSE_LIBIDN2=$(usex idn)
 		-DUSE_LIBEV=$(usex libev)
 		-DUSE_LIBEVENT2=$(usex libevent)
+		-DUSE_LIBIDN2=$(usex idn)
 		-DUSE_LIBUV=$(usex libuv)
-		-DBUILD_STUBBY=$(usex stubby)
-		-DENABLE_UNBOUND_EVENT_API=$(usex unbound)
-		-DBUILD_DOXYGEN=$(usex doc)
 	)
 	cmake_src_configure
 }
