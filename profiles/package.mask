@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Gilbert <floppym@gentoo.org> (2020-01-12)
+# No upstream activity since 2014, no reverse deps.
+# Remove in 30 days.
+dev-python/transmissionrpc
+
 # Ulrich Müller <ulm@gentoo.org> (2020-01-12)
 # Runtime errors. Last upstream release in 2003. No license.
 # Masked for removal in 30 days. Bug #703548.
