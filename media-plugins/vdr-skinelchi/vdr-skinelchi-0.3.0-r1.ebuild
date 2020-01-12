@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,16 +24,16 @@ src_prepare() {
 
 	# disable imagemagick support, broken ...
 	sed -i "${S}"/Makefile -e \
-		"s:SKINELCHI_HAVE_IMAGEMAGICK = 1:SKINELCHI_HAVE_IMAGEMAGICK = 0:"
+		"s:SKINELCHI_HAVE_IMAGEMAGICK = 1:SKINELCHI_HAVE_IMAGEMAGICK = 0:" || die
 
 	sed -i "${S}"/DisplayChannel.c \
 		-e "s:/hqlogos::" \
-		-e "s:/logos::"
+		-e "s:/logos::" || die
 
 	# wrong sed in vdr-plugin-2.eclass?
 	sed -e "s:INCLUDES += -I\$(VDRINCDIR):INCLUDES += -I\$(VDRINCDIR)/include:" \
-		-i Makefile
+		-i Makefile || die
 
 	# gcc-6 warnings
-	sed -e "s:auto_ptr:unique_ptr:" -i services/epgsearch_services.h
+	sed -e "s:auto_ptr:unique_ptr:" -i services/epgsearch_services.h || die
 }
