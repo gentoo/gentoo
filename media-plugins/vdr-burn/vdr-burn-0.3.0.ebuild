@@ -17,16 +17,16 @@ LICENSE="GPL-2"
 IUSE="dvdarchive"
 
 DEPEND="media-libs/gd[png,truetype,jpeg]
-		media-video/vdr"
+	media-video/vdr"
 RDEPEND="${DEPEND}
-		app-cdr/dvd+rw-tools
-		dev-libs/libcdio
-		media-fonts/corefonts
-		media-video/dvdauthor
-		media-video/mjpegtools[png]
-		media-video/projectx
-		media-video/transcode
-		virtual/eject"
+	app-cdr/dvd+rw-tools
+	dev-libs/libcdio
+	media-fonts/corefonts
+	media-video/dvdauthor
+	media-video/mjpegtools[png]
+	media-video/projectx
+	media-video/transcode
+	virtual/eject"
 
 # depends that are not rdepend
 DEPEND="${DEPEND}
@@ -43,23 +43,23 @@ src_prepare() {
 		"${FILESDIR}"/${P}_dmh-archive.patch
 
 	use dvdarchive && sed -i Makefile \
-		-e "s:#ENABLE_DMH_ARCHIVE:ENABLE_DMH_ARCHIVE:"
+		-e "s:#ENABLE_DMH_ARCHIVE:ENABLE_DMH_ARCHIVE:" || die
 
 	sed -i Makefile \
-		-e 's:^ISODIR=.*$:ISODIR=/var/vdr/video/dvd-images:'
+		-e 's:^ISODIR=.*$:ISODIR=/var/vdr/video/dvd-images:' || die
 
-	sed -i Makefile -e 's:DEFINES += -DTTXT_SUBTITLES:#DEFINES += -DTTXT_SUBTITLES:'
+	sed -i Makefile -e 's:DEFINES += -DTTXT_SUBTITLES:#DEFINES += -DTTXT_SUBTITLES:' || die
 
 	# do not install deprecated fonts, do not install in /etc/vdr/plugin config dir
 	sed -i Makefile \
-		-e "s:install-res install-conf::"
+		-e "s:install-res install-conf::" || die
 
 	# ttf-bitstream-vera deprecated, bug #335782
-	sed -e "s:Vera:arial:" -i skins.c
+	sed -e "s:Vera:arial:" -i skins.c || die
 
 	# fix deprecated warnings pkg-config
 	sed -i Makefile \
-		-e "s:gdlib-config:pkg-config gdlib:"
+		-e "s:gdlib-config:pkg-config gdlib:" || die
 
 	fix_vdr_libsi_include scanner.c
 }
