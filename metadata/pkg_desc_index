@@ -7458,7 +7458,6 @@ dev-python/argh 0.26.2-r1 0.26.2-r2: A simple argparse wrapper
 dev-python/argon2_cffi 19.1.0: CFFI bindings to the Argon2 password hashing library
 dev-python/args 0.1.0 0.1.0-r1: Command Arguments for Humans
 dev-python/arpeggio 1.5 1.9.0: Parser interpreter based on PEG grammars
-dev-python/arrayterator 1.0.1-r1: A buffered iterator for reading big arrays in small contiguous blocks
 dev-python/arrow 0.10.0 0.12.1 0.13.1: Better dates and times for Python
 dev-python/asciimatics 1.10.0: Pythonic library to create text UIs and ASCII art animations
 dev-python/asciitable 0.8.0-r1: An extensible ASCII table reader
@@ -7518,7 +7517,6 @@ dev-python/binaryornot 0.4.3: Ultra-lightweight pure Python package to guess whe
 dev-python/biplist 1.0.1 1.0.2: A binary plist parser/generator for Python
 dev-python/bitarray 0.8.1 0.8.3: efficient arrays of booleans -- C extension
 dev-python/bitstring 3.1.5: A pure Python module for creation and analysis of binary data
-dev-python/bjoern 1.3.2 1.4.3: A screamingly fast Python WSGI server written in C
 dev-python/blaze 0.11.3: Next generation Python numpy
 dev-python/bleach 2.1.3 3.0.2 3.1.0-r1: an easy whitelist-based HTML-sanitizing tool
 dev-python/blessings 1.6-r1 1.6.1 1.7: A thin, practical wrapper around terminal coloring, styling, and positioning
@@ -7548,7 +7546,6 @@ dev-python/cairocffi 0.8.0 0.9.0 1.0.2: CFFI-based drop-in replacement for Pycai
 dev-python/cangjie 1.2-r1 1.3: Python wrapper for libcangjie
 dev-python/capturer 2.3: Easily capture stdout/stderr of the current process and subprocesses
 dev-python/carbon 0.9.13 0.9.13-r1 1.1.3-r1 1.1.5: Backend data caching and persistence daemon for Graphite
-dev-python/carrot 0.10.7-r1: AMQP Messaging Framework for Python
 dev-python/case 1.5.2-r1 1.5.3: Python unittest Utilities
 dev-python/castellan 1.2.2: Generic Key Manager interface for OpenStack
 dev-python/catkin_pkg 0.4.12 0.4.13 0.4.15 9999: Standalone Python library for the catkin package system
@@ -7558,7 +7555,6 @@ dev-python/celementtree 1.0.5-r2: The cElementTree module is a C implementation 
 dev-python/celery 4.1.0 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 2018.4.16 2019.6.16 2019.9.11 2019.11.28: Python package for providing Mozilla's CA Bundle
 dev-python/cffi 1.9.1 1.11.2 1.11.4 1.11.5 1.12.1 1.12.3 1.13.2: Foreign Function Interface for Python calling C code
-dev-python/cfgparse 1.3-r1: Config File parser for Python
 dev-python/cfn-python-lint 0.21.6: CloudFormation Linter
 dev-python/cgroup-utils 0.6: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.1: Easy to use mocking, stubbing and spying framework
@@ -7646,7 +7642,6 @@ dev-python/dask 1.2.0: Task scheduling and blocked algorithms for parallel proce
 dev-python/datashape 0.5.4: Language defining a data description protocol
 dev-python/dbus-python 1.2.4 1.2.12 1.2.14: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.18.2: Easily create mock objects on D-Bus for software testing
-dev-python/dbutils 1.1-r1: Database connections for multi-threaded environments
 dev-python/ddt 1.1.1 1.2.2: A library to multiply test cases
 dev-python/debtcollector 1.21.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.3.2 4.4.0 4.4.1: Simplifies the usage of decorators for the average programmer
@@ -7663,7 +7658,6 @@ dev-python/dicttoxml 1.7.4: Converts a Python dictionary or other data type to a
 dev-python/diff-cover 1.0.4 2.3.0: Automatically find diff lines that need test coverage
 dev-python/diff-match-patch 20121119 20181111: Diff, match and patch algorithms for plain text
 dev-python/dill 0.2.5 0.3.0 0.3.1.1: Serialize all of python (almost)
-dev-python/dingus 0.3.4-r1: A record-then-assert mocking library
 dev-python/discogs-client 2.0.2 2.2.1: Official Python API client for Discogs
 dev-python/diskcache 2.8.3 3.1.0: Disk and file backed cache
 dev-python/dissononce 0.34.3: A python implementation for Noise Protocol Framework
@@ -7744,7 +7738,6 @@ dev-python/e4u 0.1_rc5-r1: A library for handling unicode emoji and carrier's em
 dev-python/easy-thumbnails 2.4.1: Easy thumbnails for Django
 dev-python/ebuildtester 0.1.12 0.1.13 0.1.14: A dockerized approach to test a Gentoo package within a clean stage3 container
 dev-python/ecdsa 0.13 0.13.2 0.13.3 0.14.1 0.14.1-r1: ECDSA cryptographic signature library in pure Python
-dev-python/ed25519ll 0.6: A low-level ctypes wrapper for Ed25519 digital signatures.
 dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
 dev-python/egenix-mx-base 3.2.5 3.2.8 3.2.9: eGenix utils for Python
@@ -7801,7 +7794,6 @@ dev-python/flask-babelex 0.9.3: Adds i18n/l10n support to Flask applications
 dev-python/flask-bootstrap 3.3.7.1: An extension that includes Bootstrap in your project, without boilerplate code
 dev-python/flask-cors 1.8.0 1.9.0 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
 dev-python/flask-debug 0.4.3: Flask extension that displays various debugging insights during development
-dev-python/flask-evolution 0.5-r1 0.6: Simple migrations for Flask/SQLAlchemy projects
 dev-python/flask-gravatar 0.4.2 0.5.0: Small extension for Flask to make usage of Gravatar service easy
 dev-python/flask-htmlmin 1.2.1 1.3.2 1.5.0 1.5.2: Minimize your flask rendered html
 dev-python/flask-login 0.3.2-r1 0.4.1: Login session support for Flask
@@ -7838,7 +7830,6 @@ dev-python/flufl-lock 3.2: NFS-safe file locking with timeouts for POSIX systems
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
 dev-python/fonttools 3.44.0 4.0.1 4.1.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
 dev-python/formencode 1.3.0-r3: HTML form validation, generation, and conversion package
-dev-python/fpconst 0.7.3-r1: Python Module for handling IEEE 754 floating point special values
 dev-python/fqdn 1.2.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 0.3.10 0.3.11 0.3.12-r1: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
@@ -7846,7 +7837,6 @@ dev-python/fs 0.5.4 2.0.21 2.0.26 2.4.8 2.4.9: Filesystem abstraction layer
 dev-python/fudge 1.1.0: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6 0.3.6-r1: Recursive descent parsing library based on functional combinators
 dev-python/funcsigs 1.0.2-r1: Python function signatures backport from PEP362 for Python 2.7-3.5
-dev-python/functest 0.8.8-r1: Functest is a test tool/framework for testing in Python
 dev-python/functools32 3.2.3: Backport of the functools module from Python 3
 dev-python/funcy 1.8 1.10.1: A collection of fancy functional tools focused on practicality
 dev-python/fuse-python 0.2.1-r1 0.3.1 1.0.0: Python FUSE bindings
@@ -8059,7 +8049,6 @@ dev-python/libgnomecanvas-python 2.28.1-r1: Python bindings for the Gnome Canvas
 dev-python/liblarch 2.1.0: Library to handle directed acyclic graphs
 dev-python/libnacl 1.6.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.2.4 0.3.0: Small library containing various image processing algorithms
-dev-python/librharris 0.1.14-r1: Python Internet Programming Library
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
 dev-python/libsass 0.19.4: A straightforward binding of libsass for Python
 dev-python/libtmux 0.8.2 0.8.2-r1: python api for tmux
@@ -8130,7 +8119,6 @@ dev-python/mkpythonproj 1.9: Creates the framework for a new Python project or s
 dev-python/mmh3 2.5.1: Python library for MurmurHash3, fast and robust hash functions.
 dev-python/mmtf-python 1.1.2-r1: The python implementation of the MMTF API, decoder and encoder
 dev-python/mock 1.0.1-r2 1.3.0-r2 2.0.0 3.0.5-r1: Rolling backport of unittest.mock for all Pythons
-dev-python/mocker 1.1.1-r1: Platform for Python test doubles: mocks, stubs, fakes, and dummies
 dev-python/mockldap 0.2.3 0.3.0: A simple mock implementation of python-ldap
 dev-python/mongoengine 0.10.6: A Python Object-Document-Mapper for working with MongoDB
 dev-python/monotonic 1.4 1.5 1.5-r1: An implementation of time.monotonic() for Python 2 & < 3.3
@@ -8385,7 +8373,6 @@ dev-python/py-cpuinfo 3.2.0 3.3.0 5.0.0: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.1 0.1.4: Github-Flavored Markdown for Python-Markdown
 dev-python/py-lz4framed 0.9.6: LZ4Frame library for Python (via C bindings)
 dev-python/py-ubjson 0.9.0 0.10.0 0.11.0: Universal Binary JSON encoder/decoder
-dev-python/py-xmlrpc 0.9: Fast XML-RPC implementation for Python
 dev-python/py2neo 3.1.2: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
 dev-python/pyClamd 0.4.0 0.4.0-r1: python interface to Clamd (Clamav daemon)
@@ -8396,7 +8383,6 @@ dev-python/pyacoustid 1.1.7: Python bindings for Chromaprint and the AcoustID we
 dev-python/pyaes 1.6.0 1.6.1-r1: Pure-Python Implementation of the AES block-cipher and common modes of operation
 dev-python/pyalsa 1.0.29 1.1.6: Python bindings for ALSA library
 dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
-dev-python/pyamazon 0.65-r1: A Python wrapper for the Amazon web API
 dev-python/pyamg 3.2.1-r1: Algebraic multigrid solvers in Python
 dev-python/pyasn1 0.2.3 0.3.7 0.4.2 0.4.3: ASN.1 library for Python
 dev-python/pyasn1-modules 0.0.5-r1 0.0.8 0.0.10 0.1.4 0.1.5 0.2.1: pyasn1 modules
@@ -8411,8 +8397,6 @@ dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
 dev-python/pycapnp 0.6.2 0.6.3 0.6.4: Python wrapping of the Cap'n Proto library
 dev-python/pycares 3.1.0_p3 3.1.1: Python interface for c-ares
 dev-python/pycdio 2.1.0: Python OO interface to libcdio (CD Input and Control library)
-dev-python/pychart 1.39-r1: Python library for creating charts
-dev-python/pychecker 0.8.19-r1: Python source code checking tool
 dev-python/pychm 0.8.4-r1 0.8.5 0.8.6: Python bindings for the chmlib library
 dev-python/pychroot 0.10.1 9999: a python library and cli tool that simplify chroot handling
 dev-python/pycipher 0.2-r1: A Python module that implements several well-known classical cipher algorithms
@@ -8517,7 +8501,6 @@ dev-python/pyopengl 3.1.0: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.0 3.1.0-r1: Accelerate module for PyOpenGL
 dev-python/pyopenssl 17.5.0 18.0.0 19.0.0 19.1.0: Python interface to the OpenSSL library
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
-dev-python/pyosd 0.2.14-r1: Python module for displaying text on your X display, like the 'On Screen Displays' used on TVs
 dev-python/pyotherside 1.5.4 1.5.8: Asynchronous Python 3 Bindings for Qt 5
 dev-python/pyotp 2.2.6 2.2.6-r1: PyOTP is a Python library for generating and verifying one-time passwords.
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
@@ -8537,7 +8520,6 @@ dev-python/pyprof2calltree 1.4.0: convert python profile data to kcachegrind cal
 dev-python/pyproj 1.9.5.1-r1 2.4.2: Python interface to the PROJ library
 dev-python/pyproject2setuppy 2: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
-dev-python/pyptlib 0.0.6: Python library for tor's pluggable transport managed-proxy protocol
 dev-python/pypy 7.3.0: A fast, compliant alternative implementation of the Python language
 dev-python/pypy-bin 7.3.0: Backwards compatibility package to install binary ver of PyPy
 dev-python/pypy-exe 7.3.0: PyPy executable (build from source)
@@ -8559,7 +8541,6 @@ dev-python/pyrsistent 0.13.0 0.14.2 0.14.4 0.15.6: Persistent/Functional/Immutab
 dev-python/pysaml2 4.6.3 4.6.3-r1 4.6.5: Python implementation of SAML Version 2 to be used in a WSGI environment
 dev-python/pyscaffold 2.4.4: Tool for easily putting up the scaffold of a Python project
 dev-python/pyscard 1.9.7: Smart cards support in python
-dev-python/pysctp 0.6: PySCTP gives access to the SCTP transport protocol from Python
 dev-python/pysendfile 2.0.1 2.0.1-r1: A python interface to the sendfile(2) system call
 dev-python/pyserial 3.2.1 3.4: Python Serial Port extension
 dev-python/pysha3 1.0.2-r1: SHA-3 (Keccak) for Python 2.7 - 3.5
@@ -8622,7 +8603,6 @@ dev-python/python-axolotl-curve25519 0.4.1_p2-r1: A python wrapper for the curve
 dev-python/python-backoff 1.6.0: Function decoration for backoff and retry
 dev-python/python-barbicanclient 4.8.1: Client library for Barbican API.
 dev-python/python-bibtex 1.2.7-r1 1.2.7-r2: A Python extension to parse BibTeX files
-dev-python/python-biggles 1.6.6-r1: A Python module for creating publication-quality 2D scientific plots
 dev-python/python-blazarclient 2.0.0 2.1.0: This is a client for the OpenStack Blazar API
 dev-python/python-bugzilla 1.2.2 2.1.0: A python module for interacting with Bugzilla over XMLRPC
 dev-python/python-ceilometerclient 2.6.2-r1: This is a client library for Ceilometer built on the Ceilometer API
@@ -8630,13 +8610,11 @@ dev-python/python-cinderclient 4.1.0 4.2.1: A client for the OpenStack Cinder AP
 dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects into related groups (clusters)
 dev-python/python-cstruct 1.7: C-style structs for Python
 dev-python/python-ctags 1.2.4 1.3.0: Exuberant Ctags indexing python bindings
-dev-python/python-daap 0.7.1-r1: PyDaap is a DAAP client implemented in Python, based on PyTunes
 dev-python/python-daemon 1.6-r1 2.1.1 2.1.2: Library to implement a well-behaved Unix daemon process
 dev-python/python-dateutil 2.6.1 2.7.1 2.7.2 2.7.2-r1 2.7.3 2.7.4 2.7.5 2.8.0 2.8.1: Extensions to the standard Python datetime module
 dev-python/python-ddp 0.1.5: An event driven ddp client
 dev-python/python-debian 0.1.31 0.1.36: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.11.0: Python bindings to the Designate API.
-dev-python/python-digest 1.7-r1: A Python library to aid in implementing HTTP Digest Authentication
 dev-python/python-discid 1.1.1: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.38 2.39 2.42 2.42-r1: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-djvulibre 0.8: Set of Python bindings for the DjVuLibre library
@@ -8735,14 +8713,12 @@ dev-python/pyu2f 0.1.4: Python based U2F host library
 dev-python/pyudev 0.21.0: Python binding to libudev
 dev-python/pyusb 1.0.2: USB support for Python
 dev-python/pyutil 2.0.0-r1: A collection of utilities for Python programmers
-dev-python/pyutmp 0.2.1: Python UTMP wrapper for Un*x systems
 dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pywavelets 0.5.2 0.5.2-r1: Discrete Wavelet Transforms in Python
 dev-python/pywinrm 0.3.0: Windows Remote Management through Python
 dev-python/pyx 0.12.1-r1 0.14.1 0.14.1-r1: Python package for the generation of encapsulated PostScript figures
 dev-python/pyxattr 0.6.0-r1 0.6.1 0.6.1-r1 0.7.1: Python interface to xattr
 dev-python/pyxdg 0.25-r1 0.26 0.26-r1: A Python module to deal with freedesktop.org specifications
-dev-python/pyxenstore 0.0.2: Provides Python interfaces for Xen's XenStore
 dev-python/pyyaml 3.12 3.13 5.1 5.1.2: YAML parser and emitter for Python
 dev-python/pyzbar 0.1.5 0.1.7: Read one-dimensional barcodes and QR codes from Python
 dev-python/pyzmq 16.0.2 17.1.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
@@ -8757,7 +8733,6 @@ dev-python/qtsass 0.1.1: Compile SASS files to Qt stylesheets
 dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
 dev-python/rackspace-auth-openstack 1.3 9999: Rackspace Auth Plugin for OpenStack Clients
 dev-python/rackspace-monitoring 0.6.5 0.8.0: Client library for Rackspace Cloud Monitoring
-dev-python/rackspace-monitoring-cli 0.6.10: Command Line Utility for Rackspace Cloud Monitoring (MaaS)
 dev-python/rackspace-novaclient 1.4 2.1: A client for the OpenStack Nova API
 dev-python/radon 1.4.2: Code Metrics in Python
 dev-python/raet 0.6.8: Reliable Asynchronous Event Transport Protocol
@@ -8773,7 +8748,6 @@ dev-python/readlike 0.1.2 0.1.3: a python library similar to readline
 dev-python/readme_renderer 17.2 24.0-r1: a library for rendering "readme" descriptions for Warehouse
 dev-python/rebulk 0.9.0 9999: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.4.0 0.5.0_pre20180907 0.5.0_pre20181012 0.5.0_pre20181012-r1 0.5.0: Python docutils-compatibility bridge to CommonMark
-dev-python/reconfigure 0.1.79: An ORM for config files
 dev-python/redis-py 3.2.1: Python client for Redis key-value store
 dev-python/redis-py-cluster 1.3.4: Python cluster client for the official redis cluster
 dev-python/redlock-py 1.0.8: Redis distributed locks in Python
@@ -8841,7 +8815,6 @@ dev-python/ryu 4.26 4.26-r1: Component-based Software-defined Networking Framewo
 dev-python/s3fs 0.1.2 0.1.5: Pythonic file interface to S3
 dev-python/s3transfer 0.1.13-r1 0.2.0 0.2.1: An Amazon S3 Transfer Manager
 dev-python/sabyenc 3.3.5 3.3.6: Module providing raw yEnc encoding/decoding for SABnzbd
-dev-python/sampy 1.2.1: Simple Application Messaging Protocol messaging system implementation in Python
 dev-python/scandir 1.10.0 1.10.0-r1: A better directory iterator and faster os.walk()
 dev-python/scapy-python3 0.23: Packet crafting/sending/... PCAP processing tool with python3 compatibility
 dev-python/schedule 0.4.2 0.5.0: Python job scheduling for humans
@@ -8870,7 +8843,6 @@ dev-python/setuptools_scm_git_archive 1.0: A setuptools_scm plugin for git archi
 dev-python/setuptools_trial 0.6.0: Setuptools plugin that makes unit tests execute with trial instead of pyunit
 dev-python/sexpdata 0.0.3-r1: a simple S-expression parser/serializer
 dev-python/sh 1.12.14: Python subprocess interface
-dev-python/shm 1.2.2-r1: Python modules to access System V shared memory and semaphores
 dev-python/shutilwhich 1.1.0: A copy & paste backport of Python 3.3's shutil.which function
 dev-python/simplebayes 1.5.7: memory-based, optional-persistence naive bayesian text classifier
 dev-python/simpleeval 0.9.8 0.9.10: A simple, safe single expression evaluator library
@@ -8878,7 +8850,6 @@ dev-python/simplegeneric 0.8.1-r1: Simple generic functions for Python
 dev-python/simplejson 3.13.2 3.14.0 3.15.0 3.16.0 3.17.0: Simple, fast, extensible JSON encoder/decoder for Python
 dev-python/simplekml 1.3.1: enables you to generate KML with as little effort as possible
 dev-python/simplekv 0.9.2 0.11.11: A key-value storage for binary data, support many backends.
-dev-python/simples3 1.0: A fairly simple, decently quick python interface to Amazon's S3 storage service
 dev-python/simplesoapy 1.5.1-r1 9999: Simple pythonic wrapper for SoapySDR library
 dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral module
 dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation language
@@ -9147,8 +9118,6 @@ dev-python/yapsy 1.11.223-r2: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
 dev-python/yarl 1.1.1 1.3.0: Yet another URL library
 dev-python/yaswfp 0.9.3: Yet Another SWF Parser
-dev-python/yolk 0.4.3-r1: Tool and library for querying PyPI and locally installed Python packages
-dev-python/yolk-portage 0.1-r1: Gentoo Portage plugin for yolk
 dev-python/zVMCloudConnector 1.2.2 1.4.1: a development sdk for managing z/VM
 dev-python/zake 0.2.1: Set of testing utilities for the kazoo library
 dev-python/zbase32 1.1.5: base32 encoder/decoder (not RFC 3548 compliant)
@@ -10656,7 +10625,7 @@ dev-util/jenkins-bin 2.190.1 2.190.2 2.190.3 2.197 2.205: Extensible continuous 
 dev-util/jfrog-cli 1.30.4: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
-dev-util/kdbg 3.0.0-r1 3.0.1: Graphical debugger interface
+dev-util/kdbg 3.0.1: Graphical debugger interface
 dev-util/kdevelop 5.4.5 5.4.6: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
 dev-util/kdevelop-clang-tidy 0.3.3-r1: KDevelop plugin for clang-tidy static analysis support
 dev-util/kdevelop-pg-qt 2.2.0: LL(1) parser generator used mainly by KDevelop language plugins
@@ -12149,90 +12118,90 @@ kde-apps/thumbnailers 19.08.3 19.12.1: Thumbnail generators for PDF/PS and RAW f
 kde-apps/umbrello 19.08.3 19.12.1: KDE UML Modeller
 kde-apps/yakuake 19.08.3 19.12.1: Quake-style terminal emulator based on konsole
 kde-apps/zeroconf-ioslave 19.08.3 19.12.1: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
-kde-frameworks/attica 5.64.0 5.65.0 5.66.0: Framework providing access to Open Collaboration Services
-kde-frameworks/baloo 5.64.0 5.65.0 5.66.0: Framework for searching and managing metadata
-kde-frameworks/bluez-qt 5.64.0 5.65.0 5.66.0: Qt wrapper for Bluez 5 DBus API
-kde-frameworks/breeze-icons 5.64.0 5.65.0 5.66.0: Breeze SVG icon theme
-kde-frameworks/breeze-icons-rcc 5.64.0 5.65.0 5.66.0: Breeze SVG icon theme binary resource
-kde-frameworks/extra-cmake-modules 5.64.0 5.65.0 5.66.0: Extra modules and scripts for CMake
-kde-frameworks/frameworkintegration 5.64.0 5.65.0 5.66.0-r1: Framework for integrating Qt applications with KDE Plasma workspaces
-kde-frameworks/kactivities 5.64.0 5.65.0 5.66.0: Framework for working with KDE activities
-kde-frameworks/kactivities-stats 5.64.0 5.65.0 5.66.0: Framework for getting the usage statistics collected by the activities service
-kde-frameworks/kapidox 5.64.0 5.65.0 5.66.0: Framework for building KDE API documentation in a standard format and style
-kde-frameworks/karchive 5.64.0 5.65.0 5.66.0: Framework for reading, creation, and manipulation of various archive formats
-kde-frameworks/kauth 5.64.0 5.65.0 5.66.0: Framework to let applications perform actions as a privileged user
-kde-frameworks/kbookmarks 5.64.0 5.65.0 5.66.0: Framework for managing bookmarks stored in XBEL format
-kde-frameworks/kcalendarcore 5.64.0-r1 5.65.0-r1 5.66.0: Library for interfacing with calendars
-kde-frameworks/kcmutils 5.64.0 5.65.0 5.66.0: Framework to work with KDE System Settings modules
-kde-frameworks/kcodecs 5.64.0 5.65.0 5.66.0: Framework for manipulating strings using various encodings
-kde-frameworks/kcompletion 5.64.0 5.65.0 5.66.0: Framework for common completion tasks such as filename or URL completion
-kde-frameworks/kconfig 5.64.0 5.65.0 5.66.0: Framework for reading and writing configuration
-kde-frameworks/kconfigwidgets 5.64.0 5.65.0 5.66.0: Framework providing an assortment of configuration-related widgets
-kde-frameworks/kcontacts 5.64.0 5.65.0 5.66.0: Address book API based on KDE Frameworks
-kde-frameworks/kcoreaddons 5.64.0 5.65.0 5.66.0: Framework for solving common problems such as caching, randomisation, and more
-kde-frameworks/kcrash 5.64.0 5.65.0 5.66.0: Framework for intercepting and handling application crashes
-kde-frameworks/kdbusaddons 5.64.0 5.65.0 5.66.0: Framework for registering services and applications per freedesktop standards
-kde-frameworks/kdeclarative 5.64.0 5.65.0 5.66.0: Framework providing integration of QML and KDE work spaces
-kde-frameworks/kded 5.64.0 5.65.0 5.66.0: Central daemon of KDE workspaces
-kde-frameworks/kdelibs4support 5.64.0 5.65.0 5.66.0: Framework easing the development transition from KDELibs 4 to KF 5
-kde-frameworks/kdesignerplugin 5.64.0 5.65.0 5.66.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
-kde-frameworks/kdesu 5.64.0 5.65.0 5.66.0: Framework to handle super user actions
-kde-frameworks/kdewebkit 5.64.0 5.65.0 5.66.0: Framework providing KDE integration of QtWebKit
-kde-frameworks/kdnssd 5.64.0 5.65.0 5.66.0: Framework for network service discovery using Zeroconf
-kde-frameworks/kdoctools 5.64.0 5.65.0 5.66.0: Tools to generate documentation in various formats from DocBook files
-kde-frameworks/kemoticons 5.64.0 5.65.0 5.66.0: Framework for converting text emoticons to graphical representations
+kde-frameworks/attica 5.64.0 5.66.0: Framework providing access to Open Collaboration Services
+kde-frameworks/baloo 5.64.0 5.66.0: Framework for searching and managing metadata
+kde-frameworks/bluez-qt 5.64.0 5.66.0: Qt wrapper for Bluez 5 DBus API
+kde-frameworks/breeze-icons 5.64.0 5.66.0: Breeze SVG icon theme
+kde-frameworks/breeze-icons-rcc 5.64.0 5.66.0: Breeze SVG icon theme binary resource
+kde-frameworks/extra-cmake-modules 5.64.0 5.66.0: Extra modules and scripts for CMake
+kde-frameworks/frameworkintegration 5.64.0 5.66.0-r1: Framework for integrating Qt applications with KDE Plasma workspaces
+kde-frameworks/kactivities 5.64.0 5.66.0: Framework for working with KDE activities
+kde-frameworks/kactivities-stats 5.64.0 5.66.0: Framework for getting the usage statistics collected by the activities service
+kde-frameworks/kapidox 5.64.0 5.66.0: Framework for building KDE API documentation in a standard format and style
+kde-frameworks/karchive 5.64.0 5.66.0: Framework for reading, creation, and manipulation of various archive formats
+kde-frameworks/kauth 5.64.0 5.66.0: Framework to let applications perform actions as a privileged user
+kde-frameworks/kbookmarks 5.64.0 5.66.0: Framework for managing bookmarks stored in XBEL format
+kde-frameworks/kcalendarcore 5.64.0-r1 5.66.0: Library for interfacing with calendars
+kde-frameworks/kcmutils 5.64.0 5.66.0: Framework to work with KDE System Settings modules
+kde-frameworks/kcodecs 5.64.0 5.66.0: Framework for manipulating strings using various encodings
+kde-frameworks/kcompletion 5.64.0 5.66.0: Framework for common completion tasks such as filename or URL completion
+kde-frameworks/kconfig 5.64.0 5.66.0: Framework for reading and writing configuration
+kde-frameworks/kconfigwidgets 5.64.0 5.66.0: Framework providing an assortment of configuration-related widgets
+kde-frameworks/kcontacts 5.64.0 5.66.0: Address book API based on KDE Frameworks
+kde-frameworks/kcoreaddons 5.64.0 5.66.0: Framework for solving common problems such as caching, randomisation, and more
+kde-frameworks/kcrash 5.64.0 5.66.0: Framework for intercepting and handling application crashes
+kde-frameworks/kdbusaddons 5.64.0 5.66.0: Framework for registering services and applications per freedesktop standards
+kde-frameworks/kdeclarative 5.64.0 5.66.0: Framework providing integration of QML and KDE work spaces
+kde-frameworks/kded 5.64.0 5.66.0: Central daemon of KDE workspaces
+kde-frameworks/kdelibs4support 5.64.0 5.66.0: Framework easing the development transition from KDELibs 4 to KF 5
+kde-frameworks/kdesignerplugin 5.64.0 5.66.0: Framework providing plugins to use KDE frameworks widgets in QtDesigner
+kde-frameworks/kdesu 5.64.0 5.66.0: Framework to handle super user actions
+kde-frameworks/kdewebkit 5.64.0 5.66.0: Framework providing KDE integration of QtWebKit
+kde-frameworks/kdnssd 5.64.0 5.66.0: Framework for network service discovery using Zeroconf
+kde-frameworks/kdoctools 5.64.0 5.66.0: Tools to generate documentation in various formats from DocBook files
+kde-frameworks/kemoticons 5.64.0 5.66.0: Framework for converting text emoticons to graphical representations
 kde-frameworks/kf-env 5: Environment setting required for all KDE Frameworks apps to run
-kde-frameworks/kfilemetadata 5.64.0 5.65.0 5.66.0: Library for extracting file metadata
-kde-frameworks/kglobalaccel 5.64.0 5.65.0 5.66.0: Framework to handle global shortcuts
-kde-frameworks/kguiaddons 5.64.0 5.65.0 5.66.0: Framework providing assorted high-level user interface components
-kde-frameworks/kholidays 5.64.0 5.65.0 5.66.0: Library to determine holidays and other special events for a geographical region
-kde-frameworks/khtml 5.64.0 5.65.0 5.66.0: KHTML web rendering engine
-kde-frameworks/ki18n 5.64.0 5.65.0 5.66.0: Framework based on Gettext for internationalizing user interface text
-kde-frameworks/kiconthemes 5.64.0 5.65.0 5.66.0: Framework for icon theming and configuration
-kde-frameworks/kidletime 5.64.0 5.65.0 5.66.0: Framework for detection and notification of device idle time
-kde-frameworks/kimageformats 5.64.0 5.65.0 5.66.0: Framework providing additional format plugins for Qt's image I/O system
-kde-frameworks/kinit 5.64.0 5.65.0 5.66.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.64.0-r2 5.65.0 5.66.0: Framework providing transparent file and data management
-kde-frameworks/kirigami 5.64.1 5.65.0 5.66.0: Lightweight user interface framework for mobile and convergent applications
-kde-frameworks/kitemmodels 5.64.0 5.65.0 5.66.0: Framework providing data models to help with tasks such as sorting and filtering
-kde-frameworks/kitemviews 5.64.0 5.65.0 5.66.0: Framework providing additional widgets for item models
-kde-frameworks/kjobwidgets 5.64.0 5.65.0 5.66.0: Framework providing assorted widgets for showing the progress of jobs
-kde-frameworks/kjs 5.64.0 5.65.0 5.66.0: ECMAScipt compatible parser and engine
-kde-frameworks/kjsembed 5.64.0 5.65.0 5.66.0: Framework binding JavaScript objects to QObjects
-kde-frameworks/kmediaplayer 5.64.0 5.65.0 5.66.0: Framework providing a common interface for KParts that can play media files
-kde-frameworks/knewstuff 5.64.0 5.65.0 5.66.0: Framework for downloading and sharing additional application data
-kde-frameworks/knotifications 5.64.0 5.65.0 5.66.0: Framework for notifying the user of an event
-kde-frameworks/knotifyconfig 5.64.0 5.65.0 5.66.0: Framework for configuring desktop notifications
-kde-frameworks/kpackage 5.64.0 5.65.0 5.66.0: Framework to install and load packages of non binary content
-kde-frameworks/kparts 5.64.0 5.65.0 5.66.0: Framework providing elaborate user-interface components
-kde-frameworks/kpeople 5.64.0 5.65.0 5.66.0: KDE contact person abstraction library
-kde-frameworks/kplotting 5.64.0 5.65.0 5.66.0: Framework providing easy data-plotting functions
-kde-frameworks/kpty 5.64.0 5.65.0 5.66.0: Framework for pseudo terminal devices and running child processes
-kde-frameworks/kquickcharts 5.65.0-r1 5.66.0: QtQuick plugin providing high-performance charts
-kde-frameworks/kross 5.64.0 5.65.0 5.66.0: Framework for embedding scripting into applications
-kde-frameworks/krunner 5.64.0 5.65.0 5.66.0: Framework for providing different actions given a string query
-kde-frameworks/kservice 5.64.0 5.65.0 5.66.0: Advanced plugin and service introspection
-kde-frameworks/ktexteditor 5.64.0 5.65.0 5.66.0: Framework providing a full text editor component
-kde-frameworks/ktextwidgets 5.64.0 5.65.0 5.66.0: Framework providing an assortment of widgets for displaying and editing text
-kde-frameworks/kunitconversion 5.64.0 5.65.0 5.66.0: Framework for converting units
-kde-frameworks/kwallet 5.64.0 5.65.0 5.66.0: Framework providing desktop-wide storage for passwords
-kde-frameworks/kwayland 5.64.0 5.65.0 5.66.0: Qt-style client and server library wrapper for Wayland libraries
-kde-frameworks/kwidgetsaddons 5.64.0 5.65.0 5.66.0: An assortment of high-level widgets for common tasks
-kde-frameworks/kwindowsystem 5.64.0 5.65.0 5.66.0: Framework providing access to properties and features of the window manager
-kde-frameworks/kxmlgui 5.64.0 5.65.0 5.66.0: Framework for managing menu and toolbar actions in an abstract way
-kde-frameworks/kxmlrpcclient 5.64.0 5.65.0 5.66.0: Framework providing client-side support for the XML-RPC protocol
-kde-frameworks/modemmanager-qt 5.64.0 5.65.0 5.66.0: ModemManager bindings for Qt
-kde-frameworks/networkmanager-qt 5.64.0 5.65.0 5.66.0: NetworkManager bindings for Qt
-kde-frameworks/oxygen-icons 5.64.0 5.65.0 5.66.0: Oxygen SVG icon theme
-kde-frameworks/plasma 5.64.0 5.65.0 5.65.0-r1 5.66.0: Plasma framework
-kde-frameworks/prison 5.64.0 5.65.0 5.66.0: QRCode and data matrix barcode library
-kde-frameworks/purpose 5.64.0-r2 5.65.0 5.66.0: Library for providing abstractions to get the developer's purposes fulfilled
-kde-frameworks/qqc2-desktop-style 5.64.0 5.65.0 5.66.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
-kde-frameworks/solid 5.64.0-r1 5.65.0 5.66.0: Provider for platform independent hardware discovery, abstraction and management
-kde-frameworks/sonnet 5.64.0 5.65.0 5.66.0: Framework for providing spell-checking through abstraction of popular backends
-kde-frameworks/syndication 5.64.0 5.65.0 5.66.0: Library for parsing RSS and Atom feeds
-kde-frameworks/syntax-highlighting 5.64.0 5.65.0 5.66.0: Framework for syntax highlighting
-kde-frameworks/threadweaver 5.64.0 5.65.0 5.66.0: Framework for managing threads using job and queue-based interfaces
+kde-frameworks/kfilemetadata 5.64.0 5.66.0: Library for extracting file metadata
+kde-frameworks/kglobalaccel 5.64.0 5.66.0: Framework to handle global shortcuts
+kde-frameworks/kguiaddons 5.64.0 5.66.0: Framework providing assorted high-level user interface components
+kde-frameworks/kholidays 5.64.0 5.66.0: Library to determine holidays and other special events for a geographical region
+kde-frameworks/khtml 5.64.0 5.66.0: KHTML web rendering engine
+kde-frameworks/ki18n 5.64.0 5.66.0: Framework based on Gettext for internationalizing user interface text
+kde-frameworks/kiconthemes 5.64.0 5.66.0: Framework for icon theming and configuration
+kde-frameworks/kidletime 5.64.0 5.66.0: Framework for detection and notification of device idle time
+kde-frameworks/kimageformats 5.64.0 5.66.0: Framework providing additional format plugins for Qt's image I/O system
+kde-frameworks/kinit 5.64.0 5.66.0: Helper library to speed up start of applications on KDE work spaces
+kde-frameworks/kio 5.64.0-r2 5.66.0: Framework providing transparent file and data management
+kde-frameworks/kirigami 5.64.1 5.66.0: Lightweight user interface framework for mobile and convergent applications
+kde-frameworks/kitemmodels 5.64.0 5.66.0: Framework providing data models to help with tasks such as sorting and filtering
+kde-frameworks/kitemviews 5.64.0 5.66.0: Framework providing additional widgets for item models
+kde-frameworks/kjobwidgets 5.64.0 5.66.0: Framework providing assorted widgets for showing the progress of jobs
+kde-frameworks/kjs 5.64.0 5.66.0: ECMAScipt compatible parser and engine
+kde-frameworks/kjsembed 5.64.0 5.66.0: Framework binding JavaScript objects to QObjects
+kde-frameworks/kmediaplayer 5.64.0 5.66.0: Framework providing a common interface for KParts that can play media files
+kde-frameworks/knewstuff 5.64.0 5.66.0: Framework for downloading and sharing additional application data
+kde-frameworks/knotifications 5.64.0 5.66.0: Framework for notifying the user of an event
+kde-frameworks/knotifyconfig 5.64.0 5.66.0: Framework for configuring desktop notifications
+kde-frameworks/kpackage 5.64.0 5.66.0: Framework to install and load packages of non binary content
+kde-frameworks/kparts 5.64.0 5.66.0: Framework providing elaborate user-interface components
+kde-frameworks/kpeople 5.64.0 5.66.0: KDE contact person abstraction library
+kde-frameworks/kplotting 5.64.0 5.66.0: Framework providing easy data-plotting functions
+kde-frameworks/kpty 5.64.0 5.66.0: Framework for pseudo terminal devices and running child processes
+kde-frameworks/kquickcharts 5.66.0: QtQuick plugin providing high-performance charts
+kde-frameworks/kross 5.64.0 5.66.0: Framework for embedding scripting into applications
+kde-frameworks/krunner 5.64.0 5.66.0: Framework for providing different actions given a string query
+kde-frameworks/kservice 5.64.0 5.66.0: Advanced plugin and service introspection
+kde-frameworks/ktexteditor 5.64.0 5.66.0: Framework providing a full text editor component
+kde-frameworks/ktextwidgets 5.64.0 5.66.0: Framework providing an assortment of widgets for displaying and editing text
+kde-frameworks/kunitconversion 5.64.0 5.66.0: Framework for converting units
+kde-frameworks/kwallet 5.64.0 5.66.0: Framework providing desktop-wide storage for passwords
+kde-frameworks/kwayland 5.64.0 5.66.0: Qt-style client and server library wrapper for Wayland libraries
+kde-frameworks/kwidgetsaddons 5.64.0 5.66.0: An assortment of high-level widgets for common tasks
+kde-frameworks/kwindowsystem 5.64.0 5.66.0: Framework providing access to properties and features of the window manager
+kde-frameworks/kxmlgui 5.64.0 5.66.0: Framework for managing menu and toolbar actions in an abstract way
+kde-frameworks/kxmlrpcclient 5.64.0 5.66.0: Framework providing client-side support for the XML-RPC protocol
+kde-frameworks/modemmanager-qt 5.64.0 5.66.0: ModemManager bindings for Qt
+kde-frameworks/networkmanager-qt 5.64.0 5.66.0: NetworkManager bindings for Qt
+kde-frameworks/oxygen-icons 5.64.0 5.66.0: Oxygen SVG icon theme
+kde-frameworks/plasma 5.64.0 5.66.0: Plasma framework
+kde-frameworks/prison 5.64.0 5.66.0: QRCode and data matrix barcode library
+kde-frameworks/purpose 5.64.0-r2 5.66.0: Library for providing abstractions to get the developer's purposes fulfilled
+kde-frameworks/qqc2-desktop-style 5.64.0 5.66.0: Style for QtQuickControls 2 that uses QWidget's QStyle for painting
+kde-frameworks/solid 5.64.0-r1 5.66.0: Provider for platform independent hardware discovery, abstraction and management
+kde-frameworks/sonnet 5.64.0 5.66.0: Framework for providing spell-checking through abstraction of popular backends
+kde-frameworks/syndication 5.64.0 5.66.0: Library for parsing RSS and Atom feeds
+kde-frameworks/syntax-highlighting 5.64.0 5.66.0: Framework for syntax highlighting
+kde-frameworks/threadweaver 5.64.0 5.66.0: Framework for managing threads using job and queue-based interfaces
 kde-misc/basket 2.49b: Multiple information organizer - a DropDrawers clone
 kde-misc/colord-kde 0.5.0-r1: Provides interfaces and session daemon to colord
 kde-misc/gmailfeed 1.1-r1: Plasma 5 applet providing a list of unread emails from your Gmail inbox
@@ -12256,7 +12225,7 @@ kde-misc/latte-dock 0.9.2 0.9.4 0.9.7: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: Thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3-r1: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather forecasts
-kde-misc/plasma-pass 1.0.0 1.1.0: Plasma applet to access password from pass
+kde-misc/plasma-pass 1.1.0: Plasma applet to access password from pass
 kde-misc/plasma-redshift-control 1.0.18-r1: Plasma 5 applet for controlling redshift
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.11: Small utility which bothers you at certain intervals
