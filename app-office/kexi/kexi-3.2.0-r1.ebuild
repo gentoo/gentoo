@@ -1,48 +1,56 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# KDE_HANDBOOK="true"
-KDE_TEST="forceoptional"
-inherit kde5
+# ECM_HANDBOOK="true"
+ECM_TEST="forceoptional"
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm kde.org
 
 DESCRIPTION="Visual database applications creator"
-HOMEPAGE="https://kde.org/applications/office/kexi/ http://www.kexi-project.org/"
-[[ ${KDE_BUILD_TYPE} != live ]] && SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.xz"
+HOMEPAGE="https://kde.org/applications/office/org.kde.kexi http://www.kexi-project.org/
+https://userbase.kde.org/Kexi"
 
-KEYWORDS="amd64 x86"
+if [[ ${KDE_BUILD_TYPE} != live ]]; then
+	SRC_URI="mirror://kde/stable/${PN}/src/${P}.tar.xz"
+	KEYWORDS="amd64 x86"
+fi
+
+LICENSE="GPL-2" # TODO: CHECK
+SLOT="5"
 IUSE="debug experimental marble mdb mysql postgres sqlite webkit"
 
 BDEPEND="sys-devel/gettext"
 DEPEND="
-	$(add_frameworks_dep breeze-icons-rcc)
-	$(add_frameworks_dep karchive)
-	$(add_frameworks_dep kcodecs)
-	$(add_frameworks_dep kcompletion)
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kconfigwidgets)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kcrash)
-	$(add_frameworks_dep kguiaddons)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kiconthemes)
-	$(add_frameworks_dep kio)
-	$(add_frameworks_dep kitemviews)
-	$(add_frameworks_dep ktexteditor)
-	$(add_frameworks_dep ktextwidgets)
-	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep designer)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtprintsupport)
-	$(add_qt_dep qtwidgets)
-	$(add_qt_dep qtxml)
 	>=dev-db/kdb-3.1.0-r1:5=[debug?,mysql?,postgres?,sqlite?]
 	>=dev-libs/kproperty-3.1.0:5=
 	>=dev-libs/kreport-3.1.0:5=[scripting]
-	marble? ( $(add_kdeapps_dep marble) )
+	>=dev-qt/designer-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtnetwork-${QTMIN}:5
+	>=dev-qt/qtprintsupport-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
+	>=kde-frameworks/breeze-icons-rcc-${KFMIN}:5
+	>=kde-frameworks/karchive-${KFMIN}:5
+	>=kde-frameworks/kcodecs-${KFMIN}:5
+	>=kde-frameworks/kcompletion-${KFMIN}:5
+	>=kde-frameworks/kconfig-${KFMIN}:5
+	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/kcrash-${KFMIN}:5
+	>=kde-frameworks/kguiaddons-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kiconthemes-${KFMIN}:5
+	>=kde-frameworks/kio-${KFMIN}:5
+	>=kde-frameworks/kitemviews-${KFMIN}:5
+	>=kde-frameworks/ktexteditor-${KFMIN}:5
+	>=kde-frameworks/ktextwidgets-${KFMIN}:5
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	marble? ( >=kde-apps/marble-19.04.3:5= )
 	mdb? (
 		dev-libs/glib:2
 		virtual/libiconv
@@ -63,11 +71,11 @@ PATCHES=(
 
 src_prepare() {
 	if ! use webkit; then
-		punt_bogus_dep Qt5 WebKit
-		punt_bogus_dep Qt5 WebKitWidgets
+		ecm_punt_bogus_dep Qt5 WebKit
+		ecm_punt_bogus_dep Qt5 WebKitWidgets
 	fi
 
-	kde5_src_prepare
+	ecm_src_prepare
 }
 
 src_configure() {
@@ -82,5 +90,5 @@ src_configure() {
 	)
 	use experimental && mycmakeargs+=( -DKEXI_SCRIPTING_DEBUG=$(usex debug) )
 
-	kde5_src_configure
+	ecm_src_configure
 }
