@@ -1,4 +1,0 @@
-user="clickhouse"
-group="clickhouse"
-logdir="/var/log/clickhouse-server"
-
