@@ -71,9 +71,9 @@ src_install() {
 	local DOCS=( conf/*.templ HISTORY* )
 	einstalldocs
 
-	gunzip -f man/en/*.gz
+	gunzip -f man/en/*.gz || die
 	doman man/en/*.[0-9]
 
-	gunzip -f man/de/*.gz
+	gunzip -f man/de/*.gz || die
 	doman -i18n=de man/de/*.[0-9]
 }
