@@ -1,14 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-single-r1 systemd xdg-utils
+inherit python-single-r1 xdg-utils
 
 DESCRIPTION="Daemon for monitoring and adaptive tuning of system devices"
-HOMEPAGE="https://fedorahosted.org/tuned/"
+HOMEPAGE="https://github.com/redhat-performance/tuned"
 SRC_URI="https://github.com/redhat-performance/tuned/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
@@ -17,7 +17,7 @@ KEYWORDS="~amd64"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-CDEPEND="
+COMMON_DEPEND="
 	${PYTHON_DEPS}
 	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/decorator[${PYTHON_USEDEP}]
@@ -27,14 +27,13 @@ CDEPEND="
 	dev-python/python-linux-procfs[${PYTHON_USEDEP}]"
 
 DEPEND="
-	${CDEPEND}"
+	${COMMON_DEPEND}"
 
 RDEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	sys-apps/dbus
 	sys-apps/ethtool
 	sys-power/powertop
-	sys-process/procps
 	dev-util/systemtap"
 
 RESTRICT="test"
@@ -54,7 +53,7 @@ src_install() {
 	default
 
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
-	python_fix_shebang "${ED}"
+	python_fix_shebang "${D}"
 	python_optimize
 }
 
