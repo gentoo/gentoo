@@ -33,6 +33,15 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-12)
+# libcxxrt is no longer maintained upstream.  It used to be needed to
+# maintain ABI in Gentoo/FreeBSD but that is no longer supported.  Plus,
+# FreeBSD maintains their own fork anyway.  sys-libs/libcxxabi (from
+# LLVM upstream) is the suggested replacement (but it's not ABI
+# compatible!).
+# Removal in 30 days.  Bug #705268.
+sys-libs/libcxxrt
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-12)
 # Backport to Python 2.4 - 2.6.  Not needed by anything.
 # Removal in 30 days.  Bug #705256.
 dev-python/ordereddict
