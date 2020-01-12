@@ -598,7 +598,6 @@ app-emulation/open-vm-tools:resolutionkms - Build the linux/unix resolutionkms m
 app-emulation/open-vm-tools:vgauth - Build vgauth
 app-emulation/pcem:networking - Enable support for emulation of network cards.
 app-emulation/playonlinux:winbind - Enables support for the winbind auth daemon
-app-emulation/protontricks:gui - Enable the graphical user interface (requires gnome-extra/zenity)
 app-emulation/punes:cg - Add support for Nvidia CG Toolkit
 app-emulation/q4wine:ico - Enable ico support via media-gfx/icoutils
 app-emulation/q4wine:iso - Support unprivileged mounting of ISO9660 images via sys-fs/fuseiso
@@ -934,7 +933,6 @@ app-misc/irtrans-irserver:mono - Enable mono support
 app-misc/jq:oniguruma - Use dev-libs/oniguruma for regular expression support
 app-misc/kryoflux-dtc:demos - Install example floppy game files.
 app-misc/kryoflux-dtc:fast-firmware - Install fast firmware instead of slow firmware.
-app-misc/kryoflux-dtc:gui - Install the Kryoflux GUI
 app-misc/lcd4linux:apm - Enable the APM plugin.
 app-misc/lcd4linux:asterisk - Enable the Asterisk plugin.
 app-misc/lcd4linux:button-exec - Enable the Button plugin, to execute something on keypress.
@@ -1079,7 +1077,6 @@ app-office/calligraplan:kwallet - Enable access to encrypted OpenDocument files 
 app-office/glabels:barcode - Enable barcode support through external libraries.
 app-office/gnucash:aqbanking - Connect to some internet banks via AqBanking
 app-office/gnucash:chipcard - Enable support for chipcard reading and processing.
-app-office/gnucash:gui - Enable graphic interface (needs net-libs/webkit-gtk:4 and x11-libs/gtk+:3)
 app-office/gnucash:quotes - Enable Online Stock Quote retrieval
 app-office/gnucash:register2 - Use the new register (Experimental)
 app-office/gnumeric:libgda - Enable database support through gnome-extra/libgda.
@@ -2480,7 +2477,6 @@ dev-perl/PDL:hdf - Enable HDF (version 4) format support
 dev-perl/PDL:netpbm - Enable NETPBM and MPEG support
 dev-perl/PDL:pdl2 - Build pdf2 shell (requires Devel-REPL)
 dev-perl/PDL:pgplot - Enable PGPLOT plotting capabilities
-dev-perl/Panotools-Script:gui - Installs GUIs for some tools
 dev-perl/Ref-Util:xs - Install C-Based dev-perl/Ref-Util-XS for accelerated performance
 dev-perl/Sub-Name:suggested - Install extra dependencies needed for extended regression tests
 dev-perl/Sysadm-Install:hammer - Enable hammer() funtion to run a command in the shell and simulate a user hammering the ENTER key to accept defaults on prompts
@@ -3215,7 +3211,6 @@ games-emulation/mupen64plus-core:osd - Overlay emulator messages using on-screen
 games-emulation/mupen64plus-video-glide64mk2:gles2 - Use GLES2 instead of OpenGL
 games-emulation/mupen64plus-video-glide64mk2:hires - Support hi-resolution textures (requires dev-libs/boost)
 games-emulation/mupen64plus-video-rice:gles2 - Use GLES2 instead of OpenGL
-games-emulation/nestopia:gui - Enable GUI
 games-emulation/pcsxr:archive - Support compressed files (via libarchive)
 games-emulation/pcsxr:ccdda - Support compressed CDDA (requires ffmpeg)
 games-emulation/pcsxr:cdio - Use libcdio for CD support
@@ -4152,7 +4147,6 @@ media-gfx/inkscape:latex - pull in dependencies for LaTeX formulas
 media-gfx/inkscape:svg2 - Enable support for new SVG2 features
 media-gfx/inkscape:visio - Enable support for Microsoft Visio Diagrams via media-libs/libvisio
 media-gfx/inkscape:wpg - Enable support for WordPerfect Graphics via app-text/libwpg
-media-gfx/iscan:gui - Builds gtk-based minimal scan GUI
 media-gfx/iscan-plugin-gt-f500:minimal - Install the firmware only, and not the plugin.
 media-gfx/jpeg2ps:metric - Default to A4 paper size
 media-gfx/kphotoalbum:kipi - Support for the KDE Image Plugin Interface
@@ -4184,7 +4178,6 @@ media-gfx/pstoedit:pptx - Enable support for generating PowerPoint pptx files
 media-gfx/qimgv:video - Add support for gif/webm playback via libmpv
 media-gfx/shotwell:opencv - Enable face detection via media-libs/opencv
 media-gfx/sigal:s3 - Enables support for the Amazon S3 service.
-media-gfx/slic3r:gui - Enable GUI
 media-gfx/ufraw:contrast - enable contrast setting option
 media-gfx/ufraw:fits - Enable support for the FITS image format through sci-libs/cfitsio
 media-gfx/ufraw:timezone - enable DST correction for file timestamps
@@ -4590,7 +4583,6 @@ media-sound/audacity:vamp - Enables vamp plugins support (Audio analysing plugin
 media-sound/audacity:vst - Enable VST plugin support
 media-sound/audiotools:cue - Enable CUE sheet support
 media-sound/audiotools:dvda - Enable DVD-Audio support
-media-sound/audiotools:gui - Enable support for GUI tools
 media-sound/audiotools:twolame - Enable twolame support (MPEG Audio Layer 2 encoder)
 media-sound/beets:badfiles - Validate MP3 & FLAC files
 media-sound/beets:chromaprint - Enable support for acoustic fingerprinting plugin using media-libs/chromaprint
@@ -5080,7 +5072,6 @@ media-video/libav:twolame - Enable MP2 encoding via media-sound/twolame as an al
 media-video/libav:vpx - Enable vp8 encoding support using media-libs/libvpx.
 media-video/libav:x265 - Enable HEVC encoding with media-libs/x265.
 media-video/libva-utils:drm - Enables VA/DRM API support.
-media-video/makemkv:gui - Build the Qt5 GUI
 media-video/mjpegtools:sdlgfx - Enables y4mhist to display a graphical histogram
 media-video/mjpg-streamer:input-control - Plugin giving ability to control camera movement (only specific cameras)
 media-video/mjpg-streamer:input-file - Plugin that watches given directory and send it's content
@@ -5686,7 +5677,6 @@ net-firewall/conntrack-tools:cttimeout - Use net-libs/libnetfilter_cttimeout for
 net-firewall/conntrack-tools:libtirpc - Use net-libs/libtirpc for RPC support
 net-firewall/ebtables:perl - Install the ebtables-save script which uses perl
 net-firewall/firehol:ipset - Use net-firewall/ipset.
-net-firewall/firewalld:gui - Builds and installs GUI configurator and GTK+ applet
 net-firewall/fwknop:client - Build fwknop client
 net-firewall/fwknop:extras - Install utility scripts and AppArmor policy for fwknopd
 net-firewall/fwknop:firewalld - Use net-firewall/firewalld as the default server backend
@@ -6869,7 +6859,6 @@ net-p2p/retroshare:cli - Enables the CLI version of RetroShare
 net-p2p/retroshare:control-socket - Enables API via Unix socket support
 net-p2p/retroshare:feedreader - Enables the Feedreader plugin
 net-p2p/retroshare:gnome-keyring - Enables potentially insecure autologin capability via Gnome Keyring
-net-p2p/retroshare:gui - Enables the GUI version of RetroShare
 net-p2p/retroshare:jsonapi - Enables the new RetroShare JSON API
 net-p2p/retroshare:service - Enables the new RetroShare service controllable only through JSON API
 net-p2p/retroshare:sqlcipher - Enables GXS database encryption via SQLCipher
@@ -7304,7 +7293,6 @@ sci-geosciences/gmt:gmttria - Non GNU triangulation method, more efficient
 sci-geosciences/gmt:metric - Use SI (cm) units instead of US (inches) ones
 sci-geosciences/gmt:mex - Enable compilation of mex supplement which requires Octave/Matlab
 sci-geosciences/gmt:octave - Enable octave support
-sci-geosciences/gpsbabel:gui - Enable the graphical user interface (requires dev-qt/qtwebengine)
 sci-geosciences/gpsd:dbus - export gpsd data over dbus connections
 sci-geosciences/gpsd:latency-timing - support latency timing information
 sci-geosciences/gpsd:ntp - Enable net-misc/ntp shared memory interface and PPS kernel support for GPS time
@@ -7631,7 +7619,6 @@ sci-mathematics/normaliz:extras - Install sci-mathematics/Macaulay2 and sci-math
 sci-mathematics/nusmv:minisat - Enable support for MiniSat
 sci-mathematics/nusmv:zchaff - Enable support for zChaff
 sci-mathematics/octave:glpk - Add support for sci-mathematics/glpk for linear programming
-sci-mathematics/octave:gui - Enable the graphical user interface
 sci-mathematics/octave:openssl - Use dev-libs/openssl for low level hash functions
 sci-mathematics/octave:qhull - Add support for media-libs/qhull, to allow `delaunay', `convhull', and related functions
 sci-mathematics/octave:qrupdate - Add support for sci-libs/qrupdatefor QR and Cholesky update functions
@@ -7666,7 +7653,6 @@ sci-mathematics/why3-for-spark:hypothesis-selection - Enable hypothesis selectio
 sci-mathematics/why3-for-spark:profiling - Enable profiling
 sci-mathematics/why3-for-spark:zarith - Use dev-ml/zarith
 sci-mathematics/why3-for-spark:zip - Enable compression of session files
-sci-mathematics/yacas:gui - Build graphical interface for the native yacas engine. Requires Qt5
 sci-mathematics/yacas:jupyter - Add support for jupyter notebook
 sci-mathematics/yafu:sieve - Use msieve for the sieving steps of NFS
 sci-mathematics/z3:isabelle - Add integration support for the Isabelle/HOL theorem prover.
@@ -7796,7 +7782,6 @@ sys-apps/dbus-broker:launcher - dbus-daemon compatibility launcher
 sys-apps/debianutils:installkernel - Install /sbin/installkernel script (for Linux). installkernel is required whenever a kernel will be installed via make install
 sys-apps/duc:X - Use X11 for the GUI instead of OpenGL. This is the recommended option
 sys-apps/duc:cairo - Build support for exporting to PNG and PDF with x11-libs/cairo
-sys-apps/duc:gui - Build support for a graphical client
 sys-apps/duc:leveldb - Use dev-libs/leveldb as the backend
 sys-apps/duc:ncurses - Build support for the ncurses client
 sys-apps/duc:sqlite - Use dev-db/sqlite:3 as the backend
