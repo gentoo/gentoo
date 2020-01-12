@@ -42,7 +42,10 @@ RDEPEND="${COMMON_DEPEND}
 	x11-misc/colord
 "
 
-PATCHES=( "${WORKDIR}/${P}-patches" )
+PATCHES=(
+	"${WORKDIR}/${P}-patches"
+	"${FILESDIR}/${P}-icon.patch"
+)
 
 pkg_postinst() {
 	ecm_pkg_postinst
