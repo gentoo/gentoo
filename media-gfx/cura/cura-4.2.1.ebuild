@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit cmake-utils desktop python-single-r1 xdg
+inherit cmake desktop python-single-r1 xdg
 
 MY_PN=Cura
 
@@ -36,18 +36,18 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_prepare() {
 	sed -i "s/set(CURA_VERSION \"master\"/set(CURA_VERSION \"${PV}\"/" CMakeLists.txt || die
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		-DPYTHON_SITE_PACKAGES_DIR="$(python_get_sitedir)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	doicon icons/*.png
 	python_optimize "${D}${get_libdir}"
 }
