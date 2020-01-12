@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -57,6 +57,6 @@ python_prepare_all() {
 
 python_test() {
 	testr init
-	testr run || die "testsuite failed under python2.7"
+	testr run || die "testsuite failed under ${EPYTHON}"
 	flake8 tests && einfo "run flake8 over tests folder passed" || die
 }
