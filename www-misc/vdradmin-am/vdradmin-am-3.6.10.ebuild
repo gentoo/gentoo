@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -61,16 +61,16 @@ src_prepare() {
 	default
 
 	sed -i vdradmind.pl \
-		-e "s-FILES_IN_SYSTEM    = 0;-FILES_IN_SYSTEM    = 1;-g"
+		-e "s-FILES_IN_SYSTEM    = 0;-FILES_IN_SYSTEM    = 1;-g" || die
 
 	if use ipv6; then
 		sed -e "s:/usr/bin/vdradmind:/usr/bin/vdradmind --ipv6:" \
-			-i "${WORKDIR}"/vdradmind.service
+			-i "${WORKDIR}"/vdradmind.service || die
 	fi
 
 	if use ssl; then
 		sed -e "s:/usr/bin/vdradmind:/usr/bin/vdradmind --ssl:" \
-			-i "${WORKDIR}"/vdradmind.service
+			-i "${WORKDIR}"/vdradmind.service || die
 	fi
 }
 
