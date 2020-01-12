@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-12)
+# Merged into dev-util/kdevelop months ago, unusable standalone
+# Removal in 10 days.
+dev-util/kdevelop-clang-tidy
+
 # Anthony G. Basile <blueness@gentoo.org> (2020-01-11)
 # Awaiting a fix from upstream, bug #705038
 =net-libs/mbedtls-2.18.1
