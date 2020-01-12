@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86"
+	KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86"
 fi
 
 DESCRIPTION="portmap replacement which supports RPC over various protocols"
@@ -25,6 +25,7 @@ CDEPEND=">=net-libs/libtirpc-0.2.3:=
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )"
 DEPEND="${CDEPEND}
+	net-libs/libnsl
 	sys-fs/quota[rpc]
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
