@@ -15,7 +15,6 @@ SRC_URI="https://dl.discordapp.net/apps/linux/${PV}/${MY_PN}-${PV}.deb"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="pax_kernel"
 RESTRICT="mirror bindist"
 
 RDEPEND="
@@ -77,7 +76,7 @@ src_install() {
 	fperms +x /opt/${MY_PN}/${MY_BIN}
 	dosym ../../opt/${MY_PN}/${MY_BIN} usr/bin/${MY_PN}
 
-	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/${MY_PN}
+	pax-mark -m "${ED%/}"/opt/${MY_PN}/${MY_PN}
 }
 
 pkg_postinst() {
