@@ -1,43 +1,50 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-KDE_HANDBOOK="true"
-inherit kde5
+ECM_HANDBOOK="true"
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm kde.org
 
 DESCRIPTION="Video player plugin for Konqueror and basic MPlayer frontend"
-HOMEPAGE="https://kmplayer.kde.org"
-SRC_URI="mirror://kde/stable/${PN}/${EGIT_BRANCH}/${P}.tar.bz2"
+HOMEPAGE="https://kmplayer.kde.org
+https://kde.org/applications/multimedia/org.kde.kmplayer"
+
+if [[ ${KDE_BUILD_TYPE} = release ]]; then
+	SRC_URI="mirror://kde/stable/${PN}/$(ver_cut 1-2)/${P}.tar.bz2"
+	KEYWORDS="amd64 x86"
+fi
 
 LICENSE="GPL-2 FDL-1.2 LGPL-2.1"
-KEYWORDS="amd64 x86"
+SLOT="5"
 IUSE="cairo npp"
 
 BDEPEND="
 	sys-devel/gettext
 "
 DEPEND="
-	$(add_frameworks_dep kbookmarks)
-	$(add_frameworks_dep kcompletion)
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kconfigwidgets)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kdelibs4support)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kiconthemes)
-	$(add_frameworks_dep kio)
-	$(add_frameworks_dep kmediaplayer)
-	$(add_frameworks_dep kparts)
-	$(add_frameworks_dep ktextwidgets)
-	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep qtdbus)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtsvg)
-	$(add_qt_dep qtwidgets)
-	$(add_qt_dep qtx11extras)
-	$(add_qt_dep qtxml)
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtsvg-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtx11extras-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
+	>=kde-frameworks/kbookmarks-${KFMIN}:5
+	>=kde-frameworks/kcompletion-${KFMIN}:5
+	>=kde-frameworks/kconfig-${KFMIN}:5
+	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/kdelibs4support-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kiconthemes-${KFMIN}:5
+	>=kde-frameworks/kio-${KFMIN}:5
+	>=kde-frameworks/kmediaplayer-${KFMIN}:5
+	>=kde-frameworks/kparts-${KFMIN}:5
+	>=kde-frameworks/ktextwidgets-${KFMIN}:5
+	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	media-libs/phonon[qt5(+)]
 	x11-libs/libX11
 	x11-libs/libxcb
@@ -66,7 +73,7 @@ PATCHES=(
 src_prepare() {
 	# Prerequisite for ${P}-desktop.patch:
 	mv src/kmplayer.desktop src/org.kde.kmplayer.desktop || die
-	kde5_src_prepare
+	ecm_src_prepare
 
 	if use npp; then
 		sed -i src/kmplayer_part.desktop \
@@ -82,17 +89,17 @@ src_configure() {
 		-DKMPLAYER_BUILT_WITH_NPP=$(usex npp)
 	)
 
-	kde5_src_configure
+	ecm_src_configure
 }
 
 src_install() {
-	kde5_src_install
+	ecm_src_install
 
 	if use npp; then
 		kwriteconfig5 --file "${ED}/usr/share/config/kmplayerrc" \
 			--group "application/x-shockwave-flash" --key player npp
 		kwriteconfig5 --file "${ED}/usr/share/config/kmplayerrc" \
 			--group "application/x-shockwave-flash" \
-			--key plugin /usr/$(get_libdir)/nsbrowser/plugins/libflashplayer.so
+			--key plugin /usr/lib/nsbrowser/plugins/libflashplayer.so
 	fi
 }
