@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,18 +13,18 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 LICENSE="LGPL-2.1+ GPL-2+"
 SLOT="0"
 KEYWORDS="amd64 arm ~ppc x86"
-IUSE="X png unicode xv"
+IUSE="gui png unicode xv"
 RESTRICT="test"
 
 RDEPEND="
-	X? ( x11-libs/libX11
+	gui? ( x11-libs/libX11
 		x11-libs/libXext
 		xv? ( x11-libs/libXv ) )
 	png? ( >=media-libs/libpng-1.2:0= )"
 
 DEPEND="${RDEPEND}
 	>=app-text/texi2html-5
-	X? ( x11-base/xorg-proto )"
+	gui? ( x11-base/xorg-proto )"
 
 S="${WORKDIR}/${PN}"
 
@@ -45,7 +45,7 @@ src_configure() {
 		--prefix=/usr \
 		--mandir=/usr/share/man \
 		--cc="$(tc-getCC)" \
-		$(use_enable X x11) \
+		$(use_enable gui x11) \
 		$(use_enable png) \
 		$(use_enable xv) || die
 }
