@@ -115,6 +115,8 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/kdeplasma-addons-5.15.80
 "
 
+PATCHES=( "${FILESDIR}"/${P}-revert-activities-jagginess.patch )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package fontconfig Fontconfig)

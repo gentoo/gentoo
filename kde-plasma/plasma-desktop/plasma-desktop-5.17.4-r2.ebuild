@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -115,10 +115,7 @@ RDEPEND="${COMMON_DEPEND}
 	!<kde-plasma/kdeplasma-addons-5.15.80
 "
 
-PATCHES=(
-	"${FILESDIR}"/${P}-activities-kcm-hidpi.patch
-	"${FILESDIR}"/${P}-pager-regression.patch
-)
+PATCHES=( "${FILESDIR}"/${P}-pager-regression.patch )
 
 src_configure() {
 	local mycmakeargs=(

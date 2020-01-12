@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 export CBUILD=${CBUILD:-${CHOST}}
 export CTARGET=${CTARGET:-${CHOST}}
@@ -10,8 +10,6 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 		export CTARGET=${CATEGORY#cross-}
 	fi
 fi
-
-WANT_AUTOMAKE="1.15"
 
 inherit autotools flag-o-matic eutils
 
@@ -22,6 +20,7 @@ SRC_URI="mirror://sourceforge/mingw-w64/mingw-w64/mingw-w64-release/mingw-w64-v$
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+# USE=libraries needs working stage2 compiler: bug #665512
 IUSE="headers-only idl libraries tools"
 RESTRICT="strip"
 
@@ -54,6 +53,12 @@ pkg_setup() {
 
 src_configure() {
 	CHOST=${CTARGET} strip-unsupported-flags
+	# Normally mingw-64 does not use dynamic linker.
+	# But at configure time it uses $LDFLAGS.
+	# When default -Wl,--hash-style=gnu is passed
+	# __CTORS_LIST__ / __DTORS_LIST__ is mis-detected
+	# for target ld and binaries crash at shutdown.
+	filter-ldflags '-Wl,--hash-style=*'
 
 	if ! just_headers; then
 		mkdir "${WORKDIR}/headers"
@@ -70,9 +75,11 @@ src_configure() {
 	# By default configure tries to set --sysroot=${prefix}. We disable
 	# this behaviour with --with-sysroot=no to use gcc's sysroot default.
 	# That way we can cross-build mingw64-runtime with cross-emerge.
+	local prefix="${EPREFIX}"$(alt_prefix)/usr
 	CHOST=${CTARGET} econf \
 		--with-sysroot=no \
-		--prefix="${EPREFIX}"$(alt_prefix)/usr \
+		--prefix="${prefix}" \
+		--libdir="${prefix}"/lib \
 		--with-headers \
 		--enable-sdk \
 		$(crt_with crt) \

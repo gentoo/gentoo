@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,8 @@ QT5_TARGET_SUBDIRS=(
 QT5_GENTOO_CONFIG=(
 	cups
 )
+
+PATCHES=( "${FILESDIR}/${P}-no-cups.patch" ) # bug #704936, QTBUG-80945
 
 src_configure() {
 	local myconf=(
