@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python{2_7,3_6} )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 git-r3 systemd
+inherit bash-completion-r1 distutils-r1 git-r3 systemd
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
 HOMEPAGE="https://www.fail2ban.org/"
@@ -67,6 +67,9 @@ python_install_all() {
 	newins files/${PN}-logrotate ${PN}
 
 	keepdir /var/lib/${PN}
+
+	newbashcomp files/bash-completion ${PN}-client
+	bashcomp_alias ${PN}-client ${PN}-server ${PN}-regex
 }
 
 pkg_preinst() {
