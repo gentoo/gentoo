@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,8 +29,6 @@ ruby_add_bdepend "test? (
 	dev-ruby/erubis
 	dev-ruby/nokogiri
 	!!<dev-ruby/maruku-0.7.2 )"
-
-ruby_add_rdepend "!!<dev-ruby/tilt-1.4.1-r2:0"
 
 all_ruby_prepare() {
 	rm Gemfile || die
