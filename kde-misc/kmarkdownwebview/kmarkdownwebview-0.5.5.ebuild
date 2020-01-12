@@ -1,31 +1,34 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit kde5
+KFMIN=5.60.0
+QTMIN=5.12.3
+inherit ecm kde.org
 
 DESCRIPTION="KPart for rendering Markdown content"
-HOMEPAGE="https://frinring.wordpress.com/2017/09/14/kmarkdownwebview-0-1-0/"
+HOMEPAGE="https://kde.org/applications/utilities/org.kde.kmarkdownwebviewpart"
 SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="!webkit? ( BSD ) LGPL-2.1+"
+SLOT="5"
 KEYWORDS="amd64"
 IUSE="webkit"
 
 DEPEND="
-	$(add_frameworks_dep kconfigwidgets)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kio)
-	$(add_frameworks_dep kparts)
-	$(add_frameworks_dep kxmlgui)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtwidgets)
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
+	>=kde-frameworks/kcoreaddons-${KFMIN}:5
+	>=kde-frameworks/ki18n-${KFMIN}:5
+	>=kde-frameworks/kio-${KFMIN}:5
+	>=kde-frameworks/kparts-${KFMIN}:5
+	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	webkit? ( >=dev-qt/qtwebkit-5.212.0_pre20180120:5 )
 	!webkit? (
-		$(add_qt_dep qtwebchannel)
-		$(add_qt_dep qtwebengine 'widgets')
+		>=dev-qt/qtwebchannel-${QTMIN}:5
+		>=dev-qt/qtwebengine-${QTMIN}:5[widgets]
 	)
 "
 RDEPEND="${DEPEND}"
@@ -35,5 +38,5 @@ src_configure() {
 		-DUSE_QTWEBKIT=$(usex webkit)
 	)
 
-	kde5_src_configure
+	ecm_src_configure
 }
