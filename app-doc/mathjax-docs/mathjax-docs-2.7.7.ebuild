@@ -15,6 +15,8 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
+DEPEND="dev-python/sphinx"
+
 S=${WORKDIR}/MathJax-docs-${COMMIT}
 
 src_prepare() {
