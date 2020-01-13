@@ -12,6 +12,11 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
-RDEPEND="dev-python/pikepdf[${PYTHON_USEDEP}]"
+RDEPEND="dev-python/pikepdf[${PYTHON_USEDEP}]
+	dev-python/pygobject[${PYTHON_USEDEP},cairo]
+	dev-python/pycairo[${PYTHON_USEDEP}]
+	x11-libs/gtk+:3[introspection]
+	x11-libs/pango[introspection]
+	app-text/poppler[introspection]"
 DEPEND="${RDEPEND}
 	dev-python/python-distutils-extra[${PYTHON_USEDEP}]"
