@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..7} )
 
-inherit distutils-r1
+inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Python bindings for Enlightenment Foundation Libraries"
 HOMEPAGE="https://phab.enlightenment.org/w/projects/python_bindings_for_efl/"
@@ -46,6 +46,12 @@ src_prepare() {
 
 	# Make tests verbose
 	sed -i 's:verbosity=1:verbosity=3:' tests/00_run_all_tests.py || die
+
+	# Disable any optimization on x86, #704260
+	if use x86; then
+		filter-flags -O?
+		append-cflags -O0
+	fi
 }
 
 python_compile_all() {
