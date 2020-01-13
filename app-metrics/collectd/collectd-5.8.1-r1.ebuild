@@ -11,7 +11,7 @@ inherit autotools fcaps flag-o-matic java-pkg-opt-2 linux-info multilib perl-fun
 DESCRIPTION="Collects system statistics and provides mechanisms to store the values"
 
 HOMEPAGE="https://collectd.org/"
-SRC_URI="${HOMEPAGE%/}/files/${P}.tar.bz2"
+SRC_URI="https://collectd.org/files/${P}.tar.bz2"
 
 LICENSE="MIT GPL-2 GPL-2+ GPL-3 GPL-3+"
 SLOT="0"
