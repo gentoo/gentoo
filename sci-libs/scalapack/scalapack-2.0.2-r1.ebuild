@@ -7,7 +7,7 @@ inherit cmake-utils fortran-2
 
 DESCRIPTION="Subset of LAPACK routines redesigned for heterogenous (MPI) computing"
 HOMEPAGE="https://www.netlib.org/scalapack/"
-SRC_URI="${HOMEPAGE}/${P}.tgz"
+SRC_URI="https://www.netlib.org/scalapack/${P}.tgz"
 
 LICENSE="BSD"
 SLOT="0"
