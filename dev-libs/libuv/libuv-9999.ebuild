@@ -6,7 +6,7 @@ inherit autotools git-r3 multilib-minimal
 
 DESCRIPTION="Cross-platform asychronous I/O"
 HOMEPAGE="https://github.com/libuv/libuv"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/libuv/libuv"
 
 LICENSE="BSD BSD-2 ISC MIT"
 SLOT="0/1"
