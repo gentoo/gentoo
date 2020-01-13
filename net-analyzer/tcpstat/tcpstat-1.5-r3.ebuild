@@ -6,7 +6,7 @@ inherit autotools flag-o-matic
 
 DESCRIPTION="Reports network interface statistics"
 HOMEPAGE="https://www.frenchfries.net/paul/tcpstat/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="https://www.frenchfries.net/paul/tcpstat/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
