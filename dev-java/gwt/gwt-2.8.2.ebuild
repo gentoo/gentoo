@@ -51,6 +51,11 @@ EANT_GENTOO_CLASSPATH="
 		validation-api-1.0
 "
 
+src_prepare() {
+	eapply "${FILESDIR}"/${P}-build-system.patch
+	java-pkg-2_src_prepare
+}
+
 src_compile() {
 	GWT_TOOLS="${WORKDIR}/${GWT_TOOLS_PN}-${GWT_TOOLS_COMMIT}" \
 		GWT_VERSION="${PV}" \
