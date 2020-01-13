@@ -6,7 +6,7 @@ inherit toolchain-funcs flag-o-matic
 
 DESCRIPTION="Automatic algebraic manipulator"
 HOMEPAGE="http://www.mathomatic.org/"
-SRC_URI="${HOMEPAGE}/archive/${P}.tar.bz2"
+SRC_URI="http://www.mathomatic.org/archive/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
