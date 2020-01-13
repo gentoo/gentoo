@@ -6,7 +6,7 @@ inherit autotools git-r3
 
 DESCRIPTION="A small utility for fast and easy GUI building"
 HOMEPAGE="https://github.com/oshazard/gtkdialog"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/oshazard/gtkdialog"
 
 LICENSE="GPL-2"
 SLOT="0"
