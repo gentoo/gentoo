@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/glensc/nagios-plugin-check_raid"
 #COMMIT=""
 MY_PV="${COMMIT:-$PV}"
 MY_P="${PN}-${MY_PV}"
-SRC_URI="${HOMEPAGE}/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/glensc/nagios-plugin-check_raid/archive/${MY_PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
