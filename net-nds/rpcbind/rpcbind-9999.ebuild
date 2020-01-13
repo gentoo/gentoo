@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic systemd
+inherit systemd
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://linux-nfs.org/~steved/rpcbind.git"
@@ -25,8 +25,6 @@ CDEPEND=">=net-libs/libtirpc-0.2.3:=
 	systemd? ( sys-apps/systemd:= )
 	tcpd? ( sys-apps/tcp-wrappers )"
 DEPEND="${CDEPEND}
-	net-libs/libnsl
-	sys-fs/quota[rpc]
 	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-rpcbind )"
@@ -48,9 +46,9 @@ src_configure() {
 		$(use_enable tcpd libwrap)
 	)
 
-	# Allow configure to find /usr/include/rpc/rpc.h in rpcsvc/mount.h
-	# https://bugs.gentoo.org/665222
-	append-cppflags "$($(tc-getPKG_CONFIG) --cflags libtirpc)"
+	# Avoid using rpcsvc headers
+	# https://bugs.gentoo.org/705224
+	export ac_cv_header_rpcsvc_mount_h=no
 
 	econf "${myeconfargs[@]}"
 }

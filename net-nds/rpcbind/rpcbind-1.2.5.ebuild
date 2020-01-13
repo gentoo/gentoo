@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -45,6 +45,11 @@ src_configure() {
 		$(use_enable warmstarts)
 		$(use_enable tcpd libwrap)
 	)
+
+	# Avoid using rpcsvc headers
+	# https://bugs.gentoo.org/705224
+	export ac_cv_header_rpcsvc_mount_h=no
+
 	econf "${myeconfargs[@]}"
 }
 
