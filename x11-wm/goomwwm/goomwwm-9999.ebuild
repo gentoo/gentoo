@@ -6,7 +6,7 @@ inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Get out of my way, Window Manager!"
 HOMEPAGE="https://github.com/seanpringle/goomwwm"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/seanpringle/goomwwm"
 
 LICENSE="MIT"
 SLOT="0"
