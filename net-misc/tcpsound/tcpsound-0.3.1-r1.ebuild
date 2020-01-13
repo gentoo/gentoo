@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 DESCRIPTION="Play sounds in response to network traffic"
 LICENSE="BSD"
 HOMEPAGE="http://www.ioplex.com/~miallen/tcpsound/"
-SRC_URI="${HOMEPAGE}dl/${P}.tar.gz"
+SRC_URI="http://www.ioplex.com/~miallen/tcpsound/dl/${P}.tar.gz"
 SLOT="0"
 KEYWORDS="amd64 x86"
 
