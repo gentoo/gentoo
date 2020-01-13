@@ -6,7 +6,7 @@ inherit eutils git-r3
 
 DESCRIPTION="Window Manager From Scratch, A tiling window manager highly configurable"
 HOMEPAGE="https://github.com/xorg62/wmfs"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/xorg62/wmfs"
 
 LICENSE="BSD"
 SLOT="0"
