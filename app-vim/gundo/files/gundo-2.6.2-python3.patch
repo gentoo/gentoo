@@ -1,0 +1,13 @@
+Force defaulting to python3.
+
+--- sjl-gundo.vim-6918f8da3839/autoload/gundo.vim
++++ sjl-gundo.vim-6918f8da3839/autoload/gundo.vim
+@@ -44,7 +44,7 @@
+     let g:gundo_close_on_revert = 0
+ endif"}}}
+ if !exists("g:gundo_prefer_python3")"{{{
+-    let g:gundo_prefer_python3 = 0
++    let g:gundo_prefer_python3 = 1
+ endif"}}}
+ if !exists("g:gundo_auto_preview")"{{{
+     let g:gundo_auto_preview = 1
