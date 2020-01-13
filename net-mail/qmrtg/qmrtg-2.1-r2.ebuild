@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="A tool to analyze qmail activity with the goal to graph everything through MRTG"
 HOMEPAGE="http://dev.publicshout.org/qmrtg"
-SRC_URI="${HOMEPAGE}/download/${P}.tar.gz"
+SRC_URI="http://dev.publicshout.org/qmrtg/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
