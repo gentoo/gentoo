@@ -6,7 +6,7 @@ inherit autotools git-r3
 
 DESCRIPTION="Digital Forensics XML"
 HOMEPAGE="https://github.com/simsong/dfxml"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/simsong/dfxml"
 
 LICENSE="LGPL-3"
 SLOT="0"
