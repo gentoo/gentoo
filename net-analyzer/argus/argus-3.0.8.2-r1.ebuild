@@ -6,7 +6,7 @@ inherit autotools eutils user
 
 DESCRIPTION="network Audit Record Generation and Utilization System"
 HOMEPAGE="https://www.qosient.com/argus/"
-SRC_URI="${HOMEPAGE}dev/${P/_rc/.rc.}.tar.gz"
+SRC_URI="https://www.qosient.com/argus/dev/${P/_rc/.rc.}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
