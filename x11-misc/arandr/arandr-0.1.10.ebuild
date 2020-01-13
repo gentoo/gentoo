@@ -7,7 +7,7 @@ inherit distutils-r1
 
 DESCRIPTION="Another XRandR GUI"
 HOMEPAGE="https://christian.amsuess.com/tools/arandr/"
-SRC_URI="${HOMEPAGE}/files/${P}.tar.gz"
+SRC_URI="https://christian.amsuess.com/tools/arandr/files/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
