@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="A simple and lightweight interface to the CGI for C and C++ programs"
 HOMEPAGE="http://www.infodrom.org/projects/cgilib/"
-SRC_URI="${HOMEPAGE}download/${P}.tar.gz"
+SRC_URI="http://www.infodrom.org/projects/cgilib/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
