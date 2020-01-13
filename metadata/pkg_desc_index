@@ -2942,7 +2942,7 @@ app-vim/vimoutliner 0.3.6-r1 0.3.6-r2 0.4.0_p20180301-r1: Vim plugin for easy an
 app-vim/vimpress 3.2.0: vim plugin: manage wordpress blogs from vim
 app-vim/vimpython 1.13-r2: vim plugin: A set of menus/shortcuts to work with Python files
 app-vim/vimtex 20180324-r1 99999999: vim plugin: a modern vim plugin for editing LaTeX files
-app-vim/voom 5.1 5.1-r1: vim plugin: emulates a two-pane text outliner
+app-vim/voom 5.1 5.1-r1 5.3: vim plugin: emulates a two-pane text outliner
 app-vim/webapi 0.3: vim plugin: interface to Web APIs
 app-vim/wikipedia-syntax 20101113-r1: vim plugin: Wikipedia syntax highlighting
 app-vim/xquery-syntax 0.1-r2: vim plugin: XQuery syntax highlighting
