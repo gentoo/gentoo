@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/stumpwm/stumpwm-contrib/"
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://github.com/stumpwm/stumpwm-contrib/"
 else
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 	KEYWORDS="~amd64 ~x86"
