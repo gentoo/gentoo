@@ -7,7 +7,7 @@ inherit toolchain-funcs
 DESCRIPTION="displays a count and a graph of the traffic over a specified network connection"
 LICENSE="GPL-2"
 HOMEPAGE="http://www.xs4all.nl/~rsmith/software/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="http://www.xs4all.nl/~rsmith/software/${P}.tar.gz"
 
 SLOT="0"
 KEYWORDS="amd64 ppc ppc64 sparc x86"
