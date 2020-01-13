@@ -7508,7 +7508,7 @@ dev-python/bcolz 1.1.2: Provides columnar and compressed data containers
 dev-python/bcrypt 3.1.6 3.1.7-r2: Modern password hashing for software and servers
 dev-python/beagle 0.2.1: Command line client for Hound, the code search tool.
 dev-python/beaker 1.8.1: A Session and Caching library with WSGI Middleware
-dev-python/beautifulsoup 3.2.1-r1 4.5.1 4.6.3 4.8.1: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
+dev-python/beautifulsoup 3.2.1-r1 4.5.1 4.6.3 4.8.1 4.8.2: Pythonic idioms for iterating, searching, and modifying an HTML/XML parse tree
 dev-python/bert 2.0.0 2.2.0: BERT Serialization Library
 dev-python/betamax 0.8.0 0.8.1: python-requests HTTP exchanges recorder
 dev-python/bibtexparser 0.6.2 1.1.0: A BibTeX parser written in python
@@ -7587,7 +7587,7 @@ dev-python/cmd2 0.7.9 0.8.9 0.9.22 0.9.23: Extra features for standard library's
 dev-python/colander 1.3.1: A simple schema-based serialization and deserialization library
 dev-python/collectd-rabbitmq 1.19.0-r1: Collectd plugin to gather statistics from RabbitMQ
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
-dev-python/colorama 0.3.3 0.3.9 0.3.9-r1 0.4.0 0.4.1: ANSI escape character sequences for colored terminal text & cursor positioning
+dev-python/colorama 0.3.3 0.3.9 0.3.9-r1 0.4.0 0.4.1 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0 2.2.0-r1: Colorful worry-free console applications for multiple platforms
 dev-python/coloredlogs 6.1: Colored stream handler for the logging module
 dev-python/colorful 0.4.1: Terminal string styling done right in Python
@@ -7714,7 +7714,7 @@ dev-python/dns-lexicon 3.1.6 3.3.4: Manipulate DNS records on various DNS provid
 dev-python/dnslib 0.9.6: Simple library to encode/decode DNS wire-format packets
 dev-python/dnspython 1.15.0-r1 1.16.0 1.16.0-r1: DNS toolkit for Python
 dev-python/doc8 0.6.0: Style checker for Sphinx (or other) RST documentation
-dev-python/docker-py 2.7.0 3.6.0 3.7.1 3.7.3: Python client for Docker
+dev-python/docker-py 2.7.0 3.6.0 3.7.1 3.7.3 4.1.0: Python client for Docker
 dev-python/docker-pycreds 0.2.1 0.2.3 0.3.0 0.4.0: Python bindings for the docker credentials store API
 dev-python/dockerpty 0.4.1: Python library to use the pseudo-tty of a docker container
 dev-python/docopt 0.6.2-r2 0.6.2-r3: Pythonic argument parser, that will make you smile
