@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="Littlewood-Richardson Calculator"
 HOMEPAGE="https://sites.math.rutgers.edu/~asbuch/lrcalc/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="https://sites.math.rutgers.edu/~asbuch/lrcalc/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0/1"
