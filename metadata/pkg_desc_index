@@ -1236,7 +1236,7 @@ app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.0: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gnome-latex 3.28.1: Integrated LaTeX environment for GNOME
 app-editors/gummi 0.6.6-r2 0.8.0: Simple LaTeX editor for GTK+ users
-app-editors/gvim 8.1.1486 8.1.1846 8.2.0055 9999: GUI version of the Vim text editor
+app-editors/gvim 8.1.1486 8.1.1846 8.2.0055 8.2.0114 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
 app-editors/hexedit 1.2.13: View and edit files in hex or ASCII
 app-editors/hteditor 2.1.0 2.1.0-r1: A file viewer, editor and analyzer for text, binary, and executable files
@@ -1282,8 +1282,8 @@ app-editors/ted 2.23: X-based rich text editor
 app-editors/texworks 0.6.3: A simple interface for working with TeX documents
 app-editors/uemacs-pk 4.0.15_p20180117 4.0.15_p20180719: uEmacs/PK is an enhanced version of MicroEMACS
 app-editors/vile 9.8t: VI Like Emacs -- yet another full-featured vi clone
-app-editors/vim 8.1.1486 8.1.1846 8.2.0055 9999: Vim, an improved vi-style text editor
-app-editors/vim-core 8.1.1486 8.1.1846 8.2.0055 9999: vim and gvim shared files
+app-editors/vim 8.1.1486 8.1.1846 8.2.0055 8.2.0114 9999: Vim, an improved vi-style text editor
+app-editors/vim-core 8.1.1486 8.1.1846 8.2.0055 8.2.0114 9999: vim and gvim shared files
 app-editors/vis 0.5 9999: modern, legacy free, simple yet efficient vim-like editor
 app-editors/wily 1.0-r2: An emulation of ACME, Plan9's hybrid window system, shell and editor
 app-editors/wxhexeditor 0.24: A cross-platform hex editor designed specially for large files
@@ -16018,7 +16018,7 @@ sci-chemistry/viewmol 2.4.1-r3: Open-source graphical front end for computationa
 sci-chemistry/vmd 1.9.2 1.9.3 1.9.3-r1 1.9.3-r2: Visual Molecular Dynamics
 sci-chemistry/votca-csg 1.4 1.4.1 1.5 1.5.1 1.6_rc1 9999: Votca coarse-graining engine
 sci-chemistry/votca-csgapps 1.4 1.4.1 1.5 1.5.1 1.6_rc1 9999: Extra applications for votca-csg
-sci-chemistry/votca-ctp 1.5 1.5.1 9999: Votca charge transport module
+sci-chemistry/votca-ctp 1.5 1.5.1: Votca charge transport module
 sci-chemistry/votca-xtp 1.4 1.4.1 1.5 1.5.1 1.6_rc1 9999: Votca excitation and charge properties module
 sci-chemistry/wxmacmolplt 7.5-r1: Chemical 3D graphics program with GAMESS input builder
 sci-chemistry/xds-bin 20170930: Software for processing single-crystal X-ray monochromatic diffraction data
