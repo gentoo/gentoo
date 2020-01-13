@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Tool designed to protect LAN IP adress space by ARP spoofing"
 HOMEPAGE="http://ipguard.deep.perm.ru/"
-SRC_URI="${HOMEPAGE}files/${P}.tar.gz"
+SRC_URI="http://ipguard.deep.perm.ru/files/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
