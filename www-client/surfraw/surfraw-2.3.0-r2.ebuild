@@ -6,7 +6,7 @@ inherit autotools bash-completion-r1
 
 DESCRIPTION="A fast unix command line interface to WWW"
 HOMEPAGE="https://gitlab.com/surfraw/Surfraw"
-SRC_URI="${HOMEPAGE}/-/archive/${P}/${PN^}-${P}.tar.bz2"
+SRC_URI="https://gitlab.com/surfraw/Surfraw/-/archive/${P}/${PN^}-${P}.tar.bz2"
 SLOT="0"
 LICENSE="public-domain"
 KEYWORDS="~amd64 ~hppa ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
