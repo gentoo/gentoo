@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Mass IP port scanner"
 HOMEPAGE="https://github.com/robertdavidgraham/masscan"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/robertdavidgraham/masscan/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="AGPL-3"
