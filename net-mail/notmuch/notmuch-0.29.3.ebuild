@@ -11,8 +11,8 @@ inherit bash-completion-r1 elisp-common eutils flag-o-matic pax-utils \
 
 DESCRIPTION="Thread-based e-mail indexer, supporting quick search and tagging"
 HOMEPAGE="https://notmuchmail.org/"
-SRC_URI="${HOMEPAGE%/}/releases/${P}.tar.xz
-	test? ( ${HOMEPAGE%/}/releases/test-databases/database-v1.tar.xz )"
+SRC_URI="https://notmuchmail.org/releases/${P}.tar.xz
+	test? ( https://notmuchmail.org/releases/test-databases/database-v1.tar.xz )"
 
 LICENSE="GPL-3"
 # Sub-slot corresponds to major wersion of libnotmuch.so.X.Y.  Bump of Y is
