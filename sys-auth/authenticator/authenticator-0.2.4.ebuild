@@ -12,7 +12,7 @@ HOMEPAGE="https://gitlab.gnome.org/World/Authenticator"
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://gitlab.gnome.org/World/Authenticator"
 else
 	SRC_URI="https://gitlab.gnome.org/World/Authenticator/-/archive/${PV}/Authenticator-${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Authenticator-${PV}"
