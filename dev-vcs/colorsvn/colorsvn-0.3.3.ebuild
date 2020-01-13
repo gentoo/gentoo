@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Subversion output colorizer"
 HOMEPAGE="http://colorsvn.tigris.org"
-SRC_URI="${HOMEPAGE}/files/documents/4414/49311/${P}.tar.gz"
+SRC_URI="http://colorsvn.tigris.org/files/documents/4414/49311/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
