@@ -31,7 +31,10 @@ DEPEND="
 	x11-libs/xcb-util-xrm
 	alsa? ( media-libs/alsa-lib )
 	curl? ( net-misc/curl )
-	i3wm? ( dev-libs/jsoncpp )
+	i3wm? (
+		dev-libs/jsoncpp
+		|| ( x11-wm/i3 x11-wm/i3-gaps )
+	)
 	mpd? ( media-libs/libmpdclient )
 	network? ( net-wireless/wireless-tools )
 	pulseaudio? ( media-sound/pulseaudio )
