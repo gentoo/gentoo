@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-lang/ocaml"
+DEPEND=">=dev-lang/ocaml-4.09.0
+	>=dev-ml/findlib-1.8.1"
 RDEPEND="${DEPEND}"
 BDEPEND="${DEPEND}"
 
