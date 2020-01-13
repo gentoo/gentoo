@@ -9,7 +9,7 @@ PID="631e85bcf877c2dcaca9b2e6d6526339"
 
 DESCRIPTION="Adaptive Entropy Coding library"
 HOMEPAGE="https://gitlab.dkrz.de/k202009/libaec"
-SRC_URI="${HOMEPAGE}/uploads/${PID}/${P}.tar.gz"
+SRC_URI="https://gitlab.dkrz.de/k202009/libaec/uploads/${PID}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/2"
