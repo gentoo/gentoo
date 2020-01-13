@@ -447,7 +447,7 @@ _distutils_verify_use_setuptools() {
 		# as a special case, setuptools provides itself ;-)
 		:
 	elif grep -E -q -s '(from|import)\s+setuptools' setup.py; then
-		if grep -E -q -s 'entry_points\s+=' setup.py; then
+		if grep -E -q -s 'entry_points\s*=' setup.py; then
 			expected=rdepend
 		else
 			expected=bdepend
