@@ -10,7 +10,7 @@ inherit python-r1 autotools-utils
 
 DESCRIPTION="Non-linear optimization library"
 HOMEPAGE="http://ab-initio.mit.edu/nlopt/"
-SRC_URI="${HOMEPAGE}/${P}.tar.gz"
+SRC_URI="http://ab-initio.mit.edu/nlopt/${P}.tar.gz"
 
 LICENSE="LGPL-2.1 MIT"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
