@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="sqlite"
 
 DISTUTILS_SINGLE_IMPL=1
@@ -50,7 +50,7 @@ python_configure_all() {
 }
 
 python_test_all() {
-	# GRAMPS builds just fine out of tree but it confuses its test suite.
+	# Gramps builds just fine out of tree but it confuses its test suite.
 	# The following might be an ugly hack but at least it lets the tests
 	# run properly until either I or upstream have come up with something
 	# better.
