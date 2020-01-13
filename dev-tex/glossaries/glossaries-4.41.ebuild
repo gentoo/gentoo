@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit latex-package
 
@@ -18,7 +18,7 @@ RDEPEND="dev-lang/perl
 	dev-texlive/texlive-latexrecommended
 	>=dev-texlive/texlive-latexextra-2012
 	dev-texlive/texlive-plaingeneric"
-DEPEND="${RDEPEND}
+BDEPEND="${RDEPEND}
 	app-arch/unzip"
 
 TEXMF="/usr/share/texmf-site"
