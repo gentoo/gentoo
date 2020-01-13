@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,5 +25,5 @@ src_prepare() {
 	default
 
 	# remove unwanted files
-	rm -r t Gemfile Rakefile LICENSE README* || die
+	rm -r t Gemfile Rakefile LICENSE README* .travis.yml .gitignore || die
 }
