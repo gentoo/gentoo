@@ -2056,7 +2056,7 @@ app-misc/golly 3.2 3.3: simulator for Conway's Game of Life and other cellular a
 app-misc/goobook 3.4: Access your Google contacts from the command line
 app-misc/gourmet 0.17.4-r2: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
-app-misc/gramps 5.0.1 5.0.2 5.1.1: Genealogical Research and Analysis Management Programming System
+app-misc/gramps 5.0.1 5.1.1 5.1.2: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 1.0.2: Contains the lowlevel lcd drivers for GraphLCD
 app-misc/grc 1.11-r1: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
@@ -8693,6 +8693,7 @@ dev-python/python-utils 2.3.0: Collection of small Python functions & classes
 dev-python/python-varlink 29.0.2: Python implementation of the Varlink protocol
 dev-python/python-wpactrl 20081102-r1: A Python extension for wpa_supplicant/hostapd control interface access
 dev-python/python-xlib 0.15_rc1-r2 0.19 0.23 0.23-r1: A fully functional X client library for Python, written in Python
+dev-python/python-xmp-toolkit 2.0.1: Library for working with XMP metadata
 dev-python/python-yadis 1.1.0-r2: Yadis service discovery library
 dev-python/python-zaqarclient 1.2.0 1.11.0: A client for the OpenStack Zaqar API
 dev-python/python-zipstream 1.1.4: A zip archive generator
