@@ -9656,7 +9656,7 @@ dev-ruby/contracts 0.16.0: provides contracts for Ruby
 dev-ruby/coolio 1.5.3 1.5.4: A high performance event framework for Ruby which uses the libev C library
 dev-ruby/countdownlatch 1.0.0-r1: Synchronization aid to allow threads to wait for operations in other threads
 dev-ruby/crack 0.4.3-r2: Really simple JSON and XML parsing, ripped from Merb and Rails
-dev-ruby/crass 1.0.4 1.0.5: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
+dev-ruby/crass 1.0.4 1.0.5 1.0.6: Ruby CSS parser that's fully compliant with the CSS Syntax Level 3 specification
 dev-ruby/creole 0.5.0: Creole-to-HTML converter for Creole, the lightweight markup language
 dev-ruby/cri 2.15.5 2.15.6 2.15.7 2.15.9: Cri is a library for building easy-to-use commandline tools
 dev-ruby/css_parser 1.6.0 1.7.0 1.7.1: Sass-based Stylesheet Framework
@@ -9674,8 +9674,8 @@ dev-ruby/ddmetrics 1.0.1: Non-timeseries measurements for Ruby programs
 dev-ruby/ddplugin 1.0.2: Provides plugin management for Ruby projects
 dev-ruby/debug_inspector 0.0.3: A Ruby wrapper for the MRI 2.0 debug_inspector API
 dev-ruby/deep_merge 1.2.1: A simple set of utility functions for Hash
-dev-ruby/delayer 0.0.2 1.0.0 1.1.1: Delay the processing
-dev-ruby/delayer-deferred 2.0.0 2.1.0 2.1.1: Ruby implementation of JSDeferred
+dev-ruby/delayer 0.0.2 1.0.0 1.1.1 1.1.2: Delay the processing
+dev-ruby/delayer-deferred 2.0.0 2.1.0 2.1.1 2.1.3: Ruby implementation of JSDeferred
 dev-ruby/dependor 1.0.1: Reduces duplication when doing manual dependency injection
 dev-ruby/deprecated 3.0.1-r2: A Ruby library for handling deprecated code
 dev-ruby/descendants_tracker 0.0.4: Module that adds descendant tracking to a class
@@ -9772,7 +9772,7 @@ dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response pa
 dev-ruby/httparty 0.17.1 0.17.3: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
-dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.0.1-r1 1.6.0 1.7.0 1.7.1 1.8.0 1.8.1: Add Internationalization support to your Ruby application
+dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.0.1-r1 1.6.0 1.7.0 1.7.1 1.8.0 1.8.1 1.8.2: Add Internationalization support to your Ruby application
 dev-ruby/ice_nine 0.11.2: Deep Freeze Ruby Objects
 dev-ruby/idn-ruby 0.1.0: LibIDN Ruby Bindings
 dev-ruby/image_processing 1.9.3 1.10.0: High-level image processing helper methods with libvips and ImageMagick
@@ -14274,7 +14274,7 @@ net-analyzer/masscan 1.0.4 1.0.5: Mass IP port scanner
 net-analyzer/mbrowse 0.4.3 0.4.3-r1: MBrowse is a graphical MIB browser
 net-analyzer/mdns-scan 0.5: a tool for scanning for mDNS/DNS-SD published services
 net-analyzer/metasploit 4.17.21-r6 9999: Advanced framework for developing, testing, and using vulnerability exploit code
-net-analyzer/mk-livestatus 1.2.8_p10 1.2.8_p16 1.2.8_p26: Nagios/Icinga event broker that allows quick/direct access to your status data
+net-analyzer/mk-livestatus 1.2.8_p10 1.2.8_p16 1.2.8_p26 1.5.0_p22: Nagios/Icinga event broker that allows quick/direct access to your status data
 net-analyzer/monitoring-plugins 2.2-r2 2.2-r3 2.2-r4: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.7: A tool to monitor the traffic load on network-links
