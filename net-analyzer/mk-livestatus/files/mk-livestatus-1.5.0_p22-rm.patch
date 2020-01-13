@@ -1,0 +1,10 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -201,7 +201,6 @@
+ install-data-local:
+ 	$(mkinstalldirs) $(DESTDIR)$(pkglibdir)
+ 	$(INSTALL_PROGRAM) livestatus.o $(DESTDIR)$(pkglibdir)
+-	rm -f $(DESTDIR)$(pkglibdir)/liblivestatus.a
+ 
+ clean-local:
+ 	rm -rf *~ compile_commands.json cppcheck-result.xml html
