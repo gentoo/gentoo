@@ -9,7 +9,7 @@ inherit cmake-utils
 
 DESCRIPTION="SteelSeries Sensei Raw configuration tool"
 HOMEPAGE="https://git.janouch.name/p/sensei-raw-ctl"
-SRC_URI="${HOMEPAGE}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://git.janouch.name/p/sensei-raw-ctl/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
