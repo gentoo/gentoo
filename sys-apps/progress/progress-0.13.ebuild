@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Coreutils Viewer: show progress for cp, rm, dd, and so forth"
 HOMEPAGE="https://github.com/Xfennec/progress"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Xfennec/progress/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
