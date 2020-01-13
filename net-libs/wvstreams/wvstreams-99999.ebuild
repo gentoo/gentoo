@@ -7,7 +7,7 @@ inherit autotools flag-o-matic git-r3 multiprocessing toolchain-funcs out-of-sou
 
 DESCRIPTION="A network programming library in C++"
 HOMEPAGE="https://github.com/apenwarr/wvstreams"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/apenwarr/wvstreams"
 
 LICENSE="GPL-2"
 SLOT="0/5.0"
