@@ -8,7 +8,7 @@ inherit multilib multiprocessing python-single-r1
 
 DESCRIPTION="Smaller, easier, more powerful, and more reliable than make"
 HOMEPAGE="https://github.com/apenwarr/redo"
-SRC_URI="${HOMEPAGE}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/apenwarr/redo/archive/${P}.tar.gz"
 
 LICENSE="LGPL-2"
 SLOT="0"
