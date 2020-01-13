@@ -7,7 +7,7 @@ inherit eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="A packet filter and firewall log analyzer"
 HOMEPAGE="http://fwlogwatch.inside-security.de/"
-SRC_URI="${HOMEPAGE}sw/${P}.tar.bz2"
+SRC_URI="http://fwlogwatch.inside-security.de/sw/${P}.tar.bz2"
 
 KEYWORDS="amd64 ~ppc sparc x86"
 LICENSE="GPL-1"
