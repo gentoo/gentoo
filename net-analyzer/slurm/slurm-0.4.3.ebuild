@@ -6,7 +6,7 @@ inherit cmake-utils
 
 DESCRIPTION="Realtime network interface monitor based on FreeBSD's pppstatus"
 HOMEPAGE="https://github.com/mattthias/slurm"
-SRC_URI="${HOMEPAGE}/archive/upstream/${PN}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mattthias/slurm/archive/upstream/${PN}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
