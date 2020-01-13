@@ -7,7 +7,7 @@ inherit distutils-r1 git-r3 qmake-utils toolchain-funcs
 
 DESCRIPTION="Static analyzer of C/C++ code"
 HOMEPAGE="https://github.com/danmar/cppcheck"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/danmar/cppcheck"
 
 LICENSE="GPL-3+"
 SLOT="0"
