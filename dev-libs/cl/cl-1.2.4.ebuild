@@ -6,7 +6,7 @@ inherit eutils multilib
 
 DESCRIPTION="OpenCL bindings for Erlang"
 HOMEPAGE="https://github.com/tonyrog/cl"
-SRC_URI="${HOMEPAGE}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/tonyrog/cl/archive/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
