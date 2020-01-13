@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit readme.gentoo-r1 cmake flag-o-matic udev user xdg
+inherit readme.gentoo-r1 cmake flag-o-matic toolchain-funcs udev user xdg
 
 DESCRIPTION="Utility for advanced configuration of Roccat devices"
 
@@ -84,8 +84,9 @@ src_prepare() {
 
 src_configure() {
 	if has_version \>=x11-libs/pango-1.44.0 ; then
-		# Fix build with pango-1.44
-		append-cflags "$(pkg-config --cflags harfbuzz)"
+		# Fix build with pango-1.44 which depends on harfbuzz
+		local PKGCONF="$(tc-getPKG_CONFIG)"
+		append-cflags "$(${PKGCONF} --cflags harfbuzz)"
 	fi
 
 	mycmakeargs=(
@@ -118,10 +119,6 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
 pkg_postinst() {
 	xdg_pkg_postinst
 	readme.gentoo_print_elog
@@ -129,8 +126,4 @@ pkg_postinst() {
 	ewarn "This version breaks stored data for some devices. Before reporting bugs please delete"
 	ewarn "affected folder(s) in /var/lib/roccat"
 	ewarn
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
 }
