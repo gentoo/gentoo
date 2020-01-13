@@ -7431,7 +7431,7 @@ dev-python/aiohttp-socks 0.2.2: SOCKS proxy connector for aiohttp
 dev-python/aiorpcX 0.10.2 0.17.0 0.18.3: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.0 1.1 1.2: asyncio based SMTP server
 dev-python/aiotest 0.3: Test suite for an implementation of asyncio (PEP 3156)
-dev-python/alabaster 0.7.9 0.7.10 0.7.11: A configurable sidebar-enabled Sphinx theme
+dev-python/alabaster 0.7.9 0.7.10 0.7.11 0.7.12: A configurable sidebar-enabled Sphinx theme
 dev-python/alagitpull 0.0.23: alabaster sub-theme used on git-pull docs
 dev-python/aldryn-boilerplates 0.7.5: Allows re-usable apps to provide sets of templates and staticfiles
 dev-python/aldryn-common 1.0.4: django CMS plugins with common utilities
