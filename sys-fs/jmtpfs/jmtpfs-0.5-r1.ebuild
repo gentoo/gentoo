@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="A FUSE and libmtp based filesystem for accessing MTP devices"
 HOMEPAGE="https://github.com/JasonFerrara/jmtpfs"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/JasonFerrara/jmtpfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
