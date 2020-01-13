@@ -6,7 +6,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="tool for checking router configuration"
 HOMEPAGE="http://packetfactory.openwall.net/projects/egressor/"
-SRC_URI="${HOMEPAGE}${PN}_release${PV}.tar.gz"
+SRC_URI="http://packetfactory.openwall.net/projects/egressor/${PN}_release${PV}.tar.gz"
 
 LICENSE="egressor"
 SLOT="0"
