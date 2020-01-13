@@ -152,7 +152,6 @@ app-dicts/sword-est
 app-dicts/sword-family
 app-dicts/sword-finpr92
 app-dicts/sword-frecrl
-app-dicts/sword-geneva
 app-dicts/sword-hebmodern
 app-dicts/sword-hunuj
 app-dicts/sword-icelandic
