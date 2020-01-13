@@ -6,7 +6,7 @@ inherit autotools user
 
 DESCRIPTION="Play sounds on remote Unix systems without data transfer"
 HOMEPAGE="http://rplay.doit.org/"
-SRC_URI="${HOMEPAGE}dist/${P}.tar.gz
+SRC_URI="http://rplay.doit.org/dist/${P}.tar.gz
 	mirror://debian/pool/main/r/${PN}/${PN}_${PV}-16.debian.tar.xz"
 
 LICENSE="GPL-2"
