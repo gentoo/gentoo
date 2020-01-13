@@ -1515,7 +1515,7 @@ app-emulation/diskimage-builder 2.32.0 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 18.09.9 19.03.4 19.03.5: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
-app-emulation/docker-compose 1.24.0 1.24.1 1.25.0-r1: Multi-container orchestration for Docker
+app-emulation/docker-compose 1.24.0 1.24.1 1.25.0-r1 1.25.1: Multi-container orchestration for Docker
 app-emulation/docker-credential-helpers 0.6.0 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.13.0: Machine management for a container-centric world
@@ -4777,6 +4777,7 @@ dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
 dev-libs/boost 1.71.0 1.72.0: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
 dev-libs/botan 1.10.17-r2 2.9.0 2.11.0: A C++ crypto library
+dev-libs/boxfort 0.0.1_pre20200110: Convenient & cross-platform sandboxing C library
 dev-libs/busybee 0.7.0: A messaging abstraction on top of TCP sockets used in HyperDex
 dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
@@ -4798,7 +4799,7 @@ dev-libs/confuse 3.0 3.2.2: a configuration file parser library
 dev-libs/console_bridge 0.4.3 0.4.4 9999: A ROS-independent package for logging into rosconsole/rosout
 dev-libs/cppcodec 0.2 9999: C++11 library to encode/decode base64, base64url, base32, base32hex and hex
 dev-libs/crc32c 1.0.6: CRC32C implementation with support for CPU-specific acceleration instructions
-dev-libs/criterion 2.3.3: Cross platform unit testing framework for C and C++
+dev-libs/criterion 2.3.3 2.4_pre20200110: Cross platform unit testing framework for C and C++
 dev-libs/crossguid 0_pre20150817: Lightweight cross platform C++ GUID/UUID library
 dev-libs/crypto++ 5.6.5-r1 7.0.0-r3 8.2.0 8.2.0-r2: C++ class library of cryptographic schemes
 dev-libs/cudnn 6.0 7.0.5-r1 7.1.4 7.4.1.5 7.4.2.24 7.5.0.56 7.6.0.64 7.6.1.34 7.6.2.24 7.6.5.32: NVIDIA Accelerated Deep Learning on GPU library
@@ -5137,7 +5138,7 @@ dev-libs/opencl-clang 8.0.1_p20191001-r1: OpenCL-oriented thin wrapper library a
 dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
-dev-libs/opensc 0.19.0-r2: Libraries and applications to access smartcards
+dev-libs/opensc 0.19.0-r2 0.20.0: Libraries and applications to access smartcards
 dev-libs/openspecfun 0.5.1: A collection of special mathematical functions
 dev-libs/openssl 1.0.2u 1.1.0l 1.1.1d-r3: full-strength general purpose cryptography library (including SSL and TLS)
 dev-libs/openssl-compat 0.9.8z_p8-r1 1.0.2u: full-strength general purpose cryptography library (including SSL and TLS)
@@ -17602,7 +17603,7 @@ sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 4.19.94 5.4.10 5.4.11: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 4.19.94 5.4.10 5.4.11: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.4.207 4.4.208 4.4.209 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.9.208 4.9.209 4.14.143 4.14.156 4.14.159 4.14.161 4.14.162 4.14.163 4.14.164 4.19.72 4.19.86 4.19.92 4.19.93 4.19.94 4.19.95 5.3.18 5.4.6 5.4.7 5.4.8 5.4.10 5.4.11: Full sources including the Gentoo patchset for the 5.4 kernel tree
+sys-kernel/gentoo-sources 4.4.192 4.4.199 4.4.203 4.4.205 4.4.206 4.4.207 4.4.208 4.4.209 4.9.192 4.9.199 4.9.203 4.9.205 4.9.206 4.9.208 4.9.209 4.14.143 4.14.156 4.14.159 4.14.161 4.14.162 4.14.163 4.14.164 4.19.72 4.19.86 4.19.92 4.19.93 4.19.94 4.19.95 5.4.6 5.4.7 5.4.8 5.4.10 5.4.11: Full sources including the Gentoo patchset for the 5.4 kernel tree
 sys-kernel/git-sources 5.5_rc1 5.5_rc2 5.5_rc3 5.5_rc4 5.5_rc5 5.5_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -19095,7 +19096,7 @@ x11-wm/e16 1.0.20 1.0.21: Enlightenment Window Manager (E16)
 x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/enlightenment 0.22.4-r1 0.23.1: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
-x11-wm/fluxbox 1.3.7-r4 9999: X11 window manager featuring tabs and an iconbar
+x11-wm/fluxbox 1.3.7-r4: X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r3 2.6.8-r2: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 9999: A manual tiling window manager for X
