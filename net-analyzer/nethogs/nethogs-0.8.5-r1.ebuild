@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A small 'net top' tool, grouping bandwidth by process"
 HOMEPAGE="https://github.com/raboof/nethogs"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/raboof/nethogs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
