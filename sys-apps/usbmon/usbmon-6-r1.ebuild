@@ -7,7 +7,7 @@ inherit toolchain-funcs eutils
 
 DESCRIPTION="Userland for USB monitoring framework"
 HOMEPAGE="https://people.redhat.com/zaitcev/linux/"
-SRC_URI="${HOMEPAGE}/${P}.tar.gz"
+SRC_URI="https://people.redhat.com/zaitcev/linux/${P}.tar.gz"
 
 LICENSE="GPL-2" # GPL-2 only
 SLOT="0"
