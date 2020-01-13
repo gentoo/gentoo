@@ -7,7 +7,7 @@ inherit distutils-r1
 
 DESCRIPTION="Note Taking made Simple, an intuitive note taking application"
 HOMEPAGE="http://www.duke.edu/~dgraham/NTS/"
-SRC_URI="${HOMEPAGE}/${P}.tar.gz"
+SRC_URI="http://www.duke.edu/~dgraham/NTS/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
