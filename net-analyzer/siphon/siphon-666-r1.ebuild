@@ -8,7 +8,7 @@ MY_P=${PN}-v.${PV}
 
 DESCRIPTION="A portable passive network mapping suite"
 HOMEPAGE="http://siphon.datanerds.net/"
-SRC_URI="${HOMEPAGE}${MY_P}.tar.gz"
+SRC_URI="http://siphon.datanerds.net/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
