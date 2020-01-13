@@ -9,7 +9,7 @@ MY_P=HepPDT-${PV}
 
 DESCRIPTION="Data about each particle from the Review of Particle Properties"
 HOMEPAGE="http://lcgapp.cern.ch/project/simu/HepPDT/"
-SRC_URI="${HOMEPAGE}/download/${MY_P}.tar.gz"
+SRC_URI="http://lcgapp.cern.ch/project/simu/HepPDT/download/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
