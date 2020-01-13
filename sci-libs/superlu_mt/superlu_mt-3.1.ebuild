@@ -10,7 +10,7 @@ SOVERSION=$(get_major_version)
 
 DESCRIPTION="Multithreaded sparse LU factorization library"
 HOMEPAGE="http://crd.lbl.gov/~xiaoye/SuperLU/"
-SRC_URI="${HOMEPAGE}/${PN}_${PV}.tar.gz"
+SRC_URI="http://crd.lbl.gov/~xiaoye/SuperLU/${PN}_${PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${SOVERSION}"
