@@ -7,7 +7,7 @@ inherit toolchain-funcs
 SSHASH="cbc89a71a61fd2d164c3fdc3ef4d3fa809c1741a"
 DESCRIPTION="lightweight EWMH window switcher with features and looks of dmenu"
 HOMEPAGE="https://github.com/seanpringle/simpleswitcher"
-SRC_URI="${HOMEPAGE}/archive/${SSHASH}.tar.gz -> ${P}-${SSHASH}.tar.gz"
+SRC_URI="https://github.com/seanpringle/simpleswitcher/archive/${SSHASH}.tar.gz -> ${P}-${SSHASH}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
