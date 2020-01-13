@@ -7,4 +7,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=http://dev.publicshout.org/qmrtg/download/qmrtg-2.1.tar.gz
-_md5_=75224294fee82107212c6de43133d057
+_md5_=b9ab83b1ed214b71d19ec46c592ebc85

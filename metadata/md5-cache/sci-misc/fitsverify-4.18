@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
 RDEPEND=sci-libs/cfitsio:0=
 SLOT=0
-SRC_URI=https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify//fitsverify-4.18.tar.gz
+SRC_URI=https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/fitsverify-4.18.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=9c00933b9aa80593417ef31b136f7f2b
+_md5_=925da643b576bc9d25a0070538d614b1

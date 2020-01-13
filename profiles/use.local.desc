@@ -168,7 +168,6 @@ app-admin/salt:openssl - Add support for using TLS via OpenSSL.
 app-admin/salt:portage - Add support for package state enforcement using sys-apps/portage
 app-admin/salt:raet - Add support for the new RAET transport.
 app-admin/salt:redis - Support returning data to a redis database.
-app-admin/salt:timelib - Use timelib to parse english textual date descriptions.
 app-admin/salt:zeromq - Add support for the zeromq transport.
 app-admin/sudo:gcrypt - Use message digest functions from dev-libs/libgcrypt instead of sudo's
 app-admin/sudo:libressl - Use message digest functions from dev-libs/libressl instead of sudo's

@@ -7,5 +7,5 @@ KEYWORDS=alpha amd64 arm hppa ppc ppc64 x86
 LICENSE=GPL-2
 RESTRICT=binchecks strip
 SLOT=0
-SRC_URI=http://freepats.opensrc.org//freepats-20060219.tar.bz2
-_md5_=d40f5a3bd99bb1bc7a91a107993daadb
+SRC_URI=http://freepats.opensrc.org/freepats-20060219.tar.bz2
+_md5_=dc79f2e8ce00327183fdaa075c9448b6

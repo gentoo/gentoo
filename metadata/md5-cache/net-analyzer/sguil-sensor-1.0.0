@@ -8,4 +8,4 @@ RDEPEND=>=dev-lang/tcl-8.3:0=[-threads] >=dev-tcltk/tclx-8.3 >=net-analyzer/barn
 SLOT=0
 SRC_URI=https://github.com/bammv/sguil/archive/v1.0.0.tar.gz -> sguil-1.0.0.tar.gz
 _eclasses_=user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=c2f8b22ce168a59223689e56f158d46d
+_md5_=e203ffa7fee0715d08bc589792e99ce0
