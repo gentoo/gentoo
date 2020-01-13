@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="FITS file format checker"
 HOMEPAGE="https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/"
-SRC_URI="${HOMEPAGE}/${P}.tar.gz"
+SRC_URI="https://heasarc.gsfc.nasa.gov/docs/software/ftools/fitsverify/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
