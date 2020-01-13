@@ -17274,7 +17274,7 @@ sys-boot/systemd-boot 241 243: UEFI boot manager from systemd (formerly gummiboo
 sys-boot/tboot 1.9.6_p20171118: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015-r1 2018 2018-r1: Tianocore UEFI Development kit
 sys-boot/unetbootin 661 661-r1 675: UNetbootin installs Linux/BSD distributions to a partition or USB drive
-sys-boot/vboot-utils 59_p20170413 72_p20181229-r1: Chrome OS verified boot tools
+sys-boot/vboot-utils 72_p20181229-r1 80_p20200108: Chrome OS verified boot tools
 sys-boot/woeusb 3.3.0: Creates windows installer on usb media from an iso image
 sys-boot/yaboot 1.3.14-r2 1.3.16 1.3.17-r2 1.3.17-r3: PPC Bootloader
 sys-boot/yaboot-static 1.3.14-r1 1.3.16-r1 1.3.17-r1: Static yaboot ppc boot loader for machines with open firmware
