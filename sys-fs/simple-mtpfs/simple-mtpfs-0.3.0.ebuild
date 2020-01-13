@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Simple MTP fuse filesystem driver"
 HOMEPAGE="https://github.com/phatina/simple-mtpfs"
-SRC_URI="${HOMEPAGE}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/phatina/simple-mtpfs/archive/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
