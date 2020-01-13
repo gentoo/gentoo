@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Scan for subdomains using bruteforcing techniques"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/dnsmap"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/resurrecting-open-source-projects/dnsmap/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
