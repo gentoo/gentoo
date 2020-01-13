@@ -31,7 +31,7 @@ LICENSE="
 	OFL-1.1
 	PSF-2
 "
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm x86"
 SLOT="0"
 IUSE="ios +udisks"
 
@@ -45,7 +45,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/icu-57.1:=
 	dev-libs/libinput:=
 	>=dev-python/apsw-3.25.2_p1[${PYTHON_USEDEP}]
-	>=dev-python/beautifulsoup-3.0.5:python-2[${PYTHON_USEDEP}]
+	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	>=dev-python/chardet-3.0.3[${PYTHON_USEDEP}]
 	>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
 	>=dev-python/css-parser-1.0.4[${PYTHON_USEDEP}]
@@ -54,7 +54,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=sys-apps/dbus-1.10.8
 	dev-python/dnspython[${PYTHON_USEDEP}]
 	>=dev-python/feedparser-5.2.1[${PYTHON_USEDEP}]
-	>=dev-python/html5-parser-0.4.3[${PYTHON_USEDEP}]
+	>=dev-python/html5-parser-0.4.9[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/markdown-3.0.1[${PYTHON_USEDEP}]
 	>=dev-python/mechanize-0.3.5[${PYTHON_USEDEP}]
@@ -144,13 +144,6 @@ src_prepare() {
 '-e', 's|^LFLAGS .*|\\\\\\\\0 ${LDFLAGS}|', \
 '-i', 'Makefile'])" \
 		-i setup/build.py || die "sed failed to patch build.py"
-
-	# use system beautifulsoup, instead of bundled
-	rm -f "${S}"/src/calibre/ebooks/BeautifulSoup.py \
-		|| die "could not remove bundled beautifulsoup"
-	find "${S}" -type f -name \*.py -exec \
-		sed -e 's/calibre.ebooks.BeautifulSoup/BeautifulSoup/' -i {} + \
-		|| die "could not sed bundled beautifulsoup out of the source tree"
 }
 
 src_install() {
