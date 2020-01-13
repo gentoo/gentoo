@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="A monitoring tool for networked computers"
 HOMEPAGE="http://www.ant.uni-bremen.de/whomes/rinas/sinfo/"
-SRC_URI="${HOMEPAGE}download/${P}.tar.gz"
+SRC_URI="http://www.ant.uni-bremen.de/whomes/rinas/sinfo/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
