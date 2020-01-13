@@ -1,0 +1,11 @@
+--- R-3.6.2-orig/src/unix/Makefile.in	2019-03-29 10:02:31.000000000 +1100
++++ R-3.6.2/src/unix/Makefile.in	2020-01-13 22:39:14.506804106 +1100
+@@ -79,7 +79,7 @@
+ 	  -e "s:@rincludedir:$(rincludedir):" \
+ 	  -e "s:@rarch:$(R_ARCH):" \
+ 	  -e 's:@libsprivate:$(STATIC_LIBR_PC):' \
+-	  -e 's:@others:$(MAIN_LDFLAGS) $(LDFLAGS):' \
++	  -e 's:@others:$(MAIN_LDFLAGS):' \
+ 	  -e 's/@VERSION/$(VERSION)/' $(srcdir)/libR.pc.in \
+ 	  > "$(DESTDIR)$(libdir)/pkgconfig/libR.pc"
+ 
