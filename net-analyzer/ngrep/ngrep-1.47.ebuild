@@ -6,7 +6,7 @@ inherit autotools user
 
 DESCRIPTION="A grep for network layers"
 HOMEPAGE="https://github.com/jpr5/ngrep"
-SRC_URI="${HOMEPAGE}/archive/V${PV/./_}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/jpr5/ngrep/archive/V${PV/./_}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="ngrep"
 SLOT="0"
