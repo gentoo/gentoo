@@ -16,7 +16,7 @@ else
 	EGIT_COMMIT="54db57d5d1b2a7b93319053011802888b827a539"
 	inherit vcs-snapshot
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-	SRC_URI="${HOMEPAGE}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/dmlc/dmlc-core/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="Apache-2.0"

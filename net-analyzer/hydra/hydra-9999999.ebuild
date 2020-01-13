@@ -6,7 +6,7 @@ inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://github.com/vanhauser-thc/thc-hydra"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/vanhauser-thc/thc-hydra"
 
 LICENSE="GPL-3"
 SLOT="0"

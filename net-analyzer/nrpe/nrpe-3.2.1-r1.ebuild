@@ -6,7 +6,7 @@ inherit systemd user
 
 DESCRIPTION="Nagios Remote Plugin Executor"
 HOMEPAGE="https://github.com/NagiosEnterprises/nrpe"
-SRC_URI="${HOMEPAGE}/releases/download/${P}/${P}.tar.gz"
+SRC_URI="https://github.com/NagiosEnterprises/nrpe/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

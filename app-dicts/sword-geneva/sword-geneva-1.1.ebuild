@@ -8,6 +8,5 @@ inherit sword-module
 
 DESCRIPTION="Geneva Bible Translation Notes"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Geneva"
-LICENSE="all-rights-reserved"
+LICENSE="public-domain"
 KEYWORDS="~amd64 ~ppc ~x86"
-RESTRICT="mirror bindist"

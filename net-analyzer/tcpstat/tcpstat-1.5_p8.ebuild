@@ -7,7 +7,7 @@ inherit autotools flag-o-matic
 DESCRIPTION="Reports network interface statistics"
 HOMEPAGE="https://www.frenchfries.net/paul/tcpstat/"
 SRC_URI="
-	${HOMEPAGE}${P/_p*}.tar.gz
+	https://www.frenchfries.net/paul/tcpstat/${P/_p*}.tar.gz
 	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-$(ver_cut 4).debian.tar.xz
 "
 

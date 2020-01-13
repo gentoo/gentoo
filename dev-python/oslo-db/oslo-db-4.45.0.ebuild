@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -38,10 +38,7 @@ RDEPEND="
 		!~dev-python/sqlalchemy-1.1.8[sqlite,${PYTHON_USEDEP}]
 	)
 	mysql? (
-		|| (
-			dev-python/pymysql[${PYTHON_USEDEP}]
-			dev-python/mysql-python[$(python_gen_usedep 'python2_7')]
-		)
+		dev-python/pymysql[${PYTHON_USEDEP}]
 		>=dev-python/sqlalchemy-1.0.10[${PYTHON_USEDEP}]
 		!~dev-python/sqlalchemy-1.1.5[${PYTHON_USEDEP}]
 		!~dev-python/sqlalchemy-1.1.6[${PYTHON_USEDEP}]

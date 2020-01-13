@@ -6,7 +6,7 @@ inherit autotools
 
 DESCRIPTION="Resize FAT partitions using libparted"
 HOMEPAGE="https://github.com/ya-mouse/fatresize"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ya-mouse/fatresize/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -8,7 +8,7 @@ COMMITID="488ab66019f475e35e067646621827c18a879ba1"
 
 DESCRIPTION="A general purpose messaging, notification and menuing program for X11"
 HOMEPAGE="https://github.com/robm/dzen"
-SRC_URI="${HOMEPAGE}/tarball/${COMMITID} -> ${P}.tar.gz"
+SRC_URI="https://github.com/robm/dzen/tarball/${COMMITID} -> ${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"

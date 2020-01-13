@@ -12,7 +12,7 @@ KEYWORDS="~amd64 ~x86"
 EGIT_COMMIT="840c9c2193fe9145ab177b6e891fd535e1881b43"
 MY_PV=${PV/_p/-}
 MY_P=""
-SRC_URI="${HOMEPAGE}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Mellanox/mstflint/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 IUSE="inband ssl"
 SLOT="0"
 RDEPEND="dev-db/sqlite:3=

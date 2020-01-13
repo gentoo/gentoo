@@ -6,7 +6,7 @@ inherit eutils multilib toolchain-funcs
 
 DESCRIPTION="virtual keyboard for X window system"
 HOMEPAGE="http://t-sato.in.coocan.jp/xvkbd/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="http://t-sato.in.coocan.jp/xvkbd/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

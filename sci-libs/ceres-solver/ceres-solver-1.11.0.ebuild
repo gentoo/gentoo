@@ -9,7 +9,7 @@ inherit cmake-multilib eutils python-any-r1 toolchain-funcs
 
 DESCRIPTION="Nonlinear least-squares minimizer"
 HOMEPAGE="http://ceres-solver.org/"
-SRC_URI="${HOMEPAGE}/${P}.tar.gz"
+SRC_URI="http://ceres-solver.org/${P}.tar.gz"
 
 LICENSE="sparse? ( BSD ) !sparse? ( LGPL-2.1 ) cxsparse? ( BSD )"
 SLOT="0/1"

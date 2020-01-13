@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-0113)
+# Current versioning breaks portage logic and prevents
+# us from adding official releases made by google.
+# Please DOWNGRADE to dev-python/nototools-0_pre20200113
+=dev-python/nototools-20190320
+
 # Mike Gilbert <floppym@gentoo.org> (2020-01-12)
 # No upstream activity since 2014, no reverse deps.
 # Remove in 30 days.
@@ -62,6 +68,12 @@ media-libs/qimageblitz
 # Masked for removal in 30 days.
 dev-cpp/gtkglextmm
 sci-misc/repsnapper
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-12)
+# Python 2 only, depends on OpenStack which is Py3 now.  No release
+# since 2005.
+# Removal in 30 days.
+app-admin/supernova
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-12)
 # libcxxrt is no longer maintained upstream.  It used to be needed to
@@ -146,7 +158,6 @@ app-dicts/sword-est
 app-dicts/sword-family
 app-dicts/sword-finpr92
 app-dicts/sword-frecrl
-app-dicts/sword-geneva
 app-dicts/sword-hebmodern
 app-dicts/sword-hunuj
 app-dicts/sword-icelandic

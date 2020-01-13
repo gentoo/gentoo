@@ -6,7 +6,7 @@ inherit git-r3 toolchain-funcs
 
 DESCRIPTION="lightweight EWMH window switcher with features and looks of dmenu"
 HOMEPAGE="https://github.com/seanpringle/simpleswitcher"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/seanpringle/simpleswitcher"
 
 LICENSE="MIT"
 SLOT="0"

@@ -7,7 +7,7 @@ inherit cmake-utils
 
 DESCRIPTION="AMPAS' Color Transformation Language"
 HOMEPAGE="https://github.com/ampas/CTL"
-SRC_URI="${HOMEPAGE}/archive/ctl-${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ampas/CTL/archive/${P}.tar.gz"
 
 LICENSE="AMPAS"
 SLOT="0"

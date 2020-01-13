@@ -9,7 +9,7 @@ MYP=MUMPS_${PV}
 
 DESCRIPTION="MUltifrontal Massively Parallel sparse direct matrix Solver"
 HOMEPAGE="http://mumps.enseeiht.fr/"
-SRC_URI="${HOMEPAGE}${MYP}.tar.gz"
+SRC_URI="http://mumps.enseeiht.fr/${MYP}.tar.gz"
 
 LICENSE="public-domain"
 SLOT="0"
