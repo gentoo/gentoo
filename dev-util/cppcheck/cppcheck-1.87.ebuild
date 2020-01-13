@@ -7,7 +7,7 @@ inherit distutils-r1 qmake-utils toolchain-funcs
 
 DESCRIPTION="Static analyzer of C/C++ code"
 HOMEPAGE="https://github.com/danmar/cppcheck"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/danmar/cppcheck/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
