@@ -13,7 +13,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 	KEYWORDS=""
 else
-	SRC_URI="${HOMEPAGE}/downloads/${PN}/${P}.tar.gz"
+	SRC_URI="https://rakudo.org/downloads/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
