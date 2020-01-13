@@ -10,7 +10,7 @@ inherit python-r1 vcs-snapshot
 COMMIT="29a0bbf43bfecb6872cdca0e4a11733954d25196"
 DESCRIPTION="Source Code Documentation Coverage Measurement"
 HOMEPAGE="https://github.com/alobbs/doxy-coverage"
-SRC_URI="${HOMEPAGE}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/alobbs/doxy-coverage/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"
