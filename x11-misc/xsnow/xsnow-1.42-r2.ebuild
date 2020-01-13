@@ -6,7 +6,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="let it snow on your desktop and windows"
 HOMEPAGE="https://janswaal.home.xs4all.nl/Xsnow/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="https://janswaal.home.xs4all.nl/Xsnow/${P}.tar.gz"
 
 LICENSE="freedist"
 SLOT="0"
