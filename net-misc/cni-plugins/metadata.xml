@@ -3,7 +3,7 @@
 <pkgmetadata>
   <maintainer type="person">
     <email>williamh@gentoo.org</email>
-	<name>William Hubbs</name>
+    <name>William Hubbs</name>
   </maintainer>
   <upstream>
     <remote-id type="github">containernetworking/plugins</remote-id>
