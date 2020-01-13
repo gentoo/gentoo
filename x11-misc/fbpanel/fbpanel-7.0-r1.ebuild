@@ -8,7 +8,7 @@ inherit python-any-r1 toolchain-funcs
 
 DESCRIPTION="light-weight X11 desktop panel"
 HOMEPAGE="https://aanatoly.github.io/fbpanel/"
-SRC_URI="${HOMEPAGE}archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://aanatoly.github.io/fbpanel/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
