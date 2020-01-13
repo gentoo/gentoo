@@ -7,7 +7,7 @@ inherit eutils autotools
 
 DESCRIPTION="A library of routines for managing a database"
 HOMEPAGE="http://fallabs.com/tokyocabinet/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="http://fallabs.com/tokyocabinet/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
