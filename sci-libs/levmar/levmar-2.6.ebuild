@@ -7,7 +7,7 @@ inherit cmake-utils eutils toolchain-funcs
 
 DESCRIPTION="Levenberg-Marquardt nonlinear least squares C library"
 HOMEPAGE="https://www.ics.forth.gr/~lourakis/levmar/"
-SRC_URI="${HOMEPAGE}/${P}.tgz"
+SRC_URI="https://www.ics.forth.gr/~lourakis/levmar/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
