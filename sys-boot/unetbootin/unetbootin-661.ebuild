@@ -8,7 +8,7 @@ inherit desktop qmake-utils
 
 DESCRIPTION="UNetbootin installs Linux/BSD distributions to a partition or USB drive"
 HOMEPAGE="https://github.com/unetbootin/unetbootin"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz
+SRC_URI="https://github.com/unetbootin/unetbootin/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}"
 
 SLOT="0"

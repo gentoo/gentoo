@@ -7,7 +7,7 @@ inherit desktop flag-o-matic qmake-utils
 DESCRIPTION="UNetbootin installs Linux/BSD distributions to a partition or USB drive"
 HOMEPAGE="https://github.com/unetbootin/unetbootin"
 SRC_URI="
-	${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/unetbootin/unetbootin/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://dev.gentoo.org/~jer/${P}-qt5.patch.xz
 "
 
