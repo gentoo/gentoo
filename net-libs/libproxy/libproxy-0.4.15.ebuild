@@ -1,11 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_ECLASS=cmake
-PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-multilib flag-o-matic mono-env python-r1
+inherit cmake-multilib flag-o-matic mono-env
 
 DESCRIPTION="Library for automatic proxy configuration management"
 HOMEPAGE="https://github.com/libproxy/libproxy"
@@ -14,9 +13,8 @@ SRC_URI="https://github.com/libproxy/libproxy/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="gnome kde mono networkmanager perl python spidermonkey test webkit"
+IUSE="gnome kde mono networkmanager perl spidermonkey test webkit"
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 BDEPEND="
@@ -27,7 +25,6 @@ DEPEND="
 	mono? ( dev-lang/mono )
 	networkmanager? ( sys-apps/dbus:0[${MULTILIB_USEDEP}] )
 	perl? ( dev-lang/perl:= )
-	python? ( ${PYTHON_DEPS} )
 	spidermonkey? ( >=dev-lang/spidermonkey-52.0.0:= )
 	webkit? ( net-libs/webkit-gtk:4 )
 "
@@ -71,7 +68,7 @@ multilib_src_configure() {
 		-DWITH_NM=$(usex networkmanager)
 		$(multilib_is_native_abi && usex perl -DPERL_VENDORINSTALL=ON)
 		-DWITH_PERL=$(multilib_is_native_abi && usex perl || echo OFF)
-		-DWITH_PYTHON3=$(multilib_is_native_abi && usex python || echo OFF)
+		-DWITH_PYTHON3=OFF # Major issue: https://github.com/libproxy/libproxy/issues/65
 		-DWITH_MOZJS=$(multilib_is_native_abi && usex spidermonkey || echo OFF)
 		-DBUILD_TESTING=$(usex test)
 		-DWITH_WEBKIT3=$(multilib_is_native_abi && usex webkit || echo OFF)
@@ -82,11 +79,9 @@ multilib_src_configure() {
 src_configure() {
 	[[ ${CHOST} == *-solaris* ]] && append-libs -lsocket -lnsl
 
-	use python && python_setup
 	multilib-minimal_src_configure
 }
 
 multilib_src_install_all() {
 	doman "${FILESDIR}"/proxy.1
-	use python && python_foreach_impl python_domodule bindings/python/libproxy.py
 }
