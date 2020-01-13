@@ -23,6 +23,6 @@ KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 distutils_enable_tests pytest
 
 python_test() {
-	PYTHONPATH= \
+	local -x PYTHONPATH=.
 	pytest -vv --ignore docs/conf.py || die "Tests fail with ${EPYTHON}"
 }
