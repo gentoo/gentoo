@@ -25,6 +25,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=media-gfx/fdm-materials-${PV:0:3}
 	>=dev-libs/libsavitar-${PV:0:3}:=[python,${PYTHON_USEDEP}]
 	>=dev-libs/libcharon-${PV:0:3}[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	usb? ( dev-python/pyserial[${PYTHON_USEDEP}] )
 	zeroconf? ( dev-python/zeroconf[${PYTHON_USEDEP}] )"
 
