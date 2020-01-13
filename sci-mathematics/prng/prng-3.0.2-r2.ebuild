@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Pseudo-Random Number Generator library"
 HOMEPAGE="http://statmath.wu.ac.at/prng/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="http://statmath.wu.ac.at/prng/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT=0
