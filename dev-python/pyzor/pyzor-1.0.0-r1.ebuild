@@ -9,7 +9,7 @@ inherit distutils-r1
 MY_PV="1-0-0"
 DESCRIPTION="A distributed, collaborative spam detection and filtering network"
 HOMEPAGE="https://github.com/SpamExperts/pyzor"
-SRC_URI="${HOMEPAGE}/archive/release-${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/SpamExperts/pyzor/archive/release-${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
