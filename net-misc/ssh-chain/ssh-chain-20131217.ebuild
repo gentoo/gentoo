@@ -8,7 +8,7 @@ inherit vcs-snapshot
 COMMIT="c1bd9d82d750bf001d12a9cd41b9b24a3fd84f81"
 DESCRIPTION="ssh via a chain of intermediary hosts"
 HOMEPAGE="https://github.com/ryancdotorg/ssh-chain"
-SRC_URI="${HOMEPAGE}/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ryancdotorg/ssh-chain/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
