@@ -749,6 +749,7 @@ net-wireless/bcm43xx-fwcutter
 # Testing version that breaks multiple plugins.  Let's keep it masked
 # until upstream releases fixed versions.
 ~xfce-base/xfce4-panel-4.15.0
+~xfce-base/xfce4-panel-4.15.1
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-10-16)
 # Depends on apache-2.2
