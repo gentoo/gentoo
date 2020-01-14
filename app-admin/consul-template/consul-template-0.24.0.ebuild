@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ EGO_VENDOR=(
 	"github.com/frankban/quicktest v1.4.0"
 	"github.com/golang/snappy v0.0.1"
 	"github.com/google/btree v1.0.0"
-	"github.com/hashicorp/consul v1.1.0"
+	"github.com/hashicorp/consul v1.2.0"
 	"github.com/hashicorp/errwrap v1.0.0"
 	"github.com/hashicorp/go-cleanhttp v0.5.1"
 	"github.com/hashicorp/go-gatedio v0.5.0"
@@ -50,7 +50,7 @@ inherit golang-vcs-snapshot systemd user
 
 KEYWORDS="~amd64"
 DESCRIPTION="Generic template rendering and notifications with Consul"
-GIT_COMMIT="005b42e"
+GIT_COMMIT="521adf1"
 EGO_PN="github.com/hashicorp/${PN}"
 HOMEPAGE="https://github.com/hashicorp/consul-template"
 LICENSE="MPL-2.0 Apache-2.0 BSD BSD-2 ISC MIT WTFPL-2"
