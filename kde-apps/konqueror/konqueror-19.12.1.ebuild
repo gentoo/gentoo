@@ -16,7 +16,7 @@ HOMEPAGE="https://kde.org/applications/internet/org.kde.konqueror"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="activities speech tidy X"
+IUSE="activities speech X"
 
 # 4 of 4 tests fail. Last checked for 4.0.3
 RESTRICT+=" test"
@@ -54,7 +54,6 @@ COMMON_DEPEND="
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	sys-libs/zlib
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:5 )
-	tidy? ( app-text/tidy-html5 )
 	X? ( >=dev-qt/qtx11extras-${QTMIN}:5 )
 "
 DEPEND="${COMMON_DEPEND}
@@ -75,7 +74,6 @@ src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package activities KF5Activities)
 		$(cmake_use_find_package speech Qt5TextToSpeech)
-		$(cmake_use_find_package tidy LibTidy)
 		$(cmake_use_find_package X X11)
 	)
 	ecm_src_configure
