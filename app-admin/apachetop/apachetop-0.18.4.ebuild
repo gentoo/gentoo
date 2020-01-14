@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,8 +19,10 @@ RDEPEND="
 	sys-libs/readline:0=
 	fam? ( virtual/fam )
 	pcre? ( dev-libs/libpcre )"
-DEPEND="${RDEPEND}
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.18.4-tinfo.patch
+)
 
 src_prepare() {
 	default
