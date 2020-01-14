@@ -117,6 +117,7 @@
 -video_cards_i915
 -video_cards_i965
 -video_cards_intel
+-video_cards_iris
 -video_cards_nvidia
 -video_cards_siliconmotion
 -video_cards_vesa
