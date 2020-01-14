@@ -678,7 +678,6 @@ dev-ml/xstr
 # EAPI 4, new versions upstream, not bumped
 # Removal in 30 days
 dev-lang/opendylan
-dev-lang/opendylan-bin
 dev-libs/mps
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
