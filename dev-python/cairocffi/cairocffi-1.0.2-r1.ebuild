@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1 virtualx
 
@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	$(python_gen_cond_dep '>=dev-python/cffi-1.1.0:=[${PYTHON_USEDEP}]' 'python*')
 	>=dev-python/xcffib-0.3.2[${PYTHON_USEDEP}]
-	x11-libs/cairo:0=[xcb]
+	x11-libs/cairo:0=[X,xcb(+)]
 	x11-libs/gdk-pixbuf[jpeg]"
 
 DEPEND="
@@ -34,6 +34,11 @@ DEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 	)"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.0-tests.patch
+	"${FILESDIR}"/${P}-test-deps.patch
+)
+
 S="${WORKDIR}/${MY_P}"
 
 python_compile_all() {
@@ -41,7 +46,7 @@ python_compile_all() {
 }
 
 python_test() {
-	virtx py.test -v --pyargs cairocffi -o addopts=
+	virtx py.test -v --pyargs cairocffi
 }
 
 python_install_all() {
