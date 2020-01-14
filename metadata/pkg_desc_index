@@ -266,7 +266,7 @@ app-admin/ansible 2.7.15 2.8.7 2.9.2 9999: Model-driven deployment, config manag
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 3.4.23 4.0.1: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41: Useful Apache tools - htdigest, htpasswd, ab, htdbm
-app-admin/apachetop 0.12.6-r2 0.17.4 0.18.4: A realtime Apache log analyzer
+app-admin/apachetop 0.12.6-r2 0.17.4 0.18.4 0.19.7: A realtime Apache log analyzer
 app-admin/apg 2.3.0b-r7: Another Password Generator
 app-admin/ara 0.15.0-r1: ARA Records Ansible
 app-admin/augeas 1.11.0 1.11.0-r1 1.12.0: A library for changing configuration files
