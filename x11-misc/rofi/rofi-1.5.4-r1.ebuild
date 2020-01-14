@@ -6,7 +6,7 @@ inherit autotools toolchain-funcs
 
 DESCRIPTION="A window switcher, run dialog and dmenu replacement"
 HOMEPAGE="https://github.com/davatorium/rofi"
-SRC_URI="https://github.com/davatorium/rofi/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="https://github.com/davatorium/rofi/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -18,7 +18,7 @@ RDEPEND="
 	dev-libs/glib:2
 	gnome-base/librsvg:2
 	media-libs/freetype
-	x11-libs/cairo[xcb]
+	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libXft
 	x11-libs/libXinerama
 	x11-libs/libxcb
