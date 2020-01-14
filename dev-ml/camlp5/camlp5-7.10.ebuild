@@ -10,7 +10,7 @@ SRC_URI="https://github.com/camlp5/camlp5/archive/rel$(ver_rs 1- '').tar.gz -> $
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"
-IUSE="doc +ocamlopt"
+IUSE="+ocamlopt"
 DEPEND="
 	<=dev-lang/ocaml-4.6.0:=[ocamlopt?]
 "
@@ -18,9 +18,7 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${PN}-rel$(ver_rs 1- '')"
 
-src_prepare() {
-	eapply_user
-}
+# Not autotools-compatible configure script
 src_configure() {
 	./configure \
 		--strict \
@@ -35,10 +33,4 @@ src_compile(){
 		emake opt
 		emake opt.opt
 	fi
-}
-src_install() {
-	if [[ -f Makefile ]] || [[ -f GNUmakefile ]] || [[ -f makefile ]] ; then
-		emake DESTDIR="${D}" install
-	fi
-	einstalldocs
 }
