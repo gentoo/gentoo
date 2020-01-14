@@ -1,10 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 XORG_DOC=doc
-XORG_EAUTORECONF="yes"
 inherit xorg-3 multilib flag-o-matic
 EGIT_REPO_URI="https://gitlab.freedesktop.org/xorg/xserver.git"
 
@@ -175,8 +174,18 @@ pkg_setup() {
 		--disable-linux-acpi
 		--without-dtrace
 		--without-fop
+		--with-os-vendor=Gentoo
 		--with-sha1=libcrypto
 	)
+}
+
+src_configure() {
+	# Needed since commit 2a1a96d956f4 ("glamor: Add a function to get the
+	# driver name via EGL_MESA_query_driver") neglected to add autotools
+	# support
+	append-cflags -DGLAMOR_HAS_EGL_QUERY_DRIVER
+
+	xorg-3_src_configure
 }
 
 src_install() {
