@@ -14276,7 +14276,7 @@ net-analyzer/masscan 1.0.4 1.0.5: Mass IP port scanner
 net-analyzer/mbrowse 0.4.3 0.4.3-r1: MBrowse is a graphical MIB browser
 net-analyzer/mdns-scan 0.5: a tool for scanning for mDNS/DNS-SD published services
 net-analyzer/metasploit 4.17.21-r6 9999: Advanced framework for developing, testing, and using vulnerability exploit code
-net-analyzer/mk-livestatus 1.2.8_p10 1.2.8_p16 1.2.8_p26 1.5.0_p22: Nagios/Icinga event broker that allows quick/direct access to your status data
+net-analyzer/mk-livestatus 1.2.8_p10 1.2.8_p16 1.2.8_p26 1.5.0_p22-r1: Nagios/Icinga event broker that allows quick/direct access to your status data
 net-analyzer/monitoring-plugins 2.2-r2 2.2-r3 2.2-r4: 50+ standard plugins for Icinga, Naemon, Nagios, Shinken, Sensu
 net-analyzer/mping 2.01: IPv4/6 round-robin multiping client
 net-analyzer/mrtg 2.17.7: A tool to monitor the traffic load on network-links
