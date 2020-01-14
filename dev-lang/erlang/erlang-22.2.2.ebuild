@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -51,6 +51,7 @@ S="${WORKDIR}/otp-OTP-${PV}"
 PATCHES=(
 	"${FILESDIR}/18.2.1-wx3.0.patch"
 	"${FILESDIR}/${PN}-22.0-dont-ignore-LDFLAGS.patch"
+	"${FILESDIR}/${PN}-22.2.2-gcc-10.patch"
 )
 
 SITEFILE=50"${PN}"-gentoo.el
@@ -140,7 +141,7 @@ src_install() {
 	fi
 
 	newinitd "${FILESDIR}"/epmd.init-r2 epmd
-	newconfd "${FILESDIR}"/epmd.confd-r1 epmd
+	newconfd "${FILESDIR}"/epmd.confd-r2 epmd
 	use systemd && systemd_newunit "${FILESDIR}"/epmd.service-r1 epmd.service
 }
 
