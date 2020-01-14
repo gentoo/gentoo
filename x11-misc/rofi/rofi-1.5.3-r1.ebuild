@@ -10,7 +10,7 @@ SRC_URI="https://github.com/davatorium/rofi/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test windowmode"
 RESTRICT="!test? ( test )"
 
@@ -18,7 +18,7 @@ RDEPEND="
 	dev-libs/glib:2
 	gnome-base/librsvg:2
 	media-libs/freetype
-	x11-libs/cairo[xcb]
+	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libXft
 	x11-libs/libXinerama
 	x11-libs/libxcb

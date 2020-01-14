@@ -144,7 +144,7 @@ src_prepare() {
 
 src_compile() {
 	if ! use binary; then
-		export PATH="${EROOT}usr/share/scala-${SV}/bin:${WORKDIR}/${L_P}:${PATH}"
+		export PATH="${EROOT}/usr/share/scala-${SV}/bin:${WORKDIR}/${L_P}:${PATH}"
 		export LANG="en_US.UTF-8"
 		einfo "=== scala compile ..."
 		"${S}"/sbt -Dsbt.log.noformat=true compile || die "sbt compile failed"
