@@ -19,6 +19,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	!sys-apps/ucspi-unix:0
+	net-analyzer/rrdtool:=
 	boost? ( dev-libs/boost )
 	perl? (
 		dev-lang/perl:0
