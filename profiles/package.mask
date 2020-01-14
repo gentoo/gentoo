@@ -575,11 +575,6 @@ dev-util/suse-build
 #Package will be removed on ~15 Jan 2020.
 media-plugins/vdr-console
 
-# Aaron Bauman <bman@gentoo.org> (2019-12-13)
-# Dead upstream. Fork is available as sci-electronics/drahnr-oregano
-# Removal in 30 days
-sci-electronics/oregano
-
 # Michał Górny <mgorny@gentoo.org> (2019-12-13)
 # The first part of cleanup post the dead ML project.  Those packages
 # have no reverse dependencies (except one another, in some cases).
