@@ -35,6 +35,10 @@ DEPEND="${RDEPEND}
 "
 
 python_prepare_all() {
+	local PATCHES=(
+		"${FILESDIR}"/0.52.1-test_pkgconfig_gen_deps.patch
+	)
+
 	# ASAN and sandbox both want control over LD_PRELOAD
 	# https://bugs.gentoo.org/673016
 	sed -i -e 's/test_generate_gir_with_address_sanitizer/_&/' run_unittests.py || die
