@@ -18,7 +18,7 @@ DEPEND="
 	dev-libs/libconfig:=
 	media-libs/alsa-lib
 	net-wireless/wireless-tools
-	x11-libs/cairo[xcb]
+	x11-libs/cairo[X,xcb(+)]
 	x11-libs/gdk-pixbuf:2
 	x11-libs/libxkbcommon[X]
 	x11-libs/pango
