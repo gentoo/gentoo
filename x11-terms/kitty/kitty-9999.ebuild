@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit python-single-r1 toolchain-funcs xdg
 
@@ -20,7 +20,7 @@ HOMEPAGE="https://github.com/kovidgoyal/kitty"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="debug imagemagick wayland"
+IUSE="debug wayland"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
@@ -38,7 +38,7 @@ RDEPEND="
 	x11-libs/libXrandr
 	sys-apps/dbus
 	sys-libs/zlib
-	imagemagick? ( virtual/imagemagick-tools )
+	virtual/imagemagick-tools
 	wayland? (
 		dev-libs/wayland
 		>=dev-libs/wayland-protocols-1.17
@@ -55,7 +55,7 @@ BDEPEND="virtual/pkgconfig"
 [[ ${PV} == *9999 ]] && BDEPEND+=" >=dev-python/sphinx-1.7"
 
 PATCHES=(
-	"${FILESDIR}"/${P}-flags.patch
+	"${FILESDIR}"/kitty-0.15.1-flags.patch
 	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
 )
 
