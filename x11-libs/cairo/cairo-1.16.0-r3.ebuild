@@ -98,6 +98,8 @@ multilib_src_configure() {
 		$(use_enable X tee) \
 		$(use_enable X xlib) \
 		$(use_enable X xlib-xrender) \
+		$(use_enable X xcb) \
+		$(use_enable X xcb-shm) \
 		$(use_enable aqua quartz) \
 		$(use_enable aqua quartz-image) \
 		$(use_enable debug test-surfaces) \
@@ -114,8 +116,6 @@ multilib_src_configure() {
 		--enable-png \
 		--enable-ps \
 		--enable-script \
-		--enable-xcb
-		--enable-xcb-shm
 		--disable-drm \
 		--disable-directfb \
 		--disable-gallium \
