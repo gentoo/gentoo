@@ -702,11 +702,6 @@ app-admin/grubconfig
 # Removal in 30 days
 dev-util/kelbt
 
-# Aaron Bauman <bman@gentoo.org> (2019-12-10)
-# EAPI=4, fails to build
-# Removal in 30 days
-dev-util/idutils
-
 # David Seifert <soap@gentoo.org> (2019-12-10)
 # Abandoned upstream, broken ncurses linking, last release 8 years ago.
 # Bug #677742, #696228. Removal in 30 days.
