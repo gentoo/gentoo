@@ -3173,7 +3173,6 @@ dev-db/go-etcd 0_p20141013-r1 2.0.0 2.0.0-r1: Go client library for etcd
 dev-db/gqlplus 1.16: a front-end for Oracle program sqlplus with command-line editing
 dev-db/henplus 0.9.8-r1: Java-based multisession SQL shell for databases with JDBC support
 dev-db/hsqldb 1.8.1.3-r2: The leading SQL relational database engine written in Java
-dev-db/hyperdex 1.6.0-r1 1.7.1 1.8.0 1.8.1 9999: A searchable distributed Key-Value Store
 dev-db/influxdb 1.5.1 1.6.3 1.6.4: Scalable datastore for metrics, events, and real-time analytics
 dev-db/innotop 1.11.1 1.11.4 1.12.0: A text-mode MySQL and InnoDB monitor like mytop, but with many more features
 dev-db/kdb 3.2.0: Database connectivity and creation framework for various vendors
@@ -4789,7 +4788,6 @@ dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
 dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
 dev-libs/check 0.10.0-r1 0.12.0 0.13.0: A unit test framework for C
 dev-libs/chmlib 0.40-r1: Library for MS CHM (compressed html) file format
-dev-libs/cityhash 1.0.3 1.1.0 1.1.1: Google's CityHash family of hash functions
 dev-libs/cl 1.2.3 1.2.4 9999: OpenCL bindings for Erlang
 dev-libs/clhpp 2.0.10: Khronos OpenCL C++ bindings
 dev-libs/cloog 0.18.1 0.18.4 9999: A loop generator for scanning polyhedra
