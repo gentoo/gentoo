@@ -10,4 +10,4 @@ RDEPEND=x11-libs/libX11 xft? ( x11-libs/libXft ) xinerama? ( x11-libs/libXineram
 SLOT=2
 SRC_URI=https://github.com/robm/dzen/tarball/488ab66019f475e35e067646621827c18a879ba1 -> dzen-0.9.5_p1.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=84498e4e88b36d9f11ded43b7b7674f2
+_md5_=c3f037bf0f84ea75cf07e5ca08ae2c11
