@@ -691,12 +691,6 @@ dev-util/cmt
 # Compression has come along way. Removal in 30 days
 media-gfx/tic98
 
-# Lars Wendler <polynomial-c@gentoo.org> (2019-12-10)
-# Dead upstream, no homepage, requires grub-0 which is gone
-# Also no UEFI support!
-# Masked for removal in 30 days (bug #702416)
-app-admin/grubconfig
-
 # David Seifert <soap@gentoo.org> (2019-12-08)
 # Unmaintained, build hangs, tons of other build failures, missing
 # dependencies.  Bug #663794, #666916, #666922, #667062, #678068,
