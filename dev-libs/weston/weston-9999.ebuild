@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -83,7 +83,7 @@ RDEPEND="
 	)
 	xwayland? (
 		x11-base/xorg-server[wayland]
-		x11-libs/cairo[xcb]
+		x11-libs/cairo[X,xcb(+)]
 		>=x11-libs/libxcb-1.9
 		x11-libs/libXcursor
 	)
