@@ -9,16 +9,9 @@ inherit distutils-r1
 DESCRIPTION="A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio"
 HOMEPAGE="https://github.com/masmu/pulseaudio-dlna"
 
-if [[ ${PV} == *9999 ]];then
-	inherit git-r3
-	SRC_URI=""
-	EGIT_REPO_URI="https://github.com/masmu/pulseaudio-dlna"
-	EGIT_BRANCH="python3"
-	KEYWORDS=""
-else
-	SRC_URI="https://github.com/masmu/pulseaudio-dlna/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
-fi
+SRC_URI="https://github.com/masmu/pulseaudio-dlna/archive/b0db8137224f5a293329a60187365168304c3768.zip"
+KEYWORDS="~amd64 ~x86"
+S="${WORKDIR}/pulseaudio-dlna-b0db8137224f5a293329a60187365168304c3768"
 
 LICENSE="GPL-3"
 SLOT="0"
