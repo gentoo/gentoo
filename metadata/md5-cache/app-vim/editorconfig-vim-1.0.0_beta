@@ -1,0 +1,13 @@
+BDEPEND=dev-util/ninja >=dev-util/cmake-3.9.6
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+DESCRIPTION=vim plugin: Support EditorConfig files
+EAPI=7
+HOMEPAGE=https://editorconfig.org/
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD-2 PSF-2
+RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
+SLOT=0
+SRC_URI=https://github.com/editorconfig/editorconfig-vim/archive/v1.0.0-beta.tar.gz -> editorconfig-vim-1.0.0-beta.tar.gz
+_eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=13323db9ef40e09946473f691d85def8
