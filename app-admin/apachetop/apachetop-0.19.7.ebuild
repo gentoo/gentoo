@@ -1,9 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit autotools
+EAPI=7
 
 DESCRIPTION="A realtime Apache log analyzer"
 HOMEPAGE="https://github.com/tessus/apachetop"
@@ -20,14 +18,7 @@ RDEPEND="
 	fam? ( virtual/fam )
 	pcre? ( dev-libs/libpcre )"
 DEPEND="${RDEPEND}"
-PATCHES=(
-	"${FILESDIR}"/${PN}-0.18.4-tinfo.patch
-)
-
-src_prepare() {
-	default
-	eautoreconf
-}
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	econf \
