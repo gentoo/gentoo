@@ -16471,7 +16471,7 @@ sci-mathematics/spin 6.4.5: Tool for formal verification of distributed software
 sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations and Oriented Matroids
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
-sci-mathematics/why3-for-spark 2018 2019: Platform for deductive program verification
+sci-mathematics/why3-for-spark 2018 2019 2019-r1: Platform for deductive program verification
 sci-mathematics/wxmaxima 18.11.4 19.12.2 20.01.1: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
