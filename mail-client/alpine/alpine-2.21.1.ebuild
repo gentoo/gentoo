@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools toolchain-funcs vcs-snapshot
 
 DESCRIPTION="An easy to use text-based based mail and news client"
-HOMEPAGE="https://www.washington.edu/alpine/ https://repo.or.cz/alpine.git/"
+HOMEPAGE="http://alpine.x10host.com/alpine/ https://repo.or.cz/alpine.git/"
 GIT_COMMIT="672d6838a9babf2faeb9f79267525a4ab9d20b14"
 SRC_URI="https://repo.or.cz/alpine.git/snapshot/${GIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
