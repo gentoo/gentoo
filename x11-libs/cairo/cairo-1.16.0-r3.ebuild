@@ -18,7 +18,7 @@ DESCRIPTION="A vector graphics library with cross-device output support"
 HOMEPAGE="https://www.cairographics.org/ https://gitlab.freedesktop.org/cairo/cairo"
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
-IUSE="X aqua debug gles2 +glib opengl static-libs +svg utils valgrind xcb"
+IUSE="X aqua debug gles2-only +glib opengl static-libs +svg utils valgrind"
 # gtk-doc regeneration doesn't seem to work with out-of-source builds
 #[[ ${PV} == *9999* ]] && IUSE="${IUSE} doc" # API docs are provided in tarball, no need to regenerate
 
@@ -36,15 +36,13 @@ RDEPEND="
 	sys-libs/binutils-libs:0=[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}]
 	>=x11-libs/pixman-0.32.4[${MULTILIB_USEDEP}]
-	gles2? ( >=media-libs/mesa-9.1.6[gles2,${MULTILIB_USEDEP}] )
+	gles2-only? ( >=media-libs/mesa-9.1.6[gles2,${MULTILIB_USEDEP}] )
 	glib? ( >=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}] )
 	opengl? ( >=media-libs/mesa-9.1.6[egl,X(+),${MULTILIB_USEDEP}] )
 	X? (
 		>=x11-libs/libXrender-0.9.8[${MULTILIB_USEDEP}]
 		>=x11-libs/libXext-1.3.2[${MULTILIB_USEDEP}]
 		>=x11-libs/libX11-1.6.2[${MULTILIB_USEDEP}]
-	)
-	xcb? (
 		>=x11-libs/libxcb-1.9.1[${MULTILIB_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
@@ -56,7 +54,7 @@ DEPEND="${RDEPEND}
 #	)"
 
 REQUIRED_USE="
-	gles2? ( !opengl )
+	gles2-only? ( !opengl )
 "
 
 PATCHES=(
@@ -103,21 +101,21 @@ multilib_src_configure() {
 		$(use_enable aqua quartz) \
 		$(use_enable aqua quartz-image) \
 		$(use_enable debug test-surfaces) \
-		$(use_enable gles2 glesv2) \
+		$(use_enable gles2-only glesv2) \
 		$(use_enable glib gobject) \
 		$(use_enable opengl gl) \
 		$(use_enable static-libs static) \
 		$(use_enable svg) \
 		$(use_enable utils trace) \
 		$(use_enable valgrind) \
-		$(use_enable xcb) \
-		$(use_enable xcb xcb-shm) \
 		--enable-ft \
+		--enable-interpreter \
 		--enable-pdf \
 		--enable-png \
 		--enable-ps \
 		--enable-script \
-		--enable-interpreter \
+		--enable-xcb
+		--enable-xcb-shm
 		--disable-drm \
 		--disable-directfb \
 		--disable-gallium \
