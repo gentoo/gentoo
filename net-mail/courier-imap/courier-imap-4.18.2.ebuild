@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -187,7 +187,7 @@ src_install() {
 
 	dosbin "${FILESDIR}/mkimapdcert" "${FILESDIR}/mkpop3dcert"
 
-	dosym /usr/sbin/courierlogger "/usr/$(get_libdir)/${PN}/courierlogger"
+	dosym ../../usr/sbin/courierlogger "/usr/$(get_libdir)/${PN}/courierlogger"
 
 	for initd in courier-{imapd,pop3d}{,-ssl} ; do
 		sed -e "s:GENTOO_LIBDIR:$(get_libdir):g" \
