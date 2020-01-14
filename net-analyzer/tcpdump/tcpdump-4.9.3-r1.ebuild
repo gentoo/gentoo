@@ -5,23 +5,19 @@ EAPI=7
 inherit flag-o-matic toolchain-funcs user
 
 DESCRIPTION="A Tool for network monitoring and data acquisition"
-EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
 HOMEPAGE="
 	https://www.tcpdump.org/
-	${EGIT_REPO_URI}
+	https://github.com/the-tcpdump-group/tcpdump
+"
+SRC_URI="
+	https://www.tcpdump.org/release/${P}.tar.gz
 "
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="+drop-root libressl smi ssl samba suid test"
 RESTRICT="!test? ( test )"
-if [[ ${PV} == "9999" ]] ; then
-	inherit git-r3
-	KEYWORDS=""
-else
-	SRC_URI="https://github.com/the-${PN}-group/${PN}/archive/${P}.tar.gz"
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
-fi
 
 RDEPEND="
 	drop-root? ( sys-libs/libcap-ng )
@@ -40,24 +36,12 @@ DEPEND="
 		dev-lang/perl
 	)
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-9999-libdir.patch
-)
 
 pkg_setup() {
 	if use drop-root || use suid; then
 		enewgroup tcpdump
 		enewuser tcpdump -1 -1 -1 tcpdump
 	fi
-}
-
-src_prepare() {
-	default
-
-	sed -i -e '/^eapon1/d;' tests/TESTLIST || die
-
-	# bug 630394
-	sed -i -e '/^nbns-valgrind/d' tests/TESTLIST || die
 }
 
 src_configure() {
