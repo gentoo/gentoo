@@ -20,7 +20,7 @@ RDEPEND="
 	>=x11-libs/libXcomposite-0.4.4-r1
 	>=x11-libs/libXrender-0.9.10
 	>=x11-libs/libXext-1.3.3
-	>=x11-libs/cairo-1.14.6[X,xcb]
+	>=x11-libs/cairo-1.14.6[X,xcb(+)]
 	>=x11-libs/pango-1.40.5
 	>=dev-libs/glib-2.50.3-r1:2"
 
