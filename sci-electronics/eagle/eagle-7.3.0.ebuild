@@ -21,7 +21,7 @@ RESTRICT="mirror bindist"
 
 RDEPEND="
 	sys-libs/glibc
-	dev-libs/openssl:0
+	|| ( =dev-libs/openssl-1.0*:0 dev-libs/openssl-compat:1.0.0 )
 	>=sys-libs/zlib-1.2.8-r1
 	>=media-libs/freetype-2.5.0.1
 	>=media-libs/fontconfig-2.10.92
