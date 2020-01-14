@@ -12141,7 +12141,7 @@ kde-misc/rsibreak 0.12.11: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1-r1: Simple image scanning application based on libksane and KDE Frameworks
 kde-misc/tellico 3.2.3: Collection manager based on KDE Frameworks
 kde-misc/wacomtablet 3.2.0: System settings module for Wacom tablets
-kde-misc/zanshin 0.5.71: Getting things done application by KDE
+kde-misc/zanshin 0.5.71-r1: Getting things done application by KDE
 kde-plasma/bluedevil 5.17.4 5.17.5: Bluetooth stack for KDE Plasma
 kde-plasma/breeze 5.17.4 5.17.5: Breeze visual style for the Plasma desktop
 kde-plasma/breeze-grub 5.17.4 5.17.5: Breeze theme for GRUB
@@ -15238,7 +15238,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
-net-misc/youtube-dl 2020.01.01 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.01.01 2020.01.15 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.5.5 3.5.8-r1 3.5.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
