@@ -2417,11 +2417,8 @@ dev-ml/ocaml-cohttp:lwt - Enables support for the dev-ml/lwt cooperative light-w
 dev-ml/ocaml-cstruct:async - Support for asynchronous execution
 dev-ml/ocaml-cstruct:lwt - Enable threads via lwt
 dev-ml/ocaml-cstruct:ppx - Enable the ppx syntax extension
-dev-ml/ocaml-websocket:async - Enables support for the dev-ml/async asynchronous execution library.
-dev-ml/ocaml-websocket:lwt - Enables support for the dev-ml/lwt cooperative light-weight thread library.
 dev-ml/ocamlnet:httpd - Enables net-httpd web server component
 dev-ml/ocamlnet:zip - Enables netzip support to read/write gzip data using object channels
-dev-ml/onanomsg:lwt - Enables lwt support.
 dev-ml/pgocaml:camlp4 - Enable PG'Ocaml syntax extension.
 dev-ml/tyxml:camlp4 - Enables the camlp4 syntax extension (deprecated)
 dev-ml/tyxml:ppx - Enables the ppx syntax extension (preferred)
