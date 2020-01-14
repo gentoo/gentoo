@@ -18,7 +18,7 @@ COMMON_DEPEND="
 	dev-libs/glib:2
 	>=dev-libs/libxdg-basedir-1
 	>=dev-lua/lgi-0.7
-	x11-libs/cairo[xcb]
+	x11-libs/cairo[X,xcb(+)]
 	x11-libs/gdk-pixbuf:2
 	>=x11-libs/libxcb-1.6
 	>=x11-libs/pango-1.19.3[introspection]
