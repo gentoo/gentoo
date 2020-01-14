@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils vim-plugin
+inherit vim-plugin
 
 MY_PV="${PV//_/-}"
 MY_P="${PN}-${MY_PV}"
