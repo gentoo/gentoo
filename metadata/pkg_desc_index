@@ -5224,7 +5224,7 @@ dev-libs/voikko-fi 2.3: Finnish dictionary for libvoikko based spell checkers (v
 dev-libs/volume_key 0.3.11 0.3.12: Library for manipulating and storing storage volume encryption keys
 dev-libs/wayland 1.17.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.18 9999: Wayland protocol files
-dev-libs/weston 3.0.0 7.0.0 9999: Wayland reference compositor
+dev-libs/weston 3.0.0-r1 7.0.0-r1 9999: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.24 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13 1.4.14: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13 1.4.14: SWIG and JNI bindings for Xapian
@@ -7450,7 +7450,7 @@ dev-python/bz2file 0.98: Replacement for bz2.BZ2File with features from newest C
 dev-python/cached-property 1.3.1 1.5.1: A cached-property for decorating methods in classes
 dev-python/cachelib 0.1: Collection of cache libraries in the same API interface. Extracted from werkzeug
 dev-python/cachetools 3.1.0 3.1.1: Extensible memoizing collections and decorators
-dev-python/cairocffi 0.8.0 0.9.0 1.0.2: CFFI-based drop-in replacement for Pycairo
+dev-python/cairocffi 0.8.0-r1 0.9.0-r1 1.0.2-r1: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.2-r1 1.3: Python wrapper for libcangjie
 dev-python/capturer 2.3: Easily capture stdout/stderr of the current process and subprocesses
 dev-python/carbon 0.9.13 0.9.13-r1 1.1.3-r1 1.1.5: Backend data caching and persistence daemon for Graphite
@@ -13422,7 +13422,7 @@ media-plugins/vdr-mailbox 0.7.0-r1: VDR plugin: MailBox provides access to multi
 media-plugins/vdr-menuorg 0.5.1: VDR plugin: make osd menu configurable via config-file
 media-plugins/vdr-mlist 1.0.2: VDR plugin: Show a history of the last OSD message
 media-plugins/vdr-mount 0.0.2: VDR plugin: (Un)Mount removable media via osd
-media-plugins/vdr-mp3ng 0.0.1_pre5-r2: VDR Plugin: play mp3 and ogg on VDR
+media-plugins/vdr-mp3ng 0.0.1_pre5-r2 0.0.1_pre5-r3: VDR Plugin: play mp3 and ogg on VDR
 media-plugins/vdr-mplayer 0.10.2: VDR Plugin: Play video files not supported by VDR with mplayer (divx and more)
 media-plugins/vdr-newsticker 0.0.4: VDR plugin: Show rdf Newsticker on TV
 media-plugins/vdr-noepg 0.0.4 0.0.5: VDR Plugin: will replace the noepg-patch with the new cEpgHandler
@@ -13972,7 +13972,7 @@ media-video/jubler 5.1: Java subtitle editor
 media-video/kaffeine 2.0.18: Media player with digital TV support by KDE
 media-video/kamerka 0.20: Simple photo taking application with fancy animated interface
 media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
-media-video/kmplayer 0.12.0b-r2: Video player plugin for Konqueror and basic MPlayer frontend
+media-video/kmplayer 0.12.0b-r3: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/libav 12.3 13_pre20171219 9999: Complete solution to record, convert and stream audio and video
 media-video/libva-utils 2.4.0 9999: Collection of utilities and tests for VA-API
 media-video/lsdvd 0.17: Utility for getting info out of DVDs
@@ -14989,7 +14989,7 @@ net-misc/ethercard-diag 20050321.1g 20050321.1g-r1: low level mii diagnostic too
 net-misc/etherdfs 20180203: An ethernet-based file system for DOS
 net-misc/ethertypes 0: Maps ethernet frame ids to symbolic names
 net-misc/ethflop 20191003: A network-backed floppy emulator for DOS
-net-misc/eventd 0.27.0: A small daemon to act on remote or local events
+net-misc/eventd 0.27.0-r1: A small daemon to act on remote or local events
 net-misc/exabgp 3.2.17 3.4.26-r1 4.0.10: The BGP swiss army knife of networking
 net-misc/fakeidentd 2.6-r1: A static, secure identd. One source file only!
 net-misc/fatrat 1.2.0_beta2_p20161204: Qt5-based download/upload manager
@@ -18435,7 +18435,7 @@ x11-misc/gxmessage 2.20.3 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r2 0.2.5-r3: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2 1.0.2_p5: Tool which allows you to compose wallpapers ('root pixmaps') for X
 x11-misc/i3blocks 1.4-r1: highly flexible status line for the i3 window manager
-x11-misc/i3lock 2.10 2.11.1 2.12: Simple screen locker
+x11-misc/i3lock 2.10-r1 2.11.1-r1 2.12-r1: Simple screen locker
 x11-misc/i3status 2.12 2.13: generates a status bar for dzen2, xmobar or similar
 x11-misc/i855crt 0.4-r1: Intel Montara 855GM CRT out auxiliary driver
 x11-misc/icewmcp 3.2-r4: A complete control panel for IceWM using gtk & python
@@ -18494,7 +18494,7 @@ x11-misc/pcmanfm-qt 0.14.1-r1: Fast lightweight tabbed filemanager (Qt port)
 x11-misc/peksystray 0.4.0: A system tray dockapp for window managers supporting docking
 x11-misc/picom 7.5-r1 9999: A lightweight compositor for X11 (previously a compton fork)
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
-x11-misc/polybar 3.3.1 3.4.2: A fast and easy-to-use tool for creating status bars
+x11-misc/polybar 3.3.1-r1 3.4.2-r1: A fast and easy-to-use tool for creating status bars
 x11-misc/primus 0.2: Faster OpenGL offloading for Bumblebee
 x11-misc/projecteur 0.6: Linux Desktop Application for the Logitech Spotlight device
 x11-misc/py3status 3.24: py3status is an extensible i3status wrapper written in python
@@ -18513,7 +18513,7 @@ x11-misc/redshift 1.12-r3: A screen color temperature adjusting software
 x11-misc/rendercheck 1.5-r1: Tests for compliance with X RENDER extension
 x11-misc/revelation 0.4.14-r3: A password manager for GNOME
 x11-misc/rodent 5.3.16.3-r1: A fast, small and powerful file manager and graphical shell
-x11-misc/rofi 1.5.2 1.5.3 1.5.4 99999: A window switcher, run dialog and dmenu replacement
+x11-misc/rofi 1.5.2-r1 1.5.3-r1 1.5.4-r1 99999: A window switcher, run dialog and dmenu replacement
 x11-misc/rofi-calc 1.5 9999: Do live calculations in rofi!
 x11-misc/rss-glx 0.9.1-r1: Really Slick OpenGL Screensavers for XScreenSaver
 x11-misc/safeeyes 2.0.8 2.0.8.1 2.0.9: Linux alternative to EyeLeo
@@ -18656,7 +18656,7 @@ x11-misc/xwit 3.4_p15: A collection of simple routines to call some of those X11
 x11-misc/xwrits 2.26-r1: Reminds you to take wrist breaks to help you prevent repetitive stress injury
 x11-misc/xxkb 1.11.1 1.11.1-r1: eXtended XKB - assign different keymaps to different windows
 x11-misc/xystray 1.0: A simple implementation of freedesktop.org notification area for X
-x11-misc/yabar 0.4.0_p20190316: A modern and lightweight status bar for X window managers
+x11-misc/yabar 0.4.0_p20190316-r1: A modern and lightweight status bar for X window managers
 x11-misc/zim 0.71.1 0.72.0 0.72.1: A desktop wiki
 x11-plugins/allin1 0.5.0-r2: All in one monitoring dockapp: RAM, CPU, Net, Power, df, seti
 x11-plugins/asapm 3.1-r1: APM monitor for AfterStep
@@ -18993,7 +18993,7 @@ x11-themes/zukitwo-shell 2016.08.08: Transition package to zuki-themes
 x11-wm/aewm 1.3.12 1.3.12-r1: A minimalistic X11 window manager
 x11-wm/aewm++ 1.1.5-r2: A window manager with more modern features than aewm
 x11-wm/amiwm 0.21_p2: Windowmanager ala Amiga(R) Workbench(R)
-x11-wm/awesome 3.5.9-r2 4.2-r2 4.3 9999: A dynamic floating and tiling window manager
+x11-wm/awesome 3.5.9-r3 4.2-r3 4.3-r1 9999: A dynamic floating and tiling window manager
 x11-wm/blackbox 0.70.1-r1 0.75: A small, fast, full-featured window manager for X
 x11-wm/bspwm 0.9.9: Tiling window manager based on binary space partitioning
 x11-wm/ctwm 4.0.2 4.0.3: A clean, light window manager
@@ -19007,8 +19007,8 @@ x11-wm/fluxbox 1.3.7-r4: X11 window manager featuring tabs and an iconbar
 x11-wm/fvwm 2.6.5-r3 2.6.8-r2: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 9999: A manual tiling window manager for X
-x11-wm/i3 4.14 4.15 4.16 4.16.1 4.17.1 9999: An improved dynamic tiling window manager
-x11-wm/i3-gaps 4.16.1 4.16.1-r1 4.17.1: i3 fork with gaps and some more features
+x11-wm/i3 4.14-r1 4.15-r1 4.16-r1 4.16.1-r1 4.17.1-r1 9999: An improved dynamic tiling window manager
+x11-wm/i3-gaps 4.16.1 4.16.1-r2 4.17.1-r1: i3 fork with gaps and some more features
 x11-wm/icewm 1.5.5 1.6.3 1.6.4: Ice Window Manager with Themes
 x11-wm/jwm 2.3.2 2.3.7: Very fast and lightweight still powerful window manager for X
 x11-wm/larswm 7.5.3-r2: Tiling window manager for X11, based on 9wm by David Hogan
@@ -19023,10 +19023,10 @@ x11-wm/mutter 3.26.2-r1 3.32.2: GNOME 3 compositing window manager based on Clut
 x11-wm/notion 3_p2013030200 3_p2015061300-r1 9999: Notion is a tiling, tabbed window manager for the X window system
 x11-wm/openbox 3.6.1 3.6.1-r1 3.6.1-r2 9999: A standards compliant, fast, light-weight, extensible window manager
 x11-wm/oroborus 2.0.20-r1: Small and fast window manager
-x11-wm/page 1.9.9-r2: A mouse friendly tiling window manager
+x11-wm/page 1.9.9-r3: A mouse friendly tiling window manager
 x11-wm/pekwm 0.1.17-r1 0.1.17-r2: A lightweight window manager initially based on aewm++
 x11-wm/plwm 2.7_rc1-r1: Python classes for, and an implementation of, a window manager
-x11-wm/qtile 0.14.2 9999: A full-featured, hackable tiling window manager written in Python
+x11-wm/qtile 0.14.2-r1 9999: A full-featured, hackable tiling window manager written in Python
 x11-wm/ratpoison 1.4.8-r1 1.4.9 9999: window manager without mouse dependency
 x11-wm/sawfish 1.12.0: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1-r1: window manager selector tool
