@@ -1,18 +1,21 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-inherit autotools out-of-source virtualx
+inherit autotools
 
 DESCRIPTION="An improved dynamic tiling window manager"
 HOMEPAGE="https://i3wm.org/"
-SRC_URI="https://i3wm.org/downloads/${P}.tar.bz2"
+# iw3m.org tarball for 4.14 is broken, see https://github.com/i3/i3/issues/2905
+SRC_URI="https://github.com/i3/i3/archive/${PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${P}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="doc debug test"
+RESTRICT="!test? ( test )"
 
 CDEPEND="dev-libs/libev
 	dev-libs/libpcre
@@ -25,38 +28,35 @@ CDEPEND="dev-libs/libev
 	x11-libs/xcb-util-keysyms
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
-	x11-misc/xkeyboard-config
-	>=x11-libs/cairo-1.14.4[X,xcb]
+	>=x11-libs/cairo-1.14.4[X,xcb(+)]
 	>=x11-libs/pango-1.30.0[X]"
 DEPEND="${CDEPEND}
+	app-text/asciidoc
+	doc? ( app-text/xmlto dev-lang/perl )
 	test? (
-		dev-perl/AnyEvent
-		>=dev-perl/X11-XCB-0.120.0
-		dev-perl/Inline
-		dev-perl/Inline-C
-		dev-perl/IPC-Run
-		dev-perl/ExtUtils-PkgConfig
-		dev-perl/local-lib
-		>=virtual/perl-Test-Simple-0.940.0
-		x11-base/xorg-server[xephyr]
+		dev-perl/Module-Install
 	)
-"
+	virtual/pkgconfig"
 RDEPEND="${CDEPEND}
 	dev-lang/perl
 	dev-perl/AnyEvent-I3
 	dev-perl/JSON-XS"
-BDEPEND="virtual/pkgconfig"
 
 # Test without debug will apply optimization levels, which results
 # in type-punned pointers - which in turn causes test failures.
 REQUIRED_USE="test? ( debug )"
 
+DOCS=(
+	"RELEASE-NOTES-${PV}"
+	docs
+)
 PATCHES=(
-	"${FILESDIR}/${PN}-4.16-musl-GLOB_TILDE.patch"
+	"${FILESDIR}/${PN}-musl-GLOB_TILDE.patch"
 )
 
-# https://github.com/i3/i3/issues/3013
-RESTRICT="test"
+src_test() {
+	emake -C "${CBUILD}" check
+}
 
 src_prepare() {
 	default
@@ -69,30 +69,22 @@ src_prepare() {
 	eautoreconf
 }
 
-my_src_configure() {
+src_configure() {
 	local myeconfargs=(
 		$(use_enable debug)
 	)
 	econf "${myeconfargs[@]}"
 }
 
-my_src_test() {
-	emake \
-		test.commands_parser \
-		test.config_parser \
-		test.inject_randr15
-
-	virtx perl \
-		-I "${S}/testcases/lib" \
-		-I "${BUILD_DIR}/testcases/lib" \
-		testcases/complete-run.pl
+src_compile() {
+	emake -C "${CBUILD}"
 }
 
-my_src_install_all() {
-	doman man/*.1
+src_install() {
+	emake -C "${CBUILD}" DESTDIR="${D}" install
+	doman "${CBUILD}"/man/*.1
 
-	einstalldocs
-	use doc && dodoc -r docs "RELEASE-NOTES-${PV}"
+	use doc && einstalldocs
 
 	exeinto /etc/X11/Sessions
 	doexe "${T}/i3wm"

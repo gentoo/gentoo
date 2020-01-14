@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ CDEPEND="dev-libs/libev
 	x11-libs/xcb-util-wm
 	x11-libs/xcb-util-xrm
 	x11-misc/xkeyboard-config
-	>=x11-libs/cairo-1.14.4[X,xcb]
+	>=x11-libs/cairo-1.14.4[X,xcb(+)]
 	>=x11-libs/pango-1.30.0[X]"
 DEPEND="${CDEPEND}
 	test? (
@@ -40,11 +40,12 @@ DEPEND="${CDEPEND}
 		>=virtual/perl-Test-Simple-0.940.0
 		x11-base/xorg-server[xephyr]
 	)
-	virtual/pkgconfig"
+"
 RDEPEND="${CDEPEND}
 	dev-lang/perl
 	dev-perl/AnyEvent-I3
 	dev-perl/JSON-XS"
+BDEPEND="virtual/pkgconfig"
 
 # Test without debug will apply optimization levels, which results
 # in type-punned pointers - which in turn causes test failures.
