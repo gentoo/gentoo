@@ -1,0 +1,37 @@
+--- scala-2.12.10-orig/project/VersionUtil.scala	2019-09-05 01:01:59.000000000 +1000
++++ scala-2.12.10/project/VersionUtil.scala	2019-09-12 11:00:05.525154568 +1000
+@@ -2,7 +2,7 @@
+ 
+ import sbt.{stringToProcess => _, _}
+ import Keys._
+-import java.util.{Date, Locale, Properties, TimeZone}
++import java.util.{Calendar, Date, Locale, Properties, TimeZone}
+ import java.io.{File, FileInputStream}
+ import java.text.SimpleDateFormat
+ 
+@@ -65,18 +65,13 @@
+     val log = sLog.value
+     val (dateObj, sha) = {
+       try {
+-        // Use JGit to get the commit date and SHA
+-        import org.eclipse.jgit.storage.file.FileRepositoryBuilder
+-        import org.eclipse.jgit.revwalk.RevWalk
+-        val db = new FileRepositoryBuilder().findGitDir.build
+-        val head = db.resolve("HEAD")
+-        if (head eq null) {
+-          log.info("No git HEAD commit found -- Using current date and 'unknown' SHA")
+-          (new Date, "unknown")
+-        } else {
+-          val commit = new RevWalk(db).parseCommit(head)
+-          (new Date(commit.getCommitTime.toLong * 1000L), commit.getName.substring(0, 7))
+-        }
++        val commit = "61701c22900f14676fa181500722b64330eb2605"
++        val cal = Calendar.getInstance();
++        cal.set(Calendar.YEAR, 2019);
++        cal.set(Calendar.MONTH, Calendar.SEPTEMBER);
++        cal.set(Calendar.DAY_OF_MONTH, 5);
++        val date = cal.getTime();
++        (date, commit.substring(0, 7))
+       } catch {
+         case ex: Exception =>
+           log.error("Could not determine commit date + SHA: " + ex)
