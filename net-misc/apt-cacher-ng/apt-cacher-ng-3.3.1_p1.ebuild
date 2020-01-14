@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,8 +41,8 @@ RDEPEND="
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 PATCHES=(
+	"${FILESDIR}"/${PN}-3.3-flags.patch
 	"${WORKDIR}"/debian/patches/debian-changes
-	"${FILESDIR}"/${PN}-3.2-flags.patch
 )
 S=${WORKDIR}/${P/_*}
 
@@ -70,24 +70,27 @@ src_configure(){
 		mycmakeargs+=( "-DHAVE_FUSE_25=no" )
 	fi
 	if use tcpd; then
-		mycmakeargs=( "-DHAVE_LIBWRAP=yes" )
+		mycmakeargs+=( "-DHAVE_LIBWRAP=yes" )
 	else
-		mycmakeargs=( "-DHAVE_LIBWRAP=no" )
+		mycmakeargs+=( "-DHAVE_LIBWRAP=no" )
 	fi
 
 	cmake-utils_src_configure
+
+	sed -i -e '/LogDir/s|/var/tmp|/var/log/'"${PN}"'|g' "${BUILD_DIR}"/conf/acng.conf || die
 }
 
 src_install() {
 	pushd "${BUILD_DIR}" || die
-	dosbin ${PN}
+	dosbin ${PN} acngtool
+	dolib.so libsupacng.so
 	if use fuse; then
 		dobin acngfs
 	fi
-	popd
+	popd || die
 
-	newinitd "${FILESDIR}"/initd-r1 ${PN}
-	newconfd "${FILESDIR}"/confd ${PN}
+	newinitd "${FILESDIR}"/initd-r2 ${PN}
+	newconfd "${FILESDIR}"/confd-r1 ${PN}
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/logrotate ${PN}
@@ -109,6 +112,8 @@ src_install() {
 		docinto examples/conf
 		dodoc conf/*
 	fi
+
+	newdoc "${WORKDIR}"/debian/changelog debian.changelog
 
 	# perl daily cron script
 	dosbin scripts/expire-caller.pl

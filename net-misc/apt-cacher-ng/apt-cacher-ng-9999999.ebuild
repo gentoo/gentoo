@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils toolchain-funcs user
+inherit cmake-utils git-r3 toolchain-funcs user
 
 DESCRIPTION="Yet another caching HTTP proxy for Debian/Ubuntu software packages"
 HOMEPAGE="
@@ -11,12 +11,10 @@ HOMEPAGE="
 "
 LICENSE="BSD-4 ZLIB public-domain"
 SLOT="0"
-SRC_URI="
-	mirror://debian/pool/main/a/${PN}/${PN}_${PV/_*}.orig.tar.xz
-	mirror://debian/pool/main/a/${PN}/${PN}_${PV/_p/-}.debian.tar.xz
-"
+EGIT_REPO_URI="https://salsa.debian.org/blade/apt-cacher-ng.git"
+EGIT_BRANCH="upstream/sid"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="doc fuse systemd tcpd"
 
 COMMON_DEPEND="
@@ -41,7 +39,7 @@ RDEPEND="
 	tcpd? ( sys-apps/tcp-wrappers )
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-3.3-flags.patch
+	"${FILESDIR}"/${PN}-9999999-flags.patch
 )
 S=${WORKDIR}/${P/_*}
 
@@ -62,6 +60,7 @@ pkg_setup() {
 src_configure(){
 	mycmakeargs=(
 		"-DCMAKE_INSTALL_PREFIX=/usr"
+		"-DCMAKE_SKIP_BUILD_RPATH=on"
 	)
 	if use fuse; then
 		mycmakeargs+=( "-DHAVE_FUSE_25=yes" )
