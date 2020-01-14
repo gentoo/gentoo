@@ -4,12 +4,12 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit distutils-r1
+inherit desktop distutils-r1
 
 DESCRIPTION="A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio"
 HOMEPAGE="https://github.com/masmu/pulseaudio-dlna"
 
-SRC_URI="https://github.com/masmu/pulseaudio-dlna/archive/b0db8137224f5a293329a60187365168304c3768.zip"
+SRC_URI="https://github.com/masmu/pulseaudio-dlna/archive/b0db8137224f5a293329a60187365168304c3768.tar.gz -> ${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 S="${WORKDIR}/pulseaudio-dlna-b0db8137224f5a293329a60187365168304c3768"
 
@@ -31,12 +31,11 @@ RDEPEND=">=dev-python/protobuf-python-2.5.0[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	>=dev-python/dbus-python-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/zeroconf-0.17.4[${PYTHON_USEDEP}]
-	dev-python/pygobject[cairo,${PYTHON_USEDEP}]
+	dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 	gnome-base/librsvg[introspection]
 	x11-libs/gtk+:3[introspection]
 	|| (
 		|| (
-			media-video/ffmpeg[encode,faac,mp3,opus,vorbis]
 			media-video/ffmpeg[encode,fdk,mp3,opus,vorbis] )
 		( media-video/libav[encode,faac,mp3,opus,vorbis] )
 		( media-libs/faac
@@ -62,6 +61,5 @@ python_prepare_all() {
 src_install() {
 	distutils-r1_src_install
 
-	insinto /usr/share/applications
-	doins "${FILESDIR}/${PN}.desktop"
+	domenu "${FILESDIR}/${PN}.desktop"
 }
