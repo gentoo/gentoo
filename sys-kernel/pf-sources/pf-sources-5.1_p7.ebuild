@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ ETYPE="sources"
 KEYWORDS="-* ~amd64 ~ppc ~ppc64 ~x86"
 
 HOMEPAGE="
-	https://gitlab.com/post-factum/pf-kernel/wikis/README
+	https://gitlab.com/post-factum/pf-kernel/-/wikis/README
 	https://dev.gentoo.org/~mpagano/genpatches/
 "
 
