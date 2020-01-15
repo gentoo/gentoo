@@ -3,18 +3,21 @@
 
 EAPI=7
 
-inherit cmake git-r3 xdg
+MY_P="qTox-${PV}"
+inherit cmake xdg
 
 DESCRIPTION="Most feature-rich GUI for net-libs/tox using Qt5"
 HOMEPAGE="https://github.com/qTox/qTox"
-EGIT_REPO_URI="https://github.com/qTox/qTox.git"
+SRC_URI="https://github.com/qTox/qTox/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="notification test X"
 
 RESTRICT="!test? ( test )"
+
+S="${WORKDIR}/${MY_P}"
 
 BDEPEND="
 	dev-qt/linguist-tools:5
@@ -48,6 +51,8 @@ DEPEND="${RDEPEND}
 	test? ( dev-qt/qttest:5 )
 "
 
+PATCHES=( "${FILESDIR}/${P}-qt-5.13.patch" ) # bug #699152
+
 src_prepare() {
 	cmake_src_prepare
 
@@ -64,6 +69,7 @@ src_configure() {
 		-DENABLE_GTK_SYSTRAY=$(usex notification)
 		-DPLATFORM_EXTENSIONS=$(usex X)
 		-DUSE_FILTERAUDIO=OFF
+		-DGIT_DESCRIBE="${PV}"
 	)
 
 	cmake_src_configure
