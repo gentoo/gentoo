@@ -1944,6 +1944,20 @@
     </member>
   </project>
   <project>
+    <email>lua@gentoo.org</email>
+    <name>Lua Project</name>
+    <url>https://wiki.gentoo.org/wiki/Project:Lua</url>
+    <description>Lua language and library maintenace</description>
+    <member>
+      <email>robbat2@gentoo.org</email>
+      <name>Robin Johnson</name>
+    </member>
+    <member>
+      <email>williamh@gentoo.org</email>
+      <name>William Hubbs</name>
+    </member>
+  </project>
+  <project>
     <email>m68k@gentoo.org</email>
     <name>m68k Development</name>
     <url>https://wiki.gentoo.org/wiki/Project:M68k</url>
