@@ -1,11 +1,12 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install postinst postrm prepare unpack
-DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 ) >=dev-vcs/git-1.8.2.1[curl]
+DEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 DESCRIPTION=vim plugin: easy commenting of code for many filetypes
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/scrooloose/nerdcommenter https://www.vim.org/scripts/script.php?script_id=1218
 LICENSE=WTFPL-2
 PROPERTIES=live
 RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	git-r3	809e27702c573cbba31c08ed00bbad33	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=5e68fb8c994340d740ca824b691cd320
+_md5_=cb6abbdd442e445ad642d9b3bf4ad25d
