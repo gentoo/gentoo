@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7} )
 
 GIT_ECLASS=""
 if [[ ${PV} = *9999* ]]; then
@@ -25,32 +26,15 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="doc"
+IUSE=""
 
-RDEPEND="
-	dev-python/setuptools
-	>=dev-python/feedparser-5.1.3"
-DEPEND="${RDEPEND}
-	doc? ( dev-python/docutils )"
-
-src_compile() {
-	distutils-r1_src_compile
-	if use doc; then
-		rst2html.py README.rst marrie.html || die "rst2html.py failed"
-	fi
-}
-
-src_install() {
-	distutils-r1_src_install
-	if use doc; then
-		dohtml marrie.html
-	fi
-}
+RDEPEND="dev-python/feedparser[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
 
 pkg_postinst() {
 	distutils-r1_pkg_postinst
 	elog
 	elog "You'll need a media player and a file downloader."
-	elog "Recommended packages: net-misc/wget and media-video/mplayer"
+	elog "Recommended packages: net-misc/wget and media-video/mpv"
 	elog
 }
