@@ -10,4 +10,4 @@ RDEPEND=!static? ( atahpt? ( sys-apps/pciutils ) atapromise? ( sys-apps/pciutils
 SLOT=0
 SRC_URI=https://download.flashrom.org/releases/flashrom-1.0.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=314a0f25b24a934f578e692ca6848a4b
+_md5_=c558e616eaef3bdbf4b743f4b559fe8c
