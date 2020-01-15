@@ -67,8 +67,8 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	X? ( x11-base/xorg-proto )"
 
-#S="${WORKDIR}/${MY_P}"
-S="${WORKDIR}/ImageMagick6-${MY_PV}"
+S="${WORKDIR}/${MY_P}"
+#S="${WORKDIR}/ImageMagick6-${MY_PV}"
 
 src_prepare() {
 	default
