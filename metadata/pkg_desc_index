@@ -1499,7 +1499,7 @@ app-emacs/zenirc 2.112-r1: A full-featured scriptable IRC client for the Emacs t
 app-emulation/aqemu 0.9.2: Graphical interface for QEMU and KVM emulators, using Qt5
 app-emulation/aranym 1.1.0: Atari Running on Any Machine, VM running Atari ST/TT/Falcon OS and TOS/GEM apps
 app-emulation/bochs 2.6.9 2.6.10: LGPL-ed pc emulator
-app-emulation/buildah 1.11.5-r1 1.11.6 1.12.0: A tool that facilitates building OCI images
+app-emulation/buildah 1.11.5-r1 1.11.6 1.12.0 1.13.1: A tool that facilitates building OCI images
 app-emulation/cadvisor 0.34.0: Analyzes resource usage and performance characteristics of running containers
 app-emulation/cloud-init 17.2 18.4-r1 18.5 9999: Cloud instance initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
@@ -13665,7 +13665,7 @@ media-sound/lyvi 2.0.0: A simple command-line lyrics viewer
 media-sound/mac 4.11.4.5.7-r1: Monkey's Audio Codecs
 media-sound/madplay 0.15.2b-r1: The MAD audio player
 media-sound/mangler 1.2.5-r1: Open source VOIP client capable of connecting to Ventrilo 3.x servers
-media-sound/marrie 0.3.2-r1 9999: A simple podcast client that runs on the Command Line Interface
+media-sound/marrie 0.4 9999: A simple podcast client that runs on the Command Line Interface
 media-sound/mcdp 0.4b: A very small console cd player
 media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audio system
 media-sound/mhwaveedit 1.4.23: GTK+ Sound file editor (wav, and a few others.)
