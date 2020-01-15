@@ -742,67 +742,6 @@ net-misc/gnome-remote-desktop
 # Requires >=dev-lang/lua-5.2 which is masked
 >=app-admin/conky-1.11.4
 
-# Andreas K. Hüttel <dilfridge@gentoo.org> (2019-05-11)
-# Perl 5.24 will be removed soon. Please upgrade.
-<dev-lang/perl-5.26.2
-=virtual/perl-Archive-Tar-2.40.100_rc-r6
-=virtual/perl-B-Debug-1.230.0-r3
-=virtual/perl-CPAN-2.110.100_rc-r6
-=virtual/perl-CPAN-Meta-2.150.5-r1
-=virtual/perl-Carp-1.400.0-r1
-=virtual/perl-Compress-Raw-Bzip2-2.69.0-r1
-=virtual/perl-Compress-Raw-Zlib-2.69.0-r1
-=virtual/perl-DB_File-1.835.0-r3
-=virtual/perl-Data-Dumper-2.160.0-r1
-=virtual/perl-Devel-PPPort-3.320.0-r1
-=virtual/perl-Digest-MD5-2.540.0-r3
-=virtual/perl-Digest-SHA-5.950.100_rc-r6
-=virtual/perl-Encode-2.800.100_rc-r4
-=virtual/perl-ExtUtils-MakeMaker-7.100.200_rc-r4
-=virtual/perl-ExtUtils-ParseXS-3.310.0-r1
-=virtual/perl-File-Spec-3.630.100_rc-r4
-=virtual/perl-Filter-Simple-0.920.0-r3
-=virtual/perl-Getopt-Long-2.480.0-r1
-=virtual/perl-HTTP-Tiny-0.56.1_rc-r4
-=virtual/perl-I18N-LangTags-0.400.0-r5
-=virtual/perl-IO-1.360.100_rc-r4
-=virtual/perl-IO-Compress-2.69.1_rc-r4
-=virtual/perl-IO-Socket-IP-0.370.0-r3
-=virtual/perl-IPC-Cmd-0.920.100_rc-r6
-=virtual/perl-JSON-PP-2.273.0.100_rc-r6
-=virtual/perl-Locale-Maketext-1.260.100_rc-r6
-=virtual/perl-Math-BigInt-1.999.715-r2
-=virtual/perl-Math-BigInt-FastCalc-0.400.0-r1
-=virtual/perl-Math-BigRat-0.260.802-r1
-=virtual/perl-Math-Complex-1.590.0-r9
-=virtual/perl-Module-CoreList-5.201.709.220-r2
-=virtual/perl-Module-Load-Conditional-0.640.0-r3
-=virtual/perl-Module-Metadata-1.0.31-r1
-=virtual/perl-Net-Ping-2.430.100_rc-r6
-=virtual/perl-Parse-CPAN-Meta-1.441.700.100_rc-r4
-=virtual/perl-Perl-OSType-1.9.0-r1
-=virtual/perl-Pod-Simple-3.320.0-r1
-=virtual/perl-Safe-2.390.0-r3
-=virtual/perl-Scalar-List-Utils-1.420.200_rc-r1
-=virtual/perl-Storable-2.560.100_rc-r4
-=virtual/perl-Sys-Syslog-0.330.100_rc-r6
-=virtual/perl-Term-ANSIColor-4.40.0-r1
-=virtual/perl-Term-ReadLine-1.150.0-r3
-=virtual/perl-Test-1.280.100_rc-r4
-=virtual/perl-Test-Harness-3.360.100_rc-r3
-=virtual/perl-Test-Simple-1.1.14_p522-r2
-=virtual/perl-Thread-Queue-3.90.0-r1
-=virtual/perl-Thread-Semaphore-2.120.0-r9
-=virtual/perl-Unicode-Collate-1.140.0-r2
-=virtual/perl-XSLoader-0.220.0-r4
-=virtual/perl-bignum-0.420.100_rc-r4
-=virtual/perl-libnet-3.80.100_rc-r4
-=virtual/perl-parent-0.234.0-r1
-=virtual/perl-podlators-4.70.0-r1
-=virtual/perl-threads-2.70.0-r1
-=virtual/perl-threads-shared-1.510.0-r1
-=virtual/perl-version-0.991.600-r1
-
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-04-17)
 # The Oracle JDK License has changed for releases starting 2019-04-16
 # While it may be fine to use for some usecases it's not comepletely clear
