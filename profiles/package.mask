@@ -543,30 +543,6 @@ sys-fs/yaffs2-utils
 # Removal in 14 days.  Bug #533052.
 net-analyzer/gsm-receiver
 
-# Michał Górny <mgorny@gentoo.org> (2019-12-15)
-# Unmaintained.  Most of those packages haven't been bumped since 2013,
-# few have been updated in 2015.
-# Removal in 30 days.  Bug #703032.
-dev-util/obs-service-cpanspec
-dev-util/obs-service-download_files
-dev-util/obs-service-download_src_package
-dev-util/obs-service-download_url
-dev-util/obs-service-extract_file
-dev-util/obs-service-format_spec_file
-dev-util/obs-service-generator_driver_update_disk
-dev-util/obs-service-github_tarballs
-dev-util/obs-service-git_tarballs
-dev-util/obs-service-meta
-dev-util/obs-service-rearchive
-dev-util/obs-service-recompress
-dev-util/obs-service-set_version
-dev-util/obs-service-source_validator
-dev-util/obs-service-tar_scm
-dev-util/obs-service-update_source
-dev-util/obs-service-verify_file
-dev-util/osc
-dev-util/suse-build
-
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2019-12-15)
 #media-plugins/vdr-console failed after glibc update.
 #see wrt bug 692334
@@ -581,20 +557,9 @@ media-plugins/vdr-console
 # #681678, #684420, #694488. Removal in 30 days.
 dev-db/clickhouse
 
-# David Seifert <soap@gentoo.org> (2019-12-08)
-# No revdeps, py2 only, needs version bump, practically unmaintained
-# in Gentoo. Removal in 30 days.
-sci-chemistry/pymol-plugins-psico
-
 # Bernard Cafarelli <voyageur@gentoo.org> (2019-11-29)
 # Beta for new major version with initial Python 3 support
 =app-backup/rdiff-backup-1.4.0_beta*
-
-# Jonas Stein <jstein@gentoo.org> (2019-11-26)
-# Package is obsolete. Successor is net-wireless/b43-fwcutter
-# Bug #537786.
-# Removal after 2020-01-01
-net-wireless/bcm43xx-fwcutter
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
