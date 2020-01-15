@@ -1,20 +1,19 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-EGIT_REPO_URI="https://github.com/cinemast/${PN}.git"
-EGIT_BRANCH=develop
-inherit cmake-utils git-r3
+inherit cmake
 
 DESCRIPTION="JSON-RPC (1.0 & 2.0) framework for C++"
 HOMEPAGE="https://github.com/cinemast/libjson-rpc-cpp"
-SRC_URI=""
+SRC_URI="https://github.com/cinemast/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/1"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="doc +http-client +http-server redis-client redis-server +stubgen test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/jsoncpp:=
@@ -27,8 +26,6 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( dev-cpp/catch:0 )"
 
-RESTRICT="!test? ( test )"
-
 src_configure() {
 	local mycmakeargs=(
 		-DHTTP_CLIENT=$(usex http-client)
@@ -38,6 +35,8 @@ src_configure() {
 		# they have no deps
 		-DTCP_SOCKET_CLIENT=ON
 		-DTCP_SOCKET_SERVER=ON
+		-DSERIAL_PORT_CLIENT=ON
+		-DSERIAL_PORT_SERVER=ON
 		-DUNIX_DOMAIN_SOCKET_CLIENT=ON
 		-DUNIX_DOMAIN_SOCKET_SERVER=ON
 		# they are not installed
@@ -47,11 +46,11 @@ src_configure() {
 		-DCATCH_INCLUDE_DIR="${EPREFIX}/usr/include/catch2"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	use doc && emake -C "${BUILD_DIR}" doc
 }
@@ -59,11 +58,11 @@ src_compile() {
 src_test() {
 	# Tests fail randomly when run in parallel
 	local MAKEOPTS=-j1
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	use doc && dodoc -r "${BUILD_DIR}"/doc/html
 }
