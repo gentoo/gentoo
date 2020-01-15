@@ -10584,27 +10584,9 @@ dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61 9.0.176 9.1.85 9.2.88 10.1.243: NVIDIA CUDA Software Development Kit
 dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.1.85 9.2.88 10.0.130 10.1.105-r1 10.1.168 10.1.243-r1 10.2.89: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
-dev-util/obs-service-cpanspec 20130318: Open Build Service client module - cpanspec service
-dev-util/obs-service-download_files 20130716: Open Build Service client module - download_files service
-dev-util/obs-service-download_src_package 20130318: Open Build Service client module - download_src_package service
-dev-util/obs-service-download_url 20130318: Open Build Service client module - download_url service
-dev-util/obs-service-extract_file 20130318: Open Build Service client module - extract_file service
-dev-util/obs-service-format_spec_file 20130618: Open Build Service client module - format_spec_file service
-dev-util/obs-service-generator_driver_update_disk 20130318: Open Build Service client module - generator_driver_update_disk service
-dev-util/obs-service-git_tarballs 0.1.7: Open Build Service client module - git_tarballs service
-dev-util/obs-service-github_tarballs 0.2.1: Open Build Service client module - github_tarballs service
-dev-util/obs-service-meta 1 2: Metapackage to pull all open build service services
-dev-util/obs-service-rearchive 20130802: Open Build Service client module - rearchive service
-dev-util/obs-service-recompress 0.2: Open Build Service client module - recompress service
-dev-util/obs-service-set_version 0.3: Open Build Service client module - set_version service
-dev-util/obs-service-source_validator 0.3: Open Build Service client module - source_validator service
-dev-util/obs-service-tar_scm 0.3.1: Open Build Service client module - tar_scm service
-dev-util/obs-service-update_source 20130802: Open Build Service client module - update_source service
-dev-util/obs-service-verify_file 20130403: Open Build Service client module - verify_file service
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
 dev-util/oprofile 1.3.0: A transparent low-overhead system-wide profiler
-dev-util/osc 0.152.0 0.154.0 9999: Command line tool for Open Build Service
 dev-util/ostree 2018.5 2018.9: Operating system and container binary deployment and upgrades
 dev-util/packer 1.3.5 1.4.0 1.4.1 1.4.4 1.4.5: A tool to create identical machine images for multiple platforms
 dev-util/patchbin 20160208 99999999: Apply binary patches without git
@@ -10682,7 +10664,6 @@ dev-util/strace 4.26 5.2 5.3 5.4 9999: A useful diagnostic, instructional, and d
 dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.34.1 0.47.0 0.63.0 0.78.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: A member function stub generator for C++
-dev-util/suse-build 2015.11.05: Script to build SUSE Linux RPMs
 dev-util/sysdig 0.26.4: A system exploration and troubleshooting tool
 dev-util/sysprof 3.32.0: System-wide Linux Profiler
 dev-util/systemtap 2.4-r1 3.1-r1 4.0-r1: A linux trace/probe tool
