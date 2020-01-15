@@ -4847,7 +4847,7 @@ dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE k
 dev-libs/go-usb 9999: CGO bindings for libusb
 dev-libs/gobject-introspection 1.60.2: Introspection system for GObject-based libraries
 dev-libs/gobject-introspection-common 1.60.2: Build infrastructure for GObject Introspection
-dev-libs/gom 0.3.2-r1: GObject to SQLite object mapper library
+dev-libs/gom 0.3.2-r1 0.3.3: GObject to SQLite object mapper library
 dev-libs/gost-engine 1.1.0.3_p20181031-r1 9999: A reference implementation of the Russian GOST crypto algorithms for OpenSSL
 dev-libs/granite 5.2.5-r1: Elementary OS library that extends GTK+
 dev-libs/grantlee 5.1.0 5.2.0: C++ string template engine based on the Django template system
