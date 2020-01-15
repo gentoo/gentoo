@@ -6,7 +6,7 @@ EAPI=7
 inherit font
 
 DESCRIPTION="Vollkorn, the free and healthy typeface for bread and butter use"
-HOMEPAGE="http://friedrichalthausen.de/?page_id=411"
+HOMEPAGE="http://vollkorn-typeface.com/"
 SRC_URI="http://friedrichalthausen.de/Vollkorn-${PV}.zip"
 
 LICENSE="OFL-1.1"
