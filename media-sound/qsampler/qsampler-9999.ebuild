@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ DEPEND="${COMMON_DEPEND}
 
 DOCS=( AUTHORS ChangeLog README TODO TRANSLATORS )
 
-PATCHES=( "${FILESDIR}/${PN}-0.5.3-Makefile.patch" )
+PATCHES=( "${FILESDIR}/${P}-Makefile.patch" )
 
 src_prepare() {
 	default
