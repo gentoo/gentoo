@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="7"
+EAPI="6"
 
-inherit flag-o-matic multilib savedconfig toolchain-funcs
+inherit flag-o-matic multilib savedconfig toolchain-funcs versionator
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://uclibc-ng.org/git/uclibc-ng"
@@ -18,7 +18,7 @@ HOMEPAGE="https://uclibc-ng.org/"
 if [[ ${PV} != "9999" ]] ; then
 	PATCH_VER=""
 	SRC_URI="https://downloads.uclibc-ng.org/releases/${PV}/${MY_P}.tar.bz2"
-	KEYWORDS="-* amd64 ~mips ppc x86"
+	KEYWORDS="-* ~arm"
 fi
 
 LICENSE="LGPL-2"
@@ -253,28 +253,29 @@ src_prepare() {
 	# We want to get rid of this and just have ABI = 0.
 	eapply "${FILESDIR}"/uclibc-compat-r1.patch
 
+	# Critical fix for ld.so.cache
+	eapply "${FILESDIR}"/${P}-fix-ld.so.cache.patch
+
 	# We need to change the major.minor.sublevel of uclibc-ng.
 	# Upstream sets MAJOR_VERSION = 1 which breaks runtime linking.
 	# If we really want the ABI bump, we'll have to hack the gcc
 	# spec file and change the '*link:' rule.
-	version_0=$(ver_cut 1)
-	version_1=$(ver_cut 2)
-	version_2=$(ver_cut 3)
-	if [[ -z ${version_1} ]]; then
+	version=( $(get_version_components) )
+	if [[ -z ${version[1]} ]]; then
 		subversion=0
 		extraversion=0
 	else
-		subversion=${version_1}
-		if [[ -z ${version_2} ]]; then
+		subversion=${version[1]}
+		if [[ -z ${version[2]} ]]; then
 			extraversion=0
 		else
-			extraversion=.${version_2}
+			extraversion=.${version[2]}
 		fi
 	fi
 
 	sed -i \
 		-e "/^MAJOR_VERSION/s|:=.*|:= 0|" \
-		-e "/^MINOR_VERSION/s|:=.*|:= ${version_0}|" \
+		-e "/^MINOR_VERSION/s|:=.*|:= ${version[0]}|" \
 		-e "/^SUBLEVEL/s|:=.*|:= ${subversion}|" \
 		-e "/^EXTRAVERSION/s|:=.*|:= ${extraversion}|" \
 		Rules.mak || die
