@@ -41,7 +41,7 @@ DEPEND="
 	$(add_qt_dep qtdbus)
 	$(add_qt_dep qtdeclarative)
 	$(add_qt_dep qtgraphicaleffects)
-	$(add_qt_dep qtgui 'xcb')
+	$(add_qt_dep qtgui 'xcb(-)')
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtx11extras)
 	x11-libs/libSM
