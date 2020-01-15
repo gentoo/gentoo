@@ -15458,7 +15458,7 @@ net-wireless/chirp 20190925 99999999: Free open-source tool for programming your
 net-wireless/cpyrit-cuda 0.5.0: A sub-package that adds CUDA-capability to Pyrit
 net-wireless/cpyrit-opencl 0.5.0: A sub-package that adds OpenCL-capability to Pyrit
 net-wireless/crackle 0.1 9999: Crackle cracks BLE Encryption (AKA Bluetooth Smart)
-net-wireless/crda 3.18-r3: Central Regulatory Domain Agent for wireless networks
+net-wireless/crda 3.18-r3 4.14: Central Regulatory Domain Agent for wireless networks
 net-wireless/cubicsdr 0.2.3-r2 9999: Cross-Platform and Open-Source Software Defined Radio Application
 net-wireless/dump1090 1.15_pre20180509 3.7.2 9999: simple Mode S decoder for RTLSDR devices
 net-wireless/gnome-bluetooth 3.34.0: Bluetooth graphical utilities integrated with GNOME
