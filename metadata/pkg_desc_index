@@ -763,6 +763,7 @@ app-crypt/ima-evm-utils 1.1-r1 9999: Supporting tools for IMA and EVM
 app-crypt/jacksum 1.7.0: Java utility for computing and verifying checksums: CRC*, MD*, etc.
 app-crypt/jetring 0.25 0.27: GPG keyring maintenance using changesets
 app-crypt/jitterentropy 2.1.2: Hardware RNG based on CPU timing jitter
+app-crypt/jitterentropy-rngd 1.1.0: Jitter RNG daemon
 app-crypt/johntheripper 1.8.0: fast password cracker
 app-crypt/johntheripper-jumbo 1.8.0 1.9.0 9999: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
@@ -12817,7 +12818,7 @@ media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.3 2.7.4: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.3 2.7.4: Plugins for the video editor media-video/avidemux
 media-libs/babl 0.1.12 0.1.38 0.1.62 0.1.64 0.1.66 0.1.72 9999: A dynamic, any to any, pixel format conversion library
-media-libs/bcg729 1.0.4 4.3.0_alpha 999999: encoder and decoder of the ITU G729 Annex A/B speech codec
+media-libs/bcg729 1.0.4 1.0.4-r1 999999: encoder and decoder of the ITU G729 Annex A/B speech codec
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
