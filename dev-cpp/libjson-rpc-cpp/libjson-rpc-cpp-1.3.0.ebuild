@@ -46,11 +46,11 @@ src_configure() {
 		-DCATCH_INCLUDE_DIR="${EPREFIX}/usr/include/catch2"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	use doc && emake -C "${BUILD_DIR}" doc
 }
@@ -58,11 +58,11 @@ src_compile() {
 src_test() {
 	# Tests fail randomly when run in parallel
 	local MAKEOPTS=-j1
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	use doc && dodoc -r "${BUILD_DIR}"/doc/html
 }
