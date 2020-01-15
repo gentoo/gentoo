@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit systemd user
+EAPI=7
+inherit systemd
 
 DESCRIPTION="Nagios Remote Plugin Executor"
 HOMEPAGE="https://github.com/NagiosEnterprises/nrpe"
@@ -13,7 +13,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="command-args libressl selinux ssl"
 
-DEPEND="sys-apps/tcp-wrappers
+DEPEND="acct-group/nagios
+	acct-user/nagios
+	sys-apps/tcp-wrappers
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -24,11 +26,6 @@ RDEPEND="${DEPEND}
 
 PATCHES=( "${FILESDIR}/nrpe-3.2.1-eliminate-systemd-pid.patch" )
 
-pkg_setup() {
-	enewgroup nagios
-	enewuser nagios -1 -1 -1 nagios
-}
-
 src_configure() {
 	# The configure script tries to detect what OS, distribution, and
 	# init system you're running and changes the build/install process
@@ -36,6 +33,13 @@ src_configure() {
 	# because we don't want it guessing, for example, whether or not
 	# to install the tmpfiles.d entry based on whether or not systemd
 	# is currently running (OpenRC uses them too).
+	#
+	# Note: upstream defaults to using "nagios" as the default NRPE
+	# user and group. I have a feeling that this isn't quite correct
+	# on a system where "nagios" is also the user running the nagios
+	# server daemon. In the future, it would be nice if someone who
+	# actually uses NRPE could test with an unprivileged "nrpe" as
+	# the user and group.
 	econf \
 		--libexecdir=/usr/$(get_libdir)/nagios/plugins \
 		--localstatedir=/var/lib/nagios \
