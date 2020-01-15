@@ -107,7 +107,7 @@ src_compile() {
 	# Help keep things in sync.
 	local sprogs=$(echo $(
 		grep -o 'CONFIG_[A-Z0-9_]*' flashrom.c | \
-			sort -u | \
+			LC_ALL=C sort -u | \
 			sed 's:^CONFIG_::' | \
 			tr '[:upper:]_' '[:lower:]-' | \
 			grep -v ni845x-spi))
