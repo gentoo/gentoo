@@ -11,8 +11,6 @@ DESCRIPTION="Capture C-level stdout/stderr in Python"
 HOMEPAGE="https://github.com/minrk/wurlitzer https://pypi.org/project/wurlitzer"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
-IUSE="test"
-
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
