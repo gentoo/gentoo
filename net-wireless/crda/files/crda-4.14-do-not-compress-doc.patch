@@ -1,0 +1,36 @@
+diff --git a/Makefile b/Makefile
+index 335d17d..683a379 100644
+--- a/Makefile
++++ b/Makefile
+@@ -157,11 +157,7 @@ verify: $(REG_BIN) regdbdump
+ 		LD_LIBRARY_PATH=.:$(LD_LIBRARY_PATH) \
+ 		./regdbdump $(REG_BIN) >/dev/null
+ 
+-%.gz: %
+-	@$(NQ) ' GZIP' $<
+-	$(Q)gzip < $< > $@
+-
+-install: install-libreg install-libreg-headers crda crda.8.gz regdbdump.8.gz
++install: install-libreg install-libreg-headers crda crda.8 regdbdump.8
+ 	$(NQ) '  INSTALL  crda'
+ 	$(Q)$(MKDIR) $(DESTDIR)/$(SBINDIR)
+ 	$(Q)$(INSTALL) -m 755 -t $(DESTDIR)/$(SBINDIR) crda
+@@ -177,13 +173,13 @@ install: install-libreg install-libreg-headers crda crda.8.gz regdbdump.8.gz
+ 	$(Q)$(INSTALL) -m 644 -t \
+ 		$(DESTDIR)/$(UDEV_RULE_DIR)/ \
+ 		udev/$(UDEV_LEVEL)regulatory.rules
+-	$(NQ) '  INSTALL  crda.8.gz'
++	$(NQ) '  INSTALL  crda.8'
+ 	$(Q)$(MKDIR) $(DESTDIR)$(MANDIR)/man8/
+-	$(Q)$(INSTALL) -m 644 -t $(DESTDIR)/$(MANDIR)/man8/ crda.8.gz
+-	$(NQ) '  INSTALL  regdbdump.8.gz'
+-	$(Q)$(INSTALL) -m 644 -t $(DESTDIR)/$(MANDIR)/man8/ regdbdump.8.gz
++	$(Q)$(INSTALL) -m 644 -t $(DESTDIR)/$(MANDIR)/man8/ crda.8
++	$(NQ) '  INSTALL  regdbdump.8'
++	$(Q)$(INSTALL) -m 644 -t $(DESTDIR)/$(MANDIR)/man8/ regdbdump.8
+ 
+ clean:
+ 	$(Q)rm -f $(LIBREG) crda regdbdump intersect db2rd optimize \
+-		*.o *~ *.pyc keys.c *.gz \
++		*.o *~ *.pyc keys.c \
+ 	udev/$(UDEV_LEVEL)regulatory.rules udev/regulatory.rules.parsed
