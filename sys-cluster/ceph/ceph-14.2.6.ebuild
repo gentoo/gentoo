@@ -39,7 +39,7 @@ COMMON_DEPEND="
 	virtual/libudev:=
 	app-arch/bzip2:=[static-libs?]
 	app-arch/lz4:=[static-libs?]
-	app-arch/snappy:=[static-libs?]
+	app-arch/snappy:=[static-libs(-)?]
 	app-arch/zstd:=[static-libs?]
 	app-shells/bash:0
 	app-misc/jq:=[static-libs?]
