@@ -109,7 +109,8 @@ src_compile() {
 		grep -o 'CONFIG_[A-Z0-9_]*' flashrom.c | \
 			sort -u | \
 			sed 's:^CONFIG_::' | \
-			tr '[:upper:]_' '[:lower:]-'))
+			tr '[:upper:]_' '[:lower:]-' | \
+			grep -v ni845x-spi))
 	local eprogs=$(echo ${IUSE_PROGRAMMERS} | sed -E 's/\B[-+]\b//g')
 	if [[ ${sprogs} != "${eprogs}" ]] ; then
 		eerror "The ebuild needs to be kept in sync."
