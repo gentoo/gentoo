@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure install
+DESCRIPTION=Expose the functionality of cbraid as a shared library
+EAPI=7
+HOMEPAGE=https://github.com/miguelmarco/libbraiding
+IUSE=static-libs
+KEYWORDS=~amd64
+LICENSE=GPL-3+
+SLOT=0
+SRC_URI=http://files.sagemath.org/spkg/upstream/libbraiding/libbraiding-1.0.tar.gz
+_md5_=e2b1ac2f9e3bfc44bf836d580c2f9fa0
