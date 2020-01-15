@@ -16003,7 +16003,7 @@ sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your phot
 sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxpy 0.8.6: python GPX parser
-sci-geosciences/gpxsee 7.15 7.17 7.18: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
+sci-geosciences/gpxsee 7.18: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
 sci-geosciences/grass 7.4.4 7.4.4-r1: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
 sci-geosciences/gshhs-data 2.2.0: Global Self-consistent, Hierarchical, High-resolution Shoreline programs data
