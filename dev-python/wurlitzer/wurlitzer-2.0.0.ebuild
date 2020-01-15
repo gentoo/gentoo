@@ -12,13 +12,13 @@ HOMEPAGE="https://github.com/minrk/wurlitzer https://pypi.org/project/wurlitzer"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 IUSE="test"
-RESTRICT="!test? ( test )"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="test? ( dev-python/mock[${PYTHON_USEDEP}] )"
+distutils_enable_tests pytest
 
 python_test() {
 	pytest -vv test.py || die "Tests fail with ${EPYTHON}"
