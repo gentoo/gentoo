@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	local PATCHES=(
-		"${FILESDIR}/${P}.patch"
+		"${FILESDIR}/${PN}-1.0.0.patch"
 		)
 
 	# this test requires X
