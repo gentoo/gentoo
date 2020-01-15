@@ -1,45 +1,37 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_REPO_URI="https://github.com/PowerDNS/pdns.git"
-
-if [[ ${PV} = 9999 ]]; then
-	ADDITIONAL_ECLASSES="autotools git-r3"
-fi
-
-inherit eutils flag-o-matic user ${ADDITIONAL_ECLASSES}
+inherit eutils flag-o-matic user
 
 DESCRIPTION="A highly DNS-, DoS- and abuse-aware loadbalancer"
 HOMEPAGE="https://dnsdist.org"
 
-if [[ ${PV} == 9999 ]]; then
-	SRC_URI=""
-	S="${WORKDIR}/${P}/pdns/dnsdistdist"
-else
-	SRC_URI="https://downloads.powerdns.com/releases/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
-fi
+SRC_URI="https://downloads.powerdns.com/releases/${P}.tar.bz2"
+KEYWORDS="~amd64 ~x86"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="dnscrypt gnutls fstrm luajit regex remote-logging snmp +ssl systemd test"
+IUSE="dnscrypt dnstap doh gnutls +lmdb luajit regex remote-logging snmp +ssl systemd test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="dnscrypt? ( ssl )
-		gnutls? ( ssl )"
+		gnutls? ( ssl )
+		doh? ( ssl !gnutls )"
 
 RDEPEND="
 	>=dev-libs/boost-1.35:=
 	dev-libs/libedit:=
-	fstrm? ( dev-libs/fstrm:= )
+	dnscrypt? ( dev-libs/libsodium:= )
+	dnstap? ( dev-libs/fstrm:= )
+	doh? ( www-servers/h2o:=[libh2o] )
+	lmdb? ( dev-db/lmdb:= )
 	luajit? ( dev-lang/luajit:= )
 	!luajit? ( >=dev-lang/lua-5.1:= )
-	remote-logging? ( >=dev-libs/protobuf-3:= )
 	regex? ( dev-libs/re2:= )
+	remote-logging? ( >=dev-libs/protobuf-3:= )
 	snmp? ( net-analyzer/net-snmp:= )
 	ssl? (
-		dev-libs/libsodium:=
 		gnutls? ( net-libs/gnutls:= )
 		!gnutls? ( dev-libs/openssl:= )
 	)
@@ -50,34 +42,26 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
-[[ ${PV} == 9999 ]] && DEPEND+="
-	app-text/pandoc
-	dev-util/ragel
-	dev-python/virtualenv
-"
-
 src_prepare() {
 	default
-	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
 src_configure() {
 	econf \
 		--sysconfdir=/etc/dnsdist \
+		$(use_enable doh dns-over-https) \
 		$(use_enable dnscrypt) \
-		$(use_enable fstrm) \
+		$(use_enable dnstap) \
+		$(use_with lmdb ) \
 		$(use luajit && echo "--with-lua=luajit" || echo "--with-lua=lua" ) \
-		$(use_enable regex re2) \
+		$(use_with regex re2) \
 		$(use_with remote-logging protobuf) \
 		$(use_with snmp net-snmp) \
-		$(use_enable ssl libsodium) \
-		$(use ssl && { echo "--enable-dns-over-tls" && use_enable gnutls && use_enable !gnutls libssl;} || echo "--disable-gnutls --disable-libssl") \
+		$(use ssl && { echo "--enable-dns-over-tls" && use_with gnutls && use_with !gnutls libssl;} || echo "--without-gnutls --without-libssl") \
 		$(use_enable systemd) \
 		$(use_enable test unit-tests)
-		if [ ${PV} == "1.3.3" ]; then
-			sed 's/hardcode_libdir_flag_spec_CXX='\''$wl-rpath $wl$libdir'\''/hardcode_libdir_flag_spec_CXX='\''$wl-rpath $wl\/$libdir'\''/g' \
+		sed 's/hardcode_libdir_flag_spec_CXX='\''$wl-rpath $wl$libdir'\''/hardcode_libdir_flag_spec_CXX='\''$wl-rpath $wl\/$libdir'\''/g' \
 			-i "${S}/configure"
-		fi
 }
 
 src_install() {
