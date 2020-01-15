@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ CDEPEND="bzip2? ( app-arch/bzip2 )
 	>=sys-libs/zlib-1.2.2:=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	sys-devel/libtool
+	dev-libs/libltdl
 	|| ( dev-libs/libpcre2 >dev-libs/libpcre-6 )
 	dev-libs/libmspack
 	xml? ( dev-libs/libxml2 )
