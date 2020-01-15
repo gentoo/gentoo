@@ -22,7 +22,7 @@ DEPEND=">=dev-lang/ocaml-4.09.0[ocamlopt?]
 	>=dev-ml/ocamlbuild-0.14.0
 	dev-ml/menhir
 	dev-ml/num
-	coq? ( sci-mathematics/coq )
+	coq? ( >=sci-mathematics/coq-8.9.1 )
 	doc? ( dev-tex/rubber )
 	gtk? ( dev-ml/lablgtk[sourceview] )
 	emacs? ( >=app-editors/emacs-23.1:* )
