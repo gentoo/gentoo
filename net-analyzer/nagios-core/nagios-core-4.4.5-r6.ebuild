@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit toolchain-funcs user
+inherit toolchain-funcs
 
 MY_P=${PN/-core}-${PV}
 DESCRIPTION="Nagios core - monitoring daemon, web GUI, and documentation"
@@ -47,7 +47,9 @@ REQUIRED_USE="apache2? ( !lighttpd )"
 # extract a snapshot of AngularJS, but that's only needed when USE=web.
 #
 MOD_ALIAS=apache2_modules_alias
-DEPEND="dev-libs/libltdl:0
+DEPEND="acct-group/nagios
+	acct-user/nagios
+	dev-libs/libltdl:0
 	virtual/mailx
 	perl? ( dev-lang/perl:= )
 	web? (
@@ -69,11 +71,6 @@ RDEPEND="${DEPEND}
 	vim-syntax? ( app-vim/nagios-syntax )"
 
 S="${WORKDIR}/${MY_P}"
-
-pkg_setup() {
-	enewgroup nagios
-	enewuser nagios -1 -1 -1 nagios
-}
 
 src_configure() {
 	local myconf
