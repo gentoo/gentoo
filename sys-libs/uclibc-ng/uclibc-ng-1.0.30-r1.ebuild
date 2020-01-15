@@ -18,7 +18,7 @@ HOMEPAGE="https://uclibc-ng.org/"
 if [[ ${PV} != "9999" ]] ; then
 	PATCH_VER=""
 	SRC_URI="https://downloads.uclibc-ng.org/releases/${PV}/${MY_P}.tar.bz2"
-	KEYWORDS="-* ~arm"
+	KEYWORDS="-* arm"
 fi
 
 LICENSE="LGPL-2"
