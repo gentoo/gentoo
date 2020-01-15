@@ -461,7 +461,7 @@ app-admin/whowatch 1.8.5 1.8.6: Displays information about users currently logge
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 1.12.0: A dotfile manager for the config files in your home folder
-app-antivirus/clamav 0.101.2-r1 0.101.3 0.101.4 0.101.5 0.102.1-r1: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.101.2-r1 0.101.4 0.102.1-r2: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 5.6.2 6.0.1-r2: Download and install third-party clamav signatures
 app-antivirus/clamtk 6.02: A graphical front-end for ClamAV
 app-antivirus/skyldav 0.7: Skyld AV: on-access scanning daemon for ClamAV using fanotify
@@ -9043,7 +9043,7 @@ dev-python/zeep 2.4.0 2.5.0 3.1.0 3.4.0: A modern/fast Python SOAP client based 
 dev-python/zeroconf 0.19.1 0.24.4: Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 dev-python/zfec 1.4.24: Fast erasure codec for the command-line, C, Python, or Haskell
 dev-python/zict 0.1.2 0.1.3 0.1.4: Mutable mapping tools
-dev-python/zipp 0.5.2 0.6.0 0.6.0-r1: Backport of pathlib-compatible object wrapper for zip files
+dev-python/zipp 0.5.2 0.6.0 1.0.0: Backport of pathlib-compatible object wrapper for zip files
 dev-python/zope-component 4.3.0-r1 4.4.1: Zope Component Architecture
 dev-python/zope-configuration 4.1.0 4.3.1: Zope Configuration Architecture
 dev-python/zope-deprecation 4.2.0 4.4.0: Zope Deprecation Infrastructure
