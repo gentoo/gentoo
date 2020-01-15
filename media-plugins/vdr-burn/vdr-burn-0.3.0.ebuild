@@ -42,8 +42,10 @@ src_prepare() {
 		"${FILESDIR}"/${P}_setdefaults.patch \
 		"${FILESDIR}"/${P}_dmh-archive.patch
 
-	use dvdarchive && sed -i Makefile \
+	if use dvdarchive; then
+		sed -i Makefile \
 		-e "s:#ENABLE_DMH_ARCHIVE:ENABLE_DMH_ARCHIVE:" || die
+	fi
 
 	sed -i Makefile \
 		-e 's:^ISODIR=.*$:ISODIR=/var/vdr/video/dvd-images:' || die
