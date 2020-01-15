@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit multilib elisp-common
 
 DESCRIPTION="FriCAS is a fork of Axiom computer algebra system"
-HOMEPAGE="http://${PN}.sourceforge.net/"
+HOMEPAGE="http://fricas.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${PN}/${P}-full.tar.bz2"
 LICENSE="BSD-2"
 SLOT="0"
