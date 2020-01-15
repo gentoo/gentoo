@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -54,6 +54,7 @@ IUSE_PROGRAMMERS="
 	+satamv
 	+satasii
 	+serprog
+	stlinkv3-spi
 	+usbblaster-spi
 "
 
@@ -84,6 +85,7 @@ LIB_DEPEND="
 	rayer-spi? ( sys-apps/pciutils[static-libs(+)] )
 	satamv? ( sys-apps/pciutils[static-libs(+)] )
 	satasii? ( sys-apps/pciutils[static-libs(+)] )
+	stlinkv3-spi? ( virtual/libusb:1[static-libs(+)] )
 	usbblaster-spi? ( dev-embedded/libftdi:=[static-libs(+)] )
 "
 RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )"
