@@ -543,14 +543,6 @@ sys-fs/yaffs2-utils
 # Removal in 14 days.  Bug #533052.
 net-analyzer/gsm-receiver
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2019-12-15)
-#media-plugins/vdr-console failed after glibc update.
-#see wrt bug 692334
-#The project is given up by upstream years ago.
-#There is no HOMAPAGE and SRC_URI available.
-#Package will be removed on ~15 Jan 2020.
-media-plugins/vdr-console
-
 # David Seifert <soap@gentoo.org> (2019-12-08)
 # Unmaintained, build hangs, tons of other build failures, missing
 # dependencies.  Bug #663794, #666916, #666922, #667062, #678068,
