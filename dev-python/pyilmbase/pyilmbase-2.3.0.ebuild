@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/boost-1.62.0-r1[python(+),${PYTHON_USEDEP}]
 	~media-libs/ilmbase-${PV}:=
-	numpy? ( >=dev-python/numpy-1.10.4 )"
+	numpy? (
+		|| (
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			>=dev-python/numpy-1.10.4[${PYTHON_USEDEP}]
+		)
+	)"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=virtual/pkgconfig-0-r1"
