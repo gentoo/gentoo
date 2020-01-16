@@ -10380,7 +10380,7 @@ dev-util/buildbot-wsgi-dashboards 0.9.12 1.1.2 1.3.0: Buildbot plugin to integra
 dev-util/buildbot-www 0.9.12 1.1.2 1.3.0: BuildBot base web interface, use with buildbot-{console-view,waterfall-view}...
 dev-util/bumpversion 0.5.3: Version-bump your software with a single command
 dev-util/bustle 0.4.2-r1 0.4.7-r1 0.5.4: Draw sequence diagrams of D-Bus traffic
-dev-util/byacc 20170201 20180609 20190617 20191125: the best variant of the Yacc parser generator
+dev-util/byacc 20190617 20191125: the best variant of the Yacc parser generator
 dev-util/cargo-ebuild 0.2.0: Generates an ebuild for a package using the in-tree eclasses.
 dev-util/cargo-tree 0.23.0 0.24.0 0.25.0 0.26.0 0.27.0 0.28.0: Cargo subcommand that visualizes crate dependency graph in a tree-like format
 dev-util/catalyst 3.0.8 9999: Release metatool used for creating releases based on Gentoo Linux
@@ -10454,7 +10454,7 @@ dev-util/dialog 1.3.20170131 1.3.20191110 1.3.20191210: tool to display dialog b
 dev-util/diffball 1.0.1 1.0.1-r1: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffoscope 87 88 129: Will try to get to the bottom of what makes files or directories different
-dev-util/diffstat 1.60 1.61: Display a histogram of diff changes
+dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.4.8: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
 dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
