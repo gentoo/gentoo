@@ -1,0 +1,132 @@
+This patch removes coverage tests (dep on pytest-cov which is deprecated)
+It also removes the tests that test the setup.py file
+These tests give 'permission denied' exceptions because it calls commands like 'setup.py install'
+diff --git a/tests/test_hello_cpp.py b/tests/test_hello_cpp.py
+index d39c8ef..0419b88 100644
+--- a/tests/test_hello_cpp.py
++++ b/tests/test_hello_cpp.py
+@@ -182,24 +182,3 @@ def test_hello_cleans(capfd):
+     assert "removing '{}'".format(SKBUILD_DIR()) == clean1_out.splitlines()[3]
+ 
+     assert "running clean" == clean2_out
+-
+-
+-@project_setup_py_test("hello-cpp", ["develop"])
+-def test_hello_develop():
+-    for expected_file in [
+-        # These files are the "regular" source files
+-        'setup.py',
+-        'CMakeLists.txt',
+-        'bonjour/__init__.py',
+-        'bonjourModule.py',
+-        'hello/__init__.py',
+-        'hello/__main__.py',
+-        'hello/_hello.cxx',
+-        'hello/CMakeLists.txt',
+-        # These files are "generated" by CMake and
+-        # are copied from CMAKE_INSTALL_DIR
+-        'hello/_hello%s' % (sysconfig.get_config_var('SO')),
+-        'hello/world.py',
+-        'helloModule.py'
+-    ]:
+-        assert os.path.exists(expected_file)
+diff --git a/tests/test_issue274_support_default_package_dir.py b/tests/test_issue274_support_default_package_dir.py
+deleted file mode 100644
+index 536f7b2..0000000
+--- a/tests/test_issue274_support_default_package_dir.py
++++ /dev/null
+@@ -1,27 +0,0 @@
+-
+-from . import (
+-    _tmpdir, execute_setup_py, initialize_git_repo_and_commit,
+-    prepare_project, project_setup_py_test, push_dir
+-)
+-
+-
+-@project_setup_py_test("issue-274-support-default-package-dir", ["install"], disable_languages_test=True)
+-def test_install_command():
+-    pass
+-
+-
+-def test_test_command():
+-    with push_dir():
+-
+-        tmp_dir = _tmpdir('test_test_command')
+-        project = "issue-274-support-default-package-dir"
+-        prepare_project(project, tmp_dir)
+-        initialize_git_repo_and_commit(tmp_dir, verbose=True)
+-
+-        try:
+-            with execute_setup_py(tmp_dir, ["test"], disable_languages_test=True):
+-                pass
+-        except SystemExit as exc:
+-            assert exc.code == 0
+-
+-        assert tmp_dir.join("test_hello.completed.txt").exists()
+diff --git a/tests/test_issue274_support_one_package_without_package_dir.py b/tests/test_issue274_support_one_package_without_package_dir.py
+deleted file mode 100644
+index 6612087..0000000
+--- a/tests/test_issue274_support_one_package_without_package_dir.py
++++ /dev/null
+@@ -1,27 +0,0 @@
+-
+-from . import (
+-    _tmpdir, execute_setup_py, initialize_git_repo_and_commit,
+-    prepare_project, project_setup_py_test, push_dir
+-)
+-
+-
+-@project_setup_py_test("issue-274-support-one-package-without-package-dir", ["install"], disable_languages_test=True)
+-def test_install_command():
+-    pass
+-
+-
+-def test_test_command():
+-    with push_dir():
+-
+-        tmp_dir = _tmpdir('test_test_command')
+-        project = "issue-274-support-one-package-without-package-dir"
+-        prepare_project(project, tmp_dir)
+-        initialize_git_repo_and_commit(tmp_dir, verbose=True)
+-
+-        try:
+-            with execute_setup_py(tmp_dir, ["test"], disable_languages_test=True):
+-                pass
+-        except SystemExit as exc:
+-            assert exc.code == 0
+-
+-        assert tmp_dir.join("test_hello.completed.txt").exists()
+diff --git a/tests/test_issue284_build_ext_inplace.py b/tests/test_issue284_build_ext_inplace.py
+deleted file mode 100644
+index 78dd3dd..0000000
+--- a/tests/test_issue284_build_ext_inplace.py
++++ /dev/null
+@@ -1,15 +0,0 @@
+-
+-import os
+-import sysconfig
+-
+-from distutils import sysconfig as du_sysconfig
+-
+-from . import project_setup_py_test
+-
+-
+-@project_setup_py_test("issue-284-build-ext-inplace", ["build_ext", "--inplace"], disable_languages_test=True)
+-def test_build_ext_inplace_command():
+-    assert os.path.exists('hello/_hello_sk%s' % sysconfig.get_config_var('SO'))
+-
+-    # See issue scikit-build #383
+-    assert os.path.exists('hello/_hello_ext%s' % du_sysconfig.get_config_var('SO'))
+diff --git a/tests/test_issue334_configure_cmakelists_non_cp1252_encoding.py b/tests/test_issue334_configure_cmakelists_non_cp1252_encoding.py
+deleted file mode 100644
+index 2285bfb..0000000
+--- a/tests/test_issue334_configure_cmakelists_non_cp1252_encoding.py
++++ /dev/null
+@@ -1,7 +0,0 @@
+-
+-from . import project_setup_py_test
+-
+-
+-@project_setup_py_test("issue-334-configure-cmakelist-non-cp1252-encoding", ["install"], disable_languages_test=True)
+-def test_install_command():
+-    pass
