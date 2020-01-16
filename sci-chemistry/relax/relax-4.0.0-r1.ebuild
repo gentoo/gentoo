@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,10 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/Numdifftools[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	dev-python/wxpython:${WX_GTK_VER}[${PYTHON_USEDEP}]
 	sci-chemistry/molmol
 	sci-chemistry/pymol[${PYTHON_USEDEP}]
