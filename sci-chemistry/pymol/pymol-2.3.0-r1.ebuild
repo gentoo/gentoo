@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit distutils-r1 desktop eutils flag-o-matic xdg-utils
 
 DESCRIPTION="A Python-extensible molecular graphics system"
-HOMEPAGE="http://www.pymol.org/"
+HOMEPAGE="https://www.pymol.org/"
 SRC_URI="
 	https://dev.gentoo.org/~jlec/distfiles/${PN}-1.8.4.0.png.xz
 	https://github.com/schrodinger/pymol-open-source/archive/v${PV}.tar.gz -> ${P}.tar.gz
