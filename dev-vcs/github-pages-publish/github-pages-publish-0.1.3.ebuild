@@ -1,9 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+DISTUTILS_USE_SETUPTOOLS=bdepend
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 GIT_ECLASS=
 if [[ ${PV} = *9999* ]]; then
@@ -28,6 +29,5 @@ LICENSE="BSD"
 SLOT="0"
 IUSE=""
 
-DEPEND="dev-python/setuptools
-	>=dev-python/pygit2-0.20.0"
+DEPEND=">=dev-python/pygit2-0.20.0"
 RDEPEND="${DEPEND}"
