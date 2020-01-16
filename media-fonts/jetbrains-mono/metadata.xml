@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>gentoo@taujhe.de</email>
+		<name>Jan Henke</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		The free and open-source typeface for developers.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">JetBrains/JetBrainsMono</remote-id>
+	</upstream>
+</pkgmetadata>
