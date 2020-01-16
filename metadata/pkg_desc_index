@@ -8167,7 +8167,7 @@ dev-python/owslib 0.16.0-r1 0.17.1 0.17.1-r1: Library for client programming wit
 dev-python/pSQL 1.2.1: MySQL abstraction layer for python
 dev-python/packaging 16.8 19.2 20.0: Core utilities for Python packages
 dev-python/pafy 0.5.3.1 0.5.4 9999: Python library to retrieve YouTube content and metadata
-dev-python/paho-mqtt 1.4.0: A client class with support for both MQTT v3.1 and v3.1.1
+dev-python/paho-mqtt 1.4.0 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/paisley 0.3.1-r1: A CouchDB client written in Python to be used within a Twisted application
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
 dev-python/pandas 0.19.1 0.23.4 0.24.2 9999: Powerful data structures for data analysis and statistics
@@ -14331,7 +14331,7 @@ net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
 net-analyzer/vnstat 1.17 2.3 2.4 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.2 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
-net-analyzer/wireshark 3.0.3 3.0.7 3.2.0 3.2.1 99999999: A network protocol analyzer formerly known as ethereal
+net-analyzer/wireshark 3.0.3 3.0.7 3.2.1 99999999: A network protocol analyzer formerly known as ethereal
 net-analyzer/xnetload 1.11.3-r1: displays a count and a graph of the traffic over a specified network connection
 net-analyzer/xprobe 0.3: Active OS fingerprinting tool - this is Xprobe2
 net-analyzer/yersinia 0.7.3 0.8.2: A framework for layer 2 attacks
@@ -14486,7 +14486,7 @@ net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r3: FTP layout package
 net-ftp/gftp 2.0.19-r3: Gnome based FTP Client
 net-ftp/gproftpd 8.3.2-r1: GTK frontend to proftpd
-net-ftp/lftp 4.8.4-r1 4.9.0 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
+net-ftp/lftp 4.8.4-r1 4.9.0 4.9.1 9999: A sophisticated ftp/sftp/http/https/torrent client and file transfer program
 net-ftp/linksys-tftp 1.2.1-r3: TFTP client suitable for uploading to the Linksys WRT54G Wireless Router
 net-ftp/ncftp 3.2.6: An extremely configurable ftp client
 net-ftp/oftpd 0.3.7-r10: Secure, small, anonymous only ftpd
