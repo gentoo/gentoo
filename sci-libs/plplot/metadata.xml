@@ -9,7 +9,6 @@
 	<use>
 		<flag name="dynamic">Build with dynamic drivers</flag>
 		<flag name="octave">Add bindings for <pkg>sci-mathematics/octave</pkg></flag>
-		<flag name="pdl">Add bindings for <pkg>dev-perl/PDL</pkg></flag>
 		<flag name="qhull">Add bindings for <pkg>media-libs/qhull</pkg></flag>
 		<flag name="shapefile">Enable support for ESRI shapefiles</flag>
 	</use>
