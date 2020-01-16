@@ -34,7 +34,7 @@
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # Python 2 only.  Last release in 2006.  No reverse dependencies.
-# Removal in 30 days.  Bug #705552.
+# Removal in 30 days.  Bug #705522.
 dev-python/pyemf
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
