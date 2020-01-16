@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
+# Python 2 only.  Last release in 2006.  No reverse dependencies.
+# Removal in 30 days.  Bug #705522.
+dev-python/pyemf
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # Abandoned upstream.  Python 2 only.  No reverse dependencies.
 # Removal in 30 days.  Bug #705518.
 dev-python/milk
@@ -43,12 +48,6 @@ dev-python/milksets
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
 # python2_7 out of default PYTHON_TARGETS first.
 >=dev-python/setuptools-45.0.0
-
-# Joonas Niilola <juippis@gentoo.org> (2020-01-15)
-# Leftover from silc* removal (#522916), unmaintained, no upstream 
-# releases since 2014, EAPI-4. #705462
-# Removal in ~14 days.
-net-im/silc-toolkit
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-01-13)
 # Current versioning breaks portage logic and prevents
