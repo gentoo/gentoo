@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,7 +27,10 @@ CDEPEND="
 	>=dev-lang/tk-8.6.1:0=
 	dev-lang/perl
 	dev-libs/expat
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	sci-libs/netcdf:0=
 	virtual/opengl
 	>=x11-libs/fltk-1.1.10-r2:1
