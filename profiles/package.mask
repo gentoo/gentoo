@@ -49,12 +49,6 @@ dev-python/milksets
 # python2_7 out of default PYTHON_TARGETS first.
 >=dev-python/setuptools-45.0.0
 
-# Joonas Niilola <juippis@gentoo.org> (2020-01-15)
-# Leftover from silc* removal (#522916), unmaintained, no upstream 
-# releases since 2014, EAPI-4. #705462
-# Removal in ~14 days.
-net-im/silc-toolkit
-
 # Mikle Kolyada <zlogene@gentoo.org> (2020-01-13)
 # Current versioning breaks portage logic and prevents
 # us from adding official releases made by google.
