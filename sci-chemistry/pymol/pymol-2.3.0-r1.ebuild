@@ -22,7 +22,10 @@ IUSE="web"
 DEPEND="
 	dev-libs/msgpack[cxx]
 	dev-libs/mmtf-cpp
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	dev-python/pmw:py2[${PYTHON_USEDEP}]
 	dev-python/pyopengl[${PYTHON_USEDEP}]
 	dev-python/PyQt5[opengl,${PYTHON_USEDEP}]

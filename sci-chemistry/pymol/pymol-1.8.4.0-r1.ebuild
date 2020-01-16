@@ -22,7 +22,10 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="web"
 
 DEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	dev-python/pmw:py2[${PYTHON_USEDEP}]
 	dev-python/pyopengl[${PYTHON_USEDEP}]
 	media-libs/freeglut
