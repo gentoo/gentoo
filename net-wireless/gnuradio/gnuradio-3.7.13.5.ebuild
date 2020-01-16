@@ -64,7 +64,10 @@ RDEPEND="${PYTHON_DEPS}
 		dev-python/cheetah[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
 		>=dev-python/pygtk-2.10:2[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
+		|| (
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
+		)
 	)
 	jack? (
 		media-sound/jack-audio-connection-kit
@@ -90,7 +93,10 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	wxwidgets? (
 		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
+		|| (
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
+		)
 	)
 	zeromq? ( >=net-libs/zeromq-2.1.11 )
 	"
