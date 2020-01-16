@@ -1,19 +1,21 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-KDE_TEST="forceoptional"
-KMNAME="alkimia"
-inherit kde5
+ECM_TEST="forceoptional"
+KDE_ORG_NAME="alkimia"
+QTMIN=5.12.3
+inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/${KMNAME}/${PV}/${KMNAME}-${PV}.tar.xz"
+	SRC_URI="mirror://kde/stable/${KDE_ORG_NAME}/${PV}/${KDE_ORG_NAME}-${PV}.tar.xz"
 	KEYWORDS="amd64 x86"
 fi
 
 DESCRIPTION="Library with common classes and functionality used by KDE finance applications"
 HOMEPAGE="https://www.linux-apps.com/content/show.php/libalkimia?content=137323"
+
 LICENSE="LGPL-2.1"
 SLOT="0/7"
 IUSE="doc gmp"
@@ -23,7 +25,7 @@ BDEPEND="
 	doc? ( app-doc/doxygen )
 "
 DEPEND="
-	$(add_qt_dep qtdbus)
+	>=dev-qt/qtdbus-${QTMIN}:5
 	!gmp? ( sci-libs/mpir:=[cxx] )
 	gmp? ( dev-libs/gmp:0=[cxx] )
 "
@@ -34,5 +36,5 @@ src_configure() {
 		$(cmake_use_find_package doc Doxygen)
 		$(cmake_use_find_package !gmp MPIR)
 	)
-	kde5_src_configure
+	ecm_src_configure
 }
