@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,10 @@ IUSE=""
 
 RDEPEND="
 	>=dev-python/matplotlib-0.98.5[gtk2,${PYTHON_USEDEP}]
-	>=dev-python/numpy-1.2[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		>=dev-python/numpy-1.2[${PYTHON_USEDEP}]
+	)
 	>=dev-python/pygtk-2.12:2[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}"
