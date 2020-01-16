@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit scons-utils fortran-2 flag-o-matic python-r1 toolchain-funcs
 
 DESCRIPTION="Automated pipeline for performing Poisson-Boltzmann electrostatics calculations"
-HOMEPAGE="http://www.poissonboltzmann.org/"
+HOMEPAGE="https://www.poissonboltzmann.org/"
 SRC_URI="https://github.com/Electrostatics/apbs-${PN}/releases/download/${P}/${PN}-src-${PV}.tar.gz"
 
 SLOT="0"
