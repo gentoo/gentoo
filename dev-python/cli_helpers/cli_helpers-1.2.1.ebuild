@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="Python helpers for common CLI tasks"
-HOMEPAGE="http://cli-helpers.rtfd.io/"
+HOMEPAGE="https://cli-helpers.rtfd.io/"
 SRC_URI="https://github.com/dbcli/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
