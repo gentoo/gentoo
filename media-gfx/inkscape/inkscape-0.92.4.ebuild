@@ -72,7 +72,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 # install these so we could of course just not depend on those and rely
 # on that.
 RDEPEND="${COMMON_DEPEND}
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	media-gfx/uniconvertor
 	dia? ( app-office/dia )
 	latex? (

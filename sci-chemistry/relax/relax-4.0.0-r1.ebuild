@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ WX_GTK_VER="3.0"
 inherit eutils multiprocessing python-single-r1 scons-utils toolchain-funcs wxwidgets virtualx
 
 DESCRIPTION="Molecular dynamics by NMR data analysis"
-HOMEPAGE="http://www.nmr-relax.com/"
+HOMEPAGE="https://www.nmr-relax.com/"
 SRC_URI="http://download.gna.org/relax/${P}.src.tar.bz2"
 
 SLOT="0"
@@ -25,7 +25,10 @@ RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/Numdifftools[${PYTHON_USEDEP}]
 	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	dev-python/wxpython:${WX_GTK_VER}[${PYTHON_USEDEP}]
 	sci-chemistry/molmol
 	sci-chemistry/pymol[${PYTHON_USEDEP}]

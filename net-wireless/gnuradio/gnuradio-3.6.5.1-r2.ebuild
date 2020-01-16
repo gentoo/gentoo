@@ -45,7 +45,10 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	grc? (
 		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
+		|| (
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
+		)
 		dev-python/pygtk:2[${PYTHON_USEDEP}]
 	)
 	jack? (

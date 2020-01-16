@@ -50,7 +50,10 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-lang/orc-0.4.12
 	dev-libs/boost:0=[${PYTHON_USEDEP}]
 	!<=dev-libs/boost-1.52.0-r6:0/1.52
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	dev-python/six[${PYTHON_USEDEP}]
 	sci-libs/fftw:3.0=
 	alsa? (

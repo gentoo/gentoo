@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ PYTHON_REQ_USE="tk"
 inherit distutils-r1 eutils fdo-mime flag-o-matic versionator
 
 DESCRIPTION="A Python-extensible molecular graphics system"
-HOMEPAGE="http://www.pymol.org/"
+HOMEPAGE="https://www.pymol.org/"
 SRC_URI="
 	https://dev.gentoo.org/~jlec/distfiles/${P}.png.xz
 	mirror://sourceforge/project/${PN}/${PN}/$(get_version_component_range 1-2)/${PN}-v${PV}.tar.bz2
@@ -22,7 +22,10 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="web"
 
 DEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	dev-python/pmw:py2[${PYTHON_USEDEP}]
 	dev-python/pyopengl[${PYTHON_USEDEP}]
 	media-libs/freeglut

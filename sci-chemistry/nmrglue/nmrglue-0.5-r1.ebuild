@@ -3,12 +3,12 @@
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
 DESCRIPTION="A module for working with NMR data in Python"
-HOMEPAGE="http://nmrglue.com/"
+HOMEPAGE="https://nmrglue.com/"
 SRC_URI="https://github.com/jjhelmus/nmrglue/releases/download/v${PV}/${P}.tar.gz"
 
 SLOT="0"
