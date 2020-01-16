@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,10 @@ IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openm
 
 RDEPEND="${PYTHON_DEPS}
 	>=app-admin/eselect-1.2
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	media-libs/libprojectm
 	sci-libs/gdal
 	sys-libs/gdbm
