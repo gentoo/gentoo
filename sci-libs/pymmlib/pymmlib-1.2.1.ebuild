@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,10 @@ KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux"
 IUSE="doc"
 
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	dev-python/pygtkglext[${PYTHON_USEDEP}]
 	media-libs/freeglut
 	virtual/glu
