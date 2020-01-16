@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # XXX: the tarball here is just the kernel modules split out of the binary
@@ -15,19 +15,24 @@ SRC_URI="https://dev.gentoo.org/~polynomial-c/virtualbox/${MY_P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
 KEYWORDS="~amd64 ~x86"
 IUSE="pax_kernel"
 
 RDEPEND="!=app-emulation/virtualbox-9999"
 
-PATCHES=( "${FILESDIR}"/${PN}-6.0.12-linux-5.3+-compatibility.patch )
-
 S="${WORKDIR}"
 
 BUILD_TARGETS="all"
-BUILD_TARGET_ARCH="${ARCH}"
 MODULE_NAMES="vboxdrv(misc:${S}) vboxnetflt(misc:${S}) vboxnetadp(misc:${S}) vboxpci(misc:${S})"
+MODULESD_VBOXDRV_ENABLED="yes"
+MODULESD_VBOXNETADP_ENABLED="no"
+MODULESD_VBOXNETFLT_ENABLED="no"
+# The following is a security measure that comes directly from usptream.
+# Do NOT remove this!!!
+MODULESD_VBOXPCI_ADDITIONS=(
+	"blacklist vboxpci"
+	"install vboxpci /bin/true"
+)
 
 pkg_setup() {
 	enewgroup vboxusers
@@ -46,7 +51,7 @@ src_prepare() {
 src_install() {
 	linux-mod_src_install
 	insinto /usr/lib/modules-load.d/
-	doins "${FILESDIR}"/virtualbox.conf
+	newins "${FILESDIR}"/virtualbox.conf-r1 virtualbox.conf
 }
 
 pkg_postinst() {

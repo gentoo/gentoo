@@ -1,10 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_{6,7}} )
-inherit desktop flag-o-matic java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg
+PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
+inherit flag-o-matic gnome2-utils java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg-utils
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -13,17 +13,14 @@ MY_P=VirtualBox-${MY_PV}
 DESCRIPTION="Family of powerful x86 virtualization products for enterprise and home use"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-6.0.0_beta2-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/${PN}/patchsets/${PN}-5.2.36-patches-01.tar.xz"
 
 LICENSE="GPL-2 dtrace? ( CDDL )"
 SLOT="0"
-[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa debug doc dtrace headless java libressl lvm +opus pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
+IUSE="alsa debug doc dtrace headless java libressl lvm pam pax_kernel pulseaudio +opengl python +qt5 +sdk +udev vboxwebsrv vnc"
 
-CDEPEND="
-	${PYTHON_DEPS}
-	!app-emulation/virtualbox-bin
+RDEPEND="!app-emulation/virtualbox-bin
 	~app-emulation/virtualbox-modules-${PV}
 	dev-libs/libIDL
 	>=dev-libs/libxslt-1.1.19
@@ -31,6 +28,7 @@ CDEPEND="
 	dev-libs/libxml2
 	media-libs/libpng:0=
 	media-libs/libvpx:0=
+	media-libs/opus
 	sys-libs/zlib:=
 	!headless? (
 		media-libs/libsdl:0[X,video]
@@ -54,28 +52,17 @@ CDEPEND="
 	libressl? ( dev-libs/libressl:= )
 	!libressl? ( dev-libs/openssl:0= )
 	lvm? ( sys-fs/lvm2 )
-	opus? ( media-libs/opus )
 	udev? ( >=virtual/udev-171 )
 	vnc? ( >=net-libs/libvncserver-0.9.9 )
-"
-DEPEND="
-	${CDEPEND}
-	alsa? ( >=media-libs/alsa-lib-1.0.13 )
-	!headless? ( x11-libs/libXinerama )
-	pam? ( sys-libs/pam )
-	pax_kernel? ( sys-apps/elfix )
-	pulseaudio? ( media-sound/pulseaudio )
-	qt5? ( dev-qt/linguist-tools:5 )
-	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
-"
-BDEPEND="
-	${PYTHON_DEPS}
+	${PYTHON_DEPS}"
+DEPEND="${RDEPEND}
 	>=dev-util/kbuild-0.1.9998.3127
 	>=dev-lang/yasm-0.6.2
 	sys-devel/bin86
 	sys-libs/libcap
 	sys-power/iasl
 	virtual/pkgconfig
+	alsa? ( >=media-libs/alsa-lib-1.0.13 )
 	doc? (
 		app-text/docbook-sgml-dtd:4.4
 		dev-texlive/texlive-basic
@@ -85,12 +72,16 @@ BDEPEND="
 		dev-texlive/texlive-fontsrecommended
 		dev-texlive/texlive-fontsextra
 	)
+	!headless? ( x11-libs/libXinerama )
 	java? ( >=virtual/jdk-1.6 )
-"
-RDEPEND="
-	${CDEPEND}
-	java? ( >=virtual/jre-1.6 )
-"
+	pam? ( sys-libs/pam )
+	pax_kernel? ( sys-apps/elfix )
+	pulseaudio? ( media-sound/pulseaudio )
+	qt5? ( dev-qt/linguist-tools:5 )
+	vboxwebsrv? ( net-libs/gsoap[-gnutls(-)] )
+	${PYTHON_DEPS}"
+RDEPEND="${RDEPEND}
+	java? ( >=virtual/jre-1.6 )"
 
 QA_TEXTRELS_x86="usr/lib/virtualbox-ose/VBoxGuestPropSvc.so
 	usr/lib/virtualbox/VBoxSDL.so
@@ -197,7 +188,7 @@ src_prepare() {
 	fi
 
 	# Only add nopie patch when we're on hardened
-	if gcc-specs-pie ; then
+	if  gcc-specs-pie ; then
 		eapply "${FILESDIR}/050_virtualbox-5.2.8-nopie.patch"
 	fi
 
@@ -206,7 +197,7 @@ src_prepare() {
 		eapply "${FILESDIR}"/virtualbox-5.2.8-paxmark-bldprogs.patch
 	fi
 
-	rm "${WORKDIR}/patches/010_virtualbox-5.2.12-qt511.patch" || die
+	rm "${WORKDIR}/patches/008_virtualbox-4.3.14-missing_define.patch" || die
 	eapply "${WORKDIR}/patches"
 
 	eapply_user
@@ -228,7 +219,6 @@ src_configure() {
 		$(usex doc '' --disable-docs)
 		$(usex java '' --disable-java)
 		$(usex lvm '' --disable-devmapper)
-		$(usex opus '' --disable-libopus)
 		$(usex pulseaudio '' --disable-pulse)
 		$(usex python '' --disable-python)
 		$(usex vboxwebsrv --enable-webservice '')
@@ -271,16 +261,18 @@ src_compile() {
 }
 
 src_install() {
-	cd "${S}"/out/linux.${ARCH}/$(usex debug debug release)/bin || die
+	local binpath="release"
+	use debug && binpath="debug"
+	cd "${S}"/out/linux.${ARCH}/${binpath}/bin || die
 
-	local vbox_inst_path="/usr/$(get_libdir)/${PN}" each size ico icofile
+	local vbox_inst_path="/usr/$(get_libdir)/${PN}" each fwfile size ico icofile
 
 	vbox_inst() {
 		local binary="${1}"
 		local perms="${2:-0750}"
 		local path="${3:-${vbox_inst_path}}"
 
-		[[ -n "${binary}" ]] || die "vbox_inst: No binary given!"
+		[[ -n "${binary}" ]] || die "vbox_inst: No binray given!"
 		[[ ${perms} =~ ^[[:digit:]]+{4}$ ]] || die "vbox_inst: perms must consist of four digits."
 
 		insinto ${path}
@@ -296,11 +288,11 @@ src_install() {
 	# Set the correct libdir
 	sed \
 		-e "s@MY_LIBDIR@$(get_libdir)@" \
-		-i "${ED}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
+		-i "${ED%/}"/etc/vbox/vbox.cfg || die "vbox.cfg sed failed"
 
 	# Install the wrapper script
 	exeinto ${vbox_inst_path}
-	newexe "${FILESDIR}/${PN}-ose-6-wrapper" "VBox"
+	newexe "${FILESDIR}/${PN}-ose-5-wrapper" "VBox"
 	fowners root:vboxusers ${vbox_inst_path}/VBox
 	fperms 0750 ${vbox_inst_path}/VBox
 
@@ -313,7 +305,7 @@ src_install() {
 	if use amd64 && ! has_multilib_profile ; then
 		rcfiles=""
 	fi
-	for each in VBox{Autostart,BalloonCtrl,BugReport,CpuReport,ExtPackHelperApp,Manage,SVC,Tunctl,VMMPreload,XPCOMIPCD} *so *r0 ${rcfiles} iPxeBaseBin ; do
+	for each in VBox{ExtPackHelperApp,Manage,SVC,Tunctl,XPCOMIPCD} *so *r0 ${rcfiles} ; do
 		vbox_inst ${each}
 	done
 
@@ -323,18 +315,20 @@ src_install() {
 	done
 
 	# Install EFI Firmware files (bug #320757)
-	for each in VBoxEFI{32,64}.fd ; do
-		vbox_inst ${each} 0644
+	pushd "${S}"/src/VBox/Devices/EFI/FirmwareBin &>/dev/null || die
+	for fwfile in VBoxEFI{32,64}.fd ; do
+		vbox_inst ${fwfile} 0644
 	done
+	popd &>/dev/null || die
 
 	# VBoxSVC and VBoxManage need to be pax-marked (bug #403453)
 	# VBoxXPCOMIPCD (bug #524202)
 	for each in VBox{Headless,Manage,SVC,XPCOMIPCD} ; do
-		pax-mark -m "${ED}"${vbox_inst_path}/${each}
+		pax-mark -m "${ED%/}"${vbox_inst_path}/${each}
 	done
 
 	# Symlink binaries to the shipped wrapper
-	for each in vbox{autostart,balloonctrl,bugreport,headless,manage} VBox{Autostart,BalloonCtrl,BugReport,Headless,Manage,VRDP} ; do
+	for each in vbox{headless,manage} VBox{Headless,Manage,VRDP} ; do
 		dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 	done
 	dosym ${vbox_inst_path}/VBoxTunctl /usr/bin/VBoxTunctl
@@ -349,27 +343,23 @@ src_install() {
 	doenvd "${T}/90virtualbox"
 
 	if ! use headless ; then
-		vbox_inst rdesktop-vrdp
 		vbox_inst VBoxSDL 4750
-		pax-mark -m "${ED}"${vbox_inst_path}/VBoxSDL
+		pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxSDL
 
 		for each in vboxsdl VBoxSDL ; do
 			dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 		done
 
 		if use qt5 ; then
-			vbox_inst VirtualBox
-			vbox_inst VirtualBoxVM 4750
-			for each in VirtualBox{,VM} ; do
-				pax-mark -m "${ED}"${vbox_inst_path}/${each}
-			done
+			vbox_inst VirtualBox 4750
+			pax-mark -m "${ED%/}"${vbox_inst_path}/VirtualBox
 
 			if use opengl ; then
 				vbox_inst VBoxTestOGL
-				pax-mark -m "${ED}"${vbox_inst_path}/VBoxTestOGL
+				pax-mark -m "${ED%/}"${vbox_inst_path}/VBoxTestOGL
 			fi
 
-			for each in virtualbox{,vm} VirtualBox{,VM} ; do
+			for each in virtualbox VirtualBox ; do
 				dosym ${vbox_inst_path}/VBox /usr/bin/${each}
 			done
 
@@ -377,7 +367,7 @@ src_install() {
 			doins -r nls
 			doins -r UnattendedTemplates
 
-			domenu ${PN}.desktop
+			newmenu "${FILESDIR}"/${PN}-ose.desktop-2 ${PN}.desktop
 		fi
 
 		pushd "${S}"/src/VBox/Artwork/OSE &>/dev/null || die
@@ -409,8 +399,8 @@ src_install() {
 		doins -r sdk
 
 		if use java ; then
-			java-pkg_regjar "${ED}/${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
-			java-pkg_regso "${ED}/${vbox_inst_path}/libvboxjxpcom.so"
+			java-pkg_regjar "${ED%/}/${vbox_inst_path}/sdk/bindings/xpcom/java/vboxjxpcom.jar"
+			java-pkg_regso "${ED%/}/${vbox_inst_path}/libvboxjxpcom.so"
 		fi
 	fi
 
@@ -440,15 +430,13 @@ src_install() {
 		| xargs --no-run-if-empty --null sed -i '/Version/s@_Gentoo@@' \
 		|| die
 
-	local extensions_dir="${vbox_inst_path}/ExtensionPacks"
-
 	if use vnc ; then
-		insinto ${extensions_dir}
+		insinto ${vbox_inst_path}/ExtensionPacks
 		doins -r ExtensionPacks/VNC
 	fi
 
 	if use dtrace ; then
-		insinto ${extensions_dir}
+		insinto ${vbox_inst_path}/ExtensionPacks
 		doins -r ExtensionPacks/Oracle_VBoxDTrace_Extension_Pack
 	fi
 
@@ -459,12 +447,9 @@ src_install() {
 	newtmpfiles "${FILESDIR}"/${PN}-vboxusb_tmpfilesd ${PN}-vboxusb.conf
 }
 
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
 pkg_postinst() {
-	xdg_pkg_postinst
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 
 	if use udev ; then
 		udevadm control --reload-rules \
@@ -498,13 +483,14 @@ pkg_postinst() {
 		elog ""
 		elog "WARNING!"
 		elog "Without USE=udev, USB devices will likely not work in ${PN}."
-	elif [[ -e "${ROOT}/etc/udev/rules.d/10-virtualbox.rules" ]] ; then
+	elif [ -e "${ROOT%/}/etc/udev/rules.d/10-virtualbox.rules" ] ; then
 		elog ""
-		elog "Please remove \"${ROOT}/etc/udev/rules.d/10-virtualbox.rules\""
+		elog "Please remove \"${ROOT%/}/etc/udev/rules.d/10-virtualbox.rules\""
 		elog "or else USB in ${PN} won't work."
 	fi
 }
 
 pkg_postrm() {
-	xdg_pkg_postrm
+	gnome2_icon_cache_update
+	xdg_desktop_database_update
 }

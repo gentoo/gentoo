@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -27,7 +27,7 @@ SLOT="0"
 IUSE="apparmor aufs btrfs +container-init device-mapper hardened +overlay seccomp"
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#build-dependencies
-CDEPEND="
+COMMON_DEPEND="
 	>=dev-db/sqlite-3.7.9:3
 	device-mapper? (
 		>=sys-fs/lvm2-2.02.89[thin]
@@ -37,7 +37,7 @@ CDEPEND="
 "
 
 DEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 
 	>=dev-lang/go-1.12
 	dev-go/go-md2man
@@ -50,7 +50,7 @@ DEPEND="
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#runtime-dependencies
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#optional-dependencies
 RDEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 	>=net-firewall/iptables-1.4
 	sys-process/procps
 	>=dev-vcs/git-1.7
@@ -74,7 +74,7 @@ CONFIG_CHECK="
 	~VETH ~BRIDGE ~BRIDGE_NETFILTER
 	~IP_NF_FILTER ~IP_NF_TARGET_MASQUERADE
 	~NETFILTER_XT_MATCH_ADDRTYPE ~NETFILTER_XT_MATCH_CONNTRACK ~NETFILTER_XT_MATCH_IPVS
-	~IP_NF_NAT ~NF_NAT ~NF_NAT_NEEDED
+	~IP_NF_NAT ~NF_NAT
 	~POSIX_MQUEUE
 
 	~USER_NS
@@ -147,6 +147,12 @@ pkg_setup() {
 			~NF_NAT_IPV4
 			~IOSCHED_CFQ
 			~CFQ_GROUP_IOSCHED
+		"
+	fi
+
+	if kernel_is lt 5 2; then
+		CONFIG_CHECK+="
+			~NF_NAT_NEEDED
 		"
 	fi
 

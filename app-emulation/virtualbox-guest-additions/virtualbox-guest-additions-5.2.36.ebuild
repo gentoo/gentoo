@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,11 +11,10 @@ MY_P="VirtualBox-${MY_PV}"
 DESCRIPTION="VirtualBox kernel modules and user-space tools for Gentoo guests"
 HOMEPAGE="https://www.virtualbox.org/"
 SRC_URI="https://download.virtualbox.org/virtualbox/${MY_PV}/${MY_P}.tar.bz2
-	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-6.0.0_beta2-patches-01.tar.xz"
+	https://dev.gentoo.org/~polynomial-c/virtualbox/patchsets/virtualbox-5.2.36-patches-01.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-[[ "${PV}" == *_beta* ]] || [[ "${PV}" == *_rc* ]] || \
 KEYWORDS="~amd64 ~x86"
 IUSE="X"
 
@@ -48,46 +47,53 @@ BUILD_TARGETS="all"
 BUILD_TARGET_ARCH="${ARCH}"
 
 S="${WORKDIR}/${MY_P}"
-VBOX_MOD_SRC_DIR="${S}/out/linux.${ARCH}/release/bin/additions/src"
 
 pkg_setup() {
 	export DISTCC_DISABLE=1 #674256
-	MODULE_NAMES="vboxguest(misc:${VBOX_MOD_SRC_DIR}/vboxguest:${VBOX_MOD_SRC_DIR}/vboxguest)
-		vboxsf(misc:${VBOX_MOD_SRC_DIR}/vboxsf:${VBOX_MOD_SRC_DIR}/vboxsf)"
-	use X && MODULE_NAMES+=" vboxvideo(misc:${VBOX_MOD_SRC_DIR}/vboxvideo::${VBOX_MOD_SRC_DIR}/vboxvideo)"
+	MODULE_NAMES="vboxguest(misc:${WORKDIR}/vboxguest:${WORKDIR}/vboxguest)
+		vboxsf(misc:${WORKDIR}/vboxsf:${WORKDIR}/vboxsf)"
+	use X && MODULE_NAMES+=" vboxvideo(misc:${WORKDIR}/vboxvideo::${WORKDIR}/vboxvideo)"
 
 	linux-mod_pkg_setup
 	BUILD_PARAMS="KERN_DIR=/lib/modules/${KV_FULL}/build KERNOUT=${KV_OUT_DIR}"
 }
 
-src_prepare() {
+src_unpack() {
+	unpack ${A}
+
+	# Create and unpack a tarball with the sources of the Linux guest
+	# kernel modules, to include all the needed files
+	"${S}"/src/VBox/Additions/linux/export_modules.sh "${WORKDIR}/vbox-kmod.tar.gz"
+	unpack ./vbox-kmod.tar.gz
+
 	# Remove shipped binaries (kBuild,yasm), see bug #232775
-	rm -r kBuild/bin tools || die
+	cd "${S}"
+	rm -rf kBuild/bin tools
+}
 
-	# Provide kernel sources
-	pushd src/VBox/Additions &>/dev/null || die
-	ebegin "Extracting guest kernel module sources"
-	kmk GuestDrivers-src vboxguest-src vboxsf-src vboxvideo-src &>/dev/null || die
-	eend
-	popd &>/dev/null || die
-
-	pushd src/VBox &>/dev/null || die
-	eapply "${FILESDIR}"/virtualbox-guest-additions-6.0.12-linux-5.3+-compatibility.patch
-	popd &>/dev/null || die
-
+src_prepare() {
 	# PaX fixes (see bug #298988)
-	pushd "${VBOX_MOD_SRC_DIR}" &>/dev/null || die
-	eapply "${FILESDIR}"/vboxguest-6.0.6-log-use-c99.patch
+	pushd "${WORKDIR}" &>/dev/null || die
+	eapply "${FILESDIR}"/vboxguest-4.1.0-log-use-c99.patch
 	popd &>/dev/null || die
 
 	# Disable things unused or splitted into separate ebuilds
 	cp "${FILESDIR}/${PN}-5-localconfig" LocalConfig.kmk || die
 	use X || echo "VBOX_WITH_X11_ADDITIONS :=" >> LocalConfig.kmk
 
+	# stupid new header references...
+	local vboxheader mdir
+	for vboxheader in {product,revision,version}-generated.h ; do
+		for mdir in vbox{guest,sf} ; do
+			ln -sf "${S}"/out/linux.${ARCH}/release/${vboxheader} \
+				"${WORKDIR}/${mdir}/${vboxheader}"
+		done
+	done
+
 	# Remove pointless GCC version check
 	sed -e '/^check_gcc$/d' -i configure || die
 
-	rm "${WORKDIR}/patches/010_virtualbox-5.2.12-qt511.patch" || die
+	rm "${WORKDIR}/patches/008_virtualbox-4.3.14-missing_define.patch" || die
 	eapply "${WORKDIR}/patches"
 
 	eapply_user
