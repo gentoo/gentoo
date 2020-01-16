@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -67,12 +67,6 @@ src_prepare() {
 		-exec sed -r -i \
 			-e 's:\<(PORTDIR|ARCH)\>:SDCC\1:g' \
 			{} + || die
-
-	# https://sourceforge.net/p/sdcc/bugs/2398/
-	sed -i -e '1iAR = @AR@' Makefile.common.in || die
-	sed -i \
-		-e "/^AR =/s:=.*:=$(tc-getAR):" \
-		support/cpp/Makefile.in || die
 
 	# Make sure timestamps don't get messed up.
 	[[ ${PV} == "9999" ]] && find "${S}" -type f -exec touch -r . {} +
