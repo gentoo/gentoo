@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1 virtualx
 
@@ -32,10 +32,9 @@ RDEPEND="
 	>=dev-python/xcffib-0.8.1[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' 'python2*')
 "
-DEPEND="${RDEPEND}
+BDEPEND="
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/xvfbwrapper[${PYTHON_USEDEP}]
 		x11-base/xorg-server[xephyr]
 		x11-apps/xeyes
