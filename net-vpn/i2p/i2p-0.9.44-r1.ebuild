@@ -18,7 +18,7 @@ IUSE="nls test"
 RESTRICT="!test? ( test )"
 
 # dev-java/ant-core is automatically added due to java-ant-2.eclass
-COMMON_DEPEND="
+CP_DEPEND="
 	dev-java/bcprov:1.50
 	dev-java/jrobin:0
 	dev-java/slf4j-api:0
@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	java-virtuals/servlet-api:3.1
 "
 
-DEPEND="${COMMON_DEPEND}
+DEPEND="${CP_DEPEND}
 	dev-java/eclipse-ecj:*
 	nls? ( >=sys-devel/gettext-0.19 )
 	virtual/jdk:1.8
@@ -42,7 +42,7 @@ DEPEND="${COMMON_DEPEND}
 	)
 "
 
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${CP_DEPEND}
 	acct-user/i2p
 	acct-group/i2p
 	virtual/jre:1.8
