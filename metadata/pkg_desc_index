@@ -262,7 +262,7 @@ app-admin/abrt 2.10.10-r2 2.12.0-r1: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.7.15 2.8.7 2.9.2 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.7.15 2.8.7 2.8.8 2.9.2 2.9.3 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 3.4.23 4.0.1: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -704,7 +704,7 @@ app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.6.1: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 0.39.0 0.40.1 1.0.0 9999: An implementation of the ACME protocol
+app-crypt/acme 0.39.0 0.40.1 1.0.0 1.1.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.8.0 2.8.3 9999: An ACME Shell script
 app-crypt/acme-tiny 4.0.3 4.0.4 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
@@ -721,10 +721,10 @@ app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.30 1.4.31: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
-app-crypt/certbot 0.39.0 0.40.1 1.0.0-r1 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 0.40.1 1.0.0 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 0.39.0 0.40.1 1.0.0-r1 1.1.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 0.40.1 1.0.0 1.1.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-dns-nsone 0.39.0: NS1 DNS Authenticator plugin for Certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 0.40.1 1.0.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 0.40.1 1.0.0 1.1.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.3.2 1.3.3 1.3.4 1.4.1: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -1511,7 +1511,7 @@ app-emulation/cri-tools 1.14.0 1.15.0 1.16.1: CLI and validation tools for Kubel
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0: Commercial version of app-emulation/wine with paid support.
 app-emulation/crun 0.10.6: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 2.32.0 9999: Golden Disk Image builder.
+app-emulation/diskimage-builder 2.32.0 2.33.0 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.5: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
@@ -17027,7 +17027,7 @@ sys-auth/libyubikey 1.13: Yubico C low-level library
 sys-auth/munge 0.5.10-r2 0.5.13 0.5.13-r1: An authentication service for creating and validating credentials
 sys-auth/nss-mdns 0.14.1 9999: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
-sys-auth/nss-pam-ldapd 0.9.10 0.9.11 0.9.11-r1: NSS module for name lookups using LDAP
+sys-auth/nss-pam-ldapd 0.9.10 0.9.11 0.9.11-r1 0.9.11-r2: NSS module for name lookups using LDAP
 sys-auth/nss_ldap 265-r5: NSS LDAP Module
 sys-auth/oath-toolkit 2.6.1 2.6.2: Toolkit for using one-time password authentication with HOTP/TOTP algorithms
 sys-auth/otpcalc 0.97-r8: A One Time Password and S/Key calculator for X
