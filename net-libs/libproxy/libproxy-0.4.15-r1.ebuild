@@ -65,8 +65,6 @@ multilib_src_configure() {
 		-DWITH_KDE=$(usex kde)
 		-DWITH_DOTNET=$(multilib_is_native_abi && usex mono || echo OFF)
 		-DWITH_NM=$(usex networkmanager)
-		-DWITH_NMold=$(usex networkmanager)
-		-DPERL_VENDORINSTALL=OFF
 		-DWITH_PERL=OFF # bug 705410, uses reserved target name "test"
 		-DWITH_PYTHON3=OFF # Major issue: https://github.com/libproxy/libproxy/issues/65
 		-DWITH_MOZJS=$(multilib_is_native_abi && usex spidermonkey || echo OFF)
