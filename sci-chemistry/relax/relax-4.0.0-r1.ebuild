@@ -10,7 +10,7 @@ WX_GTK_VER="3.0"
 inherit eutils multiprocessing python-single-r1 scons-utils toolchain-funcs wxwidgets virtualx
 
 DESCRIPTION="Molecular dynamics by NMR data analysis"
-HOMEPAGE="http://www.nmr-relax.com/"
+HOMEPAGE="https://www.nmr-relax.com/"
 SRC_URI="http://download.gna.org/relax/${P}.src.tar.bz2"
 
 SLOT="0"
