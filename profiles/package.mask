@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-01-16)
+# The new version loses Python 2 support but does not introduce any real
+# changes.  Let's mask it to reduce the noise, and hopefully try to get
+# python2_7 out of default PYTHON_TARGETS first.
+>=dev-python/setuptools-45.0.0
+
 # Joonas Niilola <juippis@gentoo.org> (2020-01-15)
 # Leftover from silc* removal (#522916), unmaintained, no upstream 
 # releases since 2014, EAPI-4. #705462
