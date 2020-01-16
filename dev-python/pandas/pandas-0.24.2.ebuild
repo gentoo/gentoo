@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -50,7 +50,6 @@ OPTIONAL_DEPEND="
 	X? (
 		|| (
 			dev-python/PyQt5[${PYTHON_USEDEP}]
-			dev-python/pygtk[$(python_gen_usedep python2_7)]
 			x11-misc/xclip
 			x11-misc/xsel
 		)
