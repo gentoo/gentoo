@@ -5182,7 +5182,7 @@ dev-libs/sdformat 6.0.0 6.1.0 6.2.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.28.0-r1 0.30.2: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9 2.01 2.01-r1 2.02: Library to drive several displays with built-in controllers or display modules
 dev-libs/shhopt 1.1.7-r3: library for parsing command line options
-dev-libs/sink 0.8.0-r1: Data access layer handling synchronization, caching and indexing
+dev-libs/sink 0.8.0-r2: Data access layer handling synchronization, caching and indexing
 dev-libs/skalibs 2.3.2.0 2.6.1.0 2.6.3.0 2.6.4.0 2.7.0.0 2.8.1.0 2.9.1.0: General-purpose libraries from skarnet.org
 dev-libs/smack 0.5.0: low-level IO storage which packs data into sorted compressed blobs
 dev-libs/snowball-stemmer 0.20140325: All you need to include the snowball stemming algorithms into a C project
@@ -18001,7 +18001,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.3.1 5.3.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 79.0.3945.117 80.0.3987.42: Open-source version of Google Chrome web browser
+www-client/chromium 79.0.3945.117 80.0.3987.53: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.5 3.32.6: GNOME webbrowser based on Webkit
