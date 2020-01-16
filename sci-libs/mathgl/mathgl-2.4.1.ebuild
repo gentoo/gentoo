@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -38,7 +38,13 @@ RDEPEND="
 	openmp? ( sys-cluster/openmpi )
 	pdf? ( media-libs/libharu )
 	png? ( media-libs/libpng:0 )
-	python? ( dev-python/numpy[${PYTHON_USEDEP}] ${PYTHON_DEPS} )
+	python? (
+		|| (
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
+		)
+		${PYTHON_DEPS}
+	)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtgui:5
