@@ -86,8 +86,11 @@ DEPEND="${COMMON_DEPEND}
 
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
-	"${FILESDIR}"/${PN}-2.0-suid-warning.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
+	"${FILESDIR}"/${PN}-2.0-suid-warning.patch
+	"${FILESDIR}"/${PN}-3.0.2-ldconfig.patch
+)
 
 pkg_postinst() {
 	enewgroup ${PN}
@@ -150,10 +153,4 @@ python_configure_all() {
 	append-cflags -fno-strict-aliasing
 
 	export XPRA_SOCKET_DIRS="${EPREFIX}/run/xpra"
-}
-
-src_compile() {
-	# xpra calls `ldconfig -p` during compile to locate libraries.
-	addpredict /etc
-	distutils-r1_src_compile
 }
