@@ -13,7 +13,7 @@ SRC_URI="https://github.com/libproxy/libproxy/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
-IUSE="gnome kde mono networkmanager perl spidermonkey test webkit"
+IUSE="gnome kde mono networkmanager spidermonkey test webkit"
 
 RESTRICT="!test? ( test )"
 
@@ -24,7 +24,6 @@ DEPEND="
 	gnome? ( dev-libs/glib:2[${MULTILIB_USEDEP}] )
 	mono? ( dev-lang/mono )
 	networkmanager? ( sys-apps/dbus:0[${MULTILIB_USEDEP}] )
-	perl? ( dev-lang/perl:= )
 	spidermonkey? ( >=dev-lang/spidermonkey-52.0.0:= )
 	webkit? ( net-libs/webkit-gtk:4 )
 "
@@ -66,9 +65,7 @@ multilib_src_configure() {
 		-DWITH_KDE=$(usex kde)
 		-DWITH_DOTNET=$(multilib_is_native_abi && usex mono || echo OFF)
 		-DWITH_NM=$(usex networkmanager)
-		-DWITH_NMold=$(usex networkmanager)
-		$(multilib_is_native_abi && usex perl -DPERL_VENDORINSTALL=ON)
-		-DWITH_PERL=$(multilib_is_native_abi && usex perl || echo OFF)
+		-DWITH_PERL=OFF # bug 705410, uses reserved target name "test"
 		-DWITH_PYTHON3=OFF # Major issue: https://github.com/libproxy/libproxy/issues/65
 		-DWITH_MOZJS=$(multilib_is_native_abi && usex spidermonkey || echo OFF)
 		-DBUILD_TESTING=$(usex test)
