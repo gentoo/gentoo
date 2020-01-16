@@ -51,6 +51,7 @@ DEPEND="
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#optional-dependencies
 RDEPEND="
 	${COMMON_DEPEND}
+	!sys-apps/systemd[-cgroup-hybrid(+)]
 	>=net-firewall/iptables-1.4
 	sys-process/procps
 	>=dev-vcs/git-1.7
