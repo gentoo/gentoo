@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,10 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/numpy[${PYTHON_USEDEP}]
+	|| (
+		dev-python/numpy-python2[${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+	)
 	sci-chemistry/openbabel-python[${PYTHON_USEDEP}]
 	opal? ( dev-python/zsi[${PYTHON_USEDEP}] )
 	pdb2pka? ( sci-chemistry/apbs[${PYTHON_USEDEP},-mpi] )"
