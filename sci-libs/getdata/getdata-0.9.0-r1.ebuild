@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,13 @@ DEPEND="
 	bzip2? ( app-arch/bzip2 )
 	lzma? ( app-arch/xz-utils )
 	perl? ( dev-lang/perl )
-	python? ( dev-python/numpy[${PYTHON_USEDEP}] ${PYTHON_DEPS} )"
+	python? (
+		|| (
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
+		)
+		${PYTHON_DEPS}
+	)"
 RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${P}-remove-python-test.patch" )
