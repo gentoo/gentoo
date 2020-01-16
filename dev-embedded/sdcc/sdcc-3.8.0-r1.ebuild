@@ -73,6 +73,11 @@ src_prepare() {
 
 	default
 	eautoreconf
+
+	# Avoid 'bfd.info' rebuild with 'makeinfo': bug #705424
+	# Build dependencies are: eautoreconf->Makefile.in->bfdver.texi->bfd.info
+	touch support/sdbinutils/bfd/doc/bfdver.texi || die
+	touch support/sdbinutils/bfd/doc/bfd.info || die
 }
 
 src_configure() {
