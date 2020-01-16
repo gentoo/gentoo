@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,11 +37,6 @@ DEPEND="
 BDEPEND="
 	virtual/pkgconfig
 "
-
-src_prepare() {
-	default
-	sed '/^Icon/s@grip\b@gripicon@' -i grip.desktop || die
-}
 
 src_configure() {
 	# Bug #69536
