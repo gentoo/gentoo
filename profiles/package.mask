@@ -32,7 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
-# Mikle Kolyada <zlogene@gentoo.org> (2020-0113)
+# Joonas Niilola <juippis@gentoo.org> (2020-01-15)
+# Leftover from silc* removal (#522916), unmaintained, no upstream 
+# releases since 2014, EAPI-4. #705462
+# Removal in ~14 days.
+net-im/silc-toolkit
+
+# Mikle Kolyada <zlogene@gentoo.org> (2020-01-13)
 # Current versioning breaks portage logic and prevents
 # us from adding official releases made by google.
 # Please DOWNGRADE to dev-python/nototools-0_pre20200113
