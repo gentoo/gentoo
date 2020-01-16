@@ -16234,7 +16234,7 @@ sci-libs/pastix 5.2.2.22-r1 5.2.3: Parallel solver for very large sparse linear 
 sci-libs/pcl 1.9.1 9999: 2D/3D image and point cloud processing
 sci-libs/pgplot 5.2.2-r7: FORTRAN/C device-independent scientific graphic library
 sci-libs/plotmm 0.1.2: Plot widget for GTKmm
-sci-libs/plplot 5.12.0-r1 5.15.0: Multi-language scientific plotting library
+sci-libs/plplot 5.15.0: Multi-language scientific plotting library
 sci-libs/primegen 0.97-r2: Small, fast library to generate primes in order
 sci-libs/profnet 1.0.22: Neural network architecture for profacc
 sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
@@ -16253,8 +16253,8 @@ sci-libs/scalapack 2.0.2-r1: Subset of LAPACK routines redesigned for heterogeno
 sci-libs/scikits 0.1-r1 0.1-r2: Common files for python scikits
 sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
 sci-libs/scikits_learn 0.19.0-r1 0.20.2 0.20.4: Python modules for machine learning and data mining
-sci-libs/scikits_optimization 0.3 0.3-r1: Python module for numerical optimization
-sci-libs/scikits_timeseries 0.91.3-r1 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
+sci-libs/scikits_optimization 0.3-r1: Python module for numerical optimization
+sci-libs/scikits_timeseries 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
 sci-libs/scipy 1.1.0 1.4.1 9999: Scientific algorithms library for Python
 sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.4.0-r1 1.4.1 1.5.0: Library for manipulating ESRI Shapefiles

@@ -7499,7 +7499,6 @@ sci-libs/pcl:tutorials - Builds and installs tutorials.
 sci-libs/pcl:vtk - Adds support for VTK-Visualizations.
 sci-libs/plplot:dynamic - Build with dynamic drivers
 sci-libs/plplot:octave - Add bindings for sci-mathematics/octave
-sci-libs/plplot:pdl - Add bindings for dev-perl/PDL
 sci-libs/plplot:qhull - Add bindings for media-libs/qhull
 sci-libs/plplot:shapefile - Enable support for ESRI shapefiles
 sci-libs/proj:europe - Install the PROJ collection of European grids and init-files
