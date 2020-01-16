@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -39,7 +39,10 @@ RDEPEND="
 	postscript? ( dev-libs/pslib )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/numpy[${PYTHON_USEDEP}]
+		|| (
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
+		)
 	)
 	udunits? ( sci-libs/udunits )
 	wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[X] )"
