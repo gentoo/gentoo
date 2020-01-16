@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815
-DEFINED_PHASES=configure prepare
+DEFINED_PHASES=configure
 DEPEND=gnome-base/libgnome >=gnome-base/libgnomeui-2.2.0 >=media-libs/id3lib-3.8.3 media-sound/cdparanoia media-sound/lame net-misc/curl >=x11-libs/gtk+-2.2:2 x11-libs/libX11 x11-libs/pango x11-libs/vte:0 vorbis? ( media-sound/vorbis-tools ) sys-devel/gettext virtual/pkgconfig
 DESCRIPTION=GTK+ based Audio CD Player/Ripper
 EAPI=7
@@ -11,4 +11,4 @@ RDEPEND=gnome-base/libgnome >=gnome-base/libgnomeui-2.2.0 >=media-libs/id3lib-3.
 SLOT=0
 SRC_URI=mirror://sourceforge/grip/grip-3.9.0.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=e5790ea263cc8ee985ada3d0e6fdc3b1
+_md5_=34a87574fc6e1f4ec9c2a77ffa192d7b
