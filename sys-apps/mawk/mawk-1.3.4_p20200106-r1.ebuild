@@ -13,7 +13,6 @@ SRC_URI="https://invisible-mirror.net/archives/${PN}/${MY_P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
-IUSE="forced-sandbox"
 
 RDEPEND="app-eselect/eselect-awk"
 DEPEND="${RDEPEND}"
@@ -22,14 +21,9 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS=( ACKNOWLEDGMENT CHANGES README )
 
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.3.4-sandbox.patch
-	"${FILESDIR}"/${PN}-1.3.4-sandbox-default.patch
-)
-
 src_configure() {
 	tc-export BUILD_CC
-	econf $(use_enable forced-sandbox)
+	econf
 }
 
 src_install() {
