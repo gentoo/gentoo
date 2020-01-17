@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=A major mode for editing comma-separated value files
 EAPI=7
 HOMEPAGE=https://elpa.gnu.org/packages/csv-mode.html https://www.emacswiki.org/emacs/CsvMode
-KEYWORDS=~amd64 ~ppc ~sparc ~x86
+KEYWORDS=amd64 ~ppc sparc x86
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/csv-mode-1.10.el.xz
 _eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=c7ff4abb168cb2279d94d4ebc8277441
+_md5_=390c7770be8167c2e1b4c5ccebd8179f

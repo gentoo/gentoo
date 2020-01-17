@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=HTML-ize font-lock buffers in Emacs
 EAPI=7
 HOMEPAGE=https://www.emacswiki.org/emacs/Htmlize https://github.com/hniksic/emacs-htmlize
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/hniksic/emacs-htmlize/archive/release/1.55.tar.gz -> htmlize-1.55.tar.gz
 _eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=f1416b665bda247f0fadb9f5031bb399
+_md5_=579775b743a32685d3eb2ddcb2b96c23
