@@ -2345,7 +2345,7 @@ app-portage/deltup 0.4.6-r1: Delta-Update - patch system for updating source-arc
 app-portage/demerge 0.047-r3: demerge - revert to previous installation states
 app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries up-to-date with masks
 app-portage/distpatch 0.1.2-r1: Distfile Patching Support for Gentoo Linux (tools)
-app-portage/eix 0.33.8 0.33.9-r1: Search and query ebuilds
+app-portage/eix 0.33.9-r1: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
 app-portage/elogv 0.7.8-r1 0.7.8-r2: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 2.9 3.0: Elog viewer for Gentoo
@@ -13135,7 +13135,7 @@ media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
 media-libs/shaderc 2018.0 2019.0-r1: Collection of tools, libraries and tests for shader compilation
 media-libs/simage 1.7.0-r1 1.7.1-r1: Image and video texturing library
-media-libs/slv2 0.6.6-r2 0.6.6-r3: A library to make the use of LV2 plugins as simple as possible for applications
+media-libs/slv2 0.6.6-r3: A library to make the use of LV2 plugins as simple as possible for applications
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
 media-libs/soxr 0.1.3-r1: SoX Resampler library
@@ -13766,7 +13766,7 @@ media-sound/qsampler 0.5.6 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.0 9999: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
-media-sound/qtractor 0.9.9 0.9.11 0.9.12: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
+media-sound/qtractor 0.9.11 0.9.12: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 3.8.1-r1 3.9.1 4.1.0 4.2.0 4.2.1: audio library tagger, manager, and player for GTK+
