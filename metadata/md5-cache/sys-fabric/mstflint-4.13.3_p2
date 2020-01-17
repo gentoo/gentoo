@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure prepare
+DEPEND=dev-db/sqlite:3= sys-libs/zlib:= inband? ( sys-fabric/libibmad ) ssl? ( dev-libs/openssl:= )
+DESCRIPTION=Mstflint - an open source version of MFT (Mellanox Firmware Tools)
+EAPI=7
+HOMEPAGE=https://github.com/Mellanox/mstflint
+IUSE=inband ssl
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( GPL-2 BSD-2 )
+RDEPEND=dev-db/sqlite:3= sys-libs/zlib:= inband? ( sys-fabric/libibmad ) ssl? ( dev-libs/openssl:= )
+SLOT=0
+SRC_URI=https://github.com/Mellanox/mstflint/archive/v4.13.3-2.tar.gz -> mstflint-4.13.3_p2.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=1ab18f6cfed4593bf3841a1cc815a516
