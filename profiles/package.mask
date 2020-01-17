@@ -524,13 +524,6 @@ virtual/httpd-php:7.1
 =app-emulation/xen-pvgrub-4.13.0
 =app-emulation/xen-tools-4.13.0
 
-# Ulrich Müller <ulm@gentoo.org> (2019-12-18)
-# Live ebuilds for Emacs from Git have been consolidated
-# into separate slots of the app-editors/emacs package.
-# Please update your package.accept_keywords file accordingly.
-# Masked for removal in 30 days. Bug #291296.
-app-editors/emacs-vcs
-
 # Anthony G. Basile <blueness@gentoo.org> (2019-12-17)
 # Project has been dead upstream for years.
 # Removal in 30 days.
