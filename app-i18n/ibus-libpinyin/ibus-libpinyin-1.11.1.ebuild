@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2015-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -18,15 +18,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE="boost lua opencc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-BDEPEND="
+BDEPEND="dev-db/sqlite:3
 	virtual/pkgconfig"
 
 DEPEND="${PYTHON_DEPS}
 	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
 	>=app-i18n/libpinyin-2.1.0:=
+	dev-db/sqlite:3
+	dev-libs/glib:2
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	virtual/libintl
-	dev-db/sqlite:3
 	boost? ( dev-libs/boost:= )
 	lua? ( dev-lang/lua:0 )
 	opencc? ( app-i18n/opencc:= )"
