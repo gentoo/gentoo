@@ -14,11 +14,21 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sh ~sparc x86"
 IUSE="acl nls selinux static"
 
-RDEPEND="acl? ( virtual/acl )
-	nls? ( virtual/libintl )
-	selinux? ( sys-libs/libselinux )"
+RDEPEND="
+	!static? (
+		acl? ( virtual/acl )
+		nls? ( virtual/libintl )
+		selinux? ( sys-libs/libselinux )
+	)
+"
 DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )"
+	nls? ( sys-devel/gettext )
+	static? (
+		acl? ( virtual/acl[static-libs(+)] )
+		nls? ( virtual/libintl[static-libs(+)] )
+		selinux? ( sys-libs/libselinux[static-libs(+)] )
+	)
+"
 
 src_configure() {
 	local myconf=()
