@@ -5,4 +5,19 @@
 		<email>johu@gentoo.org</email>
 		<name>Johannes Huber</name>
 	</maintainer>
+	<use>
+		<flag name="system-ffmpeg">Use the system-wide <pkg>media-video/ffmpeg</pkg>
+			instead of bundled</flag>
+	</use>
+	<use lang="fr">
+		<flag name="system-ffmpeg">Utiliser le <pkg>media-video/ffmpeg</pkg> du
+			système à la place de celui déjà inclu dans l'archive</flag>
+	</use>
+	<upstream>
+		<maintainer status="active">
+			<name>Discord Inc.</name>
+		</maintainer>
+		<doc>https://discordapp.com/developers/docs</doc>
+		<bugs-to>mailto:support@discordapp.com</bugs-to>
+	</upstream>
 </pkgmetadata>
