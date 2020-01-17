@@ -27,9 +27,8 @@ DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40.0
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( x11-libs/gdk-pixbuf:2 )
+	x11-libs/gdk-pixbuf:2
 "
-# TODO: make gdk-pixbuf properly optional with USE=test
 
 pkg_setup() {
 	python_setup
