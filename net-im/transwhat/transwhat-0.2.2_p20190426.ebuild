@@ -15,7 +15,7 @@ SRC_URI="https://github.com/stv0g/transwhat/archive/${EGIT_COMMIT}.tar.gz -> ${P
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
