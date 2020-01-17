@@ -12553,7 +12553,7 @@ media-gfx/apng2gif 1.8: create a GIF from an APNG
 media-gfx/apngasm 2.7 2.91: create an APNG from multiple PNG files
 media-gfx/apngdis 2.9: extract PNG frames from an APNG
 media-gfx/apngopt 1.4: optimize APNG images
-media-gfx/argyllcms 2.1.1 2.1.1-r1: Open source, ICC compatible color management system
+media-gfx/argyllcms 2.1.1 2.1.1-r1 2.1.2: Open source, ICC compatible color management system
 media-gfx/arss 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
 media-gfx/asymptote 2.60 2.61: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
@@ -15131,7 +15131,7 @@ net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.13 3.7.17 3.7.21 3.8.0 3.8.1: RabbitMQ
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18: Linux IPv6 Router Advertisement Daemon
 net-misc/rclone 1.45 1.47.0 1.49.1 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
-net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0: A Remote Desktop Protocol Client
+net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
 net-misc/remmina 1.3.4 1.3.6-r1 1.3.9-r1 1.3.10: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
@@ -17543,7 +17543,7 @@ sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.3: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.20-r2 2.22 2.23 9999: A library for manipulating block devices
-sys-libs/libcap 2.26-r2 2.27 2.28-r1 2.29-r3 2.30: POSIX 1003.1e capabilities
+sys-libs/libcap 2.26-r2 2.27 2.30 2.31: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8 0.7.9 0.7.10: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.0.4 5.1.4_rc1 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 7.1.0 8.0.1 9.0.1 10.0.0.9999: New implementation of the C++ standard library, targeting C++11
