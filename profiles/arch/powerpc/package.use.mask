@@ -158,7 +158,7 @@ dev-db/percona-server -numa
 # Davide Pesavento <pesa@gentoo.org> (2016-07-28)
 # The corresponding Qt5 modules are not keyworded on ppc, and we don't want to
 # keyword them solely because of PyQt5 while there are no other in-tree users.
-dev-python/PyQt5 bluetooth location networkauth webengine
+dev-python/PyQt5 bluetooth location networkauth
 
 # Michael Palimaka <kensington@gentoo.org> (2016-07-07)
 # Requires unkeyworded dependencies
@@ -312,7 +312,7 @@ net-misc/connman ofono
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2012-01-20)
 # Mask some use flags for openmpi due to unkeyworded deps
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Kacper Kowalik <xarthisius@gentoo.org> (2011-11-20)
 # Dropped dietlibc wrt #364103

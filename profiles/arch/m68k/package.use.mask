@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
@@ -38,10 +38,6 @@ sys-devel/gcc graphite awt
 # Mike Frysinger <vapier@gentoo.org> (2011-02-10)
 # Waiting for keywording #354309
 net-firewall/iptables netlink
-
-# Diego Pettenò <flameeyes@gentoo.org> (2007-11-10)
-# Tests for Linux-PAM 0.99 require >=sys-libs/glibc-2.4
->=sys-libs/pam-0.99.8 test
 
 # Masking these to keep repoman happy
 media-gfx/graphviz perl

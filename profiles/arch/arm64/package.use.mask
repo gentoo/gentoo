@@ -140,11 +140,6 @@ dev-python/notebook doc
 # Require old gnome2 libraries, not keywording legacy on purpose
 sys-devel/distcc gnome
 
-# Mart Raudsepp <leio@gentoo.org> (2018-05-13)
-# Not bothering with otherwise p.masked old gcc for the
-# extra dev-libs/cloog dependency with USE=graphite
-<sys-devel/gcc-5 graphite
-
 # Mart Raudsepp <leio@gentoo.org> (2018-05-06)
 # New enough dev-ruby/webmock not keyworded yet
 >=dev-ruby/thor-0.20.0 test
