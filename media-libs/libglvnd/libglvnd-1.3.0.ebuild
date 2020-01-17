@@ -19,7 +19,7 @@ HOMEPAGE="https://gitlab.freedesktop.org/glvnd/libglvnd"
 if [[ ${PV} = 9999* ]]; then
 	SRC_URI=""
 else
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sparc ~x86"
 	SRC_URI="https://gitlab.freedesktop.org/glvnd/${PN}/-/archive/v${PV}/${PN}-v${PV}.tar.bz2 -> ${P}.tar.bz2"
 	S=${WORKDIR}/${PN}-v${PV}
 fi
@@ -44,6 +44,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-meson-Fix-the-armv7-build.patch
 	"${FILESDIR}"/${P}-meson-Fix-the-PPC64-build.patch
+	"${FILESDIR}"/${P}-tests-Add-_GLOBAL_OFFSET_TABLE_-to-PLATFORM_SYMBOLS.patch
 )
 
 multilib_src_configure() {
