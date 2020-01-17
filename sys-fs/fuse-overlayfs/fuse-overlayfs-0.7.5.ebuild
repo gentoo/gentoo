@@ -7,7 +7,8 @@ inherit autotools
 
 DESCRIPTION="FUSE implementation for overlayfs"
 HOMEPAGE="https://github.com/containers/fuse-overlayfs"
-SRC_URI="https://github.com/containers/fuse-overlayfs/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_COMMIT="99d49d54aea94fea4e57ef5287eaa9e1e092de7f"
+SRC_URI="https://github.com/containers/fuse-overlayfs/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -17,6 +18,8 @@ IUSE=""
 RDEPEND=">=sys-fs/fuse-3:="
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
+
+S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 src_prepare() {
 	default
