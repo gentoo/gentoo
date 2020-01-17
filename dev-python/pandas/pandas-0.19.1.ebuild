@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="manual"
 inherit distutils-r1 eutils flag-o-matic virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
-HOMEPAGE="http://pandas.pydata.org/"
+HOMEPAGE="https://pandas.pydata.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 SLOT="0"
