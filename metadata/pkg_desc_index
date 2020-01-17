@@ -773,7 +773,7 @@ app-crypt/johntheripper-jumbo 1.8.0 1.9.0 9999: fast password cracker
 app-crypt/kali-archive-keyring 2015.2: GnuPG archive keys of the Kali archive
 app-crypt/kbfs 2.6.0 2.8.0 2.10.1 2.11.0-r1 9999: Keybase Filesystem (KBFS)
 app-crypt/kencfs-plasma 2.0.2_alpha: GUI frontend for encfs
-app-crypt/keybase 3.0.0 4.4.2 4.5.0 4.7.0 4.7.2 9999: Client for keybase.io
+app-crypt/keybase 4.4.2 4.5.0 4.7.0 4.7.2 5.1.1 9999: Client for keybase.io
 app-crypt/keylookup 2.2: A tool to fetch PGP keys from keyservers
 app-crypt/kstart 4.2: Modified versions of kinit for refreshing kerberos tickets automatically
 app-crypt/libb2 0.98.1-r1 0.98.1-r2: C library providing BLAKE2b, BLAKE2s, BLAKE2bp, BLAKE2sp
@@ -1763,7 +1763,7 @@ app-i18n/libchewing 0.5.1 9999: Intelligent phonetic (Zhuyin/Bopomofo) input met
 app-i18n/libhangul 0.1.0: Library for hangul input method logic, hanja dictionary
 app-i18n/libkkc 0.3.6_pre20190809104047 9999: Japanese Kana Kanji conversion input method library
 app-i18n/libpinyin 2.3.0 9999: Libraries for handling of Hanyu Pinyin and Zhuyin Fuhao
-app-i18n/librime 1.4.0 1.5.3-r1: RIME (Rime Input Method Engine) core library
+app-i18n/librime 1.5.3-r1: RIME (Rime Input Method Engine) core library
 app-i18n/libskk 1.0.2: GObject-based library to deal with Japanese kana-to-kanji conversion method
 app-i18n/libtabe 0.2.6.1.2: Libtabe provides bimsphone support for xcin-2.5+
 app-i18n/man-pages-de 2.12 2.12-r1: A somewhat comprehensive collection of Linux german man page translations
@@ -1804,7 +1804,7 @@ app-i18n/skkserv 9.6-r3: Dictionary server for the SKK Japanese-input software
 app-i18n/skktools 1.3.3_p20170305 1.3.4: SKK utilities to manage dictionaries
 app-i18n/sunpinyin 2.0.4_pre20130108-r2 3.0.0_rc1: A Statistical Language Model based Chinese input method library
 app-i18n/sunpinyin-data 20130220 20140820: Data sets for Sunpinyin
-app-i18n/tagainijisho 1.2.0_pre20180610092832 1.2.0_pre20190507124027_p20191001_p20191001 1.2.0_pre20191230120610_p20200101_p20200101 9999: Open-source Japanese dictionary and kanji lookup tool
+app-i18n/tagainijisho 1.2.0_pre20191230120610_p20200101_p20200101 9999: Open-source Japanese dictionary and kanji lookup tool
 app-i18n/tegaki-zinnia-japanese 0.3: Handwriting model data of Japanese
 app-i18n/tomoe 0.6.0-r4: Japanese handwriting recognition engine
 app-i18n/tomoe-gtk 0.6.0-r4: Tomoe GTK+ interface widget library
@@ -5109,7 +5109,7 @@ dev-libs/luise-bin 0.1.1-r1: Programming interface for the Wallbraun LCD-USB-Int
 dev-libs/lzo 2.10: An extremely fast compression and decompression library
 dev-libs/m17n-lib 1.7.0 1.8.0: Multilingual Library for Unix/Linux
 dev-libs/maloc 1.5-r1: Minimal Abstraction Layer for Object-oriented C/C++ programs
-dev-libs/marisa 0.2.4 0.2.5 9999: Matching Algorithm with Recursively Implemented StorAge
+dev-libs/marisa 0.2.5 9999: Matching Algorithm with Recursively Implemented StorAge
 dev-libs/mathjax 2.7.0 2.7.4 2.7.7: JavaScript display engine for LaTeX, MathML and AsciiMath
 dev-libs/mimetic 0.9.8: C++ MIME library designed to be easy to use and integrate, fast and efficient.
 dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
@@ -5220,7 +5220,7 @@ dev-libs/urdfdom_headers 1.0.2 1.0.3 1.0.4 9999: URDF (U-Robot Description Forma
 dev-libs/uriparser 0.9.1 0.9.3: Uriparser is a strictly RFC 3986 compliant URI parsing library in C
 dev-libs/userspace-rcu 0.9.1 0.9.2 0.10.1 0.10.2 0.11.1: userspace RCU (read-copy-update) library
 dev-libs/ustr 1.0.4-r5 1.0.4-r7 1.0.4-r8: Low-overhead managed string library for C
-dev-libs/utfcpp 2.3.4 3.1 9999: UTF-8 C++ library
+dev-libs/utfcpp 3.1 9999: UTF-8 C++ library
 dev-libs/uthash 2.0.2: An easy-to-use hash implementation for C programmers
 dev-libs/uulib 0.5.20-r1: Library that supports Base64 (MIME), uuencode, xxencode and binhex coding
 dev-libs/vala-common 0.44.9 0.44.11 0.46.5: Build infrastructure for packages that use Vala
