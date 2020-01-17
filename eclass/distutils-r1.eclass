@@ -449,6 +449,8 @@ _distutils_verify_use_setuptools() {
 	elif grep -E -q -s '(from|import)\s+setuptools' setup.py; then
 		if grep -E -q -s 'entry_points\s*=' setup.py; then
 			expected=rdepend
+		elif grep -F -q -s '[options.entry_points]' setup.cfg; then
+			expected=rdepend
 		else
 			expected=bdepend
 		fi
