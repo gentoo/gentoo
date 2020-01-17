@@ -52,6 +52,7 @@ PATCHES=(
 	"${FILESDIR}/18.2.1-wx3.0.patch"
 	"${FILESDIR}/${PN}-22.0-dont-ignore-LDFLAGS.patch"
 	"${FILESDIR}/${PN}-22.2.2-gcc-10.patch"
+	"${FILESDIR}/${PN}-22.1.4-asn1-dep.patch"
 )
 
 SITEFILE=50"${PN}"-gentoo.el
