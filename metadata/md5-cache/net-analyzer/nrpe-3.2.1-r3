@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile configure install postinst
+DEPEND=acct-group/nagios acct-user/nagios sys-apps/tcp-wrappers ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
+DESCRIPTION=Nagios Remote Plugin Executor
+EAPI=7
+HOMEPAGE=https://github.com/NagiosEnterprises/nrpe
+IUSE=command-args libressl selinux ssl
+KEYWORDS=~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=acct-group/nagios acct-user/nagios sys-apps/tcp-wrappers ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) || ( net-analyzer/nagios-plugins net-analyzer/monitoring-plugins ) selinux? ( sec-policy/selinux-nagios )
+SLOT=0
+SRC_URI=https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-3.2.1/nrpe-3.2.1.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=57848ee822dc06f9fa2089573b96701d

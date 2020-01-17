@@ -56,6 +56,7 @@ acct-group/munin 0: System group: munin
 acct-group/murmur 0: System group: murmur
 acct-group/mysql 0: MySQL program group
 acct-group/mythtv 0: Mythtv mythbackend server/deamon group
+acct-group/nagios 0: System group: nagios
 acct-group/netdata 0: System group: netdata
 acct-group/netdev 0: group for netdev (avahi)
 acct-group/nofiles 0: System group: nofiles
@@ -172,6 +173,7 @@ acct-user/munin-async 0: user for munin async proxy node
 acct-user/murmur 0: user for murmur daemon
 acct-user/mysql 0: MySQL program user
 acct-user/mythtv 0: Mythtv mythbackend server/deamon user
+acct-user/nagios 0: System user: nagios
 acct-user/netdata 0: user for netdata
 acct-user/nsd 0: user for nsd daemon
 acct-user/ntp 0: user for ntp daemon
@@ -571,7 +573,7 @@ app-backup/backintime 1.2.1 9999: Backup system inspired by TimeVault and FlyBac
 app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line backup tool for GNU/Linux
 app-backup/backupninja 1.0.1-r1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
-app-backup/bacula 5.2.13-r7 9.0.8-r1 9.2.2-r2 9.4.1-r2 9.4.2-r1 9.4.3-r1 9.4.4-r1 9.4.4-r2: Featureful client/server network backup suite
+app-backup/bacula 9.0.8-r1 9.2.2-r2 9.4.1-r2 9.4.2-r1 9.4.3-r1 9.4.4-r1 9.4.4-r2: Featureful client/server network backup suite
 app-backup/bareos 16.2.7-r1 17.2.6 17.2.7-r1 18.2.6: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.10-r1 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
@@ -1181,7 +1183,7 @@ app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.15 1.8.16-r1 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
 app-doc/eclass-manpages 20191222 99999999: Collection of Gentoo eclass manpages
-app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3: The GNU Emacs Lisp Reference Manual
+app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.10.03 4.10.05: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.8.2 2.10.0: GNU Image Manipulation Program help files
 app-doc/gnucash-docs 3.2-r2 3.3-r1 3.4-r1 3.5-r1 3.6-r1 3.7: Documentation package for GnuCash
@@ -1226,7 +1228,6 @@ app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 prog
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7 2.2.0-r8: A vi/ex clone
 app-editors/emacs 18.59-r12 23.4-r18 24.5-r7 25.3-r6 26.2 26.3-r1 27.0.50_pre20191223 27.0.9999-r1 28.0.9999: The extensible, customizable, self-documenting real-time display editor
-app-editors/emacs-vcs 27.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515-r1: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 2.0: A small and easy to use folding editor
@@ -14190,11 +14191,11 @@ net-analyzer/nagios-check_multiple 0.0.1: A Nagios plugin to execute multiple ch
 net-analyzer/nagios-check_mysql_health 2.2.2: A nagios plugin for checking MySQL server health
 net-analyzer/nagios-check_pidfile 1: A nagios plugin for checking daemons via pidfiles
 net-analyzer/nagios-check_rbl 1.4.1: Monitor whether or not a host is blacklisted
-net-analyzer/nagios-core 4.3.4 4.4.5-r3 4.4.5-r5: Nagios core - monitoring daemon, web GUI, and documentation
+net-analyzer/nagios-core 4.3.4 4.4.5-r3 4.4.5-r6: Nagios core - monitoring daemon, web GUI, and documentation
 net-analyzer/nagios-icinga-openvpn 0.0.1: A Nagios plugin to check whether an OpenVPN server is alive
 net-analyzer/nagios-plugin-check_lm_sensors 4.1.1_p20191028: Nagios plugin to monitor the values of onboard sensors and disk temperatures
 net-analyzer/nagios-plugin-check_raid 4.0.0-r1 4.0.0_p20151215 4.0.0_p20160215 4.0.1 4.0.2 4.0.8: Nagios/Icinga plugin to check current server's RAID status
-net-analyzer/nagios-plugins 2.2.1-r3 2.2.1-r4 2.3.1: Official plugins for Nagios
+net-analyzer/nagios-plugins 2.2.1-r3 2.2.1-r4 2.3.1-r1: Official plugins for Nagios
 net-analyzer/nagios-plugins-flameeyes 9999: Flameeyes's custom Nagios/Icinga plugins
 net-analyzer/nagios-plugins-linux-madrisan 25-r1: Additional and alternative Nagios plugins for Linux
 net-analyzer/nagios-plugins-snmp 0.6.0-r2: Additional Nagios plugins for monitoring SNMP capable devices
@@ -14230,7 +14231,7 @@ net-analyzer/nload 0.7.4 0.7.4-r1: Real time network traffic monitor for the com
 net-analyzer/nmap 7.70 7.80 9999: A utility for network discovery and security auditing
 net-analyzer/nmapsi 0.5_alpha1: A Qt frontend to nmap
 net-analyzer/nmbscan 1.2.5-r1: Scans the shares of a SMB/NetBIOS network
-net-analyzer/nrpe 3.2.1-r1 3.2.1-r2: Nagios Remote Plugin Executor
+net-analyzer/nrpe 3.2.1-r1 3.2.1-r3: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r5: Network Security Analysis Tool, an application-level network security scanner
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2 0.4-r3: Displays statistics about ethernet traffic including protocol breakdown
@@ -14543,7 +14544,7 @@ net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/qtox 1.16.3 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.29.5: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.29.6: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.52.0.138 8.52.0.138-r1 8.53.0.85 8.54.0.85 8.54.0.91 8.55.0.123 8.55.0.141: Instant messaging client, with support for audio and video
@@ -17281,7 +17282,7 @@ sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection,
 sys-devel/gcc-config 2.1 2.2 9999: Utility to manage compilers
 sys-devel/gdb 8.3 8.3.1 9999: GNU debugger
 sys-devel/gdb-apple 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
-sys-devel/gettext 0.19.8.1 0.20.1: GNU locale utilities
+sys-devel/gettext 0.19.8.1 0.20.1 0.21_rc1: GNU locale utilities
 sys-devel/gnuconfig 20190912 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/icecream 0.9.7-r1 1.0.0-r1 1.0.0-r2: Distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0 6.4.0 7.2.0 7.3.0 8.2.0 8.3.0 9.1.0 9.2.0: 64bit kernel compiler
