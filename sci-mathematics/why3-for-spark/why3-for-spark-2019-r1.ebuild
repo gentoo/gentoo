@@ -15,7 +15,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5cdf915d31e87a8f1c967d54
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt profiling zarith zip"
+IUSE="coq doc emacs gtk html hypothesis-selection +ocamlopt zarith zip"
 RESTRICT=strip
 
 DEPEND=">=dev-lang/ocaml-4.09.0[ocamlopt?]
@@ -50,7 +50,6 @@ src_configure() {
 		$(use_enable html html-doc) \
 		$(use_enable hypothesis-selection) \
 		$(use_enable ocamlopt native-code) \
-		$(use_enable profiling) \
 		$(use_enable zarith) \
 		$(use_enable zip)
 }
