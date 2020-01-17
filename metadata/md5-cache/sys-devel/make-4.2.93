@@ -1,0 +1,13 @@
+BDEPEND=nls? ( sys-devel/gettext )
+DEFINED_PHASES=configure install prepare
+DEPEND=guile? ( >=dev-scheme/guile-1.8:= )
+DESCRIPTION=Standard tool to compile source trees
+EAPI=7
+HOMEPAGE=https://www.gnu.org/software/make/make.html
+IUSE=guile nls static
+LICENSE=GPL-3+
+RDEPEND=guile? ( >=dev-scheme/guile-1.8:= ) nls? ( virtual/libintl )
+SLOT=0
+SRC_URI=mirror://gnu-alpha//make/make-4.2.93.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=f3c154e7d4ea03ffe776d38ef29e71c4
