@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="Python module to describe statistical models and design matrices"
-HOMEPAGE="http://patsy.readthedocs.org/en/latest/index.html"
+HOMEPAGE="https://patsy.readthedocs.org/en/latest/index.html"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.zip"
 
 LICENSE="BSD"
