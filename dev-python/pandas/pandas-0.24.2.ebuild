@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="manual"
 inherit distutils-r1 eutils flag-o-matic virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
-HOMEPAGE="http://pandas.pydata.org/"
+HOMEPAGE="https://pandas.pydata.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P/_/}.tar.gz"
 
 SLOT="0"
@@ -50,7 +50,6 @@ OPTIONAL_DEPEND="
 	X? (
 		|| (
 			dev-python/PyQt5[${PYTHON_USEDEP}]
-			dev-python/pygtk[$(python_gen_usedep python2_7)]
 			x11-misc/xclip
 			x11-misc/xsel
 		)

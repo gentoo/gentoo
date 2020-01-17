@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -11,7 +11,7 @@ VIRTUALX_REQUIRED="manual"
 inherit distutils-r1 eutils flag-o-matic virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
-HOMEPAGE="http://pandas.pydata.org/"
+HOMEPAGE="https://pandas.pydata.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P/_/}.tar.gz"
 
 SLOT="0"
@@ -28,7 +28,6 @@ OPTIONAL_DEPEND="
 	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 	dev-python/blosc[${PYTHON_USEDEP}]
 	dev-python/boto[${PYTHON_USEDEP}]
-	>=dev-python/google-api-python-client-1.2.0[$(python_gen_usedep python2_7 pypy)]
 	|| (
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
@@ -41,7 +40,6 @@ OPTIONAL_DEPEND="
 		dev-python/xlsxwriter[${PYTHON_USEDEP}]
 	)
 	>=dev-python/pytables-3.2.1[${PYTHON_USEDEP}]
-	dev-python/python-gflags[$(python_gen_usedep python2_7 pypy)]
 	dev-python/rpy[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/statsmodels[${PYTHON_USEDEP}]
@@ -53,7 +51,6 @@ OPTIONAL_DEPEND="
 	X? (
 		|| (
 			dev-python/PyQt5[${PYTHON_USEDEP}]
-			dev-python/pygtk[$(python_gen_usedep python2_7)]
 		)
 		|| (
 			x11-misc/xclip

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -51,6 +51,7 @@ S="${WORKDIR}/otp-OTP-${PV}"
 PATCHES=(
 	"${FILESDIR}/18.2.1-wx3.0.patch"
 	"${FILESDIR}/${PN}-22.0-dont-ignore-LDFLAGS.patch"
+	"${FILESDIR}/${PN}-22.1.4-asn1-dep.patch"
 )
 
 SITEFILE=50"${PN}"-gentoo.el
