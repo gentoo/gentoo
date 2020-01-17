@@ -44,6 +44,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-meson-Fix-the-armv7-build.patch
 	"${FILESDIR}"/${P}-meson-Fix-the-PPC64-build.patch
+	"${FILESDIR}"/${P}-tests-Add-_GLOBAL_OFFSET_TABLE_-to-PLATFORM_SYMBOLS.patch
 )
 
 multilib_src_configure() {
