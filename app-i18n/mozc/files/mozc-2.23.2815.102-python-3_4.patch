@@ -1,0 +1,537 @@
+https://github.com/google/mozc/issues/462
+
+--- /src/prediction/gen_zero_query_data.py
++++ /src/prediction/gen_zero_query_data.py
+@@ -59,20 +59,20 @@
+   Returns:
+     A integer indicating parsed pua.
+   """
+-  if not s or s[0] == '>':
++  if not s or s[0:1] == b'>':
+     return 0
+   return int(s, 16)
+ 
+ 
+ def NormalizeString(string):
+   return unicodedata.normalize(
+-      'NFKC', string.decode('utf-8')).encode('utf-8').replace('~', '〜')
++      'NFKC', string.decode('utf-8')).replace('~', '〜').encode('utf-8')
+ 
+ 
+ def RemoveTrailingNumber(string):
+   if not string:
+-    return ''
+-  return re.sub(r'^([^0-9]+)[0-9]+$', r'\1', string)
++    return b''
++  return re.sub(br'^([^0-9]+)[0-9]+$', r'\1', string)
+ 
+ 
+ def GetReadingsFromDescription(description):
+@@ -84,19 +84,19 @@
+   #  - ビル・建物
+   # \xE3\x83\xBB : "・"
+   return [RemoveTrailingNumber(token) for token
+-          in re.split(r'(?:\(|\)|/|\xE3\x83\xBB)+', normalized)]
++          in re.split(br'(?:\(|\)|/|\xE3\x83\xBB)+', normalized)]
+ 
+ 
+ def ReadEmojiTsv(stream):
+   """Reads emoji data from stream and returns zero query data."""
+   zero_query_dict = defaultdict(list)
+   stream = code_generator_util.SkipLineComment(stream)
+-  for columns in code_generator_util.ParseColumnStream(stream, delimiter='\t'):
++  for columns in code_generator_util.ParseColumnStream(stream, delimiter=b'\t'):
+     if len(columns) != 13:
+-      logging.critical('format error: %s', '\t'.join(columns))
++      logging.critical('format error: %s', b'\t'.join(columns))
+       sys.exit(1)
+ 
+-    code_points = columns[0].split(' ')
++    code_points = columns[0].split(b' ')
+ 
+     # Emoji code point.
+     emoji = columns[1]
+@@ -114,12 +114,12 @@
+       # - Composite emoji which has multiple code point.
+       # NOTE: Some Unicode 6.0 emoji don't have PUA, and it is also omitted.
+       # TODO(hsumita): Check the availability of such emoji and enable it.
+-      logging.info('Skip %s', ' '.join(code_points))
++      logging.info('Skip %s', b' '.join(code_points))
+       continue
+ 
+     reading_list = []
+     # \xe3\x80\x80 is a full-width space
+-    for reading in re.split(r'(?: |\xe3\x80\x80)+', NormalizeString(readings)):
++    for reading in re.split(br'(?: |\xe3\x80\x80)+', NormalizeString(readings)):
+       if not reading:
+         continue
+       reading_list.append(reading)
+@@ -158,15 +158,15 @@
+   zero_query_dict = defaultdict(list)
+ 
+   for line in input_stream:
+-    if line.startswith('#'):
++    if line.startswith(b'#'):
+       continue
+-    line = line.rstrip('\r\n')
++    line = line.rstrip(b'\r\n')
+     if not line:
+       continue
+ 
+-    tokens = line.split('\t')
++    tokens = line.split(b'\t')
+     key = tokens[0]
+-    values = tokens[1].split(',')
++    values = tokens[1].split(b',')
+ 
+     for value in values:
+       zero_query_dict[key].append(
+@@ -179,16 +179,16 @@
+   """Reads emoticon data from stream and returns zero query data."""
+   zero_query_dict = defaultdict(list)
+   stream = code_generator_util.SkipLineComment(stream)
+-  for columns in code_generator_util.ParseColumnStream(stream, delimiter='\t'):
++  for columns in code_generator_util.ParseColumnStream(stream, delimiter=b'\t'):
+     if len(columns) != 3:
+-      logging.critical('format error: %s', '\t'.join(columns))
++      logging.critical('format error: %s', b'\t'.join(columns))
+       sys.exit(1)
+ 
+     emoticon = columns[0]
+     readings = columns[2]
+ 
+     # \xe3\x80\x80 is a full-width space
+-    for reading in re.split(r'(?: |\xe3\x80\x80)+', readings.strip()):
++    for reading in re.split(br'(?: |\xe3\x80\x80)+', readings.strip()):
+       if not reading:
+         continue
+       zero_query_dict[reading].append(
+@@ -202,9 +202,9 @@
+   """Reads emoji data from stream and returns zero query data."""
+   zero_query_dict = defaultdict(list)
+   stream = code_generator_util.SkipLineComment(stream)
+-  for columns in code_generator_util.ParseColumnStream(stream, delimiter='\t'):
++  for columns in code_generator_util.ParseColumnStream(stream, delimiter=b'\t'):
+     if len(columns) < 3:
+-      logging.warning('format error: %s', '\t'.join(columns))
++      logging.warning('format error: %s', b'\t'.join(columns))
+       continue
+ 
+     symbol = columns[1]
+@@ -222,7 +222,7 @@
+       continue
+ 
+     # \xe3\x80\x80 is a full-width space
+-    for reading in re.split(r'(?: |\xe3\x80\x80)+', readings.strip()):
++    for reading in re.split(br'(?: |\xe3\x80\x80)+', readings.strip()):
+       if not reading:
+         continue
+       zero_query_dict[reading].append(
+@@ -247,7 +247,7 @@
+ 
+ def IsValidKeyForZeroQuery(key):
+   """Returns if the key is valid for zero query trigger."""
+-  is_ascii = all(ord(char) < 128 for char in key)
++  is_ascii = all(char < 128 for char in key)
+   return not is_ascii
+ 
+ 
+@@ -301,13 +301,13 @@
+ 
+ def main():
+   options = ParseOptions()
+-  with open(options.input_rule, 'r') as input_stream:
++  with open(options.input_rule, 'rb') as input_stream:
+     zero_query_rule_dict = ReadZeroQueryRuleData(input_stream)
+-  with open(options.input_symbol, 'r') as input_stream:
++  with open(options.input_symbol, 'rb') as input_stream:
+     zero_query_symbol_dict = ReadSymbolTsv(input_stream)
+-  with open(options.input_emoji, 'r') as input_stream:
++  with open(options.input_emoji, 'rb') as input_stream:
+     zero_query_emoji_dict = ReadEmojiTsv(input_stream)
+-  with open(options.input_emoticon, 'r') as input_stream:
++  with open(options.input_emoticon, 'rb') as input_stream:
+     zero_query_emoticon_dict = ReadEmoticonTsv(input_stream)
+ 
+   merged_zero_query_dict = MergeZeroQueryData(
+--- /src/prediction/gen_zero_query_number_data.py
++++ /src/prediction/gen_zero_query_number_data.py
+@@ -41,15 +41,15 @@
+   zero_query_dict = defaultdict(list)
+ 
+   for line in input_stream:
+-    if line.startswith('#'):
++    if line.startswith(b'#'):
+       continue
+-    line = line.rstrip('\r\n')
++    line = line.rstrip(b'\r\n')
+     if not line:
+       continue
+ 
+-    tokens = line.split('\t')
++    tokens = line.split(b'\t')
+     key = tokens[0]
+-    values = tokens[1].split(',')
++    values = tokens[1].split(b',')
+ 
+     for value in values:
+       zero_query_dict[key].append(
+@@ -71,7 +71,7 @@
+ 
+ def main():
+   options = ParseOption()
+-  with open(options.input, 'r') as input_stream:
++  with open(options.input, 'rb') as input_stream:
+     zero_query_dict = ReadZeroQueryNumberData(input_stream)
+   util.WriteZeroQueryData(zero_query_dict,
+                           options.output_token_array,
+--- /src/prediction/gen_zero_query_util.py
++++ /src/prediction/gen_zero_query_util.py
+@@ -69,7 +69,7 @@
+                        output_string_array):
+   # Collect all the strings and assing index in ascending order
+   string_index = {}
+-  for key, entry_list in zero_query_dict.iteritems():
++  for key, entry_list in zero_query_dict.items():
+     string_index[key] = 0
+     for entry in entry_list:
+       string_index[entry.value] = 0
+--- /src/rewriter/gen_counter_suffix_array.py
++++ /src/rewriter/gen_counter_suffix_array.py
+@@ -43,7 +43,7 @@
+   with codecs.open(id_file, 'r', encoding='utf-8') as stream:
+     stream = code_generator_util.ParseColumnStream(stream, num_column=2)
+     for pos_id, pos_name in stream:
+-      if pos_name.startswith(u'名詞,接尾,助数詞'):
++      if pos_name.startswith('名詞,接尾,助数詞'):
+         pos_ids.add(pos_id)
+   return pos_ids
+ 
+--- /src/rewriter/gen_emoji_rewriter_data.py
++++ /src/rewriter/gen_emoji_rewriter_data.py
+@@ -74,19 +74,19 @@
+   the glyph (in other words, it has alternative (primary) code point, which
+   doesn't lead '>' and that's why we'll ignore it).
+   """
+-  if not s or s[0] == '>':
++  if not s or s[0:1] == b'>':
+     return None
+   return int(s, 16)
+ 
+ 
+-_FULLWIDTH_RE = re.compile(ur'[！-～]')   # U+FF01 - U+FF5E
++_FULLWIDTH_RE = re.compile(r'[！-～]')   # U+FF01 - U+FF5E
+ 
+ 
+ def NormalizeString(string):
+   """Normalize full width ascii characters to half width characters."""
+-  offset = ord(u'Ａ') - ord(u'A')
+-  return _FULLWIDTH_RE.sub(lambda x: unichr(ord(x.group(0)) - offset),
+-                           unicode(string, 'utf-8')).encode('utf-8')
++  offset = ord('Ａ') - ord('A')
++  return _FULLWIDTH_RE.sub(lambda x: chr(ord(x.group(0)) - offset),
++                           string.decode('utf-8')).encode('utf-8')
+ 
+ 
+ def ReadEmojiTsv(stream):
+@@ -96,14 +96,14 @@
+   token_dict = defaultdict(list)
+ 
+   stream = code_generator_util.SkipLineComment(stream)
+-  for columns in code_generator_util.ParseColumnStream(stream, delimiter='\t'):
++  for columns in code_generator_util.ParseColumnStream(stream, delimiter=b'\t'):
+     if len(columns) != 13:
+-      logging.critical('format error: %s', '\t'.join(columns))
++      logging.critical('format error: %s', b'\t'.join(columns))
+       sys.exit(1)
+ 
+-    code_points = columns[0].split(' ')
++    code_points = columns[0].split(b' ')
+     # Emoji code point.
+-    emoji = columns[1] if columns[1] else ''
++    emoji = columns[1] if columns[1] else b''
+     android_pua = ParseCodePoint(columns[2])
+     docomo_pua = ParseCodePoint(columns[3])
+     softbank_pua = ParseCodePoint(columns[4])
+@@ -112,10 +112,10 @@
+     readings = columns[6]
+ 
+     # [7]: Name defined in Unicode.  It is ignored in current implementation.
+-    utf8_description = columns[8] if columns[8] else ''
+-    docomo_description = columns[9] if columns[9] else ''
+-    softbank_description = columns[10] if columns[10] else ''
+-    kddi_description = columns[11] if columns[11] else ''
++    utf8_description = columns[8] if columns[8] else b''
++    docomo_description = columns[9] if columns[9] else b''
++    softbank_description = columns[10] if columns[10] else b''
++    kddi_description = columns[11] if columns[11] else b''
+ 
+     if not android_pua or len(code_points) > 1:
+       # Skip some emoji, which is not supported on old devices.
+@@ -123,7 +123,7 @@
+       # - Composite emoji which has multiple code point.
+       # NOTE: Some Unicode 6.0 emoji don't have PUA, and it is also omitted.
+       # TODO(hsumita): Check the availability of such emoji and enable it.
+-      logging.info('Skip %s', ' '.join(code_points))
++      logging.info('Skip %s', b' '.join(code_points))
+       continue
+ 
+     # Check consistency between carrier PUA codes and descriptions for Android
+@@ -132,7 +132,7 @@
+         (bool(softbank_pua) != bool(softbank_description)) or
+         (bool(kddi_pua) != bool(kddi_description))):
+       logging.warning('carrier PUA and description conflict: %s',
+-                      '\t'.join(columns))
++                      b'\t'.join(columns))
+       continue
+ 
+     # Check if the character is usable on Android.
+@@ -140,7 +140,7 @@
+       android_pua = 0  # Replace None with 0.
+ 
+     if not emoji and not android_pua:
+-      logging.info('Skip: %s', '\t'.join(columns))
++      logging.info('Skip: %s', b'\t'.join(columns))
+       continue
+ 
+     index = len(emoji_data_list)
+@@ -149,7 +149,7 @@
+                             kddi_description))
+ 
+     # \xe3\x80\x80 is a full-width space
+-    for reading in re.split(r'(?: |\xe3\x80\x80)+', readings.strip()):
++    for reading in re.split(br'(?: |\xe3\x80\x80)+', readings.strip()):
+       if reading:
+         token_dict[NormalizeString(reading)].append(index)
+ 
+@@ -159,7 +159,7 @@
+ def OutputData(emoji_data_list, token_dict,
+                token_array_file, string_array_file):
+   """Output token and string arrays to files."""
+-  sorted_token_dict = sorted(token_dict.iteritems())
++  sorted_token_dict = sorted(token_dict.items())
+ 
+   strings = {}
+   for reading, _ in sorted_token_dict:
+@@ -171,7 +171,7 @@
+     strings[docomo_description] = 0
+     strings[softbank_description] = 0
+     strings[kddi_description] = 0
+-  sorted_strings = sorted(strings.iterkeys())
++  sorted_strings = sorted(strings.keys())
+   for index, s in enumerate(sorted_strings):
+     strings[s] = index
+ 
+@@ -205,7 +205,7 @@
+ 
+ def main():
+   options = ParseOptions()
+-  with open(options.input, 'r') as input_stream:
++  with open(options.input, 'rb') as input_stream:
+     (emoji_data_list, token_dict) = ReadEmojiTsv(input_stream)
+ 
+   OutputData(emoji_data_list, token_dict,
+--- /src/rewriter/gen_reading_correction_data.py
++++ /src/rewriter/gen_reading_correction_data.py
+@@ -63,7 +63,7 @@
+ def WriteData(input_path, output_value_array_path, output_error_array_path,
+               output_correction_array_path):
+   outputs = []
+-  with open(input_path) as input_stream:
++  with open(input_path, 'rb') as input_stream:
+     input_stream = code_generator_util.SkipLineComment(input_stream)
+     input_stream = code_generator_util.ParseColumnStream(input_stream,
+                                                          num_column=3)
+@@ -73,7 +73,7 @@
+ 
+   # In order to lookup the entries via |error| with binary search,
+   # sort outputs here.
+-  outputs.sort(lambda x, y: cmp(x[1], y[1]) or cmp(x[0], y[0]))
++  outputs.sort(key=lambda x: (x[1], x[0]))
+ 
+   serialized_string_array_builder.SerializeToFile(
+       [value for (value, _, _) in outputs], output_value_array_path)
+--- /src/rewriter/gen_single_kanji_rewriter_data.py
++++ /src/rewriter/gen_single_kanji_rewriter_data.py
+@@ -52,7 +52,7 @@
+   stream = code_generator_util.ParseColumnStream(stream, num_column=2)
+   outputs = list(stream)
+   # For binary search by |key|, sort outputs here.
+-  outputs.sort(lambda x, y: cmp(x[0], y[0]))
++  outputs.sort(key=lambda x: x[0])
+ 
+   return outputs
+ 
+@@ -72,7 +72,7 @@
+       variant_items.append([target, original, len(variant_types) - 1])
+ 
+   # For binary search by |target|, sort variant items here.
+-  variant_items.sort(lambda x, y: cmp(x[0], y[0]))
++  variant_items.sort(key=lambda x: x[0])
+ 
+   return (variant_types, variant_items)
+ 
+@@ -151,10 +151,10 @@
+ def main():
+   options = _ParseOptions()
+ 
+-  with open(options.single_kanji_file, 'r') as single_kanji_stream:
++  with open(options.single_kanji_file, 'rb') as single_kanji_stream:
+     single_kanji = ReadSingleKanji(single_kanji_stream)
+ 
+-  with open(options.variant_file, 'r') as variant_stream:
++  with open(options.variant_file, 'rb') as variant_stream:
+     variant_info = ReadVariant(variant_stream)
+ 
+   WriteSingleKanji(single_kanji,
+--- /src/session/gen_session_stress_test_data.py
++++ /src/session/gen_session_stress_test_data.py
+@@ -50,24 +50,26 @@
+   """
+   result = ''
+   for c in s:
+-    hexstr = hex(ord(c))
++    hexstr = hex(c)
+     # because hexstr contains '0x', remove the prefix and add our prefix
+     result += '\\x' + hexstr[2:]
+   return result
+ 
+ def GenerateHeader(file):
+   try:
+-    print "const char *kTestSentences[] = {"
+-    for line in open(file, "r"):
+-      if line.startswith('#'):
++    print("const char *kTestSentences[] = {")
++    fh = open(file, "rb")
++    for line in fh:
++      if line.startswith(b'#'):
+         continue
+-      line = line.rstrip('\r\n')
++      line = line.rstrip(b'\r\n')
+       if not line:
+         continue
+-      print " \"%s\"," % escape_string(line)
+-    print "};"
++      print(" \"%s\"," % escape_string(line))
++    fh.close()
++    print("};")
+   except:
+-    print "cannot open %s" % (file)
++    print("cannot open %s" % (file))
+     sys.exit(1)
+ 
+ def main():
+--- /src/unix/ibus/gen_mozc_xml.py
++++ /src/unix/ibus/gen_mozc_xml.py
+@@ -74,7 +74,7 @@
+ 
+ 
+ def OutputXmlElement(param_dict, element_name, value):
+-  print '  <%s>%s</%s>' % (element_name, (value % param_dict), element_name)
++  print('  <%s>%s</%s>' % (element_name, (value % param_dict), element_name))
+ 
+ 
+ def OutputXml(param_dict, component, engine_common, engines, setup_arg):
+@@ -90,26 +90,26 @@
+     engines: A dictionary from a property name to a list of property values of
+         engines. For example, {'name': ['mozc-jp', 'mozc', 'mozc-dv']}.
+   """
+-  print '<component>'
+-  for key in component:
++  print('<component>')
++  for key in sorted(component):
+     OutputXmlElement(param_dict, key, component[key])
+-  print '<engines>'
++  print('<engines>')
+   for i in range(len(engines['name'])):
+-    print '<engine>'
+-    for key in engine_common:
++    print('<engine>')
++    for key in sorted(engine_common):
+       OutputXmlElement(param_dict, key, engine_common[key])
+     if setup_arg:
+       OutputXmlElement(param_dict, 'setup', ' '.join(setup_arg))
+-    for key in engines:
++    for key in sorted(engines):
+       OutputXmlElement(param_dict, key, engines[key][i])
+-    print '</engine>'
+-  print '</engines>'
+-  print '</component>'
++    print('</engine>')
++  print('</engines>')
++  print('</component>')
+ 
+ 
+ def OutputCppVariable(param_dict, prefix, variable_name, value):
+-  print 'const char k%s%s[] = "%s";' % (prefix, variable_name.capitalize(),
+-                                        (value % param_dict))
++  print('const char k%s%s[] = "%s";' % (prefix, variable_name.capitalize(),
++                                        (value % param_dict)))
+ 
+ 
+ def OutputCpp(param_dict, component, engine_common, engines):
+@@ -122,18 +122,18 @@
+     engines: ditto.
+   """
+   guard_name = 'MOZC_UNIX_IBUS_MAIN_H_'
+-  print CPP_HEADER % (guard_name, guard_name)
+-  for key in component:
++  print(CPP_HEADER % (guard_name, guard_name))
++  for key in sorted(component):
+     OutputCppVariable(param_dict, 'Component', key, component[key])
+-  for key in engine_common:
++  for key in sorted(engine_common):
+     OutputCppVariable(param_dict, 'Engine', key, engine_common[key])
+-  for key in engines:
+-    print 'const char* kEngine%sArray[] = {' % key.capitalize()
++  for key in sorted(engines):
++    print('const char* kEngine%sArray[] = {' % key.capitalize())
+     for i in range(len(engines[key])):
+-      print '"%s",' % (engines[key][i] % param_dict)
+-    print '};'
+-  print 'const size_t kEngineArrayLen = %s;' % len(engines['name'])
+-  print CPP_FOOTER % guard_name
++      print('"%s",' % (engines[key][i] % param_dict))
++    print('};')
++  print('const size_t kEngineArrayLen = %s;' % len(engines['name']))
++  print(CPP_FOOTER % guard_name)
+ 
+ 
+ def CheckIBusVersion(options, minimum_version):
+--- /src/usage_stats/gen_stats_list.py
++++ /src/usage_stats/gen_stats_list.py
+@@ -37,23 +37,24 @@
+ 
+ def GetStatsNameList(filename):
+   stats = []
+-  for line in open(filename, 'r'):
+-    stat = line.strip()
+-    if not stat or stat[0] == '#':
+-      continue
+-    stats.append(stat)
++  with open(filename, 'r') as file:
++    for line in file:
++      stat = line.strip()
++      if not stat or stat[0] == '#':
++        continue
++      stats.append(stat)
+   return stats
+ 
+ 
+ def main():
+   stats_list = GetStatsNameList(sys.argv[1])
+-  print '// This header file is generated by gen_stats_list.py'
++  print('// This header file is generated by gen_stats_list.py')
+   for stats in stats_list:
+-    print 'const char k%s[] = "%s";' % (stats, stats)
+-  print 'const char *kStatsList[] = {'
++    print('const char k%s[] = "%s";' % (stats, stats))
++  print('const char *kStatsList[] = {')
+   for stats in stats_list:
+-    print '  k%s,' % (stats)
+-  print '};'
++    print('  k%s,' % (stats))
++  print('};')
+ 
+ 
+ if __name__ == '__main__':
