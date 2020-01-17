@@ -1,0 +1,583 @@
+https://github.com/google/mozc/issues/462
+
+--- /src/dictionary/gen_pos_map.py
++++ /src/dictionary/gen_pos_map.py
+@@ -39,7 +39,7 @@
+ from build_tools import code_generator_util
+ 
+ 
+-HEADER = """// Copyright 2009 Google Inc. All Rights Reserved.
++HEADER = b"""// Copyright 2009 Google Inc. All Rights Reserved.
+ // Author: keni
+ 
+ #ifndef MOZC_DICTIONARY_POS_MAP_H_
+@@ -48,13 +48,13 @@
+ // POS conversion rules
+ const POSMap kPOSMap[] = {
+ """
+-FOOTER = """};
++FOOTER = b"""};
+ 
+ #endif  // MOZC_DICTIONARY_POS_MAP_H_
+ """
+ 
+ def ParseUserPos(user_pos_file):
+-  with open(user_pos_file, 'r') as stream:
++  with open(user_pos_file, 'rb') as stream:
+     stream = code_generator_util.SkipLineComment(stream)
+     stream = code_generator_util.ParseColumnStream(stream, num_column=2)
+     return dict((key, enum_value) for key, enum_value in stream)
+@@ -64,7 +64,7 @@
+   user_pos_map = ParseUserPos(user_pos_file)
+ 
+   result = {}
+-  with open(third_party_pos_map_file, 'r') as stream:
++  with open(third_party_pos_map_file, 'rb') as stream:
+     stream = code_generator_util.SkipLineComment(stream)
+     for columns in code_generator_util.ParseColumnStream(stream, num_column=2):
+       third_party_pos_name, mozc_pos = (columns + [None])[:2]
+@@ -78,7 +78,7 @@
+       result[third_party_pos_name] = mozc_pos
+ 
+   # Create mozc_pos to mozc_pos map.
+-  for key, value in user_pos_map.iteritems():
++  for key, value in user_pos_map.items():
+     if key in result:
+       assert (result[key] == value)
+       continue
+@@ -94,10 +94,10 @@
+     if value is None:
+       # Invalid PosType.
+       value = (
+-          'static_cast< ::mozc::user_dictionary::UserDictionary::PosType>(-1)')
++          b'static_cast< ::mozc::user_dictionary::UserDictionary::PosType>(-1)')
+     else:
+-      value = '::mozc::user_dictionary::UserDictionary::' + value
+-    output.write('  { %s, %s },\n' % (key, value))
++      value = b'::mozc::user_dictionary::UserDictionary::' + value
++    output.write(b'  { %s, %s },\n' % (key, value))
+   output.write(FOOTER)
+ 
+ 
+@@ -121,7 +121,7 @@
+   pos_map = GeneratePosMap(options.third_party_pos_map_file,
+                            options.user_pos_file)
+ 
+-  with open(options.output, 'w') as stream:
++  with open(options.output, 'wb') as stream:
+     OutputPosMap(pos_map, stream)
+ 
+ 
+--- /src/dictionary/gen_pos_rewrite_rule.py
++++ /src/dictionary/gen_pos_rewrite_rule.py
+@@ -46,29 +46,34 @@
+ 
+ 
+ def LoadRewriteMapRule(filename):
+-  fh = open(filename)
++  fh = open(filename, 'rb')
+   rule = []
+   for line in fh:
+-    line = line.rstrip('\n')
+-    if not line or line.startswith('#'):
++    line = line.rstrip(b'\n')
++    if not line or line.startswith(b'#'):
+       continue
+     fields = line.split()
+     rule.append([fields[0], fields[1]])
++  fh.close()
+   return rule
+ 
+ 
+ def ReadPOSID(id_file, special_pos_file):
+   pos_list = []
+ 
+-  for line in open(id_file, 'r'):
++  fh = open(id_file, 'rb')
++  for line in fh:
+     fields = line.split()
+     pos_list.append(fields[1])
++  fh.close()
+ 
+-  for line in open(special_pos_file, 'r'):
+-    if len(line) <= 1 or line[0] == '#':
++  fh = open(special_pos_file, 'rb')
++  for line in fh:
++    if len(line) <= 1 or line[0:1] == b'#':
+       continue
+     fields = line.split()
+     pos_list.append(fields[0])
++  fh.close()
+ 
+   return pos_list
+ 
+@@ -112,7 +117,7 @@
+     ids.append(id)
+ 
+   with open(opts.output, 'wb') as f:
+-    f.write(''.join(chr(id) for id in ids))
++    f.write(''.join(chr(id) for id in ids).encode('utf-8'))
+ 
+ 
+ if __name__ == '__main__':
+--- /src/dictionary/gen_suffix_data.py
++++ /src/dictionary/gen_suffix_data.py
+@@ -52,10 +52,10 @@
+   opts = _ParseOptions()
+ 
+   result = []
+-  with open(opts.input, 'r') as stream:
++  with open(opts.input, 'rb') as stream:
+     for line in stream:
+-      line = line.rstrip('\r\n')
+-      fields = line.split('\t')
++      line = line.rstrip(b'\r\n')
++      fields = line.split(b'\t')
+       key = fields[0]
+       lid = int(fields[1])
+       rid = int(fields[2])
+@@ -63,7 +63,7 @@
+       value = fields[4]
+ 
+       if key == value:
+-        value = ''
++        value = b''
+ 
+       result.append((key, value, lid, rid, cost))
+ 
+--- /src/dictionary/gen_user_pos_data.py
++++ /src/dictionary/gen_user_pos_data.py
+@@ -64,7 +64,7 @@
+         f.write(struct.pack('<H', conjugation_id))
+ 
+   serialized_string_array_builder.SerializeToFile(
+-      sorted(string_index.iterkeys()), output_string_array)
++      sorted(x.encode('utf-8') for x in string_index.keys()), output_string_array)
+ 
+ 
+ def ParseOptions():
+@@ -100,7 +100,7 @@
+ 
+   if options.output_pos_list:
+     serialized_string_array_builder.SerializeToFile(
+-        [pos for (pos, _) in user_pos.data], options.output_pos_list)
++        [pos.encode('utf-8') for (pos, _) in user_pos.data], options.output_pos_list)
+ 
+ 
+ if __name__ == '__main__':
+--- /src/dictionary/gen_zip_code_seed.py
++++ /src/dictionary/gen_zip_code_seed.py
+@@ -83,7 +83,7 @@
+     address = unicodedata.normalize('NFKC', self.address)
+     line = '\t'.join([zip_code, '0', '0', str(ZIP_CODE_COST),
+                       address, ZIP_CODE_LABEL])
+-    print line.encode('utf-8')
++    print(line.encode('utf-8'))
+ 
+ 
+ def ProcessZipCodeCSV(file_name):
+@@ -105,26 +105,26 @@
+ 
+ def ReadZipCodeEntries(zip_code, level1, level2, level3):
+   """Read zip code entries."""
+-  return [ZipEntry(zip_code, u''.join([level1, level2, town]))
++  return [ZipEntry(zip_code, ''.join([level1, level2, town]))
+           for town in ParseTownName(level3)]
+ 
+ 
+ def ReadJigyosyoEntry(zip_code, level1, level2, level3, name):
+   """Read jigyosyo entry."""
+   return ZipEntry(zip_code,
+-                  u''.join([level1, level2, level3, u' ', name]))
++                  ''.join([level1, level2, level3, ' ', name]))
+ 
+ 
+ def ParseTownName(level3):
+   """Parse town name."""
+-  if level3.find(u'以下に掲載がない場合') != -1:
++  if level3.find('以下に掲載がない場合') != -1:
+     return ['']
+ 
+   assert CanParseAddress(level3), ('failed to be merged %s'
+                                    % level3.encode('utf-8'))
+ 
+   # We ignore additional information here.
+-  level3 = re.sub(u'（.*）', u'', level3, re.U)
++  level3 = re.sub('（.*）', '', level3, re.U)
+ 
+   # For 地割, we have these cases.
+   #  XX1地割
+@@ -134,7 +134,7 @@
+   #  XX第1地割、XX第2地割、
+   #  XX第1地割〜XX第2地割、
+   # We simply use XX for them.
+-  chiwari_match = re.match(u'(\D*?)第?\d+地割.*', level3, re.U)
++  chiwari_match = re.match('(\D*?)第?\d+地割.*', level3, re.U)
+   if chiwari_match:
+     town = chiwari_match.group(1)
+     return [town]
+@@ -144,21 +144,21 @@
+   #   -> XX町YY and (XX町)ZZ
+   #  YY、ZZ
+   #   -> YY and ZZ
+-  chou_match = re.match(u'(.*町)?(.*)', level3, re.U)
++  chou_match = re.match('(.*町)?(.*)', level3, re.U)
+   if chou_match:
+-    chou = u''
++    chou = ''
+     if chou_match.group(1):
+       chou = chou_match.group(1)
+     rests = chou_match.group(2)
+-    return [chou + rest for rest in rests.split(u'、')]
++    return [chou + rest for rest in rests.split('、')]
+ 
+   return [level3]
+ 
+ 
+ def CanParseAddress(address):
+   """Return true for valid address."""
+-  return (address.find(u'（') == -1 or
+-          address.find(u'）') != -1)
++  return (address.find('（') == -1 or
++          address.find('）') != -1)
+ 
+ 
+ def ParseOptions():
+--- /src/dictionary/zip_code_util.py
++++ /src/dictionary/zip_code_util.py
+@@ -86,11 +86,11 @@
+ 
+ 
+ _SPECIAL_CASES = [
+-    SpecialMergeZip(u'5900111', u'大阪府', u'堺市中区', [u'三原台']),
+-    SpecialMergeZip(u'8710046', u'大分県', u'中津市',
+-                    [u'金谷', u'西堀端', u'東堀端', u'古金谷']),
+-    SpecialMergeZip(u'9218046', u'石川県', u'金沢市',
+-                    [u'大桑町', u'三小牛町']),
++    SpecialMergeZip('5900111', '大阪府', '堺市中区', ['三原台']),
++    SpecialMergeZip('8710046', '大分県', '中津市',
++                    ['金谷', '西堀端', '東堀端', '古金谷']),
++    SpecialMergeZip('9218046', '石川県', '金沢市',
++                    ['大桑町', '三小牛町']),
+     ]
+ 
+ 
+--- /src/gui/character_pad/data/gen_cp932_map.py
++++ /src/gui/character_pad/data/gen_cp932_map.py
+@@ -32,7 +32,6 @@
+ 
+ import re
+ import sys
+-import string
+ 
+ kUnicodePat = re.compile(r'0x[0-9A-Fa-f]{2,4}')
+ def IsValidUnicode(n):
+@@ -42,28 +41,29 @@
+   fh = open(sys.argv[1])
+   result = {}
+   for line in fh.readlines():
+-    if line[0] is '#':
++    if line[0] == '#':
+       continue
+-    array = string.split(line)
++    array = line.split()
+     sjis = array[0]
+     ucs2 = array[1]
+     if eval(sjis) < 32 or not IsValidUnicode(ucs2):
+       continue
+     result.setdefault(ucs2, sjis)
++  fh.close()
+ 
+   keys = sorted(result.keys())
+ 
+-  print "struct CP932MapData {"
+-  print "  unsigned int ucs4;"
+-  print "  unsigned short int sjis;"
+-  print "};"
+-  print ""
+-  print "static const size_t kCP932MapDataSize = %d;" % (len(keys))
+-  print "static const CP932MapData kCP932MapData[] = {"
++  print("struct CP932MapData {")
++  print("  unsigned int ucs4;")
++  print("  unsigned short int sjis;")
++  print("};")
++  print("")
++  print("static const size_t kCP932MapDataSize = %d;" % (len(keys)))
++  print("static const CP932MapData kCP932MapData[] = {")
+   for n in keys:
+-    print "  { %s, %s }," % (n ,result[n])
+-  print "  { 0, 0 }";
+-  print "};"
++    print("  { %s, %s }," % (n ,result[n]))
++  print("  { 0, 0 }");
++  print("};")
+ 
+ if __name__ == "__main__":
+   main()
+--- /src/gui/character_pad/data/gen_local_character_map.py
++++ /src/gui/character_pad/data/gen_local_character_map.py
+@@ -30,7 +30,6 @@
+ 
+ __author__ = "taku"
+ 
+-import string
+ import re
+ import sys
+ 
+@@ -43,9 +42,9 @@
+   fh = open(filename)
+   result = []
+   for line in fh.readlines():
+-    if line[0] is '#':
++    if line[0] == '#':
+       continue
+-    array = string.split(line)
++    array = line.split()
+     jis = array[0].replace('0x', '')
+     ucs2 = array[1].replace('0x', '')
+     if len(jis) == 2:
+@@ -53,6 +52,7 @@
+ 
+     if IsValidUnicode(ucs2):
+       result.append([jis, ucs2])
++  fh.close()
+ 
+   return ["JISX0201", result]
+ 
+@@ -60,13 +60,14 @@
+   fh = open(filename)
+   result = []
+   for line in fh.readlines():
+-    if line[0] is '#':
++    if line[0] == '#':
+       continue
+     array = line.split()
+     jis = array[1].replace('0x', '')
+     ucs2 = array[2].replace('0x', '')
+     if IsValidUnicode(ucs2):
+       result.append([jis, ucs2])
++  fh.close()
+ 
+   return ["JISX0208", result]
+ 
+@@ -74,13 +75,14 @@
+   fh = open(filename)
+   result = []
+   for line in fh.readlines():
+-    if line[0] is '#':
++    if line[0] == '#':
+       continue
+     array = line.split()
+     jis = array[0].replace('0x', '')
+     ucs2 = array[1].replace('0x', '')
+     if IsValidUnicode(ucs2):
+       result.append([jis, ucs2])
++  fh.close()
+ 
+   return ["JISX0212", result]
+ 
+@@ -88,7 +90,7 @@
+   fh = open(filename)
+   result = []
+   for line in fh.readlines():
+-    if line[0] is '#':
++    if line[0] == '#':
+       continue
+     array = line.split()
+     sjis = array[0].replace('0x', '')
+@@ -100,19 +102,20 @@
+ 
+     if IsValidUnicode(ucs2):
+       result.append([sjis, ucs2])
++  fh.close()
+ 
+   return ["CP932", result]
+ 
+ def Output(arg):
+   name = arg[0]
+   result = arg[1]
+-  print "static const size_t k%sMapSize = %d;" % (name, len(result))
+-  print "static const mozc::gui::CharacterPalette::LocalCharacterMap k%sMap[] = {" % (name)
++  print("static const size_t k%sMapSize = %d;" % (name, len(result)))
++  print("static const mozc::gui::CharacterPalette::LocalCharacterMap k%sMap[] = {" % (name))
+   for n in result:
+-    print "  { 0x%s, 0x%s }," % (n[0] ,n[1])
+-  print "  { 0, 0 }";
+-  print "};"
+-  print ""
++    print("  { 0x%s, 0x%s }," % (n[0] ,n[1]))
++  print("  { 0, 0 }");
++  print("};")
++  print("")
+ 
+ if __name__ == "__main__":
+   Output(LoadJISX0201(sys.argv[1]))
+--- /src/gui/character_pad/data/gen_unicode_blocks.py
++++ /src/gui/character_pad/data/gen_unicode_blocks.py
+@@ -33,13 +33,13 @@
+ import sys
+ import re
+ 
+-re = re.compile('^(.....?)\.\.(.....?); (.+)')
++re = re.compile(r'^(.....?)\.\.(.....?); (.+)')
+ 
+ def main():
+-  print "static const mozc::gui::CharacterPalette::UnicodeBlock kUnicodeBlockTable[] = {"
++  print("static const mozc::gui::CharacterPalette::UnicodeBlock kUnicodeBlockTable[] = {")
+   fh = open(sys.argv[1])
+   for line in fh.readlines():
+-    if line[0] is '#':
++    if line[0] == '#':
+       continue
+     m = re.match(line)
+     if m is not None:
+@@ -47,11 +47,12 @@
+       end   = int(m.group(2), 16)
+       name = m.group(3)
+       if start <= 0x2FFFF and end <= 0x2FFFF:
+-        print "  { \"%s\", { %d, %d } }," % (name, start, end)
++        print("  { \"%s\", { %d, %d } }," % (name, start, end))
++  fh.close()
+ 
+-  print "  { NULL, { 0, 0 } }"
+-  print "};"
+-  print ""
++  print("  { NULL, { 0, 0 } }")
++  print("};")
++  print("")
+ 
+ if __name__ == "__main__":
+   main()
+--- /src/gui/character_pad/data/gen_unicode_data.py
++++ /src/gui/character_pad/data/gen_unicode_data.py
+@@ -46,18 +46,19 @@
+     code = int(code, 16)
+     if code < 0x2FFFF:
+       results.append("  { %d, \"%s\" }," % (code, desc))
++  fh.close()
+ 
+-  print "struct UnicodeData {";
+-  print "  char32 ucs4;";
+-  print "  const char *description;";
+-  print "};";
+-  print ""
+-  print "static const size_t kUnicodeDataSize = %d;" % (len(results))
+-  print "static const UnicodeData kUnicodeData[] = {";
++  print("struct UnicodeData {");
++  print("  char32 ucs4;");
++  print("  const char *description;");
++  print("};");
++  print("")
++  print("static const size_t kUnicodeDataSize = %d;" % (len(results)))
++  print("static const UnicodeData kUnicodeData[] = {");
+   for line in results:
+-    print line;
+-  print "  { 0, NULL }";
+-  print "};";
++    print(line);
++  print("  { 0, NULL }");
++  print("};");
+ 
+ if __name__ == "__main__":
+   main()
+--- /src/gui/character_pad/data/gen_unihan_data.py
++++ /src/gui/character_pad/data/gen_unihan_data.py
+@@ -31,35 +31,34 @@
+ __author__ = "taku"
+ 
+ import re
+-import string
+ import sys
+ rs = {}
+ 
+ def Escape(n):
+-  if n is not "NULL":
++  if n != "NULL":
+     return "\"%s\"" % (n)
+   else:
+     return "NULL"
+ 
+ def GetCode(n):
+-  if n is not "NULL":
+-    n = string.replace(n, '0-', 'JIS X 0208: 0x')
+-    n = string.replace(n, '1-', 'JIS X 0212: 0x')
+-    n = string.replace(n, '3-', 'JIS X 0213: 0x')
+-    n = string.replace(n, '4-', 'JIS X 0213: 0x')
+-    n = string.replace(n, 'A-', 'Vendors Ideographs: 0x')
+-    n = string.replace(n, '3A', 'JIS X 0213 2000: 0x')
++  if n != "NULL":
++    n = n.replace('0-', 'JIS X 0208: 0x')
++    n = n.replace('1-', 'JIS X 0212: 0x')
++    n = n.replace('3-', 'JIS X 0213: 0x')
++    n = n.replace('4-', 'JIS X 0213: 0x')
++    n = n.replace('A-', 'Vendors Ideographs: 0x')
++    n = n.replace('3A', 'JIS X 0213 2000: 0x')
+     return "\"%s\"" % n
+   else:
+     return "NULL"
+ 
+ def GetRadical(n):
+   pat = re.compile(r'^(\d+)\.')
+-  if n is not "NULL":
++  if n != "NULL":
+     m = pat.match(n)
+     if m:
+       result = rs[m.group(1)]
+-      return  "\"%s\"" % (result.encode('string_escape'))
++      return "\"%s\"" % result
+     else:
+       return "NULL"
+   else:
+@@ -73,6 +72,7 @@
+     id = array[1]
+     radical = array[2]
+     rs[id] = radical
++  fh.close()
+ 
+   dic = {}
+   pat = re.compile(r'^U\+(\S+)\s+(kTotalStrokes|kJapaneseKun|kJapaneseOn|kRSUnicode|kIRG_JSource)\t(.+)')
+@@ -86,23 +86,24 @@
+       n = int(m.group(1), 16)
+       if n <= 65536:
+         dic.setdefault(key, {}).setdefault(field, value)
++  fh.close()
+ 
+   keys = sorted(dic.keys())
+ 
+-  print "struct UnihanData {";
+-  print "  unsigned int ucs4;";
++  print("struct UnihanData {");
++  print("  unsigned int ucs4;");
+ # Since the total strokes defined in Unihan data is Chinese-based
+ # number, we can't use it.
+ #  print "  unsigned char total_strokes;";
+-  print "  const char *japanese_kun;";
+-  print "  const char *japanese_on;";
++  print("  const char *japanese_kun;");
++  print("  const char *japanese_on;");
+ # Since the radical information defined in Unihan data is Chinese-based
+ # number, we can't use it.
+ #  print "  const char *radical;";
+-  print "  const char *IRG_jsource;";
+-  print "};"
+-  print "static const size_t kUnihanDataSize = %d;" % (len(keys))
+-  print "static const UnihanData kUnihanData[] = {"
++  print("  const char *IRG_jsource;");
++  print("};")
++  print("static const size_t kUnihanDataSize = %d;" % (len(keys)))
++  print("static const UnihanData kUnihanData[] = {")
+ 
+   for key in keys:
+     total_strokes = dic[key].get("kTotalStrokes", "0")
+@@ -111,9 +112,9 @@
+     rad = GetRadical(dic[key].get("kRSUnicode", "NULL"))
+     code = GetCode(dic[key].get("kIRG_JSource", "NULL"))
+ #    print " { 0x%s, %s, %s, %s, %s, %s }," % (key, total_strokes, kun, on, rad, code)
+-    print " { 0x%s, %s, %s, %s }," % (key, kun, on, code)
++    print(" { 0x%s, %s, %s, %s }," % (key, kun, on, code))
+ 
+-  print "};"
++  print("};")
+ 
+ if __name__ == "__main__":
+   main()
