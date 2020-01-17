@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,8 @@ MY_PV="${PV//_pre/-pre}"
 
 DESCRIPTION="Modern open source high performance RPC framework"
 HOMEPAGE="https://www.grpc.io"
-SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~gyakovlev/distfiles/grpc-1.26-fix-odr-violation.patch.bz2"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -32,6 +33,7 @@ BDEPEND="virtual/pkgconfig"
 RESTRICT="test"
 
 PATCHES=(
+	"${WORKDIR}/grpc-1.26-fix-odr-violation.patch" #705574
 	"${FILESDIR}/grpc-1.21.0-fix-host-ar-handling.patch"
 	"${FILESDIR}/grpc-1.3.0-Don-t-run-ldconfig.patch"
 	"${FILESDIR}/grpc-1.25.0-pkgconfig-libdir.patch"
