@@ -63,7 +63,6 @@ sci-libs/libgeodecomp visit
 # Requires old version of dev-python/sphinx that's being removed.
 ~dev-python/fabric-2.3.1 doc
 <dev-python/hacking-1.1.0 doc
-<dev-python/pycadf-2.7.0 doc
 
 # Michał Górny <mgorny@gentoo.org> (2019-11-09)
 # eMovix is being removed.
@@ -118,10 +117,6 @@ www-client/elinks guile
 # net-misc/tokyotyrant is slated for removal.
 app-metrics/collectd collectd_plugins_tokyotyrant
 
-# Michał Górny <mgorny@gentoo.org> (2019-08-25)
-# sys-cluster/open-mx is masked for removal.
-sys-cluster/openmpi openmpi_fabrics_open-mx
-
 # Kent Fredric <kentnl@gentoo.org> (2019-08-07)
 # Newer versions of nqp need newer versions of jdk to run on the jvm,
 # but these currently don't exist in gentoo. The USE flags have to be
@@ -168,14 +163,6 @@ media-video/h264enc aac
 # Michał Górny <mgorny@gentoo.org> (2019-03-21)
 # x11-wm/afterstep is slated for removal.
 x11-terms/aterm background
-
-# Michał Górny <mgorny@gentoo.org> (2019-03-21)
-# net-mail/uw-imap masked for removal.
-dev-perl/NetxAP test
-
-# Michał Górny <mgorny@gentoo.org> (2019-03-16)
-# Requires last rited dev-python/scimath.
-dev-python/construct python_targets_python2_7
 
 # Brian Evans <grknight@gentoo.org> (2019-03-15)
 # Prepare to remove the mysqlcompat USE from mariadb-connector-c
@@ -341,10 +328,6 @@ sys-devel/gcc pie
 # Known build issue with system libvpx:
 # https://bugs.gentoo.org/show_bug.cgi?id=611394
 >=www-client/chromium-58.0.3026.3 system-libvpx
-
-# Michał Górny <mgorny@gentoo.org> (2017-02-17)
-# Python 2 package relies on gedit[python] which is py3 only.
-dev-vcs/rabbitvcs gedit
 
 # Mike Gilbert <floppym@gentoo.org> (2017-02-16)
 # Multiple test failures.
@@ -520,15 +503,6 @@ dev-libs/elfutils threads
 # with upstream if there is something that can be done to fix the issue.
 media-libs/cogl gstreamer
 
-# Michał Górny <mgorny@gentoo.org> (2013-11-10)
-# (on behalf of python@)
-# USE=sandbox is not done properly in Gentoo and results in crippled
-# PyPy install that is not usable for non-sandbox clients (and there are
-# no real sandbox clients right now). Masked until the flag is
-# re-implemented or dropped. For more details, bug #429372.
-dev-python/pypy sandbox
-dev-python/pypy3 sandbox
-
 # Julian Ospald <hasufell@gentoo.org> (2013-08-31)
 # Randomly breaks consumers at runtime. Do not report
 # gentoo bugs.
@@ -606,10 +580,6 @@ net-dns/pdnsd isdn urandom
 # Raúl Porcel <armin76@gentoo.org> (2011-02-13)
 # Masked until devs know how to use repoman
 <media-video/mplayer-9999 bluray
-
-# Justin Lecher <jlec@gentoo.org> (2010-11-17)
-# Upstream didn't release patches for aria yet
->=sci-chemistry/cns-1.3 aria
 
 # Tomas Touceda <chiiph@gentoo.org> (2010-04-13)
 # Masked because libsvm module is broken with this release on every arch.
