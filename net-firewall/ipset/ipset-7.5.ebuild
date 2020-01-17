@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 MODULES_OPTIONAL_USE=modules
-inherit linux-info linux-mod
+inherit autotools linux-info linux-mod systemd
 
 DESCRIPTION="IPset tool for iptables, successor to ippool"
 HOMEPAGE="http://ipset.netfilter.org/"
@@ -11,13 +11,17 @@ SRC_URI="http://ipset.netfilter.org/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+
+BDEPEND="virtual/pkgconfig"
 
 RDEPEND=">=net-firewall/iptables-1.4.7
 	net-libs/libmnl"
 DEPEND="${RDEPEND}"
 
 DOCS=( ChangeLog INSTALL README UPGRADE )
+
+PATCHES=( "${FILESDIR}"/${PN}-7.4-fix-pkgconfig-dir.patch )
 
 # configurable from outside, e.g. /etc/portage/make.conf
 IP_NF_SET_MAX=${IP_NF_SET_MAX:-256}
@@ -36,6 +40,8 @@ pkg_setup() {
 	# It does still build without NET_NS, but it may be needed in future.
 	#CONFIG_CHECK="${CONFIG_CHECK} NET_NS"
 	#ERROR_NET_NS="ipset requires NET_NS (network namespace) support in your kernel."
+	CONFIG_CHECK+=" !PAX_CONSTIFY_PLUGIN"
+	ERROR_PAX_CONSTIFY_PLUGIN="ipset contains constified variables (#614896)"
 
 	build_modules=0
 	if use modules; then
@@ -58,6 +64,12 @@ pkg_setup() {
 		fi
 	fi
 	[[ ${build_modules} -eq 1 ]] && linux-mod_pkg_setup
+}
+
+src_prepare() {
+	default
+
+	eautoreconf
 }
 
 src_configure() {
@@ -84,10 +96,12 @@ src_compile() {
 src_install() {
 	einfo "Installing userspace"
 	default
-	prune_libtool_files
+
+	find "${ED}" -name '*.la' -delete || die
 
 	newinitd "${FILESDIR}"/ipset.initd-r4 ${PN}
 	newconfd "${FILESDIR}"/ipset.confd ${PN}
+	systemd_newunit "${FILESDIR}"/ipset.systemd ${PN}.service
 	keepdir /var/lib/ipset
 
 	if [[ ${build_modules} -eq 1 ]]; then

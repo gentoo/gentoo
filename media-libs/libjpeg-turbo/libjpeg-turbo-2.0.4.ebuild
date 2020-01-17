@@ -80,7 +80,7 @@ multilib_src_install() {
 
 		popd || die
 		if use java ; then
-			rm -rf "${ED%/}"/usr/classes || die
+			rm -rf "${ED}"/usr/classes || die
 			java-pkg_dojar java/turbojpeg.jar
 		fi
 	fi
@@ -89,12 +89,12 @@ multilib_src_install() {
 multilib_src_install_all() {
 	find "${ED}" -type f -name '*.la' -delete || die
 
-	insinto /usr/share/doc/${PF}/html
-	doins -r "${S}"/doc/html/*
+	docinto html
+	dodoc -r "${S}"/doc/html/*
 	newdoc "${WORKDIR}"/debian/changelog changelog.debian
 	if use java; then
-		insinto /usr/share/doc/${PF}/html/java
-		doins -r "${S}"/java/doc/*
+		docinto html/java
+		dodoc -r "${S}"/java/doc/*
 		newdoc "${S}"/java/README README.java
 	fi
 }
