@@ -48,7 +48,6 @@ src_install() {
 	readme.gentoo_create_doc
 	into /
 	dosbin sbin/*
-	doman man/${PN}.8
 }
 
 pkg_postinst() {
