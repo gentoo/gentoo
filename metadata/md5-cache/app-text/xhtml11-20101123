@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm
+DEPEND=app-text/sgml-common dev-libs/libxml2
+DESCRIPTION=DTDs for the eXtensible HyperText Markup Language 1.0
+EAPI=7
+HOMEPAGE=http://www.w3.org/TR/xhtml11/
+KEYWORDS=~amd64 ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos
+LICENSE=W3C
+RDEPEND=>=app-text/sgml-common-0.6.3-r7
+SLOT=0
+SRC_URI=http://www.w3.org/TR/xhtml11/xhtml11.tgz -> xhtml11-20101123.tar.gz
+_eclasses_=sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8
+_md5_=5ea436743012d56d6ca413ad54b0ded9

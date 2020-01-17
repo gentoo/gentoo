@@ -11,5 +11,5 @@ RDEPEND=dev-python/setuptools[python_targets_python3_6(-)?,python_targets_python
 REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 )
 SLOT=0
 SRC_URI=mirror://pypi/p/platformio/platformio-4.1.0.tar.gz
-_eclasses_=distutils-r1	c5307d9afe217fa087ae282a6df257bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=distutils-r1	c576838cd67e384002a18edd54be710e	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=07412ac0a8b424e837b6b969a84e3d50

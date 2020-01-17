@@ -2734,6 +2734,7 @@ app-text/xapian-omega 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13
 app-text/xchm 1.23-r1 1.29 1.30 1.31 9999: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.87.03-r1 22.87.03-r2: DVI previewer for X Window System
 app-text/xhtml1 20020801-r6: DTDs for the eXtensible HyperText Markup Language 1.0
+app-text/xhtml11 20101123: DTDs for the eXtensible HyperText Markup Language 1.0
 app-text/xindy 2.4-r1: A Flexible Indexing System
 app-text/xiphos 4.0.6a-r1 4.1.0-r1: A bible study frontend for Sword (formerly known as GnomeSword)
 app-text/xlhtml 0.5.1_p6: Convert MS Excel and Powerpoint files to HTML
@@ -7820,7 +7821,7 @@ dev-python/hglib 2.1: Library for using the Mercurial Command Server from Python
 dev-python/hiredis 0.2.0-r1: Python extension that wraps hiredis
 dev-python/hiro 0.2 0.3 0.5: Time manipulation utilities for Python
 dev-python/hpack 2.3.0-r1 3.0.0: Pure-Python HPACK header compression
-dev-python/html2text 2018.1.9 2019.8.11 2019.9.26: Turn HTML into equivalent Markdown-structured text
+dev-python/html2text 2018.1.9 2019.9.26 2020.1.16: Turn HTML into equivalent Markdown-structured text
 dev-python/html5-parser 0.4.9: Fast C based HTML 5 parsing for python
 dev-python/html5lib 0.9999999 0.999999999 1.0.1 1.0.1-r1: HTML parser based on the HTML5 specification
 dev-python/httmock 1.2.5: A mocking library for requests
