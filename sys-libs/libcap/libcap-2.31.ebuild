@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.28-build-system-fixes.patch
+	"${FILESDIR}"/${PN}-2.29-build-system-fixes.patch
 	"${FILESDIR}"/${PN}-2.28-no_perl.patch
 	"${FILESDIR}"/${PN}-2.25-ignore-RAISE_SETFCAP-install-failures.patch
 	"${FILESDIR}"/${PN}-2.21-include.patch
@@ -64,6 +64,8 @@ multilib_src_install() {
 
 	gen_usr_ldscript -a cap
 	if ! use static-libs ; then
+		# Don't remove libpsx.a!
+		# See https://bugs.gentoo.org/703912
 		rm "${ED}"/usr/$(get_libdir)/libcap.a || die
 	fi
 
