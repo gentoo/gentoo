@@ -78,6 +78,10 @@ python_test () {
 }
 
 python_install_all() {
+	# Prevent dbus auto-launch
+	# https://bugs.gentoo.org/692178
+	export DBUS_SESSION_BUS_ADDRESS="disabled:"
+
 	local DOCS=( AUTHORS.txt docs/html/**/*.rst )
 	distutils-r1_python_install_all
 
