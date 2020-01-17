@@ -14,7 +14,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_BRANCH="master"
 else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
-	KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="Apache-2.0"
