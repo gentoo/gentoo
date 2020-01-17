@@ -11,7 +11,7 @@ SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
 LICENSE="GPL-2"
 
 SLOT="0/${PV}"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ppc64 x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ppc64 x86"
 IUSE="
 	androiddump bcg729 brotli +capinfos +captype ciscodump +dftest doc dpauxmon
 	+dumpcap +editcap http2 kerberos libxml2 lua lz4 maxminddb +mergecap
@@ -86,6 +86,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.4-androiddump.patch
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
 	"${FILESDIR}"/${PN}-2.9.0-tfshark-libm.patch
+	"${FILESDIR}"/${PN}-99999999-about_dialog-plugins_add_description.patch
 	"${FILESDIR}"/${PN}-99999999-androiddump-wsutil.patch
 	"${FILESDIR}"/${PN}-99999999-qtsvg.patch
 	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
