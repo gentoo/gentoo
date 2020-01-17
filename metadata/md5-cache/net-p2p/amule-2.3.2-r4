@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install postinst setup
+DEPEND=dev-libs/boost:= dev-libs/crypto++:= sys-libs/binutils-libs:0= sys-libs/zlib >=x11-libs/wxGTK-3.0.4:3.0-gtk3[X?] daemon? ( acct-user/amule ) geoip? ( dev-libs/geoip ) remote? ( acct-user/amule media-libs/libpng:0= ) stats? ( media-libs/gd:=[jpeg,png] ) upnp? ( net-libs/libupnp:0 )
+DESCRIPTION=aMule, the all-platform eMule p2p client
+EAPI=7
+HOMEPAGE=http://www.amule.org/
+IUSE=daemon debug geoip nls remote stats upnp +X
+KEYWORDS=~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=dev-libs/boost:= dev-libs/crypto++:= sys-libs/binutils-libs:0= sys-libs/zlib >=x11-libs/wxGTK-3.0.4:3.0-gtk3[X?] daemon? ( acct-user/amule ) geoip? ( dev-libs/geoip ) remote? ( acct-user/amule media-libs/libpng:0= ) stats? ( media-libs/gd:=[jpeg,png] ) upnp? ( net-libs/libupnp:0 )
+SLOT=0
+SRC_URI=https://download.sourceforge.net/amule/aMule-2.3.2.tar.xz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312
+_md5_=30f5bd8eaa7b142bb5031bfcb35e7ec0
