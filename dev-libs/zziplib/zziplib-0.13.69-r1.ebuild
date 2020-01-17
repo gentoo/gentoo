@@ -9,6 +9,7 @@ inherit autotools libtool flag-o-matic python-any-r1
 DESCRIPTION="Lightweight library for extracting data from files archived in a single zip file"
 HOMEPAGE="http://zziplib.sourceforge.net/"
 SRC_URI="https://github.com/gdraheim/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~asturm/distfiles/${P}-patches.tar.xz
 	https://dev.gentoo.org/~asturm/distfiles/${P}-man.tar.xz
 	doc? ( https://dev.gentoo.org/~asturm/distfiles/${P}-html.tar.xz )"
 
@@ -32,10 +33,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=(
-	"${FILESDIR}"/${P}-SDL-test.patch
-	"${FILESDIR}"/${P}-disable-docs.patch
-)
+PATCHES=( "${WORKDIR}"/${P}-patches )
 
 src_prepare() {
 	default
