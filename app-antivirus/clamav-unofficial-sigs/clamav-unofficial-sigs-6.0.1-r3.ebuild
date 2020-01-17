@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit user systemd
+inherit systemd
 
 DESCRIPTION="Download and install third-party clamav signatures"
 HOMEPAGE="https://github.com/extremeshok/clamav-unofficial-sigs"
@@ -13,6 +13,12 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="cron"
+
+# Require acct-{user,group}/clamav at build time so that we can set
+# the permissions on /var/lib/${PN} in src_install rather than in
+# pkg_postinst; calling "chown" on the live filesystem scares me.
+DEPEND="acct-group/clamav
+	acct-user/clamav"
 
 # The script relies on either net-misc/socat, or Perl's
 # IO::Socket::UNIX. We already depend on Perl, and Gentoo's Perl ships
@@ -25,12 +31,6 @@ RDEPEND="${DEPEND}
 
 src_install() {
 	dosbin "${PN}.sh"
-
-	# The script's working directory (set in the conf file). By default,
-	# it runs as clamav/clamav. We set the owner/group later, in
-	# pkg_preinst, after the user/group is sure to exist (because we
-	# create them otherwise).
-	keepdir "/var/lib/${PN}"
 
 	insinto /etc/logrotate.d
 	doins "${FILESDIR}/${PN}.logrotate"
@@ -57,15 +57,12 @@ src_install() {
 	# the timer is disabled by default (and won't annoy people until
 	# after they've configured the script).
 	systemd_dounit "${FILESDIR}/${PN}".{service,timer}
-}
 
-pkg_preinst() {
-	# Should agree with app-antivirus/clamav. We don't actually need
-	# clamav to function, so it isn't one of our dependencies, and
-	# that's why we might need to create its user ourselves.
-	enewgroup clamav
-	enewuser clamav -1 -1 /dev/null clamav
-	fowners clamav:clamav "/var/lib/${PN}"
+	# The script's working directory, as set in the configuration
+	# file. By default, the script runs as clamav:clamav because
+	# it needs write access to the clamav databases.
+	diropts -o clamav -g clamav
+	keepdir "/var/lib/${PN}"
 }
 
 pkg_postinst() {
