@@ -3,6 +3,7 @@ From: Alexander Lopatin <alopatindev@gmail.com>
 Date: Fri, 13 Jul 2018 18:30:21 +0300
 Subject: [PATCH] fix Qt 5.11 specific issue https://bugs.gentoo.org/660932
 
+Signed-off-by: Alexander Lopatin <alopatindev@gmail.com>
 ---
  qdevicemonitor/ui/MainWindow.cpp | 1 +
  1 file changed, 1 insertion(+)
