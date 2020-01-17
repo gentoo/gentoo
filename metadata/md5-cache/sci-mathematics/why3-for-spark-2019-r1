@@ -3,7 +3,7 @@ DEPEND=>=dev-lang/ocaml-4.09.0[ocamlopt?] >=dev-ml/ocamlbuild-0.14.0 dev-ml/menh
 DESCRIPTION=Platform for deductive program verification
 EAPI=6
 HOMEPAGE=http://why3.lri.fr/
-IUSE=coq doc emacs gtk html hypothesis-selection +ocamlopt profiling zarith zip
+IUSE=coq doc emacs gtk html hypothesis-selection +ocamlopt zarith zip
 KEYWORDS=~amd64
 LICENSE=GPL-3
 RDEPEND=>=dev-lang/ocaml-4.09.0[ocamlopt?] >=dev-ml/ocamlbuild-0.14.0 dev-ml/menhir dev-ml/num coq? ( >=sci-mathematics/coq-8.9.1 ) doc? ( dev-tex/rubber ) gtk? ( >=dev-ml/lablgtk-2.18.8[sourceview] ) emacs? ( >=app-editors/emacs-23.1:* ) html? ( dev-tex/hevea ) hypothesis-selection? ( dev-ml/ocamlgraph ) zarith? ( dev-ml/zarith ) zip? ( >=dev-ml/camlzip-1.07 )
@@ -12,4 +12,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=http://mirrors.cdn.adacore.com/art/5cdf915d31e87a8f1c967d54 -> why3-2019-20190517-197BB-src.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ae3f0a29e9221789d7a72359ba4b4281
+_md5_=af72c9c00a42b0fd0c14172f83e94dc2
