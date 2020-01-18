@@ -5860,7 +5860,6 @@ net-im/pidgin:meanwhile - Enable meanwhile support for Sametime protocol
 net-im/pidgin:ncurses - Build finch, console interface
 net-im/pidgin:prediction - Enable Contact Availability Prediction plugin
 net-im/pidgin:python - Build libgnt (GLib Ncurses Toolkit used by finch) with python scripting support
-net-im/pidgin:silc - Enable SILC protocol support
 net-im/pidgin:xscreensaver - Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events
 net-im/pidgin:zephyr - Enable Zephyr protocol support
 net-im/profanity:gpg - Enable OpenPGP encryption

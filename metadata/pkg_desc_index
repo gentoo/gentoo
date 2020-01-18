@@ -14537,7 +14537,7 @@ net-im/mattermost-desktop-bin 4.2.3 4.3.1: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openmittsu 0.9.13.32 0.9.13.46: An open source chat client for Threema-style end-to-end encrypted chat networks
-net-im/pidgin 2.13.0 2.13.0-r1: GTK Instant Messenger client
+net-im/pidgin 2.13.0-r2 2.13.0-r3: GTK Instant Messenger client
 net-im/poezio 0.12 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1: A console based XMPP client inspired by Irssi
 net-im/prosody 0.9.14 0.11.2-r1 0.11.3: Prosody is a flexible communications server for Jabber/XMPP written in Lua
