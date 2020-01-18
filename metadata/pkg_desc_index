@@ -14481,7 +14481,7 @@ net-fs/s3ql 2.24 2.25 2.26 2.28 2.32 2.33: A full-featured file system for onlin
 net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.16 4.9.17 4.10.2 4.10.10 4.10.11 4.11.2 4.11.4: Samba Suite Version 4
 net-fs/smbnetfs 0.6.1-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
-net-fs/sshfs 2.10-r1 3.6.0: Fuse-filesystem utilizing the sftp service
+net-fs/sshfs 2.10-r1 3.6.0 3.7.0: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r5 0.7-r6 0.7.2: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
