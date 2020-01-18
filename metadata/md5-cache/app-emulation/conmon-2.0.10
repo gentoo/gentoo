@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=dev-libs/glib:= systemd? ( sys-apps/systemd:= )
+DESCRIPTION=An OCI container runtime monitor
+EAPI=7
+HOMEPAGE=https://github.com/containers/conmon
+IUSE=systemd
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=dev-libs/glib:= systemd? ( sys-apps/systemd:= )
+SLOT=0
+SRC_URI=https://github.com/containers/conmon/archive/7a830be343876ac381c965c7429a7fb9b3d7a609.tar.gz -> conmon-2.0.10.tar.gz
+_md5_=3d347542cc7fbe58ba1071e53ba5e2de
