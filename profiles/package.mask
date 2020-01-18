@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2020-01-18)
+# Leftover from silc* removal (#522916), unmaintained, no upstream 
+# releases since 2014, EAPI-4. #705462
+# Removal in ~14 days.
+net-im/silc-toolkit
+
+# David Seifert <soap@gentoo.org> (2020-01-18)
 # EAPI 4, last release in 2004, ebuild has QA and licensing issues.
 # Bug #426028, #454116. Removal in 30 days.
 net-ftp/oftpd
