@@ -35,7 +35,7 @@
 # Michał Górny <mgorny@gentoo.org> (2020-01-18)
 # The following Gentoo packages are Python 2-only and have no reverse
 # dependencies.
-# Removal in 30 days.
+# Removal in 30 days.  Bug #705762.
 dev-python/aldryn-boilerplates
 dev-python/aldryn-common
 dev-python/aquarium
