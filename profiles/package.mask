@@ -32,6 +32,75 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-01-18)
+# The following Gentoo packages are Python 2-only and have no reverse
+# dependencies.
+# Removal in 30 days.  Bug #705762.
+dev-python/aldryn-boilerplates
+dev-python/aldryn-common
+dev-python/aquarium
+dev-python/celementtree
+dev-python/collectd-rabbitmq
+dev-python/cosmolopy
+dev-python/django-annoying
+dev-python/django-endless-pagination
+dev-python/django-international
+dev-python/django-ldapdb
+dev-python/django-ldap-groups
+dev-python/django-oauth-plus
+dev-python/django-openid-auth
+dev-python/django-piston
+dev-python/django-registration
+dev-python/django-xslt
+dev-python/egg-python
+dev-python/Flask-KVSession
+dev-python/flask-openid
+dev-python/flask-xml-rpc
+dev-python/gdata
+dev-python/libwnck-python
+dev-python/lxc-python2
+dev-python/mantissa
+dev-python/mkpythonproj
+dev-python/morbid
+dev-python/myghty
+dev-python/myghtyutils
+dev-python/openstack-nose-plugin
+dev-python/paisley
+dev-python/pkipplib
+dev-python/processing
+dev-python/pSQL
+dev-python/pudge
+dev-python/pyds
+dev-python/pygene
+dev-python/pygtkhelpers
+dev-python/pynotifier
+dev-python/pypgsql
+dev-python/pythong
+dev-python/python-musicbrainz
+dev-python/python-nss
+dev-python/python-recaptcha
+dev-python/python-scw
+dev-python/python-tvrage
+dev-python/python-yadis
+dev-python/qpid-python
+dev-python/robotframework-selenium2library
+dev-python/robotframework-sshlibrary
+dev-python/rtgraph
+dev-python/ruledispatch
+dev-python/runsnakerun
+dev-python/sqlite3dbm
+dev-python/sqlobject
+dev-python/steadymark
+dev-python/storm
+dev-python/timelib
+dev-python/turbocheetah
+dev-python/turbojson
+dev-python/turbokid
+dev-python/weakrefmethod
+dev-python/webut
+dev-python/wehjit
+dev-python/zfec
+
 # David Seifert <soap@gentoo.org> (2020-01-18)
 # EAPI 4, last release in 2004, ebuild has QA and licensing issues.
 # Bug #426028, #454116. Removal in 30 days.
