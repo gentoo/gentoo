@@ -15662,7 +15662,7 @@ sci-astronomy/sextractor 2.19.5 2.19.5-r1: Extract catalogs of sources from astr
 sci-astronomy/skycat 3.1.2-r2 3.1.3: ESO astronomical image visualizer with catalog access
 sci-astronomy/skymaker 3.10.5: Program that simulates astronomical images
 sci-astronomy/sofa_c 20150209a 20160503c 20170420: Library for algorithms for models in fundamental astronomy
-sci-astronomy/stellarium 0.19.0 0.19.1 0.19.2 0.19.3: 3D photo-realistic skies in real time
+sci-astronomy/stellarium 0.19.3: 3D photo-realistic skies in real time
 sci-astronomy/stiff 2.4.0: Converts astronomical FITS images to the TIFF format
 sci-astronomy/stuff 1.26.0: Tool for automatic generation of astronomical catalogs
 sci-astronomy/swarp 2.38.0: Resample and coadd astronomical FITS images
@@ -17126,7 +17126,7 @@ sys-block/scsiadd 1.97-r1: Add and remove SCSI devices from your Linux system du
 sys-block/scsiping 0.0.1-r1: SCSIPing pings a host on the SCSI-chain
 sys-block/scsirastools 1.5.7 1.6.4: Serviceability for SCSI Disks and Arrays
 sys-block/sedutil 1.15 1.15.1: The Drive Trust Alliance Self Encrypting Drive Utility
-sys-block/seekwatcher 0.12_p20091015-r1: generates graphs from blktrace to help visualize IO patterns and performance
+sys-block/seekwatcher 0.12_p20091015-r1 0.13: generates graphs from blktrace to help visualize IO patterns and performance
 sys-block/smp_utils 0.98 0.99_beta4_p151: Utilities for SAS management protocol (SMP)
 sys-block/spindown 0.4.0-r5: Spindown is a daemon that can spin down idle disks
 sys-block/storcli 1.19.04 1.20.15 1.21.06 1.23.02 7.0504 7.0606 7.0709-r1 7.1017 7.1211: MegaRAID StorCLI (successor of the MegaCLI)
