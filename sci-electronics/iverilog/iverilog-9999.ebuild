@@ -56,6 +56,9 @@ src_prepare() {
 
 src_install() {
 	local DOCS=( *.txt )
+	# During overwrite installation, old timestamp caused file missing,
+	# https://bugs.gentoo.org/705412
+	find . -exec touch {} + || die
 	# Default build fails with parallel jobs,
 	# https://github.com/steveicarus/iverilog/pull/294
 	emake installdirs DESTDIR="${D}"
