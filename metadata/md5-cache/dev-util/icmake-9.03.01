@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile configure install prepare
+DESCRIPTION=Hybrid between a make utility and a shell scripting language
+EAPI=7
+HOMEPAGE=https://fbb-git.gitlab.io/icmake/ https://gitlab.com/fbb-git/icmake
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+SLOT=0
+SRC_URI=https://gitlab.com/fbb-git/icmake/-/archive/9.03.01/icmake-9.03.01.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=317815b8cea458a616a193f9220b20e9
