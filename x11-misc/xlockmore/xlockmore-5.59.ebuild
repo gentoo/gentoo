@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,6 @@ DESCRIPTION="Just another screensaver application for X"
 HOMEPAGE="https://www.sillycycle.com/xlockmore.html"
 SRC_URI="
 	https://www.sillycycle.com/xlock/${P/_alpha/ALPHA}.tar.xz
-	https://dev.gentoo.org/~jer/ax_pthread.m4.xz
 "
 
 LICENSE="BSD GPL-2"
@@ -52,11 +51,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.47-strip.patch
 )
 S=${WORKDIR}/${P/_alpha/ALPHA}
-
-src_unpack() {
-	unpack ${P/_alpha/ALPHA}.tar.xz
-	xz -cd "${DISTDIR}"/ax_pthread.m4.xz > "${S}"/ax_pthread.m4 || die
-}
 
 src_prepare() {
 	default
