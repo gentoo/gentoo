@@ -1,0 +1,44 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -11,10 +11,10 @@
+ all: binary docs
+ 
+ binary: Makefile Source/Makefile
+-	@cd Source && make && cd ..
++	@cd Source && $(MAKE) && cd ..
+ 
+ docs:
+-	@cd Docs && make && cd ..
++	@cd Docs && $(MAKE) && cd ..
+ 
+ install: all
+ 	$(INSTALL) -d -m 755 $(SBINDIR)
+@@ -29,7 +29,7 @@
+ 	$(INSTALL) -m 644 Docs/ippl.conf.5 $(MANDIR)/man5/ippl.conf.5
+ 
+ clean:
+-	@cd Source && make clean && cd .. && cd Docs && make clean && cd ..
++	@cd Source && $(MAKE) clean && cd .. && cd Docs && $(MAKE) clean && cd ..
+ 
+ distclean: clean
+ 	$(RM) *~ Makefile.common Makefile Source/Makefile Docs/Makefile build-stamp install-stamp
+--- a/Source/Makefile.in
++++ b/Source/Makefile.in
+@@ -10,7 +10,7 @@
+ CC=@CC@
+ CFLAGS=@CFLAGS@
+ WARNINGS=-Wall@PEDANTIC@
+-LDFLAGS=
++LDFLAGS=@LDFLAGS@
+ 
+ SRCS=	main.c \
+ 	configuration.c \
+@@ -49,7 +49,7 @@
+ y.tab.c: ippl.y Makefile ../Makefile.common
+ 	$(YACC) -d $<
+ 
+-lex.yy.c: ippl.l Makefile ../Makefile.common
++lex.yy.c: ippl.l y.tab.c Makefile ../Makefile.common
+ 	$(LEX) $<
+ 
+ clean:
