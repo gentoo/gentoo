@@ -4,7 +4,7 @@
 EAPI=7
 
 DISTUTILS_USE_SETUPTOOLS=manual
-PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
 inherit distutils-r1
 
@@ -21,12 +21,6 @@ KEYWORDS="~amd64 ~x86"
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]"
-BDEPEND="${RDEPEND}
-	test? (
-		$(python_gen_cond_dep '
-			dev-python/backports-tempfile[${PYTHON_USEDEP}]
-			dev-python/mock[${PYTHON_USEDEP}]
-		' -2)
-	)"
+BDEPEND="${RDEPEND}"
 
 distutils_enable_tests pytest
