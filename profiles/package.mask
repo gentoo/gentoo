@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-01-18)
+# EAPI 4, doesn't build, last release in 2005.
+# Bug #384031, #638492, #663644. Removal in 30 days.
+net-analyzer/pchar
+
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # Python 2 only.  Last release in 2006.  No reverse dependencies.
 # Removal in 30 days.  Bug #705522.
