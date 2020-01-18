@@ -83,7 +83,6 @@ REQUIRED_USE="
 	plugin-ifdemo? ( plugins )
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.4-androiddump.patch
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
 	"${FILESDIR}"/${PN}-2.9.0-tfshark-libm.patch
 	"${FILESDIR}"/${PN}-99999999-about_dialog-plugins_add_description.patch
