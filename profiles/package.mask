@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-01-18)
+# Leftover from silc* removal (#522916), unmaintained, no
+# upstream releases since 2014, no revdeps, EAPI-4.
+# Bug #705462. Removal in 14 days.
+net-im/silc-toolkit
+
 # Michał Górny <mgorny@gentoo.org> (2020-01-18)
 # The following Gentoo packages are Python 2-only and have no reverse
 # dependencies.
