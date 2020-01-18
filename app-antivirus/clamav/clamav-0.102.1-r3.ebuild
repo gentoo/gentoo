@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic user systemd
+inherit autotools eutils flag-o-matic systemd
 
 DESCRIPTION="Clam Anti-Virus Scanner"
 HOMEPAGE="https://www.clamav.net/"
@@ -15,7 +15,12 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-l
 IUSE="bzip2 doc clamdtop clamsubmit iconv ipv6 libclamav-only libressl milter metadata-analysis-api selinux static-libs test uclibc xml"
 RESTRICT="!test? ( test )"
 
-CDEPEND="bzip2? ( app-arch/bzip2 )
+# Require acct-{user,group}/clamav at build time so that we can set
+# the permissions on /var/lib/clamav in src_install rather than in
+# pkg_postinst; calling "chown" on the live filesystem scares me.
+CDEPEND="acct-group/clamav
+	acct-user/clamav
+	bzip2? ( app-arch/bzip2 )
 	clamdtop? ( sys-libs/ncurses:0 )
 	iconv? ( virtual/libiconv )
 	metadata-analysis-api? ( dev-libs/json-c:= )
@@ -50,11 +55,6 @@ PATCHES=(
 	"${FILESDIR}/${PN}-0.101.2-tinfo.patch" #670729
 	"${FILESDIR}/${PN}-0.102.1-libxml2_pkgconfig.patch" #661328
 )
-
-pkg_setup() {
-	enewgroup clamav
-	enewuser clamav -1 -1 /dev/null clamav
-}
 
 src_prepare() {
 	default
@@ -117,11 +117,6 @@ src_install() {
 	systemd_dounit "${FILESDIR}/clamd.service"
 	systemd_dounit "${FILESDIR}/freshclamd.service"
 
-	keepdir /var/lib/clamav
-	fowners clamav:clamav /var/lib/clamav
-	keepdir /var/log/clamav
-	fowners clamav:clamav /var/log/clamav
-
 	dodir /etc/logrotate.d
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/clamav.logrotate clamav
@@ -177,6 +172,12 @@ src_install() {
 	done
 
 	prune_libtool_files --all
+
+	# These both need to be writable by the clamav user.
+	# TODO: use syslog by default; that's what it's for.
+	diropts -o clamav -g clamav
+	keepdir /var/lib/clamav
+	keepdir /var/log/clamav
 }
 
 src_test() {
