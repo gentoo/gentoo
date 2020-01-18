@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit autotools elisp-common python-single-r1 systemd user
 
@@ -79,6 +79,9 @@ pkg_setup() {
 
 src_prepare() {
 	default
+
+	# https://bugzilla.redhat.com/show_bug.cgi?id=1786983
+	eapply "${FILESDIR}/glusterfs-6.7-fix-rebalance-crash.patch"
 
 	# build rpc-transport and xlators only once as shared libs
 	find rpc/rpc-transport xlators -name Makefile.am |
