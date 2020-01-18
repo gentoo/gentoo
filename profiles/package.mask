@@ -33,6 +33,17 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2020-01-18)
+# EAPI 4, last release in 2004, ebuild has QA and licensing issues.
+# Bug #426028, #454116. Removal in 30 days.
+net-ftp/oftpd
+
+# David Seifert <soap@gentoo.org> (2020-01-18)
+# EAPI 4, doesn't build against OpenSSL 1.1 API, last release in 2014,
+# lots of QA issues (calls cc directly, -Werror)
+# Bug #634442, #664766. Removal in 30 days.
+net-dns/validns
+
+# David Seifert <soap@gentoo.org> (2020-01-18)
 # EAPI 4, doesn't build, last release in 2005.
 # Bug #384031, #638492, #663644. Removal in 30 days.
 net-analyzer/pchar
