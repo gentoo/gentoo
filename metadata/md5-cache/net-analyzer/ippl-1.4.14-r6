@@ -1,0 +1,12 @@
+BDEPEND=virtual/yacc sys-devel/flex
+DEFINED_PHASES=configure install
+DESCRIPTION=A daemon which logs TCP/UDP/ICMP packets
+EAPI=7
+HOMEPAGE=http://pltplp.net/ippl/
+KEYWORDS=amd64 ~ppc x86
+LICENSE=GPL-2
+RDEPEND=acct-user/ippl
+SLOT=0
+SRC_URI=http://pltplp.net/ippl/archive/ippl-1.4.14.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=4f8421eb4b332a1a721906a871ea4af1
