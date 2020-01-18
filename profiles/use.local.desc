@@ -8339,7 +8339,6 @@ sys-fs/btrfs-progs:reiserfs - Enable reiserfs support in btrfs-convert tool.
 sys-fs/btrfs-progs:static - Build static binaries in addition to the dynamic ones
 sys-fs/btrfsmaintenance:systemd - Enable systemd services and timers instead of cron timers
 sys-fs/cryfs:custom-optimization - Use user-defined compiler optimization level
-sys-fs/cryfs:update-check - Enable automatic checking for updates and security vulnerabilities
 sys-fs/cryptmount:argv0switch - Default action given by progname.
 sys-fs/cryptmount:cswap - Enable support for encrypted swap.
 sys-fs/cryptmount:fsck - Check filesystems before mounting.
