@@ -14163,7 +14163,7 @@ net-analyzer/jffnms 0.9.4-r1: Network Management and Monitoring System
 net-analyzer/jmx2munin 1.0_p20120811-r1: JMX Monitoring plugin for Munin
 net-analyzer/jnettop 0.13.0-r1: A top like console network traffic visualiser
 net-analyzer/kapacitor 1.4.1-r1 1.5.1: Monitoring, processing and alerting on time series data
-net-analyzer/knocker 0.7.1-r2 0.7.1-r3: Knocker is an easy to use security port scanner written in C
+net-analyzer/knocker 0.7.1-r3: Knocker is an easy to use security port scanner written in C
 net-analyzer/labrea 2.5-r2 2.5-r3: 'Sticky' Honeypot and IDS
 net-analyzer/lft 3.77 3.79 3.80: Layer Four Traceroute (LFT) and WhoB
 net-analyzer/lilac 1.0.3: Web-based configuration tool written to configure Nagios
