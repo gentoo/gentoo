@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
 inherit autotools flag-o-matic gnome2 toolchain-funcs multilib perl-module python-single-r1 xdg-utils
 
@@ -17,9 +17,9 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0/2" # libpurple version
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
 IUSE="dbus debug doc eds gadu gnutls +gstreamer +gtk idn meanwhile pie"
-IUSE+=" networkmanager nls perl silc tcl tk spell sasl ncurses"
+IUSE+=" networkmanager nls perl tcl tk spell sasl ncurses"
 IUSE+=" groupwise prediction python +xscreensaver zephyr zeroconf" # mono"
 IUSE+=" aqua"
 
@@ -55,7 +55,7 @@ RDEPEND="
 	dbus? (
 		>=dev-libs/dbus-glib-0.71
 		>=sys-apps/dbus-0.90
-		dev-python/dbus-python
+		dev-python/dbus-python[${PYTHON_USEDEP}]
 	)
 	perl? ( >=dev-lang/perl-5.16:= )
 	gadu? (
@@ -70,7 +70,6 @@ RDEPEND="
 		dev-libs/nss
 	)
 	meanwhile? ( net-libs/meanwhile )
-	silc? ( >=net-im/silc-toolkit-1.0.1 )
 	tcl? ( dev-lang/tcl:0= )
 	tk? ( dev-lang/tk:0= )
 	sasl? ( dev-libs/cyrus-sasl:2 )
@@ -145,24 +144,28 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.10.11-tinfo.patch"
 	"${DISTDIR}/${PN}-2.10.9-irc_join_sleep.patch" # 577286
 	"${FILESDIR}/${PN}-2.13.0-disable-one-jid-test.patch" # 593338
+	"${FILESDIR}/${PN}-2.13.0-python3_support.patch" #459996
 )
 
-pkg_setup() {
+pkg_pretend() {
 	if ! use gtk && ! use ncurses ; then
 		elog "You did not pick the ncurses or gtk use flags, only libpurple"
 		elog "will be built."
 	fi
-	if use python || use dbus ; then
-		python-single-r1_pkg_setup
-	fi
 
 	# dbus is enabled, no way to disable linkage with python => python is enabled
 	#REQUIRED_USE="gtk? ( nls ) dbus? ( python )"
-	if use gtk && ! use nls; then
+	if use gtk && ! use nls ; then
 		ewarn "gtk build => nls is enabled!"
 	fi
-	if use dbus && ! use python; then
+	if use dbus && ! use python ; then
 		elog "dbus is enabled, no way to disable linkage with python => python is enabled"
+	fi
+}
+
+pkg_setup() {
+	if use python || use dbus ; then
+		python-single-r1_pkg_setup
 	fi
 }
 
@@ -179,7 +182,6 @@ src_configure() {
 
 	use gadu 	&& DYNAMIC_PRPLS+=",gg"
 	use groupwise 	&& DYNAMIC_PRPLS+=",novell"
-	use silc 	&& DYNAMIC_PRPLS+=",silc"
 	use meanwhile 	&& DYNAMIC_PRPLS+=",sametime"
 	use zephyr 	&& DYNAMIC_PRPLS+=",zephyr"
 	use zeroconf 	&& DYNAMIC_PRPLS+=",bonjour"
@@ -236,7 +238,7 @@ src_configure() {
 src_install() {
 	gnome2_src_install
 
-	if use gtk; then
+	if use gtk ; then
 		# Fix tray paths for e16 (x11-wm/enlightenment) and other
 		# implementations that are not complient with new hicolor theme yet, #323355
 		local pixmapdir
@@ -253,7 +255,7 @@ src_install() {
 	use perl && perl_delete_localpod
 
 	if use python && use dbus ; then
-		python_fix_shebang "${D}"
+		python_fix_shebang "${ED}"
 		python_optimize
 	fi
 
