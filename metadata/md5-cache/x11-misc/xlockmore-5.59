@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=configure install prepare unpack
+DEFINED_PHASES=configure install prepare
 DEPEND=gtk? ( x11-libs/gtk+:2 ) imagemagick? ( media-gfx/imagemagick:= ) motif? ( >=x11-libs/motif-2.3:0 ) nas? ( media-libs/nas ) opengl? ( virtual/opengl virtual/glu truetype? ( >=media-libs/ftgl-2.1.3_rc5 ) ) pam? ( sys-libs/pam ) truetype? ( media-libs/freetype:2 ) x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama ) virtual/pkgconfig x11-base/xorg-proto
 DESCRIPTION=Just another screensaver application for X
 EAPI=7
@@ -10,6 +10,6 @@ LICENSE=BSD GPL-2
 RDEPEND=gtk? ( x11-libs/gtk+:2 ) imagemagick? ( media-gfx/imagemagick:= ) motif? ( >=x11-libs/motif-2.3:0 ) nas? ( media-libs/nas ) opengl? ( virtual/opengl virtual/glu truetype? ( >=media-libs/ftgl-2.1.3_rc5 ) ) pam? ( sys-libs/pam ) truetype? ( media-libs/freetype:2 ) x11-libs/libX11 x11-libs/libXext x11-libs/libXmu x11-libs/libXpm x11-libs/libXt xinerama? ( x11-libs/libXinerama )
 REQUIRED_USE=|| ( crypt pam ) pam? ( !xlockrc ) xlockrc? ( !pam )
 SLOT=0
-SRC_URI=https://www.sillycycle.com/xlock/xlockmore-5.59.tar.xz https://dev.gentoo.org/~jer/ax_pthread.m4.xz
+SRC_URI=https://www.sillycycle.com/xlock/xlockmore-5.59.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	a1771fc1e5831c201eaf18451747d94b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4cc56a5f11de00367627c2a68dcd74ed
+_md5_=f393cadde37a42428d38630af17ddd36
