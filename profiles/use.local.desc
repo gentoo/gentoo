@@ -1302,6 +1302,7 @@ app-text/wv:tools - Install optional utilities considered deprecated in favor of
 app-text/xmlto:text - Support conversion from XML to plain text
 app-text/xpdf:cmyk - Include support for CMYK rasterization
 app-text/xpdf:i18n - Enable support non-UTF8 national charsets
+app-text/xpdf:icons - Generate desktop PNG icons using media-gfx/inkscape
 app-text/xpdf:libpaper - Use app-text/libpaper to get paper preferences
 app-text/xpdf:metric - Use A4 instead of US Letter paper size by default for PostScript output. This option has effect only if libpaper USE flag is disabled
 app-text/xpdf:opi - Include support for OPI (Open Prepress Interface) comments
