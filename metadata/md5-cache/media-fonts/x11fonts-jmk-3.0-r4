@@ -1,0 +1,13 @@
+BDEPEND=x11-misc/imake >=x11-apps/mkfontscale-1.2.0 x11-apps/bdftopcf
+DEFINED_PHASES=compile install postinst postrm setup
+DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DESCRIPTION=This package contains character-cell fonts for use with X
+EAPI=7
+HOMEPAGE=http://www.jmknoble.net/fonts/
+IUSE=X
+KEYWORDS=~alpha ~amd64 ~arm ~ia64 ~ppc ~s390 ~sh ~sparc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=http://www.pobox.com/~jmknoble/fonts/jmk-x11-fonts-3.0.tar.gz
+_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
+_md5_=9077622ed68d58fde648e7017b56f64c
