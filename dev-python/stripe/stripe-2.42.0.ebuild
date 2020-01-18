@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} pypy3 )
+PYTHON_COMPAT=( python3_{6,7} pypy{,3} )
 inherit distutils-r1
 
 DESCRIPTION="Stripe python bindings"
@@ -25,7 +25,7 @@ RDEPEND="
 # Running the tests against dev-util/stripe-mock-0.47.0 resulted in test errors
 DEPEND="${RDEPEND}
 	test? (
-		>=dev-util/stripe-mock-0.63.0
+		>=dev-util/stripe-mock-0.76.0
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
 		net-misc/curl
