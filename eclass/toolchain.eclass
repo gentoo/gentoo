@@ -538,6 +538,10 @@ toolchain_src_prepare() {
 	do_gcc_PIE_patches
 	do_gcc_CYGWINPORTS_patches
 
+	if [[ ${PV} == *9999* ]] ; then
+		BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, commit ${EGIT_VERSION}"
+	fi
+
 	case ${EAPI:-0} in
 		5*) epatch_user;;
 		6|7) eapply_user ;;
