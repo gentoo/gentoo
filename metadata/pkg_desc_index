@@ -8325,7 +8325,7 @@ dev-python/pycmd 1.2: pycmd: tools for managing/searching Python related files
 dev-python/pycobertura 0.10.0: Cobertura coverage parser that can diff reports and show coverage progress
 dev-python/pycodestyle 2.3.1 2.4.0 2.5.0: Python style guide checker (fka pep8)
 dev-python/pycollada 0.6-r1: Python library for reading and writing COLLADA documents
-dev-python/pycountry 16.11.8 19.8.18: Database of countries, subdivisions, languages, currencies and script
+dev-python/pycountry 19.8.18: Database of countries, subdivisions, languages, currencies and script
 dev-python/pycparser 2.14 2.18-r1 2.19-r1: C parser and AST generator written in Python
 dev-python/pycrypto 2.6.1-r2: Python Cryptography Toolkit
 dev-python/pycryptodome 3.4.6 3.4.7 3.6.6 3.7.3 3.8.2 3.9.4: A self-contained cryptographic library for Python
