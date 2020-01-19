@@ -4671,7 +4671,7 @@ dev-lang/ferite 1.1.17-r1: A clean, lightweight, object oriented scripting langu
 dev-lang/fpc 2.6.4 3.0.0 3.0.2 3.0.2-r1 3.0.4: Free Pascal Compiler
 dev-lang/gdl 0.9.6-r2: GNU Data Language
 dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the ANSI Forth language
-dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1: The Glasgow Haskell Compiler
+dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r1: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
 dev-lang/go 1.12.13 1.12.14 1.12.15 1.13.4 1.13.5 1.13.6 9999: A concurrent garbage collected and typesafe programming language
@@ -10224,7 +10224,7 @@ dev-tex/aastex 5.2: LaTeX package for American Astronomical Society journals. (A
 dev-tex/abntex 0.9_beta2-r1: LaTeX macros for writing documents following the ABNT norms
 dev-tex/biber 2.7 2.12: A BibTeX replacement for users of biblatex
 dev-tex/biblatex 3.7-r1 3.12: Reimplementation of the bibliographic facilities provided by LaTeX
-dev-tex/biblatex-apa 7.4 7.5: APA style for BibLaTeX
+dev-tex/biblatex-apa 7.5: APA style for BibLaTeX
 dev-tex/biblatex-gost 1.17: Biblatex styles for Russian GOST 7.0.5-2008 bibliography standard
 dev-tex/bibtex2html 1.98 1.99: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20190410: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
@@ -10284,7 +10284,7 @@ dev-tex/revtex 4.2c: LaTeX2e macros to prepare manuscripts for the journals of t
 dev-tex/rubber 1.4: A LaTeX wrapper for automatically building documents
 dev-tex/serienbrief 0.2.5: Easy creation of form letters written in LaTeX
 dev-tex/sketch 0.3.7: Produces drawings of two- or three-dimensional solid objects and scenes for TeX
-dev-tex/slatex 20090928_p20180415: SLaTeX is a Scheme program allowing you to write Scheme in your (La)TeX source
+dev-tex/slatex 20090928_p20180415: A Scheme program allowing you to write Scheme in your (La)TeX source
 dev-tex/style-check 0.14: Parses LaTeX-formatted text in search of forbidden phrases
 dev-tex/svninfo 0.7.4: A LaTeX module to access SVN version info
 dev-tex/tex4ht 20090611_p1038-r8: Converts (La)TeX to (X)HTML, XML and OO.org
