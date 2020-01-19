@@ -14,8 +14,7 @@ LICENSE="Apache-2.0 BSD BSD-2 CC-BY-SA-4.0 ISC MIT MPL-2.0"
 SLOT="0"
 
 KEYWORDS="~amd64"
-IUSE="apparmor btrfs ostree +rootless selinux"
-REQUIRED_USE="!ostree"
+IUSE="apparmor btrfs +rootless selinux"
 RESTRICT="test"
 
 COMMON_DEPEND="
