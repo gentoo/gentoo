@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 IUSE="alsa doc fftw gmp gsl gtk jack ladspa motif opengl oss portaudio pulseaudio readline ruby +s7"
 
-RDEPEND="media-libs/audiofile
+RDEPEND="
+	media-libs/audiofile
 	alsa? ( media-libs/alsa-lib )
 	fftw? ( sci-libs/fftw:3.0= )
 	gmp? (
@@ -24,12 +25,11 @@ RDEPEND="media-libs/audiofile
 	)
 	gsl? ( sci-libs/gsl:= )
 	gtk? (
+		x11-libs/cairo
 		x11-libs/gtk+:3
 		x11-libs/pango
-		x11-libs/cairo
-		opengl? ( x11-libs/gtkglext )
 	)
-	jack? ( media-sound/jack-audio-connection-kit )
+	jack? ( virtual/jack )
 	ladspa? ( media-libs/ladspa-sdk )
 	motif? ( >=x11-libs/motif-2.3:0 )
 	opengl? ( virtual/opengl )
