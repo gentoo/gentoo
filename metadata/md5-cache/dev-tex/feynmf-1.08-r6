@@ -10,4 +10,4 @@ RDEPEND=dev-texlive/texlive-metapost virtual/latex-base
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/feynmf-1.08.tar.gz doc? ( https://dev.gentoo.org/~ulm/distfiles/feynmf-cnl.tar.gz )
 _eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
-_md5_=a7d40dad1805a1dee662d31946a0abe8
+_md5_=92180145f13d416a9d8543e720487e42
