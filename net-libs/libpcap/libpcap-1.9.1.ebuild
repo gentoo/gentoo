@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,9 +49,10 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 	econf \
 		$(use_enable bluetooth) \
-		$(use_enable usb) \
 		$(use_enable dbus) \
+		$(use_enable usb) \
 		$(use_with netlink libnl) \
+		--disable-rdma \
 		--enable-ipv6
 }
 
