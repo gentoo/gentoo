@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,6 +23,9 @@ BDEPEND="
 
 src_prepare() {
 	cp -r "${WORKDIR}"/tirpc "${S}"/ || die
+	local PATCHES=(
+		"${FILESDIR}"/libtirpc-1.2.5-avoid-multiple-definition.patch
+	)
 	default
 	eautoreconf
 }
