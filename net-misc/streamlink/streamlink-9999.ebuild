@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/streamlink/${PN}.git"
@@ -28,7 +28,7 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 # >=urllib3-1.23 only needed for python2, but requests pulls some version anyways, so we might as well guarantee at least that ver for py3 too
-RDEPEND="
+DEPEND="
 	virtual/python-futures[${PYTHON_USEDEP}]
 	virtual/python-singledispatch[${PYTHON_USEDEP}]
 	>dev-python/requests-2.21.0[${PYTHON_USEDEP}]
@@ -38,7 +38,11 @@ RDEPEND="
 	dev-python/pycountry[${PYTHON_USEDEP}]
 	>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]
 "
-DEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
+	media-video/rtmpdump
+	virtual/ffmpeg
+"
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
@@ -51,10 +55,6 @@ DEPEND="${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/freezegun[${PYTHON_USEDEP}]
 	)"
-RDEPEND="${RDEPEND}
-	media-video/rtmpdump
-	virtual/ffmpeg
-"
 
 python_configure_all() {
 	# Avoid iso-639, iso3166 dependencies since we use pycountry.
