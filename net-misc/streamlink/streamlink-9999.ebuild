@@ -3,17 +3,25 @@
 
 EAPI=6
 
+if [[ ${PV} = 9999* ]]; then
+	EGIT_REPO_URI="https://github.com/streamlink/${PN}.git"
+	GIT_ECLASS="git-r3"
+fi
+
 PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE='xml(+),threads(+)'
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 git-r3
+inherit distutils-r1 $GIT_ECLASS
 
 DESCRIPTION="CLI for extracting streams from websites to a video player of your choice"
 HOMEPAGE="https://streamlink.github.io/"
-EGIT_REPO_URI="https://github.com/${PN}/${PN}"
 
-KEYWORDS=""
+if [[ ${PV} != 9999* ]]; then
+	SRC_URI="https://github.com/streamlink/${PN}/releases/download/${PV}/${P}.tar.gz"
+	KEYWORDS="~amd64 ~x86"
+fi
+
 LICENSE="BSD-2 Apache-2.0"
 SLOT="0"
 IUSE="doc test"
