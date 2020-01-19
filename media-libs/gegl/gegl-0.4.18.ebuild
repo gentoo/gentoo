@@ -82,9 +82,10 @@ BDEPEND="
 DOCS=( AUTHORS docs/ChangeLog docs/NEWS.txt )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.18-drop-failing-tests.patch
-	"${FILESDIR}"/${PN}-0.4.18-program-suffix.patch
+	"${FILESDIR}"/${P}-drop-failing-tests.patch
+	"${FILESDIR}"/${P}-program-suffix.patch
 	"${FILESDIR}"/${P}-meson_cpu_detection.patch
+	"${FILESDIR}"/${P}-cltostring_force_utf8.patch
 )
 
 python_check_deps() {
