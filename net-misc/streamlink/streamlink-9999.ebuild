@@ -8,7 +8,7 @@ if [[ ${PV} = 9999* ]]; then
 	GIT_ECLASS="git-r3"
 fi
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='xml(+),threads(+)'
 DISTUTILS_SINGLE_IMPL=1
 
@@ -35,8 +35,6 @@ RDEPEND="
 	>=dev-python/urllib3-1.23[${PYTHON_USEDEP}]
 	dev-python/isodate[${PYTHON_USEDEP}]
 	dev-python/websocket-client[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/backports-shutil_which[${PYTHON_USEDEP}]' 'python2*')
-	$(python_gen_cond_dep 'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' 'python2*')
 	dev-python/pycountry[${PYTHON_USEDEP}]
 	>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]
 "
