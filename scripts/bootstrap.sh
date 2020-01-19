@@ -330,14 +330,15 @@ export USE="-* bootstrap ${ALLOWED_USE} ${BOOTSTRAP_USE}"
 if [ ${BOOTSTRAP_STAGE} -le 2 ] ; then
 	show_status 3 Emerging packages
 	if [[ ${RESUME} -eq 1 ]] ; then
+		STRAP_EMERGE_POSARGS=""
 		STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} --resume"
 		cp /var/run/bootstrap-mtimedb /var/cache/edb
 	else
-		STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} \
+		STRAP_EMERGE_POSARGS="\
 			${myOS_HEADERS} ${myTEXINFO} ${myGETTEXT} ${myBINUTILS} \
 			${myGCC} ${myLIBC} ${myBASELAYOUT} ${myZLIB}"
 	fi
-	${V_ECHO} emerge ${STRAP_EMERGE_OPTS} || cleanup 1
+	${V_ECHO} emerge ${STRAP_EMERGE_OPTS} ${STRAP_EMERGE_POSARGS} || cleanup 1
 	echo -------------------------------------------------------------------------------
 	set_bootstrap_stage 3
 fi
