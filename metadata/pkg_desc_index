@@ -1559,7 +1559,7 @@ app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.36.1 1.38.0: VM appliance disk image used in libguestfs package
-app-emulation/libpod 1.6.3-r2 1.6.4 1.7.0: Library and podman tool for running OCI-based containers in Pods
+app-emulation/libpod 1.6.4 1.7.0: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
 app-emulation/libvirt 5.2.0-r2 5.5.0-r1 5.6.0 5.8.0 5.10.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
@@ -8588,7 +8588,7 @@ dev-python/python-octaviaclient 1.4.0 1.8.0: A client for the OpenStack Zun API
 dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
 dev-python/python-openstackclient 3.18.1: A client for the OpenStack APIs
 dev-python/python-otrs 0.3.0: A programmatic interface to OTRS SOAP API
-dev-python/python-podman 0.12.1.2: A library for communicating with a Podman server
+dev-python/python-podman 0.12.1.2 1.6.0: A library to interact with a Podman server
 dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-poppler-qt5 0.24.2_p20170214: A python binding for libpoppler-qt5
 dev-python/python-prctl 1.7: Control process attributes through prctl
@@ -11127,7 +11127,7 @@ games-emulation/yabause 0.9.15: Sega Saturn emulator
 games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades
 games-emulation/zsnes 1.51-r7: SNES (Super Nintendo) emulator that uses x86 assembly
 games-engines/box2d 2.1.2 2.2.1 2.3.1: A C++ engine for simulating rigid bodies in 2D games
-games-engines/dMagnetic 0.19: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
+games-engines/dMagnetic 0.20: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
 games-engines/devilutionx 1.0.0-r1 9999: Diablo engine for modern operating systems
 games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating systems
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
@@ -17268,7 +17268,7 @@ sys-devel/binutils 2.26.1 2.27-r1 2.28.1 2.29.1-r1 2.30-r4 2.31.1-r6 2.32-r1 2.3
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5-r4 5.1-r1 5.2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.26.1 2.27 2.28 2.28.1 2.29 2.29.1-r1 2.30-r4 2.31.1-r6 2.32-r1 2.33.1: Tools necessary to build programs
-sys-devel/bison 3.1 3.3.2 3.4.2 3.5: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.1 3.3.2 3.4.2 3.5 3.5.1: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20170421 20170510 20170812: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 7.1.0 8.0.1 9.0.1 10.0.0.9999 11.0.0.9999: C language family frontend for LLVM
