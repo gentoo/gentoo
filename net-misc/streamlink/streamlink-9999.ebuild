@@ -11,6 +11,7 @@ fi
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='xml(+),threads(+)'
 DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 $GIT_ECLASS
 
@@ -43,7 +44,6 @@ RDEPEND="${DEPEND}
 	virtual/ffmpeg
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/docutils[${PYTHON_USEDEP}]
