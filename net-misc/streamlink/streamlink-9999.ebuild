@@ -5,6 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE='xml(+),threads(+)'
+DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 git-r3
 
@@ -18,25 +19,36 @@ SLOT="0"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/pycryptodome[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
+# >=urllib3-1.23 only needed for python2, but requests pulls some version anyways, so we might as well guarantee at least that ver for py3 too
+RDEPEND="
 	virtual/python-futures[${PYTHON_USEDEP}]
 	virtual/python-singledispatch[${PYTHON_USEDEP}]
-	dev-python/backports-shutil_which[$(python_gen_usedep 'python2*')]
+	>dev-python/requests-2.21.0[${PYTHON_USEDEP}]
+	>=dev-python/urllib3-1.23[${PYTHON_USEDEP}]
+	dev-python/isodate[${PYTHON_USEDEP}]
+	dev-python/websocket-client[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/backports-shutil_which[${PYTHON_USEDEP}]' 'python2*')
 	$(python_gen_cond_dep 'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' 'python2*')
 	dev-python/pycountry[${PYTHON_USEDEP}]
-	dev-python/websocket-client[${PYTHON_USEDEP}]
-	media-video/rtmpdump
-	virtual/ffmpeg"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+	>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]
+"
+DEPEND="${RDEPEND}
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/docutils[${PYTHON_USEDEP}]
+		dev-python/recommonmark[${PYTHON_USEDEP}]
 	)
 	test? (
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
-		${RDEPEND}
+		dev-python/mock[${PYTHON_USEDEP}]
+		dev-python/requests-mock[${PYTHON_USEDEP}]
+		dev-python/pytest[${PYTHON_USEDEP}]
+		dev-python/freezegun[${PYTHON_USEDEP}]
 	)"
+RDEPEND="${RDEPEND}
+	media-video/rtmpdump
+	virtual/ffmpeg
+"
 
 python_configure_all() {
 	# Avoid iso-639, iso3166 dependencies since we use pycountry.
