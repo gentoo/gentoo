@@ -14238,7 +14238,7 @@ net-analyzer/nrpe 3.2.1-r1 3.2.1-r3: Nagios Remote Plugin Executor
 net-analyzer/nsat 1.5-r5: Network Security Analysis Tool, an application-level network security scanner
 net-analyzer/nsca 2.7.2-r103: Nagios Service Check Acceptor
 net-analyzer/nstats 0.4-r2 0.4-r3: Displays statistics about ethernet traffic including protocol breakdown
-net-analyzer/ntopng 3.8-r1 3.8.1-r2: Network traffic analyzer with web interface
+net-analyzer/ntopng 3.8-r1 3.8.1-r3: Network traffic analyzer with web interface
 net-analyzer/nttcp 1.47-r1 1.47-r3: tool to test TCP and UDP throughput
 net-analyzer/nuttcp 8.1.4: Network performance measurement tool
 net-analyzer/odhcploc 20111021-r1: Open DHCP Locator
@@ -14902,7 +14902,7 @@ net-misc/AQtion 2.2.7 2.3.1: Aquantia AQC multigigabit NIC linux driver (atlanti
 net-misc/adjtimex 1.29-r2: display or set the kernel time variables
 net-misc/aget 0.4.1-r2: multithreaded HTTP download accelerator
 net-misc/aggregate 1.6: Perform two optimisations on a list of prefixes to reduce the length of the list
-net-misc/anydesk 5.0.0 5.1.2 5.5.0-r1 5.5.1: Feature rich multi-platform remote desktop application
+net-misc/anydesk 5.5.0-r1 5.5.1: Feature rich multi-platform remote desktop application
 net-misc/apt-cacher-ng 3.3_p2 3.3.1_p1 9999999: Yet another caching HTTP proxy for Debian/Ubuntu software packages
 net-misc/aria2 1.34.0-r2: A download utility with segmented downloading with BitTorrent support
 net-misc/arpd 0.2-r1: ARP server claiming all unassigned addresses (for network monitoring/simulation)
@@ -14968,7 +14968,7 @@ net-misc/dleyna-server 0.5.0: library for implementing services that allow clien
 net-misc/dmr_utils 9999: Python utilities for working with DMR
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2017.75 2018.76 2019.78: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 83.4.152 88.4.172 89.3.268: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 89.3.268: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0 1.6.0-r1 19: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
