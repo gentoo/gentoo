@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Zac Medico <zmedico@gentoo.org> (2020-01-19)
+# This package has been replaced by dev-python/python-podman and has
+# no reverse dependencies.
+# Removal in 30 days.  Bug #705826.
+dev-python/pypodman
+
 # David Seifert <soap@gentoo.org> (2020-01-18)
 # Leftover from silc* removal (#522916), unmaintained, no
 # upstream releases since 2014, no revdeps, EAPI-4.
