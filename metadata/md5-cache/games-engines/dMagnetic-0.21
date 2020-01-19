@@ -5,6 +5,6 @@ HOMEPAGE=https://www.dettus.net/dMagnetic/
 KEYWORDS=~amd64 ~arm ~m68k ~x86
 LICENSE=BSD-2
 SLOT=0
-SRC_URI=https://www.dettus.net/dMagnetic/dMagnetic_0.20.tar.bz2
+SRC_URI=https://www.dettus.net/dMagnetic/dMagnetic_0.21.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b0bf87602d71da3871aa5d3ef8de826f

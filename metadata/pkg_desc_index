@@ -11127,7 +11127,7 @@ games-emulation/yabause 0.9.15: Sega Saturn emulator
 games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades
 games-emulation/zsnes 1.51-r7: SNES (Super Nintendo) emulator that uses x86 assembly
 games-engines/box2d 2.1.2 2.2.1 2.3.1: A C++ engine for simulating rigid bodies in 2D games
-games-engines/dMagnetic 0.20: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
+games-engines/dMagnetic 0.21: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
 games-engines/devilutionx 1.0.0-r1 9999: Diablo engine for modern operating systems
 games-engines/exult 9999: an Ultima 7 game engine that runs on modern operating systems
 games-engines/frobtads 1.2.3-r1 1.2.4: Curses-based interpreter and dev tools for TADS 2 and TADS 3 text adventures
@@ -13800,7 +13800,7 @@ media-sound/sidplay 2.0.9-r1: C64 SID player
 media-sound/sidplayfp 1.4.4: Sidplay2 fork with resid-fp
 media-sound/smixer 1.0.4: command-line tool for setting and viewing mixer settings
 media-sound/snapcast 0.15.0-r1 9999: Synchronous multi-room audio player
-media-sound/snd 17.4: Snd is a sound editor
+media-sound/snd 17.4-r1: Snd is a sound editor
 media-sound/sndfile-tools 1.03-r1 1.04 9999: A small collection of programs that use libsndfile
 media-sound/sndpeek 1.4: real-time audio visualization
 media-sound/solfege 3.22.2: GNU Solfege is a program written to help you practice ear training
