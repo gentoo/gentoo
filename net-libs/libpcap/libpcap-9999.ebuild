@@ -13,13 +13,14 @@ HOMEPAGE="
 
 LICENSE="BSD"
 SLOT="0"
-IUSE="bluetooth dbus netlink -remote static-libs usb -yydebug"
+IUSE="bluetooth dbus netlink rdma -remote static-libs usb -yydebug"
 KEYWORDS=""
 
 RDEPEND="
 	bluetooth? ( net-wireless/bluez:=[${MULTILIB_USEDEP}] )
 	dbus? ( sys-apps/dbus[${MULTILIB_USEDEP}] )
 	netlink? ( dev-libs/libnl:3[${MULTILIB_USEDEP}] )
+	rdma? ( sys-cluster/rdma-core )
 	usb? ( virtual/libusb:1[${MULTILIB_USEDEP}] )
 "
 DEPEND="
@@ -45,6 +46,7 @@ multilib_src_configure() {
 	econf \
 		$(use_enable bluetooth) \
 		$(use_enable dbus) \
+		$(use_enable rdma) \
 		$(use_enable remote) \
 		$(use_enable usb) \
 		$(use_enable yydebug) \
