@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info linux-mod eutils
+inherit linux-info linux-mod
 
 DESCRIPTION="r8168 driver for Realtek 8111/8168 PCI-E NICs"
 HOMEPAGE="https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software"
@@ -23,10 +23,6 @@ BUILD_TARGETS="modules"
 CONFIG_CHECK="!R8169"
 ERROR_R8169="${P} requires Realtek 8169 PCI Gigabit Ethernet adapter (CONFIG_R8169) to be DISABLED"
 
-PATCHES=(
-	"${FILESDIR}"/linux-5.4.patch
-)
-
 pkg_setup() {
 	linux-mod_pkg_setup
 	BUILD_PARAMS="KERNELDIR=${KV_DIR}"
@@ -34,5 +30,5 @@ pkg_setup() {
 
 src_install() {
 	linux-mod_src_install
-	dodoc README
+	einstalldocs
 }
