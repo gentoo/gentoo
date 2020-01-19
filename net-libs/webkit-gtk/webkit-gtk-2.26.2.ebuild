@@ -203,7 +203,7 @@ src_configure() {
 	local rubyimpl
 	local ruby_interpreter=""
 	for rubyimpl in ${USE_RUBY}; do
-		if has_version "virtual/rubygems[ruby_targets_${rubyimpl}]"; then
+		if has_version --host-root "virtual/rubygems[ruby_targets_${rubyimpl}]"; then
 			ruby_interpreter="-DRUBY_EXECUTABLE=$(type -P ${rubyimpl})"
 		fi
 	done
