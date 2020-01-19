@@ -8,7 +8,7 @@ inherit qmake-utils
 
 DESCRIPTION="Multi-platform helper library for other libraries"
 HOMEPAGE="https://www.aquamaniac.de/sites/aqbanking/index.php"
-SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/233/${MY_P}.tar.gz"
+SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/234/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/79" # correspond with libgwenhywfar.so version

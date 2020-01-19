@@ -7,7 +7,7 @@ MY_P="${P/_beta/beta}"
 
 DESCRIPTION="Generic Online Banking Interface"
 HOMEPAGE="https://www.aquamaniac.de/sites/aqbanking/index.php"
-SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/232/${MY_P}.tar.gz"
+SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/238/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
