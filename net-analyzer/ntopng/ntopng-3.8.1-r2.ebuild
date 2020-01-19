@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ DEPEND="
 	dev-libs/openssl
 	net-analyzer/rrdtool
 	net-libs/libpcap
-	net-libs/zeromq:=
+	>=net-libs/zeromq-3:=
 	net-misc/curl
 	sys-libs/libcap
 	sys-libs/zlib
