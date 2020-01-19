@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools elisp-common latex-package multilib python-r1
+inherit autotools elisp-common latex-package python-r1
 
 DESCRIPTION="A vector graphics language that provides a framework for technical drawing"
 HOMEPAGE="http://asymptote.sourceforge.net/"
