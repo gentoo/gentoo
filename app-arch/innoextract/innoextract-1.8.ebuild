@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A tool to unpack installers created by Inno Setup"
 HOMEPAGE="https://constexpr.org/innoextract/"
@@ -29,5 +29,5 @@ src_configure() {
 		-DWITH_CONV=$(usex iconv iconv builtin)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

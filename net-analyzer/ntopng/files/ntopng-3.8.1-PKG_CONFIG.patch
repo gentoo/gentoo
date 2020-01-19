@@ -81,15 +81,15 @@
  	else
  		ZEROMQ_LIB = $(ZMQ_STATIC)
  	endif
-@@ -107,9 +107,9 @@
+@@ -106,11 +106,6 @@
+ 	ZEROMQ_INC=-I$(ZEROMQ_HOME)/include
  	ZEROMQ_LIB=$(ZEROMQ_HOME)/.libs/libzmq.a
   endif
- 
+-
 - HAS_ZSTD=$(shell pkg-config --exists libzstd; echo $$?)
-+ HAS_ZSTD=$(shell $(PKG_CONFIG) --exists libzstd; echo $$?)
-  ifeq ($(HAS_ZSTD), 0)
+- ifeq ($(HAS_ZSTD), 0)
 -	ZSTD_LIB = $(shell pkg-config --libs libzstd)
-+	ZSTD_LIB = $(shell $(PKG_CONFIG) --libs libzstd)
-  endif
+- endif
  endif
  
+ ######
