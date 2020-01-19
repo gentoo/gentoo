@@ -43,7 +43,7 @@ python_prepare_all() {
 	# https://bugs.gentoo.org/692822
 	sed -i -e 's/test_pch_with_address_sanitizer/_&/' run_unittests.py || die
 
-	# Requires python2
+	# Broken due to python2 script created by python_wrapper_setup
 	rm -r "test cases/frameworks/1 boost" || die
 
 	distutils-r1_python_prepare_all
