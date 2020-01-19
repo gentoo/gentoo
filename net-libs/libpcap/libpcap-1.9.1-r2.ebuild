@@ -55,6 +55,7 @@ multilib_src_configure() {
 		$(use_enable usb) \
 		$(use_enable yydebug) \
 		$(use_with netlink libnl) \
+		--disable-rdma \
 		--enable-ipv6
 }
 
