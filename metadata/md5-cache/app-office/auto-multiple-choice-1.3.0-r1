@@ -1,7 +1,8 @@
+BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DEFINED_PHASES=compile install postinst postrm prepare
-DEPEND=app-text/texlive[dvi2tty,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,publishers] app-text/poppler:= dev-perl/XML-LibXML media-libs/netpbm media-libs/opencv l10n_fr? ( app-text/texlive[l10n_fr] ) l10n_ja? ( app-text/texlive[l10n_ja] ) app-text/dblatex app-text/docbook-xml-simple-dtd:* app-text/docbook-xsl-stylesheets virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DEPEND=app-text/texlive[dvi2tty,extra,graphics,png,pstricks,science,truetype,xml,X,luatex,xetex,humanities,publishers] app-text/poppler:= dev-perl/XML-LibXML media-libs/netpbm media-libs/opencv l10n_fr? ( app-text/texlive[l10n_fr] ) l10n_ja? ( app-text/texlive[l10n_ja] ) app-text/dblatex app-text/docbook-xml-simple-dtd:* app-text/docbook-xsl-stylesheets
 DESCRIPTION=Create and manage multiple choice questionnaries, including automated marking
-EAPI=6
+EAPI=7
 HOMEPAGE=http://home.gna.org/auto-qcm/
 IUSE=l10n_ar l10n_es l10n_fr l10n_ja
 KEYWORDS=~amd64 ~x86
@@ -10,4 +11,4 @@ RDEPEND=app-text/texlive[dvi2tty,extra,graphics,png,pstricks,science,truetype,xm
 SLOT=0
 SRC_URI=http://download.gna.org/auto-qcm/auto-multiple-choice_1.3.0_sources.tar.gz
 _eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=23929485d68efe159fc76f89cb190627
+_md5_=3cab963e09289b2e02d2f322c1329d96

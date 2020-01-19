@@ -1,13 +1,14 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup unpack
-DEPEND=virtual/latex-base dev-java/pdfbox:1.8 dev-java/fontbox:1.7 app-arch/unzip >=virtual/jdk-1.6 virtual/latex-base >=sys-apps/texinfo-4.2-r5 >=dev-java/java-config-2.2.0-r3 >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+BDEPEND=app-arch/unzip virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
+DEPEND=virtual/latex-base dev-java/pdfbox:1.8 dev-java/fontbox:1.7 >=virtual/jdk-1.6 >=dev-java/java-config-2.2.0-r3 >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=Extract annotations from pdf files
-EAPI=5
+EAPI=7
 HOMEPAGE=http://www.ctan.org/tex-archive/macros/latex/contrib/pax/
 IUSE=elibc_FreeBSD elibc_FreeBSD
 KEYWORDS=amd64 ~arm64 ppc64 x86 ~x64-macos
 LICENSE=GPL-2
-RDEPEND=virtual/latex-base dev-java/pdfbox:1.8 dev-java/fontbox:1.7 virtual/perl-Getopt-Long dev-perl/File-Which >=virtual/jre-1.6 !<=dev-texlive/texlive-latexextra-2010 virtual/latex-base >=dev-java/java-config-2.2.0-r3
+RDEPEND=virtual/perl-Getopt-Long dev-perl/File-Which >=virtual/jre-1.6 virtual/latex-base >=dev-java/java-config-2.2.0-r3
 SLOT=0
 SRC_URI=mirror://gentoo/pdfannotextractor-0.1l.zip
-_eclasses_=base	2ec5c64f5de125f0c65a927c4c128fef	desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	latex-package	17f13abe0de88340745e52e6b627aee7	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=f26eda61049851a602862320d29a3735
+_eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	latex-package	17f13abe0de88340745e52e6b627aee7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=4091bc1782dbf2bb19a38504e9ed7928
