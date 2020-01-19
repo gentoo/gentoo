@@ -6,6 +6,7 @@
     <name>Python</name>
   </maintainer>
   <upstream>
+    <remote-id type="github">b45ch1/algopy</remote-id>
     <remote-id type="pypi">algopy</remote-id>
   </upstream>
 </pkgmetadata>
