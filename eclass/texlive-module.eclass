@@ -97,14 +97,14 @@ for i in ${TEXLIVE_MODULE_CONTENTS}; do
 done
 
 # Forge doc SRC_URI
-[ -n "${TEXLIVE_MODULE_DOC_CONTENTS}" ] && SRC_URI="${SRC_URI} doc? ("
+[[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} doc? ("
 for i in ${TEXLIVE_MODULE_DOC_CONTENTS}; do
 	SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
 done
-[ -n "${TEXLIVE_MODULE_DOC_CONTENTS}" ] && SRC_URI="${SRC_URI} )"
+[[ -n ${TEXLIVE_MODULE_DOC_CONTENTS} ]] && SRC_URI="${SRC_URI} )"
 
 # Forge source SRC_URI
-if [ -n "${TEXLIVE_MODULE_SRC_CONTENTS}" ] ; then
+if [[ -n ${TEXLIVE_MODULE_SRC_CONTENTS} ]] ; then
 	SRC_URI="${SRC_URI} source? ("
 	for i in ${TEXLIVE_MODULE_SRC_CONTENTS}; do
 		SRC_URI="${SRC_URI} mirror://gentoo/texlive-module-${i}-${PV}.${PKGEXT}"
@@ -122,7 +122,7 @@ IUSE="${IUSE} doc"
 # A space separated list of Tex engines that can be made optional.
 # e.g. "luatex luajittex"
 
-if [ -n "${TEXLIVE_MODULE_OPTIONAL_ENGINE}" ] ; then
+if [[ -n ${TEXLIVE_MODULE_OPTIONAL_ENGINE} ]] ; then
 	for engine in ${TEXLIVE_MODULE_OPTIONAL_ENGINE} ; do
 		IUSE="${IUSE} +${engine}"
 	done
@@ -143,7 +143,7 @@ texlive-module_src_unpack() {
 	grep RELOC tlpkg/tlpobj/* | awk '{print $2}' | sed 's#^RELOC/##' > "${T}/reloclist"
 	{ for i in $(<"${T}/reloclist"); do  dirname $i; done; } | uniq > "${T}/dirlist"
 	for i in $(<"${T}/dirlist"); do
-		[ -d "${RELOC_TARGET}/${i}" ] || mkdir -p "${RELOC_TARGET}/${i}"
+		[[ -d ${RELOC_TARGET}/${i} ]] || mkdir -p "${RELOC_TARGET}/${i}"
 	done
 	for i in $(<"${T}/reloclist"); do
 		mv "${i}" "${RELOC_TARGET}"/$(dirname "${i}") || die "failed to relocate ${i} to ${RELOC_TARGET}/$(dirname ${i})"
@@ -161,13 +161,13 @@ texlive-module_add_format() {
 	local name engine mode patterns options
 	eval $@
 	einfo "Appending to format.${PN}.cnf for $@"
-	[ -d texmf-dist/fmtutil ] || mkdir -p texmf-dist/fmtutil
-	[ -f texmf-dist/fmtutil/format.${PN}.cnf ] || { echo "# Generated for ${PN}	by texlive-module.eclass" > texmf-dist/fmtutil/format.${PN}.cnf; }
-	[ -n "${TEXLIVE_MODULE_OPTIONAL_ENGINE}" ] && has ${engine} ${TEXLIVE_MODULE_OPTIONAL_ENGINE} && use !${engine} && mode="disabled"
-	if [ "${mode}" = "disabled" ]; then
+	[[ -d texmf-dist/fmtutil ]] || mkdir -p texmf-dist/fmtutil
+	[[ -f texmf-dist/fmtutil/format.${PN}.cnf ]] || { echo "# Generated for ${PN}	by texlive-module.eclass" > texmf-dist/fmtutil/format.${PN}.cnf; }
+	[[ -n "${TEXLIVE_MODULE_OPTIONAL_ENGINE}" ]] && has ${engine} ${TEXLIVE_MODULE_OPTIONAL_ENGINE} && use !${engine} && mode="disabled"
+	if [[ ${mode} = disabled ]]; then
 		printf "#! " >> texmf-dist/fmtutil/format.${PN}.cnf
 	fi
-	[ -z "${patterns}" ] && patterns="-"
+	[[ -z ${patterns} ]] && patterns="-"
 	printf "${name}\t${engine}\t${patterns}\t${options}\n" >> texmf-dist/fmtutil/format.${PN}.cnf
 }
 
@@ -180,10 +180,10 @@ texlive-module_make_language_def_lines() {
 	local lefthyphenmin righthyphenmin synonyms name file file_patterns file_exceptions luaspecial
 	eval $@
 	einfo "Generating language.def entry for $@"
-	[ -z "$lefthyphenmin" ] && lefthyphenmin="2"
-	[ -z "$righthyphenmin" ] && righthyphenmin="3"
+	[[ -z ${lefthyphenmin} ]] && lefthyphenmin="2"
+	[[ -z ${righthyphenmin} ]] && righthyphenmin="3"
 	echo "\\addlanguage{$name}{$file}{}{$lefthyphenmin}{$righthyphenmin}" >> "${S}/language.${PN}.def"
-	if [ -n "$synonyms" ] ; then
+	if [[ -n ${synonyms} ]] ; then
 		for i in $(echo $synonyms | tr ',' ' ') ; do
 			einfo "Generating language.def synonym $i for $@"
 			echo "\\addlanguage{$i}{$file}{}{$lefthyphenmin}{$righthyphenmin}" >> "${S}/language.${PN}.def"
@@ -201,10 +201,10 @@ texlive-module_make_language_dat_lines() {
 	eval $@
 	einfo "Generating language.dat entry for $@"
 	echo "$name $file" >> "${S}/language.${PN}.dat"
-	if [ -n "$synonyms" ] ; then
-		for i in $(echo $synonyms | tr ',' ' ') ; do
-			einfo "Generating language.dat synonym $i for $@"
-			echo "=$i" >> "${S}/language.${PN}.dat"
+	if [[ -n ${synonyms} ]] ; then
+		for i in $(echo ${synonyms} | tr ',' ' ') ; do
+			einfo "Generating language.dat synonym ${i} for $@"
+			echo "=${i}" >> "${S}/language.${PN}.dat"
 		done
 	fi
 }
@@ -217,7 +217,7 @@ texlive-module_make_language_dat_lines() {
 texlive-module_synonyms_to_language_lua_line() {
 	local prev=""
 	for i in $(echo $@ | tr ',' ' ') ; do
-		printf "${prev} '%s'" $i
+		printf "${prev} '%s'" ${i}
 		prev=","
 	done
 }
@@ -233,16 +233,16 @@ texlive-module_make_language_lua_lines() {
 	local lefthyphenmin righthyphenmin synonyms name file file_patterns file_exceptions luaspecial
 	local dest="${S}/language.${PN}.dat.lua"
 	eval $@
-	[ -z "$lefthyphenmin"  ] && lefthyphenmin="2"
-	[ -z "$righthyphenmin" ] && righthyphenmin="3"
+	[[ -z ${lefthyphenmin}  ]] && lefthyphenmin="2"
+	[[ -z $righthyphenmin ]] && righthyphenmin="3"
 	einfo "Generating language.dat.lua entry for $@"
 	printf "\t['%s'] = {\n" "$name"                                                                 >> "$dest"
 	printf "\t\tloader = '%s',\n" "$file"                                                           >> "$dest"
 	printf "\t\tlefthyphenmin = %s,\n\t\trighthyphenmin = %s,\n" "$lefthyphenmin" "$righthyphenmin" >> "$dest"
 	printf "\t\tsynonyms = {%s },\n" "$(texlive-module_synonyms_to_language_lua_line "$synonyms")"  >> "$dest"
-	[ -n "$file_patterns"   ] && printf "\t\tpatterns = '%s',\n" "$file_patterns"                   >> "$dest"
-	[ -n "$file_exceptions" ] && printf "\t\thyphenation = '%s',\n"	"$file_exceptions"              >> "$dest"
-	[ -n "$luaspecial"      ] && printf "\t\tspecial = '%s',\n" "$luaspecial"                       >> "$dest"
+	[[ -n ${file_patterns}   ]] && printf "\t\tpatterns = '%s',\n" "$file_patterns"                   >> "$dest"
+	[[ -n ${file_exceptions} ]] && printf "\t\thyphenation = '%s',\n"	"$file_exceptions"              >> "$dest"
+	[[ -n ${luaspecial}      ]] && printf "\t\tspecial = '%s',\n" "$luaspecial"                       >> "$dest"
 	printf "\t},\n"                                                                                 >> "$dest"
 }
 
@@ -304,10 +304,10 @@ texlive-module_src_compile() {
 
 	# Build format files
 	for i in texmf-dist/fmtutil/format*.cnf; do
-		if [ -f "${i}" ]; then
+		if [[ -f ${i} ]]; then
 			einfo "Building format ${i}"
-			[ -d texmf-var ] || mkdir texmf-var
-			[ -d texmf-var/web2c ] || mkdir texmf-var/web2c
+			[[ -d texmf-var ]] || mkdir texmf-var
+			[[ -d texmf-var/web2c ]] || mkdir texmf-var/web2c
 			VARTEXFONTS="${T}/fonts" TEXMFHOME="${S}/texmf:${S}/texmf-dist:${S}/texmf-var"\
 				env -u TEXINPUTS $fmt_call --cnffile "${i}" --fmtdir "${S}/texmf-var/web2c" --all\
 				|| die "failed to build format ${i}"
@@ -326,50 +326,50 @@ texlive-module_src_compile() {
 
 texlive-module_src_install() {
 	for i in texmf-dist/fmtutil/format*.cnf; do
-		[ -f "${i}" ] && etexlinks "${i}"
+		[[ -f ${i} ]] && etexlinks "${i}"
 	done
 
 	dodir /usr/share
 	if use doc; then
-		[ -d texmf-doc ] && cp -pR texmf-doc "${ED}/usr/share/"
+		[[ -d texmf-doc ]] && cp -pR texmf-doc "${ED}/usr/share/"
 	else
-		[ -d texmf/doc ] && rm -rf texmf/doc
-		[ -d texmf-dist/doc ] && rm -rf texmf-dist/doc
+		[[ -d texmf/doc ]] && rm -rf texmf/doc
+		[[ -d texmf-dist/doc ]] && rm -rf texmf-dist/doc
 	fi
 
-	[ -d texmf ] && cp -pR texmf "${ED}/usr/share/"
-	[ -d texmf-dist ] && cp -pR texmf-dist "${ED}/usr/share/"
-	[ -d tlpkg ] && use source && cp -pR tlpkg "${ED}/usr/share/"
+	[[ -d texmf ]] && cp -pR texmf "${ED}/usr/share/"
+	[[ -d texmf-dist ]] && cp -pR texmf-dist "${ED}/usr/share/"
+	[[ -d tlpkg ]] && use source && cp -pR tlpkg "${ED}/usr/share/"
 
 	insinto /var/lib/texmf
-	[ -d texmf-var ] && doins -r texmf-var/*
+	[[ -d texmf-var ]] && doins -r texmf-var/*
 
 	insinto /etc/texmf/updmap.d
-	[ -f "${S}/${PN}.cfg" ] && doins "${S}/${PN}.cfg"
+	[[ -f ${S}/${PN}.cfg ]] && doins "${S}/${PN}.cfg"
 	insinto /etc/texmf/dvips.d
-	[ -f "${S}/${PN}-config.ps" ] && doins "${S}/${PN}-config.ps"
+	[[ -f ${S}/${PN}-config.ps ]] && doins "${S}/${PN}-config.ps"
 	insinto /etc/texmf/dvipdfm/config
-	[ -f "${S}/${PN}-config" ] && doins "${S}/${PN}-config"
+	[[ -f ${S}/${PN}-config ]] && doins "${S}/${PN}-config"
 
-	if [ -f "${S}/language.${PN}.def" ] ; then
+	if [[ -f ${S}/language.${PN}.def ]] ; then
 		insinto /etc/texmf/language.def.d
 		doins "${S}/language.${PN}.def"
 	fi
 
-	if [ -f "${S}/language.${PN}.dat" ] ; then
+	if [[ -f ${S}/language.${PN}.dat ]] ; then
 		insinto /etc/texmf/language.dat.d
 		doins "${S}/language.${PN}.dat"
 	fi
 
-	if [ -f "${S}/language.${PN}.dat.lua" ] ; then
+	if [[ -f ${S}/language.${PN}.dat.lua ]] ; then
 		insinto /etc/texmf/language.dat.lua.d
 		doins "${S}/language.${PN}.dat.lua"
 	fi
 
-	[ -n "${TEXLIVE_MODULE_BINSCRIPTS}" ] && dobin_texmf_scripts ${TEXLIVE_MODULE_BINSCRIPTS}
-	if [ -n "${TEXLIVE_MODULE_BINLINKS}" ] ; then
+	[[ -n ${TEXLIVE_MODULE_BINSCRIPTS} ]] && dobin_texmf_scripts ${TEXLIVE_MODULE_BINSCRIPTS}
+	if [[ -n ${TEXLIVE_MODULE_BINLINKS} ] ; then
 		for i in ${TEXLIVE_MODULE_BINLINKS} ; do
-			[ -f "${ED}/usr/bin/${i%:*}" ] || die "Trying to install an invalid	BINLINK. This should not happen. Please file a bug."
+			[[ -f "${ED}/usr/bin/${i%:*} ]] || die "Trying to install an invalid BINLINK. This should not happen. Please file a bug."
 			dosym ${i%:*} /usr/bin/${i#*:}
 		done
 	fi
@@ -386,7 +386,7 @@ texlive-module_src_install() {
 
 texlive-module_pkg_postinst() {
 	etexmf-update
-	[ -n "${TL_MODULE_INFORMATION}" ] && elog "${TL_MODULE_INFORMATION}"
+	[[ -n ${TL_MODULE_INFORMATION} ]] && elog "${TL_MODULE_INFORMATION}"
 }
 
 # @FUNCTION: texlive-module_pkg_postrm

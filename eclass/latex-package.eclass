@@ -127,10 +127,10 @@ latex-package_src_doinstall() {
 				if ! in_iuse doc || use doc ; then
 					for i in `find . -maxdepth 1 -type f -name "*.${1}"`
 					do
-						[[-n ${LATEX_PACKAGE_SKIP} ]] && has ${i##*/} ${LATEX_PACKAGE_SKIP} && continue
+						[[ -n ${LATEX_PACKAGE_SKIP} ]] && has ${i##*/} ${LATEX_PACKAGE_SKIP} && continue
 						einfo "Making documentation: ${i}"
-						if pdflatex ${LATEX_DOC_ARGUMENTS} --halt-on-error --interaction=nonstopmode $i ; then
-							pdflatex ${LATEX_DOC_ARGUMENTS} --halt-on-error --interaction=nonstopmode $i || die
+						if pdflatex ${LATEX_DOC_ARGUMENTS} --halt-on-error --interaction=nonstopmode ${i} ; then
+							pdflatex ${LATEX_DOC_ARGUMENTS} --halt-on-error --interaction=nonstopmode ${i} || die
 						else
 							einfo "pdflatex failed, trying texi2dvi"
 							texi2dvi -q -c --language=latex ${i} || die
