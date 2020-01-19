@@ -11,7 +11,7 @@ SRC_URI="https://github.com/eXeC64/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="MIT-with-advertising"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="X +freeimage jpeg libnsgif png +svg test tiff wayland"
+IUSE="X +freeimage jpeg png +svg test tiff wayland"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	|| ( X wayland )
@@ -23,6 +23,7 @@ RDEPEND="
 	media-libs/libsdl2
 	media-libs/sdl2-ttf
 	X? (
+		virtual/glu
 		x11-libs/libX11
 		x11-libs/libxcb
 		x11-libs/libxkbcommon
@@ -30,7 +31,6 @@ RDEPEND="
 	)
 	freeimage? ( media-libs/freeimage )
 	jpeg? ( media-libs/libjpeg-turbo )
-	libnsgif? ( media-libs/libnsgif )
 	png? ( media-libs/libpng )
 	svg? ( gnome-base/librsvg )
 	tiff? ( media-libs/tiff )
@@ -67,7 +67,6 @@ src_configure() {
 	BACKENDS=(
 		BACKEND_FREEIMAGE=$(usex freeimage)
 		BACKEND_JPEG=$(usex jpeg)
-		BACKEND_LIBNSGIF=$(usex libnsgif)
 		BACKEND_LIBPNG=$(usex png)
 		BACKEND_LIBRSVG=$(usex svg)
 		BACKEND_LIBTIFF=$(usex tiff)
