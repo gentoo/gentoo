@@ -49,7 +49,11 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/automake-1.16.1-py3-compile.patch
 	"${FILESDIR}"/automake-1.16.1-py3-no-pyo-files.patch
+	"${FILESDIR}"/automake-1.16.1-py3-pep3147.patch
+	"${FILESDIR}"/automake-1.16.1-py3-pep3147-cmdline.patch
+	"${FILESDIR}"/automake-1.16.1-py3-compile-test.patch
 )
+# All three patches have been submitted upstream and ignored there.
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
