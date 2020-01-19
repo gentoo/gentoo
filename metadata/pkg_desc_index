@@ -14725,7 +14725,7 @@ net-libs/libosmo-dsp 0.3 9999: A library with SDR DSP primitives
 net-libs/libosmo-netif 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libosmocore 0.8.0 0.10.2 9999: Utility functions for OsmocomBB, OpenBSC and related projects
 net-libs/libotr 4.1.1: (OTR) Messaging allows you to have private conversations over instant messaging
-net-libs/libpcap 1.9.1 1.9.1-r1 1.9.1-r2 9999: A system-independent library for user-level network packet capture
+net-libs/libpcap 1.9.1 1.9.1-r2 1.9.1-r3 9999: A system-independent library for user-level network packet capture
 net-libs/libpcapnav 0.8: Libpcap wrapper library to navigate to arbitrary packets in a tcpdump trace file
 net-libs/libpri 1.4.12-r2 1.4.15 1.5.0 1.6.0: Primary Rate ISDN (PRI) library
 net-libs/libprotoident 2.0.12 2.0.13 2.0.14_p1 9999: A library that performs application layer protocol identification for flows
@@ -18010,7 +18010,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.3.1 5.3.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 79.0.3945.117 79.0.3945.130 80.0.3987.53: Open-source version of Google Chrome web browser
+www-client/chromium 79.0.3945.130 80.0.3987.53: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.5 3.32.6: GNOME webbrowser based on Webkit
