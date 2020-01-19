@@ -1,0 +1,81 @@
+From 59923ad85d1a1cf2216a4f14649702d24d3f2360 Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Sat, 2 Nov 2019 06:55:54 +0100
+Subject: [PATCH 1/2] iwd: add some missing error handling
+
+g_dbus_object_manager_get_interface() can happily return NULL and we
+need to check for that.
+---
+ src/devices/wifi/nm-iwd-manager.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/src/devices/wifi/nm-iwd-manager.c b/src/devices/wifi/nm-iwd-manager.c
+index dd1cad480..e83f8063c 100644
+--- a/src/devices/wifi/nm-iwd-manager.c
++++ b/src/devices/wifi/nm-iwd-manager.c
+@@ -136,6 +136,11 @@ agent_dbus_method_cb (GDBusConnection *connection,
+ 	network = g_dbus_object_manager_get_interface (priv->object_manager,
+ 	                                               network_path,
+ 	                                               NM_IWD_NETWORK_INTERFACE);
++	if (!network) {
++		_LOGE ("unable to find the network object");
++		return;
++	}
++
+ 
+ 	device_path = get_property_string_or_null (G_DBUS_PROXY (network), "Device");
+ 	if (!device_path) {
+@@ -260,6 +265,11 @@ register_agent (NMIwdManager *self)
+ 	                                                     "/",
+ 	                                                     NM_IWD_AGENT_MANAGER_INTERFACE);
+ 
++	if (!agent_manager) {
++		_LOGE ("unable to register the IWD Agent: PSK/8021x Wi-Fi networks may not work");
++		return;
++	}
++
+ 	/* Register our agent */
+ 	g_dbus_proxy_call (G_DBUS_PROXY (agent_manager),
+ 	                   "RegisterAgent",
+-- 
+2.20.1
+
+
+From 186d22a9634e2bf94658ed6f1cf2b332ecb3a32c Mon Sep 17 00:00:00 2001
+From: Lubomir Rintel <lkundrak@v3.sk>
+Date: Sat, 2 Nov 2019 07:01:28 +0100
+Subject: [PATCH 2/2] iwd: unbreak iwd-1.0
+
+The upstream apparently thought it's a great idea to change the agent
+manager path. This fixes things for those unfortunate enough to run
+IWD.
+---
+ src/devices/wifi/nm-iwd-manager.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/src/devices/wifi/nm-iwd-manager.c b/src/devices/wifi/nm-iwd-manager.c
+index e83f8063c..470cb1c90 100644
+--- a/src/devices/wifi/nm-iwd-manager.c
++++ b/src/devices/wifi/nm-iwd-manager.c
+@@ -262,9 +262,17 @@ register_agent (NMIwdManager *self)
+ 	GDBusInterface *agent_manager;
+ 
+ 	agent_manager = g_dbus_object_manager_get_interface (priv->object_manager,
+-	                                                     "/",
++	                                                     "/net/connman/iwd",
+ 	                                                     NM_IWD_AGENT_MANAGER_INTERFACE);
+ 
++	if (!agent_manager) {
++		/* IWD prior to 1.0 dated 30 October, 2019 has the agent manager on a
++		 * different path. */
++		agent_manager = g_dbus_object_manager_get_interface (priv->object_manager,
++		                                                     "/",
++		                                                     NM_IWD_AGENT_MANAGER_INTERFACE);
++	}
++
+ 	if (!agent_manager) {
+ 		_LOGE ("unable to register the IWD Agent: PSK/8021x Wi-Fi networks may not work");
+ 		return;
+-- 
+2.20.1
+
