@@ -4,7 +4,7 @@ DESCRIPTION=A JavaScript runtime built on Chrome's V8 JavaScript engine
 EAPI=6
 HOMEPAGE=https://nodejs.org/
 IUSE=cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test
-KEYWORDS=amd64 arm arm64 ppc ppc64 x86 ~amd64-linux ~x64-macos
+KEYWORDS=arm ppc ppc64 ~amd64-linux ~x64-macos
 LICENSE=Apache-1.1 Apache-2.0 BSD BSD-2 MIT
 RDEPEND=>=dev-libs/libuv-1.19.2:= >=net-libs/http-parser-2.8.0:= >=net-libs/nghttp2-1.32.0 sys-libs/zlib icu? ( >=dev-libs/icu-60.1:= ) ssl? ( >=dev-libs/openssl-1.0.2n:0=[-bindist] )
 REQUIRED_USE=inspector? ( icu ssl ) npm? ( ssl )
@@ -12,4 +12,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://nodejs.org/dist/v8.12.0/node-v8.12.0.tar.xz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=53a5a125d94e120e3fd46c0fe5b8ce82
+_md5_=b35535f9a22b969dc1d5becb9be6437f
