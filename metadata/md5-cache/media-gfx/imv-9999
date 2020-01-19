@@ -1,15 +1,15 @@
 BDEPEND=app-text/asciidoc test? ( dev-util/cmocka ) >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile configure install postinst postrm prepare unpack
-DEPEND=!sys-apps/renameutils media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf X? ( x11-libs/libX11 x11-libs/libxcb x11-libs/libxkbcommon x11-libs/pango ) freeimage? ( media-libs/freeimage ) jpeg? ( media-libs/libjpeg-turbo ) libnsgif? ( media-libs/libnsgif ) png? ( media-libs/libpng ) svg? ( gnome-base/librsvg ) tiff? ( media-libs/tiff ) wayland? ( dev-libs/wayland )
+DEPEND=!sys-apps/renameutils dev-libs/icu:= media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf X? ( virtual/glu x11-libs/libX11 x11-libs/libxcb x11-libs/libxkbcommon x11-libs/pango ) freeimage? ( media-libs/freeimage ) jpeg? ( media-libs/libjpeg-turbo ) libnsgif? ( media-libs/libnsgif ) png? ( media-libs/libpng ) svg? ( gnome-base/librsvg ) tiff? ( media-libs/tiff ) wayland? ( dev-libs/wayland )
 DESCRIPTION=Minimal image viewer designed for tiling window manager users
 EAPI=7
 HOMEPAGE=https://github.com/eXeC64/imv
 IUSE=X +freeimage jpeg libnsgif png +svg test tiff wayland
 LICENSE=MIT-with-advertising
 PROPERTIES=live
-RDEPEND=!sys-apps/renameutils media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf X? ( x11-libs/libX11 x11-libs/libxcb x11-libs/libxkbcommon x11-libs/pango ) freeimage? ( media-libs/freeimage ) jpeg? ( media-libs/libjpeg-turbo ) libnsgif? ( media-libs/libnsgif ) png? ( media-libs/libpng ) svg? ( gnome-base/librsvg ) tiff? ( media-libs/tiff ) wayland? ( dev-libs/wayland )
+RDEPEND=!sys-apps/renameutils dev-libs/icu:= media-libs/fontconfig media-libs/libsdl2 media-libs/sdl2-ttf X? ( virtual/glu x11-libs/libX11 x11-libs/libxcb x11-libs/libxkbcommon x11-libs/pango ) freeimage? ( media-libs/freeimage ) jpeg? ( media-libs/libjpeg-turbo ) libnsgif? ( media-libs/libnsgif ) png? ( media-libs/libpng ) svg? ( gnome-base/librsvg ) tiff? ( media-libs/tiff ) wayland? ( dev-libs/wayland )
 REQUIRED_USE=|| ( X wayland )
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=9ab0fda8b08dbbe95b6461b97693b0e7
+_md5_=75ef8ae2e416ec71cbae70a94bf20660
