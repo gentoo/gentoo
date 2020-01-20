@@ -3216,11 +3216,11 @@ dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
 dev-db/mycli 1.19.0 1.20.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
 dev-db/myodbc 5.3.9 5.3.10-r3 8.0.16 8.0.17: ODBC driver for MySQL
-dev-db/mysql 5.6.44-r1 5.6.45-r2 5.7.26-r1 5.7.27-r1 8.0.18: A fast, multi-threaded, multi-user SQL database server
+dev-db/mysql 5.6.44-r1 5.6.45-r2 5.7.26-r1 5.7.27-r1 8.0.19: A fast, multi-threaded, multi-user SQL database server
 dev-db/mysql++ 2.3.2-r1 3.2.3-r1 3.2.4 3.2.5: C++ API interface to the MySQL database
 dev-db/mysql-cluster 7.2.34 7.3.22 7.4.21: An enhanced, drop-in replacement for MySQL
-dev-db/mysql-connector-c 6.1.11-r2 8.0.17-r3 8.0.18: C client library for MariaDB/MySQL
-dev-db/mysql-connector-c++ 1.1.9-r1 1.1.11-r1 1.1.12-r1 8.0.15 8.0.18: MySQL database connector for C++ (mimics JDBC 4.0 API)
+dev-db/mysql-connector-c 6.1.11-r2 8.0.19: C client library for MariaDB/MySQL
+dev-db/mysql-connector-c++ 1.1.12-r1 8.0.19: MySQL database connector for C++ (mimics JDBC 4.0 API)
 dev-db/mysql-init-scripts 2.3-r3: Gentoo MySQL init scripts.
 dev-db/mysql-super-smack 1.3-r4: Benchmarking, stress testing, and load generation tool for MySQL & PostGreSQL
 dev-db/mysql-workbench 8.0.16 8.0.17 8.0.18: MySQL Workbench
@@ -14353,7 +14353,7 @@ net-analyzer/trafshow 5.2.3: Full screen visualization of the network traffic
 net-analyzer/tsung 1.7.0: Erlang's multi-protocol distributed load testing tool
 net-analyzer/ttcp 1.12-r2: Tool to test TCP and UDP throughput
 net-analyzer/upnpscan 0.4-r3: Scans the network for UPNP capable devices
-net-analyzer/vnstat 1.17 2.4 2.5 9999: Console-based network traffic monitor that keeps statistics of network usage
+net-analyzer/vnstat 1.17 2.4 2.5 2.6 9999: Console-based network traffic monitor that keeps statistics of network usage
 net-analyzer/wapiti 3.0.2 9999: Web-application vulnerability scanner
 net-analyzer/webfuzzer 0.2.0-r1: Poor man's web vulnerability scanner
 net-analyzer/wireshark 3.0.3 3.0.7 3.2.1 99999999: A network protocol analyzer formerly known as ethereal
@@ -17300,7 +17300,7 @@ sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
 sys-devel/gcc 3.3.6-r5 3.4.6-r5 4.0.4-r3 4.1.2-r2 4.2.4-r4 4.3.6-r4 4.4.7-r3 4.5.4-r3 4.6.4-r3 4.7.4-r3 4.8.5-r3 4.9.4-r1 5.5.0 6.5.0-r1 7.4.0-r2 7.5.0 8.3.0-r1 8.3.0-r3 9.2.0-r2 9.2.0-r3 10.0.0_pre9999: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 2.1 2.2 9999: Utility to manage compilers
-sys-devel/gdb 8.3 8.3.1 9999: GNU debugger
+sys-devel/gdb 8.3 8.3.1 8.3.1-r1 9999: GNU debugger
 sys-devel/gdb-apple 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.19.8.1 0.20.1 0.21_rc1: GNU locale utilities
 sys-devel/gnuconfig 20190912 99999999: Updated config.sub and config.guess file from GNU

@@ -4,10 +4,10 @@ DESCRIPTION=Offline Windows NT Password & Registry Editor
 EAPI=7
 HOMEPAGE=http://pogostick.net/~pnh/ntpasswd/
 IUSE=libressl static
-KEYWORDS=~amd64 ~ppc ~x86
+KEYWORDS=amd64 ~ppc ~x86
 LICENSE=GPL-2 LGPL-2.1
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= )
 SLOT=0
 SRC_URI=http://pogostick.net/~pnh/ntpasswd/chntpw-source-140201.zip
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=736b61fdae5b57da9b630fc4838989af
+_md5_=c75a3a19df90ffe4b67011ee12545aed

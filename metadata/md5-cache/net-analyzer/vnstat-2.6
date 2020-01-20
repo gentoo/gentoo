@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install setup
+DEPEND=dev-db/sqlite gd? ( media-libs/gd[png] ) test? ( dev-libs/check )
+DESCRIPTION=Console-based network traffic monitor that keeps statistics of network usage
+EAPI=7
+HOMEPAGE=https://humdi.net/vnstat/
+IUSE=gd selinux test
+KEYWORDS=~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=dev-db/sqlite gd? ( media-libs/gd[png] ) selinux? ( sec-policy/selinux-vnstatd )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://humdi.net/vnstat/vnstat-2.6.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_md5_=4c5b0e8494abedd45f1f136ca8083e3b
