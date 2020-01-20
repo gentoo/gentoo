@@ -6,5 +6,6 @@
 		<name>Matthew Thode</name>
 	</maintainer>
 	<longdescription lang="en">
+			openstack keystone group
 	</longdescription>
 </pkgmetadata>
