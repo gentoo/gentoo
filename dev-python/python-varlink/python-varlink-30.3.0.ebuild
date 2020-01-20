@@ -20,6 +20,13 @@ RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 S="${WORKDIR}/python-${PV}"
 
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+
+	sed -e 's|^[[:space:]]*setuptools_scm$||' \
+		-i setup.cfg || die
+}
+
 python_test() {
 	esetup.py test || die "tests failed with ${EPYTHON}"
 }
