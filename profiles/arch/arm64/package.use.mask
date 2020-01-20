@@ -289,10 +289,6 @@ app-crypt/qca botan
 app-emulation/libvirt openvz
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
-# sys-firmware/ipxe does not build, mask x86 targets needing it
-app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
-
-# Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # media-gfx/nvidia-texture-tools does not support arm64
 media-libs/devil nvtt
 
