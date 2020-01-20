@@ -96,8 +96,6 @@ media-libs/opencv contribdnn
 
 # Robin H. Johnson <robbat2@gentoo.org> (2017-11-10)
 # Masked for dependencies:
-# - bug #438780: sys-firmware/ipxe not buildable on PPC without cross-compiler
-app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
 # - media-libs/virglrenderer: pending keywording
 app-emulation/qemu virgl
 
