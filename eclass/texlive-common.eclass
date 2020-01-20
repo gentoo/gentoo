@@ -35,8 +35,8 @@ TEXMF_VAR_PATH=/var/lib/texmf
 
 texlive-common_handle_config_files() {
 	# Handle config files properly
-	[[ -d ${ED}${TEXMF_PATH} ]] || return
-	cd "${ED}${TEXMF_PATH}" || doe
+	[ -d "${ED}${TEXMF_PATH}" ] || return
+	cd "${ED}${TEXMF_PATH}"
 	for f in $(find . -name '*.cnf' -type f -o -name '*.cfg' -type f | sed -e "s:\./::g") ; do
 		if [ "${f#*config}" != "${f}" -o "${f#doc}" != "${f}"  -o "${f#source}"	!= "${f}" -o "${f#tex}" != "${f}" ] ; then
 			continue
@@ -55,9 +55,9 @@ texlive-common_handle_config_files() {
 
 texlive-common_is_file_present_in_texmf() {
 	local mark="${T}/$1.found"
-	[[ -d texmf ]] && find texmf -name $1 -exec touch "${mark}" \;
-	[[ -d texmf-dist ]] && find texmf-dist -name $1 -exec touch "${mark}" \;
-	[[ -f ${mark} ]]
+	[ -d texmf ] && find texmf -name $1 -exec touch "${mark}" \;
+	[ -d texmf-dist ] && find texmf-dist -name $1 -exec touch "${mark}" \;
+	[ -f "${mark}" ]
 }
 
 # @FUNCTION: texlive-common_do_symlinks
@@ -73,7 +73,7 @@ texlive-common_is_file_present_in_texmf() {
 # also do the fmtutil file parsing.
 
 texlive-common_do_symlinks() {
-	while [[ $# != 0 ]]; do
+	while [ $# != 0 ]; do
 		case $1 in
 			cont-??|metafun|mptopdf)
 				einfo "Symlink $1 skipped (special case)"
@@ -82,10 +82,10 @@ texlive-common_do_symlinks() {
 				einfo "Symlink $1 -> $2 skipped (texlive-core takes care of it)"
 				;;
 			*)
-				if [[ $1 = $2 ]];
+				if [ $1 = $2 ];
 				then
 					einfo "Symlink $1 -> $2 skipped"
-				elif [[ -e ${ED}/usr/bin/$1 -o -L ${ED}/usr/bin/$1 ]];
+				elif [ -e "${ED}/usr/bin/$1" -o -L "${ED}/usr/bin/$1" ];
 				then
 					einfo "Symlink $1 skipped (file exists)"
 				else
@@ -123,10 +123,10 @@ etexlinks() {
 # correctly set for the file that it will point to.
 
 dobin_texmf_scripts() {
-	while [[ $# -gt 0 ]] ; do
+	while [ $# -gt 0 ] ; do
 		local trg=$(basename ${1} | sed 's,\.[^/]*$,,' | tr '[:upper:]' '[:lower:]')
 		einfo "Installing ${1} as ${trg} bin wrapper"
-		[[ -x ${ED}/usr/share/${1} ]] || die "Trying to install a non existing or non executable symlink to /usr/bin: ${1}"
+		[ -x "${ED}/usr/share/${1}" ] || die "Trying to install a non existing or non executable symlink to /usr/bin: ${1}"
 		dosym ../share/${1} /usr/bin/${trg} || die "failed to install ${1} as $trg"
 		shift
 	done
@@ -140,7 +140,7 @@ dobin_texmf_scripts() {
 
 etexmf-update() {
 	if has_version 'app-text/texlive-core' ; then
-		if [[ -z ${ROOT%/} ]] && [[ -x ${EPREFIX}/usr/sbin/texmf-update ]] ; then
+		if [ -z "${ROOT%/}" ] && [ -x "${EPREFIX}"/usr/sbin/texmf-update ] ; then
 			"${EPREFIX}"/usr/sbin/texmf-update
 		else
 			ewarn "Cannot run texmf-update for some reason."
@@ -158,7 +158,7 @@ etexmf-update() {
 
 efmtutil-sys() {
 	if has_version 'app-text/texlive-core' ; then
-		if [[ -z ${ROOT%/} ]] && [[ -x "${EPREFIX}"/usr/bin/fmtutil-sys ]] ; then
+		if [ -z "${ROOT%/}" ] && [ -x "${EPREFIX}"/usr/bin/fmtutil-sys ] ; then
 			einfo "Rebuilding formats"
 			"${EPREFIX}"/usr/bin/fmtutil-sys --all &> /dev/null
 		else
