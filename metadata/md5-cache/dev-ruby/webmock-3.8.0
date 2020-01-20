@@ -11,6 +11,6 @@ RDEPEND=ruby_targets_ruby24? ( >=dev-ruby/addressable-2.3.6[ruby_targets_ruby24(
 REQUIRED_USE=|| ( ruby_targets_ruby24 ruby_targets_ruby25 ruby_targets_ruby26 )
 RESTRICT=!test? ( test ) !test? ( test ) !test? ( test )
 SLOT=3
-SRC_URI=https://rubygems.org/gems/webmock-3.7.2.gem
+SRC_URI=https://rubygems.org/gems/webmock-3.8.0.gem
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	1d91b03d42ab6308b5f4f6b598ed110e	ruby-fakegem	cca036a1477f29b926bf994faddf4099	ruby-ng	a1c89995f9f6dd045e93d13a92ca81a9	ruby-utils	cdb4c1e4283adb7707b7dd48ccaa7ad2	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0c96d59ec1055acfca6dedd92f6ceff5
+_md5_=f4a1b6d0b015ed73168b173750da9d89
