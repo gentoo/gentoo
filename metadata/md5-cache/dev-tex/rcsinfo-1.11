@@ -1,0 +1,13 @@
+BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DEFINED_PHASES=compile install postinst postrm
+DEPEND=dev-tex/latex2html app-arch/unzip
+DESCRIPTION=A LaTeX module to acces RCS/CVS version info
+EAPI=7
+HOMEPAGE=https://www.ctan.org/pkg/rcsinfo
+KEYWORDS=~amd64 ~x86
+LICENSE=LPPL-1.2
+RDEPEND=virtual/latex-base
+SLOT=0
+SRC_URI=mirror://gentoo/rcsinfo-1.11.zip
+_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
+_md5_=257dcd5857f785e32d1f1affba4be9cb

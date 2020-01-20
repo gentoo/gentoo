@@ -1,0 +1,14 @@
+BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
+DEFINED_PHASES=compile install postinst postrm
+DEPEND=virtual/latex-base || ( >=media-fonts/culmus-0.110[fancy] <media-fonts/culmus-0.110 ) app-text/t1utils
+DESCRIPTION=Culmus fonts support for latex
+EAPI=7
+HOMEPAGE=http://ivritex.sourceforge.net/
+IUSE=examples
+KEYWORDS=alpha amd64 ~hppa ia64 ppc ppc64 sparc x86
+LICENSE=GPL-2
+RDEPEND=virtual/latex-base virtual/latex-base
+SLOT=0
+SRC_URI=mirror://sourceforge/ivritex/culmus-latex-0.7_src.tar.gz -> culmus-latex-0.7.tar.gz
+_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
+_md5_=b119800cecf0ae33b27ca072f1ec660d
