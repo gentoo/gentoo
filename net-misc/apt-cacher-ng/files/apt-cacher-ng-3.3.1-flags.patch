@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,7 +14,7 @@
+ 
+ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+ set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+-#set(CMAKE_SKIP_BUILD_RPATH on) # no -rdynamic needed ever
++set(CMAKE_SKIP_BUILD_RPATH on) # no -rdynamic needed ever
+ 
+ INCLUDE(CheckIncludeFiles) 
+ INCLUDE(CheckCXXSourceCompiles)
