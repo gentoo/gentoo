@@ -46,5 +46,6 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	optfeature "spell checker support" app-text/enchant
 }
