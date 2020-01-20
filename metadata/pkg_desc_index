@@ -11,6 +11,7 @@ acct-group/bitcoin 0: A group for users with access to system-wide Bitcoin servi
 acct-group/burp 0: Group for the app-backup/burp server
 acct-group/cdrom 0: System group: cdrom
 acct-group/ceph 0: System group: ceph
+acct-group/cinder 0: System group: cinder
 acct-group/clamav 0: System group: clamav
 acct-group/cmd5checkpw 0: System group: cmd5checkpw
 acct-group/ddclient 0: A group for the dynamic DNS client
@@ -30,13 +31,16 @@ acct-group/gamestat 0: Group for shared high-score and game state files
 acct-group/geneweb 0: Group for geneweb daemon
 acct-group/git 0: System group: git
 acct-group/gkrellmd 0: System group: gkrellmd
+acct-group/glance 0: System group: glance
 acct-group/graylog 0: Graylog program group
 acct-group/gvm 0: Greenbone vulnerability management program group
+acct-group/heat 0: System group: heat
 acct-group/i2p 0: Group for system-wide net-vpn/i2p
 acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
 acct-group/input 0: System group: input
 acct-group/inspircd 0: System group: inspircd
 acct-group/ipfs 0: Group for the system-wide net-p2p/go-ipfs-bin server
+acct-group/keystone 0: System group: keystone
 acct-group/kibana 0: Kibana program group
 acct-group/kmem 0: System group: kmem
 acct-group/knot 0: System group: knot
@@ -60,7 +64,9 @@ acct-group/mythtv 0: Mythtv mythbackend server/deamon group
 acct-group/nagios 0: System group: nagios
 acct-group/netdata 0: System group: netdata
 acct-group/netdev 0: group for netdev (avahi)
+acct-group/neutron 0: System group: neutron
 acct-group/nofiles 0: System group: nofiles
+acct-group/nova 0: System group: nova
 acct-group/nsd 0: System group: nsd
 acct-group/ntp 0: System group: ntp
 acct-group/oidentd 0: System group: oidentd
@@ -70,6 +76,7 @@ acct-group/openntpd 0: System group: openntpd
 acct-group/openrct2 0: A group for the OpenRCT2 dedicated server
 acct-group/pcscd 0: System group: pcscd
 acct-group/pdnsd 0: System group: pdnsd
+acct-group/placement 0: System group: placement
 acct-group/plex 0: Plex Media Server group
 acct-group/plugdev 0: Group controlling access to removable media
 acct-group/polkitd 0: System group: polkitd
@@ -97,6 +104,7 @@ acct-group/strelaysrv 0: Group for the Syncthing relay server
 acct-group/stubby 0: Stubby program group (from net-dns/getdns)
 acct-group/stunnel 0: group for stunnel
 acct-group/suricata 0: Group for Suricata IDS
+acct-group/swift 0: System group: swift
 acct-group/syncthing 0: Group for the system-wide net-p2p/syncthing server
 acct-group/systemd-coredump 0: System group: systemd-coredump
 acct-group/systemd-journal 0: System group: systemd-journal
@@ -135,6 +143,7 @@ acct-user/bedrock 0: A user for the Minecraft Bedrock server
 acct-user/bitcoin 0: System-wide Bitcoin services user
 acct-user/burp 0: User for the app-backup/burp server
 acct-user/ceph 0: User for ceph
+acct-user/cinder 0: user for the openstack cinder service
 acct-user/clamav 0: System user: clamav
 acct-user/cmd5checkpw 0: User for cmd5checkpw
 acct-user/ddclient 0: A user for the dynamic DNS client
@@ -151,13 +160,16 @@ acct-user/ftp 0: File Transfer Protocol server user
 acct-user/geneweb 0: user id for geneweb daemon
 acct-user/git 0: Git repository hosting user
 acct-user/gkrellmd 0: user for gkrellm daemon
+acct-user/glance 0: user for the glance openstack service
 acct-user/graylog 0: Graylog program user
 acct-user/gvm 0: Greenbone vulnerability management program user
+acct-user/heat 0: user for the heat openstack service
 acct-user/i2p 0: User for system-wide net-vpn/i2p
 acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
 acct-user/inspircd 0: User for InspIRCd server daemon
 acct-user/ipfs 0: User for the system-wide net-p2p/go-ipfs-bin server
 acct-user/ippl 0: user for net-analyzer/ippl
+acct-user/keystone 0: user for the keystone openstack service
 acct-user/kibana 0: Kibana program user
 acct-user/knot 0: User for knot DNS server
 acct-user/logstash 0: Logstash program user
@@ -178,6 +190,8 @@ acct-user/mysql 0: MySQL program user
 acct-user/mythtv 0: Mythtv mythbackend server/deamon user
 acct-user/nagios 0: System user: nagios
 acct-user/netdata 0: user for netdata
+acct-user/neutron 0: user for the openstack neutron service
+acct-user/nova 0: user for the openstack nova service
 acct-user/nsd 0: user for nsd daemon
 acct-user/ntp 0: user for ntp daemon
 acct-user/oidentd 0: System user: oidentd
@@ -186,6 +200,7 @@ acct-user/openntpd 0: user for openntpd daemon
 acct-user/openrct2 0: A user for the OpenRCT2 dedicated server
 acct-user/pcscd 0: A user for pcsc-lite
 acct-user/pdnsd 0: user for pdns daemon
+acct-user/placement 0: User for the placement openstack service
 acct-user/plex 0: Plex Media Server user
 acct-user/polkitd 0: System user: polkitd
 acct-user/postfix 0: user for postfix daemon
@@ -216,6 +231,7 @@ acct-user/strelaysrv 0: User for the Syncthing relay server
 acct-user/stubby 0: Stubby program user (from net-dns/getdns)
 acct-user/stunnel 0: user for stunnel
 acct-user/suricata 0: User for Suricata IDS
+acct-user/swift 0: USER for swift - Openstack object storage backend
 acct-user/syncthing 0: User for the system-wide net-p2p/syncthing server
 acct-user/systemd-coredump 0: System user: systemd-coredump
 acct-user/systemd-journal-remote 0: System user: systemd-journal-remote
