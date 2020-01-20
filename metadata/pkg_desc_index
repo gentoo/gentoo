@@ -17313,7 +17313,7 @@ sys-devel/llvm-common 7.1.0 8.0.1 9.0.1 10.0.0.9999 11.0.0.9999: Common files sh
 sys-devel/llvm-roc 2.6.0-r1 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0: Radeon Open Compute llvm,lld,clang
 sys-devel/llvmgold 7 8 9 10 11: LLVMgold plugin symlink for autoloading
 sys-devel/m4 1.4.17 1.4.18-r1: GNU macro processor
-sys-devel/make 4.2.1-r4 4.2.93: Standard tool to compile source trees
+sys-devel/make 4.2.1-r4 4.3: Standard tool to compile source trees
 sys-devel/multilib-gcc-wrapper 0-r2: Wrappers for gcc tools to be used on non-native CHOSTs
 sys-devel/native-cctools 4: Host OS native assembler as and static linker ld
 sys-devel/parity 9999: A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)
