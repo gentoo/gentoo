@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Method of four russian for inversion (M4RI)"
 HOMEPAGE="https://bitbucket.org/malb/m4ri"
@@ -22,8 +22,19 @@ RDEPEND="${DEPEND}"
 # didn't make it into the release tarball.
 DOCS=( AUTHORS )
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-20200115-memory_violation.patch
+	"${FILESDIR}"/${PN}-20200115-libm_underlinking.patch
+)
+
 pkg_pretend() {
 	use openmp && tc-check-openmp
+}
+
+src_prepare() {
+	default
+
+	eautoreconf
 }
 
 src_configure() {
