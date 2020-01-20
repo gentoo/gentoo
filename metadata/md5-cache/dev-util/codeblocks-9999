@@ -1,12 +1,13 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
 DEFINED_PHASES=configure postinst postrm preinst prepare unpack
-DEPEND=app-arch/zip x11-libs/wxGTK:3.0[X] contrib? ( app-admin/gamin app-text/hunspell dev-libs/boost:= ) >=dev-libs/tinyxml-2.6.2-r3 >=dev-util/astyle-3.1-r2:0/3.1 virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 || ( dev-vcs/subversion[http] dev-vcs/subversion[webdav-neon] dev-vcs/subversion[webdav-serf] ) net-misc/rsync
+DEPEND=app-arch/zip >=dev-libs/tinyxml-2.6.2-r3 >=dev-util/astyle-3.1-r2:0/3.1 x11-libs/wxGTK:3.0-gtk3[X] contrib? ( app-admin/gamin app-text/hunspell dev-libs/boost:= )
 DESCRIPTION=The open source, cross platform, free C, C++ and Fortran IDE
-EAPI=6
+EAPI=7
 HOMEPAGE=http://www.codeblocks.org/
 IUSE=contrib debug pch
 LICENSE=GPL-3
 PROPERTIES=live
-RDEPEND=app-arch/zip x11-libs/wxGTK:3.0[X] contrib? ( app-admin/gamin app-text/hunspell dev-libs/boost:= )
+RDEPEND=app-arch/zip >=dev-libs/tinyxml-2.6.2-r3 >=dev-util/astyle-3.1-r2:0/3.1 x11-libs/wxGTK:3.0-gtk3[X] contrib? ( app-admin/gamin app-text/hunspell dev-libs/boost:= )
 SLOT=0
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	subversion	1086a6c20b5a06e9f05f3128525fa694	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=36a8d44406a991b65034b39955cefa0d
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	subversion	1086a6c20b5a06e9f05f3128525fa694	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=02b0a3b29e3c3c5a00c9f7098b851e8b

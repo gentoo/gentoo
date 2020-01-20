@@ -2537,11 +2537,13 @@ app-text/docx2txt 1.4: Convert MS Office docx files to plain text
 app-text/dos2unix 7.3.5 7.4.1 7.4.2_beta1: Convert DOS or MAC text files to UNIX format or vice versa
 app-text/duali 0.2.0-r1: Arabic dictionary based on the DICT protocol
 app-text/dvipng 1.15-r1: Translate DVI files into PNG or GIF graphics
+app-text/dvipsk 5.999_p20190410: DVI-to-PostScript translator
 app-text/dvisvgm 2.1.3 2.6.1 2.7: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.1 0.12.2: EditorConfig core library written in C
 app-text/enchant 1.6.1 1.6.1-r1 2.1.0 2.1.1 2.1.2 2.2.3 2.2.4: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
+app-text/epspdf 0.6.0-r1 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes bounding boxes
 app-text/evince 3.32.1: Simple document viewer for GNOME
 app-text/expander 2.0.5-r2: Expander is a utility that acts as a filter for text editors
@@ -2717,6 +2719,7 @@ app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, orginally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2019-r1: A complete TeX distribution
+app-text/texlive-core 2019-r4 2019-r7: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -4902,6 +4905,7 @@ dev-libs/kdiagram 2.6.1-r1: Powerful libraries (KChart, KGantt) for creating bus
 dev-libs/keybinder 0.3.1-r201 0.3.2-r300: A library for registering global keyboard shortcuts
 dev-libs/keystone 0.9.1 9999: assembly/assembler framework + bindings
 dev-libs/klibc 2.0.4-r3: A minimal libc subset for use with initramfs
+dev-libs/kpathsea 6.3.1_p20190410: Path searching library for TeX-related files
 dev-libs/kpeoplevcard 0.1: Library to expose vcards to KPeople
 dev-libs/kproperty 3.2.0: Property editing framework with editor widget similar to Qt Designer
 dev-libs/kqoauth 0.98-r2: Library for Qt that implements the OAuth 1.0 authentication specification
@@ -10233,6 +10237,7 @@ dev-tex/bibtex2html 1.98 1.99: A bibtex to HTML converter
 dev-tex/bibtexu 3.71_p20190410: 8-bit Implementation of BibTeX 0.99 with a Very Large Capacity
 dev-tex/catdvi 0.14-r2: DVI to plain text translator
 dev-tex/chktex 1.7.6: Checks latex source for common mistakes
+dev-tex/circuit_macros 8.4 8.4.1: M4 Macros for Electric circuit diagrams in TeX or LaTeX
 dev-tex/cpp2latex 2.3-r2: A program to convert C++ code to LaTeX source
 dev-tex/crosstex 0.6-r2: CrossTeX - object oriented BibTeX replacement
 dev-tex/csindex 2.11c-r2: Utility for creating Czech/Slovak-sorted LaTeX index-files
@@ -10336,7 +10341,7 @@ dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
 dev-util/coccigrep 1.13: A semantic grep for the C language
 dev-util/coccinelle 1.0.5 1.0.6 1.0.8: Program matching and transformation engine
-dev-util/codeblocks 17.12 17.12-r1 17.12-r300 17.12-r301 9999: The open source, cross platform, free C, C++ and Fortran IDE
+dev-util/codeblocks 17.12-r300 17.12-r301 17.12-r302 9999: The open source, cross platform, free C, C++ and Fortran IDE
 dev-util/colm 0.13.0.4 0.13.0.5 0.13.0.6 0.13.0.6-r1: COmputer Language Manipulation
 dev-util/colorgcc 1.3.2-r7: Perl script to colorise the gcc output.
 dev-util/comparator 2.10 2.12: ESR's utility for making fast comparisons among large source trees
@@ -12730,7 +12735,7 @@ media-libs/aubio 0.4.7 0.4.8 0.4.9: Library for audio labelling
 media-libs/audiofile 0.3.6-r3: An elegant API for accessing audio files
 media-libs/avidemux-core 2.7.3 2.7.4: Core libraries for simple video cutting, filtering and encoding tasks
 media-libs/avidemux-plugins 2.7.3 2.7.4: Plugins for the video editor media-video/avidemux
-media-libs/babl 0.1.12 0.1.38 0.1.62 0.1.64 0.1.66 0.1.72 9999: A dynamic, any to any, pixel format conversion library
+media-libs/babl 0.1.12 0.1.38 0.1.62 0.1.64 0.1.66 0.1.72 0.1.74 9999: A dynamic, any to any, pixel format conversion library
 media-libs/bcg729 1.0.4 1.0.4-r1 999999: encoder and decoder of the ITU G729 Annex A/B speech codec
 media-libs/bio2jack 0.9-r2: A library for porting blocked I/O OSS/ALSA audio applications to JACK
 media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Blinkenlights
