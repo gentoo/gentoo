@@ -25,6 +25,7 @@ S="${WORKDIR}/${PN}-2.7" # 2.7.1 specific
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.3-gentoo-runscript.patch
 	"${FILESDIR}"/${PN}-2.7-lockdir.patch
+	"${FILESDIR}"/${PN}-2.7.1-gcc-10.patch
 )
 
 src_prepare() {
