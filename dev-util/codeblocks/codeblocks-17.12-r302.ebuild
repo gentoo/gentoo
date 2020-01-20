@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-WX_GTK_VER="3.0"
+WX_GTK_VER="3.0-gtk3"
 
-inherit autotools gnome2-utils wxwidgets xdg-utils
+inherit autotools wxwidgets xdg-utils
 
 DESCRIPTION="The open source, cross platform, free C, C++ and Fortran IDE"
 HOMEPAGE="http://www.codeblocks.org/"
@@ -23,7 +23,11 @@ https://dev.gentoo.org/~leio/distfiles/${P}_update_astyle_plugin_to_v3.1.patch.x
 
 IUSE="contrib debug fortran pch"
 
+BDEPEND="virtual/pkgconfig"
+
 RDEPEND="app-arch/zip
+	>=dev-libs/tinyxml-2.6.2-r3
+	>=dev-util/astyle-3.0.1-r1:0=
 	x11-libs/wxGTK:${WX_GTK_VER}[X]
 	contrib? (
 		app-admin/gamin
@@ -31,10 +35,7 @@ RDEPEND="app-arch/zip
 		dev-libs/boost:=
 	)"
 
-DEPEND="${RDEPEND}
-	>=dev-libs/tinyxml-2.6.2-r3
-	>=dev-util/astyle-3.0.1-r1:0=
-	virtual/pkgconfig"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/codeblocks-17.12-nodebug.diff
@@ -44,7 +45,7 @@ PATCHES=(
 src_prepare() {
 	default
 	if has_version ">=dev-util/astyle-3.1" ; then
-		epatch "${WORKDIR}"/codeblocks-17.12_update_astyle_plugin_to_v3.1.patch
+		eapply "${WORKDIR}"/codeblocks-17.12_update_astyle_plugin_to_v3.1.patch
 	fi
 	eautoreconf
 }
@@ -67,18 +68,16 @@ src_configure() {
 }
 
 pkg_postinst() {
-	if [[ ${WX_GTK_VER} == "3.0" || ${WX_GTK_VER} == "3.0-gtk3" ]]; then
-		elog "The symbols browser is disabled due to it causing crashes."
-		elog "For more information see https://sourceforge.net/p/codeblocks/tickets/225/"
-	fi
+	elog "The Symbols Browser is disabled due to it causing crashes."
+	elog "For more information see https://sourceforge.net/p/codeblocks/tickets/225/"
 
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
 }
