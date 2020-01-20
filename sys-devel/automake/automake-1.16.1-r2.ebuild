@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit python-any-r1
 
@@ -53,7 +53,7 @@ PATCHES=(
 	"${FILESDIR}"/automake-1.16.1-py3-pep3147-cmdline.patch
 	"${FILESDIR}"/automake-1.16.1-py3-compile-test.patch
 )
-# All three patches have been submitted upstream and ignored there.
+# All patches have been submitted upstream.
 
 pkg_setup() {
 	use test && python-any-r1_pkg_setup
