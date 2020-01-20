@@ -64,7 +64,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	qemu_softmmu_targets_ppc? ( fdt )
 	qemu_softmmu_targets_riscv32? ( fdt )
 	qemu_softmmu_targets_riscv64? ( fdt )
-	static? ( static-user !alsa !gtk !opengl !pulseaudio !snappy )
+	static? ( static-user !alsa !gtk !opengl !pulseaudio !rbd !snappy )
 	virtfs? ( xattr )
 	vte? ( gtk )"
 
@@ -132,7 +132,7 @@ SOFTMMU_TOOLS_DEPEND="
 	)
 	png? ( media-libs/libpng:0=[static-libs(+)] )
 	pulseaudio? ( media-sound/pulseaudio )
-	rbd? ( sys-cluster/ceph[static-libs(+)] )
+	rbd? ( sys-cluster/ceph )
 	sasl? ( dev-libs/cyrus-sasl[static-libs(+)] )
 	sdl? (
 		media-libs/libsdl2[X]
