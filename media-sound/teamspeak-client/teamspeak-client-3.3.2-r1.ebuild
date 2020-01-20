@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,10 @@ RDEPEND="
 	dev-libs/openssl:0
 	dev-libs/quazip
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5[accessibility,dbus,xcb]
+	|| (
+		dev-qt/qtgui:5[accessibility,dbus,X(-)]
+		dev-qt/qtgui:5[accessibility,dbus,xcb(-)]
+	)
 	dev-qt/qtnetwork:5
 	dev-qt/qtsql:5[sqlite]
 	dev-qt/qtsvg:5

@@ -24,7 +24,10 @@ DEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtdeclarative-${QTMIN}:5=
 	>=dev-qt/qtgraphicaleffects-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5[xcb]
+	|| (
+		>=dev-qt/qtgui-${QTMIN}:5[X(-)]
+		>=dev-qt/qtgui-${QTMIN}:5[xcb(-)]
+	)
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
 	>=kde-frameworks/kactivities-${KFMIN}:5

@@ -30,7 +30,10 @@ RDEPEND="
 		dev-qt/qtcore:5
 		dev-qt/qtdbus:5
 		dev-qt/qtdeclarative:5
-		dev-qt/qtgui:5[-gles2,xcb]
+		|| (
+			dev-qt/qtgui:5[-gles2,X(-)]
+			dev-qt/qtgui:5[-gles2,xcb(-)]
+		)
 		dev-qt/qtopengl:5[-gles2]
 		dev-qt/qtnetwork:5
 		dev-qt/qtprintsupport:5[-gles2]

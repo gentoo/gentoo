@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,10 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
-	examples? ( dev-qt/qtgui:5[xcb] )
+	examples? ( || (
+		dev-qt/qtgui:5[X(-)]
+		dev-qt/qtgui:5[xcb(-)]
+	) )
 	uchardet? ( app-i18n/uchardet )
 	!uchardet? ( dev-libs/icu:= )
 "

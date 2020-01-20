@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 QT5_MODULE="qtbase"
 inherit qt5-build
 
@@ -12,11 +13,11 @@ if [[ ${QT5_BUILD_TYPE} == release ]]; then
 fi
 
 # keep IUSE defaults in sync with qtgui
-IUSE="gles2 gtk +png +xcb"
+IUSE="gles2 gtk +png +X"
 
 DEPEND="
 	~dev-qt/qtcore-${PV}
-	~dev-qt/qtgui-${PV}[gles2=,png=,xcb?]
+	~dev-qt/qtgui-${PV}[gles2=,png=,X?]
 	gtk? (
 		~dev-qt/qtgui-${PV}[dbus]
 		x11-libs/gtk+:3
@@ -49,8 +50,8 @@ src_configure() {
 		-gui
 		$(qt_use png libpng system)
 		-widgets
-		$(qt_use xcb xcb system)
-		$(usex xcb '-xcb-xlib -xcb-xinput -xkb -xkbcommon' '')
+		$(qt_use X xcb system)
+		$(usex X '-xcb-xlib -xcb-xinput -xkb -xkbcommon' '')
 	)
 	qt5-build_src_configure
 }

@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 QT5_MODULE="qtbase"
 inherit qt5-build
 
@@ -14,14 +15,14 @@ fi
 # TODO: linuxfb
 
 IUSE="accessibility dbus egl eglfs evdev +gif gles2 ibus
-	jpeg +libinput +png tslib tuio +udev vnc wayland +xcb"
+	jpeg +libinput +png tslib tuio +udev vnc wayland +X"
 REQUIRED_USE="
-	|| ( eglfs xcb )
-	accessibility? ( dbus xcb )
+	|| ( eglfs X )
+	accessibility? ( dbus X )
 	eglfs? ( egl )
 	ibus? ( dbus )
 	libinput? ( udev )
-	xcb? ( gles2? ( egl ) )
+	X? ( gles2? ( egl ) )
 "
 
 COMMON_DEPEND="
@@ -51,7 +52,7 @@ COMMON_DEPEND="
 	tuio? ( ~dev-qt/qtnetwork-${PV} )
 	udev? ( virtual/libudev:= )
 	vnc? ( ~dev-qt/qtnetwork-${PV} )
-	xcb? (
+	X? (
 		x11-libs/libICE
 		x11-libs/libSM
 		x11-libs/libX11
@@ -118,13 +119,13 @@ QT5_GENTOO_CONFIG=(
 	!png:no-png:
 	tslib:tslib:
 	udev:libudev:
-	xcb:xcb:
-	xcb:xcb-glx:
-	xcb:xcb-plugin:
-	xcb:xcb-render:
-	xcb:xcb-sm:
-	xcb:xcb-xlib:
-	xcb:xcb-xinput:
+	X:xcb:
+	X:xcb-glx:
+	X:xcb-plugin:
+	X:xcb-render:
+	X:xcb-sm:
+	X:xcb-xlib:
+	X:xcb-xinput:
 )
 
 QT5_GENTOO_PRIVATE_CONFIG=(
@@ -141,8 +142,8 @@ src_prepare() {
 	# don't add -O3 to CXXFLAGS, bug 549140
 	sed -i -e '/CONFIG\s*+=/s/optimize_full//' src/gui/gui.pro || die
 
-	# egl_x11 is activated when both egl and xcb are enabled
-	use egl && QT5_GENTOO_CONFIG+=(xcb:egl_x11:) || QT5_GENTOO_CONFIG+=(egl:egl_x11:)
+	# egl_x11 is activated when both egl and X are enabled
+	use egl && QT5_GENTOO_CONFIG+=(X:egl_x11:) || QT5_GENTOO_CONFIG+=(egl:egl_x11:)
 
 	qt_use_disable_config dbus dbus \
 		src/platformsupport/themes/genericunix/genericunix.pri
@@ -177,10 +178,10 @@ src_configure() {
 		$(qt_use png libpng system)
 		$(qt_use tslib)
 		$(qt_use udev libudev)
-		$(qt_use xcb xcb system)
-		$(usex xcb '-xcb-xlib -xcb-xinput -xkb' '')
+		$(qt_use X xcb system)
+		$(usex X '-xcb-xlib -xcb-xinput -xkb' '')
 	)
-	if use libinput || use xcb; then
+	if use libinput || use X; then
 		myconf+=( -xkbcommon )
 	fi
 	qt5-build_src_configure
