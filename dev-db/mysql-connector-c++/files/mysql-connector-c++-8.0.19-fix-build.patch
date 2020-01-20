@@ -1,6 +1,6 @@
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -463,7 +463,7 @@ set_target_properties(connector PROPERTIES
+@@ -475,7 +475,7 @@ set_target_properties(connector PROPERTIES
  
  
  install(TARGETS connector
@@ -11,7 +11,7 @@
    LIBRARY DESTINATION "${INSTALL_LIB_DIR}" COMPONENT XDevAPIDll
 --- a/cdk/cmake/DepFindProtobuf.cmake
 +++ b/cdk/cmake/DepFindProtobuf.cmake
-@@ -48,197 +48,7 @@ if(TARGET Protobuf::pb)
+@@ -48,229 +48,7 @@ if(TARGET Protobuf::pb)
    return()
  endif()
  
@@ -52,10 +52,19 @@
 -  $<$<CONFIG:Static>:Release>$<$<NOT:$<CONFIG:Static>>:$<CONFIG>>
 -)
 -
+-set(set_arch)
+-if(CMAKE_GENERATOR_PLATFORM)
+-  set(set_arch -A ${CMAKE_GENERATOR_PLATFORM})
+-endif()
+-
+-set(set_toolset)
+-if(CMAKE_GENERATOR_TOOLSET)
+-  set(set_toolset -T ${CMAKE_GENERATOR_TOOLSET})
+-endif()
 -
 -if(NOT EXISTS "${PB_BINARY_DIR}/exports.cmake")
 -
--  message("==== Configuring Protobuf build using cmake generator: ${CMAKE_GENERATOR}")
+-  message("==== Configuring Protobuf build using cmake generator: ${CMAKE_GENERATOR} ${set_arch} ${set_toolset}")
 -
 -  file(REMOVE "${PB_BINARY_DIR}/CMakeCache.txt")
 -  file(MAKE_DIRECTORY "${PB_BINARY_DIR}")
@@ -69,6 +78,8 @@
 -  execute_process(
 -    COMMAND ${CMAKE_COMMAND}
 -      -G "${CMAKE_GENERATOR}"
+-      ${set_arch}
+-      ${set_toolset}
 -      ${set_build_type}
 -      -DSTATIC_MSVCRT=${STATIC_MSVCRT}
 -      -DCMAKE_POSITION_INDEPENDENT_CODE=${CMAKE_POSITION_INDEPENDENT_CODE}
@@ -188,9 +199,27 @@
 -  )
 -endif()
 -
+-#
+-# Try using parallel builds for protobuf.
+-#
+-
+-include(ProcessorCount)
+-ProcessorCount(N)
+-
+-MESSAGE("Processor Count: ${N}")
+-
+-set(opt_build)
+-set(opt_tool)
+-if(NOT N EQUAL 0)
+-  if(NOT CMAKE_VERSION VERSION_LESS 3.12)
+-    set(opt_build --parallel ${N})
+-  elseif(CMAKE_MAKE_PROGRAM MATCHES "make")
+-    set(opt_tool -j${N})
+-  endif()
+-endif()
 -
 -add_custom_command(OUTPUT "${build_stamp}"
--  COMMAND ${CMAKE_COMMAND} --build . --config ${CONFIG_EXPR}
+-  COMMAND ${CMAKE_COMMAND} --build . ${opt_build} --config ${CONFIG_EXPR} -- ${opt_tool}
 -  COMMAND ${CMAKE_COMMAND} -E touch "${build_stamp}"
 -  WORKING_DIRECTORY "${PB_BINARY_DIR}"
 -  COMMENT "Building protobuf"
@@ -200,17 +229,20 @@
 -  SOURCES "${build_stamp}"
 -)
 -
+-set_target_properties(build_protobuf PROPERTIES FOLDER "Misc")
+-
 -add_dependencies(Protobuf::pb-full build_protobuf)
 -add_dependencies(Protobuf::pb-lite build_protobuf)
 -add_dependencies(Protobuf::protoc  build_protobuf)
 -
 -# TODO: Handle lite/full version
 -
+-
 +find_package(Protobuf REQUIRED)
  
- 
  # Standard PROTOBUF_GENERATE_CPP modified to our usage
-@@ -268,11 +78,11 @@ function(mysqlx_protobuf_generate_cpp SRCS HDRS)
+ 
+@@ -299,11 +77,11 @@ function(mysqlx_protobuf_generate_cpp SRCS HDRS)
               "${CMAKE_CURRENT_BINARY_DIR}/protobuf/${FIL_WE}.pb.h"
        COMMAND ${CMAKE_COMMAND}
              -E make_directory "${CMAKE_CURRENT_BINARY_DIR}/protobuf"
@@ -238,7 +270,7 @@
  add_coverage(cdk)
 --- a/cdk/protocol/mysqlx/CMakeLists.txt
 +++ b/cdk/protocol/mysqlx/CMakeLists.txt
-@@ -125,11 +125,7 @@ target_include_directories(cdk_proto_mysqlx PRIVATE
+@@ -126,11 +126,7 @@ target_include_directories(cdk_proto_mysqlx PRIVATE
    ${CMAKE_CURRENT_BINARY_DIR}
  )
  

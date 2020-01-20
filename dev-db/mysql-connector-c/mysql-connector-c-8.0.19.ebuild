@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,9 +41,10 @@ DOCS=( README )
 S="${WORKDIR}/mysql-${PV}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-8.0.17-always-build-decompress-utilities.patch
+	"${FILESDIR}"/${PN}-8.0.18-always-build-decompress-utilities.patch
 	"${FILESDIR}"/${PN}-8.0.17-use-relative-include-path-for-udf_registration_types-h.patch
-	"${FILESDIR}"/${PN}-8.0.17-libressl.patch
+	"${FILESDIR}"/${PN}-8.0.19-do-not-install-comp_err.patch
+	"${FILESDIR}"/${PN}-8.0.19-libressl.patch
 )
 
 src_prepare() {
@@ -55,7 +56,6 @@ src_prepare() {
 		-e '/MYSQL_CHECK_LIBEVENT/d' \
 		-e '/MYSQL_CHECK_RAPIDJSON/d' \
 		-e '/MYSQL_CHECK_ICU/d' \
-		-e '/MYSQL_CHECK_RE2/d' \
 		-e '/MYSQL_CHECK_EDITLINE/d' \
 		-e '/MYSQL_CHECK_CURL/d' \
 		-e '/ADD_SUBDIRECTORY(man)/d' \

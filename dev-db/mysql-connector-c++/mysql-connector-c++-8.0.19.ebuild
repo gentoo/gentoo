@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -28,13 +28,16 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${P}-src"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-8.0.15-fix-build.patch"
+	"${FILESDIR}"/${PN}-8.0.19-fix-build.patch
+	"${FILESDIR}"/${PN}-8.0.19-fix-libressl-support.patch
 )
 
 src_configure() {
 	local mycmakeargs=(
 		-DWITH_SSL=system
 		-DWITH_JDBC=$(usex legacy ON OFF)
+		$(usex legacy '-DMYSQLCLIENT_STATIC_BINDING=0' '')
+		$(usex legacy '-DMYSQLCLIENT_STATIC_LINKING=0' '')
 	)
 
 	cmake-utils_src_configure
