@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # Set this var for any releases except stable
-RC_SUFFIX="-1e9446c323"
+RC_SUFFIX="-37cd925fb5"
 
 inherit systemd
 
@@ -14,7 +14,7 @@ SRC_URI="https://dl.ui.com/unifi/${PV}${RC_SUFFIX}/UniFi.unix.zip -> ${P}.zip"
 
 KEYWORDS="~amd64"
 LICENSE="Apache-1.0 Apache-2.0 BSD-1 BSD-2 BSD CDDL EPL-1.0 GPL-2 LGPL-2.1 LGPL-3 MIT ubiquiti"
-SLOT="0/5.12"
+SLOT="0/5.13"
 IUSE="systemd"
 
 RDEPEND="
