@@ -23,6 +23,8 @@ RDEPEND="
 		sys-kernel/zen-sources
 		sys-kernel/aufs-sources
 		sys-kernel/raspberrypi-sources
+		sys-kernel/gentoo-kernel
+		sys-kernel/gentoo-kernel-bin
 		sys-kernel/vanilla-kernel
 		sys-kernel/vanilla-kernel-bin
 	)"
