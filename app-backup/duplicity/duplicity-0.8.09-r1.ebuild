@@ -30,10 +30,15 @@ DEPEND="${CDEPEND}
 "
 RDEPEND="${CDEPEND}
 	dev-python/paramiko[${PYTHON_USEDEP}]
+	dev-python/future[${PYTHON_USEDEP}]
 	s3? ( dev-python/boto[${PYTHON_USEDEP}] )
 "
 
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}/${P}-fix-docs.patch"
+)
 
 python_test() {
 	esetup.py test
