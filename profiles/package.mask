@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2020-01-21)
+# Upstream disappeared, no other distro still carries this,
+# blocks removal of EOL gtkglext, no revdeps.
+# Removal in 30 days.
+games-strategy/gwp
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
 # Blocks removal of EOL gtkglext, no revdeps.
 # Removal in 30 days.
 games-strategy/ufoai
