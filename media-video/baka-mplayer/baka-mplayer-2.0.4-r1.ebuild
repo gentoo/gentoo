@@ -35,6 +35,7 @@ S="${WORKDIR}/Baka-MPlayer-${PV}"
 PATCHES=(
 	"${FILESDIR}/${P}-gcc5.patch"
 	"${FILESDIR}/${P}-mpv23.patch"
+	"${FILESDIR}/${P}-playlist-regression.patch"
 )
 
 src_prepare() {
