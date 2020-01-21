@@ -11,7 +11,7 @@ SRC_URI="http://archive.debian.org/debian/pool/main/p/${PN}/${P/-/_}.orig.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 
 PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
 
