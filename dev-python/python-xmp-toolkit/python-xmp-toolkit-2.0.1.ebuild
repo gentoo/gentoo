@@ -4,12 +4,12 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
+inherit distutils-r1
 
 if [[ ${PV} == "9999" ]] ; then
-	inherit git-r3 distutils-r1
+	inherit git-r3
 	EGIT_REPO_URI="https://github.com/python-xmp-toolkit/${PN}.git"
 else
-	inherit distutils-r1
 	SRC_URI="https://github.com/python-xmp-toolkit/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
@@ -20,12 +20,15 @@ HOMEPAGE="https://github.com/python-xmp-toolkit/python-xmp-toolkit/ https://pypi
 LICENSE="BSD"
 SLOT="0"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? ( dev-python/unittest2[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		media-libs/exempi )"
 RDEPEND="dev-python/pytz[${PYTHON_USEDEP}]"
+
+PATCHES=( "${FILESDIR}"/${P}-test.patch )
 
 python_compile_all() {
 	use doc && emake -C docs html
