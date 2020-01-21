@@ -1,0 +1,33 @@
+From cb42b7654c07426f36f765d1be7faf5ed3a3e591 Mon Sep 17 00:00:00 2001
+From: godly-devotion <azian.otaku@live.com>
+Date: Tue, 1 Dec 2015 18:15:32 -0500
+Subject: [PATCH] Fix playlist regression from 01ec5a7
+
+---
+ src/ui/mainwindow.ui | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/ui/mainwindow.ui b/src/ui/mainwindow.ui
+index 2430322c..a1b30779 100644
+--- a/src/ui/mainwindow.ui
++++ b/src/ui/mainwindow.ui
+@@ -121,6 +121,10 @@ QListView {
+ #playlistWidget::item:selected {
+ 	background: #383838;
+ }
++#playlistWidget:item:selected:active,
++#playlistWidget:item:selected:!active {
++	color: whitesmoke;
++}
+ 
+ /* QScrollBar */
+ 
+@@ -1059,7 +1063,7 @@ QSlider::handle:horizontal {
+      <x>0</x>
+      <y>0</y>
+      <width>646</width>
+-     <height>24</height>
++     <height>23</height>
+     </rect>
+    </property>
+    <widget class="QMenu" name="menu_File">
