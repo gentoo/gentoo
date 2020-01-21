@@ -12,6 +12,8 @@ LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="test"
+RESTRICT="!test? ( test )"
+
 RDEPEND="app-text/qpdf
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/pybind11[${PYTHON_USEDEP}]"
