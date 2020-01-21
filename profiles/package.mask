@@ -32,6 +32,17 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-01-21)
+# No sign of py3 port, depends on EOL pygtk. No revdeps.
+# Bug #706030. Removal in 30 days.
+app-misc/gourmet
+dev-python/python-poppler
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
+# EAPI 4, last release in 2005, doesn't build, no revdeps.
+# Bug #664498. Removal in 30 days.
+app-text/sary
+
 # Mike Gilbert <floppym@gentoo.org> (2020-01-20)
 # Newer versions are using Go modules, which makes this more difficult to
 # maintain. Take this over if wanted, otherwise I will remove it in 30 days.
@@ -233,11 +244,6 @@ kde-misc/plasma-redshift-control
 # Merged into dev-util/kdevelop months ago, unusable standalone
 # Removal in 10 days.
 dev-util/kdevelop-clang-tidy
-
-# Anthony G. Basile <blueness@gentoo.org> (2020-01-11)
-# Awaiting a fix from upstream, bug #705038
-=net-libs/mbedtls-2.18.1
-=net-libs/mbedtls-2.19.1
 
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # End of life vala:0.42 series, please depclean.
