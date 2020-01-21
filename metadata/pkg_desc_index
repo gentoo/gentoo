@@ -258,7 +258,7 @@ app-accessibility/at-spi2-atk 2.26.2 2.32.0 2.34.0: Gtk module for bridging AT-S
 app-accessibility/at-spi2-core 2.26.2 2.32.1 2.34.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1 6.0-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.21: Input assistive technology intended for switch and pointer users
-app-accessibility/edbrowse 3.7.4: Combination editor, browser, and mail client that is 100% text based
+app-accessibility/edbrowse 3.7.5.1: Combination editor, browser, and mail client that is 100% text based
 app-accessibility/eflite 0.4.1-r3: A speech server that allows screen readers to interact with festival lite
 app-accessibility/emacspeak 39.0-r2 9999: the emacspeak audio desktop
 app-accessibility/emacspeak-ss 1.9.1: adds support for several speech synthesizers to emacspeak
@@ -4532,9 +4532,9 @@ dev-java/offo-hyphenation 2.0: Hyphenation patterns for Apache Fop
 dev-java/ognl 3.0.8: Object-Graph Navigation Language: get/set properties of objects
 dev-java/okio 1.11.0: A modern I/O API for Java
 dev-java/opencsv 2.3: A very simple csv (comma-separated values) parser library for Java
-dev-java/openjdk 8.222_p10 8.232_p09 8.242 11.0.3_p7-r4 11.0.4_p11 11.0.5_p10: Open source implementation of the Java programming language
-dev-java/openjdk-bin 8.222_p10-r1 8.232_p09 11.0.4_p11 11.0.5_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
-dev-java/openjdk-jre-bin 8.222_p10 8.232_p09 11.0.4_p11 11.0.5_p10: Prebuilt Java JRE binaries provided by AdoptOpenJDK
+dev-java/openjdk 8.222_p10 8.232_p09 8.242 11.0.3_p7-r4 11.0.4_p11 11.0.5_p10 11.0.6: Open source implementation of the Java programming language
+dev-java/openjdk-bin 8.222_p10-r1 8.232_p09 8.242_p08 11.0.4_p11 11.0.5_p10 11.0.6_p10: Prebuilt Java JDK binaries provided by AdoptOpenJDK
+dev-java/openjdk-jre-bin 8.222_p10 8.232_p09 8.242_p08 11.0.4_p11 11.0.5_p10: Prebuilt Java JRE binaries provided by AdoptOpenJDK
 dev-java/openjfx 11.0.3_p1: Java OpenJFX client application platform
 dev-java/oracle-javamail 1.5.2 1.5.5 1.5.6: A Java-based framework to build multiplatform mail and messaging applications
 dev-java/oracle-jdk-bin 1.8.0.202 11.0.2: Oracle's Java SE Development Kit
