@@ -34,10 +34,9 @@ S="${WORKDIR}/baka-mplayer-${PV}"
 
 src_prepare() {
 	default
-	# no need to install license
-	sed -e '/^INSTALLS/s:license::' -i src/Baka-MPlayer.pro || die
-	# put manual in our docdir
-	sed -e '/^manual.path/s:'${PN}':'${PF}':' -i src/Baka-MPlayer.pro || die
+	# don't install license, man.gz, install the latter manually
+	sed -e "/^INSTALLS/s/\sman\slicense//" -i src/Baka-MPlayer.pro || die
+	gunzip DOCS/baka-mplayer.1.gz || die
 }
 
 src_configure() {
@@ -47,6 +46,11 @@ src_configure() {
 		lrelease="$(qt5_get_bindir)"/lrelease \
 		lupdate="$(qt5_get_bindir)"/lupdate \
 		src/Baka-MPlayer.pro
+}
+
+src_install() {
+	default
+	doman DOCS/baka-mplayer.1
 }
 
 pkg_postinst() {
