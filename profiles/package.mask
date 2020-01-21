@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-01-21)
+# EAPI 4, last release in 2005, doesn't build, no revdeps.
+# Bug #664498. Removal in 30 days.
+app-text/sary
+
 # Mike Gilbert <floppym@gentoo.org> (2020-01-20)
 # Newer versions are using Go modules, which makes this more difficult to
 # maintain. Take this over if wanted, otherwise I will remove it in 30 days.
