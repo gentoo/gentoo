@@ -1,15 +1,15 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
-PATCHSET="${P}-qt5.patch.tar.xz"
 inherit desktop flag-o-matic qmake-utils
 
 DESCRIPTION="UNetbootin installs Linux/BSD distributions to a partition or USB drive"
 HOMEPAGE="https://github.com/unetbootin/unetbootin"
-SRC_URI="https://github.com/unetbootin/unetbootin/archive/${PV}.tar.gz -> ${P}.tar.gz
-	https://dev.gentoo.org/~asturm/distfiles/${PATCHSET}"
+SRC_URI="
+	https://github.com/unetbootin/unetbootin/archive/${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~jer/${PN}-675-qt5.patch.xz
+"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -33,18 +33,20 @@ COMMON_DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtwidgets:5
 "
-BDEPEND="${COMMON_DEPEND}
+BDEPEND="
+	${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
 "
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="
+	${COMMON_DEPEND}
 	app-arch/p7zip
 	sys-boot/syslinux
 	sys-fs/mtools
 "
 
 PATCHES=(
-	"${FILESDIR}/${PN}-581-desktop.patch"
-	"${WORKDIR}"/${PATCHSET/.tar.xz/}
+	"${FILESDIR}"/${PN}-675-desktop.patch
+	"${WORKDIR}"/${PN}-675-qt5.patch
 )
 
 src_prepare() {
