@@ -10753,7 +10753,7 @@ dev-vcs/fossil 2.8 2.9: Simple, high-reliability, source control management, and
 dev-vcs/git 2.21.1 2.23.1-r1 2.24.1 2.25.0 9999 9999-r1 9999-r2 9999-r3: stupid content tracker: distributed VCS designed for speed and efficiency
 dev-vcs/git-annex 6.20170818 6.20170818-r1: manage files with git, without checking their contents into git
 dev-vcs/git-bz 0.2015.09.08: Bugzilla subcommand for git
-dev-vcs/git-cola 2.11 3.2: The highly caffeinated git GUI
+dev-vcs/git-cola 2.11 3.2 3.5: The highly caffeinated git GUI
 dev-vcs/git-crypt 0.6.0: transparent file encryption in git
 dev-vcs/git-deploy 6.0.1_p20131024-r1: make deployments so easy that you'll let new hires do them on their first day
 dev-vcs/git-deps 9999: git commit dependency analysis tool
@@ -18871,7 +18871,7 @@ x11-terms/yeahconsole 0.3.4-r1: yeahconsole turns an xterm or rxvt-unicode into 
 x11-themes/QGnomePlatform 0.5 0.6.0: A Qt Platform Theme aimed to accommodate GNOME settings
 x11-themes/adapta-gtk-theme 3.95.0.11: An adaptive Gtk+ theme based on Material Design Guidelines
 x11-themes/adwaita-icon-theme 3.32.0: GNOME default icon theme
-x11-themes/adwaita-qt 1.1.0 1.1.1: A style to bend Qt applications to look like they belong into GNOME Shell
+x11-themes/adwaita-qt 1.1.1: A style to bend Qt applications to look like they belong into GNOME Shell
 x11-themes/arc-icon-theme 20161122: Vertex icon theme
 x11-themes/arc-theme 20190330 20190917: A flat theme with transparent elements for GTK+3, GTK+2 and GNOME Shell
 x11-themes/audacious-themes 0.0.4-r1: Collection of XMMS themes for Audacious
