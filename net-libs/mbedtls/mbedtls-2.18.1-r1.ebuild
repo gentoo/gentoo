@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,7 +7,7 @@ inherit cmake-utils multilib-minimal
 
 DESCRIPTION="Cryptographic library for embedded systems"
 HOMEPAGE="https://tls.mbed.org/"
-CRYPTO_SUBMODULE="mbedcrypto-2.0.0"
+CRYPTO_SUBMODULE="mbedcrypto-1.1.0d0"
 SRC_URI="https://github.com/ARMmbed/mbedtls/archive/${P}.tar.gz
 	https://github.com/ARMmbed/mbed-crypto/archive/${CRYPTO_SUBMODULE}.tar.gz"
 S=${WORKDIR}/${PN}-${P}
@@ -35,6 +35,10 @@ enable_mbedtls_option() {
 		-e "s://#define ${myopt}:#define ${myopt}:" \
 		include/mbedtls/config.h || die
 }
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-dont-overwrite-headers.patch
+)
 
 src_prepare() {
 	use cpu_flags_x86_sse2 && enable_mbedtls_option MBEDTLS_HAVE_SSE2
