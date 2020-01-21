@@ -5,6 +5,10 @@
     <email>php-bugs@gentoo.org</email>
     <name>PHP</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
    <use>
     <flag name="extension">
       Build the C extension that uses <pkg>dev-libs/libmaxminddb</pkg>
