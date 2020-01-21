@@ -16,8 +16,8 @@ IUSE=""
 
 BDEPEND="
 	dev-qt/linguist-tools:5
-	virtual/pkgconfig"
-
+	virtual/pkgconfig
+"
 RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -26,7 +26,8 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtx11extras:5
 	media-video/mpv[libmpv]
-	x11-libs/libX11"
+	x11-libs/libX11
+"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/baka-mplayer-${PV}"
