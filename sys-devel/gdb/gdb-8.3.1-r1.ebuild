@@ -14,7 +14,6 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
-RPM=
 MY_PV=${PV}
 case ${PV} in
 9999*)
@@ -91,6 +90,7 @@ S=${WORKDIR}/${PN}-${MY_PV}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
+	"${FILESDIR}"/${PN}-8.3.1-gcc-10.patch
 )
 
 pkg_setup() {
@@ -98,8 +98,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	[[ -n ${RPM} ]] && rpm_spec_epatch "${WORKDIR}"/gdb.spec
-
 	default
 
 	strip-linguas -u bfd/po opcodes/po
