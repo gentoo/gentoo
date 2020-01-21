@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils autotools
+inherit autotools
 
 DESCRIPTION="A set of tools to create and apply patch to XML files using XPath"
 HOMEPAGE="http://xmlpatch.sourceforge.net/"
@@ -12,30 +12,33 @@ SRC_URI="mirror://sourceforge/${PN/lib}/${P}.tar.gz"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test static-libs"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-libs/glib:2
+RDEPEND="
+	dev-libs/glib:2
 	dev-libs/libxml2"
 DEPEND="${RDEPEND}
-	test? ( dev-libs/check )
-	virtual/pkgconfig"
+	test? ( dev-libs/check )"
+BDEPEND="virtual/pkgconfig"
+
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_configure() {
 	econf \
-		$(use_enable static-libs static) \
+		--disable-static \
 		$(use_with test check)
 }
-
-DOCS=( LEGAL_NOTICE README TODO ChangeLog )
 
 src_install() {
 	default
 
-	find "${D}" -name '*.la' -delete
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }
