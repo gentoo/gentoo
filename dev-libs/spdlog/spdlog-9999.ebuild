@@ -10,9 +10,9 @@ HOMEPAGE="https://github.com/gabime/spdlog"
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/gabime/spdlog"
+	EGIT_REPO_URI="https://github.com/gabime/${PN}"
 else
-	SRC_URI="https://github.com/gabime/spdlog/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/gabime/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64"
 fi
 
@@ -21,19 +21,25 @@ SLOT="0/1"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
+BDEPEND="
+	virtual/pkgconfig
+"
 DEPEND="
-	>=dev-libs/libfmt-5.0.0
+	>=dev-libs/libfmt-5.3.0:=
 "
 RDEPEND="${DEPEND}"
 
-PATCHES=( "${FILESDIR}/${PN}-9999-unbundle-fmt.patch" )
+src_prepare() {
+	cmake_src_prepare
+	rm -r include/spdlog/fmt/bundled || die "Failed to delete bundled libfmt"
+}
 
 src_configure() {
-	rm -r include/spdlog/fmt/bundled || die
-
 	local mycmakeargs=(
-		-DSPDLOG_BUILD_EXAMPLE=no
 		-DSPDLOG_BUILD_BENCH=no
+		-DSPDLOG_BUILD_EXAMPLE=no
+		-DSPDLOG_FMT_EXTERNAL=yes
+		-DSPDLOG_BUILD_SHARED=no
 		-DSPDLOG_BUILD_TESTS=$(usex test)
 	)
 
