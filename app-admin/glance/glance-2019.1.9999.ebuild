@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1 user
+inherit distutils-r1
 
 DESCRIPTION="Services for discovering, registering, and retrieving VM images"
 HOMEPAGE="https://launchpad.net/glance"
@@ -103,15 +103,9 @@ RDEPEND="
 	>=dev-python/cursive-0.2.1[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.11[${PYTHON_USEDEP}]
 	>=dev-python/os-win-3.0.0[${PYTHON_USEDEP}]
+	acct-user/glance
+	acct-group/glance
 "
-
-#PATCHES=(
-#)
-
-pkg_setup() {
-	enewgroup glance
-	enewuser glance -1 -1 /var/lib/glance glance
-}
 
 python_prepare_all() {
 	sed -i '/xattr/d' test-requirements.txt || die
@@ -144,5 +138,5 @@ python_install_all() {
 
 	use doc && local HTML_DOCS=( doc/build/html/. )
 	distutils-r1_python_install_all
-	rm -r ${ED}/usr/etc
+	rm -r "${ED}"/usr/etc
 }
