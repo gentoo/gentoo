@@ -1,31 +1,25 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-ESVN_REPO_URI="https://svn.code.sf.net/p/pspdftool/code/trunk"
-ESVN_PROJECT="pspdftool"
-
-[[ "${PV}" == "9999" ]] && EXTRA_ECLASS="subversion"
-inherit autotools ${EXTRA_ECLASS}
-unset EXTRA_ECLASS
+inherit autotools
 
 DESCRIPTION="Tool for prepress preparation of PDF and PostScript documents"
 HOMEPAGE="https://sourceforge.net/projects/pspdftool"
-[[ "${PV}" == "9999" ]] || SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
-
-# Don't move KEYWORDS on the previous line or ekeyword won't work # 399061
-[[ "${PV}" == "9999" ]] || \
-KEYWORDS="~amd64 ~x86"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="zlib"
 
-DEPEND="zlib? ( sys-libs/zlib ) "
-RDEPEND="${DEPEND}"
+RDEPEND="zlib? ( sys-libs/zlib )"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
@@ -35,5 +29,5 @@ src_configure() {
 
 src_install() {
 	default
-	rm -rf "${ED}"/usr/share/doc/${PN}*
+	rm -rf "${ED}"/usr/share/doc/${PN}* || die
 }
