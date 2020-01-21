@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ COMMON_DEPEND="
 	ssl? (
 		gnutls? ( net-libs/gnutls )
 		!gnutls? ( dev-libs/openssl:0= ) )
-	sys-fs/fuse:*
+	>=sys-fs/fuse-2.9.2:*
 	sys-libs/zlib
 	libmount? ( sys-apps/util-linux )
 	selinux? ( sys-libs/libselinux )
