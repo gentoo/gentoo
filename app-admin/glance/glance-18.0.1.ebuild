@@ -12,7 +12,7 @@ HOMEPAGE="https://launchpad.net/glance"
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/openstack/glance.git"
-	EGIT_BRANCH="stable/train"
+	EGIT_BRANCH="stable/stein"
 else
 	SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm64 ~x86"
@@ -59,9 +59,8 @@ RDEPEND="
 		!~dev-python/sqlalchemy-1.1.7[${PYTHON_USEDEP}]
 		!~dev-python/sqlalchemy-1.1.8[${PYTHON_USEDEP}]
 	)
-	>=dev-python/eventlet-0.22.0[${PYTHON_USEDEP}]
-	!~dev-python/eventlet-0.23.0[${PYTHON_USEDEP}]
-	!~dev-python/eventlet-0.25.0[${PYTHON_USEDEP}]
+	>=dev-python/eventlet-0.18.4[${PYTHON_USEDEP}]
+	!~dev-python/eventlet-0.20.1[${PYTHON_USEDEP}]
 	>=dev-python/pastedeploy-1.5.0[${PYTHON_USEDEP}]
 	>=dev-python/routes-2.3.1[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.8.1[${PYTHON_USEDEP}]
@@ -84,6 +83,7 @@ RDEPEND="
 	<dev-python/prettytable-0.8.0[${PYTHON_USEDEP}]
 	>=dev-python/paste-2.0.2[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-2.6.0[${PYTHON_USEDEP}]
+	<dev-python/jsonschema-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/python-keystoneclient-3.8.0[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-17.1.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
@@ -93,18 +93,16 @@ RDEPEND="
 	>=dev-python/oslo-messaging-5.29.0[${PYTHON_USEDEP}]
 	!~dev-python/oslo-messaging-9.0.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-middleware-3.31.0[${PYTHON_USEDEP}]
-	>=dev-python/oslo-reports-1.18.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-policy-1.30.0[${PYTHON_USEDEP}]
 	>=dev-python/retrying-1.2.3[${PYTHON_USEDEP}]
 	!~dev-python/retrying-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/osprofiler-1.4.0[${PYTHON_USEDEP}]
-	>=dev-python/glance_store-1.0.0[${PYTHON_USEDEP}]
+	>=dev-python/glance_store-0.26.1[${PYTHON_USEDEP}]
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.1[${PYTHON_USEDEP}]
 	>=dev-python/cursive-0.2.1[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.11[${PYTHON_USEDEP}]
 	>=dev-python/os-win-3.0.0[${PYTHON_USEDEP}]
-	>=dev-python/castellan-0.17.0[${PYTHON_USEDEP}]
 	acct-user/glance
 	acct-group/glance
 "
@@ -117,9 +115,7 @@ python_prepare_all() {
 }
 
 python_compile_all() {
-	if [ ! -z ${EGIT_BRANCH+x} ]; then
-		use doc && "${PYTHON}" setup.py build_sphinx
-	fi
+	use doc && "${PYTHON}" setup.py build_sphinx
 }
 
 python_install_all() {
