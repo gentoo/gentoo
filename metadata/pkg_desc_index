@@ -10611,7 +10611,7 @@ dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
 dev-util/oprofile 1.3.0: A transparent low-overhead system-wide profiler
-dev-util/ostree 2018.5 2018.9: Operating system and container binary deployment and upgrades
+dev-util/ostree 2018.9 2018.9-r1 2019.5: Operating system and container binary deployment and upgrades
 dev-util/packer 1.3.5 1.4.0 1.4.1 1.4.4 1.4.5: A tool to create identical machine images for multiple platforms
 dev-util/patchbin 20160208 99999999: Apply binary patches without git
 dev-util/patchelf 0.10: Small utility to modify the dynamic linker and RPATH of ELF executables

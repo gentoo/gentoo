@@ -2983,7 +2983,10 @@ dev-util/nvidia-cuda-toolkit:debugger - Installs the CUDA debugger
 dev-util/nvidia-cuda-toolkit:eclipse - Install plugins for eclipse
 dev-util/nvidia-cuda-toolkit:profiler - Installs the NVIDIA CUDA visual profiler
 dev-util/ostree:archive - Use libarchive
+dev-util/ostree:dracut - Install dracut module
 dev-util/ostree:grub - Enable grub configuration generator
+dev-util/ostree:http2 - Use http2
+dev-util/ostree:httpd - Enable ostree trivial-httpd entrypoint
 dev-util/ostree:libmount - Use libmount
 dev-util/ostree:soup - Use libsoup for networking
 dev-util/perf:clang - Enable builtin clang and LLVM support
