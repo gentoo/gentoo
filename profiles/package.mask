@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2020-01-21)
+# Last release over 2 years ago, depends on EOL gtkglext.
+# No revdeps, Removal in 30 days.
+sci-chemistry/gabedit
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
 # Last release over 13 years ago, depends on EOL gtkglext, no revdeps.
 # Bug #353119, #435676. Removal in 30 days.
 sci-chemistry/ghemical
