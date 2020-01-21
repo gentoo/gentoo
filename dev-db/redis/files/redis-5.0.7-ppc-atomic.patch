@@ -1,0 +1,19 @@
+diff --git a/src/Makefile b/src/Makefile
+index 2a68649..a2fb07c 100644
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -77,6 +77,14 @@ FINAL_LDFLAGS=$(LDFLAGS) $(REDIS_LDFLAGS) $(DEBUG)
+ FINAL_LIBS=-lm
+ DEBUG=-g -ggdb
+ 
++ifneq (,$(filter powerpc ppc,$(uname_M)))
++	FINAL_LIBS+=-latomic
++else
++ifneq (,$(findstring ppc,$(uname_M)))
++	FINAL_LIBS+=-latomic
++endif
++endif
++
+ ifeq ($(uname_S),SunOS)
+ 	# SunOS
+         ifneq ($(@@),32bit)
