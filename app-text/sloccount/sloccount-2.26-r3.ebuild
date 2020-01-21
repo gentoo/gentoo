@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Tools for counting Source Lines of Code (SLOC) for a large number of languages"
 HOMEPAGE="http://www.dwheeler.com/sloccount/"
@@ -12,39 +12,41 @@ SRC_URI="http://www.dwheeler.com/sloccount/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris"
-IUSE=""
-RDEPEND="dev-lang/perl
-		>=sys-apps/sed-4
-		app-shells/bash"
+
+RDEPEND="dev-lang/perl"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-libexec.patch
+	"${FILESDIR}"/${P}-coreutils-tail-n-fix.patch
+	# support for
+	# 1) .ebuild
+	# 2) #!/sbin/openrc-run
+	# 3) CFLAGS/CPPFLAGS/LDFLAGS
+	"${FILESDIR}"/${P}-gentoo.patch
+)
+
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-libexec.patch
-	epatch "${FILESDIR}"/${P}-coreutils-tail-n-fix.patch
-	# support for .ebuild and #!/sbin/openrc-run:
-	epatch "${FILESDIR}"/${P}-gentoo.patch
+	default
 
-	sed -i \
-		-e 's|^CC=gcc|CFLAGS+=|g' \
-		-e 's|$(CC)|& $(CFLAGS) $(LDFLAGS)|g' \
-		-e '/^DOC_DIR/ { s/-$(RPM_VERSION)//g }' \
-		-e '/^MYDOCS/ { s/[^    =]\+\.html//g }' \
-		makefile || die "sed makefile failed"
-
-	#fixed hard-codes libexec_dir in sloccount
+	# fix hard-coded libexec_dir in sloccount
 	sed -i "s|libexec_dir=|&\"${EPREFIX}\"|" sloccount || die
 }
 
-src_compile() {
-	emake CC=$(tc-getCC)
+src_configure() {
+	tc-export CC
 }
 
 src_test() {
-	PATH+=":${S}"
-	emake test
+	PATH="${PATH}:${S}" emake test
 }
 
 src_install() {
-	emake PREFIX="${ED}/usr" DOC_DIR="${ED}/usr/share/doc/${PF}/" install
-	dohtml *html
+	emake PREFIX="${ED}"/usr DOC_DIR="${ED}"/usr/share/doc/${PF}/ install
+
+	HTML_DOCS=( *.html )
+	einstalldocs
+
+	# avoid QA warning
+	gunzip "${ED}"/usr/share/man/man1/sloccount.1.gz || die
 }
