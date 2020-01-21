@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Expander is a utility that acts as a filter for text editors"
 HOMEPAGE="http://www.nedit.org"
@@ -12,35 +12,25 @@ SRC_URI="ftp://ftp.nedit.org/pub/contrib/misc/nedit_expander_kit_2.05.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~x86-linux ~ppc-macos"
-IUSE=""
 
-S=${WORKDIR}/${PN}
+S="${WORKDIR}/${PN}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-gentoo.patch
-}
+PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 src_compile() {
 	emake -C src CC=$(tc-getCC)
 }
 
 src_install() {
-	cd src
-	dobin expander boxcomment align_columns align_comments where_is
+	dobin src/{expander,boxcomment,align_columns,align_comments,where_is}
 	dosym boxcomment /usr/bin/unboxcomment
 
+	einstalldocs
+	dodoc USAGE
+	doman docs/*.1
+
 	insinto /usr/share/${P}
-	doins "${S}"/service
-	for x in defs macros misc templates ; do
-		insinto /usr/share/${P}/${x}
-		doins "${S}"/${x}/*
-	done
-
-	cd "${S}"/docs
-	doman *.1
-
-	cd "${S}"
-	dodoc ChangeLog INSTALL README USAGE
+	doins -r service defs macros misc templates
 }
 
 pkg_postinst() {
