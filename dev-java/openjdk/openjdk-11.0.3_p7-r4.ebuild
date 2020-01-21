@@ -240,8 +240,8 @@ src_install() {
 	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
 
 	if use doc ; then
-		insinto /usr/share/doc/"${PF}"/html
-		doins -r "${S}"/build/*-release/images/docs/*
+		docinto html
+		dodoc -r "${S}"/build/*-release/images/docs/*
 		dosym /usr/share/doc/"${PF}" /usr/share/doc/"${PN}-${SLOT}"
 	fi
 }
