@@ -1,10 +1,10 @@
-DEFINED_PHASES=compile install prepare
+DEFINED_PHASES=compile configure install
 DESCRIPTION=Many to one page printing utility
-EAPI=4
+EAPI=7
 HOMEPAGE=http://www.mesa.nl/
 KEYWORDS=amd64 ppc x86
 LICENSE=freedist
 SLOT=0
 SRC_URI=http://www.mesa.nl/pub/mpage/mpage-2.5.6.tgz https://dev.gentoo.org/~mgorny/dist/mpage-2.5.6-gentoo-patchset.tar.bz2
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=2a68ede7c86c0c5c61bbae8d1dcfd72a
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=70215cebb806ada5c87189bf3f40b471

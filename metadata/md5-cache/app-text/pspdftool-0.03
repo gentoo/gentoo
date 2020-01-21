@@ -1,7 +1,8 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
-DEPEND=zlib? ( sys-libs/zlib ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=zlib? ( sys-libs/zlib )
 DESCRIPTION=Tool for prepress preparation of PDF and PostScript documents
-EAPI=4
+EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/pspdftool
 IUSE=zlib
 KEYWORDS=~amd64 ~x86
@@ -10,4 +11,4 @@ RDEPEND=zlib? ( sys-libs/zlib )
 SLOT=0
 SRC_URI=mirror://sourceforge/pspdftool/pspdftool-0.03.tar.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3fe7fe18102d637fead080f262946721
+_md5_=1ce2bdbb3b76bd9f4b3277c89b67f241
