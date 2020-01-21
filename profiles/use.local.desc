@@ -1593,6 +1593,7 @@ dev-haskell/distributive:lib-werror - Compile with the ghc -Werror option
 dev-haskell/encoding:systemencoding - Provide the getSystemEncoding action to query the locale.
 dev-haskell/entropy:halvm - Build for the HaLVM.
 dev-haskell/filestore:maxcount - Make use of a recent (>= 2.3.0) Darcs feature which vastly improves the performance of 'latest'. You should disable this flag if you plan to use gitit with an older version of Darcs, or 'latest' will raise an error.
+dev-haskell/foundation:experimental - enable building experimental features, known as highly unstable or without good support cross-platform
 dev-haskell/glib:closure-signals - Use the the GClosure-based signals implementation.
 dev-haskell/gtk:deprecated - Include definitions in this library that are considered obsolete.
 dev-haskell/gtk:fmode-binary - Set the default file translation mode for file I/O operations to _O_BINARY.

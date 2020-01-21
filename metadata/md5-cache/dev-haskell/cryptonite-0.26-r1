@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile configure install postinst postrm setup test
+DEPEND=>=dev-haskell/basement-0.0.6:=[profile?] >=dev-haskell/memory-0.14.18:=[profile?] >=dev-lang/ghc-7.4.1:= virtual/libc >=dev-haskell/cabal-1.18 test? ( dev-haskell/memory dev-haskell/tasty dev-haskell/tasty-hunit dev-haskell/tasty-kat dev-haskell/tasty-quickcheck ) doc? ( || ( dev-haskell/haddock >=dev-lang/ghc-7.10.2 ) ) hscolour? ( dev-haskell/hscolour )
+DESCRIPTION=Cryptography Primitives sink
+EAPI=7
+HOMEPAGE=https://github.com/haskell-crypto/cryptonite
+IUSE=+cpu-flags-x86-rdrand +cpu_flags_x86_aes cpu_flags_x86_sse cpu_flags_x86_sse4_1 +integer-gmp doc hscolour profile test
+KEYWORDS=~amd64 ~x86
+LICENSE=BSD
+RDEPEND=>=dev-haskell/basement-0.0.6:=[profile?] >=dev-haskell/memory-0.14.18:=[profile?] >=dev-lang/ghc-7.4.1:= virtual/libc
+RESTRICT=!test? ( test )
+SLOT=0/0.26
+SRC_URI=https://hackage.haskell.org/package/cryptonite-0.26/cryptonite-0.26.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	ghc-package	fac7ea2deca456f8e70b85a6ebef9e8a	haskell-cabal	433b5153bec6b0ffe21c7be2210e8396	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=b737536a81ff8b5c81456099177ddd0d

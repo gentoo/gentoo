@@ -3492,6 +3492,7 @@ dev-haskell/base-prelude 1.0.1.1: The most complete prelude formed solely from t
 dev-haskell/base-unicode-symbols 0.2.2.4 0.2.4.2: Unicode alternatives for common functions and operators
 dev-haskell/base16-bytestring 0.1.1.6: Fast base16 (hex) encoding and decoding for ByteStrings
 dev-haskell/base64-bytestring 1.0.0.1 1.0.0.2: Fast base64 encoding and decoding for ByteStrings
+dev-haskell/basement 0.0.11: Foundation scrap box of array & string
 dev-haskell/basic-prelude 0.3.11 0.4.1: An enhanced core prelude; a common foundation for alternate preludes
 dev-haskell/bencode 0.5-r1 0.6.0.0: Parser and printer for bencoded data
 dev-haskell/bifunctors 3.2.0.1 4.1.1.1 4.2.1 5 5.4.1: Haskell 98 bifunctors, bifoldables and bitraversables
@@ -3588,7 +3589,7 @@ dev-haskell/cryptohash 0.9.1 0.10.0 0.11.1 0.11.6 0.11.9: collection of crypto h
 dev-haskell/cryptohash-conduit 0.1.1: cryptohash conduit
 dev-haskell/cryptohash-cryptoapi 0.1.3 0.1.4: Crypto-api interfaces for cryptohash
 dev-haskell/cryptohash-sha256 0.11.100.1: Fast, pure and practical SHA-256 implementation
-dev-haskell/cryptonite 0.21: Cryptography Primitives sink
+dev-haskell/cryptonite 0.21 0.26-r1: Cryptography Primitives sink
 dev-haskell/css-text 0.1.2.1 0.1.3.0: CSS parser and renderer
 dev-haskell/curl 1.3.8: Haskell binding to libcurl
 dev-haskell/data-accessor 0.2.2.7 0.2.3: Utilities for accessing and manipulating fields of records
@@ -3664,6 +3665,7 @@ dev-haskell/fingertree 0.1.1.0 0.1.4.2: Generic finger-tree structure, with exam
 dev-haskell/fixed 0.2.1.1: Signed 15.16 precision fixed point arithmetic
 dev-haskell/fmlist 0.9 0.9.3: FoldMap lists
 dev-haskell/foldl 1.0.7 1.1.3 1.2.3: Composable, streaming, and efficient left folds
+dev-haskell/foundation 0.0.25: Alternative prelude with batteries and no dependencies
 dev-haskell/free 4.2 4.5 4.9 4.10.0.1 4.11 4.12.4: Monads for free
 dev-haskell/frown 0.6.2.3: LALR(k) parser generator
 dev-haskell/fsnotify 0.0.11 0.1.0.3 0.2.1: Cross platform library for file change notification
@@ -3822,7 +3824,7 @@ dev-haskell/magic 1.1: Interface to C file/magic library
 dev-haskell/markdown-unlit 0.2.0.1: Literate Haskell support for Markdown
 dev-haskell/math-functions 0.1.5.2 0.1.6.0: Special functions and Chebyshev polynomials
 dev-haskell/megaparsec 6.5.0-r1: Monadic parser combinators
-dev-haskell/memory 0.7 0.10 0.14.1: memory and related abstraction stuff
+dev-haskell/memory 0.7 0.10 0.14.1 0.15.0: memory and related abstraction stuff
 dev-haskell/memotrie 0.6.4: Trie-based memo functions
 dev-haskell/mersenne-random-pure64 0.2.0.5 0.2.2.0: Generate high quality pseudorandom numbers purely using a Mersenne Twister
 dev-haskell/microlens 0.4.8.0 0.4.11.2: A tiny lens library with no dependencies
@@ -15101,7 +15103,7 @@ net-misc/netpipe 1.0.0_beta2-r2: tool to reliably distribute binary data using U
 net-misc/netpipes 4.2-r2: a package to manipulate BSD TCP/IP stream sockets
 net-misc/netsed 0.01b-r1 0.01c: Small tool for altering forwarded network data in real time
 net-misc/netstat-nat 1.4.10: Display NAT connections
-net-misc/networkmanager 1.18.4-r1 1.18.4-r2: A set of co-operative tools that make networking simple and straightforward
+net-misc/networkmanager 1.18.4-r1 1.18.4-r3: A set of co-operative tools that make networking simple and straightforward
 net-misc/nextcloud-client 2.5.2 2.6.0 2.6.1 2.6.2: Desktop Syncing Client for Nextcloud
 net-misc/nicstat 1.95: Network traffic statics utility for Solaris and Linux
 net-misc/npapi-sdk 0.27.2 9999: NPAPI headers bundle
