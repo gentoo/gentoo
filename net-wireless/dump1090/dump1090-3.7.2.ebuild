@@ -16,9 +16,9 @@ HOMEPAGE="https://github.com/flightaware/dump1090"
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/flightaware/${PN}.git"
-	KEYWORDS="amd64"
+	KEYWORDS="amd64 x86"
 else
-	KEYWORDS="amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	#COMMIT="fb5942dba6505a21cbafc7905a5a7c513b214dc9"
 	#SRC_URI="https://github.com/flightaware/dump1090/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	#S="${WORKDIR}/${PN}-${COMMIT}"
