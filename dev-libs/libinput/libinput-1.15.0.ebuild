@@ -61,7 +61,7 @@ src_configure() {
 		$(meson_use doc documentation)
 		$(meson_use input_devices_wacom libwacom)
 		-Dtests=false # tests are restricted
-		-Dudev-dir="$(get_udevdir)"
+		-Dudev-dir="${EPREFIX}$(get_udevdir)"
 	)
 	meson_src_configure
 }
