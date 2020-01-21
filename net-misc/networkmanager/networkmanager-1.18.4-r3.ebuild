@@ -262,7 +262,7 @@ multilib_src_install() {
 		# Install completions at proper place, bug #465100
 		gnome2_src_install completiondir="$(get_bashcompdir)"
 		insinto /usr/lib/NetworkManager/conf.d #702476
-		doins "${S}"/examples/nm-conf.d/{30-anon,31-mac-addr-change}.conf
+		doins "${S}"/examples/nm-conf.d/31-mac-addr-change.conf
 	else
 		local targets=(
 			install-libLTLIBRARIES
