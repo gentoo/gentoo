@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop flag-o-matic qmake-utils
+inherit desktop flag-o-matic qmake-utils xdg-utils
 
 DESCRIPTION="UNetbootin installs Linux/BSD distributions to a partition or USB drive"
 HOMEPAGE="https://github.com/unetbootin/unetbootin"
@@ -100,4 +100,12 @@ src_install() {
 			doins ${PN}_${lingua}.qm
 		fi
 	done
+}
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
 }
