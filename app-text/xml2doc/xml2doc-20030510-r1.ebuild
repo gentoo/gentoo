@@ -23,6 +23,8 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-pointer_fix.patch
 	# Don't strip symbols from binary (bug #152266)
 	"${FILESDIR}"/${P}-makefile.patch
+	# fix GCC 10 -fno-common change
+	"${FILESDIR}"/${P}-gcc10-no-common.patch
 )
 
 src_configure() {
