@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2020-01-21)
+# Blocks removal of EOL gtkglext, no revdeps.
+# Removal in 30 days.
+games-strategy/ufoai
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
 # Last release over 13 years ago, depends on EOL gtkglext.
 # No revdeps, Removal in 30 days.
 media-sound/glmix
