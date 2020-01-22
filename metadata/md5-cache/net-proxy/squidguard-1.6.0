@@ -11,4 +11,4 @@ RDEPEND=|| ( sys-libs/db:5.3 sys-libs/db:4.8 ) ldap? ( net-nds/openldap:0 )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/s/squidguard/squidguard_1.6.0.orig.tar.gz -> squidguard-1.6.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	db-use	501a5d0963e0d17f30260023f292ae8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=28afa61dd77297e198d72caba1a419fb
+_md5_=bf43844fb81dee4c077e820363d774c2
