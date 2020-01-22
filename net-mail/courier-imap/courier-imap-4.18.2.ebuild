@@ -187,7 +187,7 @@ src_install() {
 
 	dosbin "${FILESDIR}/mkimapdcert" "${FILESDIR}/mkpop3dcert"
 
-	dosym ../../usr/sbin/courierlogger "/usr/$(get_libdir)/${PN}/courierlogger"
+	dosym ../../sbin/courierlogger "/usr/$(get_libdir)/${PN}/courierlogger"
 
 	for initd in courier-{imapd,pop3d}{,-ssl} ; do
 		sed -e "s:GENTOO_LIBDIR:$(get_libdir):g" \
