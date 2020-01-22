@@ -10225,7 +10225,6 @@ dev-tcltk/tclxml 3.2-r2: Pure Tcl implementation of an XML parser
 dev-tcltk/tdom 0.8.3-r4 0.9.1: A XML/DOM/XPath/XSLT Implementation for Tcl
 dev-tcltk/thread 2.8.2: Tcl Thread extension
 dev-tcltk/tix 8.4.3-r1: A widget library for Tcl/Tk
-dev-tcltk/tkXwin 1.0-r4: Tcl/Tk library to detect idle periods of an X session
 dev-tcltk/tkcon 2.5-r1: Tk GUI console
 dev-tcltk/tkdnd 2.9.2: Adds native drag & drop capabilities to tk toolkit
 dev-tcltk/tkimg 1.4.7 1.4.9: Adds a lot of image formats to Tcl/Tk
