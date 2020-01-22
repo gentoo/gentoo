@@ -215,6 +215,6 @@ src_install() {
 	if use doc; then
 		insinto /usr/share/doc/"${PF}"/html
 		doins -r build/javadoc/.
-		dosym /usr/share/doc/"${PF}" /usr/share/doc/"${PN}-${SLOT}"
+		dosym "${EPREFIX}"/usr/share/doc/"${PF}" /usr/share/doc/"${PN}-${SLOT}"
 	fi
 }
