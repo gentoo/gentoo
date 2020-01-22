@@ -58,7 +58,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	app-arch/zip
-	>=dev-java/ant-core-1.10.5-r2:0
+	>=dev-java/ant-core-1.10.7-r1:0
 	dev-java/antlr:0
 	dev-java/antlr:3.5
 	dev-java/hamcrest-core:0
