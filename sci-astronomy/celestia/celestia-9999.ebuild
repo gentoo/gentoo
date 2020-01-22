@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit desktop flag-o-matic xdg cmake
+
 if [[ "${PV}" = 9999 ]] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/CelestiaProject/Celestia.git"
@@ -10,7 +12,6 @@ else
 	SRC_URI="https://github.com/${PN^}Project/${PN^}/archive/${PV/_/-}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
-inherit desktop flag-o-matic xdg cmake
 
 DESCRIPTION="OpenGL 3D space simulator"
 HOMEPAGE="https://celestia.space"
