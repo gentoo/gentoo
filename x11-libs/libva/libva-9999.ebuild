@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,7 +15,7 @@ if [[ ${PV} = *9999* ]] ; then # Live ebuild
 	AUTOTOOLS_AUTORECONF="yes"
 else
 	SRC_URI="https://github.com/intel/libva/releases/download/${PV}/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="MIT"
