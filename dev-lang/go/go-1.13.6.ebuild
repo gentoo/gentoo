@@ -150,7 +150,7 @@ pkg_pretend()
 		die "CHOST CTARGET pair unsupported: CHOST=${CHOST} CTARGET=${CTARGET}"
 	fi
 	[[ ${MERGE_TYPE} != binary ]] &&
-		use system-bootstrap && ! has_version "dev-lang/go" &&
+		use system-bootstrap && ! has_version -b "dev-lang/go" &&
 		die "dev-lang/go must be installed to use the system-bootstrap use flag"
 }
 
