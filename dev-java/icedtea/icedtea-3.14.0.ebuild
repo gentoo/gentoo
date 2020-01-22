@@ -353,7 +353,7 @@ src_install() {
 		rm -v "${ddest}"/src.zip || die
 	fi
 
-	dosym /usr/share/doc/${PF} /usr/share/doc/${PN}${SLOT}
+	dosym "${EPREFIX}"/usr/share/doc/"${PF}" usr/share/doc/"${PN}${SLOT}"
 
 	# Fix the permissions.
 	find "${ddest}" \! -type l \( -perm /111 -exec chmod 755 {} \; -o -exec chmod 644 {} \; \) || die
