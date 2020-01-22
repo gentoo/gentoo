@@ -33,6 +33,53 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2020-01-21)
+# Upstream disappeared, no other distro still carries this,
+# blocks removal of EOL gtkglext, no revdeps.
+# Removal in 30 days.
+games-strategy/gwp
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
+# Blocks removal of EOL gtkglext, no revdeps.
+# Removal in 30 days.
+games-strategy/ufoai
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
+# Last release over 13 years ago, depends on EOL gtkglext.
+# No revdeps, Removal in 30 days.
+media-sound/glmix
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
+# All released versions depend on EOL gtkglext, no revdeps.
+# Bug #644334, #694834. Removal in 30 days.
+sci-astronomy/celestia
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
+# Last release over 2 years ago, depends on EOL gtkglext.
+# No revdeps, Removal in 30 days.
+sci-chemistry/gabedit
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
+# Last release over 13 years ago, depends on EOL gtkglext, no revdeps.
+# Bug #353119, #435676. Removal in 30 days.
+sci-chemistry/ghemical
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
+# Last release over 18 years ago, depends on EOL gtkglext.
+# No revdeps, Removal in 30 days.
+sci-physics/lightspeed
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
+# Last release over 7 years ago, depends on EOL gtkglext.
+# No revdeps, Removal in 30 days.
+sci-visualization/gfsview
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
+# No sign of py3 port, depends on EOL pygtk and gtkglext.
+# Many open bugs, no revdeps.
+# Bug #443088, #582454, #598682, #623314. Removal in 30 days.
+sci-visualization/gwyddion
+
+# David Seifert <soap@gentoo.org> (2020-01-21)
 # No sign of py3 port, depends on EOL pygtk. No revdeps.
 # Bug #706030. Removal in 30 days.
 app-misc/gourmet
