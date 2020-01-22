@@ -8757,7 +8757,6 @@ dev-python/s3fs 0.1.2 0.1.5: Pythonic file interface to S3
 dev-python/s3transfer 0.1.13-r1 0.2.0 0.2.1: An Amazon S3 Transfer Manager
 dev-python/sabyenc 3.3.5 3.3.6: Module providing raw yEnc encoding/decoding for SABnzbd
 dev-python/scandir 1.10.0 1.10.0-r1: A better directory iterator and faster os.walk()
-dev-python/scapy-python3 0.23: Packet crafting/sending/... PCAP processing tool with python3 compatibility
 dev-python/schedule 0.4.2 0.5.0: Python job scheduling for humans
 dev-python/schema 0.6.6: Library for validating Python data structures
 dev-python/scoop 0.7.0-r1: Distributed Evolutionary Algorithms in Python
