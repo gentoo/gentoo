@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-MY_EXTRAS_VER="20191031-0134Z"
+MY_EXTRAS_VER="20200122-2007Z"
 
 CMAKE_MAKEFILE_GENERATOR=emake
 
 inherit cmake-utils flag-o-matic linux-info \
 	multiprocessing prefix toolchain-funcs check-reqs
 
-MY_BOOST_VERSION="1.69.0"
+MY_BOOST_VERSION="1.70.0"
 MY_PV=$(ver_rs 3 '-')
 MY_PV="${MY_PV//_pre*}"
 MY_PN="Percona-Server"
@@ -40,7 +40,13 @@ IUSE="cjk cracklib debug jemalloc latin1 libressl numa pam +perl profiling
 # Tests always fail when libressl is enabled due to hard-coded ciphers in the tests
 RESTRICT="!test? ( test ) libressl? ( test )"
 
-REQUIRED_USE="?? ( tcmalloc jemalloc )"
+REQUIRED_USE="?? ( tcmalloc jemalloc )
+	cjk? ( server )
+	jemalloc? ( server )
+	numa? ( server )
+	profiling? ( server )
+	router? ( server )
+	tcmalloc? ( server )"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
@@ -60,44 +66,46 @@ fi
 
 PATCHES=(
 	"${MY_PATCH_DIR}"/20001_all_fix-minimal-build-cmake-mysql-8.0.17.patch
-	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-8.0.17.patch
+	"${MY_PATCH_DIR}"/20007_all_cmake-debug-werror-8.0.18.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-5.7.23-fix-grant_user_lock-a-root.patch
-	"${MY_PATCH_DIR}"/20018_all_percona-server-8.0.17-without-clientlibs-tools.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-8.0.18-without-clientlibs-tools.patch
 	"${MY_PATCH_DIR}"/20018_all_mysql-8.0.17-add-protobuf-3.8+-support.patch
-	"${MY_PATCH_DIR}"/20018_all_percona-server-8.0.17-fix-libressl-support.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-8.0.18-fix-libressl-support.patch
 	"${MY_PATCH_DIR}"/20018_all_percona-server-8.0.16-dont-install-tokudb-misc-files.patch
 	"${MY_PATCH_DIR}"/20038_all_percona-server-8.0.16-PS-5873.patch
+	"${MY_PATCH_DIR}"/20018_all_mysql-8.0.19-fix-events_bugs-test.patch
+	"${MY_PATCH_DIR}"/20018_all_percona-server-8.0.18-fix-building-with-make-4.3.patch
 )
 
 # Be warned, *DEPEND are version-dependant
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
 	>=app-arch/lz4-0_p131:=
-	dev-libs/icu:=
-	dev-libs/libedit
-	dev-libs/libevent:=
-	>=dev-libs/protobuf-3.8:=
-	net-libs/libtirpc:=
+	sys-libs/ncurses:0=
 	>=sys-libs/zlib-1.2.3:0=
-	cjk? ( app-text/mecab:= )
-	jemalloc? ( dev-libs/jemalloc:0= )
-	kernel_linux? (
-		dev-libs/libaio:0=
-		sys-process/procps:0=
-	)
 	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
-	numa? ( sys-process/numactl )
 	server? (
+		dev-libs/icu:=
+		dev-libs/libevent:=
+		>=dev-libs/protobuf-3.8:=
+		net-libs/libtirpc:=
+		net-misc/curl:=
+		cjk? ( app-text/mecab:= )
+		jemalloc? ( dev-libs/jemalloc:0= )
+		kernel_linux? (
+			dev-libs/libaio:0=
+			sys-process/procps:0=
+		)
+		numa? ( sys-process/numactl )
 		pam? ( sys-libs/pam:0= )
+		tcmalloc? ( dev-util/google-perftools:0= )
 	)
-	tcmalloc? ( dev-util/google-perftools:0= )
 "
 DEPEND="${COMMON_DEPEND}
 	|| ( >=sys-devel/gcc-3.4.6 >=sys-devel/gcc-apple-4.0 )
-	dev-libs/re2
-	net-libs/rpcsvc-proto
 	virtual/yacc
+	server? ( net-libs/rpcsvc-proto )
 	test? (
 		acct-group/mysql acct-user/mysql
 		dev-perl/JSON
@@ -242,7 +250,8 @@ src_configure(){
 		-DINSTALL_SUPPORTFILESDIR="${EPREFIX}/usr/share/mysql"
 		-DCOMPILATION_COMMENT="Gentoo Linux ${PF}"
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
-		-DWITH_EDITLINE=system
+		# Using bundled editline to get CTRL+C working
+		-DWITH_EDITLINE=bundled
 		-DWITH_ZLIB=system
 		-DWITH_SSL=system
 		-DWITH_LIBWRAP=0
@@ -258,6 +267,18 @@ src_configure(){
 		-DWITH_BOOST="${WORKDIR}/boost_$(ver_rs 1- _ ${MY_BOOST_VERSION})"
 		-DWITH_ROUTER=$(usex router ON OFF)
 	)
+
+	if is-flagq -fno-lto ; then
+		einfo "LTO disabled via {C,CXX,F,FC}FLAGS"
+		mycmakeargs+=( -DWITH_LTO=OFF )
+	elif is-flagq -flto ; then
+		einfo "LTO forced via {C,CXX,F,FC}FLAGS"
+		myconf+=( -DWITH_LTO=ON )
+	else
+		# Disable automagic
+		myconf+=( -DWITH_LTO=OFF )
+	fi
+
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
 	else
@@ -266,21 +287,9 @@ src_configure(){
 
 	mycmakeargs+=( -DWITHOUT_CLIENTLIBS=YES )
 
-	# client/mysql.cc:1131:16: error: redefinition of ‘struct _hist_entry’
-	mycmakeargs+=(
-		-DUSE_LIBEDIT_INTERFACE=0
-		-DUSE_NEW_EDITLINE_INTERFACE=1
-		-DHAVE_HIST_ENTRY=1
-	)
-
 	mycmakeargs+=(
 		-DWITH_ICU=system
-		-DWITH_RE2=system
-		-DWITH_LIBEVENT=system
 		-DWITH_LZ4=system
-		-DWITH_PROTOBUF=system
-		-DWITH_MECAB=$(usex cjk system OFF)
-		-DWITH_NUMA=$(usex numa ON OFF)
 		# Our dev-libs/rapidjson doesn't carry necessary fixes for std::regex
 		-DWITH_RAPIDJSON=bundled
 	)
@@ -311,7 +320,11 @@ src_configure(){
 		mycmakeargs+=(
 			-DWITH_EXTRA_CHARSETS=all
 			-DWITH_DEBUG=$(usex debug)
+			-DWITH_LIBEVENT=system
+			-DWITH_MECAB=$(usex cjk system OFF)
+			-DWITH_NUMA=$(usex numa ON OFF)
 			-DWITH_PAM=$(usex pam)
+			-DWITH_PROTOBUF=system
 		)
 
 		if use profiling ; then
@@ -419,6 +432,8 @@ src_test() {
 	disabled_tests+=( "sys_vars.myisam_data_pointer_size_func;87935;Test will fail on slow hardware")
 	disabled_tests+=( "main.mysqlpump_basic_lz4;6042;Extra tool output causes false positive" )
 	disabled_tests+=( "main.ssl_bug75311;5996;Known test failure" )
+	disabled_tests+=( "x.message_protobuf_nested;6803;False positive caused by protobuff-3.11+" )
+	disabled_tests+=( "main.ssl_san;6808;False positive on IPv6-enabled hosts" )
 
 	local test_ds
 	for test_infos_str in "${disabled_tests[@]}" ; do
