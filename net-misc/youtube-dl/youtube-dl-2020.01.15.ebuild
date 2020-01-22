@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/ytdl-org/youtube-dl/"
 SRC_URI="https://youtube-dl.org/downloads/${PV}/${P}.tar.gz"
 LICENSE="public-domain"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="amd64 arm ~arm64 hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 SLOT="0"
 IUSE="test"
 RDEPEND="
