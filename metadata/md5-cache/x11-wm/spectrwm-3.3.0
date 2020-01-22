@@ -1,0 +1,12 @@
+DEFINED_PHASES=compile install prepare
+DEPEND=x11-libs/libX11 x11-libs/libXcursor x11-libs/libXrandr x11-libs/libXt x11-libs/xcb-util
+DESCRIPTION=Small dynamic tiling window manager for X11
+EAPI=7
+HOMEPAGE=https://github.com/conformal/spectrwm
+KEYWORDS=~amd64 ~x86
+LICENSE=ISC
+RDEPEND=!x11-wm/scrotwm x11-misc/dmenu
+SLOT=0
+SRC_URI=https://github.com/conformal/spectrwm/archive/SPECTRWM_3_3_0.tar.gz -> spectrwm-3.3.0.tar.gz
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=c822ccdc3f31f4e656f5cdc932d4ed89

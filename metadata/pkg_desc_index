@@ -2110,7 +2110,7 @@ app-misc/joy2key 1.6.3-r1: An application that translates joystick events to key
 app-misc/joymouse 0.5: An application that translates joystick events to mouse events
 app-misc/jq 1.5-r3 1.6-r3: A lightweight and flexible command-line JSON processor
 app-misc/kanatest 0.4.8: Visual flashcard tool for memorizing the Japanese Hiragana and Katakana alphabet
-app-misc/khal 0.9.7 0.9.8 0.9.9-r1 0.9.10 0.10.1-r1: A CalDAV based calendar
+app-misc/khal 0.9.10 0.10.1-r1: A CalDAV based calendar
 app-misc/khard 0.11.4 0.12.2 0.13.0: Console CardDAV client
 app-misc/klavaro 3.0.1: Another free touch typing tutor program
 app-misc/kryoflux-dtc 2.6: KryoFlux Host Software
@@ -19045,7 +19045,7 @@ x11-wm/ratpoison 1.4.8-r1 1.4.9 9999: window manager without mouse dependency
 x11-wm/sawfish 1.12.0: Extensible window manager using a Lisp-based scripting language
 x11-wm/selectwm 0.4.1-r1: window manager selector tool
 x11-wm/sithwm 1.2.3: Minimalist Window Manager for X
-x11-wm/spectrwm 3.1.0 3.2.0: Small dynamic tiling window manager for X11
+x11-wm/spectrwm 3.1.0 3.2.0 3.3.0: Small dynamic tiling window manager for X11
 x11-wm/stumpwm 18.05: Stumpwm is a Window Manager written entirely in Common Lisp.
 x11-wm/stumpwm-contrib 20180128 99999999: Extension Modules for StumpWM
 x11-wm/subtle 0.11.3244 9999: A manual tiling window manager
