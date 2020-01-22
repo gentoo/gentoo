@@ -18,7 +18,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="test"
 
 RDEPEND="
 	>=dev-python/six-1.5[${PYTHON_USEDEP}]
@@ -26,13 +25,12 @@ RDEPEND="
 "
 BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? (
 		dev-python/freezegun[${PYTHON_USEDEP}]
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 	)
 "
-
-RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}/0001-zoneinfo-Get-timezone-data-from-system-tzdata-r1.patch"
@@ -42,11 +40,6 @@ PATCHES=(
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# avoid a setuptools_scm dependency
-	sed -i "s:use_scm_version=True:version='${PV}',name='${PN//-/.}':" setup.py || die
-	sed -r -i "s:setuptools_scm[[:space:]]*([><=]{1,2}[[:space:]]*[0-9.a-zA-Z]+|)[[:space:]]*::" \
-		setup.cfg || die
-
 	# don't install zoneinfo tarball
 	sed -i '/package_data=/d' setup.py || die
 
