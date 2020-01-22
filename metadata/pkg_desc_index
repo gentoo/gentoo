@@ -8582,7 +8582,7 @@ dev-python/python-language-server 0.31.2: An implementation of the Language Serv
 dev-python/python-ldap 2.4.19-r1 2.4.32 3.1.0-r1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
-dev-python/python-linux-procfs 0.4.6 9999: Python classes to extract information from the Linux kernel /proc files
+dev-python/python-linux-procfs 0.4.6 0.6.1 9999: Python classes to extract information from the Linux kernel /proc files
 dev-python/python-ly 0.9.5: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.08-r1 1.11 1.12 1.12-r1: Python interface to lzo
 dev-python/python-magic 0.4.15 0.4.15-r1: Access the libmagic file type identification library
@@ -17010,7 +17010,7 @@ sys-apps/thunderbolt-software-user-space 0.9.3-r1: Thunderbolt(TM) user-space co
 sys-apps/timer_entropyd 0.3: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.7.5 0.7.6 0.7.7 0.7.8 0.8.0 0.8.1 9999: Common linux commands in a multicall binary
-sys-apps/tuned 2.7.0 2.7.1-r2 2.7.1-r3 2.10.0: Daemon for monitoring and adaptive tuning of system devices
+sys-apps/tuned 2.10.0 2.13.0: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/uam 0.3.2-r1 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.99 1.1: Proxy program for two connections set up by a UCSPI server and a UCSPI client
 sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b 0.99 0.99e: Command-line tools for building SSL client-server applications
