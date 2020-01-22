@@ -2119,7 +2119,7 @@ app-misc/lcd4linux 0.11.0_pre20170527-r4: A small program that grabs information
 app-misc/lcdproc 0.5.9: Displays real-time system information from your Linux/*BSD box on a LCD
 app-misc/leave 20100918-r1: FreeBSD command-line tool that reminds you when its time to leave
 app-misc/ledit 2.03: A line editor to be used with interactive commands
-app-misc/lfm 2.3-r1: Last File Manager is a powerful file manager for the console
+app-misc/lfm 2.3-r1 3.1: Last File Manager is a powerful file manager for the console
 app-misc/linux-logo 5.11-r4: A utility that displays an ANSI/ASCII logo and some system information
 app-misc/linuxspa 0.7.1-r2: Linux Serial Protocol Analyser
 app-misc/lirc 0.10.1 0.10.1-r1 0.10.1-r2: decode and send infra-red signals of many commonly used remote controls
@@ -8551,7 +8551,7 @@ dev-python/python-cluster 1.2.2: Allows grouping a list of arbitrary objects int
 dev-python/python-cstruct 1.7: C-style structs for Python
 dev-python/python-ctags 1.2.4 1.3.0: Exuberant Ctags indexing python bindings
 dev-python/python-daemon 1.6-r1 2.1.1 2.1.2: Library to implement a well-behaved Unix daemon process
-dev-python/python-dateutil 2.6.1 2.7.1 2.7.2 2.7.2-r1 2.7.3 2.7.4 2.7.5 2.8.0 2.8.1: Extensions to the standard Python datetime module
+dev-python/python-dateutil 2.7.2-r1 2.8.0 2.8.1-r1: Extensions to the standard Python datetime module
 dev-python/python-ddp 0.1.5: An event driven ddp client
 dev-python/python-debian 0.1.31 0.1.36: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.11.0: Python bindings to the Designate API.
