@@ -148,7 +148,6 @@ PATCHES=(
 	"${FILESDIR}/chromium-80-unbundle-libxml.patch"
 	"${FILESDIR}/chromium-80-gcc-quiche.patch"
 	"${FILESDIR}/chromium-80-gcc-blink.patch"
-	"${FILESDIR}/chromium-80-gcc-abstract.patch"
 	"${FILESDIR}/chromium-81-gcc-dav1d.patch"
 	"${FILESDIR}/chromium-81-gcc-template.patch"
 	"${FILESDIR}/chromium-81-gcc-noexcept.patch"
