@@ -1,0 +1,14 @@
+Title: Stable alpha keywords removed
+Author: Matt Turner <mattst88@gentoo.org>
+Posted: 2020-01-23
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Keyword: alpha
+
+The Gentoo/Alpha team no longer thinks that the time invested in package
+stabilization is warranted for the small number of users on Alpha. As a
+result, we will drop all "alpha" keywords to "~alpha" on 2020-01-25 and will
+add "~alpha" to ACCEPT_KEYWORDS in the profile.
+
+Users need not make any changes to their systems, and the Gentoo/Alpha team
+has no plans to remove support for the architecture.
