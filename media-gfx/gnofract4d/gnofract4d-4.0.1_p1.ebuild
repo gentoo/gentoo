@@ -46,7 +46,7 @@ src_prepare() {
 }
 
 python_test() {
-	virtx pytest fract4d fract4dgui test.py || die
+	virtx pytest fract4d fract4dgui test.py
 }
 
 python_compile_all() {
