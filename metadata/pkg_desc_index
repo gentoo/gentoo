@@ -1390,7 +1390,7 @@ app-emacs/flashcard 2.3.3: An Emacs Lisp package for drilling on questions and a
 app-emacs/flim 1.14.9-r2 1.14.9_p20190526: A library to provide basic features about message representation or encoding
 app-emacs/folding 2019.0524.1621: A folding-editor-like Emacs minor mode
 app-emacs/ghc-mod 5.4.0.0 5.5.0.0-r1 5.7.0.0: Happy Haskell Programming
-app-emacs/ghub 2.0.1 3.2.0: Minuscule client library for the Git forge APIs
+app-emacs/ghub 2.0.1 3.2.0 3.3.0: Minuscule client library for the Git forge APIs
 app-emacs/gnuplot-mode 0.7.0: Gnuplot mode for Emacs
 app-emacs/gnuserv 3.12.8-r5: Attach to an already running Emacs
 app-emacs/go-mode 1.5.0: An improved Go mode for emacs
@@ -10427,7 +10427,7 @@ dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2019.3.2: A complete toolset for C and C++ development
 dev-util/cloc 1.72 1.76-r1 1.80 1.82: Count Lines of Code
-dev-util/cmake 3.13.5 3.14.6 3.16.2-r1: Cross platform Make
+dev-util/cmake 3.13.5 3.14.6 3.16.2-r1 3.16.3: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
