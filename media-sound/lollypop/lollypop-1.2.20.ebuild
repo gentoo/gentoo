@@ -5,12 +5,11 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
-HASH="5918e6040337c71b8b88932301c7de0e"
 inherit python-r1 gnome2-utils meson xdg-utils
 
 DESCRIPTION="Modern music player for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Lollypop"
-SRC_URI="https://gitlab.gnome.org/World/${PN}/uploads/${HASH}/${P}.tar.xz"
+SRC_URI="https://adishatz.org/${PN}/${P}.tar.xz"
 KEYWORDS="~amd64"
 
 LICENSE="GPL-3"
