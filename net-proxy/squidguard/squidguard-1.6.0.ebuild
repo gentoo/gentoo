@@ -51,9 +51,11 @@ src_prepare() {
 
 	eapply_user
 	eautoreconf
-	# eautomake does not work because of borked source code of squidguard buildsystem
-	# only needed to create install-sh and other missing stuff
-	automake --no-force --add-missing --copy
+
+	# Workaround for missing install-sh, bug #705374
+	local amver=$(best_version sys-devel/automake)
+	amver=$(ver_cut 1-2 "${amver#sys-devel/automake-}")
+	cp -p "${BROOT}/usr/share/automake-${amver}/install-sh" . || die
 }
 
 src_configure() {
