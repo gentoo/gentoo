@@ -81,7 +81,7 @@ src_install() {
 
 		dobin hmakeindex hbibtex
 
-	cd "${S}" die
+	cd "${S}" || die
 		dodoc ChangeLog.ko NEWS* README.en
 
 	cd "${WORKDIR}"/uhc-fonts-1.0 || die
