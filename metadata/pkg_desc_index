@@ -50,6 +50,7 @@ acct-group/logstash 0: Logstash program group
 acct-group/lp 0: System group: lp
 acct-group/mail 0: Mail program group
 acct-group/man 0: System group: man
+acct-group/memcached 0: System group: memcached
 acct-group/messagebus 0: System group: messagebus
 acct-group/milter-regex 0: Group for mail-filter/milter-regex
 acct-group/minecraft 0: A group for the Minecraft server
@@ -175,6 +176,7 @@ acct-user/knot 0: User for knot DNS server
 acct-user/logstash 0: Logstash program user
 acct-user/mail 0: Mail program user
 acct-user/man 1: System user: man
+acct-user/memcached 0: User for the memcached service
 acct-user/messagebus 0: System user: messagebus
 acct-user/milter-regex 0: User for mail-filter/milter-regex
 acct-user/minecraft 0: A user for the Minecraft server
@@ -15069,7 +15071,7 @@ net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Tr
 net-misc/lldpd 1.0.3 1.0.4: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.9.98 1.10.2 1.10.2-r1: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.5.14 1.5.19 1.5.20: High-performance, distributed memory object caching system
+net-misc/memcached 1.5.14 1.5.19 1.5.20 1.5.21: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.8.6 9999: Simple, powerful and moeful twitter client
