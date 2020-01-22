@@ -1632,8 +1632,8 @@ app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 4.18 4.19 4.20 4.21 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 4.18 4.19 4.20 4.21 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 4.19 4.20 4.21 5.0 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 4.19 4.20 4.21 5.0 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20190912 20191224 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -1748,7 +1748,7 @@ app-i18n/ibus-anthy 1.5.9 1.5.10: Japanese Anthy engine for IBus
 app-i18n/ibus-cangjie 2.4-r1: Chinese Cangjie and Quick engines for IBus
 app-i18n/ibus-chewing 1.5.1-r1 1.6.1: Chinese Chewing engine for IBus
 app-i18n/ibus-fbterm 1.0.1: IBus client for FbTerm
-app-i18n/ibus-handwrite 2.1.4-r1 3.0.0: Hand write recognition/input for IBus
+app-i18n/ibus-handwrite 3.0.0: Hand write recognition/input for IBus
 app-i18n/ibus-hangul 1.5.1: Korean Hangul engine for IBus
 app-i18n/ibus-input-pad 1.4.99_pre20140916: Input Pad for IBus
 app-i18n/ibus-kkc 1.5.22: Japanese Kana Kanji conversion engine for IBus
