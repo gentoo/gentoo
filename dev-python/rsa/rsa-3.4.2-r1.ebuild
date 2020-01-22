@@ -1,9 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -22,7 +23,6 @@ RDEPEND="
 	dev-python/traceback2[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
-	>=dev-python/setuptools-0.6.10[${PYTHON_USEDEP}]
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/unittest2[${PYTHON_USEDEP}]
