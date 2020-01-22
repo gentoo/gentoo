@@ -8491,7 +8491,7 @@ dev-python/pysol_cards 0.8.6 0.8.7: Deal PySol FreeCell cards
 dev-python/pysolr 3.3.2 3.6.0 3.8.1: Lightweight python wrapper for Apache Solr
 dev-python/pyspectrum2 0.2.0: Implements a protobuf-based interface for Spectrum2 python-based backends
 dev-python/pyspf 2.0.12: Python implementation of the Sender Policy Framework (SPF) protocol
-dev-python/pysrt 1.1.1 1.1.1-r1 9999: Python library used to edit or create SubRip files
+dev-python/pysrt 1.1.1-r1 1.1.2 9999: Python library used to edit or create SubRip files
 dev-python/pystache 0.5.4: Mustache for Python
 dev-python/pysvg 0.2.2_p3: Python SVG document creation library
 dev-python/pysvn 1.8.0: Object-oriented python bindings for subversion
