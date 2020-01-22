@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_PV=${PV/_rc/-rc}
 	SRC_URI="https://github.com/swaywm/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 arm64 x86"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
@@ -33,6 +33,7 @@ DEPEND="
 	x11-libs/libxkbcommon
 	x11-libs/pango
 	x11-libs/pixman
+	media-libs/mesa[gles2]
 	elogind? ( >=sys-auth/elogind-239 )
 	swaybar? ( x11-libs/gdk-pixbuf:2 )
 	swaybg? ( gui-apps/swaybg )
@@ -42,9 +43,12 @@ DEPEND="
 	X? ( x11-libs/libxcb:0= )
 "
 if [[ ${PV} == 9999 ]]; then
-	DEPEND+="~gui-libs/wlroots-9999[elogind=,systemd=,X=]"
+	DEPEND+="~gui-libs/wlroots-9999:=[elogind=,systemd=,X=]"
 else
-	DEPEND+=">=gui-libs/wlroots-0.6.0[elogind=,systemd=,X=]"
+	DEPEND+="
+		>=gui-libs/wlroots-0.10.0:=[elogind=,systemd=,X=]
+		<gui-libs/wlroots-0.11.0:=[elogind=,systemd=,X=]
+	"
 fi
 RDEPEND="
 	x11-misc/xkeyboard-config
