@@ -72,7 +72,7 @@ PATCHES=(
 # These are used for both runtime and compiletime
 COMMON_DEPEND="
 	>=app-arch/lz4-0_p131:=
-	dev-libs/libedit
+	sys-libs/ncurses:0=
 	>=sys-libs/zlib-1.2.3:0=
 	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( >=dev-libs/openssl-1.0.0:0= )
@@ -82,12 +82,12 @@ COMMON_DEPEND="
 		>=dev-libs/protobuf-3.8:=
 		net-libs/libtirpc:=
 		cjk? ( app-text/mecab:= )
+		jemalloc? ( dev-libs/jemalloc:0= )
 		kernel_linux? (
 			dev-libs/libaio:0=
 			sys-process/procps:0=
 		)
 		numa? ( sys-process/numactl )
-		jemalloc? ( dev-libs/jemalloc:0= )
 		tcmalloc? ( dev-util/google-perftools:0= )
 	)
 "
@@ -239,7 +239,8 @@ src_configure(){
 		-DINSTALL_SUPPORTFILESDIR="${EPREFIX}/usr/share/mysql"
 		-DCOMPILATION_COMMENT="Gentoo Linux ${PF}"
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
-		-DWITH_EDITLINE=system
+		# Using bundled editline to get CTRL+C working
+		-DWITH_EDITLINE=bundled
 		-DWITH_ZLIB=system
 		-DWITH_SSL=system
 		-DWITH_LIBWRAP=0
@@ -255,6 +256,18 @@ src_configure(){
 		-DWITH_BOOST="${S}/boost"
 		-DWITH_ROUTER=$(usex router ON OFF)
 	)
+
+	if is-flagq -fno-lto ; then
+		einfo "LTO disabled via {C,CXX,F,FC}FLAGS"
+		mycmakeargs+=( -DWITH_LTO=OFF )
+	elif is-flagq -flto ; then
+		einfo "LTO forced via {C,CXX,F,FC}FLAGS"
+		myconf+=( -DWITH_LTO=ON )
+	else
+		# Disable automagic
+		myconf+=( -DWITH_LTO=OFF )
+	fi
+
 	if use test ; then
 		mycmakeargs+=( -DINSTALL_MYSQLTESTDIR=share/mysql/mysql-test )
 	else
