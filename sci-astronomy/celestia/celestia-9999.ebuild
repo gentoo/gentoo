@@ -88,12 +88,14 @@ src_install() {
 	for size in 16 22 32 48 ; do
 		newicon -s ${size} "${S}"/src/celestia/kde/data/hi${size}-app-${PN}.png ${PN}.png
 	done
+	newicon -s 128 "${S}"/src/celestia/gtk/data/${PN}-logo.png ${PN}.png
+	doicon -s scalable "${S}"/src/celestia/gtk/data/${PN}.svg
 
 	use glut && domenu ${PN}.desktop
 	if use qt5 ; then
 		sed \
 			-e "/^Name/s@\$@ (qt5 interface)@" \
-			-e "/^Exec/s@${PN}@${PN}-${ui/qt5/qt}@" \
+			-e "/^Exec/s@${PN}@${PN}-qt@" \
 			${PN}.desktop > "${T}"/${PN}-qt5.desktop || die
 		domenu "${T}"/${PN}-qt5.desktop
 	fi
