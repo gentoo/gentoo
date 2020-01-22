@@ -1,17 +1,17 @@
 From b29cbcb0ff75b564f83ad93273e881e242f08caf Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
-Date: Sat, 16 Jun 2019 15:43:27 +0100
+Date: Wed, 22 Jan 2020 09:05:36 +0000
 Subject: [PATCH] Disable various compiler configs
 
 ---
- build/config/compiler/BUILD.gn | 71 ++++++++++++----------------------
- 1 file changed, 25 insertions(+), 46 deletions(-)
+ build/config/compiler/BUILD.gn | 75 ++++++++++++----------------------
+ 1 file changed, 25 insertions(+), 50 deletions(-)
 
 diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
-index 2ac6e8e..b3e760d 100644
+index 1455a9f..cf19679 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
-@@ -269,8 +269,6 @@ config("compiler") {
+@@ -270,8 +270,6 @@ config("compiler") {
  
    configs += [
      # See the definitions below.
@@ -20,7 +20,7 @@ index 2ac6e8e..b3e760d 100644
      ":compiler_codegen",
      ":compiler_deterministic",
    ]
-@@ -495,27 +493,6 @@ config("compiler") {
+@@ -496,31 +494,6 @@ config("compiler") {
      }
    }
  
@@ -41,14 +41,18 @@ index 2ac6e8e..b3e760d 100644
 -      # Before Clang 10, lax vector conversions were allowed by default.
 -      # Chromium currently relies on this behavior.
 -      # TODO(crbug.com/1042470): Fix the code and remove this flag.
--      cflags += [ "-flax-vector-conversions=all" ]
+-      if (is_win) {
+-        cflags += [ "/clang:-flax-vector-conversions=all" ]
+-      } else if (cros_sdk_version == "") {
+-        cflags += [ "-flax-vector-conversions=all" ]
+-      }
 -    }
 -  }
 -
    # C11/C++11 compiler flags setup.
    # ---------------------------
    if (is_linux || is_android || (is_nacl && is_clang) || current_os == "aix") {
-@@ -1462,6 +1439,12 @@ config("default_warnings") {
+@@ -1467,6 +1440,12 @@ config("default_warnings") {
          cflags_cc += [ "-Wno-class-memaccess" ]
        }
  
@@ -61,7 +65,7 @@ index 2ac6e8e..b3e760d 100644
        # -Wunused-local-typedefs is broken in gcc,
        # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=63872
        cflags += [ "-Wno-unused-local-typedefs" ]
-@@ -1587,7 +1570,7 @@ config("chromium_code") {
+@@ -1592,7 +1571,7 @@ config("chromium_code") {
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
@@ -70,7 +74,7 @@ index 2ac6e8e..b3e760d 100644
      if (treat_warnings_as_errors) {
        cflags += [ "-Werror" ]
  
-@@ -1596,10 +1579,6 @@ config("chromium_code") {
+@@ -1601,10 +1580,6 @@ config("chromium_code") {
        # well.
        ldflags = [ "-Werror" ]
      }
@@ -81,7 +85,7 @@ index 2ac6e8e..b3e760d 100644
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -1608,15 +1587,6 @@ config("chromium_code") {
+@@ -1613,15 +1588,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -97,7 +101,7 @@ index 2ac6e8e..b3e760d 100644
      if (is_mac) {
        cflags_objc = [ "-Wobjc-missing-property-synthesis" ]
        cflags_objcc = [ "-Wobjc-missing-property-synthesis" ]
-@@ -2020,7 +1990,8 @@ config("default_stack_frames") {
+@@ -2025,7 +1991,8 @@ config("default_stack_frames") {
  }
  
  # Default "optimization on" config.
@@ -107,7 +111,7 @@ index 2ac6e8e..b3e760d 100644
    if (is_win) {
      # TODO(thakis): Remove is_clang here, https://crbug.com/598772
      if (is_official_build && full_wpo_on_official && !is_clang) {
-@@ -2046,7 +2017,8 @@ config("optimize") {
+@@ -2051,7 +2018,8 @@ config("optimize") {
  }
  
  # Same config as 'optimize' but without the WPO flag.
@@ -117,7 +121,7 @@ index 2ac6e8e..b3e760d 100644
    if (is_win) {
      # Favor size over speed, /O1 must be before the common flags. The GYP
      # build also specifies /Os and /GF but these are implied by /O1.
-@@ -2069,7 +2041,8 @@ config("optimize_no_wpo") {
+@@ -2074,7 +2042,8 @@ config("optimize_no_wpo") {
  }
  
  # Turn off optimizations.
@@ -127,7 +131,7 @@ index 2ac6e8e..b3e760d 100644
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2103,7 +2076,8 @@ config("no_optimize") {
+@@ -2108,7 +2077,8 @@ config("no_optimize") {
  # Turns up the optimization level. On Windows, this implies whole program
  # optimization and link-time code generation which is very expensive and should
  # be used sparingly.
@@ -137,7 +141,7 @@ index 2ac6e8e..b3e760d 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2142,7 +2116,8 @@ config("optimize_max") {
+@@ -2147,7 +2117,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/621335) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -147,7 +151,7 @@ index 2ac6e8e..b3e760d 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2172,7 +2147,8 @@ config("optimize_speed") {
+@@ -2177,7 +2148,8 @@ config("optimize_speed") {
    }
  }
  
@@ -157,7 +161,7 @@ index 2ac6e8e..b3e760d 100644
    cflags = [ "-O1" ] + common_optimize_on_cflags
    ldflags = common_optimize_on_ldflags
    visibility = [ ":default_optimization" ]
-@@ -2288,7 +2264,8 @@ config("win_pdbaltpath") {
+@@ -2293,7 +2265,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -167,7 +171,7 @@ index 2ac6e8e..b3e760d 100644
    if (is_win) {
      if (use_goma || is_clang) {
        # Note that with VC++ this requires is_win_fastlink, enforced elsewhere.
-@@ -2398,7 +2375,8 @@ config("symbols") {
+@@ -2403,7 +2376,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -177,7 +181,7 @@ index 2ac6e8e..b3e760d 100644
    if (is_win) {
      # Functions, files, and line tables only.
      cflags = []
-@@ -2453,7 +2431,8 @@ config("minimal_symbols") {
+@@ -2458,7 +2432,8 @@ config("minimal_symbols") {
  }
  
  # No symbols.
