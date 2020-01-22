@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,6 +23,7 @@ DEPEND="${RDEPEND}"
 PATCHES=( "${FILESDIR}"/${P}-jpeg-9a.patch )
 
 src_prepare() {
+	eautoreconf
 	emake distclean
 	default
 }
