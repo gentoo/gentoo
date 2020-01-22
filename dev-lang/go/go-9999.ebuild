@@ -10,19 +10,17 @@ MY_PV=${PV/_/}
 
 inherit toolchain-funcs
 
-BOOTSTRAP_VERSION="bootstrap-1.8"
+BOOTSTRAP_VERSION="bootstrap-1.13.6"
 BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
 BOOTSTRAP_URI="
+	${BOOTSTRAP_DIST}/go-darwin-amd64-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-linux-386-${BOOTSTRAP_VERSION}.tbz
 	${BOOTSTRAP_DIST}/go-linux-amd64-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-linux-arm-${BOOTSTRAP_VERSION}.tbz
 	${BOOTSTRAP_DIST}/go-linux-arm64-${BOOTSTRAP_VERSION}.tbz
+	${BOOTSTRAP_DIST}/go-linux-arm-${BOOTSTRAP_VERSION}.tbz
 	${BOOTSTRAP_DIST}/go-linux-ppc64-${BOOTSTRAP_VERSION}.tbz
 	${BOOTSTRAP_DIST}/go-linux-ppc64le-${BOOTSTRAP_VERSION}.tbz
 	${BOOTSTRAP_DIST}/go-linux-s390x-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-linux-386-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-freebsd-amd64-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-freebsd-386-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-darwin-amd64-${BOOTSTRAP_VERSION}.tbz
 	${BOOTSTRAP_DIST}/go-solaris-amd64-${BOOTSTRAP_VERSION}.tbz
 "
 
