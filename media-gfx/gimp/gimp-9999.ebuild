@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 GNOME2_EAUTORECONF=yes
 
 inherit autotools git-r3 gnome2 python-single-r1 virtualx
@@ -30,14 +30,15 @@ COMMON_DEPEND="
 	>=app-text/poppler-data-0.4.9
 	>=dev-libs/atk-2.4.0
 	>=dev-libs/glib-2.56.0:2
+	>=dev-libs/json-glib-1.2.6
 	dev-libs/libxml2
 	dev-libs/libxslt
 	>=gnome-base/librsvg-2.40.6:2
 	>=media-gfx/mypaint-brushes-1.3.0
-	>=media-libs/babl-0.1.72[introspection]
+	>=media-libs/babl-0.1.74[introspection]
 	>=media-libs/fontconfig-2.12.4
 	>=media-libs/freetype-2.1.7
-	>=media-libs/gegl-0.4.18:0.4[cairo,introspection]
+	>=media-libs/gegl-0.4.20:0.4[cairo,introspection]
 	>=media-libs/gexiv2-0.10.6
 	>=media-libs/harfbuzz-0.9.19
 	>=media-libs/lcms-2.8:2
