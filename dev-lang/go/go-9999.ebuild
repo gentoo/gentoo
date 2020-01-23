@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,20 +9,6 @@ export CTARGET=${CTARGET:-${CHOST}}
 MY_PV=${PV/_/}
 
 inherit toolchain-funcs
-
-BOOTSTRAP_VERSION="bootstrap-1.13.6"
-BOOTSTRAP_DIST="https://dev.gentoo.org/~williamh/dist"
-BOOTSTRAP_URI="
-	${BOOTSTRAP_DIST}/go-darwin-amd64-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-linux-386-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-linux-amd64-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-linux-arm64-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-linux-arm-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-linux-ppc64-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-linux-ppc64le-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-linux-s390x-${BOOTSTRAP_VERSION}.tbz
-	${BOOTSTRAP_DIST}/go-solaris-amd64-${BOOTSTRAP_VERSION}.tbz
-"
 
 case ${PV}  in
 *9999*)
@@ -46,22 +32,15 @@ case ${PV}  in
 	esac
 esac
 
-# If gccgo or a previously installed version of dev-lang/go is not being
-# used to build Go, there is no way to know the architecture or operating system
-# of the build machine, so we need to download all of our bootstrap
-# archives to allow this ebuild to work under crossdev.
-#
-# https://bugs.gentoo.org/671394
-SRC_URI+="!gccgo? ( !system-bootstrap? ( ${BOOTSTRAP_URI} ) )"
-
 DESCRIPTION="A concurrent garbage collected and typesafe programming language"
 HOMEPAGE="https://golang.org"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-IUSE="gccgo system-bootstrap"
+IUSE="gccgo"
 
-BDEPEND="gccgo? ( >=sys-devel/gcc-5[go] )"
+BDEPEND="gccgo? ( >=sys-devel/gcc-5[go(-)] )
+	!gccgo? ( >=dev-lang/go-bootstrap-1.13.6 )"
 RDEPEND="!<dev-go/go-tools-0_pre20150902"
 
 # These test data objects have writable/executable stacks.
@@ -143,17 +122,6 @@ go_cross_compile()
 	[[ $(go_tuple ${CBUILD}) != $(go_tuple) ]]
 }
 
-pkg_pretend()
-{
-	# make.bash does not understand cross-compiling a cross-compiler
-	if [[ $(go_tuple) != $(go_tuple ${CTARGET}) ]]; then
-		die "CHOST CTARGET pair unsupported: CHOST=${CHOST} CTARGET=${CTARGET}"
-	fi
-	[[ ${MERGE_TYPE} != binary ]] &&
-		use system-bootstrap && ! has_version -b "dev-lang/go" &&
-		die "dev-lang/go must be installed to use the system-bootstrap use flag"
-}
-
 src_unpack()
 {
 	if [[ ${PV} = 9999 ]]; then
@@ -161,14 +129,12 @@ src_unpack()
 	else
 		unpack "go${MY_PV}.src.tar.gz"
 	fi
-	use gccgo || use system-bootstrap ||
-		unpack "go-$(go_os ${CBUILD})-$(go_arch ${CBUILD})-${BOOTSTRAP_VERSION}.tbz"
 }
 
 src_compile()
 {
-	export GOROOT_BOOTSTRAP="${WORKDIR}"/go-$(go_os ${CBUILD})-$(go_arch ${CBUILD})-bootstrap
 	if use gccgo; then
+		export GOROOT_BOOTSTRAP="${WORKDIR}/go-bootstrap"
 		mkdir -p "${GOROOT_BOOTSTRAP}/bin" || die
 		local go_binary=$(gcc-config --get-bin-path)/go-$(gcc-major-version)
 		[[ -x ${go_binary} ]] || go_binary=$(
@@ -177,9 +143,12 @@ src_compile()
 		[[ -x ${go_binary} ]] ||
 			die "go-$(gcc-major-version): command not found"
 		ln -s "${go_binary}" "${GOROOT_BOOTSTRAP}/bin/go" || die
-	elif use system-bootstrap; then
-		export GOROOT_BOOTSTRAP="${EPREFIX}"/usr/lib/go
+	elif has_version -b dev-lang/go-bootstrap; then
+		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go-bootstrap"
+	else
+		die "Should not be here, please report a bug"
 	fi
+
 	export GOROOT_FINAL="${EPREFIX}"/usr/lib/go
 	export GOROOT="$(pwd)"
 	export GOBIN="${GOROOT}/bin"
