@@ -1,14 +1,13 @@
-BDEPEND=gccgo? ( >=sys-devel/gcc-5[go] ) >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install pretend test unpack
+BDEPEND=gccgo? ( >=sys-devel/gcc-5[go(-)] ) !gccgo? ( >=dev-lang/go-bootstrap-1.13.6 ) >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install test unpack
 DESCRIPTION=A concurrent garbage collected and typesafe programming language
 EAPI=7
 HOMEPAGE=https://golang.org
-IUSE=gccgo system-bootstrap
+IUSE=gccgo
 LICENSE=BSD
 PROPERTIES=live
 RDEPEND=!<dev-go/go-tools-0_pre20150902
 RESTRICT=strip
 SLOT=0/9999
-SRC_URI=!gccgo? ( !system-bootstrap? ( https://dev.gentoo.org/~williamh/dist/go-darwin-amd64-bootstrap-1.13.6.tbz https://dev.gentoo.org/~williamh/dist/go-linux-386-bootstrap-1.13.6.tbz https://dev.gentoo.org/~williamh/dist/go-linux-amd64-bootstrap-1.13.6.tbz https://dev.gentoo.org/~williamh/dist/go-linux-arm64-bootstrap-1.13.6.tbz https://dev.gentoo.org/~williamh/dist/go-linux-arm-bootstrap-1.13.6.tbz https://dev.gentoo.org/~williamh/dist/go-linux-ppc64-bootstrap-1.13.6.tbz https://dev.gentoo.org/~williamh/dist/go-linux-ppc64le-bootstrap-1.13.6.tbz https://dev.gentoo.org/~williamh/dist/go-linux-s390x-bootstrap-1.13.6.tbz https://dev.gentoo.org/~williamh/dist/go-solaris-amd64-bootstrap-1.13.6.tbz ) )
 _eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ab0f934012c6b45cfc8693734e3b6e9e
+_md5_=1a5c134394b0c82d7863fc06bd01747e
