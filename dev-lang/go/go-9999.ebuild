@@ -145,10 +145,10 @@ src_compile()
 		[[ -x ${go_binary} ]] ||
 			die "go-$(gcc-major-version): command not found"
 		ln -s "${go_binary}" "${GOROOT_BOOTSTRAP}/bin/go" || die
-	elif has_version -b dev-lang/go-bootstrap; then
-		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go-bootstrap"
 	elif has_version -b dev-lang/go; then
 		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go"
+	elif has_version -b dev-lang/go-bootstrap; then
+		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go-bootstrap"
 	else
 		eerror "Go cannot be built without go or go-bootstrap installed"
 		die "Should not be here, please report a bug"
