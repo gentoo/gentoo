@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 WX_GTK_VER="3.0"
 
@@ -140,9 +140,9 @@ src_install() {
 			insinto /usr/share/kservices5/ServiceMenus
 			doins GUI/kde4/*.desktop
 			dodir /usr/share/kde4/services/ServiceMenus # drop these lines after konqueror:4/krusader:4 are gone
-			for item in "${ED}"usr/share/kservices5/ServiceMenus/*.desktop; do
+			for item in "${ED}"/usr/share/kservices5/ServiceMenus/*.desktop; do
 				item="$(basename ${item})"
-				dosym "/usr/share/kservices5/ServiceMenus/${item}" "/usr/share/kde4/services/ServiceMenus/${item}"
+				dosym ${ROOT}"/usr/share/kservices5/ServiceMenus/${item}" "/usr/share/kde4/services/ServiceMenus/${item}"
 			done
 		fi
 	fi
@@ -162,6 +162,7 @@ src_install() {
 
 	if use doc; then
 		dodoc DOC/*.txt
-		dohtml -r DOC/MANUAL/*
+		docinto html
+		dodoc -r DOC/MANUAL/*
 	fi
 }
