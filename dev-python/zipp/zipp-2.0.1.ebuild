@@ -21,6 +21,7 @@ IUSE="test"
 RDEPEND="dev-python/more-itertools[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
+	dev-python/toml[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-3.4.2[${PYTHON_USEDEP}]
 	test? (	${RDEPEND} )
 "
