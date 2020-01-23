@@ -3001,6 +3001,7 @@ dev-util/pkgcheck:network - Enable support for network checks using dev-python/r
 dev-util/pkgcheck:perl - Enable support for perl checks using dev-perl/Gentoo-PerlMod-Version
 dev-util/pkgconf:pkg-config - Install as a replacement for dev-util/pkgconfig
 dev-util/pkgconfig:internal-glib - Use internal copy of dev-libs/glib
+dev-util/rt-tests:numa - Make test programs NUMA aware
 dev-util/scanmem:gui - Enable the GameConqueror GUI
 dev-util/sccache:azure - Enable Azure Blob Storage support
 dev-util/sccache:dist-client - Enables distributed support in the sccache client

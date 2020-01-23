@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install setup
+DEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) numa? ( sys-process/numactl )
+DESCRIPTION=A collection of latency testing tools for the linux(-rt) kernel
+EAPI=7
+HOMEPAGE=https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git/about/
+IUSE=numa python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2 GPL-2+ LGPL-2.1+
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) numa? ( sys-process/numactl )
+REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 ) python_single_target_python3_8? ( python_targets_python3_8 )
+SLOT=0
+SRC_URI=https://kernel.org/pub/linux/utils/rt-tests/rt-tests-1.6.tar.xz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=61eb6ae5a4d418b36cdd4cd2b2003c3c

@@ -7481,7 +7481,7 @@ dev-python/cachelib 0.1: Collection of cache libraries in the same API interface
 dev-python/cachetools 3.1.0 3.1.1: Extensible memoizing collections and decorators
 dev-python/cairocffi 0.8.0-r1 0.9.0-r1 1.0.2-r1 1.1.0: CFFI-based drop-in replacement for Pycairo
 dev-python/cangjie 1.2-r1 1.3: Python wrapper for libcangjie
-dev-python/capturer 2.3: Easily capture stdout/stderr of the current process and subprocesses
+dev-python/capturer 2.3 2.4: Easily capture stdout/stderr of the current process and subprocesses
 dev-python/carbon 0.9.13 0.9.13-r1 1.1.3-r1 1.1.5: Backend data caching and persistence daemon for Graphite
 dev-python/case 1.5.2-r1 1.5.3: Python unittest Utilities
 dev-python/castellan 1.2.2: Generic Key Manager interface for OpenStack
@@ -7527,7 +7527,7 @@ dev-python/collectd-rabbitmq 1.19.0-r1: Collectd plugin to gather statistics fro
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.3.3 0.3.9 0.3.9-r1 0.4.0 0.4.1 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
 dev-python/colorclass 2.2.0 2.2.0-r1: Colorful worry-free console applications for multiple platforms
-dev-python/coloredlogs 6.1: Colored stream handler for the logging module
+dev-python/coloredlogs 6.1 10.0: Colored stream handler for the logging module
 dev-python/colorful 0.4.1: Terminal string styling done right in Python
 dev-python/colorlog 2.7.0 3.1.4: Log formatting with colors
 dev-python/colorspacious 1.1.0: Powerful, accurate, and easy-to-use Python library for colorspace conversions
@@ -7859,7 +7859,7 @@ dev-python/httplib2 0.10.3-r1 0.11.3 0.12.1 0.13.0: A comprehensive HTTP client 
 dev-python/httpretty 0.8.14 0.9.6: HTTP client mock for Python
 dev-python/httpstat 1.2.1-r1: httpstat visualizes cURL statistics in a way of beauty and clarity
 dev-python/httreplay 0.2.0: A HTTP replay library for testing.
-dev-python/humanfriendly 4.17: Human friendly output for text interfaces using Python
+dev-python/humanfriendly 4.17 4.18: Human friendly output for text interfaces using Python
 dev-python/humanize 0.5.1: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
 dev-python/hvac 0.2.17: Python client for HashiCorp Vault
@@ -8525,6 +8525,7 @@ dev-python/pytest-mock 1.6.0 1.6.3 1.10.0 1.11.2: Thin-wrapper around the mock p
 dev-python/pytest-mpl 0.8: pytest plugin to faciliate image comparison for matplotlib figures
 dev-python/pytest-pep8 1.0.6 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.7.1 0.14.1: pytest plugin to check source code with pylint
+dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-rerunfailures 2.1.0 7.0 8.0: pytest plugin to re-run tests to eliminate flaky failures
 dev-python/pytest-runner 4.2 5.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-salt 2019.2.1_p1: PyTest Salt Plugin
@@ -8670,7 +8671,7 @@ dev-python/qdarkstyle 2.7: A dark style sheet for QtWidgets application
 dev-python/qpid-python 0.20: A high-speed platform independent enterprise messaging system for Apache
 dev-python/qrcode 5.1-r1 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.3 2.11.4: Python bindings for QScintilla
-dev-python/qtawesome 0.4.4 0.5.2: Enables iconic fonts such as Font Awesome in PyQt
+dev-python/qtawesome 0.4.4 0.5.2 0.6.1: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.3.1 4.6.0: Qt-based console for Jupyter with support for rich media output
 dev-python/qtsass 0.1.1: Compile SASS files to Qt stylesheets
 dev-python/quex 0.65.4: Mode Oriented Directly Coded Lexical Analyser Generator
@@ -8991,7 +8992,7 @@ dev-python/vcversioner 2.16.0.0: Use version control tags to discover version nu
 dev-python/vdf 3.2: A module for (de)serialization to and from VDF, Valve's key-value text format
 dev-python/vdirsyncer 0.16.3 0.16.4 0.16.6 0.16.7: Synchronize calendars and contacts
 dev-python/venusian 1.0 1.0_p20161030: A library for deferring decorator actions
-dev-python/verboselogs 1.6: Verbose logging for Python's logging module
+dev-python/verboselogs 1.6 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.16 0.18: Easy VCS-based management of project version strings
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
 dev-python/vertex 0.3.0-r1 0.3.1-r1: An implementation of the Q2Q protocol
@@ -10656,6 +10657,7 @@ dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace o
 dev-util/rosinstall_generator 0.1.13 0.1.14 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.10: Collection of rpm packaging related utilities
 dev-util/rr 5.2.0-r1 5.3.0: Record and Replay Framework
+dev-util/rt-tests 1.6: A collection of latency testing tools for the linux(-rt) kernel
 dev-util/sasm 2.2-r1 3.10.1: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/scanmem 0.17: Locate and modify variables in executing processes
@@ -14574,7 +14576,7 @@ net-im/skypeforlinux 8.52.0.138 8.52.0.138-r1 8.53.0.85 8.54.0.85 8.54.0.91 8.55
 net-im/slack-bin 2.1.2 3.1.1 3.4.2 4.0.2 4.1.1: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
-net-im/telegram-desktop-bin 1.9.3-r1 1.9.4: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 1.9.3-r1 1.9.4 1.9.5: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
