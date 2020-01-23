@@ -1,34 +1,34 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools eutils toolchain-funcs
+EAPI=7
+
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Mark commercial breaks in VDR recordings"
-HOMEPAGE="http://noad.net23.net/"
-SRC_URI="http://noad.net23.net/${P}.tar.bz2"
+HOMEPAGE="https://github.com/madmartin/noad"
+SRC_URI="https://github.com/madmartin/noad/archive/v0.8.6.tar.gz -> ${P}.tar.gz
+		http://vdr.websitec.de/download/${PN}/${P}-ffmpeg3.4.diff.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="+ffmpeg imagemagick libmpeg2"
 
 RDEPEND="
 	libmpeg2? ( media-libs/libmpeg2:= )
 	ffmpeg? ( virtual/ffmpeg )
-	imagemagick? ( media-gfx/imagemagick )
-	!media-plugins/vdr-markad"
+	imagemagick? ( media-gfx/imagemagick )"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 REQUIRED_USE="|| ( ffmpeg libmpeg2 )"
 
 src_prepare() {
-	sed -i -e 's:2001:6419:' svdrpc.cpp main.cpp
+	default
 
-	# tested libav-9, ffmepg-2.2.9
-	eapply "${FILESDIR}/patches-0.8.x/${P}-libav9.diff" \
-		"${FILESDIR}/patches-0.8.x/${P}-ffmpeg25.patch"
+	#compile tested libav-13, ffmepg-3.4
+	eapply "${WORKDIR}/${P}-ffmpeg3.4.diff"
 
 	eautoreconf
 }
