@@ -32,10 +32,6 @@
 
 #--- END OF EXAMPLES ---
 
-# Thomas Deutschmann <whissi@gentoo.org> (2020-01-23)
-# Incomplete EAPI=7 bump
-=net-misc/memcached-1.5.21
-
 # David Seifert <soap@gentoo.org> (2020-01-21)
 # Upstream disappeared, no other distro still carries this,
 # blocks removal of EOL gtkglext, no revdeps.
