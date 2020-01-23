@@ -145,10 +145,6 @@ go_cross_compile()
 
 pkg_pretend()
 {
-	# make.bash does not understand cross-compiling a cross-compiler
-	if [[ $(go_tuple) != $(go_tuple ${CTARGET}) ]]; then
-		die "CHOST CTARGET pair unsupported: CHOST=${CHOST} CTARGET=${CTARGET}"
-	fi
 	[[ ${MERGE_TYPE} != binary ]] &&
 		use system-bootstrap && ! has_version -b "dev-lang/go" &&
 		die "dev-lang/go must be installed to use the system-bootstrap use flag"
