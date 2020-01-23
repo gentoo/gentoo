@@ -30,11 +30,14 @@ S="${WORKDIR}/${MY_P}"
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.2.2-fbsd.patch"
+	"${FILESDIR}/${PN}-1.4.0-fix-as-needed-linking.patch"
+	"${FILESDIR}/${PN}-1.4.4-as-needed.patch"
+	"${FILESDIR}/${PN}-1.4.17-EWOULDBLOCK.patch"
+)
+
 src_prepare() {
-	epatch "${FILESDIR}/${PN}-1.2.2-fbsd.patch"
-	epatch "${FILESDIR}/${PN}-1.4.0-fix-as-needed-linking.patch"
-	epatch "${FILESDIR}/${PN}-1.4.4-as-needed.patch"
-	epatch "${FILESDIR}/${PN}-1.4.17-EWOULDBLOCK.patch"
 	sed -i -e 's,-Werror,,g' configure.ac || die
 	sed -i -e 's,AM_CONFIG_HEADER,AC_CONFIG_HEADERS,' configure.ac || die
 	eautoreconf
