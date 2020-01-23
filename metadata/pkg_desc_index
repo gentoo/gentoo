@@ -12237,7 +12237,7 @@ lxqt-base/lxqt-session 0.14.1: LXQT session manager
 lxqt-base/lxqt-sudo 0.14.1: LXQt GUI frontend for sudo
 mail-client/aerc 0.3.0-r1: Email client for your terminal
 mail-client/alot 0.8.1 9999: Experimental terminal UI for net-mail/notmuch written in Python
-mail-client/alpine 2.00-r7 2.21.1 2.21.1-r1 2.21.1-r2: An easy to use text-based based mail and news client
+mail-client/alpine 2.21.1-r1 2.21.1-r2 2.22: An easy to use text-based based mail and news client
 mail-client/balsa 2.5.6-r1: Email client for GNOME
 mail-client/bower 0.10 0.11: Curses terminal client for the Notmuch email system
 mail-client/claws-mail 3.17.3-r1 3.17.4 9999: An email client (and news reader) based on GTK+
