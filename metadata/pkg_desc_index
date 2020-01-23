@@ -4694,7 +4694,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r1: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.12.13 1.12.14 1.12.15 1.13.4 1.13.5 1.13.6 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.12.13 1.12.14 1.12.15 1.13.6 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/helium 1.8.1: The Helium Compiler
@@ -14932,7 +14932,7 @@ net-misc/arpsponge 3.12.2 3.17.11: Sweeps up stray ARP queries from a peering LA
 net-misc/asterisk 11.25.3 13.23.1 13.29.1: Asterisk: A Modular Open Source PBX System
 net-misc/asterisk-core-sounds 1.4.21-r1 1.4.22 1.6.1: Core sounds for asterisk
 net-misc/asterisk-extra-sounds 1.4.11-r1 1.5.2: Extra sounds for asterisk
-net-misc/asterisk-g729 11.0.3.1.9: G.729 codec and supporting files for asterisk
+net-misc/asterisk-g729 11.0.3.1.9 13.0.3.1.9: G.729 codec and supporting files for asterisk
 net-misc/asterisk-moh-opsound 2.03 2.03-r1: asterisk moh music
 net-misc/astmanproxy 1.28.2: Proxy for the Asterisk manager interface
 net-misc/autossh 1.4g: Automatically restart SSH sessions and tunnels
@@ -17975,7 +17975,7 @@ www-apps/drupal 7.69 8.7.11 8.8.1: PHP-based open-source platform and content ma
 www-apps/dspam-web 3.10.1: Web based administration and user controls for dspam
 www-apps/gitea 1.10.3 9999: A painless self-hosted Git service
 www-apps/gitit 0.12.1.1 0.12.1.1-r2 0.12.2 0.12.2.1: Wiki using happstack, git or darcs, and pandoc
-www-apps/grafana-bin 6.3.5 6.3.6 6.4.3 6.4.4: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
+www-apps/grafana-bin 6.3.6 6.4.3 6.4.4 6.5.3: Gorgeous metric viz, dashboards & editors for Graphite, InfluxDB & OpenTSDB
 www-apps/hugo 0.58.3 0.62.0: The world's fastest framework for building websites
 www-apps/icingaweb2 2.7.1 2.7.3 9999: Icinga Web 2 - Frontend for icinga2
 www-apps/icingaweb2-module-director 1.6.2 9999: Icinga Web 2 plugin for configuration

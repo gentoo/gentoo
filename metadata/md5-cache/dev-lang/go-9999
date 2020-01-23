@@ -1,13 +1,12 @@
-BDEPEND=gccgo? ( >=sys-devel/gcc-5[go(-)] ) !gccgo? ( || ( dev-lang/go dev-lang/go-bootstrap ) ) >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=|| ( dev-lang/go dev-lang/go-bootstrap ) >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install test unpack
 DESCRIPTION=A concurrent garbage collected and typesafe programming language
 EAPI=7
 HOMEPAGE=https://golang.org
-IUSE=gccgo
 LICENSE=BSD
 PROPERTIES=live
 RDEPEND=!<dev-go/go-tools-0_pre20150902
 RESTRICT=strip
 SLOT=0/9999
 _eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=bd942b017b5b22d94fa8a3bc29f692cb
+_md5_=38e7f16e4d355a4234f6fda529a67968
