@@ -23,3 +23,4 @@ S=${WORKDIR}
 src_install() {
 	python_foreach_impl python_newscript ${P} ${PN}
 }
+:

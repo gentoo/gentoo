@@ -20,3 +20,4 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 DOCS=( README.rst )
+:

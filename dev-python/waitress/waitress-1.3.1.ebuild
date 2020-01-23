@@ -21,3 +21,4 @@ RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}"
 
 distutils_enable_tests nose
+:

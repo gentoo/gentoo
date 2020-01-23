@@ -16,3 +16,4 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/plumbum[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
+:

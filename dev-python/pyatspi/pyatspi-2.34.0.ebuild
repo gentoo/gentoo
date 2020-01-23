@@ -54,3 +54,4 @@ src_install() {
 	docinto examples
 	dodoc examples/*.py
 }
+:

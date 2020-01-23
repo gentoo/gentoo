@@ -69,3 +69,4 @@ pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
 }
+:

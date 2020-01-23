@@ -22,3 +22,4 @@ DEPEND="${RDEPEND}
 # python_test() {
 # 	${EPYTHON} tests.py || die
 # }
+:

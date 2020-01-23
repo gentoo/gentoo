@@ -70,3 +70,4 @@ python_test() {
 	kill "$(<"${T}/m.pid")" || die
 	[[ ${ret} == 0 ]] || die "Tests fail with ${EPYTHON}!"
 }
+:

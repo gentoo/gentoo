@@ -133,3 +133,4 @@ pkg_postinst() {
 		fi
 	done
 }
+:

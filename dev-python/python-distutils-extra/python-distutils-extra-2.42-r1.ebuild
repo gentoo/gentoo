@@ -48,3 +48,4 @@ python_install_all() {
 	dodoc doc/{setup.cfg.example,setup.py.example}
 	docompress -x /usr/share/doc/${PF}/examples
 }
+:

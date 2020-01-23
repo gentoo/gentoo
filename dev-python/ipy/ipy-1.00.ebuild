@@ -38,3 +38,4 @@ python_install_all() {
 	use examples && local EXAMPLES=( example/. )
 	distutils-r1_python_install_all
 }
+:

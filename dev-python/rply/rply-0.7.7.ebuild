@@ -27,3 +27,4 @@ DEPEND="
 python_test() {
 	pytest -vv || die "Tests fail with ${EPYTHON}"
 }
+:

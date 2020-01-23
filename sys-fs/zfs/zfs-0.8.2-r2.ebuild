@@ -222,3 +222,4 @@ pkg_postrm() {
 		remove_moduledb
 	fi
 }
+:

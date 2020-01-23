@@ -124,3 +124,4 @@ multilib_src_install() {
 	# install headers like sys-libs/libunwind
 	doheader "${S}"/include/*.h
 }
+:

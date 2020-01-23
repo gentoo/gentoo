@@ -47,3 +47,4 @@ python_install_all() {
 		dodoc -r docs/*
 	fi
 }
+:

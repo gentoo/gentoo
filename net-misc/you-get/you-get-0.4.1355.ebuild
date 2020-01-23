@@ -20,3 +20,4 @@ RDEPEND="
 	${PYTHON_DEPS}
 	virtual/ffmpeg
 "
+:

@@ -24,3 +24,4 @@ python_prepare_all() {
 
 	distutils-r1_python_prepare_all
 }
+:

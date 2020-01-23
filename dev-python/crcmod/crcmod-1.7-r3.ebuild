@@ -21,3 +21,4 @@ DOCS=( changelog test/examples.py )
 python_test() {
 	"${EPYTHON}" test/test_crcmod.py -v || die "Tests fail with ${EPYTHON}"
 }
+:

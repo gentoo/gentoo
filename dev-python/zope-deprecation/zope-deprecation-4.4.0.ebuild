@@ -29,3 +29,4 @@ python_install_all() {
 
 	find "${ED}" -name '*.pth' -delete || die
 }
+:

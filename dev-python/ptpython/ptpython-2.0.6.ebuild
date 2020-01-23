@@ -22,3 +22,4 @@ RDEPEND="
 	<dev-python/prompt_toolkit-2.1.0[${PYTHON_USEDEP}]
 	dev-python/pygments[${PYTHON_USEDEP}]
 "
+:

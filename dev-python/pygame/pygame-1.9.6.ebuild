@@ -77,3 +77,4 @@ python_install_all() {
 		doins -r examples/*
 	fi
 }
+:

@@ -50,3 +50,4 @@ pkg_postinst() {
 	elog "dev-python/pysnmp-mibs - IETF and other mibs"
 	elog "dev-python/pysmi - to dump MIBs in python format"
 }
+:

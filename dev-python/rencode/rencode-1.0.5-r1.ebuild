@@ -17,3 +17,4 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="dev-python/cython[${PYTHON_USEDEP}]"
+:

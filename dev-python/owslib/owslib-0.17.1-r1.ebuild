@@ -40,3 +40,4 @@ S="${WORKDIR}/OWSLib-${PV}"
 python_test() {
 	"${EPYTHON}" "${S}/setup.py" test || die
 }
+:

@@ -26,3 +26,4 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/pydiff[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests setup.py
+:

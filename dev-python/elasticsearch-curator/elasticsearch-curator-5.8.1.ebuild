@@ -157,3 +157,4 @@ pkg_postinst() {
 	ewarn "export LANG=en_US.UTF-8"
 	ewarn "curator ..."
 }
+:

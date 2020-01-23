@@ -79,3 +79,4 @@ src_install() {
 	exeinto /usr/$(get_libdir)/${PN}
 	doexe libgalera_smm.so
 }
+:

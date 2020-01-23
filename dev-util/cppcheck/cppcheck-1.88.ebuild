@@ -111,3 +111,4 @@ src_install() {
 	doman ${PN}.1
 	dodoc -r tools/triage
 }
+:

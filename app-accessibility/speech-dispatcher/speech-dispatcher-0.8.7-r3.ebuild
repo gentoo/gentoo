@@ -110,3 +110,4 @@ pkg_postinst() {
 	elog "For festival support, you need to"
 	elog "install app-accessibility/festival-freebsoft-utils."
 }
+:

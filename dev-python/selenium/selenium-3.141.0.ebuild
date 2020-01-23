@@ -20,3 +20,4 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DOCS=( CHANGES README.rst )
 
 QA_PREBUILT="/usr/lib*/python*/site-packages/${PN}/webdriver/firefox/*/x_ignore_nofocus.so"
+:

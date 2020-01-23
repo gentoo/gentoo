@@ -56,3 +56,4 @@ src_configure() {
 		$(use gtkmm     || echo --no-gtkmm)     \
 		$(use portaudio && echo --portaudio)
 }
+:

@@ -22,3 +22,4 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=">=dev-python/rdflib-4[${PYTHON_USEDEP}]"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
+:

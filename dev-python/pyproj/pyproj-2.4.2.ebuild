@@ -35,3 +35,4 @@ distutils_enable_tests pytest
 python_test() {
 	PROJ_LIB="${EPREFIX}/usr/share/proj" pytest -ra || die
 }
+:

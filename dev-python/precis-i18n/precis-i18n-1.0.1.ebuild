@@ -26,3 +26,4 @@ S="${WORKDIR}/${MY_P}"
 python_test() {
 	esetup.py test
 }
+:

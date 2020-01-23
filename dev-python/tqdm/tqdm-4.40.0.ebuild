@@ -58,3 +58,4 @@ python_install_all() {
 	fi
 	distutils-r1_python_install_all
 }
+:

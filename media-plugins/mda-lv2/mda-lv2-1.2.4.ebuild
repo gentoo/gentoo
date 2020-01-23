@@ -20,3 +20,4 @@ RDEPEND="media-libs/lv2"
 DEPEND="
 	${PYTHON_DEPS}
 	virtual/pkgconfig"
+:

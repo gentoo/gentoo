@@ -49,3 +49,4 @@ python_install_all() {
 	use doc && local HTML_DOCS=( build/sphinx/html/. )
 	distutils-r1_python_install_all
 }
+:

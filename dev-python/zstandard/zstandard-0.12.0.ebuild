@@ -25,3 +25,4 @@ DEPEND="${RDEPEND}
 python_test() {
 	esetup.py test
 }
+:

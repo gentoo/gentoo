@@ -33,3 +33,4 @@ python_test() {
 		die "Tests fail with ${EPYTHON}"
 	fi
 }
+:

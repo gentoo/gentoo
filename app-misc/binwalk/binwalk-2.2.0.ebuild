@@ -41,3 +41,4 @@ pkg_postinst() {
 		elog "extract/decompress data, see INSTALL.md for more details."
 	fi
 }
+:

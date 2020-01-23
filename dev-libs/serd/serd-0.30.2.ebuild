@@ -51,3 +51,4 @@ multilib_src_install() {
 	waf-utils_src_install
 	default
 }
+:

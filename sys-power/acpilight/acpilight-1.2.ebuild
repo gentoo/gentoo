@@ -52,3 +52,4 @@ pkg_postinst() {
 	elog "# rc-update add acpilight boot"
 	einfo
 }
+:

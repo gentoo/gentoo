@@ -174,3 +174,4 @@ pkg_postinst() {
 		semodule -s "${POLICY_TYPE}" -n -B || die "Failed to rebuild policy store ${POLICY_TYPE}"
 	done
 }
+:

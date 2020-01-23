@@ -16,3 +16,4 @@ KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~sparc ~x86"
 
 RDEPEND="dev-python/ply[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
+:

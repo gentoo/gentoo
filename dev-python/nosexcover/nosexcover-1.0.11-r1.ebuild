@@ -25,3 +25,4 @@ RDEPEND="${DEPEND}"
 python_test() {
 	nosetests -v nosexcover/tests.py || die
 }
+:

@@ -21,3 +21,4 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 PATCHES=( "${FILESDIR}/${P}-fix_tests.patch" )
 
 distutils_enable_tests pytest
+:

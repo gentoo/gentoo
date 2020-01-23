@@ -21,3 +21,4 @@ python_prepare_all() {
 	sed -e 's:"setuptools_git[^"]*",::' -i setup.py || die
 	distutils-r1_python_prepare_all
 }
+:

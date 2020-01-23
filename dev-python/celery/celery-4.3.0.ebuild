@@ -123,3 +123,4 @@ pkg_postinst() {
 	optfeature "sqs support" dev-python/boto
 	#optfeature "cassandra support" dev-python/cassandra-driver
 }
+:

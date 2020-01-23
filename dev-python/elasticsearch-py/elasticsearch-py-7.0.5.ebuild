@@ -100,3 +100,4 @@ python_install_all() {
 	doman docs/_build/man/*
 	distutils-r1_python_install_all
 }
+:

@@ -47,3 +47,4 @@ pkg_postinst() {
 	chown -R portage:portage "${EROOT}/var/lib/${PN}" || die
 	chmod 775 "${EROOT}/var/lib/${PN}" || die
 }
+:

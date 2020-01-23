@@ -30,3 +30,4 @@ DEPEND="${DEPEND}
 python_test() {
 	bash ./tests/run_tests || die "Tests failed under ${EPYTHON}"
 }
+:
