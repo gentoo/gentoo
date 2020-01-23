@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,7 +45,7 @@ src_prepare() {
 	default
 
 	# Remove -Werror (gcc changes may add new warnings)
-	sed -e '/CFLAGS/s/-Werror //g' -i configure.in || die
+	sed -e '/CFLAGS/s/-Werror //g' -i configure.ac || die
 
 	eautoreconf
 }
