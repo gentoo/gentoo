@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="nls"
 
-RDEPEND=">=net-libs/libupnp-1.6.14:0"
+RDEPEND="=net-libs/libupnp-1.6*:0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
