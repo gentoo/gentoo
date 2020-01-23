@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=media-libs/gd[png,truetype,jpeg] media-video/vdr app-cdr/dvd+rw-tools dev-libs/libcdio media-fonts/corefonts media-video/dvdauthor media-video/mjpegtools[png] media-video/projectx media-video/transcode virtual/eject >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
 SLOT=0
 SRC_URI=mirror://vdr-developerorg/2028/vdr-burn-0.3.0.tgz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vdr-plugin-2	3719fa10a30f33eea321f9b883bd4baa
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vdr-plugin-2	9e49abda73c5119d659fe75a56d8c366
 _md5_=259692482fec5e90a3c0e446804ec0ed
