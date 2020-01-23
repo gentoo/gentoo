@@ -1,22 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit toolchain-funcs
+EAPI=7
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Customizable and lightweight notification-daemon"
 HOMEPAGE="https://dunst-project.org/ https://github.com/dunst-project/dunst"
-SRC_URI="https://github.com/${PN}-project/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/${PN}-project/${PN}"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~arm x86"
+KEYWORDS=""
 IUSE="dunstify"
 
 CDEPEND="
 	dev-libs/glib:2
-	dev-libs/libxdg-basedir
 	sys-apps/dbus
 	x11-libs/cairo[X,glib]
 	x11-libs/gdk-pixbuf
@@ -32,7 +30,6 @@ DEPEND="
 	dev-lang/perl
 	virtual/pkgconfig
 "
-
 RDEPEND="${CDEPEND}"
 
 src_prepare() {
