@@ -124,6 +124,7 @@ src_prepare() {
 
 src_configure() {
 	use custom-cflags || strip-flags
+	python_setup
 
 	local myconf=(
 		--bindir="${EPREFIX}/bin"
@@ -137,6 +138,7 @@ src_configure() {
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"
+		--with-python="${EPYTHON}"
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		$(use_enable debug)
@@ -180,7 +182,6 @@ src_install() {
 	fi
 
 	# enforce best available python implementation
-	python_setup
 	python_fix_shebang "${ED}/bin"
 }
 
