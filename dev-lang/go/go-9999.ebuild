@@ -40,7 +40,9 @@ SLOT="0/${PV}"
 IUSE="gccgo"
 
 BDEPEND="gccgo? ( >=sys-devel/gcc-5[go(-)] )
-	!gccgo? ( >=dev-lang/go-bootstrap-1.13.6 )"
+	!gccgo? ( || (
+		dev-lang/go
+		dev-lang/go-bootstrap ) )"
 RDEPEND="!<dev-go/go-tools-0_pre20150902"
 
 # These test data objects have writable/executable stacks.
@@ -145,7 +147,10 @@ src_compile()
 		ln -s "${go_binary}" "${GOROOT_BOOTSTRAP}/bin/go" || die
 	elif has_version -b dev-lang/go-bootstrap; then
 		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go-bootstrap"
+	elif has_version -b dev-lang/go; then
+		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go"
 	else
+		eerror "Go cannot be built without go or go-bootstrap installed"
 		die "Should not be here, please report a bug"
 	fi
 
