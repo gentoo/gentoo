@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -55,7 +55,7 @@ all_ruby_install() {
 pkg_postinst() {
 	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		elog "A default configuration file has been installed in"
-		elog "${EROOT}etc/fluent/fluent.conf. You will need to edit"
+		elog "${EROOT}/etc/fluent/fluent.conf. You will need to edit"
 		elog "this file to match your configuration."
 	fi
 }
