@@ -122,15 +122,6 @@ go_cross_compile()
 	[[ $(go_tuple ${CBUILD}) != $(go_tuple) ]]
 }
 
-src_unpack()
-{
-	if [[ ${PV} = 9999 ]]; then
-		git-r3_src_unpack
-	else
-		unpack "go${MY_PV}.src.tar.gz"
-	fi
-}
-
 src_compile()
 {
 	if has_version -b dev-lang/go; then
