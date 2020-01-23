@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: vdr-plugin-2.eclass
@@ -176,7 +176,7 @@ vdr_create_header_checksum_file() {
 }
 
 fix_vdr_libsi_include() {
- 	eqawarn "Fixing include of libsi-headers"
+	eqawarn "Fixing include of libsi-headers"
 	local f
 	for f; do
 		sed -i "${f}" \
@@ -250,7 +250,8 @@ vdr_gettext_missing() {
 }
 
 vdr_detect_po_dir() {
-	# helper function
+#	helper function to find the
+#	DIR ${S}/po or DIR ${S]/_subdir_/po
 
 	[[ -f po ]] && local po_dir="${S}"
 	local po_subdir=( ${S}/${PO_SUBDIR} )
@@ -270,7 +271,9 @@ vdr_linguas_support() {
 	vdr_detect_po_dir
 
 	for f in ${pofile_dir[*]}; do
-		PLUGIN_LINGUAS=$( ls ${f}/po --ignore="*.pot" | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
+		if [[ -d ${f}/po ]]; then
+			PLUGIN_LINGUAS=$( ls ${f}/po --ignore="*.pot" | sed -e "s:.po::g" | cut -d_ -f1 | tr \\\012 ' ' )
+		fi
 		einfo "LINGUAS=\"${PLUGIN_LINGUAS}\""
 
 		sed -i ${f}/Makefile \
@@ -282,7 +285,7 @@ vdr_linguas_support() {
 }
 
 vdr_i18n() {
-# 	i18n handling was deprecated since >=media-video/vdr-1.5.9,
+#	i18n handling was deprecated since >=media-video/vdr-1.5.9,
 #	finally with >=media-video/vdr-1.7.27 it has been dropped entirely and some
 #	plugins will fail to compile because they're still using the old variant.
 #	Simply remove the i18n.o object from Makefile (OBJECT) and
