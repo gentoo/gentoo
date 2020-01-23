@@ -30,10 +30,13 @@ RDEPEND="=net-misc/asterisk-$(ver_cut 1)*"
 
 RESTRICT="mirror strip"
 
-QA_FLAGS_IGNORED_amd64="usr/lib64/asterisk/modules/codec_g729a.so"
-QA_FLAGS_IGNORED_x86="usr/lib/asterisk/modules/codec_g729a.so"
-
 S="${WORKDIR}"
+
+pkg_setup() {
+	QA_FLAGS_IGNORED="/usr/$(get_libdir)/asterisk/modules/codec_g729a.so"
+	QA_PREBUILT="/usr/sbin/asthostid
+		/usr/sbin/astregister"
+}
 
 src_unpack() {
 	local dfile
