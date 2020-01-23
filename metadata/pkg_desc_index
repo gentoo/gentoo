@@ -4898,7 +4898,7 @@ dev-libs/iniparser 3.1-r1 4.1: A free stand-alone ini file parsing library
 dev-libs/injeqt 1.2.0: Dependency injection framework for Qt5
 dev-libs/input-pad 1.0.99_pre20140916: On-screen input pad to send characters with mouse
 dev-libs/intel-neo 19.38.14237 19.46.14807 19.48.14977: Intel Graphics Compute Runtime for OpenCL, for Gen8 (Broadwell) and beyond
-dev-libs/isl 0.12.2 0.21 0.22 0.22-r1: A library for manipulating integer points bounded by linear constraints
+dev-libs/isl 0.12.2 0.21 0.22 0.22-r1 0.22.1: A library for manipulating integer points bounded by linear constraints
 dev-libs/ivykis 0.42.2 0.42.3-r1 0.42.4: Library for asynchronous I/O readiness notification
 dev-libs/jansson 2.10 2.11 2.12: C library for encoding, decoding and manipulating JSON data
 dev-libs/jemalloc 3.6.0 4.4.0 4.5.0 5.0.1 5.1.0 5.2.0 5.2.1: Jemalloc is a general-purpose scalable concurrent allocator
@@ -14990,7 +14990,7 @@ net-misc/dleyna-server 0.5.0: library for implementing services that allow clien
 net-misc/dmr_utils 9999: Python utilities for working with DMR
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
 net-misc/dropbear 2017.75 2018.76 2019.78: small SSH 2 client/server designed for small memory environments
-net-misc/dropbox 89.3.268-r1: Dropbox daemon (pretends to be GUI-less)
+net-misc/dropbox 89.3.268-r1 89.4.278: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0 1.6.0-r1 19: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1: ConnMan User Interface written with EFL & python
 net-misc/efax 0.9a-r4: A simple fax program for single-user systems
