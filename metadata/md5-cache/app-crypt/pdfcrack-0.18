@@ -1,0 +1,10 @@
+DEFINED_PHASES=compile install
+DESCRIPTION=Tool for recovering passwords and content from PDF-files
+EAPI=7
+HOMEPAGE=http://pdfcrack.sourceforge.net/
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/pdfcrack/pdfcrack-0.18.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=98ebb446d2565c29dae8192f7168bd8d
