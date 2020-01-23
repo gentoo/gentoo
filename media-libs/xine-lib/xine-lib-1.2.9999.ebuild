@@ -24,7 +24,7 @@ HOMEPAGE="http://xine.sourceforge.net/"
 
 LICENSE="GPL-2"
 SLOT="1"
-IUSE="a52 aac aalib +alsa altivec bluray +css dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libav libcaca mad +mmap mng modplug musepack opengl oss pulseaudio samba sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack +X +xcb xinerama +xv xvmc ${NLS_IUSE}"
+IUSE="a52 aac aalib +alsa altivec bluray +css dts dvb dxr3 fbcon flac gtk imagemagick ipv6 jack jpeg libav libcaca mad +mmap mng modplug musepack opengl oss pulseaudio samba sdl speex theora truetype v4l vaapi vcd vdpau vdr vidix +vis vorbis vpx wavpack +X xinerama +xv xvmc ${NLS_IUSE}"
 
 RDEPEND="${NLS_RDEPEND}
 	dev-libs/libxdg-basedir
@@ -89,8 +89,8 @@ RDEPEND="${NLS_RDEPEND}
 	X? (
 		x11-libs/libX11
 		x11-libs/libXext
+		x11-libs/libxcb
 	)
-	xcb? ( x11-libs/libxcb )
 	xinerama? ( x11-libs/libXinerama )
 	xv? ( x11-libs/libXv )
 	xvmc? ( x11-libs/libXvMC )
@@ -202,7 +202,7 @@ src_configure() {
 		$(use_with vorbis)
 		$(use_with wavpack)
 		$(use_with X x)
-		$(use_with xcb)
+		$(use_with X xcb)
 	)
 	[[ ${PV} == *9999* ]] || myconf+=( $(use_enable nls) )
 
