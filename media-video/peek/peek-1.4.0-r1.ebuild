@@ -17,7 +17,7 @@ IUSE="keybinder test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-libs/glib-2.38:2
-	media-video/ffmpeg[X,encode,vpx,xcb]
+	media-video/ffmpeg[X,encode,vpx,xcb(+)]
 	virtual/imagemagick-tools
 	>=x11-libs/gtk+-3.20:3
 	keybinder? ( dev-libs/keybinder:3 )"
