@@ -37,12 +37,10 @@ HOMEPAGE="https://golang.org"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-IUSE="gccgo"
 
-BDEPEND="gccgo? ( >=sys-devel/gcc-5[go(-)] )
-	!gccgo? ( || (
+BDEPEND="|| (
 		dev-lang/go
-		dev-lang/go-bootstrap ) )"
+		dev-lang/go-bootstrap )"
 RDEPEND="!<dev-go/go-tools-0_pre20150902"
 
 # These test data objects have writable/executable stacks.
@@ -135,17 +133,7 @@ src_unpack()
 
 src_compile()
 {
-	if use gccgo; then
-		export GOROOT_BOOTSTRAP="${WORKDIR}/go-bootstrap"
-		mkdir -p "${GOROOT_BOOTSTRAP}/bin" || die
-		local go_binary=$(gcc-config --get-bin-path)/go-$(gcc-major-version)
-		[[ -x ${go_binary} ]] || go_binary=$(
-			find "${EPREFIX}"/usr/${CHOST}/gcc-bin/*/go-$(gcc-major-version) |
-				sort -V | tail -n1)
-		[[ -x ${go_binary} ]] ||
-			die "go-$(gcc-major-version): command not found"
-		ln -s "${go_binary}" "${GOROOT_BOOTSTRAP}/bin/go" || die
-	elif has_version -b dev-lang/go; then
+	if has_version -b dev-lang/go; then
 		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go"
 	elif has_version -b dev-lang/go-bootstrap; then
 		export GOROOT_BOOTSTRAP="${BROOT}/usr/lib/go-bootstrap"
