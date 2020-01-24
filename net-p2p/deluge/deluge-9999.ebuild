@@ -85,31 +85,33 @@ esetup.py() {
 python_install_all() {
 	distutils-r1_python_install_all
 	if ! use console ; then
-		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/console/" || die
-		rm -f "${D}/usr/bin/deluge-console" || die
-		rm -f "${D}/usr/share/man/man1/deluge-console.1" ||die
+		rm -r "${D}/$(python_get_sitedir)/deluge/ui/console/" || die
+		rm "${D}/usr/bin/deluge-console" || die
+		rm "${D}/usr/share/man/man1/deluge-console.1" ||die
 	fi
 	if ! use gtk ; then
-		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/gtkui/" || die
-		rm -rf "${D}/usr/share/icons/" || die
-		rm -f "${D}/usr/bin/deluge-gtk" || die
-		rm -f "${D}/usr/share/man/man1/deluge-gtk.1" || die
-		rm -f "${D}/usr/share/applications/deluge.desktop" || die
+		rm -r "${D}/$(python_get_sitedir)/deluge/ui/gtk3/" || die
+		rm -r "${D}/usr/share/icons/" || die
+		rm "${D}/usr/bin/deluge-gtk" || die
+		rm "${D}/usr/share/man/man1/deluge-gtk.1" || die
+		rm "${D}/usr/share/applications/deluge.desktop" || die
 	fi
 	if use webinterface; then
-		newinitd "${FILESDIR}/deluge-web.init" deluge-web
+		newinitd "${FILESDIR}/deluge-web.init-2" deluge-web
 		newconfd "${FILESDIR}/deluge-web.conf" deluge-web
 		systemd_newunit "${FILESDIR}/deluge-web.service-3" deluge-web.service
 		systemd_install_serviced "${FILESDIR}/deluge-web.service.conf"
 	else
-		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/web/" || die
-		rm -f "${D}/usr/bin/deluge-web" || die
-		rm -f "${D}/usr/share/man/man1/deluge-web.1" || die
+		rm -r "${D}/$(python_get_sitedir)/deluge/ui/web/" || die
+		rm "${D}/usr/bin/deluge-web" || die
+		rm "${D}/usr/share/man/man1/deluge-web.1" || die
 	fi
 	newinitd "${FILESDIR}"/deluged.init-2 deluged
 	newconfd "${FILESDIR}"/deluged.conf-2 deluged
 	systemd_newunit "${FILESDIR}"/deluged.service-2 deluged.service
 	systemd_install_serviced "${FILESDIR}"/deluged.service.conf
+
+	python_optimize
 }
 
 pkg_postinst() {
