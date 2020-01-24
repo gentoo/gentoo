@@ -1,0 +1,215 @@
+From e581b59fa838f471259ea24089d663bec4c02a1a Mon Sep 17 00:00:00 2001
+From: "S.Brandt" <s.brandt@mixxx.org>
+Date: Fri, 17 Jan 2020 13:03:58 +0100
+Subject: [PATCH 1/2] Fixes faders become invisible for the Deere skin with QT
+ 5.14.0 . Simplified the affected svg graphics. There was some transformation
+ going on (that rotates a shape around the point 0,0), also the unscaled
+ handle graphics were bigger than the slider graphics. That was apparently not
+ an issue pre-QT5.14.0.
+
+---
+ res/skins/Deere/handle-crossfader-blue.svg   | 8 ++++++--
+ res/skins/Deere/handle-crossfader-grey.svg   | 8 ++++++--
+ res/skins/Deere/handle-crossfader-lime.svg   | 8 ++++++--
+ res/skins/Deere/handle-crossfader-orange.svg | 8 ++++++--
+ res/skins/Deere/handle-vertical-blue.svg     | 8 ++++++--
+ res/skins/Deere/handle-vertical-carmine.svg  | 8 ++++++--
+ res/skins/Deere/handle-vertical-grey.svg     | 8 ++++++--
+ res/skins/Deere/handle-vertical-lime.svg     | 8 ++++++--
+ res/skins/Deere/handle-vertical-orange.svg   | 8 ++++++--
+ res/skins/Deere/handle-vertical-purple.svg   | 8 ++++++--
+ res/skins/Deere/slider-crossfader-AutoDJ.svg | 6 +++++-
+ res/skins/Deere/slider-crossfader.svg        | 8 ++++++--
+ res/skins/Deere/slider-vertical.svg          | 8 ++++++--
+ 13 files changed, 77 insertions(+), 25 deletions(-)
+
+diff --git a/res/skins/Deere/handle-crossfader-blue.svg b/res/skins/Deere/handle-crossfader-blue.svg
+index d17d769ec93..673ab8c304f 100644
+--- a/res/skins/Deere/handle-crossfader-blue.svg
++++ b/res/skins/Deere/handle-crossfader-blue.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="80" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4138" transform="scale(-1)" x="-75" y="-195" width="70" height="190" rx="10" ry="10" fill="#333" stroke="#e0e0e0" stroke-width="10"/><rect id="rect4151-3" transform="rotate(90)" x="22.134" y="-57.263" width="155.73" height="34.525" rx="2" ry="2" fill="#c5d11f"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="15" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <path d="m3 1h9c1.108 0 2 0.892 2 2v34c0 1.108-0.892 2-2 2h-9c-1.108 0-2-0.892-2-2v-34c0-1.108 0.892-2 2-2z" fill="#333" stroke="#e0e0e0" stroke-width="2"/>
++ <path d="m4 35.589v-31.178c0-0.22768 0.21148-0.41097 0.47417-0.41097h6.0517c0.26269 0 0.47417 0.18329 0.47417 0.41097v31.178c0 0.22768-0.21148 0.41097-0.47417 0.41097h-6.0517c-0.26269 0-0.47417-0.18329-0.47417-0.41097z" fill="#378df7"/>
++</svg>
+diff --git a/res/skins/Deere/handle-crossfader-grey.svg b/res/skins/Deere/handle-crossfader-grey.svg
+index 6c08871bae8..eb80ee8306e 100644
+--- a/res/skins/Deere/handle-crossfader-grey.svg
++++ b/res/skins/Deere/handle-crossfader-grey.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="80" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4138" transform="scale(-1)" x="-75" y="-195" width="70" height="190" rx="10" ry="10" fill="#333" stroke="#e0e0e0" stroke-width="10"/><rect id="rect4151-3" transform="rotate(90)" x="22.134" y="-57.263" width="155.73" height="34.525" rx="2" ry="2" fill="#939393"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="15" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <path d="m3 1h9c1.108 0 2 0.892 2 2v34c0 1.108-0.892 2-2 2h-9c-1.108 0-2-0.892-2-2v-34c0-1.108 0.892-2 2-2z" fill="#333" stroke="#e0e0e0" stroke-width="2"/>
++ <path d="m4 35.589v-31.178c0-0.22768 0.21148-0.41097 0.47417-0.41097h6.0517c0.26269 0 0.47417 0.18329 0.47417 0.41097v31.178c0 0.22768-0.21148 0.41097-0.47417 0.41097h-6.0517c-0.26269 0-0.47417-0.18329-0.47417-0.41097z" fill="#939393"/>
++</svg>
+diff --git a/res/skins/Deere/handle-crossfader-lime.svg b/res/skins/Deere/handle-crossfader-lime.svg
+index d17d769ec93..581868854b1 100644
+--- a/res/skins/Deere/handle-crossfader-lime.svg
++++ b/res/skins/Deere/handle-crossfader-lime.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="80" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4138" transform="scale(-1)" x="-75" y="-195" width="70" height="190" rx="10" ry="10" fill="#333" stroke="#e0e0e0" stroke-width="10"/><rect id="rect4151-3" transform="rotate(90)" x="22.134" y="-57.263" width="155.73" height="34.525" rx="2" ry="2" fill="#c5d11f"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="15" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <path d="m3 1h9c1.108 0 2 0.892 2 2v34c0 1.108-0.892 2-2 2h-9c-1.108 0-2-0.892-2-2v-34c0-1.108 0.892-2 2-2z" fill="#333" stroke="#e0e0e0" stroke-width="2"/>
++ <path d="m4 35.589v-31.178c0-0.22768 0.21148-0.41097 0.47417-0.41097h6.0517c0.26269 0 0.47417 0.18329 0.47417 0.41097v31.178c0 0.22768-0.21148 0.41097-0.47417 0.41097h-6.0517c-0.26269 0-0.47417-0.18329-0.47417-0.41097z" fill="#c5d11f"/>
++</svg>
+diff --git a/res/skins/Deere/handle-crossfader-orange.svg b/res/skins/Deere/handle-crossfader-orange.svg
+index c3587a775e1..15f2949153e 100644
+--- a/res/skins/Deere/handle-crossfader-orange.svg
++++ b/res/skins/Deere/handle-crossfader-orange.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="80" height="200" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4138" transform="scale(-1)" x="-75" y="-195" width="70" height="190" rx="10" ry="10" fill="#333" stroke="#e0e0e0" stroke-width="10"/><rect id="rect4151-3" transform="rotate(90)" x="22.134" y="-57.263" width="155.73" height="34.525" rx="2" ry="2" fill="#ffb108"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="15" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <path d="m3 1h9c1.108 0 2 0.892 2 2v34c0 1.108-0.892 2-2 2h-9c-1.108 0-2-0.892-2-2v-34c0-1.108 0.892-2 2-2z" fill="#333" stroke="#e0e0e0" stroke-width="2"/>
++ <path d="m4 35.589v-31.178c0-0.22768 0.21148-0.41097 0.47417-0.41097h6.0517c0.26269 0 0.47417 0.18329 0.47417 0.41097v31.178c0 0.22768-0.21148 0.41097-0.47417 0.41097h-6.0517c-0.26269 0-0.47417-0.18329-0.47417-0.41097z" fill="#ffb108"/>
++</svg>
+diff --git a/res/skins/Deere/handle-vertical-blue.svg b/res/skins/Deere/handle-vertical-blue.svg
+index b12a90b8194..c595936fb43 100644
+--- a/res/skins/Deere/handle-vertical-blue.svg
++++ b/res/skins/Deere/handle-vertical-blue.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="200" height="75" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4138" transform="rotate(-90)" x="-70" y="5" width="65" height="190" rx="10" ry="10" fill="#333" stroke="#e0e0e0" stroke-width="10"/><rect id="rect4151-3" transform="scale(-1)" x="-177.87" y="-52.263" width="155.73" height="29.525" rx="2" ry="2" fill="#378df7"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="40" height="15" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <path d="m1 12v-9c0-1.108 0.892-2 2-2h34c1.108 0 2 0.892 2 2v9c0 1.108-0.892 2-2 2h-34c-1.108 0-2-0.892-2-2z" fill="#333" stroke="#e0e0e0" stroke-width="2"/>
++ <path d="m35.589 11h-31.178c-0.22768 0-0.41097-0.21148-0.41097-0.47417v-6.0517c0-0.26269 0.18329-0.47417 0.41097-0.47417h31.178c0.22768 0 0.41097 0.21148 0.41097 0.47417v6.0517c0 0.26269-0.18329 0.47417-0.41097 0.47417z" fill="#378df7"/>
++</svg>
+diff --git a/res/skins/Deere/handle-vertical-carmine.svg b/res/skins/Deere/handle-vertical-carmine.svg
+index 2ed243a60de..e1e700d8814 100644
+--- a/res/skins/Deere/handle-vertical-carmine.svg
++++ b/res/skins/Deere/handle-vertical-carmine.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="200" height="75" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4138" transform="rotate(-90)" x="-70" y="5" width="65" height="190" rx="10" ry="10" fill="#333" stroke="#e0e0e0" stroke-width="10"/><rect id="rect4151-3" transform="scale(-1)" x="-177.87" y="-52.263" width="155.73" height="29.525" rx="2" ry="2" fill="#e02f00"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="40" height="15" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <path d="m1 12v-9c0-1.108 0.892-2 2-2h34c1.108 0 2 0.892 2 2v9c0 1.108-0.892 2-2 2h-34c-1.108 0-2-0.892-2-2z" fill="#333" stroke="#e0e0e0" stroke-width="2"/>
++ <path d="m35.589 11h-31.178c-0.22768 0-0.41097-0.21148-0.41097-0.47417v-6.0517c0-0.26269 0.18329-0.47417 0.41097-0.47417h31.178c0.22768 0 0.41097 0.21148 0.41097 0.47417v6.0517c0 0.26269-0.18329 0.47417-0.41097 0.47417z" fill="#e02f00"/>
++</svg>
+diff --git a/res/skins/Deere/handle-vertical-grey.svg b/res/skins/Deere/handle-vertical-grey.svg
+index c93bbfdf0b8..3bc72218911 100644
+--- a/res/skins/Deere/handle-vertical-grey.svg
++++ b/res/skins/Deere/handle-vertical-grey.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="200" height="75" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4138" transform="rotate(-90)" x="-70" y="5" width="65" height="190" rx="10" ry="10" fill="#333" stroke="#e0e0e0" stroke-width="10"/><rect id="rect4151-3" transform="scale(-1)" x="-177.87" y="-52.263" width="155.73" height="29.525" rx="2" ry="2" fill="#939393"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="40" height="15" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <path d="m1 12v-9c0-1.108 0.892-2 2-2h34c1.108 0 2 0.892 2 2v9c0 1.108-0.892 2-2 2h-34c-1.108 0-2-0.892-2-2z" fill="#333" stroke="#e0e0e0" stroke-width="2"/>
++ <path d="m35.589 11h-31.178c-0.22768 0-0.41097-0.21148-0.41097-0.47417v-6.0517c0-0.26269 0.18329-0.47417 0.41097-0.47417h31.178c0.22768 0 0.41097 0.21148 0.41097 0.47417v6.0517c0 0.26269-0.18329 0.47417-0.41097 0.47417z" fill="#939393"/>
++</svg>
+diff --git a/res/skins/Deere/handle-vertical-lime.svg b/res/skins/Deere/handle-vertical-lime.svg
+index 5cd4d0c76bd..158d494d62a 100644
+--- a/res/skins/Deere/handle-vertical-lime.svg
++++ b/res/skins/Deere/handle-vertical-lime.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="200" height="75" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4138" transform="rotate(-90)" x="-70" y="5" width="65" height="190" rx="10" ry="10" fill="#333" stroke="#e0e0e0" stroke-width="10"/><rect id="rect4151-3" transform="scale(-1)" x="-177.87" y="-52.263" width="155.73" height="29.525" rx="2" ry="2" fill="#c5d11f"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="40" height="15" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <path d="m1 12v-9c0-1.108 0.892-2 2-2h34c1.108 0 2 0.892 2 2v9c0 1.108-0.892 2-2 2h-34c-1.108 0-2-0.892-2-2z" fill="#333" stroke="#e0e0e0" stroke-width="2"/>
++ <path d="m35.589 11h-31.178c-0.22768 0-0.41097-0.21148-0.41097-0.47417v-6.0517c0-0.26269 0.18329-0.47417 0.41097-0.47417h31.178c0.22768 0 0.41097 0.21148 0.41097 0.47417v6.0517c0 0.26269-0.18329 0.47417-0.41097 0.47417z" fill="#c5d11f"/>
++</svg>
+diff --git a/res/skins/Deere/handle-vertical-orange.svg b/res/skins/Deere/handle-vertical-orange.svg
+index 1b6b91152df..10f79b79b87 100644
+--- a/res/skins/Deere/handle-vertical-orange.svg
++++ b/res/skins/Deere/handle-vertical-orange.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="200" height="75" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4138" transform="rotate(-90)" x="-70" y="5" width="65" height="190" rx="10" ry="10" fill="#333" stroke="#e0e0e0" stroke-width="10"/><rect id="rect4151-3" transform="scale(-1)" x="-177.87" y="-52.263" width="155.73" height="29.525" rx="2" ry="2" fill="#e3ca1f"/><rect id="rect5888" transform="scale(-1)" x="-177.87" y="-52.263" width="155.73" height="29.525" rx="2" ry="2" fill="#ffb108"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="40" height="15" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <path d="m1 12v-9c0-1.108 0.892-2 2-2h34c1.108 0 2 0.892 2 2v9c0 1.108-0.892 2-2 2h-34c-1.108 0-2-0.892-2-2z" fill="#333" stroke="#e0e0e0" stroke-width="2"/>
++ <path d="m35.589 11h-31.178c-0.22768 0-0.41097-0.21148-0.41097-0.47417v-6.0517c0-0.26269 0.18329-0.47417 0.41097-0.47417h31.178c0.22768 0 0.41097 0.21148 0.41097 0.47417v6.0517c0 0.26269-0.18329 0.47417-0.41097 0.47417z" fill="#ffb108"/>
++</svg>
+diff --git a/res/skins/Deere/handle-vertical-purple.svg b/res/skins/Deere/handle-vertical-purple.svg
+index c606eac9b8c..1ccd440a239 100644
+--- a/res/skins/Deere/handle-vertical-purple.svg
++++ b/res/skins/Deere/handle-vertical-purple.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="200" height="75" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4138" transform="rotate(-90)" x="-70" y="5" width="65" height="190" rx="10" ry="10" fill="#333" stroke="#e0e0e0" stroke-width="10"/><rect id="rect4151-3" transform="scale(-1)" x="-177.87" y="-52.263" width="155.73" height="29.525" rx="2" ry="2" fill="#f2d440"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="40" height="15" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <path d="m1 12v-9c0-1.108 0.892-2 2-2h34c1.108 0 2 0.892 2 2v9c0 1.108-0.892 2-2 2h-34c-1.108 0-2-0.892-2-2z" fill="#333" stroke="#e0e0e0" stroke-width="2"/>
++ <path d="m35.589 11h-31.178c-0.22768 0-0.41097-0.21148-0.41097-0.47417v-6.0517c0-0.26269 0.18329-0.47417 0.41097-0.47417h31.178c0.22768 0 0.41097 0.21148 0.41097 0.47417v6.0517c0 0.26269-0.18329 0.47417-0.41097 0.47417z" fill="#f2d440"/>
++</svg>
+diff --git a/res/skins/Deere/slider-crossfader-AutoDJ.svg b/res/skins/Deere/slider-crossfader-AutoDJ.svg
+index 3d4ee50b5a6..281dd06c32a 100644
+--- a/res/skins/Deere/slider-crossfader-AutoDJ.svg
++++ b/res/skins/Deere/slider-crossfader-AutoDJ.svg
+@@ -1 +1,5 @@
+-<svg id="svg2" width="180" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect2984" x="3.9767" y="12.759" width="172.05" height="14.483" color="#000000" fill="#f60"/><!-- marker lines every 5px --><!-- end marker --><!-- quarter marker --><!-- middle marker --><!-- quarter marker --><!-- end marker --></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="180" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <rect x="1" y="12" width="178" height="16" color="#000000" fill="#f60"/>
++</svg>
+diff --git a/res/skins/Deere/slider-crossfader.svg b/res/skins/Deere/slider-crossfader.svg
+index 3ff945454de..ac5cb8cb52b 100644
+--- a/res/skins/Deere/slider-crossfader.svg
++++ b/res/skins/Deere/slider-crossfader.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="180" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4167" transform="rotate(90)" x="12.633" y="-176.2" width="14.734" height="172.4" rx=".92518" ry="1.0809" fill="none" stroke="#555" stroke-linecap="round" stroke-width="1.5"/><path id="path4175" d="m170.32 18.062h-160.64v3.875h160.64v-3.875z" fill="#222" stroke="#222" stroke-linecap="round" stroke-width="2.5"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="180" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <rect x="1.75" y="12.75" width="176.5" height="14.5" rx="1" ry="1" fill="none" stroke="#555" stroke-linecap="round" stroke-width="1.5"/>
++ <path d="m6.4826 20h167.03z" fill="none" stroke="#222" stroke-width="6"/>
++</svg>
+diff --git a/res/skins/Deere/slider-vertical.svg b/res/skins/Deere/slider-vertical.svg
+index 6876b84e028..30bc5061623 100644
+--- a/res/skins/Deere/slider-vertical.svg
++++ b/res/skins/Deere/slider-vertical.svg
+@@ -1,2 +1,6 @@
+-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+-<svg id="svg2" width="40" height="162" version="1.1" xmlns="http://www.w3.org/2000/svg"><rect id="rect4167" x="12.633" y="1.25" width="14.734" height="159.5" rx="1" ry="1" fill="none" stroke="#555" stroke-linecap="round" stroke-width="1.5"/><path id="path4175" transform="translate(0,-9)" d="m18.062 15.688v148.62h3.875v-148.62h-3.875z" fill="#222" stroke="#222" stroke-linecap="round" stroke-width="2.5"/></svg>
++<?xml version="1.0" encoding="UTF-8"?>
++<svg width="40" height="162" version="1.1" xmlns="http://www.w3.org/2000/svg">
++ <style/>
++ <rect x="12.75" y="1.75" width="14.5" height="158.5" rx="1" ry="1" fill="none" stroke="#555" stroke-linecap="round" stroke-width="1.5"/>
++ <path d="m20 156v-150z" fill="none" stroke="#222" stroke-width="6"/>
++</svg>
+
+From 8d1e0e2aabb8c95c0ca06faa93d50dbc75f537db Mon Sep 17 00:00:00 2001
+From: "S.Brandt" <s.brandt@mixxx.org>
+Date: Fri, 17 Jan 2020 13:05:25 +0100
+Subject: [PATCH 2/2] Deere skin:  Add maximum size for the crossfader slider
+ image to stop the crossfader handle from overflowing the background graphic.
+
+---
+ res/skins/Deere/mixer.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/res/skins/Deere/mixer.xml b/res/skins/Deere/mixer.xml
+index b27e3e8b4e0..315d1f30709 100644
+--- a/res/skins/Deere/mixer.xml
++++ b/res/skins/Deere/mixer.xml
+@@ -122,6 +122,7 @@
+                       <SliderComposed>
+                         <TooltipId>crossfader</TooltipId>
+                         <Size>1me,40f</Size>
++                        <MaximumSize>200,40</MaximumSize>
+                         <Slider scalemode="STRETCH">slider-crossfader.svg</Slider>
+                         <Handle scalemode="STRETCH_ASPECT">handle-crossfader-orange.svg</Handle>
+                         <Horizontal>true</Horizontal>
