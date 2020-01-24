@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit fdo-mime gnome2-utils
+inherit autotools gnome2-utils xdg
 
 DESCRIPTION="Framework for Scanning Mode Microscopy data analysis"
 HOMEPAGE="http://gwyddion.net/"
@@ -34,6 +34,15 @@ DEPEND="${RDEPEND}
 	doc? ( dev-util/gtk-doc )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2.47-cfitsio.patch"
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	econf \
 		--disable-rpath \
@@ -41,7 +50,7 @@ src_configure() {
 		$(use_enable doc gtk-doc) \
 		$(use_enable nls) \
 		--disable-pygwy \
-		$(use_enable fits cfitsio) \
+		$(use_with fits cfitsio) \
 		$(use_with perl) \
 		--without-python \
 		$(use_with ruby) \
@@ -54,13 +63,9 @@ src_configure() {
 
 pkg_postinst() {
 	use gnome && gnome2_gconf_install
-	fdo-mime_desktop_database_update
+	xdg_pkg_postinst
 }
 
 pkg_prerm() {
 	use gnome && gnome2_gconf_uninstall
-}
-
-pkg_postrm() {
-	fdo-mime_desktop_database_update
 }
