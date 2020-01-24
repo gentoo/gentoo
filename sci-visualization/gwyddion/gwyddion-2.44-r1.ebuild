@@ -1,12 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 )
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
-inherit autotools-utils fdo-mime gnome2-utils python-single-r1
+inherit autotools-utils fdo-mime gnome2-utils
 
 DESCRIPTION="Framework for Scanning Mode Microscopy data analysis"
 HOMEPAGE="http://gwyddion.net/"
@@ -15,7 +14,7 @@ SRC_URI="http://gwyddion.net/download/${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
-IUSE="doc fits fftw gnome nls opengl perl python ruby sourceview xml X"
+IUSE="doc fits fftw gnome nls opengl perl ruby sourceview xml X"
 
 RDEPEND="
 	media-libs/libpng:0
@@ -28,10 +27,6 @@ RDEPEND="
 	gnome? ( gnome-base/gconf:2 )
 	opengl? ( virtual/opengl x11-libs/gtkglext )
 	perl? ( dev-lang/perl )
-	python? (
-		${PYTHON_DEPS}
-		dev-python/pygtk:2[${PYTHON_USEDEP}]
-	)
 	ruby? ( dev-ruby/narray )
 	sourceview? ( x11-libs/gtksourceview:2.0 )
 	xml? ( dev-libs/libxml2:2 )"
@@ -45,10 +40,6 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 MAKEOPTS+=" V=1"
 
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
-
 src_configure() {
 	local myeconfargs=(
 		--disable-rpath
@@ -58,7 +49,7 @@ src_configure() {
 		$(use_enable python pygwy)
 		$(use_enable fits cfitsio)
 		$(use_with perl)
-		$(use_with python)
+		--without-python
 		$(use_with ruby)
 		$(use_with fftw fftw3)
 		$(use_with opengl gl)
@@ -71,7 +62,6 @@ src_configure() {
 
 src_install() {
 	autotools-utils_src_install
-	use python && dodoc modules/pygwy/README.pygwy
 }
 
 pkg_postinst() {

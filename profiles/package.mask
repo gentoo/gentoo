@@ -82,12 +82,6 @@ sci-physics/lightspeed
 sci-visualization/gfsview
 
 # David Seifert <soap@gentoo.org> (2020-01-21)
-# No sign of py3 port, depends on EOL pygtk and gtkglext.
-# Many open bugs, no revdeps.
-# Bug #443088, #582454, #598682, #623314. Removal in 30 days.
-sci-visualization/gwyddion
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
 # No sign of py3 port, depends on EOL pygtk. No revdeps.
 # Bug #706030. Removal in 30 days.
 app-misc/gourmet
