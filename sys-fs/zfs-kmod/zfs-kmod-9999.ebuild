@@ -90,9 +90,6 @@ src_prepare() {
 		# Set module revision number
 		sed -i "s/\(Release:\)\(.*\)1/\1\2${PR}-gentoo/" META || die "Could not set Gentoo release"
 	fi
-
-	# Remove GPLv2-licensed ZPIOS unless we are debugging
-	use debug || sed -e 's/^subdir-m += zpios$//' -i module/Makefile.in
 }
 
 src_configure() {
