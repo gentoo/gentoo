@@ -1,0 +1,14 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+pidfile="/run/iwd.pid"
+command="/usr/libexec/iwd"
+command_background="yes"
+
+depend() {
+	need dbus
+	after bootmisc modules
+	before dns dhcpcd net
+	keyword -shutdown
+}
