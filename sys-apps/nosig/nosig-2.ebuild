@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-DESCRIPTION="This is a sample skeleton ebuild file"
+DESCRIPTION="Block signals before running programs (a generic \"nohup\")"
 HOMEPAGE="https://vapier.github.io/nosig/"
 SRC_URI="https://github.com/vapier/nosig/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
