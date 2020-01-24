@@ -55,7 +55,7 @@ python_test() {
 	local es_instance="gentoo-es-py-test"
 	local es_log="${es}/logs/${es_instance}.log"
 	local pid="${es}/elasticsearch.pid"
-	export JAVA_HOME=$(java-config -g JAVA_HOME)
+	export JAVA_HOME=$(java-config -g JAVA_HOME || die)
 
 	# run Elasticsearch instance on custom port
 	sed -i "s/#http.port: 9200/http.port: ${es_port}/g; \
