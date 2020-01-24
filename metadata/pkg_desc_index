@@ -18501,7 +18501,7 @@ x11-misc/numlockx 1.2: Turns on numlock in X
 x11-misc/obconf 2.0.4 9999: ObConf is a tool for configuring the Openbox window manager
 x11-misc/obconf-qt 0.14.1: Openbox window manager configuration tool
 x11-misc/obmenu 1.0-r1: Menu editor designed for openbox
-x11-misc/obmenu-generator 0.85-r1: A fast pipe/static menu generator for the Openbox Window Manager
+x11-misc/obmenu-generator 0.85-r1 0.87: A fast pipe/static menu generator for the Openbox Window Manager
 x11-misc/obtheme 2013.2.20.2: A gui theme editor for openbox
 x11-misc/openbox-menu 0.8.0: Another dynamic menu generator for Openbox
 x11-misc/oroborus-deskmenu 1.4.5-r1: root menu program for Oroborus
