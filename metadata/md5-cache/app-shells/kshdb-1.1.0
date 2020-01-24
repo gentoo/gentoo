@@ -1,5 +1,5 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=prepare
+DEFINED_PHASES=prepare test
 DESCRIPTION=Korn Shell Debugger
 EAPI=7
 HOMEPAGE=https://github.com/rocky/kshdb
@@ -7,6 +7,6 @@ KEYWORDS=~amd64
 LICENSE=GPL-2+
 RDEPEND=app-shells/ksh
 SLOT=0
-SRC_URI=https://github.com/rocky/kshdb/archive/1.0.0.tar.gz -> kshdb-1.0.0.tar.gz
+SRC_URI=https://github.com/rocky/kshdb/archive/1.1.0.tar.gz -> kshdb-1.1.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d85e96c9db70bbefd024253c762674c2
+_md5_=1b03e70722b1c0864a208b366a8a9846

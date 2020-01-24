@@ -16,6 +16,7 @@ acct-group/clamav 0: System group: clamav
 acct-group/cmd5checkpw 0: System group: cmd5checkpw
 acct-group/ddclient 0: A group for the dynamic DNS client
 acct-group/deluge 0: System group: deluge
+acct-group/dhcp 0: System group: dhcp
 acct-group/dialout 0: System group: dialout
 acct-group/disk 0: System group: disk
 acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
@@ -149,6 +150,7 @@ acct-user/clamav 0: System user: clamav
 acct-user/cmd5checkpw 0: User for cmd5checkpw
 acct-user/ddclient 0: A user for the dynamic DNS client
 acct-user/deluge 0: user for deluge
+acct-user/dhcp 0: user for dhcp daemon
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/dnsmasq_exporter 0: user for dnsmasq_exporter
 acct-user/dovecot 0: user for dovecot daemon
@@ -2437,7 +2439,7 @@ app-shells/gentoo-zsh-completions 20180228 99999999: Gentoo specific zsh complet
 app-shells/heirloom-sh 050706-r1: Heirloom Bourne Shell, derived from OpenSolaris code SVR4/SVID3
 app-shells/hstr 2.0: Shell history suggest box
 app-shells/ksh 2020.0.0 9999: The Original Korn Shell, 1993 revision (ksh93)
-app-shells/kshdb 1.0.0: Korn Shell Debugger
+app-shells/kshdb 1.1.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/loksh 6.6: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6: Context-aware bash history search replacement (crtl-r)
@@ -5152,7 +5154,7 @@ dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r1 0.7: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.20 4.22 4.24: Netscape Portable Runtime
-dev-libs/nss 3.47.1-r1 3.48-r1 3.49 3.49.1: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.47.1-r1 3.48-r1 3.49 3.49.1 3.49.2: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loaders
@@ -10416,7 +10418,7 @@ dev-util/cargo-tree 0.23.0 0.24.0 0.25.0 0.26.0 0.27.0 0.28.0: Cargo subcommand 
 dev-util/catalyst 3.0.8 9999: Release metatool used for creating releases based on Gentoo Linux
 dev-util/catfish 1.4.10 1.4.12 1.4.13: A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot
 dev-util/catkin 0.7.14 0.7.17 0.7.20 9999: Cmake macros and associated python code used to build some parts of ROS
-dev-util/cbindgen 0.9.1 0.10.1 0.11.1 0.12.1: A tool for generating C bindings to Rust code
+dev-util/cbindgen 0.9.1 0.10.1 0.11.1 0.12.1 0.12.2: A tool for generating C bindings to Rust code
 dev-util/ccache 3.7.2 3.7.4 3.7.5 3.7.6 3.7.7: fast compiler cache
 dev-util/cccc 3.1.5-r1: Source metrics (line counts, complexity, etc) for Java and C++
 dev-util/cdiff 1.0 9999: Colored, side-by-side diff terminal viewer
@@ -12260,8 +12262,8 @@ mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for 
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15 14.9.16: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
-mail-client/thunderbird 52.9.1 68.4.1: Thunderbird Mail Client
-mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.4.1: Thunderbird Mail Client
+mail-client/thunderbird 52.9.1 68.4.2: Thunderbird Mail Client
+mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.4.2: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
 mail-filter/MailScanner 4.84.5.2: Free Anti-Virus and Anti-Spam Filter
 mail-filter/afew 1.2.0 1.3.0: Initial tagging script for Notmuch
@@ -14983,7 +14985,7 @@ net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2 2.11.1 3.1.0: User
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
 net-misc/dhcdrop 0.5: Effectively suppresses illegal DHCP servers on the LAN
-net-misc/dhcp 4.4.1 4.4.2: ISC Dynamic Host Configuration Protocol (DHCP) client/server
+net-misc/dhcp 4.4.1 4.4.2 4.4.2-r1: ISC Dynamic Host Configuration Protocol (DHCP) client/server
 net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.5 9999: A fully featured, yet light weight RFC2131 compliant DHCP client
 net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
