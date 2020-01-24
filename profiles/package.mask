@@ -647,12 +647,6 @@ games-action/accelerator3d
 # Removal in 30 days.  Bug #693032.
 games-kids/tuxmathscrabble
 
-# Ulrich Müller <ulm@gentoo.org> (2019-12-25)
-# Broken SRC_URI. Most distfiles have no license,
-# so we cannot distribute them on mirrors.
-# Masked for removal in 30 days. Bug #635372.
-x11-themes/audacious-themes
-
 # David Seifert <soap@gentoo.org> (2019-12-24)
 # Unmaintained, uses dead POSIX streams interface, EAPI 4.
 # Bug #692228, Removal in 30 days.
