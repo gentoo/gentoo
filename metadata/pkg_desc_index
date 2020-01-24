@@ -666,7 +666,7 @@ app-benchmarks/httperf 0.9.1_p20181111 0.9.1_p20181111-r1: A tool from HP for me
 app-benchmarks/i7z 93_p20131012-r2: A better i7 (and now i3, i5) reporting tool for Linux
 app-benchmarks/interbench 0.31: A Linux interactivity benchmark
 app-benchmarks/ioping 0.9 1.0 1.1: Simple disk I/0 latency measuring tool
-app-benchmarks/iozone 3.471 3.484 3.487: Filesystem benchmarking program
+app-benchmarks/iozone 3.471 3.484 3.487 3.488: Filesystem benchmarking program
 app-benchmarks/libc-bench 20110206: Time and memory-efficiency tests of various C/POSIX standard library functions
 app-benchmarks/nbench 2.2.3-r1: Linux/Unix of release 2 of BYTE Magazine's BYTEmark benchmark
 app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communication
