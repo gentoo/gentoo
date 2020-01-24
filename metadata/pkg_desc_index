@@ -16930,7 +16930,7 @@ sys-apps/netloc 0.5: Portable Network Locality (netloc)
 sys-apps/netplug 1.2.9.2-r2 1.2.9.2-r3: Brings up/down ethernet ports automatically with cable detection
 sys-apps/newrelic-sysmond 1.1.2.124-r1: NewRelic System Monitor
 sys-apps/noexec 1.1.0-r1: a package for preventing processes from using exec system calls
-sys-apps/nosig 2: This is a sample skeleton ebuild file
+sys-apps/nosig 2: Block signals before running programs (a generic "nohup")
 sys-apps/nvme-cli 1.6-r1 1.9-r3: NVM-Express user space tooling for Linux
 sys-apps/onerng 3.6-r2: Software for the Open Hardware Random Number Generator called OneRNG
 sys-apps/opal-utils 6.5 6.5.2: OPAL firmware utilities
