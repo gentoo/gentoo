@@ -1,11 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 )
-
-inherit fdo-mime gnome2-utils python-single-r1
+inherit fdo-mime gnome2-utils
 
 DESCRIPTION="Framework for Scanning Mode Microscopy data analysis"
 HOMEPAGE="http://gwyddion.net/"
@@ -14,7 +12,7 @@ SRC_URI="http://gwyddion.net/download/${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc fits fftw gnome nls opengl perl python ruby sourceview xml X"
+IUSE="doc fits fftw gnome nls opengl perl ruby sourceview xml X"
 
 RDEPEND="
 	media-libs/libpng:0=
@@ -27,10 +25,6 @@ RDEPEND="
 	gnome? ( gnome-base/gconf:2 )
 	opengl? ( virtual/opengl x11-libs/gtkglext )
 	perl? ( dev-lang/perl:= )
-	python? (
-		${PYTHON_DEPS}
-		dev-python/pygtk:2[${PYTHON_USEDEP}]
-	)
 	ruby? ( dev-ruby/narray )
 	sourceview? ( x11-libs/gtksourceview:2.0 )
 	xml? ( dev-libs/libxml2:2 )"
@@ -40,33 +34,22 @@ DEPEND="${RDEPEND}
 	doc? ( dev-util/gtk-doc )
 "
 
-REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
-
-pkg_setup() {
-	use python && python-single-r1_pkg_setup
-}
-
 src_configure() {
 	econf \
 		--disable-rpath \
 		--without-kde4-thumbnailer \
 		$(use_enable doc gtk-doc) \
 		$(use_enable nls) \
-		$(use_enable python pygwy) \
+		--disable-pygwy \
 		$(use_enable fits cfitsio) \
 		$(use_with perl) \
-		$(use_with python) \
+		--without-python \
 		$(use_with ruby) \
 		$(use_with fftw fftw3) \
 		$(use_with opengl gl) \
 		$(use_with sourceview gtksourceview) \
 		$(use_with xml libxml2) \
 		$(use_with X x)
-}
-
-src_install() {
-	default
-	use python && dodoc modules/pygwy/README.pygwy
 }
 
 pkg_postinst() {
