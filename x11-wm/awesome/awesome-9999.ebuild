@@ -68,7 +68,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}"/etc
 		-DCOMPRESS_MANPAGES=OFF
-		-DWITH_DBUS=$(usex dbus)
+		-DWITH_DBUS=$(usex dbus ON OFF)
 		-DGENERATE_DOC=$(usex doc)
 		-DAWESOME_DOC_PATH="${EPREFIX}"/usr/share/doc/${PF}
 	)
