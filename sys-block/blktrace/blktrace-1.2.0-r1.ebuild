@@ -35,6 +35,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-overlapping-io-stats.patch
 	"${FILESDIR}"/${PN}-1.2.0-ldflags.patch #335741
 	"${FILESDIR}"/${PN}-1.2.0-parallel-build.patch #335741
+	"${FILESDIR}"/${PN}-1.2.0-parallel-rbtree.patch #705594
 )
 
 src_compile() {
