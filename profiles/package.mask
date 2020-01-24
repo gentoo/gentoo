@@ -50,11 +50,6 @@ games-strategy/gwp
 games-strategy/ufoai
 
 # David Seifert <soap@gentoo.org> (2020-01-21)
-# Last release over 13 years ago, depends on EOL gtkglext.
-# No revdeps, Removal in 30 days.
-media-sound/glmix
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
 # All released versions depend on EOL gtkglext, no revdeps.
 # Bug #644334, #694834. Removal of releases in 30 days.
 # Lars Wendler <polynomial-c@gemtoo.org> (2020-01-22)
