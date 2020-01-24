@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Victor Payno <vpayno+gentoo@gmail.com> (2020-01-23)
+# Requires slotted lua.
+=dev-lang/lua-5.1.5-r103
+=dev-lang/lua-5.2.4-r2
+=dev-lang/lua-5.3.5-r2
+
 # David Seifert <soap@gentoo.org> (2020-01-21)
 # Upstream disappeared, no other distro still carries this,
 # blocks removal of EOL gtkglext, no revdeps.
