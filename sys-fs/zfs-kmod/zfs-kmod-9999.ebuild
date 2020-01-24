@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic linux-info linux-mod toolchain-funcs
+inherit flag-o-matic linux-mod toolchain-funcs
 
 DESCRIPTION="Linux ZFS kernel module for sys-fs/zfs"
 HOMEPAGE="https://zfsonlinux.org/"
@@ -38,8 +38,6 @@ RESTRICT="debug? ( strip ) test"
 DOCS=( AUTHORS COPYRIGHT META README.md )
 
 pkg_setup() {
-	linux-info_pkg_setup
-
 	CONFIG_CHECK="
 		!DEBUG_LOCK_ALLOC
 		EFI_PARTITION
@@ -80,7 +78,7 @@ pkg_setup() {
 			"Linux ${kv_major_max}.${kv_minor_max} is the latest supported version"
 	fi
 
-	check_extra_config
+	linux-mod_pkg_setup
 }
 
 src_prepare() {
