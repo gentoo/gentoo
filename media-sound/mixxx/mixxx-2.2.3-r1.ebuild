@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -80,6 +80,7 @@ DEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.0.0-docs.patch
 	"${FILESDIR}"/${PN}-2.2.0-lilv_include_fix.patch
+	"${FILESDIR}"/${P}-qt-5.14.patch
 )
 
 src_prepare() {
