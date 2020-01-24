@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,11 +15,11 @@ KEYWORDS="~amd64"
 
 RDEPEND="app-shells/ksh"
 
-PATCHES=(
-	"${FILESDIR}"/kshdb-1.0.0-remove-COLORFGBG-message.patch
-)
-
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_test() {
+	emake check-unit
 }
