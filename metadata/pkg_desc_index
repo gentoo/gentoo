@@ -1632,7 +1632,7 @@ app-emulation/virtualbox-guest-additions 5.2.32 5.2.34 5.2.36 6.0.14 6.0.16 6.1.
 app-emulation/virtualbox-modules 5.2.32 5.2.34 5.2.36 6.0.14 6.0.16 6.1.0 6.1.2: Kernel Modules for Virtualbox
 app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
-app-emulation/wine-gecko 2.47-r1: A Mozilla Gecko based version of Internet Explorer for Wine
+app-emulation/wine-gecko 2.47-r1 2.47.1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
 app-emulation/wine-staging 4.19 4.20 4.21 5.0 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
 app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 4.19 4.20 4.21 5.0 9999: Free implementation of Windows(tm) on Unix, without external patchsets
@@ -4713,7 +4713,7 @@ dev-lang/lazarus 1.0.12 1.8.4-r2 2.0.2: Lazarus IDE is a feature rich visual pro
 dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: Lisaac is an object prototype based language
 dev-lang/logtalk 3.11.2 3.18.0: Open source object-oriented logic programming language
-dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r100 5.1.5-r101 5.1.5-r102 5.2.3 5.2.3-r1 5.2.3-r2 5.2.3-r3 5.2.4 5.2.4-r1 5.3.3 5.3.3-r1 5.3.3-r2 5.3.5 5.3.5-r1: A powerful light-weight programming language designed for extending applications
+dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r100 5.1.5-r101 5.1.5-r102 5.1.5-r103 5.2.3 5.2.3-r1 5.2.3-r2 5.2.3-r3 5.2.4 5.2.4-r1 5.2.4-r2 5.3.3 5.3.3-r1 5.3.3-r2 5.3.5 5.3.5-r1 5.3.5-r2: A powerful light-weight programming language designed for extending applications
 dev-lang/luajit 2.0.2 2.0.3 2.0.3-r1 2.0.4 2.0.5 2.0.5-r1 2.1.0_beta3: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
 dev-lang/mercury 14.01.1-r1: Mercury is a modern general-purpose logic/functional programming language
