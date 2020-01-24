@@ -2,7 +2,7 @@ DEFINED_PHASES=compile configure install postinst prepare pretend test
 DEPEND=dev-db/sqlite:3 <dev-games/openscenegraph-3.5.6:=[jpeg,png] ~dev-games/simgear-2018.3.1[gdal=] media-libs/openal >=media-libs/speex-1.2.0:0 media-libs/speexdsp:0 media-sound/gsm sys-libs/zlib virtual/glu x11-libs/libX11 dbus? ( >=sys-apps/dbus-1.6.18-r1 ) gdal? ( >=sci-libs/gdal-2.0.0:0 ) qt5? ( >=dev-qt/qtcore-5.7.1:5 >=dev-qt/qtdeclarative-5.7.1:5 >=dev-qt/qtgui-5.7.1:5 >=dev-qt/qtnetwork-5.7.1:5 >=dev-qt/qtwidgets-5.7.1:5 ) udev? ( virtual/udev ) utils? ( media-libs/freeglut media-libs/freetype:2 media-libs/glew:0 media-libs/libpng:0 virtual/opengl qt5? ( >=dev-qt/qtwebsockets-5.7.1:5 ) ) >=dev-libs/boost-1.44 >=media-libs/plib-1.8.5 utils? ( x11-libs/libXi x11-libs/libXmu ) sys-devel/make >=dev-util/cmake-3.9.6
 DESCRIPTION=Open Source Flight Simulator
 EAPI=6
-HOMEPAGE=http://www.flightgear.org/
+HOMEPAGE=https://www.flightgear.org/
 IUSE=dbus debug examples gdal openmp qt5 +udev +utils vim-syntax
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/flightgear/flightgear-2018.3.1.tar.bz2
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=d524538762fde5c737e183f8f7adb278
+_md5_=23b00d1a7aa426aca0480e2c1559092a
