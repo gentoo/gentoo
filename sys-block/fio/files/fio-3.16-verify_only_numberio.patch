@@ -1,0 +1,60 @@
+From 8859c0675aec03467ed65dfc79ecc874d026f165 Mon Sep 17 00:00:00 2001
+From: Gwendal Grignou <gwendal@chromium.org>
+Date: Mon, 13 Jan 2020 16:35:10 -0800
+Subject: [PATCH] verify: Fix test to not check for numberio when verify_only
+ is true
+
+io->numberio can not be populated when verify_only is true, because
+do_dry_run() build and complete IOs immediately, so it can not replicate
+the numberio that was produced when the data was layered on the media.
+
+Without this fix, using write_random
+[write_stress]
+filename=${FILENAME}
+size=${FILESIZE}
+verify_only=${VERIFY_ONLY}
+readwrite=randwrite
+bs=4k
+ioengine=libaio
+iodepth=32
+direct=1
+do_verify=1
+verify=crc32c
+
+'VERIFY_ONLY=1 FILENAME=/dev/sda1 FILESIZE=1M fio write_random' passes,
+but
+'VERIFY_ONLY=0 FILENAME=/dev/sda1 FILESIZE=1M fio write_random' fails:
+"""verify_only option fails with verify: bad header numberio 1, wanted
+0""".
+The fix addresses the problem by not checking numberio.
+
+Fixes #732
+
+Signed-off-by: Gwendal Grignou <gwendal@chromium.org>
+---
+ verify.c | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/verify.c b/verify.c
+index a2c0d41dbb8c..cf299ebf9643 100644
+--- a/verify.c
++++ b/verify.c
+@@ -845,13 +845,11 @@ static int verify_header(struct io_u *io_u, struct thread_data *td,
+ 	 * For read-only workloads, the program cannot be certain of the
+ 	 * last numberio written to a block. Checking of numberio will be
+ 	 * done only for workloads that write data.  For verify_only,
+-	 * numberio will be checked in the last iteration when the correct
+-	 * state of numberio, that would have been written to each block
+-	 * in a previous run of fio, has been reached.
++	 * numberio check is skipped.
+ 	 */
+ 	if (td_write(td) && (td_min_bs(td) == td_max_bs(td)) &&
+ 	    !td->o.time_based)
+-		if (!td->o.verify_only || td->o.loops == 0)
++		if (!td->o.verify_only)
+ 			if (hdr->numberio != io_u->numberio) {
+ 				log_err("verify: bad header numberio %"PRIu16
+ 					", wanted %"PRIu16,
+-- 
+2.23.0
+
