@@ -16,7 +16,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 DEPEND="dev-go/go-bindata
-	>=dev-lang/go-1.11"
+	>=dev-lang/go-1.13"
 
 RESTRICT="test"
 

@@ -17,7 +17,7 @@ SLOT="0"
 IUSE="hardened"
 
 DEPEND="dev-go/go-bindata
-	>=dev-lang/go-1.11"
+	>=dev-lang/go-1.13"
 
 RESTRICT="test"
 
