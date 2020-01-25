@@ -65,13 +65,13 @@ FREE @FREE-SOFTWARE @FREE-DOCUMENTS
 # - IF (and only if) there is an explicit inclusion requirement,
 #   USE=bindist MUST cause a copy of the license to be installed
 #   in a file location compliant with the license
-BINARY-REDISTRIBUTABLE @FREE Amazon Atmel bh-luxi bonnie Broadcom freedist intel-ucode ipw2100-fw ipw2200-fw ipw3945 ISSL JSON linux-fw-redistributable LSI-tw_cli MicroChip-SDCC no-source-code NVIDIA-r1 qlogic-fibre-channel-firmware shmux SmartLabs sun-jlfgr unRAR
+BINARY-REDISTRIBUTABLE @FREE Amazon Atmel AVASYS bh-luxi bonnie Broadcom freedist intel-ucode ipw2100-fw ipw2200-fw ipw3945 ISSL JSON linux-fw-redistributable LSI-tw_cli MicroChip-SDCC no-source-code NVIDIA-r1 qlogic-fibre-channel-firmware shmux SmartLabs sun-jlfgr unRAR
 
 ######################################################################
 
 # License agreements that try to take away your rights. These are more
 # restrictive than "all-rights-reserved" or require explicit approval.
-EULA 2dboy-EULA AdobeFlash-11.x AMD-GPU-PRO-EULA AnyDesk-TOS ArxFatalis-EULA-JoWooD baudline BCS bestcrypt CAPYBARA-EULA Coherent-Graphics CROSSOVER-2 EPSON-2018 ETQW f.lux FAH-EULA-2014 Flightradar24 FraunhoferFDK Gameplay-Group-EULA geekbench genymotion GIMPS GOG-EULA google-chrome Google-TOS Intel-SDP Introversion LastPass LOKI-EULA MakeMKV-EULA Mendeley-terms Microsemi Mojang MTA-0.5 NVIDIA-CODEC-SDK NVIDIA-CUDA OPERA-2014 Oracle-BCLA-JavaSE PAPERS-PLEASE Primate-Plunge protonmail-bridge-EULA PUEL Q3AEULA-20000111 QUAKE4 Quartus-prime-megacore RAR Sourcetrail SPS Steam supermicro teamspeak3 TeamViewer THINKTANKS TIK ubiquiti ut2003 ut2003-demo Vivaldi worklog-assistant zi-labone
+EULA 2dboy-EULA AdobeFlash-11.x AMD-GPU-PRO-EULA AnyDesk-TOS ArxFatalis-EULA-JoWooD baudline BCS bestcrypt CAPYBARA-EULA Coherent-Graphics CROSSOVER-2 EPSON-2018 ETQW f.lux FAH-EULA-2014 Flightradar24 Gameplay-Group-EULA geekbench genymotion GIMPS GOG-EULA google-chrome Google-TOS Intel-SDP Introversion LastPass LOKI-EULA MakeMKV-EULA Mendeley-terms Microsemi Mojang MTA-0.5 NVIDIA-CODEC-SDK NVIDIA-CUDA OPERA-2014 Oracle-BCLA-JavaSE PAPERS-PLEASE Primate-Plunge protonmail-bridge-EULA PUEL Q3AEULA-20000111 QUAKE4 Quartus-prime-megacore RAR Sourcetrail SPS Steam supermicro teamspeak3 TeamViewer THINKTANKS TIK ubiquiti ut2003 ut2003-demo Vivaldi worklog-assistant zi-labone
 
 # Local Variables:
 # mode: conf-space
