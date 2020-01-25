@@ -837,7 +837,7 @@ app-crypt/openvpn-blacklist 0.4-r1 0.5: Detection of weak openvpn keys produced 
 app-crypt/ophcrack 3.6.0 3.7.0 3.8.0: A time-memory-trade-off-cracker
 app-crypt/ophcrack-tables 1.0-r2: Tables available for ophcrack
 app-crypt/osslsigncode 2.0: Platform-independent tool for Authenticode signing of EXE/CAB files
-app-crypt/p11-kit 0.23.12-r1 0.23.16.1-r1 0.23.18.1: Provides a standard configuration setup for installing PKCS#11
+app-crypt/p11-kit 0.23.16.1-r1 0.23.18.1 0.23.19: Provides a standard configuration setup for installing PKCS#11
 app-crypt/paperkey 1.5 1.6: OpenPGP key archiver
 app-crypt/pdfcrack 0.16 0.18: Tool for recovering passwords and content from PDF-files
 app-crypt/pesign 113: Tools for manipulating signed PE-COFF binaries
@@ -11198,7 +11198,7 @@ games-fps/freedm-data 0.12.1: Game resources for FreeDM
 games-fps/freedoom 0.12.1: A complete free-content single-player focused game based on the Doom engine
 games-fps/freedoom-data 0.12.1: Game resources for Freedoom: Phase 1+2
 games-fps/glxquake-bin 0-r2: A binary that works with any 3D-graphics-card that supports the glx X-extension
-games-fps/gzdoom 4.3.1: A modder-friendly OpenGL source port based on the DOOM engine
+games-fps/gzdoom 4.3.3: A modder-friendly OpenGL source port based on the DOOM engine
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
@@ -11590,7 +11590,7 @@ games-strategy/seven-kingdoms 2.14.7 2.15.2: Seven Kingdoms: Ancient Adversaries
 games-strategy/spaz 1.605-r1: Space Pirates and Zombies
 games-strategy/tornado 1.4-r2: Clone of a C64 game - destroy the opponent's house
 games-strategy/triplea 1.8.0.9-r1: An open source clone of the popular Axis and Allies boardgame
-games-strategy/ufoai 2.5.0_p20180603: UFO: Alien Invasion - X-COM inspired strategy game
+games-strategy/ufoai 2.5.0_p20180603-r1: UFO: Alien Invasion - X-COM inspired strategy game
 games-strategy/uqm 0.7.0.1: The Ur-Quan Masters: Port of Star Control 2
 games-strategy/wargus 2.4.1: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0-r1: Warcraft II data for wargus (needs DOS CD)
