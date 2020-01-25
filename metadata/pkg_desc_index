@@ -21,6 +21,7 @@ acct-group/dialout 0: System group: dialout
 acct-group/disk 0: System group: disk
 acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
 acct-group/dnsmasq_exporter 0: System group: dnsmasq_exporter
+acct-group/docker 0: System group: docker
 acct-group/dovecot 0: System group: dovecot
 acct-group/dovenull 0: System group: dovenull
 acct-group/elasticsearch 0: Elasticsearch program group
@@ -1447,7 +1448,7 @@ app-emacs/muse 3.20-r1: An authoring and publishing environment for Emacs
 app-emacs/nagios-mode 0.3-r1: Major mode for editing Nagios configuration files
 app-emacs/navi2ch 1.8.4-r1: A navigator for the Japanese textboard 2ch
 app-emacs/nxml-docbook5-schemas 5.0 5.1: Add support for DocBook 5 schemas to NXML
-app-emacs/nxml-gentoo-schemas 20180611 20191227 20200109: Extension for nxml-mode with Gentoo-specific schemas
+app-emacs/nxml-gentoo-schemas 20180611 20200109: Extension for nxml-mode with Gentoo-specific schemas
 app-emacs/nxml-libvirt-schemas 5.8.0: Extension for nxml-mode with libvirt schemas
 app-emacs/nxml-svg-schemas 1.1.20081123-r1: Extension for nxml-mode with SVG 1.1 schemas
 app-emacs/ocaml-mode 4.05.0: Emacs mode for OCaml
@@ -13559,7 +13560,7 @@ media-sound/ario 1.5.1-r1 1.6: GTK client for MPD inspired by Rhythmbox but much
 media-sound/aseqview 0.2.8: ALSA sequencer event viewer/filter
 media-sound/asunder 2.9.3-r1 2.9.4 2.9.5: Graphical Audio CD ripper and encoder with support for many output formats
 media-sound/aucdtect 0.8.2-r1: Commandline FLAC CDDA authenticity verifier
-media-sound/audacious 3.9-r1 3.10.1 4.0_beta1 9999: Lightweight and versatile audio player
+media-sound/audacious 3.10.1 4.0_beta1 9999: Lightweight and versatile audio player
 media-sound/audacity 2.2.2 2.3.2: Free crossplatform audio editor
 media-sound/audex 0.95_pre20190721: Tool for ripping compact discs
 media-sound/audicle 1.0.0.7-r2: A Context-sensitive, On-the-fly Audio Programming Environ/mentality
