@@ -1,46 +1,43 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
-inherit eutils python-single-r1 gnome2-utils
+EAPI=7
+
+PYTHON_COMPAT=( python3_{6,7} )
+inherit desktop python-single-r1 xdg
 
 DESCRIPTION="GNU BackGammon"
-HOMEPAGE="http://www.gnubg.org/"
-SRC_URI="http://gnubg.org/media/sources/${PN}-release-${PV}-sources.tar.gz"
+HOMEPAGE="https://www.gnu.org/software/gnubg/"
+SRC_URI="ftp://ftp.gnu.org/gnu/gnubg/${PN}-release-${PV}-sources.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
-IUSE="cpu_flags_x86_avx gtk opengl python sqlite cpu_flags_x86_sse cpu_flags_x86_sse2 threads"
+IUSE="cpu_flags_x86_avx gtk python sqlite cpu_flags_x86_sse cpu_flags_x86_sse2 threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	dev-db/sqlite:3
 	dev-libs/glib:2
-	dev-libs/gmp:0
+	dev-libs/gmp:0=
 	dev-libs/libxml2
 	media-fonts/dejavu
 	media-libs/freetype:2
 	media-libs/libcanberra
-	media-libs/libpng:0
-	sys-libs/readline:0
+	media-libs/libpng:0=
+	sys-libs/readline:0=
 	x11-libs/cairo
 	x11-libs/pango
 	gtk? ( x11-libs/gtk+:2 )
-	opengl? (
-		x11-libs/gtk+:2
-		x11-libs/gtkglext
-		virtual/glu
-	)
 	python? ( ${PYTHON_DEPS} )
 	virtual/libintl"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -64,45 +61,32 @@ src_prepare() {
 
 src_configure() {
 	local simd=no
-	local gtk_arg=--without-gtk
-
-	if use gtk || use opengl ; then
-		gtk_arg=--with-gtk
-	fi
 	use cpu_flags_x86_sse  && simd=sse
 	use cpu_flags_x86_sse2 && simd=sse2
 	use cpu_flags_x86_avx  && simd=avx
 	econf \
-		--localedir=/usr/share/locale \
-		--docdir=/usr/share/doc/${PF}/html \
+		--localedir="${EPREFIX}"/usr/share/locale \
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}/html \
 		--disable-cputest \
-		--enable-simd=${simd} \
-		${gtk_arg} \
+		--enable-simd="${simd}" \
+		--without-board3d \
 		$(use_enable threads) \
-		$(use_with python) \
-		$(use_with sqlite sqlite) \
-		$(use_with opengl board3d)
+		$(use_with gtk) \
+		$(use_with python python "${EPYTHON}") \
+		$(use_with sqlite sqlite)
 }
 
 src_install() {
 	default
+
+	# installs pre-compressed man pages
+	gunzip "${ED}"/usr/share/man/man6/*.6.gz || die
+
 	insinto /usr/share/${PN}
 	doins ${PN}.weights *bd
 	dodir /usr/share/${PN}/fonts
-	dosym /usr/share/fonts/dejavu/DejaVuSans.ttf /usr/share/${PN}/fonts/Vera.ttf
-	dosym /usr/share/fonts/dejavu/DejaVuSans-Bold.ttf /usr/share/${PN}/fonts/VeraBd.ttf
-	dosym /usr/share/fonts/dejavu/DejaVuSerif-Bold.ttf /usr/share/${PN}/fonts/VeraSeBd.ttf
+	dosym ../../fonts/dejavu/DejaVuSans.ttf /usr/share/${PN}/fonts/Vera.ttf
+	dosym ../../fonts/dejavu/DejaVuSans-Bold.ttf /usr/share/${PN}/fonts/VeraBd.ttf
+	dosym ../../fonts/dejavu/DejaVuSerif-Bold.ttf /usr/share/${PN}/fonts/VeraSeBd.ttf
 	make_desktop_entry "gnubg -w" "GNU Backgammon"
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }

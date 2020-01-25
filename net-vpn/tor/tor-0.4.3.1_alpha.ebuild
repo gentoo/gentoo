@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-inherit flag-o-matic readme.gentoo-r1 systemd user
+inherit flag-o-matic readme.gentoo-r1 systemd
 
 MY_PV="$(ver_rs 4 -)"
 MY_PF="${PN}-${MY_PV}"
@@ -15,11 +15,11 @@ S="${WORKDIR}/${MY_PF}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 x86 ~ppc-macos"
-IUSE="caps doc libressl lzma +man scrypt seccomp selinux systemd tor-hardening test zstd"
+KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~ppc-macos"
+IUSE="caps doc libressl lzma +man scrypt seccomp selinux +server systemd tor-hardening test zstd"
 
 DEPEND="
-	dev-libs/libevent[ssl]
+	dev-libs/libevent:=[ssl]
 	sys-libs/zlib
 	caps? ( sys-libs/libcap )
 	man? ( app-text/asciidoc )
@@ -27,10 +27,13 @@ DEPEND="
 	libressl? ( dev-libs/libressl:0= )
 	lzma? ( app-arch/xz-utils )
 	scrypt? ( app-crypt/libscrypt )
-	seccomp? ( sys-libs/libseccomp )
+	seccomp? ( >=sys-libs/libseccomp-2.4.1 )
 	systemd? ( sys-apps/systemd )
 	zstd? ( app-arch/zstd )"
-RDEPEND="${DEPEND}
+RDEPEND="
+	acct-user/tor
+	acct-group/tor
+	${DEPEND}
 	selinux? ( sec-policy/selinux-tor )"
 
 PATCHES=(
@@ -42,11 +45,6 @@ DOCS=()
 
 RESTRICT="!test? ( test )"
 
-pkg_setup() {
-	enewgroup tor
-	enewuser tor -1 -1 /var/lib/tor tor
-}
-
 src_configure() {
 	use doc && DOCS+=( README ChangeLog ReleaseNotes doc/HACKING )
 	export ac_cv_lib_cap_cap_init=$(usex caps)
@@ -54,16 +52,20 @@ src_configure() {
 		--localstatedir="${EPREFIX}/var" \
 		--enable-system-torrc \
 		--disable-android \
+		--disable-html-manual \
 		--disable-libfuzzer \
+		--enable-missing-doc-warnings \
 		--disable-module-dirauth \
 		--enable-pic \
 		--disable-rust \
 		--disable-restart-debugging \
 		--disable-zstd-advanced-apis  \
 		$(use_enable man asciidoc) \
+		$(use_enable man manpage) \
 		$(use_enable lzma) \
 		$(use_enable scrypt libscrypt) \
 		$(use_enable seccomp) \
+		$(use_enable server module-relay) \
 		$(use_enable systemd) \
 		$(use_enable tor-hardening gcc-hardening) \
 		$(use_enable tor-hardening linker-hardening) \
@@ -77,7 +79,7 @@ src_install() {
 	readme.gentoo_create_doc
 
 	newconfd "${FILESDIR}"/tor.confd tor
-	newinitd "${FILESDIR}"/tor.initd-r8 tor
+	newinitd "${FILESDIR}"/tor.initd-r9 tor
 	systemd_dounit contrib/dist/tor.service
 
 	keepdir /var/lib/tor
@@ -86,6 +88,5 @@ src_install() {
 	fowners tor:tor /var/lib/tor
 
 	insinto /etc/tor/
-	newins "${FILESDIR}"/torrc-r1 torrc
-
+	newins "${FILESDIR}"/torrc-r2 torrc
 }
