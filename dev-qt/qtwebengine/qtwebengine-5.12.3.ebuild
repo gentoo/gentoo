@@ -8,7 +8,7 @@ inherit multiprocessing pax-utils python-any-r1 qt5-build
 DESCRIPTION="Library for rendering dynamic web content in Qt5 C++ and QML applications"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="amd64 arm arm64 x86"
+	KEYWORDS="arm x86"
 fi
 
 IUSE="alsa bindist designer geolocation jumbo-build pax_kernel pulseaudio
