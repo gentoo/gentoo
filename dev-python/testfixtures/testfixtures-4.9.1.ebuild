@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -21,14 +21,12 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/pkginfo[${PYTHON_USEDEP}]' python2_7 pypy )
 	)
 	test? (
 		dev-python/manuel[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/nose-cover3[${PYTHON_USEDEP}]
 		dev-python/nose_fixes[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 	)"
 
 python_prepare_all() {
