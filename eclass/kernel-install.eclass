@@ -302,7 +302,13 @@ kernel-install_pkg_prerm() {
 kernel-install_pkg_postrm() {
 	debug-print-function ${FUNCNAME} "${@}"
 
-	# (no-op at the moment)
+	if [[ -z ${ROOT} ]] && use initramfs; then
+		local image_path=$(kernel-install_get_image_path)
+		ebegin "Removing initramfs"
+		rm -f "${EROOT}/usr/src/linux-${PV}/${image_path%/*}/initrd" &&
+			find "${EROOT}/usr/src/linux-${PV}" -depth -type d -empty -delete
+		eend ${?}
+	fi
 }
 
 _KERNEL_INSTALL_ECLASS=1
