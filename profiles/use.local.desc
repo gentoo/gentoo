@@ -4451,7 +4451,6 @@ media-libs/zita-resampler:tools - Install zresample and zretune tools
 media-plugins/alsa-plugins:arcam_av - Enables Arcam AV control plugin
 media-plugins/alsa-plugins:mix - Enables upmix and vdownmix plugin
 media-plugins/alsa-plugins:usb_stream - Enables usb_stream plugin
-media-plugins/audacious-plugins:adplug - Build with AdPlug (Adlib sound card emulation) support
 media-plugins/audacious-plugins:ampache - Support controlling audacious via www-apps/ampache
 media-plugins/audacious-plugins:bs2b - Enable Bauer Bauer stereophonic-to-binaural headphone filter
 media-plugins/audacious-plugins:cue - Support CUE sheets using the libcue library
@@ -4679,7 +4678,6 @@ media-sound/moc:cache - Enable tags caching support
 media-sound/moc:sid - Build with SID (Commodore 64 Audio) support
 media-sound/moc:tremor - Build vorbis support using an integer implementation of the vorbis library (media-libs/tremor)
 media-sound/mp3blaster:sid - Build with SID (Commodore 64 Audio) support
-media-sound/mpd:adplug - Enable the AdPlug decoder plugin
 media-sound/mpd:cdio - Use libcdio for ISO9660 parsing support
 media-sound/mpd:chromaprint - Enable ChromaPrint / AcoustID support
 media-sound/mpd:cue - Enable CUE sheet support
