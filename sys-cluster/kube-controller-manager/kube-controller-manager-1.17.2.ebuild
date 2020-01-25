@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit go-module user
+inherit go-module
 
 DESCRIPTION="Kubernetes Controller Manager"
 HOMEPAGE="https://github.com/kubernetes/kubernetes https://kubernetes.io"
@@ -12,16 +12,15 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 
-DEPEND="dev-go/go-bindata
+COMMON_DEPEND="acct-group/kube-controller-manager
+	acct-user/kube-controller-manager"
+DEPEND="${COMMON_DEPEND}
+	dev-go/go-bindata
 	>=dev-lang/go-1.13"
+	RDEPEND="${COMMON_DEPEND}"
 
 RESTRICT="test"
 S="${WORKDIR}/kubernetes-${PV}"
-
-pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 -1 ${PN}
-}
 
 src_prepare() {
 	default
