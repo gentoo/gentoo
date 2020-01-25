@@ -9,7 +9,11 @@ HOMEPAGE="https://gcc.gnu.org/"
 
 inherit eutils fixheadtails flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
-if [[ ${PV} == *9999* ]] ; then
+tc_is_live() {
+	[[ ${PV} == *9999* ]]
+}
+
+if tc_is_live ; then
 	EGIT_REPO_URI="git://gcc.gnu.org/git/gcc.git"
 	# naming style:
 	# gcc-10.1.0_pre9999 -> gcc-10-branch
@@ -258,7 +262,7 @@ PDEPEND=">=sys-devel/gcc-config-1.7"
 # Set the source directory depending on whether we're using
 # a prerelease, snapshot, or release tarball.
 S=$(
-	if [[ ${PV} == *9999* ]]; then
+	if tc_is_live ; then
 		echo ${EGIT_CHECKOUT_DIR}
 	elif [[ -n ${PRERELEASE} ]] ; then
 		echo ${WORKDIR}/gcc-${PRERELEASE}
@@ -344,7 +348,7 @@ get_gcc_src_uri() {
 
 	# Set where to download gcc itself depending on whether we're using a
 	# prerelease, snapshot, or release tarball.
-	if [[ ${PV} == *9999* ]] ; then
+	if tc_is_live ; then
 		# Nothing to do w/git snapshots.
 		:
 	elif [[ -n ${PRERELEASE} ]] ; then
@@ -409,8 +413,12 @@ SRC_URI=$(get_gcc_src_uri)
 
 #---->> pkg_pretend <<----
 
+toolchain_is_unsupported() {
+	[[ -n ${PRERELEASE}${SNAPSHOT} ]] || tc_is_live
+}
+
 toolchain_pkg_pretend() {
-	if [[ -n ${PRERELEASE}${SNAPSHOT} || ${PV} == *9999* ]] &&
+	if toolchain_is_unsupported &&
 	   [[ -z ${I_PROMISE_TO_SUPPLY_PATCHES_WITH_BUGS} ]] ; then
 		die "Please \`export I_PROMISE_TO_SUPPLY_PATCHES_WITH_BUGS=1\` or define it" \
 			"in your make.conf if you want to use this version."
@@ -436,7 +444,7 @@ toolchain_pkg_setup() {
 #---->> src_unpack <<----
 
 toolchain_src_unpack() {
-	if [[ ${PV} == *9999* ]]; then
+	if tc_is_live ; then
 		git-r3_src_unpack
 	fi
 
@@ -455,7 +463,7 @@ gcc_quick_unpack() {
 	# 'GCC_A_FAKEIT' to specify it's own source and binary tarballs.
 	if [[ -n ${GCC_A_FAKEIT} ]] ; then
 		unpack ${GCC_A_FAKEIT}
-	elif [[ ${PV} == *9999* ]]; then
+	elif tc_is_live ; then
 		: # sources comes from git, not tarball
 	elif [[ -n ${PRERELEASE} ]] ; then
 		unpack gcc-${PRERELEASE}.tar.bz2
@@ -465,7 +473,7 @@ gcc_quick_unpack() {
 		else
 			unpack gcc-${SNAPSHOT}.tar.bz2
 		fi
-	elif [[ ${PV} != *9999* ]] ; then
+	else
 		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
 			unpack gcc-${GCC_RELEASE_VER}.tar.xz
 		else
@@ -538,7 +546,7 @@ toolchain_src_prepare() {
 	do_gcc_PIE_patches
 	do_gcc_CYGWINPORTS_patches
 
-	if [[ ${PV} == *9999* ]] ; then
+	if tc_is_live ; then
 		BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, commit ${EGIT_VERSION}"
 	fi
 
