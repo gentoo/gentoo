@@ -7607,7 +7607,7 @@ dev-python/diff-cover 1.0.4 2.3.0: Automatically find diff lines that need test 
 dev-python/diff-match-patch 20121119 20181111: Diff, match and patch algorithms for plain text
 dev-python/dill 0.2.5 0.3.0 0.3.1.1: Serialize all of python (almost)
 dev-python/discogs-client 2.0.2 2.2.1: Official Python API client for Discogs
-dev-python/diskcache 2.8.3 3.1.0: Disk and file backed cache
+dev-python/diskcache 3.1.0: Disk and file backed cache
 dev-python/dissononce 0.34.3: A python implementation for Noise Protocol Framework
 dev-python/distlib 0.2.1 0.2.4: Distribution utilities
 dev-python/distributed 1.18.0 1.18.0-r1: Python library for distributed computation
@@ -7616,12 +7616,12 @@ dev-python/dj-database-url 0.4.2: Use Database URLs in your Django Application
 dev-python/django 1.11.20 1.11.21 2.1.8 2.1.9 2.2.1 2.2.2: High-level Python web framework
 dev-python/django-annoying 0.7.7 0.8.7: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
-dev-python/django-auth-ldap 1.2.2 1.2.7 1.7.0: Django LDAP authentication backend
+dev-python/django-auth-ldap 1.7.0: Django LDAP authentication backend
 dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, and templates for models
 dev-python/django-cacheops 4.1: ORM cache with automatic granular event-driven invalidation for Django
 dev-python/django-cors-headers 2.5.1 3.0.2: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
 dev-python/django-crispy-forms 1.6.0: Best way to have Django DRY forms
-dev-python/django-debug-toolbar 1.5 1.11 2.0: A configurable set of panels that display debug information
+dev-python/django-debug-toolbar 2.0: A configurable set of panels that display debug information
 dev-python/django-discover-runner 1.0: A Django test runner based on unittest2's test discovery
 dev-python/django-durationfield 0.5.4: Reusable app for adding a DurationField to Django
 dev-python/django-endless-pagination 2.0: Tools supporting ajax, multiple and lazy pagination, Twitter-style and Digg-style pagination
@@ -7648,8 +7648,8 @@ dev-python/django-select2 5.5.0: A Django integration of Select2
 dev-python/django-setuptest 0.2.1: Simple test suite enabling Django app testing via setup.py
 dev-python/django-sortedm2m 1.3.0 1.3.2: Drop-in replacement for django's many to many field with sorted relations
 dev-python/django-spurl 0.6.4: A Django template library for manipulating URLs
-dev-python/django-tables2 1.1.2 2.0.3 2.0.6: Table/data-grid framework for Django
-dev-python/django-tagging 0.4.1 0.4.6: Generic tagging application for Django
+dev-python/django-tables2 2.0.6: Table/data-grid framework for Django
+dev-python/django-tagging 0.4.6: Generic tagging application for Django
 dev-python/django-taggit 0.24.0 1.1.0: simple tagging for django
 dev-python/django-taggit-serializer 0.1.7: the django taggit serializer for the django rest framework
 dev-python/django-timezone-field 3.0: A Django app providing database and form fields for pytz timezone objects
@@ -11056,7 +11056,7 @@ games-board/gnome-hearts 0.3.1-r2: A clone of classic hearts card game
 games-board/gnome-mahjongg 3.34.0: Disassemble a pile of tiles by removing matching pairs
 games-board/gnome-mines 3.20.1 3.34.0: Clear hidden mines from a minefield
 games-board/gnono 1.9.1-r1: A rewrite for GNOME of the Windows card game WUNO
-games-board/gnubg 1.05.000-r1 1.06.002: GNU BackGammon
+games-board/gnubg 1.06.002-r1: GNU BackGammon
 games-board/gnuchess 6.2.4 6.2.5: Console based chess interface
 games-board/gnuchess-book 1.02-r1: Opening book for gnuchess
 games-board/gnugo 3.9.1-r1 3.9.1-r2: A Go-playing program
@@ -15456,7 +15456,7 @@ net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.8.1 5.8.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.0.5 0.4.1.7 0.4.2.5: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.1.7 0.4.2.5 0.4.3.1_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression

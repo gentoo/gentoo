@@ -7012,6 +7012,7 @@ net-vpn/tinc:uml - Enable support for User Mode Linux Sockets
 net-vpn/tinc:vde - Enable Virtual Distributed Ethernet (VDE) based networking
 net-vpn/tor:man - Build and install man pages
 net-vpn/tor:scrypt - Use app-crypt/libscrypt for the scrypt algorithm
+net-vpn/tor:server - Enable tor's relay module so it can operate as a relay/bridge/authority
 net-vpn/tor:tor-hardening - Compile tor with hardening on vanilla compilers/linkers
 net-vpn/vpnc:resolvconf - Enable support for DNS managing framework net-dns/openresolv
 net-vpn/wireguard-modules:debug - Enable verbose debug reporting in dmesg of various WireGuard peer and device information.

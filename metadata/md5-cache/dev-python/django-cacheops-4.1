@@ -1,15 +1,15 @@
-BDEPEND=python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] dev-python/setuptools[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)]
+BDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/setuptools[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-python/django-1.8[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] >=dev-python/redis-py-2.9.1[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] >=dev-python/funcy-1.8[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] >=dev-python/six-1.4.0[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)]
+DEPEND=>=dev-python/django-1.8[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/redis-py-2.9.1[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/funcy-1.8[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/six-1.4.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 DESCRIPTION=ORM cache with automatic granular event-driven invalidation for Django
 EAPI=7
 HOMEPAGE=https://github.com/Suor/django-cacheops
-IUSE=python_targets_python2_7 python_targets_python3_6
+IUSE=python_targets_python3_6
 KEYWORDS=~amd64
 LICENSE=BSD
-RDEPEND=>=dev-python/django-1.8[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] >=dev-python/redis-py-2.9.1[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] >=dev-python/funcy-1.8[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] >=dev-python/six-1.4.0[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)] python_targets_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 ) python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python2_7(-)?,python_targets_python3_6(-)?,-python_single_target_python2_7(-),-python_single_target_python3_6(-)]
-REQUIRED_USE=|| ( python_targets_python2_7 python_targets_python3_6 )
+RDEPEND=>=dev-python/django-1.8[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/redis-py-2.9.1[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/funcy-1.8[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/six-1.4.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
+REQUIRED_USE=|| ( python_targets_python3_6 )
 SLOT=0
 SRC_URI=mirror://pypi/d/django-cacheops/django-cacheops-4.1.tar.gz
 _eclasses_=distutils-r1	c576838cd67e384002a18edd54be710e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2e0b7f426f21cd63d1ee673e1b855712
+_md5_=d21de91d519d334129cdce8ae0fe02f1
