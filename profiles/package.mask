@@ -32,6 +32,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-01-18)
+# The following packages depend on django, support Python 2 only
+# and have no reverse dependencies.
+# Removal in 30 days.  Bug #706360.
+dev-python/django-annoying
+dev-python/django-endless-pagination
+dev-python/django-international
+dev-python/django-ldapdb
+dev-python/django-ldap-groups
+dev-python/django-oauth-plus
+dev-python/django-openid-auth
+dev-python/django-piston
+dev-python/django-registration
+dev-python/django-xslt
+
 # David Seifert <soap@gentoo.org> (2020-01-25)
 # Upstream is mostly unresponsive and doesn't have the resources to
 # fix their code. Lots of bugs in the form of big endian issues, buffer
