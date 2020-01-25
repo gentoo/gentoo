@@ -10,5 +10,5 @@ RDEPEND=!sys-kernel/gentoo-kernel:4.19.98 !sys-kernel/vanilla-kernel:4.19.98 !sy
 RESTRICT=!test? ( test ) test? ( userpriv )
 SLOT=4.19.98
 SRC_URI=test? ( amd64? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-amd64.qcow2 ) x86? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-x86.qcow2 ) ) amd64? ( https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/gentoo-kernel/gentoo-kernel-4.19.98-1.xpak -> gentoo-kernel-4.19.98-1.amd64.xpak ) x86? ( https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/gentoo-kernel/gentoo-kernel-4.19.98-1.xpak -> gentoo-kernel-4.19.98-1.x86.xpak )
-_eclasses_=kernel-install	e9767a6dd5b9a00e3d210f09c10603c7	mount-boot	e30bb691fbb26137f3d46438542bffe4
+_eclasses_=kernel-install	8d71ac2b8604c81762590203a3959633	mount-boot	e30bb691fbb26137f3d46438542bffe4
 _md5_=33227eb59712b42727eba7cfb2945b42
