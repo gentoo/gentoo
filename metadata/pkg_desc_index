@@ -8201,7 +8201,7 @@ dev-python/ovs 2.10.0-r1 2.11.0: OVS bindings for python.
 dev-python/ovsdbapp 0.12.2 0.15.0: A library for creating OVSDB applications
 dev-python/owslib 0.16.0-r1 0.17.1 0.17.1-r1: Library for client programming with Open Geospatial Consortium web service
 dev-python/pSQL 1.2.1: MySQL abstraction layer for python
-dev-python/packaging 16.8 19.2 20.0: Core utilities for Python packages
+dev-python/packaging 16.8 19.2 20.0 20.1: Core utilities for Python packages
 dev-python/pafy 0.5.3.1 0.5.4 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.4.0 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/paisley 0.3.1-r1: A CouchDB client written in Python to be used within a Twisted application
@@ -15468,7 +15468,7 @@ net-wireless/bladerf 2018.08 2019.07 9999: Libraries for supporing the BladeRF h
 net-wireless/bladerf-firmware 2.2.0 2.3.2: bladeRF FX3 firmware images
 net-wireless/bladerf-fpga 0.7.3 0.11.0: bladeRF FPGA bitstreams
 net-wireless/blueberry 1.1.13-r1 1.2.9: A Bluetooth configuration tool
-net-wireless/blueman 2.1.1-r1 9999: Simple and intuitive GTK+ Bluetooth Manager
+net-wireless/blueman 2.1.1-r1 2.1.2 9999: Simple and intuitive GTK+ Bluetooth Manager
 net-wireless/bluez 5.51-r2 5.52: Bluetooth Tools and System Daemons for Linux
 net-wireless/bluez-hcidump 2.5: Bluetooth HCI packet analyzer
 net-wireless/bluez-tools 0_p20161212: A set of tools to manage bluetooth devices for linux
