@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,11 +14,11 @@ HOMEPAGE="https://prboom-plus.sourceforge.net"
 SRC_URI="https://github.com/coelckers/prboom-plus/archive/f96f891d068dcc5ec52ed91056b46d27e9a8462d.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+
-	nonfree? ( freedist )
-	!nonfree? ( BSD )"
+	non-free? ( freedist )
+	!non-free? ( BSD )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dumb fluidsynth mad net nonfree +opengl pcre +png portmidi sdl-image +sdl-mixer vorbis"
+IUSE="dumb fluidsynth mad net non-free +opengl pcre +png portmidi sdl-image +sdl-mixer vorbis"
 REQUIRED_USE="sdl-image? ( opengl )"
 
 DEPEND="
@@ -46,7 +46,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		--disable-cpu-opt \
-		$(use_enable nonfree nonfree-graphics) \
+		$(use_enable non-free nonfree-graphics) \
 		$(use_enable opengl gl) \
 		$(use_with dumb) \
 		$(use_with fluidsynth) \
