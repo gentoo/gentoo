@@ -1,0 +1,41 @@
+--- a/Makefile
++++ b/Makefile
+@@ -46,9 +46,9 @@ ifeq ($(USE_SYSTEM_GTEST),no)
+ GTEST_CXXFLAGS := -std=gnu++14
+ GTEST_LIBS := gtest.a
+ else
+-GTEST_CXXFLAGS := $(shell gtest-config --cxxflags 2>/dev/null || \
++GTEST_CXXFLAGS ?= $(shell gtest-config --cxxflags 2>/dev/null || \
+   echo "-pthread")
+-GTEST_LIBS := $(shell gtest-config --libs 2>/dev/null || \
++GTEST_LIBS ?= $(shell gtest-config --libs 2>/dev/null || \
+   echo "-lgtest -pthread -lpthread")
+ endif
+ 
+@@ -73,6 +73,7 @@ clean: CLEAN(minijail0)
+ 
+ 
+ CC_LIBRARY(libminijail.so): LDLIBS += -lcap
++CC_LIBRARY(libminijail.so): LDFLAGS += -Wl,-soname,libminijail.so
+ CC_LIBRARY(libminijail.so): $(CORE_OBJECT_FILES)
+ clean: CLEAN(libminijail.so)
+ 
+@@ -91,6 +92,7 @@ TEST(CXX_BINARY(libminijail_unittest)): CC_LIBRARY(libminijailpreload.so)
+ 
+ 
+ CC_LIBRARY(libminijailpreload.so): LDLIBS += -lcap -ldl
++CC_LIBRARY(libminijailpreload.so): LDFLAGS += -Wl,-soname,libminijail.so
+ CC_LIBRARY(libminijailpreload.so): libminijailpreload.o $(CORE_OBJECT_FILES)
+ clean: CLEAN(libminijailpreload.so)
+ 
+--- a/common.mk
++++ b/common.mk
+@@ -323,7 +323,7 @@ COMMON_CFLAGS := -Wall -Wunused -Wno-unused-parameter -Werror -Wformat=2 \
+   -fno-strict-aliasing $(SSP_CFLAGS) -O1
+ CXXFLAGS += $(COMMON_CFLAGS) $(COMMON_CFLAGS-$(CXXDRIVER)) -std=gnu++14
+ CFLAGS += $(COMMON_CFLAGS) $(COMMON_CFLAGS-$(CDRIVER)) -std=gnu11
+-CPPFLAGS += -D_FORTIFY_SOURCE=2
++CPPFLAGS +=
+ 
+ # Enable large file support.
+ CPPFLAGS += -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
