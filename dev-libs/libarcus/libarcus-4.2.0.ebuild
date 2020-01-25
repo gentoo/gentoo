@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 MY_PN="libArcus"
 
@@ -38,5 +38,5 @@ src_configure() {
 		-DBUILD_STATIC=$(usex static-libs ON OFF)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

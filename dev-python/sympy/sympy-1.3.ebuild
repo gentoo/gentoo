@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1 eutils virtualx
 
@@ -14,10 +14,9 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="doc examples gtk imaging ipython latex mathml opengl pdf png pyglet symengine test texmacs theano"
+IUSE="examples gtk imaging ipython latex mathml opengl pdf png pyglet symengine test texmacs theano"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	doc? ( || ( $(python_gen_useflags 'python2*') ) )
 	ipython? ( || ( $(python_gen_useflags -3) ) )"
 
 RESTRICT="test"
@@ -36,7 +35,6 @@ RDEPEND="dev-python/mpmath[${PYTHON_USEDEP}]
 	)
 	mathml? (
 		dev-libs/libxml2:2[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-libs/libxslt[${PYTHON_USEDEP}]' python2_7)
 		gtk? ( x11-libs/gtkmathview[gtk] )
 	)
 	opengl? ( dev-python/pyopengl[${PYTHON_USEDEP}] )
@@ -47,23 +45,9 @@ RDEPEND="dev-python/mpmath[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] app-text/docbook2X )
 	test? ( ${RDEPEND} dev-python/pytest[${PYTHON_USEDEP}] )"
 
 PATCHES=( "${FILESDIR}"/${P}-eta.patch )
-
-pkg_setup() {
-	use doc && DISTUTILS_ALL_SUBPHASE_IMPLS=( 'python2*' )
-}
-
-python_compile_all() {
-	if use doc; then
-		export XDG_CONFIG_HOME="${T}/config-dir"
-		mkdir "${XDG_CONFIG_HOME}" || die
-		chmod 0700 "${XDG_CONFIG_HOME}" || die
-		emake -j1 -C doc html info man cheatsheet
-	fi
-}
 
 python_test() {
 	virtx "${PYTHON}" setup.py test
@@ -71,12 +55,6 @@ python_test() {
 
 python_install_all() {
 	local DOCS=( AUTHORS README.rst )
-	if use doc; then
-		DOCS+=( doc/_build/cheatsheet/cheatsheet.pdf \
-				doc/_build/cheatsheet/combinatoric_cheatsheet.pdf )
-		local HTML_DOCS=( doc/_build/html/. )
-		doinfo doc/_build/texinfo/${PN}.info
-	fi
 	if use examples; then
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples

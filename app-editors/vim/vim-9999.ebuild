@@ -1,11 +1,11 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-VIM_VERSION="8.1"
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+EAPI=7
+VIM_VERSION="8.2"
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 PYTHON_REQ_USE="threads(+)"
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 inherit vim-doc flag-o-matic bash-completion-r1 python-single-r1 ruby-single desktop xdg-utils
 
@@ -203,9 +203,7 @@ src_configure() {
 			$(use_with luajit)
 			$(use_enable nls)
 			$(use_enable perl perlinterp)
-			$(use_enable python pythoninterp)
 			$(use_enable python python3interp)
-			$(use_with python python-command $(type -P $(eselect python show --python2)))
 			$(use_with python python3-command $(type -P $(eselect python show --python3)))
 			$(use_enable racket mzschemeinterp)
 			$(use_enable ruby rubyinterp)

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-tinfo.patch
 	"${FILESDIR}"/${P}-gcc-6-uchar.patch
 	"${FILESDIR}"/${P}-format-security.patch
+	"${FILESDIR}"/${P}-gcc-10.patch
 )
 
 src_prepare() {

@@ -5,12 +5,14 @@ Respun from nut-2.4.3-lowspeed-buffer-size.patch
 
 Index: a/drivers/libhid.c
 ===================================================================
---- a/drivers/libhid.c (revision 2336)
-+++ a/drivers/libhid.c (revision 2407)
-@@ -142,5 +142,5 @@
- 	int	id = pData->ReportID;
- 	int	r;
+--- a/drivers/libhid.c
++++ b/drivers/libhid.c
+@@ -477,7 +477,7 @@
+  */
+ int HIDGetEvents(hid_dev_handle_t udev, HIDData_t **event, int eventsize)
+ {
 -	unsigned char	buf[SMALLBUF];
 +	unsigned char	buf[8];	/* Maximum size for low-speed USB devices */
- 
- 	if (rbuf->ts[id] + age > time(NULL)) {
+ 	int		itemCount = 0;
+ 	int		buflen, r, i;
+ 	HIDData_t	*pData;

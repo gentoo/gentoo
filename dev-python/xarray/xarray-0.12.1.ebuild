@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit distutils-r1
 
 DESCRIPTION="N-D labeled arrays and datasets in Python"
-HOMEPAGE="http://xarray.pydata.org/"
+HOMEPAGE="https://xarray.pydata.org/"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

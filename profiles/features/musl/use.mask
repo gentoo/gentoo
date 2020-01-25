@@ -9,3 +9,6 @@ elibc_glibc
 # Musl doesn't have support for utmp/wtmp by design
 utmp
 wtmp
+
+# sys-apps/systemd is masked
+systemd

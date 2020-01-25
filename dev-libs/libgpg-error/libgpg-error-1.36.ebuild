@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,17 +38,19 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
-		$(multilib_is_native_abi || echo --disable-languages) \
-		$(use_enable common-lisp languages) \
-		$(use_enable nls) \
-		$(use_enable static-libs static) \
-		--enable-threads \
-		CC_FOR_BUILD="$(tc-getBUILD_CC)" \
-		$("${S}/configure" --help | grep -- '--without-.*-prefix' | sed -e 's/^ *\([^ ]*\) .*/\1/g')
+	local myeconfargs=(
+		$(multilib_is_native_abi || echo --disable-languages)
+		$(use_enable common-lisp languages)
+		$(use_enable nls)
+		$(use_enable static-libs static)
+		--enable-threads
+		CC_FOR_BUILD="$(tc-getBUILD_CC)"
+		$("${S}/configure" --help | grep -o -- '--without-.*-prefix')
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
 	einstalldocs
-	find "${D}" -name '*.la' -delete || die
+	find "${ED}" -type f -name '*.la' -delete || die
 }

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 # still no 34 :( https://bugs.launchpad.net/neutron/+bug/1630439
 
 inherit distutils-r1 linux-info user
@@ -99,7 +99,6 @@ RDEPEND="
 	>=dev-python/ovsdbapp-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/psutil-3.2.2[${PYTHON_USEDEP}]
 	>=dev-python/pyroute2-0.5.3[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/weakrefmethod-1.0.2[${PYTHON_USEDEP}]' 'python2_7')
 	>=dev-python/python-novaclient-9.1.0[${PYTHON_USEDEP}]
 	>=dev-python/openstacksdk-0.31.2[${PYTHON_USEDEP}]
 	>=dev-python/python-designateclient-2.7.0[${PYTHON_USEDEP}]

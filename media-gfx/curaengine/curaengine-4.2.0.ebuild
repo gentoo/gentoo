@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils toolchain-funcs
+inherit cmake toolchain-funcs
 
 MY_PN="CuraEngine"
 
@@ -45,11 +45,11 @@ pkg_pretend() {
 
 src_configure() {
 	local mycmakeargs=( "-DBUILD_TESTS=$(usex test ON OFF)" )
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_make
+	cmake_build
 	if use doc; then
 		doxygen
 		mv docs/html . || die

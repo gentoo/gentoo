@@ -1,0 +1,14 @@
+--- a/glgd/glgdGraph.c
++++ b/glgd/glgdGraph.c
+@@ -19,11 +19,7 @@
+ #define GLGDGRAPH_CAMORBIT              (0)
+ #define GLGDGRAPH_NODENAME              (1)
+ #define GLGDGRAPH_LINKNAME              (2)
+-#ifdef __MINGW32__
+ #define _MAXFLT                         (HUGE_VAL)
+-#else  /*!__MINGW32__*/
+-#define _MAXFLT                         (HUGE)
+-#endif /*!__MINGW32__*/
+ #define _PANGO_DPI                      (72)
+ #define _PANGO_SCALE                    (3)
+ #define _TEXW                           (1024)

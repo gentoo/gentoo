@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Simple TCP/IP Dump summarizer/analyzer"
 HOMEPAGE="http://read.seas.harvard.edu/~kohler/ipsumdump/"
-SRC_URI="${HOMEPAGE}${P}.tar.gz"
+SRC_URI="http://read.seas.harvard.edu/~kohler/ipsumdump/${P}.tar.gz"
 
 LICENSE="the-Click-license"
 SLOT="0"

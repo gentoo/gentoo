@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -140,7 +140,7 @@ src_install() {
 	default
 	keepdir /var/lib/${PN}
 
-	newinitd "${FILESDIR}/iwd.initd" iwd
+	newinitd "${FILESDIR}/iwd.initd-r1" iwd
 
 	if use wired;then
 		newinitd "${FILESDIR}/ead.initd" ead

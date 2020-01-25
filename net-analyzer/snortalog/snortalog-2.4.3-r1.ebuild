@@ -8,7 +8,7 @@ MY_P="${PN}_v${PV}"
 
 DESCRIPTION="a powerful perl script that summarizes snort logs"
 HOMEPAGE="http://jeremy.chartier.free.fr/snortalog/"
-SRC_URI="${HOMEPAGE}downloads/${PN}/${MY_P}.tar"
+SRC_URI="http://jeremy.chartier.free.fr/snortalog/downloads/${PN}/${MY_P}.tar"
 LICENSE="GPL-2"
 SLOT="0"
 

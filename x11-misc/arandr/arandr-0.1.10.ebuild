@@ -2,12 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Another XRandR GUI"
 HOMEPAGE="https://christian.amsuess.com/tools/arandr/"
-SRC_URI="${HOMEPAGE}/files/${P}.tar.gz"
+SRC_URI="https://christian.amsuess.com/tools/arandr/files/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"

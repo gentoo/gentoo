@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -43,6 +43,7 @@ RDEPEND="${DEPEND}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.8.0-gettext.patch
 	"${FILESDIR}"/${PN}-4.8.0-gnuchess-default.patch
+	"${FILESDIR}"/${PN}-4.9.1-gcc-10.patch
 )
 
 DOCS=( AUTHORS COPYRIGHT ChangeLog FAQ.html NEWS README TODO ics-parsing.txt )

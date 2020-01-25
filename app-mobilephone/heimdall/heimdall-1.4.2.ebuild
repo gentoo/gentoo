@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit cmake-utils udev
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://gitlab.com/BenjaminDobell/Heimdall/-/archive/v${PV}/Heimdall-v${PV}.tar.bz2 -> ${P}.tar.bz2"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64"
 	S="${WORKDIR}/Heimdall-v${PV}"
 else
 	inherit git-r3

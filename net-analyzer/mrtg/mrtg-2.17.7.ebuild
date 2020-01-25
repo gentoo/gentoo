@@ -6,7 +6,7 @@ inherit multilib
 
 DESCRIPTION="A tool to monitor the traffic load on network-links"
 HOMEPAGE="https://oss.oetiker.ch/mrtg/"
-SRC_URI="${HOMEPAGE}pub/${P}.tar.gz"
+SRC_URI="https://oss.oetiker.ch/mrtg/pub/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

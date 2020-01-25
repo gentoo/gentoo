@@ -1,0 +1,44 @@
+From 66dcba0375357d294d4769a6eb542de29b78a519 Mon Sep 17 00:00:00 2001
+From: Steve Peters <scpeters@openrobotics.org>
+Date: Thu, 26 Dec 2019 05:12:08 -0800
+Subject: [PATCH] use ifndef Q_MOC_RUN to fix compilation of plugins with tbb
+ and qt 5.14 (issue #2681)
+
+---
+ plugins/CessnaGUIPlugin.hh  | 3 +++
+ plugins/LookAtDemoPlugin.hh | 3 +++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/plugins/CessnaGUIPlugin.hh b/plugins/CessnaGUIPlugin.hh
+index 7556d89982..091b8ffd00 100644
+--- a/plugins/CessnaGUIPlugin.hh
++++ b/plugins/CessnaGUIPlugin.hh
+@@ -23,7 +23,10 @@
+ 
+ #include <gazebo/common/Plugin.hh>
+ #include <gazebo/gui/GuiPlugin.hh>
++// moc parsing error of tbb headers
++#ifndef Q_MOC_RUN
+ #include <gazebo/transport/transport.hh>
++#endif
+ 
+ namespace gazebo
+ {
+diff --git a/plugins/LookAtDemoPlugin.hh b/plugins/LookAtDemoPlugin.hh
+index 5659394892..2a22b222f5 100644
+--- a/plugins/LookAtDemoPlugin.hh
++++ b/plugins/LookAtDemoPlugin.hh
+@@ -21,7 +21,10 @@
+ 
+ #include <gazebo/common/Plugin.hh>
+ #include <gazebo/gui/GuiPlugin.hh>
++// moc parsing error of tbb headers
++#ifndef Q_MOC_RUN
+ #include <gazebo/transport/transport.hh>
++#endif
+ 
+ namespace gazebo
+ {
+-- 
+2.24.1
+

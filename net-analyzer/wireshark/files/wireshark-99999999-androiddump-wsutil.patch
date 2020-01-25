@@ -1,15 +1,15 @@
 --- a/extcap/CMakeLists.txt
 +++ b/extcap/CMakeLists.txt
-@@ -68,6 +68,8 @@
+@@ -91,6 +91,8 @@ if(BUILD_androiddump)
  		if(HAVE_LIBPCAP)
  			set(androiddump_LIBS
  				ui
 +				wiretap
 +				wsutil
  				${GLIB2_LIBRARIES}
- 				${PCAP_LIBRARIES}
- 			)
-@@ -78,6 +80,7 @@
+ 				${WIN_WS2_32_LIBRARY}
+ 				$<$<BOOL:${PCAP_FOUND}>:pcap::pcap>
+@@ -102,6 +104,7 @@ if(BUILD_androiddump)
  		set(androiddump_LIBS
  			ui
  			wiretap

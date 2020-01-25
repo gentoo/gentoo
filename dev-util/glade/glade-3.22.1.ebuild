@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="https://glade.gnome.org/"
 
 LICENSE="GPL-2+ FDL-1.1+"
 SLOT="3.10/6" # subslot = suffix of libgladeui-2.so
-KEYWORDS="alpha amd64 arm arm64 ~ia64 ~mips ppc ppc64 ~sh sparc x86"
+KEYWORDS="alpha amd64 arm arm64 ia64 ~mips ppc ppc64 ~sh sparc x86"
 
 IUSE="debug +introspection python webkit"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"

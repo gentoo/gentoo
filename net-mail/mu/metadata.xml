@@ -14,7 +14,8 @@
 		are looking for, assuming that you store your e-mails in Maildirs.  It also includes an emacs based mail client mu4e.
 	</longdescription>
 	<use>
-		<flag name="emacs">Install the mu4e mail client.</flag>
+		<flag name="emacs">Install the mu4e mail client</flag>
+		<flag name="mug">Install the mug toy client, not for normal use</flag>
 	</use>
 	<upstream>
 		<remote-id type="google-code">mu0</remote-id>

@@ -59,6 +59,10 @@ BDEPEND=">=dev-lang/go-1.12"
 # this will become the default in the future.
 export GO111MODULE=on
 
+# Set the default for the go build cache
+# See "go help environment" for information on this setting
+export GOCACHE="${T}/go-build"
+
 # The following go flags should be used for all builds.
 # -mod=vendor stopps downloading of dependencies from the internet.
 # -v prints the names of packages as they are compiled

@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="Small library to access XDG Base Directories Specification paths"
 HOMEPAGE="https://github.com/devnev/libxdg-basedir"
-SRC_URI="${HOMEPAGE}/archive/${P}.tar.gz"
+SRC_URI="https://github.com/devnev/libxdg-basedir/archive/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

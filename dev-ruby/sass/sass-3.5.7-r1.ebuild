@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,6 @@ IUSE=""
 ruby_add_bdepend "doc? ( >=dev-ruby/yard-0.5.3 )"
 
 ruby_add_rdepend "
-	!!<dev-ruby/sass-3.2.19-r1:0
 	!!<dev-ruby/sass-3.4.25-r1:3.4
 	dev-ruby/sass-listen:4"
 

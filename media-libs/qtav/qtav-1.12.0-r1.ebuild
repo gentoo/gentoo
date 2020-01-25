@@ -40,6 +40,7 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${P}-multilib.patch
 	"${FILESDIR}"/${P}-ffmpeg4-{1,2}.patch # bugs 660852, 670765
+	"${FILESDIR}"/${P}-qt5.14.patch
 )
 
 src_prepare() {

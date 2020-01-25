@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="A customized bash environment suitable for git work"
 HOMEPAGE="https://github.com/rtomayko/git-sh"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/rtomayko/git-sh/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

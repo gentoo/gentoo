@@ -7,7 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="opengl" restrict="&gt;=x11-libs/cairo-1.10.0">Build the OpenGL backend</flag>
-		<flag name="gles2">Build the OpenGL ES 2 backend</flag>
+		<flag name="gles2-only">Build the OpenGL ES 2 backend</flag>
 		<flag name="glib">Compile with GLib Object System support</flag>
 		<flag name="utils">Build support for Cairo script and trace utilities</flag>
 		<flag name="valgrind">Built-in support to mark memory regions</flag>

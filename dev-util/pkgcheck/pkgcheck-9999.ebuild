@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -48,7 +48,7 @@ python_test() {
 }
 
 python_install_all() {
-	local DOCS=( AUTHORS NEWS.rst )
+	local DOCS=( NEWS.rst )
 	[[ ${PV} == *9999 ]] || doman man/*
 	distutils-r1_python_install_all
 }

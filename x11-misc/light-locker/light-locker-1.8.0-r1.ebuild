@@ -7,7 +7,7 @@ inherit autotools gnome2-utils
 
 DESCRIPTION="A simple locker using lightdm"
 HOMEPAGE="https://github.com/the-cavalry/light-locker"
-SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${P}.tar.bz2"
+SRC_URI="https://github.com/the-cavalry/light-locker/releases/download/v${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"

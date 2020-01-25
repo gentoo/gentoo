@@ -7,8 +7,8 @@ inherit autotools eutils
 DESCRIPTION="A set of tools to collect and process netflow data"
 HOMEPAGE="https://github.com/phaag/nfdump"
 SRC_URI="
-	${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	${HOMEPAGE}/commit/ff0e855bd1f51bed9fc5d8559c64d3cfb475a5d8.patch -> ${P}-security.patch
+	https://github.com/phaag/nfdump/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://github.com/phaag/nfdump/commit/ff0e855bd1f51bed9fc5d8559c64d3cfb475a5d8.patch -> ${P}-security.patch
 "
 
 LICENSE="BSD"

@@ -26,7 +26,7 @@ src_prepare() {
 	default
 
 	# Prepend upstream flags.
-	sed -i -r 's/^(C.*FLAGS)=[^$]+$/\0" ${\1}"/' configure{,.ac} || die
+	sed -i -r 's/^(C.*FLAGS)=[^$]+$/\0" ${\1}"/' configure || die
 }
 
 src_install() {

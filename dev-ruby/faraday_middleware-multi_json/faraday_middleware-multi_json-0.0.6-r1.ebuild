@@ -14,7 +14,7 @@ inherit ruby-fakegem eutils
 
 DESCRIPTION="Response JSON parser using MultiJson and FaradayMiddleware"
 HOMEPAGE="https://github.com/denro/faraday_middleware-multi_json"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/denro/faraday_middleware-multi_json/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

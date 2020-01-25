@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit latex-package
 
@@ -22,6 +22,7 @@ DEPEND="${RDEPEND}
 	doc? ( dev-texlive/texlive-bibtexextra )"
 
 S="${WORKDIR}/${PN}"
+
 PATCHES=(
 	"${FILESDIR}"/${P}.patch
 	"${FILESDIR}"/${P}-tempfile.patch
@@ -47,6 +48,7 @@ src_install() {
 	dodoc README manual.ps template.tex
 	docompress -x /usr/share/doc/${PF}/manual.ps
 	# TEXMF is /usr/share/ plus one further path component
+	[[ ${TEXMF#/usr/share/} != */* ]] || die "Bad TEXMF path ${TEXMF}"
 	dosym ../../../../doc/${PF}/manual.ps \
 		${TEXMF}/doc/latex/${PN}/${PN}-manual.ps
 

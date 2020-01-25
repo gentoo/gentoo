@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,6 @@ RDEPEND="
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.5.3[${PYTHON_USEDEP}]
 	<dev-python/requests-3.0.0[${PYTHON_USEDEP}]
-	dev-python/ordereddict[${PYTHON_USEDEP}]
 	>=dev-python/alembic-0.6.4[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.1.0[${PYTHON_USEDEP}]
 	>=dev-python/voluptuous-0.7[${PYTHON_USEDEP}]

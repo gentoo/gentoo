@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Perform two optimisations on a list of prefixes to reduce the length of the list"
 HOMEPAGE="https://ftp.isc.org/isc/aggregate"
-SRC_URI="${HOMEPAGE}/${P}.tar.gz"
+SRC_URI="https://ftp.isc.org/isc/aggregate/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"

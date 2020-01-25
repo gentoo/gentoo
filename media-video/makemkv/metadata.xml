@@ -22,7 +22,4 @@
 		may watch Blu-ray and DVD discs with your favorite player on
 		your favorite OS or on your favorite device.
 	</longdescription>
-	<use>
-		<flag name="gui">Build the Qt5 GUI</flag>
-	</use>
 </pkgmetadata>

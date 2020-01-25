@@ -5,6 +5,10 @@
     <email>php-bugs@gentoo.org</email>
     <name>PHP</name>
   </maintainer>
+  <maintainer type="person">
+    <email>mjo@gentoo.org</email>
+    <name>Michael Orlitzky</name>
+  </maintainer>
   <upstream>
     <remote-id type="github">pear/Net_SMTP</remote-id>
     <remote-id type="pear">Net_SMTP</remote-id>

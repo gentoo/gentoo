@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit cmake-utils flag-o-matic python-single-r1 toolchain-funcs versionator
 
@@ -11,7 +11,7 @@ MYPV=$(get_version_component_range 1-2)
 MYPD=${PN}-data-0.9
 
 DESCRIPTION="Large Scale Machine Learning Toolbox"
-HOMEPAGE="http://shogun-toolbox.org/"
+HOMEPAGE="https://shogun-toolbox.org/"
 SRC_URI="
 	ftp://shogun-toolbox.org/shogun/releases/${MYPV}/sources/${P}.tar.bz2
 	test? ( ftp://shogun-toolbox.org/shogun/data/${MYPD}.tar.bz2 )

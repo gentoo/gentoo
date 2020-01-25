@@ -34,7 +34,6 @@ RDEPEND="
 	dev-python/python-dateutil[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.5.3[${PYTHON_USEDEP}]
 	<dev-python/requests-3.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/ordereddict[${PYTHON_USEDEP}]' 'python2*')
 	>=dev-python/alembic-0.6.4[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.1.0[${PYTHON_USEDEP}]
 	>=dev-python/voluptuous-0.7[${PYTHON_USEDEP}]

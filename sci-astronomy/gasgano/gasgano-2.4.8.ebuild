@@ -10,7 +10,7 @@ PDOC=VLT-PRO-ESO-19000-1932-V4
 DESCRIPTION="ESO astronomical data file organizer"
 HOMEPAGE="http://www.eso.org/sci/software/gasgano/"
 SRC_URI="ftp://ftp.eso.org/pub/dfs/${PN}/${P}.tar.gz
-	doc? ( ${HOMEPAGE}/${PDOC}.pdf )"
+	doc? ( http://www.eso.org/sci/software/gasgano/${PDOC}.pdf )"
 
 LICENSE="Apache-1.1"
 SLOT="0"

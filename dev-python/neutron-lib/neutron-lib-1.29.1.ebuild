@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -47,6 +47,5 @@ RDEPEND="${CDEPEND}
 	>=dev-python/oslo-versionedobjects-1.31.2[${PYTHON_USEDEP}]
 	>=dev-python/osprofiler-1.4.0[${PYTHON_USEDEP}]
 	>=dev-python/setproctitle-1.1.10[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/weakrefmethod-1.0.2[${PYTHON_USEDEP}]' 'python2_7')
 	>=dev-python/os-traits-0.9.0[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.7.1[${PYTHON_USEDEP}]"

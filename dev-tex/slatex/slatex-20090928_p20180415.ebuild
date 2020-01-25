@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 # for updating the texmf database, id est latex-package_rehash
 inherit latex-package
 
-DESCRIPTION="SLaTeX is a Scheme program allowing you to write Scheme in your (La)TeX source"
+DESCRIPTION="A Scheme program allowing you to write Scheme in your (La)TeX source"
 HOMEPAGE="http://www.ccs.neu.edu/home/dorai/slatex/slatxdoc.html"
 SRC_URI="http://www.ccs.neu.edu/home/dorai/slatex/${PN}.tar.bz2 -> ${P}.tar.bz2"
 
@@ -19,10 +19,11 @@ DEPEND="${RDEPEND}
 	dev-scheme/scmxlate"
 
 S="${WORKDIR}/${PN}"
+
 TARGET_DIR="/usr/share/${PN}"
 
 src_prepare() {
-	eapply_user
+	default
 	sed "s:\"/home/dorai/.www/slatex/slatex.scm\":\"${TARGET_DIR}/slatex.scm\":" \
 		-i scmxlate-slatex-src.scm || die "sed failed"
 }

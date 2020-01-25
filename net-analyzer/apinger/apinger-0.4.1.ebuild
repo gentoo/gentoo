@@ -11,7 +11,7 @@ MY_P="${MY_PN}_${PV//./_}"
 
 DESCRIPTION="Alarm Pinger"
 HOMEPAGE="https://github.com/Jajcus/apinger/"
-SRC_URI="${HOMEPAGE}archive/${MY_P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Jajcus/apinger/archive/${MY_P}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

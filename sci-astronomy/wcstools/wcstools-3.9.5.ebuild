@@ -7,7 +7,7 @@ inherit eutils autotools
 
 DESCRIPTION="World Coordinate System library for astronomical FITS images"
 HOMEPAGE="http://tdc-www.harvard.edu/software/wcstools"
-SRC_URI="${HOMEPAGE}/${P}.tar.gz"
+SRC_URI="http://tdc-www.harvard.edu/software/wcstools/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"

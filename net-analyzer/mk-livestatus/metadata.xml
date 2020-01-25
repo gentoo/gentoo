@@ -15,5 +15,7 @@
 	</maintainer>
 	<use>
 		<flag name="nagios4">Generate a <pkg>net-analyzer/nagios</pkg>-4 compatible plugin</flag>
+		<flag name="boost">Use <pkg>dev-libs/boost</pkg> for ASIO support</flag>
+		<flag name="re2">Use <pkg>dev-libs/re2</pkg> for regex support</flag>
 	</use>
 </pkgmetadata>

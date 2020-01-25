@@ -6,7 +6,7 @@ inherit systemd user
 
 DESCRIPTION="High-performance interface between the MTA and content checkers"
 HOMEPAGE="https://gitlab.com/amavis/amavis"
-SRC_URI="${HOMEPAGE}/-/archive/${P}/amavis-${P}.tar.gz"
+SRC_URI="https://gitlab.com/amavis/amavis/-/archive/${P}/amavis-${P}.tar.gz"
 
 LICENSE="GPL-2 BSD-2"
 SLOT="0"

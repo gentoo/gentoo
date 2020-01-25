@@ -369,8 +369,8 @@ multilib_copy_sources() {
 # MULTILIB_CHOST_TOOLS=(
 #	/usr/bin/foo-config
 # )
-
 # @CODE
+
 # @FUNCTION: multilib_prepare_wrappers
 # @USAGE: [<install-root>]
 # @DESCRIPTION:

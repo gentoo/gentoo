@@ -26,7 +26,6 @@ REQUIRED_USE="
 "
 
 BDEPEND="
-	>=dev-cpp/gtest-1.8.0
 	dev-qt/linguist-tools:5
 	sys-devel/gettext
 	virtual/pkgconfig
@@ -69,7 +68,8 @@ RDEPEND="${COMMON_DEPEND}
 	udisks? ( sys-fs/udisks:2 )
 "
 DEPEND="${COMMON_DEPEND}
-	dev-libs/boost:=
+	>=dev-cpp/gtest-1.8.0
+	dev-libs/boost
 	dev-qt/qtopengl:5
 	dev-qt/qtx11extras:5
 	dev-qt/qtxml:5

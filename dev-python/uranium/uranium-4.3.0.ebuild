@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 MY_PN="Uranium"
 
@@ -17,8 +17,9 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc test"
-RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	sys-devel/gettext
@@ -47,8 +48,9 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DPYTHON_SITE_PACKAGES_DIR="$(python_get_sitedir)" )
-	cmake-utils_src_configure
+		-DPYTHON_SITE_PACKAGES_DIR="$(python_get_sitedir)"
+	)
+	cmake_src_configure
 
 	if ! use debug; then
 		sed -i 's/logging.DEBUG/logging.ERROR/' plugins/ConsoleLogger/ConsoleLogger.py || die
@@ -57,14 +59,14 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use doc; then
-		cmake-utils_src_compile doc
+		cmake_src_compile doc
 		DOCS+=( html )
 	fi
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_optimize "${D}/usr/$(get_libdir)"
 }

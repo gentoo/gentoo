@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 DISTUTILS_SINGLE_IMPL=true
 
 inherit distutils-r1 readme.gentoo-r1 virtualx
@@ -29,7 +29,6 @@ DEPEND="${RDEPEND}
 	sys-devel/gettext
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
-		python_targets_python2_7? ( dev-python/sphinxtogithub[$(python_gen_usedep 'python2*')] )
 		)
 	test? ( dev-python/nose[${PYTHON_USEDEP}] ${VIRTUALX_DEPEND} )
 "

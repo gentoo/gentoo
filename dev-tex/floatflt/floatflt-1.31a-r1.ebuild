@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit latex-package
 
@@ -13,10 +13,8 @@ SRC_URI="mirror://gentoo/${P}.zip"
 LICENSE="LPPL-1.2"
 SLOT="0"
 KEYWORDS="~amd64 hppa ~x86"
-IUSE=""
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
 TEXMF="/usr/share/texmf-site"
 

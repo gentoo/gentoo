@@ -7,7 +7,7 @@ MY_PN=${PN/timidity-/}
 
 DESCRIPTION="Free and open set of instrument patches"
 HOMEPAGE="http://freepats.opensrc.org/"
-SRC_URI="${HOMEPAGE}/${MY_PN}-${PV}.tar.bz2"
+SRC_URI="http://freepats.opensrc.org/${MY_PN}-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

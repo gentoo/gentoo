@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,8 @@ RDEPEND="${DEPEND}
 	nls? ( >=sys-devel/gettext-0.10.39 )"
 
 S=${WORKDIR}/${P/windowm/WindowM}
+
+PATCHES=( "${FILESDIR}"/${P}-configure_default_search_paths.patch )
 
 src_prepare() {
 	# Fix some paths

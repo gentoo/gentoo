@@ -6,7 +6,7 @@ inherit flag-o-matic systemd toolchain-funcs
 
 DESCRIPTION="powerful replacement for inetd"
 HOMEPAGE="https://github.com/openSUSE/xinetd"
-SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.xz"
+SRC_URI="https://github.com/openSUSE/xinetd/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="BSD"
 SLOT="0"

@@ -21,7 +21,7 @@ REQUIRED_USE="
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.34.0:=
+	>=dev-libs/libuv-1.34.1:=
 	>=net-dns/c-ares-1.15.0
 	>=net-libs/nghttp2-1.39.2
 	sys-libs/zlib
@@ -100,7 +100,7 @@ src_configure() {
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
-	use snapshot && myconf+=( --with-snapshot )
+	use snapshot || myconf+=( --without-node-snapshot )
 	use ssl && myconf+=( --shared-openssl --openssl-use-def-ca-store ) || myconf+=( --without-ssl )
 
 	local myarch=""

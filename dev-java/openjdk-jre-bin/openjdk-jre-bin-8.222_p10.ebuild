@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ SRC_URI="
 LICENSE="GPL-2-with-classpath-exception"
 KEYWORDS="amd64"
 
-IUSE="alsa cups +gentoo-vm headless-awt nsplugin selinux +webstart"
+IUSE="alsa cups +gentoo-vm headless-awt nsplugin selinux webstart"
 
 RDEPEND="
 	media-libs/fontconfig:1.0

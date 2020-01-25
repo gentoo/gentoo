@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,8 @@ RDEPEND="dev-libs/libev
 	dbus? ( sys-apps/dbus )
 	drm? ( x11-libs/libdrm )
 	opengl? ( virtual/opengl )
-	pcre? ( dev-libs/libpcre )"
+	pcre? ( dev-libs/libpcre )
+	!x11-misc/compton"
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit eutils systemd distutils-r1
 
@@ -23,8 +23,8 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="cherrypy ldap libcloud libvirt gnupg keyring mako mongodb mysql neutron nova"
-IUSE+=" openssl portage profile redis selinux test timelib raet +zeromq vim-syntax"
+IUSE="cherrypy ldap libcloud libvirt gnupg keyring mako mongodb neutron nova"
+IUSE+=" openssl portage profile redis selinux test raet +zeromq vim-syntax"
 
 RDEPEND="sys-apps/pciutils
 	dev-python/jinja[${PYTHON_USEDEP}]
@@ -58,10 +58,8 @@ RDEPEND="sys-apps/pciutils
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	portage? ( sys-apps/portage[${PYTHON_USEDEP}] )
 	keyring? ( dev-python/keyring[${PYTHON_USEDEP}] )
-	mysql? ( dev-python/mysql-python[$(python_gen_usedep 'python2*')] )
 	redis? ( dev-python/redis-py[${PYTHON_USEDEP}] )
 	selinux? ( sec-policy/selinux-salt )
-	timelib? ( dev-python/timelib[$(python_gen_usedep 'python2*')] )
 	nova? ( >=dev-python/python-novaclient-2.17.0[${PYTHON_USEDEP}] )
 	neutron? ( >=dev-python/python-neutronclient-2.3.6[${PYTHON_USEDEP}] )
 	gnupg? ( dev-python/python-gnupg[${PYTHON_USEDEP}] )
@@ -76,7 +74,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		dev-python/pip[${PYTHON_USEDEP}]
 		dev-python/virtualenv[${PYTHON_USEDEP}]
 		>=dev-python/mock-2.0.0[${PYTHON_USEDEP}]
-		dev-python/timelib[$(python_gen_usedep 'python2*')]
 		>=dev-python/boto-2.32.1[${PYTHON_USEDEP}]
 		!x86? ( >=dev-python/boto3-1.2.1[${PYTHON_USEDEP}] )
 		>=dev-python/moto-0.3.6[${PYTHON_USEDEP}]

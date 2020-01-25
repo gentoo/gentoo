@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Benda Xu <heroxbd@gentoo.org> (2019-08-20)
@@ -32,7 +32,6 @@ sci-electronics/gtkwave judy
 
 # Christian Faulhammer <fauli@gentoo.org> (2010-01-09)
 # m17n-lib is not available in Prefix
-app-editors/emacs-vcs m17n-lib
 app-editors/emacs m17n-lib
 
 # Jeremy Olexa <darkside@gentoo.org> (2009-09-30)

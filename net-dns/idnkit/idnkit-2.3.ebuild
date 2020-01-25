@@ -6,7 +6,7 @@ inherit ltprune
 
 DESCRIPTION="Toolkit for Internationalized Domain Names (IDN)"
 HOMEPAGE="https://jprs.co.jp/idn/"
-SRC_URI="${HOMEPAGE}${P}.tar.bz2"
+SRC_URI="https://jprs.co.jp/idn/${P}.tar.bz2"
 
 LICENSE="JPRS"
 SLOT="0"

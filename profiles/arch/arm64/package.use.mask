@@ -1,5 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-11)
+# Unkeyworded dep.
+kde-apps/cantor julia
 
 # Rick Farina <zerochaos@gentoo.com> (2020-01-03)
 # ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
@@ -135,11 +139,6 @@ dev-python/notebook doc
 # Mart Raudsepp <leio@gentoo.org> (2018-05-30)
 # Require old gnome2 libraries, not keywording legacy on purpose
 sys-devel/distcc gnome
-
-# Mart Raudsepp <leio@gentoo.org> (2018-05-13)
-# Not bothering with otherwise p.masked old gcc for the
-# extra dev-libs/cloog dependency with USE=graphite
-<sys-devel/gcc-5 graphite
 
 # Mart Raudsepp <leio@gentoo.org> (2018-05-06)
 # New enough dev-ruby/webmock not keyworded yet
@@ -288,10 +287,6 @@ app-crypt/qca botan
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # openvz-sources are likely too old for any proper arm64 usage
 app-emulation/libvirt openvz
-
-# Alexis Ballier <aballier@gentoo.org> (2017-07-10)
-# sys-firmware/ipxe does not build, mask x86 targets needing it
-app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # media-gfx/nvidia-texture-tools does not support arm64

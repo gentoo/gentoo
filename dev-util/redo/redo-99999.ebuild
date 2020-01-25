@@ -8,7 +8,7 @@ inherit git-r3 multilib multiprocessing python-single-r1
 
 DESCRIPTION="Smaller, easier, more powerful, and more reliable than make"
 HOMEPAGE="https://github.com/apenwarr/redo"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/apenwarr/redo"
 
 LICENSE="LGPL-2"
 SLOT="0"

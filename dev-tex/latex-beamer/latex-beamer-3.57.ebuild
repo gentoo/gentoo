@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,6 +35,6 @@ src_install() {
 	if use doc ; then
 		docinto doc
 		dodoc -r  doc
-		dosym "../usr/share/doc/${PF}/doc/" "${TEXMF}/doc/latex/beamer"
+		dosym "../../../../../usr/share/doc/${PF}/doc/" "${TEXMF}/doc/latex/beamer"
 	fi
 }

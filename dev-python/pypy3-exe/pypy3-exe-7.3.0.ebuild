@@ -59,7 +59,7 @@ pkg_setup() {
 		check_env
 
 		# unset to allow forcing pypy below :)
-		use low-memory && local EPYTHON=
+		use low-memory && EPYTHON=
 		if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] &&
 				{ has_version -b dev-python/pypy ||
 				has_version -b dev-python/pypy-bin; }

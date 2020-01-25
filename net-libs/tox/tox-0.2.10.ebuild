@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils systemd
+inherit cmake systemd
 
 MY_P="c-toxcore-${PV}"
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
@@ -38,7 +38,7 @@ RDEPEND="
 S="${WORKDIR}/${MY_P}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	#remove faulty tests
 	for testname in bootstrap lan_discovery save_compatibility tcp_relay tox_many_tcp; do
 		sed -i -e "/^auto_test(${testname})$/d" CMakeLists.txt || die
@@ -81,11 +81,11 @@ src_configure() {
 		einfo "Logging disabled"
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use daemon; then
 		newinitd "${FILESDIR}"/initd tox-dht-daemon

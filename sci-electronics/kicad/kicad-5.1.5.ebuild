@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit check-reqs cmake-utils eutils python-single-r1 toolchain-funcs wxwidgets xdg-utils
+inherit check-reqs cmake eutils python-single-r1 toolchain-funcs wxwidgets xdg-utils
 
 DESCRIPTION="Electronic Schematic and PCB design tools"
 HOMEPAGE="https://www.kicad-pcb.org"
@@ -93,18 +93,18 @@ src_configure() {
 		-DOCC_LIBRARY_DIR="${CASROOT}"/lib
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use doc; then
-		cmake-utils_src_compile dev-docs doxygen-docs
+		cmake_src_compile dev-docs doxygen-docs
 	fi
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use python && python_optimize
 	if use doc ; then
 		dodoc uncrustify.cfg

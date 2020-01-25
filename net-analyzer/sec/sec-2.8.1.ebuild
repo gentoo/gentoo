@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="Simple Event Correlator"
 HOMEPAGE="https://github.com/simple-evcorr/sec"
-SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/simple-evcorr/sec/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

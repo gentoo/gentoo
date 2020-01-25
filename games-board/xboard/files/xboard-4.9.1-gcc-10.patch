@@ -1,0 +1,32 @@
+--- a/backend.h
++++ b/backend.h
+@@ -242,7 +242,7 @@ extern GameInfo gameInfo;
+ 
+ /* ICS vars used with backend.c and zippy.c */
+ enum ICS_TYPE { ICS_GENERIC, ICS_ICC, ICS_FICS, ICS_CHESSNET /* not really supported */ };
+-enum ICS_TYPE ics_type;
++extern enum ICS_TYPE ics_type;
+ 
+ /* pgntags.c prototypes
+  */
+--- a/evalgraph.h
++++ b/evalgraph.h
+@@ -34,7 +34,7 @@ typedef enum { PEN_NONE, PEN_BLACK, PEN_DOTTED, PEN_BLUEDOTTED, PEN_BOLDWHITE, P
+ #define OPEN   0
+ 
+ /* Module globals */
+-ChessProgramStats_Move * currPvInfo;
++extern ChessProgramStats_Move * currPvInfo;
+ extern int currFirst;
+ extern int currLast;
+ extern int currCurrent;
+--- a/xaw/xhistory.c
++++ b/xaw/xhistory.c
+@@ -96,7 +96,6 @@ ScrollToCursor (Option *opt, int caretPos)
+ 
+ // ------------------------------ callbacks --------------------------
+ 
+-char *historyText;
+ char historyTranslations[] =
+ "<Btn3Down>: select-start() \n \
+ <Btn3Up>: extend-end(PRIMARY) SelectMove() \n";

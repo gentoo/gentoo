@@ -1,0 +1,29 @@
+From a27dabfd3a422a348135e49ffd4f163cc5c6baae Mon Sep 17 00:00:00 2001
+From: Jaco Kroon <jaco@iewc.co.za>
+Date: Mon, 6 Jan 2020 11:52:54 +0200
+Subject: [PATCH] lws_create_vhost compile failure with +SOCKS5 -client.
+
+If LWS is build with SOCKS5 support, but WITHOUT_CLIENT then a compile
+failure occurs which this fixes.
+
+Signed-off-by: Jaco Kroon <jaco@iewc.co.za>
+---
+ lib/core-net/vhost.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/core-net/vhost.c b/lib/core-net/vhost.c
+index 69fe26a5..283b802e 100644
+--- a/lib/core-net/vhost.c
++++ b/lib/core-net/vhost.c
+@@ -437,7 +437,7 @@ lws_create_vhost(struct lws_context *context,
+	struct lws_protocols *lwsp;
+	int m, f = !info->pvo, fx = 0, abs_pcol_count = 0;
+	char buf[96];
+-#if !defined(LWS_WITHOUT_CLIENT) && defined(LWS_HAVE_GETENV)
++#if (!defined(LWS_WITHOUT_CLIENT) || defined(LWS_WITH_SOCKS5)) && defined(LWS_HAVE_GETENV)
+	char *p;
+ #endif
+	int n;
+-- 
+2.23.0
+

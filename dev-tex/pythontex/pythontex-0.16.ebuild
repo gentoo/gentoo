@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit latex-package python-r1
 
@@ -28,10 +28,8 @@ TEXMF=/usr/share/texmf-site
 
 src_compile() {
 	cd ${PN} || die
-	ebegin "Compiling ${PN}"
 	rm ${PN}.sty || die
 	VARTEXFONTS="${T}/fonts" latex ${PN}.ins extra || die
-	eend
 }
 
 src_install() {
@@ -40,11 +38,7 @@ src_install() {
 	cd ${PN} || die
 
 	installation() {
-		if python_is_python3; then
-			python_domodule {de,}${PN}3.py
-		else
-			python_domodule {de,}${PN}2.py
-		fi
+		python_domodule {de,}${PN}3.py
 		python_domodule ${PN}_{engines,utils}.py
 		python_doscript {de,}${PN}.py syncpdb.py
 		python_optimize

@@ -1,4 +1,4 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-USE="a52 aac acpi alsa bluetooth branding cairo cdda cdr consolekit cups dbus dri dts dvd dvdr emboss encode exif fam flac gif gpm gtk icu jpeg lcms ldap libnotify mad mng mp3 mp4 mpeg ogg opengl pango pdf png policykit ppds qt5 sdl spell startup-notification svg tiff truetype vorbis udev udisks unicode upower usb wxwidgets X xcb x264 xml xv xvid"
+USE="a52 aac acpi alsa bluetooth branding cairo cdda cdr consolekit cups dbus dri dts dvd dvdr emboss encode exif flac gif gpm gtk icu jpeg lcms ldap libnotify mad mng mp3 mp4 mpeg ogg opengl pango pdf png policykit ppds qt5 sdl spell startup-notification svg tiff truetype vorbis udev udisks unicode upower usb wxwidgets X xcb x264 xml xv xvid"

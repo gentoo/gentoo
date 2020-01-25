@@ -1,0 +1,7 @@
+--- a/init/sqlgrey.gentoo	2007-05-12 11:12:12.000000000 +0200
++++ b/init/sqlgrey.gentoo	2007-05-12 12:05:52.491468250 +0200
+@@ -1,4 +1,4 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ # Copyright 1999-2004 Lionel Bouton
+ # Distributed under the terms of the GNU General Public License v2

@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit latex-package
 
@@ -12,11 +12,11 @@ SRC_URI="https://github.com/odomanov/${PN}/archive/ver.${PV}.tar.gz -> ${P}.tar.
 LICENSE="LPPL-1.3c"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="dev-texlive/texlive-latexextra
 	>=dev-tex/biblatex-3.8
 	>=dev-tex/biber-2.8"
+
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${PN}-ver.${PV}"

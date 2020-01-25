@@ -6,10 +6,6 @@
 		<name>Gentoo Antivirus Project</name>
 	</maintainer>
 	<maintainer type="person">
-		<email>mjo@gentoo.org</email>
-		<name>Michael Orlitzky</name>
-	</maintainer>
-	<maintainer type="person">
 		<email>gentoo@seichter.de</email>
 		<name>Ralph Seichter</name>
 	</maintainer>

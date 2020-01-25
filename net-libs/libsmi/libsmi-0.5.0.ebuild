@@ -6,7 +6,7 @@ inherit eutils
 
 DESCRIPTION="A Library to Access SMI MIB Information"
 HOMEPAGE="https://www.ibr.cs.tu-bs.de/projects/libsmi/"
-SRC_URI="${HOMEPAGE}/download/${P}.tar.gz"
+SRC_URI="https://www.ibr.cs.tu-bs.de/projects/libsmi/download/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

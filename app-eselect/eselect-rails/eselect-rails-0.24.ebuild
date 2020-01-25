@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Manages Ruby on Rails symlinks"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://gitweb.gentoo.org/proj/ruby-scripts.git/tree/eselect-rails"
 SRC_URI="https://dev.gentoo.org/~graaff/ruby-team/${P}.tar.xz"
 
 LICENSE="GPL-2"

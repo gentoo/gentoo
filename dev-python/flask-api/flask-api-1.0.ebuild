@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Browsable web APIs for Flask"
 HOMEPAGE="https://github.com/flask-api/flask-api"
 # pypi mirror don't have docs folder
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/flask-api/flask-api/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0"

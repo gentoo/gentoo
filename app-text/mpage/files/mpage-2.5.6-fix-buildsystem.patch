@@ -1,0 +1,43 @@
+--- a/Makefile
++++ b/Makefile
+@@ -24,7 +24,6 @@
+ # Set this to an ANSI compatible C compiler (preferably gcc)
+ # See also system specific settings below
+ #CC=cc
+-CC=gcc
+ 
+ ############################################################################
+ #
+@@ -107,7 +106,7 @@
+ # If you are using gcc, you probably don't need to change anything here.
+ 
+ # Linux:
+-CFLAGS = -O2 -s $(DEFS) -Wall
++CPPFLAGS += $(DEFS)
+ 
+ # AIX (xlC on aix 4):
+ #CFLAGS = -O2 -s $(DEFS)
+@@ -134,10 +133,6 @@
+ # END OF CONFIGURATION OPTIONS
+ #
+ 
+-# pattern rules. Should we define these?
+-%$(O): %.c
+-	$(CC) $(CFLAGS) -c -o $@ $<
+-
+ 
+ HEAD =  mpage.h
+ DENC =  encoding.h
+@@ -150,10 +145,10 @@
+ 	@echo Done!
+ 
+ mpage$(E):	$(MOBJ)
+-	$(CC) $(CFLAGS) -o mpage$(E) $(MOBJ) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o mpage$(E) $(MOBJ) $(LIBS)
+ 
+ msample$(E):	$(SOBJ)
+-	$(CC) $(CFLAGS) -o msample$(E) $(SOBJ) $(LIBS)
++	$(CC) $(LDFLAGS) $(CFLAGS) -o msample$(E) $(SOBJ) $(LIBS)
+ 
+ mpage.1: mpage.1.in
+ 	sed 's:PREFIX:${PREFIX}:' < mpage.1.in > mpage.1

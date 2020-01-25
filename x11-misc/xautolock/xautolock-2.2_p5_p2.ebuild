@@ -11,7 +11,7 @@ DEB_REV_MAJ="$(ver_cut 4)"
 DEB_REV_MIN="$(ver_cut 6)"
 DEB_REVISION="${DEB_REV_MAJ/p}.${DEB_REV_MIN/p}"
 SRC_URI="
-	${HOMEPAGE}/${P/_p*/}.tgz
+	http://www.ibiblio.org/pub/Linux/X11/screensavers/${P/_p*/}.tgz
 	mirror://debian/pool/main/x/${PN}/${PN}_${PV/_p*/}-${DEB_REVISION}.debian.tar.xz
 "
 LICENSE="GPL-2"

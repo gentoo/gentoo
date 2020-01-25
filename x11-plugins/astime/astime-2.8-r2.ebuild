@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="Analogue clock utility for X Windows"
 HOMEPAGE="http://www.tigr.net/"
-SRC_URI="${HOMEPAGE}afterstep/download/${PN}/${P}.tar.gz"
+SRC_URI="http://www.tigr.net/afterstep/download/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -14,7 +14,7 @@ MY_PV="${MY_PV}.${MY_PL}"
 
 DESCRIPTION="WiFi Radar is a Python/PyGTK2 utility for managing WiFi profiles"
 HOMEPAGE="http://wifi-radar.tuxfamily.org/"
-SRC_URI="${HOMEPAGE}pub/${PN}-${MY_PV}.tar.bz2"
+SRC_URI="http://wifi-radar.tuxfamily.org/pub/${PN}-${MY_PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"

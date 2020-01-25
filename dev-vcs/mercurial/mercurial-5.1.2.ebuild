@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -151,6 +151,9 @@ pkg_postinst() {
 	elog "  dev-vcs/git"
 	elog "  dev-vcs/monotone"
 	elog "  dev-vcs/subversion"
+
+	elog "If you want to use bugzilla extension"
+	elog "please install dev-python/mysqlclient"
 }
 
 pkg_postrm() {

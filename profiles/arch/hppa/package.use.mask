@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
@@ -204,7 +204,6 @@ app-text/asciidoc test
 # Requires sys-power/upower or sys-power/upower-pm-utils which are
 # not much use on HPPA
 xfce-extra/xfce4-systemload-plugin upower
-xfce-base/xfce4-session upower
 xfce-base/xfce4-settings upower
 
 # Jeroen Roovers <jer@gentoo.org> (2011-10-25)

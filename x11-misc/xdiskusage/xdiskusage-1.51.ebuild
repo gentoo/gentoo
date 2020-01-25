@@ -5,7 +5,7 @@ EAPI=6
 
 DESCRIPTION="user-friendly program to show you what is using up all your disk space"
 HOMEPAGE="http://xdiskusage.sourceforge.net/"
-SRC_URI="${HOMEPAGE}${P}.tgz"
+SRC_URI="http://xdiskusage.sourceforge.net/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"

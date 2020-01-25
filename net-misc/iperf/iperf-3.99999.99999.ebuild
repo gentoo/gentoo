@@ -6,7 +6,7 @@ inherit autotools eutils git-r3
 
 DESCRIPTION="A TCP, UDP, and SCTP network bandwidth measurement tool"
 HOMEPAGE="https://github.com/esnet/iperf/"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/esnet/iperf/"
 
 LICENSE="BSD"
 SLOT="3"

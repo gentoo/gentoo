@@ -14,7 +14,6 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
-RPM=
 MY_PV=${PV}
 case ${PV} in
 9999*)
@@ -98,8 +97,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	[[ -n ${RPM} ]] && rpm_spec_epatch "${WORKDIR}"/gdb.spec
-
 	default
 
 	strip-linguas -u bfd/po opcodes/po
@@ -243,6 +240,10 @@ src_install() {
 	# gcore is part of ubin on freebsd
 	if [[ ${CHOST} == *-freebsd* ]]; then
 		rm "${ED}"/usr/bin/gcore || die
+	fi
+
+	if use python; then
+		python_optimize "${ED}"/usr/share/gdb/python/gdb
 	fi
 }
 

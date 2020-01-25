@@ -14,7 +14,7 @@ SRC_URI="http://gdlp01.c-wss.com/gds/${MY_DOWNLOAD_ID}/linux-UFRII-drv-v${MY_PV}
 
 LICENSE="Canon-UFR-II GPL-2 MIT"
 SLOT="0"
-KEYWORDS="-* ~amd64"
+KEYWORDS="-* ~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-libs/libxml2:2

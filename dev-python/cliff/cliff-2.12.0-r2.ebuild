@@ -8,7 +8,7 @@ VIRTUALX_REQUIRED="test"
 inherit distutils-r1 virtualx
 
 DESCRIPTION="Command Line Interface Formulation Framework"
-HOMEPAGE="https://github.com/dreamhost/cliff"
+HOMEPAGE="https://github.com/openstack/cliff"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

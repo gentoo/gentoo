@@ -5,7 +5,7 @@ EAPI=7
 
 DESCRIPTION="The well known banner program for Linux"
 HOMEPAGE="http://cedar-solutions.com/"
-SRC_URI="${HOMEPAGE}ftp/software/${P}.tar.gz"
+SRC_URI="http://cedar-solutions.com/ftp/software/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -33,22 +33,22 @@ inherit multilib-build
 # environment if none is specified.
 
 rust_abi() {
-  local CTARGET=${1:-${CHOST}}
-  case ${CTARGET%%*-} in
-    aarch64*)     echo aarch64-unknown-linux-gnu;;
-    mips64*)      echo mips64-unknown-linux-gnuabi64;;
-    powerpc64le*) echo powerpc64le-unknown-linux-gnu;;
-    powerpc64*)   echo powerpc64-unknown-linux-gnu;;
-    x86_64*)      echo x86_64-unknown-linux-gnu;;
-    armv6j*s*)    echo arm-unknown-linux-gnueabi;;
-    armv6j*h*)    echo arm-unknown-linux-gnueabihf;;
-    armv7a*h*)    echo armv7-unknown-linux-gnueabihf;;
-    i?86*)        echo i686-unknown-linux-gnu;;
-    mipsel*)      echo mipsel-unknown-linux-gnu;;
-    mips*)        echo mips-unknown-linux-gnu;;
-    powerpc*)     echo powerpc-unknown-linux-gnu;;
-    s390x*)       echo s390x-unknown-linux-gnu;;
-    *)            echo ${CTARGET};;
+	local CTARGET=${1:-${CHOST}}
+	case ${CTARGET%%*-} in
+		aarch64*)	  echo aarch64-unknown-linux-gnu;;
+		mips64*)	  echo mips64-unknown-linux-gnuabi64;;
+		powerpc64le*) echo powerpc64le-unknown-linux-gnu;;
+		powerpc64*)   echo powerpc64-unknown-linux-gnu;;
+		x86_64*)	  echo x86_64-unknown-linux-gnu;;
+		armv6j*s*)	  echo arm-unknown-linux-gnueabi;;
+		armv6j*h*)	  echo arm-unknown-linux-gnueabihf;;
+		armv7a*h*)	  echo armv7-unknown-linux-gnueabihf;;
+		i?86*)		  echo i686-unknown-linux-gnu;;
+		mipsel*)	  echo mipsel-unknown-linux-gnu;;
+		mips*)		  echo mips-unknown-linux-gnu;;
+		powerpc*)	  echo powerpc-unknown-linux-gnu;;
+		s390x*)		  echo s390x-unknown-linux-gnu;;
+		*)			  echo ${CTARGET};;
   esac
 }
 
@@ -56,18 +56,18 @@ rust_abi() {
 # @DESCRIPTION:
 # Outputs a list of all the enabled Rust ABIs
 rust_all_abis() {
-  if use multilib; then
-    local abi
-    local ALL_ABIS=()
-    for abi in $(multilib_get_enabled_abis); do
-      ALL_ABIS+=( $(rust_abi $(get_abi_CHOST ${abi})) )
-    done
-    local abi_list
-    IFS=, eval 'abi_list=${ALL_ABIS[*]}'
-    echo ${abi_list}
-  else
-    rust_abi
-  fi
+	if use multilib; then
+		local abi
+		local ALL_ABIS=()
+		for abi in $(multilib_get_enabled_abis); do
+			ALL_ABIS+=( $(rust_abi $(get_abi_CHOST ${abi})) )
+		done
+		local abi_list
+		IFS=, eval 'abi_list=${ALL_ABIS[*]}'
+		echo ${abi_list}
+	else
+		rust_abi
+	fi
 }
 
 # @FUNCTION: rust_arch_uri
@@ -79,22 +79,22 @@ rust_all_abis() {
 #
 # @EXAMPLE:
 # SRC_URI="amd64? (
-#    $(rust_arch_uri x86_64-unknown-linux-gnu rustc-${STAGE0_VERSION})
+#	 $(rust_arch_uri x86_64-unknown-linux-gnu rustc-${STAGE0_VERSION})
 # )"
 #
 rust_arch_uri() {
-  if [ -n "$3" ]; then
-    echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz -> ${3}-${1}.tar.xz"
-  else
-    echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz"
-  fi
+	if [ -n "$3" ]; then
+		echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz -> ${3}-${1}.tar.xz"
+	else
+		echo "${RUST_TOOLCHAIN_BASEURL}${2}-${1}.tar.xz"
+	fi
 }
 
 # @FUNCTION: rust_all_arch_uris
 # @USAGE: <base-uri> [alt-distfile-basename]
 # @DESCRIPTION:
 # Outputs the URIs for SRC_URI to help fetch dependencies, using a base URI
-# provided as an argument.  Optionally allows for distfile renaming via a specified
+# provided as an argument. Optionally allows for distfile renaming via a specified
 # basename.
 #
 # @EXAMPLE:

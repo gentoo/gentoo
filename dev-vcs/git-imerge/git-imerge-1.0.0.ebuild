@@ -9,7 +9,7 @@ inherit bash-completion-r1 python-r1
 
 DESCRIPTION="Incremental merge for git"
 HOMEPAGE="https://github.com/mhagger/git-imerge"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/mhagger/git-imerge/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"

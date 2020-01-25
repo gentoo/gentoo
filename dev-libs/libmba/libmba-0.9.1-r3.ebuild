@@ -7,7 +7,7 @@ inherit eutils flag-o-matic multilib toolchain-funcs
 DESCRIPTION="A library of generic C modules"
 LICENSE="MIT"
 HOMEPAGE="http://www.ioplex.com/~miallen/libmba/"
-SRC_URI="${HOMEPAGE}dl/${P}.tar.gz"
+SRC_URI="http://www.ioplex.com/~miallen/libmba/dl/${P}.tar.gz"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="static-libs"

@@ -13,7 +13,7 @@ MY_P=${P/_/-}
 
 DESCRIPTION="A system to store and display time-series data"
 HOMEPAGE="https://oss.oetiker.ch/rrdtool/"
-SRC_URI="${HOMEPAGE}pub/${MY_P}.tar.gz"
+SRC_URI="https://oss.oetiker.ch/rrdtool/pub/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0/8.0.0"

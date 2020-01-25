@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 inherit ruby-ng
 
@@ -14,6 +14,7 @@ RDEPEND="
 	ruby_targets_ruby24? ( dev-lang/ruby:2.4[ssl] )
 	ruby_targets_ruby25? ( dev-lang/ruby:2.5[ssl] )
 	ruby_targets_ruby26? ( dev-lang/ruby:2.6[ssl] )
+	ruby_targets_ruby27? ( dev-lang/ruby:2.7[ssl] )
 "
 
 pkg_setup() { :; }

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # people who were here:
@@ -67,9 +67,10 @@ usage() {
 	echo -e "  ${GOOD}--fetchonly (-f)${NORMAL} Just download all the source files"
 	echo -e "  ${GOOD}--info (-i)${NORMAL}      Show system related information"
 	echo -e "  ${GOOD}--pretend (-p)${NORMAL}   Display the packages that will be merged"
-	echo -e "  ${GOOD}--quiet (-q)${NORMAL}     Reduced or condensed output from portage's displays."
+	echo -e "  ${GOOD}--quiet (-q)${NORMAL}     Reduced or condensed output from portage"
 	echo -e "  ${GOOD}--tree (-t)${NORMAL}      Display the dependency tree, forces -p"
 	echo -e "  ${GOOD}--resume (-r)${NORMAL}    Build/use binary packages"
+	echo -e "  ${GOOD}--verbose (-v)${NORMAL}   Verbose output from portage"
 }
 
 STRAP_EMERGE_OPTS="--oneshot"
@@ -92,7 +93,7 @@ for opt in "$@" ; do
 		--quiet|-q)   STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} -q"     ; unset STRAP_RUN ;;
 		--tree|-t)    STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} -p -t"  ; unset STRAP_RUN ;;
 		--resume|-r)  STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} --usepkg --buildpkg";;
-		--verbose|-v) STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} -v"; V_ECHO=v_echo;;
+		--verbose|-v) STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} -v"     ; V_ECHO=v_echo;;
 		--version|-V)
 			einfo "Gentoo Linux bootstrap ${cvsver}"
 			exit 0
@@ -330,14 +331,15 @@ export USE="-* bootstrap ${ALLOWED_USE} ${BOOTSTRAP_USE}"
 if [ ${BOOTSTRAP_STAGE} -le 2 ] ; then
 	show_status 3 Emerging packages
 	if [[ ${RESUME} -eq 1 ]] ; then
+		STRAP_EMERGE_POSARGS=""
 		STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} --resume"
 		cp /var/run/bootstrap-mtimedb /var/cache/edb
 	else
-		STRAP_EMERGE_OPTS="${STRAP_EMERGE_OPTS} \
+		STRAP_EMERGE_POSARGS="\
 			${myOS_HEADERS} ${myTEXINFO} ${myGETTEXT} ${myBINUTILS} \
 			${myGCC} ${myLIBC} ${myBASELAYOUT} ${myZLIB}"
 	fi
-	${V_ECHO} emerge ${STRAP_EMERGE_OPTS} || cleanup 1
+	${V_ECHO} emerge ${STRAP_EMERGE_OPTS} ${STRAP_EMERGE_POSARGS} || cleanup 1
 	echo -------------------------------------------------------------------------------
 	set_bootstrap_stage 3
 fi
@@ -347,7 +349,7 @@ if [[ -n ${STRAP_RUN} ]] ; then
 	if [[ -x ${GCC_CONFIG} ]] && ${GCC_CONFIG} --get-current-profile &>/dev/null
 	then
 		# Make sure we get the old gcc unmerged ...
-		emerge --prune sys-devel/gcc || cleanup 1
+		${V_ECHO} emerge ${STRAP_EMERGE_OPTS} --prune sys-devel/gcc || cleanup 1
 		# Make sure the profile and /lib/cpp and /usr/bin/cc are valid ...
 		${GCC_CONFIG} "$(${GCC_CONFIG} --get-current-profile)" &>/dev/null
 	fi
@@ -357,7 +359,7 @@ if [[ -n ${STRAP_RUN} ]] ; then
 	echo -------------------------------------------------------------------------------
 	einfo "Please note that you should now add the '-e' option for emerge system:"
 	echo
-	einfo "  # emerge -e system"
+	einfo "  # emerge <other_opts> -e @system"
 	echo
 fi
 

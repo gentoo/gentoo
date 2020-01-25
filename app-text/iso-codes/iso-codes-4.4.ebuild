@@ -13,7 +13,7 @@ SRC_URI="https://salsa.debian.org/${PN}-team/${PN}/-/archive/${P}/${PN}-${P}.tar
 
 LICENSE="LGPL-2.1+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x86-solaris"
 
 BDEPEND="${PYTHON_DEPS}
 	sys-devel/gettext
@@ -22,6 +22,8 @@ S="${WORKDIR}/${PN}-${P}"
 
 # This ebuild does not install any binaries.
 RESTRICT="binchecks strip"
+
+DOCS=( ChangeLog.md README.md )
 
 # l10n_find_plocales_changes doesn't support multiple directories,
 # so need to do the update scan ourselves.

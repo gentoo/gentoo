@@ -8,7 +8,7 @@ inherit cmake-multilib
 
 DESCRIPTION="Library for asynchronous OpenGL recording with audio"
 HOMEPAGE="https://github.com/Benau/libopenglrecorder"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Benau/libopenglrecorder/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"

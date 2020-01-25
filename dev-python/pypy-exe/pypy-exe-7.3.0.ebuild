@@ -70,7 +70,7 @@ pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
 		check_env
 
-		use low-memory && local EPYTHON=
+		use low-memory && EPYTHON=
 		if [[ ! ${EPYTHON} || ${EPYTHON} == pypy ]] &&
 				{ has_version -b dev-python/pypy ||
 				has_version -b dev-python/pypy-bin; }

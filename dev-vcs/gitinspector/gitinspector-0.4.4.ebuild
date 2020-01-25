@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="Statistical analysis tool for git repositories"
 HOMEPAGE="https://github.com/ejwa/gitinspector"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/ejwa/gitinspector/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-3+"

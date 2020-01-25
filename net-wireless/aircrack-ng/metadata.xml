@@ -10,10 +10,6 @@
 	<email>netmon@gentoo.org</email>
 	<name>Gentoo network monitoring and analysis project</name>
 </maintainer>
-<maintainer type="project">
-	<email>crypto@gentoo.org</email>
-	<name>Crypto</name>
-</maintainer>
 <longdescription>
 	aircrack is a set of tools for auditing wireless networks.
 	aircrack-ng is the next generation of aircrack with lots of new features.

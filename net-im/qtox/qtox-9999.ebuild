@@ -1,27 +1,34 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils eutils git-r3 gnome2-utils xdg-utils
+inherit cmake git-r3 xdg
 
 DESCRIPTION="Most feature-rich GUI for net-libs/tox using Qt5"
 HOMEPAGE="https://github.com/qTox/qTox"
-SRC_URI=""
 EGIT_REPO_URI="https://github.com/qTox/qTox.git"
 
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS=""
 IUSE="notification test X"
+
 RESTRICT="!test? ( test )"
 
+BDEPEND="
+	dev-qt/linguist-tools:5
+	virtual/pkgconfig
+"
 RDEPEND="
 	dev-db/sqlcipher
 	dev-libs/libsodium:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
-	dev-qt/qtgui:5[gif,jpeg,png,xcb]
+	|| (
+		dev-qt/qtgui:5[gif,jpeg,png,X(-)]
+		dev-qt/qtgui:5[gif,jpeg,png,xcb(-)]
+	)
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtsql:5
@@ -38,13 +45,11 @@ RDEPEND="
 		x11-libs/libXScrnSaver )
 "
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig
 	test? ( dev-qt/qttest:5 )
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# bug 628574
 	if ! use test; then
@@ -61,15 +66,5 @@ src_configure() {
 		-DUSE_FILTERAUDIO=OFF
 	)
 
-	cmake-utils_src_configure
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
-	xdg_desktop_database_update
+	cmake_src_configure
 }

@@ -438,9 +438,9 @@ toolchain_pkg_setup() {
 toolchain_src_unpack() {
 	if [[ ${PV} == *9999* ]]; then
 		git-r3_src_unpack
-	else
-		gcc_quick_unpack
 	fi
+
+	gcc_quick_unpack
 }
 
 gcc_quick_unpack() {
@@ -455,6 +455,8 @@ gcc_quick_unpack() {
 	# 'GCC_A_FAKEIT' to specify it's own source and binary tarballs.
 	if [[ -n ${GCC_A_FAKEIT} ]] ; then
 		unpack ${GCC_A_FAKEIT}
+	elif [[ ${PV} == *9999* ]]; then
+		: # sources comes from git, not tarball
 	elif [[ -n ${PRERELEASE} ]] ; then
 		unpack gcc-${PRERELEASE}.tar.bz2
 	elif [[ -n ${SNAPSHOT} ]] ; then
@@ -535,6 +537,10 @@ toolchain_src_prepare() {
 	do_gcc_HTB_patches
 	do_gcc_PIE_patches
 	do_gcc_CYGWINPORTS_patches
+
+	if [[ ${PV} == *9999* ]] ; then
+		BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, commit ${EGIT_VERSION}"
+	fi
 
 	case ${EAPI:-0} in
 		5*) epatch_user;;
@@ -1404,7 +1410,8 @@ downgrade_arch_flags() {
 	local arch bver i isa myarch mytune rep ver
 
 	bver=${1:-${GCC_BRANCH_VER}}
-	[[ $(gcc-version) < ${bver} ]] && return 0
+	# Don't perform downgrade if running gcc is older than ebuild's.
+	tc_version_is_at_least ${bver} $(gcc-version) || return 0
 	[[ $(tc-arch) != amd64 && $(tc-arch) != x86 ]] && return 0
 
 	myarch=$(get-flag march)
@@ -1412,7 +1419,7 @@ downgrade_arch_flags() {
 
 	# If -march=native isn't supported we have to tease out the actual arch
 	if [[ ${myarch} == native || ${mytune} == native ]] ; then
-		if [[ ${bver} < 4.2 ]] ; then
+		if ! tc_version_is_at_least 4.2 ${bver}; then
 			arch=$($(tc-getCC) -march=native -v -E -P - </dev/null 2>&1 \
 				| sed -rn "/cc1.*-march/s:.*-march=([^ ']*).*:\1:p")
 			replace-cpu-flags native ${arch}
@@ -1420,10 +1427,10 @@ downgrade_arch_flags() {
 	fi
 
 	# Handle special -mtune flags
-	[[ ${mytune} == intel && ${bver} < 4.9 ]] && replace-cpu-flags intel generic
-	[[ ${mytune} == generic && ${bver} < 4.2 ]] && filter-flags '-mtune=*'
+	[[ ${mytune} == intel ]] && ! tc_version_is_at_least 4.9 ${bver} && replace-cpu-flags intel generic
+	[[ ${mytune} == generic ]] && ! tc_version_is_at_least 4.2 ${bver} && filter-flags '-mtune=*'
 	[[ ${mytune} == x86-64 ]] && filter-flags '-mtune=*'
-	[[ ${bver} < 3.4 ]] && filter-flags '-mtune=*'
+	tc_version_is_at_least 3.4 ${bver} || filter-flags '-mtune=*'
 
 	# "added" "arch" "replacement"
 	local archlist=(
@@ -1473,8 +1480,8 @@ downgrade_arch_flags() {
 
 		[[ ${myarch} != ${arch} && ${mytune} != ${arch} ]] && continue
 
-		if [[ ${ver} > ${bver} ]] ; then
-			einfo "Replacing ${myarch} (added in gcc ${ver}) with ${rep}..."
+		if ! tc_version_is_at_least ${ver} ${bver}; then
+			einfo "Downgrading '${myarch}' (added in gcc ${ver}) with '${rep}'..."
 			[[ ${myarch} == ${arch} ]] && replace-cpu-flags ${myarch} ${rep}
 			[[ ${mytune} == ${arch} ]] && replace-cpu-flags ${mytune} ${rep}
 			continue
@@ -1522,7 +1529,7 @@ downgrade_arch_flags() {
 	for ((i = 0; i < ${#isalist[@]}; i += 2)) ; do
 		ver=${isalist[i]}
 		isa=${isalist[i + 1]}
-		[[ ${ver} > ${bver} ]] && filter-flags ${isa} ${isa/-m/-mno-}
+		tc_version_is_at_least ${ver} ${bver} || filter-flags ${isa} ${isa/-m/-mno-}
 	done
 }
 

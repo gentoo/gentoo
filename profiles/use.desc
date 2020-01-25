@@ -116,6 +116,7 @@ gsm - Add support for the gsm lossy speech compression codec
 gstreamer - Add support for media-libs/gstreamer (Streaming media)
 gtk - Add support for x11-libs/gtk+ (The GIMP Toolkit)
 gtk-doc - Build and install gtk-doc based developer documentation for dev-util/devhelp, IDE and offline use
+gui - Enable support for a graphical user interface
 guile - Add support for the guile Scheme interpreter
 gzip - Compress files with Lempel-Ziv coding (LZ77)
 handbook - Enable handbooks generation for packages by KDE

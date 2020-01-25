@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt	2020-01-15 22:17:59.921502029 +0100
++++ b/CMakeLists.txt	2020-01-15 22:19:55.834885195 +0100
+@@ -48,7 +48,6 @@
+ set(RCC_OPTIONS -compress 9 -threshold 0)
+ 
+ # Use C++11.
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
+ 
+@@ -56,7 +55,6 @@
+ set(POSITION_INDEPENDENT_CODE True)
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wstrict-overflow")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wstrict-aliasing")
+-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+ 
+ if (NOT WIN32)
+   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fstack-protector-all")

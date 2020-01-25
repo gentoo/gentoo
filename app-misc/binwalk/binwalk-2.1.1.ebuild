@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -22,7 +22,6 @@ SLOT="0"
 IUSE="graph"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/backports-lzma[${PYTHON_USEDEP}]' python2_7)
 	graph? ( dev-python/pyqtgraph[opengl,${PYTHON_USEDEP}] )
 "
 

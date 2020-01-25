@@ -45,19 +45,13 @@ BDEPEND="virtual/awk
 "
 
 RDEPEND="${DEPEND}
-	!=sys-apps/grep-2.13*
 	!kernel-builtin? ( ~sys-fs/zfs-kmod-${PV} )
-	!sys-fs/zfs-fuse
 	!prefix? ( virtual/udev )
 	sys-fs/udev-init-scripts
 	rootfs? (
 		app-arch/cpio
 		app-misc/pax-utils
-		!<sys-boot/grub-2.00-r2:2
 		!<sys-kernel/genkernel-3.5.1.1
-		!<sys-kernel/genkernel-next-67
-		!<sys-kernel/bliss-initramfs-7.1.0
-		!<sys-kernel/dracut-044-r1
 	)
 	test-suite? (
 		sys-apps/util-linux
@@ -121,6 +115,7 @@ src_prepare() {
 
 src_configure() {
 	use custom-cflags || strip-flags
+	python_setup
 
 	local myconf=(
 		--bindir="${EPREFIX}/bin"
@@ -134,6 +129,7 @@ src_configure() {
 		--with-linux="${KV_DIR}"
 		--with-linux-obj="${KV_OUT_DIR}"
 		--with-udevdir="$(get_udevdir)"
+		--with-python="${EPYTHON}"
 		--with-systemdunitdir="$(systemd_get_systemunitdir)"
 		--with-systemdpresetdir="${EPREFIX}/lib/systemd/system-preset"
 		$(use_enable debug)
@@ -177,7 +173,6 @@ src_install() {
 	fi
 
 	# enforce best available python implementation
-	python_setup
 	python_fix_shebang "${ED}/bin"
 }
 

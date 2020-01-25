@@ -3,12 +3,12 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 flag-o-matic
 
 DESCRIPTION="Astrophysical Simulation Analysis and Vizualization package"
-HOMEPAGE="http://yt-project.org/"
+HOMEPAGE="https://yt-project.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"

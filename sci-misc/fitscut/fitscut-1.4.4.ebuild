@@ -7,7 +7,7 @@ inherit autotools
 
 DESCRIPTION="Extract cutouts from FITS image files"
 HOMEPAGE="http://acs.pha.jhu.edu/general/software/fitscut/"
-SRC_URI="${HOMEPAGE}/download/${P}.tar.gz"
+SRC_URI="http://acs.pha.jhu.edu/general/software/fitscut/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,0 +1,37 @@
+From 953c8e529d7291e60a95e580967ed79ce2c9ccf0 Mon Sep 17 00:00:00 2001
+From: Richard Hughes <richard@hughsie.com>
+Date: Mon, 6 Jan 2020 11:04:56 +0000
+Subject: [PATCH] trivial: Fix CI by moving 'future' back a bit
+
+2020 seemed like such a long time in the future all those years ago...
+---
+ data/tests/broken.appdata.xml       | 2 +-
+ libappstream-glib/as-app-validate.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/data/tests/broken.appdata.xml b/data/tests/broken.appdata.xml
+index f7a5386e..cf80f5b4 100644
+--- a/data/tests/broken.appdata.xml
++++ b/data/tests/broken.appdata.xml
+@@ -40,7 +40,7 @@
+         <p>This is a duplicate release on the same day!</p>
+       </description>
+     </release>
+-    <release date="2020-01-01" version="0.6.2">
++    <release date="2050-01-01" version="0.6.2">
+       <description>
+         <p>This is a release in the future!</p>
+       </description>
+diff --git a/libappstream-glib/as-app-validate.c b/libappstream-glib/as-app-validate.c
+index c1103ace..f50e4e41 100644
+--- a/libappstream-glib/as-app-validate.c
++++ b/libappstream-glib/as-app-validate.c
+@@ -864,7 +864,7 @@ as_app_validate_release (AsApp *app,
+ 				     AS_PROBLEM_KIND_ATTRIBUTE_MISSING,
+ 				     "<release> has no timestamp");
+ 	}
+-	if (timestamp > 20120101 && timestamp < 20251231) {
++	if (timestamp > 20120101 && timestamp < 20351231) {
+ 		ai_app_validate_add (helper,
+ 				     AS_PROBLEM_KIND_ATTRIBUTE_INVALID,
+ 				     "<release> timestamp should be a UNIX time");

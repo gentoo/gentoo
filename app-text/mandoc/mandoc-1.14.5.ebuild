@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,8 +6,8 @@ EAPI="6"
 inherit multilib toolchain-funcs
 
 DESCRIPTION="Suite of tools compiling mdoc and man"
-HOMEPAGE="http://mdocml.bsd.lv/"
-SRC_URI="http://mdocml.bsd.lv/snapshots/${P}.tar.gz"
+HOMEPAGE="https://mdocml.bsd.lv/"
+SRC_URI="https://mdocml.bsd.lv/snapshots/${P}.tar.gz"
 
 LICENSE="ISC"
 SLOT="0"
@@ -27,6 +27,13 @@ src_prepare() {
 		-e '/ar rs/s:ar:$(AR):' \
 		-e '/^db-install:/s:$: base-install:' \
 		Makefile || die
+
+	# make-4.3 doesn't like the CC line (bug #706024)
+	# and "echo -n" is not portable
+	sed \
+		-e "s@^\(CC=\).*\$@\1\"$(tc-getCC)\"@" \
+		-e 's@echo -n@printf@g' \
+		-i configure || die
 
 	cat <<-EOF > "configure.local"
 		PREFIX="${EPREFIX}/usr"

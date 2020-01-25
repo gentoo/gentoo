@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ LICENSE="wxWinLL-3 LGPL-2.1"
 SLOT="0/158" # NOTE: CHECK WHEN BUMPING! Subslot is SOVERSION
 KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 IUSE="asio curl dicom debug doc egl examples ffmpeg fltk fox gdal gif glut
-gstreamer gtk jpeg las libav lua openexr openinventor osgapps pdf png sdl sdl2
+gstreamer jpeg las libav lua openexr openinventor osgapps pdf png sdl sdl2
 svg tiff truetype vnc wxwidgets xrandr +zlib"
 
 REQUIRED_USE="sdl2? ( sdl ) dicom? ( zlib ) openexr? ( zlib )"
@@ -39,7 +39,6 @@ RDEPEND="
 		fltk? ( x11-libs/fltk:1[opengl] )
 		fox? ( x11-libs/fox:1.6[opengl] )
 		glut? ( media-libs/freeglut )
-		gtk? ( x11-libs/gtkglext )
 		sdl2? ( media-libs/libsdl2 )
 		wxwidgets? ( x11-libs/wxGTK:${WX_GTK_VER}[opengl,X] )
 	)
@@ -112,7 +111,7 @@ src_configure() {
 		$(cmake_use_find_package gif GIFLIB)
 		$(cmake_use_find_package gstreamer GLIB)
 		$(cmake_use_find_package gstreamer GStreamer)
-		$(cmake_use_find_package gtk GtkGl)
+		-DCMAKE_DISABLE_FIND_PACKAGE_GtkGl=ON
 		$(cmake_use_find_package jpeg JPEG)
 		-DCMAKE_DISABLE_FIND_PACKAGE_Jasper=ON
 		$(cmake_use_find_package las LIBLAS)

@@ -1,0 +1,92 @@
+From 51351358a62acb6887eab49bc0dc4a7a3d18c17a Mon Sep 17 00:00:00 2001
+From: Jan Tojnar <jtojnar@gmail.com>
+Date: Tue, 3 Dec 2019 00:17:05 +0100
+Subject: [PATCH] Fix build with Poppler 0.83.0
+
+Fixed for gentoo by dilfridge@gentoo.org
+
+diff -ruN inkscape-0.92.4.orig/src/extension/internal/pdfinput/pdf-input.cpp inkscape-0.92.4/src/extension/internal/pdfinput/pdf-input.cpp
+--- inkscape-0.92.4.orig/src/extension/internal/pdfinput/pdf-input.cpp	2019-01-15 05:29:27.000000000 +0100
++++ inkscape-0.92.4/src/extension/internal/pdfinput/pdf-input.cpp	2020-01-06 10:55:05.105063212 +0100
+@@ -689,12 +689,12 @@
+         //
+         gchar const *poppler_datadir = g_getenv("POPPLER_DATADIR");
+         if (poppler_datadir != NULL) {
+-            globalParams = new GlobalParams(poppler_datadir);
++            globalParams = _POPPLER_NEW_GLOBAL_PARAMS(poppler_datadir);
+         } else {
+-            globalParams = new GlobalParams();
++            globalParams = _POPPLER_NEW_GLOBAL_PARAMS();
+         }
+ #else
+-        globalParams = new GlobalParams();
++        globalParams = _POPPLER_NEW_GLOBAL_PARAMS();
+ #endif // ENABLE_OSX_APP_LOCATIONS
+     }
+ 
+diff -ruN inkscape-0.92.4.orig/src/extension/internal/pdfinput/pdf-parser.cpp inkscape-0.92.4/src/extension/internal/pdfinput/pdf-parser.cpp
+--- inkscape-0.92.4.orig/src/extension/internal/pdfinput/pdf-parser.cpp	2020-01-06 10:53:44.947229010 +0100
++++ inkscape-0.92.4/src/extension/internal/pdfinput/pdf-parser.cpp	2020-01-06 10:56:49.611773932 +0100
+@@ -272,7 +272,7 @@
+     ClipHistoryEntry *save();
+     ClipHistoryEntry *restore();
+     GBool hasSaves() { return saved != NULL; }
+-    void setClip(GfxPath *newClipPath, GfxClipType newClipType = clipNormal);
++    void setClip(_POPPLER_CONST_83 GfxPath *newClipPath, GfxClipType newClipType = clipNormal);
+     GfxPath *getClipPath() { return clipPath; }
+     GfxClipType getClipType() { return clipType; }
+ 
+@@ -3394,7 +3394,7 @@
+     }
+ }
+ 
+-void ClipHistoryEntry::setClip(GfxPath *clipPathA, GfxClipType clipTypeA) {
++void ClipHistoryEntry::setClip(_POPPLER_CONST_83 GfxPath *clipPathA, GfxClipType clipTypeA) {
+     // Free previous clip path
+     if (clipPath) {
+         delete clipPath;
+diff -ruN inkscape-0.92.4.orig/src/extension/internal/pdfinput/poppler-transition-api.h inkscape-0.92.4/src/extension/internal/pdfinput/poppler-transition-api.h
+--- inkscape-0.92.4.orig/src/extension/internal/pdfinput/poppler-transition-api.h	2020-01-06 10:53:44.947229010 +0100
++++ inkscape-0.92.4/src/extension/internal/pdfinput/poppler-transition-api.h	2020-01-06 10:55:05.107063491 +0100
+@@ -3,6 +3,12 @@
+ 
+ #include <glib/poppler-features.h>
+ 
++#if POPPLER_CHECK_VERSION(0, 83, 0)
++#define _POPPLER_CONST_83 const
++#else
++#define _POPPLER_CONST_83
++#endif
++
+ #if POPPLER_CHECK_VERSION(0, 82, 0)
+ #define _POPPLER_CONST_82 const
+ #else
+@@ -15,6 +21,12 @@
+ #define _POPPLER_NEW_PARSER(xref, obj) Parser(xref, new Lexer(xref, obj), gFalse)
+ #endif
+ 
++#if POPPLER_CHECK_VERSION(0, 83, 0)
++#define _POPPLER_NEW_GLOBAL_PARAMS(args...) std::unique_ptr<GlobalParams>(new GlobalParams(args))
++#else
++#define _POPPLER_NEW_GLOBAL_PARAMS(args...) new GlobalParams(args)
++#endif
++
+ 
+ #if POPPLER_CHECK_VERSION(0, 72, 0)
+ #define getCString c_str
+diff -ruN inkscape-0.92.4.orig/src/extension/internal/pdfinput/svg-builder.cpp inkscape-0.92.4/src/extension/internal/pdfinput/svg-builder.cpp
+--- inkscape-0.92.4.orig/src/extension/internal/pdfinput/svg-builder.cpp	2020-01-06 10:53:44.948229017 +0100
++++ inkscape-0.92.4/src/extension/internal/pdfinput/svg-builder.cpp	2020-01-06 10:55:05.107063491 +0100
+@@ -264,10 +264,10 @@
+ /**
+  * \brief Generates a SVG path string from poppler's data structure
+  */
+-static gchar *svgInterpretPath(GfxPath *path) {
++static gchar *svgInterpretPath(_POPPLER_CONST_83 GfxPath *path) {
+     Inkscape::SVG::PathString pathString;
+     for (int i = 0 ; i < path->getNumSubpaths() ; ++i ) {
+-        GfxSubpath *subpath = path->getSubpath(i);
++        _POPPLER_CONST_83 GfxSubpath *subpath = path->getSubpath(i);
+         if (subpath->getNumPoints() > 0) {
+             pathString.moveTo(subpath->getX(0), subpath->getY(0));
+             int j = 1;
