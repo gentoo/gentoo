@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,6 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.3-dots-in-usernames.patch"
-	"${FILESDIR}/${P}-revert-bin-merge.patch"
 )
 
 src_prepare() {
@@ -146,14 +145,11 @@ src_install() {
 	else
 		dopamd "${FILESDIR}"/pam.d-include/shadow
 
-		for x in chpasswd chgpasswd newusers; do
+		for x in chsh shfn ; do
 			newpamd "${FILESDIR}"/pam.d-include/passwd ${x}
 		done
 
-		for x in chage chsh chfn \
-				 user{add,del,mod} group{add,del,mod} ; do
-			newpamd "${FILESDIR}"/pam.d-include/shadow ${x}
-		done
+		newpamd "${FILESDIR}"/pam.d-include/shadow-r1 groupmems
 
 		# comment out login.defs options that pam hates
 		local opt sed_args=()
