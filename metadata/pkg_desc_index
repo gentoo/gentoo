@@ -10567,7 +10567,7 @@ dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition pr
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 7.0 8.0 9.0: Find unused include directives in C/C++ programs
 dev-util/indent 2.2.11-r1 2.2.11_p5 2.2.12: Indent program source files
-dev-util/intel-graphics-compiler 1.0.2878 1.0.2990: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
+dev-util/intel-graphics-compiler 1.0.2878 1.0.2990 1.0.3151: LLVM-based OpenCL compiler targetting Intel Gen graphics hardware
 dev-util/intel-ocl-sdk 2.0.31360 4.4.0.117-r1: Intel's implementation of the OpenCL standard
 dev-util/intltool 0.51.0-r2: Internationalization Tool Collection
 dev-util/its4 1.1.1-r1: ITS4: Software Security Tool
@@ -17312,7 +17312,7 @@ sys-devel/clang 7.1.0 8.0.1 9.0.1 10.0.0.9999 11.0.0.9999: C language family fro
 sys-devel/clang-common 7.1.0 8.0.1 9.0.1 10.0.0.9999 11.0.0.9999: Common files shared between multiple slots of clang
 sys-devel/clang-runtime 7.1.0 8.0.1 9.0.1 10.0.0.9999 11.0.0.9999: Meta-ebuild for clang runtime libraries
 sys-devel/cons 2.3.0: Extensible perl-based build utility
-sys-devel/crossdev 20191222 99999999: Gentoo Cross-toolchain generator
+sys-devel/crossdev 20191222 20200125 99999999: Gentoo Cross-toolchain generator
 sys-devel/ct-ng 1.23.0 1.24.0: crosstool-ng is a tool to build cross-compiling toolchains
 sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8086 code
 sys-devel/distcc 3.3.3: Distribute compilation of C code across several machines on a network
