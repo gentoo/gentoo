@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install prepare
+DEPEND=>=x11-libs/libxkbcommon-0.5.0[X] dev-libs/libev sys-libs/pam x11-libs/cairo[X,xcb(+)] x11-libs/libxcb[xkb] x11-libs/xcb-util x11-libs/xcb-util-xrm virtual/pkgconfig
+DESCRIPTION=Simple screen locker
+EAPI=7
+HOMEPAGE=https://i3wm.org/i3lock/
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc64 ~x86
+LICENSE=BSD
+RDEPEND=>=x11-libs/libxkbcommon-0.5.0[X] dev-libs/libev sys-libs/pam x11-libs/cairo[X,xcb(+)] x11-libs/libxcb[xkb] x11-libs/xcb-util x11-libs/xcb-util-xrm
+SLOT=0
+SRC_URI=https://i3wm.org/i3lock/i3lock-2.12.tar.bz2
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=3f8bec20ad5fd6c6678defeb8cce38ad
