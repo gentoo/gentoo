@@ -880,7 +880,7 @@ app-crypt/tpm2-tss 2.2.3-r1: TCG Trusted Platform Module 2.0 Software Stack
 app-crypt/tpm2-tss-engine 1.0.0: OpenSSL Engine for TPM2 devices
 app-crypt/trousers 0.3.14-r1 0.3.14-r2: An open-source TCG Software Stack (TSS) v1.1 implementation
 app-crypt/ubuntu-keyring 2018.02.28 2018.09.18.1: GnuPG archive keys of the Ubuntu archive
-app-crypt/veracrypt 1.23 1.24 1.24-r1 1.24-r2 1.24_p1 1.24_p2: Disk encryption with strong security based on TrueCrypt
+app-crypt/veracrypt 1.23 1.24 1.24-r1 1.24-r2 1.24_p1 1.24_p2 1.24_p4: Disk encryption with strong security based on TrueCrypt
 app-crypt/virtualsmartcard 0.7: Smart card emulator, can be used with Remote Smart Card Reader
 app-crypt/xca 2.1.2: A GUI to OpenSSL, RSA public keys, certificates, signing requests etc
 app-crypt/xor-analyze 0.5-r1: program for cryptanalyzing xor 'encryption' with variable key length
@@ -1724,7 +1724,7 @@ app-forensics/radamsa 0.5-r1 0.6: A general purpose fuzzer
 app-forensics/rifiuti 20040505_p1: Recycle Bin Analyzer
 app-forensics/rkhunter 1.4.6-r1: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/scalpel 2.0: A high performance file carver
-app-forensics/sleuthkit 4.5.0 4.6.5 4.6.6 4.6.7 4.7.0: A collection of file system and media management forensic analysis tools
+app-forensics/sleuthkit 4.5.0 4.6.5 4.6.6 4.6.7 4.7.0 4.8.0: A collection of file system and media management forensic analysis tools
 app-forensics/unhide 20121229 20130526: A forensic tool to find hidden processes and TCP/UDP ports by rootkits/LKMs
 app-forensics/volatility 2.6-r1: Framework for analyzing volatile memory
 app-forensics/yasat 848: Security and system auditing tool
