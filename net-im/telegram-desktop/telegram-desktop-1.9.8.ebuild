@@ -16,12 +16,13 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 LICENSE="GPL-3-with-openssl-exception Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="dbus gtk3 spell"
+IUSE="dbus gtk3 libressl spell"
 
 RDEPEND="!net-im/telegram-desktop-bin
 	app-arch/lz4
 	app-arch/xz-utils
-	dev-libs/openssl:0
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	dev-libs/xxhash
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5[png,X(-)]
