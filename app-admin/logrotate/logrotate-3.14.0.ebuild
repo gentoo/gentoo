@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit systemd
 
@@ -14,15 +14,15 @@ SLOT="0"
 KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE="acl +cron selinux"
 
-CDEPEND="
+COMMON_DEPEND="
 	>=dev-libs/popt-1.5
 	selinux? ( sys-libs/libselinux )
 	acl? ( virtual/acl )"
 
-DEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}
 	>=sys-apps/sed-4"
 
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-logrotate )
 	cron? ( virtual/cron )"
 
@@ -34,7 +34,7 @@ move_old_state_file() {
 	elog "See bug #357275"
 	if [[ -e "${OLDSTATEFILE}" ]] ; then
 		elog "Moving your current state file to new location: ${STATEFILE}"
-		mv -n "${OLDSTATEFILE}" "${STATEFILE}"
+		mv -n "${OLDSTATEFILE}" "${STATEFILE}" || die
 	fi
 }
 
@@ -53,7 +53,10 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_with acl) $(use_with selinux) --with-state-file-path="${STATEFILE}"
+	econf \
+	$(use_with acl) \
+	$(use_with selinux) \
+	--with-state-file-path="${STATEFILE}"
 }
 
 src_test() {
