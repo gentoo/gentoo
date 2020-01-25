@@ -34,7 +34,7 @@ move_old_state_file() {
 	elog "See bug #357275"
 	if [[ -e "${OLDSTATEFILE}" ]] ; then
 		elog "Moving your current state file to new location: ${STATEFILE}"
-		mv -n "${OLDSTATEFILE}" "${STATEFILE}"
+		mv -n "${OLDSTATEFILE}" "${STATEFILE}" || die
 	fi
 }
 
@@ -45,6 +45,7 @@ install_cron_file() {
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.15.0-ignore-hidden.patch"
+	"${FILESDIR}/gcc-fnocommon.patch"
 )
 
 src_prepare() {
