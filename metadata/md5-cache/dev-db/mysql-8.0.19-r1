@@ -12,6 +12,6 @@ RDEPEND=>=app-arch/lz4-0_p131:= sys-libs/ncurses:0= >=sys-libs/zlib-1.2.3:0= lib
 REQUIRED_USE=?? ( tcmalloc jemalloc ) cjk? ( server ) jemalloc? ( server ) numa? ( server ) profiling? ( server ) router? ( server ) tcmalloc? ( server )
 RESTRICT=!test? ( test ) libressl? ( test )
 SLOT=0
-SRC_URI=https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.19.tar.gz https://cdn.mysql.com/archives/mysql-8.0/mysql-boost-8.0.19.tar.gz http://downloads.mysql.com/archives/MySQL-8.0/mysql-boost-8.0.19.tar.gz mirror://gentoo/mysql-extras-20200120-1919Z.tar.bz2 https://gitweb.gentoo.org/proj/mysql-extras.git/snapshot/mysql-extras-20200120-1919Z.tar.bz2
+SRC_URI=https://cdn.mysql.com/Downloads/MySQL-8.0/mysql-boost-8.0.19.tar.gz https://cdn.mysql.com/archives/mysql-8.0/mysql-boost-8.0.19.tar.gz http://downloads.mysql.com/archives/MySQL-8.0/mysql-boost-8.0.19.tar.gz mirror://gentoo/mysql-extras-20200125-1945Z.tar.bz2 https://gitweb.gentoo.org/proj/mysql-extras.git/snapshot/mysql-extras-20200125-1945Z.tar.bz2
 _eclasses_=check-reqs	5e40a693d9c828e8f3655184116e8b73	cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=16aea891b655249a0f562309f7ebffb2
+_md5_=dfe43e6575e84fb2da5b1de35b943863
