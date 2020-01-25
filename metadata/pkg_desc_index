@@ -45,6 +45,9 @@ acct-group/keystone 0: System group: keystone
 acct-group/kibana 0: Kibana program group
 acct-group/kmem 0: System group: kmem
 acct-group/knot 0: System group: knot
+acct-group/kube-apiserver 0: System group: kube-apiserver
+acct-group/kube-controller-manager 0: System group: kube-controller-manager
+acct-group/kube-scheduler 0: System group: kube-scheduler
 acct-group/kvm 0: System group: kvm
 acct-group/libvirt 0: System group: libvirt
 acct-group/logstash 0: Logstash program group
@@ -175,6 +178,9 @@ acct-user/ippl 0: user for net-analyzer/ippl
 acct-user/keystone 0: user for the keystone openstack service
 acct-user/kibana 0: Kibana program user
 acct-user/knot 0: User for knot DNS server
+acct-user/kube-apiserver 0: user for kube-apiserver
+acct-user/kube-controller-manager 0: user for kube-controller-manager
+acct-user/kube-scheduler 0: user for kube-scheduler
 acct-user/logstash 0: Logstash program user
 acct-user/mail 0: Mail program user
 acct-user/man 1: System user: man
@@ -17233,14 +17239,14 @@ sys-cluster/hpx 1.2.1 9999: C++ runtime system for parallel and distributed appl
 sys-cluster/ipvsadm 1.26-r2 1.27-r1 1.28: utility to administer the IP virtual server services
 sys-cluster/keepalived 2.0.17 2.0.18 2.0.19: A strong & robust keepalive facility to the Linux Virtual Server project
 sys-cluster/knem 1.1.3 9999: High-Performance Intra-Node MPI Communication
-sys-cluster/kube-apiserver 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6: Kubernetes API server
-sys-cluster/kube-controller-manager 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6: Kubernetes Controller Manager
-sys-cluster/kube-proxy 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6: Kubernetes Proxy service
+sys-cluster/kube-apiserver 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6 1.17.2: Kubernetes API server
+sys-cluster/kube-controller-manager 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6 1.17.2: Kubernetes Controller Manager
+sys-cluster/kube-proxy 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6 1.17.2: Kubernetes Proxy service
 sys-cluster/kube-router 0.3.1: A turnkey solution for Kubernetes networking
-sys-cluster/kube-scheduler 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6: Kubernetes Scheduler
-sys-cluster/kubeadm 1.14.8 1.14.9 1.15.5 1.15.6 1.15.9 1.16.2 1.16.3 1.16.6: CLI to Easily bootstrap a secure Kubernetes cluster
-sys-cluster/kubectl 1.14.9 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6 1.17.0: CLI to run commands against Kubernetes clusters
-sys-cluster/kubelet 1.14.9 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6: Kubernetes Node Agent
+sys-cluster/kube-scheduler 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6 1.17.2: Kubernetes Scheduler
+sys-cluster/kubeadm 1.14.8 1.14.9 1.15.5 1.15.6 1.15.9 1.16.2 1.16.3 1.16.6 1.17.2: CLI to Easily bootstrap a secure Kubernetes cluster
+sys-cluster/kubectl 1.14.9 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6 1.17.0 1.17.2: CLI to run commands against Kubernetes clusters
+sys-cluster/kubelet 1.14.9 1.14.10 1.15.7 1.15.9 1.16.4 1.16.6 1.17.2: Kubernetes Node Agent
 sys-cluster/legion 16.08.0-r1 16.10.0 17.02.0 17.05.0 17.08.0 17.10.0 18.02.0 18.05.0 18.12.0 19.06.0 9999: A data-centric parallel programming system
 sys-cluster/libcircle 0.2.0_rc1 0.2.1_rc1: API for distributing embarrassingly parallel workloads using self-stabilization
 sys-cluster/libqb 0.17.2 1.0.1 1.0.5 1.9.0: Library providing high performance logging, tracing, ipc, and poll
