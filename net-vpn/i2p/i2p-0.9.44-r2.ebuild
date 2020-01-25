@@ -161,9 +161,6 @@ src_install() {
 
 	# setup user
 	keepdir /var/lib/i2p
-	keepdir /var/lib/i2p/app
-	keepdir /var/lib/i2p/router
-	keepdir /var/lib/i2p/config
 	fowners i2p:i2p /var/lib/i2p
 }
 
