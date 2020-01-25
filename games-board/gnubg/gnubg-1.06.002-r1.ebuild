@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit desktop python-single-r1 xdg
 
 DESCRIPTION="GNU BackGammon"
@@ -13,29 +13,26 @@ SRC_URI="ftp://ftp.gnu.org/gnu/gnubg/${PN}-release-${PV}-sources.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
-IUSE="cpu_flags_x86_avx gtk opengl python sqlite cpu_flags_x86_sse cpu_flags_x86_sse2 threads"
+IUSE="cpu_flags_x86_avx gtk python sqlite cpu_flags_x86_sse cpu_flags_x86_sse2 threads"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="dev-db/sqlite:3
+RDEPEND="
+	dev-db/sqlite:3
 	dev-libs/glib:2
-	dev-libs/gmp:0
+	dev-libs/gmp:0=
 	dev-libs/libxml2
 	media-fonts/dejavu
 	media-libs/freetype:2
 	media-libs/libcanberra
-	media-libs/libpng:0
-	sys-libs/readline:0
+	media-libs/libpng:0=
+	sys-libs/readline:0=
 	x11-libs/cairo
 	x11-libs/pango
 	gtk? ( x11-libs/gtk+:2 )
-	opengl? (
-		x11-libs/gtk+:2
-		x11-libs/gtkglext
-		virtual/glu
-	)
 	python? ( ${PYTHON_DEPS} )
 	virtual/libintl"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig"
 
@@ -64,28 +61,27 @@ src_prepare() {
 
 src_configure() {
 	local simd=no
-	local gtk_arg=--without-gtk
-
-	if use gtk || use opengl ; then
-		gtk_arg=--with-gtk
-	fi
 	use cpu_flags_x86_sse  && simd=sse
 	use cpu_flags_x86_sse2 && simd=sse2
 	use cpu_flags_x86_avx  && simd=avx
 	econf \
-		--localedir=/usr/share/locale \
-		--docdir=/usr/share/doc/${PF}/html \
+		--localedir="${EPREFIX}"/usr/share/locale \
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}/html \
 		--disable-cputest \
-		--enable-simd=${simd} \
-		${gtk_arg} \
+		--enable-simd="${simd}" \
+		--without-board3d \
 		$(use_enable threads) \
-		$(usex python --with-python=${EPYTHON} --without-python) \
-		$(use_with sqlite sqlite) \
-		$(use_with opengl board3d)
+		$(use_with gtk) \
+		$(use_with python python "${EPYTHON}") \
+		$(use_with sqlite sqlite)
 }
 
 src_install() {
 	default
+
+	# installs pre-compressed man pages
+	gunzip "${ED}"/usr/share/man/man6/*.6.gz || die
+
 	insinto /usr/share/${PN}
 	doins ${PN}.weights *bd
 	dodir /usr/share/${PN}/fonts
