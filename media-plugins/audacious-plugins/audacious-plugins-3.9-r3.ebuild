@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,6 @@ RDEPEND="
 	dev-libs/dbus-glib
 	dev-libs/glib
 	dev-libs/libxml2:2
-	media-libs/adplug
 	~media-sound/audacious-${PV}
 	x11-libs/gtk+:3
 	x11-libs/libXcomposite
