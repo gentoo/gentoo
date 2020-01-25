@@ -18,7 +18,7 @@ else
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 	inherit golang-vcs-snapshot
 fi
-inherit bash-completion-r1 golang-base linux-info systemd udev user
+inherit bash-completion-r1 golang-base linux-info systemd udev
 
 DESCRIPTION="The core functions you need to create Docker images and run Docker containers"
 HOMEPAGE="https://dockerproject.org"
@@ -28,6 +28,7 @@ IUSE="apparmor aufs btrfs +container-init device-mapper hardened +overlay seccom
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#build-dependencies
 COMMON_DEPEND="
+	acct-group/docker
 	>=dev-db/sqlite-3.7.9:3
 	device-mapper? (
 		>=sys-fs/lvm2-2.02.89[thin]
@@ -185,9 +186,6 @@ pkg_setup() {
 	fi
 
 	linux-info_pkg_setup
-
-	# create docker group for the code checking for it in /etc/group
-	enewgroup docker
 }
 
 src_compile() {
@@ -199,7 +197,7 @@ src_compile() {
 	export CGO_LDFLAGS="-L${ROOT}/usr/$(get_libdir)"
 
 	# if we're building from a tarball, we need the GITCOMMIT value
-	[ "$DOCKER_GITCOMMIT" ] && export DOCKER_GITCOMMIT
+	[[ ${DOCKER_GITCOMMIT} ]] && export DOCKER_GITCOMMIT
 
 	# fake golang layout
 	ln -s docker-ce/components/engine ../docker || die
