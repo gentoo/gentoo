@@ -52,6 +52,7 @@ bazel_external_uris="
 	)"
 
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+		https://dev.gentoo.org/~perfinion/patches/tensorflow-patches-${PVR}.tar.bz2
 		${bazel_external_uris}"
 
 RDEPEND="
@@ -60,7 +61,7 @@ RDEPEND="
 	dev-db/sqlite
 	dev-libs/double-conversion
 	dev-libs/icu
-	~dev-libs/jsoncpp-1.9.1
+	>=dev-libs/jsoncpp-1.9.2
 	dev-libs/libpcre
 	dev-libs/nsync
 	dev-libs/openssl:0=
@@ -127,11 +128,6 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=(
-	"${FILESDIR}/tensorflow-1.15.0_rc0-0001-WORKSPACE-add-rules-docker-http_archive-bazel-toolch.patch"
-	"${FILESDIR}/tensorflow-2.1.0-external_libs.patch"
-	"${FILESDIR}/tensorflow-2.1.0-python3.8-pywrap_tensor.patch"
-)
 DOCS=( AUTHORS CONTRIBUTING.md ISSUE_TEMPLATE.md README.md RELEASE.md )
 CHECKREQS_MEMORY="5G"
 CHECKREQS_DISK_BUILD="10G"
@@ -166,6 +162,7 @@ pkg_setup() {
 src_unpack() {
 	# Only unpack the main distfile
 	unpack "${P}.tar.gz"
+	unpack tensorflow-patches-${PVR}.tar.bz2
 	bazel_load_distfiles "${bazel_external_uris}"
 }
 
@@ -175,9 +172,7 @@ src_prepare() {
 	append-flags $(get-cpu-flags)
 	bazel_setup_bazelrc
 
-	if ver_test "$(cuda_toolkit_version)" -ge "10.2"; then
-		eapply "${FILESDIR}/tensorflow-2.1.0-cuda_10.2_support_bin2c.patch"
-	fi
+	eapply "${WORKDIR}"/patches/*.patch
 
 	default
 	use python && python_copy_sources
@@ -262,6 +257,7 @@ src_configure() {
 			pasta
 			pcre
 			png
+			pybind11
 			six_archive
 			snappy
 			swig
