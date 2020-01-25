@@ -3,8 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
-PYTHON_REQ_USE="threads"
+PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_REQ_USE="threads(+)"
 
 inherit bash-completion-r1 elisp-common eutils distutils-r1 flag-o-matic
 
@@ -15,13 +15,23 @@ SRC_URI="https://www.mercurial-scm.org/release/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+chg bugzilla emacs gpg test tk"
+IUSE="+chg emacs gpg test tk zsh-completion"
 
-RDEPEND="app-misc/ca-certificates
+BROKEN_PYTHON="
+	!~dev-python/python-3.5.0
+	!~dev-python/python-3.5.1
+	!~dev-python/python-3.5.2
+	!~dev-python/python-3.6.0
+	!~dev-python/python-3.6.1"
+
+BDEPEND="${BROKEN_PYTHON}"
+
+RDEPEND="${BROKEN_PYTHON}
+	app-misc/ca-certificates
 	dev-python/zstandard[${PYTHON_USEDEP}]
-	bugzilla? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
 	gpg? ( app-crypt/gnupg )
-	tk? ( dev-lang/tk )"
+	tk? ( dev-lang/tk )
+	zsh-completion? ( app-shells/zsh )"
 
 DEPEND="emacs? ( >=app-editors/emacs-23.1:* )
 	test? ( app-arch/unzip
@@ -32,28 +42,19 @@ SITEFILE="70${PN}-gentoo.el"
 # Too many tests fail #608720
 RESTRICT="test"
 
-PATCHES=(
-	"${FILESDIR}/${PN}-3.0.1-po_fixes.patch"
-	"${FILESDIR}/${PN}-4.8.1-unbundle_zstd.patch"
-)
-
 python_prepare_all() {
 	# fix up logic that won't work in Gentoo Prefix (also won't outside in
 	# certain cases), bug #362891
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
-
-	# Don't use bundled zstandard (#666972)
-	rm -r contrib/python-zstandard || die
+	cp "${FILESDIR}/zstd.py" mercurial/
 
 	distutils-r1_python_prepare_all
 }
 
-python_configure_all() {
+python_compile() {
 	strip-flags -ftracer -ftree-vectorize
-	# Note: make it impl-conditional if py3 is supported
-	append-flags -fno-strict-aliasing
-
-	"${PYTHON}" setup.py build_mo || die
+	python_is_python3 || append-flags -fno-strict-aliasing
+	distutils-r1_python_compile build_ext --no-zstd
 }
 
 python_compile_all() {
@@ -67,20 +68,24 @@ python_compile_all() {
 	fi
 }
 
+python_install() {
+	distutils-r1_python_install build_ext --no-zstd
+}
+
 python_install_all() {
 	distutils-r1_python_install_all
 
 	newbashcomp contrib/bash_completion hg
 
-	insinto /usr/share/zsh/site-functions
-	newins contrib/zsh_completion _hg
-
-	rm -f doc/*.?.txt
-	dodoc CONTRIBUTORS
-	cp hgweb*.cgi "${ED}"/usr/share/doc/${PF}/ || die
+	if use zsh-completion ; then
+		insinto /usr/share/zsh/site-functions
+		newins contrib/zsh_completion _hg
+	fi
 
 	dobin hgeditor
-	dobin contrib/hgk
+	if use tk; then
+		dobin contrib/hgk
+	fi
 	python_foreach_impl python_doscript contrib/hg-ssh
 
 	if use emacs; then
@@ -97,19 +102,16 @@ python_install_all() {
 	fi
 
 	for f in ${RM_CONTRIB[@]}; do
-		rm -r contrib/${f} || die
+		rm -rf contrib/${f} || die
 	done
 
 	dodoc -r contrib
 	docompress -x /usr/share/doc/${PF}/contrib
 	doman doc/*.?
+	dodoc CONTRIBUTORS hgweb.cgi
 
 	insinto /etc/mercurial/hgrc.d
 	doins "${FILESDIR}/cacerts.rc"
-
-	# symlink to system zstd
-	local sitedir=$(python_get_sitedir)
-	dosym ../zstd.so "${sitedir#${EPREFIX}}"/${PN}/zstd.so
 }
 
 src_test() {
@@ -122,8 +124,16 @@ src_test() {
 	rm -f test-convert-git*		# git
 	rm -f test-convert-mtn*		# monotone
 	rm -f test-convert-tla*		# GNU Arch tla
-	#rm -f test-doctest*		# doctest always fails with python 2.5.x
 	rm -f test-largefiles*		# tends to time out
+	if [[ ${EUID} -eq 0 ]]; then
+		einfo "Removing tests which require user privileges to succeed"
+		rm -f test-convert*
+		rm -f test-lock-badness*
+		rm -f test-permissions*
+		rm -f test-pull-permission*
+		rm -f test-journal-exists*
+		rm -f test-repair-strip*
+	fi
 
 	popd &>/dev/null || die
 	distutils-r1_src_test
@@ -151,9 +161,6 @@ pkg_postinst() {
 	elog "  dev-vcs/git"
 	elog "  dev-vcs/monotone"
 	elog "  dev-vcs/subversion"
-
-	elog "If you want to use bugzilla extension"
-	elog "please install dev-python/mysqlclient"
 }
 
 pkg_postrm() {
