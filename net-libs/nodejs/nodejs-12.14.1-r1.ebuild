@@ -105,7 +105,7 @@ src_configure() {
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
-	use snapshot && myconf+=( --with-snapshot )
+	use snapshot || myconf+=( --without-node-snapshot )
 	use ssl && myconf+=( --shared-openssl --openssl-use-def-ca-store ) || myconf+=( --without-ssl )
 
 	local myarch=""
