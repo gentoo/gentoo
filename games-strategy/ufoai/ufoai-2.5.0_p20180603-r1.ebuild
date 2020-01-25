@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,15 +19,14 @@ HOMEPAGE="https://ufoai.org/"
 SRC_URI="
 	https://dev.gentoo.org/~chewi/distfiles/${PN}-code-${COMMIT}.zip
 	mirror://sourceforge/${PN}/${PN}-${DIST_VERSION}-data.tar
-	editor? ( mirror://sourceforge/${PN}/${PN}-${DIST_VERSION}-mappack.tar.bz2 )
 "
 
 # https://ufoai.org/licenses/
 LICENSE="GPL-2 GPL-3 public-domain CC-BY-3.0 CC-BY-SA-3.0 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="+client cpu_flags_x86_sse debug editor server"
-REQUIRED_USE="|| ( client editor server )"
+IUSE="+client cpu_flags_x86_sse debug server"
+REQUIRED_USE="|| ( client server )"
 
 RDEPEND="
 	dev-libs/mxml
@@ -45,22 +44,6 @@ RDEPEND="
 		media-libs/xvid
 		virtual/jpeg:0
 		virtual/opengl
-	)
-
-	editor? (
-		dev-libs/glib:2
-		dev-libs/libxml2:2
-		media-libs/libogg
-		media-libs/libpng:0=
-		media-libs/libsdl2[joystick,opengl,sound,threads,video]
-		media-libs/libvorbis
-		media-libs/openal
-		virtual/glu
-		virtual/jpeg:0
-		x11-libs/gdk-pixbuf:2
-		x11-libs/gtk+:2
-		x11-libs/gtkglext
-		x11-libs/gtksourceview:2.0
 	)
 
 	server? (
@@ -83,7 +66,6 @@ PATCHES=(
 )
 
 src_unpack() {
-	use editor && unpack ${PN}-${DIST_VERSION}-mappack.tar.bz2
 	unpack ${PN}-code-${COMMIT}.zip
 	cd "${S}" || die
 	unpack ${PN}-${DIST_VERSION}-data.tar
@@ -120,8 +102,8 @@ src_configure() {
 		$(use_enable !debug release)
 		$(use_enable server ufoded)
 		$(use_enable client ufo)
-		$(use_enable editor uforadiant)
-		$(use_enable editor ufo2map)
+		--disable-uforadiant
+		--disable-ufo2map
 	)
 
 	if use client || use server; then
@@ -152,19 +134,5 @@ src_install() {
 	if use server; then
 		doman debian/ufoded.6
 		make_desktop_entry ufoded "UFO: Alien Invasion Server" ${PN} "Game;StrategyGame" "Terminal=true"
-	fi
-
-	if use editor; then
-		doman debian/ufo{2map,radiant}.6
-		make_desktop_entry uforadiant "UFO: Alien Invasion Map editor" ${PN}
-
-		# Install map editor data (without the binary)
-		rm radiant/uforadiant || die
-		insinto "${DATADIR}"
-		doins -r radiant
-
-		# Install map sources
-		insinto "${DATADIR}"/base/maps
-		doins -r "${WORKDIR}"/${PN}-${DIST_VERSION}-mappack/*
 	fi
 }
