@@ -50,6 +50,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-test_dialog.patch"
 	# Fix build on Darwin
 	"${FILESDIR}/${PN}-2.24.0-quartz-objc.patch"
+	# x11-libs/pango-1.44
+	"${FILESDIR}/${PN}-2.24.0-pango-1.44.patch"
 )
 
 src_prepare() {
