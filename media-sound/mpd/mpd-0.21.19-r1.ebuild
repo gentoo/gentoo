@@ -12,7 +12,7 @@ SRC_URI="https://www.musicpd.org/download/${PN}/${PV%.*}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sh ~x86 ~x64-macos"
-IUSE="adplug +alsa ao audiofile bzip2 cdio chromaprint +cue +curl +dbus debug
+IUSE="+alsa ao audiofile bzip2 cdio chromaprint +cue +curl +dbus debug
 	+eventfd expat faad +ffmpeg +fifo flac fluidsynth gme +icu +id3tag +inotify
 	+ipv6 jack lame libav libmpdclient libsamplerate libsoxr +mad mikmod mms
 	modplug mpg123 musepack +network nfs openal opus oss pipe pulseaudio qobuz
@@ -21,7 +21,7 @@ IUSE="adplug +alsa ao audiofile bzip2 cdio chromaprint +cue +curl +dbus debug
 	zeroconf zip zlib"
 
 OUTPUT_PLUGINS="alsa ao fifo jack network openal oss pipe pulseaudio recorder"
-DECODER_PLUGINS="adplug audiofile faad ffmpeg flac fluidsynth mad mikmod
+DECODER_PLUGINS="audiofile faad ffmpeg flac fluidsynth mad mikmod
 	modplug mpg123 musepack flac sid vorbis wavpack wildmidi"
 ENCODER_PLUGINS="audiofile flac lame twolame vorbis"
 
@@ -38,7 +38,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	acct-user/mpd
-	adplug? ( media-libs/adplug:= )
 	alsa? (
 		media-libs/alsa-lib
 		media-sound/alsa-utils
@@ -214,7 +213,8 @@ src_configure() {
 	fi
 
 	emesonargs+=(
-		-Dadplug=$(usex adplug enabled disabled)
+		# media-libs/adplug is not packaged anymore
+		-Dadplug=disabled
 		-Daudiofile=$(usex audiofile enabled disabled)
 		-Dfaad=$(usex faad enabled disabled)
 		-Dffmpeg=$(usex ffmpeg enabled disabled)
