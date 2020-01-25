@@ -163,6 +163,7 @@ ppc64		default/linux/powerpc/ppc64/17.0/64bit-userland/little-endian/systemd	sta
 # @MAINTAINER: ppc64@gentoo.org
 ppc             default/linux/ppc/17.0                            exp
 ppc             default/linux/ppc/17.0/desktop                    exp
+ppc             default/linux/ppc/17.0/desktop/gnome              exp
 ppc64           default/linux/ppc64/17.0                          exp
 ppc64           default/linux/ppc64le/17.0                        exp
 
