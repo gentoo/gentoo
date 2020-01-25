@@ -84,7 +84,6 @@ REQUIRED_USE="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
-	"${FILESDIR}"/${PN}-99999999-androiddump-wsutil.patch
 	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
 )
 
