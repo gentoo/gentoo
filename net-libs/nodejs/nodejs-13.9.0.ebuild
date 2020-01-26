@@ -15,10 +15,11 @@ SRC_URI="
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm pax_kernel +snapshot +ssl systemtap test"
+IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm pax_kernel +snapshot +ssl +system-ssl systemtap test"
 REQUIRED_USE="
 	inspector? ( icu ssl )
 	npm? ( ssl )
+	system-ssl? ( ssl )
 "
 
 RDEPEND="
@@ -27,7 +28,7 @@ RDEPEND="
 	>=net-libs/nghttp2-1.40.0
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-64.2:= )
-	ssl? ( >=dev-libs/openssl-1.1.1:0= )
+	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
 "
 BDEPEND="
 	${PYTHON_DEPS}
@@ -104,7 +105,7 @@ src_configure() {
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot || myconf+=( --without-node-snapshot )
-	use ssl && myconf+=( --shared-openssl --openssl-use-def-ca-store ) || myconf+=( --without-ssl )
+	use ssl && ( use system-ssl && myconf+=( --shared-openssl --openssl-use-def-ca-store ) ) || myconf+=( --without-ssl )
 
 	local myarch=""
 	case ${ABI} in
