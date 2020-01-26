@@ -13808,7 +13808,7 @@ media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
 media-sound/qtractor 0.9.11 0.9.12: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
-media-sound/quodlibet 3.8.1-r1 3.9.1 4.1.0 4.2.0 4.2.1: audio library tagger, manager, and player for GTK+
+media-sound/quodlibet 4.1.0 4.2.0 4.2.1: audio library tagger, manager, and player for GTK+
 media-sound/rawrec 0.9.991: CLI program to play and record audiofiles
 media-sound/rcenter 0.6.2: Rcenter - A program to control the EMU10K Remote Control
 media-sound/redoflacs 0.16.2 0.19 0.30: Bash commandline flac compressor, verifier, organizer, analyzer, retagger
