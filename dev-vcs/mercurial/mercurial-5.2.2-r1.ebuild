@@ -46,7 +46,10 @@ python_prepare_all() {
 	# fix up logic that won't work in Gentoo Prefix (also won't outside in
 	# certain cases), bug #362891
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
-	cp "${FILESDIR}/zstd.py" mercurial/
+	# Use absolute import for zstd
+	sed -i -e 's/from \.* import zstd/import zstd/' \
+		mercurial/utils/compression.py \
+		mercurial/wireprotoframing.py || die
 
 	distutils-r1_python_prepare_all
 }
