@@ -73,9 +73,10 @@ GCCMAJOR=$(ver_cut 1 ${GCC_PV})
 GCCMINOR=$(ver_cut 2 ${GCC_PV})
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
 
-# According to gcc/c-cppbuiltin.c, GCC_CONFIG_VER MUST match this regex.
-# ([^0-9]*-)?[0-9]+[.][0-9]+([.][0-9]+)?([- ].*)?
-GCC_CONFIG_VER=${GCC_CONFIG_VER:-$(ver_rs 3 '-' ${GCC_PV})}
+# gcc hardcodes it's internal version into gcc/BASE-VER
+# and assumes various directories and tools to have the
+# same name.
+GCC_CONFIG_VER=${GCC_RELEASE_VER}
 
 # Pre-release support. Versioning schema:
 # 1.0.0_pre9999: live ebuild
