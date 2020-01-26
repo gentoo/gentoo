@@ -1,0 +1,51 @@
+From 878fa5fd6475685c3465a6e71a10c2fc61c1a09c Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sun, 26 Jan 2020 11:15:10 +0000
+Subject: [PATCH] qstat: fix build failure against gcc-10
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+On gcc-10 (and gcc-9 -fno-common) build fails as:
+
+```
+gcc ... -o qstat ...
+ld: config.o:qstat/display_json.h:24:
+  multiple definition of `json_printed'; xform.o:qstat/display_json.h:24: first defined here
+ld: config.o:qstat/display_json.h:23:
+  multiple definition of `json_encoding'; xform.o:qstat/display_json.h:23: first defined here
+```
+
+gcc-10 will change the default from -fcommon to fno-common:
+https://gcc.gnu.org/PR85678.
+
+The error also happens if CFLAGS=-fno-common passed explicitly.
+
+Reported-by: Toralf Förster
+Bug: https://bugs.gentoo.org/706390
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ debug.c        | 2 +-
+ debug.h        | 2 +-
+
+--- a/debug.c
++++ b/debug.c
+@@ -114,6 +114,7 @@ static void _dump_packet(const char* tag, const char* buf, int buflen)
+ 	close(fd);
+ }
+ 
++int do_dump = 0;
+ ssize_t send_dump(int s, const void *buf, size_t len, int flags)
+ {
+ 	if(do_dump)
+--- a/debug.h
++++ b/debug.h
+@@ -47,7 +47,7 @@ void dump_packet(const char* buf, int buflen);
+ #endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+-int do_dump;
++extern int do_dump;
+ ssize_t send_dump(int s, const void *buf, size_t len, int flags);
+ #ifndef QSTAT_DEBUG_C
+ #define send(s, buf, len, flags) send_dump(s, buf, len, flags)
