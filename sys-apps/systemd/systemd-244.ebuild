@@ -185,6 +185,7 @@ src_prepare() {
 
 	# Add local patches here
 	PATCHES+=(
+		"${FILESDIR}"/244-efi-gcc-10.patch
 	)
 
 	if ! use vanilla; then
