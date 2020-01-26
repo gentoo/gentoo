@@ -14,6 +14,6 @@ app-xemacs/xemacs-base
 app-xemacs/edebug
 app-xemacs/prog-modes
 "
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages

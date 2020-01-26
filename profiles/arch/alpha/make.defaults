@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 ARCH="alpha"
-ACCEPT_KEYWORDS="alpha"
+ACCEPT_KEYWORDS="alpha ~alpha""
 
 CHOST="alpha-unknown-linux-gnu"
 CFLAGS="-O2 -pipe"

@@ -12,7 +12,7 @@ SRC_URI="ftp://cag.lcs.mit.edu/pub/tuna/${P}.tar.gz
 
 SLOT="0"
 LICENSE="xearth"
-KEYWORDS="alpha amd64 ppc ppc64 x86"
+KEYWORDS="~alpha amd64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND="
