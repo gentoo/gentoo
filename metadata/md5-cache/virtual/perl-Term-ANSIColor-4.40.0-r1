@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Term-ANSIColor
 EAPI=6
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 RDEPEND=|| ( =dev-lang/perl-5.24* ~perl-core/Term-ANSIColor-4.40.0 ) dev-lang/perl:= !<perl-core/Term-ANSIColor-4.40.0 !>perl-core/Term-ANSIColor-4.40.0-r999
 SLOT=0
-_md5_=db9d27d663330afc1ff41b90d2108fa0
+_md5_=b2e7d38aa9932632b3ed808534dff138

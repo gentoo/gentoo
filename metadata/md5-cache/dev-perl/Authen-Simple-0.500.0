@@ -4,11 +4,11 @@ DESCRIPTION=Simple Authentication
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Authen-Simple
 IUSE=test
-KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Class-Accessor dev-perl/Class-Data-Inheritable dev-perl/Crypt-PasswdMD5 virtual/perl-Digest-MD5 virtual/perl-Digest-SHA virtual/perl-MIME-Base64 dev-perl/Params-Validate dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/C/CH/CHANSEN/Authen-Simple-0.5.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=4ba4c15105caf2b49cf67de84afe708c
+_md5_=9ec3649c1c1310535d2f7e4d493986cf

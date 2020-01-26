@@ -4,10 +4,10 @@ DESCRIPTION=A GTK+ archive manager that can be used with Thunar
 EAPI=6
 HOMEPAGE=https://github.com/ib/xarchiver
 IUSE=doc
-KEYWORDS=alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2:= x11-libs/gtk+:3= !!<app-arch/pigz-2.4[symlink]
 SLOT=0
 SRC_URI=https://github.com/ib/xarchiver/archive/0.5.4.14.tar.gz -> xarchiver-0.5.4.14.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=cf9f619e645262d9e93f7133dc63cd3f
+_md5_=4bb012ed5d8356a3a63a298e04ecd3ff

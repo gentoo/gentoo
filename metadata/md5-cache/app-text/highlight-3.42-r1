@@ -4,10 +4,10 @@ DESCRIPTION=Converts source code to formatted text (HTML, LaTeX, etc.) with synt
 EAPI=6
 HOMEPAGE=http://www.andre-simon.de/
 IUSE=examples qt5
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
+KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos
 LICENSE=GPL-3
 RDEPEND=dev-lang/lua:0= qt5? ( dev-libs/double-conversion:= dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 )
 SLOT=0
 SRC_URI=http://www.andre-simon.de/zip/highlight-3.42.tar.bz2
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=7ae25e4c179faa2916b366d72ebbaa99
+_md5_=bb4d7c47cd5e82cca8b0acf4d6d7b1ac

@@ -4,7 +4,7 @@ DESCRIPTION=Unified widget and session management libs for Xfce
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 IUSE=debug glade +gtk2 introspection startup-notification vala
-KEYWORDS=alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=LGPL-2+ GPL-2+
 RDEPEND=>=dev-libs/glib-2.42:2= >=x11-libs/gtk+-3.18:3=[introspection?] x11-libs/libX11:= x11-libs/libICE:= x11-libs/libSM:= >=xfce-base/libxfce4util-4.12:=[introspection?] >=xfce-base/xfconf-4.12:= glade? ( dev-util/glade:3.10= ) gtk2? ( >=x11-libs/gtk+-2.24:2= ) introspection? ( dev-libs/gobject-introspection:= ) startup-notification? ( x11-libs/startup-notification:= ) !xfce-base/xfce-utils
 REQUIRED_USE=vala? ( introspection )
@@ -12,4 +12,4 @@ RESTRICT=!gtk2? ( test )
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/xfce/libxfce4ui/4.14/libxfce4ui-4.14.1.tar.bz2
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	cd46635fb3b81d6bc07830b4afe87066	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=9a3daaa72389b7173807ea8241912e4a
+_md5_=6807a234149e35293e12fb2618ec53cd

@@ -3,9 +3,9 @@ DEPEND=>=app-eselect/eselect-timidity-20061203
 DESCRIPTION=Free and open set of instrument patches
 EAPI=5
 HOMEPAGE=http://freepats.opensrc.org/
-KEYWORDS=alpha amd64 arm hppa ppc ppc64 x86
+KEYWORDS=~alpha amd64 arm hppa ppc ppc64 x86
 LICENSE=GPL-2
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=http://freepats.opensrc.org/freepats-20060219.tar.bz2
-_md5_=dc79f2e8ce00327183fdaa075c9448b6
+_md5_=b6911abd764236b816ff5ca10e55c857

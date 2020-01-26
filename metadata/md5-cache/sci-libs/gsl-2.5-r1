@@ -5,10 +5,10 @@ DESCRIPTION=The GNU Scientific Library
 EAPI=7
 HOMEPAGE=https://www.gnu.org/software/gsl/
 IUSE=cblas-external +deprecated static-libs
-KEYWORDS=alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos ~sparc-solaris ~x86-solaris
 LICENSE=GPL-3
 RDEPEND=cblas-external? ( virtual/cblas:= )
 SLOT=0/23
 SRC_URI=mirror://gnu/gsl/gsl-2.5.tar.gz https://dev.gentoo.org/~mgorny/dist/gsl-2.3-cblas.patch.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3f2842033f69db87e6bba1a6b13097a3
+_md5_=4f67a7eb83e32db2f687622df11d7050

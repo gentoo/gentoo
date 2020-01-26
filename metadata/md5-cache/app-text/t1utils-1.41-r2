@@ -3,10 +3,10 @@ DEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 
 DESCRIPTION=Type 1 Font utilities
 EAPI=6
 HOMEPAGE=http://www.lcdf.org/type/#t1utils
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=BSD
 RDEPEND=!<media-libs/freetype-1.4_pre20080316
 SLOT=0
 SRC_URI=http://www.lcdf.org/type/t1utils-1.41.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=cfc009d8e39ca03de9a833f95a8d9984
+_md5_=0313fa4d259a53e1c147f762b63abc0e

@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for BLAS C implementation
 EAPI=5
-KEYWORDS=alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 arm hppa ia64 ppc ppc64 s390 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 RDEPEND=|| ( sci-libs/cblas-reference sci-libs/gsl[-cblas-external] >=sci-libs/mkl-9.1.023 )
 SLOT=0
-_md5_=e17ca677c3ee76cbc1f67fb4a22364b5
+_md5_=f69c73994bb109d0c5c068934a1759a2

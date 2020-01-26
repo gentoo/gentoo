@@ -4,9 +4,9 @@ DESCRIPTION=Computes changes between binary or text files and creates deltas
 EAPI=6
 HOMEPAGE=http://xdelta.org/
 IUSE=examples lzma
-KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=lzma? ( app-arch/xz-utils:= )
 SLOT=3
 SRC_URI=https://github.com/jmacd/xdelta-gpl/releases/download/v3.0.11/xdelta3-3.0.11.tar.gz
-_md5_=3032c17b02eeae3989aa2b5134085277
+_md5_=033190ddf0dfd7e62763232b7de428b9

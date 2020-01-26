@@ -4,10 +4,10 @@ DEPEND=>=dev-libs/glib-2 >=sys-libs/zlib-1.1.4:= virtual/pkgconfig
 DESCRIPTION=Computes changes between binary or text files and creates deltas
 EAPI=7
 HOMEPAGE=https://xdelta.googlecode.com/
-KEYWORDS=alpha amd64 hppa ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2 >=sys-libs/zlib-1.1.4:=
 SLOT=0
 SRC_URI=https://xdelta.googlecode.com/files/xdelta-1.1.4.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=9f6dd1ddf03648289e92e4142e5e971d
+_md5_=c13d664f7fd27333f8abeab1885b4699

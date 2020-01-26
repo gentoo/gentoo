@@ -4,11 +4,11 @@ DESCRIPTION=Zile is a small Emacs clone
 EAPI=6
 HOMEPAGE=https://www.gnu.org/software/zile/
 IUSE=test valgrind
-KEYWORDS=alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 LICENSE=GPL-3+
 RDEPEND=sys-libs/ncurses:0=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnu/zile/zile-2.3.24.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=27efe5fd555728b6955c8730be9a492a
+_md5_=eea22b32e132d99482192968fa230847

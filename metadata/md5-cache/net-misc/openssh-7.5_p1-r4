@@ -4,7 +4,7 @@ DESCRIPTION=Port of OpenBSD's free SSH release
 EAPI=5
 HOMEPAGE=http://www.openssh.org/
 IUSE=abi_mips_n32 audit bindist debug +hpn kerberos kernel_linux ldap ldns libedit libressl livecd pam +pie sctp selinux skey ssh1 +ssl static test X X509
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=BSD GPL-2
 RDEPEND=!static? ( audit? ( sys-process/audit ) ldns? ( net-libs/ldns !bindist? ( net-libs/ldns[ecdsa,ssl(+)] ) bindist? ( net-libs/ldns[-ecdsa,ssl(+)] ) ) libedit? ( dev-libs/libedit:= ) sctp? ( net-misc/lksctp-tools ) selinux? ( >=sys-libs/libselinux-1.28 ) skey? ( >=sys-auth/skey-1.1.5-r1 ) ssl? ( !libressl? ( >=dev-libs/openssl-1.0.1:0=[bindist=] dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) >=sys-libs/zlib-1.2.3:= ) pam? ( sys-libs/pam ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) pam? ( >=sys-auth/pambase-20081028 ) userland_GNU? ( virtual/shadow ) X? ( x11-apps/xauth )
 REQUIRED_USE=ldns? ( ssl ) pie? ( !static ) ssh1? ( ssl ) static? ( !kerberos !pam ) X509? ( !ldap !sctp ssl ) test? ( ssl )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://openbsd/OpenSSH/portable/openssh-7.5p1.tar.gz mirror://gentoo/openssh-7.4_p1-sctp.patch.xz hpn? ( mirror://gentoo/openssh-7.5p1-hpnssh14v12.tar.xz ) ldap? ( mirror://gentoo/openssh-lpk-7.5p1-0.3.14.patch.xz ) X509? ( http://roumenpetrov.info/openssh/x509-10.2/openssh-7.5p1+x509-10.2.diff.gz )
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	a1771fc1e5831c201eaf18451747d94b	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=f67f4fd411c7f56c0dd3df137c34031c
+_md5_=c71774ecafe1dd774bc2d3a3441ea00c

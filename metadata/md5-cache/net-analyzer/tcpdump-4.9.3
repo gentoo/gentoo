@@ -4,11 +4,11 @@ DESCRIPTION=A Tool for network monitoring and data acquisition
 EAPI=7
 HOMEPAGE=https://www.tcpdump.org/ https://github.com/the-tcpdump-group/tcpdump
 IUSE=+drop-root libressl smi ssl samba suid test
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux
+KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux
 LICENSE=BSD
 RDEPEND=drop-root? ( sys-libs/libcap-ng ) net-libs/libpcap smi? ( net-libs/libsmi ) ssl? ( !libressl? ( >=dev-libs/openssl-0.9.6m:0= ) libressl? ( dev-libs/libressl:= ) )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.tcpdump.org/release/tcpdump-4.9.3.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=de7bcdc0cf56ef26939c156d2dd4e3ed
+_md5_=5f0f4374a9996bbe2aa7777078977ec1

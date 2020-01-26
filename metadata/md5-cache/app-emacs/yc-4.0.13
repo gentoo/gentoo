@@ -3,10 +3,10 @@ DEPEND=>=app-editors/emacs-23.1:*
 DESCRIPTION=Yet another Canna client on Emacsen
 EAPI=6
 HOMEPAGE=http://www.ceres.dti.ne.jp/~knak/yc.html
-KEYWORDS=alpha ~amd64 ppc x86
+KEYWORDS=~alpha ~amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=app-i18n/canna >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=http://www.ceres.dti.ne.jp/~knak/yc-4.0.13.tar.gz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=446ae9aa76456fa7f49fe9beeb11b86d
+_md5_=5bf70e785490e4c7fe215f684764b098

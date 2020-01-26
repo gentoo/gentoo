@@ -3,10 +3,10 @@ DEPEND=>=dev-perl/Authen-Simple-0.300.0 virtual/perl-IO dev-perl/Module-Build de
 DESCRIPTION=Simple Passwd authentication
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Authen-Simple-Passwd
-KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=>=dev-perl/Authen-Simple-0.300.0 virtual/perl-IO dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/C/CH/CHANSEN/Authen-Simple-Passwd-0.6.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=46d64d4fd5e209d33ded382a42db9546
+_md5_=b631bcea1988ce347b2b0b307e829f79

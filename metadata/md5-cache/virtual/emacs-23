@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for GNU Emacs
 EAPI=6
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 RDEPEND=app-editors/emacs:23
 SLOT=0
-_md5_=954c8e9345ae55ed5f5e6b8470baa3d2
+_md5_=70e1b4a99c7808cde01ed94cd817dadd

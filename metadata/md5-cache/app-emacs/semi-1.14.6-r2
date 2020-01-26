@@ -4,10 +4,10 @@ DESCRIPTION=A library to provide MIME feature for GNU Emacs
 EAPI=5
 HOMEPAGE=http://git.chise.org/elisp/semi/
 IUSE=l10n_ja
-KEYWORDS=alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha amd64 ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=GPL-2+
 RDEPEND=>=app-emacs/apel-10.6 app-emacs/flim >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=http://git.chise.org/elisp/dist/semi/semi-1.14-for-flim-1.14/semi-1.14.6.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=7d28ccd67c642bcee2d381672cf60502
+_md5_=d7460d4aa15420a015906cb57e08c642

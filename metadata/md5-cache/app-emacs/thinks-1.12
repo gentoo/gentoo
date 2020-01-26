@@ -3,10 +3,10 @@ DEFINED_PHASES=compile configure install postinst postrm prepare setup unpack
 DESCRIPTION=Insert text in a think bubble
 EAPI=7
 HOMEPAGE=http://www.davep.org/emacs/
-KEYWORDS=alpha amd64 x86
+KEYWORDS=~alpha amd64 x86
 LICENSE=GPL-3+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/davep/thinks.el/archive/v1.12.tar.gz -> thinks-1.12.tar.gz
 _eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=971206bc95656799c875c4ee33d09eb8
+_md5_=cd4db2d85fc964942658852f7797162e

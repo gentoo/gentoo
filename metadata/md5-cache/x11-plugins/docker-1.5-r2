@@ -3,10 +3,10 @@ DEPEND=>=dev-libs/glib-2.0.4 x11-libs/libX11 virtual/pkgconfig
 DESCRIPTION=Openbox app which acts as a system tray for KDE and GNOME2
 EAPI=7
 HOMEPAGE=https://icculus.org/openbox/2/docker/
-KEYWORDS=alpha ~amd64 ppc ~ppc64 ~sparc x86
+KEYWORDS=~alpha ~amd64 ppc ~ppc64 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=>=dev-libs/glib-2.0.4 x11-libs/libX11
 SLOT=0
 SRC_URI=https://icculus.org/openbox/2/docker/docker-1.5.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4131cf38656cb68ad87db0a9d0566d26
+_md5_=f0dc1d9fb54778c9a037c73a3d39bb91

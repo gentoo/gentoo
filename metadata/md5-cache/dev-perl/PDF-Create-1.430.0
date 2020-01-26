@@ -4,11 +4,11 @@ DESCRIPTION=Create PDF documents in Perl
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/PDF-Create
 IUSE=test examples examples
-KEYWORDS=alpha amd64 ia64 ppc sparc x86
+KEYWORDS=~alpha amd64 ia64 ppc sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=virtual/perl-Carp virtual/perl-Data-Dumper >=dev-perl/File-Share-0.250.0 dev-perl/JSON virtual/perl-Scalar-List-Utils dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/M/MA/MANWAR/PDF-Create-1.43.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=00346590b3ac5ef6ec63d40fd24d9d48
+_md5_=9ab5f328be46f7fa45663c239af5c7bb

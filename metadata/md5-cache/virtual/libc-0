@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for the C library
 EAPI=5
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 RDEPEND=!prefix-guest? ( elibc_glibc? ( sys-libs/glibc:2.2 ) elibc_musl? ( sys-libs/musl ) elibc_uclibc? ( sys-libs/uclibc-ng ) )
 SLOT=0
-_md5_=f568242b6fa20ee7f2f6b7a2d0ac4954
+_md5_=8edba45f2d05ac08482715343c260a51

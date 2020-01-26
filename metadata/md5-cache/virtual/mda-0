@@ -1,7 +1,7 @@
 DEFINED_PHASES=-
 DESCRIPTION=Virtual for Message Delivery Agents
 EAPI=5
-KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+KEYWORDS=~alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 RDEPEND=|| ( mail-filter/procmail mail-filter/maildrop mail-mta/postfix mail-mta/courier mail-mta/mini-qmail mail-mta/netqmail mail-mta/qmail-ldap mail-mta/citadel )
 SLOT=0
-_md5_=db8e9a0b5f6233d8bee4a8f27b03ceab
+_md5_=4d49f4be5b3e074c28147e24e43d01e0

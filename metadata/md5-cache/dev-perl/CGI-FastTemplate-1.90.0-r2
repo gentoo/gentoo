@@ -3,10 +3,10 @@ DEPEND=dev-lang/perl
 DESCRIPTION=High Performance Templates and Variable Interpolation
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/CGI-FastTemplate
-KEYWORDS=alpha amd64 ia64 ppc sparc x86
+KEYWORDS=~alpha amd64 ia64 ppc sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/J/JM/JMOORE/CGI-FastTemplate-1.09.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=568a3a400d6dea45a88d1d9e8a205c75
+_md5_=16b40e7e490a3cf8fc8e701f5aec7ea5

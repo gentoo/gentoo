@@ -4,11 +4,11 @@ DESCRIPTION=log events to an array (reference)
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Log-Dispatch-Array
 IUSE=test
-KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=dev-perl/Log-Dispatch virtual/perl-parent dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RJ/RJBS/Log-Dispatch-Array-1.003.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=276e793c41c376b141b26bf45715b150
+_md5_=d62580b638ee6ec4a000d18e365adf07

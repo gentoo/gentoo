@@ -3,9 +3,9 @@ DEPEND=|| ( sys-apps/util-linux app-misc/getopt )
 DESCRIPTION=Rebuild Emacs packages
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:Emacs
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=GPL-2+
 RDEPEND=|| ( sys-apps/util-linux app-misc/getopt ) >=app-editors/emacs-23.1:* >=app-portage/portage-utils-0.3
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/emacs/emacs-updater-1.16.tar.xz
-_md5_=a832c9418001ff0a0de450a0ec3540a2
+_md5_=2356074f696ce213632720d7ce1b65c3

@@ -4,10 +4,10 @@ DESCRIPTION=Create glossaries and lists of acronyms
 EAPI=7
 HOMEPAGE=http://www.ctan.org/pkg/glossaries/
 IUSE=doc examples
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=LPPL-1.2
 RDEPEND=dev-lang/perl dev-texlive/texlive-latexrecommended >=dev-texlive/texlive-latexextra-2012 dev-texlive/texlive-plaingeneric virtual/latex-base
 SLOT=0
 SRC_URI=http://mirrors.ctan.org/macros/latex/contrib/glossaries.zip -> glossaries-4.41.zip
 _eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
-_md5_=94bcac4efd4a23fa5683d987e5a7c5e9
+_md5_=8a01a10a995cfe2f7ffea0d0fa49b613

@@ -4,10 +4,10 @@ DESCRIPTION=Belarusian language dictionary for aspell
 EAPI=6
 HOMEPAGE=http://aspell.net
 IUSE=classic
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+KEYWORDS=~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 LICENSE=GPL-2
 RDEPEND=>=app-text/aspell-0.50
 SLOT=0
 SRC_URI=mirror://gnu/aspell/dict/be/aspell5-be-0.01.tar.bz2
 _eclasses_=aspell-dict-r1	d72b0cd12aab80047c51d57eb5c8f420
-_md5_=8cd533020e4f92025e9e8270ec03b408
+_md5_=82885176950e77e18cbd57a6e5b7dafc

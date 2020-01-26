@@ -3,10 +3,10 @@ DEPEND=acct-user/cmd5checkpw >=sys-apps/sed-4
 DESCRIPTION=A checkpassword compatible authentication program that used CRAM-MD5 authentication mode
 EAPI=7
 HOMEPAGE=https://www.fehcom.de/qmail/smtpauth.html
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 sh sparc x86
+KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 sh sparc x86
 LICENSE=public-domain RSA
 RDEPEND=acct-user/cmd5checkpw
 SLOT=0
 SRC_URI=https://www.fehcom.de/qmail/auth/cmd5checkpw-030_tgz.bin -> cmd5checkpw-0.30.tar.gz
 _eclasses_=fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c
-_md5_=aea810dd56c88a37a266d0b30abbe924
+_md5_=41b8778ad4332852d5be0c17fda0e1b4

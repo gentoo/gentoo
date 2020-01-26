@@ -4,10 +4,10 @@ DEPEND=>=app-emacs/apel-10.8
 DESCRIPTION=A library to provide basic features about message representation or encoding
 EAPI=7
 HOMEPAGE=https://github.com/wanderlust/flim
-KEYWORDS=alpha amd64 ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
+KEYWORDS=~alpha amd64 ~ia64 ppc ~ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris
 LICENSE=GPL-2+
 RDEPEND=>=app-emacs/apel-10.8 !app-emacs/limit >=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/wanderlust/flim/archive/e4bd54fd7d335215b54f7ef27ed974c8cd68d472.tar.gz -> flim-1.14.9_p20190526.tar.gz
 _eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=3582c81c226826df91658fc91d59624d
+_md5_=b2184bc2f5ee306ab524952915ebc4ef

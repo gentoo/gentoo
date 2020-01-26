@@ -4,11 +4,11 @@ DESCRIPTION=Collection of programs that can be used to automate common tasks in 
 EAPI=5
 HOMEPAGE=https://packages.qa.debian.org/d/debhelper.html
 IUSE=test l10n_de l10n_es l10n_fr
-KEYWORDS=alpha amd64 arm hppa ia64 ~m68k ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux
+KEYWORDS=~alpha amd64 arm hppa ia64 ~m68k ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux
 LICENSE=GPL-2
 RDEPEND=>=dev-lang/perl-5.10:= >=app-arch/dpkg-1.17 dev-perl/TimeDate virtual/perl-Getopt-Long
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/d/debhelper/debhelper_9.20160814.tar.xz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=de99f6cd2f97c178dbe505229baa705e
+_md5_=911ba130b79a08eb5977ba5cfd893bcd

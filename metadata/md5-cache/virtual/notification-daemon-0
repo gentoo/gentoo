@@ -2,7 +2,7 @@ DEFINED_PHASES=-
 DESCRIPTION=Virtual for notification daemon dbus service
 EAPI=7
 IUSE=gnome kde
-KEYWORDS=alpha amd64 arm arm64 ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris
 RDEPEND=gnome? ( || ( x11-misc/notification-daemon gnome-base/gnome-shell ) ) kde? ( kde-plasma/plasma-workspace ) !gnome? ( !kde? ( || ( x11-misc/notification-daemon gnome-extra/cinnamon xfce-extra/xfce4-notifyd x11-misc/notify-osd x11-misc/dunst >=x11-wm/awesome-3.4.4[dbus] x11-wm/enlightenment x11-misc/mate-notification-daemon lxqt-base/lxqt-notificationd net-misc/eventd[notification] ) ) )
 SLOT=0
-_md5_=cc0683cb98f47c4912db1fd09a1ed418
+_md5_=5dd571ba731ca54dcbc043ed74aec9b5

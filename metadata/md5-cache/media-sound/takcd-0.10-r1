@@ -3,9 +3,9 @@ DEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 
 DESCRIPTION=Command line CD player
 EAPI=6
 HOMEPAGE=http://bard.sytes.net/takcd/
-KEYWORDS=alpha amd64 ~hppa ia64 ~mips ~ppc sparc x86
+KEYWORDS=~alpha amd64 ~hppa ia64 ~mips ~ppc sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://bard.sytes.net/takcd/takcd-0.10.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=5b1c2a436f051f6ba2b30c06e70e6185
+_md5_=34bc4db6a557c5a12f87a70841d5a061

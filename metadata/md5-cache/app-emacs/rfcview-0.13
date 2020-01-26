@@ -3,10 +3,10 @@ DEPEND=>=app-editors/emacs-23.1:*
 DESCRIPTION=An Emacs mode that reformats IETF RFCs for display
 EAPI=5
 HOMEPAGE=http://www.loveshack.ukfsn.org/emacs/ https://www.emacswiki.org/emacs/RfcView
-KEYWORDS=alpha amd64 x86
+KEYWORDS=~alpha amd64 x86
 LICENSE=GPL-3+
 RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/rfcview-0.13.el.xz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176	epatch	a1bf4756dba418a7238f3be0cb010c54
-_md5_=cb897fba3f1eda6e19a81cb4dcf3ae15
+_md5_=81a8787c2a57fe45316a6df73fe5b278

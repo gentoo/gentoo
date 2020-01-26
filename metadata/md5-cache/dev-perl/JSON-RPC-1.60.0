@@ -4,11 +4,11 @@ DESCRIPTION=JSON RPC 2.0 Server Implementation
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/JSON-RPC
 IUSE=test minimal
-KEYWORDS=alpha amd64 ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ia64 ppc ppc64 sparc x86
 LICENSE=|| ( Artistic GPL-1+ )
 RDEPEND=!minimal? ( dev-perl/JSON-XS ) dev-perl/CGI dev-perl/Class-Accessor-Lite dev-perl/HTTP-Message dev-perl/JSON dev-perl/libwww-perl dev-perl/Plack dev-perl/Router-Simple dev-perl/Try-Tiny virtual/perl-parent dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DM/DMAKI/JSON-RPC-1.06.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=81befb414cf0bd7f65ac21cb9c2d4fc6
+_md5_=1b9b6771ae66822bbd623aa3810db16d

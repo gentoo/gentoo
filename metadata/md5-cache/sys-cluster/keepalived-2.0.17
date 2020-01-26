@@ -5,10 +5,10 @@ DESCRIPTION=A strong & robust keepalive facility to the Linux Virtual Server pro
 EAPI=7
 HOMEPAGE=https://www.keepalived.org/
 IUSE=+bfd dbus debug -json regex snmp
-KEYWORDS=alpha amd64 ~hppa ia64 ppc ppc64 ~s390 ~sparc x86
+KEYWORDS=~alpha amd64 ~hppa ia64 ppc ppc64 ~s390 ~sparc x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/libnl:= dev-libs/openssl:= dev-libs/popt net-libs/libnfnetlink sys-apps/iproute2 regex? ( >=dev-libs/libpcre2-8 ) dbus? ( sys-apps/dbus dev-libs/glib:2 ) json? ( dev-libs/json-c:= ) snmp? ( net-analyzer/net-snmp )
 SLOT=0
 SRC_URI=https://www.keepalived.org/software/keepalived-2.0.17.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=82a09327027d1d21c0e30723aca51af4
+_md5_=d9dc9c7aa2f11850ce51ea7111829cdf

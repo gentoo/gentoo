@@ -4,10 +4,10 @@ DESCRIPTION=An authentication service for creating and validating credentials
 EAPI=6
 HOMEPAGE=https://github.com/dun/munge
 IUSE=debug gcrypt static-libs
-KEYWORDS=alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-3
 RDEPEND=app-arch/bzip2 sys-libs/zlib gcrypt? ( dev-libs/libgcrypt:0 ) !gcrypt? ( dev-libs/openssl:0= )
 SLOT=0
 SRC_URI=https://github.com/dun/munge/releases/download/munge-0.5.13/munge-0.5.13.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=e87a8807eb5b1f91a0ee4af76b8e2547
+_md5_=6de241967beb8b187c3fe4f010ac5ee1

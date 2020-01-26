@@ -5,10 +5,10 @@ DESCRIPTION=LaTeX class for the standard model for curricula vitae as recommende
 EAPI=7
 HOMEPAGE=http://www.ctan.org/pkg/europecv
 IUSE=examples
-KEYWORDS=alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
+KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos
 LICENSE=LPPL-1.2
 RDEPEND=>=dev-texlive/texlive-latexextra-2008 virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/europecv-20060424.zip
 _eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
-_md5_=be1fddc6ef970e3afc1dce6fc660648b
+_md5_=470af528bf7f006e844330c28d2f83ee

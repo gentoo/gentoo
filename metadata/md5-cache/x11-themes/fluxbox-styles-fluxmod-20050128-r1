@@ -3,8 +3,8 @@ DEPEND=>=sys-apps/sed-4
 DESCRIPTION=A collection of FluxBox themes from FluxMod
 EAPI=7
 HOMEPAGE=https://tenr.de/styles/
-KEYWORDS=alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/fluxbox-styles-fluxmod-20050128.tar.bz2
-_md5_=ceb76d8287dbe8011d624bbad2f5af0c
+_md5_=f62e2a30d3d0c06906de8acc67350234

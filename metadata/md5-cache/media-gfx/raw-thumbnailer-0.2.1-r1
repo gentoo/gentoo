@@ -3,10 +3,10 @@ DEPEND=>=media-libs/libopenraw-0.1:=[gtk] x11-libs/gtk+:2 !media-gfx/gnome-raw-t
 DESCRIPTION=A lightweight and fast raw image thumbnailer
 EAPI=6
 HOMEPAGE=https://github.com/erlendd/raw-thumbnailer
-KEYWORDS=alpha amd64 arm ~hppa ia64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 arm ~hppa ia64 ppc ppc64 sparc x86
 LICENSE=GPL-2
 RDEPEND=>=media-libs/libopenraw-0.1:=[gtk] x11-libs/gtk+:2 !media-gfx/gnome-raw-thumbnailer
 SLOT=0
 SRC_URI=https://raw-thumbnailer.googlecode.com/files/raw-thumbnailer-0.2.1.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=85e12ed1903bba1c32571bc59002e477
+_md5_=b54a1f8a3504295eb6e923c3c69da05e

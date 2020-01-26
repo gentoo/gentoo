@@ -5,10 +5,10 @@ DESCRIPTION=Command line utilities to work with desktop menu entries
 EAPI=7
 HOMEPAGE=https://freedesktop.org/wiki/Software/desktop-file-utils
 IUSE=emacs
-KEYWORDS=alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris
 LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.12:2 emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/desktop-file-utils/releases/desktop-file-utils-0.24.tar.xz
 _eclasses_=elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=af30c117b883e3dd7ac2c06bd7448540
+_md5_=bc3b8b25fef87069c1d7d3908f1dc1cf

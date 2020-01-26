@@ -3,10 +3,10 @@ DEPEND=|| ( <=dev-perl/Inline-0.560.0 dev-perl/Inline-C ) media-libs/libogg medi
 DESCRIPTION=An object-oriented interface to Ogg Vorbis information and comment fields
 EAPI=6
 HOMEPAGE=https://metacpan.org/release/Ogg-Vorbis-Header
-KEYWORDS=alpha amd64 ia64 ~ppc sparc x86
+KEYWORDS=~alpha amd64 ia64 ~ppc sparc x86
 LICENSE=GPL-2+ LGPL-2
 RDEPEND=|| ( <=dev-perl/Inline-0.560.0 dev-perl/Inline-C ) media-libs/libogg media-libs/libvorbis dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DAVECROSS/Ogg-Vorbis-Header-0.05.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=0ef4451b936a093dc8ce71e1d9c839bb
+_md5_=32a71ddcb20c0d9d35a226cba752349b

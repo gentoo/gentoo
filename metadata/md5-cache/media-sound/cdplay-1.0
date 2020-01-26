@@ -3,9 +3,9 @@ DEPEND=!media-sound/cdtool
 DESCRIPTION=A commandline CD Player
 EAPI=7
 HOMEPAGE=http://www.ta-sa.org/?entry=cdplay
-KEYWORDS=alpha amd64 ppc ppc64 sparc x86
+KEYWORDS=~alpha amd64 ppc ppc64 sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.ta-sa.org/files/cdplay-1.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3c244c73b90a16a772631e1c8482384e
+_md5_=996e204cb5b897be2f0ab622981e56ab

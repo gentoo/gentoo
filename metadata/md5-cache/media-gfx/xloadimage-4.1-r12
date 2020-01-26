@@ -5,10 +5,10 @@ DESCRIPTION=utility to view many different types of images under X11
 EAPI=7
 HOMEPAGE=https://tracker.debian.org/pkg/xloadimage
 IUSE=tiff jpeg png
-KEYWORDS=alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+KEYWORDS=~alpha amd64 arm hppa ia64 ~mips ppc ppc64 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
 LICENSE=MIT
 RDEPEND=x11-libs/libX11 tiff? ( media-libs/tiff:0= ) png? ( media-libs/libpng:0= ) jpeg? ( virtual/jpeg:0 )
 SLOT=0
 SRC_URI=ftp://ftp.x.org/R5contrib/xloadimage.4.1.tar.gz mirror://gentoo/xloadimage-4.1-gentoo-r1.diff.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3b0b46631f03bc234d778c40e55bca74
+_md5_=38faa0501bf870d5da02c8bf70c4a073

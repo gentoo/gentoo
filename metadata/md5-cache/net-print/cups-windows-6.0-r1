@@ -3,9 +3,9 @@ DEPEND=>=net-print/cups-1.2
 DESCRIPTION=CUPS PostScript Driver for Windows
 EAPI=4
 HOMEPAGE=https://www.cups.org/
-KEYWORDS=alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
+KEYWORDS=~alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 LICENSE=GPL-2
 RDEPEND=>=net-print/cups-1.2
 SLOT=0
 SRC_URI=mirror://gentoo/cups-windows-6.0-source.tar.bz2
-_md5_=08d9f7548b7e88254d64a0038e77f774
+_md5_=51f9c63cc068578dcb0d4dc76918bcb6
