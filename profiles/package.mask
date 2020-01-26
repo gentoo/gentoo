@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-01-26)
+# Unmaintained.  Not bumped since Mar 2018.  No py3.7 compat.  Forces
+# old version of dev-python/idna.
+# Removal in 30 days.  Bug #706502.
+net-misc/crossbar
+
 # Andrew Ammerlaan <andrewammerlaan@riseup.net> (2020-01-26)
 # Proxy Maintainers <proxy-maint@gentoo.org>
 # v3.6.3 uses huge amounts of memory: Bug #705682
