@@ -5,11 +5,11 @@ DESCRIPTION=Qt5 bindings for libaccounts-glib
 EAPI=7
 HOMEPAGE=https://accounts-sso.gitlab.io/
 IUSE=doc test
-KEYWORDS=amd64 ~arm arm64 x86
+KEYWORDS=amd64 ~arm arm64 ~ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=dev-libs/glib:2 dev-qt/qtcore:5 dev-qt/qtxml:5 >=net-libs/libaccounts-glib-1.23:=
 RESTRICT=test
 SLOT=0
 SRC_URI=https://gitlab.com/accounts-sso/libaccounts-qt/repository/VERSION_1.16/archive.tar.gz -> accounts-qt-1.16.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=cbc77f1e0374e6057672acc8b04ac998
+_md5_=f4895fbc42e33e7e7b1381c9ac29c4fd

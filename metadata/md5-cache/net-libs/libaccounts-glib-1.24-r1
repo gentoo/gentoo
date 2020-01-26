@@ -5,7 +5,7 @@ DESCRIPTION=Accounts SSO (Single Sign-On) management library for GLib applicatio
 EAPI=7
 HOMEPAGE=https://01.org/gsso/
 IUSE=doc python_targets_python3_6 python_targets_python3_7
-KEYWORDS=amd64 ~arm arm64 x86
+KEYWORDS=amd64 ~arm arm64 ~ppc64 x86
 LICENSE=LGPL-2.1
 RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] dev-db/sqlite:3 dev-libs/glib:2 dev-libs/gobject-introspection:= dev-libs/libxml2 dev-python/pygobject:3[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0/1
 SRC_URI=https://gitlab.com/accounts-sso/libaccounts-glib/-/archive/VERSION_1.24/libaccounts-glib-VERSION_1.24.tar.gz -> libaccounts-glib-1.24.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	meson	10d1eb1da93c5fc17e3814e6923beb57	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	cd46635fb3b81d6bc07830b4afe87066	vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
-_md5_=f9a67009d5b37a822de0dbed4ba22ff6
+_md5_=92912df4cd8c4423aff4ff52ab4e4b74
