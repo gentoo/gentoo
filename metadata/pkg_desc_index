@@ -2503,7 +2503,7 @@ app-text/blogc 0.18.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 3.48.0-r1 4.7.0-r1 4.8.0-r1 4.9.0 4.9.1 4.9.1-r1: Ebook management application
+app-text/calibre 3.48.0-r1 4.9.1 4.9.1-r1: Ebook management application
 app-text/capyt 1.1.1: A python3 CLI utility to interface with cpy.pt paste service
 app-text/catdoc 0.95 0.95-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 1.9.8 1.9.9 2.0.0: Tool for extracting unformatted bibliographic references
@@ -7616,16 +7616,16 @@ dev-python/dj-database-url 0.4.2: Use Database URLs in your Django Application
 dev-python/django 1.11.20 1.11.21 2.1.8 2.1.9 2.2.1 2.2.2: High-level Python web framework
 dev-python/django-annoying 0.7.7 0.8.7: This is django application that try to eliminate annoying things in Django framework
 dev-python/django-appconf 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
-dev-python/django-auth-ldap 1.7.0: Django LDAP authentication backend
+dev-python/django-auth-ldap 1.7.0 2.1.0: Django LDAP authentication backend
 dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, and templates for models
-dev-python/django-cacheops 4.1: ORM cache with automatic granular event-driven invalidation for Django
-dev-python/django-cors-headers 2.5.1 3.0.2: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
+dev-python/django-cacheops 4.1 4.2: ORM cache with automatic granular event-driven invalidation for Django
+dev-python/django-cors-headers 2.5.1 3.0.2 3.2.1: Django App that adds CORS (Cross-Origin Resource Sharing) headers to responses
 dev-python/django-crispy-forms 1.6.0: Best way to have Django DRY forms
-dev-python/django-debug-toolbar 2.0: A configurable set of panels that display debug information
+dev-python/django-debug-toolbar 2.0 2.1: A configurable set of panels that display debug information
 dev-python/django-discover-runner 1.0: A Django test runner based on unittest2's test discovery
 dev-python/django-durationfield 0.5.4: Reusable app for adding a DurationField to Django
 dev-python/django-endless-pagination 2.0: Tools supporting ajax, multiple and lazy pagination, Twitter-style and Digg-style pagination
-dev-python/django-filter 2.1.0: Django app allowing declarative dynamic QuerySet filtering from URL parameters
+dev-python/django-filter 2.1.0 2.2.0: Django app allowing declarative dynamic QuerySet filtering from URL parameters
 dev-python/django-grappelli 2.7.3: A jazzy skin for the Django Admin-Interface
 dev-python/django-haystack 2.4.1: Pluggable search for Django
 dev-python/django-international 0.0.6: Country and currency data for Django projects
