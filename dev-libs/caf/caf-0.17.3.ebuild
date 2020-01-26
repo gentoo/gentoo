@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,10 +34,7 @@ BDEPEND="doc? ( app-doc/doxygen[dot]
 
 RESTRICT="!test? ( test )"
 
-src_unpack() {
-	default
-	mv * "${P}" || die
-}
+S="${WORKDIR}/actor-framework-${PV}"
 
 src_prepare() {
 	append-cflags "-std=c++11 -Wextra -Wall -pedantic"
