@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-01-26)
+# Unmaintained, last release 14 years ago, tons of patches,
+# Autoconf script is broken, fails with gettext-0.20.
+# Removal in 30 days.  Bug #578234, #685928.
+app-i18n/zhcon
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # No revdeps, blocks dev-python/pygtk cleanup, bug #706476
 # Masked for removal in 30 days.
