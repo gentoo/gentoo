@@ -35,5 +35,5 @@ src_configure() {
 
 src_install() {
 	cmake-utils_src_install
-	use cli || rm -rf "${ED}usr/bin"
+	use cli || rm -rf "${ED}/usr/bin"
 }
