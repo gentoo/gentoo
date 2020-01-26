@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-# gedit-3.8 is python3 only, this also per:
-# https://bugzilla.redhat.com/show_bug.cgi?id=979450
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit gnome.org gnome2-utils meson python-single-r1 xdg
 
@@ -28,8 +26,11 @@ COMMON_DEPEND="
 RDEPEND="${COMMON_DEPEND}
 	gedit? (
 		${PYTHON_DEPS}
-		app-editors/gedit[introspection,python,${PYTHON_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			app-editors/gedit[introspection,python,${PYTHON_SINGLE_USEDEP}]
+			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 # libxml2 required for glib-compile-resources
 DEPEND="${COMMON_DEPEND}
