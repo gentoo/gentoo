@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -203,7 +203,7 @@ src_install() {
 	cd "${ED}"/usr/share/calibre/fonts/liberation || die
 	local x
 	for x in * ; do
-		[[ -f ${EPREFIX}usr/share/fonts/liberation-fonts/${x} ]] || continue
+		[[ -f ${EPREFIX}/usr/share/fonts/liberation-fonts/${x} ]] || continue
 		ln -sf "../../../fonts/liberation-fonts/${x}" "${x}" || die
 	done
 
