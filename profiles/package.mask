@@ -310,11 +310,6 @@ media-sound/kaudiocreator
 # Plasma 5.17 instead, without needing x11-misc/redshift. Removal in 30 days.
 kde-misc/plasma-redshift-control
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-12)
-# Merged into dev-util/kdevelop months ago, unusable standalone
-# Removal in 10 days.
-dev-util/kdevelop-clang-tidy
-
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # End of life vala:0.42 series, please depclean.
 # This message shall be kept until 2020-02-11.
