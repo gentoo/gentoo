@@ -2944,6 +2944,7 @@ dev-util/global:vim - Integrate the GNU GLOBAL source code tag system with Vim
 dev-util/gnome-builder:clang - Provide integration with sys-devel/clang for best possible C/C++ autocompletion, semantic highlighting, symbol resolving, and diagnostics support
 dev-util/gnome-builder:devhelp - Provide API docs browsing and integration via dev-util/devhelp
 dev-util/gnome-builder:git - Provide support for the Git version control system via dev-libs/libgit2-glib (such as setup of Git for New Project, direct cloning for Open Project and changed lines indicators in the editor gutter)
+dev-util/gnome-builder:glade - Provide integration with dev-util/glade UI designer for Gtk
 dev-util/gnome-builder:sysprof - Provide an integrated profiler via dev-util/sysprof
 dev-util/gnome-builder:vala - Provide an autoindenter, autocompletion, diagnostics, and symbol resolver for Vala
 dev-util/gnome-builder:webkit - Enable net-libs/webkit-gtk using plugins support and the HTML/Markdown previewer plugin
