@@ -17,10 +17,6 @@ opencl
 # mask kde since is not anymore keyworded for ppc64
 kde
 
-# Kacper Kowalik <xarthisius@gentoo.org> (2011-08-10)
-# Masking frei0r wrt bug #365451
-frei0r
-
 pda
 prelude
 mono
