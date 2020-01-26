@@ -10,7 +10,7 @@ HOMEPAGE="http://jeremy.zawodny.com/mysql/mytop/"
 SRC_URI="http://jeremy.zawodny.com/mysql/mytop/${P}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-2 )"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ppc sparc x86"
 SLOT="0"
 IUSE=""
 

@@ -10,7 +10,7 @@ HOMEPAGE="http://vacation.sourceforge.net/"
 SRC_URI="mirror://sourceforge/vacation/${P}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 x86"
+KEYWORDS="~alpha amd64 x86"
 SLOT="0"
 
 RDEPEND="!mail-mta/sendmail

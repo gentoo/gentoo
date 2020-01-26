@@ -10,7 +10,7 @@ SRC_URI="https://github.com/NagiosEnterprises/nrpe/releases/download/${P}/${P}.t
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 hppa ppc ppc64 sparc x86"
 IUSE="command-args libressl selinux ssl"
 
 DEPEND="sys-apps/tcp-wrappers

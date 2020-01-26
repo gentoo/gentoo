@@ -14,7 +14,7 @@ SRC_URI="https://github.com/jaalto/${MY_PN}/archive/${COMMIT}.tar.gz -> ${P}.tar
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 x86"
+KEYWORDS="~alpha amd64 x86"
 
 S="${WORKDIR}/${MY_PN}-${COMMIT}"
 SITEFILE="50${PN}-gentoo.el"

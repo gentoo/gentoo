@@ -8,7 +8,7 @@ inherit twisted-r1
 
 DESCRIPTION="Twisted Words contains Instant Messaging implementations"
 
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86"
 IUSE=""
 
 DEPEND="

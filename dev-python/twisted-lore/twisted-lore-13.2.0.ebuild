@@ -8,7 +8,7 @@ inherit twisted-r1
 
 DESCRIPTION="Twisted documentation system"
 
-KEYWORDS="alpha amd64 ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="

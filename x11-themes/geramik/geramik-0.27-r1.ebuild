@@ -9,7 +9,7 @@ SRC_URI="http://www.kde-look.org/content/files/3952-${P^}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~mips ~ppc sparc x86"
+KEYWORDS="~alpha amd64 ~mips ~ppc sparc x86"
 IUSE=""
 
 DEPEND=""

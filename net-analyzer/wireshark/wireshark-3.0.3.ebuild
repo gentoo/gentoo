@@ -11,7 +11,7 @@ SRC_URI="https://www.wireshark.org/download/src/all-versions/${P/_/}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0/${PV}"
-KEYWORDS="alpha"
+KEYWORDS="~alpha"
 IUSE="
 	adns androiddump bcg729 +capinfos +captype ciscodump +dftest doc dpauxmon
 	+dumpcap +editcap http2 kerberos libxml2 lua lz4 maxminddb +mergecap

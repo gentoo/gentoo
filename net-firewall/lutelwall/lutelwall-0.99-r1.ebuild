@@ -8,7 +8,7 @@ LICENSE="GPL-2"
 HOMEPAGE="https://www.lutel.pl/lutelwall/"
 SRC_URI="https://www.lutel.pl/wp-content/uploads/${PV}/${P}.tar.gz"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~ppc ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc x86"
 
 RDEPEND="
 	>=net-firewall/iptables-1.2.6

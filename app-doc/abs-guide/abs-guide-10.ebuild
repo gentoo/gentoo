@@ -12,7 +12,7 @@ SRC_URI="http://bash.deta.in/abs-guide-final.tar.bz2
 LICENSE="public-domain"
 IUSE="pdf"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~mips ppc sparc x86"
 
 DEPEND=""
 RDEPEND=""

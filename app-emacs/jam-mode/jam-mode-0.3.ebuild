@@ -12,6 +12,6 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.el.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 x86"
+KEYWORDS="~alpha amd64 x86"
 
 SITEFILE="50${PN}-gentoo.el"

@@ -11,7 +11,7 @@ HOMEPAGE="http://selfhtml.org"
 DEPEND="app-arch/unzip"
 SLOT="0"
 LICENSE="selfhtml"
-KEYWORDS="alpha amd64 hppa ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~mips ppc sparc x86"
 IUSE=""
 
 src_install() {
