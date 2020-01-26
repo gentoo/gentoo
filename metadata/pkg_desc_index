@@ -2594,7 +2594,7 @@ app-text/htmlmin 0.1.11_pre20170909 0.1.12: A configurable HTML Minifier with sa
 app-text/htmlrecode 1.3.1-r1: Recodes HTML file using a new character set
 app-text/htmltidy 20090325-r2: Tidy the layout and correct errors in HTML and XML documents
 app-text/htp 1.16-r1 1.19: An HTML preprocessor
-app-text/hunspell 1.6.2-r1 1.7.0-r1: Hunspell spell checker - an improved replacement for myspell in OOo
+app-text/hunspell 1.7.0-r1: Hunspell spell checker - an improved replacement for myspell in OOo
 app-text/hyperestraier 1.4.13: a full-text search system for communities
 app-text/iso-codes 3.76 4.4: ISO language, territory, currency, script codes and their translations
 app-text/itex2mml 1.5.6: A LaTeX into XHTML/MathML converter
@@ -8231,7 +8231,7 @@ dev-python/path-and-address 1.1.0 2.0.1: Functions for server CLI applications u
 dev-python/path-py 8.1.2 10.3.1 11.0.1 11.5.2 12.0.2: A module wrapper for os.path
 dev-python/pathlib 1.0.1-r1: Object-oriented filesystem paths
 dev-python/pathlib2 2.3.0 2.3.2 2.3.5: Fork of pathlib aiming to support the full stdlib Python API
-dev-python/pathspec 0.6.0: Utility library for gitignore style pattern matching of file paths.
+dev-python/pathspec 0.6.0 0.7.0: Utility library for gitignore style pattern matching of file paths.
 dev-python/pathtools 0.1.2-r2 0.1.2-r3: Pattern matching and various utilities for file systems paths
 dev-python/patsy 0.4.1 0.5.1: Python module to describe statistical models and design matrices
 dev-python/paver 1.2.4 1.3.4 1.3.4-r1: Python-based software project scripting tool along the lines of Make
@@ -10581,7 +10581,6 @@ dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple make
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.1: Graphical debugger interface
 dev-util/kdevelop 5.4.5 5.4.6: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
-dev-util/kdevelop-clang-tidy 0.3.3-r1: KDevelop plugin for clang-tidy static analysis support
 dev-util/kdevelop-pg-qt 2.2.0: LL(1) parser generator used mainly by KDevelop language plugins
 dev-util/kdevelop-php 5.4.5 5.4.6: PHP plugin for KDevelop
 dev-util/kdevelop-python 5.4.5 5.4.6: Python plugin for KDevelop
@@ -10800,7 +10799,7 @@ dev-vcs/hgsvn 0.2.3-r1: A set of scripts to work locally on Subversion checkouts
 dev-vcs/hgview 1.9.0-r1: A Mercurial interactive history viewer
 dev-vcs/hub 2.13.0: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.1.0: A frontend to the subversion vcs
-dev-vcs/mercurial 4.6.2 4.9-r2 4.9.1 5.0.2 5.1.2 5.2.2 9999: Scalable distributed SCM
+dev-vcs/mercurial 4.6.2 4.9-r2 4.9.1 5.0.2 5.1.2 5.2.2-r1 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.2-r1 9999: Mercurial authentication and authorization tools
 dev-vcs/mr 1.20170129 1.20171231 1.20180726 1.99999999: Multiple Repository management tool
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
