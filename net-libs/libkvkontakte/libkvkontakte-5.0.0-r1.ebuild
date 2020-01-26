@@ -14,7 +14,7 @@ SRC_URI="mirror://kde/stable/${PN}/${PV}/src/${P}.tar.xz"
 
 LICENSE="GPL-2+ || ( LGPL-2.1 LGPL-3 )"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 
 DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
