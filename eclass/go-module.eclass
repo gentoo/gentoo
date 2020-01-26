@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo authors
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-module.eclass
