@@ -109,10 +109,11 @@ src_install() {
 	cmake_src_install
 
 	python_optimize
+	use zeekctl && python_optimize "${ED}"/usr/lib/zeekctl
 
 	keepdir /var/log/"${PN}" /var/spool/"${PN}"/tmp
 
-	# Created at runtime by zeectl
+	# Created at runtime by zeekctl
 	rm -f "${ED}"/var/spool/zeek/zeekctl-config.sh || die
 	rm -f "${ED}"/usr/share/zeekctl/scripts/zeekctl-config.sh || die
 
