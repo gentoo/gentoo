@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-6.18.01-aix.patch
 	"${FILESDIR}"/${PN}-6.21.00-no-nls.patch
 	"${FILESDIR}"/${PN}-6.21.00-use-ncurses.patch
+	"${FILESDIR}"/${PN}-6.21.00-fno-common.patch # upstream
 )
 
 src_prepare() {
