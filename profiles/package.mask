@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andrew Ammerlaan <andrewammerlaan@riseup.net> (2020-01-26)
+# Proxy Maintainers <proxy-maint@gentoo.org>
+# v3.6.3 uses huge amounts of memory: Bug #705682
+# v3.6.1 is the latest version without this issue
+=dev-libs/libsass-3.6.3
+
 # Victor Payno <vpayno+gentoo@gmail.com> (2020-01-23)
 # Requires slotted lua.
 =dev-lang/lua-5.1.5-r103
