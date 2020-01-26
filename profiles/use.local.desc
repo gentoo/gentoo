@@ -7422,7 +7422,6 @@ sci-libs/libgeodecomp:hpx - Enables HPX backend
 sci-libs/libgeodecomp:opencl - Enables OpenCL backend
 sci-libs/libgeodecomp:opencv - Enables OpenCV related code
 sci-libs/libgeodecomp:silo - Enables SILO related code
-sci-libs/libgeodecomp:visit - Enables VisIt related code
 sci-libs/libghemical:mopac7 - Use sci-chemistry/mopac7 for semi-empirical calculations
 sci-libs/libghemical:mpqc - Use sci-chemistry/mpqc for quantum-mechanical calculations
 sci-libs/libsc:romio - Build with support for the ROMIO MPI-IO component
