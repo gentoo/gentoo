@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://github.com/vanhauser-thc/thc-hydra"
-EGIT_REPO_URI="https://github.com/vanhauser-thc/thc-hydra"
+SRC_URI="https://github.com/vanhauser-thc/thc-hydra/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="
 	debug firebird gcrypt gtk idn libressl memcached mongodb mysql ncp ncurses
 	oracle pcre postgres rdp libssh subversion zlib
@@ -47,12 +47,13 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-9.0-fcommon-gtk.patch
+	"${FILESDIR}"/${PN}-9.0-fcommon-http.patch
 	"${FILESDIR}"/${PN}-9.0-fcommon-mod.patch
 	"${FILESDIR}"/${PN}-9.0-fcommon-mods.patch
 	"${FILESDIR}"/${PN}-9.0-unneeded-buf.patch
 	"${FILESDIR}"/${PN}-9.0-vnc.patch
-	"${FILESDIR}"/${PN}-9999999-fcommon-http.patch
 )
+S=${WORKDIR}/thc-${P}
 
 src_prepare() {
 	default
@@ -126,5 +127,5 @@ src_compile() {
 src_install() {
 	dobin hydra pw-inspector
 	use gtk && dobin hydra-gtk/src/xhydra
-	dodoc CHANGES README.md
+	dodoc CHANGES README
 }
