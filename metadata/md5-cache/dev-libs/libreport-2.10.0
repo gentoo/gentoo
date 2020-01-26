@@ -5,7 +5,7 @@ DESCRIPTION=Generic library for reporting software bugs
 EAPI=7
 HOMEPAGE=https://github.com/abrt/libreport
 IUSE=+gtk python python_targets_python3_6 python_targets_python3_7
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 x86
 LICENSE=GPL-2
 RDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] app-admin/augeas >=dev-libs/glib-2.43.4:2 dev-libs/satyr:0= dev-libs/json-c:= dev-libs/libtar dev-libs/libxml2:2 dev-libs/newt:= dev-libs/xmlrpc-c:= net-libs/libproxy:= net-misc/curl:=[ssl] sys-apps/dbus sys-apps/systemd gtk? ( >=x11-libs/gtk+-3.3.12:3 ) python? ( python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] ) x11-misc/xdg-utils
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 )
@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/abrt/libreport/archive/2.10.0.tar.gz -> libreport-2.10.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=daf84c096f775c175462858b52c8f75b
+_md5_=6758928783b6079c91416eb30ec7c7af

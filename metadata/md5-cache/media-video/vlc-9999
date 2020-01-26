@@ -11,5 +11,5 @@ RDEPEND=net-dns/libidn:= sys-libs/zlib[minizip] virtual/libintl virtual/opengl a
 REQUIRED_USE=chromecast? ( encode ) directx? ( ffmpeg ) fontconfig? ( truetype ) libcaca? ( X ) libtar? ( skins ) libtiger? ( kate ) postproc? ( ffmpeg ) skins? ( qt5 truetype X xml ) ssl? ( gcrypt ) vaapi? ( ffmpeg X ) vdpau? ( ffmpeg X )
 RESTRICT=!test? ( test )
 SLOT=0/12-9
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	cabe101302b461f32ecbc3767dfb9e23	git-r3	809e27702c573cbba31c08ed00bbad33	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	git-r3	809e27702c573cbba31c08ed00bbad33	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=0500571b0f21f00d272cad3686904681
