@@ -16842,7 +16842,7 @@ sys-apps/fwupdate 10 12: Tools for using the ESRT and UpdateCapsule() to apply f
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.0 5.0.1: GNU awk pattern-matching language
 sys-apps/gcp 0.2.1: File copying utility with progress and I/O indicator
-sys-apps/gentoo-functions 0.12 9999: base functions required by all Gentoo systems
+sys-apps/gentoo-functions 0.12 0.13 9999: base functions required by all Gentoo systems
 sys-apps/gentoo-systemd-integration 7 8 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.32.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
