@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 user
+inherit distutils-r1
 
 DESCRIPTION="A HTTP service for managing, selecting, and claiming cloud resources."
 HOMEPAGE="https://github.com/openstack/placement"
@@ -73,13 +73,10 @@ RDEPEND="${DEPEND}
 	>=dev-python/oslo-upgradecheck-0.2.0[${PYTHON_USEDEP}]
 	>=dev-python/os-resource-classes-0.5.0[${PYTHON_USEDEP}]
 	>=dev-python/os-traits-0.16.0[${PYTHON_USEDEP}]
-	>=dev-python/microversion-parse-0.2.1[${PYTHON_USEDEP}]"
+	>=dev-python/microversion-parse-0.2.1[${PYTHON_USEDEP}]
+	acct-user/placement
+	acct-group/placement"
 BDEPEND=""
-
-pkg_setup() {
-	enewgroup placement
-	enewuser placement -1 -1 /var/lib/placement placement
-}
 
 python_install_all() {
 	distutils-r1_python_install_all
