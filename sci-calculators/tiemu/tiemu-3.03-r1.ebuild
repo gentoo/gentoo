@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-remove_depreciated_gtk_calls.patch
 	"${FILESDIR}"/${P}-r2820.patch
+	"${FILESDIR}"/${P}-fix-ftbfs-with-customized-abort-function.patch
 )
 
 src_prepare() {
