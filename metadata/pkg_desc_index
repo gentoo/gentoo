@@ -9551,7 +9551,7 @@ dev-ruby/aws-sdk-core 2.11.79: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-resources 2.11.79: Official SDK for Amazon Web Services
 dev-ruby/aws-sigv4 1.0.3 1.1.0: Amazon Web Services Signature Version 4 signing library
 dev-ruby/axiom-types 0.1.1: Define types with optional constraints for use within axiom and other libraries
-dev-ruby/backports 3.11.4 3.15.0: Backports of Ruby features for older Ruby
+dev-ruby/backports 3.15.0: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.7 0.6.8: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/base32 0.3.2: A library which provides base32 decoding and encoding
@@ -9571,7 +9571,7 @@ dev-ruby/bones 3.8.4-r2: Tool that creates new Ruby projects from a code skeleto
 dev-ruby/bourne 1.6.0: Extends mocha to allow tracking and querying of stub and mock invocations
 dev-ruby/brass 1.2.1: BRASS is a very basic assertions framework for Ruby
 dev-ruby/bsearch 1.5.0-r2: A binary search library for Ruby
-dev-ruby/bson 4.4.2 4.5.0 4.6.0 4.7.0: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
+dev-ruby/bson 4.4.2 4.5.0 4.6.0 4.7.0 4.7.1: A Ruby BSON implementation for MongoDB. (Includes binary C-based extension.)
 dev-ruby/buftok 0.2.0-r1: Statefully split input data by a specifiable token
 dev-ruby/builder 3.2.3 3.2.4: A builder to facilitate programatic generation of XML markup
 dev-ruby/bundler 1.17.3 1.17.3-r1 2.1.2 2.1.3 2.1.4: An easy way to vendor gem dependencies
@@ -9902,7 +9902,7 @@ dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher
 dev-ruby/pygments_rb 1.2.1: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.14 1.4.16-r1: A LALR(1) parser generator for Ruby
-dev-ruby/rack 1.6.11 1.6.12 2.0.6 2.0.7 2.0.8: A modular Ruby webserver interface
+dev-ruby/rack 1.6.11 1.6.12 2.0.6 2.0.7 2.0.8 2.1.1: A modular Ruby webserver interface
 dev-ruby/rack-attack 5.4.2 6.2.0 6.2.1 6.2.2: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.9.0 1.10.0 1.11.0: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
@@ -10050,7 +10050,7 @@ dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
-dev-ruby/rubyzip 1.2.2 1.2.3 1.2.4 1.3.0 2.0.0: A ruby library for reading and writing zip files
+dev-ruby/rubyzip 1.2.2 1.2.3 1.2.4 1.3.0 2.0.0 2.1.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sanitize 4.6.6 5.0.0 5.1.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
@@ -10119,7 +10119,7 @@ dev-ruby/text 1.3.1: A collection of text algorithms
 dev-ruby/text-hyphen 1.4.1-r2: Hyphenates words according to the rules of the language the word is written in
 dev-ruby/textpow 1.4.0: A library to parse and process Textmate bundles
 dev-ruby/thor 0.20.3: A scripting framework that replaces rake and sake
-dev-ruby/thread_order 1.1.0 1.1.1: Test helper for ordering threaded code
+dev-ruby/thread_order 1.1.1: Test helper for ordering threaded code
 dev-ruby/thread_safe 0.3.6: A collection of thread-safe versions of common core Ruby classes
 dev-ruby/tidy-ext 0.1.14-r3: W3C HTML Tidy library implemented as a Ruby extension
 dev-ruby/tidy_table 0.0.5-r4 0.0.5-r5: Tool to convert an array of struct into an HTML table
@@ -16886,7 +16886,7 @@ sys-apps/inxi 3.0.33.1 3.0.34.1 3.0.36.1: The CLI inxi collects and prints hardw
 sys-apps/iotools 1.5: Simple commands to access hardware device registers
 sys-apps/ipmicfg 1.30.0.190710: An in-band utility for configuring Supermicro IPMI devices
 sys-apps/ipmitool 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
-sys-apps/ipmiutil 3.0.6 3.0.9 3.1.3 3.1.4 3.1.5: IPMI Management Utilities
+sys-apps/ipmiutil 3.0.6 3.0.9 3.1.3 3.1.4 3.1.5 3.1.5-r1: IPMI Management Utilities
 sys-apps/iproute2 4.19.0-r1 5.2.0-r1 5.3.0 5.4.0 9999: kernel routing and traffic control utilities
 sys-apps/irqbalance 1.5.0 1.6.0: Distribute hardware interrupts across processors on a multiprocessor system
 sys-apps/isapnptools 1.27: Tools for configuring ISA PnP devices
