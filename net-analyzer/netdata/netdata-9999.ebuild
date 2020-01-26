@@ -115,13 +115,10 @@ src_install() {
 
 	rm -rf "${D}/var/cache" || die
 
-	# Remove unneeded .keep files
-	find "${ED}" -name ".keep" -delete || die
-
-	fowners -Rc netdata:netdata /var/log/netdata
 	keepdir /var/log/netdata
-	fowners -Rc netdata:netdata /var/lib/netdata
+	fowners -Rc netdata:netdata /var/log/netdata
 	keepdir /var/lib/netdata
+	fowners -Rc netdata:netdata /var/lib/netdata
 	keepdir /var/lib/netdata/registry
 
 	fowners -Rc root:netdata /usr/share/${PN}
