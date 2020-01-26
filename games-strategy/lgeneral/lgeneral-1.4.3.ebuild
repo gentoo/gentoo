@@ -1,14 +1,14 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools desktop gnome2-utils
+EAPI=7
 
-MY_P="${P/_/}"
-MY_P="${MY_P/beta/beta-}"
+inherit desktop xdg
+
 DESCRIPTION="A Panzer General clone written in SDL"
 HOMEPAGE="http://lgames.sourceforge.net/LGeneral/"
-SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
+SRC_URI="
+	mirror://sourceforge/${PN}/${P}.tar.gz
 	mirror://sourceforge/${PN}/pg-data.tar.gz"
 
 LICENSE="GPL-2+"
@@ -19,25 +19,14 @@ IUSE="nls"
 RDEPEND="
 	media-libs/libsdl[sound,video]
 	media-libs/sdl-mixer
-	nls? ( virtual/libintl )
-"
-DEPEND="${RDEPEND}
-	sys-devel/gettext
-"
+	nls? ( virtual/libintl )"
+DEPEND="${RDEPEND}"
+BDEPEND="sys-devel/gettext"
 
-S="${WORKDIR}/${MY_P}"
+PATCHES=( "${FILESDIR}"/${PN}-1.4.3-fix-utf8.patch )
 
 src_prepare() {
 	default
-	sed -i \
-		-e '/desktop_DATA/d' \
-		-e '/icon_DATA/d' \
-		Makefile.am || die
-
-	cp /usr/share/gettext/config.rpath .
-	rm -f missing
-	mv configure.in configure.ac
-	eautoreconf
 
 	# Build a temporary lgc-pg that knows about ${WORKDIR}:
 	cp -pPR "${S}" "${WORKDIR}"/tmp-build || die
@@ -67,8 +56,7 @@ src_compile() {
 	emake
 
 	# Build the temporary lgc-pg:
-	cd "${WORKDIR}"/tmp-build || die
-	emake
+	emake -C "${WORKDIR}"/tmp-build
 }
 
 src_install() {
@@ -83,16 +71,4 @@ src_install() {
 
 	doicon -s 48 lgeneral.png
 	make_desktop_entry ${PN} LGeneral
-}
-
-pkg_preinst() {
-	gnome2_icon_savelist
-}
-
-pkg_postinst() {
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
 }
