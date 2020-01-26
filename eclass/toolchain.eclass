@@ -78,7 +78,7 @@ GCCMICRO=$(ver_cut 3 ${GCC_PV})
 # same name.
 # TODO: once ada ebuilds are fixed turn it to
 #     GCC_CONFIG_VER=${GCC_RELEASE_VER}
-GCC_CONFIG_VER=${GCC_CONFIG_VER:-GCC_RELEASE_VER}
+GCC_CONFIG_VER=${GCC_CONFIG_VER:-${GCC_RELEASE_VER}}
 
 # Pre-release support. Versioning schema:
 # 1.0.0_pre9999: live ebuild
