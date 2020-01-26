@@ -37,9 +37,6 @@ RESTRICT="!test? ( test )"
 S="${WORKDIR}/actor-framework-${PV}"
 
 src_prepare() {
-	append-cflags "-std=c++11 -Wextra -Wall -pedantic"
-	append-cxxflags "-std=c++11 -Wextra -Wall -pedantic"
-
 	rm -rf libcaf_python/third_party || die
 
 	if use python; then
