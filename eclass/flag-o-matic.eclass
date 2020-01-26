@@ -474,7 +474,7 @@ test-flag-PROG() {
 			cmdline_extra+=(-xc)
 			;;
 	esac
-	local test_in=${T}/test-flag.${lang}
+	local test_in=${T}/test-flag.${in_ext}
 	local test_out=${T}/test-flag.exe
 
 	printf "%s\n" "${in_src}" > "${test_in}" || return 1
