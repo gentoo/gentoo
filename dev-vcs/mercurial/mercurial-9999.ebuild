@@ -48,14 +48,17 @@ python_prepare_all() {
 	# certain cases), bug #362891
 	sed -i -e 's:xcodebuild:nocodebuild:' setup.py || die
 	sed -i -e '/    hgenv =/a\' -e '    hgenv.pop("PYTHONPATH", None)' setup.py || die
-	cp "${FILESDIR}/zstd.py" mercurial/
+	# Use absolute import for zstd
+	sed -i -e 's/from \.* import zstd/import zstd/' \
+		mercurial/utils/compression.py \
+		mercurial/wireprotoframing.py || die
 
 	distutils-r1_python_prepare_all
 }
 
 python_compile() {
 	strip-flags -ftracer -ftree-vectorize
-	python_is_python3 || append-flags -fno-strict-aliasing
+	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	distutils-r1_python_compile build_ext --no-zstd
 }
 
