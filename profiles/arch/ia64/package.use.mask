@@ -2,8 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
-# dev-lang/go is not keyworded
-media-libs/libheif test
+# media-libs/libheif is not keyworded
+media-gfx/gimp heif
 
 # David Seifert <soap@gentoo.org> (2020-01-26)
 # media-libs/libkate is not keyworded on ia64 anymore

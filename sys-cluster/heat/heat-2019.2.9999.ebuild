@@ -124,15 +124,12 @@ RDEPEND="
 	>=dev-python/sqlalchemy-migrate-0.11.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.7.1[${PYTHON_USEDEP}]
-	>=dev-python/yaql-1.1.3[${PYTHON_USEDEP}]"
+	>=dev-python/yaql-1.1.3[${PYTHON_USEDEP}]
+	acct-user/heat
+	acct-group/heat"
 
 PATCHES=(
 )
-
-pkg_setup() {
-	enewgroup heat
-	enewuser heat -1 -1 /var/lib/heat heat
-}
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
