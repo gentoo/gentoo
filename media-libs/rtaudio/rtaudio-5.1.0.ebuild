@@ -11,7 +11,7 @@ SRC_URI="https://www.music.mcgill.ca/~gary/${PN}/release/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/6"
-KEYWORDS="amd64 ~arm64 x86"
+KEYWORDS="amd64 ~arm64 ~ppc64 x86"
 IUSE="+alsa doc jack pulseaudio static-libs"
 REQUIRED_USE="|| ( alsa jack pulseaudio )"
 
