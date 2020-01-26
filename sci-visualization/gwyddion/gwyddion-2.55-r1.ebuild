@@ -12,7 +12,7 @@ SRC_URI="http://gwyddion.net/download/${PV}/${P}.tar.xz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="doc fits gnome nls openexr opengl perl ruby sourceview xml X"
+IUSE="doc fits gnome nls openexr perl ruby sourceview xml X"
 
 RDEPEND="
 	>=dev-libs/glib-2.32
@@ -26,7 +26,6 @@ RDEPEND="
 	fits? ( sci-libs/cfitsio )
 	gnome? ( gnome-base/gconf:2 )
 	openexr? ( media-libs/openexr:= )
-	opengl? ( virtual/opengl x11-libs/gtkglext )
 	perl? ( dev-lang/perl:= )
 	ruby? ( dev-ruby/narray )
 	sourceview? ( x11-libs/gtksourceview:2.0 )
@@ -57,7 +56,7 @@ src_configure() {
 		$(use_with perl) \
 		--without-python \
 		$(use_with ruby) \
-		$(use_with opengl gl) \
+		--without-gl \
 		$(use_with openexr exr) \
 		$(use_with sourceview gtksourceview) \
 		$(use_with xml libxml2) \
