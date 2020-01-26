@@ -2471,7 +2471,7 @@ app-shells/shish 0.7_pre3-r1: The diet shell
 app-shells/smrsh 8.15.2: Sendmail restricted shell, for use with MTAs other than Sendmail
 app-shells/soapbox 0.3.1-r2: A preload (sandbox) library to restrict filesystem writes
 app-shells/squirrelsh 1.2.7: Cross-platform object-oriented scripting shell using the squirrel language
-app-shells/tcsh 6.20.00 6.21.00: Enhanced version of the Berkeley C shell (csh)
+app-shells/tcsh 6.20.00 6.21.00-r1: Enhanced version of the Berkeley C shell (csh)
 app-shells/thefuck 3.27 3.28: Magnificent app which corrects your previous console command
 app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/yash 2.48 2.49: Yash is a POSIX-compliant command line shell
@@ -10549,8 +10549,8 @@ dev-util/gperf 3.1: A perfect hash function generator
 dev-util/gprof2dot 2013.05.17 2016.10.13 2017.09.19 2019.11.30: Converts profiling output to dot graphs
 dev-util/gquilt 0.25-r1: A Python/GTK wrapper for quilt
 dev-util/gtk-builder-convert 2.24.32: Converts Glade files to GtkBuilder XML format
-dev-util/gtk-doc 1.25-r1: GTK+ Documentation Generator
-dev-util/gtk-doc-am 1.25-r1: Automake files from gtk-doc
+dev-util/gtk-doc 1.25-r1 1.32: GTK+ Documentation Generator
+dev-util/gtk-doc-am 1.25-r1 1.32: Automake files from gtk-doc
 dev-util/gtk-update-icon-cache 3.24.11 3.24.13: GTK update icon cache
 dev-util/gyp 20170904022846 99999999999999: GYP (Generate Your Projects) meta-build system
 dev-util/heaptrack 9999: Fast heap memory profiler
