@@ -54,7 +54,10 @@ BDEPEND="
 	>=sys-devel/gettext-0.18
 	virtual/pkgconfig
 "
-PATCHES=( "${FILESDIR}/${PV}-make-spell-optional.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PV}-make-spell-optional.patch
+	"${FILESDIR}"/${PV}-fix-parallel-build.patch # parallel build failure fix, included in 3.34
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
