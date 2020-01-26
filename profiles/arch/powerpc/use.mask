@@ -4,6 +4,10 @@
 # PPC Specific use flags
 #
 
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
+# Requires qtwebengine, which is not ported to any of powerpc arches yet
+webengine
+
 # Matt Turner <mattst88@gentoo.org> (2018-09-18)
 # sci-libs/coinor-mp is not keyworded
 coinmp
