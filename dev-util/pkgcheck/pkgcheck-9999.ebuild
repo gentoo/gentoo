@@ -14,7 +14,7 @@ else
 	SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 fi
 
-DESCRIPTION="pkgcore-based QA utility"
+DESCRIPTION="pkgcore-based QA utility for ebuild repos"
 HOMEPAGE="https://github.com/pkgcore/pkgcheck"
 
 LICENSE="BSD"
@@ -28,8 +28,8 @@ if [[ ${PV} == *9999 ]]; then
 		~sys-apps/pkgcore-9999[${PYTHON_USEDEP}]"
 else
 	RDEPEND="
-		>=dev-python/snakeoil-0.8.5[${PYTHON_USEDEP}]
-		>=sys-apps/pkgcore-0.10.9[${PYTHON_USEDEP}]"
+		>=dev-python/snakeoil-0.8.7[${PYTHON_USEDEP}]
+		>=sys-apps/pkgcore-0.10.11[${PYTHON_USEDEP}]"
 fi
 RDEPEND+="
 	dev-python/chardet[${PYTHON_USEDEP}]
