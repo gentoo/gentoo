@@ -139,6 +139,12 @@ out=$(test-flags-CC -O3)
 [[ $? -eq 0 && ${out} == "-O3" ]]
 ftend
 
+tbegin "test-flags-CC (valid flags, absolute path)"
+absolute_CC=$(type -P $(tc-getCC))
+out=$(CC=${absolute_CC} test-flags-CC -O3)
+[[ $? -eq 0 && ${out} == "-O3" ]]
+ftend
+
 tbegin "test-flags-CC (invalid flags)"
 out=$(test-flags-CC -finvalid-flag)
 [[ $? -ne 0 && -z ${out} ]]
