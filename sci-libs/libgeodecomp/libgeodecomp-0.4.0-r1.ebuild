@@ -12,7 +12,7 @@ SRC_URI="http://www.libgeodecomp.org/archive/${P}.tar.bz2"
 SLOT="0"
 LICENSE="Boost-1.0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="doc mpi cuda opencl opencv silo hpx visit"
+IUSE="cuda doc hpx mpi opencl opencv silo"
 
 BDEPEND="
 	doc? (
