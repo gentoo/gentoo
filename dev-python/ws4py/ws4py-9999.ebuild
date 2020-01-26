@@ -7,7 +7,7 @@
 # pypy is viable but better with a cutdown set of deps
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="threads?"
 
 inherit distutils-r1
@@ -30,7 +30,6 @@ RESTRICT="!test? ( test )"
 # doc build requires sphinxcontrib ext packages absent from portage
 
 RDEPEND=">=dev-python/greenlet-0.4.1[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/gevent[${PYTHON_USEDEP}]' python2_7)
 		>=dev-python/cython-0.19.1[${PYTHON_USEDEP}]
 		client? ( >=www-servers/tornado-3.1[${PYTHON_USEDEP}] )
 		server? ( >=dev-python/cherrypy-3.2.4[${PYTHON_USEDEP}] )"
