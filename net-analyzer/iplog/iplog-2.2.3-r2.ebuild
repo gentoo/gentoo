@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/ojnk/${P}.tar.gz"
 
 LICENSE="|| ( GPL-2 FDL-1.1 )"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~mips ppc sparc x86"
+KEYWORDS="~alpha ~amd64 ~mips ppc sparc x86"
 
 DEPEND="net-libs/libpcap"
 RDEPEND="${DEPEND}"

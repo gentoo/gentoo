@@ -11,7 +11,7 @@ SRC_URI="http://${PN}.free.fr/Xdialog-${PV}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ppc x86"
+KEYWORDS="~alpha amd64 ~hppa ppc x86"
 IUSE="doc examples nls"
 
 RDEPEND="

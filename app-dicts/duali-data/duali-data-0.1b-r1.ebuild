@@ -9,7 +9,7 @@ SRC_URI="mirror://sourceforge/arabeyes/${P}.tar.gz"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ~hppa ~ia64 ~mips ~ppc ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~sparc x86"
 IUSE=""
 
 DEPEND=">=app-text/duali-0.2.0-r1"

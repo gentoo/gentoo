@@ -22,7 +22,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
 IUSE="l10n_de l10n_en l10n_fr l10n_es"
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 ia64 ~mips ppc sparc x86"
 
 DEPEND="
 	>=app-editors/gvim-7.0

@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/n/netkit-routed/${PN}_${PV}.orig.tar.gz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~mips ppc sparc x86"
+KEYWORDS="~alpha ~amd64 ~mips ppc sparc x86"
 IUSE=""
 
 src_prepare() {

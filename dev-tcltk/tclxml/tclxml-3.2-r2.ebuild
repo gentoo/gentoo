@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/tclxml/${P}.tar.gz"
 IUSE="debug threads"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ppc sparc x86"
 
 DEPEND="
 	>=dev-lang/tcl-8.2:0

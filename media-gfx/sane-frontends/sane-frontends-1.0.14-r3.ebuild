@@ -9,7 +9,7 @@ SRC_URI="https://alioth.debian.org/frs/download.php/file/1140/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 IUSE="gimp gtk"
 
 RDEPEND="

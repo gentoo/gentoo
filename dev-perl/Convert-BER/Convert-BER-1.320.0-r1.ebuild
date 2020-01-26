@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Class for encoding/decoding BER messages"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ppc x86"
+KEYWORDS="~alpha amd64 ppc x86"
 IUSE=""
 
 SRC_TEST=do

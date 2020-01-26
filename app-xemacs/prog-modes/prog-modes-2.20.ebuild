@@ -23,6 +23,6 @@ app-xemacs/ilisp
 app-xemacs/sh-script
 app-xemacs/cedet-common
 "
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages

@@ -11,7 +11,7 @@ SRC_URI="http://pop-club.hp.infoseek.co.jp/emacs/emacs-wget/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 ~sparc x86"
 IUSE="l10n_ja"
 
 RDEPEND=">=net-misc/wget-1.8.2"

@@ -11,7 +11,7 @@ SRC_URI="http://www.qpage.org/download/${P}.tar.Z"
 
 LICENSE="qpage"
 SLOT="0"
-KEYWORDS="alpha amd64 x86"
+KEYWORDS="~alpha amd64 x86"
 IUSE="tcpd"
 
 DEPEND="tcpd? ( sys-apps/tcp-wrappers )"
