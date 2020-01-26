@@ -8817,7 +8817,7 @@ dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.4.0 1.4.2 9999: Python 3 library for XMPP
 dev-python/smmap 0.9.0: A pure git implementation of a sliding window memory map manager
 dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory map manager
-dev-python/snakeoil 0.7.5 0.8.5 9999: misc common functionality and useful optimizations
+dev-python/snakeoil 0.7.5 0.8.5 0.8.7 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.5-r2 0.5.1: Python library for the snappy compression library from Google
 dev-python/snowballstemmer 1.2.0 1.2.1: Stemmer algorithms generated from Snowball algorithms
@@ -10635,7 +10635,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 4.14.33-r1 4.20.3 5.3.7 5.4.7: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.3 0.7.4 9999: pkgcore-based QA utility
+dev-util/pkgcheck 0.7.4 0.7.5 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
@@ -16959,7 +16959,7 @@ sys-apps/pcsc-lite 1.8.25-r1 1.8.26: PC/SC Architecture smartcard middleware lib
 sys-apps/pcsc-slb-rf72-drv 1.1.0-r2: Schlumberger Reflex 72 Serial Smartcard Reader
 sys-apps/pcsc-tools 1.5.3 1.5.5: PC/SC Architecture smartcard tools
 sys-apps/pick 3.0.1: a fuzzy search tool for the command-line
-sys-apps/pkgcore 0.10.9 9999: a framework for package management
+sys-apps/pkgcore 0.10.9 0.10.11 9999: a framework for package management
 sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to mount removable devices as a user
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
@@ -17557,7 +17557,7 @@ sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.96 4.19.97 4.19.98 5.4.12 5.4.13 5.4.14: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 4.19.96 4.19.98 5.4.12 5.4.13 5.4.14: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.81 4.4.211 4.9.211 4.14.167 4.19.98 5.4.13: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.81 4.4.211 4.9.211 4.14.167 4.19.98 5.4.15: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 4.14.9999 4.15.9999 4.16.9999: The Zen Kernel Live Sources
