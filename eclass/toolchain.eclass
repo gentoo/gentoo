@@ -568,8 +568,10 @@ toolchain_src_prepare() {
 	gcc_version_patch
 
 	if tc_version_is_at_least 4.1 ; then
-		if [[ -n ${SNAPSHOT} ]] || tc_is_live ; then
-			echo "${GCC_CONFIG_VER}" > "${S}"/gcc/BASE-VER
+		local actual_version=$(< "${S}"/gcc/BASE-VER)
+		if [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
+			eerror "'${S}/gcc/BASE-VER' contains '${actual_version}', expected '${GCC_RELEASE_VER}'"
+			die "Please rename ebuild to '${PN}-${actual_version}...'"
 		fi
 	fi
 
@@ -799,7 +801,7 @@ gcc_version_patch() {
 	# gcc-4.3+ has configure flags (whoo!)
 	tc_version_is_at_least 4.3 && return 0
 
-	local version_string=${GCC_CONFIG_VER}
+	local version_string=${GCC_RELEASE_VER}
 
 	einfo "patching gcc version: ${version_string} (${BRANDING_GCC_PKGVERSION})"
 
