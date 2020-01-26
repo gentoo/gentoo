@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Robin H. Johnson <robbat2@gentoo.org> (2020-01-26)
+# EAPI conversion caused some regressions, need to redesign old ebuilds.
+=dev-lang/lua-5.1.5-r5
+
 # David Seifert <soap@gentoo.org> (2020-01-26)
 # Unmaintained, last release 14 years ago, tons of patches,
 # Autoconf script is broken, fails with gettext-0.20.
