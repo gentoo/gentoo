@@ -7260,6 +7260,7 @@ sci-electronics/ngspice:deprecated - Build old and deprecated apps
 sci-electronics/ngspice:shared - Build ngspice as a shared library
 sci-electronics/pcb:gcode - gcode file export
 sci-electronics/pcb:gif - GIF graphics export
+sci-electronics/pcb:gsvit - GSvit file export
 sci-electronics/pcb:jpeg - JPEG graphics export
 sci-electronics/pcb:m4lib-png - Enable creating png previews for the m4 library
 sci-electronics/pcb:nelma - NELMA file export

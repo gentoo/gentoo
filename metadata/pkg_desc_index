@@ -15973,7 +15973,7 @@ sci-electronics/gazebo 10.1.0: A 3D multiple robot simulator with dynamics
 sci-electronics/geda 1.9.2-r1: GPL Electronic Design Automation (gEDA):gaf core package
 sci-electronics/geda-suite 20171223: Metapackage for all components for a full-featured gEDA/gaf system
 sci-electronics/geda-xgsch2pcb 0.1.3-r3 0.1.3-r4: A graphical front-end for the gschem -> pcb workflow
-sci-electronics/gerbv 2.6.0 2.6.1: A RS-274X (Gerber) and NC drill (Excellon) file viewer
+sci-electronics/gerbv 2.6.0 2.6.1 2.7.0: A RS-274X (Gerber) and NC drill (Excellon) file viewer
 sci-electronics/gnetman 0.0.1_pre20110124: A GNU Netlist Manipulation Library
 sci-electronics/gnucap 0.35.20091207-r1: GNUCap is the GNU Circuit Analysis Package
 sci-electronics/gresistor 0.0.2: Translate a resistor color codes into a readable value
@@ -15999,7 +15999,7 @@ sci-electronics/magic 7.5.202-r1 7.5.231 8.0.138 8.0.207: The VLSI design CAD to
 sci-electronics/netgen 1.4.52: LVS tool (layout versus schematic comparison)
 sci-electronics/ngspice 27 27-r1 31-r1: The Next Generation Spice (Electronic Circuit Simulator)
 sci-electronics/osqoop 1.2.0_pre20170131: Multi-platform open source software oscilloscope based on Qt
-sci-electronics/pcb 0_p20140316 4.0.2: GPL Electronic Design Automation: Printed Circuit Board editor
+sci-electronics/pcb 0_p20140316 4.0.2 4.2.2: GPL Electronic Design Automation: Printed Circuit Board editor
 sci-electronics/petrify 4.2-r1: Synthesize Petri nets into asynchronous circuits
 sci-electronics/puff 20100127-r1: microwave CAD software
 sci-electronics/pulseview 0.4.1 9999: Qt based logic analyzer GUI for sigrok
