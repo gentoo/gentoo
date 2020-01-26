@@ -1,5 +1,7 @@
---- /utils/key2pub.py
-+++ /utils/key2pub.py
+diff --git a/utils/key2pub.py b/utils/key2pub.py
+index 9bb04cd..632e6a6 100755
+--- a/utils/key2pub.py
++++ b/utils/key2pub.py
 @@ -3,20 +3,20 @@
  import sys
  try:
@@ -25,7 +27,7 @@
          val = val[8:]
      vnew.reverse()
      output.write('static BN_ULONG %s[%d] = {\n' % (name, len(vnew)))
-@@ -34,13 +34,13 @@
+@@ -34,13 +34,13 @@ def print_ssl_64(output, name, val):
      output.write('};\n\n')
  
  def print_ssl_32(output, name, val):
@@ -42,7 +44,7 @@
          val = val[4:]
      vnew.reverse()
      output.write('static BN_ULONG %s[%d] = {\n' % (name, len(vnew)))
-@@ -80,21 +80,21 @@
+@@ -80,21 +80,21 @@ struct pubkey {
  
  static struct pubkey keys[] = {
  ''')
@@ -67,16 +69,16 @@
          idx += 1
          if idx == 8:
              idx = 0
-@@ -117,7 +117,7 @@
+@@ -117,7 +117,7 @@ struct key_params {
  
- static const struct key_params keys[] = {
+ static const struct key_params __attribute__ ((unused)) keys[] = {
  ''')
 -    for n in xrange(n + 1):
 +    for n in range(n + 1):
          output.write('	KEYS(e_%d, n_%d),\n' % (n, n))
      output.write('};\n')
      
-@@ -135,7 +135,7 @@
+@@ -135,7 +135,7 @@ except IndexError:
      mode = None
  
  if not mode in modes:
@@ -85,7 +87,7 @@
      sys.exit(2)
  
  output = open(outfile, 'w')
-@@ -153,3 +153,5 @@
+@@ -153,3 +153,5 @@ for f in files:
      idx += 1
  
  modes[mode][1](output, idx - 1)
