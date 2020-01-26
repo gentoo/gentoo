@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Bringing loggers and listeners together"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ppc sparc x86"
 IUSE="test minimal"
 RESTRICT="!test? ( test )"
 

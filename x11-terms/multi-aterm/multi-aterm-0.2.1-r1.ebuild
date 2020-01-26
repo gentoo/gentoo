@@ -11,7 +11,7 @@ SRC_URI="http://www.nongnu.org/materm/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~mips ppc sparc x86"
+KEYWORDS="~alpha amd64 hppa ~mips ppc sparc x86"
 IUSE="cjk debug jpeg png"
 
 RDEPEND="x11-libs/libXpm

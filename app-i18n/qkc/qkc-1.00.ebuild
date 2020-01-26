@@ -13,7 +13,7 @@ SRC_URI="http://hp.vector.co.jp/authors/VA000501/${MY_P}.zip"
 
 LICENSE="freedist"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"

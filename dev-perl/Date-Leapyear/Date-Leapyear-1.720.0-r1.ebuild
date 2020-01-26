@@ -10,7 +10,7 @@ inherit perl-module
 DESCRIPTION="Simple Perl module that tracks Gregorian leap years"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ppc ppc64 x86"
+KEYWORDS="~alpha amd64 ppc ppc64 x86"
 IUSE=""
 
 SRC_TEST="do"

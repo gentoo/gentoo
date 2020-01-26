@@ -15,6 +15,6 @@ app-xemacs/speedbar
 app-xemacs/sh-script
 app-xemacs/xemacs-eterm
 "
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages
