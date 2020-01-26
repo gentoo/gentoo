@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1 eutils linux-info multilib user
+inherit distutils-r1 eutils linux-info multilib
 
 DESCRIPTION="Cloud computing fabric controller (main part of an IaaS system) in Python"
 HOMEPAGE="https://launchpad.net/nova"
@@ -145,7 +145,9 @@ RDEPEND="
 	iscsi? (
 		sys-fs/lsscsi
 		>=sys-block/open-iscsi-2.0.873-r1
-	)"
+	)
+	acct-user/nova
+	acct-group/nova"
 
 #PATCHES=(
 #)
@@ -161,8 +163,6 @@ pkg_setup() {
 			linux_chkconfig_present ${module} || ewarn "${module} needs to be enabled in kernel"
 		done
 	fi
-	enewgroup nova
-	enewuser nova -1 -1 /var/lib/nova nova
 }
 
 python_prepare_all() {
