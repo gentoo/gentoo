@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="5"
 
 inherit eutils
 
@@ -13,7 +13,7 @@ SRC_URI="
 
 LICENSE="cadsoft-2"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 IUSE="doc"
 
 QA_PREBUILT="opt/eagle/bin/eagle"
@@ -21,7 +21,7 @@ RESTRICT="mirror bindist"
 
 RDEPEND="
 	sys-libs/glibc
-	dev-libs/openssl:0
+	|| ( <dev-libs/openssl-1.1 dev-libs/openssl-compat:1.0.0 )
 	>=sys-libs/zlib-1.2.8-r1
 	>=media-libs/freetype-2.5.0.1
 	>=media-libs/fontconfig-2.10.92
