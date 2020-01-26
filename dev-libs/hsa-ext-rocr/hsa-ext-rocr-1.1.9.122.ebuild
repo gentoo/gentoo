@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -39,7 +39,7 @@ src_install() {
 	into "${destdir}"
 	for solib in ${solibs_to_install[@]}; do
 		dolib.so "opt/rocm/hsa/lib/${solib}.${soversion}"
-		dosym "${EPREFIX}${destdir}/$(get_libdir)/${solib}.${soversion}" "${EPREFIX}usr/$(get_libdir)/${solib}.${soversion}"
-		dosym "${solib}.${soversion}" "${EPREFIX}usr/$(get_libdir)/${solib}.${somajor}"
+		dosym "${EPREFIX}/${destdir}/$(get_libdir)/${solib}.${soversion}" "${EPREFIX}/usr/$(get_libdir)/${solib}.${soversion}"
+		dosym "${solib}.${soversion}" "${EPREFIX}/usr/$(get_libdir)/${solib}.${somajor}"
 	done
 }
