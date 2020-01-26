@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
+# dev-lang/go is not keyworded
+media-libs/libheif test
+
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
 # dev-libs/criterion is not keyworded yet
 app-admin/syslog-ng test
