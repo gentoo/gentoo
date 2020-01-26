@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # David Seifert <soap@gentoo.org> (2020-01-27)
+# Unmaintained, py2 only, depends on dead dev-python/pygtkglext, last release
+# over 8 years ago, no sign of py3 port. Removal in 30 days.
+sci-libs/pymmlib
+
+# David Seifert <soap@gentoo.org> (2020-01-27)
 # Unmaintained, py2 only, depends on dead dev-python/pygtkglext and
 # dev-python/librsvg-python, no revdeps.
 # Removal in 30 days.  Bug #640074.
