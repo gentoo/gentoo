@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-01-26)
+# Unmaintained in Gentoo.  Last bumped in 2013.  Multiple problems
+# reported both in release and live ebuild.  Python 2 only.  Version
+# bump is non-trivial.
+# Removal in 30 days.  Bug #706498.
+app-vim/youcompleteme
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-26)
 # Starting with Firefox 74 Mozilla removes xpi sideloading support
 # install from addons.mozilla.org
