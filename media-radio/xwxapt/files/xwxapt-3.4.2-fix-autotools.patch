@@ -1,5 +1,26 @@
---- Makefile.am.orig	2018-01-22 19:40:47.638751354 +0100
-+++ Makefile.am	2018-01-22 19:41:28.830090441 +0100
+--- a/configure.ac
++++ b/configure.ac
+@@ -35,17 +35,16 @@
+ AC_CHECK_LIB([gmodule-2.0], [g_module_open])
+ 
+ # Internationalization tools
++AM_GNU_GETTEXT([external])
+ AM_GNU_GETTEXT_VERSION([0.19.8])
+ GETTEXT_PACKAGE=xwxapt
+ AC_SUBST(GETTEXT_PACKAGE)
+ AC_DEFINE_UNQUOTED([GETTEXT_PACKAGE], ["$GETTEXT_PACKAGE"], [Gettext package.])
+-AM_GNU_GETTEXT
+ PROGRAMNAME_LOCALEDIR=[${datadir}/locale]
+ AC_SUBST(PROGRAMNAME_LOCALEDIR)
+ 
+ # Add the languages which your application supports here.
+ ALL_LINGUAS=""
+-AM_GNU_GETTEXT
+ 
+ # Checks for header files.
+ AC_CHECK_HEADERS([libintl.h stdlib.h string.h unistd.h])
+--- a/Makefile.am
++++ b/Makefile.am
 @@ -48,18 +48,5 @@
  	if test -d files/; then \
  	  cp files/$(PACKAGE).desktop $(DESTDIR)/usr/share/applications/; \
