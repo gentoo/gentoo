@@ -569,11 +569,7 @@ toolchain_src_prepare() {
 
 	if tc_version_is_at_least 4.1 ; then
 		if [[ -n ${SNAPSHOT} ]] || tc_is_live ; then
-			# followed by an optional -pre string
-			#   eg. 4.5.1, 4.6.2-pre20120213, 4.7.0-pre9999
-			# If BASE-VER differs from ${PV/_/-} then libraries get installed in
-			# the wrong directory.
-			echo ${PV/_/-} > "${S}"/gcc/BASE-VER
+			echo "${GCC_CONFIG_VER}" > "${S}"/gcc/BASE-VER
 		fi
 	fi
 
