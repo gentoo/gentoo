@@ -3,6 +3,9 @@
 
 EAPI=7
 
+# Upstream aircrack-ng supports python 3.x but lorcon doesn't yet and
+# it is needed for airdrop-ng. Will adjust when ready.
+#PYTHON_COMPAT=( python2_7 python3_{6,7,8})
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
@@ -17,7 +20,7 @@ if [[ ${PV} == "9999" ]] ; then
 else
 	MY_PV=${PV/_/-}
 	SRC_URI="https://download.aircrack-ng.org/${P}.tar.gz"
-	KEYWORDS="amd64 arm ~arm64 ~ppc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"
