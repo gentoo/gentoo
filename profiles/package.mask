@@ -32,6 +32,35 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-01-27)
+# Removal requested by proxied maintainer:
+# "Game already available in Valve Steam."
+# License issues, unclear if zipball is redistributable.
+# Masked for removal in 30 days. Bug #703496.
+games-action/cs2d
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-27)
+# Old split Twisted and related packages with no reverse dependencies
+# and only Python 2 support.
+# Removal in 30 days.  Bug #706636.
+dev-python/axiom
+dev-python/epsilon
+dev-python/pyutil
+dev-python/twisted-conch
+dev-python/twisted-lore
+dev-python/twisted-mail
+dev-python/twisted-news
+dev-python/twisted-pair
+dev-python/twisted-runner
+dev-python/vertex
+dev-util/buildbot-slave
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-27)
+# Dead upstream.  Last (alpha) release in 2007.  Requires old version
+# of Twisted.  Python 2-only.
+# Removal in 30 days.  Bug #660660.
+dev-python/zsi
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-26)
 # Not needed anymore, feel free to remove from your system
 # emerge -C virtual/cargo

@@ -17,10 +17,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 
 #BDEPEND="
 #	test? (
+#		net-proxy/3proxy
 #		$(python_gen_cond_dep 'dev-python/test_server[${PYTHON_USEDEP}]' -3)
 #	)"
 
-# TODO: unbundle 3proxy
 #distutils_enable_tests pytest
 
 # tests fail semi-randomly; probably starting proxy server doesn't work
@@ -31,6 +31,11 @@ src_prepare() {
 	local PATCHES=(
 		"${FILESDIR}"/PySocks-1.7.1-test_server.patch
 	)
+
+	rm test/bin/3proxy || die
+#	if use test; then
+#		ln -s "${BROOT}/usr/bin/3proxy" test/bin/3proxy || die
+#	fi
 
 	# requires Internet
 	sed -i -e 's:test_socks5_proxy_connect_timeout:_&:' \
