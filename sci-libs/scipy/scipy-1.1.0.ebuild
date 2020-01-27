@@ -26,8 +26,7 @@ RESTRICT="!test? ( test )"
 KEYWORDS="amd64 ~arm ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 
 CDEPEND="
-	$(python_gen_cond_dep '|| ( dev-python/numpy-python2[${PYTHON_USEDEP}] >=dev-python/numpy-1.7.1[${PYTHON_USEDEP}] )' 'python2*')
-	$(python_gen_cond_dep '>=dev-python/numpy-1.7.1[${PYTHON_USEDEP}]' 'python3*')
+	>=dev-python/numpy-1.10[lapack,${PYTHON_USEDEP}]
 	sci-libs/arpack:0=
 	virtual/cblas
 	virtual/lapack
