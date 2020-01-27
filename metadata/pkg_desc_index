@@ -8037,7 +8037,7 @@ dev-python/markdown2 2.3.0: Python Markdown language reimplementation
 dev-python/markups 3.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23 1.0 1.1.1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 2.20.2 2.20.5 3.0.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
-dev-python/matplotlib 2.2.2-r1 2.2.4 3.1.2: Pure python plotting library with matlab like syntax
+dev-python/matplotlib 2.2.2-r2 2.2.4-r1 3.1.2: Pure python plotting library with matlab like syntax
 dev-python/matplotlib2tikz 0.6.18: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/matterhook 0.1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.2.1 0.6.1 0.6.1-r1: flake8 plugin: McCabe complexity checker
@@ -16300,7 +16300,7 @@ sci-libs/scikits_image 0.13.0-r1: Image processing routines for SciPy
 sci-libs/scikits_learn 0.19.0-r1 0.20.2 0.20.4: Python modules for machine learning and data mining
 sci-libs/scikits_optimization 0.3-r1: Python module for numerical optimization
 sci-libs/scikits_timeseries 0.91.3-r2: SciPy module for manipulating, reporting, and plotting time series
-sci-libs/scipy 1.1.0 1.4.1 9999: Scientific algorithms library for Python
+sci-libs/scipy 1.1.0-r2 1.4.1 9999: Scientific algorithms library for Python
 sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh and hypergraph partitioning
 sci-libs/shapelib 1.4.0-r1 1.4.1 1.5.0: Library for manipulating ESRI Shapefiles
 sci-libs/shogun 5.0.0: Large Scale Machine Learning Toolbox
