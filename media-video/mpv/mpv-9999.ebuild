@@ -8,7 +8,7 @@ PYTHON_REQ_USE='threads(+)'
 
 WAF_PV=2.0.9
 
-inherit eapi7-ver flag-o-matic gnome2-utils pax-utils python-r1 toolchain-funcs waf-utils xdg-utils
+inherit bash-completion-r1 eapi7-ver flag-o-matic gnome2-utils pax-utils python-r1 toolchain-funcs waf-utils xdg-utils
 
 DESCRIPTION="Media player based on MPlayer and mplayer2"
 HOMEPAGE="https://mpv.io/ https://github.com/mpv-player/mpv"
@@ -61,7 +61,7 @@ RESTRICT="!test? ( test )"
 COMMON_DEPEND="
 	>=media-video/ffmpeg-4.0:0=[encode,threads,vaapi?,vdpau?]
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
-	archive? ( >=app-arch/libarchive-3.0.0:= )
+	archive? ( >=app-arch/libarchive-3.4.0:= )
 	bluray? ( >=media-libs/libbluray-0.3.0:= )
 	cdda? ( dev-libs/libcdio-paranoia )
 	drm? ( x11-libs/libdrm )
@@ -233,6 +233,7 @@ src_configure() {
 		# HWaccels:
 		# Automagic Video Toolbox HW acceleration. See Gentoo bug 577332.
 		$(use_enable cuda cuda-hwaccel)
+		$(use_enable cuda cuda-interop)
 
 		# TV features:
 		$(use_enable dvb dvbin)
@@ -261,6 +262,11 @@ src_configure() {
 		--disable-tvos
 		--disable-egl-angle-win32
 	)
+
+	mywafargs+=(
+		--bashdir="$(get_bashcompdir)"
+		--zshdir="${EPREFIX}"/usr/share/zsh/site-functions
+)
 
 	# Create reproducible non-live builds.
 	[[ ${PV} != *9999* ]] && mywafargs+=(--disable-build-date)
