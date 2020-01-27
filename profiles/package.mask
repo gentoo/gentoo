@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-01-27)
+# Dead upstream.  Last (alpha) release in 2007.  Requires old version
+# of Twisted.  Python 2-only.
+# Removal in 30 days.  Bug #660660.
+dev-python/zsi
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-26)
 # Not needed anymore, feel free to remove from your system
 # emerge -C virtual/cargo
