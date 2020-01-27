@@ -141,10 +141,6 @@ mpi
 video_cards_amdgpu
 video_cards_radeonsi
 
-# disable until tested
-# # bug 148402
-pcsc-lite
-
 # conky dependencies missing keywords related (dragonheart -20061112)
 # media-sound/mpd
 mpd
