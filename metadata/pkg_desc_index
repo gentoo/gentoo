@@ -68,6 +68,7 @@ acct-group/murmur 0: System group: murmur
 acct-group/mysql 0: MySQL program group
 acct-group/mythtv 0: Mythtv mythbackend server/deamon group
 acct-group/nagios 0: System group: nagios
+acct-group/netbox 0: System group: netbox
 acct-group/netdata 0: System group: netdata
 acct-group/netdev 0: group for netdev (avahi)
 acct-group/neutron 0: System group: neutron
@@ -200,6 +201,7 @@ acct-user/murmur 0: user for murmur daemon
 acct-user/mysql 0: MySQL program user
 acct-user/mythtv 0: Mythtv mythbackend server/deamon user
 acct-user/nagios 0: System user: nagios
+acct-user/netbox 0: user for netbox
 acct-user/netdata 0: user for netdata
 acct-user/neutron 0: user for the openstack neutron service
 acct-user/nova 0: user for the openstack nova service
@@ -13371,7 +13373,7 @@ media-plugins/kodi-screensaver-greynetic 1.1.0 2.0.0 9999: Greynetic screensaver
 media-plugins/kodi-screensaver-pingpong 1.1.0 2.0.0 9999: Ping-pong screensaver for Kodi
 media-plugins/kodi-screensaver-pyro 2.0.0 3.0.0 9999: Pyro screensaver for Kodi
 media-plugins/kodi-screensaver-rsxs 9999: RSXS screensaver for Kodi
-media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 9999: Libarchive VFS add-on for Kodi
+media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 1.0.6 9999: Libarchive VFS add-on for Kodi
 media-plugins/kodi-vfs-rar 2.0.5 2.0.6 2.0.7 2.0.8 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 9999: SFTP VFS addon for Kodi
@@ -14736,7 +14738,7 @@ net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
 net-libs/libnatpmp 20110808-r1 20130911 20140401-r1 20150609: An alternative protocol to UPnP IGD specification
 net-libs/libndp 1.7: Library for Neighbor Discovery Protocol
-net-libs/libnet 1.0.2a-r5 1.0.2a-r6 1.0.2a-r7 1.2_rc3-r1 1.2 1.2.9999: library providing an API for commonly used low-level network functions
+net-libs/libnet 1.0.2a-r7 1.2 1.2.9999: library providing an API for commonly used low-level network functions
 net-libs/libnetfilter_acct 1.0.2 1.0.3: Userspace library providing interface to extended accounting infrastructure of NetFilter
 net-libs/libnetfilter_conntrack 1.0.4 1.0.5 1.0.6 1.0.7: programming interface (API) to the in-kernel connection tracking state table
 net-libs/libnetfilter_cthelper 1.0.0 1.0.0-r1: userspace library that provides the programming interface to the user-space helper infrastructure
@@ -15317,7 +15319,7 @@ net-p2p/bitcoind 0.16.3 0.17.1 0.18.0: Original Bitcoin crypto-currency wallet f
 net-p2p/bitflu 1.50 1.51 1.52: BitTorrent client, written in Perl and is designed to run as a daemon
 net-p2p/bittornado 0.3.18-r4 0.4.1_p20160925-r1: John Hoffman's fork of the original bittorrent
 net-p2p/classified-ads 0.11 0.12 0.13: Program for displaying classified advertisement items
-net-p2p/cpuminer-opt 3.11.5 3.11.6 9999: Optimized multi algo CPU miner
+net-p2p/cpuminer-opt 3.11.5 3.11.6 3.11.7 9999: Optimized multi algo CPU miner
 net-p2p/ctorrent 3.3.2-r4: Enhanced CTorrent is a BitTorrent console client written in C and C++
 net-p2p/dbhub 0.451-r1: Hub software for Direct Connect, fork of opendchub
 net-p2p/deluge 1.3.15-r2 1.3.15-r3 1.3.15-r4 1.3.9999 2.0.3-r1 2.0.3-r2 9999: BitTorrent client with a client/server model
@@ -16798,7 +16800,7 @@ sys-apps/daisydog 2014.05.30: A very simple /dev/watchdog daemon
 sys-apps/darwin-miscutils 6-r1 8 9 10 11 12: Miscellaneous commands used on macOS, High Sierra 10.13
 sys-apps/dbus 1.12.16: A message bus system, a simple way for applications to talk to each other
 sys-apps/dbus-broker 21 9999: Linux D-Bus Message Broker
-sys-apps/dcfldd 1.3.4.1-r1 1.5: enhanced dd with features for forensics and security
+sys-apps/dcfldd 1.3.4.1-r1 1.5 1.6: enhanced dd with features for forensics and security
 sys-apps/dchroot 0.12.1: Utility for managing chroots for non-root users
 sys-apps/debianutils 4.8.3 4.8.6.3 4.9 4.9.1: A selection of tools from Debian
 sys-apps/diffutils 3.6-r1 3.7: Tools to make diffs and compare files
@@ -18013,7 +18015,7 @@ www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browse
 www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
-www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7 2.6.8: IP address and data center infrastructure management tool
+www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7 2.6.8 2.7.2: IP address and data center infrastructure management tool
 www-apps/nextcloud 15.0.12 15.0.13 15.0.14 16.0.5 16.0.6 16.0.7 17.0.0 17.0.1 17.0.2 18.0.0: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1: A static website and blog generator
 www-apps/novnc 0.6.2 0.6.2-r1 1.0.0 9999: noVNC is a VNC client implemented using HTML5 technologies
