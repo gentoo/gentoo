@@ -1,12 +1,13 @@
-DEFINED_PHASES=configure install prepare unpack
-DEPEND=media-libs/freetype media-libs/imlib2[X] x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr virtual/pkgconfig x11-base/xorg-proto >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=configure install unpack
+DEPEND=media-libs/freetype media-libs/imlib2[X] x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr virtual/pkgconfig x11-base/xorg-proto
 DESCRIPTION=Window Manager From Scratch, A tiling window manager highly configurable
-EAPI=5
+EAPI=7
 HOMEPAGE=https://github.com/xorg62/wmfs
 IUSE=+imlib2 +xinerama
 LICENSE=BSD
 PROPERTIES=live
 RDEPEND=media-libs/freetype media-libs/imlib2[X] x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXrandr
 SLOT=0
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	git-r3	809e27702c573cbba31c08ed00bbad33	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=d05f583b9c03de3741d3292dc50dac48
+_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=3a38a4ab673870bd54f0886d7ed97d99

@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst preinst prepare setup
+DEPEND=net-libs/libnsl:= net-libs/libpcap sys-libs/zlib !libtirpc? ( sys-libs/glibc[rpc(-)] ) libtirpc? ( net-libs/libtirpc ) sasl? ( dev-libs/cyrus-sasl ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 ) >=sys-devel/bison-1.28 >=sys-devel/flex-2.4.6
+DESCRIPTION=network Audit Record Generation and Utilization System
+EAPI=7
+HOMEPAGE=https://openargus.org/
+IUSE=debug +libtirpc sasl tcpd
+KEYWORDS=~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos
+LICENSE=GPL-3
+RDEPEND=net-libs/libnsl:= net-libs/libpcap sys-libs/zlib !libtirpc? ( sys-libs/glibc[rpc(-)] ) libtirpc? ( net-libs/libtirpc ) sasl? ( dev-libs/cyrus-sasl ) tcpd? ( >=sys-apps/tcp-wrappers-7.6 )
+SLOT=0
+SRC_URI=https://www.qosient.com/argus/dev/argus-3.0.8.2.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_md5_=0754b39d03103d0f6cb570a6b54068bd

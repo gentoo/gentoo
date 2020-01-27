@@ -105,6 +105,7 @@ acct-group/sogo 0: Group for gnustep-apps/sogo
 acct-group/spectrum 0: A group for the Spectrum messaging transport
 acct-group/spire 0: System group: spire
 acct-group/sqlgrey 0: Group for SQLGrey
+acct-group/squid 0: System group: squid
 acct-group/stdiscosrv 0: Group for the Syncthing discovery server
 acct-group/steamcmd 0: A group for the SteamCMD server
 acct-group/strelaysrv 0: Group for the Syncthing relay server
@@ -238,6 +239,7 @@ acct-user/sogo 0: User for gnustep-apps/sogo
 acct-user/spectrum 0: A user for the Spectrum messaging transport
 acct-user/spire 0: user for spiffe runtime environment
 acct-user/sqlgrey 0: User for SQLGrey
+acct-user/squid 0: A user for squid web proxy cache
 acct-user/stdiscosrv 0: User for the Syncthing discovery server
 acct-user/steamcmd 0: A user for the SteamCMD server
 acct-user/strelaysrv 0: User for the Syncthing relay server
@@ -12158,7 +12160,7 @@ kde-misc/krusader 2.7.2: Advanced twin-panel (commander-style) file-manager with
 kde-misc/kshutdown 5.0 5.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
 kde-misc/kwebkitpart 1.4.0_pre20190110: WebKit KPart for Konqueror
-kde-misc/latte-dock 0.9.2 0.9.4 0.9.7-r1 0.9.8: Elegant dock, based on KDE Frameworks
+kde-misc/latte-dock 0.9.7-r1 0.9.8: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: Thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3-r1: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather forecasts
@@ -14103,7 +14105,7 @@ net-analyzer/alive 2.0.2-r1: a periodic ping program
 net-analyzer/amap 5.4 5.4-r1: A network scanning tool for pentesters
 net-analyzer/angst 0.4b-r2: an active sniffer that provides methods for aggressive sniffing on switched LANs
 net-analyzer/apinger 0.4.1: Alarm Pinger
-net-analyzer/argus 3.0.8.2-r1: network Audit Record Generation and Utilization System
+net-analyzer/argus 3.0.8.2-r1 3.0.8.2-r2: network Audit Record Generation and Utilization System
 net-analyzer/argus-clients 3.0.8 3.0.8.2 3.0.8.2-r2 3.0.8.2-r3: Clients for net-analyzer/argus
 net-analyzer/arp-scan 1.9.6 1.9.7 99999: ARP scanning and fingerprinting tool
 net-analyzer/arp-sk 0.0.16-r2: A swiss knife tool for ARP
