@@ -3,20 +3,18 @@ https://bugs.gentoo.org/617724
 
 --- a/devbook.xsl
 +++ b/devbook.xsl
-@@ -439,11 +439,9 @@
-           <xsl:with-param name="append">../</xsl:with-param>
-         </xsl:call-template>
+@@ -451,9 +451,7 @@
        </xsl:variable>
--      <link rel="stylesheet" href="{$relative_path_depth_recursion}devmanual.css" type="text/css" />
-+      <link rel="stylesheet" href="{$relative_path_depth_recursion}fallback.css" type="text/css" />
        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
        <meta name="description" content="The Gentoo Devmanual is a technical manual which covers topics such as writing ebuilds and eclasses, and policies that developers should be abiding by." />
 -      <link href="https://assets.gentoo.org/tyrian/bootstrap.min.css" rel="stylesheet" media="screen" />
 -      <link href="https://assets.gentoo.org/tyrian/tyrian.min.css" rel="stylesheet" media="screen" />
+-      <link rel="stylesheet" href="{$relative_path_depth_recursion}devmanual.css" type="text/css" />
++      <link rel="stylesheet" href="{$relative_path_depth_recursion}fallback.css" type="text/css" />
        <link rel="icon" href="https://www.gentoo.org/favicon.ico" type="image/x-icon" />
      </head>
      <body>
-@@ -476,9 +474,6 @@
+@@ -486,9 +484,6 @@
                </div>
                <div class="logo">
                  <a href="/" title="Back to the homepage" class="site-logo">
@@ -26,15 +24,72 @@ https://bugs.gentoo.org/617724
                  </a>
                  <span class="site-label">Development Guide</span>
                </div>
-@@ -566,8 +561,6 @@
+@@ -530,45 +525,7 @@
+             </div>
+           </div>
+         </nav>
+-        <nav class="navbar navbar-grey navbar-stick" id="devmanual-actions" role="navigation">
+-          <div class="container">
+-            <div class="row">
+-              <div class="navbar-header">
+-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gw-toolbar">
+-                  <span class="sr-only">Toggle navigation</span>
+-                  <span class="icon-bar"></span>
+-                  <span class="icon-bar"></span>
+-                  <span class="icon-bar"></span>
+-                </button>
+-              </div>
+-              <div class="collapse navbar-collapse" id="gw-toolbar">
+-              <div class="input-group">
+-                <input type="search" name="search" placeholder="Search" title="Search Gentoo Developer Manual [f]" accesskey="f" id="searchInput" class="form-control" onclick="fetchDocuments()"/>
+-                <div class="input-group-btn">
+-                  <input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton btn btn-default" onclick="search()"/>
+-                </div>
+-              </div>
+-            </div>
+-          </div>
+-        </div>
+-      </nav>
+       </header>
+-      <div id="searchResults" class="modal fade" role="dialog">
+-        <div class="modal-dialog">
+-          <div class="modal-content">
+-            <div class="modal-header">
+-              <button type="button" class="close" data-dismiss="modal">x</button>
+-              <h4 class="modal-title">Search Results</h4>
+-            </div>
+-            <div class="modal-body">
+-              <p>No results found.</p>
+-            </div>
+-            <div class="modal-footer">
+-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+-            </div>
+-          </div>
+-        </div>
+-      </div>
+       <div class="container">
+         <div class="row">
+           <div class="col-md010">
+@@ -613,19 +570,7 @@
            </div>
          </div>
        </footer>
 -      <script src="https://assets.gentoo.org/tyrian/jquery.min.js"></script>
 -      <script src="https://assets.gentoo.org/tyrian/bootstrap.min.js"></script>
+-      <script src="https://assets.gentoo.org/lunr/lunr.min.js"></script>
+-      <xsl:variable name="relative_path_depth" select="string-length(/guide/@self)-string-length(translate(/guide/@self, '/' , ''))"/>
+-      <xsl:variable name="relative_path_depth_recursion">
+-          <xsl:call-template name="str:repeatString">
+-            <xsl:with-param name="count" select="$relative_path_depth"/>
+-            <xsl:with-param name="append">../</xsl:with-param>
+-          </xsl:call-template>
+-      </xsl:variable>
+-      <script><xsl:text>var documentsSrc = "</xsl:text><xsl:value-of select="$relative_path_depth_recursion"/><xsl:text>documents.js"</xsl:text></script>
+-      <script src="{$relative_path_depth_recursion}search.js"></script>
      </body>
      </html>
    </xsl:template>
+ 
 --- /dev/null
 +++ b/fallback.css
 @@ -0,0 +1,20 @@
