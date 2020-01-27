@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Server to test HTTP clients"
@@ -19,7 +19,6 @@ RDEPEND="
 	>=dev-python/bottle-0.12.13[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/webtest[${PYTHON_USEDEP}]"
-BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
