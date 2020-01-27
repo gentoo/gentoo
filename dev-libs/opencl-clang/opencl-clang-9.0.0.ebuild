@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib llvm
 
 DESCRIPTION="OpenCL-oriented thin wrapper library around clang"
@@ -30,5 +31,5 @@ multilib_src_configure() {
 		-DCMAKE_INSTALL_PREFIX="$(get_llvm_prefix ${LLVM_MAX_SLOT})"
 		-DCLANG_LIBRARY_DIRS="${EPREFIX}"/usr/lib/clang
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
