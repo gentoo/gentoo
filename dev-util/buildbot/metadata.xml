@@ -20,7 +20,6 @@
 		<flag name="docker">Add support for worker docker command steps</flag>
 		<flag name="irc">Add support for status delivery through an ircbot.</flag>
 		<flag name="mail">Add support for watching a maildir for commits.</flag>
-		<flag name="manhole">Add support for manhole (debug over ssh)</flag>
 	</use>
 	<upstream>
 		<maintainer>
