@@ -1,4 +1,4 @@
---- a/Makefile.alt.JeR
+--- a/Makefile.alt
 +++ b/Makefile.alt
 @@ -8,17 +8,17 @@
  
