@@ -1,0 +1,14 @@
+BDEPEND=test? ( dev-util/bats dev-vcs/git ) virtual/pkgconfig
+DEFINED_PHASES=compile install postinst prepare
+DESCRIPTION=A collection of tools to let /etc be stored in a repository
+EAPI=7
+HOMEPAGE=https://etckeeper.branchable.com/
+IUSE=cron test
+KEYWORDS=~amd64 ~arm ~ppc64 ~x86
+LICENSE=GPL-2
+RDEPEND=app-portage/portage-utils cron? ( virtual/cron ) || ( dev-vcs/git dev-vcs/mercurial dev-vcs/darcs ) virtual/tmpfiles
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://git.joeyh.name/index.cgi/etckeeper.git/snapshot/etckeeper-1.18.14.tar.gz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=d950cf7a6667cb4e57a198da702a960c
