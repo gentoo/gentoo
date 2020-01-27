@@ -13,7 +13,7 @@ S=${WORKDIR}/clang/utils
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 arm ~arm64 ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE=""
 
 PDEPEND="sys-devel/clang:*"
