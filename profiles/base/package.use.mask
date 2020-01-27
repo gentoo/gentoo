@@ -6,6 +6,11 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-01-27)
+# dev-python/zsi is being removed.
+media-sound/sonata lyrics
+sci-chemistry/pdb2pqr opal
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-19)
 # media-libs/pulseaudio-qt is not keyworded
 kde-misc/kdeconnect pulseaudio
