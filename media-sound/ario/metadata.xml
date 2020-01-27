@@ -11,7 +11,6 @@
 	</maintainer>
 	<use>
 		<flag name="idle">Enable experimental support for MPD's idle command to reduce bandwidth and cpu usage, requires MPD 0.14</flag>
-		<flag name="scrobbler">Enable audioscrobbler/last.fm support <pkg>net-libs/libsoup</pkg></flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">ario-player</remote-id>
