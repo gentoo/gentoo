@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools
+inherit autotools git-r3
 
 DESCRIPTION="network packet generator and capture tool"
 HOMEPAGE="https://github.com/resurrecting-open-source-projects/packit"
-SRC_URI="https://github.com/resurrecting-open-source-projects/packit/archive/${PV}.tar.gz -> ${P}.tar.gz"
+EGIT_REPO_URI="https://github.com/resurrecting-open-source-projects/packit"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS=""
 
 DEPEND="
 	net-libs/libnet:1.1
@@ -18,7 +18,6 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.0-fno-common.patch
 	"${FILESDIR}"/${PN}-1.0-noopt.patch
 )
 
