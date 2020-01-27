@@ -5,11 +5,11 @@ DESCRIPTION=A CalDAV based calendar
 EAPI=7
 HOMEPAGE=http://lostpackets.de/khal/
 IUSE=zsh-completion python_targets_python3_6
-KEYWORDS=~amd64 ~x86
+KEYWORDS=~amd64 ~arm ~x86
 LICENSE=MIT
 RDEPEND=>=dev-python/click-3.2[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/click-log-0.2.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/icalendar-4.0.3[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/urwid[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pyxdg[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pytz[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/python-dateutil[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/configobj[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/atomicwrites-0.1.7[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=dev-python/tzlocal-1.0[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/setproctitle[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] zsh-completion? ( app-shells/zsh ) python_targets_python3_6? ( dev-lang/python:3.6[sqlite] ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 )
 SLOT=0
 SRC_URI=mirror://pypi/k/khal/khal-0.10.1.tar.gz
 _eclasses_=distutils-r1	c576838cd67e384002a18edd54be710e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=9ac3a80f109427fafcfdfc06bf66188d
+_md5_=2e47c76153d2c289cd2c90417eae8c28
