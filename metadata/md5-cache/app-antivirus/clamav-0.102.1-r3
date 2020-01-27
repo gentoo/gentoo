@@ -4,7 +4,7 @@ DESCRIPTION=Clam Anti-Virus Scanner
 EAPI=6
 HOMEPAGE=https://www.clamav.net/
 IUSE=bzip2 doc clamdtop clamsubmit iconv ipv6 libclamav-only libressl milter metadata-analysis-api selinux static-libs test uclibc xml
-KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ~arm ~arm64 ~hppa ia64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=acct-group/clamav acct-user/clamav bzip2? ( app-arch/bzip2 ) clamdtop? ( sys-libs/ncurses:0 ) iconv? ( virtual/libiconv ) metadata-analysis-api? ( dev-libs/json-c:= ) milter? ( || ( mail-filter/libmilter mail-mta/sendmail ) ) >=sys-libs/zlib-1.2.2:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) dev-libs/libltdl || ( dev-libs/libpcre2 >dev-libs/libpcre-6 ) dev-libs/libmspack xml? ( dev-libs/libxml2 ) elibc_musl? ( sys-libs/fts-standalone ) !libclamav-only? ( net-misc/curl ) clamsubmit? ( net-misc/curl dev-libs/json-c:= ) !!<app-antivirus/clamav-0.99 selinux? ( sec-policy/selinux-clamav )
 REQUIRED_USE=libclamav-only? ( !clamsubmit ) clamsubmit? ( !libclamav-only )
@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.clamav.net/downloads/production/clamav-0.102.1.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=c6c7df79ce805308b6323ffa3e63ecfb
+_md5_=5c8e3990987aced24139ef35c0c496b4
