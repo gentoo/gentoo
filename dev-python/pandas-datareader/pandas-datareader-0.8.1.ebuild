@@ -14,7 +14,8 @@ SRC_URI="https://github.com/pydata/pandas-datareader/archive/v${PV}.tar.gz -> ${
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc test"
+
+IUSE="doc"
 
 # Test suite depends on outbound network connectivity and is unstable
 # https://github.com/pydata/pandas-datareader/issues/586
@@ -28,18 +29,8 @@ RDEPEND="
 	doc? (
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
-		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
-		)
-"
-DEPEND="test? (
-		${RDEPEND}
-		dev-python/pytest[${PYTHON_USEDEP}]
-		)
+	)
 "
 
-distutils_enable_sphinx docs
+distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
 distutils_enable_tests pytest
-
-python_test() {
-	pytest -v -s -r xX pandas_datareader || die
-}
