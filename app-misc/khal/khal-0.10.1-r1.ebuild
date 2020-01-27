@@ -13,7 +13,7 @@ HOMEPAGE="http://lostpackets.de/khal/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 SLOT="0"
 IUSE="zsh-completion"
 
