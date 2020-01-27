@@ -15,7 +15,7 @@ SRC_URI="https://github.com/maxmind/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.ta
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~ia64 ~ppc ~sparc x86"
+KEYWORDS="amd64 ~arm ~ia64 ~ppc ~sparc x86"
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
