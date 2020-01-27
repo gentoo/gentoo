@@ -53,6 +53,7 @@ dev-python/twisted-news
 dev-python/twisted-pair
 dev-python/twisted-runner
 dev-python/vertex
+dev-python/zbase32
 dev-util/buildbot-slave
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
