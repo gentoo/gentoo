@@ -5,10 +5,6 @@
         <email>zlogene@gentoo.org</email>
         <name>Mikle Kolyada</name>
 </maintainer>
-  <longdescription>
-    PC/SC Architecture smartcard middleware library
-  </longdescription>
-
   <use>
     <flag name="embedded">limit RAM and CPU ressources by disabling features</flag>
     <flag name="libusb" restrict="&gt;=sys-apps/pcsc-lite-1.8.0">
