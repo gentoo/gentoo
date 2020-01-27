@@ -39,7 +39,8 @@ PY2_DEPEND="
 	$(python_gen_cond_dep 'dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]' python2_7)"
 COMMON_DEPEND="
 	dev-python/cycler[${PYTHON_USEDEP}]
-	>=dev-python/numpy-1.7.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '|| ( dev-python/numpy-python2[${PYTHON_USEDEP}] >=dev-python/numpy-1.7.1[${PYTHON_USEDEP}] )' 'python2*')
+	$(python_gen_cond_dep '>=dev-python/numpy-1.7.1[${PYTHON_USEDEP}]' 'python3*')
 	dev-python/python-dateutil:0[${PYTHON_USEDEP}]
 	dev-python/pytz[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10[${PYTHON_USEDEP}]
