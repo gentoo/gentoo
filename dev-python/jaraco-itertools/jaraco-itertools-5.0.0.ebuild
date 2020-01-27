@@ -1,10 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-# Tests fail with PyPy 3
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
+# [options.entry_points] is present in setup.cfg but it is empty
+DISTUTILS_USE_SETUPTOOLS=manual
 
 inherit distutils-r1
 
@@ -28,6 +29,7 @@ RDEPEND="
 	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
 "
 BDEPEND="
+	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
@@ -40,9 +42,13 @@ distutils_enable_sphinx docs '>=dev-python/jaraco-packaging-3.2' \
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 python_test() {
+	# https://github.com/jaraco/jaraco.itertools/issues/7
+	if [[ "${EPYTHON}" == pypy3 ]]; then
+		local extra_pytest_args="--deselect jaraco/itertools.py::jaraco.itertools.always_iterable"
+	fi
 	# Override pytest options to skip flake8
 	PYTHONPATH=. pytest -vv --override-ini="addopts=--doctest-modules" \
-		|| die "tests failed with ${EPYTHON}"
+		${extra_pytest_args} || die "tests failed with ${EPYTHON}"
 }
 
 # https://wiki.gentoo.org/wiki/Project:Python/Namespace_packages#File_collisions_between_pkgutil-style_packages
