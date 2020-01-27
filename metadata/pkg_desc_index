@@ -89,6 +89,7 @@ acct-group/plugdev 0: Group controlling access to removable media
 acct-group/polkitd 0: System group: polkitd
 acct-group/postdrop 0: System group: postdrop
 acct-group/postfix 0: System group: postfix
+acct-group/prometheus 0: System group: prometheus
 acct-group/qemu 0: System group: qemu
 acct-group/qmail 0: System group: qmail
 acct-group/quassel 0: System group: quassel
@@ -219,6 +220,7 @@ acct-user/plex 0: Plex Media Server user
 acct-user/polkitd 0: System user: polkitd
 acct-user/postfix 0: user for postfix daemon
 acct-user/postmaster 0: Postmaster user
+acct-user/prometheus 0: user for prometheus
 acct-user/qemu 0: System user: qemu
 acct-user/qmaild 0: user for qmail-smtpd
 acct-user/qmaill 0: user for qmail logging
@@ -12645,7 +12647,7 @@ media-gfx/figurine 1.0.5-r1: A vector based graphics editor similar to xfig, but
 media-gfx/fim 0.5_rc3: Fbi-IMproved is a framebuffer image viewer based on Fbi and inspired from Vim
 media-gfx/flam3 3.1.1: Tools and a library for creating flame fractal images
 media-gfx/fondu 20060102-r1: Utilities for converting between and manipulating mac fonts and unix fonts
-media-gfx/fontforge 20170731-r4 20190317-r2: postscript font editor and converter
+media-gfx/fontforge 20170731-r5 20190317-r3 20190801: postscript font editor and converter
 media-gfx/fontypython 0.4.4-r3: Font preview application
 media-gfx/fotowall 1.0: Qt5 tool for creating wallpapers
 media-gfx/fotoxx 15.05: Program for improving image files made with a digital camera
@@ -15491,7 +15493,7 @@ net-wireless/dump1090 1.15_pre20180509 3.7.2 9999: simple Mode S decoder for RTL
 net-wireless/gnome-bluetooth 3.34.0: Bluetooth graphical utilities integrated with GNOME
 net-wireless/gnuradio 3.6.5.1-r3 3.7.13.5-r1 3.7.9999 9999: Toolkit that provides signal processing blocks to implement software radios
 net-wireless/gobi_loader 0.7-r2: gobi_loader is a firmware loader for Qualcomm Gobi USB chipsets
-net-wireless/gqrx 2.11.5-r1 9999: Software defined radio receiver powered by GNU Radio and Qt
+net-wireless/gqrx 2.11.5-r1 2.12.1 9999: Software defined radio receiver powered by GNU Radio and Qt
 net-wireless/gqrx-scanner 1.0.1_p20190329: frequency scanner for Gqrx Software Defined Radio receiver
 net-wireless/gr-air-modes 9999: This module implements a complete Mode S and ADS-B receiver for Gnuradio
 net-wireless/gr-baz 9999: Gnuradio baz
@@ -15897,7 +15899,7 @@ sci-chemistry/gelemental 1.2.0-r1 2.0.0: Periodic table viewer with detailed inf
 sci-chemistry/ghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
-sci-chemistry/gromacs 2018.8 2018.9999 2019.2 2019.5 2019.9999 2020 2020.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.8 2018.9999 2019.5 2019.9999 2020 2020.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
