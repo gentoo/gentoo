@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE=""
 
+BDEPEND="app-admin/chrpath"
 RDEPEND="
 	dev-libs/nss
 	media-libs/mesa[X(+)]
@@ -40,6 +41,8 @@ src_prepare(){
 	sed -e 's|\("/opt/Signal/signal-desktop"\)|\1 --start-in-tray|g' \
 		-i usr/share/applications/signal-desktop.desktop || die
 	unpack usr/share/doc/signal-desktop/changelog.gz
+	# Fix Bug 706352
+	chrpath opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/lib/libjpeg.so.8.2.2 -r '$ORIGIN:/target/lib' || die
 }
 
 src_install() {
