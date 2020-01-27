@@ -12,7 +12,7 @@ DESCRIPTION="Framework to collect user feedback for applications via telemetry a
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/unstable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc64"
 fi
 
 LICENSE="MIT"
