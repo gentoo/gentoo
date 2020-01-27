@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_ECLASS=cmake
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit cmake-multilib python-single-r1
 
 DESCRIPTION="The C++ Actor Framework (CAF)"
