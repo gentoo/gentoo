@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit eutils git-r3
+EAPI=7
+inherit git-r3 toolchain-funcs
 
 DESCRIPTION="Window Manager From Scratch, A tiling window manager highly configurable"
 HOMEPAGE="https://github.com/xorg62/wmfs"
@@ -26,15 +26,14 @@ DEPEND="
 	virtual/pkgconfig
 	x11-base/xorg-proto
 "
-
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-99999999-desktop.patch
-
-	sed -i -e '/^which dpkg/s|.*|false|g' configure || die
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-99999999-Debian.patch
+	"${FILESDIR}"/${PN}-99999999-desktop.patch
+	"${FILESDIR}"/${PN}-99999999-fno-common.patch
+)
 
 src_configure() {
+	tc-export CC
 	# not autotools based
 	local ECHO
 	for ECHO in echo ''; do
