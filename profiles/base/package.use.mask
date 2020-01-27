@@ -7,6 +7,11 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
+# Requires old split dev-python/twisted-*.
+net-irc/telepathy-idle test
+net-voip/telepathy-rakia test
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-27)
 # dev-python/zsi is being removed.
 media-sound/sonata lyrics
 sci-chemistry/pdb2pqr opal
