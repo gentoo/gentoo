@@ -32,6 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-01-27)
+# Remaining split Twisted packages.  All remaining reverse dependencies
+# are entirely happy with merged dev-python/twisted.
+# Removal in 30 days.  Bug #706636.
+dev-python/twisted-core
+dev-python/twisted-names
+dev-python/twisted-web
+dev-python/twisted-words
+
 # Ulrich Müller <ulm@gentoo.org> (2020-01-27)
 # Removal requested by proxied maintainer:
 # "Game already available in Valve Steam."
