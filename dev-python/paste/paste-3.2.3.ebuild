@@ -22,8 +22,10 @@ IUSE="flup openid"
 
 RDEPEND="dev-python/namespace-paste[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.0[${PYTHON_USEDEP}]
-	flup? ( dev-python/flup[$(python_gen_usedep 'python2*')] )
-	openid? ( dev-python/python-openid[$(python_gen_usedep 'python2*')] )"
+	flup? (
+		$(python_gen_cond_dep 'dev-python/flup[${PYTHON_USEDEP}]' -2) )
+	openid? (
+		$(python_gen_cond_dep 'dev-python/python-openid[${PYTHON_USEDEP}]' -2) )"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
