@@ -17,6 +17,7 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
+	!app-metrics/prometheus-bin
 	>=dev-lang/go-1.12
 	>=dev-util/promu-0.3.0"
 
