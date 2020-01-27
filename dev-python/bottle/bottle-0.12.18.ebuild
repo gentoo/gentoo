@@ -17,11 +17,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~s
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-DEPEND="test? (
-		$(python_gen_cond_dep '
-			dev-python/mako[${PYTHON_USEDEP}]
-		' 'python*')
-	)"
+BDEPEND="test? ( dev-python/mako[${PYTHON_USEDEP}] )"
 RDEPEND=""
 
 PATCHES=(
