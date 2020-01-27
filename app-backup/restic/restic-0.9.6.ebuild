@@ -12,7 +12,7 @@ EGO_PN="github.com/restic/restic"
 
 LICENSE="Apache-2.0 BSD BSD-2 LGPL-3-with-linking-exception MIT"
 SLOT="0"
-KEYWORDS="~amd64 arm x86"
+KEYWORDS="amd64 arm x86"
 IUSE=""
 
 RDEPEND="sys-fs/fuse:0"
