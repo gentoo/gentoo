@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib flag-o-matic llvm
 
 MY_PN="SPIRV-LLVM-Translator"
@@ -37,7 +38,7 @@ PATCHES=(
 
 src_prepare() {
 	append-flags -fPIC
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 multilib_src_configure() {
@@ -46,7 +47,7 @@ multilib_src_configure() {
 		-DLLVM_BUILD_TOOLS=$(usex tools "ON" "OFF")
 		$(usex test "-DLLVM_INCLUDE_TESTS=ON" "")
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_test() {
