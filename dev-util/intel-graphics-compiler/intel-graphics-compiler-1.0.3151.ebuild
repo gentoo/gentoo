@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib llvm
 
 DESCRIPTION="LLVM-based OpenCL compiler targetting Intel Gen graphics hardware"
@@ -32,5 +33,5 @@ multilib_src_configure() {
 		-DIGC_OPTION__FORCE_SYSTEM_LLVM=ON
 		-DIGC_PREFERRED_LLVM_VERSION=${LLVM_MAX_SLOT}
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
