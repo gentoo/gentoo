@@ -1,11 +1,11 @@
-BDEPEND=dev-libs/libxslt media-gfx/imagemagick[truetype,svg,png] >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=dev-libs/libxml2 dev-libs/libxslt gnome-base/librsvg media-fonts/open-sans >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=compile install postinst prepare unpack
 DESCRIPTION=The Gentoo Development Guide
 EAPI=7
 HOMEPAGE=https://devmanual.gentoo.org/
 IUSE=+fallback
-LICENSE=CC-BY-SA-3.0
+LICENSE=CC-BY-SA-4.0
 PROPERTIES=live
 SLOT=0
 _eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=12f25b49e92a4d373e0089bd48b39bec
+_md5_=1894c407fa2067de38bdc52d891ac66d
