@@ -49,8 +49,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-9.0-fcommon-gtk.patch
 	"${FILESDIR}"/${PN}-9.0-fcommon-mod.patch
 	"${FILESDIR}"/${PN}-9.0-fcommon-mods.patch
-	"${FILESDIR}"/${PN}-9.0-unneeded-buf.patch
-	"${FILESDIR}"/${PN}-9.0-vnc.patch
 	"${FILESDIR}"/${PN}-9999999-fcommon-http.patch
 )
 
