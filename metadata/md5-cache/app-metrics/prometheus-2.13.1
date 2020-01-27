@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile install postinst prepare setup test unpack
-DEPEND=>=dev-lang/go-1.12 >=dev-util/promu-0.3.0 >=dev-lang/go-1.10
+DEPEND=!app-metrics/prometheus-bin >=dev-lang/go-1.12 >=dev-util/promu-0.3.0 >=dev-lang/go-1.10
 DESCRIPTION=Prometheus monitoring system and time series database
 EAPI=6
 HOMEPAGE=https://github.com/prometheus/prometheus
@@ -9,4 +9,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/prometheus/prometheus/archive/v2.13.1.tar.gz -> prometheus-2.13.1.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=c6287a69365694d9e794098ce914c7d8
+_md5_=9601bb130e77caebf569611ba74b3052
