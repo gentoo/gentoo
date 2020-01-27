@@ -1,0 +1,68 @@
+--- a/ncftp/bookmark.h
++++ b/ncftp/bookmark.h
+@@ -59,3 +59,5 @@
+ void DefaultBookmarkName(char *, size_t, char *);
+ void DisposeBookmarkTable(void);
+ int AddNewItemToBookmarkTable(void);
++
++extern Bookmark gBm;
+--- a/ncftp/cmds.c
++++ b/ncftp/cmds.c
+@@ -91,7 +91,6 @@
+ extern char gOS[];
+ extern int gAutoResume;
+ extern int gAutoSaveChangesToExistingBookmarks;
+-extern Bookmark gBm;
+ extern int gLoadedBm, gConfirmClose, gSavePasswords, gScreenColumns;
+ extern char gLocalCWD[512], gPrevLocalCWD[512];
+ extern int gMayCancelJmp;
+--- a/ncftp/main.c
++++ b/ncftp/main.c
+@@ -38,7 +38,6 @@
+ char gLocalCWD[512], gPrevLocalCWD[512];
+ 
+ extern char gRemoteCWD[512], gPrevRemoteCWD[512];
+-extern Bookmark gBm;
+ extern int gLoadedBm;
+ extern int gFirewallType;
+ extern char gAutoAscii[];
+--- a/sh_util/gpshare.c
++++ b/sh_util/gpshare.c
+@@ -28,7 +28,6 @@
+ 
+ static int gIsAtty1 = 1, gIsAtty2 = 1;
+ extern int gLoadedBm, gBookmarkMatchMode;
+-Bookmark gBm;
+ 
+ double
+ FileSize(double size, const char **uStr0, double *uMult0)
+--- a/sh_util/ncftpget.c
++++ b/sh_util/ncftpget.c
+@@ -40,7 +40,6 @@
+ extern char gFirewallExceptionList[256];
+ extern int gFwDataPortMode;
+ extern const char gOS[], gVersion[];
+-extern Bookmark gBm;
+ 
+ static void
+ Usage(void)
+--- a/sh_util/ncftpls.c
++++ b/sh_util/ncftpls.c
+@@ -39,7 +39,6 @@
+ extern char gFirewallExceptionList[256];
+ extern int gFwDataPortMode;
+ extern const char gOS[], gVersion[];
+-extern Bookmark gBm;
+ 
+ static int FTPRemoteRecursiveMList(FTPCIPtr cip, const char *const rdir, /* FTPFileInfoListPtr files, */ FTPLineListPtr lines);
+ 
+--- a/sh_util/ncftpput.c
++++ b/sh_util/ncftpput.c
+@@ -41,7 +41,6 @@
+ extern char gFirewallExceptionList[256];
+ extern int gFwDataPortMode;
+ extern const char gOS[], gVersion[];
+-extern Bookmark gBm;
+ extern int gSendfileInProgress;
+ 
+ static void
