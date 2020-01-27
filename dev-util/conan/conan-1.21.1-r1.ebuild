@@ -38,7 +38,7 @@ RDEPEND="
 	>=dev-python/python-dateutil-2.7.0[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.8.1[${PYTHON_USEDEP}]
-	<dev-python/six-1.13[${PYTHON_USEDEP}]
+	>=dev-python/six-1.12.0[${PYTHON_USEDEP}]
 	>=dev-python/tqdm-4.28.1[${PYTHON_USEDEP}]
 "
 BDEPEND="
@@ -58,9 +58,9 @@ src_prepare() {
 	default
 	# Fix strict dependencies
 	sed -i \
-		-e "s:patch==1.16:patch>=1.16:g" \
+		-e "s:patch-ng==1.17.2:patch-ng>=1.17.2:g" \
+		-e "s:six>=1.10.0,<1.13.0:six>=1.12.0:g" \
 		-e "s:node-semver==0.6.1:node-semver>=0.6.1:g" \
-		-e "s:future==0.16.0:future>=0.16.0:g" \
 		conans/requirements.txt || die
 }
 
