@@ -12,5 +12,4 @@
 	<use>
 		<flag name="gssapi">Enable gssapi support</flag>
 	</use>
-	<longdescription>ISC's Bind DNS' server tools</longdescription>
 </pkgmetadata>
