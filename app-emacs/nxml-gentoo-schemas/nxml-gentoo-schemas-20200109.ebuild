@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="amd64 arm ppc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86"
 
 SITEFILE="60${PN}-gentoo.el"
 
