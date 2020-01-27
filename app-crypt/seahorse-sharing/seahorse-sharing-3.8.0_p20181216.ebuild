@@ -13,7 +13,7 @@ SRC_URI="https://gitlab.gnome.org/GNOME/${PN}/-/archive/master/${PN}-58db1e5b861
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 COMMON_DEPEND="
