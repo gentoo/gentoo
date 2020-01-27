@@ -180,6 +180,7 @@ ppc64           default/linux/ppc64/17.0/musl/hardened            exp
 ppc64           default/linux/ppc64le/17.0                        exp
 ppc64           default/linux/ppc64le/17.0/systemd                exp
 ppc64           default/linux/ppc64le/17.0/musl                   exp
+ppc64           default/linux/ppc64le/17.0/musl/hardened          exp
 
 # RISC-V Profiles
 # @MAINTAINER: riscv@gentoo.org
