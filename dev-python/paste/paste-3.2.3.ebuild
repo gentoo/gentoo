@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
 inherit distutils-r1
@@ -22,8 +24,7 @@ RDEPEND="dev-python/namespace-paste[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.0[${PYTHON_USEDEP}]
 	flup? ( dev-python/flup[$(python_gen_usedep 'python2*')] )
 	openid? ( dev-python/python-openid[$(python_gen_usedep 'python2*')] )"
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_P}"
 
