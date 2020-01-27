@@ -176,6 +176,7 @@ ppc64           default/linux/ppc64/17.0/desktop/gnome            exp
 ppc64           default/linux/ppc64/17.0/desktop/gnome/systemd    exp
 ppc64           default/linux/ppc64/17.0/developer                exp
 ppc64           default/linux/ppc64/17.0/musl                     exp
+ppc64           default/linux/ppc64/17.0/musl/hardened            exp
 ppc64           default/linux/ppc64le/17.0                        exp
 ppc64           default/linux/ppc64le/17.0/systemd                exp
 
