@@ -3,7 +3,9 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
+
 inherit distutils-r1 llvm.org multiprocessing
 
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"
@@ -19,7 +21,6 @@ RESTRICT="!test? ( test )"
 
 # Tests require 'FileCheck' and 'not' utilities (from llvm)
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/psutil[${PYTHON_USEDEP}]
 		sys-devel/llvm )"
