@@ -1,17 +1,17 @@
 certificate version 0.1
-pusher 0x6D144E3C 1580156469 +0100
-pushee git+ssh://git.gentoo.org/repo/gentoo
-nonce 1580156469-aaffa0065e15b7d5c4214d91b851de1c149289d3
+pusher Mikle Kolyada <zlogene@gentoo.org> 1580157635 +0300
+pushee git+ssh://git.gentoo.org/repo/gentoo.git
+nonce 1580157635-0e335c8cf6725527ed47e285d3ff6b35e9304fd8
 
-6f8cf8941216354dd5f962c9f56eaeb2a596cd40 f3ca4afb08ee300c6d4202717844f82533db9ed3 refs/heads/master
+f3ca4afb08ee300c6d4202717844f82533db9ed3 bf2bef2bb47eb91c776a3d61753de7cabfcd5951 refs/heads/master
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCAAdFiEEQwXByBBw8WdBpeHBoxriUZNShEoFAl4vRjUACgkQoxriUZNS
-hEomOggAj2TBJkopERsmr9pQ3WKlXqWvIs0Fqrea2BOfymEss751VwOB6Ke1LQwn
-MTNHcy7QxEp5j4nChi86HbP2NvaMCseU08fPnKRlKp03J3IRz1CBY9EKQ1/KNqr2
-t/eojrNwVFMLbmGL4JNPRtc5hQvabf03ov0CPUfNDVgrKtmXQmKbj+I/kyoTLaRU
-ifAylNZr5lG/77m54tt6WjZeX8yn7iw31ZFYCkXYUh1zkvSZnAz87/ZeipanjPLn
-i/wHSD+A3d9s9BjTVw2VJaDoGJapgtWuWdo3bMEkEwuIIpFr0FSRNvAac/LRKLvA
-AiIIfDIA8UWaoEteyzNQAPaobLe4OQ==
-=ahb6
+iQFHBAABCAAxFiEEWmyBGnI+Eihw6dN8HICQJIqVl8cFAl4vSsMTHHpsb2dlbmVA
+Z2VudG9vLm9yZwAKCRAcgJAkipWXx5XwB/9vJjqeGFAkNvvE3LYO7Q6o0EW6M1De
+YNYr2tGWsmHolDGX94W+6FIynrpnv+AFxczvlA3a1mBLfyJw1xdCSRaEvxCjy5Va
+rKibicuKmykUSNhVaAGAPkAW0O/vFcIOTeJT8kdHDFQ2RRMVYqxQU3H2oFJoUViH
+UBLobjolLeYhB7m4MXOP7UmPy7WcnTUasIjK8WoIHYutFkkoXoRVhCI18UuQ4b6o
+RwkXnbOJBzjOOt5+Fv2MwAnsVJP8WpyzMe840m1Wwm/+PjgqDXMd0vdXcER3Y4Ng
+Y4ohOu2UqscVgVfxGMkFXLxJBMbW6koZFzc0ZWeOxMq5kwlWOMtRXNZ7
+=g+rm
 -----END PGP SIGNATURE-----
