@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 MY_PN="compute-runtime"
 MY_P="${MY_PN}-${PV}"
@@ -19,11 +19,11 @@ IUSE="vaapi"
 
 BDEPEND="virtual/pkgconfig"
 COMMON="dev-libs/ocl-icd
-	>=dev-util/intel-graphics-compiler-1.0.2878
-	>=media-libs/gmmlib-19.3.4
+	>=dev-util/intel-graphics-compiler-1.0.3151
+	>=media-libs/gmmlib-19.4.1
 	vaapi? (
 		x11-libs/libdrm[video_cards_intel]
-		>=x11-libs/libva-2.0.0
+		x11-libs/libva
 	)"
 DEPEND="${COMMON}
 	media-libs/mesa"	# for Khronos OpenGL headers
@@ -46,7 +46,7 @@ src_configure() {
 		# the hardware.
 		-DSKIP_UNIT_TESTS=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {
