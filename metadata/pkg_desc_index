@@ -9583,7 +9583,7 @@ dev-ruby/c21e 1.1.8 1.1.9 1.2.1: Run cross-platform executables
 dev-ruby/calendar_date_select 2.1.2: A popular and flexible JavaScript DatePicker for RubyOnRails
 dev-ruby/capistrano 2.15.5-r2 3.11.0 3.11.2: A distributed application deployment system
 dev-ruby/capistrano-stats 1.1.1: Official metrics to help the development direction of Capistrano
-dev-ruby/capybara 2.18.0 3.26.0 3.27.0 3.28.0 3.29.0 3.30.0: Capybara aims to simplify the process of integration testing Rack applications
+dev-ruby/capybara 2.18.0 3.28.0 3.29.0 3.30.0 3.31.0: Capybara aims to simplify the process of integration testing Rack applications
 dev-ruby/certificate_authority 0.1.6-r2: Managing the core functions outlined in RFC-3280 for PKI
 dev-ruby/charlock_holmes 0.7.6 0.7.7: Character encoding detecting library for Ruby using ICU
 dev-ruby/childlabor 0.0.3-r1: A scripting framework that replaces rake and sake
@@ -9911,7 +9911,7 @@ dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
 dev-ruby/rack-openid 1.4.2: Provides a more HTTPish API around the ruby-openid library
 dev-ruby/rack-protection 1.5.5 2.0.5 2.0.7: This gem protects against typical web attacks
 dev-ruby/rack-ssl 1.4.1: Force SSL/TLS in your app
-dev-ruby/rack-test 0.6.3 1.0.0 1.1.0: Rack::Test is a small, simple testing API for Rack apps
+dev-ruby/rack-test 0.6.3 1.1.0: Rack::Test is a small, simple testing API for Rack apps
 dev-ruby/radius 0.7.5: Powerful tag-based template system
 dev-ruby/rails 4.2.11.1 5.2.4.1 6.0.2.1: ruby on rails is a web-application and persistance framework
 dev-ruby/rails-deprecated_sanitizer 1.0.3-r2: Deprecated sanitizer API extracted from Action View
@@ -9941,8 +9941,8 @@ dev-ruby/redcarpet 3.4.0 3.5.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2-r1: A module for using Textile in Ruby
 dev-ruby/redis 3.3.5 4.0.1: A Ruby client library for Redis
 dev-ruby/ref 2.0.0: Implements weak, soft, and strong references in Ruby
-dev-ruby/regexp_parser 0.5.0 1.4.0 1.5.1 1.6.0: A library for tokenizing, lexing, and parsing Ruby regular expressions
-dev-ruby/regexp_property_values 0.3.4 0.3.5 1.0.0: See which property values are supported by the regular expression engine
+dev-ruby/regexp_parser 0.5.0 1.5.1 1.6.0: A library for tokenizing, lexing, and parsing Ruby regular expressions
+dev-ruby/regexp_property_values 0.3.5 1.0.0: See which property values are supported by the regular expression engine
 dev-ruby/request_store 1.0.5 1.4.1 1.5.0: Per-request global storage for Rack
 dev-ruby/rest-client 2.0.2 2.1.0: Simple Simple HTTP and REST client for Ruby
 dev-ruby/rex-arch 0.1.13: architecture specific information for Rex
