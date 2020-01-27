@@ -19,6 +19,9 @@ RDEPEND="
 	${DEPEND}
 	sys-apps/hwids
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.1_p20190919-fno-common.patch
+)
 
 HWIDS_OUI_PATH=/usr/share/misc/oui.txt
 
