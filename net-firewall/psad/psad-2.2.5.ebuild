@@ -11,7 +11,7 @@ HOMEPAGE="https://www.cipherdyne.org/psad/"
 
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 ppc ~sparc x86"
+KEYWORDS="~alpha amd64 ppc ~sparc x86"
 
 DEPEND="virtual/perl-ExtUtils-MakeMaker"
 RDEPEND="

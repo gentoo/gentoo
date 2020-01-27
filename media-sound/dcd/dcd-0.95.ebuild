@@ -11,7 +11,7 @@ SRC_URI="http://www.technopagan.org/dcd/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 ~ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ~ppc ppc64 sparc x86"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-makefile.patch

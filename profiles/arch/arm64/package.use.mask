@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Benda Xu <heroxbd@gentoo.org> (2020-01-26)
+# Unkeyworded dep.
+dev-python/matplotlib wxwidgets
+
 # Michał Górny <mgorny@gentoo.org> (2020-01-11)
 # Unkeyworded dep.
 kde-apps/cantor julia

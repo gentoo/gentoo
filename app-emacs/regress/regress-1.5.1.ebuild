@@ -11,7 +11,7 @@ SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-1+"
 SLOT="0"
-KEYWORDS="alpha amd64 ppc x86"
+KEYWORDS="~alpha amd64 ppc x86"
 
 ELISP_PATCHES="${PV}-regress.el-gentoo.patch"
 SITEFILE="50${PN}-gentoo.el"

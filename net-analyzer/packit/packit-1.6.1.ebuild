@@ -18,6 +18,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 PATCHES=(
+	"${FILESDIR}"/${PN}-1.0-fno-common.patch
 	"${FILESDIR}"/${PN}-1.0-noopt.patch
 )
 

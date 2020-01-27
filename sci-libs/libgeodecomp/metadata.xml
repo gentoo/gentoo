@@ -28,8 +28,5 @@
     <flag name="hpx">
       Enables HPX backend
     </flag>
-    <flag name="visit">
-      Enables VisIt related code
-    </flag>
   </use>
 </pkgmetadata>

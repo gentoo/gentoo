@@ -17,6 +17,6 @@ app-xemacs/gnus
 app-xemacs/tramp
 app-xemacs/vc
 "
-KEYWORDS="alpha amd64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 
 inherit xemacs-packages

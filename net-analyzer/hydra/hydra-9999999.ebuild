@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,6 +45,14 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-9.0-fcommon-gtk.patch
+	"${FILESDIR}"/${PN}-9.0-fcommon-mod.patch
+	"${FILESDIR}"/${PN}-9.0-fcommon-mods.patch
+	"${FILESDIR}"/${PN}-9.0-unneeded-buf.patch
+	"${FILESDIR}"/${PN}-9.0-vnc.patch
+	"${FILESDIR}"/${PN}-9999999-fcommon-http.patch
+)
 
 src_prepare() {
 	default
@@ -81,21 +89,21 @@ src_configure() {
 
 	hydra_sed firebird '-lfbclient' '' '-DLIBFIREBIRD'
 	hydra_sed gcrypt '-lgcrypt' '$( ${CTARGET:-${CHOST}}-libgcrypt-config --libs )' '-DHAVE_GCRYPT'
-	hydra_sed idn '-lidn' '$( "${PKG_CONFIG}"  --libs libidn )' '-DLIBIDN -DHAVE_PR29_H'
-	hydra_sed libssh '-lssh' '$( "${PKG_CONFIG}"  --libs libssh )' '-DLIBSSH'
-	hydra_sed memcached '-lmemcached' '$( "${PKG_CONFIG}"  --libs libmemcached )' '-DLIBMCACHED'
-	hydra_sed mongodb '-lmongoc-1.0' '$( "${PKG_CONFIG}"  --libs libmongoc-1.0 )' '-DLIBMONGODB\|-DLIBBSON'
+	hydra_sed idn '-lidn' '$( "${PKG_CONFIG}" --libs libidn )' '-DLIBIDN -DHAVE_PR29_H'
+	hydra_sed libssh '-lssh' '$( "${PKG_CONFIG}" --libs libssh )' '-DLIBSSH'
+	hydra_sed memcached '-lmemcached' '$( "${PKG_CONFIG}" --libs libmemcached )' '-DLIBMCACHED'
+	hydra_sed mongodb '-lmongoc-1.0' '$( "${PKG_CONFIG}" --libs libmongoc-1.0 )' '-DLIBMONGODB\|-DLIBBSON'
 	hydra_sed mysql '-lmysqlclient' '$( ${CTARGET:-${CHOST}}-mysql_config --libs )' '-DLIBMYSQLCLIENT'
 	hydra_sed ncp '-lncp' '' '-DLIBNCP'
-	hydra_sed ncurses '-lcurses' '$( "${PKG_CONFIG}"  --libs ncurses )' '-DLIBNCURSES'
-	hydra_sed pcre '-lpcre' '$( "${PKG_CONFIG}"  --libs libpcre )' '-DHAVE_PCRE'
-	hydra_sed postgres '-lpq' '$( "${PKG_CONFIG}"  --libs libpq )' '-DLIBPOSTGRES'
+	hydra_sed ncurses '-lcurses' '$( "${PKG_CONFIG}" --libs ncurses )' '-DLIBNCURSES'
+	hydra_sed pcre '-lpcre' '$( "${PKG_CONFIG}" --libs libpcre )' '-DHAVE_PCRE'
+	hydra_sed postgres '-lpq' '$( "${PKG_CONFIG}" --libs libpq )' '-DLIBPOSTGRES'
 	hydra_sed oracle '-locci -lclntsh' '' '-DLIBORACLE'
-	hydra_sed rdp '-lfreerdp2' '$( "${PKG_CONFIG}"  --libs freerdp2 )' '-DLIBFREERDP2'
+	hydra_sed rdp '-lfreerdp2' '$( "${PKG_CONFIG}" --libs freerdp2 )' '-DLIBFREERDP2'
 	# TODO: https://bugs.gentoo.org/686148
-	#hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '$( "${PKG_CONFIG}"  --libs libsvn_client )' '-DLIBSVN'
+	#hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '$( "${PKG_CONFIG}" --libs libsvn_client )' '-DLIBSVN'
 	hydra_sed subversion '-lsvn_client-1 -lapr-1 -laprutil-1 -lsvn_subr-1' '' '-DLIBSVN'
-	hydra_sed zlib '-lz' '$( "${PKG_CONFIG}"  --libs zlib )' '-DHAVE_ZLIB'
+	hydra_sed zlib '-lz' '$( "${PKG_CONFIG}" --libs zlib )' '-DHAVE_ZLIB'
 
 	sh configure \
 		$(use gtk || echo --disable-xhydra) \

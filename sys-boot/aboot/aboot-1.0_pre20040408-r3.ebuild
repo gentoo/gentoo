@@ -16,7 +16,7 @@ SRC_URI="http://aboot.sourceforge.net/tarballs/${P}.tar.bz2
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="-* alpha"
+KEYWORDS="-* ~alpha"
 IUSE=""
 
 DEPEND=""

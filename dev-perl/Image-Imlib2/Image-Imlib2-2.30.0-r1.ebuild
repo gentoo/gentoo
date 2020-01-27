@@ -10,7 +10,7 @@ inherit perl-module eutils
 DESCRIPTION="Interface to the Imlib2 image library"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ppc x86"
+KEYWORDS="~alpha amd64 ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
