@@ -12,6 +12,11 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+src_configure() {
+	export bashcompdir=$(get_bashcompdir)
+	default
+}
+
 src_install() {
 	default
 	mv "${ED}/$(get_bashcompdir)"/jo{.bash,} || die
