@@ -5,11 +5,11 @@ DESCRIPTION=audio library tagger, manager, and player for GTK+
 EAPI=7
 HOMEPAGE=https://quodlibet.readthedocs.io/
 IUSE=+dbus gstreamer +udev python_targets_python3_6
-KEYWORDS=amd64 ppc ppc64 ~x86
+KEYWORDS=amd64 ppc ppc64 x86
 LICENSE=GPL-2
 RDEPEND=dev-libs/keybinder:3[introspection] dev-python/feedparser[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] dev-python/pygobject:3[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] >=media-libs/mutagen-1.32[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] net-libs/libsoup[introspection] x11-libs/gtk+[introspection] gstreamer? ( media-libs/gstreamer:1.0 media-libs/gst-plugins-base:1.0 media-libs/gst-plugins-good:1.0 media-plugins/gst-plugins-meta:1.0 ) !gstreamer? ( media-libs/xine-lib ) dbus? ( app-misc/media-player-info dev-python/dbus-python[python_targets_python3_6(-)?,-python_single_target_python3_6(-)] ) udev? ( virtual/udev ) !media-plugins/quodlibet-plugins python_targets_python3_6? ( dev-lang/python:3.6 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,-python_single_target_python3_6(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 )
 SLOT=0
 SRC_URI=https://github.com/quodlibet/quodlibet/archive/release-4.2.1.tar.gz -> quodlibet-4.2.1.tar.gz
 _eclasses_=distutils-r1	c576838cd67e384002a18edd54be710e	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=8d74f062346798fc4812942aaa975aac
+_md5_=dee20d428661f6bb23cb9a90bffbd0fc
