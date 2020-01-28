@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-28)
+# Live ebuild only for 3+ years now.  Python 2 only.  Last blocker
+# for pyzmq cleanup.  No revdeps.
+# Removal in 14 days.  Bug #707044.
+net-wireless/gr-air-modes
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-28)
 # Replaced by configshell-fb.  Python 2 only.  No revdeps.
 # Removal in 30 days.  Bug #707034.
 dev-python/configshell
