@@ -16,6 +16,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
 	dev-python/pyinotify[${PYTHON_USEDEP}]
