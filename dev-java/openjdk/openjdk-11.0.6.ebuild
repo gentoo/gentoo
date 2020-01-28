@@ -73,6 +73,8 @@ PDEPEND="
 
 REQUIRED_USE="javafx? ( alsa !headless-awt )"
 
+PATCHES=( "${FILESDIR}/openjdk-11-make43.patch" )
+
 S="${WORKDIR}/jdk${SLOT}u-jdk-${MY_PV}"
 
 # The space required to build varies wildly depending on USE flags,
