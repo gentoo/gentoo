@@ -34,6 +34,7 @@ RDEPEND="
 	>=sci-libs/scipy-0.8[${PYTHON_USEDEP}]
 	"
 DEPEND="
+	app-arch/unzip
 	>=dev-python/setuptools-0.9[${PYTHON_USEDEP}]
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	dev-python/pyscaffold[${PYTHON_USEDEP}]
