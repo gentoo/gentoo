@@ -193,7 +193,7 @@ src_configure() {
 		LINT = none
 		CONF = $(usex debug DebugNative Release)
 		NUM_COMPILE_THREADS = $(makeopts_jobs)
-		JFX_DEPS_URL = ${T}/jars
+		JFX_DEPS_URL = "${T}"/jars
 		COMPANY_NAME = "Gentoo"
 	_EOF_
 }
@@ -212,8 +212,8 @@ src_install() {
 	doins build/javafx-exports.zip
 
 	if use doc; then
-		insinto /usr/share/doc/"${PF}"/html
-		doins -r build/javadoc/.
+		docinto html
+		dodoc -r build/javadoc/.
 		dosym "${EPREFIX}"/usr/share/doc/"${PF}" /usr/share/doc/"${PN}-${SLOT}"
 	fi
 }
