@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit flag-o-matic distutils-r1 toolchain-funcs
@@ -22,13 +22,11 @@ RDEPEND="
 	>=net-libs/zeromq-4.1.2:=
 	dev-python/py[${PYTHON_USEDEP}]
 	dev-python/cffi:=[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/gevent[${PYTHON_USEDEP}]' python2_7)
 "
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' -2)
 		www-servers/tornado[${PYTHON_USEDEP}]
 	)
 	doc? (
@@ -53,7 +51,6 @@ python_compile_all() {
 
 python_compile() {
 	esetup.py cython --force
-	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	distutils-r1_python_compile
 }
 
