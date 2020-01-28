@@ -1,0 +1,11 @@
+--- a/src/lib/s4/tests/s4/t_transactions.c
++++ b/src/lib/s4/tests/s4/t_transactions.c
+@@ -19,7 +19,7 @@
+ #include <glib.h>
+ #include <glib/gstdio.h>
+ 
+-s4_t *s4;
++extern s4_t *s4;
+ s4_val_t *val;
+ 
+ SETUP (Transactions) {
