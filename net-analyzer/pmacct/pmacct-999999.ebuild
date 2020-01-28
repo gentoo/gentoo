@@ -32,7 +32,7 @@ RDEPEND="
 		<dev-libs/mongo-c-driver-0.98
 	)
 	mysql? ( dev-db/mysql-connector-c:0= )
-	ndpi? ( >=net-libs/nDPI-2.4:= )
+	ndpi? ( >=net-libs/nDPI-3.0:= )
 	nflog? ( net-libs/libnetfilter_log )
 	postgres? ( dev-db/postgresql:* )
 	rabbitmq? ( net-libs/rabbitmq-c )
@@ -43,9 +43,6 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-1.7.3-nDPI-3.0.patch
-)
 
 DOCS=(
 	CONFIG-KEYS ChangeLog FAQS QUICKSTART UPGRADE
