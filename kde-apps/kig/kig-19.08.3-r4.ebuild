@@ -5,8 +5,8 @@ EAPI=7
 
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
-PYTHON_COMPAT=( python3_{6,7,8} )
-KFMIN=5.63.0
+PYTHON_COMPAT=( python3_{6,7} )
+KFMIN=5.60.0
 QTMIN=5.12.3
 inherit python-single-r1 ecm kde.org
 
@@ -48,8 +48,9 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.12.0-boostpython.patch
-	"${FILESDIR}"/${PN}-19.08.3-pykig-python3.patch
-	"${FILESDIR}"/${PN}-19.08.3-scripter-crash.patch
+	"${FILESDIR}"/${P}-scripter-python3.patch
+	"${FILESDIR}"/${P}-scripter-crash.patch
+	"${FILESDIR}"/${P}-pykig-python3.patch
 )
 
 pkg_setup() {
