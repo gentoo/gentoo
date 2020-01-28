@@ -12,7 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="
-	64bit +bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mongodb mysql
+	+bgp-bins +bmp-bins geoip geoipv2 jansson kafka +l2 mongodb mysql
 	ndpi nflog plabel postgres rabbitmq sqlite +st-bins +traffic-bins zmq
 "
 REQUIRED_USE="
@@ -61,7 +61,6 @@ src_configure() {
 	append-cppflags -DMYSQL_SERVER_VERSION=99999999
 
 	econf \
-		$(use_enable 64bit) \
 		$(use_enable bgp-bins) \
 		$(use_enable bmp-bins) \
 		$(use_enable geoip) \
