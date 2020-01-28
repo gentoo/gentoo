@@ -4817,7 +4817,7 @@ dev-libs/bemenu 0.2.0 9999: dmenu clone for wayland
 dev-libs/bglibs 2.04-r1: Bruce Guenter's Libraries Collection
 dev-libs/bitset 2.8.4-r1: A compressed bitset with supporting data structures and algorithms
 dev-libs/boehm-gc 8.0.4: The Boehm-Demers-Weiser conservative garbage collector
-dev-libs/boost 1.71.0 1.72.0: Boost Libraries for C++
+dev-libs/boost 1.71.0 1.72.0-r1: Boost Libraries for C++
 dev-libs/boost-mpl-cartesian_product 20161205: an extension to the Boost.MPL library
 dev-libs/botan 1.10.17-r2 2.9.0 2.11.0: A C++ crypto library
 dev-libs/boxfort 0.0.1_pre20200110: Convenient & cross-platform sandboxing C library
@@ -8152,7 +8152,7 @@ dev-python/ntplib 0.3.3: Python NTP library
 dev-python/nuitka 0.6.4 0.6.5 0.6.6: Python to native compiler
 dev-python/numba 0.37.0 0.39.0: NumPy aware dynamic Python compiler using LLVM
 dev-python/numexpr 2.6.8 2.6.9: Fast numerical array expression evaluator for Python and NumPy
-dev-python/numpy 1.14.5 1.15.4 1.16.1 1.16.5 1.17.4 1.17.4-r1 1.17.4-r2: Fast array and numerical python library
+dev-python/numpy 1.14.5 1.15.4 1.16.1 1.16.5 1.17.4-r2: Fast array and numerical python library
 dev-python/numpy-python2 1.16.5: Fast array and numerical python library
 dev-python/numpydoc 0.6.0 0.8.0 0.9.1: Sphinx extension to support docstrings in Numpy format
 dev-python/oauth 1.0.1-r1: Python OAuth module
@@ -11936,7 +11936,7 @@ kde-apps/kgpg 19.08.3 19.12.1: Frontend for GnuPG, a powerful encryption utility
 kde-apps/khangman 19.08.3 19.12.1: Classical hangman game by KDE
 kde-apps/khelpcenter 19.08.3 19.12.1: Application to read documentation for KDE Plasma, Applications, Utilities
 kde-apps/kidentitymanagement 19.08.3 19.12.1: Library for managing identitites
-kde-apps/kig 19.08.3-r1 19.08.3-r2 19.12.1 19.12.1-r1: KDE Interactive Geometry tool
+kde-apps/kig 19.08.3-r3 19.08.3-r4 19.12.1-r2 19.12.1-r3: KDE Interactive Geometry tool
 kde-apps/kigo 19.08.3 19.12.1: Go game by KDE
 kde-apps/killbots 19.08.3 19.12.1: Kill the bots or they kill you!
 kde-apps/kimagemapeditor 19.08.3 19.12.1: Generator of HTML image maps
@@ -15276,7 +15276,7 @@ net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
-net-misc/youtube-dl 2020.01.15 2020.01.24 99999999: Download videos from YouTube.com (and more sites...)
+net-misc/youtube-dl 2020.01.24 99999999: Download videos from YouTube.com (and more sites...)
 net-misc/youtube-viewer 3.5.5 3.5.8-r1 3.5.9 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
@@ -17316,7 +17316,7 @@ sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2
 sys-devel/binutils-config 5-r4 5.1-r1 5.2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.30-r4 2.31.1-r6 2.32-r1 2.33.1: Tools necessary to build programs
 sys-devel/bison 3.1 3.3.2 3.4.2 3.5 3.5.1: A general-purpose (yacc-compatible) parser generator
-sys-devel/bmake 20170421 20170510 20170812: NetBSD's portable make
+sys-devel/bmake 20181221: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 7.1.0 8.0.1 9.0.1 10.0.0.9999 11.0.0.9999: C language family frontend for LLVM
 sys-devel/clang-common 7.1.0 8.0.1 9.0.1 10.0.0.9999 11.0.0.9999: Common files shared between multiple slots of clang
