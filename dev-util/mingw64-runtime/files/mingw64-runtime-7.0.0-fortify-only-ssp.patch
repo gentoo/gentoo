@@ -1,0 +1,16 @@
+--- a/mingw-w64-headers/crt/_mingw_mac.h
++++ b/mingw-w64-headers/crt/_mingw_mac.h
+@@ -301,7 +301,12 @@
+ #  define __mingw_attribute_artificial
+ #endif
+ 
+-#if _FORTIFY_SOURCE > 0 && __OPTIMIZE__ > 0 && __MINGW_GNUC_PREREQ(4, 1)
++/* __SSP__ is a workaround to avoid reference to libssp when user did not request it:
++ *     https://sourceforge.net/p/mingw-w64/bugs/818/
++ * Otherwise it breaks both USE=ssp gcc bootstrap and projects that happen to use
++ * strcpy/memcpy.
++ */
++#if _FORTIFY_SOURCE > 0 && __OPTIMIZE__ > 0 && __MINGW_GNUC_PREREQ(4, 1) && __SSP__ > 0
+ #  if _FORTIFY_SOURCE > 1
+ #    define __MINGW_FORTIFY_LEVEL 2
+ #  else
