@@ -38,7 +38,10 @@ RDEPEND="
 	sci-chemistry/vmd
 	>=sci-libs/bmrblib-1.0.3[${PYTHON_USEDEP}]
 	>=sci-libs/minfx-1.0.11[${PYTHON_USEDEP}]
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	|| (
+		sci-libs/scipy-python2[${PYTHON_USEDEP}]
+		sci-libs/scipy[${PYTHON_USEDEP}]
+	)
 	sci-visualization/grace
 	sci-visualization/opendx
 	x11-libs/wxGTK:${WX_GTK_VER}[X]"
