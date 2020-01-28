@@ -8046,6 +8046,7 @@ dev-python/markups 3.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23 1.0 1.1.1: Implements a XML/HTML/XHTML Markup safe string for Python
 dev-python/marshmallow 2.20.2 2.20.5 3.0.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
 dev-python/matplotlib 2.2.2-r1 2.2.4 3.1.2: Pure python plotting library with matlab like syntax
+dev-python/matplotlib-python2 2.2.4: Pure python plotting library with matlab like syntax (py2 version)
 dev-python/matplotlib2tikz 0.6.18: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/matterhook 0.1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.2.1 0.6.1 0.6.1-r1: flake8 plugin: McCabe complexity checker
@@ -11459,7 +11460,7 @@ games-roguelike/hengband 1.6.2-r1: An Angband variant, with a Japanese/fantasy t
 games-roguelike/mazesofmonad 1.0.9-r3: Console-based roguelike Role Playing Game similar to nethack
 games-roguelike/moria 5.7.10: The Dungeons of Moria, a single player roguelike game, also known as Umoria
 games-roguelike/neon-chrome 1.1.12: A ruthless top-down cyberpunk shooter with rogue-like elements
-games-roguelike/nethack 3.6.1 3.6.3 3.6.4: The ultimate old-school single player dungeon exploration game
+games-roguelike/nethack 3.6.4: The ultimate old-school single player dungeon exploration game
 games-roguelike/powder 117-r1: A game in the genre of Rogue, Nethack, and Diablo. Emphasis is on tactical play
 games-roguelike/scourge 0.21.1-r1: A graphical rogue-like adventure game
 games-roguelike/stone-soup 0.23.2 0.24.0: Role-playing roguelike game of exploration and treasure-hunting in dungeons
@@ -11634,7 +11635,7 @@ games-util/lutris 0.5.3 0.5.4-r1 9999: An open source gaming platform for GNU/Li
 games-util/mcrcon 0.7.1: Remote connection client for Minecraft servers
 games-util/nml 0.4.5-r2: Compiler of NML files into GRF/NFO files
 games-util/pogo-manager-bin 0.1.6 0.1.7: Pokemon Go manager
-games-util/pyfa 1.34.0 1.35.0 1.35.1 1.37.0 2.14.1 2.15.1 9999: Python Fitting Assistant - a ship fitting application for EVE Online
+games-util/pyfa 2.14.1 2.15.1 9999: Python Fitting Assistant - a ship fitting application for EVE Online
 games-util/qjoypad 4.3.1: Translate gamepad/joystick input into key strokes/mouse actions in X
 games-util/qstat 2.11 2.14: Server statics collector supporting many FPS games
 games-util/springlobby 0.266 0.267: The official lobby client for SpringRTS community games
@@ -12981,7 +12982,7 @@ media-libs/libdvd-audio 1.0.0: library for extracting audio from DVD-Audio discs
 media-libs/libdvdcss 1.4.2: A portable abstraction library for DVD decryption
 media-libs/libdvdnav 6.0.0 6.0.1 9999: Library for DVD navigation tools
 media-libs/libdvdread 6.0.0 6.0.1 6.0.2 9999: Library for DVD navigation tools
-media-libs/libebur128 1.2.3 1.2.4: A library implementing the EBU R128 loudness standard
+media-libs/libebur128 1.2.4: A library implementing the EBU R128 loudness standard
 media-libs/libemf 1.0.4-r1 1.0.7: Library implementation of ECMA-234 API for the generation of enhanced metafiles
 media-libs/libeot 0.01 9999: Library for parsing Embedded OpenType files (Microsoft embedded font 'standard')
 media-libs/libepoxy 1.5.4 9999: Epoxy is a library for handling OpenGL function pointer management for you
@@ -14795,7 +14796,7 @@ net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3: C++ BitTorrent implementat
 net-libs/libtrace 4.0.9_p1-r1 4.0.10_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.4 1.8.6 1.12.0: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
-net-libs/libvncserver 0.9.12-r2 0.9.12-r3 0.9.12-r4: library for creating vnc servers
+net-libs/libvncserver 0.9.12-r4: library for creating vnc servers
 net-libs/libwebsockets 3.2.1: A flexible pure-C library for implementing network protocols
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
