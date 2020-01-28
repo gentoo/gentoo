@@ -1,0 +1,16 @@
+BDEPEND=acct-user/opendkim test? ( dev-lang/lua:* ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 virtual/pkgconfig
+DEFINED_PHASES=compile config configure install postinst prepare
+DEPEND=|| ( mail-filter/libmilter mail-mta/sendmail ) dev-libs/libbsd sys-apps/grep ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) berkdb? ( >=sys-libs/db-3.2:* ) opendbx? ( >=dev-db/opendbx-1.4.0 ) lua? ( dev-lang/lua:* ) ldap? ( net-nds/openldap ) lmdb? ( dev-db/lmdb ) memcached? ( dev-libs/libmemcached ) sasl? ( dev-libs/cyrus-sasl ) unbound? ( >=net-dns/unbound-1.4.1:= net-dns/dnssec-root ) !unbound? ( net-libs/ldns )
+DESCRIPTION=A milter providing DKIM signing and verification
+EAPI=7
+HOMEPAGE=http://opendkim.org/
+IUSE=berkdb ldap libressl lmdb lua memcached opendbx poll sasl selinux +ssl static-libs stats querycache test unbound
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=BSD GPL-2 Sendmail-Open-Source
+RDEPEND=|| ( mail-filter/libmilter mail-mta/sendmail ) dev-libs/libbsd sys-apps/grep ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) berkdb? ( >=sys-libs/db-3.2:* ) opendbx? ( >=dev-db/opendbx-1.4.0 ) lua? ( dev-lang/lua:* ) ldap? ( net-nds/openldap ) lmdb? ( dev-db/lmdb ) memcached? ( dev-libs/libmemcached ) sasl? ( dev-libs/cyrus-sasl ) unbound? ( >=net-dns/unbound-1.4.1:= net-dns/dnssec-root ) !unbound? ( net-libs/ldns ) acct-user/opendkim sys-process/psmisc selinux? ( sec-policy/selinux-dkim ) virtual/tmpfiles
+REQUIRED_USE=sasl? ( ldap ) stats? ( opendbx ) querycache? ( berkdb )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://downloads.sourceforge.net/project/opendkim/opendkim-2.10.3.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	db-use	501a5d0963e0d17f30260023f292ae8e	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=990d63aa75970f9bac870e2cf6907c46
