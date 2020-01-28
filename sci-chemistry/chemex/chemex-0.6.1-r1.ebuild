@@ -17,7 +17,10 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/matplotlib-1.1[${PYTHON_USEDEP}]
+	|| (
+		>=dev-python/matplotlib-python2-1.1[${PYTHON_USEDEP}]
+		>=dev-python/matplotlib-1.1[${PYTHON_USEDEP}]
+	)
 	|| (
 		dev-python/numpy-python2[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
