@@ -25,7 +25,10 @@ RDEPEND="
 		dev-python/numpy-python2[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
-	>=sci-libs/scipy-0.11[${PYTHON_USEDEP}]
+	|| (
+		>=sci-libs/scipy-python2-0.11[${PYTHON_USEDEP}]
+		>=sci-libs/scipy-0.11[${PYTHON_USEDEP}]
+	)
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
