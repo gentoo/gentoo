@@ -9,7 +9,7 @@ inherit python-r1
 
 DESCRIPTION="A virtual for Python greenlet module"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 -hppa ~mips ppc ppc64 s390 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 -hppa ~mips ppc ppc64 s390 ~sparc x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
