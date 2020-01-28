@@ -58,7 +58,6 @@ src_prepare() {
 src_configure() {
 	tc-export CC AR RANLIB
 	append-cflags -fcommon
-	append-cppflags -DMYSQL_SERVER_VERSION=99999999
 
 	econf \
 		$(use_enable bgp-bins) \
