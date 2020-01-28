@@ -38,6 +38,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.55-automagic.patch"
+	"${FILESDIR}/${PN}-2.55-mime.patch"
 )
 
 src_prepare() {
