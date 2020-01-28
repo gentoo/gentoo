@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -39,14 +39,16 @@ src_prepare() {
 		doc/examples/udp_stream_script \
 		|| die
 
-	# netlib.c:2292:5: warning: implicit declaration of function ‘sched_setaffinity’
-	# nettest_omni.c:2943:5: warning: implicit declaration of function ‘splice’
-	append-cppflags -D_GNU_SOURCE
-
 	eapply_user
 }
 
 src_configure() {
+	append-cflags -fcommon
+
+	# netlib.c:2292:5: warning: implicit declaration of function ‘sched_setaffinity’
+	# nettest_omni.c:2943:5: warning: implicit declaration of function ‘splice’
+	append-cppflags -D_GNU_SOURCE
+
 	econf \
 		$(use_enable demo) \
 		$(use_enable sctp)

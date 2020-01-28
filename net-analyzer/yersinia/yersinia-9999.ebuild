@@ -1,16 +1,16 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit autotools flag-o-matic
+EAPI=7
+inherit autotools flag-o-matic git-r3
 
 DESCRIPTION="A framework for layer 2 attacks"
-HOMEPAGE="http://www.yersinia.net/"
-SRC_URI="https://github.com/tomac/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/tomac/yersinia"
+EGIT_REPO_URI="https://github.com/tomac/yersinia"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS=""
 IUSE="gtk ncurses"
 
 RDEPEND="
@@ -30,7 +30,7 @@ DEPEND="
 DOCS=( AUTHORS ChangeLog FAQ README THANKS TODO )
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.7.1-no-ncurses.patch
-	"${FILESDIR}"/${PN}-0.7.3-tinfo.patch
+	"${FILESDIR}"/${PN}-9999-tinfo.patch
 )
 
 src_prepare() {
