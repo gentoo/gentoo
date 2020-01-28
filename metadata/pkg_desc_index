@@ -14,6 +14,7 @@ acct-group/ceph 0: System group: ceph
 acct-group/cinder 0: System group: cinder
 acct-group/clamav 0: System group: clamav
 acct-group/cmd5checkpw 0: System group: cmd5checkpw
+acct-group/davfs2 0: System group: davfs2
 acct-group/ddclient 0: A group for the dynamic DNS client
 acct-group/deluge 0: System group: deluge
 acct-group/dhcp 0: System group: dhcp
@@ -155,6 +156,7 @@ acct-user/ceph 0: User for ceph
 acct-user/cinder 0: user for the openstack cinder service
 acct-user/clamav 0: System user: clamav
 acct-user/cmd5checkpw 0: User for cmd5checkpw
+acct-user/davfs2 0: System user: davfs2
 acct-user/ddclient 0: A user for the dynamic DNS client
 acct-user/deluge 0: user for deluge
 acct-user/dhcp 0: user for dhcp daemon
@@ -14506,7 +14508,7 @@ net-fs/btfs 2.19 2.20: a bittorrent filesystem based on FUSE
 net-fs/cifs-utils 6.7 6.8-r1 6.9-r1: Tools for Managing Linux CIFS Client Filesystems
 net-fs/curlftpfs 0.9.2-r4: File system for accessing ftp hosts based on FUSE
 net-fs/cvmfs 2.3.5-r2: HTTP read-only file system for distributing software
-net-fs/davfs2 1.5.4 1.5.5: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
+net-fs/davfs2 1.5.4 1.5.5 1.5.6: Linux FUSE (or coda) driver that allows you to mount a WebDAV resource
 net-fs/docker-volume-netshare 0.35: Docker NFS, AWS EFS, Ceph & Samba/CIFS Volume Plugin
 net-fs/libnfs 2.0.0 3.0.0 4.0.0 9999: Client library for accessing NFS shares over a network
 net-fs/mc 2019.07.17.22.13.42 2019.07.31.19.17.35: Minio client provides alternatives for ls, cat on cloud storage and filesystems
