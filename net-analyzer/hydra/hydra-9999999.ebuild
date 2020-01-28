@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 toolchain-funcs
+inherit flag-o-matic git-r3 toolchain-funcs
 
 DESCRIPTION="Parallelized network login hacker"
 HOMEPAGE="https://github.com/vanhauser-thc/thc-hydra"
@@ -45,12 +45,6 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
-PATCHES=(
-	"${FILESDIR}"/${PN}-9.0-fcommon-gtk.patch
-	"${FILESDIR}"/${PN}-9.0-fcommon-mod.patch
-	"${FILESDIR}"/${PN}-9.0-fcommon-mods.patch
-	"${FILESDIR}"/${PN}-9999999-fcommon-http.patch
-)
 
 src_prepare() {
 	default
@@ -70,6 +64,7 @@ src_prepare() {
 src_configure() {
 	# Note: the top level configure script is not autoconf-based
 	tc-export CC PKG_CONFIG
+	append-cflags -fcommon
 
 	export OPTS="${CFLAGS}"
 
