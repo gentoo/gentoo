@@ -59,6 +59,7 @@ REQUIRED_USE="
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
+	!!app-shells/mpv-bash-completion
 	>=media-video/ffmpeg-4.0:0=[encode,threads,vaapi?,vdpau?]
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	archive? ( >=app-arch/libarchive-3.4.0:= )
