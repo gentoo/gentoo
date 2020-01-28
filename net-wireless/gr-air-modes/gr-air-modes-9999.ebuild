@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,10 @@ DEPEND="${PYTHON_DEPS}
 	net-wireless/gr-osmosdr
 	fgfs? (
 		games-simulation/flightgear
-		sci-libs/scipy
+		|| (
+			sci-libs/scipy-python2[${PYTHON_USEDEP}]
+			sci-libs/scipy[${PYTHON_USEDEP}]
+		)
 	)
 	rtlsdr? ( net-wireless/rtl-sdr )
 	uhd? ( >=net-wireless/uhd-3.4.0 )
