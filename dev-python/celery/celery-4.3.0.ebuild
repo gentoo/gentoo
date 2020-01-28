@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit bash-completion-r1 distutils-r1 eutils
 
@@ -36,7 +36,6 @@ DEPEND="
 	test? ( ${RDEPEND}
 		>=dev-python/case-1.3.1[${PYTHON_USEDEP}]
 		>=dev-python/eventlet-0.24.1[${PYTHON_USEDEP}]
-		dev-python/gevent[$(python_gen_usedep python2_7)]
 		>=dev-python/pymongo-3.7[${PYTHON_USEDEP}]
 		dev-python/pyopenssl[${PYTHON_USEDEP}]
 		>=dev-python/pytest-4.3.1[${PYTHON_USEDEP}]
@@ -56,7 +55,6 @@ DEPEND="
 		>=dev-python/sphinx_celery-2.0[$(python_gen_usedep 'python3*')]
 		dev-python/jinja[${PYTHON_USEDEP}]
 		dev-python/sqlalchemy[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' python2_7)
 	)"
 
 # testsuite needs it own source
