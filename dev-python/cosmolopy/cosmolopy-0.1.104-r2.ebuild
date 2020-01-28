@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,11 @@ IUSE="doc"
 DEPEND="dev-python/nose[${PYTHON_USEDEP}]
 	dev-lang/swig
 	doc? ( dev-python/epydoc[${PYTHON_USEDEP}] )"
-RDEPEND="sci-libs/scipy[${PYTHON_USEDEP}]"
+RDEPEND="
+	|| (
+		sci-libs/scipy-python2[${PYTHON_USEDEP}]
+		sci-libs/scipy[${PYTHON_USEDEP}]
+	)"
 
 S=${WORKDIR}/${MY_P}
 
