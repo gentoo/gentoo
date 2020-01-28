@@ -11,7 +11,7 @@ HOMEPAGE="http://pology.nedohodnik.net"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="http://pology.nedohodnik.net/release/${P}.tar.bz2"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 
 LICENSE="GPL-3"
