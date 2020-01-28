@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-python/matplotlib[gtk2,${PYTHON_USEDEP}]
+	|| (
+		dev-python/matplotlib-python2[gtk2,${PYTHON_USEDEP}]
+		dev-python/matplotlib[gtk2,${PYTHON_USEDEP}]
+	)
 	dev-python/basemap[${PYTHON_USEDEP}]
 	sci-electronics/voacapl
 "
