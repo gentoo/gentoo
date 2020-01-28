@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure install
+DEPEND=>=dev-libs/glib-2.26 gtk? ( x11-libs/gtk+:3 ) virtual/pkgconfig nls? ( sys-devel/gettext )
+DESCRIPTION=A number of classes and functions for programming GTK+ programs using C++
+EAPI=7
+HOMEPAGE=http://cxx-gtk-utils.sourceforge.net/
+IUSE=+gtk nls static-libs
+KEYWORDS=~amd64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=>=dev-libs/glib-2.26 gtk? ( x11-libs/gtk+:3 )
+SLOT=0
+SRC_URI=mirror://sourceforge/cxx-gtk-utils/c++-gtk-utils-2.2.19.tar.gz
+_md5_=7cce5a9d60144c60668d114df30168c3

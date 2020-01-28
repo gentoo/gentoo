@@ -300,7 +300,7 @@ app-accessibility/sphinx2 0.6: CMU Speech Recognition-engine
 app-accessibility/sphinx3 0.8-r1: CMU Speech Recognition engine
 app-accessibility/sphinxbase 0.8: Support library required by the Sphinx Speech Recognition Engine
 app-accessibility/yasr 0.6.9-r1: General-purpose console screen reader
-app-admin/abrt 2.10.10-r2 2.12.0-r1: Automatic bug detection and reporting tool
+app-admin/abrt 2.12.0-r1: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
@@ -528,7 +528,7 @@ app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a gi
 app-arch/dump 0.4.46 0.4.46-r1: Dump/restore ext2fs backup utilities
 app-arch/engrampa 1.22.1-r1: Engrampa archive manager for MATE
 app-arch/fastjar 0.98-r2 0.98-r3: A jar program written in C
-app-arch/file-roller 3.32.2-r1 3.32.3: Archive manager for GNOME
+app-arch/file-roller 3.32.3: Archive manager for GNOME
 app-arch/funzix 1.0: unpacker for the bogus ZIX format
 app-arch/gcab 1.3: Library and tool for working with Microsoft Cabinet (CAB) files
 app-arch/gnome-autoar 0.2.3 0.2.4: Automatic archives creating and extracting library
@@ -867,7 +867,7 @@ app-crypt/scdrand 0.3.4: Feed kernel entropy pool from smartcard's TRNG
 app-crypt/scrypt 1.2.0: A simple password-based encryption utility using scrypt key derivation function
 app-crypt/scute 1.5.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.32.2: Manage your passwords and encryption keys
-app-crypt/seahorse-sharing 3.8.0_p20151117 3.8.0_p20181216: Daemon for PGP public key sharing using DNS-SD and HKP
+app-crypt/seahorse-sharing 3.8.0_p20181216: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
 app-crypt/sign 1.0.7: File signing and signature verification utility
 app-crypt/signify 20 23 24: Cryptographically sign and verify files
@@ -1271,8 +1271,8 @@ app-editors/ersatz-emacs 20060515-r1: A very minimal imitation of the famous GNU
 app-editors/fe 2.0: A small and easy to use folding editor
 app-editors/focuswriter 1.7.2: Fullscreen and distraction-free word processor
 app-editors/fte 20110708-r1: Lightweight text-mode editor
-app-editors/gedit 3.32.2 3.32.2-r1: A text editor for the GNOME desktop
-app-editors/gedit-plugins 3.32.2 3.32.2-r1: Official plugins for gedit
+app-editors/gedit 3.32.2-r1: A text editor for the GNOME desktop
+app-editors/gedit-plugins 3.32.2-r1: Official plugins for gedit
 app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.0: Cross-platform, aesthetic, distraction-free markdown editor
 app-editors/gnome-latex 3.28.1: Integrated LaTeX environment for GNOME
@@ -2316,7 +2316,7 @@ app-office/dia2code 1.0.0: Convert UML diagrams produced with Dia to various sou
 app-office/glabels 3.4.1: Program for creating labels and business cards
 app-office/gnucash 3.2-r2 3.3 3.3-r1 3.4 3.5 3.6 3.7: A personal finance manager
 app-office/gnumeric 1.12.39 1.12.43 1.12.44: The GNOME Spreadsheet
-app-office/grisbi 1.0.4 1.2.1 1.2.2: Grisbi is a personal accounting application for Linux
+app-office/grisbi 1.2.2: Grisbi is a personal accounting application for Linux
 app-office/gtg 0.3.1: Personal organizer for the GNOME desktop environment
 app-office/homebank 5.1.3 5.2.2 5.2.3 5.2.8: Free, easy, personal accounting for everyone
 app-office/hourglass 0.7.2-r1: A PSP (personal software process) time tracking utility written in Java
@@ -5083,7 +5083,7 @@ dev-libs/libratbag 0.9: Library to configure gaming mice
 dev-libs/librdkafka 1.1.0 1.2.1 1.2.2 1.3.0: Apache Kafka C/C++ client library
 dev-libs/librelp 1.4.0 1.5.0: An easy to use library for the RELP protocol
 dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
-dev-libs/libreport 2.9.5 2.10.0: Generic library for reporting software bugs
+dev-libs/libreport 2.10.0: Generic library for reporting software bugs
 dev-libs/libressl 2.6.5 2.8.3 2.9.1 2.9.2 3.0.0 3.0.1 3.0.2: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: Helper library for REVerse ENGineered formats filters
 dev-libs/libsass 3.5.5 3.6.1 3.6.3 9999: A C/C++ implementation of a Sass CSS compiler
@@ -5225,7 +5225,7 @@ dev-libs/rocm-opencl-runtime 3.0.0: Radeon Open Compute OpenCL Compatible Runtim
 dev-libs/rocr-runtime 3.0.0 9999: Radeon Open Compute Runtime
 dev-libs/roct-thunk-interface 3.0.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
-dev-libs/satyr 0.26 0.27: Satyr is a collection of low-level algorithms for program failure processing
+dev-libs/satyr 0.27: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.0.0 6.1.0 6.2.0: Simulation Description Format (SDF) parser
 dev-libs/serd 0.28.0-r1 0.30.2: Library for RDF syntax which supports reading and writing Turtle and NTriples
 dev-libs/serdisplib 1.97.9 2.01 2.01-r1 2.02: Library to drive several displays with built-in controllers or display modules
@@ -11665,7 +11665,7 @@ gnome-base/gnome-extra-apps 3.32.2: Sub-meta package for the applications of GNO
 gnome-base/gnome-flashback 3.32.0: GNOME Flashback session
 gnome-base/gnome-keyring 3.31.91-r1: Password and keyring managing daemon
 gnome-base/gnome-light 3.22.0 3.26.2 3.30.2 3.32.2: Meta package for GNOME-Light, merge this package to install
-gnome-base/gnome-menus 3.13.3-r1 3.32.0: Library and layout configuration for the Desktop Menu fd.o specification
+gnome-base/gnome-menus 3.32.0: Library and layout configuration for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.32.0: The GNOME Flashback Panel
 gnome-base/gnome-session 3.32.0: Gnome session manager
@@ -11696,7 +11696,7 @@ gnome-extra/cinnamon-session 3.6.1-r5 3.8.0-r1 4.0.0-r1: Cinnamon session manage
 gnome-extra/cinnamon-settings-daemon 3.6.1-r1 3.8.4 4.0.2: Cinnamon's settings daemon
 gnome-extra/cinnamon-translations 3.6.3 3.6.3-r1 3.8.2 4.0.0: Translation data for Cinnamon
 gnome-extra/cjs 3.6.1 3.8.0 4.0.0 4.0.0-r1: Linux Mint's fork of gjs for Cinnamon
-gnome-extra/eiciel 0.9.11-r1 0.9.12.1 0.9.12.1-r1: ACL editor for GNOME, with Nautilus extension
+gnome-extra/eiciel 0.9.12.1-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.32.5: Evolution groupware backend
 gnome-extra/evolution-ews 3.32.2: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
@@ -11749,7 +11749,7 @@ gnome-extra/sushi 3.32.1: A quick previewer for Nautilus, the GNOME file manager
 gnome-extra/synapse 0.2.99.4: A program launcher in the style of GNOME Do
 gnome-extra/yelp 3.32.2: Help browser for GNOME
 gnome-extra/yelp-xsl 3.32.1: XSL stylesheets for yelp
-gnome-extra/zenity 3.30.0 3.32.0: Tool to display dialogs from the commandline and shell scripts
+gnome-extra/zenity 3.32.0: Tool to display dialogs from the commandline and shell scripts
 gnustep-apps/aclock 0.4.0: Analog dockapp clock for GNUstep
 gnustep-apps/addresses 0.4.8: Addresses is a Apple Addressbook work alike (standalone and for GNUMail)
 gnustep-apps/affiche 0.6.0-r4: Affiche allows people to 'stick' notes
@@ -11813,7 +11813,7 @@ gui-apps/wl-clipboard 1.0.0 2.0.0 9999: Wayland clipboard utilities
 gui-libs/amtk 5.0.1: Actions, Menus and Toolbars Kit for GTK+ applications
 gui-libs/libhandy 0.0.9: Library with GTK widgets for mobile phones
 gui-libs/libwpe 1.4.0.1: Platform-agnostic interfaces for WPE WebKit
-gui-libs/tepl 4.2.0 4.2.1: GtkSourceView-based text editors and IDE helper library
+gui-libs/tepl 4.2.1: GtkSourceView-based text editors and IDE helper library
 gui-libs/wlroots 0.8.1-r1 0.10.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
 gui-wm/sway 1.2 1.4 9999: i3-compatible Wayland window manager
@@ -12793,7 +12793,7 @@ media-gfx/scantailor-advanced 1.0.14 1.0.16: Interactive post-processing tool fo
 media-gfx/scour 0.37: Take an SVG file and produce a cleaner and more concise file
 media-gfx/scrot 0.8_p13-r1 1.2 9999: Screen capture utility using imlib2 library
 media-gfx/sfftobmp 3.1.2-r1: sff to bmp converter
-media-gfx/shotwell 0.30.7 0.30.8: Open source photo manager for GNOME
+media-gfx/shotwell 0.30.8: Open source photo manager for GNOME
 media-gfx/sigal 1.3.0: Simple static web gallery generator
 media-gfx/simple-scan 3.32.2: Simple document scanning utility
 media-gfx/slic3r 1.1.7 1.3.0-r1 9999: A mesh slicer to generate G-code for fused-filament-fabrication (3D printers)
@@ -12859,7 +12859,7 @@ media-libs/blib 1.1.7-r2: blib is a library full of useful things to hack the Bl
 media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation library
 media-libs/chromaprint 1.4.3: Library implementing a custom algorithm for extracting audio fingerprints
 media-libs/cimg 2.7.2 2.8.1: C++ template image processing toolkit
-media-libs/clutter 1.26.2-r1 1.26.2-r2: Clutter is a library for creating graphical user interfaces
+media-libs/clutter 1.26.2-r2: Clutter is a library for creating graphical user interfaces
 media-libs/clutter-gst 3.0.27: GStreamer integration library for Clutter
 media-libs/clutter-gtk 1.8.4: Library for embedding a Clutter canvas (stage) in GTK+
 media-libs/codec2 0.8.1: Low bit rate speech codec
@@ -12910,7 +12910,7 @@ media-libs/gmmlib 19.2.1 19.2.3 19.2.4 19.3.4 19.4.1 9999: Intel Graphics Memory
 media-libs/gmtk 1.0.8 1.0.9: GTK+ widget and function libraries for gnome-mplayer
 media-libs/gnonlin 1.4.0-r1: Set of GStreamer elements to ease the creation of non-linear multimedia editors
 media-libs/graphene 1.8.6: A thin layer of types for graphic libraries
-media-libs/grilo 0.3.9 0.3.11: A framework for easy media discovery and browsing
+media-libs/grilo 0.3.11: A framework for easy media discovery and browsing
 media-libs/gsound 1.0.2-r1: Thin GObject wrapper around the libcanberra sound event library
 media-libs/gst-plugins-bad 1.14.5: Less plugins for GStreamer
 media-libs/gst-plugins-base 1.14.5 1.14.5-r1: Basepack of plugins for gstreamer
@@ -16029,7 +16029,7 @@ sci-geosciences/foxtrotgps 1.2.0: Easy to use, fast and lightweight mapping appl
 sci-geosciences/gdal-grass 2.1.3: GDAL plugin to access GRASS data
 sci-geosciences/geocode-glib 3.26.1: GLib helper library for geocoding services
 sci-geosciences/gmt 4.5.6 4.5.8 4.5.9 4.5.18: Powerful map generator
-sci-geosciences/gnome-maps 3.30.3.1 3.34.3: A map application for GNOME
+sci-geosciences/gnome-maps 3.34.3: A map application for GNOME
 sci-geosciences/gpsbabel 1.5.4-r1: GPS waypoints, tracks and routes converter
 sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your photos with a recorded GPS trace
 sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
@@ -17137,7 +17137,7 @@ sys-block/fio 2.15 2.16 3.2 3.7 3.16 3.16-r1 3.17: Jens Axboe's Flexible IO test
 sys-block/flashbench 20120606: Tool for benchmarking and classifying flash memory drives
 sys-block/fwdl 1.2.3: Seagate Fibre-Channel disk firmware upgrade tool
 sys-block/gpart 0.3: Partition table rescue/guessing tool
-sys-block/gparted 0.33.0 1.0.0 1.1.0: Gnome Partition Editor
+sys-block/gparted 1.0.0 1.1.0: Gnome Partition Editor
 sys-block/hdrecover 0.5: Attempts to recover a hard disk that has bad blocks on it
 sys-block/hpacucli 9.30.15.0 9.40.12.0: HP Array Config Utility Command Line Interface (HPACUCLI, formerly CPQACUXE)
 sys-block/hpssacli 2.40.13.0-r1 3.10.3.0: HPE Smart Storage Administrator (HPE SSA) CLI (HPSSACLI, formerly HPACUCLI)
@@ -18058,7 +18058,7 @@ www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launc
 www-client/chromium 79.0.3945.130 80.0.3987.66 81.0.4033.2: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
-www-client/epiphany 3.30.5 3.32.5 3.32.6: GNOME webbrowser based on Webkit
+www-client/epiphany 3.30.5 3.32.6: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0 68.2.0 68.3.0 68.4.1 68.4.2 71.0-r1 72.0.1 72.0.2: Firefox Web Browser
@@ -18277,7 +18277,7 @@ x11-drivers/xf86-video-vboxvideo 1.0.0: VirtualBox guest video driver
 x11-drivers/xf86-video-vesa 2.4.0: Generic VESA video driver
 x11-drivers/xf86-video-vmware 13.3.0: VMware SVGA video driver
 x11-libs/agg 2.5-r3: High quality rendering engine library for C++
-x11-libs/c++-gtk-utils 2.0.27 2.0.32 2.0.33 2.2.10 2.2.17 2.2.18: A number of classes and functions for programming GTK+ programs using C++
+x11-libs/c++-gtk-utils 2.0.27 2.0.33 2.0.34 2.2.10 2.2.18 2.2.19: A number of classes and functions for programming GTK+ programs using C++
 x11-libs/cairo 1.16.0-r3 9999: A vector graphics library with cross-device output support
 x11-libs/colord-gtk 0.1.26: GTK support library for colord
 x11-libs/dnd 1.1-r3: OffiX' Drag'n'drop library
