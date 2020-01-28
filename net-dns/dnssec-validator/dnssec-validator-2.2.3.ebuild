@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,9 +42,9 @@ src_configure() {
 		$(use_with nsec3)
 		$(use_enable static-libs static)
 		$(use_with threads)
-		--with-dnsval-conf="${EPREFIX%/}/etc/dnssec-tools/dnsval.conf"
-		--with-resolv-conf="${EPREFIX%/}/etc/dnssec-tools/resolv.conf"
-		--with-root-hints="${EPREFIX%/}/etc/dnssec-tools/root.hints"
+		--with-dnsval-conf="${EPREFIX}/etc/dnssec-tools/dnsval.conf"
+		--with-resolv-conf="${EPREFIX}/etc/dnssec-tools/resolv.conf"
+		--with-root-hints="${EPREFIX}/etc/dnssec-tools/root.hints"
 	)
 
 	econf "${myeconfargs[@]}"
