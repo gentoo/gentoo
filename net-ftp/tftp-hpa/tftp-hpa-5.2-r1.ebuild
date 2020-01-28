@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -24,7 +24,9 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-tftp )
 "
+
 src_prepare() {
+	epatch "${FILESDIR}"/tftp-hpa-5.2-gcc-10.patch
 	epatch_user
 
 	sed -i "/^AR/s:ar:$(tc-getAR):" MCONFIG.in || die
