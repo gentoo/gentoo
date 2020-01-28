@@ -8,9 +8,6 @@
 		<email>prometheanfire@gentoo.org</email>
 		<name>Matthew Thode</name>
 	</maintainer>
-	<longdescription lang="en">
-		A small and modular way of handling web-related RPC
-	</longdescription>
 	<upstream>
 		<remote-id type="github">mbr/tinyrpc</remote-id>
 		<remote-id type="pypi">tinyrpc</remote-id>
