@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
 
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.2.1-gentoo-versioning.patch
 )
