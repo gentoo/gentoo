@@ -6,13 +6,14 @@ EAPI=7
 ECM_TEST="forceoptional"
 KFMIN=5.60.0
 QTMIN=5.12.3
+VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 DESCRIPTION="Framework to collect user feedback for applications via telemetry and surveys"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/unstable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~ppc64"
 fi
 
 LICENSE="MIT"
