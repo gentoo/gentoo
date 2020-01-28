@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit user
-
 DESCRIPTION="Linux FUSE (or coda) driver that allows you to mount a WebDAV resource"
 HOMEPAGE="https://savannah.nongnu.org/projects/davfs2"
 SRC_URI="mirror://nongnu/${PN}/${P}.tar.gz"
@@ -23,24 +21,23 @@ RDEPEND="dev-libs/libxml2
 DEPEND="${REPEND}
 	nls? ( sys-devel/gettext )
 "
-
-pkg_setup() {
-	enewgroup davfs2
-}
+RDEPEND="${RDEPEND}
+	acct-group/davfs2
+	acct-user/davfs2
+"
 
 src_prepare() {
 	# Let the package manager handle man page compression
 	sed -e '/^manual[58]_DATA/ s/\.gz//g' \
 		-i "${S}"/man/Makefile.in || die
 
-	# Bug: https://bugs.gentoo.org/706356
 	eapply "${FILESDIR}"/${PN}-1.5.5-gcc-10.patch
 
 	default
 }
 
 src_configure() {
-	econf dav_user=nobody --enable-largefile $(use_enable nls)
+	econf --enable-largefile $(use_enable nls)
 }
 
 pkg_postinst() {
@@ -48,7 +45,7 @@ pkg_postinst() {
 	elog "Quick setup:"
 	elog "   (as root)"
 	elog "   # gpasswd -a \${your_user} davfs2"
-	elog "   # echo 'http://path/to/dav /home/\${your_user}/dav davfs rw,user,noauto  0  0' >> /etc/fstab"
+	elog "   # echo 'https://path/to/dav /home/\${your_user}/dav davfs rw,user,noauto  0  0' >> /etc/fstab"
 	elog "   (as user)"
 	elog "   \$ mkdir -p ~/dav"
 	elog "   \$ mount ~/dav"
