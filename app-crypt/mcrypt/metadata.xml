@@ -2,7 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-  <upstream>
-    <remote-id type="sourceforge">mcrypt</remote-id>
-  </upstream>
+	<upstream>
+		<remote-id type="sourceforge">mcrypt</remote-id>
+	</upstream>
 </pkgmetadata>
