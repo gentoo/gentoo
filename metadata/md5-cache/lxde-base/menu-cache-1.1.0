@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1+
 RDEPEND=dev-libs/glib:2 x11-libs/libfm-extra
 SLOT=0/2
 SRC_URI=mirror://sourceforge/lxde/menu-cache-1.1.0.tar.xz
-_md5_=f83d6ee46ea1223a4ec1503a8be9a2f4
+_md5_=b9dc0c0f34b8cffb126ec4dee173535d
