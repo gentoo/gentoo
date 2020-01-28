@@ -24,7 +24,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	dev-python/Numdifftools[${PYTHON_USEDEP}]
-	dev-python/matplotlib[${PYTHON_USEDEP}]
+	|| (
+		dev-python/matplotlib-python2[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
+	)
 	|| (
 		dev-python/numpy-python2[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
