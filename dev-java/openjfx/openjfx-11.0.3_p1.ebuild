@@ -215,6 +215,6 @@ src_install() {
 	if use doc; then
 		docinto html
 		dodoc -r build/javadoc/.
-		dosym "${EPREFIX}"/usr/share/doc/"${PF}" /usr/share/doc/"${PN}-${SLOT}"
+		dosym ../../../usr/share/doc/"${PF}" /usr/share/doc/"${PN}-${SLOT}"
 	fi
 }
