@@ -1,0 +1,28 @@
+This patch fixes the embedded libev's ./configure invocation
+for use in a cross compilation environment.
+
+Even though we disabled the use/build of gevent's embedded
+libev and c-ares libs, there is still one independent
+build step in setup.py that wants to run the embedded
+libev build system.
+The setup.py comment says the following:
+# We're not embedding libev but we do want
+# to build the CFFI module. We need to configure libev
+# because the CORE Extension won't.
+
+Patch by Craig Hesling.
+
+https://bugs.gentoo.org/707024
+
+--- a/_setuplibev.py
++++ b/_setuplibev.py
+@@ -31,7 +31,7 @@ LIBEV_EMBED = should_embed('libev')
+ # and the PyPy branch will clean it up.
+ libev_configure_command = ' '.join([
+     "(cd ", quoted_dep_abspath('libev'),
+-    " && sh ./configure ",
++    " && sh ./configure --build=${CBUILD} --host=${CHOST} ",
+     " && cp config.h \"$OLDPWD\"",
+     ")",
+     '> configure-output.txt'
+

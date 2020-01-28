@@ -1,0 +1,32 @@
+This patch fixes the build includes when cross compiling.
+Without it, the host include path /usr/include/python2.7
+is provided to the compiler, along with the cross arch
+specific include path, /<**>/<arch>/usr/include/python2.7.
+This can yield the following compilation error:
+error: includez location '/usr/include/python2.7' is unsafe
+for cross-compilation
+
+Patch by Craig Hesling.
+
+https://bugs.gentoo.org/707024
+
+--- a/setup.py
++++ b/setup.py
+@@ -5,6 +5,7 @@ import sys
+ import os
+ import os.path
+ import sysconfig
++from distutils import sysconfig as dist_sysconfig
+ 
+ # setuptools is *required* on Windows
+ # (https://bugs.python.org/issue23246) and for PyPy. No reason not to
+@@ -52,7 +53,7 @@ from _setupares import ARES
+ # Get access to the greenlet header file.
+ # The sysconfig dir is not enough if we're in a virtualenv
+ # See https://github.com/pypa/pip/issues/4610
+-include_dirs = [sysconfig.get_path("include")]
++include_dirs = [dist_sysconfig.get_python_inc()]
+ venv_include_dir = os.path.join(sys.prefix, 'include', 'site',
+                                 'python' + sysconfig.get_python_version())
+ venv_include_dir = os.path.abspath(venv_include_dir)
+

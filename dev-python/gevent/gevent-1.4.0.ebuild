@@ -30,6 +30,11 @@ DEPEND="${RDEPEND}
 # It also seems that they require network access.
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/${P}-cross-compile-includes.patch"
+	"${FILESDIR}/${P}-cross-compile-libev.patch"
+)
+
 python_prepare_all() {
 	export LIBEV_EMBED="false"
 	export CARES_EMBED="false"
