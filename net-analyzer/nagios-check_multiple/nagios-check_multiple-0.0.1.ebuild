@@ -9,7 +9,7 @@ inherit distutils-r1
 
 MY_PN="check_multiple"
 DESCRIPTION="A Nagios plugin to execute multiple checks in parallel"
-HOMEPAGE="https://github.com/clarkbox/${MY_PN}"
+HOMEPAGE="https://github.com/clarkbox/check_multiple"
 SRC_URI="https://github.com/clarkbox/check_multiple/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
