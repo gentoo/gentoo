@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,10 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 LICENSE="MIT GPL-2"
 
 CDEPEND="sci-libs/shapelib
-	>=dev-python/matplotlib-0.98[${PYTHON_USEDEP}]
+	|| (
+		>=dev-python/matplotlib-python2-0.98[${PYTHON_USEDEP}]
+		>=dev-python/matplotlib-0.98[${PYTHON_USEDEP}]
+	)
 	>=sci-libs/geos-3.3.1[python,${PYTHON_USEDEP}]"
 
 DEPEND="${CDEPEND}
