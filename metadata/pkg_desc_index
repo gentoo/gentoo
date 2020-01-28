@@ -11937,7 +11937,7 @@ kde-apps/kgpg 19.08.3 19.12.1: Frontend for GnuPG, a powerful encryption utility
 kde-apps/khangman 19.08.3 19.12.1: Classical hangman game by KDE
 kde-apps/khelpcenter 19.08.3 19.12.1: Application to read documentation for KDE Plasma, Applications, Utilities
 kde-apps/kidentitymanagement 19.08.3 19.12.1: Library for managing identitites
-kde-apps/kig 19.08.3-r3 19.08.3-r4 19.12.1-r2 19.12.1-r3: KDE Interactive Geometry tool
+kde-apps/kig 19.08.3-r3 19.08.3-r4 19.12.1-r3: KDE Interactive Geometry tool
 kde-apps/kigo 19.08.3 19.12.1: Go game by KDE
 kde-apps/killbots 19.08.3 19.12.1: Kill the bots or they kill you!
 kde-apps/kimagemapeditor 19.08.3 19.12.1: Generator of HTML image maps
@@ -12044,7 +12044,7 @@ kde-apps/mailimporter 19.08.3 19.12.1: Library to import mail from various sourc
 kde-apps/marble 19.08.3-r1 19.12.1: Virtual Globe and World Atlas to learn more about Earth
 kde-apps/mbox-importer 19.08.3 19.12.1: Import mbox email archives from various sources into Akonadi
 kde-apps/messagelib 19.08.3 19.12.1: Libraries for messaging functions
-kde-apps/minuet 19.08.3 19.08.3-r1 19.12.1 19.12.1-r1: Music Education software by KDE
+kde-apps/minuet 19.08.3 19.08.3-r1 19.12.1-r1: Music Education software by KDE
 kde-apps/okular 19.08.3 19.12.1: Universal document viewer based on KDE Frameworks
 kde-apps/palapeli 19.08.3 19.12.1: Jigsaw puzzle game by KDE
 kde-apps/parley 19.08.3 19.12.1: A vocabulary trainer to help you memorize things
@@ -13113,7 +13113,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 9999: Linux Studio Plugins
 media-libs/lv2 1.14.0-r1 1.16.0: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 19.2.8 19.3.2 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.2.8 19.3.2 19.3.3 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.16.0-r1 6.16.0-r2 6.18.0 6.18.0-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
