@@ -1,80 +1,87 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-POSTGRES_COMPAT=( 9.{4..6} {10..12} )
+
+POSTGRES_COMPAT=( 9.{5..6} {10..12} )
 POSTGRES_USEDEP="server"
+inherit autotools eapi7-ver postgres-multi
 
-inherit autotools eutils postgres-multi subversion versionator
+MY_P="${PN}-$(ver_rs 3 '')"
 
-MY_PV=$(replace_version_separator 3 '')
-MY_P="${PN}-${MY_PV}"
-S="${WORKDIR}/${MY_P}"
-
-ESVN_REPO_URI="http://svn.osgeo.org/postgis/trunk/"
+if [[ ${PV} = *9999* ]] ; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.osgeo.org/gitea/postgis/postgis.git"
+else
+	PGIS="$(ver_cut 1-2)"
+	SRC_URI="https://download.osgeo.org/postgis/source/${MY_P}.tar.gz"
+	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
+fi
 
 DESCRIPTION="Geographic Objects for PostgreSQL"
-HOMEPAGE="http://postgis.net"
+HOMEPAGE="https://postgis.net"
+
+S="${WORKDIR}/${MY_P}"
+
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
-IUSE="address-standardizer doc gtk static-libs mapbox test topology"
+IUSE="address-standardizer doc gtk static-libs test topology"
 
-RDEPEND="
-	${POSTGRES_DEP}
-	dev-libs/json-c:=
-	dev-libs/libxml2:2
-	>=sci-libs/geos-3.5.0
-	>=sci-libs/proj-4.6.0
-	>=sci-libs/gdal-1.10.0
-	address-standardizer? ( dev-libs/libpcre )
-	gtk? ( x11-libs/gtk+:2 )
-	mapbox? ( dev-libs/protobuf )
-"
-
-DEPEND="${RDEPEND}
-		doc? (
-				app-text/docbook-xsl-stylesheets
-				app-text/docbook-xml-dtd:4.5
-				dev-libs/libxslt
-				virtual/imagemagick-tools[png]
-		)
-		virtual/pkgconfig
-		test? ( dev-util/cunit )
-"
-
-REQUIRED_USE="test? ( doc )"
+REQUIRED_USE="test? ( doc ) ${POSTGRES_REQ_USE}"
 
 # Needs a running psql instance, doesn't work out of the box
 RESTRICT="test"
 
+RDEPEND="${POSTGRES_DEP}
+	dev-libs/json-c:=
+	dev-libs/libxml2:2
+	dev-libs/protobuf-c:=
+	>=sci-libs/geos-3.6.0
+	>=sci-libs/proj-4.9.0:=
+	>=sci-libs/gdal-1.10.0
+	address-standardizer? ( dev-libs/libpcre )
+	gtk? ( x11-libs/gtk+:2 )
+"
+DEPEND="${RDEPEND}
+	virtual/pkgconfig
+	doc? (
+		app-text/docbook-xsl-stylesheets
+		app-text/docbook-xml-dtd:4.5
+		dev-libs/libxslt
+		virtual/imagemagick-tools[png]
+	)
+	test? ( dev-util/cunit )
+"
+
+PATCHES=( "${FILESDIR}/${PN}-2.2.0-arflags.patch" )
+
 src_prepare() {
-	source "${S}"/Version.config
-	export PGIS="${POSTGIS_MAJOR_VERSION}.${POSTGIS_MINOR_VERSION}"
+	default
+
+	if [[ ${PV} = *9999* ]] ; then
+		source "${S}"/Version.config
+		PGIS="${POSTGIS_MAJOR_VERSION}.${POSTGIS_MINOR_VERSION}"
+	fi
 
 	# These modules are built using the same *FLAGS that were used to build
 	# dev-db/postgresql. The right thing to do is to ignore the current
 	# *FLAGS settings.
-	export QA_FLAGS_IGNORED="usr/lib(64)?/(rt)?postgis-${PGIS}\.so"
-
-	eapply "${FILESDIR}/${PN}-2.2.0-arflags.patch"
-	eapply_user
+	QA_FLAGS_IGNORED="usr/lib(64)?/(rt)?postgis-${PGIS}\.so"
 
 	local AT_M4DIR="macros"
 	eautoreconf
+
 	postgres-multi_src_prepare
 }
 
 src_configure() {
-	local myargs=""
-
-	use gtk                  && myargs+=" --with-gui"
-
-	use address-standardizer || myargs+=" --without-address-standardizer"
-	use mapbox               || myargs+=" --without-protobuf"
-	use topology             || myargs+=" --without-topology"
-
-	postgres-multi_foreach econf ${myargs}
+	local myeconfargs=(
+		--with-protobuf # funky misdetection if enabled but --without-protobuf
+		$(use_with address-standardizer)
+		$(use_with gtk gui)
+		$(use_with topology)
+	)
+	postgres-multi_foreach econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -116,6 +123,13 @@ pkg_postinst() {
 	postgresql-config update
 	eend $?
 
+	local base_uri="https://postgis.net/docs/manual-"
+	if [[ ${PV} = *9999* ]] ; then
+		base_uri+="dev"
+	else
+		base_uri+="${PGIS}"
+	fi
+
 	elog "To finish installing PostGIS, follow the directions detailed at:"
-	elog "http://postgis.net/docs/manual-dev/postgis_installation.html#create_new_db_extensions"
+	elog "${base_uri}/postgis_installation.html#create_new_db_extensions"
 }
