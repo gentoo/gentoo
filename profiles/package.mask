@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-01-28)
+# Upstream declared EOL, py2 only, use sci-biology/STAR as modern replacement.
+# Removal in 30 days.
+sci-biology/tophat
+
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
 # Remaining split Twisted packages.  All remaining reverse dependencies
 # are entirely happy with merged dev-python/twisted.
