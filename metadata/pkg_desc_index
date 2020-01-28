@@ -4867,7 +4867,7 @@ dev-libs/efl 1.22.6 1.23.3: Enlightenment Foundation Libraries all-in-one packag
 dev-libs/elfutils 0.176-r1 0.177 0.178: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
 dev-libs/ell 0.9 0.20 0.21 0.22 0.23 0.24 0.25 0.26 0.27 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
-dev-libs/expat 2.2.8: Stream-oriented XML parser library
+dev-libs/expat 2.2.8 2.2.9: Stream-oriented XML parser library
 dev-libs/faxpp 0.4-r1: Small, fast and conformant XML pull parser written in C
 dev-libs/fcgi 2.4.1_pre0910052249-r2: FastCGI Developer's Kit
 dev-libs/fddl 20111124-r1: Free Decision Diagram Library
@@ -17542,7 +17542,7 @@ sys-fs/zfs 0.7.13-r1 0.7.13-r2 0.8.2-r2 0.8.3 9999: Userland utilities for ZFS L
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
 sys-fs/zfs-kmod 0.7.13 0.8.2-r2 0.8.3 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
-sys-kernel/ck-sources 5.4.2-r1 5.4.3 5.4.6 5.4.7 5.4.11: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
+sys-kernel/ck-sources 5.4.2-r1 5.4.3 5.4.6 5.4.7 5.4.11 5.4.15: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r2 049-r3 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
