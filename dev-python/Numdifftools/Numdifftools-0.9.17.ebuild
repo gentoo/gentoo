@@ -22,8 +22,14 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/algopy-0.4[${PYTHON_USEDEP}]
-	dev-python/matplotlib[${PYTHON_USEDEP}]
-	>=dev-python/numpy-1.9.0[${PYTHON_USEDEP}]
+	|| (
+		dev-python/matplotlib-python2[${PYTHON_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
+	)
+	|| (
+		>=dev-python/numpy-python2-1.9.0[${PYTHON_USEDEP}]
+		>=dev-python/numpy-1.9.0[${PYTHON_USEDEP}]
+	)
 	dev-python/six[${PYTHON_USEDEP}]
 	>=sci-libs/scipy-0.8[${PYTHON_USEDEP}]
 	"
