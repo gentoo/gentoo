@@ -1,7 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DESCRIPTION="Protocol adapter to run UCI chess engines under xboard"
 HOMEPAGE="http://hardy.uhasselt.be/Toga/"
@@ -12,4 +12,5 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
+PATCHES=( "${FILESDIR}"/${P}-no-common.patch )
 DOCS="AUTHORS ChangeLog TODO" # README* installed by build system
