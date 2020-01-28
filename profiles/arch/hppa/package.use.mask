@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Jeroen Roovers <jer@gentoo.org> (2020-01-28)
+# sys-apps/systemd is not stable
+net-analyzer/wireshark sdjournal
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded
 media-gfx/gimp heif
