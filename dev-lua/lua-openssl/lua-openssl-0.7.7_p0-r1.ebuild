@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ IUSE="libressl luajit"
 RDEPEND="
 	luajit? ( dev-lang/luajit:2 )
 	!luajit? ( >=dev-lang/lua-5.1:0 )
-	libressl? ( <dev-libs/libressl-2.7.0:0= )
+	libressl? ( dev-libs/libressl:0= )
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	!dev-lua/luaossl
 	!dev-lua/luacrypto
