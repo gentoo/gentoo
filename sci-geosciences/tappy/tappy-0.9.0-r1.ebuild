@@ -22,5 +22,8 @@ RDEPEND="
 		dev-python/matplotlib-python2[${PYTHON_USEDEP}]
 		dev-python/matplotlib[${PYTHON_USEDEP}]
 	)
-	dev-python/pywavelets
-	sci-libs/scipy[${PYTHON_USEDEP}]"
+	dev-python/pywavelets[${PYTHON_USEDEP}]
+	|| (
+		sci-libs/scipy-python2[${PYTHON_USEDEP}]
+		sci-libs/scipy[${PYTHON_USEDEP}]
+	)"

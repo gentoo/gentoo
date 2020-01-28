@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,10 @@ RDEPEND="
 	sci-libs/cfitsio
 	sci-libs/fftw:3.0=
 	sci-libs/gsl
-	sci-libs/scipy[${PYTHON_USEDEP}]
+	|| (
+		sci-libs/scipy-python2[${PYTHON_USEDEP}]
+		sci-libs/scipy[${PYTHON_USEDEP}]
+	)
 	virtual/latex-base
 	virtual/imagemagick-tools
 	${PYTHON_DEPS}"

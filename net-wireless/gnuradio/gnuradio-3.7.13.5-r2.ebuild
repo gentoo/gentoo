@@ -59,7 +59,12 @@ RDEPEND="${PYTHON_DEPS}
 		media-libs/alsa-lib:=
 	)
 	fcd? ( virtual/libusb:1 )
-	filter? ( sci-libs/scipy )
+	filter? (
+		|| (
+			sci-libs/scipy-python2[${PYTHON_USEDEP}]
+			sci-libs/scipy[${PYTHON_USEDEP}]
+		)
+	)
 	grc? (
 		dev-python/cheetah[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
