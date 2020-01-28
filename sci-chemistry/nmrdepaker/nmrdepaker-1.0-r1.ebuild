@@ -17,7 +17,10 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/matplotlib-0.98.5[gtk2,${PYTHON_USEDEP}]
+	|| (
+		>=dev-python/matplotlib-python2-0.98.5[gtk2,${PYTHON_USEDEP}]
+		>=dev-python/matplotlib-0.98.5[gtk2,${PYTHON_USEDEP}]
+	)
 	|| (
 		dev-python/numpy-python2[${PYTHON_USEDEP}]
 		>=dev-python/numpy-1.2[${PYTHON_USEDEP}]
