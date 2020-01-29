@@ -8029,7 +8029,7 @@ dev-python/logfury 0.1.2: Boilerplate library for logging method calls
 dev-python/loguru 0.3.2 0.4.0: Python logging made (stupidly) simple
 dev-python/logutils 0.3.3 0.3.3-r1: The logutils package provides a set of handlers for the Python standard
 dev-python/lxc-python2 0.1: Python bindings for LXC
-dev-python/lxml 4.3.3 4.4.2: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 4.3.3 4.4.2 4.4.3: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2 0.10.1 2.1.6: LZ4 Bindings for Python
 dev-python/m2crypto 0.31.0-r2 0.35.2: A Python crypto and SSL toolkit
 dev-python/m2r 0.1.5 0.1.6 0.1.12 0.1.14 0.2.1: Markdown to reStructuredText converter
