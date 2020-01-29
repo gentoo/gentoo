@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python{2_7,3_6} )
-inherit distutils-r1 git-r3
+inherit distutils-r1 flag-o-matic git-r3
 
 DESCRIPTION="Python bindings for sys-block/parted"
 HOMEPAGE="https://github.com/rhinstaller/pyparted/"
@@ -22,3 +22,8 @@ DEPEND="
 	virtual/pkgconfig
 "
 RESTRICT="test"
+
+src_configure() {
+	append-cflags -fcommon
+	default
+}
