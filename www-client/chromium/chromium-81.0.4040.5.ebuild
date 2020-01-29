@@ -142,13 +142,11 @@ For native file dialogs in KDE, install kde-apps/kdialog.
 PATCHES=(
 	"${FILESDIR}/chromium-compiler-r11.patch"
 	"${FILESDIR}/chromium-fix-char_traits.patch"
-	"${FILESDIR}/chromium-unbundle-zlib-r1.patch"
 	"${FILESDIR}/chromium-78-protobuf-export.patch"
 	"${FILESDIR}/chromium-79-gcc-alignas.patch"
 	"${FILESDIR}/chromium-80-unbundle-libxml.patch"
 	"${FILESDIR}/chromium-80-gcc-quiche.patch"
 	"${FILESDIR}/chromium-80-gcc-blink.patch"
-	"${FILESDIR}/chromium-81-gcc-dav1d.patch"
 	"${FILESDIR}/chromium-81-gcc-template.patch"
 	"${FILESDIR}/chromium-81-gcc-noexcept.patch"
 	"${FILESDIR}/chromium-81-clang.patch"
@@ -649,6 +647,14 @@ src_compile() {
 		s|@@MENUNAME@@|Chromium|g;' \
 		chrome/app/resources/manpage.1.in > \
 		out/Release/chromium-browser.1 || die
+
+	# Build desktop file; bug #706786
+	sed -e 's|@@MENUNAME@@|Chromium|g;
+		s|@@USR_BIN_SYMLINK_NAME@@|chromium-browser|g;
+		s|@@PACKAGE@@|chromium-browser|g;
+		s|\(^Exec=\)/usr/bin/|\1|g;' \
+		chrome/installer/linux/common/desktop.template > \
+		out/Release/chromium-browser-chromium.desktop || die
 }
 
 src_install() {
@@ -700,7 +706,7 @@ src_install() {
 		doins out/Release/swiftshader/*.so
 	fi
 
-	# Install icons and desktop entry.
+	# Install icons
 	local branding size
 	for size in 16 24 32 48 64 128 256 ; do
 		case ${size} in
@@ -711,17 +717,8 @@ src_install() {
 			chromium-browser.png
 	done
 
-	local mime_types="text/html;text/xml;application/xhtml+xml;"
-	mime_types+="x-scheme-handler/http;x-scheme-handler/https;" # bug #360797
-	mime_types+="x-scheme-handler/ftp;" # bug #412185
-	mime_types+="x-scheme-handler/mailto;x-scheme-handler/webcal;" # bug #416393
-	make_desktop_entry \
-		chromium-browser \
-		"Chromium" \
-		chromium-browser \
-		"Network;WebBrowser" \
-		"MimeType=${mime_types}\nStartupWMClass=chromium-browser"
-	sed -e "/^Exec/s/$/ %U/" -i "${ED}"/usr/share/applications/*.desktop || die
+	# Install desktop entry
+	domenu out/Release/chromium-browser-chromium.desktop
 
 	# Install GNOME default application entry (bug #303100).
 	insinto /usr/share/gnome-control-center/default-apps
