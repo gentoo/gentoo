@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/libXext-1.0.3 >=x11-libs/libX11-1.1.1-r1 >=x11-libs/libXpm-3.5.6
 SLOT=0
 SRC_URI=https://www.dockapps.net/download/wmwork-0.2.5.tar.gz
-_md5_=12b1d139beb7f647994b683a56f032f2
+_md5_=3a00c86d03c2cfe8a48e8f2b97e8c299

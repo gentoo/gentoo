@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm x11-libs/libXxf86vm
 SLOT=0
 SRC_URI=http://yalla.free.fr/wn/wmxres-1.1-0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=96c8b8a55ca8bad20d0915ec12f88419
+_md5_=1445655b037fa54768cfe45908c780dd
