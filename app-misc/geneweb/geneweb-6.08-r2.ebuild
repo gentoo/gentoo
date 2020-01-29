@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-ocaml-4.patch
-	"${FILESDIR}"/${PF}-gentoo.patch
+	"${FILESDIR}"/${P}-r1-gentoo.patch
 	"${FILESDIR}"/${P}-parallellbuild.patch )
 
 src_compile() {
