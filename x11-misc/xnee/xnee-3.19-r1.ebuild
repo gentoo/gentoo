@@ -69,5 +69,5 @@ src_install() {
 	default
 	dodoc AUTHORS BUGS ChangeLog FAQ NEWS README TODO
 	use gnome && make_desktop_entry gnee Gnee ${PN} "Utility;GTK"
-	use static-libs || rm -f "${ED}"usr/lib*/lib*.la
+	find "${ED}" -name '*.la' -delete || die
 }
