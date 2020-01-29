@@ -7,6 +7,11 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-29)
+# Require Python 2 support in numpydoc.
+<dev-python/matplotlib-3 doc
+<=dev-python/pywavelets-0.5.2-r1 doc
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-29)
 # Require dev-python/epydoc which is being removed.
 <=app-admin/system-config-printer-1.5.12 doc
 <=dev-python/cosmolopy-0.1.104-r2 doc
