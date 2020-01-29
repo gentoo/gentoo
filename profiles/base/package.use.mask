@@ -6,6 +6,23 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-01-29)
+# Require dev-python/epydoc which is being removed.
+<=app-admin/system-config-printer-1.5.12 doc
+<=dev-python/cosmolopy-0.1.104-r2 doc
+<=dev-python/dbus-python-1.2.4 doc
+<=dev-python/pycrypto-2.6.1-r2 doc
+<=dev-python/pycups-1.9.73-r1 doc
+<=dev-python/pycups-1.9.73-r2 doc
+<=dev-python/pygene-0.2.1-r1 doc
+<=dev-python/python-musicbrainz-0.7.4-r1 doc
+<=dev-python/python-nss-0.16.0 doc
+<=dev-python/qpid-python-0.20 doc
+<=dev-python/restkit-4.2.2 doc
+<=dev-python/suds-0.6-r1 doc
+<=sci-libs/pymmlib-1.2.1-r1 doc
+<=sys-apps/portage-2.3.86 epydoc
+
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
 # Requires old split dev-python/twisted-*.
 net-irc/telepathy-idle test
