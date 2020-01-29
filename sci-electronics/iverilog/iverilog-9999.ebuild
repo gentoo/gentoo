@@ -38,6 +38,10 @@ DEPEND="
 	${RDEPEND}
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-file-missing.patch #705412
+)
+
 src_prepare() {
 	default
 
