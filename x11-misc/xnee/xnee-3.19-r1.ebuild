@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit autotools eutils
+EAPI=7
+inherit autotools desktop flag-o-matic
 
 DESCRIPTION="Program suite to record, replay and distribute user actions"
-HOMEPAGE="http://www.sandklef.com/xnee/"
+HOMEPAGE="https://xnee.wordpress.com/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
@@ -27,7 +27,8 @@ RDEPEND="
 		>=gnome-base/gconf-2
 	)
 "
-DEPEND="${RDEPEND}
+DEPEND="
+	${RDEPEND}
 	x11-base/xorg-proto
 	virtual/pkgconfig
 	sys-devel/gettext
@@ -37,13 +38,17 @@ DEPEND="${RDEPEND}
 # This needs RECORD extension from X.org server which isn't necessarily
 # enabled. Xlib: extension "RECORD" missing on display ":0.0".
 RESTRICT="test"
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.18-linker.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-3.18-linker.patch
+	default
 	eautoreconf
 }
 
 src_configure() {
+	append-cflags -fcommon
 	econf \
 		$(use_enable gnome gui) \
 		$(use_enable static-libs static) \
