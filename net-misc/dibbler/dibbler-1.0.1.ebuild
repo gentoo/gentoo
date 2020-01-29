@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -23,6 +23,7 @@ DOC_CONTENTS="Make sure that you modify client.conf, server.conf and/or relay.co
 to suit your needs. They are stored in /etc/dibbler"
 
 src_prepare() {
+	epatch "${FILESDIR}"/${P}-fno-common.patch
 	epatch_user
 }
 

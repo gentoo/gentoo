@@ -1,0 +1,25 @@
+--- a/Port-linux/interface.c
++++ b/Port-linux/interface.c
+@@ -43,6 +43,9 @@
+ #include <linux/sockios.h>
+ #include <linux/if_ether.h>
+ 
++int interface_auto_up;
++int interface_do_message;
++
+ void daemon_log(int loglevel, const char *fmt,...)
+ {
+     char buf[255];
+--- a/Port-linux/interface.h
++++ b/Port-linux/interface.h
+@@ -23,8 +23,8 @@
+ extern "C" {
+ #endif
+ 
+-int interface_auto_up;
+-int interface_do_message;
++extern int interface_auto_up;
++extern int interface_do_message;
+ 
+ typedef enum { IFSTATUS_UP, IFSTATUS_DOWN, IFSTATUS_ERR } interface_status_t;
+ 
