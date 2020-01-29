@@ -38,10 +38,6 @@ net-voip/telepathy-rakia test
 media-sound/sonata lyrics
 sci-chemistry/pdb2pqr opal
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-19)
-# media-libs/pulseaudio-qt is not keyworded
-kde-misc/kdeconnect pulseaudio
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-12)
 # libcxxrt is unmaintained and it's going to be removed.
 sys-libs/libcxx libcxxrt
