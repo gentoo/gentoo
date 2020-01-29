@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,6 +42,7 @@ S=${WORKDIR}/${P/_}
 PATCHES=(
 	"${FILESDIR}/${P}-fix-crash-on-auth.patch"
 	"${FILESDIR}/${P}-openssl_1.1.patch"
+	"${FILESDIR}/${P}-security-fixes.patch"
 )
 
 src_configure() {
