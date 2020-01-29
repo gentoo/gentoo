@@ -1,0 +1,10 @@
+diff --git a/qemu-init-script b/qemu-init-script
+index 937ddfe..b2c060f 100755
+--- a/qemu-init-script
++++ b/qemu-init-script
+@@ -1,4 +1,4 @@
+-#!/sbin/runscript
++#!/sbin/openrc-run
+ # Copyright 2009-2013 Gentoo Foundation
+ # Distributed under the terms of the GNU General Public License v2
+ 
