@@ -1,5 +1,5 @@
-BDEPEND=dev-util/intltool sys-devel/gettext virtual/pkgconfig
-DEFINED_PHASES=install
+BDEPEND=dev-util/intltool sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
 DEPEND=x11-libs/gtk+:2 dev-libs/libxml2:2
 DESCRIPTION=View and manage contents of your wine cellar
 EAPI=7
@@ -10,4 +10,5 @@ RDEPEND=x11-libs/gtk+:2 dev-libs/libxml2:2
 RESTRICT=test
 SLOT=0
 SRC_URI=http://xcave.free.fr/backbone.php?what=download/xcave-2.4.0.tar.gz
-_md5_=8c69712fb9f195fd014e1cf044965878
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=0d5fe82f6c7ff255d7812dd7ba201f03
