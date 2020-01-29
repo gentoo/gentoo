@@ -10,4 +10,4 @@ RDEPEND=dev-libs/hidapi virtual/libusb:1 virtual/libudev sys-apps/attr sys-libs/
 SLOT=0
 SRC_URI=https://github.com/todbot/blink1/archive/v1.98.tar.gz -> blink1-1.98.tar.gz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4ad61429c397486777dc2f25fea4f75e
+_md5_=3b5de472af9ee2d49c6c8277304ee5db
