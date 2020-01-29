@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,10 @@ S="${WORKDIR}/${P}/Src"
 
 DOCS=( ../{BUGS,CHANGES,HINTS,README,TODO} )
 
-PATCHES=( "${FILESDIR}"/${P}-makefile.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-makefile.patch
+	"${FILESDIR}"/${P}-gcc-10.patch
+	)
 
 src_compile() {
 	emake CC="$(tc-getCC)" LIBDIR="-L/usr/$(get_libdir)/"

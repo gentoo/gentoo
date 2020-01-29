@@ -25,6 +25,7 @@ REQUIRED_USE="
 	^^ ( lua luajit )
 	ssl
 	drm? ( gles2 )
+	examples? ( eet svg )
 	gles2? ( || ( wayland X ) )
 	pulseaudio? ( sound )
 	wayland? ( gles2 !opengl )
