@@ -39,7 +39,8 @@ rust_abi() {
 		mips64*)	  echo mips64-unknown-linux-gnuabi64;;
 		powerpc64le*) echo powerpc64le-unknown-linux-gnu;;
 		powerpc64*)   echo powerpc64-unknown-linux-gnu;;
-		x86_64*)	  echo x86_64-unknown-linux-gnu;;
+		x86_64*gnu)	  echo x86_64-unknown-linux-gnu;;
+		x86_64*musl)  echo x86_64-unknown-linux-musl;;
 		armv6j*s*)	  echo arm-unknown-linux-gnueabi;;
 		armv6j*h*)	  echo arm-unknown-linux-gnueabihf;;
 		armv7a*h*)	  echo armv7-unknown-linux-gnueabihf;;
@@ -103,7 +104,8 @@ rust_arch_uri() {
 rust_all_arch_uris()
 {
   local uris=""
-  uris+="amd64? ( $(rust_arch_uri x86_64-unknown-linux-gnu       "$@") ) "
+  uris+="amd64? ( elibc_glibc? ( $(rust_arch_uri x86_64-unknown-linux-gnu "$@") ) 
+                  elibc_musl?  ( $(rust_arch_uri x86_64-unknown-linux-musl "$@") ) ) "
   uris+="arm?   ( $(rust_arch_uri arm-unknown-linux-gnueabi      "$@")
                   $(rust_arch_uri arm-unknown-linux-gnueabihf    "$@")
                   $(rust_arch_uri armv7-unknown-linux-gnueabihf  "$@") ) "
