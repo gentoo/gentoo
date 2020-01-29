@@ -62,6 +62,7 @@ COMMON_DEPEND="
 	net-libs/libssh2
 	net-libs/http-parser:=
 	net-misc/curl[ssl]
+	elibc_musl? ( sys-libs/libunwind )
 	system-llvm? (
 		${LLVM_DEPEND}
 	)
@@ -207,6 +208,12 @@ src_configure() {
 			linker = "$(tc-getCC)"
 			ar = "$(tc-getAR)"
 		EOF
+		# librustc_target/spec/linux_musl_base.rs sets base.crt_static_default = true;
+		if use elibc_musl; then
+			cat <<- EOF >> "${S}"/config.toml
+				crt-static = false
+			EOF
+		fi
 		if use system-llvm; then
 			cat <<- EOF >> "${S}"/config.toml
 				llvm-config = "$(get_llvm_prefix "${LLVM_MAX_SLOT}")/bin/llvm-config"
@@ -321,6 +328,15 @@ pkg_postinst() {
 
 	if has_version app-editors/gvim || has_version app-editors/vim; then
 		elog "install app-vim/rust-vim to get vim support for rust."
+	fi
+
+	if use elibc_musl; then
+		ewarn "${PN} on *-musl targets is configured with crt-static"
+		ewarn ""
+		ewarn "you will need to set RUSTFLAGS=\"-C target-feature=-crt-static\" in make.conf"
+		ewarn "to use it with portage, otherwise you may see failures like"
+		ewarn "error: cannot produce proc-macro for serde_derive v1.0.98 as the target "
+		ewarn "x86_64-unknown-linux-musl does not support these crate types"
 	fi
 }
 
