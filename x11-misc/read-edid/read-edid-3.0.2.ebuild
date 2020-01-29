@@ -1,9 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-
-inherit cmake-utils
+inherit cmake-utils flag-o-matic
 
 DESCRIPTION="Program that can get information from a PnP monitor"
 HOMEPAGE="http://www.polypux.org/projects/read-edid/"
@@ -20,4 +19,9 @@ src_prepare() {
 	sed -i -e 's|COPYING||g;s|share/doc/read-edid|&-'"${PV}"'|g' \
 		CMakeLists.txt || die
 	cmake-utils_src_prepare
+}
+
+src_configure() {
+	append-cflags -fcommon
+	cmake-utils_src_configure
 }
