@@ -5,6 +5,8 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
+
 inherit eutils distutils-r1
 
 DESCRIPTION="An implementation of the Language Server Protocol for Python"
