@@ -1,0 +1,13 @@
+https://bugs.gentoo.org/707300
+
+--- teco-orig/te_subs.c
++++ teco/te_subs.c
+@@ -249,8 +249,6 @@
+ /* leaves bb pointing to end of that text */
+ /* insert2() copies rest of buffer */
+ 
+-struct buffcell *insert_p;
+-
+ insert1()
+     {
+     int nchars;             /* number of chars in cell */
