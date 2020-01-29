@@ -3230,7 +3230,7 @@ dev-db/libzdb 3.1 3.1-r1: A thread safe high level multi-database connection poo
 dev-db/lmdb 0.9.23 0.9.24: An ultra-fast, ultra-compact key-value embedded data store
 dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
-dev-db/mariadb 5.5.66 10.1.38-r1 10.1.43 10.2.22-r1 10.2.29 10.3.20 10.4.10: An enhanced, drop-in replacement for MySQL
+dev-db/mariadb 5.5.66 10.1.38-r1 10.1.43 10.2.22-r1 10.2.29 10.2.31 10.3.20 10.4.10: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.0.6-r1 3.1.6 9999: C client library for MariaDB/MySQL
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.6.13 3.6.14 3.6.16 4.0.12 4.0.13 4.0.14 4.2.1 4.2.2: A high-performance, open source, schema-free document-oriented database
@@ -15040,7 +15040,7 @@ net-misc/freerdp 2.0.0_rc4 2.0.0_rc4_p1129 9999: Free implementation of the Remo
 net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed captions
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.32.2 0.34: A daemon to serve the gopher protocol
-net-misc/gerbera 1.2.0-r1 1.3.5 9999: UPnP Media Server (Based on MediaTomb)
+net-misc/gerbera 1.4.0 9999: UPnP Media Server
 net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.30.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7: Remote desktop daemon for GNOME using pipewire
@@ -16180,7 +16180,7 @@ sci-libs/fplll 4.0.4: Different implementations of the floating-point LLL reduct
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r2: Genetic Algorithm Utility Library
-sci-libs/gdal 2.4.1-r1 2.4.1-r2 2.4.3: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 2.4.1-r1 2.4.3 3.0.2: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.7.2 3.8.0-r1: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.9.0-r2: Reference implementation of the Dirfile, format for time-ordered binary data
