@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -81,9 +81,8 @@ src_install() {
 			dodoc docs/{blink1-tool.md,blink1-tool-tips.md,blink1-hid-commands.md,blink1-mk2-tricks.md}
 		fi
 		if use examples; then
-			insinto /usr/share/doc/"${PF}"/examples
-			doins commandline/scripts/{README.md,blink1-*.sh}
-			docompress -x /usr/share/doc/"${PF}"/examples
+			docinto /usr/share/doc/"${PF}"/examples
+			dodoc commandline/scripts/{README.md,blink1-*.sh}
 		fi
 		dobin commandline/blink1-tool
 	fi
