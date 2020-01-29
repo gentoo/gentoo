@@ -41,11 +41,11 @@ DEPEND="
 	dev-libs/expat
 	dev-libs/json-c:=
 	dev-libs/libpcre
-	dev-libs/libxml2:=
-	media-libs/tiff:0=
+	dev-libs/libxml2:2
+	media-libs/tiff
 	>=sci-libs/libgeotiff-1.5.1-r1:=
-	>=sci-libs/proj-6.0.0
-	sys-libs/zlib:=[minizip(+)]
+	>=sci-libs/proj-6.0.0:=
+	sys-libs/zlib[minizip(+)]
 	armadillo? ( sci-libs/armadillo:=[lapack] )
 	curl? ( net-misc/curl )
 	fits? ( sci-libs/cfitsio:= )
@@ -267,7 +267,7 @@ src_compile() {
 
 src_install() {
 	local DOCS=( NEWS )
-	use doc && HTML_DOCS=( html/. )
+	use doc && local HTML_DOCS=( html/. )
 
 	default
 
