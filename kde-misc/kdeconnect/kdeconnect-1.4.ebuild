@@ -81,8 +81,7 @@ pkg_postinst(){
 	ecm_pkg_postinst
 
 	elog "In case you are missing 'pause music' plugin, this now requires"
-	elog "media-libs/pulseaudio-qt. It is available in KDE overlay for testing,"
-	elog "please test and report back."
+	elog "enabling USE pulseaudio."
 	elog
 	elog "The Android .apk file is available via"
 	elog "https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp"
