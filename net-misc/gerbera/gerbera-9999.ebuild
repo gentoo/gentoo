@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils eutils linux-info systemd tmpfiles user
+inherit cmake eutils linux-info systemd tmpfiles
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/gerbera/${PN}.git"
@@ -16,16 +16,16 @@ else
 	S="${WORKDIR}/${P}"
 fi
 
-DESCRIPTION="UPnP Media Server (Based on MediaTomb)"
-HOMEPAGE="https://github.com/gerbera/gerbera"
+DESCRIPTION="UPnP Media Server"
+HOMEPAGE="https://gerbera.io"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript lastfm libav +magic mysql protocol-extensions systemd +taglib"
+IUSE="curl debug +exif exiv2 +ffmpeg ffmpegthumbnailer +javascript lastfm libav +magic +matroska mysql systemd +taglib"
 
 DEPEND="
-	!!net-misc/mediatomb
-	>=net-libs/libupnp-1.8.3[ipv6,reuseaddr]
+	acct-user/gerbera
+	>=net-libs/libupnp-1.8.3:=[ipv6,reuseaddr]
 	>=dev-db/sqlite-3
 	dev-libs/expat
 	mysql? ( dev-db/mysql-connector-c )
@@ -41,6 +41,7 @@ DEPEND="
 	ffmpegthumbnailer? ( media-video/ffmpegthumbnailer )
 	curl? ( net-misc/curl net-misc/youtube-dl )
 	magic? ( sys-apps/file )
+	matroska? (	media-libs/libmatroska )
 	sys-apps/util-linux
 	sys-libs/zlib
 	virtual/libiconv
@@ -48,13 +49,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 CONFIG_CHECK="~INOTIFY_USER"
-
-pkg_setup() {
-	linux-info_pkg_setup
-
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /dev/null ${PN}
-}
 
 src_configure() {
 	local mycmakeargs=(
@@ -67,18 +61,18 @@ src_configure() {
 		-DWITH_JS="$(usex javascript)" \
 		-DWITH_LASTFM="$(usex lastfm)" \
 		-DWITH_MAGIC="$(usex magic)" \
+		-DWITH_MATROSKA="$(usex matroska)" \
 		-DWITH_MYSQL="$(usex mysql)"
-		-DWITH_PROTOCOL_EXTENSIONS="$(usex protocol-extensions)" \
 		-DWITH_SYSTEMD="$(usex systemd)" \
 		-DWITH_TAGLIB="$(usex taglib)" \
 		-DWITH_INOTIFY=1
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	newinitd "${FILESDIR}/${PN}-1.0.0.initd" "${PN}"
 	newconfd "${FILESDIR}/${PN}-1.0.0.confd" "${PN}"
@@ -87,9 +81,6 @@ src_install() {
 	newins "${FILESDIR}/${PN}-1.3.0.config" config.xml
 	fperms 0640 /etc/${PN}/config.xml
 	fowners root:gerbera /etc/${PN}/config.xml
-
-	keepdir /var/lib/${PN}
-	fowners ${PN}:${PN} /var/lib/${PN}
 }
 
 pkg_postinst() {
