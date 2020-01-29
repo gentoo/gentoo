@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-01-29)
+# Abandoned in 2009.  Python 2 only.  No blockers left.
+# Removal in 30 days.  Bug #706218.
+dev-python/epydoc
+
 # Michał Górny <mgorny@gentoo.org> (2020-01-28)
 # Live ebuild only for 3+ years now.  Python 2 only.  Last blocker
 # for pyzmq cleanup.  No revdeps.
