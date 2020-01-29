@@ -13205,7 +13205,7 @@ media-libs/t1lib 5.1.2-r2: A Type 1 Font Rasterizer Library for UNIX/X11
 media-libs/taglib 1.11.1_p20190920-r1: Library for reading and editing audio meta data
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
 media-libs/theoraplay 0_pre20180524: Simple library to make decoding of Ogg Theora videos easier
-media-libs/tiff 4.0.10-r2 4.1.0: Tag Image File Format (TIFF) library
+media-libs/tiff 4.1.0: Tag Image File Format (TIFF) library
 media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1 3.1b-r3: the Utah Raster Toolkit is a library for dealing with raster images
@@ -15013,7 +15013,7 @@ net-misc/dhcpcd 7.2.3 7.2.5 8.0.6 8.1.5 9999: A fully featured, yet light weight
 net-misc/dhcpcd-ui 0.7.5-r1 0.7.7: Desktop notification and configuration for dhcpcd
 net-misc/dhcpd-pools 2.21: ISC dhcpd lease analysis and reporting
 net-misc/dhcping 1.2: Utility for sending a dhcp request to a dhcp server to see if it is responding
-net-misc/dibbler 1.0.1: Portable DHCPv6 implementation (server, client and relay)
+net-misc/dibbler 1.0.1 1.0.1-r1: Portable DHCPv6 implementation (server, client and relay)
 net-misc/dleyna-server 0.5.0: library for implementing services that allow clients to discover, browse and manipulate DLNA Servers
 net-misc/dmr_utils 9999: Python utilities for working with DMR
 net-misc/drive 0.3.9.1 0.3.9.1-r1: Google Drive client for the commandline
