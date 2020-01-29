@@ -14794,7 +14794,7 @@ net-libs/libtirpc 1.1.4 1.2.5: Transport Independent RPC library (SunRPC replace
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.9_p1-r1 4.0.10_p1 99999: A library and tools for trace processing
-net-libs/libupnp 1.6.21 1.6.25 1.8.4 1.8.6 1.12.0: An Portable Open Source UPnP Development Kit
+net-libs/libupnp 1.6.21 1.6.25 1.8.4 1.8.6 1.12.0-r1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.12-r4: library for creating vnc servers
 net-libs/libwebsockets 3.2.1: A flexible pure-C library for implementing network protocols
@@ -15271,7 +15271,7 @@ net-misc/whatmask 1.2-r1: little C program to compute different subnet mask nota
 net-misc/whois 5.4.3 5.5.3 5.5.5 9999: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
-net-misc/wput 0.6.1-r1: Tiny program like wget, to upload files/whole directories via FTP
+net-misc/wput 0.6.1-r1 0.6.2: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with OpenSSH
 net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server

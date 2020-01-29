@@ -1,0 +1,12 @@
+DEFINED_PHASES=configure
+DEPEND=ssl? ( net-libs/gnutls ) nls? ( sys-devel/gettext )
+DESCRIPTION=Tiny program like wget, to upload files/whole directories via FTP
+EAPI=6
+HOMEPAGE=http://wput.sourceforge.net/
+IUSE=debug nls ssl
+KEYWORDS=~amd64 ~ppc ~sparc ~x86
+LICENSE=GPL-2
+RDEPEND=ssl? ( net-libs/gnutls )
+SLOT=0
+SRC_URI=mirror://sourceforge/wput/wput-0.6.2.tgz
+_md5_=bbf8df5e945d30459b18c02a8137a3fc
