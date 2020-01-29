@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+  <maintainer type="person">
+    <email>anarchy@gentoo.org</email>
+    <name>Jory A. Pratt</name>
+  </maintainer>
 <upstream>
-	<remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
+    <remote-id type="cpe">cpe:/o:linux:linux_kernel</remote-id>
+    <remote-id type="github">zen-kernel/zen-kernel</remote-id>
 </upstream>
 </pkgmetadata>
