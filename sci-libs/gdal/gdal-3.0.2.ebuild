@@ -6,7 +6,7 @@ EAPI=7
 GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
-inherit autotools perl-module distutils-r1 flag-o-matic java-pkg-opt-2 toolchain-funcs
+inherit autotools bash-completion-r1 perl-module distutils-r1 flag-o-matic java-pkg-opt-2 toolchain-funcs
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
 HOMEPAGE="https://gdal.org/"
@@ -24,8 +24,13 @@ REQUIRED_USE="
 "
 
 BDEPEND="
+	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
-	java? ( >=virtual/jdk-1.7:* )
+	java? (
+		dev-java/ant-core
+		dev-lang/swig:0
+		>=virtual/jdk-1.7:*
+	)
 	perl? ( dev-lang/swig:0 )
 	python? (
 		dev-lang/swig:0
@@ -36,14 +41,15 @@ DEPEND="
 	dev-libs/expat
 	dev-libs/json-c:=
 	dev-libs/libpcre
-	dev-libs/libxml2:=
-	media-libs/tiff:0=
-	sci-libs/libgeotiff:=
-	sys-libs/zlib:=[minizip(+)]
+	dev-libs/libxml2:2
+	media-libs/tiff
+	>=sci-libs/libgeotiff-1.5.1-r1:=
+	>=sci-libs/proj-6.0.0:=
+	sys-libs/zlib[minizip(+)]
 	armadillo? ( sci-libs/armadillo:=[lapack] )
 	curl? ( net-misc/curl )
 	fits? ( sci-libs/cfitsio:= )
-	geos? ( >=sci-libs/geos-2.2.1 )
+	geos? ( >=sci-libs/geos-3.8.0 )
 	gif? ( media-libs/giflib:= )
 	gml? ( >=dev-libs/xerces-c-3.1 )
 	hdf5? ( >=sci-libs/hdf5-1.6.4:=[szip] )
@@ -79,33 +85,14 @@ RDEPEND="${DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.2.3-soname.patch"
-	"${FILESDIR}/${PN}-2.2.3-bashcomp-path.patch" # bug 641866
 	"${FILESDIR}/${PN}-2.3.0-curl.patch" # bug 659840
-	"${FILESDIR}/${P}-poppler-0.75.patch"
-	"${FILESDIR}/${P}-poppler-0.76.patch"
-	"${FILESDIR}/${P}-swig-4.patch" # bug 689110
-	"${FILESDIR}/${P}-poppler-0.82.patch"
-	"${FILESDIR}"/${P}-poppler-0.83-{1,2}.patch # bug 703790
+	"${FILESDIR}"/${PN}-2.4.1-poppler-0.83-{1,2}.patch # bug 703790
+	"${FILESDIR}/${PN}-3.0.2-complete.patch"
+	"${FILESDIR}/${PN}-3.0.2-datadir.patch"
 )
 
 src_prepare() {
-	# fix datadir and docdir placement
-	sed -e "s:@datadir@:@datadir@/gdal:" \
-		-e "s:@exec_prefix@/doc:@exec_prefix@/share/doc/${PF}/html:g" \
-		-i "${S}"/GDALmake.opt.in || die
-
-	# the second sed expression should fix bug 371075
-	sed -e "s:setup.py install:setup.py install --root=\$(DESTDIR):" \
-		-e "s:--prefix=\$(DESTDIR):--prefix=:" \
-		-i "${S}"/swig/python/GNUmakefile || die
-
-	# Fix spatialite/sqlite include issue
-	sed -e 's:spatialite/sqlite3.h:sqlite3.h:g' \
-		-i ogr/ogrsf_frmts/sqlite/ogr_sqlite.h || die
-
-	# Fix freexl configure check
-	sed -e 's:FREEXL_LIBS=missing):FREEXL_LIBS=missing,-lm):g' \
-		-i configure.ac || die
+	default
 
 	sed -e "s: /usr/: \"${EPREFIX}\"/usr/:g" \
 		-i configure.ac || die
@@ -113,14 +100,9 @@ src_prepare() {
 	sed -e 's:^ar:$(AR):g' \
 		-i ogr/ogrsf_frmts/sdts/install-libs.sh || die
 
-	# updated for newer swig (must specify the path to input files)
+	# SWIG: Use of the include path to find the input file is deprecated and will not work with ccache.
 	sed -e "s: gdal_array.i: ../include/gdal_array.i:" \
-		-e "s:\$(DESTDIR)\$(prefix):\$(DESTDIR)\$(INST_PREFIX):g" \
 		-i swig/python/GNUmakefile || die "sed python makefile failed"
-	sed -e "s:library_dirs = :library_dirs = /usr/$(get_libdir):g" \
-		-i swig/python/setup.cfg || die "sed python setup.cfg failed"
-
-	default
 
 	eautoreconf
 }
@@ -138,20 +120,23 @@ src_configure() {
 		# podofo - we use poppler instead they are exclusive for each other
 		# tiff is a hard dep
 		--includedir="${EPREFIX}"/usr/include/${PN}
-		--disable-pdf-plugin
+		--disable-lto
 		--disable-static
+		--disable-driver-bsb
+		--disable-driver-mrf
+		--disable-pdf-plugin
 		--enable-shared
-		--with-expat
+		--enable-driver-grib
+		--with-bash-completion="$(get_bashcompdir)"
 		--with-cryptopp=no
+		--with-expat
 		--with-geotiff
-		--with-grib
+		--with-gnm
 		--with-hide-internal-symbols
 		--with-libjson-c="${EPREFIX}"/usr/
 		--with-libtiff
 		--with-libtool
 		--with-libz="${EPREFIX}"/usr/
-		--with-gnm
-		--without-bsb
 		--without-charls
 		--without-dods-root
 		--without-ecw
@@ -173,18 +158,18 @@ src_configure() {
 		--without-mrsid
 		--without-mrsid_lidar
 		--without-msg
-		--without-mrf
 		--without-rasdaman
 		--without-rasterlite2
 		--without-pcraster
 		--without-pdfium
+		--without-perl
 		--without-podofo
+		--without-python
 		--without-qhull
 		--without-sde
 		--without-sfcgal
 		--without-sosi
 		--without-teigha
-		--disable-lto
 		$(use_enable debug)
 		$(use_with armadillo)
 		$(use_with aux-xml pam)
@@ -194,7 +179,7 @@ src_configure() {
 		$(use_with gif)
 		$(use_with gml xerces)
 		$(use_with hdf5)
-		$(use_with jpeg pcidsk) # pcidsk is internal, because there is no such library yreleased developer by gdal
+		$(use_with jpeg pcidsk) # pcidsk is internal, because there is no such library released developer by gdal
 		$(use_with jpeg)
 		$(use_with jpeg2k openjpeg)
 		$(use_with lzma liblzma)
@@ -205,10 +190,8 @@ src_configure() {
 		$(use_with ogdi ogdi "${EPREFIX}"/usr)
 		$(use_with opencl)
 		$(use_with pdf poppler)
-		$(use_with perl)
 		$(use_with png)
 		$(use_with postgres pg)
-		$(use_with python)
 		$(use_with spatialite)
 		$(use_with sqlite sqlite3 "${EPREFIX}"/usr)
 		$(use_with threads)
@@ -258,7 +241,13 @@ src_compile() {
 	# gdal-config needed before generating Python bindings
 	default
 
-	if use perl ; then
+	if use java; then
+		pushd "${S}"/swig/java > /dev/null || die
+		emake
+		popd > /dev/null || die
+	fi
+
+	if use perl; then
 		pushd "${S}"/swig/perl > /dev/null || die
 		perl-module_src_configure
 		perl-module_src_compile
@@ -277,26 +266,20 @@ src_compile() {
 }
 
 src_install() {
-	if use perl ; then
+	local DOCS=( NEWS )
+	use doc && local HTML_DOCS=( html/. )
+
+	default
+
+	use java && java-pkg_dojar "${S}"/swig/java/gdal.jar
+
+	if use perl; then
 		pushd "${S}"/swig/perl > /dev/null || die
 		myinst=( DESTDIR="${D}" )
 		perl-module_src_install
 		popd > /dev/null || die
-		sed -e 's:BINDINGS        =       \(.*\) perl:BINDINGS        =       \1:g' \
-			-i GDALmake.opt || die
+		perl_delete_localpod
 	fi
-
-	use perl && perl_delete_localpod
-
-	local DOCS=( Doxyfile HOWTO-RELEASE NEWS )
-	use doc && HTML_DOCS=( html/. )
-
-	default
-
-	python_install() {
-		distutils-r1_python_install
-		python_doscript scripts/*.py
-	}
 
 	if use python; then
 		# Don't clash with gdal's docs
@@ -306,10 +289,10 @@ src_install() {
 		distutils-r1_src_install
 		popd > /dev/null || die
 
-		newdoc swig/python/README.txt README-python.txt
+		newdoc swig/python/README.rst README-python.rst
 
 		insinto /usr/share/${PN}/samples
-		doins -r swig/python/samples/
+		doins -r swig/python/samples/.
 	fi
 
 	doman "${S}"/man/man*/*
