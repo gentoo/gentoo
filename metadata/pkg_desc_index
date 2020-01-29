@@ -12752,7 +12752,7 @@ media-gfx/openvdb 4.0.2-r2 5.2.0: Libs for the efficient manipulation of volumet
 media-gfx/optipng 0.7.7 0.7.7-r1: Compress PNG files without affecting image quality
 media-gfx/panini 0.72.0 0.73.0: OpenGL-based panoramic image viewer
 media-gfx/pdf2svg 0.2.3: pdf2svg is based on poppler and cairo and can convert pdf to svg files
-media-gfx/pencil 0.6.1.1: 2D animation and drawing program based on Qt5
+media-gfx/pencil 0.6.1.1 0.6.4: 2D animation and drawing program based on Qt5
 media-gfx/peps 2.0-r1: Preprocess and convert EPS files to bitmap with Ghostscript
 media-gfx/photopc 3.07: Utility to control digital cameras based on Sierra Imaging firmware
 media-gfx/photoqt 1.7.1-r1: Simple but powerful Qt-based image viewer
