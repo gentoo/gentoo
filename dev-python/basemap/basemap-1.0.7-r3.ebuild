@@ -21,7 +21,7 @@ CDEPEND="sci-libs/shapelib
 		>=dev-python/matplotlib-python2-0.98[${PYTHON_USEDEP}]
 		>=dev-python/matplotlib-0.98[${PYTHON_USEDEP}]
 	)
-	>=sci-libs/geos-3.3.1[python,${PYTHON_USEDEP}]"
+	>=sci-libs/geos-3.3.1[python(-),${PYTHON_USEDEP}]"
 
 DEPEND="${CDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
