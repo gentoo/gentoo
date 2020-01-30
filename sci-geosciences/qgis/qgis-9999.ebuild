@@ -52,7 +52,7 @@ COMMON_DEPEND="
 	>=dev-qt/qtwidgets-${QT_MIN_VER}:5
 	>=dev-qt/qtxml-${QT_MIN_VER}:5
 	media-gfx/exiv2:=
-	>=sci-libs/gdal-2.2.3:=[geos]
+	>=sci-libs/gdal-3.0.4:=[geos]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
 	>=sci-libs/proj-4.9.3:=
