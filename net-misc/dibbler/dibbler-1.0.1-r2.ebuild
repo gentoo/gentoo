@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~hppa ~mips ~x86"
 IUSE="doc resolvconf"
 
-RDEPEND="virtual/resolvconf"
+RDEPEND="resolvconf? ( virtual/resolvconf )"
 DEPEND="${RDEPEND}
 	doc? (
 		|| (
