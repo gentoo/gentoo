@@ -1472,6 +1472,11 @@
       <name>Anthony G. Basile</name>
       <role>Developer</role>
     </member>
+    <member>
+      <email>gyakovlev@gentoo.org</email>
+      <name>Georgy Yakovlev</name>
+      <role>ppc64 helper</role>
+    </member>
   </project>
   <project>
     <email>uclibc@gentoo.org</email>
