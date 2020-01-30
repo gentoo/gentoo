@@ -1,0 +1,26 @@
+From 4801619c7752b317da8d57183f590d9c3cce42e1 Mon Sep 17 00:00:00 2001
+From: Kurt Kanzenbach <kurt@kmk-computers.de>
+Date: Thu, 30 Jan 2020 19:22:05 +0100
+Subject: [PATCH] build: Install binary
+
+Add an install target for the binary.
+
+Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
+---
+ katarakt.pro | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/katarakt.pro b/katarakt.pro
+index a632713db2ce..220dfd68b1b9 100644
+--- a/katarakt.pro
++++ b/katarakt.pro
+@@ -57,3 +57,6 @@ web.depends = $$website.target
+ web.CONFIG = phony
+ 
+ QMAKE_EXTRA_TARGETS += documentation website doc web
++
++target.path = $$INSTALL_ROOT/$$PREFIX/bin/
++INSTALLS += target
+-- 
+2.24.1
+
