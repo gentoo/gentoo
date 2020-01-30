@@ -1,0 +1,20 @@
+--- a/include/mlmmj.h
++++ b/include/mlmmj.h
+@@ -81,7 +81,7 @@ enum subtype {
+ 	SUB_NONE /* For when an address is not subscribed at all */
+ };
+ 
+-char *subtype_strs[7]; /* count matches enum above; defined in subscriberfuncs.c */
++extern char *subtype_strs[7]; /* count matches enum above; defined in subscriberfuncs.c */
+ 
+ enum subreason {
+ 	SUB_REQUEST,
+@@ -92,7 +92,7 @@ enum subreason {
+ 	SUB_SWITCH
+ };
+ 
+-char * subreason_strs[6]; /* count matches enum above; defined in subscriberfuncs.c */
++extern char * subreason_strs[6]; /* count matches enum above; defined in subscriberfuncs.c */
+ 
+ void print_version(const char *prg);
+ 
