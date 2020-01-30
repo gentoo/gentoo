@@ -17569,7 +17569,7 @@ sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel
 sys-kernel/pf-sources 5.1_p7 5.2_p8 5.3_p8 5.4_p1 5.4_p2 5.4_p3 5.4_p4 5.4_p5 5.4_p6 5.5_p1: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
-sys-kernel/rt-sources 3.18.123_p107 3.18.125_p108 3.18.129_p110 4.4.162_p175 4.4.164_p176 4.9.115_p93 4.9.146_p125 4.14.71_p44 4.14.78_p47 4.14.87_p49 4.16.18_p12 4.18.16_p9 4.19.5_p4 4.19.10_p8: Full Linux 4.19 kernel sources with the CONFIG_PREEMPT_RT patch
+sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.96 4.19.97 4.19.98 4.19.99 4.19.100 5.4.12 5.4.13 5.4.14 5.4.15 5.4.16: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 4.19.96 4.19.98 4.19.99 5.4.12 5.4.13 5.4.14 5.4.15: Pre-built vanilla Linux kernel
