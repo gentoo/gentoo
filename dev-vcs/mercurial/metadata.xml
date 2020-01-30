@@ -10,4 +10,7 @@
 		<flag name="gpg">Support signing with GnuPG.</flag>
 		<flag name="tk">Install dev-lang/tk for hgk script.</flag>
 	</use>
+	<upstream>
+		<remote-id type="pypi">mercurial</remote-id>
+	</upstream>
 </pkgmetadata>
