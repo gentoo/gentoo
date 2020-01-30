@@ -11,7 +11,7 @@ SRC_URI="http://www.lysator.liu.se/~nisse/misc/argp-standalone-1.3.tar.gz"
 
 LICENSE="public-domain GPL-2 GPL-3 XC"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 ~m68k ~mips ppc ~s390 ~sh x86"
+KEYWORDS="amd64 arm arm64 ~m68k ~mips ppc ppc64 ~s390 ~sh x86"
 IUSE="static-libs"
 
 DEPEND="!sys-libs/glibc"
