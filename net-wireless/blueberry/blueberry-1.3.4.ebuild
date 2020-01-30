@@ -21,6 +21,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/dbus-python[${PYTHON_USEDEP}]
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	dev-python/setproctitle[${PYTHON_USEDEP}]
+	dev-python/xapp[${PYTHON_USEDEP}]
 	>=net-wireless/gnome-bluetooth-3.14[introspection]
 	net-wireless/bluez[obex]
 	net-wireless/bluez-tools
@@ -31,6 +32,11 @@ RDEPEND="${PYTHON_DEPS}
 	x11-libs/libnotify[introspection]
 	x11-misc/wmctrl"
 DEPEND="${RDEPEND}"
+
+src_prepare() {
+	default
+	python_fix_shebang usr/lib
+}
 
 src_install() {
 	doins -r etc

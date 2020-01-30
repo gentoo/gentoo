@@ -9,7 +9,7 @@ MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
 
 DESCRIPTION="LaTeX macros for writing documents following the ABNT norms"
-HOMEPAGE="http://abntex.codigolivre.org.br/ http://abntex.sourceforge.net/"
+HOMEPAGE="https://www.abntex.net.br/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.tar.gz
 	doc? ( mirror://sourceforge/${PN}/${PN}-doc-${MY_PV}.tar.gz )"
 
