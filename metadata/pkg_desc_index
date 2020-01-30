@@ -14797,7 +14797,7 @@ net-libs/libtirpc 1.1.4 1.2.5: Transport Independent RPC library (SunRPC replace
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.9_p1-r1 4.0.10_p1 99999: A library and tools for trace processing
-net-libs/libupnp 1.6.21 1.6.25 1.8.4 1.8.6 1.12.0-r1: An Portable Open Source UPnP Development Kit
+net-libs/libupnp 1.6.21 1.6.25 1.8.6-r1 1.12.0-r1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.12-r4: library for creating vnc servers
 net-libs/libwebsockets 3.2.1: A flexible pure-C library for implementing network protocols
@@ -16790,7 +16790,7 @@ sys-apps/bat 0.12.1: cat(1) clone with syntax highlighting and Git integration
 sys-apps/biosdevname 0.7.2 0.7.3: Sets BIOS-given device names instead of kernel eth* names
 sys-apps/biosdisk 0_p20171116: A script that creates floppy boot images to flash Dell BIOSes
 sys-apps/bleachbit 3.0: Clean junk to free disk space and to maintain privacy
-sys-apps/bolt 0.7 0.8: Userspace system daemon to enable security levels for Thunderbolt 3.
+sys-apps/bolt 0.8-r1: Userspace system daemon to enable security levels for Thunderbolt 3
 sys-apps/bubblewrap 0.3.1-r1: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
 sys-apps/busybox 1.30.1 1.31.1 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
