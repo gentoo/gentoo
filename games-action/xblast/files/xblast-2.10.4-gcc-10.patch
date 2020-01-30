@@ -1,0 +1,22 @@
+--- a/cfg_control.h
++++ b/cfg_control.h
+@@ -29,7 +29,7 @@
+ #define NUM_KEYB_CONTROLS  2
+ 
+ /* constant assignment of control to event type */
+-const XBEventCode keyEventType[NUM_KEYB_CONTROLS];
++extern const XBEventCode keyEventType[NUM_KEYB_CONTROLS];
+ 
+ /* ingame controls for editing*/
+ typedef struct
+--- a/network.h
++++ b/network.h
+@@ -105,7 +105,7 @@ typedef enum
+ #define TEAM_UNDEF 252
+ 
+ /* team color assignment */
+-const XBColor teamColors[NUM_XBTS];
++extern const XBColor teamColors[NUM_XBTS];
+ 
+ /* results of game config receive/create */
+ typedef enum
