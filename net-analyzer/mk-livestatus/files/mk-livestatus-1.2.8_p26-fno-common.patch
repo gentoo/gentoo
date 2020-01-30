@@ -1,0 +1,29 @@
+--- a/src/logger.h
++++ b/src/logger.h
+@@ -27,6 +27,7 @@
+ 
+ #include "config.h"  // IWYU pragma: keep
+ #include <syslog.h>
++#include <pthread.h>
+ 
+ #ifdef CMC
+ #define LG_DEBUG LOG_INFO
+@@ -49,6 +50,8 @@
+ extern "C" {
+ #endif
+ 
++extern pthread_t g_mainthread_id;
++
+ void logger(int priority, const char *loginfo, ...)
+     __attribute__((format(printf, 2, 3)));
+ void open_logfile();
+--- a/src/module.c
++++ b/src/module.c
+@@ -95,7 +95,6 @@
+ char g_logfile_path[4096];
+ int g_debug_level = 0;
+ int g_should_terminate = false;
+-pthread_t g_mainthread_id;
+ pthread_t *g_clientthread_id;
+ unsigned long g_max_cached_messages = 500000;
+ unsigned long g_max_lines_per_logfile =
