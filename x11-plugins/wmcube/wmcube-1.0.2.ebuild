@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,6 +25,13 @@ DOCS=(
 	"${WORKDIR}"/${P}/README
 	)
 S="${WORKDIR}/${P}/wmcube"
+
+src_prepare() {
+	default
+
+	pushd "${WORKDIR}"/${P} || die
+	eapply "${FILESDIR}"/${P}-gcc-10.patch
+}
 
 src_compile() {
 	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
