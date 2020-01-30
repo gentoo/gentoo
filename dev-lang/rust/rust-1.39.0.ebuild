@@ -309,7 +309,7 @@ src_install() {
 		echo /usr/bin/rustfmt >> "${T}/provider-${P}"
 		echo /usr/bin/cargo-fmt >> "${T}/provider-${P}"
 	fi
-	dodir /etc/env.d/rust
+
 	insinto /etc/env.d/rust
 	doins "${T}/provider-${P}"
 }
