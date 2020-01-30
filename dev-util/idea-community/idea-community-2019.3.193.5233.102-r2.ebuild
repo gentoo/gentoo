@@ -49,7 +49,12 @@ REQUIRED_USE="jbr8? ( !jbr11 )"
 DEPEND="!dev-util/${PN}:14
 	!dev-util/${PN}:15"
 RDEPEND="${DEPEND}
-	>=virtual/jdk-1.7:*"
+	>=virtual/jdk-1.8:*
+	dev-java/jansi-native
+	dev-libs/libdbusmenu
+	dev-util/lldb"
+BDEPEND="dev-util/patchelf"
+
 RESTRICT="splitdebug"
 S="${WORKDIR}/${MY_PN}-IC-${PV_STRING}"
 
@@ -76,6 +81,18 @@ src_prepare() {
 	if use jbr8; then
 			mv "${WORKDIR}/jre" ./"${JRE_DIR}"
 	fi
+
+	rm -vf "${S}"/"${JRE_DIR}"/lib/*/libavplugin* || die
+	rm -vf "${S}"/plugins/maven/lib/maven3/lib/jansi-native/*/libjansi* || die
+	rm -vrf "${S}"/lib/pty4j-native/linux/ppc64le || die
+	rm -vf "${S}"/bin/libdbm64* || die
+
+	for file in "${S}"/"${JRE_DIR}"/lib/amd64/{libfxplugins.so,libjfxmedia.so}
+	do
+		patchelf --set-rpath '$ORIGIN' $file || die "patchelf failed"
+	done
+
+	patchelf --replace-needed liblldb.so liblldb.so.9 "${S}"/plugins/Kotlin/bin/linux/LLDBFrontend || die "Unable to patch LLDBFrontend for lldb"
 
 	sed -i \
 		-e "\$a\\\\" \
