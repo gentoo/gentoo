@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -58,6 +58,8 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/1.2.8_p10-MEDIUM-Drop-default-strip.patch"
 	"${FILESDIR}/1.2.8_p10-MINOR-test-Remove-the-usage-of-Perl-Critic-Policy-Mo.patch"
+	"${FILESDIR}"/${PN}-1.2.8_p26-fno-common.patch
+	"${FILESDIR}"/${PN}-1.2.8_p26-rm.patch
 )
 
 src_prepare() {
@@ -140,7 +142,7 @@ EOF
 	fi
 
 	if use python; then
-		python_foreach_impl python_domodule api/python/livestatus.py
+		python_domodule api/python/livestatus.py
 
 		if use examples; then
 			docinto /
