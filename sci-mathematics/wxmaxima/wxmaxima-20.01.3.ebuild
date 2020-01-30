@@ -4,7 +4,7 @@
 EAPI=7
 WX_GTK_VER="3.0"
 PLOCALES="ca cs da de el en es fi fr gl hu it ja kab nb pl pt_BR ru tr uk zh_CN zh_TW"
-inherit cmake wxwidgets l10n xdg
+inherit cmake-utils wxwidgets l10n xdg
 
 DESCRIPTION="Graphical frontend to Maxima, using the wxWidgets toolkit"
 HOMEPAGE="https://wxmaxima-developers.github.io/wxmaxima/"
@@ -24,11 +24,9 @@ RDEPEND="${DEPEND}
 	sci-visualization/gnuplot[wxwidgets]
 	sci-mathematics/maxima"
 
-PATCHES=( "${FILESDIR}"/${P}.patch )
-
 src_prepare() {
 	setup-wxwidgets
-	cmake_src_prepare
+	cmake-utils_src_prepare
 
 	sed -e "s|share/doc/${PN}|share/doc/${PF}|g" -i "${S}"/info/CMakeLists.txt \
 		|| die "sed info/CMakeLists.txt failed"
@@ -47,5 +45,5 @@ src_prepare() {
 
 src_install() {
 	docompress -x /usr/share/doc/${PF}
-	cmake_src_install
+	cmake-utils_src_install
 }

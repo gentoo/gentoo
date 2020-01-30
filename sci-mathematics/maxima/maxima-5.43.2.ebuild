@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,9 +7,7 @@ inherit autotools elisp-common eutils xdg-utils
 
 DESCRIPTION="Free computer algebra environment based on Macsyma"
 HOMEPAGE="http://maxima.sourceforge.net/"
-# the 5.43.0 tarball misses doc/info/de/include-maxima.de.texi #687244
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz
-	https://dev.gentoo.org/~ulm/distfiles/${P}-missing-texi-file.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2 GPL-2+"
 SLOT="0"
