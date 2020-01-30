@@ -42,7 +42,7 @@ src_compile() {
 	export LDFLAGS_O="${LDFLAGS}"
 	export CFLAGS_O="${CFLAGS}"
 
-	local my_makeopts="USE_NETWORK=1"
+	local my_makeopts=""
 	if tc-is-gcc && ver_test $(gcc-version) -lt 4.6 ; then
 		my_makeopts+=" NO_LTO=1"
 	fi
