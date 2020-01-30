@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # dev-python/pandas is only keyworded for amd64 & x86
-sys-block/fio gnuplot
+sys-block/fio python gnuplot
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-libs/quiche is not available on all arches

@@ -23,7 +23,7 @@ media-video/vlc -libplacebo
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
 # dev-python/pandas is keyworded for x86
-sys-block/fio -gnuplot
+sys-block/fio -python -gnuplot
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on x86
