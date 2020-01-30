@@ -2690,7 +2690,7 @@ app-text/pep 2.8-r2: General purpose filter and file cleaning program
 app-text/pinfo 0.6.10-r5 0.6.10-r7 0.6.13 99999: Hypertext info and man viewer based on (n)curses
 app-text/po4a 0.47-r1 0.56 0.57: Tools to ease the translation of documentation
 app-text/podofo 0.9.6_pre20170508-r1 0.9.6_pre20171027 0.9.6_p20180715: PoDoFo is a C++ library to work with the PDF file format
-app-text/poppler 0.82.0 0.83.0 0.84.0 9999: PDF rendering library based on the xpdf-3.0 code base
+app-text/poppler 0.82.0 0.83.0 0.84.0 0.85.0 9999: PDF rendering library based on the xpdf-3.0 code base
 app-text/poppler-data 0.4.9: Data files for poppler to support uncommon encodings without xpdfrc
 app-text/ps2eps 1.68: Generate Encapsulated Postscript Format files from one-page Postscript documents
 app-text/ps2pkm 1.8_p20190410: Tool that converts a PostScript type1 font into a corresponding TeX PK font
@@ -16180,7 +16180,7 @@ sci-libs/fplll 4.0.4: Different implementations of the floating-point LLL reduct
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r2: Genetic Algorithm Utility Library
-sci-libs/gdal 2.4.1-r1 2.4.3 3.0.2: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 2.4.1-r1 2.4.3 3.0.2 3.0.4: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.7.2 3.8.0-r1: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.9.0-r2: Reference implementation of the Dirfile, format for time-ordered binary data
