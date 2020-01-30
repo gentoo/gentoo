@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 # this ebuild currently only supports installing ruby bindings for a single ruby version
 # so USE_RUBY must contain only a single value (the latest stable) as the ebuild calls
 # /usr/bin/${USE_RUBY} directly
