@@ -7537,7 +7537,7 @@ dev-python/click-default-group 1.2.2: Extends click. Group to invoke a command w
 dev-python/click-log 0.1.8 0.2.1 0.3.2: Logging integration for Click.
 dev-python/click-plugins 1.0.3: Module for click to enable registering CLI commands via setuptools entry-points
 dev-python/click-threading 0.3.0 0.4.4: Multithreaded Click apps made easy.
-dev-python/cliff 2.12.0 2.12.0-r2: Command Line Interface Formulation Framework
+dev-python/cliff 2.12.0 2.12.0-r2 2.18.0: Command Line Interface Formulation Framework
 dev-python/cliff-tablib 1.1-r2: Formatter extensions of JSON, YAML, and HTML output for the cliff framework
 dev-python/cligj 0.4.0: Click-based argument and option decorators for Python GIS command line programs
 dev-python/clint 0.5.1 0.5.1-r1: Python Command-line Application Tools
