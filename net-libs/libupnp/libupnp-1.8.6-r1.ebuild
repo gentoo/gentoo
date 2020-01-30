@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,8 +10,8 @@ HOMEPAGE="http://pupnp.sourceforge.net/"
 SRC_URI="https://github.com/mrjimenez/pupnp/archive/release-${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
-SLOT="1.8"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+SLOT="0"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
 IUSE="blocking-tcp debug doc ipv6 +reuseaddr samples static-libs"
 
 DOCS="ChangeLog"
@@ -44,27 +44,4 @@ src_install () {
 	default
 
 	use static-libs || prune_libtool_files
-
-	# Slot samples
-	if $(use samples); then
-		for bin in combo ctrlpt device ; do
-			newbin "upnp/sample/.libs/tv_$bin" "tv_$bin-${SLOT}"
-		done
-	fi
-
-	# Slot includes
-	cd "${D}/usr/include" || die
-	mv upnp "upnp-${SLOT}" || die
-
-	# Slot pkgconfig
-	cd "${D}/usr/$(get_libdir)/pkgconfig" || die
-	mv libupnp.pc "libupnp-${SLOT}.pc" || die
-	sed -i -e "s#/upnp#/upnp-${SLOT}#" \
-		-e "s#lupnp#lupnp-${SLOT}#" \
-		-e "s#lixml#lixml-${SLOT}#" "libupnp-${SLOT}.pc" || die
-
-	# Slot symlinks
-	cd "${D}/usr/$(get_libdir)" || die
-	mv libupnp.so "libupnp-${SLOT}.so" || die
-	mv libixml.so "libixml-${SLOT}.so" || die
 }
