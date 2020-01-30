@@ -17,9 +17,10 @@ SRC_URI="https://brick.kernel.dk/snaps/${MY_P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
-IUSE="aio curl glusterfs gnuplot gtk libressl numa rbd rdma static tcmalloc zlib"
-REQUIRED_USE="gnuplot? ( ${PYTHON_REQUIRED_USE} )
-	libressl? ( curl )"
+IUSE="aio curl glusterfs gnuplot gtk libressl numa python rbd rdma static tcmalloc zlib"
+REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
+	libressl? ( curl )
+	gnuplot? ( python )"
 
 BDEPEND="virtual/pkgconfig"
 
@@ -45,11 +46,11 @@ RDEPEND="!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )"
 RDEPEND+="
-	gnuplot? (
-		sci-visualization/gnuplot
-		$(python_gen_any_dep 'dev-python/pandas[${PYTHON_USEDEP}]')
+	python? (
 		${PYTHON_DEPS}
-	)"
+		$(python_gen_any_dep 'dev-python/pandas[${PYTHON_USEDEP}]')
+	)
+	gnuplot? ( sci-visualization/gnuplot )"
 
 S="${WORKDIR}/${MY_P}"
 
@@ -104,20 +105,41 @@ src_compile() {
 src_install() {
 	emake install DESTDIR="${D}" prefix="${EPREFIX}/usr" mandir="${EPREFIX}/usr/share/man"
 
-	if use gnuplot ; then
-		sed -i 's:python2.7:python:g' \
-			"${ED}/usr/bin/fio2gnuplot" \
-			"${ED}/usr/bin/fiologparser_hist.py" \
-			"${ED}/usr/bin/fiologparser.py"
-		python_replicate_script \
-			"${ED}/usr/bin/fio2gnuplot" \
-			"${ED}/usr/bin/fiologparser_hist.py" \
-			"${ED}/usr/bin/fiologparser.py"
+	local python2_7_files=(
+		"${ED}"/usr/bin/fiologparser_hist.py
+		"${ED}"/usr/bin/fiologparser.py
+	)
+
+	local python_files=(
+		"${python2_7_files[@]}"
+		"${ED}"/usr/bin/fio_generate_plots
+		"${ED}"/usr/bin/fio_jsonplus_clat2csv
+		"${ED}"/usr/share/man/man1/fio_generate_plots.1
+	)
+
+	if use python ; then
+		sed -i 's:python2.7:python:g' "${python2_7_files[@]}" || die
+		python_replicate_script "${python2_7_files[@]}"
 	else
-		rm "${ED}"/usr/bin/{fio2gnuplot,fio_generate_plots} || die
-		rm "${ED}"/usr/share/man/man1/{fio2gnuplot,fio_generate_plots}.1 || die
-		rm "${ED}"/usr/share/fio/*.gpm || die
-		rmdir "${ED}"/usr/share/fio/ 2>/dev/null
+		rm "${python_files[@]}" || die
+	fi
+
+	local gnuplot_python2_7_files=(
+		"${ED}"/usr/bin/fio2gnuplot
+	)
+
+	local gnuplot_files=(
+		"${gnuplot_python2_7_files[@]}"
+		"${ED}"/usr/share/man/man1/fio2gnuplot.1
+		"${ED}"/usr/share/fio/*.gpm
+	)
+
+	if use gnuplot ; then
+		sed -i 's:python2.7:python:g' "${gnuplot_python2_7_files[@]}" || die
+		python_replicate_script "${gnuplot_python2_7_files[@]}"
+	else
+		rm "${gnuplot_files[@]}" || die
+		rmdir "${ED}"/usr/share/fio/ || die
 	fi
 
 	# This tool has security/parallel issues -- it hardcodes /tmp/template.fio.
