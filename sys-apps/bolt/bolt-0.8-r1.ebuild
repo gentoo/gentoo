@@ -1,17 +1,18 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit meson systemd
 
-DESCRIPTION="Userspace system daemon to enable security levels for Thunderbolt 3."
+DESCRIPTION="Userspace system daemon to enable security levels for Thunderbolt 3"
 HOMEPAGE="https://gitlab.freedesktop.org/bolt/bolt"
-SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz"
+SRC_URI="https://gitlab.freedesktop.org/${PN}/${PN}/-/archive/${PV}/${P}.tar.gz
+	https://gitlab.freedesktop.org/bolt/bolt/merge_requests/210.patch -> ${PN}-210.patch"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc systemd"
 
 DEPEND="
@@ -21,9 +22,13 @@ DEPEND="
 	virtual/udev
 	dev-util/umockdev
 	sys-auth/polkit[introspection]
-	systemd? ( sys-apps/systemd:0= )
+	systemd? ( sys-apps/systemd )
 	doc? ( app-text/asciidoc )"
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${DISTDIR}/${PN}-210.patch"
+)
 
 src_configure() {
 	local emesonargs=(
@@ -31,7 +36,6 @@ src_configure() {
 		--sysconfdir=/etc
 		--localstatedir=/var
 		--sharedstatedir=/var/lib
-		-Dsystemd=$(usex systemd true false)
 	)
 	meson_src_configure
 }
