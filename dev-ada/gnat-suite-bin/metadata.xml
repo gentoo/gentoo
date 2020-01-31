@@ -4,7 +4,4 @@
 	<maintainer type="project">
 		<email>ada@gentoo.org</email>
 	</maintainer>
-	<longdescription lang="en">
-		GNAT Community Edition: Ada Compiler and Gnat Programming System delivered as binaries
-	</longdescription>
 </pkgmetadata>
