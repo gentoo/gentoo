@@ -2419,7 +2419,7 @@ app-portage/hackport 0.5.6 0.6.2 0.6.3 9999: Hackage and Portage integration too
 app-portage/java-ebuilder 0.4.1 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
 app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE Frameworks
 app-portage/layman 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
-app-portage/metagen 0.6.2-r1 0.6.3 0.6.4.2 0.6.5 0.6.5-r1 0.6.6-r1 0.7.0 0.7.1 9999: metadata.xml generator for ebuilds
+app-portage/metagen 0.6.2-r1 0.6.3 0.6.4.2 0.6.5 0.6.5-r1 0.6.6-r1 0.7.0 0.7.1 0.7.2 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 3 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
@@ -16181,7 +16181,7 @@ sci-libs/fplll 4.0.4: Different implementations of the floating-point LLL reduct
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r2: Genetic Algorithm Utility Library
-sci-libs/gdal 2.4.1-r1 2.4.3 3.0.2 3.0.4: Translator library for raster geospatial data formats (includes OGR support)
+sci-libs/gdal 2.4.1-r1 2.4.3 3.0.4: Translator library for raster geospatial data formats (includes OGR support)
 sci-libs/geos 3.7.2 3.8.0-r1: Geometry engine library for Geographic Information Systems
 sci-libs/gerris 20131206-r1: Gerris Flow Solver
 sci-libs/getdata 0.9.0-r2: Reference implementation of the Dirfile, format for time-ordered binary data
@@ -18076,7 +18076,7 @@ www-client/firefox-bin 52.9.0 68.2.0 68.3.0 68.4.1 68.4.2 71.0 72.0.1 72.0.2: Fi
 www-client/google-chrome 79.0.3945.130: The web browser from Google
 www-client/google-chrome-beta 80.0.3987.78: The web browser from Google
 www-client/google-chrome-unstable 81.0.4040.5: The web browser from Google
-www-client/httrack 3.48.21-r1 3.48.21-r2 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
+www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.14-r1 2.16 2.17 2.18: A fast and lightweight web browser running in both graphics and text mode
 www-client/luakit 2017.08.10 9999: A fast, light, simple to use micro-browser using WebKit and Lua

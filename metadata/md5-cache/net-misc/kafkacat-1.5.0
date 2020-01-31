@@ -1,13 +1,13 @@
 DEFINED_PHASES=configure install
-DEPEND=>=dev-libs/librdkafka-0.9.4 avro? ( ) json? ( dev-libs/yajl )
+DEPEND=>=dev-libs/librdkafka-0.9.4 json? ( dev-libs/yajl )
 DESCRIPTION=Generic command line non-JVM Apache Kafka producer and consumer
 EAPI=6
 HOMEPAGE=https://github.com/edenhill/kafkacat
-IUSE=avro +json
+IUSE=+json
 KEYWORDS=~amd64
 LICENSE=BSD-2
-RDEPEND=>=dev-libs/librdkafka-0.9.4 avro? ( ) json? ( dev-libs/yajl )
+RDEPEND=>=dev-libs/librdkafka-0.9.4 json? ( dev-libs/yajl )
 SLOT=0
 SRC_URI=https://github.com/edenhill/kafkacat/archive/1.5.0.tar.gz -> kafkacat-1.5.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d7983883e5ad59a0e686a6b6145d9311
+_md5_=5852878c8bb813970661a9684b71a1b9
