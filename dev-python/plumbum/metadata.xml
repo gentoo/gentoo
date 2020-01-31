@@ -16,5 +16,6 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">plumbum</remote-id>
+    <remote-id type="github">tomerfiliba/plumbum</remote-id>
   </upstream>
 </pkgmetadata>
