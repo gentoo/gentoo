@@ -1,8 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person"
+	<email>williamh@gentoo.org</email>
+	<name>William Hubbs</name>
+	</maintainer>
 	<use>
+		<flag name="avro">Enable avro serialization/deserialization support</flag>
 		<flag name="json">Enable json support</flag>
 	</use>
 	<upstream>
