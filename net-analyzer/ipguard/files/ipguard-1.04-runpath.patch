@@ -1,0 +1,11 @@
+--- a/ipguard.h
++++ b/ipguard.h
+@@ -53,7 +53,7 @@
+ 
+ #define ETHERSFILE      ETHERS
+ #define LOGNAME         "/var/log/ipguard"
+-#define PIDNAME         "/var/run/ipguard"
++#define PIDNAME         "/run/ipguard"
+ #define FAKEMAC         "de:ad:xx:xx:xx:xx"
+ #define PCAPFSIZ        128
+ 
