@@ -66,14 +66,14 @@ src_install() {
 	doins ${VDRPLUGIN}/channels.alias
 
 	# do we need this sym link? need testing..
-	dosym "${EPREFIX}/usr/share/fonts/corefonts" "${EPREFIX}/usr/share/vdr/graphlcd/fonts"
+	dosym "../../fonts/corefonts" "/usr/share/vdr/graphlcd/fonts"
 
-	dosym "${EPREFIX}/usr/share/fonts/corefonts" "${EPREFIX}/etc/vdr/plugins/${VDRPLUGIN}/fonts"
-	dosym "${EPREFIX}/usr/share/vdr/${VDRPLUGIN}/logos" "${EPREFIX}/etc/vdr/plugins/${VDRPLUGIN}/logos"
-	dosym "${EPREFIX}/etc/graphlcd.conf" "${EPREFIX}/etc/vdr/plugins/${VDRPLUGIN}/graphlcd.conf"
+	dosym "../../../../usr/share/fonts/corefonts" "/etc/vdr/plugins/${VDRPLUGIN}/fonts"
+	dosym "../../../../usr/share/vdr/${VDRPLUGIN}/logos" "/etc/vdr/plugins/${VDRPLUGIN}/logos"
+	dosym "../../../etc/graphlcd.conf" "/etc/vdr/plugins/${VDRPLUGIN}/graphlcd.conf"
 
 	# do we need this sym link? need testing..
-#	dosym "${EPREFIX}/etc/vdr/plugins/${VDRPLUGIN}/logonames.alias.1.3" "${EPREFIX}/etc/vdr/plugins/${VDRPLUGIN}/logonames.alias"
+#	dosym "logonames.alias.1.3" "/etc/vdr/plugins/${VDRPLUGIN}/logonames.alias"
 }
 
 pkg_preinst() {
