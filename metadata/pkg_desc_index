@@ -5093,6 +5093,7 @@ dev-libs/librevenge 0.0.4-r1 9999: Helper library for REVerse ENGineered formats
 dev-libs/libsass 3.5.5 3.6.1 3.6.3 9999: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsavitar 3.4.1 3.6.0 4.2.0 4.3.0: C++ implementation of 3mf loading with SIP python bindings
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 0.1_pre20170928: Optimized C library for EC operations on curve secp256k1
+dev-libs/libserdes 5.4.0: Avro SerializationDeserialization w/ Confluent schema-registry support
 dev-libs/libserialport 0.1.1 9999: Cross platform serial port access library
 dev-libs/libsigc++ 1.2.7 2.10.1: Typesafe callback system for standard C++
 dev-libs/libsigsegv 2.11 2.12 2.12-r1: Library for handling page faults in user mode
@@ -14274,7 +14275,7 @@ net-analyzer/netpipe 3.7.2: network protocol independent performance evaluator
 net-analyzer/netselect 0.4-r1 9999: Ultrafast implementation of ping
 net-analyzer/nettop 0.2.3-r2: top like program for network activity
 net-analyzer/netwag 5.39.0: Tcl/tk interface to netwox (Toolbox of 222 utilities for testing Ethernet/IP networks)
-net-analyzer/netwatch 1.3.0.1-r3: Ethernet/PPP IP Packet Monitor
+net-analyzer/netwatch 1.3.0.1-r3 1.3.0.1-r4: Ethernet/PPP IP Packet Monitor
 net-analyzer/netwox 5.39.0: Toolbox of 217 utilities for testing Ethernet/IP networks
 net-analyzer/nfdump 1.6.14-r1 1.6.15-r1 1.6.16-r1: A set of tools to collect and process netflow data
 net-analyzer/ngrep 1.45-r3 1.47: A grep for network layers
