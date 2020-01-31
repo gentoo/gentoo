@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-5.0-shared.patch
 	"${FILESDIR}"/${PN}-5.0-sharedlua.patch
 	"${FILESDIR}"/${PN}-5.0.7-ppc-atomic.patch
+	"${FILESDIR}"/${PN}-5.0.7-fno-common.patch
 	"${FILESDIR}"/${PN}-sentinel-5.0-config.patch
 )
 

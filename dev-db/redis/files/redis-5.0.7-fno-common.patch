@@ -1,0 +1,13 @@
+diff --git a/src/sds.h b/src/sds.h
+index 1bdb60d..adcc12c 100644
+--- a/src/sds.h
++++ b/src/sds.h
+@@ -34,7 +34,7 @@
+ #define __SDS_H
+ 
+ #define SDS_MAX_PREALLOC (1024*1024)
+-const char *SDS_NOINIT;
++extern const char *SDS_NOINIT;
+ 
+ #include <sys/types.h>
+ #include <stdarg.h>
