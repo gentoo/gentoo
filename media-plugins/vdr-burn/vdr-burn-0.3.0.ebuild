@@ -76,8 +76,8 @@ src_install() {
 
 	newins "${S}"/config/ProjectX.ini projectx-vdr.ini
 
-	dosym "${EPREFIX}"menu-bg-default.png "${EPREFIX}"/usr/share/vdr/burn/menu-bg.png
-	dosym "${EPREFIX}"menu-button-default.png "${EPREFIX}"/usr/share/vdr/burn/menu-button.png
+	dosym menu-bg-default.png /usr/share/vdr/burn/menu-bg.png
+	dosym menu-button-default.png /usr/share/vdr/burn/menu-button.png
 
 	insinto /usr/share/vdr/burn/counters/
 	doins "${S}/config/counters/standard"
