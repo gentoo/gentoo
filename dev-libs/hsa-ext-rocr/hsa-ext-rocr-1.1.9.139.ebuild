@@ -39,7 +39,7 @@ src_install() {
 	into "${destdir}"
 	for solib in ${solibs_to_install[@]}; do
 		dolib.so "opt/rocm/hsa/lib/${solib}.${soversion}"
-		dosym "${EPREFIX}/${destdir}/$(get_libdir)/${solib}.${soversion}" "${EPREFIX}/usr/$(get_libdir)/${solib}.${soversion}"
-		dosym "${solib}.${soversion}" "${EPREFIX}/usr/$(get_libdir)/${solib}.${somajor}"
+		dosym "../..${destdir}/$(get_libdir)/${solib}.${soversion}" "/usr/$(get_libdir)/${solib}.${soversion}"
+		dosym "${solib}.${soversion}" "/usr/$(get_libdir)/${solib}.${somajor}"
 	done
 }

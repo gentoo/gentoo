@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,7 @@ LICENSE="|| ( LGPL-3+ GPL-2+ )"
 # The subslot reflects the C & C++ SONAMEs.
 SLOT="0/10.4"
 KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="+asm doc cxx static-libs"
+IUSE="+asm doc cxx pic static-libs"
 
 DEPEND="sys-devel/m4
 	app-arch/xz-utils"
@@ -77,12 +77,15 @@ multilib_src_configure() {
 		filter-flags -O?
 	fi
 
+	# --with-pic forces static libraries to be built as PIC
+	# and without TEXTRELs. musl does not support TEXTRELs: bug #707332
 	tc-export CC
 	ECONF_SOURCE="${S}" econf \
 		--localstatedir="${EPREFIX}"/var/state/gmp \
 		--enable-shared \
 		$(use_enable asm assembly) \
 		$(use_enable cxx) \
+		$(use pic && echo --with-pic) \
 		$(use_enable static-libs static)
 }
 
