@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -66,7 +66,7 @@ DEPEND="
 		x11-base/xorg-server[wayland]
 	)
 	udev? ( >=dev-libs/libgudev-232:=
-		>=virtual/libudev-228:= )
+		>=virtual/libudev-232-r1:= )
 	x11-libs/libSM
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13 )
 	>=x11-libs/startup-notification-0.7
