@@ -17,6 +17,10 @@ IUSE="X"
 RDEPEND="X? ( x11-apps/xdpyinfo x11-libs/libXi )"
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc10.patch
+)
+
 pkg_setup() {
 	CONFIG_CHECK="~INPUT_EVDEV"
 	ERROR_CFG="Your kernel needs INPUT_EVDEV for the spacenavd to work properly"
