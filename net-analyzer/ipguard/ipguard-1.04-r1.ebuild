@@ -19,27 +19,12 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 "
-
-src_prepare() {
-	default
-
-	sed -i \
-		-e 's|-g ||g' \
-		-e 's|	@$(CC)|	$(CC)|g' \
-		-e 's| -s | |g' \
-		-e 's| -o | $(CFLAGS) $(LDFLAGS)&|g' \
-		-e 's|$(PREFIX)|${D}&|g' \
-		-e 's|/man/|/share&|g' \
-		Makefile || die
-	sed -i \
-		-e 's|opts=|extra_commands=|g' \
-		-e 's|/var/run/|/run/|g' \
-		-e 's|-u 300 -xz|${OPTS} ${IFACE}|g' \
-		doc/${PN}.gentoo || die
-	sed -i \
-		-e 's|/var/run/|/run/|g' \
-		doc/${PN}.8 ${PN}.h || die
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-gentoo.patch
+	"${FILESDIR}"/${P}-init.d.patch
+	"${FILESDIR}"/${P}-runpath.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 
 src_compile() {
 	emake \
