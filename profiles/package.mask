@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-01-31)
+# Last release in 2009.  No tests.  Python 2 only.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #707550.
+app-mobilephone/lightblue
+
 # Michał Górny <mgorny@gentoo.org> (2020-01-29)
 # Abandoned in 2009.  Python 2 only.  No blockers left.
 # Removal in 30 days.  Bug #706218.
