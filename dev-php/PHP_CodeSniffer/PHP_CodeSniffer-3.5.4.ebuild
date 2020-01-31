@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,16 +14,17 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
+RESTRICT="test" # Currently broken with latest PHPUnit
+#RESTRICT="!test? ( test )"
 
-RDEPEND="dev-lang/php:*[cli,tokenizer,xmlwriter]"
+RDEPEND="dev-lang/php:*[cli(-),tokenizer(-),xmlwriter(-)]"
 DEPEND="test? ( >=dev-php/phpunit-4 ${RDEPEND} )"
 
 DOCS=( CONTRIBUTING.md README.md )
 
 src_prepare() {
 	sed -i "s~@data_dir@~${EPREFIX}/usr/share/php/data~" src/Config.php || die
-	eapply_user
+	default
 }
 
 src_install() {

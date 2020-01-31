@@ -32,6 +32,10 @@ DEPEND="
 	>=kde-plasma/breeze-${PVCUT}:5
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5=[dbus]
+	|| (
+		>=dev-qt/qtgui-5.14.1:5[dbus]
+		<dev-qt/qtgui-5.14.0:5[dbus]
+	)
 	>=dev-qt/qtquickcontrols2-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtx11extras-${QTMIN}:5
