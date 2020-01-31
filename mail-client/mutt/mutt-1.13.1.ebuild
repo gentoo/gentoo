@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -208,7 +208,7 @@ src_install() {
 
 	# A newer file is provided by app-misc/mime-types. So we link it.
 	rm "${ED}"/etc/${PN}/mime.types
-	dosym "${EPREFIX}"/etc/mime.types /etc/${PN}/mime.types
+	dosym ../mime.types /etc/${PN}/mime.types
 
 	# nuke manpages that should be provided by an MTA, bug #177605
 	rm "${ED}"/usr/share/man/man5/{mbox,mmdf}.5 \
