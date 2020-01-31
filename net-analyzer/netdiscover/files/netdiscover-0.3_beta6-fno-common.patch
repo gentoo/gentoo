@@ -1,0 +1,42 @@
+--- ./src/ifaces.c
++++ ./src/ifaces.c
+@@ -72,6 +72,7 @@
+ unsigned char smac[ETH_ALEN];
+ struct p_header *temp_header;
+ 
++char *ourmac, errbuf[PCAP_ERRBUF_SIZE];
+ 
+ /* Start Sniffing on given iface */
+ void *start_sniffer(void *args)
+--- ./src/ifaces.h
++++ ./src/ifaces.h
+@@ -46,7 +46,7 @@
+ 	
+ 	
+ 	// Shitty globals
+-	char *ourmac, errbuf[PCAP_ERRBUF_SIZE];
++	extern char *ourmac, errbuf[PCAP_ERRBUF_SIZE];
+ 	
+ 	// Sniffer Functions
+ 	void *start_sniffer(void *);
+--- a/src/screen.c
++++ b/src/screen.c
+@@ -48,6 +48,7 @@
+ struct arp_rep_c *arprep_count;
+ struct winsize win_sz;
+ pthread_mutex_t *listm;
++char *current_network;
+ 
+ int scroll;
+ int smode, oldmode;
+--- ./src/screen.h
++++ ./src/screen.h
+@@ -24,7 +24,7 @@
+ 
+ 
+ /* Ohh no, more globals */
+-char *current_network;
++extern char *current_network;
+ 
+  
+ /* Structs for counters */
