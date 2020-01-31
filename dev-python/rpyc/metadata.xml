@@ -13,5 +13,6 @@
 	<upstream>
 		<remote-id type="sourceforge">rpyc</remote-id>
 		<remote-id type="pypi">rpyc</remote-id>
+		<remote-id type="github">tomerfiliba/rpyc</remote-id>
 	</upstream>
 </pkgmetadata>
