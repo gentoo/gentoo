@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Design/Apps/Contacts"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="telepathy v4l"
-KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 ~sparc x86"
+KEYWORDS="amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 VALA_DEPEND="
 	$(vala_depend)
