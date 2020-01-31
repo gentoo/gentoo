@@ -1,0 +1,56 @@
+--- a/ui_common.c
++++ b/ui_common.c
+@@ -28,6 +28,13 @@
+ extern int history_pos;
+ extern int history_len;
+ 
++sorted_list_type screen_list;
++host_pair_line totals;
++int peaksent, peakrecv, peaktotal;
++history_type history_totals;
++hash_type* screen_hash;
++hash_type* service_hash;
++
+ /*
+  * Compare two screen lines based on bandwidth.  Start comparing from the 
+  * specified column
+--- a/ui_common.h
++++ b/ui_common.h
+@@ -33,12 +33,12 @@
+ 
+ extern options_t options;
+ 
+-sorted_list_type screen_list;
+-host_pair_line totals;
+-int peaksent, peakrecv, peaktotal;
++extern sorted_list_type screen_list;
++extern host_pair_line totals;
++extern int peaksent, peakrecv, peaktotal;
+ extern history_type history_totals;
+-hash_type* screen_hash;
+-hash_type* service_hash;
++extern hash_type* screen_hash;
++extern hash_type* service_hash;
+ 
+ void analyse_data(void);
+ void screen_list_init(void);
+--- a/ui.c
++++ b/ui.c
+@@ -253,7 +253,6 @@
+     }
+ }
+ 
+-extern history_type history_totals;
+ 
+ 
+ void ui_print() {
+--- a/iftop.c
++++ b/iftop.c
+@@ -66,7 +66,6 @@
+ extern options_t options;
+ 
+ hash_type* history;
+-history_type history_totals;
+ time_t last_timestamp;
+ time_t first_timestamp;
+ int history_pos = 0;
