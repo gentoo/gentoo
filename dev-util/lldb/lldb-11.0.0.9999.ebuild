@@ -70,8 +70,7 @@ src_configure() {
 	use test && mycmakeargs+=(
 		-DLLVM_BUILD_TESTS=$(usex test)
 		# compilers for lit tests
-		-DLLDB_TEST_C_COMPILER="$(type -P clang)"
-		-DLLDB_TEST_CXX_COMPILER="$(type -P clang++)"
+		-DLLDB_TEST_COMPILER="$(type -P clang)"
 
 		-DLLVM_MAIN_SRC_DIR="${WORKDIR}/llvm"
 		-DLLVM_EXTERNAL_LIT="${EPREFIX}/usr/bin/lit"
