@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -166,7 +166,7 @@ src_install() {
 	doins keyboard/*
 
 	rm -r "${S}"/keystore/cacerts || die
-	dosym /etc/ssl/certs "${ICAROOT}"/keystore/cacerts
+	dosym ../../../../etc/ssl/certs "${ICAROOT}"/keystore/cacerts
 
 	exeinto "${ICAROOT}"/util
 	doexe util/{configmgr,conncenter,gst_play1.0,gst_read1.0,hdxcheck.sh,icalicense.sh,libgstflatstm1.0.so,webcontainer,ctxwebhelper,ctx_rehash,ctx_app_bind}
