@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -223,7 +223,7 @@ src_install() {
 
 	# A newer file is provided by app-misc/mime-types. So we link it.
 	rm "${ED}"/etc/${PN}/mime.types
-	dosym "${EPREFIX}"/etc/mime.types /etc/${PN}/mime.types
+	dosym ../mime.types /etc/${PN}/mime.types
 
 	# A man-page is always handy, so fake one
 	if use !doc; then
