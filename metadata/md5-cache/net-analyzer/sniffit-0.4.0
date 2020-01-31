@@ -10,4 +10,4 @@ RDEPEND=net-libs/libpcap >=sys-libs/ncurses-5.2
 SLOT=0
 SRC_URI=https://github.com/resurrecting-open-source-projects/sniffit/archive/sniffit-0.4.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=95adbf74af8458718b3d2963a7b19f4c
+_md5_=b4d5d32a516af69fbdbdb9a0b6d5e853
