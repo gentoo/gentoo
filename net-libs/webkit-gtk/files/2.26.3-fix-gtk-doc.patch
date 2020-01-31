@@ -1,0 +1,27 @@
+Upstream commit 41455af5d76a726f195838846b61e1693a2da99c is supposed to fix this,
+but it looks like it's not enough with older perl-based gtk-doc.
+Keep this extra patch only until we can't depend on a newer gtk-doc version, which
+should be retested whether this patch is unnecessary then.
+
+Upstream extra reference for the above reference commit:
+git-svn-id: https://svn.webkit.org/repository/webkit/trunk@245027 268f45cc-cd09-0410-ab3c-d52691b4dbfc
+---
+ Source/WebKit/UIProcess/API/glib/WebKitSettings.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Source/WebKit/UIProcess/API/glib/WebKitSettings.cpp b/Source/WebKit/UIProcess/API/glib/WebKitSettings.cpp
+index 023b14c33f4..657b1febf5d 100644
+--- a/Source/WebKit/UIProcess/API/glib/WebKitSettings.cpp
++++ b/Source/WebKit/UIProcess/API/glib/WebKitSettings.cpp
+@@ -1505,7 +1505,7 @@ static void webkit_settings_class_init(WebKitSettingsClass* klass)
+      * WebKitSettings:enable-media:
+      *
+      * Enable or disable support for media playback on pages. This setting is enabled by
+-     * default. Disabling it means `<audio>`, `<track>` and `<video>` elements will have
++     * default. Disabling it means audio, track and video elements will have
+      * playback support disabled.
+      *
+      * Since: 2.26
+-- 
+2.20.1
+
