@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.8.3-no-implicit.patch
 	"${FILESDIR}"/${PN}-2.9.8.3-rpc.patch
 	"${FILESDIR}"/${PN}-2.9.12-snort.pc.patch
+	"${FILESDIR}"/${PN}-2.9.15.1-fno-common.patch
 )
 
 pkg_setup() {
@@ -48,20 +49,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# Multilib fix for the sf_engine
-	ebegin "Applying multilib fix"
-	sed -i -e 's|${exec_prefix}/lib|${exec_prefix}/'$(get_libdir)'|g' \
-		"${WORKDIR}/${P}/src/dynamic-plugins/sf_engine/Makefile.am" \
-		|| die "sed for sf_engine failed"
-
-	# Multilib fix for the curent set of dynamic-preprocessors
-	for i in file ftptelnet smtp ssh dns ssl dcerpc2 sdf imap pop sip reputation gtp modbus dnp3; do
-		sed -i -e 's|${exec_prefix}/lib|${exec_prefix}/'$(get_libdir)'|g' \
-			"${WORKDIR}/${P}/src/dynamic-preprocessors/$i/Makefile.am" \
-			|| die "sed for $i failed."
-	done
-	eend
 
 	mv configure.{in,ac} || die
 
