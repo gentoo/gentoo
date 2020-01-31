@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-31)
+# py2-only, 8.0 release is broken, upstream appears dormant, bug 707564,
+# blocks dev-python/pybluez py2 cleanup. Use kde-misc/kdeconnect instead.
+# Masked for removal in 30 days.
+kde-misc/kanyremote
+
 # Michał Górny <mgorny@gentoo.org> (2020-01-31)
 # Last release in 2009.  No tests.  Python 2 only.  No reverse
 # dependencies.
