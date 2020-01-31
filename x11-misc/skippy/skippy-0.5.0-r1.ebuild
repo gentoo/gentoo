@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="A full-screen task-switcher providing Apple Expose-like functionality"
@@ -23,8 +23,10 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto
 	virtual/pkgconfig"
 
-PATCHES=( "${FILESDIR}"/${PN}-pointer-size.patch
+PATCHES=(
+	"${FILESDIR}"/${PN}-pointer-size.patch
 	"${FILESDIR}"/${P}-Makefile.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 DOCS=( CHANGELOG skippyrc-default )
