@@ -10,4 +10,4 @@ RESTRICT=mirror strip userpriv fetch
 SLOT=0
 SRC_URI=amd64? ( linuxx64-19.12.0.19.tar.gz ) x86? ( linuxx86-19.12.0.19.tar.gz )
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=d859773a289dfd315c7905e756ae1450
+_md5_=e71d29f699fe32c6aa7f4ef4437fe392

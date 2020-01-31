@@ -9,4 +9,4 @@ RESTRICT=bindist strip
 SLOT=0
 SRC_URI=http://repo.radeon.com/rocm/apt/debian/pool/main/h/hsa-ext-rocr-dev/hsa-ext-rocr-dev_1.1.9-122-ge5c4efb_amd64.deb
 _eclasses_=unpacker	3cd8bad0d31e525cd26be1bfa4e61631
-_md5_=12da2d0957133707d7281f1cd1eb83dc
+_md5_=2fb165f48c7bc47f45b45ab9e3e7a158

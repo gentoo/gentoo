@@ -8217,7 +8217,7 @@ dev-python/ovsdbapp 0.12.2 0.15.0: A library for creating OVSDB applications
 dev-python/owslib 0.16.0-r1 0.17.1 0.17.1-r1: Library for client programming with Open Geospatial Consortium web service
 dev-python/pSQL 1.2.1: MySQL abstraction layer for python
 dev-python/packaging 16.8 19.2 20.0 20.1: Core utilities for Python packages
-dev-python/pafy 0.5.3.1 0.5.4 9999: Python library to retrieve YouTube content and metadata
+dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.4.0 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/paisley 0.3.1-r1: A CouchDB client written in Python to be used within a Twisted application
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
@@ -8469,7 +8469,7 @@ dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyotherside 1.5.4 1.5.8: Asynchronous Python 3 Bindings for Qt 5
 dev-python/pyotp 2.2.6 2.2.6-r1: PyOTP is a Python library for generating and verifying one-time passwords.
 dev-python/pypam 0.5.0-r3: Python Bindings for PAM (Pluggable Authentication Modules)
-dev-python/pyparsing 2.2.0 2.3.0 2.3.1 2.4.0: Easy-to-use Python module for text parsing
+dev-python/pyparsing 2.2.0 2.3.0 2.3.1 2.4.0 2.4.6: Easy-to-use Python module for text parsing
 dev-python/pyparted 3.10.7 3.11.2 3.11.3 999999: Python bindings for sys-block/parted
 dev-python/pypax 0.9.5 9999: Python module to get or set either PT_PAX and/or XATTR_PAX flags
 dev-python/pypcap 1.2.1 1.2.2 1.2.3: Simplified object-oriented Python extension module for libpcap
@@ -10016,7 +10016,7 @@ dev-ruby/ruby-feedparser 0.9.4: Ruby library to parse ATOM/RSS feeds
 dev-ruby/ruby-filemagic 0.7.2: Ruby binding to libmagic
 dev-ruby/ruby-gdk3 3.3.2 3.3.6 3.3.7: Ruby GDK-3.x bindings
 dev-ruby/ruby-gdkpixbuf2 3.3.2 3.3.6 3.3.7: Ruby GdkPixbuf2 bindings
-dev-ruby/ruby-gettext 3.2.9: Native Language Support Library and Tools modeled after GNU gettext package
+dev-ruby/ruby-gettext 3.2.9 3.3.2: Native Language Support Library and Tools modeled after GNU gettext package
 dev-ruby/ruby-gio2 3.3.2 3.3.6 3.3.7: Ruby binding of GooCanvas
 dev-ruby/ruby-glib2 3.3.2 3.3.6 3.3.7: Ruby Glib2 bindings
 dev-ruby/ruby-gnome2 3.3.2 3.3.6 3.3.7: Ruby Gnome2 bindings
@@ -10195,7 +10195,7 @@ dev-ruby/xml-simple 1.1.5: Easy API to maintain XML. A Ruby port of Grant McLean
 dev-ruby/xmlrpc 0.3.0: XMLRPC is a lightweight protocol that enables remote procedure calls over HTTP
 dev-ruby/xpath 2.1.0 3.2.0: XPath is a Ruby DSL around a subset of XPath 1.0
 dev-ruby/yajl-ruby 1.3.1 1.4.1: Ruby C bindings to the Yajl JSON stream-based parser library
-dev-ruby/yard 0.9.20: Documentation generation tool for the Ruby programming language
+dev-ruby/yard 0.9.20 0.9.24: Documentation generation tool for the Ruby programming language
 dev-ruby/zeitwerk 1.4.3 2.1.10 2.2.1 2.2.2: Efficient and thread-safe code loader for Ruby
 dev-ruby/zentest 4.11.1 4.12.0: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/bytestructures 1.0.1: Structured access to bytevector contents
@@ -12879,7 +12879,7 @@ media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT
 media-libs/elles_icc_profiles 20160501.0932 20160501.0932-r1: Elle Stone's well-behaved RGB and grey ICC profiles
 media-libs/esdl 1.3.1: Erlang bindings for the SDL library
 media-libs/exempi 2.4.5-r1: Port of the Adobe XMP SDK to work on UNIX
-media-libs/exiftool 11.76 11.80 11.81 11.84: Read and write meta information in image, audio and video files
+media-libs/exiftool 11.80 11.84 11.85: Read and write meta information in image, audio and video files
 media-libs/faac 1.29.9.2: Free MPEG-4 audio codecs by AudioCoding.com
 media-libs/faad2 2.8.8 2.9.0: AAC audio decoding library
 media-libs/fdk-aac 2.0.0 2.0.1: Fraunhofer AAC codec library
@@ -13448,7 +13448,7 @@ media-plugins/vdr-ffnetdev 0.1.2: VDR Plugin: Output device which offers OSD via
 media-plugins/vdr-filebrowser 0.2.1: VDR plugin: file manager plugin for moving or renaming files in VDR
 media-plugins/vdr-freecell 0.0.2-r3 0.0.2-r4: VDR plugin: play 'Freecell' on the On Screen Display
 media-plugins/vdr-fritzbox 1.5.3-r1: VDR Plugin: Inform about incoming phone-calls and use the fritz!box phonebook
-media-plugins/vdr-graphlcd 1.0.0 1.0.1: VDR Plugin: support output on Graphical LCD
+media-plugins/vdr-graphlcd 1.0.1: VDR Plugin: support output on Graphical LCD
 media-plugins/vdr-imonlcd 1.0.2: VDR Plugin: shows information about the current state of VDR on iMON LCD
 media-plugins/vdr-infosatepg 0.0.12: VDR Plugin: Reads the contents of infosat and writes the data into the EPG
 media-plugins/vdr-iptv 2.2.1-r1 2.4.0: VDR plugin: Add a logical device capable of receiving IPTV
@@ -13757,7 +13757,7 @@ media-sound/mpfc 1.3.8.1-r2: Music Player For Console
 media-sound/mpg123 1.25.10-r1 1.25.12 1.25.13: a realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mpg321 0.3.2: A realtime MPEG 1.0/2.0/2.5 audio player for layers 1, 2 and 3
 media-sound/mplay 0.80: A Curses front-end for mplayer
-media-sound/mps-youtube 0.2.7.1 0.2.8 9999: Terminal-based YouTube player and downloader
+media-sound/mps-youtube 0.2.8-r1 9999: Terminal-based YouTube player and downloader
 media-sound/mt-daapd 0.2.4.2: A multi-threaded implementation of Apple's DAAP server
 media-sound/multimux 0.2.5.2: combines up to 8 audio mono wave ch. into one big multi ch. wave file
 media-sound/mumble 1.3.0 9999: Mumble is an open source, low-latency, high quality voice chat software
@@ -19050,7 +19050,7 @@ x11-wm/echinus 0.4.9: A window manager for X in the spirit of dwm
 x11-wm/enlightenment 0.22.4-r1 0.23.1: Enlightenment window manager
 x11-wm/evilwm 1.0.1-r1 1.1.1: A minimalist, no frills window manager for X
 x11-wm/fluxbox 1.3.7-r4: X11 window manager featuring tabs and an iconbar
-x11-wm/fvwm 2.6.5-r3 2.6.8-r2: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
+x11-wm/fvwm 2.6.5-r3 2.6.8-r2 2.6.9: An extremely powerful ICCCM-compliant multiple virtual desktop window manager
 x11-wm/goomwwm 1.0.0 1.0.0-r1 9999: Get out of my way, Window Manager!
 x11-wm/herbstluftwm 0.7.2-r1 9999: A manual tiling window manager for X
 x11-wm/i3 4.14-r1 4.15-r1 4.16-r1 4.16.1-r1 4.17.1-r1 9999: An improved dynamic tiling window manager
