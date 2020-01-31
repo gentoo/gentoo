@@ -2,26 +2,31 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools desktop mercurial toolchain-funcs
+inherit desktop multilib toolchain-funcs
 
 DESCRIPTION="Lean FLTK based web browser"
 HOMEPAGE="https://www.dillo.org/"
-SRC_URI="mirror://gentoo/${PN}.png"
-EHG_REPO_URI="https://hg.dillo.org/dillo"
+SRC_URI="
+	https://www.dillo.org/download/${P}.tar.bz2
+	mirror://gentoo/${PN}.png
+"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE="doc +gif ipv6 +jpeg +png ssl"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="doc +gif ipv6 +jpeg libressl +png ssl"
 
 RDEPEND="
 	>=x11-libs/fltk-1.3
 	sys-libs/zlib
 	jpeg? ( virtual/jpeg:0 )
 	png? ( >=media-libs/libpng-1.2:0 )
-	ssl? ( net-libs/mbedtls:= )
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl )
+	)
 "
-DEPEND="
+BDEPEND="
 	${RDEPEND}
 	doc? ( app-doc/doxygen )
 "
@@ -30,11 +35,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.0.5-fno-common.patch
 )
 DOCS="AUTHORS ChangeLog README NEWS doc/*.txt doc/README"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	econf  \
@@ -54,6 +54,7 @@ src_compile() {
 }
 
 src_install() {
+	dodir /etc
 	default
 
 	use doc && dodoc -r html
