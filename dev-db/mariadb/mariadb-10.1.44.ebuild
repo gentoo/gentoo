@@ -243,6 +243,9 @@ src_prepare() {
 	sed -i -e 's/ build_lzma//' -e 's/ build_snappy//' "${S%/}/storage/tokudb/PerconaFT/ft/CMakeLists.txt" || die
 	sed -i -e 's/add_dependencies\(tokuportability_static_conv build_jemalloc\)//' "${S%/}/storage/tokudb/PerconaFT/portability/CMakeLists.txt" || die
 
+	# Fix -fno-common error
+	sed -i -e '/^datasink_t datasink_buffer;$/d' extra/mariabackup/xbstream.c || die
+
 	local plugin
 	local server_plugins=( handler_socket auth_socket feedback metadata_lock_info
 				 locale_info qc_info server_audit semisync sql_errlog )
