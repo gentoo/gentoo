@@ -1,0 +1,12 @@
+diff -Naru a/build/cmake/Modules/FindMySQLCppConn.cmake b/build/cmake/Modules/FindMySQLCppConn.cmake
+--- a/build/cmake/Modules/FindMySQLCppConn.cmake	2019-12-18 13:31:34.520496484 +0100
++++ b/build/cmake/Modules/FindMySQLCppConn.cmake	2019-12-18 13:32:32.590496631 +0100
+@@ -27,7 +27,7 @@
+   set(MySQLCppConn_FIND_QUIETLY TRUE)
+ endif ()
+ 
+-find_path(MySQLCppConn_INCLUDE_DIR NAMES mysql_connection.h PATHS /usr/include /usr/local/include)
++find_path(MySQLCppConn_INCLUDE_DIR NAMES mysql_connection.h PATHS /usr/include /usr/include/jdbc /usr/local/include /usr/local/include/jdbc)
+ 
+ SET(MySQLCppConn_NAMES mysqlcppconn)
+ 
