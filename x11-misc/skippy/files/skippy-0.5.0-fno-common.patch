@@ -1,0 +1,60 @@
+--- a/wm.h
++++ b/wm.h
+@@ -20,7 +20,7 @@
+ #ifndef SKIPPY_WM_H
+ #define SKIPPY_WM_H
+ 
+-Atom
++extern Atom
+ 	/* Generic atoms */
+ 	XA_WM_STATE,
+ 	WM_CLIENT_LEADER,
+--- a/wm.c
++++ b/wm.c
+@@ -43,6 +43,46 @@
+ #define WIN_STATE_FIXED_POSITION  (1<<8) /*window is fixed in position even*/
+ #define WIN_STATE_ARRANGE_IGNORE  (1<<9) /*ignore for auto arranging*/
+ 
++Atom
++	/* Generic atoms */
++	XA_WM_STATE,
++	WM_CLIENT_LEADER,
++	XA_UTF8_STRING,
++	
++	/* Root pixmap / wallpaper atoms */
++	_XROOTPMAP_ID,
++	ESETROOT_PMAP_ID,
++	
++	/* NetWM atoms */
++	_NET_SUPPORTING_WM_CHECK,
++	_NET_SUPPORTED,
++	_NET_NUMBER_OF_DESKTOPS,
++	_NET_CLIENT_LIST,
++	_NET_CLIENT_LIST_STACKING,
++	_NET_CURRENT_DESKTOP,
++	_NET_WM_DESKTOP,
++	_NET_WM_STATE,
++	_NET_WM_STATE_HIDDEN,
++	_NET_WM_STATE_SKIP_TASKBAR,
++	_NET_WM_STATE_SKIP_PAGER,
++	_NET_WM_STATE_FULLSCREEN,
++	_NET_WM_STATE_SHADED,
++	_NET_WM_STATE_ABOVE,
++	_NET_WM_STATE_STICKY,
++	_NET_WM_WINDOW_TYPE,
++	_NET_WM_WINDOW_TYPE_DESKTOP,
++	_NET_WM_WINDOW_TYPE_DOCK,
++	_NET_WM_VISIBLE_NAME,
++	_NET_WM_NAME,
++	
++	/* Old gnome atoms */
++	_WIN_SUPPORTING_WM_CHECK,
++	_WIN_WORKSPACE,
++	_WIN_WORKSPACE_COUNT,
++	_WIN_PROTOCOLS,
++	_WIN_CLIENT_LIST,
++	_WIN_STATE,
++	_WIN_HINTS;
+ 
+ static int WM_PERSONALITY = WM_PERSONALITY_NETWM,
+            NETWM_HAS_FULLSCREEN = 0,
