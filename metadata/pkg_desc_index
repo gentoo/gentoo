@@ -5400,7 +5400,7 @@ dev-ml/jbuilder 1.0_beta14: A composable build system for OCaml
 dev-ml/js_of_ocaml 2.8.4-r2 3.0.0 9999: A compiler from OCaml bytecode to javascript
 dev-ml/jsonm 1.0.1: Non-blocking streaming JSON codec for OCaml
 dev-ml/lablgl 1.05-r1: Objective CAML interface for OpenGL
-dev-ml/lablgtk 2.18.5 2.18.8: Objective CAML interface for Gtk+2
+dev-ml/lablgtk 2.18.5 2.18.8-r1: Objective CAML interface for Gtk+2
 dev-ml/labltk 8.06.2 8.06.7: OCaml interface to the Tcl/Tk GUI framework
 dev-ml/llvm-ocaml 7.1.0 8.0.1 9.0.1 10.0.0_rc1 10.0.0.9999 11.0.0.9999: OCaml bindings for LLVM
 dev-ml/logs 0.6.2: Logging infrastructure for OCaml
@@ -10576,7 +10576,7 @@ dev-util/hxd 0.70.02-r2: Binary to hexadecimal converter
 dev-util/hxtools 20180301 20190428: A collection of tools and scripts
 dev-util/icemon 3.1.0: Monitor program for use with Icecream compile clusters based on KDE Frameworks
 dev-util/icmake 9.02.09 9.03.01: Hybrid between a make utility and a shell scripting language
-dev-util/idea-community 2019.3.2.193.6015.39 2019.3.193.5233.102-r2: A complete toolset for web, mobile and enterprise development
+dev-util/idea-community 2019.3.2.193.6015.39: A complete toolset for web, mobile and enterprise development
 dev-util/ignition-cmake 0.2.0 0.4.0: CMake modules to be used by the Ignition projects.
 dev-util/imediff2 1.1.2-r5: An interactive, user friendly 2-way merge tool in text mode
 dev-util/include-what-you-use 7.0 8.0 9.0: Find unused include directives in C/C++ programs
@@ -16096,7 +16096,7 @@ sci-geosciences/viking 1.6.2-r2 1.7: GPS data editor and analyzer
 sci-geosciences/xtide 2.15.1: XTide provides tide and current predictions in a wide variety of formats
 sci-libs/Fiona 1.5.1 1.7.6 9999: OGR's neat, nimble, no-nonsense API
 sci-libs/Rtree 0.8.3_p20180802: R-Tree spatial index for Python GIS
-sci-libs/Shapely 1.5.17-r1 1.6.4_p2-r1: Geometric objects, predicates, and operations
+sci-libs/Shapely 1.6.4_p2-r1: Geometric objects, predicates, and operations
 sci-libs/ViSP 3.2.0-r2: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/adolc 2.4.1 2.6.3-r1 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
