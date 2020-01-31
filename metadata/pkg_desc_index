@@ -10498,7 +10498,7 @@ dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to suppo
 dev-util/d-feet 0.3.14: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0: Run executables under a new DBus session for testing
 dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
-dev-util/debhelper 9.20160814 12.7.2 12.7.3 12.8: Collection of programs that can be used to automate common tasks in debian/rules
+dev-util/debhelper 9.20160814 12.8 12.9: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.115 1.0.116: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.15.0: Stand-alone debugedit from RPM
 dev-util/dejagnu 1.6: Framework for testing other programs
@@ -18064,7 +18064,7 @@ www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and run
 www-apps/wordpress 5.3.1 5.3.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
 www-client/chromium 79.0.3945.130 80.0.3987.78 81.0.4040.5: Open-source version of Google Chrome web browser
-www-client/dillo 3.0.5 3.0.5-r1 9999: Lean FLTK based web browser
+www-client/dillo 3.0.5 3.0.5-r1 3.0.5-r2 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
