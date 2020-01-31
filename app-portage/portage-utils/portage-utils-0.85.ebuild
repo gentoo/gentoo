@@ -60,13 +60,6 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	default
-
-	# fix #705636, basically apply 2f917fee
-	sed -i -e '/free(name);/d' libq/tree.c || die
-}
-
 src_configure() {
 	econf \
 		--disable-maintainer-mode \
