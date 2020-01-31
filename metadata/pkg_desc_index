@@ -15119,7 +15119,7 @@ net-misc/ncman 0.0.1_p20190327 9999: An ncurses UI for connman, forked from conn
 net-misc/ncp 1.2.4-r1: Utility for copying files in a LAN (npoll, npush)
 net-misc/ndisc6 1.0.3: Recursive DNS Servers discovery Daemon (rdnssd) for IPv6
 net-misc/ndppd 0.2.5: Proxies NDP messages between interfaces
-net-misc/nemesis 1.4-r1: A commandline-based, portable human IP stack for UNIX/Linux
+net-misc/nemesis 1.4-r1 1.4-r2: A commandline-based, portable human IP stack for UNIX/Linux
 net-misc/netdate 1.2-r1: utility to synchronize the time with ntp-servers
 net-misc/netifrc 0.2.2 0.2.3 0.2.4 0.3.0 0.3.1 0.4.0 0.4.0-r1 0.5.0 0.5.1 0.6.0 0.6.1 0.7.1 9999: Gentoo Network Interface Management Scripts
 net-misc/netkit-bootparamd 0.17-r4: Netkit - bootparamd
@@ -16359,6 +16359,7 @@ sci-mathematics/axiom 200805: Axiom is a general purpose Computer Algebra system
 sci-mathematics/bertini 1.4: Software for Numerical Algebraic Geometry
 sci-mathematics/calc 2.12.4.13-r1 2.12.5.4: Arbitrary precision C-like arithmetic system
 sci-mathematics/cgal 4.11.3: C++ library for geometric algorithms and data structures
+sci-mathematics/cliquer 1.21: C routines for finding cliques in an arbitrary weighted graph
 sci-mathematics/coq 8.6.1-r1 8.9.1-r1 8.9.1-r2: Proof assistant written in O'Caml
 sci-mathematics/cvc4 1.6 1.7: automatic theorem prover for satisfiability modulo theories (SMT) problems
 sci-mathematics/dataplot 20090821 20131220: Program for scientific visualization and statistical analyis
