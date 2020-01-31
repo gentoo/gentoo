@@ -252,7 +252,7 @@ enewgroup() {
 
 	# handle gid
 	local egid=$1; shift
-	if [[ ! -z ${egid} ]] ; then
+	if [[ -n ${egid} && ${egid} != -1 ]] ; then
 		if [[ ${egid} -gt 0 ]] ; then
 			if [[ -n $(egetent group ${egid}) ]] ; then
 				[[ -n ${force_gid} ]] && die "${FUNCNAME}: GID ${egid} already taken"
