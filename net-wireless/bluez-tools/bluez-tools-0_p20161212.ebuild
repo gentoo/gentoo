@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools eutils
 
@@ -23,9 +23,11 @@ DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README )
 
+PATCHES=( "${FILESDIR}/${P}-gcc-10.patch" )
+
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare () {
+	default
 	eautoreconf
-	default_src_prepare
 }
