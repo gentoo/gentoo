@@ -26,11 +26,10 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fileio.patch
 	"${FILESDIR}"/${P}-libnet-1.0.patch
 	"${FILESDIR}"/${P}-prototcp.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_prepare() {
 	default
-for i in src/*.[ch]; do cp -av $i $i.orig || die; done
-	eapply "${FILESDIR}"/${P}-fno-common.patch
 	eautoreconf
 }
