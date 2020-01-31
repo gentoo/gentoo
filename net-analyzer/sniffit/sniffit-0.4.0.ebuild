@@ -19,6 +19,7 @@ DEPEND="
 	${RDEPEND}
 "
 PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.0-fno-common.patch
 	"${FILESDIR}"/${PN}-0.4.0-tinfo.patch
 )
 S=${WORKDIR}/${PN}-${P}
