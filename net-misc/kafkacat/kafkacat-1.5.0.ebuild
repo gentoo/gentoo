@@ -12,11 +12,9 @@ SRC_URI="https://github.com/edenhill/kafkacat/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="avro +json"
+IUSE="+json"
 
 DEPEND=">=dev-libs/librdkafka-0.9.4
-	avro? (
-	)
 	json? ( dev-libs/yajl )"
 RDEPEND="${DEPEND}"
 
