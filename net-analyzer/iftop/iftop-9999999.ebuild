@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,6 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-1.0_pre4-configure.ac.patch
 	"${FILESDIR}"/${PN}-1.0_pre4-Makefile.am.patch
 	"${FILESDIR}"/${PN}-1.0_pre4-fix-MAC-formatting.patch
+	"${FILESDIR}"/${PN}-1.0_pre4-fno-common.patch
 )
 
 src_prepare() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,14 +12,18 @@ SRC_URI="https://github.com/edenhill/kafkacat/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+json"
+IUSE="+avro +json"
 
 DEPEND=">=dev-libs/librdkafka-0.9.4
+	avro? (
+		dev-libs/avro-c
+		dev-libs/libserdes
+	)
 	json? ( dev-libs/yajl )"
 RDEPEND="${DEPEND}"
 
 src_configure() {
-	econf $(use_enable json) --cc=$(tc-getCC)
+	econf $(use_enable avro) $(use_enable json) --cc=$(tc-getCC)
 }
 
 src_install() {
