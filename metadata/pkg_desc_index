@@ -2419,7 +2419,7 @@ app-portage/hackport 0.5.6 0.6.2 0.6.3 9999: Hackage and Portage integration too
 app-portage/java-ebuilder 0.4.1 9999: Java team tool for semi-automatic creation of ebuilds from pom.xml
 app-portage/kuroo 0.90.5_p20180410 9999: Graphical Portage frontend based on KDE Frameworks
 app-portage/layman 2.4.2-r1 2.4.2-r2 9999: Tool to manage Gentoo overlays
-app-portage/metagen 0.6.2-r1 0.6.3 0.6.4.2 0.6.5 0.6.5-r1 0.6.6-r1 0.7.0 9999: metadata.xml generator for ebuilds
+app-portage/metagen 0.6.2-r1 0.6.3 0.6.4.2 0.6.5 0.6.5-r1 0.6.6-r1 0.7.0 0.7.1 9999: metadata.xml generator for ebuilds
 app-portage/mgorny-dev-scripts 3 4: Handy scripts for ebuild development and more
 app-portage/mirrorselect 2.2.3 2.2.4-r1 2.2.6-r1 9999: Tool to help select distfiles mirrors for Gentoo
 app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-package basis
@@ -16133,7 +16133,7 @@ sci-libs/clapack 3.2.1-r8: f2c'ed version of LAPACK
 sci-libs/clashscore-db 3.17: Clashscore-db for clashlist
 sci-libs/clblas 2.10: Library containing BLAS routines for OpenCL
 sci-libs/clblast 0.10.0: Tuned OpenCL BLAS
-sci-libs/cln 1.3.3 1.3.4: Class library (C++) for numbers
+sci-libs/cln 1.3.3 1.3.4 1.3.6: Class library (C++) for numbers
 sci-libs/cminpack 1.3.5: C implementation of the MINPACK nonlinear optimization library
 sci-libs/cmpfit 1.2-r1: MINPACK-1 Least Squares Fitting Library in C
 sci-libs/coinhsl 2014.01.10 2015.06.23: HSL mathematical software library for IPOPT
@@ -16379,7 +16379,7 @@ sci-mathematics/geomview 1.9.5-r1: Interactive Geometry Viewer
 sci-mathematics/gfan 0.5-r1: Compute Groebner fans and tropical varities
 sci-mathematics/ggnfs 0.77.1-r2: A suite of algorithms to help factoring large integers
 sci-mathematics/gimps 29.8.6: The Great Internet Mersenne Prime Search
-sci-mathematics/ginac 1.6.6 1.7.2 1.7.4: C++ library and tools for symbolic calculations
+sci-mathematics/ginac 1.6.6 1.7.2 1.7.4 1.7.8: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 6.4.4-r1 7.0.4-r1 9999: Elliptic Curve Method for Integer Factorization
@@ -16395,7 +16395,7 @@ sci-mathematics/maxima 5.38.1 5.42.1 5.42.2 5.43.2: Free computer algebra enviro
 sci-mathematics/minisat 2.2.0-r4 2.2.0_p20130925-r1: Small yet efficient SAT solver with reference paper
 sci-mathematics/msieve 1.51-r1 1.53-r1 9999: A C library implementing a suite of algorithms to factor large integers
 sci-mathematics/nauty 2.5.9 2.6.7: Computing automorphism groups of graphs and digraphs
-sci-mathematics/nestedsums 1.5.1: A GiNaC-based library for symbolic expansion of certain transcendental functions
+sci-mathematics/nestedsums 1.5.2: A GiNaC-based library for symbolic expansion of certain transcendental functions
 sci-mathematics/normaliz 2.12.2 3.1.1 3.1.3 3.3.0: Tool for computations in affine monoids and more
 sci-mathematics/num-utils 0.5-r1: A set of programs for dealing with numbers from the command line
 sci-mathematics/octave 4.2.2 4.4.0 4.4.1 5.1.0: High-level interactive language for numerical computations
