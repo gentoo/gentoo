@@ -9,7 +9,7 @@ inherit distutils-r1
 
 DESCRIPTION="A VPN command-line tool from protonvpn - python rewrite"
 HOMEPAGE="https://protonvpn.com"
-SRC_URI="https://github.com/ProtonVPN/${PN}-ng/archive/v${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/ProtonVPN/${PN}-ng/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 KEYWORDS="~amd64"
