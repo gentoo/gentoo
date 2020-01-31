@@ -6,8 +6,9 @@
 		<name>Sebastian Pipping</name>
 	</maintainer>
 	<longdescription>
-		The spnavcfg is the GTK-based configuration GUI for
+		spnavcfg is a GTK-based configuration GUI for
 		<pkg>app-misc/spacenavd</pkg>.
+		It allows convenient configuration of a space navigator device.
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">spacenav</remote-id>
