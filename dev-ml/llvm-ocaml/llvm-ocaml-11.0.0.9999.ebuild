@@ -12,7 +12,7 @@ LLVM_COMPONENTS=( llvm )
 llvm.org_set_globals
 
 # Keep in sync with sys-devel/llvm
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR )
+ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR VE )
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
 	"${ALL_LLVM_EXPERIMENTAL_TARGETS[@]}" )
