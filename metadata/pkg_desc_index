@@ -4808,6 +4808,7 @@ dev-libs/argtable 2.13-r1: An ANSI C library for parsing GNU-style command-line 
 dev-libs/atcore 1.0.0: API to manage the serial connection between the computer and 3D Printers
 dev-libs/atf 0.21-r2: Libraries to write tests in C, C++ and shell
 dev-libs/atk 2.32.0 2.34.1: GTK+ & GNOME Accessibility Toolkit
+dev-libs/avro-c 1.9.1: c library for the apache avro data serialization system
 dev-libs/aws-c-common 0.4.11: Core c99 package for AWS SDK for C
 dev-libs/aws-c-event-stream 0.1.3: C99 implementation of the vnd.amazon.eventstream content-type
 dev-libs/aws-checksums 0.1.3: Cross-Platform HW accelerated CRC32c and CRC32 with software fallbacks
@@ -14439,7 +14440,7 @@ net-dns/ddclient 3.9.0-r2 3.9.0-r3: Perl client used to update dynamic DNS entri
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r2: A caching DNS proxy server
 net-dns/dnscap 1.10.2 1.10.3: Network capture utility designed specifically for DNS traffic
-net-dns/dnscrypt-proxy 2.0.33 2.0.34 2.0.35 2.0.36 2.0.38 9999: A flexible DNS proxy, with support for encrypted DNS protocols
+net-dns/dnscrypt-proxy 2.0.33 2.0.34 2.0.35 2.0.36 2.0.39 9999: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsdist 1.3.3-r1 1.4.0: A highly DNS-, DoS- and abuse-aware loadbalancer
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
 net-dns/dnsimple-dyndns 0.1: Dynamic DNS implementation, that relies on DNSimple.com

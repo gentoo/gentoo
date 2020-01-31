@@ -10,6 +10,6 @@ LICENSE=Apache-2.0 BSD ISC MIT MPL-2.0
 RDEPEND=acct-group/dnscrypt-proxy acct-user/dnscrypt-proxy
 RESTRICT=strip
 SLOT=0
-SRC_URI=https://github.com/jedisct1/dnscrypt-proxy/archive/2.0.38.tar.gz -> dnscrypt-proxy-2.0.38.tar.gz
+SRC_URI=https://github.com/jedisct1/dnscrypt-proxy/archive/2.0.39.tar.gz -> dnscrypt-proxy-2.0.39.tar.gz
 _eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	go-module	c1d483897ed4807f97f20fb3b5a3cb7b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=6eb18f3e14d7e3b1eab505d1e6be7fae
