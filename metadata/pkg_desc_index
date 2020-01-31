@@ -7219,7 +7219,7 @@ dev-php/PEAR-XML_Serializer 0.21.0-r1: Swiss-army knife for reading and writing 
 dev-php/PEAR-XML_Util 1.4.2 1.4.3 1.4.4: XML utility class
 dev-php/PHPMailer 5.2.27 6.0.7 6.1.2 6.1.3 6.1.4: Full-featured email creation and transfer class for PHP
 dev-php/PHP_CodeCoverage 4.0.7-r2 7.0.10-r1: Collection, processing, and rendering for PHP code coverage
-dev-php/PHP_CodeSniffer 3.2.1 3.4.2: Detect violations of PHP code standards
+dev-php/PHP_CodeSniffer 3.5.4: Detect violations of PHP code standards
 dev-php/PHP_Timer 1.0.5 1.0.9 2.1.2-r1: Utility class for timing
 dev-php/PHP_TokenStream 1.4.11-r1 3.1.1: Wrapper around PHP's tokenizer extension
 dev-php/SabreAMF 1.5.0: SabreAMF is a Flash Remoting server and client for PHP
@@ -12214,7 +12214,7 @@ kde-plasma/milou 5.17.4 5.17.5: Dedicated search application built on top of Bal
 kde-plasma/oxygen 5.17.4 5.17.5: Oxygen visual style for the Plasma desktop
 kde-plasma/plasma-browser-integration 5.17.4 5.17.5: Integrate Chrome/Firefox better into Plasma through browser extensions
 kde-plasma/plasma-desktop 5.17.4-r2 5.17.5-r1: KDE Plasma desktop
-kde-plasma/plasma-integration 5.17.4-r1 5.17.5: Qt Platform Theme integration plugins for the Plasma workspaces
+kde-plasma/plasma-integration 5.17.4-r1 5.17.5-r1: Qt Platform Theme integration plugins for the Plasma workspaces
 kde-plasma/plasma-meta 5.17.4 5.17.5: Merge this to pull in all Plasma 5 packages
 kde-plasma/plasma-nm 5.17.4 5.17.5: KDE Plasma applet for NetworkManager
 kde-plasma/plasma-pa 5.17.4 5.17.5: Plasma applet for audio volume management using PulseAudio
@@ -14854,7 +14854,7 @@ net-libs/tox 0.2.9-r1 0.2.10 9999: Encrypted P2P, messaging, and audio/video cal
 net-libs/udns 0.4: Async-capable DNS stub resolver library
 net-libs/uhttpmock 0.5.1: HTTP web service mocking library
 net-libs/wandio 1.0.5 4.0.0 4.1.2 4.2.0 4.2.1: C library for simple and efficient file IO
-net-libs/webkit-gtk 2.24.4 2.26.2: Open source web browser engine
+net-libs/webkit-gtk 2.24.4 2.26.2 2.26.3: Open source web browser engine
 net-libs/wvstreams 4.6.1_p14-r1 99999: A network programming library in C++
 net-libs/xrootd 4.8.3 4.9.0 4.10.1 4.11.1: Extended ROOT remote file server
 net-libs/zeromq 2.2.0 3.2.5 4.3.2: A brokerless kernel
