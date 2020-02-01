@@ -4734,7 +4734,7 @@ dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: Lisaac is an object prototype based language
 dev-lang/logtalk 3.11.2 3.18.0: Open source object-oriented logic programming language
 dev-lang/lua 5.1.5-r4 5.1.5-r5 5.1.5-r100 5.1.5-r101 5.1.5-r102 5.1.5-r103 5.2.3 5.2.3-r1 5.2.3-r2 5.2.3-r3 5.2.4 5.2.4-r1 5.2.4-r2 5.3.3 5.3.3-r1 5.3.3-r2 5.3.5 5.3.5-r1 5.3.5-r2: A powerful light-weight programming language designed for extending applications
-dev-lang/luajit 2.0.2 2.0.3 2.0.3-r1 2.0.4 2.0.5 2.0.5-r1 2.1.0_beta3: Just-In-Time Compiler for the Lua programming language
+dev-lang/luajit 2.0.5-r1 2.1.0_beta3: Just-In-Time Compiler for the Lua programming language
 dev-lang/maude 2.7: High-level specification language for equational and logic programming
 dev-lang/mercury 14.01.1-r1: Mercury is a modern general-purpose logic/functional programming language
 dev-lang/mercury-extras 14.01.1: Additional libraries and tools that are not part of the Mercury standard library
@@ -13362,7 +13362,7 @@ media-plugins/kodi-game-libretro-snes9x 1.60.0.10 9999: Snes9x GameClient for Ko
 media-plugins/kodi-game-libretro-twentyfortyeight 1.0.0.106 1.0.0.107 1.0.0.108 1.0.0.109 1.0.0.110 9999: 2048 for Kodi
 media-plugins/kodi-inputstream-adaptive 2.4.2 9999: Kodi's Adaptive inputstream addon
 media-plugins/kodi-inputstream-rtmp 2.0.7 2.0.8 9999: Kodi's RTMP inputstream addon
-media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 9999: Libretro compatibility layer for the Kodi Game API
+media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 1.4.9 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
 media-plugins/kodi-pvr-argustv 3.5.4 9999: Kodi's ARGUS TV client addon
 media-plugins/kodi-pvr-demo 3.6.1 9999: Demo PVR for Kodi
@@ -13390,14 +13390,14 @@ media-plugins/kodi-screensaver-pyro 2.0.0 3.0.0 9999: Pyro screensaver for Kodi
 media-plugins/kodi-screensaver-rsxs 9999: RSXS screensaver for Kodi
 media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 1.0.6 9999: Libarchive VFS add-on for Kodi
 media-plugins/kodi-vfs-rar 2.0.5 2.0.6 2.0.7 2.0.8 9999: RAR VFS addon for Kodi
-media-plugins/kodi-vfs-sacd 1.0.2 9999: SACD VFS addon for Kodi
+media-plugins/kodi-vfs-sacd 1.0.3 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 9999: SFTP VFS addon for Kodi
 media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 9999: Fische visualizer for Kodi
 media-plugins/kodi-visualization-goom 2.1.0 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
 media-plugins/kodi-visualization-projectm 2.3.4 9999: ProjectM visualizer for Kodi
 media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 1.2.2 1.2.3 9999: Shadertoy visualizer for Kodi
-media-plugins/kodi-visualization-spectrum 1.1.1 2.0.3 2.0.4 3.0.0 3.0.1 3.0.2 9999: Spectrum visualizer for Kodi
+media-plugins/kodi-visualization-spectrum 3.0.3 9999: Spectrum visualizer for Kodi
 media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 2.0.2 9999: StarBurst visualizer for Kodi
 media-plugins/kodi-visualization-waveform 2.0.1 3.0.2 3.1.0 3.1.1 9999: Waveform visualizer for Kodi
 media-plugins/ladspa-bs2b 0.9.1-r1: LADSPA plugin for bs2b headphone filter
