@@ -43,6 +43,7 @@ PATCHES=(
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS=OFF # bug 705338
 		-DYAB_NETWORK=ON
 		-DYAB_USE_CXX=ON
 		-DYAB_USE_SCSP2=OFF # breaks build
