@@ -23,7 +23,7 @@ RESTRICT="test"
 # zlib is some strange auto-dep from simgear
 COMMON_DEPEND="
 	dev-db/sqlite:3
-	<dev-games/openscenegraph-3.5.6:=[jpeg,png]
+	dev-games/openscenegraph[jpeg,png]
 	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
 	>=media-libs/speex-1.2.0:0
@@ -76,6 +76,7 @@ pkg_pretend() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_AUTOTESTING=OFF
+		-DENABLE_COMPOSITOR=OFF
 		-DENABLE_FGCOM=$(usex utils)
 		-DENABLE_FGELEV=$(usex utils)
 		-DENABLE_FGJS=$(usex utils)
@@ -114,6 +115,9 @@ src_configure() {
 		-DUSE_DBUS=$(usex dbus)
 		-DWITH_FGPANEL=$(usex utils)
 	)
+	if use cpu_flags_x86_sse2; then
+		append-flags -msse2 -mfpmath=sse -ftree-vectorize -ftree-slp-vectorize
+	fi
 	if use gdal && use utils; then
 		mycmakeargs+=(-DENABLE_DEMCONVERT=ON)
 	else

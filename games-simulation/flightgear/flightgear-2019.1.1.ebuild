@@ -12,7 +12,7 @@ SRC_URI="mirror://sourceforge/flightgear/${P}.tar.bz2"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="dbus debug examples gdal openmp qt5 +udev +utils vim-syntax"
+IUSE="cpu_flags_x86_sse2 dbus debug examples gdal openmp qt5 +udev +utils vim-syntax"
 
 # Needs --fg-root with path to flightgear-data passed to test runner passed,
 # not really worth patching
@@ -21,7 +21,7 @@ RESTRICT="test"
 # zlib is some strange auto-dep from simgear
 COMMON_DEPEND="
 	dev-db/sqlite:3
-	<dev-games/openscenegraph-3.5.6:=[jpeg,png]
+	dev-games/openscenegraph[jpeg,png]
 	~dev-games/simgear-${PV}[gdal=]
 	media-libs/openal
 	>=media-libs/speex-1.2.0:0
@@ -53,6 +53,7 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/boost-1.44
 	>=media-libs/plib-1.8.5
+	qt5? ( >=dev-qt/linguist-tools-5.7.1:5 )
 	utils? (
 		x11-libs/libXi
 		x11-libs/libXmu
@@ -61,6 +62,8 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	~games-simulation/${PN}-data-${PV}
 "
+
+PATCHES=("${FILESDIR}/${PN}-2018.3.2-cmake.patch")
 
 DOCS=(AUTHORS ChangeLog NEWS README Thanks)
 
@@ -71,6 +74,7 @@ pkg_pretend() {
 src_configure() {
 	local mycmakeargs=(
 		-DENABLE_AUTOTESTING=OFF
+		-DENABLE_COMPOSITOR=OFF
 		-DENABLE_FGCOM=$(usex utils)
 		-DENABLE_FGELEV=$(usex utils)
 		-DENABLE_FGJS=$(usex utils)
@@ -109,6 +113,9 @@ src_configure() {
 		-DUSE_DBUS=$(usex dbus)
 		-DWITH_FGPANEL=$(usex utils)
 	)
+	if use cpu_flags_x86_sse2; then
+		append-flags -msse2 -mfpmath=sse -ftree-vectorize -ftree-slp-vectorize
+	fi
 	if use gdal && use utils; then
 		mycmakeargs+=(-DENABLE_DEMCONVERT=ON)
 	else
