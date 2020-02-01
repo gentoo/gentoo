@@ -13,8 +13,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 RDEPEND=">=sci-mathematics/ginac-1.7"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 src_compile() {
 	default
@@ -29,11 +29,7 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install
-	rm -f "${D}"usr/lib/*.la
-	dodoc AUTHORS ChangeLog
-
-	if use doc; then
-		dohtml reference/html/*
-	fi
+	use doc && local HTML_DOCS=( reference/html/. )
+	default
+	find "${D}" -name '*.la' -type f -delete || die
 }
