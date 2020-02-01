@@ -44,6 +44,10 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-no_sdl.patch" #707578
+)
+
 src_prepare() {
 	xdg_environment_reset
 	cmake_src_prepare
