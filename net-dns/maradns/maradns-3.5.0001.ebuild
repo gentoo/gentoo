@@ -9,7 +9,7 @@ inherit python-single-r1 systemd toolchain-funcs
 
 DESCRIPTION="A security-aware DNS server"
 HOMEPAGE="https://maradns.samiam.org/"
-SRC_URI="https://maradns.samiam.org/download/${PV%.*}/${PV}/${P}.tar.bz2"
+SRC_URI="https://maradns.samiam.org/download/${PV%.*}/${PV}/${P}.tar.xz"
 
 # The GPL-2 covers the init script, bug 426018.
 LICENSE="BSD-2 GPL-2"
