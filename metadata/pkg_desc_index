@@ -15023,7 +15023,7 @@ net-misc/dropbear 2017.75 2018.76 2019.78: small SSH 2 client/server designed fo
 net-misc/dropbox 89.3.268-r1 89.4.278: Dropbox daemon (pretends to be GUI-less)
 net-misc/dropbox-cli 1-r1 1.6.0 1.6.0-r1 19: Cli interface for dropbox (python), part of nautilus-dropbox
 net-misc/econnman 1.1: ConnMan User Interface written with EFL & python
-net-misc/efax 0.9a-r4: A simple fax program for single-user systems
+net-misc/efax 0.9a-r4 0.9a_p19_p1: A simple fax program for single-user systems
 net-misc/electron-cash 3.3.6-r1 4.0.2-r1: Lightweight Bitcoin Cash client (BCH fork of Electrum)
 net-misc/electrum 3.3.8: User friendly Bitcoin client
 net-misc/electrum-ltc 3.3.4.1-r1: Litecoin thin client
@@ -18453,7 +18453,7 @@ x11-misc/dzen 0.9.5-r1 0.9.5_p1: A general purpose messaging, notification and m
 x11-misc/e16-keyedit 0.9: Key binding editor for Enlightenment DR16
 x11-misc/e16menuedit2 0.0.3: Menu editor for Enlightenment DR16 written in GTK2
 x11-misc/easystroke 0.6.0-r3: a gesture-recognition application for X11
-x11-misc/efax-gtk 3.2.9 3.2.13: A graphical frontend for the 'efax' application
+x11-misc/efax-gtk 3.2.9 3.2.13 3.2.13-r1: A graphical frontend for the 'efax' application
 x11-misc/evolvotron 0.7.1: Generative art image evolver
 x11-misc/fbdesk 1.4.1: fluxbox-util application that creates and manage icons on your Fluxbox desktop
 x11-misc/fbpager 20090221-r1: A Pager for fluxbox
