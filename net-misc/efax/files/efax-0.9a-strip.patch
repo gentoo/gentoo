@@ -1,0 +1,14 @@
+--- a/Makefile
++++ b/Makefile
+@@ -25,11 +25,9 @@
+ 
+ efax:	efax.o efaxlib.o efaxio.o efaxos.o efaxmsg.o
+ 	$(CC) -o efax $(LDFLAGS) efax.o efaxlib.o efaxio.o efaxos.o efaxmsg.o
+-	strip efax
+ 
+ efix:	efix.o efaxlib.o efaxmsg.o
+ 	$(CC) -o efix $(LDFLAGS) efix.o efaxlib.o efaxmsg.o
+-	strip efix
+ 
+ install:
+ 	cp fax efax efix $(BINDIR)
