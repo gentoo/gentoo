@@ -53,15 +53,14 @@ src_install() {
 	default
 	if use doc; then
 		pushd doc > /dev/null || die "pushd doc failed"
-		insinto /usr/share/doc/${PF}
-		newins tutorial/ginac.pdf tutorial.pdf
-		newins reference/reference.pdf reference.pdf
-		insinto /usr/share/doc/${PF}/html/reference
-		doins -r reference/html_files/*
-		insinto /usr/share/doc/${PF}/html
-		newins tutorial/ginac.html tutorial.html
-		insinto /usr/share/doc/${PF}/examples
-		doins "${S}"/doc/examples/*.cpp examples/ginac-examples.*
+		newdoc tutorial/ginac.pdf tutorial.pdf
+		newdoc reference/reference.pdf reference.pdf
+		docinto html/reference
+		dodoc -r reference/html_files/.
+		docinto html
+		newdoc tutorial/ginac.html tutorial.html
+		docinto examples
+		dodoc "${S}"/doc/examples/*.cpp examples/ginac-examples.*
 		popd > /dev/null
 	fi
 }
