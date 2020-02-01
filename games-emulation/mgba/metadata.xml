@@ -6,6 +6,7 @@
     <name>Lars Wendler</name>
   </maintainer>
   <use>
+    <flag name="discord">Enable Discord RPC support</flag>
     <flag name="elf">Enable the use of elf utils via <pkg>dev-libs/elfutils</pkg></flag>
   </use>
   <upstream>
