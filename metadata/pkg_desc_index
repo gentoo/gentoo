@@ -3436,7 +3436,7 @@ dev-games/physfs 3.0.2 9999: Abstraction layer for filesystem and archive access
 dev-games/poker-eval 138.0: A fast C library for evaluating poker hands
 dev-games/ps2-packer 0.4.4: another ELF packer for the PS2
 dev-games/quake4-sdk 1.4.2 1.4.2-r1: Quake4 SDK
-dev-games/simgear 2018.3.1 2018.3.2 9999: Development library for simulation games
+dev-games/simgear 2019.1.1 9999: Development library for simulation games
 dev-games/t4k-common 0.1.1: A library of code shared between tuxmath and tuxtype
 dev-games/tiled 1.2.4 1.2.5 1.3.1: A general purpose tile map editor
 dev-games/wfmath 1.0.2: Worldforge math library
@@ -11535,8 +11535,8 @@ games-simulation/cannonsmash 0.6.6-r1: 3D tabletennis game
 games-simulation/corsix-th 0.62: Open source clone of Theme Hospital
 games-simulation/crashtest 1.1-r1: Educational car crash simulator
 games-simulation/crrcsim 0.9.13: model-airplane flight simulation program
-games-simulation/flightgear 2018.3.1 2018.3.2 9999: Open Source Flight Simulator
-games-simulation/flightgear-data 2018.3.1 2018.3.2 9999: FlightGear data files
+games-simulation/flightgear 2019.1.1 9999: Open Source Flight Simulator
+games-simulation/flightgear-data 2019.1.1 9999: FlightGear data files
 games-simulation/gl117 1.3.2-r1: An action flight simulator
 games-simulation/lincity 1.13.1-r1: city/country simulation game for X and Linux SVGALib
 games-simulation/lincity-ng 2.9_beta: City simulation game
