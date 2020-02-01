@@ -29,8 +29,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-libs/kodi-platform-9999
-	~media-tv/kodi-9999
+	=media-libs/kodi-platform-18*
+	=media-tv/kodi-18*
 	virtual/libiconv
 	"
 RDEPEND="${DEPEND}"
