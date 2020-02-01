@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit linux-info systemd toolchain-funcs udev
+inherit epatch linux-info systemd toolchain-funcs udev
 
 MY_PN='spacenav'
 DESCRIPTION="The spacenavd daemon provides free alternative to the 3dxserv daemon"
@@ -21,6 +21,11 @@ pkg_setup() {
 	CONFIG_CHECK="~INPUT_EVDEV"
 	ERROR_CFG="Your kernel needs INPUT_EVDEV for the spacenavd to work properly"
 	check_extra_config
+}
+
+src_prepare() {
+	epatch "${FILESDIR}"/${PN}-0.7-gcc10.patch
+	default
 }
 
 src_configure() {
