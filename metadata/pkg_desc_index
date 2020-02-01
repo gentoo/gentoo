@@ -334,7 +334,7 @@ app-admin/clustershell 1.7.3: Python framework for efficient cluster administrat
 app-admin/conky 1.10.8-r4 1.10.8-r8 1.11.5: An advanced, highly configurable system monitor for X
 app-admin/conkyforecast 2.24-r1: Conky weather forecast script with support for language files
 app-admin/conserver 8.2.3 8.2.4: Serial Console Manager
-app-admin/consul 1.5.3 1.6.1 1.6.2: A tool for service discovery, monitoring and configuration
+app-admin/consul 1.6.2 1.6.3: A tool for service discovery, monitoring and configuration
 app-admin/consul-replicate 0.2.0: Consul cross-DC KV replication daemon
 app-admin/consul-template 0.23.0 0.24.0: Generic template rendering and notifications with Consul
 app-admin/cpulimit 1.8 2.2 2.4: Limits the CPU usage of a process
@@ -8277,7 +8277,7 @@ dev-python/pikepdf 1.8.3: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 6.2.1 6.2.2 7.0.0: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
-dev-python/pip 9.0.1-r2 19.1 19.3.1-r1 19.3.1-r2: Installs python packages -- replacement for easy_install
+dev-python/pip 9.0.1-r2 19.1 19.3.1-r1 19.3.1-r2 20.0.2: Installs python packages -- replacement for easy_install
 dev-python/pipenv 9.0.0 9.0.0-r1 9.0.0-r2 2018.11.26: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.2.2 1.4.0: Interface Python with pkg-config
