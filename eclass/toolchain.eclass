@@ -445,7 +445,13 @@ toolchain_src_unpack() {
 		git-r3_src_unpack
 	fi
 
-	gcc_quick_unpack
+	if [[ -n ${GCC_A_FAKEIT} ]] ; then
+		eerror "Please migrate from 'GCC_A_FAKEIT' to 'default_src_unpack()'"
+		gcc_quick_unpack
+	else
+		# Just unpack every tarball from SRC_URI
+		default_src_unpack
+	fi
 }
 
 gcc_quick_unpack() {
@@ -470,21 +476,6 @@ gcc_quick_unpack() {
 		else
 			unpack gcc-${GCC_RELEASE_VER}.tar.bz2
 		fi
-	fi
-
-	if [[ -n ${D_VER} ]] && use d ; then
-		pushd "${S}"/gcc > /dev/null
-		unpack gdc-${D_VER}-src.tar.bz2
-		cd ..
-		ebegin "Adding support for the D language"
-		./gcc/d/setup-gcc.sh >& "${T}"/dgcc.log
-		if ! eend $? ; then
-			eerror "The D GCC package failed to apply"
-			eerror "Please include this log file when posting a bug report:"
-			eerror "  ${T}/dgcc.log"
-			die "failed to include the D language"
-		fi
-		popd > /dev/null
 	fi
 
 	[[ -n ${PATCH_VER} ]] && \
@@ -531,6 +522,18 @@ tc_apply_patches() {
 toolchain_src_prepare() {
 	export BRANDING_GCC_PKGVERSION="Gentoo ${GCC_PVR}"
 	cd "${S}"
+
+	if [[ -n ${D_VER} ]] && use d ; then
+		mv "${WORKDIR}"/d gcc/d || die
+		ebegin "Adding support for the D language"
+		./gcc/d/setup-gcc.sh >& "${T}"/dgcc.log
+		if ! eend $? ; then
+			eerror "The D GCC package failed to apply"
+			eerror "Please include this log file when posting a bug report:"
+			eerror "  ${T}/dgcc.log"
+			die "failed to include the D language"
+		fi
+	fi
 
 	do_gcc_gentoo_patches
 	do_gcc_HTB_patches
