@@ -31,5 +31,6 @@ IUSE=""
 DEPEND="
 	=media-libs/kodi-platform-18*
 	=media-tv/kodi-18*
+	virtual/libiconv
 	"
 RDEPEND="${DEPEND}"

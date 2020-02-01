@@ -31,5 +31,6 @@ IUSE=""
 DEPEND="
 	~media-libs/kodi-platform-9999
 	~media-tv/kodi-9999
+	virtual/libiconv
 	"
 RDEPEND="${DEPEND}"
