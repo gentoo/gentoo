@@ -9037,7 +9037,7 @@ dev-python/vulture 0.10: find unused classes, functions and variables in your co
 dev-python/waitress 1.0.2 1.3.1: A pure-Python WSGI server
 dev-python/warlock 1.1.0 1.2.0 1.3.0: Python object model built on JSON schema and JSON patch
 dev-python/watchdog 0.8.3-r2 0.9.0: Python API and shell utilities to monitor file system events
-dev-python/wcwidth 0.1.7-r1 0.1.7-r2: Measures number of Terminal column cells of wide-character codes
+dev-python/wcwidth 0.1.7-r1 0.1.7-r2 0.1.8: Measures number of Terminal column cells of wide-character codes
 dev-python/weakrefmethod 1.0.3: Backport of WeakMethod from Python 3.4 to Python 2.6+
 dev-python/weasyprint 0.41 43: Visual rendering engine for HTML and CSS that can export to PDF
 dev-python/webassets 0.12.1: Asset management for Python web development
@@ -12811,7 +12811,7 @@ media-gfx/sxiv 25 9999: Simple (or small or suckless) X Image Viewer
 media-gfx/symboleditor 2.1.0: Application to create libraries of QPainterPath objects with rendering hints
 media-gfx/synnefo 1.1.0: Qt front end for the Oyranos Color Management System
 media-gfx/tachyon 0.99_beta6-r1: A portable, high performance parallel ray tracing system
-media-gfx/termtosvg 0.7.0 0.8.0: Record terminal sessions as SVG animations
+media-gfx/termtosvg 0.7.0 0.8.0 1.1.0: Record terminal sessions as SVG animations
 media-gfx/tgif 4.2.5-r2: Xlib base 2-D drawing facility under X11
 media-gfx/tif22pnm 0.14: tif22pnm and png22pnm command-line converters
 media-gfx/tintii 2.10.0: A photo editor for selective color, saturation, and hue shift adjustments
@@ -15472,7 +15472,7 @@ net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/strongswan 5.8.1 5.8.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.1.7 0.4.2.5 0.4.3.1_alpha: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.1.7 0.4.1.8 0.4.2.5 0.4.2.6 0.4.3.1_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
