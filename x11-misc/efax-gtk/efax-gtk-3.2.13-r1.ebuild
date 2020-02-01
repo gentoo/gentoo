@@ -10,16 +10,19 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.src.tgz"
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
-IUSE="nls"
 
-RDEPEND=">=dev-libs/glib-2.10
+RDEPEND="
+	>=dev-libs/glib-2.10
 	media-libs/tiff:0=
 	x11-libs/libX11
 	x11-libs/c++-gtk-utils:0[gtk]
-	x11-libs/gtk+:3"
-DEPEND="${RDEPEND}
+	x11-libs/gtk+:3
+"
+DEPEND="
+	${RDEPEND}
 	virtual/pkgconfig
-	nls? ( sys-devel/gettext )"
+	sys-devel/gettext
+"
 
 DOCS="AUTHORS BUGS ChangeLog README"
 PATCHES=(
@@ -38,7 +41,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable nls) \
 		--with-gtk-version=gtk3
 }
 
