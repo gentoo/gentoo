@@ -4716,8 +4716,11 @@ media-sound/mumble:g15 - Enable support for the Logitech G15 LCD (and compatible
 media-sound/mumble:rnnoise - Enable alternative noise suppression option based on RNNoise.
 media-sound/mumble:speech - Enable text-to-speech support in Mumble.
 media-sound/murmur:ice - Use dev-libs/Ice to enable remote control capabilities.
+media-sound/musescore:omr - Enable PDF import (OMR - optical music recognition)
+media-sound/musescore:osc - Enable OSC remote control protocol
 media-sound/musescore:portmidi - Enable support for building against media-libs/portmidi
-media-sound/musescore:vorbis - Enable SoundFont support using media-libs/libvorbis
+media-sound/musescore:sf3 - Enable SoundFont 3 support using media-libs/libvorbis
+media-sound/musescore:sfz - Enable experimental SFZ sampler
 media-sound/musescore:webengine - Use dev-qt/qtwebengine for embedded web browser
 media-sound/ncmpc:async-connect - Enable asynchronous connect
 media-sound/ncmpc:chat-screen - Enable the chat screen
