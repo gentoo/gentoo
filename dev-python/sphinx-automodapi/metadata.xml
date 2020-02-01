@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <remote-id type="pypi">sphinx-automodapi</remote-id>
+    <remote-id type="github">astropy/sphinx-automodapi</remote-id>
+  </upstream>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>gentoo@lotz.li</email>
+    <name>Linus Lotz</name>
+  </maintainer>
+  <longdescription lang="en">
+      This is a Sphinx extension to automatically generate API pages for whole modules.
+      It was originally developed for the Astropy project but is now available as a standalone
+      package since it can be used for any other package. The documentation can be found
+      on ReadTheDocs.
+  </longdescription>
+</pkgmetadata>
