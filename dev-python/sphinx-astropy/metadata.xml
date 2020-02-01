@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <remote-id type="pypi">sphinx-astropy</remote-id>
+    <remote-id type="github">astropy/sphinx-astropy</remote-id>
+  </upstream>
+  <maintainer type="project">
+    <email>sci-astronomy@gentoo.org</email>
+    <name>Gentoo Astronomy Project</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>gentoo@lotz.li</email>
+    <name>Linus Lotz</name>
+  </maintainer>
+  <longdescription lang="en">
+    This package serves two purposes: it provides a default Sphinx configuration
+    and set of extensions specific to the Astropy project, and it acts as a meta-package
+    by installing all required Sphinx extensions for the core Astropy package and other packages.
+  </longdescription>
+</pkgmetadata>
