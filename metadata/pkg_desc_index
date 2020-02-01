@@ -14806,7 +14806,7 @@ net-libs/libwebsockets 3.2.1: A flexible pure-C library for implementing network
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
-net-libs/mbedtls 2.10.0 2.12.0 2.16.3 2.16.4 2.17.0 2.18.1-r1 2.19.1-r1: Cryptographic library for embedded systems
+net-libs/mbedtls 2.10.0 2.12.0 2.16.3 2.16.4 2.17.0 2.18.1-r2 2.19.1-r2: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.1.20190625 2.1.20190824 2.1.20191224: UPnP client library and a simple UPnP client
 net-libs/nDPI 2.0 2.2 2.8 3.0-r1 3.0-r2: Open Source Deep Packet Inspection Software Toolkit
@@ -16983,7 +16983,7 @@ sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 2.9 3.0 9999: SELinux core utilities
-sys-apps/portage 2.3.69 2.3.79 2.3.84-r1 2.3.85-r1 2.3.86 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.69 2.3.79 2.3.84-r1 2.3.85-r1 2.3.86 2.3.87 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
@@ -17320,10 +17320,10 @@ sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r
 sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.30-r4 2.31.1-r6 2.32-r1 2.32-r2 2.33.1 2.33.1-r1 9999: Tools necessary to build programs
+sys-devel/binutils 2.30-r4 2.31.1-r6 2.32-r1 2.32-r2 2.33.1 2.33.1-r1 2.34 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5-r4 5.1-r1 5.2: Utility to change the binutils version being used
-sys-devel/binutils-hppa64 2.30-r4 2.31.1-r6 2.32-r1 2.33.1: Tools necessary to build programs
+sys-devel/binutils-hppa64 2.30-r4 2.31.1-r6 2.32-r1 2.33.1 2.34: Tools necessary to build programs
 sys-devel/bison 3.1 3.3.2 3.4.2 3.5 3.5.1: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20181221: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
@@ -17581,7 +17581,7 @@ sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.32-r1 2.33.1 2.33.1-r1: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.32-r1 2.33.1 2.33.1-r1 2.34: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/compiler-rt 7.1.0 8.0.1 9.0.1 10.0.0_rc1 10.0.0.9999 11.0.0.9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 7.1.0 8.0.1 9.0.1 10.0.0_rc1 10.0.0.9999 11.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
