@@ -286,6 +286,10 @@ gentoo_urls() {
 # Other than the variables normally set by portage, this function's behavior
 # can be altered by setting the following:
 #
+#	GCC_TARBALL_SRC_URI
+#			Override link to main tarball into SRC_URI. Used by dev-lang/gnat-gpl
+#			to provide gcc tarball snapshots. Patches are usually reused as-is.
+#
 #	SNAPSHOT
 #			If set, this variable signals that we should be using a snapshot of
 #			gcc. It is expected to be in the format "YYYY-MM-DD". Note that if
@@ -347,6 +351,9 @@ get_gcc_src_uri() {
 	# live git tree, snapshot, or release tarball.
 	if tc_is_live ; then
 		: # Nothing to do w/git snapshots.
+	elif [[ -n ${GCC_TARBALL_SRC_URI} ]] ; then
+		# pull gcc tarball from another location. Frequently used by gnat-gpl.
+		GCC_SRC_URI="${GCC_TARBALL_SRC_URI}"
 	elif [[ -n ${SNAPSHOT} ]] ; then
 		GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.xz"
 	else
