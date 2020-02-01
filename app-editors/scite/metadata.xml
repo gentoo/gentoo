@@ -4,12 +4,19 @@
 	<maintainer type="person">
 		<email>ervin.peters@ervnet.de</email>
 		<name>Ervin Peters</name>
+		<description>proxied Maintainer</description>
 	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
 	</maintainer>
 	<upstream>
+		<maintainer>
+			<name>Neil Hodgson</name>
+		</maintainer>
+		<doc>https://www.scintilla.org/SciTEDoc.html</doc>
+		<changelog>https://www.scintilla.org/ScintillaHistory.html</changelog>
+		<bugs-to>https://sourceforge.net/p/scintilla/bugs/</bugs-to>
 		<remote-id type="sourceforge">scintilla</remote-id>
 	</upstream>
 </pkgmetadata>
