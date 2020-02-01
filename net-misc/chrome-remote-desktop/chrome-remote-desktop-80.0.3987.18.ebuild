@@ -22,7 +22,8 @@ inherit unpacker eutils python-single-r1 l10n
 
 DESCRIPTION="access remote computers via Chrome!"
 PLUGIN_URL="https://chrome.google.com/remotedesktop"
-HOMEPAGE="https://support.google.com/chrome/answer/1649523 ${PLUGIN_URL}"
+HOMEPAGE="https://support.google.com/chrome/answer/1649523
+	https://chrome.google.com/remotedesktop"
 BASE_URI="https://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/c/${PN}/${PN}_${PV}"
 SRC_URI="amd64? ( ${BASE_URI}_amd64.deb )"
 
@@ -125,7 +126,7 @@ pkg_postinst() {
 		elog "(2) headless system"
 		elog "    (a) install the Chrome plugin on the client:"
 		elog "        ${PLUGIN_URL}"
-		elog "    (b) run ${EPREFIX}opt/google/chrome-remote-desktop/start-host --help to get the auth URL"
+		elog "    (b) run ${EPREFIX}/opt/google/chrome-remote-desktop/start-host --help to get the auth URL"
 		elog "    (c) when it redirects you to a blank page, look at the URL for a code=XXX field"
 		elog "    (d) run start-host again, and past the code when asked for an authorization code"
 		elog "    (e) on the client, connect to the server"
