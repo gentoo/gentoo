@@ -17576,7 +17576,7 @@ sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with 
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.96 4.19.97 4.19.98 4.19.99 4.19.100 5.4.12 5.4.13 5.4.14 5.4.15 5.4.16: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 4.19.96 4.19.98 4.19.99 5.4.12 5.4.13 5.4.14 5.4.15 5.4.16: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.81 4.4.212 4.9.212 4.14.169 4.19.100 5.4.16 5.5.0: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.81 4.4.212 4.9.212 4.14.169 4.19.101 5.4.17 5.5.1: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15: The Zen Kernel Live Sources
@@ -17981,7 +17981,7 @@ www-apache/mod_security 2.9.1-r1 2.9.3: Application firewall and intrusion detec
 www-apache/mod_vdbh 1.0.3-r2: An Apache2 module for mass virtual hosting using a MySQL database
 www-apache/mod_vhost_ldap 2.4.0-r1: Store and configure Apache virtual hosts using LDAP
 www-apache/mod_whatkilledus 2.01: Debug segmentation faults in Apache threads
-www-apache/mod_wsgi 4.5.13 4.5.17 4.5.21 4.6.5 4.7.0: An Apache2 module for running Python WSGI applications
+www-apache/mod_wsgi 4.5.13 4.6.5 4.7.0: An Apache2 module for running Python WSGI applications
 www-apache/mod_xsendfile 1.0_beta1: Apache module that processes X-SENDFILE headers registered by the output handler
 www-apache/modsec-flameeyes 20130216 99999999: Flameeyes's Ruleset for ModSecurity
 www-apache/modsecurity-crs 3.0.2 3.1.0: Core Rule Set for ModSecurity
