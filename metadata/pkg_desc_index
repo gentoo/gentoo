@@ -8410,7 +8410,7 @@ dev-python/pygcrypt 1.0.0: CFFI interface to dev-libs/libgcrypt
 dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pyghmi 1.0.22-r1 1.5.5: A pure python implementation of IPMI protocol
-dev-python/pygit2 0.28.2 1.0.1 1.0.2: Python bindings for libgit2
+dev-python/pygit2 0.28.2 1.0.2 1.0.3: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.2.0 2.2.0-r1 2.3.1 2.4.2 2.5.2: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
