@@ -11,4 +11,4 @@ RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=amd64? ( https://dl.google.com/linux/chrome-remote-desktop/deb/pool/main/c/chrome-remote-desktop/chrome-remote-desktop_80.0.3987.18_amd64.deb )
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631
-_md5_=748992029e0037ec6f64c22aeb7d29ef
+_md5_=5eda97238018ac329fba580d55b12898
