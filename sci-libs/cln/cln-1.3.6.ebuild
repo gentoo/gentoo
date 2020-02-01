@@ -36,19 +36,22 @@ src_prepare() {
 src_compile() {
 	default
 	if use doc; then
-		cd "${BUILD_DIR}"
+		pushd doc > /dev/null
 		export VARTEXFONTS="${T}/fonts"
 		emake html pdf
-		DOCS=("${BUILD_DIR}/doc/cln.pdf")
-		HTML_DOCS=("${BUILD_DIR}/doc/")
+		DOCS=( doc/cln.pdf )
+		HTML_DOCS=( doc/cln.html )
 	fi
 }
 
 src_install () {
 	default
+	if use doc; then
+		einstalldocs
+	fi
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples
-		insinto /usr/share/doc/${PF}/examples
-		doins examples/*.cc
+		docinto examples
+		dodoc examples/*.cc
 	fi
 }
