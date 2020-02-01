@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,9 +15,10 @@ SLOT="0"
 IUSE="cpu_flags_x86_sse2 +dns debug gdal openmp subversion test"
 RESTRICT="!test? ( test )"
 
+# TODO aeonwave
 COMMON_DEPEND="
 	dev-libs/expat
-	<dev-games/openscenegraph-3.5.6:=
+	dev-games/openscenegraph
 	media-libs/openal
 	net-misc/curl
 	sys-libs/zlib
@@ -31,8 +32,6 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
 "
-
-PATCHES=( "${FILESDIR}/${P}-boost-1.69.patch" )
 
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
