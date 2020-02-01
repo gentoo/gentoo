@@ -5,18 +5,18 @@ EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CHECKREQS_DISK_BUILD=3500M
-inherit git-r3 cmake xdg check-reqs
+inherit cmake xdg check-reqs
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="https://musescore.org/"
 # MuseScore_General-0.1.3.tar.bz2 packaged from https://ftp.osuosl.org/pub/musescore/soundfont/MuseScore_General/
 # It has to be repackaged because the files are not versioned, current version can be found in VERSION file there.
-SRC_URI="https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.1.8.tar.bz2"
-EGIT_REPO_URI="https://github.com/${PN}/MuseScore.git"
+SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.tar.gz
+	https://dev.gentoo.org/~fordfrog/distfiles/MuseScore_General-0.1.8.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug jack mp3 osc omr portaudio portmidi pulseaudio +sf3 sfz webengine"
 REQUIRED_USE="portmidi? ( portaudio )"
 
@@ -57,10 +57,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-3.0.1-man-pages.patch"
 )
 
-src_unpack() {
-	git-r3_src_unpack
-	unpack ${A}
-}
+S="${WORKDIR}/MuseScore-${PV}"
 
 src_prepare() {
 	cmake_src_prepare
