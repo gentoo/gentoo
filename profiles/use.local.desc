@@ -1465,11 +1465,16 @@ dev-embedded/sdcc:boehm-gc - Enable Hans Boehm's garbage collector dev-libs/boeh
 dev-embedded/sdcc:device-lib - Enable built of devices libraries
 dev-embedded/sdcc:ds390 - Add support for Dallas DS390
 dev-embedded/sdcc:ds400 - Add support for Dallas DS400
+dev-embedded/sdcc:ez80-z80 - Add support for EZ80-Z80
 dev-embedded/sdcc:gbz80 - Add support for Gameboy gbz80
 dev-embedded/sdcc:hc08 - Add support for Freescale/Motorola HC08 based
 dev-embedded/sdcc:mcs51 - Add support for Intel mcs51
 dev-embedded/sdcc:non-free - Enable non-free runtime library parts
 dev-embedded/sdcc:packihx - Enable Intel HEX files pack utility
+dev-embedded/sdcc:pdk13 - Add support for PDK13
+dev-embedded/sdcc:pdk14 - Add support for PDK14
+dev-embedded/sdcc:pdk15 - Add support for PDK15
+dev-embedded/sdcc:pdk16 - Add support for PDK16
 dev-embedded/sdcc:pic14 - Add support for Microchip 14 bits PICs
 dev-embedded/sdcc:pic16 - Add support for Microchip 16 bits PICs
 dev-embedded/sdcc:r2k - Add support for Rabbit 2000

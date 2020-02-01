@@ -409,7 +409,7 @@ app-admin/longrun 0.9-r4: A utility to control Transmeta's Crusoe and Efficeon p
 app-admin/lsyncd 2.2.0 2.2.1 2.2.2 2.2.3: Live Syncing (Mirror) Daemon
 app-admin/makepasswd 1.10: Random password generator
 app-admin/matter 302: Automated Packages Builder for Portage and Entropy
-app-admin/mcelog 162 167 168: A tool to log and decode Machine Check Exceptions
+app-admin/mcelog 168: A tool to log and decode Machine Check Exceptions
 app-admin/mcollective 2.12.4 2.12.5: Framework to build server orchestration or parallel job execution systems
 app-admin/mei-amt-check 0_p20170515: AMT status checker
 app-admin/metalog 3-r2 20181125: A highly configurable replacement for syslogd/klogd
@@ -3359,7 +3359,7 @@ dev-embedded/pk2cmd 1.20: An application for working with the Microchip PicKit2 
 dev-embedded/platformio 4.1.0: An open source ecosystem for IoT development
 dev-embedded/ponyprog 2.07c-r2 3.0.0: EEPROM and microcontroller programmer/flasher
 dev-embedded/powersoftplus-libftdi 0.1.8-r1: Library which includes a table of VIDs and PIDs of Ever UPS devices
-dev-embedded/sdcc 3.8.0-r1 9999: Small device C compiler (for various microprocessors)
+dev-embedded/sdcc 3.8.0-r1 4.0.0 9999: Small device C compiler (for various microprocessors)
 dev-embedded/smdk-dltool 0.20-r3 0.20-r4: Tool to communicate with Samsung SMDK boards
 dev-embedded/srecord 1.64: A collection of powerful tools for manipulating EPROM load files
 dev-embedded/stlink 1.5.1 9999: stm32 discovery line linux programmer
@@ -14117,7 +14117,7 @@ net-analyzer/2ping 4.2 4.3: A bi-directional ping utility
 net-analyzer/alive 2.0.2-r1: a periodic ping program
 net-analyzer/amap 5.4 5.4-r1: A network scanning tool for pentesters
 net-analyzer/angst 0.4b-r2 0.4b-r3: an active sniffer that provides methods for aggressive sniffing on switched LANs
-net-analyzer/apinger 0.4.1: Alarm Pinger
+net-analyzer/apinger 0.4.1 0.4.1-r1: Alarm Pinger
 net-analyzer/argus 3.0.8.2-r1 3.0.8.2-r2: network Audit Record Generation and Utilization System
 net-analyzer/argus-clients 3.0.8 3.0.8.2 3.0.8.2-r2 3.0.8.2-r3: Clients for net-analyzer/argus
 net-analyzer/arp-scan 1.9.6 1.9.7 99999: ARP scanning and fingerprinting tool
