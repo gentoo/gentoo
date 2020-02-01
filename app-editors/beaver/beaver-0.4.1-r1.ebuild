@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ PATCHES=(
 )
 
 src_configure() {
-	append-cflags -fgnu89-inline
+	append-cflags -fgnu89-inline -fcommon
 
 	econf \
 		$(use_enable doc doxygen-doc) \
