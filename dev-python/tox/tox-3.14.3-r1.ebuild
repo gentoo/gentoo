@@ -3,7 +3,8 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
 inherit distutils-r1
 
@@ -13,7 +14,7 @@ SRC_URI="https://github.com/tox-dev/tox/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~sparc ~x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 
 # doc disabled because of missing deps in tree
 IUSE="test"
@@ -21,23 +22,29 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/filelock[${PYTHON_USEDEP}]
-	dev-python/importlib_metadata[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/importlib_metadata-1.1[${PYTHON_USEDEP}]
+	' python3_{5,6,7} pypy3)
 	dev-python/packaging[${PYTHON_USEDEP}]
 	<dev-python/pluggy-1.0[${PYTHON_USEDEP}]
+	>=dev-python/pluggy-0.12[${PYTHON_USEDEP}]
 	dev-python/pip[${PYTHON_USEDEP}]
 	dev-python/py[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 	dev-python/toml[${PYTHON_USEDEP}]
-	dev-python/virtualenv[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+	>=dev-python/virtualenv-16.0.0[${PYTHON_USEDEP}]"
+# TODO: figure out how to make tests work without the package being
+# installed first.
+BDEPEND="
 	test? (
+		${RDEPEND}
 		>=dev-python/flaky-3.4.0[${PYTHON_USEDEP}]
 		<dev-python/flaky-4
 		>=dev-python/freezegun-0.3.11[${PYTHON_USEDEP}]
 		dev-python/pathlib2[${PYTHON_USEDEP}]
 		>=dev-python/pytest-4.0.0[${PYTHON_USEDEP}]
 		<dev-python/pytest-mock-2.0[${PYTHON_USEDEP}]
+		=dev-python/tox-${PV}-${PR}[${PYTHON_USEDEP}]
 	)"
 
 PATCHES=(
