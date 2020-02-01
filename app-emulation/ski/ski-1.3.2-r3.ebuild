@@ -44,6 +44,10 @@ PATCHES=(
 src_prepare() {
 	default
 
+	if has_version ">=sys-libs/binutils-libs-2.34"; then
+		eapply "${FILESDIR}"/${PN}-1.3.2-binutils-2.34.patch
+	fi
+
 	rm -rf libltdl src/ltdl.[ch] macros/ltdl.m4
 
 	AT_M4DIR="macros" eautoreconf
