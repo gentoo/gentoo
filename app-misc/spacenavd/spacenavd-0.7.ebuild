@@ -19,6 +19,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${FILESDIR}"/${P}-gcc10.patch
+	"${FILESDIR}"/${P}-no-x11.patch
 )
 
 pkg_setup() {
