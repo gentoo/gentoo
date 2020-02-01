@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,6 +34,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-7.0-clang.patch
 	"${FILESDIR}"/${PN}-7.0-images.patch
 	"${FILESDIR}"/${PN}-7.0-shebangs.patch
+	"${FILESDIR}"/${PN}-7.0-fno-common.patch
 )
 
 src_configure() {
