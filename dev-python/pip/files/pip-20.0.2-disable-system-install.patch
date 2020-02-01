@@ -1,0 +1,29 @@
+From 57d610bbcc721c2e58fd2e9f3197bb3e3acbd935 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Sat, 1 Feb 2020 09:14:46 +0100
+Subject: [PATCH] install: Raise an error to avoid breaking python-exec
+
+Running pip without --target, --root, or --user will result in packages
+being installed systemwide. This has a tendency to break python-exec if
+setuptools gets installed or upgraded.
+---
+ src/pip/_internal/commands/install.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/pip/_internal/commands/install.py b/src/pip/_internal/commands/install.py
+index 02a187c8..025b824b 100644
+--- a/src/pip/_internal/commands/install.py
++++ b/src/pip/_internal/commands/install.py
+@@ -246,6 +246,9 @@ class InstallCommand(RequirementCommand):
+         if options.upgrade:
+             upgrade_strategy = options.upgrade_strategy
+ 
++        if not options.use_user_site and not options.target_dir and not options.root_path and not os.getenv('GENTOO_PIP_TESTING'):
++            raise CommandError("(Gentoo) Please run pip with the --user option to avoid breaking python-exec")
++
+         cmdoptions.check_dist_restriction(options, check_target=True)
+ 
+         install_options = options.install_options or []
+-- 
+2.25.0
+
