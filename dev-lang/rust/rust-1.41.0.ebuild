@@ -60,12 +60,12 @@ LLVM_MAX_SLOT=9
 BOOTSTRAP_DEPEND="|| ( >=dev-lang/rust-1.$(($(ver_cut 2) - 1)).0-r1 >=dev-lang/rust-bin-1.$(($(ver_cut 2) - 1)) )"
 
 COMMON_DEPEND="
-	sys-libs/zlib
+	net-libs/libssh2:=
+	net-libs/http-parser:=
+	net-misc/curl:=[ssl]
+	sys-libs/zlib:=
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	net-libs/libssh2
-	net-libs/http-parser:=
-	net-misc/curl[ssl]
 	elibc_musl? ( sys-libs/libunwind )
 	system-llvm? (
 		${LLVM_DEPEND}
@@ -132,7 +132,9 @@ pkg_setup() {
 	pre_build_checks
 	python-any-r1_pkg_setup
 
-	export LIBGIT2_SYS_USE_PKG_CONFIG=1
+	# use bundled for now, #707746
+	# will need dev-libs/libgit2 slotted dep if re-enabled
+	#export LIBGIT2_SYS_USE_PKG_CONFIG=1
 	export LIBSSH2_SYS_USE_PKG_CONFIG=1
 	export PKG_CONFIG_ALLOW_CROSS=1
 
