@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="Displays statistics about ethernet traffic including protocol breakdown"
 SRC_URI="http://trash.net/~reeler/nstats/files/${P}.tar.gz"
@@ -29,6 +29,10 @@ DOCS=( BUGS doc/TODO doc/ChangeLog )
 
 src_prepare(){
 	default
-
 	eautoreconf
+}
+
+src_configure() {
+	append-cflags -fcommon
+	default
 }
