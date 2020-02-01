@@ -69,14 +69,13 @@ src_compile() {
 src_install() {
 	default
 	if use devref; then
-		insinto /usr/share/doc/${PF}
-		doins doc/devref/devref.pdf
+		dodoc doc/devref/devref.pdf
 	fi
 	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins doc/manual/manual.pdf
+		dodoc doc/manual/manual.pdf
 	fi
 	if use doxygen; then
-		dohtml -r doc/doxygen/html/*
+		docinto html
+		dodoc -r doc/doxygen/html/.
 	fi
 }
