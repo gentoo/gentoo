@@ -9608,7 +9608,7 @@ dev-ruby/cinch 2.3.4: IRC Bot Building Framework
 dev-ruby/classifier-reborn 2.2.0: Module to allow Bayesian and other types of classifications
 dev-ruby/climate_control 0.2.0: Easily manage your environment
 dev-ruby/cliver 0.3.2: An easy way to detect and use command-line dependencies
-dev-ruby/cmdparse 2.0.6-r1 3.0.4: Advanced command line parser supporting commands
+dev-ruby/cmdparse 2.0.6-r1 3.0.4 3.0.5: Advanced command line parser supporting commands
 dev-ruby/coderay 1.1.2: A Ruby library for syntax highlighting
 dev-ruby/coercible 1.0.0: Powerful, flexible and configurable coercion library
 dev-ruby/coffee-rails 4.2.2-r1 5.0.0: Coffee Script adapter for the Rails asset pipeline
@@ -9878,7 +9878,7 @@ dev-ruby/optimist 3.0.0: A commandline option parser for Ruby that just gets out
 dev-ruby/optionable 0.2.0: Robust options validation for Ruby methods
 dev-ruby/org-ruby 0.9.12: Ruby routines for parsing org-mode files
 dev-ruby/origin 2.3.1: Origin is a simple DSL for generating MongoDB selectors and options
-dev-ruby/ox 2.10.1 2.11.0 2.12.0 2.12.1: A fast XML parser and Object marshaller
+dev-ruby/ox 2.10.1 2.11.0 2.12.0 2.12.1 2.13.1: A fast XML parser and Object marshaller
 dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.1.0 2.1.1: Terminal painter
 dev-ruby/parallel 1.17.0 1.18.0 1.19.0 1.19.1: Run any code in parallel Processes or Threads
