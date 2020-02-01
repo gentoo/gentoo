@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-CABAL_FEATURES="bin test-suite"
+CABAL_FEATURES="test-suite"
 inherit haskell-cabal
 
 DESCRIPTION="Confirm delegation of NS and MX records"
@@ -22,7 +22,7 @@ RDEPEND=">=dev-haskell/cmdargs-0.10:=
 	>=dev-haskell/dns-1.4:=
 	>=dev-haskell/iproute-1.2:=
 	>=dev-haskell/parallel-io-0.3:=
-	>=dev-lang/ghc-7.6.1:=
+	>=dev-lang/ghc-7.6.2:=
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.16.0
