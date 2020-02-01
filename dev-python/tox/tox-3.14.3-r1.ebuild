@@ -14,7 +14,7 @@ SRC_URI="https://github.com/tox-dev/tox/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~sparc ~x86"
 
 # doc disabled because of missing deps in tree
 IUSE="test"
@@ -27,6 +27,7 @@ RDEPEND="
 	' python3_{5,6,7} pypy3)
 	dev-python/packaging[${PYTHON_USEDEP}]
 	<dev-python/pluggy-1.0[${PYTHON_USEDEP}]
+	>=dev-python/pluggy-0.12[${PYTHON_USEDEP}]
 	dev-python/pip[${PYTHON_USEDEP}]
 	dev-python/py[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
