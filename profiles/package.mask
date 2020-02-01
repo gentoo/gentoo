@@ -696,12 +696,6 @@ media-plugins/vdr-osdpip
 # wrt bug 704050
 media-plugins/vdr-browse
 
-# Mike Gilbert <floppym@gentoo.org> (2020-01-04)
-# Un-fetchable distfile, bug 704782.
-# No maintainer.
-# Removal in 30 days.
-net-misc/chrome-remote-desktop
-
 # Jonas Stein <jstein@gentoo.org> (2019-12-30)
 # Package masked for removal. Broken SRC_URI, 
 # last upstream activity was ~16 years ago.
