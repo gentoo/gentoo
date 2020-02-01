@@ -19,7 +19,7 @@ else
 fi
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="debug elf ffmpeg libav opengl qt5 +sdl sqlite"
+IUSE="debug discord elf ffmpeg libav opengl qt5 +sdl sqlite"
 REQUIRED_USE="|| ( qt5 sdl )
 		qt5? ( opengl )"
 
@@ -43,6 +43,10 @@ RDEPEND="
 	sqlite? ( dev-db/sqlite:3 )
 "
 DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}/${P}-no_sdl.patch" #707578
+)
 
 src_prepare() {
 	xdg_environment_reset
@@ -68,6 +72,7 @@ src_configure() {
 		-DM_CORE_GB=ON
 		-DM_CORE_GBA=ON
 		-DUSE_DEBUGGERS="$(usex debug)"
+		-DUSE_DISCORD_RPC="$(usex discord)"
 		-DUSE_EDITLINE="$(usex debug)"
 		-DUSE_ELF="$(usex elf)"
 		-DUSE_EPOXY=OFF

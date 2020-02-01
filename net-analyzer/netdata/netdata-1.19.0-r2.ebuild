@@ -86,6 +86,7 @@ FILECAPS=(
 
 PATCHES=(
 	"${FILESDIR}/${P}-prometheus-spelling.patch"
+	"${FILESDIR}/${P}-fno-common.patch"
 )
 
 pkg_setup() {
