@@ -1,0 +1,51 @@
+--- a/src/gtkdialog.h
++++ b/src/gtkdialog.h
+@@ -40,24 +40,24 @@
+ #define GTKD_FUNCTION_SIGNALS_BLOCK (function_signals_block++)
+ #define GTKD_FUNCTION_SIGNALS_UNBLOCK (function_signals_block--)
+ #define GTKD_FUNCTION_SIGNALS_RESET (function_signals_block = FALSE)
+-gint function_signals_block;
++extern gint function_signals_block;
+ 
+ /* Thunor: Used to control/override the widget packing expand and fill
+  * states at the project level */
+-gint project_space_expand;
+-gint project_space_fill;
++extern gint project_space_expand;
++extern gint project_space_fill;
+ 
+ /* The most recently created radiobutton widget (used for grouping) */
+-GtkWidget *lastradiowidget;
++extern GtkWidget *lastradiowidget;
+ 
+ /* An accumulated list of menu accelerator groups to be added to the window */
+-GList *accel_groups;
++extern GList *accel_groups;
+ 
+ /* A list of widgets to hide and to show */
+-GList *widget_hide_list, *widget_show_list;
++extern GList *widget_hide_list, *widget_show_list;
+ 
+ /* An auto-incremented unique id for each window created */
+-gint window_id;
++extern gint window_id;
+ 
+ void reset_program_source(void);
+ //Redundant: gint set_program_source(gchar *name);
+--- a/src/gtkdialog.c
++++ b/src/gtkdialog.c
+@@ -82,6 +82,14 @@
+ gint geometry_x = 0;
+ gint geometry_y = 0;
+ 
++gint function_signals_block;
++gint project_space_expand;
++gint project_space_fill;
++GtkWidget *lastradiowidget;
++GList *accel_groups;
++GList *widget_hide_list, *widget_show_list;
++gint window_id;
++
+ static gboolean 
+ get_geometry(const char *argument)
+ {
