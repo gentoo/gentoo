@@ -9869,7 +9869,7 @@ dev-ruby/nokogumbo 1.5.0 2.0.1: A Nokogiri interface to the Gumbo HTML5 parser
 dev-ruby/notify 0.5.2-r1: A function to notify on cross platform
 dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over http
 dev-ruby/oauth 0.5.4: A RubyGem for implementing both OAuth clients and servers
-dev-ruby/oauth2 1.4.0-r2 1.4.1 1.4.2: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
+dev-ruby/oauth2 1.4.0-r2 1.4.1 1.4.2 1.4.3: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.14.0 4.15.0: Ruby toolkit for the Github API
 dev-ruby/omniauth 1.9.0: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
@@ -9895,7 +9895,7 @@ dev-ruby/pdf-core 0.7.0 0.8.1: Implements low level PDF features for Prawn
 dev-ruby/pdf-inspector 1.3.0: A tool for analyzing PDF output
 dev-ruby/pdf-reader 1.4.1-r2 2.2.0 2.2.1 2.3.0 2.4.0: PDF parser conforming as much as possible to the PDF specification from Adobe
 dev-ruby/permutation 0.1.8-r1: Library performing operations with permutations of sequences (strings, arrays)
-dev-ruby/pg 0.21.0 1.1.4: Ruby extension library providing an API to PostgreSQL
+dev-ruby/pg 0.21.0 1.1.4 1.2.2: Ruby extension library providing an API to PostgreSQL
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.2.8 1.3.9 1.4.0: A pkg-config implementation by Ruby
 dev-ruby/plist 3.4.0 3.5.0: A library to manipulate Property List files, also known as plists
