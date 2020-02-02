@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 		>=dev-libs/libgcrypt-1.2.2:0
 		>=net-libs/libotr-4.1.0
 	)
-	spell? ( app-text/enchant )
+	spell? ( app-text/enchant:0 )
 	xmpp? (
 		net-dns/libidn:*
 		>=net-libs/qxmpp-0.9.3-r1

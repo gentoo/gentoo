@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,19 +19,16 @@ IUSE="+alsa"
 DEPEND="dev-libs/atk
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:2
-	x11-libs/pango
+	x11-libs/gtk+:3
 	alsa? ( media-libs/alsa-lib )"
 
-RDEPEND="${DEPEND}
-	x11-libs/libX11
-	x11-libs/libXmu"
+RDEPEND="${DEPEND}"
 
 DOCS=( CREDITS HISTORY README )
 S="${WORKDIR}/${MY_PV}"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.5.3-fix-makefile.patch"
+	"${FILESDIR}/${PN}-2.5.16-fix-makefile.patch"
 	"${FILESDIR}/${PN}-2.5.3-fix-build-intel-lib.patch"
 )
 

@@ -30,7 +30,7 @@ DEPEND="
 	>=dev-db/sqlite-3.12:3
 
 	>=dev-libs/appstream-glib-0.7.10
-	app-text/enchant
+	app-text/enchant:=
 	>=dev-libs/folks-0.11:0
 	>=app-crypt/gcr-3.10.1:0=
 	>=dev-libs/libgee-0.8.5:0.8=
