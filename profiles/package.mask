@@ -1126,10 +1126,6 @@ sys-devel/automake:1.8
 sys-devel/automake:1.9
 sys-devel/automake:1.10
 
-# Gilles Dartiguelongue <eva@gentoo.org> (2017-09-04)
-# Incompatible changes in API in Enchant 2. Bug #629838.
->=app-text/enchant-2
-
 # Nicolas Bock <nicolasbock@gentoo.org> (2017-10-31)
 # There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).
 # If you still would like to use this version, please report any issues to
