@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,6 +30,9 @@ DEPEND="
 	virtual/pkgconfig
 	virtual/yacc
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.3-fno-common.patch
+)
 
 src_prepare() {
 	default
