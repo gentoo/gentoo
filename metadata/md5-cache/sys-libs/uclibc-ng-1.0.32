@@ -10,4 +10,4 @@ RESTRICT=strip test
 SLOT=0
 SRC_URI=https://downloads.uclibc-ng.org/releases/1.0.32/uClibc-ng-1.0.32.tar.bz2
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	a3c113056e77e36a1d78ff4eb475dfd1	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=8b4f132e09e2ea4423bcd8f8e1b010dd
+_md5_=f43f53980e5d7d1cdf6cd912c24821c8
