@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile install
+DEFINED_PHASES=compile install prepare
 DEPEND=>=sys-libs/binutils-libs-2.29:= sys-libs/libunwind:=
 DESCRIPTION=A general purpose fuzzer with feedback support
 EAPI=7
@@ -9,4 +9,4 @@ RDEPEND=>=sys-libs/binutils-libs-2.29:= sys-libs/libunwind:=
 SLOT=0
 SRC_URI=https://github.com/google/honggfuzz/archive/2.0.tar.gz -> honggfuzz-2.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=11697bdb33b036b516987d9eed63895d
+_md5_=80fbdf2ee8974cfe2f3f55c3a2322c71

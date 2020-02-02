@@ -9,4 +9,4 @@ RDEPEND=>=net-misc/wget-1.9-r2 >=media-gfx/imagemagick-5.5.7.15 x11-libs/libX11 
 SLOT=0
 SRC_URI=https://www.dockapps.net/download/wmGrabImage-0.72.tgz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
-_md5_=15f7a7bf66b352909441f6d5fd217ff9
+_md5_=2ba3724f0ef3626a0bcd9c14af86f170
