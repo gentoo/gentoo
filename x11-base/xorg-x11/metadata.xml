@@ -5,7 +5,6 @@
 	<email>x11@gentoo.org</email>
 	<name>X11</name>
 </maintainer>
-<longdescription>X11 implementation by X.Org Foundation</longdescription>
 <use>
 	<flag name="fonts">Install fonts from X.Org</flag>
 </use>
