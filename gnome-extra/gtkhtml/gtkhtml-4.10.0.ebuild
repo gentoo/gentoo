@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -19,7 +19,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.2:3
 	>=x11-libs/cairo-1.10:=
 	x11-libs/pango
-	>=app-text/enchant-1.1.7:=
+	>=app-text/enchant-1.1.7:0
 	gnome-base/gsettings-desktop-schemas
 	>=app-text/iso-codes-0.49
 	>=net-libs/libsoup-2.26.0:2.4
