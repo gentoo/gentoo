@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.0-no-werror.patch
 	"${FILESDIR}"/${PN}-1.1-binutils-2.29.patch
 )
+
+src_prepare() {
+	default
+
+	if has_version ">=sys-libs/binutils-libs-2.34"; then
+		eapply "${FILESDIR}"/${PN}-2.0-binutils-2.34.patch
+	fi
+}
 
 src_compile() {
 	CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" emake
