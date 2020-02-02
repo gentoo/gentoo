@@ -10,4 +10,4 @@ RDEPEND=>=x11-wm/windowmaker-0.95.2 x11-libs/libXft x11-libs/libXpm x11-libs/lib
 SLOT=0
 SRC_URI=http://wie-im-flug.net/linux/fsviewer/fsviewer-app-0.2.6.tar.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=512b2cf254a118f5f45ea6e4aff3773e
+_md5_=befb410d25f531c6724e5766f4459a07

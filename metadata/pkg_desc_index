@@ -1308,7 +1308,7 @@ app-editors/neovim 0.3.8 0.4.2 0.4.3 9999: Vim-fork focused on extensibility and
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/notepadqq 1.2.0 1.4.8 9999: Notepad++-like editor for Linux
 app-editors/nvi 1.81.6-r7: Re-implementation of the classic 4BSD ex/vi
-app-editors/okteta 0.26.2: Hex editor by KDE
+app-editors/okteta 0.26.2 0.26.3: Hex editor by KDE
 app-editors/padre 1.0.0-r1: Perl Application Development and Refactoring Environment
 app-editors/pluma 1.22.0 1.22.1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
@@ -9128,7 +9128,7 @@ dev-qt/qtbluetooth 5.12.3 5.13.2 5.14.1: Bluetooth support library for the Qt5 f
 dev-qt/qtcharts 5.12.3 5.13.2 5.14.1: Chart component library for the Qt5 framework
 dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
 dev-qt/qtconcurrent 5.12.3 5.13.2 5.14.1: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 5.12.3-r1 5.13.2-r1 5.14.1: Cross-platform application development framework
+dev-qt/qtcore 5.12.3-r1 5.12.3-r2 5.13.2-r1 5.13.2-r2 5.14.1: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.12.3 5.13.2 5.14.1: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.12.3 5.13.2 5.14.1: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 5.12.3 5.13.2 5.13.2-r1 5.14.1: The QML and Quick modules for the Qt5 framework
@@ -10597,7 +10597,7 @@ dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple make
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
 dev-util/kdbg 3.0.1: Graphical debugger interface
 dev-util/kdevelop 5.4.5 5.4.6: Integrated Development Environment, supporting KF5/Qt, C/C++ and much more
-dev-util/kdevelop-pg-qt 2.2.0: LL(1) parser generator used mainly by KDevelop language plugins
+dev-util/kdevelop-pg-qt 2.2.0 2.2.1: LL(1) parser generator used mainly by KDevelop language plugins
 dev-util/kdevelop-php 5.4.5 5.4.6: PHP plugin for KDevelop
 dev-util/kdevelop-python 5.4.5 5.4.6: Python plugin for KDevelop
 dev-util/kdstatemachineeditor 1.2.4 9999: Framework for creating Qt State Machine metacode using graphical user interfaces
