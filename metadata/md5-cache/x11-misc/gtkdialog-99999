@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile configure install prepare unpack
-DEPEND=!gtk3? ( x11-libs/gtk+:2 x11-libs/vte:0= ) gtk3? ( x11-libs/gtk+:3 x11-libs/vte:2.91= ) sys-apps/texinfo sys-devel/flex virtual/pkgconfig virtual/yacc >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile configure install postinst postrm prepare unpack
+DEPEND=gtk2? ( x11-libs/gtk+:2 x11-libs/vte:0= ) !gtk2? ( x11-libs/gtk+:3 x11-libs/vte:2.91= ) sys-apps/texinfo sys-devel/flex virtual/pkgconfig virtual/yacc
 DESCRIPTION=A small utility for fast and easy GUI building
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/oshazard/gtkdialog
-IUSE=gtk3
+IUSE=gtk2
 LICENSE=GPL-2
 PROPERTIES=live
-RDEPEND=!gtk3? ( x11-libs/gtk+:2 x11-libs/vte:0= ) gtk3? ( x11-libs/gtk+:3 x11-libs/vte:2.91= )
+RDEPEND=gtk2? ( x11-libs/gtk+:2 x11-libs/vte:0= ) !gtk2? ( x11-libs/gtk+:3 x11-libs/vte:2.91= )
 SLOT=0
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	809e27702c573cbba31c08ed00bbad33	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=fc1459cda1a4dce68914b8b5f1492d28
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	809e27702c573cbba31c08ed00bbad33	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=c60fac44f9da3f72f9f0b893e826834a

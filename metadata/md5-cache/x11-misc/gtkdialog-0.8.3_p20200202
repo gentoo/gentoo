@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install postinst postrm prepare
+DEPEND=gtk2? ( x11-libs/gtk+:2 x11-libs/vte:0= ) !gtk2? ( x11-libs/gtk+:3 x11-libs/vte:2.91= ) sys-apps/texinfo sys-devel/flex virtual/pkgconfig virtual/yacc
+DESCRIPTION=A small utility for fast and easy GUI building
+EAPI=7
+HOMEPAGE=https://github.com/oshazard/gtkdialog
+IUSE=gtk2
+KEYWORDS=~amd64 ~ppc ~x86
+LICENSE=GPL-2
+RDEPEND=gtk2? ( x11-libs/gtk+:2 x11-libs/vte:0= ) !gtk2? ( x11-libs/gtk+:3 x11-libs/vte:2.91= )
+SLOT=0
+SRC_URI=https://dev.gentoo.org/~jer/gtkdialog-0.8.3_p20200202.tar.xz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=f7c7a71394b4e6070c34ca3bca8586a7

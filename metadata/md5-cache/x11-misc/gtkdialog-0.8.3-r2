@@ -10,4 +10,4 @@ RDEPEND=x11-libs/gtk+:2 glade? ( gnome-base/libglade ) vte? ( x11-libs/vte:0= )
 SLOT=0
 SRC_URI=https://gtkdialog.googlecode.com/files/gtkdialog-0.8.3.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=19201f992a689a65b975f6acbe51d292
+_md5_=7255a5d6ffbe15da751339cadfdef895
