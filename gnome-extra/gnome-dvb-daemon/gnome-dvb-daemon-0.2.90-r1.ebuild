@@ -13,6 +13,7 @@ LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND=">=dev-libs/glib-2.32.0:2
 	dev-libs/libgudev:0
@@ -31,7 +32,6 @@ RDEPEND=">=dev-libs/glib-2.32.0:2
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	>=dev-util/intltool-0.40.0
-	>=dev-libs/libltdl-2.2.6:0
 	virtual/pkgconfig:0
 	>=sys-devel/gettext-0.18.1
 "
