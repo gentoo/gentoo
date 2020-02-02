@@ -89,10 +89,12 @@ src_prepare() {
 	rm -vrf "${S}"/lib/pty4j-native/linux/ppc64le || die
 	rm -vf "${S}"/bin/libdbm64* || die
 
-	for file in "${S}"/"${JRE_DIR}"/lib/amd64/{libfxplugins.so,libjfxmedia.so}
-	do
-		patchelf --set-rpath '$ORIGIN' $file || die
-	done
+	if [[ -f "${JRE_DIR}" ]]; then
+		for file in "${S}"/"${JRE_DIR}"/lib/amd64/{libfxplugins.so,libjfxmedia.so}
+		do
+			patchelf --set-rpath '$ORIGIN' $file || die
+		done
+	fi
 
 	patchelf --replace-needed liblldb.so liblldb.so.9 "${S}"/plugins/Kotlin/bin/linux/LLDBFrontend || die "Unable to patch LLDBFrontend for lldb"
 
