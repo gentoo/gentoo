@@ -46,9 +46,6 @@ src_compile() {
 
 src_install () {
 	default
-	if use doc; then
-		einstalldocs
-	fi
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples
 		docinto examples
