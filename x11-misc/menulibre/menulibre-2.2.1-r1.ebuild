@@ -54,6 +54,7 @@ python_prepare_all() {
 
 python_install_all() {
 	distutils-r1_python_install_all
+	python_optimize
 	rm -r "${ED}"/usr/share/doc/${PN} || die
 }
 
