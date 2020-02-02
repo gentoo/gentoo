@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -831,10 +831,6 @@ pkg_postinst() {
 	fi
 
 	if ! is_crosscompile && [[ ${ROOT} == "/" ]] ; then
-		# Reload init ... if in a chroot or a diff init package, ignore
-		# errors from this step #253697
-		/sbin/telinit U 2>/dev/null
-
 		# if the host locales.gen contains no entries, we'll install everything
 		local locale_list="${EROOT}etc/locale.gen"
 		if [[ -z $(locale-gen --list --config "${locale_list}") ]] ; then
