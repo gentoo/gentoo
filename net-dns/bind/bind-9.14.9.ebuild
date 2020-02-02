@@ -92,6 +92,10 @@ pkg_setup() {
 	eend ${?}
 }
 
+PATCHES=(
+	"${FILESDIR}"/mysql8-bool.patch
+)
+
 src_prepare() {
 	default
 
