@@ -20,7 +20,7 @@ IUSE=""
 
 RDEPEND+=" dev-db/postgresql:*"
 DEPEND+=" dev-db/postgresql
-	test? ( >=dev-db/postgresql-9.4[server,threads] )"
+	test? ( >=dev-db/postgresql-9.4[server(+),threads] )"
 
 all_ruby_prepare() {
 	# hack the Rakefile to make it sure that it doesn't load
