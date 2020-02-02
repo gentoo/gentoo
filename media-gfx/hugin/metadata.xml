@@ -5,7 +5,6 @@
 		<email>graphics@gentoo.org</email>
 		<name>Gentoo Graphics Project</name>
 	</maintainer>
-	<longdescription>hugin is a panorama stitching program</longdescription>
 	<use>
 		<flag name="sift">automatically align images with <pkg>media-gfx/autopano-sift-C</pkg></flag>
 	</use>
