@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,6 +30,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-gcc5.patch
 	"${FILESDIR}"/${P}-wmaker-0.95_support.patch
 	"${FILESDIR}"/${P}-fix_title_bar.patch
+	"${FILESDIR}"/${P}-gcc-10.patch
 )
 DOCS="AUTHORS ChangeLog NEWS README"
 
