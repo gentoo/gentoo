@@ -42,7 +42,7 @@ RDEPEND="!net-im/telegram-desktop-bin
 		dev-libs/libappindicator:3
 		x11-libs/gtk+:3
 	)
-	spell? ( app-text/enchant )
+	spell? ( app-text/enchant:= )
 "
 
 DEPEND="${RDEPEND}
