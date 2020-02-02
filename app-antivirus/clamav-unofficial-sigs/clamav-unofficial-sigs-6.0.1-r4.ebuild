@@ -33,7 +33,7 @@ src_install() {
 	dosbin "${PN}.sh"
 
 	insinto /etc/logrotate.d
-	doins "${FILESDIR}/${PN}.logrotate"
+	newins "${FILESDIR}/${PN}.logrotate" "${PN}"
 
 	insinto "/etc/${PN}"
 	doins config/{master,user}.conf
