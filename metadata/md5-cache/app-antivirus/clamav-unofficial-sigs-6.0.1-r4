@@ -11,4 +11,4 @@ RDEPEND=acct-group/clamav acct-user/clamav app-crypt/gnupg dev-lang/perl net-dns
 SLOT=0
 SRC_URI=https://github.com/extremeshok/clamav-unofficial-sigs/archive/6.0.1.tar.gz -> clamav-unofficial-sigs-6.0.1.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4d1301b8e835ab0fb26d4e7b680bcf1a
+_md5_=d662d8fcf952ebd1882e1bc78c9fb027

@@ -2,11 +2,11 @@ DEFINED_PHASES=prepare
 DEPEND=x11-libs/gtk+:2 >=sys-apps/lm-sensors-3 virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DESCRIPTION=A hardware health information viewer, interface to lm-sensors
 EAPI=6
-HOMEPAGE=http://www.linuxhardware.org/xsensors/
+HOMEPAGE=https://www.linuxhardware.org/xsensors/
 KEYWORDS=amd64 ppc x86
 LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 >=sys-apps/lm-sensors-3
 SLOT=0
-SRC_URI=http://www.linuxhardware.org/xsensors/xsensors-0.70.tar.gz
+SRC_URI=https://www.linuxhardware.org/xsensors/xsensors-0.70.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=63786d2ffe9b6e00b34b5f7ae32782c9
+_md5_=02a292d8f8febe23221b3bb6f5ed70ec
