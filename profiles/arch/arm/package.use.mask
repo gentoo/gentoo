@@ -147,10 +147,6 @@ media-tv/tvheadend hdhomerun
 # All current clang versions are broken on ARM.
 app-doc/doxygen clang
 
-# Thomas Deutschmann <whissi@gentoo.org> (2017-11-28)
-# Requires dev-libs/mongo-c-driver which isn't keyworded
->=app-admin/rsyslog-8.31 mongodb
-
 # Patrice Clement <monsieurp@gentoo.org> (2017-09-24)
 # Unmask Raspberry Pi support on arm.
 media-video/mpv -raspberry-pi
@@ -504,7 +500,7 @@ media-libs/phonon vlc
 
 # Michael Sterrett <mr_bones_@gentoo.org> (2012-03-04)
 # arm is missing keywords for >=dev-libs/json-glib-0.12
-app-admin/syslog-ng json mongodb
+app-admin/syslog-ng json
 
 # Anthony G. Basile <blueness@gentoo.org> (2011-12-21)
 # Mask the vde flag on tinc because net-misc/vde is not
