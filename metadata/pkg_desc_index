@@ -8501,7 +8501,7 @@ dev-python/pyqtgraph 0.10.0-r2: A pure-python graphics and GUI library built on 
 dev-python/pyquery 1.2.13 1.2.13-r1 1.4.0 1.4.1: A jQuery-like library for python
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 1.0 1.1: Generates and parses RFC 3339 timestamps
-dev-python/pyro 4.77: Distributed object middleware for Python (RPC)
+dev-python/pyro 4.77 4.78: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.4.12 0.4.21 0.5.5 0.5.5-r1: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0 9999: Python client for rqlite
 dev-python/pyrsistent 0.13.0 0.14.2 0.14.4 0.15.6: Persistent/Functional/Immutable data structures
@@ -14612,7 +14612,7 @@ net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
 net-im/tkabber 1.1.2: A jabber client written in Tcl/Tk
 net-im/toxic 0.8.2 0.8.3: A curses-based client for Tox
-net-im/transwhat 0.2.2-r1 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3
+net-im/transwhat 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3
 net-im/turses 0.2.23: Command line twitter client
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
@@ -18617,7 +18617,7 @@ x11-misc/vnc2swf 0.5.0-r1: A tool for recording Flash SWF movies from VNC sessio
 x11-misc/vym 2.7.1 9999: View Your Mind, a mindmap tool
 x11-misc/wayv 0.3-r2 0.3-r3: Wayv is hand-writing/gesturing recognition software for X
 x11-misc/wbar 2.3.4-r2 2.3.4-r3: A fast, lightweight quick launch bar
-x11-misc/wbarconf 0.7.2.2-r2: Configuration GUI for x11-misc/wbar
+x11-misc/wbarconf 0.7.2.2-r2 0.7.2.2-r3: Configuration GUI for x11-misc/wbar
 x11-misc/wdm 1.28-r4 1.28-r5: WINGs Display Manager
 x11-misc/whaw 0.2: Window manager independent Window Layout tool
 x11-misc/wininfo 0.7-r1: An X app that follows your pointer providing information about the windows below
@@ -18639,7 +18639,7 @@ x11-misc/xcalib 0.10: Tiny monitor calibration loader for X.org
 x11-misc/xcape 1.1 1.2: Utility to make modifier keys send custom key events when pressed on their own
 x11-misc/xcave 2.4.0 2.5.1: View and manage contents of your wine cellar
 x11-misc/xcb 2.4-r1: Marc Lehmann's improved X Cut Buffers
-x11-misc/xclip 0.13: Copy data from standard input to X clipboard
+x11-misc/xclip 0.13 9999: Copy data from standard input to X clipboard
 x11-misc/xcompmgr 1.1.8: X Compositing manager
 x11-misc/xdaliclock 2.43 2.44: Dali Clock is a digital clock. When a digit changes, it melts into its new shape
 x11-misc/xdesktopwaves 1.3-r2 1.4: A cellular automata setting the background of your X Windows desktop under water
