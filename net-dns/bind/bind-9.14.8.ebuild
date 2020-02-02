@@ -85,6 +85,10 @@ S="${WORKDIR}/${MY_P}"
 # bug 479092, requires networking
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/bind-9.14.8-mysql8-bool.patch
+)
+
 pkg_setup() {
 	ebegin "Creating named group and user"
 	enewgroup named 40
