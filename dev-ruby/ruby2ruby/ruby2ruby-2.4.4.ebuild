@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_EXTRADOC="README.rdoc History.rdoc"
 
@@ -20,7 +20,7 @@ IUSE="test"
 ruby_add_rdepend "
 	>=dev-ruby/sexp_processor-4.6.0:4
 	>=dev-ruby/ruby_parser-3.1:3
-	!<dev-ruby/ruby2ruby-1.3.1-r1"
+"
 ruby_add_bdepend "test? ( >=dev-ruby/minitest-5.3:5 >=dev-ruby/sexp_processor-4.10.0:4 )"
 
 all_ruby_prepare() {
