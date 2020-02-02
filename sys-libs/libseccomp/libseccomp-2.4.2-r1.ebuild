@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # TODO: Add python support.
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/seccomp/libseccomp/releases/download/v${PV}/${P}.tar
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="-* amd64 arm ~arm64 hppa ~mips ppc ppc64 s390 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="-* amd64 arm arm64 hppa ~mips ppc ppc64 s390 x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 # We need newer kernel headers; we don't keep strict control of the exact
