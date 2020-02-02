@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ RDEPEND="${PYTHON_DEPS}
 	dia? ( app-office/dia )
 	docbook? ( app-text/sgmltools-lite )
 	dot? ( media-gfx/graphviz )
-	enchant? ( app-text/enchant )
+	enchant? ( app-text/enchant:0 )
 	gnumeric? ( app-office/gnumeric )
 	html? ( dev-tex/html2latex )
 	hunspell? ( app-text/hunspell )
