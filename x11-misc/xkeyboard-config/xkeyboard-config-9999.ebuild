@@ -26,9 +26,7 @@ BDEPEND="
 	virtual/pkgconfig
 "
 RDEPEND=""
-DEPEND="
-	${LIVE_DEPEND}
-"
+DEPEND="${LIVE_DEPEND}"
 
 src_prepare() {
 	default
@@ -45,4 +43,8 @@ src_configure() {
 	)
 
 	econf "${econfargs[@]}"
+}
+
+src_test() {
+	:;
 }
