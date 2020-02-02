@@ -64,10 +64,6 @@ sys-fs/multipath-tools rbd
 # Dependencies not going to stable for now
 dev-util/geany-plugins gtkspell
 
-# Pacho Ramos <grknight@gentoo.org> (2016-11-01)
-# net-misc/libteam is now ~ppc ~ppc64
-net-misc/networkmanager teamd
-
 # Michael Palimaka <kensington@gentoo.org> (2016-10-21)
 # Requires media-libs/opencv which is not stable
 media-plugins/frei0r-plugins facedetect
