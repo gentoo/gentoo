@@ -1,0 +1,21 @@
+--- a/wmgeneral.c
++++ b/wmgeneral.c
+@@ -45,6 +45,7 @@ Window		iconwin, win;
+ GC			NormalGC;
+ XpmIcon		wmgen;
+ Pixmap		pixmask;
++Display		*display;
+ 
+   /*****************/
+  /* Mouse Regions */
+--- a/wmgeneral.h
++++ b/wmgeneral.h
+@@ -21,7 +21,7 @@ typedef struct {
+  /* Global variable */
+ /*******************/
+ 
+-Display		*display;
++extern Display		*display;
+ 
+   /***********************/
+  /* Function Prototypes */
