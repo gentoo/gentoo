@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3 xdg-utils
+inherit autotools xdg-utils
 
 DESCRIPTION="A small utility for fast and easy GUI building"
 HOMEPAGE="https://github.com/oshazard/gtkdialog"
-EGIT_REPO_URI="https://github.com/oshazard/gtkdialog"
+SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="gtk2"
 
 RDEPEND="
