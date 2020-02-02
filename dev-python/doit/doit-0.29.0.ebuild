@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 inherit eutils distutils-r1
 
 RESTRICT="test" # can't work as it imports nonexistant modules from coverage
@@ -20,7 +20,6 @@ RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
 	dev-python/pyinotify[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' python2_7 pypy)
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 DEPEND="test? ( ${RDEPEND}
