@@ -5,7 +5,4 @@
 	<email>graphics@gentoo.org</email>
 	<name>Gentoo Graphics Project</name>
 </maintainer>
-<longdescription>
-feh is an image viewer at heart, though it does other cool stuff.
-</longdescription>
 </pkgmetadata>
