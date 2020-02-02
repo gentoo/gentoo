@@ -1,5 +1,5 @@
 BDEPEND=dev-util/intltool sys-devel/gettext virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=configure prepare unpack
+DEFINED_PHASES=configure prepare test unpack
 DEPEND=>=x11-misc/util-macros-1.18
 DESCRIPTION=X keyboard configuration database
 EAPI=7
@@ -8,4 +8,4 @@ LICENSE=MIT
 PROPERTIES=live
 SLOT=0
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	809e27702c573cbba31c08ed00bbad33	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2469b4de2e6aa1de1a387232f9b1b479
+_md5_=19278858f8e3ec65217d649899367ff7
