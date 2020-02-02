@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,7 +36,7 @@ RDEPEND="crypt? ( >=app-crypt/gpgme-1.0.0 )
 	aspell? ( app-text/aspell )
 	vim-syntax? ( || ( app-editors/vim app-editors/gvim ) )
 	idn? ( net-dns/libidn:= )
-	spell? ( app-text/enchant )
+	spell? ( app-text/enchant:0 )
 	dev-libs/glib:2
 	net-libs/libnsl:0=
 	sys-libs/ncurses:0=
