@@ -5,7 +5,4 @@
 		<email>tupone@gentoo.org</email>
 		<name>Tupone Alfredo</name>
 	</maintainer>
-	<longdescription lang="en">
-		A collection of fancy functional tools focused on practicality.
-	</longdescription>
 </pkgmetadata>
