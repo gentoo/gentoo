@@ -20,7 +20,6 @@ provided.
 <use>
 <flag name="glade">Enable support for <pkg>gnome-base/libglade</pkg></flag>
 <flag name="gtk2">Build with GTK+2 instead of GTK+3</flag>
-<flag name="gtk3">Build with GTK+3 instead of GTK+2</flag>
 <flag name="vte">Enable support for <pkg>x11-libs/vte</pkg></flag>
 </use>
 </pkgmetadata>
