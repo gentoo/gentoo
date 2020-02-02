@@ -119,6 +119,4 @@ pkg_postinst() {
 	[ "${ROOT}" != "/" ] && return 0
 
 	ldconfig || die
-	# reload init ...
-	/sbin/telinit U 2>/dev/null
 }
