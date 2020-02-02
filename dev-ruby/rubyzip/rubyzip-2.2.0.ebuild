@@ -1,12 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
-RUBY_FAKEGEM_TASK_DOC=""
+RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="Changelog.md README.md TODO"
+
+RUBY_FAKEGEM_GEMSPEC="rubyzip.gemspec"
 
 inherit ruby-fakegem
 
@@ -16,7 +18,7 @@ HOMEPAGE="https://github.com/rubyzip/rubyzip"
 SRC_URI="https://github.com/rubyzip/rubyzip/archive/v${PV}.tar.gz -> ${P}-git.tgz"
 
 LICENSE="Ruby"
-SLOT="1"
+SLOT="$(ver_cut 1)"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
