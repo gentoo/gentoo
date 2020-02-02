@@ -10033,7 +10033,7 @@ dev-ruby/ruby-ldap 0.9.19 0.9.20: A Ruby interface to some LDAP libraries
 dev-ruby/ruby-macho 2.1.0 2.2.0: A library for viewing and manipulating Mach-O files in Ruby
 dev-ruby/ruby-mp3info 0.8.10: A pure Ruby library for access to mp3 files (internal infos and tags)
 dev-ruby/ruby-net-ldap 0.16.1 0.16.2: Pure ruby LDAP client implementation
-dev-ruby/ruby-oci8 2.2.5.1 2.2.7: A Ruby library for Oracle OCI8
+dev-ruby/ruby-oci8 2.2.7 2.2.8: A Ruby library for Oracle OCI8
 dev-ruby/ruby-odbc 0.99999: RubyODBC - For accessing ODBC data sources from the Ruby language
 dev-ruby/ruby-oembed 0.12.0: An oEmbed consumer library written in Ruby.
 dev-ruby/ruby-ole 1.2.12.1 1.2.12.2: Ruby library for easy read/write access to OLE compound documents
