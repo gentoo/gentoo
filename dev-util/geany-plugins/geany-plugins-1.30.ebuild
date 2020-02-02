@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	ctags? ( dev-util/ctags )
 	debugger? ( x11-libs/vte:0 )
 	defineformat? ( ${GTK_COMMON_DEPEND} )
-	enchant? ( app-text/enchant )
+	enchant? ( app-text/enchant:0 )
 	git? ( dev-libs/libgit2:= )
 	gpg? ( app-crypt/gpgme:1= )
 	gtkspell? (
