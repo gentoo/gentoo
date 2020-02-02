@@ -12,7 +12,7 @@ SRC_URI="https://github.com/mongodb/${PN}/tarball/v${PV/_/} -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~s390 x86"
+KEYWORDS="amd64 ~hppa ~s390 x86"
 IUSE="doc static-libs"
 
 # tests fails to build

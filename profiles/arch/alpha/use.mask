@@ -4,6 +4,10 @@
 # Unmask the flag which corresponds to ARCH.
 -alpha
 
+# Matt Turner <mattst88@gentoo.org> (2020-02-02)
+# Neither dev-python/pymongo nor dev-libs/mongo-c-driver are keyworded
+mongodb
+
 # Matt Turner <mattst88@gentoo.org> (2018-12-22)
 # net-libs/zeromq is not keyworded
 zeromq
