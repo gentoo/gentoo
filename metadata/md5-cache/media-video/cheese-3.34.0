@@ -1,0 +1,16 @@
+BDEPEND=|| ( dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.40 dev-lang/vala:0.36 ) app-text/docbook-xml-dtd:4.3 dev-util/itstool dev-libs/appstream-glib >=dev-util/intltool-0.50 dev-libs/libxslt dev-libs/libxml2:2 dev-util/glib-utils virtual/pkgconfig app-arch/xz-utils >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2 test? ( !prefix? ( x11-base/xorg-server[xvfb] ) x11-apps/xhost )
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=>=dev-libs/glib-2.39.90:2 >=x11-libs/gtk+-3.13.4:3[introspection?] >=gnome-base/gnome-desktop-2.91.6:3= >=media-libs/libcanberra-0.26[gtk3] >=media-libs/clutter-1.13.2:1.0[introspection?] >=media-libs/clutter-gtk-0.91.8:1.0 media-libs/clutter-gst:3.0 media-libs/cogl:1.0=[introspection?] media-video/gnome-video-effects x11-libs/gdk-pixbuf:2[jpeg,introspection?] >=media-libs/gstreamer-1.4:1.0[introspection?] >=media-libs/gst-plugins-base-1.4:1.0[introspection?,ogg,pango,theora,vorbis,X?] introspection? ( >=dev-libs/gobject-introspection-0.6.7:= ) X? ( x11-base/xorg-proto x11-libs/libX11 ) test? ( x11-libs/libXtst )
+DESCRIPTION=A cheesy program to take pictures and videos from your webcam
+EAPI=7
+HOMEPAGE=https://wiki.gnome.org/Apps/Cheese
+IUSE=gtk-doc +introspection test X test
+KEYWORDS=~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=GPL-2+
+RDEPEND=>=dev-libs/glib-2.39.90:2 >=x11-libs/gtk+-3.13.4:3[introspection?] >=gnome-base/gnome-desktop-2.91.6:3= >=media-libs/libcanberra-0.26[gtk3] >=media-libs/clutter-1.13.2:1.0[introspection?] >=media-libs/clutter-gtk-0.91.8:1.0 media-libs/clutter-gst:3.0 media-libs/cogl:1.0=[introspection?] media-video/gnome-video-effects x11-libs/gdk-pixbuf:2[jpeg,introspection?] >=media-libs/gstreamer-1.4:1.0[introspection?] >=media-libs/gst-plugins-base-1.4:1.0[introspection?,ogg,pango,theora,vorbis,X?] introspection? ( >=dev-libs/gobject-introspection-0.6.7:= ) X? ( x11-base/xorg-proto x11-libs/libX11 ) >=media-libs/gst-plugins-bad-1.4:1.0 >=media-libs/gst-plugins-good-1.4:1.0 >=media-plugins/gst-plugins-jpeg-1.4:1.0 >=media-plugins/gst-plugins-v4l2-1.4:1.0 >=media-plugins/gst-plugins-vpx-1.4:1.0
+REQUIRED_USE=test? ( X )
+RESTRICT=test
+SLOT=0/8
+SRC_URI=mirror://gnome/sources/cheese/3.34/cheese-3.34.0.tar.xz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	gnome.org	532d56d07b9eace4831aaa817d2b756a	meson	10d1eb1da93c5fc17e3814e6923beb57	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	cd46635fb3b81d6bc07830b4afe87066	virtualx	e49dbce7ac14426e1155497476915307	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=7c830ff48abe02ad62b71b053a1b15d8
