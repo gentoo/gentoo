@@ -11,14 +11,14 @@ EGIT_REPO_URI="https://github.com/oshazard/gtkdialog"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="gtk3"
+IUSE="gtk2"
 
 RDEPEND="
-	!gtk3? (
+	gtk2? (
 		x11-libs/gtk+:2
 		x11-libs/vte:0=
 	)
-	gtk3? (
+	!gtk2? (
 		x11-libs/gtk+:3
 		x11-libs/vte:2.91=
 	)
@@ -41,7 +41,7 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		$(use_enable gtk3)
+		$(usex gtk2 --disable-gtk3  --enable-gtk3)
 }
 
 src_compile() {
