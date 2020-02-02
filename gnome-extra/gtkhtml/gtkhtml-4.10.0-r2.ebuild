@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
+GNOME2_EAUTORECONF="yes"
 
-inherit autotools gnome2
+inherit gnome2
 
 DESCRIPTION="Lightweight HTML rendering/printing/editing engine"
 HOMEPAGE="https://gitlab.gnome.org/Archive/gtkhtml"
@@ -18,7 +19,7 @@ RDEPEND="
 	>=x11-libs/gtk+-3.2:3
 	>=x11-libs/cairo-1.10:=
 	x11-libs/pango
-	>=app-text/enchant-2.0.0
+	app-text/enchant:2
 	gnome-base/gsettings-desktop-schemas
 	>=app-text/iso-codes-0.49
 	>=net-libs/libsoup-2.26.0:2.4
@@ -34,11 +35,6 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	 "${FILESDIR}"/enchant-2.patch
 )
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	gnome2_src_configure --disable-static
