@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 SSL_CERT_MANDATORY=1
-inherit autotools eutils multilib pam ssl-cert
+inherit autotools eutils flag-o-matic multilib pam ssl-cert
 
 DESCRIPTION="An enterprise grade authenticating firewall based on netfilter"
 HOMEPAGE="http://www.nufw.org/"
@@ -54,6 +54,7 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -fcommon
 	econf \
 		$(use_enable debug) \
 		$(use_enable pam_nuauth pam-nufw) \
