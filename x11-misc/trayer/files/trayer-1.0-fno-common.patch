@@ -1,0 +1,11 @@
+--- a/plugin.h
++++ b/plugin.h
+@@ -9,8 +9,6 @@
+ #include <stdio.h>
+ #include "panel.h"
+ 
+-struct _plugin *stam;
+-
+ typedef struct {
+     /* common */
+     char *fname;
