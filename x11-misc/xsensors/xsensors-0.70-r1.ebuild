@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,13 +6,12 @@ EAPI=6
 inherit autotools
 
 DESCRIPTION="A hardware health information viewer, interface to lm-sensors"
-HOMEPAGE="http://www.linuxhardware.org/xsensors/"
-SRC_URI="http://www.linuxhardware.org/xsensors/${P}.tar.gz"
+HOMEPAGE="https://www.linuxhardware.org/xsensors/"
+SRC_URI="https://www.linuxhardware.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
-IUSE=""
 
 RDEPEND="x11-libs/gtk+:2
 	>=sys-apps/lm-sensors-3"
