@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
+
+DISTUTILS_USE_SETUPTOOLS=rdepend
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -16,7 +18,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="4"
-KEYWORDS="amd64 ~arm64 ppc x86"
+KEYWORDS="~amd64 ~arm64 ~ppc ~x86"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
@@ -26,7 +28,6 @@ RDEPEND="
 		'dev-python/selectors34[${PYTHON_USEDEP}]' -2)
 	>=dev-python/serpent-1.27[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		>=dev-python/cloudpickle-1.2.1[${PYTHON_USEDEP}]
 		dev-python/dill[${PYTHON_USEDEP}]
