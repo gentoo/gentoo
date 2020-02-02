@@ -27,7 +27,6 @@ DEPEND="
 		>=sys-libs/libselinux-1.28:0=
 		sys-libs/libsemanage:0=
 	)
-	su? ( !sys-apps/util-linux[su] )
 	xattr? ( sys-apps/attr:0= )
 "
 BDEPEND="
@@ -37,6 +36,7 @@ BDEPEND="
 RDEPEND="
 	${DEPEND}
 	pam? ( >=sys-auth/pambase-20150213 )
+	su? ( !sys-apps/util-linux[su(-)] )
 "
 
 PATCHES=(
