@@ -779,11 +779,6 @@ games-arcade/bub-n-bros
 # Removal in 30 days.  Bug #703762.
 games-action/accelerator3d
 
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, upstream abandoned further development, Broken.
-# Removal in 30 days.  Bug #693032.
-games-kids/tuxmathscrabble
-
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
