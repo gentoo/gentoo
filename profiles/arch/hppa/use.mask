@@ -81,10 +81,6 @@ clang
 # dev-lang/luajit has not been ported to HPPA
 luajit
 
-# Jeroen Roovers <jer@gentoo.org> (2014-09-19)
-# >=net-libs/libgadu-1.12.0 (bug #519854) requires dev-libs/protobuf-c (bug #519772)
-gadu
-
 # Jeroen Roovers <jer@gentoo.org> (2014-05-20)
 # Mask USE=systemtap generally until proper kernel support is in place
 systemtap

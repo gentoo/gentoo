@@ -4,7 +4,7 @@
 EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
-PYTHON_COMPAT=( python{2_7,3_{6,7}} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools flag-o-matic gnome2 toolchain-funcs multilib perl-module python-single-r1 xdg-utils
 
@@ -18,10 +18,9 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="0/2" # libpurple version
 KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-macos"
-IUSE="dbus debug doc eds gadu gnutls +gstreamer +gtk idn meanwhile pie"
-IUSE+=" networkmanager nls perl tcl tk spell sasl ncurses"
-IUSE+=" groupwise prediction python +xscreensaver zephyr zeroconf" # mono"
-IUSE+=" aqua"
+IUSE="aqua dbus debug doc eds gadu gnutls groupwise +gstreamer +gtk idn
+meanwhile ncurses networkmanager nls perl pie prediction python sasl spell tcl
+tk +xscreensaver zephyr zeroconf" # mono
 
 # dbus requires python to generate C code for dbus bindings (thus DEPEND only).
 # finch uses libgnt that links with libpython - {R,}DEPEND. But still there is
@@ -58,13 +57,11 @@ RDEPEND="
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 	)
 	perl? ( >=dev-lang/perl-5.16:= )
-	gadu? (
-		|| (
-			>=net-libs/libgadu-1.11.0[ssl,gnutls]
-			>=net-libs/libgadu-1.11.0[-ssl]
-		)
-	)
-	gnutls? ( net-libs/gnutls )
+	gadu? ( || (
+		>=net-libs/libgadu-1.11.0[ssl,gnutls(+)]
+		>=net-libs/libgadu-1.11.0[-ssl]
+	) )
+	gnutls? ( net-libs/gnutls:= )
 	!gnutls? (
 		dev-libs/nspr
 		dev-libs/nss
@@ -270,14 +267,12 @@ src_test() {
 	emake check VERBOSE=1
 }
 
-pkg_preinst() { gnome2_icon_savelist; }
-
 pkg_postinst() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 
 pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }

@@ -38,11 +38,6 @@ kwallet
 # This may change when/if qt4 goes away.
 qt5
 
-# Tobias Klausmann <klausman@gentoo.org> (2016-02-05)
-# Newer versions of libgadu depend on protobuf-c, which doesn't
-# compile on alpha as of slot:0.
-gadu
-
 # Julian Ospald <hasufell@gentoo.org> (2015-09-20)
 # no LibreSSL support yet
 curl_ssl_libressl
