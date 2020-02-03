@@ -54,7 +54,7 @@ COMMON_DEPEND="
 	)"
 
 RDEPEND="${COMMON_DEPEND}
-	java? ( virtual/jre )"
+	java? ( >=virtual/jre-1.8 )"
 
 DEPEND="${COMMON_DEPEND}
 	java? (
@@ -99,9 +99,8 @@ src_prepare() {
 		if use test; then
 			# make tests happy
 			# because one of the test requires loadable py module from the current ${BUILD_DIR}
-			sed -i \
-				-e "s|PYTHONPATH=@abs_top_srcdir@|PYTHONPATH=@builddir@|g" \
-				test/Makefile.am.inc || die
+			sed -e "s|PYTHONPATH=@abs_top_srcdir@|PYTHONPATH=@builddir@|g" \
+				-i test/Makefile.am.inc || die
 		fi
 
 		python_fix_shebang \
@@ -111,13 +110,12 @@ src_prepare() {
 
 	if use java; then
 		java-pkg-opt-2_src_prepare
-		sed "s|javadir = \$(pkgdatadir)|javadir = /usr/$(get_libdir)/zbar|" \
+		sed -e "s|javadir = \$(pkgdatadir)|javadir = /usr/$(get_libdir)/zbar|" \
 			-i java/Makefile.am || die
 	fi
 
 	# do not install {LICENSE,INSTALL,etc}.md doc files with 'make install' (use DOCS=() instead)
-	sed -i \
-		-e "s|^dist_doc_DATA =\(.*\)|dist_doc_DATA =|" Makefile.am || die
+	sed -e "s|^dist_doc_DATA =\(.*\)|dist_doc_DATA =|" -i Makefile.am || die
 
 	eautoreconf
 }
@@ -204,10 +202,10 @@ src_install() {
 		)
 	fi
 	multilib-minimal_src_install
-	einstalldocs
 }
 
 multilib_src_install_all() {
+	einstalldocs
 	find "${D}" -name '*.la' -delete || die
 }
 
