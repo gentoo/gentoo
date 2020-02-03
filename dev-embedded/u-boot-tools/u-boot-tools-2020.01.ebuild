@@ -20,6 +20,10 @@ DEPEND="
 	sys-devel/bison
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-gcc-10.patch
+)
+
 S=${WORKDIR}/${MY_P}
 
 src_compile() {
