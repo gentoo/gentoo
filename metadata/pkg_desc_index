@@ -11276,7 +11276,7 @@ games-misc/fortune-mod-dubya 20050118: Quotes from George W. Bush
 games-misc/fortune-mod-dune 2.0.1: Quotes from Frank Herbert's Dune Chronicles
 games-misc/fortune-mod-familyguy 0.2: Quotes from the TV-Series -Family Guy-
 games-misc/fortune-mod-firefly 2.1.1: Quotes from FireFly
-games-misc/fortune-mod-flashrider 1.10: Quotes from Prolinux articles and comments
+games-misc/fortune-mod-flashrider 1.10-r1: Quotes from Prolinux articles and comments
 games-misc/fortune-mod-futurama 0.2: Quotes from the TV-Series -Futurama-
 games-misc/fortune-mod-fvl 20030120: Quotes from Felix von Leitner (fefe)
 games-misc/fortune-mod-hitchhiker 0.1: Quotes from Hitchhikers Guide to the Galaxy
@@ -13203,6 +13203,7 @@ media-libs/vulkan-layers 1.1.125-r2 9999: Vulkan Validation Layers
 media-libs/vulkan-loader 1.1.125 9999: Vulkan Installable Client Driver (ICD) Loader
 media-libs/waffle 1.6.0 9999: Library that allows selection of GL API and of window system at runtime
 media-libs/webrtc-audio-processing 0.3.1: AudioProcessing library from the webrtc.org code base
+media-libs/webvfx 1.1.0: Video effects library based on web technologies
 media-libs/woff2 1.0.2-r1: Encode/decode WOFF2 font format
 media-libs/wxsvg 1.5.9 1.5.11: C++ library to create, manipulate and render SVG files
 media-libs/x264 0.0.20190214 0.0.20190903 9999: A free library for encoding X264/AVC streams
@@ -14045,7 +14046,7 @@ media-video/recordmydesktop 0.3.8.1-r6: A desktop session recorder producing Ogg
 media-video/rovclock 0.6e-r1: Overclocking utility for ATI Radeon cards
 media-video/rtmpdump 2.4_p20161210-r3 9999: RTMP client intended to stream audio or video flash content
 media-video/setpwc 1.3: Control various aspects of Philips (and compatible) webcams
-media-video/shotcut 19.06.15: A free, open source, cross-platform video editor
+media-video/shotcut 19.12.31: A free, open source, cross-platform video editor
 media-video/shrip 0.6.0-r1: Command line tool for ripping DVDs and encoding to AVI/OGM/MKV/MP4
 media-video/simplescreenrecorder 0.3.11-r2 9999: A Simple Screen Recorder
 media-video/smplayer 18.6.0 19.5.0 19.5.0-r1 19.10.2: Great Qt GUI front-end for mplayer/mpv
@@ -14668,7 +14669,7 @@ net-libs/glib-networking 2.60.3 2.60.4: Network-related giomodules for glib
 net-libs/gloox 1.0.22: A portable high-level Jabber/XMPP library for C++
 net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.32.1: GNOME framework for accessing online accounts
-net-libs/gnutls 3.6.7-r1 3.6.10-r1 3.6.11-r1 3.6.11.1-r1: A TLS 1.2 and SSL 3.0 implementation for the GNU project
+net-libs/gnutls 3.6.7-r1 3.6.11.1-r1 3.6.12: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0: Google Cloud Client Library for C++
 net-libs/grpc 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1-r1 1.21.1-r1 1.22.1 1.23.0 1.24.3 1.26.0-r1: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
@@ -17454,7 +17455,7 @@ sys-fs/growpart 0.0.1 0.0.30: A script that can grow your rootfs on first boot
 sys-fs/gt5 1.4.0-r2: a diff-capable 'du-browser'
 sys-fs/hfsplusutils 1.0.4-r2: HFS+ Filesystem Access Utilities (a PPC filesystem)
 sys-fs/hfsutils 3.2.6-r6 3.2.6_p14: HFS FS Access utils
-sys-fs/inotify-tools 3.14 3.20.1: a set of command-line programs providing a simple interface to inotify
+sys-fs/inotify-tools 3.20.1 3.20.2.2: a set of command-line programs providing a simple interface to inotify
 sys-fs/iprutils 2.4.7 2.4.17.1 2.4.18.1: IBM's tools for support of the ipr SCSI controller
 sys-fs/jdiskreport-bin 1.2.5-r1 1.3.0 1.4.1: JDiskReport helps you to understand disk drive usage
 sys-fs/jfsutils 1.1.15: IBM's Journaling Filesystem (JFS) Utilities
