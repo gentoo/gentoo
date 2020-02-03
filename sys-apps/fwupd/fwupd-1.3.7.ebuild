@@ -14,7 +14,7 @@ SRC_URI="https://github.com/hughsie/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
-IUSE="agent amt consolekit dell gtk-doc elogind minimal +gpg introspection +man nvme pkcs7 redfish synaptics systemd test thunderbolt uefi"
+IUSE="agent amt consolekit dell gtk-doc elogind minimal +gpg introspection +man nvme pkcs7 redfish synaptics systemd test thunderbolt tpm uefi"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	^^ ( consolekit elogind minimal systemd )
 	dell? ( uefi )
@@ -71,6 +71,7 @@ DEPEND="${PYTHON_DEPS}
 	thunderbolt? (
 		sys-apps/thunderbolt-software-user-space
 	)
+	tpm? ( app-crypt/tpm2-tss )
 	uefi? (
 		app-crypt/tpm2-tss
 		media-libs/fontconfig
@@ -81,14 +82,14 @@ DEPEND="${PYTHON_DEPS}
 		x11-libs/cairo
 	)
 "
+# Block sci-chemistry/chemical-mime-data for bug #701900
 RDEPEND="
+	!sci-chemistry/chemical-mime-data
 	${DEPEND}
 	sys-apps/dbus
 "
 
 pkg_setup() {
-	tc-ld-disable-gold # bug https://github.com/fwupd/fwupd/issues/1530
-
 	python-single-r1_pkg_setup
 	if use nvme; then
 		kernel_is -ge 4 4 || die "NVMe support requires kernel >= 4.4"
@@ -122,6 +123,7 @@ src_configure() {
 		$(meson_use systemd)
 		$(meson_use test tests)
 		$(meson_use thunderbolt plugin_thunderbolt)
+		$(meson_use tpm plugin_tpm)
 		$(meson_use uefi plugin_uefi)
 		# Requires libflashrom which our sys-apps/flashrom
 		# package does not provide
