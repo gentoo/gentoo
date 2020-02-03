@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
+# Ancient, no maintainer, py27-only, bug 708104. Masked for removal in 30 days.
+dev-util/gquilt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
+# Ancient, no maintainer, py27-only. Masked for removal in 30 days.
+dev-util/xesam-tools
+
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
