@@ -8333,7 +8333,7 @@ dev-python/pweave 0.30.3: Scientific report generator and literate programming t
 dev-python/pxml 0.2.12: A python library and command-line tool to prettify and colorize XML
 dev-python/py 1.4.30 1.4.34 1.5.2 1.5.3 1.5.4 1.8.0: library with cross-python path, ini-parsing, io, code, log facilities
 dev-python/py-amqp 2.3.2 2.4.2 2.5.0: Low-level AMQP client for Python (fork of amqplib)
-dev-python/py-cpuinfo 3.2.0 3.3.0 5.0.0: Get CPU info with pure Python 2 & 3
+dev-python/py-cpuinfo 5.0.0-r1: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.1 0.1.4: Github-Flavored Markdown for Python-Markdown
 dev-python/py-lz4framed 0.9.6: LZ4Frame library for Python (via C bindings)
 dev-python/py-ubjson 0.9.0 0.10.0 0.11.0: Universal Binary JSON encoder/decoder
