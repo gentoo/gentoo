@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils gnome2-utils
+inherit cmake-utils xdg
 
 DESCRIPTION="Synchronize files from ownCloud Server with your computer"
 HOMEPAGE="https://owncloud.org/"
@@ -12,7 +12,7 @@ SRC_URI="https://download.owncloud.com/desktop/stable/${P/-}.tar.xz"
 LICENSE="CC-BY-3.0 GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="doc dolphin nautilus shibboleth test"
+IUSE="doc dolphin gnome-keyring nautilus test"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	dev-libs/qtkeychain[qt5(+)]
@@ -29,10 +29,10 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 		kde-frameworks/kcoreaddons:5
 		kde-frameworks/kio:5
 	)
-	nautilus? ( dev-python/nautilus-python )
-	shibboleth? ( dev-qt/qtwebkit:5 )"
+	nautilus? ( dev-python/nautilus-python )"
 
-RDEPEND="${COMMON_DEPEND}"
+RDEPEND="${COMMON_DEPEND}
+	gnome-keyring? ( gnome-base/gnome-keyring )"
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
 	doc? (
@@ -69,8 +69,7 @@ src_configure() {
 		-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/${PF}
 		-DCMAKE_DISABLE_FIND_PACKAGE_Sphinx=$(usex !doc)
 		-DCMAKE_DISABLE_FIND_PACKAGE_KF5=$(usex !dolphin)
-		-DNO_SHIBBOLETH=$(usex !shibboleth)
-		-DUNIT_TESTING=$(usex test)
+		-DBUILD_TESTING=$(usex test)
 	)
 
 	cmake-utils_src_configure
@@ -81,9 +80,5 @@ pkg_postinst() {
 		elog "Documentation and man pages not installed"
 		elog "Enable doc USE-flag to generate them"
 	fi
-	gnome2_icon_cache_update
-}
-
-pkg_postrm() {
-	gnome2_icon_cache_update
+	xdg_pkg_postinst
 }
