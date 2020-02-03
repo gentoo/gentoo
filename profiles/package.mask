@@ -832,12 +832,6 @@ x11-misc/shutterbug
 # Removal in 14 days.  Bug #703040.
 sys-fs/yaffs2-utils
 
-# Michał Górny <mgorny@gentoo.org> (2019-12-15)
-# Repo gone in 2014.  Never had a release ebuild.  Apparently was broken
-# before anyway (bug #508924).
-# Removal in 14 days.  Bug #533052.
-net-analyzer/gsm-receiver
-
 # David Seifert <soap@gentoo.org> (2019-12-08)
 # Unmaintained, build hangs, tons of other build failures, missing
 # dependencies.  Bug #663794, #666916, #666922, #667062, #678068,
