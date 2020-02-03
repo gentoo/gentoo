@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc dolphin gnome-keyring nautilus test"
 
 COMMON_DEPEND=">=dev-db/sqlite-3.4:3
-	dev-libs/qtkeychain[qt5(+)]
+	dev-libs/qtkeychain[gnome-keyring?,qt5(+)]
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -31,8 +31,7 @@ COMMON_DEPEND=">=dev-db/sqlite-3.4:3
 	)
 	nautilus? ( dev-python/nautilus-python )"
 
-RDEPEND="${COMMON_DEPEND}
-	gnome-keyring? ( gnome-base/gnome-keyring )"
+RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
 	dev-qt/linguist-tools:5
 	doc? (
