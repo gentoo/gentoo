@@ -1,0 +1,14 @@
+BDEPEND=>sys-devel/gettext-0.18.3 virtual/pkgconfig doc? ( app-doc/doxygen ) virtual/pkgconfig
+DEFINED_PHASES=configure install prepare
+DEPEND=acct-group/plugdev virtual/libusb:1 crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )
+DESCRIPTION=Implementation of Microsoft's Media Transfer Protocol (MTP)
+EAPI=7
+HOMEPAGE=http://libmtp.sourceforge.net/
+IUSE=+crypt doc examples static-libs
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~x86
+LICENSE=LGPL-2.1
+RDEPEND=acct-group/plugdev virtual/libusb:1 crypt? ( >=dev-libs/libgcrypt-1.5.4:0= )
+SLOT=0/9
+SRC_URI=mirror://sourceforge/libmtp/libmtp-1.1.17.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
+_md5_=09b96d2f4f1602516521328461845a6f
