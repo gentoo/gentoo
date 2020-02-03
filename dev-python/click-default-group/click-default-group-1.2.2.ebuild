@@ -12,7 +12,7 @@ SRC_URI="https://github.com/click-contrib/${PN}/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~sparc x86"
 
 RDEPEND="dev-python/click[${PYTHON_USEDEP}]"
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
