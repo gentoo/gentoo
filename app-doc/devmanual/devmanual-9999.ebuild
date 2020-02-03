@@ -18,7 +18,7 @@ fi
 
 LICENSE="CC-BY-SA-4.0"
 SLOT="0"
-IUSE="+fallback"
+IUSE="+offline"
 
 BDEPEND="dev-libs/libxml2
 	dev-libs/libxslt
@@ -27,14 +27,9 @@ BDEPEND="dev-libs/libxml2
 
 PATCHES=( "${FILESDIR}"/${PN}-eclasses.patch )
 
-src_prepare() {
-	default
-	use fallback && eapply "${FILESDIR}"/${PN}-fallback.patch
-}
-
 src_compile() {
-	emake build
-	use fallback || emake documents.js
+	emake build OFFLINE=$(usex offline 1 0)
+	use offline || emake documents.js
 }
 
 src_install() {
@@ -54,7 +49,7 @@ src_install() {
 
 	local DOC_CONTENTS="In order to browse the Gentoo Development Guide in
 		offline mode, point your browser to the following url:
-		${EPREFIX}/usr/share/doc/devmanual/html/index.html"
+		file://${EPREFIX}/usr/share/doc/${PN}/html/index.html"
 	readme.gentoo_create_doc
 }
 
@@ -66,6 +61,5 @@ pkg_postinst() {
 		elog "the following package:"
 		elog
 		elog "app-doc/eclass-manpages"
-		elog
 	fi
 }
