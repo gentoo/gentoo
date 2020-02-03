@@ -29,14 +29,6 @@ RDEPEND="
 
 QA_PREBUILT='*'
 
-pkg_pretend() {
-	mount-boot_pkg_pretend
-
-	ewarn "This is an experimental package.  The built kernel and/or initramfs"
-	ewarn "may not work at all or fail with your bootloader configuration.  Please"
-	ewarn "make sure to keep a backup kernel available before testing it."
-}
-
 src_unpack() {
 	ebegin "Unpacking ${MY_P}.${ARCH}.xpak"
 	tar -x < <(xz -c -d --single-stream "${DISTDIR}/${MY_P}.${ARCH}.xpak")

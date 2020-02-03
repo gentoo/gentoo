@@ -5,23 +5,26 @@ EAPI=7
 
 inherit kernel-build
 
-MY_P=linux-${PV}
-# https://git.archlinux.org/svntogit/packages.git/log/trunk/config?h=packages/linux-lts
-AMD64_CONFIG_VER=4.19.92-arch1
-AMD64_CONFIG_HASH=bf97de6a2e405659aaad4c251b7f0bb48d5ed3c9
-# https://git.archlinux32.org/packages/log/core/linux-lts/config
-I686_CONFIG_VER=4.19.85-arch1
-I686_CONFIG_HASH=1f0345e2983d2edd55b401cb5a87fdf365a4192c
+MY_P=linux-${PV%.*}
+GENPATCHES_P=genpatches-${PV%.*}-${PV##*.}
+# https://git.archlinux.org/svntogit/packages.git/log/trunk/config?h=packages/linux
+AMD64_CONFIG_VER=5.4.13.arch1
+AMD64_CONFIG_HASH=9eed969590614a38d370a9fe04a4f5d38ba5e06e
+# https://git.archlinux32.org/packages/log/core/linux/config.i686
+I686_CONFIG_VER=5.4.13-arch1
+I686_CONFIG_HASH=95f890a9f9131e7a0e01a4f3e9c5ee423756a233
 
-DESCRIPTION="Linux kernel built from vanilla upstream sources"
+DESCRIPTION="Linux kernel built with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
+	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.base.tar.xz
+	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	amd64? (
-		https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${AMD64_CONFIG_HASH}
+		https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux&id=${AMD64_CONFIG_HASH}
 			-> linux-${AMD64_CONFIG_VER}.amd64.config
 	)
 	x86? (
-		https://git.archlinux32.org/packages/plain/core/linux-lts/config?id=${I686_CONFIG_HASH}
+		https://git.archlinux32.org/packages/plain/core/linux/config.i686?id=${I686_CONFIG_HASH}
 			-> linux-${I686_CONFIG_VER}.i686.config
 	)"
 S=${WORKDIR}/${MY_P}
@@ -30,17 +33,14 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	!sys-kernel/vanilla-kernel:${SLOT}
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
 
-pkg_pretend() {
-	mount-boot_pkg_pretend
-
-	ewarn "This is an experimental package.  The built kernel and/or initramfs"
-	ewarn "may not work at all or fail with your bootloader configuration.  Please"
-	ewarn "make sure to keep a backup kernel available before testing it."
-}
-
 src_prepare() {
+	local PATCHES=(
+		# meh, genpatches have no directory
+		"${WORKDIR}"/*.patch
+	)
 	default
 
 	# prepare the default config

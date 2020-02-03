@@ -5,7 +5,8 @@ EAPI=7
 
 inherit kernel-build
 
-MY_P=linux-${PV}
+MY_P=linux-4.19.94
+GENPATCHES_P=genpatches-${PV%.*}-$(( ${PV##*.} - 1))
 # https://git.archlinux.org/svntogit/packages.git/log/trunk/config?h=packages/linux-lts
 AMD64_CONFIG_VER=4.19.92-arch1
 AMD64_CONFIG_HASH=bf97de6a2e405659aaad4c251b7f0bb48d5ed3c9
@@ -13,9 +14,11 @@ AMD64_CONFIG_HASH=bf97de6a2e405659aaad4c251b7f0bb48d5ed3c9
 I686_CONFIG_VER=4.19.85-arch1
 I686_CONFIG_HASH=1f0345e2983d2edd55b401cb5a87fdf365a4192c
 
-DESCRIPTION="Linux kernel built from vanilla upstream sources"
+DESCRIPTION="Linux kernel built with Gentoo patches"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+=" https://cdn.kernel.org/pub/linux/kernel/v$(ver_cut 1).x/${MY_P}.tar.xz
+	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.base.tar.xz
+	https://dev.gentoo.org/~mpagano/dist/genpatches/${GENPATCHES_P}.extras.tar.xz
 	amd64? (
 		https://git.archlinux.org/svntogit/packages.git/plain/trunk/config?h=packages/linux-lts&id=${AMD64_CONFIG_HASH}
 			-> linux-${AMD64_CONFIG_VER}.amd64.config
@@ -30,17 +33,17 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
+	!sys-kernel/vanilla-kernel:${SLOT}
 	!sys-kernel/vanilla-kernel-bin:${SLOT}"
 
-pkg_pretend() {
-	mount-boot_pkg_pretend
-
-	ewarn "This is an experimental package.  The built kernel and/or initramfs"
-	ewarn "may not work at all or fail with your bootloader configuration.  Please"
-	ewarn "make sure to keep a backup kernel available before testing it."
-}
-
 src_prepare() {
+	local PATCHES=(
+		# meh, genpatches have no directory
+		# (skip most patch release patches, we just fetch newer sources)
+		"${WORKDIR}"/109[4-9]*.patch
+		"${WORKDIR}"/11*.patch
+		"${WORKDIR}"/[2-9]*.patch
+	)
 	default
 
 	# prepare the default config

@@ -6,15 +6,15 @@ EAPI=7
 inherit kernel-install
 
 MY_P=${P/-bin/}-1
-DESCRIPTION="Pre-built Linux kernel with genpatches"
+DESCRIPTION="Pre-built vanilla Linux kernel"
 HOMEPAGE="https://www.kernel.org/"
 SRC_URI+="
 	amd64? (
-		https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/gentoo-kernel/${MY_P}.xpak
+		https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/vanilla-kernel/${MY_P}.xpak
 			-> ${MY_P}.amd64.xpak
 	)
 	x86? (
-		https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/gentoo-kernel/${MY_P}.xpak
+		https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/vanilla-kernel/${MY_P}.xpak
 			-> ${MY_P}.x86.xpak
 	)"
 S=${WORKDIR}
@@ -23,19 +23,9 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86"
 
 RDEPEND="
-	!sys-kernel/gentoo-kernel:${SLOT}
-	!sys-kernel/vanilla-kernel:${SLOT}
-	!sys-kernel/vanilla-kernel-bin:${SLOT}"
+	!sys-kernel/vanilla-kernel:${SLOT}"
 
 QA_PREBUILT='*'
-
-pkg_pretend() {
-	mount-boot_pkg_pretend
-
-	ewarn "This is an experimental package.  The built kernel and/or initramfs"
-	ewarn "may not work at all or fail with your bootloader configuration.  Please"
-	ewarn "make sure to keep a backup kernel available before testing it."
-}
 
 src_unpack() {
 	ebegin "Unpacking ${MY_P}.${ARCH}.xpak"
