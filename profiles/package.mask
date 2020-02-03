@@ -789,11 +789,6 @@ games-kids/tuxmathscrabble
 # Bug #692228, Removal in 30 days.
 x11-terms/multi-aterm
 
-# James Le Cuirot <chewi@gentoo.org> (2019-12-23)
-# No license. HOMEPAGE and SRC_URI are dead.
-# Removal in 30 days. See bug #703552.
-games-util/xboxgw
-
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
