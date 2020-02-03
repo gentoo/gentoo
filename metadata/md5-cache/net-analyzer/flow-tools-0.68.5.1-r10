@@ -10,4 +10,4 @@ RDEPEND=sys-apps/tcp-wrappers sys-libs/zlib mysql? ( dev-db/mysql-connector-c:0=
 SLOT=0
 SRC_URI=https://flow-tools.googlecode.com/files/flow-tools-0.68.5.1.tar.bz2
 _eclasses_=user	00484e1be1aac73e24fca1c99557a7d6
-_md5_=afc46b0d4ee0abe8035fb258bd8b22c6
+_md5_=0da3d4cbf8bcfeb5cecdb18b5041a55a
