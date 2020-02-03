@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/Maproom/qmapshack/wiki"
 SRC_URI="https://github.com/Maproom/${PN}/archive/V_1.14.0.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 RDEPEND="dev-qt/qtwebengine:5[widgets]
 	dev-qt/qtdeclarative:5[widgets]
