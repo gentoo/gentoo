@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-MY_EXTRAS_VER="20190731-2258Z"
+MY_EXTRAS_VER="20200203-1749Z"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -62,6 +62,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20024_all_mariadb-10.2.6-mysql_st-regression.patch
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.2.6-gssapi-detect.patch
 	"${MY_PATCH_DIR}"/20035_all_mariadb-10.3-atomic-detection.patch
+	"${MY_PATCH_DIR}"/20039_all_mariadb-binutil-libs-2.34.patch
 )
 
 # Be warned, *DEPEND are version-dependant
