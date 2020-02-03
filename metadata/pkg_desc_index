@@ -4837,7 +4837,7 @@ dev-libs/cl 1.2.3 1.2.4 9999: OpenCL bindings for Erlang
 dev-libs/clhpp 2.0.10: Khronos OpenCL C++ bindings
 dev-libs/cloog 0.18.1 0.18.4 9999: A loop generator for scanning polyhedra
 dev-libs/collada-dom 2.5.0 9999: COLLADA Document Object Model (DOM) C++ Library
-dev-libs/concurrencykit 0.5.2 0.6.0: A library with concurrency related algorithms and data structures in C
+dev-libs/concurrencykit 0.6.0 0.7.0: A library with concurrency related algorithms and data structures in C
 dev-libs/confuse 3.0 3.2.2: a configuration file parser library
 dev-libs/console_bridge 0.4.3 0.4.4 9999: A ROS-independent package for logging into rosconsole/rosout
 dev-libs/cppcodec 0.2 9999: C++11 library to encode/decode base64, base64url, base32, base32hex and hex
@@ -8486,11 +8486,9 @@ dev-python/pyproj 1.9.5.1-r1 2.4.2: Python interface to the PROJ library
 dev-python/pyproject2setuppy 2: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pypy 7.3.0: A fast, compliant alternative implementation of the Python language
-dev-python/pypy-bin 7.3.0: Backwards compatibility package to install binary ver of PyPy
 dev-python/pypy-exe 7.3.0: PyPy executable (build from source)
 dev-python/pypy-exe-bin 7.3.0_p1: PyPy executable (pre-built version)
 dev-python/pypy3 7.3.0: A fast, compliant alternative implementation of the Python (3.6) language
-dev-python/pypy3-bin 7.3.0: Backwards compatibility package to install binary ver of PyPy3
 dev-python/pypy3-exe 7.3.0: PyPy3 executable (build from source)
 dev-python/pypy3-exe-bin 7.3.0_p1: PyPy3 executable (pre-built version)
 dev-python/pyqrcode 1.2.1: A pure Python QR code generator with SVG, EPS, PNG and terminal output
@@ -9757,7 +9755,6 @@ dev-ruby/introspection 0.0.4: Dynamic inspection of the hierarchy of method defi
 dev-ruby/iobuffer 1.1.2-r3: IO::Buffer is a byte queue which is intended for non-blocking I/O applications
 dev-ruby/itextomml 1.5.8 1.6.0: Native Ruby bindings to itex2MML, which converts itex equations to MathML
 dev-ruby/jbuilder 2.9.1: Create JSON structures via a Builder-style DSL
-dev-ruby/jeweler 2.3.9: Rake tasks to manage gems, versioning and generate new projects
 dev-ruby/jmespath 1.4.0: Implements JMESPath for Ruby
 dev-ruby/journey 1.0.4-r1: Journey is a router. It routes requests
 dev-ruby/jquery-rails 3.1.4 4.3.3 4.3.5: jQuery! For Rails! So great
@@ -9907,7 +9904,6 @@ dev-ruby/prawn 2.2.0: Fast, Nimble PDF Generation For Ruby
 dev-ruby/prawn-table 0.2.2-r1: Provides support for tables in Prawn
 dev-ruby/protected_attributes 1.1.4: Protect attributes from mass-assignment in ActiveRecord models
 dev-ruby/pry 0.12.2: Pry is a powerful alternative to the standard IRB shell for Ruby
-dev-ruby/psych 3.1.0: A libyaml wrapper for Ruby
 dev-ruby/public_suffix 3.1.1 4.0.1 4.0.2 4.0.3: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/pundit 1.1.0 2.1.0: Object oriented authorization for Rails applications
 dev-ruby/puppet_forge 2.2.9-r1 2.3.0 2.3.1: Tools to access Forge API information on Modules, Users, and Releases
@@ -10151,7 +10147,7 @@ dev-ruby/trollop 2.1.3: Trollop is a commandline option parser for Ruby
 dev-ruby/ttfunk 1.5.1: A TrueType font parser written in pure ruby
 dev-ruby/tty-color 0.4.3 0.5.0 0.5.1: Terminal color capabilities detection
 dev-ruby/tty-command 0.8.2 0.9.0: Terminal color capabilities detection
-dev-ruby/tty-cursor 0.7.0: Move the terminal cursor around and manipulate text using intuitive method calls
+dev-ruby/tty-cursor 0.7.0 0.7.1: Move the terminal cursor around and manipulate text using intuitive method calls
 dev-ruby/tty-file 0.7.0: File manipulation utility methods
 dev-ruby/tty-platform 0.2.0 0.2.1: Query methods for detecting different operating systems
 dev-ruby/tty-prompt 0.19.0 0.20.0: A beautiful and powerful interactive command line prompt
@@ -11384,7 +11380,6 @@ games-puzzle/hangman 0.9.2-r1: The classic word guessing game
 games-puzzle/hexalate 1.1.3: A color matching game
 games-puzzle/hitori 3.34.0: Logic puzzle game for GNOME
 games-puzzle/icebreaker 1.9.6-r1: Trap and capture penguins on Antarctica
-games-puzzle/jools 0.20-r3: clone of Bejeweled, a popular pattern-matching game
 games-puzzle/ksokoban 0.5.0_pre20190225 9999: The Japanese warehouse keeper game
 games-puzzle/lightsoff 3.34.0: Turn off all the lights
 games-puzzle/lmarbles 1.0.8: puzzle game inspired by Atomix and written in SDL
@@ -11474,7 +11469,6 @@ games-rpg/costume-quest 2.0.0.3: A Halloween adventure from Tim Schafer's Double
 games-rpg/daimonin-client 0.10.8: A graphical 2D tile-based MMORPG
 games-rpg/dear-esther 20130608: Ghost story, told using first-person gaming technologies
 games-rpg/draci-historie 2012-r1: Bert the little dragon searches for his father
-games-rpg/dragonhunt 3.56-r2: A simple graphical RPG
 games-rpg/drascula 1.0-r3: Drascula: The Vampire Strikes Back
 games-rpg/dreamweb 1.1-r1: Top-down adventure game set in a gritty futuristic/dystopian city
 games-rpg/dungeon-defenders 20130305: A hybrid of two hot genres: Tower Defense and cooperative online Action-RPG
@@ -12319,7 +12313,7 @@ mail-filter/rspamd 2.1 2.2 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.87-r1: Sieve Command Line Interface
 mail-filter/sigh 1607.1.2 1607.1.6: S/MIME signing milter
-mail-filter/spamassassin 3.4.2-r2 3.4.2-r6 3.4.3: An extensible mail filter which can identify and tag spam
+mail-filter/spamassassin 3.4.2-r2 3.4.2-r6 3.4.3 3.4.4: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spambayes 1.1_beta2: An anti-spam filter using on Bayesian filtering
 mail-filter/spamdyke 4.3.0 5.0.1: A drop-in connection-time spam filter for qmail
@@ -12956,7 +12950,6 @@ media-libs/libcdaudio 0.99.12-r2: Library of cd audio related routines
 media-libs/libcddb 1.3.2-r1: A library for accessing a CDDB server
 media-libs/libcdr 0.1.5 9999: Library parsing the Corel cdr documents
 media-libs/libchamplain 0.12.20: Clutter based world map renderer
-media-libs/libclalsadrv 2.0.0-r1: ALSA driver C++ access library
 media-libs/libclastfm 0.5: C API library to the last.fm web service (unofficial)
 media-libs/libcue 2.2.1: CUE Sheet Parser Library
 media-libs/libcuefile 477-r1: Cue File library from Musepack
@@ -14590,7 +14583,7 @@ net-im/slack-bin 2.1.2 3.1.1 3.4.2 4.0.2 4.1.1: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/telegram-desktop 1.9.8 1.9.9: Official desktop client for Telegram
-net-im/telegram-desktop-bin 1.9.7 1.9.8: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 1.9.7 1.9.8 1.9.9: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
@@ -15417,7 +15410,7 @@ net-proxy/sshuttle 0.78.5: Transparent proxy server that works as a poor man's V
 net-proxy/tayga 0.9.2-r1 0.9.2-r2 0.9.2-r3: out-of-kernel stateless NAT64 implementation based on TUN
 net-proxy/tinyproxy 1.10.0-r1: A lightweight HTTP/SSL proxy
 net-proxy/torsocks 2.2.0 2.3.0: Use most socks-friendly applications with Tor
-net-proxy/trojan 1.10.0 1.12.3 1.13.0: An unidentifiable mechanism that helps you bypass GFW
+net-proxy/trojan 1.10.0 1.12.3 1.13.0 1.14.1: An unidentifiable mechanism that helps you bypass GFW
 net-proxy/tsocks 1.8_beta5-r8 1.8_beta5-r9: Transparent SOCKS v4 proxying library
 net-proxy/wwwoffle 2.9i-r1: Web caching proxy suitable for non-permanent Internet connections
 net-proxy/ziproxy 3.3.1-r1: A forwarding, non-caching, compressing web proxy server
