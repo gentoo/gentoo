@@ -1,11 +1,11 @@
 BDEPEND=dev-libs/libxml2 dev-libs/libxslt gnome-base/librsvg media-fonts/open-sans >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile install postinst prepare unpack
+DEFINED_PHASES=compile install postinst unpack
 DESCRIPTION=The Gentoo Development Guide
 EAPI=7
 HOMEPAGE=https://devmanual.gentoo.org/
-IUSE=+fallback
+IUSE=+offline
 LICENSE=CC-BY-SA-4.0
 PROPERTIES=live
 SLOT=0
 _eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=1894c407fa2067de38bdc52d891ac66d
+_md5_=337c072a6ff7c6fd23662e1269ee58dc

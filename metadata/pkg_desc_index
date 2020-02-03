@@ -1217,7 +1217,7 @@ app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs L
 app-doc/clsync-docs 0.4.2: Clsync and libclsync API documentation
 app-doc/cppman 0.4.8: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.06 6.07 6.08: The Csound reference manual
-app-doc/devmanual 0_pre20141116 9999: The Gentoo Development Guide
+app-doc/devmanual 0_pre20141116 0_pre20200203 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.15 1.8.16-r1 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
