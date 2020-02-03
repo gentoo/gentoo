@@ -738,105 +738,11 @@ games-rpg/dragonhunt
 # Removal in 30 days.  Bug #703784.
 games-puzzle/jools
 
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703782.
-games-puzzle/hexamine
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703780.
-games-puzzle/4stattack
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703774.
-games-arcade/watermelons
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703772.
-games-arcade/triplexinvaders
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703770.
-games-arcade/pydance
-games-arcade/pydance-songs
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, no other distro packages it anymore.
-# Removal in 30 days.  Bug #703768.
-games-arcade/pycadia
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, no other distro packages it anymore.
-# Removal in 30 days.  Bug #703764.
-games-arcade/bub-n-bros
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, upstream abandoned since 2005.
-# Removal in 30 days.  Bug #703762.
-games-action/accelerator3d
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, upstream abandoned further development, Broken.
-# Removal in 30 days.  Bug #693032.
-games-kids/tuxmathscrabble
-
-# David Seifert <soap@gentoo.org> (2019-12-24)
-# Unmaintained, uses dead POSIX streams interface, EAPI 4.
-# Bug #692228, Removal in 30 days.
-x11-terms/multi-aterm
-
-# James Le Cuirot <chewi@gentoo.org> (2019-12-23)
-# No license. HOMEPAGE and SRC_URI are dead.
-# Removal in 30 days. See bug #703552.
-games-util/xboxgw
-
-# David Seifert <soap@gentoo.org> (2019-12-22)
-# Unmaintained, dead upstreams, monstrous build systems.
-# Bug #568364, Removal in 30 days.
-sci-libs/jmol-acme
-sci-libs/libcore
-sci-libs/naga
-sci-libs/spooles
-sci-libs/vecmath-objectclub
-
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
 =app-emulation/xen-pvgrub-4.13.0
 =app-emulation/xen-tools-4.13.0
-
-# Anthony G. Basile <blueness@gentoo.org> (2019-12-17)
-# Project has been dead upstream for years.
-# Removal in 30 days.
-app-benchmarks/spew
-
-# Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-16)
-# Simplify FOX packages. Adie, calculator, pathfinder, and shutterbug
-# can now be found behind x11-libs/fox[tools], and reswrap is always
-# installed by it.
-# Removal in 30 days.  Bug #703088. Bug #703084.
-app-editors/adie
-dev-util/reswrap
-sci-calculators/calculator
-x11-misc/pathfinder
-x11-misc/shutterbug
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-15)
-# Live ebuild only.  Not touched since 2012.  Unsurprisingly,
-# the included patch no longer applies.  Actually, there's
-# sys-fs/yaffs2utils duplicate which is a release.
-# Removal in 14 days.  Bug #703040.
-sys-fs/yaffs2-utils
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-15)
-# Repo gone in 2014.  Never had a release ebuild.  Apparently was broken
-# before anyway (bug #508924).
-# Removal in 14 days.  Bug #533052.
-net-analyzer/gsm-receiver
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
 # Unmaintained, build hangs, tons of other build failures, missing
