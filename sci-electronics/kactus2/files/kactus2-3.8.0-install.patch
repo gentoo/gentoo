@@ -1,0 +1,30 @@
+--- a/.qmake.conf
++++ b/.qmake.conf
+@@ -2,9 +2,14 @@
+ LOCAL_INSTALL_DIR=""
+ 
+ isEmpty(LOCAL_INSTALL_DIR) {
++    # Get the bitness of the system.
++    UNAME = $$system(uname -m)
++
+     # Select paths for binaries in accordance with convention.
+     bin_path = /usr/bin
+-    lib_path = /usr/lib
++    # Lib path depend on the bitness of the system.
++    equals(UNAME, x86_64): lib_path = /usr/lib64
++    !equals(UNAME, x86_64): lib_path = /usr/lib
+     plugin_path = /usr/share/kactus2/plugins
+ 
+     # Files and destination path for possible settings file upgrades.
+@@ -23,9 +28,8 @@ isEmpty(LOCAL_INSTALL_DIR) {
+     unix:config.path = /etc/xdg/TUT
+ 
+     # Copying stuff, exact locations seem to depend on the bitness of the system.
+-    UNAME = $$system(uname -m)
+-    equals(UNAME, x86_64): unix:config.extra = cp ./Administrative/releaseFiles/DefaultSettingsLinux.ini /etc/xdg/TUT/Kactus2.ini; (test -d /usr/lib64 && ln -f -s /usr/bin/kactus2 /usr/lib64/libKactus2.so) || (test -d /lib/x86_64-linux-gnu && ln -f -s /usr/bin/kactus2 /lib/x86_64-linux-gnu/libKactus2.so)
+-    !equals(UNAME, x86_64): unix:config.extra = cp ./Administrative/releaseFiles/DefaultSettingsLinux.ini /etc/xdg/TUT/Kactus2.ini; ln -f -s /usr/bin/kactus2 /usr/lib/libKactus2.so
++    equals(UNAME, x86_64): unix:config.extra = mkdir -p $(INSTALL_ROOT)/etc/xdg/TUT; cp ./Administrative/releaseFiles/DefaultSettingsLinux.ini $(INSTALL_ROOT)/etc/xdg/TUT/Kactus2.ini; (test -d $(INSTALL_ROOT)/usr/lib64 && ln -f -s $(INSTALL_ROOT)/usr/bin/kactus2 $(INSTALL_ROOT)/usr/lib64/libKactus2.so) || (test -d $(INSTALL_ROOT)/lib/x86_64-linux-gnu && ln -f -s $(INSTALL_ROOT)/usr/bin/kactus2 $(INSTALL_ROOT)/lib/x86_64-linux-gnu/libKactus2.so)
++    !equals(UNAME, x86_64): unix:config.extra = mkdir -p $(INSTALL_ROOT)/etc/xdg/TUT; cp ./Administrative/releaseFiles/DefaultSettingsLinux.ini $(INSTALL_ROOT)/etc/xdg/TUT/Kactus2.ini; ln -f -s $(INSTALL_ROOT)/usr/bin/kactus2 $(INSTALL_ROOT)/usr/lib/libKactus2.so
+ 
+     # Files and destination path for the IP-XACT files coming with an installation.
+     unix:library.path = /usr/share/kactus2/library

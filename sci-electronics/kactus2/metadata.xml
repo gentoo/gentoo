@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>vowstar@gmail.com</email>
+		<name>Huang Rui</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">kactus2/kactus2dev</remote-id>
+	</upstream>
+	<longdescription>
+	Kactus2 is a toolset for designing embedded products, especially FPGA-based
+	MP-SoCs. The aim is easier IP reusability and integration for both hardware
+	and software. The tool is based on IEEE 1685-2014 "IP-XACT" standard.
+	</longdescription>
+</pkgmetadata>
