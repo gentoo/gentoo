@@ -45,12 +45,9 @@ src_install() {
 	local HTML_DOCS=( . )
 	einstalldocs
 
-	einfo "Creating symlink from ${PF} to ${PN} for preserving bookmarks"
-	dosym ${PF} /usr/share/doc/${PN}
-
 	local DOC_CONTENTS="In order to browse the Gentoo Development Guide in
 		offline mode, point your browser to the following url:
-		file://${EPREFIX}/usr/share/doc/${PN}/html/index.html"
+		file://${EPREFIX}/usr/share/doc/${PF}/html/index.html"
 	readme.gentoo_create_doc
 }
 
