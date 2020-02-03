@@ -801,7 +801,6 @@ sci-libs/jmol-acme
 sci-libs/libcore
 sci-libs/naga
 sci-libs/spooles
-sci-libs/vecmath-objectclub
 
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
