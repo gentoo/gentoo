@@ -820,7 +820,6 @@ app-benchmarks/spew
 # installed by it.
 # Removal in 30 days.  Bug #703088. Bug #703084.
 app-editors/adie
-dev-util/reswrap
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
 # Unmaintained, build hangs, tons of other build failures, missing
