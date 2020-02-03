@@ -723,11 +723,6 @@ dev-python/pypy3-bin
 dev-ruby/psych
 dev-ruby/jeweler
 
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-12-26)
-# Deprecated by upstream, not used anymore in the tree.
-# Removal in 30 days.  Bug #703196.
-media-libs/libclalsadrv
-
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
