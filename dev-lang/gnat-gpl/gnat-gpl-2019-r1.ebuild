@@ -1,14 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=6
 
+PATCH_GCC_VER=8.3.0
 PATCH_VER="3"
 
-TOOLCHAIN_GCC_PV=8.3.0
-GCC_CONFIG_VER=8.3.1
-
-inherit toolchain-funcs toolchain
+TOOLCHAIN_GCC_PV=8.3.1
 
 REL=8
 MYP=gcc-${REL}-${PV}-20190517-18C94-src
@@ -17,9 +15,8 @@ INTFDIR=gcc-interface-${REL}-${PV}-20190510-18F59-src
 BTSTRP_X86=gnat-gpl-2014-x86-linux-bin
 BTSTRP_AMD64=gnat-gpl-2014-x86_64-linux-bin
 
-DESCRIPTION="GNAT Ada Compiler - GPL version"
-HOMEPAGE="http://libre.adacore.com/"
-SRC_URI+="
+# we provide own tarball below
+GCC_TARBALL_SRC_URI="
 	http://mirrors.cdn.adacore.com/art/5cdf865331e87aa2cdf16b49
 		-> ${GNATDIR}.tar.gz
 	http://mirrors.cdn.adacore.com/art/5cdf8a0731e87a8f1d425049
@@ -37,12 +34,17 @@ SRC_URI+="
 		)
 	)"
 
+inherit toolchain-funcs toolchain
+
+DESCRIPTION="GNAT Ada Compiler - GPL version"
+HOMEPAGE="http://libre.adacore.com/"
+
 LICENSE+=" GPL-2 GPL-3"
 KEYWORDS="amd64 x86"
 IUSE="+bootstrap"
 RESTRICT="!test? ( test )"
 
-RDEPEND="!sys-devel/gcc:${GCC_CONFIG_VER}"
+RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
 DEPEND="${RDEPEND}
 	elibc_glibc? ( >=sys-libs/glibc-2.13 )
 	>=sys-devel/binutils-2.20"
@@ -80,14 +82,6 @@ src_unpack() {
 		eerror "1) use gcc-config to select the right compiler or"
 		eerror "2) set the bootstrap use flag"
 		die "ada compiler not available"
-	fi
-
-	GCC_A_FAKEIT="
-		${MYP}.tar.gz
-		${GNATDIR}.tar.gz
-		${INTFDIR}.tar.gz"
-	if use bootstrap; then
-		GCC_A_FAKEIT="${GCC_A_FAKEIT} ${BTSTRP}.tar.gz"
 	fi
 
 	toolchain_src_unpack
@@ -132,10 +126,7 @@ src_prepare() {
 
 src_configure() {
 	export PATH=${PWD}/bin:${PATH}
-	local trueGCC_BRANCH_VER=${GCC_BRANCH_VER}
-	GCC_BRANCH_VER=$(gcc-version)
-	downgrade_arch_flags
-	GCC_BRANCH_VER=${trueGCC_BRANCH_VER}
+	downgrade_arch_flags "$(gcc-version)"
 	toolchain_src_configure \
 		--enable-languages=ada \
 		--disable-libada
@@ -151,8 +142,9 @@ src_compile() {
 }
 
 pkg_postinst () {
+	toolchain_pkg_postinst
 	einfo "This provide the GNAT compiler with gcc for ada/c/c++ and more"
-	einfo "The compiler binary is ${CTARGET}-gcc-${GCC_CONFIG_VER}"
+	einfo "The compiler binary is ${CTARGET}-gcc-${TOOLCHAIN_GCC_PV}"
 	einfo "Even if the c/c++ compilers are using almost the same patched"
 	einfo "source as the sys-devel/gcc package its use is not extensively"
 	einfo "tested, and not supported for updating your system, except for ada"
