@@ -774,11 +774,6 @@ games-arcade/pycadia
 # Removal in 30 days.  Bug #703764.
 games-arcade/bub-n-bros
 
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, upstream abandoned since 2005.
-# Removal in 30 days.  Bug #703762.
-games-action/accelerator3d
-
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
