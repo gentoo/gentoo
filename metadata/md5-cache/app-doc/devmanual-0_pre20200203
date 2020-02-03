@@ -9,4 +9,4 @@ LICENSE=CC-BY-SA-4.0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/devmanual-0_pre20200203.tar.xz
 _eclasses_=readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=7b5117ae3f0f6caa56eec8d6bb555a3d
+_md5_=dce4c9d6091ba9ce8529d150a7644039

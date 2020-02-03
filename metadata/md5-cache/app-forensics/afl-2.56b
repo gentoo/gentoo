@@ -9,4 +9,4 @@ RDEPEND=sys-devel/gcc:* sys-devel/clang:=
 SLOT=0
 SRC_URI=https://github.com/google/AFL/archive/v2.56b.tar.gz -> afl-2.56b.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2bebbcec978f1ae8a73fc1434e93b682
+_md5_=2173d1d74a83d54e1ced52d14631d731
