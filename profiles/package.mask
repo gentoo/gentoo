@@ -705,14 +705,6 @@ net-misc/chrome-remote-desktop
 # Removal after 2020-03-01
 app-backup/tob
 
-# Michał Górny <mgorny@gentoo.org> (2019-12-30)
-# The PyPy packages have been restructured and dev-python/pypy is now
-# used unconditionally as the main package.  If you wish to continue
-# using prebuilt executables, install dev-python/pypy{,3}-exe-bin
-# along with it.
-# Removal in 30 days.
-dev-python/pypy-bin
-
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
