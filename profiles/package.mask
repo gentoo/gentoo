@@ -800,7 +800,6 @@ games-util/xboxgw
 sci-libs/jmol-acme
 sci-libs/libcore
 sci-libs/naga
-sci-libs/spooles
 
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
