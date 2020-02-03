@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="XPath 1.0/2.0 parsers and selectors for ElementTree and lxml"
@@ -31,6 +31,6 @@ src_prepare() {
 
 	# this test fails depending on system locale + requires some random
 	# locales being installed
-	sed -e 's:test_compare_strings_function:_&:' \
-		-i tests/test_xpath2_parser.py || die
+#	sed -e 's:test_compare_strings_function:_&:' \
+#		-i tests/test_xpath2_parser.py || die
 }

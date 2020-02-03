@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="An XML Schema validator and decoder"
@@ -17,7 +17,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-python/elementpath[${PYTHON_USEDEP}]"
+	=dev-python/elementpath-1.4*[${PYTHON_USEDEP}]"
 BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
@@ -26,6 +26,6 @@ BDEPEND="${RDEPEND}
 	)"
 
 python_test() {
-	"${EPYTHON}" xmlschema/tests/test_all.py -v ||
+	"${EPYTHON}" tests/test_all.py -v ||
 		die "Tests fail with ${EPYTHON}"
 }
