@@ -712,7 +712,6 @@ app-backup/tob
 # along with it.
 # Removal in 30 days.
 dev-python/pypy-bin
-dev-python/pypy3-bin
 
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
