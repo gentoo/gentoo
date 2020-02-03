@@ -51,13 +51,10 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}/${MY_P}"
 
-src_install() {
-	distutils-r1_src_install
-
-	# hackish way to remove docs that ended up in the wrong place
-	rm -rv "${D}/usr/share/doc/${PN}" || die
-
-	dodoc AUTHORS.txt CHANGES.txt README.rst docs/*.txt
+src_prepare() {
+	sed -i	-e "s|share/doc/nikola|share/doc/${PF}|" \
+		-e "s|man/nikola.1.gz|man/nikola.1|" \
+		setup.py || die
 	gunzip "docs/man/${PN}.1.gz" || die
-	doman "docs/man/${PN}.1"
+	distutils-r1_src_prepare
 }
