@@ -794,11 +794,6 @@ x11-terms/multi-aterm
 # Removal in 30 days. See bug #703552.
 games-util/xboxgw
 
-# David Seifert <soap@gentoo.org> (2019-12-22)
-# Unmaintained, dead upstreams, monstrous build systems.
-# Bug #568364, Removal in 30 days.
-sci-libs/jmol-acme
-
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
