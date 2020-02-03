@@ -21,14 +21,16 @@ RDEPEND="
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgui:5
-	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtquickcontrols:5[widgets]
 	dev-qt/qtwebkit:5
 	dev-qt/qtwidgets:5
 	media-libs/mlt
+	virtual/opengl
 "
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-qt/qtnetwork:5
+"
 
 src_prepare() {
 	default
