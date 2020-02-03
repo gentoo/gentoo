@@ -1,22 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
+PATCH_GCC_VER=6.3.0
 PATCH_VER="1.0"
 
-TOOLCHAIN_GCC_PV=6.3.0
-
-inherit toolchain-funcs toolchain
+TOOLCHAIN_GCC_PV=6.3.0 # upstream is 6.3.1 but ada.eclass already assumes 6.3.0
 
 REL=6
 MYP=gcc-${REL}-gpl-${PV}-src
 BTSTRP_X86=gnat-gpl-2014-x86-linux-bin
 BTSTRP_AMD64=gnat-gpl-2014-x86_64-linux-bin
 
-DESCRIPTION="GNAT Ada Compiler - GPL version"
-HOMEPAGE="http://libre.adacore.com/"
-SRC_URI+="
+# we provide own tarball below
+GCC_TARBALL_SRC_URI="
 	http://mirrors.cdn.adacore.com/art/591adbb4c7a4473fcc4532a3
 		-> ${P}-src.tar.gz
 	http://mirrors.cdn.adacore.com/art/591adb65c7a4473fcbb153ac
@@ -34,10 +32,16 @@ SRC_URI+="
 		)
 	)"
 
+inherit toolchain-funcs toolchain
+
+DESCRIPTION="GNAT Ada Compiler - GPL version"
+HOMEPAGE="http://libre.adacore.com/"
+
 LICENSE+=" GPL-2 GPL-3"
 SLOT="${TOOLCHAIN_GCC_PV}"
 KEYWORDS="amd64 x86"
 IUSE="+bootstrap"
+RESTRICT="!test? ( test )"
 
 RDEPEND="!sys-devel/gcc:${TOOLCHAIN_GCC_PV}"
 DEPEND="${RDEPEND}
@@ -46,7 +50,6 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}"/${MYP}
 PDEPEND="${PDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.13 )"
-FSFGCC=gcc-${TOOLCHAIN_GCC_PV}
 
 pkg_setup() {
 	toolchain_pkg_setup
@@ -80,14 +83,6 @@ src_unpack() {
 		die "ada compiler not available"
 	fi
 
-	GCC_A_FAKEIT="
-		${P}-src.tar.gz
-		${MYP}.tar.gz
-		gcc-interface-${REL}-gpl-${PV}-src.tar.gz"
-	if use bootstrap; then
-		GCC_A_FAKEIT="${GCC_A_FAKEIT} ${BTSTRP}.tar.gz"
-	fi
-
 	toolchain_src_unpack
 	if use bootstrap; then
 		rm ${BTSTRP}/libexec/gcc/${CHOST}/4.7.4/ld || die
@@ -114,6 +109,7 @@ src_prepare() {
 	ln -s $(which ${GNATLINK}) bin/gnatlink || die
 	ln -s $(which ${GNATLS}) bin/gnatls || die
 
+	# upstream is 6.3.1 but ada.eclass already assumes 6.3.0
 	echo ${TOOLCHAIN_GCC_PV} > gcc/BASE-VER
 
 	cd ..
@@ -133,10 +129,7 @@ src_prepare() {
 
 src_configure() {
 	export PATH=${PWD}/bin:${PATH}
-	local trueGCC_BRANCH_VER=${GCC_BRANCH_VER}
-	GCC_BRANCH_VER=$(gcc-version)
-	downgrade_arch_flags
-	GCC_BRANCH_VER=${trueGCC_BRANCH_VER}
+	downgrade_arch_flags "$(gcc-version)"
 	toolchain_src_configure \
 		--enable-languages=ada \
 		--disable-libada
