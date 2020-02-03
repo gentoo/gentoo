@@ -17,16 +17,14 @@ IUSE=""
 BDEPEND="
 	dev-qt/linguist-tools:5
 "
-RDEPEND="
+COMMON_DEPEND="
 	dev-qt/qtcore:5
-	dev-qt/qtdeclarative:5
-	dev-qt/qtgraphicaleffects:5
+	dev-qt/qtdeclarative:5[widgets]
 	dev-qt/qtgui:5
 	dev-qt/qtmultimedia:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtopengl:5
 	dev-qt/qtprintsupport:5
-	dev-qt/qtquickcontrols:5[widgets]
 	dev-qt/qtsql:5
 	dev-qt/qtwebkit:5
 	dev-qt/qtwebsockets:5
@@ -36,9 +34,14 @@ RDEPEND="
 	media-libs/webvfx
 	media-video/ffmpeg
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	dev-qt/qtconcurrent:5
 	dev-qt/qtx11extras:5
+"
+RDEPEND="${COMMON_DEPEND}
+	dev-qt/qtgraphicaleffects:5
+	dev-qt/qtquickcontrols:5
+	virtual/jack
 "
 
 src_prepare() {
