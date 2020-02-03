@@ -738,11 +738,6 @@ games-rpg/dragonhunt
 # Removal in 30 days.  Bug #703784.
 games-puzzle/jools
 
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703782.
-games-puzzle/hexamine
-
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
