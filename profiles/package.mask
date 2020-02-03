@@ -784,11 +784,6 @@ games-action/accelerator3d
 # Removal in 30 days.  Bug #693032.
 games-kids/tuxmathscrabble
 
-# David Seifert <soap@gentoo.org> (2019-12-24)
-# Unmaintained, uses dead POSIX streams interface, EAPI 4.
-# Bug #692228, Removal in 30 days.
-x11-terms/multi-aterm
-
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
