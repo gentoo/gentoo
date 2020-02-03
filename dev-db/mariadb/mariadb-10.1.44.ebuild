@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-MY_EXTRAS_VER="20190305-2052Z"
+MY_EXTRAS_VER="20200203-1749Z"
 SUBSLOT="18"
 
 JAVA_PKG_OPT_USE="jdbc"
@@ -64,6 +64,7 @@ PATCHES=(
 	"${MY_PATCH_DIR}"/20025_all_mariadb-10.1.26-gssapi-detect.patch
 	"${MY_PATCH_DIR}"/20029_all_mariadb-10.1.37-enable-numa.patch
 	"${MY_PATCH_DIR}"/20035_all_mariadb-10.1-atomic-detection.patch
+	"${MY_PATCH_DIR}"/20039_all_mariadb-binutil-libs-2.34.patch
 )
 
 # Be warned, *DEPEND are version-dependant
