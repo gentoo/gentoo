@@ -721,7 +721,6 @@ dev-python/pypy3-bin
 # maintained upstream and ruby24-only.
 # Removal in 30 days. Bug #703950.
 dev-ruby/psych
-dev-ruby/jeweler
 
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
