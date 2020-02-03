@@ -748,11 +748,6 @@ games-puzzle/hexamine
 # Removal in 30 days.  Bug #703780.
 games-puzzle/4stattack
 
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703774.
-games-arcade/watermelons
-
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
