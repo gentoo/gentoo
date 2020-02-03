@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,6 +32,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-run.patch
 	"${FILESDIR}"/${P}-syslog.patch
 	"${FILESDIR}"/${P}-openssl11.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 pkg_setup() {
