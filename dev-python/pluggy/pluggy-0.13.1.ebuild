@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 ~sparc x86"
+KEYWORDS="amd64 sparc x86"
 
 RDEPEND="$(python_gen_cond_dep \
 	'dev-python/importlib_metadata[${PYTHON_USEDEP}]' -2 python3_{5,6,7} pypy3)"
