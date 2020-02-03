@@ -10,7 +10,8 @@
     <email>dev-portage@gentoo.org</email>
   </maintainer>
   <use>
-    <flag name="epydoc">Build html API documentation with epydoc.</flag>
+    <flag name="apidoc">Build html API documentation with sphinx-apidoc.</flag>
+    <flag name="epydoc">Build html API documentation with epydoc (deprecated).</flag>
     <flag name="gentoo-dev">Enable features required for Gentoo ebuild development.</flag>
     <flag name="ipc">Use inter-process communication between portage and
         running ebuilds.
