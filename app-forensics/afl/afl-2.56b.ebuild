@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,21 +22,21 @@ S="${WORKDIR}/AFL-${PV}"
 
 src_compile() {
 	emake CC="$(tc-getCC)" \
-		PREFIX="/usr" \
-		HELPER_PATH="/usr/$(get_libdir)/afl" \
-		DOC_PATH="/usr/share/doc/${PF}"
+		PREFIX="${EPREFIX}/usr" \
+		HELPER_PATH="${EPREFIX}/usr/$(get_libdir)/afl" \
+		DOC_PATH="${EPREFIX}/usr/share/doc/${PF}"
 	CC="clang" CXX="clang++" strip-unsupported-flags
 	cd llvm_mode || die
 	emake \
-		PREFIX="/usr" \
-		HELPER_PATH="/usr/$(get_libdir)/afl" \
-		DOC_PATH="/usr/share/doc/${PF}"
+		PREFIX="${EPREFIX}/usr" \
+		HELPER_PATH="${EPREFIX}/usr/$(get_libdir)/afl" \
+		DOC_PATH="${EPREFIX}/usr/share/doc/${PF}"
 }
 
 src_install() {
 	emake DESTDIR="${D}" \
-		PREFIX="/usr" \
-		HELPER_PATH="/usr/$(get_libdir)/afl" \
-		DOC_PATH="/usr/share/doc/${PF}" \
+		PREFIX="${EPREFIX}/usr" \
+		HELPER_PATH="${EPREFIX}/usr/$(get_libdir)/afl" \
+		DOC_PATH="${EPREFIX}/usr/share/doc/${PF}" \
 		install
 }
