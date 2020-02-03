@@ -825,13 +825,6 @@ sci-calculators/calculator
 x11-misc/pathfinder
 x11-misc/shutterbug
 
-# Michał Górny <mgorny@gentoo.org> (2019-12-15)
-# Live ebuild only.  Not touched since 2012.  Unsurprisingly,
-# the included patch no longer applies.  Actually, there's
-# sys-fs/yaffs2utils duplicate which is a release.
-# Removal in 14 days.  Bug #703040.
-sys-fs/yaffs2-utils
-
 # David Seifert <soap@gentoo.org> (2019-12-08)
 # Unmaintained, build hangs, tons of other build failures, missing
 # dependencies.  Bug #663794, #666916, #666922, #667062, #678068,
