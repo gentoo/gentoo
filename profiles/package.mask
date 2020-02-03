@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
+# No maintainer, py27-only, broken at runtime, last release in 2010.
+# Masked for removal in 30 days.
+x11-misc/googsystray
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
 # Ancient, no maintainer, py27-only, bug 708104. Masked for removal in 30 days.
 dev-util/gquilt
 
