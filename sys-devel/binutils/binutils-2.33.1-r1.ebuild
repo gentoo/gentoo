@@ -83,6 +83,10 @@ DEPEND="${RDEPEND}
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.33-gcc-10.patch
+)
+
 MY_BUILDDIR=${WORKDIR}/build
 
 src_unpack() {
