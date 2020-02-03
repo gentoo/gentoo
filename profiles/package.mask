@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-05)
+# Blocks dev-python/pygtk removal, bug #706478. Masked for removal in 30 days.
+dev-libs/libappindicator:2
+dev-perl/Gtk2-AppIndicator
+x11-plugins/pidgin-indicator
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-05)
 # Unmaintained.  No Python 3 support.  Last release ~2014, homepage
 # gone.
