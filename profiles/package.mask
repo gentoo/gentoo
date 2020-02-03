@@ -728,11 +728,6 @@ dev-ruby/jeweler
 # Removal in 30 days.  Bug #703196.
 media-libs/libclalsadrv
 
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703792.
-games-rpg/dragonhunt
-
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
