@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2020-02-03)
+# Known breakages that need to be handled first, bug 698922
+>=x11-libs/pango-1.43
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
 # Ancient, dead, py27-only, all revdeps masked for removal, bugs 651346, 696974
 # Masked for removal in 30 days.
