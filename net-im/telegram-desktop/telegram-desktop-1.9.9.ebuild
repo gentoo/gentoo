@@ -23,7 +23,7 @@ RDEPEND="!net-im/telegram-desktop-bin
 	app-arch/xz-utils
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	dev-libs/range-v3
+	dev-cpp/range-v3
 	dev-libs/xxhash
 	dev-qt/qtcore:5
 	dev-qt/qtimageformats:5
