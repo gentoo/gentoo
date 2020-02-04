@@ -1,13 +1,15 @@
 BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
-DEFINED_PHASES=prepare
-DEPEND=virtual/pkgconfig dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2
+DEFINED_PHASES=compile configure install prepare
+DEPEND=gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2 ) gtk? ( virtual/pkgconfig )
 DESCRIPTION=Packet generator tool for ethernet
 EAPI=7
 HOMEPAGE=http://packeth.sourceforge.net/
+IUSE=cli +gtk
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-3
-RDEPEND=dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2
+RDEPEND=gtk? ( dev-libs/glib:2 x11-libs/gdk-pixbuf x11-libs/gtk+:2 )
+REQUIRED_USE=|| ( cli gtk )
 SLOT=0
 SRC_URI=https://github.com/jemcek/packETH/archive/2.1.tar.gz -> packETH-2.1.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=57828d6cc4babb8b8099258cd62e972f
+_md5_=d280f1cfc2948b0e13051710073fd906

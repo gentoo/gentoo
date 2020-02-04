@@ -6643,6 +6643,7 @@ net-misc/openvswitch:monitor - Build the Python and GUI dependent monitor applic
 net-misc/owncloud-client:dolphin - Install the kde-apps/dolphin extension
 net-misc/owncloud-client:nautilus - Install the gnome-base/nautilus extension
 net-misc/owncloud-client:shibboleth - Build support for Shibboleth single sign-on
+net-misc/packETH:cli - Build and install packETHcli
 net-misc/plowshare:view-captcha - View captcha with aview
 net-misc/ps3mediaserver:multiuser - Allow renderer customization per-user.
 net-misc/ps3mediaserver:transcode - Install optional dependencies for transcoding support via media-video/mplayer
