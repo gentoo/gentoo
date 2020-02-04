@@ -32,6 +32,79 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# Masked for removal in 30 days. Bug #634288.
+games-misc/fortune-mod-calvin
+games-misc/fortune-mod-futurama
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license. HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703710.
+games-misc/fortune-mod-debilneho
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# "The entire text is copyrighted by the rightful owners."
+# Masked for removal in 30 days. Bugs #302722, #634288.
+games-misc/fortune-mod-discworld
+games-misc/fortune-mod-hitchhiker
+games-misc/fortune-mod-simpsons-chalkboard
+games-misc/fortune-mod-starwars
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703712, #703738.
+games-misc/fortune-mod-dubya
+games-misc/fortune-mod-strangelove
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #302722, #634288, #703714.
+games-misc/fortune-mod-dune
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703716.
+games-misc/fortune-mod-familyguy
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703718.
+games-misc/fortune-mod-firefly
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# Allegedly GPL, but "quotes ... are copyright Fox Television."
+# Copyright status unclear. HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703724.
+games-misc/fortune-mod-homer
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# Bad HOMEPAGE. SRC_URI is gone.
+# Masked for removal in 30 days. Bugs #634288, #703730.
+games-misc/fortune-mod-pqf
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license. HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703732.
+games-misc/fortune-mod-slackware
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703736.
+games-misc/fortune-mod-sp-fortunes
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear. SRC_URI is gone.
+# Masked for removal in 30 days. Bugs #634288, #703742.
+games-misc/fortune-mod-woody-allen-it
+
 # Conrad Kostecki <conikost@gentoo.org> (2020-02-04)
 # Python2 only, no reverse dependencies left, since they got removed.
 # Masked for removal in 30 days.
