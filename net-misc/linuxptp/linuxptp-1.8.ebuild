@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit linux-info
+inherit linux-info toolchain-funcs
 
 DESCRIPTION="The Linux Precision Time Protocol (PTP) implementation"
 HOMEPAGE="http://linuxptp.sourceforge.net/"
@@ -21,7 +21,7 @@ CONFIG_CHECK="~PPS ~NETWORK_PHY_TIMESTAMPING ~PTP_1588_CLOCK"
 
 src_compile() {
 	export EXTRA_CFLAGS=${CFLAGS}
-	emake prefix=/usr mandir=/usr/share/man
+	emake prefix=/usr mandir=/usr/share/man CC=$(tc-getCC) CXX=$(tc-getCXX)
 }
 
 src_install() {
