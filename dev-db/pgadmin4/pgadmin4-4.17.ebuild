@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
-inherit python-single-r1 qmake-utils
+inherit desktop python-single-r1 qmake-utils xdg
 
 DESCRIPTION="GUI administration and development platform for PostgreSQL"
 HOMEPAGE="https://www.pgadmin.org/"
@@ -30,6 +30,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 "
 DEPEND="${COMMON_DEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	virtual/imagemagick-tools[png]
 "
 RDEPEND="${COMMON_DEPEND}
 	>=app-text/htmlmin-0.1.12[${PYTHON_USEDEP}]
@@ -103,4 +104,11 @@ src_install() {
 		insinto /usr/share/${PN}/docs/en_US/_build
 		doins -r docs/en_US/_build/html
 	fi
+
+	local s
+	for s in 16 32 48 64 72 96 128 192 256; do
+		convert runtime/pgAdmin4.png -resize ${s}x${s} ${PN}_${s}.png || die
+		newicon -s ${s} ${PN}_${s}.png ${PN}.png
+	done
+	domenu "${FILESDIR}"/${PN}.desktop
 }
