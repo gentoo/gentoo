@@ -27,7 +27,6 @@ can be applied to the packet list for quick, intuitive analysis, 12) output can
 be exported to XML, PostScript®, CSV, or plain text.
 </longdescription>
 <use>
-<flag name="adns">Use <pkg>net-dns/c-ares</pkg> to resolve DNS names</flag>
 <flag name="androiddump">Install androiddump, an extcap interface to capture from Android devices</flag>
 <flag name="bcg729">Use <pkg>media-libs/bcg729</pkg> for G.729 codec support in RTP Player</flag>
 <flag name="brotli">Use <pkg>app-arch/brotli</pkg> for compression/decompression</flag>
