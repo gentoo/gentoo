@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-04)
+# Unsatisfiable dep due to missing impls.
+dev-python/zeep tornado
+
 # Michał Górny <mgorny@gentoo.org> (2020-01-29)
 # Require Python 2 support in numpydoc.
 <dev-python/matplotlib-3 doc
