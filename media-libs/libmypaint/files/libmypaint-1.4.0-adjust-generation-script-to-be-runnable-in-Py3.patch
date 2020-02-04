@@ -1,0 +1,31 @@
+From 748e735e7fffd2524bb3552fd79b2a2c13f60711 Mon Sep 17 00:00:00 2001
+From: Jesper Lloyd <jpl.lloyd@gmail.com>
+Date: Wed, 11 Dec 2019 18:02:35 +0100
+Subject: [PATCH] Adjust generation script to be runnable in Py3
+
+---
+ generate.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/generate.py b/generate.py
+index 6ab3dd0e..1e0b4ee9 100644
+--- a/generate.py
++++ b/generate.py
+@@ -26,6 +26,7 @@
+ import json
+ from collections import namedtuple
+ 
++PY3 = sys.version_info >= (3,)
+ 
+ _SETTINGS = []  # brushsettings.settings
+ _SETTING_ORDER = [
+@@ -82,7 +83,8 @@ def validate(self):
+ 
+ def _init_globals_from_json(filename):
+     """Populate global variables above from the canonical JSON definition."""
+-    with open(filename, "rb") as fp:
++    flag = "r" if PY3 else "rb"
++    with open(filename, flag) as fp:
+         defs = json.load(fp)
+     for input_def in defs["inputs"]:
+         input = _BrushInput(**input_def)
