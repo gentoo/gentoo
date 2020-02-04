@@ -41,6 +41,8 @@ RDEPEND="
 	!pcre2? ( dev-libs/libpcre[jit=] )"
 DEPEND="${RDEPEND}"
 
+PATCHES=( "${FILESDIR}/${P}-i386-hyperscan.patch" )
+
 src_prepare() {
 	cmake_src_prepare
 
