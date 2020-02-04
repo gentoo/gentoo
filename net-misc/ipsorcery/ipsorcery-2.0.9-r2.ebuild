@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets"
 HOMEPAGE="https://www.gentoo.org/"
@@ -29,6 +29,7 @@ PATCHES=(
 )
 
 src_compile() {
+	append-cflags -fcommon
 	emake \
 		CC="$(tc-getCC)" \
 		PKG_CONFIG=$(tc-getPKG_CONFIG) \
