@@ -16156,7 +16156,7 @@ sci-libs/fcl 0.5.0 9999: The Flexible Collision Library
 sci-libs/fetk 1.5: The Finite Element ToolKit - Meta package
 sci-libs/fftw 2.1.5-r9 3.3.6_p2 3.3.8 9999: Fast C library for the Discrete Fourier Transform
 sci-libs/flann 1.9.1-r2 9999: Fast approximate nearest neighbor searches in high dimensional spaces
-sci-libs/fplll 4.0.4: Different implementations of the floating-point LLL reduction algorithm
+sci-libs/fplll 4.0.4 5.3.2: Implementations of the floating-point LLL reduction algorithm
 sci-libs/galib 2.4.7-r1: Library for genetic algorithms in C++ programs
 sci-libs/gamer 1.5-r2: Geometry-preserving Adaptive MeshER
 sci-libs/gaul-devel 0.1849-r2: Genetic Algorithm Utility Library
@@ -16860,7 +16860,7 @@ sys-apps/hotplug2stdout 1.2.1: A tool for reading kernel uevent(s) to stdout
 sys-apps/hponcfg 4.6.0.0 5.4.0.0: HP Lights-Out Online Configuration Utility (HPONCFG)
 sys-apps/hprofile 3.0.6 3.1.1 3.2.2 6.1.3: Utility to manage hardware, network, power or other profiles (fork)
 sys-apps/hwdata-gentoo 0.4: Data for the hwsetup program
-sys-apps/hwids 20190316 20190818 20191025 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
+sys-apps/hwids 20190316 20190818 20191025 20200204 99999999: Hardware (PCI, USB, OUI, IAB) IDs databases
 sys-apps/hwinfo 21.4 21.23: Hardware detection tool used in SuSE Linux
 sys-apps/hwloc 1.11.2-r1 1.11.10 1.11.13 2.0.4: displays the hardware topology in convenient formats
 sys-apps/hwsetup 1.2-r3: Hardware setup program from Knoppix - used only on LiveCD
