@@ -11,15 +11,21 @@ SRC_URI="https://github.com/jemcek/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
+IUSE="cli +gtk"
+REQUIRED_USE="
+	|| ( cli gtk )
+"
 
 RDEPEND="
-	dev-libs/glib:2
-	x11-libs/gdk-pixbuf
-	x11-libs/gtk+:2
+	gtk? (
+		dev-libs/glib:2
+		x11-libs/gdk-pixbuf
+		x11-libs/gtk+:2
+	)
 "
 DEPEND="
-	virtual/pkgconfig
 	${RDEPEND}
+	gtk? ( virtual/pkgconfig )
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.8.1-libs-and-flags.patch
@@ -29,5 +35,24 @@ DOCS=( AUTHORS CHANGELOG README )
 
 src_prepare() {
 	default
-	eautoreconf
+	use gtk && eautoreconf
+}
+
+src_configure() {
+	use gtk && default
+}
+
+src_compile() {
+	use gtk && default
+	use cli && emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" -C cli
+}
+
+src_install() {
+	use gtk && default
+
+	if use cli; then
+		dobin cli/${PN}cli
+		local i
+		for i in NEWS README TODO; do newdoc cli/${i} ${i}.cli; done
+	fi
 }
