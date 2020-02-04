@@ -10417,7 +10417,7 @@ dev-util/bless 0.6.0-r3 0.6.0-r4 0.6.2-r1: GTK# Hex Editor
 dev-util/bloaty 0_p20170420: A size profiler for binaries
 dev-util/bnfc 2.8 2.8.1: A compiler front-end generator
 dev-util/boost-build 1.71.0 1.72.0: A system for large project software construction, simple to use and powerful
-dev-util/bpftrace 0.9.2 0.9.3 9999: High-level tracing language for eBPF
+dev-util/bpftrace 0.9.2 0.9.3 0.9.4 9999: High-level tracing language for eBPF
 dev-util/bsdiff 4.3-r3: bsdiff: Binary Differencer using a suffix alg
 dev-util/btyacc 3.0-r3: Backtracking YACC - modified from Berkeley YACC
 dev-util/build 0.3.10: A massively-parallel software build system implemented on top of GNU make
@@ -14621,7 +14621,7 @@ net-irc/redirbot 0.0.5-r1: IRCBot, telling people they should contact you on dif
 net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
-net-irc/telepathy-idle 0.2.0-r1 0.2.0-r2: Full-featured IRC connection manager for Telepathy
+net-irc/telepathy-idle 0.2.0-r2: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.4.1 5.0.0 5.0.1: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.6-r1 2.7-r1 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
