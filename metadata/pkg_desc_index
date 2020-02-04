@@ -3187,6 +3187,7 @@ dev-cpp/pngpp 0.2.9: A simple but powerful C++ interface to libpng
 dev-cpp/popl 1.2.0 9999: Header-only C++ program options parser library
 dev-cpp/pstreams 0.7.0 0.8.1 1.0.0 1.0.1: C++ wrapper for the POSIX.2 functions popen(3) and pclose(3)
 dev-cpp/random123 1.09-r1: library of counter-based random number generators (CBRNGs)
+dev-cpp/range-v3 0.10.0-r1: Range library for C++14/17/20, basis for C++20's std::ranges
 dev-cpp/rttr 0.9.6: Run Time Type Reflection - library adding reflection to C++
 dev-cpp/sourcetrail 2018.3.55-r1 2019.1.11 2019.2.39 2019.3.46 2019.3.46-r2: A cross-platform source explorer for C/C++ and Java
 dev-cpp/sparsehash 2.0.3-r1: An extremely memory-efficient hash_map implementation
@@ -5211,7 +5212,6 @@ dev-libs/qrosscore 0.3.2 9999: KDE-free version of Kross (core libraries and Qt 
 dev-libs/qrosspython 0.3.2 9999: Python scripting backend for Qross
 dev-libs/qtkeychain 0.9.0 0.10.0: Qt API for storing passwords securely
 dev-libs/quazip 0.8.1: Simple C++ wrapper over Gilles Vollant's ZIP/UNZIP package
-dev-libs/range-v3 0.10.0-r1: Range library for C++14/17/20, basis for C++20's std::ranges
 dev-libs/rapidjson 1.1.0 1.1.0-r1 1.1.0-r2 9999: A fast JSON parser/generator for C++ with both SAX/DOM style API
 dev-libs/rapidxml 1.13 1.13-r1: Fast XML parser
 dev-libs/rasqal 0.9.33: Library that handles Resource Description Framework (RDF)
@@ -14581,7 +14581,7 @@ net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(
 net-im/signal-desktop-bin 1.30.0-r1: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
-net-im/skypeforlinux 8.52.0.138 8.52.0.138-r1 8.53.0.85 8.54.0.85 8.54.0.91 8.55.0.123 8.55.0.141: Instant messaging client, with support for audio and video
+net-im/skypeforlinux 8.55.0.123 8.55.0.141 8.56.0.103: Instant messaging client, with support for audio and video
 net-im/slack-bin 2.1.2 3.1.1 3.4.2 4.0.2 4.1.1: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
@@ -18071,7 +18071,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 2.10.1745.27_p1 2.10.1745.30_p1: A browser for our friends
-www-client/vivaldi-snapshot 2.11.1800.5_p1 2.11.1805.3_p1: A browser for our friends
+www-client/vivaldi-snapshot 2.11.1805.3_p1 2.11.1811.3_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-client/weboob 1.3 9998 9999: Consume lots of websites without a browser (Web Outside Of Browsers)
