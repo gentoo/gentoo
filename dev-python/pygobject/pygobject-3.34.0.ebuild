@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 inherit gnome.org meson python-r1 virtualx xdg
 
 DESCRIPTION="Python bindings for GObject Introspection"
-HOMEPAGE="https://gitlab.gnome.org/GNOME/pygobject https://wiki.gnome.org/Projects/PyGObject https://pygobject.readthedocs.io/"
+HOMEPAGE="https://pygobject.readthedocs.io/"
 
 LICENSE="LGPL-2.1+"
 SLOT="3"
