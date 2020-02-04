@@ -6169,6 +6169,7 @@ dev-perl/IO-All 0.870.0: unified IO operations
 dev-perl/IO-BufferedSelect 1.0.0-r2: Perl module that implements a line-buffered select interface
 dev-perl/IO-Capture 0.50.0-r2: Abstract Base Class to build modules to capture output
 dev-perl/IO-CaptureOutput 1.110.400 1.110.400-r1: Capture STDOUT and STDERR from Perl code, subprocesses or XS
+dev-perl/IO-Compress-Brotli 0.4.1: Read/write Brotli buffers/streams
 dev-perl/IO-Digest 0.110.0-r2: IO::Digest - Calculate digests while reading or writing
 dev-perl/IO-Event 0.813.0-r1: Tied Filehandles for Nonblocking IO with Object Callbacks
 dev-perl/IO-HTML 1.1.0: Open an HTML file with automatic charset detection
@@ -16063,7 +16064,7 @@ sci-geosciences/opencpn-plugin-weatherfax 1.3.20180316 9999: Weatherfax Plugin f
 sci-geosciences/opencpn-plugins-meta 4.2.0-r3: Meta ebuild to pull in opencpn plugins
 sci-geosciences/osm-gps-map 1.1.0: A GTK+ widget for displaying OpenStreetMap tiles
 sci-geosciences/osm2pgsql 0.94.0 0.96.0 99999999: Converts OSM planet.osm data to a PostgreSQL/PostGIS database
-sci-geosciences/qgis 3.4.12 3.10.1 3.10.2 9999: User friendly Geographic Information System
+sci-geosciences/qgis 3.4.12 3.10.2 9999: User friendly Geographic Information System
 sci-geosciences/qmapshack 1.12.0 1.13.2 1.14.0: GPS mapping utility
 sci-geosciences/readosm 1.0.0e-r1: Library to extract valid data from an Open Street Map input file
 sci-geosciences/routino 3.1.1 3.2: Routing application based on openstreetmap data
