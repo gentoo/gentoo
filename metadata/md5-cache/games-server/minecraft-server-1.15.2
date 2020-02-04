@@ -4,11 +4,11 @@ DESCRIPTION=The official server for the sandbox video game
 EAPI=7
 HOMEPAGE=https://www.minecraft.net/
 IUSE=elibc_FreeBSD
-KEYWORDS=amd64 x86
+KEYWORDS=~amd64 ~x86
 LICENSE=Mojang
-RDEPEND=acct-group/minecraft acct-user/minecraft app-misc/screen || ( >=virtual/jre-1.8 >=virtual/jdk-1.8 ) >=dev-java/java-config-2.2.0-r3
-RESTRICT=bindist mirror strip
+RDEPEND=acct-group/minecraft acct-user/minecraft app-misc/dtach || ( >=virtual/jre-1.8 >=virtual/jdk-1.8 ) >=dev-java/java-config-2.2.0-r3
+RESTRICT=bindist mirror
 SLOT=0
-SRC_URI=https://launcher.mojang.com/v1/objects/3dc3d84a581f14691199cf6831b71ed1296a9fdf/server.jar -> minecraft-server-1.14.4.jar
+SRC_URI=https://launcher.mojang.com/v1/objects/bb2b6b1aefcd70dfd1892149ac3a215f6c636b07/server.jar -> minecraft-server-1.15.2.jar
 _eclasses_=java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=729bb264ed2bda69ec55401082f92d45
+_md5_=8b1e48e08b27ef1aad2f2ae42ec96b65

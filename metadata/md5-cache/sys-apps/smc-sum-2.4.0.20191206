@@ -8,5 +8,5 @@ LICENSE=supermicro
 RDEPEND=module? ( sys-apps/smc-sum-driver )
 RESTRICT=bindist fetch mirror
 SLOT=0
-SRC_URI=sum_2.3.0_Linux_x86_64_20190808.tar.gz
-_md5_=0c038c8d5516e4eef7af02b41a0c9848
+SRC_URI=sum_2.4.0_Linux_x86_64_20191206.tar.gz
+_md5_=15fb0a3263153ffadc6068f2925ac610
