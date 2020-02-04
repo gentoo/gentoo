@@ -33,6 +33,10 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
+# No maintainer, py27-only, blocks pygtk-removal, last release in 2012.
+app-misc/pystopwatch
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
 # No maintainer, py27-only, broken at runtime, last release in 2010.
 # Masked for removal in 30 days.
 x11-misc/googsystray
