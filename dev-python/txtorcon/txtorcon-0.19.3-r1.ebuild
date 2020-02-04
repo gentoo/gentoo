@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_6 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -19,13 +19,11 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/automat[${PYTHON_USEDEP}]
 	dev-python/incremental[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/ipaddress-1.0.16[${PYTHON_USEDEP}]' python2_7)
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/twisted-16.0.0[${PYTHON_USEDEP},crypt]
 	>=dev-python/zope-interface-3.6.1[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/automat[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '>=dev-python/ipaddress-1.0.16[${PYTHON_USEDEP}]' python2_7)
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		dev-python/repoze-sphinx-autointerface[${PYTHON_USEDEP}]
 		>=dev-python/zope-interface-3.6.1[${PYTHON_USEDEP}]
