@@ -5483,7 +5483,6 @@ net-analyzer/tcpreplay:tcpdump - Use net-analyzer/tcpdump for packet decoding fe
 net-analyzer/testssl:bundled-openssl - Install precompiled versions of OpenSSL for greater testing coverage
 net-analyzer/wapiti:kerberos - Support Kerberos authentication
 net-analyzer/wapiti:ntlm - Support NTLM authentication
-net-analyzer/wireshark:adns - Use net-dns/c-ares to resolve DNS names
 net-analyzer/wireshark:androiddump - Install androiddump, an extcap interface to capture from Android devices
 net-analyzer/wireshark:bcg729 - Use media-libs/bcg729 for G.729 codec support in RTP Player
 net-analyzer/wireshark:brotli - Use app-arch/brotli for compression/decompression
