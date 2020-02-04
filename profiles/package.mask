@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-04)
+# Python-2-only, blocks pygtk-removal. Use app-text/coolreader or
+# app-text/fbreader instead. Masked for removal in 30 days.
+app-text/pybookreader
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-04)
 # Python-2-only, blocks pygtk-removal, last release in 2010.
 # Masked for removal in 30 days.
 app-misc/hachoir-metadata
