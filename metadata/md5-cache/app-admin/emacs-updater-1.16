@@ -8,4 +8,4 @@ LICENSE=GPL-2+
 RDEPEND=|| ( sys-apps/util-linux app-misc/getopt ) >=app-editors/emacs-23.1:* >=app-portage/portage-utils-0.3
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/emacs/emacs-updater-1.16.tar.xz
-_md5_=2356074f696ce213632720d7ce1b65c3
+_md5_=53e2eccec2b7d863898538d66742eca7

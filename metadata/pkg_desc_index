@@ -352,7 +352,7 @@ app-admin/dxf 7.5.1 7.5.2: Docker registry v2 client in Python
 app-admin/ec2-ami-tools 1.5.7: Command-line tools that serve as client interface to the Amazon EC2 web service
 app-admin/eclean-kernel 0.4.3 1.99.4 9999: Clean up old and stale kernel files
 app-admin/elektra 0.8.20-r1: Framework to store config parameters in hierarchical key-value pairs
-app-admin/emacs-updater 1.15 1.16: Rebuild Emacs packages
+app-admin/emacs-updater 1.16: Rebuild Emacs packages
 app-admin/entr 4.3: Run arbitrary commands when files change
 app-admin/equo 302: Entropy Package Manager text-based client
 app-admin/eselect 1.4.12 1.4.14 1.4.15 1.4.16 9999: Gentoo's multi-purpose configuration and management tool
@@ -14578,7 +14578,7 @@ net-im/pyicq-t 0.8.1.5-r6: Python based jabber transport for ICQ
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.30.0-r1: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.30.1: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.55.0.123 8.55.0.141 8.56.0.103: Instant messaging client, with support for audio and video
@@ -14607,7 +14607,7 @@ net-irc/emech 3.0.3-r1 3.0.99_p3: UNIX compatible IRC bot programmed in the C la
 net-irc/epic5 2.0.1: Epic5 IRC Client
 net-irc/hexchat 2.12.4-r2 2.14.1 2.14.2 2.14.3 9999: Graphical IRC client based on XChat
 net-irc/ii 1.8 9999: A minimalist FIFO and filesystem-based IRC client
-net-irc/inspircd 2.0.28 3.4.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
+net-irc/inspircd 2.0.28 3.4.0 3.5.0: Inspire IRCd - The Stable, High-Performance Modular IRCd
 net-irc/irc-server 2.11.1_p1-r4: RFC compliant IRC server
 net-irc/ircii 20190117: An IRC and ICB client that runs under most UNIX platforms
 net-irc/ircmap 0.99-r1: Scripts to treate diagrams of IRC networks using the LINKS command
