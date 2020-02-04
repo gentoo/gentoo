@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Packet generator tool for ethernet"
 HOMEPAGE="http://packeth.sourceforge.net/"
@@ -44,7 +44,8 @@ src_configure() {
 
 src_compile() {
 	use gtk && default
-	use cli && emake CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" -C cli
+	use cli && emake \
+		CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}" -C cli
 }
 
 src_install() {
