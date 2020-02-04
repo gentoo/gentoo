@@ -11300,7 +11300,7 @@ games-misc/fortune-mod-tao 1: set of fortunes based on the Tao-Teh-Ching
 games-misc/fortune-mod-taow 1.0: The Art of War Fortune Mod
 games-misc/fortune-mod-thomas-ogrisegg 20030120: Quotes from Thomas Ogrisegg
 games-misc/fortune-mod-woody-allen-it 0.1: Fortune database for Woody Allen quotes (in Italian)
-games-misc/fortune-mod-zx-error 1.0: Sinclair ZX Spectrum BASIC error Fortunes
+games-misc/fortune-mod-zx-error 1.0-r1: Sinclair ZX Spectrum BASIC error Fortunes
 games-misc/funny-manpages 1.3_rc5-r1 2.3: funny manpages collected from various sources
 games-misc/gBhed 0.17-r1: An Al Bhed translator
 games-misc/games-envd 0: Environment file for gentoo games
@@ -14512,7 +14512,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85: Amazon S3 mounting via fuse
 net-fs/s3ql 2.24 2.25 2.26 2.28 2.32 2.33: A full-featured file system for online data storage
-net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.16 4.9.17 4.9.18 4.10.2 4.10.10 4.10.11 4.10.13 4.11.2 4.11.4 4.11.6: Samba Suite Version 4
+net-fs/samba 4.5.16 4.8.6-r2 4.8.6-r3 4.8.12 4.9.17 4.9.18 4.10.2 4.10.11 4.10.13 4.11.4 4.11.6: Samba Suite Version 4
 net-fs/smbnetfs 0.6.1-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 2.10-r1 3.6.0 3.7.0: Fuse-filesystem utilizing the sftp service
