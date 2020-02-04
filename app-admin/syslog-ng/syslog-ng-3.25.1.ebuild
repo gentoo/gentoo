@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -49,6 +49,8 @@ BDEPEND="
 DOCS=( AUTHORS NEWS.md CONTRIBUTING.md contrib/syslog-ng.conf.{HP-UX,RedHat,SunOS,doc}
 	contrib/syslog2ng "${T}/syslog-ng.conf.gentoo.hardened"
 	"${T}/syslog-ng.logrotate.hardened" "${FILESDIR}/README.hardened" )
+
+PATCHES=( "${FILESDIR}/patches/${PN}-fno-common.patch" )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
