@@ -28,6 +28,7 @@ src_configure() {
 		-DRANGE_V3_TESTS=OFF
 		-DRANGES_BUILD_CALENDAR_EXAMPLE=OFF
 		-DRANGES_NATIVE=OFF
+		#TODO: clang support + -DRANGES_MODULES=yes
 	)
 	cmake_src_configure
 }
