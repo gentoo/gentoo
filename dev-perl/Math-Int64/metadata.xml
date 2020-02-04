@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>hydrapolic@gmail.com</email>
+    <name>Tomáš Mózes</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">Math-Int64</remote-id>
+    <remote-id type="cpan-module">Math::Int64</remote-id>
+    <remote-id type="cpan-module">Math::Int64::die_on_overflow</remote-id>
+    <remote-id type="cpan-module">Math::Int64::native_if_available</remote-id>
+    <remote-id type="cpan-module">Math::UInt64</remote-id>
+  </upstream>
+</pkgmetadata>
