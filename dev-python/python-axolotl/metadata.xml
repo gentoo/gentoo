@@ -9,8 +9,10 @@
 		<name>Conrad Kostecki</name>
 	</maintainer>
 	<longdescription>
-		This is a python port of libsignal-protocol-java
-		originally written by Moxie Marlinspike.
+		This is a python port of libsignal-protocol-java.
+		It's a ratcheting forward secrecy protocol that works
+		in synchronous and asynchronous messaging environments.
+		Originally written by Moxie Marlinspike.
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/tgalal/python-axolotl/issues</bugs-to>
