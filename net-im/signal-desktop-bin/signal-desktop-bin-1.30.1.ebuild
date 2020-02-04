@@ -32,7 +32,9 @@ QA_PREBUILT="opt/Signal/signal-desktop
 	opt/Signal/libGLESv2.so
 	opt/Signal/libnode.so
 	opt/Signal/libVkICD_mock_icd.so
-	opt/Signal/swiftshader/libGLESv2.so"
+	opt/Signal/swiftshader/libGLESv2.so
+	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/build/Release/sharp.node
+	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/lib/*"
 
 S="${WORKDIR}"
 
