@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	media-libs/libsdl2
 	media-libs/openal
-	x11-libs/wxGTK:${WX_GTK_VER}[X]
+	x11-libs/wxGTK:${WX_GTK_VER}[tiff,X]
 "
 
 DEPEND="${DEPEND}"

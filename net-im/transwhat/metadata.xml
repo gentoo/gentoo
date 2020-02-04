@@ -6,7 +6,8 @@
 		<name>Conrad Kostecki</name>
 	</maintainer>
 	<longdescription>
-		transWhat is a WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 2.
+		transWhat is a WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3.
+		It can be used for accessing WhatsApp through a XMPP Transport on clients side.
 	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/stv0g/transwhat/issues</bugs-to>
