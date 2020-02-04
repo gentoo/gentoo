@@ -11161,7 +11161,7 @@ games-emulation/vbam 2.1.0 2.1.4 9999: Game Boy, GBC, and GBA emulator forked fr
 games-emulation/vgba 4.8-r1: Gameboy Advance (GBA) emulator for Linux
 games-emulation/yabause 0.9.15: Sega Saturn emulator
 games-emulation/zinc 1.1-r1: An x86 binary-only emulator for Sony ZN-1, ZN-2, and Namco System 11 arcades
-games-emulation/zsnes 1.51-r7: SNES (Super Nintendo) emulator that uses x86 assembly
+games-emulation/zsnes 1.51-r7 1.51-r8: SNES (Super Nintendo) emulator that uses x86 assembly
 games-engines/box2d 2.1.2 2.2.1 2.3.1: A C++ engine for simulating rigid bodies in 2D games
 games-engines/dMagnetic 0.21: A Magnetic Scrolls Interpreter for playing a collection of old text adventures
 games-engines/devilutionx 1.0.0-r1 9999: Diablo engine for modern operating systems
@@ -17531,7 +17531,7 @@ sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with 
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.100 4.19.101 5.4.16 5.4.17: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 4.19.101 5.4.16 5.4.17: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.81 4.4.212 4.9.212 4.14.169 4.19.101 5.4.17 5.5.1: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.81 4.4.212 4.9.212 4.14.169 4.19.101 5.4.17 5.5.2: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15: The Zen Kernel Live Sources

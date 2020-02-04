@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=compile configure install prepare
+DEPEND=media-libs/libsdl[sound,video,abi_x86_32(-)] >=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)] ao? ( media-libs/libao[abi_x86_32(-)] ) debug? ( sys-libs/ncurses:0=[abi_x86_32(-)] ) opengl? ( virtual/opengl[abi_x86_32(-)] ) png? ( media-libs/libpng:0=[abi_x86_32(-)] ) dev-lang/nasm debug? ( virtual/pkgconfig )
+DESCRIPTION=SNES (Super Nintendo) emulator that uses x86 assembly
+EAPI=7
+HOMEPAGE=http://www.zsnes.com/ http://ipherswipsite.com/zsnes/
+IUSE=ao custom-cflags +debug opengl png
+KEYWORDS=-* ~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=media-libs/libsdl[sound,video,abi_x86_32(-)] >=sys-libs/zlib-1.2.3-r1[abi_x86_32(-)] ao? ( media-libs/libao[abi_x86_32(-)] ) debug? ( sys-libs/ncurses:0=[abi_x86_32(-)] ) opengl? ( virtual/opengl[abi_x86_32(-)] ) png? ( media-libs/libpng:0=[abi_x86_32(-)] )
+SLOT=0
+SRC_URI=mirror://sourceforge/zsnes/zsnes151src.tar.bz2 -> zsnes-1.51-20071031.tar.bz2
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=dc9117ffa50378ca3b976c2131cd96a0
