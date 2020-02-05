@@ -75,11 +75,3 @@ src_install() {
 		ln -s --relative "${ED}"/usr/sbin/smtpctl "${ED}"/usr/$(get_libdir)/sendmail || die
 	fi
 }
-
-pkg_postinst() {
-	einfo
-	einfo "Plugins for SQLite, MySQL, PostgreSQL, LDAP, socketmaps,"
-	einfo "Redis, and many other useful addons and filters are"
-	einfo "available in the mail-filter/opensmtpd-extras package."
-	einfo
-}
