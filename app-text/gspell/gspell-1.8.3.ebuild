@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/gspell"
 
 LICENSE="LGPL-2.1+"
 SLOT="0/1" # subslot = libgspell-1 soname version
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="+introspection +vala"
 REQUIRED_USE="vala? ( introspection )"
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	dev-libs/libxml2:2
 	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.25
-	>=sys-devel/gettext-0.19.4
+	>=sys-devel/gettext-0.19.6
 	virtual/pkgconfig
 	vala? ( $(vala_depend) )
 "
