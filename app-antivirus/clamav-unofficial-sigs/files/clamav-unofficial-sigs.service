@@ -10,6 +10,6 @@ Description=ClamAV unofficial signature update service
 Documentation=man:clamav-unofficial-sigs(8)
 
 [Service]
-ExecStart=bash /usr/sbin/clamav-unofficial-sigs.sh
+ExecStart=bash /usr/bin/clamav-unofficial-sigs.sh
 User=clamav
 WorkingDirectory=/var/lib/clamav-unofficial-sigs

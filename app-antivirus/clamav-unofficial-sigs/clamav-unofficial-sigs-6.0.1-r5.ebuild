@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}
 	|| ( net-misc/wget net-misc/curl )"
 
 src_install() {
-	dosbin "${PN}.sh"
+	dobin "${PN}.sh"
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}/${PN}.logrotate" "${PN}"
