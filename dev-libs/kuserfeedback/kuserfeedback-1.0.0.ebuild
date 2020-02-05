@@ -12,7 +12,7 @@ inherit ecm kde.org
 DESCRIPTION="Framework to collect user feedback for applications via telemetry and surveys"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/unstable/${PN}/${P}.tar.xz"
+	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~ppc64"
 fi
 
