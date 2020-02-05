@@ -3,7 +3,8 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib autotools pam systemd
+# user.eclass needed for egetshell
+inherit user flag-o-matic multilib autotools pam systemd
 
 # Make it more portable between straight releases
 # and _p? releases.
