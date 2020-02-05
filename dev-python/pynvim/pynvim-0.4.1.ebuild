@@ -26,7 +26,6 @@ RDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# allow useage of renamed msgpack
-	sed -r -i "/^msgpack/d ; s:[\"']pytest-runner[\"'](,|)::" setup.py || die
+	sed -r -i "s:[\"']pytest-runner[\"'](,|)::" setup.py || die
 	distutils-r1_python_prepare_all
 }
