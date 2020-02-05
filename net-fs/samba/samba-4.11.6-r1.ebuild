@@ -2,9 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{6,7} )
-PYTHON_REQ_USE='threads(+),xml(+)'
 
+PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_REQ_USE='threads(+),xml(+)'
 inherit python-single-r1 waf-utils multilib-minimal linux-info systemd pam
 
 MY_PV="${PV/_rc/rc}"
