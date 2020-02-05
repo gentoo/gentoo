@@ -121,7 +121,7 @@ pkg_pretend() {
 
 src_prepare() {
 	sed -i \
-		-e "/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:${EPREFIX%/}/usr/bin/xauth:" \
+		-e "/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:${EPREFIX}/usr/bin/xauth:" \
 		pathnames.h || die
 
 	# don't break .ssh/authorized_keys2 for fun
@@ -283,17 +283,17 @@ src_configure() {
 		--with-ldflags="${LDFLAGS}"
 		--disable-strip
 		--with-pid-dir="${EPREFIX}"$(usex kernel_linux '' '/var')/run
-		--sysconfdir="${EPREFIX%/}"/etc/ssh
-		--libexecdir="${EPREFIX%/}"/usr/$(get_libdir)/misc
-		--datadir="${EPREFIX%/}"/usr/share/openssh
-		--with-privsep-path="${EPREFIX%/}"/var/empty
+		--sysconfdir="${EPREFIX}"/etc/ssh
+		--libexecdir="${EPREFIX}"/usr/$(get_libdir)/misc
+		--datadir="${EPREFIX}"/usr/share/openssh
+		--with-privsep-path="${EPREFIX}"/var/empty
 		--with-privsep-user=sshd
 		$(use_with audit audit linux)
-		$(use_with kerberos kerberos5 "${EPREFIX%/}"/usr)
+		$(use_with kerberos kerberos5 "${EPREFIX}"/usr)
 		# We apply the sctp patch conditionally, so can't pass --without-sctp
 		# unconditionally else we get unknown flag warnings.
 		$(use sctp && use_with sctp)
-		$(use_with ldns ldns "${EPREFIX%/}"/usr)
+		$(use_with ldns ldns "${EPREFIX}"/usr)
 		$(use_with libedit)
 		$(use_with pam)
 		$(use_with pie)
@@ -355,7 +355,7 @@ tweak_ssh_configs() {
 	)
 
 	# First the server config.
-	cat <<-EOF >> "${ED%/}"/etc/ssh/sshd_config
+	cat <<-EOF >> "${ED}"/etc/ssh/sshd_config
 
 	# Allow client to pass locale environment variables. #367017
 	AcceptEnv ${locale_vars[*]}
@@ -365,7 +365,7 @@ tweak_ssh_configs() {
 	EOF
 
 	# Then the client config.
-	cat <<-EOF >> "${ED%/}"/etc/ssh/ssh_config
+	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config
 
 	# Send locale environment variables. #367017
 	SendEnv ${locale_vars[*]}
@@ -380,13 +380,13 @@ tweak_ssh_configs() {
 			-e "/^#PasswordAuthentication /s:.*:PasswordAuthentication no:" \
 			-e "/^#PrintMotd /s:.*:PrintMotd no:" \
 			-e "/^#PrintLastLog /s:.*:PrintLastLog no:" \
-			"${ED%/}"/etc/ssh/sshd_config || die
+			"${ED}"/etc/ssh/sshd_config || die
 	fi
 
 	if use livecd ; then
 		sed -i \
 			-e '/^#PermitRootLogin/c# Allow root login with password on livecds.\nPermitRootLogin Yes' \
-			"${ED%/}"/etc/ssh/sshd_config || die
+			"${ED}"/etc/ssh/sshd_config || die
 	fi
 }
 
