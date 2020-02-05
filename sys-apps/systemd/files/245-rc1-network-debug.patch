@@ -1,0 +1,45 @@
+From 01ec0028d97fa97d2e433659e24a1517b0e2382e Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 5 Feb 2020 11:04:50 -0500
+Subject: [PATCH] network: remove unnecessary link->ifname from debug log
+ statements
+
+Since 98b0299479a68ffd414888368907fc776a46b82a, we log the interface
+name automatically via log_link_debug().
+
+Fixes: https://github.com/systemd/systemd/issues/14782
+---
+ src/network/networkd-dhcp-server.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/network/networkd-dhcp-server.c b/src/network/networkd-dhcp-server.c
+index a6dbe2e596c..bee75a6930e 100644
+--- a/src/network/networkd-dhcp-server.c
++++ b/src/network/networkd-dhcp-server.c
+@@ -45,7 +45,7 @@ static int link_push_uplink_dns_to_dhcp_server(Link *link, sd_dhcp_server *s) {
+         size_t n_addresses = 0, n_allocated = 0;
+         unsigned i;
+ 
+-        log_link_debug(link, "Copying DNS server information from %s", link->ifname);
++        log_link_debug(link, "Copying DNS server information from link");
+ 
+         if (!link->network)
+                 return 0;
+@@ -99,7 +99,7 @@ static int link_push_uplink_ntp_to_dhcp_server(Link *link, sd_dhcp_server *s) {
+         if (!link->network)
+                 return 0;
+ 
+-        log_link_debug(link, "Copying NTP server information from %s", link->ifname);
++        log_link_debug(link, "Copying NTP server information from link");
+ 
+         STRV_FOREACH(a, link->network->ntp) {
+                 union in_addr_union ia;
+@@ -148,7 +148,7 @@ static int link_push_uplink_sip_to_dhcp_server(Link *link, sd_dhcp_server *s) {
+         if (!link->network)
+                 return 0;
+ 
+-        log_link_debug(link, "Copying SIP server information from %s", link->ifname);
++        log_link_debug(link, "Copying SIP server information from link");
+ 
+         STRV_FOREACH(a, link->network->sip) {
+                 union in_addr_union ia;
