@@ -8,8 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python client for Neovim"
 HOMEPAGE="https://github.com/neovim/pynvim"
-SRC_URI="https://github.com/neovim/pynvim/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/pynvim-${PV}"
+SRC_URI="https://github.com/neovim/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -27,7 +26,6 @@ RDEPEND="
 distutils_enable_tests pytest
 
 python_prepare_all() {
-	# allow useage of renamed msgpack
-	sed -r -i "/^msgpack/d ; s:[\"']pytest-runner[\"'](,|)::" setup.py || die
+	sed -r -i "s:[\"']pytest-runner[\"'](,|)::" setup.py || die
 	distutils-r1_python_prepare_all
 }

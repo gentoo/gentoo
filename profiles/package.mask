@@ -32,6 +32,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Joonas Niilola <juippis@gentoo.org> (2020-02-05)
+# Stagnant upstream with latest release from 2016, python2-only, no maintainer 
+# in Gentoo, no notable ebuild action in years, multiple bugs open. Blocks 
+# pygtk removal. 
+# Switch to alternatives such as, 
+# net-misc/connman, net-misc/dhcpcd, net-misc/netifrc, net-misc/NetworkManager 
+# and so on. Removal in ~90 days. #708316
+net-misc/wicd
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-05)
 # Fails to build for at least 6 months.  No Python 3 support.  Last
 # bumped in 2016.  Bad quality ebuild.
