@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-05)
+# NIH utility package, last released 2015.  No Python 3 support.
+# All remaining reverse dependencies are masked for removal.
+# Removal in 30 days.  Bug #708332.
+dev-python/egenix-mx-base
+
 # Ulrich Müller <ulm@gentoo.org> (2020-02-05)
 # Last version bump in 2014, while upstream is at 2019/1.
 # Ebuild claims "free-noncomm", but has an inaccessible distfile
