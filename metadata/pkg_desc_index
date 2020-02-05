@@ -1043,9 +1043,7 @@ app-dicts/stardict-xdict-en-zh-big5 2.4.2: Stardict Dictionary English to Tradit
 app-dicts/stardict-xdict-en-zh-gb 2.4.2: Stardict Dictionary English to Simplified Chinese (GB)
 app-dicts/stardict-xdict-zh-en-big5 2.4.2: Stardict Dictionary Traditional Chinese (BIG5) to English
 app-dicts/stardict-xdict-zh-en-gb 2.4.2: Stardict Dictionary Simplified Chinese (GB) to English
-app-dicts/sword-ab 1.3: The Apostle's Bible
 app-dicts/sword-abbott 1.1: Illustrated New Testament
-app-dicts/sword-abs_essay_goodsam_swb 1.0: Essays on The Good Samaritan: Violence on the Road, Social World of Bandits
 app-dicts/sword-acv 2.0: A Conservative Version
 app-dicts/sword-afr1953 1.2: Afrikaans Bybel
 app-dicts/sword-akjv 1.4: American King James Version
@@ -1059,47 +1057,31 @@ app-dicts/sword-asv 1.3: American Standard Version (1901)
 app-dicts/sword-barnes 1.1: Barnes' New Testament Notes
 app-dicts/sword-bashautin 1.5: 1571 Navarro-Labourdin Basque NT
 app-dicts/sword-bbe 1.3: Bible in Basic English (1949/1964)
-app-dicts/sword-br_en 1.1: Breton to English Glossary
-app-dicts/sword-bulcarigradnt 1.0: Bulgarian New Testament from 1914, known as 'Tsarigrad Edition'
 app-dicts/sword-bulveren 1.0: Veren's Contemporary Bible
 app-dicts/sword-burjudson 1.1: 1835 Judson Burmese Bible
-app-dicts/sword-bwe 1.0: Bible in Worldwide English
 app-dicts/sword-byz 1.10: Byzantine/Majority Text (2000)
 app-dicts/sword-cbc 1.1: Condensed Biblical Cyclopedia
 app-dicts/sword-chamorro 2.7: Chamorro: Y Santa Biblia
-app-dicts/sword-chincvs 1.0: New Chinese Version Simplified
-app-dicts/sword-chincvt 1.0: New Chinese Version Traditional
-app-dicts/sword-chiun 2.0: Chinese Union Version Traditional
-app-dicts/sword-chiuns 2.0: Chinese Union Version Simplified
 app-dicts/sword-clarke 1.0: Adam Clarke's Commentary on the Bible
 app-dicts/sword-common 1.3: The Common Edition: New Testament
 app-dicts/sword-cro 1.0: Croatian Bible
 app-dicts/sword-czebkr 1.1: Czech Bible Kralicka
-app-dicts/sword-czecep 1.4: Czech Ekumenicky Cesky preklad
-app-dicts/sword-czekms 1.4: Czech Preklad KMS Nova smlouva
-app-dicts/sword-czenkb 1.1: Czech Nova kralicka Bible
 app-dicts/sword-daily 1.0: Jonathan Bagster's Daily Light on the Daily Path
 app-dicts/sword-dan 2.1: Danske Bibel
 app-dicts/sword-darby 1.1: Darby Bible (1889)
-app-dicts/sword-dbd 1.1: Day By Day By Grace - Bob Hoekstra
 app-dicts/sword-diaglott 1.1: The Emphatic Diaglott
 app-dicts/sword-drc 1.1: Douay-Rheims Bible, Challoner Revision
 app-dicts/sword-dtn 1.0: Darby Translation Notes
 app-dicts/sword-dutkant 1.1: Kanttekeningen Statenvertaling
 app-dicts/sword-dutsvv 1.5: Dutch Statenvertaling
 app-dicts/sword-easton 1.2: Easton's Bible Dictionary
-app-dicts/sword-emtv 1.3: English Majority Text Version
 app-dicts/sword-esperanto 1.6: Esperanto Bible
-app-dicts/sword-est 1.1: Estonian Bible
-app-dicts/sword-family 1.1: Family Bible Notes
 app-dicts/sword-farsiopv 1.0: Persian Holy Bible (Tarjumeh-ye Ghadeem)
 app-dicts/sword-finbiblia 1.1: Finnish Biblia (1776)
 app-dicts/sword-finney 1.1: Sermons on Gospel Themes by Charles G. Finney (1792-1875)
 app-dicts/sword-finpr 1.2: Finnish Pyh, Raamattu (1933/1938)
-app-dicts/sword-finpr92 1.1: Finnish Pyh, Raamattu (1992)
 app-dicts/sword-frebbb 1.1: French Bible Bovet Bonnet (1900)
 app-dicts/sword-frecrampon 1.1: La Bible Augustin Crampon 1923
-app-dicts/sword-frecrl 1.2: French Haitian Creole Version
 app-dicts/sword-frelsg 1.3: French Louis Segond (1910)
 app-dicts/sword-fremartin 1.2: French Bible Martin (1744)
 app-dicts/sword-fresegond 1.6: French Traduction de Louis Segond (1910)
@@ -1110,14 +1092,11 @@ app-dicts/sword-gerelb1905 1.5: German Darby Unrevidierte Elberfelder (1905)
 app-dicts/sword-gerlut1545 1.2: German Unrevidierte Luther Ubersetzung von 1545
 app-dicts/sword-gersch 1.1: German Schlachter Bibel (1951)
 app-dicts/sword-greekhebrew 1.1: Greek to Hebrew Dictionary of Septuagint Words
-app-dicts/sword-hebmodern 1.1: Modern Hebrew Bible
 app-dicts/sword-hebrewgreek 1.1: Hebrew to Greek Dictionary of Septuagint Words
 app-dicts/sword-heretics 1.1: Heretics by Gilbert K. Chesterton (1874-1936)
 app-dicts/sword-hitchcock 1.3: Hitchcock's Bible Names
 app-dicts/sword-hnv 1.8: Hebrew Names Version of the World English Bible
 app-dicts/sword-hunkar 1.7: Hungarian Karoli
-app-dicts/sword-hunuj 1.2: New Translation Bible of the Hungarian Bible Society
-app-dicts/sword-icelandic 1.1: Icelandic Bible
 app-dicts/sword-institutes 1.2: Calvin's Institutes
 app-dicts/sword-isbe 1.6: International Standard Bible Encyclopedia
 app-dicts/sword-isv 1.5: International Standard Version
@@ -1128,21 +1107,16 @@ app-dicts/sword-josephus 1.1: Josephus: The Complete Works
 app-dicts/sword-jps 1.2: Jewish Publication Society Old Testament
 app-dicts/sword-jst 1.1: Joseph Smith Translation
 app-dicts/sword-jubilee2000 1.1: English Jubilee 2000 Bible
-app-dicts/sword-kekchi 1.5: Kekchi Bible
 app-dicts/sword-kjv 2.3: King James Version (1769) with Strongs Numbers and Morphology
 app-dicts/sword-kjvd 1.1: King James Dictionary
 app-dicts/sword-klv 2.2: Klingon Language Version of the World English Bible
 app-dicts/sword-klven_iklingon 2.1: Klingon Language Version English to Klingon mapping lexicon
 app-dicts/sword-klviklingon_en 2.1: Klingon Language Version Klingon to English mapping lexicon
-app-dicts/sword-korean 1.1: Korean Bible
-app-dicts/sword-la_en 1.1: Latin to English Glossary
-app-dicts/sword-latvian 1.1: Latvian New Testament
 app-dicts/sword-lightfoot 1.0: John Lightfoot Commentary
 app-dicts/sword-litv 1.3: Green's Literal Translation
 app-dicts/sword-luther 1.1: Luther's Commentary on Galatians
 app-dicts/sword-mak 1.0: Matthias Ansorgs Kommentar
 app-dicts/sword-manxgaelic 1.1: Manx Gaelic Scripture Portions
-app-dicts/sword-maori 1.1: Maori Bible
 app-dicts/sword-mhc 1.6: Matthew Henry's Complete Commentary on the Whole Bible
 app-dicts/sword-mhcc 1.1: Matthew Henry's Concise Commentary on the Whole Bible
 app-dicts/sword-mkjv 1.3: Green's Modern King James Version
@@ -1160,7 +1134,6 @@ app-dicts/sword-practice 1.0: The Practice of the Presence of God: The Best Rule
 app-dicts/sword-rkjnt 1.0: Revised King James New Testament
 app-dicts/sword-rnkjv 1.5: Restored Name King James Version
 app-dicts/sword-robinson 2.0: Robinson's Morphological Analysis Codes
-app-dicts/sword-romcor 1.2: Romanian Cornilescu Version
 app-dicts/sword-rotherham 1.6: The Emphasized Bible by J. B. Rotherham
 app-dicts/sword-rst 1.6: Russian Synodal Translation
 app-dicts/sword-rusmakarij 1.1: The Pentateuch of Moses in Russian
@@ -1192,7 +1165,6 @@ app-dicts/sword-tyndale 1.0: William Tyndale Bible (1525/1530)
 app-dicts/sword-ukjv 1.1: Updated King James Version
 app-dicts/sword-ukrainian 1.3: Ukrainian Bible
 app-dicts/sword-uma 1.2: Uma New Testament
-app-dicts/sword-umgreek 1.6: Unaccented Modern Greek Text
 app-dicts/sword-vulgate 1.1: Latin Vulgate
 app-dicts/sword-vulgate_hebps 1.1: Latin Vulgate Psalms from Hebrew
 app-dicts/sword-web 1.8: World English Bible
@@ -1204,7 +1176,6 @@ app-dicts/sword-whnu 1.10: Westcott-Hort with NA27/UBS4 variants (1881)
 app-dicts/sword-wlc 1.4: Westminster Leningrad Codex
 app-dicts/sword-wulfila 1.0: Bishop Wulfila Gothic Bible
 app-dicts/sword-wycliffe 1.0: John Wycliffe Bible (1395)
-app-dicts/sword-xhosa 1.1: Xhosa Bible
 app-dicts/sword-ylt 1.1: Young's Literal Translation (1898)
 app-dicts/verbiste 0.1.38-r1 0.1.41 0.1.44: French conjugation system
 app-dicts/wnn-ldic 1.04: Wnn dictionary for librarian
@@ -3366,7 +3337,7 @@ dev-embedded/srecord 1.64: A collection of powerful tools for manipulating EPROM
 dev-embedded/stlink 1.5.1 9999: stm32 discovery line linux programmer
 dev-embedded/stm32flash 0.5: Open source flash program for STM32 using the ST serial bootloader
 dev-embedded/sunxi-tools 1.2 1.3: Tools for Allwinner A10 devices.
-dev-embedded/u-boot-tools 2018.05 2018.11 2019.01 2019.10 2020.01: utilities for working with Das U-Boot
+dev-embedded/u-boot-tools 2019.10 2020.01: utilities for working with Das U-Boot
 dev-embedded/uisp 20050207-r1: Tool for programming AVR microcontroller through the parallel port
 dev-embedded/upslug2 11: util for flashing NSLU2 machines remotely
 dev-embedded/urjtag 0.10-r1 9999: Tool for communicating over JTAG with flash chips, CPUs, and many more
