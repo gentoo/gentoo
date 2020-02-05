@@ -17,7 +17,7 @@ SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 LICENSE="GPL-3+ GPL-2+ LGPL-3+ LGPL-2+ MIT CC-BY-SA-3.0 CC0-1.0"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="clang +devhelp doc +glade gtk-doc sysprof test vala"
+IUSE="clang +devhelp doc +glade gtk-doc spell sysprof test vala"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 # When bumping, pay attention to all the included plugins/*/meson.build (and other) build files and the requirements within.
@@ -55,6 +55,8 @@ RDEPEND="
 	clang? ( sys-devel/clang:= )
 	devhelp? ( >=dev-util/devhelp-3.25.1:= )
 	glade? ( >=dev-util/glade-3.22.0:3.10 )
+	spell? ( >=app-text/gspell-1.8:0=
+		app-text/enchant:2 )
 	sysprof? ( >=dev-util/sysprof-3.31.90[gtk] )
 	vala? (
 		dev-lang/vala:=
@@ -64,9 +66,6 @@ RDEPEND="
 #   usage in vala-pack plugin and need it rebuilt before removing an older vala it was built against
 DEPEND="${RDEPEND}"
 # TODO: runtime ctags path finding..
-# FIXME: spellcheck plugin temporarily disabled due to requiring enchant-2
-#	>=app-text/gspell-1.2.0
-#	>=app-text/enchant:2
 
 # desktop-file-utils required for tests, but we have it in deptree for xdg update-desktop-database anyway, so be explicit and unconditional
 # appstream-glib needed for validation with appstream-util with FEATURES=test
@@ -146,7 +145,7 @@ src_configure() {
 		-Dplugin_podman=false
 		$(meson_use glade plugin_glade)
 		-Dplugin_git=true
-		-Dplugin_spellcheck=false # TODO: requires enchant-2
+		$(meson_use spell plugin_spellcheck)
 		$(meson_use sysprof plugin_sysprof)
 		$(meson_use vala plugin_vala)
 	)
