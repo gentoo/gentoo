@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 [[ "${PV}" = "9999" ]] && inherit git-r3
 inherit elisp-common autotools python-single-r1 xdg-utils
@@ -23,7 +23,6 @@ LANGS=" ca cs da de el eo es fi fr it ja nl ru sv tr uk vi zh_TW"
 IUSE="debug emacs guile2 profile vim-syntax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 PATCHES=(
-	"${FILESDIR}"/$P-programming_error.patch
 	"${FILESDIR}"/${PN}-2.19.80-fontforge-version.patch
 )
 
