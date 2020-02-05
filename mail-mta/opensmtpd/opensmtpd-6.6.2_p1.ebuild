@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib user flag-o-matic eutils pam toolchain-funcs autotools systemd
+inherit multilib flag-o-matic eutils pam toolchain-funcs autotools systemd
 
 DESCRIPTION="Lightweight but featured SMTP daemon from OpenBSD"
 HOMEPAGE="https://www.opensmtpd.org"
@@ -14,7 +14,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="libressl pam +mta"
 
-DEPEND="!libressl? ( dev-libs/openssl:0/1.1 )
+DEPEND="acct-user/smtpd
+		acct-user/smtpq
+		!libressl? ( dev-libs/openssl:0/1.1 )
 		libressl? ( dev-libs/libressl )
 		elibc_musl? ( sys-libs/fts-standalone )
 		sys-libs/zlib
@@ -67,13 +69,6 @@ src_install() {
 		mkdir -p "${ED}"/usr/$(get_libdir)
 		ln -s --relative "${ED}"/usr/sbin/smtpctl "${ED}"/usr/$(get_libdir)/sendmail || die
 	fi
-}
-
-pkg_preinst() {
-	enewgroup smtpd 25
-	enewuser smtpd 25 -1 /var/empty smtpd
-	enewgroup smtpq 252
-	enewuser smtpq 252 -1 /var/empty smtpq
 }
 
 pkg_postinst() {
