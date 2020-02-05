@@ -413,11 +413,6 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/sshd_at.service 'sshd@.service'
 }
 
-pkg_preinst() {
-	enewgroup sshd 22
-	enewuser sshd 22 -1 /var/empty sshd
-}
-
 pkg_postinst() {
 	if has_version "<${CATEGORY}/${PN}-5.8_p1" ; then
 		elog "Starting with openssh-5.8p1, the server will default to a newer key"
