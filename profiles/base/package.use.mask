@@ -9,7 +9,7 @@
 # Michał Górny <mgorny@gentoo.org> (2020-02-05)
 # Requires google-api-python-client with Python 2 which is no longer
 # supported by its dependencies.
-dev-python/weboob X
+www-client/weboob X
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-04)
 # Unsatisfiable dep due to missing impls.
