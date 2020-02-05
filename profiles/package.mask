@@ -839,10 +839,6 @@ x11-drivers/xf86-video-voodoo
 # Mask experimental software
 =mail-mta/postfix-3.5*
 
-# Dennis Lamm <expeditioneer@gentoo.org> (2019-01-28)
-# Depends on >=app-text/enchant-2.0.0 which is masked
->=app-text/gtkspell-3.0.10
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-01-23)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 dev-java/ant-eclipse-ecj:4.10
