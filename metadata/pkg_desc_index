@@ -1252,7 +1252,7 @@ app-editors/gedit 3.32.2-r1: A text editor for the GNOME desktop
 app-editors/gedit-plugins 3.32.2-r1: Official plugins for gedit
 app-editors/ghex 3.18.4-r1: GNOME hexadecimal editor
 app-editors/ghostwriter 1.8.0: Cross-platform, aesthetic, distraction-free markdown editor
-app-editors/gnome-latex 3.28.1: Integrated LaTeX environment for GNOME
+app-editors/gnome-latex 3.28.1 3.32.0: Integrated LaTeX environment for GNOME
 app-editors/gummi 0.6.6-r2 0.8.1: Simple LaTeX editor for GTK+ users
 app-editors/gvim 8.1.1486 8.1.1846 8.2.0055 8.2.0114 8.2.0210 9999: GUI version of the Vim text editor
 app-editors/hexcurse 1.55 1.60.0: ncurses based hex editor
@@ -17497,7 +17497,7 @@ sys-fs/zfs 0.7.13-r1 0.7.13-r2 0.8.2-r2 0.8.3 9999: Userland utilities for ZFS L
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
 sys-fs/zfs-kmod 0.7.13 0.8.2-r2 0.8.3 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
-sys-kernel/ck-sources 5.4.2-r1 5.4.3 5.4.6 5.4.7 5.4.11 5.4.15: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
+sys-kernel/ck-sources 5.4.15 5.4.17: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r2 049-r3 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
@@ -17522,7 +17522,7 @@ sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with 
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.100 4.19.101 5.4.16 5.4.17: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 4.19.101 5.4.16 5.4.17: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.81 4.4.213 4.9.213 4.14.169 4.19.101 5.4.17 5.5.2: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.81 4.4.213 4.9.213 4.14.170 4.19.102 5.4.17 5.5.2: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15: The Zen Kernel Live Sources
