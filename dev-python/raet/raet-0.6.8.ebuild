@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=(python{2_7,3_6})
+PYTHON_COMPAT=(python3_6)
 inherit distutils-r1
 
 DESCRIPTION="Reliable Asynchronous Event Transport Protocol"
@@ -17,8 +17,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/six-1.6.1[${PYTHON_USEDEP}]
 	>=dev-python/libnacl-1.4.3[${PYTHON_USEDEP}]
-	>=dev-python/ioflo-1.5[${PYTHON_USEDEP}]
-	python_targets_python2_7? ( >=dev-python/enum34-1.0.4[$(python_gen_usedep 'python2*')] )"
+	>=dev-python/ioflo-1.5[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/unittest2[${PYTHON_USEDEP}] )"
