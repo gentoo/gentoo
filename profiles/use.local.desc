@@ -423,9 +423,7 @@ app-editors/nano:magic - Add magic file support (sys-apps/file) to automatically
 app-editors/nano:minimal - Disable all fancy features, including ones that otherwise have a dedicated USE flag (such as spelling).
 app-editors/nano:split-usr - Enable this if /bin and /usr/bin are separate directories
 app-editors/ne:tinfo - Link against libtinfo from sys-libs/ncurses
-app-editors/neovim:clipboard - Enable clipboard support through a provider
 app-editors/neovim:nvimpager - Install nvimpager symlink to less.sh macro
-app-editors/neovim:remote - Enable support for remote options using nvr
 app-editors/neovim:tui - Build the neovim unix tui
 app-editors/okteta:designer - Build plugins for dev-qt/designer
 app-editors/qhexedit2:gui - Install Qt5 hex editor
