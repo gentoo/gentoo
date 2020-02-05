@@ -1,7 +1,0 @@
-#
-# Minimal torrc so tor will work out of the box
-#
-User tor
-PIDFile /var/run/tor/tor.pid
-Log notice syslog
-DataDirectory /var/lib/tor/data
