@@ -2546,7 +2546,6 @@ dev-python/ipython:notebook - Install requirements for the web notebook based on
 dev-python/jira:jirashell - Include dependencies for jirashell (ipython, oauthlib)
 dev-python/jira:kerberos - Support Kerberos authentication
 dev-python/jira:oauth - Support OAuth authentication
-dev-python/kazoo:gevent - Enable support for the gevent based handler
 dev-python/kombu:mongodb - Enables MongoDB backend
 dev-python/kombu:msgpack - Enables MessagePack (de)serializer for Python
 dev-python/kombu:redis - Enables Redis backend
