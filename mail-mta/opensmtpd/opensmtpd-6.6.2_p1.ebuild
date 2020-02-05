@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit pam autotools systemd
+inherit pam systemd
 
 DESCRIPTION="Lightweight but featured SMTP daemon from OpenBSD"
 HOMEPAGE="https://www.opensmtpd.org"
