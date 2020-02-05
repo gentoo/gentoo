@@ -1,0 +1,15 @@
+BDEPEND=virtual/perl-Carp dev-perl/Clone-PP >=dev-perl/File-HomeDir-0.910.0 virtual/perl-File-Spec >=dev-perl/Package-Stash-0.300.0 virtual/perl-Scalar-List-Utils dev-perl/Sort-Naturally >=virtual/perl-Term-ANSIColor-3 >=virtual/perl-version-0.770.0 virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Temp >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Colored pretty-print of Perl data structures and objects
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Data-Printer
+IUSE=test examples
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=virtual/perl-Carp dev-perl/Clone-PP >=dev-perl/File-HomeDir-0.910.0 virtual/perl-File-Spec >=dev-perl/Package-Stash-0.300.0 virtual/perl-Scalar-List-Utils dev-perl/Sort-Naturally >=virtual/perl-Term-ANSIColor-3 >=virtual/perl-version-0.770.0 dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/G/GA/GARU/Data-Printer-0.40.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=23185d49c65185f7d75cd40fd75190b7

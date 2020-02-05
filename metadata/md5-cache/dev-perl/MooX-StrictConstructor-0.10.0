@@ -1,0 +1,15 @@
+BDEPEND=dev-perl/Class-Method-Modifiers >=dev-perl/Moo-1.1.0 dev-perl/strictures virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec virtual/perl-File-Temp virtual/perl-IO dev-perl/Test-Fatal >=virtual/perl-Test-Simple-0.880.0 ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Make your Moo-based object constructors blow up on unknown attributes
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/MooX-StrictConstructor
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=|| ( Artistic GPL-1+ )
+RDEPEND=dev-perl/Class-Method-Modifiers >=dev-perl/Moo-1.1.0 dev-perl/strictures dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/H/HA/HARTZELL/MooX-StrictConstructor-0.010.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=0055fe3e4a5f9b290088a2b09bad5132

@@ -5173,7 +5173,7 @@ dev-libs/newt 0.52.20 0.52.21 0.52.21-r1: Redhat's Newt windowing toolkit develo
 dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r1 0.7: generate javascript to dom bindings from w3c webidl files
-dev-libs/nspr 4.20 4.22 4.24: Netscape Portable Runtime
+dev-libs/nspr 4.20 4.22 4.24 4.25: Netscape Portable Runtime
 dev-libs/nss 3.47.1-r1 3.48-r1 3.49 3.49.1 3.49.2: Mozilla's Network Security Services library that implements PKI support
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
@@ -5707,6 +5707,7 @@ dev-perl/Class-XPath 1.400.0-r1: adds xpath matching to object trees
 dev-perl/Class-XSAccessor 1.190.0: Generate fast XS accessors without runtime compilation
 dev-perl/Clipboard 0.130.0-r3: Copy and paste with any OS
 dev-perl/Clone 0.390.0: Recursively copy Perl datatypes
+dev-perl/Clone-PP 1.70.0: Recursively copy Perl datatypes
 dev-perl/Color-Calc 1.74.0: Simple calculations with RGB colors
 dev-perl/Color-Library 0.21.0-r1: An easy-to-use and comprehensive named-color library
 dev-perl/Compress-Bzip2 2.260.0: Interface to Bzip2 compression library
@@ -5821,11 +5822,13 @@ dev-perl/Data-HexDump 0.20.0: A Simple Hexadecial Dumper
 dev-perl/Data-Hexify 1.0.0-r1: Perl extension for hexdumping arbitrary data
 dev-perl/Data-Hierarchy 0.340.0-r1: Data::Hierarchy - Handle data in a hierarchical structure
 dev-perl/Data-ICal 0.220.0: Generates iCalendar (RFC 2445) calendar files
+dev-perl/Data-IEEE754 0.20.0: Pack and unpack big-endian IEEE754 floats and doubles
 dev-perl/Data-ObjectDriver 0.150.0: Simple, transparent data interface, with caching
 dev-perl/Data-OptList 0.110.0: parse and validate simple name/value option pairs
 dev-perl/Data-Page 2.20.0-r1: help when paging through sets of results
 dev-perl/Data-Page-Pageset 1.20.0-r1: change long page list to be shorter and well navigate
 dev-perl/Data-Perl 0.2.9 0.2.9-r1: Base classes wrapping fundamental Perl data types
+dev-perl/Data-Printer 0.400.0: Colored pretty-print of Perl data structures and objects
 dev-perl/Data-Random 0.120.0: A module used to generate random data
 dev-perl/Data-Section 0.200.7: read multiple hunks of data out of your DATA section
 dev-perl/Data-Serializer 0.600.0-r1: Modules that serialize data structures
@@ -6069,6 +6072,7 @@ dev-perl/Gearman-Server 1.130.1-r1: Gearman distributed job system - worker/clie
 dev-perl/Gentoo-App-Pram 0.200.0: Official tool to merge PRs from the Gentoo Github repository
 dev-perl/Gentoo-PerlMod-Version 0.8.1: Convert arbitrary Perl Modules' versions into normalised Gentoo versions
 dev-perl/Geo-IP 1.510.0: Look up country by IP Address
+dev-perl/GeoIP2 2.6.2: API for MaxMind's GeoIP2 web services and databases
 dev-perl/Geography-Countries 2009041301.0.0-r1: 2-letter, 3-letter, and numerical codes for countries
 dev-perl/Getopt-ArgvFile 1.110.0-r1: This module is a simple supplement to other option handling modules
 dev-perl/Getopt-GUI-Long 0.930.0-r2: Auto-GUI extending Getopt::Long
@@ -6336,6 +6340,8 @@ dev-perl/Math-Derivative 1.10.0: 1st and 2nd order differentiation of data
 dev-perl/Math-FFT 1.340.0: Perl module to calculate Fast Fourier Transforms
 dev-perl/Math-Factor-XS 0.400.0: Factorize numbers and calculate matching multiplications
 dev-perl/Math-GMP 2.150.0: High speed arbitrary size integer math
+dev-perl/Math-Int128 0.220.0: Manipulate 128 bits integers in Perl
+dev-perl/Math-Int64 0.540.0: Manipulate 64 bits integers in Perl
 dev-perl/Math-Libm 1.0.0: wrapper to libm functions
 dev-perl/Math-ModInt 0.11.0: modular integer arithmetic
 dev-perl/Math-NumSeq 72.0.0: number sequences (for example from OEIS)
@@ -6353,6 +6359,9 @@ dev-perl/Math-Spline 0.20.0: Cubic Spline Interpolation of data
 dev-perl/Math-Utils 1.110.0: Useful mathematical functions not in Perl
 dev-perl/Math-Vec 1.10.0-r1: Vectors for perl
 dev-perl/Math-VecStat 0.80.0-r1: Some basic numeric stats on vectors
+dev-perl/MaxMind-DB-Common 0.40.1: Code shared by the MaxMind DB reader and writer modules
+dev-perl/MaxMind-DB-Reader 1.0.14: Read MaxMind DB files and look up IP addresses
+dev-perl/MaxMind-DB-Reader-XS 1.0.8: Fast XS implementation of MaxMind DB reader
 dev-perl/MediaWiki-API 0.410.0: A OO interface to the Mediawiki API
 dev-perl/Mixin-Linewise 0.108.0: write your linewise code for handles; this does the rest
 dev-perl/Mo 0.400.0: Perl Micro Object framework
@@ -6392,6 +6401,7 @@ dev-perl/MongoDB 1.8.0: Official MongoDB Driver for Perl
 dev-perl/Monitoring-Plugin 0.390.0 0.400.0: Modules to streamline Nagios, Icinga, Shinken, etc. plugins
 dev-perl/Moo 2.3.3: Minimalist Object Orientation (with Moose compatiblity)
 dev-perl/MooX-HandlesVia 0.1.8: NativeTrait-like behavior for Moo
+dev-perl/MooX-StrictConstructor 0.10.0: Make your Moo-based object constructors blow up on unknown attributes
 dev-perl/MooX-Types-MooseLike 0.290.0: Some Moosish types and a type builder
 dev-perl/MooX-Types-MooseLike-Numeric 1.30.0: Moo types for numbers
 dev-perl/MooX-late 0.15.0 0.15.0-r1: Easily translate Moose code to Moo
@@ -6496,6 +6506,7 @@ dev-perl/Net-Trackback 1.10.0-r1: Object-oriented interface for developing Track
 dev-perl/Net-Twitter 4.10.420: A perl interface to the Twitter API
 dev-perl/Net-UPnP 1.4.3: Perl extension for UPnP
 dev-perl/Net-Whois-IP 1.190.0-r1: Perl extension for looking up the whois information for ip addresses
+dev-perl/Net-Works 0.220.0: Sane APIs for IP addresses and networks
 dev-perl/Net-XMPP 1.50.0: XMPP Perl Library
 dev-perl/Net-Z3950-ZOOM 1.280.0-r2: Perl extension for invoking the ZOOM-C API
 dev-perl/NetAddr-IP 4.78.0 4.79.0: Manipulation and operations on IP addresses
@@ -6787,6 +6798,7 @@ dev-perl/Term-UI 0.460.0: User interfaces via Term::ReadLine made easy
 dev-perl/TermReadKey 2.330.0 2.370.0: Change terminal modes, and perform non-blocking reads
 dev-perl/Test-Assert 0.50.400-r1: Assertion methods for those who like JUnit
 dev-perl/Test-Base 0.880.0: A Data Driven Testing Framework
+dev-perl/Test-Bits 0.20.0: Provides a bits_is() subroutine for testing binary data
 dev-perl/Test-CPAN-Meta 0.250.0: Validate your CPAN META.yml file
 dev-perl/Test-CheckDeps 0.10.0: Check for presence of dependencies
 dev-perl/Test-Class 0.500.0: Easily create test classes in an xUnit/JUnit style

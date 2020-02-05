@@ -1,0 +1,15 @@
+BDEPEND=virtual/perl-Exporter virtual/perl-ExtUtils-MakeMaker test? ( virtual/perl-File-Spec dev-perl/Test-Bits >=virtual/perl-Test-Simple-0.960.0 ) dev-lang/perl
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=dev-lang/perl
+DESCRIPTION=Pack and unpack big-endian IEEE754 floats and doubles
+EAPI=7
+HOMEPAGE=https://metacpan.org/release/Data-IEEE754
+IUSE=test
+KEYWORDS=~amd64 ~x86
+LICENSE=Artistic-2
+RDEPEND=virtual/perl-Exporter dev-lang/perl:=
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://cpan/authors/id/M/MA/MAXMIND/Data-IEEE754-0.02.tar.gz
+_eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
+_md5_=5b14d3276816097e1ccc9027f547d1cb
