@@ -32,6 +32,7 @@ COMMON_DEPEND="
 	>=media-libs/libcanberra-0.25[gtk3]
 	>=net-libs/libsoup-2.42:2.4
 	>=net-libs/webkit-gtk-2.16.0:4
+	<net-libs/webkit-gtk-2.26.3-r1:4
 	>=x11-libs/cairo-1.9.15:=[glib]
 	>=x11-libs/gdk-pixbuf-2.24:2
 	>=x11-libs/gtk+-3.22:3
@@ -53,7 +54,7 @@ COMMON_DEPEND="
 		>=sci-geosciences/geocode-glib-3.10.0
 		x11-libs/mx:1.0 )
 	ldap? ( >=net-nds/openldap-2:= )
-	spell? ( app-text/gtkspell:3 )
+	spell? ( <app-text/gtkspell-3.0.10:3 )
 	ssl? (
 		>=dev-libs/nspr-4.6.1:=
 		>=dev-libs/nss-3.11:= )
