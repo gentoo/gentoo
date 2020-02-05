@@ -72,12 +72,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo
-	einfo "Plugins for SQLite, MySQL, PostgreSQL, LDAP, socketmaps,"
-	einfo "Redis, and many other useful addons and filters are"
-	einfo "available in the mail-filter/opensmtpd-extras package."
-	einfo
-
 	ewarn
 	ewarn "If you're upgrading from version 6.0, note that the"
 	ewarn "configuration syntax has changed, and config files"
