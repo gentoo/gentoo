@@ -104,6 +104,8 @@ acct-group/rstudio-server 0: group for sci-mathematics/rstudio
 acct-group/rtkit 0: Group for the Realtime Policy and Watchdog Daemon
 acct-group/shellinaboxd 0: shellinabox group
 acct-group/slurm 0: A group for the slurm - Highly Scalable Resource Manager
+acct-group/smtpd 0: daemon group for smtpd
+acct-group/smtpq 0: queue group for smtpd
 acct-group/sogo 0: Group for gnustep-apps/sogo
 acct-group/spectrum 0: A group for the Spectrum messaging transport
 acct-group/spire 0: System group: spire
@@ -242,6 +244,8 @@ acct-user/rstudio-server 0: user for sci-mathematics/rstudio
 acct-user/rtkit 0: User for the Realtime Policy and Watchdog Daemon
 acct-user/shellinaboxd 0: shellinabox user
 acct-user/slurm 0: User for the slurm - Highly Scalable Resource Manager
+acct-user/smtpd 0: daemon user for smtpd
+acct-user/smtpq 0: queue user for smtpd
 acct-user/sogo 0: User for gnustep-apps/sogo
 acct-user/spectrum 0: A user for the Spectrum messaging transport
 acct-user/spire 0: user for spiffe runtime environment
@@ -12316,7 +12320,7 @@ mail-mta/exim 4.92.2 4.92.3 4.93.0.4: A highly configurable, drop-in replacement
 mail-mta/msmtp 1.8.3 1.8.6 1.8.7: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r12: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
-mail-mta/opensmtpd 6.0.3_p1-r2: Lightweight but featured SMTP daemon from OpenBSD
+mail-mta/opensmtpd 6.0.3_p1-r2 6.6.2_p1: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 3.4.5-r1 3.4.6 3.4.7 3.4.8 3.4.9 3.5_pre20200203: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge-bin 1.1.6 1.2.2 1.2.3: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
