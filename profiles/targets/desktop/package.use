@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-05)
+# Required by many packages, most notably Mozilla products
+dev-lang/python sqlite
+
 # Lars Wendler <polynomial-c@gentoo.org> (2019-03-20)
 # Enable client by default. Usually desktop users need the client.
 net-fs/samba client
