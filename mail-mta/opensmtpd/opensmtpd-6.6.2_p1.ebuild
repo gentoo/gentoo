@@ -16,7 +16,7 @@ IUSE="libressl pam +mta"
 
 DEPEND="acct-user/smtpd
 		acct-user/smtpq
-		!libressl? ( dev-libs/openssl:0 )
+		!libressl? ( dev-libs/openssl:0/1.1 )
 		libressl? ( dev-libs/libressl )
 		elibc_musl? ( sys-libs/fts-standalone )
 		sys-libs/zlib
@@ -41,22 +41,17 @@ DEPEND="acct-user/smtpd
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${P/_}
-PATCHES=(
-	"${FILESDIR}/${P}-fix-crash-on-auth.patch"
-	"${FILESDIR}/${P}-openssl_1.1.patch"
-	"${FILESDIR}/${P}-security-fixes.patch"
-)
 
 src_configure() {
-	tc-export AR
-	AR="$(which "$AR")" econf \
-		--with-table-db \
+	econf \
+		--sysconfdir=/etc/smtpd \
+		--with-path-mbox=/var/spool/mail \
+		--with-path-empty=/var/empty \
+		--with-path-socket=/run \
+		--with-path-CAfile=/etc/ssl/certs/ca-certificates.crt \
 		--with-user-smtpd=smtpd \
 		--with-user-queue=smtpq \
 		--with-group-queue=smtpq \
-		--with-path-socket=/run \
-		--with-path-CAfile=/etc/ssl/certs/ca-certificates.crt \
-		--sysconfdir=/etc/opensmtpd \
 		$(use_with pam auth-pam)
 }
 
@@ -82,4 +77,10 @@ pkg_postinst() {
 	einfo "Redis, and many other useful addons and filters are"
 	einfo "available in the mail-filter/opensmtpd-extras package."
 	einfo
+
+	ewarn
+	ewarn "If you're upgrading from version 6.0, note that the"
+	ewarn "configuration syntax has changed, and config files"
+	ewarn "now live in /etc/smtpd instead of /etc/opensmtpd."
+	ewarn
 }
