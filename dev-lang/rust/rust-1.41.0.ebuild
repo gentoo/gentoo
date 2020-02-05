@@ -106,6 +106,7 @@ QA_SONAME="usr/lib.*/librustc_macros.*.so"
 
 PATCHES=(
 	"${FILESDIR}"/1.40.0-add-soname.patch
+	"${FILESDIR}"/llvm-gcc10.patch
 )
 
 S="${WORKDIR}/${MY_P}-src"
