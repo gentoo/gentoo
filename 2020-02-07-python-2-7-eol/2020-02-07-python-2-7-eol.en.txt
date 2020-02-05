@@ -1,0 +1,51 @@
+Title: Python 2.7 went EOL
+Author: Michał Górny <mgorny@gentoo.org>
+Posted: 2020-02-07
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: dev-lang/python:2.7
+
+Python 2.7 has reached its end-of-life by 2019-12-31.  Python package
+upstreams have started removing Python 2 compatibility code from their
+packages more aggressively.  This includes common dependencies such as
+dev-python/pytest, dev-python/setuptools and dev-python/sphinx.  While
+we realize that many packages are still dependent on Python 2, providing
+full support for it exceeds our maintenance capabilities.
+
+Upstream is planning to make one more release of dev-lang/python:2.7
+in April 2020.  We are going to continue maintaining and patching
+the interpreter for as long as it is feasible, most likely even after
+all Python 2 packages are gone from Gentoo.
+
+At the same time, we are actively working towards switching
+the distribution to Python 3.  Whenever possible, we are removing
+Python 2 support from packages.  It will remain available for
+the packages missing Python 3 compatibility and their dependencies
+for some more time.  However, packages that have little chances of being
+ported will eventually be removed.
+
+If you are still using Python 2 for your projects, we strongly recommend
+you to migrate away.  For the time being, it is preferable to use
+dev-python/virtualenv or a similar solution rather than ebuilds,
+to install the dependencies for your projects locally.
+
+Regular Gentoo systems will be migrated off Python 2 gracefully.  It may
+be necessary to use --changed-deps or a similar option during system
+upgrades whenever they become blocked by Python 2 packages installed
+earlier.
+
+If you wish to remove Python 2.7 entirely sooner, you can try removing
+python2_7 from PYTHON_TARGETS.  However, this will require adding
+explicit package.use entries if some of the installed packages still
+require Python 2.  An example package.use entry follows:
+
+  # disable py2.7 without altering the other flags
+  */* PYTHON_TARGETS: -python2_7
+  # enable py2.7 for setuptools
+  dev-python/setuptools PYTHON_TARGETS: python2_7
+  # switch a single-impl package to 2.7
+  dev-embedded/libftdi PYTHON_TARGETS: python2_7
+  dev-embedded/libftdi PYTHON_SINGLE_TARGET: -* python2_7
+
+Note that package.use entries are not necessary for packages that
+support one implementation only (i.e. do not support Python 3 at all).
