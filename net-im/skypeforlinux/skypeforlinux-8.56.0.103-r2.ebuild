@@ -90,8 +90,6 @@ src_install() {
 
 	domenu usr/share/applications/skypeforlinux.desktop
 
-	fperms 4755 /opt/skypeforlinux/chrome-sandbox
-
 	if use pax_kernel; then
 		pax-mark -m "${ED}"/opt/skypeforlinux/skypeforlinux
 		pax-mark -m "${ED}"/opt/skypeforlinux/resources/app.asar.unpacked/node_modules/slimcore/bin/slimcore.node
