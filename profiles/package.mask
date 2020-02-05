@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Ulrich Müller <ulm@gentoo.org> (2020-02-05)
+# Last version bump in 2014, while upstream is at 2019/1.
+# Ebuild claims "free-noncomm", but has an inaccessible distfile
+# behind a registration wall. Unresponsive Gentoo maintainer.
+# Masked for removal in 30 days. Bug #702352.
+sci-chemistry/shelx
+
 # Joonas Niilola <juippis@gentoo.org> (2020-02-05)
 # Stagnant upstream with latest release from 2016, python2-only, no maintainer 
 # in Gentoo, no notable ebuild action in years, multiple bugs open. Blocks 
