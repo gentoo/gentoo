@@ -49,7 +49,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	app-eselect/eselect-vi
-	python? ( dev-python/neovim-python-client )
+	python? ( dev-python/pynvim )
 	ruby? ( dev-ruby/neovim-ruby-client )
 	remote? ( dev-python/neovim-remote )
 	clipboard? ( || ( x11-misc/xsel x11-misc/xclip ) )

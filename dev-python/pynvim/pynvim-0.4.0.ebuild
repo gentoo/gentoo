@@ -8,8 +8,7 @@ inherit distutils-r1
 
 DESCRIPTION="Python client for Neovim"
 HOMEPAGE="https://github.com/neovim/pynvim"
-SRC_URI="https://github.com/neovim/pynvim/archive/${PV}.tar.gz -> ${P}.tar.gz"
-S="${WORKDIR}/pynvim-${PV}"
+SRC_URI="https://github.com/neovim/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
