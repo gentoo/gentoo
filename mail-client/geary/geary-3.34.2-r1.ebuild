@@ -35,7 +35,7 @@ DEPEND="
 	>=app-crypt/gcr-3.10.1:0=
 	>=dev-libs/libgee-0.8.5:0.8=
 	net-libs/gnome-online-accounts
-	app-text/gspell
+	app-text/gspell:=
 	app-text/iso-codes
 	>=dev-libs/json-glib-1.0
 	>=media-libs/libcanberra-0.28

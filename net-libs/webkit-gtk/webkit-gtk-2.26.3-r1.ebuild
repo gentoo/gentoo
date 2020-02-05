@@ -16,9 +16,9 @@ SRC_URI="https://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="4/37" # soname version of libwebkit2gtk-4.0
-KEYWORDS="amd64 ~ia64 ~ppc64 ~sparc x86"
+KEYWORDS="~amd64 ~ia64 ~ppc64 ~sparc ~x86"
 
-IUSE="aqua coverage doc +egl +geolocation gles2-only gnome-keyring +gstreamer +introspection +jpeg2k +jumbo-build libnotify +opengl seccomp spell wayland +X"
+IUSE="aqua coverage +egl +geolocation gles2-only gnome-keyring +gstreamer gtk-doc +introspection +jpeg2k +jumbo-build libnotify +opengl seccomp spell wayland +X"
 
 # gstreamer with opengl/gles2 needs egl
 REQUIRED_USE="
@@ -64,7 +64,7 @@ RDEPEND="
 	gnome-keyring? ( app-crypt/libsecret )
 	introspection? ( >=dev-libs/gobject-introspection-1.32.0:= )
 	dev-libs/libtasn1:=
-	spell? ( >=app-text/enchant-0.22:= )
+	spell? ( >=app-text/enchant-0.22:2 )
 	gstreamer? (
 		>=media-libs/gstreamer-1.14:1.0
 		>=media-libs/gst-plugins-base-1.14:1.0[egl?,opengl?]
@@ -105,7 +105,6 @@ DEPEND="${RDEPEND}
 	${RUBY_DEPS}
 	>=app-accessibility/at-spi2-core-2.5.3
 	dev-util/glib-utils
-	>=dev-util/gtk-doc-am-1.10
 	>=dev-util/gperf-3.0.1
 	>=sys-devel/bison-2.4.3
 	|| ( >=sys-devel/gcc-7.3 >=sys-devel/clang-5 )
@@ -117,7 +116,7 @@ DEPEND="${RDEPEND}
 	virtual/perl-Carp
 	virtual/perl-JSON-PP
 
-	doc? ( >=dev-util/gtk-doc-1.10 )
+	gtk-doc? ( >=dev-util/gtk-doc-1.10 )
 	geolocation? ( dev-util/gdbus-codegen )
 "
 #	test? (
@@ -164,10 +163,10 @@ pkg_setup() {
 }
 
 src_prepare() {
-	eapply "${FILESDIR}/${PN}-2.24.4-icu-65.patch" # bug 698596
 	eapply "${FILESDIR}/${PN}-2.24.4-eglmesaext-include.patch" # bug 699054 # https://bugs.webkit.org/show_bug.cgi?id=204108
-	eapply "${FILESDIR}"/${PV}-fix-noGL-build.patch # bug 704236
-	eapply "${FILESDIR}"/${PV}-fix-arm-non-unified-build.patch # bug 704194
+	eapply "${FILESDIR}"/2.26.2-fix-arm-non-unified-build.patch # bug 704194
+	eapply "${FILESDIR}"/${PV}-fix-gtk-doc.patch # bug 704550 - retest without it once we can depend on >=gtk-doc-1.32
+	eapply "${FILESDIR}"/${PV}-fix-noGL-wayland-build.patch
 	cmake-utils_src_prepare
 	gnome2_src_prepare
 }
@@ -230,7 +229,7 @@ src_configure() {
 		-DENABLE_UNIFIED_BUILDS=$(usex jumbo-build)
 		-DENABLE_QUARTZ_TARGET=$(usex aqua)
 		-DENABLE_API_TESTS=$(usex test)
-		-DENABLE_GTKDOC=$(usex doc)
+		-DENABLE_GTKDOC=$(usex gtk-doc)
 		-DENABLE_GEOLOCATION=$(usex geolocation) # Runtime optional (talks over dbus service)
 		$(cmake-utils_use_find_package gles2-only OpenGLES2)
 		-DENABLE_GLES2=$(usex gles2-only)

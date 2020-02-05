@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-05)
+# NIH utility package, last released 2015.  No Python 3 support.
+# All remaining reverse dependencies are masked for removal.
+# Removal in 30 days.  Bug #708332.
+dev-python/egenix-mx-base
+
 # Ulrich Müller <ulm@gentoo.org> (2020-02-05)
 # Last version bump in 2014, while upstream is at 2019/1.
 # Ebuild claims "free-noncomm", but has an inaccessible distfile
@@ -836,10 +842,6 @@ x11-drivers/xf86-video-voodoo
 # Dennis Lamm <expeditioneer@gentoo.org> (2019-01-28)
 # Depends on >=app-text/enchant-2.0.0 which is masked
 >=app-text/gtkspell-3.0.10
-
-# Dennis Lamm <expeditioneer@gentoo.org> (2019-01-28)
-# Depends on >=app-text/enchant-2.1.3 which is masked
->=app-text/gspell-1.8.1
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-01-23)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
