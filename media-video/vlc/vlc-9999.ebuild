@@ -1,4 +1,4 @@
-# Copyright 2000-2019 Gentoo Authors
+# Copyright 2000-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -152,7 +152,7 @@ RDEPEND="
 	ncurses? ( sys-libs/ncurses:0=[unicode] )
 	nfs? ( >=net-fs/libnfs-0.10.0:= )
 	ogg? ( media-libs/libogg )
-	opencv? ( media-libs/opencv:= )
+	opencv? ( <media-libs/opencv-4:= )
 	opus? ( >=media-libs/opus-1.0.3 )
 	png? ( media-libs/libpng:0= )
 	postproc? ( libav? ( media-libs/libpostproc ) )
