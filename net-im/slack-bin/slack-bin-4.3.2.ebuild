@@ -56,7 +56,8 @@ QA_PREBUILT="/opt/slack/chrome-sandbox
 	opt/slack/libEGL.so
 	opt/slack/libGLESv2.so
 	opt/slack/swiftshader/libEGL.so
-	opt/slack/swiftshader/libGLESv2.so"
+	opt/slack/swiftshader/libGLESv2.so
+	opt/slack/swiftshader/libvk_swiftshader.so"
 
 S="${WORKDIR}"
 
