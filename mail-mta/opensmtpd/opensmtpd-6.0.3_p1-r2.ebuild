@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit multilib flag-o-matic eutils pam toolchain-funcs autotools systemd
+inherit pam toolchain-funcs autotools systemd
 
 DESCRIPTION="Lightweight but featured SMTP daemon from OpenBSD"
 HOMEPAGE="https://www.opensmtpd.org"
@@ -14,29 +14,30 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 IUSE="libressl pam +mta"
 
-DEPEND="acct-user/smtpd
-		acct-user/smtpq
-		!libressl? ( dev-libs/openssl:0 )
-		libressl? ( dev-libs/libressl )
-		elibc_musl? ( sys-libs/fts-standalone )
-		sys-libs/zlib
-		pam? ( sys-libs/pam )
-		sys-libs/db:=
-		dev-libs/libevent
-		app-misc/ca-certificates
-		net-mail/mailbase
-		net-libs/libasr
-		!mail-mta/courier
-		!mail-mta/esmtp
-		!mail-mta/exim
-		!mail-mta/mini-qmail
-		!mail-mta/msmtp[mta]
-		!mail-mta/netqmail
-		!mail-mta/nullmailer
-		!mail-mta/postfix
-		!mail-mta/qmail-ldap
-		!mail-mta/sendmail
-		!mail-mta/ssmtp[mta]
+DEPEND="
+	acct-user/smtpd
+	acct-user/smtpq
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
+	elibc_musl? ( sys-libs/fts-standalone )
+	sys-libs/zlib
+	pam? ( sys-libs/pam )
+	sys-libs/db:=
+	dev-libs/libevent
+	app-misc/ca-certificates
+	net-mail/mailbase
+	net-libs/libasr
+	!mail-mta/courier
+	!mail-mta/esmtp
+	!mail-mta/exim
+	!mail-mta/mini-qmail
+	!mail-mta/msmtp[mta]
+	!mail-mta/netqmail
+	!mail-mta/nullmailer
+	!mail-mta/postfix
+	!mail-mta/qmail-ldap
+	!mail-mta/sendmail
+	!mail-mta/ssmtp[mta]
 "
 RDEPEND="${DEPEND}"
 
@@ -71,7 +72,7 @@ src_install() {
 		dodir /usr/sbin
 		dosym smtpctl /usr/sbin/sendmail
 		dosym ../sbin/smtpctl /usr/bin/sendmail
-		mkdir -p "${ED}"/usr/$(get_libdir)
+		mkdir -p "${ED}"/usr/$(get_libdir) || die
 		ln -s --relative "${ED}"/usr/sbin/smtpctl "${ED}"/usr/$(get_libdir)/sendmail || die
 	fi
 }
