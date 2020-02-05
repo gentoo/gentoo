@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="Python bindings for sys-block/parted"
@@ -14,10 +14,7 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~alpha amd64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="test"
-RESTRICT="!test? ( test )"
-REQUIRED_USE="
-	test? ( python_targets_python2_7 )
-"
+RESTRICT="test"
 
 RDEPEND="
 	>=sys-block/parted-3.1
