@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools linux-info python-single-r1 systemd
+inherit autotools flag-o-matic linux-info python-single-r1 systemd
 
 DESCRIPTION="High performance Network IDS, IPS and Network Security Monitoring engine"
 HOMEPAGE="https://suricata-ids.org/"
@@ -71,6 +71,9 @@ pkg_pretend() {
 }
 
 src_prepare() {
+	# Bug #707204
+	append-cflags $(test-flags-CC -fcommon)
+
 	default
 	sed -ie 's/docdir =.*/docdir = ${datarootdir}\/doc\/'${PF}'\//' "${S}/doc/Makefile.am"
 	eautoreconf
