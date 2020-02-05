@@ -56,6 +56,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-CVE-2017-15372.patch
 	"${FILESDIR}"/${P}-CVE-2017-15642.patch
 	"${FILESDIR}"/${P}-CVE-2017-18189.patch
+	"${FILESDIR}"/${P}-CVE-2019-13590.patch
 	"${FILESDIR}"/${P}-wavpack-chk-errors-on-init.patch
 )
 
