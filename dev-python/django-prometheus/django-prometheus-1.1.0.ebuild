@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_6 python3_7 )
+PYTHON_COMPAT=( python3_6 python3_7 )
 inherit distutils-r1
 
 DESCRIPTION="Library to export django metrics for prometheus"

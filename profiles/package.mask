@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-05)
+# Fails to build for at least 6 months.  No Python 3 support.  Last
+# bumped in 2016.  Bad quality ebuild.
+#
+# dev-python/dpkt has no other revdeps.
+#
+# Removal in 30 days.  Bug #692340.
+net-libs/nfqueue-bindings
+dev-python/dpkt
+
 # Ulrich Müller <ulm@gentoo.org> (2020-02-04)
 # No license; copyright status unclear.
 # Masked for removal in 30 days. Bug #634288.
