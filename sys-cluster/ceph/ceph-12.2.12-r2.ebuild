@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_6 )
 DISTUTILS_OPTIONAL=1
 
 inherit check-reqs cmake-utils distutils-r1 flag-o-matic multiprocessing \
-	python-r1 udev user readme.gentoo-r1 systemd
+	python-r1 udev readme.gentoo-r1 systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -33,6 +33,8 @@ IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 #>=dev-libs/jerasure-2.0.0-r1
 #>=dev-libs/gf-complete-2.0.0
 COMMON_DEPEND="
+	acct-group/ceph
+	acct-user/ceph
 	virtual/libudev:=
 	app-arch/bzip2:=[static-libs?]
 	app-arch/lz4:=[static-libs?]
