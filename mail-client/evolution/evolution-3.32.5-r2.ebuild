@@ -14,16 +14,18 @@ SLOT="2.0"
 
 IUSE="archive +bogofilter geolocation gtk-doc highlight ldap spamassassin spell ssl +weather ytnef"
 
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 
 # glade-3 support is for maintainers only per configure.ac
 # pst is not mature enough and changes API/ABI frequently
 # dconf explicitely needed for backup plugin
 # gnome-desktop support is optional with --enable-gnome-desktop
 # automagic libunity dep
+# >=webkit-gtk-2.26.3-r1 and >=gtkspell-3.0.10 to ensure all use enchant:2
+# TODO: Adjust webkit-gtk dep to actually be that once it's keyworder for needed arches
 COMMON_DEPEND="
 	>=app-crypt/gcr-3.4:=[gtk]
-	>=app-text/enchant-1.6.0:0
+	>=app-text/enchant-2.2.0:2
 	>=dev-libs/glib-2.46:2[dbus]
 	>=dev-libs/libxml2-2.7.3:2
 	>=gnome-base/gnome-desktop-2.91.3:3=
@@ -32,7 +34,6 @@ COMMON_DEPEND="
 	>=media-libs/libcanberra-0.25[gtk3]
 	>=net-libs/libsoup-2.42:2.4
 	>=net-libs/webkit-gtk-2.16.0:4
-	<net-libs/webkit-gtk-2.26.3-r1:4
 	>=x11-libs/cairo-1.9.15:=[glib]
 	>=x11-libs/gdk-pixbuf-2.24:2
 	>=x11-libs/gtk+-3.22:3
@@ -54,7 +55,7 @@ COMMON_DEPEND="
 		>=sci-geosciences/geocode-glib-3.10.0
 		x11-libs/mx:1.0 )
 	ldap? ( >=net-nds/openldap-2:= )
-	spell? ( <app-text/gtkspell-3.0.10:3 )
+	spell? ( >=app-text/gtkspell-3.0.10:3 )
 	ssl? (
 		>=dev-libs/nspr-4.6.1:=
 		>=dev-libs/nss-3.11:= )
@@ -110,7 +111,7 @@ src_configure() {
 		-DWITH_OPENLDAP=$(usex ldap)
 		-DENABLE_SMIME=$(usex ssl)
 		-DENABLE_GNOME_DESKTOP=ON
-		-DWITH_ENCHANT_VERSION=1
+		-DWITH_ENCHANT_VERSION=2
 		-DENABLE_CANBERRA=ON
 		-DENABLE_AUTOAR=$(usex archive)
 		-DWITH_HELP=ON
