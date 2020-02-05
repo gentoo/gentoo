@@ -76,6 +76,5 @@ each_ruby_install() {
 all_ruby_install() {
 	all_fakegem_install
 
-	insinto /usr/share/doc/${PF}/samples
-	doins -r samples/*
+	dodoc -r samples
 }
