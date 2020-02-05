@@ -7374,7 +7374,7 @@ dev-python/PyECLib 1.5.0 1.6.0: Messaging API for RPC and notifications over dif
 dev-python/PyGithub 1.44.1 1.45: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.12.2 5.13.2 5.14.1: Python bindings for the Qt framework
-dev-python/PyQt5-sip 4.19.17 4.19.19 4.19.20: Private sip module for PyQt5
+dev-python/PyQt5-sip 4.19.17 4.19.19 4.19.20 4.19.21: Private sip module for PyQt5
 dev-python/PyQtWebEngine 5.12.1 5.13.2 5.14.0: Python bindings for QtWebEngine
 dev-python/PyRSS2Gen 1.1: RSS feed generator written in Python
 dev-python/PySDL2 0.9.6: Python (ctypes) bindings for SDL2 libraries
@@ -7633,7 +7633,7 @@ dev-python/dicttoxml 1.7.4: Converts a Python dictionary or other data type to a
 dev-python/diff-cover 2.3.0: Automatically find diff lines that need test coverage
 dev-python/diff-match-patch 20121119 20181111: Diff, match and patch algorithms for plain text
 dev-python/dill 0.2.5 0.3.0 0.3.1.1: Serialize all of python (almost)
-dev-python/discogs-client 2.0.2 2.2.1: Official Python API client for Discogs
+dev-python/discogs-client 2.2.1: Official Python API client for Discogs
 dev-python/diskcache 3.1.0: Disk and file backed cache
 dev-python/dissononce 0.34.3: A python implementation for Noise Protocol Framework
 dev-python/distlib 0.2.1 0.2.4: Distribution utilities
@@ -7673,7 +7673,7 @@ dev-python/django-registration 1.0: An extensible user-registration application 
 dev-python/django-rq 1.3.1 2.1.0 2.2.0: An app that provides django integration for RQ (Redis Queue)
 dev-python/django-select2 5.5.0: A Django integration of Select2
 dev-python/django-setuptest 0.2.1: Simple test suite enabling Django app testing via setup.py
-dev-python/django-sortedm2m 1.3.0 1.3.2: Drop-in replacement for django's many to many field with sorted relations
+dev-python/django-sortedm2m 1.3.2: Drop-in replacement for django's many to many field with sorted relations
 dev-python/django-spurl 0.6.4: A Django template library for manipulating URLs
 dev-python/django-tables2 2.0.6 2.2.1: Table/data-grid framework for Django
 dev-python/django-tagging 0.4.6: Generic tagging application for Django
@@ -8430,7 +8430,7 @@ dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 2.28.6-r55 3.32.1 3.34.0: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
 dev-python/pygpu 0.6.7: Python bindings to libgpuarray
-dev-python/pygraphviz 1.2 1.3.1 1.5: Python wrapper for the Graphviz Agraph data structure
+dev-python/pygraphviz 1.5: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.0.4 5.0.6 5.1: A Python interface for the PostgreSQL database
 dev-python/pygsl 2.1.1: Python interface for the GNU scientific library (gsl)
 dev-python/pygtk 2.24.0-r4: GTK+2 bindings for Python
@@ -8836,7 +8836,7 @@ dev-python/simplesoapy 1.5.1-r1 9999: Simple pythonic wrapper for SoapySDR libra
 dev-python/simplespectral 1.0.0 9999: Heavily simplified scipy.signal.spectral module
 dev-python/simpy 3.0.8: Object-oriented, process-based discrete-event simulation language
 dev-python/singledispatch 3.4.0.3: A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3
-dev-python/sip 4.19.17 4.19.19 4.19.20: Python extension module generator for C and C++ libraries
+dev-python/sip 4.19.17 4.19.19 4.19.20 4.19.21: Python extension module generator for C and C++ libraries
 dev-python/six 1.12.0 1.13.0 1.14.0: Python 2 and 3 compatibility library
 dev-python/slackclient 1.2.0: Client for Slack supporting the Slack Web and Real Time Messaging API
 dev-python/sleekxmpp 1.3.1-r1: Python library for XMPP
@@ -12803,7 +12803,7 @@ media-gfx/slic3r 1.1.7 1.3.0-r1 9999: A mesh slicer to generate G-code for fused
 media-gfx/solvespace 2.3: Parametric 2d/3d CAD
 media-gfx/springgraph 88: Generate spring graphs from graphviz input files
 media-gfx/svg2rlg 0.3: python tool to convert SVG files to reportlab graphics
-media-gfx/sxiv 25 9999: Simple (or small or suckless) X Image Viewer
+media-gfx/sxiv 25 26 9999: Simple (or small or suckless) X Image Viewer
 media-gfx/symboleditor 2.1.0: Application to create libraries of QPainterPath objects with rendering hints
 media-gfx/synnefo 1.1.0: Qt front end for the Oyranos Color Management System
 media-gfx/tachyon 0.99_beta6-r1: A portable, high performance parallel ray tracing system
