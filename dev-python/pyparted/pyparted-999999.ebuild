@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,8} )
 inherit distutils-r1 flag-o-matic git-r3
 
 DESCRIPTION="Python bindings for sys-block/parted"
@@ -21,7 +21,8 @@ DEPEND="
 	${RDEPEND}
 	virtual/pkgconfig
 "
-RESTRICT="test"
+
+distutils_enable_tests unittest
 
 src_configure() {
 	append-cflags -fcommon
