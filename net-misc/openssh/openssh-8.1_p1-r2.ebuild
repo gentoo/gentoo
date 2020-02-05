@@ -1,20 +1,20 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit user flag-o-matic multilib autotools pam systemd
+inherit flag-o-matic multilib autotools pam systemd
 
 # Make it more portable between straight releases
 # and _p? releases.
 PARCH=${P/_}
-#HPN_PV="${PV^^}"
-HPN_PV="7.8_P1"
+HPN_PV="${PV^^}"
 
-HPN_VER="14.16"
+HPN_VER="14.20"
 HPN_PATCHES=(
 	${PN}-${HPN_PV/./_}-hpn-DynWinNoneSwitch-${HPN_VER}.diff
 	${PN}-${HPN_PV/./_}-hpn-AES-CTR-${HPN_VER}.diff
+	${PN}-${HPN_PV/./_}-hpn-PeakTput-${HPN_VER}.diff
 )
 
 SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
@@ -25,22 +25,28 @@ PATCH_SET="openssh-7.9p1-patches-1.0"
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
+	https://dev.gentoo.org/~chutzpah/dist/openssh/${P}-glibc-2.31-patches.tar.xz
 	${SCTP_PATCH:+sctp? ( https://dev.gentoo.org/~chutzpah/dist/openssh/${SCTP_PATCH} )}
 	${HPN_VER:+hpn? ( $(printf "mirror://sourceforge/hpnssh/HPN-SSH%%20${HPN_VER/./v}%%20${HPN_PV/_P/p}/%s\n" "${HPN_PATCHES[@]}") )}
 	${X509_PATCH:+X509? ( https://roumenpetrov.info/openssh/x509-${X509_VER}/${X509_PATCH} )}
-	"
+"
+S="${WORKDIR}/${PARCH}"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
 IUSE="abi_mips_n32 audit bindist debug hpn kerberos kernel_linux ldns libedit libressl livecd pam +pie sctp selinux +ssl static test X X509 xmss"
+
 RESTRICT="!test? ( test )"
-REQUIRED_USE="ldns? ( ssl )
+
+REQUIRED_USE="
+	ldns? ( ssl )
 	pie? ( !static )
 	static? ( !kerberos !pam )
 	X509? ( !sctp ssl )
-	test? ( ssl )"
+	test? ( ssl )
+"
 
 LIB_DEPEND="
 	audit? ( sys-process/audit[static-libs(+)] )
@@ -65,23 +71,28 @@ LIB_DEPEND="
 		)
 		libressl? ( dev-libs/libressl:0=[static-libs(+)] )
 	)
-	>=sys-libs/zlib-1.2.3:=[static-libs(+)]"
+	>=sys-libs/zlib-1.2.3:=[static-libs(+)]
+"
 RDEPEND="
+	acct-group/sshd
+	acct-user/sshd
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	pam? ( sys-libs/pam )
-	kerberos? ( virtual/krb5 )"
+	kerberos? ( virtual/krb5 )
+"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
-	virtual/os-headers"
+	virtual/os-headers
+"
 RDEPEND="${RDEPEND}
 	pam? ( >=sys-auth/pambase-20081028 )
 	userland_GNU? ( virtual/shadow )
-	X? ( x11-apps/xauth )"
+	X? ( x11-apps/xauth )
+"
 BDEPEND="
 	virtual/pkgconfig
-	sys-devel/autoconf"
-
-S="${WORKDIR}/${PARCH}"
+	sys-devel/autoconf
+"
 
 pkg_pretend() {
 	# this sucks, but i'd rather have people unable to `emerge -u openssh`
@@ -122,6 +133,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-7.5_p1-disable-conch-interop-tests.patch
 	eapply "${FILESDIR}"/${PN}-8.0_p1-fix-putty-tests.patch
 	eapply "${FILESDIR}"/${PN}-8.0_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch
+	eapply "${FILESDIR}"/${PN}-8.1_p1-tests-2020.patch
 
 	[[ -d ${WORKDIR}/patches ]] && eapply "${WORKDIR}"/patches
 
@@ -167,25 +179,22 @@ src_prepare() {
 
 	if use hpn ; then
 		local hpn_patchdir="${T}/${P}-hpn${HPN_VER}"
-		mkdir "${hpn_patchdir}"
-		cp $(printf -- "${DISTDIR}/%s\n" "${HPN_PATCHES[@]}") "${hpn_patchdir}"
+		mkdir "${hpn_patchdir}" || die
+		cp $(printf -- "${DISTDIR}/%s\n" "${HPN_PATCHES[@]}") "${hpn_patchdir}" || die
 		pushd "${hpn_patchdir}" &>/dev/null || die
-		eapply "${FILESDIR}"/${PN}-8.1_p1-hpn-glue.patch
+		eapply "${FILESDIR}"/${PN}-8.1_p1-hpn-${HPN_VER}-glue.patch
 		if use X509; then
-			einfo "Will disable MT AES cipher due to incompatbility caused by X509 patch set"
-			# X509 and AES-CTR-MT don't get along, let's just drop it
-			rm openssh-${HPN_PV//./_}-hpn-AES-CTR-${HPN_VER}.diff || die
-			eapply "${FILESDIR}"/${PN}-8.0_p1-hpn-X509-glue.patch
+		#	einfo "Will disable MT AES cipher due to incompatbility caused by X509 patch set"
+		#	# X509 and AES-CTR-MT don't get along, let's just drop it
+		#	rm openssh-${HPN_PV//./_}-hpn-AES-CTR-${HPN_VER}.diff || die
+			eapply "${FILESDIR}"/${PN}-8.0_p1-hpn-${HPN_VER}-X509-glue.patch
 		fi
-		use sctp && eapply "${FILESDIR}"/${PN}-7.9_p1-hpn-sctp-glue.patch
+		use sctp && eapply "${FILESDIR}"/${PN}-8.1_p1-hpn-${HPN_VER}-sctp-glue.patch
 		popd &>/dev/null || die
 
 		eapply "${hpn_patchdir}"
 
-		if ! use X509; then
-			eapply "${FILESDIR}/openssh-7.9_p1-hpn-openssl-1.1.patch"
-			eapply "${FILESDIR}/openssh-8.0_p1-hpn-version.patch"
-		fi
+		use X509 || eapply "${FILESDIR}/openssh-8.0_p1-hpn-version.patch"
 
 		einfo "Patching Makefile.in for HPN patch set ..."
 		sed -i \
@@ -404,11 +413,6 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}"/sshd.{service,socket}
 	systemd_newunit "${FILESDIR}"/sshd_at.service 'sshd@.service'
-}
-
-pkg_preinst() {
-	enewgroup sshd 22
-	enewuser sshd 22 -1 /var/empty sshd
 }
 
 pkg_postinst() {
