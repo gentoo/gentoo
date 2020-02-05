@@ -39,6 +39,7 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS="$(usex static-libs OFF ON)"
 		-DLIB_INSTALL_DIR="$(get_libdir)"
 		-DDLIB_ENABLE_ASSERTS="$(usex debug)"
 		-DDLIB_ENABLE_STACK_TRACE="$(usex debug)"

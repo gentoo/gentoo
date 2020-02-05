@@ -62,6 +62,7 @@ python_configure_all() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_SHARED_LIBS="$(usex static-libs OFF ON)"
 		-DDLIB_ENABLE_ASSERTS="$(usex debug)"
 		-DDLIB_ENABLE_STACK_TRACE="$(usex debug)"
 		-DDLIB_GIF_SUPPORT="$(usex gif)"
