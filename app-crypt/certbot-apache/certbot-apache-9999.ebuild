@@ -25,7 +25,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-crypt/acme-0.29.0[${PYTHON_USEDEP}]
-	>=app-crypt/certbot-0.39.0[${PYTHON_USEDEP}]
+	>=app-crypt/certbot-1.1.0[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
 	dev-python/python-augeas[${PYTHON_USEDEP}]
 	dev-python/zope-component[${PYTHON_USEDEP}]

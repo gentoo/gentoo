@@ -9,8 +9,9 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 fi
+S=${WORKDIR}/${P}/${PN}
 
 inherit distutils-r1
 
@@ -25,10 +26,10 @@ RESTRICT="!test? ( test )"
 CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
 	${CDEPEND}
-	>=app-crypt/acme-0.29.0[${PYTHON_USEDEP}]
+	>=app-crypt/acme-0.40.0[${PYTHON_USEDEP}]
 	>=dev-python/configargparse-0.9.3[${PYTHON_USEDEP}]
 	dev-python/configobj[${PYTHON_USEDEP}]
-	>=dev-python/cryptography-1.2.3[${PYTHON_USEDEP}]
+	>=dev-python/cryptography-2.8[${PYTHON_USEDEP}]
 	>=dev-python/distro-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/josepy-1.1.0[${PYTHON_USEDEP}]
 	dev-python/mock[${PYTHON_USEDEP}]
@@ -45,6 +46,6 @@ DEPEND="
 
 python_test() {
 	# acme is not installed, removing it here is fine, the dir just confuses tests
-	rm -R acme
+	rm -R ../acme
 	pytest -vv ${PN} || die
 }
