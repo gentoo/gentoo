@@ -1,0 +1,27 @@
+* don't look in /usr/local
+* try to hack around not being able to use AM_ICONV
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -21,10 +21,6 @@
+ AC_HEADER_STDC
+ AC_CHECK_HEADERS(getopt.h) 	
+ 
+-dnl add /usr/local
+-CFLAGS="$CFLAGS -I/usr/local/include"
+-LDFLAGS="$LDFLAGS -L/usr/local/lib"
+-
+ dnl checking for options
+ AC_MSG_CHECKING(if --enable-multibyte specified)
+ AC_ARG_ENABLE(multibyte,
+@@ -41,7 +37,9 @@
+ AC_CHECK_HEADERS(iconv.h,,
+ 			AC_MSG_ERROR(Need libiconv or iconv.h for multibyte support))
+ 
+-AC_CHECK_LIB(iconv, iconv,,
++dnl iconv_open_into is implemented only in GNU libiconv and not in other
++dnl iconv implementations
++AC_CHECK_LIB(iconv, libiconv_open_into,,
+ 			AC_MSG_WARN([Generic iconv found but not libiconv. See INSTALL for details]))
+ 
+ dnl setting INTERNAL_LOCALE
