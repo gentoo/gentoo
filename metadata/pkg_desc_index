@@ -14551,7 +14551,7 @@ net-im/signal-desktop-bin 1.30.1: Allows you to send and receive messages of Sig
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.55.0.123 8.55.0.141 8.56.0.103-r2: Instant messaging client, with support for audio and video
-net-im/slack-bin 2.1.2 3.1.1 3.4.2 4.0.2 4.1.1: Team collaboration tool
+net-im/slack-bin 2.1.2 3.1.1 4.1.1 4.3.2: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/telegram-desktop 1.9.8 1.9.9: Official desktop client for Telegram
@@ -14661,7 +14661,7 @@ net-libs/ldns 1.7.0-r2 1.7.1-r1: a library with the aim to simplify DNS programm
 net-libs/liba53 9999: A5/3 Call encryption library
 net-libs/libaccounts-glib 1.24-r1: Accounts SSO (Single Sign-On) management library for GLib applications
 net-libs/libad9361-iio 0.1-r2 9999: IIO AD9361 library for filter design and handling, multi-chip sync, etc.
-net-libs/libasr 1.0.2: Async Resolver Library from OpenBSD/OpenSMTPD
+net-libs/libasr 1.0.4: Async Resolver Library from OpenBSD/OpenSMTPD
 net-libs/libasyncns 0.8-r4: C library for executing name service queries asynchronously
 net-libs/libbitcoinconsensus 0.16.3 0.17.1 0.18.0: Bitcoin Core consensus library
 net-libs/libblkmaker 0.3.2 0.4.2 0.4.3 0.5.0 0.5.1 0.5.2 0.5.3: C implementation of getblocktemplate (BIP 22)
