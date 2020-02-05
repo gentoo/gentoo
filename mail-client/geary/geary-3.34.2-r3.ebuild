@@ -19,13 +19,14 @@ KEYWORDS="~amd64 ~x86"
 # for now both enchants work, but ensuring enchant:2
 # FIXME: add valadoc support
 
-# >=webkit-gtk-2.26 dep to ensure HAS_WEBKIT_SHARED_PROC is handled for it.
+# >=webkit-gtk-2.26.3-r1 and >=gspell-1.7 dep to ensure all libraries used use enchant:2
+# >=webkit-gtk-2.26 dep to ensure HAS_WEBKIT_SHARED_PROC is handled for it;
 # If not, it could be compiled against 2.24 and then webkit-gtk upgraded and
 # geary not rebuilt, ending up in geary issues #558 and #559 still.
 DEPEND="
 	>=dev-libs/glib-2.54:2
 	>=x11-libs/gtk+-3.24.7:3
-	>=net-libs/webkit-gtk-2.26:4=
+	>=net-libs/webkit-gtk-2.26.3-r1:4=
 	>=dev-libs/gmime-2.6.17:2.6
 	>=dev-db/sqlite-3.12:3
 
@@ -35,7 +36,7 @@ DEPEND="
 	>=app-crypt/gcr-3.10.1:0=
 	>=dev-libs/libgee-0.8.5:0.8=
 	net-libs/gnome-online-accounts
-	app-text/gspell:=
+	>=app-text/gspell-1.7:=
 	app-text/iso-codes
 	>=dev-libs/json-glib-1.0
 	>=media-libs/libcanberra-0.28
