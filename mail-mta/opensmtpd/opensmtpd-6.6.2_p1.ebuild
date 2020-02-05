@@ -41,15 +41,15 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${P/_}
 
 src_configure() {
-	tc-export AR
-	AR="$(which "$AR")" econf \
-		--with-table-db \
+	econf \
+		--sysconfdir=/etc/smtpd \
+		--with-path-mbox=/var/spool/mail \
+		--with-path-empty=/var/empty \
+		--with-path-socket=/run \
+		--with-path-CAfile=/etc/ssl/certs/ca-certificates.crt \
 		--with-user-smtpd=smtpd \
 		--with-user-queue=smtpq \
 		--with-group-queue=smtpq \
-		--with-path-socket=/run \
-		--with-path-CAfile=/etc/ssl/certs/ca-certificates.crt \
-		--sysconfdir=/etc/opensmtpd \
 		$(use_with pam auth-pam)
 }
 
@@ -82,4 +82,10 @@ pkg_postinst() {
 	einfo "Redis, and many other useful addons and filters are"
 	einfo "available in the mail-filter/opensmtpd-extras package."
 	einfo
+
+	ewarn
+	ewarn "If you're upgrading from version 6.0, note that the"
+	ewarn "configuration syntax has changed, and config files"
+	ewarn "now live in /etc/smtpd instead of /etc/opensmtpd."
+	ewarn
 }
