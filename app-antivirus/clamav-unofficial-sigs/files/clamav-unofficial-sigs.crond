@@ -16,4 +16,4 @@
 HOME=/var/lib/clamav-unofficial-sigs
 SHELL=/bin/bash
 
-01 * * * * clamav /usr/sbin/clamav-unofficial-sigs.sh
+01 * * * * clamav /usr/bin/clamav-unofficial-sigs.sh
