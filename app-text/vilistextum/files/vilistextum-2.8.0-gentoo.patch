@@ -1,0 +1,11 @@
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -6,7 +6,7 @@
+ 											main.c main.h util.c util.h \
+ 											multibyte.h unicode_entities.c unicode_entities.h
+ 
+-AM_CFLAGS = -Wall -O2 -ansi
++AM_CFLAGS = -Wall -ansi
+ AM_LDFLAGS = $(STATIC)
+ 
+ EXTRA_DIST = kilistextum.kaptn
