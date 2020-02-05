@@ -10,4 +10,4 @@ PDEPEND=emacs? ( app-emacs/ocaml-mode ) xemacs? ( app-xemacs/ocaml )
 RDEPEND=sys-libs/binutils-libs:= spacetime? ( sys-libs/libunwind:= )
 SLOT=0/4.09.0
 SRC_URI=https://github.com/ocaml/ocaml/archive/4.09.0.tar.gz -> ocaml-4.09.0.tar.gz
-_md5_=74d0e17ef5fe0fb7a8bb27ad345d1f90
+_md5_=8da76606b3bea00a522c2663cd54f160

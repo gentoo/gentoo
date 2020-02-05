@@ -9022,7 +9022,6 @@ x11-terms/eterm:utempter - Include libutempter support
 x11-terms/gnome-terminal:gnome-shell - Integrate with gnome-base/gnome-shell search
 x11-terms/gnome-terminal:nautilus - Build gnome-base/nautilus extension
 x11-terms/guake:utempter - Include utmp management support via sys-libs/libutempter
-x11-terms/kitty:imagemagick - Support displaying images in the terminal with icat
 x11-terms/mlterm:brltty - Enable support for app-accessibility/brltty
 x11-terms/mlterm:fcitx - Enable support for app-i18n/fcitx
 x11-terms/mlterm:gtk2 - Build with x11-libs/gtk+:2 instead of x11-libs/gtk+:3

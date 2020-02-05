@@ -2587,7 +2587,7 @@ app-text/grip 4.2.0 4.5.2: Preview GitHub Markdown files like Readme locally bef
 app-text/groonga 5.0.3 5.0.9 6.1.2 8.0.2: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0 1.1.1: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
-app-text/gspell 1.6.1 1.8.1 1.8.2: Spell check library for GTK+ applications
+app-text/gspell 1.6.1 1.8.3: Spell check library for GTK+ applications
 app-text/gtkspell 2.0.16 3.0.9 3.0.10: Spell checking widget for GTK
 app-text/gtranslator 3.32.0: GNOME Translation Editor
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
@@ -17539,7 +17539,7 @@ sys-kernel/linux-docs 4.19.99 5.4.15: Developer documentation generated from the
 sys-kernel/linux-firmware 20190603 20190815 20190904 20190923 20191008 20191022 20191108 20191215 20200122 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2 5.3 5.3-r1 5.4 5.5: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.3_p8 5.4_p6 5.5_p1: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.3_p8 5.4_p6 5.5_p1 5.5_p2: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
@@ -18852,7 +18852,7 @@ x11-terms/cool-retro-term 1.1.1 1.1.1-r2: terminal emulator which mimics the loo
 x11-terms/eterm 0.9.6-r2 9999: A vt102 terminal emulator for X
 x11-terms/gnome-terminal 3.32.2: The Gnome Terminal
 x11-terms/guake 3.3.2 3.4.0-r1 3.6.1-r1 3.6.3 9999: Drop-down terminal for GNOME
-x11-terms/kitty 0.14.6-r1 0.15.0 0.15.1 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
+x11-terms/kitty 0.15.1 0.16.0 9999: A modern, hackable, featureful, OpenGL-based terminal emulator
 x11-terms/kterm 6.2.0-r6: Japanese Kanji X Terminal
 x11-terms/lilyterm 0.9.9.4-r2 99999: a terminal emulator based off of libvte that aims to be fast and lightweight
 x11-terms/mate-terminal 1.22.0 1.22.1: The MATE Terminal
