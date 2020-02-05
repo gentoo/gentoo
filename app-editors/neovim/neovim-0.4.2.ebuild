@@ -85,7 +85,7 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	optfeature "clipboard support" x11-misc/xsel x11-misc/xclip gui-apps/wl-clipboard
-	optfeature "Python plugin support" dev-python/neovim-python-client
+	optfeature "Python plugin support" dev-python/pynvim
 	optfeature "Ruby plugin support" dev-ruby/neovim-ruby-client
 	optfeature "remote/nvr support" dev-python/neovim-remote
 }
