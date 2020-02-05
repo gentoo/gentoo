@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,13 +9,13 @@ MULTILIB_COMPAT=( abi_x86_64 )
 inherit desktop multilib-build pax-utils unpacker xdg-utils
 
 DESCRIPTION="Team collaboration tool"
-HOMEPAGE="http://www.slack.com/"
+HOMEPAGE="https://www.slack.com/"
 SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-amd64.deb"
 
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="ayatana gnome-keyring pax_kernel"
+IUSE="ayatana gnome-keyring"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
@@ -24,13 +24,11 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	dev-libs/nspr:0[${MULTILIB_USEDEP}]
 	dev-libs/nss:0[${MULTILIB_USEDEP}]
-	gnome-base/gconf:2[${MULTILIB_USEDEP}]
 	media-libs/alsa-lib:0[${MULTILIB_USEDEP}]
-	media-libs/fontconfig:1.0[${MULTILIB_USEDEP}]
-	media-libs/freetype:2[${MULTILIB_USEDEP}]
-	net-misc/curl:0[${MULTILIB_USEDEP}]
+	media-libs/mesa:0[${MULTILIB_USEDEP}]
 	net-print/cups:0[${MULTILIB_USEDEP}]
 	sys-apps/dbus:0[${MULTILIB_USEDEP}]
+	sys-apps/util-linux:0[${MULTILIB_USEDEP}]
 	x11-libs/cairo:0[${MULTILIB_USEDEP}]
 	x11-libs/gdk-pixbuf:2[${MULTILIB_USEDEP}]
 	x11-libs/gtk+:3[${MULTILIB_USEDEP}]
@@ -51,21 +49,25 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	ayatana? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )
 	gnome-keyring? ( app-crypt/libsecret:0[${MULTILIB_USEDEP}] )"
 
-QA_PREBUILT="opt/slack/slack
+QA_PREBUILT="/opt/slack/chrome-sandbox
+	opt/slack/slack
 	opt/slack/resources/app.asar.unpacked/node_modules/*
-	opt/slack/libnode.so
 	opt/slack/libffmpeg.so
-	opt/slack/libCallsCore.so
-	opt/slack/libVkICD_mock_icd.so
 	opt/slack/libEGL.so
 	opt/slack/libGLESv2.so
 	opt/slack/swiftshader/libEGL.so
-	opt/slack/swiftshader/libGLESv2.so"
+	opt/slack/swiftshader/libGLESv2.so
+	opt/slack/swiftshader/libvk_swiftshader.so"
 
 S="${WORKDIR}"
 
 src_prepare() {
 	default
+
+	# remove hardcoded path (wrt 694058)
+	sed -i '/Icon/s|/usr/share/pixmaps/slack.png|slack|' \
+		usr/share/applications/slack.desktop \
+		|| die "sed failed in Icon for slack.desktop"
 
 	if use ayatana ; then
 		sed -i '/Exec/s|=|=env XDG_CURRENT_DESKTOP=Unity |' \
@@ -84,7 +86,7 @@ src_install() {
 	fperms +x /opt/slack/slack
 	dosym ../../opt/slack/slack usr/bin/slack
 
-	use pax_kernel && pax-mark -m "${ED%/}"/opt/slack/slack
+	pax-mark -m "${ED}"/opt/slack/slack
 }
 
 pkg_postinst() {
