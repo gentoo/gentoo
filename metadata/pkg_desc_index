@@ -12503,7 +12503,6 @@ media-fonts/mplus-fonts 2.2.4-r1: M+ Japanese bitmap fonts
 media-fonts/mplus-outline-fonts 0_pre063 0_pre063_p1: M+ Japanese outline fonts
 media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0-r2: Korean monospace font distributed by NHN
-media-fonts/nepali-fonts 1-r1: a collection of fonts for Nepali users
 media-fonts/noto 20170403 20181024 20190524: Google's font family that aims to support all the world's languages
 media-fonts/noto-cjk 20150615 20170602 20190416: Google's CJK font family
 media-fonts/noto-emoji 20180823 20190328: Google Noto Emoji fonts
@@ -15196,7 +15195,7 @@ net-misc/switzerland 0.1.0: Network Testing Tool
 net-misc/taptap 1.0: A program to link two /dev/net/tun to form virtual ethernet
 net-misc/taylor-uucp 1.07-r3: Taylor UUCP
 net-misc/tcpsound 0.3.1-r1: Play sounds in response to network traffic
-net-misc/teamviewer 15.0.8397 15.1.3937: All-In-One Solution for Remote Access and Support over the Internet
+net-misc/teamviewer 15.0.8397 15.1.3937 15.2.2756: All-In-One Solution for Remote Access and Support over the Internet
 net-misc/telnet-bsd 1.2-r1: Telnet and telnetd ported from OpenBSD with IPv6 support
 net-misc/termpkg 3.3.9.1-r2: Termpkg, the Poor Man's Terminal Server
 net-misc/throttle 1.2-r1: Bandwidth limiting pipe
