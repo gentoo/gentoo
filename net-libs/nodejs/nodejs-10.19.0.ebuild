@@ -2,41 +2,37 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{6,7}} )
-PYTHON_REQ_USE="threads(+)"
+PYTHON_COMPAT=( python2_7 )
+PYTHON_REQ_USE="threads"
 inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
-SRC_URI="
-	https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz
-"
+SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm pax_kernel +snapshot +ssl systemtap test"
+IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test"
 REQUIRED_USE="
 	inspector? ( icu ssl )
 	npm? ( ssl )
 "
 
 RDEPEND="
-	>=dev-libs/libuv-1.34.0:=
+	>=dev-libs/libuv-1.28.0:=
 	>=net-dns/c-ares-1.15.0
-	>=net-libs/nghttp2-1.40.0
+	>=net-libs/http-parser-2.9.3:=
+	>=net-libs/nghttp2-1.39.2
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-64.2:= )
 	ssl? ( >=dev-libs/openssl-1.1.1:0= )
 "
-BDEPEND="
+DEPEND="
+	${RDEPEND}
 	${PYTHON_DEPS}
 	systemtap? ( dev-util/systemtap )
 	test? ( net-misc/curl )
-	pax_kernel? ( sys-apps/elfix )
-"
-DEPEND="
-	${RDEPEND}
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3.0-global-npm-config.patch
@@ -61,6 +57,10 @@ src_prepare() {
 	# https://code.google.com/p/gyp/issues/detail?id=260
 	sed -i -e "/append('-arch/d" tools/gyp/pylib/gyp/xcode_emulation.py || die
 
+	# make sure we use python2.* while using gyp
+	sed -i -e "s/python/${EPYTHON}/" deps/npm/node_modules/node-gyp/gyp/gyp || die
+	sed -i -e "s/|| 'python2'/|| '${EPYTHON}'/" deps/npm/node_modules/node-gyp/lib/configure.js || die
+
 	# less verbose install output (stating the same as portage, basically)
 	sed -i -e "/print/d" tools/install.py || die
 
@@ -72,7 +72,7 @@ src_prepare() {
 	# Avoid writing a depfile, not useful
 	sed -i -e "/DEPFLAGS =/d" tools/gyp/pylib/gyp/generator/make.py || die
 
-	sed -i -e "/'-O3'/d" common.gypi node.gypi || die
+	sed -i -e "/'-O3'/d" common.gypi deps/v8/gypfiles/toolchain.gypi || die
 
 	# Avoid a test that I've only been able to reproduce from emerge. It doesnt
 	# seem sandbox related either (invoking it from a sandbox works fine).
@@ -87,24 +87,19 @@ src_prepare() {
 		BUILDTYPE=Debug
 	fi
 
-	# We need to disable mprotect on two files when it builds Bug 694100.
-	use pax_kernel && PATCHES+=( "${FILESDIR}"/${PN}-13.2.0-paxmarking.patch )
-
 	default
 }
 
 src_configure() {
 	xdg_environment_reset
 
-	local myconf=(
-		--shared-cares --shared-libuv --shared-nghttp2 --shared-zlib
-	)
+	local myconf=( --shared-cares --shared-http-parser --shared-libuv --shared-nghttp2 --shared-zlib )
 	use debug && myconf+=( --debug )
 	use icu && myconf+=( --with-intl=system-icu ) || myconf+=( --with-intl=none )
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
-	use snapshot || myconf+=( --without-node-snapshot )
-	use ssl && myconf+=( --shared-openssl --openssl-use-def-ca-store ) || myconf+=( --without-ssl )
+	use snapshot && myconf+=( --with-snapshot )
+	use ssl && myconf+=( --shared-openssl ) || myconf+=( --without-ssl )
 
 	local myarch=""
 	case ${ABI} in
@@ -120,7 +115,7 @@ src_configure() {
 	GYP_DEFINES="linux_use_gold_flags=0
 		linux_use_bundled_binutils=0
 		linux_use_bundled_gold=0" \
-	"${EPYTHON}" configure.py \
+	"${PYTHON}" configure \
 		--prefix="${EPREFIX}"/usr \
 		--dest-cpu=${myarch} \
 		$(use_with systemtap dtrace) \
@@ -128,13 +123,14 @@ src_configure() {
 }
 
 src_compile() {
+	emake -C out mksnapshot
+	pax-mark m "out/${BUILDTYPE}/mksnapshot"
 	emake -C out
 }
 
 src_install() {
 	local LIBDIR="${ED}/usr/$(get_libdir)"
-	default
-
+	emake install DESTDIR="${D}"
 	pax-mark -m "${ED}"/usr/bin/node
 
 	# set up a symlink structure that node-gyp expects..
@@ -186,19 +182,19 @@ src_install() {
 			\) \) -exec rm -rf "{}" \;
 	fi
 
-	mv "${ED}"/usr/share/doc/node "${ED}"/usr/share/doc/${PF} || die
+	mv "${D}"/usr/share/doc/node "${D}"/usr/share/doc/${PF} || die
 }
 
 src_test() {
 	out/${BUILDTYPE}/cctest || die
-	"${EPYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
+	"${PYTHON}" tools/test.py --mode=${BUILDTYPE,,} -J message parallel sequential || die
 }
 
 pkg_postinst() {
-	elog "The global npm config lives in /etc/npm. This deviates slightly"
-	elog "from upstream which otherwise would have it live in /usr/etc/."
-	elog ""
-	elog "Protip: When using node-gyp to install native modules, you can"
-	elog "avoid having to download extras by doing the following:"
-	elog "$ node-gyp --nodedir /usr/include/node <command>"
+	einfo "The global npm config lives in /etc/npm. This deviates slightly"
+	einfo "from upstream which otherwise would have it live in /usr/etc/."
+	einfo ""
+	einfo "Protip: When using node-gyp to install native modules, you can"
+	einfo "avoid having to download extras by doing the following:"
+	einfo "$ node-gyp --nodedir /usr/include/node <command>"
 }
