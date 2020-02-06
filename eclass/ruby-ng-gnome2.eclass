@@ -13,8 +13,8 @@
 # ruby-gnome2 since they share a very common installation procedure.
 
 case "${EAPI:-0}" in
-	6|7)
-		;;
+	6)	inherit eapi7-ver ;;
+	7)	;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
 		;;
@@ -43,11 +43,17 @@ DEPEND="virtual/pkgconfig"
 ruby_add_bdepend "
 	dev-ruby/pkg-config
 	test? ( >=dev-ruby/test-unit-2 )"
-RUBY_S=ruby-gnome2-all-${PV}/${RUBY_FAKEGEM_NAME}
 SRC_URI="mirror://sourceforge/ruby-gnome2/ruby-gnome2-all-${PV}.tar.gz"
 HOMEPAGE="https://ruby-gnome2.osdn.jp/"
 LICENSE="LGPL-2.1+"
 SLOT="0"
+if ver_test -ge "3.4.0"; then
+	SRC_URI="https://github.com/ruby-gnome/ruby-gnome/archive/${PV}.tar.gz -> ruby-gnome2-${PV}.tar.gz"
+	RUBY_S=ruby-gnome-${PV}/${RUBY_FAKEGEM_NAME}
+else
+	SRC_URI="mirror://sourceforge/ruby-gnome2/ruby-gnome2-all-${PV}.tar.gz"
+	RUBY_S=ruby-gnome2-all-${PV}/${RUBY_FAKEGEM_NAME}
+fi
 
 ruby-ng-gnome2_all_ruby_prepare() {
 	# Avoid compilation of dependencies during test.
