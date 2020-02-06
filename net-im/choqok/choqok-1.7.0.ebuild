@@ -48,9 +48,9 @@ DEPEND="
 	>=kde-frameworks/sonnet-${KFMIN}:5
 	attica? ( >=kde-frameworks/attica-${KFMIN}:5 )
 	konqueror? (
+		>=dev-qt/qtwebkit-5.212.0_pre20180120:5
 		>=kde-frameworks/kparts-${KFMIN}:5
 		>=kde-frameworks/kdewebkit-${KFMIN}:5
-		>=dev-qt/qtwebkit-5.212.0_pre20180120:5
 	)
 	share? ( >=kde-frameworks/purpose-${KFMIN}:5 )
 	telepathy? ( net-libs/telepathy-qt[qt5(+)] )
@@ -58,6 +58,12 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS README changelog )
+
+src_prepare() {
+	ecm_src_prepare
+	# TODO: quick fix for bug #708464
+	sed -e "/find_package.*Purpose)/s/ COMPONENTS //" -i CMakeLists.txt || die
+}
 
 src_configure() {
 	local mycmakeargs=(
