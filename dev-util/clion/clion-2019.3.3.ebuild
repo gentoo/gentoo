@@ -21,6 +21,7 @@ IUSE="custom-jdk"
 # RDEPENDS may cause false positives in repoman.
 # clion requires cmake and gdb at runtime to build and debug C/C++ projects
 RDEPEND="
+	dev-libs/libdbusmenu
 	dev-util/cmake
 	sys-devel/gdb
 	!custom-jdk? ( virtual/jdk )"
