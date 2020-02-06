@@ -770,7 +770,7 @@ app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.30 1.4.31: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
-app-crypt/certbot 0.39.0 0.40.1 1.0.0-r1 1.1.0 1.2.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot 0.39.0 0.40.1 1.0.0-r1 1.1.0 1.2.0-r1 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 1.0.0 1.1.0 1.2.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-dns-nsone 0.39.0: NS1 DNS Authenticator plugin for Certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 1.0.0 1.1.0 1.2.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
@@ -16742,7 +16742,7 @@ sys-apps/biosdisk 0_p20171116: A script that creates floppy boot images to flash
 sys-apps/bleachbit 3.0: Clean junk to free disk space and to maintain privacy
 sys-apps/bolt 0.8-r1: Userspace system daemon to enable security levels for Thunderbolt 3
 sys-apps/bubblewrap 0.3.1-r1: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
-sys-apps/busybox 1.30.1 1.31.1 9999: Utilities for rescue and embedded systems
+sys-apps/busybox 1.30.1 1.31.1-r1 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools
@@ -16969,7 +16969,7 @@ sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration to
 sys-apps/servicelog 1.1.14: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
 sys-apps/sg3_utils 1.42 1.44: Apps for querying the sg SCSI interface
-sys-apps/shadow 4.6 4.7-r2 4.8-r3 4.8.1: Utilities to deal with user accounts
+sys-apps/shadow 4.6 4.7-r2 4.8-r3 4.8.1-r1: Utilities to deal with user accounts
 sys-apps/smartmontools 7.0-r1 7.1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.4.0.20191206: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards
 sys-apps/smc-sum-driver 1.6.0.20151201-r3: Supermicro Update Manager (SUM) kernel module
@@ -17581,7 +17581,7 @@ sys-libs/libunwind 1.2.1-r3 1.3.1: Portable and efficient API to determine the c
 sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.1.3 2.2.4 2.2.5 2.2.6: Library implementation for listing vpds
-sys-libs/libxcrypt 2.4 4.4.10-r1 4.4.11: Extended crypt library for descrypt, md5crypt, bcrypt, and others
+sys-libs/libxcrypt 2.4 4.4.10-r1 4.4.12: Extended crypt library for descrypt, md5crypt, bcrypt, and others
 sys-libs/llvm-libunwind 7.1.0 8.0.1 9.0.1 10.0.0_rc1 10.0.0.9999 11.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.5 1.1.6: Multitouch Protocol Translation Library
