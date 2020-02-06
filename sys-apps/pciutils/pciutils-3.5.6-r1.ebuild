@@ -6,8 +6,8 @@ EAPI=6
 inherit eapi7-ver multilib toolchain-funcs multilib-minimal flag-o-matic
 
 DESCRIPTION="Various utilities dealing with the PCI bus"
-HOMEPAGE="http://mj.ucw.cz/sw/pciutils/ https://git.kernel.org/?p=utils/pciutils/pciutils.git"
-SRC_URI="ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/${P}.tar.gz"
+HOMEPAGE="https://mj.ucw.cz/sw/pciutils/ https://git.kernel.org/?p=utils/pciutils/pciutils.git"
+SRC_URI="https://mj.ucw.cz/download/linux/pci/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
