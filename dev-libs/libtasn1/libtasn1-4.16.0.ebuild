@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,9 +41,11 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		$(use_enable static-libs static)
 		$(multilib_native_use_enable valgrind valgrind-tests)
+	)
+	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
 }
 
 multilib_src_install_all() {
