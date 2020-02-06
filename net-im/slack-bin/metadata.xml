@@ -15,9 +15,6 @@
 	All content inside Slack is searchable, including files, conversations,
 	and people.
 	</longdescription>
-	<use>
-		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
-	</use>
 	<upstream>
 		<doc>https://get.slack.help/hc/en-us</doc>
 	</upstream>
