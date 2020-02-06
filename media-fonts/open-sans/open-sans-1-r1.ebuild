@@ -11,7 +11,7 @@ SRC_URI="https://dev.gentoo.org/~jstein/dist/${P}.zip"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~x86"
+KEYWORDS="~amd64 ~arm ~ia64 ~ppc ~ppc64 ~x86"
 IUSE=""
 
 DEPEND="app-arch/unzip"
