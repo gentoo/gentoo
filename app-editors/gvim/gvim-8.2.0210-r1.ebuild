@@ -199,7 +199,7 @@ src_configure() {
 		$(use_enable netbeans)
 		$(use_enable nls)
 		$(use_enable perl perlinterp)
-		$(use_enable python python3interp dynamic)
+		$(use_enable python python3interp)
 		$(use_with python python3-command $(type -P $(eselect python show --python3)))
 		$(use_enable racket mzschemeinterp)
 		$(use_enable ruby rubyinterp)
