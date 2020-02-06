@@ -144,12 +144,12 @@ PATCHES=(
 	"${FILESDIR}/chromium-fix-char_traits.patch"
 	"${FILESDIR}/chromium-78-protobuf-export.patch"
 	"${FILESDIR}/chromium-79-gcc-alignas.patch"
-	"${FILESDIR}/chromium-80-unbundle-libxml.patch"
 	"${FILESDIR}/chromium-80-gcc-quiche.patch"
 	"${FILESDIR}/chromium-80-gcc-blink.patch"
-	"${FILESDIR}/chromium-81-gcc-template.patch"
 	"${FILESDIR}/chromium-81-gcc-noexcept.patch"
-	"${FILESDIR}/chromium-81-clang.patch"
+	"${FILESDIR}/chromium-81-gcc-constexpr.patch"
+	"${FILESDIR}/chromium-81-mojom.patch"
+	"${FILESDIR}/chromium-81-fix-browser-frame.patch"
 )
 
 pre_build_checks() {
@@ -341,7 +341,6 @@ src_prepare() {
 		third_party/qcms
 		third_party/rnnoise
 		third_party/s2cellid
-		third_party/sfntly
 		third_party/simplejson
 		third_party/skia
 		third_party/skia/include/third_party/skcms
