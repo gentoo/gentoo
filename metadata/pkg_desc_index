@@ -5002,7 +5002,7 @@ dev-libs/libical 3.0.5 3.0.6 3.0.7: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14-r1 1.15: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.14.3 1.15.0: Library to handle input devices in Wayland
+dev-libs/libinput 1.14.3 1.15.0 1.15.1: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7 0.19.8.1 0.20.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.0 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.0 1.5.2: Open-source library for reading, mastering and writing optical discs
@@ -8432,7 +8432,7 @@ dev-python/pylibmc 1.5.1-r1 1.6.1-r1: Libmemcached wrapper written as a Python e
 dev-python/pylint 1.6.5-r1 1.8.4 2.3.1 2.4.4: Python code static checker
 dev-python/pylzma 0.4.9: Python bindings for the LZMA compression library
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
-dev-python/pymdstat 0.4.2: Python library to parse Linux /proc/mdstat
+dev-python/pymdstat 0.4.2-r1: Python library to parse Linux /proc/mdstat
 dev-python/pymediainfo 4.0 4.1: A wrapper around the mediainfo library
 dev-python/pymetar 1.1: Downloads and decodes to the weather report for a given station ID
 dev-python/pymilter 1.0.4-r1: Python interface to sendmail milter API
@@ -14557,7 +14557,7 @@ net-im/signal-desktop-bin 1.30.1: Allows you to send and receive messages of Sig
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.55.0.123 8.55.0.141 8.56.0.103-r2: Instant messaging client, with support for audio and video
-net-im/slack-bin 2.1.2 3.1.1 4.1.1 4.3.2: Team collaboration tool
+net-im/slack-bin 2.1.2 4.1.1 4.3.2: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/telegram-desktop 1.9.8 1.9.9: Official desktop client for Telegram

@@ -5886,7 +5886,6 @@ net-im/pyicq-t:webinterface - Install dependencies needed for the web interface
 net-im/qtox:X - Adds support for X11
 net-im/qtox:notification - Adds support for GTK Status Notifier tray backends
 net-im/skypeforlinux:pax_kernel - Triggers a paxmarking of the main skype binary
-net-im/slack-bin:pax_kernel - Triggers a paxmarking of the binary
 net-im/spectrum2:frotz - Enables the Z-Engine backend.
 net-im/spectrum2:irc - Enables the IRC backend, based on net-im/libcommuni.
 net-im/spectrum2:purple - Enables the libpurple backend, based on net-im/pidgin.
