@@ -18,8 +18,8 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.0-fno-common.patch
 	"${FILESDIR}"/${PN}-1.0-noopt.patch
+	"${FILESDIR}"/${PN}-1.6.1-fno-common.patch
 )
 
 src_prepare() {
