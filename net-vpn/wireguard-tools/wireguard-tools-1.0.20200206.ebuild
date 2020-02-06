@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="+wg-quick"
 
 BDEPEND="virtual/pkgconfig"
-DEPEND="net-libs/libmnl"
+DEPEND=""
 RDEPEND="${DEPEND}
 	wg-quick? (
 		|| ( net-firewall/nftables net-firewall/iptables )
