@@ -11,5 +11,5 @@ RDEPEND=dev-libs/glib:2 dev-libs/libbsd sys-apps/kmod x11-libs/libX11 virtual/op
 REQUIRED_USE=|| ( video_cards_nouveau video_cards_nvidia )
 SLOT=0
 SRC_URI=https://github.com/Bumblebee-Project/Bumblebee/archive/c322bd849aabe6e48b4304b8d13cc4aadc36a30d.tar.gz -> bumblebee-3.2.1_p20170123.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
 _md5_=03092d8adb461eca5ec2f3b4fe793ca6

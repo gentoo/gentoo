@@ -4,5 +4,5 @@ EAPI=7
 KEYWORDS=~amd64 ~x86
 RDEPEND=acct-group/geneweb
 SLOT=0
-_eclasses_=acct-user	0a104863ecbb0c7d2e255d005bcf9578	user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=acct-user	0a104863ecbb0c7d2e255d005bcf9578	user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
 _md5_=312ab0b641a11e8ce91489d1bd34e222

@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/libevent-2.0 >=sys-libs/glibc-2.10 c-ares? ( >=net-dns/c-ares
 REQUIRED_USE=?? ( c-ares udns )
 SLOT=0
 SRC_URI=https://pgbouncer.github.io/downloads/files/1.10.0/pgbouncer-1.10.0.tar.gz
-_eclasses_=user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
 _md5_=b00c3089de6d89947e541d500bcf0ccb

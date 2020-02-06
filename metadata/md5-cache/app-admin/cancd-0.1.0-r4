@@ -6,5 +6,5 @@ KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://oss.oracle.com/projects/cancd/dist/files/source/cancd-0.1.0.tar.gz
-_eclasses_=user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
 _md5_=e8f1186123503650eb470a9bf7fb68ce

@@ -9,5 +9,5 @@ LICENSE=BSD
 RDEPEND=!libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/tdb pcre? ( dev-libs/libpcre )
 SLOT=0
 SRC_URI=https://github.com/nicm/fdm/releases/download/2.0/fdm-2.0.tar.gz
-_eclasses_=user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
 _md5_=c466a1b0f160d2aa8dea1341608f195a

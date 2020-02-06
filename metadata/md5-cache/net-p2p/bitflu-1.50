@@ -8,5 +8,5 @@ LICENSE=Artistic-2 GPL-2
 RDEPEND=dev-perl/Danga-Socket dev-perl/Sys-Syscall
 SLOT=0
 SRC_URI=http://bitflu.workaround.ch/bitflu/bitflu-1.50.tgz
-_eclasses_=user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
 _md5_=889b9bfa262b576bd22a8e860768cc81

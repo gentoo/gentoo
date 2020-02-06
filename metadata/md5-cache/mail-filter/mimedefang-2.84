@@ -10,5 +10,5 @@ RDEPEND=>=dev-perl/MIME-tools-5.412 dev-perl/IO-stringy virtual/perl-MIME-Base64
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://www.mimedefang.org/static/mimedefang-2.84.tar.gz
-_eclasses_=user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
 _md5_=2f2c4cbc0032c65a98088664d425a085

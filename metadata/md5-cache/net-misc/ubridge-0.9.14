@@ -9,5 +9,5 @@ LICENSE=GPL-3
 RDEPEND=net-libs/libpcap dev-libs/iniparser:=
 SLOT=0
 SRC_URI=https://github.com/GNS3/ubridge/archive/v0.9.14.tar.gz -> ubridge-0.9.14.tar.gz
-_eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	00484e1be1aac73e24fca1c99557a7d6
+_eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
 _md5_=88e911b792fbeb127a9d4e05a3dbae72
