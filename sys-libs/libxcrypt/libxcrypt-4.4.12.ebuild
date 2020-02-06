@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit autotools multibuild python-any-r1 multilib-minimal
+inherit autotools usr-ldscript multibuild python-any-r1 multilib-minimal
 
 DESCRIPTION="Extended crypt library for descrypt, md5crypt, bcrypt, and others "
 SRC_URI="https://github.com/besser82/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -25,12 +25,11 @@ BDEPEND="sys-apps/findutils
 		$(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]')
 	)"
 
-# Gentoo CI complained about not having this
 RESTRICT="!test? ( test )"
 
 PATCHES=(
-	"${FILESDIR}/libxcrypt-4.4.10-pythonver.patch"
-	"${FILESDIR}/libxcrypt-4.4.10-multibuild.patch"
+	"${FILESDIR}/libxcrypt-4.4.12-pythonver.patch"
+	"${FILESDIR}/libxcrypt-4.4.12-multibuild.patch"
 )
 
 pkg_setup() {
@@ -52,7 +51,10 @@ src_configure() {
 }
 
 get_xclibdir() {
-	printf -- "%s\n" "$(usex split-usr '' '/usr')/$(get_libdir)/$(usex system '' 'xcrypt')"
+	printf -- "%s/%s/%s\n" \
+		"$(usex split-usr '' '/usr')" \
+		"$(get_libdir)" \
+		"$(usex system '' 'xcrypt')"
 }
 
 multilib_src_configure() {
@@ -75,7 +77,7 @@ multilib_src_configure() {
 				--enable-obsolete-api=no
 				$(use_enable static-libs static)
 			)
-			;;
+		;;
 		*) die "Unexpected MULTIBUILD_ID: ${MULTIBUILD_ID}";;
 	esac
 
@@ -107,33 +109,21 @@ src_install() {
 		done
 	) || die "failglob error"
 
+	gen_usr_ldscript libxcrypt.so $(usex system 'libcrypt.so' '')
+
 	# remove useless stuff from installation
 	find "${D}"/usr/share/doc/${PF} -type l -delete || die
 	find "${D}" -name '*.la' -delete || die
 }
 
-multilib_install() {
-	local install_target
-
-	case "${MULTIBUILD_ID}" in
-		xcrypt_compat-*) install_target="install-libLTLIBRARIES";;
-		xcrypt_nocompat-*)
-			if is_final_abi; then
-				install_target="install"
-			else
-				install_target="install-libLTLIBRARIES"
-			fi
-			;;
-		*) die "Unexpected MULTIBUILD_ID: ${MULTIBUILD_ID}";;
-	esac
-
-	emake DESTDIR="${D}" ${install_target}
+multilib_src_install() {
+	emake DESTDIR="${D}" install
 
 	# don't install the libcrypt.so symlink for the "compat" version
 	case "${MULTIBUILD_ID}" in
 		xcrypt_compat-*)
 			rm "${D}"$(get_xclibdir)/libcrypt$(get_libname) \
-				"${D}"/usr/include/$(usex system '' 'xcrypt/')xcrypt.h || die
+				|| die "failed to remove extra compat libraries"
 		;;
 		xcrypt_nocompat-*)
 			if use split-usr; then
@@ -143,11 +133,25 @@ multilib_install() {
 					for so_file in "${D}"$(get_xclibdir)/*$(get_libname)*; do
 						so_file=$(basename "${so_file}") || die
 
-						dosym ../../$(usex system '' '../')$(get_libdir)/$(usex system '' 'xcrypt')/${so_file} \
+						dosym ../../$(usex system '' '../')$(get_libdir)$(usex system '' '/xcrypt')/${so_file} \
 							/usr/$(get_libdir)/$(usex system '' 'xcrypt/')${so_file}
 					done
 				) || die "symlinking library failure"
 			fi
-			;;
+		;;
+		*) die "Unexpected MULTIBUILD_ID: ${MULTIBUILD_ID}";;
 	esac
+
+	# .a files are installed to /$(get_libdir) by default
+	if use static-libs; then
+		(
+			shopt -s nullglob || die "nullglob failed"
+			static_libs=( "${D}"/$(get_xclibdir)/*.a )
+
+			if [[ -n ${static_libs[*]} ]]; then
+				mv "${static_libs[@]}" "${D}/usr/$(get_xclibdir)" \
+					|| die "moving static libs failed"
+			fi
+		)
+	fi
 }
