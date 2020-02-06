@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="${PN/-bin/}"
 MULTILIB_COMPAT=( abi_x86_64 )
 
-inherit desktop multilib-build pax-utils unpacker xdg-utils
+inherit desktop eutils multilib-build pax-utils unpacker xdg-utils
 
 DESCRIPTION="Team collaboration tool"
 HOMEPAGE="https://www.slack.com/"
@@ -15,10 +15,11 @@ SRC_URI="https://downloads.slack-edge.com/linux_releases/${MY_PN}-desktop-${PV}-
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="ayatana gnome-keyring"
+IUSE="ayatana"
 RESTRICT="bindist mirror"
 
 RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
+	app-accessibility/at-spi2-core:2[${MULTILIB_USEDEP}]
 	dev-libs/atk:0[${MULTILIB_USEDEP}]
 	dev-libs/expat:0[${MULTILIB_USEDEP}]
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
@@ -46,8 +47,7 @@ RDEPEND="app-accessibility/at-spi2-atk:2[${MULTILIB_USEDEP}]
 	x11-libs/libXScrnSaver:0[${MULTILIB_USEDEP}]
 	x11-libs/libXtst:0[${MULTILIB_USEDEP}]
 	x11-libs/pango:0[${MULTILIB_USEDEP}]
-	ayatana? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )
-	gnome-keyring? ( app-crypt/libsecret:0[${MULTILIB_USEDEP}] )"
+	ayatana? ( dev-libs/libappindicator:3[${MULTILIB_USEDEP}] )"
 
 QA_PREBUILT="/opt/slack/chrome-sandbox
 	opt/slack/slack
@@ -90,6 +90,8 @@ src_install() {
 }
 
 pkg_postinst() {
+	optfeature "storing passwords via gnome-keyring" app-crypt/libsecret
+
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 	xdg_mimeinfo_database_update
