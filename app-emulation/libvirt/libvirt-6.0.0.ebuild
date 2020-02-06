@@ -121,6 +121,7 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-libs/libxslt
 	dev-perl/XML-XPath
+	dev-python/docutils
 	virtual/pkgconfig"
 
 PATCHES=(
