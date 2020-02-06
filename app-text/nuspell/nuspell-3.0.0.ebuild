@@ -9,7 +9,7 @@ DESCRIPTION="Spell checker library and CLI for complex natural languages"
 HOMEPAGE="https://nuspell.github.io/ https://github.com/nuspell/nuspell"
 SRC_URI="https://github.com/nuspell/nuspell/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPL-3+"
+LICENSE="|| ( MPL-1.1 GPL-2+ LGPL-2.1+ ) LGPL-3+"
 SLOT="0/3"  # due to libnuspell.so.3
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
