@@ -21,6 +21,7 @@
 		<flag name="php7-1">Support for PHP 7.1</flag>
 		<flag name="php7-2">Support for PHP 7.2</flag>
 		<flag name="php7-3">Support for PHP 7.3</flag>
+		<flag name="php7-4">Support for PHP 7.4</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">nginx/unit</remote-id>
