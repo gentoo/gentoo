@@ -13317,8 +13317,8 @@ media-plugins/imlib2_loaders 1.5.1 1.6.0: Additional image loaders for Imlib2
 media-plugins/ir_lv2 1.2.4 1.3.4: LV2 convolver plugin especially for creating reverb effects
 media-plugins/kodi-audiodecoder-modplug 2.0.3 9999: Modplug decoder addon for Kodi
 media-plugins/kodi-audiodecoder-nosefart 2.0.0 2.0.1 2.0.2 9999: Nosefart decoder addon for Kodi
-media-plugins/kodi-audiodecoder-sidplay 1.1.3 1.2.0 1.2.1 9999: SidPlay decoder addon for Kodi
-media-plugins/kodi-audiodecoder-snesapu 2.0.0 2.0.1 9999: SPC decoder addon for Kodi
+media-plugins/kodi-audiodecoder-sidplay 1.2.2 9999: SidPlay decoder addon for Kodi
+media-plugins/kodi-audiodecoder-snesapu 2.0.0 2.0.1 2.0.2 9999: SPC decoder addon for Kodi
 media-plugins/kodi-audiodecoder-stsound 2.0.0 2.0.1 2.0.2 9999: SPC decoder addon for Kodi
 media-plugins/kodi-audiodecoder-timidity 2.0.3 2.0.4 9999: Timidity decoder addon for Kodi
 media-plugins/kodi-audiodecoder-vgmstream 1.1.3 1.1.4 1.1.5 9999: vgmstream decoder addon for Kodi
@@ -17742,6 +17742,7 @@ virtual/leechcraft-task-show 9999: Virtual for plugins that can show IDownloads 
 virtual/leechcraft-trayarea 9999: Virtual for LeechCraft plugins providing a tray area
 virtual/leechcraft-wysiwyg-editor 9999: Virtual for LeechCraft plugins providing WYSIWYG text editor
 virtual/libc 0 1: Virtual for the C library
+virtual/libcrypt 0: Virtual for libcrypt.so
 virtual/libelf 2 3: Virtual for libelf.so.1 provider dev-libs/elfutils
 virtual/libffi 3.0.10 3.0.11 3.0.13-r1 3.3_rc0: A virtual for the Foreign Function Interface implementation
 virtual/libgudev 215-r3 230 232: Virtual for libgudev providers
