@@ -17,6 +17,7 @@ IUSE="doc test"
 RDEPEND="dev-libs/icu"
 DEPEND="${RDEPEND}
 	doc? ( app-text/ronn )
+	test? ( >=dev-cpp/catch-2.3.0:0 )
 	>=dev-libs/boost-1.62[icu]"
 
 DOCS=( CHANGELOG.md )
