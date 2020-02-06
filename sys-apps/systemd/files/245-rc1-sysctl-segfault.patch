@@ -1,0 +1,23 @@
+From db99904bc8482efe556bb010a8b203a3e60ee37f Mon Sep 17 00:00:00 2001
+From: Yu Watanabe <watanabe.yu+github@gmail.com>
+Date: Thu, 6 Feb 2020 19:13:11 +0900
+Subject: [PATCH] sysctl: fix segfault
+
+Fixes #14801.
+---
+ src/sysctl/sysctl.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/sysctl/sysctl.c b/src/sysctl/sysctl.c
+index bbcf0c43235..0cdb740d218 100644
+--- a/src/sysctl/sysctl.c
++++ b/src/sysctl/sysctl.c
+@@ -257,7 +257,7 @@ static int parse_file(OrderedHashmap **sysctl_options, const char *path, bool ig
+ 
+                 existing = ordered_hashmap_get(*sysctl_options, p);
+                 if (existing) {
+-                        if (streq(value, existing->value)) {
++                        if (streq_ptr(value, existing->value)) {
+                                 existing->ignore_failure = existing->ignore_failure || ignore_failure;
+                                 continue;
+                         }
