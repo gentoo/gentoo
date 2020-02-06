@@ -3,8 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python3_{6,7} )
-
+PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 inherit distutils-r1
 
 DESCRIPTION="Login session support for Flask"
@@ -19,9 +18,11 @@ KEYWORDS="amd64 x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-python/flask-0.10[${PYTHON_USEDEP}]"
+RDEPEND="
+	>=dev-python/flask-0.10[${PYTHON_USEDEP}]
+	dev-python/werkzeug[${PYTHON_USEDEP}]
+"
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 	)
@@ -46,5 +47,7 @@ python_compile_all() {
 }
 
 python_test() {
-	nosetests -v || die "Tests fail with ${EPYTHON}"
+	# test is broken upstream with >=dev-python/werkzeug-0.15, bug 701546
+	nosetests -v -e test_unauthorized_uses_host_from_x_forwarded_for_header \
+		|| die "Tests fail with ${EPYTHON}"
 }
