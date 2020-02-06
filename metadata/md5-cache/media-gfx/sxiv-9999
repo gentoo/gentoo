@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=exif? ( media-libs/libexif ) gif? ( media-libs/giflib:0= ) media-libs/imlib2[X,gif?,jpeg?,png?] x11-libs/libX11 x11-libs/libXft
 SLOT=0
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	portability	2b88d3ecc35035a3b8ab628b49cafb0e	savedconfig	a3c113056e77e36a1d78ff4eb475dfd1	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=81fe4bd90aa4f53151d651a1c6fa89fe
+_md5_=e8e8b21fa736e800d10f774370775661
