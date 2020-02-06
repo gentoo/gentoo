@@ -2590,7 +2590,6 @@ dev-python/pypy-exe:low-memory - Build using PyPy with the engine configured tow
 dev-python/pypy3-exe:low-memory - Build using PyPy with the engine configured towards low memory footprint. This makes it possible to build PyPy using ~3.5G of RAM on amd64 and ~half of that on x86, at the cost of lengthened build time.
 dev-python/python-mpd:twisted - Enable twisted support
 dev-python/python-stdnum:vies - Enable VIES
-dev-python/pyudev:pygobject - Install PyGobject bindings
 dev-python/pyudev:qt5 - Install PyQt5 bindings
 dev-python/pyyaml:libyaml - enable support for C implementation using libyaml
 dev-python/pyzor:gdbm - Enables the Gdbm back-end database engine for pyzord

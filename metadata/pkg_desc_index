@@ -3237,7 +3237,7 @@ dev-db/percona-xtrabackup 2.4.15 8.0.7: Hot backup utility for MySQL based serve
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pg_activity 1.5.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
-dev-db/pgadmin4 4.13: GUI administration and development platform for PostgreSQL
+dev-db/pgadmin4 4.13 4.17: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3 4.0.0: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 10.3 11.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0 1.10.0 1.11.0 1.12.0: Lightweight connection pooler for PostgreSQL
@@ -4679,7 +4679,7 @@ dev-lang/crystal 0.31.1 0.32.0 0.32.1: The Crystal Programming Language
 dev-lang/duktape 2.2.1 2.4.0: Embeddable Javascript engine
 dev-lang/elixir 1.4.5 1.6.6 1.8.1 1.8.2 1.9.2 1.9.4 1.10.0: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
-dev-lang/erlang 21.1.1 22.1.4 22.1.8-r1 22.2 22.2.1-r1 22.2.2 22.2.3 22.2.4: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 21.1.1 22.1.4 22.1.8-r1 22.2 22.2.1-r1 22.2.2 22.2.3 22.2.4 22.2.5: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -4743,7 +4743,7 @@ dev-lang/rebol 9999: Relative Expression-Based Object Language
 dev-lang/rebol-bin 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.4.9 2.5.7 2.6.5 2.7.0: An object-oriented scripting language
-dev-lang/rust 1.37.0 1.38.0 1.39.0 1.40.0 1.40.0-r1 1.41.0: Systems programming language from Mozilla
+dev-lang/rust 1.37.0 1.38.0 1.39.0 1.40.0-r1 1.41.0: Systems programming language from Mozilla
 dev-lang/rust-bin 1.37.0 1.38.0 1.39.0 1.40.0 1.41.0: Systems programming language from Mozilla
 dev-lang/sassc 3.6.0: A libsass command line driver
 dev-lang/scala 2.12.4 2.12.10: The Scala Programming Language
@@ -7746,7 +7746,7 @@ dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing
 dev-python/flask-debug 0.4.3: Flask extension that displays various debugging insights during development
 dev-python/flask-gravatar 0.4.2 0.5.0: Small extension for Flask to make usage of Gravatar service easy
 dev-python/flask-htmlmin 1.2.1 1.3.2 1.5.0 1.5.2: Minimize your flask rendered html
-dev-python/flask-login 0.3.2-r1 0.4.1: Login session support for Flask
+dev-python/flask-login 0.3.2-r1 0.4.1-r1: Login session support for Flask
 dev-python/flask-mail 0.9.1-r1: Flask extension for sending email
 dev-python/flask-migrate 2.5.2: SQLAlchemy database migrations for Flask applications using Alembic
 dev-python/flask-mongoengine 0.9.3-r1: Flask support for MongoDB and with WTF model forms
@@ -7840,9 +7840,9 @@ dev-python/graphql-core 2.0.0: GraphQL for Python
 dev-python/graphviz 0.7.1 0.10.1 0.13: Simple Python interface for Graphviz
 dev-python/greenlet 0.4.12 0.4.13 0.4.15 0.4.15-r1: Lightweight in-process concurrent programming
 dev-python/greenstalk 0.5.2 1.0.1: A Python 3 client for the beanstalkd work queue
-dev-python/grpcio 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0 1.24.3 1.26.0-r1: High-performance RPC framework (python libraries)
-dev-python/grpcio-testing 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0 1.24.3 1.26.0: Testing utilities for gRPC Python
-dev-python/grpcio-tools 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1 1.21.1 1.22.1 1.23.0 1.24.3 1.26.0: Protobuf code generator for gRPC
+dev-python/grpcio 1.22.1 1.23.0 1.24.3 1.26.0-r1: High-performance RPC framework (python libraries)
+dev-python/grpcio-testing 1.22.1 1.23.0 1.24.3 1.26.0: Testing utilities for gRPC Python
+dev-python/grpcio-tools 1.22.1 1.23.0 1.24.3 1.26.0: Protobuf code generator for gRPC
 dev-python/gsd 1.5.3-r1: GSD - file format specification and a library to read and write it
 dev-python/gst-python 1.14.1-r1: A Python Interface to GStreamer
 dev-python/gtkspell-python 2.25.3-r1: GtkSpell bindings for Python
@@ -8436,7 +8436,7 @@ dev-python/pymediainfo 4.0 4.1: A wrapper around the mediainfo library
 dev-python/pymetar 1.1: Downloads and decodes to the weather report for a given station ID
 dev-python/pymilter 1.0.4-r1: Python interface to sendmail milter API
 dev-python/pyminuit 1.2.1-r1: Minuit numerical function minimization in Python
-dev-python/pymongo 3.4.0 3.5.1 3.7.1 3.7.2 3.9.0: Python driver for MongoDB
+dev-python/pymongo 3.4.0 3.5.1 3.7.1 3.7.2 3.9.0 3.10.1: Python driver for MongoDB
 dev-python/pymountboot 0.2.2 9999: Python extension module to (re)mount /boot
 dev-python/pympler 0.5 0.6: Memory profiling for Python applications
 dev-python/pymssql 1.0.2-r1 2.1.3: Simple MSSQL python extension module
@@ -8575,7 +8575,7 @@ dev-python/python-distutils-extra 2.38 2.39 2.42 2.42-r1: Gettext support, theme
 dev-python/python-djvulibre 0.8: Set of Python bindings for the DjVuLibre library
 dev-python/python-docs 2.7.14 2.7.17 3.6.3 3.6.4 3.6.10 3.7.0 3.7.6 3.8.1: HTML documentation for Python
 dev-python/python-ebtables 0.2.0: Python bindings for ebtables
-dev-python/python-editor 1.0.3: Programmatically open an editor, capture the result.
+dev-python/python-editor 1.0.3 1.0.4: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.23.0: Python bindings for Enlightenment Foundation Libraries
 dev-python/python-engineio 1.7.0 2.2.0: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.4.5-r1: A python client for etcd
@@ -8599,9 +8599,9 @@ dev-python/python-language-server 0.31.2: An implementation of the Language Serv
 dev-python/python-ldap 2.4.19-r1 2.4.32 3.1.0-r1 9999: Various LDAP-related Python modules
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
-dev-python/python-linux-procfs 0.4.6 0.6.1 9999: Python classes to extract information from the Linux kernel /proc files
+dev-python/python-linux-procfs 0.6.1: Python classes to extract information from the Linux kernel /proc files
 dev-python/python-ly 0.9.5: Tool and library for manipulating LilyPond files
-dev-python/python-lzo 1.08-r1 1.11 1.12 1.12-r1: Python interface to lzo
+dev-python/python-lzo 1.12-r1: Python interface to lzo
 dev-python/python-magic 0.4.15 0.4.15-r1: Access the libmagic file type identification library
 dev-python/python-magnumclient 2.12.0: A client for the OpenStack Magnum API
 dev-python/python-manilaclient 1.27.0: A client for the OpenStack Manila API
@@ -8668,7 +8668,7 @@ dev-python/pytools 2017.4-r1 9999: A collection of tools missing from the Python
 dev-python/pytrie 0.3 0.3.1: A pure Python implementation of the trie data structure
 dev-python/pytz 2016.3 2017.2 2018.4 2018.9 2019.3: World timezone definitions for Python
 dev-python/pyu2f 0.1.4: Python based U2F host library
-dev-python/pyudev 0.21.0: Python binding to libudev
+dev-python/pyudev 0.21.0 0.22.0: Python binding to libudev
 dev-python/pyusb 1.0.2: USB support for Python
 dev-python/pyutil 2.0.0-r1: A collection of utilities for Python programmers
 dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
@@ -8785,7 +8785,7 @@ dev-python/seaborn 0.7.1 0.8.1 0.9.0: Statistical data visualization
 dev-python/secretstorage 2.3.1 3.1.0 3.1.1 3.1.1-r1: Python bindings to FreeDesktop.org Secret Service API.
 dev-python/selectors34 1.2: Backport of the selectors module from Python 3.4
 dev-python/selenium 3.0.2 3.13.0 3.141.0: Python language binding for Selenium Remote Control
-dev-python/semantic_version 2.8.2: Python library providing a few tools handling SemVer in Python
+dev-python/semantic_version 2.8.2 2.8.4: Python library providing a few tools handling SemVer in Python
 dev-python/semver 2.8.1 2.9.0: A Python module for semantic versioning
 dev-python/send2trash 1.3.0 1.5.0: Sends files to the Trash (or Recycle Bin)
 dev-python/serpent 1.19 1.28 1.30: A simple serialization library based on ast.literal_eval
@@ -13315,7 +13315,7 @@ media-plugins/gst-transcoder 1.8.2-r1: GStreamer Transcoding API
 media-plugins/hexter 1.1.0: Yamaha DX7 modeling DSSI plugin
 media-plugins/imlib2_loaders 1.5.1 1.6.0: Additional image loaders for Imlib2
 media-plugins/ir_lv2 1.2.4 1.3.4: LV2 convolver plugin especially for creating reverb effects
-media-plugins/kodi-audiodecoder-modplug 2.0.0 2.0.1 2.0.2 9999: Modplug decoder addon for Kodi
+media-plugins/kodi-audiodecoder-modplug 2.0.3 9999: Modplug decoder addon for Kodi
 media-plugins/kodi-audiodecoder-nosefart 2.0.0 2.0.1 9999: Nosefart decoder addon for Kodi
 media-plugins/kodi-audiodecoder-sidplay 1.1.3 1.2.0 1.2.1 9999: SidPlay decoder addon for Kodi
 media-plugins/kodi-audiodecoder-snesapu 2.0.0 2.0.1 9999: SPC decoder addon for Kodi
@@ -14646,7 +14646,7 @@ net-libs/gnet 2.0.8-r2: A simple network library
 net-libs/gnome-online-accounts 3.32.1: GNOME framework for accessing online accounts
 net-libs/gnutls 3.6.7-r1 3.6.11.1-r1 3.6.12: A TLS 1.2 and SSL 3.0 implementation for the GNU project
 net-libs/google-cloud-cpp 0.2.0-r1 0.5.0 0.9.0 0.10.0: Google Cloud Client Library for C++
-net-libs/grpc 1.16.1 1.17.1 1.18.0 1.19.0 1.20.1-r1 1.21.1-r1 1.22.1 1.23.0 1.24.3 1.26.0-r1: Modern open source high performance RPC framework
+net-libs/grpc 1.22.1 1.23.0 1.24.3 1.26.0-r1: Modern open source high performance RPC framework
 net-libs/gsnmp 0.3.0: An SNMP library based on glib and gnet
 net-libs/gsoap 2.8.84 2.8.87 2.8.91 2.8.93: A cross-platform open source C and C++ SDK for SOAP/XML Web services
 net-libs/gssdp 1.0.3: A GObject-based API for handling resource discovery and announcement over SSDP
@@ -16993,7 +16993,7 @@ sys-apps/thunderbolt-software-user-space 0.9.3-r1: Thunderbolt(TM) user-space co
 sys-apps/timer_entropyd 0.3: A timer-based entropy generator
 sys-apps/tomoyo-tools 2.5.0_p20130214: TOMOYO Linux tools
 sys-apps/toybox 0.7.5 0.7.6 0.7.7 0.7.8 0.8.0 0.8.1 9999: Common linux commands in a multicall binary
-sys-apps/tuned 2.10.0 2.13.0: Daemon for monitoring and adaptive tuning of system devices
+sys-apps/tuned 2.13.0: Daemon for monitoring and adaptive tuning of system devices
 sys-apps/uam 0.3.2-r1 9999: Simple udev-based automounter for removable USB media
 sys-apps/ucspi-proxy 0.99 1.1: Proxy program for two connections set up by a UCSPI server and a UCSPI client
 sys-apps/ucspi-ssl 0.94-r1 0.97 0.98b 0.99 0.99e: Command-line tools for building SSL client-server applications
