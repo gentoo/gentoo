@@ -511,7 +511,7 @@ app-admin/whowatch 1.8.5 1.8.6: Displays information about users currently logge
 app-admin/xstow 1.0.1: replacement for GNU stow with extensions
 app-admin/xtail 2.1-r1: Tail multiple logfiles at once, even if rotated
 app-admin/yadm 1.12.0: A dotfile manager for the config files in your home folder
-app-antivirus/clamav 0.101.2-r1 0.101.4 0.102.1-r3: Clam Anti-Virus Scanner
+app-antivirus/clamav 0.101.2-r1 0.101.4 0.102.1-r3 0.102.2: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 5.6.2 6.0.1-r5 7.0.1: Download and install third-party clamav signatures
 app-antivirus/clamtk 6.02: A graphical front-end for ClamAV
 app-antivirus/skyldav 0.7: Skyld AV: on-access scanning daemon for ClamAV using fanotify
@@ -2636,6 +2636,7 @@ app-text/mupdf 1.16.1: a lightweight PDF viewer and toolkit written in portable 
 app-text/mythes 1.2.4: A simple thesaurus for Libreoffice
 app-text/namazu 2.0.21 2.0.22_pre7: Namazu is a full-text search engine
 app-text/nfoview 1.26 1.27 9999: Simple viewer for NFO files, which are ASCII art in the CP437 codepage
+app-text/nuspell 3.0.0: Spell checker library and CLI for complex natural languages
 app-text/o3read 0.0.4: Converts OpenOffice formats to text or HTML
 app-text/ocrad 0.26 0.27: GNU Ocrad is an OCR (Optical Character Recognition) program
 app-text/odt2txt 0.5: A simple converter from OpenDocument Text to plain text
