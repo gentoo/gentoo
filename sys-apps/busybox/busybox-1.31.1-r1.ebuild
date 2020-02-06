@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # See `man savedconfig.eclass` for info on how to use USE=savedconfig.
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic savedconfig toolchain-funcs
 
@@ -26,14 +26,18 @@ REQUIRED_USE="pam? ( !static )"
 RESTRICT="test"
 
 COMMON_DEPEND="!static? ( selinux? ( sys-libs/libselinux ) )
-	pam? ( sys-libs/pam )"
+	pam? ( sys-libs/pam )
+	virtual/libcrypt"
 DEPEND="${COMMON_DEPEND}
-	static? ( selinux? ( sys-libs/libselinux[static-libs(+)] ) )
+	static? (
+		virtual/libcrypt[static-libs]
+		selinux? ( sys-libs/libselinux[static-libs(+)] )
+	)
 	>=sys-kernel/linux-headers-2.6.39"
 RDEPEND="${COMMON_DEPEND}
 	mdev? ( !<sys-apps/openrc-0.13 )"
 
-S=${WORKDIR}/${MY_P}
+S="${WORKDIR}/${MY_P}"
 
 busybox_config_option() {
 	local flag=$1 ; shift
@@ -66,6 +70,7 @@ busybox_config_enabled() {
 # patches go here!
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.26.2-bb.patch
+	"${FILESDIR}"/${PN}-1.31.1-glibc-2.31.patch
 	# "${FILESDIR}"/${P}-*.patch
 )
 
