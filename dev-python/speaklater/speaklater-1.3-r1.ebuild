@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} pypy )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} pypy )
 inherit distutils-r1
 
 DESCRIPTION="Lazy strings for Python"
