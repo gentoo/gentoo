@@ -15,7 +15,7 @@ SRC_URI="https://github.com/jmcgeheeiv/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
