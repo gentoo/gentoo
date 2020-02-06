@@ -14,7 +14,7 @@ EGIT_BRANCH="next"
 LICENSE="GPL-2"
 KEYWORDS=""
 SLOT="0"
-IUSE="dbus debug examples gdal openmp qt5 +udev +utils vim-syntax"
+IUSE="cpu_flags_x86_sse2 dbus debug examples gdal openmp qt5 +udev +utils vim-syntax"
 
 # Needs --fg-root with path to flightgear-data passed to test runner passed,
 # not really worth patching
@@ -81,7 +81,6 @@ src_configure() {
 		-DENABLE_FGELEV=$(usex utils)
 		-DENABLE_FGJS=$(usex utils)
 		-DENABLE_FGVIEWER=$(usex utils)
-		-DENABLE_FLITE=OFF
 		-DENABLE_GDAL=$(usex gdal)
 		-DENABLE_GPSSMOOTH=$(usex utils)
 		-DENABLE_HID_INPUT=$(usex udev)
@@ -94,6 +93,8 @@ src_configure() {
 		-DENABLE_PROFILE=OFF
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_RTI=OFF
+		-DENABLE_SIMD=OFF # see CPU_FLAGS
+		-DENABLE_SIMD_CODE=$(usex cpu_flags_x86_sse2)
 		-DENABLE_STGMERGE=ON
 		-DENABLE_TERRASYNC=$(usex utils)
 		-DENABLE_TRAFFIC=$(usex utils)
@@ -106,8 +107,8 @@ src_configure() {
 		-DOSG_FSTREAM_EXPORT_FIXED=OFF # TODO also see simgear
 		-DSP_FDMS=ON
 		-DSYSTEM_CPPUNIT=OFF # NOTE we do not build tests anyway
-		-DSYSTEM_FLITE=ON
-		-DSYSTEM_HTS_ENGINE=ON
+		-DSYSTEM_FLITE=OFF
+		-DSYSTEM_HTS_ENGINE=OFF
 		-DSYSTEM_SPEEX=ON
 		-DSYSTEM_GSM=ON
 		-DSYSTEM_SQLITE=ON
@@ -116,7 +117,7 @@ src_configure() {
 		-DWITH_FGPANEL=$(usex utils)
 	)
 	if use cpu_flags_x86_sse2; then
-		append-flags -msse2 -mfpmath=sse -ftree-vectorize -ftree-slp-vectorize
+		append-flags -msse2 -mfpmath=sse
 	fi
 	if use gdal && use utils; then
 		mycmakeargs+=(-DENABLE_DEMCONVERT=ON)
