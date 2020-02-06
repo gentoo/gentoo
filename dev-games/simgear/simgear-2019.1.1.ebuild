@@ -33,6 +33,10 @@ RDEPEND="${COMMON_DEPEND}
 	subversion? ( dev-vcs/subversion )
 "
 
+PATCHES=(
+	"${FILESDIR}/${PN}-2019.1.1-gdal3.patch"
+)
+
 pkg_pretend() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
 }
