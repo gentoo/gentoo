@@ -770,7 +770,7 @@ app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.30 1.4.31: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
-app-crypt/certbot 1.0.0-r1 1.1.0 1.2.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot 0.39.0 0.40.1 1.0.0-r1 1.1.0 1.2.0 9999: Let's encrypt client to automate deployment of X.509 certificates
 app-crypt/certbot-apache 1.0.0 1.1.0 1.2.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-dns-nsone 0.39.0: NS1 DNS Authenticator plugin for Certbot (Let's Encrypt Client)
 app-crypt/certbot-nginx 1.0.0 1.1.0 1.2.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
