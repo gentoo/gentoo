@@ -121,6 +121,7 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-libs/libxslt
 	dev-perl/XML-XPath
+	dev-python/docutils
 	virtual/pkgconfig"
 
 PATCHES=(
@@ -309,7 +310,7 @@ my_src_configure() {
 	if [[ ${PV} = *9999* ]]; then
 		# Restore gnulib's config.sub and config.guess
 		# bug #377279
-		(cd ${S}/.gnulib && git reset --hard > /dev/null)
+		(cd "${S}"/.gnulib && git reset --hard > /dev/null)
 	fi
 }
 
