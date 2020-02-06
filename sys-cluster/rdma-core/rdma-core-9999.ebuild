@@ -90,4 +90,6 @@ src_install() {
 	newinitd "${FILESDIR}"/ibacm.init ibacm
 	newinitd "${FILESDIR}"/iwpmd.init iwpmd
 	newinitd "${FILESDIR}"/srpd.init srpd
+
+	use python && python_optimize
 }
