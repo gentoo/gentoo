@@ -92,6 +92,8 @@ src_configure() {
 		-DENABLE_PROFILE=OFF
 		-DENABLE_QT=$(usex qt5)
 		-DENABLE_RTI=OFF
+		-DENABLE_SIMD=OFF # see CPU_FLAGS
+		-DENABLE_SIMD_CODE=$(usex cpu_flags_x86_sse2)
 		-DENABLE_STGMERGE=ON
 		-DENABLE_TERRASYNC=$(usex utils)
 		-DENABLE_TRAFFIC=$(usex utils)
@@ -114,7 +116,7 @@ src_configure() {
 		-DWITH_FGPANEL=$(usex utils)
 	)
 	if use cpu_flags_x86_sse2; then
-		append-flags -msse2 -mfpmath=sse -ftree-vectorize -ftree-slp-vectorize
+		append-flags -msse2 -mfpmath=sse
 	fi
 	if use gdal && use utils; then
 		mycmakeargs+=(-DENABLE_DEMCONVERT=ON)
