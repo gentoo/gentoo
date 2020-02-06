@@ -1,17 +1,17 @@
-From b29cbcb0ff75b564f83ad93273e881e242f08caf Mon Sep 17 00:00:00 2001
+From 137de121a36f9349ad8435fee57940facef82878 Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
-Date: Wed, 22 Jan 2020 09:05:36 +0000
+Date: Thu, 6 Feb 2020 07:46:57 +0000
 Subject: [PATCH] Disable various compiler configs
 
 ---
- build/config/compiler/BUILD.gn | 75 ++++++++++++----------------------
- 1 file changed, 25 insertions(+), 50 deletions(-)
+ build/config/compiler/BUILD.gn | 64 +++++++++++++---------------------
+ 1 file changed, 25 insertions(+), 39 deletions(-)
 
 diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
-index 1455a9f..cf19679 100644
+index eef1140..b34b55b 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
-@@ -270,8 +270,6 @@ config("compiler") {
+@@ -260,8 +260,6 @@ config("compiler") {
  
    configs += [
      # See the definitions below.
@@ -20,7 +20,7 @@ index 1455a9f..cf19679 100644
      ":compiler_codegen",
      ":compiler_deterministic",
    ]
-@@ -496,31 +494,6 @@ config("compiler") {
+@@ -486,20 +484,6 @@ config("compiler") {
      }
    }
  
@@ -36,23 +36,12 @@ index 1455a9f..cf19679 100644
 -      "-Xclang",
 -      "-instcombine-lower-dbg-declare=0",
 -    ]
--
--    if (llvm_force_head_revision) {
--      # Before Clang 10, lax vector conversions were allowed by default.
--      # Chromium currently relies on this behavior.
--      # TODO(crbug.com/1042470): Fix the code and remove this flag.
--      if (is_win) {
--        cflags += [ "/clang:-flax-vector-conversions=all" ]
--      } else if (cros_sdk_version == "") {
--        cflags += [ "-flax-vector-conversions=all" ]
--      }
--    }
 -  }
 -
    # C11/C++11 compiler flags setup.
    # ---------------------------
    if (is_linux || is_android || (is_nacl && is_clang) || current_os == "aix") {
-@@ -1467,6 +1440,12 @@ config("default_warnings") {
+@@ -1446,6 +1430,12 @@ config("default_warnings") {
          cflags_cc += [ "-Wno-class-memaccess" ]
        }
  
@@ -65,7 +54,7 @@ index 1455a9f..cf19679 100644
        # -Wunused-local-typedefs is broken in gcc,
        # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=63872
        cflags += [ "-Wno-unused-local-typedefs" ]
-@@ -1592,7 +1571,7 @@ config("chromium_code") {
+@@ -1560,7 +1550,7 @@ config("chromium_code") {
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
@@ -74,7 +63,7 @@ index 1455a9f..cf19679 100644
      if (treat_warnings_as_errors) {
        cflags += [ "-Werror" ]
  
-@@ -1601,10 +1580,6 @@ config("chromium_code") {
+@@ -1569,10 +1559,6 @@ config("chromium_code") {
        # well.
        ldflags = [ "-Werror" ]
      }
@@ -85,7 +74,7 @@ index 1455a9f..cf19679 100644
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -1613,15 +1588,6 @@ config("chromium_code") {
+@@ -1581,15 +1567,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -101,7 +90,7 @@ index 1455a9f..cf19679 100644
      if (is_mac) {
        cflags_objc = [ "-Wobjc-missing-property-synthesis" ]
        cflags_objcc = [ "-Wobjc-missing-property-synthesis" ]
-@@ -2025,7 +1991,8 @@ config("default_stack_frames") {
+@@ -1993,7 +1970,8 @@ config("default_stack_frames") {
  }
  
  # Default "optimization on" config.
@@ -111,7 +100,7 @@ index 1455a9f..cf19679 100644
    if (is_win) {
      # TODO(thakis): Remove is_clang here, https://crbug.com/598772
      if (is_official_build && full_wpo_on_official && !is_clang) {
-@@ -2051,7 +2018,8 @@ config("optimize") {
+@@ -2019,7 +1997,8 @@ config("optimize") {
  }
  
  # Same config as 'optimize' but without the WPO flag.
@@ -121,7 +110,7 @@ index 1455a9f..cf19679 100644
    if (is_win) {
      # Favor size over speed, /O1 must be before the common flags. The GYP
      # build also specifies /Os and /GF but these are implied by /O1.
-@@ -2074,7 +2042,8 @@ config("optimize_no_wpo") {
+@@ -2042,7 +2021,8 @@ config("optimize_no_wpo") {
  }
  
  # Turn off optimizations.
@@ -131,7 +120,7 @@ index 1455a9f..cf19679 100644
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2108,7 +2077,8 @@ config("no_optimize") {
+@@ -2076,7 +2056,8 @@ config("no_optimize") {
  # Turns up the optimization level. On Windows, this implies whole program
  # optimization and link-time code generation which is very expensive and should
  # be used sparingly.
@@ -141,7 +130,7 @@ index 1455a9f..cf19679 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2147,7 +2117,8 @@ config("optimize_max") {
+@@ -2115,7 +2096,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/621335) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -151,7 +140,7 @@ index 1455a9f..cf19679 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2177,7 +2148,8 @@ config("optimize_speed") {
+@@ -2145,7 +2127,8 @@ config("optimize_speed") {
    }
  }
  
@@ -161,7 +150,7 @@ index 1455a9f..cf19679 100644
    cflags = [ "-O1" ] + common_optimize_on_cflags
    ldflags = common_optimize_on_ldflags
    visibility = [ ":default_optimization" ]
-@@ -2293,7 +2265,8 @@ config("win_pdbaltpath") {
+@@ -2261,7 +2244,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -171,7 +160,7 @@ index 1455a9f..cf19679 100644
    if (is_win) {
      if (use_goma || is_clang) {
        # Note that with VC++ this requires is_win_fastlink, enforced elsewhere.
-@@ -2403,7 +2376,8 @@ config("symbols") {
+@@ -2371,7 +2355,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -181,7 +170,7 @@ index 1455a9f..cf19679 100644
    if (is_win) {
      # Functions, files, and line tables only.
      cflags = []
-@@ -2458,7 +2432,8 @@ config("minimal_symbols") {
+@@ -2426,7 +2411,8 @@ config("minimal_symbols") {
  }
  
  # No symbols.

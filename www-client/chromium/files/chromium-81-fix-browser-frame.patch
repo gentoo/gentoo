@@ -1,0 +1,35 @@
+From c73968d63c456d4aaf55c5cd439b42403a3bbeb1 Mon Sep 17 00:00:00 2001
+From: Tom Anderson <thomasanderson@chromium.org>
+Date: Mon, 03 Feb 2020 19:53:50 +0000
+Subject: [PATCH] Fix browser frame view not getting a relayout after a state change
+
+views::NonClientView has 2 things: a views::NonClientFrameView and a
+views::ClientView. We were previously only invalidating the layout on
+the ClientView after a state change.  This was causing the browser
+frame to paint as if it were still maximized after restoring from
+a maximized state on Linux.  Invalidating the layout of the frame view
+fixes the issue.
+
+BUG=1046122
+R=sky
+
+Change-Id: I7da525efe1f436564ffffb410afe294e901e5d89
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2033759
+Reviewed-by: Scott Violet <sky@chromium.org>
+Commit-Queue: Thomas Anderson <thomasanderson@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#737890}
+---
+
+diff --git a/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.cc b/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.cc
+index 9abbce8..6c00d49 100644
+--- a/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.cc
++++ b/ui/views/widget/desktop_aura/desktop_window_tree_host_platform.cc
+@@ -717,6 +717,8 @@
+   NonClientView* non_client_view = widget->non_client_view();
+   // non_client_view may be NULL, especially during creation.
+   if (non_client_view) {
++    if (non_client_view->frame_view())
++      non_client_view->frame_view()->InvalidateLayout();
+     non_client_view->client_view()->InvalidateLayout();
+     non_client_view->InvalidateLayout();
+   }
