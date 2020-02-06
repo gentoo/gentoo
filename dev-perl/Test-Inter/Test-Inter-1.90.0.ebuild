@@ -25,6 +25,6 @@ DEPEND="${RDEPEND}
 "
 
 src_test() {
-	perl_rm_files t/pod_coverage.t t/pod.t
+	perl_rm_files t/pod_coverage.t t/pod.t t/_pod_coverage.t t/_pod.t
 	perl-module_src_test
 }
