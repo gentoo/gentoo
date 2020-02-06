@@ -49,7 +49,7 @@ src_configure() {
 		-DENABLE_PKGUTIL=ON
 		-DENABLE_RTI=OFF
 		-DENABLE_SIMD=OFF # see CPU_FLAGS
-		-DENABLE_SIMD_CODE=OFF
+		-DENABLE_SIMD_CODE=$(usex cpu_flags_x86_sse2)
 		-DENABLE_SOUND=ON
 		-DENABLE_TESTS=$(usex test)
 		-DSIMGEAR_HEADLESS=OFF
@@ -61,7 +61,7 @@ src_configure() {
 	)
 
 	if use cpu_flags_x86_sse2; then
-		append-flags -msse2 -mfpmath=sse -ftree-vectorize -ftree-slp-vectorize
+		append-flags -msse2 -mfpmath=sse
 	fi
 
 	cmake-utils_src_configure
