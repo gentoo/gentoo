@@ -15850,7 +15850,7 @@ sci-chemistry/bkchem 0.14.0_pre2-r2: Chemical drawing program
 sci-chemistry/bodr 9-r1 10: The Blue Obelisk Data Repository listing element and isotope properties
 sci-chemistry/cara-bin 1.8.4-r1: Analysis of NMR spectra and Computer Aided Resonance Assignment
 sci-chemistry/chemex 0.6.1-r2: Program to fit chemical exchange induced shift and relaxation data
-sci-chemistry/chemical-mime-data 0.1.94-r3: A collection of data files to add support for chemical MIME types
+sci-chemistry/chemical-mime-data 0.1.94-r3 0.1.94-r4: A collection of data files to add support for chemical MIME types
 sci-chemistry/chemtool 1.6.13 1.6.14: A GTK program for drawing organic molecules
 sci-chemistry/clashlist 3.17-r1: Build lists of van der Waals clashes from an input PDB file
 sci-chemistry/cluster 1.3.081231-r1: Build lists of collections of interacting items
