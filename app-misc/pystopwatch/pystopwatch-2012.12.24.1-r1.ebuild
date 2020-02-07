@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,9 @@ IUSE=""
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
-	dev-python/pygtk:2[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pygtk:2[${PYTHON_USEDEP}]
+	')
 	gnome-base/librsvg
 	${PYTHON_DEPS}
 "
