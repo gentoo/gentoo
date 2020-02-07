@@ -1,4 +1,4 @@
-# Copyright 2018-2019 Gentoo Authors
+# Copyright 2018-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,10 @@ KEYWORDS="~amd64 ~hppa ~x86"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 BDEPEND="
-	dev-python/beautifulsoup[${PYTHON_USEDEP}]
-	dev-python/markdown[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/beautifulsoup[${PYTHON_MULTI_USEDEP}]
+		dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+	')
 	${PYTHON_DEPS}
 "
 RDEPEND="
