@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,9 +12,15 @@ LICENSE="vim"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="|| ( app-editors/vim[python,${PYTHON_USEDEP}] app-editors/gvim[python,${PYTHON_USEDEP}] )
+RDEPEND="
+	|| (
+		app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
+		app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
+	)
 	${PYTHON_DEPS}
-	dev-python/markdown[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+	')"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 VIM_PLUGIN_HELPFILES="${PN}.txt"
