@@ -4,11 +4,11 @@ DESCRIPTION=Bindings for GtkSpell with Gtk2.x
 EAPI=6
 HOMEPAGE=http://gtk2-perl.sf.net/ https://metacpan.org/release/Gtk2-Spell
 IUSE=test
-KEYWORDS=amd64 hppa ~ppc x86 ~amd64-linux ~x86-linux ~x86-solaris
+KEYWORDS=amd64 ~hppa ~ppc x86 ~amd64-linux ~x86-linux ~x86-solaris
 LICENSE=LGPL-2.1
 RDEPEND=x11-libs/gtk+:2 >=app-text/gtkspell-2:2 >=dev-perl/glib-perl-1.240.0 >=dev-perl/Gtk2-1.012 dev-lang/perl:=
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TS/TSCH/Gtk2-Spell-1.04.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83	virtualx	e49dbce7ac14426e1155497476915307
-_md5_=e4707746d2117da1493a3ca490fa2a4c
+_md5_=775bf3d77c42a6f70361c0a754d069b6
