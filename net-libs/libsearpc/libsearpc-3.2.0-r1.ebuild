@@ -23,7 +23,9 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.26.0
 	>=dev-libs/jansson-2.2.1"
 RDEPEND="${DEPEND}
-	dev-python/simplejson[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/simplejson[${PYTHON_MULTI_USEDEP}]
+	')"
 
 src_prepare() {
 	default
