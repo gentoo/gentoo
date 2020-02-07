@@ -1,0 +1,54 @@
+From 294ef3529016c29769d10dee9e5f639c2ce02b91 Mon Sep 17 00:00:00 2001
+From: "Zachary P. Landau" <zlandau@jellofund.net>
+Date: Wed, 5 Feb 2020 23:18:31 -0800
+Subject: [PATCH 3/4] Fix parsing of sample config file
+
+This code is horribly broken, but we should at least be able to parse
+the authforcerc.sample file, and report the right line number when
+failing.
+---
+ src/config.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/src/config.c b/src/config.c
+index 4462fcc..66313d9 100644
+--- a/src/config.c
++++ b/src/config.c
+@@ -11,7 +11,7 @@
+ #endif /* MEMWATCH */
+ #include "extern.h"
+ 
+-#define BUFFER_LEN 82
++#define BUFFER_LEN 100
+ #define IS_BIT(x) (!strcmp(x, "0") || !strcmp(x, "1"))
+ 
+ static void process_boolean(char *option, char *value, int *variable) {
+@@ -30,7 +30,7 @@ void parse_config(char *config) {
+ 	char *option;								/* config file option */
+ 	char *value;								/* value for option */
+ 
+-	int line_number = 1;
++	int line_number = 0;
+ 	char *chop;
+ 
+ 	/* MEMWATCH: reports this isnt freed, why? */
+@@ -45,6 +45,7 @@ void parse_config(char *config) {
+ 	}
+ 
+ 	while (fgets(buffer, sizeof(buffer), fp)) {
++		line_number++;
+ 		if (buffer[0] == '#' || buffer[0] == ';' || buffer[0] == '\n')
+ 			continue;
+ 		remove_crud(buffer);
+@@ -123,8 +124,6 @@ void parse_config(char *config) {
+ 		else
+ 		if (!quiet)
+ 			printf("parse_config: option %s is not valid\n", option);
+-
+-		line_number++;
+ 	}
+ 
+ 	debug(3, "parse_config: read %s [%i]\n", config, line_number-1);
+-- 
+2.25.0
+

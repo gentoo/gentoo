@@ -1,15 +1,15 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
 DESCRIPTION="Encrypted UDP based FTP with multicast"
 HOMEPAGE="http://uftp-multicast.sourceforge.net/"
-SRC_URI="mirror://sourceforge/${PN}-multicast/${P}.tar.gz"
+SRC_URI="https://download.sourceforge.net/${PN}-multicast/source-tar/${P}.tar.gz"
 
-LICENSE="GPL-3"
+LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+server ssl"
@@ -22,7 +22,8 @@ RDEPEND="${DEPEND}"
 RESTRICT=test
 
 PATCHES=(
-	"${FILESDIR}/${PN}-4.9.4_makefile.patch"
+	"${FILESDIR}/${P}_makefile.patch"
+	"${FILESDIR}/${P}_gcc10.patch"
 )
 
 src_compile() {
@@ -34,7 +35,7 @@ src_compile() {
 src_install() {
 	dobin uftp uftp_keymgt
 	dodoc {Changes,protocol,ReadMe}.txt
-	doman uftp.1 uftp_keymgt.1
+	doman {uftp,uftp_keymgt}.1
 
 	if use server ; then
 		dosbin uftpd uftpproxyd
@@ -42,7 +43,7 @@ src_install() {
 		newconfd "${FILESDIR}/uftpd.conf" uftpd
 		newinitd "${FILESDIR}/uftpproxyd.init" uftpproxyd
 		newconfd "${FILESDIR}/uftpproxyd.conf" uftpproxyd
-		doman uftpd.1 uftpproxyd.1
+		doman {uftpd,uftpproxyd}.1
 		insinto /etc/logrotate.d
 		newins "${FILESDIR}/logrotate" uftpd
 	fi
