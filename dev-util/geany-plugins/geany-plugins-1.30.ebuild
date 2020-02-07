@@ -47,7 +47,9 @@ COMMON_DEPEND="
 		>=x11-libs/vte-0.28:0
 		)
 	python? (
-		dev-python/pygtk[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+		')
 		${PYTHON_DEPS}
 		)
 	scope? ( x11-libs/vte:0 )
