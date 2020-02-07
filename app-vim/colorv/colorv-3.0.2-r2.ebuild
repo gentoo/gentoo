@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,10 +19,15 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	|| (
-		app-editors/vim[python,${PYTHON_USEDEP}]
-		( app-editors/gvim[python,${PYTHON_USEDEP}] dev-python/pygtk:2[${PYTHON_USEDEP}] )
-	)"
+	$(python_gen_cond_dep '
+		|| (
+			app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
+			(
+				app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
+				dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+			)
+		)
+	')"
 
 src_prepare() {
 	eapply_user
