@@ -22,7 +22,7 @@ fi
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm64 ppc ppc64 x86"
 IUSE="audio +devinput doc ftdi gtk inputlirc static-libs systemd +uinput usb X"
 
 REQUIRED_USE="
@@ -38,7 +38,9 @@ COMMON_DEPEND="
 		>media-libs/portaudio-18
 		media-libs/alsa-lib
 	)
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
+	')
 	ftdi? ( dev-embedded/libftdi:0 )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:0 )
@@ -52,7 +54,9 @@ COMMON_DEPEND="
 DEPEND="
 	${COMMON_DEPEND}
 	dev-libs/libxslt
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+	')
 	doc? ( app-doc/doxygen )
 	sys-apps/kmod
 	sys-kernel/linux-headers
@@ -62,14 +66,15 @@ RDEPEND="
 	${COMMON_DEPEND}
 	gtk? (
 		x11-libs/vte[introspection]
-		dev-python/pygobject[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pygobject[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	inputlirc? ( app-misc/inputlircd )
 "
 
 PATCHES=(
 	"${FILESDIR}/${P}-unsafe-load.patch"
-	"${FILESDIR}/${P}-runtimedirectory.patch"
 )
 
 MAKEOPTS+=" -j1"
