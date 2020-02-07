@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ RDEPEND="qt5? (
 		dev-qt/qtopengl:5
 		dev-qt/qtwidgets:5
 	)
-	>=net-wireless/gnuradio-3.7_rc:0=[qt5,wxwidgets?,${PYTHON_USEDEP}]
+	>=net-wireless/gnuradio-3.7_rc:0=[qt5,wxwidgets?,${PYTHON_SINGLE_USEDEP}]
 	media-libs/freetype
 	dev-libs/boost:=
 	glfw? ( >=media-libs/glfw-3 )
