@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,15 +6,16 @@ EAPI=7
 ECM_HANDBOOK="forceoptional"
 PYTHON_COMPAT=( python3_{6,7} )
 PVCUT=$(ver_cut 1-3)
-KFMIN=5.60.0
+KFMIN=5.63.0
 QTMIN=5.12.3
 inherit python-single-r1 ecm kde.org
 
 DESCRIPTION="Classical Mah Jongg for four players"
-HOMEPAGE="https://kde.org/applications/games/kajongg/"
+HOMEPAGE="https://kde.org/applications/games/org.kde.kajongg"
+
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -27,8 +28,10 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-qt/qtsvg-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	dev-db/sqlite:3
-	dev-python/PyQt5[gui,svg,widgets,${PYTHON_USEDEP}]
-	>=dev-python/twisted-16.6.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/PyQt5[gui,svg,widgets,${PYTHON_MULTI_USEDEP}]
+		>=dev-python/twisted-16.6.0[${PYTHON_MULTI_USEDEP}]
+	')
 "
 RDEPEND="${DEPEND}
 	>=kde-apps/libkmahjongg-${PVCUT}:5
