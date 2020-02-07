@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,11 +23,13 @@ IUSE="armadillo doc rtlsdr uhd"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/boost:=[threads,${PYTHON_USEDEP}]
-	>=net-wireless/gnuradio-3.7.0:=[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-libs/boost:=[threads,${PYTHON_MULTI_USEDEP}]
+	')
+	>=net-wireless/gnuradio-3.7.0:=[${PYTHON_SINGLE_USEDEP}]
 	armadillo? ( sci-libs/armadillo )
 	rtlsdr? ( virtual/libusb:1 )
-	uhd? ( net-wireless/uhd[${PYTHON_USEDEP}] )
+	uhd? ( net-wireless/uhd[${PYTHON_SINGLE_USEDEP}] )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
