@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,11 @@ RDEPEND="
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen[latex,dot] )
-	python? ( dev-python/cython[${PYTHON_USEDEP}] )"
+	python? (
+		$(python_gen_cond_dep '
+			dev-python/cython[${PYTHON_MULTI_USEDEP}]
+		')
+	)"
 
 S="${WORKDIR}/${P^}"
 
