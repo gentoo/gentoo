@@ -55,7 +55,9 @@ RDEPEND="
 	opencl? ( virtual/opencl )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/numpy[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	R? ( dev-lang/R )
 	ruby? ( dev-ruby/narray )"
@@ -76,7 +78,9 @@ DEPEND="${RDEPEND}
 	R? ( >=dev-lang/swig-3.0.12 )
 	ruby? ( >=dev-lang/swig-3.0.12 )
 	test? (
-		dev-python/jinja[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/jinja[${PYTHON_MULTI_USEDEP}]
+		')
 		>=dev-cpp/gtest-1.8.0
 	)"
 
