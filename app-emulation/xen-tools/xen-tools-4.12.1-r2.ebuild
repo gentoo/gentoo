@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,18 +16,19 @@ if [[ $PV == *9999 ]]; then
 	EGIT_REPO_URI="git://xenbits.xen.org/${REPO}"
 	S="${WORKDIR}/${REPO}"
 else
-	KEYWORDS="amd64 ~arm ~arm64 x86"
-	UPSTREAM_VER=0
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+	UPSTREAM_VER=1
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
-	GENTOO_VER=19
+	GENTOO_VER=18
 	# xen-tools's gentoo patches version which apply to this specific ebuild
 	GENTOO_GPV=0
 	# xen-tools ovmf's patches
 	OVMF_VER=
 
-	SEABIOS_VER=1.11.1
+	SEABIOS_VER=1.12.0
 	EDK2_COMMIT=ef529e6ab7c31290a33045bb1f1837447cc0eb56
+	IPXE_COMMIT=d2063b7693e0e35db97b2264aa987eb6341ae779
 
 	[[ -n ${UPSTREAM_VER} ]] && \
 		UPSTREAM_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${P/-tools/}-upstream-patches-${UPSTREAM_VER}.tar.xz
@@ -41,7 +42,8 @@ else
 		OVMF_PATCHSET_URI="https://dev.gentoo.org/~dlan/distfiles/${PN/-tools}-ovmf-patches-${OVMF_VER}.tar.xz"
 
 	SRC_URI="https://downloads.xenproject.org/release/xen/${MY_PV}/xen-${MY_PV}.tar.gz
-	https://git.seabios.org/cgit/seabios.git/snapshot/seabios-rel-${SEABIOS_VER}.tar.gz
+	https://www.seabios.org/downloads/seabios-${SEABIOS_VER}.tar.gz
+	ipxe? ( http://xenbits.xen.org/xen-extfiles/ipxe-git-${IPXE_COMMIT}.tar.gz )
 	ovmf? ( https://github.com/tianocore/edk2/archive/${EDK2_COMMIT}.tar.gz -> edk2-${EDK2_COMMIT}.tar.gz
 		${OVMF_PATCHSET_URI} )
 	${UPSTREAM_PATCHSET_URI}
@@ -53,19 +55,23 @@ fi
 
 DESCRIPTION="Xen tools including QEMU and xl"
 HOMEPAGE="https://www.xenproject.org"
-DOCS=( README docs/README.xen-bugtool )
+DOCS=( README )
 
 LICENSE="GPL-2"
 SLOT="0/$(ver_cut 1-2)"
 # Inclusion of IUSE ocaml on stabalizing requires maintainer of ocaml to (get off his hands and) make
 # >=dev-lang/ocaml-4 stable
 # Masked in profiles/eapi-5-files instead
-IUSE="api debug doc flask +hvm ocaml ovmf +pam pygrub python +qemu +qemu-traditional screen sdl static-libs system-qemu system-seabios"
+IUSE="api debug doc flask +hvm +ipxe ocaml ovmf +pam pygrub python +qemu +qemu-traditional +rombios screen sdl static-libs system-ipxe system-qemu system-seabios"
 
 REQUIRED_USE="
 	${PYTHON_REQUIRED_USE}
+	ipxe? ( rombios )
 	ovmf? ( hvm )
 	pygrub? ( python )
+	rombios? ( hvm )
+	system-ipxe? ( rombios )
+	?? ( ipxe system-ipxe )
 	?? ( qemu system-qemu )"
 
 COMMON_DEPEND="
@@ -81,11 +87,13 @@ COMMON_DEPEND="
 
 DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-4.11
-	dev-python/lxml[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		pam? ( dev-python/pypam[${PYTHON_MULTI_USEDEP}] )
+	')
 	x86? ( sys-devel/dev86
-		sys-firmware/ipxe[qemu]
+		system-ipxe? ( sys-firmware/ipxe[qemu] )
 		sys-power/iasl )
-	pam? ( dev-python/pypam[${PYTHON_USEDEP}] )
 	api? ( dev-libs/libxml2
 		net-misc/curl )
 	ovmf? (
@@ -93,17 +101,18 @@ DEPEND="${COMMON_DEPEND}
 		$(python_gen_impl_dep sqlite)
 		)
 	!amd64? ( >=sys-apps/dtc-1.4.0 )
-	amd64? ( sys-devel/bin86
-		sys-devel/dev86
-		sys-firmware/ipxe[qemu]
-		sys-power/iasl
-		system-seabios? ( sys-firmware/seabios ) )
+	amd64? ( sys-power/iasl
+		system-seabios? ( sys-firmware/seabios )
+		system-ipxe? ( sys-firmware/ipxe[qemu] )
+		rombios? ( sys-devel/bin86 sys-devel/dev86 ) )
 	dev-lang/perl
 	app-misc/pax-utils
 	doc? (
 		app-text/ghostscript-gpl
 		app-text/pandoc
-		dev-python/markdown[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+		')
 		dev-texlive/texlive-latexextra
 		media-gfx/transfig
 	)
@@ -129,6 +138,7 @@ RDEPEND="${COMMON_DEPEND}
 # Approved by QA team in bug #144032
 QA_WX_LOAD="
 	usr/libexec/xen/boot/hvmloader
+	usr/share/qemu-xen/qemu/hppa-firmware.img
 	usr/share/qemu-xen/qemu/s390-ccw.img
 	usr/share/qemu-xen/qemu/u-boot.e500
 "
@@ -215,7 +225,7 @@ src_prepare() {
 	fi
 
 	# move before Gentoo patch, one patch should apply to seabios, to fix gcc-4.5.x build err
-	mv ../seabios-rel-${SEABIOS_VER} tools/firmware/seabios-dir-remote || die
+	mv ../seabios-${SEABIOS_VER} tools/firmware/seabios-dir-remote || die
 	pushd tools/firmware/ > /dev/null
 	ln -s seabios-dir-remote seabios-dir || die
 	popd > /dev/null
@@ -240,6 +250,14 @@ src_prepare() {
 		fi
 		mv ../edk2-${EDK2_COMMIT} tools/firmware/ovmf-dir-remote || die
 		cp tools/firmware/ovmf-makefile tools/firmware/ovmf-dir-remote/Makefile || die
+	fi
+
+	# ipxe
+	if use ipxe; then
+		cp "${DISTDIR}/ipxe-git-${IPXE_COMMIT}.tar.gz" tools/firmware/etherboot/_ipxe.tar.gz || die
+		cp "${WORKDIR}/patches-gentoo/${PN}-4.12.0-ipxe-gcc9.patch" \
+			tools/firmware/etherboot/patches/ipxe-gcc9.patch || die
+		echo "ipxe-gcc9.patch" >> tools/firmware/etherboot/patches/series || die
 	fi
 
 	mv tools/qemu-xen/qemu-bridge-helper.c tools/qemu-xen/xen-bridge-helper.c || die
@@ -341,9 +359,12 @@ src_configure() {
 		--enable-tools \
 		--enable-docs \
 		$(use_enable api xenapi) \
-		$(use_enable pam) \
+		$(use_enable ipxe) \
+		$(usex system-ipxe '--with-system-ipxe=/usr/share/ipxe' '') \
 		$(use_enable ocaml ocamltools) \
 		$(use_enable ovmf) \
+		$(use_enable pam) \
+		$(use_enable rombios) \
 		--with-xenstored=$(usex ocaml 'oxenstored' 'xenstored') \
 		"
 
