@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,8 +49,10 @@ RDEPEND="
 	pdf? ( media-libs/libharu:0= )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/numpy[${PYTHON_USEDEP}]
-		qt5? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			qt5? ( dev-python/PyQt5[${PYTHON_MULTI_USEDEP}] )
+		')
 	)
 	qhull? ( media-libs/qhull:0= )
 	qt5? (
