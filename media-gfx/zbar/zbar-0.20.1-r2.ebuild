@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,11 @@ COMMON_DEPEND="
 	jpeg? ( virtual/jpeg:0[${MULTILIB_USEDEP}] )
 	python? (
 		${PYTHON_DEPS}
-		gtk? ( >=dev-python/pygtk-2[${PYTHON_USEDEP}] )
+		gtk? (
+			$(python_gen_cond_dep '
+				>=dev-python/pygtk-2[${PYTHON_MULTI_USEDEP}]
+			')
+		)
 	)
 	qt5? (
 		dev-qt/qtcore:5

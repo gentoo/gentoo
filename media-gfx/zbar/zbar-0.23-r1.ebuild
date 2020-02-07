@@ -66,7 +66,9 @@ DEPEND="${COMMON_DEPEND}
 	)
 	test? (
 		${PYTHON_DEPS}
-		dev-python/pillow[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		')
 	)"
 
 BDEPEND="
