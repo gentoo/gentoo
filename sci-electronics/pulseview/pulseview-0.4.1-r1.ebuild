@@ -33,7 +33,7 @@ RDEPEND="
 	dev-qt/qtwidgets:5
 	dev-qt/qtsvg:5
 	decode? (
-		>=sci-libs/libsigrokdecode-0.5.2:=[${PYTHON_USEDEP}]
+		>=sci-libs/libsigrokdecode-0.5.2:=[${PYTHON_SINGLE_USEDEP}]
 		${PYTHON_DEPS}
 	)"
 DEPEND="${RDEPEND}
