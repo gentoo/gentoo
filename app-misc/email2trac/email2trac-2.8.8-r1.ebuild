@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-		<www-apps/trac-1.2[${PYTHON_USEDEP}]"
+		<www-apps/trac-1.2[${PYTHON_SINGLE_USEDEP}]"
 
 pkg_setup() {
 	einfo "You can set the following variables in make.conf:"
