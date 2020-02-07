@@ -71,6 +71,7 @@ LIB_DEPEND="
 		)
 		libressl? ( dev-libs/libressl:0=[static-libs(+)] )
 	)
+	virtual/libcrypt:=[static-libs(+)]
 	>=sys-libs/zlib-1.2.3:=[static-libs(+)]
 "
 RDEPEND="
