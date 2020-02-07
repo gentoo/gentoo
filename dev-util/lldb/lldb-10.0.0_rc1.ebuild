@@ -24,8 +24,12 @@ RDEPEND="
 	libedit? ( dev-libs/libedit:0= )
 	lzma? ( app-arch/xz-utils:= )
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0= )
-	python? ( dev-python/six[${PYTHON_USEDEP}]
-		${PYTHON_DEPS} )
+	python? (
+		$(python_gen_cond_dep '
+			dev-python/six[${PYTHON_MULTI_USEDEP}]
+		')
+		${PYTHON_DEPS}
+	)
 	~sys-devel/clang-${PV}[xml]
 	~sys-devel/llvm-${PV}
 	!<sys-devel/llvm-4.0"
@@ -33,7 +37,9 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	python? ( >=dev-lang/swig-3.0.11 )
 	test? (
-		~dev-python/lit-${PV}[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep "
+			~dev-python/lit-${PV}[\${PYTHON_MULTI_USEDEP}]
+		")
 		sys-devel/lld )
 	${PYTHON_DEPS}"
 
