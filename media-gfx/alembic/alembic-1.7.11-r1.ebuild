@@ -28,10 +28,12 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	>=media-libs/openexr-2.3.0:=
-	boost? ( >=dev-libs/boost-1.65.0:=[python,${PYTHON_USEDEP}] )
 	hdf5? ( >=sci-libs/hdf5-1.10.2:=[zlib(+)] )
-	python? ( >=dev-python/pyilmbase-2.3.0[${PYTHON_USEDEP}] )
+	python? ( >=dev-python/pyilmbase-2.3.0[${PYTHON_SINGLE_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.11-r1 )
+	$(python_gen_cond_dep '
+		boost? ( >=dev-libs/boost-1.65.0:=[python,${PYTHON_MULTI_USEDEP}] )
+	')
 "
 DEPEND="
 	${RDEPEND}
