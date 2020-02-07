@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit python-single-r1
 
@@ -13,13 +13,15 @@ SRC_URI="https://jak-linux.org/projects/${PN}/${MY_PR}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc sparc x86"
+KEYWORDS="~amd64 ~ppc ~sparc ~x86"
 IUSE="aac flac mac mp3 musepack wavpack wma"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	>=media-libs/mutagen-1.11[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=media-libs/mutagen-1.11[${PYTHON_MULTI_USEDEP}]
+	')
 	media-sound/vorbis-tools[ogg123]
 	aac? ( || (
 		media-libs/faad2
