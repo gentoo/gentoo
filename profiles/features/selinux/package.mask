@@ -59,7 +59,7 @@ gnome-extra/gnome-user-share
 app-admin/equo
 app-admin/matter
 app-admin/packagekit
-=app-admin/packagekit-base-1.1.12
+~app-admin/packagekit-base-1.1.12
 app-admin/packagekit-gtk
 app-admin/packagekit-qt
 <app-admin/salt-2018
