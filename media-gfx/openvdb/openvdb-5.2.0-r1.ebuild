@@ -19,7 +19,7 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
-	>=dev-libs/boost-1.62:=[python?,${PYTHON_USEDEP}]
+	>=dev-libs/boost-1.62:=
 	>=dev-libs/c-blosc-1.5.0
 	dev-libs/jemalloc
 	dev-libs/log4cplus
@@ -32,7 +32,10 @@ RDEPEND="
 	x11-libs/libXrandr
 	python? (
 		${PYTHON_DEPS}
-		dev-python/numpy[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-libs/boost-1.62:=[python,${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		')
 	)"
 
 DEPEND="${RDEPEND}
