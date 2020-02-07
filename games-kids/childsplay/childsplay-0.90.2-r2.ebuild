@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,9 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="${PYTHON_DEPS}
-	dev-python/pygame[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pygame[${PYTHON_MULTI_USEDEP}]
+	')
 	media-libs/sdl-image[gif,jpeg,png]
 	media-libs/sdl-ttf
 	media-libs/sdl-mixer[vorbis]
