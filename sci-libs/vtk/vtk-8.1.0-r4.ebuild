@@ -69,28 +69,10 @@ RDEPEND="
 	ffmpeg? ( virtual/ffmpeg )
 	gdal? ( sci-libs/gdal )
 	java? ( >=virtual/jdk-1.7:* )
-	mpi? (
-		virtual/mpi[cxx,romio]
-		python? ( dev-python/mpi4py[${PYTHON_USEDEP}] )
-	)
 	mysql? ( virtual/mysql )
 	odbc? ( dev-db/unixODBC )
 	offscreen? ( media-libs/mesa[osmesa] )
 	postgres? ( dev-db/postgresql:= )
-	python? (
-		${PYTHON_DEPS}
-		dev-python/sip[${PYTHON_USEDEP}]
-	)
-	qt5? (
-		dev-qt/designer:5
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtopengl:5
-		dev-qt/qtsql:5
-		dev-qt/qtwebkit:5
-		dev-qt/qtx11extras:5
-		python? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
-	)
 	R? ( dev-lang/R )
 	tbb? ( dev-cpp/tbb )
 	tcl? ( dev-lang/tcl:0= )
@@ -98,16 +80,38 @@ RDEPEND="
 	video_cards_nvidia? ( x11-drivers/nvidia-drivers[tools,static-libs] )
 	web? (
 		${WEBAPP_DEPEND}
-		dev-python/autobahn[${PYTHON_USEDEP}]
-		dev-python/constantly[${PYTHON_USEDEP}]
-		dev-python/hyperlink[${PYTHON_USEDEP}]
-		dev-python/incremental[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}]
-		dev-python/twisted[${PYTHON_USEDEP}]
-		dev-python/txaio[${PYTHON_USEDEP}]
-		dev-python/zope-interface[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/autobahn[${PYTHON_MULTI_USEDEP}]
+			dev-python/constantly[${PYTHON_MULTI_USEDEP}]
+			dev-python/hyperlink[${PYTHON_MULTI_USEDEP}]
+			dev-python/incremental[${PYTHON_MULTI_USEDEP}]
+			dev-python/six[${PYTHON_MULTI_USEDEP}]
+			dev-python/twisted[${PYTHON_MULTI_USEDEP}]
+			dev-python/txaio[${PYTHON_MULTI_USEDEP}]
+			dev-python/zope-interface[${PYTHON_MULTI_USEDEP}]
+		')
 	)
-	xdmf2? ( sci-libs/xdmf2 )"
+	xdmf2? ( sci-libs/xdmf2 )
+	$(python_gen_cond_dep "
+		mpi? (
+			virtual/mpi[cxx,romio]
+			python? ( dev-python/mpi4py[\${PYTHON_MULTI_USEDEP}] )
+		)
+		python? (
+			${PYTHON_DEPS}
+			dev-python/sip[\${PYTHON_MULTI_USEDEP}]
+		)
+		qt5? (
+			dev-qt/designer:5
+			dev-qt/qtcore:5
+			dev-qt/qtgui:5
+			dev-qt/qtopengl:5
+			dev-qt/qtsql:5
+			dev-qt/qtwebkit:5
+			dev-qt/qtx11extras:5
+			python? ( dev-python/PyQt5[\${PYTHON_MULTI_USEDEP}] )
+		)
+	")"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
