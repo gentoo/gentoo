@@ -27,7 +27,7 @@ RESTRICT="test"
 
 COMMON_DEPEND="!static? ( selinux? ( sys-libs/libselinux ) )
 	pam? ( sys-libs/pam )
-	virtual/libcrypt"
+	virtual/libcrypt:="
 DEPEND="${COMMON_DEPEND}
 	static? (
 		virtual/libcrypt[static-libs]
