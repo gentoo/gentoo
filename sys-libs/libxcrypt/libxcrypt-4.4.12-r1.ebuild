@@ -126,37 +126,37 @@ multilib_src_install() {
 				|| die "failed to remove extra compat libraries"
 		;;
 		xcrypt_nocompat-*)
-			if use static-libs; then
+			if use split-usr; then
 				(
-					# .a files are installed to /$(get_libdir) by default
-					# move static libraries to /usr prefix or portage will abort
-					shopt -s nullglob || die "failglob failed"
-					static_libs=( "${ED}"/$(get_xclibdir)/*.a )
+					if use static-libs; then
+						# .a files are installed to /$(get_libdir) by default
+						# move static libraries to /usr prefix or portage will abort
+						shopt -s nullglob || die "failglob failed"
+						static_libs=( "${ED}"/$(get_xclibdir)/*.a )
 
-					if [[ -n ${static_libs[*]} ]]; then
-						dodir "/usr/$(get_xclibdir)"
-						mv "${static_libs[@]}" "${D}/usr/$(get_xclibdir)" \
-							|| die "moving static libs failed"
+						if [[ -n ${static_libs[*]} ]]; then
+							dodir "/usr/$(get_xclibdir)"
+							mv "${static_libs[@]}" "${D}/usr/$(get_xclibdir)" \
+								|| die "moving static libs failed"
+						fi
 					fi
-				)
-			fi
 
-			if use split-usr && use system; then
-				(
-					# now try to find libraries and make sure to generate
-					# ldscripts for them
-					shopt -s failglob || die "failglob failed"
+					if use system; then
+						# now try to find libraries and make sure to generate
+						# ldscripts for them
+						shopt -s failglob || die "failglob failed"
 
-					for lib_file in "${ED}"$(get_xclibdir)/*$(get_libname); do
-						libname="$(basename "${lib_file}")"
+						for lib_file in "${ED}"$(get_xclibdir)/*$(get_libname); do
+							libname="$(basename "${lib_file}")"
 
-						cp -L "${lib_file}" \
-							"${ED}/usr/$(get_xclibdir)/${libname}" \
-							|| die "copying ${libname} failed"
+							cp -L "${lib_file}" \
+								"${ED}/usr/$(get_xclibdir)/${libname}" \
+								|| die "copying ${libname} failed"
 
-						gen_usr_ldscript ${libname}
-						dosym ${libname} /usr/$(get_xclibdir)/${libname}.2
-					done
+							gen_usr_ldscript ${libname}
+							dosym ${libname} /usr/$(get_xclibdir)/${libname}.2
+						done
+					fi
 				)
 			fi
 		;;
