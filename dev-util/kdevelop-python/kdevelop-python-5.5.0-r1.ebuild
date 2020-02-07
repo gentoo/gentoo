@@ -11,7 +11,7 @@ QTMIN=5.12.3
 inherit ecm kde.org python-single-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="amd64 x86"
+	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Python plugin for KDevelop"
@@ -41,7 +41,9 @@ DEPEND="${PYTHON_DEPS}
 	dev-util/kdevelop:5=
 "
 RDEPEND="${DEPEND}
-	dev-python/pycodestyle[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pycodestyle[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 RESTRICT+=" test"
