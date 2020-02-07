@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -39,7 +39,10 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1:= )
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS}
-		>=dev-python/pygobject-3:3[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			>=dev-python/pygobject-3:3[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	libgda? ( gnome-extra/libgda:5[gtk] )
 "
 DEPEND="${RDEPEND}
