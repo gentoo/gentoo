@@ -24,7 +24,9 @@ RDEPEND="${PYTHON_DEPS}
 	udev? ( virtual/udev )
 "
 DEPEND="${PYTHON_DEPS}
-	dev-python/setuptools[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+	')
 	virtual/libusb:1
 	virtual/pkgconfig
 "
