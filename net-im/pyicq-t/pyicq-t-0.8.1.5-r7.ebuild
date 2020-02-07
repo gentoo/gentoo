@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,16 +22,18 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="${PYTHON_DEPS}
 	net-im/jabber-base"
 RDEPEND="${DEPEND}
-	|| (
-		(
-			dev-python/twisted-core[${PYTHON_USEDEP}]
-			dev-python/twisted-words[${PYTHON_USEDEP}]
-			dev-python/twisted-web[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		|| (
+			(
+				dev-python/twisted-core[${PYTHON_MULTI_USEDEP}]
+				dev-python/twisted-words[${PYTHON_MULTI_USEDEP}]
+				dev-python/twisted-web[${PYTHON_MULTI_USEDEP}]
+			)
+			dev-python/twisted[${PYTHON_MULTI_USEDEP}]
 		)
-		dev-python/twisted[${PYTHON_USEDEP}]
-	)
-	webinterface? ( >=dev-python/nevow-0.4.1[${PYTHON_USEDEP}] )
-	dev-python/pillow[${PYTHON_USEDEP}]"
+		webinterface? ( >=dev-python/nevow-0.4.1[${PYTHON_MULTI_USEDEP}] )
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+	')"
 
 S="${WORKDIR}/${MY_P}"
 PATCHES=(
