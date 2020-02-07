@@ -28,10 +28,16 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2
 "
 DEPEND="${COMMON_DEPEND}
-	test? ( dev-python/dbusmock[${PYTHON_USEDEP}] )
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/dbusmock[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 RDEPEND="${COMMON_DEPEND}
-	dev-python/dbusmock[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/dbusmock[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 src_prepare() {
