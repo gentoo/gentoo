@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,19 +22,21 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	|| (
-		(
-			>=dev-python/PyQt5-5.12[gui,svg,widgets,${PYTHON_USEDEP}]
-			dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		|| (
+			(
+				>=dev-python/PyQt5-5.12[gui,svg,widgets,${PYTHON_MULTI_USEDEP}]
+				dev-python/PyQtWebEngine[${PYTHON_MULTI_USEDEP}]
+			)
+			<dev-python/PyQt5-5.12[gui,svg,webengine,widgets,${PYTHON_MULTI_USEDEP}]
 		)
-		<dev-python/PyQt5-5.12[gui,svg,webengine,widgets,${PYTHON_USEDEP}]
-	)
-	>=dev-python/httplib2-0.7.4[${PYTHON_USEDEP}]
-	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
-	dev-python/decorator[${PYTHON_USEDEP}]
-	dev-python/markdown[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/send2trash[${PYTHON_USEDEP}]
+		>=dev-python/httplib2-0.7.4[${PYTHON_MULTI_USEDEP}]
+		dev-python/beautifulsoup:4[${PYTHON_MULTI_USEDEP}]
+		dev-python/decorator[${PYTHON_MULTI_USEDEP}]
+		dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
+	')
 	recording? ( media-sound/lame )
 	sound? ( media-video/mpv )
 	latex? (
@@ -43,7 +45,11 @@ RDEPEND="${PYTHON_DEPS}
 	)
 "
 DEPEND="${RDEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/nose[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 
 PATCHES=( "${FILESDIR}"/${PN}-2.1.0_beta25-web-folder.patch )
