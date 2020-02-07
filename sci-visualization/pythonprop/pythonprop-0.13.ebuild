@@ -19,11 +19,13 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	|| (
-		dev-python/matplotlib-python2[gtk2,${PYTHON_USEDEP}]
-		dev-python/matplotlib[gtk2,${PYTHON_USEDEP}]
-	)
-	dev-python/basemap[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		|| (
+			dev-python/matplotlib-python2[gtk2,${PYTHON_MULTI_USEDEP}]
+			dev-python/matplotlib[gtk2,${PYTHON_MULTI_USEDEP}]
+		)
+	')
+	dev-python/basemap[${PYTHON_SINGLE_USEDEP}]
 	sci-electronics/voacapl
 "
 DEPEND="${RDEPEND}"
