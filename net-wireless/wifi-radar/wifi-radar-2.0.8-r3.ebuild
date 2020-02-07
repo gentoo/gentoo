@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	app-admin/sudo
-	>=dev-python/pygtk-2.16.0-r1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/pygtk-2.16.0-r1[${PYTHON_MULTI_USEDEP}]
+	')
 	>=net-wireless/wireless-tools-29
 	|| ( net-misc/dhcpcd net-misc/dhcp net-misc/pump )
 "
