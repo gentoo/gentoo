@@ -21,7 +21,9 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/libxml2[python,${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
+	')"
 DEPEND="${RDEPEND}"
 BDEPEND=""
 
