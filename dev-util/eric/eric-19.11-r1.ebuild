@@ -20,15 +20,19 @@ IUSE="spell"
 
 DEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/PyQt5-5.12[gui,help,network,printsupport,sql,svg,widgets,${PYTHON_USEDEP}]
-	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
-	dev-python/qscintilla-python[${PYTHON_USEDEP}]
-	dev-python/sip[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/PyQt5-5.12[gui,help,network,printsupport,sql,svg,widgets,${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQtWebEngine[${PYTHON_MULTI_USEDEP}]
+		dev-python/qscintilla-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/sip[${PYTHON_MULTI_USEDEP}]
+	')
 "
 RDEPEND="${DEPEND}
-	>=dev-python/chardet-3.0.4[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
-	spell? ( dev-python/pyenchant[${PYTHON_USEDEP}] )
+	$(python_gen_cond_dep '
+		>=dev-python/chardet-3.0.4[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygments-2.3.1[${PYTHON_MULTI_USEDEP}]
+		spell? ( dev-python/pyenchant[${PYTHON_MULTI_USEDEP}] )
+	')
 "
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
