@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,16 +19,22 @@ IUSE="gnome nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="${PYTHON_DEPS}
-	dev-python/pygtk:2[${PYTHON_USEDEP}]
-	dev-python/pygobject:2[${PYTHON_USEDEP}]
-	dev-python/dbus-python[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+	')
 	sci-electronics/pcb[dbus]
 	sci-electronics/geda
 	nls? ( virtual/libintl )
 "
 RDEPEND="${CDEPEND}
 	sci-electronics/electronics-menu
-	gnome? ( dev-python/gnome-vfs-python[${PYTHON_USEDEP}] )
+	gnome? (
+		$(python_gen_cond_dep '
+			dev-python/gnome-vfs-python[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 DEPEND="${CDEPEND}
 	dev-util/intltool
