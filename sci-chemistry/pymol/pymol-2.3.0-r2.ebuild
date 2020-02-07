@@ -38,7 +38,9 @@ DEPEND="
 	sys-libs/zlib
 	!sci-chemistry/pymol-apbs-plugin[${PYTHON_USEDEP}]
 	web? ( !dev-python/webpy[${PYTHON_USEDEP}] )"
-RDEPEND="${DEPEND}"
+RDEPEND="${DEPEND}
+	sci-chemistry/chemical-mime-data
+"
 
 S="${WORKDIR}"/${PN}-open-source-${PV}
 
