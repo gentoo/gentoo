@@ -48,7 +48,9 @@ RDEPEND="
 	)
 	system-lua? ( >=dev-lang/lua-5.2:*[deprecated] )
 	zenmap? (
-		dev-python/pygtk:2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+		')
 		${PYTHON_DEPS}
 	)
 "
