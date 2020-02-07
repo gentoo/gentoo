@@ -26,7 +26,9 @@ RDEPEND="
 	~app-text/docbook-sgml-dtd-3.0
 	>=app-text/docbook-dsssl-stylesheets-1.40
 	emacs? ( >=app-editors/emacs-23.1:* )
-	dev-python/pygments[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+	')
 "
 DEPEND="${RDEPEND}
 	~dev-util/gtk-doc-am-${PV}
