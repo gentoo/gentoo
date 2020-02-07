@@ -128,6 +128,10 @@ BDEPEND="
 	$(python_gen_any_dep 'dev-python/lxml[${PYTHON_USEDEP}]')
 "
 
+python_check_deps() {
+	has_version -b "dev-python/lxml[${PYTHON_USEDEP}]"
+}
+
 pkg_pretend() {
 	if [[ ${MERGE_TYPE} != buildonly ]]; then
 		if use test && has pid-sandbox ${FEATURES}; then
