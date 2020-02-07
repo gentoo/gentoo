@@ -58,7 +58,9 @@ BDEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+		')
 		media-gfx/mscgen
 		media-gfx/graphviz
 		dev-texlive/texlive-latex
