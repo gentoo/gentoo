@@ -28,7 +28,10 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1.32:= )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-python/pygobject-3.8:3[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			>=dev-python/pygobject-3.8:3[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	webkit? ( >=net-libs/webkit-gtk-2.12.0:4 )
 "
 DEPEND="${RDEPEND}
