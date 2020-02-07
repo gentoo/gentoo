@@ -10,5 +10,5 @@ RDEPEND=dev-lang/perl ldap? ( net-nds/openldap ) mysql? ( dev-db/mysql-connector
 RESTRICT=test
 SLOT=0
 SRC_URI=http://nagios-plugins.org/download/nagios-plugins-2.2.1.tar.gz
-_eclasses_=user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
+_eclasses_=user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=5eb2d24040aadef4e0c15ef619a0e584

@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/ocaml-4.0:= dev-ml/findlib dev-ml/camlp4 dev-ml/cryptokit:0/1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://bitbucket.org/skskeyserver/sks-keyserver/downloads/sks-1.1.6.tgz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=d1cbed31a62fe92ca849f68356aa9477

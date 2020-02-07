@@ -10,5 +10,5 @@ LICENSE=LGPL-2.1
 RDEPEND=pcsc-lite? ( >=sys-apps/pcsc-lite-1.7.2-r1:= ) usb? ( virtual/libusb:0 ) dev-libs/libltdl:0=
 SLOT=0
 SRC_URI=mirror://sourceforge/opensc/openct/openct-0.6.20.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=e3a477e09ff8ce92b0f1d033ab16ede3

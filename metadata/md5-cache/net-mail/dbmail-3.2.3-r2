@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=dev-db/libzdb sieve? ( >=mail-filter/libsieve-2.2.1 ) ldap? ( >=net-nds/openldap-2.3.33 ) app-text/asciidoc app-text/xmlto app-crypt/mhash sys-libs/zlib dev-libs/gmime:2.6 >=dev-libs/glib-2.16 dev-libs/libevent ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) )
 SLOT=0
 SRC_URI=http://www.dbmail.org/download/3.2/dbmail-3.2.3.tar.gz
-_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337	versionator	2352c3fc97241f6a02042773c8287748
+_eclasses_=estack	686eaab303305a908fd57b2fd7617800	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	versionator	2352c3fc97241f6a02042773c8287748
 _md5_=0120d313af2590d538d6e9cb13d7e07a

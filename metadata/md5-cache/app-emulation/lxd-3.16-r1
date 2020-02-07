@@ -11,5 +11,5 @@ RDEPEND=daemon? ( app-arch/xz-utils >=app-emulation/lxc-2.0.7[seccomp] dev-libs/
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://linuxcontainers.org/downloads/lxd/lxd-3.16.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	6b8c733cdc71c5c5f0cc0d038d948337
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
 _md5_=ef69b517faae717d26f714e0f0de375f
