@@ -22,7 +22,9 @@ COMMON_DEPEND="
 "
 # See README.md for list of deps
 RDEPEND="${COMMON_DEPEND}
-	>=dev-python/pygobject-3.10.2:3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/pygobject-3.10.2:3[${PYTHON_MULTI_USEDEP}]
+	')
 	>=gnome-base/gnome-settings-daemon-3
 	x11-themes/sound-theme-freedesktop
 
