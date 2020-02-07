@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/pidgin-encrypt/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 hppa ppc ~ppc64 sparc x86"
+KEYWORDS="amd64 ~hppa ppc ~ppc64 sparc x86"
 IUSE="nls"
 
 RDEPEND="net-im/pidgin[gtk]
