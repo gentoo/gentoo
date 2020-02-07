@@ -104,9 +104,9 @@ sci-visualization/veusz fits
 # eMovix is being removed.
 kde-apps/k3b emovix
 
-# Patrick McLean <chutzpah@gentoo.org> (2910-11-07)
+# Patrick McLean <chutzpah@gentoo.org> (2019-11-07)
 # Collides with sys-libc/glibc[crypt]
-sys-libs/libxcrypt system
+sys-libs/libxcrypt split-usr system
 
 # Michał Górny <mgorny@gentoo.org> (2019-10-05)
 # net-libs/openslp is being removed.
