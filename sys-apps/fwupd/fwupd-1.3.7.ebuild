@@ -84,7 +84,7 @@ DEPEND="${PYTHON_DEPS}
 "
 # Block sci-chemistry/chemical-mime-data for bug #701900
 RDEPEND="
-	!sci-chemistry/chemical-mime-data
+	!<sci-chemistry/chemical-mime-data-0.1.94-r4
 	${DEPEND}
 	sys-apps/dbus
 "
