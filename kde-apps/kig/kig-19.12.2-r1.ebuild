@@ -6,7 +6,7 @@ EAPI=7
 ECM_HANDBOOK="forceoptional"
 ECM_TEST="true"
 PYTHON_COMPAT=( python3_{6,7} )
-KFMIN=5.60.0
+KFMIN=5.63.0
 QTMIN=5.12.3
 inherit python-single-r1 ecm kde.org
 
@@ -16,7 +16,7 @@ https://edu.kde.org/kig/"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 arm64 x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="geogebra scripting"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -40,7 +40,11 @@ RDEPEND="${PYTHON_DEPS}
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	geogebra? ( >=dev-qt/qtxmlpatterns-${QTMIN}:5 )
-	scripting? ( >=dev-libs/boost-1.48:=[python,${PYTHON_USEDEP}] )
+	scripting? (
+		$(python_gen_cond_dep '
+			>=dev-libs/boost-1.48:=[python,${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 DEPEND="${RDEPEND}
 	>=kde-frameworks/ktexteditor-${KFMIN}:5
@@ -48,8 +52,8 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.12.0-boostpython.patch
-	"${FILESDIR}"/${P}-scripter-python3.patch
-	"${FILESDIR}"/${P}-pykig-python3.patch
+	"${FILESDIR}"/${PN}-19.08.3-pykig-python3.patch
+	"${FILESDIR}"/${PN}-19.08.3-scripter-crash.patch
 )
 
 pkg_setup() {
