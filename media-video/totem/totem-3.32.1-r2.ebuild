@@ -45,7 +45,10 @@ DEPEND="
 	lirc? ( app-misc/lirc )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-python/pygobject-2.90.3:3[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			>=dev-python/pygobject-2.90.3:3[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 RDEPEND="${DEPEND}
 	media-plugins/grilo-plugins:0.3
@@ -53,8 +56,11 @@ RDEPEND="${DEPEND}
 	media-plugins/gst-plugins-taglib:1.0
 	x11-themes/adwaita-icon-theme
 	python? (
-		>=dev-libs/libpeas-1.1.0[python,${PYTHON_USEDEP}]
-		dev-python/dbus-python[${PYTHON_USEDEP}] )
+		>=dev-libs/libpeas-1.1.0[python,${PYTHON_SINGLE_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 BDEPEND="
 	dev-lang/perl
