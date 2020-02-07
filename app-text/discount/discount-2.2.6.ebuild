@@ -47,14 +47,16 @@ src_configure() {
 	"${configure_call[@]}" || die
 }
 
+src_compile() {
+	emake libmarkdown
+	emake
+}
+
 src_install() {
 	emake \
 		DESTDIR="${D}" \
 		$(usex minimal install install.everything) \
 		SAMPLE_PFX="${PN}-"
-
-	insinto /usr/$(get_libdir)/pkgconfig
-	doins libmarkdown.pc
 }
 
 pkg_postinst() {
