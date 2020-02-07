@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -35,21 +35,25 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # boost-1.52.0 is blacklisted, bug #461578, upstream #513, boost #7669
 RDEPEND="${PYTHON_DEPS}
 	>=dev-lang/orc-0.4.12
-	dev-libs/boost:0=[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-libs/boost:0=[${PYTHON_MULTI_USEDEP}]
+	')
 	!<=dev-libs/boost-1.52.0-r6:0/1.52
 	dev-util/cppunit
 	sci-libs/fftw:3.0=
 	fcd? ( virtual/libusb:1 )
 	alsa? (
-		media-libs/alsa-lib[${PYTHON_USEDEP}]
+		media-libs/alsa-lib[${PYTHON_SINGLE_USEDEP}]
 	)
 	grc? (
-		dev-python/lxml[${PYTHON_USEDEP}]
-		|| (
-			dev-python/numpy-python2[${PYTHON_USEDEP}]
-			dev-python/numpy[${PYTHON_USEDEP}]
-		)
-		dev-python/pygtk:2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+			|| (
+				dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+				dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			)
+			dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	jack? (
 		media-sound/jack-audio-connection-kit
@@ -58,19 +62,21 @@ RDEPEND="${PYTHON_DEPS}
 		>=media-libs/portaudio-19_pre
 	)
 	sdl? ( media-libs/libsdl )
-	uhd? ( >=net-wireless/uhd-3.4.3-r1:=[${PYTHON_USEDEP}] )
+	uhd? ( >=net-wireless/uhd-3.4.3-r1:=[${PYTHON_SINGLE_USEDEP}] )
 	wavelet? (
 		sci-libs/gsl
 	)
 "
 DEPEND="${RDEPEND}
 	dev-lang/swig
-	dev-python/cheetah[${PYTHON_USEDEP}]
 	virtual/pkgconfig
-	doc? (
-		>=app-doc/doxygen-1.5.7.1
-		dev-python/sphinx[${PYTHON_USEDEP}]
-	)
+	$(python_gen_cond_dep '
+		dev-python/cheetah[${PYTHON_MULTI_USEDEP}]
+		doc? (
+			>=app-doc/doxygen-1.5.7.1
+			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+		)
+	')
 	grc? (
 		x11-misc/xdg-utils
 	)

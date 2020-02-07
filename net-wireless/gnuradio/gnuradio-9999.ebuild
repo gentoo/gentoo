@@ -48,29 +48,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 # boost-1.52.0 is blacklisted, bug #461578, upstream #513, boost #7669
 RDEPEND="${PYTHON_DEPS}
 	>=dev-lang/orc-0.4.12
-	dev-libs/boost:0=[${PYTHON_USEDEP}]
 	!<=dev-libs/boost-1.52.0-r6:0/1.52
-	|| (
-		dev-python/numpy-python2[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-	)
-	dev-python/six[${PYTHON_USEDEP}]
 	sci-libs/fftw:3.0=
 	alsa? (
 		media-libs/alsa-lib:=
 	)
 	fcd? ( virtual/libusb:1 )
-	filter? (
-		|| (
-			sci-libs/scipy-python2[${PYTHON_USEDEP}]
-			sci-libs/scipy[${PYTHON_USEDEP}]
-		)
-	)
-	grc? (
-		dev-python/pygobject:*[cairo(+),${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		dev-python/mako[${PYTHON_USEDEP}]
-	)
 	jack? (
 		media-sound/jack-audio-connection-kit
 	)
@@ -78,22 +61,9 @@ RDEPEND="${PYTHON_DEPS}
 	portaudio? (
 		>=media-libs/portaudio-19_pre
 	)
-	qt5? (
-		dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
-		dev-qt/qtcore:5
-		dev-qt/qtgui:5
-		dev-qt/qtwidgets:5
-		x11-libs/qwt:6[qt5(+)]
-	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
-	uhd? ( >=net-wireless/uhd-3.9.6:=[${PYTHON_USEDEP}]
+	uhd? ( >=net-wireless/uhd-3.9.6:=[${PYTHON_SINGLE_USEDEP}]
 		dev-libs/log4cpp )
-	utils? (
-		|| (
-			dev-python/matplotlib-python2[${PYTHON_USEDEP}]
-			dev-python/matplotlib[${PYTHON_USEDEP}]
-		)
-	)
 	vocoder? ( media-sound/gsm
 		>=media-libs/codec2-0.8.1 )
 	wavelet? (
@@ -101,6 +71,38 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	zeromq? ( >=net-libs/zeromq-2.1.11
 			dev-libs/gmp:= )
+	$(python_gen_cond_dep '
+		dev-libs/boost:0=[${PYTHON_MULTI_USEDEP}]
+		|| (
+			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		)
+		dev-python/six[${PYTHON_MULTI_USEDEP}]
+		filter? (
+			|| (
+				sci-libs/scipy-python2[${PYTHON_MULTI_USEDEP}]
+				sci-libs/scipy[${PYTHON_MULTI_USEDEP}]
+			)
+		)
+		grc? (
+			dev-python/pygobject:*[cairo(+),${PYTHON_MULTI_USEDEP}]
+			dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
+			dev-python/mako[${PYTHON_MULTI_USEDEP}]
+		)
+		qt5? (
+			dev-python/PyQt5[opengl,${PYTHON_MULTI_USEDEP}]
+			dev-qt/qtcore:5
+			dev-qt/qtgui:5
+			dev-qt/qtwidgets:5
+			x11-libs/qwt:6[qt5(+)]
+		)
+		utils? (
+			|| (
+				dev-python/matplotlib-python2[${PYTHON_MULTI_USEDEP}]
+				dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
+			)
+		)
+	')
 	"
 
 DEPEND="${RDEPEND}
@@ -109,7 +111,9 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.5.7.1
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	grc? ( x11-misc/xdg-utils )
 	oss? ( virtual/os-headers )
