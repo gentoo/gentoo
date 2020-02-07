@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_6 )
 
 inherit python-single-r1
 
@@ -14,18 +14,18 @@ SRC_URI="https://github.com/samtools/${PN}/releases/download/${PV}/${P}.tar.bz2"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	dev-lang/perl
+	dev-python/matplotlib[${PYTHON_USEDEP}]
 	=sci-libs/htslib-${PV}*:=
 	sys-libs/zlib:=
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.5-buildsystem.patch
+	"${FILESDIR}"/${PN}-1.9-buildsystem.patch
 	"${FILESDIR}"/${PN}-1.9-fix-shebangs.patch
 )
 
