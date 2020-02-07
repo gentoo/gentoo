@@ -24,7 +24,10 @@ DEPEND="
 	virtual/udev
 	cgi? ( >=media-libs/gd-2[png] )
 	gui? ( ${PYTHON_DEPS}
-		dev-python/pygtk[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	ipmi? ( sys-libs/freeipmi )
 	snmp? ( net-analyzer/net-snmp )
 	ssl? ( >=dev-libs/openssl-1:= )
