@@ -62,19 +62,21 @@ RDEPEND="
 	!offscreen? ( virtual/opengl )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/constantly[${PYTHON_USEDEP}]
-		dev-python/incremental[${PYTHON_USEDEP}]
-		dev-python/matplotlib[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/sip[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}]
-		|| ( dev-python/twisted[${PYTHON_USEDEP}]
-			dev-python/twisted-core[${PYTHON_USEDEP}]
-		)
-		dev-python/zope-interface[${PYTHON_USEDEP}]
-		mpi? ( dev-python/mpi4py )
-		qt5? ( dev-python/PyQt5[opengl,webkit,${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			dev-python/constantly[${PYTHON_MULTI_USEDEP}]
+			dev-python/incremental[${PYTHON_MULTI_USEDEP}]
+			dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+			dev-python/sip[${PYTHON_MULTI_USEDEP}]
+			dev-python/six[${PYTHON_MULTI_USEDEP}]
+			|| ( dev-python/twisted[${PYTHON_MULTI_USEDEP}]
+				dev-python/twisted-core[${PYTHON_MULTI_USEDEP}]
+			)
+			dev-python/zope-interface[${PYTHON_MULTI_USEDEP}]
+			mpi? ( dev-python/mpi4py )
+			qt5? ( dev-python/PyQt5[opengl,webkit,${PYTHON_MULTI_USEDEP}] )
+		')
 	)
 	qt5? (
 		dev-qt/designer:5
@@ -91,7 +93,11 @@ RDEPEND="
 	tk? ( dev-lang/tk:0= )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
-	boost? ( dev-libs/boost[mpi?,${PYTHON_USEDEP}] )
+	boost? (
+		$(python_gen_cond_dep '
+			dev-libs/boost[mpi?,${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}/${MY_P}"
