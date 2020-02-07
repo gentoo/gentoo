@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	sys-apps/fix-gnustack
-	dev-python/virtualenv[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/virtualenv[${PYTHON_MULTI_USEDEP}]
+	')"
 
 RDEPEND="
 	net-dns/avahi

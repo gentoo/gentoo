@@ -27,7 +27,10 @@ RESTRICT="bindist strip"
 KEYWORDS="-* ~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND="dev-python/virtualenv[${PYTHON_USEDEP}]"
+DEPEND="
+	$(python_gen_cond_dep '
+		dev-python/virtualenv[${PYTHON_MULTI_USEDEP}]
+	')"
 BDEPEND="dev-util/patchelf"
 
 RDEPEND="
