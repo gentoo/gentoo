@@ -50,7 +50,11 @@ DEPEND="${RDEPEND}
 	>=app-text/asciidoc-8.6.0
 	app-text/docbook-xml-dtd:4.5
 	app-text/xmlto
-	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
+	python? (
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	static? (
 		dev-libs/lzo:2[static-libs(+)]
 		sys-apps/util-linux:0[static-libs(+)]
