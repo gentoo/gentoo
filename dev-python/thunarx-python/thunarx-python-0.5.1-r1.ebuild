@@ -18,7 +18,9 @@ IUSE=""
 RDEPEND="${PYTHON_DEPS}
 	>=x11-libs/gtk+-3.20:3
 	>=dev-libs/glib-2.30:2
-	>=dev-python/pygobject-3.20:3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/pygobject-3.20:3[${PYTHON_MULTI_USEDEP}]
+	')
 	>=xfce-base/thunar-1.7.0"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
