@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,9 @@ RDEPEND="
 	>=dev-libs/libxslt-1.1.23
 	python? (
 		${PYTHON_DEPS}
-		>=dev-python/pygtk-2.6:2[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			>=dev-python/pygtk-2.6:2[${PYTHON_MULTI_USEDEP}] )
+		')
 	eds? (
 		>=gnome-extra/evolution-data-server-3.6:=
 		>=mail-client/evolution-3.6 )
