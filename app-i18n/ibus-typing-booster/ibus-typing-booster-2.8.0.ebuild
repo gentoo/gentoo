@@ -19,12 +19,14 @@ RESTRICT="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="${PYTHON_DEPS}
-	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
 	dev-libs/m17n-lib
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/pyenchant[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/pyxdg[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyenchant[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+	')"
 RDEPEND="${CDEPEND}
 	>=dev-db/m17n-db-1.7"
 DEPEND="${RDEPEND}
