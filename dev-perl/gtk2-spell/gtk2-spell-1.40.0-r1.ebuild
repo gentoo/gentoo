@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ HOMEPAGE="http://gtk2-perl.sf.net/ ${HOMEPAGE}"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="amd64 hppa ~ppc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~hppa ~ppc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE=""
 
 RDEPEND="
