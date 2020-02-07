@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,19 +25,21 @@ IUSE="cddb libnotify nls scrobbler"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/bsddb3[${PYTHON_USEDEP}]
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/gst-python:1.0[${PYTHON_USEDEP}]
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	>=dev-python/pygobject-3.13.2:3[${PYTHON_USEDEP}]
 	>=media-libs/gst-plugins-base-1.6:1.0
 	>=media-libs/gst-plugins-good-1.4:1.0
-	>=media-libs/mutagen-1.10[${PYTHON_USEDEP}]
 	media-plugins/gst-plugins-meta:1.0
 	>=x11-libs/gtk+-3.10:3[introspection]
 	cddb? ( dev-python/cddb-py )
 	libnotify? ( >=x11-libs/libnotify-0.7[introspection] )
-	scrobbler? ( dev-python/pylast[${PYTHON_USEDEP}] )
+	$(python_gen_cond_dep '
+		dev-python/bsddb3[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/gst-python:1.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygobject-3.13.2:3[${PYTHON_MULTI_USEDEP}]
+		>=media-libs/mutagen-1.10[${PYTHON_MULTI_USEDEP}]
+		scrobbler? ( dev-python/pylast[${PYTHON_MULTI_USEDEP}] )
+	')
 "
 BDEPEND="
 	nls? (
