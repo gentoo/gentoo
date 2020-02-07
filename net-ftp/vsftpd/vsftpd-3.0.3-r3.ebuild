@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -27,17 +27,31 @@ RDEPEND="${DEPEND}
 	xinetd? ( sys-apps/xinetd )"
 
 src_prepare() {
-	# kerberos patch. bug #335980
-	epatch "${FILESDIR}/${PN}-2.3.2-kerberos.patch"
+	local PATCHES=(
+		# kerberos patch. bug #335980
+		"${FILESDIR}/${PN}-2.3.2-kerberos.patch"
 
-	# Patch the source, config and the manpage to use /etc/vsftpd/
-	epatch "${FILESDIR}/${PN}-2.3.5-gentoo.patch"
+		# Patch the source, config and the manpage to use /etc/vsftpd/
+		"${FILESDIR}/${PN}-2.3.5-gentoo.patch"
 
-	# Fix building without the libcap
-	epatch "${FILESDIR}/${PN}-2.1.0-caps.patch"
+		# Fix building without the libcap
+		"${FILESDIR}/${PN}-2.1.0-caps.patch"
 
-	# Fix building on alpha. Bug #405829
-	epatch "${FILESDIR}/${PN}-3.0.2-alpha.patch"
+		# Fix building on alpha. Bug #405829
+		"${FILESDIR}/${PN}-3.0.2-alpha.patch"
+
+		#Bug #335977
+		"${FILESDIR}"/${PN}-3.0.0-Makefile.patch
+
+		#Bug #450536
+		"${FILESDIR}"/${PN}-3.0.2-remove-legacy-cap.patch
+
+		#Bug #630704
+		"${FILESDIR}"/${PN}-3.0.3-sparc.patch
+
+		# https://bugs.gentoo.org/443898
+		"${FILESDIR}"/vsftpd-disable-seccomp-sandbox.patch
+	)
 
 	# Configure vsftpd build defaults
 	use tcpd && echo "#define VSF_BUILD_TCPWRAPPERS" >> builddefs.h
@@ -47,22 +61,13 @@ src_prepare() {
 	# Ensure that we don't link against libcap unless asked
 	if ! use caps ; then
 		sed -i '/^#define VSF_SYSDEP_HAVE_LIBCAP$/ d' sysdeputil.c || die
-		epatch "${FILESDIR}"/${PN}-2.2.0-dont-link-caps.patch
+		eapply "${FILESDIR}"/${PN}-2.2.0-dont-link-caps.patch
 	fi
 
 	# Let portage control stripping
 	sed -i '/^LINK[[:space:]]*=[[:space:]]*/ s/-Wl,-s//' Makefile || die
 
-	#Bug #335977
-	epatch "${FILESDIR}"/${PN}-3.0.0-Makefile.patch
-
-	#Bug #450536
-	epatch "${FILESDIR}"/${PN}-3.0.2-remove-legacy-cap.patch
-
-	#Bug #630704
-	epatch "${FILESDIR}"/${PN}-3.0.3-sparc.patch
-
-	eapply_user
+	default
 }
 
 src_compile() {
