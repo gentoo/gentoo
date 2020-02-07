@@ -1,0 +1,20 @@
+diff -up chemical-mime-data-0.1.94/src/chemical-mime-database.xml.in.turbomole_vibration chemical-mime-data-0.1.94/src/chemical-mime-database.xml.in
+--- chemical-mime-data-0.1.94/src/chemical-mime-database.xml.in.turbomole_vibration	2020-01-29 17:32:45.000000000 +0100
++++ chemical-mime-data-0.1.94/src/chemical-mime-database.xml.in	2020-01-29 17:32:45.000000000 +0100
+@@ -1401,16 +1401,6 @@
+ 		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+ 	</mime-type>
+ 
+-	<mime-type type="chemical/x-turbomole-vibrational" support="yes">
+-		<_comment>Turbomole Vibrational Data File</_comment>
+-		<glob pattern="???"/>
+-		<sub-class-of type="text/plain"/>
+-		<icon kde="qc"/>
+-		<supported-by>
+-			<application name="viewmol"/>
+-		</supported-by>
+-		<specification url="http://www.cosmologic.de/data/DOK_HTML/"/>
+-	</mime-type>
+
+	<mime-type type="chemical/x-vamas-iso14976" cm:support="no">
+		<_comment>VAMAS document</_comment>
