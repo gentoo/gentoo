@@ -53,9 +53,7 @@ RDEPEND+="
 	!<net-fs/netatalk-2.0.3-r4"
 
 python_check_deps() {
-	if use test; then
-		has_version --host-root "dev-python/pyinotify[${PYTHON_USEDEP}]"
-	fi
+	has_version --host-root "dev-python/pyinotify[${PYTHON_USEDEP}]"
 }
 
 pkg_setup() {
