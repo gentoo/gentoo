@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,8 +19,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=[threads]
-	dev-python/intervaltree[${PYTHON_USEDEP}]
-	dev-python/sortedcontainers[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/intervaltree[${PYTHON_MULTI_USEDEP}]
+		dev-python/sortedcontainers[${PYTHON_MULTI_USEDEP}]
+	')
 	sci-biology/samtools:0.1-legacy
 	sci-biology/bowtie:2"
 DEPEND="${RDEPEND}
