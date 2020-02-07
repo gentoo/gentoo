@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -91,11 +91,13 @@ COMMON_DEPEND="
 
 DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-4.11
-	dev-python/lxml[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		pam? ( dev-python/pypam[${PYTHON_MULTI_USEDEP}] )
+	')
 	x86? ( sys-devel/dev86
 		system-ipxe? ( sys-firmware/ipxe[qemu] )
 		sys-power/iasl )
-	pam? ( dev-python/pypam[${PYTHON_USEDEP}] )
 	api? ( dev-libs/libxml2
 		net-misc/curl )
 
@@ -113,7 +115,9 @@ DEPEND="${COMMON_DEPEND}
 	doc? (
 		app-text/ghostscript-gpl
 		app-text/pandoc
-		dev-python/markdown[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+		')
 		dev-texlive/texlive-latexextra
 		media-gfx/transfig
 	)
