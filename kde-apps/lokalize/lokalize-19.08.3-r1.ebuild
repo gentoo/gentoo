@@ -4,30 +4,22 @@
 EAPI=7
 
 ECM_HANDBOOK="forceoptional"
-PYTHON_COMPAT=( python3_{6,7,8} )
-KFMIN=5.63.0
+PYTHON_COMPAT=( python3_{6,7} )
+KFMIN=5.60.0
 QTMIN=5.12.3
 inherit python-single-r1 ecm kde.org
 
 DESCRIPTION="KDE Applications 5 translation tool"
-HOMEPAGE="https://kde.org/applications/office/org.kde.lokalize
+HOMEPAGE="https://kde.org/applications/development/lokalize
 https://l10n.kde.org/tools/"
-
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
-	>=app-text/hunspell-1.2.8:=
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtscript-${QTMIN}:5
-	>=dev-qt/qtsql-${QTMIN}:5[sqlite]
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/kcompletion-${KFMIN}:5
 	>=kde-frameworks/kconfig-${KFMIN}:5
 	>=kde-frameworks/kconfigwidgets-${KFMIN}:5
@@ -44,9 +36,18 @@ DEPEND="${PYTHON_DEPS}
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
 	>=kde-frameworks/sonnet-${KFMIN}:5
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtscript-${QTMIN}:5
+	>=dev-qt/qtsql-${QTMIN}:5[sqlite]
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
+	>=app-text/hunspell-1.2.8:=
 "
 RDEPEND="${DEPEND}
-	dev-python/translate-toolkit[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/translate-toolkit[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 pkg_setup() {
