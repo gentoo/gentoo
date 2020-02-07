@@ -41,7 +41,9 @@ RDEPEND="dev-libs/glib:2
 	svg? ( gnome-base/librsvg:2 )
 	xdg? (
 		${PYTHON_DEPS}
-		dev-python/pyxdg[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	"
 DEPEND="${RDEPEND}
