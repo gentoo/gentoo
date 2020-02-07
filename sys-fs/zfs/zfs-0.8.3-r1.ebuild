@@ -4,15 +4,15 @@
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{2_7,3_{6,7}} )
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit bash-completion-r1 flag-o-matic linux-info linux-mod distutils-r1 systemd toolchain-funcs udev usr-ldscript
+inherit bash-completion-r1 flag-o-matic linux-info distutils-r1 systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://zfsonlinux.org/"
 
 if [[ ${PV} == "9999" ]] ; then
-	inherit autotools git-r3
+	inherit autotools git-r3 linux-mod
 	EGIT_REPO_URI="https://github.com/zfsonlinux/zfs.git"
 else
 	SRC_URI="https://github.com/zfsonlinux/${PN}/releases/download/${P}/${P}.tar.gz"
@@ -68,7 +68,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RESTRICT="test"
 
-PATCHES=( "${FILESDIR}/bash-completion-sudo.patch" )
+PATCHES=(
+	"${FILESDIR}/bash-completion-sudo.patch"
+	"${FILESDIR}/${PV}-fno-common.patch"
+	"${FILESDIR}/${PV}-zfs-functions.patch"
+)
 
 pkg_setup() {
 	if use kernel_linux && use test-suite; then
@@ -111,6 +115,10 @@ src_prepare() {
 	# prevent errors showing up on zfs-mount stop, #647688
 	# openrc will unmount all filesystems anyway.
 	sed -i "/^ZFS_UNMOUNT=/ s/yes/no/" etc/init.d/zfs.in || die
+
+	# needed to get files regenerated
+	# https://github.com/zfsonlinux/zfs/issues/9443
+	rm -v etc/init.d/zfs{,-functions} || die
 }
 
 src_configure() {
@@ -138,9 +146,6 @@ src_configure() {
 	)
 
 	econf "${myconf[@]}"
-
-	# temp hack for https://github.com/zfsonlinux/zfs/issues/9443
-	sed -i "s@/usr/local/@"${EPREFIX}/"@g" etc/init.d/zfs-functions || die
 }
 
 src_compile() {
