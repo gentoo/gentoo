@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -40,13 +40,15 @@ IUSE="+7za +rar unzip"
 RDEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/par2cmdline-0.4
-	>=dev-python/cheetah-2.0.1[${PYTHON_USEDEP}]
-	dev-python/configobj[${PYTHON_USEDEP}]
-	dev-python/cryptography[${PYTHON_USEDEP}]
-	dev-python/feedparser[${PYTHON_USEDEP}]
-	dev-python/gntp[${PYTHON_USEDEP}]
-	dev-python/pythonutils[${PYTHON_USEDEP}]
-	>=dev-python/sabyenc-3.3.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/cheetah-2.0.1[${PYTHON_MULTI_USEDEP}]
+		dev-python/configobj[${PYTHON_MULTI_USEDEP}]
+		dev-python/cryptography[${PYTHON_MULTI_USEDEP}]
+		dev-python/feedparser[${PYTHON_MULTI_USEDEP}]
+		dev-python/gntp[${PYTHON_MULTI_USEDEP}]
+		dev-python/pythonutils[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/sabyenc-3.3.1[${PYTHON_MULTI_USEDEP}]
+	')
 	net-misc/wget
 	7za? ( app-arch/p7zip )
 	rar? ( || ( app-arch/unrar app-arch/rar ) )
