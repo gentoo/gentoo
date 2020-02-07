@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -51,7 +51,9 @@ CDEPEND="
 	mousejack? ( virtual/libusb:1 )
 	dev-libs/protobuf-c:=
 	dev-libs/protobuf:=
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}]
+	')
 	sys-libs/ncurses:=
 	lm-sensors? ( sys-apps/lm-sensors )
 	pcre? ( dev-libs/libpcre )
@@ -63,7 +65,9 @@ DEPEND="${CDEPEND}
 "
 
 RDEPEND="${CDEPEND}
-	dev-python/pyserial[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pyserial[${PYTHON_MULTI_USEDEP}]
+	')
 	selinux? ( sec-policy/selinux-kismet )
 "
 
