@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,9 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
-	dev-python/pillow[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+	')
 	virtual/imagemagick-tools"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
