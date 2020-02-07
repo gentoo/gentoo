@@ -8,8 +8,8 @@ inherit distutils-r1
 
 MY_PN=${PN/-/.}
 
-DESCRIPTION="NFS-safe file locking with timeouts for POSIX systems."
-HOMEPAGE="https://gitlab.com/warsaw/flufl.lock"
+DESCRIPTION="Email bounce detectors."
+HOMEPAGE="https://gitlab.com/warsaw/flufl.bounce"
 SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_PN}-${PV}.tar.gz -> ${P}.tar.gz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
@@ -19,4 +19,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="dev-python/atpublic[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/atpublic[${PYTHON_USEDEP}]
+	dev-python/zope-interface[${PYTHON_USEDEP}]
+"
