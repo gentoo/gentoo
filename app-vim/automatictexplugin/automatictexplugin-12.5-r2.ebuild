@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,11 +17,17 @@ S=${WORKDIR}
 
 VIM_PLUGIN_HELPFILES="automatic-tex-plugin.txt"
 
-RDEPEND="|| ( app-editors/vim[python,${PYTHON_USEDEP}] app-editors/gvim[python,${PYTHON_USEDEP}] )
+RDEPEND="
+	|| (
+		app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
+		app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
+	)
 	!app-vim/vim-latex
 	app-vim/align
 	app-text/wdiff
-	dev-python/psutil[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/psutil[${PYTHON_MULTI_USEDEP}]
+	')
 	dev-tex/latexmk
 	dev-tex/detex
 	virtual/tex-base
