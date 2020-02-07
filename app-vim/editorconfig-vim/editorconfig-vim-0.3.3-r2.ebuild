@@ -17,10 +17,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
-	dev-python/editorconfig-core-py[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/editorconfig-core-py[${PYTHON_MULTI_USEDEP}]
+	')
 	|| (
-		app-editors/vim[python,${PYTHON_USEDEP}]
-		app-editors/gvim[python,${PYTHON_USEDEP}]
+		app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
+		app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
 	)"
 RDEPEND="${DEPEND}"
 
