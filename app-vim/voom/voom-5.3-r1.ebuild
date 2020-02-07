@@ -18,8 +18,8 @@ VIM_PLUGIN_HELPFILES="${PN}.txt"
 
 RDEPEND="${PYTHON_DEPS}
 	|| (
-		app-editors/vim[python,${PYTHON_USEDEP}]
-		app-editors/gvim[python,${PYTHON_USEDEP}]
+		app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
+		app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
 	)"
 
 S=${WORKDIR}/VOoM-${PV}
