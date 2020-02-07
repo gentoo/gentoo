@@ -20,10 +20,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	|| (
-		sci-libs/scipy-python2[${PYTHON_USEDEP}]
-		sci-libs/scipy[${PYTHON_USEDEP}]
-	)"
+	$(python_gen_cond_dep '
+		|| (
+			sci-libs/scipy-python2[${PYTHON_MULTI_USEDEP}]
+			sci-libs/scipy[${PYTHON_MULTI_USEDEP}]
+		)
+	')"
 
 S="${WORKDIR}"/NMRProjAnalys
 
