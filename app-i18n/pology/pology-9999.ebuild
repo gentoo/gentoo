@@ -27,7 +27,9 @@ BDEPEND="
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/libxml2
 	dev-libs/libxslt
-	dev-python/dbus-python[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+	')
 	sys-devel/gettext
 "
 DEPEND="${RDEPEND}"
