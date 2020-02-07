@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -117,15 +117,23 @@ _distutils_set_globals() {
 	local rdep=${PYTHON_DEPS}
 	local bdep=${rdep}
 
+	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
+		local sdep="dev-python/setuptools[${PYTHON_USEDEP}]"
+	else
+		local sdep="$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		')"
+	fi
+
 	case ${DISTUTILS_USE_SETUPTOOLS} in
 		no|manual)
 			;;
 		bdepend)
-			bdep+=" dev-python/setuptools[${PYTHON_USEDEP}]"
+			bdep+=" ${sdep}"
 			;;
 		rdepend)
-			bdep+=" dev-python/setuptools[${PYTHON_USEDEP}]"
-			rdep+=" dev-python/setuptools[${PYTHON_USEDEP}]"
+			bdep+=" ${sdep}"
+			rdep+=" ${sdep}"
 			;;
 		*)
 			die "Invalid DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}"
