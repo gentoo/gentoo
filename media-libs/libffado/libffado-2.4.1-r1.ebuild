@@ -33,8 +33,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	sys-libs/libavc1394[${MULTILIB_USEDEP}]
 	sys-libs/libraw1394[${MULTILIB_USEDEP}]
 	qt5? (
-		dev-python/dbus-python[${PYTHON_USEDEP}]
-		dev-python/PyQt5[dbus,${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+			dev-python/PyQt5[dbus,${PYTHON_MULTI_USEDEP}]
+		')
 		x11-misc/xdg-utils
 	)"
 DEPEND="${COMMON_DEPEND}
