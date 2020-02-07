@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,8 +19,10 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DEPEND="dev-embedded/sdcc[device-lib,mcs51,sdbinutils]"
 RDEPEND="${DEPEND}
-		${PYTHON_DEPS}
-		dev-python/pyusb[${PYTHON_USEDEP}]"
+	${PYTHON_DEPS}
+	$(python_gen_cond_dep '
+		dev-python/pyusb[${PYTHON_MULTI_USEDEP}]
+	')"
 
 src_prepare() {
 	mv tools/lib tools/nrf24 || die
