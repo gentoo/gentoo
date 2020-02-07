@@ -17,7 +17,9 @@ IUSE="screen"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/newt[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-libs/newt[${PYTHON_MULTI_USEDEP}]
+	')
 	screen? ( app-misc/screen )
 	!screen? ( app-misc/tmux )"
 
