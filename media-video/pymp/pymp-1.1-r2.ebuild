@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,7 +15,9 @@ KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND="media-video/mplayer
-	dev-python/pygtk[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+	')
 	${PYTHON_DEPS}"
 DEPEND="sys-apps/sed"
 
