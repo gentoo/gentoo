@@ -1,25 +1,21 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-ECM_TEST="forceoptional-recursive"
-PYTHON_COMPAT=( python3_{6,7,8} )
-KFMIN=5.60.0
-QTMIN=5.12.3
+KDE_TEST="forceoptional"
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org python-single-r1
+PYTHON_COMPAT=( python3_{6,7} )
+inherit kde5 python-single-r1
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	SRC_URI="mirror://kde/stable/${PN}/$(ver_cut 1-3)/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	SRC_URI="mirror://kde/stable/${PN}/${PV}/${P}.tar.xz"
+	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="Free digital painting application. Digital Painting, Creative Freedom!"
 HOMEPAGE="https://kde.org/applications/graphics/krita/ https://krita.org/"
-
 LICENSE="GPL-3"
-SLOT="5"
 IUSE="color-management fftw gif +gsl heif +jpeg openexr pdf qtmedia +raw tiff vc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -28,34 +24,36 @@ BDEPEND="
 	dev-lang/perl
 	sys-devel/gettext
 "
-RDEPEND="${PYTHON_DEPS}
+COMMON_DEPEND="${PYTHON_DEPS}
+	$(add_frameworks_dep karchive)
+	$(add_frameworks_dep kcompletion)
+	$(add_frameworks_dep kconfig)
+	$(add_frameworks_dep kcoreaddons)
+	$(add_frameworks_dep kcrash)
+	$(add_frameworks_dep kguiaddons)
+	$(add_frameworks_dep ki18n)
+	$(add_frameworks_dep kiconthemes)
+	$(add_frameworks_dep kitemmodels)
+	$(add_frameworks_dep kitemviews)
+	$(add_frameworks_dep kwidgetsaddons)
+	$(add_frameworks_dep kwindowsystem)
+	$(add_frameworks_dep kxmlgui)
+	$(add_qt_dep qtconcurrent)
+	$(add_qt_dep qtdbus)
+	$(add_qt_dep qtdeclarative)
+	$(add_qt_dep qtgui '-gles2' '' '5=')
+	$(add_qt_dep qtnetwork)
+	$(add_qt_dep qtprintsupport)
+	$(add_qt_dep qtsvg)
+	$(add_qt_dep qtwidgets)
+	$(add_qt_dep qtx11extras)
+	$(add_qt_dep qtxml)
 	dev-libs/boost:=
 	dev-libs/quazip
-	dev-python/PyQt5[${PYTHON_USEDEP}]
-	dev-python/sip[${PYTHON_USEDEP}]
-	>=dev-qt/qtconcurrent-${QTMIN}:5
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtdeclarative-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5=[-gles2]
-	>=dev-qt/qtnetwork-${QTMIN}:5
-	>=dev-qt/qtprintsupport-${QTMIN}:5
-	>=dev-qt/qtsvg-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtx11extras-${QTMIN}:5
-	>=dev-qt/qtxml-${QTMIN}:5
-	>=kde-frameworks/karchive-${KFMIN}:5
-	>=kde-frameworks/kcompletion-${KFMIN}:5
-	>=kde-frameworks/kconfig-${KFMIN}:5
-	>=kde-frameworks/kcoreaddons-${KFMIN}:5
-	>=kde-frameworks/kcrash-${KFMIN}:5
-	>=kde-frameworks/kguiaddons-${KFMIN}:5
-	>=kde-frameworks/ki18n-${KFMIN}:5
-	>=kde-frameworks/kiconthemes-${KFMIN}:5
-	>=kde-frameworks/kitemmodels-${KFMIN}:5
-	>=kde-frameworks/kitemviews-${KFMIN}:5
-	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
-	>=kde-frameworks/kwindowsystem-${KFMIN}:5
-	>=kde-frameworks/kxmlgui-${KFMIN}:5
+	$(python_gen_cond_dep '
+		dev-python/PyQt5[${PYTHON_MULTI_USEDEP}]
+		dev-python/sip[${PYTHON_MULTI_USEDEP}]
+	')
 	media-gfx/exiv2:=
 	media-libs/lcms
 	media-libs/libpng:0=
@@ -74,20 +72,26 @@ RDEPEND="${PYTHON_DEPS}
 		media-libs/openexr
 	)
 	pdf? ( app-text/poppler[qt5] )
-	qtmedia? ( >=dev-qt/qtmultimedia-${QTMIN}:5 )
+	qtmedia? ( $(add_qt_dep qtmultimedia) )
 	raw? ( media-libs/libraw:= )
 	tiff? ( media-libs/tiff:0 )
 "
-DEPEND="${RDEPEND}
+DEPEND="${COMMON_DEPEND}
 	vc? ( >=dev-libs/vc-1.1.0 )
+"
+RDEPEND="${COMMON_DEPEND}
+	!app-office/calligra:4[calligra_features_krita]
+	!app-office/calligra-l10n:4[calligra_features_krita(+)]
 "
 
 # bug 630508
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}"/${PN}-4.2.4-tests-optional.patch )
+
 pkg_setup() {
 	python-single-r1_pkg_setup
-	ecm_pkg_setup
+	kde5_pkg_setup
 }
 
 src_configure() {
@@ -110,5 +114,5 @@ src_configure() {
 		$(cmake_use_find_package vc Vc)
 	)
 
-	ecm_src_configure
+	kde5_src_configure
 }
