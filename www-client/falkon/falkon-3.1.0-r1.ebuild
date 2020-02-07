@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -70,6 +70,7 @@ RESTRICT+=" test"
 
 src_configure() {
 	local mycmakeargs=(
+		-DBUILD_KEYRING=OFF
 		-DCMAKE_DISABLE_FIND_PACKAGE_PySide2=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_Shiboken2=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_PythonLibs=ON
