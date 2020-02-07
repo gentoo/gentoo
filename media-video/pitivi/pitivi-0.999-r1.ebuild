@@ -26,7 +26,9 @@ GST_VER="1.14.2"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/pycairo-1.10[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/pycairo-1.10[${PYTHON_MULTI_USEDEP}]
+	')
 	>=x11-libs/cairo-1.10
 
 	>=media-libs/gstreamer-${GST_VER}:1.0[introspection]
@@ -36,11 +38,13 @@ RDEPEND="${COMMON_DEPEND}
 	>=dev-libs/glib-2.30.0:2
 
 	>=dev-libs/gobject-introspection-1.34:=
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	>=dev-python/gst-python-1.4:1.0[${PYTHON_USEDEP}]
-	dev-python/matplotlib[${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
-	>=dev-python/pygobject-3.8:3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/gst-python-1.4:1.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygobject-3.8:3[${PYTHON_MULTI_USEDEP}]
+	')
 
 	gnome-base/librsvg:=
 	>=media-libs/gsound-1.0
@@ -66,7 +70,11 @@ BDEPEND="
 	dev-util/itstool
 	sys-devel/gettext
 	virtual/pkgconfig
-	test? ( dev-python/nose2[${PYTHON_USEDEP}] )
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/nose2[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 
 PATCHES=(
