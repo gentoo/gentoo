@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,7 +56,9 @@ DEPEND="
 	=media-tv/mythtv-${PV}*[alsa?,cdda?,cdr?,exif?,fftw?,ieee1394?,libass?,opengl?,python,raw?,xml?,xvid]
 	mytharchive? (
 		app-cdr/dvd+rw-tools
-		dev-python/pillow[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		')
 		media-video/dvdauthor
 		media-video/mjpegtools[png]
 		media-video/transcode
@@ -84,10 +86,12 @@ DEPEND="
 		)
 	)
 	mythnetvision? (
-		dev-python/pycurl[${PYTHON_USEDEP}]
-		dev-python/lxml[${PYTHON_USEDEP}]
-		dev-python/mysql-python[${PYTHON_USEDEP}]
-		dev-python/oauth[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pycurl[${PYTHON_MULTI_USEDEP}]
+			dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+			dev-python/mysql-python[${PYTHON_MULTI_USEDEP}]
+			dev-python/oauth[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	mythweather? (
 		dev-perl/Date-Manip
