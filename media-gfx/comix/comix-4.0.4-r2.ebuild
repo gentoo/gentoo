@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,8 +19,10 @@ IUSE="rar"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
-	dev-python/pillow[${PYTHON_USEDEP}]
-	>=dev-python/pygtk-2.12[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygtk-2.12[${PYTHON_MULTI_USEDEP}]
+	')"
 RDEPEND="${DEPEND}
 	rar? ( || ( app-arch/unrar app-arch/rar ) )"
 
