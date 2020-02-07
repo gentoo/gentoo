@@ -363,10 +363,10 @@ src_install () {
 			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 	fi
 
-	DOC_CONTENTS="You can set the version to be started by /usr/bin/emacs
-		through the Emacs eselect module, which also redirects man and info
-		pages. Therefore, several Emacs versions can be installed at the
-		same time. \"man emacs.eselect\" for details.
+	local DOC_CONTENTS="You can set the version to be started by
+		/usr/bin/emacs through the Emacs eselect module, which also
+		redirects man and info pages. Therefore, several Emacs versions can
+		be installed at the same time. \"man emacs.eselect\" for details.
 		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
 		strongly recommended that you use app-admin/emacs-updater to rebuild
 		all byte-compiled elisp files of the installed Emacs packages."
