@@ -45,9 +45,11 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/libgudev:=
 	>=dev-libs/libgusb-0.2.9[introspection?]
 	>=dev-libs/libxmlb-0.1.13
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
+	')
 	>=net-libs/libsoup-2.51.92:2.4[introspection?]
 	virtual/libelf:0=
 	virtual/udev
