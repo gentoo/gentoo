@@ -18,8 +18,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	|| (
-		app-editors/vim[python,${PYTHON_USEDEP}]
-		app-editors/gvim[python,${PYTHON_USEDEP}]
+		app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
+		app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
 	)
 	virtual/latex-base
 	!app-vim/vimtex"
