@@ -20,10 +20,7 @@ DEPEND="system? (
 	)"
 RDEPEND="${DEPEND}"
 BDEPEND="sys-apps/findutils
-	test? (
-		${PYTHON_DEPS}
-		$(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]')
-	)"
+	test? ( $(python_gen_any_dep 'dev-python/passlib[${PYTHON_USEDEP}]') )"
 
 RESTRICT="!test? ( test )"
 
@@ -33,6 +30,10 @@ PATCHES=(
 	"${FILESDIR}/libxcrypt-4.4.12-pythonver.patch"
 	"${FILESDIR}/libxcrypt-4.4.12-multibuild.patch"
 )
+
+python_check_deps() {
+	has_version -b "dev-python/passlib[${PYTHON_USEDEP}]"
+}
 
 pkg_setup() {
 	MULTIBUILD_VARIANTS=(
