@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,9 @@ IUSE=""
 
 DEPEND="${PYTHON_DEPS}
 	>=app-cdr/cdlabelgen-4
-	dev-python/pygtk[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+	')"
 RDEPEND="${DEPEND}"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
