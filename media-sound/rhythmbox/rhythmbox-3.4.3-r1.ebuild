@@ -48,7 +48,9 @@ COMMON_DEPEND="
 	lirc? ( app-misc/lirc )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/pygobject-3.0:3[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	udev? (
 		dev-libs/libgudev:=
@@ -65,7 +67,7 @@ RDEPEND="${COMMON_DEPEND}
 	media-plugins/gst-plugins-taglib:1.0
 	x11-themes/adwaita-icon-theme
 	python? (
-		>=dev-libs/libpeas-0.7.3[python,${PYTHON_USEDEP}]
+		>=dev-libs/libpeas-0.7.3[python,${PYTHON_SINGLE_USEDEP}]
 		net-libs/libsoup:2.4[introspection]
 		x11-libs/gdk-pixbuf:2[introspection]
 		x11-libs/gtk+:3[introspection]
