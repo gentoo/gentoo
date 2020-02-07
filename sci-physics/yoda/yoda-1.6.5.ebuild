@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,9 +20,13 @@ IUSE="python root static-libs"
 RDEPEND="
 	dev-libs/boost:=
 	python? ( ${PYTHON_DEPS} )
-	root? ( sci-physics/root:=[python=,${PYTHON_USEDEP}] )"
+	root? ( sci-physics/root:=[python=,${PYTHON_SINGLE_USEDEP}] )"
 DEPEND="${RDEPEND}
-	python? ( dev-python/cython[${PYTHON_USEDEP}] )"
+	python? (
+		$(python_gen_cond_dep '
+			dev-python/cython[${PYTHON_MULTI_USEDEP}]
+		')
+	)"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
