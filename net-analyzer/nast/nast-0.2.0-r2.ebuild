@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="NAST - Network Analyzer Sniffer Tool"
 HOMEPAGE="https://sourceforge.net/projects/nast.berlios/"
@@ -28,6 +28,11 @@ PATCHES=(
 src_prepare() {
 	default
 	eautoreconf
+}
+
+src_configure() {
+	append-cflags -fcommon
+	default
 }
 
 src_compile() {
