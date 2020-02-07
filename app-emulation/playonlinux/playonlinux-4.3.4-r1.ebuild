@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,7 +26,9 @@ RDEPEND="${PYTHON_DEPS}
 	app-arch/unzip
 	app-crypt/gnupg
 	app-misc/jq
-	dev-python/wxpython:3.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/wxpython:3.0[${PYTHON_MULTI_USEDEP}]
+	')
 	media-gfx/icoutils
 	|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )
 	net-misc/wget
