@@ -71,22 +71,24 @@ COMMON_DEPEND="
 	postgres? ( dev-db/postgresql:= )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/future[${PYTHON_USEDEP}]
-		dev-python/httplib2[${PYTHON_USEDEP}]
-		dev-python/jinja[${PYTHON_USEDEP}]
-		dev-python/markupsafe[${PYTHON_USEDEP}]
-		dev-python/owslib[${PYTHON_USEDEP}]
-		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/PyQt5[designer,network,sql,svg,webkit?,${PYTHON_USEDEP}]
-		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		dev-python/pytz[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/sip:=[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}]
-		>=sci-libs/gdal-2.2.3[python,${PYTHON_USEDEP}]
-		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			dev-python/future[${PYTHON_MULTI_USEDEP}]
+			dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
+			dev-python/jinja[${PYTHON_MULTI_USEDEP}]
+			dev-python/markupsafe[${PYTHON_MULTI_USEDEP}]
+			dev-python/owslib[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+			dev-python/PyQt5[designer,network,sql,svg,webkit?,${PYTHON_MULTI_USEDEP}]
+			dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
+			dev-python/pytz[${PYTHON_MULTI_USEDEP}]
+			dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_MULTI_USEDEP}]
+			dev-python/requests[${PYTHON_MULTI_USEDEP}]
+			dev-python/sip:=[${PYTHON_MULTI_USEDEP}]
+			dev-python/six[${PYTHON_MULTI_USEDEP}]
+			>=sci-libs/gdal-2.2.3[python,${PYTHON_MULTI_USEDEP}]
+			postgres? ( dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}] )
+		')
 	)
 	qml? ( >=dev-qt/qtdeclarative-${QT_MIN_VER}:5 )
 	webkit? ( >=dev-qt/qtwebkit-5.9.1:5 )
