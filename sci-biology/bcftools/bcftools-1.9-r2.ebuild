@@ -18,7 +18,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	dev-lang/perl
-	dev-python/matplotlib[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
+	')
 	=sci-libs/htslib-${PV}*:=
 	sys-libs/zlib:=
 	${PYTHON_DEPS}"
