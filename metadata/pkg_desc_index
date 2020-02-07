@@ -2563,7 +2563,7 @@ app-text/groonga 5.0.3 5.0.9 6.1.2 8.0.2: An Embeddable Fulltext Search Engine
 app-text/groonga-normalizer-mysql 1.0.6 1.0.9 1.1.0 1.1.1: Groonga plugin that provides MySQL compatible normalizers
 app-text/grutatxt 2.0.16-r1: A converter from plain text to HTML and other markup languages
 app-text/gspell 1.6.1 1.8.3: Spell check library for GTK+ applications
-app-text/gtkspell 2.0.16 3.0.9 3.0.10: Spell checking widget for GTK
+app-text/gtkspell 2.0.16 2.0.16-r1 3.0.9 3.0.10: Spell checking widget for GTK
 app-text/gtranslator 3.32.0: GNOME Translation Editor
 app-text/gv 3.7.3-r1 3.7.3.90: Viewer for PostScript and PDF documents using Ghostscript
 app-text/hd2u 1.0.3: Dos2Unix like text file converter
