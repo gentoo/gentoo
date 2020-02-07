@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,17 +20,21 @@ IUSE="cvs cvsgraph mod_wsgi mysql pygments +subversion"
 DEPEND=""
 RDEPEND="${PYTHON_DEPS}
 	cvs? ( dev-vcs/rcs )
-	subversion? ( >=dev-vcs/subversion-1.3.1[python,${PYTHON_USEDEP}] )
 
-	mod_wsgi? ( www-apache/mod_wsgi[${PYTHON_USEDEP}] )
+	mod_wsgi? ( www-apache/mod_wsgi[${PYTHON_SINGLE_USEDEP}] )
 	!mod_wsgi? ( virtual/httpd-cgi )
 
 	cvsgraph? ( >=dev-vcs/cvsgraph-1.5.0 )
-	mysql? ( >=dev-python/mysql-python-0.9.0[${PYTHON_USEDEP}] )
-	pygments? (
-		dev-python/pygments[${PYTHON_USEDEP}]
-		app-misc/mime-types
-	)
+
+	$(python_gen_cond_dep '
+		subversion? ( >=dev-vcs/subversion-1.3.1[python,${PYTHON_MULTI_USEDEP}] )
+
+		mysql? ( >=dev-python/mysql-python-0.9.0[${PYTHON_MULTI_USEDEP}] )
+		pygments? (
+			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+			app-misc/mime-types
+		)
+	')
 "
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
