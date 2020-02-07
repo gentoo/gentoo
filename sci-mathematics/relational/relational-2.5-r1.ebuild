@@ -18,7 +18,9 @@ IUSE=""
 
 DEPEND="
 	${PYTHON_DEPS}
-	dev-python/PyQt5[gui,webkit,widgets,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/PyQt5[gui,webkit,widgets,${PYTHON_MULTI_USEDEP}]
+	')
 "
 RDEPEND="${DEPEND}"
 
