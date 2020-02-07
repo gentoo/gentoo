@@ -21,7 +21,9 @@ DEPEND="${PYTHON_DEPS}"
 RDEPEND="
 	${DEPEND}
 	dev-libs/efl[X,connman]
-	dev-python/python-efl[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/python-efl[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 src_prepare() {
