@@ -24,8 +24,10 @@ DEPEND="${PYTHON_DEPS}
 	>=media-libs/libmediaart-1.9.1:2.0[introspection]
 	net-libs/libsoup:2.4[introspection]
 	>=app-misc/tracker-1.99.1:=[introspection(+)]
-	>=dev-python/pygobject-3.29.1:3[cairo,${PYTHON_USEDEP}]
-	>=dev-python/pycairo-1.14.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/pygobject-3.29.1:3[cairo,${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pycairo-1.14.0[${PYTHON_MULTI_USEDEP}]
+	')
 	>=media-libs/grilo-0.3.4:0.3[introspection]
 	>=media-plugins/grilo-plugins-0.3.8:0.3
 "
