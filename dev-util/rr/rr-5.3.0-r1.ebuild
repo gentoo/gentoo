@@ -27,7 +27,9 @@ RDEPEND="${DEPEND}
 # Add all the deps needed only at build/test time.
 DEPEND+="
 	test? (
-		dev-python/pexpect[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pexpect[${PYTHON_MULTI_USEDEP}]
+		')
 		sys-devel/gdb[xml]
 	)"
 
