@@ -65,7 +65,9 @@ COMMON_DEPEND="
 	postscript? ( app-text/ghostscript-gpl )
 	python? (
 		${PYTHON_DEPS}
-		>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/pygobject-3.0:3[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	udev? ( >=dev-libs/libgudev-167:= )
 	unwind? ( >=sys-libs/libunwind-1.1.0:= )
