@@ -30,7 +30,9 @@ DEPEND="${COMMON_DEPEND}
 RDEPEND="${COMMON_DEPEND}
 	wxwidgets? (
 		${PYTHON_DEPS}
-		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/wxpython:3.0[${PYTHON_MULTI_USEDEP}]
+		')
 		media-libs/liboggz )
 "
 
