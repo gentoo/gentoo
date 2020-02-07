@@ -1,0 +1,10 @@
+DEFINED_PHASES=install postinst prepare
+DESCRIPTION=GNAT Ada suite
+EAPI=7
+HOMEPAGE=http://libre.adacore.com/
+KEYWORDS=~amd64
+LICENSE=GPL-2 GPL-3
+RDEPEND=sys-devel/binutils sys-devel/gdb
+SLOT=2019
+SRC_URI=https://dev.gentoo.org/~tupone/distfiles/gnat-suite-bin-2019.txz
+_md5_=2cbcb366b868564a2469f53c0d5e0b17
