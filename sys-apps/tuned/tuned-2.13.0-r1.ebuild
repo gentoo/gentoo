@@ -19,12 +19,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
-	dev-python/configobj[${PYTHON_USEDEP}]
-	dev-python/decorator[${PYTHON_USEDEP}]
-	dev-python/pyudev[${PYTHON_USEDEP}]
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/python-linux-procfs[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/configobj[${PYTHON_MULTI_USEDEP}]
+		dev-python/decorator[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyudev[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/python-linux-procfs[${PYTHON_MULTI_USEDEP}]
+	')"
 
 RDEPEND="
 	${DEPEND}
