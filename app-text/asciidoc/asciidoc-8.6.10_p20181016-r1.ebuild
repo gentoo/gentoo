@@ -29,7 +29,9 @@ RDEPEND="
 	highlight? (
 		|| (
 			dev-util/source-highlight
-			dev-python/pygments[${PYTHON_USEDEP}]
+			$(python_gen_cond_dep '
+				dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+			')
 			app-text/highlight
 		)
 	)"
