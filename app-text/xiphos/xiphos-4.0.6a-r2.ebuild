@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,24 +21,28 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	>=app-text/sword-1.7.4
 	dev-libs/glib:2
-	dev-libs/libxml2:2[${PYTHON_USEDEP}]
-	gnome-base/gconf[${PYTHON_USEDEP}]
 	gnome-extra/gtkhtml:4.0
 	>=gnome-extra/libgsf-1.14
 	net-libs/webkit-gtk:4
 	x11-libs/gtk+:3
+	$(python_gen_cond_dep '
+		dev-libs/libxml2:2[${PYTHON_MULTI_USEDEP}]
+		gnome-base/gconf[${PYTHON_MULTI_USEDEP}]
+	')
 	dbus? ( dev-libs/dbus-glib )
 "
 DEPEND="${RDEPEND}
 	app-text/docbook2X
-	app-text/gnome-doc-utils[${PYTHON_USEDEP}]
 	app-text/rarian
-	dev-libs/libxslt[${PYTHON_USEDEP}]
 	dev-util/intltool
 	dev-util/glib-utils
 	>=net-libs/biblesync-1.1.2-r1[-static]
 	virtual/pkgconfig
 	sys-devel/gettext
+	$(python_gen_cond_dep '
+		app-text/gnome-doc-utils[${PYTHON_MULTI_USEDEP}]
+		dev-libs/libxslt[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 pkg_setup() {
