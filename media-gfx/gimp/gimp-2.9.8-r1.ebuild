@@ -49,8 +49,10 @@ RDEPEND=">=dev-libs/glib-2.40.0:2
 	>=media-libs/libpng-1.6.25:0
 	python?	(
 		${PYTHON_DEPS}
-		>=dev-python/pygtk-2.10.4:2[${PYTHON_USEDEP}]
-		>=dev-python/pycairo-1.0.2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/pygtk-2.10.4:2[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pycairo-1.0.2[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	>=media-libs/tiff-3.5.7:0
 	>=gnome-base/librsvg-2.40.6:2

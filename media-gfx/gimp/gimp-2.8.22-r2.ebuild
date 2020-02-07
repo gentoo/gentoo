@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -45,7 +45,9 @@ RDEPEND=">=dev-libs/glib-2.30.2:2
 	png? ( >=media-libs/libpng-1.2.37:0 )
 	python?	(
 		${PYTHON_DEPS}
-		>=dev-python/pygtk-2.10.4:2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/pygtk-2.10.4:2[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	tiff? ( >=media-libs/tiff-3.5.7:0 )
 	svg? ( >=gnome-base/librsvg-2.36.0:2 )
