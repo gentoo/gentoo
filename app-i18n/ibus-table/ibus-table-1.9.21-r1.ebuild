@@ -13,13 +13,16 @@ SRC_URI="https://github.com/kaio/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="nls"
+RESTRICT="test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+	')
 	virtual/libiconv
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
