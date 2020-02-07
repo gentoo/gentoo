@@ -30,7 +30,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 # wavenc and mp4mux come from gst-plugins-good, which everyone having base should have, so unconditional
 RDEPEND="${COMMON_DEPEND}
 	x11-libs/pango[introspection]
-	dev-python/gst-python:1.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/gst-python:1.0[${PYTHON_MULTI_USEDEP}]
+	')
 	libnotify? ( x11-libs/libnotify[introspection] )
 
 	media-libs/gst-plugins-base:1.0[vorbis?,ogg?]
