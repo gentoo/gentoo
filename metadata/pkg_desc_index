@@ -7987,7 +7987,7 @@ dev-python/kivy-garden 0.1.4: Kivys Garden tool to manage flowers
 dev-python/kiwisolver 1.0.1: An efficient C++ implementation of the Cassowary constraint solving algorithm
 dev-python/kombu 4.1.0-r1 4.2.1 4.4.0 4.6.3: AMQP Messaging Framework for Python
 dev-python/lark-parser 0.7.8: Python module to propose a modern general-purpose parsing library for Python
-dev-python/lazr-config 2.2.1: Create configuration schemas, and process and validate configurations.
+dev-python/lazr-config 2.2.2: Create configuration schemas, and process and validate configurations.
 dev-python/lazr-delegates 2.0.4: Easily write objects that delegate behavior
 dev-python/lazy-object-proxy 1.2.1 1.3.1 1.4.3: A fast and thorough lazy object proxy
 dev-python/ldap3 2.2.3 2.4.1 2.5.1: A strictly RFC 4511 conforming LDAP V3 pure Python client
