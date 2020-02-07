@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,6 +27,8 @@ RDEPEND=">=dev-libs/kpathsea-6.2.1
 BDEPEND="virtual/pkgconfig"
 
 S=${WORKDIR}/texlive-${PV#*_p}-source/texk/${PN}
+
+PATCHES=( "${FILESDIR}"/${PN}-2.0_p20190410-fno-common-gcc10.patch )
 
 src_configure() {
 	econf --with-system-kpathsea \
