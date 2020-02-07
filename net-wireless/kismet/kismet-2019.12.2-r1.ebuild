@@ -51,7 +51,9 @@ CDEPEND="
 	libusb? ( virtual/libusb:1 )
 	dev-libs/protobuf-c:=
 	dev-libs/protobuf:=
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}]
+	')
 	sys-libs/ncurses:=
 	lm-sensors? ( sys-apps/lm-sensors )
 	pcre? ( dev-libs/libpcre )
@@ -64,11 +66,18 @@ DEPEND="${CDEPEND}
 "
 
 RDEPEND="${CDEPEND}
-	dev-python/pyserial[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pyserial[${PYTHON_MULTI_USEDEP}]
+	')
 	selinux? ( sec-policy/selinux-kismet )
 "
-PDEPEND="rtlsdr? ( dev-python/numpy[${PYTHON_USEDEP}]
-				net-wireless/rtl-sdr )"
+PDEPEND="
+	rtlsdr? (
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		')
+		net-wireless/rtl-sdr
+	)"
 
 src_prepare() {
 	sed -i -e "s:^\(logtemplate\)=\(.*\):\1=/tmp/\2:" \
