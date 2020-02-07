@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -58,10 +58,12 @@ DEPEND="${COMMON_DEPEND}
 	vala? ( $(vala_depend) )
 "
 RDEPEND="${COMMON_DEPEND}
-	>=app-portage/layman-2[${PYTHON_USEDEP}]
-	>=sys-apps/portage-2.2[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=app-portage/layman-2[${PYTHON_MULTI_USEDEP}]
+		>=sys-apps/portage-2.2[${PYTHON_MULTI_USEDEP}]
+	')
 	consolekit? ( sys-auth/consolekit )
-	entropy? ( >=sys-apps/entropy-234[${PYTHON_USEDEP}] )
+	entropy? ( >=sys-apps/entropy-234[${PYTHON_SINGLE_USEDEP}] )
 "
 
 PATCHES=(
