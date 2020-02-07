@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="userpriv"
 
 RDEPEND="${PYTHON_DEPS}
-	>=games-rpg/adonthell-0.3.5-r2[${PYTHON_USEDEP}]
+	>=games-rpg/adonthell-0.3.5-r2[${PYTHON_SINGLE_USEDEP}]
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
