@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ SRC_URI="mirror://sabayon/sys-apps/entropy-${PV}.tar.bz2"
 S="${WORKDIR}/entropy-${PV}/${PN}"
 
 DEPEND=""
-RDEPEND="entropy? ( ~sys-apps/entropy-${PV}[${PYTHON_USEDEP}] )
+RDEPEND="entropy? ( ~sys-apps/entropy-${PV}[${PYTHON_SINGLE_USEDEP}] )
 	sys-apps/file[python]
 	${PYTHON_DEPS}"
 
