@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,6 +27,7 @@ RDEPEND="!app-shells/pdksh"
 PATCHES=(
 	"${FILESDIR}"/ksh-2020.0.0-ensure-user-set.patch
 	"${FILESDIR}"/ksh-2020.0.0-skip-api-test.patch
+	"${FILESDIR}"/CVE-2019-14868.patch
 )
 
 src_test() {
