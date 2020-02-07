@@ -21,7 +21,9 @@ VIM_PLUGIN_MESSAGES="filetype"
 PATCHES=( "${FILESDIR}/${P}-fix-shebangs.patch" )
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/autopep8[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/autopep8[${PYTHON_MULTI_USEDEP}]
+	')"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
