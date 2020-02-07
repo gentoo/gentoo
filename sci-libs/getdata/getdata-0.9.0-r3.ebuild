@@ -24,10 +24,12 @@ DEPEND="
 	lzma? ( app-arch/xz-utils )
 	perl? ( dev-lang/perl )
 	python? (
-		|| (
-			dev-python/numpy-python2[${PYTHON_USEDEP}]
-			dev-python/numpy[${PYTHON_USEDEP}]
-		)
+		$(python_gen_cond_dep '
+			|| (
+				dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+				dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			)
+		')
 		${PYTHON_DEPS}
 	)"
 RDEPEND="${DEPEND}"
