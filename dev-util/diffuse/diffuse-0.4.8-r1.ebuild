@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	dev-python/pygtk[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+	')"
 # file collision, bug #279018
 DEPEND="${DEPEND}
 	!sci-chemistry/tinker"
