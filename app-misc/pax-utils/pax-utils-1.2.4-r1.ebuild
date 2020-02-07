@@ -20,8 +20,10 @@ IUSE="caps debug python seccomp"
 RDEPEND="caps? ( >=sys-libs/libcap-2.24 )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/pyelftools[${PYTHON_USEDEP}]
-		)
+		$(python_gen_cond_dep '
+			dev-python/pyelftools[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	seccomp? ( sys-libs/libseccomp )"
 DEPEND="${RDEPEND}
 	caps? ( virtual/pkgconfig )
