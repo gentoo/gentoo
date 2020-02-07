@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -34,8 +34,10 @@ RDEPEND="dev-libs/glib:2
 	mysql? ( dev-db/mysql-connector-c:= )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/pygobject:2[${PYTHON_USEDEP}]
-		dev-python/pygtk:2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	ruby? (
 		${RUBY_DEPS}
