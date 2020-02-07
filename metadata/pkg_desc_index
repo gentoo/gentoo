@@ -128,6 +128,7 @@ acct-group/systemd-resolve 0: System group: systemd-resolve
 acct-group/systemd-timesync 0: System group: systemd-timesync
 acct-group/tape 0: System group: tape
 acct-group/teamspeak 0: A group for the TeamSpeak server
+acct-group/telegraf 0: System group: telegraf
 acct-group/tor 0: group for tor daemon
 acct-group/tox 0: Group management for package net-libs/tox
 acct-group/transmission 0: System group: transmission
@@ -266,6 +267,7 @@ acct-user/systemd-network 0: System user: systemd-network
 acct-user/systemd-resolve 0: System user: systemd-resolve
 acct-user/systemd-timesync 0: System user: systemd-timesync
 acct-user/teamspeak 0: A user for the TeamSpeak server
+acct-user/telegraf 0: User for telegraf
 acct-user/tor 0: user for tor daemon
 acct-user/tox 0: User for package net-libs/tox
 acct-user/transmission 1: System user: transmission
@@ -14082,7 +14084,7 @@ net-analyzer/arpoison 0.6-r2 0.7: A utility to poison ARP caches
 net-analyzer/arpon 2.7.2 2.7.2-r1: ArpON (Arp handler inspectiON) is a portable Arp handler
 net-analyzer/arptools 1.0.2: a collection of libnet and libpcap based ARP utilities
 net-analyzer/arpwatch 2.1.15-r8 2.1.15-r9 2.1.15-r11: An ethernet monitor program that keeps track of ethernet/IP address pairings
-net-analyzer/authforce 0.9.9-r2: An HTTP authentication brute forcer
+net-analyzer/authforce 0.9.9-r2 0.9.9-r3: An HTTP authentication brute forcer
 net-analyzer/barnyard 0.2.0-r5: Fast output system for Snort
 net-analyzer/barnyard2 1.9-r2 1.13: Parser for Snort unified/unified2 files
 net-analyzer/bigeye 0.3-r3 0.3-r4: network utility dump and simple honeypot utility
@@ -14326,7 +14328,7 @@ net-analyzer/tcpstat 1.5-r3 1.5_p8: Reports network interface statistics
 net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5: A Tool for analyzing network packet dumps
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
-net-analyzer/telegraf 1.5.3 1.8.3 1.10.4 1.11.5 1.12.1: The plugin-driven server agent for collecting & reporting metrics.
+net-analyzer/telegraf 1.5.3 1.8.3 1.10.4 1.11.5 1.12.1 1.13.3: The plugin-driven server agent for collecting & reporting metrics.
 net-analyzer/testssl 2.9.5_p7 2.9.5_p8: Tool to check TLS/SSL cipher support
 net-analyzer/thc-ipv6 3.2-r1 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r1: Network discovery and fingerprinting tool
@@ -15208,7 +15210,7 @@ net-misc/ubridge 0.9.14 0.9.16: Bridge for UDP tunnels, Ethernet, TAP and VMnet 
 net-misc/ucarp 1.5.2-r3 1.5.2-r4 1.5.2-r5: Portable userland implementation of Common Address Redundancy Protocol (CARP)
 net-misc/udpcast 20120424 20120424-r1: Multicast file transfer tool
 net-misc/udpxy 1.0.23.7-r2: Small daemon to relay multicast UDP traffic to client's TCP (HTTP) connection
-net-misc/uftp 3.7.1 4.9.4 4.9.5 4.9.8: Encrypted UDP based FTP with multicast
+net-misc/uftp 4.10.1: Encrypted UDP based FTP with multicast
 net-misc/unison 2.48.4 2.48.4-r1 2.51.2: Two-way cross-platform file synchronizer
 net-misc/unix2tcp 0.8.2-r1: a connection forwarder that converts Unix sockets into TCP sockets
 net-misc/usbip 3.19 4.13: Userspace utilities for a general USB device sharing system over IP networks
