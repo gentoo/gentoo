@@ -12646,7 +12646,7 @@ media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
 media-gfx/gimp 2.8.22-r1 2.9.8-r1 2.10.8-r1 2.10.14 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.8.1 2.8.2 2.8.3: GREYC's Magic Image Converter
-media-gfx/gnofract4d 3.14-r1 3.14.1 4.0.1_p1: A program for drawing beautiful mathematically-based images known as fractals
+media-gfx/gnofract4d 4.0.1_p1: A program for drawing beautiful mathematically-based images known as fractals
 media-gfx/gnome-font-viewer 3.32.0: Font viewer utility for GNOME
 media-gfx/gnome-photos 3.32.1: Access, organize and share your photos on GNOME
 media-gfx/gnome-raw-thumbnailer 3.0.0-r1: A lightweight and fast raw image thumbnailer for GNOME
@@ -13626,7 +13626,7 @@ media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/gpodder 3.10.5: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6_p9: Transfer sound from gramophone records to CD
-media-sound/grip 3.9.0-r1 4.0.1-r1 4.1.0: GTK+ based Audio CD Player/Ripper
+media-sound/grip 4.0.1-r1 4.1.0: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gst123 0.3.5: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
