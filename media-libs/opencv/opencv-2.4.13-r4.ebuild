@@ -53,10 +53,12 @@ RDEPEND="
 	png? ( media-libs/libpng:0= )
 	python? (
 		${PYTHON_DEPS}
-		|| (
-			dev-python/numpy-python2[${PYTHON_USEDEP}]
-			dev-python/numpy[${PYTHON_USEDEP}]
-		)
+		$(python_gen_cond_dep '
+			|| (
+				dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+				dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			)
+		')
 	)
 	qt5? (
 		dev-qt/qtconcurrent:5
