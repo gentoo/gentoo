@@ -44,12 +44,14 @@ DEPEND="${COMMON_DEPEND}
 	doc? ( dev-python/epydoc )
 "
 RDEPEND="${COMMON_DEPEND}
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/pycups[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/urllib3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycups[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/urllib3[${PYTHON_MULTI_USEDEP}]
+	')
 	gnome-keyring? ( app-crypt/libsecret[introspection] )
 	policykit? ( net-print/cups-pk-helper )
 "
