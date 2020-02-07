@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,27 +17,29 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	${PYTHON_DEPS}
-	>=dev-python/django-2.2[${PYTHON_USEDEP}]
-	>=dev-python/django-cors-headers-2.4.0[${PYTHON_USEDEP}]
-	>=dev-python/django-debug-toolbar-1.11[${PYTHON_USEDEP}]
-	>=dev-python/django-filter-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/django-mptt-0.9.1[${PYTHON_USEDEP}]
-	>=dev-python/django-tables2-2.0.3[${PYTHON_USEDEP}]
-	>=dev-python/django-taggit-0.23.0[${PYTHON_USEDEP}]
-	>=dev-python/django-taggit-serializer-0.1.7[${PYTHON_USEDEP}]
-	>=dev-python/django-timezone-field-3.0[${PYTHON_USEDEP}]
-	>=dev-python/djangorestframework-3.9.0[${PYTHON_USEDEP}]
-	>=dev-python/drf-yasg-1.14.0[${PYTHON_USEDEP},validation]
-	>=dev-python/graphviz-0.10.1[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.10[${PYTHON_USEDEP}]
-	>=dev-python/markdown-2.6.11[${PYTHON_USEDEP}]
-	>=dev-python/netaddr-0.7.19[${PYTHON_USEDEP}]
-	>=dev-python/pillow-5.3.0[${PYTHON_USEDEP}]
-	>=dev-python/psycopg-2.7.6.1[${PYTHON_USEDEP}]
-	>=dev-python/py-gfm-0.1.4[${PYTHON_USEDEP}]
-	>=dev-python/pycryptodome-3.7.2[${PYTHON_USEDEP}]
-	www-servers/gunicorn[${PYTHON_USEDEP}]
-	ldap? ( >=dev-python/django-auth-ldap-1.7[${PYTHON_USEDEP}] )
+	$(python_gen_cond_dep '
+		>=dev-python/django-2.2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-cors-headers-2.4.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-debug-toolbar-1.11[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-filter-2.0.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-mptt-0.9.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-tables2-2.0.3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-taggit-0.23.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-taggit-serializer-0.1.7[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/django-timezone-field-3.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/djangorestframework-3.9.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/drf-yasg-1.14.0[${PYTHON_MULTI_USEDEP},validation]
+		>=dev-python/graphviz-0.10.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/jinja-2.10[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/markdown-2.6.11[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/netaddr-0.7.19[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pillow-5.3.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/psycopg-2.7.6.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/py-gfm-0.1.4[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pycryptodome-3.7.2[${PYTHON_MULTI_USEDEP}]
+		www-servers/gunicorn[${PYTHON_MULTI_USEDEP}]
+		ldap? ( >=dev-python/django-auth-ldap-1.7[${PYTHON_MULTI_USEDEP}] )
+	')
 	webhooks? ( dev-python/django-rq )"
 DEPEND="${RDEPEND}"
 
