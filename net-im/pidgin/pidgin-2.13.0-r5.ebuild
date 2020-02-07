@@ -54,7 +54,9 @@ RDEPEND="
 	dbus? (
 		>=dev-libs/dbus-glib-0.71
 		>=sys-apps/dbus-0.90
-		dev-python/dbus-python[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	perl? ( >=dev-lang/perl-5.16:= )
 	gadu? ( || (
