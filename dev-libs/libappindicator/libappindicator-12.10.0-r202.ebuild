@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,9 @@ RDEPEND="
 	introspection? ( >=dev-libs/gobject-introspection-1:= )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/pygtk[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 "
 DEPEND="${RDEPEND}
