@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,9 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/libxml2[python,${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
+	')"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
