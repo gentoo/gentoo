@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='threads(+),xml(+)'
 
-inherit python-single-r1 waf-utils multilib-minimal linux-info systemd
+inherit python-single-r1 waf-utils multilib-minimal linux-info systemd pam
 
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
@@ -15,7 +15,7 @@ SRC_PATH="stable"
 
 SRC_URI="mirror://samba/${SRC_PATH}/${MY_P}.tar.gz"
 [[ ${PV} = *_rc* ]] || \
-KEYWORDS="~alpha amd64 ~arm ~arm64 hppa ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 DESCRIPTION="Samba Suite Version 4"
 HOMEPAGE="https://www.samba.org/"
@@ -23,8 +23,8 @@ LICENSE="GPL-3"
 
 SLOT="0"
 
-IUSE="acl addc addns ads ceph client cluster cups debug dmapi fam gnutls gpg iprint ldap pam python
-quota selinux syslog system-heimdal +system-mitkrb5 systemd test winbind zeroconf"
+IUSE="acl addc addns ads ceph client cluster cups debug dmapi fam gnutls gpg iprint json ldap
+pam python quota selinux syslog system-heimdal +system-mitkrb5 systemd test winbind zeroconf"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/samba-4.0/policy.h
@@ -45,26 +45,28 @@ CDEPEND="
 	dev-libs/libbsd[${MULTILIB_USEDEP}]
 	dev-libs/iniparser:0
 	dev-libs/popt[${MULTILIB_USEDEP}]
-	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
 	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-1.3.6[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	<sys-libs/ldb-1.4.0[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-1.5.4[ldap(+)?,python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
+	<sys-libs/ldb-1.6.0[ldap(+)?,python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
-	>=sys-libs/talloc-2.1.11[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.3.15[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.9.36[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.1.16[python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.3.18[python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.9.39[python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	pam? ( sys-libs/pam )
 	acl? ( virtual/acl )
-	addns? (
-		net-dns/bind-tools[gssapi]
-		dev-python/dnspython:=[${PYTHON_USEDEP}]
-	)
+	$(python_gen_cond_dep "
+		dev-python/subunit[\${PYTHON_MULTI_USEDEP},${MULTILIB_USEDEP}]
+		addns? (
+			net-dns/bind-tools[gssapi]
+			dev-python/dnspython:=[\${PYTHON_MULTI_USEDEP}]
+		)
+	")
 	ceph? ( sys-cluster/ceph )
 	cluster? (
 		net-libs/rpcsvc-proto
@@ -79,6 +81,7 @@ CDEPEND="
 		>=net-libs/gnutls-1.4.0
 	)
 	gpg? ( app-crypt/gpgme )
+	json? ( dev-libs/jansson )
 	ldap? ( net-nds/openldap[${MULTILIB_USEDEP}] )
 	system-heimdal? ( >=app-crypt/heimdal-1.5[-ssl,${MULTILIB_USEDEP}] )
 	system-mitkrb5? ( >=app-crypt/mit-krb5-1.15.1[${MULTILIB_USEDEP}] )
@@ -99,7 +102,7 @@ DEPEND="${CDEPEND}
 		!system-mitkrb5? (
 			>=sys-libs/nss_wrapper-1.1.3
 			>=net-dns/resolv_wrapper-1.1.4
-			>=net-libs/socket_wrapper-1.1.7
+			>=net-libs/socket_wrapper-1.1.9
 			>=sys-libs/uid_wrapper-1.2.1
 		)
 	)"
@@ -111,7 +114,7 @@ RDEPEND="${CDEPEND}
 "
 
 REQUIRED_USE="
-	addc? ( python gnutls winbind )
+	addc? ( python gnutls json winbind )
 	addns? ( python )
 	ads? ( acl gnutls ldap winbind )
 	cluster? ( ads )
@@ -132,7 +135,8 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=(
 	"${FILESDIR}/${PN}-4.4.0-pam.patch"
 	"${FILESDIR}/${PN}-4.5.1-compile_et_fix.patch"
-	"${FILESDIR}/${PN}-4.8.6-no-pydsdb-when-no-addc.patch"
+	"${FILESDIR}/${PN}-4.9.2-timespec.patch"
+	"${FILESDIR}/${PN}-4.10.0-disable_gnutls_build_fix.patch"
 )
 
 #CONFDIR="${FILESDIR}/$(get_version_component_range 1-2)"
@@ -158,7 +162,9 @@ src_prepare() {
 	sed -i -e '/"dns.resolver":/d' "${S}"/third_party/wscript || die
 
 	# unbundle iso8601 unless tests are enabled
-	use test || sed -i -e '/"iso8601":/d' "${S}"/third_party/wscript || die
+	if ! use test ; then
+		sed -i -e '/"iso8601":/d' "${S}"/third_party/wscript || die
+	fi
 
 	# ugly hackaround for bug #592502
 	cp /usr/include/tevent_internal.h "${S}"/lib/tevent/ || die
@@ -201,6 +207,7 @@ multilib_src_configure() {
 		$(multilib_native_use_with dmapi)
 		$(multilib_native_use_with fam)
 		$(multilib_native_use_with gpg gpgme)
+		$(multilib_native_use_with json)
 		$(multilib_native_use_enable iprint)
 		$(multilib_native_use_with pam)
 		$(multilib_native_usex pam "--with-pammodulesdir=${EPREFIX}/$(get_libdir)/security" '')
@@ -211,11 +218,12 @@ multilib_src_configure() {
 		$(multilib_native_usex python '' '--disable-python')
 		$(multilib_native_use_enable zeroconf avahi)
 		$(multilib_native_usex test '--enable-selftest' '')
-		$(usex system-mitkrb5 '--with-system-mitkrb5' '')
+		$(usex system-mitkrb5 "--with-system-mitkrb5 $(multilib_native_usex addc --with-experimental-mit-ad-dc '')" '')
 		$(use_enable gnutls)
 		$(use_with debug lttng)
 		$(use_with ldap)
 	)
+
 	multilib_is_native_abi && myconf+=( --with-shared-modules=${SHAREDMODS} )
 
 	CPPFLAGS="-I${SYSROOT}${EPREFIX}/usr/include/et ${CPPFLAGS}" \
@@ -230,7 +238,7 @@ multilib_src_install() {
 	waf-utils_src_install
 
 	# Make all .so files executable
-	find "${ED}" -type f -name "*.so" -exec chmod +x {} +
+	find "${ED}" -type f -name "*.so" -exec chmod +x {} + || die
 
 	if multilib_is_native_abi ; then
 		# install ldap schema for server (bug #491002)
@@ -268,6 +276,20 @@ multilib_src_install() {
 		systemd_dounit "${FILESDIR}"/winbindd.service
 		systemd_dounit "${FILESDIR}"/samba.service
 	fi
+
+	if use pam && use winbind ; then
+		newpamd "${CONFDIR}/system-auth-winbind.pam" system-auth-winbind
+		# bugs #376853 and #590374
+		insinto /etc/security
+		doins examples/pam_winbind/pam_winbind.conf
+	fi
+
+	keepdir /var/cache/samba
+	keepdir /var/lib/ctdb
+	keepdir /var/lib/samba/{bind-dns,private}
+	keepdir /var/lock/samba
+	keepdir /var/log/samba
+	keepdir /var/run/{ctdb,samba}
 }
 
 multilib_src_test() {
