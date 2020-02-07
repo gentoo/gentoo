@@ -34,19 +34,23 @@ RDEPEND="${COMMON_DEPEND}
 	app-arch/rpm
 	dev-libs/elfutils
 	dev-libs/json-c:0=
-	dev-python/argcomplete[${PYTHON_USEDEP}]
-	dev-python/argh[${PYTHON_USEDEP}]
-	dev-python/humanize[${PYTHON_USEDEP}]
 	sys-apps/util-linux
 	>=sys-devel/gdb-7
+	$(python_gen_cond_dep '
+		dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
+		dev-python/argh[${PYTHON_MULTI_USEDEP}]
+		dev-python/humanize[${PYTHON_MULTI_USEDEP}]
+	')
 "
 DEPEND="${COMMON_DEPEND}
 	app-text/asciidoc
 	app-text/xmlto
-	dev-libs/satyr[${PYTHON_USEDEP}]
 	>=dev-util/intltool-0.35.0
 	virtual/pkgconfig
 	>=sys-devel/gettext-0.17
+	$(python_gen_cond_dep '
+		dev-libs/satyr[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 RESTRICT="test" # tests *may* be broken due to all the RHEL crap.  explore later.
