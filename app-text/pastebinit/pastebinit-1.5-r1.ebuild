@@ -19,7 +19,9 @@ IUSE="crypt"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/configobj[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/configobj[${PYTHON_MULTI_USEDEP}]
+	')
 	crypt? ( app-crypt/gnupg )"
 DEPEND="app-text/docbook-xsl-stylesheets"
 
