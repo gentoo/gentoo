@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-07)
+# Mask until sys-libs/libxcrypt[system] is unmasked
+>=virtual/libcrypt-2
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-05)
 # Blocks dev-python/pygtk removal, bug #706478. Masked for removal in 30 days.
 dev-libs/libappindicator:2
@@ -58,11 +62,11 @@ dev-python/egenix-mx-base
 sci-chemistry/shelx
 
 # Joonas Niilola <juippis@gentoo.org> (2020-02-05)
-# Stagnant upstream with latest release from 2016, python2-only, no maintainer 
-# in Gentoo, no notable ebuild action in years, multiple bugs open. Blocks 
-# pygtk removal. 
-# Switch to alternatives such as, 
-# net-misc/connman, net-misc/dhcpcd, net-misc/netifrc, net-misc/NetworkManager 
+# Stagnant upstream with latest release from 2016, python2-only, no maintainer
+# in Gentoo, no notable ebuild action in years, multiple bugs open. Blocks
+# pygtk removal.
+# Switch to alternatives such as,
+# net-misc/connman, net-misc/dhcpcd, net-misc/netifrc, net-misc/NetworkManager
 # and so on. Removal in ~90 days. #708316
 net-misc/wicd
 
@@ -621,7 +625,7 @@ app-crypt/libykneomgr
 =app-editors/emacs-27.0.50_pre*
 
 # Jonas Stein <jstein@gentoo.org> (2019-12-30)
-# Package masked for removal. Broken SRC_URI, 
+# Package masked for removal. Broken SRC_URI,
 # last upstream activity was ~16 years ago.
 # Bug #704316.
 # Removal after 2020-03-01
