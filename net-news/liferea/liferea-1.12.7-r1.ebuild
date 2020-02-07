@@ -22,7 +22,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2
 	dev-libs/gobject-introspection
 	dev-libs/json-glib
-	dev-libs/libpeas[gtk,python,${PYTHON_USEDEP}]
+	dev-libs/libpeas[gtk,python,${PYTHON_SINGLE_USEDEP}]
 	dev-libs/libxml2:2
 	dev-libs/libxslt
 	gnome-base/gsettings-desktop-schemas
