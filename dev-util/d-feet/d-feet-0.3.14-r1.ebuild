@@ -25,7 +25,9 @@ COMMON_DEPEND="
 RDEPEND="
 	${COMMON_DEPEND}
 	>=dev-libs/glib-2.34:2
-	>=dev-python/pygobject-3.3.91:3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/pygobject-3.3.91:3[${PYTHON_MULTI_USEDEP}]
+	')
 	>=sys-apps/dbus-1
 	X? ( x11-libs/libwnck:3[introspection] )
 "
