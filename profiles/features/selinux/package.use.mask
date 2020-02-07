@@ -37,13 +37,13 @@ net-wireless/bluez user-session
 # SELinux userspace 3.0 dropped python2.7 support
 app-admin/equo python_targets_python2_7
 app-admin/matter python_targets_python2_7
-app-admin/packagekit-base python_targets_python2_7
+app-admin/packagekit-base python_targets_python2_7 python_single_target_python2_7
 app-admin/salt python_targets_python2_7
 app-admin/webapp-config python_targets_python2_7
 app-portage/diffmask python_targets_python2_7
 app-portage/distpatch python_targets_python2_7
 app-portage/elicense python_targets_python2_7
-app-portage/elogviewer python_targets_python2_7
+app-portage/elogviewer python_targets_python2_7 python_single_target_python2_7
 app-portage/euscan python_targets_python2_7
 app-portage/flaggie python_targets_python2_7
 app-portage/g-sorcery python_targets_python2_7
@@ -58,7 +58,7 @@ app-portage/porthole python_targets_python2_7
 app-portage/portpeek python_targets_python2_7
 app-portage/repoman python_targets_python2_7
 app-portage/smart-live-rebuild python_targets_python2_7
-app-portage/unsymlink-lib python_targets_python2_7
+app-portage/unsymlink-lib python_targets_python2_7 python_single_target_python2_7
 dev-java/java-config python_targets_python2_7
 kde-frameworks/frameworkintegration appstream
 net-proxy/http-replicator python_targets_python2_7
