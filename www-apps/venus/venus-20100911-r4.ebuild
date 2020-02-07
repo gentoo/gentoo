@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,13 +19,15 @@ RESTRICT="!test? ( test )"
 SLOT="0"
 
 RDEPEND="
-	dev-python/bsddb3[${PYTHON_USEDEP}]
-	dev-python/chardet[${PYTHON_USEDEP}]
-	dev-python/httplib2[${PYTHON_USEDEP}]
-	dev-python/utidylib[${PYTHON_USEDEP}]
-	django? ( dev-python/django[${PYTHON_USEDEP}] )
-	genshi? ( dev-python/genshi[${PYTHON_USEDEP}] )
-	redland? ( dev-python/rdflib[redland,${PYTHON_USEDEP}] )
+	$(python_gen_cond_dep '
+		dev-python/bsddb3[${PYTHON_MULTI_USEDEP}]
+		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
+		dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
+		dev-python/utidylib[${PYTHON_MULTI_USEDEP}]
+		django? ( dev-python/django[${PYTHON_MULTI_USEDEP}] )
+		genshi? ( dev-python/genshi[${PYTHON_MULTI_USEDEP}] )
+		redland? ( dev-python/rdflib[redland,${PYTHON_MULTI_USEDEP}] )
+	')
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
 
