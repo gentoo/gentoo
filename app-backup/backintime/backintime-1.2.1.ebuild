@@ -19,8 +19,10 @@ IUSE="examples qt5"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/keyring[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/keyring[${PYTHON_MULTI_USEDEP}]
+	')
 	net-misc/openssh
 	net-misc/rsync[xattr,acl]
 "
