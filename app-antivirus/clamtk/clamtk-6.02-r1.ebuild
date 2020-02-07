@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,7 +47,7 @@ RDEPEND="
 	x11-themes/faenza-icon-theme
 	nautilus? (
 		${PYTHON_DEPS}
-		dev-python/nautilus-python[${PYTHON_USEDEP}]
+		dev-python/nautilus-python[${PYTHON_SINGLE_USEDEP}]
 	)
 "
 
