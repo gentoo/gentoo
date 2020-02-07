@@ -31,7 +31,9 @@ CDEPEND="acct-group/suricata
 	net-libs/libnfnetlink
 	dev-libs/nspr
 	dev-libs/nss
-	dev-python/pyyaml[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
+	')
 	>=net-libs/libhtp-0.5.32
 	net-libs/libpcap
 	sys-apps/file
