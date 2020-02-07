@@ -20,12 +20,17 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
-	>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
+	$(python_gen_cond_dep '
+		dev-python/PyQt5[gui,widgets,${PYTHON_MULTI_USEDEP}]
+		>=sys-apps/portage-2.1[${PYTHON_MULTI_USEDEP}]
+	')
+	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_MULTI_USEDEP}]' python2_7)
 "
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+	')
+"
 
 DOC_CONTENTS="In order to use this software, you need to activate
 Portage's elog features.  Required is
