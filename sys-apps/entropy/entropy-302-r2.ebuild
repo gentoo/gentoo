@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,9 @@ RDEPEND=">=app-misc/pax-utils-0.7
 	net-misc/rsync
 	sys-apps/diffutils
 	sys-apps/sandbox
-	>=sys-apps/portage-2.1.9[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=sys-apps/portage-2.1.9[${PYTHON_MULTI_USEDEP}]
+	')
 	sys-devel/gettext
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
