@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -17,10 +17,12 @@ IUSE="boost lua nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
 	app-i18n/pyzy
 	dev-db/sqlite:3
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+	')
 	boost? ( dev-libs/boost )
 	lua? ( =dev-lang/lua-5.1*:= )
 	nls? ( virtual/libintl )"
