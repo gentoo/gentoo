@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,16 +53,18 @@ GROUP_PREFIX="${GANETI_GROUP_PREFIX:-"${USER_PREFIX}"}"
 
 DEPEND="
 	dev-libs/openssl:0
-	dev-python/paramiko[${PYTHON_USEDEP}]
-	dev-python/pyopenssl[${PYTHON_USEDEP}]
-	dev-python/simplejson[${PYTHON_USEDEP}]
-	dev-python/pyparsing[${PYTHON_USEDEP}]
-	dev-python/pyinotify[${PYTHON_USEDEP}]
-	dev-python/pycurl[${PYTHON_USEDEP}]
-	dev-python/ipaddr[${PYTHON_USEDEP}]
-	dev-python/bitarray[${PYTHON_USEDEP}]
-	dev-python/docutils[${PYTHON_USEDEP}]
-	dev-python/fdsend[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/paramiko[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_MULTI_USEDEP}]
+		dev-python/simplejson[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyparsing[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyinotify[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycurl[${PYTHON_MULTI_USEDEP}]
+		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
+		dev-python/bitarray[${PYTHON_MULTI_USEDEP}]
+		dev-python/docutils[${PYTHON_MULTI_USEDEP}]
+		dev-python/fdsend[${PYTHON_MULTI_USEDEP}]
+	')
 	|| (
 		net-misc/iputils[arping]
 		net-analyzer/arping
@@ -140,7 +142,9 @@ RDEPEND="${DEPEND}
 DEPEND+="
 	sys-devel/m4
 	app-text/pandoc
-	<=dev-python/sphinx-1.3.5[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		<=dev-python/sphinx-1.3.5[${PYTHON_MULTI_USEDEP}]
+	')
 	media-fonts/urw-fonts
 	media-gfx/graphviz
 	>=dev-haskell/test-framework-0.6:0=
