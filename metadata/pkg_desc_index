@@ -2489,7 +2489,7 @@ app-text/blogc 0.18.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 3.48.0-r1 4.9.1 4.9.1-r1: Ebook management application
+app-text/calibre 3.48.0-r1 4.9.1 4.9.1-r1 4.10.0: Ebook management application
 app-text/capyt 1.1.1: A python3 CLI utility to interface with cpy.pt paste service
 app-text/catdoc 0.95 0.95-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 1.9.8 1.9.9 2.0.0: Tool for extracting unformatted bibliographic references
@@ -16742,7 +16742,7 @@ sys-apps/biosdisk 0_p20171116: A script that creates floppy boot images to flash
 sys-apps/bleachbit 3.0: Clean junk to free disk space and to maintain privacy
 sys-apps/bolt 0.8-r1: Userspace system daemon to enable security levels for Thunderbolt 3
 sys-apps/bubblewrap 0.3.1-r1: Unprivileged sandboxing tool, namespaces-powered chroot-like solution
-sys-apps/busybox 1.30.1 1.31.1-r1 9999: Utilities for rescue and embedded systems
+sys-apps/busybox 1.30.1 1.31.1-r2 9999: Utilities for rescue and embedded systems
 sys-apps/byld 1.0.3: build a Linux distribution on a single floppy
 sys-apps/cciss_vol_status 1.12: Shows status of logical drives attached to HP SmartArray controllers
 sys-apps/ccs-tools 1.8.3_p20130214: TOMOYO Linux tools
@@ -17581,7 +17581,7 @@ sys-libs/libunwind 1.2.1-r3 1.3.1: Portable and efficient API to determine the c
 sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.1.3 2.2.4 2.2.5 2.2.6: Library implementation for listing vpds
-sys-libs/libxcrypt 2.4 4.4.10-r1 4.4.12: Extended crypt library for descrypt, md5crypt, bcrypt, and others
+sys-libs/libxcrypt 2.4 4.4.10-r1 4.4.12-r1: Extended crypt library for descrypt, md5crypt, bcrypt, and others
 sys-libs/llvm-libunwind 7.1.0 8.0.1 9.0.1 10.0.0_rc1 10.0.0.9999 11.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.5 1.1.6: Multitouch Protocol Translation Library
@@ -17742,7 +17742,7 @@ virtual/leechcraft-task-show 9999: Virtual for plugins that can show IDownloads 
 virtual/leechcraft-trayarea 9999: Virtual for LeechCraft plugins providing a tray area
 virtual/leechcraft-wysiwyg-editor 9999: Virtual for LeechCraft plugins providing WYSIWYG text editor
 virtual/libc 0 1: Virtual for the C library
-virtual/libcrypt 0: Virtual for libcrypt.so
+virtual/libcrypt 1 2: Virtual for libcrypt.so
 virtual/libelf 2 3: Virtual for libelf.so.1 provider dev-libs/elfutils
 virtual/libffi 3.0.10 3.0.11 3.0.13-r1 3.3_rc0: A virtual for the Foreign Function Interface implementation
 virtual/libgudev 215-r3 230 232: Virtual for libgudev providers
