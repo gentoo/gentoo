@@ -152,7 +152,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
-	accessibility? ( dev-python/lxml[${PYTHON_USEDEP}] )
+	accessibility? (
+		$(python_gen_cond_dep '
+			dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	bluetooth? (
 		dev-libs/glib:2
 		net-wireless/bluez
