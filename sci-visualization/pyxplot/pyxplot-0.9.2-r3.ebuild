@@ -24,10 +24,12 @@ RDEPEND="
 	sci-libs/cfitsio
 	sci-libs/fftw:3.0=
 	sci-libs/gsl
-	|| (
-		sci-libs/scipy-python2[${PYTHON_USEDEP}]
-		sci-libs/scipy[${PYTHON_USEDEP}]
-	)
+	$(python_gen_cond_dep '
+		|| (
+			sci-libs/scipy-python2[${PYTHON_MULTI_USEDEP}]
+			sci-libs/scipy[${PYTHON_MULTI_USEDEP}]
+		)
+	')
 	virtual/latex-base
 	virtual/imagemagick-tools
 	${PYTHON_DEPS}"
