@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,12 +18,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	app-arch/par2cmdline
-	dev-python/fuse-python[${PYTHON_USEDEP}]
-	dev-python/pylibacl[${PYTHON_USEDEP}]
-	dev-python/pyxattr[${PYTHON_USEDEP}]
-	web? ( www-servers/tornado[${PYTHON_USEDEP}] )
 	sys-libs/readline:0
-	dev-vcs/git"
+	dev-vcs/git
+	$(python_gen_cond_dep '
+		dev-python/fuse-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pylibacl[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyxattr[${PYTHON_MULTI_USEDEP}]
+		web? ( www-servers/tornado[${PYTHON_MULTI_USEDEP}] )
+	')"
 DEPEND="${RDEPEND}
 	test? (
 		dev-lang/perl
