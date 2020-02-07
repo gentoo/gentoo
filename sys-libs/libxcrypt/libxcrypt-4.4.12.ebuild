@@ -12,7 +12,7 @@ HOMEPAGE="https://github.com/besser82/libxcrypt"
 LICENSE="LGPL-2.1+ public-domain BSD BSD-2"
 SLOT="0/1"
 KEYWORDS="~amd64 ~x86"
-IUSE="+compat split-usr static-libs system test"
+IUSE="+compat split-usr +static-libs system test"
 
 DEPEND="system? (
 		elibc_glibc? ( sys-libs/glibc[-crypt(+)] )
