@@ -14,13 +14,12 @@ HOMEPAGE="https://www.hyperscan.io/ https://github.com/intel/hyperscan"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cpu_flags_x86_ssse3 static-libs"
+IUSE="+cpu_flags_x86_ssse3 static-libs"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-util/ragel
-	dev-libs/boost
-	net-libs/libpcap"
-BDEPEND="${RDEPEND}"
+	dev-libs/boost"
+DEPEND="${RDEPEND}"
+BDEPEND="dev-util/ragel"
 
 REQUIRED_USE="cpu_flags_x86_ssse3 ${PYTHON_REQUIRED_USE}"
 
@@ -36,4 +35,8 @@ src_configure() {
 		-DBUILD_STATIC_AND_SHARED=$(usex static-libs ON OFF)
 	)
 	cmake_src_configure
+}
+
+src_test() {
+	"${BUILD_DIR}"/bin/unit-hyperscan || die
 }
