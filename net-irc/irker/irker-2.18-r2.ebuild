@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,11 @@ RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	app-text/docbook-xml-dtd:4.1.2
 	app-text/xmlto
-	socks5? ( dev-python/PySocks[${PYTHON_USEDEP}] )"
+	socks5? (
+		$(python_gen_cond_dep '
+			dev-python/PySocks[${PYTHON_MULTI_USEDEP}]
+		')
+	)"
 
 DOCS=( NEWS README hacking.txt security.txt )
 HTML_DOCS=( irkerd.html irkerhook.html )
