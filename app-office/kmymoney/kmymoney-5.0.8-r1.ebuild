@@ -83,7 +83,9 @@ COMMON_DEPEND="
 	weboob? (
 		${PYTHON_DEPS}
 		>=dev-qt/qtconcurrent-${QTMIN}:5
-		www-client/weboob[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			www-client/weboob[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 "
 DEPEND="${COMMON_DEPEND}
