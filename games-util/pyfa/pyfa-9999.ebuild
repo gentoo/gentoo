@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -25,21 +25,25 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RESTRICT="mirror bindist"
 
 DEPEND="
-	>=dev-python/cryptography-2.3[${PYTHON_USEDEP}]
-	>=dev-python/logbook-1.0.0[${PYTHON_USEDEP}]
-	>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
-	>=dev-python/sqlalchemy-1.3.0[${PYTHON_USEDEP}]
-	>=dev-python/wxpython-4.0.4[webkit,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/cryptography-2.3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/logbook-1.0.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pyyaml-5.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/sqlalchemy-1.3.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/wxpython-4.0.4[webkit,${PYTHON_MULTI_USEDEP}]
+	')
 	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	>=dev-python/beautifulsoup-4.6.0[${PYTHON_USEDEP}]
-	>=dev-python/markdown2-2.3.0[${PYTHON_USEDEP}]
-	>=dev-python/packaging-16.8[${PYTHON_USEDEP}]
-	dev-python/python-dateutil[${PYTHON_USEDEP}]
-	>=dev-python/requests-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/roman-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/matplotlib-2.0.0[wxwidgets,${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		>=dev-python/beautifulsoup-4.6.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/markdown2-2.3.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/packaging-16.8[${PYTHON_MULTI_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/requests-2.0.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/roman-2.0.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/matplotlib-2.0.0[wxwidgets,${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+	')"
 BDEPEND="app-arch/zip"
 
 PATCHES=(
