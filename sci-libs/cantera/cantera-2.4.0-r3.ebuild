@@ -28,7 +28,9 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	python? (
-		dev-python/numpy[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	<sci-libs/sundials-5.1.0:0=
 "
@@ -39,7 +41,9 @@ DEPEND="
 	dev-libs/boost
 	dev-libs/libfmt
 	python? (
-		dev-python/cython[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/cython[${PYTHON_MULTI_USEDEP}]
+		')
 	)
 	test? (
 		>=dev-cpp/gtest-1.8.0
