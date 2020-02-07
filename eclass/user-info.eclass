@@ -122,7 +122,7 @@ egetshell() {
 egetcomment() {
 	local pos
 
-	[[ $# -eq 1 ]] || die "usage: egetshell <user>"
+	[[ $# -eq 1 ]] || die "usage: egetcomment <user>"
 
 	case ${CHOST} in
 	*-freebsd*|*-dragonfly*)
