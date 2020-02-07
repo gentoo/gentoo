@@ -11883,7 +11883,7 @@ kde-apps/kdeadmin-meta 19.08.3 19.12.2: KDE administration tools - merge this to
 kde-apps/kdebase-meta 19.08.3 19.12.2: Transitional package to pull in plasma-meta plus basic applications
 kde-apps/kdebugsettings 19.08.3 19.12.2: Application to enable/disable qCDebug
 kde-apps/kdecore-meta 19.08.3 19.12.2: kdecore - merge this to pull in the most basic applications
-kde-apps/kdeedu-data 19.08.3 19.12.2: Shared icons, artwork and data files for educational applications
+kde-apps/kdeedu-data 19.08.3-r1 19.12.2-r1: Shared icons, artwork and data files for educational applications
 kde-apps/kdeedu-meta 19.08.3 19.12.2: KDE educational apps - merge this to pull in all kdeedu-derived packages
 kde-apps/kdegames-meta 19.08.3 19.12.2: kdegames - merge this to pull in all kdegames-derived packages
 kde-apps/kdegraphics-meta 19.08.3 19.12.2: kdegraphics - merge this to pull in all kdegraphics-derived packages
