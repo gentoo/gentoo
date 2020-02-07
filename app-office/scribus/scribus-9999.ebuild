@@ -62,7 +62,11 @@ DEPEND="${PYTHON_DEPS}
 	graphicsmagick? ( media-gfx/graphicsmagick:= )
 	osg? ( dev-games/openscenegraph:= )
 	pdf? ( app-text/podofo:0= )
-	scripts? ( dev-python/pillow[tk?,${PYTHON_USEDEP}] )
+	scripts? (
+		$(python_gen_cond_dep '
+			dev-python/pillow[tk?,${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 RDEPEND="${DEPEND}
 	app-text/ghostscript-gpl
