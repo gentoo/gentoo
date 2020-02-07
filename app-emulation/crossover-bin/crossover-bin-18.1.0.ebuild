@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,8 +48,10 @@ BDEPEND="${PYTHON_DEPS}
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
 	!prefix? ( sys-libs/glibc )
-	>=dev-python/pygtk-2.10:2[${PYTHON_USEDEP}]
-	dev-python/dbus-python[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/pygtk-2.10:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+	')
 	dev-util/desktop-file-utils
 	!app-emulation/crossover-office-pro-bin
 	!app-emulation/crossover-office-bin
