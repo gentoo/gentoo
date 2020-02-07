@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -16,12 +16,14 @@ KEYWORDS="amd64 x86"
 IUSE="python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="app-i18n/tomoe[python(+)?,${PYTHON_USEDEP}]
+RDEPEND="app-i18n/tomoe[python(+)?,${PYTHON_SINGLE_USEDEP}]
 	x11-libs/gtk+:2
 	python? (
 		${PYTHON_DEPS}
-		dev-python/pygobject:2[${PYTHON_USEDEP}]
-		dev-python/pygtk:2[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+		')
 	)"
 DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
