@@ -24,9 +24,10 @@ RDEPEND="
 	dev-libs/boost:=[threads]
 	dev-libs/libpcre:3=[pcre16]
 	dev-libs/xerces-c[icu]
-	dev-python/css-parser[${PYTHON_USEDEP}]
-	dev-python/lxml[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep \
+		'dev-python/css-parser[${PYTHON_MULTI_USEDEP}]
+		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		dev-python/six[${PYTHON_MULTI_USEDEP}]')
 	>=dev-qt/qtconcurrent-5.12:5
 	>=dev-qt/qtcore-5.12:5
 	>=dev-qt/qtgui-5.12:5
@@ -34,14 +35,13 @@ RDEPEND="
 	>=dev-qt/qtwebengine-5.12:5[widgets]
 	>=dev-qt/qtwidgets-5.12:5
 	sys-libs/zlib[minizip]
-	plugins? (
-		dev-python/chardet[${PYTHON_USEDEP}]
-		dev-python/cssselect[${PYTHON_USEDEP}]
-		dev-python/cssutils[${PYTHON_USEDEP}]
-		dev-python/html5lib[${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/regex[${PYTHON_USEDEP}]
-	)
+	plugins? ( $(python_gen_cond_dep \
+		'dev-python/chardet[${PYTHON_MULTI_USEDEP}]
+		dev-python/cssselect[${PYTHON_MULTI_USEDEP}]
+		dev-python/cssutils[${PYTHON_MULTI_USEDEP}]
+		dev-python/html5lib[${PYTHON_MULTI_USEDEP}]
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		dev-python/regex[${PYTHON_MULTI_USEDEP}]') )
 	system-mathjax? ( dev-libs/mathjax )
 "
 DEPEND="${RDEPEND}"
