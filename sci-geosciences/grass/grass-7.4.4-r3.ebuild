@@ -25,10 +25,12 @@ IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openm
 
 RDEPEND="${PYTHON_DEPS}
 	>=app-admin/eselect-1.2
-	|| (
-		dev-python/numpy-python2[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-	)
+	$(python_gen_cond_dep '
+		|| (
+			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		)
+	')
 	media-libs/libprojectm
 	sci-libs/gdal
 	sys-libs/gdbm
