@@ -20,9 +20,11 @@ IUSE="examples python static-libs"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/sip[${PYTHON_USEDEP}]
 	dev-libs/protobuf
-	python? ( dev-python/protobuf-python[${PYTHON_USEDEP}] )"
+	$(python_gen_cond_dep '
+		dev-python/sip[${PYTHON_MULTI_USEDEP}]
+		python? ( dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}] )
+	')"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
