@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,9 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/pygame[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pygame[${PYTHON_MULTI_USEDEP}]
+	')
 "
 DEPEND="${RDEPEND}"
 
