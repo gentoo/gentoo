@@ -36,6 +36,10 @@ DEPEND="${RDEPEND}
 	)
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-meson-Generate-cmake-config-and-version-files-if-mes.patch
+)
+
 MULTILIB_CHOST_TOOLS=(
 	/usr/bin/wflinfo$(get_exeext)
 )
