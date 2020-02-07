@@ -8817,6 +8817,7 @@ www-servers/nginx-unit:php5-6 - Support for PHP 5.6
 www-servers/nginx-unit:php7-1 - Support for PHP 7.1
 www-servers/nginx-unit:php7-2 - Support for PHP 7.2
 www-servers/nginx-unit:php7-3 - Support for PHP 7.3
+www-servers/nginx-unit:php7-4 - Support for PHP 7.4
 www-servers/pshs:magic - Enable automatic detection of Content-Type using libmagic (sys-apps/file)
 www-servers/pshs:netlink - Use libnetlink (sys-apps/iproute2) to get network interface addresses
 www-servers/pshs:qrcode - Enable generating QRCodes for server URL

@@ -4884,7 +4884,7 @@ dev-libs/hiredis 0.13.3 0.14.0: Minimalistic C client library for the Redis data
 dev-libs/hsa-ext-rocr 1.1.9.122 1.1.9.139: Proprietary image-support library for Radeon Open Compute
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
-dev-libs/hyperscan 5.1.0 5.1.1 5.2.0: High-performance regular expression matching library
+dev-libs/hyperscan 5.1.0 5.1.1 5.2.0 5.2.1: High-performance regular expression matching library
 dev-libs/hyphen 2.8.8 2.8.8-r1: ALTLinux hyphenation library
 dev-libs/icu 65.1: International Components for Unicode
 dev-libs/icu-layoutex 65.1: External layout part of International Components for Unicode
@@ -18094,7 +18094,7 @@ www-servers/lighttpd 1.4.53 1.4.54 9999: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.16.1-r1 1.17.7 1.17.8: Robust, small and high performance http and reverse proxy server
-www-servers/nginx-unit 1.8.0 1.12.0-r3 1.13.0 1.14.0: Dynamic web and application server
+www-servers/nginx-unit 1.8.0 1.12.0-r3 1.13.0 1.14.0 1.15.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.3 9999: Pretty small HTTP server -- a command-line tool to share files
