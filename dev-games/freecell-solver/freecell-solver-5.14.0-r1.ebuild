@@ -18,9 +18,11 @@ IUSE="tcmalloc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/pysol_cards[${PYTHON_USEDEP}]
-	dev-python/random2[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pysol_cards[${PYTHON_MULTI_USEDEP}]
+		dev-python/random2[${PYTHON_MULTI_USEDEP}]
+		dev-python/six[${PYTHON_MULTI_USEDEP}]
+	')
 	tcmalloc? ( dev-util/google-perftools )
 "
 DEPEND="${RDEPEND}
