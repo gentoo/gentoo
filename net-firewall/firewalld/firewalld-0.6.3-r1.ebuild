@@ -18,19 +18,21 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	!!net-firewall/gshield
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/decorator[${PYTHON_USEDEP}]
-	>=dev-python/python-slip-0.2.7[dbus,${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
 	|| ( net-firewall/ebtables net-firewall/iptables[nftables] )
 	net-firewall/iptables[ipv6]
 	net-firewall/ipset
 	net-firewall/nftables
 	|| ( >=sys-apps/openrc-0.11.5 sys-apps/systemd )
-	gui? (
-		x11-libs/gtk+:3
-		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
-	)"
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/decorator[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/python-slip-0.2.7[dbus,${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		gui? (
+			x11-libs/gtk+:3
+			dev-python/PyQt5[gui,widgets,${PYTHON_MULTI_USEDEP}]
+		)
+	')"
 DEPEND="${RDEPEND}
 	dev-libs/glib:2
 	>=dev-util/intltool-0.35
