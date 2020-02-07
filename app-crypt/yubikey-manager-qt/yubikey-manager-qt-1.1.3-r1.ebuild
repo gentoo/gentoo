@@ -17,10 +17,12 @@ KEYWORDS="~amd64"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 DEPEND="${PYTHON_DEPS}
-	>=app-crypt/yubikey-manager-1.0.0[${PYTHON_USEDEP}]
-	<app-crypt/yubikey-manager-4.0.0[${PYTHON_USEDEP}]
-	dev-python/cryptography[${PYTHON_USEDEP}]
-	dev-python/pyotherside[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=app-crypt/yubikey-manager-1.0.0[${PYTHON_MULTI_USEDEP}]
+		<app-crypt/yubikey-manager-4.0.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/cryptography[${PYTHON_MULTI_USEDEP}]
+	')
+	dev-python/pyotherside[${PYTHON_SINGLE_USEDEP}]
 	dev-qt/qtcore:5
 	dev-qt/qtdeclarative:5
 	dev-qt/qtgraphicaleffects:5
