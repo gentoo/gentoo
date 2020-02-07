@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -20,7 +20,9 @@ IUSE="+nls"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	app-i18n/ibus[python(+),${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
+	')
 	~app-i18n/sunpinyin-${PV}:=
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}
