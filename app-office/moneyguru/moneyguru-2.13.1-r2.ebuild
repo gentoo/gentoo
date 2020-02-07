@@ -21,11 +21,15 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="${PYTHON_DEPS}
 	dev-db/sqlite:3
 	dev-libs/glib:2
-	dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets,printsupport]
+	$(python_gen_cond_dep '
+		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},gui,widgets,printsupport]
+	')
 	dev-qt/qttranslations"
 DEPEND="${RDEPEND}
 	test? (
-		<dev-python/pytest-4[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			<dev-python/pytest-4[${PYTHON_MULTI_USEDEP}]
+		')
 		dev-util/cunit
 	)"
 
