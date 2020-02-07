@@ -3,13 +3,13 @@
 
 EAPI=7
 
-inherit kde.org
+inherit kde.org cmake
 
 DESCRIPTION="Shared icons, artwork and data files for educational applications"
 
 LICENSE="GPL-2"
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="amd64 arm64 x86"
 IUSE=""
 
 BDEPEND="
