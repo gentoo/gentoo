@@ -3156,7 +3156,7 @@ dev-cpp/libxsd-frontend 2.0.0: A compiler frontend for the W3C XML Schema defini
 dev-cpp/lucene++ 3.0.7-r1 3.0.7-r2: C++ port of Lucene library, a high-performance, full-featured text search engine
 dev-cpp/metslib 0.5.3: Metaheuristic modeling framework and optimization toolkit
 dev-cpp/mm-common 0.9.12: Build infrastructure and utilities for GNOME C++ bindings
-dev-cpp/ms-gsl 2.0.0 9999: Guideline Support Library implementation by Microsoft
+dev-cpp/ms-gsl 2.0.0 2.1.0 9999: Guideline Support Library implementation by Microsoft
 dev-cpp/muParser 2.2.5 2.2.6.1: Library for parsing mathematical expressions
 dev-cpp/nlohmann_json 3.6.1-r1 3.7.0 3.7.3: JSON for Modern C++
 dev-cpp/pangomm 2.42.0: C++ interface for pango
@@ -7775,8 +7775,8 @@ dev-python/flipflop 1.0: A FastCGI/WSGI gateway
 dev-python/flit 2.1.0: Simplified packaging of Python modules
 dev-python/flit_core 2.1.0: Simplified packaging of Python modules (core module)
 dev-python/flower 0.9.1-r1: Real-time monitor and web admin for Celery distributed task queue
-dev-python/flufl-bounce 3.0: Email bounce detectors.
-dev-python/flufl-i18n 2.0.1: A high level API for Python internationalization.
+dev-python/flufl-bounce 3.0 3.0.1: Email bounce detectors.
+dev-python/flufl-i18n 2.0.1 2.0.2: A high level API for Python internationalization.
 dev-python/flufl-lock 3.2: NFS-safe file locking with timeouts for POSIX systems.
 dev-python/flup 1.0.2-r1: Random assortment of WSGI servers
 dev-python/fonttools 3.44.0 4.0.1 4.1.0: Library for manipulating TrueType, OpenType, AFM and Type1 fonts
@@ -14559,7 +14559,7 @@ net-im/skypeforlinux 8.55.0.123 8.55.0.141 8.56.0.103-r2: Instant messaging clie
 net-im/slack-bin 4.1.1 4.3.2-r1: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
-net-im/telegram-desktop 1.9.8 1.9.9: Official desktop client for Telegram
+net-im/telegram-desktop 1.9.8 1.9.9 1.9.10: Official desktop client for Telegram
 net-im/telegram-desktop-bin 1.9.7 1.9.8 1.9.9: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
