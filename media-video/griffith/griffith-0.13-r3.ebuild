@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,12 +22,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-python/pillow[${PYTHON_USEDEP}]
-	gnome-base/libglade[${PYTHON_USEDEP}]
-	>=dev-python/pygtk-2.6.1:2[${PYTHON_USEDEP}]
-	dev-python/pygobject:2[${PYTHON_USEDEP}]
-	>=dev-python/sqlalchemy-0.5.2[${PYTHON_USEDEP}]
-	>=dev-python/reportlab-1.19[${PYTHON_USEDEP}]"
+	gnome-base/libglade[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygtk-2.6.1:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/sqlalchemy-0.5.2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/reportlab-1.19[${PYTHON_MULTI_USEDEP}]
+	')"
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook2X )"
 
