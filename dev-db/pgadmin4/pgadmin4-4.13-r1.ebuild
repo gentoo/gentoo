@@ -29,35 +29,41 @@ COMMON_DEPEND="${PYTHON_DEPS}
 "
 
 DEPEND="${COMMON_DEPEND}
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	doc? (
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 
 RDEPEND="${COMMON_DEPEND}
-	>=app-text/htmlmin-0.1.12[${PYTHON_USEDEP}]
-	>=dev-python/blinker-1.4[${PYTHON_USEDEP}]
-	>=dev-python/flask-1.0.2[${PYTHON_USEDEP}]
-	>=dev-python/flask-gravatar-0.5.0[${PYTHON_USEDEP}]
-	>=dev-python/flask-htmlmin-1.5.0[${PYTHON_USEDEP}]
-	>=dev-python/flask-login-0.4.1[${PYTHON_USEDEP}]
-	>=dev-python/flask-mail-0.9.1[${PYTHON_USEDEP}]
-	>=dev-python/flask-migrate-2.4.0[${PYTHON_USEDEP}]
-	>=dev-python/flask-paranoid-0.2.0[${PYTHON_USEDEP}]
-	>=dev-python/flask-principal-0.4.0[${PYTHON_USEDEP}]
-	>=dev-python/flask-security-3.0.0[${PYTHON_USEDEP}]
-	>=dev-python/flask-sqlalchemy-2.3.2[${PYTHON_USEDEP}]
-	>=dev-python/flask-wtf-0.14.2[${PYTHON_USEDEP}]
-	>=dev-python/passlib-1.7.1[${PYTHON_USEDEP}]
-	>=dev-python/psutil-5.5.1[${PYTHON_USEDEP}]
-	>=dev-python/psycopg-2.8[${PYTHON_USEDEP}]
-	>=dev-python/python-dateutil-2.8.0[${PYTHON_USEDEP}]
-	>=dev-python/python-sqlparse-0.2.4[${PYTHON_USEDEP}]
-	>=dev-python/pytz-2018.9[${PYTHON_USEDEP}]
-	>=dev-python/simplejson-3.16.0[${PYTHON_USEDEP}]
-	>=dev-python/six-1.12.0[${PYTHON_USEDEP}]
-	>=dev-python/speaklater-1.3[${PYTHON_USEDEP}]
-	>=dev-python/sqlalchemy-1.2.18[${PYTHON_USEDEP}]
-	>=dev-python/sshtunnel-0.1.4[${PYTHON_USEDEP}]
-	>=dev-python/wtforms-2.2.1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=app-text/htmlmin-0.1.12[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/blinker-1.4[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-1.0.2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-gravatar-0.5.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-htmlmin-1.5.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-login-0.4.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-mail-0.9.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-migrate-2.4.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-paranoid-0.2.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-principal-0.4.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-security-3.0.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-sqlalchemy-2.3.2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/flask-wtf-0.14.2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/passlib-1.7.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/psutil-5.5.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/psycopg-2.8[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/python-dateutil-2.8.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/python-sqlparse-0.2.4[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pytz-2018.9[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/simplejson-3.16.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/six-1.12.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/speaklater-1.3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/sqlalchemy-1.2.18[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/sshtunnel-0.1.4[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/wtforms-2.2.1[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 S="${WORKDIR}"/${P}/runtime
