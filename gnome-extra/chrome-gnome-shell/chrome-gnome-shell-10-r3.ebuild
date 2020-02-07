@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit cmake-utils python-single-r1
 
@@ -13,7 +13,7 @@ SRC_URI="mirror://gnome/sources/${PN}/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 x86"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
@@ -23,8 +23,10 @@ DEPEND="${PYTHON_DEPS}
 	sys-apps/coreutils
 "
 RDEPEND="${PYTHON_DEPS}
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+	')
 	gnome-base/gnome-shell
 "
 
