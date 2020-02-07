@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit autotools usr-ldscript multibuild python-any-r1 multilib-minimal
+inherit autotools multibuild python-any-r1 usr-ldscript multilib-minimal
 
 DESCRIPTION="Extended crypt library for descrypt, md5crypt, bcrypt, and others "
 SRC_URI="https://github.com/besser82/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -26,6 +26,8 @@ BDEPEND="sys-apps/findutils
 	)"
 
 RESTRICT="!test? ( test )"
+
+REQUIRED_USE="split-usr? ( system )"
 
 PATCHES=(
 	"${FILESDIR}/libxcrypt-4.4.12-pythonver.patch"
@@ -109,8 +111,6 @@ src_install() {
 		done
 	) || die "failglob error"
 
-	gen_usr_ldscript libxcrypt.so $(usex system 'libcrypt.so' '')
-
 	# remove useless stuff from installation
 	find "${D}"/usr/share/doc/${PF} -type l -delete || die
 	find "${D}" -name '*.la' -delete || die
@@ -128,30 +128,38 @@ multilib_src_install() {
 		xcrypt_nocompat-*)
 			if use split-usr; then
 				(
-					shopt -s failglob || die "failglob failed"
+					if use static-libs; then
+						# .a files are installed to /$(get_libdir) by default
+						# move static libraries to /usr prefix or portage will abort
+						shopt -s nullglob || die "failglob failed"
+						static_libs=( "${ED}"/$(get_xclibdir)/*.a )
 
-					for so_file in "${D}"$(get_xclibdir)/*$(get_libname)*; do
-						so_file=$(basename "${so_file}") || die
+						if [[ -n ${static_libs[*]} ]]; then
+							dodir "/usr/$(get_xclibdir)"
+							mv "${static_libs[@]}" "${D}/usr/$(get_xclibdir)" \
+								|| die "moving static libs failed"
+						fi
+					fi
 
-						dosym ../../$(usex system '' '../')$(get_libdir)$(usex system '' '/xcrypt')/${so_file} \
-							/usr/$(get_libdir)/$(usex system '' 'xcrypt/')${so_file}
-					done
-				) || die "symlinking library failure"
+					if use system; then
+						# now try to find libraries and make sure to generate
+						# ldscripts for them
+						shopt -s failglob || die "failglob failed"
+
+						for lib_file in "${ED}"$(get_xclibdir)/*$(get_libname); do
+							libname="$(basename "${lib_file}")"
+
+							cp -L "${lib_file}" \
+								"${ED}/usr/$(get_xclibdir)/${libname}" \
+								|| die "copying ${libname} failed"
+
+							gen_usr_ldscript ${libname}
+							dosym ${libname} /usr/$(get_xclibdir)/${libname}.2
+						done
+					fi
+				)
 			fi
 		;;
 		*) die "Unexpected MULTIBUILD_ID: ${MULTIBUILD_ID}";;
 	esac
-
-	# .a files are installed to /$(get_libdir) by default
-	if use static-libs; then
-		(
-			shopt -s nullglob || die "nullglob failed"
-			static_libs=( "${D}"/$(get_xclibdir)/*.a )
-
-			if [[ -n ${static_libs[*]} ]]; then
-				mv "${static_libs[@]}" "${D}/usr/$(get_xclibdir)" \
-					|| die "moving static libs failed"
-			fi
-		)
-	fi
 }
