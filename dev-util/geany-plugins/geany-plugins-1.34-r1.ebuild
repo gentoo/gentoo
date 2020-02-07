@@ -13,25 +13,22 @@ SRC_URI="https://plugins.geany.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ia64 ppc ppc64 sparc x86"
 
-IUSE="+gtk3 ctags debugger enchant git gpg gtkspell lua markdown multiterm nls pretty-printer python scope soup workbench"
+IUSE="+gtk3 ctags debugger enchant git gpg gtkspell lua markdown multiterm nls pretty-printer python scope soup"
 REQUIRED_USE="
-	gtk3? ( !multiterm !python )
+	gtk3? ( !debugger !multiterm !python )
 	!gtk3? ( !markdown )
 	python? ( ${PYTHON_REQUIRED_USE} )
 "
 
-DEPEND="
+COMMON_DEPEND="
 	dev-libs/glib:2
-	>=dev-util/geany-1.35[gtk3=]
+	>=dev-util/geany-1.34[gtk3=]
 	gtk3? ( x11-libs/gtk+:3 )
 	!gtk3? ( x11-libs/gtk+:2 )
 	ctags? ( dev-util/ctags )
-	debugger? (
-		gtk3? ( x11-libs/vte:2.91 )
-		!gtk3? ( x11-libs/vte:0 )
-		)
+	debugger? ( x11-libs/vte:0 )
 	enchant? ( app-text/enchant:= )
 	git? ( dev-libs/libgit2:= )
 	gpg? ( app-crypt/gpgme:1= )
@@ -42,7 +39,7 @@ DEPEND="
 	lua? ( dev-lang/lua:0= )
 	markdown? (
 		app-text/discount
-		net-libs/webkit-gtk:4
+		net-libs/webkit-gtk
 		)
 	multiterm? (
 		$(vala_depend)
@@ -50,7 +47,9 @@ DEPEND="
 		)
 	pretty-printer? ( dev-libs/libxml2:2 )
 	python? (
-		dev-python/pygtk[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+		')
 		${PYTHON_DEPS}
 		)
 	scope? (
@@ -58,11 +57,11 @@ DEPEND="
 		!gtk3? ( x11-libs/vte:0 )
 		)
 	soup? ( net-libs/libsoup:2.4 )
-	workbench? ( dev-libs/libgit2:= )
 "
-RDEPEND="${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	scope? ( sys-devel/gdb )
 "
+DEPEND="${COMMON_DEPEND}"
 BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
@@ -110,6 +109,7 @@ src_configure() {
 		--enable-tableconvert
 		--enable-treebrowser
 		--enable-vimode
+		--enable-workbench
 		--enable-xmlsnippets
 		$(use_enable debugger)
 		$(use_enable ctags geanyctags)
@@ -126,7 +126,6 @@ src_configure() {
 		$(use_enable enchant spellcheck)
 		# Having updatechecker… when you’re using a package manager?
 		$(use_enable soup updatechecker)
-		$(use_enable workbench)
 		# GeanyGenDoc requires ctpl which isn’t yet in portage
 		--disable-geanygendoc
 		# Require obsolete and vulnerable webkit-gtk versions
