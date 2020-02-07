@@ -20,7 +20,9 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/pugixml
-	dev-python/sip[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/sip[${PYTHON_MULTI_USEDEP}]
+	')"
 
 DEPEND="${RDEPEND}"
 
