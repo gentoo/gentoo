@@ -20,13 +20,15 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 LANGS="cs de en_CA en_GB es fr hu id it ja ko nb nn_NO pl pt_BR ro ru sl sv uk zh_CN zh_TW"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	|| (
-		dev-python/numpy-python2[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-	)
-	>=dev-python/pycairo-1.4[${PYTHON_USEDEP}]
-	dev-python/protobuf-python[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		|| (
+			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		)
+		>=dev-python/pycairo-1.4[${PYTHON_MULTI_USEDEP}]
+		dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}]
+	')
 	>=dev-libs/json-c-0.11:=
 	media-libs/lcms:2
 	>=media-libs/libmypaint-1.3.0
