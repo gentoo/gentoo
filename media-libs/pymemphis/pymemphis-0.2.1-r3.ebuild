@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,8 +20,10 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/pygobject:2[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
+	')
 	media-libs/memphis"
 DEPEND="${RDEPEND}"
 
