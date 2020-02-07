@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Pagano <mpagano@gentoo.org> (2020-02-07)
+# The standalone ebuild for this driver is made
+# unnecessary as it is included in the package:
+# sys-kernel/linux-firmware
+sys-firmware/iwl6050-ucode
+
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-07)
 # Mask until sys-libs/libxcrypt[system] is unmasked
 >=virtual/libcrypt-2
