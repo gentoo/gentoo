@@ -17,7 +17,7 @@ SRC_URI="https://github.com/edyoung/${PN}/archive/${COMMIT}.tar.gz -> ${P}.tar.g
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+doc"
 REQUIRED_USE="test? ( doc )"
 
