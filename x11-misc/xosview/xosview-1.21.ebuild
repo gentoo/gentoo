@@ -37,7 +37,7 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${D%/}/usr" install
+	emake PREFIX="${D}/usr" install
 	use suid && fperms 4755 /usr/bin/${PN}
 	insinto /usr/share/X11/app-defaults
 	newins Xdefaults XOsview
