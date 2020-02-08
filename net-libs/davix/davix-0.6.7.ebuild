@@ -40,7 +40,6 @@ REQUIRED_USE="test? ( tools )"
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DDOC_INSTALL_DIR="${EPREFIX}/usr/share/doc/${P}"
 		-DENABLE_HTML_DOCS=$(usex doc)
 		-DENABLE_IPV6=$(usex ipv6)
