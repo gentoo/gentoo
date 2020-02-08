@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Manages configuration of TiMidity++ patchsets"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/timidity.eselect-${PVR}.bz2"
 
 LICENSE="GPL-2"
