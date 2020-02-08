@@ -8,7 +8,7 @@ inherit desktop gnome2-utils qt5-build
 DESCRIPTION="Graphical tool for translating Qt applications"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~arm x86"
+	KEYWORDS="x86"
 fi
 
 IUSE=""

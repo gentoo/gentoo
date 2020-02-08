@@ -7,7 +7,7 @@ inherit qt5-build
 DESCRIPTION="Multimedia (audio, video, radio, camera) library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="arm x86"
+	KEYWORDS="x86"
 fi
 
 IUSE="alsa gles2 gstreamer openal pulseaudio qml widgets"

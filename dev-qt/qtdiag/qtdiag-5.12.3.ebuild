@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="Tool for reporting diagnostic information about Qt and its environment"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~arm ~x86"
+	KEYWORDS="~x86"
 fi
 
 IUSE="+network +widgets"
