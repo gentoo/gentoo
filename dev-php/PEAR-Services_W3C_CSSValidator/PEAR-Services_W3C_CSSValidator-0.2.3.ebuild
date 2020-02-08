@@ -7,7 +7,7 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Provides an object oriented interface for the W3 CSS Validator"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/Services_W3C_CSSValidator"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="BSD"
 SLOT="0"
