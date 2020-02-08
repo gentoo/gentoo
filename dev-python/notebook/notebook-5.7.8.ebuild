@@ -112,5 +112,5 @@ python_install() {
 
 pkg_preinst() {
 	# remove old mathjax folder if present
-	rm -rf "${EROOT%/}"/usr/lib*/python*/site-packages/notebook/static/components/MathJax || die
+	rm -rf "${EROOT}"/usr/lib*/python*/site-packages/notebook/static/components/MathJax || die
 }
