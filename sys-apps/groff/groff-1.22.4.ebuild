@@ -43,7 +43,7 @@ src_prepare() {
 	default
 
 	# honor Gentoo's docdir
-	sed -i -e "s|^docdir =.*|docdir = \"${EPREFIX%/}/usr/share/doc/${PF}\"|g" \
+	sed -i -e "s|^docdir =.*|docdir = \"${EPREFIX}/usr/share/doc/${PF}\"|g" \
 		Makefile.in \
 		|| die "failed to modify Makefile.in"
 
@@ -61,7 +61,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--with-appresdir="${EPREFIX%/}"/usr/share/X11/app-defaults
+		--with-appresdir="${EPREFIX}"/usr/share/X11/app-defaults
 		$(use_with X x)
 	)
 	econf "${myeconfargs[@]}"
