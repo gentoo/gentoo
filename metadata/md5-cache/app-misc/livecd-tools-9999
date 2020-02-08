@@ -2,10 +2,10 @@ DEFINED_PHASES=install setup unpack
 DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Gentoo LiveCD tools for autoconfiguration of hardware
 EAPI=6
-HOMEPAGE=https://www.gentoo.org
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=dev-util/dialog net-dialup/mingetty >=sys-apps/baselayout-2 >=sys-apps/openrc-0.8.2-r1 sys-apps/pciutils sys-apps/gawk sys-apps/sed
 SLOT=0
 _eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33
-_md5_=d7ff4999c024fea3d754a5390d56268d
+_md5_=81160fa874ed9e6b862136d54acc09cd

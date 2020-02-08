@@ -2,10 +2,10 @@ DEFINED_PHASES=install postinst preinst prepare setup unpack
 DEPEND=>=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=Filesystem baselayout and init scripts
 EAPI=6
-HOMEPAGE=https://www.gentoo.org/
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 IUSE=build kernel_FreeBSD kernel_linux +split-usr
 LICENSE=GPL-2
 PROPERTIES=live
 SLOT=0
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=754097acbe1f528e2abc83a1aa1d155f
+_md5_=460a2d0a3b80fe5aadca8546630d9953

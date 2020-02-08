@@ -2,11 +2,11 @@ DEFINED_PHASES=install postinst
 DEPEND=app-arch/unzip app-arch/xz-utils
 DESCRIPTION=Utility to change the OpenCL implementation being used
 EAPI=5
-HOMEPAGE=https://www.gentoo.org/
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 KEYWORDS=amd64 ~arm64 x86
 LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.4
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~xarthisius/distfiles/eselect-opencl-1.1.0-r1.tar.xz https://github.com/KhronosGroup/OpenCL-Headers/archive/opencl10.zip https://github.com/KhronosGroup/OpenCL-Headers/archive/opencl11.zip https://github.com/KhronosGroup/OpenCL-Headers/archive/opencl12.zip https://github.com/KhronosGroup/OpenCL-Headers/archive/opencl20.zip https://github.com/KhronosGroup/OpenCL-Headers/archive/opencl21.zip http://packages.gentooexperimental.org/opencl-cpp-headers.tar
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=e76a027576c85d06d7c75556a9d6a5d5
+_md5_=4f164e330ae5e2d4e467963ef03b5a25

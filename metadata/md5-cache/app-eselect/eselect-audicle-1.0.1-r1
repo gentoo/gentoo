@@ -1,10 +1,10 @@
 DEFINED_PHASES=install prepare
 DESCRIPTION=Manages the /usr/bin/audicle symlink
 EAPI=6
-HOMEPAGE=https://www.gentoo.org/
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.3
 SLOT=0
 SRC_URI=mirror://gentoo/audicle.eselect-1.0.1.bz2
-_md5_=2b192cbfe2c6335aa24022a5653c8a9b
+_md5_=f8101601f0d6c07af73409c6eea0cb5d

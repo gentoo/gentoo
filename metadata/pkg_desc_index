@@ -4938,7 +4938,7 @@ dev-libs/libbrahe 1.1.0-r1: A Heterogenous C Library of Numeric Functions
 dev-libs/libbsd 0.10.0: An library to provide useful functions commonly found on BSD systems
 dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0 1.13.1 1.14.0 1.15.1: Library routines related to building,parsing and iterating BSON documents
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
-dev-libs/libburn 1.5.0 1.5.2 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
+dev-libs/libburn 1.5.0 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 1.4 2.1 2.2: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
 dev-libs/libcdio 0.93 0.94-r1 1.1.0 2.0.0 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
@@ -17417,7 +17417,7 @@ sys-fs/extundelete 0.2.4: A utility to undelete files from an ext3 or ext4 parti
 sys-fs/f2fs-tools 1.13.0: Tools for Flash-Friendly File System (F2FS)
 sys-fs/fatcat 1.0.6 1.1.0: FAT filesystems explore, extract, repair, and forensic tool
 sys-fs/fatresize 1.0.4: Resize FAT partitions using libparted
-sys-fs/fatsort 1.5.0: Sorts files on FAT16/32 partitions, ideal for basic audio players
+sys-fs/fatsort 1.5.0 1.6.2.605: Sorts files on FAT16/32 partitions, ideal for basic audio players
 sys-fs/fragview 0.1.1 9999: Disk fragmentation visualizer based on FIEMAP and FIBMAP ioctls
 sys-fs/fuse 2.9.8 2.9.9-r1 3.8.0 3.9.0: An interface for filesystems implemented in userspace
 sys-fs/fuse-common 3.2.6 3.8.0 3.9.0: Common files for multiple slots of sys-fs/fuse

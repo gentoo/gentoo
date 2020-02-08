@@ -1,10 +1,10 @@
 DEFINED_PHASES=compile install prepare
 DESCRIPTION=Traceroute with AS lookup, TOS support, MTU discovery and other features
 EAPI=7
-HOMEPAGE=https://www.gentoo.org/
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 KEYWORDS=~amd64 ~arm ~ppc ~x86
 LICENSE=BSD
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jer/traceroute-nanog_6.4.2.orig.tar.gz https://dev.gentoo.org/~jer/traceroute-nanog_6.4.2-1.diff.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0b9ba232f69fbe5a047e946aa271b768
+_md5_=b28d72c3ddab88f1fdd7d3384e17b07d
