@@ -15,7 +15,7 @@ SRC_URI="mirror://sourceforge/eric-ide/${PN}6/stable/${PV}/${MY_P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="6"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="spell"
 
 DEPEND="
