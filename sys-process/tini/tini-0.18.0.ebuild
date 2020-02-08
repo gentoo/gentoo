@@ -52,8 +52,8 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 	if use static; then
-		mv "${ED%/}"/usr/bin/{${PN}-static,${PN}} || die
+		mv "${ED}"/usr/bin/{${PN}-static,${PN}} || die
 	else
-		rm "${ED%/}"/usr/bin/${PN}-static || die
+		rm "${ED}"/usr/bin/${PN}-static || die
 	fi
 }
