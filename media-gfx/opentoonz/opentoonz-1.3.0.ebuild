@@ -52,8 +52,8 @@ CMAKE_USE_DIR="${S}"/toonz/sources
 src_configure() {
 	local mycmakeargs=(
 		-DTIFF_LIBRARY="${S}/thirdparty/tiff-4.0.3/libtiff/.libs/libtiff.a"
-		-DSUPERLU_INCLUDE_DIR="${EPREFIX%/}/usr/include/superlu"
-		-DLZO_INCLUDE_DIR="${EPREFIX%/}/usr/include/lzo"
+		-DSUPERLU_INCLUDE_DIR="${EPREFIX}/usr/include/superlu"
+		-DLZO_INCLUDE_DIR="${EPREFIX}/usr/include/lzo"
 		-DCMAKE_SKIP_RPATH=ON
 	)
 
