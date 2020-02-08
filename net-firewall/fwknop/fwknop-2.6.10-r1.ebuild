@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,6 +6,7 @@ EAPI=7
 # Python extension supports only Python 2.
 # See https://github.com/mrash/fwknop/issues/167
 PYTHON_COMPAT=( python2_7 )
+DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_OPTIONAL=1
 
 inherit autotools distutils-r1 eutils linux-info readme.gentoo-r1 systemd
@@ -21,7 +22,7 @@ IUSE="+client extras firewalld gdbm gpg +iptables nfqueue python +server udp-ser
 
 DEPEND="
 	client? ( net-misc/wget[ssl] )
-	firewalld? ( net-firewall/firewalld[${PYTHON_USEDEP}] )
+	firewalld? ( net-firewall/firewalld[${PYTHON_SINGLE_USEDEP}] )
 	gdbm? ( sys-libs/gdbm )
 	gpg? (
 		app-crypt/gpgme
@@ -53,6 +54,11 @@ fwknopd supports several backends: firewalld, iptables, ipfw, pf, ipf.
 You can set the desired backend via FIREWALL_EXE option in fwknopd.conf
 instead of the default one chosen at compile time.
 "
+
+pkg_setup() {
+	linux-info_pkg_setup
+	python-single-r1_pkg_setup
+}
 
 src_prepare() {
 	default_src_prepare
