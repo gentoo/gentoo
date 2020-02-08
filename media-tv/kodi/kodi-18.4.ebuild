@@ -308,11 +308,11 @@ src_test() {
 src_install() {
 	cmake_src_install
 
-	pax-mark Em "${ED%/}"/usr/$(get_libdir)/${PN}/${PN}.bin
+	pax-mark Em "${ED}"/usr/$(get_libdir)/${PN}/${PN}.bin
 
 	newicon media/icon48x48.png kodi.png
 
-	rm "${ED%/}"/usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf || die
+	rm "${ED}"/usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf || die
 	dosym ../../../../fonts/roboto/Roboto-Thin.ttf \
 		usr/share/kodi/addons/skin.estuary/fonts/Roboto-Thin.ttf
 
