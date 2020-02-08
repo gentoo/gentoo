@@ -10,7 +10,7 @@ DIST_EXAMPLES=("samples/*")
 inherit wxwidgets virtualx perl-module
 
 DESCRIPTION="Perl bindings for wxGTK"
-HOMEPAGE="http://wxperl.sourceforge.net/ ${HOMEPAGE}"
+HOMEPAGE="http://wxperl.sourceforge.net/ https://metacpan.org/release/Wx"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
