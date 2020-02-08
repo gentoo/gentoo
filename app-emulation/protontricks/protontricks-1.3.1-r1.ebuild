@@ -19,7 +19,9 @@ IUSE="+gui"
 
 RDEPEND="${PYTHON_DEPS}
 	app-emulation/winetricks
-	dev-python/vdf[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/vdf[${PYTHON_MULTI_USEDEP}]
+	')
 	gui? ( gnome-extra/zenity
 		|| (
 			app-emulation/winetricks[gtk]
