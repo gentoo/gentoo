@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Manages the /usr/bin/vi symlink"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.xz"
 
 LICENSE="GPL-2"
