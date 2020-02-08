@@ -4,7 +4,7 @@
 EAPI="6"
 
 DESCRIPTION="Init script to setup Amazon EC2 instance parameters"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI=""
 
 # Amazon only provides x86 and amd64 Linux Xen guests, possibly FreeBSD,
