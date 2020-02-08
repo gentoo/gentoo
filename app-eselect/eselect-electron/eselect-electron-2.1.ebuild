@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Utility to select the default Electron slot"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://github.com/elprans/${PN}/archive/v${PV}.tar.gz -> eselect-electron-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
