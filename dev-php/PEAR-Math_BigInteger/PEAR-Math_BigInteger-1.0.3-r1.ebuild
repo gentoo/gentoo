@@ -7,7 +7,8 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Pure-PHP arbitrary precision integer arithmetic library"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}
+HOMEPAGE="
+	https://pear.php.net/package/Math_BigInteger
 	http://phpseclib.sourceforge.net/documentation/math.html"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="MIT"
