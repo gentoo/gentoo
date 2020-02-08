@@ -149,8 +149,8 @@ src_configure() {
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
 		-DCMAKE_CXX_STANDARD=$((usev c++11 || usev c++14 || usev c++17) | cut -c4-)
 		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)"
-		-DCMAKE_INSTALL_MANDIR="${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)"
+		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"
 		-DCMAKE_INSTALL_LIBDIR="lib"
 		-DDEFAULT_SYSROOT="${EPREFIX}"
 		-DCLING_BUILD_PLUGINS=OFF
@@ -262,7 +262,7 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 
-	ROOTSYS=${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)
+	ROOTSYS=${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)
 
 	if [[ ${PV} == "9999" ]]; then
 		ROOTENV="9900${PN}-git"

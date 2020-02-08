@@ -149,8 +149,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)"
-		-DCMAKE_INSTALL_MANDIR="${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)"
+		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"
 		-DCMAKE_INSTALL_LIBDIR="lib"
 		-DDEFAULT_SYSROOT="${EPREFIX}"
 		-Dexplicitlink=ON
@@ -273,7 +273,7 @@ src_configure() {
 src_install() {
 	cmake-utils_src_install
 
-	ROOTSYS=${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)
+	ROOTSYS=${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)
 	ROOTENV=$((9999 - $(ver_cut 2)))${PN}-$(ver_cut 1-2)
 
 	cat > ${ROOTENV} <<- EOF || die
