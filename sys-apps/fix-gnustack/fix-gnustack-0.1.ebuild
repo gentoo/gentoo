@@ -4,7 +4,7 @@
 EAPI=5
 
 DESCRIPTION="Utility to report and remove the executable flag from an ELF object's GNU_STACK"
-HOMEPAGE="https://dev.gentoo.org/~blueness/${PN}"
+HOMEPAGE="https://dev.gentoo.org/~blueness/fix-gnustack"
 SRC_URI="https://dev.gentoo.org/~blueness/${PN}/${P}.tar.bz2"
 LICENSE="GPL-3"
 
