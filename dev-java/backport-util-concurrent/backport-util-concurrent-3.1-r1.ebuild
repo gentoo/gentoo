@@ -10,7 +10,7 @@ SF_PN="backport-jsr166"
 MY_P="${PN}-Java60-${PV}"
 
 DESCRIPTION="A portability wrapper for java.util.concurrent API (jsr166) 6.0"
-HOMEPAGE="http://${SF_PN}.sourceforge.net/"
+HOMEPAGE="http://backport-jsr166.sourceforge.net/"
 SRC_URI="mirror://sourceforge/${SF_PN}/${PV}/${MY_P}-src.tar.bz2"
 
 LICENSE="public-domain"
