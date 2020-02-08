@@ -77,6 +77,10 @@ DEPEND="${RDEPEND}
 	sys-devel/bison
 "
 
+PATCHES=(
+	"${FILESDIR}/${P}-disable-fatal-warnings.patch" # bug 695446
+)
+
 src_prepare() {
 	if ! use jumbo-build; then
 		sed -i -e 's|use_jumbo_build=true|use_jumbo_build=false|' \
