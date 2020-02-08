@@ -1,0 +1,27 @@
+--- a/libhfsp/src/fscheck.c
++++ b/libhfsp/src/fscheck.c
+@@ -47,6 +47,8 @@
+ # include "os.h"
+ # include "swab.h"
+ 
++struct fsck_data_t fsck_data;
++
+ /* Dump all raw fork information to stdout */
+ void print_fork(hfsp_fork_raw* f)
+ {
+--- a/libhfsp/src/fscheck.h
++++ b/libhfsp/src/fscheck.h
+@@ -100,10 +100,11 @@
+ int fscheck_files(volume* vol);
+ 
+ /** global data used during fsck */
+-struct {
++struct fsck_data_t {
+     UInt32  maxCnid;
+     UInt32  macNow; // current date in mac-offset
+     int	    verbose;
+     int	    ignoreErr;
+-} fsck_data;
++};
+ 
++extern struct fsck_data_t fsck_data;
