@@ -44,7 +44,6 @@ multilib_src_configure() {
 		"-DCMAKE_INSTALL_BINDIR=bin"
 		"-DCMAKE_INSTALL_INCLUDEDIR=include/${FAUDIO_PN}"
 		"-DCMAKE_INSTALL_LIBDIR=$(get_libdir)"
-		"-DCMAKE_INSTALL_PREFIX=${EPREFIX}/usr"
 		"-DCMAKE_BUILD_TYPE=$(usex debug Debug Release)"
 		"-DFORCE_ENABLE_DEBUGCONFIGURATION=$(usex debug ON OFF)"
 		"-DBUILD_TESTS=$(usex test ON OFF)"

@@ -113,7 +113,7 @@ src_install() {
 	cat <<EOF >"${T}"/nagios.cfg
 # Ensure all data is set to event brokers
 event_broker_options=-1
-broker_module=${EPREFIX%/}/usr/$(get_libdir)/${PN}/livestatus.o
+broker_module=${EPREFIX}/usr/$(get_libdir)/${PN}/livestatus.o
 EOF
 	# same for icigna
 	cat <<EOF >"${T}"/icigna.cfg

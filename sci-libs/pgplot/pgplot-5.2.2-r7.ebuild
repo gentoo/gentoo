@@ -125,7 +125,7 @@ src_test() {
 src_install() {
 	insinto /usr/$(get_libdir)/pgplot
 	doins grfont.dat grexec.f *.inc rgb.txt
-	echo "PGPLOT_FONT=${EPREFIX%/}/usr/$(get_libdir)/pgplot/grfont.dat" >> 99pgplot
+	echo "PGPLOT_FONT=${EPREFIX}/usr/$(get_libdir)/pgplot/grfont.dat" >> 99pgplot
 	doenvd 99pgplot
 
 	dolib.so libpgplot.so*

@@ -30,7 +30,7 @@ pkg_postinst() {
 	# In /usr/include this breaks gcc build.
 	# https://bugs.gentoo.org/434180
 	if [[ $(readlink "${EROOT%/}"/usr/include/wine) == //* ]]; then
-		ewarn "Leading double slash in ${EPREFIX%/}/usr/include/wine symlink detected."
+		ewarn "Leading double slash in ${EPREFIX}/usr/include/wine symlink detected."
 		ewarn "Re-setting wine symlinks..."
 		eselect wine update --if-unset
 	fi

@@ -85,7 +85,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		"-DCMAKE_INSTALL_PREFIX=${EPREFIX}/usr"
 		"-DLOCALSTATEDIR=${EPREFIX}/var"
 		"-DSYSCONFDIR=${EPREFIX}/etc"
 	)

@@ -39,7 +39,7 @@ multilib_src_configure() {
 	append-flags -fno-strict-aliasing
 
 	local myeconfargs=(
-		--docdir="${EPREFIX%/}"/usr/share/doc/${PF}
+		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		--enable-shared
 		$(use_enable static-libs static)
 	)
