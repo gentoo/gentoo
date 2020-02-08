@@ -137,8 +137,8 @@ src_install() {
 	SUBDIR=$(smlnj_get_libdir)/${PN}
 	DIR=/usr/${SUBDIR}
 	for file in bin/{*,.*}; do
-		[[ -f ${file} ]] && sed -e "2iSMLNJ_HOME=${EPREFIX%/}/${DIR}" \
-								-e "s:${WORKDIR}:${EPREFIX%/}/${DIR}:" -i ${file}
+		[[ -f ${file} ]] && sed -e "2iSMLNJ_HOME=${EPREFIX}/${DIR}" \
+								-e "s:${WORKDIR}:${EPREFIX}/${DIR}:" -i ${file}
 	done
 	dodir ${DIR}/bin
 	exeinto ${DIR}/bin
