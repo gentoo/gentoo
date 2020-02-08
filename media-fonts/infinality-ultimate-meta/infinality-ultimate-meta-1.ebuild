@@ -4,7 +4,7 @@
 EAPI=5
 
 DESCRIPTION="Meta package for infinality-ultimate with fonts"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="metapackage"
 SLOT="0"
