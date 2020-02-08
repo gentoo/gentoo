@@ -6,7 +6,7 @@ EAPI=5
 inherit java-virtuals-2
 
 DESCRIPTION="Virtual for Java Message Service (JMS) API"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI=""
 
 LICENSE="public-domain"
