@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,17 +18,19 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="+dbus bluetooth kernel_linux mtp test"
 RESTRICT="!test? ( test )"
 
-# As in Fedora: re-enable >=dev-python/eyeD3-0.7[${PYTHON_USEDEP}] and
-# ipod? ( media-libs/libgpod[python,${PYTHON_USEDEP}] ) once they
+# As in Fedora: re-enable >=dev-python/eyeD3-0.7[${PYTHON_MULTI_USEDEP}] and
+# ipod? ( media-libs/libgpod[python,${PYTHON_MULTI_USEDEP}] ) once they
 # support python3
 COMMON_DEPEND="
-	dev-python/html5lib[${PYTHON_USEDEP}]
-	dev-python/isort[${PYTHON_USEDEP}]
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	>=dev-python/pygobject-3.22.0:3[${PYTHON_USEDEP}]
-	>=dev-python/podcastparser-0.6.0[${PYTHON_USEDEP}]
-	>=dev-python/mygpoclient-1.8[${PYTHON_USEDEP}]
-	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
+	$(python_gen_cond_dep '
+		dev-python/html5lib[${PYTHON_MULTI_USEDEP}]
+		dev-python/isort[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygobject-3.22.0:3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/podcastparser-0.6.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/mygpoclient-1.8[${PYTHON_MULTI_USEDEP}]
+		dbus? ( dev-python/dbus-python[${PYTHON_MULTI_USEDEP}] )
+	')
 	bluetooth? ( net-wireless/bluez )
 	mtp? ( >=media-libs/libmtp-1.0.0:= )
 "
