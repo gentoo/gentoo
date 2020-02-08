@@ -1,10 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Joonas Niilola <juippis@gentoo.org> (2020-02-02)
-# luajit is not keyworded on this arch.
-dev-libs/efl luajit
-
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
 # USE=collab requires unkeyworded net-libs/loudmouth & dev-cpp/asio.
 # USE=grammar requires dev-libs/link-grammar.
@@ -85,10 +81,6 @@ dev-python/numpydoc test
 # Mikle Kolyada <zlogene@gentoo.org> (2015-04-12)
 # GNOME Shell does not work on mips
 net-misc/wicd gnome-shell
-
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
 
 # Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded

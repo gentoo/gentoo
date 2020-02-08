@@ -47,10 +47,6 @@ dev-libs/libpcre2 jit
 # Not tested
 net-mail/dovecot lz4
 
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
-
 # Sergey Popov <pinkbyte@gentoo.org> (2015-02-18)
 # Not tested
 app-portage/layman g-sorcery
