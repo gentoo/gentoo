@@ -7,7 +7,7 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="PEAR Base System"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/PEAR"
 SRC_URI="https://pear.php.net/get/${MY_P}.tgz"
 LICENSE="MIT"
 KEYWORDS="~alpha amd64 arm ~hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
