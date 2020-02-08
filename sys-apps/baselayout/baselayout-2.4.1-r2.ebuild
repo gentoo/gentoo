@@ -6,7 +6,7 @@ EAPI=6
 inherit eutils multilib versionator prefix
 
 DESCRIPTION="Filesystem baselayout and init scripts"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://gitweb.gentoo.org/proj/baselayout.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
