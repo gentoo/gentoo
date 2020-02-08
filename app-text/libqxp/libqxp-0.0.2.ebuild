@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="Library parsing QuarkXpress documents"
-HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/${PN}"
+HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libqxp"
 SRC_URI="https://dev-www.libreoffice.org/src/${PN}/${P}.tar.xz"
 
 LICENSE="MPL-2.0"
