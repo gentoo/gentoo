@@ -7,7 +7,7 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Graph datastructure manipulation library"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/Structures_Graph"
 SRC_URI="https://pear.php.net/get/${MY_P}.tgz"
 LICENSE="LGPL-2.1"
 SLOT="0"

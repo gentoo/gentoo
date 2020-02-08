@@ -9,7 +9,7 @@ MODULE_VERSION=1.04
 inherit perl-module
 
 DESCRIPTION="Bindings for GtkSpell with Gtk2.x"
-HOMEPAGE="http://gtk2-perl.sf.net/ ${HOMEPAGE}"
+HOMEPAGE="http://gtk2-perl.sf.net/ https://metacpan.org/release/Gtk2-Spell"
 
 SLOT="0"
 LICENSE="LGPL-2.1"

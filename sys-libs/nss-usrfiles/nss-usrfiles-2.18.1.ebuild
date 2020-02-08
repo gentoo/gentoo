@@ -6,7 +6,7 @@ EAPI=5
 MY_PN="nss-altfiles"
 MY_P="${MY_PN}-${PV}"
 DESCRIPTION="NSS module to read passwd/group files from CoreOS /usr location"
-HOMEPAGE="https://github.com/coreos/${MY_PN}"
+HOMEPAGE="https://github.com/coreos/nss-altfiles"
 SRC_URI="https://github.com/coreos/${MY_PN}/archive/v${PV}.zip -> ${MY_P}.zip"
 
 LICENSE="LGPL-2.1+"

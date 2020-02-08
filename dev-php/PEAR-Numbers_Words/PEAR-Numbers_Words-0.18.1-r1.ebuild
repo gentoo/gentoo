@@ -7,7 +7,7 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Provides methods for spelling numerals in words"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/Numbers_Words"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="PHP-3.01"
 SLOT="0"

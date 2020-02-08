@@ -11,7 +11,7 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 DESCRIPTION="C++ Library that parses the file format of Aldus/Adobe PageMaker documents"
-HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/${PN}"
+HOMEPAGE="https://wiki.documentfoundation.org/DLP/Libraries/libpagemaker"
 
 LICENSE="MPL-2.0"
 SLOT="0"

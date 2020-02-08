@@ -6,7 +6,7 @@ EAPI=7
 inherit user
 
 DESCRIPTION="Download and install third-party clamav signatures"
-HOMEPAGE="https://github.com/extremeshok/${PN}"
+HOMEPAGE="https://github.com/extremeshok/clamav-unofficial-sigs"
 SRC_URI="https://github.com/extremeshok/clamav-unofficial-sigs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"

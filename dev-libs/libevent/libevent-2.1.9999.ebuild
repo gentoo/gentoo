@@ -9,7 +9,7 @@ EGIT_BRANCH="patches-$(ver_cut 1-2)"
 EGIT_REPO_URI="https://github.com/libevent/libevent"
 HOMEPAGE="
 	https://libevent.org/
-	${EGIT_REPO_URI}
+	https://github.com/libevent/libevent
 "
 
 LICENSE="BSD"

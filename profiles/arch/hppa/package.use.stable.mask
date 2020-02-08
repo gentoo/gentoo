@@ -20,6 +20,8 @@
 # Mart Raudsepp <leio@gentoo.org> (2020-02-08)
 # No stable x11-libs/gtk+ on hppa.
 gnome-base/librsvg tools
+dev-libs/appstream-glib fonts
+dev-python/pygobject test
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-08)
 # app-text/enchant stable timeout, bug #662484
@@ -38,10 +40,6 @@ dev-lang/python bluetooth
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-03-17)
 # net-analyzer/nagios (or icinga) has no stable keywords, bug #676222
 sys-libs/freeipmi nagios
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-12-02)
-# gnome-base/nautilus is not stable
-media-sound/easytag nautilus
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
 # media-libs/libraw is not stable

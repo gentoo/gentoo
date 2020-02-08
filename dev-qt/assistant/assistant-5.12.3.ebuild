@@ -8,7 +8,7 @@ inherit desktop gnome2-utils qt5-build
 DESCRIPTION="Tool for viewing on-line documentation in Qt help file format"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~arm x86"
+	KEYWORDS="x86"
 fi
 
 IUSE="webkit"

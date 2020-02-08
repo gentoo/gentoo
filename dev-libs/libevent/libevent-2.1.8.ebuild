@@ -5,7 +5,10 @@ EAPI=6
 inherit eutils multilib-minimal
 
 DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
-HOMEPAGE="https://libevent.org/ https://github.com/libevent/libevent/"
+HOMEPAGE="
+	https://libevent.org/
+	https://github.com/libevent/libevent/
+"
 SRC_URI="https://github.com/${PN}/${PN}/releases/download/release-${PV}-stable/${P}-stable.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
