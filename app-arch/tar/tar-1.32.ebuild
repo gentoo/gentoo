@@ -38,9 +38,9 @@ src_prepare() {
 src_configure() {
 	use static && append-ldflags -static
 	local myeconfargs=(
-		--bindir="${EPREFIX%/}"/bin
+		--bindir="${EPREFIX}"/bin
 		--enable-backup-scripts
-		--libexecdir="${EPREFIX%/}"/usr/sbin
+		--libexecdir="${EPREFIX}"/usr/sbin
 		$(usex userland_GNU "" "--program-prefix=g")
 		$(use_with acl posix-acls)
 		$(use_enable nls)
