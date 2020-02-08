@@ -10,7 +10,7 @@ MODULE_VERSION=0.16
 inherit perl-module
 
 DESCRIPTION="Perl interface to the Window Navigator Construction Kit"
-HOMEPAGE="http://gtk2-perl.sourceforge.net/ ${HOMEPAGE}"
+HOMEPAGE="http://gtk2-perl.sourceforge.net/ https://metacpan.org/release/Gnome2-Wnck"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
