@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="Mendeley-terms"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
