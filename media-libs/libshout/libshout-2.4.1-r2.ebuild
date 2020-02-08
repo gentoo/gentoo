@@ -54,6 +54,6 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	rm -rf "${ED%/}"/usr/share/doc/${PN} || die
+	rm -rf "${ED}"/usr/share/doc/${PN} || die
 	find "${D}" -name '*.la' -delete || die
 }
