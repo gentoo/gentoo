@@ -15379,7 +15379,7 @@ net-proxy/pingtunnel 0.72: Tunnel TCP over ICMP
 net-proxy/piper 1.14: A tool for manipulating SOCKS5 servers
 net-proxy/polipo 1.1.1-r4 9999: A caching web proxy
 net-proxy/privoxy 3.0.26 3.0.28: A web proxy with advanced filtering capabilities for enhancing privacy
-net-proxy/redsocks 0.5 9999: Transparent redirector of any TCP connection to proxy
+net-proxy/redsocks 0.5 0.5-r1 9999: Transparent redirector of any TCP connection to proxy
 net-proxy/rejik 3.2.10: A squid redirector used for blocking unwanted content
 net-proxy/shadowsocks-libev 3.3.2 3.3.3 3.3.4: A lightweight secured SOCKS5 proxy for embedded devices and low end boxes
 net-proxy/squid 4.9 4.10: A full-featured web proxy cache
@@ -18947,7 +18947,7 @@ x11-themes/nuovo-icon-theme 0.5: A scalable icon theme called Nuovo
 x11-themes/nuvox 07.1-r1: NuvoX SVG icon theme
 x11-themes/obsidian-xcursors 1.0: A shiny and clean xcursor theme
 x11-themes/oxygen-gtk 1.4.1-r1 1.4.6-r1: Official GTK+:2 port of KDE's Oxygen widget style
-x11-themes/papirus-icon-theme 20191009 20191101 20191201 20200102: icon theme for Linux
+x11-themes/papirus-icon-theme 20191009 20191101 20191201 20200102 20200201: icon theme for Linux
 x11-themes/pearlgrey-xcursors 1.0: A simple crispy white-grey xcursor theme
 x11-themes/pidgin-penguins-smileys 1.0: Penguins pidgin smiley theme
 x11-themes/pulse-glass 20100616: The Pulse Glass x11 mouse cursor theme
