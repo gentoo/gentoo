@@ -9119,7 +9119,7 @@ dev-qt/qtbluetooth 5.12.3 5.13.2 5.14.1: Bluetooth support library for the Qt5 f
 dev-qt/qtcharts 5.12.3 5.13.2 5.14.1: Chart component library for the Qt5 framework
 dev-qt/qtchooser 66: Tool to quickly switch between multiple Qt installations
 dev-qt/qtconcurrent 5.12.3 5.13.2 5.14.1: Multi-threading concurrence support library for the Qt5 framework
-dev-qt/qtcore 5.12.3-r1 5.12.3-r2 5.13.2-r1 5.13.2-r2 5.14.1: Cross-platform application development framework
+dev-qt/qtcore 5.12.3-r2 5.13.2-r1 5.13.2-r2 5.14.1: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.12.3 5.13.2 5.14.1: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.12.3 5.13.2 5.14.1: Qt5 module for inter-process communication over the D-Bus protocol
 dev-qt/qtdeclarative 5.12.3 5.13.2 5.13.2-r1 5.14.1: The QML and Quick modules for the Qt5 framework
@@ -12699,7 +12699,7 @@ media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correctin
 media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion tool
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
-media-gfx/kphotoalbum 5.5: Tool for indexing, searching, and viewing images
+media-gfx/kphotoalbum 5.5 5.6: Tool for indexing, searching, and viewing images
 media-gfx/krita 4.2.7.1 4.2.8.2: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
