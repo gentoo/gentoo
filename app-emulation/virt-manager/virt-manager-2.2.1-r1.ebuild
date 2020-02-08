@@ -29,11 +29,13 @@ RDEPEND="!app-emulation/virtinst
 	${PYTHON_DEPS}
 	app-cdr/cdrtools
 	>=app-emulation/libvirt-glib-1.0.0[introspection]
-	dev-libs/libxml2[python,${PYTHON_USEDEP}]
-	dev-python/ipaddr[${PYTHON_USEDEP}]
-	dev-python/libvirt-python[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
+		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
+		dev-python/libvirt-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+	')
 	>=sys-libs/libosinfo-0.2.10[introspection]
 	gtk? (
 		gnome-base/dconf
