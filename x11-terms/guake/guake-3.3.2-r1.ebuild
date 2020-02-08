@@ -18,17 +18,18 @@ IUSE="utempter"
 
 RDEPEND="
 	dev-libs/keybinder:3
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/pbr[${PYTHON_USEDEP}]
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pbr[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+	')
 	x11-libs/libnotify
 	x11-libs/vte:2.91
 	utempter? ( sys-libs/libutempter )
 "
 DEPEND="
 	${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	gnome-base/gsettings-desktop-schemas
 	sys-devel/gettext
 	sys-devel/make
