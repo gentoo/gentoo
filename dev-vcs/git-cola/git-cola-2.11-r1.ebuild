@@ -20,17 +20,21 @@ RESTRICT="!test? ( test )"
 
 # Since PyQt5 is preferred at runtime if installed, depend on that
 RDEPEND="
-	dev-python/pyinotify[${PYTHON_USEDEP}]
-	dev-python/send2trash[${PYTHON_USEDEP}]
-	dev-python/QtPy[gui,${PYTHON_USEDEP}]
-	dev-python/PyQt5[gui,network,widgets,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pyinotify[${PYTHON_MULTI_USEDEP}]
+		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
+		dev-python/QtPy[gui,${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[gui,network,widgets,${PYTHON_MULTI_USEDEP}]
+	')
 	dev-vcs/git"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
-	doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		)
-	test? ( dev-python/nose[${PYTHON_USEDEP}] ${VIRTUALX_DEPEND} )
+	$(python_gen_cond_dep "
+		doc? (
+			dev-python/sphinx[\${PYTHON_MULTI_USEDEP}]
+			)
+		test? ( dev-python/nose[\${PYTHON_MULTI_USEDEP}] ${VIRTUALX_DEPEND} )
+	")
 "
 
 PATCHES=(
