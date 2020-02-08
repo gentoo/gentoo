@@ -21,15 +21,18 @@ KEYWORDS="amd64 x86"
 IUSE="doc"
 
 RDEPEND="
-	dev-python/httplib2[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP},gui,svg,webkit,widgets]
-	dev-python/pyzmq[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	>=media-libs/libopenshot-0.2.3[python,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},gui,svg,webkit,widgets]
+		dev-python/pyzmq[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+	')
+	>=media-libs/libopenshot-0.2.3[python,${PYTHON_SINGLE_USEDEP}]
 "
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
+	$(python_gen_cond_dep '
+		doc? ( dev-python/sphinx[${PYTHON_MULTI_USEDEP}] )
+	')
 "
 
 S="${WORKDIR}/${MY_PN}-${PV}"
