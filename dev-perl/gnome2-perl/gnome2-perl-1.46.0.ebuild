@@ -9,7 +9,7 @@ DIST_VERSION=1.046
 inherit perl-module
 
 DESCRIPTION="Perl interface to the 2.x series of the Gnome libraries"
-HOMEPAGE="http://gtk2-perl.sourceforge.net/ ${HOMEPAGE}"
+HOMEPAGE="http://gtk2-perl.sourceforge.net/ https://metacpan.org/release/Gnome2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
