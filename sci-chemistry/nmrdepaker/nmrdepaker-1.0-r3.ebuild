@@ -17,15 +17,17 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	|| (
-		>=dev-python/matplotlib-python2-0.98.5[gtk2,${PYTHON_USEDEP}]
-		>=dev-python/matplotlib-0.98.5[gtk2,${PYTHON_USEDEP}]
-	)
-	|| (
-		dev-python/numpy-python2[${PYTHON_USEDEP}]
-		>=dev-python/numpy-1.2[${PYTHON_USEDEP}]
-	)
-	>=dev-python/pygtk-2.12:2[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		|| (
+			>=dev-python/matplotlib-python2-0.98.5[gtk2,${PYTHON_MULTI_USEDEP}]
+			>=dev-python/matplotlib-0.98.5[gtk2,${PYTHON_MULTI_USEDEP}]
+		)
+		|| (
+			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/numpy-1.2[${PYTHON_MULTI_USEDEP}]
+		)
+		>=dev-python/pygtk-2.12:2[${PYTHON_MULTI_USEDEP}]
+	')
 "
 DEPEND="${RDEPEND}"
 
