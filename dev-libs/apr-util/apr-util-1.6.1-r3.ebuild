@@ -126,8 +126,8 @@ src_install() {
 	default
 
 	find "${ED}" -name "*.la" -delete || die
-	if [[ -d "${ED%/}/usr/$(get_libdir)/apr-util-${SLOT}" ]] ; then
-		find "${ED%/}/usr/$(get_libdir)/apr-util-${SLOT}" -name "*.a" -delete || die
+	if [[ -d "${ED}/usr/$(get_libdir)/apr-util-${SLOT}" ]] ; then
+		find "${ED}/usr/$(get_libdir)/apr-util-${SLOT}" -name "*.a" -delete || die
 	fi
 	if ! use static-libs ; then
 		find "${ED}" -name "*.a" -not -name "*$(get_libname)" -delete || die
@@ -140,5 +140,5 @@ src_install() {
 
 	# This file is only used on AIX systems, which Gentoo is not,
 	# and causes collisions between the SLOTs, so remove it.
-	rm "${ED%/}/usr/$(get_libdir)/aprutil.exp" || die
+	rm "${ED}/usr/$(get_libdir)/aprutil.exp" || die
 }
