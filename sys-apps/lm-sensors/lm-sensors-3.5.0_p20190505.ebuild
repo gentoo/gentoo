@@ -135,7 +135,7 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	emake \
-		DESTDIR="${D%/}" \
+		DESTDIR="${D}" \
 		PREFIX="/usr" \
 		MANDIR="/usr/share/man" \
 		ETCDIR="/etc" \
