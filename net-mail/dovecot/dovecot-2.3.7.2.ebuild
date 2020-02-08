@@ -133,7 +133,7 @@ src_configure() {
 		cd "../dovecot-${major_minor}-pigeonhole-${sieve_version}" || die "cd failed"
 		econf \
 			$( use_enable static-libs static ) \
-			--localstatedir="${EPREFIX%/}/var" \
+			--localstatedir="${EPREFIX}/var" \
 			--enable-shared \
 			--with-dovecot="${S}" \
 			$( use_with managesieve )
