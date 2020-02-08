@@ -123,7 +123,7 @@ pkg_preinst() {
 
 pkg_postinst() {
 	if [[ -z ${REPLACING_VERSIONS} ]]; then
-		einfo "Please edit ${EROOT%/}/etc/msmtprc before first use."
+		einfo "Please edit ${EROOT}/etc/msmtprc before first use."
 		einfo "In addition, per user configuration files can be placed"
 		einfo "as '~/.msmtprc'.  See the msmtprc-user.example file under"
 		einfo "/usr/share/doc/${PF}/ for an example."
