@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ RDEPEND="
 	swift? ( ~sys-cluster/swift-2.23.1 )
 	neutron? ( ~sys-cluster/neutron-15.0.0 )
 	glance? ( ~app-admin/glance-19.0.0 )
-	cinder? ( ~sys-cluster/cinder-15.0.0 )
+	cinder? ( ~sys-cluster/cinder-15.0.1 )
 	nova? ( ~sys-cluster/nova-20.0.1 )
 	heat? ( ~sys-cluster/heat-13.0.0 )
 	placement? ( ~sys-cluster/placement-2.0.0 )
