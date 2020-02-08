@@ -3,6 +3,7 @@
 
 EAPI=5
 
+DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python2_7 )
 
 inherit distutils-r1 flag-o-matic
@@ -13,23 +14,24 @@ SRC_URI="mirror://sourceforge/matplotlib/${P}.tar.gz"
 
 IUSE="examples test"
 SLOT="0"
-KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE="MIT GPL-2"
 
-CDEPEND="sci-libs/shapelib
-	|| (
-		>=dev-python/matplotlib-python2-0.98[${PYTHON_USEDEP}]
-		>=dev-python/matplotlib-0.98[${PYTHON_USEDEP}]
-	)
-	>=sci-libs/geos-3.3.1[python(-),${PYTHON_USEDEP}]"
+DEPEND="sci-libs/shapelib
+	$(python_gen_cond_dep '
+		|| (
+			>=dev-python/matplotlib-python2-0.98[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/matplotlib-0.98[${PYTHON_MULTI_USEDEP}]
+		)
+	')
+	>=sci-libs/geos-3.3.1[python(-),${PYTHON_SINGLE_USEDEP}]"
 
-DEPEND="${CDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]"
-
-RDEPEND="${CDEPEND}
-	>=dev-python/pupynere-1.0.8[${PYTHON_USEDEP}]
-	dev-python/httplib2[${PYTHON_USEDEP}]
-	dev-python/dap[${PYTHON_USEDEP}]"
+RDEPEND="${DEPEND}
+	$(python_gen_cond_dep '
+		>=dev-python/pupynere-1.0.8[${PYTHON_MULTI_USEDEP}]
+		dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
+		dev-python/dap[${PYTHON_MULTI_USEDEP}]
+	')"
 
 DOCS="FAQ API_CHANGES"
 #REQUIRED_USE="test? ( examples )"
@@ -57,16 +59,16 @@ src_prepare() {
 #}
 
 python_install() {
-	distutils-r1_python_install
+	# mpl_toolkits namespace provided by dev-python/matplotlib
+	rm "${BUILD_DIR}/lib/mpl_toolkits/__init__.py" || die
+	distutils-r1_python_install --skip-build
 	#  --install-data="${EPREFIX}/usr/share/${PN}" on testing is found not to work;
 	# setup.py is a mess. Someone care to patch setup.py please proceed; substitute with
-	insinto usr/share/basemap/
+	insinto /usr/share/basemap/
 	doins  lib/mpl_toolkits/basemap/data/*
 
-	# clean up collision with matplotlib
-	rm -f "${D}$(python_get_sitedir)/mpl_toolkits/__init__.py"
 	# respect FHS
-	rm -fr "${D}$(python_get_sitedir)/mpl_toolkits/basemap/data"
+	rm -r "${D}$(python_get_sitedir)/mpl_toolkits/basemap/data" || die
 }
 
 python_install_all() {
