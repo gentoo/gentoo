@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -17,7 +17,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-DEPEND="dev-python/pygtk:2[${PYTHON_USEDEP}]
+DEPEND="
+	$(python_gen_cond_dep '
+		dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+	')
 	|| ( dev-util/quilt dev-vcs/mercurial )"
 RDEPEND="${DEPEND}"
 
