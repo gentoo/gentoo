@@ -134,7 +134,6 @@ src_configure() {
 
 	local mycmakeargs=(
 		-DCMAKE_INSTALL_LIBDIR="${PVLIBDIR}"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"/usr
 		-DEXPAT_INCLUDE_DIR="${EPREFIX}"/usr/include
 		-DEXPAT_LIBRARY="${EPREFIX}"/usr/$(get_libdir)/libexpat.so
 		-DBUILD_SHARED_LIBS=ON
