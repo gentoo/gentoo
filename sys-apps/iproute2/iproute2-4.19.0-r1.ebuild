@@ -128,13 +128,13 @@ src_install() {
 
 	emake \
 		DESTDIR="${D}" \
-		PREFIX="${EPREFIX%/}/usr" \
-		LIBDIR="${EPREFIX%/}"/$(get_libdir) \
-		SBINDIR="${EPREFIX%/}"/sbin \
-		CONFDIR="${EPREFIX%/}"/etc/iproute2 \
-		DOCDIR="${EPREFIX%/}"/usr/share/doc/${PF} \
-		MANDIR="${EPREFIX%/}"/usr/share/man \
-		ARPDDIR="${EPREFIX%/}"/var/lib/arpd \
+		PREFIX="${EPREFIX}/usr" \
+		LIBDIR="${EPREFIX}"/$(get_libdir) \
+		SBINDIR="${EPREFIX}"/sbin \
+		CONFDIR="${EPREFIX}"/etc/iproute2 \
+		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
+		MANDIR="${EPREFIX}"/usr/share/man \
+		ARPDDIR="${EPREFIX}"/var/lib/arpd \
 		install
 
 	dodir /bin
