@@ -21,8 +21,10 @@ KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
 
 RDEPEND="
 	sys-apps/groff
-	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
-	dev-python/html5lib[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/beautifulsoup:4[${PYTHON_MULTI_USEDEP}]
+		dev-python/html5lib[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 # `./setup install` already installs docs
