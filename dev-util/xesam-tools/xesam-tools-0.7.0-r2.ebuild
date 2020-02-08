@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,9 +19,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
 DEPEND=""
-RDEPEND="dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/pygobject:2[${PYTHON_USEDEP}]
-	dev-python/pygtk[${PYTHON_USEDEP}]"
+RDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+	')"
 
 pkg_setup() {
 	python-single-r1_pkg_setup
