@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,13 +19,17 @@ IUSE=""
 PATCHES=( ${FILESDIR}/fix-desktop-file.patch ${FILESDIR}/sgdisk.patch )
 
 DEPEND="${PYTHON_DEPS}
-	dev-python/python-distutils-extra[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/python-distutils-extra[${PYTHON_MULTI_USEDEP}]
+	')"
 RDEPEND="${PYTHON_DEPS}
 	app-arch/p7zip
 	dev-libs/glib:2
-	dev-python/configobj[${PYTHON_USEDEP}]
-	dev-python/pygobject[${PYTHON_USEDEP}]
-	dev-python/urlgrabber[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/configobj[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject[${PYTHON_MULTI_USEDEP}]
+		dev-python/urlgrabber[${PYTHON_MULTI_USEDEP}]
+	')
 	sys-apps/gptfdisk
 	sys-auth/polkit
 	sys-boot/syslinux
