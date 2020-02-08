@@ -8,7 +8,7 @@ inherit distutils-r1
 
 MY_PN="check_openvpn"
 DESCRIPTION="A Nagios plugin to check whether an OpenVPN server is alive"
-HOMEPAGE="https://github.com/liquidat/${PN}"
+HOMEPAGE="https://github.com/liquidat/nagios-icinga-openvpn"
 SRC_URI="https://github.com/liquidat/nagios-icinga-openvpn/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
