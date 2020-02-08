@@ -4,7 +4,7 @@
 EAPI=5
 
 DESCRIPTION="Manages multiple Scala versions"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://dev.gentoo.org/~gienah/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
