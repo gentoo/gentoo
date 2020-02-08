@@ -8,7 +8,7 @@ DESCRIPTION="A Tool for network monitoring and data acquisition"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
 HOMEPAGE="
 	https://www.tcpdump.org/
-	${EGIT_REPO_URI}
+	https://github.com/the-tcpdump-group/tcpdump
 "
 
 LICENSE="BSD"
