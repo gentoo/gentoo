@@ -9,7 +9,7 @@ DIST_EXAMPLES=( "tools/*" )
 inherit perl-module
 
 DESCRIPTION="Parse nmap scan data with perl"
-HOMEPAGE="https://nmapparser.wordpress.com/ ${HOMEPAGE}"
+HOMEPAGE="https://nmapparser.wordpress.com/ https://metacpan.org/release/Nmap-Parser"
 
 LICENSE="MIT"
 SLOT="0"
