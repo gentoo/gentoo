@@ -1,0 +1,23 @@
+diff --git a/aux/zeekctl/ZeekControl/plugins/ps.py b/aux/zeekctl/ZeekControl/plugins/ps.py
+index 9a2e337..382c0d5 100644
+--- a/aux/zeekctl/ZeekControl/plugins/ps.py
++++ b/aux/zeekctl/ZeekControl/plugins/ps.py
+@@ -20,17 +20,12 @@ class PsZeek(ZeekControl.plugin.Plugin):
+     def commands(self):
+         return [
+             ("zeek", "[<nodes>]", "Show Zeek processes on nodes' systems"),
+-            ("bro", "[<nodes>]", "Show Zeek processes on nodes' systems (deprecated)"),
+         ]
+ 
+     def cmd_custom(self, cmd, args, cmdout):
+         results = ZeekControl.cmdresult.CmdResult()
+ 
+-        if cmd == "bro":
+-            cmdout.warn("'ps.bro' is deprecated, please use 'ps.zeek' instead")
+-            cmd = "zeek"
+-
+-        assert(cmd == "zeek") # Can't be anything else.
++        assert(cmd == "zeek") # Can't be anything else
+ 
+         # Get the nodes the user wants.
+         if args:

@@ -42,3 +42,13 @@ index a9b3b10..8ceac34 100644
  set(BRO_EXE zeek
      CACHE STRING "Zeek executable binary" FORCE)
 
+--- a/aux/zeekctl/CMakeLists.txt
++++ b/aux/zeekctl/CMakeLists.txt
+@@ -252,8 +252,6 @@ endif ()
+
+ InstallSymlink("./zeekctl" "${CMAKE_INSTALL_PREFIX}/lib/broctl")
+
+-install(DIRECTORY BroControl DESTINATION lib/zeekctl)
+-
+ ########################################################################
+ ## Packaging Setup

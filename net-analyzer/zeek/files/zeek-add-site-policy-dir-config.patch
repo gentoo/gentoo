@@ -1,0 +1,18 @@
+diff --git a/aux/zeekctl/etc/zeekctl.cfg.in b/aux/zeekctl/etc/zeekctl.cfg.in
+index eea0e92..d3e88bc 100644
+--- a/aux/zeekctl/etc/zeekctl.cfg.in
++++ b/aux/zeekctl/etc/zeekctl.cfg.in
+@@ -57,8 +57,11 @@ StatusCmdShowAll = 0
+ # that crash directories never expire.
+ CrashExpireInterval = 0
+ 
+-# Site-specific policy script to load. Zeek will look for this in
+-# $PREFIX/share/zeek/site. A default local.zeek comes preinstalled
++# Directories to search for local (i.e., site-specific) policy files,
++# separated by colons.
++SitePolicyPath = ${ETC}/site
++
++# Site-specific policy script to load. A default local.zeek comes preinstalled
+ # and can be customized as desired.
+ SitePolicyScripts = local.zeek
+ 

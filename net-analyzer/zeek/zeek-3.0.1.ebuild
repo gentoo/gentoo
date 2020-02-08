@@ -42,12 +42,14 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-no-strip.patch
 	"${FILESDIR}"/${PN}-no-uninitialized-warning.patch
 	"${FILESDIR}"/${PN}-remove-unnecessary-remove.patch
+	"${FILESDIR}"/${PN}-add-site-policy-dir-config.patch
+	"${FILESDIR}"/${PN}-no-legacy-ps.patch
 )
 
 src_prepare() {
-	rm -rf aux/broker/3rdparty/caf || die
-	rm -rf aux/broker/bindings/python/3rdparty || die
-	rm -rf src/3rdparty/caf || die
+	rm -rf aux/broker/3rdparty/caf \
+		aux/broker/bindings/python/3rdparty \
+		src/3rdparty/caf || die
 
 	if use python; then
 		sed -i 's:.*/3rdparty/pybind11/.*:if(DISABLE_PYTHON_BINDINGS):' \
@@ -113,10 +115,11 @@ src_install() {
 
 	keepdir /var/log/"${PN}" /var/spool/"${PN}"/tmp
 
-	# Created at runtime by zeekctl
-	rm -f "${ED}"/var/spool/zeek/zeekctl-config.sh || die
-	rm -f "${ED}"/usr/share/zeekctl/scripts/zeekctl-config.sh || die
-
 	# Remove compat symlinks
-	rm -f "${ED}"/usr/bin/broctl "${ED}"/usr/lib/broctl || die
+	rm -f "${ED}"/usr/bin/broctl \
+		"${ED}"/usr/lib/broctl \
+		"${ED}"/usr/share/zeek/cmake/BroPlugin.cmake || die
+
+	# Make sure local config does not get overwritten on reinstalls
+	mv "${ED}"/usr/share/zeek/site "${ED}"/etc/zeek/ || die
 }
