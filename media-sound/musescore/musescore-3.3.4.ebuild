@@ -17,7 +17,7 @@ SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.ta
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio vorbis webengine"
+IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio +sf3 webengine"
 REQUIRED_USE="portmidi? ( portaudio )"
 
 BDEPEND="
@@ -47,7 +47,7 @@ DEPEND="
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-sound/pulseaudio )
-	vorbis? ( media-libs/libvorbis )
+	sf3? ( media-libs/libvorbis )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
 RDEPEND="${DEPEND}"
@@ -79,7 +79,7 @@ src_configure() {
 		-DBUILD_PORTAUDIO="$(usex portaudio)"
 		-DBUILD_PORTMIDI="$(usex portmidi)"
 		-DBUILD_PULSEAUDIO="$(usex pulseaudio)"
-		-DSOUNDFONT3="$(usex vorbis)"
+		-DSOUNDFONT3="$(usex sf3)"
 		-DBUILD_WEBENGINE="$(usex webengine)"
 	)
 	cmake_src_configure
