@@ -12843,7 +12843,7 @@ media-libs/cal3d 0.11.0-r1: Cal3D is a skeletal based character animation librar
 media-libs/chromaprint 1.4.3: Library implementing a custom algorithm for extracting audio fingerprints
 media-libs/cimg 2.8.1 2.8.3: C++ template image processing toolkit
 media-libs/clutter 1.26.2-r2: Clutter is a library for creating graphical user interfaces
-media-libs/clutter-gst 3.0.27: GStreamer integration library for Clutter
+media-libs/clutter-gst 3.0.27 3.0.27-r1: GStreamer integration library for Clutter
 media-libs/clutter-gtk 1.8.4: Library for embedding a Clutter canvas (stage) in GTK+
 media-libs/codec2 0.8.1: Low bit rate speech codec
 media-libs/cogl 1.22.4: A library for using 3D graphics hardware to draw pretty pictures
@@ -17191,7 +17191,7 @@ sys-cluster/ceph 12.2.12-r2 14.2.7: Ceph distributed filesystem
 sys-cluster/charliecloud 0.9.6 0.9.10 0.10 9999: Lightweight user-defined software stacks for high-performance computing
 sys-cluster/charm 6.5.1-r3 6.6.0 6.6.0-r1 6.6.1 6.7.1 6.8.2: Message-passing parallel language and runtime system
 sys-cluster/charmdebug 6.2.0-r1: A debugger for Charm++ applications
-sys-cluster/cinder 15.0.0 15.0.1 2019.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
+sys-cluster/cinder 15.0.1 2019.2.9999: Cinder is the OpenStack Block storage service, a spin out of nova-volumes
 sys-cluster/classads 1.0.10: Condor's classified advertisement language
 sys-cluster/cluster-glue 1.0.11 1.0.12 1.0.12-r1: Library pack for Heartbeat / Pacemaker
 sys-cluster/corosync 1.4.7 2.3.5 2.4.2: OSI Certified implementation of a complete cluster engine
