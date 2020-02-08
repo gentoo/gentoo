@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Provides /etc/mime.types file"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
