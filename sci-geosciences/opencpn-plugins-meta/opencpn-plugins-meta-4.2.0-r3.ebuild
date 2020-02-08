@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Meta ebuild to pull in opencpn plugins"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="metapackage"
 SLOT="0"
