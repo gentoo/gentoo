@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="A collection of Gentoo Linux wallpapers for the LiveCD"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://dev.gentoo.org/~wolf31o2/sources/${PN}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
