@@ -29,15 +29,17 @@ IUSE="extra-cardsets minimal +sound"
 S="${WORKDIR}/${MY_PN}-${P}"
 
 RDEPEND="
-	dev-python/random2[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	!minimal? (
-		dev-python/pillow[tk,${PYTHON_USEDEP}]
-		dev-tcltk/tktable
-	)
-	sound? (
-		dev-python/pygame[${PYTHON_USEDEP}]
-	)"
+	$(python_gen_cond_dep '
+		dev-python/random2[${PYTHON_MULTI_USEDEP}]
+		dev-python/six[${PYTHON_MULTI_USEDEP}]
+		!minimal? (
+			dev-python/pillow[tk,${PYTHON_MULTI_USEDEP}]
+			dev-tcltk/tktable
+		)
+		sound? (
+			dev-python/pygame[${PYTHON_MULTI_USEDEP}]
+		)
+	')"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-gentoo.patch" #591904
