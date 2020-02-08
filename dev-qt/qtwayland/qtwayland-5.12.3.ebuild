@@ -7,7 +7,7 @@ inherit qt5-build
 DESCRIPTION="Wayland platform plugin for Qt"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~arm x86"
+	KEYWORDS="x86"
 fi
 
 IUSE="+libinput xcomposite"
