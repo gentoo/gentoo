@@ -26,7 +26,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --datadir="${EPREFIX%/}"/usr/share/misc
+	econf --datadir="${EPREFIX}"/usr/share/misc
 }
 
 src_install() {
@@ -57,7 +57,7 @@ src_install() {
 pkg_postinst() {
 	if [[ ${ROOT} == "/" ]] && type -P create-cracklib-dict >/dev/null ; then
 		ebegin "Regenerating cracklib dictionary"
-		create-cracklib-dict "${EPREFIX%/}"/usr/share/dict/* > /dev/null
+		create-cracklib-dict "${EPREFIX}"/usr/share/dict/* > /dev/null
 		eend $?
 	fi
 
