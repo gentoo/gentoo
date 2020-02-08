@@ -9,7 +9,7 @@ DIST_EXAMPLES=("sample/*")
 inherit perl-module
 
 DESCRIPTION="High-Level Interface to Uniforum Message Translation"
-HOMEPAGE="http://guido-flohr.net/projects/libintl-perl ${HOMEPAGE}"
+HOMEPAGE="http://guido-flohr.net/projects/libintl-perl https://metacpan.org/release/libintl-perl"
 
 LICENSE="GPL-3"
 SLOT="0"
