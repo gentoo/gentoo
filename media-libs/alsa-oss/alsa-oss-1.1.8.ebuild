@@ -41,5 +41,5 @@ multilib_src_install_all() {
 		find "${ED}" -name '*.a' -delete || die
 	fi
 	find "${ED}" -name '*.la' -delete || die
-	sed -e 's:\${exec_prefix}/\\$LIB/::' -i "${ED%/}/usr/bin/aoss" || die
+	sed -e 's:\${exec_prefix}/\\$LIB/::' -i "${ED}/usr/bin/aoss" || die
 }
