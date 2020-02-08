@@ -6,7 +6,7 @@ EAPI="5"
 inherit java-virtuals-2
 
 DESCRIPTION="Virtual for XML RPC API (javax.xml.rpc)"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="public-domain"
 SLOT="0"
