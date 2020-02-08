@@ -57,7 +57,7 @@ src_configure() {
 	use unicode && myconf="${myconf} --enable-widechar"
 	use tcl && myconf="${myconf} --enable-tclinterp"
 
-	append-cppflags "-D_PATH_MSGCAT=\"\\\"${EPREFIX%/}/usr/share/vi/catalog/\\\"\""
+	append-cppflags "-D_PATH_MSGCAT=\"\\\"${EPREFIX}/usr/share/vi/catalog/\\\"\""
 	append-cppflags -I"$(db_includedir)"
 
 	# Darwin doesn't have stropts.h, bug #619416
