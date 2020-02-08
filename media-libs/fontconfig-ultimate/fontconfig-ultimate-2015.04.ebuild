@@ -6,7 +6,7 @@ inherit readme.gentoo versionator
 
 MY_PV=$(replace_all_version_separators "-")
 DESCRIPTION="A set of font rendering and replacement rules for fontconfig-infinality"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://github.com/bohoomil/${PN}/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
