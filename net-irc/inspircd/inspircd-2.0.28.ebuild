@@ -79,7 +79,7 @@ src_compile() {
 }
 
 src_install() {
-	emake INSTUID=${PN} DESTDIR="${D%/}" install
+	emake INSTUID=${PN} DESTDIR="${D}" install
 
 	insinto "/usr/include/${PN}"
 	doins -r include/.
