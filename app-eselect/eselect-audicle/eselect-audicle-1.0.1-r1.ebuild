@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Manages the /usr/bin/audicle symlink"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/audicle.eselect-${PV}.bz2"
 
 LICENSE="GPL-2"
