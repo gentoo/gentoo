@@ -72,7 +72,6 @@ src_configure() {
 		-DPACKAGE_MODE=TRUE
 		-DXDG_STD=TRUE
 
-		-DCMAKE_INSTALL_PREFIX=/usr
 		-DCMAKE_LIBRARY_PATH="/usr/$(get_libdir)/${PN}"
 		-DDOC_DIR=/usr/share/doc/"${PF}"
 		-DEGL_API=FALSE
