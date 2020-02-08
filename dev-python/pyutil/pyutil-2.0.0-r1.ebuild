@@ -23,5 +23,5 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_install() {
 	distutils-r1_src_install
-	rm -rf "${ED%/}"/usr/share/doc/${PN}
+	rm -rf "${ED}"/usr/share/doc/${PN}
 }
