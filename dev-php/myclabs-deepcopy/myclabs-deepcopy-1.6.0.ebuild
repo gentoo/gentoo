@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="DeepCopy"
 
 DESCRIPTION="Create deep copies (clones) of your objects"
-HOMEPAGE="https://github.com/myclabs/${MY_PN}"
+HOMEPAGE="https://github.com/myclabs/DeepCopy"
 SRC_URI="https://github.com/myclabs/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
