@@ -18,7 +18,9 @@ KEYWORDS="amd64 x86"
 IUSE="nls"
 
 RDEPEND="
-	dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_MULTI_USEDEP}]
+	')
 	dev-qt/qtgui:5
 	>=media-libs/mutagen-1.38"
 DEPEND="
