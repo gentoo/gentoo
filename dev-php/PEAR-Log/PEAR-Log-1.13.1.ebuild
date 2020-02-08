@@ -7,7 +7,7 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="The Log framework provides an abstracted logging system"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/Log"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="MIT"
 SLOT="0"
