@@ -2110,12 +2110,10 @@ dev-libs/efl:hyphen - Enable text hyphenation support
 dev-libs/efl:ibus - Enable Intelligent Input Bus
 dev-libs/efl:ico - Enable Ico image loader
 dev-libs/efl:json - Enable lottie animation support
-dev-libs/efl:libuv - Enable dev-libs/libuv support
 dev-libs/efl:luajit - USE dev-lang/luajit instead of dev-lang/lua
 dev-libs/efl:mono - Enable mono bindings
 dev-libs/efl:physics - Enable Bullet physics effects and support
 dev-libs/efl:pmaps - Enable PMAPS image loader
-dev-libs/efl:ppm - Enable PMAPS image loader
 dev-libs/efl:psd - Enable PSD image loader
 dev-libs/efl:scim - Enable Smart Common Input Method
 dev-libs/efl:system-lz4 - Use system liblz4 instead of bundled one
@@ -2123,7 +2121,6 @@ dev-libs/efl:tga - Enable Tga image loader
 dev-libs/efl:tgv - Enable Tgv image loader
 dev-libs/efl:tslib - Enable x11-libs/tslib for touchscreen events
 dev-libs/efl:unwind - Enable debug support via sys-libs/libunwind
-dev-libs/efl:valgrind - Enable usage of dev-util/valgrind in debug
 dev-libs/efl:vlc - Enable media-video/vlc support
 dev-libs/efl:xcf - Enable XCF image loader
 dev-libs/efl:xim - Enable X Input Method
