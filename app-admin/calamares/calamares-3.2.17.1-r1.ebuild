@@ -5,7 +5,7 @@ EAPI=7
 
 ECM_TEST="true"
 PYTHON_COMPAT=( python3_6 )
-inherit ecm python-r1
+inherit ecm python-single-r1
 
 DESCRIPTION="Distribution-independent installer framework"
 HOMEPAGE="https://calamares.io"
@@ -22,8 +22,10 @@ BDEPEND="
 "
 COMMON_DEPEND="${PYTHON_DEPS}
 	dev-cpp/yaml-cpp:=
-	>=dev-libs/boost-1.55:=[python,${PYTHON_USEDEP}]
-	dev-libs/libpwquality[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-libs/boost-1.55:=[python,${PYTHON_MULTI_USEDEP}]
+		dev-libs/libpwquality[${PYTHON_MULTI_USEDEP}]
+	')
 	dev-qt/qtconcurrent:5
 	dev-qt/qtdbus:5
 	dev-qt/qtdeclarative:5
@@ -43,7 +45,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	sys-apps/dmidecode
 	sys-auth/polkit-qt
 	>=sys-libs/kpmcore-4.0.0:5=
-	pythonqt? ( >=dev-python/PythonQt-3.1:=[${PYTHON_USEDEP}] )
+	pythonqt? ( >=dev-python/PythonQt-3.1:=[${PYTHON_SINGLE_USEDEP}] )
 "
 DEPEND="${COMMON_DEPEND}
 	test? ( dev-qt/qttest:5 )
@@ -63,7 +65,6 @@ RDEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	ecm_src_prepare
-	python_setup
 	export PYTHON_INCLUDE_DIRS="$(python_get_includedir)" \
 			PYTHON_INCLUDE_PATH="$(python_get_library_path)"\
 			PYTHON_CFLAGS="$(python_get_CFLAGS)"\
