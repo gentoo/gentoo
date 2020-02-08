@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1
+inherit python-single-r1
 
 DESCRIPTION="Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY"
 HOMEPAGE="https://people.redhat.com/pwouters/hash-slinger/"
@@ -21,12 +21,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND=""
 RDEPEND="
 	${PYTHON_DEPS}
-	dev-python/dnspython[$PYTHON_USEDEP]
-	dev-python/ipaddr[$PYTHON_USEDEP]
-	dev-python/m2crypto[$PYTHON_USEDEP]
-	net-dns/unbound[python,$PYTHON_USEDEP]
+	net-dns/unbound[python,${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/dnspython[${PYTHON_MULTI_USEDEP}]
+		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
+		dev-python/m2crypto[${PYTHON_MULTI_USEDEP}]
+		openpgp? ( dev-python/python-gnupg[${PYTHON_MULTI_USEDEP}] )
+	')
 	ipsec? ( net-vpn/libreswan[dnssec] )
-	openpgp? ( dev-python/python-gnupg[$PYTHON_USEDEP] )
 	ssh? ( net-misc/openssh )
 "
 
@@ -38,7 +40,7 @@ src_install() {
 	use ipsec && tools+=" ipseckey"
 	for tool in $tools ; do
 		doman ${tool}.1
-		python_foreach_impl python_doscript ${tool}
+		python_doscript ${tool}
 	done
 	dodoc BUGS CHANGES README
 }
