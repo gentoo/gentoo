@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,11 +19,13 @@ SLOT="0"
 IUSE="nls"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/pyenchant[${PYTHON_USEDEP}]
-	dev-python/pygtk:2[${PYTHON_USEDEP}]
-	dev-python/pygtksourceview:2[${PYTHON_USEDEP}]
-	dev-python/lxml[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyenchant[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygtksourceview:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+	')"
 
 DEPEND="${RDEPEND}"
 BDEPEND="nls? ( sys-devel/gettext )"
