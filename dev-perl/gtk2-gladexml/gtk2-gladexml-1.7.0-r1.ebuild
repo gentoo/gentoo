@@ -9,7 +9,7 @@ MODULE_VERSION=1.007
 inherit perl-module
 
 DESCRIPTION="Create user interfaces directly from Glade XML files"
-HOMEPAGE="http://gtk2-perl.sf.net/ ${HOMEPAGE}"
+HOMEPAGE="http://gtk2-perl.sf.net/ https://metacpan.org/release/Gtk2-GladeXML"
 
 SLOT="0"
 LICENSE="LGPL-2"
