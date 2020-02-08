@@ -19,16 +19,18 @@ KEYWORDS="amd64 x86"
 IUSE="+rcs +reports exif geo postscript spell"
 
 RDEPEND="
-	dev-python/bsddb3[${PYTHON_USEDEP}]
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	>=dev-python/pygobject-3.12:3[cairo,${PYTHON_USEDEP}]
-	dev-python/pyicu[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/bsddb3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygobject-3.12:3[cairo,${PYTHON_MULTI_USEDEP}]
+		dev-python/pyicu[${PYTHON_MULTI_USEDEP}]
+		exif? ( >=media-libs/gexiv2-0.5[${PYTHON_MULTI_USEDEP},introspection] )
+	')
 	gnome-base/librsvg:2
 	>x11-libs/gtk+-3.14.8:3[introspection]
 	x11-libs/pango[introspection]
 	x11-misc/xdg-utils
 	reports? ( media-gfx/graphviz[postscript?] )
-	exif? ( >=media-libs/gexiv2-0.5[${PYTHON_USEDEP},introspection] )
 	geo? ( >=sci-geosciences/osm-gps-map-1.1.0 )
 	spell? ( app-text/gtkspell:3[introspection] )
 	rcs? ( dev-vcs/rcs )
