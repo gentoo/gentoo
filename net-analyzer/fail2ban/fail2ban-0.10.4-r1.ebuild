@@ -25,8 +25,8 @@ RDEPEND="
 	virtual/mta
 	selinux? ( sec-policy/selinux-fail2ban )
 	systemd? ( $(python_gen_cond_dep '|| (
-		dev-python/python-systemd[${PYTHON_USEDEP}]
-		sys-apps/systemd[python(-),${PYTHON_USEDEP}]
+		dev-python/python-systemd[${PYTHON_MULTI_USEDEP}]
+		sys-apps/systemd[python(-),${PYTHON_MULTI_USEDEP}]
 	)' 'python*' ) )
 "
 
