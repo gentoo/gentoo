@@ -2465,6 +2465,7 @@ app-shells/tmux-bash-completion 9999: bash-completion scripts for tmux
 app-shells/yash 2.48 2.49: Yash is a POSIX-compliant command line shell
 app-shells/zsh 5.6.2 5.7.1 5.7.1-r1 9999: UNIX Shell similar to the Korn shell
 app-shells/zsh-completions 0.31.0 9999: Additional completion definitions for Zsh
+app-shells/zsh-syntax-highlighting 0.7.0_beta1: Fish shell like syntax highlighting for zsh
 app-text/XML-Schema-learner 1.0.1: Algorithmic inferencing of XML schema definitions and DTDs
 app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
