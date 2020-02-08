@@ -7,7 +7,7 @@ MY_PN="${PN/-/_}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="The PEAR Exception base class"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/PEAR_Exception"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="BSD-2"
 SLOT="0"
