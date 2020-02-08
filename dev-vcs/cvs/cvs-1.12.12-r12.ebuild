@@ -64,7 +64,7 @@ src_configure() {
 	fi
 	econf \
 		--with-external-zlib \
-		--with-tmpdir=${EPREFIX%/}/tmp \
+		--with-tmpdir=${EPREFIX}/tmp \
 		$(use_enable crypt encryption) \
 		$(use_with kerberos gssapi) \
 		$(use_enable nls) \
