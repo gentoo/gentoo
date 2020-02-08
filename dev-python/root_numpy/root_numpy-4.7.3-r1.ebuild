@@ -19,11 +19,16 @@ IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
-	sci-physics/root:=[python,${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+	')
+	sci-physics/root:=[python,${PYTHON_SINGLE_USEDEP}]"
 
 DEPEND="${RDEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/nose[${PYTHON_MULTI_USEDEP}] )
+		')"
 
 python_test() {
 	cd "${BUILD_DIR}" || die
