@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Manages multiple Ruby versions"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://dev.gentoo.org/~graaff/ruby-team/ruby.eselect-${PVR}.xz"
 
 LICENSE="GPL-2"
