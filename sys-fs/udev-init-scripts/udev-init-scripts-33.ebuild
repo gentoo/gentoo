@@ -15,7 +15,7 @@ else
 fi
 
 DESCRIPTION="udev startup scripts for openrc"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="GPL-2"
 SLOT="0"
