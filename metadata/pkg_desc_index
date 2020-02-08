@@ -4998,8 +4998,8 @@ dev-libs/libgpg-error 1.36: Contains error handling functions used by GnuPG soft
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1: GObject bindings for libudev
-dev-libs/libgusb 0.2.11 0.3.1 0.3.2: GObject wrapper for libusb
-dev-libs/libgweather 3.32.2-r1: Location and timezone database and weather-lookup library
+dev-libs/libgusb 0.2.11 0.3.1 0.3.2 0.3.3: GObject wrapper for libusb
+dev-libs/libgweather 3.32.2-r1 3.34.0: Location and timezone database and weather-lookup library
 dev-libs/libhid 0.2.16-r4: Provides a generic and flexible way to access and interact with USB HID devices
 dev-libs/libical 3.0.5 3.0.6 3.0.7: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14-r1 1.15: GNU charset conversion library for libc which doesn't implement it
@@ -7595,7 +7595,7 @@ dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
 dev-python/dask 1.2.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/datashape 0.5.4-r1: Language defining a data description protocol
 dev-python/dbus-python 1.2.4 1.2.12 1.2.14: Python bindings for the D-Bus messagebus
-dev-python/dbusmock 0.18.2: Easily create mock objects on D-Bus for software testing
+dev-python/dbusmock 0.18.2 0.18.3: Easily create mock objects on D-Bus for software testing
 dev-python/ddt 1.1.1 1.2.2: A library to multiply test cases
 dev-python/debtcollector 1.21.0: Python deprecation patterns and strategies that collect technical debt
 dev-python/decorator 4.3.2 4.4.0 4.4.1: Simplifies the usage of decorators for the average programmer
@@ -14566,7 +14566,7 @@ net-im/telegram-desktop 1.9.8 1.9.9 1.9.10: Official desktop client for Telegram
 net-im/telegram-desktop-bin 1.9.7 1.9.8 1.9.9: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
-net-im/telepathy-mission-control 5.16.4: An account manager and channel dispatcher for the Telepathy framework
+net-im/telepathy-mission-control 5.16.4 5.16.5: An account manager and channel dispatcher for the Telepathy framework
 net-im/tkabber 1.1.2: A jabber client written in Tcl/Tk
 net-im/toxic 0.8.2 0.8.3: A curses-based client for Tox
 net-im/transwhat 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3
