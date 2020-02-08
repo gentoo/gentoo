@@ -131,7 +131,7 @@ src_configure() {
 	export LDFLAGS_SL="${LDFLAGS}"
 	export LDFLAGS_EX="${LDFLAGS}"
 
-	local PO="${EPREFIX%/}"
+	local PO="${EPREFIX}"
 
 	local i uuid_config=""
 	if use uuid; then
