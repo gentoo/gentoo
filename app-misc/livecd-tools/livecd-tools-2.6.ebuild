@@ -12,7 +12,7 @@ else
 fi
 
 DESCRIPTION="Gentoo LiveCD tools for autoconfiguration of hardware"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 SLOT="0"
 LICENSE="GPL-2"
