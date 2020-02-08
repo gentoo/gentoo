@@ -6,7 +6,7 @@ EAPI=5
 inherit java-virtuals-2
 
 DESCRIPTION="Virtual for SAAJ 1.3 (AKA JSR-67 MR3) API"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI=""
 
 LICENSE="public-domain"
