@@ -19,18 +19,22 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/QtPy[gui,${PYTHON_USEDEP}]
-	dev-python/send2trash[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+		dev-python/QtPy[gui,${PYTHON_MULTI_USEDEP}]
+		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
+	')
 	dev-vcs/git"
 BDEPEND="sys-devel/gettext
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
-	test? (
-		${VIRTUALX_DEPEND}
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/nose[${PYTHON_USEDEP}]
-	)"
+	$(python_gen_cond_dep "
+		doc? ( dev-python/sphinx[\${PYTHON_MULTI_USEDEP}] )
+		test? (
+			${VIRTUALX_DEPEND}
+			dev-python/mock[\${PYTHON_MULTI_USEDEP}]
+			dev-python/nose[\${PYTHON_MULTI_USEDEP}]
+		)
+	")"
 
 python_prepare_all() {
 	# make sure that tests also use the system provided QtPy
