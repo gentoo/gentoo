@@ -7,7 +7,10 @@ PYTHON_COMPAT=( python3_6 pypy3 )
 inherit distutils-r1
 
 DESCRIPTION="Python implementation of the Socket.IO realtime server."
-HOMEPAGE="https://${PN}.readthedocs.org/ https://github.com/miguelgrinberg/${PN}/ https://pypi.org/project/${PN}"
+HOMEPAGE="
+	https://python-socketio.readthedocs.org/
+	https://github.com/miguelgrinberg/python-socketio/
+	https://pypi.org/project/python-socketio"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
