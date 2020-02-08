@@ -35,7 +35,6 @@ PATCHES=( "${FILESDIR}"/${P}-cmake.patch )
 src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_VERBOSE_MAKEFILE=TRUE
-		-DCMAKE_INSTALL_PREFIX="/usr"
 		-DBINDIR="/usr/bin"
 		-DDATAROOTDIR="/usr/share"
 		-DICONDIR=/usr/share/icons
