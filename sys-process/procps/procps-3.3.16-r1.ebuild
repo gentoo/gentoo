@@ -50,7 +50,7 @@ multilib_src_configure() {
 	append-lfs-flags #471102
 	local myeconfargs=(
 		--docdir='$(datarootdir)'/doc/${PF}
-		$(use_with elogind)
+		$(multilib_native_use_with elogind) # No elogind multilib support
 		$(multilib_native_use_enable kill)
 		$(multilib_native_use_enable modern-top)
 		$(multilib_native_use_with ncurses)
