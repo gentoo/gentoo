@@ -17,11 +17,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
-	dev-python/chardet[${PYTHON_USEDEP}]
-	dev-python/dkimpy[${PYTHON_USEDEP}]
-	net-mail/notmuch[python,${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
+		dev-python/dkimpy[${PYTHON_MULTI_USEDEP}]
+		net-mail/notmuch[python,${PYTHON_MULTI_USEDEP}]
+	')"
 
 DOCS=( "README.rst" )
 
