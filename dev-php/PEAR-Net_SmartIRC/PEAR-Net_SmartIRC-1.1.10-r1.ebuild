@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/Net_SmartIRC"
 # The PEAR tarball is missing some docs as of v1.10.0.
 SRC_URI="https://github.com/pear/${MY_PN}/archive/v${PV}.tar.gz
 	-> ${MY_P}.tar.gz"
