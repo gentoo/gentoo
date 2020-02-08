@@ -7,7 +7,7 @@ inherit eutils multilib libtool
 
 MY_P=${P/-prefix/}  # just use "upstream" sources
 DESCRIPTION="Minimal baselayout for Gentoo Prefix installs"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${MY_P}.tar.bz2
 	https://dev.gentoo.org/~vapier/dist/${MY_P}.tar.bz2"
 
