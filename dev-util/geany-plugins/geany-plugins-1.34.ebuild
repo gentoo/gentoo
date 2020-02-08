@@ -141,6 +141,6 @@ src_install() {
 
 	# make installs all translations if LINGUAS is empty
 	if [[ -z "${LINGUAS-x}" ]]; then
-		rm -r "${ED%/}/usr/share/locale/" || die
+		rm -r "${ED}/usr/share/locale/" || die
 	fi
 }
