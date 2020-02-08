@@ -46,11 +46,11 @@ src_compile() {
 }
 
 src_install() {
-	mkdir -p "${ED%/}/usr/include/msieve"
-	mkdir -p "${ED%/}/usr/lib/"
-	mkdir -p "${ED%/}/usr/share/doc/${P}/"
-	cp include/* "${ED%/}/usr/include/msieve" || die "Failed to install"
-	cp libmsieve.a "${ED%/}/usr/lib/" || die "Failed to install"
+	mkdir -p "${ED}/usr/include/msieve"
+	mkdir -p "${ED}/usr/lib/"
+	mkdir -p "${ED}/usr/share/doc/${P}/"
+	cp include/* "${ED}/usr/include/msieve" || die "Failed to install"
+	cp libmsieve.a "${ED}/usr/lib/" || die "Failed to install"
 	dobin msieve
-	cp Readme* "${ED%/}/usr/share/doc/${P}/" || die "Failed to install"
+	cp Readme* "${ED}/usr/share/doc/${P}/" || die "Failed to install"
 }
