@@ -20,8 +20,10 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="test"
 
 RDEPEND="
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/pyxdg[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+	')
 	x11-libs/gtk+:3[introspection]
 	x11-misc/xdg-utils
 "
