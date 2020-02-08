@@ -27,7 +27,6 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX=/usr/
 		-DNEWTON_DEMOS_SANDBOX=OFF
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 	)
