@@ -18,8 +18,6 @@ SLOT="0"
 KEYWORDS="amd64 sparc x86"
 IUSE=""
 
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-
 python_install() {
 	distutils-r1_python_install --install-scripts="${EPREFIX}/usr/sbin"
 }
