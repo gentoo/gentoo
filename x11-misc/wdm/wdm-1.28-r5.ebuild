@@ -52,6 +52,6 @@ src_configure() {
 src_install() {
 	default
 
-	rm -f "${ED%/}"/etc/pam.d/wdm || die
+	rm -f "${ED}"/etc/pam.d/wdm || die
 	pamd_mimic system-local-login wdm auth account password session
 }
