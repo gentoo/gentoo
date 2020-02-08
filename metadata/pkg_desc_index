@@ -2406,7 +2406,7 @@ app-portage/pfl 3.0-r2 3.0.1-r3: Searchable online file/package database for Gen
 app-portage/portage-utils 0.74 0.80 0.85 9999: Small and fast Portage helper tools written in C
 app-portage/porthole 0.6.1-r5: A GTK+-based frontend to Portage
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
-app-portage/portpeek 2.1.27: A helper program for maintaining the package.keyword and package.unmask files
+app-portage/portpeek 2.1.27 2.1.27-r1: A helper program for maintaining the package.keyword and package.unmask files
 app-portage/pqlop 0.02-r1: emerge.log parser written in python
 app-portage/pram 8: Tool to ease merging Pull Requests and git patches
 app-portage/prefix-toolkit 4 5: Utilities for users of Gentoo Prefix
@@ -10546,7 +10546,7 @@ dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in vari
 dev-util/glslang 7.12.3353_pre20191027-r2 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463 0.1544 0.1616: GN is a meta-build system that generates build files for Ninja
 dev-util/gnome-builder 3.30.3 3.32.4: An IDE for writing GNOME-based software
-dev-util/gnome-devel-docs 3.30.2: Documentation for developing for the GNOME desktop environment
+dev-util/gnome-devel-docs 3.30.2 3.32.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 2019.3-r1: Golang IDE by JetBrains
 dev-util/google-perftools 2.6.2 2.7 2.7-r1: Fast, multi-threaded malloc() and nifty performance analysis tools
@@ -11698,7 +11698,7 @@ gnome-extra/gnome-getting-started-docs 3.32.2: Help a new user get started in GN
 gnome-extra/gnome-integration-spotify 20140907-r1: GNOME integration for Spotify
 gnome-extra/gnome-logs 3.30.0: Log messages and event viewer
 gnome-extra/gnome-packagekit 3.24.0 3.30.0: PackageKit client for the GNOME desktop
-gnome-extra/gnome-power-manager 3.30.0: GNOME power statistics
+gnome-extra/gnome-power-manager 3.30.0 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 6: Show tooltip with full name and description
 gnome-extra/gnome-shell-extension-dash-to-panel 26: An icon taskbar for the Gnome Shell
