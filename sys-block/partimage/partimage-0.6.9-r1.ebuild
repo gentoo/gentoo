@@ -54,13 +54,13 @@ src_configure() {
 	fi
 
 	econf \
-		--docdir="${EPREFIX%/}"/usr/share/doc/${PF} \
-		--sysconfdir="${EPREFIX%/}"/etc \
+		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
+		--sysconfdir="${EPREFIX}"/etc \
 		$(use_enable nls) \
 		$(use_enable ssl) \
 		--disable-pam \
 		$(use_enable static all-static) \
-		--with-log-dir="${EPREFIX%/}"/var/log/partimage \
+		--with-log-dir="${EPREFIX}"/var/log/partimage \
 		${myconf}
 }
 
