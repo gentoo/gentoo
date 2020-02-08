@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 DESCRIPTION="An open-source full-featured 2D animation creation software"
 HOMEPAGE="https://github.com/opentoonz/opentoonz"
@@ -67,14 +67,14 @@ src_configure() {
 		--enable-static \
 		--disable-shared
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	cd "${S}"/thirdparty/tiff-4.0.3 || die
 	emake
 
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 pkg_postinst() {
