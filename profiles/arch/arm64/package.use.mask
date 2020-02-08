@@ -381,10 +381,6 @@ www-client/chromium tcmalloc
 # Needs deps tested.
 net-misc/curl  metalink
 
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
-
 # Roy Bamford <neddyseagoon@gentoo.org> (2017-01-26)
 # gcj-6.3 won't bootstrap icedtea 7
 >=sys-devel/gcc-6 gcj
