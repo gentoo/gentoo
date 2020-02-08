@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/pcb/pcb/${P}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-macos"
+KEYWORDS="amd64 ~ppc ~x86 ~x86-macos"
 IUSE="dbus doc gcode gif gsvit gui jpeg m4lib-png nelma png test tk toporouter"
 # toporouter-output USE flag removed, there seems to be no result
 RESTRICT="!test? ( test )"
