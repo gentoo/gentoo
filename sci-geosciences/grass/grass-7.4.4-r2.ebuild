@@ -150,23 +150,23 @@ src_configure() {
 		setup-wxwidgets
 	fi
 
-	addwrite "${EPREFIX%/}/dev/dri/renderD128"
+	addwrite "${EPREFIX}/dev/dri/renderD128"
 
 	local myeconfargs=(
 		--enable-shared
 		--disable-w11
 		--without-opendwg
 		--with-regex
-		--with-gdal="${EPREFIX%/}/usr/bin/gdal-config"
-		--with-proj-includes="${EPREFIX%/}/usr/include/libprojectM"
-		--with-proj-libs="${EPREFIX%/}/usr/$(get_libdir)"
-		--with-proj-share="${EPREFIX%/}/usr/share/proj/"
+		--with-gdal="${EPREFIX}/usr/bin/gdal-config"
+		--with-proj-includes="${EPREFIX}/usr/include/libprojectM"
+		--with-proj-libs="${EPREFIX}/usr/$(get_libdir)"
+		--with-proj-share="${EPREFIX}/usr/share/proj/"
 		$(use_with cxx)
 		$(use_with tiff)
 		$(use_with png)
 		$(use_with postgres)
 		$(use_with mysql)
-		$(use_with mysql mysql-includes "${EPREFIX%/}/usr/include/mysql")
+		$(use_with mysql mysql-includes "${EPREFIX}/usr/include/mysql")
 		$(use_with sqlite)
 		$(use_with opengl)
 		$(use_with odbc)
@@ -175,16 +175,16 @@ src_configure() {
 		$(use_with lapack)
 		$(use_with X cairo)
 		$(use_with truetype freetype)
-		$(use_with truetype freetype-includes "${EPREFIX%/}/usr/include/freetype2")
+		$(use_with truetype freetype-includes "${EPREFIX}/usr/include/freetype2")
 		$(use_with nls)
 		$(use_with readline)
 		$(use_with threads pthread)
 		$(use_with openmp)
 		$(use_with opencl)
-		$(use_with liblas liblas "${EPREFIX%/}/usr/bin/liblas-config")
+		$(use_with liblas liblas "${EPREFIX}/usr/bin/liblas-config")
 		$(use_with X wxwidgets "${WX_CONFIG}")
-		$(use_with netcdf netcdf "${EPREFIX%/}/usr/bin/nc-config")
-		$(use_with geos geos "${EPREFIX%/}/usr/bin/geos-config")
+		$(use_with netcdf netcdf "${EPREFIX}/usr/bin/nc-config")
+		$(use_with geos geos "${EPREFIX}/usr/bin/geos-config")
 		$(use_with X x)
 	)
 	econf "${myeconfargs[@]}"
@@ -244,7 +244,7 @@ src_install() {
 
 	# get proper fonts path for fontcap
 	sed -i \
-		-e "s|${D}/usr/${MY_PM}|${EPREFIX%/}/usr/$(get_libdir)/${MY_PM}|" \
+		-e "s|${D}/usr/${MY_PM}|${EPREFIX}/usr/$(get_libdir)/${MY_PM}|" \
 		"${D}/usr/$(get_libdir)/${MY_PM}/etc/fontcap" || die
 
 	# set proper python interpreter
