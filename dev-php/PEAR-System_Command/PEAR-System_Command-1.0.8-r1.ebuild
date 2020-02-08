@@ -7,7 +7,7 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="PHP command-line execution interface"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/System_Command"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="PHP-3.01"
 SLOT="0"
