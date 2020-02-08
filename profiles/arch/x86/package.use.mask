@@ -1,6 +1,23 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-08)
+# Requires dev-qt/qtwebengine, which is unable to link on x86, bug #695446
+app-i18n/fcitx-libpinyin dictionary-manager
+app-office/kraft pim
+games-util/lgogdownloader gui
+kde-apps/kde-apps-meta pim
+kde-apps/kdenetwork-meta telepathy
+media-sound/supercollider qt5
+net-irc/quassel urlpreview
+net-misc/fatrat bittorrent
+net-misc/seafile-client shibboleth
+net-p2p/ktorrent rss search
+sci-geosciences/gpsbabel gui
+sci-mathematics/yacas gui
+sci-physics/root qt5
+sci-visualization/paraview qt5
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-29)
 # media-libs/pulseaudio-qt is not keyworded
 kde-misc/kdeconnect pulseaudio

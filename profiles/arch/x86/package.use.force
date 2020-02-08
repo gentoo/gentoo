@@ -1,5 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-08)
+# Avoid dev-qt/qtwebengine, which is unable to link on x86, bug #695446
+app-office/kmymoney webkit
+app-office/skrooge webkit
+dev-util/kdevelop webkit
+kde-misc/kmarkdownwebview webkit
+media-gfx/digikam webkit
+sci-mathematics/rstudio dedicated
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-11-21)
 # iasl is stable on x86
