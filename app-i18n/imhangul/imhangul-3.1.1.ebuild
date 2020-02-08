@@ -28,7 +28,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-gtk-im-module-dir="${EPREFIX%/}"/usr/$(get_libdir)/gtk-3.0/$(pkg-config gtk+-3.0 --variable=gtk_binary_version)/immodules
+	econf --with-gtk-im-module-dir="${EPREFIX}"/usr/$(get_libdir)/gtk-3.0/$(pkg-config gtk+-3.0 --variable=gtk_binary_version)/immodules
 }
 
 src_install() {
