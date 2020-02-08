@@ -6,7 +6,7 @@ EAPI="5"
 inherit toolchain-funcs
 
 DESCRIPTION="Enable colorization of man pages"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="GPL-2"
 SLOT="0"
