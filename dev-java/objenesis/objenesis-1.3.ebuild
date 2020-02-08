@@ -8,7 +8,7 @@ JAVA_PKG_IUSE="source doc"
 inherit java-pkg-2 java-pkg-simple
 
 DESCRIPTION="A small Java library with one purpose: To instantiate a new object of a class"
-HOMEPAGE="https://${PN}.googlecode.com/"
+HOMEPAGE="https://objenesis.googlecode.com/"
 SRC_URI="https://${PN}.googlecode.com/files/${P}-bin.zip"
 
 LICENSE="Apache-2.0"
