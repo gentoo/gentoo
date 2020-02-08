@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="Set of QML types for adding visual effects to user interfaces"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~arm x86"
+	KEYWORDS="x86"
 fi
 
 IUSE=""
