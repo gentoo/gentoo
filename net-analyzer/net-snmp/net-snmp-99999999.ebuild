@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,7 +41,9 @@ COMMON_DEPEND="
 	pci? ( sys-apps/pciutils )
 	perl? ( dev-lang/perl:= )
 	python? (
-		dev-python/setuptools[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		')
 		${PYTHON_DEPS}
 	)
 	rpm? (

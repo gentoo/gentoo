@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ S=${WORKDIR}/${P/_/.}
 # GPL-2 for the init scripts
 LICENSE="HPND BSD GPL-2"
 SLOT="0/35"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
 IUSE="X bzip2 doc elf kmem ipv6 libressl lm-sensors mfd-rewrites minimal mysql netlink pci perl python rpm selinux smux ssl tcpd ucd-compat zlib"
 
 COMMON_DEPEND="
@@ -40,7 +40,9 @@ COMMON_DEPEND="
 	zlib? ( >=sys-libs/zlib-1.1.4 )
 	elf? ( dev-libs/elfutils )
 	python? (
-		dev-python/setuptools[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		')
 		${PYTHON_DEPS}
 	)
 	pci? ( sys-apps/pciutils )
@@ -79,7 +81,6 @@ src_prepare() {
 	use selinux && eapply "${FILESDIR}"/${PN}-5.1.2-snmpconf-selinux.patch
 
 	eapply "${FILESDIR}"/${PN}-5.7.3-include-limits.patch
-	eapply "${FILESDIR}"/${PN}-5.8-my_bool.patch
 	eapply "${FILESDIR}"/${PN}-5.8-tinfo.patch
 
 	mv "${WORKDIR}"/patches/0002-Respect-DESTDIR-for-pythoninstall.patch{,.disabled} || die
