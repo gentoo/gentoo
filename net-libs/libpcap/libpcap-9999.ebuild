@@ -8,7 +8,7 @@ DESCRIPTION="A system-independent library for user-level network packet capture"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/libpcap"
 HOMEPAGE="
 	https://www.tcpdump.org/
-	${EGIT_REPO_URI}
+	https://github.com/the-tcpdump-group/libpcap
 "
 
 LICENSE="BSD"
