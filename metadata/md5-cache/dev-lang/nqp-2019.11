@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/perl6/nqp/releases/download/2019.11/nqp-2019.11.tar.gz
 _eclasses_=java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	multibuild	40fe59465edacd730c644ec2bc197809
-_md5_=2a3fb5562ce14e761741e9bec21a7efd
+_md5_=b1b309a3040930cef30e4273427bda10

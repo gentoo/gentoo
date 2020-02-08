@@ -12,4 +12,4 @@ RDEPEND=readline? ( >=sys-libs/readline-4.1:0= ) >=dev-libs/libevent-2.0.9:=[thr
 SLOT=0
 SRC_URI=http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ntp-4.2.8p13.tar.gz https://dev.gentoo.org/~polynomial-c/ntp-4.2.8p13-manpages.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=cbbaaee546a951b87ddfa8ac8f9777b3
+_md5_=3cda8b395d88684cbae56bb007034778

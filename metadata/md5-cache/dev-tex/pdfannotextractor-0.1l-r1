@@ -11,4 +11,4 @@ RDEPEND=virtual/perl-Getopt-Long dev-perl/File-Which >=virtual/jre-1.6 virtual/l
 SLOT=0
 SRC_URI=mirror://gentoo/pdfannotextractor-0.1l.zip
 _eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	latex-package	17f13abe0de88340745e52e6b627aee7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4091bc1782dbf2bb19a38504e9ed7928
+_md5_=152f7c636e29cdec3c34bc7717f26d94

@@ -18705,7 +18705,7 @@ x11-plugins/pidgin-encryption 3.1: Pidgin IM Encryption PlugIn
 x11-plugins/pidgin-extprefs 0.7-r1: Extra preferences that are desired but are not worthy for Pidgin
 x11-plugins/pidgin-funyahoo-plusplus 9999: Yahoo! (2016) Protocol Plugin for Pidgin
 x11-plugins/pidgin-gnome-keyring 2.0: Integrates Pidgin (and libpurple) with the system keyring
-x11-plugins/pidgin-gpg 0.9 0.9.3: Pidgin GPG/OpenPGP (XEP-0027) plugin
+x11-plugins/pidgin-gpg 0.9.3: Pidgin GPG/OpenPGP (XEP-0027) plugin
 x11-plugins/pidgin-hotkeys 0.2.4: Pidgin plugin to define global hotkeys for various actions
 x11-plugins/pidgin-indicator 1.0: Indicator plugin for Pidgin
 x11-plugins/pidgin-latex 1.5.0: Pidgin plugin that renders latex formulae

@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=net-misc/curl dev-util/gperf dev-vcs/cvs dev-vcs/subversion
 SLOT=0
 SRC_URI=http://ymorin.is-a-geek.org/download/crosstool-ng/crosstool-ng-1.24.0.tar.bz2
-_md5_=a368f82d2f47ab2085c6702703418e23
+_md5_=cd506307a18f4174bd8fa79af9f1ea37

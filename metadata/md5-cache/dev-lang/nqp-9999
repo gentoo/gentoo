@@ -12,4 +12,4 @@ REQUIRED_USE=|| ( java moar )
 RESTRICT=!test? ( test )
 SLOT=0
 _eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	multibuild	40fe59465edacd730c644ec2bc197809
-_md5_=2a3fb5562ce14e761741e9bec21a7efd
+_md5_=b1b309a3040930cef30e4273427bda10
