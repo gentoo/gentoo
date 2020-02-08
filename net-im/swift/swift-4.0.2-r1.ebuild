@@ -74,9 +74,9 @@ src_prepare() {
 
 	# Hack for finding Qt system libs
 	mkdir "${T}"/qt || die
-	ln -s "${EPREFIX%/}"/usr/$(get_libdir)/qt5/bin "${T}"/qt/bin || die
-	ln -s "${EPREFIX%/}"/usr/$(get_libdir)/qt5 "${T}"/qt/lib || die
-	ln -s "${EPREFIX%/}"/usr/include/qt5 "${T}"/qt/include || die
+	ln -s "${EPREFIX}"/usr/$(get_libdir)/qt5/bin "${T}"/qt/bin || die
+	ln -s "${EPREFIX}"/usr/$(get_libdir)/qt5 "${T}"/qt/lib || die
+	ln -s "${EPREFIX}"/usr/include/qt5 "${T}"/qt/include || die
 
 	# Remove parts of Swift, which a user don't want to compile
 	if ! use client; then rm -fr Swift Slimber || die; fi
