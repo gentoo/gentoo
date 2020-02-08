@@ -4,7 +4,7 @@
 EAPI="5"
 
 DESCRIPTION="Manages the {,/usr}/bin/awk symlink"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://dev.gentoo.org/~junghans/distfiles/${P}.tar.gz"
 
 LICENSE="GPL-2"
