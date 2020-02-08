@@ -9,7 +9,7 @@ inherit autotools
 # disappeared
 
 DESCRIPTION="Bandwidth limiting pipe"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://dev.gentoo.org/~grobian/${P}.tar.gz"
 
 LICENSE="GPL-2"
