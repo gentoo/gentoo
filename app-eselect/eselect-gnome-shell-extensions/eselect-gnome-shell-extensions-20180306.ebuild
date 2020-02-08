@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Manages system defaults for GNOME Shell extensions"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://dev.gentoo.org/~leio/distfiles/${P}.tar.xz"
 
 LICENSE="GPL-2+"
