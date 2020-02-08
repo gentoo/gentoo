@@ -7,7 +7,7 @@ MY_PN="${PN#nagios-}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A nagios plugin for checking MySQL server health"
-HOMEPAGE="https://labs.consol.de/nagios/${MY_PN}/"
+HOMEPAGE="https://labs.consol.de/nagios/check_mysql_health/"
 SRC_URI="https://labs.consol.de/assets/downloads/nagios/${MY_P}.tar.gz"
 
 LICENSE="BSD"
