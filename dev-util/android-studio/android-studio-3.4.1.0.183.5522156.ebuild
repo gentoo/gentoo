@@ -123,7 +123,7 @@ src_install() {
 		fperms -R 755 "${dir}"/jre/{bin,jre/bin}
 		fperms 755 ${dir}/jre/jre/lib/jexec
 	fi
-	chmod 755 "${ED%/}${dir}"/gradle/gradle-*/bin/gradle || die
+	chmod 755 "${ED}${dir}"/gradle/gradle-*/bin/gradle || die
 
 	newicon "bin/studio.png" "${PN}.png"
 	make_wrapper ${PN} ${dir}/bin/studio.sh
