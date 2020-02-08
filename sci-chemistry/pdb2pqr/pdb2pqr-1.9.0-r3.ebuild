@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit scons-utils fortran-2 flag-o-matic python-r1 toolchain-funcs
+inherit scons-utils fortran-2 flag-o-matic python-single-r1 toolchain-funcs
 
 DESCRIPTION="Automated pipeline for performing Poisson-Boltzmann electrostatics calculations"
 HOMEPAGE="https://www.poissonboltzmann.org/"
@@ -19,13 +19,15 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	|| (
-		dev-python/numpy-python2[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-	)
-	sci-chemistry/openbabel-python[${PYTHON_USEDEP}]
-	opal? ( dev-python/zsi[${PYTHON_USEDEP}] )
-	pdb2pka? ( sci-chemistry/apbs[${PYTHON_USEDEP},-mpi] )"
+	$(python_gen_cond_dep '
+		|| (
+			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		)
+		sci-chemistry/openbabel-python[${PYTHON_MULTI_USEDEP}]
+		opal? ( dev-python/zsi[${PYTHON_MULTI_USEDEP}] )
+	')
+	pdb2pka? ( sci-chemistry/apbs[${PYTHON_SINGLE_USEDEP},-mpi] )"
 DEPEND="${RDEPEND}
 	dev-lang/swig:0"
 
@@ -43,6 +45,7 @@ pkg_setup() {
 		einfo "Allow usage of ${MAXATOMS} during calculations"
 	fi
 	fortran-2_pkg_setup
+	python-single-r1_pkg_setup
 }
 
 src_prepare() {
@@ -54,15 +57,10 @@ src_prepare() {
 	epatch "${PATCHES[@]}"
 	tc-export CXX
 	rm -rf scons || die
-
-	python_copy_sources
 }
 
 src_configure() {
-	python_configure() {
-		cd "${BUILD_DIR}" || die
-
-		cat > build_config.py <<- EOF
+	cat > build_config.py <<- EOF
 		PREFIX="${D}/$(python_get_sitedir)/${PN}"
 		#URL="http://<COMPUTER NAME>/pdb2pqr/"
 		APBS="${EPREFIX}/usr/bin/apbs"
@@ -71,51 +69,35 @@ src_configure() {
 		MAX_ATOMS=${MAXATOMS}
 		BUILD_PDB2PKA=$(usex pdb2pka True False)
 		REBUILD_SWIG=True
-		EOF
-	}
-
-	python_foreach_impl python_configure
+	EOF
 }
 
 src_compile() {
-	python_compile() {
-		cd "${BUILD_DIR}" || die
-		escons
-	}
-	python_foreach_impl python_compile
+	escons
 }
 
 src_test() {
-	python_test() {
-		local myesconsargs=( -j1 )
-		cd "${BUILD_DIR}" || die
-		escons test
-		escons advtest
-		escons complete-test
-	}
-	python_foreach_impl python_test
+	local myesconsargs=( -j1 )
+	escons test
+	escons advtest
+	escons complete-test
 }
 
 src_install() {
 	dodir /usr/share/doc/${PF}/html
-	python_install() {
-		local lib
+	local lib
 
-		cd "${BUILD_DIR}" || die
+	escons install
 
-		escons install
+	find "${D}$(python_get_sitedir)"/${PN}/{jmol,examples,doc,contrib} -delete || die
 
-		find "${D}$(python_get_sitedir)"/${PN}/{jmol,examples,doc,contrib} -delete || die
+	python_doscript "${FILESDIR}"/{${PN},pdb2pka}
 
-		python_doscript "${FILESDIR}"/{${PN},pdb2pka}
-
-		for lib in apbslib.py{,c,o}; do
-			dosym ../../apbs/${lib} $(python_get_sitedir)/${PN}/pdb2pka/${lib}
-		done
-		dosym ../../_apbslib.so $(python_get_sitedir)/${PN}/pdb2pka/_apbslib.so
-		python_optimize
-	}
-	python_foreach_impl python_install
+	for lib in apbslib.py{,c,o}; do
+		dosym ../../apbs/${lib} $(python_get_sitedir)/${PN}/pdb2pka/${lib}
+	done
+	dosym ../../_apbslib.so $(python_get_sitedir)/${PN}/pdb2pka/_apbslib.so
+	python_optimize
 
 	if use doc; then
 		pushd doc > /dev/null
