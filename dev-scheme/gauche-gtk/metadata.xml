@@ -8,9 +8,6 @@
 	<longdescription>
 		Gauche extension module to use GTK.
 	</longdescription>
-	<use>
-		<flag name="glgd">Enable GL graph draw</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">shirok/Gauche-gtk2</remote-id>
 	</upstream>

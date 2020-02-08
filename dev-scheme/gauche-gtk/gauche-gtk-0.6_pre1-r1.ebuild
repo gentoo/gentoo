@@ -15,17 +15,13 @@ SRC_URI="https://github.com/shirok/${PN^g}2/archive/${PV_COMMIT}.tar.gz -> ${MY_
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
-IUSE="examples glgd nls opengl"
+IUSE="examples"
 RESTRICT="test"
 
+RDEPEND="x11-libs/gtk+:2
+	dev-scheme/gauche"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-RDEPEND="x11-libs/gtk+:2
-	dev-scheme/gauche
-	opengl? (
-		x11-libs/gtkglext
-		dev-scheme/gauche-gl
-	)"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=( "${FILESDIR}"/${PN}-glgd.patch )
@@ -33,23 +29,6 @@ PATCHES=( "${FILESDIR}"/${PN}-glgd.patch )
 src_prepare() {
 	default
 	eautoconf
-}
-
-src_configure() {
-	local myconf=()
-	if use opengl; then
-		if use glgd; then
-			if use nls; then
-				myconf+=( --enable-glgd-pango )
-			else
-				myconf+=( --enable-glgd )
-			fi
-		else
-			myconf+=( --enable-gtkgl )
-		fi
-	fi
-
-	econf "${myconf[@]}"
 }
 
 src_compile() {
@@ -67,13 +46,5 @@ src_install() {
 		# install gtk-tutorial
 		docinto examples/gtk-tutorial
 		dodoc examples/gtk-tutorial/*
-		if use opengl; then
-			# install gtkglext
-			dodoc -r examples/gtkglext
-			if use glgd; then
-				# install glgd
-				dodoc -r examples/glgd
-			fi
-		fi
 	fi
 }

@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2020-02-08)
+# app-text/enchant stable timeout, bug #662484
+dev-lang/php enchant
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-06-05)
 # sys-auth/polkit stable timeout, bug #661470
 sys-apps/pcsc-lite policykit
