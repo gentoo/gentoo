@@ -279,7 +279,7 @@ src_configure() {
 	fi
 
 	# workaround for funky/broken upstream configure...
-	SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
+	SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
 	emake V=1 -f client.mk configure
 }
 
@@ -323,7 +323,7 @@ src_install() {
 		done
 	fi
 
-	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX%/}/bin/bash}" \
+	MOZ_MAKE_FLAGS="${MAKEOPTS}" SHELL="${SHELL:-${EPREFIX}/bin/bash}" \
 	emake DESTDIR="${D}" install
 	cp "${FILESDIR}"/${PN}.desktop "${T}" || die
 
