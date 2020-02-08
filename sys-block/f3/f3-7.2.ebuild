@@ -56,10 +56,10 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX="${ED%/}/usr" install
+	emake PREFIX="${ED}/usr" install
 
 	if use extra; then
-		emake PREFIX="${ED%/}/usr" install-extra
+		emake PREFIX="${ED}/usr" install-extra
 	fi
 
 	einstalldocs
