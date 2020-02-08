@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,10 +19,16 @@ KEYWORDS="~amd64 ~x86"
 IUSE="mysql postgres sqlite test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="mysql? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
-	postgres? ( =dev-python/psycopg-2*[${PYTHON_USEDEP}] )"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( dev-python/fixtures[${PYTHON_USEDEP}] )"
+RDEPEND="
+	$(python_gen_cond_dep '
+		mysql? ( dev-python/mysql-python[${PYTHON_MULTI_USEDEP}] )
+		postgres? ( =dev-python/psycopg-2*[${PYTHON_MULTI_USEDEP}] )
+	')"
+DEPEND="
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		test? ( dev-python/fixtures[${PYTHON_MULTI_USEDEP}] )
+	')"
 
 DOCS="tests/tutorial.txt"
 
