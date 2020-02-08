@@ -29,7 +29,7 @@ _build() {
 	emake \
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
-		PREFIX="${EPREFIX%/}/usr" \
+		PREFIX="${EPREFIX}/usr" \
 		LIBRARY_PATH="$(get_libdir)" \
 		ARCH= \
 		DEBUG= \
@@ -65,9 +65,9 @@ src_test() {
 }
 
 src_install() {
-	_build PREFIX="${ED%/}/usr" install
+	_build PREFIX="${ED}/usr" install
 	if ! use static-libs; then
-		rm "${ED%/}/usr/$(get_libdir)/libhiredis.a" || die
+		rm "${ED}/usr/$(get_libdir)/libhiredis.a" || die
 	fi
 
 	insinto /usr/$(get_libdir)/pkgconfig
