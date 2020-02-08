@@ -1,0 +1,201 @@
+https://bugs.gentoo.org/580620
+
+--- a/libhfsp/src/blockiter.c
++++ b/libhfsp/src/blockiter.c
+@@ -143,9 +143,3 @@
+   fail:
+     return -1;
+ }
+-
+-/* return current block */
+-UInt32 blockiter_curr(blockiter *b) /* inline */
+-{
+-    return b->e->start_block + b->block;
+-}
+--- a/libhfsp/src/blockiter.h
++++ b/libhfsp/src/blockiter.h
+@@ -52,7 +52,7 @@
+ extern int blockiter_skip(blockiter *b, UInt32 skip);
+ 
+ /* return current block */
+-extern inline UInt32 blockiter_curr(blockiter *b)
++static inline UInt32 blockiter_curr(blockiter *b)
+ {
+     return b->e->start_block + b->block;
+ }
+--- a/libhfsp/src/libhfsp.c
++++ b/libhfsp/src/libhfsp.c
+@@ -32,15 +32,5 @@
+ 
+ const char *hfsp_error = "no error";       /* static error string */   
+ 
+-/** helper function to create those Apple 4 byte Signatures */
+-UInt32 sig(char c0, char c1, char c2, char c3)
+-{
+-    UInt32 sig;
+-    ((char*)&sig)[0] = c0;
+-    ((char*)&sig)[1] = c1;
+-    ((char*)&sig)[2] = c2;
+-    ((char*)&sig)[3] = c3;
+-    return sig;
+-}
+ 
+ 
+--- a/libhfsp/src/libhfsp.h
++++ b/libhfsp/src/libhfsp.h
+@@ -90,7 +90,7 @@
+ 
+     
+ /** helper function to create those Apple 4 byte Signatures */
+-extern inline UInt32 sig(char c0, char c1, char c2, char c3)
++static inline UInt32 sig(char c0, char c1, char c2, char c3)
+ {
+     UInt32 sig;
+     ((char*)&sig)[0] = c0;
+--- a/libhfsp/src/volume.c
++++ b/libhfsp/src/volume.c
+@@ -604,14 +604,6 @@
+     vol->extents = NULL;    
+ }
+ 
+-/* accessor for entends btree, is created on demand */
+-/* inline */ btree* volume_get_extents_tree(volume* vol) 
+-{
+-    if (!vol->extents)
+-	volume_create_extents_tree(vol);
+-    return vol->extents;
+-}
+-
+ /* return new Id for files/folder and check for overflow.
+  *
+  * retun 0 on error .
+--- a/libhfsp/src/volume.h
++++ b/libhfsp/src/volume.h
+@@ -75,7 +75,7 @@
+ extern void volume_create_extents_tree(volume* vol);
+ 
+ /* accessor for entends btree, is created on demand */
+-extern inline btree* volume_get_extents_tree(volume* vol) 
++static inline btree* volume_get_extents_tree(volume* vol)
+ {
+     if (!vol->extents)
+ 	volume_create_extents_tree(vol);
+--- a/src/darray.c
++++ b/src/darray.c
+@@ -65,16 +65,6 @@
+   return (array->eltend - array->mem) / array->elemsz;
+ }
+ 
+-/*
+- * NAME:	darray->array()
+- * DESCRIPTION:	return the array as an indexable block
+- */
+-inline
+-void *darray_array(darray *array)
+-{
+-  return (void *) array->mem;
+-}
+-
+ 
+ /*
+  * NAME:	darray->append()
+--- a/src/darray.h
++++ b/src/darray.h
+@@ -40,7 +40,7 @@
+ extern	void	    darray_sort(darray *, int (*)(const void *, const void *));
+ 
+ /* return the array as an indexable block */
+-extern inline void *darray_array(darray *array)
++static inline void *darray_array(darray *array)
+ {
+   return (void *) array->mem;
+ }
+--- a/src/dlist.c
++++ b/src/dlist.c
+@@ -60,24 +60,6 @@
+ }
+ 
+ /*
+- * NAME:	dlist->array()
+- * DESCRIPTION:	return the array of strings in a list; can dispose with free()
+- */
+-char **dlist_array(dlist *list)
+-{
+-    return (char **) list->mem;
+-} 
+-
+-/*
+- * NAME:	dlist->size()
+- * DESCRIPTION:	return the number of strings in a list
+- */
+-int dlist_size(dlist *list)
+-{
+-  return list->eltend - (char **) list->mem;
+-}
+-
+-/*
+  * NAME:	dlist->append()
+  * DESCRIPTION:	insert a string to the end of a list
+  */
+--- a/src/dlist.h
++++ b/src/dlist.h
+@@ -36,13 +36,13 @@
+ extern int	dlist_append(dlist *, const char *);
+ 
+ /* return the array of strings in a list; can dispose with free() */
+-extern inline char **dlist_array(dlist *list)
++static inline char **dlist_array(dlist *list)
+ {
+     return (char **) list->mem;
+ } 
+ 
+ /* return the number of strings in a list */
+-extern inline int dlist_size(dlist *list)
++static inline int dlist_size(dlist *list)
+ {
+   return list->eltend - (char **) list->mem;
+ }
+--- a/src/dstring.c
++++ b/src/dstring.c
+@@ -124,24 +124,6 @@
+     return 0;
+ }
+ 
+-/*
+- * NAME:	dstring->string()
+- * DESCRIPTION:	return a pointer to a dynamic string's content
+- */
+-char *dstring_string(dstring *string)
+-{
+-  return string->str;
+-}
+-
+-/*
+- * NAME:	dstring->length()
+- * DESCRIPTION:	return the length of a dynamic string
+- */
+-int dstring_length(dstring *string)
+-{
+-  return string->len;
+-}
+-
+ 
+ /*
+  * NAME:	dstring->shrink()
+--- a/src/dstring.h
++++ b/src/dstring.h
+@@ -42,12 +42,12 @@
+ extern void	dstring_shrink(dstring *, size_t);
+ extern void	dstring_free(dstring *);
+ 
+-extern inline char	*dstring_string(dstring *string)
++static inline char	*dstring_string(dstring *string)
+ {
+     return string->str;
+ }
+ 
+-extern inline int	dstring_length(dstring *string)
++static inline int	dstring_length(dstring *string)
+ {
+     return string->len;
+ }  
