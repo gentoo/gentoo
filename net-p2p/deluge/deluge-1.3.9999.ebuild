@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -33,31 +33,36 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.3.5-disable_libtorrent_internal_copy.patch"
 )
 
-DEPEND="<net-libs/libtorrent-rasterbar-1.2[python,${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
+	$(python_gen_cond_dep '
+		<net-libs/libtorrent-rasterbar-1.2[python,${PYTHON_MULTI_USEDEP}]
+	')
 	dev-util/intltool
 	acct-group/deluge
 	acct-user/deluge"
-RDEPEND="<net-libs/libtorrent-rasterbar-1.2[python,${PYTHON_USEDEP}]
-	dev-python/chardet[${PYTHON_USEDEP}]
-	dev-python/pyopenssl[${PYTHON_USEDEP}]
-	dev-python/pyxdg[${PYTHON_USEDEP}]
-	dev-python/setproctitle[${PYTHON_USEDEP}]
-	|| ( >=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-		(
-		>=dev-python/twisted-core-13.0[${PYTHON_USEDEP}]
-		>=dev-python/twisted-web-13.0[${PYTHON_USEDEP}]
+RDEPEND="
+	$(python_gen_cond_dep '
+		<net-libs/libtorrent-rasterbar-1.2[python,${PYTHON_MULTI_USEDEP}]
+		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+		dev-python/setproctitle[${PYTHON_MULTI_USEDEP}]
+		|| ( >=dev-python/twisted-16.0.0[${PYTHON_MULTI_USEDEP}]
+			(
+			>=dev-python/twisted-core-13.0[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/twisted-web-13.0[${PYTHON_MULTI_USEDEP}]
+			)
 		)
-	)
-	geoip? ( dev-python/geoip-python[${PYTHON_USEDEP}] )
-	gtk? (
-		sound? ( dev-python/pygame[${PYTHON_USEDEP}] )
-		dev-python/pygobject:2[${PYTHON_USEDEP}]
-		>=dev-python/pygtk-2.12[${PYTHON_USEDEP}]
-		gnome-base/librsvg
-		libnotify? ( dev-python/notify-python[${PYTHON_USEDEP}] )
-	)
-	webinterface? ( dev-python/mako[${PYTHON_USEDEP}] )"
+		geoip? ( dev-python/geoip-python[${PYTHON_MULTI_USEDEP}] )
+		gtk? (
+			sound? ( dev-python/pygame[${PYTHON_MULTI_USEDEP}] )
+			dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygtk-2.12[${PYTHON_MULTI_USEDEP}]
+			gnome-base/librsvg
+			libnotify? ( dev-python/notify-python[${PYTHON_MULTI_USEDEP}] )
+		)
+		webinterface? ( dev-python/mako[${PYTHON_MULTI_USEDEP}] )
+	')"
 
 python_prepare_all() {
 	local args=(
