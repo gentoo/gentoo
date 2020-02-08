@@ -34,7 +34,7 @@ src_configure() {
 	my_impl_src_configure() {
 		local mycmakeargs=(
 			-DCMAKE_STRIP="${EPREFIX}/bin/true"
-			-DCMAKE_INSTALL_PREFIX="${ED%/}/usr"
+			-DCMAKE_INSTALL_PREFIX="${ED}/usr"
 			-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
 			-DGMXAPI_INSTALL_PATH="${EPREFIX}/usr/$(get_libdir)/${EPYTHON}/site-packages/gmx"
 		)
