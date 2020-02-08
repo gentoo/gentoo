@@ -25,14 +25,18 @@ COMMON_DEPEND="
 	media-libs/libpng:0=
 	virtual/jpeg:0"
 RDEPEND="${COMMON_DEPEND}
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+	')
 	x11-libs/gtk+:3[introspection]"
 BDEPEND="virtual/pkgconfig"
 DEPEND="${COMMON_DEPEND}
 	doc? (
 		app-text/docbook-xsl-stylesheets
-		dev-python/pygobject[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pygobject[${PYTHON_MULTI_USEDEP}]
+		')
 		dev-libs/libxslt
 		x11-libs/gtk+:3[introspection]
 	)"
