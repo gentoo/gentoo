@@ -45,11 +45,11 @@ src_test() {
 	einfo "The tests need a running PostgreSQL server and an existing database."
 	einfo "Test requires PGDATABASE and PGUSER to be set at a minimum. Optionally,"
 	einfo "set PGPORT and PGHOST. Define them at the command line or in:"
-	einfo "    ${EROOT%/}/etc/libpqxx_test_env"
+	einfo "    ${EROOT}/etc/libpqxx_test_env"
 
 	if [[ -z $PGDATABASE || -z $PGUSER ]] ; then
-		if [[ -f ${EROOT%/}/etc/libpqxx_test_env ]] ; then
-			source "${EROOT%/}/etc/libpqxx_test_env"
+		if [[ -f ${EROOT}/etc/libpqxx_test_env ]] ; then
+			source "${EROOT}/etc/libpqxx_test_env"
 			[[ -n $PGDATABASE ]] && export PGDATABASE
 			[[ -n $PGHOST ]] && export PGHOST
 			[[ -n $PGPORT ]] && export PGPORT
