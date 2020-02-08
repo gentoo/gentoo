@@ -61,9 +61,7 @@ pkg_setup() {
 }
 
 src_configure(){
-	mycmakeargs=(
-		"-DCMAKE_INSTALL_PREFIX=/usr"
-	)
+	local mycmakeargs=()
 	if use fuse; then
 		mycmakeargs+=( "-DHAVE_FUSE_25=yes" )
 	else
