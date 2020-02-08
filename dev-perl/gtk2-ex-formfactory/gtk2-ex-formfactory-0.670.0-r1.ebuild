@@ -9,7 +9,7 @@ MY_PN=Gtk2-Ex-FormFactory
 inherit perl-module
 
 DESCRIPTION="Gtk2 FormFactory"
-HOMEPAGE="https://www.exit1.org/Gtk2-Ex-FormFactory/ ${HOMEPAGE}"
+HOMEPAGE="https://www.exit1.org/Gtk2-Ex-FormFactory/ https://metacpan.org/release/Gtk2-Ex-FormFactory"
 
 LICENSE="|| ( LGPL-2.1 LGPL-3 )" #LGPL-2.1+
 SLOT="0"
