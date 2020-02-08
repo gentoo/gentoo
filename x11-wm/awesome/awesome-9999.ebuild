@@ -88,7 +88,7 @@ src_install() {
 	cmake-utils_src_install
 	rm "${ED}"/usr/share/doc/${PF}/LICENSE || die
 
-	pax-mark m "${ED%/}"/usr/bin/awesome
+	pax-mark m "${ED}"/usr/bin/awesome
 
 	exeinto /etc/X11/Sessions
 	newexe "${FILESDIR}"/${PN}-session ${PN}
