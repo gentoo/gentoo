@@ -43,7 +43,8 @@ index 14ab1c7..5b1e7c0 100644
      EXTENSION = dict(
          ext_modules=[ 
              Extension("pyportmidi._pyportmidi", [os.path.join("pyportmidi", "_pyportmidi.pyx")],
-                       library_dirs=["./linux"],
+-                      library_dirs=["./linux"],
++                      library_dirs=["../../portmidi*build"],
 +                      include_dirs=["../pm_common", "../porttime"],
                        libraries = ["portmidi", "asound", "pthread"]
                        )
