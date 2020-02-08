@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -40,7 +40,7 @@ src_compile() {
 	export LDFLAGS_O="${LDFLAGS}"
 	export CFLAGS_O="${CFLAGS}"
 
-	local my_makeopts="USE_NETWORK=1"
+	local my_makeopts=""
 	if [ "$(gcc-major-version)" -le "4" -a "$(gcc-minor-version)" -lt "6" ] ; then
 		my_makeopts+=" NO_LTO=1"
 	fi

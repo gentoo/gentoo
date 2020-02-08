@@ -1,8 +1,0 @@
-# Global config file for vdr wapd plugin
-
-# Set the port where the plugin is listen on
-#	allowed values: port number
-#	default: 8888
-#
-#WAPD_PORT="8888"
-

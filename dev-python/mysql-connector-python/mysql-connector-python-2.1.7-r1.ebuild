@@ -26,7 +26,7 @@ RESTRICT="test"
 DOCS=( README.txt CHANGES.txt docs/README_DOCS.txt )
 
 python_test() {
-	"${EPYTHON}" unittests.py --with-mysql="${EPREFIX%/}/usr" --unix-socket="${T}" --mysql-topdir="${T}"
+	"${EPYTHON}" unittests.py --with-mysql="${EPREFIX}/usr" --unix-socket="${T}" --mysql-topdir="${T}"
 }
 
 python_install_all(){

@@ -1,0 +1,91 @@
+diff -ru OpenSMTPD-opensmtpd-6.0.3/smtpd/mta_session.c OpenSMTPD-opensmtpd-6.0.3-fixed/smtpd/mta_session.c
+--- OpenSMTPD-opensmtpd-6.0.3/smtpd/mta_session.c	2018-01-04 23:24:01.000000000 +0100
++++ OpenSMTPD-opensmtpd-6.0.3-fixed/smtpd/mta_session.c	2020-01-29 09:47:24.607457717 +0100
+@@ -1290,40 +1290,20 @@
+ 		break;
+ 
+ 	case IO_ERROR:
++	case IO_TLSERROR:
+ 		log_debug("debug: mta: %p: IO error: %s", s, io_error(io));
+-		if (!s->ready) {
+-			mta_error(s, "IO Error: %s", io_error(io));
+-			mta_connect(s);
+-			break;
+-		}
+-		else if (!(s->flags & (MTA_FORCE_TLS|MTA_FORCE_SMTPS|MTA_FORCE_ANYSSL))) {
+-			/* error in non-strict SSL negotiation, downgrade to plain */
+-			if (s->flags & MTA_TLS) {
+-				log_info("smtp-out: Error on session %016"PRIx64
+-				    ": opportunistic TLS failed, "
+-				    "downgrading to plain", s->id);
+-				s->flags &= ~MTA_TLS;
+-				s->flags |= MTA_DOWNGRADE_PLAIN;
+-				mta_connect(s);
+-				break;
+-			}
+-		}
+-		mta_error(s, "IO Error: %s", io_error(io));
+-		mta_free(s);
+-		break;
+ 
+-	case IO_TLSERROR:
+-		log_debug("debug: mta: %p: TLS IO error: %s", s, io_error(io));
+-		if (!(s->flags & (MTA_FORCE_TLS|MTA_FORCE_SMTPS|MTA_FORCE_ANYSSL))) {
++		if (s->state == MTA_STARTTLS && s->use_smtp_tls) {
+ 			/* error in non-strict SSL negotiation, downgrade to plain */
+-			log_info("smtp-out: TLS Error on session %016"PRIx64
+-			    ": TLS failed, "
++			log_info("smtp-out: Error on session %016"PRIx64
++			    ": opportunistic TLS failed, "
+ 			    "downgrading to plain", s->id);
+ 			s->flags &= ~MTA_TLS;
+ 			s->flags |= MTA_DOWNGRADE_PLAIN;
+ 			mta_connect(s);
+ 			break;
+ 		}
++
+ 		mta_error(s, "IO Error: %s", io_error(io));
+ 		mta_free(s);
+ 		break;
+diff -ru OpenSMTPD-opensmtpd-6.0.3/smtpd/smtp_session.c OpenSMTPD-opensmtpd-6.0.3-fixed/smtpd/smtp_session.c
+--- OpenSMTPD-opensmtpd-6.0.3/smtpd/smtp_session.c	2018-01-04 23:24:01.000000000 +0100
++++ OpenSMTPD-opensmtpd-6.0.3-fixed/smtpd/smtp_session.c	2020-01-29 09:47:24.610791335 +0100
+@@ -2004,25 +2004,23 @@
+ 		memmove(maddr->user, p, strlen(p) + 1);
+ 	}
+ 
+-	if (!valid_localpart(maddr->user) ||
+-	    !valid_domainpart(maddr->domain)) {
+-		/* accept empty return-path in MAIL FROM, required for bounces */
+-		if (mailfrom && maddr->user[0] == '\0' && maddr->domain[0] == '\0')
+-			return (1);
++	/* accept empty return-path in MAIL FROM, required for bounces */
++	if (mailfrom && maddr->user[0] == '\0' && maddr->domain[0] == '\0')
++		return (1);
+ 
+-		/* no user-part, reject */
+-		if (maddr->user[0] == '\0')
+-			return (0);
+-
+-		/* no domain, local user */
+-		if (maddr->domain[0] == '\0') {
+-			(void)strlcpy(maddr->domain, domain,
+-			    sizeof(maddr->domain));
+-			return (1);
+-		}
++	/* no or invalid user-part, reject */
++	if (maddr->user[0] == '\0' || !valid_localpart(maddr->user))
+ 		return (0);
++
++	/* no domain part, local user */
++	if (maddr->domain[0] == '\0') {
++		(void)strlcpy(maddr->domain, domain,
++			sizeof(maddr->domain));
+ 	}
+ 
++	if (!valid_domainpart(maddr->domain))
++		return (0);
++
+ 	return (1);
+ }
+ 

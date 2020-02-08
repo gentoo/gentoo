@@ -88,7 +88,7 @@ src_prepare() {
 		-i src/library/tools/R/Rd.R || die
 
 	# fix Rscript path when installed (gentoo bug #221061)
-	sed -e "s:-DR_HOME='\"\$(rhome)\"':-DR_HOME='\"${EROOT%/}/usr/$(get_libdir)/${PN}\"':" \
+	sed -e "s:-DR_HOME='\"\$(rhome)\"':-DR_HOME='\"${EROOT}/usr/$(get_libdir)/${PN}\"':" \
 		-i src/unix/Makefile.in || die "sed unix Makefile failed"
 
 	# fix HTML links to manual (gentoo bug #273957)
@@ -116,10 +116,10 @@ src_prepare() {
 				-e "/SHLIB_EXT/s/\.so/.dylib/" \
 				-i configure.ac || die
 			# sort of "undo" 2.14.1-rmath-shared.patch
-			sed -e "s:-Wl,-soname=libRmath.so:-install_name ${EROOT%/}/usr/$(get_libdir)/libRmath.dylib:" \
+			sed -e "s:-Wl,-soname=libRmath.so:-install_name ${EROOT}/usr/$(get_libdir)/libRmath.dylib:" \
 				-i src/nmath/standalone/Makefile.in || die
 		else
-			append-ldflags -Wl,-rpath="${EROOT%/}/usr/$(get_libdir)/R/lib"
+			append-ldflags -Wl,-rpath="${EROOT}/usr/$(get_libdir)/R/lib"
 		fi
 	fi
 	AT_M4DIR=m4
@@ -175,8 +175,8 @@ src_install() {
 	fi
 
 	cat > 99R <<-EOF
-		LDPATH=${EROOT%/}/usr/$(get_libdir)/${PN}/lib
-		R_HOME=${EROOT%/}/usr/$(get_libdir)/${PN}
+		LDPATH=${EROOT}/usr/$(get_libdir)/${PN}/lib
+		R_HOME=${EROOT}/usr/$(get_libdir)/${PN}
 	EOF
 	doenvd 99R
 	newbashcomp "${DISTDIR}"/${PN}-${BCPV}.bash_completion ${PN}

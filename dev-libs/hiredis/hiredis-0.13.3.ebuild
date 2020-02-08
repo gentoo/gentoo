@@ -29,7 +29,7 @@ _build() {
 	emake \
 		AR="$(tc-getAR)" \
 		CC="$(tc-getCC)" \
-		PREFIX="${EPREFIX%/}/usr" \
+		PREFIX="${EPREFIX}/usr" \
 		LIBRARY_PATH="$(get_libdir)" \
 		ARCH= \
 		DEBUG= \

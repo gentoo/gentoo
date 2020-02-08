@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ COMMON_DEPEND="
 	!gtk3? ( x11-libs/gtk+:2 )
 	ctags? ( dev-util/ctags )
 	debugger? ( x11-libs/vte:0 )
-	enchant? ( app-text/enchant )
+	enchant? ( app-text/enchant:= )
 	git? ( dev-libs/libgit2:= )
 	gpg? ( app-crypt/gpgme:1= )
 	gtkspell? (
@@ -141,6 +141,6 @@ src_install() {
 
 	# make installs all translations if LINGUAS is empty
 	if [[ -z "${LINGUAS-x}" ]]; then
-		rm -r "${ED%/}/usr/share/locale/" || die
+		rm -r "${ED}/usr/share/locale/" || die
 	fi
 }

@@ -8,7 +8,7 @@ inherit qt5-build
 DESCRIPTION="Cross-platform application development framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~arm x86"
+	KEYWORDS="arm x86"
 fi
 
 IUSE="icu systemd"

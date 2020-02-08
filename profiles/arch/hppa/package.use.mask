@@ -4,6 +4,18 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
+# net-libs/libgadu is not keyworded
+net-im/pidgin gadu
+
+# Joonas Niilola <juippis@gentoo.org> (2020-02-02)
+# luajit is not keyworded on this arch.
+dev-libs/efl luajit
+
+# Jeroen Roovers <jer@gentoo.org> (2020-01-28)
+# sys-apps/systemd is not stable
+net-analyzer/wireshark sdjournal
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded
 media-gfx/gimp heif

@@ -81,7 +81,7 @@ _emake() {
 		HAVE_AVX2=$(usex cpu_flags_x86_avx2 1 0) \
 		RPM_OPT_FLAGS="${CFLAGS} ${CPPFLAGS}" \
 		CFLAGS_OPT='$(CFLAGS)' \
-		LDFLAGS="${LDFLAGS} -Wl,-rpath,${EPREFIX%/}/usr/$(get_libdir)/${PN}" \
+		LDFLAGS="${LDFLAGS} -Wl,-rpath,${EPREFIX}/usr/$(get_libdir)/${PN}" \
 		CC="$(tc-getCC)" \
 		"$@"
 }

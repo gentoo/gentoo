@@ -8,6 +8,10 @@
 -cpu_flags_arm_iwmmxt
 -cpu_flags_arm_iwmmxt2
 
+# Matt Turner <mattst88@gentoo.org> (2020-02-02)
+# Neither dev-python/pymongo nor dev-libs/mongo-c-driver are keyworded
+mongodb
+
 # Michał Górny <mgorny@gentoo.org> (2018-07-16)
 # Python 3.7 support requires fresh versions of packages which are stuck
 # at keywordreqs.

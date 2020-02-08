@@ -142,6 +142,15 @@ src_prepare() {
 		gunzip $man_file || die
 	done
 
+	if use tools; then
+		cp "${FILESDIR}"/nvidia-settings-fno-common.patch "${WORKDIR}" || die
+		sed -i \
+			-e "s:@PV@:${PV}:g" \
+			"${WORKDIR}"/nvidia-settings-fno-common.patch \
+			|| die
+		eapply "${WORKDIR}"/nvidia-settings-fno-common.patch
+	fi
+
 	# Allow user patches so they can support RC kernels and whatever else
 	eapply_user
 }

@@ -90,7 +90,7 @@ src_prepare() {
 	sed -i \
 		-e 's|git submodule|${EPREFIX}/bin/true|g' \
 		-e "s|GENTOOCFLAGS|${CFLAGS}|g" \
-		-e "s|/usr/include|${EPREFIX%/}/usr/include|g" \
+		-e "s|/usr/include|${EPREFIX}/usr/include|g" \
 		deps/Makefile || die
 
 	local libblas="$($(tc-getPKG_CONFIG) --libs-only-l blas)"

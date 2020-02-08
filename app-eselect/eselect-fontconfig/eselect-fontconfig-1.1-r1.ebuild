@@ -4,7 +4,7 @@
 EAPI=7
 
 DESCRIPTION="An eselect module to manage /etc/fonts/conf.d symlinks"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/fontconfig.eselect-${PV}.bz2"
 
 LICENSE="GPL-2"

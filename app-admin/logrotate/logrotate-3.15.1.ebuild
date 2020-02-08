@@ -7,7 +7,7 @@ inherit systemd
 
 DESCRIPTION="Rotates, compresses, and mails system logs"
 HOMEPAGE="https://github.com/logrotate/logrotate"
-SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/${PN}/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

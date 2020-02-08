@@ -15,7 +15,7 @@ if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/linux-rdma/rdma-core"
 else
 	SRC_URI="https://github.com/linux-rdma/rdma-core/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~hppa ~x86"
+	KEYWORDS="~amd64 ~hppa ~ia64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="|| ( GPL-2 ( CC0-1.0 MIT BSD BSD-with-attribution ) )"
@@ -92,4 +92,6 @@ src_install() {
 	newinitd "${FILESDIR}"/ibacm.init ibacm
 	newinitd "${FILESDIR}"/iwpmd.init iwpmd
 	newinitd "${FILESDIR}"/srpd.init srpd
+
+	use python && python_optimize
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -50,7 +50,6 @@ src_configure() {
 		-DCMAKE_INSTALL_BINDIR="${EPREFIX}/bin"
 		-DCMAKE_INSTALL_SYSCONFDIR="${EPREFIX}/etc"
 		-DCURSES_NEED_NCURSES=ON
-		-DINTERNAL_WCWIDTH=OFF
 		-DBUILD_DOCS="$(usex doc)"
 		-DWITH_GETTEXT="$(usex nls)"
 	)

@@ -36,6 +36,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-2.9.8.3-no-implicit.patch
 	"${FILESDIR}"/${PN}-2.9.8.3-rpc.patch
 	"${FILESDIR}"/${PN}-2.9.12-snort.pc.patch
+	"${FILESDIR}"/${PN}-2.9.15.1-fno-common.patch
 )
 
 pkg_setup() {
@@ -48,20 +49,6 @@ pkg_setup() {
 
 src_prepare() {
 	default
-
-	# Multilib fix for the sf_engine
-	ebegin "Applying multilib fix"
-	sed -i -e 's|${exec_prefix}/lib|${exec_prefix}/'$(get_libdir)'|g' \
-		"${WORKDIR}/${P}/src/dynamic-plugins/sf_engine/Makefile.am" \
-		|| die "sed for sf_engine failed"
-
-	# Multilib fix for the curent set of dynamic-preprocessors
-	for i in file ftptelnet smtp ssh dns ssl dcerpc2 sdf imap pop sip reputation gtp modbus dnp3; do
-		sed -i -e 's|${exec_prefix}/lib|${exec_prefix}/'$(get_libdir)'|g' \
-			"${WORKDIR}/${P}/src/dynamic-preprocessors/$i/Makefile.am" \
-			|| die "sed for $i failed."
-	done
-	eend
 
 	mv configure.{in,ac} || die
 
@@ -163,42 +150,42 @@ src_install() {
 
 	# Sourcefire uses Makefiles to install docs causing Bug #297190.
 	# This removes the unwanted doc directory and rogue Makefiles.
-	rm -rf "${ED%/}"/usr/share/doc/snort || die "Failed to remove SF doc directories"
-	rm "${ED%/}"/usr/share/doc/"${PF}"/Makefile* || die "Failed to remove doc make files"
+	rm -rf "${ED}"/usr/share/doc/snort || die "Failed to remove SF doc directories"
+	rm "${ED}"/usr/share/doc/"${PF}"/Makefile* || die "Failed to remove doc make files"
 
 	# Remove unneeded .la files (Bug #382863)
-	rm "${ED%/}"/usr/$(get_libdir)/snort_dynamicengine/libsf_engine.la || die
-	rm "${ED%/}"/usr/$(get_libdir)/snort_dynamicpreprocessor/libsf_*_preproc.la || die "Failed to remove libsf_?_preproc.la"
+	rm "${ED}"/usr/$(get_libdir)/snort_dynamicengine/libsf_engine.la || die
+	rm "${ED}"/usr/$(get_libdir)/snort_dynamicpreprocessor/libsf_*_preproc.la || die "Failed to remove libsf_?_preproc.la"
 
 	# Set the correct lib path for dynamicengine, dynamicpreprocessor, and dynamicdetection
 	sed -i -e 's|/usr/local/lib|/usr/'$(get_libdir)'|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 
 	# Set the correct rule location in the config
 	sed -i -e 's|RULE_PATH ../rules|RULE_PATH /etc/snort/rules|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 
 	# Set the correct preprocessor/decoder rule location in the config
 	sed -i -e 's|PREPROC_RULE_PATH ../preproc_rules|PREPROC_RULE_PATH /etc/snort/preproc_rules|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 
 	# Enable the preprocessor/decoder rules
 	sed -i -e 's|^# include $PREPROC_RULE_PATH|include $PREPROC_RULE_PATH|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 
 	sed -i -e 's|^# dynamicdetection directory|dynamicdetection directory|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 
 	# Just some clean up of trailing /'s in the config
 	sed -i -e 's|snort_dynamicpreprocessor/$|snort_dynamicpreprocessor|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 
 	# Make it clear in the config where these are...
 	sed -i -e 's|^include classification.config|include /etc/snort/classification.config|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 
 	sed -i -e 's|^include reference.config|include /etc/snort/reference.config|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 
 	# Disable all rule files by default.
 	sed -i -e 's|^include $RULE_PATH|# include $RULE_PATH|g' \
@@ -218,17 +205,17 @@ src_install() {
 
 	# Set snort to run as snort:snort
 	sed -i -e 's|^# config set_gid:|config set_gid: snort|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 	sed -i -e 's|^# config set_uid:|config set_uid: snort|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 
 	# Set the default log dir
 	sed -i -e 's|^# config logdir:|config logdir: /var/log/snort/|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 
 	# Set the correct so_rule location in the config
 	sed -i -e 's|SO_RULE_PATH ../so_rules|SO_RULE_PATH /etc/snort/so_rules|g' \
-		"${ED%/}/etc/snort/snort.conf.distrib" || die
+		"${ED}/etc/snort/snort.conf.distrib" || die
 }
 
 pkg_postinst() {

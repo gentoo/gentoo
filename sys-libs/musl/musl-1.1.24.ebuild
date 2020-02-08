@@ -17,7 +17,7 @@ else
 	https://dev.gentoo.org/~blueness/musl-misc/getconf.c
 	https://dev.gentoo.org/~blueness/musl-misc/getent.c
 	https://dev.gentoo.org/~blueness/musl-misc/iconv.c"
-	KEYWORDS="-* amd64 arm arm64 ~mips ~ppc x86"
+	KEYWORDS="-* amd64 arm arm64 ~mips ppc ppc64 x86"
 fi
 
 export CBUILD=${CBUILD:-${CHOST}}
@@ -119,6 +119,4 @@ pkg_postinst() {
 	[ "${ROOT}" != "/" ] && return 0
 
 	ldconfig || die
-	# reload init ...
-	/sbin/telinit U 2>/dev/null
 }

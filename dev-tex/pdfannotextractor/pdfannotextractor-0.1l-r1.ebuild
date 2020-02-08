@@ -36,6 +36,12 @@ EANT_GENTOO_CLASSPATH="
 	pdfbox-1.8
 	fontbox-1.7
 "
+src_prepare() {
+	eapply "${FILESDIR}"/javajars.patch
+	eapply "${FILESDIR}"/StringVisitor.java.patch
+	eapply "${FILESDIR}"/PDFAnnotExtractor.java.patch
+	default
+}
 
 src_compile() {
 	cd "${S}/source/latex/pax" || die

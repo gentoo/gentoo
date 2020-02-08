@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
@@ -32,10 +32,6 @@ x11-base/xorg-server wayland
 # Sergey Popov <pinkbyte@gentoo.org> (2015-10-24)
 # Not tested
 net-mail/dovecot lz4
-
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
 
 # Brian Evans <grknight@gentoo.org> (2014-06-03)
 # unkeworded dependencies (bug #429708)

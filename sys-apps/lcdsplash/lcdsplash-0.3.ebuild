@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="splash Gentoo boot information on LCD's"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.bz2
 	https://dev.gentoo.org/~vapier/dist/${P}.tar.bz2"
 

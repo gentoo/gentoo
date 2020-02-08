@@ -11,7 +11,7 @@ MY_PN=${PN/-prefix/}
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Filesystem baselayout and init scripts"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${MY_PN}.git"
 	inherit git-r3

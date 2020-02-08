@@ -1,6 +1,21 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-05)
+# sys-cluster/ceph no longer supports x86, versions that support
+# it no longer build thanks to python2 removals
+app-backup/bareos cephfs rados rados-striper
+app-emulation/ganeti rbd
+app-emulation/libvirt rbd
+app-emulation/qemu rbd
+net-analyzer/rrdtool rados
+net-fs/samba ceph
+net-libs/xrootd rbd
+sys-block/fio rbd
+sys-block/tgt rbd
+sys-fs/multipath-tools rbd
+www-servers/uwsgi uwsgi_plugins_rados
+
 # Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
 # PPS should work on all arches, but only keyworded on some arches
 >=net-misc/ntp-4.2.6_p3-r1 -parse-clocks

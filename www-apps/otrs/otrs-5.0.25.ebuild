@@ -90,18 +90,18 @@ src_prepare() {
 	fi
 	mv -f out.png "${S}/var/httpd/htdocs/skins/Agent/default/img/otrs-verify.png" || die
 
-	sed -i -e "s:/opt/otrs:${EPREFIX%/}${OTRS_HOME}:g" "${S}"/Kernel/Config.pm \
+	sed -i -e "s:/opt/otrs:${EPREFIX}${OTRS_HOME}:g" "${S}"/Kernel/Config.pm \
 		|| die "sed failed"
 
-	sed -i -e "s:/opt/otrs:${EPREFIX%/}${OTRS_HOME}:g" "${S}"/Kernel/Config/Defaults.pm \
+	sed -i -e "s:/opt/otrs:${EPREFIX}${OTRS_HOME}:g" "${S}"/Kernel/Config/Defaults.pm \
 		|| die "sed failed"
 
 	grep -lR "/opt" "${S}"/scripts | \
-		xargs sed -i -e "s:/opt/otrs:${EPREFIX%/}${OTRS_HOME}:g" \
+		xargs sed -i -e "s:/opt/otrs:${EPREFIX}${OTRS_HOME}:g" \
 		|| die "sed failed"
 
-	echo "CONFIG_PROTECT=\"${EPREFIX%/}${OTRS_HOME}/Kernel/Config.pm \
-		${EPREFIX%/}${OTRS_HOME}/Kernel/Config/GenericAgent.pm\"" > "${T}/50${PN}" || die
+	echo "CONFIG_PROTECT=\"${EPREFIX}${OTRS_HOME}/Kernel/Config.pm \
+		${EPREFIX}${OTRS_HOME}/Kernel/Config/GenericAgent.pm\"" > "${T}/50${PN}" || die
 
 	eapply_user
 }

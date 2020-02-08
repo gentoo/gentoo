@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit user eapi7-ver flag-o-matic multilib autotools pam systemd
+inherit user-info eapi7-ver flag-o-matic multilib autotools pam systemd
 
 # Make it more portable between straight releases
 # and _p? releases.
@@ -67,6 +67,8 @@ LIB_DEPEND="
 	)
 	>=sys-libs/zlib-1.2.3:=[static-libs(+)]"
 RDEPEND="
+	acct-group/sshd
+	acct-user/sshd
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	pam? ( sys-libs/pam )
 	kerberos? ( virtual/krb5 )"
@@ -109,7 +111,7 @@ pkg_pretend() {
 
 src_prepare() {
 	sed -i \
-		-e "/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:${EPREFIX%/}/usr/bin/xauth:" \
+		-e "/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:${EPREFIX}/usr/bin/xauth:" \
 		pathnames.h || die
 
 	# don't break .ssh/authorized_keys2 for fun
@@ -123,6 +125,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/${PN}-8.0_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch
 	eapply "${FILESDIR}"/${PN}-8.0_p1-fix-integer-overflow-in-XMSS-private-key-parsing.patch
 	eapply "${FILESDIR}"/${PN}-8.0_p1-fix-an-unreachable-integer-overflow-similar-to-the-XMSS-case.patch
+	eapply "${FILESDIR}"/${PN}-8.1_p1-tests-2020.patch
 	use X509 || eapply "${FILESDIR}"/${PN}-8.0_p1-tests.patch
 
 	[[ -d ${WORKDIR}/patches ]] && eapply "${WORKDIR}"/patches
@@ -278,17 +281,17 @@ src_configure() {
 		--with-ldflags="${LDFLAGS}"
 		--disable-strip
 		--with-pid-dir="${EPREFIX}"$(usex kernel_linux '' '/var')/run
-		--sysconfdir="${EPREFIX%/}"/etc/ssh
-		--libexecdir="${EPREFIX%/}"/usr/$(get_libdir)/misc
-		--datadir="${EPREFIX%/}"/usr/share/openssh
-		--with-privsep-path="${EPREFIX%/}"/var/empty
+		--sysconfdir="${EPREFIX}"/etc/ssh
+		--libexecdir="${EPREFIX}"/usr/$(get_libdir)/misc
+		--datadir="${EPREFIX}"/usr/share/openssh
+		--with-privsep-path="${EPREFIX}"/var/empty
 		--with-privsep-user=sshd
 		$(use_with audit audit linux)
-		$(use_with kerberos kerberos5 "${EPREFIX%/}"/usr)
+		$(use_with kerberos kerberos5 "${EPREFIX}"/usr)
 		# We apply the sctp patch conditionally, so can't pass --without-sctp
 		# unconditionally else we get unknown flag warnings.
 		$(use sctp && use_with sctp)
-		$(use_with ldns ldns "${EPREFIX%/}"/usr)
+		$(use_with ldns ldns "${EPREFIX}"/usr)
 		$(use_with libedit)
 		$(use_with pam)
 		$(use_with pie)
@@ -408,11 +411,6 @@ src_install() {
 
 	systemd_dounit "${FILESDIR}"/sshd.{service,socket}
 	systemd_newunit "${FILESDIR}"/sshd_at.service 'sshd@.service'
-}
-
-pkg_preinst() {
-	enewgroup sshd 22
-	enewuser sshd 22 -1 /var/empty sshd
 }
 
 pkg_postinst() {

@@ -69,11 +69,11 @@ src_configure() {
 		$(use_with expat)
 		$(use_with !expat libxml2)
 		$(use_with X x)
-		--with-docdir="${EPREFIX%/}"/usr/share/doc/${PF}
-		--with-fontdir="${EPREFIX%/}"/usr/share/fonts/urw-fonts
+		--with-docdir="${EPREFIX}"/usr/share/doc/${PF}
+		--with-fontdir="${EPREFIX}"/usr/share/fonts/urw-fonts
 		--with-freetype
-		--with-gsfontdir="${EPREFIX%/}"/usr/share/fonts/urw-fonts
-		--with-gsfontmap="${EPREFIX%/}"/usr/share/ghostscript/9.21/Resource/Init/Fontmap
+		--with-gsfontdir="${EPREFIX}"/usr/share/fonts/urw-fonts
+		--with-gsfontmap="${EPREFIX}"/usr/share/ghostscript/9.21/Resource/Init/Fontmap
 		--with-jpeg
 		--with-layers
 		--with-png

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,49 +12,42 @@ if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/devmanual.git"
 else
-	SRC_URI="https://dev.gentoo.org/~hwoarang/distfiles/${P}.tar.gz"
+	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz"
+	S="${WORKDIR}/${PN}"
 	KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x64-macos"
 fi
 
-LICENSE="CC-BY-SA-3.0"
+LICENSE="CC-BY-SA-4.0"
 SLOT="0"
-IUSE="+fallback"
+IUSE="+offline"
 
-BDEPEND="dev-libs/libxslt
-	media-gfx/imagemagick[truetype,svg,png]"
+BDEPEND="dev-libs/libxml2
+	dev-libs/libxslt
+	gnome-base/librsvg
+	media-fonts/open-sans"
 
-src_prepare() {
-	default
-	use fallback && eapply "${FILESDIR}"/${PN}-fallback.patch
-}
+PATCHES=( "${FILESDIR}"/${PN}-eclasses.patch )
 
 src_compile() {
-	# Imagemagick uses inkscape (if present) to delegate
-	# svg conversions.
-	# Inkscape uses g_get_user_config_dir () which in turn
-	# uses XDG_CONFIG_HOME to get the config directory for this
-	# user. See bug 463380
-	export XDG_CONFIG_HOME="${T}/inkscape_home"
-	emake
+	emake build OFFLINE=$(usex offline 1 0)
+	use offline || emake documents.js
 }
 
 src_install() {
 	# clean out XML/XSL before installing
 	find . \( \
 		-iname '*.xml' -o \
+		-iname '*.dtd' -o \
 		-iname '*.xsl' -o \
 		-iname '*.svg' \) -delete || die
-	rm -r README.md xsl LICENSE Makefile || die
+	rm -r bin xsl .git* LICENSE Makefile README.md || die
 
 	local HTML_DOCS=( . )
 	einstalldocs
 
-	einfo "Creating symlink from ${PF} to ${PN} for preserving bookmarks"
-	dosym ${PF} /usr/share/doc/${PN}
-
 	local DOC_CONTENTS="In order to browse the Gentoo Development Guide in
 		offline mode, point your browser to the following url:
-		${EPREFIX}/usr/share/doc/devmanual/html/index.html"
+		file://${EPREFIX}/usr/share/doc/${PF}/html/index.html"
 	readme.gentoo_create_doc
 }
 
@@ -66,6 +59,5 @@ pkg_postinst() {
 		elog "the following package:"
 		elog
 		elog "app-doc/eclass-manpages"
-		elog
 	fi
 }

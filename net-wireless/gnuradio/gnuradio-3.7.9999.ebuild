@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -56,7 +56,12 @@ RDEPEND="${PYTHON_DEPS}
 		media-libs/alsa-lib:=
 	)
 	fcd? ( virtual/libusb:1 )
-	filter? ( sci-libs/scipy )
+	filter? (
+		|| (
+			sci-libs/scipy-python2[${PYTHON_USEDEP}]
+			sci-libs/scipy[${PYTHON_USEDEP}]
+		)
+	)
 	grc? (
 		dev-python/cheetah[${PYTHON_USEDEP}]
 		dev-python/lxml[${PYTHON_USEDEP}]
@@ -75,7 +80,12 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	sdl? ( >=media-libs/libsdl-1.2.0 )
 	uhd? ( >=net-wireless/uhd-3.9.6:=[${PYTHON_USEDEP}] )
-	utils? ( dev-python/matplotlib[${PYTHON_USEDEP}] )
+	utils? (
+		|| (
+			dev-python/matplotlib-python2[${PYTHON_USEDEP}]
+			dev-python/matplotlib[${PYTHON_USEDEP}]
+		)
+	)
 	vocoder? ( media-sound/gsm
 		>=media-libs/codec2-0.8.1 )
 	wavelet? (

@@ -25,7 +25,7 @@ DEPEND="
 BDEPEND="
 	clang? ( sys-devel/clang )
 	test? (
-		$(python_gen_any_dep "dev-python/lit[\${PYTHON_USEDEP}]")
+		$(python_gen_any_dep ">=dev-python/lit-9.0.1[\${PYTHON_USEDEP}]")
 		=sys-devel/clang-${PV%_*}*:${CLANG_SLOT} )
 	${PYTHON_DEPS}"
 
@@ -62,9 +62,9 @@ src_configure() {
 	if use clang; then
 		local -x CC=${CHOST}-clang
 		local -x CXX=${CHOST}-clang++
+		strip-unsupported-flags
 		# ensure we can use clang before installing compiler-rt
 		local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
-		strip-unsupported-flags
 	elif ! test_compiler; then
 		if test_compiler "${nolib_flags[@]}"; then
 			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"

@@ -13,7 +13,7 @@ SRC_URI="https://github.com/lxml/lxml/archive/${P}.tar.gz"
 
 LICENSE="BSD ElementTree GPL-2 PSF-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~riscv ~s390 ~sh sparc x86 ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc examples +threads test"
 RESTRICT="!test? ( test )"
 
@@ -24,7 +24,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 BDEPEND="
 	virtual/pkgconfig
-	$(python_gen_cond_dep 'dev-python/cython[${PYTHON_USEDEP}]' python2_7 'python3*')
+	dev-python/cython[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/cssselect[${PYTHON_USEDEP}] )
 	"

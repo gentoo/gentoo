@@ -94,6 +94,4 @@ PDEPEND="
 	video_cards_via?           ( x11-drivers/xf86-video-openchrome )
 	video_cards_virtualbox?    ( x11-drivers/xf86-video-vboxvideo )
 	video_cards_vmware?        ( >=x11-drivers/xf86-video-vmware-13.3.0 )
-
-	!<x11-drivers/xf86-input-evdev-2.10.4
 "

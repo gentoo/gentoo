@@ -108,6 +108,8 @@ python_prepare_all() {
 
 python_compile() {
 	# FIXME: parallel python building fails, bug #614464
+	export MAKEOPTS=-j1
+
 	${EPYTHON} tools/cythonize.py || die
 	distutils-r1_python_compile \
 		${SCIPY_FCONFIG}

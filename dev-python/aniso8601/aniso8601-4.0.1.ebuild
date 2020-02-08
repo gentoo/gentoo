@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
+PYTHON_COMPAT=( python3_{6,7} pypy3 )
 
 inherit distutils-r1
 
@@ -17,8 +17,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-python/python-dateutil-2.7.3[${PYTHON_USEDEP}]"
-DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
-	test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7) )"
+DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}"/${P}-mock.patch )
 

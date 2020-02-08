@@ -1,0 +1,111 @@
+--- a/include/rain_inet_common.h
++++ b/include/rain_inet_common.h
+@@ -368,14 +368,14 @@
+ /* 
+  * global variables 
+  */
+-u_int16_t packetsize;
+-unsigned char      *buffer;   /* For holding packets. Declared globally to ensure it is freed when the program exits */
+-time_t          send_start;   /* for storing start and finish time of total packets sent */
+-time_t         send_finish;
+-unsigned long packets_sent;
+-u_short            verbose;
+-struct in_addr       group;  /* for ICMP gateway and IGMP group addresses */
+-int              sendflags;  /* stores flags for sendto(); Default is 0 */
++extern u_int16_t packetsize;
++extern unsigned char      *buffer;   /* For holding packets. Declared globally to ensure it is freed when the program exits */
++extern time_t          send_start;   /* for storing start and finish time of total packets sent */
++extern time_t         send_finish;
++extern unsigned long packets_sent;
++extern u_short            verbose;
++extern struct in_addr       group;  /* for ICMP gateway and IGMP group addresses */
++extern int              sendflags;  /* stores flags for sendto(); Default is 0 */
+ /*---------------------------*/
+ 
+ 
+--- a/source/rain_inet_common.c
++++ b/source/rain_inet_common.c
+@@ -17,6 +17,18 @@
+  *-------------------------------------------------*/
+ #include "rain_common.h"
+ 
++/* 
++ * global variables 
++ */
++u_int16_t packetsize;
++unsigned char      *buffer;   /* For holding packets. Declared globally to ensure it is freed when the program exits */
++time_t          send_start;   /* for storing start and finish time of total packets sent */
++time_t         send_finish;
++unsigned long packets_sent;
++u_short            verbose;
++struct in_addr       group;  /* for ICMP gateway and IGMP group addresses */
++int              sendflags;  /* stores flags for sendto(); Default is 0 */
++/*---------------------------*/
+ 
+ /*
+  * Internet checksum routine (RFC 1071) 
+--- a/include/rain_icmp.h
++++ b/include/rain_icmp.h
+@@ -20,7 +20,7 @@
+ 
+ 
+ 
+-unsigned char icmpinfo[56][56][56];
++extern unsigned char icmpinfo[56][56][56];
+ 
+ 
+ /* 
+--- a/source/rain_icmp.c
++++ b/source/rain_icmp.c
+@@ -17,6 +17,7 @@
+  *-------------------------------------------------*/
+ #include "rain_common.h"
+ 
++unsigned char icmpinfo[56][56][56];
+ 
+ /* 
+  * Prints all the ICMP type/code combinations 
+--- a/include/rain_igmp.h
++++ b/include/rain_igmp.h
+@@ -18,7 +18,7 @@
+ #ifndef _RAIN_IGMP_H
+ #define _RAIN_IGMP_H
+ 
+-unsigned char igmpinfo[56][56][5];
++extern unsigned char igmpinfo[56][56][5];
+ 
+ 
+ extern void print_igmp_info(void);
+--- a/source/rain_igmp.c
++++ b/source/rain_igmp.c
+@@ -17,7 +17,7 @@
+  *-------------------------------------------------*/
+ #include "rain_common.h"
+ 
+-	
++unsigned char igmpinfo[56][56][5];
+ 
+ /*
+  * Prints IGMP type/code descriptions
+--- a/include/rain_tcp.h
++++ b/include/rain_tcp.h
+@@ -20,7 +20,7 @@
+ #ifndef _RAIN_TCP_H
+ #define _RAIN_TCP_H
+ 
+-unsigned char tcpinfo[25];
++extern unsigned char tcpinfo[25];
+ 
+ extern void tcp_info_init(struct pkt_info_tcp *);
+ extern int tcp_shower_connect(struct sockaddr_in *, struct pkt_info *);
+--- a/source/rain_tcp.c
++++ b/source/rain_tcp.c
+@@ -17,7 +17,7 @@
+  *-------------------------------------------------*/
+ #include "rain_common.h"
+ 
+-
++unsigned char tcpinfo[25];
+ 
+ /* 
+  * tcp_info_init():

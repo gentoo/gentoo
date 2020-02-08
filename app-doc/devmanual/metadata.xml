@@ -13,6 +13,8 @@
 		</description>
 	</maintainer>
 	<use>
-		<flag name="fallback">Use alternative minimal stylesheet instead of tyrian theme.</flag>
+		<flag name="offline">
+			Use alternative minimal stylesheet instead of Tyrian theme.
+		</flag>
 	</use>
 </pkgmetadata>

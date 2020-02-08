@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,8 +16,8 @@ IUSE="doc ncurses numa static-libs"
 RDEPEND="
 	>=net-libs/libpcap-0.8
 	dev-libs/openssl:0=
-	ncurses? ( sys-libs/ncurses:0= )
 	net-libs/wandio
+	ncurses? ( sys-libs/ncurses:0= )
 	numa? ( sys-process/numactl )
 "
 DEPEND="
@@ -40,6 +40,8 @@ src_prepare() {
 	default
 
 	eautoreconf
+
+	doxygen -u docs/libtrace.doxygen.in || die
 }
 
 src_configure() {

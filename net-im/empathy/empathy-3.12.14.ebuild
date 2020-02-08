@@ -60,7 +60,7 @@ COMMON_DEPEND="
 		>=media-libs/clutter-gtk-0.90.3:1.0
 		>=media-libs/libchamplain-0.12.1:0.12[gtk] )
 	spell? (
-		>=app-text/enchant-1.2
+		>=app-text/enchant-1.2:0
 		>=app-text/iso-codes-0.35 )
 	v4l? (
 		dev-libs/libgudev:=

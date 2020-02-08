@@ -41,7 +41,7 @@ COMMON_DEPEND="dev-libs/glib:2
 	)"
 
 RDEPEND="${COMMON_DEPEND}
-	spell? ( app-text/enchant )"
+	spell? ( app-text/enchant:0 )"
 DEPEND="${COMMON_DEPEND}
 	app-arch/xz-utils
 	virtual/pkgconfig

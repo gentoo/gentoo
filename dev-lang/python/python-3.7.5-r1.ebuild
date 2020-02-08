@@ -201,7 +201,7 @@ src_test() {
 }
 
 src_install() {
-	local libdir=${ED%/}/usr/lib/python${PYVER}
+	local libdir=${ED}/usr/lib/python${PYVER}
 
 	emake DESTDIR="${D}" altinstall
 
@@ -211,13 +211,13 @@ src_install() {
 		-i "${libdir}/config-${PYVER}"*/Makefile || die "sed failed"
 
 	# Fix collisions between different slots of Python.
-	rm -f "${ED%/}/usr/$(get_libdir)/libpython3.so"
+	rm -f "${ED}/usr/$(get_libdir)/libpython3.so"
 
 	# Cheap hack to get version with ABIFLAGS
-	local abiver=$(cd "${ED%/}/usr/include"; echo python*)
+	local abiver=$(cd "${ED}/usr/include"; echo python*)
 	if [[ ${abiver} != python${PYVER} ]]; then
 		# Replace python3.X with a symlink to python3.Xm
-		rm "${ED%/}/usr/bin/python${PYVER}" || die
+		rm "${ED}/usr/bin/python${PYVER}" || die
 		dosym "${abiver}" "/usr/bin/python${PYVER}"
 		# Create python3.X-config symlink
 		dosym "${abiver}-config" "/usr/bin/python${PYVER}-config"
@@ -228,13 +228,13 @@ src_install() {
 	# python seems to get rebuilt in src_install (bug 569908)
 	# Work around it for now.
 	if has_version dev-libs/libffi[pax_kernel]; then
-		pax-mark E "${ED%/}/usr/bin/${abiver}"
+		pax-mark E "${ED}/usr/bin/${abiver}"
 	else
-		pax-mark m "${ED%/}/usr/bin/${abiver}"
+		pax-mark m "${ED}/usr/bin/${abiver}"
 	fi
 
 	use sqlite || rm -r "${libdir}/"{sqlite3,test/test_sqlite*} || die
-	use tk || rm -r "${ED%/}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
+	use tk || rm -r "${ED}/usr/bin/idle${PYVER}" "${libdir}/"{idlelib,tkinter,test/test_tk*} || die
 
 	use wininst || rm "${libdir}/distutils/command/"wininst-*.exe || die
 
@@ -255,7 +255,7 @@ src_install() {
 	sed \
 		-e "s:@PYDOC_PORT_VARIABLE@:PYDOC${PYVER/./_}_PORT:" \
 		-e "s:@PYDOC@:pydoc${PYVER}:" \
-		-i "${ED%/}/etc/conf.d/pydoc-${PYVER}" "${ED%/}/etc/init.d/pydoc-${PYVER}" || die "sed failed"
+		-i "${ED}/etc/conf.d/pydoc-${PYVER}" "${ED}/etc/init.d/pydoc-${PYVER}" || die "sed failed"
 
 	# for python-exec
 	local vars=( EPYTHON PYTHON_SITEDIR PYTHON_SCRIPTDIR )
@@ -274,26 +274,26 @@ src_install() {
 
 	# python-exec wrapping support
 	local pymajor=${PYVER%.*}
-	mkdir -p "${D%/}${PYTHON_SCRIPTDIR}" || die
+	mkdir -p "${D}${PYTHON_SCRIPTDIR}" || die
 	# python and pythonX
-	ln -s "../../../bin/${abiver}" "${D%/}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
-	ln -s "python${pymajor}" "${D%/}${PYTHON_SCRIPTDIR}/python" || die
+	ln -s "../../../bin/${abiver}" "${D}${PYTHON_SCRIPTDIR}/python${pymajor}" || die
+	ln -s "python${pymajor}" "${D}${PYTHON_SCRIPTDIR}/python" || die
 	# python-config and pythonX-config
 	# note: we need to create a wrapper rather than symlinking it due
 	# to some random dirname(argv[0]) magic performed by python-config
-	cat > "${D%/}${PYTHON_SCRIPTDIR}/python${pymajor}-config" <<-EOF || die
+	cat > "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" <<-EOF || die
 		#!/bin/sh
 		exec "${abiver}-config" "\${@}"
 	EOF
-	chmod +x "${D%/}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
-	ln -s "python${pymajor}-config" "${D%/}${PYTHON_SCRIPTDIR}/python-config" || die
+	chmod +x "${D}${PYTHON_SCRIPTDIR}/python${pymajor}-config" || die
+	ln -s "python${pymajor}-config" "${D}${PYTHON_SCRIPTDIR}/python-config" || die
 	# 2to3, pydoc, pyvenv
-	ln -s "../../../bin/2to3-${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/2to3" || die
-	ln -s "../../../bin/pydoc${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/pydoc" || die
-	ln -s "../../../bin/pyvenv-${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/pyvenv" || die
+	ln -s "../../../bin/2to3-${PYVER}" "${D}${PYTHON_SCRIPTDIR}/2to3" || die
+	ln -s "../../../bin/pydoc${PYVER}" "${D}${PYTHON_SCRIPTDIR}/pydoc" || die
+	ln -s "../../../bin/pyvenv-${PYVER}" "${D}${PYTHON_SCRIPTDIR}/pyvenv" || die
 	# idle
 	if use tk; then
-		ln -s "../../../bin/idle${PYVER}" "${D%/}${PYTHON_SCRIPTDIR}/idle" || die
+		ln -s "../../../bin/idle${PYVER}" "${D}${PYTHON_SCRIPTDIR}/idle" || die
 	fi
 }
 
@@ -304,11 +304,11 @@ pkg_preinst() {
 }
 
 eselect_python_update() {
-	if [[ -z "$(eselect python show)" || ! -f "${EROOT%/}/usr/bin/$(eselect python show)" ]]; then
+	if [[ -z "$(eselect python show)" || ! -f "${EROOT}/usr/bin/$(eselect python show)" ]]; then
 		eselect python update
 	fi
 
-	if [[ -z "$(eselect python show --python${PV%%.*})" || ! -f "${EROOT%/}/usr/bin/$(eselect python show --python${PV%%.*})" ]]; then
+	if [[ -z "$(eselect python show --python${PV%%.*})" || ! -f "${EROOT}/usr/bin/$(eselect python show --python${PV%%.*})" ]]; then
 		eselect python update --python${PV%%.*}
 	fi
 }

@@ -143,6 +143,9 @@ src_prepare() {
 	# C++ client dangling reference: https://github.com/xmms2/xmms2-devel/pull/5
 	eapply "${FILESDIR}/${P}"-cpp-client.patch
 
+	# gcc-10 stopped putting globals into common section
+	eapply "${FILESDIR}/${P}"-gcc-10.patch
+
 	eapply_user
 }
 

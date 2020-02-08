@@ -4,7 +4,7 @@
 EAPI=5
 
 DESCRIPTION="Gartoon SVG icon theme"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"

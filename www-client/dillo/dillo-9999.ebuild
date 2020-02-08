@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 inherit autotools desktop mercurial toolchain-funcs
 
 DESCRIPTION="Lean FLTK based web browser"
@@ -28,8 +27,8 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}2-inbuf.patch
+	"${FILESDIR}"/${PN}-3.0.5-fno-common.patch
 )
-
 DOCS="AUTHORS ChangeLog README NEWS doc/*.txt doc/README"
 
 src_prepare() {
@@ -57,16 +56,8 @@ src_compile() {
 src_install() {
 	default
 
-	if use doc; then
-		docinto html
-		dodoc -r html/
-	fi
+	use doc && dodoc -r html
 
 	doicon "${DISTDIR}"/${PN}.png
 	make_desktop_entry ${PN} Dillo
-}
-
-pkg_postinst() {
-	elog "Dillo has installed a default configuration into /etc/dillo/dillorc"
-	elog "You can copy this to ~/.dillo/ and customize it"
 }

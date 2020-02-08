@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -52,7 +52,7 @@ DEPEND="
 	x11-libs/libxcb
 	aspell? ( app-text/aspell )
 	dbus? ( dev-qt/qtdbus:5 )
-	enchant? ( >=app-text/enchant-1.3.0 )
+	enchant? ( >=app-text/enchant-1.3.0:0 )
 	hunspell? ( app-text/hunspell:= )
 	webengine? (
 		dev-qt/qtwebchannel:5

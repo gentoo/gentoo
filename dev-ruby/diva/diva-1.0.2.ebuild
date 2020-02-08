@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
@@ -14,8 +14,7 @@ RUBY_FAKEGEM_GEMSPEC="diva.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="Implementation of expression for handling things."
-HOMEPAGE="https://github.com/toshia/diva"
-SRC_URI="https://github.com/toshia/diva/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/toshia/diva https://rubygems.org/gems/diva"
 
 LICENSE="MIT"
 SLOT="0"

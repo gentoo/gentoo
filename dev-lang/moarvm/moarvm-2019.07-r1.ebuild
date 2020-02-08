@@ -44,8 +44,8 @@ PATCHES="${FILESDIR}/fix-quoting.patch"
 src_configure() {
 	MAKEOPTS+=" NOISY=1"
 	use doc && DOCS+=( docs/* )
-	local prefix="${EPREFIX%/}/usr"
-	local libdir="${EPREFIX%/}/usr/$(get_libdir)"
+	local prefix="${EPREFIX}/usr"
+	local libdir="${EPREFIX}/usr/$(get_libdir)"
 	einfo "--prefix '${prefix}'"
 	einfo "--libdir '${libdir}'"
 	local myconfigargs=(

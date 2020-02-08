@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
+PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/jupyter/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 
 DEPEND="

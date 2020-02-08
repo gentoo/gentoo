@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="project">
+    <email>perl@gentoo.org</email>
+    <name>Gentoo Perl Project</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>hydrapolic@gmail.com</email>
+    <name>Tomáš Mózes</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="cpan">MooX-StrictConstructor</remote-id>
+    <remote-id type="cpan-module">Method::Generate::Constructor::Role::StrictConstructor</remote-id>
+    <remote-id type="cpan-module">MooX::StrictConstructor</remote-id>
+  </upstream>
+</pkgmetadata>

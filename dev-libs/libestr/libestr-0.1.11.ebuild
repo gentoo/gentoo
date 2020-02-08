@@ -37,5 +37,5 @@ src_configure() {
 src_install() {
 	default
 
-	find "${ED%/}"/usr/lib* -name '*.la' -delete || die
+	find "${ED}"/usr/lib* -name '*.la' -delete || die
 }

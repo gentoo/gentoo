@@ -8,9 +8,4 @@
 	<upstream>
 		<remote-id type="pypi">celery</remote-id>
 	</upstream>
-	<use>
-		<flag name="redis">Enables redis support</flag>
-		<flag name="sqs">Enables Amazon SQS transport module for celery</flag>
-		<flag name="yaml">Enable support of yaml as a configuration file format</flag>
-	</use>
 </pkgmetadata>

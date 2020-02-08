@@ -16,11 +16,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc test"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
 	dev-python/pyinotify[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' python2_7 pypy)
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 DEPEND="test? ( ${RDEPEND}

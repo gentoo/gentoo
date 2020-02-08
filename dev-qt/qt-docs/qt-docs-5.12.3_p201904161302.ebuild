@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,7 +21,7 @@ SRC_URI="${BASE_URI}/${PV_FULL}qt-everywhere-documentation.7z
 
 LICENSE="FDL-1.3"
 SLOT="5"
-KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
+KEYWORDS="~arm x86"
 
 IUSE="3d bluetooth charts datavis declarative graphicaleffects +html location
 	multimedia networkauth +qch script sensors virtualkeyboard webengine"

@@ -110,7 +110,7 @@ pkg_pretend() {
 
 src_prepare() {
 	sed -i \
-		-e "/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:${EPREFIX%/}/usr/bin/xauth:" \
+		-e "/_PATH_XAUTH/s:/usr/X11R6/bin/xauth:${EPREFIX}/usr/bin/xauth:" \
 		pathnames.h || die
 
 	# don't break .ssh/authorized_keys2 for fun
@@ -279,17 +279,17 @@ src_configure() {
 		--with-ldflags="${LDFLAGS}"
 		--disable-strip
 		--with-pid-dir="${EPREFIX}"$(usex kernel_linux '' '/var')/run
-		--sysconfdir="${EPREFIX%/}"/etc/ssh
-		--libexecdir="${EPREFIX%/}"/usr/$(get_libdir)/misc
-		--datadir="${EPREFIX%/}"/usr/share/openssh
-		--with-privsep-path="${EPREFIX%/}"/var/empty
+		--sysconfdir="${EPREFIX}"/etc/ssh
+		--libexecdir="${EPREFIX}"/usr/$(get_libdir)/misc
+		--datadir="${EPREFIX}"/usr/share/openssh
+		--with-privsep-path="${EPREFIX}"/var/empty
 		--with-privsep-user=sshd
 		$(use_with audit audit linux)
-		$(use_with kerberos kerberos5 "${EPREFIX%/}"/usr)
+		$(use_with kerberos kerberos5 "${EPREFIX}"/usr)
 		# We apply the sctp patch conditionally, so can't pass --without-sctp
 		# unconditionally else we get unknown flag warnings.
 		$(use sctp && use_with sctp)
-		$(use_with ldns ldns "${EPREFIX%/}"/usr)
+		$(use_with ldns ldns "${EPREFIX}"/usr)
 		$(use_with libedit)
 		$(use_with pam)
 		$(use_with pie)

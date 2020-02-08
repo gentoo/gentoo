@@ -6,7 +6,7 @@ EAPI=6
 inherit multilib versionator prefix
 
 DESCRIPTION="Filesystem baselayout and init scripts"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/${PN}.git"
 	inherit git-r3

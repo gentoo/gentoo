@@ -23,7 +23,7 @@ app-emulation/aranym -jit
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
 # dev-python/pandas is keyworded for amd64
-sys-block/fio -gnuplot
+sys-block/fio -python -gnuplot
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-misc/quiche is available on this arch

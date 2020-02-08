@@ -32,6 +32,258 @@
 
 #--- END OF EXAMPLES ---
 
+# Mike Pagano <mpagano@gentoo.org> (2020-02-07)
+# The standalone ebuild for this driver is made
+# unnecessary as it is included in the package:
+# sys-kernel/linux-firmware. Bug #708622
+sys-firmware/iwl6050-ucode
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-07)
+# Mask until sys-libs/libxcrypt[system] is unmasked
+>=virtual/libcrypt-2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-05)
+# Blocks dev-python/pygtk removal, bug #706478. Masked for removal in 30 days.
+dev-libs/libappindicator:2
+dev-perl/Gtk2-AppIndicator
+x11-plugins/pidgin-indicator
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-05)
+# Unmaintained.  No Python 3 support.  Last release ~2014, homepage
+# gone.
+# Removal in 30 days.  Bug #708352.
+net-im/turses
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-05)
+# NIH utility package, last released 2015.  No Python 3 support.
+# All remaining reverse dependencies are masked for removal.
+# Removal in 30 days.  Bug #708332.
+dev-python/egenix-mx-base
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-05)
+# Last version bump in 2014, while upstream is at 2019/1.
+# Ebuild claims "free-noncomm", but has an inaccessible distfile
+# behind a registration wall. Unresponsive Gentoo maintainer.
+# Masked for removal in 30 days. Bug #702352.
+sci-chemistry/shelx
+
+# Joonas Niilola <juippis@gentoo.org> (2020-02-05)
+# Stagnant upstream with latest release from 2016, python2-only, no maintainer
+# in Gentoo, no notable ebuild action in years, multiple bugs open. Blocks
+# pygtk removal.
+# Switch to alternatives such as,
+# net-misc/connman, net-misc/dhcpcd, net-misc/netifrc, net-misc/NetworkManager
+# and so on. Removal in ~90 days. #708316
+net-misc/wicd
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-05)
+# Fails to build for at least 6 months.  No Python 3 support.  Last
+# bumped in 2016.  Bad quality ebuild.
+#
+# dev-python/dpkt has no other revdeps.
+#
+# Removal in 30 days.  Bug #692340.
+net-libs/nfqueue-bindings
+dev-python/dpkt
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# Masked for removal in 30 days. Bug #634288.
+games-misc/fortune-mod-calvin
+games-misc/fortune-mod-futurama
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license. HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703710.
+games-misc/fortune-mod-debilneho
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# "The entire text is copyrighted by the rightful owners."
+# Masked for removal in 30 days. Bugs #302722, #634288.
+games-misc/fortune-mod-discworld
+games-misc/fortune-mod-hitchhiker
+games-misc/fortune-mod-simpsons-chalkboard
+games-misc/fortune-mod-starwars
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703712, #703738.
+games-misc/fortune-mod-dubya
+games-misc/fortune-mod-strangelove
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #302722, #634288, #703714.
+games-misc/fortune-mod-dune
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703716.
+games-misc/fortune-mod-familyguy
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703718.
+games-misc/fortune-mod-firefly
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# Allegedly GPL, but "quotes ... are copyright Fox Television."
+# Copyright status unclear. HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703724.
+games-misc/fortune-mod-homer
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# Bad HOMEPAGE. SRC_URI is gone.
+# Masked for removal in 30 days. Bugs #634288, #703730.
+games-misc/fortune-mod-pqf
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license. HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703732.
+games-misc/fortune-mod-slackware
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear.
+# HOMEPAGE and SRC_URI are gone.
+# Masked for removal in 30 days. Bugs #634288, #703736.
+games-misc/fortune-mod-sp-fortunes
+
+# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
+# No license; copyright status unclear. SRC_URI is gone.
+# Masked for removal in 30 days. Bugs #634288, #703742.
+games-misc/fortune-mod-woody-allen-it
+
+# Conrad Kostecki <conikost@gentoo.org> (2020-02-04)
+# Python2 only, no reverse dependencies left, since they got removed.
+# Masked for removal in 30 days.
+dev-python/e4u
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-04)
+# Python-2-only, blocks pygtk-removal. Use app-text/coolreader or
+# app-text/fbreader instead. Masked for removal in 30 days.
+app-text/pybookreader
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-04)
+# Python-2-only, blocks pygtk-removal, last release in 2010.
+# Masked for removal in 30 days.
+app-misc/hachoir-metadata
+app-misc/hachoir-urwid
+dev-python/hachoir-core
+dev-python/hachoir-parser
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
+# No maintainer, py27-only, blocks pygtk-removal, last release in 2012.
+# Masked for removal in 30 days.
+app-misc/pystopwatch
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
+# No maintainer, py27-only, broken at runtime, last release in 2010.
+# Masked for removal in 30 days.
+x11-misc/googsystray
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
+# Ancient, no maintainer, py27-only, bug 708104. Masked for removal in 30 days.
+dev-util/gquilt
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
+# Ancient, no maintainer, py27-only. Masked for removal in 30 days.
+dev-util/xesam-tools
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-03)
+# Known breakages that need to be handled first, bug 698922
+>=x11-libs/pango-1.43
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
+# Ancient, dead, py27-only, all revdeps masked for removal, bugs 651346, 696974
+# Masked for removal in 30 days.
+dev-python/pygtkglext
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-31)
+# py2-only, 8.0 release is broken, upstream appears dormant, bug 707564,
+# blocks dev-python/pybluez py2 cleanup. Use kde-misc/kdeconnect instead.
+# Masked for removal in 30 days.
+kde-misc/kanyremote
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-31)
+# Last release in 2009.  No tests.  Python 2 only.  No reverse
+# dependencies.
+# Removal in 30 days.  Bug #707550.
+app-mobilephone/lightblue
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-29)
+# Abandoned in 2009.  Python 2 only.  No blockers left.
+# Removal in 30 days.  Bug #706218.
+dev-python/epydoc
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-28)
+# Live ebuild only for 3+ years now.  Python 2 only.  Last blocker
+# for pyzmq cleanup.  No revdeps.
+# Removal in 14 days.  Bug #707044.
+net-wireless/gr-air-modes
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-28)
+# Replaced by configshell-fb.  Python 2 only.  No revdeps.
+# Removal in 30 days.  Bug #707034.
+dev-python/configshell
+
+# David Seifert <soap@gentoo.org> (2020-01-28)
+# Upstream declared EOL, py2 only, use sci-biology/STAR as modern replacement.
+# Removal in 30 days.
+sci-biology/tophat
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-27)
+# Remaining split Twisted packages.  All remaining reverse dependencies
+# are entirely happy with merged dev-python/twisted.
+# Removal in 30 days.  Bug #706636.
+dev-python/twisted-core
+dev-python/twisted-names
+dev-python/twisted-web
+dev-python/twisted-words
+
+# Ulrich Müller <ulm@gentoo.org> (2020-01-27)
+# Removal requested by proxied maintainer:
+# "Game already available in Valve Steam."
+# License issues, unclear if zipball is redistributable.
+# Masked for removal in 30 days. Bug #703496.
+games-action/cs2d
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-27)
+# Old split Twisted and related packages with no reverse dependencies
+# and only Python 2 support.
+# Removal in 30 days.  Bug #706636.
+dev-python/axiom
+dev-python/epsilon
+dev-python/pyutil
+dev-python/twisted-conch
+dev-python/twisted-lore
+dev-python/twisted-mail
+dev-python/twisted-news
+dev-python/twisted-pair
+dev-python/twisted-runner
+dev-python/vertex
+dev-python/zbase32
+dev-util/buildbot-slave
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-27)
+# Dead upstream.  Last (alpha) release in 2007.  Requires old version
+# of Twisted.  Python 2-only.
+# Removal in 30 days.  Bug #660660.
+dev-python/zsi
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-26)
+# Not needed anymore, feel free to remove from your system
+# emerge -C virtual/cargo
+# update your rust packages running emerge with the
+# --changed-deps option if you have problems
+# https://bugs.gentoo.org/695698
+virtual/cargo
+
 # David Seifert <soap@gentoo.org> (2020-01-27)
 # Unmaintained, py2 only, depends on dead dev-python/pygtkglext, last release
 # over 8 years ago, no sign of py3 port. Removal in 30 days.
@@ -374,393 +626,22 @@ dev-lang/vala:0.42
 # Removal in 30 days.
 app-crypt/libykneomgr
 
-# Ulrich Müller <ulm@gentoo.org> (2020-01-07)
-# No upstream SRC_URI. No license, so it cannot be mirrored.
-# Masked for removal in 30 days. Bug #702936.
-media-fonts/nepali-fonts
-
-# Ulrich Müller <ulm@gentoo.org> (2020-01-06)
-# No license, therefore we have no permission to redistribute
-# these packages on Gentoo mirrors. Distfiles are unversioned
-# zipballs, which are updated in place when a new version is
-# released. Since this will break digests, mirror restriction
-# is not feasible.
-# Masked for removal in 30 days. Bug #703604.
-app-dicts/sword-ab
-app-dicts/sword-abs_essay_goodsam_swb
-app-dicts/sword-br_en
-app-dicts/sword-bulcarigradnt
-app-dicts/sword-bwe
-app-dicts/sword-chincvs
-app-dicts/sword-chincvt
-app-dicts/sword-chiun
-app-dicts/sword-chiuns
-app-dicts/sword-czecep
-app-dicts/sword-czekms
-app-dicts/sword-czenkb
-app-dicts/sword-dbd
-app-dicts/sword-emtv
-app-dicts/sword-est
-app-dicts/sword-family
-app-dicts/sword-finpr92
-app-dicts/sword-frecrl
-app-dicts/sword-hebmodern
-app-dicts/sword-hunuj
-app-dicts/sword-icelandic
-app-dicts/sword-kekchi
-app-dicts/sword-korean
-app-dicts/sword-la_en
-app-dicts/sword-latvian
-app-dicts/sword-maori
-app-dicts/sword-romcor
-app-dicts/sword-umgreek
-app-dicts/sword-xhosa
-
 # Ulrich Müller <ulm@gentoo.org> (2020-01-06)
 # Snapshots from Git, masked for testing.
 =app-editors/emacs-27.0.50_pre*
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# The Maintainer give up this projecet and
-# it is dead on upstream since ~2008
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 703900
-media-plugins/vdr-fepg
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# This plugin is dead on upstream
-# No HOMEPAGE and upstream SRC_URI
-# You could use as replacement for this plugin
-# media-plugins/vdr-devstatus
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 703962
-media-plugins/vdr-recstatus
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# This plugin is dead on upstream
-# request about the project status to upstream was 
-# not answered
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 703966
-media-plugins/vdr-zaphistory
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# This plugin is for an a very old version of
-# media-video/vdr
-# dead on upstream
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 703970
-media-plugins/vdr-wapd
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# No Homepage and upstream SRC_URI
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 703972
-media-plugins/vdr-nordlichtsepg
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# This plugin is for an a very old version of
-# media-video/vdr
-# No upstream available
-# No Homepage and SRC_URI
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 703974
-media-plugins/vdr-pilotskin
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# several open bugs on upstream, the oldest is from
-# ~2010, the latest is from ~2016
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 703990
-media-plugins/vdr-sudoku
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# there are several open bugs up from ~2010 on
-# upstream
-# request about the project status to upstream was 
-# not answered
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 704000
-media-plugins/vdr-pvrinput
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# this plugin is from ~2008 and depends on a very
-# old version of vdr
-# As there is no upstream email, it is not possible to
-# request for fixing this issues
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 704006
-media-plugins/vdr-lcr
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# This plugin needs a KDE kicker applet
-# We do not have this applet in the tree anymore
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 704008
-media-plugins/vdr-kvdrmon
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# Requested to upstream, pstream answered to this:
-# “vdr-infosatepg was useful many years ago. 
-# today it delivers only additional EPG 
-# for "Eurosport" channel.”
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 704010
-media-plugins/vdr-infosatepg
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# This plugin is from ~2004
-# An Upstream url and src_uri is not available
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 704014
-media-plugins/vdr-extb
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# this plugin is from ~2005 and depends 
-# on a very old version of vdr
-# No upstream is available 
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 704016
-media-plugins/vdr-decruft
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# The last commit on upstream is from ~2012
-# request about the project status to upstream was 
-# not answered
-# https://projects.vdr-developer.org/issues/2597
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 704018
-media-plugins/vdr-chanman
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# this plugin is from ~2008 and depends 
-# on a very old version of vdr
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 704028
-media-plugins/vdr-spider
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# The last commit on upstream is from ~2012
-# upstream has several open bugs on ffmpeg/libav depends
-# request about the project status to upstream was 
-# not answered
-# https://projects.vdr-developer.org/issues/2596
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 704034
-media-plugins/vdr-osdpip
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-04)
-# plugin is broken by update to
-# media-video/vdr-2.4.x
-# Last commmit on upstream is from ~2008
-# The plugin function is still available in the core vdr
-# No packages have a reverse RDEPEND on it
-# removal from tree ~4 Feb 2020
-# wrt bug 704050
-media-plugins/vdr-browse
-
-# Mike Gilbert <floppym@gentoo.org> (2020-01-04)
-# Un-fetchable distfile, bug 704782.
-# No maintainer.
-# Removal in 30 days.
-net-misc/chrome-remote-desktop
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-03)
-# package is broken by all version of imagemagick
-# several open bugs on upstream
-# Upstream did not reply about project status
-# wrt bug 314315
-# removal ~2020-01-31
-media-plugins/vdr-skinenigmang
-x11-themes/skinenigmang-logos
-
 # Jonas Stein <jstein@gentoo.org> (2019-12-30)
-# Package masked for removal. Broken SRC_URI, 
+# Package masked for removal. Broken SRC_URI,
 # last upstream activity was ~16 years ago.
 # Bug #704316.
 # Removal after 2020-03-01
 app-backup/tob
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-30)
-# The PyPy packages have been restructured and dev-python/pypy is now
-# used unconditionally as the main package.  If you wish to continue
-# using prebuilt executables, install dev-python/pypy{,3}-exe-bin
-# along with it.
-# Removal in 30 days.
-dev-python/pypy-bin
-dev-python/pypy3-bin
-
-# Hans de Graaff <graaff@gentoo.org> (2019-12-27)
-# Causes compatibility issues with the bundled versions in some
-# dev-lang/ruby slots. Use the bundled version instead. The only
-# reverse dependency is dev-ruby/jeweler, which is no longer
-# maintained upstream and ruby24-only.
-# Removal in 30 days. Bug #703950.
-dev-ruby/psych
-dev-ruby/jeweler
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-12-26)
-# Deprecated by upstream, not used anymore in the tree.
-# Removal in 30 days.  Bug #703196.
-media-libs/libclalsadrv
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703792.
-games-rpg/dragonhunt
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703784.
-games-puzzle/jools
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703782.
-games-puzzle/hexamine
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703780.
-games-puzzle/4stattack
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703774.
-games-arcade/watermelons
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703772.
-games-arcade/triplexinvaders
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, dead upstream, no py3 port in sight.
-# Removal in 30 days.  Bug #703770.
-games-arcade/pydance
-games-arcade/pydance-songs
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, no other distro packages it anymore.
-# Removal in 30 days.  Bug #703768.
-games-arcade/pycadia
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, no other distro packages it anymore.
-# Removal in 30 days.  Bug #703764.
-games-arcade/bub-n-bros
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, upstream abandoned since 2005.
-# Removal in 30 days.  Bug #703762.
-games-action/accelerator3d
-
-# David Seifert <soap@gentoo.org> (2019-12-25)
-# Py2 only, upstream abandoned further development, Broken.
-# Removal in 30 days.  Bug #693032.
-games-kids/tuxmathscrabble
-
-# David Seifert <soap@gentoo.org> (2019-12-24)
-# Unmaintained, uses dead POSIX streams interface, EAPI 4.
-# Bug #692228, Removal in 30 days.
-x11-terms/multi-aterm
-
-# James Le Cuirot <chewi@gentoo.org> (2019-12-23)
-# No license. HOMEPAGE and SRC_URI are dead.
-# Removal in 30 days. See bug #703552.
-games-util/xboxgw
-
-# David Seifert <soap@gentoo.org> (2019-12-22)
-# Unmaintained, dead upstreams, monstrous build systems.
-# Bug #568364, Removal in 30 days.
-sci-libs/jmol-acme
-sci-libs/libcore
-sci-libs/naga
-sci-libs/spooles
-sci-libs/vecmath-objectclub
 
 # Tomáš Mózes <hydrapolic@gentoo.org> (2019-12-19)
 # Needs more testing.
 =app-emulation/xen-4.13.0
 =app-emulation/xen-pvgrub-4.13.0
 =app-emulation/xen-tools-4.13.0
-
-# Anthony G. Basile <blueness@gentoo.org> (2019-12-17)
-# Project has been dead upstream for years.
-# Removal in 30 days.
-app-benchmarks/spew
-
-# Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-16)
-# Simplify FOX packages. Adie, calculator, pathfinder, and shutterbug
-# can now be found behind x11-libs/fox[tools], and reswrap is always
-# installed by it.
-# Removal in 30 days.  Bug #703088. Bug #703084.
-app-editors/adie
-dev-util/reswrap
-sci-calculators/calculator
-x11-misc/pathfinder
-x11-misc/shutterbug
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-15)
-# Live ebuild only.  Not touched since 2012.  Unsurprisingly,
-# the included patch no longer applies.  Actually, there's
-# sys-fs/yaffs2utils duplicate which is a release.
-# Removal in 14 days.  Bug #703040.
-sys-fs/yaffs2-utils
-
-# Michał Górny <mgorny@gentoo.org> (2019-12-15)
-# Repo gone in 2014.  Never had a release ebuild.  Apparently was broken
-# before anyway (bug #508924).
-# Removal in 14 days.  Bug #533052.
-net-analyzer/gsm-receiver
 
 # David Seifert <soap@gentoo.org> (2019-12-08)
 # Unmaintained, build hangs, tons of other build failures, missing
@@ -975,18 +856,6 @@ x11-drivers/xf86-video-voodoo
 # Mask experimental software
 =mail-mta/postfix-3.5*
 
-# Dennis Lamm <expeditioneer@gentoo.org> (2019-01-29)
-# Depends on >=app-text/enchant-2.0.0 which is masked
-=gnome-extra/gtkhtml-4.10.0-r1
-
-# Dennis Lamm <expeditioneer@gentoo.org> (2019-01-28)
-# Depends on >=app-text/enchant-2.0.0 which is masked
->=app-text/gtkspell-3.0.10
-
-# Dennis Lamm <expeditioneer@gentoo.org> (2019-01-28)
-# Depends on >=app-text/enchant-2.1.3 which is masked
->=app-text/gspell-1.8.1
-
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-01-23)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
 dev-java/ant-eclipse-ecj:4.10
@@ -1049,10 +918,6 @@ sys-devel/automake:1.7
 sys-devel/automake:1.8
 sys-devel/automake:1.9
 sys-devel/automake:1.10
-
-# Gilles Dartiguelongue <eva@gentoo.org> (2017-09-04)
-# Incompatible changes in API in Enchant 2. Bug #629838.
->=app-text/enchant-2
 
 # Nicolas Bock <nicolasbock@gentoo.org> (2017-10-31)
 # There are multiple unresolved upstream issues with >=jabref-bin-4.0 (#636036).

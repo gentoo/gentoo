@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -51,7 +51,13 @@ RDEPEND="
 	openexr? ( media-libs/openexr )
 	opengl? ( virtual/opengl virtual/glu )
 	png? ( media-libs/libpng:0= )
-	python? ( ${PYTHON_DEPS} dev-python/numpy[${PYTHON_USEDEP}] )
+	python? (
+		${PYTHON_DEPS}
+		|| (
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
+		)
+	)
 	qt5? (
 		dev-qt/qtconcurrent:5
 		dev-qt/qtcore:5

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,9 @@ DEPEND="
 	${RDEPEND}
 	static? ( ${LIB_DEPEND} )
 "
-S=${WORKDIR}/${P}/${PN}
+PATCHES=(
+	"${FILESDIR}"/${PN}-4.4-fno-common.patch
+)
 
 use10() { usex $1 1 0 ; }
 
@@ -55,12 +57,11 @@ src_configure() {
 }
 
 src_compile() {
-	emake "${EMAKE_SQUASHFS_CONF[@]}"
+	emake "${EMAKE_SQUASHFS_CONF[@]}" -C ${PN}
 }
 
 src_install() {
-	dobin mksquashfs unsquashfs
-	cd ..
+	dobin ${PN}/{mksquashfs,unsquashfs}
 	dodoc ACKNOWLEDGEMENTS CHANGES README*
 	dodoc -r RELEASE-READMEs
 }

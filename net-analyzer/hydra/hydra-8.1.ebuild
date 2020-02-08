@@ -10,7 +10,7 @@ SRC_URI="http://freeworld.thc.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="firebird gtk idn mysql ncp oracle pcre postgres ssl subversion"
 
 RDEPEND="

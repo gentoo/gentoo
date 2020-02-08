@@ -1,5 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-05)
+# Required by many packages, most notably Mozilla products
+dev-lang/python sqlite
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-03-20)
 # Enable client by default. Usually desktop users need the client.
@@ -54,7 +58,7 @@ app-text/xmlto text
 
 # Ben de Groot <yngwin@gentoo.org> (2015-02-18)
 # Enable sensible defaults for desktop users (bug #540046)
-dev-python/PyQt5 gui network printsupport widgets
+dev-python/PyQt5 gui multimedia network printsupport widgets
 
 # Samuli Suominen <ssuominen@gentoo.org> (2014-07-24)
 # Because targets/desktop/make.defaults has USE="bluetooth" but net-libs/libpcap doesn't

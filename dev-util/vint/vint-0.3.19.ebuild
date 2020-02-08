@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -29,7 +29,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	test? (
 		>=dev-python/pytest-3.3.2[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]' python2_7)
 	)
 "
 

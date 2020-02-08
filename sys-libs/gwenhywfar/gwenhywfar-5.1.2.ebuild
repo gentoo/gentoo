@@ -12,7 +12,7 @@ SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/234/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0/79" # correspond with libgwenhywfar.so version
-KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="debug designer doc fox gtk libressl qml qt5 sensors serialport test webkit"
 
 REQUIRED_USE="designer? ( qt5 ) qml? ( qt5 ) sensors? ( qt5 ) serialport? ( qt5 ) webkit? ( qt5 )"

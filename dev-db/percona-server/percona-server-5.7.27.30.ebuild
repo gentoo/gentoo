@@ -161,10 +161,10 @@ python_check_deps() {
 }
 
 mysql_init_vars() {
-	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX%/}/usr/share/mysql"}
-	MY_SYSCONFDIR=${MY_SYSCONFDIR="${EPREFIX%/}/etc/mysql"}
-	MY_LOCALSTATEDIR=${MY_LOCALSTATEDIR="${EPREFIX%/}/var/lib/mysql"}
-	MY_LOGDIR=${MY_LOGDIR="${EPREFIX%/}/var/log/mysql"}
+	MY_SHAREDSTATEDIR=${MY_SHAREDSTATEDIR="${EPREFIX}/usr/share/mysql"}
+	MY_SYSCONFDIR=${MY_SYSCONFDIR="${EPREFIX}/etc/mysql"}
+	MY_LOCALSTATEDIR=${MY_LOCALSTATEDIR="${EPREFIX}/var/lib/mysql"}
+	MY_LOGDIR=${MY_LOGDIR="${EPREFIX}/var/log/mysql"}
 
 	if [[ -z "${MY_DATADIR}" ]] ; then
 		MY_DATADIR=""
@@ -395,9 +395,8 @@ multilib_src_configure() {
 	mycmakeargs=(
 		-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usex debug '' '-DNDEBUG')"
 		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$(usex debug '' '-DNDEBUG')"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr"
-		-DMYSQL_DATADIR="${EPREFIX%/}/var/lib/mysql"
-		-DSYSCONFDIR="${EPREFIX%/}/etc/mysql"
+		-DMYSQL_DATADIR="${EPREFIX}/var/lib/mysql"
+		-DSYSCONFDIR="${EPREFIX}/etc/mysql"
 		-DINSTALL_BINDIR=bin
 		-DINSTALL_DOCDIR=share/doc/${PF}
 		-DINSTALL_DOCREADMEDIR=share/doc/${PF}
@@ -408,9 +407,9 @@ multilib_src_configure() {
 		-DINSTALL_MYSQLSHAREDIR=share/mysql
 		-DINSTALL_PLUGINDIR=$(get_libdir)/mysql/plugin
 		-DINSTALL_SCRIPTDIR=share/mysql/scripts
-		-DINSTALL_MYSQLDATADIR="${EPREFIX%/}/var/lib/mysql"
+		-DINSTALL_MYSQLDATADIR="${EPREFIX}/var/lib/mysql"
 		-DINSTALL_SBINDIR=sbin
-		-DINSTALL_SUPPORTFILESDIR="${EPREFIX%/}/usr/share/mysql"
+		-DINSTALL_SUPPORTFILESDIR="${EPREFIX}/usr/share/mysql"
 		-DCOMPILATION_COMMENT="Gentoo Linux ${PF}"
 		-DWITH_UNIT_TESTS=$(usex test ON OFF)
 		### TODO: make this system but issues with UTF-8 prevent it
@@ -418,7 +417,7 @@ multilib_src_configure() {
 		-DWITH_ZLIB=system
 		-DWITH_LIBWRAP=0
 		-DENABLED_LOCAL_INFILE=1
-		-DMYSQL_UNIX_ADDR="${EPREFIX%/}/var/run/mysqld/mysqld.sock"
+		-DMYSQL_UNIX_ADDR="${EPREFIX}/var/run/mysqld/mysqld.sock"
 		-DWITH_DEFAULT_COMPILER_OPTIONS=0
 		-DWITH_DEFAULT_FEATURE_SET=0
 		# The build forces this to be defined when cross-compiling. We pass it
@@ -917,7 +916,7 @@ pkg_config() {
 	local old_MY_DATADIR="${MY_DATADIR}"
 	local old_HOME="${HOME}"
 	# my_print_defaults needs to read stuff in $HOME/.my.cnf
-	export HOME=${EPREFIX%/}/root
+	export HOME=${EPREFIX}/root
 
 	# Make sure the vars are correctly initialized
 	mysql_init_vars
@@ -1073,13 +1072,13 @@ pkg_config() {
 	# --initialize-insecure will not set root password
 	# --initialize would set a random one in the log which we don't need as we set it ourselves
 	local cmd=( "${EROOT%/}/usr/sbin/mysqld" "--initialize-insecure" "--init-file='${sqltmp}'" )
-	cmd+=( "--basedir=${EPREFIX%/}/usr" ${options} "--datadir=${ROOT%/}${MY_DATADIR}" "--tmpdir=${ROOT%/}${MYSQL_TMPDIR}" )
+	cmd+=( "--basedir=${EPREFIX}/usr" ${options} "--datadir=${ROOT%/}${MY_DATADIR}" "--tmpdir=${ROOT%/}${MYSQL_TMPDIR}" )
 	einfo "Command: ${cmd[*]}"
 	su -s /bin/sh -c "${cmd[*]}" mysql \
 		>"${TMPDIR%/}"/mysql_install_db.log 2>&1
 	if [[ $? -ne 0 ]] ; then
 		grep -B5 -A999 -i "ERROR" "${TMPDIR%/}"/mysql_install_db.log 1>&2
-		die "Failed to initialize mysqld. Please review ${EPREFIX%/}/var/log/mysql/mysqld.err AND ${TMPDIR%/}/mysql_install_db.log"
+		die "Failed to initialize mysqld. Please review ${EPREFIX}/var/log/mysql/mysqld.err AND ${TMPDIR%/}/mysql_install_db.log"
 	fi
 	popd &>/dev/null || die
 	[[ -f "${ROOT%/}/${MY_DATADIR}/mysql/user.frm" ]] \

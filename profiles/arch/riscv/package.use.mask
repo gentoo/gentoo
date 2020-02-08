@@ -62,6 +62,7 @@ media-libs/tiff jbig jpeg test webp zstd
 net-fs/nfs-utils nfsv41
 net-libs/gnutls doc test-full
 net-libs/ldns doc python
+net-libs/libpcap rdma
 net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss http2 rtmp ssh
 net-misc/ntp openntpd snmp vim-syntax zeroconf
 net-nds/openldap cxx kerberos sasl

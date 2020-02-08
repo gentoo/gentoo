@@ -14,7 +14,7 @@ SRC_URI="https://www.openal-soft.org/openal-releases/${MY_P}.tar.bz2"
 
 LICENSE="LGPL-2+"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="
 	alsa coreaudio debug jack oss portaudio pulseaudio sdl qt5
 	cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse4_1

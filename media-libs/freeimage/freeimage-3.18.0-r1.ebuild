@@ -113,6 +113,6 @@ src_compile() {
 }
 
 src_install() {
-	foreach_make install DESTDIR="${ED}" INSTALLDIR="${ED%/}"/usr/$(get_libdir)
+	foreach_make install DESTDIR="${ED}" INSTALLDIR="${ED}"/usr/$(get_libdir)
 	einstalldocs
 }
