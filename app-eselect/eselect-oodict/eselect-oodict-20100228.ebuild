@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Manages configuration of dictionaries for OpenOffice.Org"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 SRC_URI="mirror://gentoo/oodict.eselect-${PVR}.bz2"
 
