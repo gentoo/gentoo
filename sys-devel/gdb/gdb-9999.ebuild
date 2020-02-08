@@ -14,7 +14,6 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
-MY_PV=${PV}
 case ${PV} in
 9999*)
 	# live git tree
@@ -85,8 +84,6 @@ BDEPEND="
 		test? ( dev-util/dejagnu )
 		nls? ( sys-devel/gettext )
 	)"
-
-S=${WORKDIR}/${PN}-${MY_PV}
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
