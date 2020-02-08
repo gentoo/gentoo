@@ -30,8 +30,8 @@ src_configure() {
 	tc-export AR CC
 	# Hand rolled configure script, so not all flags are supported.
 	./configure \
-		--prefix="${EPREFIX%/}/usr" \
-		--libdir="${EPREFIX%/}/usr/$(get_libdir)" \
+		--prefix="${EPREFIX}/usr" \
+		--libdir="${EPREFIX}/usr/$(get_libdir)" \
 		$(use debug && echo --enable-debug) \
 		$(use_enable cpu_flags_x86_sse2 sse) \
 		$(use_with openmp) \
