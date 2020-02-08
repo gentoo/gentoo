@@ -63,7 +63,7 @@ multilib_src_install_all() {
 	use doc && HTML_DOCS=(doc/*)
 	default_src_install
 	if use doc; then
-		rm "${ED%/}"/usr/share/doc/"${PF}"/html/{Makefile*,Doxyfile*} || die
+		rm "${ED}"/usr/share/doc/"${PF}"/html/{Makefile*,Doxyfile*} || die
 	fi
 
 	find "${ED}" -name '*.la' -delete || die

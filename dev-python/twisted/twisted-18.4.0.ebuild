@@ -144,7 +144,7 @@ python_test() {
 python_install() {
 	distutils-r1_python_install
 
-	cd "${D%/}$(python_get_sitedir)" || die
+	cd "${D}$(python_get_sitedir)" || die
 
 	# own the dropin.cache so we don't leave orphans
 	touch twisted/plugins/dropin.cache || die
@@ -179,7 +179,7 @@ pkg_postinst() {
 }
 
 python_postrm() {
-	rm -f "${ROOT%/}$(python_get_sitedir)/twisted/plugins/dropin.cache" || die
+	rm -f "${ROOT}$(python_get_sitedir)/twisted/plugins/dropin.cache" || die
 }
 
 pkg_postrm(){
