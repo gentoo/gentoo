@@ -4,7 +4,7 @@
 EAPI=5
 
 DESCRIPTION="Manages XvMC implementations"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI=""
 
 LICENSE="GPL-2"
