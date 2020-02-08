@@ -22,6 +22,8 @@
         <remote-id type="github">actor-framework/actor-framework</remote-id>
     </upstream>
     <longdescription lang="en">
-        An implementation of the Actor Model of distributed computation in C++.
+        C++ Actor Framework (CAF) is an open source C++11 actor model
+        implementation featuring lightweight & fast actor implementations,
+        pattern matching for messages, network transparent messaging, and more.
     </longdescription>
 </pkgmetadata>
