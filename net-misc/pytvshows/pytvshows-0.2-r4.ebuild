@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,10 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 DEPEND=""
-RDEPEND="dev-python/feedparser[${PYTHON_USEDEP}]"
+RDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/feedparser[${PYTHON_MULTI_USEDEP}]
+	')"
 
 PATCHES=(
 	"${FILESDIR}/${P}-ezrss.it.patch"
