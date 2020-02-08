@@ -8,7 +8,7 @@ EGO_PN="github.com/maxmind/${PN}"
 inherit golang-vcs-snapshot
 
 DESCRIPTION="performs automatic updates of GeoIP2 and GeoIP Legacy binary databases"
-HOMEPAGE="https://${EGO_PN}"
+HOMEPAGE="https://github.com/maxmind/geoipupdate"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	https://files.adjust.com/${PN}-vendor-${PV}.tar"
 
