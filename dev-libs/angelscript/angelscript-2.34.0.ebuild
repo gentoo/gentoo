@@ -33,7 +33,7 @@ multilib_src_compile() {
 
 multilib_src_install() {
 	emake -C ${PN}/projects/gnuc \
-		  DESTDIR="${D%/}" \
+		  DESTDIR="${D}" \
 		  PREFIX="${EPREFIX}"/usr \
 		  LIBDIR_DEST='$(PREFIX)'/$(get_libdir) \
 		  install_header install_shared \
