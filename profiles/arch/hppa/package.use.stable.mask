@@ -40,10 +40,6 @@ dev-lang/python bluetooth
 # net-analyzer/nagios (or icinga) has no stable keywords, bug #676222
 sys-libs/freeipmi nagios
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-12-02)
-# gnome-base/nautilus is not stable
-media-sound/easytag nautilus
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
 # media-libs/libraw is not stable
 media-gfx/imagemagick raw
