@@ -145,7 +145,7 @@ pkg_postinst() {
 
 	# Add /tmp/screen in case it doesn't exist yet. This should solve
 	# problems like bug #508634 where tmpfiles.d isn't in effect.
-	local rundir="${EROOT%/}/tmp/screen"
+	local rundir="${EROOT}/tmp/screen"
 	if [[ ! -d ${rundir} ]] ; then
 		if use multiuser || use prefix ; then
 			tmpfiles_group="root"
