@@ -45,7 +45,7 @@ src_configure() {
 			--testuser=test \
 			--testpassword=test"
 	fi
-	myconf="${myconf} --$(usex ssl ssl nossl) --mysql_config=${EPREFIX%/}/usr/bin/${impl}_config"
+	myconf="${myconf} --$(usex ssl ssl nossl) --mysql_config=${EPREFIX}/usr/bin/${impl}_config"
 	perl-module_src_configure
 }
 
