@@ -5,7 +5,7 @@ EAPI="6"
 inherit toolchain-funcs
 
 DESCRIPTION="Shows currently transmitting beacons of the International Beacon Project (IBP)"
-HOMEPAGE="http://wwwhome.cs.utwente.nl/~ptdeboer/ham/${PN}.html"
+HOMEPAGE="http://wwwhome.cs.utwente.nl/~ptdeboer/ham/ibp.html"
 SRC_URI="http://wwwhome.cs.utwente.nl/~ptdeboer/ham/${P}.tgz"
 
 LICENSE="GPL-2"

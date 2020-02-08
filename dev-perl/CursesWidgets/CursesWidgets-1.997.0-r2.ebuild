@@ -9,7 +9,7 @@ DIST_EXAMPLES=("test.pl")
 inherit perl-module
 
 DESCRIPTION="Provide high level APIs for rapid user interface design on the console in Perl"
-HOMEPAGE="http://www.digitalmages.com/perl/CursesWidgets/index.html ${HOMEPAGE}"
+HOMEPAGE="http://www.digitalmages.com/perl/CursesWidgets/index.html https://metacpan.org/release/CursesWidgets"
 SRC_URI+=" http://www.digitalmages.com/perl/CursesWidgets/downloads/${PN}-${DIST_VERSION}.tar.gz"
 
 SLOT="0"
