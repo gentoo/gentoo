@@ -201,7 +201,7 @@ src_configure() {
 		export TF_CUDA_CLANG=0
 		export TF_NEED_TENSORRT=0
 		if use cuda; then
-			export TF_CUDA_PATHS="${EPREFIX%/}/opt/cuda"
+			export TF_CUDA_PATHS="${EPREFIX}/opt/cuda"
 			export GCC_HOST_COMPILER_PATH="$(cuda_gccdir)/$(tc-getCC)"
 			export TF_CUDA_VERSION="$(cuda_toolkit_version)"
 			export TF_CUDNN_VERSION="$(cuda_cudnn_version)"
