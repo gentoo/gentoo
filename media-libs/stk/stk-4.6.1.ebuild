@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
@@ -14,14 +14,20 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="alsa debug doc jack oss static-libs"
 
+BDEPEND="
+	virtual/pkgconfig
+"
 RDEPEND="alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
 	dev-lang/perl"
 
 PATCHES=(
-	"${FILESDIR}/${P}"
+	"${FILESDIR}/${PN}-4.5.1"
+)
+
+HTML_DOCS=(
+	doc/html/.
 )
 
 src_prepare() {
@@ -55,7 +61,8 @@ src_install() {
 	dodoc README.md
 
 	# install the lib
-	dolib src/libstk*
+	dolib.so src/libstk*
+	use static-libs && dolib.a src/libstk*
 
 	# install headers
 	insinto /usr/include/stk
@@ -67,6 +74,6 @@ src_install() {
 
 	# install docs
 	if use doc; then
-		dohtml -r doc/html/*
+		einstalldocs
 	fi
 }
