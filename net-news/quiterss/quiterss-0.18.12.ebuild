@@ -42,7 +42,7 @@ DOCS=( AUTHORS CHANGELOG README.md )
 
 src_configure() {
 	local myqmakeargs=(
-		PREFIX="${EPREFIX%/}/usr"
+		PREFIX="${EPREFIX}/usr"
 		SYSTEMQTSA=1
 	)
 	eqmake5 "${myqmakeargs[@]}"
