@@ -342,7 +342,6 @@ multilib_src_configure() {
 	mycmakeargs=(
 		-DCMAKE_C_FLAGS_RELWITHDEBINFO="$(usex debug '' '-DNDEBUG')"
 		-DCMAKE_CXX_FLAGS_RELWITHDEBINFO="$(usex debug '' '-DNDEBUG')"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DMYSQL_DATADIR="${EPREFIX}/var/lib/mysql"
 		-DSYSCONFDIR="${EPREFIX}/etc/mysql"
 		-DINSTALL_BINDIR=bin
