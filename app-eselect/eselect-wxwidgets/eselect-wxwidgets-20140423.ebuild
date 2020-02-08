@@ -8,7 +8,7 @@ inherit multilib
 WXWRAP_VER=1.4
 
 DESCRIPTION="Eselect module and wrappers for wxWidgets"
-HOMEPAGE="https://www.gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://dev.gentoo.org/~junghans/dist/${P}.tar.xz
 	https://dev.gentoo.org/~mgorny/dist/${PN}-files.tar.bz2"
 
