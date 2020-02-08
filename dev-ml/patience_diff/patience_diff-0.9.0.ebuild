@@ -6,7 +6,7 @@ EAPI=6
 inherit opam
 
 DESCRIPTION="Tool and library implementing patience diff"
-HOMEPAGE="https://github.com/janestreet/${PN}"
+HOMEPAGE="https://github.com/janestreet/patience_diff"
 SRC_URI="https://github.com/janestreet/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
