@@ -6,7 +6,7 @@ EAPI=6
 MY_PN="${PN/doctrine-//}"
 
 DESCRIPTION="Utility to instantiate objects in PHP without invoking their constructors"
-HOMEPAGE="https://github.com/doctrine/${MY_PN}"
+HOMEPAGE="https://github.com/doctrine/instantiator"
 SRC_URI="https://github.com/doctrine/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
