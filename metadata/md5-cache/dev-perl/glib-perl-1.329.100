@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/glib-2 dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/X/XA/XAOC/Glib-1.3291.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=f277e627eeeb79236d9010842648174a
+_md5_=2448fe2d24f3495973d03c30fe90e48d

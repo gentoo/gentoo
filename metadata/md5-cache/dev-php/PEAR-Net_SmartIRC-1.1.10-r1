@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 RDEPEND=dev-lang/php:*
 SLOT=0
 SRC_URI=https://github.com/pear/Net_SmartIRC/archive/v1.1.10.tar.gz -> Net_SmartIRC-1.1.10.tar.gz
-_md5_=06d68acb37f3fbd9bdc7bf68028b7203
+_md5_=95fda3f5e44a6646bb7b7887ba021109

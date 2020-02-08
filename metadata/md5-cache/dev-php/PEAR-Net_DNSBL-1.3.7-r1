@@ -8,4 +8,4 @@ LICENSE=PHP-3.01
 RDEPEND=dev-lang/php:* dev-php/PEAR-Cache_Lite dev-php/PEAR-HTTP_Request2 dev-php/PEAR-Net_DNS dev-php/PEAR-PEAR examples? ( dev-lang/php:*[cli] dev-php/PEAR-Console_Getopt )
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Net_DNSBL-1.3.7.tgz
-_md5_=487a9174ee2b4e3dde56d829cb71085d
+_md5_=351bdcba0ad64c2ea53989e94b7ffe3a

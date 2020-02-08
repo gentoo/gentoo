@@ -8,4 +8,4 @@ LICENSE=PHP-3.01
 RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/System_Command-1.0.8.tgz
-_md5_=0fb943737ae58bb03486d71a0acd70da
+_md5_=307d5d3d2bc537cb66af524df059a0b9

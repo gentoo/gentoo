@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TE/TEEJAY/Autodia-2.14.tar.gz mirror://gentoo/Autodia-2.14-dbi.patch.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=5fceaa12a4d4af0fd4af31455bf5b5ca
+_md5_=23448c904ed8133204086f8600c6609f

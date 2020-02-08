@@ -7,4 +7,4 @@ LICENSE=PHP-3.01
 RDEPEND=dev-lang/php dev-php/PEAR-PEAR dev-php/PEAR-XML_Serializer
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Text_Highlighter-0.7.3.tgz
-_md5_=98beb22fe8c9c2c3044fdc31ed2cb09c
+_md5_=ed454d050808faf8eaa90022b1610f24

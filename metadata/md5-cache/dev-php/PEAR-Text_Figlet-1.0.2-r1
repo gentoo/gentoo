@@ -8,4 +8,4 @@ LICENSE=PHP-3.01 examples? ( GPL-2+ OFL-1.1 )
 RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Text_Figlet-1.0.2.tgz
-_md5_=ed312b0152924afb33c48e59cd335c4a
+_md5_=8a5dac1efd396c44d237422f589b6a4e

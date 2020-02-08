@@ -8,4 +8,4 @@ LICENSE=PHP-3.01
 RDEPEND=dev-lang/php:*[bzip2,cli?,tokenizer] dev-php/PEAR-Archive_Tar dev-php/PEAR-Log dev-php/PEAR-PEAR cli? ( dev-php/PEAR-Console_Getopt )
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/PHP_Beautifier-0.1.15.tgz
-_md5_=d3ece83f73b675ec3ebcf3f51dd756f7
+_md5_=3eccc37de55bfc06accb4908f68179c3

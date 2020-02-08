@@ -9,4 +9,4 @@ RDEPEND=dev-ml/core_kernel:= dev-ml/ppx_driver:= dev-ml/ppx_jane:= dev-ml/ocaml-
 SLOT=0/0.9.0
 SRC_URI=https://github.com/janestreet/patience_diff/archive/v0.9.0.tar.gz -> patience_diff-0.9.0.tar.gz
 _eclasses_=opam	c053036d04fbcede5c53fe5752699eb5
-_md5_=1f9504b537b5f20dc0cb4c5e1ecbc963
+_md5_=75362ac63dac46145cfa19141913e9d9

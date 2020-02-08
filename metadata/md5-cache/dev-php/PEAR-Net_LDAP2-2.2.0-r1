@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:*[ldap] dev-php/PEAR-PEAR
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Net_LDAP2-2.2.0.tgz
-_md5_=bf1ca98bcd8be2ee980b9ac240b86075
+_md5_=947df522378a6eac37c2bb795da586ce
