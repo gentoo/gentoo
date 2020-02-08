@@ -48,5 +48,5 @@ multilib_src_install_all() {
 	einstalldocs
 	find "${D}" -name '*.la' -delete || die
 	# file collission with sys-libs/readline
-	rm "${ED%/}/usr/share/man/man3/history.3" || die
+	rm "${ED}/usr/share/man/man3/history.3" || die
 }
