@@ -8,7 +8,7 @@ MODULE_VERSION=0.74
 inherit perl-module
 
 DESCRIPTION="An rsync perl module"
-HOMEPAGE="http://perlrsync.sourceforge.net/ ${HOMEPAGE}"
+HOMEPAGE="http://perlrsync.sourceforge.net/ https://metacpan.org/release/File-RsyncP"
 
 LICENSE="GPL-3"
 SLOT="0"
