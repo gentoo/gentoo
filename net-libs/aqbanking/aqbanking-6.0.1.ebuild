@@ -11,7 +11,7 @@ SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/238/${MY_P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE="debug doc ebics examples ofx"
 
 BDEPEND="
