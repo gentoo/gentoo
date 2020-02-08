@@ -85,7 +85,7 @@ python_install_all() {
 		newinitd "${FILESDIR}/swift-proxy.initd" "swift-proxy"
 		newins "etc/proxy-server.conf-sample" "proxy-server.conf"
 		if use memcached; then
-			sed -i '/depend/a\nneed memcached' "${D}/etc/init.d/swift-proxy"
+			sed -i '/depend/a\    need memcached' "${D}/etc/init.d/swift-proxy"
 		fi
 	fi
 	if use account; then
