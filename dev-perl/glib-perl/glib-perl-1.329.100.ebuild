@@ -9,7 +9,7 @@ DIST_VERSION=1.3291
 inherit perl-module
 
 DESCRIPTION="Glib - Perl wrappers for the GLib utility and Object libraries"
-HOMEPAGE="http://gtk2-perl.sf.net/ ${HOMEPAGE}"
+HOMEPAGE="http://gtk2-perl.sf.net/ https://metacpan.org/release/Glib"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
