@@ -6,7 +6,7 @@ EAPI=5
 inherit multilib
 
 DESCRIPTION="Utility to change the OpenCL implementation being used"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 # Source:
 # http://www.khronos.org/registry/cl/api/${CL_ABI}/opencl.h
