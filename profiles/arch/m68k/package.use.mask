@@ -17,10 +17,6 @@ net-libs/gnutls test-full
 # Needs libepoxy keywording, bug #510940
 x11-base/xorg-server wayland
 
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
-
 # Mikle Kolyada <zlogene@gentoo.org> (2013-07-11)
 # Tests for dev-perl/Error require >=dev-perl/Test-Pod-Coverage-1.40.0 (bug #351636)
 dev-perl/Error test
