@@ -43,7 +43,7 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		--enable-thread-check
-		--with-mysql="${EPREFIX%/}/usr"
+		--with-mysql="${EPREFIX}/usr"
 		--with-mysql-lib="${EPREFIX}$(mysql_config --variable=pkglibdir)"
 		--with-mysql-include="${EPREFIX}$(mysql_config --variable=pkgincludedir)"
 	)
