@@ -1,0 +1,63 @@
+# Fixes build with -fno-common (bug #706952)
+
+diff --git a/src/objects.h b/src/objects.h
+index b1bf8b5..ef5b9b1 100644
+--- a/src/objects.h
++++ b/src/objects.h
+@@ -95,7 +95,7 @@ if (debug_level & 4) { fprintf(stderr, "Changing euid to %d and egid to %d\n", (
+ //
+ // number_of_predefined_objects holds the actual number of predefined
+ // objects available to display on the Create/Move popup menu.
+-int number_of_predefined_objects;
++extern int number_of_predefined_objects;
+ // File name of ~/.xastir/config file containing definitions for
+ // a predefined object menu.
+ extern char predefined_object_definition_filename[256];
+diff --git a/src/x_spider.c b/src/x_spider.c
+index a1fabc4..e5a0bc3 100644
+--- a/src/x_spider.c
++++ b/src/x_spider.c
+@@ -185,6 +185,7 @@ extern void split_string( char *data, char *cptr[], int max, char search_char );
+ // From database.h
+ extern char my_callsign[];
+ 
++extern char *pname;
+ 
+ typedef struct _pipe_object
+ {
+diff --git a/src/x_spider.h b/src/x_spider.h
+index d8af8e9..a168b1f 100644
+--- a/src/x_spider.h
++++ b/src/x_spider.h
+@@ -31,7 +31,7 @@
+ #define SERV_UDP_PORT       2023
+ 
+ 
+-char *pname;
++extern char *pname;
+ extern int pipe_xastir_to_tcp_server;
+ extern int pipe_tcp_server_to_xastir;
+ extern int pipe_xastir_to_udp_server;
+diff --git a/src/xa_config.c b/src/xa_config.c
+index 9a6f1f3..2ded26c 100644
+--- a/src/xa_config.c
++++ b/src/xa_config.c
+@@ -65,7 +65,7 @@
+ 
+ #define MAX_VALUE 300
+ 
+-//extern char xa_config_dir[];
++char xa_config_dir[1000];       /* cmdline option user config dir */
+ 
+ 
+ 
+diff --git a/src/xa_config.h b/src/xa_config.h
+index 9947145..530fc06 100644
+--- a/src/xa_config.h
++++ b/src/xa_config.h
+@@ -31,4 +31,4 @@ char *get_data_base_dir(char *dir);
+ void save_data(void);
+ void load_data_or_default(void);
+ 
+-char xa_config_dir[1000];       /* cmdline option user config dir */
++extern char xa_config_dir[1000];       /* cmdline option user config dir */
