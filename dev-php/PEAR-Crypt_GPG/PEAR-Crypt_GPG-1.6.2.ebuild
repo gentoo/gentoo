@@ -8,7 +8,7 @@ MY_PV="${PV/_/}"
 MY_P="${MY_PN}-${MY_PV}"
 
 DESCRIPTION="PHP interface to the GNU Privacy Guard (GnuPG)"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/Crypt_GPG"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="LGPL-2.1"
 SLOT="0"
