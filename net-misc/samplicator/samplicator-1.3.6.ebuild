@@ -6,7 +6,7 @@ EAPI=6
 inherit user
 
 DESCRIPTION="UDP packets forwarder and duplicator"
-HOMEPAGE="https://github.com/sleinen/${PN}"
+HOMEPAGE="https://github.com/sleinen/samplicator"
 SRC_URI="https://github.com/sleinen/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="Artistic GPL-2"
