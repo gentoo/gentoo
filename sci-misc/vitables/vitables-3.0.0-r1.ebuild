@@ -19,9 +19,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	dev-python/pytables[${PYTHON_USEDEP}]
-	dev-python/QtPy[gui,${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		dev-python/pytables[${PYTHON_MULTI_USEDEP}]
+		dev-python/QtPy[gui,${PYTHON_MULTI_USEDEP}]
+	')"
 DEPEND="${RDEPEND}"
 
 S=${WORKDIR}/${MY_P}
