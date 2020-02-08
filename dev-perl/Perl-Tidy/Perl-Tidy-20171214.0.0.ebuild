@@ -9,7 +9,7 @@ DIST_EXAMPLES=( "examples/*" )
 inherit perl-module
 
 DESCRIPTION="Perl script indenter and beautifier"
-HOMEPAGE="http://perltidy.sourceforge.net/ ${HOMEPAGE}"
+HOMEPAGE="http://perltidy.sourceforge.net/ https://metacpan.org/release/Perl-Tidy"
 
 LICENSE="GPL-2+"
 SLOT="0"
