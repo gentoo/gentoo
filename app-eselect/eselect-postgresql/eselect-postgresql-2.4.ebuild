@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Utility to select the default PostgreSQL slot"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://dev.gentoo.org/~titanofold/${P}.tbz2"
 LICENSE="GPL-2"
 SLOT="0"
