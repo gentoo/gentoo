@@ -7,7 +7,7 @@ DOWNLOAD_URL="https://www.oracle.com/technetwork/java/javase/documentation/jdk11
 
 SLOT="${PV%%.*}"
 DESCRIPTION="Oracle's documentation bundle (including API) for Java SE"
-HOMEPAGE="https://docs.oracle.com/javase/${SLOT}"
+HOMEPAGE="https://docs.oracle.com/javase/11"
 SRC_URI="jdk-${PV}_doc-all.zip"
 LICENSE="oracle-java-documentation-${SLOT}"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
