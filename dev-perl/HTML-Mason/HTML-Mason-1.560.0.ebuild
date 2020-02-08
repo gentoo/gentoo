@@ -8,7 +8,7 @@ MODULE_VERSION=1.56
 inherit depend.apache perl-module
 
 DESCRIPTION="A HTML development and delivery Perl Module"
-HOMEPAGE="http://www.masonhq.com/ ${HOMEPAGE}"
+HOMEPAGE="http://www.masonhq.com/ https://metacpan.org/release/HTML-Mason"
 
 SLOT="0"
 KEYWORDS="amd64 ppc x86"
