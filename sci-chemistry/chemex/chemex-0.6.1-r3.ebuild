@@ -17,22 +17,22 @@ KEYWORDS="~amd64"
 IUSE=""
 
 RDEPEND="
-	|| (
-		>=dev-python/matplotlib-python2-1.1[${PYTHON_USEDEP}]
-		>=dev-python/matplotlib-1.1[${PYTHON_USEDEP}]
-	)
-	|| (
-		dev-python/numpy-python2[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-	)
-	|| (
-		>=sci-libs/scipy-python2-0.11[${PYTHON_USEDEP}]
-		>=sci-libs/scipy-0.11[${PYTHON_USEDEP}]
-	)
+	$(python_gen_cond_dep '
+		|| (
+			>=dev-python/matplotlib-python2-1.1[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/matplotlib-1.1[${PYTHON_MULTI_USEDEP}]
+		)
+		|| (
+			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		)
+		|| (
+			>=sci-libs/scipy-python2-0.11[${PYTHON_MULTI_USEDEP}]
+			>=sci-libs/scipy-0.11[${PYTHON_MULTI_USEDEP}]
+		)
+	')
 "
-DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-"
+DEPEND="${RDEPEND}"
 
 src_prepare() {
 	# Fix quotes to detect the version properly
