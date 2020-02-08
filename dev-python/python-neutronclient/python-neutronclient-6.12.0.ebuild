@@ -77,7 +77,7 @@ python_test() {
 python_install() {
 	distutils-r1_python_install
 	#stupid stupid
-	local SITEDIR="${D%/}$(python_get_sitedir)" || die
+	local SITEDIR="${D}$(python_get_sitedir)" || die
 	cd "${SITEDIR}" || die
 	local egg=( python_neutronclient*.egg-info )
 	#[[ -f ${egg[0]} ]] || die "python_quantumclient*.egg-info not found"
