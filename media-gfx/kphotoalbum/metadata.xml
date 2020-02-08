@@ -8,5 +8,6 @@
 	<use>
 		<flag name="kipi">Support for the KDE Image Plugin Interface</flag>
 		<flag name="map">Enable map display support using <pkg>kde-apps/libkgeomap</pkg></flag>
+		<flag name="share">Enable support for a share menu using <pkg>kde-frameworks/purpose</pkg></flag>
 	</use>
 </pkgmetadata>
