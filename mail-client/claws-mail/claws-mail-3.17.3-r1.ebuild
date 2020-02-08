@@ -197,7 +197,7 @@ src_install() {
 	doexe tb2claws-mail update-po uudec uuooffice
 
 	# kill useless files
-	rm -f "${ED%/}"/usr/lib*/claws-mail/plugins/*.{a,la}
+	rm -f "${ED}"/usr/lib*/claws-mail/plugins/*.{a,la}
 }
 
 pkg_preinst() {
