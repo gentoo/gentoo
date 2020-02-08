@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,10 @@ SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc ssl"
 
-RDEPEND="dev-python/six[${PYTHON_USEDEP}]"
+RDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/six[${PYTHON_MULTI_USEDEP}]
+	')"
 DEPEND="doc? ( app-text/asciidoc )"
 
 # see http://pogma.com/2009/09/09/snow-leopard-and-offlineimap/ and bug 284925
