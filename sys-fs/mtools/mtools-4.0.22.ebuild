@@ -36,7 +36,7 @@ src_configure() {
 	# 447688
 	use !elibc_glibc && use !elibc_musl && append-libs "-liconv"
 	local myeconfargs=(
-		--sysconfdir="${EPREFIX%/}"/etc/mtools
+		--sysconfdir="${EPREFIX}"/etc/mtools
 		$(use_with X x)
 	)
 	econf "${myeconfargs[@]}"
