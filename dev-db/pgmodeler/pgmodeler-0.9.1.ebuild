@@ -34,10 +34,10 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_configure() {
 	eqmake5 \
-		PREFIX="${EPREFIX%/}/usr" \
-		PLUGINSDIR="${EPREFIX%/}/usr/$(get_libdir)/${PN}/plugins" \
-		PRIVATEBINDIR="${EPREFIX%/}/usr/$(get_libdir)/${PN}/bin" \
-		PRIVATELIBDIR="${EPREFIX%/}/usr/$(get_libdir)/${PN}" \
+		PREFIX="${EPREFIX}/usr" \
+		PLUGINSDIR="${EPREFIX}/usr/$(get_libdir)/${PN}/plugins" \
+		PRIVATEBINDIR="${EPREFIX}/usr/$(get_libdir)/${PN}/bin" \
+		PRIVATELIBDIR="${EPREFIX}/usr/$(get_libdir)/${PN}" \
 		NO_UPDATE_CHECK=1 \
 		-r ${PN}.pro
 }
