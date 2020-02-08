@@ -6,7 +6,7 @@ EAPI="5"
 inherit user
 
 DESCRIPTION="base for all cron ebuilds"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 LICENSE="GPL-2"
 SLOT="0"
