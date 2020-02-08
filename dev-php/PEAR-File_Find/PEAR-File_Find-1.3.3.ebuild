@@ -7,7 +7,7 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="A class that facillitates the search of filesystems"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/File_Find"
 SRC_URI="http://download.pear.php.net/package/${MY_P}.tgz"
 LICENSE="PHP-3.01"
 SLOT="0"
