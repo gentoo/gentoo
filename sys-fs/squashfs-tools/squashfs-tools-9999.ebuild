@@ -34,7 +34,6 @@ DEPEND="
 "
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.3-sysmacros.patch
-	"${FILESDIR}"/${PN}-4.4-fno-common.patch
 )
 
 use10() { usex $1 1 0 ; }
