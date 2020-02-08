@@ -8,7 +8,7 @@ DIST_VERSION=${PV%0.0}
 inherit user perl-module
 
 DESCRIPTION="Server for the MogileFS distributed file system"
-HOMEPAGE="http://www.danga.com/mogilefs/ ${HOMEPAGE}"
+HOMEPAGE="http://www.danga.com/mogilefs/ https://metacpan.org/release/MogileFS-Server"
 
 IUSE="mysql +sqlite test postgres"
 RESTRICT="!test? ( test )"
