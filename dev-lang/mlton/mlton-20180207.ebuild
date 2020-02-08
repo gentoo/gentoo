@@ -46,7 +46,7 @@ mlton_subdir() {
 }
 
 mlton_dir() {
-	echo "${EPREFIX%/}"/usr/$(mlton_subdir)
+	echo "${EPREFIX}"/usr/$(mlton_subdir)
 }
 
 mlton_memory_requirement() {
@@ -137,7 +137,7 @@ mlton_create_bin_stubs() {
 	for i in ${BIN_STUBS[*]}; do
 		cat <<- EOF >> ${i}
 			#!/bin/bash
-			exec ${EPREFIX%/}/usr/${SUBDIR}/bin/${i} \$*
+			exec ${EPREFIX}/usr/${SUBDIR}/bin/${i} \$*
 		EOF
 		chmod a+x ${i} || die
 	done
