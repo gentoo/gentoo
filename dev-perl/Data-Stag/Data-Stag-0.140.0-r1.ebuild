@@ -8,7 +8,7 @@ MODULE_VERSION=0.14
 inherit perl-module
 
 DESCRIPTION="Structured Tags datastructures"
-HOMEPAGE="http://stag.sourceforge.net/ ${HOMEPAGE}"
+HOMEPAGE="http://stag.sourceforge.net/ https://metacpan.org/release/Data-Stag"
 
 SLOT="0"
 KEYWORDS="amd64 x86"
