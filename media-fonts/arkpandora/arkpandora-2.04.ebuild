@@ -8,7 +8,7 @@ MY_P="ttf-${P}"
 S="${WORKDIR}/${MY_P}"
 
 DESCRIPTION="Arkpandora MS-TTF replacement font pack"
-HOMEPAGE="https://www.gentoo.org/" # upstream vanished
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage" # upstream vanished
 SRC_URI="mirror://gentoo/${MY_P}.tgz"
 
 LICENSE="BitstreamVera"
