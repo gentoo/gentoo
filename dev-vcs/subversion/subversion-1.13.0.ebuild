@@ -184,11 +184,11 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--libdir="${EPREFIX%/}/usr/$(get_libdir)"
+		--libdir="${EPREFIX}/usr/$(get_libdir)"
 		$(use_with apache2 apache-libexecdir)
 		$(use_with apache2 apxs "${EPREFIX}"/usr/bin/apxs)
-		$(use_with berkdb berkeley-db "db.h:${EPREFIX%/}/usr/include/db${SVN_BDB_VERSION}::db-${SVN_BDB_VERSION}")
-		$(use_with ctypes-python ctypesgen "${EPREFIX%/}/usr")
+		$(use_with berkdb berkeley-db "db.h:${EPREFIX}/usr/include/db${SVN_BDB_VERSION}::db-${SVN_BDB_VERSION}")
+		$(use_with ctypes-python ctypesgen "${EPREFIX}/usr")
 		$(use_enable dso runtime-module-search)
 		$(use_with gnome-keyring)
 		$(use_enable java javahl)
@@ -197,8 +197,8 @@ src_configure() {
 		$(use_enable nls)
 		$(use_with sasl)
 		$(use_with http serf)
-		--with-apr="${EPREFIX%/}/usr/bin/apr-1-config"
-		--with-apr-util="${EPREFIX%/}/usr/bin/apu-1-config"
+		--with-apr="${EPREFIX}/usr/bin/apr-1-config"
+		--with-apr-util="${EPREFIX}/usr/bin/apu-1-config"
 		--disable-experimental-libtool
 		--without-jikes
 		--disable-mod-activation
@@ -261,8 +261,8 @@ src_configure() {
 	fi
 
 	# allow overriding Python include directory
-	ac_cv_path_RUBY=$(usex ruby "${EPREFIX%/}/usr/bin/ruby${RB_VER}" "none") \
-	ac_cv_path_RDOC=$(usex ruby "${EPREFIX%/}/usr/bin/rdoc${RB_VER}" "none") \
+	ac_cv_path_RUBY=$(usex ruby "${EPREFIX}/usr/bin/ruby${RB_VER}" "none") \
+	ac_cv_path_RDOC=$(usex ruby "${EPREFIX}/usr/bin/rdoc${RB_VER}" "none") \
 	ac_cv_python_includes='-I$(PYTHON_INCLUDEDIR)' \
 	econf "${myconf[@]}"
 }
