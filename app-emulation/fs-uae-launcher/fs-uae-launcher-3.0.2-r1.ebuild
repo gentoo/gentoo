@@ -18,10 +18,12 @@ IUSE="lha"
 
 RDEPEND="
 	app-emulation/fs-uae
-	dev-python/PyQt5[${PYTHON_USEDEP},declarative,gui,network,opengl,widgets]
-	dev-python/pyopengl[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	lha? ( dev-python/python-lhafile[${PYTHON_USEDEP}] )
+	$(python_gen_cond_dep '
+		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},declarative,gui,network,opengl,widgets]
+		dev-python/pyopengl[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		lha? ( dev-python/python-lhafile[${PYTHON_MULTI_USEDEP}] )
+	')
 "
 
 DEPEND="
