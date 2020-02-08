@@ -9,7 +9,7 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
-HOMEPAGE="https://pear.php.net/package/${MY_PN}/"
+HOMEPAGE="https://pear.php.net/package/HTML_AJAX/"
 SRC_URI="http://download.pear.php.net/package/${MY_PN}-${PV}.tgz"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
