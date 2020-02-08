@@ -16,7 +16,7 @@ https://kde.org/applications/utilities/org.kde.zanshin"
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64"
 fi
 
 LICENSE="|| ( GPL-2 GPL-3 )"
