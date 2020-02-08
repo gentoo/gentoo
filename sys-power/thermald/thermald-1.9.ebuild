@@ -42,6 +42,6 @@ my_src_configure() {
 my_src_install_all() {
 	einstalldocs
 
-	rm -rf "${ED%/}"/etc/init || die
+	rm -rf "${ED}"/etc/init || die
 	doinitd "${FILESDIR}"/thermald
 }
