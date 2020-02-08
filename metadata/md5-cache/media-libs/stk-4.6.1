@@ -1,13 +1,14 @@
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
-DEPEND=alsa? ( media-libs/alsa-lib ) jack? ( virtual/jack ) virtual/pkgconfig dev-lang/perl >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=alsa? ( media-libs/alsa-lib ) jack? ( virtual/jack ) dev-lang/perl
 DESCRIPTION=Synthesis ToolKit in C++
-EAPI=6
+EAPI=7
 HOMEPAGE=https://ccrma.stanford.edu/software/stk/
 IUSE=alsa debug doc jack oss static-libs
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=alsa? ( media-libs/alsa-lib ) jack? ( virtual/jack )
 SLOT=0
-SRC_URI=https://ccrma.stanford.edu/software/stk/release/stk-4.5.1.tar.gz
+SRC_URI=https://ccrma.stanford.edu/software/stk/release/stk-4.6.1.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=31d24c369f77ea03c2f7e4b8a16c1325
+_md5_=75517c14e4c976e546852c72207052ee
