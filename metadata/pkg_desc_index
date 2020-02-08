@@ -1815,7 +1815,7 @@ app-i18n/scim-tables 0.5.13: Smart Common Input Method (SCIM) Generic Table Inpu
 app-i18n/scim-tomoe 0.6.0-r3: Japanese input method Tomoe IMEngine for SCIM
 app-i18n/scim-uim 0.2.0-r2: An input module for Smart Common Input Method (SCIM) which uses uim as backend
 app-i18n/scim-wijesekera 0.3.3-r1: Wijesekara keyboard for Sinhala input using scim
-app-i18n/skk-jisyo 201605 201805 201905 999999: Jisyo (dictionary) files for the SKK Japanese-input software
+app-i18n/skk-jisyo 201805 201905 999999: Jisyo (dictionary) files for the SKK Japanese-input software
 app-i18n/skkfep 0.87-r1: A SKK-like Japanese input method for console
 app-i18n/skkserv 9.6-r3: Dictionary server for the SKK Japanese-input software
 app-i18n/skktools 1.3.3_p20170305 1.3.4: SKK utilities to manage dictionaries
@@ -2541,7 +2541,7 @@ app-text/dvipsk 5.999_p20190410: DVI-to-PostScript translator
 app-text/dvisvgm 2.1.3 2.6.1 2.7: Converts DVI files to SVG
 app-text/ebook-tools 0.2.2-r1: Tools for accessing and converting various ebook file formats
 app-text/editorconfig-core-c 0.12.1 0.12.2 0.12.3: EditorConfig core library written in C
-app-text/enchant 1.6.1 1.6.1-r1 2.2.7: Spellchecker wrapping library
+app-text/enchant 1.6.1-r1 2.2.7: Spellchecker wrapping library
 app-text/enscript 1.6.6: Powerful text-to-postscript converter
 app-text/epspdf 0.6.0-r1 0.6.3-r1: GUI and command-line converter for [e]ps and pdf
 app-text/epstool 3.08-r1: Creates or extracts preview images in EPS files, fixes bounding boxes
@@ -3142,7 +3142,7 @@ dev-cpp/glog 0.3.4-r1 0.4.0: Google's C++ logging library
 dev-cpp/gstreamermm 1.10.0: C++ interface for GStreamer
 dev-cpp/gtest 1.8.0 1.8.0-r1 1.8.1 1.8.1-r1 1.9.0_pre20190607 1.10.0 9999: Google C++ Testing Framework
 dev-cpp/gtkglextmm 1.2.0-r2: C++ bindings for gtkglext
-dev-cpp/gtkmm 2.24.5 3.24.1 3.24.2: C++ interface for GTK+
+dev-cpp/gtkmm 2.24.5 3.24.2: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.87: A simple non-validating CSS 1 and HTML parser for C++
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
@@ -10197,7 +10197,7 @@ dev-scheme/gambit 4.8.8-r1 4.8.8-r2 4.9.3: Gambit-C is a native Scheme to C comp
 dev-scheme/gauche 0.9.6-r1 0.9.8: A Unix system friendly Scheme Interpreter
 dev-scheme/gauche-cdb 0.3.1-r1: CDB binding for Gauche
 dev-scheme/gauche-gl 0.6: OpenGL binding for Gauche
-dev-scheme/gauche-gtk 0.6_pre1: GTK2 binding for Gauche
+dev-scheme/gauche-gtk 0.6_pre1-r1: GTK2 binding for Gauche
 dev-scheme/gauche-kakasi 0.1: Kakasi binding for Gauche
 dev-scheme/gauche-mecab 1.0.2: MeCab binding for Gauche
 dev-scheme/gauche-qdbm 0.2-r1: QDBM binding for Gauche
@@ -12259,7 +12259,7 @@ mail-client/neomutt 20180512 20180622 20180716 20180716-r1 20191102 20191111 201
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15 14.9.16: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
-mail-client/sylpheed 3.6.0 3.7.0: A lightweight email client and newsreader
+mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 52.9.1 68.4.2: Thunderbird Mail Client
 mail-client/thunderbird-bin 52.9.1-r1 60.9.1 68.4.2: Thunderbird Mail Client
 mail-client/trojita 0.7-r2 9999: A Qt IMAP e-mail client
@@ -18613,7 +18613,7 @@ x11-misc/xkblayout-state 0_p20180118 9999: A small program to get/set the curren
 x11-misc/xkbset 0.5_p5_p1 0.5_p6 0.5_p7_p1: User preference utility for XKB extensions for X
 x11-misc/xkeyboard-config 2.28 2.29 9999: X keyboard configuration database
 x11-misc/xkeycaps 2.47-r2 2.47_p7: GUI frontend to xmodmap
-x11-misc/xlockmore 5.50 5.59 5.61 5.62_alpha0: Just another screensaver application for X
+x11-misc/xlockmore 5.50 5.61 5.62: Just another screensaver application for X
 x11-misc/xmobar 0.23.1 0.24.2 0.24.3: A Minimalistic Text Based Status Bar
 x11-misc/xmonad-log-applet 2.0.0-r301: Gnome and XFCE applet for displaying XMonad log
 x11-misc/xmountains 2.9-r1: Fractal terrains of snow-capped mountains near water
