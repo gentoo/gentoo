@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,8 +18,10 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND="
-	>=dev-python/pygtk-2.24[${PYTHON_USEDEP}]
-	media-libs/mutagen[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/pygtk-2.24[${PYTHON_MULTI_USEDEP}]
+		media-libs/mutagen[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 DEPEND="${RDEPEND}"
