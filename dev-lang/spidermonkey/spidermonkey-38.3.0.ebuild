@@ -57,7 +57,7 @@ src_prepare() {
 }
 
 src_configure() {
-	export SHELL="${SHELL:-${EPREFIX%/}/bin/bash}"
+	export SHELL="${SHELL:-${EPREFIX}/bin/bash}"
 
 	cd "${BUILDDIR}" || die
 
