@@ -1,10 +1,6 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Joonas Niilola <juippis@gentoo.org> (2020-02-02)
-# luajit is not keyworded on this arch.
-dev-libs/efl luajit
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
 # media-libs/libheif is not keyworded
 media-gfx/gimp heif
@@ -213,10 +209,6 @@ gnome-base/gvfs nfs
 # Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
 # dev-lua/lgi lacks sparc keyword, bug #551540
 dev-libs/libpeas lua
-
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet & media-libs/libsdl2 tested #499974
-dev-libs/efl physics sdl
 
 # Alexis Ballier <aballier@gentoo.org> (2015-02-11)
 # Missing ffmpeg deps, bug #510340
