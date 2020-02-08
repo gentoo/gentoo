@@ -5,7 +5,7 @@ EAPI=5
 inherit eutils flag-o-matic
 
 DESCRIPTION="Rotix allows you to generate rotational obfuscations"
-HOMEPAGE="https://gentoo.org"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="http://elektron.its.tudelft.nl/~hemmin98/rotix_releases/${P}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
