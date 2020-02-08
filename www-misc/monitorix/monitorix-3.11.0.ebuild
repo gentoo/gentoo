@@ -99,7 +99,7 @@ pkg_postinst() {
 	elog "  sys-power/nut       (Network UPS Tools statistics)"
 	elog
 	elog "If you wish to use your own web server:"
-	elog "  Web data can be found at: ${EROOT%/}/var/lib/${PN}/www/"
+	elog "  Web data can be found at: ${EROOT}/var/lib/${PN}/www/"
 	elog "  Also please check the correct user and group ownership"
-	elog "  of ${EROOT%/}/var/lib/${PN}/www/imgs/"
+	elog "  of ${EROOT}/var/lib/${PN}/www/imgs/"
 }
