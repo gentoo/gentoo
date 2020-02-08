@@ -7,7 +7,7 @@ inherit qt5-build
 DESCRIPTION="Additional format plugins for the Qt image I/O system"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~arm x86"
+	KEYWORDS="x86"
 fi
 
 IUSE="mng"

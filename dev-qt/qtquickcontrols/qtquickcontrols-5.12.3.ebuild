@@ -7,7 +7,7 @@ inherit qt5-build
 DESCRIPTION="Set of Qt Quick controls to create complete user interfaces (deprecated)"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="~arm x86"
+	KEYWORDS="x86"
 fi
 
 IUSE="+widgets"

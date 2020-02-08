@@ -21,7 +21,7 @@ SRC_URI="${BASE_URI}/${PV_FULL}qt-everywhere-documentation.7z
 
 LICENSE="FDL-1.3"
 SLOT="5"
-KEYWORDS="~arm x86"
+KEYWORDS="x86"
 
 IUSE="3d bluetooth charts datavis declarative graphicaleffects +html location
 	multimedia networkauth +qch script sensors virtualkeyboard webengine"

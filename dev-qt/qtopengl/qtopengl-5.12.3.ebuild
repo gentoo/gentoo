@@ -9,7 +9,7 @@ inherit qt5-build
 DESCRIPTION="OpenGL support library for the Qt5 framework (deprecated)"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="arm x86"
+	KEYWORDS="x86"
 fi
 
 IUSE="gles2"

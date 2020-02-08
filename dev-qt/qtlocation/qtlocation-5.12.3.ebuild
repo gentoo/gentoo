@@ -7,7 +7,7 @@ inherit qt5-build
 DESCRIPTION="Location (places, maps, navigation) library for the Qt5 framework"
 
 if [[ ${QT5_BUILD_TYPE} == release ]]; then
-	KEYWORDS="arm x86"
+	KEYWORDS="x86"
 fi
 
 IUSE=""
