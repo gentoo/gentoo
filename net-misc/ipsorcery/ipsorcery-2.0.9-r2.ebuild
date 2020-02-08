@@ -5,7 +5,7 @@ EAPI=6
 inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="Ipsorcery allows you to generate IP, TCP, UDP, ICMP, and IGMP packets"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/ipsorc-${PV}.tar.gz"
 
 LICENSE="GPL-2"
