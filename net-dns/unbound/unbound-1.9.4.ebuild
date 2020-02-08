@@ -110,12 +110,12 @@ multilib_src_configure() {
 		--enable-ipsecmod \
 		--enable-tfo-client \
 		--enable-tfo-server \
-		--with-libevent="${EPREFIX%/}"/usr \
-		$(multilib_native_usex redis --with-libhiredis="${EPREFIX%/}/usr" --without-libhiredis) \
-		--with-pidfile="${EPREFIX%/}"/run/unbound.pid \
-		--with-rootkey-file="${EPREFIX%/}"/etc/dnssec/root-anchors.txt \
-		--with-ssl="${EPREFIX%/}"/usr \
-		--with-libexpat="${EPREFIX%/}"/usr
+		--with-libevent="${EPREFIX}"/usr \
+		$(multilib_native_usex redis --with-libhiredis="${EPREFIX}/usr" --without-libhiredis) \
+		--with-pidfile="${EPREFIX}"/run/unbound.pid \
+		--with-rootkey-file="${EPREFIX}"/etc/dnssec/root-anchors.txt \
+		--with-ssl="${EPREFIX}"/usr \
+		--with-libexpat="${EPREFIX}"/usr
 
 		# http://unbound.nlnetlabs.nl/pipermail/unbound-users/2011-April/001801.html
 		# $(use_enable debug lock-checks) \
@@ -151,7 +151,7 @@ multilib_src_install_all() {
 	# ... and point example config to it
 	sed -i \
 		-e '/# auto-trust-anchor-file:/s,/etc/dnssec/root-anchors.txt,/etc/unbound/var/root-anchors.txt,' \
-		"${ED%/}/etc/unbound/unbound.conf" || \
+		"${ED}/etc/unbound/unbound.conf" || \
 		die
 
 	# Used to store cache data
@@ -167,16 +167,16 @@ multilib_src_install_all() {
 
 pkg_postinst() {
 	# make var/ writable by unbound
-	if [[ -d "${EROOT%/}/etc/unbound/var" ]]; then
-		chown --no-dereference --from=root unbound: "${EROOT%/}/etc/unbound/var"
+	if [[ -d "${EROOT}/etc/unbound/var" ]]; then
+		chown --no-dereference --from=root unbound: "${EROOT}/etc/unbound/var"
 	fi
 
 	einfo ""
 	einfo "If you want unbound to automatically update the root-anchor file for DNSSEC validation"
-	einfo "set 'auto-trust-anchor-file: ${EROOT%/}/etc/unbound/var/root-anchors.txt' in ${EROOT%/}/etc/unbound/unbound.conf"
+	einfo "set 'auto-trust-anchor-file: ${EROOT}/etc/unbound/var/root-anchors.txt' in ${EROOT}/etc/unbound/unbound.conf"
 	einfo "and run"
 	einfo ""
-	einfo "  su -s /bin/sh -c '${EROOT%/}/usr/sbin/unbound-anchor -a ${EROOT%/}/etc/unbound/var/root-anchors.txt' unbound"
+	einfo "  su -s /bin/sh -c '${EROOT}/usr/sbin/unbound-anchor -a ${EROOT}/etc/unbound/var/root-anchors.txt' unbound"
 	einfo ""
 	einfo "as root to create it initially before starting unbound for the first time after enabling this."
 	einfo ""
