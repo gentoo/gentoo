@@ -17237,7 +17237,7 @@ sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
 sys-cluster/openmpi 1.4.3 1.4.5 1.6.5-r1 1.7.5-r1 1.8.4-r4 1.8.7-r1 1.8.8 1.10.7 2.0.2 2.0.4 2.1.6 3.0.4 3.1.4 4.0.1-r1 4.0.2: A high-performance message passing library (MPI)
-sys-cluster/openstack-meta 2019.2.1 2019.2.9999: A openstack meta-package for installing the various openstack pieces
+sys-cluster/openstack-meta 2019.2.2 2019.2.9999: A openstack meta-package for installing the various openstack pieces
 sys-cluster/pacemaker 1.1.16 1.1.19 1.1.19-r1: Pacemaker CRM
 sys-cluster/pbs-python 4.3.3-r1: Python bindings to the Torque C API
 sys-cluster/pconsole 1.0-r4: Tool for managing multiple xterms simultaneously
