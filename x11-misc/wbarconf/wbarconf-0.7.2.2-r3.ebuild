@@ -33,7 +33,7 @@ src_compile() {
 }
 
 src_install() {
-	./install.sh "${ED%/}/usr" || die "./install.sh failed"
+	./install.sh "${ED}/usr" || die "./install.sh failed"
 	if [[ "${P}" != "${PF}" ]]; then
 		mv "${ED}"/usr/share/doc/{${P},${PF}} || die
 	fi
