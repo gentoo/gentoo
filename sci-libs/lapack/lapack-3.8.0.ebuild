@@ -32,7 +32,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DCBLAS=ON
 		-DLAPACKE=$(usex lapacke)
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"/usr
 		-DBUILD_SHARED_LIBS=ON
 	)
 	cmake-utils_src_configure
