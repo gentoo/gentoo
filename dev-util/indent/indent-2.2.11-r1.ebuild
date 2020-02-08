@@ -5,7 +5,7 @@ EAPI=5
 inherit autotools eutils
 
 DESCRIPTION="Indent program source files"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://dev.gentoo.org/~jer/${P}.tar.gz"
 
 LICENSE="GPL-3"
