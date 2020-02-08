@@ -46,7 +46,6 @@ src_prepare() {
 
 src_configure() {
 	mycmakeargs=(
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"/usr
 		-DWITH_DOC="$(usex doc)"
 	)
 	cmake_src_configure
