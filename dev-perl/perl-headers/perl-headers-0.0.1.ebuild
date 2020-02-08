@@ -8,7 +8,7 @@ inherit perl-functions flag-o-matic readme.gentoo-r1
 MY_GITV="${PV}"
 
 DESCRIPTION="Generated .ph equivalents of system headers"
-HOMEPAGE="https://github.com/gentoo-perl/${PN}"
+HOMEPAGE="https://github.com/gentoo-perl/perl-headers"
 SRC_URI="https://github.com/gentoo-perl/${PN}/archive/${MY_GITV}.tar.gz -> ${PN}-${MY_GITV}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-1+ )"
