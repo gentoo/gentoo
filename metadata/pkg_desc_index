@@ -1573,7 +1573,7 @@ app-emulation/libcacard 2.6.0: virtual Common Access Card (CAC) library emulator
 app-emulation/libdsk 1.5.8: LIBDSK is a library for accessing discs and disc image files
 app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect and modifying virtual machine (VM) disk images
 app-emulation/libguestfs-appliance 1.36.1 1.38.0: VM appliance disk image used in libguestfs package
-app-emulation/libpod 1.6.4 1.7.0: Library and podman tool for running OCI-based containers in Pods
+app-emulation/libpod 1.6.4 1.7.0 1.8.0: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
 app-emulation/libvirt 5.2.0-r2 5.5.0-r1 5.6.0 5.8.0 5.10.0 6.0.0 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
@@ -1604,7 +1604,7 @@ app-emulation/simh 3.9.0-r1 3.11.0: a simulator for historical computers such as
 app-emulation/simplevirt 0.0_p20181012: Simple virtual machine manager for Linux (QEMU/KVM)
 app-emulation/ski 1.3.2-r3: ia64 instruction set simulator
 app-emulation/skopeo 0.1.39 0.1.40-r1: Command line utility foroperations on container images and image repositories
-app-emulation/slirp4netns 0.3.3 0.4.1-r1 0.4.2: User-mode networking for unprivileged network namespaces
+app-emulation/slirp4netns 0.3.3 0.4.1-r1 0.4.2 0.4.3: User-mode networking for unprivileged network namespaces
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3-r1: 48k ZX Spectrum Emulator
 app-emulation/spice 0.14.0-r2 0.14.2 9999: SPICE server
@@ -17231,7 +17231,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 15.0.0 15.0.1 2019.1.9999 2019.2.9999: A virtual network service for Openstack
-sys-cluster/nova 20.0.1 2019.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 20.0.1 20.1.0 2019.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
