@@ -35,9 +35,9 @@ src_prepare() {
 }
 
 src_configure() {
-	./configure --prefix="${EPREFIX%/}/usr" \
-		--snolibdir="${EPREFIX%/}/usr/lib/snobol4" \
-		--mandir="${EPREFIX%/}/usr/share/man" \
+	./configure --prefix="${EPREFIX}/usr" \
+		--snolibdir="${EPREFIX}/usr/lib/snobol4" \
+		--mandir="${EPREFIX}/usr/share/man" \
 		--add-cflags="${CFLAGS}"
 }
 
