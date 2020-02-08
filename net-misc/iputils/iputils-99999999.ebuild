@@ -142,7 +142,7 @@ src_install() {
 	dodir /bin
 	local my_bin
 	for my_bin in $(usex arping arping '') ping ; do
-		mv "${ED%/}"/usr/bin/${my_bin} "${ED%/}"/bin/ || die
+		mv "${ED}"/usr/bin/${my_bin} "${ED}"/bin/ || die
 	done
 	dosym ping /bin/ping4
 
@@ -175,7 +175,7 @@ src_install() {
 			if [[ -f "${S}/doc/${my_bin}.html" ]] ; then
 				html_man_pages+=( ${my_bin}.html )
 			fi
-		done 3< <(find "${ED%/}"/{bin,usr/bin,usr/sbin} -type f -perm -a+x -print0 2>/dev/null)
+		done 3< <(find "${ED}"/{bin,usr/bin,usr/sbin} -type f -perm -a+x -print0 2>/dev/null)
 
 		pushd doc &>/dev/null || die
 		doman "${man_pages[@]}"
@@ -186,7 +186,7 @@ src_install() {
 		popd &>/dev/null || die
 	else
 		if use doc ; then
-			mv "${ED%/}"/usr/share/${PN} "${ED%/}"/usr/share/doc/${PF}/html || die
+			mv "${ED}"/usr/share/${PN} "${ED}"/usr/share/doc/${PF}/html || die
 		fi
 	fi
 }
