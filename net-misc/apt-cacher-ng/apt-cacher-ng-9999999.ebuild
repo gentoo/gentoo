@@ -58,8 +58,7 @@ pkg_setup() {
 }
 
 src_configure(){
-	mycmakeargs=(
-		"-DCMAKE_INSTALL_PREFIX=/usr"
+	local mycmakeargs=(
 		"-DCMAKE_SKIP_BUILD_RPATH=on"
 	)
 	if use fuse; then
