@@ -20,6 +20,7 @@
 # Mart Raudsepp <leio@gentoo.org> (2020-02-08)
 # No stable x11-libs/gtk+ on hppa.
 gnome-base/librsvg tools
+dev-libs/appstream-glib fonts
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-08)
 # app-text/enchant stable timeout, bug #662484
