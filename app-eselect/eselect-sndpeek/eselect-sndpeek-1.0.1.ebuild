@@ -4,7 +4,7 @@
 EAPI=6
 
 DESCRIPTION="Manages the /usr/bin/sndpeek symlink"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/sndpeek.eselect-${PVR}.bz2"
 
 LICENSE="GPL-2"
