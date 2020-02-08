@@ -9,7 +9,7 @@ MY_P="${P/_/}"
 S=${WORKDIR}/${MY_P}
 
 DESCRIPTION="A Perl module providing a simple API to parsed XML instances"
-HOMEPAGE="http://cpan.org/modules/by-module/XML/${MY_P}.readme"
+HOMEPAGE="http://cpan.org/modules/by-module/XML/XML-Grove-0.46alpha.readme"
 SRC_URI="mirror://cpan/authors/id/K/KM/KMACLEOD/${MY_P}.tar.gz"
 
 LICENSE="Artistic"
