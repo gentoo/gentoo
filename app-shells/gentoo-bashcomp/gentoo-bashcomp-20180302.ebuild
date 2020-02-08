@@ -6,7 +6,7 @@ EAPI=6
 inherit bash-completion-r1
 
 DESCRIPTION="Gentoo-specific bash command-line completions (emerge, ebuild, equery, etc)"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://gitweb.gentoo.org/proj/${PN}.git/snapshot/${P}.tar.bz2"
 
 LICENSE="GPL-2"
