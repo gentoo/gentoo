@@ -10,7 +10,12 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh s
 IUSE="+static-libs"
 
 DEPEND="
-	elibc_glibc? ( || ( <sys-libs/glibc-2.30-r2 >=sys-libs/glibc-2.30-r2[crypt(-),static-libs(+)?] ) )
+	elibc_glibc? (
+		|| (
+			>=sys-libs/glibc-2.30-r2[crypt(-),static-libs(+)?]
+			<sys-libs/glibc-2.30-r2
+		)
+	)
 	elibc_musl? ( sys-libs/musl )
 	elibc_uclibc? ( sys-libs/uclibc-ng )
 	elibc_Cygwin? ( sys-libs/cygwin-crypt )
