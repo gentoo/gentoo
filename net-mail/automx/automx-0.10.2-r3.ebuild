@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,14 +18,16 @@ KEYWORDS="amd64 x86"
 IUSE="ldap memcached sql +tools"
 
 DEPEND="
-	dev-python/ipaddr[${PYTHON_USEDEP}]
-	dev-python/lxml[${PYTHON_USEDEP}]
-	dev-python/m2crypto[${PYTHON_USEDEP}]
-	dev-python/python-dateutil[${PYTHON_USEDEP}]
-	|| ( www-apache/mod_wsgi[${PYTHON_USEDEP}] www-servers/uwsgi )
-	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}]  )
-	memcached? ( dev-python/python-memcached[${PYTHON_USEDEP}] )
-	sql? ( dev-python/sqlalchemy[${PYTHON_USEDEP}] )
+	$(python_gen_cond_dep '
+		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
+		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		dev-python/m2crypto[${PYTHON_MULTI_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
+		|| ( www-apache/mod_wsgi[${PYTHON_MULTI_USEDEP}] www-servers/uwsgi )
+		ldap? ( dev-python/python-ldap[${PYTHON_MULTI_USEDEP}]  )
+		memcached? ( dev-python/python-memcached[${PYTHON_MULTI_USEDEP}] )
+		sql? ( dev-python/sqlalchemy[${PYTHON_MULTI_USEDEP}] )
+	')
 	tools? ( net-dns/bind-tools net-misc/wget )
 	"
 RDEPEND="${DEPEND}"
