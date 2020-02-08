@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,11 +19,12 @@ KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~x86-macos"
 IUSE=""
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-vcs/mercurial
 "
 RDEPEND="${DEPEND}
-	dev-vcs/subversion[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-vcs/subversion[${PYTHON_MULTI_USEDEP}]
+	')
 "
 
 pkg_setup() {
