@@ -11,7 +11,7 @@ RUBY_FAKEGEM_GEMSPEC="${PN}.gemspec"
 inherit ruby-fakegem
 
 DESCRIPTION="A pure ruby implementation of Remi Coulom's Whole-History Rating algorithm"
-HOMEPAGE="https://github.com/goshrine/${PN}"
+HOMEPAGE="https://github.com/goshrine/whole_history_rating"
 
 LICENSE="MIT"
 SLOT="0"
