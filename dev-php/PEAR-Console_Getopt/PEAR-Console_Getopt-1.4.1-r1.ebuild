@@ -7,7 +7,7 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Command-line option parser"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/Console_Getopt"
 SRC_URI="https://pear.php.net/get/${MY_P}.tgz"
 LICENSE="BSD-2"
 SLOT="0"
