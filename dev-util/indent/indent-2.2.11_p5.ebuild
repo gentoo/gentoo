@@ -5,7 +5,7 @@ EAPI=6
 inherit autotools eutils
 
 DESCRIPTION="Indent program source files"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="
 	https://dev.gentoo.org/~jer/${P/_p*/}.tar.gz
 	http://http.debian.net/debian/pool/main/i/${PN}/${PN}_${PV/_p*/}-${PV/*_p/}.debian.tar.xz
