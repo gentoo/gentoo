@@ -18,12 +18,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"
 
-RDEPEND="dev-python/gst-python[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/wxpython:4.0[${PYTHON_USEDEP}]
+RDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/gst-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		dev-python/wxpython:4.0[${PYTHON_MULTI_USEDEP}]
+	')
 	media-plugins/gst-plugins-jpeg:1.0
 	x11-libs/wxGTK:*[X]"
-DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
+DEPEND="
+	$(python_gen_cond_dep '
+		doc? ( dev-python/sphinx[${PYTHON_MULTI_USEDEP}] )
+	')"
 
 PATCHES=( "${FILESDIR}/${P}-disable-docs-by-default.patch" )
 
