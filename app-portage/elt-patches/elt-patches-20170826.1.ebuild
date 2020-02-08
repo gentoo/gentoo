@@ -16,9 +16,9 @@ RDEPEND="sys-apps/gentoo-functions"
 DEPEND="app-arch/xz-utils"
 
 src_compile() {
-	emake rootprefix="${EPREFIX%/}" libdirname="$(get_libdir)"
+	emake rootprefix="${EPREFIX}" libdirname="$(get_libdir)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" rootprefix="${EPREFIX%/}" install
+	emake DESTDIR="${D}" rootprefix="${EPREFIX}" install
 }
