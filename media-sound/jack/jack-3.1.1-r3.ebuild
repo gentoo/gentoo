@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,10 +19,12 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-python/cddb-py[${PYTHON_USEDEP}]
-	dev-python/id3-py[${PYTHON_USEDEP}]
-	dev-python/pyid3lib[${PYTHON_USEDEP}]
-	dev-python/pyvorbis[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/cddb-py[${PYTHON_MULTI_USEDEP}]
+		dev-python/id3-py[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyid3lib[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyvorbis[${PYTHON_MULTI_USEDEP}]
+	')
 	media-libs/flac
 	media-sound/lame
 	media-sound/cdparanoia"
