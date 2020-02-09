@@ -1,5 +1,5 @@
---- src/Makefile.am.orig	2011-12-30 21:17:04.233158203 +0200
-+++ src/Makefile.am	2011-12-30 21:18:42.186354842 +0200
+--- a/src/Makefile.am
++++ b/src/Makefile.am
 @@ -1,7 +1,7 @@
  AUTOMAKE_OPTIONS = foreign no-dependencies
  
