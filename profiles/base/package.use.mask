@@ -6,6 +6,12 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-08)
+# The dependency is python-single-r1 while the package (and its revdeps)
+# are python-r1.
+dev-python/rdflib redland
+www-apps/venus redland
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-05)
 # Requires google-api-python-client with Python 2 which is no longer
 # supported by its dependencies.
@@ -22,7 +28,7 @@ dev-python/zeep tornado
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-29)
 # Require dev-python/epydoc which is being removed.
-<=app-admin/system-config-printer-1.5.12 doc
+<=app-admin/system-config-printer-1.5.12-r1 doc
 <=dev-python/cosmolopy-0.1.104-r2 doc
 <=dev-python/dbus-python-1.2.4 doc
 <=dev-python/pycrypto-2.6.1-r2 doc

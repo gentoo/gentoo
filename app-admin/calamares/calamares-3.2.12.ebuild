@@ -5,7 +5,7 @@ EAPI=7
 
 KDE_TEST="true"
 PYTHON_COMPAT=( python3_6 )
-inherit kde5 python-r1
+inherit kde5 python-single-r1
 
 DESCRIPTION="Distribution-independent installer framework"
 HOMEPAGE="https://calamares.io"
@@ -41,13 +41,15 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	$(add_qt_dep qtwidgets)
 	$(add_qt_dep qtxml)
 	dev-cpp/yaml-cpp:=
-	>=dev-libs/boost-1.55:=[python,${PYTHON_USEDEP}]
-	dev-libs/libpwquality[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-libs/boost-1.55:=[python,${PYTHON_MULTI_USEDEP}]
+		dev-libs/libpwquality[${PYTHON_MULTI_USEDEP}]
+	')
 	sys-apps/dbus
 	sys-apps/dmidecode
 	sys-auth/polkit-qt[qt5(+)]
 	>=sys-libs/kpmcore-4.0.0:5=
-	pythonqt? ( >=dev-python/PythonQt-3.1:=[${PYTHON_USEDEP}] )
+	pythonqt? ( >=dev-python/PythonQt-3.1:=[${PYTHON_SINGLE_USEDEP}] )
 "
 DEPEND="${COMMON_DEPEND}
 	test? ( $(add_qt_dep qttest) )
@@ -67,7 +69,6 @@ RDEPEND="${COMMON_DEPEND}
 
 src_prepare() {
 	cmake-utils_src_prepare
-	python_setup
 	export PYTHON_INCLUDE_DIRS="$(python_get_includedir)" \
 	       PYTHON_INCLUDE_PATH="$(python_get_library_path)"\
 	       PYTHON_CFLAGS="$(python_get_CFLAGS)"\

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: distutils-r1.eclass
@@ -117,15 +117,23 @@ _distutils_set_globals() {
 	local rdep=${PYTHON_DEPS}
 	local bdep=${rdep}
 
+	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
+		local sdep="dev-python/setuptools[${PYTHON_USEDEP}]"
+	else
+		local sdep="$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		')"
+	fi
+
 	case ${DISTUTILS_USE_SETUPTOOLS} in
 		no|manual)
 			;;
 		bdepend)
-			bdep+=" dev-python/setuptools[${PYTHON_USEDEP}]"
+			bdep+=" ${sdep}"
 			;;
 		rdepend)
-			bdep+=" dev-python/setuptools[${PYTHON_USEDEP}]"
-			rdep+=" dev-python/setuptools[${PYTHON_USEDEP}]"
+			bdep+=" ${sdep}"
+			rdep+=" ${sdep}"
 			;;
 		*)
 			die "Invalid DISTUTILS_USE_SETUPTOOLS=${DISTUTILS_USE_SETUPTOOLS}"
@@ -387,16 +395,16 @@ distutils_enable_tests() {
 	debug-print-function ${FUNCNAME} "${@}"
 	[[ ${#} -eq 1 ]] || die "${FUNCNAME} takes exactly one argument: test-runner"
 
-	local test_deps
+	local test_pkg
 	case ${1} in
 		nose)
-			test_deps="dev-python/nose[${PYTHON_USEDEP}]"
+			test_pkg="dev-python/nose"
 			python_test() {
 				nosetests -v || die "Tests fail with ${EPYTHON}"
 			}
 			;;
 		pytest)
-			test_deps="dev-python/pytest[${PYTHON_USEDEP}]"
+			test_pkg="dev-python/pytest"
 			python_test() {
 				pytest -vv || die "Tests fail with ${EPYTHON}"
 			}
@@ -416,13 +424,23 @@ distutils_enable_tests() {
 			die "${FUNCNAME}: unsupported argument: ${1}"
 	esac
 
-	if [[ -n ${test_deps} || -n ${RDEPEND} ]]; then
+	local test_deps=${RDEPEND}
+	if [[ -n ${test_pkg} ]]; then
+		if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
+			test_deps+=" ${test_pkg}[${PYTHON_USEDEP}]"
+		else
+			test_deps+=" $(python_gen_cond_dep "
+				${test_pkg}[\${PYTHON_MULTI_USEDEP}]
+			")"
+		fi
+	fi
+	if [[ -n ${test_deps} ]]; then
 		IUSE+=" test"
 		RESTRICT+=" !test? ( test )"
 		if [[ ${EAPI} == [56] ]]; then
-			DEPEND+=" test? ( ${test_deps} ${RDEPEND} )"
+			DEPEND+=" test? ( ${test_deps} )"
 		else
-			BDEPEND+=" test? ( ${test_deps} ${RDEPEND} )"
+			BDEPEND+=" test? ( ${test_deps} )"
 		fi
 	fi
 

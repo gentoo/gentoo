@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,26 +26,32 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	clang? ( >=sys-devel/clang-3.3 )
-	dev-libs/boost[python,threads,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-libs/boost[python,threads,${PYTHON_MULTI_USEDEP}]
+	')
 	|| (
-		app-editors/vim[python,${PYTHON_USEDEP}]
-		app-editors/gvim[python,${PYTHON_USEDEP}]
+		app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
+		app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
 	)
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	dev-python/bottle[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
-	dev-python/jedi[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/waitress[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/bottle[${PYTHON_MULTI_USEDEP}]
+		virtual/python-futures[${PYTHON_MULTI_USEDEP}]
+		dev-python/jedi[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/sh[${PYTHON_MULTI_USEDEP}]
+		dev-python/waitress[${PYTHON_MULTI_USEDEP}]
+	')
 "
 DEPEND="
 	${COMMON_DEPEND}
 	test? (
-		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
-		>=dev-python/nose-1.3.0[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/mock-1.0.1[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/nose-1.3.0[${PYTHON_MULTI_USEDEP}]
+		')
 		>=dev-cpp/gtest-1.8.0
 	)
 "
