@@ -217,6 +217,7 @@ unset {LLVM,CLANG}_DEPSTR{,_AMDGPU}
 
 DEPEND="${RDEPEND}
 	valgrind? ( dev-util/valgrind )
+	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libXrandr[${MULTILIB_USEDEP}]
 		x11-base/xorg-proto
