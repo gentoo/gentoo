@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
+
 PYTHON_COMPAT=( python{2_7,3_6} )
 
 inherit python-r1
@@ -13,12 +14,10 @@ SRC_URI="mirror://sabayon/${CATEGORY}/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
-	>=dev-util/molecule-core-1.0.1
-	!<dev-util/molecule-1"
+	>=dev-util/molecule-core-1.0.1"
 RDEPEND="${DEPEND}
 	net-misc/rsync
 	sys-fs/squashfs-tools
