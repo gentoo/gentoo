@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -12,7 +12,8 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux"
 IUSE="+ocamlopt"
 
-DEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]"
+# does not compile with ocaml-4.09 (bug # 708696 and #708872)
+DEPEND="<dev-lang/ocaml-4.09:=[ocamlopt?]"
 RDEPEND="${DEPEND}
 	!<dev-ml/findlib-1.6.1-r1
 "
