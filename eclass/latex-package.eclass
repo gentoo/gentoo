@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: latex-package.eclass
@@ -7,7 +7,7 @@
 # @AUTHOR:
 # Matthew Turk <satai@gentoo.org>
 # Martin Ehmsen <ehmsen@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6 7
+# @SUPPORTED_EAPIS: 7
 # @BLURB: An eclass for easy installation of LaTeX packages
 # @DESCRIPTION:
 # This eClass is designed to be easy to use and implement.  The vast majority of
@@ -50,21 +50,21 @@
 # signatures EVERY TIME.  For this reason, if you are grabbing from the CTAN,
 # you must either grab each file individually, or find a place to mirror an
 # archive of them.  (iBiblio)
-#
-# It inherits base and eutils in EAPI 5 and earlier.
 
-case ${EAPI:-0} in
-	0|1|2|3|4|5) inherit base eutils ;;
-esac
+if [[ -z ${_LATEX_PACKAGE_ECLASS} ]]; then
+_LATEX_PACKAGE_ECLASS=1
 
 RDEPEND="virtual/latex-base"
 DEPEND="${RDEPEND}
 	>=sys-apps/texinfo-4.2-r5"
+
 case ${EAPI:-0} in
-	0|1|2|3|4|5|6) ;;
-	7) BDEPEND="${DEPEND}"; DEPEND="" ;;
-	*) die "${ECLASS}: Unknown EAPI ${EAPI}" ;;
+	[0-6])
+		die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
+	7)	;;
+	*)	die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}" ;;
 esac
+
 HOMEPAGE="http://www.tug.org/"
 TEXMF="/usr/share/texmf-site"
 
@@ -80,14 +80,6 @@ SUPPLIER="misc"
 # to pdflatex as additional argument (e.g. -shell-escape). This variable
 # must be set after inherit, as it gets automatically cleared otherwise.
 LATEX_DOC_ARGUMENTS=""
-
-# Kept for backwards compatibility
-latex-package_has_tetex_3() {
-	case ${EAPI:-0} in
-		0|1|2|3|4|5) return 0 ;;
-		*) die "${FUNCNAME} no longer supported in EAPI ${EAPI}" ;;
-	esac
-}
 
 # @FUNCTION: latex-package_src_doinstall
 # @USAGE: [ module ]
@@ -105,93 +97,94 @@ latex-package_src_doinstall() {
 
 	# This actually follows the directions for a "single-user" system
 	# at http://www.ctan.org/installationadvice/ modified for gentoo.
-	[ -z "$1" ] && latex-package_src_install all
+	[[ -z ${1} ]] && latex-package_src_install all
 
-	while [ "$1" ]; do
-		case $1 in
+	while [[ ${1} ]]; do
+		case ${1} in
 			"sh")
-				for i in `find . -maxdepth 1 -type f -name "*.${1}"`
-				do
-					dobin $i || die "dobin $i failed"
-				done
+				while read -r -d '' i; do
+					dobin ${i}
+				done < <(find -maxdepth 1 -type f -name "*.${1}")
 				;;
+
 			"sty" | "cls" | "fd" | "clo" | "def" | "cfg")
-				for i in `find . -maxdepth 1 -type f -name "*.${1}"`
-				do
+				while read -r -d '' i; do
 					insinto ${TEXMF}/tex/latex/${PN}
-					doins $i || die "doins $i failed"
-				done
+					doins ${i}
+				done < <(find -maxdepth 1 -type f -name "*.${1}")
 				;;
+
 			"dvi" | "ps" | "pdf")
-				for i in `find . -maxdepth 1 -type f -name "*.${1}"`
-				do
+				while read -r -d '' i; do
 					insinto /usr/share/doc/${PF}
-					doins $i || die "doins $i failed"
+					doins ${i}
 					dosym /usr/share/doc/${PF}/$(basename ${i}) ${TEXMF}/doc/latex/${PN}/${i}
-					case "${EAPI:-0}" in
-						0|1|2|3) ;;
-						*)
-							# prevent compression of symlink target
-							docompress -x /usr/share/doc/${PF}/$(basename ${i})
-							;;
-					esac
-				done
+					docompress -x /usr/share/doc/${PF}/$(basename ${i})
+				done < <(find -maxdepth 1 -type f -name "*.${1}")
 				;;
+
 			"tex" | "dtx")
 				if ! in_iuse doc || use doc ; then
-					for i in `find . -maxdepth 1 -type f -name "*.${1}"`
-					do
-						[ -n "${LATEX_PACKAGE_SKIP}" ] && has ${i##*/} ${LATEX_PACKAGE_SKIP} && continue
-						einfo "Making documentation: $i"
-						if pdflatex ${LATEX_DOC_ARGUMENTS} --halt-on-error --interaction=nonstopmode $i ; then
-							pdflatex ${LATEX_DOC_ARGUMENTS} --halt-on-error --interaction=nonstopmode $i || die
+					while read -r -d '' i; do
+						[[ -n ${LATEX_PACKAGE_SKIP} ]] && \
+						has ${i##*/} ${LATEX_PACKAGE_SKIP} && \
+						continue
+
+						einfo "Making documentation: ${i}"
+						# some macros need compiler called twice, do it here.
+						set -- pdflatex ${LATEX_DOC_ARGUMENTS} --halt-on-error --interaction=nonstopmode ${i}
+						if "${@}"; then
+							"${@}"
 						else
 							einfo "pdflatex failed, trying texi2dvi"
-							texi2dvi -q -c --language=latex $i || die
+							texi2dvi -q -c --language=latex ${i} || die
 						fi
-					done
+					done < <(find -maxdepth 1 -type f -name "*.${1}")
 				fi
 				;;
+
 			"tfm" | "vf" | "afm")
-				for i in `find . -maxdepth 1 -type f -name "*.${1}"`
-				do
+				while read -r -d '' i; do
 					insinto ${TEXMF}/fonts/${1}/${SUPPLIER}/${PN}
-					doins $i || die "doins $i failed"
-				done
+					doins ${i}
+				done < <(find -maxdepth 1 -type f -name "*.${1}")
 				;;
+
 			"pfb")
-				for i in `find . -maxdepth 1 -type f -name "*.pfb"`
-				do
+				while read -r -d '' i; do
 					insinto ${TEXMF}/fonts/type1/${SUPPLIER}/${PN}
-					doins $i || die "doins $i failed"
-				done
+					doins ${i}
+				done < <(find -maxdepth 1 -type f -name "*.pfb")
 				;;
 			"ttf")
-				for i in `find . -maxdepth 1 -type f -name "*.ttf"`
-				do
+				while read -r -d '' i; do
 					insinto ${TEXMF}/fonts/truetype/${SUPPLIER}/${PN}
-					doins $i || die "doins $i failed"
-				done
+					doins ${i}
+				done < <(find -maxdepth 1 -type f -name "*.ttf")
 				;;
 			"bst")
-				for i in `find . -maxdepth 1 -type f -name "*.bst"`
-				do
+				while read -r -d '' i; do
 					insinto ${TEXMF}/bibtex/bst/${PN}
-					doins $i || die "doins $i failed"
-				done
+					doins ${i}
+				done < <(find -maxdepth 1 -type f -name "*.bst")
 				;;
+
 			"styles")
 				latex-package_src_doinstall sty cls fd clo def cfg bst
 				;;
+
 			"doc")
 				latex-package_src_doinstall tex dtx dvi ps pdf
 				;;
+
 			"fonts")
 				latex-package_src_doinstall tfm vf afm pfb ttf
 				;;
+
 			"bin")
 				latex-package_src_doinstall sh
 				;;
+
 			"all")
 				latex-package_src_doinstall styles fonts bin doc
 				;;
@@ -206,11 +199,10 @@ latex-package_src_doinstall() {
 # relevant files that will be installed
 latex-package_src_compile() {
 	debug-print function $FUNCNAME $*
-	for i in `find \`pwd\` -maxdepth 1 -type f -name "*.ins"`
-	do
-		einfo "Extracting from $i"
-		latex --halt-on-error --interaction=nonstopmode $i || die
-	done
+	while read -r -d '' i; do
+		einfo "Extracting from ${i}"
+		latex --halt-on-error --interaction=nonstopmode ${i} || die
+	done < <(find -maxdepth 1 -type f -name "*.ins")
 }
 
 # @FUNCTION: latex-package_src_install
@@ -219,9 +211,7 @@ latex-package_src_compile() {
 latex-package_src_install() {
 	debug-print function $FUNCNAME $*
 	latex-package_src_doinstall all
-	if [ -n "${DOCS}" ] ; then
-		dodoc ${DOCS}
-	fi
+	einstalldocs
 }
 
 # @FUNCTION: latex-package_pkg_postinst
@@ -251,3 +241,5 @@ latex-package_rehash() {
 }
 
 EXPORT_FUNCTIONS src_compile src_install pkg_postinst pkg_postrm
+
+fi
