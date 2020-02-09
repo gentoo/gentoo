@@ -28,7 +28,6 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/urwid-1.2.1[${PYTHON_USEDEP}]
-	!~dev-python/urwid-1.3.0[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-1.0.4[${PYTHON_USEDEP}]
 	>=dev-python/git-python-0.3.7[${PYTHON_USEDEP}]
 	dev-python/python-dateutil[${PYTHON_USEDEP}]

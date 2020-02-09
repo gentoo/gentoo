@@ -1,5 +1,5 @@
---- /usr/bin/colorgcc	2010-12-13 00:08:37.000000000 -0200
-+++ colorgcc	2011-10-05 15:26:53.000000000 -0300
+--- a/colorgcc
++++ b/colorgcc
 @@ -221,17 +221,16 @@
  # Figure out which compiler to invoke based on our program name.
  $0 =~ m%.*/(.*)$%;

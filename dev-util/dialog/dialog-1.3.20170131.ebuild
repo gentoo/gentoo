@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,6 @@ DEPEND="
 	${RDEPEND}
 	nls? ( sys-devel/gettext )
 	!minimal? ( sys-devel/libtool )
-	!<=sys-freebsd/freebsd-contrib-8.9999
 "
 
 src_prepare() {

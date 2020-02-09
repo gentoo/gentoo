@@ -16,7 +16,6 @@ SLOT="0"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 
 DEPEND="
-	!<app-misc/colordiff-1.0.13-r1
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	sys-apps/less"
 RDEPEND="${DEPEND}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,14 +26,8 @@ RDEPEND="
 	sys-apps/coreutils
 	sys-apps/gawk
 	sys-apps/grep
-	userland_BSD? (
-		sys-freebsd/freebsd-bin
-		sys-freebsd/freebsd-ubin
-	)
-	userland_GNU? (
-		sys-apps/util-linux
-		sys-devel/patch
-	)
+	sys-apps/util-linux
+	sys-devel/patch
 "
 
 src_prepare(){
