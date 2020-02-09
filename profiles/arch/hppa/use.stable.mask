@@ -9,6 +9,7 @@
 gtk
 gtk2
 gtk3
+wxwidgets
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-01-21)
 # No stable media-sound/pulseaudio on hppa.
