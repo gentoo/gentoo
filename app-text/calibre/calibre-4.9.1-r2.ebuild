@@ -31,7 +31,7 @@ LICENSE="
 	OFL-1.1
 	PSF-2
 "
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 SLOT="0"
 IUSE="ios +udisks"
 
@@ -121,7 +121,8 @@ src_prepare() {
 	# disable_plugins: walking sec-hole, wait for upstream to use GHNS interface
 	eapply \
 		"${FILESDIR}/${PN}-2.9.0-no_updates_dialog.patch" \
-		"${FILESDIR}/${PN}-disable_plugins.patch"
+		"${FILESDIR}/${PN}-disable_plugins.patch" \
+		"${FILESDIR}/${PN}-4.9.1-py3-Ignore-TypeError-sorting-collections-kobo.patch"
 
 	eapply_user
 

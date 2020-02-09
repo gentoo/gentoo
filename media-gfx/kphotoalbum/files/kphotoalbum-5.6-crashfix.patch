@@ -1,0 +1,41 @@
+From 583e10e8356d2ed64f0358ebf107bff35a98db31 Mon Sep 17 00:00:00 2001
+From: Johannes Zarl-Zierl <johannes@zarl-zierl.at>
+Date: Sun, 9 Feb 2020 22:51:15 +0100
+Subject: Fix crash when associating a tag with an area.
+
+If a tag is being associated with an area, the context menu has two
+levels: the direct "associate with <last added tag>" and the sub-menu
+"associate with..." followed by a list of tags.
+
+Each version uses a different function signature for
+ResizableFrame::associateTags. When refactoring connections to the "new"
+signal-slot syntax in commit c38f5136 (thus released in version 5.6), I
+applied the wrong signature to the connect statement.
+
+This resulted in a crash/failed assertion when selecting a tag in the
+described way.
+---
+ AnnotationDialog/ResizableFrame.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/AnnotationDialog/ResizableFrame.cpp b/AnnotationDialog/ResizableFrame.cpp
+index f2dba86..44175fb 100644
+--- a/AnnotationDialog/ResizableFrame.cpp
++++ b/AnnotationDialog/ResizableFrame.cpp
+@@ -1,4 +1,4 @@
+-/* Copyright (C) 2014-2019 The KPhotoAlbum Development Team
++/* Copyright (C) 2014-2020 The KPhotoAlbum Development Team
+ 
+    This program is free software; you can redistribute it and/or
+    modify it under the terms of the GNU General Public
+@@ -522,7 +522,7 @@ void AnnotationDialog::ResizableFrame::addTagActions(QMenu *menu)
+                     submenu->addAction(createAssociateTagAction(tag));
+                 }
+ 
+-                connect(submenu, &QMenu::triggered, this, QOverload<>::of(&ResizableFrame::associateTag));
++                connect(submenu, &QMenu::triggered, this, QOverload<QAction *>::of(&ResizableFrame::associateTag));
+             }
+         }
+     }
+-- 
+cgit v1.1
