@@ -4890,7 +4890,7 @@ dev-libs/hsa-ext-rocr 1.1.9.122 1.1.9.139: Proprietary image-support library for
 dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the GET method
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 5.1.0 5.1.1 5.2.0 5.2.1: High-performance regular expression matching library
-dev-libs/hyphen 2.8.8 2.8.8-r1: ALTLinux hyphenation library
+dev-libs/hyphen 2.8.8-r1: ALTLinux hyphenation library
 dev-libs/icu 65.1: International Components for Unicode
 dev-libs/icu-layoutex 65.1: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library

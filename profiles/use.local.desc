@@ -4588,7 +4588,6 @@ media-sound/clementine:seafile - Enable support for seafile: a file sync service
 media-sound/clementine:skydrive - Enable Skydrive support
 media-sound/clementine:wiimote - Enable support for Wii remote
 media-sound/cmus:cdio - Use libcdio for CD support
-media-sound/cmus:cue - Enable CUE sheet parsing
 media-sound/cmus:discid - Enable reading the ID of the inserted CD
 media-sound/cmus:elogind - Enable MPRIS support via sys-auth/elogind
 media-sound/cmus:pidgin - Install support script for net-im/pidgin
