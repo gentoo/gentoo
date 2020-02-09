@@ -9907,7 +9907,7 @@ dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher
 dev-ruby/pygments_rb 1.2.1: Pygments syntax highlighting in ruby
 dev-ruby/qed 2.9.2: QED (Quality Ensured Demonstrations) is a TDD/BDD framework
 dev-ruby/racc 1.4.14 1.4.16-r1: A LALR(1) parser generator for Ruby
-dev-ruby/rack 1.6.12 2.0.8 2.0.8-r1 2.1.1: A modular Ruby webserver interface
+dev-ruby/rack 1.6.12 2.0.8 2.0.8-r1 2.0.9 2.1.1: A modular Ruby webserver interface
 dev-ruby/rack-attack 5.4.2 6.2.0 6.2.1 6.2.2: A DSL for blocking & throttling abusive clients
 dev-ruby/rack-cache 1.9.0 1.10.0 1.11.0: Enable HTTP caching for Rack-based applications that produce freshness info
 dev-ruby/rack-mount 0.8.3-r2: A stackable dynamic tree based Rack router
