@@ -95,7 +95,6 @@ RDEPEND="${COMMON_DEPEND}
 	>=sys-devel/gdb-7.0[python]
 	reviewboard? ( >=kde-apps/ktp-accounts-kcm-${KDE_APPS_MINIMAL}:5 )
 	!dev-util/kdevelop-clang-tidy
-	!dev-util/kdevplatform
 "
 
 RESTRICT+=" test"
