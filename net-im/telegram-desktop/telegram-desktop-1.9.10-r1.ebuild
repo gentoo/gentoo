@@ -13,11 +13,13 @@ DESCRIPTION="Official desktop client for Telegram"
 HOMEPAGE="https://desktop.telegram.org"
 SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${MY_P}.tar.gz"
 
-LICENSE="GPL-3-with-openssl-exception Unlicense"
+LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="dbus gtk3 libressl spell"
+IUSE="alsa dbus gtk3 libressl pulseaudio spell"
 
+# dbus still required to build, but use flag disables dbus usage at runtime
+# pkg-config will pick up gtk2 first if found, needs a workaround
 RDEPEND="!net-im/telegram-desktop-bin
 	app-arch/lz4
 	app-arch/xz-utils
@@ -28,14 +30,15 @@ RDEPEND="!net-im/telegram-desktop-bin
 	dev-libs/libdbusmenu-qt[qt5(+)]
 	dev-libs/xxhash
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtimageformats:5
 	dev-qt/qtnetwork:5
 	media-libs/fontconfig:=
-	media-libs/openal[pulseaudio]
-	media-libs/opus
-	media-sound/pulseaudio
+	media-libs/libtgvoip[alsa?,pulseaudio?]
+	media-libs/openal[alsa?,pulseaudio?]
 	sys-libs/zlib[minizip]
 	virtual/ffmpeg
+	virtual/libiconv
 	x11-libs/libva[X,drm]
 	x11-libs/libX11
 	|| (
@@ -46,12 +49,11 @@ RDEPEND="!net-im/telegram-desktop-bin
 		dev-qt/qtwidgets:5[png,X(-)]
 		dev-qt/qtwidgets:5[png,xcb(-)]
 	)
-	dbus? ( dev-qt/qtdbus:5 )
 	gtk3? (
 		dev-libs/libappindicator:3
 		x11-libs/gtk+:3
-		sys-apps/xdg-desktop-portal
 	)
+	pulseaudio? ( media-sound/pulseaudio )
 	spell? ( app-text/enchant:= )
 "
 
@@ -62,13 +64,15 @@ BDEPEND="
 	>=dev-util/cmake-3.16
 	virtual/pkgconfig
 "
+REQUIRED_USE="|| ( alsa pulseaudio )"
+
+S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/0002-PPC-big-endian.patch"
 	"${FILESDIR}/musl.patch"
 )
 
-S="${WORKDIR}/${MY_P}"
 
 src_configure() {
 	local mycxxflags=(
@@ -92,7 +96,6 @@ src_configure() {
 		-DDESKTOP_APP_USE_PACKAGED_VARIANT=OFF
 		-DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
-		-DTDESKTOP_USE_PACKAGED_TGVOIP=OFF
 		-DDESKTOP_APP_DISABLE_SPELLCHECK="$(usex spell OFF ON)"
 		-DTDESKTOP_DISABLE_GTK_INTEGRATION="$(usex gtk3 OFF ON)"
 		-DTDESKTOP_DISABLE_DBUS_INTEGRATION="$(usex dbus OFF ON)"
