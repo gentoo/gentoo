@@ -22,7 +22,22 @@ BDEPEND="dev-python/cython[${PYTHON_USEDEP}]
 
 RDEPEND="dev-python/ipython[${PYTHON_USEDEP}]"
 
-DEPEND="test? ( dev-python/coverage[${PYTHON_USEDEP}]
+DEPEND="test? (
+	dev-python/coverage[${PYTHON_USEDEP}]
 	dev-python/ubelt[${PYTHON_USEDEP}] )"
 
 distutils_enable_tests pytest
+
+python_test() {
+	# tests fail if not already installed
+	# to fix this, source files should be in PYTHONPATH
+	# also, tests call kernprof, so we have to move that
+	# back to the source files and make it executable
+	cp "${BUILD_DIR}/lib/kernprof.py" "${WORKDIR}/${P}/kernprof" || die
+	chmod +x "${WORKDIR}/${P}/kernprof" || die
+	cp "${BUILD_DIR}/lib/${PN}" -r "${WORKDIR}/${P}" || die
+	PYTHONPATH="${WORKDIR}/${P}"
+	PATH="${PATH}:${WORKDIR}/${P}"
+
+	pytest -vv || die "Tests fail with ${EPYTHON}"
+}
