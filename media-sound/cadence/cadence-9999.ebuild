@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,8 +20,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # for jack project rendering also needs media-sound/jack_capture which is not in the tree yet
 CDEPEND="
 	${PYTHON_DEPS}
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/PyQt5[dbus,gui,opengl?,svg,widgets,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[dbus,gui,opengl?,svg,widgets,${PYTHON_MULTI_USEDEP}]
+	')
 	media-sound/jack2[dbus]
 	media-sound/jack_capture
 	a2jmidid? ( media-sound/a2jmidid[dbus] )

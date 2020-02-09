@@ -34,9 +34,12 @@ RDEPEND="${PYTHON_DEPS}
 	pv? ( sys-apps/pv )
 	squashfuse? ( sys-fs/squashfuse )
 "
-DEPEND="doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+DEPEND="
+	doc? (
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_MULTI_USEDEP}]
+		')
 		net-misc/rsync
 	)"
 

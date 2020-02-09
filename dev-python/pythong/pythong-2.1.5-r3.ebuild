@@ -45,13 +45,11 @@ src_install() {
 	python_doscript pythong.py
 
 	dodoc leeme.txt
-	insinto /usr/share/doc/${PF}
-	doins -r {LICENCIA,MANUAL,demos}
+	dodoc -r {LICENCIA,MANUAL,demos}
 	rm -fr "${ED}/usr/share/doc/${PF}/demos/modulepythong.py" || die
 
 	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins "${DISTDIR}"/python.pdf
+		dodoc "${DISTDIR}"/python.pdf
 	fi
 	python_optimize
 }

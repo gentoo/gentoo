@@ -18,7 +18,7 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	net-libs/libsearpc[${PYTHON_USEDEP}]
+	net-libs/libsearpc[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/glib:2
 	dev-libs/libevent:0
 	dev-libs/jansson

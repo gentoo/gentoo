@@ -47,27 +47,29 @@ CDEPEND="
 	dev-libs/libgcrypt:0
 	dev-libs/iniparser:0
 	dev-libs/popt[${MULTILIB_USEDEP}]
-	dev-python/subunit[${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 	>=dev-util/cmocka-1.1.1[${MULTILIB_USEDEP}]
 	>=net-libs/gnutls-3.2.0
 	net-libs/libnsl:=[${MULTILIB_USEDEP}]
 	sys-apps/attr[${MULTILIB_USEDEP}]
-	>=sys-libs/ldb-2.0.8[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	<sys-libs/ldb-2.2.0[ldap(+)?,python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/ldb-2.0.8[ldap(+)?,python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
+	<sys-libs/ldb-2.2.0[ldap(+)?,python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/libcap
 	sys-libs/ncurses:0=[${MULTILIB_USEDEP}]
 	sys-libs/readline:0=
-	>=sys-libs/talloc-2.2.0[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tdb-1.4.2[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
-	>=sys-libs/tevent-0.10.0[python?,${PYTHON_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/talloc-2.2.0[python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tdb-1.4.2[python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
+	>=sys-libs/tevent-0.10.0[python?,${PYTHON_SINGLE_USEDEP},${MULTILIB_USEDEP}]
 	sys-libs/zlib[${MULTILIB_USEDEP}]
 	virtual/libiconv
 	pam? ( sys-libs/pam )
 	acl? ( virtual/acl )
-	addns? (
-		net-dns/bind-tools[gssapi]
-		dev-python/dnspython:=[${PYTHON_USEDEP}]
-	)
+	$(python_gen_cond_dep "
+		dev-python/subunit[\${PYTHON_MULTI_USEDEP},${MULTILIB_USEDEP}]
+		addns? (
+			net-dns/bind-tools[gssapi]
+			dev-python/dnspython:=[\${PYTHON_MULTI_USEDEP}]
+		)
+	")
 	ceph? ( sys-cluster/ceph )
 	cluster? (
 		net-libs/rpcsvc-proto

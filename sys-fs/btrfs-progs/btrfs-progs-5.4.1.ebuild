@@ -47,7 +47,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	convert? ( sys-apps/acl )
-	python? ( dev-python/setuptools[${PYTHON_USEDEP}] )
+	python? (
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	static? (
 		dev-libs/lzo:2[static-libs(+)]
 		sys-apps/util-linux:0[static-libs(+)]

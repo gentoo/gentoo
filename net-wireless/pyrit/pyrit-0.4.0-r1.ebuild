@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,11 @@ RESTRICT="!test? ( test )"
 
 DEPEND="dev-libs/openssl
 	net-libs/libpcap
-	test? ( >=net-analyzer/scapy-2[${PYTHON_USEDEP}] )"
+	test? (
+		$(python_gen_cond_dep '
+			>=net-analyzer/scapy-2[${PYTHON_MULTI_USEDEP}]
+		')
+	)"
 RDEPEND=">=net-analyzer/scapy-2
 	opencl? ( net-wireless/cpyrit-opencl )
 	cuda? ( net-wireless/cpyrit-cuda )"

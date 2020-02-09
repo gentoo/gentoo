@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -55,7 +55,9 @@ BDEPEND="${CDEPEND}
 	virtual/pkgconfig
 	doc? (
 		app-doc/doxygen
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+		')
 		media-gfx/mscgen
 		media-gfx/graphviz
 		dev-texlive/texlive-latex

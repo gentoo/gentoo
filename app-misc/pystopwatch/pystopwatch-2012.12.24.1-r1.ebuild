@@ -20,7 +20,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/pygtk:2[${PYTHON_USEDEP}]
+		dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
 	')
 	gnome-base/librsvg
 	${PYTHON_DEPS}

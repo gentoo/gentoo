@@ -47,7 +47,9 @@ DEPEND="
 		)
 	pretty-printer? ( dev-libs/libxml2:2 )
 	python? (
-		dev-python/pygtk[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+		')
 		${PYTHON_DEPS}
 		)
 	scope? (

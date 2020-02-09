@@ -71,8 +71,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libxml2-2.9.4
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pycryptodome[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycryptodome[${PYTHON_MULTI_USEDEP}]
+	')
 	>=dev-libs/libcdio-0.94
 	>=dev-libs/libfmt-3.0.1
 	dev-libs/libfstrcmp
