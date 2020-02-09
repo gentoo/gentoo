@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ KEYWORDS="amd64 x86"
 IUSE="+shared static-libs"
 
 RDEPEND="dev-python/pyyaml
-	dev-ada/gnatcoll-bindings[${ADA_USEDEP},iconv,shared=,static-libs=]
+	dev-ada/gnatcoll-bindings[${ADA_USEDEP},gmp,iconv,shared=,static-libs=]
 	${ADA_DEPS}
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
