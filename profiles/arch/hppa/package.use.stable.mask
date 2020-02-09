@@ -22,6 +22,7 @@
 gnome-base/librsvg tools
 dev-libs/appstream-glib fonts
 dev-python/pygobject test
+app-mobilephone/gnokii X
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-08)
 # app-text/enchant stable timeout, bug #662484

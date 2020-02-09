@@ -7,7 +7,9 @@
 # Mart Raudsepp <leio@gentoo.org> (2020-02-08)
 # No stable x11-libs/gtk+ on hppa.
 gtk
+gtk2
 gtk3
+wxwidgets
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-01-21)
 # No stable media-sound/pulseaudio on hppa.

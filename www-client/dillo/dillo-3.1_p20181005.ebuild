@@ -2,16 +2,18 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools desktop mercurial toolchain-funcs
+inherit autotools desktop toolchain-funcs
 
 DESCRIPTION="Lean FLTK based web browser"
 HOMEPAGE="https://www.dillo.org/"
-SRC_URI="mirror://gentoo/${PN}.png"
-EHG_REPO_URI="https://hg.dillo.org/dillo"
+SRC_URI="
+	https://dev.gentoo.org/~jer/${P}.tar.xz
+	mirror://gentoo/${PN}.png
+"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc +gif ipv6 +jpeg +png ssl +xembed"
 
 RDEPEND="
