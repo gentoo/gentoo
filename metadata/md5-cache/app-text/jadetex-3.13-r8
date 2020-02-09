@@ -1,6 +1,5 @@
-BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DEFINED_PHASES=compile install postinst postrm
-DEPEND=>=app-text/openjade-1.3.1 dev-texlive/texlive-fontsrecommended dev-texlive/texlive-plaingeneric
+DEPEND=>=app-text/openjade-1.3.1 dev-texlive/texlive-fontsrecommended dev-texlive/texlive-plaingeneric virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=TeX macros used by Jade TeX output
 EAPI=7
 HOMEPAGE=http://jadetex.sourceforge.net/
@@ -10,5 +9,5 @@ RDEPEND=virtual/latex-base
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/jadetex/jadetex-3.13.tar.gz
-_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7	texlive-common	e8bb3f5910e0aab6c580a1dc62bc57cc
+_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a	texlive-common	930a8063ad61a83cd5b9b186a1f75f9c
 _md5_=ee1b78f6edf2f724c9787d0b01e5221e

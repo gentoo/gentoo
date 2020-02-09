@@ -1,6 +1,5 @@
-BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DEFINED_PHASES=compile install postinst postrm test
-DEPEND=dev-texlive/texlive-langgerman
+DEPEND=dev-texlive/texlive-langgerman virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=A LaTeX package for typesetting a curriculum vitae
 EAPI=7
 HOMEPAGE=https://www.ctan.org/tex-archive/macros/latex/contrib/currvita/
@@ -9,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-texlive/texlive-langgerman virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/currvita-0.9i.tar.gz
-_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
+_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
 _md5_=ba4cafb91a3940efe46aeee95f687a76

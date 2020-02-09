@@ -1,6 +1,6 @@
-BDEPEND=app-arch/unzip virtual/latex-base >=sys-apps/texinfo-4.2-r5
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=compile install postinst postrm
-DEPEND=>=dev-texlive/texlive-latexextra-2008
+DEPEND=>=dev-texlive/texlive-latexextra-2008 virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=LaTeX class for the standard model for curricula vitae as recommended by the EC
 EAPI=7
 HOMEPAGE=http://www.ctan.org/pkg/europecv
@@ -10,5 +10,5 @@ LICENSE=LPPL-1.2
 RDEPEND=>=dev-texlive/texlive-latexextra-2008 virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/europecv-20060424.zip
-_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
+_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
 _md5_=470af528bf7f006e844330c28d2f83ee

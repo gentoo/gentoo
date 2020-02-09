@@ -1,6 +1,5 @@
-BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DEFINED_PHASES=compile install postinst postrm
-DEPEND=dev-texlive/texlive-latexextra
+DEPEND=dev-texlive/texlive-latexextra virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=Extensive LaTeX class for writing letters
 EAPI=7
 HOMEPAGE=https://www.ctan.org/tex-archive/help/Catalogue/entries/newlfm.html
@@ -9,5 +8,5 @@ LICENSE=LPPL-1.2
 RDEPEND=dev-texlive/texlive-latexextra virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/newlfm-8.3.tar.gz
-_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
+_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
 _md5_=b368647d98d1a6e1e85c98c7f68fcf2d

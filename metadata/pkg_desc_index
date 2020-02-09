@@ -14296,7 +14296,7 @@ net-analyzer/sguil-client 0.8.0 0.9.0 1.0.0: GUI Console for sguil Network Secur
 net-analyzer/sguil-sensor 0.8.0 0.9.0 1.0.0: Sensor part of sguil Network Security Monitoring
 net-analyzer/sguil-server 0.8.0 0.9.0 1.0.0: Daemon for Sguil Network Security Monitoring
 net-analyzer/sinfo 0.0.48: A monitoring tool for networked computers
-net-analyzer/siphon 666-r1: A portable passive network mapping suite
+net-analyzer/siphon 666-r1 666-r2: A portable passive network mapping suite
 net-analyzer/slurm 0.3.3-r2 0.4.3: Realtime network interface monitor based on FreeBSD's pppstatus
 net-analyzer/smokeping 2.6.9-r1 2.7.2 2.7.3: A powerful latency measurement tool
 net-analyzer/sngrep 1.4.6-r1: Ncurses SIP Messages flow viewer

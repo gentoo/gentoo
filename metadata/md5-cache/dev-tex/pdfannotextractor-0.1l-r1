@@ -1,6 +1,6 @@
-BDEPEND=app-arch/unzip virtual/latex-base >=sys-apps/texinfo-4.2-r5
+BDEPEND=app-arch/unzip
 DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup
-DEPEND=virtual/latex-base dev-java/pdfbox:1.8 dev-java/fontbox:1.7 >=virtual/jdk-1.6 >=dev-java/java-config-2.2.0-r3 >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
+DEPEND=virtual/latex-base dev-java/pdfbox:1.8 dev-java/fontbox:1.7 >=virtual/jdk-1.6 virtual/latex-base >=sys-apps/texinfo-4.2-r5 >=dev-java/java-config-2.2.0-r3 >=dev-java/ant-core-1.8.2:0 >=dev-java/javatoolkit-0.3.0-r2
 DESCRIPTION=Extract annotations from pdf files
 EAPI=7
 HOMEPAGE=http://www.ctan.org/tex-archive/macros/latex/contrib/pax/
@@ -10,5 +10,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/perl-Getopt-Long dev-perl/File-Which >=virtual/jre-1.6 virtual/latex-base >=dev-java/java-config-2.2.0-r3
 SLOT=0
 SRC_URI=mirror://gentoo/pdfannotextractor-0.1l.zip
-_eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	latex-package	17f13abe0de88340745e52e6b627aee7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=java-ant-2	8d9cb415f1ca9fc7ebc5a74bacec300c	java-pkg-2	c4e6af2574fd1dc79b43a6e27af4b5fb	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	latex-package	663b0e5f0410bc8e8d51f11346f0258a	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=152f7c636e29cdec3c34bc7717f26d94

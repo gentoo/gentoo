@@ -1,5 +1,5 @@
-BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DEFINED_PHASES=compile install postinst postrm
+DEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=A package for translating words in TeX
 EAPI=7
 HOMEPAGE=https://bitbucket.org/rivanvx/beamer/src
@@ -9,5 +9,5 @@ LICENSE=GPL-2 LPPL-1.3c
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=mirror://sourceforge/latex-beamer/translator-1.00.tar.gz
-_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
+_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
 _md5_=0a44ae66e0b3660782409bd76436a52c

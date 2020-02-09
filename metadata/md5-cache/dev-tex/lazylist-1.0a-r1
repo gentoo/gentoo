@@ -1,6 +1,5 @@
-BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DEFINED_PHASES=compile install postinst postrm
-DEPEND=dev-texlive/texlive-publishers
+DEPEND=dev-texlive/texlive-publishers virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=Lists in TeX's mouth - lambda-calculus and list-handling macros
 EAPI=7
 HOMEPAGE=http://www.ctan.org/tex-archive/macros/latex/contrib/lazylist/
@@ -9,5 +8,5 @@ LICENSE=LPPL-1.2
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/lazylist-1.0a.tar.bz2
-_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
+_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
 _md5_=07673f9524bed50a2945b2710012e73a

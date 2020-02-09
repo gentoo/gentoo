@@ -1,5 +1,5 @@
-BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DEFINED_PHASES=compile install postinst postrm prepare
+DEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=A pretty printer for various programming languages with tex output.
 EAPI=7
 HOMEPAGE=http://www.tug.org/
@@ -9,5 +9,5 @@ LICENSE=BSD LGrind-Jacobson
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/lgrind-3.67.tgz
-_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b31af23f289c083ce0af97ffcbec55b5

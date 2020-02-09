@@ -1,6 +1,5 @@
-BDEPEND=virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DEFINED_PHASES=compile install postinst postrm
-DEPEND=dev-texlive/texlive-latexextra >=dev-tex/biblatex-3.8 >=dev-tex/biber-2.8
+DEPEND=dev-texlive/texlive-latexextra >=dev-tex/biblatex-3.8 >=dev-tex/biber-2.8 virtual/latex-base >=sys-apps/texinfo-4.2-r5
 DESCRIPTION=Biblatex styles for Russian GOST 7.0.5-2008 bibliography standard
 EAPI=7
 HOMEPAGE=https://github.com/odomanov/biblatex-gost
@@ -9,5 +8,5 @@ LICENSE=LPPL-1.3c
 RDEPEND=dev-texlive/texlive-latexextra >=dev-tex/biblatex-3.8 >=dev-tex/biber-2.8 virtual/latex-base
 SLOT=0
 SRC_URI=https://github.com/odomanov/biblatex-gost/archive/ver.1.17.tar.gz -> biblatex-gost-1.17.tar.gz
-_eclasses_=latex-package	17f13abe0de88340745e52e6b627aee7
+_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
 _md5_=c5fb1a9c302f1029181628d1fbdbac49
