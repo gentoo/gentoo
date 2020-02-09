@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info systemd toolchain-funcs udev
+inherit flag-o-matic linux-info systemd toolchain-funcs udev
 
 MY_PN='spacenav'
 DESCRIPTION="The spacenavd daemon provides free alternative to the 3dxserv daemon"
@@ -37,6 +37,7 @@ src_configure() {
 }
 
 src_compile() {
+	append-cflags -fcommon  # bug 708648
 	emake CC="$(tc-getCC)" \
 		add_cflags="${CFLAGS}" \
 		add_ldflags="${LDFLAGS}"
