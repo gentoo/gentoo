@@ -1,30 +1,30 @@
---- canlock2b/Makefile
-+++ canlock2b/Makefile
-@@ -1,33 +1,35 @@
+--- a/Makefile
++++ b/Makefile
+@@ -1,38 +1,39 @@
 -CFLAGS = -Iinclude
 -LDFLAGS = -L. -lcanlock
-+CFLAGS += -Iinclude
-+LIBS = -L. -lcanlock
- CC = gcc
+-CC = gcc
 -STATIC_LIB = libcanlock.a
++CPPFLAGS += -Iinclude
++LDLIBS = -L./src -lcanlock
  
 -all: hmactest canlocktest $(STATIC_LIB)
-+all: shared static
++all: shared
  
 -sha1test: t/sha1test.c $(STATIC_LIB)
 -	$(CC) $(CFLAGS) t/$@.c -o $@ $(LDFLAGS)
 +sha1test: t/sha1test.c shared
-+	$(CC) $(CFLAGS) t/$@.c -o $@ $(LIBS) $(LDFLAGS)
++	$(CC) $(LDFLAGS) $(CPPFLAGS) $(CFLAGS) t/$@.c -o $@ $(LDLIBS)
  
 -hmactest: t/hmactest.c $(STATIC_LIB)
 -	$(CC) $(CFLAGS) t/$@.c -o $@ $(LDFLAGS)
 +hmactest: t/hmactest.c shared
-+	$(CC) $(CFLAGS) t/$@.c -o $@ $(LIBS) $(LDFLAGS)
++	$(CC) $(LDFLAGS) $(CPPFLAGS) $(CFLAGS) t/$@.c -o $@ $(LDLIBS)
  
 -canlocktest: t/canlocktest.c $(STATIC_LIB)
 -	$(CC) $(CFLAGS) t/$@.c -o $@ $(LDFLAGS)
 +canlocktest: t/canlocktest.c shared
-+	$(CC) $(CFLAGS) t/$@.c -o $@ $(LIBS) $(LDFLAGS)
++	$(CC) $(LDFLAGS) $(CPPFLAGS) $(CFLAGS) t/$@.c -o $@ $(LDLIBS)
  
 -$(STATIC_LIB):
 -	cd src && make
@@ -49,20 +49,25 @@
 -	
 -test: all
 +
-+test: hmactest canlocktest
++check: hmactest canlocktest
  	@echo "hmactest: "
- 	@./hmactest > t/hmactest.out || echo hmm
+-	@./hmactest > t/hmactest.out || echo hmm
++	@LD_LIBRARY_PATH=src/ ./hmactest > t/hmactest.out || echo hmm
  	@diff t/hmactest.shouldbe t/hmactest.out && echo " Pass." || (echo " **FAIL**" ; exit 1)
---- canlock2b/src/Makefile
-+++ canlock2b/src/Makefile
-@@ -1,9 +1,11 @@
+ 	@echo "=-=-=-="
+ 	@echo "canlocktest: "
+-	@./canlocktest > t/canlocktest.out
++	@LD_LIBRARY_PATH=src/ ./canlocktest > t/canlocktest.out
+ 	@diff t/canlocktest.shouldbe t/canlocktest.out && echo " Pass." || (echo " **FAIL**" ; exit 1)
+ 	@echo "=-=-=-="
+--- a/src/Makefile
++++ b/src/Makefile
+@@ -1,32 +1,35 @@
 -LIBOBJS = base64.lo canlock.lo hmac_sha1.lo sha1.lo
- CC = gcc
-+AR = ar
-+RANLIB = ranlib
+-CC = gcc
  LIBTOOL = libtool
 -CFLAGS = -I../include
-+CFLAGS += -I../include
++CPPFLAGS += -I../include
  SOURCES = base64.c canlock.c hmac_sha1.c sha1.c
 -OBJS = base64.o canlock.o hmac_sha1.o sha1.o
 +OBJS := $(SOURCES:.c=.o)
@@ -70,8 +75,10 @@
  SHARELINKFLAGS = -Wl,-soname -Wl,libcanlock.so.2
  SHAREDFLAGS = -fPIC -DPIC
  LIBS = libcanlock.a libcanlock.so.2.0.0
-@@ -11,22 +13,25 @@
+ INSTALL = install
  
++.SUFFIXES: .c .o .h .lo
++
  all: $(LIBS)
  
 -libcanlock.a:
@@ -83,11 +90,8 @@
 -libcanlock.so.2.0.0:
 -	$(CC) $(CFLAGS) $(SHAREDFLAGS) -c $(SOURCES)
 -	$(CC) -shared $(OBJS) $(SHARELINKFLAGS) -o libcanlock.so.2.0.0
-+%.o: %.c
-+	$(CC) $(CFLAGS) -c -o $@ $<
-+
-+%.lo: %.c
-+	$(CC) $(CFLAGS) $(SHAREDFLAGS) -c -o $@ $<
++.c.lo:
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(SHAREDFLAGS) -c -o $@ $<
 +
 +libcanlock.a: $(OBJS)
 +	$(AR) cru libcanlock.a $(OBJS)
@@ -95,6 +99,8 @@
 +
 +libcanlock.so.2.0.0: $(LIBOBJS)
 +	$(CC) -shared $(LIBOBJS) $(LDFLAGS) $(SHARELINKFLAGS) -o libcanlock.so.2.0.0
++	ln -s libcanlock.so.2.0.0 libcanlock.so
++	ln -s libcanlock.so.2.0.0 libcanlock.so.2
  
  install: all
  	$(INSTALL) libcanlock.so.2.0.0 $(DESTDIR)/usr/lib
