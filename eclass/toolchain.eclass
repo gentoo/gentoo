@@ -536,9 +536,7 @@ toolchain_src_prepare() {
 		local actual_version=$(< "${S}"/gcc/BASE-VER)
 		if [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
 			eerror "'${S}/gcc/BASE-VER' contains '${actual_version}', expected '${GCC_RELEASE_VER}'"
-			# TODO: once ada ebuilds are fixed turn it to 'die'
-			eerror "Please set GCC_RELEASE_VER to '${actual_version}'"
-			echo "${GCC_CONFIG_VER}" > "${S}"/gcc/BASE-VER
+			die "Please set 'TOOLCHAIN_GCC_PV' to '${actual_version}'"
 		fi
 	fi
 
