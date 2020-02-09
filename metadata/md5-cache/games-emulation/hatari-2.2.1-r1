@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test
+DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) capsimage? ( >=dev-libs/spsdeclib-5.1-r1 ) microphone? ( media-libs/portaudio ) png? ( media-libs/libpng:0= ) portmidi? ( media-libs/portmidi ) readline? ( sys-libs/readline:0= ) sdl2? ( media-libs/libsdl2[sound,video,X] ) !sdl2? ( media-libs/libsdl[sound,video,X] ) udev? ( virtual/udev ) zlib? ( sys-libs/zlib ) dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Atari ST emulator
+EAPI=7
+HOMEPAGE=https://hatari.tuxfamily.org/
+IUSE=capsimage microphone png portmidi readline +sdl2 udev zlib python_targets_python2_7 python_targets_python3_6 python_targets_python3_7 python_single_target_python2_7 python_single_target_python3_6 python_single_target_python3_7
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2+
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) capsimage? ( >=dev-libs/spsdeclib-5.1-r1 ) microphone? ( media-libs/portaudio ) png? ( media-libs/libpng:0= ) portmidi? ( media-libs/portmidi ) readline? ( sys-libs/readline:0= ) sdl2? ( media-libs/libsdl2[sound,video,X] ) !sdl2? ( media-libs/libsdl[sound,video,X] ) udev? ( virtual/udev ) zlib? ( sys-libs/zlib ) python_single_target_python2_7? ( dev-python/pygobject:3[python_targets_python2_7(-)] ) python_single_target_python3_6? ( dev-python/pygobject:3[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/pygobject:3[python_targets_python3_7(-)] ) >=games-emulation/emutos-0.9.9.1
+REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python2_7? ( python_targets_python2_7 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 )
+SLOT=0
+SRC_URI=https://download.tuxfamily.org/hatari/2.2.1/hatari-2.2.1.tar.bz2
+_eclasses_=cmake	7b250250bd1c3cc90800ed668fb87825	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=2819102c97519068f8494e56aa1d00a0

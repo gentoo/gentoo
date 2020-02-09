@@ -1,0 +1,14 @@
+DEFINED_PHASES=install postinst prepare setup
+DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python2_7] ) virtual/pkgconfig
+DESCRIPTION=Binary newsgrabber with web-interface
+EAPI=6
+HOMEPAGE=https://sabnzbd.org/
+IUSE=+7za +rar unzip +python_targets_python2_7 +python_single_target_python2_7
+KEYWORDS=~amd64
+LICENSE=GPL-2 BSD LGPL-2 MIT BSD-1
+RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[sqlite] >=dev-lang/python-exec-2:=[python_targets_python2_7] ) >=app-arch/par2cmdline-0.4 python_single_target_python2_7? ( >=dev-python/cheetah-2.0.1[python_targets_python2_7(-)] dev-python/configobj[python_targets_python2_7(-)] dev-python/cryptography[python_targets_python2_7(-)] dev-python/feedparser[python_targets_python2_7(-)] dev-python/gntp[python_targets_python2_7(-)] dev-python/pythonutils[python_targets_python2_7(-)] >=dev-python/sabyenc-3.3.1[python_targets_python2_7(-)] ) net-misc/wget 7za? ( app-arch/p7zip ) rar? ( || ( app-arch/unrar app-arch/rar ) ) unzip? ( >=app-arch/unzip-5.5.2 )
+REQUIRED_USE=^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 )
+SLOT=0
+SRC_URI=https://github.com/sabnzbd/sabnzbd/releases/download/2.3.9/SABnzbd-2.3.9-src.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
+_md5_=b56551f58638b3039c9cc3057039913e

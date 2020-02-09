@@ -6,10 +6,10 @@ HOMEPAGE=https://www.fail2ban.org/
 IUSE=selinux systemd +python_targets_python3_6 +python_single_target_python3_6
 KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
-RDEPEND=virtual/logger virtual/mta selinux? ( sec-policy/selinux-fail2ban ) systemd? ( python_single_target_python3_6? ( || ( dev-python/python-systemd[python_targets_python3_6(-)?,python_single_target_python3_6(+)?] sys-apps/systemd[python(-),python_targets_python3_6(-)?,python_single_target_python3_6(+)?] ) ) ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] )
+RDEPEND=virtual/logger virtual/mta selinux? ( sec-policy/selinux-fail2ban ) systemd? ( python_single_target_python3_6? ( || ( dev-python/python-systemd[python_targets_python3_6(-)] sys-apps/systemd[python(-),python_targets_python3_6(-)] ) ) ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] )
 REQUIRED_USE=^^ ( python_single_target_python3_6 ) python_single_target_python3_6? ( python_targets_python3_6 )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/fail2ban/fail2ban/tarball/0.10.5 -> fail2ban-0.10.5.tar.gz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	distutils-r1	24ad93542cf9d80a03d58784093b1d44	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d14392dba52ad99375e73f5335f0ef7d
+_md5_=2e0359bfb3681c6adc5670ccfa354957
