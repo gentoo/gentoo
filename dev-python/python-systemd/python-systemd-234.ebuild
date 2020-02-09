@@ -1,8 +1,9 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2015-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{3_6,3_7} )
+PYTHON_COMPAT=( python3_{6..8} )
+DISTUTILS_USE_SETUPTOOLS="no"
 
 inherit distutils-r1
 
@@ -16,26 +17,15 @@ KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="
-	sys-apps/systemd:0=
-"
-DEPEND="${COMMON_DEPEND}
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
-"
-RDEPEND="${COMMON_DEPEND}
+BDEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+DEPEND="sys-apps/systemd:0="
+RDEPEND="${DEPEND}
 	!sys-apps/systemd[python(-)]
 "
 
-PATCHES=(
-)
-
 python_compile() {
-	if python_is_python3; then
-		# https://bugs.gentoo.org/690316
-		distutils-r1_python_compile -j1
-	else
-		distutils-r1_python_compile
-	fi
+	# https://bugs.gentoo.org/690316
+	distutils-r1_python_compile -j1
 }
 
 python_test() {
