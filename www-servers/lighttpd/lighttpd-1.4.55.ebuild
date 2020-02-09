@@ -104,9 +104,6 @@ pkg_setup() {
 		ewarn "and mod_ssi."
 	fi
 
-	enewgroup lighttpd
-	enewuser lighttpd -1 -1 /var/www/localhost/htdocs lighttpd
-
 	DOC_CONTENTS="IPv6 migration guide:\n
 		http://redmine.lighttpd.net/projects/lighttpd/wiki/IPv6-Config"
 }
