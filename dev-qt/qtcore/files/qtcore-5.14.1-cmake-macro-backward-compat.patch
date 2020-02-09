@@ -1,0 +1,50 @@
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Sun, 9 Feb 2020 11:45:00 +0100
+Subject: [PATCH] qtcore: Fix cmake macro compat. for upgrade from <Qt-5.14
+
+In upstream commit:
+
+https://code.qt.io/cgit/qt/qtbase.git/commit/?h=5.14&id=63d9cd17
+
+_populate_$${CMAKE_MODULE_NAME}_plugin_properties in 5.14.0 gained an additional argument
+IsDebugAndRelease without providing backward compatibility. This macro is used (at least) for
+QtGui and QtDesigner plugins added by qtimageformats, qtsvg, qtvirtualkeyboard and qtwayland.
+During upgrade from <Qt-5.14 to >=Qt-5.14, as a consequence of slot upgrade rebuilds, some
+reverse dependencies are slated for rebuild before these Qt consumers have been rebuilt and their
+cmake files regenerated, leading to cmake errors like:
+
+https://bugs.gentoo.org/703306
+https://bugs.gentoo.org/705198
+
+From mkspecs/features/create_cmake.prf:
+
+# CMAKE_DEBUG_AND_RELEASE is used to tell the _populate_$${CMAKE_MODULE_NAME}_target_properties
+# functions whether a Configuration specific generator expression needs to be added to the values
+# of INTERFACE_LINK_LIBRARIES and INTERFACE_LINK_OPTIONS. For debug_and_release builds, we do need
+# configuration specific values. For singular builds (only release or only debug), we want the
+# values to be applied regardless of the configuration.
+# This would allow on Linux and macOS (and with a recent enough version of CMake on Windows) to
+# build a Debug configuration of an application, even if Qt was built in a Release configuration.
+
+qt5-build.eclass is configuring either as 'release' or as 'debug', so we make IsDebugAndRelease
+optional and default to FALSE.
+
+--- a/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in	2020-01-23 13:37:32.000000000 +0100
++++ b/mkspecs/features/data/cmake/Qt5BasicConfig.cmake.in	2020-02-09 15:15:21.156219814 +0100
+@@ -538,8 +538,14 @@
+ 
+     file(GLOB pluginTargets \"${CMAKE_CURRENT_LIST_DIR}/Qt5$${CMAKE_MODULE_NAME}_*Plugin.cmake\")
+ 
+-    macro(_populate_$${CMAKE_MODULE_NAME}_plugin_properties Plugin Configuration PLUGIN_LOCATION
+-          IsDebugAndRelease)
++    macro(_populate_$${CMAKE_MODULE_NAME}_plugin_properties Plugin Configuration PLUGIN_LOCATION)
++        set(IsDebugAndRelease FALSE)
++        set (list_var ${ARGN})
++        list(LENGTH list_var num_extra_arg)
++        if (${num_extra_arg} GREATER 0)
++            list(GET list_var 0 IsDebugAndRelease)
++        endif()
++
+         set_property(TARGET Qt5::${Plugin} APPEND PROPERTY IMPORTED_CONFIGURATIONS ${Configuration})
+ 
+ !!IF isEmpty(CMAKE_PLUGIN_DIR_IS_ABSOLUTE)
