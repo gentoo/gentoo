@@ -35,7 +35,7 @@ RDEPEND="${COMMON_DEPEND}
 		dev-python/pyasn1[${PYTHON_MULTI_USEDEP}]
 		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
 		dev-python/pycurl[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject[cairo,${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
 		>=dev-python/pyopenssl-0.14[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/python-nbxmpp-0.6.6[${PYTHON_MULTI_USEDEP}]
 		x11-libs/libXScrnSaver
