@@ -47,7 +47,7 @@ src_install() {
 
 	python_moduleinto /usr/lib/wxglade
 	python_domodule .
-	dosym /usr/share/doc/${PF}/docs /usr/lib/wxglade/docs
+	dosym ../../share/doc/${PF}/docs /usr/lib/wxglade/docs
 	fperms 775 /usr/lib/wxglade/wxglade.py
 	dosym ../lib/wxglade/wxglade.py /usr/bin/wxglade
 
