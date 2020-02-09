@@ -450,60 +450,7 @@ toolchain_src_unpack() {
 		git-r3_src_unpack
 	fi
 
-	if [[ -n ${GCC_A_FAKEIT} ]] ; then
-		eerror "Please migrate from 'GCC_A_FAKEIT' to 'default_src_unpack()'"
-		gcc_quick_unpack
-	else
-		# Just unpack every tarball from SRC_URI
-		default_src_unpack
-	fi
-}
-
-gcc_quick_unpack() {
-	pushd "${WORKDIR}" > /dev/null
-	export PATCH_GCC_VER=${PATCH_GCC_VER:-${GCC_RELEASE_VER}}
-	export UCLIBC_GCC_VER=${UCLIBC_GCC_VER:-${PATCH_GCC_VER}}
-	export PIE_GCC_VER=${PIE_GCC_VER:-${GCC_RELEASE_VER}}
-	export HTB_GCC_VER=${HTB_GCC_VER:-${GCC_RELEASE_VER}}
-	export SPECS_GCC_VER=${SPECS_GCC_VER:-${GCC_RELEASE_VER}}
-
-	# Injection point for more tarballs. dev-lang/gnat-gpl uses
-	# 'GCC_A_FAKEIT' to specify it's own source and binary tarballs.
-	if [[ -n ${GCC_A_FAKEIT} ]] ; then
-		unpack ${GCC_A_FAKEIT}
-	elif tc_is_live ; then
-		: # sources comes from git, not tarball
-	elif [[ -n ${SNAPSHOT} ]] ; then
-		unpack gcc-${SNAPSHOT}.tar.xz
-	else
-		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
-			unpack gcc-${GCC_RELEASE_VER}.tar.xz
-		else
-			unpack gcc-${GCC_RELEASE_VER}.tar.bz2
-		fi
-	fi
-
-	[[ -n ${PATCH_VER} ]] && \
-		unpack gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.bz2
-
-	[[ -n ${UCLIBC_VER} ]] && \
-		unpack gcc-${UCLIBC_GCC_VER}-uclibc-patches-${UCLIBC_VER}.tar.bz2
-
-	if want_pie ; then
-		if [[ -n ${PIE_CORE} ]] ; then
-			unpack ${PIE_CORE}
-		else
-			unpack gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.bz2
-		fi
-		[[ -n ${SPECS_VER} ]] && \
-			unpack gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.bz2
-	fi
-
-	use_if_iuse boundschecking && unpack "bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch.bz2"
-
-	[[ -n ${CYGWINPORTS_GITREV} ]] && use elibc_Cygwin && unpack "gcc-cygwinports-${CYGWINPORTS_GITREV}.tar.gz"
-
-	popd > /dev/null
+	default_src_unpack
 }
 
 #---->> src_prepare <<----
