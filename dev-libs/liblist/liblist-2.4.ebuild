@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit autotools-utils multilib
+inherit autotools
 
 DESCRIPTION="Generic linked-list manipulation routines, plus queues and stacks"
 HOMEPAGE="http://ohnopub.net/liblist"
@@ -12,36 +12,37 @@ SRC_URI="ftp://ohnopublishing.net/mirror/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~ppc64 x86 ~amd64-linux"
-IUSE="doc examples static-libs"
+IUSE="doc examples"
 
-RDEPEND="doc? ( media-gfx/transfig
+RDEPEND="
+	doc? (
 		dev-texlive/texlive-metapost
-		virtual/latex-base )"
+		media-gfx/transfig
+		virtual/latex-base
+	)"
 DEPEND="${RDEPEND}"
 
 src_configure() {
-	local myeconfargs=(
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
-		$(use_enable doc docs)
+	econf \
+		--disable-static \
+		$(use_enable doc docs) \
 		$(use_enable examples)
-	)
-
-	autotools-utils_src_configure
 }
 
 src_install() {
-	autotools-utils_src_install
-
-	dodoc README
+	default
 
 	if use examples; then
-		insinto /usr/share/doc/${PF}/examples
-		doins examples/{*.c,Makefile,README}
-		insinto /usr/share/doc/${PF}/examples/cache
-		doins examples/cache/{*.c,README}
+		docinto examples
+		dodoc examples/{*.c,Makefile,README}
+		docinto examples/cache
+		dodoc examples/cache/{*.c,README}
 	fi
 
 	docompress -x /usr/share/doc/${PF}/{list.0,paper.dvi,examples}
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {
