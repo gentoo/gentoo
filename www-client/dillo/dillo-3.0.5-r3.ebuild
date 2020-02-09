@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop multilib toolchain-funcs
+inherit autotools desktop multilib toolchain-funcs
 
 DESCRIPTION="Lean FLTK based web browser"
 HOMEPAGE="https://www.dillo.org/"
@@ -33,8 +33,14 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}2-inbuf.patch
 	"${FILESDIR}"/${PN}-3.0.5-fno-common.patch
+	"${FILESDIR}"/${PN}-3.0.5-openssl-1.1.patch
 )
 DOCS="AUTHORS ChangeLog README NEWS doc/*.txt doc/README"
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	econf  \

@@ -67,18 +67,23 @@ tc_version_is_between() {
 GCC_PV=${TOOLCHAIN_GCC_PV:-${PV}}
 GCC_PVR=${GCC_PV}
 [[ ${PR} != "r0" ]] && GCC_PVR=${GCC_PVR}-${PR}
+
+# GCC_RELEASE_VER must always match 'gcc/BASE-VER' value.
+# It's an internal representation of gcc version used for:
+# - versioned paths on disk
+# - 'gcc -dumpversion' output. Must always match <digit>.<digit>.<digit>.
 GCC_RELEASE_VER=$(ver_cut 1-3 ${GCC_PV})
+
 GCC_BRANCH_VER=$(ver_cut 1-2 ${GCC_PV})
 GCCMAJOR=$(ver_cut 1 ${GCC_PV})
 GCCMINOR=$(ver_cut 2 ${GCC_PV})
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
 
-# gcc hardcodes it's internal version into gcc/BASE-VER
-# and assumes various directories and tools to have the
-# same name.
-# TODO: once ada ebuilds are fixed turn it to
-#     GCC_CONFIG_VER=${GCC_RELEASE_VER}
-GCC_CONFIG_VER=${GCC_CONFIG_VER:-${GCC_RELEASE_VER}}
+# Ideally this variable should allow for custom gentoo versioning
+# of binary and gcc-config names not directly tied to upstream
+# versioning. In practive it's hard to untangle from gcc/BASE-VER
+# (GCC_RELEASE_VER) value.
+GCC_CONFIG_VER=${GCC_RELEASE_VER}
 
 # Pre-release support. Versioning schema:
 # 1.0.0_pre9999: live ebuild
@@ -445,60 +450,7 @@ toolchain_src_unpack() {
 		git-r3_src_unpack
 	fi
 
-	if [[ -n ${GCC_A_FAKEIT} ]] ; then
-		eerror "Please migrate from 'GCC_A_FAKEIT' to 'default_src_unpack()'"
-		gcc_quick_unpack
-	else
-		# Just unpack every tarball from SRC_URI
-		default_src_unpack
-	fi
-}
-
-gcc_quick_unpack() {
-	pushd "${WORKDIR}" > /dev/null
-	export PATCH_GCC_VER=${PATCH_GCC_VER:-${GCC_RELEASE_VER}}
-	export UCLIBC_GCC_VER=${UCLIBC_GCC_VER:-${PATCH_GCC_VER}}
-	export PIE_GCC_VER=${PIE_GCC_VER:-${GCC_RELEASE_VER}}
-	export HTB_GCC_VER=${HTB_GCC_VER:-${GCC_RELEASE_VER}}
-	export SPECS_GCC_VER=${SPECS_GCC_VER:-${GCC_RELEASE_VER}}
-
-	# Injection point for more tarballs. dev-lang/gnat-gpl uses
-	# 'GCC_A_FAKEIT' to specify it's own source and binary tarballs.
-	if [[ -n ${GCC_A_FAKEIT} ]] ; then
-		unpack ${GCC_A_FAKEIT}
-	elif tc_is_live ; then
-		: # sources comes from git, not tarball
-	elif [[ -n ${SNAPSHOT} ]] ; then
-		unpack gcc-${SNAPSHOT}.tar.xz
-	else
-		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
-			unpack gcc-${GCC_RELEASE_VER}.tar.xz
-		else
-			unpack gcc-${GCC_RELEASE_VER}.tar.bz2
-		fi
-	fi
-
-	[[ -n ${PATCH_VER} ]] && \
-		unpack gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.bz2
-
-	[[ -n ${UCLIBC_VER} ]] && \
-		unpack gcc-${UCLIBC_GCC_VER}-uclibc-patches-${UCLIBC_VER}.tar.bz2
-
-	if want_pie ; then
-		if [[ -n ${PIE_CORE} ]] ; then
-			unpack ${PIE_CORE}
-		else
-			unpack gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.bz2
-		fi
-		[[ -n ${SPECS_VER} ]] && \
-			unpack gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.bz2
-	fi
-
-	use_if_iuse boundschecking && unpack "bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch.bz2"
-
-	[[ -n ${CYGWINPORTS_GITREV} ]] && use elibc_Cygwin && unpack "gcc-cygwinports-${CYGWINPORTS_GITREV}.tar.gz"
-
-	popd > /dev/null
+	default_src_unpack
 }
 
 #---->> src_prepare <<----
@@ -584,9 +536,7 @@ toolchain_src_prepare() {
 		local actual_version=$(< "${S}"/gcc/BASE-VER)
 		if [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
 			eerror "'${S}/gcc/BASE-VER' contains '${actual_version}', expected '${GCC_RELEASE_VER}'"
-			# TODO: once ada ebuilds are fixed turn it to 'die'
-			eerror "Please set GCC_RELEASE_VER to '${actual_version}'"
-			echo "${GCC_CONFIG_VER}" > "${S}"/gcc/BASE-VER
+			die "Please set 'TOOLCHAIN_GCC_PV' to '${actual_version}'"
 		fi
 	fi
 
