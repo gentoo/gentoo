@@ -1,8 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-inherit autotools eutils readme.gentoo-r1 user systemd git-r3
+EAPI=7
+
+inherit autotools eutils readme.gentoo-r1 systemd git-r3
 
 DESCRIPTION="Lightweight high-performance web server"
 HOMEPAGE="https://www.lighttpd.net
@@ -17,7 +18,7 @@ RESTRICT="!test? ( test )"
 
 REQUIRED_USE="kerberos? ( ssl !libressl )"
 
-CDEPEND="
+COMMON_DEPEND="
 	bzip2?    ( app-arch/bzip2 )
 	fam?      ( virtual/fam )
 	gdbm?     ( sys-libs/gdbm )
@@ -39,9 +40,11 @@ CDEPEND="
 		sys-fs/e2fsprogs
 	)
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
-	zlib? (	>=sys-libs/zlib-1.1 )"
+	zlib? (	>=sys-libs/zlib-1.1 )
+	acct-group/lighttpd
+	acct-user/lighttpd"
 
-DEPEND="${CDEPEND}
+DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	doc?  ( dev-python/docutils )
 	test? (
@@ -49,7 +52,7 @@ DEPEND="${CDEPEND}
 		dev-libs/fcgi
 	)"
 
-RDEPEND="${CDEPEND}
+RDEPEND="${COMMON_DEPEND}
 	selinux? ( sec-policy/selinux-apache )
 "
 

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools flag-o-matic readme.gentoo-r1 systemd user
+inherit autotools flag-o-matic readme.gentoo-r1 systemd
 
 DESCRIPTION="Lightweight high-performance web server"
 HOMEPAGE="https://www.lighttpd.net https://github.com/lighttpd"
@@ -46,7 +46,9 @@ COMMON_DEPEND="
 		sys-fs/e2fsprogs
 	)
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
-	zlib? ( >=sys-libs/zlib-1.1 )"
+	zlib? ( >=sys-libs/zlib-1.1 )
+	acct-group/lighttpd
+	acct-user/lighttpd"
 
 DEPEND="${COMMON_DEPEND}
 	doc?  ( dev-python/docutils )
@@ -101,9 +103,6 @@ pkg_setup() {
 		ewarn "as conditionals and modules such as mod_re{write,direct}"
 		ewarn "and mod_ssi."
 	fi
-
-	enewgroup lighttpd
-	enewuser lighttpd -1 -1 /var/www/localhost/htdocs lighttpd
 
 	DOC_CONTENTS="IPv6 migration guide:\n
 		http://redmine.lighttpd.net/projects/lighttpd/wiki/IPv6-Config"
