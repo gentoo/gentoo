@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -52,19 +52,16 @@ src_install() {
 
 	dodoc README.md
 
-	if use mfc ; then
-		insinto /usr/share/doc/${PF}
-		doins "${FILESDIR}"/cccc-MFC-dialect.opt
-	fi
+	use mfc && dodoc "${FILESDIR}"/cccc-MFC-dialect.opt
 
 	if use doc ; then
-		insinto /usr/share/doc/${PF}/html
-		doins cccc/*.html
+		docinto html
+		dodoc cccc/*.html
 		if use apidoc ; then
-			insinto /usr/share/doc/${PF}/html/api
-			doins -r doxygen/html/*
-			insinto /usr/share/doc/${PF}/html/metrics
-			doins ccccout/*
+			docinto html/api
+			dodoc -r doxygen/html/.
+			docinto html/metrics
+			dodoc -r ccccout/.
 		fi
 	fi
 }
