@@ -19,6 +19,7 @@ KEYWORDS="~amd64 ~ppc ~x86 ~x86-linux ~x86-macos"
 IUSE=""
 
 DEPEND="
+	app-arch/unzip
 	dev-vcs/mercurial
 "
 RDEPEND="${DEPEND}
