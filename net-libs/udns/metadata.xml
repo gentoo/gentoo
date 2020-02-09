@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
-<use>
-	<flag name="tools">Build and install dnsget, ex-rdns and rblcheck tools</flag>
-</use>
-<longdescription>
-UDNS is a stub DNS resolver library with ability to perform both syncronous and asyncronous DNS queries.
-</longdescription>
+	<!-- maintainer-needed -->
+	<use>
+		<flag name="tools">Build and install dnsget, ex-rdns and rblcheck tools</flag>
+	</use>
+	<longdescription>
+		UDNS is a stub DNS resolver library with ability to perform both syncronous and asyncronous DNS queries.
+	</longdescription>
 </pkgmetadata>

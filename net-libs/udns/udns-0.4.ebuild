@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit eutils multilib toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="Async-capable DNS stub resolver library"
 HOMEPAGE="http://www.corpit.ru/mjt/udns.html"
@@ -14,26 +14,18 @@ SLOT="0"
 KEYWORDS="amd64 ~hppa ppc ~ppc64 sparc x86"
 IUSE="ipv6 static +tools"
 
-# Yes, this doesn't depend on any other library beside "system" set
-DEPEND=""
-RDEPEND=""
-
 src_configure() {
 	# Uses non-standard configure script, econf doesn't work
 	CC=$(tc-getCC) ./configure $(use_enable ipv6) || die "Configure failed"
 }
 
 src_compile() {
-	if use tools; then
-		emake shared
-	else
-		emake sharedlib
-	fi
+	emake $(usex tools shared sharedlib)
 }
 
 src_install() {
 	dolib.so libudns.so.0
-	dosym libudns.so.0 "/usr/$(get_libdir)/libudns.so"
+	dosym libudns.so.0 /usr/$(get_libdir)/libudns.so
 
 	if use tools; then
 		newbin dnsget_s dnsget
@@ -41,12 +33,10 @@ src_install() {
 		newbin rblcheck_s rblcheck
 	fi
 
-	insinto /usr/include
-	doins udns.h
+	doheader udns.h
 
 	doman udns.3
-	if use tools; then
-		doman dnsget.1 rblcheck.1
-	fi
+	use tools && doman dnsget.1 rblcheck.1
+
 	dodoc NEWS NOTES TODO
 }
