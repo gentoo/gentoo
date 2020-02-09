@@ -3,9 +3,9 @@ DEPEND=app-misc/pax-utils >=gnustep-base/gnustep-make-2.6.0
 DESCRIPTION=Helper tool to upgrade Gentoo GNUstep installations
 EAPI=7
 HOMEPAGE=https://wiki.gentoo.org/wiki/Project:GNUstep
-KEYWORDS=~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris
 LICENSE=GPL-2
 RDEPEND=app-misc/pax-utils >=gnustep-base/gnustep-make-2.6.0
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~voyageur/distfiles/gnustep-updater-0.3.tar.bz2
-_md5_=6fe09e5c5ab413e394e1773bede5ab91
+_md5_=547398a099bb2dda72d975bf8ca9b968

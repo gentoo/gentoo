@@ -11,4 +11,4 @@ RDEPEND=acct-group/mail
 SLOT=0
 SRC_URI=https://github.com/miquels/liblockfile/archive/v1.16.tar.gz -> liblockfile-1.16.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=175d1aaeacdeff00122c97bfef4a6010
+_md5_=5d165f455df8ff9c595964810bf2a233

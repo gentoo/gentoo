@@ -531,7 +531,7 @@ app-arch/cabextract 1.8 1.9-r2 1.9.1 9999: Extracts files from Microsoft cabinet
 app-arch/cfv 1.18.3-r1: Utility to test and create .sfv, .csv, .crc and md5sum files
 app-arch/cksfv 1.3.14 1.3.14-r1: SFV checksum utility (simple file verification)
 app-arch/cpio 2.12-r1 2.13: A file archival tool which can also read and write tar files
-app-arch/deb2targz 1-r2 1-r3: Convert a .deb file to a .tar.gz archive
+app-arch/deb2targz 1-r3: Convert a .deb file to a .tar.gz archive
 app-arch/deltarpm 3.6: tools to create and apply deltarpms
 app-arch/dpkg 1.19.0.5 1.19.6 1.19.7: Package maintenance system for Debian
 app-arch/duff 0.5.2: Command-line utility for quickly finding duplicates in a given set of files
@@ -4683,7 +4683,7 @@ dev-lang/crystal 0.31.1 0.32.0 0.32.1: The Crystal Programming Language
 dev-lang/duktape 2.2.1 2.4.0: Embeddable Javascript engine
 dev-lang/elixir 1.4.5 1.6.6 1.8.1 1.8.2 1.9.2 1.9.4 1.10.0: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
-dev-lang/erlang 21.1.1 22.1.4 22.1.8-r1 22.2 22.2.1-r1 22.2.2 22.2.3 22.2.4 22.2.5: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 21.1.1 22.1.4 22.1.8-r1 22.2 22.2.1-r1 22.2.2 22.2.3 22.2.4 22.2.5 22.2.6: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -8396,7 +8396,7 @@ dev-python/pyformance 0.3.4 0.4: Performance metrics, based on Coda Hale's Yamme
 dev-python/pyftpdlib 1.5.5-r1: Python FTP server library
 dev-python/pygal 2.4.0: A python SVG charts generator
 dev-python/pygame 1.9.3 1.9.6 1.9.6-r1: Python bindings for SDL multimedia library
-dev-python/pygame_sdl2 6.99.6-r2 6.99.12.4-r1 6.99.12.4-r2: Reimplementation of portions of the pygame API using SDL2
+dev-python/pygame_sdl2 6.99.12.4-r2: Reimplementation of portions of the pygame API using SDL2
 dev-python/pygcrypt 1.0.0: CFFI interface to dev-libs/libgcrypt
 dev-python/pygene 0.2.1-r1: Simple python genetic algorithms programming library
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
@@ -10650,7 +10650,7 @@ dev-util/premake 3.7 4.3-r1 4.4_beta5 5.0.0_alpha12: A makefile generation tool
 dev-util/pretrace 0.4-r1: start dynamically linked applications under debugging environment
 dev-util/promu 0.5.0: Prometheus Utility Tool
 dev-util/pscan 20000721-r1: A limited problem scanner for C source files
-dev-util/pycharm-community 2019.3.1 2019.3.2: Intelligent Python IDE with unique code assistance and analysis
+dev-util/pycharm-community 2019.3.1 2019.3.2 2019.3.3: Intelligent Python IDE with unique code assistance and analysis
 dev-util/pycharm-professional 2019.3.1 2019.3.2: Intelligent Python IDE with unique code assistance and analysis
 dev-util/qbs 1.12.2 1.14.1 1.15.0: Modern build tool for software projects
 dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS and text files
@@ -11771,7 +11771,7 @@ gnustep-base/gnustep-back-xlib 0.25.0 0.25.1 0.26.2 0.27.0: Default X11 back-end
 gnustep-base/gnustep-base 1.24.9-r1 1.25.0 1.25.1 1.26.0 1.26.0-r1: A library of general-purpose, non-graphical Objective C objects
 gnustep-base/gnustep-gui 0.25.0 0.25.1 0.26.2 0.27.0: Library of GUI classes written in Obj-C
 gnustep-base/gnustep-make 2.6.8 2.7.0: GNUstep Makefile Package
-gnustep-base/gnustep-updater 0.3 0.3-r1: Helper tool to upgrade Gentoo GNUstep installations
+gnustep-base/gnustep-updater 0.3-r1: Helper tool to upgrade Gentoo GNUstep installations
 gnustep-base/libobjc2 1.8 1.8.1 2.0: GNUstep Objective-C runtime
 gnustep-base/mknfonts 0.5-r2 0.5-r3: A tool to create .nfont packages for use with gnustep-back-art
 gnustep-libs/cenonlibrary 4.0.0: Default library required to run Cenon
@@ -14700,7 +14700,7 @@ net-libs/libiscsi 1.18.0 9999: iscsi client library and utilities
 net-libs/libisds 0.10.6 0.10.7 0.10.8 0.11 9999: Client library for accessing ISDS Soap services
 net-libs/libktorrent 2.1.1: BitTorrent library based on KDE Frameworks
 net-libs/libkvkontakte 5.0.0-r1: Library for accessing the features of social networking site vkontakte.ru
-net-libs/liblockfile 1.09 1.16: Implements functions designed to lock the standard mailboxes
+net-libs/liblockfile 1.16: Implements functions designed to lock the standard mailboxes
 net-libs/libmbim 1.6.0 1.10.0 1.12.2 1.12.4 1.14.0 1.14.4 1.16.0 1.16.2 1.18.0: Mobile Broadband Interface Model (MBIM) modem protocol helper library
 net-libs/libmediawiki 5.37.0-r1: C++ interface for MediaWiki based web service as wikipedia.org
 net-libs/libmicrodns 0.0.9 9999: Minimal mDNS resolver (and announcer) library
@@ -14854,7 +14854,7 @@ net-mail/mailgraph 1.14-r2: A mail statistics RRDtool frontend for Postfix
 net-mail/mailman 2.1.29-r1 2.1.29-r2 3.1.1 3.2.1: Mailman -- the GNU mailing list manager
 net-mail/mailshears 0.0.3-r1: Mangle your mail garden
 net-mail/mailutils 3.4-r3 3.7 3.8: A useful collection of mail servers, clients, and filters
-net-mail/mairix 0.23 0.24: Indexes and searches Maildir/MH folders
+net-mail/mairix 0.24: Indexes and searches Maildir/MH folders
 net-mail/mboxgrep 0.7.9-r1: Grep for mbox files
 net-mail/mess822 0.58-r2: Collection of utilities for parsing Internet mail messages
 net-mail/metamail 2.7.53.3-r2: Metamail (with Debian patches) - Generic MIME package
@@ -17039,7 +17039,7 @@ sys-auth/libnss-mysql 1.5_p20060915-r4: NSS MySQL Library
 sys-auth/libnss-nis 1.4: NSS module to provide NIS support
 sys-auth/libnss-pgsql 1.5.0_beta-r1: Name Service Switch module for use with PostgreSQL
 sys-auth/libyubikey 1.13: Yubico C low-level library
-sys-auth/munge 0.5.10-r2 0.5.13 0.5.13-r1: An authentication service for creating and validating credentials
+sys-auth/munge 0.5.13-r1: An authentication service for creating and validating credentials
 sys-auth/nss-mdns 0.14.1 9999: Name Service Switch module for Multicast DNS
 sys-auth/nss-myhostname 0.3: Name Service Switch module for resolving the local hostname
 sys-auth/nss-pam-ldapd 0.9.10 0.9.11 0.9.11-r1 0.9.11-r2: NSS module for name lookups using LDAP
@@ -18017,7 +18017,7 @@ www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and run
 www-apps/wordpress 5.3.1 5.3.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
 www-client/chromium 80.0.3987.87 81.0.4044.9: Open-source version of Google Chrome web browser
-www-client/dillo 3.0.5 3.0.5-r1 3.0.5-r2 9999: Lean FLTK based web browser
+www-client/dillo 3.0.5 3.0.5-r3 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
