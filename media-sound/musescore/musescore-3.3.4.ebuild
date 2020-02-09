@@ -16,7 +16,7 @@ SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio +sf3 webengine"
 REQUIRED_USE="portmidi? ( portaudio )"
 
