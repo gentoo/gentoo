@@ -1,0 +1,57 @@
+diff --git a/debian/freeradius.service b/debian/freeradius.service
+index 378702d184..ee33c2a294 100644
+--- a/debian/freeradius.service
++++ b/debian/freeradius.service
+@@ -7,7 +7,6 @@ Documentation=man:radiusd(8) man:radiusd.conf(5) http://wiki.freeradius.org/ htt
+ Type=notify
+ WatchdogSec=60
+ NotifyAccess=all
+-EnvironmentFile=-/etc/default/freeradius
+ 
+ # FreeRADIUS can do static evaluation of policy language rules based
+ # on environmental variables which is very useful for doing per-host
+@@ -25,16 +24,15 @@ MemoryLimit=2G
+ # Ensure the daemon can still write its pidfile after it drops
+ # privileges. Combination of options that work on a variety of
+ # systems. Test very carefully if you alter these lines.
+-RuntimeDirectory=freeradius
++RuntimeDirectory=radiusd
+ RuntimeDirectoryMode=0775
+ # This does not work on Debian Jessie:
+-User=freerad
+-Group=freerad
+-# This does not work on Ubuntu Bionic:
+-ExecStartPre=/bin/chown freerad:freerad /var/run/freeradius
++User=radius
++Group=radius
+ 
+-ExecStartPre=/usr/sbin/freeradius $FREERADIUS_OPTIONS -Cx -lstdout
+-ExecStart=/usr/sbin/freeradius -f $FREERADIUS_OPTIONS
++ExecStartPre=/usr/sbin/radiusd $RADIUSD_OPTIONS -Cx -lstdout
++ExecStart=/usr/sbin/radiusd -f $RADIUSD_OPTIONS
++ExecReload=/bin/kill -HUP $MAINPID
+ Restart=on-failure
+ RestartSec=5
+ 
+@@ -42,7 +40,7 @@ RestartSec=5
+ NoNewPrivileges=true
+ 
+ # Allow binding to secure ports, broadcast addresses, and raw interfaces.
+-#CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_RAW CAP_SETUID CAP_SETGID CAP_CHOWN CAP_DAC_OVERRIDE
++CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_BROADCAST CAP_NET_RAW CAP_SETUID CAP_SETGID CAP_CHOWN CAP_DAC_OVERRIDE
+ 
+ # Private /tmp that isn't shared by other processes
+ PrivateTmp=true
+@@ -60,10 +58,10 @@ ProtectKernelTunables=true
+ SystemCallArchitectures=native
+ 
+ # We shouldn't be writing to the configuration directory
+-ReadOnlyDirectories=/etc/freeradius/
++ReadOnlyDirectories=/etc/raddb/
+ 
+ # We can read and write to the log directory.
+-ReadWriteDirectories=/var/log/freeradius/
++ReadWriteDirectories=/var/log/radius/
+ 
+ [Install]
+ WantedBy=multi-user.target
