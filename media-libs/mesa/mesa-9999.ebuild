@@ -29,7 +29,7 @@ RESTRICT="
 "
 
 RADEON_CARDS="r100 r200 r300 r600 radeon radeonsi"
-VIDEO_CARDS="${RADEON_CARDS} freedreno i915 i965 intel iris lima nouveau panfrost vc4 virgl vivante vmware"
+VIDEO_CARDS="${RADEON_CARDS} freedreno i915 i965 intel iris lima nouveau panfrost vc4 virgl vivante vmware zink"
 for card in ${VIDEO_CARDS}; do
 	IUSE_VIDEO_CARDS+=" video_cards_${card}"
 done
@@ -67,6 +67,7 @@ REQUIRED_USE="
 	video_cards_virgl? ( gallium )
 	video_cards_vivante? ( gallium gbm )
 	video_cards_vmware? ( gallium )
+	video_cards_zink? ( gallium vulkan )
 	xa? ( X )
 	xvmc? ( X )
 "
@@ -422,6 +423,7 @@ multilib_src_configure() {
 		gallium_enable video_cards_vc4 vc4
 		gallium_enable video_cards_vivante etnaviv
 		gallium_enable video_cards_vmware svga
+		gallium_enable video_cards_zink zink
 		gallium_enable video_cards_nouveau nouveau
 
 		# Only one i915 driver (classic vs gallium). Default to classic.
