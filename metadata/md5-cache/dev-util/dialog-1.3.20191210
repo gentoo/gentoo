@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=sys-libs/ncurses-5.2-r5:=[unicode?] nls? ( sys-devel/gettext ) !minimal? ( sys-devel/libtool ) !<=sys-freebsd/freebsd-contrib-8.9999
+DEPEND=>=sys-libs/ncurses-5.2-r5:=[unicode?] nls? ( sys-devel/gettext ) !minimal? ( sys-devel/libtool )
 DESCRIPTION=tool to display dialog boxes from a shell
 EAPI=7
 HOMEPAGE=https://invisible-island.net/dialog/
@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=>=sys-libs/ncurses-5.2-r5:=[unicode?]
 SLOT=0/15
 SRC_URI=https://dev.gentoo.org/~jer/dialog-1.3-20191210.tar.gz
-_md5_=fcd9fe5befcce6a79ef32be333d3d1a1
+_md5_=f507397843429defd43b01ac2dd5a956
