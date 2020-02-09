@@ -19,8 +19,7 @@ IUSE=""
 RESTRICT="test"
 
 RDEPEND="dev-lang/perl
-	virtual/perl-Getopt-Long
-	!<dev-util/rpmdevtools-8.3-r1"
+	virtual/perl-Getopt-Long"
 
 S="${WORKDIR}/${MY_P}/scripts"
 
