@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -54,6 +54,7 @@ src_prepare() {
 	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-typos.patch
 	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-man-hyphen.patch
 	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-fprintf_format_warnings.patch
+	epatch "${FILESDIR}"/${PN}-3.2.5e-gcc10-fno-common.patch
 
 	sed -e 's:-L$(ZLIBDIR) -lz::' \
 		-e 's: -lX11::' \
