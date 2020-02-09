@@ -14,7 +14,7 @@ DESCRIPTION="Network-enabled task manager and system monitor"
 LICENSE="GPL-2+"
 SLOT="5"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
-IUSE="caps lm-sensors"
+IUSE="lm-sensors pcap"
 
 DEPEND="
 	>=kde-frameworks/kcompletion-${KFMIN}:5
@@ -37,7 +37,7 @@ DEPEND="
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=dev-qt/qtxml-${QTMIN}:5
-	caps? (
+	pcap? (
 		net-libs/libpcap
 		sys-libs/libcap
 	)
@@ -47,7 +47,7 @@ RDEPEND="${DEPEND}"
 
 src_configure() {
 	local mycmakeargs=(
-		$(cmake_use_find_package caps libpcap)
+		$(cmake_use_find_package pcap libpcap)
 		$(cmake_use_find_package lm-sensors Sensors)
 	)
 
