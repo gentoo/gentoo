@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-09)
+# Dead upstream, broken by Qt 5.14, bug #703930. Masked for removal in 30 days.
+net-nntp/kwooty
+
 # Mike Pagano <mpagano@gentoo.org> (2020-02-07)
 # The standalone ebuild for this driver is made
 # unnecessary as it is included in the package:
