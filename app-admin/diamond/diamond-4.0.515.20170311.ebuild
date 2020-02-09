@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} = 9999* ]]; then
 else
 	GHASH=73207d04e0739a4ce92bc201b36681c42d9fa7e7  # python3 branch
 	SRC_URI="https://github.com/python-diamond/Diamond/archive/${GHASH}.tar.gz -> python-diamond-${PV}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	S=${WORKDIR}/Diamond-${GHASH}
 fi
 
