@@ -14,14 +14,13 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/${P}/${P}.tar.gz"
 SLOT="0"
 LICENSE="GPL-2"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="dbus doc fits hdf5 minuit"
+IUSE="dbus doc hdf5 minuit"
 RESTRICT="!test? ( test )"
 
 CDEPEND="dev-python/PyQt5[widgets,svg,printsupport,${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]"
 RDEPEND="${CDEPEND}
 	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
-	fits? ( dev-python/astropy[${PYTHON_USEDEP}] )
 	hdf5? ( dev-python/h5py[${PYTHON_USEDEP}] )
 	minuit? ( || ( dev-python/iminuit[${PYTHON_USEDEP}] dev-python/pyminuit[${PYTHON_USEDEP}] ) )"
 DEPEND="${CDEPEND}
