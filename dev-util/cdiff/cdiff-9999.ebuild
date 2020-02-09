@@ -17,7 +17,6 @@ KEYWORDS=""
 IUSE=""
 
 DEPEND="
-	!<app-misc/colordiff-1.0.13-r1
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	sys-apps/less"
 RDEPEND="${DEPEND}"
