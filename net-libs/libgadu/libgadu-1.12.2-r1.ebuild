@@ -33,6 +33,10 @@ RDEPEND="${DEPEND}"
 
 BUILD_DIR="${S}"
 
+PATCHES=(
+	"${FILESDIR}/${P}-fno-common.patch"
+)
+
 DOCS=( AUTHORS ChangeLog NEWS README )
 
 src_prepare() {
