@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2020-02-09)
+# No stable gnome-base/dconf on hppa.
+dev-libs/glib dbus
+
 # Mart Raudsepp <leio@gentoo.org> (2020-02-08)
 # No stable x11-libs/gtk+ on hppa.
 gnome-base/librsvg tools
