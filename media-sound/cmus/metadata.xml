@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="cdio">Use libcdio for CD support </flag>
-		<flag name="cue">Enable CUE sheet parsing</flag>
 		<flag name="discid">Enable reading the ID of the inserted CD</flag>
 		<flag name="elogind">Enable MPRIS support via <pkg>sys-auth/elogind</pkg></flag>
 		<flag name="pidgin">Install support script for <pkg>net-im/pidgin</pkg></flag>
