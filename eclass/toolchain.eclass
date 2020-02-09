@@ -67,18 +67,23 @@ tc_version_is_between() {
 GCC_PV=${TOOLCHAIN_GCC_PV:-${PV}}
 GCC_PVR=${GCC_PV}
 [[ ${PR} != "r0" ]] && GCC_PVR=${GCC_PVR}-${PR}
+
+# GCC_RELEASE_VER must always match 'gcc/BASE-VER' value.
+# It's an internal representation of gcc version used for:
+# - versioned paths on disk
+# - 'gcc -dumpversion' output. Must always match <digit>.<digit>.<digit>.
 GCC_RELEASE_VER=$(ver_cut 1-3 ${GCC_PV})
+
 GCC_BRANCH_VER=$(ver_cut 1-2 ${GCC_PV})
 GCCMAJOR=$(ver_cut 1 ${GCC_PV})
 GCCMINOR=$(ver_cut 2 ${GCC_PV})
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
 
-# gcc hardcodes it's internal version into gcc/BASE-VER
-# and assumes various directories and tools to have the
-# same name.
-# TODO: once ada ebuilds are fixed turn it to
-#     GCC_CONFIG_VER=${GCC_RELEASE_VER}
-GCC_CONFIG_VER=${GCC_CONFIG_VER:-${GCC_RELEASE_VER}}
+# Ideally this variable should allow for custom gentoo versioning
+# of binary and gcc-config names not directly tied to upstream
+# versioning. In practive it's hard to untangle from gcc/BASE-VER
+# (GCC_RELEASE_VER) value.
+GCC_CONFIG_VER=${GCC_RELEASE_VER}
 
 # Pre-release support. Versioning schema:
 # 1.0.0_pre9999: live ebuild
