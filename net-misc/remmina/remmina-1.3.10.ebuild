@@ -51,6 +51,7 @@ RDEPEND="${CDEPEND}
 "
 
 DOCS=( AUTHORS CHANGELOG.md README.md THANKS.md )
+PATCHES=( "${FILESDIR}"/${PN}-gcc10.patch )
 
 S="${WORKDIR}/${MY_P}"
 
