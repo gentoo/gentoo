@@ -3,6 +3,8 @@
 
 EAPI=7
 
+inherit multilib-build
+
 DESCRIPTION="Virtual for libcrypt.so"
 
 SLOT="0/1"
