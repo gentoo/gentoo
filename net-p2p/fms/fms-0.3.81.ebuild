@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,7 +6,8 @@ EAPI="6"
 inherit eutils cmake-utils user
 
 DESCRIPTION="A spam-resistant message board application for Freenet"
-HOMEPAGE="http://freenetproject.org/tools.html"
+#FMS oly has a homepage within freenet, so the closest is a wiki linking to it
+HOMEPAGE="https://github.com/freenet/wiki/wiki/FMS"
 SRC_URI="https://dev.gentoo.org/~tommy/distfiles/${PN}-src-${PV}.zip"
 
 LICENSE="GPL-2"
@@ -15,8 +16,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="frost ssl"
 
 RDEPEND="virtual/libiconv
-	frost? ( net-libs/mbedtls )
-	ssl? ( net-libs/mbedtls )
+	frost? ( net-libs/mbedtls:0/12 )
+	ssl? ( net-libs/mbedtls:0/12 )
 	>=dev-libs/poco-1.4.3_p1
 	>=dev-db/sqlite-3.6.15"
 DEPEND="${RDEPEND}
