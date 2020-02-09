@@ -1,39 +1,35 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 JAVA_PKG_IUSE="doc source test"
 
 inherit eutils java-pkg-2 java-ant-2 prefix user
 
-MY_P="apache-${PN}-${PV}-src"
+MY_P="apache-${P}-src"
 
-DESCRIPTION="Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container"
+DESCRIPTION="Tomcat Servlet-3.0/JSP-2.2 Container"
 HOMEPAGE="https://tomcat.apache.org/"
-SRC_URI="mirror://apache/${PN}/tomcat-9/v${PV}/src/${MY_P}.tar.gz"
+SRC_URI="mirror://apache/${PN}/tomcat-7/v${PV}/src/${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"
-SLOT="9"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
-IUSE="extra-webapps"
+SLOT="7"
+KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux ~x86-solaris"
+IUSE="extra-webapps websockets"
 
 RESTRICT="test" # can we run them on a production system?
 
 ECJ_SLOT="4.5"
-SAPI_SLOT="4.0"
+SAPI_SLOT="3.0"
 
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
-	~dev-java/tomcat-servlet-api-${PV}:${SAPI_SLOT}"
+	dev-java/tomcat-servlet-api:${SAPI_SLOT}"
 RDEPEND="${COMMON_DEP}
-	>=virtual/jre-1.8"
+	virtual/jre"
 DEPEND="${COMMON_DEP}
-	app-admin/pwgen
-	>=virtual/jdk-1.8
-	test? (
-		>=dev-java/ant-junit-1.9:0
-		dev-java/easymock:3.2
-	)"
+	virtual/jdk:1.8
+	test? ( dev-java/ant-junit:0 )"
 
 S=${WORKDIR}/${MY_P}
 
@@ -46,12 +42,12 @@ pkg_setup() {
 src_prepare() {
 	default
 
-	find -name '*.jar' -type f -delete -print || die
-
 	# Remove bundled servlet-api
 	rm -rv java/javax/{el,servlet} || die
 
-	eapply "${FILESDIR}/${PN}-9.0.4-build.xml.patch"
+	java-pkg_clean
+
+	eapply "${FILESDIR}/${P}-build.xml.patch"
 
 	# For use of catalina.sh in netbeans
 	sed -i -e "/^# ----- Execute The Requested Command/ a\
@@ -65,16 +61,16 @@ JAVA_ANT_REWRITE_CLASSPATH="true"
 
 EANT_BUILD_TARGET="deploy"
 EANT_GENTOO_CLASSPATH="eclipse-ecj-${ECJ_SLOT},tomcat-servlet-api-${SAPI_SLOT}"
-EANT_TEST_GENTOO_CLASSPATH="easymock-3.2"
 EANT_GENTOO_CLASSPATH_EXTRA="${S}/output/classes"
 EANT_NEEDS_TOOLS="true"
 EANT_EXTRA_ARGS="-Dversion=${PV}-gentoo -Dversion.number=${PV} -Dcompile.debug=false"
 
 # revisions of the scripts
-IM_REV="-r2"
+IM_REV="-r1"
 INIT_REV="-r1"
 
 src_compile() {
+	use websockets && EANT_EXTRA_ARGS+=" -Djava.7.home=${JAVA_HOME}"
 	EANT_GENTOO_CLASSPATH_EXTRA+=":$(java-pkg_getjar --build-only ant-core ant.jar)"
 	java-pkg-2_src_compile
 }
@@ -100,13 +96,6 @@ src_install() {
 
 	### Webapps ###
 
-	# add missing docBase
-	local apps="host-manager manager"
-	for app in ${apps}; do
-		sed -i -e "s|=\"true\" >|=\"true\" docBase=\"\$\{catalina.home\}/webapps/${app}\" >|" \
-			output/build/webapps/${app}/META-INF/context.xml || die
-	done
-
 	insinto "${dest}"/webapps
 	doins -r output/build/webapps/{host-manager,manager,ROOT}
 	use extra-webapps && doins -r output/build/webapps/{docs,examples}
@@ -119,7 +108,7 @@ src_install() {
 	fperms 0750 "${dest}"/logs
 
 	# replace the default pw with a random one, see #92281
-	local randpw="$(pwgen -s -B 15 1)"
+	local randpw=$(echo ${RANDOM}|md5sum|cut -c 1-15)
 	sed -i -e "s|SHUTDOWN|${randpw}|" output/build/conf/server.xml || die
 
 	# prepend gentoo.classpath to common.loader, see #453212
