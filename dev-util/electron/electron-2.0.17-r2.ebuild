@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -124,7 +124,6 @@ COMMON_DEPEND="
 			media-video/ffmpeg[-samba]
 			>=net-fs/samba-4.5.10-r1[-debug(-)]
 		)
-		!=net-fs/samba-4.5.12-r0
 		media-libs/opus:=
 	)
 	>=net-dns/c-ares-1.13.0:=
@@ -157,7 +156,6 @@ COMMON_DEPEND="
 "
 # For nvidia-drivers blocker, see bug #413637 .
 RDEPEND="${COMMON_DEPEND}
-	!<dev-util/electron-0.36.12-r4
 	x11-misc/xdg-utils
 	virtual/opengl
 	virtual/ttf-fonts
