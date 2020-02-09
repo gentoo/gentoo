@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/scim-im/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm arm64 hppa ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="doc gtk3"
 
 RDEPEND="x11-libs/libX11
