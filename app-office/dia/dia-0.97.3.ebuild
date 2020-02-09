@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ HOMEPAGE="https://wiki.gnome.org/Apps/Dia"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm hppa ~ia64 ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~arm ~hppa ~ia64 ~ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 # the doc USE flag doesn't seem to do anything without docbook2html
 # cairo support is preferred as explained by upstream at:
 # https://bugzilla.gnome.org/show_bug.cgi?id=729668#c6
