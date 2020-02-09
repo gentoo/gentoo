@@ -6,7 +6,7 @@
 # base-system@gentoo.org
 # @BLURB: convenience class for extracting RPMs
 
-inherit eutils
+inherit estack eutils
 
 DEPEND=">=app-arch/rpm2targz-9.0.0.3g"
 
