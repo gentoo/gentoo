@@ -2494,7 +2494,7 @@ app-text/blogc 0.18.0 9999: A blog compiler
 app-text/bogosort 0.4.2-r1: A file sorting program which uses the bogosort algorithm
 app-text/build-docbook-catalog 1.21: DocBook XML catalog auto-updater
 app-text/c2ps 4.0: Generates a beautified ps document from a source file (c/c++)
-app-text/calibre 3.48.0-r2 4.9.1-r1 4.10.1-r1: Ebook management application
+app-text/calibre 3.48.0-r2 4.9.1-r2 4.10.1-r2: Ebook management application
 app-text/capyt 1.1.1: A python3 CLI utility to interface with cpy.pt paste service
 app-text/catdoc 0.95 0.95-r1: Converter for Microsoft Word, Excel, PowerPoint and RTF files to text
 app-text/cb2bib 1.9.8 1.9.9 2.0.0: Tool for extracting unformatted bibliographic references
@@ -5466,7 +5466,7 @@ dev-ml/ppx_pipebang 0.9.0: A ppx rewriter that inlines reverse application opera
 dev-ml/ppx_sexp_conv 0.9.0-r1: Support Library for type-driven code generators
 dev-ml/ppx_sexp_message 0.9.0: A ppx rewriter for easy construction of s-expressions
 dev-ml/ppx_sexp_value 0.9.0: Standard library for ppx rewriters
-dev-ml/ppx_tools 5.0.4.03.0 5.0.4.05.0: Tools for authors of ppx rewriters
+dev-ml/ppx_tools 5.0.4.03.0 5.0.4.05.0 5.3.4.08.0: Tools for authors of ppx rewriters
 dev-ml/ppx_tools_versioned 5.0.1: Tools for authors of ppx rewriters
 dev-ml/ppx_traverse 0.9.0: Automatic generation of open recursion classes
 dev-ml/ppx_traverse_builtins 0.9.0: Builtins for ppx_traverse
@@ -8827,7 +8827,7 @@ dev-python/slimit 0.8.1-r1: A JavaScript minifier written in Python
 dev-python/slixmpp 1.4.0 1.4.2 9999: Python 3 library for XMPP
 dev-python/smmap 0.9.0: A pure git implementation of a sliding window memory map manager
 dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory map manager
-dev-python/snakeoil 0.7.5 0.8.5 0.8.7 9999: misc common functionality and useful optimizations
+dev-python/snakeoil 0.7.5 0.8.7 0.8.8 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.5-r2 0.5.1: Python library for the snappy compression library from Google
 dev-python/snowballstemmer 1.2.0 1.2.1: Stemmer algorithms generated from Snowball algorithms
@@ -10646,7 +10646,7 @@ dev-util/patchutils 0.3.3 0.3.4: A collection of tools that operate on patch fil
 dev-util/patdiff 0.9.0: Colored patience diffs with word-level refinement
 dev-util/peg 0.1.15-r1 0.1.18: Recursive-descent parser generators for C
 dev-util/perf 4.14.33-r1 4.20.3 5.3.7 5.4.7: Userland tools for Linux Performance Counters
-dev-util/pkgcheck 0.7.4 0.7.5 9999: pkgcore-based QA utility for ebuild repos
+dev-util/pkgcheck 0.7.5 0.7.6 9999: pkgcore-based QA utility for ebuild repos
 dev-util/pkgconf 1.6.3 9999: pkg-config compatible replacement with no dependencies other than ANSI C89
 dev-util/pkgconfig 0.28-r2 0.28-r3 0.29.1 0.29.2 9999: Package config system that manages compile/link flags
 dev-util/pkgdiff 1.7.2 9999: Package Changes Analyzer (pkgdiff)
@@ -12094,7 +12094,7 @@ kde-frameworks/kiconthemes 5.64.0 5.67.0: Framework for icon theming and configu
 kde-frameworks/kidletime 5.64.0 5.67.0: Framework for detection and notification of device idle time
 kde-frameworks/kimageformats 5.64.0 5.67.0: Framework providing additional format plugins for Qt's image I/O system
 kde-frameworks/kinit 5.64.0 5.67.0: Helper library to speed up start of applications on KDE work spaces
-kde-frameworks/kio 5.64.0-r2 5.67.0: Framework providing transparent file and data management
+kde-frameworks/kio 5.64.0-r2 5.67.0-r1: Framework providing transparent file and data management
 kde-frameworks/kirigami 5.64.1 5.67.0: Lightweight user interface framework for mobile and convergent applications
 kde-frameworks/kitemmodels 5.64.0 5.67.0: Framework providing data models to help with tasks such as sorting and filtering
 kde-frameworks/kitemviews 5.64.0 5.67.0: Framework providing additional widgets for item models
@@ -12264,7 +12264,7 @@ mail-client/mailx-support 20060102-r2: Provides lockspool utility
 mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2-r1 1.12.2-r2 1.13.1: A small but very powerful text-based mail client
 mail-client/neomutt 20180512 20180622 20180716 20180716-r1 20191102 20191111 20191129 20191207 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
-mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1: A browser-based multilingual IMAP client with an application-like user interface
+mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1 1.4.2: A browser-based multilingual IMAP client with an application-like user interface
 mail-client/s-nail 14.9.13 14.9.15 14.9.16: Enhanced mailx-compatible mail client based on Hierloom mailx (nail)
 mail-client/sylpheed 3.7.0: A lightweight email client and newsreader
 mail-client/thunderbird 52.9.1 68.4.2: Thunderbird Mail Client
@@ -12705,7 +12705,7 @@ media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correctin
 media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion tool
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
-media-gfx/kphotoalbum 5.5 5.6: Tool for indexing, searching, and viewing images
+media-gfx/kphotoalbum 5.5 5.6-r1: Tool for indexing, searching, and viewing images
 media-gfx/krita 4.2.7.1-r1 4.2.8.2-r1: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
@@ -16890,7 +16890,7 @@ sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/makedev 3.23.1-r1: program used for creating device files in /dev
 sys-apps/man 1.6g-r1: Standard commands to read man pages
 sys-apps/man-db 2.7.6.1-r2 2.8.6.1 2.8.7 2.9.0 9999: a man replacement that utilizes berkdb instead of flat files
-sys-apps/man-pages 5.03 5.04: A somewhat comprehensive collection of Linux man pages
+sys-apps/man-pages 5.04 5.05: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
 sys-apps/man2html 1.6g: Standard commands to read man pages
 sys-apps/mawk 1.3.4_p20161120 1.3.4_p20190203-r1 1.3.4_p20200106-r1: an (often faster than gawk) awk-interpreter

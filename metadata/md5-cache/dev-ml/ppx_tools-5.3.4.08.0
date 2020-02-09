@@ -1,0 +1,13 @@
+DEFINED_PHASES=compile install
+DEPEND=dev-lang/ocaml:=[ocamlopt?] >=dev-ml/findlib-1.0.4-r1
+DESCRIPTION=Tools for authors of ppx rewriters
+EAPI=7
+HOMEPAGE=https://github.com/alainfrisch/ppx_tools
+IUSE=+ocamlopt
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~x86
+LICENSE=MIT
+RDEPEND=dev-lang/ocaml:=[ocamlopt?]
+SLOT=0/5.3.4.08.0
+SRC_URI=https://github.com/alainfrisch/ppx_tools/archive/5.3+4.08.0.tar.gz -> ppx_tools-5.3.4.08.0.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	findlib	17c71a5d96323df925f9f6db1215668a
+_md5_=39ba17f3c0cb2ec896824a689ce31d7c
