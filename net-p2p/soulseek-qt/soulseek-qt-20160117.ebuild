@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,17 +11,16 @@ SRC_URI="
 	amd64? ( https://www.dropbox.com/s/7qh902qv2sxyp6p/${BINARY_NAME}-64bit.tgz )
 "
 
-LICENSE="free-noncomm"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
+RESTRICT="mirror bindist"
 
 DEPEND=""
 RDEPEND="media-libs/libpng x11-libs/libX11 x11-libs/libxcb media-libs/freetype x11-libs/libXau x11-libs/libXdmcp dev-libs/libbsd dev-libs/expat"
 
 S="${WORKDIR}"
-
-RESTRICT="mirror"
 
 QA_PREBUILT="opt/bin/.*"
 
