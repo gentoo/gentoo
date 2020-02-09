@@ -61,7 +61,6 @@ src_install() {
 	# Move the config to the correct place
 	local CONFIG_VANILLA="/etc/default/plexmediaserver"
 	local CONFIG_PATH="/etc/${_SHORTNAME}"
-	dodir "${CONFIG_PATH}"
 	insinto "${CONFIG_PATH}"
 	doins "${CONFIG_VANILLA#/}"
 	sed -e "s#${CONFIG_VANILLA}#${CONFIG_PATH}/${_APPNAME}#g" -i "${S}"/usr/sbin/start_pms || die
