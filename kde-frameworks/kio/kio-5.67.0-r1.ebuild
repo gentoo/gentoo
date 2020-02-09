@@ -8,7 +8,7 @@ ECM_TEST="forceoptional"
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.12.3
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org
+inherit ecm kde.org xdg-utils
 
 DESCRIPTION="Framework providing transparent file and data management"
 LICENSE="LGPL-2+"
@@ -85,4 +85,14 @@ src_configure() {
 	)
 
 	ecm_src_configure
+}
+
+pkg_postinst() {
+	ecm_pkg_postinst
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	ecm_pkg_postrm
+	xdg_desktop_database_update
 }
