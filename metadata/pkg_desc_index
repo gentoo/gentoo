@@ -2418,7 +2418,7 @@ app-portage/tatt 0.5 0.6 9999: arch testing tool
 app-portage/ufed 0.94 0.95 9999: Gentoo Linux USE flags editor
 app-portage/unsymlink-lib 17 9999: Convert your system to SYMLINK_LIB=no
 app-shells/autojump 22.2.4-r4 22.5.1 22.5.3: change directory command that learns
-app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r1 5.0_p9 5.0_p11: The standard GNU Bourne again shell
+app-shells/bash 2.05b_p13 3.0_p22 3.1_p23 3.2_p57 4.0_p44 4.1_p17 4.2_p53 4.3_p48-r2 4.4_p23-r1 5.0_p11 5.0_p16: The standard GNU Bourne again shell
 app-shells/bash-completion 2.9-r1 2.10 9999: Programmable Completion for bash
 app-shells/bashdb 4.4.1.0.1 5.0.1.1.0: bash source code debugging
 app-shells/bashish 2.2.4: Text console theme engine
@@ -4994,7 +4994,7 @@ dev-libs/libgee 0.6.8 0.20.2: GObject-based interfaces and classes for commonly 
 dev-libs/libgit2 0.28.4 9999: A linkable library for Git
 dev-libs/libgit2-glib 0.28.0.1 0.28.0.1-r1: Git library for GLib
 dev-libs/libgnome-games-support 1.4.4: Library for code common to Gnome games
-dev-libs/libgpg-error 1.36: Contains error handling functions used by GnuPG software
+dev-libs/libgpg-error 1.36 1.37: Contains error handling functions used by GnuPG software
 dev-libs/libgpiod 1.1.1 1.4.1: C library and tools for interacting with the linux GPIO character device
 dev-libs/libgpuarray 0.6.0 0.6.7: Library to manipulate tensors on the GPU
 dev-libs/libgudev 233-r1: GObject bindings for libudev
@@ -13499,7 +13499,7 @@ media-radio/fsync-mdc1200-decode 1.0 9999: Linux Fleetsync / MDC1200 decoder
 media-radio/gpredict 2.2 2.2.1: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
 media-radio/ibp 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
-media-radio/js8call 1.0.0 1.1.0 2.0.0-r1 2.1.0: Weak signal ham radio communication
+media-radio/js8call 1.0.0 1.1.0 2.0.0-r1 2.1.0 2.1.1: Weak signal ham radio communication
 media-radio/qrq 0.3.1-r1 0.3.2 0.3.3: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.2.6 9.4.2 9.4.4: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
@@ -17603,7 +17603,7 @@ sys-libs/pam 1.3.1-r1 1.3.1_p20200128: Linux-PAM (Pluggable Authentication Modul
 sys-libs/pinktrace 0.9.3: ptrace() easy wrapper library
 sys-libs/pwdb 0.62-r1: Password database
 sys-libs/queue-standalone 0.1-r1: Install <sys/queue.h> from glibc.
-sys-libs/readline 6.3_p8-r3 7.0_p5-r1 8.0 8.0_p1 8.0_p1-r1: Another cute console display library
+sys-libs/readline 6.3_p8-r3 7.0_p5-r1 8.0_p1-r1 8.0_p4: Another cute console display library
 sys-libs/rpmatch-standalone 1.0: Standalone rpmatch library for use with musl
 sys-libs/slang 2.3.2: Multi-platform library designed to allow a developer to create robust software
 sys-libs/suacomp 0.6.14 9999: library wrapping the interix lib-c to make it less buggy
