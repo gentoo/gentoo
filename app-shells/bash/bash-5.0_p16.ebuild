@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -67,7 +67,6 @@ PATCHES=(
 	# Patches from Chet sent to bashbug ml
 	"${FILESDIR}"/${PN}-5.0-history-append.patch
 	"${FILESDIR}"/${PN}-5.0-syslog-history-extern.patch
-	"${FILESDIR}"/${PN}-5.0-assignment-preceding-builtin.patch
 )
 
 pkg_setup() {
