@@ -18,7 +18,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
-	dev-python/pygobject[${PYTHON_USEDEP},cairo]
+	dev-python/pygobject:3[${PYTHON_USEDEP},cairo]
 	x11-libs/gtk+:3[introspection]"
 # file collision, bug #279018
 DEPEND="${DEPEND}
