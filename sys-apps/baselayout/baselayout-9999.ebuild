@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -188,6 +188,16 @@ src_prepare() {
 		echo ROOTPATH=/usr/sbin:/sbin:/usr/bin:/bin >> etc/env.d/99host
 	fi
 
+	# don't want symlinked directories in PATH on systems with usr-merge
+	if ! use split-usr; then
+		sed \
+			-e 's|/usr/local/sbin:||g' \
+			-e 's|:/usr/sbin:|:|g' \
+			-e 's|:/sbin:|:|g' \
+			-e 's|:/bin:|:|g' \
+			-i etc/env.d/50baselayout || die
+	fi
+
 	# handle multilib paths.  do it here because we want this behavior
 	# regardless of the C library that you're using.  we do explicitly
 	# list paths which the native ldconfig searches, but this isn't
@@ -196,7 +206,8 @@ src_prepare() {
 	# path and the symlinked path doesn't change the resulting cache.
 	local libdir ldpaths
 	for libdir in $(get_all_libdirs) ; do
-		ldpaths+=":${EPREFIX}/${libdir}:${EPREFIX}/usr/${libdir}"
+		use split-usr && ldpaths+=":${EPREFIX}/${libdir}"
+		ldpaths+=":${EPREFIX}/usr/${libdir}"
 		ldpaths+=":${EPREFIX}/usr/local/${libdir}"
 	done
 	echo "LDPATH='${ldpaths#:}'" >> etc/env.d/50baselayout
