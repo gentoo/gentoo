@@ -34,7 +34,6 @@ RDEPEND="
 # of its headers during the build.
 BDEPEND="
 	>net-nds/openldap-2.4.11:=[sasl?,ssl?]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	sasl? ( >=dev-libs/cyrus-sasl-2.1 )
 "
 
