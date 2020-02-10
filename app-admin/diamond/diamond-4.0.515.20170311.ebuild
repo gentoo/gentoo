@@ -10,7 +10,7 @@ if [[ ${PV} = 9999* ]]; then
 else
 	GHASH=73207d04e0739a4ce92bc201b36681c42d9fa7e7  # python3 branch
 	SRC_URI="https://github.com/python-diamond/Diamond/archive/${GHASH}.tar.gz -> python-diamond-${PV}.tar.gz"
-	KEYWORDS="amd64 ~arm ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="amd64 ~arm x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	S=${WORKDIR}/Diamond-${GHASH}
 fi
 
