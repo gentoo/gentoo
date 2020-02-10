@@ -15,7 +15,7 @@ SLOT="0/${PV}"
 KEYWORDS="~alpha ~amd64 ~ppc ~x86"
 IUSE="doc +ocamlopt"
 
-DEPEND="dev-lang/ocaml"
+DEPEND="<dev-lang/ocaml-4.09"
 RDEPEND="${DEPEND}"
 
 DOCS="CHANGES DEVEL ICHANGES README.md UPGRADING MODE"
