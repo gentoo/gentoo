@@ -15,7 +15,6 @@ KEYWORDS="amd64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE="+motif"
 
 RDEPEND="
-	!media-libs/mesa[motif]
 	x11-libs/libX11
 	x11-libs/libXt
 	x11-libs/motif:0
