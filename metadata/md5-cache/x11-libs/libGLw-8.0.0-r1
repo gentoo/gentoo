@@ -10,4 +10,4 @@ LICENSE=MIT
 RDEPEND=!media-libs/mesa[motif] x11-libs/libX11 x11-libs/libXt x11-libs/motif:0 virtual/opengl
 SLOT=0
 SRC_URI=ftp://ftp.freedesktop.org/pub/mesa/glw/glw-8.0.0.tar.bz2
-_md5_=79a30bbaf3f3d5b4523d1a7e1c9380f4
+_md5_=02804d15005eb1a62871c48b60e0372f
