@@ -1,5 +1,5 @@
 DEFINED_PHASES=compile configure install prepare setup test
-DEPEND=>=media-libs/lv2-1.14.0-r1 >=dev-libs/serd-0.28.0-r1 >=dev-libs/sord-0.16.0-r1 || ( dev-lang/python:3.6[threads(+)] >=dev-lang/python-2.7.5-r2:2.7[threads(+)] ) doc? ( app-doc/doxygen ) virtual/pkgconfig
+DEPEND=>=media-libs/lv2-1.14.0-r1 >=dev-libs/serd-0.28.0-r1 >=dev-libs/sord-0.16.0-r1 || ( dev-lang/python:3.6[threads(+)] ) doc? ( app-doc/doxygen ) virtual/pkgconfig
 DESCRIPTION=Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax
 EAPI=6
 HOMEPAGE=http://drobilla.net/software/sratom/
@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.drobilla.net/sratom-0.6.0.tar.bz2
 _eclasses_=multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	02d2553a7a1865bb34733f40f54b9491	multilib-minimal	8bddda43703ba94d8341f4e247f97566	multiprocessing	cac3169468f893670dac3e7cb940e045	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	waf-utils	1fab5379519d4b71bff5790435a71986
-_md5_=0447b60bd252db10cdd83aca651b9e65
+_md5_=247c8e67938584311b1dbf5f5a3e4c7b
