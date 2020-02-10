@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=compile install postinst preinst
+DEPEND=doc? ( >=dev-ruby/asciidoctor-1.5.7 )
+DESCRIPTION=Tool for creating snapshots and remote backups of btrfs subvolumes
+EAPI=7
+HOMEPAGE=https://digint.ch/btrbk/
+IUSE=+mbuffer +doc
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-3+
+RDEPEND=dev-lang/perl net-misc/openssh mbuffer? ( >=sys-block/mbuffer-20180505 ) >=sys-fs/btrfs-progs-4.12
+SLOT=0
+SRC_URI=https://digint.ch/download/btrbk/releases/btrbk-0.29.1.tar.xz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=3a4ae6e604d14f965b31c51b64a09f95
