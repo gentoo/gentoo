@@ -19,7 +19,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
-	SRC_URI="${MY_REPO_URI}/archive/${PV}.tar.gz"
+	SRC_URI="${MY_REPO_URI}/releases/download/v${PV}/${P}.tar.gz"
 fi
 
 RDEPEND="
