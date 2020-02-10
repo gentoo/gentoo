@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="https://github.com/mltframework/${PN}/releases/download/v${PV}/${P}.tar
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="compressed-lumas cpu_flags_x86_mmx cpu_flags_x86_sse cpu_flags_x86_sse2 debug ffmpeg
 fftw frei0r gtk jack kdenlive kernel_linux libav libsamplerate lua melt opencv opengl python
 qt5 rtaudio ruby sdl vdpau vidstab xine xml"
@@ -100,7 +100,7 @@ src_prepare() {
 
 	# respect CFLAGS LDFLAGS when building shared libraries. Bug #308873
 	for x in python lua; do
-		sed -i "/mlt.so/s: -lmlt++ :& ${CFLAGS} ${LDFLAGS} :" src/swig/$x/build || die
+		sed -i "/mlt.so/s/ -lmlt++ /& ${CFLAGS} ${LDFLAGS} /" src/swig/$x/build || die
 	done
 
 	sed -i -e "s/env ruby/${USE_RUBY}/" src/swig/ruby/* || die
