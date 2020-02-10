@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit user systemd toolchain-funcs
+inherit systemd toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/bitlbee/bitlbee.git"
@@ -30,6 +30,8 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="
+	acct-group/bitlbee
+	acct-user/bitlbee
 	>=dev-libs/glib-2.16
 	purple? ( net-im/pidgin )
 	libevent? ( dev-libs/libevent:= )
@@ -50,11 +52,6 @@ DEPEND="${COMMON_DEPEND}
 
 RDEPEND="${COMMON_DEPEND}
 	xinetd? ( sys-apps/xinetd )"
-
-pkg_setup() {
-	enewgroup bitlbee
-	enewuser bitlbee -1 -1 /var/lib/bitlbee bitlbee
-}
 
 src_prepare() {
 	[[ ${PV} != "9999" ]] && eapply "${FILESDIR}"/${PN}-3.5-systemd-user.patch
