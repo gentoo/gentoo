@@ -1,5 +1,5 @@
 #!/sbin/openrc-run
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 depend() {
@@ -11,3 +11,5 @@ command="${DISTCCD_EXEC:-usr/bin/distccd}"
 command_args="--user distcc --daemon --no-detach ${DISTCCD_OPTS}"
 command_background="true"
 pidfile="/run/${RC_SVCNAME}.pid"
+
+export TMPDIR="${TMPDIR:-/tmp}"
