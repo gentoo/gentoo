@@ -18,6 +18,7 @@ acct-group/davfs2 0: System group: davfs2
 acct-group/ddclient 0: A group for the dynamic DNS client
 acct-group/deluge 0: System group: deluge
 acct-group/dhcp 0: System group: dhcp
+acct-group/dhcpcd 0: System group: dhcpcd
 acct-group/dialout 0: System group: dialout
 acct-group/disk 0: System group: disk
 acct-group/dnscrypt-proxy 0: Group for net-dns/dnscrypt-proxy
@@ -166,6 +167,7 @@ acct-user/davfs2 0: System user: davfs2
 acct-user/ddclient 0: A user for the dynamic DNS client
 acct-user/deluge 0: user for deluge
 acct-user/dhcp 0: user for dhcp daemon
+acct-user/dhcpcd 0: user for dhcpcd client
 acct-user/dnscrypt-proxy 0: User for net-dns/dnscrypt-proxy
 acct-user/dnsmasq_exporter 0: user for dnsmasq_exporter
 acct-user/dovecot 0: user for dovecot daemon
@@ -398,7 +400,7 @@ app-admin/helm 2.16.1 3.0.0 3.0.1 3.0.2: Kubernetes Package Manager
 app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/integrit 4.1-r1: file integrity verification program
-app-admin/keepass 2.42.1 2.43: A free, open source, light-weight and easy-to-use password manager
+app-admin/keepass 2.43 2.44: A free, open source, light-weight and easy-to-use password manager
 app-admin/keepassxc 2.4.3-r1 2.5.2 2.5.3 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.3: A command line interface to KeePass database files
@@ -494,7 +496,7 @@ app-admin/sysklogd 1.5.1-r1 2.0.3 2.1 2.1.1 9999: Standard log daemons
 app-admin/syslog-ng 3.22.1 3.24.1 3.25.1: syslog replacement with advanced filtering features
 app-admin/syslog-summary 1.14-r1 1.14-r2 1.14-r3: Summarizes the contents of a syslog log file
 app-admin/sysrqd 17: Daemon providing access to the kernel sysrq functions via network
-app-admin/sysstat 12.0.5 12.2.0-r1 12.2.1 12.3.1 999999: System performance tools for Linux
+app-admin/sysstat 12.2.1 12.3.1 999999: System performance tools for Linux
 app-admin/system-config-printer 1.5.11-r2 1.5.12-r1: Graphical user interface for CUPS administration
 app-admin/system-tools-backends 2.10.2: Tools aimed to make easy the administration of UNIX systems
 app-admin/systemdgenie 0.99.0: Systemd managment utility
@@ -2473,7 +2475,7 @@ app-text/a2ps 4.14-r6: Any to PostScript filter
 app-text/agrep 2.04-r2: A tool for the fast searching of text allowing for errors in the search pattern
 app-text/aiksaurus 1.2.1 1.2.1-r1: A thesaurus lib, tool and database
 app-text/an 1.2 1.2-r1 1.2_p6: Very fast anagram generator with dictionary lookup
-app-text/ansifilter 2.14 2.15: Handles text files containing ANSI terminal escape codes
+app-text/ansifilter 2.15 2.16: Handles text files containing ANSI terminal escape codes
 app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
@@ -7589,7 +7591,7 @@ dev-python/curtsies 0.2.11 0.3.0 0.3.0-r1: Curses-like terminal wrapper, with co
 dev-python/cvxopt 1.1.9: Python package for convex optimization
 dev-python/cx_Freeze 5.0.2: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0: Composable style cycles
-dev-python/cython 0.29.4 0.29.12 0.29.13 0.29.14 0.29.14-r1: A Python to C compiler
+dev-python/cython 0.29.4 0.29.14-r1 0.29.15: A Python to C compiler
 dev-python/cytoolz 0.8.0 0.8.2 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
@@ -7881,10 +7883,10 @@ dev-python/humanfriendly 4.17 4.18: Human friendly output for text interfaces us
 dev-python/humanize 0.5.1: Common humanization utilities
 dev-python/husl 4.0.3: Human-friendly HSL
 dev-python/hvac 0.2.17: Python client for HashiCorp Vault
-dev-python/hyper-h2 2.5.1 3.0.1 3.1.1: HTTP/2 State-Machine based protocol implementation
+dev-python/hyper-h2 2.5.1 3.1.1 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.1.0 5.2.0: HTTP/2 framing layer for Python
 dev-python/hyperlink 17.1.1 17.3.1 18.0.0 19.0.0: A featureful, correct URL for Python
-dev-python/hypothesis 4.47.5 4.50.8 4.57.1 5.4.1 5.5.0: A library for property based testing
+dev-python/hypothesis 4.47.5 4.50.8 4.57.1 5.4.1 5.5.0 5.5.1: A library for property based testing
 dev-python/icalendar 3.9.2 3.11.7 3.11.7-r1 4.0.3: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
 dev-python/idna 2.8: Internationalized Domain Names in Applications (IDNA)
@@ -8800,7 +8802,7 @@ dev-python/serpent 1.19 1.28 1.30: A simple serialization library based on ast.l
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 40.6.3 42.0.2 44.0.0 45.0.0 45.1.0: Collection of extensions to Distutils
+dev-python/setuptools 42.0.2 44.0.0 45.1.0 45.2.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.15.6-r1 1.15.7 3.2.0 3.3.1 3.4.2 3.4.3: Manage versions by scm tags via setuptools
@@ -10556,7 +10558,7 @@ dev-util/gnome-devel-docs 3.30.2 3.32.1: Documentation for developing for the GN
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 2019.3-r1: Golang IDE by JetBrains
 dev-util/google-perftools 2.6.2 2.7 2.7-r1: Fast, multi-threaded malloc() and nifty performance analysis tools
-dev-util/gource 0.49 0.51: A software version control visualization tool
+dev-util/gource 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
 dev-util/gprof2dot 2013.05.17 2016.10.13 2017.09.19 2019.11.30: Converts profiling output to dot graphs
 dev-util/gquilt 0.25-r2: A Python/GTK wrapper for quilt
@@ -13733,7 +13735,7 @@ media-sound/mup 6.6: Program for printing music scores
 media-sound/murmur 1.3.0 9999: Mumble is an open source, low-latency, high quality voice chat software
 media-sound/muse 0.9.2_p20161002: Multiple Streaming Engine, an icecast source streamer
 media-sound/musepack-tools 465-r1: Musepack SV8 libraries and utilities
-media-sound/musescore 3.3 3.3.4 3.4.1 3.4.2 9999: WYSIWYG Music Score Typesetter
+media-sound/musescore 3.3.4 3.4.1 3.4.2 9999: WYSIWYG Music Score Typesetter
 media-sound/music-file-organizer 1.0.2: Organizes audio files into directories based on metadata tags, along with other metadata utilities.
 media-sound/musique 1.5-r1: Qt music player
 media-sound/ncmpc 0.34: Ncurses client for the Music Player Daemon (MPD)
@@ -14337,7 +14339,7 @@ net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5: A Tool for analyzing network packet 
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
 net-analyzer/telegraf 1.5.3 1.8.3 1.10.4 1.11.5 1.12.1 1.13.3: The plugin-driven server agent for collecting & reporting metrics.
-net-analyzer/testssl 2.9.5_p7 2.9.5_p8: Tool to check TLS/SSL cipher support
+net-analyzer/testssl 2.9.5_p8: Tool to check TLS/SSL cipher support
 net-analyzer/thc-ipv6 3.2-r1 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r1: Network discovery and fingerprinting tool
 net-analyzer/thrulay 0.9-r1: Measure the capacity of a network by sending a bulk TCP stream over it
@@ -14761,7 +14763,7 @@ net-libs/libssh2 1.9.0_p20190913 9999: Library implementing the SSH2 protocol
 net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C library
 net-libs/libtirpc 1.1.4 1.2.5: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
-net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3: C++ BitTorrent implementation focusing on efficiency and scalability
+net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3 1.2.4: C++ BitTorrent implementation focusing on efficiency and scalability
 net-libs/libtrace 4.0.9_p1-r1 4.0.10_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.6-r1 1.12.0-r1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
@@ -17299,7 +17301,7 @@ sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection,
 sys-devel/gcc-config 2.1 2.2 2.2.1 9999: Utility to manage compilers
 sys-devel/gdb 8.3 8.3.1 8.3.1-r1 9.1 9999: GNU debugger
 sys-devel/gdb-apple 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
-sys-devel/gettext 0.19.8.1 0.20.1 0.21_rc1: GNU locale utilities
+sys-devel/gettext 0.20.1 0.21_rc1: GNU locale utilities
 sys-devel/gnuconfig 20190912 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/icecream 0.9.7-r1 1.0.0-r1 1.0.0-r2: Distributed compiling of C(++) code across several machines; based on distcc
 sys-devel/kgcc64 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0 6.4.0 7.2.0 7.3.0 8.2.0 8.3.0 9.1.0 9.2.0: 64bit kernel compiler
