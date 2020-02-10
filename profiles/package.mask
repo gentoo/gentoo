@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-02-10)
+# Unmaintained, EAPI 4, doesn't respect CFLAGS and LDFLAGS, which masks
+# undefined symbols in the shared object, upstream gone, no other distro
+# packages this anymore, no revdeps. Removal in 30 days.
+sys-apps/hbaapi
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-09)
 # Dead upstream, broken by Qt 5.14, bug #703930. Masked for removal in 30 days.
 net-nntp/kwooty
