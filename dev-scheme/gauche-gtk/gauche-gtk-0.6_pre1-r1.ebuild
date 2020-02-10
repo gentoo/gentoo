@@ -24,8 +24,6 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}"/${PN}-glgd.patch )
-
 src_prepare() {
 	default
 	eautoconf
