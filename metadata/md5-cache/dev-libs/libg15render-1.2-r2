@@ -1,7 +1,8 @@
+BDEPEND=truetype? ( virtual/pkgconfig ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
 DEFINED_PHASES=configure install prepare
-DEPEND=dev-libs/libg15 truetype? ( media-libs/freetype ) truetype? ( virtual/pkgconfig ) >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEPEND=dev-libs/libg15 truetype? ( media-libs/freetype )
 DESCRIPTION=Small library for display text and graphics on a Logitech G15 keyboard
-EAPI=6
+EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/g15tools/
 IUSE=truetype
 KEYWORDS=amd64 ppc ppc64 x86
@@ -10,4 +11,4 @@ RDEPEND=dev-libs/libg15 truetype? ( media-libs/freetype )
 SLOT=0
 SRC_URI=mirror://sourceforge/g15tools/libg15render-1.2.tar.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=94543d316f27677bc014631d6d0969c2
+_md5_=a44c61d6ae410353bd18db69a84937e4
