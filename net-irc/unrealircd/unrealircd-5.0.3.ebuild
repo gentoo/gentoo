@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,6 +33,10 @@ DOCS=( doc/{Authors,Donation,RELEASE-NOTES.md,tao.of.irc,technical/,translations
 src_prepare() {
 	# QA check against bundled pkgs
 	rm -r extras || die
+
+	# building third-party modules (which we don't do) cause a sandbox violation
+	# bug 704444
+	echo "" > src/buildmod || die
 
 	if use class-nofakelag; then
 		sed -i -e 's:#undef\( FAKELAG_CONFIGURABLE\):#define\1:' include/config.h || die

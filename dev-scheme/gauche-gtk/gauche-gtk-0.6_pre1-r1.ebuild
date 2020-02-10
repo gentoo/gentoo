@@ -14,7 +14,7 @@ SRC_URI="https://github.com/shirok/${PN^g}2/archive/${PV_COMMIT}.tar.gz -> ${MY_
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc x86"
+KEYWORDS="amd64 ~ppc x86"
 IUSE="examples"
 RESTRICT="test"
 
@@ -23,8 +23,6 @@ RDEPEND="x11-libs/gtk+:2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 S="${WORKDIR}/${MY_P}"
-
-PATCHES=( "${FILESDIR}"/${PN}-glgd.patch )
 
 src_prepare() {
 	default
