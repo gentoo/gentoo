@@ -29,35 +29,26 @@ BDEPEND="dev-libs/libxml2
 PATCHES=( "${FILESDIR}"/${PN}-eclasses.patch )
 
 src_compile() {
-	emake build OFFLINE=$(usex offline 1 0)
-	use offline || emake documents.js
+	emake OFFLINE=$(usex offline 1 0)
 }
 
 src_install() {
-	# clean out XML/XSL before installing
-	find . \( \
-		-iname '*.xml' -o \
-		-iname '*.dtd' -o \
-		-iname '*.xsl' -o \
-		-iname '*.svg' \) -delete || die
-	rm -r bin xsl .git* LICENSE Makefile README.md || die
-
-	local HTML_DOCS=( . )
-	einstalldocs
+	emake OFFLINE=$(usex offline 1 0) \
+		DESTDIR="${D}" \
+		htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
+		install
 
 	local DOC_CONTENTS="In order to browse the Gentoo Development Guide in
 		offline mode, point your browser to the following url:
 		file://${EPREFIX}/usr/share/doc/${PF}/html/index.html"
+	if ! has_version app-doc/eclass-manpages; then
+		DOC_CONTENTS+="\\n\\nThe offline version of the devmanual does not
+			include the documentation for the eclasses. If you need it,
+			then emerge app-doc/eclass-manpages."
+	fi
 	readme.gentoo_create_doc
 }
 
 pkg_postinst() {
 	readme.gentoo_print_elog
-	if ! has_version app-doc/eclass-manpages; then
-		elog "The offline version of the devmanual does not include the"
-		elog "documentation for the eclasses. If you need it, then emerge"
-		elog "the following package:"
-		elog
-		elog "app-doc/eclass-manpages"
-	fi
 }

@@ -635,13 +635,6 @@ dev-lang/vala:0.42
 # https://bugs.gentoo.org/705144
 =dev-util/meson-0.53.0
 
-# Göktürk Yüksek <gokturk@gentoo.org> (2020-01-08)
-# Declared deprecated by upstream and is no longer being maintained.
-# Use app-crypt/yubikey-manager[,-qt] to configure a Yubikey device
-# over CCID.
-# Removal in 30 days.
-app-crypt/libykneomgr
-
 # Ulrich Müller <ulm@gentoo.org> (2020-01-06)
 # Snapshots from Git, masked for testing.
 =app-editors/emacs-27.0.50_pre*
