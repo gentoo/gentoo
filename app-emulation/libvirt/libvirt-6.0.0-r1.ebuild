@@ -218,20 +218,6 @@ src_prepare() {
 
 	default
 
-	if [[ ${PV} = *9999* ]]; then
-		# Reinitialize submodules as this is required for gnulib's bootstrap
-		git submodule init
-		# git checkouts require bootstrapping to create the configure script.
-		# Additionally the submodules must be cloned to the right locations
-		# bug #377279
-		./bootstrap || die "bootstrap failed"
-		(
-		    git submodule status .gnulib | awk '{ print $1 }'
-		    git hash-object bootstrap.conf
-		    git ls-tree -d HEAD gnulib/local | awk '{ print $3 }'
-		) >.git-module-status
-	fi
-
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r18" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
@@ -296,6 +282,7 @@ my_src_configure() {
 		--disable-werror
 
 		--localstatedir=/var
+		--with-runstatedir=/run
 		--enable-dependency-tracking
 	)
 
@@ -306,12 +293,6 @@ my_src_configure() {
 	fi
 
 	econf "${myeconfargs[@]}"
-
-	if [[ ${PV} = *9999* ]]; then
-		# Restore gnulib's config.sub and config.guess
-		# bug #377279
-		(cd "${S}"/.gnulib && git reset --hard > /dev/null)
-	fi
 }
 
 my_src_test() {
@@ -336,6 +317,7 @@ my_src_install() {
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
+	rm -rf "${D}"/run
 
 	newbashcomp "${S}/tools/bash-completion/vsh" virsh
 	bashcomp_alias virsh virt-admin
