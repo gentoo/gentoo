@@ -45,6 +45,9 @@ python_prepare_all() {
 	# don't run integration tests
 	rm setuptools/tests/test_integration.py || die
 
+	# avoid pointless dep on flake8
+	sed -i -e 's:--flake8::' pytest.ini || die
+
 	distutils-r1_python_prepare_all
 }
 
