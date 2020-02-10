@@ -16743,7 +16743,7 @@ sys-apps/attr 2.4.48-r3 9999: Extended attributes tools
 sys-apps/audio-entropyd 2.0.3-r1: Audio-entropyd generates entropy-data for the /dev/random device
 sys-apps/baobab 3.34.0: Disk usage browser for GNOME
 sys-apps/bar 1.11.1: Console Progress Bar
-sys-apps/baselayout 2.4.1-r2 2.6-r1 9999: Filesystem baselayout and init scripts
+sys-apps/baselayout 2.4.1-r2 2.6-r1 2.7 9999: Filesystem baselayout and init scripts
 sys-apps/baselayout-java 0.1.0-r1: Baselayout for Java
 sys-apps/baselayout-prefix 2.2-r5 2.6-r1 2.6-r2: Filesystem baselayout and init scripts
 sys-apps/bat 0.12.1: cat(1) clone with syntax highlighting and Git integration
