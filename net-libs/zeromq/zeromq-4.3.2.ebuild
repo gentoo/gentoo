@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -18,7 +18,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	!elibc_Darwin? ( unwind? ( sys-libs/libunwind ) )
 	sodium? ( dev-libs/libsodium:= )
-	pgm? ( =net-libs/openpgm-5.2.122 )"
+	pgm? ( ~net-libs/openpgm-5.2.122 )"
 DEPEND="${RDEPEND}
 	!elibc_Darwin? ( sys-apps/util-linux )
 	doc? (
