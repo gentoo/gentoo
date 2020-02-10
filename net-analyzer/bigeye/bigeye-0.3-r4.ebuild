@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit toolchain-funcs
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="network utility dump and simple honeypot utility"
 HOMEPAGE="http://violating.us/projects/bigeye/"
@@ -27,6 +27,7 @@ src_prepare() {
 }
 
 src_compile() {
+	append-cflags -fcommon
 	$(tc-getCC) ${CFLAGS} ${LDFLAGS} src/bigeye.c src/emulate.c -o src/bigeye || die
 }
 
