@@ -567,11 +567,6 @@ dev-python/milksets
 # Remove in 30 days.
 dev-python/transmissionrpc
 
-# Ulrich Müller <ulm@gentoo.org> (2020-01-12)
-# Runtime errors. Last upstream release in 2003. No license.
-# Masked for removal in 30 days. Bug #703548.
-games-board/cgoban2
-
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-12)
 # upstream has give up this project,
 # upstream is not interressted on any patches to fix this
