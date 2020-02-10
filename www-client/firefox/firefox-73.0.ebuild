@@ -71,7 +71,7 @@ SRC_URI="${SRC_URI}
 # remove harfbuzz graphite dep until new working patch is generated for system libs
 #	system-harfbuzz? ( >=media-libs/harfbuzz-2.5.3:0= >=media-gfx/graphite2-1.3.13 )
 CDEPEND="
-	>=dev-libs/nss-3.49
+	>=dev-libs/nss-3.49.2
 	>=dev-libs/nspr-4.24
 	dev-libs/atk
 	dev-libs/expat
