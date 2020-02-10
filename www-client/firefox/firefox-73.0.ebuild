@@ -27,7 +27,7 @@ if [[ ${MOZ_ESR} == 1 ]] ; then
 fi
 
 # Patch version
-PATCH="${PN}-72.0-patches-02"
+PATCH="${PN}-73.0-patches-04"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/${PN}/releases"
 MOZ_SRC_URI="${MOZ_HTTP_URI}/${MOZ_PV}/source/firefox-${MOZ_PV}.source.tar.xz"
@@ -55,8 +55,8 @@ LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
 IUSE="bindist clang cpu_flags_x86_avx2 debug eme-free geckodriver
 	+gmp-autoupdate hardened hwaccel jack lto cpu_flags_arm_neon pgo
 	pulseaudio +screenshot selinux startup-notification +system-av1
-	+system-icu +system-jpeg +system-libevent  +system-sqlite +system-libvpx
-	+system-webp test wayland wifi"
+	+system-harfbuzz +system-icu +system-jpeg +system-libevent  +system-sqlite
+	 +system-libvpx +system-webp test wayland wifi"
 
 REQUIRED_USE="pgo? ( lto )"
 
@@ -71,7 +71,7 @@ SRC_URI="${SRC_URI}
 # remove harfbuzz graphite dep until new working patch is generated for system libs
 #	system-harfbuzz? ( >=media-libs/harfbuzz-2.5.3:0= >=media-gfx/graphite2-1.3.13 )
 CDEPEND="
-	>=dev-libs/nss-3.48
+	>=dev-libs/nss-3.49
 	>=dev-libs/nspr-4.24
 	dev-libs/atk
 	dev-libs/expat
@@ -105,6 +105,7 @@ CDEPEND="
 		>=media-libs/dav1d-0.3.0:=
 		>=media-libs/libaom-1.0.0:=
 	)
+	system-harfbuzz? ( >=media-libs/harfbuzz-2.6.4:0= >=media-gfx/graphite2-1.3.13 )
 	system-icu? ( >=dev-libs/icu-64.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0=[threads] )
@@ -128,7 +129,7 @@ RDEPEND="${CDEPEND}
 DEPEND="${CDEPEND}
 	app-arch/zip
 	app-arch/unzip
-	>=dev-util/cbindgen-0.10.1
+	>=dev-util/cbindgen-0.12.0
 	>=net-libs/nodejs-8.11.0
 	>=sys-devel/binutils-2.30
 	sys-apps/findutils
@@ -162,7 +163,7 @@ DEPEND="${CDEPEND}
 		)
 	)
 	pulseaudio? ( media-sound/pulseaudio )
-	>=virtual/rust-1.36.0
+	>=virtual/rust-1.39.0
 	wayland? ( >=x11-libs/gtk+-3.11:3[wayland] )
 	amd64? ( >=dev-lang/yasm-1.1 virtual/opengl )
 	x86? ( >=dev-lang/yasm-1.1 virtual/opengl )
@@ -258,8 +259,6 @@ src_unpack() {
 src_prepare() {
 	use !wayland && rm -f "${WORKDIR}/firefox/2019_mozilla-bug1539471.patch"
 	eapply "${WORKDIR}/firefox"
-	eapply "${FILESDIR}/${PN}-69.0-lto-gcc-fix.patch"
-	eapply "${FILESDIR}/mozilla-bug1601707-gcc-fixup-72.patch"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
@@ -516,8 +515,8 @@ src_configure() {
 	mozconfig_use_enable startup-notification
 	mozconfig_use_enable system-sqlite
 	mozconfig_use_with system-av1
-	#mozconfig_use_with system-harfbuzz
-	#mozconfig_use_with system-harfbuzz system-graphite2
+	mozconfig_use_with system-harfbuzz
+	mozconfig_use_with system-harfbuzz system-graphite2
 	mozconfig_use_with system-icu
 	mozconfig_use_with system-jpeg
 	mozconfig_use_with system-libvpx
@@ -612,10 +611,10 @@ src_install() {
 		>>"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" || die
 
 	# force the graphite pref if system-harfbuzz is enabled, since the pref cant disable it
-	#if use system-harfbuzz ; then
-	#	echo "sticky_pref(\"gfx.font_rendering.graphite.enabled\",true);" \
-	#		>>"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" || die
-	#fi
+	if use system-harfbuzz ; then
+		echo "sticky_pref(\"gfx.font_rendering.graphite.enabled\",true);" \
+			>>"${BUILD_OBJ_DIR}/dist/bin/browser/defaults/preferences/all-gentoo.js" || die
+	fi
 
 	# force cairo as the canvas renderer on platforms without skia support
 	if [[ $(tc-endian) == "big" ]] ; then
