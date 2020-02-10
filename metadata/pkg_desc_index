@@ -14065,7 +14065,7 @@ media-video/v4l2loopback 0.12.0 0.12.1.1_pre 9999: v4l2 loopback device which ou
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
 media-video/vcsi 7: Create thumbnail sheets from video files
-media-video/vdr 2.2.0-r5 2.4.1: Video Disk Recorder - turns a pc into a powerful set top box for DVB
+media-video/vdr 2.2.0-r5 2.4.1 2.4.1-r1: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.1.9-r1 0.2.0 0.2.0-r1: Addon needed for XXV - WWW Admin for the Video Disk Recorder
 media-video/vdrsync 0.1.3_pre050322-r1 0.1.3_pre050322-r2: converting vdr-recordings to mpeg2, dvd or other similar formats
 media-video/vdrtools-genindex 0.1.3-r1 0.1.3-r2: VDR: genindex Script
@@ -18034,7 +18034,7 @@ www-client/firefox 52.9.0 68.2.0 68.3.0 68.4.1 68.4.2 73.0: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.2.0 68.3.0 68.4.1 68.4.2 71.0 72.0.1 72.0.2: Firefox Web Browser
 www-client/google-chrome 80.0.3987.87: The web browser from Google
 www-client/google-chrome-beta 80.0.3987.87: The web browser from Google
-www-client/google-chrome-unstable 81.0.4040.5: The web browser from Google
+www-client/google-chrome-unstable 81.0.4044.9: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
 www-client/links 2.14-r1 2.16 2.17 2.18: A fast and lightweight web browser running in both graphics and text mode
@@ -18082,7 +18082,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.314: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r1: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 80.0.3987.87_beta 80.0.3987.87 81.0.4040.5_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 80.0.3987.87_beta 80.0.3987.87 81.0.4044.9_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2: High performance flash player
