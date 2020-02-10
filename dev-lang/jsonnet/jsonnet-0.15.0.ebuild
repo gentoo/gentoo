@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python3_6 python3_7 )
+PYTHON_COMPAT=( python3_6 python3_{7,8} )
 
 inherit toolchain-funcs flag-o-matic distutils-r1
 
@@ -29,6 +29,8 @@ PATCHES=(
 	"${FILESDIR}/jsonnet-0.12.1-dont-call-make-from-setuppy.patch"
 )
 
+distutils_enable_tests setup.py
+
 src_prepare() {
 	default
 	use python && distutils-r1_src_prepare
@@ -51,10 +53,6 @@ src_compile() {
 src_test() {
 	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" test
 	use python && distutils-r1_src_test
-}
-
-python_test() {
-	esetup.py test || die
 }
 
 src_install() {
