@@ -8802,7 +8802,7 @@ dev-python/serpent 1.19 1.28 1.30: A simple serialization library based on ast.l
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 42.0.2 44.0.0 45.1.0 45.2.0: Collection of extensions to Distutils
+dev-python/setuptools 40.6.3 42.0.2 44.0.0 45.0.0 45.1.0 45.2.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.15.6-r1 1.15.7 3.2.0 3.3.1 3.4.2 3.4.3: Manage versions by scm tags via setuptools
@@ -10246,7 +10246,7 @@ dev-tcltk/tcl-mccp 0.6: mccp extension to TCL
 dev-tcltk/tcl3d 0.5.0: Tcl bindings to OpenGL and other 3D libraries
 dev-tcltk/tcllib 1.15-r2 1.19: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
-dev-tcltk/tclpython 4.1-r4 4.1-r6 5.0: Python package for Tcl
+dev-tcltk/tclpython 4.1-r6 5.0: Python package for Tcl
 dev-tcltk/tclreadline 2.1.0-r4 2.1.0-r5: Readline extension to TCL
 dev-tcltk/tclx 8.4.1: A set of extensions to TCL
 dev-tcltk/tclxml 3.2-r2: Pure Tcl implementation of an XML parser
@@ -10680,7 +10680,7 @@ dev-util/rocminfo 2.6.0 2.7.0 2.8.0 2.9.0 2.10.0 3.0.0 9999: ROCm Application fo
 dev-util/rosdep 0.13.0 0.14.0 0.15.0 9999: Command-line tool for installing ROS system dependencies
 dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace of projects for ROS
 dev-util/rosinstall_generator 0.1.13 0.1.14 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
-dev-util/rpmdevtools 8.10-r1: Collection of rpm packaging related utilities
+dev-util/rpmdevtools 8.10-r1 8.10-r2: Collection of rpm packaging related utilities
 dev-util/rr 5.2.0-r1 5.3.0-r1: Record and Replay Framework
 dev-util/rt-tests 1.6: A collection of latency testing tools for the linux(-rt) kernel
 dev-util/sasm 2.2-r1 3.10.1: Simple crossplatform IDE for NASM assembly language
@@ -14339,7 +14339,7 @@ net-analyzer/tcptrace 6.6.7_p4_p1 6.6.7_p5: A Tool for analyzing network packet 
 net-analyzer/tcptraceroute 1.5_beta7-r2: tcptraceroute is a traceroute implementation using TCP packets
 net-analyzer/tcptrack 1.4.2: Passive per-connection tcp bandwidth monitor
 net-analyzer/telegraf 1.5.3 1.8.3 1.10.4 1.11.5 1.12.1 1.13.3: The plugin-driven server agent for collecting & reporting metrics.
-net-analyzer/testssl 2.9.5_p8: Tool to check TLS/SSL cipher support
+net-analyzer/testssl 2.9.5_p8 3.0: Tool to check TLS/SSL cipher support
 net-analyzer/thc-ipv6 3.2-r1 9999: complete tool set to attack the inherent protocol weaknesses of IPV6 and ICMP6
 net-analyzer/thcrut 1.2.5-r1: Network discovery and fingerprinting tool
 net-analyzer/thrulay 0.9-r1: Measure the capacity of a network by sending a bulk TCP stream over it
@@ -14625,7 +14625,7 @@ net-irc/rhapsody 0.28b: IRC client intended to be displayed on a text console
 net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0-r2: Full-featured IRC connection manager for Telepathy
-net-irc/unrealircd 4.2.4.1 5.0.0 5.0.1: An advanced Internet Relay Chat daemon
+net-irc/unrealircd 4.2.4.1 5.0.1 5.0.3: An advanced Internet Relay Chat daemon
 net-irc/weechat 2.6-r1 2.7-r1 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.4 1.7.5 9999: An advanced IRC Bouncer

@@ -1,0 +1,14 @@
+DEFINED_PHASES=prepare setup
+DEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) app-arch/rpm[python,python_single_target_python3_6(-)?] dev-lang/perl:* sys-apps/help2man
+DESCRIPTION=Collection of rpm packaging related utilities
+EAPI=7
+HOMEPAGE=https://pagure.io/rpmdevtools
+IUSE=emacs +python_single_target_python3_6
+KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=GPL-2
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) app-arch/rpm[python,python_single_target_python3_6(-)?] dev-lang/perl:* net-misc/curl emacs? ( app-emacs/rpm-spec-mode )
+REQUIRED_USE=^^ ( python_single_target_python3_6 )
+SLOT=0
+SRC_URI=https://releases.pagure.org/rpmdevtools/rpmdevtools-8.10.tar.xz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=3f81b895bc7f3a4efe0f0df5b625a2b7

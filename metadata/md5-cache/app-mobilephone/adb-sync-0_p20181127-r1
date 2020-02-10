@@ -2,12 +2,12 @@ DEFINED_PHASES=install setup
 DESCRIPTION=Synchronize files between a PC and an Android device using ADB
 EAPI=6
 HOMEPAGE=https://github.com/google/adb-sync
-IUSE=+channel python_single_target_python2_7 python_single_target_python3_6 python_single_target_python3_7
+IUSE=+channel python_single_target_python3_6 python_single_target_python3_7
 KEYWORDS=~amd64
 LICENSE=Apache-2.0
-RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] ) python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) dev-util/android-tools channel? ( net-misc/socat )
-REQUIRED_USE=^^ ( python_single_target_python2_7 python_single_target_python3_6 python_single_target_python3_7 )
+RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) dev-util/android-tools channel? ( net-misc/socat )
+REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 )
 SLOT=0
 SRC_URI=https://github.com/google/adb-sync/tarball/b0a2a10 -> adb-sync-0_p20181127.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d13f38548f3a67f128310a1be3136b65
+_md5_=dabb00ce144be8a43688b92a92aafa47
