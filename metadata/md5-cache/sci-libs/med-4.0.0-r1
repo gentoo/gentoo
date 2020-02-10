@@ -4,13 +4,13 @@ DEPEND=!sci-libs/libmed dev-lang/tk:0= >=sci-libs/hdf5-1.10.2:=[fortran=,mpi(+)]
 DESCRIPTION=Modeling and Exchange of Data library
 EAPI=7
 HOMEPAGE=https://www.salome-platform.org/user-section/about/med
-IUSE=doc fortran hdf5-16-api python test python_targets_python3_6 python_targets_python3_7 python_single_target_python3_6 python_single_target_python3_7
+IUSE=doc fortran hdf5-16-api python test python_single_target_python3_6 python_single_target_python3_7
 KEYWORDS=~amd64 ~x86
 LICENSE=LGPL-3
 RDEPEND=!sci-libs/libmed dev-lang/tk:0= >=sci-libs/hdf5-1.10.2:=[fortran=,mpi(+)] virtual/mpi[fortran=] python? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) ) virtual/fortran
-REQUIRED_USE=python? ( ^^ ( python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 ) )
+REQUIRED_USE=python? ( ^^ ( python_single_target_python3_6 python_single_target_python3_7 ) )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://files.salome-platform.org/Salome/other/med-4.0.0.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	fortran-2	216ce6fa0e81c0c91667aee598c792dd	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	fortran-2	216ce6fa0e81c0c91667aee598c792dd	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=33f677cb7c0476724635cb54516aa3ec

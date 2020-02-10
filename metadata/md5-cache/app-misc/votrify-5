@@ -2,12 +2,12 @@ DEFINED_PHASES=configure install postinst setup
 DESCRIPTION=Tool for community verification of Gentoo elections
 EAPI=7
 HOMEPAGE=https://github.com/mgorny/votrify
-IUSE=python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
+IUSE=python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
 KEYWORDS=amd64 x86
 LICENSE=BSD-2
 RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) app-misc/gentoo-elections
-REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 ) python_single_target_python3_8? ( python_targets_python3_8 )
+REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
 SLOT=0
 SRC_URI=https://github.com/mgorny/votrify/archive/v5.tar.gz -> votrify-5.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=6f9f756d14a885664c62370d16e6628b

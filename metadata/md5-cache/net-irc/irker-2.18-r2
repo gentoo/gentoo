@@ -3,12 +3,12 @@ DEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] >=d
 DESCRIPTION=Submission tools for IRC notifications
 EAPI=6
 HOMEPAGE=http://www.catb.org/esr/irker/
-IUSE=socks5 +python_targets_python2_7 +python_single_target_python2_7
+IUSE=socks5 +python_single_target_python2_7
 KEYWORDS=~amd64 ~arm ~x86
 LICENSE=BSD
 RDEPEND=python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7[ssl] >=dev-lang/python-exec-2:=[python_targets_python2_7] )
-REQUIRED_USE=^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 )
+REQUIRED_USE=^^ ( python_single_target_python2_7 )
 SLOT=0
 SRC_URI=http://www.catb.org/esr/irker/irker-2.18.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=371d74665d97c94bf815cab2a957e89d

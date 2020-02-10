@@ -3,12 +3,12 @@ DEPEND=dev-lang/perl python_single_target_python3_6? ( dev-python/matplotlib[pyt
 DESCRIPTION=Utilities for variant calling and manipulating VCF and BCF files
 EAPI=7
 HOMEPAGE=http://www.htslib.org
-IUSE=+python_targets_python3_6 +python_single_target_python3_6
+IUSE=+python_single_target_python3_6
 KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 RDEPEND=dev-lang/perl python_single_target_python3_6? ( dev-python/matplotlib[python_targets_python3_6(-)] ) =sci-libs/htslib-1.9*:= sys-libs/zlib:= python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] )
-REQUIRED_USE=^^ ( python_single_target_python3_6 ) python_single_target_python3_6? ( python_targets_python3_6 )
+REQUIRED_USE=^^ ( python_single_target_python3_6 )
 SLOT=0
 SRC_URI=https://github.com/samtools/bcftools/releases/download/1.9/bcftools-1.9.tar.bz2
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=12e708ee9cbff94d9e05cdd879d1ed3a

@@ -4,13 +4,13 @@ DEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-e
 DESCRIPTION=Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
 EAPI=7
 HOMEPAGE=https://www.cantera.org
-IUSE=+cti fortran pch +python test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
+IUSE=+cti fortran pch +python test python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
 KEYWORDS=amd64 ~x86
 LICENSE=BSD
 RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) python? ( python_single_target_python3_6? ( dev-python/numpy[python_targets_python3_6(-)] ) python_single_target_python3_7? ( dev-python/numpy[python_targets_python3_7(-)] ) python_single_target_python3_8? ( dev-python/numpy[python_targets_python3_8(-)] ) ) <sci-libs/sundials-5.1.0:0= fortran? ( virtual/fortran )
-REQUIRED_USE=python? ( cti ) ^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 ) python_single_target_python3_8? ( python_targets_python3_8 )
+REQUIRED_USE=python? ( cti ) ^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/Cantera/cantera/archive/v2.4.0.tar.gz -> cantera-2.4.0.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	fortran-2	216ce6fa0e81c0c91667aee598c792dd	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	scons-utils	7fa3bb47972ff4c5fa8004463ec6f023	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	fortran-2	216ce6fa0e81c0c91667aee598c792dd	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	scons-utils	7fa3bb47972ff4c5fa8004463ec6f023	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=ed1f063b1f0afed8e0155c4a379ea2f1

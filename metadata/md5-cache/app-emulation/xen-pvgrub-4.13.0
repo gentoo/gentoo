@@ -3,12 +3,12 @@ DEPEND=sys-devel/gettext sys-devel/bin86 sys-apps/texinfo x11-libs/pixman
 DESCRIPTION=allows to boot Xen domU kernels from a menu.lst laying inside guest filesystem
 EAPI=7
 HOMEPAGE=https://www.xenproject.org
-IUSE=+python_targets_python3_6 +python_single_target_python3_6
+IUSE=+python_single_target_python3_6
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6[xml,threads] >=dev-lang/python-exec-2:=[python_targets_python3_6] ) >=app-emulation/xen-tools-4.13.0
-REQUIRED_USE=^^ ( python_single_target_python3_6 ) python_single_target_python3_6? ( python_targets_python3_6 )
+REQUIRED_USE=^^ ( python_single_target_python3_6 )
 SLOT=0
 SRC_URI=https://downloads.xenproject.org/release/xen/4.13.0/xen-4.13.0.tar.gz mirror://gnu-alpha/grub/grub-0.97.tar.gz http://xenbits.xensource.com/xen-extfiles/zlib-1.2.3.tar.gz ftp://atrey.karlin.mff.cuni.cz/pub/linux/pci/pciutils-2.2.9.tar.bz2 http://xenbits.xensource.com/xen-extfiles/lwip-1.3.0.tar.gz http://xenbits.xensource.com/xen-extfiles/newlib/newlib-1.16.0.tar.gz http://xenbits.xensource.com/xen-extfiles/polarssl-1.1.4-gpl.tgz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=ce65680da8069688330e1f6929da40a9

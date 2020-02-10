@@ -3,13 +3,13 @@ DEPEND=>=app-text/t1utils-1.25 media-gfx/potrace truetype? ( media-gfx/fontforge
 DESCRIPTION=Traces TeX fonts to PFA or PFB fonts (formerly pktrace)
 EAPI=6
 HOMEPAGE=http://lilypond.org/mftrace/
-IUSE=test truetype +python_targets_python2_7 +python_single_target_python2_7
+IUSE=test truetype +python_single_target_python2_7
 KEYWORDS=~amd64 ~hppa ~ppc ~x86
 LICENSE=GPL-2
 RDEPEND=>=app-text/t1utils-1.25 media-gfx/potrace truetype? ( media-gfx/fontforge ) virtual/latex-base python_single_target_python2_7? ( >=dev-lang/python-2.7.5-r2:2.7 >=dev-lang/python-exec-2:=[python_targets_python2_7] )
-REQUIRED_USE=^^ ( python_single_target_python2_7 ) python_single_target_python2_7? ( python_targets_python2_7 )
+REQUIRED_USE=^^ ( python_single_target_python2_7 )
 RESTRICT=!test? ( test )
 SLOT=1
 SRC_URI=http://lilypond.org/downloads/sources/mftrace/mftrace-1.2.19.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=bd34780899e702e9fa25391f8420769b

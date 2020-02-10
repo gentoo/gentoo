@@ -3,13 +3,13 @@ DEPEND=doc? ( python_single_target_python3_6? ( dev-python/sphinx[python_targets
 DESCRIPTION=Lightweight user-defined software stacks for high-performance computing
 EAPI=7
 HOMEPAGE=https://hpc.github.io/charliecloud/
-IUSE=doc examples +pv squashfuse python_targets_python3_6 python_targets_python3_7 python_single_target_python3_6 python_single_target_python3_7
+IUSE=doc examples +pv squashfuse python_single_target_python3_6 python_single_target_python3_7
 KEYWORDS=~amd64 ~x86 ~amd64-linux ~x86-linux
 LICENSE=Apache-2.0
 RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) pv? ( sys-apps/pv ) squashfuse? ( sys-fs/squashfuse )
-REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 ) python_single_target_python3_6? ( python_targets_python3_6 ) python_single_target_python3_7? ( python_targets_python3_7 )
+REQUIRED_USE=^^ ( python_single_target_python3_6 python_single_target_python3_7 )
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/hpc/charliecloud/archive/v0.10.tar.gz -> charliecloud-0.10.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=2ba7ed5c3c23bb589acafb4c1c790e1c

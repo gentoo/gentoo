@@ -3,13 +3,13 @@ DEPEND=python_single_target_python3_6? ( dev-python/pyinotify[python_targets_pyt
 DESCRIPTION=The highly caffeinated git GUI
 EAPI=6
 HOMEPAGE=https://git-cola.github.io/
-IUSE=doc test +python_targets_python3_6 +python_single_target_python3_6 test
+IUSE=doc test +python_single_target_python3_6 test
 KEYWORDS=amd64 x86 ~amd64-linux ~x86-linux
 LICENSE=GPL-2
 RDEPEND=python_single_target_python3_6? ( dev-python/pyinotify[python_targets_python3_6(-)] dev-python/send2trash[python_targets_python3_6(-)] dev-python/QtPy[gui,python_targets_python3_6(-)] dev-python/PyQt5[gui,network,widgets,python_targets_python3_6(-)] ) dev-vcs/git python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] )
-REQUIRED_USE=^^ ( python_single_target_python3_6 ) python_single_target_python3_6? ( python_targets_python3_6 )
+REQUIRED_USE=^^ ( python_single_target_python3_6 )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/git-cola/git-cola/archive/v2.11.tar.gz -> git-cola-2.11.tar.gz
-_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	distutils-r1	24ad93542cf9d80a03d58784093b1d44	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	36ac48e647d2627de28c87aaffb94753	python-utils-r1	611c493a4cfef5254350fabc04b606f5	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	virtualx	e49dbce7ac14426e1155497476915307	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	distutils-r1	24ad93542cf9d80a03d58784093b1d44	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	virtualx	e49dbce7ac14426e1155497476915307	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=2cbe6cf25ec7aa07a9b5b9f5d8600343
