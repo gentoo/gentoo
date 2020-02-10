@@ -73,7 +73,6 @@ PATCHES=(
 	"${FILESDIR}/musl.patch"
 )
 
-
 src_configure() {
 	local mycxxflags=(
 		-Wno-deprecated-declarations
