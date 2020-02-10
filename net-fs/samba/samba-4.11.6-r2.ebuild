@@ -221,6 +221,8 @@ multilib_src_configure() {
 		$(use_with debug lttng)
 		$(use_with ldap)
 		$(use_with profiling-data)
+		# bug #683148
+		--jobs 1
 	)
 
 	multilib_is_native_abi && myconf+=( --with-shared-modules=${SHAREDMODS} )
