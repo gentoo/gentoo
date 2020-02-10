@@ -280,6 +280,7 @@ my_src_configure() {
 		--disable-werror
 
 		--localstatedir=/var
+		--with-runstatedir=/run
 		--enable-dependency-tracking
 	)
 
@@ -314,6 +315,7 @@ my_src_install() {
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
+	rm -rf "${D}"/run
 
 	newbashcomp "${S}/tools/bash-completion/vsh" virsh
 	bashcomp_alias virsh virt-admin
