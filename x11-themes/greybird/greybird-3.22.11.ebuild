@@ -2,16 +2,16 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 meson
+inherit meson
 
 DESCRIPTION="The default theme from Xubuntu"
 HOMEPAGE="http://shimmerproject.org/project/greybird/ https://github.com/shimmerproject/Greybird"
-EGIT_REPO_URI="https://github.com/shimmerproject/${PN^}"
+SRC_URI="https://github.com/shimmerproject/${PN^}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 # README says "dual-licensed as GPLv2 or later and CC-BY-SA 3.0 or later"
 LICENSE="CC-BY-SA-3.0 GPL-2+"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="ayatana gnome gtk2 gtk3 xfce"
 REQUIRED_USE="
 	|| ( ayatana gnome gtk2 gtk3 xfce )
@@ -27,6 +27,7 @@ DEPEND="
 	dev-libs/glib:2
 	dev-ruby/sass:3.5
 "
+S=${WORKDIR}/${P^}
 
 src_install() {
 	meson_src_install
