@@ -1,8 +1,8 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{6,7})
+EAPI=7
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -17,12 +17,13 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-python/hyperframe-5.0.0[${PYTHON_USEDEP}]
+	>=dev-python/hyperframe-5.2.0[${PYTHON_USEDEP}]
 	<dev-python/hyperframe-6.0.0[${PYTHON_USEDEP}]
-	>=dev-python/hpack-2.3.0[${PYTHON_USEDEP}]
+	>=dev-python/hpack-3.0.0[${PYTHON_USEDEP}]
 	<dev-python/hpack-4.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/enum34-1.1.6[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep '<dev-python/enum34-2.0.0[${PYTHON_USEDEP}]' python2_7)
+	$(python_gen_cond_dep '
+		>=dev-python/enum34-1.1.6[${PYTHON_USEDEP}]
+		<dev-python/enum34-2.0.0[${PYTHON_USEDEP}]' -2)
 "
 DEPEND="${RDEPEND}
 	test? (
@@ -32,5 +33,6 @@ DEPEND="${RDEPEND}
 "
 
 python_test() {
-	pytest -vv test || die "Tests fail with ${EPYTHON}"
+	pytest -vv --hypothesis-profile=travis test ||
+		die "Tests fail with ${EPYTHON}"
 }

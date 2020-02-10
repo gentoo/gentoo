@@ -38,18 +38,15 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 DOCS=( {CHANGES,README}.rst docs/{easy_install.txt,pkg_resources.txt,setuptools.txt} )
 
-PATCHES=(
-	# fix regression introduced by reinventing deprecated 'imp'
-	# https://github.com/pypa/setuptools/pull/1905
-	"${FILESDIR}"/setuptools-42.0.0-imp-fix.patch
-)
-
 python_prepare_all() {
 	# disable tests requiring a network connection
 	rm setuptools/tests/test_packageindex.py || die
 
 	# don't run integration tests
 	rm setuptools/tests/test_integration.py || die
+
+	# avoid pointless dep on flake8
+	sed -i -e 's:--flake8::' pytest.ini || die
 
 	distutils-r1_python_prepare_all
 }
