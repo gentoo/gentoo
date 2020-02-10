@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qt5-build.eclass
@@ -644,7 +644,7 @@ qt5_base_configure() {
 		-no-gui -no-widgets
 
 		# QTBUG-76521, default will change to zstd in Qt6
-		$([[ ${QT5_MINOR_VERSION} -ge 13 ]] && echo -no-zstd)
+		-no-zstd
 
 		# module-specific options
 		"${myconf[@]}"
