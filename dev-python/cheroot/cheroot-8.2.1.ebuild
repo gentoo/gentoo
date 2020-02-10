@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/C/${PN/c/C}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~ppc64"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
 # Unit tests are temporarily disabled for this version, see below for
 # what needs to be done.
 #IUSE="test"
@@ -21,9 +21,7 @@ RESTRICT="test"
 RDEPEND=">=dev-python/six-1.11.0[${PYTHON_USEDEP}]
 	>=dev-python/more-itertools-2.6[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools[${PYTHON_USEDEP}]
-	>=dev-python/setuptools_scm-1.15.0[${PYTHON_USEDEP}]
-	>=dev-python/setuptools_scm_git_archive-1.0[${PYTHON_USEDEP}]"
+	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 	# Add the following for unit tests, some packages listed will need
 	# to be added and keyworded appropriately.
@@ -45,3 +43,10 @@ DEPEND="${RDEPEND}
 #python_test() {
 #	py.test -v || die "tests failed under ${EPYTHON}"
 #}
+
+python_prepare_all() {
+	distutils-r1_python_prepare_all
+
+	sed -e "s/use_scm_version=True/version='${PV}'/" -i setup.py || die
+	sed -e '/setuptools_scm/d' -i setup.cfg || die
+}
