@@ -1,0 +1,11 @@
+--- a/XMPFiles/source/FormatSupport/P2_Support.hpp	2020-02-10 22:21:55.853530993 +0300
++++ b/XMPFiles/source/FormatSupport/P2_Support.hpp	2020-02-10 22:23:02.931728502 +0300
+@@ -79,7 +79,7 @@
+ }; // class P2_Clip
+ struct P2SpannedClip_Order
+ {
+-	bool operator()( P2_Clip* lhs,  P2_Clip* rhs)   
++	bool operator()( P2_Clip* lhs,  P2_Clip* rhs) const
+ 	{  
+ 		return lhs->GetOffsetInShot() < rhs->GetOffsetInShot();
+ 	}

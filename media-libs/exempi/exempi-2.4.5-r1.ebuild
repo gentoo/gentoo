@@ -30,6 +30,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.4.2-iconv.patch
 	"${FILESDIR}"/${P}-CVE-2018-12648.patch
+	"${FILESDIR}"/${P}-p2_support_gcc_9_2_0_cxx17.patch
 )
 
 src_prepare() {
