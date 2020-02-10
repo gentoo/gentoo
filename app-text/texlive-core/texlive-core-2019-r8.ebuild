@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ inherit flag-o-matic toolchain-funcs libtool texlive-common
 
 MY_P=${PN%-core}-${TL_SOURCE_VERSION}-source
 
-PATCHLEVEL=7
+PATCHLEVEL=8
 
 DESCRIPTION="A complete TeX distribution"
 HOMEPAGE="https://tug.org/texlive/"
@@ -150,6 +150,7 @@ src_prepare() {
 
 	# These we need unconditionally
 	eapply "${WORKDIR}"/patches/{0001..0006}*.patch
+	eapply "${WORKDIR}"/patches/${P}-no-fcommon.patch
 
 	# Conditional poppler patching
 	if has_version ">=app-text/poppler-0.83.0"; then
