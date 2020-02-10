@@ -4708,7 +4708,7 @@ dev-lang/interprolog 2.1.2: InterProlog is a Java front-end and enhancement for 
 dev-lang/ispc 1.9.2 9999: Intel SPMD Program Compiler
 dev-lang/j 701-r2: Modern, high-level, general-purpose, high-performance programming language
 dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming language
-dev-lang/jsonnet 0.14.0 0.14.0-r1: A data templating language for app and tool developers
+dev-lang/jsonnet 0.15.0: A data templating language for app and tool developers
 dev-lang/julia 1.2.0 1.3.0 9999: High-performance programming language for technical computing
 dev-lang/julia-bin 1.2.0 1.3.0: High-performance programming language for technical computing
 dev-lang/jwasm 2.11a-r1 2.13: MASM-compatible TASM-similar assembler (fork of Wasm)
@@ -13041,8 +13041,8 @@ media-libs/liboggz 1.1.1: Oggz provides a simple programming interface for readi
 media-libs/libopenglrecorder 0.1.0: Library for asynchronous OpenGL recording with audio
 media-libs/libopenmpt 0.4.11: Library to decode tracked music files (modules)
 media-libs/libopenraw 0.0.9 0.1.2 0.1.3: A decoding library for RAW image formats
-media-libs/libopenshot 0.2.2 0.2.4_pre20190609: Video editing library used by OpenShot
-media-libs/libopenshot-audio 0.1.4 0.1.9_pre20190502: Library for audio editing and playback used by OpenShot
+media-libs/libopenshot 0.2.2 0.2.4_pre20190609 0.2.4: Video editing library used by OpenShot
+media-libs/libopenshot-audio 0.1.4 0.1.9_pre20190502 0.1.9: Library for audio editing and playback used by OpenShot
 media-libs/libopusenc 0.2.1: High-level API for encoding .opus files
 media-libs/libpagemaker 0.0.4 9999: C++ Library that parses the file format of Aldus/Adobe PageMaker documents
 media-libs/libpano13 2.9.19: Helmut Dersch's panorama toolbox library
@@ -14012,7 +14012,7 @@ media-video/nvidia-video-codec 7.0.1 7.1.9 8.0.14 8.2.16: Redistributable header
 media-video/nvidia_video_sdk 6.0.1: NVIDIA Video Codec SDK
 media-video/obs-studio 24.0.3 24.0.5 9999: Software for Recording and Streaming Live Video Content
 media-video/ogmrip 1.0.1: Graphical frontend and libraries for ripping DVDs and encoding to AVI/OGM/MKV/MP4
-media-video/openshot 2.4.0-r1 2.4.4-r1: Free, open-source, non-linear video editor to create and edit videos and movies
+media-video/openshot 2.4.0-r1 2.4.4-r1 2.5.0: An award-winning free and open-source video editor
 media-video/orion 1.6.6 1.6.7: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 1.0.5: A simple Xfce4 media player using GStreamer
