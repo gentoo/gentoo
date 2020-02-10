@@ -2,7 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription lang="en">
-		PrBoom+ is a Doom source port developed from the original PrBoom project.
+		PrBoom+ is an enhanced source port of the classic 3D first-person
+		shooter game Doom, first released by id Software in 1993. It uses the
+		Simple Direct Media layer (SDL) library and features an optional OpenGL
+		renderer. It is based on PrBoom, MBF and LxDoom, which in turn are based
+		on TeamTNT's Boom, a freely available port of Doom for DOS.
+
+		In addition to PrBoom's features, PrBoom+ offers uncapped framerate,
+		variable gamespeed, re-record, walkcam, chasecam, full mouselook, FOV,
+		and other features without loss of compatibility with the original Doom.
 	</longdescription>
 	<maintainer type="person">
 		<email>vilhelm.gray@gmail.com</email>
@@ -20,14 +28,12 @@
 		<flag name="dumb">Enable support for various tracker-style music formats via <pkg>media-libs/dumb</pkg></flag>
 		<flag name="fluidsynth">Enable support for MIDI via <pkg>media-sound/fluidsynth</pkg></flag>
 		<flag name="net">Enable support for network play</flag>
-		<flag name="non-free">Enable non-free components</flag>
 		<flag name="portmidi">Enable support for MIDI via <pkg>media-libs/portmidi</pkg></flag>
-		<flag name="sdl-image">Enable support for high-resolution texture support via <pkg>media-libs/sdl-image</pkg></flag>
-		<flag name="sdl-mixer">Enable support for MIDI via <pkg>media-libs/sdl-mixer</pkg></flag>
+		<flag name="sdl2-image">Enable support for high-resolution texture support via <pkg>media-libs/sdl2-image</pkg></flag>
+		<flag name="sdl2-mixer">Enable support for MIDI via <pkg>media-libs/sdl2-mixer</pkg></flag>
 	</use>
 	<upstream>
-		<bugs-to>https://sourceforge.net/p/prboom-plus/bugs</bugs-to>
+		<bugs-to>https://bugs.debian.org/prboom-plus</bugs-to>
 		<doc lang="en">https://prboom-plus.sourceforge.net</doc>
-		<remote-id type="sourceforge">prboom-plus</remote-id>
 	</upstream>
 </pkgmetadata>
