@@ -11974,7 +11974,7 @@ kde-apps/kqtquickcharts 19.08.3 19.12.2: Qt Quick plugin for beautiful and inter
 kde-apps/krdc 19.08.3 19.12.2: Remote desktop connection (RDP and VNC) client
 kde-apps/kreversi 19.08.3 19.12.2: Board game by KDE
 kde-apps/krfb 19.08.3 19.12.2: VNC-compatible server to share Plasma desktops
-kde-apps/kross-interpreters 19.08.3 19.12.2: Kross interpreter plugins for programming languages
+kde-apps/kross-interpreters 19.08.3 19.12.2 19.12.2-r1: Kross interpreter plugins for programming languages
 kde-apps/kruler 19.08.3 19.12.2: Screen ruler for Plasma
 kde-apps/kshisen 19.08.3 19.12.2: Solitaire-like game played using the standard set of Mahjong tiles
 kde-apps/ksirk 19.08.3 19.12.2: Port of the board game risk
