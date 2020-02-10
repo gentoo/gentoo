@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 inherit cmake-utils desktop gnome2-utils
 
-DESCRIPTION="Modern 3D space shooter with spaceship upgrade possibilities"
-HOMEPAGE="https://sourceforge.net/projects/openastromenace/"
-SRC_URI="mirror://sourceforge/openastromenace/${PV}/astromenace-src-${PV}.tar.bz2"
+DESCRIPTION="Hardcore 3D space scroll-shooter with spaceship upgrade possibilities"
+HOMEPAGE="https://viewizard.com"
+SRC_URI="https://github.com/viewizard/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3 GPL-3+ CC-BY-SA-3.0 UbuntuFontLicense-1.0 OFL-1.1"
 SLOT="0"
@@ -25,8 +25,6 @@ DEPEND="
 	virtual/opengl
 	x11-libs/libXinerama"
 RDEPEND=${DEPEND}
-
-S=${WORKDIR}/AstroMenace
 
 src_prepare() {
 	cmake-utils_src_prepare
@@ -60,7 +58,7 @@ src_install() {
 
 	dodoc ChangeLog.txt ReadMe.txt
 
-	make_desktop_entry "${PN}" OpenAstroMenace
+	make_desktop_entry "${PN}" AstroMenace
 }
 
 pkg_preinst() {
