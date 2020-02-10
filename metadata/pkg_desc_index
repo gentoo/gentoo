@@ -834,7 +834,6 @@ app-crypt/libscrypt 1.21: Shared library to impliment the scrypt algorithm
 app-crypt/libsecret 0.18.8: GObject library for accessing the freedesktop.org Secret Service API
 app-crypt/libu2f-host 1.1.10: Yubico Universal 2nd Factor (U2F) Host C Library
 app-crypt/libu2f-server 1.1.0: Yubico Universal 2nd Factor (U2F) server C Library
-app-crypt/libykneomgr 0.1.8: YubiKey NEO CCID Manager C Library
 app-crypt/loop-aes-losetup 2.28.2: Loop-AES losetup utility
 app-crypt/manuale 1.1.0: A fully manual Let's Encrypt client
 app-crypt/mcrypt 2.6.8-r3: replacement of the old unix crypt(1)
@@ -1200,7 +1199,7 @@ app-doc/casting-spels-emacs 19-r2: Casting SPELs in Lisp - A Comic Book (Emacs L
 app-doc/clsync-docs 0.4.2: Clsync and libclsync API documentation
 app-doc/cppman 0.4.8-r1: C++ man pages for Linux, with source from cplusplus.com and cppreference.com
 app-doc/csound-manual 6.06 6.07 6.08: The Csound reference manual
-app-doc/devmanual 0_pre20141116 0_pre20200203 9999: The Gentoo Development Guide
+app-doc/devmanual 0_pre20141116 0_pre20200207 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.15 1.8.16-r1 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
@@ -8802,7 +8801,7 @@ dev-python/serpent 1.19 1.28 1.30: A simple serialization library based on ast.l
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 40.6.3 42.0.2 44.0.0 45.0.0 45.1.0 45.2.0: Collection of extensions to Distutils
+dev-python/setuptools 42.0.2 44.0.0 45.1.0 45.2.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.15.6-r1 1.15.7 3.2.0 3.3.1 3.4.2 3.4.3: Manage versions by scm tags via setuptools
