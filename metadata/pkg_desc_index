@@ -7353,7 +7353,7 @@ dev-python/Numdifftools 0.9.17-r1: Solves automatic numerical differentiation pr
 dev-python/PyContracts 1.7.9 1.8.0 1.8.12: Declare constraints on function parameters and return values
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
-dev-python/PyGithub 1.44.1 1.45: Python library to access the Github API v3
+dev-python/PyGithub 1.44.1 1.45 1.46: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.12.2 5.13.2 5.14.1: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.17 4.19.19 4.19.20 4.19.21: Private sip module for PyQt5
@@ -8428,7 +8428,7 @@ dev-python/pyilmbase 2.3.0-r2: IlmBase Python bindings
 dev-python/pyinotify 0.9.6: Python module used for monitoring filesystems events
 dev-python/pyinsane 2.0.10 2.0.12-r1 2.0.13: Python implementation of the Sane API and abstration layer
 dev-python/pyjade 4.0.0: Jade syntax adapter for Django, Jinja2 and Mako templates
-dev-python/pyjwt 1.5.3 1.7.1: JSON Web Token implementation in Python
+dev-python/pyjwt 1.5.3 1.7.1 1.7.1-r1: JSON Web Token implementation in Python
 dev-python/pykerberos 1.2.1: A high-level Python wrapper for Kerberos/GSSAPI operations
 dev-python/pykka 1.2.1: A Python implementation of the actor model
 dev-python/pykwalify 1.5.2 1.7.0 9999: Python lib/cli for JSON/YAML schema validation
@@ -11206,7 +11206,7 @@ games-fps/gzdoom 4.3.3: A modder-friendly OpenGL source port based on the DOOM e
 games-fps/industri 1.01: Quake/Tenebrae based, single player game
 games-fps/legends 0.4.1.43-r2: Fast-paced first-person-shooter online multiplayer game, similar to Tribes
 games-fps/nexuiz 2.5.2-r1: Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine
-games-fps/prboom-plus 2.5.1.4: A Doom source port developed from the original PrBoom project
+games-fps/prboom-plus 2.5.1.5.4540.1: An enhanced clone of the classic first-person shooter Doom
 games-fps/quake1-data 2.40: iD Software's Quake 1 ... the data files
 games-fps/quake1-demodata 1.06: Demo data for Quake 1
 games-fps/quake1-killer 2.2z: The Killer Quake Patch
