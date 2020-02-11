@@ -1,0 +1,14 @@
+BDEPEND=dev-qt/linguist-tools:5 >=dev-util/lxqt-build-tools-0.6.0 dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install postinst postrm prepare test
+DEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5
+DESCRIPTION=Visual process manager - Qt version of ps/top
+EAPI=7
+HOMEPAGE=https://lxqt.org/
+IUSE=debug
+KEYWORDS=~amd64 ~arm ~arm64 ~x86
+LICENSE=GPL-2+ LGPL-2.1+ QPL-1.0
+RDEPEND=dev-qt/qtcore:5 dev-qt/qtdbus:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtx11extras:5
+SLOT=0
+SRC_URI=https://downloads.lxqt.org/downloads/qps/2.0.0/qps-2.0.0.tar.xz
+_eclasses_=cmake	88799418ef3db9d88b6232a483143608	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=df7fd73b5fe459880c9af5174eef480d
