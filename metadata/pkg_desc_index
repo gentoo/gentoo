@@ -2080,7 +2080,7 @@ app-misc/gnote 3.30.0: Desktop note-taking application
 app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency of most daily tasks
 app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.17 1.0.20 1.0.22: A simple JIRA commandline client in Go
-app-misc/golly 3.2 3.3: simulator for Conway's Game of Life and other cellular automata
+app-misc/golly 3.2 3.3 3.3-r1: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 3.4: Access your Google contacts from the command line
 app-misc/gourmet 0.17.4-r2: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
@@ -3994,7 +3994,7 @@ dev-haskell/snap-server 0.9.5.1-r1 1.0.1.1: A web server for the Snap Framework
 dev-haskell/socks 0.5.4 0.5.5: Socks proxy (version 5) implementation
 dev-haskell/split 0.2.2 0.2.3 0.2.3.1 0.2.3.3: Combinator library for splitting lists
 dev-haskell/stack 1.3.2: The Haskell Tool Stack
-dev-haskell/stack-bin 1.5.1 1.6.1 1.7.1: The Haskell Tool Stack (Binary)
+dev-haskell/stack-bin 1.5.1 1.6.1 1.7.1 2.1.3: The Haskell Tool Stack (Binary)
 dev-haskell/statevar 1.0.0.0-r1 1.0.1.0 1.1.0.3 1.1.0.4 1.1.1.1: State variables
 dev-haskell/statistics 0.10.5.2 0.11.0.3 0.13.2.3 0.13.3.0: A library of statistical types, data, and functions
 dev-haskell/stm 2.4.2 2.4.4.1: Software Transactional Memory
