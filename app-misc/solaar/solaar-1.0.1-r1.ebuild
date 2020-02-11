@@ -14,7 +14,7 @@ SRC_URI="https://github.com/pwr-Solaar/Solaar/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 ~arm ~x86"
 IUSE="doc"
 
 RDEPEND="
