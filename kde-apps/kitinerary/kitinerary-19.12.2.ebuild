@@ -16,7 +16,7 @@ HOMEPAGE="https://kde.org/applications/office/org.kde.kontact"
 LICENSE="LGPL-2.1+"
 SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE="+barcode pdf"
+IUSE="+barcode"
 
 DEPEND="
 	>=dev-qt/qtdeclarative-${QTMIN}:5
@@ -27,9 +27,9 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-apps/kmime-${PVCUT}:5
 	>=kde-apps/kpkpass-${PVCUT}:5
+	app-text/poppler:=[qt5]
 	sys-libs/zlib
 	barcode? ( media-libs/zxing-cpp )
-	pdf? ( app-text/poppler:=[qt5] )
 "
 RDEPEND="${DEPEND}
 	!<kde-apps/kdepim-addons-18.07.80
@@ -38,7 +38,6 @@ RDEPEND="${DEPEND}
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package barcode ZXing)
-		$(cmake_use_find_package pdf Poppler)
 	)
 	ecm_src_configure
 }
