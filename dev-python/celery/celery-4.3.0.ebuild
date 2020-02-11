@@ -15,7 +15,7 @@ SRC_URI="https://github.com/celery/celery/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 # There are a number of other optional 'extras' which overlap with those of kombu, however
 # there has been no apparent expression of interest or demand by users for them. See requires.txt
 IUSE="doc examples test"

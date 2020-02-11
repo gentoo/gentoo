@@ -7,7 +7,7 @@ PHP_EXT_INI="yes"
 PHP_EXT_ZENDEXT="yes"
 PHP_EXT_INIFILE="2.6.0-xdebug.ini"
 
-USE_PHP="php7-1 php7-2 php7-3 php7-4"
+USE_PHP="php7-2 php7-3 php7-4"
 
 MY_PV="${PV/_/}"
 MY_PV="${MY_PV/rc/RC}"
