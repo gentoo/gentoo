@@ -16,8 +16,8 @@ https://umbrello.kde.org"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~x86"
+IUSE="php"
 
 RDEPEND="
 	>=kde-frameworks/karchive-${KFMIN}:5
@@ -43,6 +43,10 @@ RDEPEND="
 	dev-libs/libxml2
 	dev-libs/libxslt
 	>=dev-qt/qtwebkit-5.212.0_pre20180120:5
+	php? (
+		dev-util/kdevelop:5=
+		dev-util/kdevelop-pg-qt
+	)
 "
 DEPEND="${RDEPEND}
 	>=kde-frameworks/kdelibs4support-${KFMIN}:5
@@ -51,7 +55,7 @@ DEPEND="${RDEPEND}
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_KF5=ON
-		-DBUILD_PHP_IMPORT=OFF
+		-DBUILD_PHP_IMPORT=$(usex php)
 		-DBUILD_unittests=$(usex test)
 	)
 	use test && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_LLVM=ON )
