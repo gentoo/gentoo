@@ -11,7 +11,7 @@ SRC_URI="https://www.cups-pdf.de/src/${PN}_${PV/_}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc x86"
+KEYWORDS="amd64 ~arm ppc x86"
 IUSE="+ppds"
 
 RDEPEND="
