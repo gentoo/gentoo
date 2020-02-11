@@ -17,7 +17,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${PN}-${MY_PV}.tar.gz"
 
 LICENSE="repoze ZPL BSD HPND GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
