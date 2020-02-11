@@ -13118,7 +13118,7 @@ media-libs/mutagen 1.43.0: Audio metadata tag reader and writer implemented in p
 media-libs/nas 1.9.4-r2: Network Audio System
 media-libs/netpbm 10.66.00 10.70.00 10.76.00: A set of utilities for converting to/from the netpbm (and related) formats
 media-libs/nv-codec-headers 8.1.24.2 9.0.18.1: FFmpeg version of headers required to interface with Nvidias codec APIs
-media-libs/openal 1.19.1 1.20.0: A software implementation of the OpenAL 3D audio API
+media-libs/openal 1.19.1 1.20.0 1.20.1: A software implementation of the OpenAL 3D audio API
 media-libs/opencollada 1.6.62 1.6.63-r1: Stream based read/write library for COLLADA files
 media-libs/opencolorio 1.1.0-r3 1.1.0-r4: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
@@ -17463,7 +17463,7 @@ sys-fs/loop-aes 3.7n: Linux kernel module to encrypt disk partitions with AES ci
 sys-fs/lsscsi 0.29 0.30: SCSI sysfs query tool
 sys-fs/lufis 0.3 0.3-r1: Wrapper to use lufs modules with fuse kernel support
 sys-fs/lufs 0.9.7-r4: User-mode filesystem implementation
-sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.184-r5 2.02.186-r2 2.03.07: User-land utilities for LVM2 (device-mapper) software
+sys-fs/lvm2 2.02.116 2.02.145-r2 2.02.184-r5 2.02.186-r2 2.03.08: User-land utilities for LVM2 (device-mapper) software
 sys-fs/lxcfs 3.0.3: FUSE filesystem for LXC
 sys-fs/mac-fdisk 0.1_p18: Mac/PowerMac disk partitioning utility
 sys-fs/mdadm 4.1: Tool for running RAID systems - replacement for the raidtools
