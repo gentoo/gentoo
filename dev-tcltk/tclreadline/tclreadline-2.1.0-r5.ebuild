@@ -15,7 +15,7 @@ SRC_URI="
 
 SLOT="0"
 LICENSE="BSD"
-KEYWORDS="~alpha ~amd64 ~ppc ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~ppc ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="static-libs"
 
 DEPEND="
