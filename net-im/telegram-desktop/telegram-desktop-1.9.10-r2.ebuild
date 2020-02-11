@@ -42,8 +42,8 @@ RDEPEND="!net-im/telegram-desktop-bin
 	x11-libs/libva[X,drm]
 	x11-libs/libX11
 	|| (
-		dev-qt/qtgui:5[png,X(-)]
-		dev-qt/qtgui:5[png,xcb(-)]
+		dev-qt/qtgui:5[jpeg,png,X(-)]
+		dev-qt/qtgui:5[jpeg,png,xcb(-)]
 	)
 	|| (
 		dev-qt/qtwidgets:5[png,X(-)]
