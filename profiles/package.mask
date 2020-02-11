@@ -586,18 +586,6 @@ dev-python/transmissionrpc
 # masked for removal ~12 Feb 2020
 media-plugins/vdr-mailbox
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-12)
-# Unmaintained upstream and redundant. Use kde-apps/kamera instead.
-# Only revdep of ancient media-libs/qimageblitz. Removal in 30 days.
-media-video/kamerka
-media-libs/qimageblitz
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-12)
-# Ancient, blocks x11-libs/gtkglext cleanup, open bug #649066
-# Masked for removal in 30 days.
-dev-cpp/gtkglextmm
-sci-misc/repsnapper
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-12)
 # Python 2 only, depends on OpenStack which is Py3 now.  No release
 # since 2005.
@@ -617,16 +605,6 @@ sys-libs/libcxxrt
 # Backport to Python 2.4 - 2.6.  Not needed by anything.
 # Removal in 30 days.  Bug #705256.
 dev-python/ordereddict
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-12)
-# Unmaintained upstream and redundant. Use media-sound/audex instead.
-# Removal in 30 days.
-media-sound/kaudiocreator
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-12)
-# Unmaintained upstream and redundant. Use Night Color functionality built into
-# Plasma 5.17 instead, without needing x11-misc/redshift. Removal in 30 days.
-kde-misc/plasma-redshift-control
 
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # End of life vala:0.42 series, please depclean.
