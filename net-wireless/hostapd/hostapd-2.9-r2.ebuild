@@ -92,6 +92,11 @@ src_configure() {
 	echo "CONFIG_EAP=y" >> ${CONFIG}
 	echo "CONFIG_ERP=y" >> ${CONFIG}
 	echo "CONFIG_EAP_MD5=y" >> ${CONFIG}
+	echo "CONFIG_SAE=y" >> ${CONFIG}
+	echo "CONFIG_OWE=y" >> ${CONFIG}
+	echo "CONFIG_DPP=y" >> ${CONFIG}
+	echo "CONFIG_SUITEB=y" >> ${CONFIG}
+	echo "CONFIG_SUITEB192=y" >> ${CONFIG}
 
 	if use internal-tls && ! use libressl; then
 		echo "CONFIG_TLS=internal" >> ${CONFIG}
