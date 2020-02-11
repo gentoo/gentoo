@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1
 
@@ -25,7 +25,7 @@ DESCRIPTION="Python based extensible IRC infobot and channel bot"
 HOMEPAGE="https://supybot.aperio.fr/"
 LICENSE="BSD"
 SLOT="0"
-IUSE="crypt ssl test"
+IUSE="crypt ssl"
 
 RDEPEND="
 	dev-python/chardet[${PYTHON_USEDEP}]
@@ -40,10 +40,7 @@ RDEPEND="
 	!net-irc/supybot
 	!net-irc/supybot-plugins
 	"
-DEPEND="${RDEPEND}
-	test? ( $(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7) )"
-
-RESTRICT="!test? ( test )"
+DEPEND="${RDEPEND}"
 
 src_unpack() {
 	if [[ ${PV} == "99999999" ]]; then
