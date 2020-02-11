@@ -12,7 +12,7 @@ DESCRIPTION="Oxygen visual style for the Plasma desktop"
 HOMEPAGE="https://cgit.kde.org/oxygen.git"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="wayland"
 
 COMMON_DEPEND="
