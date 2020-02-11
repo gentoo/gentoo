@@ -41,7 +41,7 @@ RDEPEND="${DEPEND}
 		dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/requests-2.0.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/roman-2.0.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/matplotlib-2.0.0[wxwidgets,${PYTHON_MULTI_USEDEP}]
+		>=dev-python/matplotlib-3.1.2[wxwidgets,${PYTHON_MULTI_USEDEP}]
 		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
 	')"
 BDEPEND="app-arch/zip"
