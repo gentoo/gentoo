@@ -1,0 +1,39 @@
+#!/sbin/openrc-run
+# Copyright 1999-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+PIDFILE="/run/octoprint/octoprint.pid"
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting OctoPrint"
+
+	checkpath -q -d -o ${OCTOPRINT_USER}:${OCTOPRINT_GROUP} -m 0770 "$(dirname "${PIDFILE}")"
+
+	start-stop-daemon \
+		--quiet \
+		--start \
+		--user ${OCTOPRINT_USER} \
+		--group ${OCTOPRINT_GROUP} \
+		--background --make-pidfile \
+		--pidfile "${PIDFILE}" \
+		--wait 1000 \
+		--nicelevel -2 \
+		--ionice 1 \
+		--exec /usr/bin/octoprint serve 
+
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping OctoPrint"
+
+	start-stop-daemon \
+		--stop \
+		--pidfile "${PIDFILE}" 
+
+	eend $?
+}
