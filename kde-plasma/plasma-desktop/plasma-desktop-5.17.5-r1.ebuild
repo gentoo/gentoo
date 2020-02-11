@@ -14,7 +14,7 @@ inherit ecm kde.org
 DESCRIPTION="KDE Plasma desktop"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="+fontconfig ibus +mouse scim +semantic-desktop touchpad"
 
 COMMON_DEPEND="

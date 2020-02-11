@@ -13,7 +13,7 @@ DESCRIPTION="Network-enabled task manager and system monitor"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
 IUSE="lm-sensors pcap"
 
 DEPEND="
