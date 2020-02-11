@@ -1,7 +1,17 @@
-diff -Naur libnatpmp-20130911.orig/Makefile libnatpmp-20130911/Makefile
---- libnatpmp-20130911.orig/Makefile	2013-09-13 07:00:55.874343916 -0400
-+++ libnatpmp-20130911/Makefile	2013-09-13 07:03:33.733351101 -0400
-@@ -35,7 +35,6 @@
+--- a/Makefile
++++ b/Makefile
+@@ -4,8 +4,9 @@
+ # (c) 2007-2013 Thomas Bernard
+ # http://miniupnp.free.fr/libnatpmp.html
+ 
++GENTOO_LIBDIR ?= lib
+ OS = $(shell uname -s)
+-CC = gcc
++CC ?= gcc
+ INSTALL = install -p
+ ARCH = $(shell uname -m | sed -e s/i.86/i686/)
+ VERSION = $(shell cat VERSION)
+@@ -35,7 +36,6 @@
  
  OBJS = $(LIBOBJS) testgetgateway.o natpmpc.o natpmp-jni.o
  
@@ -9,7 +19,7 @@ diff -Naur libnatpmp-20130911.orig/Makefile libnatpmp-20130911/Makefile
  ifeq ($(OS), Darwin)
    SHAREDLIB = libnatpmp.dylib
    JNISHAREDLIB = libjninatpmp.dylib
-@@ -58,7 +57,7 @@
+@@ -58,11 +58,11 @@
  
  HEADERS = natpmp.h
  
@@ -18,7 +28,12 @@ diff -Naur libnatpmp-20130911.orig/Makefile libnatpmp-20130911/Makefile
  
  INSTALLPREFIX ?= $(PREFIX)/usr
  INSTALLDIRINC = $(INSTALLPREFIX)/include
-@@ -72,9 +71,9 @@
+-INSTALLDIRLIB = $(INSTALLPREFIX)/lib
++INSTALLDIRLIB = $(INSTALLPREFIX)/$(GENTOO_LIBDIR)
+ INSTALLDIRBIN = $(INSTALLPREFIX)/bin
+ 
+ JAVA ?= java
+@@ -74,9 +74,9 @@
  
  .PHONY:	all clean depend install cleaninstall installpythonmodule
  
@@ -30,7 +45,7 @@ diff -Naur libnatpmp-20130911.orig/Makefile libnatpmp-20130911/Makefile
  	python setup.py build
  	touch $@
  
-@@ -82,18 +81,17 @@
+@@ -84,18 +84,17 @@
  	python setup.py install
  
  clean:
@@ -51,7 +66,7 @@ diff -Naur libnatpmp-20130911.orig/Makefile libnatpmp-20130911/Makefile
  	$(INSTALL) -m 644 $(SHAREDLIB) $(INSTALLDIRLIB)/$(SONAME)
  	$(INSTALL) -d $(INSTALLDIRBIN)
  	$(INSTALL) -m 755 natpmpc-shared $(INSTALLDIRBIN)/natpmpc
-@@ -142,20 +140,13 @@
+@@ -147,25 +146,18 @@
  	$(RM) $(addprefix $(INSTALLDIRINC), $(HEADERS))
  	$(RM) $(INSTALLDIRLIB)/$(SONAME)
  	$(RM) $(INSTALLDIRLIB)/$(SHAREDLIB)
@@ -61,14 +76,22 @@ diff -Naur libnatpmp-20130911.orig/Makefile libnatpmp-20130911/Makefile
  	$(CC) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
  
 -natpmpc-static:	natpmpc.o $(STATICLIB)
--	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
+-	$(CC) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
 -
  natpmpc-shared:	natpmpc.o $(SHAREDLIB)
- 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
- 
+-	$(CC) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
+-
 -$(STATICLIB):	$(LIBOBJS)
 -	$(AR) crs $@ $?
--
++	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^ $(EXTRA_LD)
+ 
  $(SHAREDLIB):	$(LIBOBJS)
  ifeq ($(OS), Darwin)
- 	$(CC) $(CFLAGS) $(LDFLAGS) -dynamiclib -Wl,-install_name,$(SONAME) -o $@ $^
+-	$(CC) -dynamiclib -Wl,-install_name,$(SONAME) -o $@ $^
++	$(CC) $(CFLAGS) $(LDFLAGS) -dynamiclib -Wl,-install_name,$(SONAME) -o $@ $^
+ else
+-	$(CC) -shared -Wl,-soname,$(SONAME) -o $@ $^ $(EXTRA_LD)
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared -Wl,-soname,$(SONAME) -o $@ $^ $(EXTRA_LD)
+ endif
+ 
+ 
