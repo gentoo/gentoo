@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-11)
+# dev-util/kdevelop and dev-util/kdevelop-pg-qt not keyworded, bug #709294
+kde-apps/umbrello php
+
 # Matt Turner <mattst88@gentoo.org> (2020-02-02)
 # dev-libs/mongo-c-driver is not keyworded
 net-dialup/freeradius mongodb
