@@ -2443,7 +2443,7 @@ app-shells/kshdb 1.1.0: Korn Shell Debugger
 app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control of shell execution
 app-shells/loksh 6.6: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6: Context-aware bash history search replacement (crtl-r)
-app-shells/mksh 56c 57 57-r1 57-r2 9999: MirBSD Korn Shell
+app-shells/mksh 57-r2 9999: MirBSD Korn Shell
 app-shells/mpibash 1.2 1.3 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/mpv-bash-completion 3.3.16 3.3.17: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
@@ -3147,7 +3147,6 @@ dev-cpp/glibmm 2.60.1: C++ interface for glib2
 dev-cpp/glog 0.3.4-r1 0.4.0: Google's C++ logging library
 dev-cpp/gstreamermm 1.10.0: C++ interface for GStreamer
 dev-cpp/gtest 1.8.0 1.8.0-r1 1.8.1 1.8.1-r1 1.9.0_pre20190607 1.10.0 9999: Google C++ Testing Framework
-dev-cpp/gtkglextmm 1.2.0-r2: C++ bindings for gtkglext
 dev-cpp/gtkmm 2.24.5 3.24.2: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.87: A simple non-validating CSS 1 and HTML parser for C++
@@ -12170,7 +12169,6 @@ kde-misc/openofficeorg-thumbnail 1.0.0-r500: Thumbnail-plugin that generates thu
 kde-misc/plasma-applet-network-monitor 1.7.3-r1: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather forecasts
 kde-misc/plasma-pass 1.1.0: Plasma applet to access password from pass
-kde-misc/plasma-redshift-control 1.0.18-r1: Plasma 5 applet for controlling redshift
 kde-misc/playbar2 2.5-r1: MPRIS2 client, written in QML for Plasma 5
 kde-misc/rsibreak 0.12.11: Small utility which bothers you at certain intervals
 kde-misc/skanlite 2.1.0.1-r1: Simple image scanning application based on libksane and KDE Frameworks
@@ -12215,7 +12213,7 @@ kde-plasma/plasma-pa 5.17.4 5.17.5: Plasma applet for audio volume management us
 kde-plasma/plasma-sdk 5.17.4-r1 5.17.5: Useful applications for Plasma development
 kde-plasma/plasma-thunderbolt 5.17.4 5.17.5: Plasma integration for controlling Thunderbolt devices
 kde-plasma/plasma-vault 5.17.4 5.17.5: Plasma applet and services for creating encrypted vaults
-kde-plasma/plasma-workspace 5.17.4-r1 5.17.5 5.17.5-r1: KDE Plasma workspace
+kde-plasma/plasma-workspace 5.17.4-r1 5.17.5-r1: KDE Plasma workspace
 kde-plasma/plasma-workspace-wallpapers 5.17.4 5.17.5: Wallpapers for the Plasma workspace
 kde-plasma/plymouth-kcm 5.17.4 5.17.5: KDE Plasma control module for Plymouth
 kde-plasma/polkit-kde-agent 5.17.4 5.17.5: PolKit agent module for KDE Plasma
@@ -13152,7 +13150,6 @@ media-libs/pulseaudio-qt 1.2: Qt bindings for libpulse
 media-libs/pyliblo 0.10.0-r1: A Python wrapper for the liblo OSC library
 media-libs/pymemphis 0.2.1-r3: Python bindings for the libmemphis library
 media-libs/qhull 2015.2: Geometry library
-media-libs/qimageblitz 0.0.6_p20131029: Graphical effect and filter library by KDE
 media-libs/qt-gstreamer 1.2.0-r4: C++ bindings for GStreamer with a Qt-style API
 media-libs/qtav 1.12.0 1.12.0-r1 1.12.0-r2: Multimedia playback framework based on Qt + FFmpeg
 media-libs/quesoglc 0.7.2: A free implementation of the OpenGL Character Renderer (GLC)
@@ -13679,7 +13676,6 @@ media-sound/jackbeat 0.7.6: An audio sequencer for Linux
 media-sound/jalv 1.6.4: Simple but fully featured LV2 host for Jack
 media-sound/jamin 0.95.0-r3: JAMin is the JACK Audio Connection Kit (JACK) Audio Mastering interface
 media-sound/justeport 0.2: Stream audio to your AirPort Express
-media-sound/kaudiocreator 1.3_p20190225: CD ripper and audio encoder frontend based on KDE Frameworks
 media-sound/kid3 3.7.1 3.8.1 3.8.2: Simple tag editor based on Qt
 media-sound/klick 0.12.2-r2: An advanced command-line based metronome for JACK
 media-sound/kmetronome 1.0.1: MIDI based metronome using ALSA sequencer
@@ -13989,7 +13985,6 @@ media-video/imagination 3.0-r1: Simple DVD slideshow maker
 media-video/isight-firmware-tools 1.6-r1: Extract, load or export firmware for the iSight webcams
 media-video/jubler 5.1: Java subtitle editor
 media-video/kaffeine 2.0.18: Media player with digital TV support by KDE
-media-video/kamerka 0.20: Simple photo taking application with fancy animated interface
 media-video/kino 1.3.4-r1: Kino is a non-linear DV editor for GNU/Linux
 media-video/kmplayer 0.12.0b-r3: Video player plugin for Konqueror and basic MPlayer frontend
 media-video/libav 12.3 13_pre20171219 9999: Complete solution to record, convert and stream audio and video
@@ -15675,7 +15670,7 @@ sci-astronomy/gasgano 2.4.8: ESO astronomical data file organizer
 sci-astronomy/gnuastro 0.3: GNU Astronomy Utilities
 sci-astronomy/healpix 3.30 3.31: Hierarchical Equal Area isoLatitude Pixelization of a sphere
 sci-astronomy/idlastro 20161220 99999999: Astronomical user routines for IDL
-sci-astronomy/kstars 3.2.3 3.3.8-r2 3.3.9: Desktop Planetarium
+sci-astronomy/kstars 3.2.3 3.3.9: Desktop Planetarium
 sci-astronomy/missfits 2.8.0: Performs basic maintenance and packaging tasks on FITS files
 sci-astronomy/montage 4.1 5.0: Toolkit for assembling FITS images into mosaics
 sci-astronomy/pal 0.9.7: Positional Astronomy Library
@@ -16414,7 +16409,6 @@ sci-misc/ncview 2.1.7: X-based viewer for netCDF files
 sci-misc/netlogo-bin 5.0.3-r1 6.0.2: Cross-platform multi-agent programmable modeling environment
 sci-misc/oww 0.86.4 0.86.5: A one-wire weather station for Dallas Semiconductor
 sci-misc/pythoncad 1.37-r1: CAD program written in PyGTK
-sci-misc/repsnapper 2.3.2a_p3 2.4a_p0 2.4a_p3 9999: Host software for controlling the RepRap open source 3D printer
 sci-misc/tango 9.2.5a: Tango is an Open Source solution for SCADA and DCS
 sci-misc/vitables 3.0.0-r1: A graphical tool for browsing / editing files in both PyTables and HDF5 formats
 sci-physics/bullet 2.86: Continuous Collision Detection and Physics Library
@@ -17517,6 +17511,7 @@ sys-fs/zfs 0.7.13-r1 0.7.13-r2 0.8.2-r2 0.8.3-r1 9999: Userland utilities for ZF
 sys-fs/zfs-auto-snapshot 1.2.4 9999: ZFS Automatic Snapshot Service for Linux
 sys-fs/zfs-kmod 0.7.13 0.8.2-r2 0.8.3 9999: Linux ZFS kernel module for sys-fs/zfs
 sys-kernel/aufs-sources 4.14.138 4.14.143 4.14.144 4.14.145 4.14.146 4.14.147 4.14.148 4.14.149 4.14.150 4.19.66 4.19.72 4.19.73 4.19.74 4.19.75 4.19.76 4.19.77 4.19.78 4.19.79 4.19.80 5.2.13 5.2.14 5.2.15 5.2.16 5.2.17 5.2.18 5.2.19 5.2.20 5.3.0 5.3.1 5.3.2 5.3.4 5.3.5 5.3.6-r1 5.3.7: Full sources (incl. Gentoo patchset) for the linux kernel tree and aufs5 support
+sys-kernel/bliss-initramfs 8.0.0: Boot your system's rootfs from OpenZFS/LUKS
 sys-kernel/ck-sources 5.4.15 5.4.17: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
 sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r2 049-r3 9999: Generic initramfs generation tool
