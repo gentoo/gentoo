@@ -596,7 +596,6 @@ media-libs/qimageblitz
 # Ancient, blocks x11-libs/gtkglext cleanup, open bug #649066
 # Masked for removal in 30 days.
 dev-cpp/gtkglextmm
-sci-misc/repsnapper
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-12)
 # Python 2 only, depends on OpenStack which is Py3 now.  No release
