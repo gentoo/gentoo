@@ -11,10 +11,10 @@ if [[ $PV = 9999 ]]; then
 	ECVS_MODULE="mksh"
 	ECVS_USER="_anoncvs"
 	ECVS_AUTH="ext"
-	KEYWORDS="amd64 x86"
+	KEYWORDS="amd64 ppc x86"
 else
 	SRC_URI="https://www.mirbsd.org/MirOS/dist/mir/mksh/${PN}-R${PV}.tgz"
-	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sh ~sparc x86 ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ppc ~ppc64 ~riscv ~sh ~sparc x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="MirBSD Korn Shell"
