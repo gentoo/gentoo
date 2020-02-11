@@ -17,7 +17,7 @@ SRC_URI="https://github.com/elasticsearch/${MY_PN}/archive/v${PV}.tar.gz -> ${P}
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 # tests fail in chroot
 # https://github.com/elastic/elasticsearch/issues/12018
 RESTRICT="test"
