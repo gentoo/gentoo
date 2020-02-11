@@ -17,6 +17,7 @@ IUSE="+alsa jack"
 RDEPEND="
 	dev-lang/tcl:0=
 	media-libs/libsdl:=
+	virtual/glu
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
