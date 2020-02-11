@@ -5526,6 +5526,7 @@ net-dialup/accel-ppp:ipoe - Build IPoE kernel module
 net-dialup/accel-ppp:shaper - Support for traffic shaping
 net-dialup/accel-ppp:valgrind - Compile in valgrind hints
 net-dialup/freeradius:memcached - Include dev-libs/libmemcached in caching drivers
+net-dialup/freeradius:mongodb - Include support for MongoDB database
 net-dialup/freeradius:pcap - Build the RADIUS sniffer which requires net-libs/libpcap.
 net-dialup/freeradius:redis - Include support for Redis database
 net-dialup/freeradius:rest - Include support for sending and receiving HTTP requests
