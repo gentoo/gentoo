@@ -12058,7 +12058,7 @@ kde-apps/step 19.08.3 19.12.2: Interactive physics simulator
 kde-apps/svgpart 19.08.3 19.12.2: Kpart for viewing SVGs
 kde-apps/sweeper 19.08.3 19.12.2: Privacy settings widget to clean unwanted traces on the system
 kde-apps/thumbnailers 19.08.3 19.12.2: Thumbnail generators for PDF/PS and RAW files
-kde-apps/umbrello 19.08.3 19.12.2: KDE UML Modeller
+kde-apps/umbrello 19.08.3 19.12.2 19.12.2-r1: KDE UML Modeller
 kde-apps/yakuake 19.08.3 19.12.2: Quake-style terminal emulator based on konsole
 kde-apps/zeroconf-ioslave 19.08.3 19.12.2: DNSSD (DNS Service Discovery - part of Rendezvous) ioslave and kded module
 kde-frameworks/attica 5.64.0 5.67.0: Framework providing access to Open Collaboration Services
