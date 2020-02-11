@@ -14563,7 +14563,7 @@ net-im/mattermost-desktop-bin 4.2.3 4.3.1: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openmittsu 0.9.13.32 0.9.13.46: An open source chat client for Threema-style end-to-end encrypted chat networks
-net-im/pidgin 2.13.0-r5: GTK Instant Messenger client
+net-im/pidgin 2.13.0-r6: GTK Instant Messenger client
 net-im/poezio 0.12 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1: A console based XMPP client inspired by Irssi
 net-im/prosody 0.9.14 0.11.2-r1 0.11.3: Prosody is a flexible communications server for Jabber/XMPP written in Lua
@@ -15550,7 +15550,7 @@ net-wireless/srslte 19.09: Open source SDR LTE software suite from Software Radi
 net-wireless/tempestsdr 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.08.1 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.10.3.0 3.11.0.0 3.12.0.0 3.13.0.1 3.13.1.0 3.14.0.0 3.14.1.1 3.15.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
-net-wireless/unifi 5.6.42-r1 5.12.35 5.12.46 5.13.9: A Management Controller for Ubiquiti Networks UniFi APs
+net-wireless/unifi 5.6.42-r1 5.12.35 5.12.46 5.12.60 5.13.9: A Management Controller for Ubiquiti Networks UniFi APs
 net-wireless/urh 1.6.4.1 2.7.5 9999: Universal Radio Hacker: investigate wireless protocols like a boss
 net-wireless/wavemon 0.7.6 0.8.0: Ncurses based monitor for IEEE 802.11 wireless LAN cards
 net-wireless/wepattack 0.1.3-r5: WLAN tool for breaking 802.11 WEP keys
