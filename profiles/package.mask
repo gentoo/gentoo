@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-02-11)
+# Unmaintained, EAPI 4, last release over 9 years ago, ebuild has QA
+# issues, no revdeps.  Removal in 30 days.  Bug #558354.
+net-im/coccinella
+
 # David Seifert <soap@gentoo.org> (2020-02-10)
 # Unmaintained, only live ebuild, doesn't build, last release over 7
 # years ago, EAPI 4. Removal in 15 days. Bug #593008.
