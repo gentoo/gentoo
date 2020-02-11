@@ -8,7 +8,7 @@ ansi_term-0.11.0
 atty-0.2.13
 bitflags-1.2.1
 c2-chacha-0.2.3
-cbindgen-0.12.1
+cbindgen-0.13.1
 cfg-if-0.1.10
 clap-2.33.0
 getrandom-0.1.13
