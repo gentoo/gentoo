@@ -12,7 +12,7 @@ DESCRIPTION="Interface PHP with memcached via libmemcached library"
 LICENSE="PHP-3.01"
 SLOT="7"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-IUSE="examples igbinary json sasl +session test"
+IUSE="igbinary json sasl +session test"
 
 RESTRICT="!test? ( test )"
 
