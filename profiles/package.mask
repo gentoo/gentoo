@@ -590,7 +590,6 @@ media-plugins/vdr-mailbox
 # Unmaintained upstream and redundant. Use kde-apps/kamera instead.
 # Only revdep of ancient media-libs/qimageblitz. Removal in 30 days.
 media-video/kamerka
-media-libs/qimageblitz
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-12)
 # Python 2 only, depends on OpenStack which is Py3 now.  No release
