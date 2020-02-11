@@ -73,6 +73,8 @@ DEPEND="${RDEPEND}"
 # appstream-glib needed for validation with appstream-util with FEATURES=test
 BDEPEND="
 	doc? ( dev-python/sphinx )
+	gtk-doc? ( dev-util/gtk-doc
+		app-text/docbook-xml-dtd:4.3 )
 	test? (
 		dev-libs/appstream-glib
 		sys-apps/dbus )
