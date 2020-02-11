@@ -11,7 +11,7 @@ SRC_URI="https://github.com/libxls/libxls/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD-2"
 SLOT="0/1" # libxlsreader.so.1
-KEYWORDS="~amd64 x86"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 RDEPEND=""
