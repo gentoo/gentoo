@@ -14,7 +14,7 @@ DESCRIPTION="KDE Plasma resources management GUI"
 HOMEPAGE="https://userbase.kde.org/Discover"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="+firmware"
 
 # libmarkdown (app-text/discount) only used in PackageKitBackend
