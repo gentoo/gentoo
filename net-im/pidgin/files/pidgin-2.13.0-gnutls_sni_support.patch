@@ -1,0 +1,33 @@
+# HG changeset patch
+# User Mihai Moldovan <ionic@ionic.de>
+# Date 1576498301 -3600
+# Branch release-2.x.y
+# Node ID 6dba8046e1b120c506e1d911c6aa8757d7774c57
+# Parent  7a975763d3b64bdd8dd5371d711a4add647ed726
+Implement SNI support for the gnutls SSL plugin.
+
+Note that gnutls is picky in regard to what it accepts as the server name - it
+MUST be a domain name. IP addresses are not supported according to the
+documentation.
+
+Hence, filter out IP addresses and hope that whatever is not recognized as
+such an address is actually a domain name. This will probably fail for more
+exotic addresses (especially in IPv6 realm), but wiring up a full-blown parser
+is too much effort and SSL plugins are not part of purple-3 anyway.
+
+Fixes #17300
+
+diff --git a/libpurple/plugins/ssl/ssl-gnutls.c b/libpurple/plugins/ssl/ssl-gnutls.c
+--- a/libpurple/plugins/ssl/ssl-gnutls.c
++++ b/libpurple/plugins/ssl/ssl-gnutls.c
+@@ -403,6 +403,10 @@
+ 
+ 	gnutls_transport_set_ptr(gnutls_data->session, GINT_TO_POINTER(gsc->fd));
+ 
++	/* SNI support. */
++	if (gsc->host && !g_hostname_is_ip_address(gsc->host))
++		gnutls_server_name_set(gnutls_data->session, GNUTLS_NAME_DNS, gsc->host, strlen(gsc->host));
++
+ 	gnutls_data->handshake_handler = purple_input_add(gsc->fd,
+ 		PURPLE_INPUT_READ, ssl_gnutls_handshake_cb, gsc);
+ 
