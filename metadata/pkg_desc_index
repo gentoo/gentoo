@@ -80,6 +80,7 @@ acct-group/nofiles 0: System group: nofiles
 acct-group/nova 0: System group: nova
 acct-group/nsd 0: System group: nsd
 acct-group/ntp 0: System group: ntp
+acct-group/octoprint 0: System group: octoprint
 acct-group/oidentd 0: System group: oidentd
 acct-group/openct 0: System group: openct
 acct-group/opendkim 0: Group for OpenDKIM
@@ -221,6 +222,7 @@ acct-user/neutron 0: user for the openstack neutron service
 acct-user/nova 0: user for the openstack nova service
 acct-user/nsd 0: user for nsd daemon
 acct-user/ntp 0: user for ntp daemon
+acct-user/octoprint 0: User for OctoPrint
 acct-user/oidentd 0: System user: oidentd
 acct-user/opendkim 0: User for OpenDKIM
 acct-user/openntpd 0: user for openntpd daemon
@@ -7437,6 +7439,7 @@ dev-python/autobahn 17.5.1-r2 17.9.1 17.9.2 17.10.1 18.3.1: WebSocket and WAMP f
 dev-python/automat 0.5.0 0.6.0 0.7.0 0.8.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.3.2 1.3.3 1.3.5 1.4 1.4.3 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
+dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.11.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
 dev-python/awscli 1.16.310 1.16.314 1.17.7: Universal Command Line Environment for AWS
@@ -7486,7 +7489,7 @@ dev-python/booleanOperations 0.8.2: Boolean operations on paths
 dev-python/boto 2.41.0 2.48.0 2.49.0: Amazon Web Services API
 dev-python/boto3 1.9.4-r1 1.9.122 1.10.2 9999: The AWS SDK for Python
 dev-python/botocore 1.12.122 1.13.46 1.13.50 1.14.7 9999: Low-level, data-driven core of boto 3.
-dev-python/bottle 0.12.16 0.12.18: A fast and simple micro-framework for small web-applications
+dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.17.1 0.18: Syntax highlighting and autocompletion for the Python interpreter
 dev-python/breathe 4.6.0: Sphinx Doxygen renderer
@@ -7515,6 +7518,7 @@ dev-python/cffi 1.9.1 1.11.2 1.11.4 1.11.5 1.12.1 1.12.3 1.13.2: Foreign Functio
 dev-python/cfn-python-lint 0.21.6: CloudFormation Linter
 dev-python/cgroup-utils 0.6: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.1: Easy to use mocking, stubbing and spying framework
+dev-python/chainmap 1.0.3: ChainMap implementation for older Python versions
 dev-python/chameleon 2.25: Fast HTML/XML template compiler for Python
 dev-python/characteristic 14.3.0-r1 14.3.0-r2 14.3.0-r3: Python attributes without the boilerplate
 dev-python/chardet 3.0.4: Universal encoding detector
@@ -7706,6 +7710,7 @@ dev-python/elementtree 1.2.6-r3: A light-weight XML object model for Python
 dev-python/elib-intl 0_pre20110711: Enhanced internationalization (I18N) services for your Python modules and applications
 dev-python/embedly 0.5.0-r1: Python Library for Embedly
 dev-python/emcee 2.2.1: Python ensemble sampling toolkit for affine-invariant MCMC
+dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3-r1 3.3.2 3.3.3: A powerful and robust templating system for Python
 dev-python/entrypoints 0.2.3 0.3 0.3-r1: Discover and load entry points from installed packages
 dev-python/enum34 1.1.6-r1: Python 3.4 Enum backported
@@ -7736,6 +7741,7 @@ dev-python/fido2 0.7.3 0.8.1: Python based FIDO 2.0 library
 dev-python/fields 5.0.0 5.0.0-r1 5.0.0-r2: Container class boilerplate killer
 dev-python/filelock 3.0.10 3.0.12: A platform independent file lock for Python
 dev-python/filemagic 1.6: A Python API for libmagic, the library behind the Unix file command
+dev-python/filetype 1.0.5: Small, dependency-free, fast Python package to infer binary file types checking
 dev-python/fitsio 0.9.11: Python library to read from and write to FITS files
 dev-python/fixtures 1.4.0 3.0.0: Fixtures, reusable state for writing clean tests and more
 dev-python/flake8 3.5.0 3.7.9: A wrapper around PyFlakes, pep8 & mccabe
@@ -7746,7 +7752,8 @@ dev-python/flask 0.12.2 1.0.2 1.0.4 1.1.1 9999: A microframework based on Werkze
 dev-python/flask-admin 1.5.1: Simple and extensible admin interface framework for Flask
 dev-python/flask-api 1.0 1.1: Browsable web APIs for Flask
 dev-python/flask-appconfig 0.11.1-r1: Configures Flask applications in a canonical way
-dev-python/flask-babel 0.11.2-r1 0.11.2-r2: i18n and l10n support for Flask based on Babel and pytz
+dev-python/flask-assets 0.12: Flask webassets integration
+dev-python/flask-babel 0.11.2-r1 0.11.2-r2 0.12.2: i18n and l10n support for Flask based on Babel and pytz
 dev-python/flask-babelex 0.9.3: Adds i18n/l10n support to Flask applications
 dev-python/flask-bootstrap 3.3.7.1: An extension that includes Bootstrap in your project, without boilerplate code
 dev-python/flask-cors 2.1.0: A Flask extension for Cross Origin Resource Sharing (CORS)
@@ -7790,6 +7797,7 @@ dev-python/formencode 1.3.0-r3: HTML form validation, generation, and conversion
 dev-python/fqdn 1.2.0: RFC-compliant FQDN validation and manipulation for Python
 dev-python/freezegun 0.3.10 0.3.12-r1 0.3.13 0.3.14: Let your Python tests travel through time
 dev-python/frozen-flask 0.15: Freezes a Flask application into a set of static files
+dev-python/frozendict 1.2: A simple immutable mapping for python
 dev-python/fs 0.5.4 2.0.21 2.0.26 2.4.8 2.4.9: Filesystem abstraction layer
 dev-python/fudge 1.1.0: Replace real objects with fakes (mocks, stubs, etc) while testing
 dev-python/funcparserlib 0.3.6 0.3.6-r1: Recursive descent parsing library based on functional combinators
@@ -7949,7 +7957,7 @@ dev-python/jedi 0.10.2 0.11.1 0.12.0 0.12.1 0.14.1 0.15.1: Autocompletion librar
 dev-python/jeepney 0.3.1 0.4.1: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.7.2: Python module for doing approximate and phonetic matching of strings
 dev-python/jikanpy 3.4.2: Python wrapper for jikan.moe API.
-dev-python/jinja 2.10.1 2.10.3 2.10.3-r1: A full-featured template engine for Python
+dev-python/jinja 2.8.1 2.10.1 2.10.3 2.10.3-r1: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jira 1.0.14-r2: Python library for interacting with the JIRA REST API
@@ -8437,6 +8445,7 @@ dev-python/pylast 1.9.0: Python interface to last.fm and other api-compatible we
 dev-python/pylibacl 0.5.0-r1 0.5.3: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.5.1-r1 1.6.1-r1: Libmemcached wrapper written as a Python extension
 dev-python/pylint 1.6.5-r1 1.8.4 2.3.1 2.4.4: Python code static checker
+dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pylzma 0.4.9: Python bindings for the LZMA compression library
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
 dev-python/pymdstat 0.4.2-r1: Python library to parse Linux /proc/mdstat
@@ -8767,7 +8776,7 @@ dev-python/rply 0.7.5 0.7.7: Pure python parser generator that also works with R
 dev-python/rpy 2.6.2 2.9.0: Python interface to the R Programming Language
 dev-python/rpyc 3.4.4 4.0.2 4.1.4: Remote Python Call (RPyC), a transparent and symmetric RPC library
 dev-python/rq 0.13.0 1.0: simple, lightweight library for creating and processing background jobs
-dev-python/rsa 3.2.3-r1 3.4.2-r1: Pure-Python RSA implementation
+dev-python/rsa 3.2.3-r1 3.4.2-r1 4.0: Pure-Python RSA implementation
 dev-python/rst-linker 1.9-r1 1.11 2.0.0: Sphinx plugin to add links and timestamps to the changelog
 dev-python/rst2pdf 0.93-r3: Tool for transforming reStructuredText to PDF using ReportLab
 dev-python/rtgraph 0.70-r1: Widgets for graphing data in real-time using PyGTK, and UI components for controlling the graphs
@@ -8781,6 +8790,7 @@ dev-python/ryu 4.26 4.26-r1: Component-based Software-defined Networking Framewo
 dev-python/s3fs 0.1.2 0.1.5: Pythonic file interface to S3
 dev-python/s3transfer 0.1.13-r1 0.2.0 0.2.1 0.3.1: An Amazon S3 Transfer Manager
 dev-python/sabyenc 3.3.5 3.3.6: Module providing raw yEnc encoding/decoding for SABnzbd
+dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
 dev-python/scandir 1.10.0 1.10.0-r1: A better directory iterator and faster os.walk()
 dev-python/schedule 0.4.2 0.5.0: Python job scheduling for humans
 dev-python/schema 0.6.6: Library for validating Python data structures
@@ -8797,6 +8807,7 @@ dev-python/selenium 3.0.2 3.13.0 3.141.0: Python language binding for Selenium R
 dev-python/semantic_version 2.8.2 2.8.4: Python library providing a few tools handling SemVer in Python
 dev-python/semver 2.8.1 2.9.0: A Python module for semantic versioning
 dev-python/send2trash 1.3.0 1.5.0: Sends files to the Trash (or Recycle Bin)
+dev-python/sentry-sdk 0.13.2 0.14.1: Python client for Sentry
 dev-python/serpent 1.19 1.28 1.30: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1 18.1.0: Service identity verification for pyOpenSSL
@@ -9041,7 +9052,7 @@ dev-python/webassets 0.12.1: Asset management for Python web development
 dev-python/webcolors 1.5 1.8.1 1.10: Color names and value formats defined by the HTML and CSS specifications
 dev-python/webencodings 0.5.1 0.5.1-r1: Character encoding aliases for legacy web content
 dev-python/webob 1.8.2 1.8.2-r1 1.8.5 1.8.5-r1 1.8.5-r3: WSGI request and response object
-dev-python/websocket-client 0.37.0 0.40.0 0.47.0 0.48.0: WebSocket client for python with hybi13 support
+dev-python/websocket-client 0.37.0 0.40.0 0.47.0 0.48.0 0.56.0: WebSocket client for python with hybi13 support
 dev-python/websockify 0.8.0: WebSockets support for any application/server
 dev-python/webtest 2.0.21 2.0.29 2.0.29-r1 2.0.33: Helper to test WSGI applications
 dev-python/webut 0.1.0.2-r1: Miscellaneous utilities for nevow and twisted.web programming
@@ -14715,7 +14726,7 @@ net-libs/libmicrohttpd 0.9.65 0.9.68 0.9.69: Small C library to run an HTTP serv
 net-libs/libmirisdr 9999: Software for the Mirics MSi2500 + MSi001 SDR platform
 net-libs/libmnl 1.0.3-r1 1.0.4: Minimalistic netlink library
 net-libs/libmrss 0.19.2: A C-library for parsing and writing RSS 0.91/0.92/1.0/2.0 files or streams
-net-libs/libnatpmp 20110808-r1 20130911 20140401-r1 20150609: An alternative protocol to UPnP IGD specification
+net-libs/libnatpmp 20150609: An alternative protocol to UPnP IGD specification
 net-libs/libndp 1.7: Library for Neighbor Discovery Protocol
 net-libs/libnet 1.0.2a-r7 1.2 1.2.9999: library providing an API for commonly used low-level network functions
 net-libs/libnetfilter_acct 1.0.2 1.0.3: Userspace library providing interface to extended accounting infrastructure of NetFilter
@@ -17992,6 +18003,7 @@ www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7 2.6.8 2.7.2: IP addr
 www-apps/nextcloud 16.0.8 17.0.3 18.0.0: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1 8.0.4: A static website and blog generator
 www-apps/novnc 0.6.2 0.6.2-r1 1.0.0 9999: noVNC is a VNC client implemented using HTML5 technologies
+www-apps/octoprint 1.4.0_rc4: the snappy web interface for your 3D printer
 www-apps/otrs 5.0.25 6.0.3 6.0.4 6.0.5 6.0.7: An Open source Ticket Request System
 www-apps/owncloud 10.3.1 10.3.2: Web-based storage application where all your data is under your own control
 www-apps/ownpaste 0.2.2-r1 9999: Private pastebin (server-side implementation)
@@ -18053,7 +18065,7 @@ www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
 www-client/vivaldi 2.10.1745.27_p1 2.10.1745.30_p1: A browser for our friends
-www-client/vivaldi-snapshot 2.11.1811.3_p1 2.11.1811.23_p1: A browser for our friends
+www-client/vivaldi-snapshot 2.11.1811.23_p1 2.11.1811.28_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings
 www-client/weboob 1.3 9998 9999: Consume lots of websites without a browser (Web Outside Of Browsers)
