@@ -185,9 +185,8 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
+	# Do not delete the static .a libraries here as some are
+	# mandatory. They may be needed even when linking dynamically.
 	find "${ED}" -type f -name "*.la" -delete || die
-	if ! use static-libs ; then
-		find "${ED}" -type f -name "*.a" -delete || die
-	fi
 	dodoc {BUGS,CREDITS,README,README-SDL,TODO,WhatsNew}.txt docs/README*.md
 }
