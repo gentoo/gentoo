@@ -51,6 +51,7 @@ DEPEND="${RDEPEND}
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_KF5=ON
+		-DBUILD_PHP_IMPORT=OFF
 		-DBUILD_unittests=$(usex test)
 	)
 	use test && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_LLVM=ON )
