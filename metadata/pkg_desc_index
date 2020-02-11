@@ -1528,7 +1528,7 @@ app-emulation/aranym 1.1.0: Atari Running on Any Machine, VM running Atari ST/TT
 app-emulation/bochs 2.6.9 2.6.10: LGPL-ed pc emulator
 app-emulation/buildah 1.11.5-r1 1.11.6 1.12.0 1.13.1 1.14.0: A tool that facilitates building OCI images
 app-emulation/cadvisor 0.34.0: Analyzes resource usage and performance characteristics of running containers
-app-emulation/cloud-init 17.2 18.4-r1 18.5 9999: Cloud instance initialisation magic
+app-emulation/cloud-init 17.2 18.4-r1 18.5 19.4 9999: Cloud instance initialisation magic
 app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/conmon 2.0.1 2.0.2 2.0.9 2.0.10: An OCI container runtime monitor
 app-emulation/containerd 1.2.6 1.2.7 1.2.10 1.2.12 1.3.0 1.3.1 1.3.2: A daemon to control runC
@@ -10258,7 +10258,7 @@ dev-tcltk/tcl3d 0.5.0: Tcl bindings to OpenGL and other 3D libraries
 dev-tcltk/tcllib 1.15-r2 1.19: Tcl Standard Library
 dev-tcltk/tclperl 3.2-r1: Perl package for Tcl
 dev-tcltk/tclpython 4.1-r6 5.0: Python package for Tcl
-dev-tcltk/tclreadline 2.1.0-r4 2.1.0-r5: Readline extension to TCL
+dev-tcltk/tclreadline 2.1.0-r5: Readline extension to TCL
 dev-tcltk/tclx 8.4.1: A set of extensions to TCL
 dev-tcltk/tclxml 3.2-r2: Pure Tcl implementation of an XML parser
 dev-tcltk/tdom 0.8.3-r4 0.9.1: A XML/DOM/XPath/XSLT Implementation for Tcl
@@ -17245,7 +17245,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 15.0.0 15.0.1 2019.1.9999 2019.2.9999: A virtual network service for Openstack
-sys-cluster/nova 20.0.1 20.1.0 2019.2.9999: Cloud computing fabric controller (main part of an IaaS system) in Python
+sys-cluster/nova 20.0.1 20.1.0 20.1.1 2019.2.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
@@ -18220,7 +18220,7 @@ x11-base/xorg-drivers 1.20-r1 9999: Meta package containing deps on all xorg dri
 x11-base/xorg-proto 2019.2 9999: X.Org combined protocol headers
 x11-base/xorg-server 1.20.6 1.20.7 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
-x11-drivers/nvidia-drivers 340.108 390.132-r1 430.64-r1 435.21-r1 440.44-r1 440.59: NVIDIA Accelerated Graphics Driver
+x11-drivers/nvidia-drivers 340.108 390.132-r1 430.64-r1 435.21-r1 440.59: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
 x11-drivers/xf86-input-evdev 2.10.6: Generic Linux input driver
 x11-drivers/xf86-input-joystick 1.6.3: X.Org driver for joystick input devices
