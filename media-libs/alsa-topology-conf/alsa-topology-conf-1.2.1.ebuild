@@ -9,7 +9,7 @@ SRC_URI="https://www.alsa-project.org/files/pub/lib/${P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="amd64 arm x86"
+KEYWORDS="amd64 arm ia64 x86"
 IUSE=""
 
 RDEPEND="!<media-libs/alsa-lib-1.2.1"
