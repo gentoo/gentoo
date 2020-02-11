@@ -586,11 +586,6 @@ dev-python/transmissionrpc
 # masked for removal ~12 Feb 2020
 media-plugins/vdr-mailbox
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-12)
-# Unmaintained upstream and redundant. Use kde-apps/kamera instead.
-# Only revdep of ancient media-libs/qimageblitz. Removal in 30 days.
-media-video/kamerka
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-12)
 # Python 2 only, depends on OpenStack which is Py3 now.  No release
 # since 2005.
