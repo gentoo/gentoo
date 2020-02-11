@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,6 +20,10 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/libxslt
 	sys-devel/gettext
 "
+
+python_check_deps() {
+	has_version "dev-libs/libxml2[${PYTHON_USEDEP}]"
+}
 
 src_configure() {
 	econf --without-gimp
