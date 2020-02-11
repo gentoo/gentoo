@@ -606,11 +606,6 @@ sys-libs/libcxxrt
 # Removal in 30 days.  Bug #705256.
 dev-python/ordereddict
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-12)
-# Unmaintained upstream and redundant. Use media-sound/audex instead.
-# Removal in 30 days.
-media-sound/kaudiocreator
-
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # End of life vala:0.42 series, please depclean.
 # This message shall be kept until 2020-02-11.
