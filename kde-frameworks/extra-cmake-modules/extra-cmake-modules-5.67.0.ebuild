@@ -66,7 +66,9 @@ src_configure() {
 src_test() {
 	# ECMToolchainAndroidTest passes but then breaks src_install
 	# ECMPoQmToolsTest is broken, bug #627806
+	# possible race condition with multiple jobs, bug #701854
 	local myctestargs=(
+		-j1
 		-E "(ECMToolchainAndroidTest|ECMPoQmToolsTest)"
 	)
 
