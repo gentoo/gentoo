@@ -10,4 +10,4 @@ RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=mirror://sourceforge/latex-beamer/translator-1.00.tar.gz
 _eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
-_md5_=0a44ae66e0b3660782409bd76436a52c
+_md5_=02c4672e7395ab9f02bce364116c1e4b

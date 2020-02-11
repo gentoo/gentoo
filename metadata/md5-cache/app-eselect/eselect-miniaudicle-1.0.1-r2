@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.3
 SLOT=0
 SRC_URI=mirror://gentoo/miniaudicle.eselect-1.0.1.bz2
-_md5_=f1dabda6064818e330911a625ecf8d38
+_md5_=9cdb0ba9840e77ead0eb7f7cfe6c61d9

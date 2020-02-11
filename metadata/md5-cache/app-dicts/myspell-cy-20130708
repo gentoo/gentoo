@@ -8,4 +8,4 @@ LICENSE=GPL-2 LGPL-2.1
 SLOT=0
 SRC_URI=mirror://sourceforge/aoo-extensions/geiriadur-cy.oxt -> myspell-cy-20130708.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=12cc3f2e6114d50e82343c6a93d09c33
+_md5_=768f2c66f6342740d4caa0b37895df35

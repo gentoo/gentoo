@@ -10,4 +10,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/efont/5411/kochi-substitute-20030809.tar.bz2
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=8879847b0d3e6b5ca433ccf7b8847c3d
+_md5_=ae35b3c601c414754531b3c911650158

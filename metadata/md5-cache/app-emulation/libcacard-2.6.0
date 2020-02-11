@@ -9,4 +9,4 @@ LICENSE=GPL-3
 RDEPEND=>=dev-libs/nss-3.13 >=dev-libs/glib-2.22 passthrough? ( >=sys-apps/pcsc-lite-1.8 )
 SLOT=0
 SRC_URI=https://www.spice-space.org/download/libcacard/libcacard-2.6.0.tar.xz
-_md5_=cd0cae6c41d3217e51173036a6598667
+_md5_=2c984efc6b37fbbbcb858597f04fdb1d

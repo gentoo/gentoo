@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/edebug app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/speedbar-1.28-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=4741f17535b90622df4f51e570e20e4b
+_md5_=f489f1404e6521dcd4f05b113bbc912d

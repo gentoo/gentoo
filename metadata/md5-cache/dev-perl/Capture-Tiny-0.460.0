@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DAGOLDEN/Capture-Tiny-0.46.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=89849a4ed9d654f634d9b8ba8a7a1c50
+_md5_=b2831567b02a65a5d5ea8d72a68ff38b

@@ -10,4 +10,4 @@ RDEPEND=sys-libs/zlib
 SLOT=0
 SRC_URI=http://potrace.sourceforge.net/download/1.15/potrace-1.15.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=34f687466eb2480c7aeb23fe9e3e5b29
+_md5_=a434dc8ba151fd96b45e5d6ab6798d79

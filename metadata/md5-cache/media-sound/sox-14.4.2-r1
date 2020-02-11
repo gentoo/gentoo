@@ -10,4 +10,4 @@ RDEPEND=dev-libs/libltdl:0= >=media-sound/gsm-1.0.12-r1 alsa? ( media-libs/alsa-
 SLOT=0
 SRC_URI=mirror://sourceforge/sox/sox-14.4.2.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=862455ade5594f3109d3a67b0ea3e83c
+_md5_=eeea2f98ef3e4dacdba4f0adc449f3da

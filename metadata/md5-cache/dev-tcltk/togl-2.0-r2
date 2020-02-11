@@ -10,4 +10,4 @@ RDEPEND=dev-lang/tk virtual/opengl x11-libs/libXmu
 RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/togl/Togl2.0-src.tar.gz
-_md5_=17bf18db0a1ac5c8b568a8599962ff1f
+_md5_=a9e94804f1130afcf84f6710de4f677d

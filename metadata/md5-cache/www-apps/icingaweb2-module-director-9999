@@ -7,5 +7,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=>=net-analyzer/icinga2-2.4.3 >=www-apps/icingaweb2-2.2.0 || ( dev-lang/php:5.6[curl] dev-lang/php:7.1[curl] dev-lang/php:7.2[curl] dev-lang/php:7.3[curl] )
 SLOT=0
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
 _md5_=4c4675c7cf709950a846219f7c12bd13

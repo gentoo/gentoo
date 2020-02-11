@@ -8,5 +8,5 @@ LICENSE=BSD
 PROPERTIES=live
 SLOT=0
 SRC_URI=ipv6? ( https://dev.gentoo.org/~jer/netselect-0.4-ipv6.patch.xz )
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=93287d3f207d119c48db74a4cac2c79c

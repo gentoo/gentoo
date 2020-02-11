@@ -9,4 +9,4 @@ RDEPEND=net-libs/libpcap sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/raboof/nethogs/archive/v0.8.5.tar.gz -> nethogs-0.8.5.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=94409979fd4dd387a73692341c1ab353
+_md5_=c9ae81d3d1daa574e7318615e8b1c0ce

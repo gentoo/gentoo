@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/xemacs-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/fsf-compat-1.15-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=76fc3dc6e73290210f4674adbba1bb4b
+_md5_=63daba7b48ee0239e0c9cebf65615d28

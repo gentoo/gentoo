@@ -11,4 +11,4 @@ RDEPEND=dev-libs/libnl:= dev-libs/openssl:= dev-libs/popt net-libs/libnfnetlink 
 SLOT=0
 SRC_URI=https://www.keepalived.org/software/keepalived-2.0.17.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d9dc9c7aa2f11850ce51ea7111829cdf
+_md5_=852fd0358f3dc76329f6d1fb4b67a324

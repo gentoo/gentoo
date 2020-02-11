@@ -8,4 +8,4 @@ LICENSE=GPL-3 LGPL-2.1
 SLOT=0
 SRC_URI=http://extensions.libreoffice.org/extension-center/slovenian-dictionary-pack/releases/2012.01.04/pack-sl.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=f35b7f4dc6b6730f99ca1552a7787e57
+_md5_=c298f5d036d6ca71f6ebe2f9fea8691a

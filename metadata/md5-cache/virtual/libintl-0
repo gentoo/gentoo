@@ -5,4 +5,4 @@ IUSE=elibc_glibc elibc_uclibc
 KEYWORDS=~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 RDEPEND=!elibc_glibc? ( !elibc_uclibc? ( !elibc_musl? ( sys-devel/gettext ) ) )
 SLOT=0
-_md5_=9e20c4c4a59a5316f736f475d6eb5cc8
+_md5_=8f14dc745d2ff3cc073e99212c1ac6d7

@@ -7,4 +7,4 @@ KEYWORDS=~alpha amd64 arm64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/freewnn/59257/FreeWnn-1.1.1-a022.tar.bz2
-_md5_=8ddd5fc42814c6b8186b1278fa942610
+_md5_=6f9d6e953dba5f517d09655bfd87b8ef

@@ -11,4 +11,4 @@ RDEPEND=sys-apps/sed || ( sys-apps/coreutils sys-freebsd/freebsd-bin app-misc/re
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/eselect/eselect-1.4.15.tar.xz
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=e1d0d4b91145a3fb988a4b358d49f577
+_md5_=bb88c0e98907ad0fe64f8282060303e5

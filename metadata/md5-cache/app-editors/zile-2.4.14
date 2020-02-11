@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://gnu/zile/zile-2.4.14.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=6a02a810d9fd3c285af964c2c7a5e0d6
+_md5_=5fe22fefdf7cccaee7c452e7c18ed68b

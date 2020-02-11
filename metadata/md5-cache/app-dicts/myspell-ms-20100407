@@ -8,4 +8,4 @@ LICENSE=FDL-1.2
 SLOT=0
 SRC_URI=mirror://sourceforge/aoo-extensions/ms_my.oxt -> myspell-ms-20100407.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=731e2612e8bc04e555b2adcb324b9782
+_md5_=ba54451eb08a5f8b97858d32e0912c54

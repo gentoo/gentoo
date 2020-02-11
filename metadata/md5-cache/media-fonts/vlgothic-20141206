@@ -9,4 +9,4 @@ LICENSE=vlgothic mplus-fonts BSD-2
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/vlgothic/62375/VLGothic-20141206.tar.bz2
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=805b2eb8c975e3372438693803e2c631
+_md5_=5b4be9a5621a15b13b7ff6d7bcc65a91

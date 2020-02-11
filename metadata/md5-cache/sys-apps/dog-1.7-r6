@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/dog-1.7.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=8f1e91e449381fffaff7118d1a6d0ccf
+_md5_=1c9a9f1d138d1b6aad3be4028aa143d4

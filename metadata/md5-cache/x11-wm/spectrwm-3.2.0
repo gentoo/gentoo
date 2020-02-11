@@ -9,4 +9,4 @@ RDEPEND=!x11-wm/scrotwm x11-misc/dmenu
 SLOT=0
 SRC_URI=https://github.com/conformal/spectrwm/archive/SPECTRWM_3_2_0.tar.gz -> spectrwm-3.2.0.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=93caf1c3429466cc4023958d99e77f40
+_md5_=6d953b243f619116926cbf47c14340cc

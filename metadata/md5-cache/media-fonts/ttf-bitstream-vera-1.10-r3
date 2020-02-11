@@ -9,4 +9,4 @@ LICENSE=BitstreamVera
 SLOT=0
 SRC_URI=mirror://gnome/sources/ttf-bitstream-vera/1.10/ttf-bitstream-vera-1.10.tar.bz2
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=a206878d19dddefb644a3d0f1f6a585c
+_md5_=956511111ed3ea676068afa17193b46b

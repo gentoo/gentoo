@@ -9,4 +9,4 @@ LICENSE=MIT
 RDEPEND=dev-libs/wayland
 SLOT=0
 SRC_URI=https://wayland.freedesktop.org/releases/wayland-protocols-1.18.tar.xz
-_md5_=870f7befa3738a0e7c8cf5f9bd6fb99d
+_md5_=f8d059019360e8063f95480a3c5bc478

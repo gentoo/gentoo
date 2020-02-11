@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/mail-lib app-xemacs/xemacs-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/footnote-1.16-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=3b362e3894a362a946a1577a250303f2
+_md5_=ba2e75978230611a5fe0500144d4f886

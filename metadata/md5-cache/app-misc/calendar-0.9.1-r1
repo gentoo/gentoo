@@ -7,4 +7,4 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=http://bsdcalendar.sourceforge.net/calendar-0.9.1.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=dd9461b75b6c97a2af88b87f371bd01c
+_md5_=a2f518eba504be28b705501f7b645d72

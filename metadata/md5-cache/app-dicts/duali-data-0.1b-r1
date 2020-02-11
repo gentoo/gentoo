@@ -7,4 +7,4 @@ KEYWORDS=~alpha amd64 ~hppa ~ia64 ~mips ~ppc ~sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/arabeyes/duali-data-0.1b.tar.gz
-_md5_=5b8203f58c00c84da98cc005e57db7bc
+_md5_=1a9eb56dae009e432c4a9ac4e02aaf63

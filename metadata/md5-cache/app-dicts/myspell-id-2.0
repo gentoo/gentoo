@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://extensions.libreoffice.org/extension-center/indonesian-dictionary-kamus-indonesia-by-benitius/releases/2.0/id_id.oxt -> myspell-id-2.0.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=bebee011e2f3071713a1dc888a0a8798
+_md5_=63741da8ade1d219bf6cdf3f83e798e6

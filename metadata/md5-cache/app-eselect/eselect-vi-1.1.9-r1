@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=app-admin/eselect
 SLOT=0
 SRC_URI=mirror://gentoo/eselect-vi-1.1.9.tar.xz
-_md5_=2e2fb1389b3f6379b59ee3ac088789cb
+_md5_=b2c40fd8df6c8acae58e682710cac5fe

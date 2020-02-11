@@ -8,5 +8,5 @@ LICENSE=BSD-2
 PROPERTIES=live
 RDEPEND=!<sys-apps/openrc-0.23 selinux? ( sec-policy/selinux-base-policy )
 SLOT=0
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	prefix	c2993e4c430c1ee24f278983d6189501
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	prefix	c2993e4c430c1ee24f278983d6189501
 _md5_=6cce652af51d03411f028cdc75656198

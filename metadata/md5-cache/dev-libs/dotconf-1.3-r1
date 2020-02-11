@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=mirror://gentoo/dotconf-1.3.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=7764767ce0e9aed442aef8616a4ba0fe
+_md5_=f5c209a284a7808e17923b163c1dcc29

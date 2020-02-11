@@ -99,6 +99,7 @@ acct-group/qemu 0: System group: qemu
 acct-group/qmail 0: System group: qmail
 acct-group/quassel 0: System group: quassel
 acct-group/radius 0: FreeRadius program group
+acct-group/rbldns 0: System group: rbldns
 acct-group/redis 0: Redis program group
 acct-group/redmine 0: System group: redmine
 acct-group/render 0: System group: render
@@ -244,6 +245,7 @@ acct-user/qmailr 0: user for qmail-rspawn and qmail-remote
 acct-user/qmails 0: user for qmail-smtpd
 acct-user/quassel 0: System user: quassel
 acct-user/radius 0: FreeRadius program user
+acct-user/rbldns 0: System user: rbldns
 acct-user/redis 0: Redis program user
 acct-user/redmine 0: Redmine application user
 acct-user/rspamd 0: User for rspamd - Rapid spam filtering system
@@ -14444,7 +14446,7 @@ net-dns/openresolv 3.9.0 3.9.2: A framework for managing DNS information
 net-dns/pdns 4.1.13 4.2.0 4.2.1: The PowerDNS Daemon
 net-dns/pdns-recursor 4.1.14 4.1.15 4.2.0 4.2.1: The PowerDNS Recursor
 net-dns/pdnsd 1.2.9a-r1 1.2.9a-r2: Proxy DNS server with permanent caching
-net-dns/rbldnsd 0.998b: DNS server designed to serve blacklist zones
+net-dns/rbldnsd 0.998b 0.998b-r1: DNS server designed to serve blacklist zones
 net-dns/resolv_wrapper 1.1.4 1.1.5: A wrapper for DNS name resolving or DNS faking
 net-dns/resolvconf-symlink 0: Make /etc/resolv.conf a symlink to a runtime-writable location
 net-dns/s6-dns 2.2.0.1 2.3.0.0 2.3.0.1 2.3.0.2 2.3.1.1: Suite of DNS client programs and libraries for Unix systems

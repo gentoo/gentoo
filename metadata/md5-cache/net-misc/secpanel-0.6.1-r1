@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/tk virtual/ssh
 SLOT=0
 SRC_URI=mirror://sourceforge/secpanel/secpanel-0.6.1.tgz
-_md5_=b1e49420c71221368806d59fd0e01a36
+_md5_=2e05fa85acd1445dbedfd195623be456

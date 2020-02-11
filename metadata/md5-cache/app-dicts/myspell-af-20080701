@@ -8,4 +8,4 @@ LICENSE=LGPL-3
 SLOT=0
 SRC_URI=mirror://sourceforge/aoo-extensions/1109/0/dict-af.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=c3f7020ffd93d8d9021e9dd1fa53864d
+_md5_=2d04c41ced8f7be030efa53cbb284545

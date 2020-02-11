@@ -9,4 +9,4 @@ RDEPEND=app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/skk-1.23-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=fbbb318b51794bc1a8515a8f0b5f4524
+_md5_=91d262d1aa368ce430fbc8d584b56e1a

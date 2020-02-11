@@ -6,4 +6,4 @@ KEYWORDS=~alpha amd64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sparc x86
 LICENSE=public-domain
 SLOT=0
 SRC_URI=http://people.via.ecp.fr/~rem/libident/libident-0.32.tar.bz2
-_md5_=46bfaa96a7ac4e36d69174bfdae99a33
+_md5_=9a3c7f56ed99125ebdd0bc08a6be7541

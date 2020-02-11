@@ -9,4 +9,4 @@ RDEPEND=media-libs/libpng:= media-libs/tiff:= virtual/jpeg
 SLOT=0
 SRC_URI=http://homepage3.nifty.com/slokar/stimg/stimg-0.1.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=df36d76a47f7250d3e0bd0456b4d099f
+_md5_=ede5aafac4a297e878bb7092aadfff06

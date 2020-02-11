@@ -5,4 +5,4 @@ HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 KEYWORDS=~alpha amd64 hppa ia64 ppc ppc64 sparc x86
 LICENSE=GPL-2
 SLOT=0
-_md5_=862bfada6b098d8faf99ff3328e2a511
+_md5_=0c21ae5073495fa36259d771655303e3

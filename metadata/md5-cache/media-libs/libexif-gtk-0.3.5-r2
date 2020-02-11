@@ -11,4 +11,4 @@ RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 media-libs/libexif:=
 SLOT=0
 SRC_URI=mirror://sourceforge/libexif/libexif-gtk-0.3.5.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ff7bbe3239f423c12f39abca6eb9dd39
+_md5_=77c4055d9eb3f06b36b4c61c9d78d1c3

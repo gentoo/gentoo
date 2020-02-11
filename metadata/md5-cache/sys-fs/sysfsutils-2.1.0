@@ -9,4 +9,4 @@ LICENSE=GPL-2 LGPL-2.1
 SLOT=0
 SRC_URI=mirror://sourceforge/linux-diag/sysfsutils-2.1.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	usr-ldscript	766f0a506b45f02361ad1b8ca205b7e1
-_md5_=41bc08c6e37d4afc90f66473460b9088
+_md5_=3f228051a563015367ca747ef446f74c

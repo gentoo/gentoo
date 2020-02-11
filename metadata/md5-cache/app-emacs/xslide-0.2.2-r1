@@ -9,4 +9,4 @@ RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=mirror://sourceforge/xslide/xslide-0.2.2.tar.gz
 _eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=a7acef65bee44108f97a16b868fcf453
+_md5_=5fdb7ec5aa56571e886290e0813b71cb

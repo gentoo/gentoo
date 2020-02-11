@@ -8,4 +8,4 @@ LICENSE=QPL
 RDEPEND=>=dev-lang/tcl-8.3:0=[-threads] >=dev-lang/tk-8.3:0= >=dev-tcltk/itcl-3.2 >=dev-tcltk/tclx-8.3 dev-tcltk/itk dev-tcltk/iwidgets dev-tcltk/tcllib net-analyzer/wireshark ssl? ( >=dev-tcltk/tls-1.4.1 )
 SLOT=0
 SRC_URI=https://github.com/bammv/sguil/archive/v1.0.0.tar.gz -> sguil-1.0.0.tar.gz
-_md5_=c998292c63ef93ccf6f9b2ff6188d126
+_md5_=c782781787ade85fac524fb4461ad86d

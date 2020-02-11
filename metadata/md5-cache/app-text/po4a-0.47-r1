@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/po4a/po4a_0.47.orig.tar.gz
 _eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=27655a7c92175b17bdb8d3c23e4fed62
+_md5_=7cad17c56cd4bd675b04ec79266098d5

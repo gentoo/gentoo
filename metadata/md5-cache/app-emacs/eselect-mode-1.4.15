@@ -9,4 +9,4 @@ RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/eselect/eselect-1.4.15.tar.xz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=1d68b3c6dcc0c215f1c0d462879995b6
+_md5_=f57d9268d7ed48bc7d509139bb919057

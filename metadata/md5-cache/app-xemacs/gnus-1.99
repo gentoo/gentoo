@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/mail-lib app-xemacs/xemacs-base app-xemacs/xemacs-eterm app-x
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/beta/experimental/packages/gnus-1.99-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=37200773c31aa81e020195c852ae831b
+_md5_=47025b3a1f4be9c52e926f82a1e08bed

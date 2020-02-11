@@ -9,4 +9,4 @@ RDEPEND=>=x11-libs/libxkbcommon-0.5.0[X] dev-libs/libev sys-libs/pam x11-libs/ca
 SLOT=0
 SRC_URI=https://i3wm.org/i3lock/i3lock-2.10.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=068b4e4a42f9ef7415b8676c7855a3ff
+_md5_=301affc7548c8c7dfb48091dad3f8079

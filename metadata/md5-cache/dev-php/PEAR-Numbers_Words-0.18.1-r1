@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:* dev-php/PEAR-Math_BigInteger
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/Numbers_Words-0.18.1.tgz
-_md5_=1b2cd988ba274f62a462883d8bfb223d
+_md5_=174f654f12f81405259888d86b7cfc90

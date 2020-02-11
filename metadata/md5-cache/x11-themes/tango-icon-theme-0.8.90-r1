@@ -12,4 +12,4 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=http://tango.freedesktop.org/releases/tango-icon-theme-0.8.90.tar.gz
 _eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f37d42d9cbda964867f97c52f4cf9548
+_md5_=84333a34ff8e2a05539fb7642a5e9c81

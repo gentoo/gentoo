@@ -9,4 +9,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=http://dl.liveforge.org/fonts/webby-fonts-1.tar.bz2
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=fcea5c500394544daf5eb5f0b9ae0dcf
+_md5_=5a3f6349e10639ea828fd648e5fb135d

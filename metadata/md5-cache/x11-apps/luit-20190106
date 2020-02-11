@@ -9,4 +9,4 @@ LICENSE=MIT
 RDEPEND=sys-libs/zlib virtual/libiconv
 SLOT=0
 SRC_URI=https://invisible-mirror.net/archives/luit/luit-20190106.tgz
-_md5_=fefcf02fd6fecb607fe00c62ea587f0e
+_md5_=ddbf446ef21cd3921e3213e1e4891a7a

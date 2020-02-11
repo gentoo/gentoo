@@ -8,4 +8,4 @@ RDEPEND=>=virtual/udev-217 !<sys-apps/openrc-0.14
 RESTRICT=test
 SLOT=0
 SRC_URI=https://gitweb.gentoo.org/proj/udev-gentoo-scripts.git/snapshot/udev-gentoo-scripts-33.tar.gz -> udev-init-scripts-33.tar.gz
-_md5_=e51a1ef2f14f70c6feeca2dc15576de3
+_md5_=30e66a84403ed15db44696435dc222cf

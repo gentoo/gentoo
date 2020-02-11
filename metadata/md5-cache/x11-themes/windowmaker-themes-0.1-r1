@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-wm/windowmaker
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~voyageur/distfiles/windowmaker-themes-0.1.tar.gz
-_md5_=52f2aa17be65f2749a1569ec61e65cc0
+_md5_=d77faa9e0968023444757a06c665b53d

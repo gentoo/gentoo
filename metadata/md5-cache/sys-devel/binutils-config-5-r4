@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/gentoo-functions
 SLOT=0
 _eclasses_=prefix	c2993e4c430c1ee24f278983d6189501
-_md5_=9ececbc32c0e051ccf06f0dcc617c95e
+_md5_=27890f8a3c5b2b2851f4128d9bcd044c

@@ -7,4 +7,4 @@ LICENSE=ZSH
 RDEPEND=>=app-shells/zsh-4.3.5
 SLOT=0
 SRC_URI=https://github.com/gentoo/gentoo-zsh-completions/archive/20180228.tar.gz -> gentoo-zsh-completions-20180228.tar.gz
-_md5_=c9c73d45403e88621a728b011992f9cd
+_md5_=ef4d96980c9a402c2028f593754df232

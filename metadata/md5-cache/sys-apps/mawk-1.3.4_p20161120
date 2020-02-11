@@ -9,4 +9,4 @@ RDEPEND=app-eselect/eselect-awk
 SLOT=0
 SRC_URI=ftp://invisible-island.net/mawk/mawk-1.3.4-20161120.tgz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=605e931563e6beb14bbbc823acd75b62
+_md5_=652da0fbffbf1dba321095433f145fd1

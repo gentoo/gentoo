@@ -7,4 +7,4 @@ LICENSE=MIT
 RDEPEND=dev-lang/php:* dev-php/fedora-autoloader >=dev-php/psr-log-1.0.2
 SLOT=0
 SRC_URI=https://github.com/composer/xdebug-handler/archive/1.3.0.tar.gz -> xdebug-handler-1.3.0.tar.gz
-_md5_=210af2e426da20f30e631141ba62bbee
+_md5_=71b0485e1e3e0c693c7f70d82098108e

@@ -4,4 +4,4 @@ EAPI=5
 KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 RDEPEND=|| ( sys-process/daemontools sys-process/daemontools-encore )
 SLOT=0
-_md5_=0f23be595499b148ec6cfa73477d7a3a
+_md5_=848be7e8976e706c4e60c2f17bd2a3d5

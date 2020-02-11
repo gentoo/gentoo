@@ -11,4 +11,4 @@ REQUIRED_USE=?? ( iodbc odbc )
 RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.freetds.org/pub/freetds/current/freetds-dev.1.00.558.tar.gz
-_md5_=ead1497e9f6e03fc2332eee5184cfea5
+_md5_=6860a8ff0b9b5c366875f182bc0a5948

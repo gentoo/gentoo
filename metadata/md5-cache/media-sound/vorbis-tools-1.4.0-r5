@@ -10,4 +10,4 @@ RDEPEND=>=media-libs/libvorbis-1.3.0 flac? ( media-libs/flac ) kate? ( media-lib
 SLOT=0
 SRC_URI=http://downloads.xiph.org/releases/vorbis/vorbis-tools-1.4.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b28c826c1cb4899f23475d20aea38f52
+_md5_=d21f6b36b7962a9eda750a5f509db8df

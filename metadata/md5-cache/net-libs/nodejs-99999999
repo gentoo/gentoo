@@ -11,5 +11,5 @@ RDEPEND=>=dev-libs/libuv-1.34.1:= >=net-dns/c-ares-1.15.0 >=net-libs/nghttp2-1.3
 REQUIRED_USE=inspector? ( icu ssl ) npm? ( ssl )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=ab315c75852c5cc84f3a7545282a8dc3

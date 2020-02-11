@@ -10,4 +10,4 @@ RDEPEND=>=sys-libs/ncurses-5.2:0=[unicode?]
 SLOT=0/6
 SRC_URI=ftp://invisible-island.net/cdk/cdk-5.0-20160131.tgz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=d9200e60782598fe08d5d37f70285c79
+_md5_=06666f9e52ff78dda5be5f5dd6d62aaf

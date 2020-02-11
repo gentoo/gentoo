@@ -8,4 +8,4 @@ LICENSE=GPL-2+
 RDEPEND=>=dev-libs/glib-2.42
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/xfce/xfce4-dev-tools/4.14/xfce4-dev-tools-4.14.0.tar.bz2
-_md5_=af6cdd388c12afbbbc57f2fc0deafc85
+_md5_=c43b1aaeca22a44743a5396e564759ff

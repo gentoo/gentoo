@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=dev-perl/libwww-perl-5.50 dev-perl/DateTime dev-perl/TimeDate
 SLOT=0
 SRC_URI=mirror://sourceforge/dailystrips/dailystrips-1.0.28.tar.gz
-_md5_=b67e2bc4cd4da6ac4fbeec7c74de07b3
+_md5_=f0689ba6837fd1286b0cd99d7d3546c2

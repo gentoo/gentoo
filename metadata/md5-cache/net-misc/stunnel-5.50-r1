@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=ftp://ftp.stunnel.org/stunnel/archive/5.x/stunnel-5.50.tar.gz http://www.usenix.org.uk/mirrors/stunnel/archive/5.x/stunnel-5.50.tar.gz http://ftp.nluug.nl/pub/networking/stunnel/archive/5.x/stunnel-5.50.tar.gz http://www.namesdir.com/mirrors/stunnel/archive/5.x/stunnel-5.50.tar.gz http://stunnel.cybermirror.org/archive/5.x/stunnel-5.50.tar.gz http://mirrors.zerg.biz/stunnel/archive/5.x/stunnel-5.50.tar.gz ftp://mirrors.go-parts.com/stunnel/archive/5.x/stunnel-5.50.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	ssl-cert	876f0e74ef1cc2e7c4edd9bca336d350	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=6a5f05c6ccecfdeda738185ff08d1eee
+_md5_=846d40c1642b5a262a0a30c78e6d38ce

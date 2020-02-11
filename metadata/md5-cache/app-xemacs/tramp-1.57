@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/vc app-xemacs/efs app-xemacs/dired app
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/tramp-1.57-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=835962375569d638202740cc650fa0cd
+_md5_=a3129555c3a252f868d8f56a58cde695

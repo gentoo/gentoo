@@ -10,5 +10,5 @@ LICENSE=GPL-2+
 RDEPEND=virtual/jpeg:* sys-libs/libcap >=media-libs/fontconfig-2.4.2 >=media-libs/freetype-2 dev-lang/perl >=media-tv/gentoo-vdr-scripts-2.7 media-fonts/corefonts bidi? ( dev-libs/fribidi ) systemd? ( sys-apps/systemd )
 SLOT=0
 SRC_URI=ftp://ftp.tvdr.de/vdr/vdr-2.2.0.tar.bz2 mirror://gentoo/extpng-vdr-2.2.0-gentoo-edition-v1.patch.bz2
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d1425aab9c243b03f5e809778bc0faca

@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/mail-lib app-xemacs/gnus app-xemacs/bbdb app-xemacs/xemacs-ba
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/net-utils-1.56-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=4f224fe678c31dd13a76a412febac3ed
+_md5_=5b1c383cdb355351b49daa922f86a3d4

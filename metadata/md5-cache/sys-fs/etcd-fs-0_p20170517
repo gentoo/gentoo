@@ -9,4 +9,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/xetorthio/etcd-fs/archive/1eeace3bc20b15e4347c631a1cf7b45f3852518a.tar.gz -> etcd-fs-0_p20170517.tar.gz
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892
-_md5_=f82a507b599ad0c065cd8a48134d3c35
+_md5_=83f7442e488d51b04e592a4c6ee9b05f

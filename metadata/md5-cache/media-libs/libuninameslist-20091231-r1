@@ -6,4 +6,4 @@ KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd
 LICENSE=BSD
 SLOT=0
 SRC_URI=mirror://sourceforge/libuninameslist/libuninameslist-20091231.tar.bz2
-_md5_=2d18920f417bc1d84239d51c135525d2
+_md5_=62292d51ebbee9712e1cdd5f69f34d95

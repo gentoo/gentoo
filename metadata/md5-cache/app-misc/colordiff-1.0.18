@@ -8,4 +8,4 @@ RDEPEND=dev-lang/perl sys-apps/diffutils
 SLOT=0
 SRC_URI=https://www.colordiff.org/colordiff-1.0.18.tar.gz
 _eclasses_=prefix	c2993e4c430c1ee24f278983d6189501
-_md5_=0aaa2e808fe1cc22c4b2263f639a6e25
+_md5_=a95f1348ada5a6d6e208fa818fd4fe5d

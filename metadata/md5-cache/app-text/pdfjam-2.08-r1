@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=http://www.warwick.ac.uk/go/pdfjam/pdfjam_208.tgz
-_md5_=9a7b2611ef51ba261a38e23728244086
+_md5_=48ecc72b7a098f4009a20b837073d9c5

@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=sys-apps/portage-2.1 >=app-portage/portage-utils-0.55 app-shells/bash sys-apps/gentoo-functions
 SLOT=0
 SRC_URI=mirror://gentoo/crossdev-20191222.tar.xz https://dev.gentoo.org/~slyfox/distfiles/crossdev-20191222.tar.xz
-_md5_=f64fc95d9c1febfdb3d87b2a3c91b0ca
+_md5_=e6e91ba41f7261904de76965d73b6cda

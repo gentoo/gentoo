@@ -8,4 +8,4 @@ LICENSE=GPL-3 GPL-2 LGPL-3+
 SLOT=0
 SRC_URI=https://extensions.libreoffice.org/extensions/german-de-at-frami-dictionaries/2017-01.12/@@download/file/dict-de_AT-frami_2017-01-12.oxt https://extensions.libreoffice.org/extensions/german-de-ch-frami-dictionaries/2017-01.12/@@download/file/dict-de_CH-frami_2017-01-12.oxt https://extensions.libreoffice.org/extensions/german-de-de-frami-dictionaries/2017-01-12/@@download/file/dict-de_DE-frami_2017-01-12.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=5aee37522afaac0ff0daf682a8f6d4b6
+_md5_=9e64ce6dc462f1d6f3717886e2e11177

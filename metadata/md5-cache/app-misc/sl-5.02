@@ -10,4 +10,4 @@ RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=https://github.com/mtoyoda/sl/archive/5.02.tar.gz -> sl-5.02.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=fc5810459fb650d43c484bc956324c59
+_md5_=dcef93ca7ac1a51b6f293a9cbec56c49

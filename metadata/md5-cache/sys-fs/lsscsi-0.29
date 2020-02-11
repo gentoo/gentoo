@@ -6,4 +6,4 @@ KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://sg.danny.cz/scsi/lsscsi-0.29.tgz
-_md5_=56c0521e6455cd69568acad1be3cd0f0
+_md5_=10534742b04381ae7eb7b2728c3bc0c3

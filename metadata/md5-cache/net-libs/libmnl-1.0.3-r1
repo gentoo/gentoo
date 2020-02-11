@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=https://www.netfilter.org/projects/libmnl/files/libmnl-1.0.3.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	usr-ldscript	766f0a506b45f02361ad1b8ca205b7e1
-_md5_=2ed8621f8f64f9ce1e43f10c69753d53
+_md5_=933ea7319ef5ced19d331e183c939701

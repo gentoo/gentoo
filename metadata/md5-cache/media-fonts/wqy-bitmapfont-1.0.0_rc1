@@ -10,4 +10,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge/wqy/wqy-bitmapsong-pcf-1.0.0-RC1.tar.gz
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=b803c963a7973226047face1f0a09522
+_md5_=94ee70cff1ff7b04e9e6d423a608b0ee

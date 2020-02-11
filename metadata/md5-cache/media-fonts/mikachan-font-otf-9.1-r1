@@ -10,4 +10,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://gentoo/mikachan-font-otf-9.1.tar.bz2 https://dev.gentoo.org/~flameeyes/dist/mikachan-font-otf-9.1.tar.bz2
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=fe5e49f9b4ea73e6aff14d0c2267f187
+_md5_=137285200ad1c4b1c67e03aac39068d6

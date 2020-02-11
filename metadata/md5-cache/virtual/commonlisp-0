@@ -4,4 +4,4 @@ EAPI=6
 KEYWORDS=~alpha amd64 ia64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris
 RDEPEND=|| ( dev-lisp/sbcl dev-lisp/clisp dev-lisp/clozurecl dev-lisp/cmucl dev-lisp/ecls dev-lisp/gcl dev-lisp/abcl )
 SLOT=0
-_md5_=0f3dec3cb8dd9e775fe190fb8bcf9666
+_md5_=25042725129f11685487eaf09396ccfe

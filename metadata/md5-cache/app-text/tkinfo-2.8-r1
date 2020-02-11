@@ -8,4 +8,4 @@ LICENSE=Old-MIT GPL-1+
 RDEPEND=dev-lang/tk
 SLOT=0
 SRC_URI=http://math-www.uni-paderborn.de/~axel/tkinfo/tkinfo-2.8.tar.gz
-_md5_=4d781be4352760861eb3a90f8747323d
+_md5_=2e222023936ee32e75f610efd34cbc44

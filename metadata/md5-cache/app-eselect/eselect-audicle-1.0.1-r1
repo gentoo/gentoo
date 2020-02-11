@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.3
 SLOT=0
 SRC_URI=mirror://gentoo/audicle.eselect-1.0.1.bz2
-_md5_=f8101601f0d6c07af73409c6eea0cb5d
+_md5_=0cde25293f80d3ac5ff13786a498dce0

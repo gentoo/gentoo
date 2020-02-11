@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/xemacs-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/packages/eterm-1.18-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=c739eaaa735342717535bf7747c85940
+_md5_=39927775e3319d051cc7ad19ff2f57dd

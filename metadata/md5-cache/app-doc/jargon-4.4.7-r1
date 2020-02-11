@@ -6,4 +6,4 @@ KEYWORDS=~alpha amd64 hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=public-domain
 SLOT=0
 SRC_URI=http://www.catb.org/~esr/jargon/jargon-4.4.7.tar.gz
-_md5_=baeb1be2d733082b034e0cced61ef56b
+_md5_=29d1e95d5b3dc20cc3ee135f5e810d3e

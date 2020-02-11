@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=mirror://sourceforge/jadetex/jadetex-3.13.tar.gz
 _eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a	texlive-common	930a8063ad61a83cd5b9b186a1f75f9c
-_md5_=ee1b78f6edf2f724c9787d0b01e5221e
+_md5_=b63a8e9ddffdfe3ed1dd972bbb4aa388

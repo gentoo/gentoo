@@ -7,4 +7,4 @@ KEYWORDS=~alpha amd64 ~arm hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
 LICENSE=fping
 SLOT=0
 SRC_URI=http://fping.org/dist/fping-3.13.tar.gz
-_md5_=8d8089f2cf25f251a446e036bff82735
+_md5_=89e38ec3c1fa82e44dddc879bcf41ec0

@@ -9,4 +9,4 @@ RDEPEND=>=app-text/docbook-xsl-stylesheets-1.65 >=app-text/build-docbook-catalog
 SLOT=4.5
 SRC_URI=https://docbook.org/xml/4.5/docbook-xml-4.5.zip
 _eclasses_=sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8
-_md5_=474a2bad672474692fed401e0f6f365f
+_md5_=ab3e79b0cf58fa51e0f6bda3301d6f28

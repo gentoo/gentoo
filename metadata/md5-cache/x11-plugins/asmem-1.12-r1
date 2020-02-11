@@ -10,4 +10,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libICE x11-libs/libSM x11-libs/libXpm x11-libs/
 SLOT=0
 SRC_URI=http://www.tigr.net/afterstep/download/asmem/asmem-1.12.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=dabe68b97a87f4135ec189fa4fa1f284
+_md5_=b2db86a7e76029726ede0151d1f0e96f

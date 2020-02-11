@@ -7,5 +7,5 @@ LICENSE=Apache-2.0-with-LLVM-exceptions UoI-NCSA
 PDEPEND=sys-devel/clang:*
 PROPERTIES=live
 SLOT=0
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	git-r3	809e27702c573cbba31c08ed00bbad33	llvm.org	4e92588f6138c82063258a2d303eaed8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	llvm.org	4e92588f6138c82063258a2d303eaed8	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=a6513b1aae1caeb77b1491bb87b5058a

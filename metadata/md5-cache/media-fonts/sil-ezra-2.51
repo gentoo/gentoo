@@ -10,4 +10,4 @@ LICENSE=MIT OFL-1.1
 SLOT=0
 SRC_URI=mirror://gentoo/EzraSIL251.zip
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=0a8f8f485f1fe2dc07f72774d82dda24
+_md5_=54c3f9a31f493447d9e41c6e124cde46

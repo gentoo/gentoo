@@ -7,4 +7,4 @@ LICENSE=bonnie
 SLOT=0
 SRC_URI=http://www.textuality.com/bonnie/bonnie.tar.gz -> bonnie-2.0.6.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=5ba7d77427cc3e289a0688de3ff94502
+_md5_=1a84ad2823e09a6b5a830ad3f0a30584

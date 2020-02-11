@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=ftp://ftp.arm.linux.org.uk/pub/armlinux/source/other/arm-fdisk-3.0.6.tar.gz mirror://debian/pool/main/a/acorn-fdisk/acorn-fdisk_3.0.6-6.2.diff.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=93bce3610c7ca44f2686f9c7cf08ad56
+_md5_=79cefce649b0e24bc50fd70435af226c

@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.42:= introspection? ( dev-libs/gobject-introspection:=
 REQUIRED_USE=vala? ( introspection )
 SLOT=0/7
 SRC_URI=https://archive.xfce.org/src/xfce/libxfce4util/4.14/libxfce4util-4.14.0.tar.bz2
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	cd46635fb3b81d6bc07830b4afe87066
-_md5_=e0c281f34dda9384d289b7258eef3ffd
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	d1679607a1e97729525152e97f29254b
+_md5_=1adf26fc15a96fe0d53c664ae5ec5261

@@ -11,4 +11,4 @@ RDEPEND=games? ( acct-group/gamestat )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/emacs/emacs-common-gentoo-1.6.tar.xz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	elisp-common	a1054cff648e1c6a806e17001d052176	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=bfd5e6a1008301ac01f045d38aa67469
+_md5_=71d93548a6b7209fa4c3db3234252e8a

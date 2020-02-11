@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://www.softcatala.org/diccionaris/actualitzacions/OOo/catalan.oxt -> myspell-ca-2.3.0.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=44dc048165cd9f68c78e0a9a81e4aa33
+_md5_=37b1c1374e60b62be98025b3dce121e8

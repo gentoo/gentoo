@@ -11,4 +11,4 @@ RDEPEND=>=dev-libs/libmspack-0.8_alpha:= extras? ( dev-lang/perl )
 SLOT=0
 SRC_URI=https://www.cabextract.org.uk/cabextract-1.9.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=8666c13b5d9c24cc77cb49f81f97a401
+_md5_=0b13e45770a4e337be72c88cd1463af7

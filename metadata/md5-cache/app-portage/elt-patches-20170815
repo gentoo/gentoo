@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=sys-apps/gentoo-functions
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/elt-patches-20170815.tar.xz
-_md5_=fac7f779ac04889fb956f4d9c32188fa
+_md5_=c4f28eec543727603118bb94f5c408f7

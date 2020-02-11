@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=net-dns/bind-tools net-fs/samba net-misc/iputils sys-apps/net-tools virtual/awk
 SLOT=0
 SRC_URI=http://nmbscan.g76r.eu/down/nmbscan-1.2.5.tar.gz
-_md5_=23da1dbf9dbf3d9c1f48a87cd45a061b
+_md5_=376ecca098db2218555059136d926cdc

@@ -11,4 +11,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge/monafont/monafont-2.90.tar.bz2 truetype? ( mirror://sourceforge/monafont/monafont-ttf-2.90.zip )
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=cf655899371b7a65e73d8672ca42a121
+_md5_=ad7efe341af2c23c805b9d6f18da7edf

@@ -6,4 +6,4 @@ KEYWORDS=~amd64 ~ppc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=http://aboleo.net/software/portmon/downloads/portmon-2.0.tar.gz
-_md5_=8537c568913135f33a55b0f7c0319208
+_md5_=04ce7733188494c272e47b5ef903e4c7

@@ -11,4 +11,4 @@ REQUIRED_USE=test? ( abyss curl cxx ) tools? ( curl )
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/xmlrpc-c/xmlrpc-c-1.39.11.tgz
-_md5_=e76bcef2adc34c4c0ee8b26713eef32f
+_md5_=30d4f75b3a20c4cf0b8ff3b1e8c1d6f7

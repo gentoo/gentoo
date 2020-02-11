@@ -8,5 +8,5 @@ PROPERTIES=live
 RDEPEND=>sys-boot/raspberrypi-firmware-1.20190709
 RESTRICT=binchecks strip
 SLOT=0
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	mount-boot	e30bb691fbb26137f3d46438542bffe4
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	mount-boot	e30bb691fbb26137f3d46438542bffe4
 _md5_=bb70595757181b86fdda27151919f8a7

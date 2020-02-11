@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/mule-base app-xemacs/cookie app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/lookup-1.15-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=87692d342be255fa89b9457330b93e4b
+_md5_=d841c14886681592ad5ddf76e5b5a670

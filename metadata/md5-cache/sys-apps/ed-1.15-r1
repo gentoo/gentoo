@@ -8,4 +8,4 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~polynomial-c/dist/ed-1.15.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=fcc14e0489de281b205ad11f2e34fbb5
+_md5_=14da7b4227973bf1c912ac9a7d296c22

@@ -11,4 +11,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=ftp://freebsd.sinica.edu.tw/pub/distfiles/kcfonts-1.05.tar.gz ftp://wm28.csie.ncu.edu.tw/pub/distfiles/kcfonts-1.05.tar.gz https://dev.gentoo.org/~soap/distfiles/zh-kcfonts-1.05-freebsd-aa_ad.patch.gz
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=63aad4b0303ce619785b124698da07ce
+_md5_=20fb39e0455ed6c67ce6400b67e634ff

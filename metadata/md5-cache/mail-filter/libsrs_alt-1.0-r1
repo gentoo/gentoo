@@ -10,4 +10,4 @@ RDEPEND=!dev-perl/Mail-SRS
 SLOT=0
 SRC_URI=https://opsec.eu/src/srs/libsrs_alt-1.0.tar.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=d36dd91e30e7700636ccfa4158d1ddf3
+_md5_=c228c60182613462dbb478d3d12db56b

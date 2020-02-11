@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.librdf.org/source/rasqal-0.9.33.tar.gz
 _eclasses_=libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=014cceb0dcf65265127e2070ff509a4c
+_md5_=80f5879378617d9d7ff2d79fd58abd5f

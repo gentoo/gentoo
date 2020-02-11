@@ -10,4 +10,4 @@ RDEPEND=media-libs/mesa[egl?,gles2?] virtual/opengl x11-libs/libX11
 SLOT=0
 SRC_URI=https://mesa.freedesktop.org/archive/demos/mesa-demos-8.4.0.tar.bz2 https://mesa.freedesktop.org/archive/demos/8.4.0/mesa-demos-8.4.0.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=bf88563dd681ded106408a7828af65c4
+_md5_=e924c6f35e24279b34f27936aa19f17f

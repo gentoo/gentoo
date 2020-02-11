@@ -8,4 +8,4 @@ LICENSE=FDL-1.1
 RDEPEND=>=dev-libs/libxml2-2.4.19
 SLOT=1.0
 SRC_URI=http://scrollkeeper.sourceforge.net/dtds/scrollkeeper-omf-1.0/scrollkeeper-omf.dtd
-_md5_=3b336453b70a4448cb8126e21c0c178b
+_md5_=e91b32773ec7294e96d6c0b7cf9785fb

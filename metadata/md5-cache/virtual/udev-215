@@ -5,4 +5,4 @@ IUSE=systemd
 KEYWORDS=~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86
 RDEPEND=!systemd? ( || ( >=sys-fs/eudev-1.3 >=sys-fs/udev-208-r1 ) ) systemd? ( >=sys-apps/systemd-208:0 )
 SLOT=0
-_md5_=1a549da73e2ab56c476be0f06a79d5a8
+_md5_=da2a020d454c0450a150c911c86940f5

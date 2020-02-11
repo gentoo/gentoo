@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=>=media-video/vdr-1.7.41 >=net-libs/c-client-2002e-r1 >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2
 SLOT=0
 SRC_URI=http://alex.vdr-developer.org/download/vdr-mailbox-0.7.0.tgz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vdr-plugin-2	9e49abda73c5119d659fe75a56d8c366
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vdr-plugin-2	9e49abda73c5119d659fe75a56d8c366
 _md5_=77bdfa6a41f02da527c00fe815db3ed8

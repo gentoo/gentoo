@@ -10,4 +10,4 @@ RDEPEND=>=media-libs/libpng-1.4:0= virtual/jpeg:0 fltk? ( x11-libs/fltk:1 )
 SLOT=0
 SRC_URI=https://github.com/michaelrsweet/htmldoc/releases/download/v1.8.30/htmldoc-1.8.30-source.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=fcf3e25abf8c1beb94748c575edfb216
+_md5_=275c2d86f8cb6df3339f0de41e4a65fd

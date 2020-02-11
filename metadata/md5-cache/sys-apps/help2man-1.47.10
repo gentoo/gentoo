@@ -9,4 +9,4 @@ LICENSE=GPL-3
 RDEPEND=dev-lang/perl nls? ( dev-perl/Locale-gettext )
 SLOT=0
 SRC_URI=mirror://gnu/help2man/help2man-1.47.10.tar.xz
-_md5_=c5c869633733a866a4eddd5ddd42d732
+_md5_=48dc7986103757dc6b0b2cdd4e069491

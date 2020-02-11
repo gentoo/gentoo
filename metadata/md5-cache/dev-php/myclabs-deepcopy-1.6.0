@@ -7,4 +7,4 @@ LICENSE=MIT
 RDEPEND=dev-php/fedora-autoloader >=dev-lang/php-5.6:*
 SLOT=0
 SRC_URI=https://github.com/myclabs/DeepCopy/archive/1.6.0.tar.gz -> myclabs-deepcopy-1.6.0.tar.gz
-_md5_=94319e61d040bfefb09a61ddeae7ecc1
+_md5_=1045f0de8dd6c96d32def7ab4a154b42

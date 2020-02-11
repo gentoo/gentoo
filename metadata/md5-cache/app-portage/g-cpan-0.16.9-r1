@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/gentoo-perl/g-cpan/archive/v0.16.9.tar.gz -> g-cpan-0.16.9.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=23594138cfa1a6b412c1065beb64379d
+_md5_=7f06ae769ea17aa5ce15112ab5a251fe

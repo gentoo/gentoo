@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libXext x11-libs/libXpm
 SLOT=0
 SRC_URI=mirror://sourceforge/musicpd/WMmp-0.10.0.tar.gz
-_md5_=f47ee1d70c926f4e1ba9c4b75c95b3fb
+_md5_=3a9a2dba17df8c296007a53f12d34339

@@ -11,5 +11,5 @@ RDEPEND=java? ( dev-java/asm:4 dev-java/jline:0 dev-java/jna:4 ) moar? ( ~dev-la
 REQUIRED_USE=|| ( java moar )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	multibuild	40fe59465edacd730c644ec2bc197809
-_md5_=b1b309a3040930cef30e4273427bda10
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	multibuild	40fe59465edacd730c644ec2bc197809
+_md5_=0f39f2e431fcbcbea9e075dbbfb1d31a

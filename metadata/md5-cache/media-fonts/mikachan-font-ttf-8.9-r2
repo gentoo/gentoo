@@ -10,4 +10,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/mikachan/5513/mikachanfont-8.9.tar.bz2 mirror://sourceforge.jp/mikachan/5514/mikachanfontP-8.9.tar.bz2 mirror://sourceforge.jp/mikachan/5515/mikachanfontPB-8.9.tar.bz2 mirror://sourceforge.jp/mikachan/5516/mikachanfontPS-8.9.tar.bz2
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=cfedfada7a4f90576c9a37129bca450e
+_md5_=64845998154826121aed60e9bd9a76a6

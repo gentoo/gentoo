@@ -9,4 +9,4 @@ LICENSE=GPL-2 MIT
 SLOT=0
 SRC_URI=http://darkstar.ist.utl.pt/openoffice.org/pt/oo3x-pt-PT.oxt preao? ( http://darkstar.ist.utl.pt/openoffice.org/pt/oo3x-pt-PT-preao.oxt )
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=ffa038fe090c28579f38fb6eb68ff47f
+_md5_=b6790b2b7ca271bf0b5c3a4458697089

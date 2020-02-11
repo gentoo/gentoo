@@ -7,4 +7,4 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=http://http.debian.net/debian/pool/main/z/zoo/zoo_2.10.orig.tar.gz http://http.debian.net/debian/pool/main/z/zoo/zoo_2.10-28.debian.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0abefa280836cbe33591704150bc0e4a
+_md5_=d7dcd4329a3ef9315a84eaee05b4e383

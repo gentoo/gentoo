@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=1.10
 SRC_URI=mirror://gnu/automake/automake-1.10.3.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=73f3ab9c27dbeba6adc31c96a91e1daf
+_md5_=b84dfe973f4a2a2696c3346140df34f1

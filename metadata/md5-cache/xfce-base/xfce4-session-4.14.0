@@ -11,4 +11,4 @@ REQUIRED_USE=elogind? ( policykit ) systemd? ( policykit )
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/xfce/xfce4-session/4.14/xfce4-session-4.14.0.tar.bz2
 _eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=00b5ee6bd0875eec935e4f04a0b3912f
+_md5_=ba05214986bfd480a6115bbb2bbecd65

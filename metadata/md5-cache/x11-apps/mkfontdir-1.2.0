@@ -7,4 +7,4 @@ KEYWORDS=~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~am
 LICENSE=MIT
 RDEPEND=>=x11-apps/mkfontscale-1.2.0
 SLOT=0
-_md5_=835ac6afbc8f576ee596f0d0bc6d5796
+_md5_=26d926cce116c1384808099b97137b86

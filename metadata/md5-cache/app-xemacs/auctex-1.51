@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/texinfo app-xemacs/fsf-compat app-xema
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/auctex-1.51-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=75c1a330f471266bc45ebf3402ec921b
+_md5_=1f7b5db127adaa67906a1e3bd97ba8b9

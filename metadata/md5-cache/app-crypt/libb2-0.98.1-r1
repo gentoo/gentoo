@@ -10,4 +10,4 @@ RDEPEND=openmp? ( || ( >=sys-devel/gcc-4.2:*[openmp] sys-devel/clang-runtime:*[o
 SLOT=0
 SRC_URI=https://github.com/BLAKE2/libb2/archive/73d41c8255a991ed2adea41c108b388d9d14b449.tar.gz -> libb2-0.98.1.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b6c61fa765319f4bc7dc310faf12907d
+_md5_=b88c85ce5a404aab0f1dd36fb26b4da2

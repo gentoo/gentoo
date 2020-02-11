@@ -10,4 +10,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20190410-source.tar.xz mirror://gentoo/texlive-module-dvips-2019.tar.xz doc? ( mirror://gentoo/texlive-module-dvips.doc-2019.tar.xz )
 _eclasses_=texlive-common	930a8063ad61a83cd5b9b186a1f75f9c
-_md5_=624995b8867c9699211686c14fee4956
+_md5_=5f09f11bb3fe9fd68d53f96e522990dc

@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/glib-2.28:2 >=x11-libs/gtk+-3.19.5:3[X] sys-apps/dbus x11-lib
 SLOT=0
 SRC_URI=mirror://gnome/sources/notification-daemon/3.20/notification-daemon-3.20.0.tar.xz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	estack	686eaab303305a908fd57b2fd7617800	gnome.org	532d56d07b9eace4831aaa817d2b756a	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=418e1483106a114245ca59c8c4e27042
+_md5_=e96b625abb4b286696c93edf21fa645a

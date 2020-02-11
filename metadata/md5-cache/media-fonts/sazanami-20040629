@@ -10,4 +10,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/efont/10087/sazanami-20040629.tar.bz2
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=634c01ca052b2911cfc159db85217b1b
+_md5_=9d0497446620f1e4176b2c7c15faf788

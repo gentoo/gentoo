@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://download.tuxfamily.org/chrony/chrony-3.5.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b27a31dc1ebb099ed74a6c62fbd9313d
+_md5_=9f7b31dccb361729bdba0ccf2b694426

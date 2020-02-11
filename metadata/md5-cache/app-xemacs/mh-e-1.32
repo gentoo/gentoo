@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/gnus app-xemacs/mail-lib app-xemacs/xemacs-base app-xemacs/rm
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/mh-e-1.32-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=fa1792034c902e767ac5f31ddc1e9895
+_md5_=f2d7cda9a3228e1ce448e0df78418779

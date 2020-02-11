@@ -10,4 +10,4 @@ RDEPEND=canna-2ch? ( app-dicts/canna-2ch ) emacs? ( >=app-editors/emacs-23.1:* )
 SLOT=0
 SRC_URI=mirror://sourceforge.jp/anthy/37536/anthy-9100h.tar.gz
 _eclasses_=elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=cc4518addac09845154845aa39e822a2
+_md5_=ed9baf82792004dcca6d2dc58163428b

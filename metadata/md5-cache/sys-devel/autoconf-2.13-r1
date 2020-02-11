@@ -10,4 +10,4 @@ RDEPEND=>=sys-apps/texinfo-4.3 =sys-devel/m4-1.4* dev-lang/perl >=sys-devel/auto
 SLOT=2.1
 SRC_URI=mirror://gnu/autoconf/autoconf-2.13.tar.gz
 _eclasses_=toolchain-autoconf	739c1e0219b6c6464c5ce3c13a2186d8
-_md5_=32ce996371f0d9f7206a22a12bfc4ac1
+_md5_=e470f7dfdaa622ca11c69505a13e34b0

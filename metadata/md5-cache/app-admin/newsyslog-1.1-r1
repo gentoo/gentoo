@@ -8,4 +8,4 @@ LICENSE=MIT
 RDEPEND=virtual/cron app-arch/gzip
 SLOT=0
 SRC_URI=ftp://ftp.weird.com/pub/local/newsyslog-1.1.tar.gz
-_md5_=da8e5d436cb49cd57551f06b6e73e35c
+_md5_=d6c70213ddc96c6ebc06e97260942c84

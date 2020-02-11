@@ -8,4 +8,4 @@ LICENSE=AGPL-3 GPL-3 LGPL-3
 SLOT=0
 SRC_URI=mirror://sourceforge/linguistico/Dizionari.IT_20081129.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=4096de17a06f99e5655805fe7ca268a0
+_md5_=ebbc07912f4887060c169a85f7d2db83

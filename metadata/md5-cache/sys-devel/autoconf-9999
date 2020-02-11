@@ -9,5 +9,5 @@ PDEPEND=emacs? ( app-emacs/autoconf-mode )
 PROPERTIES=live
 RDEPEND=>=sys-devel/m4-1.4.16 >=dev-lang/perl-5.6 !~sys-devel/autoconf-9999:2.5 >=sys-devel/autoconf-wrapper-13
 SLOT=9999
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	toolchain-autoconf	739c1e0219b6c6464c5ce3c13a2186d8
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	toolchain-autoconf	739c1e0219b6c6464c5ce3c13a2186d8
 _md5_=4c0669bbd314f719523dc2b3da93c973

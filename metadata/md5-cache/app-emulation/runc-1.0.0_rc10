@@ -11,4 +11,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/opencontainers/runc/archive/dc9208a3303feef5b3839f4323d9beb36df0a9dd.tar.gz -> runc-1.0.0_rc10.tar.gz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b	linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0c5b1a53a22aac6205af1d748f72603d
+_md5_=72ab7673c623bef2ca458db3ab3e5f30

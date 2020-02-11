@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 RDEPEND=virtual/libintl
 SLOT=0
 SRC_URI=mirror://nongnu/m17n/m17n-db-1.7.0.tar.gz
-_md5_=a06a6b0722d44f9c63efd370b9cab403
+_md5_=6d0defc3223552fede717d6e3b7a1214

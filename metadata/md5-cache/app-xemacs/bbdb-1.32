@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/edit-utils app-xemacs/gnus app-xemacs/mh-e app-xemacs/rmail a
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/bbdb-1.32-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=f6dca02a5af6ff27bd6d217e6a0c08f5
+_md5_=7a4681b19eccd7cbfd3e31eebdcfc85c

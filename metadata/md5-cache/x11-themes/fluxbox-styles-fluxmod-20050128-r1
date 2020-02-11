@@ -7,4 +7,4 @@ KEYWORDS=~alpha amd64 ~arm hppa ia64 ~mips ppc ppc64 sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/fluxbox-styles-fluxmod-20050128.tar.bz2
-_md5_=f62e2a30d3d0c06906de8acc67350234
+_md5_=25e239c4d6e53c01bdd81cb56eca507e

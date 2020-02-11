@@ -10,5 +10,5 @@ LICENSE=MIT
 RDEPEND=x11-libs/libX11 tiff? ( media-libs/tiff:0= ) png? ( media-libs/libpng:0= ) jpeg? ( virtual/jpeg:0 )
 SLOT=0
 SRC_URI=ftp://ftp.x.org/R5contrib/xloadimage.4.1.tar.gz mirror://gentoo/xloadimage-4.1-gentoo-r1.diff.bz2
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=38faa0501bf870d5da02c8bf70c4a073
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=80e37d5c9c4edea13c2a7540219ebe2e

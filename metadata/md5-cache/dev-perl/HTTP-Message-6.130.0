@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/O/OA/OALDERS/HTTP-Message-6.13.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=7bf941d35e8e15be1e6e42bca8ea45d7
+_md5_=33c4ad9eaa4df37a1c3f61da5492289f

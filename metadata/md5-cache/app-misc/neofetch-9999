@@ -8,5 +8,5 @@ LICENSE=MIT-with-advertising
 PROPERTIES=live
 RDEPEND=sys-apps/pciutils X? ( media-gfx/imagemagick media-libs/imlib2 www-client/w3m[imlib] x11-apps/xprop x11-apps/xrandr x11-apps/xwininfo )
 SLOT=0
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
 _md5_=76cf9ba6803629112a6c94c976b2b903

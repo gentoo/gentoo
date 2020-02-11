@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/text-modes app-xemacs/edit-utils app-xemacs/mail-lib app-xema
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/strokes-1.12-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=841f63a31fb4c1d845fd12b8d00405bf
+_md5_=a1e51df26ed1691f960a42f94e0bd3fe

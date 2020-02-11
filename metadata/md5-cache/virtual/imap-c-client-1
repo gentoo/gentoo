@@ -5,4 +5,4 @@ IUSE=ssl
 KEYWORDS=~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86
 RDEPEND=|| ( net-libs/c-client[ssl=] net-mail/uw-imap[ssl=] )
 SLOT=0
-_md5_=4aa3faf51d82eab4ebf0d70a667e5ab3
+_md5_=5962a0c6fdb89a78e9eec8bbdc03542c

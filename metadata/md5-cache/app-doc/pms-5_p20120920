@@ -9,4 +9,4 @@ LICENSE=CC-BY-SA-3.0
 RDEPEND=!app-doc/pms-bin
 SLOT=20120920
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/pms-5.tar.xz
-_md5_=c204af4aa6b19f631a94e7eb6daf9bbf
+_md5_=7ff2eb2072dd084e64c053ac2847e72b

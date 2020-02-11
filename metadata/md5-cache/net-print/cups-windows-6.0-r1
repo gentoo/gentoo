@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=net-print/cups-1.2
 SLOT=0
 SRC_URI=mirror://gentoo/cups-windows-6.0-source.tar.bz2
-_md5_=51f9c63cc068578dcb0d4dc76918bcb6
+_md5_=e27c0a14a914758da9c2b477b2b0b7a3

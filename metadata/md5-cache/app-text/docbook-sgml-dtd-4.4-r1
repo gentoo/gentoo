@@ -9,4 +9,4 @@ RDEPEND=>=app-text/sgml-common-0.6.3-r7
 SLOT=4.4
 SRC_URI=https://docbook.org/sgml/4.4/docbook-4.4.zip
 _eclasses_=sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8
-_md5_=9c6547a28e7e33606038f43eb6970935
+_md5_=d6017fba791d0c50d34b633ad4afcbf4

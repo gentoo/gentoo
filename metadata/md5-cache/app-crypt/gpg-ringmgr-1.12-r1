@@ -7,4 +7,4 @@ KEYWORDS=~alpha amd64 hppa ppc sparc x86
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/gpg-ringmgr -> gpg-ringmgr-1.12
-_md5_=c18981d9665a91eb08081ff8c936c2e1
+_md5_=e62e59142d465502e6e40bf463cbd1d1

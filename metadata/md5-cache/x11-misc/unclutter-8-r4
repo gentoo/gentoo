@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11
 SLOT=0
 SRC_URI=ftp://ftp.x.org/contrib/utilities/unclutter-8.tar.Z
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=6d999a2af2a1103dd0afaf6e2df8655a
+_md5_=667ca88611230600be51c9ddc64c170f

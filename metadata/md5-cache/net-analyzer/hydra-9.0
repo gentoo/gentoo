@@ -10,4 +10,4 @@ RDEPEND=gtk? ( dev-libs/atk dev-libs/glib:2 x11-libs/gdk-pixbuf:2 x11-libs/gtk+:
 SLOT=0
 SRC_URI=https://github.com/vanhauser-thc/thc-hydra/archive/v9.0.tar.gz -> hydra-9.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=127ceea962acc28020f594e70389f355
+_md5_=b008a45bea0e2ec728897ed5c598775c

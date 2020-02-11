@@ -9,4 +9,4 @@ RDEPEND=dev-perl/XML-Parser dev-perl/libwww-perl dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KM/KMACLEOD/Frontier-RPC-0.07b4.tar.gz http://perl-xml.sourceforge.net/xml-rpc/Frontier-RPC-0.07b4.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=9935f166ac79153668ba1bbf15d7595c
+_md5_=63fb84bf2a01e5de1c7eb845b17d15d9

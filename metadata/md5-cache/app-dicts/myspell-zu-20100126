@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=mirror://sourceforge/aoo-extensions/dict-zu_za-2010.01.26.oxt -> myspell-zu-20100126.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=691f8daa6c667355eb059edd4839573f
+_md5_=f2eb773ca7db83521c699f633e76a896

@@ -9,4 +9,4 @@ RDEPEND=>=app-text/build-docbook-catalog-1.6 >=app-text/sgml-common-0.6.3-r7
 SLOT=4.1.2.4
 SRC_URI=mirror://gentoo/sdb4124.zip
 _eclasses_=sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8
-_md5_=0f4d786f2b2e60665a6fcd0c01f69e75
+_md5_=c033e0bd4be228acb3b5330562b53634

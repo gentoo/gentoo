@@ -11,4 +11,4 @@ REQUIRED_USE=shaping? ( X ) shm? ( X )
 SLOT=0
 SRC_URI=ftp://ftp.afterstep.org/stable/libAfterImage/libAfterImage-1.20.tar.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=25a5255bcf040fb4c40a2c13c0ad9132
+_md5_=679f38e5ab996159b1a95df90a3b0ba6

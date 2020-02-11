@@ -10,4 +10,4 @@ RDEPEND=udev? ( virtual/udev ) !<sys-apps/pciutils-3.1.9-r2 !<sys-apps/usbutils-
 SLOT=0
 SRC_URI=https://github.com/gentoo/hwids/archive/hwids-20190316.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=47b91e380ce6dfe3ce0133b253abc8f6
+_md5_=d419ce905c6b224de2215740e5128787

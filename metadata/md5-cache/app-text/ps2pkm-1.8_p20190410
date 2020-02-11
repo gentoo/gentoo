@@ -9,4 +9,4 @@ LICENSE=MIT
 RDEPEND=>=dev-libs/kpathsea-6.2.1
 SLOT=0
 SRC_URI=mirror://gentoo/texlive-20190410-source.tar.xz
-_md5_=2153ba72ce5b25678f164d9d4d642acd
+_md5_=f59d9a386df6d34eff658c70062ebc4c

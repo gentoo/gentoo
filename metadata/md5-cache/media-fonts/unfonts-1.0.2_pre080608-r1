@@ -10,4 +10,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://gentoo/un-fonts-core-1.0.2-080608-r1.tar.gz
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=fa8ae9873803003538d19153a4289e9e
+_md5_=eb2e7c287a77b61a3d69264312738536

@@ -8,4 +8,4 @@ RDEPEND=app-text/dictd
 SLOT=0
 SRC_URI=http://freedict.sourceforge.net/download/linux/ita-eng.tar.gz
 _eclasses_=freedict	02474242ef7b791f4f93ae3d845f6be3
-_md5_=f2da06f5cb9999b35bdc16bfe12b3862
+_md5_=a09303f3c411e8691eb9b498a1de9f50

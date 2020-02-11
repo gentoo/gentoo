@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=dev-libs/expat media-libs/libsndfile doc? ( dev-lang/php:* ) jack? ( virtual/jack x11-libs/cairo[X] ) ladspa? ( media-libs/ladspa-sdk ) lv2? ( media-libs/lv2 x11-libs/cairo[X] )
 REQUIRED_USE=|| ( jack ladspa lv2 )
 SLOT=0
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
 _md5_=f35bff986dcd7e31ccb5549bd4a943c8

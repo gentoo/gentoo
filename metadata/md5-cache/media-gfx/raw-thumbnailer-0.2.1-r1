@@ -9,4 +9,4 @@ RDEPEND=>=media-libs/libopenraw-0.1:=[gtk] x11-libs/gtk+:2 !media-gfx/gnome-raw-
 SLOT=0
 SRC_URI=https://raw-thumbnailer.googlecode.com/files/raw-thumbnailer-0.2.1.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=b54a1f8a3504295eb6e923c3c69da05e
+_md5_=a2350a8af209fb4af69ff6a89caa2194

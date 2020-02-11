@@ -8,4 +8,4 @@ RDEPEND=sys-apps/miscfiles
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jer/wscr-1.2.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=5ba9dfd5136755f91e9012820922c9a1
+_md5_=9fd1f381c6931aeae4ce6e2c4cabe49b

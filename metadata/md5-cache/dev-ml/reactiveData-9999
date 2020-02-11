@@ -8,5 +8,5 @@ LICENSE=LGPL-3-with-linking-exception
 PROPERTIES=live
 RDEPEND=dev-ml/react:= >=dev-lang/ocaml-4:=
 SLOT=0/9999
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	opam	c053036d04fbcede5c53fe5752699eb5
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	opam	c053036d04fbcede5c53fe5752699eb5
 _md5_=98d9f05c2bc8dc841646d2e6d240b8e3

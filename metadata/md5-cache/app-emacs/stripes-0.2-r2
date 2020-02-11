@@ -9,4 +9,4 @@ RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=mirror://gentoo/stripes-0.2.tar.gz
 _eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=7c3d16bce2dbeed1eda24687e57c13b5
+_md5_=55fa2593b7c9292e9044890eb9ff3a4a

@@ -10,4 +10,4 @@ RDEPEND=>=dev-perl/Net-SSLeay-1.460.0 virtual/perl-Scalar-List-Utils idn? ( || (
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/S/SU/SULLR/IO-Socket-SSL-2.052.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=379fd39ff1bb2e39ea61d59b4af888c9
+_md5_=629bfdea7779355c1eaa6d5477623d00

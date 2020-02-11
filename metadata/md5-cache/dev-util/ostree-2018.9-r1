@@ -13,4 +13,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/ostreedev/ostree/releases/download/v2018.9/libostree-2018.9.tar.xz -> ostree-2018.9.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0e0ffbc6577a65e9a6c2e10162f921df
+_md5_=db83b7b1c0d08930f7052b298748c82c

@@ -4,4 +4,4 @@ EAPI=5
 KEYWORDS=~alpha amd64 arm hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 RDEPEND=>=dev-libs/libffi-3.0.10
 SLOT=0
-_md5_=f305de6cc795f364125ca4e63a37b63f
+_md5_=915c5048fdb8a950ab8c13237873b038

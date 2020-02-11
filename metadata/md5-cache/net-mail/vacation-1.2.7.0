@@ -9,4 +9,4 @@ RDEPEND=!mail-mta/sendmail sys-libs/gdbm virtual/mta
 SLOT=0
 SRC_URI=mirror://sourceforge/vacation/vacation-1.2.7.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=cfae6814bb9cdf115edd0527d5a74391
+_md5_=eb422e5b894c8591550c7dcf4056b6ae

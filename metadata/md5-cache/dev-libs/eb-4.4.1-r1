@@ -9,4 +9,4 @@ LICENSE=BSD
 RDEPEND=sys-libs/zlib nls? ( virtual/libintl )
 SLOT=0
 SRC_URI=ftp://ftp.sra.co.jp/pub/misc/eb/eb-4.4.1.tar.lzma
-_md5_=d215e1be5cd39fcbe7f0c9b517abb361
+_md5_=5a98718b75f7b58703e9c4aefa30bd45

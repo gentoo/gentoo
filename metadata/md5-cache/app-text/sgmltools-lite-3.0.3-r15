@@ -11,4 +11,4 @@ REQUIRED_USE=^^ ( python_single_target_python2_7 )
 SLOT=0
 SRC_URI=https://downloads.sourceforge.net/project/sgmltools-lite/sgmltools-lite/3.0.3/sgmltools-lite-3.0.3.tar.gz https://downloads.sourceforge.net/project/sgmltools-lite/support%20files/0.0.1-1/nw-eps-icons-0.0.1.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	sgml-catalog-r1	e6ff98989cdecb4311b67afb96edb6f8	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c70f56ddcfbfe202529a4b573c7e2d98
+_md5_=b55820da3b12875c6bdbcd49cf07a0cd

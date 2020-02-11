@@ -11,4 +11,4 @@ RDEPEND=>=dev-libs/dbus-glib-0.100 >=dev-libs/glib-2.34:2 sys-apps/dbus:= intros
 SLOT=0/3
 SRC_URI=https://gitlab.freedesktop.org/upower/upower/uploads/2282c7c0e53fb31816b824c9d1f547e8/upower-0.99.9.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1338750006ce3aa2468bb093165d76a0
+_md5_=c6c7842a42c600f30c3d6cbeae656487

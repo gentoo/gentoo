@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/H/HM/HMBRAND/Text-CSV_XS-1.34.tgz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=219dedf8cde8ef58f1dbefc17da9fbd0
+_md5_=e9673371d8a951e7a0940e35bb4d0af4

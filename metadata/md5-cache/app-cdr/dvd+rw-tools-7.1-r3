@@ -9,4 +9,4 @@ RDEPEND=virtual/cdrtools
 SLOT=0
 SRC_URI=http://fy.chalmers.se/~appro/linux/DVD+RW/tools/dvd+rw-tools-7.1.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=1dbfde5e21ceb37372a2821418486682
+_md5_=ca67b140097f3ac4646582a0c05591f6

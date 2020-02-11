@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/jde app-xemacs/cc-mode app-xemacs/semantic app-xemacs/cedet-c
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/xslt-process-1.14-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=2e69ad060048e783e61e86be515b6e3b
+_md5_=7f73220d2f8dc6591954cf6c3b51c875

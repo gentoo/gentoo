@@ -6,4 +6,4 @@ KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 ~s390 ~sh ~sparc x86 ~amd64
 LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gnu/libsigsegv/libsigsegv-2.12.tar.gz
-_md5_=1ea37dbed194b68127a6fcd060652bae
+_md5_=a5d6b9718d6c9113a1870a544c3e7f0b

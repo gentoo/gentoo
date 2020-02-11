@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=app-text/ghostscript-gpl virtual/latex-base media-libs/netpbm dev-lang/perl gif? ( media-libs/giflib ) png? ( media-libs/libpng:0 )
 SLOT=0
 SRC_URI=http://mirrors.ctan.org/support/latex2html/latex2html-2015.tar.gz
-_md5_=dc4f21d9e57d9876d8bb9c278e1f1060
+_md5_=ebebd530fd55d7a98e4b25915a8101d7

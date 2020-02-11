@@ -11,4 +11,4 @@ RDEPEND=dev-libs/glib:2 dev-libs/libgudev:=
 SLOT=0
 SRC_URI=https://github.com/linuxwacom/libwacom/releases/download/libwacom-1.0/libwacom-1.0.tar.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6
-_md5_=cda6e870f0667bdf143ba11c6ddf07d4
+_md5_=b02ce0aae0549194216e5ce66ef90a4f

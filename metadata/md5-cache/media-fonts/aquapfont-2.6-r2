@@ -11,4 +11,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=http://aquablue.milkcafe.to/tears/font/aquap2_6.zip
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=3c1605ccccce2b3231aad2fe54cf6f76
+_md5_=30387edc6cabf17057e7a82196bdb73a

@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=mirror://sourceforge/aoo-extensions/dict-hr.oxt -> myspell-hr-20080813.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=7f5eac5dd33a4cf1b5d788df56430cc4
+_md5_=cffd2ba4416b67eb10431c5c7f9bd2ca

@@ -9,4 +9,4 @@ RDEPEND=!<media-libs/freetype-1.4_pre20080316
 SLOT=0
 SRC_URI=http://www.lcdf.org/type/t1utils-1.41.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0313fa4d259a53e1c147f762b63abc0e
+_md5_=6363fb71a0c4ec9dc7e32d3e6c67cc43

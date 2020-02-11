@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://gentoo/myspell-tn_ZA-20060316.zip
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=9c09c5c8e77b9173ea8911fd7da426ab
+_md5_=f519b14047b9adad6ea4b23afd98ceef

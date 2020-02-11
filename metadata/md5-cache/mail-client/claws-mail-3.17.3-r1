@@ -12,4 +12,4 @@ REQUIRED_USE=libcanberra? ( notification ) libindicate? ( notification ) libnoti
 SLOT=0
 SRC_URI=https://www.claws-mail.org/download.php?file=releases/claws-mail-3.17.3.tar.xz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=c4bfbee64d16404a1815cd2d6bc6ea9d
+_md5_=732017c68003b46c059743b41add5884

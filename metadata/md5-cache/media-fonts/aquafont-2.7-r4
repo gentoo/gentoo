@@ -11,4 +11,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=http://www.geocities.jp/teardrops_in_aquablue/fnt/aqua2_7.zip
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=0bcde15c95cf03b489728347b4307783
+_md5_=587ebaf4358da322e75d9fb4c2be0636

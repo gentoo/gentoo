@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/xemacs-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/cookie-1.15-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=5bb0258859bd3c012313e502c8c9ea7a
+_md5_=ba45a14ca5b27d3db434c79d8fc98b8b

@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=mirror://gentoo/gartoon-0.5.tar.gz
-_md5_=d977744bedc2acf2b7a57b011c5ff269
+_md5_=12d8dbbe70a2eb344c1954b695b8109d

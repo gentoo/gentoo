@@ -10,4 +10,4 @@ RDEPEND=dev-libs/popt >=media-libs/libgphoto2-2.5.17:=[exif?] aalib? ( media-lib
 SLOT=0
 SRC_URI=mirror://sourceforge/gphoto/gphoto2-2.5.20.tar.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=2c5e407eceb0c1cfc0b5abd41f518adb
+_md5_=dd85e5f0e48a90124cc15bb72520e2be

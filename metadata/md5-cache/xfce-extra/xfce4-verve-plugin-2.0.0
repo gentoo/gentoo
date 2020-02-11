@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=xfce-base/libxfce4ui-4.12:= >=xfce-base/xfce4-panel-4.12:= dev-libs/glib:2= >=dev-libs/libpcre-5:=
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-verve-plugin/2.0/xfce4-verve-plugin-2.0.0.tar.bz2
-_md5_=fbb6bc3fc53e800d053879f527f98763
+_md5_=5ea1dd9f9e6dc7a1660e33f337174d64

@@ -9,4 +9,4 @@ RDEPEND=sys-libs/ncurses:0=
 SLOT=0
 SRC_URI=http://dav-text.sourceforge.net/files/dav-0.8.5.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4458283f9eb05a04947308a76919d0fc
+_md5_=f64229421e6f8296ba4bbc677946019c

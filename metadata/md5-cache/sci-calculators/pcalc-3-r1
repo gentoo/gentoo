@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/pcalc/pcalc-3.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=75027b484ef5eae5f0eee168dc5e5a19
+_md5_=96cb2144b03f35b40731026eb58d717b

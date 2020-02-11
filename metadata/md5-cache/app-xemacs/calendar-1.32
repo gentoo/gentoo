@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/xemacs-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/calendar-1.32-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=e624eb023ac8f21ac4726a5a12ac3a47
+_md5_=b258db9f2c4516166f614cdd9053041d

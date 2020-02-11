@@ -8,4 +8,4 @@ LICENSE=|| ( GPL-2 GPL-3 )
 SLOT=0
 SRC_URI=mirror://sourceforge/project/aoo-extensions/1057/8/dict-de_de-1901_oldspell_2016-04-03.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=88770408032f096eb6f96b09c69df7d3
+_md5_=72cf195becb0069d57dd0a32b0977a7e

@@ -9,4 +9,4 @@ RDEPEND=dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/L/LE/LEEJO/String-CRC32-1.6.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=7ad809c39ea6b64bb969860f95f33497
+_md5_=ee1135ee76de4acd6193c95122db6164

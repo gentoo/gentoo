@@ -8,4 +8,4 @@ LICENSE=BSD
 RDEPEND=dev-lang/php:* dev-php/PEAR-PEAR dev-php/PEAR-Net_Socket sasl? ( dev-php/PEAR-Auth_SASL )
 SLOT=0
 SRC_URI=https://github.com/roundcube/Net_Sieve/archive/1.5.2.tar.gz -> PEAR-Net_Sieve-1.5.2.tar.gz
-_md5_=ab3d9fdda01063edbae7392d22161f5c
+_md5_=5b95464028615c3268e67b92b91a5a39

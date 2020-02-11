@@ -10,4 +10,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=http://openlab.jp/efont/dist/unicode-bdf/efont-unicode-bdf-0.4.2.tar.bz2
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346	font-ebdftopcf	e23db122fd578442f37e3e79267eedd8
-_md5_=3968455972338e6c34ffbb436c618867
+_md5_=eb85914c72139211f6c37df8b3e0b1ed

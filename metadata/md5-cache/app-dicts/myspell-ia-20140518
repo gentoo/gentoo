@@ -8,4 +8,4 @@ LICENSE=GPL-3
 SLOT=0
 SRC_URI=mirror://sourceforge/aoo-extensions/dict-ia-2014-05-18.oxt -> myspell-ia-20140518.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=69bf6849e8f94409c14b57881a008a42
+_md5_=d65e87f122dc27fe60c30a2163b6824e

@@ -7,4 +7,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=https://gitweb.gentoo.org/proj/gentoo-bashcomp.git/snapshot/gentoo-bashcomp-20190211.tar.bz2
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=7d6f08234f2d91cdf573882061da42f7
+_md5_=ace03a76b1d40f5f6f617ca17459786b

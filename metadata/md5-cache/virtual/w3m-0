@@ -4,4 +4,4 @@ EAPI=6
 KEYWORDS=~alpha amd64 ~arm ~arm64 ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 RDEPEND=|| ( www-client/w3m www-client/w3mmee )
 SLOT=0
-_md5_=2fffa52cc15faa16128716c9339e6397
+_md5_=e42b0cc004207822003b5eeeb8a8dbb6

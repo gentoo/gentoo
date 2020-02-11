@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext
 SLOT=0
 SRC_URI=https://www.dockapps.net/download/wmnet-1.06.tar.gz mirror://gentoo/wmnet-1.06-misc.patch.bz2
-_md5_=eccd51dbbfca042a8fe8bdcf3ca5f48a
+_md5_=cc489ad45175403407b4d5d5978bb635

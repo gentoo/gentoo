@@ -8,4 +8,4 @@ RDEPEND=virtual/man
 SLOT=0
 SRC_URI=mirror://sourceforge/man-pages-ru/man-pages-ru_4.16-2383-2383-20180422.tar.bz2
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=22c6b2ee29a600c29e153c5d6fe1bbd4
+_md5_=84b9ec81964a254c8e9de345c5664f38

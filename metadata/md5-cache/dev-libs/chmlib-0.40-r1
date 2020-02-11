@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=http://www.jedrea.com/chmlib/chmlib-0.40.tar.bz2
 _eclasses_=out-of-source	15edba2977da53bbf4d1e5a60abc0e34
-_md5_=3fe4ee4a054009319e2340d60c581cc0
+_md5_=8c5a48f5e985d48ba450c500d12bca82

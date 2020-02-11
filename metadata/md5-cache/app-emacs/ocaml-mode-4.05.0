@@ -9,4 +9,4 @@ RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/ocaml/ocaml/archive/4.05.0.tar.gz -> ocaml-4.05.0.tar.gz
 _eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=63ddd87df6e1dd3ed22a6a1b9de265d9
+_md5_=15222598b7dfeec4ee84d72c293c7fa1

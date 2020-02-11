@@ -11,4 +11,4 @@ RDEPEND=>=dev-texlive/texlive-latexextra-2008 virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/europecv-20060424.zip
 _eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
-_md5_=470af528bf7f006e844330c28d2f83ee
+_md5_=69db1ad52678e357b88cb3b476a2795e

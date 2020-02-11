@@ -9,4 +9,4 @@ RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=https://github.com/wanderlust/apel/archive/d146ddbf8818e81d3577d5eee7825d377bec0c73.tar.gz -> apel-10.8_p20190407.tar.gz
 _eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=b56c957bebaad329ebea8f37bae64af1
+_md5_=05eaba999e28cb441e87f9f72fcd8011

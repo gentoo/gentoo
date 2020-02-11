@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/glib-2.24:2 >=x11-libs/gtk+-2.20:2 <xfce-base/libxfce4ui-4.15
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-notes-plugin/1.8/xfce4-notes-plugin-1.8.1.tar.bz2
 _eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=627f33e21878bd6607500a5f36c5d2d5
+_md5_=a95dba1579829086ecaf3f7e524fa8e6

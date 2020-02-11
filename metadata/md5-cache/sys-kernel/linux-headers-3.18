@@ -10,4 +10,4 @@ RESTRICT=binchecks strip
 SLOT=0
 SRC_URI=mirror://gentoo/gentoo-headers-base-3.18.tar.xz mirror://gentoo/gentoo-headers-3.18-1.tar.xz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	kernel-2	161e65a1e185c10599fd2c5b258be436	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=af211521ecd093a3b7b5caf4805f8038
+_md5_=e5a1b4e8f45aabf1591efabecd00abc9

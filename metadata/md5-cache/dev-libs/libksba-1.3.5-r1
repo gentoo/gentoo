@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/libgpg-error-1.8
 SLOT=0
 SRC_URI=mirror://gnupg/libksba/libksba-1.3.5.tar.bz2
 _eclasses_=ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3c3ecf73157b2232a69627375b64ade2
+_md5_=228c0d4dc664b1219e95a817c7588041

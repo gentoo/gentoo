@@ -9,5 +9,5 @@ LICENSE=GPL-2+
 PROPERTIES=live
 RDEPEND=vdr? ( >=media-video/vdr-1.6.0 libextractor? ( >=media-libs/libextractor-0.5.20 ) caps? ( sys-libs/libcap ) ) xine? ( ( >=media-libs/xine-lib-1.2 virtual/ffmpeg ) fbcon? ( jpeg? ( virtual/jpeg:* ) ) X? ( x11-libs/libX11 x11-libs/libXext x11-libs/libXrender xinerama? ( x11-libs/libXinerama ) dbus? ( dev-libs/dbus-glib dev-libs/glib:2 ) vdpau? ( x11-libs/libvdpau >=media-libs/xine-lib-1.2 ) jpeg? ( virtual/jpeg:* ) bluray? ( media-libs/libbluray ) opengl? ( virtual/opengl ) ) ) cec? ( dev-libs/libcec ) vdr? ( >=media-tv/gentoo-vdr-scripts-0.4.2 >=app-eselect/eselect-vdr-0.0.2 )
 SLOT=0
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vdr-plugin-2	9e49abda73c5119d659fe75a56d8c366
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	unpacker	3cd8bad0d31e525cd26be1bfa4e61631	vdr-plugin-2	9e49abda73c5119d659fe75a56d8c366
 _md5_=720c29916d9c6f282829411094e69843

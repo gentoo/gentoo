@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=http://sary.sourceforge.net/sary-1.2.0.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=edd842a7dbdfba117780380787fabef9
+_md5_=5e17c4e67eaad0ff14f9ff0e28a6c80a

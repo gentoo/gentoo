@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/text-modes app-xemacs/xemacs-base app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/texinfo-1.30-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=ec6d23fc5e6f6f7310e243417c54521e
+_md5_=2c35598ba225d5c4344c4a1f0e4c972c

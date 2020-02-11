@@ -9,4 +9,4 @@ RDEPEND=dev-texlive/texlive-fontsrecommended virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/leaflet-20041222.zip
 _eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
-_md5_=219d9a515fa2667cdf584f66dcaa225e
+_md5_=330de79e9d598becc00bfae044b8c7d6

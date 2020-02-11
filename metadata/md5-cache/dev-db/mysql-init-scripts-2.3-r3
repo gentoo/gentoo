@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=!<dev-db/mysql-5.1 !<sys-apps/openrc-0.16.2 dev-db/mysql-connector-c !prefix? ( acct-group/mysql acct-user/mysql ) virtual/tmpfiles
 SLOT=0
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	s6	c00aae64382703efbfcef0c6425565d2	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	tmpfiles	6170dc7770585fb3f16efdee789a3218	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=6ef6427fb40678e0c06384040c0d4416
+_md5_=0e97f2c0412442b11cc7614ea59ccbfd

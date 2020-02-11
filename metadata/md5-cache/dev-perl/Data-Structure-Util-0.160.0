@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AN/ANDYA/Data-Structure-Util-0.16.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=2e6ed6f6e8af83e0ed1e74a78d3c1e0c
+_md5_=d4bf7b3c40ad937e0423e3559da429ef

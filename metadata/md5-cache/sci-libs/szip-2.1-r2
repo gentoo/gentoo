@@ -8,4 +8,4 @@ LICENSE=szip
 RDEPEND=!sci-libs/libaec[szip]
 SLOT=0/2
 SRC_URI=ftp://ftp.hdfgroup.org/lib-external/szip/2.1/src/szip-2.1.tar.gz
-_md5_=77ae3c1521958e7eb51412e175eafca9
+_md5_=9e7a534156236b2c596de5a3555dc820

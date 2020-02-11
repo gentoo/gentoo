@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/fsf-compat app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/ocaml-0.10-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=b8dc05a48da5e3d521def7e98712b758
+_md5_=178325866941f82b4642a86e309ee528

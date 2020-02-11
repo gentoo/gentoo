@@ -9,4 +9,4 @@ RDEPEND=|| ( >=app-editors/vim-7.3 >=app-editors/gvim-7.3 )
 SLOT=0
 SRC_URI=mirror://gentoo/ebnf-syntax-1.1.tar.bz2 https://dev.gentoo.org/~radhermit/vim/ebnf-syntax-1.1.tar.bz2
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	vim-doc	af2c81a1feeb0a99e91bee3e20769edb	vim-plugin	3160d9cb05ef44497be1485db0fe7590
-_md5_=fe4a148636f5bcb00890df73274b3d94
+_md5_=4eb942d26d651f98ff155e4f6adb7c2f

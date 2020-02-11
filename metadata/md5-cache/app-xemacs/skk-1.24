@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/viper app-xemacs/mule-base app-xemacs/elib app-xemacs/xemacs-
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/skk-1.24-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=6f4b882e5dc234e23f47bff219d54fea
+_md5_=15e13098570eb4b52aba2d284b9ef42c

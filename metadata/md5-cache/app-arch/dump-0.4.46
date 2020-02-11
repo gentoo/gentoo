@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/dump/dump-0.4b46.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	versionator	2352c3fc97241f6a02042773c8287748
-_md5_=380ac09c7e79ef8e040e30feb63b1ff0
+_md5_=80d93177baea155a4ed0c0274a10ff66

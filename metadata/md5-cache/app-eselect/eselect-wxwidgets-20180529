@@ -8,4 +8,4 @@ RDEPEND=>=app-admin/eselect-1.4.13
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/eselect-wxwidgets-20180529.tar.xz https://dev.gentoo.org/~mgorny/dist/eselect-wxwidgets-files.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=782d22f598a385c5902c55d40a6d044b
+_md5_=3a1128b85d90531f79900e5fd04b0ff9

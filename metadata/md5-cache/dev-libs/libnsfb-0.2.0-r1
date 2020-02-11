@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0/0.2.0
 SRC_URI=https://download.netsurf-browser.org/libs/releases/libnsfb-0.2.0-src.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=eadb44eaae97d9a25ea6cb7509710cf2
+_md5_=0b1b62c92ce141278ca1e4864bbe51b1

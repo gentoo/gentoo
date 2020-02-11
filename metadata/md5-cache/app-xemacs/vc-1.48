@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/dired app-xemacs/xemacs-base app-xemacs/mail-lib app-xemacs/e
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/vc-1.48-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=ca10048b9d1c20168237b8b70bc3d792
+_md5_=69e319f7804ba0331d76a4e574db16cd

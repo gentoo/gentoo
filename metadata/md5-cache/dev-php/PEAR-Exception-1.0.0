@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:* !<=dev-php/PEAR-PEAR-1.10.3-r1
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=http://download.pear.php.net/package/PEAR_Exception-1.0.0.tgz
-_md5_=6570597d785c6b3eae44454f0c200551
+_md5_=9bdecb640c7de392d6a620555eeccb82

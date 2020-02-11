@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=static? ( dev-libs/iniparser:0[static-libs] ) !static? ( dev-libs/iniparser:0 ) qmanifest? ( openmp? ( || ( >=sys-devel/gcc-4.2:*[openmp] sys-devel/clang-runtime:*[openmp] ) ) static? ( app-crypt/libb2:=[static-libs] !libressl? ( dev-libs/openssl:0=[static-libs] ) libressl? ( dev-libs/libressl:0=[static-libs] ) sys-libs/zlib:=[static-libs] app-crypt/gpgme:=[static-libs] ) !static? ( app-crypt/libb2:= !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) sys-libs/zlib:= app-crypt/gpgme:= ) ) qtegrity? ( openmp? ( || ( >=sys-devel/gcc-4.2:*[openmp] sys-devel/clang-runtime:*[openmp] ) ) static? ( !libressl? ( dev-libs/openssl:0=[static-libs] ) libressl? ( dev-libs/libressl:0=[static-libs] ) ) !static? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev-libs/libressl:0= ) ) )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~grobian/distfiles/portage-utils-0.80.tar.xz
-_md5_=9b784a376dd398263e31699b3c7b9ccf
+_md5_=ecbac74a086571233a7343c7eed04e19

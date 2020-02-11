@@ -9,4 +9,4 @@ RDEPEND=net-dns/libidn:0= dev-lang/perl:=
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/T/TH/THOR/Net-LibIDN-0.12.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=fc6b2cf728c33988c205cfb5ec117dd1
+_md5_=0068b8f1246fa582941ef2dc3d580fd5

@@ -8,4 +8,4 @@ LICENSE=BSD GPL-2+ man-pages
 RDEPEND=virtual/man
 SLOT=0
 SRC_URI=https://gitlab.com/perkamon/man-pages-fr/-/archive/3.70-1/man-pages-fr-3.70-1.tar.gz -> man-pages-fr-3.70-1-r1.tar.gz https://gitlab.com/perkamon/man-pages/-/archive/3.70/man-pages-3.70.tar.gz -> perkamon-man-pages-3.70.tar.gz https://mirrors.edge.kernel.org/pub/linux/docs/man-pages/Archive/man-pages-3.70.tar.xz
-_md5_=e7651425c00ee7c1b41e73265120aae4
+_md5_=9feb7cfc73889aa083c83b81731ffe6f

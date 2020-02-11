@@ -7,4 +7,4 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=https://github.com/vaeth/push/archive/v2.0.tar.gz -> push-2.0.tar.gz
 _eclasses_=vcs-snapshot	b1abf460a493fc59ebb25de0df3f09dd
-_md5_=b3f18c72009ce1303f7d177452ac1c6e
+_md5_=4b1b93c39c8c2e4d0e49486cf9414534

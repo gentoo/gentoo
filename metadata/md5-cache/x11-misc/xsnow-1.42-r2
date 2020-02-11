@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXt x11-libs/libXext x11-libs/libXpm
 SLOT=0
 SRC_URI=https://janswaal.home.xs4all.nl/Xsnow/xsnow-1.42.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=957decda26f867e0be9bf8d3d69d0936
+_md5_=af7fab1fca7d429afec3614ab04082e2

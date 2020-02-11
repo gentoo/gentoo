@@ -11,5 +11,5 @@ RDEPEND=gtk? ( x11-libs/gtk+:2 ) imagemagick? ( media-gfx/imagemagick:= ) motif?
 REQUIRED_USE=|| ( crypt pam ) pam? ( !xlockrc ) xlockrc? ( !pam )
 SLOT=0
 SRC_URI=https://www.sillycycle.com/xlock/xlockmore-5.62.tar.xz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	a1771fc1e5831c201eaf18451747d94b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	a1771fc1e5831c201eaf18451747d94b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=f393cadde37a42428d38630af17ddd36

@@ -9,5 +9,5 @@ PROPERTIES=live
 RDEPEND=dev-libs/libtermkey ncurses? ( sys-libs/ncurses:0= ) tre? ( dev-libs/tre:= ) app-eselect/eselect-vi
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422
 _md5_=2f387828a96d1bbdf7c3fcca5c349e70

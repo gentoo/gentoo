@@ -10,4 +10,4 @@ RDEPEND=dev-db/sqlite:3 dev-libs/atf dev-lua/lutok
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/jmmv/kyua/releases/download/kyua-0.13/kyua-0.13.tar.gz
-_md5_=12fa58654c321f31743db046761403e8
+_md5_=a0c148255b804652d5f0141503415dfa

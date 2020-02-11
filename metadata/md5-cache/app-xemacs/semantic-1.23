@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/ede app-xemacs/cedet-common app-xemacs/eieio app-xemacs/xemac
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/semantic-1.23-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=8e2aa7417ed95d1abdc02070454a1659
+_md5_=25e1eca97f03a5668e52aa82f935dcbf

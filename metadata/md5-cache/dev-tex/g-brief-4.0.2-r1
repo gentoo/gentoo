@@ -9,4 +9,4 @@ RDEPEND=dev-texlive/texlive-langgerman virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/g-brief-4.0.2.zip
 _eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
-_md5_=7180c4b33d85235c5077e61fb434b36f
+_md5_=7b072ac326a46c3fd5d5caa0c9024409

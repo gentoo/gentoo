@@ -9,4 +9,4 @@ LICENSE=MIT
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jstein/dist/proggy-fonts-1.tar.bz2
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=81fc5a9db39c4a651b818f78f3c0dfbb
+_md5_=c2d8c30ff39bc930732faa22a3103815

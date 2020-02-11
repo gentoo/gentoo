@@ -8,4 +8,4 @@ LICENSE=CC-BY-SA-3.0
 RDEPEND=!app-doc/pms
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/pms-7_p20180430-prebuilt.tar.xz
-_md5_=840a02491414f2feef24d50bce3bfd6b
+_md5_=c5fd6c560b1308e2a3767d0a197765ff

@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/bglibs-1.106 mysql? ( dev-db/mysql-connector-c:0= ) virtual/q
 SLOT=0
 SRC_URI=http://untroubled.org/qmail-autoresponder/archive/qmail-autoresponder-0.97.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=7ba57b5446c55cc8a052ea913cd2dfab
+_md5_=ead680c861ada3deec6b92d9b4877f23

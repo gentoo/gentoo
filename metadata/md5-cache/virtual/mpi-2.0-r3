@@ -5,4 +5,4 @@ IUSE=cxx fortran romio threads
 KEYWORDS=~alpha amd64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux
 RDEPEND=|| ( sys-cluster/openmpi[cxx?,fortran?,romio?,threads?] sys-cluster/mpich[cxx?,fortran?,romio?,threads?] sys-cluster/mpich2[cxx?,fortran?,romio?,threads?] sys-cluster/mvapich2[fortran?,romio?,threads?] sys-cluster/native-mpi )
 SLOT=0
-_md5_=ea48bb820fc87c622e8036adf9906516
+_md5_=0997c2f4e5d39e1ce7a915052f4b6a8e

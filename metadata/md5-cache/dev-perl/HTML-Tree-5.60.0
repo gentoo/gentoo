@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/K/KE/KENTNL/HTML-Tree-5.06.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=8d61e5ec9da18398cdf8f2f4adc9dd13
+_md5_=a55e767dc5b5df5b252bc9ee211819cc

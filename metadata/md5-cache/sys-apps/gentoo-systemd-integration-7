@@ -9,4 +9,4 @@ RDEPEND=>=sys-apps/systemd-207 !sys-fs/eudev !sys-fs/udev
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~floppym/dist/gentoo-systemd-integration-7.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=41b419285926d1c013737a26fc380566
+_md5_=a7e7d7204f3fe4f6a7f36d7224e4ee92

@@ -7,4 +7,4 @@ LICENSE=BSD GPL-2+
 RDEPEND=!<sys-apps/openrc-0.33
 SLOT=0
 SRC_URI=http://http.debian.net/debian/pool/main/i/init-system-helpers/init-system-helpers_1.49.tar.xz
-_md5_=6939a2a2bffcdf3efcb980a706b1cb14
+_md5_=c7e49369e0a6e670fcc2450b640b9128

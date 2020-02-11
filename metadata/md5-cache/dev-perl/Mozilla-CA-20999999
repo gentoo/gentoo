@@ -9,4 +9,4 @@ RDEPEND=app-misc/ca-certificates dev-lang/perl:=
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~dilfridge/distfiles/Mozilla-CA-20999999.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=46f393c79c4291e91cc5d0138fcdfcbc
+_md5_=cd2f6b0583a50bb1b7812f685d2c0894

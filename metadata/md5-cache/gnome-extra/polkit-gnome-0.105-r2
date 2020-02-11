@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/glib-2.30 >=sys-auth/polkit-0.102 x11-libs/gtk+:3
 SLOT=0
 SRC_URI=mirror://gnome/sources/polkit-gnome/0.105/polkit-gnome-0.105.tar.xz
 _eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a
-_md5_=0b02905bd1a36cb165035a0905894bb0
+_md5_=55cfecd08fd1cec414b2f8676c147298

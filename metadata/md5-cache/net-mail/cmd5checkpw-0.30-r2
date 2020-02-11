@@ -9,4 +9,4 @@ RDEPEND=acct-user/cmd5checkpw
 SLOT=0
 SRC_URI=https://www.fehcom.de/qmail/auth/cmd5checkpw-030_tgz.bin -> cmd5checkpw-0.30.tar.gz
 _eclasses_=fixheadtails	6b7b3d896b0b285c12a94f3105c2a06c
-_md5_=41b8778ad4332852d5be0c17fda0e1b4
+_md5_=4e2c9566cd1b8e18a9ac320dc7ebe3e4

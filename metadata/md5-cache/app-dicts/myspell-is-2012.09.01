@@ -8,4 +8,4 @@ LICENSE=CC-BY-SA-3.0
 SLOT=0
 SRC_URI=http://extensions.libreoffice.org/extension-center/hunspell-is-the-icelandic-spelling-dictionary-project/releases/2012.09.01/hunspell-is-2012.09.01.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=5554431f618d67a433f6ce9b68cb003b
+_md5_=0a11293cbb7f29c80c9d5e28d77477cc

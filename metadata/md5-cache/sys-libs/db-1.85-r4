@@ -7,4 +7,4 @@ LICENSE=Sleepycat
 SLOT=1
 SRC_URI=http://download.oracle.com/berkeley-db/db.1.85.tar.gz mirror://gentoo/db-1.85-r3.1.patch.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=781d080625c836ffc1672e48167eeeec
+_md5_=bea33e7e0eb678e5305d76d8fe6aae12

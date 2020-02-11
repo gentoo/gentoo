@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=>=x11-libs/gtk+-2.2.4:2
 SLOT=0
 SRC_URI=mirror://gentoo/xvid4conf-1.12.tar.gz
-_md5_=9fa29d5821363021f12b53b61afb97d4
+_md5_=76078f70a797a575265b033cbfe9e0a0

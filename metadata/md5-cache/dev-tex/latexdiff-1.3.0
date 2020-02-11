@@ -11,4 +11,4 @@ RDEPEND=>=dev-lang/perl-5.8 virtual/latex-base dev-texlive/texlive-plaingeneric 
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/ftilmann/latexdiff/archive/1.3.0.tar.gz -> latexdiff-1.3.0.tar.gz
-_md5_=9042ac7f3c71f872b2ee6da0c80fca7f
+_md5_=46d3704a69c1f297d61350dc769d078f

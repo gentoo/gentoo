@@ -10,4 +10,4 @@ RDEPEND=dev-libs/boost ssl? ( !libressl? ( dev-libs/openssl:0= ) libressl? ( dev
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/asio/asio/asio-1.14.0.tar.bz2
-_md5_=6cf2c83ff9facaeb44d2089141970b5f
+_md5_=abd3ba94c92c499809c06d2a9733532d

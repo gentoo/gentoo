@@ -11,4 +11,4 @@ RDEPEND=>=dev-libs/libburn-1.5.0 >=dev-libs/libisofs-1.5.0 readline? ( sys-libs/
 REQUIRED_USE=frontend-optional? ( || ( launch-frontend launch-frontend-setuid ) )
 SLOT=0
 SRC_URI=http://files.libburnia-project.org/releases/libisoburn-1.5.0.tar.gz
-_md5_=f7b8c40050ee360a01eab8f797fb285b
+_md5_=f737c70725dcfd62e930b3400eb4e845

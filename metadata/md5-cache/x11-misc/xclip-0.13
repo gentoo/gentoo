@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libX11 x11-libs/libXmu
 SLOT=0
 SRC_URI=https://github.com/astrand/xclip/archive/0.13.tar.gz -> xclip-0.13.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=47e1b196e0fac4d015a70b4cf238be3d
+_md5_=e4e21d843da7a8b51d1cc63a88d34cab

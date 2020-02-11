@@ -11,4 +11,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=http://openlab.jp/efont/dist/shinonome/shinonome-0.9.11.tar.bz2
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=643cd180e42c022bed6d8ccc44372e99
+_md5_=8d89fe5932e62dd15251fed79776b4b9

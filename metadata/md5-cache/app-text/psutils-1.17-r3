@@ -8,4 +8,4 @@ LICENSE=psutils
 SLOT=0
 SRC_URI=mirror://debian/pool/main/p/psutils/psutils_1.17.dfsg.orig.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=20864c2983cce4406223ddae1c705631
+_md5_=3fc617b06ac20105a41ddc811e866d14

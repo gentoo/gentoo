@@ -10,4 +10,4 @@ RDEPEND=pstricks? ( dev-texlive/texlive-pstricks ) pgf? ( dev-tex/pgf ) dev-texl
 SLOT=0
 SRC_URI=mirror://gentoo/dot2texi-3.0.zip
 _eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
-_md5_=44736573af0445990525f7e7f1bf40c2
+_md5_=eda62f2ef383ac018d7a7c7f612a3830

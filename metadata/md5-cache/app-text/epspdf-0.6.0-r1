@@ -9,4 +9,4 @@ RDEPEND=!<dev-texlive/texlive-pictures-2011-r1 >=dev-texlive/texlive-basic-2011 
 SLOT=0
 SRC_URI=http://tex.aanhet.net/epspdf/epspdf.0.6.0.tgz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	texlive-common	930a8063ad61a83cd5b9b186a1f75f9c
-_md5_=3755a861e910909d2bcd02d1d3935e48
+_md5_=4c409bcfa2f17318c15762d15f30c94f

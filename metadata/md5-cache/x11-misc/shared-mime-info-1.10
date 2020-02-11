@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://people.freedesktop.org/~hadess/shared-mime-info-1.10.tar.xz
 _eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=94c73486798ee4f1bd88e02a7c18c56b
+_md5_=b1b84aaaddbca76e531abaabc8965785

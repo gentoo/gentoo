@@ -10,5 +10,5 @@ RDEPEND=>=dev-lang/lua-5.1 dev-libs/gobject-introspection dev-libs/glib virtual/
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/pavouk/lgi/archive/0.9.0.tar.gz -> lgi-0.9.0.tar.gz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	virtualx	e49dbce7ac14426e1155497476915307
 _md5_=aff4fe4f4b6a9bb05d3d1c44dc068935

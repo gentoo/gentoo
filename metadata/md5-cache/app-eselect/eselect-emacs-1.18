@@ -7,4 +7,4 @@ LICENSE=GPL-2+
 RDEPEND=>=app-admin/eselect-1.2.6 ~app-eselect/eselect-ctags-1.18
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/emacs/eselect-emacs-1.18.tar.xz
-_md5_=fe578f6555528076b0ecba430f8555f6
+_md5_=1bbc1b0c54629238c320f0ec385163b2

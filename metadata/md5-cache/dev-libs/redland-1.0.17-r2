@@ -11,4 +11,4 @@ RDEPEND=dev-libs/libltdl:0 mysql? ( dev-db/mysql-connector-c:0= ) sqlite? ( =dev
 SLOT=0
 SRC_URI=http://download.librdf.org/source/redland-1.0.17.tar.gz
 _eclasses_=db-use	501a5d0963e0d17f30260023f292ae8e	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=86b580f14044143d238f547b816ad106
+_md5_=8d3cbd4a81f43f2b93222922f69759e5

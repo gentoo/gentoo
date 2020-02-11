@@ -7,4 +7,4 @@ LICENSE=MIT
 RDEPEND=dev-php/fedora-autoloader >=dev-lang/php-7.1:*
 SLOT=0
 SRC_URI=https://github.com/doctrine//instantiator/archive/1.1.0.tar.gz -> doctrine-instantiator-1.1.0.tar.gz
-_md5_=eb3149434014cca6d6c0dc9c3ca82402
+_md5_=bce36edb6094ec84695f4291a342014e

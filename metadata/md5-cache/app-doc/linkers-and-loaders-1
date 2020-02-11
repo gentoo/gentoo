@@ -9,4 +9,4 @@ LICENSE=all-rights-reserved
 RESTRICT=mirror bindist
 SLOT=0
 SRC_URI=https://wh0rd.org/books/linkers-and-loaders-1.tar.lzma
-_md5_=090f1572885146e73b129e92866febc3
+_md5_=8a419f6f4ec50aa5cc449d366602393e

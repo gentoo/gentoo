@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://sourceforge/latex2rtf/latex2rtf-2.3.11a.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=36ff3b6f5437cc28a80c07fedfa2c41d
+_md5_=2a40b25e37341d167f5961d6c47474ed

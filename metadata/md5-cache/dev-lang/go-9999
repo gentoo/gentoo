@@ -8,5 +8,5 @@ PROPERTIES=live
 RDEPEND=!<dev-go/go-tools-0_pre20150902
 RESTRICT=strip
 SLOT=0/9999
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=38e7f16e4d355a4234f6fda529a67968

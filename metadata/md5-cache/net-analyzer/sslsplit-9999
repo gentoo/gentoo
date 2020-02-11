@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=dev-libs/libevent[ssl,threads] dev-libs/openssl:0= net-libs/libnet:1.1 elibc_musl? ( sys-libs/fts-standalone )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	dc34234e8c43343da45853da22dcf14b	git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=e2db621f20b2d7eb980dfe88b7dd56dc

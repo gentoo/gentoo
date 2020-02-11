@@ -8,4 +8,4 @@ LICENSE=LGPL-2.1
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jstein/dist/myspell-mi_NZ-20060316.zip
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=6ce173ee8491c038f53f4724204e4cb8
+_md5_=9df32832fdb1962a173884f96f2abaf1

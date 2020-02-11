@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/mail-lib app-xemacs/xemacs-base app-xemacs/ecrypto app-xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/w3-1.41-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=ac0753f67011b3e201884f54cf33270d
+_md5_=3104a132d56466d2763d440aa1b615d0

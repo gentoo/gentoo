@@ -8,5 +8,5 @@ PROPERTIES=live
 RDEPEND=!<=sys-kernel/raspberrypi-image-4.19.57_p20190709
 RESTRICT=binchecks strip
 SLOT=0
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	mount-boot	e30bb691fbb26137f3d46438542bffe4	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	mount-boot	e30bb691fbb26137f3d46438542bffe4	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=939e8e1432b9d3b9add7b42279335c53

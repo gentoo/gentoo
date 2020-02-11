@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.2.3 >=dev-lang/python-exec-2.4.2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/eselect-python-20171204.tar.bz2
-_md5_=ba1508c30f2014f04a988b07b5fc8a5e
+_md5_=949da9d25cfb98accd985948b42c3768

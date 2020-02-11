@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/glib-2.20 >=x11-libs/gtk+-3.20:3 x11-libs/libX11 x11-libs/lib
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/xfce/xfwm4/4.14/xfwm4-4.14.0.tar.bz2
 _eclasses_=xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=ceee49ddae8a6eb8923e01f4934e34a1
+_md5_=0f72d1e48f8a85c8db4ec754c3d2ea2f

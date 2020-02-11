@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl virtual/perl-Term-ANSIColor >=dev-perl/PortageXS-0.02.04
 SLOT=0
 SRC_URI=mirror://gentoo/perl-info-0.16.tar.gz https://dev.gentoo.org/~tove/files/perl-info-0.16.tar.gz
-_md5_=5d78a6854cde1e0484b9132ca930f8fa
+_md5_=495213e1ff3b08ae78d6101a166e5d82

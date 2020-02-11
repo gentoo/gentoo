@@ -8,4 +8,4 @@ LICENSE=BSD
 SLOT=0
 SRC_URI=https://www.cs.purdue.edu/homes/trinkle/detex/detex-2.8.tar
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ff48fc19f39344ddf3c8517f825a6672
+_md5_=53f4931aca97113b48ffedcf5217b01a

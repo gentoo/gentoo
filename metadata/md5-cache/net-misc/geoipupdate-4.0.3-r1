@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/maxmind/geoipupdate/archive/v4.0.3.tar.gz -> geoipupdate-4.0.3.tar.gz https://files.adjust.com/geoipupdate-vendor-4.0.3.tar
 _eclasses_=golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-vcs-snapshot	12177e83bede6f7fb87eae383864b40b
-_md5_=fe04e5a032493427cc5b260597cda85c
+_md5_=7883f2da6f9d0ae9f5c190cbc814d432

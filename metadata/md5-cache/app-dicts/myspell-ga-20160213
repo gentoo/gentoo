@@ -8,4 +8,4 @@ LICENSE=GPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/aoo-extensions/focloiri-gaeilge-4.8.oxt -> myspell-ga-20160213.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=9d2aa44a2b1b31d097804f4b84e6935d
+_md5_=66c672ebae16ba252949b27177516d5a

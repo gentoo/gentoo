@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=dev-java/ecj-gcj:* dev-lang/perl ~sys-devel/gcc-5.4.0[awt?,gcj] >=dev-java/java-config-2.2.0-r3 >=app-eselect/eselect-java-0.4.0
 SLOT=0
 _eclasses_=java-vm-2	7cfcabfd055e69d3568103a4e0b0fae7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	prefix	c2993e4c430c1ee24f278983d6189501	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=57f1a8d3a9291c24877f5927f38371ef
+_md5_=9523fa2844511511e13c0b1eceedd033

@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RI/RIBASUSHI/namespace-clean-0.27.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=4fa2e1faaee9a2c4efb7d8a4f6e6adf0
+_md5_=13eb9980748df6d171af820b2da65825

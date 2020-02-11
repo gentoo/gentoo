@@ -8,4 +8,4 @@ LICENSE=LGPL-3
 SLOT=0
 SRC_URI=http://www.meso.ee/~jjpp/speller/ispell-et_20030606.tar.gz
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=46d4ecab7e6c849faa97f5bd1ba30037
+_md5_=99c69eaa37e392cb3b3b363a1f7b678d

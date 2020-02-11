@@ -9,4 +9,4 @@ RDEPEND=>=app-editors/emacs-23.1:*
 SLOT=0
 SRC_URI=ftp://ftp.jpl.org/pub/elisp/apel/apel-10.8.tar.gz https://dev.gentoo.org/~gienah/2big4tree/app-emacs/apel/apel-10.8-030_Use-new-style-backquotes.patch.gz
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=729449f657bd9e5cb7e7cdf7c8a9c56c
+_md5_=5afd261197959393109eaf1ad1fc7fe2

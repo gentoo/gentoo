@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/edebug app-editors/xemacs
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/cedet-common-1.03-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=f7b82747dcb8fc419472a4fa2b886a62
+_md5_=b3eedc3054c50e8e4fe0143a243f8f0c

@@ -8,4 +8,4 @@ RDEPEND=app-xemacs/xemacs-base app-xemacs/mail-lib app-xemacs/fsf-compat app-xem
 SLOT=0
 SRC_URI=http://ftp.xemacs.org/pub/xemacs/packages/ilisp-1.34-pkg.tar.gz
 _eclasses_=xemacs-packages	8a2518fc5877625acb8dc6c7c7c0e76c
-_md5_=0673012b0b05844431e33b330abb1f21
+_md5_=1f6bdd03ed07af8767d4f6a990eb4711

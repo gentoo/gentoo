@@ -11,4 +11,4 @@ RDEPEND=>=sys-apps/util-linux-2.20 dmalloc? ( dev-libs/dmalloc[threads] ) ldap? 
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/daemons/autofs/v5/autofs-5.1.5.tar.xz
 _eclasses_=linux-info	953c3b1c472dcadbf62098a9301327f2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=3e650f5f4be3963476fc10c39338937a
+_md5_=ebbfee2140c9afa4fe7a8d046dfa81f6

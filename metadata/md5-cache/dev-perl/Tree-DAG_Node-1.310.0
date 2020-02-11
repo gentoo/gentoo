@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/R/RS/RSAVAGE/Tree-DAG_Node-1.31.tgz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=cc620c5e1a09046c5078c2238cd25572
+_md5_=f737b132c9dd6e48f595cb52f1d478d1

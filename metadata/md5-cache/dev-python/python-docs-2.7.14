@@ -7,4 +7,4 @@ LICENSE=PSF-2
 SLOT=2.7
 SRC_URI=https://www.python.org/ftp/python/doc/2.7.14/python-2.7.14-docs-html.tar.bz2
 _eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446
-_md5_=ee317208b8c4c9f214a25c6759062f8f
+_md5_=5800423edd0ae62fe8f0bc76391cf69e

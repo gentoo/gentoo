@@ -10,4 +10,4 @@ RDEPEND=dev-perl/Authen-SASL dev-perl/Net-DNS ssl? ( dev-perl/IO-Socket-SSL ) vi
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/D/DA/DAPATRICK/XML-Stream-1.24.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=bf4fd356f01bf7da3e7be7cc47f98ea0
+_md5_=f682b535f081e7e4281e8a4311892c4b

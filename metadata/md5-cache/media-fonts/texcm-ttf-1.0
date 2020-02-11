@@ -10,4 +10,4 @@ LICENSE=bakoma
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~mgorny/dist/texcm-ttf-1.0.zip
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=b6955a64f14720588079ae10ba6d3434
+_md5_=b65819bac62bb9ddd08d590b2b1b3857

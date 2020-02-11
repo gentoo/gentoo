@@ -7,4 +7,4 @@ LICENSE=public-domain
 RDEPEND=dev-lang/perl
 SLOT=0
 SRC_URI=http://www.miketaylor.org.uk/tech/deb/deb2targz
-_md5_=7a5b0ad24115f501dadc53cc4fe4d140
+_md5_=accbdf90faf0f994664e2df9967b6670

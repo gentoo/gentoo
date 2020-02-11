@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/glib-2.16:2 net-dns/libidn:= ssl? ( !openssl? ( >=net-libs/gn
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://mcabber.com/files/loudmouth/loudmouth-1.5.3.tar.bz2
-_md5_=a3e061eb94cd8c30db9f6a65540c4f1b
+_md5_=49b025b99e4cbb352f26be2b5540c544

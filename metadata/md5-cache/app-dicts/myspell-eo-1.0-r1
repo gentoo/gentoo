@@ -8,4 +8,4 @@ LICENSE=GPL-2 LGPL-3 MPL-1.1
 SLOT=0
 SRC_URI=mirror://sourceforge/aoo-extensions/3377/1/1.0-dev.oxt -> myspell-eo-1.0.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=83f6cf39a88dbde523fc7bad3383e614
+_md5_=bd6f526af992d7bcbe0c00a661a11f7b

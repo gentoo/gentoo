@@ -9,4 +9,4 @@ LICENSE=MSttfEULA
 SLOT=0
 SRC_URI=mirror://gentoo/EUupdate.EXE mirror://sourceforge/corefonts/andale32.exe mirror://sourceforge/corefonts/arialb32.exe mirror://sourceforge/corefonts/comic32.exe mirror://sourceforge/corefonts/courie32.exe mirror://sourceforge/corefonts/georgi32.exe mirror://sourceforge/corefonts/impact32.exe mirror://sourceforge/corefonts/webdin32.exe mirror://sourceforge/corefonts/wd97vwr32.exe
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	a1bf4756dba418a7238f3be0cb010c54	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	font	af70de9a23b2f34d4fe4dcb222be0346	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=5e26576e6b25d3b9f5be0446b6691caf
+_md5_=7059323fd42661964546bbcde1990211

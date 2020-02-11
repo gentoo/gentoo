@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=app-admin/eselect
 SLOT=0
 SRC_URI=https://github.com/mgorny/eselect-lib-bin-symlink/releases/download/eselect-lib-bin-symlink-0.1.1/eselect-lib-bin-symlink-0.1.1.tar.bz2
-_md5_=42b3ca7d682d7e8a3d8e73fa93770745
+_md5_=8e95aaaaa3070d78657b1dd1c10bc4d1

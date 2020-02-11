@@ -10,4 +10,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/immerrr/lua-mode/archive/rel-20151025.tar.gz -> lua-mode-20151025.tar.gz
 _eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
-_md5_=8e017d50502b95c0c70bb119e8188285
+_md5_=a5bd14c5889a327549b5078b5f059676

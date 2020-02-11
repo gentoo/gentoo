@@ -7,4 +7,4 @@ KEYWORDS=~alpha amd64 hppa ~mips ppc sparc x86
 LICENSE=public-domain
 SLOT=0
 SRC_URI=http://bash.deta.in/abs-guide-final.tar.bz2 pdf? ( http://bash.deta.in/abs-guide.pdf )
-_md5_=c9890f8d4037173e51c2dfbaf0702096
+_md5_=47347cae5fc99a1c75d75fe2a853b791

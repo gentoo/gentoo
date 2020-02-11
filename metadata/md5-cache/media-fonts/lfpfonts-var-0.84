@@ -10,4 +10,4 @@ RESTRICT=strip binchecks
 SLOT=0
 SRC_URI=mirror://sourceforge/xfonts/lfpfonts-var-src-0.84.tar.bz2
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346	font-ebdftopcf	e23db122fd578442f37e3e79267eedd8
-_md5_=4cd512428a985986c7a70e1463ed6b7a
+_md5_=6a4392e47186b221c36df79a8d8ab90f

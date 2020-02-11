@@ -11,4 +11,4 @@ REQUIRED_USE=?? ( consolekit elogind systemd )
 RESTRICT=binchecks
 SLOT=0
 SRC_URI=https://github.com/gentoo/pambase/archive/pambase-20190402.tar.gz
-_md5_=0fd008a80031e45c9e86914669dc8661
+_md5_=be371e133b98b50e60210d2724c53848

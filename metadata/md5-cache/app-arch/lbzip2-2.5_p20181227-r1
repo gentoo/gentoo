@@ -8,4 +8,4 @@ LICENSE=GPL-3
 RDEPEND=symlink? ( !app-arch/pbzip2[symlink] )
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~whissi/dist/lbzip2/lbzip2-2.5_p20181227.tar.gz
-_md5_=ffef4d7dbd80a1639766ca223d670f77
+_md5_=82439531ffccfc5c1d8bbcc94d4d00e2

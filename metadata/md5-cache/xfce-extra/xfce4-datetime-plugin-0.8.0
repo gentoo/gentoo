@@ -8,4 +8,4 @@ LICENSE=GPL-2+
 RDEPEND=>=xfce-base/libxfce4ui-4.12:=[gtk3(+)] >=xfce-base/xfce4-panel-4.12:=
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/panel-plugins/xfce4-datetime-plugin/0.8/xfce4-datetime-plugin-0.8.0.tar.bz2
-_md5_=a150e1343870ee6110894bf209a023ff
+_md5_=0fd2abfbc4ab039cc0289427966ac30e

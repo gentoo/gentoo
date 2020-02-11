@@ -8,5 +8,5 @@ LICENSE=MIT
 PROPERTIES=live
 RDEPEND=x11-libs/libX11 x11-libs/libXft x11-libs/libXinerama x11-libs/libXres
 SLOT=0
-_eclasses_=git-r3	809e27702c573cbba31c08ed00bbad33	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c472c0612137433c79baaf41ba6365f7
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=911dc1d2ae69d5b368f87ba86414a8ee

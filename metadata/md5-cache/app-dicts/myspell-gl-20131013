@@ -8,4 +8,4 @@ LICENSE=GPL-2 LGPL-2.1
 SLOT=0
 SRC_URI=mirror://sourceforge/aoo-extensions/hunspell-gl-13.10.oxt -> myspell-gl-20131013.oxt
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=cc6cb9895a721b72889d2d8f8b92c9c5
+_md5_=bb46126321daacaab2a53f4203432e38

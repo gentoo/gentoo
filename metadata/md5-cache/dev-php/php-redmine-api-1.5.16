@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:*[curl,json,simplexml]
 RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://github.com/kbsali/php-redmine-api/archive/v1.5.16.tar.gz -> php-redmine-api-1.5.16.tar.gz
-_md5_=ecbeb41d733b360d8f0d440a267ff49d
+_md5_=9c79d03091ed28a930ae55d703697ceb

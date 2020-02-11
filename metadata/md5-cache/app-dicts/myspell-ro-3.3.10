@@ -8,4 +8,4 @@ LICENSE=GPL-2 LGPL-2.1 MPL-1.1
 SLOT=0
 SRC_URI=mirror://sourceforge/rospell/ro_RO.3.3.10.zip mirror://sourceforge/rospell/hyph_ro_RO.3.3.10.zip mirror://sourceforge/rospell/th_ro_RO.3.3.zip
 _eclasses_=myspell-r2	d7a80fcc3949917840a5c8f1a967004c
-_md5_=58e9e5adf2db47393df865a20fc619e1
+_md5_=ff7f84e265350d31e63f5112b2a702b0

@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/I/IS/ISHIGAKI/Text-CSV-1.94.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=334934ff11bc86551fb415df10b9a987
+_md5_=00999f560d7c04c6331fbb4887e1a4f1

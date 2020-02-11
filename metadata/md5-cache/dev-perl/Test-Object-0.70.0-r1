@@ -9,4 +9,4 @@ RDEPEND=virtual/perl-File-Spec virtual/perl-Scalar-List-Utils virtual/perl-Test-
 SLOT=0
 SRC_URI=mirror://cpan/authors/id/A/AD/ADAMK/Test-Object-0.07.tar.gz
 _eclasses_=multiprocessing	cac3169468f893670dac3e7cb940e045	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	perl-module	97206c028d9bdc9f248e022ac5c9fc83
-_md5_=3fdf0ba6e6e497f2cac5252b7778ae25
+_md5_=ffa0f299f0ed96bcbeddf4d202a1495c

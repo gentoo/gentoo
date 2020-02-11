@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=>=app-admin/eselect-1.0.2
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~graaff/ruby-team/ruby.eselect-20170723.xz
-_md5_=8b8cb9ab130ee7729e7b5b8b1e7d5053
+_md5_=0db1e561234a6e066b484f27fa8870e0

@@ -7,4 +7,4 @@ LICENSE=clustalw
 SLOT=1
 SRC_URI=ftp://ftp.ebi.ac.uk/pub/software/unix/clustalw/clustalw1.83.UNIX.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=9b185c4d48718080d0ef7b95b7c9533d
+_md5_=c4e2c1312a3fa2d7bd2a47767fe42729
