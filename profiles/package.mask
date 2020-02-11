@@ -611,11 +611,6 @@ dev-python/ordereddict
 # Removal in 30 days.
 media-sound/kaudiocreator
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-12)
-# Unmaintained upstream and redundant. Use Night Color functionality built into
-# Plasma 5.17 instead, without needing x11-misc/redshift. Removal in 30 days.
-kde-misc/plasma-redshift-control
-
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # End of life vala:0.42 series, please depclean.
 # This message shall be kept until 2020-02-11.
