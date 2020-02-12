@@ -146,14 +146,14 @@ src_install() {
 	fperms o+w /etc/MYGUI
 
 	# test media not needed at runtime
-	rm -rf "${ED%/}"/usr/share/MYGUI/Media/UnitTests || die
+	rm -rf "${ED}"/usr/share/MYGUI/Media/UnitTests || die
 	# wrapper not available for linux, remove related media
-	rm -rf "${ED%/}"/usr/share/MYGUI/Media/Wrapper || die
+	rm -rf "${ED}"/usr/share/MYGUI/Media/Wrapper || die
 }
 
 pkg_postinst() {
 	elog
 	elog "ogre.cfg and Ogre.log are created as"
-	elog "${EROOT%/}/etc/MYGUI/mygui-ogre.cfg and /etc/MYGUI/mygui-Ogre.log"
+	elog "${EROOT}/etc/MYGUI/mygui-ogre.cfg and /etc/MYGUI/mygui-Ogre.log"
 	elog
 }
