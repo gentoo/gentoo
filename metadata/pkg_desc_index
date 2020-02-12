@@ -14789,7 +14789,7 @@ net-libs/nfqueue-bindings 0.5 0.6-r1: High-level language bindings for libnetfil
 net-libs/nghttp2 1.39.2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
-net-libs/nodejs 8.12.0 10.18.0 10.19.0 12.14.0 12.15.0 13.8.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
+net-libs/nodejs 8.12.0 10.18.0 10.19.0 12.14.0 12.15.0 12.16.0 13.8.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
 net-libs/ntirpc 1.7.1 1.7.4 3.0: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
@@ -18060,7 +18060,7 @@ www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browse
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
 www-client/uget 2.2.0 2.2.1 9999: Download manager using gtk+ and libcurl
-www-client/vivaldi 2.10.1745.27_p1 2.10.1745.30_p1: A browser for our friends
+www-client/vivaldi 2.10.1745.27_p1 2.10.1745.30_p1 2.11.1811.33_p1: A browser for our friends
 www-client/vivaldi-snapshot 2.11.1811.23_p1 2.11.1811.28_p1: A browser for our friends
 www-client/w3m 0.5.3_p20180125 0.5.3_p20190105: Text based WWW browser, supports tables and frames
 www-client/w3mmee 0.3.2_p24-r10 0.3.2_p24-r12: A variant of w3m with support for multiple character encodings

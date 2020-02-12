@@ -12,4 +12,4 @@ REQUIRED_USE=|| ( alsa pulseaudio )
 SLOT=0
 SRC_URI=https://github.com/telegramdesktop/libtgvoip/archive/c5651ffc728336e56d8567f5c6c179e8a5d4fe55.tar.gz -> libtgvoip-2.4.4_p20200123.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c93e895cc4a619b9b7fdfedf610496f2
+_md5_=f94c289056d0e3f8b6ed6b5d7b0c2039
