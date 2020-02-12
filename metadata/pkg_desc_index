@@ -14834,7 +14834,7 @@ net-mail/altermime 0.3.11: alterMIME is a small program which is used to alter y
 net-mail/amavis-logwatch 1.51.03-r5: A log analyzer for amavisd-new
 net-mail/archivemail 0.9.0-r1: Tool written archiving old email in mailboxes
 net-mail/asmail 2.1-r1: a small mail monitor similar to xbiff
-net-mail/automx 0.10.2-r1 0.10.2-r3: A mail user agent auto configuration service
+net-mail/automx 0.10.2-r3: A mail user agent auto configuration service
 net-mail/autorespond 2.0.4 2.0.5: Autoresponder add on package for qmailadmin
 net-mail/checkpassword 0.90-r4: A uniform password checking interface for root applications
 net-mail/checkpassword-pam 0.99-r1: checkpassword-compatible authentication program w/pam support
