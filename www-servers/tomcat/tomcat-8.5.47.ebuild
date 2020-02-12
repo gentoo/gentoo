@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ ECJ_SLOT="4.5"
 SAPI_SLOT="3.1"
 
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
-	>=dev-java/tomcat-servlet-api-${SLOT}:${SAPI_SLOT}"
+	~dev-java/tomcat-servlet-api-${PV}"
 RDEPEND="${COMMON_DEP}
 	>=virtual/jre-1.8"
 DEPEND="${COMMON_DEP}
