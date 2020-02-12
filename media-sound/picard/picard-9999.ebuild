@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL=1
 DISABLE_AUTOFORMATTING=true
 if [[ ${PV} = *9999* ]]; then
@@ -26,7 +26,9 @@ BDEPEND="
 	nls? ( dev-qt/linguist-tools:5 )
 "
 RDEPEND="
-	dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_MULTI_USEDEP}]
+	')
 	dev-qt/qtgui:5[accessibility]
 	>=media-libs/mutagen-1.38"
 

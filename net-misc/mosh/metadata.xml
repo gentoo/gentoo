@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>monsieurp@gentoo.org</email>
-		<name>Patrice Clement</name>
+		<email>amynka@gentoo.org</email>
+		<name>Amy Liffey</name>
 	</maintainer>
 	<use>
 		<flag name="client">Build network client</flag>

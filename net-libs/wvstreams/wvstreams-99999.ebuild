@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit autotools flag-o-matic git-r3 multiprocessing toolchain-funcs out-of-sou
 
 DESCRIPTION="A network programming library in C++"
 HOMEPAGE="https://github.com/apenwarr/wvstreams"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/apenwarr/wvstreams"
 
 LICENSE="GPL-2"
 SLOT="0/5.0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # David Seifert <soap@gentoo.org> (2018-01-03)
@@ -26,6 +26,7 @@ app-benchmarks/cpuburn
 app-editors/emacs:18
 app-emulation/crossover-bin
 app-emulation/playonlinux
+app-emulation/protontricks
 app-emulation/q4wine
 app-emulation/winetricks
 app-office/ooextras

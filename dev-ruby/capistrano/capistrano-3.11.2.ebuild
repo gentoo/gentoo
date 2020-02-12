@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,15 +16,14 @@ HOMEPAGE="https://capistranorb.com/"
 
 LICENSE="MIT"
 SLOT="3"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE=""
 
 ruby_add_rdepend "
 	>=dev-ruby/airbrussh-1.0.0
 	>=dev-ruby/sshkit-1.9:0
 	>=dev-ruby/rake-10.0.0
-	dev-ruby/i18n:*
-	!!<dev-ruby/capistrano-2.15.5-r2"
+	dev-ruby/i18n:*"
 ruby_add_bdepend "
 	test? (	dev-ruby/mocha )"
 

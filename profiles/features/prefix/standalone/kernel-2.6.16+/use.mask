@@ -1,3 +1,1 @@
 # >=python-3 is masked
-python_single_target_python3_5
-python_targets_python3_5

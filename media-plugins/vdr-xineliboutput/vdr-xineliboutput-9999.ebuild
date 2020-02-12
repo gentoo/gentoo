@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ HOMEPAGE="https://sourceforge.net/projects/xineliboutput/"
 EGIT_REPO_URI="https://git.code.sf.net/p/xineliboutput/git"
 
 SLOT="0"
-LICENSE="GPL-2"
+LICENSE="GPL-2+"
 KEYWORDS=""
 IUSE="bluray caps cec dbus fbcon jpeg libextractor nls opengl +vdr vdpau +X +xine xinerama"
 
@@ -74,7 +74,7 @@ pkg_setup() {
 
 src_prepare() {
 	# Allow user patches to be applied without modifyfing the ebuild
-	eaplly_user
+	eapply_user
 
 	vdr-plugin-2_src_prepare
 

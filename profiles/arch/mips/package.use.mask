@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2018-01-23)
@@ -81,10 +81,6 @@ dev-python/numpydoc test
 # Mikle Kolyada <zlogene@gentoo.org> (2015-04-12)
 # GNOME Shell does not work on mips
 net-misc/wicd gnome-shell
-
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
 
 # Matthias Maier <tamiko@gentoo.org> (2014-12-24)
 # sys-devel/clang is not keyworded

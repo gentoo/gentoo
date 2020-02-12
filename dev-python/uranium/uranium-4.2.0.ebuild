@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils python-single-r1
+inherit cmake python-single-r1
 
 MY_PN="Uranium"
 
@@ -17,20 +17,27 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="debug doc test"
-RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+RESTRICT="!test? ( test )"
 
 BDEPEND="${PYTHON_DEPS}
 	sys-devel/gettext
 	doc? ( app-doc/doxygen )
-	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/pytest[${PYTHON_MULTI_USEDEP}]
+		')
+	)"
 
 RDEPEND="${PYTHON_DEPS}
-	~dev-libs/libarcus-${PV}:=[python,${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP},declarative,network,svg]
-	dev-python/numpy[${PYTHON_USEDEP}]
-	>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
-	sci-libs/Shapely[${PYTHON_USEDEP}]
+	~dev-libs/libarcus-${PV}:=[python,${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},declarative,network,svg]
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		>=sci-libs/scipy-1.1[${PYTHON_MULTI_USEDEP}]
+		sci-libs/Shapely[${PYTHON_MULTI_USEDEP}]
+	')
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtquickcontrols2:5"
 
@@ -44,8 +51,9 @@ S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_configure() {
 	local mycmakeargs=(
-		-DPYTHON_SITE_PACKAGES_DIR="$(python_get_sitedir)" )
-	cmake-utils_src_configure
+		-DPYTHON_SITE_PACKAGES_DIR="$(python_get_sitedir)"
+	)
+	cmake_src_configure
 
 	if ! use debug; then
 		sed -i 's/logging.DEBUG/logging.ERROR/' plugins/ConsoleLogger/ConsoleLogger.py || die
@@ -54,14 +62,14 @@ src_configure() {
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	if use doc; then
-		cmake-utils_src_compile doc
+		cmake_src_compile doc
 		DOCS+=( html )
 	fi
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_optimize "${D}/usr/$(get_libdir)"
 }

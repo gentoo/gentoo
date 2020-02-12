@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Lightweight video thumbnailer that can be used by file managers"
 HOMEPAGE="https://github.com/dirkvdb/ffmpegthumbnailer"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dirkvdb/${PN}/releases/download/${PV}/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ppc ppc64 sparc x86"
 IUSE="gnome gtk jpeg libav png test"
 RESTRICT="!test? ( test )"
 
@@ -37,7 +37,7 @@ PATCHES=( "${FILESDIR}/${P}-pkgconfig-libdir.patch" )
 src_prepare() {
 	rm -rf out* || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -48,5 +48,5 @@ src_configure() {
 		-DHAVE_JPEG=$(usex jpeg)
 		-DHAVE_PNG=$(usex png)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

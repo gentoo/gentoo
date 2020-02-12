@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,7 +12,7 @@ DESCRIPTION="TeXLive MetaPost and Metafont packages"
 
 LICENSE=" CC-BY-SA-4.0 GPL-1 GPL-2 GPL-3+ LGPL-2 LPPL-1.3 MIT public-domain TeX-other-free "
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE=""
 DEPEND=">=dev-texlive/texlive-basic-2019
 "
@@ -24,8 +24,8 @@ RDEPEND="${DEPEND} "
 # created and cause collisions.
 
 pkg_setup() {
-	if [ -f "${ROOT%/}${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem" ]; then
-		einfo "Removing ${ROOT%/}${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem"
-		rm -f "${ROOT%/}${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem"
+	if [ -f "${ROOT}${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem" ]; then
+		einfo "Removing ${ROOT}${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem"
+		rm -f "${ROOT}${EPREFIX}/var/lib/texmf/web2c/metapost/mplib-luatex.mem"
 	fi
 }

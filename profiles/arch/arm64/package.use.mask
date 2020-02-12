@@ -1,5 +1,25 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-11)
+# dev-util/kdevelop and dev-util/kdevelop-pg-qt not keyworded, bug #709294
+kde-apps/umbrello php
+
+# Matt Turner <mattst88@gentoo.org> (2020-02-02)
+# dev-libs/mongo-c-driver is not keyworded
+net-dialup/freeradius mongodb
+
+# Benda Xu <heroxbd@gentoo.org> (2020-01-26)
+# Unkeyworded dep.
+dev-python/matplotlib wxwidgets
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-11)
+# Unkeyworded dep.
+kde-apps/cantor julia
+
+# Rick Farina <zerochaos@gentoo.com> (2020-01-03)
+# ubertooth needs net-libs/libbtbb and net-wireless/ubertooth which aren't keyworded
+net-wireless/kismet ubertooth
 
 # Aaron Bauman <bman@gentoo.org> (2019-12-27)
 # ffmpeg does support 64 bit neon
@@ -131,11 +151,6 @@ dev-python/notebook doc
 # Mart Raudsepp <leio@gentoo.org> (2018-05-30)
 # Require old gnome2 libraries, not keywording legacy on purpose
 sys-devel/distcc gnome
-
-# Mart Raudsepp <leio@gentoo.org> (2018-05-13)
-# Not bothering with otherwise p.masked old gcc for the
-# extra dev-libs/cloog dependency with USE=graphite
-<sys-devel/gcc-5 graphite
 
 # Mart Raudsepp <leio@gentoo.org> (2018-05-06)
 # New enough dev-ruby/webmock not keyworded yet
@@ -286,10 +301,6 @@ app-crypt/qca botan
 app-emulation/libvirt openvz
 
 # Alexis Ballier <aballier@gentoo.org> (2017-07-10)
-# sys-firmware/ipxe does not build, mask x86 targets needing it
-app-emulation/qemu qemu_softmmu_targets_i386 qemu_softmmu_targets_x86_64
-
-# Alexis Ballier <aballier@gentoo.org> (2017-07-10)
 # media-gfx/nvidia-texture-tools does not support arm64
 media-libs/devil nvtt
 
@@ -373,10 +384,6 @@ www-client/chromium tcmalloc
 # Mart Raudsepp <leio@gentoo.org> (2017-02-04)
 # Needs deps tested.
 net-misc/curl  metalink
-
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
 
 # Roy Bamford <neddyseagoon@gentoo.org> (2017-01-26)
 # gcj-6.3 won't bootstrap icedtea 7

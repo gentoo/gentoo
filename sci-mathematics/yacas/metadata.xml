@@ -14,7 +14,6 @@
   algorithms.
   </longdescription>
   <use>
-    <flag name="gui">Build graphical interface for the native yacas engine. Requires Qt5</flag>
     <flag name="jupyter">Add support for jupyter notebook</flag>
   </use>
   <upstream>

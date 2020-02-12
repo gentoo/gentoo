@@ -1,18 +1,19 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=(python{2_7,3_{5,6,7,8}})
+PYTHON_COMPAT=(python3_{6,7,8})
 inherit bash-completion-r1 distutils-r1 git-r3 readme.gentoo-r1
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://github.com/ytdl-org/youtube-dl/"
-EGIT_REPO_URI="${HOMEPAGE}"
+EGIT_REPO_URI="https://github.com/ytdl-org/youtube-dl/"
 LICENSE="public-domain"
 
 KEYWORDS=""
 SLOT="0"
 IUSE="test"
+RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	|| (

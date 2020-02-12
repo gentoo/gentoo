@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils virtualx
+inherit cmake virtualx
 
 DESCRIPTION="A Qt implementation of XDG standards"
 HOMEPAGE="https://lxqt.org/"
@@ -43,10 +43,10 @@ src_configure() {
 	local mycmakeargs=(
 		-DBUILD_TESTS=$(usex test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
 	# Tests don't work with C
-	LC_ALL=en_US.utf8 virtx cmake-utils_src_test
+	LC_ALL=en_US.utf8 virtx cmake_src_test
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 #Add USE flags that don't work on Darwin/OpenDarwin/OS X here
@@ -25,7 +25,6 @@ gpm
 hardened
 
 oss
-sybase-ct
 rtc
 v4l
 

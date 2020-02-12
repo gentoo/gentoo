@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="CUE Sheet Parser Library"
 HOMEPAGE="https://github.com/lipnitsk/libcue"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -97,10 +97,10 @@ src_configure() {
 	export libsqlite3_cv_is_recent=yes # Our DEPEND forces this.
 	export ac_cv_header_keyutils_h=$(usex nfsidmap)
 	local myeconfargs=(
-		--with-statedir="${EPREFIX%/}"/var/lib/nfs
+		--with-statedir="${EPREFIX}"/var/lib/nfs
 		--enable-tirpc
-		--with-tirpcinclude="${EPREFIX%/}"/usr/include/tirpc/
-		--with-pluginpath="${EPREFIX%/}"/usr/$(get_libdir)/libnfsidmap
+		--with-tirpcinclude="${EPREFIX}"/usr/include/tirpc/
+		--with-pluginpath="${EPREFIX}"/usr/$(get_libdir)/libnfsidmap
 		--with-rpcgen
 		--with-systemd="$(systemd_get_systemunitdir)"
 		--without-gssglue

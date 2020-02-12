@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,14 +19,15 @@ SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${GIT_V}.tar.xz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
-IUSE="doc +highlight +lua +jit"
+IUSE="doc +highlight libressl +lua +jit"
 
 RDEPEND="
 	dev-vcs/git
 	sys-libs/zlib
-	dev-libs/openssl:0
 	virtual/httpd-cgi
 	highlight? ( || ( dev-python/pygments app-text/highlight ) )
+	!libressl? ( dev-libs/openssl:0= )
+	libressl? ( dev-libs/libressl:0= )
 	lua? ( jit? ( dev-lang/luajit ) !jit? ( dev-lang/lua:0 ) )
 "
 # ebuilds without WEBAPP_MANUAL_SLOT="yes" are broken

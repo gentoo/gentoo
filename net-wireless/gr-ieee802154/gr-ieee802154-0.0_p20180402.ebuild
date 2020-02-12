@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,8 +23,10 @@ fi
 LICENSE="GPL-3"
 SLOT="0/${PV}"
 
-RDEPEND=">=net-wireless/gnuradio-3.7_rc:0=[${PYTHON_USEDEP}]
-	dev-libs/boost:=[${PYTHON_USEDEP}]
+RDEPEND=">=net-wireless/gnuradio-3.7_rc:0=[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-libs/boost:=[${PYTHON_MULTI_USEDEP}]
+	')
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}
 	dev-lang/swig:0"

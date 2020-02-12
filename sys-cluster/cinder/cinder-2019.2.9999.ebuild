@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
-inherit distutils-r1 eutils linux-info user
+PYTHON_COMPAT=( python3_{6,7} )
+inherit distutils-r1 eutils linux-info
 
 DESCRIPTION="Cinder is the OpenStack Block storage service, a spin out of nova-volumes"
 HOMEPAGE="https://launchpad.net/cinder"
@@ -133,7 +133,9 @@ RDEPEND="
 	lvm? ( sys-fs/lvm2 )
 	memcached? ( net-misc/memcached )
 	app-emulation/qemu
-	sys-fs/sysfsutils"
+	sys-fs/sysfsutils
+	acct-user/cinder
+	acct-group/cinder"
 # qemu is needed for image conversion
 
 #PATCHES=(
@@ -156,11 +158,6 @@ pkg_pretend() {
 			linux_chkconfig_present ${module} || ewarn "${module} needs to be enabled"
 		done
 	fi
-}
-
-pkg_setup() {
-	enewgroup cinder
-	enewuser cinder -1 -1 /var/lib/cinder cinder
 }
 
 python_prepare_all() {

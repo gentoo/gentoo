@@ -1,0 +1,27 @@
+From 36a3f9bd0cc7029e5150b1931efbd62da975e8b9 Mon Sep 17 00:00:00 2001
+From: StefanBruens <stefan.bruens@rwth-aachen.de>
+Date: Mon, 21 Oct 2019 02:07:19 +0200
+Subject: [PATCH] Catch BadSignatureError raised by ecdsa 0.13.3 on
+ verification errors (#448)
+
+The new ecdsa no longer uses AssertionError when the signature is too long.
+This happens in the test suite, where "123" is appended to the signature.
+
+Fixes #447
+---
+ jwt/contrib/algorithms/py_ecdsa.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/jwt/contrib/algorithms/py_ecdsa.py b/jwt/contrib/algorithms/py_ecdsa.py
+index bf0dea5..f1170a6 100644
+--- a/jwt/contrib/algorithms/py_ecdsa.py
++++ b/jwt/contrib/algorithms/py_ecdsa.py
+@@ -56,5 +56,7 @@ def verify(self, msg, key, sig):
+         try:
+             return key.verify(sig, msg, hashfunc=self.hash_alg,
+                               sigdecode=ecdsa.util.sigdecode_string)
+-        except AssertionError:
++        # ecdsa <= 0.13.2 raises AssertionError on too long signatures,
++        # ecdsa >= 0.13.3 raises BadSignatureError for verification errors.
++        except (AssertionError, ecdsa.BadSignatureError):
+             return False

@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
@@ -144,7 +144,7 @@ python_test() {
 python_install() {
 	distutils-r1_python_install
 
-	cd "${D%/}$(python_get_sitedir)" || die
+	cd "${D}$(python_get_sitedir)" || die
 
 	# own the dropin.cache so we don't leave orphans
 	touch twisted/plugins/dropin.cache || die
@@ -179,7 +179,7 @@ pkg_postinst() {
 }
 
 python_postrm() {
-	rm -f "${ROOT%/}$(python_get_sitedir)/twisted/plugins/dropin.cache" || die
+	rm -f "${ROOT}$(python_get_sitedir)/twisted/plugins/dropin.cache" || die
 }
 
 pkg_postrm(){

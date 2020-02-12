@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ DIST_EXAMPLES=( "tools/*" )
 inherit perl-module
 
 DESCRIPTION="Parse nmap scan data with perl"
-HOMEPAGE="https://nmapparser.wordpress.com/ ${HOMEPAGE}"
+HOMEPAGE="https://nmapparser.wordpress.com/ https://metacpan.org/release/Nmap-Parser"
 
 LICENSE="MIT"
 SLOT="0"

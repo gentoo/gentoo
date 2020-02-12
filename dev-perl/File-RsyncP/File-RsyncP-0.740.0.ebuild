@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ MODULE_VERSION=0.74
 inherit perl-module
 
 DESCRIPTION="An rsync perl module"
-HOMEPAGE="http://perlrsync.sourceforge.net/ ${HOMEPAGE}"
+HOMEPAGE="http://perlrsync.sourceforge.net/ https://metacpan.org/release/File-RsyncP"
 
 LICENSE="GPL-3"
 SLOT="0"

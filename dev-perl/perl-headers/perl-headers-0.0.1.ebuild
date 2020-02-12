@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit perl-functions flag-o-matic readme.gentoo-r1
 MY_GITV="${PV}"
 
 DESCRIPTION="Generated .ph equivalents of system headers"
-HOMEPAGE="https://github.com/gentoo-perl/${PN}"
+HOMEPAGE="https://github.com/gentoo-perl/perl-headers"
 SRC_URI="https://github.com/gentoo-perl/${PN}/archive/${MY_GITV}.tar.gz -> ${PN}-${MY_GITV}.tar.gz"
 
 LICENSE="|| ( Artistic GPL-1+ )"

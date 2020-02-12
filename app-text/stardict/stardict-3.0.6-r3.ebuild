@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ COMMON_DEPEND="
 	x11-libs/libX11
 	x11-libs/pango
 	gucharmap? ( gnome-extra/gucharmap:0= )
-	spell? ( >=app-text/enchant-1.2 )
+	spell? ( >=app-text/enchant-1.2:0 )
 	tools? (
 		dev-db/mysql-connector-c
 		dev-libs/libpcre:=

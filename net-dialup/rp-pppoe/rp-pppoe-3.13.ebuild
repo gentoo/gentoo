@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -84,7 +84,7 @@ src_install () {
 	emake DESTDIR="${D}" install #docdir=/usr/share/doc/${PF} install
 
 	#Don't use compiled rp-pppoe plugin - see pkg_preinst below
-	local pppoe_plugin="${ED%/}/etc/ppp/plugins/rp-pppoe.so"
+	local pppoe_plugin="${ED}/etc/ppp/plugins/rp-pppoe.so"
 	if [ -f "${pppoe_plugin}" ] ; then
 		rm "${pppoe_plugin}" || die
 	fi
@@ -105,7 +105,7 @@ src_install () {
 
 pkg_preinst() {
 	# Use the rp-pppoe plugin that comes with net-dialup/pppd
-	if [ -n "${PPPD_VER}" ] && [ -f "${EROOT%/}/usr/lib/pppd/${PPPD_VER}/rp-pppoe.so" ] ; then
+	if [ -n "${PPPD_VER}" ] && [ -f "${EROOT}/usr/lib/pppd/${PPPD_VER}/rp-pppoe.so" ] ; then
 		dosym ../../../usr/lib/pppd/${PPPD_VER}/rp-pppoe.so /etc/ppp/plugins/rp-pppoe.so
 	fi
 }

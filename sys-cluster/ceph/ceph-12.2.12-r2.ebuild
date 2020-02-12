@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{5,6}} )
+PYTHON_COMPAT=( python3_6 )
 DISTUTILS_OPTIONAL=1
 
 inherit check-reqs cmake-utils distutils-r1 flag-o-matic multiprocessing \
-	python-r1 udev user readme.gentoo-r1 systemd
+	python-r1 udev readme.gentoo-r1 systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -14,7 +14,8 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="https://download.ceph.com/tarballs/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	# currently broken (bug #708294)
+	#KEYWORDS="~amd64 ~arm64 ~x86"
 fi
 
 DESCRIPTION="Ceph distributed filesystem"
@@ -33,10 +34,12 @@ IUSE+=" $(printf "cpu_flags_x86_%s\n" ${CPU_FLAGS_X86[@]})"
 #>=dev-libs/jerasure-2.0.0-r1
 #>=dev-libs/gf-complete-2.0.0
 COMMON_DEPEND="
+	acct-group/ceph
+	acct-user/ceph
 	virtual/libudev:=
 	app-arch/bzip2:=[static-libs?]
 	app-arch/lz4:=[static-libs?]
-	app-arch/snappy:=[static-libs?]
+	app-arch/snappy:=[static-libs(-)?]
 	app-arch/zstd:=[static-libs?]
 	app-misc/jq:=[static-libs?]
 	<dev-libs/crypto++-7.0:=[static-libs?]

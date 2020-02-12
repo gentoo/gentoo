@@ -1,0 +1,174 @@
+From 1f1c947a983c49677544ab08dea3ea04869a8caf Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Sun, 26 Jan 2020 22:29:16 -0500
+Subject: [PATCH 1/1] configure.ac: check for "lua" with pkg-config in addition
+ to "lua5.1".
+
+The upstream Lua pkg-config file is named lua.pc, so unless some
+distribution renames it, OpenDKIM should be looking for "lua"
+and not "lua5.1" in its PKG_CHECK_MODULES call. In any case, we
+should definitely be checking for "lua", so this commit appends it
+to the list of modules we look for. The "lua5.1" module was left
+alone, because I don't know enough of the history to be sure that
+removing it is the right thing to do.
+
+When the call to PKG_CHECK_MODULES fails, OpenDKIM falls back to
+a manual search that looks in /usr/lib, and this can detect 32-bit
+libraries on a 64-bit system. Therefore it is preferable that the
+PKG_CHECK_MODULES call succeed.
+
+In the process of adding this fallback, I realized that some
+additional actions need to be performed in the success branch of
+the existing (and new) PKG_CHECK_MODULES call. The following
+three lines were added,
+
+  AC_SEARCH_LIBS([dlopen], [dl])
+  AC_SUBST([LUA_MANNOTICE], "")
+  AC_DEFINE([USE_LUA], 1, [support for Lua scripting])
+
+to tell various parts of OpenDKIM that we do indeed have Lua support.
+Afterwards, it became clear that those three lines could be factored
+out of *every* lua check, so that has been done as well.
+
+Closes: https://github.com/trusteddomainproject/OpenDKIM/issues/62
+Gentoo-bug: https://bugs.gentoo.org/704556
+---
+ configure.ac | 45 +++++++++++++++++----------------------------
+ 1 file changed, 17 insertions(+), 28 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a478bb83..1d0db41a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1495,12 +1495,20 @@ lua_found="no"
+ 
+ if test \(  x"$luapath" = x"auto" -o x"$luapath" = x"yes" \) -a x"$PKG_CONFIG" != x""
+ then
+-        PKG_CHECK_MODULES([LIBLUA], [lua5.1],
+-	                  [
+-				lua_found="yes"
+-				LIBLUA_INCDIRS="$LIBLUA_CFLAGS"
+-	                  ],
+-			  [AC_MSG_WARN([pkg-config for Lua not found, trying manual search...])])
++  PKG_CHECK_MODULES([LIBLUA], [lua5.1], [
++      LIBLUA_INCDIRS="$LIBLUA_CFLAGS"
++      lua_found="yes"
++    ],
++    [
++      AC_MSG_WARN([pkg-config for lua5.1 not found, trying lua...])
++      PKG_CHECK_MODULES([LIBLUA], [lua], [
++          LIBLUA_INCDIRS="$LIBLUA_CFLAGS"
++          lua_found="yes"
++        ],
++	[AC_MSG_WARN([pkg-config for lua not found, trying manual search...])]
++      )
++    ]
++  )
+ fi
+ 
+ if test \( x"$luapath" = x"yes" -o x"$luapath" = x"auto" \) -a x"$lua_found" = x"no"
+@@ -1515,10 +1523,6 @@ then
+ 			LIBLUA_INCDIRS="-I$d/include/lua51"
+ 			LIBLUA_LIBDIRS="-L$d/lib/lua51"
+ 			LIBLUA_LIBS="-llua -lm"
+-			AC_SEARCH_LIBS([dlopen], [dl])
+-			AC_DEFINE([USE_LUA], 1,
+-			          [support for Lua scripting])
+-			AC_SUBST([LUA_MANNOTICE], "")
+ 			lua_found="yes"
+ 			break
+ 		elif test -f $d/include/lua52/lua.h
+@@ -1527,10 +1531,6 @@ then
+ 			LIBLUA_INCDIRS="-I$d/include/lua52"
+ 			LIBLUA_LIBDIRS="-L$d/lib/lua52"
+ 			LIBLUA_LIBS="-llua -lm"
+-			AC_SEARCH_LIBS([dlopen], [dl])
+-			AC_DEFINE([USE_LUA], 1,
+-			          [support for Lua scripting])
+-			AC_SUBST([LUA_MANNOTICE], "")
+ 			lua_found="yes"
+ 			break
+ 		elif test -f $d/include/lua5.1/lua.h
+@@ -1539,10 +1539,6 @@ then
+ 			LIBLUA_INCDIRS="-I$d/include/lua5.1"
+ 			LIBLUA_LIBDIRS="-L$d/lib"
+ 			LIBLUA_LIBS="-llua5.1 -lm"
+-			AC_SEARCH_LIBS([dlopen], [dl])
+-			AC_DEFINE([USE_LUA], 1,
+-			          [support for Lua scripting])
+-			AC_SUBST([LUA_MANNOTICE], "")
+ 			lua_found="yes"
+ 			break
+ 		elif test -f $d/include/lua5.2/lua.h
+@@ -1551,10 +1547,6 @@ then
+ 			LIBLUA_INCDIRS="-I$d/include/lua5.2"
+ 			LIBLUA_LIBDIRS="-L$d/lib"
+ 			LIBLUA_LIBS="-llua5.2 -lm"
+-			AC_SEARCH_LIBS([dlopen], [dl])
+-			AC_DEFINE([USE_LUA], 1,
+-			          [support for Lua scripting])
+-			AC_SUBST([LUA_MANNOTICE], "")
+ 			lua_found="yes"
+ 			break
+ 		elif test -f $d/include/lua.h
+@@ -1563,7 +1555,6 @@ then
+ 			LIBLUA_INCDIRS="-I$d/include"
+ 			LIBLUA_LIBDIRS="-L$d/lib"
+ 			LIBLUA_LIBS="-llua -lm"
+-			AC_SEARCH_LIBS([dlopen], [dl])
+ 			lua_found="yes"
+ 			break
+ 		fi
+@@ -1588,7 +1579,6 @@ then
+ 		LIBLUA_INCDIRS="-I$luapath/include/lua51"
+ 		LIBLUA_LIBDIRS="-L$luapath/lib/lua51"
+ 		LIBLUA_LIBS="-llua -lm"
+-		AC_SEARCH_LIBS([dlopen], [dl])
+ 		lua_found="yes"
+ 	elif test -f $luapath/include/lua52/lua.h
+ 	then
+@@ -1596,7 +1586,6 @@ then
+ 		LIBLUA_INCDIRS="-I$luapath/include/lua52"
+ 		LIBLUA_LIBDIRS="-L$luapath/lib/lua52"
+ 		LIBLUA_LIBS="-llua -lm"
+-		AC_SEARCH_LIBS([dlopen], [dl])
+ 		lua_found="yes"
+ 	elif test -f $luapath/include/lua5.1/lua.h
+ 	then
+@@ -1604,7 +1593,6 @@ then
+ 		LIBLUA_INCDIRS="-I$luapath/include/lua5.1"
+ 		LIBLUA_LIBDIRS="-L$luapath/lib"
+ 		LIBLUA_LIBS="-llua5.1 -lm"
+-		AC_SEARCH_LIBS([dlopen], [dl])
+ 		lua_found="yes"
+ 	elif test -f $luapath/include/lua5.2/lua.h
+ 	then
+@@ -1612,7 +1600,6 @@ then
+ 		LIBLUA_INCDIRS="-I$luapath/include/lua5.2"
+ 		LIBLUA_LIBDIRS="-L$luapath/lib"
+ 		LIBLUA_LIBS="-llua5.2 -lm"
+-		AC_SEARCH_LIBS([dlopen], [dl])
+ 		lua_found="yes"
+ 	elif test -f $luapath/include/lua.h
+ 	then
+@@ -1620,7 +1607,6 @@ then
+ 		LIBLUA_INCDIRS="-I$luapath/include"
+ 		LIBLUA_LIBDIRS="-L$luapath/lib"
+ 		LIBLUA_LIBS="-llua -lm"
+-		AC_SEARCH_LIBS([dlopen], [dl])
+ 		lua_found="yes"
+ 	else
+ 		AC_MSG_ERROR(not found at $luapath)
+@@ -1629,6 +1615,9 @@ fi
+ 
+ if test x"$lua_found" = x"yes"
+ then
++	AC_SUBST([LUA_MANNOTICE], "")
++	AC_DEFINE([USE_LUA], 1, [support for Lua scripting])
++	AC_SEARCH_LIBS([dlopen], [dl])
+ 	saved_CPPFLAGS="$CPPFLAGS"
+ 	CPPFLAGS="$outer_CPPFLAGS $LIBLUA_INCDIRS"
+ 	AC_MSG_CHECKING([Lua version])
+-- 
+2.24.1
+

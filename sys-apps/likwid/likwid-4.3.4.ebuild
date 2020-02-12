@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 FORTRAN_NEEDED=fortran
-#PYTHON_COMPAT=( python3_{5,6,7} )
+#PYTHON_COMPAT=( python3_{6,7} )
 
 # 4.3.4 will need python-single-r1
 inherit fcaps fortran-2 linux-info toolchain-funcs

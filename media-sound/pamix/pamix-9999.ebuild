@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 if [[ "${PV}" == 9999 ]] ; then
 	inherit git-r3
@@ -34,5 +34,5 @@ src_configure() {
 	local mycmakeargs=(
 		-DWITH_UNICODE="$(usex unicode)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }

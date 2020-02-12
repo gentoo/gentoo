@@ -5,3 +5,4 @@ dev-lang/nim
 # There is no prebuilt rustc for armv5 by upstream
 dev-lang/rust-bin
 dev-lang/rust
+virtual/rust

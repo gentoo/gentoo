@@ -4,7 +4,4 @@
 	<maintainer type="project">
 		<email>ada@gentoo.org</email>
 	</maintainer>
-	<longdescription lang="en">
-		Libadalang-based tools: gnatpp, gnatmetric and gnatstub
-	</longdescription>
 </pkgmetadata>

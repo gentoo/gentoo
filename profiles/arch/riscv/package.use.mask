@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
@@ -31,7 +31,6 @@ app-crypt/mit-krb5 doc test xinetd
 app-crypt/pinentry fltk gnome-keyring
 app-doc/doxygen latex dot
 app-editors/emacs alsa json lcms mailutils
-app-editors/emacs-vcs alsa json lcms mailutils
 app-misc/pax-utils python
 app-text/asciidoc graphviz test
 app-text/po4a test
@@ -63,11 +62,12 @@ media-libs/tiff jbig jpeg test webp zstd
 net-fs/nfs-utils nfsv41
 net-libs/gnutls doc test-full
 net-libs/ldns doc python
+net-libs/libpcap rdma
 net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss http2 rtmp ssh
 net-misc/ntp openntpd snmp vim-syntax zeroconf
 net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
-sys-apps/portage epydoc
+sys-apps/portage apidoc epydoc
 sys-apps/rng-tools nistbeacon pkcs11
 sys-auth/pambase pam_krb5 pam_ssh passwdqc mktemp
 sys-devel/automake test

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -43,7 +43,7 @@ src_configure() {
 			--testuser=test \
 			--testpassword=test"
 	fi
-	myconf="${myconf} --$(usex ssl ssl nossl) --mysql_config=${EPREFIX%/}/usr/bin/${impl}_config"
+	myconf="${myconf} --$(usex ssl ssl nossl) --mysql_config=${EPREFIX}/usr/bin/${impl}_config"
 	perl-module_src_configure
 }
 

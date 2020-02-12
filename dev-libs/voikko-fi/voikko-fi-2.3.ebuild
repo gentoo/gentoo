@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5..7} )
+PYTHON_COMPAT=( python3_{6..7} )
 
 inherit python-r1
 
@@ -18,10 +18,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
 	dev-libs/foma
-	$(python_gen_any_dep '
-		>=dev-libs/libvoikko-4.0[${PYTHON_USEDEP}]
-	')"
+	$(python_gen_any_dep '>=dev-libs/libvoikko-4.0[${PYTHON_USEDEP}]')"
 RDEPEND="${DEPEND}"
+
+python_check_deps() {
+	has_version ">=dev-libs/libvoikko-4.0[${PYTHON_USEDEP}]"
+}
 
 src_compile() {
 	emake vvfst

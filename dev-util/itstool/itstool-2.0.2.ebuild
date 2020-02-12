@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,13 +15,15 @@ SRC_URI="http://files.itstool.org/itstool/${P}.tar.bz2"
 # files in /usr/share/itstool/its are HPND/as-is || GPL-3
 LICENSE="GPL-3+ || ( HPND GPL-3+ )"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86 ~x86-linux"
 IUSE=""
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-libs/libxml2[python,${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
+	')"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {

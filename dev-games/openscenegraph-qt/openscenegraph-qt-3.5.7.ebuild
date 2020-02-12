@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_PN="osgQt"
 MY_P=${MY_PN}-${PV}
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Qt support for OpenSceneGraph"
 HOMEPAGE="http://www.openscenegraph.org/"
@@ -41,8 +41,8 @@ src_configure() {
 		-DDYNAMIC_OPENSCENEGRAPH=ON
 		-DDESIRED_QT_VERSION=5
 		-DBUILD_OSG_EXAMPLES=$(usex examples)
-		$(cmake-utils_use_find_package webkit Qt5WebKitWidgets)
+		$(cmake_use_find_package webkit Qt5WebKitWidgets)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

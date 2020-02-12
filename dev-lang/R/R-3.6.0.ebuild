@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,7 +16,7 @@ SRC_URI="
 
 LICENSE="|| ( GPL-2 GPL-3 ) LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~ia64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 IUSE="cairo doc icu java jpeg lapack minimal nls openmp perl png prefix profile readline static-libs tiff tk X"
 REQUIRED_USE="png? ( || ( cairo X ) ) jpeg? ( || ( cairo X ) ) tiff? ( || ( cairo X ) )"
 
@@ -28,7 +28,7 @@ CDEPEND="
 	net-libs/libtirpc
 	net-misc/curl
 	virtual/blas:0
-	|| ( >=sys-apps/coreutils-8.15 sys-freebsd/freebsd-bin app-misc/realpath )
+	|| ( >=sys-apps/coreutils-8.15 app-misc/realpath )
 	cairo? ( x11-libs/cairo:0=[X=] x11-libs/pango:0= )
 	icu? ( dev-libs/icu:= )
 	jpeg? ( virtual/jpeg:0 )
@@ -88,7 +88,7 @@ src_prepare() {
 		-i src/library/tools/R/Rd.R || die
 
 	# fix Rscript path when installed (gentoo bug #221061)
-	sed -e "s:-DR_HOME='\"\$(rhome)\"':-DR_HOME='\"${EROOT%/}/usr/$(get_libdir)/${PN}\"':" \
+	sed -e "s:-DR_HOME='\"\$(rhome)\"':-DR_HOME='\"${EROOT}/usr/$(get_libdir)/${PN}\"':" \
 		-i src/unix/Makefile.in || die "sed unix Makefile failed"
 
 	# fix HTML links to manual (gentoo bug #273957)
@@ -116,10 +116,10 @@ src_prepare() {
 				-e "/SHLIB_EXT/s/\.so/.dylib/" \
 				-i configure.ac || die
 			# sort of "undo" 2.14.1-rmath-shared.patch
-			sed -e "s:-Wl,-soname=libRmath.so:-install_name ${EROOT%/}/usr/$(get_libdir)/libRmath.dylib:" \
+			sed -e "s:-Wl,-soname=libRmath.so:-install_name ${EROOT}/usr/$(get_libdir)/libRmath.dylib:" \
 				-i src/nmath/standalone/Makefile.in || die
 		else
-			append-ldflags -Wl,-rpath="${EROOT%/}/usr/$(get_libdir)/R/lib"
+			append-ldflags -Wl,-rpath="${EROOT}/usr/$(get_libdir)/R/lib"
 		fi
 	fi
 	AT_M4DIR=m4
@@ -175,8 +175,8 @@ src_install() {
 	fi
 
 	cat > 99R <<-EOF
-		LDPATH=${EROOT%/}/usr/$(get_libdir)/${PN}/lib
-		R_HOME=${EROOT%/}/usr/$(get_libdir)/${PN}
+		LDPATH=${EROOT}/usr/$(get_libdir)/${PN}/lib
+		R_HOME=${EROOT}/usr/$(get_libdir)/${PN}
 	EOF
 	doenvd 99R
 	newbashcomp "${DISTDIR}"/${PN}-${BCPV}.bash_completion ${PN}

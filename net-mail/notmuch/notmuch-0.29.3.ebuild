@@ -1,24 +1,24 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit bash-completion-r1 elisp-common eutils flag-o-matic pax-utils \
 	distutils-r1 toolchain-funcs
 
 DESCRIPTION="Thread-based e-mail indexer, supporting quick search and tagging"
 HOMEPAGE="https://notmuchmail.org/"
-SRC_URI="${HOMEPAGE%/}/releases/${P}.tar.xz
-	test? ( ${HOMEPAGE%/}/releases/test-databases/database-v1.tar.xz )"
+SRC_URI="https://notmuchmail.org/releases/${P}.tar.xz
+	test? ( https://notmuchmail.org/releases/test-databases/database-v1.tar.xz )"
 
 LICENSE="GPL-3"
 # Sub-slot corresponds to major wersion of libnotmuch.so.X.Y.  Bump of Y is
 # meant to be binary backward compatible.
 SLOT="0/5"
-KEYWORDS="~alpha ~amd64 ~x86 ~x64-solaris"
+KEYWORDS="~alpha amd64 x86 ~x64-solaris"
 REQUIRED_USE="
 	nmbug? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )

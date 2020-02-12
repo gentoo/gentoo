@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Abstraction layer for filesystem and archive access"
@@ -40,14 +41,14 @@ multilib_src_configure() {
 		-DPHYSFS_ARCHIVE_QPAK="$(usex qpak)"
 		-DPHYSFS_ARCHIVE_ZIP="$(usex zip)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 
 	if multilib_is_native_abi && use doc; then
-		cmake-utils_src_compile docs
+		cmake_src_compile docs
 		HTML_DOCS=( "${BUILD_DIR}"/docs/html/. )
 	fi
 }

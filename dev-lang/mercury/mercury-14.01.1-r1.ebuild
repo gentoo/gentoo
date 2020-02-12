@@ -47,7 +47,7 @@ src_prepare() {
 		"${S}"/scripts/Mmake.vars.in \
 		|| die "sed libdir failed"
 
-	cd "${S}" || die
+	cd "${S}" || die
 	eautoconf
 
 	xdg_environment_reset

@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit autotools toolchain-funcs
 
 DESCRIPTION="An easy to use text-based based mail and news client"
-HOMEPAGE="https://www.washington.edu/alpine/ https://repo.or.cz/alpine.git/"
+HOMEPAGE="http://alpine.x10host.com/alpine/ https://repo.or.cz/alpine.git/"
 GIT_COMMIT="843b2f16abfd949e09b1c5465387b1b0f724994a"
 MY_P="${PN}-${GIT_COMMIT::7}"
 SRC_URI="https://repo.or.cz/alpine.git/snapshot/${GIT_COMMIT}.tar.gz -> ${MY_P}.tar.gz"
@@ -13,7 +13,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="alpha amd64 ia64 ppc sparc x86"
+KEYWORDS="~alpha amd64 ia64 ppc sparc x86"
 IUSE="doc ipv6 kerberos ldap libressl nls onlyalpine passfile smime spell ssl threads"
 
 DEPEND="sys-libs/pam

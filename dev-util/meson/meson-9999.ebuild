@@ -1,8 +1,9 @@
-# Copyright 2016-2019 Gentoo Authors
+# Copyright 2016-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/mesonbuild/meson"
@@ -22,8 +23,7 @@ SLOT="0"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-DEPEND="${RDEPEND}
+DEPEND="
 	test? (
 		dev-libs/glib:2
 		dev-libs/gobject-introspection
@@ -42,6 +42,9 @@ python_prepare_all() {
 	# ASAN is unsupported on some targets
 	# https://bugs.gentoo.org/692822
 	sed -i -e 's/test_pch_with_address_sanitizer/_&/' run_unittests.py || die
+
+	# Broken due to python2 script created by python_wrapper_setup
+	rm -r "test cases/frameworks/1 boost" || die
 
 	distutils-r1_python_prepare_all
 }

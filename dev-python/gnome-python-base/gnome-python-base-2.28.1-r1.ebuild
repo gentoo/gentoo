@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -31,7 +31,7 @@ RDEPEND=">=x11-libs/gtk+-2.6:2
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 

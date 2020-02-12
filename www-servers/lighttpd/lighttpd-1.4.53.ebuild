@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools flag-o-matic readme.gentoo-r1 systemd user
+inherit autotools flag-o-matic readme.gentoo-r1 systemd
 
 DESCRIPTION="Lightweight high-performance web server"
 HOMEPAGE="https://www.lighttpd.net https://github.com/lighttpd"
@@ -11,7 +11,7 @@ SRC_URI="https://download.lighttpd.net/lighttpd/releases-1.4.x/${P}.tar.xz"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86"
 IUSE="bzip2 dbi doc fam gdbm geoip ipv6 kerberos ldap libev libressl lua minimal mmap memcached mysql pcre php postgres rrdtool sasl selinux ssl sqlite test webdav xattr zlib"
 RESTRICT="!test? ( test )"
 
@@ -37,7 +37,7 @@ COMMON_DEPEND="
 	rrdtool?  ( net-analyzer/rrdtool )
 	sasl?     ( dev-libs/cyrus-sasl )
 	ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.7:0=[kerberos(-)?] )
+		!libressl? ( >=dev-libs/openssl-0.9.7:0= )
 		libressl? ( dev-libs/libressl:= )
 	)
 	sqlite?	( dev-db/sqlite:3 )
@@ -46,7 +46,9 @@ COMMON_DEPEND="
 		sys-fs/e2fsprogs
 	)
 	xattr? ( kernel_linux? ( sys-apps/attr ) )
-	zlib? ( >=sys-libs/zlib-1.1 )"
+	zlib? ( >=sys-libs/zlib-1.1 )
+	acct-group/lighttpd
+	acct-user/lighttpd"
 
 DEPEND="${COMMON_DEPEND}
 	doc?  ( dev-python/docutils )
@@ -101,9 +103,6 @@ pkg_setup() {
 		ewarn "as conditionals and modules such as mod_re{write,direct}"
 		ewarn "and mod_ssi."
 	fi
-
-	enewgroup lighttpd
-	enewuser lighttpd -1 -1 /var/www/localhost/htdocs lighttpd
 
 	DOC_CONTENTS="IPv6 migration guide:\n
 		http://redmine.lighttpd.net/projects/lighttpd/wiki/IPv6-Config"

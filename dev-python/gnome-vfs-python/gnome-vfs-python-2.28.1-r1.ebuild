@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,7 +12,7 @@ inherit gnome-python-common-r1
 DESCRIPTION="Python bindings for the GnomeVFS library"
 LICENSE="LGPL-2.1"
 SLOT="2"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ia64 ppc ppc64 ~sh sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE="doc examples"
 
 RDEPEND="dev-python/pygobject:2[${PYTHON_USEDEP}]

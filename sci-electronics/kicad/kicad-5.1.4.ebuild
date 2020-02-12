@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Can switch to EAPI=7 when wxwidgets eclass also supports it
 EAPI=6
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 WX_GTK_VER="3.0-gtk3"
 
@@ -24,11 +24,13 @@ REQUIRED_USE="
 "
 
 COMMON_DEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
-	python? (
-		dev-python/wxpython:4.0[${PYTHON_USEDEP}]
-		${PYTHON_DEPS}
-	)
-	>=dev-libs/boost-1.61:=[context,nls,threads,python?,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep "
+		python? (
+			dev-python/wxpython:4.0[\${PYTHON_MULTI_USEDEP}]
+			${PYTHON_DEPS}
+		)
+		>=dev-libs/boost-1.61:=[context,nls,threads,python?,\${PYTHON_MULTI_USEDEP}]
+	")
 	github? ( net-misc/curl:=[ssl] )
 	media-libs/glew:0=
 	>=media-libs/glm-0.9.9.1

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,6 +31,8 @@ DEPEND="
 RDEPEND=${DEPEND}
 
 S="${WORKDIR}/utsushi-0.$(ver_cut 2-3)"
+
+PATCHES=( "${FILESDIR}"/${PN}-3.61.0-ijg-libjpeg.patch )
 
 src_configure() {
 	econf \

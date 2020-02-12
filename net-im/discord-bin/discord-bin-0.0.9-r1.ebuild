@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI=7
 
 MY_PN=${PN/-bin/}
 MY_BIN="D${MY_PN/d/}"
 
-inherit desktop gnome2-utils pax-utils unpacker xdg-utils
+inherit desktop pax-utils unpacker xdg-utils
 
 DESCRIPTION="All-in-one voice and text chat for gamers"
 HOMEPAGE="https://discordapp.com"
@@ -15,7 +15,6 @@ SRC_URI="https://dl.discordapp.net/apps/linux/${PV}/${MY_PN}-${PV}.deb"
 LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="pax_kernel"
 RESTRICT="mirror bindist"
 
 RDEPEND="
@@ -77,17 +76,17 @@ src_install() {
 	fperms +x /opt/${MY_PN}/${MY_BIN}
 	dosym ../../opt/${MY_PN}/${MY_BIN} usr/bin/${MY_PN}
 
-	use pax_kernel && pax-mark -m "${ED%/}"/opt/${MY_PN}/${MY_PN}
+	pax-mark -m "${ED}"/opt/${MY_PN}/${MY_PN}
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 }

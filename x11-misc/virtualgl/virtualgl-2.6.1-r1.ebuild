@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-multilib flag-o-matic multilib systemd
+
+CMAKE_ECLASS=cmake
+inherit cmake-multilib flag-o-matic systemd
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/VirtualGL/${PN}.git"
@@ -51,7 +53,7 @@ src_prepare() {
 	sed -e "s#/etc/opt#/var/lib#g" -i doc/unixconfig.txt doc/index.html doc/advancedopengl.txt \
 		server/vglrun.in server/vglgenkey server/vglserver_config || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -68,7 +70,7 @@ src_configure() {
 			-DTJPEG_LIBRARY=/usr/$(get_libdir)/libturbojpeg.so
 			-DCMAKE_LIBRARY_PATH=/usr/$(get_libdir)
 		)
-		cmake-utils_src_configure
+		cmake_src_configure
 	}
 	multilib_parallel_foreach_abi abi_configure
 }

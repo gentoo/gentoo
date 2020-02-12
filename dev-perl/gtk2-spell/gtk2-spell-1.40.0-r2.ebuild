@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,11 +9,11 @@ DIST_VERSION=1.04
 inherit perl-module virtualx
 
 DESCRIPTION="Bindings for GtkSpell with Gtk2.x"
-HOMEPAGE="http://gtk2-perl.sf.net/ ${HOMEPAGE}"
+HOMEPAGE="http://gtk2-perl.sf.net/ https://metacpan.org/release/Gtk2-Spell"
 
 SLOT="0"
 LICENSE="LGPL-2.1"
-KEYWORDS="amd64 hppa ~ppc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="amd64 ~hppa ~ppc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 IUSE=""
 
 RDEPEND="

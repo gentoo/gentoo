@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,8 +25,10 @@ REQUIRED_USE="
 "
 
 TEST_DEPS="${PYTHON_DEPS}
-	>=dev-python/dbus-python-1[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		>=dev-python/dbus-python-1[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+	')
 "
 BDEPEND="
 	virtual/pkgconfig

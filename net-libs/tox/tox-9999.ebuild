@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils git-r3 systemd
+inherit cmake git-r3 systemd
 
 DESCRIPTION="Encrypted P2P, messaging, and audio/video calling platform"
 HOMEPAGE="https://tox.chat"
@@ -33,7 +33,7 @@ DEPEND="${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	#remove faulty tests
 	for testname in bootstrap lan_discovery save_compatibility tcp_relay tox_many_tcp; do
 		sed -i -e "/^auto_test(${testname})$/d" CMakeLists.txt || die
@@ -74,11 +74,11 @@ src_configure() {
 		mycmakeargs+=(-DMIN_LOGGER_LEVEL="")
 		einfo "Logging Disabled"
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use daemon; then
 		newinitd "${FILESDIR}"/initd tox-dht-daemon

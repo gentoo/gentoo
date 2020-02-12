@@ -47,8 +47,9 @@ src_prepare() {
 	# use the saner headers from the kernel
 	rm include/linux/{kernel,types}.h || die
 
-	# Only run autotools if user patched something
-	eapply_user && eautoreconf || elibtoolize
+	eapply "${FILESDIR}"/${PN}-1.8.2-link.patch
+	eapply_user
+	eautoreconf
 }
 
 src_configure() {

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils llvm toolchain-funcs
+inherit cmake llvm toolchain-funcs
 
 # check this on updates
 LLVM_MAX_SLOT=8
@@ -73,7 +73,6 @@ src_configure() {
 	local gcc=$(tc-getCC)
 	# LLVM needs CPP11. Do not disable.
 	local mycmakeargs=(
-		-DCMAKE_INSTALL_DOCDIR="share/doc/${PF}"
 		-DENABLERTTI=OFF
 		-DINSTALL_DOCS=$(usex doc)
 		-DLLVM_STATIC=ON
@@ -84,5 +83,5 @@ src_configure() {
 		-DUSE_SIMD="$(IFS=","; echo "${mysimd[*]}")"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

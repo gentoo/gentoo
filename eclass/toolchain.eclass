@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Maintainer: Toolchain Ninjas <toolchain@gentoo.org>
@@ -9,7 +9,11 @@ HOMEPAGE="https://gcc.gnu.org/"
 
 inherit eutils fixheadtails flag-o-matic gnuconfig libtool multilib pax-utils toolchain-funcs prefix
 
-if [[ ${PV} == *9999* ]] ; then
+tc_is_live() {
+	[[ ${PV} == *9999* ]]
+}
+
+if tc_is_live ; then
 	EGIT_REPO_URI="git://gcc.gnu.org/git/gcc.git"
 	# naming style:
 	# gcc-10.1.0_pre9999 -> gcc-10-branch
@@ -63,30 +67,34 @@ tc_version_is_between() {
 GCC_PV=${TOOLCHAIN_GCC_PV:-${PV}}
 GCC_PVR=${GCC_PV}
 [[ ${PR} != "r0" ]] && GCC_PVR=${GCC_PVR}-${PR}
+
+# GCC_RELEASE_VER must always match 'gcc/BASE-VER' value.
+# It's an internal representation of gcc version used for:
+# - versioned paths on disk
+# - 'gcc -dumpversion' output. Must always match <digit>.<digit>.<digit>.
 GCC_RELEASE_VER=$(ver_cut 1-3 ${GCC_PV})
+
 GCC_BRANCH_VER=$(ver_cut 1-2 ${GCC_PV})
 GCCMAJOR=$(ver_cut 1 ${GCC_PV})
 GCCMINOR=$(ver_cut 2 ${GCC_PV})
 GCCMICRO=$(ver_cut 3 ${GCC_PV})
 
-# According to gcc/c-cppbuiltin.c, GCC_CONFIG_VER MUST match this regex.
-# ([^0-9]*-)?[0-9]+[.][0-9]+([.][0-9]+)?([- ].*)?
-GCC_CONFIG_VER=${GCC_CONFIG_VER:-$(ver_rs 3 '-' ${GCC_PV})}
+# Ideally this variable should allow for custom gentoo versioning
+# of binary and gcc-config names not directly tied to upstream
+# versioning. In practive it's hard to untangle from gcc/BASE-VER
+# (GCC_RELEASE_VER) value.
+GCC_CONFIG_VER=${GCC_RELEASE_VER}
 
-# Pre-release support
-if [[ ${GCC_PV} == *_pre* ]] ; then
-	PRERELEASE=${GCC_PV/_pre/-}
-elif [[ ${GCC_PV} == *_alpha* ]] ; then
-	SNAPSHOT=${GCC_BRANCH_VER}-${GCC_PV##*_alpha}
-elif [[ ${GCC_PV} == *_beta* ]] ; then
-	SNAPSHOT=${GCC_BRANCH_VER}-${GCC_PV##*_beta}
+# Pre-release support. Versioning schema:
+# 1.0.0_pre9999: live ebuild
+# 1.2.3_alphaYYYYMMDD: weekly snapshots
+# 1.2.3_rcYYYYMMDD: release candidates
+if [[ ${GCC_PV} == *_alpha* ]] ; then
+	# weekly snapshots
+	SNAPSHOT=${GCCMAJOR}-${GCC_PV##*_alpha}
 elif [[ ${GCC_PV} == *_rc* ]] ; then
+	# release candidates
 	SNAPSHOT=${GCC_PV%_rc*}-RC-${GCC_PV##*_rc}
-fi
-
-if [[ ${SNAPSHOT} == [56789].0-* ]] ; then
-	# The gcc-5+ releases have dropped the .0 for some reason.
-	SNAPSHOT=${SNAPSHOT/.0}
 fi
 
 PREFIX=${TOOLCHAIN_PREFIX:-${EPREFIX}/usr}
@@ -187,7 +195,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 fi
 
 if tc_version_is_at_least 10; then
-	# Note: currently we pull in prereleases, snapshots and
+	# Note: currently we pull in releases, snapshots and
 	# git versions into the same SLOT.
 	SLOT="${GCCMAJOR}"
 else
@@ -256,12 +264,10 @@ PDEPEND=">=sys-devel/gcc-config-1.7"
 #---->> S + SRC_URI essentials <<----
 
 # Set the source directory depending on whether we're using
-# a prerelease, snapshot, or release tarball.
+# a live git tree, snapshot, or release tarball.
 S=$(
-	if [[ ${PV} == *9999* ]]; then
+	if tc_is_live ; then
 		echo ${EGIT_CHECKOUT_DIR}
-	elif [[ -n ${PRERELEASE} ]] ; then
-		echo ${WORKDIR}/gcc-${PRERELEASE}
 	elif [[ -n ${SNAPSHOT} ]] ; then
 		echo ${WORKDIR}/gcc-${SNAPSHOT}
 	else
@@ -284,6 +290,10 @@ gentoo_urls() {
 #
 # Other than the variables normally set by portage, this function's behavior
 # can be altered by setting the following:
+#
+#	GCC_TARBALL_SRC_URI
+#			Override link to main tarball into SRC_URI. Used by dev-lang/gnat-gpl
+#			to provide gcc tarball snapshots. Patches are usually reused as-is.
 #
 #	SNAPSHOT
 #			If set, this variable signals that we should be using a snapshot of
@@ -343,18 +353,14 @@ get_gcc_src_uri() {
 	export SPECS_GCC_VER=${SPECS_GCC_VER:-${GCC_RELEASE_VER}}
 
 	# Set where to download gcc itself depending on whether we're using a
-	# prerelease, snapshot, or release tarball.
-	if [[ ${PV} == *9999* ]] ; then
-		# Nothing to do w/git snapshots.
-		:
-	elif [[ -n ${PRERELEASE} ]] ; then
-		GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/prerelease-${PRERELEASE}/gcc-${PRERELEASE}.tar.bz2"
+	# live git tree, snapshot, or release tarball.
+	if tc_is_live ; then
+		: # Nothing to do w/git snapshots.
+	elif [[ -n ${GCC_TARBALL_SRC_URI} ]] ; then
+		# pull gcc tarball from another location. Frequently used by gnat-gpl.
+		GCC_SRC_URI="${GCC_TARBALL_SRC_URI}"
 	elif [[ -n ${SNAPSHOT} ]] ; then
-		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
-			GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.xz"
-		else
-			GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.bz2"
-		fi
+		GCC_SRC_URI="ftp://gcc.gnu.org/pub/gcc/snapshots/${SNAPSHOT}/gcc-${SNAPSHOT}.tar.xz"
 	else
 		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
 			GCC_SRC_URI="mirror://gnu/gcc/gcc-${GCC_PV}/gcc-${GCC_RELEASE_VER}.tar.xz"
@@ -409,8 +415,12 @@ SRC_URI=$(get_gcc_src_uri)
 
 #---->> pkg_pretend <<----
 
+toolchain_is_unsupported() {
+	[[ -n ${SNAPSHOT} ]] || tc_is_live
+}
+
 toolchain_pkg_pretend() {
-	if [[ -n ${PRERELEASE}${SNAPSHOT} || ${PV} == *9999* ]] &&
+	if toolchain_is_unsupported &&
 	   [[ -z ${I_PROMISE_TO_SUPPLY_PATCHES_WITH_BUGS} ]] ; then
 		die "Please \`export I_PROMISE_TO_SUPPLY_PATCHES_WITH_BUGS=1\` or define it" \
 			"in your make.conf if you want to use this version."
@@ -436,77 +446,11 @@ toolchain_pkg_setup() {
 #---->> src_unpack <<----
 
 toolchain_src_unpack() {
-	if [[ ${PV} == *9999* ]]; then
+	if tc_is_live ; then
 		git-r3_src_unpack
-	else
-		gcc_quick_unpack
-	fi
-}
-
-gcc_quick_unpack() {
-	pushd "${WORKDIR}" > /dev/null
-	export PATCH_GCC_VER=${PATCH_GCC_VER:-${GCC_RELEASE_VER}}
-	export UCLIBC_GCC_VER=${UCLIBC_GCC_VER:-${PATCH_GCC_VER}}
-	export PIE_GCC_VER=${PIE_GCC_VER:-${GCC_RELEASE_VER}}
-	export HTB_GCC_VER=${HTB_GCC_VER:-${GCC_RELEASE_VER}}
-	export SPECS_GCC_VER=${SPECS_GCC_VER:-${GCC_RELEASE_VER}}
-
-	# Injection point for more tarballs. dev-lang/gnat-gpl uses
-	# 'GCC_A_FAKEIT' to specify it's own source and binary tarballs.
-	if [[ -n ${GCC_A_FAKEIT} ]] ; then
-		unpack ${GCC_A_FAKEIT}
-	elif [[ -n ${PRERELEASE} ]] ; then
-		unpack gcc-${PRERELEASE}.tar.bz2
-	elif [[ -n ${SNAPSHOT} ]] ; then
-		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
-			unpack gcc-${SNAPSHOT}.tar.xz
-		else
-			unpack gcc-${SNAPSHOT}.tar.bz2
-		fi
-	elif [[ ${PV} != *9999* ]] ; then
-		if tc_version_is_between 5.5 6 || tc_version_is_between 6.4 7 || tc_version_is_at_least 7.2 ; then
-			unpack gcc-${GCC_RELEASE_VER}.tar.xz
-		else
-			unpack gcc-${GCC_RELEASE_VER}.tar.bz2
-		fi
 	fi
 
-	if [[ -n ${D_VER} ]] && use d ; then
-		pushd "${S}"/gcc > /dev/null
-		unpack gdc-${D_VER}-src.tar.bz2
-		cd ..
-		ebegin "Adding support for the D language"
-		./gcc/d/setup-gcc.sh >& "${T}"/dgcc.log
-		if ! eend $? ; then
-			eerror "The D GCC package failed to apply"
-			eerror "Please include this log file when posting a bug report:"
-			eerror "  ${T}/dgcc.log"
-			die "failed to include the D language"
-		fi
-		popd > /dev/null
-	fi
-
-	[[ -n ${PATCH_VER} ]] && \
-		unpack gcc-${PATCH_GCC_VER}-patches-${PATCH_VER}.tar.bz2
-
-	[[ -n ${UCLIBC_VER} ]] && \
-		unpack gcc-${UCLIBC_GCC_VER}-uclibc-patches-${UCLIBC_VER}.tar.bz2
-
-	if want_pie ; then
-		if [[ -n ${PIE_CORE} ]] ; then
-			unpack ${PIE_CORE}
-		else
-			unpack gcc-${PIE_GCC_VER}-piepatches-v${PIE_VER}.tar.bz2
-		fi
-		[[ -n ${SPECS_VER} ]] && \
-			unpack gcc-${SPECS_GCC_VER}-specs-${SPECS_VER}.tar.bz2
-	fi
-
-	use_if_iuse boundschecking && unpack "bounds-checking-gcc-${HTB_GCC_VER}-${HTB_VER}.patch.bz2"
-
-	[[ -n ${CYGWINPORTS_GITREV} ]] && use elibc_Cygwin && unpack "gcc-cygwinports-${CYGWINPORTS_GITREV}.tar.gz"
-
-	popd > /dev/null
+	default_src_unpack
 }
 
 #---->> src_prepare <<----
@@ -531,10 +475,26 @@ toolchain_src_prepare() {
 	export BRANDING_GCC_PKGVERSION="Gentoo ${GCC_PVR}"
 	cd "${S}"
 
+	if [[ -n ${D_VER} ]] && use d ; then
+		mv "${WORKDIR}"/d gcc/d || die
+		ebegin "Adding support for the D language"
+		./gcc/d/setup-gcc.sh >& "${T}"/dgcc.log
+		if ! eend $? ; then
+			eerror "The D GCC package failed to apply"
+			eerror "Please include this log file when posting a bug report:"
+			eerror "  ${T}/dgcc.log"
+			die "failed to include the D language"
+		fi
+	fi
+
 	do_gcc_gentoo_patches
 	do_gcc_HTB_patches
 	do_gcc_PIE_patches
 	do_gcc_CYGWINPORTS_patches
+
+	if tc_is_live ; then
+		BRANDING_GCC_PKGVERSION="${BRANDING_GCC_PKGVERSION}, commit ${EGIT_VERSION}"
+	fi
 
 	case ${EAPI:-0} in
 		5*) epatch_user;;
@@ -573,13 +533,10 @@ toolchain_src_prepare() {
 	gcc_version_patch
 
 	if tc_version_is_at_least 4.1 ; then
-		if [[ -n ${SNAPSHOT} || -n ${PRERELEASE} ]] ; then
-			# BASE-VER must be a three-digit version number
-			# followed by an optional -pre string
-			#   eg. 4.5.1, 4.6.2-pre20120213, 4.7.0-pre9999
-			# If BASE-VER differs from ${PV/_/-} then libraries get installed in
-			# the wrong directory.
-			echo ${PV/_/-} > "${S}"/gcc/BASE-VER
+		local actual_version=$(< "${S}"/gcc/BASE-VER)
+		if [[ "${GCC_RELEASE_VER}" != "${actual_version}" ]] ; then
+			eerror "'${S}/gcc/BASE-VER' contains '${actual_version}', expected '${GCC_RELEASE_VER}'"
+			die "Please set 'TOOLCHAIN_GCC_PV' to '${actual_version}'"
 		fi
 	fi
 
@@ -809,7 +766,7 @@ gcc_version_patch() {
 	# gcc-4.3+ has configure flags (whoo!)
 	tc_version_is_at_least 4.3 && return 0
 
-	local version_string=${GCC_CONFIG_VER}
+	local version_string=${GCC_RELEASE_VER}
 
 	einfo "patching gcc version: ${version_string} (${BRANDING_GCC_PKGVERSION})"
 
@@ -1207,6 +1164,15 @@ toolchain_src_configure() {
 		is-flagq -mfloat-gprs=double && confgcc+=( --enable-e500-double )
 		[[ ${CTARGET//_/-} == *-e500v2-* ]] && confgcc+=( --enable-e500-double )
 		;;
+	ppc64)
+		# On ppc64 big endian target gcc assumes elfv1 by default,
+		# and elfv2 on little endian
+		# but musl does not support elfv1 at all on any endian ppc64
+		# see https://git.musl-libc.org/cgit/musl/tree/INSTALL
+		# https://bugs.gentoo.org/704784
+		# https://gcc.gnu.org/PR93157
+		[[ ${CTARGET} == powerpc64-*-musl ]] && confgcc+=( --with-abi=elfv2 )
+		;;
 	riscv)
 		# Add --with-abi flags to set default ABI
 		confgcc+=( --with-abi=$(gcc-abi-map ${TARGET_DEFAULT_ABI}) )
@@ -1395,7 +1361,8 @@ downgrade_arch_flags() {
 	local arch bver i isa myarch mytune rep ver
 
 	bver=${1:-${GCC_BRANCH_VER}}
-	[[ $(gcc-version) < ${bver} ]] && return 0
+	# Don't perform downgrade if running gcc is older than ebuild's.
+	tc_version_is_at_least ${bver} $(gcc-version) || return 0
 	[[ $(tc-arch) != amd64 && $(tc-arch) != x86 ]] && return 0
 
 	myarch=$(get-flag march)
@@ -1403,7 +1370,7 @@ downgrade_arch_flags() {
 
 	# If -march=native isn't supported we have to tease out the actual arch
 	if [[ ${myarch} == native || ${mytune} == native ]] ; then
-		if [[ ${bver} < 4.2 ]] ; then
+		if ! tc_version_is_at_least 4.2 ${bver}; then
 			arch=$($(tc-getCC) -march=native -v -E -P - </dev/null 2>&1 \
 				| sed -rn "/cc1.*-march/s:.*-march=([^ ']*).*:\1:p")
 			replace-cpu-flags native ${arch}
@@ -1411,10 +1378,10 @@ downgrade_arch_flags() {
 	fi
 
 	# Handle special -mtune flags
-	[[ ${mytune} == intel && ${bver} < 4.9 ]] && replace-cpu-flags intel generic
-	[[ ${mytune} == generic && ${bver} < 4.2 ]] && filter-flags '-mtune=*'
+	[[ ${mytune} == intel ]] && ! tc_version_is_at_least 4.9 ${bver} && replace-cpu-flags intel generic
+	[[ ${mytune} == generic ]] && ! tc_version_is_at_least 4.2 ${bver} && filter-flags '-mtune=*'
 	[[ ${mytune} == x86-64 ]] && filter-flags '-mtune=*'
-	[[ ${bver} < 3.4 ]] && filter-flags '-mtune=*'
+	tc_version_is_at_least 3.4 ${bver} || filter-flags '-mtune=*'
 
 	# "added" "arch" "replacement"
 	local archlist=(
@@ -1464,8 +1431,8 @@ downgrade_arch_flags() {
 
 		[[ ${myarch} != ${arch} && ${mytune} != ${arch} ]] && continue
 
-		if [[ ${ver} > ${bver} ]] ; then
-			einfo "Replacing ${myarch} (added in gcc ${ver}) with ${rep}..."
+		if ! tc_version_is_at_least ${ver} ${bver}; then
+			einfo "Downgrading '${myarch}' (added in gcc ${ver}) with '${rep}'..."
 			[[ ${myarch} == ${arch} ]] && replace-cpu-flags ${myarch} ${rep}
 			[[ ${mytune} == ${arch} ]] && replace-cpu-flags ${mytune} ${rep}
 			continue
@@ -1513,7 +1480,7 @@ downgrade_arch_flags() {
 	for ((i = 0; i < ${#isalist[@]}; i += 2)) ; do
 		ver=${isalist[i]}
 		isa=${isalist[i + 1]}
-		[[ ${ver} > ${bver} ]] && filter-flags ${isa} ${isa/-m/-mno-}
+		tc_version_is_at_least ${ver} ${bver} || filter-flags ${isa} ${isa/-m/-mno-}
 	done
 }
 
@@ -2239,7 +2206,7 @@ toolchain_pkg_postinst() {
 		cp "${ROOT%/}${DATAPATH}"/c{89,99} "${EROOT%/}"/usr/bin/ 2>/dev/null
 	fi
 
-	if [[ -n ${PRERELEASE}${SNAPSHOT} ]] ; then
+	if toolchain_is_unsupported ; then
 		einfo "This GCC ebuild is provided for your convenience, and the use"
 		einfo "of this compiler is not supported by the Gentoo Developers."
 		einfo "Please report bugs to upstream at http://gcc.gnu.org/bugzilla/"

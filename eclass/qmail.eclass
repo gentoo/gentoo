@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: qmail.eclass
@@ -267,9 +267,9 @@ qmail_tcprules_install() {
 }
 
 qmail_supervise_install_one() {
-	dosupervise ${i}
+	dosupervise ${1}
 	diropts -o qmaill -g "${GROUP_ROOT}" -m 755
-	keepdir /var/log/qmail/${i}
+	keepdir /var/log/qmail/${1}
 }
 
 qmail_supervise_install() {

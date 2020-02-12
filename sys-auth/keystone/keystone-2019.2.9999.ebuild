@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 user
+inherit distutils-r1
 
 DESCRIPTION="The Openstack authentication, authorization, and service catalog"
 HOMEPAGE="https://launchpad.net/keystone"
@@ -97,15 +97,9 @@ RDEPEND="
 		www-servers/uwsgi[python,${PYTHON_USEDEP}]
 		www-apache/mod_wsgi[${PYTHON_USEDEP}]
 		www-servers/gunicorn[${PYTHON_USEDEP}]
-	)"
-
-#PATCHES=(
-#)
-
-pkg_setup() {
-	enewgroup keystone
-	enewuser keystone -1 -1 /var/lib/keystone keystone
-}
+	)
+	acct-user/keystone
+	acct-group/keystone"
 
 python_prepare_all() {
 	# it's in git, but not in the tarball.....

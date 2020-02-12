@@ -5,8 +5,4 @@
 	<email>zlogene@gentoo.org</email>
 	<name>Mikle Kolyada</name>
 </maintainer>
-<maintainer type="project">
-	<email>crypto@gentoo.org</email>
-	<name>Crypto</name>
-</maintainer>
 </pkgmetadata>

@@ -1,0 +1,621 @@
+https://github.com/google/mozc/issues/462
+
+--- /src/base/gen_character_set.py
++++ /src/base/gen_character_set.py
+@@ -33,7 +33,6 @@
+ import itertools
+ import optparse
+ import re
+-import string
+ import sys
+ 
+ 
+@@ -89,7 +88,8 @@
+   @staticmethod
+   def _LoadTable(filename, column_index, pattern, validater):
+     result = set()
+-    for line in open(filename):
++    fh = open(filename)
++    for line in fh:
+       if line.startswith('#'):
+         # Skip a comment line.
+         continue
+@@ -100,6 +100,7 @@
+         ucs = int(match.group(1), 16)
+         if validater(ucs):
+           result.add(ucs)
++    fh.close()
+ 
+     return result
+ 
+@@ -250,7 +251,7 @@
+   # (at most) four code points.
+   bit_list = []
+   for _, group in itertools.groupby(enumerate(category_list),
+-                                    lambda (codepoint, _): codepoint / 4):
++                                    lambda x: x[0] // 4):
+     # Fill bits from LSB to MSB for each group.
+     bits = 0
+     for index, (_, category) in enumerate(group):
+@@ -263,7 +264,7 @@
+ 
+   # Output the content. Each line would have (at most) 16 bytes.
+   for _, group in itertools.groupby(enumerate(bit_list),
+-                                    lambda (index, _): index / 16):
++                                    lambda x: x[0] // 16):
+     line = ['    \"']
+     for _, bits in group:
+       line.append('\\x%02X' % bits)
+@@ -386,7 +387,7 @@
+   # Bitmap lookup.
+   # TODO(hidehiko): the bitmap has two huge 0-bits ranges. Reduce them.
+   category_map = [
+-      (bits, category) for category, bits in CATEGORY_BITMAP.iteritems()]
++      (bits, category) for category, bits in CATEGORY_BITMAP.items()]
+   category_map.sort()
+ 
+   lines.extend([
+@@ -451,7 +452,7 @@
+                                      options.jisx0213file)
+   category_list = [
+       categorizer.GetCategory(codepoint)
+-      for codepoint in xrange(categorizer.MaxCodePoint() + 1)]
++      for codepoint in range(categorizer.MaxCodePoint() + 1)]
+   generated_character_set_header = GenerateCharacterSetHeader(category_list)
+ 
+   # Write the result.
+--- /src/base/gen_config_file_stream_data.py
++++ /src/base/gen_config_file_stream_data.py
+@@ -58,7 +58,7 @@
+   result = []
+   result.append(' { "%s",  "' % os.path.basename(path))
+   with open(path, 'rb') as stream:
+-    result.extend(r'\x%02X' % ord(byte) for byte in stream.read())
++    result.extend(r'\x%02X' % byte for byte in stream.read())
+   result.append('",  %d }' % os.path.getsize(path))
+ 
+   return ''.join(result)
+@@ -93,8 +93,8 @@
+ def main():
+   (options, args) = ParseOptions()
+   if not options.output:
+-    print >>sys.stderr, (
+-        'usage: gen_config_file_stream_data.py --output=filepath input ...')
++    print('usage: gen_config_file_stream_data.py --output=filepath input ...',
++          file=sys.stderr)
+     sys.exit(2)
+ 
+   with open(options.output, 'w') as output:
+--- /src/build_mozc.py
++++ /src/build_mozc.py
+@@ -943,7 +943,7 @@
+       logging.info('running %s...', binary)
+       try:
+         test_function(binary, gtest_report_dir, options)
+-      except RunOrDieError, e:
++      except RunOrDieError as e:
+         logging.error(e)
+         failed_tests.append(binary)
+   else:
+@@ -1082,7 +1082,7 @@
+   # and '-c' and 'Release' are build options.
+   targets = []
+   build_options = []
+-  for i in xrange(len(args)):
++  for i in range(len(args)):
+     if args[i].startswith('-'):
+       # starting with build options
+       build_options = args[i:]
+@@ -1190,14 +1190,14 @@
+ 
+ def ShowHelpAndExit():
+   """Shows the help message."""
+-  print 'Usage: build_mozc.py COMMAND [ARGS]'
+-  print 'Commands: '
+-  print '  gyp          Generate project files.'
+-  print '  build        Build the specified target.'
+-  print '  runtests     Build all tests and run them.'
+-  print '  clean        Clean all the build files and directories.'
+-  print ''
+-  print 'See also the comment in the script for typical usage.'
++  print('Usage: build_mozc.py COMMAND [ARGS]')
++  print('Commands: ')
++  print('  gyp          Generate project files.')
++  print('  build        Build the specified target.')
++  print('  runtests     Build all tests and run them.')
++  print('  clean        Clean all the build files and directories.')
++  print('')
++  print('See also the comment in the script for typical usage.')
+   sys.exit(1)
+ 
+ 
+--- /src/build_tools/android_util.py
++++ /src/build_tools/android_util.py
+@@ -548,7 +548,7 @@
+   (devices_result, _) = process.communicate()
+   used_ports = set(int(port) for port
+                    in re.findall(r'emulator-(\d+)', devices_result))
+-  return [port for port in xrange(5554, 5586, 2) if port not in used_ports]
++  return [port for port in range(5554, 5586, 2) if port not in used_ports]
+ 
+ 
+ def SetUpTestingSdkHomeDirectory(dest_android_sdk_home,
+@@ -575,7 +575,7 @@
+           'create', 'avd',
+           '--force',
+           '--sdcard', '512M',]
+-  for key, value in options.iteritems():
++  for key, value in options.items():
+     args.extend([key, value])
+   env = {'ANDROID_SDK_HOME': os.path.abspath(dest_android_sdk_home)}
+   logging.info('Creating AVD: %s', args)
+@@ -615,7 +615,7 @@
+ def main():
+   for arg in sys.argv[1:]:
+     for item in sorted(GetApkProperties(arg).items()):
+-      print '%s: %s' % item
++      print('%s: %s' % item)
+ 
+ 
+ if __name__ == '__main__':
+--- /src/build_tools/binary_size_checker.py
++++ /src/build_tools/binary_size_checker.py
+@@ -70,12 +70,12 @@
+   actual_size = os.stat(filename).st_size
+   expected_size = EXPECTED_MAXIMUM_SIZES[basename]
+   if actual_size < expected_size * 1024 * 1024:
+-    print 'Pass: %s (size: %d) is smaller than expected (%d MB)' % (
+-        filename, actual_size, expected_size)
++    print('Pass: %s (size: %d) is smaller than expected (%d MB)' % (
++        filename, actual_size, expected_size))
+     return True
+   else:
+-    print 'WARNING: %s (size: %d) is larger than expected (%d MB)' % (
+-        filename, actual_size, expected_size)
++    print('WARNING: %s (size: %d) is larger than expected (%d MB)' % (
++        filename, actual_size, expected_size))
+     return False
+ 
+ 
+--- /src/build_tools/build_and_sign_pkg_mac.py
++++ /src/build_tools/build_and_sign_pkg_mac.py
+@@ -44,8 +44,8 @@
+ import shutil
+ import sys
+ 
+-from util import PrintErrorAndExit
+-from util import RunOrDie
++from .util import PrintErrorAndExit
++from .util import RunOrDie
+ 
+ 
+ def ParseOption():
+--- /src/build_tools/build_breakpad.py
++++ /src/build_tools/build_breakpad.py
+@@ -54,9 +54,9 @@
+   try:
+     subprocess.check_output(command)
+   except subprocess.CalledProcessError as e:
+-    print e.output
++    print(e.output)
+     sys.exit(e.returncode)
+-  print 'Done: %s' % ' '.join(command)
++  print('Done: %s' % ' '.join(command))
+ 
+ 
+ def Xcodebuild(projdir, target, arch, sdk, outdir):
+--- /src/build_tools/build_diskimage_mac.py
++++ /src/build_tools/build_diskimage_mac.py
+@@ -90,7 +90,7 @@
+   # setup volume directory
+   temp_dir = tempfile.mkdtemp()
+   CopyFile(path.join(build_dir, ".keystone_install"), temp_dir)
+-  os.chmod(path.join(temp_dir, ".keystone_install"), 0755) # rwxr-xr-x
++  os.chmod(path.join(temp_dir, ".keystone_install"), 0o755) # rwxr-xr-x
+   for a in args:
+     CopyFile(path.join(build_dir, a), temp_dir)
+ 
+--- /src/build_tools/change_reference_mac.py
++++ /src/build_tools/change_reference_mac.py
+@@ -41,8 +41,8 @@
+ import optparse
+ import os
+ 
+-from util import PrintErrorAndExit
+-from util import RunOrDie
++from .util import PrintErrorAndExit
++from .util import RunOrDie
+ 
+ 
+ def ParseOption():
+--- /src/build_tools/code_generator_util.py
++++ /src/build_tools/code_generator_util.py
+@@ -33,27 +33,26 @@
+ __author__ = "hidehiko"
+ 
+ import struct
+-import types
+ 
+ 
+ def ToCppStringLiteral(s):
+   """Returns C-style string literal, or NULL if given s is None."""
+   if s is None:
+-    return 'NULL'
++    return b'NULL'
+ 
+-  if all(0x20 <= ord(c) <= 0x7E for c in s):
++  if all(0x20 <= c <= 0x7E for c in s):
+     # All characters are in ascii code.
+-    return '"%s"' % s.replace('\\', r'\\').replace('"', r'\"')
++    return b'"%b"' % s.replace(b'\\', br'\\').replace(b'"', br'\"')
+   else:
+     # One or more characters are non-ascii.
+-    return '"%s"' % ''.join(r'\x%02X' % ord(c) for c in s)
++    return b'"%b"' % b''.join(br'\x%02X' % c for c in s)
+ 
+ 
+ def FormatWithCppEscape(format_text, *args):
+   """Returns a string filling format with args."""
+   literal_list = []
+   for arg in args:
+-    if isinstance(arg, (types.StringType, types.NoneType)):
++    if isinstance(arg, (bytes, type(None))):
+       arg = ToCppStringLiteral(arg)
+     literal_list.append(arg)
+ 
+@@ -95,7 +94,7 @@
+   if target_compiler and target_compiler.startswith('msvs'):
+     stream.write('const uint64 k%s_data_wordtype[] = {\n' % variable_name)
+ 
+-    for word_index in xrange(0, len(data), 8):
++    for word_index in range(0, len(data), 8):
+       word_chunk = data[word_index:word_index + 8].ljust(8, '\x00')
+       stream.write('0x%016X, ' % struct.unpack('<Q', word_chunk))
+       if (word_index / 8) % 4 == 3:
+@@ -111,7 +110,7 @@
+     stream.write('const char k%s_data[] =\n' % variable_name)
+     # Output 16bytes per line.
+     chunk_size = 16
+-    for index in xrange(0, len(data), chunk_size):
++    for index in range(0, len(data), chunk_size):
+       chunk = data[index:index + chunk_size]
+       stream.write('"')
+       stream.writelines(r'\x%02X' % ord(c) for c in chunk)
+@@ -126,36 +125,50 @@
+   if type(codepoint_list) is int:
+     codepoint_list = (codepoint_list,)
+   if codepoint_list is None or len(codepoint_list) == 0:
+-    return 'null'
+-  result = r'"'
++    return b'null'
++  result = b'"'
+   for codepoint in codepoint_list:
+-    utf16_string = unichr(codepoint).encode('utf-16be')
++    utf16_string = chr(codepoint).encode('utf-16be')
+     if len(utf16_string) == 2:
+       (u0, l0) = utf16_string
+-      result += r'\u%02X%02X' % (ord(u0), ord(l0))
++      result += br'\u%02X%02X' % (u0, l0)
+     else:
+       (u0, l0, u1, l1) = utf16_string
+-      result += r'\u%02X%02X\u%02X%02X' % (ord(u0), ord(l0), ord(u1), ord(l1))
+-  result += r'"'
++      result += br'\u%02X%02X\u%02X%02X' % (u0, l0, u1, l1)
++  result += b'"'
+   return result
+ 
+ 
+ def SkipLineComment(stream, comment_prefix='#'):
+   """Skips line comments from stream."""
+   for line in stream:
++    if isinstance(line, bytes):
++      if isinstance(comment_prefix, str):
++        comment_prefix = comment_prefix.encode('utf-8')
++      line_ending = b'\n'
++    else:
++      line_ending = '\n'
+     stripped_line = line.strip()
+     if stripped_line and not stripped_line.startswith(comment_prefix):
+-      yield line.rstrip('\n')
++      yield line.rstrip(line_ending)
+ 
+ 
+ def ParseColumnStream(stream, num_column=None, delimiter=None):
+   """Returns parsed columns read from stream."""
+   if num_column is None:
+     for line in stream:
+-      yield line.rstrip('\n').split(delimiter)
++      if isinstance(line, bytes):
++        line_ending = b'\n'
++      else:
++        line_ending = '\n'
++      yield line.rstrip(line_ending).split(delimiter)
+   else:
+     for line in stream:
+-      yield line.rstrip('\n').split(delimiter)[:num_column]
++      if isinstance(line, bytes):
++        line_ending = b'\n'
++      else:
++        line_ending = '\n'
++      yield line.rstrip(line_ending).split(delimiter)[:num_column]
+ 
+ 
+ def SelectColumn(stream, column_index):
+@@ -172,5 +185,5 @@
+   grouper extends the last chunk to make it an n-element chunk by adding
+   appropriate value, but this returns truncated chunk.
+   """
+-  for index in xrange(0, len(iterable), n):
++  for index in range(0, len(iterable), n):
+     yield iterable[index:index + n]
+--- /src/build_tools/codesign_mac.py
++++ /src/build_tools/codesign_mac.py
+@@ -46,17 +46,17 @@
+ 
+ def RunOrDie(command):
+   """Run the command, or die if it failed."""
+-  print "Running: " + command
++  print("Running: " + command)
+   try:
+     output = subprocess.check_output(command, shell=True)
+-    print >> sys.stderr, "=========="
+-    print >> sys.stderr, "COMMAND: " + command
+-    print >> sys.stderr, output
++    print("==========", file=sys.stderr)
++    print("COMMAND: " + command, file=sys.stderr)
++    print(output, file=sys.stderr)
+   except subprocess.CalledProcessError as e:
+-    print >> sys.stderr, "=========="
+-    print >> sys.stderr, "ERROR: " + command
+-    print >> sys.stderr, e.output
+-    print >> sys.stderr, "=========="
++    print("==========", file=sys.stderr)
++    print("ERROR: " + command, file=sys.stderr)
++    print(e.output, file=sys.stderr)
++    print("==========", file=sys.stderr)
+     sys.exit(1)
+ 
+ 
+@@ -119,18 +119,18 @@
+   (options, unused_args) = parser.parse_args()
+ 
+   if not options.target:
+-    print "Error: --target should be specified."
+-    print parser.print_help()
++    print("Error: --target should be specified.")
++    print(parser.print_help())
+     sys.exit(1)
+ 
+   return options
+ 
+ 
+ def DumpEnviron():
+-  print "=== os.environ ==="
++  print("=== os.environ ===")
+   for key in sorted(os.environ):
+-    print "%s = %s" % (key, os.getenv(key))
+-  print "=================="
++    print("%s = %s" % (key, os.getenv(key)))
++  print("==================")
+ 
+ 
+ def main():
+--- /src/build_tools/copy_dll_and_symbol.py
++++ /src/build_tools/copy_dll_and_symbol.py
+@@ -38,7 +38,7 @@
+ import os
+ import shutil
+ 
+-from util import PrintErrorAndExit
++from .util import PrintErrorAndExit
+ 
+ def ParseOption():
+   """Parse command line options."""
+@@ -98,7 +98,7 @@
+     if _GetLastModifiedTime(src) <= target_file_mtime:
+       # Older file found. Ignore.
+       continue
+-    print 'Copying %s to %s' % (src, target_file_abspath)
++    print('Copying %s to %s' % (src, target_file_abspath))
+     shutil.copy2(src, target_file_abspath)
+     break
+ 
+--- /src/build_tools/copy_file.py
++++ /src/build_tools/copy_file.py
+@@ -52,7 +52,7 @@
+   Args:
+     message: The error message to be printed to stderr.
+   """
+-  print >>sys.stderr, message
++  print(message, file=sys.stderr)
+   sys.exit(1)
+ 
+ 
+--- /src/build_tools/copy_qt_frameworks_mac.py
++++ /src/build_tools/copy_qt_frameworks_mac.py
+@@ -41,9 +41,9 @@
+ import optparse
+ import os
+ 
+-from copy_file import CopyFiles
+-from util import PrintErrorAndExit
+-from util import RunOrDie
++from .copy_file import CopyFiles
++from .util import PrintErrorAndExit
++from .util import RunOrDie
+ 
+ 
+ def ParseOption():
+--- /src/build_tools/embed_file.py
++++ /src/build_tools/embed_file.py
+@@ -46,10 +46,10 @@
+ 
+ def _FormatAsUint64LittleEndian(s):
+   """Formats a string as uint64 value in little endian order."""
+-  for _ in xrange(len(s), 8):
+-    s += '\0'
++  for _ in range(len(s), 8):
++    s += b'\0'
+   s = s[::-1]  # Reverse the string
+-  return '0x%s' % binascii.b2a_hex(s)
++  return b'0x%b' % binascii.b2a_hex(s)
+ 
+ 
+ def main():
+@@ -57,30 +57,30 @@
+   with open(opts.input, 'rb') as infile:
+     with open(opts.output, 'wb') as outfile:
+       outfile.write(
+-          '#ifdef MOZC_EMBEDDED_FILE_%(name)s\n'
+-          '#error "%(name)s was already included or defined elsewhere"\n'
+-          '#else\n'
+-          '#define MOZC_EMBEDDED_FILE_%(name)s\n'
+-          'const uint64 %(name)s_data[] = {\n'
+-          % {'name': opts.name})
++          b'#ifdef MOZC_EMBEDDED_FILE_%(name)b\n'
++          b'#error "%(name)b was already included or defined elsewhere"\n'
++          b'#else\n'
++          b'#define MOZC_EMBEDDED_FILE_%(name)b\n'
++          b'const uint64 %(name)b_data[] = {\n'
++          % {b'name': opts.name.encode('utf-8')})
+ 
+       while True:
+         chunk = infile.read(8)
+         if not chunk:
+           break
+-        outfile.write('  ')
++        outfile.write(b'  ')
+         outfile.write(_FormatAsUint64LittleEndian(chunk))
+-        outfile.write(',\n')
++        outfile.write(b',\n')
+ 
+       outfile.write(
+-          '};\n'
+-          'const EmbeddedFile %(name)s = {\n'
+-          '  %(name)s_data,\n'
+-          '  %(size)d,\n'
+-          '};\n'
+-          '#endif  // MOZC_EMBEDDED_FILE_%(name)s\n'
+-          % {'name': opts.name,
+-             'size': os.stat(opts.input).st_size})
++          b'};\n'
++          b'const EmbeddedFile %(name)b = {\n'
++          b'  %(name)b_data,\n'
++          b'  %(size)d,\n'
++          b'};\n'
++          b'#endif  // MOZC_EMBEDDED_FILE_%(name)b\n'
++          % {b'name': opts.name.encode('utf-8'),
++             b'size': os.stat(opts.input).st_size})
+ 
+ 
+ if __name__ == '__main__':
+--- /src/build_tools/embed_pathname.py
++++ /src/build_tools/embed_pathname.py
+@@ -28,7 +28,7 @@
+ # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+-"""A script to embed the given (relative) path name to C/C++ characters array.
++r"""A script to embed the given (relative) path name to C/C++ characters array.
+ 
+ Example:
+   ./embed_pathname.py --path_to_be_embedded=d:\data\mozc
+@@ -53,7 +53,7 @@
+ 
+   (options, unused_args) = parser.parse_args()
+   if not all(vars(options).values()):
+-    print parser.print_help()
++    print(parser.print_help())
+     sys.exit(1)
+ 
+   return options
+@@ -63,7 +63,7 @@
+   opt = ParseOption()
+   path = os.path.abspath(opt.path_to_be_embedded)
+   # TODO(yukawa): Consider the case of non-ASCII characters.
+-  escaped_path = path.encode('string-escape')
++  escaped_path = path.replace('\\', '\\\\')
+   with open(opt.output, 'w') as output_file:
+     output_file.write(
+         'const char %s[] = "%s";\n' % (opt.constant_name, escaped_path))
+--- /src/build_tools/ensure_gyp_module_path.py
++++ /src/build_tools/ensure_gyp_module_path.py
+@@ -48,7 +48,7 @@
+ 
+   (options, _) = parser.parse_args()
+   if not options.expected:
+-    print parser.print_help()
++    print(parser.print_help())
+     sys.exit(1)
+ 
+   return options
+@@ -59,20 +59,20 @@
+   opt = ParseOption()
+   expected_path = os.path.abspath(opt.expected)
+   if not os.path.exists(expected_path):
+-    print '%s does not exist.' % expected_path
++    print('%s does not exist.' % expected_path)
+     sys.exit(1)
+ 
+   try:
+     import gyp  # NOLINT
+   except ImportError as e:
+-    print 'import gyp failed: %s' % e
++    print('import gyp failed: %s' % e)
+     sys.exit(1)
+ 
+   actual_path = os.path.abspath(gyp.__path__[0])
+   if expected_path != actual_path:
+-    print 'Unexpected gyp module is loaded on this environment.'
+-    print '  expected: %s' % expected_path
+-    print '  actual  : %s' % actual_path
++    print('Unexpected gyp module is loaded on this environment.')
++    print('  expected: %s' % expected_path)
++    print('  actual  : %s' % actual_path)
+     sys.exit(1)
+ 
+ if __name__ == '__main__':
+--- /src/build_tools/gen_win32_resource_header.py
++++ /src/build_tools/gen_win32_resource_header.py
+@@ -39,7 +39,7 @@
+ __author__ = "yukawa"
+ 
+ import logging
+-import mozc_version
++from . import mozc_version
+ import optparse
+ import os
+ import sys
+--- /src/build_tools/mozc_version.py
++++ /src/build_tools/mozc_version.py
+@@ -94,7 +94,7 @@
+   last_digit = TARGET_PLATFORM_TO_DIGIT.get(target_platform, None)
+   if last_digit is None:
+     logging.critical('target_platform %s is invalid. Accetable ones are %s',
+-                     target_platform, TARGET_PLATFORM_TO_DIGIT.keys())
++                     target_platform, list(TARGET_PLATFORM_TO_DIGIT.keys()))
+     sys.exit(1)
+ 
+   if not revision:
+@@ -314,13 +314,14 @@
+     self._properties = {}
+     if not os.path.isfile(path):
+       return
+-    for line in open(path):
+-      matchobj = re.match(r'(\w+)=(.*)', line.strip())
+-      if matchobj:
+-        var = matchobj.group(1)
+-        val = matchobj.group(2)
+-        if var not in self._properties:
+-          self._properties[var] = val
++    with open(path) as file:
++      for line in file:
++        matchobj = re.match(r'(\w+)=(.*)', line.strip())
++        if matchobj:
++          var = matchobj.group(1)
++          val = matchobj.group(2)
++          if var not in self._properties:
++            self._properties[var] = val
+ 
+     # Check mandatory properties.
+     for key in VERSION_PROPERTIES:

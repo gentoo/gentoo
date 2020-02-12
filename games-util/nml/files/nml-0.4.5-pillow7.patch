@@ -1,0 +1,41 @@
+From 70c0b3110509dc7da2cfa688e0717e6c966e21df Mon Sep 17 00:00:00 2001
+From: Conrad Kostecki <conrad@kostecki.com>
+Date: Wed, 23 Oct 2019 12:52:15 +0200
+Subject: [PATCH] Fix #39: Add compatibility with >=pillow-7.0.0
+
+Changed PILLOW_VERSION to PIL.__version__,
+as it got removed with >=pillow-7.0.0.
+
+In order not to break compatibility with older versions,
+PILLOW_VERSION will be used as a fallback.
+
+Closes: https://github.com/OpenTTD/nml/issues/39
+Signed-off-by: Conrad Kostecki <conrad@kostecki.com>
+---
+ nml/version_info.py | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/nml/version_info.py b/nml/version_info.py
+index 32aa3b13..da60328e 100644
+--- a/nml/version_info.py
++++ b/nml/version_info.py
+@@ -139,11 +139,17 @@ def get_lib_versions():
+     #PIL
+     try:
+         from PIL import Image
+-        versions["PIL"] = Image.PILLOW_VERSION
++        try:
++            versions["PIL"] = Image.__version__
++        except AttributeError:
++            versions["PIL"] = Image.PILLOW_VERSION
+     except ImportError:
+         try:
+             import Image
+-            versions["PIL"] = Image.PILLOW_VERSION
++            try:
++                versions["PIL"] = Image.__version__
++            except AttributeError:
++                versions["PIL"] = Image.PILLOW_VERSION
+         except ImportError:
+             versions["PIL"] = "Not found!"
+ 

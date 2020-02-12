@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="https://plugins.geany.org/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ia64 ppc ppc64 sparc x86"
 
 IUSE="gtk3 +autoclose +automark +commander ctags debugger +defineformat enchant git gpg gtkspell lua multiterm nls +overview python scope soup"
 REQUIRED_USE="
@@ -33,7 +33,7 @@ COMMON_DEPEND="
 	ctags? ( dev-util/ctags )
 	debugger? ( x11-libs/vte:0 )
 	defineformat? ( ${GTK_COMMON_DEPEND} )
-	enchant? ( app-text/enchant )
+	enchant? ( app-text/enchant:0 )
 	git? ( dev-libs/libgit2:= )
 	gpg? ( app-crypt/gpgme:1= )
 	gtkspell? (
@@ -47,7 +47,9 @@ COMMON_DEPEND="
 		>=x11-libs/vte-0.28:0
 		)
 	python? (
-		dev-python/pygtk[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+		')
 		${PYTHON_DEPS}
 		)
 	scope? ( x11-libs/vte:0 )

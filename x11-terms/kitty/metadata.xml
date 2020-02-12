@@ -9,9 +9,6 @@
 		<email>proxy-maint@gentoo.org</email>
 		<name>Gentoo Proxy Maintainers Project</name>
 	</maintainer>
-	<use>
-		<flag name="imagemagick">Support displaying images in the terminal with icat</flag>
-	</use>
 	<upstream>
 		<remote-id type="github">kovidgoyal/kitty</remote-id>
 	</upstream>

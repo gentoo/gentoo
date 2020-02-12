@@ -1,0 +1,70 @@
+From: David Michael <fedo...@gmail.com>
+To: wmaker-dev@googlegroups.com
+Subject: [PATCH] configure: Allow changing default search paths
+Date: Thu, 16 Jan 2020 14:59:33 -0500
+
+This changes the behavior of the --with-{inc,lib}s-from arguments
+to replace the default paths instead of adding to them.  This is
+required when cross-compiling in a sysroot, since the default paths
+will include files from the host system which can have an
+incompatible architecture.
+---
+1. What happened: could not compile
+
+2. Detailed description of what happened:
+Cross-compiling in a sysroot searches for development files on the
+host.  The build fails when building between two very different
+architectures.
+
+3. How to reproduce the bug, if known:
+Cross-compile in a sysroot (from x86_64 to ppc with Gentoo in my case).
+
+6. The error occurred during: compilation
+
+8. Error messages output:
+There are about two megabytes of errors about float128 not being defined
+for the architecture, from including the x86_64 headers in /usr/include
+for the ppc compiler.
+
+9. Fix, if known:
+This commit makes it build when passing --with-{inc,lib}s-from= and it
+shouldn't be a big behavior change for most cases.
+
+10. Other Notes:
+I didn't dig into the history of those search variables, but a better
+fix might be to just remove them entirely.  It doesn't seem to do any
+good to redundantly add the default search paths, or if includedir or
+libdir were changed, the usual CPPFLAGS and LDFLAGS environment
+variables could set the search paths.
+
+ configure.ac | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a19acce5..0129f4e7 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -284,18 +284,14 @@ _bindir=`eval echo $_bindir`
+ _libdir=`eval echo $libdir`
+ _libdir=`eval echo $_libdir`
+ 
+-lib_search_path='-L${libdir}'
+-
+-inc_search_path='-I${includedir}'
+-
+ dnl ===============================================
+ dnl Specify paths to look for libraries and headers
+ dnl ===============================================
+ AC_ARG_WITH(libs-from, AS_HELP_STRING([--with-libs-from], [pass compiler flags to look for libraries]),
+-	[lib_search_path="$withval $lib_search_path"])
++	[lib_search_path="$withval"], [lib_search_path='-L${libdir}'])
+ 
+ AC_ARG_WITH(incs-from, AS_HELP_STRING([--with-incs-from], [pass compiler flags to look for header files]),
+-	[inc_search_path="$withval $inc_search_path"])
++	[inc_search_path="$withval"], [inc_search_path='-I${includedir}'])
+ 
+ 
+ dnl Features Configuration
+-- 
+2.21.1
+

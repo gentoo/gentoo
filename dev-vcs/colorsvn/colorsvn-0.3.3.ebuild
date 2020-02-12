@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Subversion output colorizer"
 HOMEPAGE="http://colorsvn.tigris.org"
-SRC_URI="${HOMEPAGE}/files/documents/4414/49311/${P}.tar.gz"
+SRC_URI="http://colorsvn.tigris.org/files/documents/4414/49311/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

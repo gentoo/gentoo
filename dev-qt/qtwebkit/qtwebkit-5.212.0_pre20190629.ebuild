@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 MY_P="${PN}-${PV/_pre20190629/-alpha3}" # present as upgrade over previous snapshot
-inherit check-reqs cmake-utils flag-o-matic python-any-r1 qmake-utils ruby-single toolchain-funcs
+inherit check-reqs cmake flag-o-matic python-any-r1 qmake-utils ruby-single toolchain-funcs
 
 DESCRIPTION="WebKit rendering library for the Qt5 framework (deprecated)"
 HOMEPAGE="https://www.qt.io/"
@@ -116,11 +116,13 @@ src_configure() {
 		-DENABLE_PRINT_SUPPORT=$(usex printsupport)
 		-DENABLE_DEVICE_ORIENTATION=$(usex orientation)
 		-DENABLE_WEBKIT2=$(usex qml)
-		$(cmake-utils_use_find_package webp WebP)
+		$(cmake_use_find_package webp WebP)
 		-DENABLE_X11_TARGET=$(usex X)
 	)
 
-	if has_version "virtual/rubygems[ruby_targets_ruby26]"; then
+	if has_version "virtual/rubygems[ruby_targets_ruby27]"; then
+		mycmakeargs+=( -DRUBY_EXECUTABLE=$(type -P ruby27) )
+	elif has_version "virtual/rubygems[ruby_targets_ruby26]"; then
 		mycmakeargs+=( -DRUBY_EXECUTABLE=$(type -P ruby26) )
 	elif has_version "virtual/rubygems[ruby_targets_ruby25]"; then
 		mycmakeargs+=( -DRUBY_EXECUTABLE=$(type -P ruby25) )
@@ -128,11 +130,11 @@ src_configure() {
 		mycmakeargs+=( -DRUBY_EXECUTABLE=$(type -P ruby24) )
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# bug 572056
 	if [[ ! -f ${ED}$(qt5_get_libdir)/libQt5WebKit.so ]]; then

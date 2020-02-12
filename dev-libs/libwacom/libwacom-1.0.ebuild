@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools udev
+inherit autotools udev toolchain-funcs
 
 DESCRIPTION="Library for identifying Wacom tablets and their model-specific features"
 HOMEPAGE="https://github.com/linuxwacom/libwacom"
@@ -23,6 +23,10 @@ RDEPEND="
 	dev-libs/libgudev:=
 "
 DEPEND="${RDEPEND}"
+
+pkg_setup() {
+	tc-ld-disable-gold # bug https://github.com/linuxwacom/libwacom/issues/170
+}
 
 src_prepare() {
 	default

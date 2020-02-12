@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: flag-o-matic.eclass
@@ -474,8 +474,8 @@ test-flag-PROG() {
 			cmdline_extra+=(-xc)
 			;;
 	esac
-	local test_in=${T}/test-flag-${comp}.${lang}
-	local test_out=${T}/test-flag-${comp}.exe
+	local test_in=${T}/test-flag.${in_ext}
+	local test_out=${T}/test-flag.exe
 
 	printf "%s\n" "${in_src}" > "${test_in}" || return 1
 

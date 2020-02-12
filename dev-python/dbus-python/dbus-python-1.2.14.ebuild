@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7,8} )
+PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit autotools python-r1
@@ -27,7 +27,6 @@ RDEPEND="${PYTHON_DEPS}
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	virtual/pkgconfig
 	doc? ( $(python_gen_any_dep 'dev-python/sphinx[${PYTHON_USEDEP}]') )
 	test? ( dev-python/pygobject:3[${PYTHON_USEDEP}]

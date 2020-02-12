@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Daemon for communication with Viessmann Vito heatings"
 HOMEPAGE="https://github.com/openv/vcontrold/"
@@ -22,7 +22,7 @@ src_prepare() {
 	sed "s/@VERSION@/${PV}/" "src/version.h.in" \
 		> "src/version.h" || die "Setting version failed"
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -32,11 +32,11 @@ src_configure() {
 		-DVSIM="$(usex vsim)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	doinitd "${FILESDIR}/vcontrold"
 	insinto /etc/vcontrold/
 	doins -r xml

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg virtualx
+inherit cmake xdg virtualx
 
 DESCRIPTION="MIDI and audio sequencer and notation editor"
 HOMEPAGE="https://www.rosegardenmusic.com/"
@@ -44,16 +44,16 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
 		"-DDISABLE_LIRC=$(usex lirc OFF ON)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
-	 virtx cmake-utils_src_test
+	 virtx cmake_src_test
 }

@@ -5,7 +5,7 @@ EAPI="7"
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake-utils flag-o-matic
+inherit cmake flag-o-matic
 
 BOOST_VER="1_69_0"
 MY_PV="$(ver_rs 2 '-')"
@@ -50,7 +50,7 @@ src_configure() {
 		-DWITH_SYSTEM_LIBS=ON
 	)
 	local CMAKE_BUILD_TYPE="Release"
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {

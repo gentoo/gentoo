@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Michał Górny <mgorny@gentoo.org> (2019-11-13)
@@ -131,6 +131,7 @@ video_cards_ast
 video_cards_i915
 video_cards_i965
 video_cards_intel
+video_cards_iris
 video_cards_nvidia
 video_cards_vesa
 video_cards_via
@@ -191,8 +192,6 @@ orc
 # Mike Gilbert <floppym@gentoo.org> (2013-01-02)
 # PyPy is unkeyworded on most arches. If you are running amd64 or x86,
 # please switch to one of the testing 13.0 profiles to get it.
-python_targets_pypy
-python_single_target_pypy
 python_targets_pypy3
 python_single_target_pypy3
 

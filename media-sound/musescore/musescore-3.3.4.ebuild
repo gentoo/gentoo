@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CHECKREQS_DISK_BUILD=3500M
-inherit cmake-utils xdg check-reqs
+inherit cmake xdg check-reqs
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="https://musescore.org/"
@@ -16,8 +16,8 @@ SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
-IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio vorbis webengine"
+KEYWORDS="amd64 x86"
+IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio +sf3 webengine"
 REQUIRED_USE="portmidi? ( portaudio )"
 
 BDEPEND="
@@ -47,19 +47,20 @@ DEPEND="
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-sound/pulseaudio )
-	vorbis? ( media-libs/libvorbis )
+	sf3? ( media-libs/libvorbis )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
 RDEPEND="${DEPEND}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-3.0.1-man-pages.patch"
+	"${FILESDIR}/5583.patch"
 )
 
 S="${WORKDIR}/MuseScore-${PV}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Move soundfonts to the correct directory
 	mv "${WORKDIR}"/sound/* "${S}"/share/sound/ || die "Failed to move soundfont files"
@@ -78,14 +79,14 @@ src_configure() {
 		-DBUILD_PORTAUDIO="$(usex portaudio)"
 		-DBUILD_PORTMIDI="$(usex portmidi)"
 		-DBUILD_PULSEAUDIO="$(usex pulseaudio)"
-		-DSOUNDFONT3="$(usex vorbis)"
+		-DSOUNDFONT3="$(usex sf3)"
 		-DBUILD_WEBENGINE="$(usex webengine)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	cd "${BUILD_DIR}" || die
-	cmake-utils_src_make -j1 lrelease manpages
-	cmake-utils_src_compile
+	cmake_build -j1 lrelease manpages
+	cmake_src_compile
 }

@@ -1,0 +1,147 @@
+--- a/CMakeLists.txt	2019-12-28 09:34:17.470030419 +0100
++++ b/CMakeLists.txt	2019-12-28 09:32:14.939030886 +0100
+@@ -21,12 +21,26 @@
+ 
+ project(rocm-opencl)
+ 
++include (GNUInstallDirs)
++
+ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake" "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
+ set(OPENCL_ICD_LOADER_HEADERS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/api/opencl/khronos/headers/opencl2.2" CACHE PATH "")
+ 
+ find_package(ROCT REQUIRED)
+ find_package(ROCR REQUIRED)
+ 
++find_package(LLVM REQUIRED CONFIG PATHS ${LLVM_DIR} "/opt/rocm/llvm" NO_DEFAULT_PATH)
++set(USE_COMGR_LIBRARY "yes")
++find_package(amd_comgr REQUIRED CONFIG)
++add_definitions(-DUSE_COMGR_LIBRARY)
++FOREACH(DIR ${LLVM_INCLUDE_DIRS})
++  include_directories("${DIR}")
++  include_directories("${DIR}/clang")
++  include_directories("${DIR}/lld")
++  # TODO: move AMDGPU.h header to include folder
++  include_directories("${DIR}/llvm/Target/AMDGPU")
++ENDFOREACH()
++
+ # FIXME: Remove following if block after enabling COMGR by default
+ if (${USE_COMGR_LIBRARY} STREQUAL "no")
+   set(LLVM_INCLUDE_TESTS OFF CACHE BOOL "")
+@@ -39,29 +53,19 @@
+   # override default option value in library and driver
+   set(GENERIC_IS_ZERO ON CACHE BOOL ON FORCE)
+ 
+-  add_subdirectory(compiler/llvm EXCLUDE_FROM_ALL)
+-
+-  find_package(LLVM REQUIRED CONFIG PATHS ${CMAKE_BINARY_DIR}/compiler/llvm NO_DEFAULT_PATH)
++  find_package(LLVM REQUIRED CONFIG PATHS ${LLVM_DIR} "/opt/rocm/llvm" NO_DEFAULT_PATH)
+ 
+   list(APPEND CMAKE_MODULE_PATH "${LLVM_CMAKE_DIR}")
+   include(AddLLVM)
+ 
+   add_definitions(${LLVM_DEFINITIONS})
+-  # TODO: add find_package for Clang and lld, and also use LLVM/Clang variables got from their config
+-  include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/tools/clang/include)
+-  include_directories(${CMAKE_BINARY_DIR}/compiler/llvm/tools/clang/include)
+-  include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/tools/lld/include)
+-
+-  # TODO: move AMDGPU.h header to include folder
+-  include_directories(${CMAKE_SOURCE_DIR}/compiler/llvm/lib/Target/AMDGPU)
+-  include_directories(${CMAKE_BINARY_DIR}/compiler/llvm/lib/Target/AMDGPU)
+ 
+   set(BUILD_HC_LIB OFF CACHE BOOL "")
+   set(ROCM_DEVICELIB_INCLUDE_TESTS OFF CACHE BOOL "")
+   set(AMDGCN_TARGETS_LIB_LIST "AMDGCN_LIB_TARGETS")
+   set(AMDGCN_TARGETS_LIB_DEPS "AMDGCN_DEP_TARGETS")
+   set(AMDGPU_TARGET_TRIPLE "amdgcn-amd-amdhsa")
+-  add_subdirectory(library/amdgcn EXCLUDE_FROM_ALL)
++
+   add_subdirectory(compiler/driver EXCLUDE_FROM_ALL)
+ 
+   install(PROGRAMS $<TARGET_FILE:clang> $<TARGET_FILE:lld>
+@@ -77,22 +81,22 @@
+   endforeach()
+ endif() # if (${USE_COMGR_LIBRARY} STREQUAL "no")
+ 
+-if(${USE_COMGR_LIBRARY} MATCHES "yes")
+-  set(COMGR_DYN_DLL "yes")
+-  add_definitions(-DCOMGR_DYN_DLL)
+-  add_definitions(-DUSE_COMGR_LIBRARY)
+-  if( ${BUILD_HIP} MATCHES "yes")
+-    add_subdirectory(api/hip)
+-  endif()
+-endif()
++#if(${USE_COMGR_LIBRARY} MATCHES "yes")
++#  set(COMGR_DYN_DLL "yes")
++#  add_definitions(-DCOMGR_DYN_DLL)
++#  add_definitions(-DUSE_COMGR_LIBRARY)
++#  if( ${BUILD_HIP} MATCHES "yes")
++#    add_subdirectory(api/hip)
++#  endif()
++#endif()
+ 
+ add_subdirectory(api/opencl/amdocl)
+ add_subdirectory(compiler/lib/loaders/elf/utils/libelf)
+ add_subdirectory(runtime)
+-add_subdirectory(tools/clinfo)
++#add_subdirectory(tools/clinfo)
+ 
+ set(BUILD_SHARED_LIBS "Build shared libs" ON)
+-add_subdirectory(api/opencl/khronos/icd)
++#add_subdirectory(api/opencl/khronos/icd)
+ 
+ ###--- Packaging ------------------------------------------------------------###
+ 
+@@ -101,31 +105,31 @@
+ rocm_setup_version( VERSION "2.0.0" )
+ 
+ # MAIN package
+-install(PROGRAMS $<TARGET_FILE:clinfo>
+-        DESTINATION bin/x86_64
+-        COMPONENT MAIN)
++#install(PROGRAMS $<TARGET_FILE:clinfo>
++#        DESTINATION bin/x86_64
++#        COMPONENT MAIN)
+ install(PROGRAMS $<TARGET_FILE:amdocl64>
+-        DESTINATION lib/x86_64
+-        COMPONENT MAIN)
+-install(PROGRAMS $<TARGET_FILE:OpenCL>
+-        DESTINATION lib/x86_64
+-        COMPONENT MAIN)
+-install(PROGRAMS $<TARGET_SONAME_FILE:OpenCL>
+-        DESTINATION lib/x86_64
++        DESTINATION lib64
+         COMPONENT MAIN)
++#install(PROGRAMS $<TARGET_FILE:OpenCL>
++#        DESTINATION lib/x86_64
++#        COMPONENT MAIN)
++#install(PROGRAMS $<TARGET_SONAME_FILE:OpenCL>
++#        DESTINATION lib/x86_64
++#        COMPONENT MAIN)
+ 
+ # DEV package
+-install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/api/opencl/khronos/headers/opencl2.2/CL"
+-        DESTINATION include
+-        COMPONENT DEV
+-        USE_SOURCE_PERMISSIONS
+-        PATTERN cl_d3d10.h EXCLUDE
+-        PATTERN cl_d3d11.h EXCLUDE
+-        PATTERN cl_dx9_media_sharing.h EXCLUDE
+-        PATTERN cl_egl.h EXCLUDE)
+-install(PROGRAMS $<TARGET_LINKER_FILE:OpenCL>
+-        DESTINATION lib/x86_64
+-        COMPONENT DEV)
++#install(DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/api/opencl/khronos/headers/opencl2.2/CL"
++#        DESTINATION include
++#        COMPONENT DEV
++#        USE_SOURCE_PERMISSIONS
++#        PATTERN cl_d3d10.h EXCLUDE
++#        PATTERN cl_d3d11.h EXCLUDE
++#        PATTERN cl_dx9_media_sharing.h EXCLUDE
++#        PATTERN cl_egl.h EXCLUDE)
++#install(PROGRAMS $<TARGET_LINKER_FILE:OpenCL>
++#        DESTINATION lib/x86_64
++#        COMPONENT DEV)
+ 
+ # Generic CPACK variables
+ set(CPACK_GENERATOR "DEB;RPM" CACHE STRING "Default packaging generators")

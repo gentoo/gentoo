@@ -1,0 +1,23 @@
+From a9b052c6e30101fb0b702917f245a3e2a2f08366 Mon Sep 17 00:00:00 2001
+From: Laurent Bigonville <bigon@bigon.be>
+Date: Tue, 2 Oct 2018 10:22:56 +0200
+Subject: [PATCH] Add call to JS::InitSelfHostedCode()
+
+This is needed otherwise mozjs crashes
+---
+ libproxy/modules/pacrunner_mozjs.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/libproxy/modules/pacrunner_mozjs.cpp b/libproxy/modules/pacrunner_mozjs.cpp
+index ed07c69..38e7d46 100644
+--- a/libproxy/modules/pacrunner_mozjs.cpp
++++ b/libproxy/modules/pacrunner_mozjs.cpp
+@@ -118,6 +118,8 @@ class mozjs_pacrunner : public pacrunner {
+ 		// Initialize Javascript context
+ 		if (!(this->jsctx = JS_NewContext(1024 * 1024)))     goto error;
+ 		{
++			if (!JS::InitSelfHostedCode(this->jsctx)) goto error;
++
+ 			JS::RootedValue  rval(this->jsctx);
+ 			JS::CompartmentOptions compart_opts;
+ 

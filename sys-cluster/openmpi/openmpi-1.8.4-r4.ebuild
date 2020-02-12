@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,7 @@ HOMEPAGE="http://www.open-mpi.org"
 SRC_URI="http://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-2)/downloads/${MY_P}.tar.bz2"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha ~amd64 ~ia64 ppc ppc64 sparc ~x86 ~amd64-linux"
+KEYWORDS="~alpha ~amd64 ~ia64 ppc ppc64 sparc ~x86 ~amd64-linux"
 IUSE="cma cuda +cxx fortran heterogeneous ipv6 mpi-threads numa romio threads vt
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
@@ -55,7 +55,6 @@ MPI_UNCLASSED_DEP_STR="
 RDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
-	!sys-cluster/mpiexec
 	!sys-cluster/pmix
 	dev-libs/libevent
 	dev-libs/libltdl:0

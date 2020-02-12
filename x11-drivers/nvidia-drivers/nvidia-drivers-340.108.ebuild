@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,7 +25,7 @@ SRC_URI="
 
 EMULTILIB_PKG="true"
 IUSE="acpi multilib kernel_FreeBSD kernel_linux static-libs +tools +X"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* amd64 x86"
 LICENSE="GPL-2 NVIDIA-r2"
 SLOT="0/${PV%.*}"
 
@@ -141,6 +141,15 @@ src_prepare() {
 	for man_file in "${NV_MAN}"/*1.gz; do
 		gunzip $man_file || die
 	done
+
+	if use tools; then
+		cp "${FILESDIR}"/nvidia-settings-fno-common.patch "${WORKDIR}" || die
+		sed -i \
+			-e "s:@PV@:${PV}:g" \
+			"${WORKDIR}"/nvidia-settings-fno-common.patch \
+			|| die
+		eapply "${WORKDIR}"/nvidia-settings-fno-common.patch
+	fi
 
 	# Allow user patches so they can support RC kernels and whatever else
 	eapply_user

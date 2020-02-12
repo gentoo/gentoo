@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: git-r3.eclass
@@ -401,16 +401,22 @@ _git-r3_set_gitdir() {
 }
 
 # @FUNCTION: _git-r3_set_submodules
-# @USAGE: <file-contents>
+# @USAGE: <parent-path> <file-contents>
 # @INTERNAL
 # @DESCRIPTION:
 # Parse .gitmodules contents passed as <file-contents>
 # as in "$(cat .gitmodules)"). Composes a 'submodules' array that
 # contains in order (name, URL, path) for each submodule.
+#
+# <parent-path> specifies path to current submodule (empty if top repo),
+# and is used to support recursively specifying submodules.  The path
+# must include a trailing slash if it's not empty.
 _git-r3_set_submodules() {
 	debug-print-function ${FUNCNAME} "$@"
 
-	local data=${1}
+	local parent_path=${1}
+	local data=${2}
+	[[ -z ${parent_path} || ${parent_path} == */ ]] || die
 
 	# ( name url path ... )
 	submodules=()
@@ -435,12 +441,14 @@ _git-r3_set_submodules() {
 					l_res=1
 				fi
 
-				[[ ${subname} == ${p} ]] && res=${l_res}
+				[[ ${parent_path}${subname} == ${p} ]] && res=${l_res}
 			done
 
 			if [[ ! ${res} ]]; then
-				einfo "Skipping submodule ${subname}"
+				einfo "Skipping submodule ${parent_path}${subname}"
 				continue
+			else
+				einfo "Using submodule ${parent_path}${subname}"
 			fi
 		fi
 
@@ -546,7 +554,7 @@ _git-r3_is_local_repo() {
 # This default should be fine unless you are fetching multiple trees
 # from the same repository in the same ebuild.
 #
-# <commit-id> requests attempting to use repository state as of specific
+# <commit-date> requests attempting to use repository state as of specific
 # date. For more details, see EGIT_COMMIT_DATE.
 #
 # The fetch operation will affect the EGIT_STORE only. It will not touch
@@ -817,7 +825,7 @@ git-r3_fetch() {
 	# recursively fetch submodules
 	if git cat-file -e "${local_ref}":.gitmodules &>/dev/null; then
 		local submodules
-		_git-r3_set_submodules \
+		_git-r3_set_submodules "${_GIT_SUBMODULE_PATH}" \
 			"$(git cat-file -p "${local_ref}":.gitmodules || die)"
 
 		while [[ ${submodules[@]} ]]; do
@@ -839,7 +847,9 @@ git-r3_fetch() {
 				local subrepos
 				_git-r3_set_subrepos "${url}" "${repos[@]}"
 
-				git-r3_fetch "${subrepos[*]}" "${commit}" "${local_id}/${subname}"
+				_GIT_SUBMODULE_PATH=${_GIT_SUBMODULE_PATH}${path}/ \
+				git-r3_fetch "${subrepos[*]}" "${commit}" \
+					"${local_id}/${subname}" ""
 			fi
 
 			submodules=( "${submodules[@]:3}" ) # shift
@@ -975,7 +985,7 @@ git-r3_checkout() {
 	# recursively checkout submodules
 	if [[ -f ${out_dir}/.gitmodules && ! ${checkout_paths} ]]; then
 		local submodules
-		_git-r3_set_submodules \
+		_git-r3_set_submodules "${_GIT_SUBMODULE_PATH}" \
 			"$(<"${out_dir}"/.gitmodules)"
 
 		while [[ ${submodules[@]} ]]; do
@@ -989,6 +999,7 @@ git-r3_checkout() {
 				local subrepos
 				_git-r3_set_subrepos "${url}" "${repos[@]}"
 
+				_GIT_SUBMODULE_PATH=${_GIT_SUBMODULE_PATH}${path}/ \
 				git-r3_checkout "${subrepos[*]}" "${out_dir}/${path}" \
 					"${local_id}/${subname}"
 			fi

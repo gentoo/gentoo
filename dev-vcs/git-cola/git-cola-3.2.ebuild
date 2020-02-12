@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 DISTUTILS_SINGLE_IMPL=true
 
 inherit distutils-r1 readme.gentoo-r1 virtualx
@@ -18,22 +18,26 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="dev-python/QtPy[gui,${PYTHON_USEDEP}]
-	dev-python/numpy[${PYTHON_USEDEP}]
-	dev-python/pygments[${PYTHON_USEDEP}]
-	dev-python/send2trash[${PYTHON_USEDEP}]
+RDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/QtPy[gui,${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
+	')
 	dev-vcs/git"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
-	doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		python_targets_python2_7? ( dev-python/sphinxtogithub[$(python_gen_usedep 'python2*')] )
-		)
-	test? (
-		${VIRTUALX_DEPEND}
-		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/mock[${PYTHON_USEDEP}]
-		)"
+	$(python_gen_cond_dep "
+		doc? (
+			dev-python/sphinx[\${PYTHON_MULTI_USEDEP}]
+			)
+		test? (
+			${VIRTUALX_DEPEND}
+			dev-python/nose[\${PYTHON_MULTI_USEDEP}]
+			dev-python/mock[\${PYTHON_MULTI_USEDEP}]
+			)
+	")"
 
 python_prepare_all() {
 	# make sure that tests also use the system provided QtPy

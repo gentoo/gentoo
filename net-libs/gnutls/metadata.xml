@@ -2,8 +2,7 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="project">
-    <email>crypto@gentoo.org</email>
-    <name>Crypto</name>
+    <email>base-system@gentoo.org</email>
   </maintainer>
   <use>
     <flag name="dane">

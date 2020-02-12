@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -49,7 +49,6 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_STATIC_LIBS=OFF
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr"
 		-DSMW_BINDIR="${EPREFIX}/usr/bin"
 		-DSMW_DATADIR="${EPREFIX}/usr/share/${PF}"
 	)

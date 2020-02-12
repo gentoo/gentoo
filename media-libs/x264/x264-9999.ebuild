@@ -17,7 +17,7 @@ else
 	S="${WORKDIR}/${MY_P}"
 fi
 
-SLOT="0/158" # SONAME
+SLOT="0/159" # SONAME
 
 LICENSE="GPL-2"
 IUSE="altivec +interlaced opencl pic static-libs cpu_flags_x86_sse +threads"

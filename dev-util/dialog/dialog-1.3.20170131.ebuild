@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ SRC_URI="ftp://invisible-island.net/${PN}/${MY_P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0/14"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 IUSE="examples minimal nls static-libs unicode"
 
 RDEPEND="
@@ -22,7 +22,6 @@ DEPEND="
 	${RDEPEND}
 	nls? ( sys-devel/gettext )
 	!minimal? ( sys-devel/libtool )
-	!<=sys-freebsd/freebsd-contrib-8.9999
 "
 
 src_prepare() {

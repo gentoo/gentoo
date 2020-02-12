@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit autotools xdg
+inherit autotools eutils xdg
 
 DESCRIPTION="a software musical instrument and audio synthesizer"
 HOMEPAGE="http://dinisnoise.org/"
@@ -11,24 +11,25 @@ SRC_URI="https://archive.org/download/dinisnoise_source_code/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+alsa jack"
 
-BDEPEND="
-	app-text/dos2unix
-	virtual/pkgconfig
-"
-CDEPEND="dev-lang/tcl:0=
+RDEPEND="
+	dev-lang/tcl:0=
 	media-libs/libsdl:=
+	virtual/glu
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
 	jack? ( virtual/jack )
 "
-RDEPEND="${CDEPEND}"
 DEPEND="
 	${RDEPEND}
 	dev-libs/boost
 "
+BDEPEND="
+	virtual/pkgconfig
+"
+
 REQUIRED_USE="|| ( alsa jack )"
 
 PATCHES=(
@@ -39,7 +40,7 @@ PATCHES=(
 src_prepare() {
 	default
 
-	dos2unix pixmaps/${PN}.desktop || die "Failed to fix desktop file"
+	edos2unix pixmaps/${PN}.desktop
 
 	use jack && (sed -i "s/-lasound/-ljack/g" src/Makefile.am || die "Failed to fix jack linking")
 

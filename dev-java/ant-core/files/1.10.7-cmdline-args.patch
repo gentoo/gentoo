@@ -1,0 +1,135 @@
+From 729692d37a72c84998cfc65a6da6e078bbe0910a Mon Sep 17 00:00:00 2001
+From: sergiys <sergiys@amazon.com>
+Date: Wed, 23 Oct 2019 13:24:19 -0700
+Subject: [PATCH] Fix regression introduced by commit "Use commandline argument
+ file for all options, but -J, for case javac"
+
+---
+ .../ant/taskdefs/compilers/JavacExternal.java | 35 +++++++++-------
+ .../taskdefs/compilers/JavacExternalTest.java | 42 +++++++++++++++++++
+ 2 files changed, 62 insertions(+), 15 deletions(-)
+
+diff --git a/src/main/org/apache/tools/ant/taskdefs/compilers/JavacExternal.java b/src/main/org/apache/tools/ant/taskdefs/compilers/JavacExternal.java
+index 9569c7fe8f..637e9bdf6c 100644
+--- a/src/main/org/apache/tools/ant/taskdefs/compilers/JavacExternal.java
++++ b/src/main/org/apache/tools/ant/taskdefs/compilers/JavacExternal.java
+@@ -66,7 +66,7 @@ public boolean execute() throws BuildException {
+         int firstFileName;
+ 
+         if (assumeJava1_2Plus()) {
+-            firstFileName = moveJOptionsToBeginning(commandLine);
++            firstFileName = moveArgFileEligibleOptionsToEnd(commandLine);
+         } else {
+             firstFileName = -1;
+         }
+@@ -77,31 +77,36 @@ public boolean execute() throws BuildException {
+     }
+ 
+     /**
+-     * Moves all -J arguments to the beginning
+-     * So that all command line arguments could be written to file, but -J
++     * Moves all -J and @argfiles arguments to the beginning
++     * So that all command line arguments could be written to file, but -J and @argfile
+      * As per javac documentation:
+      *      you can specify one or more files that contain arguments to the javac command (except -J options)
+      * @param commandLine command line to process
+-     * @return int index of first non -J argument
++     * @return int index of first argument that could be put into argfile
+      */
+-    private int moveJOptionsToBeginning(String[] commandLine) {
+-        int nonJArgumentIdx = 1; // 0 for javac executable
+-        while(nonJArgumentIdx < commandLine.length && commandLine[nonJArgumentIdx].startsWith("-J")) {
+-            nonJArgumentIdx++;
++    private int moveArgFileEligibleOptionsToEnd(String[] commandLine) {
++        int nonArgFileOptionIdx = 1; // 0 for javac executable
++        while(nonArgFileOptionIdx < commandLine.length &&
++                !isArgFileEligible(commandLine[nonArgFileOptionIdx])) {
++            nonArgFileOptionIdx++;
+         }
+ 
+-        for(int i = nonJArgumentIdx + 1; i < commandLine.length; i++) {
+-            if (commandLine[i].startsWith("-J")) {
+-                String jArgument = commandLine[i];
+-                for(int j = i - 1; j >= nonJArgumentIdx; j--) {
++        for(int i = nonArgFileOptionIdx + 1; i < commandLine.length; i++) {
++            if (!isArgFileEligible(commandLine[i])) {
++                String option = commandLine[i];
++                for(int j = i - 1; j >= nonArgFileOptionIdx; j--) {
+                     commandLine[j + 1] = commandLine[j];
+                 }
+-                commandLine[nonJArgumentIdx] = jArgument;
+-                nonJArgumentIdx++;
++                commandLine[nonArgFileOptionIdx] = option;
++                nonArgFileOptionIdx++;
+             }
+         }
+ 
+-        return nonJArgumentIdx;
++        return nonArgFileOptionIdx;
++    }
++
++    private static boolean isArgFileEligible(String option) {
++        return !(option.startsWith("-J") || option.startsWith("@"));
+     }
+ 
+     /**
+diff --git a/src/tests/junit/org/apache/tools/ant/taskdefs/compilers/JavacExternalTest.java b/src/tests/junit/org/apache/tools/ant/taskdefs/compilers/JavacExternalTest.java
+index 53aac6377c..a893fb49c6 100644
+--- a/src/tests/junit/org/apache/tools/ant/taskdefs/compilers/JavacExternalTest.java
++++ b/src/tests/junit/org/apache/tools/ant/taskdefs/compilers/JavacExternalTest.java
+@@ -28,6 +28,7 @@
+ import java.io.File;
+ import java.io.IOException;
+ import java.util.Arrays;
++import java.util.stream.Stream;
+ 
+ import static org.junit.Assert.assertEquals;
+ import static org.junit.Assert.assertTrue;
+@@ -131,6 +132,47 @@ public void allJOptionsAreMovedToBeginning() throws Exception {
+         }
+     }
+ 
++    @Test
++    public void argFileOptionIsMovedToBeginning() throws Exception {
++        final File workDir = createWorkDir("testSMC");
++        try {
++            final File src = new File(workDir, "src");
++            src.mkdir();
++            createFile(src, "org/apache/ant/tests/J1.java");
++            createFile(src, "org/apache/ant/tests/J2.java");
++            final File modules = new File(workDir, "modules");
++            modules.mkdir();
++            final Project prj = new Project();
++            prj.setBaseDir(workDir);
++            final Javac javac = new Javac();
++            javac.setProject(prj);
++            final Commandline[] cmd = new Commandline[1];
++            final TestJavacExternal impl = new TestJavacExternal();
++            final Path srcPath = new Path(prj);
++            srcPath.setLocation(src);
++            javac.setSrcdir(srcPath);
++            javac.createModulepath().setLocation(modules);
++            javac.setSource("9");
++            javac.setTarget("9");
++            javac.setFork(true);
++            javac.setMemoryInitialSize("80m");
++            javac.setExecutable("javacExecutable");
++            javac.add(impl);
++            javac.createCompilerArg().setValue("-g");
++            javac.createCompilerArg().setValue("@/home/my-compiler.args");
++            javac.execute();
++            assertEquals("javacExecutable", impl.getArgs()[0]);
++            assertEquals("-J-Xms80m", impl.getArgs()[1]);
++            assertEquals("@/home/my-compiler.args", impl.getArgs()[2]);
++            assertTrue(Stream.of(impl.getArgs()).anyMatch(x -> x.equals("-g")));
++            assertTrue(impl.getArgs()[impl.getArgs().length - 2].endsWith("J1.java"));
++            assertTrue(impl.getArgs()[impl.getArgs().length - 1].endsWith("J2.java"));
++            assertEquals(3, impl.getFirstFileName());
++        } finally {
++            delete(workDir);
++        }
++    }
++
+     private File createWorkDir(String testName) {
+         final File tmp = new File(System.getProperty("java.io.tmpdir"));   //NOI18N
+         final File destDir = new File(tmp, String.format("%s%s%d",

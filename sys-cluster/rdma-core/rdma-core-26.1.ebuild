@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit cmake-utils python-single-r1 udev systemd
 
@@ -31,7 +31,11 @@ COMMON_DEPEND="
 	python? ( ${PYTHON_DEPS} )"
 
 DEPEND="${COMMON_DEPEND}
-	python? ( dev-python/cython[${PYTHON_USEDEP}] )"
+	python? (
+		$(python_gen_cond_dep '
+			dev-python/cython[${PYTHON_MULTI_USEDEP}]
+		')
+	)"
 
 RDEPEND="${COMMON_DEPEND}
 	!sys-fabric/infiniband-diags
@@ -92,4 +96,6 @@ src_install() {
 	newinitd "${FILESDIR}"/ibacm.init ibacm
 	newinitd "${FILESDIR}"/iwpmd.init iwpmd
 	newinitd "${FILESDIR}"/srpd.init srpd
+
+	use python && python_optimize
 }

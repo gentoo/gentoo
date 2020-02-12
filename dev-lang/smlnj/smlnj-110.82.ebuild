@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -137,8 +137,8 @@ src_install() {
 	SUBDIR=$(smlnj_get_libdir)/${PN}
 	DIR=/usr/${SUBDIR}
 	for file in bin/{*,.*}; do
-		[[ -f ${file} ]] && sed -e "2iSMLNJ_HOME=${EPREFIX%/}/${DIR}" \
-								-e "s:${WORKDIR}:${EPREFIX%/}/${DIR}:" -i ${file}
+		[[ -f ${file} ]] && sed -e "2iSMLNJ_HOME=${EPREFIX}/${DIR}" \
+								-e "s:${WORKDIR}:${EPREFIX}/${DIR}:" -i ${file}
 	done
 	dodir ${DIR}/bin
 	exeinto ${DIR}/bin

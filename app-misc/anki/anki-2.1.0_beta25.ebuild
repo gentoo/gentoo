@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,17 +23,19 @@ RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	dev-python/PyQt5[gui,svg,webkit,${PYTHON_USEDEP}]
-	>=dev-python/httplib2-0.7.4[${PYTHON_USEDEP}]
-	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
-	dev-python/decorator[${PYTHON_USEDEP}]
-	dev-python/markdown[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/send2trash[${PYTHON_USEDEP}]
-	recording? (
-		media-sound/lame
-		>=dev-python/pyaudio-0.2.4[${PYTHON_USEDEP}]
-	)
+	$(python_gen_cond_dep '
+		dev-python/PyQt5[gui,svg,webkit,${PYTHON_MULTI_USEDEP}]
+		>=dev-python/httplib2-0.7.4[${PYTHON_MULTI_USEDEP}]
+		dev-python/beautifulsoup:4[${PYTHON_MULTI_USEDEP}]
+		dev-python/decorator[${PYTHON_MULTI_USEDEP}]
+		dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
+		recording? (
+			media-sound/lame
+			>=dev-python/pyaudio-0.2.4[${PYTHON_MULTI_USEDEP}]
+		)
+	')
 	sound? ( media-video/mplayer )
 	latex? (
 		app-text/texlive
@@ -41,7 +43,11 @@ RDEPEND="${PYTHON_DEPS}
 	)
 "
 DEPEND="${RDEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}] )
+	test? (
+		$(python_gen_cond_dep '
+			dev-python/nose[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 
 PATCHES=( "${FILESDIR}"/${P}-web-folder.patch )

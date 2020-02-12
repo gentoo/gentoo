@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit meson python-single-r1 vala xdg-utils
 
@@ -32,9 +32,11 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/libgudev:=
 	>=dev-libs/libgusb-0.2.9[introspection]
 	>=dev-libs/libxmlb-0.1.7
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
+	')
 	>=net-libs/libsoup-2.51.92:2.4[introspection]
 	>=sys-auth/polkit-0.103
 	virtual/libelf:0=

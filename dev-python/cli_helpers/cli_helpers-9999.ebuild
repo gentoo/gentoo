@@ -1,14 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python3_{6,7} )
 EGIT_REPO_URI="https://github.com/dbcli/${PN}.git"
 inherit distutils-r1 git-r3
 
 DESCRIPTION="Python helpers for common CLI tasks"
-HOMEPAGE="http://cli-helpers.rtfd.io/"
+HOMEPAGE="https://cli-helpers.rtfd.io/"
 SRC_URI=""
 
 LICENSE="BSD"

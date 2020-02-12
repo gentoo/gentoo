@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} )
-inherit fcaps flag-o-matic git-r3 multilib python-any-r1 qmake-utils user xdg-utils cmake-utils
+PYTHON_COMPAT=( python3_{6,7} )
+inherit fcaps flag-o-matic git-r3 multilib python-any-r1 qmake-utils user xdg-utils cmake
 
 DESCRIPTION="A network protocol analyzer formerly known as ethereal"
 HOMEPAGE="https://www.wireshark.org/"
@@ -83,11 +83,7 @@ REQUIRED_USE="
 	plugin-ifdemo? ( plugins )
 "
 PATCHES=(
-	"${FILESDIR}"/${PN}-2.4-androiddump.patch
 	"${FILESDIR}"/${PN}-2.6.0-redhat.patch
-	"${FILESDIR}"/${PN}-2.9.0-tfshark-libm.patch
-	"${FILESDIR}"/${PN}-99999999-androiddump-wsutil.patch
-	"${FILESDIR}"/${PN}-99999999-qtsvg.patch
 	"${FILESDIR}"/${PN}-99999999-ui-needs-wiretap.patch
 )
 
@@ -168,15 +164,15 @@ src_configure() {
 		-DENABLE_ZLIB=$(usex zlib)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# FAQ is not required as is installed from help/faq.txt
 	dodoc AUTHORS ChangeLog NEWS README* doc/randpkt.txt doc/README*

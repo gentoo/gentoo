@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_5,3_6} pypy )
+PYTHON_COMPAT=( python3_6 )
 DISTUTILS_SINGLE_IMPL=1
 
 inherit distutils-r1 systemd
@@ -21,11 +21,11 @@ RDEPEND="
 	virtual/mta
 	selinux? ( sec-policy/selinux-fail2ban )
 	systemd? ( $(python_gen_cond_dep '|| (
-		dev-python/python-systemd[${PYTHON_USEDEP}]
-		sys-apps/systemd[python(-),${PYTHON_USEDEP}]
+		dev-python/python-systemd[${PYTHON_MULTI_USEDEP}]
+		sys-apps/systemd[python(-),${PYTHON_MULTI_USEDEP}]
 	)' 'python*' ) )
 "
-REQUIRED_USE="systemd? ( !python_single_target_pypy )"
+
 RESTRICT="test"
 DOCS=( ChangeLog DEVELOP README.md THANKS TODO doc/run-rootless.txt )
 

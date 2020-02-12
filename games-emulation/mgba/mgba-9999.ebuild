@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils desktop xdg
+inherit cmake desktop xdg
 
 DESCRIPTION="Game Boy Advance emulator written in C"
 HOMEPAGE="https://mgba.io"
@@ -19,7 +19,7 @@ else
 fi
 LICENSE="MPL-2.0"
 SLOT="0"
-IUSE="debug elf ffmpeg imagemagick libav opengl qt5 +sdl sqlite"
+IUSE="debug discord elf ffmpeg libav opengl qt5 +sdl sqlite"
 REQUIRED_USE="|| ( qt5 sdl )
 		qt5? ( opengl )"
 
@@ -31,7 +31,6 @@ RDEPEND="
 		libav? ( media-video/libav:= )
 		!libav? ( media-video/ffmpeg:= )
 	)
-	imagemagick? ( media-gfx/imagemagick:= )
 	opengl? ( virtual/opengl )
 	qt5? (
 		dev-qt/qtcore:5
@@ -47,7 +46,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	xdg_environment_reset
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Get rid of any bundled stuff we don't want
 	for pkg in libpng lzma sqlite3 zlib ; do
@@ -69,6 +68,7 @@ src_configure() {
 		-DM_CORE_GB=ON
 		-DM_CORE_GBA=ON
 		-DUSE_DEBUGGERS="$(usex debug)"
+		-DUSE_DISCORD_RPC="$(usex discord)"
 		-DUSE_EDITLINE="$(usex debug)"
 		-DUSE_ELF="$(usex elf)"
 		-DUSE_EPOXY=OFF
@@ -76,17 +76,16 @@ src_configure() {
 		-DUSE_GDB_STUB="$(usex debug)"
 		-DUSE_LIBZIP=OFF
 		-DUSE_LZMA=OFF
-		-DUSE_MAGICK="$(usex imagemagick)"
 		-DUSE_MINIZIP=ON
 		-DUSE_PNG=ON
 		-DUSE_SQLITE3="$(usex sqlite)"
 		-DUSE_ZLIB=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -14,7 +14,7 @@ SRC_URI="mirror://sourceforge/mcj/${MY_P}.tar.gz
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 IUSE=""
 
 RDEPEND="x11-libs/libXpm
@@ -54,6 +54,7 @@ src_prepare() {
 	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-typos.patch
 	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-man-hyphen.patch
 	epatch "${WORKDIR}/${P}-gentoo-patchset"/${PN}-3.2.5e-fprintf_format_warnings.patch
+	epatch "${FILESDIR}"/${PN}-3.2.5e-gcc10-fno-common.patch
 
 	sed -e 's:-L$(ZLIBDIR) -lz::' \
 		-e 's: -lX11::' \

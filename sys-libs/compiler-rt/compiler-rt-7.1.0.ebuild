@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,6 +36,11 @@ S=${WORKDIR}/${P/_/}.src
 # least intrusive of all
 CMAKE_BUILD_TYPE=RelWithDebInfo
 
+python_check_deps() {
+	use test || return 0
+	has_version "dev-python/lit[${PYTHON_USEDEP}]"
+}
+
 pkg_pretend() {
 	if ! use clang && ! tc-is-clang; then
 		ewarn "Building using a compiler other than clang may result in broken atomics"
@@ -61,9 +66,9 @@ src_configure() {
 	if use clang; then
 		local -x CC=${CHOST}-clang
 		local -x CXX=${CHOST}-clang++
+		strip-unsupported-flags
 		# ensure we can use clang before installing compiler-rt
 		local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"
-		strip-unsupported-flags
 	elif ! test_compiler; then
 		if test_compiler "${nolib_flags[@]}"; then
 			local -x LDFLAGS="${LDFLAGS} ${nolib_flags[*]}"

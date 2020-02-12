@@ -1,0 +1,44 @@
+From 69682de06816de9b9014441d23bda1918ee2e2fb Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sun, 19 Jan 2020 16:57:45 -0500
+Subject: [PATCH] Avoid multiple-definiton with gcc -fno-common
+
+GCC 10 enables -fno-common by default.
+
+Bug: https://bugs.gentoo.org/705896
+---
+ src/rpc_com.h | 3 +--
+ src/svc.c     | 3 +++
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/src/rpc_com.h b/src/rpc_com.h
+index 10bec79..76badef 100644
+--- a/src/rpc_com.h
++++ b/src/rpc_com.h
+@@ -61,8 +61,7 @@ void __xprt_unregister_unlocked(SVCXPRT *);
+ void __xprt_set_raddr(SVCXPRT *, const struct sockaddr_storage *);
+ 
+ 
+-SVCXPRT **__svc_xports;
+-int __svc_maxrec;
++extern int __svc_maxrec;
+ 
+ #ifdef __cplusplus
+ }
+diff --git a/src/svc.c b/src/svc.c
+index b59467b..6db164b 100644
+--- a/src/svc.c
++++ b/src/svc.c
+@@ -57,6 +57,9 @@
+ 
+ #define max(a, b) (a > b ? a : b)
+ 
++static SVCXPRT **__svc_xports;
++int __svc_maxrec;
++
+ /*
+  * The services list
+  * Each entry represents a set of procedures (an rpc program).
+-- 
+2.25.0
+

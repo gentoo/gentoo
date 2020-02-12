@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
 else
 	SRC_URI="https://www.kernel.org/pub/linux/utils/net/${PN}/${P}.tar.xz"
-	KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
+	KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 s390 sh sparc x86"
 fi
 
 DESCRIPTION="kernel routing and traffic control utilities"
@@ -128,13 +128,13 @@ src_install() {
 
 	emake \
 		DESTDIR="${D}" \
-		PREFIX="${EPREFIX%/}/usr" \
-		LIBDIR="${EPREFIX%/}"/$(get_libdir) \
-		SBINDIR="${EPREFIX%/}"/sbin \
-		CONFDIR="${EPREFIX%/}"/etc/iproute2 \
-		DOCDIR="${EPREFIX%/}"/usr/share/doc/${PF} \
-		MANDIR="${EPREFIX%/}"/usr/share/man \
-		ARPDDIR="${EPREFIX%/}"/var/lib/arpd \
+		PREFIX="${EPREFIX}/usr" \
+		LIBDIR="${EPREFIX}"/$(get_libdir) \
+		SBINDIR="${EPREFIX}"/sbin \
+		CONFDIR="${EPREFIX}"/etc/iproute2 \
+		DOCDIR="${EPREFIX}"/usr/share/doc/${PF} \
+		MANDIR="${EPREFIX}"/usr/share/man \
+		ARPDDIR="${EPREFIX}"/var/lib/arpd \
 		install
 
 	dodir /bin

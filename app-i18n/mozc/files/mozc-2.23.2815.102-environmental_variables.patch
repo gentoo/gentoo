@@ -1,0 +1,132 @@
+https://github.com/google/mozc/issues/470
+
+--- /src/base/system_util.cc
++++ /src/base/system_util.cc
+@@ -208,28 +208,39 @@
+   dir_ = "/";
+   return;
+ #else  // MOZC_USE_PEPPER_FILE_IO
++  const char *configuration_directory_env;
+   string dir;
+ 
+ #ifdef OS_WIN
+-  DCHECK(SUCCEEDED(Singleton<LocalAppDataDirectoryCache>::get()->result()));
+-  dir = Singleton<LocalAppDataDirectoryCache>::get()->path();
++  configuration_directory_env = ::getenv("MOZC_CONFIGURATION_DIRECTORY");
++  if (configuration_directory_env) {
++    dir = configuration_directory_env;
++  } else {
++    DCHECK(SUCCEEDED(Singleton<LocalAppDataDirectoryCache>::get()->result()));
++    dir = Singleton<LocalAppDataDirectoryCache>::get()->path();
+ #ifdef GOOGLE_JAPANESE_INPUT_BUILD
+-  dir = FileUtil::JoinPath(dir, kCompanyNameInEnglish);
+-  FileUtil::CreateDirectory(dir);
++    dir = FileUtil::JoinPath(dir, kCompanyNameInEnglish);
++    FileUtil::CreateDirectory(dir);
+ #endif  // GOOGLE_JAPANESE_INPUT_BUILD
+-  dir = FileUtil::JoinPath(dir, kProductNameInEnglish);
++    dir = FileUtil::JoinPath(dir, kProductNameInEnglish);
++  }
+ 
+ #elif defined(OS_MACOSX)
+-  dir = MacUtil::GetApplicationSupportDirectory();
++  configuration_directory_env = ::getenv("MOZC_CONFIGURATION_DIRECTORY");
++  if (configuration_directory_env) {
++    dir = configuration_directory_env;
++  } else {
++    dir = MacUtil::GetApplicationSupportDirectory();
+ #ifdef GOOGLE_JAPANESE_INPUT_BUILD
+-  dir = FileUtil::JoinPath(dir, "Google");
+-  // The permission of ~/Library/Application Support/Google seems to be 0755.
+-  // TODO(komatsu): nice to make a wrapper function.
+-  ::mkdir(dir.c_str(), 0755);
+-  dir = FileUtil::JoinPath(dir, "JapaneseInput");
++    dir = FileUtil::JoinPath(dir, "Google");
++    // The permission of ~/Library/Application Support/Google seems to be 0755.
++    // TODO(komatsu): nice to make a wrapper function.
++    ::mkdir(dir.c_str(), 0755);
++    dir = FileUtil::JoinPath(dir, "JapaneseInput");
+ #else  //  GOOGLE_JAPANESE_INPUT_BUILD
+-  dir = FileUtil::JoinPath(dir, "Mozc");
++    dir = FileUtil::JoinPath(dir, "Mozc");
+ #endif  //  GOOGLE_JAPANESE_INPUT_BUILD
++  }
+ 
+ #elif defined(OS_ANDROID)
+   // For android, we do nothing here because user profile directory,
+@@ -237,14 +248,24 @@
+   // is injected from Java layer.
+ 
+ #else  // !OS_WIN && !OS_MACOSX && !OS_ANDROID
+-  char buf[1024];
+-  struct passwd pw, *ppw;
+-  const uid_t uid = geteuid();
+-  CHECK_EQ(0, getpwuid_r(uid, &pw, buf, sizeof(buf), &ppw))
+-      << "Can't get passwd entry for uid " << uid << ".";
+-  CHECK_LT(0, strlen(pw.pw_dir))
+-      << "Home directory for uid " << uid << " is not set.";
+-  dir = FileUtil::JoinPath(pw.pw_dir, ".mozc");
++  configuration_directory_env = ::getenv("MOZC_CONFIGURATION_DIRECTORY");
++  if (configuration_directory_env) {
++    dir = configuration_directory_env;
++  } else {
++    const char *home_env = ::getenv("HOME");
++    if (home_env) {
++      dir = FileUtil::JoinPath(home_env, ".mozc");
++    } else {
++      char buf[1024];
++      struct passwd pw, *ppw;
++      const uid_t uid = geteuid();
++      CHECK_EQ(0, getpwuid_r(uid, &pw, buf, sizeof(buf), &ppw))
++          << "Can't get passwd entry for uid " << uid << ".";
++      CHECK_LT(0, strlen(pw.pw_dir))
++          << "Home directory for uid " << uid << " is not set.";
++      dir = FileUtil::JoinPath(pw.pw_dir, ".mozc");
++    }
++  }
+ #endif  // !OS_WIN && !OS_MACOSX && !OS_ANDROID
+ 
+   FileUtil::CreateDirectory(dir);
+@@ -356,6 +377,10 @@
+ #endif  // OS_WIN
+ 
+ string SystemUtil::GetServerDirectory() {
++  const char *server_directory_env = ::getenv("MOZC_SERVER_DIRECTORY");
++  if (server_directory_env) {
++    return server_directory_env;
++  }
+ #ifdef OS_WIN
+   DCHECK(SUCCEEDED(Singleton<ProgramFilesX86Cache>::get()->result()));
+ #if defined(GOOGLE_JAPANESE_INPUT_BUILD)
+@@ -409,6 +434,10 @@
+ }
+ 
+ string SystemUtil::GetDocumentDirectory() {
++  const char *documents_directory_env = ::getenv("MOZC_DOCUMENTS_DIRECTORY");
++  if (documents_directory_env) {
++    return documents_directory_env;
++  }
+ #if defined(OS_MACOSX)
+   return GetServerDirectory();
+ #elif defined(MOZC_DOCUMENT_DIRECTORY)
+--- /src/handwriting/zinnia_handwriting.cc
++++ /src/handwriting/zinnia_handwriting.cc
+@@ -31,6 +31,7 @@
+ 
+ #include "handwriting/zinnia_handwriting.h"
+ 
++#include <cstdlib>
+ #include <memory>
+ #include <string>
+ 
+@@ -48,6 +49,10 @@
+ 
+ // static
+ string ZinniaHandwriting::GetModelFileName() {
++  const char *zinnia_model_file_env = ::getenv("MOZC_ZINNIA_MODEL_FILE");
++  if (zinnia_model_file_env) {
++    return zinnia_model_file_env;
++  }
+ #if defined(MOZC_BUILD)
+   return MOZC_ZINNIA_MODEL_FILE;
+ #else

@@ -1,25 +1,26 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit base toolchain-funcs
+EAPI=7
+inherit toolchain-funcs
 
 DESCRIPTION="Knocker is an easy to use security port scanner written in C"
-SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 HOMEPAGE="http://knocker.sourceforge.net"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="amd64 ppc x86"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fency.patch
+	"${FILESDIR}"/${P}-free.patch
+	"${FILESDIR}"/${P}-knocker_user_is_root.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+)
 DOCS=( AUTHORS BUGS ChangeLog NEWS README TO-DO )
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${P}-fency.patch \
-		"${FILESDIR}"/${P}-free.patch \
-		"${FILESDIR}"/${P}-knocker_user_is_root.patch
-
+src_configure() {
 	tc-export CC
+	default
 }

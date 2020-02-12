@@ -8,7 +8,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake-utils python-single-r1 toolchain-funcs
+inherit cmake python-single-r1 toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/csound/csound.git"
@@ -113,7 +113,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -e '/set(PLUGIN_INSTALL_DIR/s/-${APIVERSION}//' \
 		-e '/-O3/d' \
@@ -153,7 +153,6 @@ src_configure() {
 		-DBUILD_SCANSYN_OPCODES=OFF # this is not allowed to be redistributed: https://github.com/csound/csound/issues/1148
 		-DBUILD_SELECT_OPCODE=ON
 		-DBUILD_SERIAL_OPCODES=ON
-		-DBUILD_SHARED_LIBS=ON
 		-DBUILD_STACK_OPCODES=ON
 		-DBUILD_STATIC_LIBRARY=$(usex static-libs)
 		-DBUILD_STATIC_LIBRARY=$(usex test)
@@ -225,11 +224,11 @@ src_configure() {
 		-DUSE_LIB64=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	dodoc -r Release_Notes/.
 
 	# generate env.d file

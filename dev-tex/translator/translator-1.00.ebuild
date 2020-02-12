@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="A package for translating words in TeX"
 HOMEPAGE="https://bitbucket.org/rivanvx/beamer/src"
 SRC_URI="mirror://sourceforge/latex-beamer/${P}.tar.gz"
 
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux"
 
 LICENSE="GPL-2 LPPL-1.3c"
 SLOT="0"

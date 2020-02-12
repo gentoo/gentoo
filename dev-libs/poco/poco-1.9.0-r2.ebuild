@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="C++ libraries for building network-based applications"
 HOMEPAGE="https://pocoproject.org/"
@@ -52,7 +52,7 @@ S="${WORKDIR}/${PN}-${P}-release"
 PATCHES=( "${FILESDIR}/${PN}-1.7.2-iodbc-incdir.patch" )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	if use test ; then
 		# ignore missing tests on experimental library
@@ -115,15 +115,15 @@ src_configure() {
 		-DENABLE_ZIP="$(usex zip)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
-	POCO_BASE="${S}" cmake-utils_src_test
+	POCO_BASE="${S}" cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use examples ; then
 		for sd in */samples ; do

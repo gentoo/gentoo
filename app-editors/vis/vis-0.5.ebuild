@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/martanne/vis/releases/download/v${PV}/vis-v${PV}.tar
 	test? ( https://github.com/martanne/vis-test/releases/download/v${MY_PTV}/vis-test-${MY_PTV}.tar.gz -> vis-test-${MY_PTV}.tar.gz )"
 LICENSE="ISC"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE="+ncurses selinux test tre"
 RESTRICT="!test? ( test )"
 
@@ -51,7 +51,7 @@ src_configure() {
 }
 
 update_symlinks() {
-	einfo "Calling eselect vi update --if-unset…"
+	einfo "Calling eselect vi update --if-unset"
 	eselect vi update --if-unset
 }
 

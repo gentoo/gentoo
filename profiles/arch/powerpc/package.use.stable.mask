@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -63,10 +63,6 @@ sys-fs/multipath-tools rbd
 # Pacho Ramos <grknight@gentoo.org> (2016-11-01)
 # Dependencies not going to stable for now
 dev-util/geany-plugins gtkspell
-
-# Pacho Ramos <grknight@gentoo.org> (2016-11-01)
-# net-misc/libteam is now ~ppc ~ppc64
-net-misc/networkmanager teamd
 
 # Michael Palimaka <kensington@gentoo.org> (2016-10-21)
 # Requires media-libs/opencv which is not stable

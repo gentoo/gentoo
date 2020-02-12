@@ -38,13 +38,17 @@ RDEPEND="
 	virtual/pkgconfig
 	virtual/udev
 
+	elibc_musl? ( sys-libs/fts-standalone )
 	selinux? (
 		sec-policy/selinux-dracut
 		sys-libs/libselinux
 		sys-libs/libsepol
 	)
-	"
-DEPEND=">=sys-apps/kmod-23"
+"
+DEPEND="
+	>=sys-apps/kmod-23
+	elibc_musl? ( sys-libs/fts-standalone )
+"
 
 BDEPEND="
 	app-text/asciidoc
@@ -52,9 +56,9 @@ BDEPEND="
 	>=app-text/docbook-xsl-stylesheets-1.75.2
 	>=dev-libs/libxslt-1.1.26
 	virtual/pkgconfig
-	"
+"
 
-DOCS=( AUTHORS HACKING NEWS README README.generic README.kernel README.modules
+DOCS=( AUTHORS HACKING NEWS README.md README.generic README.kernel README.modules
 	README.testsuite TODO )
 
 QA_MULTILIB_PATHS="usr/lib/dracut/.*"
@@ -151,4 +155,7 @@ pkg_postinst() {
 		"Install ssh and scp along with config files and specified keys" \
 		net-misc/openssh
 	optfeature "Enable logging with rsyslog" app-admin/rsyslog
+	optfeature \
+		"Enable rngd service to help generating entropy early during boot" \
+		sys-apps/rng-tools
 }

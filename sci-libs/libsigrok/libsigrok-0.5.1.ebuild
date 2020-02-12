@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit eutils gnome2-utils python-single-r1 java-pkg-opt-2 udev xdg-utils
 
@@ -28,7 +28,12 @@ REQUIRED_USE="java? ( cxx ) python? ( cxx ${PYTHON_REQUIRED_USE} )"
 LIB_DEPEND=">=dev-libs/glib-2.32.0[static-libs(+)]
 	>=dev-libs/libzip-0.8:=[static-libs(+)]
 	cxx? ( dev-cpp/glibmm:2[static-libs(+)] )
-	python? ( ${PYTHON_DEPS} >=dev-python/pygobject-3.0.0[${PYTHON_USEDEP}] )
+	python? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			>=dev-python/pygobject-3.0.0[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] )
 	parport? ( sys-libs/libieee1284[static-libs(+)] )
 	serial? ( >=dev-libs/libserialport-0.1.1[static-libs(+)] )
@@ -44,8 +49,10 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 		>=virtual/jdk-1.4
 	)
 	python? (
-		dev-python/setuptools[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		')
 		>=dev-lang/swig-3.0.6
 	)
 	virtual/pkgconfig"

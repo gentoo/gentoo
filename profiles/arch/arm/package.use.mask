@@ -1,5 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
+# media-libs/libheif is not keyworded
+media-gfx/gimp heif
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
+# zfs is not keyworded on arm
+dev-util/schroot zfs
 
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
 # dev-libs/criterion is not keyworded yet
@@ -64,7 +72,7 @@ sys-apps/fwupd dell thunderbolt
 www-apps/nextcloud imagemagick
 
 # Corentin Pazdera <nado@troglodyte.be> (2018-12-28)
-# Requires virtual/pypy which isn't keyworded for ARM.
+# Requires dev-python/pypy which isn't keyworded for ARM.
 www-servers/uwsgi pypy
 
 # Davide Pesavento <pesa@gentoo.org> (2018-12-27)
@@ -139,10 +147,6 @@ media-tv/tvheadend hdhomerun
 # All current clang versions are broken on ARM.
 app-doc/doxygen clang
 
-# Thomas Deutschmann <whissi@gentoo.org> (2017-11-28)
-# Requires dev-libs/mongo-c-driver which isn't keyworded
->=app-admin/rsyslog-8.31 mongodb
-
 # Patrice Clement <monsieurp@gentoo.org> (2017-09-24)
 # Unmask Raspberry Pi support on arm.
 media-video/mpv -raspberry-pi
@@ -191,7 +195,7 @@ net-firewall/firehol ipset
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-05)
 # Mask some fabrics
-sys-cluster/openmpi java openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi java openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213
@@ -304,10 +308,6 @@ www-client/chromium widevine
 # Markus Meier <maekke@gentoo.org> (2015-01-17)
 # Unkeyworded deps, bug #536226
 net-vpn/strongswan strongswan_plugins_unbound
-
-# Alexis Ballier <aballier@gentoo.org> (2015-01-06)
-# sci-libs/xkaapi does not build here on armv7
-sci-libs/vtk kaapi
 
 # Benda Xu <heroxbd@gentoo.org> (2015-01-03)
 # not tested
@@ -457,7 +457,6 @@ media-gfx/pstoedit emf
 
 # Rick Farina <zerochaos@gentoo.org> (2013-02-05)
 # masking all stable packages with java use flag
-net-vpn/openconnect java
 dev-util/oprofile java
 dev-libs/cyrus-sasl java
 dev-tex/tex4ht java
@@ -501,7 +500,7 @@ media-libs/phonon vlc
 
 # Michael Sterrett <mr_bones_@gentoo.org> (2012-03-04)
 # arm is missing keywords for >=dev-libs/json-glib-0.12
-app-admin/syslog-ng json mongodb
+app-admin/syslog-ng json
 
 # Anthony G. Basile <blueness@gentoo.org> (2011-12-21)
 # Mask the vde flag on tinc because net-misc/vde is not

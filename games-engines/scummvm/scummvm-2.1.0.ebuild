@@ -47,6 +47,7 @@ S="${WORKDIR}/${P/_/}"
 
 PATCHES=(
 	"${FILESDIR}/${P}-tts_pthread_link.patch"
+	"${FILESDIR}/${P}-fluidsynth.patch"
 )
 
 src_prepare() {

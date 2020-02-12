@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 USE_RUBY="ruby23 ruby24 ruby25"
 
 inherit eutils multiprocessing python-single-r1 ruby-single toolchain-funcs
@@ -18,7 +18,7 @@ SRC_URI="https://dev.gentoo.org/~slyfox/distfiles/${MY_P}.tar.bz2"
 LICENSE="GPL-2 LGPL-2.1"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ppc x86"
+KEYWORDS="~alpha amd64 ~arm ppc x86"
 
 IUSE="aac airplay +alsa ao asf cdda curl cxx ffmpeg flac fluidsynth ices
 jack mac mlib-update mms +mad modplug mp3 mp4 musepack ofa opus oss

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -16,7 +16,7 @@ if [[ ${PV} == *9999* ]]; then
 else
 	SRC_URI="http://openbox.org/dist/openbox/${P}.tar.gz
 	branding? ( https://dev.gentoo.org/~hwoarang/distfiles/surreal-gentoo.tar.gz )"
-	KEYWORDS="alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86 ~x86-linux"
+	KEYWORDS="~alpha amd64 arm ~arm64 hppa ~mips ppc ppc64 sparc x86 ~x86-linux"
 fi
 
 LICENSE="GPL-2"

@@ -1,0 +1,44 @@
+From 55542113c690a567e728e40d4181d7d037fc21b0 Mon Sep 17 00:00:00 2001
+From: Jiri Olsa <jolsa@kernel.org>
+Date: Fri, 11 Oct 2019 14:21:55 +0200
+Subject: perf tools: Propagate CFLAGS to libperf
+
+Andi reported that 'make DEBUG=1' does not propagate to the libbperf
+code. It's true also for the other flags. Changing the code to propagate
+the global build flags to libperf compilation.
+
+Reported-by: Andi Kleen <ak@linux.intel.com>
+Signed-off-by: Jiri Olsa <jolsa@kernel.org>
+Cc: Alexander Shishkin <alexander.shishkin@linux.intel.com>
+Cc: Michael Petlan <mpetlan@redhat.com>
+Cc: Namhyung Kim <namhyung@kernel.org>
+Cc: Peter Zijlstra <peterz@infradead.org>
+Link: http://lore.kernel.org/lkml/20191011122155.15738-1-jolsa@kernel.org
+Signed-off-by: Arnaldo Carvalho de Melo <acme@redhat.com>
+---
+ tools/perf/lib/core.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+(limited to 'tools/perf/lib/core.c')
+
+diff --git a/tools/perf/lib/core.c b/tools/perf/lib/core.c
+index d0b9ae422b9f..58fc894b76c5 100644
+--- a/tools/perf/lib/core.c
++++ b/tools/perf/lib/core.c
+@@ -5,11 +5,12 @@
+ #include <stdio.h>
+ #include <stdarg.h>
+ #include <unistd.h>
++#include <linux/compiler.h>
+ #include <perf/core.h>
+ #include <internal/lib.h>
+ #include "internal.h"
+ 
+-static int __base_pr(enum libperf_print_level level, const char *format,
++static int __base_pr(enum libperf_print_level level __maybe_unused, const char *format,
+ 		     va_list args)
+ {
+ 	return vfprintf(stderr, format, args);
+-- 
+cgit 1.2-0.3.lf.el7
+

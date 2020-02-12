@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 CHECKREQS_DISK_BUILD=3500M
-inherit git-r3 cmake-utils xdg check-reqs
+inherit git-r3 cmake xdg check-reqs
 
 DESCRIPTION="WYSIWYG Music Score Typesetter"
 HOMEPAGE="https://musescore.org/"
@@ -17,7 +17,7 @@ EGIT_REPO_URI="https://github.com/${PN}/MuseScore.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
-IUSE="alsa debug jack mp3 portaudio portmidi pulseaudio vorbis webengine"
+IUSE="alsa debug jack mp3 osc omr portaudio portmidi pulseaudio +sf3 sfz webengine"
 REQUIRED_USE="portmidi? ( portaudio )"
 
 BDEPEND="
@@ -44,10 +44,11 @@ DEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.0 )
 	jack? ( virtual/jack )
 	mp3? ( media-sound/lame )
+	omr? ( app-text/poppler )
 	portaudio? ( media-libs/portaudio )
 	portmidi? ( media-libs/portmidi )
 	pulseaudio? ( media-sound/pulseaudio )
-	vorbis? ( media-libs/libvorbis )
+	sf3? ( media-libs/libvorbis )
 	webengine? ( dev-qt/qtwebengine:5[widgets] )
 "
 RDEPEND="${DEPEND}"
@@ -62,7 +63,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Move soundfonts to the correct directory
 	mv "${WORKDIR}"/sound/* "${S}"/share/sound/ || die "Failed to move soundfont files"
@@ -70,25 +71,35 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DCMAKE_SKIP_RPATH=ON
-		-DDOWNLOAD_SOUNDFONT=OFF
-		-DUSE_SYSTEM_QTSINGLEAPPLICATION=ON
-		-DUSE_PATH_WITH_EXPLICIT_QT_VERSION=ON
-		-DUSE_SYSTEM_FREETYPE=ON
+		-DAEOLUS=OFF # does not compile
 		-DBUILD_ALSA="$(usex alsa)"
+		-DBUILD_CRASH_REPORTER=OFF
 		-DBUILD_JACK="$(usex jack)"
 		-DBUILD_LAME="$(usex mp3)"
+		-DBUILD_PCH=ON
 		-DBUILD_PORTAUDIO="$(usex portaudio)"
 		-DBUILD_PORTMIDI="$(usex portmidi)"
 		-DBUILD_PULSEAUDIO="$(usex pulseaudio)"
-		-DSOUNDFONT3="$(usex vorbis)"
+		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_TELEMETRY_MODULE=ON
 		-DBUILD_WEBENGINE="$(usex webengine)"
+		-DCMAKE_SKIP_RPATH=ON
+		-DDOWNLOAD_SOUNDFONT=OFF
+		-DHAS_AUDIOFILE=ON
+		-DOCR=OFF
+		-DOMR="$(usex omr)"
+		-DSOUNDFONT3=ON
+		-DZERBERUS="$(usex sfz)"
+		-DUSE_PATH_WITH_EXPLICIT_QT_VERSION=ON
+		-DUSE_SYSTEM_FREETYPE=ON
+		-DUSE_SYSTEM_POPPLER=ON
+		-DUSE_SYSTEM_QTSINGLEAPPLICATION=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
 	cd "${BUILD_DIR}" || die
-	cmake-utils_src_make -j1 lrelease manpages
-	cmake-utils_src_compile
+	cmake_build -j1 lrelease manpages
+	cmake_src_compile
 }

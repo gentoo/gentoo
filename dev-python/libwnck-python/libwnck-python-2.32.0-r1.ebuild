@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -12,7 +12,7 @@ inherit gnome-python-common-r1 eutils
 DESCRIPTION="Python bindings for the libwnck library"
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm ia64 ppc ppc64 ~sh sparc x86"
 IUSE="examples"
 
 RDEPEND=">=x11-libs/libwnck-2.19.3:1

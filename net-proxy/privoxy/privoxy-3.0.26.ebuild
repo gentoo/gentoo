@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -18,7 +18,7 @@ external-filters +fast-redirects +force graceful-termination
 ie-images +image-blocking ipv6 lfs png-images selinux +stats
 +threads toggle tools whitelists +zlib"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ppc ppc64 sparc x86"
+KEYWORDS="~alpha amd64 arm ppc ppc64 sparc x86"
 LICENSE="GPL-2"
 
 DEPEND="

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,7 +17,7 @@ HOMEPAGE="https://audacious-media-player.org/"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="aac adplug +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gtk http gme
+IUSE="aac +alsa ampache bs2b cdda cue ffmpeg flac fluidsynth gtk http gme
 	jack lame libav libnotify libsamplerate lirc mms modplug mp3 nls opengl
 	pulseaudio qtmedia scrobbler sdl sid sndfile soxr speedpitch streamtuner
 	vorbis wavpack"
@@ -55,7 +55,6 @@ DEPEND="
 	dev-libs/libxml2:2
 	~media-sound/audacious-${PV}[gtk=]
 	aac? ( >=media-libs/faad2-2.7 )
-	adplug? ( media-libs/adplug )
 	alsa? ( >=media-libs/alsa-lib-1.0.16 )
 	ampache? ( =media-libs/ampache_browser-1* )
 	bs2b? ( media-libs/libbs2b )
@@ -129,12 +128,12 @@ src_configure() {
 	local myeconfargs=(
 		--enable-mpris2
 		--enable-songchange
+		--disable-adplug # not packaged
 		--disable-openmpt # not packaged
 		--disable-oss4
 		--disable-coreaudio
 		--disable-sndio
 		$(use_enable aac)
-		$(use_enable adplug)
 		$(use_enable alsa)
 		$(use_enable ampache)
 		$(use_enable bs2b)

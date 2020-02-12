@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -13,7 +13,7 @@ S="${WORKDIR}/${PN}-rel$(replace_all_version_separators '')"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
-KEYWORDS="alpha amd64 ppc x86"
+KEYWORDS="~alpha amd64 ppc x86"
 IUSE="doc +ocamlopt"
 
 DEPEND="

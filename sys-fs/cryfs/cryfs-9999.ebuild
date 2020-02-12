@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
-inherit cmake-utils flag-o-matic linux-info python-any-r1
+PYTHON_COMPAT=( python3_{6,7} )
+inherit cmake flag-o-matic linux-info python-any-r1
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -46,7 +46,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# don't install compressed manpage
 	cmake_comment_add_subdirectory doc
@@ -69,7 +69,7 @@ src_configure() {
 	)
 	use custom-optimization || append-flags -O3
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {

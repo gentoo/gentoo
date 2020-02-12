@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit gnome2 python-any-r1 virtualx
 
@@ -60,7 +60,7 @@ COMMON_DEPEND="
 		>=media-libs/clutter-gtk-0.90.3:1.0
 		>=media-libs/libchamplain-0.12.1:0.12[gtk] )
 	spell? (
-		>=app-text/enchant-1.2
+		>=app-text/enchant-1.2:0
 		>=app-text/iso-codes-0.35 )
 	v4l? (
 		dev-libs/libgudev:=

@@ -11,6 +11,7 @@
 		when compared to older generations of HTTP servers.
 	</longdescription>
 	<use>
+		<flag name="libh2o">Build and install libh2o</flag>
 		<flag name="mruby">Enable support for mruby</flag>
 	</use>
 	<upstream>

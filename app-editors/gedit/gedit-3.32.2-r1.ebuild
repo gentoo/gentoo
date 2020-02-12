@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7,8} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 VALA_MIN_API_VERSION="0.26"
 VALA_USE_DEPEND="vapigen"
 
@@ -17,7 +17,7 @@ SLOT="0"
 IUSE="+introspection +python gtk-doc spell vala"
 REQUIRED_USE="python? ( introspection ${PYTHON_REQUIRED_USE} ) spell? ( python )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux"
 
 # X libs are not needed for OSX (aqua)
 DEPEND="
@@ -54,7 +54,10 @@ BDEPEND="
 	>=sys-devel/gettext-0.18
 	virtual/pkgconfig
 "
-PATCHES=( "${FILESDIR}/${PV}-make-spell-optional.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PV}-make-spell-optional.patch
+	"${FILESDIR}"/${PV}-fix-parallel-build.patch # parallel build failure fix, included in 3.34
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

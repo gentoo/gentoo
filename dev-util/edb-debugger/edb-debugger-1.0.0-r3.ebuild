@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg"
 HOMEPAGE="https://github.com/eteran/edb-debugger"
@@ -47,5 +47,5 @@ src_prepare() {
 		sed -i -e '/pkg_check_modules(GRAPHVIZ/d' CMakeLists.txt || die
 	fi
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }

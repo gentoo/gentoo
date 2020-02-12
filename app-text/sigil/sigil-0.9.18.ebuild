@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="tk"
 
-inherit cmake-utils python-single-r1 readme.gentoo-r1 xdg-utils
+inherit cmake python-single-r1 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="Multi-platform WYSIWYG ebook editor for ePub format"
 HOMEPAGE="https://sigil-ebook.com/ https://github.com/Sigil-Ebook/Sigil"
@@ -24,9 +24,10 @@ RDEPEND="
 	dev-libs/boost:=[threads]
 	dev-libs/libpcre:3=[pcre16]
 	dev-libs/xerces-c[icu]
-	dev-python/css-parser[${PYTHON_USEDEP}]
-	dev-python/lxml[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep \
+		'dev-python/css-parser[${PYTHON_MULTI_USEDEP}]
+		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		dev-python/six[${PYTHON_MULTI_USEDEP}]')
 	>=dev-qt/qtconcurrent-5.12:5
 	>=dev-qt/qtcore-5.12:5
 	>=dev-qt/qtgui-5.12:5
@@ -34,14 +35,13 @@ RDEPEND="
 	>=dev-qt/qtwebengine-5.12:5[widgets]
 	>=dev-qt/qtwidgets-5.12:5
 	sys-libs/zlib[minizip]
-	plugins? (
-		dev-python/chardet[${PYTHON_USEDEP}]
-		dev-python/cssselect[${PYTHON_USEDEP}]
-		dev-python/cssutils[${PYTHON_USEDEP}]
-		dev-python/html5lib[${PYTHON_USEDEP}]
-		dev-python/pillow[${PYTHON_USEDEP}]
-		dev-python/regex[${PYTHON_USEDEP}]
-	)
+	plugins? ( $(python_gen_cond_dep \
+		'dev-python/chardet[${PYTHON_MULTI_USEDEP}]
+		dev-python/cssselect[${PYTHON_MULTI_USEDEP}]
+		dev-python/cssutils[${PYTHON_MULTI_USEDEP}]
+		dev-python/html5lib[${PYTHON_MULTI_USEDEP}]
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		dev-python/regex[${PYTHON_MULTI_USEDEP}]') )
 	system-mathjax? ( dev-libs/mathjax )
 "
 DEPEND="${RDEPEND}"
@@ -80,11 +80,11 @@ src_configure() {
 	)
 	use system-mathjax && mycmakeargs+=( -DMATHJAX_DIR="${EPREFIX}"/usr/share/mathjax )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	python_fix_shebang "${ED}"/usr/share/sigil/
 	python_optimize "${ED}"/usr/share/sigil/
 	DISABLE_AUTOFORMATTING=true readme.gentoo_create_doc

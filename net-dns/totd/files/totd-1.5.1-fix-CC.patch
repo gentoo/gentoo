@@ -1,0 +1,11 @@
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -4,7 +4,7 @@
+ # <$Id: Makefile.in,v 3.43 2005/01/31 11:55:14 dillema Exp $>
+ #
+ 
+-CC = gcc
++CC = @CC@
+ 
+ # These use the standard autoconf variables, which by default are
+ # rooted in @prefix@

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,6 +17,23 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2020-02-09)
+# No stable gnome-base/dconf on hppa.
+dev-libs/glib dbus
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-08)
+# No stable x11-libs/gtk+ on hppa.
+gnome-base/librsvg tools
+dev-libs/appstream-glib fonts
+dev-python/pygobject test
+app-mobilephone/gnokii X
+net-analyzer/nmap zenmap
+media-libs/lv2 plugins
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-08)
+# app-text/enchant stable timeout, bug #662484
+dev-lang/php enchant
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2019-06-05)
 # sys-auth/polkit stable timeout, bug #661470
 sys-apps/pcsc-lite policykit
@@ -30,10 +47,6 @@ dev-lang/python bluetooth
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-03-17)
 # net-analyzer/nagios (or icinga) has no stable keywords, bug #676222
 sys-libs/freeipmi nagios
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2018-12-02)
-# gnome-base/nautilus is not stable
-media-sound/easytag nautilus
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2018-05-20)
 # media-libs/libraw is not stable

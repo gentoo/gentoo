@@ -1,0 +1,36 @@
+diff --git a/tests/test_basics.py b/tests/test_basics.py
+index 7fdaf93..a972ea0 100644
+--- a/tests/test_basics.py
++++ b/tests/test_basics.py
+@@ -82,31 +82,6 @@ def test_stop_for_interaction(qtbot, timer):
+     qtbot.stopForInteraction()
+ 
+ 
+-@pytest.mark.parametrize("show", [True, False])
+-@pytest.mark.parametrize("method_name", ["waitExposed", "waitActive"])
+-def test_wait_window(show, method_name, qtbot):
+-    """
+-    Using one of the wait-widget methods should not raise anything if the widget
+-    is properly displayed, otherwise should raise a TimeoutError.
+-    """
+-    method = getattr(qtbot, method_name)
+-    if qt_api.pytest_qt_api != "pyqt5":
+-        with pytest.raises(RuntimeError) as exc_info:
+-            with method(None, None):
+-                pass
+-        assert str(exc_info.value) == "Available in PyQt5 only"
+-    else:
+-        widget = qt_api.QWidget()
+-        qtbot.add_widget(widget)
+-        if show:
+-            with method(widget, timeout=1000):
+-                widget.show()
+-        else:
+-            with pytest.raises(qtbot.TimeoutError):
+-                with method(widget, timeout=100):
+-                    pass
+-
+-
+ @pytest.mark.parametrize("method_name", ["waitExposed", "waitActive"])
+ def test_wait_window_propagates_other_exception(method_name, qtbot):
+     """

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -84,7 +84,7 @@ src_install() {
 		--exclude="killme*" --exclude=".gdb_hist*" \
 		--exclude="debian"  --exclude="COPYING*" \
 		--exclude="*.app" \
-		"${S}" "${ED%/}"/usr/share \
+		"${S}" "${ED}"/usr/share \
 		|| die "Unable to copy files!"
 
 	dosym ../share/lazarus/startlazarus /usr/bin/startlazarus
@@ -97,9 +97,9 @@ src_install() {
 		diropts -m0755
 		dodir /etc/lazarus
 		cp -rf ../lazarus-package-config/* \
-			"${ED%/}"/etc/lazarus || die
+			"${ED}"/etc/lazarus || die
 		cp -rf ../Python-for-Lazarus-${PYTHON_HASH}/python4lazarus \
-			"${ED%/}"/etc/lazarus || die
+			"${ED}"/etc/lazarus || die
 	fi
 
 	make_desktop_entry startlazarus "Lazarus IDE" "lazarus"

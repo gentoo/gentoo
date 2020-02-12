@@ -1,19 +1,19 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
 MY_PV="1-0-0"
 DESCRIPTION="A distributed, collaborative spam detection and filtering network"
 HOMEPAGE="https://github.com/SpamExperts/pyzor"
-SRC_URI="${HOMEPAGE}/archive/release-${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/SpamExperts/pyzor/archive/release-${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 hppa ~ia64 ppc ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 
 IUSE="doc gdbm gevent pyzord redis test"
 # The test suite is py2-only

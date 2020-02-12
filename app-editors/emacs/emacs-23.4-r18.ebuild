@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.bz2
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="23"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 ~sh ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="alsa aqua athena dbus games gconf gif gpm gtk gzip-el jpeg kerberos livecd m17n-lib motif png sound source svg tiff toolkit-scroll-bars X Xaw3d xft +xpm"
 REQUIRED_USE="?? ( aqua X )"
 
@@ -304,10 +304,10 @@ src_install () {
 			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 	fi
 
-	DOC_CONTENTS="You can set the version to be started by /usr/bin/emacs
-		through the Emacs eselect module, which also redirects man and info
-		pages. Therefore, several Emacs versions can be installed at the
-		same time. \"man emacs.eselect\" for details.
+	local DOC_CONTENTS="You can set the version to be started by
+		/usr/bin/emacs through the Emacs eselect module, which also
+		redirects man and info pages. Therefore, several Emacs versions can
+		be installed at the same time. \"man emacs.eselect\" for details.
 		\\n\\nIf you upgrade from a previous major version of Emacs, then
 		it is strongly recommended that you use app-admin/emacs-updater
 		to rebuild all byte-compiled elisp files of the installed Emacs

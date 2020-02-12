@@ -1,11 +1,14 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 inherit multilib-minimal
 
 DESCRIPTION="Library to execute a function when a specific event occurs on a file descriptor"
-HOMEPAGE="https://libevent.org/ https://github.com/libevent/libevent/"
+HOMEPAGE="
+	https://libevent.org/
+	https://github.com/libevent/libevent/
+"
 SRC_URI="
 	https://github.com/${PN}/${PN}/releases/download/release-${PV/_/-}-stable/${P/_/-}-stable.tar.gz -> ${P}.tar.gz
 "

@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 # vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
@@ -15,7 +15,7 @@ if [[ ${PV} == *9999* ]]; then
 	SRC_URI=""
 else
 	SRC_URI="http://download.gimp.org/pub/${PN}/${PV:0:3}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 DESCRIPTION="A graph based image processing framework"
@@ -82,9 +82,10 @@ BDEPEND="
 DOCS=( AUTHORS docs/ChangeLog docs/NEWS.txt )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-0.4.18-drop-failing-tests.patch
-	"${FILESDIR}"/${PN}-0.4.18-program-suffix.patch
+	"${FILESDIR}"/${P}-drop-failing-tests.patch
+	"${FILESDIR}"/${P}-program-suffix.patch
 	"${FILESDIR}"/${P}-meson_cpu_detection.patch
+	"${FILESDIR}"/${P}-cltostring_force_utf8.patch
 )
 
 python_check_deps() {

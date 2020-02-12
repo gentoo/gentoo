@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ inherit ruby-fakegem eutils
 
 DESCRIPTION="Response JSON parser using MultiJson and FaradayMiddleware"
 HOMEPAGE="https://github.com/denro/faraday_middleware-multi_json"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/denro/faraday_middleware-multi_json/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=(python{2_7,3_5,3_6})
+PYTHON_COMPAT=(python{2_7,3_6})
 
 inherit autotools python-single-r1 vala
 
@@ -18,7 +18,7 @@ IUSE=""
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	net-libs/libsearpc[${PYTHON_USEDEP}]
+	net-libs/libsearpc[${PYTHON_SINGLE_USEDEP}]
 	dev-libs/glib:2
 	dev-libs/libevent:0
 	dev-libs/jansson

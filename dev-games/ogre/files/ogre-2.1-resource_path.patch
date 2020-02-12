@@ -1,6 +1,8 @@
+These was already configured above, the BINARY paths are wrong!
+
 --- a/CMake/InstallResources.cmake	2018-03-23 10:48:44.371486540 +0100
 +++ b/CMake/InstallResources.cmake	2018-03-23 10:49:08.333486363 +0100
-@@ -226,10 +226,11 @@
+@@ -226,10 +226,6 @@
    set(OGRE_SAMPLES_DIR_REL "")
    set(OGRE_SAMPLES_DIR_DBG "")
  elseif (UNIX)
@@ -8,11 +10,6 @@
 -  set(OGRE_PLUGIN_DIR_DBG "${OGRE_BINARY_DIR}/lib")
 -  set(OGRE_SAMPLES_DIR_REL "${OGRE_BINARY_DIR}/lib")
 -  set(OGRE_SAMPLES_DIR_DBG "${OGRE_BINARY_DIR}/lib")
-+# No, this was already configured above, the BINARY paths are wrong!
-+#  set(OGRE_PLUGIN_DIR_REL "${OGRE_BINARY_DIR}/lib")
-+#  set(OGRE_PLUGIN_DIR_DBG "${OGRE_BINARY_DIR}/lib")
-+#  set(OGRE_SAMPLES_DIR_REL "${OGRE_BINARY_DIR}/lib")
-+#  set(OGRE_SAMPLES_DIR_DBG "${OGRE_BINARY_DIR}/lib")
  endif ()
  
  if (WINDOWS_STORE OR WINDOWS_PHONE)

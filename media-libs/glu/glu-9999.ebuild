@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,8 +26,7 @@ SLOT="0"
 IUSE="static-libs"
 
 DEPEND=">=virtual/opengl-7.0-r1[${MULTILIB_USEDEP}]"
-RDEPEND="${DEPEND}
-	!<media-libs/mesa-9"
+RDEPEND="${DEPEND}"
 
 src_prepare() {
 	default

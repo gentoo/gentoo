@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ SRC_URI="http://xpra.org/src/${P}.tar.xz"
 
 LICENSE="GPL-2 BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+client +clipboard csc cups dbus dec_avcodec2 enc_ffmpeg enc_x264 enc_x265 jpeg libav +lz4 lzo opengl pillow pulseaudio server sound test vpx webcam webp"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}
@@ -25,6 +25,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 
 COMMON_DEPEND="${PYTHON_DEPS}
 	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	x11-libs/gtk+:3[introspection]
 	x11-libs/libX11
 	x11-libs/libXcomposite
 	x11-libs/libXdamage
@@ -66,7 +67,6 @@ RDEPEND="${COMMON_DEPEND}
 	dev-python/pillow[jpeg?,${PYTHON_USEDEP}]
 	virtual/ssh
 	x11-apps/xmodmap
-	x11-libs/gtk+:3[introspection]
 	cups? ( dev-python/pycups[${PYTHON_USEDEP}] )
 	dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
 	lz4? ( dev-python/lz4[${PYTHON_USEDEP}] )
@@ -86,8 +86,11 @@ DEPEND="${COMMON_DEPEND}
 
 RESTRICT="!test? ( test )"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
-	"${FILESDIR}"/${PN}-2.0-suid-warning.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.0.2_ignore-gentoo-no-compile.patch
+	"${FILESDIR}"/${PN}-2.0-suid-warning.patch
+	"${FILESDIR}"/${PN}-3.0.2-ldconfig.patch
+)
 
 pkg_postinst() {
 	enewgroup ${PN}
@@ -150,10 +153,4 @@ python_configure_all() {
 	append-cflags -fno-strict-aliasing
 
 	export XPRA_SOCKET_DIRS="${EPREFIX}/run/xpra"
-}
-
-src_compile() {
-	# xpra calls `ldconfig -p` during compile to locate libraries.
-	addpredict /etc
-	distutils-r1_src_compile
 }

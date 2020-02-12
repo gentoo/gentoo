@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit ltprune
 
 DESCRIPTION="Toolkit for Internationalized Domain Names (IDN)"
 HOMEPAGE="https://jprs.co.jp/idn/"
-SRC_URI="${HOMEPAGE}${P}.tar.bz2"
+SRC_URI="https://jprs.co.jp/idn/${P}.tar.bz2"
 
 LICENSE="JPRS"
 SLOT="0"

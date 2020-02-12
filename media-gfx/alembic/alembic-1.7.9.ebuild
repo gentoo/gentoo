@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,10 +28,12 @@ REQUIRED_USE="
 RDEPEND="
 	${PYTHON_DEPS}
 	>=media-libs/openexr-2.2.0-r2:=
-	boost? ( >=dev-libs/boost-1.65.0:=[python,${PYTHON_USEDEP}] )
 	hdf5? ( >=sci-libs/hdf5-1.8.18[zlib(+)] )
-	python? ( >=dev-python/pyilmbase-2.2.0[${PYTHON_USEDEP}] )
+	python? ( >=dev-python/pyilmbase-2.2.0[${PYTHON_SINGLE_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.11-r1 )
+	$(python_gen_cond_dep '
+		boost? ( >=dev-libs/boost-1.65.0:=[python,${PYTHON_MULTI_USEDEP}] )
+	')
 "
 DEPEND="
 	${RDEPEND}

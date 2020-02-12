@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Qt terminal emulator widget"
 HOMEPAGE="https://lxqt.org/"

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL=1
 inherit distutils-r1 systemd
 
@@ -27,31 +27,36 @@ REQUIRED_USE="
 	sound? ( gtk )
 "
 
-DEPEND="net-libs/libtorrent-rasterbar[python,${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
+DEPEND="
+	$(python_gen_cond_dep '
+		net-libs/libtorrent-rasterbar[python,${PYTHON_MULTI_USEDEP}]
+		dev-python/wheel[${PYTHON_MULTI_USEDEP}]
+	')
 	dev-util/intltool
-	dev-python/wheel[${PYTHON_USEDEP}]
 	acct-group/deluge
 	acct-user/deluge"
-RDEPEND="dev-python/chardet[${PYTHON_USEDEP}]
-	dev-python/distro[${PYTHON_USEDEP}]
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pyopenssl[${PYTHON_USEDEP}]
-	dev-python/pyxdg[${PYTHON_USEDEP}]
-	dev-python/rencode[${PYTHON_USEDEP}]
-	dev-python/setproctitle[${PYTHON_USEDEP}]
-	dev-python/six[${PYTHON_USEDEP}]
-	>=dev-python/twisted-17.1.0[crypt,${PYTHON_USEDEP}]
-	>=dev-python/zope-interface-4.4.2[${PYTHON_USEDEP}]
-	geoip? ( dev-python/geoip-python[${PYTHON_USEDEP}] )
-	gtk? (
-		sound? ( dev-python/pygame[${PYTHON_USEDEP}] )
-		dev-python/pygobject:3[${PYTHON_USEDEP}]
-		gnome-base/librsvg
-		libnotify? ( x11-libs/libnotify )
-	)
-	net-libs/libtorrent-rasterbar[python,${PYTHON_USEDEP}]
-	dev-python/mako[${PYTHON_USEDEP}]"
+RDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
+		dev-python/distro[${PYTHON_MULTI_USEDEP}]
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+		dev-python/rencode[${PYTHON_MULTI_USEDEP}]
+		dev-python/setproctitle[${PYTHON_MULTI_USEDEP}]
+		dev-python/six[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/twisted-17.1.0[crypt,${PYTHON_MULTI_USEDEP}]
+		>=dev-python/zope-interface-4.4.2[${PYTHON_MULTI_USEDEP}]
+		geoip? ( dev-python/geoip-python[${PYTHON_MULTI_USEDEP}] )
+		gtk? (
+			sound? ( dev-python/pygame[${PYTHON_MULTI_USEDEP}] )
+			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+			gnome-base/librsvg
+			libnotify? ( x11-libs/libnotify )
+		)
+		net-libs/libtorrent-rasterbar[python,${PYTHON_MULTI_USEDEP}]
+		dev-python/mako[${PYTHON_MULTI_USEDEP}]
+	')"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0.3-setup.py.patch"
@@ -85,31 +90,33 @@ esetup.py() {
 python_install_all() {
 	distutils-r1_python_install_all
 	if ! use console ; then
-		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/console/" || die
-		rm -f "${D}/usr/bin/deluge-console" || die
-		rm -f "${D}/usr/share/man/man1/deluge-console.1" ||die
+		rm -r "${D}/$(python_get_sitedir)/deluge/ui/console/" || die
+		rm "${D}/usr/bin/deluge-console" || die
+		rm "${D}/usr/share/man/man1/deluge-console.1" ||die
 	fi
 	if ! use gtk ; then
-		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/gtkui/" || die
-		rm -rf "${D}/usr/share/icons/" || die
-		rm -f "${D}/usr/bin/deluge-gtk" || die
-		rm -f "${D}/usr/share/man/man1/deluge-gtk.1" || die
-		rm -f "${D}/usr/share/applications/deluge.desktop" || die
+		rm -r "${D}/$(python_get_sitedir)/deluge/ui/gtk3/" || die
+		rm -r "${D}/usr/share/icons/" || die
+		rm "${D}/usr/bin/deluge-gtk" || die
+		rm "${D}/usr/share/man/man1/deluge-gtk.1" || die
+		rm "${D}/usr/share/applications/deluge.desktop" || die
 	fi
 	if use webinterface; then
-		newinitd "${FILESDIR}/deluge-web.init" deluge-web
+		newinitd "${FILESDIR}/deluge-web.init-2" deluge-web
 		newconfd "${FILESDIR}/deluge-web.conf" deluge-web
 		systemd_newunit "${FILESDIR}/deluge-web.service-3" deluge-web.service
 		systemd_install_serviced "${FILESDIR}/deluge-web.service.conf"
 	else
-		rm -rf "${D}/usr/$(get_libdir)/python2.7/site-packages/deluge/ui/web/" || die
-		rm -f "${D}/usr/bin/deluge-web" || die
-		rm -f "${D}/usr/share/man/man1/deluge-web.1" || die
+		rm -r "${D}/$(python_get_sitedir)/deluge/ui/web/" || die
+		rm "${D}/usr/bin/deluge-web" || die
+		rm "${D}/usr/share/man/man1/deluge-web.1" || die
 	fi
 	newinitd "${FILESDIR}"/deluged.init-2 deluged
 	newconfd "${FILESDIR}"/deluged.conf-2 deluged
 	systemd_newunit "${FILESDIR}"/deluged.service-2 deluged.service
 	systemd_install_serviced "${FILESDIR}"/deluged.service.conf
+
+	python_optimize
 }
 
 pkg_postinst() {

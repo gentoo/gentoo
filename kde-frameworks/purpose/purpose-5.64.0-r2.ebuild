@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ inherit ecm kde.org
 
 DESCRIPTION="Library for providing abstractions to get the developer's purposes fulfilled"
 LICENSE="LGPL-2.1+"
-KEYWORDS="amd64 ~arm arm64 ~x86"
+KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="+dolphin +kaccounts"
 
 DEPEND="

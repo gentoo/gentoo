@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ HOMEPAGE="https://cgit.kde.org/telepathy-logger-qt.git"
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/telepathy-logger-qt/${PV%.*}/src/${P}.tar.xz
 	https://dev.gentoo.org/~asturm/distfiles/${P}-python3.patch.xz"
-	KEYWORDS="amd64 arm64 ~x86"
+	KEYWORDS="amd64 arm64 x86"
 fi
 
 LICENSE="LGPL-2.1"

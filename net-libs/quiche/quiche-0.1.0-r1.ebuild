@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -133,7 +133,7 @@ if [[ ${PV} == *9999 ]] ; then
 else
 	CRATES+=" ${P//_/-}"
 	SRC_URI="$(cargo_crate_uris ${CRATES})"
-	KEYWORDS="~amd64 ~arm64"
+	KEYWORDS="~amd64 ~arm64 ~x86"
 	S="${WORKDIR}/${P//_/-}"
 fi
 
@@ -151,7 +151,7 @@ IUSE=""
 DOCS=( CODEOWNERS  COPYING README.md )
 
 BDEPEND="
-	>=dev-lang/rust-1.38.0[${MULTILIB_USEDEP}]
+	>=virtual/rust-1.38.0[${MULTILIB_USEDEP}]
 	dev-util/cmake
 	dev-lang/go
 	dev-lang/perl

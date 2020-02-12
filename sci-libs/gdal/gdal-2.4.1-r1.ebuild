@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 GENTOO_DEPEND_ON_PERL="no"
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_OPTIONAL=1
 
 inherit autotools perl-module distutils-r1 toolchain-funcs flag-o-matic java-pkg-opt-2

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,9 +20,6 @@ LICENSE="MIT"
 SLOT="0/1" # libsass soname
 IUSE="static-libs"
 
-RDEPEND=""
-DEPEND="${RDEPEND}"
-
 DOCS=( Readme.md SECURITY.md )
 
 src_prepare() {
@@ -38,9 +35,12 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	econf \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		$(use_enable static-libs static)
 		--enable-shared
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 multilib_src_install() {

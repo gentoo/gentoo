@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -47,6 +47,9 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	sys-devel/flex
 	virtual/yacc"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.3-fno-common.patch
+)
 
 src_prepare() {
 	sed -i "s:Release:Release Gentoo:" CMakeLists.txt || die

@@ -1,12 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="xml"
 MY_P="${P/_/}"
-inherit cmake-utils flag-o-matic xdg toolchain-funcs python-single-r1 git-r3
+inherit cmake flag-o-matic xdg toolchain-funcs python-single-r1 git-r3
 
 DESCRIPTION="SVG based generic vector-drawing program"
 HOMEPAGE="https://inkscape.org/"
@@ -40,9 +40,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libxslt-1.1.25
 	dev-libs/gdl:3
 	dev-libs/popt
-	dev-python/lxml[${PYTHON_USEDEP}]
 	media-gfx/potrace
-	media-gfx/scour[${PYTHON_USEDEP}]
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libpng:0=
@@ -51,6 +49,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libX11
 	>=x11-libs/pango-1.37.2
 	x11-libs/gtk+:3
+	$(python_gen_cond_dep '
+		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		media-gfx/scour[${PYTHON_MULTI_USEDEP}]
+	')
 	cdr? (
 		app-text/libwpg:0.3
 		dev-libs/librevenge
@@ -84,7 +86,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 # install these so we could of course just not depend on those and rely
 # on that.
 RDEPEND="${COMMON_DEPEND}
-	dev-python/numpy[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+	')
 	dia? ( app-office/dia )
 	postscript? ( app-text/ghostscript-gpl )
 "
@@ -108,7 +112,7 @@ pkg_pretend() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	sed -i "/install.*COPYING/d" CMakeScripts/ConfigCPack.cmake || die
 }
 
@@ -135,11 +139,11 @@ src_configure() {
 		-DWITH_LIBWPG=$(usex wpg)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	find "${ED}" -type f -name "*.la" -delete || die
 

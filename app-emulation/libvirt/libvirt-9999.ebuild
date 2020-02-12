@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools out-of-source bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
 
@@ -25,7 +25,7 @@ LICENSE="LGPL-2.1"
 IUSE="
 	apparmor audit +caps +dbus dtrace firewalld fuse glusterfs iscsi
 	iscsi-direct +libvirtd lvm libssh lxc +macvtap nfs nls numa openvz
-	parted pcap phyp policykit +qemu rbd sasl selinux +udev +vepa
+	parted pcap policykit +qemu rbd sasl selinux +udev +vepa
 	virtualbox virt-network wireshark-plugins xen zfs
 "
 
@@ -121,12 +121,12 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 	dev-libs/libxslt
 	dev-perl/XML-XPath
+	dev-python/docutils
 	virtual/pkgconfig"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-5.7.0-do-not-use-sysconf.patch
-	"${FILESDIR}"/${PN}-1.2.16-fix_paths_in_libvirt-guests_sh.patch
-	"${FILESDIR}"/${PN}-5.2.0-fix-paths-for-apparmor.patch
+	"${FILESDIR}"/${PN}-6.0.0-do-not-use-sysconf.patch
+	"${FILESDIR}"/${PN}-6.0.0-fix_paths_in_libvirt-guests_sh.patch
 )
 
 pkg_setup() {
@@ -217,20 +217,6 @@ src_prepare() {
 
 	default
 
-	if [[ ${PV} = *9999* ]]; then
-		# Reinitialize submodules as this is required for gnulib's bootstrap
-		git submodule init
-		# git checkouts require bootstrapping to create the configure script.
-		# Additionally the submodules must be cloned to the right locations
-		# bug #377279
-		./bootstrap || die "bootstrap failed"
-		(
-		    git submodule status .gnulib | awk '{ print $1 }'
-		    git hash-object bootstrap.conf
-		    git ls-tree -d HEAD gnulib/local | awk '{ print $3 }'
-		) >.git-module-status
-	fi
-
 	# Tweak the init script:
 	cp "${FILESDIR}/libvirtd.init-r18" "${S}/libvirtd.init" || die
 	sed -e "s/USE_FLAG_FIREWALLD/$(usex firewalld 'need firewalld' '')/" \
@@ -265,7 +251,6 @@ my_src_configure() {
 		$(use_with openvz)
 		$(use_with parted storage-disk)
 		$(use_with pcap libpcap)
-		$(use_with phyp)
 		$(use_with policykit polkit)
 		$(use_with qemu)
 		$(use_with qemu yajl)
@@ -295,6 +280,7 @@ my_src_configure() {
 		--disable-werror
 
 		--localstatedir=/var
+		--with-runstatedir=/run
 		--enable-dependency-tracking
 	)
 
@@ -305,12 +291,6 @@ my_src_configure() {
 	fi
 
 	econf "${myeconfargs[@]}"
-
-	if [[ ${PV} = *9999* ]]; then
-		# Restore gnulib's config.sub and config.guess
-		# bug #377279
-		(cd ${S}/.gnulib && git reset --hard > /dev/null)
-	fi
 }
 
 my_src_test() {
@@ -335,6 +315,7 @@ my_src_install() {
 	# libvirtd is able to create them on demand
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
+	rm -rf "${D}"/run
 
 	newbashcomp "${S}/tools/bash-completion/vsh" virsh
 	bashcomp_alias virsh virt-admin

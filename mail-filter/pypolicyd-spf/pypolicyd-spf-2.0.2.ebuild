@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 # The built-in ipaddress module handles the parsing of IP addresses. If
 # python is built without ipv6 support, then ipaddress can't parse ipv6
@@ -14,7 +14,7 @@ PYTHON_REQ_USE="ipv6"
 inherit distutils-r1
 
 DESCRIPTION="Python-based policy daemon for Postfix SPF verification"
-HOMEPAGE="https://launchpad.net/${PN}"
+HOMEPAGE="https://launchpad.net/pypolicyd-spf"
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"

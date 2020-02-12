@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${PN}-113-nss.patch )
 
 src_compile() {
-	emake AR="$(tc-is-gcc && echo "$(tc-getCC)-ar" || tc-getAR)" \
+	emake AR="$(tc-getAR)" \
 		ARFLAGS="-cvqs" \
 		AS="$(tc-getAS)" \
 		CC="$(tc-getCC)" \

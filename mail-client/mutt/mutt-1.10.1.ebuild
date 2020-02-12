@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -28,7 +28,7 @@ REQUIRED_USE="
 	kerberos?         ( || ( imap pop smtp nntp ) )"
 SLOT="0"
 LICENSE="GPL-2"
-KEYWORDS="alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # yes, we overdepend on the backend impls here, hopefully one day we can
 # have REQUIRED_USE do what it is made for again. bug #607360
 CDEPEND="
@@ -223,7 +223,7 @@ src_install() {
 
 	# A newer file is provided by app-misc/mime-types. So we link it.
 	rm "${ED}"/etc/${PN}/mime.types
-	dosym "${EPREFIX}"/etc/mime.types /etc/${PN}/mime.types
+	dosym ../mime.types /etc/${PN}/mime.types
 
 	# A man-page is always handy, so fake one
 	if use !doc; then

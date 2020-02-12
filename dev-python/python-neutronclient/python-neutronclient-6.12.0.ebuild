@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
 
@@ -77,7 +77,7 @@ python_test() {
 python_install() {
 	distutils-r1_python_install
 	#stupid stupid
-	local SITEDIR="${D%/}$(python_get_sitedir)" || die
+	local SITEDIR="${D}$(python_get_sitedir)" || die
 	cd "${SITEDIR}" || die
 	local egg=( python_neutronclient*.egg-info )
 	#[[ -f ${egg[0]} ]] || die "python_quantumclient*.egg-info not found"

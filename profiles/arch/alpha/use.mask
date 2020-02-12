@@ -1,8 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Unmask the flag which corresponds to ARCH.
 -alpha
+
+# Matt Turner <mattst88@gentoo.org> (2020-02-02)
+# Neither dev-python/pymongo nor dev-libs/mongo-c-driver are keyworded
+mongodb
 
 # Matt Turner <mattst88@gentoo.org> (2018-12-22)
 # net-libs/zeromq is not keyworded
@@ -33,11 +37,6 @@ kwallet
 # We currently do not have the resources to AT qt5 packages.
 # This may change when/if qt4 goes away.
 qt5
-
-# Tobias Klausmann <klausman@gentoo.org> (2016-02-05)
-# Newer versions of libgadu depend on protobuf-c, which doesn't
-# compile on alpha as of slot:0.
-gadu
 
 # Julian Ospald <hasufell@gentoo.org> (2015-09-20)
 # no LibreSSL support yet
@@ -140,10 +139,6 @@ mpi
 # llvm is not keyworded
 video_cards_amdgpu
 video_cards_radeonsi
-
-# disable until tested
-# # bug 148402
-pcsc-lite
 
 # conky dependencies missing keywords related (dragonheart -20061112)
 # media-sound/mpd

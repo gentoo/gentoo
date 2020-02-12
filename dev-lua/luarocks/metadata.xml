@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>rafaelmartins@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <use>
     <flag name="curl">Uses <pkg>net-misc/curl</pkg> for fetching lua
       packages instead of <pkg>net-misc/wget</pkg>.</flag>

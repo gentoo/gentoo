@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ KEYWORDS="~amd64 ~x86"
 EGIT_COMMIT="941bf389b87686ca2be8d6a8fcf0b2ee22955ecc"
 MY_PV=${PV/_p/-}
 MY_P=""
-SRC_URI="${HOMEPAGE}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/Mellanox/mstflint/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 IUSE="inband"
 SLOT="0"
 RDEPEND="inband? ( sys-fabric/libibmad )

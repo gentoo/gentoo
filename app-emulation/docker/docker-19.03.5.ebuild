@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,11 +14,11 @@ else
 	DOCKER_GITCOMMIT="633a0ea"
 	MY_PV=${PV/_/-}
 	SRC_URI="https://${EGO_PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="amd64 ~arm ~arm64"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
 	[ "$DOCKER_GITCOMMIT" ] || die "DOCKER_GITCOMMIT must be added manually for each bump!"
 	inherit golang-vcs-snapshot
 fi
-inherit bash-completion-r1 golang-base linux-info systemd udev user
+inherit bash-completion-r1 golang-base linux-info systemd udev
 
 DESCRIPTION="The core functions you need to create Docker images and run Docker containers"
 HOMEPAGE="https://dockerproject.org"
@@ -27,7 +27,8 @@ SLOT="0"
 IUSE="apparmor aufs btrfs +container-init device-mapper hardened +overlay seccomp"
 
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#build-dependencies
-CDEPEND="
+COMMON_DEPEND="
+	acct-group/docker
 	>=dev-db/sqlite-3.7.9:3
 	device-mapper? (
 		>=sys-fs/lvm2-2.02.89[thin]
@@ -37,7 +38,7 @@ CDEPEND="
 "
 
 DEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
 
 	>=dev-lang/go-1.12
 	dev-go/go-md2man
@@ -50,7 +51,8 @@ DEPEND="
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#runtime-dependencies
 # https://github.com/docker/docker/blob/master/project/PACKAGERS.md#optional-dependencies
 RDEPEND="
-	${CDEPEND}
+	${COMMON_DEPEND}
+	!sys-apps/systemd[-cgroup-hybrid(+)]
 	>=net-firewall/iptables-1.4
 	sys-process/procps
 	>=dev-vcs/git-1.7
@@ -74,7 +76,7 @@ CONFIG_CHECK="
 	~VETH ~BRIDGE ~BRIDGE_NETFILTER
 	~IP_NF_FILTER ~IP_NF_TARGET_MASQUERADE
 	~NETFILTER_XT_MATCH_ADDRTYPE ~NETFILTER_XT_MATCH_CONNTRACK ~NETFILTER_XT_MATCH_IPVS
-	~IP_NF_NAT ~NF_NAT ~NF_NAT_NEEDED
+	~IP_NF_NAT ~NF_NAT
 	~POSIX_MQUEUE
 
 	~USER_NS
@@ -150,6 +152,12 @@ pkg_setup() {
 		"
 	fi
 
+	if kernel_is lt 5 2; then
+		CONFIG_CHECK+="
+			~NF_NAT_NEEDED
+		"
+	fi
+
 	if use aufs; then
 		CONFIG_CHECK+="
 			~AUFS_FS
@@ -178,9 +186,6 @@ pkg_setup() {
 	fi
 
 	linux-info_pkg_setup
-
-	# create docker group for the code checking for it in /etc/group
-	enewgroup docker
 }
 
 src_compile() {
@@ -192,7 +197,7 @@ src_compile() {
 	export CGO_LDFLAGS="-L${ROOT}/usr/$(get_libdir)"
 
 	# if we're building from a tarball, we need the GITCOMMIT value
-	[ "$DOCKER_GITCOMMIT" ] && export DOCKER_GITCOMMIT
+	[[ ${DOCKER_GITCOMMIT} ]] && export DOCKER_GITCOMMIT
 
 	# fake golang layout
 	ln -s docker-ce/components/engine ../docker || die

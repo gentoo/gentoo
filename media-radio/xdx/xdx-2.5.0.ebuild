@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
 inherit eutils
 
@@ -19,13 +19,16 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
+PATCHES=( "${FILESDIR}/"${P}-fno-common.patch )
+DOCS=( AUTHORS ChangeLog NEWS README TODO )
+
 src_configure() {
 	econf $(use_enable nls)
 }
 
 src_install() {
 	emake DESTDIR="${D}" install
-	dodoc AUTHORS ChangeLog NEWS README TODO
+	einstalldocs
 }
 
 pkg_postinst() {

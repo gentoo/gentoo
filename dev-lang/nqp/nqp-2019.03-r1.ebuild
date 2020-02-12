@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -70,7 +70,7 @@ nqp_configure() {
 	pushd "${BUILD_DIR}" > /dev/null || die
 	local myconfargs=(
 		"--backend=${MULTIBUILD_VARIANT}"
-		"--prefix=${EPREFIX%/}/usr" )
+		"--prefix=${EPREFIX}/usr" )
 
 	perl Configure.pl "${myconfargs[@]}" || die
 	popd || die

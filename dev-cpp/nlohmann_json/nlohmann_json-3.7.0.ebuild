@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="JSON for Modern C++"
 HOMEPAGE="https://github.com/nlohmann/json https://nlohmann.github.io/json/"
@@ -27,11 +27,11 @@ src_configure() {
 		-DJSON_MultipleHeaders=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	use doc && emake -C doc
 }
 
@@ -40,6 +40,6 @@ src_test() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	use doc && dodoc -r doc/html
 }

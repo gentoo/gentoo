@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -105,7 +105,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	local IPSEC_CONFDIR=${ROOT%/}/etc/ipsec.d
+	local IPSEC_CONFDIR=${ROOT}/etc/ipsec.d
 	if [[ ! -f ${IPSEC_CONFDIR}/cert8.db && ! -f ${IPSEC_CONFDIR}/cert9.db ]] ; then
 		ebegin "Setting up NSS database in ${IPSEC_CONFDIR} with empty password"
 		certutil -N -d "${IPSEC_CONFDIR}" --empty-password

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ SRC_URI="
 LICENSE="GPL-2"
 SLOT="$(ver_cut 1)"
 KEYWORDS="amd64 arm64 ppc64 ~x86"
-IUSE="alsa debug cups doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source +webstart"
+IUSE="alsa debug cups doc examples gentoo-vm headless-awt +jbootstrap nsplugin +pch selinux source webstart"
 
 COMMON_DEPEND="
 	media-libs/freetype:2=
@@ -226,7 +226,7 @@ src_install() {
 	dodir "${dest}"
 	cp -pPR * "${ddest}" || die
 
-	dosym "${EPREFIX}"/etc/ssl/certs/java/cacerts "${dest}"/jre/lib/security/cacerts
+	dosym ../../../../../../etc/ssl/certs/java/cacerts "${dest}"/jre/lib/security/cacerts
 
 	use gentoo-vm && java-vm_install-env "${FILESDIR}"/${PN}-${SLOT}.env.sh
 	java-vm_set-pax-markings "${ddest}"
@@ -234,8 +234,8 @@ src_install() {
 	java-vm_sandbox-predict /dev/random /proc/self/coredump_filter
 
 	if use doc ; then
-		insinto /usr/share/doc/${PF}/html
-		doins -r "${S}"/build/*-release/docs/*
+		docinto html
+		dodoc -r "${S}"/build/*-release/docs/*
 	fi
 }
 

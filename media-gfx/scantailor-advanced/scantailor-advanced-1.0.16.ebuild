@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils desktop virtualx
+inherit cmake desktop virtualx
 
 DESCRIPTION="Interactive post-processing tool for scanned pages"
 HOMEPAGE="http://scantailor.org/ https://github.com/4lex4/scantailor-advanced"
@@ -37,11 +37,11 @@ PATCHES=( "${FILESDIR}"/${P}-tests.patch )
 
 src_test() {
 	cd "${CMAKE_BUILD_DIR}" || die
-	virtx cmake-utils_src_test
+	virtx cmake_src_test
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	newicon resources/appicon.svg ${PN}.svg
 	make_desktop_entry ${PN} "Scan Tailor Advanced"

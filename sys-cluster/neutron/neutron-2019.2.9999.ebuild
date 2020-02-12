@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 # still no 34 :( https://bugs.launchpad.net/neutron/+bug/1630439
 
-inherit distutils-r1 linux-info user
+inherit distutils-r1 linux-info
 
 DESCRIPTION="A virtual network service for Openstack"
 HOMEPAGE="https://launchpad.net/neutron"
@@ -99,7 +99,6 @@ RDEPEND="
 	>=dev-python/ovsdbapp-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/psutil-3.2.2[${PYTHON_USEDEP}]
 	>=dev-python/pyroute2-0.5.3[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/weakrefmethod-1.0.2[${PYTHON_USEDEP}]' 'python2_7')
 	>=dev-python/python-novaclient-9.1.0[${PYTHON_USEDEP}]
 	>=dev-python/openstacksdk-0.31.2[${PYTHON_USEDEP}]
 	>=dev-python/python-designateclient-2.7.0[${PYTHON_USEDEP}]
@@ -119,7 +118,9 @@ RDEPEND="
 		net-misc/radvd
 		>=net-misc/dibbler-1.0.1
 	)
-	dhcp? ( net-dns/dnsmasq[dhcp-tools] )"
+	dhcp? ( net-dns/dnsmasq[dhcp-tools] )
+	acct-group/neutron
+	acct-user/neutron"
 
 #PATCHES=(
 #)
@@ -134,11 +135,6 @@ pkg_pretend() {
 			linux_chkconfig_present ${module} || ewarn "${module} needs to be enabled in kernel"
 		done
 	fi
-}
-
-pkg_setup() {
-	enewgroup neutron
-	enewuser neutron -1 -1 /var/lib/neutron neutron
 }
 
 pkg_config() {
@@ -158,7 +154,7 @@ python_install_all() {
 	if use server; then
 		newinitd "${FILESDIR}/neutron.initd" "neutron-server"
 		newconfd "${FILESDIR}/neutron-server.confd" "neutron-server"
-		dosym /etc/neutron/plugin.ini /etc/neutron/plugins/ml2/ml2_conf.ini
+		dosym ../../plugin.ini /etc/neutron/plugins/ml2/ml2_conf.ini
 	fi
 	if use dhcp; then
 		newinitd "${FILESDIR}/neutron.initd" "neutron-dhcp-agent"

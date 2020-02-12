@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # REQUIRED_USE constraint when pulseaudio is enabled
@@ -36,10 +36,6 @@ media-libs/grilo playlist
 
 # Pulled in by tracker and grilo-plugins, has REQUIRED_USE="?? ( gtk qt5 )"
 media-libs/libmediaart gtk -qt5
-
-# Pulled in by net-im/telepathy-connection-managers[msn] (via dev-python/papyon
-# and net-voip/telepathy-butterfly)
-net-libs/libproxy python
 
 # For net-misc/vinagre-3.4 and gnome-boxes
 net-misc/spice-gtk gtk3

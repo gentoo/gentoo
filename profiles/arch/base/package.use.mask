@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # dev-python/pandas is only keyworded for amd64 & x86
-sys-block/fio gnuplot
+sys-block/fio python gnuplot
 
 # Craig Andrews <candrews@gentoo.org> (2019-10-08)
 # net-libs/quiche is not available on all arches
@@ -61,10 +61,6 @@ net-analyzer/testssl bundled-openssl kerberos
 # Thomas Deutschmann <whissi@gentoo.org> (2018-09-30)
 # Requires media-libs/libheif which is only keyworded for amd64 and x86
 media-gfx/imagemagick heif
-
-# Ben Kohler <bkohler@gentoo.org> (2018-08-23)
-# Mask iwd support until net-wireless/iwd is keyworded
-net-misc/networkmanager iwd
 
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst only has support for assembling bootloader on some arches

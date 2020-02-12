@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,8 @@ inherit autotools eutils linux-info systemd tmpfiles toolchain-funcs user
 
 DESCRIPTION="DLNA/UPnP-AV compliant media server"
 HOMEPAGE="https://sourceforge.net/projects/minidlna/"
-SRC_URI="mirror://sourceforge/minidlna/${PV}/${P}.tar.gz
+SRC_URI="
+	https://downloads.sourceforge.net/project/minidlna/${PN}/${PV}/${P}.tar.gz
 	https://dev.gentoo.org/~xmw/minidlna-gentoo-artwork.patch.xz"
 
 LICENSE="BSD GPL-2"

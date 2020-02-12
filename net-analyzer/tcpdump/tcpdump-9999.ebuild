@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ DESCRIPTION="A Tool for network monitoring and data acquisition"
 EGIT_REPO_URI="https://github.com/the-tcpdump-group/tcpdump"
 HOMEPAGE="
 	https://www.tcpdump.org/
-	${EGIT_REPO_URI}
+	https://github.com/the-tcpdump-group/tcpdump
 "
 
 LICENSE="BSD"
@@ -36,10 +36,13 @@ DEPEND="
 	${RDEPEND}
 	drop-root? ( virtual/pkgconfig )
 	test? (
-		|| ( app-arch/sharutils sys-freebsd/freebsd-ubin )
+		>=net-libs/libpcap-1.9.1
 		dev-lang/perl
 	)
 "
+PATCHES=(
+	"${FILESDIR}"/${PN}-9999-libdir.patch
+)
 
 pkg_setup() {
 	if use drop-root || use suid; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,6 +14,7 @@ if [[ ${PV##*.} = 9999 ]]; then
 else
 	SRC_URI="https://dev.gentoo.org/~ulm/distfiles/${P}.tar.xz
 		mirror://gnu-alpha/emacs/pretest/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~riscv ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 	# FULL_VERSION keeps the full version number, which is needed in
 	# order to determine some path information correctly for copy/move
 	# operations later on
@@ -365,10 +366,10 @@ src_install () {
 			"${ED}"/Applications/Gentoo/${EMACS_SUFFIX^}.app || die
 	fi
 
-	DOC_CONTENTS="You can set the version to be started by /usr/bin/emacs
-		through the Emacs eselect module, which also redirects man and info
-		pages. Therefore, several Emacs versions can be installed at the
-		same time. \"man emacs.eselect\" for details.
+	local DOC_CONTENTS="You can set the version to be started by
+		/usr/bin/emacs through the Emacs eselect module, which also
+		redirects man and info pages. Therefore, several Emacs versions can
+		be installed at the same time. \"man emacs.eselect\" for details.
 		\\n\\nIf you upgrade from Emacs version 24.2 or earlier, then it is
 		strongly recommended that you use app-admin/emacs-updater to rebuild
 		all byte-compiled elisp files of the installed Emacs packages."

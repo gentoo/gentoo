@@ -8,6 +8,5 @@
 	<use>
 		<flag name="demos">Install example floppy game files.</flag>
 		<flag name="fast-firmware">Install fast firmware instead of slow firmware.</flag>
-		<flag name="gui">Install the Kryoflux GUI</flag>
 	</use>
 </pkgmetadata>

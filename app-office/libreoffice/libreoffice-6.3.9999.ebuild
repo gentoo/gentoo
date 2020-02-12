@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -152,7 +152,11 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libXinerama
 	x11-libs/libXrandr
 	x11-libs/libXrender
-	accessibility? ( dev-python/lxml[${PYTHON_USEDEP}] )
+	accessibility? (
+		$(python_gen_cond_dep '
+			dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	bluetooth? (
 		dev-libs/glib:2
 		net-wireless/bluez

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,13 +24,18 @@ IUSE="fgfs rtlsdr uhd"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
-	dev-python/pyzmq[${PYTHON_USEDEP}]
 	>=net-wireless/gnuradio-3.7.0:=
 	net-wireless/gr-osmosdr
-	fgfs? (
-		games-simulation/flightgear
-		sci-libs/scipy
-	)
+	$(python_gen_cond_dep '
+		dev-python/pyzmq[${PYTHON_MULTI_USEDEP}]
+		fgfs? (
+			games-simulation/flightgear
+			|| (
+				sci-libs/scipy-python2[${PYTHON_MULTI_USEDEP}]
+				sci-libs/scipy[${PYTHON_MULTI_USEDEP}]
+			)
+		)
+	')
 	rtlsdr? ( net-wireless/rtl-sdr )
 	uhd? ( >=net-wireless/uhd-3.4.0 )
 "

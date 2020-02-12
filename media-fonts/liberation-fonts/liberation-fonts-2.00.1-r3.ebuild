@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ HOMEPAGE="https://pagure.io/liberation-fonts"
 SRC_URI="!fontforge? ( https://releases.pagure.org/${PN}/${PN}-ttf-${PV}.tar.gz )
 fontforge? ( https://releases.pagure.org/${PN}/${P}.tar.gz )"
 
-KEYWORDS="alpha amd64 arm arm64 ia64 ppc ppc64 x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ia64 ppc ppc64 x86 ~x64-cygwin ~amd64-linux ~x86-linux ~x64-solaris"
 SLOT="0"
 LICENSE="OFL-1.1"
 IUSE="fontforge X"

@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
-inherit cmake-utils desktop flag-o-matic python-single-r1 xdg
+inherit cmake desktop flag-o-matic python-single-r1 xdg
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
@@ -60,7 +60,11 @@ DEPEND="${PYTHON_DEPS}
 	graphicsmagick? ( media-gfx/graphicsmagick:= )
 	osg? ( dev-games/openscenegraph:= )
 	pdf? ( app-text/podofo:0= )
-	scripts? ( dev-python/pillow[tk?,${PYTHON_USEDEP}] )
+	scripts? (
+		$(python_gen_cond_dep '
+			dev-python/pillow[tk?,${PYTHON_MULTI_USEDEP}]
+		')
+	)
 "
 RDEPEND="${DEPEND}
 	app-text/ghostscript-gpl
@@ -70,6 +74,7 @@ PATCHES=(
 	# upstream svn trunk
 	"${FILESDIR}"/${P}-poppler-0.82.patch
 	"${FILESDIR}"/${P}-poppler-0.83.patch
+	"${FILESDIR}"/${P}-poppler-0.84.patch
 	# non(?)-upstreamable
 	"${FILESDIR}"/${PN}-1.5.3-fpic.patch
 	"${FILESDIR}"/${P}-docdir.patch
@@ -77,7 +82,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	rm -r codegen/cheetah scribus/third_party/hyphen || die
 
@@ -123,11 +128,11 @@ src_configure() {
 		-DWITH_PODOFO=$(usex pdf)
 		-DWANT_NOTEMPLATES=$(usex !templates)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if ! use tk; then
 		rm "${ED}"/usr/share/scribus/scripts/{FontSample,CalendarWizard}.py || die

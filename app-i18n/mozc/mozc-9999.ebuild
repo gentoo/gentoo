@@ -1,8 +1,8 @@
-# Copyright 2010-2019 Gentoo Authors
+# Copyright 2010-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
-PYTHON_COMPAT=(python2_7)
+PYTHON_COMPAT=(python{3_6,3_7,3_8})
 
 inherit elisp-common multiprocessing python-any-r1 toolchain-funcs
 
@@ -44,10 +44,10 @@ BDEPEND="${PYTHON_DEPS}
 	dev-util/gyp
 	dev-util/ninja
 	virtual/pkgconfig
-	emacs? ( >=app-editors/emacs-23.1:* )
+	emacs? ( app-editors/emacs:* )
 	fcitx4? ( sys-devel/gettext )"
 RDEPEND=">=dev-libs/protobuf-3.0.0:=
-	emacs? ( >=app-editors/emacs-23.1:* )
+	emacs? ( app-editors/emacs:* )
 	fcitx4? (
 		app-i18n/fcitx:4
 		virtual/libintl
@@ -105,10 +105,16 @@ src_unpack() {
 }
 
 src_prepare() {
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-python-3_1.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-python-3_2.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-python-3_3.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-python-3_4.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-system_libraries.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-gcc-8.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-protobuf_generated_classes_no_inheritance.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-environmental_variables.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-reiwa.patch"
+	eapply -p2 "${FILESDIR}/${PN}-2.23.2815.102-server_path_check.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.20.2673.102-tests_build.patch"
 	eapply -p2 "${FILESDIR}/${PN}-2.20.2673.102-tests_skipping.patch"
 
@@ -303,9 +309,33 @@ src_install() {
 }
 
 pkg_postinst() {
+	elog
+	elog "ENVIRONMENTAL VARIABLES"
+	elog
+	elog "MOZC_SERVER_DIRECTORY"
+	elog "  Mozc server directory"
+	elog "  Value used by default: \"${EPREFIX}/usr/libexec/mozc\""
+	elog "MOZC_DOCUMENTS_DIRECTORY"
+	elog "  Mozc documents directory"
+	elog "  Value used by default: \"${EPREFIX}/usr/libexec/mozc/documents\""
+	elog "MOZC_CONFIGURATION_DIRECTORY"
+	elog "  Mozc configuration directory"
+	elog "  Value used by default: \"~/.mozc\""
+	if use gui; then
+		elog "MOZC_ZINNIA_MODEL_FILE"
+		elog "  Zinnia handwriting recognition model file"
+		if use handwriting-tegaki; then
+			elog "  Value used by default: \"${EPREFIX}/usr/share/tegaki/models/zinnia/handwriting-ja.model\""
+		elif use handwriting-tomoe; then
+			elog "  Value used by default: \"${EPREFIX}/usr/$(get_libdir)/zinnia/model/tomoe/handwriting-ja.model\""
+		fi
+		elog "  Potential values:"
+		elog "    \"${EPREFIX}/usr/share/tegaki/models/zinnia/handwriting-ja.model\""
+		elog "    \"${EPREFIX}/usr/$(get_libdir)/zinnia/model/tomoe/handwriting-ja.model\""
+	fi
+	elog
 	if use emacs; then
-		elisp-site-regen
-
+		elog
 		elog "USAGE IN EMACS"
 		elog
 		elog "mozc-mode is minor mode to input Japanese text using Mozc server."
@@ -323,6 +353,9 @@ pkg_postinst() {
 		elog
 		elog "Alternatively, at run time, after loading mozc.el, mozc-mode can be activated by"
 		elog "calling \"set-input-method\" and entering \"japanese-mozc\"."
+		elog
+
+		elisp-site-regen
 	fi
 }
 

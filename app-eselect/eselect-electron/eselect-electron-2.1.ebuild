@@ -1,10 +1,10 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Utility to select the default Electron slot"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="https://github.com/elprans/${PN}/archive/v${PV}.tar.gz -> eselect-electron-${PV}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"

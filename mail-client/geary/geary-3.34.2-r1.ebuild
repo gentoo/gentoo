@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,7 +14,7 @@ SLOT="0"
 
 IUSE="ytnef"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 
 # for now both enchants work
 # FIXME: add valadoc support
@@ -30,12 +30,12 @@ DEPEND="
 	>=dev-db/sqlite-3.12:3
 
 	>=dev-libs/appstream-glib-0.7.10
-	app-text/enchant
+	app-text/enchant:=
 	>=dev-libs/folks-0.11:0
 	>=app-crypt/gcr-3.10.1:0=
 	>=dev-libs/libgee-0.8.5:0.8=
 	net-libs/gnome-online-accounts
-	app-text/gspell
+	app-text/gspell:=
 	app-text/iso-codes
 	>=dev-libs/json-glib-1.0
 	>=media-libs/libcanberra-0.28

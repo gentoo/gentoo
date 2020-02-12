@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} pypy )
+PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit distutils-r1
 
@@ -13,11 +13,11 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa ppc ppc64 sparc x86"
+KEYWORDS="amd64 arm arm64 ~hppa ppc ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=app-text/enchant-${PV%.*}"
+RDEPEND=">=app-text/enchant-${PV%.*}:0"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND} )"
 

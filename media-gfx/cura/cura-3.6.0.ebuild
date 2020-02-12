@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 inherit cmake-utils fdo-mime gnome2-utils python-single-r1
 
 MY_PN=Cura
@@ -19,13 +19,15 @@ IUSE="+usb zeroconf"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-python/uranium-${PV:0:3}[${PYTHON_USEDEP}]
 	>=media-gfx/curaengine-${PV:0:3}
 	>=media-gfx/fdm-materials-${PV:0:3}
-	>=dev-libs/libsavitar-${PV:0:3}:=[python,${PYTHON_USEDEP}]
-	>=dev-libs/libcharon-${PV:0:3}[${PYTHON_USEDEP}]
-	usb? ( dev-python/pyserial[${PYTHON_USEDEP}] )
-	zeroconf? ( dev-python/zeroconf[${PYTHON_USEDEP}] )"
+	>=dev-libs/libsavitar-${PV:0:3}:=[python,${PYTHON_SINGLE_USEDEP}]
+	>=dev-libs/libcharon-${PV:0:3}[${PYTHON_SINGLE_USEDEP}]
+	>=dev-python/uranium-${PV:0:3}[${PYTHON_SINGLE_USEDEP}]
+	$(python_gen_cond_dep '
+		usb? ( dev-python/pyserial[${PYTHON_MULTI_USEDEP}] )
+		zeroconf? ( dev-python/zeroconf[${PYTHON_MULTI_USEDEP}] )
+	')"
 
 DEPEND="${RDEPEND}
 	sys-devel/gettext"

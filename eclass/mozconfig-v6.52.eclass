@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # @ECLASS: mozconfig-v6.52.eclass
@@ -126,7 +126,7 @@ RDEPEND=">=app-text/hunspell-1.2:=
 	x11-libs/libXfixes
 	x11-libs/libXrender
 	x11-libs/libXt
-	system-cairo? ( >=x11-libs/cairo-1.12[X,xcb] >=x11-libs/pixman-0.19.2 )
+	system-cairo? ( >=x11-libs/cairo-1.12[X,xcb(+)] >=x11-libs/pixman-0.19.2 )
 	system-icu? ( >=dev-libs/icu-58.1:= )
 	system-jpeg? ( >=media-libs/libjpeg-turbo-1.2.1 )
 	system-libevent? ( >=dev-libs/libevent-2.0:0=[threads] )

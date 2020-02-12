@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A cross-platform C++ XMPP client library based on the Qt framework"
 HOMEPAGE="https://github.com/qxmpp-project/qxmpp/"
@@ -40,7 +40,7 @@ src_prepare() {
 	sed -e "/qxmpptransfermanager/d" \
 		-i tests/CMakeLists.txt || die "failed to drop single test"
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -54,5 +54,5 @@ src_configure() {
 		-DWITH_VPX=$(usex vpx)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

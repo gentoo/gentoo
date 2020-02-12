@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="A flexible pure-C library for implementing network protocols"
 HOMEPAGE="https://libwebsockets.org/"
@@ -11,7 +11,7 @@ SRC_URI="https://github.com/warmcat/libwebsockets/archive/v${PV}.tar.gz -> ${P}.
 
 LICENSE="LGPL-2.1"
 SLOT="0/15" # libwebsockets.so.15
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="amd64 arm x86"
 IUSE="access-log caps cgi client dbus generic-sessions http-proxy http2 ipv6
 	+lejp libev libevent libressl libuv peer-limits server-status smtp socks5
 	sqlite3 ssl static-libs threads zip"
@@ -41,6 +41,7 @@ BDEPEND="dev-lang/perl"
 
 PATCHES=(
 	"${FILESDIR}/libwebsockets-3.2.0-check_chown_result.patch"
+	"${FILESDIR}/libwebsockets-3.2.1-socks5-noclient-compilefailure.patch"
 )
 
 src_configure() {
@@ -73,5 +74,5 @@ src_configure() {
 		-DLWS_WITHOUT_TESTAPPS=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

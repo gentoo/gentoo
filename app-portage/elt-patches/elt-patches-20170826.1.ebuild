@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,9 +16,9 @@ RDEPEND="sys-apps/gentoo-functions"
 DEPEND="app-arch/xz-utils"
 
 src_compile() {
-	emake rootprefix="${EPREFIX%/}" libdirname="$(get_libdir)"
+	emake rootprefix="${EPREFIX}" libdirname="$(get_libdir)"
 }
 
 src_install() {
-	emake DESTDIR="${D}" rootprefix="${EPREFIX%/}" install
+	emake DESTDIR="${D}" rootprefix="${EPREFIX}" install
 }

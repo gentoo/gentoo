@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit linux-info readme.gentoo systemd
 
 DESCRIPTION="IBM ThinkPad Hard Drive Active Protection System (HDAPS) daemon"
-HOMEPAGE="https://github.com/evgeni/${PN}/"
+HOMEPAGE="https://github.com/evgeni/hdapsd/"
 SRC_URI="https://github.com/evgeni/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"

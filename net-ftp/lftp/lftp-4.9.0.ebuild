@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,9 +6,7 @@ inherit autotools libtool xdg-utils
 
 DESCRIPTION="A sophisticated ftp/sftp/http/https/torrent client and file transfer program"
 HOMEPAGE="https://lftp.tech/"
-SRC_URI="
-	${HOMEPAGE}ftp/${P}.tar.xz
-"
+SRC_URI="https://lftp.tech/ftp/${P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"

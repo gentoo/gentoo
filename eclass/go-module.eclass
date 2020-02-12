@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: go-module.eclass
@@ -58,6 +58,10 @@ BDEPEND=">=dev-lang/go-1.12"
 # In this mode the GOPATH environment variable is ignored.
 # this will become the default in the future.
 export GO111MODULE=on
+
+# Set the default for the go build cache
+# See "go help environment" for information on this setting
+export GOCACHE="${T}/go-build"
 
 # The following go flags should be used for all builds.
 # -mod=vendor stopps downloading of dependencies from the internet.

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ DESCRIPTION="a basic framework for creating and maintaining RSS files"
 HOMEPAGE="http://perl-rss.sourceforge.net/"
 
 SLOT="0"
-KEYWORDS="alpha amd64 ~arm ppc ppc64 x86 ~x86-solaris"
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86 ~x86-solaris"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

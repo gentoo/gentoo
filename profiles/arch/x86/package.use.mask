@@ -1,5 +1,13 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-29)
+# media-libs/pulseaudio-qt is not keyworded
+kde-misc/kdeconnect pulseaudio
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
+# zfs is not keyworded on x86
+dev-util/schroot zfs
 
 # Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
 # dev-libs/criterion is not keyworded yet
@@ -15,7 +23,7 @@ media-video/vlc -libplacebo
 
 # Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
 # dev-python/pandas is keyworded for x86
-sys-block/fio -gnuplot
+sys-block/fio -python -gnuplot
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on x86
@@ -75,14 +83,6 @@ dev-python/pymongo test
 # Bernard Cafarelli <voyageur@gentoo.org> (2018-09-27)
 # media-libs/qtav not keyworded
 media-video/orion qtav
-
-# Ben Kohler <bkohler@gentoo.org> (2018-08-23)
-# Unmask iwd support where net-wireless/iwd is keyworded
-net-misc/networkmanager -iwd
-
-# Thomas Deutschmann <whissi@gentoo.org> (2018-08-23)
-# Dependency sys-cluster/ceph is keyworded for x86
-net-fs/samba -ceph
 
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch

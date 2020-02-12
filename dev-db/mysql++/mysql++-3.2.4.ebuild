@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -43,7 +43,7 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		--enable-thread-check
-		--with-mysql="${EPREFIX%/}/usr"
+		--with-mysql="${EPREFIX}/usr"
 		--with-mysql-lib="${EPREFIX}$(mysql_config --variable=pkglibdir)"
 		--with-mysql-include="${EPREFIX}$(mysql_config --variable=pkgincludedir)"
 	)

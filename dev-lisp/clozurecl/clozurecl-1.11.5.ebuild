@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ SRC_URI="
 	x64-macos? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-darwinx86.tar.gz )
 	x86-solaris? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-solarisx86.tar.gz )
 	x64-solaris? ( https://github.com/Clozure/ccl/releases/download/v${PV}/${MY_P}-solarisx86.tar.gz )
-	doc? ( ${HOMEPAGE}/docs/ccl.html )"
+	doc? ( https://ccl.clozure.com/docs/ccl.html )"
 
 LICENSE="Apache-2.0"
 SLOT="0"

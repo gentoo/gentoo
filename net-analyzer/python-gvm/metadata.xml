@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>hasan.calisir@psauxit.com</email>
+		<name>Hasan ÇALIŞIR</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+	The Greenbone Vulnerability Management Python API library (python-gvm) is a collection of 
+	APIs that help with remote controlling a Greenbone Security Manager (GSM) appliance and its 
+	underlying Greenbone Vulnerability Manager (GVM). The library essentially abstracts accessing 
+	the communication protocols Greenbone Management Protocol (GMP) and Open Scanner Protocol (OSP).
+	</longdescription>
+	<upstream>
+		<remote-id type="github">greenbone/python-gvm</remote-id>
+	</upstream>
+</pkgmetadata>

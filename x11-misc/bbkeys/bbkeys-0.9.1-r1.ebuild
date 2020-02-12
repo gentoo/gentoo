@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,9 +18,9 @@ DEPEND="${RDEPEND}
 
 src_install() {
 	emake DESTDIR="${D}" install
-	rm -rf "${ED%/}"/usr/share/doc || die
+	rm -rf "${ED%/}"/usr/share/doc || die
 	einstalldocs
 
-	echo PRELINK_PATH_MASK=\""${EPREFIX}"/usr/bin/bbkeys\" > "${T}"/99bbkeys || die
+	echo PRELINK_PATH_MASK=\""${EPREFIX}"/usr/bin/bbkeys\" > "${T}"/99bbkeys || die
 	doenvd "${T}"/99bbkeys
 }

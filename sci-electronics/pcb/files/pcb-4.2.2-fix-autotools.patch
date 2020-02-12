@@ -1,0 +1,36 @@
+1. avoid rebuilding documentation
+2. avoid non-portable syntax
+
+--- a/configure.ac
++++ b/configure.ac
+@@ -7,6 +7,9 @@
+ AC_GNU_SOURCE
+ AC_CONFIG_HEADERS([config.h])
+ 
++# avoid rebuilding documentation
++AM_MAINTAINER_MODE
++
+ ##########################################################################
+ #
+ # Try to figure out if we are building from git sources.
+@@ -1285,11 +1288,6 @@
+ if test -d $srcdir/doc; then
+    AC_CONFIG_FILES(doc/Makefile)
+ fi
+-if test -d $srcdir/doc/gs; then
+-   AC_CONFIG_FILES(doc/gs/Makefile)
+-   AC_CONFIG_FILES(doc/gs/gafrc)
+-   AC_CONFIG_FILES(doc/gs/gschemrc)
+-fi
+ if test -d $srcdir/example; then
+    AC_CONFIG_FILES(example/Makefile)
+    AC_CONFIG_FILES(example/libraries/Makefile)
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -15,5 +15,5 @@
+ MAINTAINERCLEANFILES= $(INTLTOOL_FILES)
+ 
+ ACLOCAL_AMFLAGS = -I m4
+-DISTCHECK_CONFIGURE_FLAGS := ${DISTCHECK_CONFIGURE_FLAGS} --disable-update-mime-database --disable-update-desktop-database GTK_UPDATE_ICON_THEME_BIN=true --with-gui=batch
++DISTCHECK_CONFIGURE_FLAGS = ${DISTCHECK_CONFIGURE_FLAGS} --disable-update-mime-database --disable-update-desktop-database GTK_UPDATE_ICON_THEME_BIN=true --with-gui=batch
+ 

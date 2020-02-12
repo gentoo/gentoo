@@ -13,7 +13,7 @@
 		Oregano is an application for schematic capture and simulation of electrical
 		circuits. The actual simulation is performed by Berkeley Spice, or GNUcap or
 		the new generation ngspice.
-		It's alive fork of <pkg>sci-electronics/oregano</pkg>
+		It's alive fork of oregano
 	</longdescription>
 	<upstream>
 		<remote-id type="github">drahnr/oregano</remote-id>

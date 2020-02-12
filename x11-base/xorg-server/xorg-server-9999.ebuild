@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -68,13 +68,13 @@ CDEPEND="libglvnd? (
 		>=x11-libs/libX11-1.1.5
 		>=x11-libs/libXext-1.0.5
 		>=media-libs/mesa-18[X(+),egl,gbm]
-		media-libs/libepoxy[X,egl(+)]
+		>=media-libs/libepoxy-1.5.4[X,egl(+)]
 	)
 	udev? ( virtual/libudev:= )
 	unwind? ( sys-libs/libunwind )
 	wayland? (
 		>=dev-libs/wayland-1.3.0
-		media-libs/libepoxy[egl(+)]
+		>=media-libs/libepoxy-1.5.4[egl(+)]
 		>=dev-libs/wayland-protocols-1.18
 	)
 	>=x11-apps/xinit-1.3.3-r1
@@ -104,7 +104,6 @@ DEPEND="${CDEPEND}
 
 RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-xserver )
-	!x11-drivers/xf86-video-modesetting
 "
 
 PDEPEND="

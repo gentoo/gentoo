@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="Config database to store, share and manipulate colour management informations"
@@ -43,5 +44,5 @@ multilib_src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=$(multilib_native_usex doc OFF ON)
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

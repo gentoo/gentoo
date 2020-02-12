@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -91,9 +91,9 @@ src_configure() {
 
 	# turn valgrind tests off. Bug #340791
 	VALGRIND=no econf \
-		--with-rundir="${EPREFIX%/}/run/dovecot" \
-		--with-statedir="${EPREFIX%/}/var/lib/dovecot" \
-		--with-moduledir="${EPREFIX%/}/usr/$(get_libdir)/dovecot" \
+		--with-rundir="${EPREFIX}/run/dovecot" \
+		--with-statedir="${EPREFIX}/var/lib/dovecot" \
+		--with-moduledir="${EPREFIX}/usr/$(get_libdir)/dovecot" \
 		--without-stemmer \
 		--disable-rpath \
 		--without-libbsd \
@@ -128,7 +128,7 @@ src_configure() {
 		cd "../dovecot-${major_minor}-pigeonhole-${sieve_version}" || die "cd failed"
 		econf \
 			$( use_enable static-libs static ) \
-			--localstatedir="${EPREFIX%/}/var" \
+			--localstatedir="${EPREFIX}/var" \
 			--enable-shared \
 			--with-dovecot="${S}" \
 			$( use_with managesieve )

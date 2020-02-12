@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils eutils xdg
+inherit cmake eutils xdg
 
 DESCRIPTION="Vim-fork focused on extensibility and agility."
 HOMEPAGE="https://neovim.io"
@@ -13,7 +13,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/neovim/neovim.git"
 else
 	SRC_URI="https://github.com/neovim/neovim/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~x86"
 fi
 
 LICENSE="Apache-2.0 vim"
@@ -59,7 +59,7 @@ src_prepare() {
 	sed -e "/^# define SYS_VIMRC_FILE/s|\$VIM|${EPREFIX}/etc/vim|" \
 		-i src/nvim/globals.h || die
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -67,11 +67,11 @@ src_configure() {
 		-DFEAT_TUI=$(usex tui)
 		-DPREFER_LUA=$(usex luajit no yes)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	# install a default configuration file
 	insinto /etc/vim
@@ -86,7 +86,7 @@ src_install() {
 pkg_postinst() {
 	xdg_pkg_postinst
 	optfeature "clipboard support" x11-misc/xsel x11-misc/xclip gui-apps/wl-clipboard
-	optfeature "Python plugin support" dev-python/neovim-python-client
+	optfeature "Python plugin support" dev-python/pynvim
 	optfeature "Ruby plugin support" dev-ruby/neovim-ruby-client
 	optfeature "remote/nvr support" dev-python/neovim-remote
 }

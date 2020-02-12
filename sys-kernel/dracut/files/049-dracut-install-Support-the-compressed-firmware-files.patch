@@ -1,0 +1,63 @@
+From 999cfa84582ab4ce4cc602242cb71d0af0b7d4ac Mon Sep 17 00:00:00 2001
+From: Takashi Iwai <tiwai@suse.de>
+Date: Thu, 22 Aug 2019 12:37:56 +0200
+Subject: [PATCH] dracut-install: Support the compressed firmware files
+ correctly
+To: <initramfs@vger.kernel.org>
+
+The compressed firmware support was supposed to be already
+implemented, but it didn't work as expected in the end, because dracut
+moved to use dracut-install binary.  This patch adds the support of
+XZ-compressed firmware installation to dracut-install for fixing the
+missing piece.
+
+At best the firmware files should be uncompressed in initrd, but this
+patch simply copies the compressed file as-is, as a quick workaround.
+
+BugLink: https://bugzilla.suse.com/show_bug.cgi?id=1146769
+Signed-off-by: Takashi Iwai <tiwai@suse.de>
+---
+ install/dracut-install.c | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/install/dracut-install.c b/install/dracut-install.c
+index 9e415b5e..7cda499d 100644
+--- a/install/dracut-install.c
++++ b/install/dracut-install.c
+@@ -1151,6 +1151,8 @@ static int install_firmware(struct kmod_module *mod)
+                 ret = -1;
+                 STRV_FOREACH(q, firmwaredirs) {
+                         _cleanup_free_ char *fwpath = NULL;
++                        _cleanup_free_ char *fwpath_xz = NULL;
++                        const char *fw;
+                         struct stat sb;
+                         int r;
+ 
+@@ -1160,12 +1162,21 @@ static int install_firmware(struct kmod_module *mod)
+                                 exit(EXIT_FAILURE);
+                         }
+ 
++                        fw = fwpath;
+                         if (stat(fwpath, &sb) != 0) {
+-                                log_debug("stat(%s) != 0", fwpath);
+-                                continue;
++                                r = asprintf(&fwpath_xz, "%s.xz", fwpath);
++                                if (r < 0) {
++                                        log_error("Out of memory!");
++                                        exit(EXIT_FAILURE);
++                                }
++                                if (stat(fwpath_xz, &sb) != 0) {
++                                        log_debug("stat(%s) != 0", fwpath);
++                                        continue;
++                                }
++                                fw = fwpath_xz;
+                         }
+ 
+-                        ret = dracut_install(fwpath, fwpath, false, false, true);
++                        ret = dracut_install(fw, fw, false, false, true);
+                         if (ret == 0)
+                                 log_debug("dracut_install '%s' OK", fwpath);
+                 }
+-- 
+2.24.1
+

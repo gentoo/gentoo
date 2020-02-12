@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit eutils python-single-r1 toolchain-funcs unpacker
 
@@ -20,8 +20,10 @@ IUSE="caps debug python seccomp"
 RDEPEND="caps? ( >=sys-libs/libcap-2.24 )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/pyelftools[${PYTHON_USEDEP}]
-		)
+		$(python_gen_cond_dep '
+			dev-python/pyelftools[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	seccomp? ( sys-libs/libseccomp )"
 DEPEND="${RDEPEND}
 	caps? ( virtual/pkgconfig )

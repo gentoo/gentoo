@@ -6,7 +6,6 @@
     <name>Mikle Kolyada</name>
   </maintainer>
   <use>
-    <flag name="adplug">Enable the AdPlug decoder plugin</flag>
     <flag name="cdio">Use libcdio for ISO9660 parsing support</flag>
     <flag name="chromaprint">Enable ChromaPrint / AcoustID support</flag>
     <flag name="cue">Enable CUE sheet support</flag>

@@ -1,28 +1,30 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit autotools eutils
+EAPI=7
 
-IUSE="snmp"
+inherit autotools
 
 DESCRIPTION="Network interface bandwidth usage, with support for snmp targets"
-SRC_URI="http://gael.roualland.free.fr/ifstat/${P}.tar.gz"
 HOMEPAGE="http://gael.roualland.free.fr/ifstat/"
+SRC_URI="http://gael.roualland.free.fr/ifstat/${P}.tar.gz"
 
-SLOT="0"
 LICENSE="GPL-2"
+SLOT="0"
 KEYWORDS="~alpha amd64 hppa ~mips ppc ppc64 sparc x86"
+IUSE="snmp"
 
 DEPEND="snmp? ( >=net-analyzer/net-snmp-5.0 )"
 RDEPEND="${DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-make.patch
+	"${FILESDIR}"/${P}-hardened.patch
+)
 DOCS=( HISTORY README TODO )
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-make.patch
-	epatch "${FILESDIR}"/${P}-hardened.patch
-
+	default
 	eautoreconf
 }
 

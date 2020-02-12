@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils xdg
+inherit cmake xdg
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
 HOMEPAGE="https://keepassxc.org"
@@ -24,7 +24,7 @@ fi
 
 LICENSE="LGPL-2.1 GPL-2 GPL-3"
 SLOT="0"
-IUSE="autotype browser debug keeshare +network test yubikey"
+IUSE="autotype browser ccache debug keeshare +network test yubikey"
 
 RDEPEND="
 	app-crypt/argon2:=
@@ -55,7 +55,9 @@ DEPEND="
 	dev-qt/linguist-tools:5
 	dev-qt/qttest:5
 "
-
+BDEPEND="
+	ccache? ( dev-util/ccache )
+"
 # Not a runtime dependency but still needed (see bug #667092)
 PDEPEND="
 	x11-misc/xsel
@@ -67,11 +69,12 @@ src_prepare() {
 	 use test || \
 		sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
 
-	 cmake-utils_src_prepare
+	 cmake_src_prepare
 }
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_CCACHE="$(usex ccache)"
 		-DWITH_GUI_TESTS=OFF
 		-DWITH_TESTS="$(usex test)"
 		-DWITH_XC_AUTOTYPE="$(usex autotype)"
@@ -86,17 +89,5 @@ src_configure() {
 	if [[ "${PV}" == *_beta* ]] ; then
 		mycmakeargs+=( -DOVERRIDE_VERSION="${PV/_/-}" )
 	fi
-	cmake-utils_src_configure
-}
-
-pkg_preinst() {
-	xdg_pkg_preinst
-}
-
-pkg_postinst() {
-	xdg_pkg_postinst
-}
-
-pkg_postrm() {
-	xdg_pkg_postrm
+	cmake_src_configure
 }

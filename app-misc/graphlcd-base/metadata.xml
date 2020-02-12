@@ -10,7 +10,12 @@
 		<name>gentoo-vdr-project</name>
 	</maintainer>
 	<longdescription>
-		Contains the lowlevel lcd drivers for GraphLCD, which are also used by GLCDprocDriver.
+		This is the base package for the GraphLCD driver.
+		It contains multiple parts:
+		- lcd drivers for GraphLCD, which are also used by GLCDprocDriver
+		- lcd graphics library for GraphLCD
+		- lcd tools fro GraphLCD
+		- lcd media files fro GraphLCD
 	</longdescription>
 	<use>
 		<flag name="fontconfig">Add support for <pkg>media-libs/fontconfig</pkg> font names.</flag>

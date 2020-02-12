@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,6 +35,10 @@ DEPEND="${RDEPEND}
 		app-text/docbook-xml-dtd:4.2
 	)
 "
+
+MULTILIB_CHOST_TOOLS=(
+	/usr/bin/wflinfo$(get_exeext)
+)
 
 src_unpack() {
 	default

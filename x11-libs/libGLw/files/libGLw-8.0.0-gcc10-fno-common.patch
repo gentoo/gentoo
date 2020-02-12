@@ -1,0 +1,20 @@
+--- a/GLwDrawA.h
++++ b/GLwDrawA.h
+@@ -136,7 +136,7 @@
+ typedef struct _GLwMDrawingAreaClassRec	*GLwMDrawingAreaWidgetClass;
+ typedef struct _GLwMDrawingAreaRec	*GLwMDrawingAreaWidget;
+ 
+-GLAPI WidgetClass glwMDrawingAreaWidgetClass;
++extern GLAPI WidgetClass glwMDrawingAreaWidgetClass;
+ 
+ 
+ #else 
+@@ -144,7 +144,7 @@
+ typedef struct _GLwDrawingAreaClassRec	*GLwDrawingAreaWidgetClass;
+ typedef struct _GLwDrawingAreaRec	*GLwDrawingAreaWidget;
+ 
+-GLAPI WidgetClass glwDrawingAreaWidgetClass;
++extern GLAPI WidgetClass glwDrawingAreaWidgetClass;
+ 
+ 
+ #endif

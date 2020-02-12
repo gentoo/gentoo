@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg
+inherit cmake xdg
 
 DESCRIPTION="KeePassXC - KeePass Cross-platform Community Edition"
 HOMEPAGE="https://keepassxc.org"
@@ -66,7 +66,7 @@ src_prepare() {
 	 use test || \
 		sed -e "/^find_package(Qt5Test/d" -i CMakeLists.txt || die
 
-	 cmake-utils_src_prepare
+	 cmake_src_prepare
 }
 
 src_configure() {
@@ -84,7 +84,7 @@ src_configure() {
 	if [[ "${PV}" == *_beta* ]] ; then
 		mycmakeargs+=( -DOVERRIDE_VERSION="${PV/_/-}" )
 	fi
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_preinst() {

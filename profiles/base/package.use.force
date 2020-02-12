@@ -1,5 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Michał Górny <mgorny@gentoo.org> (2020-01-12)
+# libcxxabi is the only supported option.  The support for libsupc++
+# is maintained for experts only.
+sys-libs/libcxx libcxxabi
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-12-23)
 # This release does no longer build with x11-libs/gtk+:2
@@ -106,12 +111,9 @@ app-shells/bash:0 readline
 # Force-enable all PYTHON_TARGETS for python-exec to avoid using private
 # API. Please remember to keep it in sync with python_targets.desc.
 dev-lang/python-exec python_targets_python2_7
-dev-lang/python-exec python_targets_python3_5
 dev-lang/python-exec python_targets_python3_6
 dev-lang/python-exec python_targets_python3_7
 dev-lang/python-exec python_targets_python3_8
-dev-lang/python-exec python_targets_jython2_7
-dev-lang/python-exec python_targets_pypy
 dev-lang/python-exec python_targets_pypy3
 
 # Zac Medico <zmedico@gentoo.org> (2010-10-20)

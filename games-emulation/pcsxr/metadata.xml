@@ -6,6 +6,8 @@
 		<name>Michał Górny</name>
 	</maintainer>
 	<use>
+		<flag name="archive">Support compressed files (via libarchive)</flag>
+		<flag name="ccdda">Support compressed CDDA (requires ffmpeg)</flag>
 		<flag name="cdio">Use libcdio for CD support</flag>
 		<flag name="sdl">Use SDL sound backend (other parts of SDL are used unconditionally)</flag>
 	</use>

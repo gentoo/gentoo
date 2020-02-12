@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
-inherit cmake-utils python-any-r1
+PYTHON_COMPAT=( python3_{6,7} )
+inherit cmake python-any-r1
 
 DESCRIPTION="An implementation of basic iCAL protocols"
 HOMEPAGE="https://github.com/libical/libical"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="|| ( MPL-2.0 LGPL-2.1 )"
 SLOT="0/3"
-KEYWORDS="alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~x86-solaris"
 IUSE="berkdb doc examples glib static-libs test"
 RESTRICT="!test? ( test )"
 
@@ -52,7 +52,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	use examples || cmake_comment_add_subdirectory examples
 }
 
@@ -61,18 +61,18 @@ src_configure() {
 		-DICAL_GLIB=$(usex glib)
 		-DICAL_GLIB_VAPI=OFF
 		-DGOBJECT_INTROSPECTION=OFF
-		$(cmake-utils_use_find_package berkdb BDB)
+		$(cmake_use_find_package berkdb BDB)
 		-DICAL_BUILD_DOCS=$(usex doc)
 		-DSHARED_ONLY=$(usex !static-libs)
 	)
 # 	TODO: disabled until useful
 # 		-DGOBJECT_INTROSPECTION=$(usex introspection)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
-	use doc && cmake-utils_src_compile docs
+	cmake_src_compile
+	use doc && cmake_src_compile docs
 }
 
 src_test() {
@@ -80,13 +80,13 @@ src_test() {
 		-E "(icalrecurtest|icalrecurtest-r)" # bug 660282
 	)
 
-	cmake-utils_src_test
+	cmake_src_test
 }
 
 src_install() {
 	use doc && HTML_DOCS=( "${BUILD_DIR}"/apidocs/html/. )
 
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use examples; then
 		rm examples/CMakeLists.txt || die

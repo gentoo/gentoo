@@ -9,5 +9,6 @@
 		<flag name="btrfs">Enable support for chroots using btrfs snapshots</flag>
 		<flag name="dchroot">Enables the building of a wrapper named "dchroot", replacing <pkg>sys-apps/dchroot</pkg></flag>
 		<flag name="lvm">Enable support for chroots using LVM snapshots</flag>
+		<flag name="zfs">Enable support for chroots using ZFS shapshots/clones</flag>
 	</use>
 </pkgmetadata>

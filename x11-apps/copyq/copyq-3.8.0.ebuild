@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils gnome2-utils
+inherit cmake gnome2-utils
 
 MY_P=CopyQ-${PV}
 
@@ -46,7 +46,7 @@ src_configure() {
 		-DWITH_WEBKIT=$(usex webkit)
 		-DCMAKE_INSTALL_MANDIR="share/man"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

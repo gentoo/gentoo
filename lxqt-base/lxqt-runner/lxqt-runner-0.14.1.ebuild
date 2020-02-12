@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="LXQt quick launcher"
 HOMEPAGE="https://lxqt.org/"
@@ -43,6 +43,6 @@ RDEPEND="${DEPEND}
 "
 
 src_install(){
-	cmake-utils_src_install
+	cmake_src_install
 	doman man/*.1
 }

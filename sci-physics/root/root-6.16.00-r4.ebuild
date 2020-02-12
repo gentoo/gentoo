@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 # ninja does not work due to fortran
 CMAKE_MAKEFILE_GENERATOR=emake
 FORTRAN_NEEDED="fortran"
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
 inherit cmake-utils cuda eapi7-ver elisp-common eutils fortran-2 \
 	prefix python-single-r1 toolchain-funcs
@@ -95,7 +95,11 @@ CDEPEND="
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
 	tbb? ( >=dev-cpp/tbb-2018 )
-	tmva? ( dev-python/numpy[${PYTHON_USEDEP}] )
+	tmva? (
+		$(python_gen_cond_dep '
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	vc? ( dev-libs/vc:= )
 	xml? ( dev-libs/libxml2:2= )
 	xrootd? ( net-libs/xrootd:0= )
@@ -147,8 +151,9 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)"
-		-DCMAKE_INSTALL_MANDIR="${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"
+		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
+		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)"
+		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"
 		-DCMAKE_INSTALL_LIBDIR="lib"
 		-DDEFAULT_SYSROOT="${EPREFIX}"
 		-DCLING_BUILD_PLUGINS=OFF
@@ -284,7 +289,7 @@ src_compile() {
 src_install() {
 	cmake-utils_src_install
 
-	ROOTSYS=${EPREFIX%/}/usr/lib/${PN}/$(ver_cut 1-2)
+	ROOTSYS=${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)
 	ROOTENV=$((9999 - $(ver_cut 2)))${PN}-$(ver_cut 1-2)
 
 	cat > ${ROOTENV} <<- EOF || die

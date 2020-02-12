@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 COMMIT="77edb1f14dde35e1facecc309dbc4fb7f07d7014"
 

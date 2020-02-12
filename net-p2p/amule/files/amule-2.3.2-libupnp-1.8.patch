@@ -1,0 +1,263 @@
+From f6dccde218fed8dabd3c61efce02d29b320858fe Mon Sep 17 00:00:00 2001
+From: Marcelo Roberto Jimenez <marcelo.jimenez@gmail.com>
+Date: Tue, 2 Oct 2018 18:17:43 -0300
+Subject: [PATCH] Make aMule compatible with libupnp 1.8
+
+---
+ src/UPnPBase.cpp | 110 +++++++++++++++++++++++++++--------------------
+ src/UPnPBase.h   |   6 +--
+ 2 files changed, 66 insertions(+), 50 deletions(-)
+
+diff --git a/src/UPnPBase.cpp b/src/UPnPBase.cpp
+index 01a7c3a05..d4063a136 100644
+--- a/src/UPnPBase.cpp
++++ b/src/UPnPBase.cpp
+@@ -1127,7 +1127,7 @@ bool CUPnPControlPoint::PrivateDeletePortMapping(
+ 
+ 
+ // This function is static
+-int CUPnPControlPoint::Callback(Upnp_EventType EventType, void *Event, void * /*Cookie*/)
++int CUPnPControlPoint::Callback(Upnp_EventType_e EventType, const void *Event, void * /*Cookie*/)
+ {
+ 	std::ostringstream msg;
+ 	std::ostringstream msg2;
+@@ -1149,24 +1149,25 @@ int CUPnPControlPoint::Callback(Upnp_EventType EventType, void *Event, void * /*
+ 		msg2<< "UPNP_DISCOVERY_SEARCH_RESULT: ";
+ 		// UPnP Discovery
+ upnpDiscovery:
+-		struct Upnp_Discovery *d_event = (struct Upnp_Discovery *)Event;
++		UpnpDiscovery *d_event = (UpnpDiscovery *)Event;
+ 		IXML_Document *doc = NULL;
+-		int ret;
+-		if (d_event->ErrCode != UPNP_E_SUCCESS) {
+-			msg << UpnpGetErrorMessage(d_event->ErrCode) << ".";
++		int errCode = UpnpDiscovery_get_ErrCode(d_event);
++		if (errCode != UPNP_E_SUCCESS) {
++			msg << UpnpGetErrorMessage(errCode) << ".";
+ 			AddDebugLogLineC(logUPnP, msg);
+ 		}
+ 		// Get the XML tree device description in doc
+-		ret = UpnpDownloadXmlDoc(d_event->Location, &doc);
++		const char *location = UpnpDiscovery_get_Location_cstr(d_event);
++		int ret = UpnpDownloadXmlDoc(location, &doc);
+ 		if (ret != UPNP_E_SUCCESS) {
+ 			msg << "Error retrieving device description from " <<
+-				d_event->Location << ": " <<
++				location << ": " <<
+ 				UpnpGetErrorMessage(ret) <<
+ 				"(" << ret << ").";
+ 			AddDebugLogLineC(logUPnP, msg);
+ 		} else {
+ 			msg2 << "Retrieving device description from " <<
+-				d_event->Location << ".";
++				location << ".";
+ 			AddDebugLogLineN(logUPnP, msg2);
+ 		}
+ 		if (doc) {
+@@ -1194,8 +1195,9 @@ upnpDiscovery:
+ 					AddDebugLogLineC(logUPnP, msg);
+ 				}
+ 				// Add the root device to our list
++				int expires = UpnpDiscovery_get_Expires(d_event);
+ 				upnpCP->AddRootDevice(rootDevice, urlBase,
+-					d_event->Location, d_event->Expires);
++					location, expires);
+ 			}
+ 			// Free the XML doc tree
+ 			IXML::Document::Free(doc);
+@@ -1216,28 +1218,35 @@ upnpDiscovery:
+ 	case UPNP_DISCOVERY_ADVERTISEMENT_BYEBYE: {
+ 		//fprintf(stderr, "Callback: UPNP_DISCOVERY_ADVERTISEMENT_BYEBYE\n");
+ 		// UPnP Device Removed
+-		struct Upnp_Discovery *dab_event = (struct Upnp_Discovery *)Event;
+-		if (dab_event->ErrCode != UPNP_E_SUCCESS) {
++		UpnpDiscovery *dab_event = (UpnpDiscovery *)Event;
++		int errCode = UpnpDiscovery_get_ErrCode(dab_event);
++		if (errCode != UPNP_E_SUCCESS) {
+ 			msg << "error(UPNP_DISCOVERY_ADVERTISEMENT_BYEBYE): " <<
+-				UpnpGetErrorMessage(dab_event->ErrCode) <<
++				UpnpGetErrorMessage(errCode) <<
+ 				".";
+ 			AddDebugLogLineC(logUPnP, msg);
+ 		}
+-		std::string devType = dab_event->DeviceType;
++		std::string devType = UpnpDiscovery_get_DeviceType_cstr(dab_event);
+ 		// Check for an InternetGatewayDevice and removes it from the list
+-		std::transform(devType.begin(), devType.end(), devType.begin(), tolower);
++		std::transform(devType.begin(), devType.end(),
++			devType.begin(), tolower);
+ 		if (stdStringIsEqualCI(devType, UPnP::Device::IGW)) {
+-			upnpCP->RemoveRootDevice(dab_event->DeviceId);
++			const char *deviceID =
++				UpnpDiscovery_get_DeviceID_cstr(dab_event);
++			upnpCP->RemoveRootDevice(deviceID);
+ 		}
+ 		break;
+ 	}
+ 	case UPNP_EVENT_RECEIVED: {
+ 		//fprintf(stderr, "Callback: UPNP_EVENT_RECEIVED\n");
+ 		// Event reveived
+-		struct Upnp_Event *e_event = (struct Upnp_Event *)Event;
+-		const std::string Sid = e_event->Sid;
++		UpnpEvent *e_event = (UpnpEvent *)Event;
++		int eventKey = UpnpEvent_get_EventKey(e_event);
++		IXML_Document *changedVariables =
++			UpnpEvent_get_ChangedVariables(e_event);
++		const std::string sid = UpnpEvent_get_SID_cstr(e_event);
+ 		// Parses the event
+-		upnpCP->OnEventReceived(Sid, e_event->EventKey, e_event->ChangedVariables);
++		upnpCP->OnEventReceived(sid, eventKey, changedVariables);
+ 		break;
+ 	}
+ 	case UPNP_EVENT_SUBSCRIBE_COMPLETE:
+@@ -1252,24 +1261,23 @@ upnpDiscovery:
+ 		//fprintf(stderr, "Callback: UPNP_EVENT_RENEWAL_COMPLETE\n");
+ 		msg << "error(UPNP_EVENT_RENEWAL_COMPLETE): ";
+ upnpEventRenewalComplete:
+-		struct Upnp_Event_Subscribe *es_event =
+-			(struct Upnp_Event_Subscribe *)Event;
+-		if (es_event->ErrCode != UPNP_E_SUCCESS) {
++		UpnpEventSubscribe *es_event = (UpnpEventSubscribe *)Event;
++		int errCode = UpnpEventSubscribe_get_ErrCode(es_event);
++		if (errCode != UPNP_E_SUCCESS) {
+ 			msg << "Error in Event Subscribe Callback";
+-			UPnP::ProcessErrorMessage(
+-				msg.str(), es_event->ErrCode, NULL, NULL);
++			UPnP::ProcessErrorMessage(msg.str(), errCode, NULL, NULL);
+ 		} else {
+ #if 0
++			const UpnpString *publisherUrl =
++				UpnpEventSubscribe_get_PublisherUrl(es_event);
++			const char *sid = UpnpEvent_get_SID_cstr(es_event);
++			int timeOut = UpnpEvent_get_TimeOut(es_event);
+ 			TvCtrlPointHandleSubscribeUpdate(
+-				GET_UPNP_STRING(es_event->PublisherUrl),
+-				es_event->Sid,
+-				es_event->TimeOut );
++				publisherUrl, sid, timeOut);
+ #endif
+ 		}
+-
+ 		break;
+ 	}
+-
+ 	case UPNP_EVENT_AUTORENEWAL_FAILED:
+ 		//fprintf(stderr, "Callback: UPNP_EVENT_AUTORENEWAL_FAILED\n");
+ 		msg << "error(UPNP_EVENT_AUTORENEWAL_FAILED): ";
+@@ -1280,29 +1288,31 @@ upnpEventRenewalComplete:
+ 		msg << "error(UPNP_EVENT_SUBSCRIPTION_EXPIRED): ";
+ 		msg2 << "UPNP_EVENT_SUBSCRIPTION_EXPIRED: ";
+ upnpEventSubscriptionExpired:
+-		struct Upnp_Event_Subscribe *es_event =
+-			(struct Upnp_Event_Subscribe *)Event;
++		UpnpEventSubscribe *es_event = (UpnpEventSubscribe *)Event;
+ 		Upnp_SID newSID;
+ 		memset(newSID, 0, sizeof(Upnp_SID));
+ 		int TimeOut = 1801;
++		const char *publisherUrl =
++			UpnpEventSubscribe_get_PublisherUrl_cstr(es_event);
+ 		int ret = UpnpSubscribe(
+ 			upnpCP->m_UPnPClientHandle,
+-			GET_UPNP_STRING(es_event->PublisherUrl),
++			publisherUrl,
+ 			&TimeOut,
+ 			newSID);
+ 		if (ret != UPNP_E_SUCCESS) {
+ 			msg << "Error Subscribing to EventURL";
++			int errCode = UpnpEventSubscribe_get_ErrCode(es_event);
+ 			UPnP::ProcessErrorMessage(
+-				msg.str(), es_event->ErrCode, NULL, NULL);
++				msg.str(), errCode, NULL, NULL);
+ 		} else {
+ 			ServiceMap::iterator it =
+-				upnpCP->m_ServiceMap.find(GET_UPNP_STRING(es_event->PublisherUrl));
++				upnpCP->m_ServiceMap.find(publisherUrl);
+ 			if (it != upnpCP->m_ServiceMap.end()) {
+ 				CUPnPService &service = *(it->second);
+ 				service.SetTimeout(TimeOut);
+ 				service.SetSID(newSID);
+ 				msg2 << "Re-subscribed to EventURL '" <<
+-					GET_UPNP_STRING(es_event->PublisherUrl) <<
++					publisherUrl <<
+ 					"' with SID == '" <<
+ 					newSID << "'.";
+ 				AddDebugLogLineC(logUPnP, msg2);
+@@ -1321,17 +1331,19 @@ upnpEventSubscriptionExpired:
+ 	case UPNP_CONTROL_ACTION_COMPLETE: {
+ 		//fprintf(stderr, "Callback: UPNP_CONTROL_ACTION_COMPLETE\n");
+ 		// This is here if we choose to do this asynchronously
+-		struct Upnp_Action_Complete *a_event =
+-			(struct Upnp_Action_Complete *)Event;
+-		if (a_event->ErrCode != UPNP_E_SUCCESS) {
++		UpnpActionComplete *a_event = (UpnpActionComplete *)Event;
++		int errCode = UpnpActionComplete_get_ErrCode(a_event);
++		IXML_Document *actionResult =
++			UpnpActionComplete_get_ActionResult(a_event);
++		if (errCode != UPNP_E_SUCCESS) {
+ 			UPnP::ProcessErrorMessage(
+ 				"UpnpSendActionAsync",
+-				a_event->ErrCode, NULL,
+-				a_event->ActionResult);
++				errCode, NULL,
++				actionResult);
+ 		} else {
+ 			// Check the response document
+ 			UPnP::ProcessActionResponse(
+-				a_event->ActionResult,
++				actionResult,
+ 				"<UpnpSendActionAsync>");
+ 		}
+ 		/* No need for any processing here, just print out results.
+@@ -1342,21 +1354,25 @@ upnpEventSubscriptionExpired:
+ 	case UPNP_CONTROL_GET_VAR_COMPLETE: {
+ 		//fprintf(stderr, "Callback: UPNP_CONTROL_GET_VAR_COMPLETE\n");
+ 		msg << "error(UPNP_CONTROL_GET_VAR_COMPLETE): ";
+-		struct Upnp_State_Var_Complete *sv_event =
+-			(struct Upnp_State_Var_Complete *)Event;
+-		if (sv_event->ErrCode != UPNP_E_SUCCESS) {
++		UpnpStateVarComplete *sv_event = (UpnpStateVarComplete *)Event;
++		int errCode = UpnpStateVarComplete_get_ErrCode(sv_event);
++		if (errCode != UPNP_E_SUCCESS) {
+ 			msg << "m_UpnpGetServiceVarStatusAsync";
+ 			UPnP::ProcessErrorMessage(
+-				msg.str(), sv_event->ErrCode, NULL, NULL);
++				msg.str(), errCode, NULL, NULL);
+ 		} else {
+ #if 0
+ 			// Warning: The use of UpnpGetServiceVarStatus and
+ 			// UpnpGetServiceVarStatusAsync is deprecated by the
+ 			// UPnP forum.
++			const char *ctrlUrl =
++				UpnpStateVarComplete_get_CtrlUrl(sv_event);
++			const char *stateVarName =
++				UpnpStateVarComplete_get_StateVarName(sv_event);
++			const DOMString currentVal =
++				UpnpStateVarComplete_get_CurrentVal(sv_event);
+ 			TvCtrlPointHandleGetVar(
+-				sv_event->CtrlUrl,
+-				sv_event->StateVarName,
+-				sv_event->CurrentVal );
++				ctrlUrl, stateVarName, currentVal);
+ #endif
+ 		}
+ 		break;
+diff --git a/src/UPnPBase.h b/src/UPnPBase.h
+index 9eafbd143..92753b86a 100644
+--- a/src/UPnPBase.h
++++ b/src/UPnPBase.h
+@@ -489,9 +489,9 @@ public:
+ 
+ 	// Callback function
+ 	static int Callback(
+-		Upnp_EventType EventType,
+-		void* Event,
+-		void* Cookie);
++		Upnp_EventType_e EventType,
++		const void *Event,
++		void *Cookie);
+ 
+ private:
+ 	void OnEventReceived(
+-- 
+2.24.1
+

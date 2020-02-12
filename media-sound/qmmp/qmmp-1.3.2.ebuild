@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 [[ ${PV} = 9999 ]] && inherit subversion
 
 DESCRIPTION="Qt5-based audio player with winamp/xmms skins support"
@@ -104,7 +104,7 @@ src_prepare() {
 			src/plugins/Input/cdaudio/decoder_cdaudio.cpp || die
 	fi
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -156,7 +156,7 @@ src_configure() {
 		-DUSE_WAVPACK="$(usex wavpack)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

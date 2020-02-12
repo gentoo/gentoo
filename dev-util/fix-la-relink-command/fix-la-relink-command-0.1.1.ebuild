@@ -1,10 +1,10 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
 DESCRIPTION="Helps prevent .la files from relinking to libraries outside a build tree"
-HOMEPAGE="https://dev.gentoo.org/~tetromino/distfiles/${PN}"
+HOMEPAGE="https://dev.gentoo.org/~tetromino/distfiles/fix-la-relink-command"
 SRC_URI="https://dev.gentoo.org/~tetromino/distfiles/${PN}/${P}.tar.xz"
 
 LICENSE="|| ( Artistic GPL-1 GPL-2 GPL-3 )"

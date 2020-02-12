@@ -1,5 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
+# buggy on big-endian
+x11-libs/libva
+media-video/libva-utils
+media-plugins/gst-plugins-vaapi
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-14)
 # buggy on big-endian

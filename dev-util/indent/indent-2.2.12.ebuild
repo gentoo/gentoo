@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,14 @@ src_prepare() {
 src_configure() {
 	strip-linguas -i po/
 
-	gl_cv_cc_vis_werror=no econf $(use_enable nls)
+	if use nls; then
+		gl_cv_cc_vis_werror=no \
+		econf $(use_enable nls)
+	else
+		ac_cv_func_setlocale=no \
+		gl_cv_cc_vis_werror=no \
+		econf $(use_enable nls)
+	fi
 }
 
 src_test() {

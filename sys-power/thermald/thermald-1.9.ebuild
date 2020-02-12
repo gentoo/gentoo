@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,6 +42,6 @@ my_src_configure() {
 my_src_install_all() {
 	einstalldocs
 
-	rm -rf "${ED%/}"/etc/init || die
+	rm -rf "${ED}"/etc/init || die
 	doinitd "${FILESDIR}"/thermald
 }

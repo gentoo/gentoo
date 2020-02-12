@@ -1,4 +1,4 @@
-# Copyright 2011-2019 Gentoo Authors
+# Copyright 2011-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,7 +10,7 @@ if [[ ${PV} != 9999 ]]; then
 	S="${WORKDIR}/${MY_P}"
 	SRC_URI="https://pub.freerdp.com/releases/${MY_P}.tar.gz
 		https://github.com/FreeRDP/FreeRDP/commit/6931f54fad12eaf46a72c5c02ac05da817ab6b94.patch -> freerdp-2.0.0-rc4-fix-NTLM-AvPair-lists.patch"
-	KEYWORDS="alpha amd64 arm arm64 ppc ppc64 x86"
+	KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 x86"
 else
 	inherit git-r3
 	SRC_URI=""

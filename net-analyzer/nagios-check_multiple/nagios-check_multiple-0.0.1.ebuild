@@ -1,16 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{3_5,3_6,3_7,3_8} )
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1
 
 MY_PN="check_multiple"
 DESCRIPTION="A Nagios plugin to execute multiple checks in parallel"
-HOMEPAGE="https://github.com/clarkbox/${MY_PN}"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/clarkbox/check_multiple"
+SRC_URI="https://github.com/clarkbox/check_multiple/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

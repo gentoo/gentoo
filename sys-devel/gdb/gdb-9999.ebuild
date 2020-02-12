@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit eutils flag-o-matic python-single-r1
 
@@ -14,8 +14,6 @@ if [[ ${CTARGET} == ${CHOST} ]] ; then
 fi
 is_cross() { [[ ${CHOST} != ${CTARGET} ]] ; }
 
-RPM=
-MY_PV=${PV}
 case ${PV} in
 9999*)
 	# live git tree
@@ -87,8 +85,6 @@ BDEPEND="
 		nls? ( sys-devel/gettext )
 	)"
 
-S=${WORKDIR}/${PN}-${MY_PV}
-
 PATCHES=(
 	"${FILESDIR}"/${PN}-8.3.1-verbose-build.patch
 )
@@ -98,8 +94,6 @@ pkg_setup() {
 }
 
 src_prepare() {
-	[[ -n ${RPM} ]] && rpm_spec_epatch "${WORKDIR}"/gdb.spec
-
 	default
 
 	strip-linguas -u bfd/po opcodes/po
@@ -243,6 +237,10 @@ src_install() {
 	# gcore is part of ubin on freebsd
 	if [[ ${CHOST} == *-freebsd* ]]; then
 		rm "${ED}"/usr/bin/gcore || die
+	fi
+
+	if use python; then
+		python_optimize "${ED}"/usr/share/gdb/python/gdb
 	fi
 }
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,13 +26,15 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	clang? ( >=sys-devel/clang-3.3 )
 	|| (
-		app-editors/vim[python,${PYTHON_USEDEP}]
-		app-editors/gvim[python,${PYTHON_USEDEP}]
+		app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
+		app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
 	)"
 DEPEND="${RDEPEND}
 	test? (
-		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
-		>=dev-python/nose-1.3.0[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/mock-1.0.1[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/nose-1.3.0[${PYTHON_MULTI_USEDEP}]
+		')
 	)"
 
 CMAKE_IN_SOURCE_BUILD=1
@@ -56,7 +58,7 @@ src_configure() {
 
 src_test() {
 	# TODO: use system gtest
-	cd "${S}"/cpp || die
+	cd "${S}"/cpp || die
 	emake ycm_core_tests
 	cd ycm/tests || die
 	LD_LIBRARY_PATH="${EROOT}"/usr/$(get_libdir)/llvm \

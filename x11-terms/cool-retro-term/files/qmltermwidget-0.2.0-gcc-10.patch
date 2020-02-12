@@ -1,0 +1,46 @@
+From 5cb4f9e6c86354674bd7715d947f95ac9f16a6c1 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Sat, 25 Jan 2020 12:20:37 +0000
+Subject: [PATCH] TerminalCharacterDecoder.cpp: fix build failure against
+ gcc-10
+
+gcc-10 fixed a few transitive includes and std::cwctype does not
+get included implicitly via other headers. This leads to the
+following build error:
+
+```
+lib/TerminalCharacterDecoder.cpp: In member function
+  'virtual void Konsole::HTMLDecoder::decodeLine(const Konsole::Character*,
+      int, Konsole::LineProperty)':
+lib/TerminalCharacterDecoder.cpp:205:18:
+  error: 'iswspace' is not a member of 'std'; did you mean 'isspace'?
+  205 |         if (std::iswspace(ch))
+      |                  ^~~~~~~~
+      |                  isspace
+make: *** [Makefile:924: TerminalCharacterDecoder.o] Error 1
+```
+
+The fix is to include <cwctype> that is supposed to define 'std::iswspace'.
+
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ lib/TerminalCharacterDecoder.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/lib/TerminalCharacterDecoder.cpp b/lib/TerminalCharacterDecoder.cpp
+index 579dedf..5d5bfc0 100644
+--- a/lib/TerminalCharacterDecoder.cpp
++++ b/lib/TerminalCharacterDecoder.cpp
+@@ -19,6 +19,9 @@
+     02110-1301  USA.
+ */
+ 
++// System
++#include <cwctype> /* std::iswspace */
++
+ // Own
+ #include "TerminalCharacterDecoder.h"
+ 
+-- 
+2.25.0
+

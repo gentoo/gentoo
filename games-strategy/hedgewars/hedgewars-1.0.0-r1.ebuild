@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR=emake
-inherit cmake-utils xdg-utils
+inherit cmake xdg-utils
 
 MY_P=${PN}-src-${PV}
 
@@ -88,11 +88,11 @@ src_configure() {
 		# https://bugzilla.redhat.com/show_bug.cgi?id=1200193
 		-DCMAKE_SKIP_RPATH=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	doman man/${PN}.6
 }
 

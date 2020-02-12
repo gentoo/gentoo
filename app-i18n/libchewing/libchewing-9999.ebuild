@@ -1,4 +1,4 @@
-# Copyright 2004-2019 Gentoo Authors
+# Copyright 2004-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -26,6 +26,8 @@ KEYWORDS=""
 IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
+# BDEPEND="test? ( virtual/pkgconfig )"
+BDEPEND="virtual/pkgconfig"
 RDEPEND="dev-db/sqlite:3"
 DEPEND="${RDEPEND}
 	test? ( sys-libs/ncurses[unicode] )"

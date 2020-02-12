@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ DIST_VERSION=3.10
 inherit perl-module
 
 DESCRIPTION="Extremely fast, reliable form generation and processing module"
-HOMEPAGE="http://www.formbuilder.org/ ${HOMEPAGE}"
+HOMEPAGE="http://www.formbuilder.org/ https://metacpan.org/release/CGI-FormBuilder"
 
 SLOT="0"
 KEYWORDS="amd64 ~x86"

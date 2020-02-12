@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit autotools gnome2 multilib python-single-r1
 
@@ -47,10 +47,12 @@ COMMON_DEPEND="
 # our cinnamon-1.8 ebuilds installed a cinnamon-screensaver.desktop hack
 RDEPEND="${COMMON_DEPEND}
 	!~gnome-extra/cinnamon-1.8.8.1
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/setproctitle[${PYTHON_USEDEP}]
-	dev-python/xapp[${PYTHON_USEDEP}]
-	dev-python/psutil[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/setproctitle[${PYTHON_MULTI_USEDEP}]
+		dev-python/xapp[${PYTHON_MULTI_USEDEP}]
+		dev-python/psutil[${PYTHON_MULTI_USEDEP}]
+	')
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-util/intltool-0.35

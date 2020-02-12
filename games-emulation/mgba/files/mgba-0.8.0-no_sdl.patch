@@ -1,0 +1,50 @@
+From aa3403401bfb7259795313603929586bee91ce1b Mon Sep 17 00:00:00 2001
+From: Vicki Pfau <vi@endrift.com>
+Date: Fri, 31 Jan 2020 18:09:58 -0800
+Subject: [PATCH] Qt: Fix non-SDL build (fixes #1656)
+
+---
+ CHANGES                             |  3 +++
+ src/platform/qt/InputController.cpp | 12 ++++++++++++
+ 2 files changed, 15 insertions(+)
+
+diff --git a/CHANGES b/CHANGES
+index 7aac48d6..6418b059 100644
+--- a/CHANGES
++++ b/CHANGES
+@@ -1,3 +1,6 @@
++Misc:
++ - Qt: Fix non-SDL build (fixes mgba.io/i/1656)
++
+ 0.8.0: (2020-01-21)
+ Features:
+  - Improved logging configuration
+diff --git a/src/platform/qt/InputController.cpp b/src/platform/qt/InputController.cpp
+index 77ee0704..c6a598ce 100644
+--- a/src/platform/qt/InputController.cpp
++++ b/src/platform/qt/InputController.cpp
+@@ -271,9 +271,21 @@ void InputController::setPreferredGamepad(uint32_t type, int index) {
+ 	if (!m_config) {
+ 		return;
+ 	}
++#ifdef BUILD_SDL
+ 	char name[34] = {0};
++#if SDL_VERSION_ATLEAST(2, 0, 0)
+ 	SDL_JoystickGetGUIDString(SDL_JoystickGetGUID(SDL_JoystickListGetPointer(&s_sdlEvents.joysticks, index)->joystick), name, sizeof(name));
++#else
++	const char* name = SDL_JoystickName(SDL_JoystickIndex(SDL_JoystickListGetPointer(&s_sdlEvents.joysticks, index)->joystick));
++	if (!name) {
++		return;
++	}
++#endif
+ 	mInputSetPreferredDevice(m_config->input(), "gba", type, m_playerId, name);
++#else
++	UNUSED(type);
++	UNUSED(index);
++#endif
+ }
+ 
+ mRumble* InputController::rumble() {
+-- 
+2.25.0
+

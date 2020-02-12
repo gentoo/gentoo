@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,19 +26,9 @@ RDEPEND="media-libs/libpng:0=
 		media-libs/freetype:2=
 		virtual/opengl:0=
 		virtual/glu:0=
-	)
-	!<games-emulation/mupen64plus-2.0"
+	)"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
-
-# block versions using SDL1
-RDEPEND="${RDEPEND}
-	!<games-emulation/m64py-0.2.3-r1
-	!<games-emulation/mupen64plus-audio-sdl-2.5
-	!<games-emulation/mupen64plus-input-sdl-2.5
-	!<games-emulation/mupen64plus-ui-console-2.5
-	!<games-emulation/mupen64plus-video-glide64mk2-2.5
-	!<games-emulation/mupen64plus-video-rice-2.5"
 
 REQUIRED_USE="gles2? ( !osd )"
 S=${WORKDIR}/${MY_P}
