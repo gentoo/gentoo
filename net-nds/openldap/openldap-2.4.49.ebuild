@@ -738,19 +738,19 @@ multilib_src_install() {
 		use prefix || fowners ldap:ldap /var/lib/openldap-data
 		fperms 0700 /var/lib/openldap-data
 
-		echo "OLDPF='${PF}'" > "${ED%/}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
-		echo "# do NOT delete this. it is used"	>> "${ED%/}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
-		echo "# to track versions for upgrading." >> "${ED%/}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
+		echo "OLDPF='${PF}'" > "${ED}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
+		echo "# do NOT delete this. it is used"	>> "${ED}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
+		echo "# to track versions for upgrading." >> "${ED}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
 
 		# use our config
-		rm "${ED%/}"/etc/openldap/slapd.conf
+		rm "${ED}"/etc/openldap/slapd.conf
 		insinto /etc/openldap
 		newins "${FILESDIR}"/${PN}-2.4.40-slapd-conf slapd.conf
-		configfile="${ED%/}"/etc/openldap/slapd.conf
+		configfile="${ED}"/etc/openldap/slapd.conf
 
 		# populate with built backends
 		ebegin "populate config with built backends"
-		for x in "${ED%/}"/usr/$(get_libdir)/openldap/openldap/back_*.so; do
+		for x in "${ED}"/usr/$(get_libdir)/openldap/openldap/back_*.so; do
 			einfo "Adding $(basename ${x})"
 			sed -e "/###INSERTDYNAMICMODULESHERE###$/a# moduleload\t$(basename ${x})" -i "${configfile}" || die
 		done
@@ -775,7 +775,7 @@ multilib_src_install() {
 		# If built without SLP, we don't need to be before avahi
 			sed -i \
 				-e '/before/{s/avahi-daemon//g}' \
-				"${ED%/}"/etc/init.d/slapd \
+				"${ED}"/etc/init.d/slapd \
 				|| die
 
 		if use cxx ; then
@@ -809,7 +809,7 @@ multilib_src_install() {
 		for l in */*.la */*/*.la; do
 			[[ -e ${l} ]] || continue
 			"${lt}" --mode=install cp ${l} \
-				"${ED%/}"/usr/$(get_libdir)/openldap/openldap || \
+				"${ED}"/usr/$(get_libdir)/openldap/openldap || \
 				die "installing ${l} failed"
 		done
 
