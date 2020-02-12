@@ -14,7 +14,7 @@ SRC_URI="mirror://ubuntu/pool/universe/p/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
