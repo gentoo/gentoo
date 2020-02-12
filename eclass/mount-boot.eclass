@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: mount-boot.eclass
@@ -62,8 +62,8 @@ mount-boot_check_status() {
 		return
 	fi
 
-	local procstate=$(awk '$2 == "/boot" \
-		{ print gensub(/^(.*,)?(ro|rw)(,.*)?$/, "\\2", 1, $4); exit }' \
+	local procstate=$(awk '$2 == "/boot" { split($4, a, ","); \
+		for (i in a) if (a[i] ~ /^r[ow]$/) { print a[i]; break }; exit }' \
 		/proc/mounts || die "awk failed")
 
 	if [[ -z ${procstate} ]] ; then
