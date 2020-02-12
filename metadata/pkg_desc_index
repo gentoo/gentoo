@@ -13445,7 +13445,6 @@ media-plugins/vdr-launcher 0.0.4: VDR Plugin: launch other plugins - even when t
 media-plugins/vdr-lcdproc 0.0.10.9 0.0.10.9-r1: VDR plugin: use LCD device for additional output
 media-plugins/vdr-live 0.3.0_p20130504-r1 2.3.1: VDR Plugin: Web Access To Settings
 media-plugins/vdr-loadepg 0.2.5: VDR : Loadepg Plugin; Canal+ group (Mediahighway)
-media-plugins/vdr-mailbox 0.7.0-r1: VDR plugin: MailBox provides access to multiple e-mail accounts
 media-plugins/vdr-menuorg 0.5.1: VDR plugin: make osd menu configurable via config-file
 media-plugins/vdr-mlist 1.0.2: VDR plugin: Show a history of the last OSD message
 media-plugins/vdr-mount 0.0.2: VDR plugin: (Un)Mount removable media via osd
