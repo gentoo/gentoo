@@ -68,6 +68,8 @@ src_prepare() {
 	# i.e. anything outside ${S}/${PN}
 	pushd ../ >/dev/null || die
 	default
+	#CVE-2019-16275 bug #696032
+	eapply "${FILESDIR}/hostapd-2.9-AP-Silently-ignore-management-frame-from-unexpected.patch"
 	popd >/dev/null || die
 
 	sed -i -e "s:/etc/hostapd:/etc/hostapd/hostapd:g" \
