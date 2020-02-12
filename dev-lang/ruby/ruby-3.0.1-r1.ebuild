@@ -18,12 +18,13 @@ SRC_URI="https://cache.ruby-lang.org/pub/ruby/${SLOT}/${MY_P}.tar.xz"
 
 LICENSE="|| ( Ruby-BSD BSD-2 )"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
-IUSE="berkdb debug doc examples gdbm ipv6 jemalloc +rdoc rubytests socks5 +ssl static-libs systemtap tk xemacs"
+IUSE="berkdb debug doc examples gdbm ipv6 jemalloc jit +rdoc rubytests socks5 +ssl static-libs systemtap tk xemacs"
 
 RDEPEND="
 	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
 	jemalloc? ( dev-libs/jemalloc )
+	jit? ( || ( sys-devel/gcc:* sys-devel/clang:* ) )
 	ssl? (
 		dev-libs/openssl:0=
 	)
@@ -37,37 +38,44 @@ RDEPEND="
 	dev-libs/libffi:=
 	sys-libs/readline:0=
 	sys-libs/zlib
-	>=app-eselect/eselect-ruby-20171225
+	virtual/libcrypt:=
+	>=app-eselect/eselect-ruby-20201225
 "
 
 DEPEND="${RDEPEND}"
 
 BUNDLED_GEMS="
-	>=dev-ruby/did_you_mean-1.2.0:2.5[ruby_targets_ruby25]
-	>=dev-ruby/minitest-5.10.3[ruby_targets_ruby25]
-	>=dev-ruby/net-telnet-0.1.1[ruby_targets_ruby25]
-	>=dev-ruby/power_assert-1.1.1[ruby_targets_ruby25]
-	>=dev-ruby/rake-12.3.0[ruby_targets_ruby25]
-	>=dev-ruby/test-unit-3.2.7[ruby_targets_ruby25]
-	>=dev-ruby/xmlrpc-0.3.0[ruby_targets_ruby25]
+	>=dev-ruby/minitest-5.14.2[ruby_targets_ruby30]
+	>=dev-ruby/power_assert-1.2.0[ruby_targets_ruby30]
+	>=dev-ruby/rake-13.0.3[ruby_targets_ruby30]
+	>=dev-ruby/rbs-1.0.0[ruby_targets_ruby30]
+	>=dev-ruby/rexml-3.2.4[ruby_targets_ruby30]
+	>=dev-ruby/rss-0.2.9[ruby_targets_ruby30]
+	>=dev-ruby/test-unit-3.3.7[ruby_targets_ruby30]
+	>=dev-ruby/typeprof-0.11.0[ruby_targets_ruby30]
 "
 
 PDEPEND="
 	${BUNDLED_GEMS}
-	virtual/rubygems[ruby_targets_ruby25]
-	>=dev-ruby/json-2.0.2[ruby_targets_ruby25]
-	rdoc? ( >=dev-ruby/rdoc-6.1.2[ruby_targets_ruby25] )
+	virtual/rubygems[ruby_targets_ruby30]
+	>=dev-ruby/bundler-2.2.15[ruby_targets_ruby30]
+	>=dev-ruby/did_you_mean-1.5.0[ruby_targets_ruby30]
+	>=dev-ruby/json-2.5.1[ruby_targets_ruby30]
+	rdoc? ( >=dev-ruby/rdoc-6.3.0[ruby_targets_ruby30] )
 	xemacs? ( app-xemacs/ruby-modes )"
 
 src_prepare() {
-	eapply "${FILESDIR}"/${SLOT}/{001,002,005,011}*.patch
+	eapply "${FILESDIR}"/"${SLOT}"/010*.patch
 
 	einfo "Unbundling gems..."
 	cd "$S"
 	# Remove bundled gems that we will install via PDEPEND, bug
-	# 539700. Use explicit version numbers to ensure rm fails when they
-	# change so we can update dependencies accordingly.
-	rm -f gems/{did_you_mean-1.2.0,minitest-5.10.3,net-telnet-0.1.1,power_assert-1.1.1,rake-12.3.0,test-unit-3.2.7,xmlrpc-0.3.0}.gem || die
+	# 539700.
+	rm -fr gems/* || die
+	touch gems/bundled_gems || die
+	# Don't install CLI tools since they will clash with the gem
+	rm -f bin/{racc,racc2y,y2racc} || die
+	sed -i -e '/executables/ s:^:#:' lib/racc/racc.gemspec || die
 
 	einfo "Removing bundled libraries..."
 	rm -fr ext/fiddle/libffi-3.2.1 || die
@@ -145,6 +153,7 @@ src_configure() {
 		--disable-rpath \
 		--with-out-ext="${modules}" \
 		$(use_with jemalloc jemalloc) \
+		$(use_enable jit jit-support ) \
 		$(use_enable socks5 socks) \
 		$(use_enable systemtap dtrace) \
 		$(use_enable doc install-doc) \
@@ -155,10 +164,13 @@ src_configure() {
 		$(use_enable debug) \
 		${myconf} \
 		--enable-option-checking=no
+
+	# Makefile is broken because it lacks -ldl
+	rm -rf ext/-test-/popen_deadlock || die
 }
 
 src_compile() {
-	emake V=1 EXTLDFLAGS="${LDFLAGS}"
+	emake V=1 EXTLDFLAGS="${LDFLAGS}" MJIT_CFLAGS="${CFLAGS}" MJIT_OPTFLAGS="" MJIT_DEBUGFLAGS=""
 }
 
 src_test() {
@@ -183,7 +195,10 @@ src_install() {
 	# Remove the remaining bundled gems. We do this late in the process
 	# since they are used during the build to e.g. create the
 	# documentation.
-	rm -rf ext/json || die
+	einfo "Removing default gems before installation"
+	rm -rf .ext/common/json.rb .ext/common/json ext/json || die
+	rm -rf lib/bundler* lib/rdoc/rdoc.gemspec || die
+	rm -rf lib/did_you_mean* || die
 
 	# Ruby is involved in the install process, we don't want interference here.
 	unset RUBYOPT
@@ -203,23 +218,27 @@ src_install() {
 	done
 	export LD_LIBRARY_PATH RUBYLIB
 
-	emake V=1 DESTDIR="${D}" install
+	# Create directory for the default gems
+	local gem_home="${EPREFIX}/usr/$(get_libdir)/ruby/gems/${RUBYVERSION}"
+	mkdir -p "${D}/${gem_home}" || die "mkdir gem home failed"
+
+	emake V=1 DESTDIR="${D}" GEM_DESTDIR=${gem_home} install
 
 	# Remove installed rubygems and rdoc copy
 	rm -rf "${ED}/usr/$(get_libdir)/ruby/${RUBYVERSION}/rubygems" || die "rm rubygems failed"
 	rm -rf "${ED}/usr/bin/"gem"${MY_SUFFIX}" || die "rm rdoc bins failed"
 	rm -rf "${ED}/usr/$(get_libdir)/ruby/${RUBYVERSION}"/rdoc* || die "rm rdoc failed"
-	rm -rf "${ED}/usr/bin/"{ri,rdoc}"${MY_SUFFIX}" || die "rm rdoc bins failed"
+	rm -rf "${ED}/usr/bin/"{bundle,bundler,ri,rdoc}"${MY_SUFFIX}" || die "rm rdoc bins failed"
 
 	if use doc; then
-		make DESTDIR="${D}" install-doc || die "make install-doc failed"
+		emake DESTDIR="${D}" GEM_DESTDIR=${gem_home} install-doc
 	fi
 
 	if use examples; then
 		dodoc -r sample
 	fi
 
-	dodoc ChangeLog NEWS doc/NEWS* README*
+	dodoc ChangeLog NEWS.md doc/NEWS* README*
 
 	if use rubytests; then
 		pushd test
