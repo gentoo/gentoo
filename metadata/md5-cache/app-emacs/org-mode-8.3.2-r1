@@ -10,5 +10,5 @@ RDEPEND=>=app-editors/emacs-23.1:*
 RESTRICT=test
 SLOT=0
 SRC_URI=http://orgmode.org/org-8.3.2.tar.gz
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176	epatch	a1bf4756dba418a7238f3be0cb010c54	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
+_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446	elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
 _md5_=e4dde8c189eea224de4771a75427cb3e

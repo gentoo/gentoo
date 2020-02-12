@@ -4,9 +4,9 @@ DESCRIPTION=Excellent text file viewer
 EAPI=7
 HOMEPAGE=http://www.greenwoodsoftware.com/less/
 IUSE=pcre unicode
-KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv ~s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
+KEYWORDS=~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris
 LICENSE=|| ( GPL-3 BSD-2 )
 RDEPEND=>=app-misc/editor-wrapper-3 >=sys-libs/ncurses-5.2:0= pcre? ( dev-libs/libpcre2 )
 SLOT=0
 SRC_URI=http://www.greenwoodsoftware.com/less/less-551.tar.gz
-_md5_=e934062d3a442262a6370f3792f35e71
+_md5_=99a0c364e8a44baf7cf4ce34be667ec5
