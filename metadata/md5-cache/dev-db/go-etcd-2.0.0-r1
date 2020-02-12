@@ -7,4 +7,5 @@ KEYWORDS=~amd64
 LICENSE=Apache-2.0
 SLOT=0
 SRC_URI=https://github.com/coreos/go-etcd/archive/25e2c63be8e8ab405014a78879e0992ae5ff55e8.tar.gz -> go-etcd-2.0.0.tar.gz
-_md5_=56a7952d5cd4c7866702fd1be295f576
+_eclasses_=vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
+_md5_=655f0d6e53cd475a5e0d41aac2111d3f

@@ -7,4 +7,4 @@ LICENSE=LastPass
 RESTRICT=bindist strip mirror
 SLOT=0
 SRC_URI=https://download.cloud.lastpass.com/linux/lplinux.tar.bz2 -> lastpass-binary-component-4.19.0.tar.bz2
-_md5_=01e2680cad6064f4bcd778ac3497de06
+_md5_=02e577d1d2493a296b1e21841d9a51e6
