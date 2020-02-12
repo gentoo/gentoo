@@ -1,0 +1,16 @@
+--- a/lib/replace/system/filesys.h 2019-12-10 14:01:31.000000000 +0300
++++ b/lib/replace/system/filesys.h 2020-04-01 00:07:33.046855175 +0300
+@@ -114,10 +114,10 @@
+ #endif
+ 
+ /* mutually exclusive (SuSE 8.2) */
+-#if defined(HAVE_ATTR_XATTR_H)
+-#include <attr/xattr.h>
+-#elif defined(HAVE_SYS_XATTR_H)
++#if defined(HAVE_SYS_XATTR_H)
+ #include <sys/xattr.h>
++#elif defined(HAVE_ATTR_XATTR_H)
++#include <attr/xattr.h>
+ #endif
+ 
+ #ifdef HAVE_SYS_EA_H

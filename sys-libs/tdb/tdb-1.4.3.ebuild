@@ -30,6 +30,10 @@ WAF_BINARY="${S}/buildtools/bin/waf"
 
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-xattrs-escape-warns.patch
+)
+
 src_prepare() {
 	default
 	python_fix_shebang .
