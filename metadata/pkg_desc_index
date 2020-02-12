@@ -7577,7 +7577,7 @@ dev-python/corner 2.0.1: Make scatter matrix corner plots
 dev-python/cosmolopy 0.1.104-r2: Cosmology routines built on NumPy/SciPy
 dev-python/couchdb-python 1.1: Python library for working with CouchDB
 dev-python/cov-core 1.7 1.15.0 1.15.0-r1: plugin core for use by pytest-cov, nose-cov and nose2-cov
-dev-python/coverage 4.2 4.5.2 4.5.4: Code coverage measurement for Python
+dev-python/coverage 4.2 4.5.2 4.5.4 5.0.3: Code coverage measurement for Python
 dev-python/coverage-test-runner 1.15: fail Python program unit tests unless they test everything
 dev-python/crcmod 1.7-r2 1.7-r3: Python CRC Generator module
 dev-python/croniter 0.3.17 0.3.29 0.3.30: Python module to provide iteration for datetime object
