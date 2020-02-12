@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib python-single-r1 cmake-utils vim-plugin
+inherit eutils multilib python-single-r1 cmake-utils vcs-clean vim-plugin
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/Valloric/YouCompleteMe.git"
