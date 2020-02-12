@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools db-use eapi7-ver flag-o-matic multilib multilib-minimal ssl-cert toolchain-funcs user systemd
+inherit autotools db-use eapi7-ver flag-o-matic multilib multilib-minimal preserve-libs ssl-cert toolchain-funcs user systemd
 
 BIS_PN=rfc2307bis.schema
 BIS_PV=20140524
