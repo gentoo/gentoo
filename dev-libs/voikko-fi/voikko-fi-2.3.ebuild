@@ -18,10 +18,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
 	dev-libs/foma
-	$(python_gen_any_dep '
-		>=dev-libs/libvoikko-4.0[${PYTHON_USEDEP}]
-	')"
+	$(python_gen_any_dep '>=dev-libs/libvoikko-4.0[${PYTHON_USEDEP}]')"
 RDEPEND="${DEPEND}"
+
+python_check_deps() {
+	has_version ">=dev-libs/libvoikko-4.0[${PYTHON_USEDEP}]"
+}
 
 src_compile() {
 	emake vvfst
