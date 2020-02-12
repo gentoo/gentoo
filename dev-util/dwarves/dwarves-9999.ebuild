@@ -26,7 +26,6 @@ DOCS=( README README.ctracer NEWS )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.10-python-import.patch
-	"${FILESDIR}"/${PN}-1.16-no-libebl.patch
 )
 
 src_configure() {
