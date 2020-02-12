@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit eutils vcs-clean
 
 GO_PN=github.com/hanwen/${PN}
 EGIT_COMMIT="8c85ded140ac1889372a0e22d8d21e3d10a303bd"
