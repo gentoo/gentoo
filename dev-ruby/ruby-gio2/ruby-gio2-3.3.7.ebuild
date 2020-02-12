@@ -6,7 +6,7 @@ USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 inherit ruby-ng-gnome2
 
-DESCRIPTION="Ruby binding of GooCanvas"
+DESCRIPTION="Ruby binding of gio-2"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
