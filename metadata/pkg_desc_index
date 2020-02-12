@@ -4627,7 +4627,7 @@ dev-java/tomcat-jstl-compat 1.2.5-r1: JSP Standard Tag Library (JSTL) - Compat j
 dev-java/tomcat-jstl-el 1.2.5-r1: JSP Standard Tag Library (JSTL) - EL jar
 dev-java/tomcat-jstl-impl 1.2.5-r1: JSP Standard Tag Library (JSTL) - Implementation jar
 dev-java/tomcat-jstl-spec 1.2.5-r1: JSP Standard Tag Library (JSTL) - Specification jar
-dev-java/tomcat-native 1.2.21 1.2.23: Allows Tomcat to use certain native resources for better performance
+dev-java/tomcat-native 1.2.23: Allows Tomcat to use certain native resources for better performance
 dev-java/tomcat-servlet-api 4.1.40 5.5.36 6.0.53-r1 7.0.96 7.0.99 8.5.47 8.5.49 8.5.50 9.0.27 9.0.29 9.0.30: Tomcat's Servlet API 4.0/JSP API 2.3/EL API 3.0 implementation
 dev-java/toolbar 1.1.0-r2: An improved version of JToolBar
 dev-java/touchgraph-graphlayout 1.22-r1: TouchGraph provides a set of interfaces for graph visualization
@@ -13602,7 +13602,7 @@ media-sound/dcd 0.95: A simple command-line based CD Player
 media-sound/declick 0.6.5-r1: Dynamic digital declicker for audio sample files
 media-sound/deinvert 9999: A voice inversion descrambler
 media-sound/denemo 2.2.0 2.3.0: A music notation editor
-media-sound/din 43.0.1: a software musical instrument and audio synthesizer
+media-sound/din 43.0.1 44.0.2: a software musical instrument and audio synthesizer
 media-sound/dir2ogg 0.12-r1 0.13-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
 media-sound/drumstick 1.1.2 1.1.3: Qt/C++ wrapper for ALSA sequencer
 media-sound/dvda-author 10.06-r1: Author a DVD-Audio DVD
@@ -15494,7 +15494,7 @@ net-wireless/hackrf-tools 2018.01.1-r1 9999: tools for communicating with HackRF
 net-wireless/hidclient 20120728: Use your machine as a bluetooh keyboard/mouse
 net-wireless/horst 5.1 9999: Small 802.11 wireless LAN analyzer
 net-wireless/hostap-utils 0.4.7-r1: Utilities for Intersil Prism2/2.5/3 based IEEE 802.11b wireless LAN products
-net-wireless/hostapd 2.9-r1 9999: IEEE 802.11 wireless LAN Host AP daemon
+net-wireless/hostapd 2.9-r1 2.9-r2 9999: IEEE 802.11 wireless LAN Host AP daemon
 net-wireless/inspectrum 0.2.2 9999: a tool for analysing captured signals from software-defined radio receivers
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
