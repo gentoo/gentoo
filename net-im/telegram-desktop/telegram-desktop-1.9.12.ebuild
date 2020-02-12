@@ -29,6 +29,7 @@ RDEPEND="
 	dev-libs/libdbusmenu-qt[qt5(+)]
 	dev-libs/xxhash
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtimageformats:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
@@ -49,7 +50,6 @@ RDEPEND="
 		dev-qt/qtwidgets:5[png,X(-)]
 		dev-qt/qtwidgets:5[png,xcb(-)]
 	)
-	dbus? ( dev-qt/qtdbus:5 )
 	pulseaudio? ( media-sound/pulseaudio )
 	spell? ( app-text/enchant:= )
 "
@@ -70,7 +70,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/0002-PPC-big-endian.patch"
-	"${FILESDIR}/${PV}-dbus.patch"
+	#"${FILESDIR}/${PV}-dbus.patch"
 )
 
 src_configure() {
