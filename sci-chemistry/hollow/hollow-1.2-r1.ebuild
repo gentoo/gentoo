@@ -1,11 +1,11 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1
+inherit python-r1 vcs-clean
 
 DESCRIPTION="Production of surface images of proteins"
 HOMEPAGE="http://hollow.sourceforge.net/"
