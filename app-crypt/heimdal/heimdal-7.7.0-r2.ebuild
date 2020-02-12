@@ -20,6 +20,7 @@ IUSE="afs +berkdb caps gdbm hdb-ldap +lmdb otp selinux ssl static-libs test X"
 RESTRICT="!test? ( test )"
 
 CDEPEND="
+	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	ssl? (
 		>=dev-libs/openssl-1.0.1h-r2:0=[${MULTILIB_USEDEP}]
 	)
