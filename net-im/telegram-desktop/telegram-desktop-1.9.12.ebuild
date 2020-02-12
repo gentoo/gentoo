@@ -16,7 +16,7 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+alsa ayatana dbus libressl pulseaudio spell"
+IUSE="+alsa dbus libressl pulseaudio spell"
 
 RDEPEND="
 	!net-im/telegram-desktop-bin
@@ -29,6 +29,7 @@ RDEPEND="
 	dev-libs/libdbusmenu-qt[qt5(+)]
 	dev-libs/xxhash
 	dev-qt/qtcore:5
+	dev-qt/qtdbus:5
 	dev-qt/qtimageformats:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
@@ -49,8 +50,6 @@ RDEPEND="
 		dev-qt/qtwidgets:5[png,X(-)]
 		dev-qt/qtwidgets:5[png,xcb(-)]
 	)
-	ayatana? ( dev-libs/libappindicator:3 )
-	dbus? ( dev-qt/qtdbus:5 )
 	pulseaudio? ( media-sound/pulseaudio )
 	spell? ( app-text/enchant:= )
 "
@@ -71,7 +70,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/0002-PPC-big-endian.patch"
-	"${FILESDIR}/${PV}-dbus.patch"
+	#"${FILESDIR}/${PV}-dbus.patch"
 )
 
 src_configure() {
