@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
-inherit autotools eutils libtool multilib-minimal
+inherit autotools eutils flag-o-matic libtool multilib-minimal
 
 DESCRIPTION="Portable and efficient API to determine the call-chain of a program"
 HOMEPAGE="https://savannah.nongnu.org/projects/libunwind"
@@ -58,6 +58,10 @@ src_prepare() {
 
 	elibtoolize
 	eautoreconf
+
+	# Let's wait for proer fix upstream in https://github.com/libunwind/libunwind/issues/154
+	# Meanwhile workaround for gcc-10 with -fcommon, bug #706560
+	append-cflags -fcommon
 }
 
 multilib_src_configure() {
