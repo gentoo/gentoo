@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-as-needed.patch
 	"${FILESDIR}"/${P}-man.patch
+	"${FILESDIR}"/${P}-use-cxxflags.patch
+	"${FILESDIR}"/${P}-use-pkgconfig.patch
 )
 
 src_prepare() {

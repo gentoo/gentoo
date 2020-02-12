@@ -1,0 +1,50 @@
+--- a/configure.in
++++ b/configure.in
+@@ -38,10 +38,10 @@
+ [ enable_maintainer_mode=yes ])
+ 
+ if test "$enable_maintainer_mode" = "yes"; then
+-	CFLAGS="-O0 -g3 --pipe -Wall"
++	CXXFLAGS="-O0 -g3 --pipe -Wall"
+	LDFLAGS="-lncurses"
+ else
+-	CFLAGS="$CFLAGS -pipe -Wall"
++	CXXFLAGS="$CXXFLAGS -pipe -Wall"
+	LDFLAGS="-s -lncurses"
+ fi
+ 
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -15,15 +15,15 @@
+ 
+ ### Add to taste:
+ 
+-# CFLAGS  = -g 
++# CXXFLAGS  = -g 
+ # LDFLAGS = -g
+ 
+-# CFLAGS += -DPROC_DIR=\"extra2/\"
++# CXXFLAGS += -DPROC_DIR=\"extra2/\"
+ 
+-# CFLAGS += -DDEBUG
++# CXXFLAGS += -DDEBUG
+ # LDLIBS += -ldmalloc
+ 
+-# CFLAGS += -pg
++# CXXFLAGS += -pg
+ # LDFLAGS = -pg
+ 
+ ### End of configurable options.
+@@ -44,10 +44,10 @@
+ cygwin_procstat.cpp cygwin_rendercpupagestat.cpp \
+ lib/routines.cpp lib/timeRoutines.cpp lib/prettyPrint.cpp \
+ Makefile
+-	$(CXX) $(CFLAGS) $(LDFLAGS) procinfo.cpp -o $@ $(LIBS)
++	$(CXX) $(CXXFLAGS) $(LDFLAGS) procinfo.cpp -o $@ $(LIBS)
+ 
+ #procinfo.o: procinfo.cpp procinfo.h
+-#	$(XX) $(CFLAGS) procinfo.cpp -o procinfo.o
++#	$(CXX) $(CXXFLAGS) procinfo.cpp -o procinfo.o
+ 
+ install: procinfo procinfo.8
+ 	-mkdir -p $(DESTDIR)/$(prefix)/bin

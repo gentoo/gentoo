@@ -1,0 +1,14 @@
+diff -Naur procinfo-ng-2.0.304/configure.in procinfo-ng-2.0.304.new/configure.in
+--- a/configure.in
++++ b/configure.in
+@@ -45,6 +45,10 @@
+ 	LDFLAGS="-s -lncurses"
+ fi
+ 
++PKG_CHECK_MODULES([NCURSES], [ncurses])
++CPPFLAGS+=" ${NCURSES_CFLAGS}"
++LIBS+=" ${NCURSES_LIBS}"
++
+ AC_OUTPUT(Makefile)
+ #AC_CONFIG_FILES([Makefile])
+ #AC_OUTPUT
