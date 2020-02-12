@@ -8,6 +8,7 @@ DESCRIPTION="Just another screensaver application for X"
 HOMEPAGE="https://www.sillycycle.com/xlockmore.html"
 SRC_URI="
 	https://www.sillycycle.com/xlock/${P/_alpha/ALPHA}.tar.xz
+	https://www.sillycycle.com/xlock/recent-releases/${P/_alpha/ALPHA}.tar.xz
 "
 
 LICENSE="BSD GPL-2"

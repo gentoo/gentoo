@@ -6,7 +6,10 @@ inherit autotools eutils flag-o-matic pam
 
 DESCRIPTION="Just another screensaver application for X"
 HOMEPAGE="https://www.sillycycle.com/xlockmore.html"
-SRC_URI="https://www.sillycycle.com/xlock/${P}.tar.xz"
+SRC_URI="
+	https://www.sillycycle.com/xlock/${P}.tar.xz
+	https://www.sillycycle.com/xlock/recent-releases/${P}.tar.xz
+"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
