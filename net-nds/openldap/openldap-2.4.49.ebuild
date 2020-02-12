@@ -866,7 +866,7 @@ pkg_postinst() {
 		# and a misconfiguration if multiple machines use the same key and cert.
 		if use ssl; then
 			install_cert /etc/openldap/ssl/ldap
-			use prefix || chown ldap:ldap "${EROOT}"etc/openldap/ssl/ldap.*
+			use prefix || chown ldap:ldap "${EROOT}"/etc/openldap/ssl/ldap.*
 			ewarn "Self-signed SSL certificates are treated harshly by OpenLDAP 2.[12]"
 			ewarn "Self-signed SSL certificates are treated harshly by OpenLDAP 2.[12]"
 			ewarn "add 'TLS_REQCERT allow' if you want to use them."
@@ -881,11 +881,11 @@ pkg_postinst() {
 		fi
 
 		# These lines force the permissions of various content to be correct
-		use prefix || chown ldap:ldap "${EROOT}"var/run/openldap
+		use prefix || chown ldap:ldap "${EROOT}"/var/run/openldap
 		chmod 0755 "${EROOT}"var/run/openldap
-		use prefix || chown root:ldap "${EROOT}"etc/openldap/slapd.conf{,.default}
+		use prefix || chown root:ldap "${EROOT}"/etc/openldap/slapd.conf{,.default}
 		chmod 0640 "${EROOT}"etc/openldap/slapd.conf{,.default}
-		use prefix || chown ldap:ldap "${EROOT}"var/lib/openldap-data
+		use prefix || chown ldap:ldap "${EROOT}"/var/lib/openldap-data
 	fi
 
 	if has_version 'net-nds/openldap[-minimal]' && ((${OPENLDAP_PRINT_MESSAGES})); then
