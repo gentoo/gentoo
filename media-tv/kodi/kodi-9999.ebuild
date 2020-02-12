@@ -76,7 +76,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-python/pycryptodome[${PYTHON_MULTI_USEDEP}]
 	')
 	>=dev-libs/libcdio-0.94
-	>=dev-libs/libfmt-3.0.1
+	>=dev-libs/libfmt-6.1.2
 	dev-libs/libfstrcmp
 	gbm? (	media-libs/mesa[gbm] )
 	gles? (
