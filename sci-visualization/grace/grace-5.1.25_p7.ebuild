@@ -1,23 +1,22 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
+EAPI=7
 FORTRAN_NEEDED=fortran
 
-inherit eutils fortran-2 multilib toolchain-funcs
+inherit desktop fortran-2 toolchain-funcs
 
 DESCRIPTION="Motif based XY-plotting tool"
 HOMEPAGE="http://plasma-gate.weizmann.ac.il/Grace/"
 SRC_URI="
-	http://pkgs.fedoraproject.org/cgit/grace.git/plain/grace.png
-	https://dev.gentoo.org/~jlec/distfiles/${PN}.png.tar
-	ftp://plasma-gate.weizmann.ac.il/pub/${PN}/src/stable/${P}.tar.gz"
+	ftp://plasma-gate.weizmann.ac.il/pub/${PN}/src/stable/${P/_p*}.tar.gz
+	mirror://debian/pool/main/${PN:0:1}/${PN}/${PN}_${PV/_p*}-${PV/*_p}.debian.tar.xz
+"
 
 SLOT="0"
 LICENSE="GPL-2 LGPL-2"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="fortran fftw jpeg netcdf png"
+IUSE="fftw fortran jpeg netcdf png"
 
 DEPEND="
 	media-libs/t1lib
@@ -25,29 +24,33 @@ DEPEND="
 	sys-libs/zlib
 	>=x11-libs/motif-2.3:0
 	x11-libs/xbae
-	fftw? ( sci-libs/fftw:2.1 )
+	fftw? ( sci-libs/fftw:3.0= )
 	jpeg? ( virtual/jpeg:0 )
 	netcdf? ( sci-libs/netcdf )
 	png? ( media-libs/libpng:0= )"
 RDEPEND="${DEPEND}
 	x11-misc/xdg-utils"
 
+S="${WORKDIR}/${P/_p*}"
+
+PATCHES=(
+	# fix for missing defines when fortran is disabled
+	"${FILESDIR}"/${PN}-5.1.21-fortran.patch
+	# fix a leak (from freebsd)
+	"${FILESDIR}"/${PN}-5.1.22-dlmodule.patch
+)
+
 pkg_setup() {
 	fortran-2_pkg_setup
-	tc-export CC
 }
 
 src_prepare() {
-	# move tmpnam to mkstemp (adapted from debian)
-	epatch "${FILESDIR}"/${PN}-5.1.22-mkstemp.patch
-	# fix configure instead of aclocal.m4
-	epatch "${FILESDIR}"/${PN}-5.1.21-netcdf.patch
-	# fix for missing defines when fortran is disabled
-	epatch "${FILESDIR}"/${PN}-5.1.21-fortran.patch
-	# fix a leak (from freebsd)
-	epatch \
-		"${FILESDIR}"/${PN}-5.1.22-dlmodule.patch \
-		"${FILESDIR}"/${PN}-5.1.22-ldflags.patch
+	default
+
+	# Debian patches
+	for p in $(<"${WORKDIR}"/debian/patches/series) ; do
+		eapply -p1 "${WORKDIR}/debian/patches/${p}"
+	done
 
 	# don't strip if not asked for
 	sed -i \
@@ -68,12 +71,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf
-	if use fortran; then
-		myconf="--with-f77=$(tc-getFC)"
-	else
-		myconf="--without-f77"
-	fi
+	tc-export CC AR
 
 	# the configure script just produces a basic Make.conf
 	# and a config.h
@@ -93,7 +91,7 @@ src_configure() {
 		$(use_enable netcdf) \
 		$(use_enable jpeg jpegdrv) \
 		$(use_enable png pngdrv) \
-		${myconf}
+		$(use_with fortran f77 $(tc-getFC))
 }
 
 src_install() {
@@ -104,7 +102,10 @@ src_install() {
 
 	doman "${ED}"/usr/share/doc/${PF}/html/*.1
 	rm -f "${ED}"/usr/share/doc/${PF}/html/*.1 || die
-	doicon "${WORKDIR}"/${PN}.png
+
 	domenu "${FILESDIR}"/${PN}.desktop
-	doicon "${WORKDIR}"/${PN}.png
+	for size in 16 22 24 32; do
+		newicon -s "${size}" "${WORKDIR}"/debian/icons/grace"${size}".png "${PN}.png"
+	done
+	doicon -s 48 "${WORKDIR}"/debian/icons/grace.png
 }
