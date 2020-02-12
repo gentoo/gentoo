@@ -20,8 +20,9 @@ IUSE="berkdb doc gdbm ldap mysql nss odbc openssl postgres sqlite static-libs"
 #RESTRICT="test"
 
 RDEPEND="
-	dev-libs/expat
 	>=dev-libs/apr-${APR_PV}:1=
+	dev-libs/expat
+	virtual/libcrypt:=
 	berkdb? ( >=sys-libs/db-4:= )
 	gdbm? ( sys-libs/gdbm:= )
 	ldap? ( =net-nds/openldap-2* )
