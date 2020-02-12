@@ -16,10 +16,8 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+alsa ayatana dbus gtk3 libressl pulseaudio spell"
+IUSE="+alsa ayatana dbus libressl pulseaudio spell"
 
-# dbus still required to build, but use flag disables dbus usage at runtime
-# pkg-config will pick up gtk2 first if found, needs a workaround
 RDEPEND="
 	!net-im/telegram-desktop-bin
 	app-arch/lz4:=
@@ -31,7 +29,6 @@ RDEPEND="
 	dev-libs/libdbusmenu-qt[qt5(+)]
 	dev-libs/xxhash
 	dev-qt/qtcore:5
-	dev-qt/qtdbus:5
 	dev-qt/qtimageformats:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
@@ -53,7 +50,7 @@ RDEPEND="
 		dev-qt/qtwidgets:5[png,xcb(-)]
 	)
 	ayatana? ( dev-libs/libappindicator:3 )
-	gtk3? ( x11-libs/gtk+:3 )
+	dbus? ( dev-qt/qtdbus:5 )
 	pulseaudio? ( media-sound/pulseaudio )
 	spell? ( app-text/enchant:= )
 "
@@ -74,7 +71,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/0002-PPC-big-endian.patch"
-	"${FILESDIR}/musl.patch"
+	"${FILESDIR}/${PV}-dbus.patch"
 )
 
 src_configure() {
@@ -90,7 +87,6 @@ src_configure() {
 	# it fals with tl-expected-1.0.0, so we use bundled for now to avoid git rev snapshots
 	# EXPECTED VARIANT
 	local mycmakeargs=(
-		-Ddisable_autoupdate=1
 		-DDESKTOP_APP_DISABLE_CRASH_REPORTS=ON
 		-DDESKTOP_APP_USE_GLIBC_WRAPS=OFF
 		-DDESKTOP_APP_USE_PACKAGED=ON
@@ -100,9 +96,7 @@ src_configure() {
 		-DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
 		-DDESKTOP_APP_DISABLE_SPELLCHECK="$(usex spell OFF ON)"
-		-DTDESKTOP_DISABLE_GTK_INTEGRATION="$(usex gtk3 OFF ON)"
 		-DTDESKTOP_DISABLE_DBUS_INTEGRATION="$(usex dbus OFF ON)"
-		-DTDESKTOP_FORCE_GTK_FILE_DIALOG="$(usex gtk3)"
 	)
 
 	if [[ -n ${MY_TDESKTOP_API_ID} && -n ${MY_TDESKTOP_API_HASH} ]]; then
