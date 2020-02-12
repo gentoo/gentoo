@@ -19,7 +19,7 @@ IUSE="alsa +dsp libressl pulseaudio"
 DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	media-libs/opus
+	media-libs/opus:=
 	alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )
 "
