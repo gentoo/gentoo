@@ -1,0 +1,13 @@
+diff --git a/cmake/external/CMakeLists.txt b/cmake/external/CMakeLists.txt
+index b52e2cd..e868a63 100644
+--- a/cmake/external/CMakeLists.txt
++++ b/cmake/external/CMakeLists.txt
+@@ -24,7 +24,7 @@ add_subdirectory(rlottie)
+ if (APPLE)
+     add_subdirectory(sp_media_key_tap)
+ endif()
+-if (LINUX)
++if (LINUX AND Qt5DBus_FOUND AND dbusmenu-qt5_FOUND)
+     add_subdirectory(statusnotifieritem)
+ endif()
+ add_subdirectory(variant)
