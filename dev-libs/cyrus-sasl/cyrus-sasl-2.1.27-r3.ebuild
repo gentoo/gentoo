@@ -19,6 +19,7 @@ IUSE="authdaemond berkdb gdbm kerberos ldapdb libressl openldap mysql pam postgr
 
 CDEPEND="
 	net-mail/mailbase
+	virtual/libcrypt:=
 	authdaemond? ( || ( net-mail/courier-imap mail-mta/courier ) )
 	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
 	gdbm? ( >=sys-libs/gdbm-1.10-r1:=[${MULTILIB_USEDEP}] )
