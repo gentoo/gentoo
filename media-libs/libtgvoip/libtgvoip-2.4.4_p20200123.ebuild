@@ -30,7 +30,10 @@ REQUIRED_USE="|| ( alsa pulseaudio )"
 
 S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
-PATCHES=( "${FILESDIR}/2.4.4-pulseaudio.patch" )
+PATCHES=(
+	"${FILESDIR}/2.4.4-pulseaudio.patch"
+	"${FILESDIR}/musl.patch"
+)
 
 src_prepare() {
 	default
