@@ -32,6 +32,7 @@ RDEPEND="app-arch/bzip2:=
 	app-arch/xz-utils:=
 	sys-apps/util-linux:=
 	>=sys-libs/zlib-1.1.3:=
+	virtual/libcrypt:=
 	virtual/libffi:=
 	virtual/libintl
 	gdbm? ( sys-libs/gdbm:=[berkdb] )
