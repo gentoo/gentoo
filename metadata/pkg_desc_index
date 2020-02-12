@@ -1533,7 +1533,7 @@ app-emulation/coldfire 0.3.1: Motorola Coldfire Emulator
 app-emulation/conmon 2.0.1 2.0.2 2.0.9 2.0.10: An OCI container runtime monitor
 app-emulation/containerd 1.2.6 1.2.7 1.2.10 1.2.12 1.3.0 1.3.1 1.3.2: A daemon to control runC
 app-emulation/containers-storage 1.15.1 1.15.2 1.15.7: containers/storage library
-app-emulation/cri-o 1.10.6 1.13.9 1.15.1 1.15.2: OCI-based implementation of Kubernetes Container Runtime Interface
+app-emulation/cri-o 1.10.6 1.13.9 1.15.1 1.15.2 1.16.3 1.17.0: OCI-based implementation of Kubernetes Container Runtime Interface
 app-emulation/cri-tools 1.14.0 1.15.0 1.16.1: CLI and validation tools for Kubelet Container Runtime (CRI)
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0-r1: Commercial version of app-emulation/wine with paid support.
 app-emulation/crun 0.10.6: A fast and low-memory footprint OCI Container Runtime fully written in C
@@ -11972,7 +11972,7 @@ kde-apps/kolourpaint 19.08.3 19.12.2: Paint Program by KDE
 kde-apps/kompare 19.08.3 19.12.2: A program to view the differences between files
 kde-apps/konqueror 19.08.3 19.12.2: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 19.08.3 19.12.2: Galactic Strategy KDE Game
-kde-apps/konsole 19.08.3 19.12.2: KDE's terminal emulator
+kde-apps/konsole 19.08.3 19.12.2 19.12.2-r1: KDE's terminal emulator
 kde-apps/konsolekalendar 19.08.3 19.12.2: Command line interface to KDE calendars
 kde-apps/kontact 19.08.3 19.12.2: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 19.08.3 19.12.2: Library for embedding KParts in a Kontact component
@@ -12106,7 +12106,7 @@ kde-frameworks/kidletime 5.64.0 5.67.0: Framework for detection and notification
 kde-frameworks/kimageformats 5.64.0 5.67.0: Framework providing additional format plugins for Qt's image I/O system
 kde-frameworks/kinit 5.64.0 5.67.0: Helper library to speed up start of applications on KDE work spaces
 kde-frameworks/kio 5.64.0-r2 5.67.0-r1: Framework providing transparent file and data management
-kde-frameworks/kirigami 5.64.1 5.67.1: Lightweight user interface framework for mobile and convergent applications
+kde-frameworks/kirigami 5.64.1 5.67.1 5.67.1-r1: Lightweight user interface framework for mobile and convergent applications
 kde-frameworks/kitemmodels 5.64.0 5.67.0: Framework providing data models to help with tasks such as sorting and filtering
 kde-frameworks/kitemviews 5.64.0 5.67.0: Framework providing additional widgets for item models
 kde-frameworks/kjobwidgets 5.64.0 5.67.0: Framework providing assorted widgets for showing the progress of jobs
@@ -12715,7 +12715,7 @@ media-gfx/jpegpixi 1.1.1: almost lossless JPEG pixel interpolator, for correctin
 media-gfx/jpegtoavi 1.5: JPEG to AVI/MJPEG animation command-line conversion tool
 media-gfx/kcoloredit 2.0.0_p20171121-r1: Tool for editing color palettes
 media-gfx/kgraphviewer 2.4.3-r1: Graphviz dot graph file viewer
-media-gfx/kphotoalbum 5.5 5.6-r1: Tool for indexing, searching, and viewing images
+media-gfx/kphotoalbum 5.5 5.6.1: Tool for indexing, searching, and viewing images
 media-gfx/krita 4.2.7.1-r1 4.2.8.2-r1: Free digital painting application. Digital Painting, Creative Freedom!
 media-gfx/kuickshow 0.10.1: Image viewer based on KDE Frameworks
 media-gfx/kxstitch 2.2.0: Program to create cross stitch patterns
