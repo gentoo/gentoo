@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install postinst postrm prepare
-DEPEND=>=dev-libs/glib-2.42 >=x11-libs/cairo-1 >=x11-libs/gtk+-3.22:3[introspection?] x11-libs/libX11 x11-libs/libwnck:3 >=xfce-base/exo-0.11.2:= >=xfce-base/garcon-0.5:= >=xfce-base/libxfce4ui-4.13:= >=xfce-base/libxfce4util-4.13:=[introspection?] >=xfce-base/xfconf-4.13:= introspection? ( dev-libs/gobject-introspection:= ) vala? ( || ( dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.40 dev-lang/vala:0.36 ) ) dev-lang/perl dev-util/gtk-doc-am dev-util/intltool sys-devel/gettext virtual/pkgconfig
+DEPEND=>=dev-libs/glib-2.42 >=x11-libs/cairo-1 >=x11-libs/gtk+-3.22:3[introspection?] x11-libs/libX11 x11-libs/libwnck:3 >=xfce-base/exo-0.11.2:= >=xfce-base/garcon-0.5:= >=xfce-base/libxfce4ui-4.13:= >=xfce-base/libxfce4util-4.13:=[introspection?] >=xfce-base/xfconf-4.13:= introspection? ( dev-libs/gobject-introspection:= ) vala? ( || ( dev-lang/vala:0.48 dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.40 dev-lang/vala:0.36 ) ) dev-lang/perl dev-util/gtk-doc-am dev-util/intltool sys-devel/gettext virtual/pkgconfig
 DESCRIPTION=Panel for the Xfce desktop environment
 EAPI=7
 HOMEPAGE=https://www.xfce.org/projects/
@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.42 >=x11-libs/cairo-1 >=x11-libs/gtk+-3.22:3[introspec
 REQUIRED_USE=vala? ( introspection )
 SLOT=0
 SRC_URI=https://archive.xfce.org/src/xfce/xfce4-panel/4.15/xfce4-panel-4.15.0.tar.bz2
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	d1679607a1e97729525152e97f29254b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	5b72a65a36d681d65aef5f7b4b8b2cb6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=a3e4cd7d2f35057e9c1c7936727e974b

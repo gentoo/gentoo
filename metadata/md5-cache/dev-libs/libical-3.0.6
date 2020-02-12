@@ -1,4 +1,4 @@
-BDEPEND=dev-lang/perl virtual/pkgconfig doc? ( app-doc/doxygen ) introspection? ( dev-libs/gobject-introspection ) test? ( || ( dev-lang/python:3.7 dev-lang/python:3.6 ) ) vala? ( || ( dev-lang/vala:0.46[vapigen(+)] dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] ) ) dev-util/ninja dev-util/cmake
+BDEPEND=dev-lang/perl virtual/pkgconfig doc? ( app-doc/doxygen ) introspection? ( dev-libs/gobject-introspection ) test? ( || ( dev-lang/python:3.7 dev-lang/python:3.6 ) ) vala? ( || ( dev-lang/vala:0.48[vapigen(+)] dev-lang/vala:0.46[vapigen(+)] dev-lang/vala:0.44[vapigen(+)] dev-lang/vala:0.40[vapigen(+)] dev-lang/vala:0.36[vapigen(+)] ) ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=dev-libs/icu:= berkdb? ( sys-libs/db:= ) introspection? ( dev-libs/glib:2 ) introspection? ( dev-libs/libxml2:2 )
 DESCRIPTION=An implementation of basic iCAL protocols
@@ -12,5 +12,5 @@ REQUIRED_USE=vala? ( introspection )
 RESTRICT=!test? ( test )
 SLOT=0/3
 SRC_URI=https://github.com/libical/libical/releases/download/v3.0.6/libical-3.0.6.tar.gz
-_eclasses_=cmake	88799418ef3db9d88b6232a483143608	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	d1679607a1e97729525152e97f29254b	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=cmake	88799418ef3db9d88b6232a483143608	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	5b72a65a36d681d65aef5f7b4b8b2cb6	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=48a8e8af9d1b86eea9a39d3a0d786a77

@@ -1,5 +1,5 @@
 DEFINED_PHASES=configure install prepare
-DEPEND=>=dev-libs/glib-2.42 introspection? ( dev-libs/gobject-introspection:= ) dev-util/intltool dev-util/gtk-doc-am sys-devel/gettext virtual/pkgconfig vala? ( || ( dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.40 dev-lang/vala:0.36 ) )
+DEPEND=>=dev-libs/glib-2.42 introspection? ( dev-libs/gobject-introspection:= ) dev-util/intltool dev-util/gtk-doc-am sys-devel/gettext virtual/pkgconfig vala? ( || ( dev-lang/vala:0.48 dev-lang/vala:0.46 dev-lang/vala:0.44 dev-lang/vala:0.40 dev-lang/vala:0.36 ) )
 DESCRIPTION=A basic utility library for the Xfce desktop environment
 EAPI=7
 HOMEPAGE=https://git.xfce.org/xfce/libxfce4util/
@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/glib-2.42 introspection? ( dev-libs/gobject-introspection:= )
 REQUIRED_USE=vala? ( introspection )
 SLOT=0/7
 SRC_URI=https://archive.xfce.org/src/xfce/libxfce4util/4.15/libxfce4util-4.15.0.tar.bz2
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	d1679607a1e97729525152e97f29254b
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vala	5b72a65a36d681d65aef5f7b4b8b2cb6
 _md5_=f968d80b717b03d93caec25369709836
