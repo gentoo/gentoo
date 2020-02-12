@@ -4687,7 +4687,7 @@ dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2: A little language that compiles into javascript
 dev-lang/crystal 0.31.1 0.32.1: The Crystal Programming Language
 dev-lang/duktape 2.2.1 2.4.0: Embeddable Javascript engine
-dev-lang/elixir 1.9.4 1.10.0: Elixir programming language
+dev-lang/elixir 1.9.4 1.10.0 1.10.1: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
 dev-lang/erlang 22.1.4 22.1.8-r1 22.2.1-r1 22.2.6: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
