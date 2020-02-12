@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,7 +33,7 @@ SAPI_SLOT="4.0"
 
 COMMON_DEP="dev-java/eclipse-ecj:${ECJ_SLOT}
 	dev-java/glassfish-xmlrpc-api:0
-	dev-java/tomcat-servlet-api:${SAPI_SLOT}
+	~dev-java/tomcat-servlet-api-${PV}
 	dev-java/wsdl4j:0"
 RDEPEND="${COMMON_DEP}
 	>=virtual/jre-11"
