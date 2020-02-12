@@ -90,6 +90,7 @@ src_prepare() {
 	# not interested in using.
 
 	eapply_user
+	default
 
 	use ssl || { rm -r src/modules/rlm_eap/types/rlm_eap_{tls,ttls,peap} || die ; }
 	use ldap || { rm -r src/modules/rlm_ldap || die ; }
@@ -157,8 +158,6 @@ src_prepare() {
 	usesqldriver oracle
 	usesqldriver sqlite
 	usesqldriver mongodb mongo
-
-	default
 
 	eautoreconf
 }
