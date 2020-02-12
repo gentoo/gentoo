@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
-	x11-base/xcb-proto
+	$(python_gen_cond_dep 'x11-base/xcb-proto[${PYTHON_MULTI_USEDEP}]')
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libxcb[xkb]
 	x11-libs/xcb-util-image
