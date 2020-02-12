@@ -738,19 +738,19 @@ multilib_src_install() {
 		use prefix || fowners ldap:ldap /var/lib/openldap-data
 		fperms 0700 /var/lib/openldap-data
 
-		echo "OLDPF='${PF}'" > "${ED%/}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
-		echo "# do NOT delete this. it is used"	>> "${ED%/}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
-		echo "# to track versions for upgrading." >> "${ED%/}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
+		echo "OLDPF='${PF}'" > "${ED}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
+		echo "# do NOT delete this. it is used"	>> "${ED}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
+		echo "# to track versions for upgrading." >> "${ED}${OPENLDAP_DEFAULTDIR_VERSIONTAG}/${OPENLDAP_VERSIONTAG}"
 
 		# use our config
-		rm "${ED%/}"/etc/openldap/slapd.conf
+		rm "${ED}"/etc/openldap/slapd.conf
 		insinto /etc/openldap
 		newins "${FILESDIR}"/${PN}-2.4.40-slapd-conf slapd.conf
-		configfile="${ED%/}"/etc/openldap/slapd.conf
+		configfile="${ED}"/etc/openldap/slapd.conf
 
 		# populate with built backends
 		ebegin "populate config with built backends"
-		for x in "${ED%/}"/usr/$(get_libdir)/openldap/openldap/back_*.so; do
+		for x in "${ED}"/usr/$(get_libdir)/openldap/openldap/back_*.so; do
 			einfo "Adding $(basename ${x})"
 			sed -e "/###INSERTDYNAMICMODULESHERE###$/a# moduleload\t$(basename ${x})" -i "${configfile}" || die
 		done
@@ -775,7 +775,7 @@ multilib_src_install() {
 		# If built without SLP, we don't need to be before avahi
 			sed -i \
 				-e '/before/{s/avahi-daemon//g}' \
-				"${ED%/}"/etc/init.d/slapd \
+				"${ED}"/etc/init.d/slapd \
 				|| die
 
 		if use cxx ; then
@@ -809,7 +809,7 @@ multilib_src_install() {
 		for l in */*.la */*/*.la; do
 			[[ -e ${l} ]] || continue
 			"${lt}" --mode=install cp ${l} \
-				"${ED%/}"/usr/$(get_libdir)/openldap/openldap || \
+				"${ED}"/usr/$(get_libdir)/openldap/openldap || \
 				die "installing ${l} failed"
 		done
 
@@ -866,7 +866,7 @@ pkg_postinst() {
 		# and a misconfiguration if multiple machines use the same key and cert.
 		if use ssl; then
 			install_cert /etc/openldap/ssl/ldap
-			use prefix || chown ldap:ldap "${EROOT}"etc/openldap/ssl/ldap.*
+			use prefix || chown ldap:ldap "${EROOT}"/etc/openldap/ssl/ldap.*
 			ewarn "Self-signed SSL certificates are treated harshly by OpenLDAP 2.[12]"
 			ewarn "Self-signed SSL certificates are treated harshly by OpenLDAP 2.[12]"
 			ewarn "add 'TLS_REQCERT allow' if you want to use them."
@@ -881,11 +881,11 @@ pkg_postinst() {
 		fi
 
 		# These lines force the permissions of various content to be correct
-		use prefix || chown ldap:ldap "${EROOT}"var/run/openldap
+		use prefix || chown ldap:ldap "${EROOT}"/var/run/openldap
 		chmod 0755 "${EROOT}"var/run/openldap
-		use prefix || chown root:ldap "${EROOT}"etc/openldap/slapd.conf{,.default}
+		use prefix || chown root:ldap "${EROOT}"/etc/openldap/slapd.conf{,.default}
 		chmod 0640 "${EROOT}"etc/openldap/slapd.conf{,.default}
-		use prefix || chown ldap:ldap "${EROOT}"var/lib/openldap-data
+		use prefix || chown ldap:ldap "${EROOT}"/var/lib/openldap-data
 	fi
 
 	if has_version 'net-nds/openldap[-minimal]' && ((${OPENLDAP_PRINT_MESSAGES})); then
