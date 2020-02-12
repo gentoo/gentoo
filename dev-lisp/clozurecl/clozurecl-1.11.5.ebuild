@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib toolchain-funcs
+inherit eutils flag-o-matic multilib toolchain-funcs vcs-clean
 
 MY_PN=ccl
 MY_P=${MY_PN}-${PV}
