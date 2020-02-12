@@ -24,6 +24,7 @@ IUSE="debug nethack pam selinux multiuser"
 
 CDEPEND="
 	>=sys-libs/ncurses-5.2:0=
+	virtual/libcrypt:=
 	pam? ( sys-libs/pam )"
 RDEPEND="${CDEPEND}
 	acct-group/utmp
