@@ -55,8 +55,6 @@ RDEPEND="${DEPEND}
 
 DOCS=( ChangeLog README.md )
 
-PATCHES=( "${FILESDIR}/${P}-crashfix.patch" )
-
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package kipi KF5Kipi)
