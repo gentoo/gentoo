@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs vcs-clean
 
 DESCRIPTION="Snort plugin that allows automated blocking of IP addresses on several firewalls"
 HOMEPAGE="http://www.snortsam.net/"
