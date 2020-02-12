@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Stefan Strogin <steils@gentoo.org> (2020-02-12)
+# Mask for testing revdeps.
+>=dev-games/mygui-3.4.0
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-11)
 # Upstream "unable to port away from" dev-python/pygtk, bug #708156
 # Masked for removal in 30 days.
