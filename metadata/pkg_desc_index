@@ -14576,7 +14576,7 @@ net-im/skypeforlinux 8.55.0.123 8.55.0.141 8.56.0.103-r2: Instant messaging clie
 net-im/slack-bin 4.1.1 4.3.2-r1: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
-net-im/telegram-desktop 1.9.8 1.9.9 1.9.10 1.9.10-r2: Official desktop client for Telegram
+net-im/telegram-desktop 1.9.8 1.9.9 1.9.10 1.9.10-r2 1.9.12: Official desktop client for Telegram
 net-im/telegram-desktop-bin 1.9.7 1.9.8 1.9.9: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
