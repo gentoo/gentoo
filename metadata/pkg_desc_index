@@ -16454,7 +16454,7 @@ sci-visualization/gfsview 20120706-r1: Graphical viewer for Gerris simulation fi
 sci-visualization/ggobi 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.5-r1: Graphics Layout Engine
 sci-visualization/gnuplot 5.0.7 5.2.6 5.2.7 5.2.9999 5.3.9999: Command-line driven interactive plotting program
-sci-visualization/grace 5.1.23 5.1.23-r1 5.1.25: Motif based XY-plotting tool
+sci-visualization/grace 5.1.25 5.1.25_p7: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
 sci-visualization/gwyddion 2.47-r1 2.55-r2: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/kst 2.0.8: Fast real-time large-dataset viewing and plotting tool
