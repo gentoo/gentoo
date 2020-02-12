@@ -16,8 +16,8 @@ IUSE="ldap"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="
-acct-group/netbox
-acct-user/netbox
+	acct-group/netbox
+	acct-user/netbox
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		>=dev-python/django-2.2[${PYTHON_MULTI_USEDEP}]
