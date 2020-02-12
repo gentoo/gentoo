@@ -1705,7 +1705,7 @@ app-forensics/dfxml 20170921-r1 99999999: Digital Forensics XML
 app-forensics/examiner 0.5-r2 0.5-r3: Utilizes the objdump command to disassemble and comment foreign binaries
 app-forensics/foremost 1.5.7-r3: A console program to recover files based on their headers and footers
 app-forensics/galleta 20040505_p1: IE Cookie Parser
-app-forensics/honggfuzz 1.9 2.0: A general purpose fuzzer with feedback support
+app-forensics/honggfuzz 2.0: A general purpose fuzzer with feedback support
 app-forensics/libewf 20171104: Implementation of the EWF (SMART and EnCase) image format
 app-forensics/lynis 2.7.5: Security and system auditing tool
 app-forensics/mac-robber 1.02: mac-robber is a digital forensics and incident response tool that collects data
@@ -1715,7 +1715,7 @@ app-forensics/openscap 1.2.14 9999: Framework which enables integration with Sec
 app-forensics/ovaldi 5.10.1.7: Free implementation of OVAL
 app-forensics/pasco 20040505_p1-r1: IE Activity Parser
 app-forensics/quickfuzz 0.1_p20160920 9999: An experimental grammar fuzzer in Haskell using QuickCheck
-app-forensics/radamsa 0.5-r1 0.6: A general purpose fuzzer
+app-forensics/radamsa 0.6: A general purpose fuzzer
 app-forensics/rifiuti 20040505_p1: Recycle Bin Analyzer
 app-forensics/rkhunter 1.4.6-r1: Rootkit Hunter scans for known and unknown rootkits, backdoors, and sniffers
 app-forensics/scalpel 2.0: A high performance file carver
@@ -2162,7 +2162,7 @@ app-misc/oneko 1.2-r2 1.2_p5 1.2_p6_p14: A cat, dog and others which chase the m
 app-misc/openastro 1.1.56: A fully-featured Open Source Astrology Program
 app-misc/openastro-data 1.8: OpenAstro data files, ephemeris, famous people database, geo database
 app-misc/pal 0.4.3-r2: Command-line calendar program
-app-misc/pax-utils 1.2.3 1.2.3-r3 1.2.4-r1: ELF utils that can check files for security relevant properties
+app-misc/pax-utils 1.2.4-r1: ELF utils that can check files for security relevant properties
 app-misc/pdfpc 4.3.0 4.3.2: Presenter console with multi-monitor support for PDF files
 app-misc/perltrash 0.3-r1: Command-line trash can emulation
 app-misc/pet 0.3.6: Simple command-line snippet manager
@@ -4685,11 +4685,11 @@ dev-lang/cll1h 0.6-r1: C<<1 programming language system
 dev-lang/clojure 1.8.0 1.9.0-r1 1.10.0: General-purpose programming language with an emphasis on functional programming
 dev-lang/closure-compiler-bin 20170218: JavaScript optimizing compiler
 dev-lang/coffee-script 1.9.3-r1 1.12.5 2.3.2: A little language that compiles into javascript
-dev-lang/crystal 0.31.1 0.32.0 0.32.1: The Crystal Programming Language
+dev-lang/crystal 0.31.1 0.32.1: The Crystal Programming Language
 dev-lang/duktape 2.2.1 2.4.0: Embeddable Javascript engine
-dev-lang/elixir 1.4.5 1.6.6 1.8.1 1.8.2 1.9.2 1.9.4 1.10.0: Elixir programming language
+dev-lang/elixir 1.9.4 1.10.0: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
-dev-lang/erlang 21.1.1 22.1.4 22.1.8-r1 22.2 22.2.1-r1 22.2.2 22.2.3 22.2.4 22.2.5 22.2.6: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 22.1.4 22.1.8-r1 22.2.1-r1 22.2.6: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -4714,7 +4714,7 @@ dev-lang/jimtcl 0.76 0.78-r2: Small footprint implementation of Tcl programming 
 dev-lang/jsonnet 0.15.0: A data templating language for app and tool developers
 dev-lang/julia 1.2.0 1.3.0 9999: High-performance programming language for technical computing
 dev-lang/julia-bin 1.2.0 1.3.0: High-performance programming language for technical computing
-dev-lang/jwasm 2.11a-r1 2.13: MASM-compatible TASM-similar assembler (fork of Wasm)
+dev-lang/jwasm 2.13: MASM-compatible TASM-similar assembler (fork of Wasm)
 dev-lang/lazarus 1.0.12 1.8.4-r2 2.0.2: Lazarus IDE is a feature rich visual programming environment emulating Delphi
 dev-lang/lfe 0.7 0.10.1 1.0 1.1.1: Lisp-flavoured Erlang
 dev-lang/lisaac 0.13.1-r2: Lisaac is an object prototype based language
@@ -4734,7 +4734,7 @@ dev-lang/mozart 1.4.0-r3 1.4.0-r4: Advanced development platform for intelligent
 dev-lang/mozart-stdlib 1.4.0-r2: The Mozart Standard Library
 dev-lang/mujs 1.0.5 1.0.6: An embeddable Javascript interpreter in C.
 dev-lang/nasm 2.14.02: groovy little assembler
-dev-lang/nim 1.0.2 1.0.4 1.0.6: compiled, garbage-collected systems programming language
+dev-lang/nim 1.0.6: compiled, garbage-collected systems programming language
 dev-lang/nqp 2019.03-r1 2019.07.1 2019.11 9999: Not Quite Perl, a Perl 6 bootstrapping compiler
 dev-lang/nwcc 0.8.2 0.8.3: Nils Weller's C Compiler
 dev-lang/ocaml 4.04.2-r1 4.05.0-r1 4.09.0: Programming language supporting functional, imperative & object-oriented styles
@@ -4815,7 +4815,7 @@ dev-libs/c-blosc 1.11.2: Blocking, shuffling and lossless compression library
 dev-libs/c-capnproto 0.3: C library/compiler for the Cap'n Proto serialization/RPC protocol
 dev-libs/caliper 1.5.0: Application Introspection System
 dev-libs/capnproto 0.6.0 0.6.1 0.7.0: RPC/Serialization system with capabilities support
-dev-libs/capstone 3.0.5_rc2 3.0.5_rc2-r1 4.0 4.0.1: disassembly/disassembler framework + bindings
+dev-libs/capstone 3.0.5_rc2-r1 4.0.1: disassembly/disassembler framework + bindings
 dev-libs/cdk 5.0.20160131: A library of curses widgets
 dev-libs/cereal 1.2.1 1.2.2: header-only C++11 serialization library
 dev-libs/cgilib 0.7-r1: A simple and lightweight interface to the CGI for C and C++ programs
@@ -4845,12 +4845,12 @@ dev-libs/dbus-glib 0.110: D-Bus bindings for glib
 dev-libs/device-atlas-api-c 2.1.4: API to detect devices based on the User-Agent HTTP header
 dev-libs/dietlibc 0.34_pre20140729-r1 0.34: A libc optimized for small size
 dev-libs/ding-libs 0.4.0 0.5.0 0.6.0 0.6.1: set of utility libraries (mostly used by sssd)
-dev-libs/distorm64 3.3.8 3.4.1: The ultimate disassembler library (X86-32, X86-64)
+dev-libs/distorm64 3.4.1: The ultimate disassembler library (X86-32, X86-64)
 dev-libs/dmalloc 5.5.2-r4 5.5.2-r6 5.5.2-r7: A Debug Malloc Library
 dev-libs/dotconf 1.3-r1: dot.conf configuration file parser
 dev-libs/double-conversion 3.1.4-r1 3.1.5: Binary-decimal and decimal-binary conversion routines for IEEE doubles
 dev-libs/eb 4.4.1-r1: EB is a C library and utilities for accessing CD-ROM books
-dev-libs/editline 1.16.1 1.17.0: line editing library for UNIX call compatible with the FSF readline
+dev-libs/editline 1.17.0: line editing library for UNIX call compatible with the FSF readline
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.23.3: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.176-r1 0.177 0.178: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
@@ -5125,7 +5125,7 @@ dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x
 dev-libs/libx86emu 1.1: A library for emulating x86
 dev-libs/libxdg-basedir 1.2.0-r1: Small library to access XDG Base Directories Specification paths
 dev-libs/libxdiff 0.23-r2: Library for creating diff files
-dev-libs/libxls 1.4.0-r1 1.5.2-r1: A library which can read Excel (xls) files
+dev-libs/libxls 1.5.2-r1: A library which can read Excel (xls) files
 dev-libs/libxml2 2.9.9-r2 2.9.9-r3: XML C parser and toolkit
 dev-libs/libxmlb 0.1.12 0.1.13 0.1.14: Library to help create and query binary XML blobs
 dev-libs/libxslt 1.1.33-r1: XSLT libraries and tools
@@ -10224,9 +10224,9 @@ dev-scheme/gauche-qdbm 0.2-r1: QDBM binding for Gauche
 dev-scheme/goosh 1.3-r1: Small process-control library for Guile
 dev-scheme/greg 2.0.0-r1: Testing-Framework for guile
 dev-scheme/guile 1.8.8-r3 2.0.13-r2 2.0.14-r3 2.2.3 2.2.4 2.2.6: GNU Ubiquitous Intelligent Language for Extensions
-dev-scheme/guile-gcrypt 0.1.0 0.2.0 0.2.1: Guile bindings of libgcrypt
-dev-scheme/guile-git 0.0.20171110 0.2.0: Guile bindings of git
-dev-scheme/guile-json 0.6.0 3.2.0 3.3.0: JSON module for Guile
+dev-scheme/guile-gcrypt 0.2.1: Guile bindings of libgcrypt
+dev-scheme/guile-git 0.2.0: Guile bindings of git
+dev-scheme/guile-json 3.3.0: JSON module for Guile
 dev-scheme/guile-sqlite3 0.1.0: Guile bindings of sqlite3
 dev-scheme/jscheme 7.2-r1: A Scheme dialect with a simple Java interface called Javadot notation
 dev-scheme/kawa 1.14-r2: Kawa, the Java-based Scheme system & Language Framework
@@ -10536,7 +10536,7 @@ dev-util/dropwatch 1.4-r1 1.4_p20150706: A utility to interface to the kernel to
 dev-util/duma 2.5.15-r2: DUMA (Detect Unintended Memory Access) is a memory debugging library
 dev-util/dwarves 1.12 1.13 1.15 1.16 1.16-r1 9999: pahole (Poke-a-Hole) and other DWARF2 utilities
 dev-util/dwdiff 2.1.1 2.1.2: diff-like program operating at word level instead of line level
-dev-util/edb-debugger 1.0.0-r2 1.0.0-r3 1.1.0-r1 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
+dev-util/edb-debugger 1.1.0-r1 9999: edb is a cross platform x86/x86-64 debugger, inspired by Ollydbg
 dev-util/edi 0.7.1: An EFL-based IDE
 dev-util/editorconfig-geany 0.1_p20160725 0.2: EditorConfig plugin for Geany
 dev-util/egypt 1.10: devilishly simple tool for creating call graphs of C programs
@@ -10675,7 +10675,7 @@ dev-util/qdevicemonitor 1.0.1-r2 9999: Crossplatform log viewer for Android, iOS
 dev-util/qmtest 2.4.1-r1: CodeSourcery's test harness system
 dev-util/qstlink2 1.2.3: GUI and CLI ST-Link V2(Debugger/Programmer) client
 dev-util/quilt 0.66 9999: quilt patch manager
-dev-util/radare2 4.0.0 4.2.0 4.2.1 9999: unix-like reverse engineering framework and commandline tools
+dev-util/radare2 4.2.1 9999: unix-like reverse engineering framework and commandline tools
 dev-util/ragel 6.7-r1 6.8 6.9 6.10 7.0.0.9 7.0.0.10 7.0.0.10-r1 7.0.0.10-r2: Compiles finite state machines from regular languages into executable code
 dev-util/rats 2.4: RATS - Rough Auditing Tool for Security
 dev-util/rbtools 1.0.2: Command line tools for use with Review Board
@@ -10704,7 +10704,7 @@ dev-util/serialtalk 1.2 9999: simple command-line tool to talk to serial devices
 dev-util/setconf 0.6.6 0.6.7: A small python based utility used to change configuration files
 dev-util/sgb 20030623-r1: Stanford GraphBase
 dev-util/shadowman 2 9999: Unified compiler shadow link directory updater
-dev-util/shards 0.7.2 0.8.1 0.9.0: Dependency manager for the Crystal language
+dev-util/shards 0.9.0: Dependency manager for the Crystal language
 dev-util/shc 3.9.6: A (shell-) script compiler/scrambler
 dev-util/shellcheck 0.7.0: Shell script analysis tool
 dev-util/shellcheck-bin 0.6.0 0.7.0: Shell script analysis tool (binary package)
@@ -10776,7 +10776,7 @@ dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.0 1.4.1: The GNU Project's replacement for SCCS
 dev-vcs/cvs 1.12.12-r12: Concurrent Versions System - source code revision control tools
-dev-vcs/cvs-fast-export 1.48 1.49 1.50: fast-export history from a CVS repository or RCS collection
+dev-vcs/cvs-fast-export 1.50: fast-export history from a CVS repository or RCS collection
 dev-vcs/cvs2cl 2.71-r1: produces a GNU-style ChangeLog for CVS-controlled sources
 dev-vcs/cvs2svn 2.4.0-r1 2.5.0: Convert a CVS repository to a Subversion repository
 dev-vcs/cvsgraph 1.7.0: CVS/RCS repository grapher
@@ -13084,7 +13084,7 @@ media-libs/libsoundio 2.0.0: C library for cross-platform real-time audio input 
 media-libs/libsoundtouch 2.1.2: Audio processing library for changing tempo, pitch and playback rates
 media-libs/libsvgtiny 0.1.7-r1: framebuffer abstraction library, written in C
 media-libs/libtaginfo 0.2.1: a library for reading media metadata
-media-libs/libtgvoip 2.4.4_p20200123: VoIP library for Telegram clients
+media-libs/libtgvoip 2.4.4_p20200123 2.4.4_p20200212: VoIP library for Telegram clients
 media-libs/libtheora 1.1.1-r2: The Theora Video Compression Codec
 media-libs/libtiger 0.3.4-r1: A rendering library for Kate streams using Pango and Cairo
 media-libs/libtimidity 0.2.4: MIDI to WAVE converter library
@@ -14575,7 +14575,7 @@ net-im/skypeforlinux 8.55.0.123 8.55.0.141 8.56.0.103-r2: Instant messaging clie
 net-im/slack-bin 4.1.1 4.3.2-r1: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
-net-im/telegram-desktop 1.9.8 1.9.9 1.9.10 1.9.10-r2 1.9.12: Official desktop client for Telegram
+net-im/telegram-desktop 1.9.8 1.9.9 1.9.10 1.9.10-r2 1.9.12 1.9.13: Official desktop client for Telegram
 net-im/telegram-desktop-bin 1.9.7 1.9.8 1.9.9: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
