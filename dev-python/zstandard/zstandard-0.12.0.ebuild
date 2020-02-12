@@ -22,6 +22,11 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/hypothesis[${PYTHON_USEDEP}] )"
 
+python_compile() {
+	local MAKEOPTS=-j1
+	distutils-r1_python_compile
+}
+
 python_test() {
 	esetup.py test
 }
