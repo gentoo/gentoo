@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools eutils
+inherit autotools eutils vcs-clean
 
 MY_PV=${PV/_p*/}
 DEB_PR=${PV/*_p/}

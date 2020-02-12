@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
 AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
-inherit eutils autotools-utils
+inherit eutils autotools-utils vcs-clean
 
 DESCRIPTION="Linux support for proprietary MIkrotik EoIP protocol"
 HOMEPAGE="https://code.google.com/p/linux-eoip/"

@@ -1,10 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 GO_PN=github.com/coreos/${PN}
 EGIT_COMMIT="25e2c63be8e8ab405014a78879e0992ae5ff55e8"
+
+inherit vcs-clean
 
 DESCRIPTION="Go client library for etcd"
 HOMEPAGE="https://github.com/coreos/go-etcd"
