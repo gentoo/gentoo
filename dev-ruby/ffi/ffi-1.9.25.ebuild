@@ -11,7 +11,7 @@ RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_DOCDIR="doc"
 RUBY_FAKEGEM_EXTRADOC="README.md"
 
-inherit multilib ruby-fakegem
+inherit multilib ruby-fakegem toolchain-funcs
 
 DESCRIPTION="Ruby extension for programmatically loading dynamic libraries"
 HOMEPAGE="https://wiki.github.com/ffi/ffi"
