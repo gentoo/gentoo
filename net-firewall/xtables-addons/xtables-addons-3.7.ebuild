@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
 
 MODULES_OPTIONAL_USE=modules
 MODULES_OPTIONAL_USE_IUSE_DEFAULT=1
-inherit eutils linux-info linux-mod multilib
+inherit eutils linux-info linux-mod multilib toolchain-funcs
 
 DESCRIPTION="iptables extensions not yet accepted in the main kernel"
 HOMEPAGE="http://xtables-addons.sourceforge.net/"
