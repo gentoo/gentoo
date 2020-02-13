@@ -17,6 +17,15 @@
 
 #--- END OF EXAMPLES ---
 
+# Brian Evans <grknight@gentoo.org> (2020-03-04)
+# Small number of packages which need new stables
+# app-misc/gramps needs newer media-libs/gexiv2 bug 711784
+# dev-python/pyqrcode needs newer dev-python/pypng
+# sys-cluser/ceph needs new cherrypy
+app-misc/gramps python_single_target_python3_7
+dev-python/pyqrcode python_targets_python3_7
+sys-cluster/ceph python_targets_python3_7
+
 # Thomas Deutschmann <whissi@gentoo.org> (2019-10-28)
 # net-libs/quiche is an early HTTP/3 implementation
 # not yet ready for everyone.
