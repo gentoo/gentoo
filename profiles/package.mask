@@ -455,12 +455,6 @@ app-text/sary
 # maintain. Take this over if wanted, otherwise I will remove it in 30 days.
 app-admin/cli53
 
-# Stephan Hartmann <stha09@googlemail.com> (2020-01-20)
-# Dev channel releases are only for people who
-# are developers or want more experimental features
-# and accept a more unstable release.
->=www-client/chromium-81
-
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-19)
 # Ancient, last release in 2006, blocks x11-libs/gtkglext cleanup
 # Masked for removal in 30 days.
