@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit libtool multilib-minimal
+inherit libtool multilib-minimal toolchain-funcs
 
 DESCRIPTION="A library to encapsulate CD-ROM reading and control"
 HOMEPAGE="https://www.gnu.org/software/libcdio/"
