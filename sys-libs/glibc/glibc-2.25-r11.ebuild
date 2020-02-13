@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit toolchain-glibc
+inherit toolchain-funcs toolchain-glibc
 
 DESCRIPTION="GNU libc6 (also called glibc2) C library"
 HOMEPAGE="https://www.gnu.org/software/libc/libc.html"
