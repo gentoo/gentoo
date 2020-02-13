@@ -1,0 +1,19 @@
+#!/bin/sh
+# consolelog.sh
+# For metalog -- log to a console
+
+set -f
+
+. /etc/conf.d/metalog
+
+: "${CONSOLE:=/dev/console}"
+
+# shellcheck disable=SC2016
+: "${FORMAT:='$1 [$2] $3'}"
+
+for d in ${CONSOLE} ; do
+	# shellcheck disable=SC2086
+	eval echo ${FORMAT} > "${d}"
+done
+
+exit 0
