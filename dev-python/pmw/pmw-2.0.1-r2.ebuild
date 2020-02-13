@@ -27,10 +27,6 @@ RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"
 
-python_prepare() {
-	2to3 Pmw || die
-}
-
 python_test() {
 	VIRTUALX_COMMAND="${PYTHON}"
 	cd "${BUILD_DIR}/lib/Pmw/Pmw_${PV//./_}/" || die
