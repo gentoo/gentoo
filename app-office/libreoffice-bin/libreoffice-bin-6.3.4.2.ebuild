@@ -10,7 +10,7 @@ BASE_X86_URI="https://tamiko.kyomu.43-1.org/distfiles/x86-${BASE_PACKAGENAME}-"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="threads,xml"
 
-inherit java-pkg-opt-2 python-single-r1 prefix xdg-utils
+inherit java-pkg-opt-2 python-single-r1 prefix toolchain-funcs xdg-utils
 
 DESCRIPTION="A full office productivity suite. Binary package"
 HOMEPAGE="https://www.libreoffice.org"
