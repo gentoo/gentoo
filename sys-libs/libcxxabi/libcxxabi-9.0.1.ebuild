@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit cmake-multilib llvm llvm.org multiprocessing python-any-r1
+inherit cmake-multilib llvm llvm.org multiprocessing python-any-r1 toolchain-funcs
 
 DESCRIPTION="Low level support for a standard C++ library"
 HOMEPAGE="https://libcxxabi.llvm.org/"
