@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=9999
 SRC_URI=https://dev.gentoo.org/~slyfox/distfiles/binutils-9999-patches-5.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=8ce86942be97034e80346fd7d997af85
+_md5_=439a9d823f04654a31008751384b1ad1

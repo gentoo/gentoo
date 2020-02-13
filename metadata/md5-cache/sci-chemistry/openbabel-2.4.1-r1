@@ -12,4 +12,4 @@ RESTRICT=!test? ( test )
 SLOT=0/5.0.0
 SRC_URI=mirror://sourceforge/openbabel/openbabel-2.4.1.tar.gz https://openbabel.org/docs/dev/_static/babel130.png -> openbabel.png
 _eclasses_=cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1e94f05458e235db1868bf06b8a6c8fd
+_md5_=ae23cd5bffb1962480b750c2dbce5cc9
