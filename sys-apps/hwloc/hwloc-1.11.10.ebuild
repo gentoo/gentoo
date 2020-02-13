@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools cuda flag-o-matic versionator multilib-minimal
+inherit autotools cuda flag-o-matic toolchain-funcs versionator multilib-minimal
 
 MY_PV=v$(get_version_component_range 1-2)
 

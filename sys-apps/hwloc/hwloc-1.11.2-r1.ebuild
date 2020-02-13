@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit flag-o-matic cuda autotools-multilib multilib versionator
+inherit flag-o-matic cuda autotools-multilib multilib toolchain-funcs versionator
 
 MY_PV=v$(get_version_component_range 1-2)
 
