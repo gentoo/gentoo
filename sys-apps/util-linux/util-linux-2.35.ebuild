@@ -29,8 +29,7 @@ IUSE="build caps +cramfs cryptsetup fdformat hardlink kill +logger ncurses nls p
 
 # Most lib deps here are related to programs rather than our libs,
 # so we rarely need to specify ${MULTILIB_USEDEP}.
-DEPEND="
-	virtual/os-headers
+RDEPEND="
 	caps? ( sys-libs/libcap-ng )
 	cramfs? ( sys-libs/zlib:= )
 	cryptsetup? ( sys-fs/cryptsetup )
@@ -48,7 +47,11 @@ BDEPEND="
 	nls? ( sys-devel/gettext )
 	test? ( sys-devel/bc )
 "
-RDEPEND="${DEPEND}
+DEPEND="
+	${RDEPEND}
+	virtual/os-headers
+"
+RDEPEND+="
 	hardlink? ( !app-arch/hardlink )
 	logger? ( !>=app-admin/sysklogd-2.0[logger] )
 	kill? (
