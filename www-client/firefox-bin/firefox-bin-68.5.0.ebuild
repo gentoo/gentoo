@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-MOZ_ESR=0
+MOZ_ESR=1
 
 # Can be updated using scripts/get_langs.sh from mozilla overlay
 MOZ_LANGS=(ach af an ar ast az be bg bn br bs ca cak cs cy da de dsb el en en-CA
@@ -23,7 +23,7 @@ MOZ_P="${MOZ_PN}-${MOZ_PV}"
 
 MOZ_HTTP_URI="https://archive.mozilla.org/pub/mozilla.org/${MOZ_PN}/releases/"
 
-inherit mozlinguas-v2 nsplugins pax-utils xdg-utils eapi7-ver
+inherit mozlinguas-v2 nsplugins pax-utils xdg-utils
 
 DESCRIPTION="Firefox Web Browser"
 SRC_URI="${SRC_URI}
@@ -35,9 +35,14 @@ RESTRICT="strip mirror"
 KEYWORDS="-* amd64 x86"
 SLOT="0"
 LICENSE="MPL-2.0 GPL-2 LGPL-2.1"
-IUSE="+ffmpeg +pulseaudio selinux startup-notification"
+IUSE="alsa +ffmpeg +pulseaudio selinux startup-notification"
+REQUIRED_USE="alsa? ( !pulseaudio )"
 
-DEPEND="app-arch/unzip"
+DEPEND="app-arch/unzip
+	alsa? (
+		dev-util/patchelf
+		media-sound/apulse
+	)"
 RDEPEND="dev-libs/atk
 	>=sys-apps/dbus-0.60
 	>=dev-libs/dbus-glib-0.72
@@ -122,12 +127,17 @@ src_install() {
 	insinto ${MOZILLA_FIVE_HOME}/defaults/pref/
 	doins "${FILESDIR}"/local-settings.js
 	insinto ${MOZILLA_FIVE_HOME}
-	newins "${FILESDIR}"/all-gentoo-3.js all-gentoo.js
+	newins "${FILESDIR}"/all-gentoo-2.js all-gentoo.js
 
 	# Install language packs
 	MOZEXTENSION_TARGET="distribution/extensions" \
 		MOZ_INSTALL_L10N_XPIFILE="1" \
 		mozlinguas_src_install
+
+	if use alsa ; then
+		local apulselib="/usr/$(get_libdir)/apulse"
+		patchelf --set-rpath "${apulselib}" "${ED}"${MOZILLA_FIVE_HOME}/libxul.so || die
+	fi
 
 	# Create /usr/bin/firefox-bin
 	dodir /usr/bin/
@@ -154,10 +164,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	# Update mimedb for the new .desktop file
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-
 	if ! has_version 'gnome-base/gconf' || ! has_version 'gnome-base/orbit' \
 		|| ! has_version 'net-misc/curl'; then
 		einfo
@@ -165,35 +171,19 @@ pkg_postinst() {
 		einfo "gnome-base/orbit and net-misc/curl emerged."
 		einfo
 	fi
-
 	use ffmpeg || ewarn "USE=-ffmpeg : HTML5 video will not render without media-video/ffmpeg installed"
-	use pulseaudio || ewarn "USE=-pulseaudio : audio will not play without pulseaudio installed"
 
-	local show_doh_information
+	local HAS_AUDIO=0
+	use pulseaudio && HAS_AUDIO=1
+	use alsa && HAS_AUDIO=1
 
-	if [[ -z "${REPLACING_VERSIONS}" ]] ; then
-		# New install; Tell user that DoH is disabled by default
-		show_doh_information=yes
-	else
-		local replacing_version
-		for replacing_version in ${REPLACING_VERSIONS} ; do
-			if ver_test "${replacing_version}" -lt 70 ; then
-				# Tell user only once about our DoH default
-				show_doh_information=yes
-				break
-			fi
-		done
+	if [[ ${HAS_AUDIO} -eq 0 ]] ; then
+		ewarn "USE=-pulseaudio & USE=-alsa : For audio please either set USE=pulseaudio or USE=alsa!"
 	fi
 
-	if [[ -n "${show_doh_information}" ]] ; then
-		elog
-		elog "Note regarding Trusted Recursive Resolver aka DNS-over-HTTPS (DoH):"
-		elog "Due to privacy concerns (encrypting DNS might be a good thing, sending all"
-		elog "DNS traffic to Cloudflare by default is not a good idea and applications"
-		elog "should respect OS configured settings), \"network.trr.mode\" was set to 5"
-		elog "(\"Off by choice\") by default."
-		elog "You can enable DNS-over-HTTPS in ${PN^}'s preferences."
-	fi
+	# Update mimedb for the new .desktop file
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
