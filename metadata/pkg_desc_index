@@ -14428,7 +14428,7 @@ net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic dns services
 net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
 net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r2: Modern asynchronous DNS API
-net-dns/hash-slinger 2.6-r1 2.7-r2: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
+net-dns/hash-slinger 2.6-r1 2.7-r2 3.0: Various tools to generate DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.8.5 2.9.2: High-performance authoritative-only DNS server
