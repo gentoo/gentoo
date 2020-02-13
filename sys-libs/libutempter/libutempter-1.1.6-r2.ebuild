@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit user multilib flag-o-matic
+inherit user multilib flag-o-matic toolchain-funcs
 
 DESCRIPTION="Library that allows non-privileged apps to write utmp (login) info"
 HOMEPAGE="https://altlinux.org/index.php?module=sisyphus&package=libutempter"
