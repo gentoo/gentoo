@@ -62,6 +62,8 @@ DEPEND="${RDEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-construct-nullengine-w-KPluginMetadata.patch" )
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package !gles2 OpenGL)
