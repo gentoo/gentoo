@@ -53,8 +53,6 @@ make_live_cert() {
 }
 
 src_prepare() {
-	default
-
 	# remove untranslated language files
 	rm "${S}"/po/{ca_ES,da_DK,el_GR,et_EE,hr_HR,hu_HU,nl_NL,nn_NO,pt_PT,ro_RO,sl_SI,tr_TR}.po
 
