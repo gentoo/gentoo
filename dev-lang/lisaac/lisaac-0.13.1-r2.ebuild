@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
-inherit versionator elisp-common eutils
+inherit versionator elisp-common eutils toolchain-funcs
 
 DESCRIPTION="Lisaac is an object prototype based language"
 HOMEPAGE="http://isaacproject.u-strasbg.fr/li.html"
