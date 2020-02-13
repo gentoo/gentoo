@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit linux-info bash-completion-r1 systemd
+inherit linux-info bash-completion-r1 systemd toolchain-funcs
 
 DESCRIPTION="Required tools for WireGuard, such as wg(8) and wg-quick(8)"
 HOMEPAGE="https://www.wireguard.com/"
