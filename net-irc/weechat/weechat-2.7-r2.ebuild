@@ -12,7 +12,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/weechat/weechat.git"
 else
 	SRC_URI="https://weechat.org/files/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~ppc64 ~x86 ~x64-macos"
+	KEYWORDS="amd64 ~arm ~ppc64 x86 ~x64-macos"
 fi
 
 DESCRIPTION="Portable and multi-interface IRC client"
@@ -61,6 +61,8 @@ DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.ado
 
 # tests need to be fixed to not use system plugins if weechat is already installed
 RESTRICT="test"
+
+PATCHES=( "${FILESDIR}/${PV}-CVE-2020-8955.patch" )
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
