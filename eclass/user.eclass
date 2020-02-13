@@ -68,7 +68,7 @@ user_get_nologin() {
 # exist.
 enewuser() {
 	if [[ ${EUID} != 0 ]] ; then
-		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		ewarn "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
 	_assert_pkg_ebuild_phase ${FUNCNAME}
@@ -94,7 +94,7 @@ enewuser() {
 	if [[ -n $(egetent passwd "${euser}") ]] ; then
 		return 0
 	fi
-	einfo "Adding user '${euser}' to your system ..."
+	elog "Adding user '${euser}' to your system ..."
 
 	# options to pass to useradd
 	local opts=()
@@ -122,7 +122,7 @@ enewuser() {
 		[[ ${euid} -ge 101 ]] || die "${FUNCNAME}: no free UID found"
 	fi
 	opts+=( -u ${euid} )
-	einfo " - Userid: ${euid}"
+	elog " - Userid: ${euid}"
 
 	# handle shell
 	local eshell=$1; shift
@@ -138,7 +138,7 @@ enewuser() {
 	else
 		eshell=$(user_get_nologin)
 	fi
-	einfo " - Shell: ${eshell}"
+	elog " - Shell: ${eshell}"
 	opts+=( -s "${eshell}" )
 
 	# handle homedir
@@ -146,7 +146,7 @@ enewuser() {
 	if [[ -z ${ehome} ]] || [[ ${ehome} == "-1" ]] ; then
 		ehome="/dev/null"
 	fi
-	einfo " - Home: ${ehome}"
+	elog " - Home: ${ehome}"
 	opts+=( -d "${ehome}" )
 
 	# handle groups
@@ -171,7 +171,7 @@ enewuser() {
 			opts+=( -G "${exgroups:1}" )
 		fi
 	fi
-	einfo " - Groups: ${egroups:-(none)}"
+	elog " - Groups: ${egroups:-(none)}"
 
 	# handle extra args
 	if [[ $# -gt 0 ]] ; then
@@ -179,7 +179,7 @@ enewuser() {
 	else
 		local comment="added by portage for ${PN}"
 		opts+=( -c "${comment}" )
-		einfo " - GECOS: ${comment}"
+		elog " - GECOS: ${comment}"
 	fi
 
 	# add the user
@@ -204,7 +204,7 @@ enewuser() {
 	esac
 
 	if [[ -n ${create_home} && ! -e ${ROOT}/${ehome} ]] ; then
-		einfo " - Creating ${ehome} in ${ROOT}"
+		elog " - Creating ${ehome} in ${ROOT}"
 		mkdir -p "${ROOT}/${ehome}"
 		chown "${euser}" "${ROOT}/${ehome}"
 		chmod 755 "${ROOT}/${ehome}"
@@ -223,7 +223,7 @@ enewuser() {
 # can not be assigned.
 enewgroup() {
 	if [[ ${EUID} != 0 ]] ; then
-		einfo "Insufficient privileges to execute ${FUNCNAME[0]}"
+		ewarn "Insufficient privileges to execute ${FUNCNAME[0]}"
 		return 0
 	fi
 	_assert_pkg_ebuild_phase ${FUNCNAME}
@@ -248,7 +248,7 @@ enewgroup() {
 	if [[ -n $(egetent group "${egroup}") ]] ; then
 		return 0
 	fi
-	einfo "Adding group '${egroup}' to your system ..."
+	elog "Adding group '${egroup}' to your system ..."
 
 	# handle gid
 	local egid=$1; shift
@@ -266,7 +266,7 @@ enewgroup() {
 		[[ -n ${force_gid} ]] && die "${FUNCNAME}: -F with gid==-1 makes no sense"
 		egid="next available"
 	fi
-	einfo " - Groupid: ${egid}"
+	elog " - Groupid: ${egid}"
 
 	# handle extra
 	if [[ $# -gt 0 ]] ; then
@@ -351,12 +351,12 @@ esethome() {
 		return 0
 	fi
 
-	einfo "Updating home for user '${euser}' ..."
-	einfo " - Home: ${ehome}"
+	elog "Updating home for user '${euser}' ..."
+	elog " - Home: ${ehome}"
 
 	# ensure home directory exists, otherwise update will fail
 	if [[ ! -e ${ROOT}/${ehome} ]] ; then
-		einfo " - Creating ${ehome} in ${ROOT}"
+		elog " - Creating ${ehome} in ${ROOT}"
 		mkdir -p "${ROOT}/${ehome}"
 		chown "${euser}" "${ROOT}/${ehome}"
 		chmod 755 "${ROOT}/${ehome}"
@@ -420,8 +420,8 @@ esetshell() {
 		return 0
 	fi
 
-	einfo "Updating shell for user '${euser}' ..."
-	einfo " - Shell: ${eshell}"
+	elog "Updating shell for user '${euser}' ..."
+	elog " - Shell: ${eshell}"
 
 	# update the shell
 	case ${CHOST} in
@@ -476,8 +476,8 @@ esetcomment() {
 		return 0
 	fi
 
-	einfo "Updating comment for user '${euser}' ..."
-	einfo " - Comment: ${ecomment}"
+	elog "Updating comment for user '${euser}' ..."
+	elog " - Comment: ${ecomment}"
 
 	# update the comment
 	case ${CHOST} in
@@ -546,8 +546,8 @@ esetgroups() {
 	fi
 
 	local opts=( -g "${defgroup}" -G "${exgroups}" )
-	einfo "Updating groups for user '${euser}' ..."
-	einfo " - Groups: ${egroups}"
+	elog "Updating groups for user '${euser}' ..."
+	elog " - Groups: ${egroups}"
 
 	# update the group
 	case ${CHOST} in
