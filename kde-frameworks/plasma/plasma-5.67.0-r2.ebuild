@@ -62,7 +62,10 @@ DEPEND="${RDEPEND}
 
 RESTRICT+=" test"
 
-PATCHES=( "${FILESDIR}/${P}-construct-nullengine-w-KPluginMetadata.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-construct-nullengine-w-KPluginMetadata.patch" # KDE-Bug #417548
+	"${FILESDIR}/${P}-remove-hardcoded-colors.patch" # KDE-Bug #417511
+)
 
 src_configure() {
 	local mycmakeargs=(
