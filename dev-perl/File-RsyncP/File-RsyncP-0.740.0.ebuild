@@ -5,7 +5,7 @@ EAPI=5
 
 MODULE_AUTHOR=CBARRATT
 MODULE_VERSION=0.74
-inherit perl-module
+inherit perl-module toolchain-funcs
 
 DESCRIPTION="An rsync perl module"
 HOMEPAGE="http://perlrsync.sourceforge.net/ https://metacpan.org/release/File-RsyncP"
