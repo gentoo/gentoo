@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_BUILD_TYPE=Release
-inherit cmake bash-completion-r1
+inherit cmake bash-completion-r1 toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/dtschump/gmic.git"
