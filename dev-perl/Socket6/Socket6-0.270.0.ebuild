@@ -5,7 +5,7 @@ EAPI=5
 
 MODULE_AUTHOR=UMEMOTO
 MODULE_VERSION=0.27
-inherit perl-module
+inherit perl-module toolchain-funcs
 
 DESCRIPTION="IPv6 related part of the C socket.h defines and structure manipulators"
 
