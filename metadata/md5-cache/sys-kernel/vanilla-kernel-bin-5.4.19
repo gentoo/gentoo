@@ -10,5 +10,5 @@ RDEPEND=!sys-kernel/vanilla-kernel:5.4.19 || ( sys-kernel/installkernel-gentoo s
 RESTRICT=!test? ( test ) test? ( userpriv )
 SLOT=5.4.19
 SRC_URI=test? ( amd64? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-amd64.qcow2 ) x86? ( https://dev.gentoo.org/~mgorny/dist/tinycorelinux-10.1-x86.qcow2 ) ) amd64? ( https://dev.gentoo.org/~mgorny/binpkg/amd64/kernel/sys-kernel/vanilla-kernel/vanilla-kernel-5.4.19-1.xpak -> vanilla-kernel-5.4.19-1.amd64.xpak ) x86? ( https://dev.gentoo.org/~mgorny/binpkg/x86/kernel/sys-kernel/vanilla-kernel/vanilla-kernel-5.4.19-1.xpak -> vanilla-kernel-5.4.19-1.x86.xpak )
-_eclasses_=kernel-install	8d71ac2b8604c81762590203a3959633	mount-boot	e30bb691fbb26137f3d46438542bffe4
+_eclasses_=kernel-install	8d71ac2b8604c81762590203a3959633	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d
 _md5_=10bcd1a727853dbe670cb80232b91d75
