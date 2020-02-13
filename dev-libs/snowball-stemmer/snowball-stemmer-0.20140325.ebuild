@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils versionator
+inherit eutils toolchain-funcs versionator
 
 # The version number here has been added by Gentoo since upstream does
 # not do any versioning.  It is the latest date of files inside
