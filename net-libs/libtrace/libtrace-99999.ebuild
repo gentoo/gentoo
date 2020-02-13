@@ -15,6 +15,7 @@ IUSE="doc ncurses numa static-libs"
 
 RDEPEND="
 	>=net-libs/libpcap-0.8
+	dev-libs/libyaml
 	dev-libs/openssl:0=
 	net-libs/wandio
 	ncurses? ( sys-libs/ncurses:0= )
