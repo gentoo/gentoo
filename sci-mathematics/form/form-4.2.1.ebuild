@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools
+inherit autotools toolchain-funcs
 
 DESCRIPTION="Symbolic Manipulation System"
 HOMEPAGE="https://www.nikhef.nl/~form/ https://github.com/vermaseren/form/"
