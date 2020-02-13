@@ -10,8 +10,8 @@ DESCRIPTION="Ruby binding of gio-2"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
-ruby_add_rdepend ">=dev-ruby/ruby-glib2-${PV}
-	>=dev-ruby/ruby-gobject-introspection-${PV}"
+ruby_add_rdepend "~dev-ruby/ruby-glib2-${PV}
+	~dev-ruby/ruby-gobject-introspection-${PV}"
 
 all_ruby_prepare() {
 	# Avoid native installer
