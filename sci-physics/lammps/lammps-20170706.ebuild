@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit eutils flag-o-matic fortran-2 multilib python-r1
+inherit eutils flag-o-matic fortran-2 multilib python-r1 toolchain-funcs
 
 convert_month() {
 	local months=( "" Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec )
