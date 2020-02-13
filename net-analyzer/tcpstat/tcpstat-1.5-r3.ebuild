@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools flag-o-matic
+inherit autotools flag-o-matic toolchain-funcs
 
 DESCRIPTION="Reports network interface statistics"
 HOMEPAGE="https://www.frenchfries.net/paul/tcpstat/"
