@@ -18,7 +18,7 @@ SRC_URI="mirror://pypi/${MY_PN:0:1}/${MY_PN}/${MY_P}.tar.gz"
 LICENSE="BSD"
 SLOT="py3"
 KEYWORDS="~alpha amd64 ia64 ppc ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
-IUSE="doc examples test"
+IUSE="doc test"
 
 DEPEND="!dev-python/pmw:0"
 RDEPEND="${DEPEND}"
@@ -26,11 +26,6 @@ RDEPEND="${DEPEND}"
 RESTRICT="test"
 
 S="${WORKDIR}/${MY_P}"
-
-python_prepare() {
-	distutils-r1_python_prepare_all
-	2to3 Pmw
-}
 
 python_test() {
 	VIRTUALX_COMMAND="${PYTHON}"
@@ -46,7 +41,6 @@ python_install_all() {
 	local DIR="Pmw/Pmw_${PV//./_}"
 
 	use doc && HTML_DOCS=( "${DIR}"/doc/. )
-	use examples && EXAMPLES=( "${DIR}"/demos/. )
 
 	distutils-r1_python_install_all
 }
