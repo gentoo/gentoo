@@ -600,12 +600,6 @@ dev-python/transmissionrpc
 # masked for removal ~12 Feb 2020
 media-plugins/vdr-mailbox
 
-# Michał Górny <mgorny@gentoo.org> (2020-01-12)
-# Python 2 only, depends on OpenStack which is Py3 now.  No release
-# since 2005.
-# Removal in 30 days.
-app-admin/supernova
-
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # End of life vala:0.42 series, please depclean.
 # This message shall be kept until 2020-02-11.
