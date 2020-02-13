@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -55,6 +55,9 @@ src_prepare() {
 	# https://bugzilla.gnome.org/show_bug.cgi?id=765444
 	eapply "${FILESDIR}"/${PN}-3.20.2-freerdp2.patch
 	eapply "${FILESDIR}"/${PN}-3.22.0-freerdp2-2.patch
+	# https://gitlab.gnome.org/GNOME/vinagre/merge_requests/8
+	eapply "${FILESDIR}"/${PN}-3.22.0-gcc10-fno-common.patch
+
 	vala_src_prepare
 	eautoreconf
 	gnome2_src_prepare
