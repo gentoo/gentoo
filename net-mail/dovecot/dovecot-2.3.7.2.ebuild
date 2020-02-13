@@ -5,7 +5,7 @@ EAPI=6
 
 # do not add a ssl USE flag.  ssl is mandatory
 SSL_DEPS_SKIP=1
-inherit autotools eapi7-ver ssl-cert systemd user
+inherit autotools eapi7-ver ssl-cert systemd toolchain-funcs user
 
 MY_P="${P/_/.}"
 #MY_S="${PN}-ce-${PV}"
