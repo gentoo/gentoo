@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -10,7 +10,7 @@ HTB_VER="1.00.1"
 HTB_GCC_VER="3.4.4"
 D_VER="0.24"
 
-inherit eutils toolchain
+inherit eutils toolchain toolchain-funcs
 
 KEYWORDS="-* ~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
 
