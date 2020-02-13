@@ -586,11 +586,6 @@ dev-python/milksets
 # Please DOWNGRADE to dev-python/nototools-0_pre20200113
 =dev-python/nototools-20190320
 
-# Mike Gilbert <floppym@gentoo.org> (2020-01-12)
-# No upstream activity since 2014, no reverse deps.
-# Remove in 30 days.
-dev-python/transmissionrpc
-
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-12)
 # upstream has give up this project,
 # upstream is not interressted on any patches to fix this
