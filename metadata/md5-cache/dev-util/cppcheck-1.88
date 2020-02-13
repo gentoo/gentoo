@@ -5,11 +5,11 @@ DESCRIPTION=Static analyzer of C/C++ code
 EAPI=7
 HOMEPAGE=https://github.com/danmar/cppcheck
 IUSE=htmlreport pcre qt5 python_targets_python3_6 python_targets_python3_7
-KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc x86
+KEYWORDS=amd64 ~arm ~arm64 ~hppa ~ppc64 sparc x86
 LICENSE=GPL-3+
 RDEPEND=dev-libs/tinyxml2:= htmlreport? ( dev-python/pygments[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] ) pcre? ( dev-libs/libpcre ) qt5? ( dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtprintsupport:5 ) python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
 REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 )
 SLOT=0
 SRC_URI=https://github.com/danmar/cppcheck/archive/1.88.tar.gz -> cppcheck-1.88.tar.gz
 _eclasses_=distutils-r1	24ad93542cf9d80a03d58784093b1d44	estack	686eaab303305a908fd57b2fd7617800	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=330773ebb0167aef7907a32d9ee38544
+_md5_=085d2a2bb8db425efc2d8ba29f0461f2

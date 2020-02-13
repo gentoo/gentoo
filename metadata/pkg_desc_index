@@ -13416,7 +13416,7 @@ media-plugins/vdr-burn-templates 0.0.3: DVD-themes (background and menu) for vdr
 media-plugins/vdr-calc 0.0.1_rc5: VDR Plugin: OSD Calculator
 media-plugins/vdr-cdplayer 1.2.2: VDR Plugin: CD-PLAYER
 media-plugins/vdr-cinebars 0.0.5: VDR Plugin: Show black bars to hide station logo
-media-plugins/vdr-clock 1.0.0-r1 1.0.0-r2: VDR Plugin: Tea clock, clock
+media-plugins/vdr-clock 1.0.0-r2: VDR Plugin: Tea clock, clock
 media-plugins/vdr-cpumon 0.0.6_p1: VDR Plugin: Show cpu-usage on OSD
 media-plugins/vdr-ddci2 1.0.4 1.0.5 9999: VDR plugin: DDCI2 - Digital Devices CI support
 media-plugins/vdr-devstatus 0.4.1 0.4.1-r1: VDR plugin: display the usage status of the available DVB devices
