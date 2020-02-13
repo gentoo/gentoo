@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit multilib eutils flag-o-matic pax-utils
+inherit multilib eutils flag-o-matic pax-utils toolchain-funcs
 
 #same order as http://www.sbcl.org/platform-table.html
 BV_X86=1.4.3
