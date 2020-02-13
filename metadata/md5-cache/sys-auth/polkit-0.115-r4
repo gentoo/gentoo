@@ -5,7 +5,7 @@ DESCRIPTION=Policy framework for controlling privileges for system-wide services
 EAPI=7
 HOMEPAGE=https://www.freedesktop.org/wiki/Software/polkit https://gitlab.freedesktop.org/polkit/polkit
 IUSE=consolekit elogind examples gtk +introspection jit kde nls pam selinux systemd test
-KEYWORDS=~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86
+KEYWORDS=~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86
 LICENSE=LGPL-2
 PDEPEND=consolekit? ( sys-auth/consolekit[policykit] ) gtk? ( || ( >=gnome-extra/polkit-gnome-0.105 >=lxde-base/lxsession-0.5.2 ) ) kde? ( kde-plasma/polkit-kde-agent )
 RDEPEND=dev-lang/spidermonkey:60[-debug] dev-libs/glib:2 dev-libs/expat elogind? ( sys-auth/elogind ) pam? ( sys-auth/pambase sys-libs/pam ) systemd? ( sys-apps/systemd:0=[policykit] ) selinux? ( sec-policy/selinux-policykit )
@@ -14,4 +14,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://www.freedesktop.org/software/polkit/releases/polkit-0.115.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	a1771fc1e5831c201eaf18451747d94b	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=971050a5456fe311401b021ab3fc980f
+_md5_=79c05d9cfffdc34ac2c489a257c87d0e

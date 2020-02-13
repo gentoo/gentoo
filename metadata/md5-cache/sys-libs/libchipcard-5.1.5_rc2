@@ -5,9 +5,9 @@ DESCRIPTION=Library for accessing chip cards via chip card readers (terminals)
 EAPI=7
 HOMEPAGE=https://www.aquamaniac.de/rdm/projects/libchipcard
 IUSE=doc examples
-KEYWORDS=amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=amd64 ~hppa ~ppc ~ppc64 ~sparc x86
 LICENSE=LGPL-2.1
 RDEPEND=>=sys-apps/pcsc-lite-1.6.2 >=sys-libs/gwenhywfar-4.99.22_rc6:= sys-libs/zlib virtual/libintl
 SLOT=0
 SRC_URI=https://www.aquamaniac.de/rdm/attachments/download/229/libchipcard-5.1.5rc2.tar.gz
-_md5_=574d58f3fa11d4671be40e08e3f9a12c
+_md5_=08ae28e909c06fee3aa9c0071a1595b3
