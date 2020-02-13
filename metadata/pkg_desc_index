@@ -14428,7 +14428,7 @@ net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic dns services
 net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
 net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r2: Modern asynchronous DNS API
-net-dns/hash-slinger 2.6-r1 2.7-r2 3.0: Various tools to generate DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
+net-dns/hash-slinger 2.6-r1 2.7-r2: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.8.5 2.9.2: High-performance authoritative-only DNS server
@@ -14770,7 +14770,7 @@ net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C 
 net-libs/libtirpc 1.1.4 1.2.5: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3 1.2.4: C++ BitTorrent implementation focusing on efficiency and scalability
-net-libs/libtrace 4.0.9_p1-r1 4.0.10_p1 99999: A library and tools for trace processing
+net-libs/libtrace 4.0.9_p1-r1 4.0.10_p1 4.0.11_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.6-r1 1.12.0-r1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.12-r4: library for creating vnc servers
