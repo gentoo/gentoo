@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake user xdg
+inherit cmake toolchain-funcs user xdg
 
 DESCRIPTION="Battle for Wesnoth - A fantasy turn-based strategy game"
 HOMEPAGE="http://www.wesnoth.org

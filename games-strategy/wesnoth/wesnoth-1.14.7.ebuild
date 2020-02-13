@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake user
+inherit cmake toolchain-funcs user
 
 DESCRIPTION="Battle for Wesnoth - A fantasy turn-based strategy game"
 HOMEPAGE="http://www.wesnoth.org
