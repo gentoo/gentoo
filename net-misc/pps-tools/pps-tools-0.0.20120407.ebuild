@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 GITHUB_USER="ago"
 PV_COMMIT='0deb9c7e135e9380a6d09e9d2e938a146bb698c8'
