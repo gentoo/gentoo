@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="A index/query system to search a large set of files quickly"
 HOMEPAGE="http://webglimpse.net/"
