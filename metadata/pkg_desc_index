@@ -1209,7 +1209,7 @@ app-doc/devmanual 0_pre20141116 0_pre20200207 9999: The Gentoo Development Guide
 app-doc/diveintopython 2 3: 'Dive Into Python' by Mark Pilgrim - Python 3
 app-doc/doxygen 1.8.15 1.8.16-r1 9999: Documentation system for most programming languages
 app-doc/e16-docs 0.16.8.0.2: The E16 online help
-app-doc/eclass-manpages 20191222 99999999: Collection of Gentoo eclass manpages
+app-doc/eclass-manpages 20200213 99999999: Collection of Gentoo eclass manpages
 app-doc/elisp-manual 18.1.03 19.2.4.2 20.2.5 21.2.8-r2 22.2.9 23.4 24.5 25.3 26.3: The GNU Emacs Lisp Reference Manual
 app-doc/geant-docs 4.10.03 4.10.05: User documentation for Geant4 physics simulation toolkit
 app-doc/gimp-help 2.8.2 2.10.0: GNU Image Manipulation Program help files
@@ -9004,7 +9004,7 @@ dev-python/txtorcon 0.19.3-r1: Twisted-based Tor controller client, with state-t
 dev-python/typed-ast 1.4.0-r1 1.4.1: Python typed-ast backported
 dev-python/typing 3.6.2-r1 3.6.4-r1 3.7.4.1: Type Hints for Python
 dev-python/typing-extensions 3.7.4 3.7.4.1: Type Hint extensions from Python 3.7 backported to 3.5/3.6
-dev-python/tzlocal 1.2: tzinfo object for the local timezone
+dev-python/tzlocal 1.2 2.0.0: tzinfo object for the local timezone
 dev-python/u-msgpack 2.4.1 2.5.2: A portable, lightweight MessagePack serializer and deserializer
 dev-python/ubelt 0.8.8: A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress
 dev-python/ufoLib 3.0.0: A low-level UFO reader and writer
