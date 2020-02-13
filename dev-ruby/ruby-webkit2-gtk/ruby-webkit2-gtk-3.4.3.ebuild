@@ -13,8 +13,8 @@ IUSE=""
 DEPEND+=" net-libs/webkit-gtk:4[introspection]"
 RDEPEND+=" net-libs/webkit-gtk:4[introspection]"
 
-ruby_add_rdepend ">=dev-ruby/ruby-gobject-introspection-${PV}
-	>=dev-ruby/ruby-gtk3-${PV}"
+ruby_add_rdepend "~dev-ruby/ruby-gobject-introspection-${PV}
+	~dev-ruby/ruby-gtk3-${PV}"
 
 each_ruby_test() {
 	DCONF_PROFILE="${T}" virtx ${RUBY} test/run-test.rb
