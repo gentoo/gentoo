@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit prefix toolchain-glibc
+inherit prefix toolchain-funcs toolchain-glibc
 
 DESCRIPTION="GNU libc C library"
 HOMEPAGE="https://www.gnu.org/software/libc/"
