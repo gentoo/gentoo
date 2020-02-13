@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit flag-o-matic multilib systemd versionator
+inherit flag-o-matic multilib systemd toolchain-funcs versionator
 
 MY_PV=$(replace_version_separator 3 '')
 MY_P="${PN}-${MY_PV}"
