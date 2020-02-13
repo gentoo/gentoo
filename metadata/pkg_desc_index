@@ -2234,7 +2234,7 @@ app-misc/tmux 2.9a 3.0a 9999: Terminal multiplexer
 app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use with tmux
 app-misc/tmux-xpanes 4.1.1: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
-app-misc/tmuxp 1.5.3 1.5.4: tmux session manager. built on libtmux
+app-misc/tmuxp 1.5.4: tmux session manager. built on libtmux
 app-misc/todo 2.10-r2: A CLI-based TODO list manager
 app-misc/toilet 0.3-r1: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
@@ -7990,7 +7990,7 @@ dev-python/jupyter_core 4.4.0 4.4.0-r1 4.6.1: Core common functionality of Jupyt
 dev-python/jwcrypto 0.4.2: Implements JWK,JWS,JWE specifications using python-cryptography
 dev-python/kafka-python 1.3.3 1.4.7: Kafka protocol support in Python
 dev-python/kaitaistruct 0.8: Kaitai Struct runtime for Python
-dev-python/kaptan 0.5.12 0.5.12-r1: Configuration manager in your pocket
+dev-python/kaptan 0.5.12-r1: Configuration manager in your pocket
 dev-python/kazoo 2.2.1 2.5.0 2.6.1: A high-level Python library that makes it easier to use Apache Zookeeper
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keepassx 0.1.0-r1: Python API and CLI for KeePassX
@@ -8019,7 +8019,7 @@ dev-python/libnacl 1.6.1: Python ctypes wrapper for libsodium
 dev-python/libpillowfight 0.2.4 0.3.0: Small library containing various image processing algorithms
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
 dev-python/libsass 0.19.4: A straightforward binding of libsass for Python
-dev-python/libtmux 0.8.2 0.8.2-r1: python api for tmux
+dev-python/libtmux 0.8.2-r1: python api for tmux
 dev-python/libvirt-python 5.2.0 5.5.0 5.6.0 5.8.0 5.10.0 6.0.0 9999: libvirt Python bindings
 dev-python/libwnck-python 2.32.0-r1: Python bindings for the libwnck library
 dev-python/libzilla 1.5: Library for managing Bugzilla bug reports from the CLI
