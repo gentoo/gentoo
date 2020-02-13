@@ -882,9 +882,9 @@ pkg_postinst() {
 
 		# These lines force the permissions of various content to be correct
 		use prefix || chown ldap:ldap "${EROOT}"/var/run/openldap
-		chmod 0755 "${EROOT}"var/run/openldap
+		chmod 0755 "${EROOT}"/var/run/openldap || die
 		use prefix || chown root:ldap "${EROOT}"/etc/openldap/slapd.conf{,.default}
-		chmod 0640 "${EROOT}"etc/openldap/slapd.conf{,.default}
+		chmod 0640 "${EROOT}"/etc/openldap/slapd.conf{,.default} || die
 		use prefix || chown ldap:ldap "${EROOT}"/var/lib/openldap-data
 	fi
 
