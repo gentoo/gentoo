@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit fortran-2
+inherit fortran-2 toolchain-funcs
 
 DESCRIPTION="MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB"
 HOMEPAGE="http://mvapich.cse.ohio-state.edu/"
