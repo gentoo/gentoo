@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils flag-o-matic ltprune multilib-minimal
+inherit autotools eutils flag-o-matic ltprune multilib-minimal toolchain-funcs
 
 FAM_PV="${PV/_p*/}"
 DEBIAN_PATCH="${PV#*_p}"
