@@ -1,3 +1,6 @@
+# Copyright 2011-2020 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
 # Göktürk Yüksek <gokturk@gentoo.org> (2016-11-09)
 # On behalf of proxy-maint
 # Mask due to the package requiring systemd
@@ -35,7 +38,6 @@ gnome-extra/gnome-tweaks
 x11-themes/zukitwo-shell
 gnome-extra/office-runner
 gnome-extra/pch-session
-kde-misc/systemd-kcm
 net-firewall/firewalld
 sys-apps/gentoo-systemd-integration
 sys-apps/systemd-readahead
