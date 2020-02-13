@@ -615,11 +615,6 @@ app-admin/supernova
 # Removal in 30 days.  Bug #705268.
 sys-libs/libcxxrt
 
-# Michał Górny <mgorny@gentoo.org> (2020-01-12)
-# Backport to Python 2.4 - 2.6.  Not needed by anything.
-# Removal in 30 days.  Bug #705256.
-dev-python/ordereddict
-
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # End of life vala:0.42 series, please depclean.
 # This message shall be kept until 2020-02-11.
