@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 DP="bsd-${PN}_${PV%.*}-0.${PV##*.}cvs"
 DPT="${DP}.orig.tar.bz2"
