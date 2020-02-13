@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools eutils elisp-common flag-o-matic multilib prefix versionator
+inherit autotools eutils elisp-common flag-o-matic multilib prefix toolchain-funcs versionator
 
 MY_PN=Singular
 MY_PV=$(replace_all_version_separators '.')
