@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 MY_P="${PN}_$(ver_rs 1- _)"
 
