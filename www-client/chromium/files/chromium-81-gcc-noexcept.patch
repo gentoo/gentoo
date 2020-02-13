@@ -1,10 +1,10 @@
 diff --git a/components/paint_preview/browser/paint_preview_client.cc b/components/paint_preview/browser/paint_preview_client.cc
-index fc3b5a4..8689acf 100644
+index 38ab6be..dccf07f 100644
 --- a/components/paint_preview/browser/paint_preview_client.cc
 +++ b/components/paint_preview/browser/paint_preview_client.cc
-@@ -79,7 +79,7 @@ PaintPreviewClient::PaintPreviewParams::~PaintPreviewParams() = default;
- PaintPreviewClient::PaintPreviewData::PaintPreviewData() = default;
+@@ -78,7 +78,7 @@ PaintPreviewClient::PaintPreviewData::PaintPreviewData() = default;
  PaintPreviewClient::PaintPreviewData::~PaintPreviewData() = default;
+ 
  PaintPreviewClient::PaintPreviewData& PaintPreviewClient::PaintPreviewData::
 -operator=(PaintPreviewData&& rhs) noexcept = default;
 +operator=(PaintPreviewData&& rhs) = default;
