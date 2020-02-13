@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 [[ "${PV}" = "9999" ]] && inherit git-r3
-inherit elisp-common autotools python-single-r1 xdg-utils
+inherit elisp-common autotools python-single-r1 toolchain-funcs xdg-utils
 
 if [[ "${PV}" = "9999" ]]; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/lilypond.git"
