@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit eutils qmake-utils systemd toolchain-funcs readme.gentoo-r1
+inherit eutils qmake-utils systemd toolchain-funcs readme.gentoo-r1 desktop
 
 DESCRIPTION="IEEE 802.1X/WPA supplicant for secure wireless transfers"
 HOMEPAGE="https://w1.fi/wpa_supplicant/"
@@ -18,7 +18,7 @@ else
 fi
 
 SLOT="0"
-IUSE="ap bindist dbus eap-sim eapol_test fasteap +fils +hs2-0 libressl macsec p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
+IUSE="ap bindist broadcom-sta dbus eap-sim eapol-test fasteap +fils +hs2-0 libressl macsec +mbo +mesh p2p privsep ps3 qt5 readline selinux smartcard tdls uncommon-eap-types wimax wps kernel_linux kernel_FreeBSD"
 
 # CONFIG_PRIVSEP=y does not have sufficient support for the new driver
 # interface functions used for MACsec, so this combination cannot be used
@@ -26,6 +26,7 @@ IUSE="ap bindist dbus eap-sim eapol_test fasteap +fils +hs2-0 libressl macsec p2
 REQUIRED_USE="
 	macsec? ( !privsep )
 	privsep? ( !macsec )
+	broadcom-sta? ( !fils !mesh !mbo )
 "
 
 CDEPEND="dbus? ( sys-apps/dbus )
@@ -150,7 +151,6 @@ src_configure() {
 	Kconfig_style_config TLSV11
 	Kconfig_style_config TLSV12
 	Kconfig_style_config GETRANDOM
-	Kconfig_style_config MBO
 
 	# Basic authentication methods
 	# NOTE: we don't set GPSK or SAKE as they conflict
@@ -160,6 +160,8 @@ src_configure() {
 	Kconfig_style_config EAP_OTP
 	Kconfig_style_config EAP_PAX
 	Kconfig_style_config EAP_PSK
+	Kconfig_style_config EAP_TLV
+	Kconfig_style_config EAP_EXE
 	Kconfig_style_config IEEE8021X_EAPOL
 	Kconfig_style_config PKCS12
 	Kconfig_style_config PEERKEY
@@ -184,7 +186,7 @@ src_configure() {
 		Kconfig_style_config CTRL_IFACE_DBUS_INTRO n
 	fi
 
-	if use eapol_test ; then
+	if use eapol-test ; then
 		Kconfig_style_config EAPOL_TEST
 	fi
 
@@ -195,6 +197,12 @@ src_configure() {
 	if use hs2-0 ; then
 		Kconfig_style_config INTERWORKING
 		Kconfig_style_config HS20
+	fi
+
+	if use mbo ; then
+		Kconfig_style_config MBO
+	else
+		Kconfig_style_config MBO n
 	fi
 
 	if use uncommon-eap-types; then
@@ -233,16 +241,17 @@ src_configure() {
 			Kconfig_style_config FILS
 			Kconfig_style_config FILS_SK_PFS
 		fi
-		# Enabling mesh networks.
-		Kconfig_style_config MESH
+		if use mesh; then
+			Kconfig_style_config MESH
+		else
+			Kconfig_style_config MESH n
+		fi
 		#WPA3
 		Kconfig_style_config OWE
 		Kconfig_style_config SAE
 		Kconfig_style_config DPP
-		Kconfig_style_config SUITEB192
-	fi
-	if ! use bindist && ! use libressl; then
 		Kconfig_style_config SUITEB
+		Kconfig_style_config SUITEB192
 	fi
 
 	if use smartcard ; then
@@ -295,12 +304,20 @@ src_configure() {
 		Kconfig_style_config WPS_NFC
 	else
 		Kconfig_style_config WPS n
+		Kconfig_style_config WPS2 n
+		Kconfig_style_config WPS_UFD n
+		Kconfig_style_config WPS_ER n
+		Kconfig_style_config WPS_UPNP n
+		Kconfig_style_config WPS_NFC n
 	fi
 
 	# Wi-Fi Direct (WiDi)
 	if use p2p ; then
 		Kconfig_style_config P2P
 		Kconfig_style_config WIFI_DISPLAY
+	else
+		Kconfig_style_config P2P n
+		Kconfig_style_config WIFI_DISPLAY n
 	fi
 
 	# Access Point Mode
@@ -355,7 +372,7 @@ src_compile() {
 		emake -C "${S}"/wpa_gui-qt4
 	fi
 
-	if use eapol_test ; then
+	if use eapol-test ; then
 		emake eapol_test
 	fi
 }
@@ -414,7 +431,7 @@ src_install() {
 		systemd_dounit systemd/wpa_supplicant.service
 	fi
 
-	if use eapol_test ; then
+	if use eapol-test ; then
 		dobin eapol_test
 	fi
 
@@ -437,11 +454,6 @@ pkg_postinst() {
 			ewarn "Using bindist use flag presently breaks WPA3 (specifically SAE, OWE, DPP, and FILS)."
 			ewarn "This is incredibly undesirable"
 		fi
-	fi
-	if use libressl; then
-		ewarn "Libressl doesn't support SUITEB (part of WPA3)"
-		ewarn "but it does support SUITEB192 (the upgraded strength version of the same)"
-		ewarn "You probably don't care.  Patches welcome"
 	fi
 
 	# Mea culpa, feel free to remove that after some time --mgorny.
