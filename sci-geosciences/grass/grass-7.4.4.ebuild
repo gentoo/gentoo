@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"  # bug 572440
 WANT_AUTOCONF="2.1"
 WX_GTK_VER=3.0
 
-inherit autotools desktop eapi7-ver python-single-r1 wxwidgets xdg
+inherit autotools desktop eapi7-ver python-single-r1 toolchain-funcs wxwidgets xdg
 
 MY_PM=${PN}$(ver_cut 1-2 ${PV})
 MY_PM=${MY_PM/.}
