@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/git-pull/alagitpull"
 SRC_URI="https://github.com/git-pull/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 SLOT="0"
 
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
