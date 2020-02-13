@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils fortran-2
+inherit cmake-utils fortran-2 toolchain-funcs
 
 DESCRIPTION="Subset of LAPACK routines redesigned for heterogenous (MPI) computing"
 HOMEPAGE="https://www.netlib.org/scalapack/"

@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="use TCP or UDP to retrieve the current time of another machine"
 HOMEPAGE="http://www.apps.ietf.org/rfc/rfc868.html"

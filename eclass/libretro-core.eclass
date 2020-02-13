@@ -1,4 +1,4 @@
-# Copyright 2018-2019 Gentoo Authors
+# Copyright 2018-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: libretro-core.eclass
@@ -74,7 +74,7 @@ else
 	S="${WORKDIR}/${LIBRETRO_REPO_NAME##*/}-${LIBRETRO_COMMIT_SHA}"
 	: ${SRC_URI:="https://github.com/${LIBRETRO_REPO_NAME}/archive/${LIBRETRO_COMMIT_SHA}.tar.gz -> ${P}.tar.gz"}
 fi
-inherit flag-o-matic
+inherit flag-o-matic toolchain-funcs
 
 case "${EAPI:-0}" in
 	6|7)

@@ -6,7 +6,7 @@
 
 EAPI=7
 
-inherit linux-mod user
+inherit linux-mod toolchain-funcs user
 
 MY_P="vbox-kernel-module-src-${PV}"
 DESCRIPTION="Kernel Modules for Virtualbox"

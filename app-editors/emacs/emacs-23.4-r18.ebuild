@@ -4,7 +4,7 @@
 EAPI=7
 WANT_AUTOMAKE="none"
 
-inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
+inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"

@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit flag-o-matic eutils
+inherit flag-o-matic eutils toolchain-funcs
 
 DESCRIPTION="Parallel bzip2 (de)compressor using libbz2"
 HOMEPAGE="http://compression.ca/pbzip2/ https://launchpad.net/pbzip2"
