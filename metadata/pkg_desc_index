@@ -8048,7 +8048,7 @@ dev-python/mamba 0.8.6: ... testing tool ... Born under the banner of Behavior D
 dev-python/mando 0.3.2: Create Python CLI apps with little to no effort at all!
 dev-python/mantissa 0.7.0-r1 0.8.4: An extensible, multi-protocol, multi-user, interactive application server
 dev-python/manuel 1.8.0 1.9.0: Manuel lets you build tested documentation
-dev-python/markdown 2.6.8 2.6.11 3.0.1 3.1.1 3.1.1-r1 3.2: Python implementation of the markdown markup language
+dev-python/markdown 2.6.8 2.6.11 3.1.1-r1 3.2.1: Python implementation of the markdown markup language
 dev-python/markdown2 2.3.0: Python Markdown language reimplementation
 dev-python/markups 3.0.0: A wrapper around various text markups
 dev-python/markupsafe 0.23 1.0 1.1.1: Implements a XML/HTML/XHTML Markup safe string for Python
@@ -14426,7 +14426,7 @@ net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic dns services
 net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
 net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r2: Modern asynchronous DNS API
-net-dns/hash-slinger 2.6-r1 2.7-r2: Various tools to generate special DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
+net-dns/hash-slinger 2.6-r1 2.7-r2 3.0: Various tools to generate DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.8.5 2.9.2: High-performance authoritative-only DNS server
@@ -14568,7 +14568,7 @@ net-im/pyicq-t 0.8.1.5-r7: Python based jabber transport for ICQ
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.30.1: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.31.0: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.55.0.123 8.55.0.141 8.56.0.103-r2: Instant messaging client, with support for audio and video
@@ -14576,7 +14576,7 @@ net-im/slack-bin 4.1.1 4.3.2-r1: Team collaboration tool
 net-im/spectrum2 2.0.12-r1: An open source instant messaging transport
 net-im/swift 4.0.2-r1: An elegant, secure, adaptable and intuitive XMPP Client
 net-im/telegram-desktop 1.9.8 1.9.9 1.9.10 1.9.10-r2 1.9.12 1.9.13: Official desktop client for Telegram
-net-im/telegram-desktop-bin 1.9.7 1.9.8 1.9.9: Official desktop client for Telegram (binary package)
+net-im/telegram-desktop-bin 1.9.7 1.9.8 1.9.9 1.9.12: Official desktop client for Telegram (binary package)
 net-im/telepathy-connection-managers 2-r2: Meta-package for Telepathy Connection Managers
 net-im/telepathy-logger 0.8.2: Daemon that centralizes the communication logging within the Telepathy framework
 net-im/telepathy-mission-control 5.16.4 5.16.5: An account manager and channel dispatcher for the Telepathy framework
@@ -15313,6 +15313,7 @@ net-p2p/fms 0.3.80 0.3.81: A spam-resistant message board application for Freene
 net-p2p/freenet 0.7.5_p1480 0.7.5_p1483 0.7.5_p1484: An encrypted network without censorship
 net-p2p/gnut 0.4.28-r1: Text-mode gnutella client
 net-p2p/go-ethereum 1.8.15: Official golang implementation of the Ethereum protocol
+net-p2p/go-ipfs 0.4.23: Main implementation of IPFS
 net-p2p/go-ipfs-bin 0.4.19 0.4.20 0.4.22: Main implementation of IPFS
 net-p2p/gtk-gnutella 1.1.15: A GTK+ Gnutella client
 net-p2p/gtorrentviewer 0.2b: A GTK2-based viewer and editor for BitTorrent meta files
