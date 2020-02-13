@@ -4,7 +4,7 @@
 EAPI=7
 
 CMAKE_BUILD_TYPE=Release
-inherit cmake flag-o-matic
+inherit cmake flag-o-matic toolchain-funcs
 
 DESCRIPTION="Fast symbolic manipulation library, written in C++"
 HOMEPAGE="https://github.com/sympy/symengine"
