@@ -24,6 +24,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-2.8.0-prefix.patch"
 	eapply "${FILESDIR}/${PN}-2.8.0-blockquote.patch"
 	eapply "${FILESDIR}/${PN}-2.8.0-towlower.patch"
+	eapply "${FILESDIR}/${PN}-2.8.0-list-alignment.patch"
 
 	eapply_user
 	eautoreconf
