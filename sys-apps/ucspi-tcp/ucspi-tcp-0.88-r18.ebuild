@@ -3,7 +3,7 @@
 
 EAPI="4"
 
-inherit eutils qmail
+inherit eutils qmail toolchain-funcs
 
 DESCRIPTION="Collection of tools for managing UNIX services"
 HOMEPAGE="https://cr.yp.to/ucspi-tcp.html"
