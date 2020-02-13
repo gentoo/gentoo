@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic udev
+inherit flag-o-matic toolchain-funcs udev
 
 DESCRIPTION="Contains the lowlevel lcd drivers for GraphLCD"
 HOMEPAGE="https://projects.vdr-developer.org/projects/graphlcd-base"
