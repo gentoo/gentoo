@@ -16,6 +16,10 @@
 		<email>zlogene@gentoo.org</email>
 		<name>Mikle Kolyada</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
+	</maintainer>
 	<use>
 		<flag name="aufs">
 			Enables dependencies for the "aufs" graph driver, including
