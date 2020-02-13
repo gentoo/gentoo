@@ -586,11 +586,6 @@ dev-python/milksets
 # Please DOWNGRADE to dev-python/nototools-0_pre20200113
 =dev-python/nototools-20190320
 
-# Mike Gilbert <floppym@gentoo.org> (2020-01-12)
-# No upstream activity since 2014, no reverse deps.
-# Remove in 30 days.
-dev-python/transmissionrpc
-
 # Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-12)
 # upstream has give up this project,
 # upstream is not interressted on any patches to fix this
@@ -599,26 +594,6 @@ dev-python/transmissionrpc
 # wrt bug 704004
 # masked for removal ~12 Feb 2020
 media-plugins/vdr-mailbox
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-12)
-# Python 2 only, depends on OpenStack which is Py3 now.  No release
-# since 2005.
-# Removal in 30 days.
-app-admin/supernova
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-12)
-# libcxxrt is no longer maintained upstream.  It used to be needed to
-# maintain ABI in Gentoo/FreeBSD but that is no longer supported.  Plus,
-# FreeBSD maintains their own fork anyway.  sys-libs/libcxxabi (from
-# LLVM upstream) is the suggested replacement (but it's not ABI
-# compatible!).
-# Removal in 30 days.  Bug #705268.
-sys-libs/libcxxrt
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-12)
-# Backport to Python 2.4 - 2.6.  Not needed by anything.
-# Removal in 30 days.  Bug #705256.
-dev-python/ordereddict
 
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # End of life vala:0.42 series, please depclean.
