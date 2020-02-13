@@ -1,4 +1,5 @@
 acct-group/adm 0: System group: adm
+acct-group/amavis 0: Group for mail-filter/amavisd-new
 acct-group/amule 0: Group for net-p2p/amule
 acct-group/asterisk 0: Group for asterisk
 acct-group/audio 0: System group: audio
@@ -152,6 +153,7 @@ acct-group/x2goprint 0: Group for net-misc/x2goserver
 acct-group/x2gouser 0: Group for net-misc/x2goserver
 acct-group/xrootd 0: Group for the XRootD server
 acct-user/alias 0: alias user for qmail mail delivery
+acct-user/amavis 0: User for mail-filter/amavisd-new
 acct-user/amule 0: User for net-p2p/amule
 acct-user/asterisk 0: User for asterisk
 acct-user/automx2 0: User for www-servers/automx2
@@ -10465,7 +10467,7 @@ dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2019.3.3: A complete toolset for C and C++ development
 dev-util/cloc 1.72 1.76-r1 1.80 1.82: Count Lines of Code
-dev-util/cmake 3.13.5 3.14.6 3.16.3 3.16.4: Cross platform Make
+dev-util/cmake 3.13.5 3.14.6 3.16.4 3.17.0_rc1: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
