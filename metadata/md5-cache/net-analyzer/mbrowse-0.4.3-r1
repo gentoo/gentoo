@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib net-analyzer/net-snmp:= x11-libs/gdk-pixbuf x11-libs/gtk+:
 SLOT=0
 SRC_URI=mirror://sourceforge/mbrowse/files/mbrowse-0.4.3.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=f5365cb35fa191b0652e6ea985f23c30
+_md5_=d17688955e34ea3b5a20f77802d88932
