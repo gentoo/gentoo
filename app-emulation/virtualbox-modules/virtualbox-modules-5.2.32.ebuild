@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # XXX: the tarball here is just the kernel modules split out of the binary
@@ -6,7 +6,7 @@
 
 EAPI=7
 
-inherit linux-mod user
+inherit linux-mod toolchain-funcs user
 
 MY_P="vbox-kernel-module-src-${PV}"
 DESCRIPTION="Kernel Modules for Virtualbox"
