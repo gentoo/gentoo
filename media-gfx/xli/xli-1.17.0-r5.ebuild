@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 SNAPSHOT="2005-02-27"
 DESCRIPTION="X Load Image: view images or load them to root window"
