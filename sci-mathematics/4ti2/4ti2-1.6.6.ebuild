@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ AUTOTOOLS_AUTORECONF=true
 # The swig subdir is not used, so we can skip running autotools in it. #518000
 AT_NO_RECURSIVE=1
 
-inherit autotools-utils
+inherit autotools-utils toolchain-funcs
 
 DESCRIPTION="Software package for algebraic, geometric and combinatorial problems"
 HOMEPAGE="http://www.4ti2.de/"
