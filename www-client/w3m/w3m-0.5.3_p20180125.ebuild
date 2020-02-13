@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit autotools prefix vcs-snapshot
+inherit autotools prefix toolchain-funcs vcs-snapshot
 
 MY_P="${P/_p/+git}"
 MY_PV="${PV/_p/+git}"
