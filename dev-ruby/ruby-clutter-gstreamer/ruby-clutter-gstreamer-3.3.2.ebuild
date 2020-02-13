@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,8 +15,8 @@ RUBY_S=ruby-gnome2-all-${PV}/clutter-gstreamer
 DEPEND+=" media-libs/clutter-gst"
 RDEPEND+=" media-libs/clutter-gst:*"
 
-ruby_add_rdepend ">=dev-ruby/ruby-clutter-${PV}
-	>=dev-ruby/ruby-gstreamer-${PV}"
+ruby_add_rdepend "~dev-ruby/ruby-clutter-${PV}
+	~dev-ruby/ruby-gstreamer-${PV}"
 
 all_ruby_prepare() {
 	# Avoid unneeded dependency on test-unit-notify.
