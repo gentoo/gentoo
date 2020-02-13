@@ -11,7 +11,7 @@ SRC_URI="https://www.aquamaniac.de/rdm/attachments/download/229/${MY_P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~hppa ~ppc ~ppc64 ~sparc x86"
 IUSE="doc examples"
 
 BDEPEND="
