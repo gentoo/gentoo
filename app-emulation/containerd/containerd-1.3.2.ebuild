@@ -21,7 +21,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="apparmor +btrfs +cri hardened +seccomp"
+IUSE="apparmor btrfs +cri hardened +seccomp"
 
 DEPEND="btrfs? ( sys-fs/btrfs-progs )
 	seccomp? ( sys-libs/libseccomp )"
