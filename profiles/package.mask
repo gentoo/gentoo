@@ -606,15 +606,6 @@ media-plugins/vdr-mailbox
 # Removal in 30 days.
 app-admin/supernova
 
-# Michał Górny <mgorny@gentoo.org> (2020-01-12)
-# libcxxrt is no longer maintained upstream.  It used to be needed to
-# maintain ABI in Gentoo/FreeBSD but that is no longer supported.  Plus,
-# FreeBSD maintains their own fork anyway.  sys-libs/libcxxabi (from
-# LLVM upstream) is the suggested replacement (but it's not ABI
-# compatible!).
-# Removal in 30 days.  Bug #705268.
-sys-libs/libcxxrt
-
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # End of life vala:0.42 series, please depclean.
 # This message shall be kept until 2020-02-11.
