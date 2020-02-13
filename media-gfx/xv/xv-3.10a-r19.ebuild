@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic toolchain-funcs
 
 JUMBOV=20070520
 DESCRIPTION="Interactive image manipulation program supporting a wide variety of formats"
