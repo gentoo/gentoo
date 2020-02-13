@@ -28,8 +28,7 @@ RESTRICT="test"
 S="${WORKDIR}/${MY_P}"
 
 python_prepare() {
-	distutils-r1_python_prepare_all
-	2to3 Pmw
+	2to3 Pmw || die
 }
 
 python_test() {
