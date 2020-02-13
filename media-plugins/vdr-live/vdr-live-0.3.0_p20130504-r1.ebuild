@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="http://live.vdr-developer.org"
 SRC_URI="mirror://gentoo/${P}.tar.bz2
 		https://dev.gentoo.org/~hd_brummy/distfiles/${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 RSA"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="pcre ssl"

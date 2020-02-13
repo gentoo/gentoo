@@ -11,7 +11,7 @@ DESCRIPTION="VDR Plugin: Web Access To Settings"
 HOMEPAGE="http://live.vdr-developer.org"
 SRC_URI="https://projects.vdr-developer.org/git/vdr-plugin-live.git/snapshot/${MY_P}.tar.bz2 -> ${P}.tar.bz2"
 
-LICENSE="GPL-2"
+LICENSE="GPL-2 RSA"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="pcre ssl"
