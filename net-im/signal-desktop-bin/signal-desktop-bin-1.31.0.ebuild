@@ -45,6 +45,7 @@ src_prepare(){
 	unpack usr/share/doc/signal-desktop/changelog.gz
 	# Fix Bug 706352
 	chrpath opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/lib/libjpeg.so.8.2.2 -r '$ORIGIN:/target/lib' || die
+	chrpath opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/lib/libffi.so.6.0.4 -d || die
 }
 
 src_install() {
