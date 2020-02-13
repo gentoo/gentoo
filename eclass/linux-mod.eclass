@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: linux-mod.eclass
@@ -132,7 +132,7 @@
 # @DESCRIPTION:
 # It's a read-only variable. It contains the extension of the kernel modules.
 
-inherit eutils linux-info multilib
+inherit eutils linux-info multilib toolchain-funcs
 EXPORT_FUNCTIONS pkg_setup pkg_preinst pkg_postinst src_install src_compile pkg_postrm
 
 case ${MODULES_OPTIONAL_USE_IUSE_DEFAULT:-n} in
