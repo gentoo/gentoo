@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ BACKPORTS="d8a2db77f5731cf32c6d31127452391c6cf7f91f"
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
 
-inherit flag-o-matic python-single-r1 qmake-utils user readme.gentoo-r1 systemd vcs-snapshot
+inherit flag-o-matic python-single-r1 qmake-utils user readme.gentoo-r1 systemd toolchain-funcs vcs-snapshot
 
 MYTHTV_BRANCH="fixes/29"
 
