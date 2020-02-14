@@ -24,7 +24,7 @@ RDEPEND="
 	app-arch/bzip2
 	dev-libs/openssl:0=
 	>=dev-libs/rapidjson-1.1.0
-	net-libs/libupnp:0=
+	<net-libs/libupnp-1.8.0
 	sys-libs/zlib
 	control-socket? ( dev-qt/qtnetwork:5 )
 	gnome-keyring? ( gnome-base/libgnome-keyring )
