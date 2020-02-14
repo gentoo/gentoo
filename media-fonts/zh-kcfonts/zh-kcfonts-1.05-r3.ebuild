@@ -25,6 +25,7 @@ RESTRICT="strip binchecks"
 BDEPEND="x11-apps/bdftopcf"
 
 S="${WORKDIR}"
+FONT_S="${S}"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-freebsd-aa_ad.patch
