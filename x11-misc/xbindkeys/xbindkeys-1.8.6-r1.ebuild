@@ -9,7 +9,7 @@ HOMEPAGE="http://www.nongnu.org/xbindkeys/xbindkeys.html"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc ppc64 sparc x86 ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 ~arm ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="guile tk"
 
 RDEPEND="x11-libs/libX11
