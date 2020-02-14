@@ -8119,7 +8119,7 @@ dev-python/namespace-repoze 1: Namespace package declaration for repoze
 dev-python/namespace-sphinxcontrib 1.0: Namespace package declaration for sphinxcontrib
 dev-python/namespace-zope 1: Namespace package declaration for zope
 dev-python/natgrid 0.2.1-r3: Matplotlib toolkit for gridding irreguraly spaced data
-dev-python/natsort 4.0.4: Natural sorting for Python
+dev-python/natsort 4.0.4 7.0.1: Natural sorting for Python
 dev-python/nautilus-python 1.2.2-r1: Python bindings for the Nautilus file manager
 dev-python/nbconvert 5.2.1 5.5.0: Converting Jupyter Notebooks
 dev-python/nbdime 0.2.0: Diff and merge of Jupyter Notebooks
@@ -15071,7 +15071,7 @@ net-misc/liveice 2000530-r2: Live Source Client For IceCast
 net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Transmission Protocol implementation
 net-misc/lldpd 1.0.3 1.0.4: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
-net-misc/megatools 1.9.98 1.10.2 1.10.2-r1: Command line tools and C library for accessing Mega cloud storage
+net-misc/megatools 1.10.2-r1: Command line tools and C library for accessing Mega cloud storage
 net-misc/memcached 1.5.14 1.5.19 1.5.20 1.5.21-r1 1.5.22: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
