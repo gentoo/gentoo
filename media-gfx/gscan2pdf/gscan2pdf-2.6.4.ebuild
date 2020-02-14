@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DIST_TEST="do"
 
-inherit eutils perl-module virtualx
+inherit eutils perl-module virtualx xdg-utils
 
 DESCRIPTION="Scan documents, perform OCR, produce PDFs and DjVus"
 HOMEPAGE="http://gscan2pdf.sourceforge.net/"
@@ -67,6 +67,8 @@ PERL_RM_FILES=( t/{90_MANIFEST,91_critic,99_pod}.t )
 mydoc="History"
 
 pkg_postinst() {
+	xdg_desktop_database_update
+
 	optfeature "DjVu file support" "app-text/djvu[tiff] media-gfx/imagemagick[djvu]"
 	optfeature "encrypting PDFs" app-text/pdftk
 	optfeature "creating PostScript files from PDFs" app-text/poppler[utils]
@@ -75,6 +77,10 @@ pkg_postinst() {
 	optfeature "scan post-processing" app-text/unpaper
 	optfeature "automatic document feeder support" media-gfx/sane-frontends
 	optfeature "sending PDFs as email attachments" x11-misc/xdg-utils
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
 
 src_test(){
@@ -86,5 +92,5 @@ src_test(){
 			<policy domain="coder" rights="read" pattern="PS" />
 		</policymap>
 	EOT
-	virtx perl-module_src_test
+	NO_AT_BRIDGE=1 virtx perl-module_src_test
 }
