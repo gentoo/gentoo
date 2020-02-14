@@ -8,5 +8,5 @@ LICENSE=FoilTeX
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/foiltex-2.1.4b.zip
-_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
 _md5_=7480c5ef4620e831cd0b77f0e6f707f6

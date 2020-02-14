@@ -8,5 +8,5 @@ LICENSE=Apache-2.0
 RDEPEND=dev-scheme/guile virtual/latex-base
 SLOT=0
 SRC_URI=http://www.ccs.neu.edu/home/dorai/slatex/slatex.tar.bz2 -> slatex-20090928_p20180415.tar.bz2
-_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
 _md5_=b9fd4d9f794acb0deb7eca115e48c6e6

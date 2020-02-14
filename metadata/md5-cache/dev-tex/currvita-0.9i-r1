@@ -8,5 +8,5 @@ LICENSE=GPL-2
 RDEPEND=dev-texlive/texlive-langgerman virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/currvita-0.9i.tar.gz
-_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
 _md5_=09b3eeee7da4ef46d4936f9a4347da0a

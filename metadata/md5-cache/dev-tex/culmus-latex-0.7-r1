@@ -9,5 +9,5 @@ LICENSE=GPL-2
 RDEPEND=virtual/latex-base virtual/latex-base
 SLOT=0
 SRC_URI=mirror://sourceforge/ivritex/culmus-latex-0.7_src.tar.gz -> culmus-latex-0.7.tar.gz
-_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
 _md5_=be99c7e30a950622e68e35c79ba2ebb9

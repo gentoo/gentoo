@@ -8,5 +8,5 @@ LICENSE=LPPL-1.2
 RDEPEND=dev-texlive/texlive-langgerman virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/g-brief-4.0.2.zip
-_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
 _md5_=7b072ac326a46c3fd5d5caa0c9024409

@@ -8,5 +8,5 @@ LICENSE=LPPL-1.2
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=ftp://scon155.phys.msu.su/pub/russian/psfonts/0.4d-beta/PSCyr-0.4-beta9-tex.tar.gz ftp://scon155.phys.msu.su/pub/russian/psfonts/0.4d-beta/PSCyr-0.4-beta9-type1.tar.gz
-_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
 _md5_=d59e37d3b4a8c077d79d8c868539292e

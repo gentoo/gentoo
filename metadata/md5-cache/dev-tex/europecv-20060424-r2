@@ -10,5 +10,5 @@ LICENSE=LPPL-1.2
 RDEPEND=>=dev-texlive/texlive-latexextra-2008 virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/europecv-20060424.zip
-_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
 _md5_=69db1ad52678e357b88cb3b476a2795e

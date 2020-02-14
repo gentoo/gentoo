@@ -10,5 +10,5 @@ LICENSE=LPPL-1.2
 RDEPEND=app-text/ghostscript-gpl media-gfx/imagemagick dev-libs/kpathsea java? ( >=virtual/jre-1.5 ) virtual/latex-base java? ( >=dev-java/java-config-2.2.0-r3 )
 SLOT=0
 SRC_URI=http://www.cse.ohio-state.edu/~gurari/TeX4ht/fix/tex4ht-1.0.2009_06_11_1038.tar.gz mirror://gentoo/tex4ht-texlive-2019-03-22.tar.xz
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	latex-package	663b0e5f0410bc8e8d51f11346f0258a	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	java-pkg-opt-2	77d2e22d0de7640f817d20e861c0ff3f	java-utils-2	a055407af6fd37cf3f692ba73d2d2ba5	latex-package	e5f296c98696dd02059bc6a5a03282e2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=9972a64158209d965ddd895046438d5c

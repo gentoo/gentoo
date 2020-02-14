@@ -8,5 +8,5 @@ LICENSE=LPPL-1.2
 RDEPEND=virtual/latex-base virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/xmltex-1.9.tar.gz
-_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a	texlive-common	930a8063ad61a83cd5b9b186a1f75f9c
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2	texlive-common	930a8063ad61a83cd5b9b186a1f75f9c
 _md5_=1eb94bb1d692a463bafd316f253629d2

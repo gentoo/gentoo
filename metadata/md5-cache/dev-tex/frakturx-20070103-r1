@@ -9,5 +9,5 @@ LICENSE=LPPL-1.2 free-noncomm
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/frakturx-20070103-base.zip mirror://gentoo/frakturx-20070103-tfrak.zip mirror://gentoo/frakturx-20070103-obibel.zip mirror://gentoo/frakturx-20070103-odedruck.zip mirror://gentoo/frakturx-20070103-odeschmk.zip mirror://gentoo/frakturx-20070103-oweissfr.zip mirror://gentoo/frakturx-20070103-oweissgo.zip mirror://gentoo/frakturx-20070103-talteswab.zip mirror://gentoo/frakturx-20070103-tbrtkpf.zip mirror://gentoo/frakturx-20070103-tkngsbg.zip mirror://gentoo/frakturx-20070103-twieynk.zip mirror://gentoo/frakturx-20070103-twieyvig.zip mirror://gentoo/frakturx-20070103-tzentenar.zip
-_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
 _md5_=9312b3cb1914119837e75aabae3f67ab

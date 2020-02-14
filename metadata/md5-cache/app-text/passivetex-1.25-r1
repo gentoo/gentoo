@@ -8,5 +8,5 @@ LICENSE=MIT
 RDEPEND=virtual/latex-base >=dev-tex/xmltex-1.9 virtual/latex-base
 SLOT=0
 SRC_URI=mirror://gentoo/passivetex-1.25.zip
-_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
 _md5_=7b5b38803fe2c8edd9cc8600d182c569

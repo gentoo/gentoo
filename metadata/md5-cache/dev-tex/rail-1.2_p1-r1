@@ -9,5 +9,5 @@ LICENSE=public-domain
 RDEPEND=virtual/latex-base
 SLOT=0
 SRC_URI=http://mirror.ctan.org/support/rail.zip -> rail-1.2_p1.zip
-_eclasses_=latex-package	663b0e5f0410bc8e8d51f11346f0258a	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=b6f42f84c82eb5040565f66ee5744af7
