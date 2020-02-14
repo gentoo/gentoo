@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
+
 inherit desktop
 
 DESCRIPTION="Tetanus On Drugs simulates playing Tetris under the influence of drugs"
@@ -15,14 +16,14 @@ IUSE=""
 
 RDEPEND="media-libs/allegro:0[X]"
 DEPEND="${RDEPEND}
-	app-arch/unzip
-"
+	app-arch/unzip"
 
 S="${WORKDIR}"
 
 src_prepare() {
 	default
 	eapply "${FILESDIR}"/${P}-makefile.patch
+	eapply "${FILESDIR}"/${P}-allegro.patch
 	sed -i \
 		-e "s:idltd\.dat:/usr/share/${PN}/idltd.dat:" \
 		rec.c || die
