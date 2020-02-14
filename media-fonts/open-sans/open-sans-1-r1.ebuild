@@ -16,4 +16,5 @@ IUSE=""
 
 DEPEND="app-arch/unzip"
 S=${WORKDIR}
+FONT_S="${S}"
 FONT_SUFFIX="ttf"
