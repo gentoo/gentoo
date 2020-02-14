@@ -11429,7 +11429,7 @@ games-puzzle/tetrinet 0.11-r1: Console based tetrinet inc. standalone server
 games-puzzle/textmaze 1.2-r1: An ncurses-based maze solving game written in Perl
 games-puzzle/tint 0.03b-r1: Tint Is Not Tetris, a ncurses based clone of the original Tetris(tm) game
 games-puzzle/tiny-and-big 1.4.1: Combines elements of adventure, jump&run and physical puzzles
-games-puzzle/tod 0-r1: Tetanus On Drugs simulates playing Tetris under the influence of drugs
+games-puzzle/tod 0-r2: Tetanus On Drugs simulates playing Tetris under the influence of drugs
 games-puzzle/tong 1.2-r1: Tetris and Pong in the same place at the same time
 games-puzzle/toppler 1.1.6-r1: Reimplementation of Nebulous using SDL
 games-puzzle/torrent 0.8.2-r1: Match rising tiles before reaching the top to score as many points as possible
