@@ -18,11 +18,12 @@ KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 sparc x86"
 IUSE="cups gimp gtk nls readline ppds static-libs"
 REQUIRED_USE="gimp? ( gtk )"
 
+# gimp restriction: https://sourceforge.net/p/gimp-print/bugs/725/
 RDEPEND="
 	dev-lang/perl
 	readline? ( sys-libs/readline:0= )
 	cups? ( >=net-print/cups-1.1.14 )
-	gimp? ( >=media-gfx/gimp-2.2 x11-libs/gtk+:2 )
+	gimp? ( <media-gfx/gimp-9999:2 x11-libs/gtk+:2 )
 	gtk? ( x11-libs/gtk+:2 )
 	nls? ( virtual/libintl )
 "
