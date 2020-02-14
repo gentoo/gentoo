@@ -5,7 +5,4 @@
 		<email>dlan@gentoo.org</email>
 		<name>Yixun Lan</name>
 	</maintainer>
-	<longdescription>
-	Tiny C compiler
-	</longdescription>
 </pkgmetadata>
