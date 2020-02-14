@@ -42,7 +42,8 @@ RDEPEND="
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
 		app-text/dvipng
-	)"
+	)
+	!dev-python/sphinxcontrib-websupport"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
