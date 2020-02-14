@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit cmake-multilib linux-info llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
