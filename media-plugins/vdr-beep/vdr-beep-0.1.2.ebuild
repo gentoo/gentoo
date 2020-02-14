@@ -7,7 +7,7 @@ inherit vdr-plugin-2
 
 DESCRIPTION="VDR plugin: Use the PC speaker to signalize some events (shutdown, cut done ...)"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="http://vdr.websitec.de/download/vdr-beep/vdr-beep-0.1.2.tgz"
+SRC_URI="http://vdr.websitec.de/download/vdr-beep/${P}.tgz"
 
 LICENSE="GPL-2"
 SLOT="0"
