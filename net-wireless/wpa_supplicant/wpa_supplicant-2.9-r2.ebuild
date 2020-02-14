@@ -463,7 +463,6 @@ pkg_postinst() {
 		ewarn "You probably don't care.  Patches welcome"
 	fi
 
-
 	# Mea culpa, feel free to remove that after some time --mgorny.
 	local fn
 	for fn in wpa_supplicant{,@wlan0}.service; do
