@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <maintainer>
+      <email>dstewart@math.uiowa.edu</email>
+      <name>David Stewart</name>
+    </maintainer>
+  </upstream>
+  <longdescription lang="en">
+The Meschach Library is a numerical library of C routines for performing
+calculations on matrices and vectors. It is intended for solving systems of
+linear equations (dense and sparse), solve least squares problems,
+computing eigenvalues and eigenvectors, etc. We do not claim that it
+contains every useful algorithm in numerical linear algebra, but it does
+provide a basis on which more advanced algorithms can be built. The library
+is for people who know something about the C programming language,
+something of how to solve the numerical problem they are faced with but do
+not want to have the hassle of building all the necessary routines from the
+scratch. The library is not a loose collection of numerical routines but it
+comprises a coherent system. The current version is enhanced with many
+features comparing with previous versions. Since the memory requirements
+are nontrivial for large problems we have paid more attention to
+allocation/deallocation of memory.
+  </longdescription>
+  <use>
+    <flag name="complex">incorporate complex functions.</flag>
+    <flag name="double">double precision</flag>
+    <flag name="float">single precision</flag>
+    <flag name="munroll">unroll low level loops on matrices</flag>
+    <flag name="old">build no longer supported functions</flag>
+    <flag name="segmem">should be set if you are working with a machine or compiler that does not allow large arrays to be allocated. See README</flag>
+    <flag name="sparse">incorporate sparse matrix functions</flag>
+    <flag name="test">build test programs</flag>
+    <flag name="unroll">unroll low level loops on vectors</flag>
+  </use>
+</pkgmetadata>
