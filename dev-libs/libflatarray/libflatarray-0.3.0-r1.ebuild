@@ -39,7 +39,7 @@ src_install() {
 		docompress -x /usr/share/doc/${PF}
 		dodoc -r examples/
 		dodoc -r "${WORKDIR}"/${P}_build/examples/
-		find "${ED}"/usr/share/doc/${PF} -iname "*cmake*" -exec rm -rf {} + || die
+		find "${ED}"/usr/share/doc/${PF} -iname "*cmake*" -exec rm -r {} + || die
 	fi
 }
 
