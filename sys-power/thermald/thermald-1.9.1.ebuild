@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools flag-o-matic out-of-source systemd
 
@@ -26,7 +26,6 @@ S=${WORKDIR}/thermal_daemon-${PV}
 DOCS=( thermal_daemon_usage.txt README.txt )
 
 src_prepare() {
-	epatch "${FILESDIR}"/"${P}"-x86-fix.patch
 	default
 	eautoreconf
 }
