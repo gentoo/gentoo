@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">ECP-VeloC/KVTree</remote-id>
+  </upstream>
+  <use>
+    <flag name="fcntl">Set the type of file locking to fcntl.</flag>
+    <flag name="flock">Set the type of file locking to flock.</flag>
+  </use>
+  <longdescription lang="en">Each KVTree object contains a list of key/value pairs. Each key is a string, each value is another kvtree object. This is a nested data structures, similar to a python dict or perl hash. The library provides functions to serialize a kvtree object to / from a file. It also optionally provides MPI send / recv functions to transfer an object from one process to another.
+In addition to getter and setter utilities, this library provides serialization (for persisting an KVTree to a file) and optional MPI functionality. 
+  </longdescription>
+</pkgmetadata>
