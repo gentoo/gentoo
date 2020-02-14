@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit cmake-utils llvm llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="OCaml bindings for LLVM"
@@ -73,7 +73,6 @@ src_configure() {
 		-DLLVM_ENABLE_FFI=OFF
 		-DLLVM_ENABLE_TERMINFO=OFF
 		-DHAVE_HISTEDIT_H=NO
-		-DWITH_POLLY=OFF
 		-DLLVM_ENABLE_ASSERTIONS=$(usex debug)
 		-DLLVM_ENABLE_EH=ON
 		-DLLVM_ENABLE_RTTI=ON

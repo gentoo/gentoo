@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit cmake-multilib llvm llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="C++ runtime stack unwinder from LLVM"
