@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">ECP-VeloC/AXL</remote-id>
+  </upstream>
+  <longdescription lang="en">AXL defines a common interface for transferring files between layers in a storage hierarchy. It abstracts vendor-specific APIs and provides synchronous and asynchronous methods using POSIX. One creates a transfer object, defining the transfer type, and then one adds files to the transfer. Once all files have been added, one initiates the transfer and can then later test or wait for its completion. The library optionally records the state of ongoing transfers, so that they can be identified or terminated even if the process that initiated the transfer has been restarted.
+  </longdescription>
+</pkgmetadata>
