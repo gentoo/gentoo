@@ -1,0 +1,14 @@
+--- a/setup.py	2019-10-27 23:44:16.562737640 +0100
++++ b/setup.py	2019-10-27 23:44:39.022353327 +0100
+@@ -51,11 +51,8 @@
+     data_files = []
+     bash_comp_dest = os.path.join(_resolve_prefix(prefix, 'bash_comp'),
+                                   'etc/bash_completion.d')
+-    data_files.append((bash_comp_dest, ['completion/wstool-completion.bash']))
+     zsh_comp_dest = os.path.join(_resolve_prefix(prefix, 'zsh_comp'),
+                                  'share/zsh/site-functions')
+-    data_files.append((zsh_comp_dest, ['completion/_wstool',
+-                                       'completion/wstool-completion.bash']))
+     return data_files
+ 
+ 
