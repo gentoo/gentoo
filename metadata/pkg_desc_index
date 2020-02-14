@@ -8056,7 +8056,6 @@ dev-python/markupsafe 0.23 1.0 1.1.1: Implements a XML/HTML/XHTML Markup safe st
 dev-python/marshmallow 2.20.2 2.20.5 3.0.1: A lightweight library for converting complex datatypes to and from native Python datatypes.
 dev-python/matplotlib 2.2.2-r1 2.2.4 3.1.2: Pure python plotting library with matlab like syntax
 dev-python/matplotlib-python2 2.2.4: Pure python plotting library with matlab like syntax (py2 version)
-dev-python/matplotlib2tikz 0.6.18: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/matterhook 0.1: Interact with Mattermost incoming webhooks easily
 dev-python/mccabe 0.2.1 0.6.1 0.6.1-r1: flake8 plugin: McCabe complexity checker
 dev-python/mecab-python 0.996: Python binding for MeCab
@@ -8950,6 +8949,7 @@ dev-python/theano 1.0.4: Define and optimize multi-dimensional arrays mathematic
 dev-python/thrift 0.11.0: Python implementation of Thrift
 dev-python/thriftpy 0.3.9: Pure python implementation of Apache Thrift
 dev-python/thunarx-python 0.5.1-r1: Python bindings for the Thunar file manager
+dev-python/tikzplotlib 0.9.1: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/timelib 0.2.4-r1: parse english textual date descriptions
 dev-python/tinycss 0.4: A complete yet simple CSS parser for Python
 dev-python/tinycss2 0.5 0.6.1 1.0.2: A complete yet simple CSS parser for Python
