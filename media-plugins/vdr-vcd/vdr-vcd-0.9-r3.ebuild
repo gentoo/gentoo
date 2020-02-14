@@ -8,7 +8,7 @@ inherit vdr-plugin-2
 DESCRIPTION="VDR plugin: play video cds"
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="http://vdr.websitec.de/download/vdr-vcd/vdr-vcd-0.9.tgz"
+SRC_URI="http://vdr.websitec.de/download/vdr-vcd/${P}.tgz"
 
 SLOT="0"
 LICENSE="GPL-2"
