@@ -1,6 +1,6 @@
 BDEPEND=doc? ( app-doc/doxygen app-text/texlive media-gfx/graphviz ) dev-util/ninja dev-util/cmake
 DEFINED_PHASES=compile configure install prepare test
-DEPEND=>=dev-libs/boost-1.48 hpx? ( sys-cluster/hpx ) <=dev-libs/libflatarray-0.2.0 mpi? ( virtual/mpi ) cuda? ( dev-util/nvidia-cuda-toolkit ) opencl? ( virtual/opencl ) opencv? ( media-libs/opencv ) silo? ( sci-libs/silo )
+DEPEND=>=dev-libs/boost-1.48 hpx? ( sys-cluster/hpx ) <dev-libs/libflatarray-0.3.0 mpi? ( virtual/mpi ) cuda? ( dev-util/nvidia-cuda-toolkit ) opencl? ( virtual/opencl ) opencv? ( media-libs/opencv ) silo? ( sci-libs/silo )
 DESCRIPTION=An auto-parallelizing library to speed up computer simulations
 EAPI=7
 HOMEPAGE=http://www.libgeodecomp.org
@@ -11,4 +11,4 @@ RDEPEND=>=dev-libs/boost-1.48
 SLOT=0
 SRC_URI=http://www.libgeodecomp.org/archive/libgeodecomp-0.4.0.tar.bz2
 _eclasses_=cmake	88799418ef3db9d88b6232a483143608	cuda	bb861e5221b7272ac90c2f12791c1e66	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=f5f6a1448bd14eb93dce7192731c01bd
+_md5_=e0a6cc8f89e9136960d8698511ca092b

@@ -5894,7 +5894,6 @@ net-im/spectrum2:twitter - Enables the Twitter backend.
 net-im/spectrum2:whatsapp - Enables the WhatsApp backend, based on net-im/transwhat.
 net-im/swift:client - Build the full graphical XMPP client.
 net-im/swift:gconf - Enable configuration through gnome-base/gconf.
-net-im/telegram-desktop:gtk3 - Enable GTK3 integration (tray, theme, filepicker, etc)
 net-im/telepathy-connection-managers:gadu - Enable Gadu Gadu protocol support.
 net-im/telepathy-connection-managers:icq - Enable ICQ IM protocol support.
 net-im/telepathy-connection-managers:irc - Enable Internet Relay Chat (IRC) support.
