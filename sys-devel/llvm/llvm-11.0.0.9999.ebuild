@@ -268,6 +268,7 @@ get_distribution_components() {
 			llvm-lto2
 			llvm-mc
 			llvm-mca
+			llvm-ml
 			llvm-modextract
 			llvm-mt
 			llvm-nm
