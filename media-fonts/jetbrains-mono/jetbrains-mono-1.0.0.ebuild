@@ -16,5 +16,5 @@ KEYWORDS="~amd64 ~x86"
 BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}"
-
+FONT_S="${S}"
 FONT_SUFFIX="ttf"
