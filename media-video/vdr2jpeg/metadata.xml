@@ -9,8 +9,4 @@
 		<email>media-video@gentoo.org</email>
 		<name>Gentoo Video project</name>
 	</maintainer>
-	<longdescription lang="en">
-		Addon needed for XXV - WWW Admin for the Video Disk Recorder
-		Creating jpeg pics from *.vdr files
-	</longdescription>
 </pkgmetadata>
