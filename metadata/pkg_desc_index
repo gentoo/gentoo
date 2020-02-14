@@ -15448,7 +15448,7 @@ net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
 net-vpn/wireguard-modules 0.0.20200214 9999: Simple yet fast and modern VPN that utilizes state-of-the-art cryptography.
 net-vpn/wireguard-tools 1.0.20200206: Required tools for WireGuard, such as wg(8) and wg-quick(8)
-net-wireless/aircrack-ng 1.5.2 1.6 9999: WLAN tools for breaking 802.11 WEP/WPA keys
+net-wireless/aircrack-ng 1.5.2 1.6-r1 9999: WLAN tools for breaking 802.11 WEP/WPA keys
 net-wireless/airpwn 1.4-r2: Tool for generic packet injection on 802.11
 net-wireless/airspy 1.0.9 9999: Usemode driver and associated tools for airspy
 net-wireless/airtraf 1.1-r3 1.1-r4: AirTraf 802.11b Wireless traffic sniffer
@@ -15506,7 +15506,7 @@ net-wireless/kismetdb 2019.05.05 9999: Kismetdb database log helper library
 net-wireless/kismetmobiledashboard 1.5_beta1 9999: Mobile UI for kismet
 net-wireless/limesuite 19.04.0: Driver and GUI for LMS7002M-based SDR platforms
 net-wireless/linssid 3.6-r1: Graphical wireless scanning for Linux
-net-wireless/lorcon 0.0_p20150109 0.0_p20180409-r1 9999: A generic library for injecting 802.11 frames
+net-wireless/lorcon 0.0_p20150109 0.0_p20180409-r1 0.0_p20200214 9999: A generic library for injecting 802.11 frames
 net-wireless/lorcon-old 9999: A generic library for injecting 802.11 frames
 net-wireless/madwimax 0.1.1-r1: Reverse-engineered driver for WiMAX devices based on Samsung CMC-730 chip
 net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
