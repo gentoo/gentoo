@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit autotools eutils
 
 DESCRIPTION="Command line tools and C library for accessing Mega cloud storage"
-HOMEPAGE="https://github.com/megous/megatools"
+HOMEPAGE="https://megatools.megous.com"
 SRC_URI="https://github.com/megous/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
