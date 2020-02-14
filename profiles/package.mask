@@ -705,11 +705,6 @@ app-office/texmacs
 # Fails to dbus activate properly for me. Help welcome figuring it out.
 net-misc/gnome-remote-desktop
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-07-26)
-# Mask 5.x version
-# It breaks hundreds of py2 ebuilds and not all deps are keyworded
->=dev-python/pytest-5.0.1
-
 # Robin H. Johnson <robbat2@gentoo.org> (2019-07-08)
 # Needs LOTS of testing, broke boot on my laptop in early attempts, maybe needs
 # matching genkernel work?
