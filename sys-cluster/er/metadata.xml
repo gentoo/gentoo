@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">ECP-VeloC/er</remote-id>
+  </upstream>
+  <longdescription lang="en">Encode/Rebuild (ER)
+This module combines the funcitonality of shuffile and redset, which lets both migrate and rebuild files within an MPI job. It is useful for moving and rebuilding data files on distributed storage, e.g., node-local storage, particularly when MPI ranks may be running on different compute nodes than when they originally created their files.
+
+To encode, one defines a redundancy scheme and then applies the redundancy scheme to a list of files also providing a name for the encoded set. To rebuild, one specifies the name of the encoded set. Additionally, there is a function to remove the encoding information, which is needed when removing a dataset.
+
+Currently, er assumes the group of processes participating is the same as MPI_COMM_WORLD.
+
+Usage is documented in src/er.h
+  </longdescription>
+</pkgmetadata>
