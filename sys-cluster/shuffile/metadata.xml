@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">ECP-VeloC/shuffile</remote-id>
+  </upstream>
+  <longdescription lang="en">This module lets one associate a set of files with a process name. Currently, the name is implied to be the rank within MPI_COMM_WORLD. In the event that a set of distributed processes are moved, for example when restarting an MPI job, functions will migrate files from their original locations to the new locations where the processes are running.
+  </longdescription>
+</pkgmetadata>
