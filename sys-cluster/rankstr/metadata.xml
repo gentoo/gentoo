@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">ECP-VeloC/rankstr</remote-id>
+  </upstream>
+  <longdescription lang="en">The rankstr (rank string) library provides functions that identify unique strings across an MPI communicator.
+
+A key use case is to split a communicator into subcommunicators such that all processes in a resulting subcommunicator consist of those processes that provided an identical input string. rankstr_mpi_comm_split is a function like MPI_Comm_split, but it takes a variable-length string as the color argument insead of an integer value.
+
+The rankstr_mpi function does not output a communicator, but instead returns a unique integer for each unique string.
+
+For scalability, the implementation uses a distributed, bitonic sort via point-to-point messages over the input communicator to compare string values. The caller must provide two distinct tag values that are safe for the function to use for its point-to-point messages.
+  </longdescription>
+</pkgmetadata>
