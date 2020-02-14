@@ -355,8 +355,6 @@ multilib_src_configure() {
 		-DLLVM_ENABLE_RTTI=ON
 		-DLLVM_ENABLE_Z3_SOLVER=$(usex z3)
 
-		-DWITH_POLLY=OFF # TODO
-
 		-DLLVM_HOST_TRIPLE="${CHOST}"
 
 		-DFFI_INCLUDE_DIR="${ffi_cflags#-I}"
