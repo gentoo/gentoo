@@ -5,7 +5,4 @@
 		<email>vdr@gentoo.org</email>
 		<name>Gentoo VDR Project</name>
 	</maintainer>
-	<longdescription>
-		With this Plugin one knows records with a pin code before the access by children protected
-	</longdescription>
 </pkgmetadata>
