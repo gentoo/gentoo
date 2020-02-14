@@ -5,5 +5,4 @@
 		<email>vdr@gentoo.org</email>
 		<name>Gentoo VDR Project</name>
 	</maintainer>
-	<longdescription>VDR plugin to rename records on OSD</longdescription>
 </pkgmetadata>
