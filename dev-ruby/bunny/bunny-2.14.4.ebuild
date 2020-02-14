@@ -26,6 +26,5 @@ ruby_add_rdepend ">=dev-ruby/amq-protocol-2.3.0:2"
 all_ruby_install() {
 	all_fakegem_install
 
-	insinto /usr/share/doc/${PF}
-	doins -r examples
+	dodoc -r examples
 }
