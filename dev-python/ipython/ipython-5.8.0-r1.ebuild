@@ -49,7 +49,7 @@ DEPEND="${CDEPEND}
 	)
 	doc? (
 		dev-python/ipykernel[${PYTHON_USEDEP}]
-		dev-python/sphinx[${PYTHON_USEDEP}]
+		<dev-python/sphinx-2[${PYTHON_USEDEP}]
 		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
 	)"
 
