@@ -15,15 +15,13 @@ llvm.org_set_globals
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
 KEYWORDS=""
-IUSE="elibc_glibc elibc_musl +libcxxabi libcxxrt +libunwind +static-libs test"
-REQUIRED_USE="libunwind? ( || ( libcxxabi libcxxrt ) )
-	?? ( libcxxabi libcxxrt )"
+IUSE="elibc_glibc elibc_musl +libcxxabi +libunwind +static-libs test"
+REQUIRED_USE="libunwind? ( libcxxabi )"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	libcxxabi? ( ~sys-libs/libcxxabi-${PV}[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
-	libcxxrt? ( sys-libs/libcxxrt[libunwind=,static-libs?,${MULTILIB_USEDEP}] )
-	!libcxxabi? ( !libcxxrt? ( >=sys-devel/gcc-4.7:=[cxx] ) )"
+	!libcxxabi? ( >=sys-devel/gcc-4.7:=[cxx] )"
 # llvm-6 for new lit options
 # clang-3.9.0 installs necessary target symlinks unconditionally
 # which removes the need for MULTILIB_USEDEP
@@ -52,7 +50,7 @@ pkg_setup() {
 	llvm_pkg_setup
 	use test && python-any-r1_pkg_setup
 
-	if ! use libcxxabi && ! use libcxxrt && ! tc-is-gcc ; then
+	if ! use libcxxabi && ! tc-is-gcc ; then
 		eerror "To build ${PN} against libsupc++, you have to use gcc. Other"
 		eerror "compilers are not supported. Please set CC=gcc and CXX=g++"
 		eerror "and try again."
@@ -78,9 +76,6 @@ src_configure() {
 	if use libcxxabi; then
 		cxxabi=libcxxabi
 		cxxabi_incs="${EPREFIX}/usr/include/libcxxabi"
-	elif use libcxxrt; then
-		cxxabi=libcxxrt
-		cxxabi_incs="${EPREFIX}/usr/include/libcxxrt"
 	else
 		local gcc_inc="${EPREFIX}/usr/lib/gcc/${CHOST}/$(gcc-fullversion)/include/g++-v$(gcc-major-version)"
 		cxxabi=libsupc++
@@ -171,7 +166,7 @@ END_LDSCRIPT
 
 gen_static_ldscript() {
 	local libdir=$(get_libdir)
-	local cxxabi_lib=$(usex libcxxabi "libc++abi.a" "$(usex libcxxrt "libcxxrt.a" "libsupc++.a")")
+	local cxxabi_lib=$(usex libcxxabi "libc++abi.a" "libsupc++.a")
 
 	# Move it first.
 	mv "${ED}/usr/${libdir}/libc++.a" "${ED}/usr/${libdir}/libc++_static.a" || die
@@ -188,7 +183,7 @@ gen_static_ldscript() {
 gen_shared_ldscript() {
 	local libdir=$(get_libdir)
 	# libsupc++ doesn't have a shared version
-	local cxxabi_lib=$(usex libcxxabi "libc++abi.so" "$(usex libcxxrt "libcxxrt.so" "libsupc++.a")")
+	local cxxabi_lib=$(usex libcxxabi "libc++abi.so" "libsupc++.a")
 
 	mv "${ED}/usr/${libdir}/libc++.so" "${ED}/usr/${libdir}/libc++_shared.so" || die
 	local deps="libc++_shared.so ${cxxabi_lib} $(usex libunwind libunwind.so libgcc_s.so)"
