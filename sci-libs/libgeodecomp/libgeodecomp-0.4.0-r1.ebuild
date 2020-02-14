@@ -23,7 +23,7 @@ BDEPEND="
 RDEPEND=">=dev-libs/boost-1.48"
 DEPEND="${RDEPEND}
 	hpx? ( sys-cluster/hpx )
-	<=dev-libs/libflatarray-0.2.0
+	<dev-libs/libflatarray-0.3.0
 	mpi? ( virtual/mpi )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
 	opencl? ( virtual/opencl )
