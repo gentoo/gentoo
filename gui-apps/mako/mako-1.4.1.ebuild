@@ -39,7 +39,7 @@ RDEPEND="
 "
 BDEPEND="
 	virtual/pkgconfig
-	app-text/scdoc
+	>=app-text/scdoc-1.9.7
 "
 
 src_configure() {
