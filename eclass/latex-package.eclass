@@ -102,32 +102,32 @@ latex-package_src_doinstall() {
 	while [[ ${1} ]]; do
 		case ${1} in
 			"sh")
-				while read -r -d '' i; do
+				while IFS= read -r -d '' i; do
 					dobin ${i}
-				done < <(find -maxdepth 1 -type f -name "*.${1}")
+				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
 			"sty" | "cls" | "fd" | "clo" | "def" | "cfg")
-				while read -r -d '' i; do
+				while IFS= read -r -d '' i; do
 					insinto ${TEXMF}/tex/latex/${PN}
 					doins ${i}
-				done < <(find -maxdepth 1 -type f -name "*.${1}")
+				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
 			"dvi" | "ps" | "pdf")
-				while read -r -d '' i; do
+				while IFS= read -r -d '' i; do
 					insinto /usr/share/doc/${PF}
 					doins ${i}
 					dosym /usr/share/doc/${PF}/$(basename ${i}) ${TEXMF}/doc/latex/${PN}/${i}
 					docompress -x /usr/share/doc/${PF}/$(basename ${i})
-				done < <(find -maxdepth 1 -type f -name "*.${1}")
+				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
 			"tex" | "dtx")
 				if ! in_iuse doc || use doc ; then
-					while read -r -d '' i; do
-						[[ -n ${LATEX_PACKAGE_SKIP} ]] && \
-						has ${i##*/} ${LATEX_PACKAGE_SKIP} && \
+					while IFS= read -r -d '' i; do
+						[[ -n ${LATEX_PACKAGE_SKIP} ]] &&
+						has ${i##*/} ${LATEX_PACKAGE_SKIP} &&
 						continue
 
 						einfo "Making documentation: ${i}"
@@ -139,34 +139,34 @@ latex-package_src_doinstall() {
 							einfo "pdflatex failed, trying texi2dvi"
 							texi2dvi -q -c --language=latex ${i} || die
 						fi
-					done < <(find -maxdepth 1 -type f -name "*.${1}")
+					done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				fi
 				;;
 
 			"tfm" | "vf" | "afm")
-				while read -r -d '' i; do
+				while IFS= read -r -d '' i; do
 					insinto ${TEXMF}/fonts/${1}/${SUPPLIER}/${PN}
 					doins ${i}
-				done < <(find -maxdepth 1 -type f -name "*.${1}")
+				done < <(find -maxdepth 1 -type f -name "*.${1}" -print0)
 				;;
 
 			"pfb")
-				while read -r -d '' i; do
+				while IFS= read -r -d '' i; do
 					insinto ${TEXMF}/fonts/type1/${SUPPLIER}/${PN}
 					doins ${i}
-				done < <(find -maxdepth 1 -type f -name "*.pfb")
+				done < <(find -maxdepth 1 -type f -name "*.pfb" -print0)
 				;;
 			"ttf")
-				while read -r -d '' i; do
+				while IFS= read -r -d '' i; do
 					insinto ${TEXMF}/fonts/truetype/${SUPPLIER}/${PN}
 					doins ${i}
-				done < <(find -maxdepth 1 -type f -name "*.ttf")
+				done < <(find -maxdepth 1 -type f -name "*.ttf" -print0)
 				;;
 			"bst")
-				while read -r -d '' i; do
+				while IFS= read -r -d '' i; do
 					insinto ${TEXMF}/bibtex/bst/${PN}
 					doins ${i}
-				done < <(find -maxdepth 1 -type f -name "*.bst")
+				done < <(find -maxdepth 1 -type f -name "*.bst" -print0)
 				;;
 
 			"styles")
@@ -199,10 +199,10 @@ latex-package_src_doinstall() {
 # relevant files that will be installed
 latex-package_src_compile() {
 	debug-print function $FUNCNAME $*
-	while read -r -d '' i; do
+	while IFS= read -r -d '' i; do
 		einfo "Extracting from ${i}"
 		latex --halt-on-error --interaction=nonstopmode ${i} || die
-	done < <(find -maxdepth 1 -type f -name "*.ins")
+	done < <(find -maxdepth 1 -type f -name "*.ins" -print0)
 }
 
 # @FUNCTION: latex-package_src_install
