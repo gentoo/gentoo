@@ -104,19 +104,20 @@ src_configure() {
 			-DTDESKTOP_API_HASH="${MY_TDESKTOP_API_HASH}"
 		)
 	else
-		mycmakeargs+=( -DTDESKTOP_API_TEST=ON )
-		ewarn
-		ewarn "Building ${PN} with test API credentials."
-		ewarn "Connectivity to API servers will be throttled."
-		ewarn "To build ${PN} custom API credentials cancel build now and obtain"
-		ewarn "credentials here: https://github.com/telegramdesktop/tdesktop/blob/dev/docs/api_credentials.md"
-		ewarn "After getting credentials you can export variables:"
-		ewarn "export MY_TDESKTOP_API_ID=\"17349\""
-		ewarn "export MY_TDESKTOP_API_HASH=\"344583e45741c457fe1862106095a5eb\""
-		ewarn "and restart the build"
-		ewarn "you can save variables in /etc/portage/env/${CATEGORY}/${PN}"
-		ewarn "portage will use the file every build automatically"
-		ewarn
+		# https://github.com/telegramdesktop/tdesktop/blob/dev/snap/snapcraft.yaml
+		# Building with snapcraft API credentials by default
+		# Custom API credentials can be obtained here:
+		# https://github.com/telegramdesktop/tdesktop/blob/dev/docs/api_credentials.md
+		# After getting credentials you can export variables:
+		#  export MY_TDESKTOP_API_ID="17349""
+		#  export MY_TDESKTOP_API_HASH="344583e45741c457fe1862106095a5eb"
+		# and restart the build"
+		# you can set above variables (without export) in /etc/portage/env/net-im/telegram-desktop
+		# portage will use custom variable every build automatically
+		mycmakeargs+=(
+			-DTDESKTOP_API_ID="611335"
+			-DTDESKTOP_API_HASH="d524b414d21f4d37f08684c1df41ac9c"
+		)
 	fi
 
 	cmake_src_configure
