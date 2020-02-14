@@ -16,7 +16,7 @@ S="${WORKDIR}/${PN}-${PN}-python-${PV}/${PN}-python"
 
 LICENSE="MPL-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~sparc ~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -29,7 +29,7 @@ BDEPEND="
 		${RDEPEND}
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pexpect[${PYTHON_USEDEP}]
-		>=dev-python/pytest-4.3[${PYTHON_USEDEP}]
+		>=dev-python/pytest-5.3.5[${PYTHON_USEDEP}]
 		!!<dev-python/typing-3.7.4.1
 	)
 "
