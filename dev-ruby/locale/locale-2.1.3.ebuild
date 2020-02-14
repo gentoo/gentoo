@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_TASK_DOC=""
 RUBY_FAKEGEM_DOCDIR="doc/reference"
@@ -47,6 +47,5 @@ each_ruby_test() {
 all_ruby_install() {
 	all_fakegem_install
 
-	insinto /usr/share/doc/${PF}
-	doins -r samples
+	dodoc -r samples
 }
