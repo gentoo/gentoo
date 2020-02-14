@@ -3,10 +3,7 @@
 
 EAPI=7
 
-# Upstream aircrack-ng supports python 3.x but lorcon doesn't yet and
-# it is needed for airdrop-ng. Will adjust when ready.
-#PYTHON_COMPAT=( python2_7 python3_{6,7,8})
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7,8})
 DISTUTILS_OPTIONAL=1
 
 inherit toolchain-funcs distutils-r1 flag-o-matic autotools
@@ -101,6 +98,7 @@ src_install() {
 
 	# we don't need aircrack-ng's oui updater, we have our own
 	rm "${ED}"/usr/sbin/airodump-ng-oui-update
+	find "${D}" -xtype f -name '*.la' -delete || die
 }
 
 pkg_postinst() {
