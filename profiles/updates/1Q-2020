@@ -1,3 +1,4 @@
 move dev-libs/range-v3 dev-cpp/range-v3
 move dev-python/neovim-python-client dev-python/pynvim
 move games-action/openastromenace games-action/astromenace
+move dev-python/matplotlib2tikz dev-python/tikzplotlib
