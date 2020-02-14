@@ -5,7 +5,6 @@
 		<email>chromium@gentoo.org</email>
 		<name>Chromium in Gentoo Project</name>
 	</maintainer>
-	<longdescription>Chromium is the open-source web browser project behind Google Chrome</longdescription>
 	<use>
 		<flag name="closure-compile">Enable closure type-checking for Chrome's web technology-based UI. Requires Java.</flag>
 		<flag name="component-build">Split build into more shared libraries to speed up linking. Mostly intended for debugging and development, NOT RECOMMENDED for general use.</flag>
