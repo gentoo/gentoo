@@ -4767,7 +4767,7 @@ dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
 dev-lang/swi-prolog 8.0.3 8.1.17 8.1.18 8.1.19 8.1.20 8.1.21: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0: Simplified Wrapper and Interface Generator
-dev-lang/tcc 0.9.26-r3 0.9.27 9999: A very small C compiler for ix86/amd64
+dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9: Tool Command Language
 dev-lang/teyjus 2.1 2.1-r1: Higher-order logic programming language Lambda Prolog
 dev-lang/tk 8.5.17-r1 8.6.8 8.6.9 8.6.9.1: Tk Widget Set
