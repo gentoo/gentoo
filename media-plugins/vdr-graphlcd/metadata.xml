@@ -5,7 +5,4 @@
         <email>vdr@gentoo.org</email>
         <name>Gentoo VDR Project</name>
       </maintainer>
-    <longdescription lang="en">
-      This package provides vdrplugin to use a Graphical LCD.
-    </longdescription>
 </pkgmetadata>
