@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,11 +22,12 @@ BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
+# gimp restriction: https://sourceforge.net/p/gimp-print/bugs/725/
 CDEPEND="
 	dev-lang/perl
 	readline? ( sys-libs/readline:0= )
 	cups? ( >=net-print/cups-1.1.14 )
-	gimp? ( >=media-gfx/gimp-2.2 x11-libs/gtk+:2 )
+	gimp? ( <media-gfx/gimp-9999:2 x11-libs/gtk+:2 )
 	gtk? ( x11-libs/gtk+:2 )
 	nls? ( virtual/libintl )
 "
