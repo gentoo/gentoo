@@ -13,7 +13,7 @@ LLVM_COMPONENTS=( llvm )
 llvm.org_set_globals
 
 # Those are in lib/Targets, without explicit CMakeLists.txt mention
-ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR VE )
+ALL_LLVM_EXPERIMENTAL_TARGETS=( ARC AVR )
 # Keep in sync with CMakeLists.txt
 ALL_LLVM_TARGETS=( AArch64 AMDGPU ARM BPF Hexagon Lanai Mips MSP430
 	NVPTX PowerPC RISCV Sparc SystemZ WebAssembly X86 XCore
@@ -82,38 +82,6 @@ python_check_deps() {
 
 	has_version -b "dev-python/recommonmark[${PYTHON_USEDEP}]" &&
 	has_version -b "dev-python/sphinx[${PYTHON_USEDEP}]"
-}
-
-check_live_ebuild() {
-	local prod_targets=(
-		$(sed -n -e '/set(LLVM_ALL_TARGETS/,/)/p' CMakeLists.txt \
-			| tail -n +2 | head -n -1)
-	)
-	local all_targets=(
-		lib/Target/*/
-	)
-	all_targets=( "${all_targets[@]#lib/Target/}" )
-	all_targets=( "${all_targets[@]%/}" )
-
-	local exp_targets=() i
-	for i in "${all_targets[@]}"; do
-		has "${i}" "${prod_targets[@]}" || exp_targets+=( "${i}" )
-	done
-	# reorder
-	all_targets=( "${prod_targets[@]}" "${exp_targets[@]}" )
-
-	if [[ ${exp_targets[*]} != ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]} ]]; then
-		eqawarn "ALL_LLVM_EXPERIMENTAL_TARGETS is outdated!"
-		eqawarn "    Have: ${ALL_LLVM_EXPERIMENTAL_TARGETS[*]}"
-		eqawarn "Expected: ${exp_targets[*]}"
-		eqawarn
-	fi
-
-	if [[ ${all_targets[*]} != ${ALL_LLVM_TARGETS[*]#llvm_targets_} ]]; then
-		eqawarn "ALL_LLVM_TARGETS is outdated!"
-		eqawarn "    Have: ${ALL_LLVM_TARGETS[*]#llvm_targets_}"
-		eqawarn "Expected: ${all_targets[*]}"
-	fi
 }
 
 check_distribution_components() {
@@ -185,9 +153,6 @@ src_prepare() {
 
 	# User patches + QA
 	cmake-utils_src_prepare
-
-	# Verify that the live ebuild is up-to-date
-	check_live_ebuild
 }
 
 # Is LLVM being linked against libc++?
