@@ -14,7 +14,6 @@ SLOT="$(ver_cut 1-3)"
 KEYWORDS=""
 IUSE="+compiler-rt libcxx openmp +sanitize"
 REQUIRED_USE="sanitize? ( compiler-rt )"
-PROPERTIES="live"
 
 RDEPEND="
 	compiler-rt? (
