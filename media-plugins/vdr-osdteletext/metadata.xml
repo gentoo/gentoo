@@ -13,7 +13,4 @@
 		<email>vdr@gentoo.org</email>
 		<name>Gentoo VDR Project</name>
 	</maintainer>
-	<longdescription>
-		VDR Plugin to show videotext on OSD
-	</longdescription>
 </pkgmetadata>
