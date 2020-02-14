@@ -7230,7 +7230,7 @@ dev-php/agavi 1.0.8: PHP MVC application framework
 dev-php/awl 0.59 0.60: Andrew McMillan's Web Libraries
 dev-php/ca-bundle 1.1.3: Find the system CA bundle or fall back to the Mozilla one
 dev-php/cli-prompt 1.0.0 1.0.3: Allows you to prompt for user input on the command line
-dev-php/composer 1.8.6 1.9.0 1.9.1 1.9.2: Dependency Manager for PHP
+dev-php/composer 1.8.6 1.9.0 1.9.1 1.9.2 1.9.3: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0: Utility to instantiate objects in PHP without invoking their constructors
@@ -7444,7 +7444,7 @@ dev-python/autopep8 1.3.2 1.3.3 1.3.5 1.4 1.4.3 1.4.4 9999: Automatically format
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.11.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
-dev-python/awscli 1.16.310 1.16.314 1.17.7: Universal Command Line Environment for AWS
+dev-python/awscli 1.16.310 1.16.314 1.17.7 1.17.17: Universal Command Line Environment for AWS
 dev-python/axiom 0.7.2 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.1.0: Specifications for callback functions passed in to an API
@@ -7490,7 +7490,7 @@ dev-python/bokeh 0.12.6: Statistical and interactive HTML plots for Python
 dev-python/booleanOperations 0.8.2: Boolean operations on paths
 dev-python/boto 2.41.0 2.48.0 2.49.0: Amazon Web Services API
 dev-python/boto3 1.9.4-r1 1.9.122 1.10.2 9999: The AWS SDK for Python
-dev-python/botocore 1.12.122 1.13.46 1.13.50 1.14.7 9999: Low-level, data-driven core of boto 3.
+dev-python/botocore 1.12.122 1.13.46 1.13.50 1.14.7 1.14.17 9999: Low-level, data-driven core of boto 3.
 dev-python/bottle 0.12.18: A fast and simple micro-framework for small web-applications
 dev-python/bottleneck 1.2.1-r1: Fast NumPy array functions written in Cython
 dev-python/bpython 0.17.1 0.18: Syntax highlighting and autocompletion for the Python interpreter
@@ -15382,7 +15382,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r1: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.9 1.8.13 1.8.23 1.9.10 1.9.13 1.9.9999 2.0.10 2.0.12 2.0.9999 2.1.2 2.1.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.9 1.8.13 1.8.23 1.9.10 1.9.13 1.9.9999 2.0.10 2.0.12 2.0.9999 2.1.2 2.1.3 2.1.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 4.0_alpha2-r7: Proxy cache for Gentoo packages
@@ -17469,7 +17469,7 @@ sys-fs/mtd-utils 1.5.2 2.0.2: MTD userspace tools (NFTL, JFFS2, NAND, FTL, UBI)
 sys-fs/mtools 4.0.18-r2 4.0.22 4.0.23: utilities to access MS-DOS disks from Unix without mounting them
 sys-fs/mtpfs 1.1-r5: A FUSE filesystem providing access to MTP devices
 sys-fs/multipath-tools 0.6.4-r1 0.7.9 0.8.1 0.8.2 0.8.3 0.8.3-r1: Device mapper target autoconfig
-sys-fs/ncdu 1.14.1: NCurses Disk Usage
+sys-fs/ncdu 1.14.1 1.14.2: NCurses Disk Usage
 sys-fs/nilfs-utils 2.1.5-r1 2.1.6 2.2.2: A New Implementation of a Log-structured File System for Linux
 sys-fs/ntfs3g 2016.2.22-r2 2017.3.23-r1 2017.3.23-r2: Open source read-write NTFS driver that runs under FUSE
 sys-fs/owfs 3.2_p2-r2: Access 1-Wire devices like a filesystem
