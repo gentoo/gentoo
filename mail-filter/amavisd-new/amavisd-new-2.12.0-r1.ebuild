@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit systemd
 
 DESCRIPTION="High-performance interface between the MTA and content checkers"
@@ -13,10 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="clamav courier dkim ldap mysql postgres qmail razor rspamd rspamd-https snmp spamassassin zmq"
 
-MY_RSPAMD_DEPEND="( dev-perl/JSON dev-perl/HTTP-Message dev-perl/LWP-UserAgent-Determined )"
-BDEPEND="acct-user/amavis"
-RDEPEND="${BDEPEND}
-	>=dev-lang/perl-5.10.0
+MY_RSPAMD_DEPEND="dev-perl/HTTP-Message
+	dev-perl/JSON
+	dev-perl/LWP-UserAgent-Determined"
+DEPEND="acct-user/amavis"
+RDEPEND="${DEPEND}
 	app-arch/arc
 	app-arch/bzip2
 	app-arch/cabextract
@@ -32,40 +34,37 @@ RDEPEND="${BDEPEND}
 	app-arch/unrar
 	app-arch/xz-utils
 	app-arch/zoo
-	clamav? ( app-antivirus/clamav )
-	>=dev-perl/Archive-Zip-1.14
+	dev-lang/perl:*
 	dev-perl/BerkeleyDB
 	dev-perl/Convert-BinHex
 	dev-perl/File-LibMagic
 	dev-perl/IO-Socket-SSL
 	dev-perl/IO-stringy
-	>=dev-perl/Mail-DKIM-0.31
-	>=dev-perl/MailTools-1.58
-	>=dev-perl/MIME-tools-5.415
-	dev-perl/Net-LibIDN
-	>=dev-perl/Net-Server-0.91
 	dev-perl/Net-SSLeay
 	dev-perl/Unix-Syslog
-	ldap? ( >=dev-perl/perl-ldap-0.33 )
-	mysql? ( dev-perl/DBD-mysql )
 	net-mail/ripole
 	net-mail/tnef
-	postgres? ( dev-perl/DBD-Pg )
-	razor? ( mail-filter/razor )
-	rspamd? ( ${MY_RSPAMD_DEPEND} )
-	rspamd-https? ( ${MY_RSPAMD_DEPEND} dev-perl/LWP-Protocol-https dev-perl/Net-SSLeay )
-	snmp? ( net-analyzer/net-snmp[perl] )
-	spamassassin? ( mail-filter/spamassassin dev-perl/Image-Info )
 	>=sys-apps/coreutils-5.0-r3
 	>=sys-libs/db-4.4.20
 	virtual/mta
-	>=virtual/perl-Compress-Raw-Zlib-2.017
+	virtual/perl-Compress-Raw-Zlib
 	virtual/perl-Digest-MD5
 	virtual/perl-File-Temp
-	>=virtual/perl-IO-Compress-1.35
+	virtual/perl-IO-Compress
 	virtual/perl-IO-Socket-IP
 	virtual/perl-MIME-Base64
-	>=virtual/perl-Time-HiRes-1.49
+	virtual/perl-Time-HiRes
+	clamav? ( app-antivirus/clamav )
+	ldap? ( >=dev-perl/perl-ldap-0.33 )
+	mysql? ( dev-perl/DBD-mysql )
+	postgres? ( dev-perl/DBD-Pg )
+	razor? ( mail-filter/razor )
+	rspamd? ( ${MY_RSPAMD_DEPEND} )
+	rspamd-https? ( ${MY_RSPAMD_DEPEND}
+		dev-perl/LWP-Protocol-https
+		dev-perl/Net-SSLeay )
+	snmp? ( net-analyzer/net-snmp[perl] )
+	spamassassin? ( mail-filter/spamassassin dev-perl/Image-Info )
 	zmq? ( dev-perl/ZMQ-LibZMQ3 )"
 
 AMAVIS_ROOT="/var/lib/amavishome"
