@@ -17,7 +17,10 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="virtual/opengl"
 
-PATCHES=( "${FILESDIR}"/${P}-avx.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-avx.patch
+	"${FILESDIR}"/${P}-rm-extra-semi-stmt.patch
+)
 
 src_configure() {
 	if use test; then

@@ -1,0 +1,92 @@
+diff -Naur glm-0.9.9.2/glm/gtx/associated_min_max.inl glm-0.9.9.2.new/glm/gtx/associated_min_max.inl
+--- glm-0.9.9.2/glm/gtx/associated_min_max.inl	2018-09-14 14:12:40.000000000 +0300
++++ glm-0.9.9.2.new/glm/gtx/associated_min_max.inl	2020-02-14 09:58:44.528485388 +0300
+@@ -86,7 +86,7 @@
+ )
+ {
+ 	T Test1 = min(x, y);
+-	T Test2 = min(z, w);;
++	T Test2 = min(z, w);
+ 	U Result1 = x < y ? a : b;
+ 	U Result2 = z < w ? c : d;
+ 	U Result = Test1 < Test2 ? Result1 : Result2;
+@@ -152,7 +152,7 @@
+ 	for(length_t i = 0, n = Result.length(); i < n; ++i)
+ 	{
+ 		T Test1 = min(x[i], y[i]);
+-		T Test2 = min(z[i], w[i]);;
++		T Test2 = min(z[i], w[i]);
+ 		U Result1 = x[i] < y[i] ? a : b;
+ 		U Result2 = z[i] < w[i] ? c : d;
+ 		Result[i] = Test1 < Test2 ? Result1 : Result2;
+@@ -278,7 +278,7 @@
+ )
+ {
+ 	T Test1 = max(x, y);
+-	T Test2 = max(z, w);;
++	T Test2 = max(z, w);
+ 	U Result1 = x > y ? a : b;
+ 	U Result2 = z > w ? c : d;
+ 	U Result = Test1 > Test2 ? Result1 : Result2;
+@@ -344,7 +344,7 @@
+ 	for(length_t i = 0, n = Result.length(); i < n; ++i)
+ 	{
+ 		T Test1 = max(x[i], y[i]);
+-		T Test2 = max(z[i], w[i]);;
++		T Test2 = max(z[i], w[i]);
+ 		U Result1 = x[i] > y[i] ? a : b;
+ 		U Result2 = z[i] > w[i] ? c : d;
+ 		Result[i] = Test1 > Test2 ? Result1 : Result2;
+diff -Naur glm-0.9.9.2/glm/simd/common.h glm-0.9.9.2.new/glm/simd/common.h
+--- glm-0.9.9.2/glm/simd/common.h	2018-09-14 14:12:40.000000000 +0300
++++ glm-0.9.9.2.new/glm/simd/common.h	2020-02-14 09:58:15.948485184 +0300
+@@ -103,7 +103,7 @@
+ 	glm_vec4 const cmp1 = _mm_cmpgt_ps(x, zro0);
+ 	glm_vec4 const and0 = _mm_and_ps(cmp0, _mm_set1_ps(-1.0f));
+ 	glm_vec4 const and1 = _mm_and_ps(cmp1, _mm_set1_ps(1.0f));
+-	glm_vec4 const or0 = _mm_or_ps(and0, and1);;
++	glm_vec4 const or0 = _mm_or_ps(and0, and1);
+ 	return or0;
+ }
+ 
+diff -Naur glm-0.9.9.2/test/core/core_func_exponential.cpp glm-0.9.9.2.new/test/core/core_func_exponential.cpp
+--- glm-0.9.9.2/test/core/core_func_exponential.cpp	2018-09-14 14:12:40.000000000 +0300
++++ glm-0.9.9.2.new/test/core/core_func_exponential.cpp	2020-02-14 09:57:18.218491903 +0300
+@@ -154,13 +154,13 @@
+ 	float A = glm::inversesqrt(16.f) * glm::sqrt(16.f);
+ 	Error += glm::epsilonEqual(A, 1.f, 0.01f) ? 0 : 1;
+ 
+-	glm::vec1 B = glm::inversesqrt(glm::vec1(16.f)) * glm::sqrt(16.f);;
++	glm::vec1 B = glm::inversesqrt(glm::vec1(16.f)) * glm::sqrt(16.f);
+ 	Error += glm::all(glm::epsilonEqual(B, glm::vec1(1.f), 0.01f)) ? 0 : 1;
+ 
+-	glm::vec2 C = glm::inversesqrt(glm::vec2(16.f)) * glm::sqrt(16.f);;
++	glm::vec2 C = glm::inversesqrt(glm::vec2(16.f)) * glm::sqrt(16.f);
+ 	Error += glm::all(glm::epsilonEqual(C, glm::vec2(1.f), 0.01f)) ? 0 : 1;
+ 
+-	glm::vec3 D = glm::inversesqrt(glm::vec3(16.f)) * glm::sqrt(16.f);;
++	glm::vec3 D = glm::inversesqrt(glm::vec3(16.f)) * glm::sqrt(16.f);
+ 	Error += glm::all(glm::epsilonEqual(D, glm::vec3(1.f), 0.01f)) ? 0 : 1;
+ 
+ 	glm::vec4 E = glm::inversesqrt(glm::vec4(16.f)) * glm::sqrt(16.f);
+diff -Naur glm-0.9.9.2/test/gtx/gtx_easing.cpp glm-0.9.9.2.new/test/gtx/gtx_easing.cpp
+--- glm-0.9.9.2/test/gtx/gtx_easing.cpp	2018-09-14 14:12:40.000000000 +0300
++++ glm-0.9.9.2.new/test/gtx/gtx_easing.cpp	2020-02-14 09:57:50.395486939 +0300
+@@ -34,7 +34,7 @@
+ 		r = glm::circularEaseOut(a);
+ 		r = glm::circularEaseInOut(a);
+ 
+-		r = glm::exponentialEaseIn(a);;
++		r = glm::exponentialEaseIn(a);
+ 		r = glm::exponentialEaseOut(a);
+ 		r = glm::exponentialEaseInOut(a);
+ 
+@@ -46,7 +46,7 @@
+ 		r = glm::backEaseOut(a);
+ 		r = glm::backEaseInOut(a);
+ 
+-		r = glm::bounceEaseIn(a);;
++		r = glm::bounceEaseIn(a);
+ 		r = glm::bounceEaseOut(a);
+ 		r = glm::bounceEaseInOut(a);
+ 	}
