@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools eutils toolchain-funcs
+inherit autotools eutils ltprune toolchain-funcs
 
 DESCRIPTION="IBM's tools for support of the ipr SCSI controller"
 SRC_URI="mirror://sourceforge/iprdd/${P}.tar.gz"
