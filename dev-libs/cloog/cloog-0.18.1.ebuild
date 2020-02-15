@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils multilib-minimal
+inherit eutils ltprune multilib-minimal
 
 DESCRIPTION="A loop generator for scanning polyhedra"
 HOMEPAGE="http://www.bastoul.net/cloog/"
