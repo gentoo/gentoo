@@ -9,7 +9,7 @@ DISTUTILS_OPTIONAL=1
 WANT_AUTOMAKE="none"
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit autotools bash-completion-r1 db-use depend.apache distutils-r1 flag-o-matic java-pkg-opt-2 libtool multilib perl-module ruby-single toolchain-funcs xdg-utils
+inherit autotools bash-completion-r1 db-use depend.apache distutils-r1 flag-o-matic java-pkg-opt-2 libtool ltprune multilib perl-module ruby-single toolchain-funcs xdg-utils
 
 MY_P="${P/_/-}"
 DESCRIPTION="Advanced version control system"
