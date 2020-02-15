@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1 vala
+inherit eutils ltprune python-single-r1 vala
 
 DESCRIPTION="A collection of different plugins for Geany"
 HOMEPAGE="https://plugins.geany.org"
