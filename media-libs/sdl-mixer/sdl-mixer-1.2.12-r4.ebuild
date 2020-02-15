@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils multilib-minimal
+inherit eutils ltprune multilib-minimal
 
 MY_P=${P/sdl-/SDL_}
 DESCRIPTION="Simple Direct Media Layer Mixer Library"
