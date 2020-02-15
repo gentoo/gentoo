@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit elisp-common java-pkg-opt-2 mono-env multilib-minimal libtool
+inherit elisp-common java-pkg-opt-2 mono-env multilib-minimal libtool ltprune
 
 DESCRIPTION="Internationalized Domain Names (IDN) implementation"
 HOMEPAGE="https://www.gnu.org/software/libidn/"
