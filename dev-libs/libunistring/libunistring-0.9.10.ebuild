@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils multilib-minimal libtool
+inherit eutils multilib-minimal libtool ltprune
 
 DESCRIPTION="Library for manipulating Unicode and C strings according to Unicode standard"
 HOMEPAGE="https://www.gnu.org/software/libunistring/"
