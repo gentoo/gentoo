@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools elisp-common eutils flag-o-matic
+inherit autotools elisp-common eutils flag-o-matic ltprune
 
 DESCRIPTION="Shared library implementing a Lisp dialect"
 HOMEPAGE="http://librep.sourceforge.net/"
