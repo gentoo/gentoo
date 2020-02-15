@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic autotools
+inherit eutils flag-o-matic autotools ltprune
 
 DESCRIPTION="An Portable Open Source UPnP Development Kit"
 HOMEPAGE="http://pupnp.sourceforge.net/"
