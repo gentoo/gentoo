@@ -42,6 +42,11 @@ src_prepare() {
 
 	eautoreconf
 
+	# Comment out FILE_PATTERNS definition (bug #706230)
+	if has_version ~app-doc/doxygen-1.8.16; then
+		sed -i -e '/^FILE_PATTERNS/s|^|#|g' docs/${PN}.doxygen.in || die
+	fi
+	# Update doxygen configuration
 	doxygen -u docs/libtrace.doxygen.in || die
 }
 
