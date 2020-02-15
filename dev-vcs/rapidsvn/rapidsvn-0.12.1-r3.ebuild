@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 WX_GTK_VER=3.0
 
-inherit autotools eutils fdo-mime flag-o-matic python-single-r1 versionator wxwidgets
+inherit autotools eutils fdo-mime flag-o-matic ltprune python-single-r1 versionator wxwidgets
 
 MY_PV=$(get_version_component_range 1-2)
 MY_REL="1"
