@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 ETYPE="sources"
 K_NOUSENAME=1
-inherit autotools eutils kernel-2
+inherit autotools eutils kernel-2 ltprune
 
 DESCRIPTION="Userspace utilities for a general USB device sharing system over IP networks"
 HOMEPAGE="https://www.kernel.org/"
