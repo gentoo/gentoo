@@ -17539,7 +17539,7 @@ sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with 
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.100 4.19.103 5.4.19 5.5.3: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 4.19.103 5.4.19 5.5.3: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.82 4.4.213 4.9.213 4.14.170 4.19.103 5.4.19 5.5.3: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.82 4.4.214 4.9.214 4.14.171 4.19.104 5.4.20 5.5.3: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15: The Zen Kernel Live Sources
@@ -18860,7 +18860,7 @@ x11-terms/sakura 3.5.0 3.6.0-r1 3.7.0: sakura is a terminal emulator based on GT
 x11-terms/st 0.8.2 9999: simple terminal implementation for X
 x11-terms/terminator 1.91: Multiple GNOME terminals in one window
 x11-terms/terminology 1.6.0: Feature rich terminal emulator using the Enlightenment Foundation Libraries
-x11-terms/tilda 1.4.1: A drop down terminal, similar to the consoles found in first person shooters
+x11-terms/tilda 1.4.1 1.5.0: A drop down terminal, similar to the consoles found in first person shooters
 x11-terms/xfce4-terminal 0.8.8 0.8.9.1: A terminal emulator for the Xfce desktop environment
 x11-terms/xterm 337 351 353: Terminal Emulator for X Windows
 x11-terms/xvt 2.1-r3: A tiny vt100 terminal emulator for X
