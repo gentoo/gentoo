@@ -49,6 +49,28 @@ HOMEPAGE="https://ruby-gnome2.osdn.jp/"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 
+ruby-ng-gnome2_all_ruby_prepare() {
+	# Avoid compilation of dependencies during test.
+	if [[ -e test/run-test.rb ]]; then
+		sed -i -e '/system(/s/which make/true/' test/run-test.rb || die
+	fi
+
+	# work on top directory
+	pushd .. >/dev/null
+
+	# Avoid native installer
+	if [[ -e glib2/lib/mkmf-gnome.rb ]]; then
+		sed -i -e '/native-package-installer/ s:^:#:' \
+			-e '/^setup_homebrew/ s:^:#:' glib2/lib/mkmf-gnome.rb || die
+	fi
+
+	popd >/dev/null
+}
+
+all_ruby_prepare() {
+	ruby-ng-gnome2_all_ruby_prepare
+}
+
 # @FUNCTION: each_ruby_configure
 # @DESCRIPTION:
 # Run the configure script in the subbinding for each specific ruby target.
