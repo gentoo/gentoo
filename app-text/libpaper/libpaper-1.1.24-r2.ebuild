@@ -3,7 +3,7 @@
 
 EAPI=4
 
-inherit eutils autotools multilib-minimal
+inherit eutils autotools ltprune multilib-minimal
 
 MY_PV=${PV/_p/+nmu}
 DESCRIPTION="Library for handling paper characteristics"
