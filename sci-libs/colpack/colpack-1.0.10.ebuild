@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils toolchain-funcs
+inherit autotools eutils ltprune toolchain-funcs
 
 MYPN="ColPack"
 
