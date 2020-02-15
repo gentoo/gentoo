@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 DESCRIPTION="A library for rendering Postscript documents"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/libspectre"
