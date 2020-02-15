@@ -13,10 +13,11 @@ inherit bash-completion-r1
 VERSION_BOOST="1.72.0"
 VERSION_BTRFS_PROGS="5.4.1"
 VERSION_BUSYBOX="1.31.1"
-VERSION_CRYPTSETUP="2.2.2"
+VERSION_COREUTILS="8.31"
+VERSION_CRYPTSETUP="2.3.0"
 VERSION_DMRAID="1.0.0.rc16-3"
 VERSION_DROPBEAR="2019.78"
-VERSION_EXPAT="2.2.8"
+VERSION_EXPAT="2.2.9"
 VERSION_E2FSPROGS="1.45.5"
 VERSION_FUSE="2.9.9"
 VERSION_GPG="1.4.23"
@@ -33,7 +34,7 @@ VERSION_POPT="1.16"
 VERSION_STRACE="5.4"
 VERSION_THIN_PROVISIONING_TOOLS="0.8.5"
 VERSION_UNIONFS_FUSE="2.0"
-VERSION_UTIL_LINUX="2.34"
+VERSION_UTIL_LINUX="2.35.1"
 VERSION_XFSPROGS="5.4.0"
 VERSION_ZLIB="1.2.11"
 VERSION_ZSTD="1.4.4"
@@ -42,6 +43,7 @@ COMMON_URI="
 	https://dl.bintray.com/boostorg/release/${VERSION_BOOST}/source/boost_${VERSION_BOOST//./_}.tar.bz2
 	https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v${VERSION_BTRFS_PROGS}.tar.xz
 	https://www.busybox.net/downloads/busybox-${VERSION_BUSYBOX}.tar.bz2
+	mirror://gnu/coreutils/coreutils-${VERSION_COREUTILS}.tar.xz
 	https://www.kernel.org/pub/linux/utils/cryptsetup/v$(ver_cut 1-2 ${VERSION_CRYPTSETUP})/cryptsetup-${VERSION_CRYPTSETUP}.tar.xz
 	https://people.redhat.com/~heinzm/sw/dmraid/src/dmraid-${VERSION_DMRAID}.tar.bz2
 	https://matt.ucc.asn.au/dropbear/releases/dropbear-${VERSION_DROPBEAR}.tar.bz2
@@ -140,6 +142,7 @@ src_prepare() {
 		-e "s:VERSION_BOOST:${VERSION_BOOST}:"\
 		-e "s:VERSION_BTRFS_PROGS:${VERSION_BTRFS_PROGS}:"\
 		-e "s:VERSION_BUSYBOX:${VERSION_BUSYBOX}:"\
+		-e "s:VERSION_COREUTILS:${VERSION_COREUTILS}:"\
 		-e "s:VERSION_CRYPTSETUP:${VERSION_CRYPTSETUP}:"\
 		-e "s:VERSION_DMRAID:${VERSION_DMRAID}:"\
 		-e "s:VERSION_DROPBEAR:${VERSION_DROPBEAR}:"\
