@@ -24,7 +24,17 @@ RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN#ruby-}}"
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
 
+# @ECLASS-VARIABLE: RUBY_GNOME2_NEED_VIRTX
+# @PRE_INHERIT
+# @DESCRIPTION:
+# If set to 'yes', the test is run with virtx. Set before inheriting this
+# eclass.
+: ${RUBY_GNOME2_NEED_VIRTX:="no"}
+
 inherit ruby-fakegem
+if [[ ${RUBY_GNOME2_NEED_VIRTX} == yes ]]; then
+	inherit virtualx
+fi
 
 IUSE="test"
 RESTRICT+=" !test? ( test )"
@@ -88,4 +98,17 @@ all_ruby_install() {
 	fi
 
 	all_fakegem_install
+}
+
+# @FUNCTION: each_ruby_test
+# @DESCRIPTION:
+# Run the tests for this package.
+each_ruby_test() {
+	[[ -e test/run-test.rb ]] || return
+
+	if [[ ${RUBY_GNOME2_NEED_VIRTX} == yes ]]; then
+		virtx ${RUBY} test/run-test.rb
+	else
+		${RUBY} test/run-test.rb || die
+	fi
 }
