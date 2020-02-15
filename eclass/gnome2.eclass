@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: gnome2.eclass
@@ -17,7 +17,7 @@
 GNOME2_EAUTORECONF=${GNOME2_EAUTORECONF:-""}
 
 [[ ${GNOME2_EAUTORECONF} == 'yes' ]] && inherit autotools
-inherit eutils libtool gnome.org gnome2-utils xdg
+inherit eutils libtool ltprune gnome.org gnome2-utils xdg
 
 case "${EAPI:-0}" in
 	4|5)
