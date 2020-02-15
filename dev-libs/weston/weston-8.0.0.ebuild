@@ -123,7 +123,6 @@ src_configure() {
 		-Dsimple-clients=$(usex examples damage,dmabuf-v4l,im,shm,touch$(usex gles2 ,dmabuf-egl,egl "") "")
 		$(meson_use resize-optimization resize-pool)
 		-Dtest-junit-xml=false
-		-Dtest-gl-renderer=false
 		"${myconf[@]}"
 	)
 	meson_src_configure
