@@ -11848,7 +11848,7 @@ kde-apps/calendarjanitor 19.08.3 19.12.2: Tool to scan calendar data for buggy i
 kde-apps/calendarsupport 19.08.3 19.12.2: Calendar support library
 kde-apps/cantor 19.08.3 19.12.2: Interface for doing mathematics and scientific computing
 kde-apps/cervisia 19.08.3 19.12.2: CVS frontend by KDE
-kde-apps/dolphin 19.08.3 19.12.2: Plasma filemanager focusing on usability
+kde-apps/dolphin 19.08.3 19.12.2-r1: Plasma filemanager focusing on usability
 kde-apps/dolphin-plugins-bazaar 19.08.3 19.12.2: Dolphin plugin for Bazaar integration
 kde-apps/dolphin-plugins-dropbox 19.08.3 19.12.2: Dolphin plugin for Dropbox service integration
 kde-apps/dolphin-plugins-git 19.08.3 19.12.2: Dolphin plugin for Git integration
