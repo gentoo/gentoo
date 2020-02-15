@@ -6,14 +6,14 @@
 # Ruby herd <ruby@gentoo.org>
 # @AUTHOR:
 # Author: Hans de Graaff <graaff@gentoo.org>
-# @SUPPORTED_EAPIS: 0 1 2 3 4 5 6
+# @SUPPORTED_EAPIS: 6 7
 # @BLURB: An eclass to simplify handling of various ruby-gnome2 parts.
 # @DESCRIPTION:
 # This eclass simplifies installation of the various pieces of
 # ruby-gnome2 since they share a very common installation procedure.
 
 case "${EAPI:-0}" in
-	0|1|2|3|4|5|6)
+	6|7)
 		;;
 	*)
 		die "Unsupported EAPI=${EAPI} (unknown) for ${ECLASS}"
@@ -24,22 +24,15 @@ RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN#ruby-}}"
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
 
-inherit ruby-fakegem multilib
+inherit ruby-fakegem
 
 IUSE=""
-
-# Define EPREFIX if needed
-has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 
 subbinding=${PN#ruby-}
 subbinding=${subbinding/-/_}
 DEPEND="virtual/pkgconfig"
 ruby_add_bdepend "dev-ruby/pkg-config"
-if has "${EAPI:-0}" 0 1 2 3 ; then
-	S=${WORKDIR}/ruby-gnome2-all-${PV}/${subbinding}
-else
-	RUBY_S=ruby-gnome2-all-${PV}/${subbinding}
-fi
+RUBY_S=ruby-gnome2-all-${PV}/${subbinding}
 SRC_URI="mirror://sourceforge/ruby-gnome2/ruby-gnome2-all-${PV}.tar.gz"
 HOMEPAGE="https://ruby-gnome2.osdn.jp/"
 LICENSE="Ruby"
