@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils
+inherit eutils ltprune
 # number that might change every version
 PID="631e85bcf877c2dcaca9b2e6d6526339"
 
