@@ -14768,7 +14768,7 @@ net-libs/libtelnet 0.21 9999: Simple RFC-complient TELNET implementation as a C 
 net-libs/libtirpc 1.1.4 1.2.5: Transport Independent RPC library (SunRPC replacement)
 net-libs/libtorrent 0.13.7 0.13.7-r1 0.13.8: BitTorrent library written in C++ for *nix
 net-libs/libtorrent-rasterbar 1.1.13-r1 1.1.14 1.2.3 1.2.4: C++ BitTorrent implementation focusing on efficiency and scalability
-net-libs/libtrace 4.0.9_p1-r1 4.0.10_p1 4.0.11_p1 99999: A library and tools for trace processing
+net-libs/libtrace 4.0.10_p1 4.0.11_p1 99999: A library and tools for trace processing
 net-libs/libupnp 1.6.21 1.6.25 1.8.6-r1 1.12.0-r1: An Portable Open Source UPnP Development Kit
 net-libs/libupnpp 0.17.0: The libupnpp C++ library wraps libupnp for easier use by upmpdcli and upplay
 net-libs/libvncserver 0.9.12-r4: library for creating vnc servers
@@ -18049,7 +18049,7 @@ www-client/midori 9.0: A lightweight web browser based on WebKitGTK+
 www-client/netrik 1.16.1-r1: A text based web browser with no ssl support
 www-client/netsurf 3.8-r2 3.9: a free, open source web browser
 www-client/opera 66.0.3515.72: A fast and secure web browser
-www-client/opera-beta 67.0.3575.8 67.0.3575.13: A fast and secure web browser
+www-client/opera-beta 67.0.3575.13 67.0.3575.23: A fast and secure web browser
 www-client/opera-developer 68.0.3581.0 68.0.3590.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
