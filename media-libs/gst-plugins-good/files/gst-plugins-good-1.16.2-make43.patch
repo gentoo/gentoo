@@ -1,0 +1,57 @@
+--- a/common/glib-gen.mak
++++ b/common/glib-gen.mak
+@@ -1,11 +1,13 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_enum_prefix=gst_color_balance
+ 
+-enum_headers=$(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers=$(foreach h,$(glib_enum_headers),\n$(H)include \"$(h)\")
+ 
+ # these are all the rules generating the relevant files
+ %-marshal.h: %-marshal.list
+--- a/common/gst-glib-gen.mak
++++ b/common/gst-glib-gen.mak
+@@ -1,13 +1,15 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_gen_prefix=gst_color_balance
+ #glib_gen_basename=colorbalance
+ #glib_gen_decl_banner=GST_EXPORT
+ #glib_gen_decl_include=\#include <gst/foo/foo-prelude.h>
+ 
+-enum_headers=$(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers=$(foreach h,$(glib_enum_headers),\n$(H)include \"$(h)\")
+ 
+ # these are all the rules generating the relevant files
+ $(glib_gen_basename)-marshal.h: $(glib_gen_basename)-marshal.list
+--- a/sys/v4l2/Makefile.in
++++ b/sys/v4l2/Makefile.in
+@@ -17,6 +17,8 @@
+ # these are the variables your Makefile.am should set
+ # the example is based on the colorbalance interface
+ 
++H := \#
++
+ #glib_enum_headers=$(colorbalance_headers)
+ #glib_enum_define=GST_COLOR_BALANCE
+ #glib_gen_prefix=gst_color_balance
+@@ -669,7 +671,7 @@
+ top_builddir = @top_builddir@
+ top_srcdir = @top_srcdir@
+ plugin_LTLIBRARIES = libgstvideo4linux2.la
+-enum_headers = $(foreach h,$(glib_enum_headers),\n\#include \"$(h)\")
++enum_headers = $(foreach h,$(glib_enum_headers),\n$(H)include \"$(h)\")
+ libgstvideo4linux2_la_SOURCES = gstv4l2.c \
+ 				gstv4l2allocator.c \
+ 				gstv4l2colorbalance.c \
