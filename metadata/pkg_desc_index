@@ -430,7 +430,7 @@ app-admin/matter 302-r1: Automated Packages Builder for Portage and Entropy
 app-admin/mcelog 168: A tool to log and decode Machine Check Exceptions
 app-admin/mcollective 2.12.4 2.12.5: Framework to build server orchestration or parallel job execution systems
 app-admin/mei-amt-check 0_p20170515: AMT status checker
-app-admin/metalog 3-r2 20181125 20200113: A highly configurable replacement for syslogd/klogd
+app-admin/metalog 3-r2 20181125 20200113-r1: A highly configurable replacement for syslogd/klogd
 app-admin/mktwpol 1.0.0 1.0.1: Bash scripts to install tripwire and generate tripwire policy files
 app-admin/mms-agent 3.7.0.212_p1 6.0.0.381_p1: MongoDB MMS agents
 app-admin/mongo-tools 3.6.13 3.6.14 3.6.16 3.6.17 4.0.12 4.0.13 4.0.14 4.0.16 4.2.1 4.2.2 4.2.3: A high-performance, open source, schema-free document-oriented database
