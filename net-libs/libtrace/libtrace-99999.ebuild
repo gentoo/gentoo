@@ -7,6 +7,7 @@ inherit autotools git-r3
 DESCRIPTION="A library and tools for trace processing"
 HOMEPAGE="https://research.wand.net.nz/software/libtrace.php"
 EGIT_REPO_URI="https://github.com/LibtraceTeam/libtrace"
+EGIT_SUBMODULES=()
 
 LICENSE="LGPL-3"
 SLOT="0"
