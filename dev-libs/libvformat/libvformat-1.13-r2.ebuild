@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils autotools
+inherit eutils autotools ltprune
 
 DESCRIPTION="Library to read and write vcard files"
 HOMEPAGE="https://sourceforge.net/projects/vformat/"
