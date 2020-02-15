@@ -1,9 +1,9 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils
+inherit eutils ltprune
 
 MY_P=${PN}-${PV/_p/-r}
 DESCRIPTION="Library for reading and writing Tide Constituent Database (TCD) files"
