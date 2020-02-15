@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils autotools
+inherit eutils autotools ltprune
 
 DESCRIPTION="Tool for conversion of MSWord doc and rtf files to something readable"
 SRC_URI="http://abiword.org/downloads/${PN}/${PV}/${P}.tar.gz"
