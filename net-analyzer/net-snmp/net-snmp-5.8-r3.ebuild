@@ -9,7 +9,7 @@ WANT_AUTOMAKE=none
 PATCHSET=3
 GENTOO_DEPEND_ON_PERL=no
 
-inherit autotools distutils-r1 eutils perl-module systemd
+inherit autotools distutils-r1 eutils ltprune perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
