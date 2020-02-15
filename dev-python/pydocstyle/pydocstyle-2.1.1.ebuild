@@ -7,12 +7,9 @@ PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1
 
-MY_PN="pydocstyle"
-MY_P="${MY_PN}-${PV}"
-
 DESCRIPTION="Python docstring style checker"
 HOMEPAGE="https://pypi.python.org/pypi/pep257"
-SRC_URI="https://github.com/PyCQA/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/PyCQA/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -27,8 +24,6 @@ DEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 	)"
-
-S="${WORKDIR}/${MY_P}"
 
 python_install_all() {
 	distutils-r1_python_install_all
