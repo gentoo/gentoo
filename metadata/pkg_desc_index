@@ -13803,7 +13803,7 @@ media-sound/redoflacs 0.16.2 0.19 0.30: Bash commandline flac compressor, verifi
 media-sound/retrovol 0.13: Systemtray volume mixer applet from PuppyLinux
 media-sound/rexima 1.4-r1: A curses-based interactive mixer which can also be used from the command-line
 media-sound/rgain 1.2.1-r1: Set of programmes and Python modules to deal with Replay Gain information
-media-sound/rhythmbox 3.4.3-r1: Music management and playback software for GNOME
+media-sound/rhythmbox 3.4.3-r1 3.4.4: Music management and playback software for GNOME
 media-sound/rip 1.07: A command-line based audio CD ripper and mp3 encoder
 media-sound/ripperx 2.7.3: a GTK program to rip CD audio tracks and encode them to the Ogg, MP3, or FLAC formats
 media-sound/rosegarden 17.12.1 19.06 19.12: MIDI and audio sequencer and notation editor
