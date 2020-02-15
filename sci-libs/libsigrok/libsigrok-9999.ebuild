@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 USE_RUBY="ruby26 ruby25 ruby24"
 RUBY_OPTIONAL="yes"
 
-inherit eutils gnome2-utils python-r1 java-pkg-opt-2 ruby-ng udev xdg-utils
+inherit eutils gnome2-utils python-r1 java-pkg-opt-2 ltprune ruby-ng udev xdg-utils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
