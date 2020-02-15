@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit autotools elisp-common eutils
+inherit autotools elisp-common eutils ltprune
 
 DESCRIPTION="tag system to find an object location in various sources"
 HOMEPAGE="https://www.gnu.org/software/global/global.html"
