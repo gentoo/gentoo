@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic ltprune toolchain-funcs
 
 MY_PV="libffcall-${PV}"
 
