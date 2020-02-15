@@ -1,9 +1,9 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
-# dev-util/systemtap is not keyworded on riscv
-sys-libs/glibc systemtap
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-02-15)
+# dev-libs/xxhash is not keyworded on riscv, bug #709696
+sys-devel/gdb xxhash
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
 # media-libs/gd is not keyworded on riscv
