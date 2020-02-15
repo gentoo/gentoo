@@ -3,7 +3,7 @@
 
 EAPI="6"
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
-inherit autotools eutils python-r1
+inherit autotools eutils ltprune python-r1
 
 DESCRIPTION="Support library to deal with Apple Property Lists (Binary & XML)"
 HOMEPAGE="http://www.libimobiledevice.org/"
