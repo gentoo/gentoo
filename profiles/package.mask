@@ -602,13 +602,6 @@ media-plugins/vdr-mailbox
 # This message shall be kept until 2020-02-11.
 dev-lang/vala:0.42
 
-# Mart Raudsepp <leio@gentoo.org> (2020-01-11)
-# Upstream considers this too broken to the point of thinking to
-# even deleting the tarballs and downgrading in pip.
-# https://github.com/mesonbuild/meson/issues/6442
-# https://bugs.gentoo.org/705144
-=dev-util/meson-0.53.0
-
 # Ulrich Müller <ulm@gentoo.org> (2020-01-06)
 # Snapshots from Git, masked for testing.
 =app-editors/emacs-27.0.50_pre*
