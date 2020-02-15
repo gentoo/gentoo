@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="library for implementing services that allow clients to discover, browse and manipulate DLNA Servers"
 HOMEPAGE="https://01.org/dleyna/"
