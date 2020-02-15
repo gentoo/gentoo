@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 MYPN=CCfits
 MYP=${MYPN}-${PV}
