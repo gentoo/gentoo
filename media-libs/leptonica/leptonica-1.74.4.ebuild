@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils multilib-minimal
+inherit eutils ltprune multilib-minimal
 
 DESCRIPTION="C library for image processing and analysis"
 HOMEPAGE="http://www.leptonica.org/"
