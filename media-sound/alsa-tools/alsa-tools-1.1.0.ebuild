@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils flag-o-matic
+inherit autotools eutils flag-o-matic ltprune
 
 DESCRIPTION="Advanced Linux Sound Architecture tools"
 HOMEPAGE="https://alsa-project.org/"
