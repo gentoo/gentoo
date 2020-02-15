@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 JAVA_PKG_OPT_USE=gasgano
 
-inherit autotools java-pkg-opt-2
+inherit autotools java-pkg-opt-2 ltprune
 
 DESCRIPTION="ESO common pipeline library for astronomical data reduction"
 HOMEPAGE="http://www.eso.org/sci/software/cpl/"
