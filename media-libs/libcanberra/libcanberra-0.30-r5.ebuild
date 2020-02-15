@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
-inherit autotools-multilib eutils systemd
+inherit autotools-multilib eutils ltprune systemd
 
 DESCRIPTION="Portable sound event library"
 HOMEPAGE="http://git.0pointer.net/libcanberra.git/"
