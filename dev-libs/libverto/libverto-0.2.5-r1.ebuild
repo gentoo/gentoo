@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit multilib-minimal
+inherit ltprune multilib-minimal
 
 DESCRIPTION="Main event loop abstraction library"
 HOMEPAGE="https://github.com/latchset/libverto/"
