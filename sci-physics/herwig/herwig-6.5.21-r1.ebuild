@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils fortran-2 versionator
+inherit autotools eutils fortran-2 ltprune versionator
 
 PV1=$(get_version_component_range 1 ${PV})
 PV2=$(get_version_component_range 2 ${PV})
