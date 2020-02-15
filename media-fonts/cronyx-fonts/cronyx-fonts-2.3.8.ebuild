@@ -23,5 +23,5 @@ PATCHES=( "${WORKDIR}"/${MY_P}-6.diff )
 
 DOCS="Changelog.en xcyr.README.* xrus.README"
 FONT_PN="cronyx"
-FONT_S="${S}/75dpi ${S}/100dpi ${S}/misc"
+FONT_S=( "${S}"/75dpi "${S}"/100dpi "${S}"/misc )
 FONTDIR="/usr/share/fonts/cronyx"
