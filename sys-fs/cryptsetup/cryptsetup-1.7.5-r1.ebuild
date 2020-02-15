@@ -6,7 +6,7 @@ EAPI=5
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit autotools distutils-r1 linux-info libtool eutils versionator
+inherit autotools distutils-r1 linux-info libtool ltprune eutils versionator
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
