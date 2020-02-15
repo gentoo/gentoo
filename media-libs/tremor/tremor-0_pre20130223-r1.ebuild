@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 # svn export http://svn.xiph.org/trunk/Tremor tremor-${PV}
 
-inherit autotools eutils multilib-minimal
+inherit autotools eutils ltprune multilib-minimal
 
 DESCRIPTION="A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)"
 HOMEPAGE="https://wiki.xiph.org/Tremor"
