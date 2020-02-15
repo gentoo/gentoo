@@ -314,9 +314,7 @@ RDEPEND="${DEPEND}
 	virtual/opengl
 "
 
-BDEPEND="dev-util/cmake
-	>=virtual/rust-1.37.0
-"
+BDEPEND="dev-util/cmake"
 
 DOCS=( CHANGELOG.md docs/ansicode.txt INSTALL.md README.md alacritty.yml )
 
@@ -360,10 +358,6 @@ src_install() {
 	doins -r scripts/*
 
 	einstalldocs
-}
-
-src_test() {
-	cargo_src_test --offline
 }
 
 pkg_postinst() {
