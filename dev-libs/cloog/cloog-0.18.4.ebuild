@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils multilib-minimal
+inherit eutils ltprune multilib-minimal
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="git://repo.or.cz/cloog.git"
