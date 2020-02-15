@@ -32,7 +32,8 @@ COMMON_DEPEND="
 	>=media-libs/libcanberra-0.25[gtk3]
 	>=net-libs/libsoup-2.42:2.4
 	>=net-libs/webkit-gtk-2.16.0:4
-	<net-libs/webkit-gtk-2.26.3-r1:4
+	!=net-libs/webkit-gtk-2.26.3-r1:4
+	<net-libs/webkit-gtk-2.26.4-r1:4
 	>=x11-libs/cairo-1.9.15:=[glib]
 	>=x11-libs/gdk-pixbuf-2.24:2
 	>=x11-libs/gtk+-3.22:3
