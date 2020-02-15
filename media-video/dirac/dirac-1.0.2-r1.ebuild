@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils multilib-minimal
+inherit autotools eutils ltprune multilib-minimal
 
 DESCRIPTION="Open Source video codec"
 HOMEPAGE="http://dirac.sourceforge.net/"

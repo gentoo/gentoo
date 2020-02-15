@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 DESCRIPTION="A small, fast, full-featured window manager for X"
 HOMEPAGE="https://github.com/bbidulock/blackboxwm"

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils multilib-minimal xdg-utils
+inherit autotools eutils ltprune multilib-minimal xdg-utils
 
 DESCRIPTION="An implementation of the Interactice Connectivity Establishment standard (ICE)"
 HOMEPAGE="https://nice.freedesktop.org/wiki/"

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils linux-info pam systemd
+inherit autotools eutils linux-info ltprune pam systemd
 
 MY_PN=ConsoleKit
 MY_P=${MY_PN}-${PV}

@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 DESCRIPTION="GeoIP Legacy C API"
 HOMEPAGE="https://github.com/maxmind/geoip-api-c"

@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic multilib-minimal toolchain-funcs
+inherit autotools eutils flag-o-matic ltprune multilib-minimal toolchain-funcs
 
 DESCRIPTION="Detect and convert encoding of text files"
 HOMEPAGE="https://cihar.com/software/enca/"

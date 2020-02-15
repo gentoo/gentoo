@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 MY_P="ZThread-${PV}"
 

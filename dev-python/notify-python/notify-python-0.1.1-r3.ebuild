@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools-utils eutils python-r1
+inherit autotools-utils eutils ltprune python-r1
 
 DESCRIPTION="Python bindings for libnotify"
 HOMEPAGE="http://www.galago-project.org/"

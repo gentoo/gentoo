@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils toolchain-funcs autotools flag-o-matic multilib-minimal
+inherit eutils toolchain-funcs autotools flag-o-matic ltprune multilib-minimal
 
 DESCRIPTION="SDL MPEG Player Library"
 HOMEPAGE="https://icculus.org/smpeg/"

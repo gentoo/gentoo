@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils multilib
+inherit eutils multilib ltprune
 
 DESCRIPTION="Apps for querying the sg SCSI interface"
 HOMEPAGE="http://sg.danny.cz/sg/"
