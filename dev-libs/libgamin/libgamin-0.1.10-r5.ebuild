@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 GNOME_ORG_MODULE="gamin"
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit autotools eutils flag-o-matic libtool python-r1 gnome.org multilib-minimal
+inherit autotools eutils flag-o-matic libtool ltprune python-r1 gnome.org multilib-minimal
 
 DESCRIPTION="Library providing the FAM File Alteration Monitor API"
 HOMEPAGE="https://www.gnome.org/~veillard/gamin/"
