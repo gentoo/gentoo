@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools eutils libtool multilib-minimal
+inherit autotools eutils libtool ltprune multilib-minimal
 
 DESCRIPTION="library for decoding mpeg-2 and mpeg-1 video"
 HOMEPAGE="http://libmpeg2.sourceforge.net/"
