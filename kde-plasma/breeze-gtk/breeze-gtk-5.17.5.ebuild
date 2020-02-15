@@ -11,7 +11,7 @@ DESCRIPTION="Official GTK+ port of Plasma's Breeze widget style"
 HOMEPAGE="https://cgit.kde.org/breeze-gtk.git"
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE=""
 
 BDEPEND="${PYTHON_DEPS}
