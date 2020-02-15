@@ -48,5 +48,5 @@ src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog* COMPLIANCE README* TODO
 
-	prune_libtool_files --all
+	find "${D}" -name '*.la' -delete || die
 }
