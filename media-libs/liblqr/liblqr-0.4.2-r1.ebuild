@@ -3,7 +3,7 @@
 
 EAPI="5"
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="An easy to use C/C++ seam carving library"
 HOMEPAGE="http://liblqr.wikidot.com/"
