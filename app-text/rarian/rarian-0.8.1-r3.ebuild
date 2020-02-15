@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 DESCRIPTION="A documentation metadata library"
 HOMEPAGE="https://rarian.freedesktop.org/"
