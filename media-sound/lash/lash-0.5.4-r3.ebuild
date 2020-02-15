@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils multilib-minimal python-single-r1
+inherit autotools eutils ltprune multilib-minimal python-single-r1
 
 DESCRIPTION="LASH Audio Session Handler"
 HOMEPAGE="http://www.nongnu.org/lash/"
