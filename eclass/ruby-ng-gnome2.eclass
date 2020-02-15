@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ruby-ng-gnome2.eclass
@@ -24,7 +24,7 @@ RUBY_FAKEGEM_NAME="${RUBY_FAKEGEM_NAME:-${PN#ruby-}}"
 RUBY_FAKEGEM_TASK_TEST=""
 RUBY_FAKEGEM_TASK_DOC=""
 
-inherit ruby-fakegem multilib versionator
+inherit ruby-fakegem multilib
 
 IUSE=""
 
@@ -32,13 +32,9 @@ IUSE=""
 has "${EAPI:-0}" 0 1 2 && ! use prefix && EPREFIX=
 
 subbinding=${PN#ruby-}
-if [ $(get_version_component_range "1-2") == "0.19" ]; then
-	subbinding=${subbinding/%2}
-else
-	subbinding=${subbinding/-/_}
-	DEPEND="virtual/pkgconfig"
-	ruby_add_bdepend "dev-ruby/pkg-config"
-fi
+subbinding=${subbinding/-/_}
+DEPEND="virtual/pkgconfig"
+ruby_add_bdepend "dev-ruby/pkg-config"
 if has "${EAPI:-0}" 0 1 2 3 ; then
 	S=${WORKDIR}/ruby-gnome2-all-${PV}/${subbinding}
 else
