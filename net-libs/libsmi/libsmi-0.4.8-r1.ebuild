@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic ltprune
 
 DESCRIPTION="A Library to Access SMI MIB Information"
 SRC_URI="ftp://ftp.ibr.cs.tu-bs.de/pub/local/${PN}/${P}.tar.gz"
