@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit eutils user versionator
+inherit eutils ltprune user versionator
 
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
