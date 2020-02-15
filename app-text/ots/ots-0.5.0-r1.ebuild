@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 DESCRIPTION="Open source Text Summarizer, as used in newer releases of abiword and kword"
 HOMEPAGE="http://libots.sourceforge.net/"
