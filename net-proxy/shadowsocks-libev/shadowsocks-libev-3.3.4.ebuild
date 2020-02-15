@@ -57,7 +57,6 @@ src_install() {
 
 	find "${D}" -name '*.la' -type f -delete || die
 
-	dodir "/etc/${PN}"
 	insinto "/etc/${PN}"
 	newins "${FILESDIR}/shadowsocks.json" shadowsocks.json
 
