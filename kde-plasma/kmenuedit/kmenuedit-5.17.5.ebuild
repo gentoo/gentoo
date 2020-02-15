@@ -13,7 +13,7 @@ DESCRIPTION="KDE Plasma menu editor"
 HOMEPAGE="https://cgit.kde.org/kmenuedit.git"
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="amd64 ~arm ~arm64 ~ppc64 x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="+hotkeys"
 
 RDEPEND="
