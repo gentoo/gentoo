@@ -3,7 +3,7 @@
 
 EAPI=4
 
-inherit eutils autotools
+inherit eutils autotools ltprune
 
 DESCRIPTION="The libdbi-drivers project maintains drivers for libdbi"
 SRC_URI="mirror://sourceforge/project/${PN}/${PN}/${P}/${P}.tar.gz"
