@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -41,6 +41,13 @@ src_prepare() {
 	default
 
 	eautoreconf
+
+	# Comment out FILE_PATTERNS definition (bug #706230)
+	if has_version ~app-doc/doxygen-1.8.16; then
+		sed -i -e '/^FILE_PATTERNS/s|^|#|g' docs/${PN}.doxygen.in || die
+	fi
+	# Update doxygen configuration
+	doxygen -u docs/libtrace.doxygen.in || die
 }
 
 src_configure() {
