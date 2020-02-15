@@ -34,18 +34,16 @@ DEPEND="
 	)
 "
 
-python_prepare_all() {
-	local PATCHES=(
-		"${FILESDIR}"/0.52.1-test_pkgconfig_gen_deps.patch
-	)
-
+PATCHES=(
 	# ASAN and sandbox both want control over LD_PRELOAD
 	# https://bugs.gentoo.org/673016
-	sed -i -e 's/test_generate_gir_with_address_sanitizer/_&/' run_unittests.py || die
-
+	"${FILESDIR}"/0.53.1-remove-asan-ld_preload.patch
 	# ASAN is unsupported on some targets
 	# https://bugs.gentoo.org/692822
-	sed -i -e 's/test_pch_with_address_sanitizer/_&/' run_unittests.py || die
+	"${FILESDIR}"/0.53.1-remove-asan.patch
+	)
+
+python_prepare_all() {
 
 	# Broken due to python2 script created by python_wrapper_setup
 	rm -r "test cases/frameworks/1 boost" || die

@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PATCH_VER="4"
+PATCH_VER="5"
 
 inherit toolchain
 
@@ -17,8 +17,3 @@ DEPEND="${RDEPEND}
 if [[ ${CATEGORY} != cross-* ]] ; then
 	PDEPEND="${PDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.13 )"
 fi
-
-src_prepare() {
-	toolchain_src_prepare
-	eapply "${FILESDIR}"/${PN}-9.2.0-neg-insn-cost.patch
-}
