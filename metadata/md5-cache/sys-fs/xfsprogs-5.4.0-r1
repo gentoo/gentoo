@@ -11,4 +11,4 @@ RDEPEND=>=sys-apps/util-linux-2.17.2 icu? ( dev-libs/icu:= ) readline? ( sys-lib
 SLOT=0
 SRC_URI=https://www.kernel.org/pub/linux/utils/fs/xfs/xfsprogs/xfsprogs-5.4.0.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	usr-ldscript	766f0a506b45f02361ad1b8ca205b7e1
-_md5_=e52a64255abd1b1292f84a2b2b25c080
+_md5_=8905a3c3a301f43f6f0d0790f8796701

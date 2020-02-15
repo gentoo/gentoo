@@ -3,10 +3,10 @@ DEPEND=>=sys-libs/libsepol-3.0:=
 DESCRIPTION=SELinux policy module utilities
 EAPI=6
 HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
-KEYWORDS=~amd64 ~arm ~arm64 ~mips ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~mips x86
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/libsepol-3.0:= !<sys-apps/policycoreutils-2.7_pre
 SLOT=0
 SRC_URI=https://github.com/SELinuxProject/selinux/releases/download/20191204/semodule-utils-3.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0008a9cab27b2cb3ddc2ed90d9b2bb3b
+_md5_=6b8b9cbd1996a3c06683ee7c6f7bc19e

@@ -3,11 +3,11 @@ DEPEND=app-text/xmlto >=sys-libs/libsepol-3.0
 DESCRIPTION=SELinux Common Intermediate Language (CIL) Compiler
 EAPI=6
 HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/libsepol-3.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/SELinuxProject/selinux/releases/download/20191204/secilc-3.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ddbe3ea4a16059f8f2f396d673d1517e
+_md5_=b54f0d64ffcbfbc79147ee06de17db79

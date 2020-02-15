@@ -3,10 +3,10 @@ DEPEND=>=sys-libs/libsepol-3.0:= >=sys-libs/libselinux-3.0:= dev-libs/libpcre:= 
 DESCRIPTION=SELinux context translation to human readable names
 EAPI=6
 HOMEPAGE=https://github.com/SELinuxProject/selinux/wiki
-KEYWORDS=~amd64 ~arm ~arm64 ~mips ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~mips x86
 LICENSE=GPL-2
 RDEPEND=>=sys-libs/libsepol-3.0:= >=sys-libs/libselinux-3.0:= dev-libs/libpcre:= >=sys-libs/libcap-1.10-r10:= !<sys-apps/policycoreutils-2.7_pre
 SLOT=0
 SRC_URI=https://github.com/SELinuxProject/selinux/releases/download/20191204/mcstrans-3.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=26def827b1a6b4575a8960d929ed4e93
+_md5_=593353d01b3371fa93a16b5082a0d744
