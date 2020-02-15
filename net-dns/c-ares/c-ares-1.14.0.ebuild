@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils multilib-minimal
+inherit autotools eutils ltprune multilib-minimal
 
 DESCRIPTION="C library that resolves names asynchronously"
 HOMEPAGE="https://c-ares.haxx.se/"
