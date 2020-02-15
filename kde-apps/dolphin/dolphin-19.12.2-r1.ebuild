@@ -64,6 +64,8 @@ RDEPEND="${DEPEND}
 
 RESTRICT+=" test"
 
+PATCHES=( "${FILESDIR}/${P}-create-new-consistency.patch" ) # from 20.04
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package activities KF5Activities)
