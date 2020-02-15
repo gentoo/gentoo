@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 MyPN=secp256k1
 DESCRIPTION="Optimized C library for EC operations on curve secp256k1"
