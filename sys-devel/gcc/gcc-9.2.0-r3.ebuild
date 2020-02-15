@@ -14,8 +14,6 @@ DEPEND="${RDEPEND}
 	elibc_glibc? ( >=sys-libs/glibc-2.13 )
 	>=${CATEGORY}/binutils-2.20"
 
-PATCHES=("${FILESDIR}"/${PN}-9.2.0-neg-insn-cost.patch)
-
 if [[ ${CATEGORY} != cross-* ]] ; then
 	PDEPEND="${PDEPEND} elibc_glibc? ( >=sys-libs/glibc-2.13 )"
 fi
