@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils fdo-mime gnome2-utils
+inherit eutils fdo-mime gnome2-utils ltprune
 
 LANGS="ar ast be bg ca cs de el en_GB es et eu fa fi fr gl he hi hu id it ja kk ko lb lt mn nl nn pl pt pt_BR ro ru sk sl sr sv tr uk vi zh_CN ZH_TW"
 NOSHORTLANGS="en_GB zh_CN zh_TW"
