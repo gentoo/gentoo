@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils libtool multilib-minimal
+inherit eutils libtool ltprune multilib-minimal
 
 DESCRIPTION="Library to handle, display and manipulate GIF images"
 HOMEPAGE="https://sourceforge.net/projects/giflib/"
