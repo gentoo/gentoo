@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils linux-info udev toolchain-funcs libtool
+inherit eutils linux-info ltprune udev toolchain-funcs libtool
 
 MY_PN=${PN/3g/-3g}
 MY_P=${MY_PN}_ntfsprogs-${PV}
