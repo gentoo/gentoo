@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools flag-o-matic libtool gnome2-utils
+inherit autotools flag-o-matic libtool gnome2-utils ltprune
 
 DESCRIPTION="Chinese chess with gtkmm and c++"
 HOMEPAGE="https://github.com/lerosua/gmchess"
