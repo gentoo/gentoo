@@ -34,21 +34,6 @@ DEPEND="
 	)
 "
 
-python_prepare_all() {
-	# ASAN and sandbox both want control over LD_PRELOAD
-	# https://bugs.gentoo.org/673016
-	sed -i -e 's/test_generate_gir_with_address_sanitizer/_&/' run_unittests.py || die
-
-	# ASAN is unsupported on some targets
-	# https://bugs.gentoo.org/692822
-	sed -i -e 's/test_pch_with_address_sanitizer/_&/' run_unittests.py || die
-
-	# Broken due to python2 script created by python_wrapper_setup
-	rm -r "test cases/frameworks/1 boost" || die
-
-	distutils-r1_python_prepare_all
-}
-
 src_test() {
 	tc-export PKG_CONFIG
 	if ${PKG_CONFIG} --exists Qt5Core && ! ${PKG_CONFIG} --exists Qt5Gui; then
