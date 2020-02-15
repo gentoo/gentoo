@@ -53,6 +53,8 @@ SLOT="0"
 # @DESCRIPTION:
 # Run the configure script in the subbinding for each specific ruby target.
 each_ruby_configure() {
+	[[ -e extconf.rb ]] || return
+
 	${RUBY} extconf.rb || die "extconf.rb failed"
 }
 
@@ -60,6 +62,8 @@ each_ruby_configure() {
 # @DESCRIPTION:
 # Compile the C bindings in the subbinding for each specific ruby target.
 each_ruby_compile() {
+	[[ -e Makefile ]] || return
+
 	# We have injected --no-undefined in Ruby as a safety precaution
 	# against broken ebuilds, but the Ruby-Gnome bindings
 	# unfortunately rely on the lazy load of other extensions; see bug
@@ -76,11 +80,13 @@ each_ruby_compile() {
 # @DESCRIPTION:
 # Install the files in the subbinding for each specific ruby target.
 each_ruby_install() {
-	# Create the directories, or the package will create them as files.
-	local archdir=$(ruby_rbconfig_value "sitearchdir")
-	dodir ${archdir#${EPREFIX}} /usr/$(get_libdir)/pkgconfig
+	if [[ -e Makefile ]]; then
+		# Create the directories, or the package will create them as files.
+		local archdir=$(ruby_rbconfig_value "sitearchdir")
+		dodir ${archdir#${EPREFIX}} /usr/$(get_libdir)/pkgconfig
 
-	emake DESTDIR="${D}" install || die "make install failed"
+		emake DESTDIR="${D}" install
+	fi
 
 	each_fakegem_install
 }
