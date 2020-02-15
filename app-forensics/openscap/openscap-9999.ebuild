@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit bash-completion-r1 eutils multilib python-single-r1
+inherit bash-completion-r1 eutils ltprune multilib python-single-r1
 
 DESCRIPTION="Framework which enables integration with Security Content Automation Protocol"
 HOMEPAGE="http://www.open-scap.org/"
