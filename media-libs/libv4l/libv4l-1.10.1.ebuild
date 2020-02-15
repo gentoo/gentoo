@@ -3,7 +3,7 @@
 
 EAPI="6"
 
-inherit eutils linux-info multilib-minimal
+inherit eutils linux-info ltprune multilib-minimal
 
 MY_P="v4l-utils-${PV}"
 

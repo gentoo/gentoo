@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils linux-info multilib-minimal
+inherit eutils linux-info ltprune multilib-minimal
 
 MY_P=v4l-utils-${PV}
 
