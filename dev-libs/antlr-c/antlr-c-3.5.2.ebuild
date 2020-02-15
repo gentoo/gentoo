@@ -1,9 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils autotools multilib-minimal
+inherit eutils autotools ltprune multilib-minimal
 
 MY_PN="${PN%-c}"
 DESCRIPTION="The ANTLR3 C Runtime"
