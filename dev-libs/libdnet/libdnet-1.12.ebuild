@@ -7,7 +7,7 @@ AT_M4DIR="config"
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools distutils-r1 eutils
+inherit autotools distutils-r1 eutils ltprune
 
 DESCRIPTION="simplified, portable interface to several low-level networking routines"
 HOMEPAGE="https://github.com/dugsong/libdnet"
