@@ -5,7 +5,7 @@ EAPI=6
 
 CLASSLESS_BGP_PATCH=ht-20040304-classless-bgp.patch
 
-inherit autotools eutils flag-o-matic multilib pam readme.gentoo-r1 systemd tmpfiles user
+inherit autotools eutils flag-o-matic ltprune multilib pam readme.gentoo-r1 systemd tmpfiles user
 
 DESCRIPTION="A free routing daemon replacing Zebra supporting RIP, OSPF and BGP"
 HOMEPAGE="https://www.quagga.net/"
