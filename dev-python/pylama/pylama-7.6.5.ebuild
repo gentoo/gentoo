@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/mccabe-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/pycodestyle-2.3.1[${PYTHON_USEDEP}]
-	>=dev-python/pep257-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pydocstyle-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pyflakes-1.5.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (

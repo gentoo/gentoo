@@ -11,5 +11,6 @@
   </maintainer>
   <upstream>
     <remote-id type="github">PyCQA/pydocstyle</remote-id>
+    <remote-id type="pypi">pydocstyle</remote-id>
   </upstream>
 </pkgmetadata>
