@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools elisp-common flag-o-matic
+inherit autotools elisp-common flag-o-matic ltprune
 
 DESCRIPTION="Any to PostScript filter"
 HOMEPAGE="https://www.gnu.org/software/a2ps/"
