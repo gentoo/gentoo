@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils multilib autotools toolchain-funcs
+inherit eutils multilib autotools ltprune toolchain-funcs
 
 DESCRIPTION="Package maintenance system for Debian"
 HOMEPAGE="https://packages.qa.debian.org/dpkg"
