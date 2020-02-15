@@ -38,7 +38,7 @@ src_install() {
 	dodoc AUTHORS ChangeLog README NEWS metalog.conf
 
 	into /
-	dosbin "${FILESDIR}"/consolelog.sh-r1
+	newsbin "${FILESDIR}"/consolelog.sh-r1 consolelog.sh
 
 	newinitd "${FILESDIR}"/metalog.initd-r1 metalog
 	newconfd "${FILESDIR}"/metalog.confd metalog
