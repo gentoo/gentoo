@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs
+inherit flag-o-matic ltprune toolchain-funcs
 
 DESCRIPTION="Object-oriented Scientific Computing Library"
 HOMEPAGE="https://web.utk.edu/~asteine1/o2scl/"
