@@ -3,7 +3,7 @@
 
 EAPI=4
 
-inherit eutils autotools multilib
+inherit eutils autotools ltprune multilib
 
 DESCRIPTION="A database-independent abstraction layer in C"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
