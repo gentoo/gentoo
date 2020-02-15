@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools multilib-minimal
+inherit autotools ltprune multilib-minimal
 
 MY_PN="iODBC"
 
