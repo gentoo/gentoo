@@ -6,7 +6,7 @@
 #    https://sourceforge.net/p/gphoto/bugs/643/
 
 EAPI=6
-inherit eutils multilib multilib-minimal udev
+inherit eutils ltprune multilib multilib-minimal udev
 
 DESCRIPTION="Library that implements support for numerous digital cameras"
 HOMEPAGE="http://www.gphoto.org/"
