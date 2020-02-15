@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit autotools eutils fdo-mime flag-o-matic
+inherit autotools eutils fdo-mime flag-o-matic ltprune
 
 DESCRIPTION="C++ user interface toolkit for X and OpenGL"
 HOMEPAGE="https://www.fltk.org/"
