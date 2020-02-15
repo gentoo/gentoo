@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools libtool linux-info pam xdg-utils
+inherit autotools libtool linux-info ltprune pam xdg-utils
 
 MY_PN=ConsoleKit2
 MY_P=${MY_PN}-${PV}
