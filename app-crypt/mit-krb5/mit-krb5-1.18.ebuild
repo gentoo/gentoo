@@ -63,6 +63,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-config_LDFLAGS-r1.patch"
 	"${FILESDIR}/${PN}-1.16.3-libressl-r1.patch"
 	"${FILESDIR}/${PN}_dont_create_run.patch"
+	"${FILESDIR}/${P}-libressl.patch"
 )
 
 MULTILIB_CHOST_TOOLS=(

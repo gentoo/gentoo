@@ -1,0 +1,42 @@
+From e3e3bc2a20795becda6e130d511fe59f04635624 Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Sat, 15 Feb 2020 10:27:20 +0200
+Subject: [PATCH] Fix compilation for LibreSSL 3.0.2
+
+RSA_PKCS1_OpenSSL() is provided in LibreSSL the master branch,
+expected to be in the next release.
+See: https://github.com/libressl-portable/openbsd/commit/3a8c41f3a84868337fde01ec1122198ec60bdc8e
+
+Bug: https://bugs.gentoo.org/709640
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ tests/softpkcs11/main.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/tests/softpkcs11/main.c b/tests/softpkcs11/main.c
+index 1cccdfb43..a5099fbe4 100644
+--- a/tests/softpkcs11/main.c
++++ b/tests/softpkcs11/main.c
+@@ -47,7 +47,6 @@
+ 
+ #if OPENSSL_VERSION_NUMBER < 0x10100000L
+ #define EVP_PKEY_get0_RSA(key) ((key)->pkey.rsa)
+-#define RSA_PKCS1_OpenSSL RSA_PKCS1_SSLeay
+ #define RSA_get0_key compat_rsa_get0_key
+ static void
+ compat_rsa_get0_key(const RSA *rsa, const BIGNUM **n, const BIGNUM **e,
+@@ -62,6 +61,11 @@ compat_rsa_get0_key(const RSA *rsa, const BIGNUM **n, const BIGNUM **e,
+ }
+ #endif
+ 
++#if (OPENSSL_VERSION_NUMBER < 0x10100000L) || \
++    defined(LIBRESSL_VERSION_NUMBER) && (LIBRESSL_VERSION_NUMBER <= 0x3000200fL)
++#define RSA_PKCS1_OpenSSL RSA_PKCS1_SSLeay
++#endif
++
+ #define OPENSSL_ASN1_MALLOC_ENCODE(T, B, BL, S, R)      \
+     {                                                   \
+         unsigned char *p;                               \
+-- 
+2.25.0
+
