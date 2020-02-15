@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-15)
+# To reduce duplication of effort, prebuilt vanilla kernel packages
+# are discontinued.  Since Gentoo patchset is really minimal,
+# sys-kernel/gentoo-kernel-bin can be used as a replacement.  Vanilla
+# kernels can still be built using sys-kernel/vanilla-kernel.
+# Removal in 30 days.
+sys-kernel/vanilla-kernel-bin
+
 # Mart Raudsepp <leio@gentoo.org> (2020-02-12)
 # GNOME 3.35 development release packages
 >=dev-libs/vala-common-0.47
