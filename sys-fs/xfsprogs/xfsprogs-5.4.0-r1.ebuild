@@ -63,6 +63,9 @@ src_configure() {
 
 	unset PLATFORM # if set in user env, this breaks configure
 
+	# Avoid automagic on libdevmapper, #709694
+	export ac_cv_search_dm_task_create=no
+
 	# Upstream does NOT support --disable-static anymore,
 	# https://www.spinics.net/lists/linux-xfs/msg30185.html
 	# https://www.spinics.net/lists/linux-xfs/msg30272.html
