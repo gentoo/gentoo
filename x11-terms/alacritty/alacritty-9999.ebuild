@@ -10,13 +10,13 @@ MY_PV="${PV//_rc/-rc}"
 inherit bash-completion-r1 cargo desktop eutils
 
 DESCRIPTION="GPU-accelerated terminal emulator"
-HOMEPAGE="https://github.com/jwilm/alacritty"
+HOMEPAGE="https://github.com/alacritty/alacritty"
 
 if [ ${PV} == "9999" ] ; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/jwilm/alacritty"
 else
-	SRC_URI="https://github.com/jwilm/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
+	SRC_URI="https://github.com/alacritty/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 	KEYWORDS="~amd64 ~ppc64"
 fi
@@ -74,6 +74,9 @@ src_install() {
 	newicon extra/logo/alacritty-term.svg Alacritty.svg
 
 	newman extra/alacritty.man alacritty.1
+
+	insinto /usr/share/metainfo
+	doins extra/linux/io.alacritty.Alacritty.appdata.xml
 
 	insinto /usr/share/alacritty/scripts
 	doins -r scripts/*
