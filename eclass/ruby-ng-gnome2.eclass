@@ -26,10 +26,13 @@ RUBY_FAKEGEM_TASK_DOC=""
 
 inherit ruby-fakegem
 
-IUSE=""
+IUSE="test"
+RESTRICT+=" !test? ( test )"
 
 DEPEND="virtual/pkgconfig"
-ruby_add_bdepend "dev-ruby/pkg-config"
+ruby_add_bdepend "
+	dev-ruby/pkg-config
+	test? ( >=dev-ruby/test-unit-2 )"
 RUBY_S=ruby-gnome2-all-${PV}/${RUBY_FAKEGEM_NAME}
 SRC_URI="mirror://sourceforge/ruby-gnome2/ruby-gnome2-all-${PV}.tar.gz"
 HOMEPAGE="https://ruby-gnome2.osdn.jp/"
