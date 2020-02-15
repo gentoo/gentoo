@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit autotools perl-module git-r3
+inherit autotools perl-module git-r3 ltprune
 
 EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
 
