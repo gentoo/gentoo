@@ -35,7 +35,7 @@ ruby_add_bdepend "dev-ruby/pkg-config"
 RUBY_S=ruby-gnome2-all-${PV}/${subbinding}
 SRC_URI="mirror://sourceforge/ruby-gnome2/ruby-gnome2-all-${PV}.tar.gz"
 HOMEPAGE="https://ruby-gnome2.osdn.jp/"
-LICENSE="Ruby"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 
 # @FUNCTION: each_ruby_configure
