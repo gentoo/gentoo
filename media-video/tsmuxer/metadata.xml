@@ -11,4 +11,7 @@
 		Dune HD Ultra, Sony Playstation3 and others). tsMuxeR is a part of
 		SmartCONTENT, content preparation solution.
 	</longdescription>
+	<upstream>
+		<remote-id type="github">justdan96/tsMuxer</remote-id>
+	</upstream>
 </pkgmetadata>
