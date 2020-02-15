@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils multilib-minimal
+inherit eutils ltprune multilib-minimal
 
 DESCRIPTION="A library to play a wide range of module formats"
 HOMEPAGE="http://mikmod.sourceforge.net/"
