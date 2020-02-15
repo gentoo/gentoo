@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools eutils multilib-minimal versionator
+inherit autotools eutils ltprune multilib-minimal versionator
 
 MY_MAJ=$(get_version_component_range 1-2)
 
