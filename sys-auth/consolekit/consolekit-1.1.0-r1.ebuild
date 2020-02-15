@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit libtool linux-info pam
+inherit libtool linux-info ltprune pam
 
 MY_PN=ConsoleKit2
 MY_P=${MY_PN}-${PV}
