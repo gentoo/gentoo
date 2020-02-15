@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit versionator virtualx autotools eutils gnome2 multilib python-single-r1
+inherit versionator virtualx autotools eutils gnome2 ltprune multilib python-single-r1
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
