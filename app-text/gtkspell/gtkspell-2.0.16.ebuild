@@ -3,7 +3,7 @@
 
 EAPI=4
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="Spell checking widget for GTK"
 HOMEPAGE="http://gtkspell.sourceforge.net/"
