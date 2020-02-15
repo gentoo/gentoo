@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="Gtk+ Widgets for live display of large amounts of fluctuating numerical data"
 HOMEPAGE="https://sourceforge.net/projects/gtkdatabox/"
