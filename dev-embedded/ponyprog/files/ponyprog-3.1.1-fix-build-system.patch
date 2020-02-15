@@ -1,0 +1,17 @@
+--- a/CMakeLists.txt.old	2020-02-15 13:35:28.308010048 +0100
++++ b/CMakeLists.txt	2020-02-15 13:37:06.726655159 +0100
+@@ -42,14 +42,6 @@
+ OPTION (USE_PROFILER "Include in binary file profiling information" OFF)
+ 
+ 
+-IF(${USE_DEBUGGER})
+-  SET(CMAKE_BUILD_TYPE Debug)
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+-ELSE()
+-  SET(CMAKE_BUILD_TYPE Release)
+-  SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
+-ENDIF()
+-
+ MESSAGE(STATUS "CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS}")
+ 
+ INCLUDE(CheckIncludeFile)
