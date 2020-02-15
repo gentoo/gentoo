@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools toolchain-funcs eutils java-pkg-opt-2 java-ant-2
+inherit autotools toolchain-funcs eutils java-pkg-opt-2 java-ant-2 ltprune
 
 MYP="Healpix_${PV}"
 MYPF=${MYP}_2015Oct08
