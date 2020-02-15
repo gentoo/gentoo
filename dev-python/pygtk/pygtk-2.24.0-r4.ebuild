@@ -6,7 +6,7 @@ GCONF_DEBUG="no"
 GNOME_TARBALL_SUFFIX="bz2"
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils flag-o-matic gnome2 python-r1 virtualx
+inherit autotools eutils flag-o-matic gnome2 ltprune python-r1 virtualx
 
 DESCRIPTION="GTK+2 bindings for Python"
 HOMEPAGE="http://www.pygtk.org/"
