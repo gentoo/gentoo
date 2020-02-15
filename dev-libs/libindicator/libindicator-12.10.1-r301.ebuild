@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils flag-o-matic virtualx multilib-minimal
+inherit autotools eutils flag-o-matic ltprune virtualx multilib-minimal
 
 DESCRIPTION="A set of symbols and convience functions that all indicators would like to use"
 HOMEPAGE="https://launchpad.net/libindicator"
