@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs multilib prefix
+inherit eutils flag-o-matic toolchain-funcs multilib prefix
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/
