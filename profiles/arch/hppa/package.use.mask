@@ -4,6 +4,10 @@
 # NOTE: When masking a USE flag due to missing keywords, please file a keyword
 # request bug for the hppa arch.
 
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
 # net-libs/libgadu is not keyworded
 net-im/pidgin gadu
