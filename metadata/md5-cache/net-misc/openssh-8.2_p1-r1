@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=mirror://openbsd/OpenSSH/portable/openssh-8.2p1.tar.gz sctp? ( https://dev.gentoo.org/~chutzpah/dist/openssh/openssh-8.2p1-sctp-1.2.patch.xz ) hpn? ( mirror://sourceforge/hpnssh/HPN-SSH%2014v20%208.1p1/openssh-8_1_P1-hpn-DynWinNoneSwitch-14.20.diff mirror://sourceforge/hpnssh/HPN-SSH%2014v20%208.1p1/openssh-8_1_P1-hpn-AES-CTR-14.20.diff mirror://sourceforge/hpnssh/HPN-SSH%2014v20%208.1p1/openssh-8_1_P1-hpn-PeakTput-14.20.diff ) X509? ( https://roumenpetrov.info/openssh/x509-12.4/openssh-8.2p1+x509-12.4.diff.gz )
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	a1771fc1e5831c201eaf18451747d94b	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=0f51c6047d9f38f7e2e9f45f7c06d2eb
+_md5_=442005c8d2af54886fe95d423c8172eb
