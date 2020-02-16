@@ -4,7 +4,7 @@
 EAPI="5"
 GNOME_ORG_MODULE="murrine"
 
-inherit gnome.org ltprune multilib-minimal
+inherit eutils gnome.org ltprune multilib-minimal
 
 DESCRIPTION="Murrine GTK+2 Cairo Engine"
 
