@@ -1811,11 +1811,11 @@ toolchain_src_install() {
 		if [[ -f ${CTARGET}-${x} ]] ; then
 			if ! is_crosscompile ; then
 				ln -sf ${CTARGET}-${x} ${x}
-				dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
+				dosym ${BINPATH}/${CTARGET}-${x} \
 					/usr/bin/${x}-${GCC_CONFIG_VER}
 			fi
 			# Create versioned symlinks
-			dosym ${BINPATH#${EPREFIX}}/${CTARGET}-${x} \
+			dosym ${BINPATH}/${CTARGET}-${x} \
 				/usr/bin/${CTARGET}-${x}-${GCC_CONFIG_VER}
 		fi
 
