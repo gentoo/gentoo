@@ -463,4 +463,10 @@ pkg_postinst() {
 		elog "Otherwise you maybe unable to connect to this sshd using any AES CTR cipher."
 		elog ""
 	fi
+
+	if has_version "<${CATEGORY}/${PN}-8.2_p1"; then
+		ewarn "After upgrading to openssh-8.2p1 please restart sshd, otherwise you"
+		ewarn "will not be able to establish new sessions. Restarting sshd over a ssh"
+		ewarn "connection is generally safe."
+	fi
 }
