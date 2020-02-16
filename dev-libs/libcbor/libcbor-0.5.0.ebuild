@@ -12,7 +12,7 @@ SRC_URI="https://github.com/PJK/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="+custom-alloc doc test"
 
 BDEPEND="
@@ -22,6 +22,7 @@ BDEPEND="
 			dev-python/breathe[${PYTHON_USEDEP}]
 		')
 	)
+	test? ( dev-util/cmocka )
 "
 
 RESTRICT="!test? ( test )"
