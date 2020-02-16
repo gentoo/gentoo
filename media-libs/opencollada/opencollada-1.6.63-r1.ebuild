@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit cmake-utils flag-o-matic
+inherit cmake-utils eutils flag-o-matic
 
 DESCRIPTION="Stream based read/write library for COLLADA files"
 HOMEPAGE="http://www.opencollada.org/"
