@@ -4,7 +4,7 @@
 EAPI=5
 AUTOTOOLS_AUTORECONF=1
 
-inherit autotools-utils ltprune multilib-minimal
+inherit autotools-utils eutils ltprune multilib-minimal
 
 DESCRIPTION="Library for parsing video download links"
 HOMEPAGE="http://quvi.sourceforge.net/"
