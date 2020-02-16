@@ -368,11 +368,6 @@ media-gfx/pycam
 # Removal in 30 days.  Bug #578234, #685928.
 app-i18n/zhcon
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
-# No revdeps, blocks dev-python/pygtk cleanup, bug #706476
-# Masked for removal in 30 days.
-dev-python/pygtkhelpers
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-26)
 # Unmaintained.  Not bumped since Mar 2018.  No py3.7 compat.  Forces
 # old version of dev-python/idna.
