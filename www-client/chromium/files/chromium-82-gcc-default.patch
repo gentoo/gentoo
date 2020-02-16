@@ -1,0 +1,35 @@
+From a089aa8aafa2cabc331df6ea450fb75b77e75ff7 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Wed, 12 Feb 2020 22:03:05 +0000
+Subject: [PATCH] libstdc++: explicitly declare default constructor of WTF::DequeIterator
+
+Using std::minmax_element on a WTF::Deque iterator with libstdc++ from
+GCC 5+ fails to compile:
+/usr/include/c++/9/bits/stl_algo.h:3334:24: error: no matching function for call to ‘WTF::DequeIterator<int, 0, WTF::PartitionAllocator>::DequeIterator(<brace-enclosed initializer list>)’
+ 3334 |       _ForwardIterator __min{}, __max{};
+
+This is because it will try to create an iterator of the DequeIterator
+type with no parameters (or with an empty list of initializers), but
+that constructor is not available. So this changeset adds it.
+
+Bug: 957519
+
+Change-Id: I95e54a2fd95b19c0d439e9067105b7e388bdea61
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2051932
+Reviewed-by: Kentaro Hara <haraken@chromium.org>
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Cr-Commit-Position: refs/heads/master@{#740842}
+---
+
+diff --git a/third_party/blink/renderer/platform/wtf/deque.h b/third_party/blink/renderer/platform/wtf/deque.h
+index 29cce7c57..07233c4 100644
+--- a/third_party/blink/renderer/platform/wtf/deque.h
++++ b/third_party/blink/renderer/platform/wtf/deque.h
+@@ -236,6 +236,7 @@
+   typedef T& reference;
+   typedef std::bidirectional_iterator_tag iterator_category;
+ 
++  DequeIterator() = default;
+   DequeIterator(Deque<T, inlineCapacity, Allocator>* deque, wtf_size_t index)
+       : Base(deque, index) {}
+ 
