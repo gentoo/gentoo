@@ -10,10 +10,12 @@ MYD=$(get_version_component_range 1-2)
 DESCRIPTION="NVIDIA CUDA Toolkit (compiler and friends)"
 HOMEPAGE="https://developer.nvidia.com/cuda-zone"
 SRC_URI="https://developer.nvidia.com/compute/cuda/${MYD}/prod/local_installers/cuda_${PV}_linux-run -> cuda_${PV}_linux.run"
+
 SLOT="0/${PV}"
 LICENSE="NVIDIA-CUDA"
 KEYWORDS="-* ~amd64 ~amd64-linux"
 IUSE="debugger doc eclipse profiler"
+RESTRICT="bindist mirror"
 
 DEPEND=""
 RDEPEND="${DEPEND}
