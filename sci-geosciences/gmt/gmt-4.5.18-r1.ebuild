@@ -1,14 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit autotools
 
 DESCRIPTION="Powerful map generator"
 HOMEPAGE="https://gmt.soest.hawaii.edu/"
-SRC_URI="
-	mirror://gmt/${P}-src.tar.bz2
+SRC_URI="mirror://gmt/${P}-src.tar.bz2
 	gmttria? ( mirror://gmt/${P}-non-gpl-src.tar.bz2 )"
 
 LICENSE="GPL-2+ gmttria? ( Artistic )"
@@ -16,23 +15,28 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc examples debug +gdal gmttria +gshhg htmldoc +metric mex +netcdf octave postscript tutorial"
 
-RDEPEND="
-	!sci-biology/probcons
-	gdal? ( sci-libs/gdal )
-	gshhg? ( sci-geosciences/gshhg-gmt )
-	netcdf? ( >=sci-libs/netcdf-4.1 )
-	octave? ( sci-mathematics/octave )"
-DEPEND="${RDEPEND}"
-
 # mex can use matlab too which i can't test
-REQUIRED_USE="
-	mex? ( octave )
+REQUIRED_USE="mex? ( octave )"
+
+DEPEND="
+	gdal? ( sci-libs/gdal:= )
+	gshhg? ( sci-geosciences/gshhg-gmt )
+	netcdf? ( sci-libs/netcdf:= )
+	octave? ( sci-mathematics/octave:= )
+"
+RDEPEND="${DEPEND}
+	!sci-biology/probcons
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.5.9-no-strip.patch
 	"${FILESDIR}"/${PN}-4.5.6-respect-ldflags.patch
-	)
+)
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	local myconf=(
@@ -71,17 +75,17 @@ src_install() {
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples
 	else
-		rm -rf "${ED}/usr/share/doc/${PF}/examples" || die
+		rm -r "${ED}/usr/share/doc/${PF}/examples" || die
 	fi
 
 	if ! use htmldoc; then
-		rm -rf "${ED}/usr/share/doc/${PF}/html" || die
+		rm -r "${ED}/usr/share/doc/${PF}/html" || die
 	fi
 
 	if use tutorial; then
 		docompress -x /usr/share/doc/${PF}/tutorial
 	else
-		rm -rf "${ED}/usr/share/doc/${PF}/tutorial" || die
+		rm -r "${ED}/usr/share/doc/${PF}/tutorial" || die
 	fi
 
 	# remove static libs
