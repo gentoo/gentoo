@@ -157,11 +157,14 @@ LICENSE="Apache-2.0 Boost-1.0 BSD BSD-2 CC0-1.0 ISC LGPL-3+ MIT Apache-2.0 Unlic
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
 
-# >app-backup/bacula-9.2[qt5] has file collisions, #686118
 DEPEND="sys-libs/zlib"
+
+# >app-backup/bacula-9.2[qt5] has file collisions, #686118
 RDEPEND="${DEPEND}
-	!>app-backup/bacula-9.2[qt5]"
-BDEPEND=">=virtual/rust-1.31.0"
+	!>app-backup/bacula-9.2[qt5]
+"
+
+BDEPEND="sys-devel/clang"
 
 DOCS=( README.md doc/alternatives.md )
 
