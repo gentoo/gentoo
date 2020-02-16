@@ -5061,7 +5061,7 @@ dev-libs/libparserutils 0.2.3 0.2.4-r1: library for building efficient parsers, 
 dev-libs/libpcre 8.42 8.43 8.44: Perl-compatible regular expression library
 dev-libs/libpcre-debian 8-r1: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.32 10.33-r1 10.34: Perl-compatible regular expression library
-dev-libs/libpeas 1.22.0-r1: A GObject plugins library
+dev-libs/libpeas 1.22.0-r2: A GObject plugins library
 dev-libs/libpfm 4.4.0 4.6.0 4.8.0 4.10.1: Hardware-based performance monitoring interface for Linux
 dev-libs/libpipeline 1.4.2 1.5.1 1.5.2: a pipeline manipulation library
 dev-libs/libplatform 2.0.1 2.1.0.1 2.1.0.1-r1 9999: Platform support library used by libCEC and binary add-ons for Kodi
@@ -12491,7 +12491,7 @@ media-fonts/konfont 0.1: Fontset for KON2
 media-fonts/koruri 20161105: Japanese TrueType font based on M+ outline fonts and Open Sans
 media-fonts/lfpfonts-fix 0.83-r2: Linux Font Project fixed-width fonts
 media-fonts/lfpfonts-var 0.84: Linux Font Project variable-width fonts
-media-fonts/liberation-fonts 2.00.1-r3 2.00.5: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
+media-fonts/liberation-fonts 2.00.1-r3 2.00.5 2.1.0: A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat
 media-fonts/libertine 5.3.0.20120702-r2 5.3.0.20120702-r3: Fonts from the Linux Libertine Open Fonts Project
 media-fonts/lklug 0.6-r1: Sinhala font
 media-fonts/lohit-assamese 2.91.5: The Lohit Assamese font
