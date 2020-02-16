@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs
+inherit eutils flag-o-matic toolchain-funcs
 
 # Switches supported by extensions-patch
 EXT_PATCH_FLAGS="alternatechannel graphtft naludump permashift pinplugin
