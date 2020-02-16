@@ -10423,7 +10423,7 @@ dev-util/bcpp 20150811-r1: Indents C/C++ source code
 dev-util/bdelta 0.3.1-r1: Binary Delta - Efficient difference algorithm and format
 dev-util/biew 6.1.0-r3: A portable viewer of binary files, hexadecimal and disassembler modes
 dev-util/bin_replace_string 0.2: A tool to edit C strings in compiled binaries
-dev-util/bingrep 0.6.2 0.8.1: Binary file analysis tool
+dev-util/bingrep 0.8.2: Binary file analysis tool
 dev-util/bitcoin-tx 0.16.3 0.17.1 0.18.0: Command-line Bitcoin transaction tool
 dev-util/bitrise 1.16.1 1.19.0 1.20.0 1.23.0 1.24.0: Run your Bitrise.io automations on any Mac or Linux machine
 dev-util/bless 0.6.0-r3 0.6.0-r4 0.6.2-r1: GTK# Hex Editor
@@ -19119,7 +19119,7 @@ xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the X
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.1: A panel plug-in to display wireless interface statistics
 xfce-extra/xfce4-weather-plugin 0.10.0: A weather plug-in for the Xfce desktop environment
-xfce-extra/xfce4-whiskermenu-plugin 2.3.4 2.3.5 2.4.0 2.4.1: Alternate application launcher for Xfce
+xfce-extra/xfce4-whiskermenu-plugin 2.3.4 2.3.5 2.4.2: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
 xfce-extra/xfdashboard 0.7.5: Maybe a GNOME shell like dashboard for the Xfce desktop environment
