@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit check-reqs cuda toolchain-funcs unpacker versionator
+inherit check-reqs cuda eutils toolchain-funcs unpacker versionator
 
 MYD=$(get_version_component_range 1)_$(get_version_component_range 2)
 
