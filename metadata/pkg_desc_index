@@ -677,7 +677,7 @@ app-backup/restic 0.9.4 0.9.5 0.9.6: A backup program that is fast, efficient an
 app-backup/rsnapshot 1.3.1-r2 1.4.1 1.4.2: A filesystem backup utility based on rsync
 app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling system based on DAR
 app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
-app-backup/snapper 0.5.6-r1 0.8.4 0.8.5: Command-line program for btrfs and lvm snapshot management
+app-backup/snapper 0.5.6-r1 0.8.4 0.8.5 0.8.6: Command-line program for btrfs and lvm snapshot management
 app-backup/spideroak-bin 7.5.0-r1: Secure free online backup, storage, and sharing system
 app-backup/tarsnap 1.0.35 1.0.37 1.0.39: Online backups for the truly paranoid
 app-backup/tob 0.26-r2: A general driver for making and maintaining backups
@@ -10488,7 +10488,7 @@ dev-util/cpputest 3.8: unit testing and mocking framework for C/C++
 dev-util/cproto 4.7o: Generate C function prototypes from C source code
 dev-util/cpuinfo-collection 20101114: huge collection of /proc/cpuinfo files
 dev-util/cram 0.7: Functional testing framework for command line applications
-dev-util/crash 7.2.5 7.2.7: Red Hat crash utility; used for analyzing kernel core dumps
+dev-util/crash 7.2.7 7.2.8: Red Hat crash utility; used for analyzing kernel core dumps
 dev-util/creduce 2.8.0_pre20180411-r1 2.8.0 2.9.0_pre20190414-r1 2.11.0_pre20191110 9999: C-Reduce - a plugin-based C program reducer
 dev-util/cscope 15.8a-r1 15.8a-r2 15.9: Interactively examine a C program
 dev-util/csup 20060318-r1: A rewrite of CVSup
@@ -13598,7 +13598,7 @@ media-sound/dcaenc 2 2-r1 9999: DTS Coherent Acoustics audio encoder
 media-sound/dcd 0.95: A simple command-line based CD Player
 media-sound/declick 0.6.5-r1: Dynamic digital declicker for audio sample files
 media-sound/deinvert 9999: A voice inversion descrambler
-media-sound/denemo 2.2.0 2.3.0: A music notation editor
+media-sound/denemo 2.3.0: A music notation editor
 media-sound/din 43.0.1 44.0.2: a software musical instrument and audio synthesizer
 media-sound/dir2ogg 0.12-r1 0.13-r1: Converts mp3, m4a, wma, and wav files to Ogg Vorbis format
 media-sound/drumstick 1.1.2 1.1.3: Qt/C++ wrapper for ALSA sequencer

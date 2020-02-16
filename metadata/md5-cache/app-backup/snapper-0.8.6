@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig
+DEFINED_PHASES=configure install postinst prepare
+DEPEND=dev-libs/boost:=[threads] dev-libs/libxml2 dev-libs/icu:= sys-apps/acl sys-apps/dbus sys-apps/util-linux >=sys-fs/btrfs-progs-3.17.1 sys-libs/zlib virtual/libintl lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) xattr? ( sys-apps/attr ) sys-devel/gettext virtual/pkgconfig
+DESCRIPTION=Command-line program for btrfs and lvm snapshot management
+EAPI=7
+HOMEPAGE=http://snapper.io/
+IUSE=lvm pam xattr
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-2
+RDEPEND=dev-libs/boost:=[threads] dev-libs/libxml2 dev-libs/icu:= sys-apps/acl sys-apps/dbus sys-apps/util-linux >=sys-fs/btrfs-progs-3.17.1 sys-libs/zlib virtual/libintl lvm? ( sys-fs/lvm2 ) pam? ( sys-libs/pam ) xattr? ( sys-apps/attr )
+SLOT=0
+SRC_URI=ftp://ftp.suse.com/pub/projects/snapper/snapper-0.8.6.tar.bz2
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=c2c1e7751a3e6916632d132ead4627d8
