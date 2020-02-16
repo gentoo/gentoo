@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2020-02-16)
+# Fails to automatically launch pipewire for me. Help welcome figuring it out.
+net-misc/gnome-remote-desktop
+
 # Stephan Hartmann <stha09@googlemail.com> (2020-02-16)
 # Dev channel releases are only for people who
 # are developers or want more experimental features
@@ -695,10 +699,6 @@ sys-apps/man
 # few years. Bug #436400
 app-office/texmacs
 <dev-scheme/guile-2
-
-# Mart Raudsepp <leio@gentoo.org> (2019-08-18)
-# Fails to dbus activate properly for me. Help welcome figuring it out.
-net-misc/gnome-remote-desktop
 
 # Robin H. Johnson <robbat2@gentoo.org> (2019-07-08)
 # Needs LOTS of testing, broke boot on my laptop in early attempts, maybe needs
