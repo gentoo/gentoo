@@ -1,9 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
-
-inherit eutils
+EAPI="7"
 
 DESCRIPTION="Red Hat crash utility; used for analyzing kernel core dumps"
 HOMEPAGE="https://people.redhat.com/anderson/"
@@ -16,7 +14,3 @@ IUSE=""
 # there is no "make test" target, but there is a test.c so the automatic
 # make rules catch it and tests fail
 RESTRICT="test"
-
-PATCHES=(
-	"${FILESDIR}/${PN}-5.1.1-install-fix.patch"
-)

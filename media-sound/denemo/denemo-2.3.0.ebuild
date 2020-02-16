@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools xdg
 
 DESCRIPTION="A music notation editor"
@@ -28,7 +29,7 @@ RDEPEND="
 	media-libs/fontconfig:1.0
 	>=media-libs/libsmf-1.3
 	>=media-libs/libsndfile-1.0.28-r1
-	>=media-sound/lilypond-2.19.54[guile2]
+	>=media-sound/lilypond-2.19.54[guile2(+)]
 	alsa? ( >=media-libs/alsa-lib-1.1.2 )
 	aubio? ( >=media-libs/aubio-0.4.1-r1:= )
 	evince? ( >=app-text/evince-3.22.1-r1:= )
