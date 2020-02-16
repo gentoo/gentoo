@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 PYTHON_REQ_USE="xml"
 
-inherit linux-info python-any-r1 readme.gentoo-r1
+inherit eutils linux-info python-any-r1 readme.gentoo-r1
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/openconnect/openconnect.git"
