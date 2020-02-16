@@ -12,7 +12,7 @@ if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/KittyKatt/screenFetch.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
+	KEYWORDS="~amd64 ~arm x86 ~x64-macos"
 	SRC_URI="https://github.com/KittyKatt/screenFetch/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${MY_PN}-${PV}"
 fi
