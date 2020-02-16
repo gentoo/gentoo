@@ -1,30 +1,32 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 ECM_HANDBOOK="forceoptional" # not optional until !kdelibs4support
 ECM_TEST="true"
-VIRTUALX_REQUIRED="test"
-PVCUT=$(ver_cut 1-3)
 KFMIN=5.60.0
-PLASMA_MINIMAL=5.16.5
 QTMIN=5.12.3
+VIRTUALX_REQUIRED="test"
 inherit flag-o-matic ecm kde.org
 
 DESCRIPTION="Web browser and file manager based on KDE Frameworks"
-HOMEPAGE="
-	https://kde.org/applications/internet/konqueror/
-	https://konqueror.org/
-"
+HOMEPAGE="https://kde.org/applications/internet/org.kde.konqueror"
+
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
 KEYWORDS="amd64 arm64 x86"
-IUSE="activities speech tidy +webengine X"
+IUSE="activities speech tidy X"
+
 # 4 of 4 tests fail. Last checked for 4.0.3
 RESTRICT+=" test"
 
 COMMON_DEPEND="
+	>=dev-qt/qtdbus-${QTMIN}:5
+	>=dev-qt/qtgui-${QTMIN}:5
+	>=dev-qt/qtwebengine-${QTMIN}:5[widgets]
+	>=dev-qt/qtwidgets-${QTMIN}:5
+	>=dev-qt/qtxml-${QTMIN}:5
 	>=kde-frameworks/karchive-${KFMIN}:5
 	>=kde-frameworks/kbookmarks-${KFMIN}:5
 	>=kde-frameworks/kcmutils-${KFMIN}:5
@@ -50,32 +52,21 @@ COMMON_DEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	>=kde-frameworks/kxmlgui-${KFMIN}:5
-	>=dev-qt/qtdbus-${QTMIN}:5
-	>=dev-qt/qtgui-${QTMIN}:5
-	>=dev-qt/qtwidgets-${QTMIN}:5
-	>=dev-qt/qtxml-${QTMIN}:5
 	sys-libs/zlib
 	speech? ( >=dev-qt/qtspeech-${QTMIN}:5 )
 	tidy? ( app-text/tidy-html5 )
-	webengine? ( >=dev-qt/qtwebengine-${QTMIN}:5[widgets] )
 	X? ( >=dev-qt/qtx11extras-${QTMIN}:5 )
 "
 DEPEND="${COMMON_DEPEND}
 	activities? ( >=kde-frameworks/kactivities-${KFMIN}:5 )
 "
 RDEPEND="${COMMON_DEPEND}
-	>=kde-apps/kfind-${PVCUT}:5
-	>=kde-plasma/kde-cli-tools-${PLASMA_MINIMAL}:5
-	!webengine? ( kde-misc/kwebkitpart:5 )
+	kde-apps/kfind:5
+	kde-plasma/kde-cli-tools:5
 "
 
 src_prepare() {
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags -lmalloc
-
-	if ! use webengine; then
-		ecm_punt_bogus_dep Qt5 WebEngineWidgets
-		cmake_comment_add_subdirectory webenginepart
-	fi
 
 	ecm_src_prepare
 }

@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} )
 
-[[ "${PV}" = "9999" ]] && inherit git-r3
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit elisp-common autotools python-single-r1 toolchain-funcs xdg-utils
 
 if [[ "${PV}" = "9999" ]]; then
+	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/lilypond.git"
 else
-	SRC_URI="http://download.linuxaudio.org/lilypond/sources/v${PV:0:4}/${P}.tar.gz"
+	SRC_URI="http://lilypond.org/download/sources/v$(ver_cut 1-2)/${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
 fi
 
@@ -19,26 +19,19 @@ HOMEPAGE="http://lilypond.org/"
 
 LICENSE="GPL-3 FDL-1.3"
 SLOT="0"
-LANGS=" ca cs da de el eo es fi fr it ja nl ru sv tr uk vi zh_TW"
-IUSE="debug emacs guile2 profile vim-syntax"
+IUSE="debug emacs profile vim-syntax"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-PATCHES=(
-	"${FILESDIR}"/${PN}-2.19.80-fontforge-version.patch
-)
 
-RDEPEND=">=app-text/ghostscript-gpl-8.15
+RDEPEND="${PYTHON_DEPS}
+	>=app-text/ghostscript-gpl-8.15
+	>=dev-scheme/guile-2:12
 	>=dev-scheme/guile-1.8.2:12[deprecated,regex]
 	media-fonts/tex-gyre
 	media-libs/fontconfig
 	media-libs/freetype:2
 	>=x11-libs/pango-1.12.3
 	emacs? ( >=app-editors/emacs-23.1:* )
-	guile2? ( >=dev-scheme/guile-2:12 )
-	!guile2? (
-		>=dev-scheme/guile-1.8.2:12[deprecated,regex]
-		<dev-scheme/guile-2.0:12
-	)
-	${PYTHON_DEPS}"
+"
 DEPEND="${RDEPEND}
 	app-text/t1utils
 	dev-lang/perl
@@ -54,10 +47,15 @@ DEPEND="${RDEPEND}
 	>=sys-devel/bison-2.0
 	sys-devel/flex
 	sys-devel/gettext
-	sys-devel/make"
+	sys-devel/make
+"
 
 # Correct output data for tests isn't bundled with releases
 RESTRICT="test"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.19.80-fontforge-version.patch
+)
 
 DOCS=( DEDICATION HACKING README.txt ROADMAP )
 
@@ -83,10 +81,6 @@ src_prepare() {
 	# respect CFLAGS
 	sed -i 's/OPTIMIZE -g/OPTIMIZE/' aclocal.m4 || die
 
-	for lang in ${LANGS}; do
-		has ${lang} ${LINGUAS-${lang}} || rm po/${lang}.po || die
-	done
-
 	# respect AR
 	sed -i "s:^AR=ar:AR=$(tc-getAR):" stepmake/stepmake/library-vars.make || die
 
@@ -104,11 +98,11 @@ src_configure() {
 
 	local myeconfargs=(
 		--with-texgyre-dir=/usr/share/fonts/tex-gyre
+		--enable-guile2
 		--disable-documentation
 		--disable-optimising
 		--disable-pipe
 		$(use_enable debug debugging)
-		$(use_enable guile2)
 		$(use_enable profile profiling)
 	)
 

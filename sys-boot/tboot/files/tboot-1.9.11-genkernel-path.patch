@@ -1,10 +1,11 @@
-diff -ur tboot-1.9.5.orig/tboot/20_linux_tboot tboot-1.9.5/tboot/20_linux_tboot
---- tboot-1.9.5.orig/tboot/20_linux_tboot	2016-12-21 06:29:15.000000000 +0800
-+++ tboot-1.9.5/tboot/20_linux_tboot	2017-08-02 23:33:52.732748172 +0800
-@@ -171,6 +171,15 @@
+diff -r 9998b2fb83fd tboot/20_linux_tboot
+--- a/tboot/20_linux_tboot	Wed Apr 10 11:47:06 2019 +0200
++++ b/tboot/20_linux_tboot	Tue Jul 23 22:42:00 2019 -0500
+@@ -173,7 +173,16 @@
  EOF
  }
  
+-linux_list=`for i in /boot/vmlinu[xz]-* /vmlinu[xz]-* ; do
 +machine=`uname -m`
 +case "$machine" in
 +    i?86) GENKERNEL_ARCH="x86" ;;
@@ -14,10 +15,11 @@ diff -ur tboot-1.9.5.orig/tboot/20_linux_tboot tboot-1.9.5/tboot/20_linux_tboot
 +    *) GENKERNEL_ARCH="$machine" ;;
 +esac
 +
- linux_list=`for i in /boot/vmlinu[xz]-* /vmlinu[xz]-* ; do
++linux_list=`for i in /boot/vmlinu[xz]-* /vmlinu[xz]-* /boot/kernel-*; do
      	basename=$(basename $i)
  	version=$(echo $basename | sed -e "s,^[^0-9]*-,,g")
-@@ -217,7 +226,9 @@
+         if grub_file_is_not_garbage "$i" && grep -qx "CONFIG_INTEL_TXT=y" /boot/config-${version} 2> /dev/null ; then echo -n "$i " ; fi
+@@ -219,7 +228,9 @@
  		 "initrd.img-${alt_version}" "initrd-${alt_version}.img" \
  		 "initrd-${alt_version}" "initramfs-${alt_version}.img" \
  		 "initramfs-genkernel-${version}" \
@@ -28,10 +30,10 @@ diff -ur tboot-1.9.5.orig/tboot/20_linux_tboot tboot-1.9.5/tboot/20_linux_tboot
  	    if test -e "${dirname}/${i}" ; then
  		initrd="$i"
  		break
-diff -ur tboot-1.9.5.orig/tboot/20_linux_xen_tboot tboot-1.9.5/tboot/20_linux_xen_tboot
---- tboot-1.9.5.orig/tboot/20_linux_xen_tboot	2016-12-21 06:29:54.000000000 +0800
-+++ tboot-1.9.5/tboot/20_linux_xen_tboot	2017-08-02 23:34:01.347685520 +0800
-@@ -165,6 +165,15 @@
+diff -r 9998b2fb83fd tboot/20_linux_xen_tboot
+--- a/tboot/20_linux_xen_tboot	Wed Apr 10 11:47:06 2019 +0200
++++ b/tboot/20_linux_xen_tboot	Tue Jul 23 22:42:00 2019 -0500
+@@ -167,6 +167,15 @@
  EOF
  }
  
@@ -47,7 +49,7 @@ diff -ur tboot-1.9.5.orig/tboot/20_linux_xen_tboot tboot-1.9.5/tboot/20_linux_xe
  linux_list=`for i in /boot/vmlinu[xz]-* /vmlinu[xz]-* /boot/kernel-*; do
      if grub_file_is_not_garbage "$i"; then
      	basename=$(basename $i)
-@@ -232,7 +241,9 @@
+@@ -234,7 +243,9 @@
                  "initrd-${version}" "initrd.img-${alt_version}" \
                  "initrd-${alt_version}.img" "initrd-${alt_version}" \
                  "initramfs-genkernel-${version}" \

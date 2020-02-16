@@ -9,7 +9,7 @@ HOMEPAGE="https://kde.org/"
 LICENSE="metapackage"
 SLOT="5"
 KEYWORDS="amd64 arm64 x86"
-IUSE="+handbook +share +thumbnail +webengine webkit"
+IUSE="+handbook +share +thumbnail +webengine"
 
 RDEPEND="
 	>=kde-apps/dolphin-${PV}:${SLOT}
@@ -19,11 +19,10 @@ RDEPEND="
 	>=kde-apps/konsole-${PV}:${SLOT}
 	>=kde-apps/kwrite-${PV}:${SLOT}
 	handbook? ( >=kde-apps/khelpcenter-${PV}:${SLOT} )
-	webengine? ( www-client/falkon )
-	webkit? (
-		>=kde-apps/konqueror-${PV}:${SLOT}[webengine(+)?]
-		kde-misc/kwebkitpart:5
-	)
+	webengine? ( || (
+		www-client/falkon
+		>=kde-apps/konqueror-${PV}:${SLOT}
+	) )
 "
 # Optional runtime deps: kde-apps/dolphin
 RDEPEND="${RDEPEND}

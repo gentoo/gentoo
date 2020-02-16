@@ -1,32 +1,33 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit flag-o-matic mount-boot
 
 DESCRIPTION="Performs a measured and verified boot using Intel Trusted Execution Technology"
 HOMEPAGE="https://sourceforge.net/projects/tboot/"
-SRC_URI="https://dev.gentoo.org/~perfinion/distfiles/${P}.tar.gz"
+SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
-IUSE="custom-cflags selinux"
+IUSE="custom-cflags libressl selinux"
 
 # requires patching the kernel src
 RESTRICT="test"
 
 DEPEND="app-crypt/trousers
 app-crypt/tpm-tools
-dev-libs/openssl:0=[-bindist]"
+!libressl? ( dev-libs/openssl:0=[-bindist] )
+libressl? ( dev-libs/libressl:0= )"
 
 RDEPEND="${DEPEND}
 sys-boot/grub:2
 selinux? ( sec-policy/selinux-tboot )"
 
 DOCS=( README COPYING CHANGELOG )
-PATCHES=( "${FILESDIR}/${PN}-1.9.5-genkernel-path.patch" )
+PATCHES=( "${FILESDIR}/${PN}-1.9.11-genkernel-path.patch" )
 
 src_prepare() {
 	sed -i 's/ -Werror//g' Config.mk || die
@@ -51,7 +52,7 @@ src_install() {
 	emake DISTDIR="${D}" install
 
 	dodoc "${DOCS[@]}"
-	dodoc docs/*.txt lcptools/*.{txt,pdf}
+	dodoc docs/*.txt lcptools/*.pdf || die "docs failed"
 
 	cd "${D}"
 	mkdir -p usr/lib/tboot/ || die
@@ -59,7 +60,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	cp ${ROOT%/}/usr/lib/tboot/boot/* ${ROOT%/}/boot/
+	cp "${ROOT}/usr/lib/tboot/boot/*" "${ROOT}/boot/" || die
 
 	ewarn "Please remember to download the SINIT AC Module relevant"
 	ewarn "for your platform from:"
