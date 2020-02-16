@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Stephan Hartmann <stha09@googlemail.com> (2020-02-16)
+# Dev channel releases are only for people who
+# are developers or want more experimental features
+# and accept a more unstable release.
+>=www-client/chromium-82
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-16)
 # No more revdeps, abandoned upstream, depends on deprecated dev-qt/qtwebkit.
 # Masked for removal in 30 days.
