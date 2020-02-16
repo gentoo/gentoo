@@ -6,7 +6,6 @@
     <name>Gentoo Geosciences Project</name>
   </maintainer>
   <use>
-    <flag name="dcw">Install countries boundaries database</flag>
     <flag name="gdal">Enable <pkg>sci-libs/gdal</pkg> library support</flag>
     <flag name="gmtfull">Full resolution bathymetry database</flag>
     <flag name="gmthigh">Add high resolution bathymetry database</flag>

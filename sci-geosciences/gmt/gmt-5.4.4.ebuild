@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit bash-completion-r1 cmake-utils
+inherit bash-completion-r1 cmake
 
 DESCRIPTION="Powerful map generator"
 HOMEPAGE="https://gmt.soest.hawaii.edu/"
@@ -12,71 +12,73 @@ SRC_URI="mirror://gmt/${P}-src.tar.xz"
 LICENSE="GPL-3+ gmttria? ( Artistic )"
 SLOT="5"
 KEYWORDS="~amd64 ~x86"
-IUSE="+dcw doc examples +fftw +gdal gmttria +gshhg htmldoc lapack openmp pcre pcre2 threads tutorial"
-
-RDEPEND="
-	!sci-biology/probcons
-	app-text/ghostscript-gpl
-	dcw? ( sci-geosciences/dcw-gmt )
-	fftw? ( sci-libs/fftw:3.0/3 )
-	gdal? ( sci-libs/gdal )
-	gshhg? ( sci-geosciences/gshhg-gmt )
-	>=sci-libs/netcdf-4.1[hdf5]
-	lapack? ( virtual/lapack )
-	pcre? ( dev-libs/libpcre )
-	pcre2? ( dev-libs/libpcre2 )
-	net-misc/curl
-	sys-libs/zlib"
-
-DEPEND="${RDEPEND}"
+IUSE="doc examples +fftw +gdal gmttria htmldoc lapack openmp pcre pcre2 threads tutorial"
 
 REQUIRED_USE="?? ( pcre pcre2 )"
 
+DEPEND="
+	app-text/ghostscript-gpl
+	net-misc/curl
+	>=sci-libs/netcdf-4.1:=[hdf5]
+	sys-libs/zlib
+	fftw? ( sci-libs/fftw:3.0= )
+	gdal? ( sci-libs/gdal:= )
+	lapack? ( virtual/lapack )
+	pcre? ( dev-libs/libpcre )
+	pcre2? ( dev-libs/libpcre2 )
+"
+RDEPEND="${DEPEND}
+	!sci-biology/probcons
+	sci-geosciences/dcw-gmt
+	sci-geosciences/gshhg-gmt
+"
+
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	# Rename man pages to avoid a name conflict with gmt4
 	pushd man_release || die
 	local m c suffix newc
-	for m in *.gz; do
-		c=${m%%.*}
-		suffix=${m#*.}
-		newc=gmt_${c}
-		# This man pages does'nt conflict
-		case "${c}" in
-		"gmt" | "gmt.conf" | "postscriptlight")
-			continue ;;
-		"gmt_shell_functions")
-			newc=gmt5_shell_functions ;;
-		"gmtcolors")
-			newc=gmt5colors ;;
-		esac
-		mv "${c}.${suffix}" "${newc}.${suffix}" || die
-	done
+		for m in *.gz; do
+			c=${m%%.*}
+			suffix=${m#*.}
+			newc=gmt_${c}
+			# This man pages does'nt conflict
+			case ${c} in
+				gmt|gmt.conf|postscriptlight)
+					continue ;;
+				gmt_shell_functions)
+					newc=gmt5_shell_functions ;;
+				gmtcolors)
+					newc=gmt5colors ;;
+			esac
+			mv "${c}.${suffix}" "${newc}.${suffix}" || die
+		done
 	popd || die
 }
 
 src_configure() {
 	local mycmakeargs=(
-		-DLICENSE_RESTRICTED="$(usex gmttria no yes)"
-		-DGMT_OPENMP="$(usex openmp)"
-		-DGMT_USE_THREADS="$(usex threads)"
-		-DGMT_INSTALL_TRADITIONAL_FOLDERNAMES=OFF # Install bash completions properly
-		-DGMT_INSTALL_MODULE_LINKS=OFF # Don't install symlinks on gmt binary, they are conflicted with gmt4
-		-DBASH_COMPLETION_DIR="$(get_bashcompdir)"
 		-DGMT_DATADIR="share/${P}"
 		-DGMT_DOCDIR="share/doc/${PF}"
 		-DGMT_MANDIR="share/man"
+		-DLICENSE_RESTRICTED=$(usex gmttria no yes)
+		-DGMT_OPENMP=$(usex openmp)
+		-DGMT_USE_THREADS=$(usex threads)
+		-DGMT_INSTALL_TRADITIONAL_FOLDERNAMES=OFF # Install bash completions properly
+		-DGMT_INSTALL_MODULE_LINKS=OFF # Don't install symlinks on gmt binary, they are conflicted with gmt4
+		-DBASH_COMPLETION_DIR="$(get_bashcompdir)"
+		$(cmake_use_find_package gdal GDAL)
+		$(cmake_use_find_package fftw FFTW3)
+		$(cmake_use_find_package lapack LAPACK)
+		$(cmake_use_find_package pcre PCRE)
 	)
-	use fftw || mycmakeargs+=( -DGMT_EXCLUDE_FFTW3=yes )
-	use gdal || mycmakeargs+=( -DGMT_EXCLUDE_GDAL=yes )
-	use lapack || mycmakeargs+=( -DGMT_EXCLUDE_LAPACK=yes )
-	use pcre || mycmakeargs+=( -DGMT_EXCLUDE_PCRE=yes )
-	use pcre2 || mycmakeargs+=( -DGMT_EXCLUDE_PCRE2=yes )
-	cmake-utils_src_configure
+	use pcre || mycmakeargs+=( $(cmake_use_find_package pcre2 PCRE2) )
+
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	# Remove various documentation
 	if ! use doc; then
 		rm -rf "${ED}/usr/share/doc/${PF}/pdf" || die
