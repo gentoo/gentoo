@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic toolchain-funcs udev
+inherit eutils flag-o-matic toolchain-funcs udev
 
 DESCRIPTION="Contains the lowlevel lcd drivers for GraphLCD"
 HOMEPAGE="https://projects.vdr-developer.org/projects/graphlcd-base"
