@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm preinst
+DEPEND=x11-themes/numix-icon-theme
+DESCRIPTION=An icon theme for Linux from the Numix project
+EAPI=7
+HOMEPAGE=https://github.com/numixproject
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-themes/numix-icon-theme
+SLOT=0
+SRC_URI=https://github.com/numixproject/numix-icon-theme-circle/archive/19.12.27.tar.gz -> numix-icon-theme-circle-19.12.27.tar.gz
+_eclasses_=gnome2-utils	532371cfcba45b2ab0d2950547c97d95	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=7ef4f9e5d6cb3e6800718b2c3b2c98ab
