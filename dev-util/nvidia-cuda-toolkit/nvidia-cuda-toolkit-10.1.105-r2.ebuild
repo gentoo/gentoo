@@ -16,6 +16,7 @@ LICENSE="NVIDIA-CUDA"
 SLOT="0/${PV}"
 KEYWORDS="-* ~amd64 ~amd64-linux"
 IUSE="debugger doc eclipse profiler"
+RESTRICT="bindist mirror"
 
 DEPEND=""
 RDEPEND="${DEPEND}
