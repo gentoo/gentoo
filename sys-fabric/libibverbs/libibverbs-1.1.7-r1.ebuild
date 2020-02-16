@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ OFED_RC="1"
 OFED_RC_VER="1"
 OFED_SUFFIX="1.gcbf2a35"
 
-inherit openib multilib-minimal
+inherit eutils openib multilib-minimal
 
 DESCRIPTION="A library to use InfiniBand 'verbs' for direct access to IB hardware"
 

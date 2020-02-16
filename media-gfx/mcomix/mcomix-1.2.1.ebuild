@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"
 
 PLOCALES="ca cs de el es fa fr gl he hr hu id it ja ko nl pl pt_BR ru sv uk zh_CN zh_TW"
 
-inherit distutils-r1 l10n xdg-utils
+inherit distutils-r1 eutils l10n xdg-utils
 
 DESCRIPTION="A fork of comix, a GTK image viewer for comic book archives"
 HOMEPAGE="https://sourceforge.net/p/mcomix/wiki/Home/"

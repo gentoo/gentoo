@@ -17,15 +17,15 @@ clap-2.32.0
 crossbeam-deque-0.2.0
 crossbeam-epoch-0.3.1
 crossbeam-utils-0.2.2
-darling-0.8.6
-darling_core-0.8.6
-darling_macro-0.8.6
-derive_builder-0.7.1
-derive_builder_core-0.4.1
+darling-0.10.2
+darling_core-0.10.2
+darling_macro-0.10.2
+derive_builder-0.9.0
+derive_builder_core-0.9.0
 either-1.5.1
 env_logger-0.6.1
 fnv-1.0.6
-fuzzy-matcher-0.2.1
+fuzzy-matcher-0.3.1
 humantime-1.2.0
 ident_case-1.0.1
 lazy_static-1.3.0
@@ -38,9 +38,9 @@ nodrop-0.1.13
 num-integer-0.1.39
 num-traits-0.2.6
 num_cpus-1.10.0
-proc-macro2-0.4.27
+proc-macro2-1.0.6
 quick-error-1.2.2
-quote-0.6.11
+quote-1.0.2
 rayon-1.0.3
 rayon-core-1.4.1
 redox_syscall-0.1.51
@@ -49,20 +49,22 @@ regex-1.1.6
 regex-syntax-0.6.6
 scopeguard-0.3.3
 shlex-0.1.1
-skim-0.6.9
+skim-0.7.0
 strsim-0.7.0
-syn-0.15.29
+strsim-0.9.3
+syn-1.0.11
 term-0.5.1
 termcolor-1.0.4
 termion-1.5.1
 textwrap-0.10.0
 thread_local-0.3.6
+thread_local-1.0.0
 time-0.1.42
 timer-0.2.0
 tuikit-0.2.9
 ucd-util-0.1.3
 unicode-width-0.1.5
-unicode-xid-0.1.0
+unicode-xid-0.2.0
 utf8-ranges-1.0.2
 utf8parse-0.1.1
 vec_map-0.8.1
@@ -83,7 +85,7 @@ SRC_URI="$(cargo_crate_uris ${CRATES})"
 
 LICENSE="Apache-2.0 MIT MPL-2.0 Unlicense"
 SLOT="0"
-KEYWORDS="amd64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64 ~x86"
 IUSE="tmux vim"
 
 RDEPEND="

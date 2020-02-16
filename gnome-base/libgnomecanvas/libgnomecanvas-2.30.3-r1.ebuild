@@ -6,7 +6,7 @@ GCONF_DEBUG="no"
 GNOME_TARBALL_SUFFIX="bz2"
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2 multilib multilib-minimal virtualx
+inherit eutils gnome2 multilib multilib-minimal virtualx
 
 DESCRIPTION="The Gnome 2 Canvas library"
 HOMEPAGE="https://library.gnome.org/devel/libgnomecanvas/stable/"
