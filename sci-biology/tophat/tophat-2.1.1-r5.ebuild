@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic python-single-r1 toolchain-funcs
+inherit autotools eutils flag-o-matic python-single-r1 toolchain-funcs
 
 DESCRIPTION="Python-based splice junction mapper for RNA-Seq reads using bowtie2"
 HOMEPAGE="https://ccb.jhu.edu/software/tophat/"
