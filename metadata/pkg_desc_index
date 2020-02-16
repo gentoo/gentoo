@@ -5264,7 +5264,7 @@ dev-libs/voikko-fi 2.3: Finnish dictionary for libvoikko based spell checkers (v
 dev-libs/volume_key 0.3.11 0.3.12: Library for manipulating and storing storage volume encryption keys
 dev-libs/wayland 1.17.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.18 9999: Wayland protocol files
-dev-libs/weston 3.0.0-r1 7.0.0-r1 9999: Wayland reference compositor
+dev-libs/weston 3.0.0-r1 8.0.0 9999: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
 dev-libs/xapian 1.2.24 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13 1.4.14: Xapian Probabilistic Information Retrieval library
 dev-libs/xapian-bindings 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13 1.4.14: SWIG and JNI bindings for Xapian
