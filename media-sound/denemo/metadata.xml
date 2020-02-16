@@ -20,9 +20,6 @@
 	<flag name="aubio">
 		Enable <pkg>media-libs/aubio</pkg> support
 	</flag>
-	<flag name="doc">
-		Use <pkg>dev-util/gtk-doc</pkg> to build documentation in html format
-	</flag>
 	<flag name="evince">
 		Use <pkg>app-text/evince</pkg> document viewer
 	</flag>
