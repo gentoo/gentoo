@@ -119,7 +119,6 @@ src_configure() {
 		$(meson_use jpeg image-jpeg)
 		$(meson_use webp image-webp)
 		-Dtools=debug,info,terminal
-		-Dsimple-dmabuf-drm=auto
 		$(meson_use examples demo-clients)
 		-Dsimple-clients=$(usex examples damage,dmabuf-v4l,im,shm,touch$(usex gles2 ,dmabuf-egl,egl "") "")
 		$(meson_use resize-optimization resize-pool)
