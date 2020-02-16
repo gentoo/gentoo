@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2-utils python-single-r1
+inherit eutils gnome2-utils python-single-r1
 
 MY_PN="PlayOnLinux"
 
