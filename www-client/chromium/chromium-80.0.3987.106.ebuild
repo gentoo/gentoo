@@ -50,7 +50,6 @@ COMMON_DEPEND="
 			media-video/ffmpeg[-samba]
 			>=net-fs/samba-4.5.10-r1[-debug(-)]
 		)
-		!=net-fs/samba-4.5.12-r0
 		>=media-libs/opus-1.3.1:=
 	)
 	sys-apps/dbus:=
@@ -79,7 +78,6 @@ COMMON_DEPEND="
 "
 # For nvidia-drivers blocker, see bug #413637 .
 RDEPEND="${COMMON_DEPEND}
-	!<www-plugins/chrome-binary-plugins-57
 	x11-misc/xdg-utils
 	virtual/opengl
 	virtual/ttf-fonts
