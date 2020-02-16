@@ -4947,6 +4947,7 @@ dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.0 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 1.4 2.1 2.2: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
+dev-libs/libcbor 0.5.0: CBOR protocol implementation for C and others
 dev-libs/libcdio 0.93 0.94-r1 1.1.0 2.0.0 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.2-r2 4.0.4-r1: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
@@ -4986,6 +4987,7 @@ dev-libs/libf2c 20130927-r1: Library that converts FORTRAN to C source
 dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for liblognorm processing
 dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0 3.3_rc1 3.3_rc2 3.3 3.3-r1: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
+dev-libs/libfido2 1.3.0: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.2.0-r1 0.3.0-r1: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 5.3.0 6.1.2 9999: Small, safe and fast formatting library
@@ -15122,7 +15124,7 @@ net-misc/omniORB 4.1.4-r2 4.2.2: A robust, high-performance CORBA 2 ORB
 net-misc/omnisync 1.0_p20200130: A driver for NTPd for people who are firewall-challenged
 net-misc/openntpd 6.0_p1 6.2_p3 6.2_p3-r1: Lightweight NTP server ported from OpenBSD
 net-misc/openr2 1.3.0: An open implementation of the MFC/R2 telephony signaling protocol
-net-misc/openssh 7.5_p1-r4 7.7_p1-r9 7.9_p1-r4 8.0_p1-r4 8.1_p1-r2 8.2_p1: Port of OpenBSD's free SSH release
+net-misc/openssh 7.5_p1-r4 7.7_p1-r9 7.9_p1-r4 8.0_p1-r4 8.1_p1-r2 8.2_p1-r1: Port of OpenBSD's free SSH release
 net-misc/openvswitch 2.10.2 2.11.1-r1: Production quality, multilayer virtual switch
 net-misc/owncloud-client 2.6.0.13018 2.6.1.13407-r1: Synchronize files from ownCloud Server with your computer
 net-misc/packETH 1.7.3 1.8.1 1.9 2.1: Packet generator tool for ethernet
