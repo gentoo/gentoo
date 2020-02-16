@@ -8506,7 +8506,7 @@ dev-python/pyqtgraph 0.10.0-r2: A pure-python graphics and GUI library built on 
 dev-python/pyquery 1.2.13 1.2.13-r1 1.4.0 1.4.1: A jQuery-like library for python
 dev-python/pyrex 0.9.9-r1: A language for writing Python extension modules
 dev-python/pyrfc3339 1.0 1.1: Generates and parses RFC 3339 timestamps
-dev-python/pyro 4.77 4.78: Distributed object middleware for Python (RPC)
+dev-python/pyro 4.77 4.78 4.79: Distributed object middleware for Python (RPC)
 dev-python/pyroute2 0.4.12 0.4.21 0.5.5 0.5.5-r1: A pure Python netlink and Linux network configuration library.
 dev-python/pyrqlite 2.0 9999: Python client for rqlite
 dev-python/pyrsistent 0.13.0 0.14.2 0.14.4 0.15.6: Persistent/Functional/Immutable data structures
