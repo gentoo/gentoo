@@ -16517,6 +16517,7 @@ sec-policy/selinux-chronyd 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-
 sec-policy/selinux-clamav 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 2.20190609-r1 9999: SELinux policy for clamav
 sec-policy/selinux-clockspeed 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 2.20190609-r1 9999: SELinux policy for clockspeed
 sec-policy/selinux-collectd 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 2.20190609-r1 9999: SELinux policy for collectd
+sec-policy/selinux-colord 2.20190609-r1 9999: SELinux policy for colord
 sec-policy/selinux-consolekit 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 2.20190609-r1 9999: SELinux policy for consolekit
 sec-policy/selinux-corosync 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 2.20190609-r1 9999: SELinux policy for corosync
 sec-policy/selinux-couchdb 2.20180114-r1 2.20180114-r2 2.20180114-r3 2.20180701-r1 2.20180701-r2 2.20190201-r1 2.20190609-r1 9999: SELinux policy for couchdb
