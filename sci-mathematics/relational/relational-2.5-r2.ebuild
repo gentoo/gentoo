@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit python-single-r1
 
@@ -16,17 +16,18 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="
-	${PYTHON_DEPS}
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[gui,webkit,widgets,${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[gui,widgets,${PYTHON_MULTI_USEDEP}]
 	')
 "
 RDEPEND="${DEPEND}"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+S="${WORKDIR}/${PN}"
 
-S=${WORKDIR}/${PN}
+PATCHES=( "${FILESDIR}/${P}-no-qtwebkit.patch" )
 
 src_prepare() {
 	default
