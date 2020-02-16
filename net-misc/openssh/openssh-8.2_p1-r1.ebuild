@@ -41,7 +41,7 @@ REQUIRED_USE="
 	ldns? ( ssl )
 	pie? ( !static )
 	static? ( !kerberos !pam )
-	X509? ( !sctp ssl )
+	X509? ( !sctp !security-key ssl )
 	test? ( ssl )
 "
 
@@ -414,18 +414,27 @@ src_install() {
 	systemd_newunit "${FILESDIR}"/sshd_at.service 'sshd@.service'
 }
 
+pkg_preinst() {
+	has_version "<${CATEGORY}/${PN}-5.8_p1" && show_ecdsa_warning=1
+	has_version "<${CATEGORY}/${PN}-7.0_p1" && show_tcpd_warning=1
+	has_version "<${CATEGORY}/${PN}-7.1_p1" && show_dss_warning=1
+	has_version "<${CATEGORY}/${PN}-7.6_p1" && show_ssh1_warning=1
+	has_version "<${CATEGORY}/${PN}-7.7_p1" && show_ldap_warning=1
+	has_version "<${CATEGORY}/${PN}-8.2_p1" && show_restart_warning=1
+}
+
 pkg_postinst() {
-	if has_version "<${CATEGORY}/${PN}-5.8_p1" ; then
+	if [[ -n ${show_ecdsa_warning} ]]; then
 		elog "Starting with openssh-5.8p1, the server will default to a newer key"
 		elog "algorithm (ECDSA).  You are encouraged to manually update your stored"
 		elog "keys list as servers update theirs.  See ssh-keyscan(1) for more info."
 	fi
-	if has_version "<${CATEGORY}/${PN}-7.0_p1" ; then
+	if [[ -n ${show_tcpd_warning} ]]; then
 		elog "Starting with openssh-6.7, support for USE=tcpd has been dropped by upstream."
 		elog "Make sure to update any configs that you might have.  Note that xinetd might"
 		elog "be an alternative for you as it supports USE=tcpd."
 	fi
-	if has_version "<${CATEGORY}/${PN}-7.1_p1" ; then #557388 #555518
+	if [[ -n ${show_dss_warning} ]]; then #557388 #555518
 		elog "Starting with openssh-7.0, support for ssh-dss keys were disabled due to their"
 		elog "weak sizes.  If you rely on these key types, you can re-enable the key types by"
 		elog "adding to your sshd_config or ~/.ssh/config files:"
@@ -436,11 +445,11 @@ pkg_postinst() {
 		elog "to 'prohibit-password'.  That means password auth for root users no longer works"
 		elog "out of the box.  If you need this, please update your sshd_config explicitly."
 	fi
-	if has_version "<${CATEGORY}/${PN}-7.6_p1" ; then
+	if [[ -n ${show_ssh1_warning} ]] ; then
 		elog "Starting with openssh-7.6p1, openssh upstream has removed ssh1 support entirely."
 		elog "Furthermore, rsa keys with less than 1024 bits will be refused."
 	fi
-	if has_version "<${CATEGORY}/${PN}-7.7_p1" ; then
+	if [[ -n ${show_ldap_warning} ]]; then
 		elog "Starting with openssh-7.7p1, we no longer patch openssh to provide LDAP functionality."
 		elog "Install sys-auth/ssh-ldap-pubkey and use OpenSSH's \"AuthorizedKeysCommand\" option"
 		elog "if you need to authenticate against LDAP."
@@ -464,7 +473,7 @@ pkg_postinst() {
 		elog ""
 	fi
 
-	if has_version "<${CATEGORY}/${PN}-8.2_p1"; then
+	if [[ -n ${show_restart_warning} ]]; then
 		ewarn "After upgrading to openssh-8.2p1 please restart sshd, otherwise you"
 		ewarn "will not be able to establish new sessions. Restarting sshd over a ssh"
 		ewarn "connection is generally safe."
