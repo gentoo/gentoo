@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-03-11)
+# Masked for testing due to removal of libnm-glib (bug #665338)
+>=net-misc/networkmanager-1.20
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-11)
 # Unmaintained Trac plugins.  Last bumped in 2013.  Blockers
 # for Python 2 removal.
