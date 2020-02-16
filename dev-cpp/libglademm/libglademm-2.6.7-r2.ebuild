@@ -5,7 +5,7 @@ EAPI="5"
 GCONF_DEBUG="no"
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit flag-o-matic gnome2 multilib-minimal
+inherit eutils flag-o-matic gnome2 multilib-minimal
 
 DESCRIPTION="C++ bindings for libglade"
 HOMEPAGE="https://www.gtkmm.org"
