@@ -1,0 +1,38 @@
+diff --git a/man/CMakeLists.txt b/man/CMakeLists.txt
+index 71bc502..ac424d2 100644
+--- a/man/CMakeLists.txt
++++ b/man/CMakeLists.txt
+@@ -2,11 +2,12 @@
+ # Use of this source code is governed by a BSD-style
+ # license that can be found in the LICENSE file.
+ 
++include(GNUInstallDirs)
++
+ find_program(MANDOC_PATH mandoc)
+ message(STATUS "MANDOC_PATH: ${MANDOC_PATH}")
+ 
+ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+-	find_program(GZIP_PATH gzip)
+ 	message(STATUS "GZIP_PATH: ${GZIP_PATH}")
+ endif()
+ 
+@@ -301,16 +302,16 @@ elseif(NOT MSVC)
+ 	foreach(f ${MAN_SOURCES})
+ 		if (${f} MATCHES ".1$")
+ 			install(FILES ${CMAKE_BINARY_DIR}/man/${f}
+-				DESTINATION "${CMAKE_INSTALL_PREFIX}/man/man1")
++				DESTINATION "${CMAKE_INSTALL_MANDIR}/man1")
+ 		elseif(${f} MATCHES ".3$")
+ 			install(FILES ${CMAKE_BINARY_DIR}/man/${f}
+-				DESTINATION "${CMAKE_INSTALL_PREFIX}/man/man3")
++				DESTINATION "${CMAKE_INSTALL_MANDIR}/man3")
+ 		endif()
+ 	endforeach()
+ 	foreach(i RANGE 0 ${MAN_ALIAS_MAX} 2)
+ 		math(EXPR j "${i} + 1")
+ 		list(GET MAN_ALIAS ${j} DST)
+ 		install(FILES ${CMAKE_BINARY_DIR}/man/${DST}.3
+-			DESTINATION ${CMAKE_INSTALL_PREFIX}/man/man3)
++			DESTINATION ${CMAKE_INSTALL_MANDIR}/man3)
+ 	endforeach()
+ endif()
