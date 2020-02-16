@@ -24,12 +24,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libxml2:2
-	>=dev-scheme/guile-2:12=[guile2(+)]
+	>=dev-scheme/guile-2:12=
 	gnome-base/librsvg:2
 	media-libs/fontconfig:1.0
 	>=media-libs/libsmf-1.3
 	>=media-libs/libsndfile-1.0.28-r1
-	>=media-sound/lilypond-2.19.54[guile2]
+	>=media-sound/lilypond-2.19.54[guile2(+)]
 	alsa? ( >=media-libs/alsa-lib-1.1.2 )
 	aubio? ( >=media-libs/aubio-0.4.1-r1:= )
 	evince? ( >=app-text/evince-3.22.1-r1:= )
