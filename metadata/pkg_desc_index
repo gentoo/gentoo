@@ -7390,7 +7390,7 @@ dev-python/aiohttp 2.3.10 3.5.4 3.6.0 3.6.1: http client/server for asyncio
 dev-python/aiohttp-cors 0.6.0 0.7.0: Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server
 dev-python/aiohttp-jinja2 0.15.0: jinja2 template renderer for aiohttp.web
 dev-python/aiohttp-socks 0.2.2: SOCKS proxy connector for aiohttp
-dev-python/aiorpcX 0.10.2 0.17.0 0.18.3: Generic async RPC implementation, including JSON-RPC
+dev-python/aiorpcX 0.10.2 0.17.0 0.18.3 0.18.4: Generic async RPC implementation, including JSON-RPC
 dev-python/aiosmtpd 1.0 1.1 1.2: asyncio based SMTP server
 dev-python/aiotest 0.3: Test suite for an implementation of asyncio (PEP 3156)
 dev-python/alabaster 0.7.9 0.7.10 0.7.11 0.7.12: A configurable sidebar-enabled Sphinx theme
