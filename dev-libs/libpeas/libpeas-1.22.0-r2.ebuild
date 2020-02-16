@@ -3,6 +3,7 @@
 
 EAPI=6
 GNOME2_LA_PUNT="yes"
+GNOME2_EAUTORECONF="yes"
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 inherit autotools eutils gnome2 multilib python-single-r1 virtualx
@@ -44,15 +45,14 @@ DEPEND="${RDEPEND}
 "
 # eautoreconf needs gobject-introspection-common, gnome-common
 
+PATCHES=(
+	# Gentoo uses unversioned lua - lua.pc instad of lua5.1.pc, /usr/bin/lua instead of /usr/bin/lua5.1
+	"${FILESDIR}"/${PN}-1.14.0-lua.pc.patch
+	"${FILESDIR}"/${PV}-py38-support.patch # Fix py3.8 support, bug 702810
+)
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
-}
-
-src_prepare() {
-	# Gentoo uses unversioned lua - lua.pc instad of lua5.1.pc, /usr/bin/lua instead of /usr/bin/lua5.1
-	eapply "${FILESDIR}"/${PN}-1.14.0-lua.pc.patch
-	eautoreconf
-	gnome2_src_prepare
 }
 
 src_configure() {
