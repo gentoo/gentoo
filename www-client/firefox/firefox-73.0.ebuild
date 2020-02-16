@@ -258,6 +258,7 @@ src_prepare() {
 	eapply "${WORKDIR}/firefox"
 
 	eapply "${FILESDIR}/${PN}-73.0_fix_lto_pgo_builds.patch"
+	eapply "${FILESDIR}/${PN}-73.0_fix_llvm9.patch"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
