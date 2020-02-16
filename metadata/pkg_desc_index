@@ -8616,7 +8616,7 @@ dev-python/python-ldap 2.4.19-r1 2.4.32 3.1.0-r1 3.2.0 9999: Various LDAP-relate
 dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levenshtein distance, and edit operations
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
 dev-python/python-linux-procfs 0.6.1: Python classes to extract information from the Linux kernel /proc files
-dev-python/python-ly 0.9.5: Tool and library for manipulating LilyPond files
+dev-python/python-ly 0.9.5 0.9.6: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.12-r1: Python interface to lzo
 dev-python/python-magic 0.4.15 0.4.15-r1: Access the libmagic file type identification library
 dev-python/python-magnumclient 2.12.0: A client for the OpenStack Magnum API
@@ -8641,7 +8641,7 @@ dev-python/python-openstackclient 3.18.1: A client for the OpenStack APIs
 dev-python/python-otrs 0.3.0: A programmatic interface to OTRS SOAP API
 dev-python/python-podman 0.12.1.2 1.6.0: A library to interact with a Podman server
 dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
-dev-python/python-poppler-qt5 0.24.2_p20170214: A python binding for libpoppler-qt5
+dev-python/python-poppler-qt5 0.24.2_p20170214 0.75.0: Python binding for libpoppler-qt5
 dev-python/python-prctl 1.7: Control process attributes through prctl
 dev-python/python-recaptcha 2.0.1-r1: A plugin for reCAPTCHA and reCAPTCHA Mailhide
 dev-python/python-redmine 2.0.2: Python interface to the Redmine REST API
@@ -10644,7 +10644,7 @@ dev-util/ninja 1.8.2 1.8.2-r1 1.8.2-r2 1.9.0 9999: A small build system similar 
 dev-util/ninka 2.0_pre1_p20170402: A license identification tool for source code
 dev-util/numdiff 5.9.0: File comparision, ignoring small numeric differences and formats
 dev-util/nvidia-cuda-sdk 6.5.19 7.5.18 8.0.44-r1 8.0.61 9.0.176 9.1.85 9.2.88 10.1.243: NVIDIA CUDA Software Development Kit
-dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.1.85 9.2.88 10.0.130 10.1.105-r1 10.1.168 10.1.243-r1 10.2.89: NVIDIA CUDA Toolkit (compiler and friends)
+dev-util/nvidia-cuda-toolkit 6.5.14 6.5.19-r1 7.5.18-r2 8.0.44 8.0.61 9.0.176 9.1.85 9.2.88 10.0.130 10.1.105-r2 10.1.168-r1 10.1.243-r2 10.2.89-r1: NVIDIA CUDA Toolkit (compiler and friends)
 dev-util/objconv 2.51: object code file converted (COFF, ELF, OMF, MACHO)
 dev-util/omake 0.9.8.6.0_rc1 0.10.2 0.10.3: Make replacement
 dev-util/open-vcdiff 0.8.4-r1: An encoder/decoder for the VCDIFF (RFC3284) format
@@ -11901,7 +11901,7 @@ kde-apps/kdeaccessibility-meta 19.08.3 19.12.2: kdeaccessibility - merge this to
 kde-apps/kdeadmin-meta 19.08.3 19.12.2: KDE administration tools - merge this to pull in all kdeadmin-derived packages
 kde-apps/kdebase-meta 19.08.3 19.12.2: Transitional package to pull in plasma-meta plus basic applications
 kde-apps/kdebugsettings 19.08.3 19.12.2: Application to enable/disable qCDebug
-kde-apps/kdecore-meta 19.08.3 19.12.2: kdecore - merge this to pull in the most basic applications
+kde-apps/kdecore-meta 19.08.3-r1 19.12.2: kdecore - merge this to pull in the most basic applications
 kde-apps/kdeedu-data 19.08.3-r1 19.12.2-r1: Shared icons, artwork and data files for educational applications
 kde-apps/kdeedu-meta 19.08.3 19.12.2: KDE educational apps - merge this to pull in all kdeedu-derived packages
 kde-apps/kdegames-meta 19.08.3 19.12.2: kdegames - merge this to pull in all kdegames-derived packages
@@ -11969,7 +11969,7 @@ kde-apps/kolf 19.08.3 19.12.2: Minigolf game by KDE
 kde-apps/kollision 19.08.3 19.12.2: Simple ball dodging game
 kde-apps/kolourpaint 19.08.3 19.12.2: Paint Program by KDE
 kde-apps/kompare 19.08.3 19.12.2: A program to view the differences between files
-kde-apps/konqueror 19.08.3 19.12.2: Web browser and file manager based on KDE Frameworks
+kde-apps/konqueror 19.08.3-r1 19.12.2: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 19.08.3 19.12.2: Galactic Strategy KDE Game
 kde-apps/konsole 19.08.3 19.12.2 19.12.2-r1: KDE's terminal emulator
 kde-apps/konsolekalendar 19.08.3 19.12.2: Command line interface to KDE calendars
@@ -12270,7 +12270,7 @@ mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
-mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2-r1 1.12.2-r2 1.13.1: A small but very powerful text-based mail client
+mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2-r1 1.12.2-r2 1.13.4: A small but very powerful text-based mail client
 mail-client/neomutt 20180512 20180622 20180716 20180716-r1 20191102 20191111 20191129 20191207 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1 1.4.2: A browser-based multilingual IMAP client with an application-like user interface
@@ -13623,7 +13623,7 @@ media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 dri
 media-sound/fmit 1.0.15-r2: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
 media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
-media-sound/frescobaldi 3.0.0: A LilyPond sheet music text editor
+media-sound/frescobaldi 3.0.0 3.1.1: A LilyPond sheet music text editor
 media-sound/galan 0.3.0_beta7: gAlan - Graphical Audio Language
 media-sound/gbsplay 0.0.91-r2: Nintendo Gameboy sound player for GBS format
 media-sound/gigedit 1.1.1-r1 9999: An instrument editor for gig files
@@ -15153,7 +15153,7 @@ net-misc/quagga 1.2.4: A free routing daemon replacing Zebra supporting RIP, OSP
 net-misc/r8168 8.045.08 8.047.05 8.048.00: r8168 driver for Realtek 8111/8168 PCI-E NICs
 net-misc/rabbitmq-server 3.6.9 3.6.14 3.7.13 3.7.17 3.7.21 3.8.0 3.8.1: RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 net-misc/radvd 2.14 2.17-r1 2.17-r2 2.18: Linux IPv6 Router Advertisement Daemon
-net-misc/rclone 1.45 1.47.0 1.49.1 1.50.0 9999: A program to sync files to and from various cloud storage providers
+net-misc/rclone 1.45 1.47.0 1.49.1 1.50.0 1.50.2 1.51.0 9999: A program to sync files to and from various cloud storage providers
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
@@ -17081,7 +17081,7 @@ sys-auth/pam_u2f 1.0.4-r1 1.0.6 1.0.7 1.0.8: Library for authenticating against 
 sys-auth/pam_yubico 2.26: Library for authenticating against PAM with a Yubikey
 sys-auth/pambase 20190402 20191128: PAM base configuration files
 sys-auth/passwdqc 1.3.0: Password strength checking library (and PAM module)
-sys-auth/polkit 0.115-r3 0.115-r4 0.116-r1: Policy framework for controlling privileges for system-wide services
+sys-auth/polkit 0.115-r4 0.116-r1: Policy framework for controlling privileges for system-wide services
 sys-auth/polkit-pkla-compat 0.1: Rules for polkit to add compatibility with pklocalauthority
 sys-auth/polkit-qt 0.113.0: Qt wrapper around polkit-1 client libraries
 sys-auth/realtime-base 0.1: Sets up realtime scheduling
@@ -17157,7 +17157,7 @@ sys-block/tw_cli 10.2.2.1 10.2.2.1-r1: 3ware SATA/PATA/SAS RAID controller Comma
 sys-block/vblade 20 23 24: vblade exports a block device using AoE
 sys-block/viaideinfo 0.5-r1: Query VIA IDE controllers for various information
 sys-block/whdd 2.2 3.0 9999: Diagnostic and recovery tool for block devices
-sys-block/zram-init 8.1 9999: Scripts to support compressed swap devices or ramdisks with zram
+sys-block/zram-init 8.1 8.1-r1 9.1 9999: Scripts to support compressed swap devices or ramdisks with zram
 sys-boot/aboot 1.0_pre20040408-r3: Alpha Linux boot loader for SRM
 sys-boot/arcload 0.50-r1 0.50-r3: ARCLoad - SGI Multi-bootloader. Able to bootload many different SGI Systems
 sys-boot/bootcreator 1.1 1.2: Simple generator for Forth based BootMenu scripts for Pegasos machines
@@ -17190,7 +17190,7 @@ sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20120819-r1 1.4.14_p20170829: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
 sys-boot/syslinux 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
 sys-boot/systemd-boot 241 243: UEFI boot manager from systemd (formerly gummiboot)
-sys-boot/tboot 1.9.6_p20171118: Performs a measured and verified boot using Intel Trusted Execution Technology
+sys-boot/tboot 1.9.11: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015-r1 2018 2018-r1: Tianocore UEFI Development kit
 sys-boot/unetbootin 661 675 677-r1: UNetbootin installs Linux/BSD distributions to a partition or USB drive
 sys-boot/vboot-utils 72_p20181229-r1 80_p20200108: Chrome OS verified boot tools

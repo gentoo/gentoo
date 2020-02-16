@@ -9,4 +9,4 @@ LICENSE=GPL-3+
 RDEPEND=dev-libs/boost:= media-gfx/sane-backends media-libs/tiff virtual/libusb:1 virtual/jpeg gui? ( dev-cpp/gtkmm:= ) imagemagick? ( !graphicsmagick? ( media-gfx/imagemagick:= ) graphicsmagick? ( media-gfx/graphicsmagick:= ) )
 SLOT=0
 SRC_URI=http://support.epson.net/linux/src/scanner/imagescanv3/common/imagescan_3.61.0.orig.tar.gz
-_md5_=b4ae3f6f9a112ae34073eb765fce5f52
+_md5_=35da9e6df17904c78a76a78669c1dbab

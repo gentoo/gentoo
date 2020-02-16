@@ -1,0 +1,14 @@
+DEFINED_PHASES=compile install postinst postrm preinst prepare prerm pretend
+DEPEND=app-crypt/trousers app-crypt/tpm-tools !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= )
+DESCRIPTION=Performs a measured and verified boot using Intel Trusted Execution Technology
+EAPI=7
+HOMEPAGE=https://sourceforge.net/projects/tboot/
+IUSE=custom-cflags libressl selinux
+KEYWORDS=-* ~amd64 ~x86
+LICENSE=BSD
+RDEPEND=app-crypt/trousers app-crypt/tpm-tools !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) sys-boot/grub:2 selinux? ( sec-policy/selinux-tboot )
+RESTRICT=test
+SLOT=0
+SRC_URI=mirror://sourceforge/tboot/tboot-1.9.11.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	mount-boot	20014ae7a3e81eb2c65a4d4d86d2560d	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=549e7d6f207a2cb82844d5d1251b7909
