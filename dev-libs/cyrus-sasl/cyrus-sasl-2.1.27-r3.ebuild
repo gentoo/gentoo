@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit flag-o-matic multilib multilib-minimal autotools pam java-pkg-opt-2 db-use systemd
+inherit eutils flag-o-matic multilib multilib-minimal autotools pam java-pkg-opt-2 db-use systemd
 
 SASLAUTHD_CONF_VER="2.1.26"
 
