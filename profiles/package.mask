@@ -574,7 +574,6 @@ dev-python/pyemf
 # Abandoned upstream.  Python 2 only.  No reverse dependencies.
 # Removal in 30 days.  Bug #705518.
 dev-python/milk
-dev-python/milksets
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # The new version loses Python 2 support but does not introduce any real
