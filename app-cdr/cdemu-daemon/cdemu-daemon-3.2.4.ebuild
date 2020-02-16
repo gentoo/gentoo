@@ -11,7 +11,7 @@ SRC_URI="https://download.sourceforge.net/cdemu/cdemu-daemon/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0/7" # subslot = CDEMU_DAEMON_INTERFACE_VERSION_MAJOR in CMakeLists.txt
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 x86"
 IUSE=""
 
 DEPEND=">=dev-libs/glib-2.38:2
