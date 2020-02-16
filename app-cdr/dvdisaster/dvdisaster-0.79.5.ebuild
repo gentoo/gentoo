@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit desktop gnome2-utils toolchain-funcs
+inherit desktop flag-o-matic gnome2-utils toolchain-funcs
 
 DESCRIPTION="Tool for creating error correction data (ecc) for optical media (DVD, CD, BD)"
 HOMEPAGE="http://dvdisaster.net/"
@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 "
 
 src_configure() {
+	append-cflags -fcommon
 	./configure \
 		--prefix=/usr \
 		--bindir=/usr/bin \
