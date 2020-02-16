@@ -1,0 +1,15 @@
+BDEPEND=dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=app-text/ghostscript-gpl net-misc/curl >=sci-libs/netcdf-4.1:=[hdf5] sys-libs/zlib fftw? ( sci-libs/fftw:3.0= ) gdal? ( sci-libs/gdal:= ) lapack? ( virtual/lapack ) pcre? ( dev-libs/libpcre ) pcre2? ( dev-libs/libpcre2 )
+DESCRIPTION=Powerful map generator
+EAPI=7
+HOMEPAGE=https://gmt.soest.hawaii.edu/
+IUSE=doc examples +fftw +gdal gmttria htmldoc lapack openmp pcre pcre2 threads tutorial
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+ gmttria? ( Artistic )
+RDEPEND=app-text/ghostscript-gpl net-misc/curl >=sci-libs/netcdf-4.1:=[hdf5] sys-libs/zlib fftw? ( sci-libs/fftw:3.0= ) gdal? ( sci-libs/gdal:= ) lapack? ( virtual/lapack ) pcre? ( dev-libs/libpcre ) pcre2? ( dev-libs/libpcre2 ) !sci-biology/probcons sci-geosciences/dcw-gmt sci-geosciences/gshhg-gmt
+REQUIRED_USE=?? ( pcre pcre2 )
+SLOT=5
+SRC_URI=mirror://gmt/gmt-5.4.4-src.tar.xz
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	cmake	88799418ef3db9d88b6232a483143608	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=1b1c7465c26ecbb1af95ba7fc389e2bc
