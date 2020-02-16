@@ -8,8 +8,8 @@ inherit autotools flag-o-matic
 GITID="f299bb5e5f661c345c4b85a3e8de9ad8615ad17a"
 DESCRIPTION="HTML to ASCII converter programmed to handle incorrect html"
 HOMEPAGE="https://bhaak.net/vilistextum/"
-SRC_URI="https://github.com/bhaak/vilistextum/tarball/${GITID} -> ${P}.tar.gz"
-S="${WORKDIR}/bhaak-${PN}-${GITID:0:7}"
+SRC_URI="https://github.com/bhaak/vilistextum/archive/${GITID}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/${PN}-${GITID}"
 
 LICENSE="GPL-2"
 SLOT="0"
