@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-16)
+# No more revdeps, abandoned upstream, depends on deprecated dev-qt/qtwebkit.
+# Masked for removal in 30 days.
+kde-misc/kwebkitpart
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-15)
 # To reduce duplication of effort, prebuilt vanilla kernel packages
 # are discontinued.  Since Gentoo patchset is really minimal,
