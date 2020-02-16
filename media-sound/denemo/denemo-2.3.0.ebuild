@@ -1,7 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
 inherit autotools xdg
 
 DESCRIPTION="A music notation editor"
@@ -23,7 +24,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/libxml2:2
-	>=dev-scheme/guile-2:12=
+	>=dev-scheme/guile-2:12=[guile2(+)]
 	gnome-base/librsvg:2
 	media-libs/fontconfig:1.0
 	>=media-libs/libsmf-1.3
