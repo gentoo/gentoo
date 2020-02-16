@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
+PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="tmux session manager. built on libtmux"
@@ -16,7 +17,6 @@ KEYWORDS="amd64 ~x86"
 IUSE="test"
 
 RDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/kaptan[${PYTHON_USEDEP}]
 	>=dev-python/libtmux-0.8[${PYTHON_USEDEP}]
 	<dev-python/libtmux-0.9[${PYTHON_USEDEP}]
