@@ -11,4 +11,4 @@ RDEPEND=dev-libs/glib:2 gnome-base/libgnome >=gnome-base/libgnomeui-2.2.0 >=medi
 SLOT=0
 SRC_URI=mirror://sourceforge/grip/grip-4.0.1.tar.gz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=8715cae54cd81d3bacb2a49a91e80184
+_md5_=1a43488341e93abaa39ce97ba488bf0b

@@ -10,4 +10,4 @@ PROPERTIES=live
 RDEPEND=nls? ( virtual/libintl ) lm-sensors? ( sys-apps/lm-sensors:= ) selinux? ( sec-policy/selinux-sysstat )
 SLOT=0
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=ed74cbcdc90e348f6a25ecd863d648f0
+_md5_=e077be073b3b10f04aeacc81cbde49b3
