@@ -1,0 +1,18 @@
+--- a/libgrive/src/bfd/SymbolInfo.cc
++++ b/libgrive/src/bfd/SymbolInfo.cc
+@@ -118,13 +118,13 @@ void SymbolInfo::BacktraceInfo::Callback( bfd *abfd, asection *section,
+ 	if ((section->flags & SEC_ALLOC) == 0)
+ 		return ;
+ 	
+-	bfd_vma vma = bfd_get_section_vma(abfd, section);
++	bfd_vma vma = bfd_section_vma(section);
+ 	
+ 	unsigned long address = (unsigned long)(info->m_addr);
+ 	if ( address < vma )
+ 		return;
+ 	
+-	bfd_size_type size = bfd_section_size(abfd, section);
++	bfd_size_type size = bfd_section_size(section);
+ 	if ( address > (vma + size))
+ 		return ;
+ 	
