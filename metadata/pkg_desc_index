@@ -5356,7 +5356,7 @@ dev-ml/camlbz2 0.6.0: OCaml bindings for libbz (AKA, bzip2)
 dev-ml/camldbm 1.0: OCaml binding to the NDBM/GDBM Unix databases
 dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ libraries from O'Caml
 dev-ml/camlp4 4.04_p1 4.05_p1 4.08_p1: System for writing extensible parsers for programming languages
-dev-ml/camlp5 6.17 7.00 7.01 7.03 7.10 7.11: A preprocessor-pretty-printer of ocaml
+dev-ml/camlp5 7.11: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.3 2.3.1: OCaml library for reading, writing, and modifying PDF files
 dev-ml/camlzip 1.06 1.07 1.10: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
