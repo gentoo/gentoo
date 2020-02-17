@@ -5,11 +5,11 @@ DESCRIPTION=Powerful map generator
 EAPI=7
 HOMEPAGE=https://gmt.soest.hawaii.edu/
 IUSE=doc examples debug +gdal gmttria +gshhg htmldoc +metric mex +netcdf octave postscript tutorial
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=GPL-2+ gmttria? ( Artistic )
 RDEPEND=gdal? ( sci-libs/gdal:= ) gshhg? ( sci-geosciences/gshhg-gmt ) netcdf? ( sci-libs/netcdf:= ) octave? ( sci-mathematics/octave:= ) !sci-biology/probcons
 REQUIRED_USE=mex? ( octave )
 SLOT=0
 SRC_URI=mirror://gmt/gmt-4.5.18-src.tar.bz2 gmttria? ( mirror://gmt/gmt-4.5.18-non-gpl-src.tar.bz2 )
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=8df99bc789c641a19d825ac3475dd382
+_md5_=1a77238c1f4834be9099938e2fae1fb5
