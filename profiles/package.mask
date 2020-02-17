@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-17)
+# Based on very old code needing a lot of patches.  Minimal upstream
+# activity since early 2011, last patches accepted in 2016.  Multiple
+# unresolved bugs.  app-editors/vim[minimal] is the recommended
+# replacement.
+# Removal in 30 days.  Bug #690102.
+app-editors/nvi
+
 # Rich Freeman <rich0@gentoo.org> (2020-02-16)
 # Dead upstream, obsolete deps.
 app-misc/sleepyhead
