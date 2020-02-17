@@ -3,7 +3,7 @@
 
 EAPI=7
 
-USE_RUBY="ruby24 ruby25 ruby26"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_DOC="none"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md docs/TEMPLATES.md"
@@ -28,7 +28,7 @@ ruby_add_bdepend "test? (
 	dev-ruby/coffee-script
 	dev-ruby/erubis
 	dev-ruby/nokogiri
-	!!<dev-ruby/maruku-0.7.2 )"
+)"
 
 all_ruby_prepare() {
 	rm Gemfile || die
