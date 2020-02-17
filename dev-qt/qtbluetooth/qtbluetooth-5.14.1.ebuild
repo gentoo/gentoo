@@ -24,6 +24,8 @@ DEPEND="${RDEPEND}
 	~dev-qt/qtnetwork-${PV}
 "
 
+PATCHES=( "${FILESDIR}/${P}-errno.patch" )
+
 src_prepare() {
 	sed -i -e 's/nfc//' src/src.pro || die
 
