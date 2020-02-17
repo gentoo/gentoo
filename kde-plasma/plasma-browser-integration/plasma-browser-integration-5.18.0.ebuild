@@ -12,7 +12,7 @@ DESCRIPTION="Integrate Chrome/Firefox better into Plasma through browser extensi
 
 LICENSE="GPL-3+"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE=""
 
 DEPEND="
