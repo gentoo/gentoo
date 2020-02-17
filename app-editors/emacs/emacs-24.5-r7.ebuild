@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools elisp-common eutils flag-o-matic multilib readme.gentoo-r1
+inherit autotools elisp-common eutils flag-o-matic readme.gentoo-r1
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
