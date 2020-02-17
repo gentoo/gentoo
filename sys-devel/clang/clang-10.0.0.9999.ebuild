@@ -300,7 +300,7 @@ multilib_src_test() {
 	local -x LIT_PRESERVES_TMP=1
 	cmake-utils_src_make check-clang
 	multilib_is_native_abi &&
-		cmake-utils_src_make check-clang-tools
+		cmake-utils_src_make check-clang-tools check-clangd
 }
 
 src_install() {
