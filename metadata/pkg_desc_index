@@ -4988,7 +4988,7 @@ dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for 
 dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0 3.3_rc1 3.3_rc2 3.3 3.3-r1: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.0: Provides library functionality for FIDO 2.0
-dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.0: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.2.0-r1 0.3.0-r1: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 5.3.0 6.1.2 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
@@ -11151,7 +11151,7 @@ games-emulation/mastergear-bin 4.5: SEGA Master System / Game Gear emulator
 games-emulation/mednafen 0.9.46: Argument-driven multi-system emulator utilizing OpenGL and SDL
 games-emulation/mednaffe 0.8.7: A front-end (GUI) for mednafen emulator
 games-emulation/mekanix 070-r1: SG-1000, SC-3000, SF-7000, SSC, SMS, GG, COLECO, and OMV emulator
-games-emulation/mgba 0.6.3 0.7.3 0.8.0 9999: Game Boy Advance emulator written in C
+games-emulation/mgba 0.7.3 0.8.0 0.8.1 9999: Game Boy Advance emulator written in C
 games-emulation/mupen64plus 2.5.9: A fork of Mupen64 Nintendo 64 emulator, meta-package
 games-emulation/mupen64plus-audio-sdl 2.5.9: A fork of Mupen64 Nintendo 64 emulator, SDL audio plugin
 games-emulation/mupen64plus-core 2.5.9: A fork of Mupen64 Nintendo 64 emulator, core library
@@ -15242,7 +15242,7 @@ net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.20.3-r1 1.20.3-r3: Network utility to retrieve files from the WWW
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
-net-misc/whois 5.4.3 5.5.3 5.5.5 9999: improved Whois Client
+net-misc/whois 5.4.3 5.5.5 5.5.6 9999: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux
 net-misc/wol 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
 net-misc/wput 0.6.1-r1 0.6.2: Tiny program like wget, to upload files/whole directories via FTP
@@ -17570,7 +17570,7 @@ sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.3 2.13.3-r1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
 sys-libs/libblockdev 2.20-r2 2.22 2.23 9999: A library for manipulating block devices
-sys-libs/libcap 2.26-r2 2.27 2.30 2.31: POSIX 1003.1e capabilities
+sys-libs/libcap 2.26-r2 2.27 2.31 2.32: POSIX 1003.1e capabilities
 sys-libs/libcap-ng 0.7.8 0.7.9 0.7.10: POSIX 1003.1e capabilities
 sys-libs/libchipcard 5.1.5_rc2: Library for accessing chip cards via chip card readers (terminals)
 sys-libs/libcxx 7.1.0 8.0.1 9.0.1 10.0.0_rc1 10.0.0_rc2 10.0.0.9999 11.0.0.9999: New implementation of the C++ standard library, targeting C++11
