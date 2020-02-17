@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-17)
+# Unmaintained upstream.  Last release in 2011, 2.0 branch never
+# finished.  Python 2 only.
+# Removal in 30 days.  Bug #703856.
+games-strategy/lightyears
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-17)
 # SRC_URI is dead and the package cannot be mirrored.  Last updated
 # in 2016, newer versions are non-trivial to bump.
 # Removal in 30 days.  Bug #694548.
