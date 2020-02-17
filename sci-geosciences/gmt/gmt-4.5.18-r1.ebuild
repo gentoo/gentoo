@@ -12,7 +12,7 @@ SRC_URI="mirror://gmt/${P}-src.tar.bz2
 
 LICENSE="GPL-2+ gmttria? ( Artistic )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="doc examples debug +gdal gmttria +gshhg htmldoc +metric mex +netcdf octave postscript tutorial"
 
 # mex can use matlab too which i can't test

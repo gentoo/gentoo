@@ -13,7 +13,7 @@ SRC_URI="https://github.com/hughsie/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="LGPL-2.1"
 SLOT="0/1"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc64 x86"
 IUSE=""
 
 BDEPEND="
