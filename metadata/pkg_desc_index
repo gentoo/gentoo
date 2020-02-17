@@ -14301,7 +14301,7 @@ net-analyzer/sarg 2.3.11-r1 2.3.11-r2 2.4.0: Squid Analysis Report Generator
 net-analyzer/sbd 1.37-r1: Netcat-clone, designed to be portable and offer strong encryption
 net-analyzer/scanlogd 2.2.7: a port scan detection tool
 net-analyzer/scanssh 2.1 2.1-r1: network scanner that gathers info on SSH protocols and versions
-net-analyzer/scapy 2.4.3 9999: A Python interactive packet manipulation program for mastering the network
+net-analyzer/scapy 2.4.2 2.4.3 9999: A Python interactive packet manipulation program for mastering the network
 net-analyzer/scli 0.4.0-r1: SNMP Command Line Interface
 net-analyzer/sec 2.7.6-r1 2.8.1 2.8.2: Simple Event Correlator
 net-analyzer/sflowtool 3.34 3.41 5.02 5.04: sflowtool is a utility for collecting and processing sFlow data

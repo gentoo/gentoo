@@ -5428,8 +5428,6 @@ net-analyzer/sarg:glob - Disable to ignore wildcards in file names
 net-analyzer/sarg:pcre - Enable support for regular expressions in the hostalias file through dev-libs/libpcre
 net-analyzer/scanlogd:nids - Use net-libs/libnids for packet capturing
 net-analyzer/scanlogd:pcap - Use net-libs/libpcap for packet capturing
-net-analyzer/scapy:pyx - Enable dev-python/pyx support for psdump/pdfdump commands
-net-analyzer/scapy:tcpreplay - Enable net-analyzer/tcpreplay support for fast packet replay
 net-analyzer/smokeping:dig - Install net-dns/bind-tools for dig functionality
 net-analyzer/smokeping:echoping - Install net-analyzer/echoping for echoping functionality
 net-analyzer/smokeping:ssh - Install ssh functionality
