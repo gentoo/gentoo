@@ -12,7 +12,7 @@ HOMEPAGE="https://cgit.kde.org/breeze-gtk.git"
 
 LICENSE="LGPL-2.1+"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE=""
 
 BDEPEND="${PYTHON_DEPS}
