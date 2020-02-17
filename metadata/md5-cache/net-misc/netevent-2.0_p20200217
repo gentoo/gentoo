@@ -1,0 +1,12 @@
+BDEPEND=doc? ( dev-python/docutils )
+DEFINED_PHASES=configure
+DESCRIPTION=Tool to share Linux event devices with other machines
+EAPI=7
+HOMEPAGE=https://github.com/Blub/netevent
+IUSE=doc
+KEYWORDS=~amd64 ~arm
+LICENSE=GPL-2+
+SLOT=0
+SRC_URI=https://github.com/Blub/netevent/archive/c2066fa55db6f51090e00a240889d2f0cbd0ab4d.tar.gz -> netevent-2.0_p20200217.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=7b23068d050c97a33765fb5014504235
