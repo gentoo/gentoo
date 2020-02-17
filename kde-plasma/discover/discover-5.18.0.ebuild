@@ -15,7 +15,7 @@ HOMEPAGE="https://userbase.kde.org/Discover"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="+firmware feedback"
 
 # libmarkdown (app-text/discount) only used in PackageKitBackend
