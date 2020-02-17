@@ -3,16 +3,20 @@
 
 EAPI=7
 
-inherit flag-o-matic prefix
+inherit autotools flag-o-matic prefix
 
 if [[ ${PV} == 9999* ]] ; then
-	inherit git-r3 autotools
+	inherit git-r3
 	EGIT_REPO_URI="https://git.code.sf.net/p/zsh/code"
 else
-	KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	SRC_URI="https://www.zsh.org/pub/${P}.tar.xz
 		https://www.zsh.org/pub/old/${P}.tar.xz
-		doc? ( https://www.zsh.org/pub/${P}-doc.tar.xz )"
+		mirror://sourceforge/${PN}/${P}.tar.xz
+		doc? (
+			https://www.zsh.org/pub/${P}-doc.tar.xz
+			mirror://sourceforge/${PN}/${P}-doc.tar.xz
+		)"
 fi
 
 DESCRIPTION="UNIX Shell similar to the Korn shell"
@@ -47,6 +51,10 @@ if [[ ${PV} == 9999* ]] ; then
 		)"
 fi
 
+PATCHES=(
+	"${FILESDIR}/${PN}-5.7.1-ncurses_colors.patch"
+)
+
 src_prepare() {
 	if [[ ${PV} != 9999* ]]; then
 		# fix zshall problem with soelim
@@ -58,12 +66,13 @@ src_prepare() {
 		eapply "${FILESDIR}"/${PN}-5.3-init.d-gentoo.diff
 	fi
 
-	eapply_user
+	default
 
+	hprefixify configure.ac
 	if [[ ${PV} == 9999* ]] ; then
 		sed -i "/^VERSION=/s/=.*/=${PV}/" Config/version.mk || die
-		eautoreconf
 	fi
+	eautoreconf
 }
 
 src_configure() {
@@ -76,6 +85,7 @@ src_configure() {
 		--enable-site-fndir="${EPREFIX}"/usr/share/zsh/site-functions
 		--enable-function-subdirs
 		--with-tcsetpgrp
+		--with-term-lib="$(usex unicode 'tinfow ncursesw' 'tinfo ncurses')"
 		$(use_enable maildir maildir-support)
 		$(use_enable pcre)
 		$(use_enable caps cap)
