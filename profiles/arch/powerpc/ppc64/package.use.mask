@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
+# Mask until net-analyzer/icinga2 is keyworded
+net-analyzer/pnp4nagios icinga
+
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
 # bolt not keyworded on ~ppc64
 kde-plasma/plasma-meta crypt thunderbolt
