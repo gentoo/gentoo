@@ -15,7 +15,7 @@ DESCRIPTION="KDE Plasma desktop"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="+fontconfig ibus +mouse scim +semantic-desktop touchpad"
 
 COMMON_DEPEND="
