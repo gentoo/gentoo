@@ -1,0 +1,47 @@
+From 21a934df4c683e73e0a66a9afca33573fcf9d789 Mon Sep 17 00:00:00 2001
+From: Michael Jeanson <mjeanson@efficios.com>
+Date: Thu, 16 Jan 2020 10:59:14 -0500
+Subject: [PATCH] Fix: build with -fno-common
+
+GCC 10 will default to building with -fno-common, this inhibits the
+linker from merging multiple tentative definitions of a symbol in an
+archive. Keep only the declaration in the libustsnprintf.la convenience
+library.
+
+Signed-off-by: Michael Jeanson <mjeanson@efficios.com>
+Signed-off-by: Mathieu Desnoyers <mathieu.desnoyers@efficios.com>
+Change-Id: I8fb7c72811ce7e62f10342f55fcabeeabfdd4c67
+---
+ liblttng-ust-ctl/ustctl.c      | 2 --
+ liblttng-ust-fd/lttng-ust-fd.c | 2 --
+ 2 files changed, 4 deletions(-)
+
+diff --git a/liblttng-ust-ctl/ustctl.c b/liblttng-ust-ctl/ustctl.c
+index 949ece17..c2b761a1 100644
+--- a/liblttng-ust-ctl/ustctl.c
++++ b/liblttng-ust-ctl/ustctl.c
+@@ -77,8 +77,6 @@ extern void lttng_ring_buffer_client_discard_exit(void);
+ extern void lttng_ring_buffer_client_discard_rt_exit(void);
+ extern void lttng_ring_buffer_metadata_client_exit(void);
+ 
+-volatile enum ust_loglevel ust_loglevel;
+-
+ int ustctl_release_handle(int sock, int handle)
+ {
+ 	struct ustcomm_ust_msg lum;
+diff --git a/liblttng-ust-fd/lttng-ust-fd.c b/liblttng-ust-fd/lttng-ust-fd.c
+index 863f0618..4818e02e 100644
+--- a/liblttng-ust-fd/lttng-ust-fd.c
++++ b/liblttng-ust-fd/lttng-ust-fd.c
+@@ -28,8 +28,6 @@
+ #include <helper.h>
+ #include "usterr-signal-safe.h"
+ 
+-volatile enum ust_loglevel ust_loglevel;
+-
+ static int (*__lttng_ust_fd_plibc_close)(int fd);
+ static int (*__lttng_ust_fd_plibc_fclose)(FILE *stream);
+ 
+-- 
+2.25.0
+
