@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-17)
+# Superseded by media-gfx/gmic.  Fails to build.
+# Removal in 30 days.  Bug #628116.
+media-gfx/greycstoration
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-17)
 # Unmaintained upstream.  Last release in 2011.  Python 2 only.
 # Removal in 30 days.  Bug #703858.
 games-strategy/outerspace
