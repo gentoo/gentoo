@@ -4,10 +4,10 @@ DESCRIPTION=Puppet Server is the next-generation application for managing Puppet
 EAPI=7
 HOMEPAGE=http://docs.puppetlabs.com/puppetserver/
 IUSE=puppetdb
-KEYWORDS=~amd64 ~x86
+KEYWORDS=amd64 x86
 LICENSE=Apache-2.0
 RDEPEND=>=virtual/jdk-1.8.0 app-admin/puppet-agent[puppetdb?]
 SLOT=0
 SRC_URI=https://downloads.puppetlabs.com/puppet/puppetserver-6.8.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=a939a94caacf85fd00b3a9341439b159
+_md5_=35840bff90a7576ba32333497b7a4e3b

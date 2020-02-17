@@ -111,7 +111,6 @@ app-admin/prelude-manager:dbx - Enables Prelude Manager storing Prelude alerts i
 app-admin/prelude-manager:tcpwrapper - Enables Prelude Manager using tcp wrapper. It requires sys-apps/tcp-wrappers .
 app-admin/puppet:augeas - Enable augeas support
 app-admin/puppet:diff - Enable diff support
-app-admin/puppet:experimental - Add patches for things in testing
 app-admin/puppet:rrdtool - Enable rrdtool support
 app-admin/puppet:shadow - Enable shadow support
 app-admin/puppet-agent:puppetdb - Adds puppetdb support
