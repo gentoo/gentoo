@@ -1,4 +1,4 @@
-# Copyright 2004-2019 Gentoo Authors
+# Copyright 2004-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -60,7 +60,8 @@ DOCS="AUTHORS ChangeLog NEWS README THANKS doc/msmtprc*"
 
 src_prepare() {
 	# Use default Gentoo location for mail aliases
-	sed -i 's:/etc/aliases:/etc/mail/aliases:' scripts/find_alias/find_alias_for_msmtp.sh || die
+	sed 's:/etc/aliases:/etc/mail/aliases:' \
+		-i scripts/find_alias/find_alias_for_msmtp.sh || die
 
 	default
 }
@@ -101,7 +102,7 @@ src_install() {
 	fi
 
 	if use mta ; then
-		dosym msmtp /usr/bin/sendmail
+		dosym ../bin/msmtp /usr/sbin/sendmail
 		dosym ../bin/msmtp /usr/$(get_libdir)/sendmail
 	fi
 
