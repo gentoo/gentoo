@@ -1,14 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 GENTOO_DEPEND_ON_PERL=noslotop
 inherit eutils perl-module
 
 DESCRIPTION="A handy shell-like interface for browsing LDAP servers and editing their content"
-HOMEPAGE="https://bitbucket.org/mahlon/shelldap/"
-SRC_URI="https://bitbucket.org/mahlon/shelldap/downloads/${P}.tar.gz"
+HOMEPAGE="https://github.com/mahlonsmith/shelldap https://bitbucket.org/mahlon/shelldap/"
+SRC_URI="https://github.com/mahlonsmith/${PN}/releases/download/v${PV}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
@@ -16,7 +16,6 @@ KEYWORDS="~amd64 ~x86"
 
 IUSE="+readline sasl +ssl"
 
-DEPEND=""
 RDEPEND="dev-perl/Algorithm-Diff
 	sasl? ( dev-perl/Authen-SASL )
 	dev-perl/IO-Socket-SSL
@@ -24,6 +23,7 @@ RDEPEND="dev-perl/Algorithm-Diff
 	dev-perl/TermReadKey
 	readline? ( dev-perl/Term-ReadLine-Gnu )
 	dev-perl/Term-Shell
+	dev-perl/Tie-IxHash
 	dev-perl/YAML-Syck
 	virtual/perl-Data-Dumper
 	virtual/perl-File-Temp
