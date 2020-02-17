@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-17)
+# Unmaintained upstream.  Last release in 2008.  Python 2 only.
+# No reverse dependencies left.
+# Removal in 30 days.  Bug #707906.
+dev-python/gnuplot-py
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-17)
 # Last release in 2011.  Python 2 only.
 # Removal in 30 days.  Bug #705652.
 sci-geosciences/tappy
