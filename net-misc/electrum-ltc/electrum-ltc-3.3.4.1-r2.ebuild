@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-PYTHON_COMPAT=( python3_6 )
+PYTHON_COMPAT=( python3_6 python3_7 )
 PYTHON_REQ_USE="ncurses?"
 
 inherit desktop distutils-r1 gnome2-utils xdg-utils
@@ -44,7 +44,6 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/tlslite[${PYTHON_USEDEP}]
 	dev-python/protobuf-python[${PYTHON_USEDEP}]
 	qrcode? ( media-gfx/zbar[v4l] )
 	qt5? (
