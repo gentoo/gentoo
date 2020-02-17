@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-17)
+# Unmaintained.  No Python 3 support.  Needs a version bump.
+# Removal in 30 days.  Bug #708956.
+app-misc/tails-installer
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-17)
 # Unmaintained.  Last release in 2009.  Python 2 only, depends on dead
 # dev-python/pygtk and dev-python/pygtksourceview.  Multiple unresolved
 # bugs including crashes.
