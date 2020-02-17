@@ -6,7 +6,6 @@
 		<name>Matthew Thode</name>
 	</maintainer>
 	<use>
-		<flag name="classicui">Adds support for the old interface</flag>
 		<flag name="console">Adds support for line-editing in the console</flag>
 		<flag name="lto">Adds support for link time optimization</flag>
 		<flag name="mail">Allows for mailing of alerts</flag>
