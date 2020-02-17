@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-17)
+# Unmaintained.  Last (alpha) release in 2008.  Python 2 only.  Multiple
+# bugs open.
+# Removal in 30 days.  Bug #705606.
+net-proxy/http-replicator
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-17)
 # Discontinued as a standalone package, merged into AstroPy.  No reverse
 # dependencies.
 # Removal in 30 days.  Bug #704038.
