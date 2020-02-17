@@ -33,6 +33,12 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-17)
+# Unmaintained.  No Python 3 support.  Last bumped in 2013.  Numerous
+# releases behind upstream.
+# Removal in 30 days.  Bug #709460.
+app-admin/bcfg2
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-17)
 # Unmaintained.  No Python 3 support.  Needs a version bump.
 # Removal in 30 days.  Bug #708956.
 app-misc/tails-installer
