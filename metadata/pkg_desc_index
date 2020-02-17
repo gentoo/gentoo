@@ -16378,7 +16378,7 @@ sci-mathematics/psmt2-frontend 0.2: Library to parse and type-check an extension
 sci-mathematics/pspp 1.2.0: Program for statistical analysis of sampled data
 sci-mathematics/pymc3 3.1: Bayesian Modeling and Probabilistic Machine Learning in Python
 sci-mathematics/relational 2.5-r2: Educational tool for relational algebra
-sci-mathematics/rkward 0.7.0b 0.7.1: IDE for the R-project
+sci-mathematics/rkward 0.7.1: IDE for the R-project
 sci-mathematics/rngstreams 1.0.1: Multiple independent streams of pseudo-random numbers
 sci-mathematics/rstudio 1.1.463-r1 1.2.1335 1.2.5033: IDE for the R language
 sci-mathematics/rw 0.8-r1: Compute rank-width decompositions of graphs
