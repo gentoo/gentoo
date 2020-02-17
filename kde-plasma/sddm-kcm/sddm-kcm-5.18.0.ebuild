@@ -13,7 +13,7 @@ HOMEPAGE="https://cgit.kde.org/sddm-kcm.git"
 
 LICENSE="GPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE=""
 
 DEPEND="
