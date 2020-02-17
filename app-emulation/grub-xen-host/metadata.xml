@@ -9,4 +9,7 @@
 		a guest installed PV grub (grub legacy or grub 2) or handle a guest
 		supplied grub 2 config file.
 	</longdescription>
+	<use>
+		<flag name="pvh">Build an additional grub bin for pvh.</flag>
+	</use>
 </pkgmetadata>
