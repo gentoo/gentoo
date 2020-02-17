@@ -13,7 +13,7 @@ inherit ecm kde.org
 DESCRIPTION="Task management and system monitoring library"
 LICENSE="LGPL-2+"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE="minimal webengine X"
 
 RDEPEND="
