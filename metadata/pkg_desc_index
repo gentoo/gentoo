@@ -10819,7 +10819,7 @@ dev-vcs/hg-git 0.8.8 0.8.12-r1 0.8.13_pre20190808 0.8.13: push to and pull from 
 dev-vcs/hgsubversion 1.9.2: hgsubversion is a Mercurial extension for working with Subversion repositories
 dev-vcs/hgsvn 0.2.3-r2: A set of scripts to work locally on Subversion checkouts using Mercurial
 dev-vcs/hgview 1.9.0-r1: A Mercurial interactive history viewer
-dev-vcs/hub 2.13.0: Command-line wrapper for git that makes you better at GitHub
+dev-vcs/hub 2.13.0 2.14.1: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.1.0: A frontend to the subversion vcs
 dev-vcs/mercurial 4.6.2 4.9-r2 4.9.1 5.0.2 5.1.2 5.2.2-r1 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.2-r1 9999: Mercurial authentication and authorization tools
