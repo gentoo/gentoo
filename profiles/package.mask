@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-17)
+# Unmaintained.  Reported test failures.  No reverse dependencies.
+# Removal in 30 days.  Bug #659796.
+dev-python/Kivy
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-17)
 # Based on very old code needing a lot of patches.  Minimal upstream
 # activity since early 2011, last patches accepted in 2016.  Multiple
 # unresolved bugs.  app-editors/vim[minimal] is the recommended
