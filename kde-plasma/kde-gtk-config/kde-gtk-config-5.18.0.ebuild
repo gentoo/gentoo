@@ -14,7 +14,7 @@ HOMEPAGE="https://cgit.kde.org/kde-gtk-config.git"
 
 LICENSE="GPL-3"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE=""
 
 DEPEND="
