@@ -5358,7 +5358,7 @@ dev-ml/camlidl 1.05-r1: CamlIDL is a stub code generator for using C/C++ librari
 dev-ml/camlp4 4.04_p1 4.05_p1 4.08_p1: System for writing extensible parsers for programming languages
 dev-ml/camlp5 6.17 7.00 7.01 7.03 7.10 7.11: A preprocessor-pretty-printer of ocaml
 dev-ml/camlpdf 2.3 2.3.1: OCaml library for reading, writing, and modifying PDF files
-dev-ml/camlzip 1.06 1.07: Compressed file access ML library (ZIP, GZIP and JAR)
+dev-ml/camlzip 1.06 1.07 1.10: Compressed file access ML library (ZIP, GZIP and JAR)
 dev-ml/camomile 0.8.5-r1: Camomile is a comprehensive Unicode library for ocaml
 dev-ml/cmdliner 1.0.0 1.0.1 1.0.2: Declarative definition of command line interfaces for OCaml
 dev-ml/configurator 0.9.1: Helper library for gathering system configuration
@@ -15266,7 +15266,7 @@ net-nds/nsscache 0.30 0.30-r2 0.31 0.32: commandline tool to sync directory serv
 net-nds/openldap 2.4.48 2.4.49-r1: LDAP suite of application and development tools
 net-nds/phpldapadmin 1.2.5: phpLDAPadmin is a web-based tool for managing all aspects of your LDAP server
 net-nds/rpcbind 1.2.5 9999: portmap replacement which supports RPC over various protocols
-net-nds/shelldap 1.4.0 1.5.0: A handy shell-like interface for browsing LDAP servers and editing their content
+net-nds/shelldap 1.5.0 1.5.1: A handy shell-like interface for browsing LDAP servers and editing their content
 net-nds/smbldap-tools 0.9.8 0.9.10-r1: Samba LDAP management tools
 net-nds/tac_plus 4.0.4.19-r3 4.0.4.19-r4 4.0.4.27a: An updated version of Cisco's TACACS+ server
 net-nds/yp-tools 4.2.3: Network Information Service tools
