@@ -21,9 +21,11 @@ IUSE="doc"
 # setup.py, using standard docutils builds docs successfully.
 DEPEND="doc? ( dev-python/docutils[${PYTHON_USEDEP}] )"
 
-python_test() {
-	PYTHONPATH="${BUILD_DIR}/lib:." ${EPYTHON} ropetest/__init__.py
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-python3.7.patch
+)
+
+distutils_enable_tests pytest
 
 python_compile_all() {
 	if use doc; then
@@ -33,7 +35,7 @@ python_compile_all() {
 		for i in ./*.rst; do
 			rst2html.py $i > ./build/${i/rst/html} || die
 		done
-	   	popd > /dev/null || die
+		popd > /dev/null || die
 	fi
 }
 
