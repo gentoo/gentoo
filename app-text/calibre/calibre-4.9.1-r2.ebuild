@@ -109,10 +109,12 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
 pkg_pretend() {
-	if [[ ${MERGE_TYPE} != binary && $(gcc-major-version) -lt 6 ]]; then
-		eerror "Calibre cannot be built with this version of gcc."
-		eerror "You need at least gcc-6.0"
-		die "Your C compiler is too old for this package."
+	if [[ $(tc-is-gcc) ]]; then
+		if [[ ${MERGE_TYPE} != binary && $(gcc-major-version) -lt 6 ]]; then
+			eerror "Calibre cannot be built with this version of gcc."
+			eerror "You need at least gcc-6.0"
+			die "Your C compiler is too old for this package."
+		fi
 	fi
 }
 
