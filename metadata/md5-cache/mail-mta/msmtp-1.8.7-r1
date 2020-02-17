@@ -12,4 +12,4 @@ REQUIRED_USE=daemon? ( filecaps )
 SLOT=0
 SRC_URI=https://marlam.de/msmtp/releases/msmtp-1.8.7.tar.xz
 _eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=7893aaff00f6bb5e66643d3b451d50d4
+_md5_=cb690a8e507fdd9583f6058e2494aa6c
