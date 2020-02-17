@@ -33,6 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-17)
+# Unmaintained.  Last release in 2009.  Python 2 only, depends on dead
+# dev-python/pygtk and dev-python/pygtksourceview.  Multiple unresolved
+# bugs including crashes.
+# Removal in 30 days.  Bug #708096.
+app-portage/porthole
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-17)
 # Unmaintained upstream.  Last release in 2008.  Python 2 only.
 # No reverse dependencies left.
 # Removal in 30 days.  Bug #707906.
