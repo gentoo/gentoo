@@ -14,7 +14,7 @@ HOMEPAGE="https://cgit.kde.org/milou.git"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="5"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="~amd64 ~arm64 ~ppc64"
 IUSE=""
 
 DEPEND="
