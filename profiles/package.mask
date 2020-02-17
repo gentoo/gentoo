@@ -74,6 +74,8 @@ net-p2p/soulseek-qt
 # Michał Górny <mgorny@gentoo.org> (2020-02-17)
 # Effectively unmaintained.  Fails to build for almost a year now.
 # Removal in 30 days.  Bug #681054.
+games-rpg/arx-fatalis-data
+games-rpg/arx-fatalis-demo
 games-rpg/arx-libertatis
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-17)
