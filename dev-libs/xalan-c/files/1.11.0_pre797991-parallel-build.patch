@@ -1,6 +1,5 @@
-diff -urN xml-xalan.orig//c/src/xalanc/Makefile.in xml-xalan/c/src/xalanc/Makefile.in
---- xml-xalan.orig//c/src/xalanc/Makefile.in	2010-02-23 10:51:30.058353490 +0100
-+++ xml-xalan/c/src/xalanc/Makefile.in	2010-02-23 10:52:53.251679288 +0100
+--- a/src/xalanc/Makefile.in
++++ b/src/xalanc/Makefile.in
 @@ -84,6 +84,10 @@
  SAMPLES_DIR = ${XALANCROOT}/samples
  TESTS_DIR = ${XALANCROOT}/Tests
