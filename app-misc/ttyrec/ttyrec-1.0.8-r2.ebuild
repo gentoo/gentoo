@@ -12,7 +12,10 @@ SRC_URI="http://0xcc.net/ttyrec/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
-PATCHES=( "${FILESDIR}/${P}-flags.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-flags.patch"
+	"${FILESDIR}/${P}-glibc-2.30.patch"
+)
 
 src_compile() {
 	# Bug 106530
