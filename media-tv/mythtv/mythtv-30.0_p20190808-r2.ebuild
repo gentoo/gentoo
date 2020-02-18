@@ -10,7 +10,7 @@ BACKPORTS="5cde0578d84926171b20c8f7e95a101e9b0b9457" # August 8, 2019
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
 
-inherit eutils flag-o-matic python-single-r1 qmake-utils readme.gentoo-r1 systemd toolchain-funcs user-info vcs-snapshot
+inherit eutils flag-o-matic python-single-r1 qmake-utils readme.gentoo-r1 systemd user-info vcs-snapshot
 
 MYTHTV_BRANCH="fixes/${P%.*}"
 
@@ -33,10 +33,6 @@ REQUIRED_USE="
 	bluray? ( xml )
 	cdr? ( cdda )
 "
-
-# Some of the QA tests fail -- fix in next revision
-RESTRICT="test"
-
 COMMON="
 	acct-user/mythtv
 	dev-libs/glib:2
@@ -69,7 +65,7 @@ COMMON="
 	)
 	alsa? ( >=media-libs/alsa-lib-1.0.24 )
 	bluray? (
-		media-libs/libbluray:=
+		media-libs/libbluray:=[java?]
 		dev-libs/libcdio:=
 		sys-fs/udisks:2
 	)
@@ -87,6 +83,7 @@ COMMON="
 		>=sys-libs/libraw1394-1.2.0
 	)
 	jack? ( media-sound/jack-audio-connection-kit )
+	java? ( dev-java/ant-core )
 	lcd? ( app-misc/lcdproc )
 	libass? ( >=media-libs/libass-0.9.11:= )
 	lirc? ( app-misc/lirc )
@@ -99,14 +96,6 @@ COMMON="
 		dev-perl/Net-UPnP
 	)
 	pulseaudio? ( media-sound/pulseaudio )
-	python? (
-		${PYTHON_DEPS}
-		dev-python/lxml
-		dev-python/mysql-python
-		dev-python/urlgrabber
-		dev-python/future
-		dev-python/requests-cache
-	)
 	systemd? ( sys-apps/systemd:= )
 	vaapi? ( x11-libs/libva:=[opengl] )
 	vdpau? ( x11-libs/libvdpau )
@@ -122,6 +111,16 @@ COMMON="
 	)
 "
 RDEPEND="${COMMON}
+	python? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+			dev-python/mysqlclient[${PYTHON_MULTI_USEDEP}]
+			dev-python/urlgrabber[${PYTHON_MULTI_USEDEP}]
+			dev-python/future[${PYTHON_MULTI_USEDEP}]
+			dev-python/requests-cache[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	media-fonts/corefonts
 	media-fonts/dejavu
 	media-fonts/liberation-fonts
@@ -158,6 +157,20 @@ If a MYSQL server is installed, a mythtv MySQL user and mythconverg database
 is created if it does not already exist.
 You will be prompted for your MySQL root password.
 
+A mythtv user is maintained by acct-user/mythtv. An existing mythtv user
+may be modified to the configuration defined by acct-user/mythtv.
+An existing mythtv user may be changed which may alter some functionality.
+If it breaks mythtv you may need to (choose one):
+	* Restore the original mythtv user
+	* Create custom acct-user/mythtv overlay for your system
+	* Fix you system to use mythtv as daemon only
+Failure to emerge acct-user/mythtv indicates that the existing mythtv user
+is customized and not changed. Corrective action (choose one):
+	* Ignore emerge failure
+	* Create custom acct-user/mythtv overlay for your system
+	* Fix you system to use mythtv as daemon only
+	* Delete existing user and try again (dangerous)
+
 Mythtv is updated to use correct FHS/Gentoo policy paths.
 Updating mythtv installations may report:
 	* mythtv is in use, cannot update home
@@ -183,7 +196,7 @@ to journald via the console at the notice verbosity.
 "
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	use python && python-single-r1_pkg_setup
 	# The acct-user/mythtv package creates/manages the user 'mythtv'
 }
 
@@ -325,20 +338,23 @@ src_configure() {
 
 	myconf+=($(use_enable bluray libbluray_external))
 
+	# econf sets these options that are not handled by configure:
+	# --build --host --infodir --localstatedir --sysconfdir
+
 	einfo "Running ./configure ${myconf[@]} - THIS MAY TAKE A WHILE."
 	./configure \
+		--prefix="${EPREFIX}/usr" \
 		--cc="$(tc-getCC)" \
 		--cxx="$(tc-getCXX)" \
 		--ar="$(tc-getAR)" \
-		--extra-cflags="${CFLAGS}" \
-		--extra-cxxflags="${CXXFLAGS}" \
-		--extra-ldflags="${LDFLAGS}" \
+		--optflags="${CFLAGS}" \
 		--qmake=$(qt5_get_bindir)/qmake \
 		"${myconf[@]}"
 }
 
 src_install() {
 	emake STRIP="true" INSTALL_ROOT="${D}" install
+	python_optimize  # does all packages by default
 	dodoc AUTHORS UPGRADING README
 	readme.gentoo_create_doc
 
