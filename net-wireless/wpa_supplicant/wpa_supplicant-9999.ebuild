@@ -247,8 +247,10 @@ src_configure() {
 		Kconfig_style_config OWE
 		Kconfig_style_config SAE
 		Kconfig_style_config DPP
-		Kconfig_style_config SUITEB
 		Kconfig_style_config SUITEB192
+	fi
+	if ! use bindist && ! use libressl; then
+		Kconfig_style_config SUITEB
 	fi
 
 	if use smartcard ; then
@@ -451,6 +453,11 @@ pkg_postinst() {
 			ewarn "Using bindist use flag presently breaks WPA3 (specifically SAE, OWE, DPP, and FILS)."
 			ewarn "This is incredibly undesirable"
 		fi
+	fi
+	if use libressl; then
+		ewarn "Libressl doesn't support SUITEB (part of WPA3)"
+		ewarn "but it does support SUITEB192 (the upgraded strength version of the same)"
+		ewarn "You probably don't care.  Patches welcome"
 	fi
 
 	# Mea culpa, feel free to remove that after some time --mgorny.
