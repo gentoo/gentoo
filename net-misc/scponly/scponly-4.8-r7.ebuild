@@ -64,7 +64,7 @@ src_install() {
 	dodoc AUTHOR BUILDING-JAILS.TXT CHANGELOG CONTRIB README SECURITY TODO
 
 	if use chroot ; then
-		DOC_CONTENTS="You might want to run\n
+		local DOC_CONTENTS="You might want to run\n
 			emerge --config =${CATEGORY}/${PF}\n
 			\nto setup the chroot. Otherwise you will have to setup chroot manually
 			Please read the docs in /usr/share/doc/${PF} for more informations, also
