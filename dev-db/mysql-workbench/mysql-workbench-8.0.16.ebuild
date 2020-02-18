@@ -70,7 +70,7 @@ S="${WORKDIR}"/"${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.2.5-wbcopytables.patch"
-	"${FILESDIR}/${PN}-6.3.10-i386-json.patch"
+	"${FILESDIR}/${PN}-8.0-mysql-connector-8.patch"
 )
 
 src_unpack() {
