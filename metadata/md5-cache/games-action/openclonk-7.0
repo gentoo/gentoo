@@ -1,4 +1,4 @@
-DEFINED_PHASES=compile configure install postinst postrm preinst prepare pretend setup test unpack
+DEFINED_PHASES=compile configure install postinst postrm preinst prepare setup test unpack
 DEPEND=>=dev-libs/boost-1.40:= dev-libs/tinyxml net-libs/libupnp media-libs/libpng:0= sys-libs/zlib !dedicated? ( dev-libs/glib:2 media-libs/freealut media-libs/freetype:2 media-libs/glew media-libs/libsdl[X,opengl,sound,video] media-libs/libvorbis media-libs/openal media-libs/sdl-mixer[mp3,vorbis,wav] virtual/jpeg:0= virtual/opengl virtual/glu x11-libs/gdk-pixbuf x11-libs/gtk+:3 x11-libs/libXrandr x11-libs/libX11 ) dedicated? ( sys-libs/readline:0= ) || ( >=sys-devel/gcc-4.9 >=sys-devel/clang-3.3 ) virtual/pkgconfig doc? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) dev-libs/libxml2[python] sys-devel/gettext ) sys-devel/make >=dev-util/cmake-3.9.6
 DESCRIPTION=A free multiplayer action game where you control clonks
 EAPI=5
@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/boost-1.40:= dev-libs/tinyxml net-libs/libupnp media-libs/lib
 SLOT=0
 SRC_URI=http://www.openclonk.org/builds/release/7.0/openclonk-7.0-src.tar.bz2
 _eclasses_=base	2ec5c64f5de125f0c65a927c4c128fef	cmake-utils	be72eac95bd029ad1d81d5d656c3c83b	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	fdo-mime	995b19d3f30e956b4e1bc5a91fdc4ea7	flag-o-matic	3719195b17f75382c225c2155e81198c	games	be6b136152d095d3e15031e2c725eb3f	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	preserve-libs	ef207dc62baddfddfd39a164d9797648	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=0d4f1f5db5d9b1dc2735dd9c90667f2d
+_md5_=47c5dc99065f827c78e5f1ca728c4509
