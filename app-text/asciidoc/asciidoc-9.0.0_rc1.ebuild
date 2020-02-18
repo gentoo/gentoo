@@ -86,7 +86,7 @@ pkg_postinst() {
 	readme.gentoo_print_elog
 
 	optfeature "\"music\" filter support" "media-sound/lilypond media-gfx/imagemagick"
-	optfeature "\"source\" filter support" dev-util/source-highlight dev-python/pygments[${PYTHON_USEDEP}] app-text/highlight
+	optfeature "\"source\" filter support" dev-util/source-highlight dev-python/pygments[${PYTHON_SINGLE_USEDEP}] app-text/highlight
 	optfeature "\"latex\" filter support" "dev-texlive/texlive-latex app-text/dvipng" "dev-texlive/texlive-latex app-text/dvisvgm"
 	optfeature "\"graphviz\" filter support" media-gfx/graphviz
 }
