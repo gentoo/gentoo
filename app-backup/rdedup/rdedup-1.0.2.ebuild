@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,7 +45,7 @@ DESCRIPTION="data deduplication with compression and public key encryption"
 HOMEPAGE="https://github.com/dpc/rdedup"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
 
-LICENSE="MPL-2.0"
+LICENSE="Apache-2.0 BSD ISC MIT MPL-2.0 Unlicense"
 SLOT="0"
 KEYWORDS="~amd64"
 
