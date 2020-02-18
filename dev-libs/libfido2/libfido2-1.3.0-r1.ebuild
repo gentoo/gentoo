@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake-utils udev linux-info
 
 DESCRIPTION="Provides library functionality for FIDO 2.0"
 HOMEPAGE="https://github.com/Yubico/libfido2"
@@ -29,10 +29,22 @@ PATCHES=(
 	"${FILESDIR}/libfido2-1.3.0-remove-openssh-middleware.patch"
 )
 
+pkg_pretend() {
+	CONFIG_CHECK="
+		~USB_HID
+		~HIDRAW
+	"
+
+	check_extra_config
+}
+
 src_install() {
 	cmake-utils_src_install
 
 	if ! use static-libs; then
 		rm -f "${D}/$(get_libdir)"/*.a || die
 	fi
+
+	udev_newrules udev/70-u2f.rules 70-libfido2-u2f.rules
 }
+
