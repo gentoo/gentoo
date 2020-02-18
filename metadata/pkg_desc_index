@@ -7236,7 +7236,7 @@ dev-php/composer 1.8.6 1.9.0 1.9.1 1.9.2 1.9.3: Dependency Manager for PHP
 dev-php/cphplib 0.51-r1: Cute PHP Library (cphplib)
 dev-php/doctrine 1.2.5 2.4.6 2.6.1 2.6.4: An object relational mapper for PHP
 dev-php/doctrine-instantiator 1.0.5 1.1.0 1.3.0: Utility to instantiate objects in PHP without invoking their constructors
-dev-php/fedora-autoloader 0.2.1 1.0.0: Fedora's Static PSR-4, PSR-0, and classmap autoloader
+dev-php/fedora-autoloader 0.2.1 1.0.0 1.0.1: Fedora's Static PSR-4, PSR-0, and classmap autoloader
 dev-php/geos-php 1.0.0: A PHP interface to GEOS - Geometry Engine, Open Source
 dev-php/igbinary 2.0.8 3.0.1 3.0.1-r1 3.1.0 3.1.2: A fast drop-in replacement for the standard PHP serialize
 dev-php/jpgraph 4.0.2 4.2.0: Object-oriented graphing library for PHP
@@ -8358,7 +8358,7 @@ dev-python/pyatspi 2.32.1 2.34.0: Python client bindings for D-Bus AT-SPI
 dev-python/pyaudio 0.2.11: Python bindings for PortAudio
 dev-python/pybind11 2.4.3: AST-based Python refactoring library
 dev-python/pyblake2 1.1.2: BLAKE2 hash function extension module
-dev-python/pybluez 0.18-r1 0.22: Python bindings for Bluez Bluetooth Stack
+dev-python/pybluez 0.18-r1 0.22 0.23: Python bindings for Bluez Bluetooth Stack
 dev-python/pycadf 2.9.0-r1: python implementation of DMTF Cloud Audit (CADF) data model
 dev-python/pycairo 1.18.2: Python bindings for the cairo library
 dev-python/pycanberra 0_pre20130515: Basic Python wrapper for libcanberra
