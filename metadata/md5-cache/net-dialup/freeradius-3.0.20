@@ -5,7 +5,7 @@ DESCRIPTION=Highly configurable free RADIUS server
 EAPI=7
 HOMEPAGE=http://www.freeradius.org/
 IUSE=debug firebird iodbc kerberos ldap libressl memcached mysql mongodb odbc oracle pam pcap postgres python readline redis rest samba sqlite ssl systemd python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8
-KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86
+KEYWORDS=amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2
 RDEPEND=acct-group/radius acct-user/radius !net-dialup/cistronradius dev-lang/perl:= sys-libs/gdbm:= sys-libs/talloc firebird? ( dev-db/firebird ) iodbc? ( dev-db/libiodbc ) kerberos? ( virtual/krb5 ) ldap? ( net-nds/openldap ) memcached? ( dev-libs/libmemcached ) mysql? ( dev-db/mysql-connector-c ) mongodb? ( >=dev-libs/mongo-c-driver-1.13.0-r1 ) odbc? ( dev-db/unixODBC ) oracle? ( dev-db/oracle-instantclient-basic ) pam? ( sys-libs/pam ) pcap? ( net-libs/libpcap ) postgres? ( dev-db/postgresql:= ) python? ( python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) python_single_target_python3_7? ( dev-lang/python:3.7 >=dev-lang/python-exec-2:=[python_targets_python3_7] ) python_single_target_python3_8? ( dev-lang/python:3.8 >=dev-lang/python-exec-2:=[python_targets_python3_8] ) ) readline? ( sys-libs/readline:0= ) redis? ( dev-libs/hiredis:= ) rest? ( dev-libs/json-c:= ) samba? ( net-fs/samba ) sqlite? ( dev-db/sqlite:3 ) ssl? ( !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= ) ) systemd? ( sys-apps/systemd )
 REQUIRED_USE=python? ( ^^ ( python_single_target_python3_6 python_single_target_python3_7 python_single_target_python3_8 ) )
@@ -13,4 +13,4 @@ RESTRICT=test firebird? ( bindist )
 SLOT=0
 SRC_URI=ftp://ftp.freeradius.org/pub/radius/freeradius-server-3.0.20.tar.gz ftp://ftp.freeradius.org/pub/radius/old/freeradius-server-3.0.20.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pam	a1771fc1e5831c201eaf18451747d94b	python-single-r1	fdfdbe462f245e931069310e892a8538	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=1b24ec833a1d51196a000e1f72067830
+_md5_=990e074e806300de453247e7fbae6392
