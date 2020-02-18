@@ -18,7 +18,7 @@ HOMEPAGE="http://icinga.org/icinga2"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="classicui console libressl lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
+IUSE="console libressl lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
 WX_GTK_VER="3.0"
 
 CDEPEND="
@@ -42,8 +42,7 @@ RDEPEND="
 		net-analyzer/monitoring-plugins
 		net-analyzer/nagios-plugins
 	) )
-	mail? ( virtual/mailx )
-	classicui? ( net-analyzer/icinga[web] )"
+	mail? ( virtual/mailx )"
 
 REQUIRED_USE="!minimal? ( || ( mariadb mysql postgres ) )"
 
