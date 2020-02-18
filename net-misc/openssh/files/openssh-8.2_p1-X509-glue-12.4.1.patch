@@ -1,6 +1,6 @@
-diff -ur --exclude '*.un~' a/openssh-8.2p1+x509-12.4.diff b/openssh-8.2p1+x509-12.4.diff
---- a/openssh-8.2p1+x509-12.4.diff	2020-02-15 10:50:06.441041447 -0800
-+++ b/openssh-8.2p1+x509-12.4.diff	2020-02-15 10:52:52.241790237 -0800
+diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x509-12.4.1.diff
+--- a/openssh-8.2p1+x509-12.4.1.diff	2020-02-18 13:58:50.824902609 -0800
++++ b/openssh-8.2p1+x509-12.4.1.diff	2020-02-18 13:59:57.917485338 -0800
 @@ -39197,16 +39197,15 @@
   
   install: $(CONFIGFILES) $(MANPAGES) $(TARGETS) install-files install-sysconf host-key check-config
@@ -65,24 +65,6 @@ diff -ur --exclude '*.un~' a/openssh-8.2p1+x509-12.4.diff b/openssh-8.2p1+x509-1
   	regress/unittests/sshkey/tests.o \
   	regress/unittests/sshkey/common.o \
   	regress/unittests/sshkey/test_file.o \
-@@ -39285,7 +39284,7 @@
-  
-  regress/unittests/sshkey/test_sshkey$(EXEEXT): ${UNITTESTS_TEST_SSHKEY_OBJS} \
-      regress/unittests/test_helper/libtest_helper.a libssh.a
--@@ -576,8 +579,7 @@
-+@@ -576,8 +578,7 @@
-  
-  UNITTESTS_TEST_KEX_OBJS=\
-  	regress/unittests/kex/tests.o \
-@@ -39295,7 +39294,7 @@
-  
-  regress/unittests/kex/test_kex$(EXEEXT): ${UNITTESTS_TEST_KEX_OBJS} \
-      regress/unittests/test_helper/libtest_helper.a libssh.a
--@@ -587,8 +589,7 @@
-+@@ -587,8 +588,7 @@
-  
-  UNITTESTS_TEST_HOSTKEYS_OBJS=\
-  	regress/unittests/hostkeys/tests.o \
 @@ -39305,7 +39304,7 @@
   
   regress/unittests/hostkeys/test_hostkeys$(EXEEXT): \
@@ -128,23 +110,20 @@ diff -ur --exclude '*.un~' a/openssh-8.2p1+x509-12.4.diff b/openssh-8.2p1+x509-1
   		sh buildpkg.sh; \
   	fi
   
-@@ -97723,19 +97722,6 @@
+@@ -97729,16 +97728,6 @@
  +	return mbtowc(NULL, s, n);
  +}
  +#endif
--diff -ruN openssh-8.2p1/version.h openssh-8.2p1+x509-12.4/version.h
+-diff -ruN openssh-8.2p1/version.h openssh-8.2p1+x509-12.4.1/version.h
 ---- openssh-8.2p1/version.h	2020-02-14 02:40:54.000000000 +0200
--+++ openssh-8.2p1+x509-12.4/version.h	2020-02-15 09:07:00.000000000 +0200
--@@ -1,6 +1,5 @@
---/* $OpenBSD: version.h,v 1.86 2020/02/14 00:39:20 djm Exp $ */
--+/* $OpenBSD: version.h,v 1.85 2019/10/09 00:04:57 djm Exp $ */
+-+++ openssh-8.2p1+x509-12.4.1/version.h	2020-02-17 19:07:00.000000000 +0200
+-@@ -2,5 +2,4 @@
 - 
---#define SSH_VERSION	"OpenSSH_8.2"
--+#define SSH_VERSION	"OpenSSH_8.1"
+- #define SSH_VERSION	"OpenSSH_8.2"
 - 
 --#define SSH_PORTABLE	"p1"
 --#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
 -+#define SSH_RELEASE	PACKAGE_STRING ", " SSH_VERSION "p1"
- diff -ruN openssh-8.2p1/version.m4 openssh-8.2p1+x509-12.4/version.m4
+ diff -ruN openssh-8.2p1/version.m4 openssh-8.2p1+x509-12.4.1/version.m4
  --- openssh-8.2p1/version.m4	1970-01-01 02:00:00.000000000 +0200
- +++ openssh-8.2p1+x509-12.4/version.m4	2020-02-15 09:07:00.000000000 +0200
+ +++ openssh-8.2p1+x509-12.4.1/version.m4	2020-02-17 19:07:00.000000000 +0200
