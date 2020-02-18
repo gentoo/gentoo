@@ -2484,7 +2484,7 @@ app-text/antiword 0.37-r1: free MS Word reader
 app-text/antixls 0.3b: Print out an XLS file with minimal formatting, or extract the data into CSV
 app-text/apvlv 0.1.5-r2: Alf's PDF Viewer Like Vim
 app-text/asa 1.1-r1: ASA Carriage control conversion for ouput by Fortran programs
-app-text/asciidoc 8.6.10_p20181016-r1: A plain text human readable/writable document format
+app-text/asciidoc 8.6.10_p20181016-r1 9.0.0_rc1: A plain text human readable/writable document format
 app-text/aspell 0.60.7_rc1 0.60.7 0.60.8: A spell checker replacement for ispell
 app-text/atril 1.22.1: Atril document viewer for MATE
 app-text/bact 0.13-r1: Boosting Algorithm for Classification of Trees
@@ -12755,7 +12755,7 @@ media-gfx/photoqt 1.7.1-r1: Simple but powerful Qt-based image viewer
 media-gfx/phototonic 2.1: Image viewer and organizer
 media-gfx/pinta 1.6-r2 9999: Simple Painting for Gtk
 media-gfx/pixels2pgf 0.1 9999: Convert pixel images (e.g. QRCode) to PGF/Tikz rectangles
-media-gfx/plantuml 1.2019.13 1.2020.0: Draw UML diagrams using a simple and human readable text description
+media-gfx/plantuml 1.2020.0: Draw UML diagrams using a simple and human readable text description
 media-gfx/png2ico 2002.12.08: PNG to icon converter
 media-gfx/pngcheck 2.3.0: Verifies the integrity of PNG, JNG and MNG files with internal checksums
 media-gfx/pngcrush 1.8.13: Portable Network Graphics (PNG) optimizing utility
@@ -13794,7 +13794,7 @@ media-sound/qsampler 0.5.6 9999: Graphical frontend to the LinuxSampler engine
 media-sound/qsynth 0.6.0 9999: A Qt application to control FluidSynth
 media-sound/qtagger 1.0.1_p20150402: Simple Qt5 ID3v2 tag editor
 media-sound/qtgain 1.0.0: A simple frontend to mp3gain, vorbisgain and metaflac
-media-sound/qtractor 0.9.11 0.9.12: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
+media-sound/qtractor 0.9.12: Audio/MIDI multi-track sequencer written in C++ with the Qt framework
 media-sound/qtscrobbler 0.11_pre20130123: Updates last.fm profiles using information from supported portable music players
 media-sound/quimup 1.4.3: A Qt5 client for the music player daemon (MPD) written in C++
 media-sound/quodlibet 4.2.1: audio library tagger, manager, and player for GTK+
@@ -16833,7 +16833,7 @@ sys-apps/gentoo-functions 0.12 0.13 9999: base functions required by all Gentoo 
 sys-apps/gentoo-systemd-integration 7 8 9999: systemd integration files for Gentoo
 sys-apps/gnome-disk-utility 3.32.1: Disk Utility for GNOME using udisks
 sys-apps/gpet 0.4: GTK+ based TOMOYO policy editor
-sys-apps/gptfdisk 1.0.3 1.0.4: GPT partition table manipulator for Linux
+sys-apps/gptfdisk 1.0.3 1.0.4 1.0.5: GPT partition table manipulator for Linux
 sys-apps/gradm 3.1.201603152148 3.1.201607172312 3.1.201608131257 3.1.201708012022: Administrative interface for the grsecurity Role Based Access Control system
 sys-apps/grep 3.1-r1 3.3-r1 3.4: GNU regular expression matcher
 sys-apps/grepcidr 2.0: Filter IPv4 and IPv6 addresses matching CIDR patterns
