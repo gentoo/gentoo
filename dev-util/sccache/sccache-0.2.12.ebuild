@@ -1,4 +1,4 @@
-# Copyright 2017-2019 Gentoo Authors
+# Copyright 2017-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -299,7 +299,7 @@ HOMEPAGE="https://github.com/mozilla/sccache/"
 SRC_URI="https://github.com/mozilla/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	$(cargo_crate_uris ${CRATES})"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 Boost-1.0 ISC MIT Unlicense ZLIB"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="azure dist-client dist-server gcs memcached redis s3"
@@ -340,11 +340,11 @@ src_install() {
 	dodoc -r docs/.
 
 	if use dist-server; then
-		newinitd "${FILESDIR}"/server.initd-r1 sccache-server
-		newconfd "${FILESDIR}"/server.confd-r1 sccache-server
+		newinitd "${FILESDIR}"/server.initd sccache-server
+		newconfd "${FILESDIR}"/server.confd sccache-server
 
-		newinitd "${FILESDIR}"/scheduler.initd-r1 sccache-scheduler
-		newconfd "${FILESDIR}"/scheduler.confd-r1 sccache-scheduler
+		newinitd "${FILESDIR}"/scheduler.initd sccache-scheduler
+		newconfd "${FILESDIR}"/scheduler.confd sccache-scheduler
 	fi
 }
 
