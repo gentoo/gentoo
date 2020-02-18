@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>hlein@korelogic.com</email>
+		<name>Hank Leininger</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
 	<longdescription lang="en">
 		scponly is an alternative 'shell' (of sorts) for system administrators
 		who would like to provide access to remote users to both read and write
@@ -10,6 +17,7 @@
 		ssh suite of applications.
 	</longdescription>
 	<use>
+		<flag name="chroot">Enables adding and configuring an 'scponlyc' chrooted user</flag>
 		<flag name="rsync">Enables rsync compatibility with potential security risks</flag>
 		<flag name="unison">Enables Unison compatibility with potential security risks</flag>
 		<flag name="subversion">Enables Subversion compatibility with potential security risks</flag>
