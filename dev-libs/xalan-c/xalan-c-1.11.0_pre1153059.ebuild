@@ -1,12 +1,12 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit toolchain-funcs eutils multilib
+inherit toolchain-funcs
 
 DESCRIPTION="XSLT processor for transforming XML into HTML, text, or other XML types"
-HOMEPAGE="http://xml.apache.org/xalan-c/"
+HOMEPAGE="https://xml.apache.org/xalan-c/"
 SRC_URI="mirror://gentoo/Xalan-C_r${PV#*_pre}-src.tar.gz"
 
 LICENSE="Apache-2.0"
@@ -15,22 +15,19 @@ KEYWORDS="amd64 ~ppc x86"
 IUSE="doc examples nls threads"
 
 RDEPEND=">=dev-libs/xerces-c-2.8.0"
-#	icu? ( dev-libs/icu )"
-DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen )"
+DEPEND="${RDEPEND}"
+BDEPEND="doc? ( app-doc/doxygen )"
 
 S="${WORKDIR}/xml-xalan/c"
 
-pkg_setup() {
-#	export ICUROOT="/usr"
-	export XALANCROOT="${S}"
-}
+PATCHES=(
+	"${FILESDIR}"/1.11.0_pre797991-as-needed.patch
+	"${FILESDIR}"/1.11.0_pre797991-bugfixes.patch
+	"${FILESDIR}"/1.11.0_pre797991-parallel-build.patch
+)
 
 src_prepare() {
-	epatch \
-		"${FILESDIR}/1.11.0_pre797991-as-needed.patch" \
-		"${FILESDIR}/1.11.0_pre797991-bugfixes.patch" \
-		"${FILESDIR}/1.11.0_pre797991-parallel-build.patch"
+	default
 
 	# - do not run configure in runConfigure
 	# - echo the export commands instead exporting the vars
@@ -47,19 +44,12 @@ src_prepare() {
 
 src_configure() {
 	export XERCESCROOT="/usr"
+	export XALANCROOT="${S}"
 
 	local target="linux"
-	# add more if needed, see xerces-c-2.8.0-r1 ebuild
-
-	local mloader="inmem"
-	use nls && mloader="nls"
-#	use icu && mloader="icu"
-
 	local transcoder="default"
-#	use icu && transcoder="icu"
-
-	local thread="none"
-	use threads && thread="pthread"
+	local mloader=$(usex nls nls inmem)
+	local thread=$(usex threads pthread none)
 
 	./runConfigure -p ${target} -c "$(tc-getCC)" -x "$(tc-getCXX)" \
 		-m ${mloader} -t ${transcoder} \
@@ -73,24 +63,23 @@ src_configure() {
 src_compile() {
 	default
 
-	if use doc ; then
-		mkdir build
-		cd "${S}/xdocs"
-		doxygen DoxyfileXalan
+	if use doc; then
+		mkdir build || die
+		cd xdocs || die
+		doxygen DoxyfileXalan || die
+		HTML_DOCS=( build/docs/apiDocs/. )
+
+		# clean doxygen cruft
+		find "${S}"/build \( -iname '*.map' -o -iname '*.md5' \) -delete || die
 	fi
 }
 
 src_install() {
 	default
 
-	if use doc ; then
-		dodir /usr/share/doc/${PF}
-		dohtml -r build/docs/apiDocs/*
-	fi
-
-	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r samples/*
+	if use examples; then
+		docinto examples
+		dodoc -r samples/.
 	fi
 }
 
