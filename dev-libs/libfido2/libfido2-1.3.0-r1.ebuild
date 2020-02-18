@@ -47,4 +47,3 @@ src_install() {
 
 	udev_newrules udev/70-u2f.rules 70-libfido2-u2f.rules
 }
-
