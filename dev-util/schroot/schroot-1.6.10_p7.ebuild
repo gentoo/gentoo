@@ -14,7 +14,7 @@ SRC_URI="mirror://debian/pool/main/${PN::1}/${PN}/${MY_P/%-*/}.orig.tar.xz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc64 ~x86"
 IUSE="btrfs +dchroot debug doc lvm nls pam test zfs"
 RESTRICT="!test? ( test )"
 
