@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
 inherit multilib-minimal
 
@@ -19,7 +19,7 @@ IUSE="static-libs"
 RESTRICT="test"
 
 RDEPEND="!<sys-devel/libtool-2.4.3-r2:2"
-DEPEND="app-arch/xz-utils"
+BDEPEND="app-arch/xz-utils"
 
 S="${WORKDIR}/${MY_P}/libltdl"
 
