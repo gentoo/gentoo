@@ -17,7 +17,7 @@ if [[ "${PV}" == 9999 ]]; then
 else
 	SRC_URI="http://mcabber.com/files/${P}.tar.bz2"
 	SRC_URI+=" https://dev.gentoo.org/~andrey_utkin/distfiles/${P}_bug699972.patch"
-	KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+	KEYWORDS="~alpha amd64 ~arm ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 fi
 
 LICENSE="GPL-2"
