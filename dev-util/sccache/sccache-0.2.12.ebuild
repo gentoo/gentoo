@@ -340,11 +340,11 @@ src_install() {
 	dodoc -r docs/.
 
 	if use dist-server; then
-		newinitd "${FILESDIR}"/server.initd-r1 sccache-server
-		newconfd "${FILESDIR}"/server.confd-r1 sccache-server
+		newinitd "${FILESDIR}"/server.initd sccache-server
+		newconfd "${FILESDIR}"/server.confd sccache-server
 
-		newinitd "${FILESDIR}"/scheduler.initd-r1 sccache-scheduler
-		newconfd "${FILESDIR}"/scheduler.confd-r1 sccache-scheduler
+		newinitd "${FILESDIR}"/scheduler.initd sccache-scheduler
+		newconfd "${FILESDIR}"/scheduler.confd sccache-scheduler
 	fi
 }
 
