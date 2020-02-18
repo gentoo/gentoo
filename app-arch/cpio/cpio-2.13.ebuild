@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,6 +14,7 @@ IUSE="nls"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-2.12-non-gnu-compilers.patch #275295
+	"${FILESDIR}"/${PN}-2.12-gcc-10.patch #705900
 )
 
 src_configure() {
