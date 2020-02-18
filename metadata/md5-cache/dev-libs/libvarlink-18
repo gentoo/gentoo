@@ -1,0 +1,13 @@
+BDEPEND=>=dev-util/meson-0.47.0 virtual/pkgconfig >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+DEFINED_PHASES=compile configure install test
+DESCRIPTION=C implementation of the Varlink protocol and command line tool
+EAPI=7
+HOMEPAGE=https://github.com/varlink/libvarlink
+IUSE=test
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/varlink/libvarlink/archive/18.tar.gz -> libvarlink-18.tar.gz
+_eclasses_=meson	565447abb820cb005fd3a076bc631750	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=807ad263c2855f764cbb6e3665bd21e2
