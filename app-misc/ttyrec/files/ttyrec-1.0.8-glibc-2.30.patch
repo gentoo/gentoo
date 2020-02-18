@@ -1,0 +1,30 @@
+diff --git a/ttyrec.c b/ttyrec.c
+index 3392f70..86a59ee 100644
+--- a/ttyrec.c
++++ b/ttyrec.c
+@@ -57,7 +57,9 @@
+ 
+ #if defined(SVR4)
+ #include <fcntl.h>
++#if !(defined(__FreeBSD__) || defined(__NetBSD__) || defined(__APPLE__) || defined(__linux__))
+ #include <stropts.h>
++#endif
+ #endif /* SVR4 */
+ 
+ #include <sys/time.h>
+@@ -449,6 +451,7 @@ getslave()
+ 		perror("open(fd, O_RDWR)");
+ 		fail();
+ 	}
++#ifndef __linux__
+ 	if (isastream(slave)) {
+ 		if (ioctl(slave, I_PUSH, "ptem") < 0) {
+ 			perror("ioctl(fd, I_PUSH, ptem)");
+@@ -466,6 +469,7 @@ getslave()
+ #endif
+ 		(void) ioctl(0, TIOCGWINSZ, (char *)&win);
+ 	}
++#endif
+ #else /* !SVR4 */
+ #ifndef HAVE_openpty
+ 	line[strlen("/dev/")] = 't';
