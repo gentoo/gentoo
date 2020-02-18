@@ -442,14 +442,6 @@ dev-util/buildbot-slave
 # Removal in 30 days.  Bug #660660.
 dev-python/zsi
 
-# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-26)
-# Not needed anymore, feel free to remove from your system
-# emerge -C virtual/cargo
-# update your rust packages running emerge with the
-# --changed-deps option if you have problems
-# https://bugs.gentoo.org/695698
-virtual/cargo
-
 # David Seifert <soap@gentoo.org> (2020-01-27)
 # Unmaintained, py2 only, depends on dead dev-python/pygtkglext, last release
 # over 8 years ago, no sign of py3 port. Removal in 30 days.
