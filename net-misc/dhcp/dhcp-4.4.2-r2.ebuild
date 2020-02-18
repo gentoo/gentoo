@@ -236,12 +236,12 @@ src_install() {
 		mv "${f}" "${f%.example}" || die
 	done
 	sed -i '/^[^#]/s:^:#:' "${ED}"/etc/dhcp/*.conf || die
+
+	diropts -m0750 -o dhcp -g dhcp
+	keepdir /var/lib/dhcp
 }
 
 pkg_preinst() {
-	enewgroup dhcp
-	enewuser dhcp -1 -1 /var/lib/dhcp dhcp
-
 	# Keep the user files over the sample ones.  The
 	# hashing is to ignore the crappy defaults #384087.
 	local f h
