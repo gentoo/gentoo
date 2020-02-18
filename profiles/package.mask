@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-18)
+# Dead and unmaintained.  Last release in 2015.  Broken with newer
+# versions of Python 3.  No reverse dependencies left.
+# Removal in 30 days.  Bug #691044.
+dev-python/tlslite
+
 # Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
 # Discontinued upstream.  Bug #709998
 net-analyzer/icinga
