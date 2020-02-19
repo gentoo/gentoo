@@ -1,25 +1,25 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit distutils-r1 eutils linux-info
+inherit distutils-r1 eutils linux-info user
 
 DESCRIPTION="A highly available, distributed, and eventually consistent object/blob store"
 HOMEPAGE="https://launchpad.net/swift"
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/openstack/swift.git"
-	EGIT_BRANCH="stable/train"
+	EGIT_BRANCH="stable/stein"
 else
 	SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="account container doc +memcached +object proxy"
+IUSE="account container doc +memcached object proxy"
 REQUIRED_USE="|| ( proxy account container object )"
 
 CDEPEND=">=dev-python/pbr-1.8.0[${PYTHON_USEDEP}]"
@@ -30,20 +30,17 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/eventlet-0.25.0[${PYTHON_USEDEP}]
-	>=dev-python/greenlet-0.3.2[${PYTHON_USEDEP}]
+	>=dev-python/greenlet-0.3.1[${PYTHON_USEDEP}]
 	>=dev-python/netifaces-0.8[${PYTHON_USEDEP}]
 	!~dev-python/netifaces-0.10.0[${PYTHON_USEDEP}]
 	!~dev-python/netifaces-0.10.1[${PYTHON_USEDEP}]
 	>=dev-python/pastedeploy-1.3.3[${PYTHON_USEDEP}]
-	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
+	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	dev-python/pyxattr[${PYTHON_USEDEP}]
 	>=dev-python/PyECLib-1.3.1[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.0.2[${PYTHON_USEDEP}]
-	>=dev-python/ipaddress-1.0.16[${PYTHON_USEDEP}]
 	memcached? ( net-misc/memcached )
-	net-misc/rsync[xattr]
-	acct-user/swift
-	acct-group/swift"
+	net-misc/rsync[xattr]"
 
 pkg_pretend() {
 	linux-info_pkg_setup
@@ -55,6 +52,11 @@ pkg_pretend() {
 			linux_chkconfig_present ${module} || ewarn "${module} needs to be enabled"
 		done
 	fi
+}
+
+pkg_setup() {
+	enewuser swift
+	enewgroup swift
 }
 
 src_prepare() {
@@ -85,7 +87,8 @@ python_install_all() {
 		newinitd "${FILESDIR}/swift-proxy.initd" "swift-proxy"
 		newins "etc/proxy-server.conf-sample" "proxy-server.conf"
 		if use memcached; then
-			sed -i '/depend/a\    need memcached' "${D}/etc/init.d/swift-proxy"
+			sed -i '/depend/a\
+    need memcached' "${D}/etc/init.d/swift-proxy"
 		fi
 	fi
 	if use account; then
