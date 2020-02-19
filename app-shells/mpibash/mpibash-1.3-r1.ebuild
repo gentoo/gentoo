@@ -1,15 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
-inherit autotools-utils multilib
+inherit autotools multilib
 
 if [[ ${PV} = 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/lanl/MPI-Bash.git"
 	inherit git-r3
 	KEYWORDS=""
-	AUTOTOOLS_AUTORECONF=1
 else
 	SRC_URI="https://github.com/lanl/MPI-Bash/releases/download/v${PV}/${P}.tar.gz"
 	KEYWORDS="~amd64"
@@ -23,20 +22,24 @@ SLOT="0"
 IUSE="examples"
 
 DEPEND="virtual/mpi
-	>=app-shells/bash-4.2[plugins]
+	>=app-shells/bash-4.2:0[plugins]
 	sys-cluster/libcircle"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}/mpi-3.patch" )
+
+src_prepare() {
+	default
+	[[ ${PV} != 9999 ]] || eautoreconf
+}
+
 src_configure() {
-	local myeconfargs=(
+	econf --with-plugindir="${EPREFIX}"/usr/$(get_libdir)/bash \
 		--with-bashdir="${EPREFIX}"/usr/include/bash-plugins
-		--with-plugindir="${EPREFIX}"/usr/$(get_libdir)/bash
-	)
-	autotools-utils_src_configure
 }
 
 src_install() {
-	autotools-utils_src_install
+	default
 	sed -i '/^export LD_LIBRARY_PATH/d' "${ED}/usr/bin/${PN}" || die
 	use examples || rm -r "${ED}/usr/share/doc/${PF}/examples" || die
 }
