@@ -11705,7 +11705,7 @@ gnome-extra/eiciel 0.9.12.1-r1: ACL editor for GNOME, with Nautilus extension
 gnome-extra/evolution-data-server 3.32.5: Evolution groupware backend
 gnome-extra/evolution-ews 3.32.2: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
-gnome-extra/gnome-boxes 3.30.3: Simple GNOME 3 application to access remote or virtual systems
+gnome-extra/gnome-boxes 3.30.3 3.32.2: Simple GNOME 3 application to access remote or virtual systems
 gnome-extra/gnome-calculator 3.32.2: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.32.2: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.32.1: Unicode character map viewer and library
