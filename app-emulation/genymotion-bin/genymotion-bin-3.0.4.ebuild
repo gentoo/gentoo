@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,17 +17,19 @@ LICENSE="genymotion"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-DEPEND=""
-RDEPEND="|| ( >=app-emulation/virtualbox-5.0.28 >=app-emulation/virtualbox-bin-5.0.28 )
-	virtual/opengl
+RDEPEND="|| (
+		app-emulation/virtualbox
+		app-emulation/virtualbox-bin
+	)
 	|| (
 		dev-libs/openssl-compat:1.0.0
 		=dev-libs/openssl-1.0*:0
 	)
 	dev-libs/hiredis:0/0.14
 	sys-apps/util-linux
+	virtual/opengl
 "
-BDEPEND=">=dev-util/patchelf-0.9_p20180129"
+BDEPEND="dev-util/patchelf"
 
 RESTRICT="bindist fetch"
 S="${WORKDIR}"
