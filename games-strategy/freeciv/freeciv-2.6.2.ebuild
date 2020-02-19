@@ -158,8 +158,8 @@ src_install() {
 	default
 
 	if use dedicated ; then
-		rm -rf "${ED}"/usr/share/pixmaps
-		rm -f "${ED}"/usr/share/man/man6/freeciv-{client,gtk2,gtk3,modpack,qt,sdl,xaw}*
+		rm -rf "${ED}"/usr/share/pixmaps || die
+		rm -f "${ED}"/usr/share/man/man6/freeciv-{client,gtk2,gtk3,modpack,qt,sdl,xaw}* || die
 	else
 		if use server ; then
 			# Create and install the html manual. It can't be done for dedicated
@@ -178,8 +178,8 @@ src_install() {
 		fi
 		rm -f "${ED}"/usr/share/man/man6/freeciv-xaw*
 	fi
-	find "${ED}" -name "freeciv-manual*" -delete
+	find "${ED}" -name "freeciv-manual*" -delete || die
 
-	rm -f "${ED}/usr/$(get_libdir)"/*.a
+	rm -f "${ED}/usr/$(get_libdir)"/*.a || die
 	find "${ED}" -type f -name "*.la" -delete || die
 }
