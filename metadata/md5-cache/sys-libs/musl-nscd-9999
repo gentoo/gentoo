@@ -1,5 +1,6 @@
 BDEPEND=virtual/pkgconfig >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=install prepare unpack
+DEPEND=!sys-libs/glibc !sys-libs/uclibc
 DESCRIPTION=musl-nscd is an implementation of the NSCD protocol for the musl libc
 EAPI=7
 HOMEPAGE=https://github.com/pikhq/musl-nscd
@@ -8,4 +9,4 @@ LICENSE=MIT
 PROPERTIES=live
 SLOT=0
 _eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=448bc413ae4355c20d3df6098a7f66dd
+_md5_=53fafd8201630cdba9250f1f0ebbdc54
