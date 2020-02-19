@@ -8729,7 +8729,7 @@ dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
 dev-python/reflink 0.2.1: RFC-compliant FQDN validation and manipulation for Python
 dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in documentation
 dev-python/regex 2017.04.05 2017.04.05-r1 2019.11.1: Alternative regular expression module to replace re
-dev-python/rencode 1.0.5 1.0.5-r1: similar to bencode from the BitTorrent project
+dev-python/rencode 1.0.5-r1: similar to bencode from the BitTorrent project
 dev-python/reno 2.7.0 2.11.2 2.11.3: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 3.5.13-r1: Tools for generating printable PDF documents from any data source
 dev-python/repoze-lru 0.6-r2 0.6-r3 0.7: A tiny LRU cache implementation and decorator
@@ -9757,7 +9757,7 @@ dev-ruby/http-accept 1.7.0 2.1.0 2.1.1: Parse Accept and Accept-Language HTTP he
 dev-ruby/http-cookie 1.0.3: A ruby library to handle HTTP cookies
 dev-ruby/http-form_data 1.0.3 2.1.1 2.2.0: Utility-belt to build form data request bodies
 dev-ruby/http_parser_rb 0.6.0-r1: Simple callback-based HTTP request/response parser
-dev-ruby/httparty 0.17.1 0.17.3: Makes http fun! Also, makes consuming restful web services dead easy
+dev-ruby/httparty 0.17.1 0.17.3 0.18.0: Makes http fun! Also, makes consuming restful web services dead easy
 dev-ruby/httpauth 0.2.1: Library implementing the full HTTP Authentication protocol (RFC 2617)
 dev-ruby/httpclient 2.8.3: 'httpclient' gives something like the functionality of libwww-perl (LWP) in Ruby
 dev-ruby/i18n 0.7.0-r3 0.9.5-r1 1.0.1-r1 1.6.0 1.7.0 1.7.1 1.8.0 1.8.1 1.8.2 1.8.2-r1: Add Internationalization support to your Ruby application
