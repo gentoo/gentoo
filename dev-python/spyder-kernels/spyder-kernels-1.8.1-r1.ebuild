@@ -10,7 +10,7 @@ inherit distutils-r1
 DESCRIPTION="Kernels used by spyder on its ipython console"
 HOMEPAGE="https://github.com/spyder-ide/spyder-kernels/
 	https://pypi.org/project/spyder-kernels/"
-SRC_URI="https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}-gh.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
