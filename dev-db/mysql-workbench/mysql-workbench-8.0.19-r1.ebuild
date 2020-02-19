@@ -39,6 +39,7 @@ CDEPEND="${PYTHON_DEPS}
 		x11-libs/gtk+:3
 		gnome-base/libglade:2.0
 		>=x11-libs/cairo-1.5.12[glib,svg]
+		>=dev-libs/rapidjson-1.1.0
 		dev-libs/libsigc++:2
 		>=dev-libs/boost-1.55.0[nls]
 		>=dev-cpp/ctemplate-0.95
@@ -49,7 +50,7 @@ CDEPEND="${PYTHON_DEPS}
 		virtual/opengl
 		|| ( sys-libs/e2fsprogs-libs dev-libs/ossp-uuid )
 		dev-libs/tinyxml[stl]
-		>=dev-db/mysql-connector-c++-1.1.8
+		>=dev-db/mysql-connector-c++-1.1.8 =dev-db/mysql-connector-c++-1*
 		dev-db/vsqlite++
 		|| ( dev-db/libiodbc dev-db/unixODBC )
 		dev-python/pexpect
@@ -69,7 +70,7 @@ S="${WORKDIR}"/"${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-6.2.5-wbcopytables.patch"
-	"${FILESDIR}/${PN}-6.3.10-i386-json.patch"
+	"${FILESDIR}/${P}-mysql-connector-8.patch"
 )
 
 src_unpack() {
