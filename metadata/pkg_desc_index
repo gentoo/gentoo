@@ -96,6 +96,8 @@ acct-group/polkitd 0: System group: polkitd
 acct-group/postdrop 0: System group: postdrop
 acct-group/postfix 0: System group: postfix
 acct-group/prometheus 0: System group: prometheus
+acct-group/puppet 0: System group: puppet
+acct-group/puppetdb 0: System group: puppetdb
 acct-group/qemu 0: System group: qemu
 acct-group/qmail 0: System group: qmail
 acct-group/quassel 0: System group: quassel
@@ -239,6 +241,8 @@ acct-user/polkitd 0: System user: polkitd
 acct-user/postfix 0: user for postfix daemon
 acct-user/postmaster 0: Postmaster user
 acct-user/prometheus 0: user for prometheus
+acct-user/puppet 0: user for puppet services
+acct-user/puppetdb 0: User for the puppetdb service
 acct-user/qemu 0: System user: qemu
 acct-user/qmaild 0: user for qmail-smtpd
 acct-user/qmaill 0: user for qmail logging
@@ -11731,7 +11735,7 @@ gnome-extra/gnome-shell-extension-gsconnect 28-r1: KDE Connect implementation fo
 gnome-extra/gnome-shell-extensions 3.32.1: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 22-r1: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.32.1: Unofficial extension pack providing GNOME 2-like features for GNOME 3
-gnome-extra/gnome-software 3.30.6: Gnome install & update software
+gnome-extra/gnome-software 3.30.6 3.32.4: Gnome install & update software
 gnome-extra/gnome-system-monitor 3.32.1: The Gnome System Monitor
 gnome-extra/gnome-tweaks 3.32.0-r1: Customize advanced GNOME 3 options
 gnome-extra/gnome-user-docs 3.32.3: GNOME end user documentation
@@ -13117,7 +13121,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 9999: Linux Studio Plugins
 media-libs/lv2 1.14.0-r2 1.16.0-r1: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 19.2.8 19.3.2 19.3.3 19.3.4 20.0.0_rc2 20.0.0_rc3 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.2.8 19.3.4 20.0.0 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.16.0-r1 6.16.0-r2 6.18.0 6.18.0-r1: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
