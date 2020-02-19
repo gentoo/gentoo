@@ -3262,7 +3262,7 @@ dev-db/pgxnclient 1.2-r1 1.2.1: PostgreSQL Extension Network Client
 dev-db/phpmyadmin 4.9.2 4.9.4 5.0.1: Web-based administration for MySQL database in PHP
 dev-db/plr 8.3.0.17: R language extension for postgresql database
 dev-db/postgis 2.5.3-r1 3.0.0-r1 9999: Geographic Objects for PostgreSQL
-dev-db/postgresql 9.4.22 9.4.22-r1 9.4.23 9.4.24 9.4.25 9.5.17 9.5.17-r1 9.5.18 9.5.19 9.5.20 9.6.13 9.6.13-r1 9.6.14 9.6.15 9.6.16 10.9 10.10 10.11 11.4 11.5 11.6 12.0 12.1 9999: PostgreSQL RDBMS
+dev-db/postgresql 9.4.22 9.4.22-r1 9.4.23 9.4.24 9.4.25 9.4.26 9.5.17 9.5.17-r1 9.5.18 9.5.19 9.5.20 9.5.21 9.6.13 9.6.13-r1 9.6.14 9.6.15 9.6.16 9.6.17 10.9 10.10 10.11 10.12 11.4 11.5 11.6 11.7 12.0 12.1 12.2 9999: PostgreSQL RDBMS
 dev-db/pspg 1.6.5 1.6.8 2.5.4 2.5.5 2.6.6: A better pager for psql and mysql
 dev-db/psqlodbc 10.01.0000 11.01.0000: Official ODBC driver for PostgreSQL
 dev-db/qdbm 1.8.78-r2: Quick Database Manager
@@ -11576,7 +11576,7 @@ games-strategy/dominions2 2.16: Dominions 2: The Ascension Wars is an epic turn-
 games-strategy/dopewars 1.5.12-r3: Re-Write of the game Drug Wars
 games-strategy/dunelegacy 0.96.4: Updated clone of Westood Studios' Dune II
 games-strategy/endless-sky 0.9.6: Space exploration, trading & combat in the tradition of Terminal Velocity
-games-strategy/freeciv 2.5.11-r1 2.5.12 2.6.0-r1 2.6.1: multiplayer strategy game (Civilization Clone)
+games-strategy/freeciv 2.5.12 2.6.1 2.6.2: multiplayer strategy game (Civilization Clone)
 games-strategy/freecol 0.11.6-r1: An open source clone of the game Colonization
 games-strategy/freeorion 0.4.7.1-r4 0.4.8_p20190501-r1 9999: A free turn-based space empire and galactic conquest game
 games-strategy/freesynd 0.7.1-r1: Portable reimplementation of engine for the classic Bullfrog game, Syndicate
@@ -13635,7 +13635,6 @@ media-sound/galan 0.3.0_beta7: gAlan - Graphical Audio Language
 media-sound/gbsplay 0.0.91-r2: Nintendo Gameboy sound player for GBS format
 media-sound/gigedit 1.1.1-r1 9999: An instrument editor for gig files
 media-sound/gimmix 0.5.7.2-r1: a graphical music player daemon (MPD) client using GTK+2
-media-sound/glmix 0.3: 3D widget for mixing up to eight JACK audio streams down to stereo
 media-sound/glurp 0.12.3: Glurp is a GTK2 based graphical client for the Music Player Daemon
 media-sound/gmorgan 0.79-r1: Opensource software rhythm station
 media-sound/gmpc 11.8.16-r1: A GTK+2 client for the Music Player Daemon
