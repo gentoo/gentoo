@@ -33,8 +33,13 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
-# No more revdeps, abandoned upstream, broken by current dbus-python py2-only,
-# blocks dev-python/pygtk removal, bug #626374. Masked for removal in 30 days.
+# Last release and commit in 2007, py2-only, blocks dev-python/pygtk removal,
+# bugs #678656, #707632. Masked for removal in 30 days.
+media-sound/pympd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
+# Abandoned upstream, broken by current dbus-python, py2-only, blocks
+# dev-python/pygtk removal, bug #626374. Masked for removal in 30 days.
 media-sound/volti
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-19)
