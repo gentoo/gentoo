@@ -56,6 +56,11 @@ rpm     - app-arch/rpm
 unstuff - app-arch/stuffit
 zoo     - app-arch/zoo"
 
+PATCHES=(
+	# https://gitlab.gnome.org/GNOME/file-roller/merge_requests/31
+	"${FILESDIR}"/${PN}-3.32.4-fno-common.patch
+)
+
 src_prepare() {
 	# File providing Gentoo package names for various archivers
 	cp -v "${FILESDIR}"/3.32-packages.match data/packages.match || die
