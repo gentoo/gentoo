@@ -94,6 +94,7 @@ RDEPEND="${COMMON_DEPEND}
 	acct-user/systemd-resolve
 	acct-user/systemd-timesync
 	>=sys-apps/baselayout-2.2
+	pam? ( sys-auth/pambase[systemd(-)] )
 	selinux? ( sec-policy/selinux-base-policy[systemd] )
 	sysv-utils? ( !sys-apps/sysvinit )
 	!sysv-utils? ( sys-apps/sysvinit )
