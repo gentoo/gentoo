@@ -33,6 +33,11 @@
 #--- END OF EXAMPLES ---
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
+# Last release in 2011, py2-only, blocks dev-python/pygtk removal, bug #708102
+# There are plenty other image viewers to choose. Masked for removal in 30 days.
+media-gfx/mirage
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
 # No maintainer, py2-only, blocks dev-python/pygtk removal, needs version bump
 # See bugs #546024, #706486. Masked for removal in 30 days.
 gnome-extra/nautilus-dropbox
