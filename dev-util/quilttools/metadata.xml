@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>kurt@kmk-computers.de</email>
+    <name>Kurt Kanzenbach</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+    mb2q analyses the complete mailbox and collects various tags (Reviewed-by,
+    Acked-by, Tested-by) from replies to individual patches and to the cover
+    letter. If a tag is in a reply to the cover letter it is applied to all
+    patches which reference the cover letter.
+
+    Optionally the output can be redirected into a mailbox which can be applied
+    with git-am.
+  </longdescription>
+</pkgmetadata>
