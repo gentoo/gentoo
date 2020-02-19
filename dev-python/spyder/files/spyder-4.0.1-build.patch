@@ -1,20 +1,6 @@
 diff -r -U3 spyder-4.0.0b1.orig/setup.py spyder-4.0.0b1/setup.py
 --- spyder-4.0.0b1.orig/setup.py	2018-08-12 04:35:49.000000000 +0700
 +++ spyder-4.0.0b1/setup.py	2018-08-14 20:25:32.827148778 +0700
-@@ -83,12 +83,7 @@
- def get_data_files():
-     """Return data_files in a platform dependent manner"""
-     if sys.platform.startswith('linux'):
--        if PY3:
--            data_files = [('share/applications', ['scripts/spyder3.desktop']),
--                          ('share/icons', ['img_src/spyder3.png']),
--                          ('share/metainfo', ['scripts/spyder3.appdata.xml'])]
--        else:
--            data_files = [('share/applications', ['scripts/spyder.desktop']),
-+        data_files = [('share/applications', ['scripts/spyder.desktop']),
-                           ('share/icons', ['img_src/spyder.png'])]
-     elif os.name == 'nt':
-         data_files = [('scripts', ['img_src/spyder.ico',
 @@ -112,21 +107,6 @@
  
  

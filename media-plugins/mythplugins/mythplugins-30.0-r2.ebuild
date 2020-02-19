@@ -89,7 +89,7 @@ DEPEND="
 		$(python_gen_cond_dep '
 			dev-python/pycurl[${PYTHON_MULTI_USEDEP}]
 			dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-			dev-python/mysql-python[${PYTHON_MULTI_USEDEP}]
+			dev-python/mysqlclient[${PYTHON_MULTI_USEDEP}]
 			dev-python/oauth[${PYTHON_MULTI_USEDEP}]
 		')
 	)
