@@ -37,7 +37,7 @@ done
 IUSE="${IUSE_VIDEO_CARDS}
 	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 libglvnd +llvm
 	lm-sensors opencl osmesa selinux test unwind vaapi valgrind vdpau vulkan
-	vulkan-overlay wayland +X xa xvmc"
+	vulkan-overlay wayland +X xa xvmc +zstd"
 
 REQUIRED_USE="
 	d3d9?   ( dri3 || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
@@ -128,6 +128,7 @@ RDEPEND="
 		>=x11-libs/libxcb-1.13:=[${MULTILIB_USEDEP}]
 		x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
 	)
+	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
 "
 for card in ${RADEON_CARDS}; do
 	RDEPEND="${RDEPEND}
@@ -482,6 +483,7 @@ multilib_src_configure() {
 		$(meson_use gles2)
 		$(meson_use libglvnd glvnd)
 		$(meson_use selinux)
+		$(meson_use zstd)
 		-Dvalgrind=$(usex valgrind auto false)
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")
