@@ -32,6 +32,30 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
+# Last commit in 2015, py2-only, blocks dev-python/pygtk removal, bug #710170
+# Masked for removal in 30 days.
+net-wireless/wifi-radar
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
+# Dead upstream, py2-only. Masked for removal in 30 days.
+app-misc/pysmssend
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
+# Last release in 2007, py2-only, blocks dev-python/pygtk removal,
+# Masked for removal in 30 days.
+app-mobilephone/pysms
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
+# Last release and commit in 2007, py2-only, blocks dev-python/pygtk removal,
+# bugs #678656, #707632. Masked for removal in 30 days.
+media-sound/pympd
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
+# Abandoned upstream, broken by current dbus-python, py2-only, blocks
+# dev-python/pygtk removal, bug #626374. Masked for removal in 30 days.
+media-sound/volti
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-19)
 # (on behalf of QA team)
 # Masked due to unresolved vulnerabilities.  Please do not remove

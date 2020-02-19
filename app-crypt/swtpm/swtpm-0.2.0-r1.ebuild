@@ -13,11 +13,10 @@ SRC_URI="https://github.com/stefanberger/swtpm/archive/v${PV}.tar.gz -> ${P}.tar
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="fuse gnutls seccomp test"
+IUSE="fuse gnutls libressl seccomp test"
 RESTRICT="!test? ( test )"
 
-COMMON_DEPEND="dev-libs/libtpms
-	dev-libs/openssl:0
+COMMON_DEPEND="
 	fuse? (
 		dev-libs/glib:2
 		sys-fs/fuse:0
@@ -26,6 +25,14 @@ COMMON_DEPEND="dev-libs/libtpms
 		   dev-libs/libtasn1:=
 		   >=net-libs/gnutls-3.1.0[tools]
 		)
+	!libressl? (
+		 dev-libs/openssl:0=
+		 dev-libs/libtpms[-libressl]
+		   )
+	libressl? (
+		    dev-libs/libressl:0=
+		    dev-libs/libtpms[libressl]
+		  )
 	seccomp? ( sys-libs/libseccomp )
 "
 
@@ -61,4 +68,5 @@ src_install() {
 	default
 	fowners tss:tss /var/lib/swtpm-localca
 	keepdir /var/lib/swtpm-localca
+	find "${D}" -name '*.la' -delete || die
 }

@@ -17,7 +17,7 @@ COMMON_DEPEND="
 	>=dev-libs/glib-2.45.8:2
 	>=x11-libs/gtk+-3.3.8:3
 	>=x11-libs/cairo-1
-	>=sys-power/upower-0.99:=
+	>=sys-power/upower-0.99.8:=
 "
 RDEPEND="${COMMON_DEPEND}
 	x11-themes/adwaita-icon-theme
