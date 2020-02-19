@@ -2,12 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils elisp-common
 
 MY_P="${P/-/_}"
+inherit eutils elisp-common
+
 DESCRIPTION="Extensible window manager using a Lisp-based scripting language"
-HOMEPAGE="http://sawfish.wikia.com/"
-SRC_URI="http://download.tuxfamily.org/sawfish/${MY_P}.tar.xz"
+HOMEPAGE="https://sawfish.fandom.com/wiki/Main_Page"
+SRC_URI="https://download.tuxfamily.org/sawfish/${MY_P}.tar.xz"
 
 LICENSE="GPL-2 Artistic-2"
 SLOT="0"
@@ -18,7 +19,6 @@ RDEPEND="
 	emacs? ( >=app-editors/emacs-23.1:* )
 	>=dev-libs/librep-0.92.1
 	>=x11-libs/rep-gtk-0.90.7
-	x11-libs/pangox-compat
 	x11-libs/gdk-pixbuf:2[X]
 	>=x11-libs/gtk+-2.24.0:2
 	x11-libs/libXtst
