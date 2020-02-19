@@ -1,13 +1,13 @@
-BDEPEND=>=dev-util/patchelf-0.9_p20180129
+BDEPEND=dev-util/patchelf
 DEFINED_PHASES=install nofetch postinst prepare unpack
 DESCRIPTION=Complete set of tools that provide a virtual environment for Android
 EAPI=7
 HOMEPAGE=https://genymotion.com
 KEYWORDS=-* ~amd64
 LICENSE=genymotion
-RDEPEND=|| ( >=app-emulation/virtualbox-5.0.28 >=app-emulation/virtualbox-bin-5.0.28 ) virtual/opengl || ( dev-libs/openssl-compat:1.0.0 =dev-libs/openssl-1.0*:0 ) dev-libs/hiredis:0/0.14 sys-apps/util-linux
+RDEPEND=|| ( app-emulation/virtualbox app-emulation/virtualbox-bin ) || ( dev-libs/openssl-compat:1.0.0 =dev-libs/openssl-1.0*:0 ) dev-libs/hiredis:0/0.14 sys-apps/util-linux virtual/opengl
 RESTRICT=bindist fetch
 SLOT=0
-SRC_URI=genymotion-3.0.3-linux_x64.bin
+SRC_URI=genymotion-3.0.4-linux_x64.bin
 _eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	desktop	b1d22ac8bdd4679ab79c71aca235009d	multilib	1d91b03d42ab6308b5f4f6b598ed110e	pax-utils	a41d1fd1c111289ffa04490de6ee79d7	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=4a912509ae30a1818872ceda2d078a44
+_md5_=51048ff5b83cfa8800f1a08b0a63617c
