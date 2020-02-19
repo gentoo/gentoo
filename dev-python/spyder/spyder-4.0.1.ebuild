@@ -116,6 +116,11 @@ python_test() {
 	virtx pytest -vv
 }
 
+python_install_all() {
+	distutils-r1_python_install_all
+	dosym spyder3 /usr/bin/spyder
+}
+
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
