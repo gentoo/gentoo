@@ -39,7 +39,6 @@ RDEPEND="
 	dev-python/pyxattr[${PYTHON_USEDEP}]
 	>=dev-python/PyECLib-1.3.1[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.0.2[${PYTHON_USEDEP}]
-	>=dev-python/ipaddress-1.0.16[${PYTHON_USEDEP}]
 	memcached? ( net-misc/memcached )
 	net-misc/rsync[xattr]
 	acct-user/swift
