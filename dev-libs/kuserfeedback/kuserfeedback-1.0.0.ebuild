@@ -15,6 +15,7 @@ if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${P}.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
 fi
+
 LICENSE="MIT"
 SLOT="5"
 IUSE="doc"

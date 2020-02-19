@@ -9,7 +9,7 @@ BACKPORTS="d8a2db77f5731cf32c6d31127452391c6cf7f91f"
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
 
-inherit flag-o-matic python-single-r1 qmake-utils user readme.gentoo-r1 systemd toolchain-funcs vcs-snapshot
+inherit flag-o-matic python-single-r1 qmake-utils user-info readme.gentoo-r1 systemd toolchain-funcs vcs-snapshot
 
 MYTHTV_BRANCH="fixes/29"
 
@@ -31,6 +31,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 "
 
 COMMON="
+	acct-user/mythtv
 	dev-libs/glib:2
 	dev-qt/qtcore:5
 	dev-qt/qtdbus:5
@@ -111,8 +112,6 @@ COMMON="
 	)
 "
 RDEPEND="${COMMON}
-	!media-tv/mythtv-bindings
-	!x11-themes/mythtv-themes
 	media-fonts/corefonts
 	media-fonts/dejavu
 	media-fonts/liberation-fonts
@@ -160,8 +159,7 @@ PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.1.patch" ) # bug 691904
 
 pkg_setup() {
 	python-single-r1_pkg_setup
-	enewuser mythtv -1 /bin/bash /home/mythtv ${MYTHTV_GROUPS}
-	usermod -a -G ${MYTHTV_GROUPS} mythtv
+	# The acct-user/mythtv package creates/manages the user 'mythtv'
 }
 
 src_prepare() {

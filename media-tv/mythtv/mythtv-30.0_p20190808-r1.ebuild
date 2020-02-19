@@ -10,7 +10,7 @@ BACKPORTS="5cde0578d84926171b20c8f7e95a101e9b0b9457" # August 8, 2019
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
 
-inherit eutils flag-o-matic python-single-r1 qmake-utils readme.gentoo-r1 systemd toolchain-funcs user vcs-snapshot
+inherit eutils flag-o-matic python-single-r1 qmake-utils readme.gentoo-r1 systemd toolchain-funcs user-info vcs-snapshot
 
 MYTHTV_BRANCH="fixes/${P%.*}"
 
