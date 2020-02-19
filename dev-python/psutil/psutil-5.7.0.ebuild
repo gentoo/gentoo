@@ -14,19 +14,20 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/ipaddress[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/ipaddress[${PYTHON_USEDEP}]
+		' -2)
 	)
 "
 
-RESTRICT="!test? ( test )"
-
 PATCHES=(
-	"${FILESDIR}/psutil-5.6.5-tests.patch"
+	"${FILESDIR}/psutil-5.7.0-tests.patch"
 )
 
 python_test() {
@@ -37,6 +38,12 @@ python_test() {
 
 	# since we are running in an environment a bit similar to CI,
 	# let's skip the tests that are disable for CI
-	TRAVIS=1 APPVEYOR=1 PYTHONPATH="${BUILD_DIR}/lib" ${PYTHON} psutil/tests/__main__.py || \
+	TRAVIS=1 APPVEYOR=1 "${EPYTHON}" psutil/tests/runner.py ||
 		die "tests failed with ${EPYTHON}"
+}
+
+python_compile() {
+	# force -j1 to avoid .o linking race conditions
+	local MAKEOPTS=-j1
+	distutils-r1_python_compile
 }
