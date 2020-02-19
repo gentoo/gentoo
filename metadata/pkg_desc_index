@@ -2449,7 +2449,7 @@ app-shells/localshell 1.3.4-r1: Localshell allows per-user/group local control o
 app-shells/loksh 6.6: Linux port of OpenBSD's ksh
 app-shells/mcfly 0.3.6: Context-aware bash history search replacement (crtl-r)
 app-shells/mksh 57-r2 9999: MirBSD Korn Shell
-app-shells/mpibash 1.2 1.3 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
+app-shells/mpibash 1.3-r1 9999: Parallel scripting right from the Bourne-Again Shell (Bash)
 app-shells/mpv-bash-completion 3.3.16 3.3.17: Bash completion for the mpv video player
 app-shells/pdmenu 1.3.4-r1: A simple console menu program
 app-shells/pdsh 2.26-r1: A high-performance, parallel remote shell utility
@@ -14561,7 +14561,7 @@ net-im/kadu 4.3-r2: An open source Gadu-Gadu and Jabber/XMPP protocol Instant Me
 net-im/kouchat 1.1.0: KouChat is a simple serverless chat client for local area networks
 net-im/libcommuni 3.5.0_p20190110-r1: A cross-platform IRC framework written with Qt
 net-im/librvp 0.9.7: An RVP (Microsoft Exchange Instant Messaging) plugin for Pidgin
-net-im/mattermost-desktop-bin 4.2.3 4.3.1: Mattermost Desktop application
+net-im/mattermost-desktop-bin 4.4.0: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openmittsu 0.9.13.32 0.9.13.46: An open source chat client for Threema-style end-to-end encrypted chat networks
@@ -17550,7 +17550,7 @@ sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with 
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.100 4.19.103 4.19.104 5.4.19 5.4.20 5.5.3 5.5.4: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 4.19.103 5.4.19 5.5.3: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.82 4.4.214 4.9.214 4.14.171 4.19.104 5.4.20 5.5.4: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.82 4.4.214 4.9.214 4.14.171 4.19.105 5.4.21 5.5.5: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.5.4: The Zen Kernel Live Sources
@@ -18039,7 +18039,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.3.1 5.3.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 80.0.3987.100 80.0.3987.106 81.0.4044.17 82.0.4056.3: Open-source version of Google Chrome web browser
+www-client/chromium 80.0.3987.100 80.0.3987.116 81.0.4044.17 82.0.4056.3: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6: GNOME webbrowser based on Webkit
