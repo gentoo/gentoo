@@ -17,7 +17,7 @@ if [[ $PV == *9999 ]]; then
 	S="${WORKDIR}/${REPO}"
 else
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
-	UPSTREAM_VER=1
+	UPSTREAM_VER=0
 	SECURITY_VER=
 	# xen-tools's gentoo patches tarball
 	GENTOO_VER=18
@@ -120,7 +120,10 @@ DEPEND="${COMMON_DEPEND}
 	qemu? (
 		app-arch/snappy:=
 		x11-libs/pixman
-		sdl? ( media-libs/libsdl[X] )
+		sdl? (
+			media-libs/libsdl[X]
+			media-libs/libsdl2[X]
+		)
 	)
 	system-qemu? ( app-emulation/qemu[xen] )
 	ocaml? ( dev-ml/findlib
