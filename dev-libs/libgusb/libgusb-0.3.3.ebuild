@@ -14,7 +14,7 @@ LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 
-IUSE="gtk-doc +introspection static-libs test vala"
+IUSE="gtk-doc +introspection static-libs test +vala"
 REQUIRED_USE="vala? ( introspection )"
 
 RDEPEND="
