@@ -32,6 +32,8 @@ RDEPEND="
 	passwdqc? ( sys-auth/pam_passwdqc )
 	selinux? ( sys-libs/pam[selinux] )
 	sha512? ( >=sys-libs/pam-${MIN_PAM_REQ} )
+"
+PDEPEND="
 	systemd? ( sys-apps/systemd[pam] )
 "
 DEPEND="
