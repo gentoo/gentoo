@@ -581,11 +581,6 @@ app-text/sary
 # maintain. Take this over if wanted, otherwise I will remove it in 30 days.
 app-admin/cli53
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-19)
-# Ancient, last release in 2006, blocks x11-libs/gtkglext cleanup
-# Masked for removal in 30 days.
-media-sound/glmix
-
 # Zac Medico <zmedico@gentoo.org> (2020-01-19)
 # This package has been replaced by dev-python/python-podman and has
 # no reverse dependencies.
