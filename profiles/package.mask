@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-19)
+# (on behalf of QA team)
+# Masked due to unresolved vulnerabilities.  Please do not remove
+# the mask until they are resolved and confirmed fixed.
+# Bugs #629882, #629884.
+net-analyzer/zabbix
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-18)
 # Dead and unmaintained.  Last release in 2015.  Broken with newer
 # versions of Python 3.  No reverse dependencies left.
