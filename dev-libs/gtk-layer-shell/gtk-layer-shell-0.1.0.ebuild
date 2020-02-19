@@ -23,6 +23,10 @@ IUSE="docs examples"
 
 DEPEND="
 	>=x11-libs/gtk+-3.24.1:3[introspection,wayland]
+	>=dev-libs/wayland-1.10.0
+	dev-libs/gobject-introspection
+	docs? ( dev-util/gtk-doc
+		x11-libs/gtk+[gtk-doc] )
 "
 
 RDEPEND="
@@ -31,7 +35,6 @@ RDEPEND="
 
 BDEPEND="
 	virtual/pkgconfig
-	dev-libs/wayland-protocols
 "
 
 src_configure() {
