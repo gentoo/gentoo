@@ -184,7 +184,7 @@ src_configure() {
 		$(cmake_use_find_package semantic-desktop KF5Baloo)
 	)
 
-	use gps && mycmakeargs+=( $(cmake_use_find_package gps libgps) )
+	use geolocation && mycmakeargs+=( $(cmake_use_find_package gps libgps) )
 
 	ecm_src_configure
 }
