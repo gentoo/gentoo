@@ -19,8 +19,10 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/mock[${PYTHON_USEDEP}]
-		dev-python/ipaddress[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/ipaddress[${PYTHON_USEDEP}]
+		' -2)
 	)
 "
 
