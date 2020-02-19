@@ -25,6 +25,10 @@ DEPEND="
 	>=x11-libs/gtk+-3.24.1:3[introspection,wayland]
 "
 
+RDEPEND="
+	${DEPEND}
+"
+
 BDEPEND="
 	virtual/pkgconfig
 	dev-libs/wayland-protocols
