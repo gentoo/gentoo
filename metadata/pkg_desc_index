@@ -310,7 +310,7 @@ app-accessibility/emacspeak-ss 1.9.1: adds support for several speech synthesize
 app-accessibility/epos 2.5.37-r2: language independent text-to-speech system
 app-accessibility/espeak 1.47.11-r1 1.48.04 1.48.04-r1: Speech synthesizer for English and other languages
 app-accessibility/espeakup 0.71-r1 0.80 9999: espeakup is a small lightweight connector for espeak and speakup
-app-accessibility/flite 1.4-r4: Flite text to speech engine
+app-accessibility/flite 1.4-r4 2.1: Flite text to speech engine
 app-accessibility/freetts 1.2.2: A speech synthesis system written entirely in Java
 app-accessibility/julius 4.2.2: Large Vocabulary Continuous Speech Recognition Engine
 app-accessibility/mbrola 3.0.1h-r6: Speech synthesizer based on the concatenation of diphones. Includes samples
