@@ -49,9 +49,11 @@ DEPEND="${RDEPEND}
 	app-crypt/libsecret
 	dev-util/glib-utils
 	>=dev-util/intltool-0.50
+	gnome-base/gnome-common
 	virtual/pkgconfig
 "
 # libsecret is always required at build time per bug 322763
+# eautoreconf needs gnome-common
 
 PATCHES=(
 	"${WORKDIR}"/patches/ # Patches from master branch at 2020-02-15 state; needs autoreconf
