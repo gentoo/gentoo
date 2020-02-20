@@ -1,0 +1,13 @@
+diff --git a/src/qth-data.h b/src/qth-data.h
+index 264f66f..5c6b2de 100644
+--- a/src/qth-data.h
++++ b/src/qth-data.h
+@@ -30,7 +30,7 @@ typedef struct {
+     gint            alt;        /*!< Altitude above sea level in meters. */
+ } qth_small_t;
+ 
+-enum {
++typedef enum {
+     QTH_STATIC_TYPE = 0,
+     QTH_GPSD_TYPE
+ } qth_data_type;

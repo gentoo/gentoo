@@ -4,18 +4,23 @@
 EAPI=7
 WX_GTK_VER="3.0-gtk3"
 
-inherit wxwidgets
+inherit wxwidgets xdg-utils
 
-MY_P="${PN/m/M}-${PV}"
+if [[ ${PV} == 9999 ]] ; then
+	EGIT_REPO_URI="https://github.com/amule-project/amule"
+	inherit autotools git-r3
+else
+	MY_P="${PN/m/M}-${PV}"
+	SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.xz"
+	S="${WORKDIR}/${MY_P}"
+	KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+fi
 
 DESCRIPTION="aMule, the all-platform eMule p2p client"
 HOMEPAGE="http://www.amule.org/"
-SRC_URI="https://download.sourceforge.net/${PN}/${MY_P}.tar.xz"
-S="${WORKDIR}/${MY_P}"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
 IUSE="daemon debug geoip nls remote stats upnp +X"
 
 RDEPEND="
@@ -26,6 +31,7 @@ RDEPEND="
 	>=x11-libs/wxGTK-3.0.4:${WX_GTK_VER}[X?]
 	daemon? ( acct-user/amule )
 	geoip? ( dev-libs/geoip )
+	nls? ( virtual/libintl )
 	remote? (
 		acct-user/amule
 		media-libs/libpng:0=
@@ -33,23 +39,25 @@ RDEPEND="
 	stats? ( media-libs/gd:=[jpeg,png] )
 	upnp? ( net-libs/libupnp:0 )
 "
-DEPEND="${RDEPEND}"
-BDEPEND="virtual/pkgconfig"
+DEPEND="${RDEPEND}
+	X? ( dev-util/desktop-file-utils )
+"
+BDEPEND="virtual/pkgconfig
+	nls? ( sys-devel/gettext )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-2.3.2-fix-crash-shared-dir-utf8.patch"
-	"${FILESDIR}/${PN}-2.3.2-fix-crash-closing-last-search-tab-1.patch"
-	"${FILESDIR}/${PN}-2.3.2-fix-crash-closing-last-search-tab-2.patch"
-	"${FILESDIR}/${PN}-2.3.2-cryptopp-6.patch"
-	"${FILESDIR}/${PN}-2.3.2-disable-version-check.patch"
-	"${FILESDIR}/${PN}-2.3.2-fix-crash-when-shared-files-changed.patch"
-	"${FILESDIR}/${PN}-2.3.2-libupnp-1.8.patch"
-	"${FILESDIR}/${PN}-2.3.2-libupnp-1.6.patch"
-	"${FILESDIR}/${PN}-2.3.2-Fixed-compilation-with-newer-bfd.patch"
 )
 
 pkg_setup() {
 	setup-wxwidgets
+}
+
+src_prepare() {
+	default
+
+	if [[ "${PV}" == *9999 ]]; then
+		./autogen.sh || die
+	fi
 }
 
 src_configure() {
@@ -124,4 +132,10 @@ pkg_postinst() {
 			fi
 		done
 	fi
+
+	use X && xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	use X && xdg_desktop_database_update
 }

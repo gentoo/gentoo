@@ -1,0 +1,33 @@
+From c0c28234a40b1b575ce51cdfe5ffa5dac3a7494c Mon Sep 17 00:00:00 2001
+From: Werner Mahr <werner@vollstreckernet.de>
+Date: Fri, 31 Jan 2020 17:55:24 +0100
+Subject: [PATCH] Fixed compilation with newer bfd. Fixes: #174
+
+---
+ src/libs/common/MuleDebug.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/libs/common/MuleDebug.cpp b/src/libs/common/MuleDebug.cpp
+index 5d8d75890..0ebf2ab07 100644
+--- a/src/libs/common/MuleDebug.cpp
++++ b/src/libs/common/MuleDebug.cpp
+@@ -268,14 +268,14 @@ void get_file_line_info(bfd *abfd, asection *section, void* _address)
+ 		return;
+ 	}
+ 
+-	bfd_vma vma = bfd_get_section_vma(abfd, section);
++	bfd_vma vma = section->vma;
+ 
+ 	unsigned long address = (unsigned long)_address;
+ 	if (address < vma) {
+ 		return;
+ 	}
+ 
+-	bfd_size_type size = bfd_section_size(abfd, section);
++	bfd_size_type size = section->size;
+ 	if (address > (vma + size)) {
+ 		return;
+ 	}
+-- 
+2.24.1
+
