@@ -11,7 +11,7 @@ SRC_URI=" http://www.speech.cs.cmu.edu/${PN}/packed/${P}/${P}-release.tar.bz2"
 LICENSE="BSD freetts public-domain regexp-UofT BSD-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 arm arm64 ppc ppc64 sparc x86"
-IUSE="alsa oss static-libs"
+IUSE="alsa oss"
 
 DEPEND="alsa? ( >=media-libs/alsa-lib-1.0.27.2[${MULTILIB_USEDEP}] )"
 RDEPEND="${DEPEND}"
@@ -49,12 +49,10 @@ src_prepare() {
 }
 
 multilib_src_configure() {
-	local myconf=()
-	if ! use static-libs; then
-		myconf+=( --enable-shared )
-	fi
-	myconf+=( --with-audio=$(get_audio) )
-
+	local myconf=(
+		--enable-shared
+		--with-audio=$(get_audio)
+	)
 	econf "${myconf[@]}"
 }
 
@@ -65,9 +63,7 @@ multilib_src_compile() {
 multilib_src_install_all() {
 	dodoc ACKNOWLEDGEMENTS README
 
-	if ! use static-libs; then
-		find "${ED}" -name '*.a' ! -name '*.dll.a' -delete || die
-	fi
+	find "${ED}" -name '*.a' ! -name '*.dll.a' -delete || die
 }
 
 pkg_postinst() {
