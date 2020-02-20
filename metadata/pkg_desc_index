@@ -3281,7 +3281,7 @@ dev-db/slony1 2.2.6 2.2.7: A replication system for the PostgreSQL Database Mana
 dev-db/spatialite 4.3.0-r1 4.3.0a: A complete Spatial DBMS in a nutshell built upon sqlite
 dev-db/spatialite-tools 4.3.0-r1: A collection of CLI tools supporting SpatiaLite
 dev-db/sqlcipher 3.4.2 4.0.1: Full Database Encryption for SQLite
-dev-db/sqlcl-bin 19.2.1.206.1649: Oracle SQLcl is the new SQL*Plus
+dev-db/sqlcl-bin 19.4.0.354.0937: Oracle SQLcl is the new SQL*Plus
 dev-db/sqldeveloper 4.2.0.17.089.1709: Oracle SQL Developer is a graphical tool for database development
 dev-db/sqlite 3.29.0 3.30.1: SQL database engine
 dev-db/sqlitebrowser 3.11.1-r1: SQLite Database Browser
@@ -9727,7 +9727,7 @@ dev-ruby/gettext-setup 0.30 0.31 0.34: A gem to ease i18n
 dev-ruby/gettext_i18n_rails 1.8.0 1.8.1: FastGettext / Rails integration
 dev-ruby/gh 0.15.1-r2: multi-layer client for the github api v3
 dev-ruby/gherkin 5.1.0: Fast Gherkin lexer and parser
-dev-ruby/gist 5.0.0: Potentially the best command line gister.
+dev-ruby/gist 5.1.0: Potentially the best command line gister.
 dev-ruby/git 1.5.0: Library for using Git in Ruby
 dev-ruby/github_api 0.18.2: A Ruby wrapper for the GitHub REST API v3
 dev-ruby/globalid 0.4.2: Reference models by URI
