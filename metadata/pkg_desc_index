@@ -5020,7 +5020,7 @@ dev-libs/libical 3.0.5 3.0.6 3.0.7: An implementation of basic iCAL protocols
 dev-libs/libiconv 1.14-r1 1.15: GNU charset conversion library for libc which doesn't implement it
 dev-libs/libindicate 12.10.1-r3: Library to raise flags on DBus for other components of the desktop
 dev-libs/libindicator 12.10.1-r201 12.10.1-r301: A set of symbols and convience functions that all indicators would like to use
-dev-libs/libinput 1.14.3 1.15.0 1.15.1: Library to handle input devices in Wayland
+dev-libs/libinput 1.14.3 1.15.1 1.15.2: Library to handle input devices in Wayland
 dev-libs/libintl 0.19.7 0.19.8.1 0.20.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.0 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.0 1.5.2: Open-source library for reading, mastering and writing optical discs
@@ -13051,7 +13051,7 @@ media-libs/libmpeg3 1.8-r1: An mpeg library for linux
 media-libs/libmpris2client 0.1.0-r1: A library to control MPRIS2 compatible players
 media-libs/libmtp 1.1.16 1.1.17 9999: Implementation of Microsoft's Media Transfer Protocol (MTP)
 media-libs/libmygpo-qt 1.1.0 9999: Qt/C++ library wrapping the gpodder.net webservice
-media-libs/libmypaint 1.3.0-r1 1.4.0: Library for making brushstrokes
+media-libs/libmypaint 1.3.0-r1 1.4.0 1.4.0-r1: Library for making brushstrokes
 media-libs/libnjb 2.2.7: Library for communicating with the Creative Nomad JukeBox digital audio player
 media-libs/libnsbmp 0.1.5-r1: decoding library for BMP and ICO image file formats, written in C
 media-libs/libnsgif 0.2.1-r1: decoding library for the GIF image file format, written in C
@@ -13523,7 +13523,7 @@ media-radio/fldigi 4.1.06 4.1.08 4.1.09: Sound card based multimode software mod
 media-radio/flmsg 4.0.3: Fldigi helper for creating radiograms
 media-radio/flrig 1.3.46 1.3.48 1.3.49: Transceiver control program for Amateur Radio use
 media-radio/fsync-mdc1200-decode 1.0 9999: Linux Fleetsync / MDC1200 decoder
-media-radio/gpredict 2.2 2.2.1: Real-time satellite tracking and orbit prediction application
+media-radio/gpredict 2.2.1: Real-time satellite tracking and orbit prediction application
 media-radio/grig 0.8.1: A tool for controlling amateur radios
 media-radio/ibp 0.21-r1: Shows currently transmitting beacons of the International Beacon Project (IBP)
 media-radio/js8call 1.0.0 1.1.0 2.0.0-r1 2.1.0 2.1.1: Weak signal ham radio communication
@@ -14888,7 +14888,7 @@ net-mail/mlmmj 1.2.19.0-r1 1.3.0: Mailing list managing made joyful
 net-mail/mpack 1.6-r4: Command-line MIME encoding and decoding utilities
 net-mail/mpop 1.4.4 1.4.7: A small, fast, and portable POP3 client
 net-mail/mswatch 1.2.0-r1: A utility to watch mailstores for changes and initiate mailbox syncs
-net-mail/mu 0.9.18-r2 1.0 1.3.5 1.3.6: Set of tools to deal with Maildirs, in particular, searching and indexing
+net-mail/mu 0.9.18-r2 1.0 1.3.5 1.3.6 1.3.6-r1: Set of tools to deal with Maildirs, in particular, searching and indexing
 net-mail/muchsync 3 4 5: Synchronizes mail messages and notmuch tags across machines
 net-mail/nmzmail 1.1: Fast mail searching for mutt using namazu
 net-mail/notmuch 0.29.3: Thread-based e-mail indexer, supporting quick search and tagging
@@ -15306,7 +15306,7 @@ net-nntp/sn 0.3.8: Hassle-free Usenet news system for small sites
 net-nntp/suck 4.3.3-r1: Grab news from a remote NNTP server and feed them to another
 net-nntp/tin 2.4.2: A threaded NNTP and spool based UseNet newsreader
 net-p2p/airdcpp-webclient 2.6.0 2.6.1: Cross-platform Direct Connect client
-net-p2p/amule 2.3.2-r2 2.3.2-r4: aMule, the all-platform eMule p2p client
+net-p2p/amule 2.3.2-r2 2.3.2-r4 9999: aMule, the all-platform eMule p2p client
 net-p2p/automatic 0.8.3: RSS downloader for Tranmission
 net-p2p/bisq 0.6.3: The decentralized bitcoin exchange (non-atomic, with arbitration)
 net-p2p/bitcoin-cli 0.16.3 0.17.1 0.18.0: Command-line JSON-RPC client specifically for interfacing with bitcoind
@@ -15846,7 +15846,7 @@ sci-biology/vienna-rna 2.1.1 2.1.8: RNA secondary structure prediction and compa
 sci-biology/wgs-assembler 7.0-r2: The Celera de novo whole-genome shotgun DNA sequence assembler, aka CABOG
 sci-biology/wise 2.4.0_alpha: Intelligent algorithms for DNA searches
 sci-biology/yass 1.14-r2: Genomic similarity search with multiple transition constrained spaced seeds
-sci-calculators/bc-gh 2.3.2: Implementation of POSIX bc with GNU extensions
+sci-calculators/bc-gh 2.3.2 2.5.3: Implementation of POSIX bc with GNU extensions
 sci-calculators/calcoo 1.3.18-r1: Scientific calculator designed to provide maximum usability
 sci-calculators/datamash 1.4 1.5: command-line program for basic numeric, textual and statistical operations
 sci-calculators/galculator 2.1.4: GTK+ based algebraic and RPN calculator
