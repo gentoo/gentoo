@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ COMMON_DEPEND=">=dev-libs/glib-2.50:2
 	)
 	open-terminal? ( >=mate-base/mate-desktop-1.17.0 )
 	pidgin? ( >=dev-libs/dbus-glib-0.60 )
-	upnp? ( >=net-libs/gupnp-0.13:= )
+	upnp? ( >=net-libs/gupnp-0.13:0/4 )
 	xattr? ( sys-apps/attr )"
 
 RDEPEND="${COMMON_DEPEND}
