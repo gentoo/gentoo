@@ -21,6 +21,7 @@ RDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${P}-gentoo.patch
 	"${FILESDIR}"/${P}-postfix.patch
+	"${FILESDIR}"/${P}-fno-common.patch
 )
 
 src_configure() {
