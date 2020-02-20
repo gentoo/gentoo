@@ -35,6 +35,7 @@ RDEPEND="${PYTHON_DEPS}
 	!net-libs/gupnp-vala
 "
 DEPEND="${RDEPEND}
+	dev-util/glib-utils
 	>=dev-util/gtk-doc-am-1.14
 	sys-devel/gettext
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
