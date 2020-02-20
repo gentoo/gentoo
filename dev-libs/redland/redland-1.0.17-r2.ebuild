@@ -25,6 +25,8 @@ RDEPEND="dev-libs/libltdl:0
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-1.0.17-mysql-8-my_bool.patch )
+
 MAKEOPTS="${MAKEOPTS} -j1" #500574, required for both src_compile() and src_install()
 
 src_prepare() {
