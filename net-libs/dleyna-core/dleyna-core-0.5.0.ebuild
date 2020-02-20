@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="
 	>=dev-libs/glib-2.28:2
-	>=net-libs/gupnp-0.20.5
+	>=net-libs/gupnp-0.20.5:0/4
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
