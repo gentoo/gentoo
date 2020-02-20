@@ -16,7 +16,7 @@ IUSE="+introspection"
 RDEPEND="
 	>=dev-libs/glib-2.34.3:2[${MULTILIB_USEDEP}]
 	>=net-libs/gssdp-0.14.7:0/3[${MULTILIB_USEDEP}]
-	>=net-libs/gupnp-0.20.10[${MULTILIB_USEDEP}]
+	>=net-libs/gupnp-0.20.10:0/4[${MULTILIB_USEDEP}]
 	introspection? ( >=dev-libs/gobject-introspection-0.10 )
 "
 DEPEND="${RDEPEND}
