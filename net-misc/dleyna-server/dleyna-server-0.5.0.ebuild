@@ -19,7 +19,7 @@ RDEPEND="
 	dev-libs/libxml2
 	>=media-libs/gupnp-dlna-0.9.4:2.0
 	>=net-libs/dleyna-core-0.5
-	>=net-libs/gssdp-0.13.2
+	>=net-libs/gssdp-0.13.2:0/3
 	>=net-libs/gupnp-0.20.3
 	>=net-libs/gupnp-av-0.11.5
 	>=net-libs/libsoup-2.28.2:2.4
