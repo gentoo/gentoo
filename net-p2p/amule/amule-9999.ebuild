@@ -40,10 +40,10 @@ RDEPEND="
 	upnp? ( net-libs/libupnp:0 )
 "
 DEPEND="${RDEPEND}
-	nls? ( sys-devel/gettext )
 	X? ( dev-util/desktop-file-utils )
 "
-BDEPEND="virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig
+	nls? ( sys-devel/gettext )"
 
 PATCHES=(
 )
