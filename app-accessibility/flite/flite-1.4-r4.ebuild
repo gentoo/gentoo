@@ -19,7 +19,7 @@ RDEPEND="${DEPEND}"
 S=${WORKDIR}/${P}-release
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.4-tempfile.patch
+	"${FILESDIR}"/${PN}-2.1-Only-write-audio-data-to-a-temporariy-file-in-debug-.patch
 	"${FILESDIR}"/${PN}-1.4-fix-parallel-builds.patch
 	"${FILESDIR}"/${PN}-1.4-respect-destdir.patch
 	"${FILESDIR}"/${PN}-1.4-ldflags.patch
