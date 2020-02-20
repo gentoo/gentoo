@@ -25,7 +25,6 @@ DEPEND="${RDEPEND}"
 BDEPEND="
 	gtk-doc? ( >=dev-util/gtk-doc-1.14
 		app-text/docbook-xml-dtd:4.1.2 )
-	>=sys-devel/gettext-0.19.8
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	vala? (
 		$(vala_depend)
