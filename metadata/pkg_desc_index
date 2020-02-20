@@ -14032,7 +14032,7 @@ media-video/openshot 2.4.0-r1 2.4.4-r1 2.5.0: An award-winning free and open-sou
 media-video/orion 1.6.6 1.6.7: Cross-platform Twitch client
 media-video/oxine 0.7.1-r2: OSD frontend for Xine
 media-video/parole 1.0.5: A simple Xfce4 media player using GStreamer
-media-video/peek 1.4.0-r1: Simple animated Gif screen recorder
+media-video/peek 1.4.0-r1 1.5.1: Simple animated Gif screen recorder
 media-video/pgmfindclip 1.13: automatically find a clipping border for a sequence of pgm images
 media-video/photofilmstrip 3.7.1-r1: Movie slideshow creator using Ken Burns effect
 media-video/pipewire 0.2.7: Multimedia processing graphs
@@ -14860,7 +14860,7 @@ net-mail/email 3.1.3: Advanced CLI tool for sending email
 net-mail/eps 1.7-r1: Inter7 Email Processing and mht System library
 net-mail/ezmlm-idx 7.0.0-r3: Simple yet powerful mailing list manager for qmail
 net-mail/fdm 1.9 2.0: fetch, filter and deliver mail
-net-mail/fetchmail 6.3.26-r4 6.4.1 6.4.1-r3: the legendary remote-mail retrieval and forwarding utility
+net-mail/fetchmail 6.4.1 6.4.1-r3 6.4.2: the legendary remote-mail retrieval and forwarding utility
 net-mail/getmail 5.14: A mail retriever with reliable Maildir and mbox delivery
 net-mail/gnubiff 2.2.17-r2: A mail notification program
 net-mail/grepmail 5.30.33-r2: Search normal or compressed mailbox using a regular expression or dates
@@ -15259,7 +15259,7 @@ net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Lin
 net-misc/wol 0.7.1-r2: Implements Wake On LAN (Magic Paket) functionality in a small program
 net-misc/wput 0.6.1-r1 0.6.2: Tiny program like wget, to upload files/whole directories via FTP
 net-misc/x11-ssh-askpass 1.2.4.1-r2: X11-based passphrase dialog for use with OpenSSH
-net-misc/x2goclient 4.1.2.1 4.1.2.1-r1: The X2Go Qt client
+net-misc/x2goclient 4.1.2.1 4.1.2.1-r1 4.1.2.2: The X2Go Qt client
 net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
