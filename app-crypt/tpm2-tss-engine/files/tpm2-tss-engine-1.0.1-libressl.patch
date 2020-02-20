@@ -1,0 +1,35 @@
+From deb2b6697babf99aaf3f64b342ce414b48638ea3 Mon Sep 17 00:00:00 2001
+From: Alon Bar-Lev <alon.barlev@gmail.com>
+Date: Fri, 31 May 2019 20:36:47 +0300
+Subject: [PATCH] build: libressl fix incomplete type
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+src/tpm2-tss-engine-rand.c:90:1: error: variable ‘rand_methods’ has initializer but incomplete type
+   90 | static RAND_METHOD rand_methods = {
+      | ^~~~~~
+src/tpm2-tss-engine-rand.c:91:5: warning: excess elements in struct initializer
+
+Signed-off-by: Alon Bar-Lev <alon.barlev@gmail.com>
+---
+ src/tpm2-tss-engine-rand.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+https://github.com/tpm2-software/tpm2-tss-engine/pull/120
+
+diff --git a/src/tpm2-tss-engine-rand.c b/src/tpm2-tss-engine-rand.c
+index 50d5661..86980a5 100644
+--- a/src/tpm2-tss-engine-rand.c
++++ b/src/tpm2-tss-engine-rand.c
+@@ -32,6 +32,7 @@
+ #include <string.h>
+ 
+ #include <openssl/engine.h>
++#include <openssl/rand.h>
+ 
+ #include <tss2/tss2_mu.h>
+ #include <tss2/tss2_esys.h>
+-- 
+2.21.0
+
