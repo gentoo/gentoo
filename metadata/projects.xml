@@ -678,6 +678,11 @@
     <url>https://wiki.gentoo.org/wiki/Project:Containers</url>
     <description>The Contains Project provides minimal container images for a variety of container formats so that users can have a consistent experience when building application specific containers.</description>
     <member>
+      <email>arzano@gentoo.org</email>
+      <name>Max Magorsch</name>
+      <role>Member</role>
+    </member>
+    <member>
       <email>ultrabug@gentoo.org</email>
       <name>Ultrabug</name>
       <role>Member</role>
@@ -3838,15 +3843,21 @@
     <email>www@gentoo.org</email>
     <name>Website maintainers</name>
     <url>https://wiki.gentoo.org/wiki/Project:Website</url>
-    <description>The website project maintains the Gentoo website and develops new sites for the community.</description>
+    <description>The website project maintains www.g.o and develops new sites for the community.</description>
+    <member>
+      <email>arzano@gentoo.org</email>
+      <name>Max Magorsch</name>
+      <role>Maintainer: Tyrian</role>
+    </member>
     <member>
       <email>dilfridge@gentoo.org</email>
       <name>Andreas K. Hüttel</name>
+      <role>Maintainer: News</role>
     </member>
     <member>
       <email>maffblaster@gentoo.org</email>
       <name>Matthew Marchese</name>
-      <role>Maintainer</role>
+      <role>Maintainer: General</role>
     </member>
   </project>
   <project>
