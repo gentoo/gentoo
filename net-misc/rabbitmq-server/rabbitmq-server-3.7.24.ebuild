@@ -78,29 +78,3 @@ src_install() {
 	diropts -m 0770 -o rabbitmq -g rabbitmq
 	keepdir /var/lib/rabbitmq{,/mnesia}
 }
-
-pkg_preinst() {
-	if has_version "<=net-misc/rabbitmq-server-1.8.0"; then
-		elog "IMPORTANT UPGRADE NOTICE:"
-		elog
-		elog "RabbitMQ is now running as an unprivileged user instead of root."
-		elog "Therefore you need to fix the permissions for RabbitMQs Mnesia database."
-		elog "Please run the following commands as root:"
-		elog
-		elog "  usermod -d /var/lib/rabbitmq rabbitmq"
-		elog "  chown rabbitmq:rabbitmq -R /var/lib/rabbitmq"
-		elog
-	elif has_version "<net-misc/rabbitmq-server-2.1.1"; then
-		elog "IMPORTANT UPGRADE NOTICE:"
-		elog
-		elog "Please read release notes before upgrading:"
-		elog
-		elog "https://www.rabbitmq.com/release-notes/README-3.0.0.txt"
-	fi
-	if has_version "<net-misc/rabbitmq-server-3.3.0"; then
-		elog
-		elog "This release changes the behaviour of the default guest user:"
-		elog
-		elog "https://www.rabbitmq.com/access-control.html"
-	fi
-}
