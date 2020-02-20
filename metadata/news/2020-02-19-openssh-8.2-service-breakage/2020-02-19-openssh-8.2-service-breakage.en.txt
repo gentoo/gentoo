@@ -1,0 +1,30 @@
+Title: OpenSSH 8.2_p1 running sshd breakage
+Author: Patrick McLean <chutzpah@gentoo.org>
+Posted: 2020-02-20
+Revision: 1
+News-Item-Format: 2.0
+Display-If-Installed: <net-misc/openssh-8.2
+
+If sshd is running, and a system is upgraded from
+<net-misc/openssh-8.2_p1 to >=net-misc/openssh-8.2_p1, any new ssh
+connection will fail until sshd is restarted.
+
+Before restarting sshd, it is *strongly* recommended that you test your
+configuration with the following command (as root):
+    sshd -t
+
+If your system is booted with openrc, use this command (as root) 
+to restart sshd:
+    rc-service sshd --nodeps restart
+
+If your system is booted with systemd, use this command (as root)
+to restart sshd:
+    systemctl restart sshd
+
+WARNING: On systemd booted machines with PAM disabled, this command
+         will terminate all currently open ssh connections. It is 
+         *strongly* recommended that you validate your configuration
+         before restarting sshd.
+
+If you are using systemd socket activation for sshd, then no action is
+required.
