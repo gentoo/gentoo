@@ -1,0 +1,22 @@
+From e378b1484a85399032ff32d86ad2a5bde936762f Mon Sep 17 00:00:00 2001
+From: adrian5 <adrian5@users.noreply.github.com>
+Date: Mon, 17 Feb 2020 22:13:50 +0100
+Subject: [PATCH] Add icmpv6 keyword
+
+---
+ syntax/nftables.vim | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/syntax/nftables.vim b/syntax/nftables.vim
+index c80eb9d..d5d0e3f 100644
+--- a/syntax/nftables.vim
++++ b/syntax/nftables.vim
+@@ -23,7 +23,7 @@ syn keyword Function table chain
+ syn keyword Statement type hook
+ syn keyword Type ip ip6 inet arp bridge
+ syn keyword Type filter nat route
+-syn keyword Type ether vlan arp ip ip6 tcp udp udplite sctp dccp ah esp ipcomp icmp
++syn keyword Type ether vlan arp ip ip6 tcp udp udplite sctp dccp ah esp ipcomp icmp icmpv6 igmp
+ syn keyword Type ct
+ syn keyword Type length protocol priority mark iif iifname iiftype oif oifname oiftype skuid skgid rtclassid
+ syn keyword Constant prerouting input forward output postrouting
