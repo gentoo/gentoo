@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,7 +23,7 @@ RDEPEND="${COMMON_DEPEND}"
 S="${WORKDIR}/${P}/src"
 
 PATCHES=(
-	"${FILESDIR}/libbpf-0.0.5-paths.patch"
+	"${FILESDIR}/libbpf-0.0.7-paths.patch"
 )
 
 src_compile() {
