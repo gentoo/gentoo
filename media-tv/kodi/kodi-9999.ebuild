@@ -75,7 +75,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
 		dev-python/pycryptodome[${PYTHON_MULTI_USEDEP}]
 	')
-	>=dev-libs/libcdio-0.94
+	>=dev-libs/libcdio-2.1.0
 	>=dev-libs/libfmt-6.1.2
 	dev-libs/libfstrcmp
 	gbm? (	media-libs/mesa[gbm] )

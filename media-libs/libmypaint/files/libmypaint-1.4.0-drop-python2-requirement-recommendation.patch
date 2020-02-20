@@ -1,0 +1,34 @@
+From 68e2c33add0aec09f1898aa80ef4f822bed67b87 Mon Sep 17 00:00:00 2001
+From: Jesper Lloyd <jpl.lloyd@gmail.com>
+Date: Tue, 17 Dec 2019 17:36:22 +0100
+Subject: [PATCH] Drop python2 requirement/recommendation
+
+---
+ README.md   | 2 +-
+ autogen.sh  | 2 +-
+ generate.py | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/README.md b/README.md
+index 96c748da..fae90566 100644
+--- a/README.md
++++ b/README.md
+@@ -35,7 +35,7 @@ to get started with a standard configuration:
+ 
+ When building from git:
+ 
+-    $ sudo apt install -y python2.7 autotools-dev intltool gettext libtool
++    $ sudo apt install -y python autotools-dev intltool gettext libtool
+ 
+ ### Install dependencies (Red Hat and derivatives)
+ 
+diff --git a/generate.py b/generate.py
+index b613f91d..cd7e99e8 100644
+--- a/generate.py
++++ b/generate.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/env python
+ # libmypaint - The MyPaint Brush Library
+ # Copyright (C) 2007-2012 Martin Renold <martinxyz@gmx.ch>
+ # Copyright (C) 2012-2016 by the MyPaint Development Team.

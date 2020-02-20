@@ -2,12 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 
 # NB: The $PV tracks the *repo launcher version*, not the last signed release
-# of the repo project.  The launcher only gets a new update when changes are
-# made in it.
+# of the repo project.  They are confusingly different currently.
 
 EAPI="7"
 
-PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+PYTHON_COMPAT=( python2_7 )
 
 inherit python-r1
 
