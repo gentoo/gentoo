@@ -26,7 +26,7 @@ CDEPEND="
 		>=media-libs/gegl-0.4.14:0.4[introspection?]
 	)
 	introspection? ( >=dev-libs/gobject-introspection-1.32 )
-	openmp? ( sys-devel/gcc:*[openmp] )
+	openmp? ( >sys-devel/gcc-5:*[openmp] )
 	nls? ( sys-devel/gettext )
 	"
 DEPEND="${CDEPEND}
