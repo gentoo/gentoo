@@ -1,11 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-PYTHON_COMPAT=( python2_7 )
+EAPI=7
+
+PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 PYTHON_REQ_USE="tk"
 
-inherit python-single-r1 user systemd toolchain-funcs autotools
+inherit python-single-r1 systemd toolchain-funcs autotools
 
 DESCRIPTION="the legendary remote-mail retrieval and forwarding utility"
 HOMEPAGE="http://www.fetchmail.info/"
@@ -13,23 +14,29 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2 public-domain"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="ssl nls kerberos tk socks libressl"
 REQUIRED_USE="tk? ( ${PYTHON_REQUIRED_USE} )"
 
-RDEPEND="ssl? (
-		!libressl? ( >=dev-libs/openssl-0.9.6:= )
+RDEPEND="acct-user/fetchmail
+	ssl? (
+		!libressl? ( >=dev-libs/openssl-1.0.2:= )
 		libressl?  ( dev-libs/libressl:= )
 	)
 	kerberos? (
 		virtual/krb5
-		!libressl? ( >=dev-libs/openssl-0.9.6:= )
+		!libressl? ( >=dev-libs/openssl-1.0.2:= )
 		libressl?  ( dev-libs/libressl:= )
 	)
 	nls? ( virtual/libintl )
 	!elibc_glibc? ( sys-libs/e2fsprogs-libs )
 	socks? ( net-proxy/dante )
-	tk? ( ${PYTHON_DEPS} )"
+	tk? (
+		${PYTHON_DEPS}
+		$(python_gen_cond_dep '
+			dev-python/future[${PYTHON_MULTI_USEDEP}]
+		')
+	)"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
 	sys-devel/flex
@@ -38,15 +45,11 @@ DEPEND="${RDEPEND}
 DOCS="FAQ FEATURES NEWS NOTES README README.NTLM README.SSL* TODO"
 HTML_DOCS="*.html"
 PATCHES=(
-	"${FILESDIR}"/${P}-python-optional.patch
-	"${FILESDIR}"/${P}-tests.patch
-	"${FILESDIR}"/${P}-libressl.patch
+	"${FILESDIR}"/${PN}-6.3.26-python-optional.patch
 )
+S=${WORKDIR}/${P/_/.}
 
 pkg_setup() {
-	enewgroup ${PN}
-	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
-
 	use tk && python-single-r1_pkg_setup
 }
 
@@ -78,11 +81,6 @@ src_compile() {
 }
 
 src_install() {
-	# fetchmail's homedir (holds fetchmail's .fetchids)
-	keepdir /var/lib/${PN}
-	fowners ${PN}:${PN} /var/lib/${PN}
-	fperms 700 /var/lib/${PN}
-
 	default
 
 	newinitd "${FILESDIR}"/fetchmail.initd fetchmail
