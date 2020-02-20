@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,10 +15,10 @@ LICENSE="OTN"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND=""
-RDEPEND="virtual/jre:1.8
+BDEPEND="app-arch/unzip"
+RDEPEND="dev-db/oracle-instantclient
 	dev-java/java-config:2
-	dev-db/oracle-instantclient"
+	virtual/jre:1.8"
 
 S="${WORKDIR}"
 
