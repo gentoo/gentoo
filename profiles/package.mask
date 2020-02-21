@@ -568,67 +568,6 @@ media-sound/adplay
 =dev-lang/lua-5.2.4-r2
 =dev-lang/lua-5.3.5-r2
 
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# Upstream disappeared, no other distro still carries this,
-# blocks removal of EOL gtkglext, no revdeps.
-# Removal in 30 days.
-games-strategy/gwp
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# All released versions depend on EOL gtkglext, no revdeps.
-# Bug #644334, #694834. Removal of releases in 30 days.
-# Lars Wendler <polynomial-c@gemtoo.org> (2020-01-22)
-# Do NOT treeclean the live ebuild!
-<sci-astronomy/celestia-9999
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# Last release over 2 years ago, depends on EOL gtkglext.
-# No revdeps, Removal in 30 days.
-sci-chemistry/gabedit
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# Last release over 13 years ago, depends on EOL gtkglext, no revdeps.
-# Bug #353119, #435676. Removal in 30 days.
-sci-chemistry/ghemical
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# Last release over 18 years ago, depends on EOL gtkglext.
-# No revdeps, Removal in 30 days.
-sci-physics/lightspeed
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# Last release over 7 years ago, depends on EOL gtkglext.
-# No revdeps, Removal in 30 days.
-sci-visualization/gfsview
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# No sign of py3 port, depends on EOL pygtk. No revdeps.
-# Bug #706030. Removal in 30 days.
-app-misc/gourmet
-dev-python/python-poppler
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# EAPI 4, last release in 2005, doesn't build, no revdeps.
-# Bug #664498. Removal in 30 days.
-app-text/sary
-
-# Mike Gilbert <floppym@gentoo.org> (2020-01-20)
-# Newer versions are using Go modules, which makes this more difficult to
-# maintain. Take this over if wanted, otherwise I will remove it in 30 days.
-app-admin/cli53
-
-# Zac Medico <zmedico@gentoo.org> (2020-01-19)
-# This package has been replaced by dev-python/python-podman and has
-# no reverse dependencies.
-# Removal in 30 days.  Bug #705826.
-dev-python/pypodman
-
-# David Seifert <soap@gentoo.org> (2020-01-18)
-# Leftover from silc* removal (#522916), unmaintained, no
-# upstream releases since 2014, no revdeps, EAPI-4.
-# Bug #705462. Removal in 14 days.
-net-im/silc-toolkit
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # The new version loses Python 2 support but does not introduce any real
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
