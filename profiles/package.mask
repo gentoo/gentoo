@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2020-02-21)
+# Does not compile against new gupnp-1.2 API. No consumers, dead project.
+# Removal in 30 days. Bug #710436.
+net-libs/gupnp-ui
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-21)
 # Last bumped in 2013.  Homepage gone.  No reverse dependencies left.
 # Removal in 30 days.  Bug #527188.
