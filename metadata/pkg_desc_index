@@ -9931,7 +9931,7 @@ dev-ruby/protected_attributes 1.1.4: Protect attributes from mass-assignment in 
 dev-ruby/pry 0.12.2: Pry is a powerful alternative to the standard IRB shell for Ruby
 dev-ruby/public_suffix 3.1.1 4.0.1 4.0.2 4.0.3: Parse and decompose a domain name into top level domain, domain and subdomains
 dev-ruby/pundit 1.1.0 2.1.0: Object oriented authorization for Rails applications
-dev-ruby/puppet_forge 2.2.9-r1 2.3.0 2.3.1 2.3.2: Tools to access Forge API information on Modules, Users, and Releases
+dev-ruby/puppet_forge 2.2.9-r1 2.3.0 2.3.1 2.3.2 2.3.3: Tools to access Forge API information on Modules, Users, and Releases
 dev-ruby/puppetdb-termini 6.8.0 6.9.0: Library needed to connect puppet to puppetdb
 dev-ruby/pusher-client 0.6.2: Client for consuming WebSockets from http://pusher.com
 dev-ruby/pygments_rb 1.2.1-r1: Pygments syntax highlighting in ruby
@@ -14642,7 +14642,7 @@ net-irc/scrollz 2.3: Advanced IRC client based on ircII
 net-irc/sic 1.2-r1: An extremly simple IRC client
 net-irc/telepathy-idle 0.2.0-r2: Full-featured IRC connection manager for Telepathy
 net-irc/unrealircd 4.2.4.1 5.0.1 5.0.3: An advanced Internet Relay Chat daemon
-net-irc/weechat 2.7-r2 9999: Portable and multi-interface IRC client
+net-irc/weechat 2.7-r2 2.7.1 9999: Portable and multi-interface IRC client
 net-irc/xaric 0.13.6: An IRC client similar to ircII, BitchX, or ircII EPIC
 net-irc/znc 1.7.4 1.7.5 9999: An advanced IRC Bouncer
 net-libs/NativeThread 0_pre20190914: NativeThread for priorities on linux for freenet
