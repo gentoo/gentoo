@@ -5,9 +5,6 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<longdescription lang="en">
-		Tool for undervolting and throttling limits alteration for Intel CPUs
-	</longdescription>
 	<use>
 		<flag name="elogind">Use elogind hook to apply voltage after system sleep</flag>
 	</use>
