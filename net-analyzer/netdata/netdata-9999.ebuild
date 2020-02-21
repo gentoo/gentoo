@@ -97,7 +97,6 @@ src_configure() {
 	econf \
 		--localstatedir="${EPREFIX}"/var \
 		--with-user=netdata \
-		--enable-ebpf \
 		$(use_enable jsonc) \
 		$(use_enable cups plugin-cups) \
 		$(use_enable dbengine) \
