@@ -5395,7 +5395,6 @@ net-analyzer/ossec-hids:agent - Build "agent" installation target (see package d
 net-analyzer/ossec-hids:hybrid - Build "hybrid" installation target
 net-analyzer/ossec-hids:local - Build "local" installation target
 net-analyzer/ossec-hids:server - Build "server" installation target
-net-analyzer/pchar:pcap - Use the net-libs/libpcap library
 net-analyzer/pinger:gtk2 - Install the gtkpinger GUI utility based on x11-libs/gtk+:2
 net-analyzer/pinger:gtk3 - Install the gtkpinger GUI utility based on x11-libs/gtk+:3
 net-analyzer/pmacct:64bit - Use 64bit counters instead of 32bit ones
