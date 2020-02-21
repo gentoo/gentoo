@@ -131,13 +131,20 @@ src_configure() {
 		-DWITH_GRAPHICS_MAGICK=$(usex graphicsmagick $(usex imagemagick)) # both must be enabled to use GraphicsMagick
 		-DWITH_JEMALLOC=$(usex jemalloc)
 		-DENABLE_LCMS=$(usex lcms)
-		-DWITH_NLS=$(usex nls)
 		-DWITH_OPENMP=$(usex openmp)
 		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DWITH_SVG2=$(usex svg2)
 		-DWITH_LIBVISIO=$(usex visio)
 		-DWITH_LIBWPG=$(usex wpg)
 	)
+	# We should also have,
+	#
+	#   -DWITH_NLS=$(usex nls)
+	#
+	# in this list, but it's broken upstream at the moment:
+	#
+	#  * https://bugs.gentoo.org/699658
+	#  * https://gitlab.com/inkscape/inkscape/issues/168
 
 	cmake_src_configure
 }
