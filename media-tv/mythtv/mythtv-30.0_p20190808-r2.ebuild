@@ -33,7 +33,7 @@ REQUIRED_USE="
 	bluray? ( xml )
 	cdr? ( cdda )
 "
-COMMON="
+COMMON_DEPEND="
 	acct-user/mythtv
 	dev-libs/glib:2
 	dev-libs/lzo
@@ -110,7 +110,7 @@ COMMON="
 		net-dns/avahi[mdnsresponder-compat]
 	)
 "
-RDEPEND="${COMMON}
+RDEPEND="${COMMON_DEPEND}
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
@@ -134,7 +134,7 @@ RDEPEND="${COMMON}
 	xmltv? ( >=media-tv/xmltv-0.5.43 )
 "
 DEPEND="
-	${COMMON}
+	${COMMON_DEPEND}
 	dev-lang/yasm
 	x11-base/xorg-proto
 "
@@ -348,6 +348,9 @@ src_configure() {
 		--cxx="$(tc-getCXX)" \
 		--ar="$(tc-getAR)" \
 		--optflags="${CFLAGS}" \
+		--extra-cflags="${CFLAGS}" \
+		--extra-cxxflags="${CXXFLAGS}" \
+		--extra-ldflags="${LDFLAGS}" \
 		--qmake=$(qt5_get_bindir)/qmake \
 		"${myconf[@]}"
 }
@@ -400,21 +403,15 @@ src_install() {
 		newins "${FILESDIR}"/xinitrc-r1 .xinitrc
 	fi
 
-	# Make Python files executable
-	find "${ED}/usr/share/mythtv" -type f -name '*.py' | while read file; do
-		if [[ ! "${file##*/}" = "__init__.py" ]]; then
-			chmod a+x "${file}" || die "Failed to make python file $(basename ${file}) executable"
-		fi
-	done
+	# Make Python files executable but not files named "__init__.py"
+	find "${ED}/usr/share/mythtv" -type f -name '*.py' -exec expr \( {} : '.*__init__.py' \) = 0 \; \
+		-exec chmod a+x {} \; || die "Failed to make python file $(basename ${file}) executable"
 
 	# Ensure that Python scripts are executed by Python 2
 	python_fix_shebang "${ED}/usr/share/mythtv"
 
 	# Make shell & perl scripts executable
-	find "${ED}" -type f -name '*.sh' -o -type f -name '*.pl' | \
-		while read file; do
-		chmod a+x "${file}" || die
-	done
+	find "${ED}" -type f \( -name '*.sh' -o -name '*.pl' \) -exec chmod a+x {} \; || die "Failed to make script executable"
 }
 
 pkg_postinst() {

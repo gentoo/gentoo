@@ -1,7 +1,7 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit toolchain-funcs eutils
 
@@ -34,7 +34,7 @@ src_unpack() {
 	wget "http://foo2zjs.rkkda.com/${PN}.tar.gz" || die
 	tar zxf "${WORKDIR}/${PN}.tar.gz" || die
 
-	epatch "${FILESDIR}/${PN}-udev.patch"\
+	eapply "${FILESDIR}/${PN}-udev.patch"\
 		"${FILESDIR}/${PN}-usbbackend.patch"
 
 	cd "${S}" || die
@@ -61,6 +61,8 @@ src_prepare() {
 	# during make install
 	sed -e '/rm .*LIBUDEVDIR)\//d' -i Makefile || die
 	sed -e '/rm .*lib\/udev\/rules.d\//d' -i hplj1000 || die
+
+	default
 }
 
 src_compile() {

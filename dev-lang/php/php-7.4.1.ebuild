@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -172,7 +172,6 @@ php_install_ini() {
 	# Set the include path to point to where we want to find PEAR packages
 	sed -e 's|^;include_path = ".:/php/includes".*|include_path = ".:'"${EPREFIX}"'/usr/share/php'${PHP_MV}':'"${EPREFIX}"'/usr/share/php"|' -i "${phpinisrc}" || die
 
-	dodir "${PHP_INI_DIR#${EPREFIX}}"
 	insinto "${PHP_INI_DIR#${EPREFIX}}"
 	newins "${phpinisrc}" php.ini
 
