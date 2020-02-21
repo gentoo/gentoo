@@ -10,7 +10,7 @@ HOMEPAGE="http://foo2zjs.rkkda.com/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64"
 IUSE="test"
 
 RESTRICT="bindist !test? ( test )"
@@ -27,28 +27,12 @@ DEPEND="${RDEPEND}
 	sys-devel/bc
 	test? ( sys-process/time )"
 
-S="${WORKDIR}/${PN}"
+SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/${P}.tar.xz"
 
-src_unpack() {
-	einfo "Fetching ${PN} tarball"
-	wget "http://foo2zjs.rkkda.com/${PN}.tar.gz" || die
-	tar zxf "${WORKDIR}/${PN}.tar.gz" || die
-
+src_prepare() {
 	eapply "${FILESDIR}/${PN}-udev.patch"\
 		"${FILESDIR}/${PN}-usbbackend.patch"
 
-	cd "${S}" || die
-
-	einfo "Fetching additional files (firmware, etc)"
-	emake getweb
-
-	# Display wget output, downloading takes some time.
-	sed -e '/^WGETOPTS/s/-q//g' -i getweb || die
-
-	./getweb all || die
-}
-
-src_prepare() {
 	# Prevent an access violation.
 	sed -e "s~/etc~${D}/etc~g" -i Makefile || die
 	sed -e "s~/etc~${D}/etc~g" -i hplj1000 || die
