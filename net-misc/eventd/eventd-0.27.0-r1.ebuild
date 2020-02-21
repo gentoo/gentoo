@@ -50,7 +50,7 @@ COMMON_DEPEND="
 	purple? ( net-im/pidgin )
 	speech? ( app-accessibility/speech-dispatcher )
 	systemd? ( sys-apps/systemd:= )
-	upnp? ( net-libs/gssdp:= )
+	upnp? ( >=net-libs/gssdp-1.2:0= )
 	wayland? ( dev-libs/wayland )
 	webhook? ( net-libs/libsoup:2.4 )
 	websocket? ( net-libs/libsoup:2.4 )
