@@ -46,4 +46,3 @@ pkg_postinst() {
 	einfo ' FETCHCOMMAND='\''/usr/local/bin/fetchwrapper.sh "\${DISTDIR}/\${FILE}" "\${URI}"'\'
 	einfo ' RESUMECOMMAND="${FETCHCOMMAND}"'
 }
-
