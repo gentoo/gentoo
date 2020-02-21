@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,14 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs"
 
-# net-mail/mailutils also installes /usr/bin/mu.  Block it until somebody
-# really wants both installed at the same time.
 DEPEND="
 	dev-libs/gmime:2.6
 	dev-libs/xapian
 	dev-libs/glib:2
-	emacs? ( >=app-editors/emacs-23.1:* )
-	!net-mail/mailutils"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 RDEPEND="${DEPEND}"
 
 SITEFILE="70mu-gentoo.el"
