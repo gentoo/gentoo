@@ -10342,7 +10342,7 @@ dev-util/android-sdk-update-manager 21 21.1 22 22.0.1 22.0.1-r1 22.0.4 22.0.5 22
 dev-util/android-studio 3.4.1.0.183.5522156 3.5.0.21.191.5791312 3.5.1.0.191.5900203 3.5.3.0.191.6010548: Android development environment based on IntelliJ IDEA
 dev-util/android-tools 5.1.1_p13 6.0.1_p79 8.1.0_p1 9.0.0_p3 9.0.0_p3-r1: Android platform tools (adb, fastboot, and mkbootimg)
 dev-util/anjuta 3.28.0-r1: A versatile IDE for GNOME
-dev-util/apitrace 8.0 9.0: Tool for tracing, analyzing, and debugging graphics APIs
+dev-util/apitrace 9.0: Tool for tracing, analyzing, and debugging graphics APIs
 dev-util/appdata-tools 0.1.8-r1: CLI designed to validate AppData descriptions for standards and style compliance
 dev-util/appinventor 1.1: MIT App Inventor Setup package
 dev-util/archdiff 1.1.6: Utility to view the differences between two source code archives
