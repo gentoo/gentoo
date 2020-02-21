@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2020-02-21)
+# Does not compile against new gupnp-1.2 API. No consumers, dead project.
+# Removal in 30 days. Bug #710436.
+net-libs/gupnp-ui
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-21)
 # Last bumped in 2013.  Homepage gone.  No reverse dependencies left.
 # Removal in 30 days.  Bug #527188.
@@ -583,11 +588,6 @@ media-sound/adplay
 # us from adding official releases made by google.
 # Please DOWNGRADE to dev-python/nototools-0_pre20200113
 =dev-python/nototools-20190320
-
-# Mart Raudsepp <leio@gentoo.org> (2020-01-11)
-# End of life vala:0.42 series, please depclean.
-# This message shall be kept until 2020-02-11.
-dev-lang/vala:0.42
 
 # Ulrich Müller <ulm@gentoo.org> (2020-01-06)
 # Snapshots from Git, masked for testing.
