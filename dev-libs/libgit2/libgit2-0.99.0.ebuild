@@ -1,24 +1,19 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit cmake-utils python-any-r1
-
-if [[ ${PV} == "9999" ]] ; then
-	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
-	inherit git-r3
-else
-	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~ppc-macos"
-fi
+inherit cmake python-any-r1
 
 DESCRIPTION="A linkable library for Git"
 HOMEPAGE="https://libgit2.org"
+SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+S=${WORKDIR}/${P/_/-}
 
 LICENSE="GPL-2-with-linking-exception"
-SLOT="0/28"
+SLOT="0/0.99"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~ppc-macos"
 IUSE="examples gssapi libressl +ssh test +threads trace"
 RESTRICT="!test? ( test )"
 
@@ -35,6 +30,12 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+src_prepare() {
+	cmake_src_prepare
+	# relying on forked http-parser to support some obscure URI form
+	sed -i -e '/empty_port/s:test:_&:' tests/network/urlparse.c || die
+}
+
 src_configure() {
 	local mycmakeargs=(
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
@@ -43,8 +44,9 @@ src_configure() {
 		-DUSE_GSSAPI=$(usex gssapi)
 		-DUSE_SSH=$(usex ssh)
 		-DTHREADSAFE=$(usex threads)
+		-DUSE_HTTP_PARSER=system
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_test() {
@@ -54,12 +56,12 @@ src_test() {
 		ewarn "Skipping tests: non-root privileges are required for all tests to pass"
 	else
 		local TEST_VERBOSE=1
-		cmake-utils_src_test -R offline
+		cmake_src_test -R offline
 	fi
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	dodoc docs/*.{md,txt}
 
 	if use examples ; then
