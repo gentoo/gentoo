@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils user cmake-utils gnome2-utils pam xdg-utils java-pkg-2 pax-utils qmake-utils
+inherit eutils user cmake-utils gnome2-utils pam xdg-utils java-pkg-2 pax-utils qmake-utils vcs-clean
 
 # TODO
 # * package gin and gwt
@@ -75,13 +75,13 @@ RDEPEND="
 		>=dev-qt/qtsql-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtsvg-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtwebchannel-${QT_VER}:${QT_SLOT}
-		>=dev-qt/qtwebengine-${QT_VER}:${QT_SLOT}
+		>=dev-qt/qtwebengine-${QT_VER}:${QT_SLOT}[widgets]
 		>=dev-qt/qtwidgets-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtxml-${QT_VER}:${QT_SLOT}
 		>=dev-qt/qtxmlpatterns-${QT_VER}:${QT_SLOT}
-		server? ( virtual/pam )
+		server? ( sys-libs/pam )
 	)
-	dedicated? ( virtual/pam )
+	dedicated? ( sys-libs/pam )
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )"
 DEPEND="${RDEPEND}
@@ -92,16 +92,17 @@ DEPEND="${RDEPEND}
 #	test? ( dev-java/junit:4 )
 
 PATCHES=(
-		"${FILESDIR}/${PN}-1.2.1335-prefs.patch"
-		"${FILESDIR}/${PN}-1.2.1335-paths.patch"
-		"${FILESDIR}/${PN}-1.2.1335-pandoc.patch"
-		"${FILESDIR}/${PN}-1.2.1335-linker_flags.patch"
-		"${FILESDIR}/${PN}-1.2.1335-qtsingleapplication.patch"
-		"${FILESDIR}/${PN}-1.0.44-systemd.patch"
-		"${FILESDIR}/${PN}-1.2.1335-core.patch"
-		"${FILESDIR}/${PN}-1.2.1335-fix-ptr-int-compare.patch"
-		"${FILESDIR}/${PN}-1.2.1335-boost-1.70.0_p1.patch"
-		"${FILESDIR}/${PN}-1.2.1335-boost-1.70.0_p2.patch"
+	"${FILESDIR}"/${PN}-1.2.1335-prefs.patch
+	"${FILESDIR}"/${PN}-1.2.1335-paths.patch
+	"${FILESDIR}"/${PN}-1.2.1335-pandoc.patch
+	"${FILESDIR}"/${PN}-1.2.1335-linker_flags.patch
+	"${FILESDIR}"/${PN}-1.2.1335-qtsingleapplication.patch
+	"${FILESDIR}"/${PN}-1.0.44-systemd.patch
+	"${FILESDIR}"/${PN}-1.2.1335-core.patch
+	"${FILESDIR}"/${PN}-1.2.1335-fix-ptr-int-compare.patch
+	"${FILESDIR}"/${PN}-1.2.1335-boost-1.70.0_p1.patch
+	"${FILESDIR}"/${PN}-1.2.1335-boost-1.70.0_p2.patch
+	"${FILESDIR}"/${PN}-1.2.1335-boost-1.72-filesystem.patch
 )
 
 src_unpack() {
@@ -223,7 +224,7 @@ src_install() {
 	dodir /etc/rstudio
 	insinto /etc/rstudio
 	doins "${FILESDIR}"/rsession.conf
-	dosym "${ED}/etc/conf.d/rstudio-server.conf" "/etc/rstudio/rserver.conf"
+	dosym ../conf.d/rstudio-server.conf /etc/rstudio/rserver.conf
 	if use dedicated || use server; then
 		dopamd src/cpp/server/extras/pam/rstudio
 		newinitd "${FILESDIR}"/rstudio-server.initd rstudio-server

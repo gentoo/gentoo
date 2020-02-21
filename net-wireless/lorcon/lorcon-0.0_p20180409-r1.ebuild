@@ -21,7 +21,7 @@ else
 	GIT_HASH="d8637792f2e857f31849f29759c1022eb0518c83"
 	SRC_URI="https://github.com/kismetwireless/lorcon/archive/${GIT_HASH}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}"/"${PN}-${GIT_HASH}"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 LICENSE="GPL-2"

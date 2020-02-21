@@ -15,7 +15,7 @@ DESCRIPTION="Capybara aims to simplify the process of integration testing Rack a
 HOMEPAGE="https://github.com/jnicklas/capybara"
 LICENSE="MIT"
 
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~hppa ~x86"
 SLOT="3"
 IUSE="test"
 
@@ -56,5 +56,5 @@ all_ruby_prepare() {
 }
 
 each_ruby_test() {
-	virtx ${RUBY} -Ilib -S rspec-3 spec || die "Tests failed."
+	virtx ${RUBY} -Ilib -S rspec-3 spec
 }

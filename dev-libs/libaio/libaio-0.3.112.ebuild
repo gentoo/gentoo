@@ -17,6 +17,7 @@ fi
 LICENSE="LGPL-2"
 SLOT="0"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-0.3.112-cppflags.patch

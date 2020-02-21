@@ -1,4 +1,4 @@
 # Only listen on local interface by default
 # use evironment variables PIGPIO_PORT="8888" and PIGPIO_ADDR="::1" for pigs with local interface
 # PIGPIOD_OPTS="-l -p 8888"
-PIGPIOD_OPTS="-l"
+PIGPIOD_OPTS="-l -n 127.0.0.1"

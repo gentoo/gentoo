@@ -30,6 +30,7 @@ src_prepare() {
 	# loads system one (from potentially older version of package).
 	# To work it around we bump last modification timestamp of
 	# '*.scm' files.
+	# http://debbugs.gnu.org/cgi/bugreport.cgi?bug=38112
 	find "${S}" -name "*.scm" -exec touch {} + || die
 }
 

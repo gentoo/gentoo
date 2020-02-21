@@ -11,7 +11,7 @@ SRC_URI="mirror://sourceforge/sipsak.berlios/${P/_p/-}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc ~sparc ~x86"
 IUSE="gnutls"
 
 RDEPEND="gnutls? ( net-libs/gnutls )
@@ -32,6 +32,6 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog NEWS README TODO
 }

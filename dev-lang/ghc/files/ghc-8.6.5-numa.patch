@@ -1,0 +1,22 @@
+Disable automagic NUMA linking.
+
+Reported-by: Sergey Alirzaev
+Bug: https://github.com/gentoo-haskell/gentoo-haskell/issues/955
+--- a/configure.ac
++++ b/configure.ac
+@@ -1264,10 +1264,14 @@ dnl ** Have libnuma?
+ dnl --------------------------------------------------------------
+ HaveLibNuma=0
+ AC_CHECK_HEADERS([numa.h numaif.h])
+-
+ if test "$ac_cv_header_numa_h$ac_cv_header_numaif_h" = "yesyes" ; then
+     AC_CHECK_LIB(numa, numa_available,HaveLibNuma=1)
+ fi
++AC_ARG_ENABLE(numa,
++    [AC_HELP_STRING([--enable-numa],
++        [Enable NUMA thread balancing support in the runtime system via numactl's libnuma [default=auto]])])
++AS_IF([test "x$enable_numa" = "xno"], [HaveLibNuma=0])
++
+ AC_DEFINE_UNQUOTED([HAVE_LIBNUMA], [$HaveLibNuma], [Define to 1 if you have libnuma])
+ if test $HaveLibNuma = "1" ; then
+   AC_SUBST([CabalHaveLibNuma],[True])

@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit autotools base eutils
+inherit autotools
 
 DESCRIPTION="Smart Common Input Method (SCIM) Generic Table Input Method Server"
 HOMEPAGE="http://www.scim-im.org/"
@@ -13,51 +13,36 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86"
 IUSE="nls"
-LANGS="am ar bn gu hi ja kn ko ml ne pa ru ta te th uk vi zh"
 
-RDEPEND=">=app-i18n/scim-1.4.7-r2
+RDEPEND="
+	>=app-i18n/scim-1.4.7-r2
 	nls? ( virtual/libintl )"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-0.5.8+gcc-4.3.patch"
+	"${FILESDIR}"/${PN}-0.5.8+gcc-4.3.patch
 	"${FILESDIR}"/${PN}-0.5.12-automake.patch
-	)
+)
 
-pkg_setup() {
-	elog "Not all languages are going to be compiled."
-	elog "Please set LINGUAS to your preferred language(s)."
-	elog "Supported LINGUAS values are:"
-	elog "${LANGS}"
+src_prepare() {
+	default
+	eautoreconf
 }
 
-src_unpack() {
-	base_src_unpack
-
-	strip-linguas ${LANGS}
-	local use_languages="additional ${LINGUAS}"
-	elog "Languages being compiled are: ${use_languages}"
-
-	cd "${S}"
-	sed -i -e "/^SUBDIRS/s/.*/SUBDIRS = ${use_languages}/g" \
-			tables/Makefile.{am,in} || die "sed ${m} failed"
-
-	AT_NO_RECURSIVE=yes AT_M4DIR=${S}/m4 eautoreconf
-}
-
-src_compile() {
+src_configure() {
 	econf \
 		--disable-skim-support \
-		$(use_enable nls) \
 		--disable-static \
-		--disable-dependency-tracking \
-		--without-arts || die "econf failed"
-	emake || die "make failed"
+		--without-arts \
+		$(use_enable nls)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	dodoc README ChangeLog AUTHORS
+	default
+
+	# no static archives
+	find "${D}" -name '*.la' -delete || die
 }

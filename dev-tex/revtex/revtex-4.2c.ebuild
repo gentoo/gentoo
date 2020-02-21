@@ -11,7 +11,7 @@ SRC_URI="http://mirrors.ctan.org/macros/latex/contrib/revtex.zip -> ${P}.zip"
 
 LICENSE="LPPL-1.3c"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 
 RDEPEND=">=dev-texlive/texlive-latex-2012"
 DEPEND="${RDEPEND}

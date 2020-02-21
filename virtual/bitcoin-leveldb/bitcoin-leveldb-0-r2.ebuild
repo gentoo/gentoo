@@ -5,7 +5,7 @@ EAPI=5
 
 DESCRIPTION="Virtual for LevelDB versions known to be compatible with Bitcoin Core 0.9+"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 x86 ~amd64-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 arm ~arm64 ~mips ppc ppc64 x86 ~amd64-linux ~x86-linux"
 
 RDEPEND="
 	|| (

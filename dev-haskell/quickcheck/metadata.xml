@@ -6,7 +6,7 @@
 		<name>Gentoo Haskell</name>
 	</maintainer>
 	<use>
-		<flag name="template_haskell">Enable additional test modules requiring Template Haskell support.</flag>
+		<flag name="template-haskell">Enable additional test modules requiring Template Haskell support.</flag>
 	</use>
 	<longdescription>
 		QuickCheck is a library for random testing of program properties.

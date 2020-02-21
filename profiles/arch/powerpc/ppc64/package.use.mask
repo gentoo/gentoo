@@ -1,9 +1,26 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
+# Mask until net-analyzer/icinga2 is keyworded
+net-analyzer/pnp4nagios icinga
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-25)
+# bolt not keyworded on ~ppc64
+kde-plasma/plasma-meta crypt thunderbolt
+kde-plasma/powerdevil brightness-control
+
+# Georgy Yakovlev <gyakovlev@gentoo.org> (2019-12-28)
+# not keyworded or irrelevant on ~ppc64, bug 679888
+app-emulation/libvirt virtualbox xen
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
 # Eugene Bright <eugene@bright.gdn> (2019-09-09)
 # Missing keyword on dev-embedded/libjaylink
-sys-apps/flashrom jlink_spi
+sys-apps/flashrom jlink-spi
 
 # Matthew Thode <prometheanfire@gentoo.org> (2019-08-22)
 # context works with newer versions of boost

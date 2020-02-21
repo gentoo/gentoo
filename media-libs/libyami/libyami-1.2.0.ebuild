@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,6 +25,7 @@ fi
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="debug egl dmabuf doc md5 v4l X test wayland"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=x11-libs/libva-1.7.2[drm,X?,wayland?,${MULTILIB_USEDEP}]

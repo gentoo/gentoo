@@ -10,6 +10,7 @@
 </maintainer>
 <use>
 	<flag name="lzma">Enable support for XZ compressed modules</flag>
+	<flag name="pkcs7">Enable PKCS#7 signature parsing for modinfo.</flag>
 	<flag name="tools">Install module loading/unloading tools.</flag>
 	<flag name="zlib">Enable support for gzipped modules</flag>
 </use>

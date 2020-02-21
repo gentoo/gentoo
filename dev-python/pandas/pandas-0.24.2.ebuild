@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
@@ -11,13 +11,14 @@ VIRTUALX_REQUIRED="manual"
 inherit distutils-r1 eutils flag-o-matic virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
-HOMEPAGE="http://pandas.pydata.org/"
+HOMEPAGE="https://pandas.pydata.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P/_/}.tar.gz"
 
 SLOT="0"
 LICENSE="BSD"
 KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc full-support minimal test X"
+RESTRICT="!test? ( test )"
 
 RECOMMENDED_DEPEND="
 	>=dev-python/bottleneck-1.2.1[${PYTHON_USEDEP}]
@@ -49,7 +50,6 @@ OPTIONAL_DEPEND="
 	X? (
 		|| (
 			dev-python/PyQt5[${PYTHON_USEDEP}]
-			dev-python/pygtk[$(python_gen_usedep python2_7)]
 			x11-misc/xclip
 			x11-misc/xsel
 		)
@@ -125,7 +125,7 @@ python_compile_all() {
 	if use doc; then
 		cd "${BUILD_DIR}"/lib || die
 		cp -ar "${S}"/doc . && cd doc || die
-		LANG=C PYTHONPATH=. virtx ${EPYTHON} make.py html || die
+		LANG=C PYTHONPATH=. virtx ${EPYTHON} make.py html
 	fi
 }
 

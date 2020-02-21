@@ -1,0 +1,45 @@
+https://github.com/RadeonOpenCompute/ROCR-Runtime/pull/51
+
+From 09a835e8de2d88e917328a78765a1db423d21920 Mon Sep 17 00:00:00 2001
+From: Craig Andrews <candrews@integralblue.com>
+Date: Sun, 29 Dec 2019 16:57:00 -0500
+Subject: [PATCH] Correctly install the library into the system
+
+Install to standard locations in /usr/{lib,include}/lib (as opposed to /usr/hsa/{lib,include}/hsa)
+Use CMAKE_INSTALL_LIBDIR and CMAKE_INSTALL_INCLUDEDIR from GNUInstallDirs instead of using "lib" and "include"
+---
+ CMakeLists.txt | 13 +++----------
+ 1 file changed, 3 insertions(+), 10 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index f292182..7474dd2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -61,6 +61,7 @@ endif() # if (ROCM_CCACHE_BUILD)
+ 
+ list ( APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake_modules" )
+ include ( utils )
++include ( GNUInstallDirs )
+ include ( hsa_common )
+ 
+ ## Find LibElf
+@@ -176,17 +177,9 @@ endif ()
+ set_property ( TARGET ${CORE_RUNTIME_TARGET} PROPERTY VERSION "${SO_VERSION_STRING}" )
+ set_property ( TARGET ${CORE_RUNTIME_TARGET} PROPERTY SOVERSION "${SO_MAJOR}" )
+ 
+-## Create symlinks for legacy packaging and install
+-add_custom_target ( hsa_include_link ALL WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} COMMAND ${CMAKE_COMMAND} -E create_symlink ../hsa/include/hsa hsa_include_link )
+-add_custom_target ( hsa_lib_link ALL WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} COMMAND ${CMAKE_COMMAND} -E create_symlink ../hsa/lib/${CORE_RUNTIME_LIBRARY}.so ${CORE_RUNTIME_LIBRARY}-link.so )
+-add_custom_target ( hsa_lib_link2 ALL WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR} COMMAND ${CMAKE_COMMAND} -E create_symlink ../hsa/lib/${CORE_RUNTIME_LIBRARY}.so.${SO_MAJOR} ${CORE_RUNTIME_LIBRARY}-link.so.${SO_MAJOR} )
+-
+ ## Set install information
+-install ( TARGETS ${CORE_RUNTIME_TARGET} LIBRARY DESTINATION hsa/lib )
+-install ( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/inc/ DESTINATION hsa/include/hsa )
+-install ( FILES ${CMAKE_CURRENT_BINARY_DIR}/hsa_include_link DESTINATION include PERMISSIONS OWNER_WRITE OWNER_READ RENAME hsa )
+-install ( FILES ${CMAKE_CURRENT_BINARY_DIR}/${CORE_RUNTIME_LIBRARY}-link.so DESTINATION lib PERMISSIONS OWNER_WRITE OWNER_READ RENAME ${CORE_RUNTIME_LIBRARY}.so )
+-install ( FILES ${CMAKE_CURRENT_BINARY_DIR}/${CORE_RUNTIME_LIBRARY}-link.so.${SO_MAJOR} DESTINATION lib PERMISSIONS OWNER_WRITE OWNER_READ RENAME ${CORE_RUNTIME_LIBRARY}.so.${SO_MAJOR} )
++install ( TARGETS ${CORE_RUNTIME_TARGET} LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} )
++install ( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/inc/ DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/hsa )
+ 
+ ## Packaging directives
+ set ( CPACK_GENERATOR "DEB;RPM" CACHE STRING "Package types to build")

@@ -19,6 +19,9 @@
     <flag name="python">Build support for scripting via Python 3.</flag>
     <flag name="speex">Enable noise suppression filter support via
       <pkg>media-libs/speexdsp</pkg>.</flag>
+    <flag name="ssl">Build support for TLS/SSL connections (RTMPS) via
+      <pkg>net-libs/mbedtls</pkg>.</flag>
+    <flag name="vlc">Build support for using <pkg>media-video/vlc</pkg> as a media source.</flag>
   </use>
   <upstream>
     <remote-id type="github">obsproject/obs-studio</remote-id>

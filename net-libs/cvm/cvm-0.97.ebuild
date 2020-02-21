@@ -11,7 +11,7 @@ SRC_URI="http://untroubled.org/cvm/archive/${P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64 ppc ~sparc x86"
 IUSE="mysql postgres test vpopmail"
 RESTRICT="!test? ( test )"
 

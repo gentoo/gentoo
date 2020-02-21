@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit python-any-r1 golang-build golang-vcs-snapshot
 
@@ -14,7 +14,7 @@ DESCRIPTION="Single Node Kubernetes Cluster"
 HOMEPAGE="https://github.com/kubernetes/minikube https://kubernetes.io"
 SRC_URI="${ARCHIVE_URI}"
 
-LICENSE="Apache-2.0"
+LICENSE="Apache-2.0 BSD BSD-2 CC-BY-4.0 CC-BY-SA-4.0 CC0-1.0 GPL-2 ISC LGPL-3 MIT MPL-2.0 WTFPL-2 ZLIB || ( LGPL-3+ GPL-2 ) || ( Apache-2.0 LGPL-3+ ) || ( Apache-2.0 CC-BY-4.0 )"
 SLOT="0"
 IUSE="hardened libvirt"
 
@@ -32,6 +32,7 @@ src_prepare() {
 }
 
 src_compile() {
+	export -n GOCACHE XDG_CACHE_HOME
 	export CGO_LDFLAGS="$(usex hardened '-fno-PIC ' '')"
 	LDFLAGS="" GOFLAGS="-v" GOPATH="${WORKDIR}/${P}" emake -C src/${EGO_PN}  $(usex libvirt "out/docker-machine-driver-kvm2" "") out/minikube-linux-amd64
 }

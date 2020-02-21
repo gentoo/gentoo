@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ DEB_REV_MAJ="$(get_version_component_range 3)"
 DEB_REV_MIN="$(get_version_component_range 4)"
 DEB_REVISION="${DEB_REV_MAJ/p}.${DEB_REV_MIN/p}"
 SRC_URI="
-	${HOMEPAGE}/${P/_p*/}.tgz
+	http://www.ibiblio.org/pub/Linux/X11/screensavers/${P/_p*/}.tgz
 	mirror://debian/pool/main/x/${PN}/${PN}_${PV/_p*/}-${DEB_REVISION}.debian.tar.xz
 "
 LICENSE="GPL-2"

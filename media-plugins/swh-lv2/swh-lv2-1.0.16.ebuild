@@ -27,10 +27,10 @@ src_prepare() {
 }
 
 src_compile() {
-	emake CC=$(tc-getCC) || die
+	emake CC=$(tc-getCC)
 }
 
 src_install() {
-	emake INSTALL_DIR="${D}/usr/$(get_libdir)/lv2" install-system || die
+	emake INSTALL_DIR="${D}/usr/$(get_libdir)/lv2" install-system
 	dodoc README
 }

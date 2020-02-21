@@ -1,0 +1,8 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -119,5 +119,3 @@
+ 	DESTINATION ${CONFIG_PACKAGE_LOCATION}
+ )
+ 
+-add_subdirectory(build)
+-

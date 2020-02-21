@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 s390 sh sparc x86"
 IUSE="postgres ldap libressl mysql pam nls ipv6 spell fax crypt norewrite \
 	fam web webmail gnutls"
 
@@ -27,7 +27,7 @@ DEPEND="
 	dev-libs/libpcre
 	app-misc/mime-types
 	fax? ( >=media-libs/netpbm-9.12 app-text/ghostscript-gpl >=net-dialup/mgetty-1.1.28 )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	mysql? ( dev-db/mysql-connector-c )
 	ldap? ( >=net-nds/openldap-1.2.11 )
 	postgres? ( dev-db/postgresql:= )
@@ -242,7 +242,7 @@ src_install() {
 
 src_test() {
 	if [ `whoami` != 'root' ]; then
-		emake -j1 check || die "Make check failed."
+		emake -j1 check
 	else
 		einfo "make check skipped, can't run as root."
 		einfo "You can enable it with FEATURES=\"userpriv\""

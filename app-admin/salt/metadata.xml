@@ -34,7 +34,6 @@ backbone of cloud and data center management.
     <flag name="portage">Add support for package state enforcement using sys-apps/portage</flag>
     <flag name="raet">Add support for the new RAET transport.</flag>
     <flag name="redis">Support returning data to a redis database.</flag>
-    <flag name="timelib">Use timelib to parse english textual date descriptions.</flag>
     <flag name="zeromq">Add support for the zeromq transport.</flag>
   </use>
   <upstream>

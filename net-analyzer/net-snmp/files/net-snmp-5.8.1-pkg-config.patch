@@ -1,0 +1,16 @@
+--- a/netsnmp-agent.pc.in
++++ b/netsnmp-agent.pc.in
+@@ -9,4 +9,4 @@
+ Version: @PACKAGE_VERSION@
+ Cflags: -I${includedir}
+ Libs: -L${libdir} -lnetsnmpmibs -lnetsnmpagent -lnetsnmp
+-Libs.private: @LDFLAGS@ @LMIBLIBS@ @LAGENTLIBS@ @PERLLDOPTS_FOR_APPS@ @LNETSNMPLIBS@ @LIBS@
++Libs.private: @LMIBLIBS@ @LAGENTLIBS@ @PERLLDOPTS_FOR_APPS@ @LNETSNMPLIBS@ @LIBS@
+--- a/netsnmp.pc.in
++++ b/netsnmp.pc.in
+@@ -9,4 +9,4 @@
+ Version: @PACKAGE_VERSION@
+ Cflags: -I${includedir}
+ Libs: -L${libdir} -lnetsnmp
+-Libs.private: @LDFLAGS@ @LNETSNMPLIBS@ @LIBS@ @PERLLDOPTS_FOR_APPS@
++Libs.private: @LNETSNMPLIBS@ @LIBS@ @PERLLDOPTS_FOR_APPS@

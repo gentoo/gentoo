@@ -68,9 +68,9 @@ src_configure() {
 src_install() {
 	default
 	rm -rf "${D}"/var/run "${D}"/etc/init.d
-	newinitd "${FILESDIR}/${PN}.initd" ${PN} || die
+	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 	if has_version "<sys-cluster/corosync-2.0"; then
 		insinto /etc/corosync/service.d
-		newins "${FILESDIR}/${PN}.service" ${PN} || die
+		newins "${FILESDIR}/${PN}.service" ${PN}
 	fi
 }

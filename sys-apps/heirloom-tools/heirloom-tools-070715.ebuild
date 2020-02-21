@@ -25,12 +25,12 @@ S="${WORKDIR}/heirloom-${PV}"
 
 src_compile() {
 	append-cppflags -D_GNU_SOURCE
-	emake -j1 ||die
+	emake -j1
 }
 
 src_install() {
 	# we don't want to strip here, so use "true" as noop
-	emake STRIP="true" ROOT="${D}" -j1 install || die
+	emake STRIP="true" ROOT="${D}" -j1 install
 }
 
 pkg_postinst() {

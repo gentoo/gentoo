@@ -1,7 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
 DESCRIPTION="A portable C library for reading and writing BSB format image files"
 HOMEPAGE="http://libbsb.sourceforge.net/"
@@ -20,7 +20,4 @@ RDEPEND="${DEPEND}"
 # tools work perfectly, so restrict test until this is fixed upstream
 RESTRICT="test"
 
-src_install() {
-	emake DESTDIR="${D}" install
-	dodoc README AUTHORS
-}
+DOCS=( README AUTHORS )

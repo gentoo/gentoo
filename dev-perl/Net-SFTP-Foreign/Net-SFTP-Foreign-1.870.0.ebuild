@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ DESCRIPTION="SSH File Transfer Protocol client"
 SLOT="0"
 KEYWORDS="amd64 ~hppa ~sparc x86"
 IUSE="test examples"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Scalar-List-Utils

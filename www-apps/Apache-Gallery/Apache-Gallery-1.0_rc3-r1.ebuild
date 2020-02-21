@@ -38,7 +38,7 @@ src_install() {
 	perl-module_src_install
 	webapp_src_preinst
 
-	dodoc Changes INSTALL README TODO UPGRADE || die
+	dodoc Changes INSTALL README TODO UPGRADE
 
 	insinto "${MY_ICONSDIR}"/gallery
 	doins htdocs/*.png

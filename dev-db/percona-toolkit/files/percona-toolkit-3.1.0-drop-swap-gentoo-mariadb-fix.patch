@@ -1,0 +1,33 @@
+diff --git a/bin/pt-online-schema-change b/bin/pt-online-schema-change
+index 7ecec11..afdd7dd 100755
+--- a/bin/pt-online-schema-change
++++ b/bin/pt-online-schema-change
+@@ -8948,15 +8948,6 @@ sub main {
+          Quoter => $q,
+       );
+ 
+-   my $vp = VersionParser->new($cxn->dbh());
+-   if ($vp->cmp('8.0.14') > -1 && $vp->flavor() !~ m/maria/i) {
+-       my $msg = "There is an error in MySQL that makes the server to die when trying to ".
+-                 "rename a table with FKs. See https://bugs.mysql.com/bug.php?id=96145\n".
+-                 "Since pt-online-schema change needs to rename the old <-> new tables as the final " .
+-                 "step, and the requested table has FKs, it cannot be executed under the current MySQL version";
+-       _die($msg, NO_MINIMUM_REQUIREMENTS);
+-   }
+-
+    if ( ($alter_fk_method || '') eq 'none' ) {
+       print "Not updating foreign keys because "
+          . "--alter-foreign-keys-method=none.  Foreign keys "
+@@ -9872,12 +9863,6 @@ sub main {
+       }
+    }
+ 
+-   if ($vp->cmp('8.0') > -1 && $vp->flavor() !~ m/maria/i && $alter_fk_method eq 'drop_swap') {
+-       my $msg = "--alter-foreign-keys-method=drop_swap doesn't work with MySQL 8.0+\n".
+-                 "See https://bugs.mysql.com/bug.php?id=89441";
+-       _die($msg, INVALID_PARAMETERS);
+-   }
+-
+    # --plugin hook
+    if ( $plugin && $plugin->can('after_copy_rows') ) {
+       $plugin->after_copy_rows();

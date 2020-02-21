@@ -14,6 +14,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm x86"
 IUSE="luajit test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!luajit? ( >=dev-lang/lua-5.1:= )

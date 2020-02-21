@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<!-- maintainer-needed -->
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		The libluise.so lib provides a very simple interface for programming
+		the USB LCDs ready. The programmer has three independent screens available,
+		a text screen and two graphic screens. The screens are each 320x240 pixels.
+		By the two separate graphic screens can be very easily superimposed static and
+		represent dynamic data. This is for example when using background images
+		helpful because the environment of the dynamic data / graphics is not constantly recalculated
+		got to. All three screens will appear "on top of each other" on the LCD and will go through
+		previously defined parameters (LUI_LCDmode ()) corresponding to each other bitwise
+		connected. The coordinate origin (x = 0, y = 0) of a screen is always in the
+		left upper corner. In addition, the inversion and the rotation of the screens
+		supports (90 ° steps), while saving the programmer the coordinates conversions stay.
+	</longdescription>
 </pkgmetadata>

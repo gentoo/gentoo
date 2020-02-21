@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit autotools
+inherit autotools flag-o-matic
 
 DESCRIPTION="A framework for layer 2 attacks"
 HOMEPAGE="http://www.yersinia.net/"
@@ -45,6 +45,8 @@ src_prepare() {
 }
 
 src_configure() {
+	append-cflags -fcommon
+
 	econf \
 		--enable-admin \
 		--with-pcap-includes=/usr/include \

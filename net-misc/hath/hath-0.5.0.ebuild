@@ -10,7 +10,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Hath manipulates network blocks in CIDR notation"
 HOMEPAGE="http://michael.orlitzky.com/code/hath.xhtml"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="AGPL-3"
 SLOT="0"

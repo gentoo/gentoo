@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit cmake-utils desktop xdg
+inherit cmake desktop xdg
 
 DESCRIPTION="Game Boy Advance emulator written in C"
 HOMEPAGE="https://mgba.io"
@@ -12,7 +12,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/mgba-emu/mgba.git"
 else
 	SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 fi
 LICENSE="MPL-2.0"
 SLOT="0"
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	xdg_environment_reset
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Get rid of any bundled stuff we don't want
 	for pkg in libpng lzma sqlite3 zlib ; do
@@ -79,11 +79,11 @@ src_configure() {
 		-DUSE_SQLITE3="$(usex sqlite)"
 		-DUSE_ZLIB=ON
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 }
 
 src_install() {

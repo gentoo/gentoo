@@ -1,0 +1,64 @@
+From b356e7fda15e39e037da1888a24000a96fc85c90 Mon Sep 17 00:00:00 2001
+From: Niko Tyni <ntyni@debian.org>
+Date: Sun, 24 Jun 2018 16:19:25 +0300
+Subject: [PATCH] Fix test suite for GnuPG >= 2.2.8 compatibility
+
+GnuPG 2.2.8 onwards issues a hard failure when decrypting
+messages not using the MDC mode.
+
+Bug-Debian: https://bugs.debian.org/900051
+---
+ t/decrypt.t | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
+
+diff --git a/t/decrypt.t b/t/decrypt.t
+index ee41448..2d6740c 100644
+--- a/t/decrypt.t
++++ b/t/decrypt.t
+@@ -6,6 +6,7 @@
+ use strict;
+ use English qw( -no_match_vars );
+ use File::Compare;
++use version;
+ 
+ use lib './t';
+ use MyTest;
+@@ -13,6 +14,8 @@ use MyTestSpecific;
+ 
+ my $compare;
+ 
++my $gnupg_version = version->parse($gnupg->version);
++
+ TEST
+ {
+     reset_handles();
+@@ -26,7 +29,13 @@ TEST
+     close $stdout;
+     waitpid $pid, 0;
+ 
+-    return $CHILD_ERROR == 0;;
++    if ($gnupg_version < version->parse('2.2.8')) {
++        return $CHILD_ERROR == 0;;
++    } else {
++        local $/ = undef;
++        my $errstr = <$stderr>;
++        return (($CHILD_ERROR >> 8 == 2) and ($errstr =~ /ignore-mdc-error/));
++    }
+ };
+ 
+ 
+@@ -50,7 +59,13 @@ TEST
+ 
+     waitpid $pid, 0;
+ 
+-    return $CHILD_ERROR == 0;
++    if ($gnupg_version < version->parse('2.2.8')) {
++        return $CHILD_ERROR == 0;
++    } else {
++        local $/ = undef;
++        my $errstr = <$stderr>;
++        return (($CHILD_ERROR >> 8 == 2) and ($errstr =~ /ignore-mdc-error/));
++    }
+ };
+ 
+ 

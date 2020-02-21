@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='threads(+)'
 
 inherit flag-o-matic python-r1 waf-utils systemd user
@@ -132,7 +132,7 @@ src_install() {
 	newconfd "${FILESDIR}"/ntpd.confd ntp
 
 	# Install the systemd unit file
-	systemd_newunit "${FILESDIR}"/ntpd.service ntpd.service
+	systemd_newunit "${FILESDIR}"/ntpd-r1.service ntpd.service
 
 	# Prepare a directory for the ntp.drift file
 	mkdir -pv "${ED}"/var/lib/ntp

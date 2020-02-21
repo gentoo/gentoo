@@ -1,0 +1,54 @@
+--- a/test/Makefile.in
++++ b/test/Makefile.in
+@@ -9,31 +9,31 @@
+ all: test
+ 
+ test:
+-	if ! test -e ../lib/libnet.a; then \
+-	    cd .. &&  make; \
++	if ! test -e ../lib/libnet-1.0.a; then \
++	    cd .. &&  $(MAKE); \
+ 	fi
+-	cd Random; make all
+-	cd ICMP; make all
+-	cd UDP; make all
+-	cd TCP; make all
+-	cd Ethernet; make all
+-	cd OSPF; make all
++	cd Random; $(MAKE) all
++	cd ICMP; $(MAKE) all
++	cd UDP; $(MAKE) all
++	cd TCP; $(MAKE) all
++	cd Ethernet; $(MAKE) all
++	cd OSPF; $(MAKE) all
+ 
+ clean:
+-	cd Random; make clean
+-	cd ICMP; make clean
+-	cd UDP; make clean
+-	cd TCP; make clean
+-	cd Ethernet; make clean
+-	cd OSPF; make clean
++	cd Random; $(MAKE) clean
++	cd ICMP; $(MAKE) clean
++	cd UDP; $(MAKE) clean
++	cd TCP; $(MAKE) clean
++	cd Ethernet; $(MAKE) clean
++	cd OSPF; $(MAKE) clean
+ 
+ distclean: clean
+-	cd TCP; make distclean
+-	cd UDP; make distclean
+-	cd ICMP; make distclean
+-	cd Random; make distclean
+-	cd Ethernet; make distclean
+-	cd OSPF; make distclean
++	cd TCP; $(MAKE) distclean
++	cd UDP; $(MAKE) distclean
++	cd ICMP; $(MAKE) distclean
++	cd Random; $(MAKE) distclean
++	cd Ethernet; $(MAKE) distclean
++	cd OSPF; $(MAKE) distclean
+ 	rm -f Makefile
+ 
+ # EOF

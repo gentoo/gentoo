@@ -1,0 +1,42 @@
+From a42492b8db06934c7a794630db92e3ff6ebaadaa Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Mon, 3 Feb 2020 20:25:57 +0000
+Subject: [PATCH] share/text.h: fix build failure against gcc-10
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+On gcc-10 (and gcc-9 -fno-common) build fails as:
+
+```
+cc .. -o neverball ...
+ld: ball/st_save.o:(.bss+0x0):
+  multiple definition of `text_input'; share/text.o:(.bss+0x0): first defined here
+```
+
+gcc-10 will change the default from -fcommon to fno-common:
+https://gcc.gnu.org/PR85678.
+
+The error also happens if CFLAGS=-fno-common passed explicitly.
+
+Reported-by: Toralf Förster
+Bug: https://bugs.gentoo.org/708050
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ share/text.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/share/text.h
++++ b/share/text.h
+@@ -15,7 +15,7 @@ int text_length(const char *);
+ 
+ /*---------------------------------------------------------------------------*/
+ 
+-char text_input[MAXSTR];
++extern char text_input[MAXSTR];
+ 
+ void text_input_start(void (*cb)(int typing));
+ void text_input_stop(void);
+-- 
+2.25.0
+

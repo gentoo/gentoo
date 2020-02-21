@@ -1,0 +1,83 @@
+From d2eae3d524bf84b843eacdf45ecfc77908e12ad8 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Tue, 17 Sep 2019 13:39:55 +0200
+Subject: Make it compiles against qt5.14
+
+---
+ src/gameview.cpp | 10 +++++-----
+ src/gameview.h   |  4 ++--
+ 2 files changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/gameview.cpp b/src/gameview.cpp
+index 69c94a7..a9bbbac 100644
+--- a/src/gameview.cpp
++++ b/src/gameview.cpp
+@@ -26,7 +26,7 @@
+ // Qt includes
+ #include <QPoint>
+ #include <QTimer>
+-#include <QTime>
++#include <QElapsedTimer>
+ 
+ // KDE includes
+ 
+@@ -95,7 +95,7 @@ GameView::~GameView()
+ void GameView::updateAndAdvance()
+ {
+     static int elapsed = -1;
+-    static QTime timer;
++    static QElapsedTimer timer;
+     if (elapsed < 0)
+     {
+         timer.start();
+@@ -118,7 +118,7 @@ void GameView::updateAndAdvance()
+ // Slot called by the framework when the window is resized.
+ void GameView::resizeEvent(QResizeEvent *e)
+ {
+-    QTime t;
++    QElapsedTimer t;
+     t.start();
+     if (global_debug > 2) qCDebug(LSKAT_LOG) << "RESIZE EVENT " << e->size() << " oldSize="<< e->oldSize() << " at " << t.msecsTo(mTimeStart);
+     double diffW = double(e->oldSize().width() - e->size().width());
+@@ -182,7 +182,7 @@ void GameView::rescaleTheme()
+         return;
+     }
+ 
+-    QTime t;
++    QElapsedTimer t;
+     t.start();
+ 
+     if (global_debug > 2) qCDebug(LSKAT_LOG) << "Theme queue rescale start at " << t.msecsTo(mTimeStart);
+@@ -217,7 +217,7 @@ void GameView::mouseReleaseEvent(QMouseEvent *ev)
+ 
+ void GameView::drawItems(QPainter *painter, int numItems, QGraphicsItem *items[], const QStyleOptionGraphicsItem options[])
+ {
+-    QTime time;
++    QElapsedTimer time;
+     time.start();
+     QGraphicsView::drawItems(painter, numItems, items, options);
+ 
+diff --git a/src/gameview.h b/src/gameview.h
+index 8c5c995..d2da977 100644
+--- a/src/gameview.h
++++ b/src/gameview.h
+@@ -31,7 +31,7 @@
+ #include <QPoint>
+ #include <QResizeEvent>
+ #include <QSize>
+-#include <QTime>
++#include <QElapsedTimer>
+ #include <QWidget>
+ 
+ // Forward declaration
+@@ -116,7 +116,7 @@ private:
+     // Active input offset
+     QPoint mInputOffset;
+     // Theme queue delay time [ms]
+-    QTime mTimeStart;
++    QElapsedTimer mTimeStart;
+     // Debug frame rate sprite
+     QGraphicsTextItem *mFrameSprite;
+     // Time between updates
+-- 
+cgit v1.1

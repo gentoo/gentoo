@@ -1,7 +1,0 @@
-#
-# PAM configuration for the "passwd" service
-#
-
-# passwd(1) does not use the auth, account or session services.
-
-password	include		system-auth

@@ -1,0 +1,23 @@
+--- a/Makefile
++++ b/Makefile
+@@ -13,18 +13,13 @@
+ # files in the program, then also delete it here.
+ 
+ VERSION=1.3
+-CFLAGS+=-Wall -O2 -DVERSION=\"$(VERSION)\"
+-LDFLAGS=
++CFLAGS+=-Wall
++CPPFLAGS+=-DVERSION=\"$(VERSION)\"
+ 
+ OBJS=setpwc.o
+ 
+ all: setpwc
+ 
+-setpwc: $(OBJS)
+-	$(CC) -Wall -W $(OBJS) $(LDFLAGS) -o setpwc
+-	#
+-	# Oh, blatant plug: http://keetweej.vanheusden.com/wishlist.html
+-
+ install: setpwc
+ 	cp setpwc /usr/bin
+ 

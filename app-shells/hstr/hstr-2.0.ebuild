@@ -11,7 +11,7 @@ SRC_URI="https://github.com/dvorka/hstr/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="Apache-2.0"
-KEYWORDS="amd64 x86 ~amd64-fbsd"
+KEYWORDS="amd64 x86"
 
 RDEPEND="
 	sys-libs/ncurses:0=[unicode]"
@@ -21,6 +21,8 @@ DEPEND="
 	virtual/pkgconfig"
 
 DOCS=( CONFIGURATION.md README.md )
+
+PATCHES=( ${FILESDIR}/${P}-fix-ncurses-configure.patch )
 
 src_prepare() {
 	default

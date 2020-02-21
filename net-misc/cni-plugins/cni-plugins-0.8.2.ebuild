@@ -5,7 +5,7 @@ EAPI=6
 
 inherit linux-info golang-vcs-snapshot
 
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 DESCRIPTION="Standard networking plugins for container networking"
 EGO_PN="github.com/containernetworking/plugins"
 HOMEPAGE="https://github.com/containernetworking/plugins"

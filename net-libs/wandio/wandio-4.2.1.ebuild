@@ -12,6 +12,7 @@ LICENSE="LGPL-3"
 SLOT="0/6"
 KEYWORDS="~amd64 ~x86"
 IUSE="bzip2 http lzma lzo static-libs test zlib"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!<net-libs/libtrace-4

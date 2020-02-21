@@ -9,7 +9,7 @@ DESCRIPTION="Generate highlighted source code as an (x)html document"
 HOMEPAGE="https://www.gnu.org/software/src-highlite/source-highlight.html"
 SRC_URI="mirror://gnu/src-highlite/${P}.tar.gz"
 LICENSE="GPL-3"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~sparc-solaris"
 SLOT="0"
 IUSE="doc static-libs"
 
@@ -39,7 +39,7 @@ src_install () {
 	default
 
 	# That's not how we want it
-	rm -rf "${ED%/}"/usr/share/{aclocal,doc} || die
+	rm -rf "${ED}"/usr/share/{aclocal,doc} || die
 
 	# package provides .pc file
 	find "${D}" -name '*.la' -delete || die

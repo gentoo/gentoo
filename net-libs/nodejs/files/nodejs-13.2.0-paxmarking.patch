@@ -1,0 +1,71 @@
+    Bug: 694100
+    Add actions for pax marking mkcodecache and node_mksnapshot
+    to disable mprotect for pax enable kernel.
+    Reported-by: Attila Tóth <atoth@atoth.sote.hu>
+    Co-developed-by: Attila Tóth <atoth@atoth.sote.hu>
+    Signed-off-by: Magnus Granberg <zorry@gentoo.org>
+    
+--- a/node.gyp	2019-10-23 11:52:41.000000000 +0200
++++ a/node.gyp	2019-11-12 20:58:43.957881862 +0100
+@@ -233,7 +233,9 @@
+       'deps/acorn-plugins/acorn-static-class-features/index.js',
+     ],
+     'node_mksnapshot_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)node_mksnapshot<(EXECUTABLE_SUFFIX)',
++    'node_mksnapshot_u_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)node_mksnapshot_u<(EXECUTABLE_SUFFIX)',
+     'mkcodecache_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)mkcodecache<(EXECUTABLE_SUFFIX)',
++    'mkcodecache_u_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)mkcodecache_u<(EXECUTABLE_SUFFIX)',
+     'conditions': [
+       [ 'node_shared=="true"', {
+         'node_target_type%': 'shared_library',
+@@ -436,10 +438,24 @@
+           ],
+           'actions': [
+             {
++              'action_name': 'run_pax_mkcodecache',
++              'inputs': [
++                '<(mkcodecache_exec)',
++              ],
++              'outputs': [
++                '<(mkcodecache_u_exec)',
++              ],
++              'action': [
++                'bash',
++                '-c',
++                'mv <(mkcodecache_exec) <(mkcodecache_u_exec) && paxmark.sh m <(mkcodecache_u_exec)',
++              ],
++            },
++            {
+               'action_name': 'run_mkcodecache',
+               'process_outputs_as_sources': 1,
+               'inputs': [
+-                '<(mkcodecache_exec)',
++                '<(mkcodecache_u_exec)',
+               ],
+               'outputs': [
+                 '<(SHARED_INTERMEDIATE_DIR)/node_code_cache.cc',
+@@ -461,10 +477,24 @@
+           ],
+           'actions': [
+             {
++              'action_name': 'run_pax_mksnapshot',
++              'inputs': [
++                '<(node_mksnapshot_exec)',
++              ],
++              'outputs': [
++                '<(node_mksnapshot_u_exec)',
++              ],
++              'action': [
++                'bash',
++                '-c',
++                'mv <(node_mksnapshot_exec) <(node_mksnapshot_u_exec) && paxmark.sh m <(node_mksnapshot_u_exec)',
++              ],
++            },
++            {
+               'action_name': 'node_mksnapshot',
+               'process_outputs_as_sources': 1,
+               'inputs': [
+-                '<(node_mksnapshot_exec)',
++                '<(node_mksnapshot_u_exec)',
+               ],
+               'outputs': [
+                 '<(SHARED_INTERMEDIATE_DIR)/node_snapshot.cc',

@@ -10,12 +10,13 @@ inherit haskell-cabal
 
 DESCRIPTION="Haskell 98 compatible comonads"
 HOMEPAGE="https://github.com/ekmett/comonad/"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE="+containers +contravariant +distributive +test-doctests"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/semigroups-0.8.3.1:=[profile?] <dev-haskell/semigroups-1:=[profile?]
 	>=dev-haskell/tagged-0.1:=[profile?] <dev-haskell/tagged-1:=[profile?]

@@ -8,7 +8,7 @@ diff -Nuar tor-0.2.7.4-rc.orig/src/config/torrc.sample.in tor-0.2.7.4-rc/src/con
 +## Default username and group the server will run as
 +User tor
 +
-+PIDFile /var/run/tor/tor.pid
++PIDFile /run/tor/tor.pid
 +
  ## Tor opens a SOCKS proxy on port 9050 by default -- even if you don't
  ## configure one below. Set "SOCKSPort 0" if you plan to run Tor only

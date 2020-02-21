@@ -1,12 +1,12 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 inherit eutils
 
 DESCRIPTION="Perspective based puzzle game, where you flatten the view to move across gaps"
-HOMEPAGE="http://stabyourself.net/orthorobot/"
-SRC_URI="http://stabyourself.net/dl.php?file=${PN}/${PN}-source.zip -> ${P}.zip"
+HOMEPAGE="https://stabyourself.net/orthorobot/"
+SRC_URI="https://stabyourself.net/dl.php?file=${PN}/${PN}-source.zip -> ${P}.zip"
 
 LICENSE="CC-BY-NC-ND-3.0"
 SLOT="0"

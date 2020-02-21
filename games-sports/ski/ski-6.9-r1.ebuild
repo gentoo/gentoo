@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,6 +19,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
+
+# games-sports/ski and app-emulation/ski both install 'ski' binary, bug #653110
+RDEPEND="${RDEPEND} !!app-emulation/ski"
 
 src_install() {
 	dobin ski

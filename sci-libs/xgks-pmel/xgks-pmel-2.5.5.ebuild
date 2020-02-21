@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils fortran-2 toolchain-funcs multilib
+inherit fortran-2 toolchain-funcs
 
 DESCRIPTION="PMEL fork of XGKS, an X11-based version of the ANSI Graphical Kernel System"
 HOMEPAGE="http://www.gentoogeek.org/viewvc/Linux/xgks-pmel/"
@@ -14,15 +14,13 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="doc"
 
-RDEPEND="
-	x11-libs/libX11"
-DEPEND="${RDEPEND}
+RDEPEND="x11-libs/libX11"
+DEPEND="${RDEPEND}"
+BDEPEND="
 	sys-devel/flex
 	sys-apps/groff"
 
-src_prepare() {
-	epatch "${FILESDIR}"/aclocal.patch
-}
+PATCHES=( "${FILESDIR}"/aclocal.patch )
 
 src_configure() {
 	sed -i -e "s:lib64:$(get_libdir):g" port/master.mk.in \
@@ -40,28 +38,27 @@ src_compile() {
 
 	# Fails parallel build, bug #295724
 	emake -j1
-
-	cd src/fortran
-	emake -j1
+	emake -C src/fortran -j1
 }
 
 src_install() {
-	cd "${S}"/progs
-
-	for tool in {defcolors,font,mi,pline,pmark}; do
+	pushd progs >/dev/null || die
+	local tool
+	for tool in defcolors font mi pline pmark; do
 		newbin ${tool} xgks-${tool}
 	done
+	popd >/dev/null || die
 
-	cd "${S}"
 	dolib.a src/lib/libxgks.a
 
-	dodoc COPYRIGHT HISTORY INSTALL README
+	dodoc COPYRIGHT HISTORY README
 	doman doc/{xgks.3,xgks_synop.3}
 	if use doc; then
 		newdoc doc/binding/cbinding.me cbinding
 		newdoc doc/userdoc/userdoc.me userdoc
-		insinto /usr/share/doc/${P}/examples
-		doins progs/{hanoi.c,star.c}
+
+		docinto examples
+		dodoc progs/{hanoi.c,star.f}
 	fi
 
 	insinto /usr/include/xgks

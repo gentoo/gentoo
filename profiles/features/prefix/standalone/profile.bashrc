@@ -38,8 +38,15 @@ elif [[ ${CATEGORY}/${PN} == sys-devel/binutils && ${EBUILD_PHASE} == prepare ]]
     sed -i -r "/NATIVE_LIB_DIRS/s,((/usr(/local|)|)/lib),${EPREFIX}\1,g" \
 	"${S}"/ld/configure.tgt
     eend $?
+
     ebegin "Prefixifying path to /etc/ld.so.conf"
-    sed -i -r "s,\"/etc,\"${EPREFIX}/etc," "${S}"/ld/emultempl/elf32.em
+    local f=
+    if [[ -f "${S}"/ld/emultempl/elf32.em ]]; then
+        f="${S}"/ld/emultempl/elf32.em
+    elif [[ -f "${S}"/ld/ldelf.c ]]; then
+        f="${S}"/ld/ldelf.c
+    fi
+    [[ -n "${f}" ]] && sed -i -r "s,\"/etc,\"${EPREFIX}/etc," "${f}"
     eend $?
 elif [[ ${CATEGORY}/${PN} == sys-libs/glibc && ${EBUILD_PHASE} == compile ]]; then
     cd "${S}"

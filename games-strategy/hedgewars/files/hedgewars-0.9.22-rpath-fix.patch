@@ -1,9 +1,0 @@
---- a/cmake_modules/paths.cmake	2015-12-02 15:02:38.000000000 +0100
-+++ b/cmake_modules/paths.cmake	2015-12-02 15:15:24.729980850 +0100
-@@ -67,5 +67,5 @@ else(APPLE AND NOT (${CMAKE_INSTALL_PREF
-     # - the third one is the full path of the system dir
-     #source http://www.cmake.org/pipermail/cmake/2008-January/019290.html
-     #skip this if the install prefix is the standard one
--    set(CMAKE_INSTALL_RPATH "$ORIGIN/../${target_library_install_dir}/:$ORIGIN/:${CMAKE_INSTALL_PREFIX}/${target_library_install_dir}/")
-+    #set(CMAKE_INSTALL_RPATH "$ORIGIN/../${target_library_install_dir}/:$ORIGIN/:${CMAKE_INSTALL_PREFIX}/${target_library_install_dir}/")
- endif(APPLE)

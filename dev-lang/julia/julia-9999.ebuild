@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -63,7 +63,7 @@ src_prepare() {
 
 	sed -i \
 		-e "s|GENTOOCFLAGS|${CFLAGS}|g" \
-		-e "s|/usr/include|${EPREFIX%/}/usr/include|g" \
+		-e "s|/usr/include|${EPREFIX}/usr/include|g" \
 		deps/Makefile || die
 
 	local libblas="$($(tc-getPKG_CONFIG) --libs-only-l blas)"

@@ -1,0 +1,93 @@
+diff -ruN -x '*.am' ddd-3.3.12/ddd/strclass.h my/ddd/strclass.h
+--- ddd-3.3.12/ddd/strclass.h	2009-02-11 18:25:06.000000000 +0100
++++ my/ddd/strclass.h	2019-11-22 22:00:49.000267420 +0100
+@@ -543,7 +543,6 @@
+     bool OK() const; 
+ };
+ 
+-
+ class string
+ {
+     friend class subString;
+@@ -811,9 +810,9 @@
+ 		     const regex& sep);
+ 
+     friend string common_prefix(const string& x, const string& y, 
+-				int startpos = 0);
++				int startpos);
+     friend string common_suffix(const string& x, const string& y, 
+-				int startpos = -1);
++				int startpos);
+     friend string replicate(char c, int n);
+     friend string replicate(const string& y, int n);
+     friend string join(const string *src, int n, const string& sep);
+@@ -864,8 +863,8 @@
+     friend std::istream& operator>>(std::istream& s, string& x);
+ 
+     friend int readline(std::istream& s, string& x, 
+-			char terminator = '\n',
+-			int discard_terminator = 1);
++			char terminator,
++			int discard_terminator);
+ 
+     // Status
+     unsigned int length() const;
+@@ -882,6 +881,58 @@
+     bool OK() const;
+ };
+ 
++inline void cat(const string&, const string&, string&);
++inline void cat(const string&, const subString&, string&);
++inline void cat(const string&, const constSubString&, string&);
++inline void cat(const string&, const char*, string&);
++inline void cat(const string&, char*, string&);
++inline void cat(const string&, char, string&);
++
++inline void cat(const subString&, const string&, string&);
++inline void cat(const subString&, const subString&, string&);
++inline void cat(const subString&, const char*, string&);
++inline void cat(const subString&, char*, string&);
++inline void cat(const subString&, char, string&);
++
++inline void cat(const char*, const string&, string&);
++inline void cat(const char*, const subString&, string&);
++inline void cat(const char*, const char*, string&);
++inline void cat(const char*, char*, string&);
++inline void cat(const char*, char, string&);
++
++inline void cat(char*, const string&, string&);
++inline void cat(char*, const subString&, string&);
++inline void cat(char*, const char*, string&);
++inline void cat(char*, char*, string&);
++inline void cat(char*, char, string&);
++
++inline void cat(char, const string&, string&);
++inline void cat(char, const subString&, string&);
++inline void cat(char, const char*, string&);
++inline void cat(char, char*, string&);
++inline void cat(char, char, string&);
++
++int split(const string& x, string *res, int maxn, 
++		     const string& sep);
++int split(const string& x, string *res, int maxn, 
++		     const regex& sep);
++
++string common_prefix(const string& x, const string& y, 
++				int startpos = 0);
++string common_suffix(const string& x, const string& y, 
++				int startpos = -1);
++string replicate(char c, int n);
++string replicate(const string& y, int n);
++string join(const string *src, int n, const string& sep);
++
++inline std::ostream& operator<<(std::ostream& s, const string& x);
++inline std::ostream& operator<<(std::ostream& s, const subString& x);
++std::istream& operator>>(std::istream& s, string& x);
++
++int readline(std::istream& s, string& x, 
++			char terminator = '\n',
++			int discard_terminator = 1);
++
+ // Inject names manually to accomodate argument-dependent name lookup (ADL)
+ // (aka Koenig lookup). The rule is that friend declarations are visible
+ // when found through ADL because an argument of the call happens to be

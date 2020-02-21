@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,14 +13,12 @@ if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 	EGIT_REPO_URI="git://git.osmocom.org/${PN}.git"
-	KEYWORDS=""
 else
 	#SRC_URI="http://cgit.osmocom.org/gr-osmosdr/snapshot/gr-osmosdr-${PV}.tar.xz"
 	#git clone git://git.osmocom.org/gr-osmosdr.git
 	#cd gr-osmosdr
 	#git archive --format=tar --prefix=gr-osmosdr-${PV}/ v${PV} | xz > ../gr-osmosdr-${PV}.tar.xz
 	SRC_URI="https://dev.gentoo.org/~zerochaos/distfiles/gr-osmosdr-${PV}.tar.xz"
-	KEYWORDS=""
 fi
 
 LICENSE="GPL-3"
@@ -29,16 +27,16 @@ IUSE="bladerf fcd hackrf iio iqbalance mirisdr python rtlsdr sdrplay soapy uhd"
 
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
-	>=net-wireless/gnuradio-3.7_rc:0=[fcd?,${PYTHON_USEDEP}]
+	>=net-wireless/gnuradio-3.7_rc:0=[fcd?,${PYTHON_SINGLE_USEDEP}]
 	bladerf? ( >=net-wireless/bladerf-2018.08_rc1:= )
 	hackrf? ( net-libs/libhackrf:= )
 	iio? ( net-wireless/gr-iio )
-	iqbalance? ( net-wireless/gr-iqbal:=[${PYTHON_USEDEP}] )
+	iqbalance? ( net-wireless/gr-iqbal:=[${PYTHON_SINGLE_USEDEP}] )
 	mirisdr? ( net-libs/libmirisdr:= )
 	rtlsdr? ( >=net-wireless/rtl-sdr-0.5.4:= )
 	sdrplay? ( net-wireless/sdrplay )
 	soapy? ( net-wireless/soapysdr:= )
-	uhd? ( net-wireless/uhd:=[${PYTHON_USEDEP}] )"
+	uhd? ( net-wireless/uhd:=[${PYTHON_SINGLE_USEDEP}] )"
 DEPEND="${RDEPEND}
 	dev-python/cheetah"
 

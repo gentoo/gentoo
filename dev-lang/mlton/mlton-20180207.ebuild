@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,7 +46,7 @@ mlton_subdir() {
 }
 
 mlton_dir() {
-	echo "${EPREFIX%/}"/usr/$(mlton_subdir)
+	echo "${EPREFIX}"/usr/$(mlton_subdir)
 }
 
 mlton_memory_requirement() {
@@ -137,7 +137,7 @@ mlton_create_bin_stubs() {
 	for i in ${BIN_STUBS[*]}; do
 		cat <<- EOF >> ${i}
 			#!/bin/bash
-			exec ${EPREFIX%/}/usr/${SUBDIR}/bin/${i} \$*
+			exec ${EPREFIX}/usr/${SUBDIR}/bin/${i} \$*
 		EOF
 		chmod a+x ${i} || die
 	done

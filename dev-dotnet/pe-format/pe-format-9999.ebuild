@@ -1,37 +1,25 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-#if LIVE
-EGIT_REPO_URI="https://bitbucket.org/mgorny/${PN}2.git"
-
-inherit autotools git-r3
-#endif
-
-inherit systemd xdg-utils
+inherit autotools git-r3 systemd xdg-utils
 
 DESCRIPTION="Intelligent PE executable wrapper for binfmt_misc"
-HOMEPAGE="https://bitbucket.org/mgorny/pe-format2/"
-SRC_URI="https://www.bitbucket.org/mgorny/${PN}2/downloads/${P}.tar.bz2"
+HOMEPAGE="https://github.com/mgorny/pe-format2/"
+EGIT_REPO_URI="https://github.com/mgorny/pe-format2.git"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS=""
 IUSE=""
 
 DEPEND="dev-util/desktop-file-utils"
-RDEPEND="!<sys-apps/openrc-0.9.4"
-
-#if LIVE
-KEYWORDS=
-SRC_URI=
 
 src_prepare() {
 	default
 	eautoreconf
 }
-#endif
 
 src_configure() {
 	local myconf=(

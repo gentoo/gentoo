@@ -1,0 +1,36 @@
+fix cannot convert bool to boolean wrt bug #693418
+
+Signed-of-by: Joerg Bornkessel <hd_brummy@astrali.de> (13 Nov 2019)
+diff -Naur powARman-dvbhddevice-2ea854ae8c7a.orig/dvbhdffdevice.c powARman-dvbhddevice-2ea854ae8c7a/dvbhdffdevice.c
+--- powARman-dvbhddevice-2ea854ae8c7a.orig/dvbhdffdevice.c	2019-11-13 18:46:50.000000000 +0100
++++ powARman-dvbhddevice-2ea854ae8c7a/dvbhdffdevice.c	2019-11-13 18:48:12.000000000 +0100
+@@ -1069,15 +1069,15 @@
+         }
+      else {
+         esyslog("ERROR: out of memory");
+-        return false;
++        return FALSE;
+         }
+      if (jcd->mem) {
+         cinfo->dest->next_output_byte = jcd->mem + Used;
+         cinfo->dest->free_in_buffer = jcd->size - Used;
+-        return true;
++        return TRUE;
+         }
+      }
+-  return false;
++  return FALSE;
+ }
+ 
+ static void JpegCompressTermDestination(j_compress_ptr cinfo)
+@@ -1122,8 +1122,8 @@
+   cinfo.in_color_space = JCS_YCbCr;
+ 
+   jpeg_set_defaults(&cinfo);
+-  jpeg_set_quality(&cinfo, Quality, true);
+-  jpeg_start_compress(&cinfo, true);
++  jpeg_set_quality(&cinfo, Quality, TRUE);
++  jpeg_start_compress(&cinfo, TRUE);
+ 
+   int rs = Width * 3;
+   JSAMPROW rp[Height];

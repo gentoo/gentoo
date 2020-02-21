@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-DEPEND="virtual/pam
+DEPEND="sys-libs/pam
 	dev-libs/openssl:0="
 
 RDEPEND="${DEPEND}

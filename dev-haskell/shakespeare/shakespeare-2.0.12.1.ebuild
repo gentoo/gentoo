@@ -10,12 +10,13 @@ inherit haskell-cabal
 
 DESCRIPTION="A toolkit for making compile-time interpolated templates"
 HOMEPAGE="https://www.yesodweb.com/book/shakespearean-templates"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="test-coffee test-export test-roy"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-haskell/aeson:=[profile?]
 	dev-haskell/blaze-html:=[profile?]

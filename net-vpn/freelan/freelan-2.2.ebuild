@@ -15,13 +15,18 @@ KEYWORDS="~amd64"
 IUSE="debug"
 
 DEPEND="
-	<dev-libs/boost-1.70:=[threads]
+	dev-libs/boost:=[threads]
 	dev-libs/openssl:0=
 	net-misc/curl:=
 	virtual/libiconv
 	net-libs/miniupnpc:=
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-2.2-boost-1.70.patch
+	"${FILESDIR}"/${PN}-2.2-boost-1.70-asio.patch
+)
 
 src_prepare() {
 	export FREELAN_NO_GIT=1

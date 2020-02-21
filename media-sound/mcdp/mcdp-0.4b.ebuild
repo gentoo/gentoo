@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="A very small console cd player"
 HOMEPAGE="http://www.mcmilk.de/projects/mcdp/"
@@ -14,10 +14,10 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
-src_prepare() {
-	epatch "${FILESDIR}/${PN}-0.4a-dietlibc-fix.patch" \
-		"${FILESDIR}/${PN}-0.4a-makefile.patch"
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4a-dietlibc-fix.patch
+	"${FILESDIR}"/${PN}-0.4a-makefile.patch
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"

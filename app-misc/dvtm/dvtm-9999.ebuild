@@ -39,7 +39,7 @@ src_compile() {
 	tc-export PKG_CONFIG
 	local msg=""
 	use savedconfig && msg=", please check the configfile"
-	emake CC=$(tc-getCC) ${PN} || die "emake failed${msg}"
+	emake CC=$(tc-getCC) ${PN}
 }
 
 src_install() {

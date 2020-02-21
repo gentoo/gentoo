@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+LLVM_MAX_SLOT=8
 PLOCALES="cs da de fr ja pl ru sl uk zh-CN zh-TW"
 
 inherit llvm qmake-utils virtualx xdg
@@ -23,17 +24,21 @@ else
 	S=${WORKDIR}/${MY_P}
 fi
 
-# TODO: unbundle sqlite and KSyntaxHighlighting
+# TODO: unbundle sqlite, yaml-cpp, and KSyntaxHighlighting
 
-QTC_PLUGINS=(android +autotest baremetal bazaar beautifier
+QTC_PLUGINS=(android +autotest baremetal bazaar beautifier boot2qt
 	'+clang:clangcodemodel|clangformat|clangpchmanager|clangrefactoring|clangtools' clearcase
-	cmake:cmakeprojectmanager cppcheck cvs +designer git glsl:glsleditor +help ios lsp:languageclient
-	mercurial modeling:modeleditor nim perforce perfprofiler python:pythoneditor qbs:qbsprojectmanager
-	+qmldesigner qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal silversearcher subversion
-	valgrind winrt)
+	cmake:cmakeprojectmanager cppcheck ctfvisualizer cvs +designer git glsl:glsleditor +help ios
+	lsp:languageclient mcu:mcusupport mercurial modeling:modeleditor nim perforce perfprofiler python
+	qbs:qbsprojectmanager +qmldesigner qmlprofiler qnx remotelinux scxml:scxmleditor serialterminal
+	silversearcher subversion valgrind webassembly winrt)
 IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
+	boot2qt? ( remotelinux )
 	clang? ( test? ( qbs ) )
+	mcu? ( cmake )
+	python? ( lsp )
 	qnx? ( remotelinux )
 "
 
@@ -54,7 +59,7 @@ CDEPEND="
 	>=dev-qt/qtwidgets-${QT_PV}
 	>=dev-qt/qtx11extras-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
-	clang? ( >=sys-devel/clang-8:= )
+	clang? ( sys-devel/clang:8= )
 	designer? ( >=dev-qt/designer-${QT_PV} )
 	help? (
 		>=dev-qt/qthelp-${QT_PV}
@@ -79,7 +84,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	sys-devel/gdb[client,python]
 	bazaar? ( dev-vcs/bzr )
-	cmake? ( dev-util/cmake[server(+)] )
+	cmake? ( dev-util/cmake )
 	cppcheck? ( dev-util/cppcheck )
 	cvs? ( dev-vcs/cvs )
 	git? ( dev-vcs/git )
@@ -128,7 +133,7 @@ src_prepare() {
 	fi
 	if ! use perfprofiler; then
 		rm -rf src/tools/perfparser || die
-		if ! use qmlprofiler; then
+		if ! use ctfvisualizer && ! use qmlprofiler; then
 			sed -i -e '/tracing/d' src/libs/libs.pro tests/auto/auto.pro || die
 		fi
 	fi
@@ -172,7 +177,7 @@ src_prepare() {
 src_configure() {
 	eqmake5 IDE_LIBRARY_BASENAME="$(get_libdir)" \
 		IDE_PACKAGE_MODE=1 \
-		$(use clang && echo LLVM_INSTALL_DIR="$(get_llvm_prefix)") \
+		$(use clang && echo LLVM_INSTALL_DIR="$(get_llvm_prefix ${LLVM_MAX_SLOT})") \
 		$(use qbs && echo QBS_INSTALL_DIR="${EPREFIX}/usr") \
 		CONFIG+=qbs_disable_rpath \
 		CONFIG+=qbs_enable_project_file_updates \

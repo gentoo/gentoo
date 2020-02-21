@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="systemd udev" # test
+RESTRICT="!test? ( test )"
 
 # XXX: test, upstream managed to break gpk-self-test beyond repair
 # gdk-pixbuf used in gpk-animated-icon
@@ -31,7 +32,7 @@ RDEPEND="
 
 	systemd? ( >=sys-apps/systemd-42 )
 	!systemd? ( sys-auth/consolekit )
-	udev? ( virtual/libgudev:= )
+	udev? ( dev-libs/libgudev:= )
 "
 DEPEND="${RDEPEND}
 	app-text/docbook-sgml-utils

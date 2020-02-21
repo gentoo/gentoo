@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit font
 
@@ -12,26 +12,25 @@ SRC_URI="mirror://sourceforge/khmer/All_KhmerOS_${PV}.zip"
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE=""
 
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/All_KhmerOS_${PV}"
+
 FONT_S="${S}"
 FONT_SUFFIX="ttf"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	[[ -f "KhmerOS .ttf" ]] && mv "KhmerOS .ttf" "KhmerOS.ttf" # 338057
+src_prepare() {
+	default
+
+	# bug 338057
+	mv KhmerOS{\ ,}.ttf || die
 }
 
 pkg_postinst() {
 	font_pkg_postinst
-	echo
+
 	elog "To prefer using Khmer OS fonts, run:"
 	elog
 	elog "	eselect fontconfig enable 65-khmer.conf"
-	echo
 }

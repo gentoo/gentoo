@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils user systemd bash-completion-r1 autotools
+inherit eutils user systemd bash-completion-r1 autotools ltprune
 
 DESCRIPTION="Implementation of IEEE 802.1ab (LLDP)"
 HOMEPAGE="https://vincentbernat.github.com/lldpd/"
@@ -14,6 +14,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="cdp doc +dot1 +dot3 edp fdp graph +lldpmed old-kernel sanitizers
 	seccomp sonmp snmp static-libs test readline xml zsh-completion"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libbsd
 	>=dev-libs/libevent-2.0.5:=

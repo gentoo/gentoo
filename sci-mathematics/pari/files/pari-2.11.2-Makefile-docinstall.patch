@@ -1,0 +1,25 @@
+diff --git a/config/Makefile.SH b/config/Makefile.SH
+index 27c6d5b..43debb1 100644
+--- a/config/Makefile.SH
++++ b/config/Makefile.SH
+@@ -366,9 +366,9 @@ clean: cleanall
+ .headers: $HEADERS
+ 	@touch \$@
+ 
+-install-nodata: install-lib-$dft install-include install-bin install-man install-misc install-examples install-cfg
++install-nodata: install-lib-$dft install-include install-bin install-man install-misc install-cfg
+ 
+-install: install-doc install-nodata install-data
++install: install-nodata install-data
+ 
+ install-include:
+ 	-mkdir -p \$(INCLUDEDIR)/pari
+@@ -425,7 +425,7 @@ install-cfg::
+ 	   \$(INSTALL_DATA) $desc/PARI/822.pm \$(DATADIR)/PARI;\
+ 	   \$(INSTALL_DATA) $desc/\$(DESC) \$(DATADIR); fi
+ 
+-install-doc: install-docdvi install-doctex
++install-doc: install-docpdf install-doctex install-examples
+ 
+ install-doctex:
+ 	-mkdir -p \$(BINDIR) \$(DOCDIR)

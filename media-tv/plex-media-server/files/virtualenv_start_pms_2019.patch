@@ -1,0 +1,12 @@
+--- a/usr/sbin/start_pms	2019-08-08 01:07:58.239646635 +0200
++++ b/usr/sbin/start_pms	2019-08-08 01:09:39.828649755 +0200
+@@ -20,6 +20,9 @@
+ 
+ test -f /etc/default/plexmediaserver && . /etc/default/plexmediaserver
+ 
++# Activate python virtualenv
++. "${PLEX_MEDIA_SERVER_HOME}"/Resources/Python/bin/activate
++
+ if [ ! -d "$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR" ]
+ then
+   mkdir -p "$PLEX_MEDIA_SERVER_APPLICATION_SUPPORT_DIR"

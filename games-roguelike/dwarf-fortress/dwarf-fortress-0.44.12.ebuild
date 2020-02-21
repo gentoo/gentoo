@@ -31,7 +31,7 @@ RDEPEND="media-libs/glew:0
 DEPEND="${RDEPEND}
 	media-libs/libsndfile
 	media-libs/openal
-	sys-libs/ncurses:5[unicode]
+	sys-libs/ncurses-compat:5[unicode]
 	virtual/pkgconfig"
 
 S=${WORKDIR}/${MY_PN}_linux

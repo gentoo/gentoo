@@ -13,30 +13,47 @@ if [[ $PV = 9999 ]]; then
 	ECVS_AUTH="ext"
 	KEYWORDS=""
 else
-	SRC_URI="http://www.mirbsd.org/MirOS/dist/mir/mksh/${PN}-R${PV}.tgz"
-	KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux"
+	SRC_URI="https://www.mirbsd.org/MirOS/dist/mir/mksh/${PN}-R${PV}.tgz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 DESCRIPTION="MirBSD Korn Shell"
+# Host is TLSv1.0-only, keep to http for compatibility with modern browsers
 HOMEPAGE="http://mirbsd.de/mksh"
+
 LICENSE="BSD"
 SLOT="0"
-IUSE="static test"
-RDEPEND="static? ( dev-libs/klibc )"
+IUSE="lksh static test"
+RESTRICT="!test? ( test )"
+
 DEPEND="
-	${RDEPEND}
 	test? (
 		dev-lang/perl
 		sys-apps/ed
 	)
 "
+
 S="${WORKDIR}/${PN}"
+
+src_prepare() {
+	default
+	if use lksh; then
+		cp -pr "${S}" "${S}"_lksh || die
+	fi
+}
 
 src_compile() {
 	tc-export CC
-	# we want to build static with klibc
-	if use static; then export CC="/usr/bin/klcc"; export LDSTATIC="-static"; fi
+	use static && export LDSTATIC="-static"
 	export CPPFLAGS="${CPPFLAGS} -DMKSH_DEFAULT_PROFILEDIR=\\\"${EPREFIX}/etc\\\""
+
+	if use lksh; then
+		pushd "${S}"_lksh >/dev/null || die
+		CPPFLAGS="${CPPFLAGS} -DMKSH_BINSHPOSIX -DMKSH_BINSHREDUCED" \
+			sh Build.sh -r -L || die
+		popd >/dev/null || die
+	fi
+
 	sh Build.sh -r || die
 }
 
@@ -45,8 +62,21 @@ src_install() {
 	dobin mksh
 	doman mksh.1
 	dodoc dot.mkshrc
+
+	if use lksh; then
+		dobin "${S}"_lksh/lksh
+		doman "${S}"_lksh/lksh.1
+	fi
 }
 
 src_test() {
-	./test.sh -v || die
+	einfo "Testing regular mksh."
+	./mksh test.sh -v || die
+
+	if use lksh; then
+		einfo "Testing lksh, POSIX long-bit mksh."
+		pushd "${S}"_lksh >/dev/null || die
+		./lksh test.sh -v || die
+		popd >/dev/null || die
+	fi
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ else
 	EGIT_COMMIT="54db57d5d1b2a7b93319053011802888b827a539"
 	inherit vcs-snapshot
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-	SRC_URI="${HOMEPAGE}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/dmlc/dmlc-core/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 fi
 
 LICENSE="Apache-2.0"
@@ -25,6 +25,7 @@ SLOT="0"
 # hdfs needs big java hdfs not yet in portage
 # azure not yet in portage
 IUSE="doc openmp s3 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="net-misc/curl[ssl]"
 DEPEND="${RDEPEND}

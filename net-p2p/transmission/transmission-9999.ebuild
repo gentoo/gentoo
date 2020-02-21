@@ -10,7 +10,7 @@ if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/transmission/transmission"
 else
 	SRC_URI="https://github.com/transmission/transmission-releases/raw/master/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~x86-fbsd ~amd64-linux"
+	KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux"
 fi
 
 DESCRIPTION="A fast, easy, and free BitTorrent client"
@@ -129,7 +129,9 @@ src_install() {
 	insinto /usr/lib/sysctl.d
 	doins "${FILESDIR}"/60-transmission.conf
 
-	diropts -o transmission -g transmission
+	if [[ ${EUID} == 0 ]]; then
+		diropts -o transmission -g transmission
+	fi
 	keepdir /var/lib/transmission
 }
 

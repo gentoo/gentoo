@@ -15,6 +15,8 @@ SRC_URI="https://github.com/agl/ed25519/archive/${EGIT_COMMIT}.tar.gz -> ${P}.ta
 
 KEYWORDS="~amd64 ~arm ~x86"
 
+RESTRICT="!test? ( test )"
+
 LICENSE="BSD"
 SLOT="0"
 IUSE="test"

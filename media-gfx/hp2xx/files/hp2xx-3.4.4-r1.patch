@@ -1,6 +1,20 @@
-diff -ruN hp2xx-3.4.4.orig/makes/generic.mak hp2xx-3.4.4/makes/generic.mak
---- hp2xx-3.4.4.orig/makes/generic.mak	2003-06-21 17:16:35.000000000 +0200
-+++ hp2xx-3.4.4/makes/generic.mak	2012-02-07 22:30:29.000000000 +0100
+--- a/Makefile
++++ b/Makefile
+@@ -1,9 +1,9 @@
+ 
+ all:
+-	cd sources; make
++	cd sources && $(MAKE)
+ 
+ clean:
+-	cd sources; make clean
++	cd sources && $(MAKE) clean
+ 
+ install:
+-	cd sources; make install
++	cd sources && $(MAKE) install
+--- a/makes/generic.mak
++++ b/makes/generic.mak
 @@ -30,11 +30,11 @@
  CP       = cp
  MKINFO   = makeinfo
@@ -115,9 +129,8 @@ diff -ruN hp2xx-3.4.4.orig/makes/generic.mak hp2xx-3.4.4/makes/generic.mak
  	$(BINDCMD)
  
  
-diff -ruN hp2xx-3.4.4.orig/sources/png.c hp2xx-3.4.4/sources/png.c
---- hp2xx-3.4.4.orig/sources/png.c	2003-06-21 17:31:51.000000000 +0200
-+++ hp2xx-3.4.4/sources/png.c	2012-02-07 22:26:33.000000000 +0100
+--- a/sources/png.c
++++ b/sources/png.c
 @@ -5,6 +5,7 @@
  #include <stdio.h>
  #include <stdlib.h>

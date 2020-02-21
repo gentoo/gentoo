@@ -1,6 +1,10 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Aaron Bauman <bman@gentoo.org> (2019-12-27)
+# ffmpeg does support 64 bit neon
+media-video/ffmpeg cpu_flags_arm_neon
+
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is keyworded ~arm64
 sys-firmware/seabios -binary

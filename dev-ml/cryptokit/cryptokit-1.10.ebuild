@@ -13,7 +13,7 @@ HOMEPAGE="http://forge.ocamlcore.org/projects/cryptokit/"
 SRC_URI="http://forge.ocamlcore.org/frs/download.php/1493/${P}.tar.gz"
 LICENSE="LGPL-2"
 SLOT="0/${PV}"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 IUSE="zlib"
 
 DEPEND="zlib? ( >=sys-libs/zlib-1.1 )"

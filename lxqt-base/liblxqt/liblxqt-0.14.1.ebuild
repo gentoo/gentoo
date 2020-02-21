@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Common base library for the LXQt desktop environment"
 HOMEPAGE="https://lxqt.org/"
@@ -18,6 +18,8 @@ fi
 
 LICENSE="LGPL-2.1+ BSD"
 SLOT="0/$(ver_cut 1-2)"
+
+PATCHES=( "${FILESDIR}/${P}-qt-5.14-build.patch" ) # Bug 703596
 
 BDEPEND="
 	dev-qt/linguist-tools:5

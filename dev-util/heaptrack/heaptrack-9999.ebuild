@@ -3,50 +3,64 @@
 
 EAPI=7
 
-KDE_AUTODEPS="false"
-KDE_TEST="forceoptional"
-inherit kde5
+inherit cmake kde.org xdg-utils
 
-DESCRIPTION="A fast heap memory profiler"
+DESCRIPTION="Fast heap memory profiler"
 HOMEPAGE="http://milianw.de/blog/heaptrack-a-heap-memory-profiler-for-linux"
 
-LICENSE="LGPL-2.1"
+LICENSE="LGPL-2.1+"
 SLOT="0"
 KEYWORDS=""
-IUSE="+qt5 zstd"
+IUSE="+gui test zstd"
 
 BDEPEND="
-	$(add_frameworks_dep extra-cmake-modules)
+	gui? ( kde-frameworks/extra-cmake-modules:5 )
 "
 DEPEND="
 	dev-libs/boost:=
 	sys-libs/libunwind
 	sys-libs/zlib
-	qt5? (
-		$(add_frameworks_dep kconfig)
-		$(add_frameworks_dep kconfigwidgets)
-		$(add_frameworks_dep kcoreaddons)
-		$(add_frameworks_dep ki18n)
-		$(add_frameworks_dep kio)
-		$(add_frameworks_dep kitemmodels)
-		$(add_frameworks_dep kwidgetsaddons)
-		$(add_frameworks_dep threadweaver)
-		$(add_qt_dep qtcore)
-		$(add_qt_dep qtgui)
-		$(add_qt_dep qtwidgets)
+	gui? (
 		dev-libs/kdiagram:5
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtwidgets:5
+		kde-frameworks/kconfig:5
+		kde-frameworks/kconfigwidgets:5
+		kde-frameworks/kcoreaddons:5
+		kde-frameworks/ki18n:5
+		kde-frameworks/kio:5
+		kde-frameworks/kitemmodels:5
+		kde-frameworks/kwidgetsaddons:5
+		kde-frameworks/threadweaver:5
 	)
 	zstd? ( app-arch/zstd:= )
 "
 RDEPEND="${DEPEND}
-	qt5? ( >=kde-frameworks/kf-env-4 )
+	gui? ( >=kde-frameworks/kf-env-4 )
 "
+
+RESTRICT+=" !test? ( test )"
 
 src_configure() {
 	local mycmakeargs=(
-		-DHEAPTRACK_BUILD_GUI=$(usex qt5)
-		$(cmake-utils_use_find_package zstd Zstd)
+		-DHEAPTRACK_BUILD_GUI=$(usex gui)
+		-DBUILD_TESTING=$(usex test)
+		$(cmake_use_find_package zstd Zstd)
 	)
+	cmake_src_configure
+}
 
-	kde5_src_configure
+xdg_pkg_postinst() {
+	if use gui; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+	fi
+}
+
+xdg_pkg_postrm() {
+	if use gui; then
+		xdg_desktop_database_update
+		xdg_icon_cache_update
+	fi
 }

@@ -1,16 +1,16 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="Meta package containing deps on all xorg drivers"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI=""
 
 LICENSE="metapackage"
 SLOT="0"
 if [[ ${PV} != 9999 ]]; then
-	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux"
 fi
 
 IUSE_INPUT_DEVICES="
@@ -72,11 +72,11 @@ PDEPEND="
 	video_cards_ast?           ( x11-drivers/xf86-video-ast )
 	video_cards_dummy?         ( x11-drivers/xf86-video-dummy )
 	video_cards_fbdev?         ( >=x11-drivers/xf86-video-fbdev-0.5.0 )
-	video_cards_freedreno?     ( >=x11-base/xorg-server-${PV}[glamor] )
+	video_cards_freedreno?     ( >=x11-base/xorg-server-${PV}[-minimal] )
 	video_cards_geode?         ( x11-drivers/xf86-video-geode )
 	video_cards_glint?         ( >=x11-drivers/xf86-video-glint-1.2.9 )
 	video_cards_i915?          ( x11-drivers/xf86-video-intel )
-	video_cards_i965?          ( >=x11-base/xorg-server-${PV}[glamor] )
+	video_cards_i965?          ( >=x11-base/xorg-server-${PV}[-minimal] )
 	video_cards_intel?         ( !video_cards_i965? ( >=x11-drivers/xf86-video-intel-2.99.917_p20180214-r1 ) )
 	video_cards_mga?           ( >=x11-drivers/xf86-video-mga-1.6.5 )
 	video_cards_nouveau?       ( >=x11-drivers/xf86-video-nouveau-1.0.13 )
@@ -86,14 +86,12 @@ PDEPEND="
 	video_cards_nvidia?        ( x11-drivers/nvidia-drivers )
 	video_cards_r128?          ( >=x11-drivers/xf86-video-r128-6.10.2 )
 	video_cards_radeon?        ( >=x11-drivers/xf86-video-ati-18.0.1-r1 )
-	video_cards_radeonsi?      ( >=x11-drivers/xf86-video-ati-18.0.1-r1[glamor] )
+	video_cards_radeonsi?      ( >=x11-drivers/xf86-video-ati-18.0.1-r1 )
 	video_cards_siliconmotion? ( >=x11-drivers/xf86-video-siliconmotion-1.7.9 )
-	video_cards_tegra?         ( >=x11-base/xorg-server-${PV}[glamor] )
-	video_cards_vc4?           ( >=x11-base/xorg-server-${PV}[glamor] )
+	video_cards_tegra?         ( >=x11-base/xorg-server-${PV}[-minimal] )
+	video_cards_vc4?           ( >=x11-base/xorg-server-${PV}[-minimal] )
 	video_cards_vesa?          ( x11-drivers/xf86-video-vesa )
 	video_cards_via?           ( x11-drivers/xf86-video-openchrome )
 	video_cards_virtualbox?    ( x11-drivers/xf86-video-vboxvideo )
 	video_cards_vmware?        ( >=x11-drivers/xf86-video-vmware-13.3.0 )
-
-	!<x11-drivers/xf86-input-evdev-2.10.4
 "

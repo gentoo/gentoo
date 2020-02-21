@@ -1,0 +1,24 @@
+From 88d61f11f762cb922a7bef7b7cb1bfbb5bb148c5 Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Wed, 30 Oct 2019 13:34:13 +0100
+Subject: Make it compile against qt5.15, This enum is unused
+
+---
+ mwidget.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mwidget.cpp b/mwidget.cpp
+index e813ebe..3e31f6b 100644
+--- a/mwidget.cpp
++++ b/mwidget.cpp
+@@ -39,7 +39,7 @@ MainWidget::MainWidget( QWidget* parent )
+     klview->setHorizontalScrollBarPolicy( Qt::ScrollBarAlwaysOff );
+     klview->setFrameStyle(QFrame::NoFrame);
+ 
+-    klview->setOptimizationFlags( QGraphicsView::DontClipPainter |
++    klview->setOptimizationFlags( 
+                                   QGraphicsView::DontSavePainterState |
+                                   QGraphicsView::DontAdjustForAntialiasing );
+ 
+-- 
+cgit v1.1

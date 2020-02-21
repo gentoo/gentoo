@@ -12,7 +12,7 @@ SRC_URI="https://github.com/drwetter/${MY_PN}/archive/v${MY_PV}.tar.gz -> ${P}.t
 
 LICENSE="GPL-2 bundled-openssl? ( openssl )"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="bundled-openssl kerberos"
 
 RDEPEND="

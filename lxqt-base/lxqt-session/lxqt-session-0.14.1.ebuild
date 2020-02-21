@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="LXQT session manager"
 HOMEPAGE="https://lxqt.org/"
@@ -49,11 +49,11 @@ src_configure() {
 	local mycmakeargs=(
 		-DWITH_LIBUDEV=$(usex udev)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install(){
-	cmake-utils_src_install
+	cmake_src_install
 	doman lxqt-config-session/man/*.1 lxqt-session/man/*.1
 
 	echo XDG_CONFIG_DIRS=\"${EPREFIX}/usr/share\" >> 91lxqt-config-dir

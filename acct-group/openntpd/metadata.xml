@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>henson@acm.org</email>
+		<name>Paul B. Henson</name>
+	</maintainer>
+	<maintainer type="person">
+		<email>junghans@gentoo.org</email>
+		<name>Christoph Junghans (proxy)</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+</pkgmetadata>

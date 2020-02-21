@@ -1,8 +1,18 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<!-- maintainer-needed -->
-	<upstream>
-		<remote-id type="github">derekparker/delve</remote-id>
-	</upstream>
+    <maintainer type="person">
+        <email>g4s8.public@gmail.com</email>
+        <name>Kirill Che</name>
+    </maintainer>
+    <maintainer type="project">
+        <email>proxy-maint@gentoo.org</email>
+        <name>Proxy Maintainers</name>
+    </maintainer>
+    <longdescription lang="en">
+      Delve is a source level debugger for Go programs.
+    </longdescription>
+    <upstream>
+        <remote-id type="github">go-delve/delve</remote-id>
+    </upstream>
 </pkgmetadata>

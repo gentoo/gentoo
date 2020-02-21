@@ -106,7 +106,7 @@ src_compile(){
 }
 
 src_test() {
-	python_export_best
+	python_setup
 	cd tests || die
 	LD_LIBRARY_PATH="${S}"/lib "${PYTHON}" apbs_tester.py -l log || die
 	grep -q 'FAILED' log && die "Tests failed"

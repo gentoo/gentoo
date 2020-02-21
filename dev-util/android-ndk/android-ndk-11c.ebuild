@@ -19,7 +19,7 @@ RESTRICT="mirror strip installsources test"
 DEPEND="app-arch/p7zip"
 RDEPEND=">=dev-util/android-sdk-update-manager-10
 	>=sys-devel/make-3.81
-	sys-libs/ncurses:5/5"
+	sys-libs/ncurses-compat:5"
 
 S="${WORKDIR}/${PN}-r${PV}"
 

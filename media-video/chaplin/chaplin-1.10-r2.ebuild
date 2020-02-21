@@ -1,8 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="This is a program to raw copy chapters from a dvd using libdvdread"
 HOMEPAGE="http://www.lallafa.de/bp/chaplin.html"
@@ -17,15 +18,15 @@ DEPEND=">=media-libs/libdvdread-0.9.4"
 RDEPEND="${DEPEND}
 	virtual/imagemagick-tools
 	media-video/mjpegtools
-	transcode? ( >=media-video/transcode-0.6.2 )
-	vcd? ( >=media-video/vcdimager-0.7.2 )"
+	transcode? ( media-video/transcode )
+	vcd? ( media-video/vcdimager )"
 
 S=${WORKDIR}/${PN}
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-libdvdread-0.9.6.patch \
-		"${FILESDIR}"/${P}-asneeded.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-libdvdread-0.9.6.patch
+	"${FILESDIR}"/${P}-asneeded.patch
+)
 
 src_compile() {
 	emake CC="$(tc-getCC)"

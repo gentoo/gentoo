@@ -28,8 +28,8 @@ JAVA_ANT_ENCODING="ISO-8859-1"
 
 src_install() {
 	java-pkg_newjar "target/${P}.jar" "${PN}.jar"
-	dodoc RELEASE-NOTES.txt NOTICE.txt || die
-	dohtml *.html || die
+	dodoc RELEASE-NOTES.txt NOTICE.txt
+	dohtml *.html
 	use doc && java-pkg_dojavadoc target/apidocs
 	use source && java-pkg_dosrc src/main/java/*
 }

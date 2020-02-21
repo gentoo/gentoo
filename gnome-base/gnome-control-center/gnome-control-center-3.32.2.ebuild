@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ REQUIRED_USE="
 	flickr? ( gnome-online-accounts )
 	^^ ( elogind systemd )
 " # Theoretically "?? ( elogind systemd )" is fine too, lacking some functionality at runtime, but needs testing if handled gracefully enough
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~arm64 ~ia64 ~ppc ~ppc64 x86"
 
 # kerberos unfortunately means mit-krb5; build fails with heimdal
 # display panel requires colord and gnome-settings-daemon[colord]
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	v4l? (
 		>=media-video/cheese-3.28.0 )
 	ibus? ( >=app-i18n/ibus-1.5.2 )
-	wayland? ( virtual/libgudev )
+	wayland? ( dev-libs/libgudev )
 	networkmanager? (
 		>=gnome-extra/nm-applet-1.8.0
 		>=net-misc/networkmanager-1.10.0:=[modemmanager]

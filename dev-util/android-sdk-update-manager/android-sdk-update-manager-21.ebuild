@@ -60,8 +60,8 @@ src_install(){
 	# Maybe this is needed for the tools directory too.
 	dodir "${ANDROID_SDK_DIR}"/{add-ons,docs,platforms,temp}
 
-	fowners root:android "${ANDROID_SDK_DIR}"/{,add-ons,docs,platforms,temp,tools} || die
-	fperms 0775 "${ANDROID_SDK_DIR}"/{,add-ons,docs,platforms,temp,tools} || die
+	fowners root:android "${ANDROID_SDK_DIR}"/{,add-ons,docs,platforms,temp,tools}
+	fperms 0775 "${ANDROID_SDK_DIR}"/{,add-ons,docs,platforms,temp,tools}
 
 	echo "PATH=\"${EPREFIX}${ANDROID_SDK_DIR}/tools:${EPREFIX}${ANDROID_SDK_DIR}/platform-tools\"" > "${T}/80${PN}" || die
 

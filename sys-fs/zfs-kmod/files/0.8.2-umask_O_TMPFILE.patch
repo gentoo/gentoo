@@ -1,0 +1,34 @@
+From ddb4e69db5eb0ed741dc4e32714af3e0f054086c Mon Sep 17 00:00:00 2001
+From: Tomohiro Kusumi <kusumi.tomohiro@gmail.com>
+Date: Sat, 14 Dec 2019 08:02:23 +0900
+Subject: [PATCH] Don't fail to apply umask for O_TMPFILE files
+
+Apply umask to `mode` which will eventually be applied to inode.
+This is needed since VFS doesn't apply umask for O_TMPFILE files.
+
+(Note that zpl_init_acl() applies `ip->i_mode &= ~current_umask();`
+only when POSIX ACL is used.)
+
+Reviewed-by: Brian Behlendorf <behlendorf1@llnl.gov>
+Reviewed-by: Tony Hutter <hutter2@llnl.gov>
+Signed-off-by: Tomohiro Kusumi <kusumi.tomohiro@gmail.com>
+Closes #8997
+Closes #8998
+
+diff --git a/module/zfs/zpl_inode.c b/module/zfs/zpl_inode.c
+index 264c5d2b1cf..e1c6ce7b705 100644
+--- a/module/zfs/zpl_inode.c
++++ b/module/zfs/zpl_inode.c
+@@ -218,6 +218,12 @@ zpl_tmpfile(struct inode *dir, struct dentry *dentry, umode_t mode)
+ 
+ 	crhold(cr);
+ 	vap = kmem_zalloc(sizeof (vattr_t), KM_SLEEP);
++	/*
++	 * The VFS does not apply the umask, therefore it is applied here
++	 * when POSIX ACLs are not enabled.
++	 */
++	if (!IS_POSIXACL(dir))
++		mode &= ~current_umask();
+ 	zpl_vap_init(vap, dir, mode, cr);
+ 
+ 	cookie = spl_fstrans_mark();

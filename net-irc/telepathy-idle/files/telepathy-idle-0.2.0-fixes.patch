@@ -1,0 +1,223 @@
+From bf6d596e40e5b9426a68dcd22aa62a697457c4f7 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
+Date: Sat, 13 Feb 2016 10:08:42 +0100
+Subject: [PATCH 1/6] ctcp: Don't bling the non-bling
+
+When stripping color codes, we currently remove any sequence of digits
+following ^C. As color codes use at most two digits, this means that we
+also remove any numbers at the start of the colored text - make sure we
+stop doing that and only remove digits that are actually part of a color
+code.
+
+https://bugs.freedesktop.org/show_bug.cgi?id=94189
+---
+ src/idle-ctcp.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/src/idle-ctcp.c b/src/idle-ctcp.c
+index f282360..f28bf4b 100644
+--- a/src/idle-ctcp.c
++++ b/src/idle-ctcp.c
+@@ -98,13 +98,18 @@ gchar *idle_ctcp_kill_blingbling(const gchar *msg) {
+ 			case '\x03': /* ^C */
+ 				iter++;
+ 
+-				while (isdigit(*iter))
++				/* Color codes are 1-2 digits */
++                                if (isdigit(*iter))
++					iter++;
++                                if (isdigit(*iter))
+ 					iter++;
+ 
+ 				if (*iter == ',') {
+ 					iter++;
+ 
+-					while (isdigit(*iter))
++	                                if (isdigit(*iter))
++						iter++;
++	                                if (isdigit(*iter))
+ 						iter++;
+ 				}
+ 				break;
+-- 
+2.23.0
+
+From 5a2510ddea8f165f0808a8841e1dca311c003e20 Mon Sep 17 00:00:00 2001
+From: Diane Trout <diane@ghic.org>
+Date: Sat, 4 Nov 2017 23:03:26 -0700
+Subject: [PATCH 2/6] Update self-signed certificate to 2048 bytes with SHA-256
+ signature
+
+Valid for 10 years
+---
+ tests/twisted/tools/idletest.cert | 26 +++++++++++++++++--------
+ tests/twisted/tools/idletest.key  | 32 ++++++++++++++++++++++++-------
+ 2 files changed, 43 insertions(+), 15 deletions(-)
+
+diff --git a/tests/twisted/tools/idletest.cert b/tests/twisted/tools/idletest.cert
+index 655abc2..7ea6bcc 100644
+--- a/tests/twisted/tools/idletest.cert
++++ b/tests/twisted/tools/idletest.cert
+@@ -1,10 +1,20 @@
+ -----BEGIN CERTIFICATE-----
+-MIIBTzCB+gIBATANBgkqhkiG9w0BAQQFADAzMRIwEAYDVQQKEwl0ZWxlcGF0aHkx
+-HTAbBgNVBAsTFHRlbGVwYXRoeSBkZXZlbG9wZXJzMB4XDTA5MDExNDE3NDc0N1oX
+-DTA5MDExNDE3NDg0N1owMzESMBAGA1UEChMJdGVsZXBhdGh5MR0wGwYDVQQLExR0
+-ZWxlcGF0aHkgZGV2ZWxvcGVyczBcMA0GCSqGSIb3DQEBAQUAA0sAMEgCQQC9z/pi
+-zEMeL+bO3giJVGHGrOHLE7AfDorArwmA0u8Cgu06+J+SW+NJnkj8At4bioxREge6
+-yeD6+cHCC9kzXrmXAgMBAAEwDQYJKoZIhvcNAQEEBQADQQBf1qg0gzSztx5pqqM8
+-3wI5cEc7k13EzU6X2SkSCSxlMc4pF0hPdr0LuZJpeKBohIgKQ59+3Ny0LuUMEKYW
+-ikGr
++MIIDUDCCAjigAwIBAgIBATANBgkqhkiG9w0BAQsFADAzMRIwEAYDVQQKEwl0ZWxl
++cGF0aHkxHTAbBgNVBAsTFHRlbGVwYXRoeSBkZXZlbG9wZXJzMB4XDTE3MTEwNTAw
++NTEwMFoXDTE4MTEwNTAwNTEwMFowMzESMBAGA1UEChMJdGVsZXBhdGh5MR0wGwYD
++VQQLExR0ZWxlcGF0aHkgZGV2ZWxvcGVyczCCASIwDQYJKoZIhvcNAQEBBQADggEP
++ADCCAQoCggEBAL3wfZoTzmJqQyjw0tToAflpdmQMTNpzgXvH+uiuu4rWk7oGJsBN
++HZfe4gkoYNLL8PwOGEQcIUN4Y0JU/mc9mSe44Vi0G0t/uJ/gI+CNtHzHjwtwCnYP
++XsbCE69CsarvDVbsQHS6kWfgCYxMA0l+cydUfxuyIoFWjeM4hZs0JwdBGBTAtZkj
++3xo+7Ee3xNBaaOtmoJO/QduAVA0UgiWU69m7Q+5aIuIl9PGOSL4MHqNXq/nwX5Ky
++aFBpXdzmrVn8BophkBgOawp0e+Rhk5fCelyy54lIfpUxeOTP6EtAgsZYbZBPjsuz
++8ewJbdnzcOCwTJpKQv9aHhkTKcK2PkN6tJMCAwEAAaNvMG0wDAYDVR0TAQH/BAIw
++ADAdBgNVHQ4EFgQUuG8blqmQ1SEj/x5OhBc58XFv6vcwCwYDVR0PBAQDAgXgMBEG
++CWCGSAGG+EIBAQQEAwIGQDAeBglghkgBhvhCAQ0EERYPeGNhIGNlcnRpZmljYXRl
++MA0GCSqGSIb3DQEBCwUAA4IBAQBJCT/EPWqv/wUDn7jK4nRXXXwtIL7eYYTAvcJh
++gxtrkkNB1LAp6mnb1WOw+Wbdpf2IgTqfAvpzCRL+kCM80Pqh365JlA5JflzhWxsJ
++xtJQfNfiZhgXKN1rm5lT+U/WgGR6A1serbxUiRN2O6wB8nxtoc7sBJh18pcrwpam
++vOGAolbePV8HPfyBRkCnSw1X6BdifEtxlRCfVWELSI6xQHX8OPTU+uGcvte5uAEi
++7CRRJHlUoojyLOxlJ6IeXh7MjrDIi6tHDqVR9MlRRN3oXhvsN/TtsZUuuC7s280W
++oapk/x7WNDSQsdsi0bmTLrJoZgHzaPRJPCwBFzbj/T1kCC0B
+ -----END CERTIFICATE-----
+diff --git a/tests/twisted/tools/idletest.key b/tests/twisted/tools/idletest.key
+index 3a80dab..d579266 100644
+--- a/tests/twisted/tools/idletest.key
++++ b/tests/twisted/tools/idletest.key
+@@ -1,9 +1,27 @@
+ -----BEGIN RSA PRIVATE KEY-----
+-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
+ -----END RSA PRIVATE KEY-----
+-- 
+2.23.0
+
+From 0ce3a8fa2bd3f4e72358bb53ecd0acf8fe448483 Mon Sep 17 00:00:00 2001
+From: Diane Trout <diane@ghic.org>
+Date: Sat, 4 Nov 2017 23:32:32 -0700
+Subject: [PATCH 3/6] Avoid errors from Python caused by the deliberatly
+ invalid Unicode
+
+Because stream.nick is Unicode when sendMessage combines the command,
+nick, and invalid utf8 python 2.7 ends up converting everything to
+Unicode. Since this test deliberately includes invalid Unicode, Python
+notices and throws an exception.
+
+In Python 3, network traffic is usually encoded as bytes. So I thought
+coercing the nick to bytes would be appropriate, and as bytes can contain
+anything including invalid Unicode, Python doesn't throw an exception.
+---
+ tests/twisted/messages/invalid-utf8.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/twisted/messages/invalid-utf8.py b/tests/twisted/messages/invalid-utf8.py
+index a48c2f4..725e3bd 100644
+--- a/tests/twisted/messages/invalid-utf8.py
++++ b/tests/twisted/messages/invalid-utf8.py
+@@ -33,7 +33,7 @@ def test_with_message(q, stream, parts):
+ 
+     # Idle's default character set is UTF-8. We send it a message which is
+     # basically UTF-8, except that one of its code points is invalid.
+-    stream.sendMessage('PRIVMSG', stream.nick, ':%s' % invalid_utf8,
++    stream.sendMessage('PRIVMSG', bytes(stream.nick), ':%s' % invalid_utf8,
+         prefix='remoteuser')
+ 
+     # Idle should signal that *something* was received. If it hasn't validated
+-- 
+2.23.0
+
+From acf5fcf4d830ae0b5953d8ded8eba4c17726c6f3 Mon Sep 17 00:00:00 2001
+From: Diane Trout <diane@ghic.org>
+Date: Mon, 6 Nov 2017 21:46:00 -0800
+Subject: [PATCH 4/6] Returning FALSE from the timer function causes the
+ timeout to be destroyed
+
+I asked one of the polari devs and was told that yes it is ok to set
+the timer id to zero in the timer function.
+
+With this patch make check works without changing any of the expected
+test results and without any coredumps
+---
+ src/idle-connection.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/idle-connection.c b/src/idle-connection.c
+index 6ab5fea..71c020f 100644
+--- a/src/idle-connection.c
++++ b/src/idle-connection.c
+@@ -600,6 +600,7 @@ _force_disconnect (gpointer data)
+ 
+ 	IDLE_DEBUG("gave up waiting, forcibly disconnecting");
+ 	idle_server_connection_force_disconnect(priv->conn);
++	priv->force_disconnect_id = 0;
+ 	return FALSE;
+ }
+ 
+-- 
+2.23.0
+
+From 5e5b677173ef64055b4a7073cb5a15066fc03f70 Mon Sep 17 00:00:00 2001
+From: Guillaume Desmottes <guillaume.desmottes@collabora.co.uk>
+Date: Fri, 14 Feb 2014 12:12:54 +0100
+Subject: [PATCH 5/6] idle-connection: make sure to always reset
+ force_disconnect_id
+
+Recent GLib raises a critical when trying to remove an invalid source.
+
+(cherry picked from commit 12211654baa75db13a05b5c2b3293d1378fcf7a2)
+---
+ src/idle-connection.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/idle-connection.c b/src/idle-connection.c
+index 71c020f..8614d52 100644
+--- a/src/idle-connection.c
++++ b/src/idle-connection.c
+@@ -585,6 +585,7 @@ static gboolean _finish_shutdown_idle_func(gpointer data) {
+ 	IdleConnectionPrivate *priv = self->priv;
+ 	if (priv->force_disconnect_id != 0) {
+ 		g_source_remove(priv->force_disconnect_id);
++		priv->force_disconnect_id = 0;
+ 	}
+ 
+ 	tp_base_connection_finish_shutdown(conn);
+-- 
+2.23.0
+

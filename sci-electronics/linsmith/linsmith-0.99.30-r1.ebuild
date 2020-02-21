@@ -62,6 +62,6 @@ src_install() {
 
 	if use examples; then
 		insinto "/usr/share/doc/${PF}/examples"
-		doins datafiles/*.circ datafiles/*.load || die
+		doins datafiles/*.circ datafiles/*.load
 	fi
 }

@@ -11,7 +11,7 @@ SRC_URI="http://ch.gov.nu.ca/fonts/pigiarniq.zip -> ${P}.zip"
 
 LICENSE="public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="app-arch/unzip"
 RDEPEND=""

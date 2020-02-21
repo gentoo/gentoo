@@ -36,7 +36,7 @@ src_install() {
 	keepdir /var/{lib,log}/ptlink-opm
 	dosym /var/log/ptlink-opm /var/lib/ptlink-opm/log
 
-	dodoc CHANGES README || die "dodoc failed"
+	dodoc CHANGES README
 
 	newinitd "${FILESDIR}"/ptlink-opm.init.d ptlink-opm
 	newconfd "${FILESDIR}"/ptlink-opm.conf.d ptlink-opm

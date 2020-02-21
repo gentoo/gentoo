@@ -11,7 +11,7 @@ SRC_URI="http://apollo.backplane.com/FreeSrc/${P}.tgz"
 
 LICENSE="BSD-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86-fbsd"
+KEYWORDS="~amd64"
 IUSE="userland_GNU threads"
 
 DEPEND=""

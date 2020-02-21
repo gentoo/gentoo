@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -9,7 +9,7 @@ SRC_URI="https://bitbucket.org/NP-Hardass/${PN}/raw/v${PV}/wine.eselect -> wine.
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="-* amd64 x86 ~x86-fbsd"
+KEYWORDS="-* amd64 x86"
 IUSE=""
 
 RDEPEND="app-admin/eselect
@@ -30,7 +30,7 @@ pkg_postinst() {
 	# In /usr/include this breaks gcc build.
 	# https://bugs.gentoo.org/434180
 	if [[ $(readlink "${EROOT%/}"/usr/include/wine) == //* ]]; then
-		ewarn "Leading double slash in ${EPREFIX%/}/usr/include/wine symlink detected."
+		ewarn "Leading double slash in ${EPREFIX}/usr/include/wine symlink detected."
 		ewarn "Re-setting wine symlinks..."
 		eselect wine update --if-unset
 	fi

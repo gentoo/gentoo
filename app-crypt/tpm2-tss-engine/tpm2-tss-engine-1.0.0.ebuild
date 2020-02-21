@@ -13,6 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="libressl test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-crypt/tpm2-tss-2.2.2:=
 	!libressl? ( dev-libs/openssl:0= )

@@ -1,8 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-inherit multilib toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 MY_P=${P/mcp/MCP}
 
@@ -12,23 +13,22 @@ SRC_URI="http://kokkinizita.linuxaudio.org/linuxaudio/downloads/${MY_P}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
+KEYWORDS="amd64 ~ppc x86"
 
 DEPEND="media-libs/ladspa-sdk"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare() {
+PATCHES=( "${FILESDIR}"/${PN}-0.4.0-makefile.patch )
+
+src_configure() {
 	tc-export CXX
-	sed -i -e "s/-O3//" \
-		-e "s/g++/$(tc-getCXX) ${LDFLAGS}/" Makefile || die "sed failed"
 }
 
 src_install() {
-	dodoc AUTHORS README
-	insinto /usr/$(get_libdir)/ladspa
-	insopts -m0755
-	doins *.so
+	einstalldocs
+
+	exeinto /usr/$(get_libdir)/ladspa
+	doexe *.so
 }

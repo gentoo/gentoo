@@ -6,6 +6,6 @@
 		<name>Gentoo Sound project</name>
 	</maintainer>
 	<upstream>
-		<remote-id type="sourceforge">libcue</remote-id>
+		<remote-id type="github">lipnitsk/libcue</remote-id>
 	</upstream>
 </pkgmetadata>

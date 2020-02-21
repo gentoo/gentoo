@@ -1,7 +1,7 @@
 sync prototypes between the header and source
 
---- fec-pkt.c
-+++ fec-pkt.c
+--- a/fec-pkt.c
++++ b/fec-pkt.c
 @@ -68,3 +68,3 @@
  **/
 -int fec_pkt_read(fec_pkt_t *pkt, int fd) {

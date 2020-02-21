@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ MY_P="hiredis-rb-${PV}"
 RUBY_FAKEGEM_RECIPE_DOC="rdoc"
 RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
-inherit ruby-fakegem
+inherit ruby-fakegem toolchain-funcs
 
 DESCRIPTION="Wrapper for hiredis (protocol serialization/deserialization and blocking I/O)"
 HOMEPAGE="https://github.com/redis/hiredis-rb"

@@ -40,7 +40,7 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${D}" install
 
 	rm -rf "${D}"/usr/share/doc/${PN}
 	dodoc README.markdown NEWS ChangeLog

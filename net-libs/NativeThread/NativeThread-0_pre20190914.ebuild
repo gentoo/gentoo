@@ -23,10 +23,10 @@ S="${WORKDIR}"
 src_compile() {
 	append-flags -fPIC
 	tc-export CC
-	emake || die
+	emake
 }
 
 src_install() {
-	dolib.so lib${PN}.so || die
-	dosym lib${PN}.so /usr/$(get_libdir)/libnative.so || die
+	dolib.so lib${PN}.so
+	dosym lib${PN}.so /usr/$(get_libdir)/libnative.so
 }

@@ -17,6 +17,5 @@ version</longdescription>
     <flag name="mariadb">Prefer mariadb connector over mysql connector</flag>
     <flag name="odk">Build the Office Development Kit</flag>
     <flag name="pdfimport">Enable PDF import via the Poppler library</flag>
-    <flag name="vlc">Use <pkg>media-video/vlc</pkg> for video embedding</flag>
   </use>
 </pkgmetadata>

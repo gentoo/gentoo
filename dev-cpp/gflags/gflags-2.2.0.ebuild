@@ -19,6 +19,7 @@ HOMEPAGE="http://gflags.github.io/gflags/"
 LICENSE="BSD"
 SLOT="0/2.2"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 # AUTHORS.txt only links the google group
 DOCS=( ChangeLog.txt README.md )

@@ -10,7 +10,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Compiler for a simple functional language"
 HOMEPAGE="https://github.com/edwinb/EpiVM"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -28,7 +28,10 @@ DEPEND="${RDEPEND}
 	dev-haskell/happy
 "
 # Bug #438422, upstream at https://github.com/edwinb/EpiVM/issues/5.
-PATCHES=("${FILESDIR}"/${PN}-0.9.3.3-respect-user-cflags.patch)
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.9.3.3-respect-user-cflags.patch
+	"${FILESDIR}"/${PN}-0.9.3.3-ghc84.patch
+)
 
 src_prepare() {
 	default

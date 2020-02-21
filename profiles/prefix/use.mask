@@ -21,9 +21,5 @@ kernel_linux
 # coreutils on darwin.
 acl
 
-# Prefix removed python3_5 from PYTHON_TARGETS and PYTHON_SINGLE_TARGET
-python_targets_python3_5
-python_single_target_python3_5
-
 # Similar for Ruby 2.3
 ruby_targets_ruby23

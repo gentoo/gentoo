@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ REQUIRED_USE="
 	test? ( wayland )"
 RESTRICT="!test? ( test )"
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 # libXi-1.7.4 or newer needed per:
 # https://bugzilla.gnome.org/show_bug.cgi?id=738944 - https://gitlab.gnome.org/GNOME/mutter/merge_requests/766
@@ -65,8 +65,8 @@ DEPEND="
 		elogind? ( sys-auth/elogind )
 		x11-base/xorg-server[wayland]
 	)
-	udev? ( >=virtual/libudev-228:=
-		>=virtual/libgudev-232:= )
+	udev? ( >=dev-libs/libgudev-232:=
+		>=virtual/libudev-232-r1:= )
 	x11-libs/libSM
 	input_devices_wacom? ( >=dev-libs/libwacom-0.13 )
 	>=x11-libs/startup-notification-0.7
@@ -97,6 +97,8 @@ PATCHES=(
 	"${WORKDIR}"/patches/
 	# Allow building USE=wayland without cogl-gles2 from USE=gles2
 	"${FILESDIR}"/${PV}-no-cogl-gles2.patch
+
+	"${FILESDIR}"/3.32-eglmesaext-include.patch
 )
 
 src_configure() {

@@ -23,8 +23,8 @@ CDEPEND="
 	!sys-apps/man
 	>=dev-libs/libpipeline-1.5.0
 	sys-apps/groff
-	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
+	!gdbm? ( berkdb? ( sys-libs/db:= ) )
 	!berkdb? ( !gdbm? ( sys-libs/gdbm:= ) )
 	seccomp? ( sys-libs/libseccomp )
 	zlib? ( sys-libs/zlib )

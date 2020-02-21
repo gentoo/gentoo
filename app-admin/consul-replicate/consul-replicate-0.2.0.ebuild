@@ -12,6 +12,7 @@ HOMEPAGE="https://github.com/hashicorp/consul-replicate"
 LICENSE="MPL-2.0 Apache-2.0 BSD MIT"
 SLOT="0"
 IUSE="test"
+RESTRICT+=" !test? ( test )"
 
 DEPEND=">=dev-lang/go-1.4:="
 RDEPEND=""

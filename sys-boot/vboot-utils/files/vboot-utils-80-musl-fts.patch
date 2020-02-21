@@ -1,0 +1,17 @@
+--- a/Makefile
++++ b/Makefile
+@@ -231,4 +231,7 @@
+ ifndef HAVE_MUSL
+   CFLAGS += -DHAVE_EXECINFO_H
++# Musl doesn't have fts.h so enable linking to the standalone lib.
++else
++  MUSL_LIBS := -lfts
+ endif
+ 
+@@ -1043,5 +1046,5 @@
+ 
+ # FUTIL_LIBS is shared by FUTIL_BIN and TEST_FUTIL_BINS.
+-FUTIL_LIBS = ${CRYPTO_LIBS} ${LIBZIP_LIBS}
++FUTIL_LIBS = ${CRYPTO_LIBS} ${LIBZIP_LIBS} ${MUSL_LIBS}
+ 
+ ${FUTIL_BIN}: LDLIBS += ${FUTIL_LIBS}

@@ -47,7 +47,7 @@ src_compile() {
 src_install() {
 	emake prefix="${D}/usr" libdir="${D}/usr/$(get_libdir)" \
 		includedir="${D}/usr/include" sysconfdir="${D}/etc" \
-		install || die "emake install failed."
+		install
 
 	dodoc AUTHORS ChangeLog NEWS NOTES README xmlsysd/DESIGN
 

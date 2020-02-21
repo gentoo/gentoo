@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,6 +31,8 @@ RDEPEND="${CDEPEND}
 	dev-python/paramiko[${PYTHON_USEDEP}]
 	s3? ( dev-python/boto[${PYTHON_USEDEP}] )
 "
+
+RESTRICT="!test? ( test )"
 
 python_prepare_all() {
 	# workaround until failing test is fixed

@@ -6,22 +6,21 @@ EAPI=5
 inherit toolchain-funcs multilib versionator eutils
 
 MY_PV=$(replace_version_separator 5 '.' "$(replace_version_separator 4 '-' )")
-RESTRICT="installsources"
 DESCRIPTION="Make replacement"
 HOMEPAGE="http://omake.metaprl.org/"
 SRC_URI="http://omake.metaprl.org/downloads/${PN}-${MY_PV}.tar.gz"
-LICENSE="GPL-2"
 
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ppc x86"
 IUSE="doc fam ncurses +ocamlopt readline"
+RESTRICT="installsources !ocamlopt? ( strip )"
+
 DEPEND=">=dev-lang/ocaml-3.10.2:=[ocamlopt?]
 	ncurses? ( >=sys-libs/ncurses-5.3:0= )
 	fam? ( virtual/fam )
 	readline? ( >=sys-libs/readline-4.3:0= )"
 RDEPEND="${DEPEND}"
-
-RESTRICT="!ocamlopt? ( strip )"
 
 S=${WORKDIR}/${PN}-${MY_PV%-*}
 

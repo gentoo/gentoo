@@ -1,0 +1,12 @@
+diff --git a/test.py b/test.py
+index 68ef40c..e5d48da 100644
+--- a/test.py
++++ b/test.py
+@@ -500,2 +500,3 @@ while True:
+ 
++    @unittest.skip("Test is unreliable")
+     def test_environment(self):
+@@ -587,2 +588,3 @@ exit(2)
+ 
++    @unittest.skip("Test seems to be unreliable")
+     def test_piped_exception1(self):

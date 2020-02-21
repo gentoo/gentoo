@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_IN_SOURCE_BUILD="yes"
-inherit cmake-utils prefix
+inherit cmake prefix
 
 DESCRIPTION="The Dungeons of Moria, a single player roguelike game, also known as Umoria"
 HOMEPAGE="https://umoria.org/"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/dungeons-of-moria/umoria/archive/v${PV}.tar.gz -> ${
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~m68k ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~m68k ~x86"
 IUSE=""
 
 RDEPEND="acct-group/gamestat
@@ -28,7 +28,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 	sed -i "s/@PF@/${PF}/" src/config.cpp || die
 	hprefixify src/config.cpp
 }

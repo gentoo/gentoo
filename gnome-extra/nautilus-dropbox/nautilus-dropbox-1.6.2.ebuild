@@ -42,7 +42,7 @@ pkg_setup () {
 		plugin to the group 'dropbox'. You need to setup a drobox account
 		before using this plugin. Visit ${HOMEPAGE} for more information."
 
-	python_export_best
+	python_setup
 }
 
 src_prepare() {

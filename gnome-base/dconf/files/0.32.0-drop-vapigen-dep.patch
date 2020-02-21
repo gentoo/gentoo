@@ -34,7 +34,7 @@ index f3b7122..7dbca97 100644
 +      define_variable: ['datadir', dconf_datadir]
    )
 +  else
-+    vapi_dir = dconf_datadir / 'vala' / 'vapi'
++    vapi_dir = join_paths(dconf_datadir, 'vala', 'vapi')
 +  endif
  
    install_data(

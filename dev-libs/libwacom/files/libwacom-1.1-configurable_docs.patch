@@ -1,0 +1,39 @@
+From 18722d30b9eb38d0cd22609e076ad45c810f137d Mon Sep 17 00:00:00 2001
+From: David Heidelberg <david@ixit.cz>
+Date: Sun, 27 Oct 2019 20:34:55 +0100
+Subject: [PATCH] meson: make documentation a feature
+
+Nice to have for distributions, which needs to have predicable build.
+
+Signed-off-by: David Heidelberg <david@ixit.cz>
+---
+ meson.build       | 3 ++-
+ meson_options.txt | 4 ++++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 8283613..be2fcb3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -460,7 +460,8 @@ install_man(configure_file(input: 'tools/libwacom-list-local-devices.man',
+ 			   copy: true))
+ 
+ ############### docs ###########################
+-doxygen = find_program('doxygen', required: false)
++docs_feature = get_option('documentation')
++doxygen = find_program('doxygen', required: docs_feature)
+ if doxygen.found()
+ 	src_doxygen = [
+ 		join_paths(dir_src, 'libwacom.h'),
+diff --git a/meson_options.txt b/meson_options.txt
+index 1d75434..84c92bf 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -1,3 +1,7 @@
++option('documentation',
++       type: 'feature',
++       value: 'auto',
++       description: 'Build doxygen documentation [default=auto]')
+ option('udev-dir',
+        type: 'string',
+        value: '',

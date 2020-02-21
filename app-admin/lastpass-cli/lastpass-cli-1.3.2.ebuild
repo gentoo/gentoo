@@ -15,6 +15,7 @@ SLOT="0"
 LICENSE="GPL-2+ GPL-2+-with-openssl-exception"
 KEYWORDS="~amd64 ~x86"
 IUSE="libressl X +pinentry test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	X? ( || ( x11-misc/xclip x11-misc/xsel ) )

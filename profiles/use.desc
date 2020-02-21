@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Keep them sorted
@@ -30,7 +30,6 @@ big-endian - Big-endian toolchain support
 bindist - Flag to enable or disable options for prebuilt (GRP) packages (eg. due to licensing issues)
 blas - Add support for the virtual/blas numerical library
 bluetooth - Enable Bluetooth Support
-bootstrap - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used during original system bootstrapping [make stage2]
 branding - Enable Gentoo specific branding
 build - !!internal use only!! DO NOT SET THIS FLAG YOURSELF!, used for creating build images and the first half of bootstrapping [make stage1]
 bzip2 - Use the bzlib compression library
@@ -103,10 +102,6 @@ gimp - Build a plugin for the GIMP
 git - Enable git (version control system) support
 glut - Build an OpenGL plugin using the GLUT library
 gmp - Add support for dev-libs/gmp (GNU MP library)
-gnat_2016 - Compile with dev-lang/gnat-gpl-2016
-gnat_2017 - Compile with dev-lang/gnat-gpl-2017
-gnat_2018 - Compile with dev-lang/gnat-gpl-2018
-gnat_2019 - Compile with dev-lang/gnat-gpl-2019
 gnome - Add GNOME support
 gnome-keyring - Enable support for storing passwords via gnome-keyring
 gnuplot - Enable support for gnuplot (data and function plotting)
@@ -114,13 +109,14 @@ gnutls - Prefer net-libs/gnutls as SSL/TLS provider (ineffective with USE=-ssl)
 gphoto2 - Add digital camera support
 gpm - Add support for sys-libs/gpm (Console-based mouse driver)
 gps - Add support for Global Positioning System
-graphicsmagick - Build and link against GraphicsMagick instead of ImageMagick (might require USE=imagemagick if optional)
+graphicsmagick - Build and link against GraphicsMagick instead of ImageMagick (requires USE=imagemagick if optional)
 graphviz - Add support for the Graphviz library
 gsl - Use the GNU scientific library for calculations
 gsm - Add support for the gsm lossy speech compression codec
 gstreamer - Add support for media-libs/gstreamer (Streaming media)
 gtk - Add support for x11-libs/gtk+ (The GIMP Toolkit)
 gtk-doc - Build and install gtk-doc based developer documentation for dev-util/devhelp, IDE and offline use
+gui - Enable support for a graphical user interface
 guile - Add support for the guile Scheme interpreter
 gzip - Compress files with Lempel-Ziv coding (LZ77)
 handbook - Enable handbooks generation for packages by KDE
@@ -296,7 +292,7 @@ source - Zip the sources and install them
 sox - Add support for Sound eXchange (SoX)
 speex - Add support for the speex audio codec (used for speech)
 spell - Add dictionary support
-split-usr - Enable behavior to support maintaining /bin and /lib separately from /usr/bin and /usr/lib
+split-usr - Enable behavior to support maintaining /bin, /lib*, /sbin and /usr/sbin  separately from /usr/bin and /usr/lib*
 sqlite - Add support for sqlite - embedded sql database
 ssl - Add support for SSL/TLS connections (Secure Socket Layer / Transport Layer Security)
 startup-notification - Enable application startup event feedback mechanism

@@ -1,5 +1,5 @@
---- Makefile.in.orig	2015-11-18 13:52:44.173432349 +0300
-+++ Makefile.in	2015-11-18 13:53:39.244429093 +0300
+--- a/Makefile.in
++++ b/Makefile.in
 @@ -183,22 +183,22 @@
  
  install: 		$(DOINST)

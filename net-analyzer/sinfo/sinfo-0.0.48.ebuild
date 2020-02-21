@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit autotools eutils
 
 DESCRIPTION="A monitoring tool for networked computers"
 HOMEPAGE="http://www.ant.uni-bremen.de/whomes/rinas/sinfo/"
-SRC_URI="${HOMEPAGE}download/${P}.tar.gz"
+SRC_URI="http://www.ant.uni-bremen.de/whomes/rinas/sinfo/download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

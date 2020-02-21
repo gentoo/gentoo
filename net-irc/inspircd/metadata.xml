@@ -17,10 +17,9 @@
 		<flag name="maxminddb">Add support for geolocation using libMaxMindDB</flag>
 		<flag name="mbedtls">Add support for TLS using the mbedTLS library</flag>
 		<flag name="mysql">Enable MySQL database backend</flag>
-		<flag name="pcre">Adds support for Perl Compatible Regular Expressions</flag>
 		<flag name="postgres">Enable PostgreSQL database backend</flag>
 		<flag name="re2">Add support for Google RE2 regular expressions library</flag>
-		<flag name="regex-posix">Adds support for POSIX Regular Expressions</flag>
+		<flag name="regex-posix">Add support for POSIX Regular Expressions</flag>
 		<flag name="regex-stdlib">Add support for C++ stdlib regular expressions</flag>
 		<flag name="sqlite">Enable Sqlite database backend</flag>
 		<flag name="ssl">Enable SSL support</flag>

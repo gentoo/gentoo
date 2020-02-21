@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp:${PN}.org@${PN}.org/downloads/${P}/${P}.tar.gz"
 
 LICENSE="BSD public-domain"
 SLOT="0"
-KEYWORDS="amd64 ~arm64 hppa x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm64 hppa x86"
 IUSE="static-libs"
 
 RDEPEND="<sys-cluster/corosync-2.0.0"

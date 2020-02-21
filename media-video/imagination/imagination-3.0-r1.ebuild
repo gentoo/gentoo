@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit autotools eutils
+inherit autotools desktop
 
 DESCRIPTION="Simple DVD slideshow maker"
 HOMEPAGE="http://imagination.sourceforge.net/"
@@ -13,29 +13,29 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="x11-libs/gtk+:2
-	media-sound/sox"
+DEPEND="
+	media-sound/sox:=
+	x11-libs/cairo:=
+	x11-libs/gtk+:2"
 RDEPEND="${DEPEND}
 	virtual/ffmpeg"
 
-LANGS="cs de en_GB fr it pt_BR sv zh_CN zh_TW"
+PATCHES=(
+	"${FILESDIR}"/${P}-cflags.patch
+	"${FILESDIR}"/${P}-enable-translations.patch
+	"${FILESDIR}"/${P}-fix-htmldir.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-cflags.patch
-	# enable translations. Bug #380011
-	sed -i -e "/#define PLUGINS_INSTALLED/s:0:1:" "${S}"/src/support.h || die
-	rm "${S}"/po/LINGUAS
-	for x in ${LANGS}; do
-		if ! has ${x} ${LINGUAS}; then
-			rm "${S}"/po/${x}.po || die
-		else
-			echo -n "${x} " >> "${S}"/po/LINGUAS
-		fi
-	done
+	default
+	mv configure.{in,ac} || die
 	eautoreconf
 }
 
 src_install() {
 	default
 	doicon icons/48x48/${PN}.png
+
+	# only plugins
+	find "${D}" -name '*.la' -delete || die
 }

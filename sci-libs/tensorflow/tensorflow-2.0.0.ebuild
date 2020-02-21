@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DISTUTILS_OPTIONAL=1
-PYTHON_COMPAT=( python2_7 python{3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 MY_PV=${PV/_rc/-rc}
 MY_P=${PN}-${MY_PV}
 
@@ -56,8 +56,9 @@ RDEPEND="
 	app-arch/snappy
 	dev-db/lmdb
 	dev-db/sqlite
+	dev-libs/double-conversion
 	dev-libs/icu
-	>=dev-libs/jsoncpp-1.9
+	~dev-libs/jsoncpp-1.9.1
 	dev-libs/libpcre
 	dev-libs/nsync
 	dev-libs/openssl:0=
@@ -93,8 +94,6 @@ RDEPEND="
 		>=sci-libs/keras-applications-1.0.8[${PYTHON_USEDEP}]
 		>=sci-libs/keras-preprocessing-1.0.5[${PYTHON_USEDEP}]
 		>=sci-visualization/tensorboard-2.0.0[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2*')
-		$(python_gen_cond_dep 'dev-python/functools32[${PYTHON_USEDEP}]' 'python2*')
 	)"
 DEPEND="${RDEPEND}
 	dev-python/mock"
@@ -110,7 +109,6 @@ BDEPEND="
 	dev-python/cython
 	|| (
 		=dev-util/bazel-0.24*
-		=dev-util/bazel-0.26*
 		=dev-util/bazel-0.27*
 	)
 	cuda? (
@@ -203,12 +201,24 @@ src_configure() {
 		export TF_CUDA_CLANG=0
 		export TF_NEED_TENSORRT=0
 		if use cuda; then
-			export TF_CUDA_PATHS="${EPREFIX%/}/opt/cuda"
+			export TF_CUDA_PATHS="${EPREFIX}/opt/cuda"
 			export GCC_HOST_COMPILER_PATH="$(cuda_gccdir)/$(tc-getCC)"
 			export TF_CUDA_VERSION="$(cuda_toolkit_version)"
 			export TF_CUDNN_VERSION="$(cuda_cudnn_version)"
 			einfo "Setting CUDA version: $TF_CUDA_VERSION"
 			einfo "Setting CUDNN version: $TF_CUDNN_VERSION"
+
+			if [[ -z "$TF_CUDA_COMPUTE_CAPABILITIES" ]]; then
+				ewarn "WARNING: Tensorflow is being built with its default CUDA compute capabilities: 3.5 and 7.0."
+				ewarn "These may not be optimal for your GPU."
+				ewarn ""
+				ewarn "To configure Tensorflow with the CUDA compute capability that is optimal for your GPU,"
+				ewarn "set TF_CUDA_COMPUTE_CAPABILITIES in your make.conf, and re-emerge tensorflow."
+				ewarn "For example, to use CUDA capability 7.5 & 3.5, add: TF_CUDA_COMPUTE_CAPABILITIES=7.5,3.5"
+				ewarn ""
+				ewarn "You can look up your GPU's CUDA compute capability at https://developer.nvidia.com/cuda-gpus"
+				ewarn "or by running /opt/cuda/extras/demo_suite/deviceQuery | grep 'CUDA Capability'"
+			fi
 		fi
 
 		local SYSLIBS=(

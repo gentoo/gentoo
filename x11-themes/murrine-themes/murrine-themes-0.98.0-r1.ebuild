@@ -23,7 +23,7 @@ http://gnome-look.org/CONTENT/content-files/93558-Murreza.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86 ~x86-fbsd"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 x86"
 IUSE=""
 
 RDEPEND=">=x11-themes/gtk-engines-murrine-0.98.0"

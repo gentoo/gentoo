@@ -1,0 +1,39 @@
+diff --git a/setup.py b/setup.py
+index 31f229c..9046e38 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,9 +1,29 @@
+-from setuptools import setup
+-
++from setuptools import setup, find_packages
+ 
+ setup(
+-    setup_requires=['pbr>=3.0', 'setuptools>=17.1'],
+-    pbr=True,
+-    long_description_content_type='text/markdown; charset=UTF-8',
++    name="munch",
++    version=__version__,
++    description="A dot-accessible dictionary (a la JavaScript objects).",
++    url="http://github.com/Infinidat/munch",
++    author="Rotem Yaari",
++    author_email="vmalloc@gmail.com",
++    install_requires=[
++        'six',
++    ],
++    packages=find_packages(exclude=["tests"]),
+     keywords=['munch', 'dict', 'mapping', 'container', 'collection'],
++    classifiers=[
++        'Development Status :: 5 - Production/Stable',
++        'Intended Audience :: Developers',
++        'Operating System :: OS Independent',
++        'Programming Language :: Python',
++        "Programming Language :: Python :: 2.7",
++        "Programming Language :: Python :: 3.5",
++        "Programming Language :: Python :: 3.6",
++        'Topic :: Software Development',
++        'Topic :: Software Development :: Libraries',
++        'Topic :: Utilities',
++        'License :: OSI Approved :: MIT License',
++    ],
++    license='MIT',
+ )

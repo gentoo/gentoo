@@ -17,6 +17,7 @@ SLOT="0"
 [[ ${PV} == 9999 ]] || \
 KEYWORDS="amd64 ~arm arm64 ~hppa ppc ppc64 ~sparc x86"
 IUSE="doc static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/librevenge
@@ -32,6 +33,8 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? ( dev-util/cppunit )
 "
+
+PATCHES=( "${FILESDIR}/${P}-icu-65.patch" )
 
 src_prepare() {
 	default

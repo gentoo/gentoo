@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib python-single-r1 cmake-utils vim-plugin
+inherit eutils multilib python-single-r1 cmake-utils vcs-clean vim-plugin
 
 if [[ ${PV} == 9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/Valloric/YouCompleteMe.git"
@@ -20,31 +20,38 @@ HOMEPAGE="https://valloric.github.io/YouCompleteMe/"
 
 LICENSE="GPL-3"
 IUSE="+clang test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 COMMON_DEPEND="
 	${PYTHON_DEPS}
 	clang? ( >=sys-devel/clang-3.3 )
-	dev-libs/boost[python,threads,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-libs/boost[python,threads,${PYTHON_MULTI_USEDEP}]
+	')
 	|| (
-		app-editors/vim[python,${PYTHON_USEDEP}]
-		app-editors/gvim[python,${PYTHON_USEDEP}]
+		app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
+		app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
 	)
 "
 RDEPEND="
 	${COMMON_DEPEND}
-	dev-python/bottle[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
-	dev-python/jedi[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/sh[${PYTHON_USEDEP}]
-	dev-python/waitress[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/bottle[${PYTHON_MULTI_USEDEP}]
+		virtual/python-futures[${PYTHON_MULTI_USEDEP}]
+		dev-python/jedi[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/sh[${PYTHON_MULTI_USEDEP}]
+		dev-python/waitress[${PYTHON_MULTI_USEDEP}]
+	')
 "
 DEPEND="
 	${COMMON_DEPEND}
 	test? (
-		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
-		>=dev-python/nose-1.3.0[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			>=dev-python/mock-1.0.1[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/nose-1.3.0[${PYTHON_MULTI_USEDEP}]
+		')
 		>=dev-cpp/gtest-1.8.0
 	)
 "
@@ -88,7 +95,7 @@ src_test() {
 	LD_LIBRARY_PATH="${EROOT}"/usr/$(get_libdir)/llvm \
 		./ycm_core_tests || die
 
-	cd "${S}"/python/ycm || die
+	cd "${S}"/python/ycm || die
 
 	local dirs=( "${S}"/third_party/*/ "${S}"/third_party/ycmd/third_party/*/ )
 	local -x PYTHONPATH=${PYTHONPATH}:$(IFS=:; echo "${dirs[*]}")

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="xml"
 inherit gnome2 python-single-r1 systemd
 
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/zdohnal/${PN}/releases/download/${PV}/${P}.tar.xz
 	https://dev.gentoo.org/~asturm/distfiles/${P}-patchset-01.tar.xz"
 
 LICENSE="GPL-2+"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ppc64 ~sh ~sparc x86"
 SLOT="0"
 
 IUSE="doc gnome-keyring policykit"
@@ -45,12 +45,14 @@ DEPEND="${COMMON_DEPEND}
 	doc? ( dev-python/epydoc )
 "
 RDEPEND="${COMMON_DEPEND}
-	dev-python/dbus-python[${PYTHON_USEDEP}]
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/pycups[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
-	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/urllib3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycups[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/urllib3[${PYTHON_MULTI_USEDEP}]
+	')
 	gnome-keyring? ( app-crypt/libsecret[introspection] )
 	policykit? ( net-print/cups-pk-helper )
 "

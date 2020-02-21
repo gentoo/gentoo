@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ inherit autotools flag-o-matic gnome2-utils xdg-utils
 
 DESCRIPTION="A background browser and setter for X"
 HOMEPAGE="https://github.com/l3ib/nitrogen"
-SRC_URI="${HOMEPAGE}/releases/download/${PV}/${P}.tar.gz"
+SRC_URI="https://github.com/l3ib/nitrogen/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

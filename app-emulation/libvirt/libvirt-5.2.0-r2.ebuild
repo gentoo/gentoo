@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools bash-completion-r1 eutils linux-info python-any-r1 readme.gentoo-r1 systemd
 
@@ -327,7 +327,7 @@ src_test() {
 		tests/Makefile
 
 	export VIR_TEST_DEBUG=1
-	HOME="${T}" emake check || die "tests failed"
+	HOME="${T}" emake check
 }
 
 src_install() {
@@ -341,6 +341,9 @@ src_install() {
 	rm -rf "${D}"/etc/sysconfig
 	rm -rf "${D}"/var
 
+	newbashcomp "${S}/tools/bash-completion/vsh" virsh
+	bashcomp_alias virsh virt-admin
+
 	use libvirtd || return 0
 	# From here, only libvirtd-related instructions, be warned!
 
@@ -349,16 +352,13 @@ src_install() {
 
 	systemd_newtmpfilesd "${FILESDIR}"/libvirtd.tmpfiles.conf libvirtd.conf
 
-	newinitd "${S}/libvirtd.init" libvirtd || die
-	newinitd "${FILESDIR}/libvirt-guests.init-r3" libvirt-guests || die
-	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd || die
-	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd || die
+	newinitd "${S}/libvirtd.init" libvirtd
+	newinitd "${FILESDIR}/libvirt-guests.init-r3" libvirt-guests
+	newinitd "${FILESDIR}/virtlockd.init-r1" virtlockd
+	newinitd "${FILESDIR}/virtlogd.init-r1" virtlogd
 
-	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd || die
-	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests || die
-
-	newbashcomp "${S}/tools/bash-completion/vsh" virsh
-	bashcomp_alias virsh virt-admin
+	newconfd "${FILESDIR}/libvirtd.confd-r5" libvirtd
+	newconfd "${FILESDIR}/libvirt-guests.confd" libvirt-guests
 
 	DOC_CONTENTS=$(<"${FILESDIR}/README.gentoo-r2")
 	DISABLE_AUTOFORMATTING=true

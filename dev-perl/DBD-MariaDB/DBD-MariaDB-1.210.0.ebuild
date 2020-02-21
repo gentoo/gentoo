@@ -11,6 +11,7 @@ DESCRIPTION="MariaDB and MySQL driver for the Perl5 Database Interface (DBI)"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test +mariadb mysql minimal"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( mysql mariadb )"
 
 RDEPEND="

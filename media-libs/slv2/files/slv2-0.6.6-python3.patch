@@ -1,0 +1,22 @@
+diff --git a/autowaf.py b/autowaf.py
+index 4797ea3..90db9be 100644
+--- a/autowaf.py
++++ b/autowaf.py
+@@ -354,7 +354,7 @@ def build_version_files(header_path, source_path, domain, major, minor, micro):
+ 		o.write(text)
+ 		o.close()
+ 	except IOError:
+-		print "Could not open", source_path, " for writing\n"
++		print("Could not open", source_path, " for writing\n")
+ 		sys.exit(-1)
+ 
+ 	text  = "#ifndef __" + domain + "_version_h__\n"
+@@ -369,7 +369,7 @@ def build_version_files(header_path, source_path, domain, major, minor, micro):
+ 		o.write(text)
+ 		o.close()
+ 	except IOError:
+-		print "Could not open", header_path, " for writing\n"
++		print("Could not open", header_path, " for writing\n")
+ 		sys.exit(-1)
+ 		
+ 	return None

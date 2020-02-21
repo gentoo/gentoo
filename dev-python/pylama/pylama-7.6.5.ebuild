@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -22,7 +22,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/mccabe-0.5.2[${PYTHON_USEDEP}]
 	>=dev-python/pycodestyle-2.3.1[${PYTHON_USEDEP}]
-	>=dev-python/pep257-2.0.0[${PYTHON_USEDEP}]
+	>=dev-python/pydocstyle-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pyflakes-1.5.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (

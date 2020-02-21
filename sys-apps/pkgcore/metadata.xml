@@ -2,12 +2,9 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
   <maintainer type="person">
-    <email>radhermit@gentoo.org</email>
-    <name>Tim Harder</name>
+    <email>mgorny@gentoo.org</email>
+    <name>Michał Górny</name>
   </maintainer>
-  <use>
-    <flag name="doc">Build and install API docs.</flag>
-  </use>
   <upstream>
     <remote-id type="github">pkgcore/pkgcore</remote-id>
   </upstream>

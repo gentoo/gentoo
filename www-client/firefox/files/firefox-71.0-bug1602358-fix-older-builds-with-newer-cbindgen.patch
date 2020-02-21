@@ -1,0 +1,50 @@
+From 2683aaa789cfeb8c31a2d94ed972642421768a4b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Emilio=20Cobos=20=C3=81lvarez?= <emilio@crisal.io>
+Date: Thu, 1 Jan 1970 00:00:00 +0000
+Subject: [PATCH] Bug 1602358 - Fix older builds with newer cbindgen. r=jwatt,
+ a=jcristau
+
+This should be fine to uplift so that downstream doesn't need multiple cbindgen
+versions.
+
+Differential Revision: https://phabricator.services.mozilla.com/D56346
+---
+ layout/generic/WritingModes.h      |  3 ++-
+ servo/ports/geckolib/cbindgen.toml | 10 ----------
+ 2 files changed, 2 insertions(+), 11 deletions(-)
+
+diff --git a/layout/generic/WritingModes.h b/layout/generic/WritingModes.h
+index 1a8d08b191b..0671388902f 100644
+--- a/layout/generic/WritingModes.h
++++ b/layout/generic/WritingModes.h
+@@ -518,7 +518,8 @@ class WritingMode {
+    */
+   void SetDirectionFromBidiLevel(uint8_t level) {
+     if (IS_LEVEL_RTL(level) == IsBidiLTR()) {
+-      mWritingMode ^= StyleWritingMode_RTL | StyleWritingMode_INLINE_REVERSED;
++      mWritingMode.bits ^= static_cast<uint8_t>(
++          (StyleWritingMode_RTL | StyleWritingMode_INLINE_REVERSED).bits);
+     }
+   }
+ 
+diff --git a/servo/ports/geckolib/cbindgen.toml b/servo/ports/geckolib/cbindgen.toml
+index bed86498ea1..8a7a9cd7998 100644
+--- a/servo/ports/geckolib/cbindgen.toml
++++ b/servo/ports/geckolib/cbindgen.toml
+@@ -616,13 +616,3 @@ renaming_overrides_prefixing = true
+   // Get the layout rect, replacing auto right / bottom values for aAutoSize.
+   inline nsRect ToLayoutRect(nscoord aAutoSize = NS_MAXSIZE) const;
+ """
+-
+-"WritingMode" = """
+-  StyleWritingMode operator^(const StyleWritingMode& other) const {
+-    return {static_cast<decltype(bits)>(this->bits ^ other.bits)};
+-  }
+-  StyleWritingMode& operator^=(const StyleWritingMode& other) {
+-    *this = (*this ^ other);
+-    return *this;
+-  }
+-"""
+-- 
+2.20.1
+

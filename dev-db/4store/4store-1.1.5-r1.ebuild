@@ -39,7 +39,7 @@ src_install() {
 	# patch the Makefiles to use /usr/ instead of /usr/local/
 	find . -name "Makefile" -execdir sed -e "s#/usr/local/#/usr/#" -i {} \;
 
-	MAKEOPTS="-j1" emake DESTDIR="${D}" install || die "emake install failed"
+	MAKEOPTS="-j1" emake DESTDIR="${D}" install
 
 	dodir /var/log/4store
 	fowners fourstore:fourstore \

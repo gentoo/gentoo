@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -19,6 +19,6 @@ RDEPEND="media-libs/freeglut
 DEPEND="${RDEPEND}
 	app-arch/unzip"
 PATCHES=(
-	"${FILESDIR}/lib3ds-1.3.0-r1-pkgconfig.patch"
-	"${FILESDIR}/lib3ds-1.3.0-r1-mesh.c.patch"
+	"${FILESDIR}"/${P}-pkgconfig.patch
+	"${FILESDIR}"/${P}-mesh.c.patch
 )

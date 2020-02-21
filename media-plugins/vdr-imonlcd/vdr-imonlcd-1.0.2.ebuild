@@ -36,5 +36,5 @@ src_install() {
 	vdr-plugin-2_src_install
 
 	insinto $(get_udevdir)/rules.d
-	doins "${FILESDIR}"/99-imonlcd.rules || die
+	doins "${FILESDIR}"/99-imonlcd.rules
 }

@@ -134,25 +134,29 @@ esac
 LICENSE="${LICENSE:-|| ( Artistic GPL-1+ )}"
 
 # @ECLASS-VARIABLE: DIST_NAME
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6 and later) This variable provides a way to override PN for the calculation of S,
-# SRC_URI, and HOMEPAGE. Defaults to PN.
+# SRC_URI, and HOMEPAGE. If unset, defaults to PN.
 
 # @ECLASS-VARIABLE: DIST_VERSION
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6 and later) This variable provides a way to override PV for the calculation of S and SRC_URI.
-# Use it to provide the non-normalized, upstream version number. Defaults to PV.
+# Use it to provide the non-normalized, upstream version number. If unset, defaults to PV.
 # Named MODULE_VERSION in EAPI=5.
 
 # @ECLASS-VARIABLE: DIST_A_EXT
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6 and later) This variable provides a way to override the distfile extension for the calculation of
-# SRC_URI. Defaults to tar.gz. Named MODULE_A_EXT in EAPI=5.
+# SRC_URI. If unset, defaults to tar.gz. Named MODULE_A_EXT in EAPI=5.
 
 # @ECLASS-VARIABLE: DIST_A
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6 and later) This variable provides a way to override the distfile name for the calculation of
-# SRC_URI. Defaults to ${DIST_NAME}-${DIST_VERSION}.${DIST_A_EXT} Named MODULE_A in EAPI=5.
+# SRC_URI. If unset, defaults to ${DIST_NAME}-${DIST_VERSION}.${DIST_A_EXT} Named MODULE_A in EAPI=5.
 
 # @ECLASS-VARIABLE: DIST_AUTHOR
 # @DEFAULT_UNSET
@@ -340,9 +344,10 @@ perl-module_src_compile() {
 }
 
 # @ECLASS-VARIABLE: DIST_TEST
+# @DEFAULT_UNSET
 # @DESCRIPTION:
 # (EAPI=6 and later) Variable that controls if tests are run in the test phase
-# at all, and if yes under which conditions. Defaults to "do parallel"
+# at all, and if yes under which conditions. If unset, defaults to "do parallel"
 # If neither "do" nor "parallel" is recognized, tests are skipped.
 # (In EAPI=5 the variable is called SRC_TEST, defaults to "skip", and
 # recognizes fewer options.)

@@ -13,7 +13,7 @@ SRC_URI="http://darwinsource.opendarwin.org/tarballs/apsl/diskdev_cmds-${MY_PV}.
 		 mirror://gentoo/diskdev_cmds-${PV}.patch.bz2"
 LICENSE="APSL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE=""
 DEPEND="dev-libs/openssl"
 RDEPEND="${DEPEND}"

@@ -23,6 +23,8 @@ clamav
 # dev-lang/python:3.7 is not stable.
 python_targets_python3_7
 python_single_target_python3_7
+python_targets_python3_8
+python_single_target_python3_8
 
 # Andrey Grozin <grozin@gentoo.org> (2014-06-25)
 # no stable version on sparc

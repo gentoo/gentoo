@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,10 +29,11 @@ IUSE="
 	test examples cxx -libev -libevent
 	redis
 "
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	gnutls? ( net-libs/gnutls dev-libs/libgcrypt:0= )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	png? ( media-libs/libpng:0= x11-libs/cairo )
 	jpeg? ( virtual/jpeg:0 )
 	xml? ( dev-libs/libxml2:2 sys-libs/zlib )

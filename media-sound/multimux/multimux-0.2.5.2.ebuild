@@ -1,11 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
-inherit eutils toolchain-funcs flag-o-matic
-
-IUSE=""
+inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="combines up to 8 audio mono wave ch. into one big multi ch. wave file"
 HOMEPAGE="http://panteltje.com/panteltje/dvd/"
@@ -15,18 +13,14 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}/${PN}-0.2.4-makefiles.patch"
-}
+PATCHES=( "${FILESDIR}"/${PN}-0.2.4-makefiles.patch )
 
-src_compile() {
-	append-flags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE	-D_LARGEFILE64_SOURCE
-	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" || die "emake failed"
+src_configure() {
+	append-lfs-flags
+	tc-export CC
 }
 
 src_install() {
 	dobin multimux
-	dodoc CHANGES README
+	einstalldocs
 }

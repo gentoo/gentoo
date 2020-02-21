@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ SRC_URI="
 
 LICENSE="GPL-2 LGPL-2.1-with-linking-exception"
 SLOT="0" # Note: Slotting Lazarus needs slotting fpc, see DEPEND.
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="minimal python"
 
 DEPEND=">=dev-lang/fpc-${FPCVER}[source]

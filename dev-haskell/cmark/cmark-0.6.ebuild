@@ -11,7 +11,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Fast, accurate CommonMark (Markdown) parser and renderer"
 HOMEPAGE="https://github.com/jgm/cmark-hs"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
@@ -20,7 +20,7 @@ IUSE="system-cmark"
 
 RDEPEND=">=dev-haskell/text-1.0:=[profile?] <dev-haskell/text-1.3:=[profile?]
 	>=dev-lang/ghc-7.4.1:=
-	system-cmark? ( app-text/cmark:0= )
+	system-cmark? ( app-text/cmark )
 "
 DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.14

@@ -10,7 +10,7 @@ SRC_URI="http://www.crosswire.org/ftpmirror/pub/${PN}/source/v${PV%.*}/${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd ~ppc-macos"
+KEYWORDS="amd64 ~ppc x86 ~ppc-macos"
 IUSE="clucene curl debug doc icu static-libs"
 
 RDEPEND="sys-libs/zlib

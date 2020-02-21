@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -12,7 +12,7 @@ SRC_URI="https://dev.mysql.com/get/Downloads/${URI_DIR}/${P}.tar.gz"
 
 LICENSE="Artistic GPL-2"
 SLOT="0/7"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm ~arm64 ppc ppc64 sparc x86"
 IUSE="debug examples gcov libressl static-libs"
 
 DEPEND="dev-db/mysql-connector-c:=
@@ -49,10 +49,10 @@ src_install() {
 
 	# static lib has wrong name so we need to rename it
 	if use static-libs; then
-		mv "${ED%/}"/usr/$(get_libdir)/libmysqlcppconn-static.a \
-			"${ED%/}"/usr/$(get_libdir)/libmysqlcppconn.a || die
+		mv "${ED}"/usr/$(get_libdir)/libmysqlcppconn-static.a \
+			"${ED}"/usr/$(get_libdir)/libmysqlcppconn.a || die
 	else
-		rm -f "${ED%/}"/usr/$(get_libdir)/libmysqlcppconn-static.a
+		rm -f "${ED}"/usr/$(get_libdir)/libmysqlcppconn-static.a
 	fi
 
 	# examples

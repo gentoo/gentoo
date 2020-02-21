@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -34,6 +34,7 @@ DOCS=(
 )
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-1.7.3.4-fno-common.patch
 	"${FILESDIR}"/${PN}-9999-stddef_h.patch
 )
 

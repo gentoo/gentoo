@@ -1,0 +1,13 @@
+diff --git a/tests/test_datetimes.py b/tests/test_datetimes.py
+index 688fdce..a61484d 100644
+--- a/tests/test_datetimes.py
++++ b/tests/test_datetimes.py
+@@ -18,7 +18,7 @@ except ImportError:
+     maya = None
+ 
+ # time.clock was removed in Python 3.8
+-HAS_CLOCK = hasattr(time, 'clock')
++HAS_CLOCK = hasattr(time, 'clock') and getattr(time, 'clock') is not None
+ HAS_TIME_NS = hasattr(time, 'time_ns')
+ 
+ class temp_locale(object):

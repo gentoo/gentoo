@@ -1,0 +1,24 @@
+From 09de155160c41b2746623a3e4b338da7d79f553a Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Wed, 30 Oct 2019 13:33:41 +0100
+Subject: Make it compile against qt5.15, This enum is unused
+
+---
+ mainwindow.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/mainwindow.cpp b/mainwindow.cpp
+index 7ac41c8..ad453fe 100644
+--- a/mainwindow.cpp
++++ b/mainwindow.cpp
+@@ -29,7 +29,7 @@ MainWindow::MainWindow()
+ {
+     m_main = new MainArea();
+     QGraphicsView* view = new QGraphicsView(m_main, this);
+-    view->setOptimizationFlags( QGraphicsView::DontClipPainter |
++    view->setOptimizationFlags( 
+                                 QGraphicsView::DontSavePainterState |
+                                 QGraphicsView::DontAdjustForAntialiasing );
+ //    view->setViewportUpdateMode( QGraphicsView::FullViewportUpdate );
+-- 
+cgit v1.1

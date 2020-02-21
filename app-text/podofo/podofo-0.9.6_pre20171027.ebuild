@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="+boost idn libressl debug test +tools"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="test? ( tools )"
 
 RDEPEND="dev-lang/lua:=

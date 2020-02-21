@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -72,7 +72,7 @@ DEPEND="${COMMON_DEPEND}
 	postgres? ( dev-db/postgresql:*[static-libs] )
 	libxml2? ( dev-libs/libxml2[static-libs] )
 	curl? ( net-misc/curl[static-libs] )
-	ssh? ( net-libs/libssh2[static-libs] )
+	ssh? ( net-libs/libssh2 )
 	odbc? ( dev-db/unixODBC[static-libs] )
 	)
 	virtual/pkgconfig"
@@ -138,13 +138,12 @@ src_configure() {
 		$(use_with ssh ssh2) \
 		$(use_with libxml2) \
 		$(use_with odbc unixodbc) \
-		$(use_with ssl openssl) \
-		|| die "econf failed"
+		$(use_with ssl openssl)
 }
 
 src_compile() {
 	if [ -f Makefile ] || [ -f GNUmakefile ] || [ -f makefile ]; then
-		emake AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)" || die "emake failed"
+		emake AR="$(tc-getAR)" RANLIB="$(tc-getRANLIB)"
 	fi
 }
 
@@ -172,7 +171,7 @@ src_install() {
 		doins "${FILESDIR}/3.0"/zabbix_server.conf
 		doinitd "${FILESDIR}/3.0"/init.d/zabbix-server
 		dosbin src/zabbix_server/zabbix_server
-		fowners zabbix:zabbix /etc/zabbix/zabbix_server.conf
+		fowners root:zabbix /etc/zabbix/zabbix_server.conf
 		fperms 0640 /etc/zabbix/zabbix_server.conf
 		dodir /usr/share/zabbix
 		/bin/cp -R "${S}/database/" "${D}"/usr/share/zabbix/

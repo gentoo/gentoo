@@ -1,0 +1,54 @@
+--- a/src/mpeg2dec/getbits.c
++++ b/src/mpeg2dec/getbits.c
+@@ -34,6 +34,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <unistd.h>
+ 
+ #include "config.h"
+ #include "global.h"
+--- a/src/mpeg2dec/mpeg2dec.c
++++ b/src/mpeg2dec/mpeg2dec.c
+@@ -32,6 +32,8 @@
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <fcntl.h>
++#include <sys/types.h>
++#include <unistd.h>
+ 
+ #define GLOBAL
+ #include "config.h"
+--- a/src/mpeg2dec/spatscal.c
++++ b/src/mpeg2dec/spatscal.c
+@@ -1,5 +1,7 @@
+ 
+ #include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
+ #include "config.h"
+ #include "global.h"
+ 
+--- a/src/mpeg2dec/store.c
++++ b/src/mpeg2dec/store.c
+@@ -28,8 +28,10 @@
+  */
+ 
+ #include <stdio.h>
++#include <string.h>
+ #include <stdlib.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ 
+ #include "config.h"
+ #include "global.h"
+--- a/src/mpeg2dec/subspic.c
++++ b/src/mpeg2dec/subspic.c
+@@ -31,6 +31,7 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <fcntl.h>
++#include <unistd.h>
+ 
+ #include "config.h"
+ #include "global.h"

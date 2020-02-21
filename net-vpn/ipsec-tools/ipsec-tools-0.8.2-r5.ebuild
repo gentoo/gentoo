@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -188,7 +188,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PN}-include-vendoridh.patch"
 	eapply "${FILESDIR}"/${PN}-0.8.0-sysctl.patch #425770
 	eapply "${FILESDIR}"/${PN}-CVE-2015-4047.patch
-
+	eapply "${FILESDIR}"/${PN}-add-openssl-1.1.x-support.patch
 	AT_M4DIR="${S}" eautoreconf
 
 	eapply_user

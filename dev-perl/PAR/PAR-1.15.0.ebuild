@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,8 +10,9 @@ inherit perl-module
 DESCRIPTION="Perl Archive Toolkit"
 
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-solaris"
+KEYWORDS="amd64 ~ppc x86 ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Archive-Zip-1.00

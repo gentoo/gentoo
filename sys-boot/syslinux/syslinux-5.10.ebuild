@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 
 DESCRIPTION="SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders"
 HOMEPAGE="https://www.syslinux.org/"
-SRC_URI="mirror://kernel/linux/utils/boot/syslinux/${PV:0:1}.xx/${P/_/-}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/utils/boot/syslinux/${PV:0:1}.xx/${P/_/-}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

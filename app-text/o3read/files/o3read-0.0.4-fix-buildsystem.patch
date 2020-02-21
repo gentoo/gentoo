@@ -1,0 +1,36 @@
+--- a/Makefile
++++ b/Makefile
+@@ -2,8 +2,6 @@
+ PACKAGE = o3read
+ VERSION = 0.0.4
+ 
+-CC = gcc
+-CFLAGS = -Wall -ansi -pedantic -O -g
+ PREFIX = /usr/local
+ BINDIR = $(PREFIX)/bin
+ MANDIR = $(PREFIX)/man/man1
+@@ -16,20 +14,13 @@
+ 
+ all: $(BINS)
+ 
+-utf8tolatin1: utf8tolatin1.o
+-	$(CC) -o utf8tolatin1 utf8tolatin1.o
++o3totxt: o3read.o
+ 
+-o3totxt: o3totxt.o o3read.o
+-	$(CC) -o o3totxt o3totxt.o o3read.o
++o3tohtml: o3read.o
+ 
+-o3tohtml: o3tohtml.o o3read.o
+-	$(CC) -o o3tohtml o3tohtml.o o3read.o
++o3tosiag: o3read.o
+ 
+-o3tosiag: o3tosiag.o o3read.o
+-	$(CC) -o o3tosiag o3tosiag.o o3read.o
+-
+-o3read: main.o o3read.o
+-	$(CC) -o o3read main.o o3read.o
++o3read: main.o
+ 
+ dist:
+ 	rm -rf $(PACKAGE)-$(VERSION)

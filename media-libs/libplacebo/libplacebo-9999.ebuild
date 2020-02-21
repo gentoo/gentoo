@@ -18,16 +18,19 @@ DESCRIPTION="Reusable library for GPU-accelerated image processing primitives"
 HOMEPAGE="https://github.com/haasn/libplacebo"
 
 LICENSE="LGPL-2.1+"
+# Please add a sub-slot for releases depending on libplacebo.so version
 SLOT="0"
 IUSE="glslang lcms +shaderc test +vulkan"
 REQUIRED_USE="vulkan? ( || ( glslang shaderc ) )"
 
-RDEPEND="glslang? ( <dev-util/glslang-7.10[${MULTILIB_USEDEP}] )
+RDEPEND="glslang? ( dev-util/glslang[${MULTILIB_USEDEP}] )
 	lcms? ( media-libs/lcms:2[${MULTILIB_USEDEP}] )
 	shaderc? ( >=media-libs/shaderc-2017.2[${MULTILIB_USEDEP}] )
 	vulkan? ( media-libs/vulkan-loader[${MULTILIB_USEDEP}] )"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
+
+RESTRICT="!test? ( test )"
 
 multilib_src_configure() {
 	local emesonargs=(

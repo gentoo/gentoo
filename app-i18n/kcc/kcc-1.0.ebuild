@@ -7,7 +7,7 @@ inherit toolchain-funcs
 
 DESCRIPTION="A Kanji code converter"
 HOMEPAGE="http://www2s.biglobe.ne.jp/~Nori/ruby/"
-SRC_URI="mirror://gentoo/${PN}.tar.gz -> ${P}.tar.gz"
+SRC_URI="mirror://gentoo/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,0 +1,35 @@
+From a148e5ed2151c6458f8c4cff44634146f803afe5 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Wed, 12 Feb 2020 22:00:35 +0000
+Subject: [PATCH] GCC: do not use __has_feature in UnsanitizedAtomic
+
+GCC fails to build as unsanitized_atomic.cc is using a Clang only
+compiler macro: __has_feature:
+
+  ../../third_party/blink/renderer/platform/heap/unsanitized_atomic.cc:9:18: error: missing binary operator before token "("
+      9 | #if __has_feature(address_sanitizer)
+        |                  ^
+
+Bug: 819294
+Change-Id: Id1ef4972e61d82739b115398458fd238736de4a9
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/2052106
+Reviewed-by: Anton Bikineev <bikineev@chromium.org>
+Commit-Queue: José Dapena Paz <jdapena@igalia.com>
+Cr-Commit-Position: refs/heads/master@{#740841}
+---
+
+diff --git a/third_party/blink/renderer/platform/heap/unsanitized_atomic.cc b/third_party/blink/renderer/platform/heap/unsanitized_atomic.cc
+index 8481d63..5ed251d 100644
+--- a/third_party/blink/renderer/platform/heap/unsanitized_atomic.cc
++++ b/third_party/blink/renderer/platform/heap/unsanitized_atomic.cc
+@@ -6,7 +6,9 @@
+ 
+ #include "cstdint"
+ 
+-#if __has_feature(address_sanitizer)
++#include "base/compiler_specific.h"
++
++#if HAS_FEATURE(address_sanitizer)
+ #error "Must be built without asan."
+ #endif
+ 

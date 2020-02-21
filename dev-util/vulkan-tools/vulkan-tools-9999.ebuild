@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 if [[ "${PV}" == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/KhronosGroup/Vulkan-Tools.git"
 	EGIT_SUBMODULES=()
 	inherit git-r3
 else
-	EGIT_COMMIT="9bbdd552f0fd62741aa1f1e02ab3eafc45cf3c1e"
+	EGIT_COMMIT="119e7c3bbae122f6cc5d778d068fb91e0e85d6a9"
 	KEYWORDS="~amd64"
 	SRC_URI="https://github.com/KhronosGroup/Vulkan-Tools/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/Vulkan-Tools-${EGIT_COMMIT}"
@@ -23,7 +23,7 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="+cube +vulkaninfo +X wayland"
-COMMON_DEPEND="media-libs/vulkan-loader:=[${MULTILIB_USEDEP},wayland?,X?]
+COMMON_DEPEND=">=media-libs/vulkan-loader-1.1.125:=[${MULTILIB_USEDEP},wayland?,X?]
 	wayland? ( dev-libs/wayland:=[${MULTILIB_USEDEP}] )
 	X? (
 		x11-libs/libX11:=[${MULTILIB_USEDEP}]
@@ -32,7 +32,8 @@ COMMON_DEPEND="media-libs/vulkan-loader:=[${MULTILIB_USEDEP},wayland?,X?]
 
 BDEPEND="${PYTHON_DEPS}
 	cube? ( dev-util/glslang:=[${MULTILIB_USEDEP}] )"
-DEPEND="${COMMON_DEPEND}"
+DEPEND=">=dev-util/vulkan-headers-1.1.125
+	${COMMON_DEPEND}"
 RDEPEND="${COMMON_DEPEND}"
 
 # Vulkaninfo does not support wayland

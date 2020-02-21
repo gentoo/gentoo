@@ -1,9 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-PLOCALES="de fr"
-inherit base l10n
+EAPI=7
 
 DESCRIPTION="Systemtray volume mixer applet from PuppyLinux"
 HOMEPAGE="http://puppylinux.org/wikka/Retrovol"
@@ -15,18 +13,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE="nls"
 
 RDEPEND="x11-libs/gtk+:2"
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	virtual/pkgconfig
 	nls? ( sys-devel/gettext )"
-
-DOCS="ChangeLog README TODO"
-
-src_prepare() {
-	# Check for locales added/removed from previous version
-	l10n_find_plocales_changes "po" "" '.po'
-
-	base_src_prepare
-}
 
 src_configure() {
 	econf $(use_enable nls)
@@ -35,7 +25,7 @@ src_configure() {
 pkg_postinst() {
 	echo
 	elog "You can find a sample configuration file at"
-	elog "   ${ROOT%/}/usr/share/retrovol/dot.retrovolrc"
+	elog "   ${EROOT}/usr/share/retrovol/dot.retrovolrc"
 	elog "To customize, copy it to ~/.retrovolrc and edit it as you like"
 	echo
 }

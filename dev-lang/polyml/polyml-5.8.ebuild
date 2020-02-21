@@ -13,6 +13,7 @@ LICENSE="LGPL-2.1"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="X elibc_glibc +gmp portable test +threads"
+RESTRICT="!test? ( test )"
 
 RDEPEND="X? ( x11-libs/motif:0 )
 		gmp? ( >=dev-libs/gmp-5 )
@@ -54,5 +55,5 @@ src_compile() {
 }
 
 src_test() {
-	emake tests || die "tests failed"
+	emake tests
 }

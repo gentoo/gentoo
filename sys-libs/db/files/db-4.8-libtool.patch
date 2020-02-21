@@ -1,5 +1,5 @@
---- dist/configure
-+++ dist/configure
+--- a/dist/configure
++++ b/dist/configure
 @@ -6691,7 +6691,7 @@
    $as_echo_n "(cached) " >&6
  else

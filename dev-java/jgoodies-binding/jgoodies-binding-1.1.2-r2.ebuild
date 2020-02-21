@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ MY_V=${PV//./_}
 
 DESCRIPTION="Bind object properties with UI components"
 HOMEPAGE="http://www.jgoodies.com/"
-SRC_URI="mirror://gentoo/binding-${MY_V}.zip -> ${P}.zip"
+SRC_URI="mirror://gentoo/${P}.zip"
 
 LICENSE="BSD"
 SLOT="1.0"

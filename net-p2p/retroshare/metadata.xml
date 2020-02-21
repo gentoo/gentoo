@@ -22,7 +22,6 @@
 		<flag name="control-socket">Enables API via Unix socket support</flag>
 		<flag name="feedreader">Enables the Feedreader plugin</flag>
 		<flag name="gnome-keyring">Enables potentially insecure autologin capability via Gnome Keyring</flag>
-		<flag name="gui">Enables the GUI version of RetroShare</flag>
 		<flag name="jsonapi">Enables the new RetroShare JSON API</flag>
 		<flag name="service">Enables the new RetroShare service controllable only through JSON API</flag>
 		<flag name="sqlcipher">Enables GXS database encryption via SQLCipher</flag>

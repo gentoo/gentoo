@@ -7,7 +7,7 @@
 	</maintainer>
 	<longdescription>
 		wmDownload is a small WindowMaker dockapp that sits there and displays how much
-		data you've recieved on each eth and ppp device installed on your machine.
+		data you've received on each eth and ppp device installed on your machine.
 	</longdescription>
 	<upstream>
 		<remote-id type="sourceforge">wmdownload</remote-id>

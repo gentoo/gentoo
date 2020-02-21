@@ -1,0 +1,22 @@
+diff --git a/lv2specgen/lv2specgen.py b/lv2specgen/lv2specgen.py
+index ddd0ba5..224ace8 100755
+--- a/lv2specgen/lv2specgen.py
++++ b/lv2specgen/lv2specgen.py
+@@ -329,7 +329,7 @@ def getComment(m, urinode, classlist, proplist, instalist):
+         if have_lxml:
+             try:
+                 # Parse and validate documentation as XHTML Basic 1.1
+-                doc = """<?xml version="1.0" encoding="UTF-8"?>
++                doc = """<?xml version="1.0"?>
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"
+                       "DTD/xhtml-basic11.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+@@ -340,7 +340,7 @@ def getComment(m, urinode, classlist, proplist, instalist):
+ %s
+   </body>
+ </html>
+-""" % str(markup.decode())
++""" % str(markup)
+ 
+                 oldcwd = os.getcwd()
+                 os.chdir(specgendir)

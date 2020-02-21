@@ -61,7 +61,7 @@ src_install() {
 	if use examples; then
 		rm Makefile.in configure.in config.h.in
 		insinto /usr/share/${PN}/examples/
-		doins *.in *.out control.* || die
+		doins *.in *.out control.*
 	fi
 	if use doc; then
 		insinto /usr/share/doc/${PF}/pdf

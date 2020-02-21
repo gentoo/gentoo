@@ -1,0 +1,32 @@
+diff --git a/upgrade.sh b/upgrade.sh
+index d17dec06..6972ed2f 100755
+--- a/upgrade.sh
++++ b/upgrade.sh
+@@ -10,27 +10,6 @@ cd "$(dirname "$0")"
+ PYTHON="python3"
+ PIP="pip3"
+ 
+-# Uninstall any Python packages which are no longer needed
+-COMMAND="${PIP} uninstall -r old_requirements.txt -y"
+-echo "Removing old Python packages ($COMMAND)..."
+-eval $COMMAND
+-
+-# Install any new Python packages
+-COMMAND="${PIP} install -r requirements.txt --upgrade"
+-echo "Updating required Python packages ($COMMAND)..."
+-eval $COMMAND
+-
+-# Validate Python dependencies
+-COMMAND="${PIP} check"
+-echo "Validating Python dependencies ($COMMAND)..."
+-eval $COMMAND || (
+-  echo "******** PLEASE FIX THE DEPENDENCIES BEFORE CONTINUING ********"
+-  echo "* Manually install newer version(s) of the highlighted packages"
+-  echo "* so that 'pip3 check' passes. For more information see:"
+-  echo "* https://github.com/pypa/pip/issues/988"
+-  exit 1
+-)
+-
+ # Apply any database migrations
+ COMMAND="${PYTHON} netbox/manage.py migrate"
+ echo "Applying database migrations ($COMMAND)..."

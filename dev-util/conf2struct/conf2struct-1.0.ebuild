@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -11,7 +11,7 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/yrutschle/conf2struct.git"
 	inherit git-r3
 else
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~x86"
 	SRC_URI="https://github.com/yrutschle/conf2struct/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
@@ -28,5 +28,5 @@ src_compile(){
 }
 
 src_install(){
-	emake DESTDIR="${D}" prefix="${EPREFIX%/}/usr" install
+	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" install
 }

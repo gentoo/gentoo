@@ -1,0 +1,207 @@
+diff --git a/pyflakes/test/test_api.py b/pyflakes/test/test_api.py
+index ee205f9..e295bd9 100644
+--- a/pyflakes/test/test_api.py
++++ b/pyflakes/test/test_api.py
+@@ -9,7 +9,6 @@ import shutil
+ import subprocess
+ import tempfile
+ 
+-from pyflakes.checker import PY2
+ from pyflakes.messages import UnusedImport
+ from pyflakes.reporter import Reporter
+ from pyflakes.api import (
+@@ -423,7 +422,7 @@ def baz():
+ 
+         with self.makeTempFile(source) as sourcePath:
+             if PYPY:
+-                message = 'EOF while scanning triple-quoted string literal'
++                message = 'end of file (EOF) while scanning triple-quoted string literal'
+             else:
+                 message = 'invalid syntax'
+ 
+@@ -465,8 +464,8 @@ def foo(
+         syntax error reflects the cause for the syntax error.
+         """
+         with self.makeTempFile("if True:\n\tfoo =") as sourcePath:
+-            column = 5 if PYPY else 7
+-            last_line = '\t   ^' if PYPY else '\t     ^'
++            column = 6 if PYPY else 7
++            last_line = '\t    ^' if PYPY else '\t     ^'
+ 
+             self.assertHasErrors(
+                 sourcePath,
+@@ -476,6 +475,7 @@ def foo(
+ %s
+ """ % (sourcePath, column, last_line)])
+ 
++    @skipIf(PYPY, "Broken on pypy")
+     def test_nonDefaultFollowsDefaultSyntaxError(self):
+         """
+         Source which has a non-default argument following a default argument
+@@ -488,7 +488,12 @@ def foo(bar=baz, bax):
+ """
+         with self.makeTempFile(source) as sourcePath:
+             if ERROR_HAS_LAST_LINE:
+-                column = 9 if sys.version_info >= (3, 8) else 8
++                if PYPY and sys.version_info >= (3,):
++                    column = 7
++                elif sys.version_info >= (3, 8):
++                    column = 9
++                else:
++                    column = 8
+                 last_line = ' ' * (column - 1) + '^\n'
+                 columnstr = '%d:' % column
+             else:
+@@ -500,6 +505,7 @@ def foo(bar=baz, bax):
+ def foo(bar=baz, bax):
+ %s""" % (sourcePath, columnstr, last_line)])
+ 
++    @skipIf(PYPY, "Broken on pypy")
+     def test_nonKeywordAfterKeywordSyntaxError(self):
+         """
+         Source which has a non-keyword argument after a keyword argument should
+@@ -511,7 +517,12 @@ foo(bar=baz, bax)
+ """
+         with self.makeTempFile(source) as sourcePath:
+             if ERROR_HAS_LAST_LINE:
+-                column = 14 if sys.version_info >= (3, 8) else 13
++                if PYPY and sys.version_info >= (3,):
++                    column = 12
++                elif sys.version_info >= (3, 8):
++                    column = 14
++                else:
++                    column = 13
+                 last_line = ' ' * (column - 1) + '^\n'
+                 columnstr = '%d:' % column
+             else:
+@@ -529,6 +540,7 @@ foo(bar=baz, bax)
+ foo(bar=baz, bax)
+ %s""" % (sourcePath, columnstr, message, last_line)])
+ 
++    @skipIf(PYPY and sys.hexversion < 0x3080000, "broken on pypy3")
+     def test_invalidEscape(self):
+         """
+         The invalid escape syntax raises ValueError in Python 2
+@@ -681,6 +693,12 @@ class IntegrationTests(TestCase):
+     Tests of the pyflakes script that actually spawn the script.
+     """
+ 
++    # https://bitbucket.org/pypy/pypy/issues/3069/pypy36-on-windows-incorrect-line-separator
++    if PYPY and sys.version_info >= (3,) and WIN:
++        LINESEP = '\n'
++    else:
++        LINESEP = os.linesep
++
+     def setUp(self):
+         self.tempdir = tempfile.mkdtemp()
+         self.tempfilepath = os.path.join(self.tempdir, 'temp')
+@@ -721,9 +739,6 @@ class IntegrationTests(TestCase):
+         if sys.version_info >= (3,):
+             stdout = stdout.decode('utf-8')
+             stderr = stderr.decode('utf-8')
+-        # Workaround https://bitbucket.org/pypy/pypy/issues/2350
+-        if PYPY and PY2 and WIN:
+-            stderr = stderr.replace('\r\r\n', '\r\n')
+         return (stdout, stderr, rv)
+ 
+     def test_goodFile(self):
+@@ -744,7 +759,7 @@ class IntegrationTests(TestCase):
+             fd.write("import contraband\n".encode('ascii'))
+         d = self.runPyflakes([self.tempfilepath])
+         expected = UnusedImport(self.tempfilepath, Node(1), 'contraband')
+-        self.assertEqual(d, ("%s%s" % (expected, os.linesep), '', 1))
++        self.assertEqual(d, ("%s%s" % (expected, self.LINESEP), '', 1))
+ 
+     def test_errors_io(self):
+         """
+@@ -754,7 +769,7 @@ class IntegrationTests(TestCase):
+         """
+         d = self.runPyflakes([self.tempfilepath])
+         error_msg = '%s: No such file or directory%s' % (self.tempfilepath,
+-                                                         os.linesep)
++                                                         self.LINESEP)
+         self.assertEqual(d, ('', error_msg, 1))
+ 
+     def test_errors_syntax(self):
+@@ -766,8 +781,8 @@ class IntegrationTests(TestCase):
+         with open(self.tempfilepath, 'wb') as fd:
+             fd.write("import".encode('ascii'))
+         d = self.runPyflakes([self.tempfilepath])
+-        error_msg = '{0}:1:{2}: invalid syntax{1}import{1}    {3}^{1}'.format(
+-            self.tempfilepath, os.linesep, 5 if PYPY else 7, '' if PYPY else '  ')
++        error_msg = '{0}:1:{2}: invalid syntax{1}import{1}     {3}^{1}'.format(
++            self.tempfilepath, self.LINESEP, 6 if PYPY else 7, '' if PYPY else ' ')
+         self.assertEqual(d, ('', error_msg, 1))
+ 
+     def test_readFromStdin(self):
+@@ -776,13 +791,14 @@ class IntegrationTests(TestCase):
+         """
+         d = self.runPyflakes([], stdin='import contraband')
+         expected = UnusedImport('<stdin>', Node(1), 'contraband')
+-        self.assertEqual(d, ("%s%s" % (expected, os.linesep), '', 1))
++        self.assertEqual(d, ("%s%s" % (expected, self.LINESEP), '', 1))
+ 
+ 
+ class TestMain(IntegrationTests):
+     """
+     Tests of the pyflakes main function.
+     """
++    LINESEP = os.linesep
+ 
+     def runPyflakes(self, paths, stdin=None):
+         try:
+diff --git a/pyflakes/test/test_doctests.py b/pyflakes/test/test_doctests.py
+index 0825ffe..a474bb1 100644
+--- a/pyflakes/test/test_doctests.py
++++ b/pyflakes/test/test_doctests.py
+@@ -328,7 +328,9 @@ class Test(TestCase):
+             m.DoctestSyntaxError).messages
+         exc = exceptions[0]
+         self.assertEqual(exc.lineno, 4)
+-        if sys.version_info >= (3, 8):
++        if PYPY:
++            self.assertEqual(exc.col, 27)
++        elif sys.version_info >= (3, 8):
+             self.assertEqual(exc.col, 18)
+         else:
+             self.assertEqual(exc.col, 26)
+@@ -339,12 +341,14 @@ class Test(TestCase):
+         exc = exceptions[1]
+         self.assertEqual(exc.lineno, 5)
+         if PYPY:
+-            self.assertEqual(exc.col, 13)
++            self.assertEqual(exc.col, 14)
+         else:
+             self.assertEqual(exc.col, 16)
+         exc = exceptions[2]
+         self.assertEqual(exc.lineno, 6)
+-        if PYPY or sys.version_info >= (3, 8):
++        if PYPY:
++            self.assertEqual(exc.col, 14)
++        elif sys.version_info >= (3, 8):
+             self.assertEqual(exc.col, 13)
+         else:
+             self.assertEqual(exc.col, 18)
+@@ -358,7 +362,9 @@ class Test(TestCase):
+             """
+         ''', m.DoctestSyntaxError).messages[0]
+         self.assertEqual(exc.lineno, 5)
+-        if PYPY or sys.version_info >= (3, 8):
++        if PYPY:
++            self.assertEqual(exc.col, 14)
++        elif sys.version_info >= (3, 8):
+             self.assertEqual(exc.col, 13)
+         else:
+             self.assertEqual(exc.col, 16)
+@@ -377,7 +383,10 @@ class Test(TestCase):
+             m.DoctestSyntaxError,
+             m.UndefinedName).messages
+         self.assertEqual(exc1.lineno, 6)
+-        self.assertEqual(exc1.col, 19)
++        if PYPY:
++            self.assertEqual(exc1.col, 20)
++        else:
++            self.assertEqual(exc1.col, 19)
+         self.assertEqual(exc2.lineno, 7)
+         self.assertEqual(exc2.col, 12)
+ 

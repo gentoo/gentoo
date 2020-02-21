@@ -1,7 +1,7 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 inherit toolchain-funcs
 
 DESCRIPTION="A set of additional compression profiles for app-arch/zpaq"
@@ -54,13 +54,13 @@ src_configure() {
 
 src_compile() {
 	tc-export CXX
-	emake ${progs} || die
+	emake ${progs}
 }
 
 src_install() {
 	exeinto /usr/lib/zpaq
-	doexe ${progs} || die
+	doexe ${progs}
 
 	insinto /usr/share/zpaq
-	doins *.cfg || die
+	doins *.cfg
 }

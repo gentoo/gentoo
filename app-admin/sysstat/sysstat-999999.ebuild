@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit flag-o-matic git-r3 systemd toolchain-funcs
+inherit eutils flag-o-matic git-r3 systemd toolchain-funcs
 
 DESCRIPTION="System performance tools for Linux"
 HOMEPAGE="http://pagesperso-orange.fr/sebastien.godard/"
@@ -53,9 +53,9 @@ src_configure() {
 	sa_lib_dir=/usr/lib/sa \
 		conf_dir=/etc \
 		econf \
-			$(use_enable debug debuginfo) \
 			$(use_enable lm-sensors sensors) \
 			$(use_enable nls) \
+			$(usex debug --enable-debuginfo '') \
 			--enable-copy-only \
 			--enable-documentation \
 			--enable-install-cron \

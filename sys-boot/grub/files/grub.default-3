@@ -1,9 +1,9 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 #
 # To populate all changes in this file you need to regenerate your
 # grub configuration file afterwards:
-#     'grub2-mkconfig -o /boot/grub/grub.cfg'
+#     'grub-mkconfig -o /boot/grub/grub.cfg'
 #
 # See the grub info page for documentation on possible variables and
 # their associated values.

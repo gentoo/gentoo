@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ SRC_URI="http://download.redis.io/releases/${P}.tar.gz"
 LICENSE="BSD"
 KEYWORDS="amd64 arm arm64 hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~x86-macos ~x86-solaris"
 IUSE="+jemalloc tcmalloc luajit test"
+RESTRICT="!test? ( test )"
 SLOT="0"
 
 # Redis does NOT build with Lua 5.2 or newer at this time.

@@ -5,10 +5,6 @@
     <email>whissi@gentoo.org</email>
     <name>Thomas Deutschmann</name>
   </maintainer>
-  <maintainer type="person">
-    <email>dev-zero@gentoo.org</email>
-    <name>Tiziano Müller</name>
-  </maintainer>
   <use>
     <flag name="aio">Enables file AIO support</flag>
     <flag name="http">Enable HTTP core support</flag>

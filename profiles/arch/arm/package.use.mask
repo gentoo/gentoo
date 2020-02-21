@@ -1,13 +1,34 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-08-18)
-# media-video/pipewire is not keyworded yet
-dev-libs/weston pipewire
-kde-apps/krfb wayland
-kde-plasma/xdg-desktop-portal-kde screencast
-sys-apps/xdg-desktop-portal screencast
-x11-wm/mutter screencast
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
+# media-libs/libheif is not keyworded
+media-gfx/gimp heif
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
+# zfs is not keyworded on arm
+dev-util/schroot zfs
+
+# Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
+# dev-libs/criterion is not keyworded yet
+app-admin/syslog-ng test
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-28)
+# >=sci-libs/vtk-8 is not keyworded, bug #649054
+media-libs/opencv vtk
+sci-libs/pcl vtk
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-10-29)
+# Neither sys-apps/bolt nor kde-plasma/plasma-thunderbolt are keyworded
+kde-plasma/plasma-meta thunderbolt
 
 # Michał Górny <mgorny@gentoo.org> (2019-07-13)
 # app-forensics/libewf is not keyworded here.
@@ -55,7 +76,7 @@ sys-apps/fwupd dell thunderbolt
 www-apps/nextcloud imagemagick
 
 # Corentin Pazdera <nado@troglodyte.be> (2018-12-28)
-# Requires virtual/pypy which isn't keyworded for ARM.
+# Requires dev-python/pypy which isn't keyworded for ARM.
 www-servers/uwsgi pypy
 
 # Davide Pesavento <pesa@gentoo.org> (2018-12-27)
@@ -120,25 +141,15 @@ net-p2p/deluge geoip
 
 # Amy Liffey <amynka@gentoo.org (2018-01-21)
 # dev-libs/cereal not keyworded for arm
-media-libs/opencv contrib_dnn
+media-libs/opencv contribdnn
 
 # Michał Górny <mgorny@gentoo.org> (2017-12-30)
 # Moved from use.mask since they are flags local to one package.
-dev-cpp/xsd ace
 media-tv/tvheadend hdhomerun
 
 # Michał Górny <mgorny@gentoo.org> (2017-11-29)
 # All current clang versions are broken on ARM.
 app-doc/doxygen clang
-
-# Thomas Deutschmann <whissi@gentoo.org> (2017-11-28)
-# Requires dev-libs/mongo-c-driver which isn't keyworded
->=app-admin/rsyslog-8.31 mongodb
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2017-10-11)
-# Required dependency dev-qt/qtspeech is not keyworded, bug #675340
-kde-frameworks/knotifications speech
-kde-frameworks/ktextwidgets speech
 
 # Patrice Clement <monsieurp@gentoo.org> (2017-09-24)
 # Unmask Raspberry Pi support on arm.
@@ -188,7 +199,7 @@ net-firewall/firehol ipset
 
 # Christoph Junghans <junghans@gentoo.org> (2017-02-05)
 # Mask some fabrics
-sys-cluster/openmpi java openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi java openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_pbs openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2017-01-04)
 # Assembly optimisations are supported on arm since 0.0.0_pre20161213
@@ -301,10 +312,6 @@ www-client/chromium widevine
 # Markus Meier <maekke@gentoo.org> (2015-01-17)
 # Unkeyworded deps, bug #536226
 net-vpn/strongswan strongswan_plugins_unbound
-
-# Alexis Ballier <aballier@gentoo.org> (2015-01-06)
-# sci-libs/xkaapi does not build here on armv7
-sci-libs/vtk kaapi
 
 # Benda Xu <heroxbd@gentoo.org> (2015-01-03)
 # not tested
@@ -454,7 +461,6 @@ media-gfx/pstoedit emf
 
 # Rick Farina <zerochaos@gentoo.org> (2013-02-05)
 # masking all stable packages with java use flag
-net-vpn/openconnect java
 dev-util/oprofile java
 dev-libs/cyrus-sasl java
 dev-tex/tex4ht java
@@ -498,7 +504,7 @@ media-libs/phonon vlc
 
 # Michael Sterrett <mr_bones_@gentoo.org> (2012-03-04)
 # arm is missing keywords for >=dev-libs/json-glib-0.12
-app-admin/syslog-ng json mongodb
+app-admin/syslog-ng json
 
 # Anthony G. Basile <blueness@gentoo.org> (2011-12-21)
 # Mask the vde flag on tinc because net-misc/vde is not
@@ -515,10 +521,6 @@ dev-qt/qtwebkit -jit
 # Markus Meier <maekke@gentoo.org> (2011-09-05)
 # unkeyworded deps for bug 379657 and bug 379651
 app-admin/packagekit-base entropy
-
-# Robin H. Johnson <robbat2@gentoo.org> (2011-09-03)
-# Remove this for your arch after you keyword dev-utils/google-perftools and virtual/gsasl (bug #381737)
-dev-libs/libmemcached sasl
 
 # Sebastian Pipping <sping@gentoo.org> (2011-02-22)
 # No media-sound/lilypond here, yet (bug #356069)

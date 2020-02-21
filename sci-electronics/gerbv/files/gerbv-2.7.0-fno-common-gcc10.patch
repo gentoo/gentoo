@@ -1,0 +1,28 @@
+--- a/src/callbacks.h
++++ b/src/callbacks.h
+@@ -26,7 +26,7 @@
+     \ingroup gerbv
+ */
+ 
+-enum {
++enum CALLBACKS_SAVE_FILE_TYPE {
+ 	CALLBACKS_SAVE_PROJECT_AS,
+ 	CALLBACKS_SAVE_FILE_PS,
+ 	CALLBACKS_SAVE_FILE_PDF,
+@@ -41,13 +41,13 @@
+ 	CALLBACKS_SAVE_LAYER_AS,
+ 	CALLBACKS_SAVE_FILE_IDRILL
+ 	
+-} CALLBACKS_SAVE_FILE_TYPE;
++};
+ 
+-enum {
++enum toggle_layer {
+ 	LAYER_SELECTED =	-1,
+ 	LAYER_ALL_ON =		-2,
+ 	LAYER_ALL_OFF =		-3,
+-} toggle_layer;
++};
+ 
+ void
+ callbacks_new_project_activate                (GtkMenuItem     *menuitem,

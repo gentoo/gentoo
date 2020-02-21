@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,6 +17,7 @@ SLOT="0"
 KEYWORDS="amd64 arm ppc x86"
 
 IUSE="+badval doc fortran gd gsl hdf netpbm pdl2 pgplot threads test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="sys-libs/ncurses:0=
 	app-arch/sharutils

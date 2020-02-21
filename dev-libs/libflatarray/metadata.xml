@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="person">
-    <email>slis@gentoo.org</email>
-  </maintainer>
+  <!-- maintainer-needed -->
   <longdescription>
     LibFlatArray is a multi-dimensional C++ array class which provides
     an object-oriented view (a.k.a. array of structs, AoS) while

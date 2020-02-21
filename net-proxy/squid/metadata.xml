@@ -5,7 +5,6 @@
     <email>zlogene@gentoo.org</email>
     <name>Mikle Kolyada</name>
 </maintainer>
-  <longdescription>A full-featured web proxy cache</longdescription>
   <use>
     <flag name="ecap">Adds support for loadable content adaptation modules
       (http://www.e-cap.org)</flag>

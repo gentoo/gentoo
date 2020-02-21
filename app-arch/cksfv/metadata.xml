@@ -2,5 +2,5 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <!-- maintainer-needed -->
-<longdescription>A Simple file verification tool to ensure that the files you recieve are the same as the originals.</longdescription>
+<longdescription>A Simple file verification tool to ensure that the files you receive are the same as the originals.</longdescription>
 </pkgmetadata>

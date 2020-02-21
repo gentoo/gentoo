@@ -1,4 +1,0 @@
-# If for any reason you have users in the 'cron' group who should not
-# be allowed to run crontab, add them to this file (one username per
-# line)
-

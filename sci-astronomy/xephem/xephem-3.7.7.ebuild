@@ -11,7 +11,7 @@ SRC_URI="http://97.74.56.125/free/${P}.tar.gz"
 
 LICENSE="XEphem"
 SLOT=0
-KEYWORDS="amd64 ppc ppc64 x86 ~x86-fbsd ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ppc ppc64 x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND=">=x11-libs/motif-2.3:0

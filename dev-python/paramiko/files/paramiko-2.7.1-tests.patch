@@ -1,0 +1,62 @@
+From e3e904cc88a08e88c9051de4f5a6f1b6e78bf4a6 Mon Sep 17 00:00:00 2001
+From: Sebastian Pipping <sebastian@pipping.org>
+Date: Mon, 16 Dec 2019 17:39:50 +0100
+Subject: [PATCH] Strip use of pytest-relaxed
+
+.. since it was removed from the tree due to breaking pytest.
+---
+ tests/test_client.py | 23 +++++++++++------------
+ 1 file changed, 11 insertions(+), 12 deletions(-)
+
+diff --git a/tests/test_client.py b/tests/test_client.py
+index 60ad310..22a2e40 100644
+--- a/tests/test_client.py
++++ b/tests/test_client.py
+@@ -33,7 +33,6 @@ import warnings
+ import weakref
+ from tempfile import mkstemp
+ 
+-from pytest_relaxed import raises
+ from mock import patch, Mock
+ 
+ import paramiko
+@@ -684,10 +683,10 @@ class PasswordPassphraseTests(ClientTest):
+ 
+     # TODO: more granular exception pending #387; should be signaling "no auth
+     # methods available" because no key and no password
+-    @raises(SSHException)
+     def test_passphrase_kwarg_not_used_for_password_auth(self):
+-        # Using the "right" password in the "wrong" field shouldn't work.
+-        self._test_connection(passphrase="pygmalion")
++        with self.assertRaises(SSHException):
++            # Using the "right" password in the "wrong" field shouldn't work.
++            self._test_connection(passphrase="pygmalion")
+ 
+     def test_passphrase_kwarg_used_for_key_passphrase(self):
+         # Straightforward again, with new passphrase kwarg.
+@@ -705,14 +704,14 @@ class PasswordPassphraseTests(ClientTest):
+             password="television",
+         )
+ 
+-    @raises(AuthenticationException)  # TODO: more granular
+     def test_password_kwarg_not_used_for_passphrase_when_passphrase_kwarg_given(  # noqa
+         self
+     ):
+-        # Sanity: if we're given both fields, the password field is NOT used as
+-        # a passphrase.
+-        self._test_connection(
+-            key_filename=_support("test_rsa_password.key"),
+-            password="television",
+-            passphrase="wat? lol no",
+-        )
++        with self.assertRaises(AuthenticationException):
++            # Sanity: if we're given both fields, the password field is NOT used as
++            # a passphrase.
++            self._test_connection(
++                key_filename=_support("test_rsa_password.key"),
++                password="television",
++                passphrase="wat? lol no",
++            )
+-- 
+2.23.0
+

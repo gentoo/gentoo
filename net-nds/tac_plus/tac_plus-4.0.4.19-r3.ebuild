@@ -37,12 +37,11 @@ src_configure() {
 		$(use_enable debug) \
 		$(use_enable finger) \
 		$(use_enable maxsess) \
-		$(use_enable static-libs static) \
-		|| die "econf failed"
+		$(use_enable static-libs static)
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
+	emake DESTDIR="${D}" install
 
 	use static-libs || find "${D}" -name '*.la' -delete || die "Unable to remove spurious libtool archive"
 	dodoc CHANGES FAQ

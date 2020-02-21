@@ -1,0 +1,44 @@
+--- a/dispdata.c
++++ b/dispdata.c
+@@ -173,7 +173,6 @@
+ extern int simchange;
+ extern int simfwdir;
+ extern int simarr[8];
+-char *simfmt;
+ extern int iseth;
+ extern int nw_logall;
+ extern char nw_allname[256];
+--- a/netwatch.c
++++ b/netwatch.c
+@@ -161,6 +161,9 @@
+ char mylog[MAXFILENAME] = "/root/.log";
+ char specconfigfile[MAXFILENAME] = "/root/.netwatch.conf";
+ 
++struct port_info *tcp_port_types[TCPHASH];
++struct port_info *udp_port_types[UDPHASH];
++
+ int fdlog;
+ 
+ #if defined(_LINUX_IF_ETHER_H) || defined(_NETINET_IF_ETHER_H)
+--- a/netwatch.h
++++ b/netwatch.h
+@@ -209,16 +209,17 @@
+ };
+ 
+ #define TCPHASH 1786
+-struct port_info *tcp_port_types[TCPHASH];
++extern struct port_info *tcp_port_types[TCPHASH];
+ 
+ #define UDPHASH 1786
+-struct port_info *udp_port_types[UDPHASH];
++extern struct port_info *udp_port_types[UDPHASH];
+ 
+ int hashport( int port, int hash);
+ void initlist(struct port_info *first[], int hash);
+ char *searchlist(struct port_info *first[], int port, int hash);
+ char *servicenm( char *s, int port);
+ 
++extern char *simfmt;
+ 
+ 	
+ struct hostinfo {

@@ -11,7 +11,7 @@ SRC_URI="https://getdnsapi.net/releases/${P//./-}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="doc +getdns-query +getdns-server-mon gnutls +idn libev libevent libuv nettle static-libs stubby +threads +unbound"
 
 REQUIRED_USE="gnutls? ( nettle )"

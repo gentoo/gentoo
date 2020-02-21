@@ -1,0 +1,99 @@
+From 9e091ea6f3d818748898a9c7a3d6660f5c807027 Mon Sep 17 00:00:00 2001
+From: rezso <rezso@rezso.net>
+Date: Thu, 17 Oct 2019 14:32:46 +0200
+Subject: [PATCH] Require gegl >=0.4.14 rather than 0.3.x
+
+---
+ configure.ac                | 4 ++--
+ gegl/Makefile.am            | 4 ++--
+ gegl/libmypaint-gegl.pc.in  | 2 +-
+ gegl/mypaint-gegl-surface.c | 8 ++++++++
+ 4 files changed, 13 insertions(+), 5 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index a17c0a0..22c2e3e 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -22,7 +22,7 @@ m4_define([libmypaint_version_full],
+           [libmypaint_api_major().libmypaint_api_minor().libmypaint_api_micro()m4_bpatsubst(libmypaint_api_prerelease(), [^\(.\)], [-\1])])
+ 
+ # Dependencies.
+-m4_define([gegl_required_version], [0.3])
++m4_define([gegl_required_version], [0.4.14])
+ m4_define([introspection_required_version], [1.32.0])
+ 
+ AC_INIT([libmypaint],
+@@ -249,7 +249,7 @@ AC_ARG_ENABLE(gegl,
+ )
+ 
+ if eval "test x$enable_gegl = xyes"; then
+-  PKG_CHECK_MODULES(GEGL, gegl-0.3 >= gegl_required_version)
++  PKG_CHECK_MODULES(GEGL, gegl-0.4 >= gegl_required_version)
+ fi
+ AM_CONDITIONAL(ENABLE_GEGL, test "x$enable_gegl" = "xyes")
+ 
+diff --git a/gegl/Makefile.am b/gegl/Makefile.am
+index b45707d..5ef22c1 100644
+--- a/gegl/Makefile.am
++++ b/gegl/Makefile.am
+@@ -11,7 +11,7 @@ AM_CPPFLAGS = \
+ INTROSPECTION_GIRS =
+ INTROSPECTION_SCANNER_ARGS = \
+     --warn-all \
+-    --pkg="gegl-0.3" \
++    --pkg="gegl-0.4" \
+     --pkg="glib-2.0" \
+     --namespace="MyPaintGegl" \
+     --nsversion="$(LIBMYPAINT_MAJOR_VERSION).$(LIBMYPAINT_MINOR_VERSION)" \
+@@ -38,7 +38,7 @@ introspection_sources = \
+ 	mypaint-gegl-surface.c
+ 
+ MyPaintGegl-@LIBMYPAINT_MAJOR_VERSION@.@LIBMYPAINT_MINOR_VERSION@.gir: libmypaint-gegl.la Makefile
+-MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_INCLUDES = GObject-2.0 MyPaint-$(LIBMYPAINT_MAJOR_VERSION).$(LIBMYPAINT_MINOR_VERSION) Gegl-0.3
++MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_INCLUDES = GObject-2.0 MyPaint-$(LIBMYPAINT_MAJOR_VERSION).$(LIBMYPAINT_MINOR_VERSION) Gegl-0.4
+ MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_CFLAGS = $(AM_CFLAGS) $(AM_CPPFLAGS) -I. -I..
+ MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_LIBS = libmypaint-gegl.la ../libmypaint.la
+ MyPaintGegl_@LIBMYPAINT_MAJOR_VERSION@_@LIBMYPAINT_MINOR_VERSION@_gir_FILES = $(introspection_sources)
+diff --git a/gegl/libmypaint-gegl.pc.in b/gegl/libmypaint-gegl.pc.in
+index 75aa729..9184980 100644
+--- a/gegl/libmypaint-gegl.pc.in
++++ b/gegl/libmypaint-gegl.pc.in
+@@ -6,6 +6,6 @@ includedir=@includedir@
+ Name: libmypaint
+ Description: MyPaint brush engine library, with GEGL integration.
+ Version: @LIBMYPAINT_VERSION@
+-Requires: gegl-0.3 libmypaint
++Requires: gegl-0.4 libmypaint
+ Cflags: -I${includedir}/libmypaint-gegl
+ Libs: -L${libdir} -lmypaint-gegl
+diff --git a/gegl/mypaint-gegl-surface.c b/gegl/mypaint-gegl-surface.c
+index 5c86d3c..d58ccc9 100644
+--- a/gegl/mypaint-gegl-surface.c
++++ b/gegl/mypaint-gegl-surface.c
+@@ -78,7 +78,11 @@ tile_request_start(MyPaintTiledSurface *tiled_surface, MyPaintTileRequest *reque
+ 
+     if (buffer_is_native(self)) {
+         GeglBufferIterator *iterator = gegl_buffer_iterator_new(self->buffer, &tile_bbox, 0, self->format,
++#if GEGL_MAJOR_VERSION == 0 && GEGL_MINOR_VERSION == 4 && GEGL_MICRO_VERSION >= 14
++                                      read_write_flags, GEGL_ABYSS_NONE, 8);
++#else
+                                       read_write_flags, GEGL_ABYSS_NONE);
++#endif
+ 
+         // Read out
+         gboolean completed = gegl_buffer_iterator_next(iterator);
+@@ -88,7 +92,11 @@ tile_request_start(MyPaintTiledSurface *tiled_surface, MyPaintTileRequest *reque
+             g_critical("Unable to get tile aligned access to GeglBuffer");
+             request->buffer = NULL;
+         } else {
++#if GEGL_MAJOR_VERSION == 0 && GEGL_MINOR_VERSION == 4 && GEGL_MICRO_VERSION >= 14
++            request->buffer = (uint16_t *)(iterator->items[0].data);
++#else
+             request->buffer = (uint16_t *)(iterator->data[0]);
++#endif
+         }
+ 
+         // So we can finish the iterator in tile_request_end()
+-- 
+2.23.0
+

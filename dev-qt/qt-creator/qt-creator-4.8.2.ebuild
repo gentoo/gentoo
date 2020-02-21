@@ -31,6 +31,7 @@ QTC_PLUGINS=('android:android|qmakeandroidsupport' autotools:autotoolsprojectman
 	nim perforce python:pythoneditor qbs:qbsprojectmanager qnx scxml:scxmleditor serialterminal
 	silversearcher subversion valgrind winrt)
 IUSE="doc systemd test +webengine ${QTC_PLUGINS[@]%:*}"
+RESTRICT="!test? ( test )"
 
 # minimum Qt version required
 QT_PV="5.9.0:5"

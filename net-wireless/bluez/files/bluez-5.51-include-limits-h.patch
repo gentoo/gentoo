@@ -1,0 +1,64 @@
+From 20128c5c95fbae93c9fd996d5ad2584cf6ad8032 Mon Sep 17 00:00:00 2001
+From: Jory Pratt <anarchy@gentoo.org>
+Date: Mon, 30 Sep 2019 18:35:56 -0500
+Subject: [PATCH] Include limits.h for PATH_MAX
+
+Signed-off-by: Jory Pratt <anarchy@gentoo.org>
+---
+ mesh/keyring.c          | 1 +
+ mesh/mesh-config-json.c | 1 +
+ mesh/node.c             | 1 +
+ mesh/util.c             | 1 +
+ 4 files changed, 4 insertions(+)
+
+diff --git a/mesh/keyring.c b/mesh/keyring.c
+index 3a7f92f..9fa7d6b 100644
+--- a/mesh/keyring.c
++++ b/mesh/keyring.c
+@@ -24,6 +24,7 @@
+ #define _GNU_SOURCE
+ #include <fcntl.h>
+ #include <dirent.h>
++#include <limits.h>
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <dirent.h>
+diff --git a/mesh/mesh-config-json.c b/mesh/mesh-config-json.c
+index cafa2fd..74ca495 100644
+--- a/mesh/mesh-config-json.c
++++ b/mesh/mesh-config-json.c
+@@ -27,6 +27,7 @@
+ #include <fcntl.h>
+ #include <ftw.h>
+ #include <libgen.h>
++#include <limits.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <unistd.h>
+diff --git a/mesh/node.c b/mesh/node.c
+index b6824f5..15dcb97 100644
+--- a/mesh/node.c
++++ b/mesh/node.c
+@@ -23,6 +23,7 @@
+ 
+ #define _GNU_SOURCE
+ #include <dirent.h>
++#include <limits.h>
+ #include <stdio.h>
+ #include <sys/time.h>
+ 
+diff --git a/mesh/util.c b/mesh/util.c
+index 1455bde..986ba4b 100644
+--- a/mesh/util.c
++++ b/mesh/util.c
+@@ -25,6 +25,7 @@
+ #include <dirent.h>
+ #include <ftw.h>
+ #include <stdio.h>
++#include <limits.h>
+ #include <time.h>
+ #include <sys/time.h>
+ 
+-- 
+2.23.0
+

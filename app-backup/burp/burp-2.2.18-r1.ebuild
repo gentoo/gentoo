@@ -14,6 +14,8 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE="acl ipv6 libressl test xattr"
 
+RESTRICT="!test? ( test )"
+
 CDEPEND=" acct-group/burp
 	acct-user/burp
 	dev-libs/uthash

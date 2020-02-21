@@ -7,10 +7,10 @@ Use new-style backquotes, to make it compile with Emacs 27.
        nil)
      (defmacro defcustom (var value doc &rest args)
 -      (` (defvar (, var) (, value) (, doc))))
-+      `(defvar (, var) (, value) (, doc)))
++      `(defvar ,var ,value ,doc))
      (defmacro defface (var value doc &rest args)
 -      (` (make-face (, var))))
-+      `(make-face (, var)))
++      `(make-face ,var))
      (defmacro define-widget (&rest args)
        nil)))
  

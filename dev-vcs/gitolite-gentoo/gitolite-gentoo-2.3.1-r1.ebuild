@@ -39,7 +39,7 @@ src_install() {
 	local gl_bin="${D}/usr/bin"
 	gl_bin=${gl_bin/\/\//\/}
 
-	dodir /usr/share/gitolite/{conf,hooks} /usr/bin || die
+	dodir /usr/share/gitolite/{conf,hooks} /usr/bin
 
 	export PATH="${gl_bin}:${PATH}"
 	./src/gl-system-install ${gl_bin} \
@@ -49,13 +49,13 @@ src_install() {
 
 	rm "${D}"/usr/bin/*.pm
 	insinto "${VENDOR_LIB}"
-	doins src/*.pm || die
+	doins src/*.pm
 
 	dodoc README.mkd doc/*
 
 	if use contrib; then
 		insinto /usr/share/doc/${PF}
-		doins -r contrib/ || die
+		doins -r contrib/
 	fi
 
 	keepdir /var/lib/gitolite

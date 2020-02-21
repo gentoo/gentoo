@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,7 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}"/${P}-remove_depreciated_gtk_calls.patch
 	"${FILESDIR}"/${P}-r2820.patch
+	"${FILESDIR}"/${P}-fix-ftbfs-with-customized-abort-function.patch
 )
 
 src_prepare() {

@@ -1,0 +1,111 @@
+    Bug: 694100
+    Add actions for pax marking mkcodecache, node_mksnapshot and mksnapshot
+    to disable mprotect for pax enable kernel.
+    Reported-by: Attila Tóth <atoth@atoth.sote.hu>
+    Co-developed-by: Attila Tóth <atoth@atoth.sote.hu>
+    Signed-off-by: Magnus Granberg <zorry@gentoo.org>
+    
+--- a/node.gyp	2019-10-23 11:52:41.000000000 +0200
++++ b/node.gyp	2019-11-12 20:58:43.957881862 +0100
+@@ -233,7 +233,9 @@
+       'deps/acorn-plugins/acorn-static-class-features/index.js',
+     ],
+     'node_mksnapshot_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)node_mksnapshot<(EXECUTABLE_SUFFIX)',
++    'node_mksnapshot_u_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)node_mksnapshot_u<(EXECUTABLE_SUFFIX)',
+     'mkcodecache_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)mkcodecache<(EXECUTABLE_SUFFIX)',
++    'mkcodecache_u_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)mkcodecache_u<(EXECUTABLE_SUFFIX)',
+     'conditions': [
+       [ 'node_shared=="true"', {
+         'node_target_type%': 'shared_library',
+@@ -436,10 +438,24 @@
+           ],
+           'actions': [
+             {
++              'action_name': 'run_pax_mkcodecache',
++              'inputs': [
++                '<(mkcodecache_exec)',
++              ],
++              'outputs': [
++                '<(mkcodecache_u_exec)',
++              ],
++              'action': [
++                'bash',
++                '-c',
++                'mv <(mkcodecache_exec) <(mkcodecache_u_exec) && paxmark.sh m <(mkcodecache_u_exec)',
++              ],
++            },
++            {
+               'action_name': 'run_mkcodecache',
+               'process_outputs_as_sources': 1,
+               'inputs': [
+-                '<(mkcodecache_exec)',
++                '<(mkcodecache_u_exec)',
+               ],
+               'outputs': [
+                 '<(SHARED_INTERMEDIATE_DIR)/node_code_cache.cc',
+@@ -461,10 +477,24 @@
+           ],
+           'actions': [
+             {
++              'action_name': 'run_pax_mksnapshot',
++              'inputs': [
++                '<(node_mksnapshot_exec)',
++              ],
++              'outputs': [
++                '<(node_mksnapshot_u_exec)',
++              ],
++              'action': [
++                'bash',
++                '-c',
++                'mv <(node_mksnapshot_exec) <(node_mksnapshot_u_exec) && paxmark.sh m <(node_mksnapshot_u_exec)',
++              ],
++            },
++            {
+               'action_name': 'node_mksnapshot',
+               'process_outputs_as_sources': 1,
+               'inputs': [
+-                '<(node_mksnapshot_exec)',
++                '<(node_mksnapshot_u_exec)',
+               ],
+               'outputs': [
+                 '<(SHARED_INTERMEDIATE_DIR)/node_snapshot.cc',
+--- a/tools/v8_gypfiles/v8.gyp	2019-12-03 16:10:36.000000000 +0100
++++ b/tools/v8_gypfiles/v8.gyp	2019-12-17 18:37:33.695839254 +0100
+@@ -9,6 +9,7 @@
+     'v8_vector_stores%': 0,
+     'v8_embed_script%': "",
+     'mksnapshot_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)mksnapshot<(EXECUTABLE_SUFFIX)',
++    'mksnapshot_u_exec': '<(PRODUCT_DIR)/<(EXECUTABLE_PREFIX)mksnapshot_u<(EXECUTABLE_SUFFIX)',
+     'v8_os_page_size%': 0,
+     'generate_bytecode_output_root': '<(SHARED_INTERMEDIATE_DIR)/generate-bytecode-output-root',
+     'generate_bytecode_builtins_list_output': '<(generate_bytecode_output_root)/builtins-generated/bytecodes-builtins-list.h',
+@@ -427,6 +425,20 @@
+       },
+       'actions': [
+         {
++          'action_name': 'run_pax_mksnapshot',
++          'inputs': [
++            '<(mksnapshot_exec)',
++          ],
++          'outputs': [
++            '<(mksnapshot_u_exec)',
++          ],
++          'action': [
++            'bash',
++            '-c',
++            'mv <(mksnapshot_exec) <(mksnapshot_u_exec) && paxmark.mksnapshot_u_exec)',
++          ],
++        },
++        {
+           'action_name': 'run_mksnapshot',
+           'message': 'generating: >@(_outputs)',
+           'variables': {
+@@ -442,7 +454,7 @@
+             ],
+           },
+           'inputs': [
+-            '<(mksnapshot_exec)',
++            '<(mksnapshot_u_exec)',
+           ],
+           'outputs': ["<(INTERMEDIATE_DIR)/snapshot.cc"],
+           'process_outputs_as_sources': 1,

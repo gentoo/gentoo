@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,7 +10,7 @@ inherit haskell-cabal
 
 DESCRIPTION="Atomic bit operations on memory locations for low-level synchronization"
 HOMEPAGE="http://hackage.haskell.org/package/bits-atomic"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz
 	https://dev.gentoo.org/~slyfox/patches/${P}-gcc-5.patch"
 
 LICENSE="BSD"

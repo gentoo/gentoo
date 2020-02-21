@@ -1,9 +1,9 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs autotools
+inherit autotools
 
 DESCRIPTION="A virtual audio loopback cable"
 HOMEPAGE="http://www.vsound.org/"
@@ -14,22 +14,23 @@ SLOT="0"
 KEYWORDS="amd64 ~ppc sparc x86"
 IUSE=""
 
-RDEPEND=">=media-sound/sox-14.2.0"
+RDEPEND="media-sound/sox:="
 DEPEND="${RDEPEND}"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-stdout.patch
-	AT_M4DIR="." eautoreconf
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-stdout.patch
+	"${FILESDIR}"/${P}-fix-build-system.patch
+)
 
-src_compile() {
-	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}"
+src_prepare() {
+	default
+	mv configure.{in,ac} || die
+	eautoreconf
 }
 
 src_install() {
 	default
-
-	find "${D}" -name '*.la' -delete
+	find "${D}" -name '*.la' -delete || die
 }
 
 pkg_postinst() {

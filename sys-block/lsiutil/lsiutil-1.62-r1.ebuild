@@ -33,7 +33,7 @@ src_install() {
 	exeinto /opt/bin
 
 	if use x86; then
-		doexe Linux/lsiutil || die
+		doexe Linux/lsiutil
 	elif use amd64; then
 		newexe Linux/lsiutil.x86_64 lsiutil
 	elif use ia64; then

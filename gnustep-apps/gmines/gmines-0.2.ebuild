@@ -7,7 +7,7 @@ inherit gnustep-2
 DESCRIPTION="The well-known minesweeper game"
 HOMEPAGE="http://gap.nongnu.org/gmines/index.html"
 SRC_URI="https://savannah.nongnu.org/download/gap/${P/gm/GM}.tar.gz"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""

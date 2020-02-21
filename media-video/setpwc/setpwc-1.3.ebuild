@@ -1,7 +1,8 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
+
 inherit toolchain-funcs
 
 DESCRIPTION="Control various aspects of Philips (and compatible) webcams"
@@ -11,18 +12,13 @@ SRC_URI="http://www.vanheusden.com/setpwc/${P}.tgz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc x86"
-IUSE=""
 
-RDEPEND=""
 DEPEND="sys-kernel/linux-headers"
 
-src_prepare() {
-	sed -i -e '/CFLAGS/s: -O2::' Makefile || die
-}
+PATCHES=( "${FILESDIR}"/${P}-fix-build-system.patch )
 
-src_compile() {
+src_configure() {
 	tc-export CC
-	emake LDFLAGS="${LDFLAGS}"
 }
 
 src_install() {

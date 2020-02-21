@@ -15,7 +15,7 @@
   </slots>
   <use>
     <flag name="dbus">export gpsd data over dbus connections</flag>
-    <flag name="latency_timing">support latency timing information</flag>
+    <flag name="latency-timing">support latency timing information</flag>
     <flag name="ntp">Enable <pkg>net-misc/ntp</pkg> shared memory interface
     and PPS kernel support for GPS time</flag>
     <flag name="sockets">export gpsd over unix sockets</flag>

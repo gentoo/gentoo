@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,6 +13,7 @@ LICENSE="fasta"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE="debug cpu_flags_x86_sse2 test"
+RESTRICT="!test? ( test )"
 
 DEPEND="test? ( app-shells/tcsh )"
 RDEPEND=""
@@ -66,7 +67,7 @@ src_install() {
 
 	pushd bin > /dev/null || die
 	for bin in *36; do
-		dosym ${bin} /usr/bin/${bin%36} || die
+		dosym ${bin} /usr/bin/${bin%36}
 	done
 	popd
 

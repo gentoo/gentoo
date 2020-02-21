@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://www.cybercom.net/~dcoffin/dcraw/archive/${P}.tar.gz
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86 ~amd64-linux ~x86-linux ~x86-solaris"
 LANGS=" ca cs de da eo es fr hu it nl pl pt ru sv zh_CN zh_TW"
 IUSE="nls gimp jpeg lcms"
 
@@ -104,7 +104,7 @@ src_install() {
 			if has ${lang} ${LINGUAS-${lang}}; then
 				[[ -f dcraw.${lang}.1 ]] && doman dcraw.${lang}.1
 				insinto /usr/share/locale/${lang}/LC_MESSAGES
-				newins dcraw_${lang}.mo dcraw.mo || die "failed to install dcraw_${lang}.mo"
+				newins dcraw_${lang}.mo dcraw.mo
 			fi
 		done
 	fi

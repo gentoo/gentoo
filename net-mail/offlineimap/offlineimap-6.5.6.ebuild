@@ -47,7 +47,7 @@ src_install() {
 	dodoc offlineimap.conf offlineimap.conf.minimal
 	if use doc ; then
 		cd docs
-		doman offlineimap.1 || die "installing manpage failed"
+		doman offlineimap.1
 	fi
 }
 

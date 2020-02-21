@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ KEYWORDS="-* amd64 x86"
 LICENSE="geekbench"
 SLOT="2"
 
-RESTRICT="bindist fetch mirror strip"
+RESTRICT="bindist mirror"
 
 S="${WORKDIR}/dist/Geekbench-${PV}-Linux"
 
@@ -23,14 +23,14 @@ pkg_nofetch() {
 }
 
 src_install() {
-	exeinto "/opt/geekbench2"
-	doexe "geekbench" "geekbench_x86_32" "geekbench_x86_64"
+	exeinto /opt/geekbench2
+	doexe geekbench geekbench_x86_32 geekbench_x86_64
 
-	insinto "/opt/geekbench2"
-	doins "geekbench.plar"
+	insinto /opt/geekbench2
+	doins geekbench.plar
 
-	dodir "/opt/bin"
-	dosym "../geekbench2/geekbench" "/opt/bin/geekbench2"
+	dodir /opt/bin
+	dosym ../geekbench2/geekbench /opt/bin/geekbench2
 }
 
 pkg_postinst() {

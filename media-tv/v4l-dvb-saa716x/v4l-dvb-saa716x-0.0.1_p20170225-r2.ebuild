@@ -1,4 +1,4 @@
-# Copyright 2018 Gentoo Authors
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,12 +26,13 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/powARman-v4l-dvb-saa716x-${HG_REVISION}"
 
 BUILD_TARGETS="modules"
-MODULE_NAMES="saa716x_ff(misc:${EROOT%/}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
-	saa716x_core(misc:${EROOT%/}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
-	saa716x_budget(misc:${EROOT%/}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
-	saa716x_hybrid(misc:${EROOT%/}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)"
+MODULE_NAMES="
+	saa716x_ff(misc:${EROOT}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
+	saa716x_core(misc:${EROOT}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
+	saa716x_budget(misc:${EROOT}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)
+	saa716x_hybrid(misc:${EROOT}/usr/src/linux:${S}/linux/drivers/media/common/saa716x)"
 
-CONFIG_CHECK="~DVB_CORE ~DVB_STV6110x ~DVB_STV090x"
+CONFIG_CHECK="DVB_CORE DVB_STV6110x DVB_STV090x"
 
 src_prepare() {
 	default
@@ -52,9 +53,9 @@ src_prepare() {
 }
 
 src_compile() {
-	BUILD_PARAMS="SUBDIRS=${S}/linux/drivers/media/common/saa716x \
-	CONFIG_SAA716X_CORE=m CONFIG_DVB_SAA716X_FF=m CONFIG_DVB_SAA716X_BUDGET=m \
-	CONFIG_DVB_SAA716X_HYBRID=m"
-	addpredict "${EROOT%/}"/usr/src/linux/
+	kernel_is le 5 0 && BUILD_PARAMS="SUBDIRS" || BUILD_PARAMS="M"
+	BUILD_PARAMS+="=${S}/linux/drivers/media/common/saa716x CONFIG_SAA716X_CORE=m \
+		CONFIG_DVB_SAA716X_FF=m CONFIG_DVB_SAA716X_BUDGET=m CONFIG_DVB_SAA716X_HYBRID=m"
+	addpredict "${EROOT}"/usr/src/linux/
 	linux-mod_src_compile
 }

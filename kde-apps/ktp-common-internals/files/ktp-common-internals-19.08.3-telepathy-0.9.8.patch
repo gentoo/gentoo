@@ -1,0 +1,57 @@
+From f030b527c4d390ead78d2e56a1655444f97b5545 Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Thu, 14 Nov 2019 20:34:21 +0100
+Subject: [PATCH] Fix build with telepathy-qt 0.9.8
+
+Explicitely add the necessary link targets which are no longer exported by telepathy-qt
+
+Differential Revision: https://phabricator.kde.org/D25269
+---
+ CMakeLists.txt         | 4 +++-
+ KTp/CMakeLists.txt     | 2 ++
+ KTp/OTR/CMakeLists.txt | 1 +
+ 3 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 187400e..2650321 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,8 +20,10 @@ set (KTP_VERSION "${KDE_APPLICATIONS_VERSION_MAJOR}.${KDE_APPLICATIONS_VERSION_M
+ set (KTP_MESSAGE_FILTER_FRAMEWORK_VERSION "5")
+ 
+ find_package (Qt5 REQUIRED CONFIG COMPONENTS
++              DBus
+               Qml
+-              Test)
++              Test
++              Xml)
+ 
+ find_package (KF5 5.11 REQUIRED COMPONENTS
+               CoreAddons
+diff --git a/KTp/CMakeLists.txt b/KTp/CMakeLists.txt
+index 85d578b..ffbce10 100644
+--- a/KTp/CMakeLists.txt
++++ b/KTp/CMakeLists.txt
+@@ -91,6 +91,8 @@ set_target_properties(KTpCommonInternals PROPERTIES
+ 
+ target_link_libraries (KTpCommonInternals
+                 PUBLIC
++                    Qt5::DBus
++                    Qt5::Xml
+                     KF5::Wallet #included from wallet-interface.h
+                     ${TELEPATHY_QT5_LIBRARIES}
+                 PRIVATE
+diff --git a/KTp/OTR/CMakeLists.txt b/KTp/OTR/CMakeLists.txt
+index 12e28de..0743e25 100644
+--- a/KTp/OTR/CMakeLists.txt
++++ b/KTp/OTR/CMakeLists.txt
+@@ -28,6 +28,7 @@ generate_export_header(KTpOTR)
+ 
+ target_link_libraries (KTpOTR
+                         PUBLIC
++                            Qt5::DBus
+                             ${TELEPATHY_QT5_LIBRARIES}
+                         PRIVATE
+                             KF5::I18n
+-- 
+2.24.0

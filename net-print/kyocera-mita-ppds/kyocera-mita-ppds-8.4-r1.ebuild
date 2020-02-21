@@ -32,7 +32,7 @@ src_install() {
 
 	inslanguage() {
 		if use l10n_$1; then
-			doins $2/*.ppd || die "failed to install $2 ppds"
+			doins $2/*.ppd
 		fi
 	}
 

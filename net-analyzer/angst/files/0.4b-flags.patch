@@ -1,0 +1,20 @@
+--- a/Makefile.linux
++++ b/Makefile.linux
+@@ -5,7 +5,7 @@
+ #
+ # $Id: Makefile.linux,v 1.6 2001/02/08 13:44:12 argp Exp $
+ 
+-CC = gcc
++CC ?= gcc
+ INSTALL_DIR = /usr/bin/install -c -o root -g bin
+ INSTALL_SBIN = /usr/bin/install -c -s -o root -g bin -m 555
+ INSTALL_MAN = /usr/bin/install -c -o root -g bin -m 444
+@@ -21,7 +21,7 @@
+ all:	angst
+ 
+ angst:	$(OBJS)
+-	$(CC) $(CFLAGS) -o angst $(DEFINE) $(OBJS) $(INCLUDE) $(LIBS)
++	$(CC) $(CFLAGS) -o angst $(DEFINE) $(LDFLAGS) $(OBJS) $(INCLUDE) $(LIBS)
+ 
+ clean:
+ 	rm -f angst *.o missing/*.o *.core core

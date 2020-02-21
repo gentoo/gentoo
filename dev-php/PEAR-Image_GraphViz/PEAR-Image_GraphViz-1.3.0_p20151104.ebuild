@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,6 +11,7 @@ LICENSE="PHP-3"
 SLOT="0"
 KEYWORDS="~alpha amd64 hppa ~ia64 ~sparc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 RDEPEND="media-gfx/graphviz"
 DEPEND="test? ( ${RDEPEND} dev-php/PEAR-PEAR )"
 PATCHES=( "${FILESDIR}/Image_GraphViz-1.3.0-constructor.patch" )

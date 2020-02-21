@@ -1,0 +1,35 @@
+diff -Naur wmCalClock-1.25.orig/Src/xutils.c wmCalClock-1.25/Src/xutils.c
+--- a/xutils.c	1999-03-27 07:46:38.000000000 +0100
++++ b/xutils.c	2020-01-29 18:55:05.062360592 +0100
+@@ -52,6 +52,11 @@
+ GC		NormalGC;
+ XpmIcon		wmgen;
+ Pixmap		pixmask;
++Display		*display;
++Window      Root;
++Window      iconwin, win;
++int         screen; 
++int         DisplayDepth;
+ 
+ 
+ /*
+diff -Naur wmCalClock-1.25.orig/Src/xutils.h wmCalClock-1.25/Src/xutils.h
+--- a/xutils.h	1999-03-27 07:46:38.000000000 +0100
++++ b/xutils.h	2020-01-29 18:54:54.360359886 +0100
+@@ -18,11 +18,11 @@
+ /*
+  *   Global variable
+  */
+-Display		*display;
+-Window          Root;
+-Window          iconwin, win;
+-int             screen; 
+-int             DisplayDepth;
++extern Display	*display;
++extern Window   Root;
++extern Window   iconwin, win;
++extern int      screen; 
++extern int      DisplayDepth;
+ 
+ 
+ 

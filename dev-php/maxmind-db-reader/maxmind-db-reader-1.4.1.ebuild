@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -15,7 +15,7 @@ USE_PHP="php5-6 php7-1 php7-2 php7-3"
 inherit php-ext-source-r3
 
 DESCRIPTION="PHP reader for the MaxMind database format"
-HOMEPAGE="https://github.com/maxmind/${MY_PN}"
+HOMEPAGE="https://github.com/maxmind/MaxMind-DB-Reader-php"
 SRC_URI="https://github.com/maxmind/${MY_PN}/archive/v${PV}.tar.gz -> ${MY_P}.tar.gz"
 
 LICENSE="Apache-2.0"

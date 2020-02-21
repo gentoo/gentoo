@@ -7,7 +7,7 @@ inherit bash-completion-r1 eutils linux-info systemd toolchain-funcs
 
 DESCRIPTION="Generic initramfs generation tool"
 HOMEPAGE="https://dracut.wiki.kernel.org"
-SRC_URI="mirror://kernel/linux/utils/boot/${PN}/${P}.tar.xz"
+SRC_URI="https://www.kernel.org/pub/linux/utils/boot/${PN}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -39,11 +39,11 @@ src_install() {
 		bin/sbt-launch-lib.bash || die
 
 	insinto "${dest}/lib"
-	doins bin/* || die
+	doins bin/*
 
 	insinto "${dest}"
-	doins -r conf || die
+	doins -r conf
 
-	fperms 0755 "${dest}/lib/sbt" || die
-	dosym "${dest}/lib/sbt" /usr/bin/sbt || die
+	fperms 0755 "${dest}/lib/sbt"
+	dosym "${dest}/lib/sbt" /usr/bin/sbt
 }

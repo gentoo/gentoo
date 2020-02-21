@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -116,7 +116,7 @@ src_install() {
 	if use gimp; then
 		local plugindir="$(gimptool-2.0 --gimpplugindir)/plug-ins"
 		dodir "${plugindir}"
-		dosym "${ED}"/usr/bin/iscan "${plugindir}"/iscan
+		dosym ../../../../bin/iscan "${plugindir}"/iscan
 	fi
 
 	use X && make_desktop_entry iscan "Image Scan! for Linux ${PV}" scanner

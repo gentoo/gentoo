@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,6 +53,7 @@ RDEPEND="
 	media-libs/vamp-plugin-sdk
 	sci-libs/fftw:3.0=
 	sys-power/upower
+	virtual/glu
 	virtual/libusb:1
 	virtual/opengl
 	x11-libs/libX11
@@ -70,8 +71,7 @@ RDEPEND="
 	ffmpeg? ( media-video/ffmpeg:0= )
 "
 # media-libs/rubberband RDEPENDs on sci-libs/fftw:3.0
-DEPEND="
-	${RDEPEND}
+DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	dev-qt/qttest:5
 	dev-qt/qtxmlpatterns:5

@@ -12,7 +12,4 @@
 	<longdescription lang="en">
 		Library for communication with dive computers from various manufacturers.
 	</longdescription>
-	<use>
-		<flag name="tools">Install tools that can be used to test the library.</flag>
-	</use>
 </pkgmetadata>

@@ -13,7 +13,7 @@ SRC_URI="http://www.caliban.org/files/ruby/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~ppc x86"
 IUSE=""
 
 RUBY_PATCHES=( "${PN}-ruby19.patch" )

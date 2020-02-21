@@ -6,10 +6,6 @@
   <name>Gentoo GNU Emacs project</name>
 </maintainer>
 <stabilize-allarches/>
-<use>
-  <flag name="ropemacs">Install backend for
-    <pkg>dev-python/ropemacs</pkg></flag>
-</use>
 <upstream>
   <remote-id type="github">company-mode/company-mode</remote-id>
 </upstream>

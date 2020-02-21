@@ -16,6 +16,7 @@ LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm arm64 x86"
 IUSE="doc test tools"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/icu:=

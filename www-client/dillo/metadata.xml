@@ -5,4 +5,7 @@
     <email>desktop-misc@gentoo.org</email>
     <name>Gentoo Desktop Miscellaneous Project</name>
   </maintainer>
+<use>
+<flag name='xembed'>Enable X11 XEmbed support</flag>
+</use>
 </pkgmetadata>

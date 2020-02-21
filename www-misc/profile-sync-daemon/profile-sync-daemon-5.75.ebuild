@@ -9,7 +9,7 @@ SRC_URI="https://github.com/graysky2/profile-sync-daemon/archive/v${PV}.tar.gz -
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="systemd"
 
 RDEPEND="

@@ -36,9 +36,9 @@ src_compile() {
 }
 
 src_install() {
-	dobin unp || die "dobin failed"
+	dobin unp
 	dosym unp /usr/bin/ucat
-	doman debian/unp.1 || die "doman failed"
+	doman debian/unp.1
 	dodoc debian/changelog debian/README.Debian
 	dobashcomp bash_completion.d/unp
 

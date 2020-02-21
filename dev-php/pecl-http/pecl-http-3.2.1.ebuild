@@ -15,7 +15,7 @@ inherit php-ext-pecl-r3
 
 USE_PHP="php7-1 php7-2 php7-3"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DESCRIPTION="Extended HTTP Support for PHP"
 LICENSE="BSD-2 MIT"
@@ -63,7 +63,7 @@ src_test() {
 		sed -i \
 			's/PHP_TEST_SHARED_EXTENSIONS)/PHP_TEST_SHARED_EXTENSIONS) -d extension=propro.so -d extension=raphf.so/' \
 			Makefile || die
-		NO_INTERACTION="yes" emake test
+		SKIP_ONLINE_TESTS="yes" NO_INTERACTION="yes" emake test
 		# Clean up testing links
 		rm modules/propro.so modules/raphf.so || die
 	done

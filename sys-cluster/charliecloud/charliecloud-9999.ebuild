@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit python-single-r1
 
@@ -34,9 +34,12 @@ RDEPEND="${PYTHON_DEPS}
 	pv? ( sys-apps/pv )
 	squashfuse? ( sys-fs/squashfuse )
 "
-DEPEND="doc? (
-		dev-python/sphinx[${PYTHON_USEDEP}]
-		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
+DEPEND="
+	doc? (
+		$(python_gen_cond_dep '
+			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_MULTI_USEDEP}]
+		')
 		net-misc/rsync
 	)"
 

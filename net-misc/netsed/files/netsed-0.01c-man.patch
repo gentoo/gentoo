@@ -1,0 +1,79 @@
+--- netsed-0.01c.orig/debian/netsed.1
++++ netsed-0.01c/debian/netsed.1
+@@ -0,0 +1,76 @@
++.TH NETSED 1 "June 23, 2001" NETSED
++.SH NAME
++netsed \- network packet stream editor
++.SH SYNOPSIS
++.B netsed
++.I proto lport rhost rport rule1
++.RI [ rule2 ] " " ...
++.SH DESCRIPTION
++NetSED is small and handful utility designed to alter the contents of
++packets forwarded thru your network in real time. It is really useful
++for network hackers in following applications:
++.TP
++.B black\-box protocol auditing
++whenever there are two or more propertiary boxes communicating over
++undocumented protocol (by enforcing changes in ongoing transmissions,
++you will be able to test if tested application is secure)
++.TP
++.B fuzz\-alike experiments, integrity tests
++whenever you want to test stability of the application and see how it
++ensures data integrity,
++.TP
++.B other common applications
++fooling other people, content filtering, etc etc \- choose whatever
++you want to.
++.LP
++It perfectly fits netgrep, netcat and tcpdump tools suite :P
++.SH OPTIONS
++.TP
++.B proto
++protocol specification (tcp or udp)
++.TP
++.B lport
++local port to listen on (see README for transparent traffic intercepting
++on some systems)
++.TP
++.B rhost
++where connection should be forwarded (0 = use destination address of
++incoming connection, see README)
++.TP
++.B rport
++destination port (0 = dst port of incoming connection)
++.TP
++.B rule\fIN\fR
++replacement rules (see below)
++.LP
++General replacement rules syntax: s/\fBpat1\fR/\fBpat2\fR\fI[/expire]\fR
++
++This will replace all occurences of \fBpat1\fR with \fBpat2\fR in matching
++packets. Additional parameter (count) can be used to expire rule after 'count'
++succesful substitutions. Eight\-bit characters, including NULL and '/', can
++be passed using HTTP\-alike hex escape sequences (eg. %0a%0d). Single '%'
++can be reached by using '%%'. Examples:
++.TP
++.B 's/andrew/mike/1'
++replace 'andrew' with 'mike' (once)
++.TP
++.B 's/andrew/mike'
++replace all occurences of 'andrew' with 'mike'
++.TP
++.B 's/andrew/mike%00'
++replace 'andrew' with 'mike\\x00\\x00' (to keep orig. size)
++.TP
++.B 's/%%/%2f/20'
++replace '%' with '/' in first 20 packets
++.LP
++Rules are not working on cross\-packet boundaries and are evaluated from
++first to last not expired rule.
++.SH SEE ALSO
++.BR ngrep (8),
++.BR nc (1),
++
++.BR /usr/share/doc/netsed/README.gz
++.SH AUTHOR
++\fBnetsed\fR was written by Michal Zalewski <lcamtuf@ids.pl>.
++
++This manual page was written by Gergely Nagy <algernon@debian.org>.

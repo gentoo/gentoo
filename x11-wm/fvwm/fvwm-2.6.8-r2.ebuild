@@ -10,7 +10,7 @@ SRC_URI="https://github.com/fvwmorg/fvwm/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="bidi debug doc netpbm nls perl png readline rplay stroke svg tk truetype +vanilla xinerama lock"
 
 COMMON_DEPEND="
@@ -144,7 +144,7 @@ src_install() {
 
 	dodir /etc/X11/Sessions
 	echo "/usr/bin/fvwm" > "${D}"/etc/X11/Sessions/${PN} || die
-	fperms a+x /etc/X11/Sessions/${PN} || die
+	fperms a+x /etc/X11/Sessions/${PN}
 
 	dodoc docs/{COMMANDS,DEVELOPERS.md}
 

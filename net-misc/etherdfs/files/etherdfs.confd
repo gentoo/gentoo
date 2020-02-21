@@ -1,0 +1,9 @@
+# Copyright 1999-2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Network interface, which should be used for serving mapped drives
+INTERFACE="lo"
+
+# Storage directories, which are being mapped and served to the client.
+# Multiple directories can be specified, by whitespace separated.
+STORAGEDIR="/tmp"

@@ -14,7 +14,7 @@ if [[ ${PV} == 9999 ]]; then
 else
 	MY_P="x264-snapshot-$(ver_cut 3)-2245"
 	SRC_URI="http://download.videolan.org/pub/videolan/x264/snapshots/${MY_P}.tar.bz2"
-	KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+	KEYWORDS="~alpha amd64 ~ppc ~ppc64 ~sparc x86"
 	S="${WORKDIR}/${MY_P}"
 fi
 

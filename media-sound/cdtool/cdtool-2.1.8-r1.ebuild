@@ -1,8 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
-inherit eutils
+EAPI=7
 
 DESCRIPTION="collection of command-line utilities to control cdrom devices"
 HOMEPAGE="http://hinterhof.net/cdtool/"
@@ -15,11 +14,7 @@ IUSE=""
 
 RDEPEND="!media-sound/cdplay"
 
-src_prepare() {
-	epatch "${FILESDIR}"/${P}-glibc-2.10.patch
-	sed -i \
-		-e '/INSTALL/s:-o root::' \
-		-e '/LINKTARGET/s:/lib/:/$(notdir $(libdir))/:' \
-		-e '/^install-links:/s:$: install-files:' \
-		Makefile.in || die
-}
+PATCHES=(
+	"${FILESDIR}"/${P}-glibc-2.10.patch
+	"${FILESDIR}"/${P}-fix-build-system.patch
+)

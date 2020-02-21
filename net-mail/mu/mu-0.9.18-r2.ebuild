@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -20,7 +20,7 @@ DEPEND="
 	dev-libs/gmime:2.6
 	dev-libs/xapian
 	dev-libs/glib:2
-	emacs? ( >=virtual/emacs-23 )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	!net-mail/mailutils"
 RDEPEND="${DEPEND}"
 

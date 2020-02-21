@@ -14,7 +14,7 @@ SRC_URI="https://github.com/AdaCore/${PN}/archive/${commitId}.tar.gz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="db2ada gnatinspect postgres
 	+shared sql sqlite static-libs static-pic xref"
 

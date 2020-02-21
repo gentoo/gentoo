@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,10 +16,11 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/Ettercap/${PN}.git"
 else
 	SRC_URI="https://github.com/Ettercap/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm ppc ppc64 sparc x86 ~x86-fbsd"
+	KEYWORDS="~alpha amd64 arm ppc ppc64 sparc x86"
 fi
 
 IUSE="doc geoip gtk ipv6 libressl ncurses +plugins test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-libs/libbsd
 	dev-libs/libpcre
@@ -46,6 +47,9 @@ DEPEND="${RDEPEND}
 	test? ( dev-libs/check )
 	sys-devel/flex
 	virtual/yacc"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.8.3-fno-common.patch
+)
 
 src_prepare() {
 	sed -i "s:Release:Release Gentoo:" CMakeLists.txt || die

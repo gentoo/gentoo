@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ DIST_EXAMPLES=("examples/*")
 inherit perl-module virtualx
 
 DESCRIPTION="Perl wrappers for the egg cup Gtk2::TrayIcon utilities"
-HOMEPAGE="http://gtk2-perl.sf.net/ ${HOMEPAGE}"
+HOMEPAGE="http://gtk2-perl.sf.net/ https://metacpan.org/release/Gtk2-TrayIcon"
 
 LICENSE="LGPL-2"
 SLOT="0"

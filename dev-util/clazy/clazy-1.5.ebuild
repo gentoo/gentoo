@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Compiler plugin which allows clang to understand Qt semantics"
 HOMEPAGE="https://cgit.kde.org/clazy.git/tree/README.md"
@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}"
 DOCS=( README.md )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	sed -e '/install(FILES README.md COPYING-LGPL2.txt checks.json DESTINATION/d' \
 		-i CMakeLists.txt || die
@@ -33,7 +33,7 @@ src_prepare() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 	mv "${D}"/usr/share/doc/clazy/* "${D}"/usr/share/doc/${PF} || die
 	rmdir "${D}"/usr/share/doc/clazy || die
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,6 +13,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 IUSE="mariadb +mysql test +ssl"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="^^ ( mysql mariadb )"
 
 RDEPEND=">=dev-perl/DBI-1.609.0
@@ -42,7 +43,7 @@ src_configure() {
 			--testuser=test \
 			--testpassword=test"
 	fi
-	myconf="${myconf} --$(usex ssl ssl nossl) --mysql_config=${EPREFIX%/}/usr/bin/${impl}_config"
+	myconf="${myconf} --$(usex ssl ssl nossl) --mysql_config=${EPREFIX}/usr/bin/${impl}_config"
 	perl-module_src_configure
 }
 

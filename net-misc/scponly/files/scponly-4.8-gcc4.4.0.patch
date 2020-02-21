@@ -1,5 +1,7 @@
---- helper.c.orig	2009-05-11 00:33:08.000000000 -0600
-+++ helper.c	2009-05-11 00:39:59.000000000 -0600
+https://bugs.gentoo.org/269242
+
+--- scponly-4.8.orig/helper.c
++++ scponly-4.8/helper.c
 @@ -259,11 +259,11 @@
  							PROG_RSYNC, logstamp());
  						return 1;

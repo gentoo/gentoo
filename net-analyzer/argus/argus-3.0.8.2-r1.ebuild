@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ inherit autotools eutils user
 
 DESCRIPTION="network Audit Record Generation and Utilization System"
 HOMEPAGE="https://www.qosient.com/argus/"
-SRC_URI="${HOMEPAGE}dev/${P/_rc/.rc.}.tar.gz"
+SRC_URI="https://www.qosient.com/argus/dev/${P/_rc/.rc.}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"

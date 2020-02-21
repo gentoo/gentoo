@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 MY_PV="${PV/_/-}"
 
-inherit cmake-utils multilib wxwidgets
+inherit cmake multilib wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://www.pcsx2.net"
@@ -65,7 +65,6 @@ src_configure() {
 		-DPACKAGE_MODE=TRUE
 		-DXDG_STD=TRUE
 
-		-DCMAKE_INSTALL_PREFIX=/usr
 		-DCMAKE_LIBRARY_PATH="/usr/$(get_libdir)/${PN}"
 		-DDOC_DIR=/usr/share/doc/"${PF}"
 		-DEGL_API=FALSE
@@ -77,11 +76,11 @@ src_configure() {
 	)
 
 	WX_GTK_VER="3.0" setup-wxwidgets
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
 	# Upstream issue: https://github.com/PCSX2/pcsx2/issues/417
 	QA_TEXTRELS="usr/$(get_libdir)/pcsx2/* usr/bin/PCSX2"
-	cmake-utils_src_install
+	cmake_src_install
 }

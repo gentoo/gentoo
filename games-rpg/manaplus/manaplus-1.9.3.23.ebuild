@@ -16,6 +16,7 @@ fi
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="mumble nls opengl pugixml +sdl2 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-games/physfs-1.0.0

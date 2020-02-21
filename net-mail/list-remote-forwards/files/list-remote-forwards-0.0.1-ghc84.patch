@@ -1,0 +1,26 @@
+--- a/src/OptionalConfiguration.hs
++++ b/src/OptionalConfiguration.hs
+@@ -31,2 +31,3 @@ import System.IO.Error ( catchIOError )
+ import MxList ( MxList(..) )
++import qualified Data.Semigroup as S
+ 
+@@ -59,2 +60,19 @@ merge_maybes (Just _) (Just y) = Just y
+ 
++instance S.Semigroup OptionalConfiguration where
++  cfg1 <> cfg2 =
++    OptionalConfiguration
++      (merge_maybes (database cfg1) (database cfg2))
++      (merge_maybes (domain_query cfg1) (domain_query cfg2))
++      all_excluded_mx
++      (merge_maybes (forward_query cfg1) (forward_query cfg2))
++      (merge_maybes (host cfg1) (host cfg2))
++      (merge_maybes (password cfg1) (password cfg2))
++      (merge_maybes (port cfg1) (port cfg2))
++      (merge_maybes (username cfg1) (username cfg2))
++    where
++      -- Use only the latter exclude_mx if there are any.
++      all_excluded_mx =
++        exclude_mx $ if (null (get_mxs $ exclude_mx cfg2))
++                     then cfg1
++                     else cfg2
+ 

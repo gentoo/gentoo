@@ -1,5 +1,5 @@
---- filesystems/ftpfs/ftplib.cpp.orig	2008-06-08 20:01:35.000000000 +0200
-+++ filesystems/ftpfs/ftplib.cpp	2008-06-08 20:01:53.000000000 +0200
+--- a/filesystems/ftpfs/ftplib.cpp
++++ b/filesystems/ftpfs/ftplib.cpp
 @@ -20,6 +20,7 @@
   * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
   */
@@ -8,8 +8,8 @@
  #include <unistd.h>
  #include <netdb.h>
  #include <stdio.h>
---- filesystems/ftpfs/ftpfs.h.orig	2008-06-08 20:04:33.000000000 +0200
-+++ filesystems/ftpfs/ftpfs.h	2008-06-08 20:05:07.000000000 +0200
+--- a/filesystems/ftpfs/ftpfs.h
++++ b/filesystems/ftpfs/ftpfs.h
 @@ -23,6 +23,8 @@
  #ifndef _FTPFS_H_
  #define _FTPFS_H_
@@ -19,8 +19,8 @@
  using namespace std;
  
  struct directory;
---- filesystems/sshfs/sftplib.h.orig	2008-06-08 20:08:55.000000000 +0200
-+++ filesystems/sshfs/sftplib.h	2008-06-08 20:09:43.000000000 +0200
+--- a/filesystems/sshfs/sftplib.h
++++ b/filesystems/sshfs/sftplib.h
 @@ -28,6 +28,9 @@
  
  #include <string>

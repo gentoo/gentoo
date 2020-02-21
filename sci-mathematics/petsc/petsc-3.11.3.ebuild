@@ -154,7 +154,7 @@ src_configure() {
 		$(petsc_enable threads pthread) \
 		$(petsc_with afterimage afterimage \
 			/usr/include/libAfterImage -lAfterImage) \
-		$(petsc_with hdf5) \
+		$(use_with hdf5) \
 		$(petsc_with hypre hypre \
 			/usr/include/hypre -lHYPRE) \
 		$(petsc_with sparse suitesparse) \

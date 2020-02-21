@@ -1,0 +1,40 @@
+we change some variables in the Makefile
+for a better handling in gentoo ebuild
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> ( 22 Dec 2019 )
+diff -Naur vdr-2.4.1.orig/Makefile vdr-2.4.1/Makefile
+--- vdr-2.4.1.orig/Makefile	2019-12-22 00:51:31.000000000 +0100
++++ vdr-2.4.1/Makefile	2019-12-22 00:53:34.000000000 +0100
+@@ -54,7 +54,7 @@
+ 
+ # Output control
+ 
+-ifdef VERBOSE
++ifeq ($(VERBOSE),1)
+ Q =
+ else
+ Q = @
+@@ -89,7 +89,7 @@
+ ifdef HDRDIR
+ HDRDIR   := -I$(HDRDIR)
+ endif
+-ifndef NO_KBD
++ifeq ($(USE_KBD),1)
+ DEFINES += -DREMOTE_KBD
+ endif
+ ifdef REMOTE
+@@ -98,12 +98,12 @@
+ ifdef VDR_USER
+ DEFINES += -DVDR_USER=\"$(VDR_USER)\"
+ endif
+-ifdef BIDI
++ifeq ($(BIDI),1)
+ INCLUDES += $(shell pkg-config --cflags fribidi)
+ DEFINES += -DBIDI
+ LIBS += $(shell pkg-config --libs fribidi)
+ endif
+-ifdef SDNOTIFY
++ifeq ($(SDNOTIFY),1)
+ INCLUDES += $(shell pkg-config --silence-errors --cflags libsystemd-daemon || pkg-config --cflags libsystemd)
+ DEFINES += -DSDNOTIFY
+ LIBS += $(shell pkg-config --silence-errors --libs libsystemd-daemon || pkg-config --libs libsystemd)

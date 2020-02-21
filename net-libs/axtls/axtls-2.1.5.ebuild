@@ -119,7 +119,7 @@ use_flag_config() {
 			config/.config || die
 	fi
 
-	yes "n" | emake -j1 oldconfig > /dev/null || die
+	emake -j1 oldconfig < <(yes n) > /dev/null
 }
 
 multilib_src_configure() {
@@ -139,7 +139,7 @@ multilib_src_configure() {
 			ewarn "No saved config, seeding with the default"
 			cp "${FILESDIR}"/config config/.config || die
 		fi
-		yes "" | emake -j1 oldconfig > /dev/null || die
+		emake -j1 oldconfig < <(yes '') > /dev/null
 	else
 		use_flag_config
 	fi

@@ -7,7 +7,6 @@
 	</maintainer>
 	<use>
 		<flag name="debugger">Build with internal debugger</flag>
-		<flag name="pax_kernel">Triggers a paxmarking of the binary</flag>
 	</use>
 	<upstream>
 		<remote-id type="sourceforge">mednafen</remote-id>

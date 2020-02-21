@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ IUSE="debug nls"
 # opengl would mix gtk+:2 and :3 which is not possible
 
 RDEPEND="
-	>=app-text/enchant-1.4
+	>=app-text/enchant-1.4:0
 	app-text/iso-codes
 	>=dev-cpp/cairomm-1.12
 	>=dev-cpp/glibmm-2.46:2

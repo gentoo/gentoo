@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,9 +11,9 @@ SRC_URI="https://github.com/OpenSC/${PN}/releases/download/${P}/${P}.tar.gz"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="alpha amd64 ~hppa ia64 ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha amd64 ~hppa ia64 ppc ppc64 ~sparc x86"
 
-RDEPEND="virtual/pam
+RDEPEND="sys-libs/pam
 	dev-libs/libp11:=
 	dev-libs/openssl:0="
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,7 +12,7 @@ SRC_URI="mirror://gentoo/${P}.tar.xz
 
 LICENSE="GPL-2 freedist public-domain"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~hppa ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
+KEYWORDS="amd64 arm ~hppa ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="cdb"
 
 DEPEND="virtual/awk
@@ -24,7 +24,7 @@ DEPEND="virtual/awk
 	)"
 RDEPEND=""
 
-DOCS=( ChangeLog{,.{1..3}} READMEs/committers.txt edict_doc.txt zipcode/README.ja )
+DOCS=( ChangeLog{,.{1..3}} READMEs/committers.txt edict_doc.txt )
 
 src_prepare() {
 	rm -f ${MY_PN}.{wrong*,noregist,not_wrong,hukugougo,notes,requested,pubdic+}
@@ -63,4 +63,8 @@ src_compile() {
 src_install() {
 	insinto /usr/share/skk
 	doins {,zipcode/}${MY_PN}.*
+
+	einstalldocs
+	docinto zipcode
+	dodoc zipcode/README.ja
 }

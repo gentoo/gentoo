@@ -2,12 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-	<email>nerdboy@gentoo.org</email>
-	<name>Stephen Arnold</name>
+  <email>nerdboy@gentoo.org</email>
+  <name>Stephen Arnold</name>
 </maintainer>
 <longdescription lang="en">
-	A perl/Curses front end for Taskwarrior (<pkg>app-misc/task</pkg>) that
-	provides a fullscreen terminal window with modes and commands
-	modeled after the vi editor.
+  A perl/Curses front end for Taskwarrior (<pkg>app-misc/task</pkg>) that
+  provides a fullscreen terminal window with modes and commands
+  modeled after the vi editor.
 </longdescription>
+  <upstream>
+    <remote-id type="github">scottkosty/vit</remote-id>
+  </upstream>
 </pkgmetadata>

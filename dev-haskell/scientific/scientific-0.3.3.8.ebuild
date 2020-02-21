@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -10,12 +10,13 @@ inherit haskell-cabal
 
 DESCRIPTION="Numbers represented using scientific notation"
 HOMEPAGE="https://github.com/basvandijk/scientific"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE="+bytestring-builder"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/hashable-1.1.2:=[profile?] <dev-haskell/hashable-1.3:=[profile?]
 	>=dev-haskell/text-0.8:=[profile?] <dev-haskell/text-1.3:=[profile?]

@@ -24,7 +24,7 @@ DESCRIPTION="Rabbitmq exporter for Prometheus"
 HOMEPAGE="https://github.com/kbudde/rabbitmq_exporter"
 SRC_URI="https://${EGO_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_VENDOR_URI}"
-LICENSE="Apache-2.0"
+LICENSE="MIT Apache-2.0 BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 

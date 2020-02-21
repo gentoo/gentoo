@@ -12,6 +12,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS=""
 IUSE="gd selinux test"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-db/sqlite

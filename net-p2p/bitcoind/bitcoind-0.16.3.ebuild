@@ -1,4 +1,4 @@
-# Copyright 2010-2018 Gentoo Authors
+# Copyright 2010-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,6 +21,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 ~arm ~arm64 ~mips ~ppc x86 ~amd64-linux ~x86-linux"
 IUSE="+asm +bitcoin_policy_rbf examples knots libressl test upnp +wallet zeromq"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	>=dev-libs/boost-1.52.0:=[threads(+)]
@@ -70,6 +71,7 @@ src_prepare() {
 
 	local knots_patchdir="${WORKDIR}/${KNOTS_P}.patches/"
 
+	eapply "${FILESDIR}"/${PN}-0.16.3-missing-include.patch
 	eapply "${knots_patchdir}/${KNOTS_P}.syslibs.patch"
 
 	if use knots; then

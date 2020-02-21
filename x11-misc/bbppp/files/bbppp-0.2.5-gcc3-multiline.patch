@@ -1,5 +1,5 @@
---- main.cc
-+++ main.cc
+--- a/main.cc
++++ b/main.cc
 @@ -24,25 +24,24 @@
  
  void Usage()
@@ -19,7 +19,7 @@
 -	                      -com[pact]                  Display buttons in compact style\n\
 -	                      -notime                     Dont display time window\n\
 -	                      -nosecs                     Show uptime in old-style hh:mm format\n\n"};
-+	char* usageOptions = {"Options:\n"
++	const char* usageOptions = {"Options:\n"
 +	                     "-display <display name>     X server to connect to\n"
 +	                     "-c[onfig] <filename>        Alternate config file\n"
 +	                     "-n[obb]                     Fall back on default configuration\n"

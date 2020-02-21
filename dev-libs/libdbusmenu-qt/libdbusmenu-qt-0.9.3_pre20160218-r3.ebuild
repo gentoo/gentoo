@@ -4,7 +4,7 @@
 EAPI=7
 
 MY_PV=${PV/_pre/+16.04.}
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Library providing Qt implementation of DBusMenu specification"
 HOMEPAGE="https://launchpad.net/libdbusmenu-qt/"
@@ -28,7 +28,7 @@ S="${WORKDIR}"/${PN}-${MY_PV}
 PATCHES=( "${FILESDIR}/${P}-cmake.patch" )
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	cmake_comment_add_subdirectory tools
 	# tests fail due to missing connection to dbus

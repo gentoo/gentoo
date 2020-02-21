@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit flag-o-matic distutils-r1 toolchain-funcs
@@ -16,18 +16,17 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="amd64 arm ~arm64 ~mips ~ppc ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=net-libs/zeromq-4.1.2:=
 	dev-python/py[${PYTHON_USEDEP}]
 	dev-python/cffi:=[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/gevent[${PYTHON_USEDEP}]' python2_7)
 "
 DEPEND="${RDEPEND}
 	dev-python/cython[${PYTHON_USEDEP}]
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' -2)
 		www-servers/tornado[${PYTHON_USEDEP}]
 	)
 	doc? (
@@ -52,7 +51,6 @@ python_compile_all() {
 
 python_compile() {
 	esetup.py cython --force
-	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	distutils-r1_python_compile
 }
 

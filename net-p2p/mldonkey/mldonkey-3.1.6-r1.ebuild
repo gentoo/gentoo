@@ -13,7 +13,7 @@ SRC_URI="https://github.com/ygrek/mldonkey/releases/download/release-$(replace_a
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 
 RDEPEND="dev-lang/perl
 	dev-ml/camlp4:=

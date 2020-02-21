@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="library for Levenberg-Marquardt least-squares minimization and curve fitting"
 HOMEPAGE="http://apps.jcns.fz-juelich.de/doku/sc/lmfit"

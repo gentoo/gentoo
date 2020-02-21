@@ -50,10 +50,10 @@ src_install() {
 	python_foreach_impl my_install
 
 	insinto /etc/${PN}
-	doins config.py.example || die
+	doins config.py.example
 
-	dodoc CHANGELOG readme.html || die
-	doman r2e.1 || die
+	dodoc CHANGELOG readme.html
+	doman r2e.1
 
 	# Replace r2e wrapper
 	cat <<-"EOF" >r2e
@@ -64,5 +64,5 @@ src_install() {
 		exec python2 "${SITE_PACKAGES}"/rss2email/main.py "${CONF_DIR}"/feeds.dat $*
 	EOF
 
-	dobin r2e || die
+	dobin r2e
 }

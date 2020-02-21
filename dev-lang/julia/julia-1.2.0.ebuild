@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ SRC_URI="
 	https://api.github.com/repos/JuliaLang/utf8proc/tarball/${MY_UTF8PROC_V} -> ${PN}-utf8proc-${MY_UTF8PROC_V}.tar.gz
 	https://api.github.com/repos/vtjnash/libwhich/tarball/${MY_LIBWHICH_V} -> ${PN}-libwhich-${MY_LIBWHICH_V}.tar.gz
 	http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/SFMT/dSFMT-src-${MY_DSFMT_V}.tar.gz -> ${PN}-dsfmt-${MY_DSFMT_V}.tar.gz
-	http://releases.llvm.org/${MY_LLVM}/llvm-${MY_LLVM}.src.tar.xz -> ${PN}-llvm-${MY_LLVM}.src.tar.xz
+	http://releases.llvm.org/${MY_LLVM}/llvm-${MY_LLVM}.src.tar.xz
 "
 
 LICENSE="MIT"
@@ -89,7 +89,7 @@ src_prepare() {
 	sed -i \
 		-e 's|git submodule|${EPREFIX}/bin/true|g' \
 		-e "s|GENTOOCFLAGS|${CFLAGS}|g" \
-		-e "s|/usr/include|${EPREFIX%/}/usr/include|g" \
+		-e "s|/usr/include|${EPREFIX}/usr/include|g" \
 		deps/Makefile || die
 
 	local libblas="$($(tc-getPKG_CONFIG) --libs-only-l blas)"

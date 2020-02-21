@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
 IUSE="examples nagios4 perl python test"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="!sys-apps/ucspi-unix:0
@@ -110,7 +111,7 @@ src_install() {
 	cat <<EOF >"${T}"/nagios.cfg
 # Ensure all data is set to event brokers
 event_broker_options=-1
-broker_module=${EPREFIX%/}/usr/$(get_libdir)/mk-livestatus/livestatus.o
+broker_module=${EPREFIX}/usr/$(get_libdir)/mk-livestatus/livestatus.o
 EOF
 	# same for icigna
 	cat <<EOF >"${T}"/icigna.cfg

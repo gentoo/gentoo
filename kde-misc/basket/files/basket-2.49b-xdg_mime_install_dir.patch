@@ -1,0 +1,35 @@
+From 4c80df2dd6aeb7a90677d983a292e4f9a95f2a70 Mon Sep 17 00:00:00 2001
+From: Andreas Sturmlechner <asturm@gentoo.org>
+Date: Thu, 14 Nov 2019 13:35:42 +0100
+Subject: [PATCH] Fix install basket.xml to XDG_MIME_INSTALL_DIR
+
+Previous code did not work at all in a sandboxed packaging build.
+---
+ file-integration/CMakeLists.txt | 14 ++------------
+ 1 file changed, 2 insertions(+), 12 deletions(-)
+
+diff --git a/file-integration/CMakeLists.txt b/file-integration/CMakeLists.txt
+index c3774fe..77e4692 100644
+--- a/file-integration/CMakeLists.txt
++++ b/file-integration/CMakeLists.txt
+@@ -11,15 +11,5 @@ install(TARGETS basketthumbcreator DESTINATION ${PLUGIN_INSTALL_DIR})
+ 
+ ########### install files ###############
+ 
+-find_program(XDG-MIME_EXECUTABLE xdg-mime)
+-find_program(XDG-DESKTOP-MENU_EXECUTABLE xdg-desktop-menu)
+-
+-install(FILES  basketthumbcreator.desktop DESTINATION ${SERVICES_INSTALL_DIR})
+-install(CODE "
+-execute_process(COMMAND ${XDG-MIME_EXECUTABLE} install --novendor
+-  ${CMAKE_CURRENT_SOURCE_DIR}/basket.xml)
+-execute_process(COMMAND ${XDG-DESKTOP-MENU_EXECUTABLE} install
+-  --novendor ${CMAKE_SOURCE_DIR}/src/basket.desktop)
+-execute_process(COMMAND ${XDG-MIME_EXECUTABLE} default
+-  ${CMAKE_SOURCE_DIR}/src/basket.desktop application/x-basket-item)
+-")
++install(FILES basketthumbcreator.desktop DESTINATION ${SERVICES_INSTALL_DIR})
++install(FILES basket.xml DESTINATION ${XDG_MIME_INSTALL_DIR})
+-- 
+2.24.0
+

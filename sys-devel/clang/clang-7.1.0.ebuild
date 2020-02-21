@@ -31,7 +31,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="UoI-NCSA"
 SLOT="$(ver_cut 1)/$(ver_cut 1-2)"
-KEYWORDS="amd64 arm arm64 ~ppc64 x86 ~amd64-fbsd ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 arm arm64 ~ppc64 x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="debug default-compiler-rt default-libcxx doc +static-analyzer
 	test xml z3 kernel_FreeBSD ${ALL_LLVM_TARGETS[*]}"
 RESTRICT="!test? ( test )"
@@ -44,11 +44,9 @@ RDEPEND="
 	)
 	xml? ( dev-libs/libxml2:2=[${MULTILIB_USEDEP}] )
 	${PYTHON_DEPS}"
-# configparser-3.2 breaks the build (3.3 or none at all are fine)
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx )
 	xml? ( virtual/pkgconfig )
-	!!<dev-python/configparser-3.3.0.2
 	${PYTHON_DEPS}"
 RDEPEND="${RDEPEND}
 	!<sys-devel/llvm-4.0.0_rc:0
@@ -70,7 +68,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 
 PATCHES=(
 	# add Prefix include paths for Darwin
-	"${FILESDIR}"/6.0.1/darwin_prefix-include-paths.patch
+	"${FILESDIR}"/8.0.1/darwin_prefix-include-paths.patch
 
 	# fix detecting atomics library in clangd
 	# https://bugs.gentoo.org/667016

@@ -6,9 +6,8 @@ EAPI="6"
 inherit autotools
 
 DESCRIPTION="Library for handling root privilege"
-#HOMEPAGE="http://www.j10n.org/libspt/index.html"
-HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
-SRC_URI="mirror://gentoo/${P}.tar.bz2"
+HOMEPAGE="http://www.j10n.org/libspt/"
+SRC_URI="http://www.j10n.org/${PN}/${P}.tar.bz2"
 
 LICENSE="BSD-2"
 SLOT="0"
@@ -22,6 +21,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-gentoo.patch"
+	"${FILESDIR}/${PN}-glibc-2.30.patch"
 	"${FILESDIR}/${PN}-rpc.patch"
 )
 

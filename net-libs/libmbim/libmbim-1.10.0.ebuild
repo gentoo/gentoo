@@ -20,7 +20,7 @@ SLOT="0"
 IUSE="static-libs"
 
 RDEPEND=">=dev-libs/glib-2.32:2
-	virtual/libgudev:="
+	dev-libs/libgudev:="
 DEPEND="${RDEPEND}
 	dev-util/glib-utils
 	dev-util/gtk-doc-am

@@ -1,15 +1,33 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# This file requires >=portage-2.1.1
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-29)
+# media-libs/pulseaudio-qt is not keyworded
+kde-misc/kdeconnect pulseaudio
+
+# Georgy Yakovlev <gyakovlev@gentoo.org (2020-01-04)
+# zfs is not keyworded on x86
+dev-util/schroot zfs
+
+# Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
+# dev-libs/criterion is not keyworded yet
+app-admin/syslog-ng test
+
+# James Le Cuirot <chewi@gentoo.org> (2019-12-10)
+# The JIT feature only works on amd64 and x86.
+app-emulation/aranym -jit
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2019-11-20)
+# media-libs/libplacebo is keyworded on x86
+media-video/vlc -libplacebo
+
+# Thomas Deutschmann <whissi@gentoo.org> (2019-11-11)
+# dev-python/pandas is keyworded for x86
+sys-block/fio -python -gnuplot
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on x86
 sys-firmware/seabios -debug
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2019-09-06)
-# dev-qt/qtgamepad is not keyworded yet
-dev-qt/qt3d gamepad
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2019-08-28)
 # upstream provides docs and tools for tier-1 arches
@@ -65,15 +83,6 @@ dev-python/pymongo test
 # Bernard Cafarelli <voyageur@gentoo.org> (2018-09-27)
 # media-libs/qtav not keyworded
 media-video/orion qtav
-
-# Ben Kohler <bkohler@gentoo.org> (2018-08-23)
-# Unmask iwd support where net-wireless/iwd is keyworded
-net-misc/connman -iwd
-net-misc/networkmanager -iwd
-
-# Thomas Deutschmann <whissi@gentoo.org> (2018-08-23)
-# Dependency sys-cluster/ceph is keyworded for x86
-net-fs/samba -ceph
 
 # Rick Farina <zerochaos@gentoo.org> (2018-06-27)
 # Catalyst has support for assembling bootloader on this arch
@@ -198,7 +207,7 @@ net-im/telepathy-connection-managers -steam
 
 # Mike Frysinger <vapier@gentoo.org> (2014-08-04)
 # Unmask flashrom drivers that only work on x86 due to in/out asm insns #454024
-sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer_spi -satamv
+sys-apps/flashrom -atahpt -nic3com -nicnatsemi -nicrealtek -rayer-spi -satamv
 
 # Yixun Lan <dlan@gentoo.org> (2014-05-21)
 # sys-fs/zfs not keyworded on x86
@@ -301,3 +310,7 @@ x11-terms/eterm cpu_flags_x86_sse2
 
 # Steve Dibb <beandog@gentoo.org> (2008-09-29)
 media-video/mplayer -cpudetection
+
+# Tomáš Mózes <hydrapolic@gmail.com> (2019-11-02)
+# Requires dev-db/mongodb which has dropped x86 support
+dev-php/pecl-mongodb test

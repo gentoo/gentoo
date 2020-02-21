@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -111,9 +111,9 @@ src_install() {
 
 	# In upstream's build process, we copy these fiels below from the bundled arduino-builder.
 	# Here we do the same thing, but from the system arduino-builder.
-	dosym "${EPREFIX}/usr/share/arduino-builder/platform.txt" "/usr/share/${PN}/hardware/platform.txt"
-	dosym "${EPREFIX}/usr/share/arduino-builder/platform.keys.rewrite.txt" "/usr/share/${PN}/hardware/platform.keys.rewrite.txt"
-	dosym "${EPREFIX}/usr/bin/arduino-builder" "/usr/share/${PN}/arduino-builder"
+	dosym "../../arduino-builder/platform.txt" "/usr/share/${PN}/hardware/platform.txt"
+	dosym "../../arduino-builder/platform.keys.rewrite.txt" "/usr/share/${PN}/hardware/platform.keys.rewrite.txt"
+	dosym "../../../bin/arduino-builder" "/usr/share/${PN}/arduino-builder"
 
 	# hardware/tools/avr needs to exist or arduino-builder will
 	# complain about missing required -tools arg
@@ -124,7 +124,7 @@ src_install() {
 		einstalldocs
 
 		# arduino expects its doc in its "main" directory. symlink it.
-		dosym "${EPREFIX}/usr/share/doc/${PF}/html/reference" "/usr/share/${PN}/reference"
+		dosym "../doc/${PF}/html/reference" "/usr/share/${PN}/reference"
 	fi
 
 	# Install menu and icons

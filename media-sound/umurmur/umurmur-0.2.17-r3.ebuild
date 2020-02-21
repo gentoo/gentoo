@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ if [[ "${PV}" == 9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/umurmur/umurmur.git"
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/${PV/_}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~x86"
+	KEYWORDS="amd64 ~arm x86"
 fi
 LICENSE="BSD"
 SLOT="0"
@@ -27,7 +27,7 @@ DEPEND=">=dev-libs/protobuf-c-1.0.0_rc2
 		>=net-libs/gnutls-3.0.0
 	)
 	!gnutls? (
-		mbedtls? ( net-libs/mbedtls )
+		mbedtls? ( net-libs/mbedtls:= )
 		!mbedtls? (
 			libressl? ( dev-libs/libressl:0= )
 			!libressl? ( dev-libs/openssl:0= )

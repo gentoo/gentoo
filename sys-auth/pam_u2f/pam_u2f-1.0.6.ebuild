@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,7 +17,7 @@ IUSE="debug"
 RDEPEND="
 	app-crypt/libu2f-host
 	app-crypt/libu2f-server:=
-	virtual/pam"
+	sys-libs/pam"
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"

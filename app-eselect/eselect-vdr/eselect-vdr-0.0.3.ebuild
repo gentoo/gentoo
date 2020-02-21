@@ -1,10 +1,10 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 DESCRIPTION="Manages the VDR plugins"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://gitweb.gentoo.org/proj/gentoo-vdr-scripts.git/?h=eselect-module"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
 
 LICENSE="GPL-2"
@@ -16,7 +16,7 @@ RDEPEND=">=app-admin/eselect-1.2.3"
 
 src_install() {
 	insinto /usr/share/eselect/modules
-	doins vdr-plugin.eselect || die "Could not install eselect module"
+	doins vdr-plugin.eselect
 
 	dosym eselect /usr/bin/vdr-plugin-config
 }

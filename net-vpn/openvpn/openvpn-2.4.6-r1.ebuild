@@ -12,11 +12,12 @@ HOMEPAGE="https://openvpn.net/"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~x86-fbsd ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos"
 
 IUSE="down-root examples inotify iproute2 libressl lz4 +lzo mbedtls pam"
 IUSE+=" pkcs11 +plugins selinux +ssl static systemd test userland_BSD"
 
+RESTRICT="!test? ( test )"
 REQUIRED_USE="static? ( !plugins !pkcs11 )
 	pkcs11? ( ssl )
 	!plugins? ( !pam !down-root )
@@ -27,7 +28,7 @@ CDEPEND="
 		iproute2? ( sys-apps/iproute2[-minimal] )
 		!iproute2? ( >=sys-apps/net-tools-1.60_p20160215155418 )
 	)
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	ssl? (
 		!mbedtls? (
 			!libressl? ( >=dev-libs/openssl-0.9.8:0= )

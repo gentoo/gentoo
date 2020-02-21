@@ -1,0 +1,41 @@
+will fix the wrong encode
+wrt bug 642528
+
+Signed-of-by: Joerg Bornkessel <hd_brummy@gentoo.org> (13 Nov 2019)
+
+diff -Naur ttxtsubs-0.3.0.orig/teletext-chars.h ttxtsubs-0.3.0/teletext-chars.h
+--- ttxtsubs-0.3.0.orig/teletext-chars.h	2019-11-13 17:37:33.000000000 +0100
++++ ttxtsubs-0.3.0/teletext-chars.h	2019-11-13 17:39:02.000000000 +0100
+@@ -68,19 +68,19 @@
+  */
+ 
+ uint8_t laG0_nat_opts[13][14] = {
+-{0, '#', 'u', 'c', 't', 'z', 'ý', 'í', 'r', 'é', 'á', 'e', 'ú', 's'}, // 0 - Czech/Slovak
+-{0, '£', '$', '@', '-', '½', '-', '|', '#', '-', '¼', '#', '¾', '÷'}, // 1 - English
+-{0, '#', 'õ', 'S', 'Ä', 'Ö', 'Z', 'Ü', 'Õ', 's', 'ä', 'ö', 'z', 'ü'}, // 2 - Estonian
+-{0, 'é', 'ï', 'à', 'ë', 'ê', 'ù', 'î', '#', 'è', 'â', 'ô', 'û', 'ç'}, // 3 - French
+-{0, '#', '$', '§', 'Ä', 'Ö', 'Ü', '^', '_', 'º', 'ä', 'ö', 'ü', 'ß'}, // 4 - German
+-{0, '£', '$', 'é', 'º', 'ç', '-', '|', '#', 'ù', 'à', 'ò', 'è', 'ì'}, // 5 - Italian
+-{0, '#', '$', 'S', 'e', 'e', 'Z', 'c', 'u', 's', 'a', 'u', 'z', 'i'}, // 6 - Lettish/Lithuanian
+-{0, '#', 'n', 'a', 'Z', 'S', 'L', 'c', 'ó', 'e', 'z', 's', 'l', 'z'}, // 7 - Polish
+-{0, 'ç', '$', 'i', 'á', 'é', 'í', 'ó', 'ú', '¿', 'ü', 'ñ', 'è', 'à'}, // 8 - Portuguese/Spanish
+-{0, '#', '¤', 'T', 'Â', 'S', 'A', 'Î', 'i', 't', 'â', 's', 'a', 'î'}, // 9 - Rumanian
+-{0, '#', 'Ë', 'C', 'C', 'Z', 'D', 'S', 'ë', 'c', 'c', 'z', 'd', 's'}, // 10 - Serbian/Croation/Slovenian
+-{0, '#', '¤', 'É', 'Ä', 'Ö', 'Å', 'Ü', '_', 'é', 'ä', 'ö', 'å', 'ü'}, // 11 - Swedish/Finnish/Hungarian
+-{0, 'T', 'g', 'I', 'S', 'Ö', 'Ç', 'Ü', 'G', 'i', 's', 'ö', 'ç', 'ü'}  // 12 - Turkish
++{0, '#',  'u',  'c',  't',  'z',  0xfd, 0xed, 'r',  0xe9, 0xe1, 'e',  0xfa, 's' }, // 0 - Czech/Slovak
++{0, 0xa3, '$',  '@',  '-',  0xbd, '-',  '|',  '#',  '-',  0xbc, '#',  0xbe, 0xf7}, // 1 - English
++{0, '#',  0xf5, 'S',  0xc4, 0xd6, 'Z',  0xdc, 0xd5, 's',  0xe4, 0xf6, 'z',  0xfc}, // 2 - Estonian
++{0, 0xe9, 0xef, 0xe0, 0xeb, 0xea, 0xf9, 0xee, '#',  0xe8, 0xe2, 0xf4, 0xfb, 0xe7}, // 3 - French
++{0, '#',  '$',  0xa7, 0xc4, 0xd6, 0xdc, '^',  '_',  0xba, 0xe4, 0xf6, 0xfc, 0xdf}, // 4 - German
++{0, 0xa3, '$',  0xe9, 0xba, 0xe7, '-',  '|',  '#',  0xf9, 0xe0, 0xf2, 0xe8, 0xec}, // 5 - Italian
++{0, '#',  '$',  'S',  'e',  'e',  'Z',  'c',  'u',  's',  'a',  'u',  'z',  'i' }, // 6 - Lettish/Lithuanian
++{0, '#',  'n',  'a',  'Z',  'S',  'L',  'c',  0xf3, 'e',  'z',  's',  'l',  'z' }, // 7 - Polish
++{0, 0xe7, '$',  'i',  0xe1, 0xe9, 0xed, 0xf3, 0xfa, 0xbf, 0xfc, 0xf1, 0xe8, 0xe0}, // 8 - Portuguese/Spanish
++{0, '#',  0xa4, 'T',  0xc2, 'S',  'A',  0xce, 'i',  't',  0xe2, 's',  'a',  0xee}, // 9 - Rumanian
++{0, '#',  0xcb, 'C',  'C',  'Z',  'D',  'S',  0xeb, 'c',  'c',  'z',  'd',  's' }, // 10 - Serbian/Croation/Slovenian
++{0, '#',  0xa4, 0xc9, 0xc4, 0xd6, 0xc5, 0xdc, '_',  0xe9, 0xe4, 0xf6, 0xe5, 0xfc}, // 11 - Swedish/Finnish/Hungarian
++{0, 'T',  'g',  'I',  'S',  0xd6, 0xc7, 0xdc, 'G',  'i',  's',  0xf6, 0xe7, 0xfc}  // 12 - Turkish
+ };
+ 
+ uint16_t laG0_nat_opts16[13][14] = {

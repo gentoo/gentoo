@@ -1,7 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
+
 inherit autotools
 
 DESCRIPTION="console app for playing FLAC audio files"
@@ -13,14 +14,14 @@ SLOT="0"
 KEYWORDS="~alpha amd64 arm ppc ppc64 sh sparc x86"
 IUSE=""
 
-RDEPEND="dev-libs/popt
-	media-libs/flac
-	media-libs/libao
+RDEPEND="
+	dev-libs/popt:=
+	media-libs/flac:=
+	media-libs/libao:=
 	media-libs/libogg"
 DEPEND="${RDEPEND}"
 
-DOCS="AUTHORS BUGS ChangeLog NEWS README*"
-
 src_prepare() {
+	default
 	eautoreconf
 }

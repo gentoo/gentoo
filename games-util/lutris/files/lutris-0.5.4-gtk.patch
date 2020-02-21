@@ -1,0 +1,29 @@
+From a97150b78954e176cb0f825f0c201f54d5da613e Mon Sep 17 00:00:00 2001
+From: Stefan Strogin <steils@gentoo.org>
+Date: Tue, 31 Dec 2019 03:22:26 +0200
+Subject: [PATCH] Call the correct method for creating TreeModelSort (Closes
+ #2554)
+
+Upstream-Status: Accepted
+[https://github.com/lutris/lutris/commit/a99b17f00dfc4cdab80c237752cc3167d64194eb]
+Signed-off-by: Stefan Strogin <steils@gentoo.org>
+---
+ lutris/gui/views/store.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lutris/gui/views/store.py b/lutris/gui/views/store.py
+index ba331313..4d5f372e 100644
+--- a/lutris/gui/views/store.py
++++ b/lutris/gui/views/store.py
+@@ -130,7 +130,7 @@ class GameStore(GObject.Object):
+         self.prevent_sort_update = False  # prevent recursion with signals
+         self.modelfilter = self.store.filter_new()
+         self.modelfilter.set_visible_func(self.filter_view)
+-        self.modelsort = Gtk.TreeModelSort.sort_new_with_model(self.modelfilter)
++        self.modelsort = Gtk.TreeModelSort.new_with_model(self.modelfilter)
+         self.modelsort.connect("sort-column-changed", self.on_sort_column_changed)
+         self.modelsort.set_sort_func(sort_col, sort_func, sort_col)
+         self.sort_view(sort_key, sort_ascending)
+-- 
+2.24.1
+

@@ -21,7 +21,7 @@ else
 	#SRC_URI="https://github.com/apple/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	SRC_URI="https://github.com/apple/cups/releases/download/v${MY_PV}/${MY_P}-source.tar.gz"
 	if [[ "${PV}" != *_beta* ]] && [[ "${PV}" != *_rc* ]] ; then
-		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~m68k-mint"
+		KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~m68k-mint"
 	fi
 fi
 
@@ -44,7 +44,7 @@ CDEPEND="
 	dbus? ( >=sys-apps/dbus-1.6.18-r1[${MULTILIB_USEDEP}] )
 	kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )
 	!lprng-compat? ( !net-print/lprng )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 	ssl? ( >=net-libs/gnutls-2.12.23-r6:0=[${MULTILIB_USEDEP}] )
 	systemd? ( sys-apps/systemd )
 	usb? ( virtual/libusb:1 )
@@ -262,7 +262,7 @@ multilib_src_install_all() {
 		grep -w 'disable' "${ED}"/etc/xinetd.d/cups-lpd || \
 			{ sed -i -e "s:}:\tdisable = yes\n}:" "${ED}"/etc/xinetd.d/cups-lpd || die ; }
 		# write permission for file owner (root), bug #296221
-		fperms u+w /etc/xinetd.d/cups-lpd || die "fperms failed"
+		fperms u+w /etc/xinetd.d/cups-lpd
 	else
 		# always configure with --with-xinetd= and clean up later,
 		# bug #525604

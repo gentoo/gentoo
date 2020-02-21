@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -23,7 +23,7 @@ SLOT="0/${PV}"
 IUSE="+ocamlopt doc +deriving +ppx +react +xml X"
 
 RDEPEND="
-	>=dev-lang/ocaml-3.12:=[ocamlopt?,X?]
+	>=dev-lang/ocaml-3.12:=[ocamlopt?,X(+)?]
 	>=dev-ml/lwt-2.4.4:=[camlp4(+)]
 	react? ( dev-ml/react:=  dev-ml/reactiveData:= )
 	xml? ( >=dev-ml/tyxml-4:= )

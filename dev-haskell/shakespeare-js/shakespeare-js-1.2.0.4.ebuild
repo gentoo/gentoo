@@ -10,12 +10,13 @@ inherit haskell-cabal
 
 DESCRIPTION="Stick your haskell variables into javascript/coffeescript at compile time"
 HOMEPAGE="https://www.yesodweb.com/book/shakespearean-templates"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="test-coffee test-export test-roy"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/aeson-0.5:=[profile?]
 	>=dev-haskell/shakespeare-1.2:=[profile?] <dev-haskell/shakespeare-1.3:=[profile?]

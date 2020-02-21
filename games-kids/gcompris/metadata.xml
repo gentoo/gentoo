@@ -3,10 +3,13 @@
 <pkgmetadata>
 	<maintainer type="project">
 		<email>kde@gentoo.org</email>
-		<name>Gentoo Games Project</name>
+		<name>Gentoo KDE Project</name>
 	</maintainer>
 	<maintainer type="project">
 		<email>games@gentoo.org</email>
 		<name>Gentoo Games Project</name>
 	</maintainer>
+	<use>
+		<flag name="kiosk">Enable kiosk mode by default (for use by small children or on a self-service host machine)</flag>
+	</use>
 </pkgmetadata>

@@ -1,0 +1,19 @@
+--- a/CMakeLists_Dependencies.cmake	2019-07-31 00:34:43.000000000 +0200
++++ b/CMakeLists_Dependencies.cmake	2019-10-02 00:17:34.968355656 +0200
+@@ -954,6 +954,16 @@
+ endif()
+ #>>HUNSPELL for Speelling support
+ 
++#<<HYPHEN for Hyphenation support
++find_package(HYPHEN)
++if(HYPHEN_FOUND)
++	message("System Hyphen Found OK")
++	set(HAVE_HYPHEN ON)
++else()
++	message("Hyphen or its developer libraries NOT found - using bundled Hyphen instead")
++endif()
++#>>HYPHEN for Hyphenation support
++
+ #<<PoDoFo for AI PDF import
+ option(WITH_PODOFO "Enable support for PDF embedded in AI" ON)
+ if (WITH_PODOFO)

@@ -1,28 +1,22 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit versionator
-
-MYP="${PN}_$(replace_all_version_separators '_')"
+MY_P="${PN}_$(ver_rs 1-3 '_')"
 
 DESCRIPTION="Template Numerical Toolkit: C++ headers for array and matrices"
 HOMEPAGE="http://math.nist.gov/tnt/"
-SRC_URI="http://math.nist.gov/tnt/${MYP}.zip"
+SRC_URI="http://math.nist.gov/tnt/${MY_P}.zip"
 
 LICENSE="public-domain"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 
-IUSE=""
-
-DEPEND="app-arch/unzip"
-RDEPEND=""
+BDEPEND="app-arch/unzip"
 
 S="${WORKDIR}/${PN}"
 
 src_install() {
-	insinto /usr/include
-	doins *.h
+	doheader *.h
 }

@@ -10,7 +10,7 @@ if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://get.bitlbee.org/src/${P}.tar.gz"
-	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
+	KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 fi
 
 DESCRIPTION="irc to IM gateway that support multiple IM protocols"
@@ -109,6 +109,7 @@ src_configure() {
 		--datadir=/usr/share/bitlbee \
 		--etcdir=/etc/bitlbee \
 		--plugindir=/usr/$(get_libdir)/bitlbee \
+		--pcdir=/usr/$(get_libdir)/pkgconfig \
 		--systemdsystemunitdir=$(systemd_get_systemunitdir) \
 		--doc=1 \
 		--strip=0 \

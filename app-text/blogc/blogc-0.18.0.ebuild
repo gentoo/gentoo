@@ -22,6 +22,7 @@ fi
 LICENSE="BSD"
 SLOT="0"
 IUSE="git httpd make test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	git? (

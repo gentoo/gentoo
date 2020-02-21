@@ -12,6 +12,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm ppc ppc64 x86"
 IUSE="doc luajit test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-lua/luafilesystem[luajit=]

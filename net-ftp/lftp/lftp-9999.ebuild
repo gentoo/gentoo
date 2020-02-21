@@ -22,7 +22,7 @@ RDEPEND="
 	idn? ( net-dns/libidn2:= )
 	socks5? (
 		>=net-proxy/dante-1.1.12
-		virtual/pam
+		sys-libs/pam
 	)
 	ssl? (
 		gnutls? ( >=net-libs/gnutls-1.2.3:0= )

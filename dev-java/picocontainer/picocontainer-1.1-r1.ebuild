@@ -1,7 +1,7 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
+EAPI=7
 
 inherit java-pkg-2 java-ant-2
 
@@ -25,9 +25,9 @@ DEPEND=">=virtual/jdk-1.4
 
 RESTRICT="test"
 
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
+src_prepare() {
+	default
+
 	# Don't run tests automatically
 	sed -i -e 's/compile,test/compile/' build.xml || die
 

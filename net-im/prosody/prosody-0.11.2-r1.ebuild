@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic multilib systemd
+inherit flag-o-matic multilib systemd toolchain-funcs
 
 MY_PV=$(ver_rs 3 '')
 MY_P="${PN}-${MY_PV}"
@@ -15,6 +15,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="amd64 arm x86"
 IUSE="ipv6 libevent mysql postgres sqlite ssl zlib jit libressl test"
+RESTRICT="!test? ( test )"
 
 BASE_DEPEND="net-im/jabber-base
 		dev-lua/LuaBitOp

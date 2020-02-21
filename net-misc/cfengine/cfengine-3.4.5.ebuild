@@ -72,11 +72,11 @@ src_configure() {
 }
 
 src_install() {
-	newinitd "${FILESDIR}"/cf-serverd.rc6 cf-serverd || die
-	newinitd "${FILESDIR}"/cf-monitord.rc6 cf-monitord || die
-	newinitd "${FILESDIR}"/cf-execd.rc6 cf-execd || die
+	newinitd "${FILESDIR}"/cf-serverd.rc6 cf-serverd
+	newinitd "${FILESDIR}"/cf-monitord.rc6 cf-monitord
+	newinitd "${FILESDIR}"/cf-execd.rc6 cf-execd
 
-	emake DESTDIR="${D}" install || die
+	emake DESTDIR="${D}" install
 
 	# Evil workaround for now..
 	mv "${D}"/usr/share/doc/${PN}/ "${D}"/usr/share/doc/${PF}
@@ -96,12 +96,12 @@ src_install() {
 	# binaries here. This is the default search location for the
 	# binaries.
 	for bin in promises agent monitord serverd execd runagent key report; do
-		dosym /usr/sbin/cf-$bin /var/cfengine/bin/cf-$bin || die
+		dosym /usr/sbin/cf-$bin /var/cfengine/bin/cf-$bin
 	done
 
 	if use html; then
 		docinto html
-		dohtml -r docs/ || die
+		dohtml -r docs/
 	fi
 }
 

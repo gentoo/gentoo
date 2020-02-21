@@ -162,7 +162,7 @@ src_install() {
 }
 
 ##
-# Parameters :
+# Parameters:
 # 1 - Path where to search for source files.
 # 2 - Path where source files must be copied.
 copySourceFiles() {
@@ -175,7 +175,7 @@ copySourceFiles() {
 }
 
 ##
-# Parameters :
+# Parameters:
 # 1 - Path of the file to create.
 # 2 - Name of the module.
 # 3 - Path of the generated Makefile.

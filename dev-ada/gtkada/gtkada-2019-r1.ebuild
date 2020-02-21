@@ -15,7 +15,7 @@ SRC_URI="http://mirrors.cdn.adacore.com/art/5ce7f58931e87adb2d312c53
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="+shared static-libs"
 
 RDEPEND="${ADA_DEPS}
@@ -34,7 +34,10 @@ REQUIRED_USE="${ADA_REQUIRED_USE}"
 
 S="${WORKDIR}"/${MYP}-src
 
-PATCHES=( "${FILESDIR}"/${PN}-2017-r1-gentoo.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-2017-r1-gentoo.patch
+	"${FILESDIR}"/${P}-gentoo.patch
+)
 
 src_prepare() {
 	default

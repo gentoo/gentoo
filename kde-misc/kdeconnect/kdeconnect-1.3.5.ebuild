@@ -61,8 +61,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DEXPERIMENTALAPP_ENABLED=$(usex app)
 		-DBLUETOOTH_ENABLED=$(usex bluetooth)
-		$(cmake-utils_use_find_package mousepad LibFakeKey)
-		$(cmake-utils_use_find_package wayland KF5Wayland)
+		$(cmake_use_find_package mousepad LibFakeKey)
+		$(cmake_use_find_package wayland KF5Wayland)
 	)
 
 	kde5_src_configure

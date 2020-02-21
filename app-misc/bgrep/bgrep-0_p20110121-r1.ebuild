@@ -20,6 +20,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=""
 DEPEND="test? ( dev-lang/perl )"

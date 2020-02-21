@@ -1,0 +1,48 @@
+diff --git a/lib/Crypto/SelfTest/Cipher/test_ChaCha20_Poly1305.py b/lib/Crypto/SelfTest/Cipher/test_ChaCha20_Poly1305.py
+index a2109891..44d2e532 100644
+--- a/lib/Crypto/SelfTest/Cipher/test_ChaCha20_Poly1305.py
++++ b/lib/Crypto/SelfTest/Cipher/test_ChaCha20_Poly1305.py
+@@ -626,6 +626,7 @@ class TestVectorsWycheproof(unittest.TestCase):
+     def __init__(self, wycheproof_warnings):
+         unittest.TestCase.__init__(self)
+         self._wycheproof_warnings = wycheproof_warnings
++        self._id = "None"
+ 
+     def setUp(self):
+         comps = "Crypto.SelfTest.Cipher.test_vectors.wycheproof".split(".")
+diff --git a/lib/Crypto/SelfTest/Cipher/test_EAX.py b/lib/Crypto/SelfTest/Cipher/test_EAX.py
+index cdd0e85a..546186d1 100644
+--- a/lib/Crypto/SelfTest/Cipher/test_EAX.py
++++ b/lib/Crypto/SelfTest/Cipher/test_EAX.py
+@@ -656,6 +656,7 @@ class TestVectorsWycheproof(unittest.TestCase):
+     def __init__(self, wycheproof_warnings):
+         unittest.TestCase.__init__(self)
+         self._wycheproof_warnings = wycheproof_warnings
++        self._id = "None"
+ 
+     def setUp(self):
+         comps = "Crypto.SelfTest.Cipher.test_vectors.wycheproof".split(".")
+diff --git a/lib/Crypto/SelfTest/Cipher/test_GCM.py b/lib/Crypto/SelfTest/Cipher/test_GCM.py
+index e3a7a3da..71ea0d18 100644
+--- a/lib/Crypto/SelfTest/Cipher/test_GCM.py
++++ b/lib/Crypto/SelfTest/Cipher/test_GCM.py
+@@ -828,6 +828,7 @@ class TestVectorsWycheproof(unittest.TestCase):
+         unittest.TestCase.__init__(self)
+         self._wycheproof_warnings = wycheproof_warnings
+         self._extra_params = extra_params
++        self._id = "None"
+ 
+     def setUp(self):
+         comps = "Crypto.SelfTest.Cipher.test_vectors.wycheproof".split(".")
+diff --git a/lib/Crypto/SelfTest/Cipher/test_SIV.py b/lib/Crypto/SelfTest/Cipher/test_SIV.py
+index 38341e14..ab588adc 100644
+--- a/lib/Crypto/SelfTest/Cipher/test_SIV.py
++++ b/lib/Crypto/SelfTest/Cipher/test_SIV.py
+@@ -456,6 +456,7 @@ class TestVectorsWycheproof(unittest.TestCase):
+ 
+     def __init__(self):
+         unittest.TestCase.__init__(self)
++        self._id = "None"
+ 
+     def setUp(self):
+         comps = "Crypto.SelfTest.Cipher.test_vectors.wycheproof".split(".")

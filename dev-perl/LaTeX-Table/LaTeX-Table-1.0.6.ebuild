@@ -13,6 +13,7 @@ LICENSE="|| ( GPL-1+ Artistic )"
 SLOT="0"
 KEYWORDS="amd64 ~arm ppc ppc64 x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	virtual/perl-Carp

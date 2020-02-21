@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-CMAKE_REMOVE_MODULES="no"
-inherit bash-completion-r1 elisp-common flag-o-matic toolchain-funcs virtualx xdg cmake-utils
+CMAKE_REMOVE_MODULES_LIST=( none )
+inherit bash-completion-r1 elisp-common flag-o-matic toolchain-funcs virtualx xdg cmake
 
 MY_P="${P/_/-}"
 
@@ -16,8 +16,9 @@ SRC_URI="https://cmake.org/files/v$(ver_cut 1-2)/${MY_P}.tar.gz"
 LICENSE="CMake"
 SLOT="0"
 [[ "${PV}" = *_rc* ]] || \
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 IUSE="doc emacs system-jsoncpp ncurses qt5 test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-crypt/rhash
@@ -27,7 +28,7 @@ RDEPEND="
 	>=net-misc/curl-7.21.5[ssl]
 	sys-libs/zlib
 	virtual/pkgconfig
-	emacs? ( virtual/emacs )
+	emacs? ( >=app-editors/emacs-23.1:* )
 	ncurses? ( sys-libs/ncurses:0= )
 	qt5? (
 		dev-qt/qtcore:5
@@ -133,7 +134,7 @@ cmake_src_test() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# disable Xcode hooks, bug #652134
 	if [[ ${CHOST} == *-darwin* ]] ; then
@@ -160,7 +161,6 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_USE_SYSTEM_LIBRARIES=ON
 		-DCMAKE_USE_SYSTEM_LIBRARY_JSONCPP=$(usex system-jsoncpp)
-		-DCMAKE_INSTALL_PREFIX="${EPREFIX}"/usr
 		-DCMAKE_DOC_DIR=/share/doc/${PF}
 		-DCMAKE_MAN_DIR=/share/man
 		-DCMAKE_DATA_DIR=/share/${PN}
@@ -173,15 +173,15 @@ src_configure() {
 	if use qt5 ; then
 		mycmakeargs+=(
 			-DBUILD_QtDialog=ON
-			$(cmake-utils_use_find_package qt5 Qt5Widgets)
+			$(cmake_use_find_package qt5 Qt5Widgets)
 		)
 	fi
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_compile() {
-	cmake-utils_src_compile
+	cmake_src_compile
 	use emacs && elisp-compile Auxiliary/cmake-mode.el
 }
 
@@ -190,7 +190,7 @@ src_test() {
 }
 
 src_install() {
-	cmake-utils_src_install
+	cmake_src_install
 
 	if use emacs; then
 		elisp-install ${PN} Auxiliary/cmake-mode.el Auxiliary/cmake-mode.elc

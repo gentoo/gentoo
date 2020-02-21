@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ LICENSE="LGPL-2.1"
 SLOT="3.0/2"
 KEYWORDS="~alpha amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc x86"
 IUSE="+introspection test"
+RESTRICT="!test? ( test )"
 
 # Vala/libgee/gtk+:2 is only used when maintainer-mode is enabled
 # Doesn't seem to be used for anything...

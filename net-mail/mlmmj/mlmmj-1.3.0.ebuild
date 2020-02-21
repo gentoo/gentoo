@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,6 +18,7 @@ S="${WORKDIR}/${MY_P}"
 DOCS="AUTHORS ChangeLog FAQ README* TODO TUNABLES UPGRADE"
 PATCHES=(
 	"${FILESDIR}"/mlmmj-1.2.19.0-listcontrol-customheaders.patch
+	"${FILESDIR}"/mlmmj-1.3.0-gcc-10.patch
 )
 
 src_configure() {

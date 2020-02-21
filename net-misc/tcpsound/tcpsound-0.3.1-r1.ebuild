@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,7 +7,7 @@ inherit eutils toolchain-funcs
 DESCRIPTION="Play sounds in response to network traffic"
 LICENSE="BSD"
 HOMEPAGE="http://www.ioplex.com/~miallen/tcpsound/"
-SRC_URI="${HOMEPAGE}dl/${P}.tar.gz"
+SRC_URI="http://www.ioplex.com/~miallen/tcpsound/dl/${P}.tar.gz"
 SLOT="0"
 KEYWORDS="amd64 x86"
 

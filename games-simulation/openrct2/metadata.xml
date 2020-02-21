@@ -2,26 +2,24 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>jan@segre.in</email>
-		<name>Jan Segre</name>
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>hendrik@consetetur.de</email>
-		<name>Hendrik v. Raven (lorem_ipsum)</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
-	<longdescription lang="en">
-		An open-source re-implementation of RollerCoaster Tycoon 2. A construction and management simulation video game that simulates amusement park management.
+	<longdescription>
+		OpenRCT2 is an open-source re-implementation of RollerCoaster Tycoon 2 (RCT2),
+		expanding the game with new features, fixing bugs and raising game limits.
+		The gameplay revolves around building and maintaining an amusement park containing attractions,
+		shops and facilities. The player must try to make a profit and maintain a good park reputation
+		whilst keeping the guests happy. OpenRCT2 allows for both scenario and sandbox play.
+		Scenarios require the player to complete a certain objective in a set time limit whilst
+		sandbox allows the player to build a more flexible park with optionally no restrictions or finance.
 	</longdescription>
 	<use>
-		<flag name="multiplayer">Enable multiplayer functionality</flag>
-		<flag name="twitch">Enable Twitch support</flag>
+		<flag name="lightfx">Enables LightFX for better lightning effects.</flag>
+		<flag name="twitch">Enables streaming of ingame content to Twitch.</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">OpenRCT2/OpenRCT2</remote-id>
 		<bugs-to>https://github.com/OpenRCT2/OpenRCT2/issues</bugs-to>
+		<remote-id type="github">OpenRCT2/OpenRCT2</remote-id>
 	</upstream>
 </pkgmetadata>

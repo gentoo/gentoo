@@ -12,7 +12,7 @@ DESCRIPTION="A Perl Module for Tk"
 
 LICENSE+=" tcltk BSD"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~sparc-solaris ~x86-solaris"
 IUSE=""
 
 DEPEND="
@@ -60,5 +60,5 @@ src_prepare() {
 	mv "${T}/stash/testimg.jpg" "${S}/JPEG/jpeg/testimg.jpg" || die "can't restore testimg.jpg"
 }
 src_test() {
-	virtx perl-module_src_test || die "src_test failed"
+	virtx perl-module_src_test
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -81,7 +81,7 @@ _emake() {
 		HAVE_AVX2=$(usex cpu_flags_x86_avx2 1 0) \
 		RPM_OPT_FLAGS="${CFLAGS} ${CPPFLAGS}" \
 		CFLAGS_OPT='$(CFLAGS)' \
-		LDFLAGS="${LDFLAGS} -Wl,-rpath,${EPREFIX%/}/usr/$(get_libdir)/${PN}" \
+		LDFLAGS="${LDFLAGS} -Wl,-rpath,${EPREFIX}/usr/$(get_libdir)/${PN}" \
 		CC="$(tc-getCC)" \
 		"$@"
 }

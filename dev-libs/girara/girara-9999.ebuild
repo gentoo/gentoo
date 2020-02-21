@@ -21,6 +21,8 @@ LICENSE="ZLIB"
 SLOT="0"
 IUSE="doc libnotify test"
 
+RESTRICT="!test? ( test )"
+
 RDEPEND="dev-libs/glib:2
 	 dev-libs/json-c
 	 >=x11-libs/gtk+-3.20:3

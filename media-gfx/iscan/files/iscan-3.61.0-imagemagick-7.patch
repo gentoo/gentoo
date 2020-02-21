@@ -1,0 +1,54 @@
+From 222aa3e123ee771d8997f6931997e3143186e0d6 Mon Sep 17 00:00:00 2001
+From: sirjaren <sirjaren@gmail.com>
+Date: Tue, 20 Feb 2018 13:35:46 -0600
+Subject: [PATCH] media-gfx/utsushi: ImageMagick deskew/crop support
+
+Fixes to allow utsushi to be built with --magick-pp.  According to:
+  https://github.com/utsushi/utsushi/issues/43
+
+The API changes from ImageMagick 6 to 7 means build failures as there
+are old API's in use.  It seems, that these API's are not actually used
+(as in GraphicsMagick doesn't use them), so it may be ok to disable the
+checks for them in 'doc-locate.cpp'.
+
+This is not yet confirmed, but allows building and using deskew in my
+own testing.
+---
+ .../files/utsushi-9999-magick-pp.patch        | 33 ++++++++++
+ 4 files changed, 111 insertions(+), 8 deletions(-)
+ create mode 100644 media-gfx/utsushi/files/utsushi-9999-boost.patch
+ create mode 100644 media-gfx/utsushi/files/utsushi-9999-magick-pp.patch
+
+diff --git a/filters/doc-locate.cpp b/filters/doc-locate.cpp
+index 4b09b29..4508274 100644
+--- a/filters/doc-locate.cpp
++++ b/filters/doc-locate.cpp
+@@ -260,17 +260,17 @@ public:
+     clone.rotate (deskew_angle ());
+ 
+     Magick::Geometry rv = bbox (clone);
+-    if (HAVE_IMAGE_MAGICK_PP)
+-    {
+-      if (clone.page ().xNegative ())
+-        rv.xOff (rv.xOff () - clone.page ().xOff());
+-      else
+-        rv.xOff (rv.xOff () + clone.page ().xOff());
+-      if (clone.page ().yNegative ())
+-        rv.yOff (rv.yOff () - clone.page ().yOff());
+-      else
+-        rv.yOff (rv.yOff () + clone.page ().yOff());
+-    }
++    /*if (HAVE_IMAGE_MAGICK_PP)
++     *{
++     *  if (clone.page ().xNegative ())
++     *    rv.xOff (rv.xOff () - clone.page ().xOff());
++     *  else
++     *    rv.xOff (rv.xOff () + clone.page ().xOff());
++     *  if (clone.page ().yNegative ())
++     *    rv.yOff (rv.yOff () - clone.page ().yOff());
++     *  else
++     *    rv.yOff (rv.yOff () + clone.page ().yOff());
++    }*/
+     return scale (rv);
+   }
+ 

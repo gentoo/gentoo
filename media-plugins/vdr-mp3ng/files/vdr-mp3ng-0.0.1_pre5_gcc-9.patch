@@ -1,0 +1,19 @@
+https://bugs.gentoo.org/705372
+
+if you use use-flag oss,
+this will fix on gcc-9.x
+error: call of overloaded abs(unsigned int) is ambiguous
+
+Signed-off-by: Joerg Bornkessel <hd_brummy@gentoo.org> ( 14 Jan 2020 )
+diff -Naur mp3ng-0.9.13-MKIV-pre3.orig/player-mp3.c mp3ng-0.9.13-MKIV-pre3/player-mp3.c
+--- mp3ng-0.9.13-MKIV-pre3.orig/player-mp3.c	2020-01-14 22:33:44.687155745 +0100
++++ mp3ng-0.9.13-MKIV-pre3/player-mp3.c	2020-01-14 22:35:25.490155745 +0100
+@@ -1435,7 +1435,7 @@
+         int real=sr;
+         CHECK(ioctl(fd,SNDCTL_DSP_SPEED,&real));
+         d(printf("oss: DSP samplerate now %d\n",real))
+-        if(abs(real-sr)<sr/50) {
++        if(std::abs( int(real-sr) )<sr/50) {
+           outSr=sr;
+           d(printf("mp3-oss: DSP reset done\n"))
+           return true;

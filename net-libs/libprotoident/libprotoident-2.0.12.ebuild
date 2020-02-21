@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="A library that performs application layer protocol identification for flows"
 HOMEPAGE="https://research.wand.net.nz/software/libprotoident.php"

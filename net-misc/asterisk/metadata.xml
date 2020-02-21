@@ -2,20 +2,25 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>chainsaw@gentoo.org</email>
-		<name>Tony Vroon</name>
+		<email>jaco@uls.co.za</email>
+		<name>Jaco Kroon</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
 	</maintainer>
 	<use>
-		<flag name="newt">Include additional tools that require redhats windowing toolkit</flag>
-		<flag name="dahdi">Support Digium compatible hardware (formerly known as Zaptel).</flag>
-		<flag name="span">Enable support for the spandsp codec</flag>
-		<flag name="samples">Install sample sound and configuration files (default: on)</flag>
-		<flag name="srtp">Enable support for encrypted voice transmission (secure RTP)</flag>
-		<flag name="gtalk">Enable support for Google Talk services</flag>
-		<flag name="osplookup">Support secure peering using the Open Settlement Protocol</flag>
-		<flag name="http">Enable embedded web server</flag>
 		<flag name="cluster">Enable high-availability support through the Corosync Cluster Engine</flag>
+		<flag name="dahdi">Support Digium compatible hardware (formerly known as Zaptel).</flag>
+		<flag name="gtalk">Enable support for Google Talk services</flag>
+		<flag name="http">Enable embedded web server</flag>
 		<flag name="ilbc">Enable the Internet Low Bitrate Codec (iLBC)</flag>
+		<flag name="newt">Include additional tools that require redhats windowing toolkit</flag>
+		<flag name="osplookup">Support secure peering using the Open Settlement Protocol</flag>
 		<flag name="pjproject">Enable support for pjproject (pjsip)</flag>
+		<flag name="samples">Install sample sound and configuration files (default: on)</flag>
+		<flag name="span">Enable support for the spandsp codec</flag>
+		<flag name="srtp">Enable support for encrypted voice transmission (secure RTP)</flag>
+		<flag name="statsd">Enable statsd integration</flag>
 	</use>
 </pkgmetadata>

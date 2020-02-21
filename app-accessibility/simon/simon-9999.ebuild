@@ -4,51 +4,55 @@
 EAPI=7
 
 EGIT_BRANCH="kf5"
-KDE_HANDBOOK="forceoptional"
-KDE_TEST="forceoptional"
-inherit kde5
+ECM_HANDBOOK="forceoptional"
+ECM_TEST="forceoptional"
+inherit ecm kde.org
 
 DESCRIPTION="Open-source speech recognition program for replacing mouse and keyboard"
 HOMEPAGE="https://simon-listens.org/"
-[[ ${PV} != *9999* ]] && SRC_URI="mirror://kde/unstable/simon/${PV}/${P}.tar.xz"
+
+if [[ ${PV} != *9999* ]]; then
+	SRC_URI="mirror://kde/unstable/simon/${PV}/${P}.tar.xz"
+	KEYWORDS=""
+fi
 
 LICENSE="GPL-2"
-KEYWORDS=""
+SLOT="5"
 IUSE="libsamplerate opencv pim sphinx"
 
 DEPEND="
-	$(add_frameworks_dep karchive)
-	$(add_frameworks_dep kcmutils)
-	$(add_frameworks_dep kcompletion)
-	$(add_frameworks_dep kconfig)
-	$(add_frameworks_dep kconfigwidgets)
-	$(add_frameworks_dep kcoreaddons)
-	$(add_frameworks_dep kcrash)
-	$(add_frameworks_dep kdbusaddons)
-	$(add_frameworks_dep kdelibs4support)
-	$(add_frameworks_dep kguiaddons)
-	$(add_frameworks_dep khtml)
-	$(add_frameworks_dep ki18n)
-	$(add_frameworks_dep kiconthemes)
-	$(add_frameworks_dep kio)
-	$(add_frameworks_dep kparts)
-	$(add_frameworks_dep ktexteditor)
-	$(add_frameworks_dep kwidgetsaddons)
-	$(add_frameworks_dep kxmlgui)
-	$(add_kdeapps_dep okular)
-	$(add_qt_dep qtconcurrent)
-	$(add_qt_dep qtdbus)
-	$(add_qt_dep qtgui)
-	$(add_qt_dep qtnetwork)
-	$(add_qt_dep qtsql)
-	$(add_qt_dep qtwidgets)
-	$(add_qt_dep qtxml)
-	$(add_qt_dep qtx11extras)
+	dev-qt/qtconcurrent:5
+	dev-qt/qtdbus:5
+	dev-qt/qtgui:5
+	dev-qt/qtnetwork:5
+	dev-qt/qtsql:5
+	dev-qt/qtwidgets:5
+	dev-qt/qtxml:5
+	dev-qt/qtx11extras:5
+	kde-apps/okular:5
+	kde-frameworks/karchive:5
+	kde-frameworks/kcmutils:5
+	kde-frameworks/kcompletion:5
+	kde-frameworks/kconfig:5
+	kde-frameworks/kconfigwidgets:5
+	kde-frameworks/kcoreaddons:5
+	kde-frameworks/kcrash:5
+	kde-frameworks/kdbusaddons:5
+	kde-frameworks/kdelibs4support:5
+	kde-frameworks/kguiaddons:5
+	kde-frameworks/khtml:5
+	kde-frameworks/ki18n:5
+	kde-frameworks/kiconthemes:5
+	kde-frameworks/kio:5
+	kde-frameworks/kparts:5
+	kde-frameworks/ktexteditor:5
+	kde-frameworks/kwidgetsaddons:5
+	kde-frameworks/kxmlgui:5
 	media-libs/alsa-lib
 	media-libs/libqaccessibilityclient:5
 	x11-libs/libX11
 	x11-libs/libXtst
-	x11-libs/qwt:6=[qt5]
+	x11-libs/qwt:6=
 "
 RDEPEND="${DEPEND}"
 
@@ -65,11 +69,11 @@ src_configure() {
 		-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt5.so
 	)
 
-	kde5_src_configure
+	ecm_src_configure
 }
 
 pkg_postinst() {
-	kde5_pkg_postinst
+	ecm_pkg_postinst
 
 	elog "Optional dependency:"
 	use sphinx && elog "  app-accessibility/julius (alternative backend)"

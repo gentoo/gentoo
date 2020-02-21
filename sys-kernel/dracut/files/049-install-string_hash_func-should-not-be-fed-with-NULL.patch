@@ -1,0 +1,38 @@
+From fc141f22869bad2e5409d1cc555c1a42ea738343 Mon Sep 17 00:00:00 2001
+From: Lukas Nykryn <lnykryn@redhat.com>
+Date: Thu, 14 Feb 2019 20:18:04 +0100
+Subject: [PATCH] install: string_hash_func should not be fed with NULL
+To: <initramfs@vger.kernel.org>
+
+If kmod_module_get_path returns NULL, we should skip that entry,
+the hash function does not like NULL pointers.
+---
+ install/dracut-install.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/install/dracut-install.c b/install/dracut-install.c
+index d64de545..9e415b5e 100644
+--- a/install/dracut-install.c
++++ b/install/dracut-install.c
+@@ -1244,6 +1244,9 @@ static int install_dependent_modules(struct kmod_list *modlist)
+                 mod = kmod_module_get_module(itr);
+                 path = kmod_module_get_path(mod);
+ 
++                if (path == NULL)
++                        continue;
++
+ 		if (check_hashmap(items_failed, path))
+ 			return -1;
+ 
+@@ -1253,7 +1256,7 @@ static int install_dependent_modules(struct kmod_list *modlist)
+ 
+                 name = kmod_module_get_name(mod);
+ 
+-                if ((path == NULL) || (arg_mod_filter_noname && (regexec(&mod_filter_noname, name, 0, NULL, 0) == 0))) {
++                if (arg_mod_filter_noname && (regexec(&mod_filter_noname, name, 0, NULL, 0) == 0)) {
+                         continue;
+                 }
+ 
+-- 
+2.24.1
+

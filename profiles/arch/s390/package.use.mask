@@ -1,5 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
 
 # Hans de Graaff <graaff@gentoo.org> (2019-04-08)
 # Obsolete ruby version, no newer versions keyworded or stable.
@@ -10,7 +14,6 @@ dev-vcs/subversion ruby
 app-crypt/pinentry fltk
 dev-python/cssselect doc
 dev-vcs/subversion kwallet
-app-text/ghostscript-gpl cups
 # not really interested in supporting alternative
 # VCS for oberlays yet.
 app-portage/layman bazaar darcs mercurial
@@ -48,18 +51,9 @@ dev-libs/libpcre2 jit
 # Not tested
 net-mail/dovecot lz4
 
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
-
 # Sergey Popov <pinkbyte@gentoo.org> (2015-02-18)
 # Not tested
 app-portage/layman g-sorcery
-
-# Chí-Thanh Christopher Nguyễn <chithanh@gentoo.org> (2014-09-16)
-# Needs libepoxy keywording, bug #510940
-x11-base/xorg-server glamor wayland
-x11-drivers/xf86-video-ati glamor
 
 # Mikle Kolyada <zlogene@gentoo.org> (2014-01-11)
 # too much unkeyworded dependencies (bug #497068)

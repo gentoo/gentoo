@@ -11,7 +11,7 @@ DESCRIPTION="Visual Basic Compiler and Runtime"
 HOMEPAGE="https://www.mono-project.com/docs/about-mono/languages/visualbasic/"
 SRC_URI="https://github.com/mono/${PN}/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="LGPL-2 MIT"
 SLOT="0"
 

@@ -1,0 +1,15 @@
+diff --git a/include/random.h b/include/random.h
+index 99d79fb..91ed250 100644
+--- a/include/random.h
++++ b/include/random.h
+@@ -16,8 +16,8 @@
+ const int N = 624;
+ const int M = 397;
+ const unsigned int MATRIX_A = 0x9908b0df; /* constant vector a */
+-const int UPPER_MASK = 0x80000000; /* most significant w-r bits */
+-const int LOWER_MASK = 0x7fffffff; /* least significant r bits */
++const unsigned int UPPER_MASK = 0x80000000; /* most significant w-r bits */
++const unsigned int LOWER_MASK = 0x7fffffff; /* least significant r bits */
+ 
+ static unsigned int mt[N]; /* the array for the state vector  */
+ static int mti=N+1; /* mti==N+1 means mt[N] is not initialized */

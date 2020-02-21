@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,8 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/${P/-}
 
 PATCHES=( "${FILESDIR}"/${P}-fix-RECV-and-try-STAT-if-LAST-wont-work.patch
-	"${FILESDIR}"/${P}-list.patch )
+	"${FILESDIR}"/${P}-list.patch
+	"${FILESDIR}"/${P}-gcc-10.patch )
 
 src_prepare() {
 	#Honour Gentoo CFLAGS

@@ -11,9 +11,9 @@ HOMEPAGE="https://github.com/wwmm/pulseeffects"
 if [[ ${PV} == *9999 ]];then
 	inherit git-r3
 	SRC_URI=""
-	EGIT_REPO_URI="${HOMEPAGE}"
+	EGIT_REPO_URI="https://github.com/wwmm/pulseeffects"
 else
-	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/wwmm/pulseeffects/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -23,7 +23,7 @@ IUSE="bs2b calf mda-lv2 rubberband"
 
 #TODO: optional : lilv, zam-plugins (check from archlinux pkg)
 RDEPEND="
-	>=dev-libs/boost-1.41
+	>=dev-libs/boost-1.41:=
 	>=dev-cpp/glibmm-2.56.0
 	>=dev-cpp/gtkmm-3.20:3.0
 	>=dev-libs/glib-2.56:2

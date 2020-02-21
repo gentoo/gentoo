@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <maintainer type="project">
-    <email>graphics@gentoo.org</email>
-    <name>Gentoo Graphics Project</name>
-  </maintainer>
-  <use>
-    <flag name="cdr">Enable support for CorelDRAW Diagrams</flag>
-    <flag name="dia">pull in <pkg>app-office/dia</pkg> for dia import extension</flag>
-    <flag name="inkjar">Enable support for OpenOffice.org SVG jar files</flag>
-    <flag name="latex">pull in dependencies for LaTeX formulas</flag>
-    <flag name="visio">Enable support for Microsoft Visio Diagrams</flag>
-    <flag name="wpg">Enable support for WordPerfect Graphics</flag>
-  </use>
-  <upstream>
-    <remote-id type="gitlab">inkscape/inkscape</remote-id>
-  </upstream>
+	<maintainer type="project">
+		<email>graphics@gentoo.org</email>
+		<name>Gentoo Graphics Project</name>
+	</maintainer>
+	<use>
+		<flag name="cdr">Enable support for CorelDRAW Diagrams via <pkg>media-libs/libcdr</pkg></flag>
+		<flag name="dia">pull in <pkg>app-office/dia</pkg> for dia import extension</flag>
+		<flag name="inkjar">Enable support for OpenOffice.org SVG jar files</flag>
+		<flag name="latex">pull in dependencies for LaTeX formulas</flag>
+		<flag name="svg2">Enable support for new SVG2 features</flag>
+		<flag name="visio">Enable support for Microsoft Visio Diagrams via <pkg>media-libs/libvisio</pkg></flag>
+		<flag name="wpg">Enable support for WordPerfect Graphics via <pkg>app-text/libwpg</pkg></flag>
+	</use>
+	<upstream>
+		<remote-id type="gitlab">inkscape/inkscape</remote-id>
+	</upstream>
 </pkgmetadata>

@@ -1,14 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Luke Dashjr <luke-jr+gentoobugs@utopios.org> (2019-09-21)
 # iasl is stable on ppc
 sys-firmware/seabios -binary
-
-# Joonas Niilola <juippis@gentoo.org> (2019-01-12)
-# Force 'unwind' on for ppc and ppc64 with dev-libs/efl
-# #668486, #657750
-dev-libs/efl unwind
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2018-12-25)
 # Enable powerpc target by default.

@@ -1,0 +1,11 @@
+--- a/hping2.h
++++ b/hping2.h
+@@ -357,8 +357,6 @@
+ 	int status;
+ };
+ 
+-volatile struct delaytable_element delaytable[TABLESIZE];
+-
+ /* protos */
+ void	nop(void);				/* nop */
+ int	parse_options(int, char**);		/* option parser */

@@ -74,7 +74,7 @@ src_install() {
 		cd "${WORKDIR}/${d}" || die
 		insinto /usr/share/"${PN}"
 		for i in *.mcpx *.menu ; do
-			doins "$i" || die
+			doins "$i"
 		done
 		insinto /usr/share/"${PN}"/pixmap
 		for i in *.png ; do

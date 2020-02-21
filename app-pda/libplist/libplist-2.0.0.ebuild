@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
-inherit autotools eutils python-r1
+PYTHON_COMPAT=( python{3_6,3_7,3_8} )
+inherit autotools eutils ltprune python-r1
 
 DESCRIPTION="Support library to deal with Apple Property Lists (Binary & XML)"
 HOMEPAGE="http://www.libimobiledevice.org/"
@@ -11,7 +11,7 @@ SRC_URI="http://www.libimobiledevice.org/downloads/${P}.tar.bz2"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0/3.1.0" # based on SONAME of libplist.so
-KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86 ~amd64-fbsd"
+KEYWORDS="amd64 ~arm ~arm64 ppc ~ppc64 x86"
 IUSE="python static-libs"
 
 RDEPEND="python? ( ${PYTHON_DEPS} )"

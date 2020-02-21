@@ -10,7 +10,7 @@ HOMEPAGE="http://sysprof.com/"
 
 LICENSE="GPL-3+ GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="elogind gtk systemd"
 REQUIRED_USE="?? ( elogind systemd )"
 

@@ -13,6 +13,6 @@
   </longdescription>
   <upstream>
     <remote-id type="pypi">line_profiler</remote-id>
-    <remote-id type="github">rkern/line_profiler</remote-id>
+    <remote-id type="github">pyutils/line_profiler</remote-id>
   </upstream>
 </pkgmetadata>

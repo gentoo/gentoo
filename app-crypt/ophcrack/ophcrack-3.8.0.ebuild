@@ -31,11 +31,11 @@ src_configure() {
 	myconf="$(use_enable debug)"
 	myconf="${myconf} $(use_enable qt5 gui)"
 
-	econf ${myconf} || die "Failed to compile"
+	econf ${myconf}
 }
 
 src_install() {
-	emake install DESTDIR="${D}" || die "Installation failed."
+	emake install DESTDIR="${D}"
 
 	cd "${S}"
 	newicon src/gui/pixmaps/os.xpm ophcrack.xpm

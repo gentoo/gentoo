@@ -3,17 +3,20 @@
 
 EAPI=7
 
-MY_PN="${PN}-1"
-MY_P="${MY_PN}-${PV}"
-inherit cmake-utils
+KDE_ORG_NAME="polkit-qt-1"
+inherit cmake kde.org
 
 DESCRIPTION="Qt wrapper around polkit-1 client libraries"
 HOMEPAGE="https://api.kde.org/kdesupport-api/polkit-qt-1-apidocs/"
-SRC_URI="mirror://kde/stable/${MY_PN}/${MY_P}.tar.xz"
+
+if [[ ${KDE_BUILD_TYPE} = release ]]; then
+	SRC_URI="mirror://kde/stable/${KDE_ORG_NAME}/${KDE_ORG_NAME}-${PV}.tar.xz"
+	KEYWORDS="amd64 ~arm arm64 ~ppc ~ppc64 x86"
+	S="${WORKDIR}/${KDE_ORG_NAME}-${PV}"
+fi
 
 LICENSE="LGPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
 IUSE="debug"
 
 RDEPEND="
@@ -28,12 +31,10 @@ DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS README README.porting TODO )
 
-S="${WORKDIR}/${MY_P}"
-
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_EXAMPLES=OFF
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

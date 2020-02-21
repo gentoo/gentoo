@@ -24,5 +24,6 @@
     </upstream>
     <use>
         <flag name='pv'>Use sys-apps/pv to enable progress bar functionality</flag>
+        <flag name='mbuffer'>Use sys-block/mbuffer to enable progress bar and buffering/limiting functionality</flag>
     </use>
 </pkgmetadata>

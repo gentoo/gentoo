@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ EAPI=6
 MY_PN=${PN#lib}
 MY_P="${MY_PN}-${PV}"
 
-inherit autotools eutils
+inherit autotools eutils ltprune
 
 DESCRIPTION="Control and monitoring library for clsync"
 HOMEPAGE="http://ut.mephi.ru/oss/clsync https://github.com/xaionaro/clsync"

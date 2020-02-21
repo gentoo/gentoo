@@ -1,0 +1,111 @@
+--- a/echoping.c
++++ b/echoping.c
+@@ -38,6 +38,25 @@
+ struct timeval  good_results[MAX_ITERATIONS];
+ extern int      tvcmp();
+ 
++char           *server;
++#ifdef LIBIDN
++char           *locale_server, *ace_server, *utf8_server;
++#endif
++
++#ifndef IN_PLUGIN
++init_f          plugin_init;
++start_f         plugin_start;
++start_raw_f     plugin_raw_start;
++execute_f       plugin_execute;
++terminate_f     plugin_terminate;
++#endif
++
++struct timeval  null_timeval;
++struct timeval  max_timeval;
++
++boolean  timeout_flag;
++char     big_recvline[MAXTOREAD];
++
+ int
+ main(argc, argv)
+     int             argc;
+--- a/echoping.h
++++ b/echoping.h
+@@ -118,7 +118,6 @@
+     struct timeval  timevalue;
+ };
+ 
+-boolean         timeout_flag;
+ struct echoping_struct {
+     boolean         udp;        /* Use the UDP protocol (TCP is the default) */
+     boolean         ttcp;
+@@ -132,21 +131,21 @@
+ /* Initializes the plugin with its arguments. Returns the port name or number or NULL if the plugin wants to use the raw interface. */
+ typedef char   *(*init_f) (const int argc, const char **argv,
+                            const echoping_options global_options);
+-init_f          plugin_init;
++extern init_f          plugin_init;
+ typedef void    (*start_f) (struct addrinfo *);
+-start_f         plugin_start;
++extern start_f         plugin_start;
+ typedef void    (*start_raw_f) ();
+-start_raw_f     plugin_raw_start;
++extern start_raw_f     plugin_raw_start;
+ typedef int     (*execute_f) ();
+-execute_f       plugin_execute;
++extern execute_f       plugin_execute;
+ typedef void    (*terminate_f) ();
+-terminate_f     plugin_terminate;
++extern terminate_f     plugin_terminate;
+ #endif
+ 
+ #endif
+ 
+-struct timeval  null_timeval;
+-struct timeval  max_timeval;
++extern struct timeval  null_timeval;
++extern struct timeval  max_timeval;
+ 
+ #define	ECHO_TCP_PORT	"echo"
+ #define	DISCARD_TCP_PORT	"discard"
+@@ -169,9 +168,9 @@
+ 
+ #define CHARGENERATED " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefg";
+ 
+-char           *server;
++extern char           *server;
+ #ifdef LIBIDN
+-char           *locale_server, *ace_server, *utf8_server;
++extern char           *locale_server, *ace_server, *utf8_server;
+ #endif
+ 
+ /* My functions */
+@@ -230,6 +229,9 @@
+ 
+ extern boolean  timeout_flag;
+ 
++extern char     big_recvline[MAXTOREAD];
++
++
+ #include "compilation.h"
+ 
+ #ifndef HEADER_INCLUDED
+--- a/http.c
++++ b/http.c
+@@ -6,8 +6,6 @@
+ #include "HTParse.h"
+ 
+ 
+-char            big_recvline[MAXTOREAD];
+-
+ char           *
+ make_http_sendline(char *url, char *host, int port, int nocache)
+ {
+--- a/smtp.c
++++ b/smtp.c
+@@ -8,8 +8,6 @@
+ 
+ #ifdef SMTP
+ 
+-char            big_recvline[MAXTOREAD];
+-
+ int
+ smtp_read_response_from_server(FILE * fs)
+ {

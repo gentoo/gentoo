@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} pypy)
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1 eutils
 
@@ -21,18 +21,13 @@ RDEPEND="${CDEPEND}
 	dev-python/argh[${PYTHON_USEDEP}]
 	dev-python/pathtools[${PYTHON_USEDEP}]"
 DEPEND="${CDEPEND}
-	test? (
-		dev-python/pytest[${PYTHON_USEDEP}]
-		>=dev-python/pytest-timeout-0.3[${PYTHON_USEDEP}]
-	)"
+	test? ( >=dev-python/pytest-timeout-0.3[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
 
 src_prepare() {
 	default
 	rm tox.ini || die
-}
-
-python_test() {
-	pytest -vv || die "Tests failed with ${EPYTHON}"
 }
 
 pkg_postinst() {

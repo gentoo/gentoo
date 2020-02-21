@@ -1,0 +1,21 @@
+--- a/pklib.c
++++ b/pklib.c
+@@ -64,8 +64,6 @@
+ #define PK_POST (char)245
+ #define PK_NOP  (char)246
+ 
+-int dpi;
+-
+ FILE *pk_file;
+ 
+ 
+--- a/pklib.h
++++ b/pklib.h
+@@ -13,6 +13,7 @@
+ 
+ typedef unsigned char byte;
+ 
++extern int dpi;
+ 
+ void TFMopen(char **filename);
+ 

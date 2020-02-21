@@ -1,0 +1,24 @@
+From df737a7dd5134ba021dc6228fe815974af4a6bfc Mon Sep 17 00:00:00 2001
+From: Laurent Montel <montel@kde.org>
+Date: Sun, 8 Sep 2019 21:15:26 +0200
+Subject: GIT_SILENT: QLatin1Literal->QLatin1String
+
+---
+ src/main.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main.cpp b/src/main.cpp
+index 6afdc2a..5f9f431 100644
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -46,7 +46,7 @@ int main(int argc, char **argv)
+ 
+     qsrand(time(nullptr));
+     KLocalizedString::setApplicationDomain("kdiamond");
+-    KAboutData about(QStringLiteral("kdiamond"), i18nc("The application's name", "KDiamond"), QLatin1Literal(version), i18n(description),
++    KAboutData about(QStringLiteral("kdiamond"), i18nc("The application's name", "KDiamond"), QLatin1String(version), i18n(description),
+                      KAboutLicense::GPL, i18n("(C) 2008-2010 Stefan Majewsky and others"), QStringLiteral("http://games.kde.org/kdiamond"));
+     about.addAuthor(i18n("Stefan Majewsky"), i18n("Original author and current maintainer"), QStringLiteral("majewsky@gmx.net"));
+     about.addAuthor(i18n("Paul Bunbury"), i18n("Gameplay refinement"), QStringLiteral("happysmileman@googlemail.com"));
+-- 
+cgit v1.1

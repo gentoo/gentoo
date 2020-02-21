@@ -1,0 +1,30 @@
+--- a/src/Makefile
+--- b/src/Makefile
+@@ -2,22 +2,22 @@
+ #LDFLAGS = -L/usr/X11R6/lib -lImlib2 -lm -g -ggdb
+ 
+ CFLAGS += -I/usr/X11R6/include -Wall
+-LDFLAGS += -L/usr/X11R6/lib -lImlib2 -lm
++LIBS = -lm $(shell $(PKG_CONFIG) --libs imlib2 x11)
+ 
+ all:	habak
+ 	ln -f habak ../habak
+ 
+ habak:	xcore.o random.o habak.o
+-	gcc $(LDFLAGS) -o habak xcore.o random.o habak.o
++	$(CC) $(CFLAGS) $(LDFLAGS) -o habak xcore.o random.o habak.o $(LIBS)
+ 
+ habak.o: habak.c types.h defaults.h proto.h
+-	gcc $(CFLAGS) -c habak.c -o habak.o
++	$(CC) $(CFLAGS) -c habak.c -o habak.o
+ 
+ random.o: random.c proto.h
+-	gcc $(CFLAGS) -c random.c -o random.o
++	$(CC) $(CFLAGS) -c random.c -o random.o
+ 
+ xcore.o: xcore.c
+-	gcc $(CFLAGS) -c xcore.c -o xcore.o
++	$(CC) $(CFLAGS) -c xcore.c -o xcore.o
+ 
+ clean:
+ 	rm habak *.o

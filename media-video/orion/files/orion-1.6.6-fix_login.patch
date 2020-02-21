@@ -1,0 +1,32 @@
+From 69c58ba5af5f83903be70629b02f348fc3ad8757 Mon Sep 17 00:00:00 2001
+From: Andrew Tonner <rakslice@gmail.com>
+Date: Tue, 26 Mar 2019 14:58:40 -0700
+Subject: [PATCH] Fix HTTP request socket output
+
+---
+ src/network/httpserver.cpp | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
+
+diff --git a/src/network/httpserver.cpp b/src/network/httpserver.cpp
+index 235e073..b0368eb 100644
+--- a/src/network/httpserver.cpp
++++ b/src/network/httpserver.cpp
+@@ -89,7 +89,6 @@ void HttpServer::onRead() {
+ 
+     // Respond with 200
+     QByteArray block;
+-    QDataStream out(&block, QIODevice::WriteOnly);
+ 
+     // http payload message body
+     QByteArray content;
+@@ -111,9 +110,7 @@ void HttpServer::onRead() {
+     response += "Content-Length: " + QString::number(content.length()) + "\n";
+     response += "\n" + content;
+ 
+-    out << response.toUtf8();
+-
+-    socket->write(block);
++    socket->write(response.toUtf8());
+     socket->waitForBytesWritten();
+     socket->disconnectFromHost();
+ 

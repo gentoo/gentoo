@@ -1,0 +1,74 @@
+From b05ec6cbdacdf40d6c75326394461e22b7f8ab20 Mon Sep 17 00:00:00 2001
+From: Jonathan de Boyne Pollard <J.deBoynePollard-newsgroups@NTLWorld.com>
+Date: Fri, 12 Jul 2019 23:34:52 -0600
+Subject: [PATCH] Apply Jonathan de Boyne Pollard's any-to-cname patch.
+
+modifies the behaviour of qmail-remote to remove the workaround
+that Dan Bernstein added on 1996-10-03 to work around a bug in
+BIND versions earlier than version 4.9.4.
+
+Applying this patch incurs a risk, but yields a benefit. It is
+published in order to allow others to experiment with removing
+the workaround.
+
+The risk is twofold:
+
+ * qmail-remote will not be able to relay any mail if one's own
+   proxy DNS server is such a version of BIND. This is trivially
+   overcome by replacing such an old version of BIND either with a
+   new version of BIND that doesn't have the problem or with some
+   other proxy DNS server software entirely (such as dnscache).
+
+ * qmail-remote will not be able to relay mail to domains whose
+   content DNS servers use such versions of BIND, because the
+   "CNAME" resource record lookup will fail. To gauge the level of
+   this risk, notice that Dan's own 2002-12-17 survey of content DNS
+   servers reports a mere 2% of the "*.com." content DNS servers as
+   employing BIND version 4 (but doesn't report how many of that 2%
+   employ BIND 4 versions earlier than 4.9.4).
+
+The benefit of this patch is that it reduces DNS query traffic
+and proxy DNS server cache load.
+
+ * Without it, qmail-remote issues "ANY" queries. Some proxy DNS
+   server softwares (albeit not dnscache) pass such queries through
+   directly to the back end, meaning that every query issued by
+   qmail-remote will result in a back-end query to a content DNS
+   server, no matter if the necessary information is already cached.
+   Moreover: The results of such a query, which are often a large
+   collection of resource record sets of various types, are cached
+   in the proxy DNS server's cache, even though almost none of them
+   will be used. A caching proxy DNS server dedicated to serving
+   qmail will end up with all sorts of cruft in its cache that isn't
+   actually relevant to mail transportation, taking up space that
+   could be better put to use caching those resource record sets
+   that are relevant.
+
+ * With it, qmail-remote issues "CNAME" queries. All of the mainstream
+   proxy DNS server softwares in popular use (apart from dnscache,
+   because it has problems in this regard) don't pass such queries
+   directly through, and will answer them from their caches without
+   issuing a back-end query at all if the data are already there and
+   still current. Moreover: A caching proxy DNS server dedicated to
+   serving qmail will not have its cache cluttered with irrelevant
+   data.
+---
+ dns.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dns.c b/dns.c
+index 44db25b..77e4ff7 100644
+--- a/dns.c
++++ b/dns.c
+@@ -197,7 +197,7 @@ stralloc *sa;
+    if (!sa->len) return loop;
+    if (sa->s[sa->len - 1] == ']') return loop;
+    if (sa->s[sa->len - 1] == '.') { --sa->len; continue; }
+-   switch(resolve(sa,T_ANY))
++   switch(resolve(sa,T_CNAME))
+     {
+      case DNS_MEM: return DNS_MEM;
+      case DNS_SOFT: return DNS_SOFT;
+-- 
+2.16.4
+

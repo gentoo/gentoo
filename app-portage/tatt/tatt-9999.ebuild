@@ -1,15 +1,16 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1 git-r3
 
 DESCRIPTION="arch testing tool"
 HOMEPAGE="https://github.com/gentoo/tatt"
-EGIT_REPO_URI="https://github.com/gentoo/tatt.git"
+EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/tatt.git
+	https://github.com/gentoo/tatt.git"
 
 LICENSE="GPL-2"
 SLOT="0"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,6 +22,7 @@ SRC_URI="https://github.com/yandex/${MY_PN}/archive/v${PV}-${TYPE}.tar.gz -> ${P
 
 SLOT="0/${TYPE}"
 IUSE="+client cpu_flags_x86_sse4_2 +server debug doc kafka mongodb mysql static test tools zookeeper"
+RESTRICT="!test? ( test )"
 KEYWORDS="~amd64"
 
 REQUIRED_USE="
@@ -70,7 +71,6 @@ DEPEND="${RDEPEND}
 			sys-libs/ncurses:0=[static-libs]
 			sys-libs/readline:0=[static-libs]
 		)
-		dev-libs/double-conversion[static-libs]
 		dev-libs/capnproto[static-libs]
 		dev-libs/libltdl[static-libs]
 		sys-libs/libunwind:7[static-libs]

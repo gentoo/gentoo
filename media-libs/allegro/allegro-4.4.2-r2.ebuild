@@ -14,6 +14,7 @@ LICENSE="Allegro MIT GPL-2+ ZLIB"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ~mips ppc ppc64 x86"
 IUSE="alsa fbcon jack jpeg opengl oss png svga test vga vorbis X"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	alsa? ( media-libs/alsa-lib )
@@ -47,6 +48,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-Werror-format-security.patch # bug 540470
 	"${FILESDIR}"/${P}-glibc228.patch               # bug 670781
 	"${FILESDIR}"/${P}-GLX_RGBA_FLOAT_BIT.patch     # bug 672858
+	"${FILESDIR}"/${P}-static-func.patch            # bug 696034
 )
 
 src_prepare() {

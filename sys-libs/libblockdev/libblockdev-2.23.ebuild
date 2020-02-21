@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{5,6,7}} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit python-single-r1 xdg-utils
 
 DESCRIPTION="A library for manipulating block devices"
@@ -13,7 +13,6 @@ if [[ "${PV}" == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/storaged-project/libblockdev.git"
 	BDEPEND="
 		sys-devel/autoconf-archive
-		gtk-doc? ( dev-util/gtk-doc )
 	"
 else
 	MY_PV="${PV}-1"
@@ -26,6 +25,7 @@ fi
 LICENSE="LGPL-2+"
 SLOT="0"
 IUSE="bcache +cryptsetup device-mapper dmraid escrow gtk-doc introspection lvm kbd test +tools vdo"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/glib-2.42.2
@@ -59,6 +59,7 @@ DEPEND="
 
 BDEPEND+="
 	dev-util/gtk-doc-am
+	gtk-doc? ( dev-util/gtk-doc )
 	introspection? ( >=dev-libs/gobject-introspection-1.3.0 )
 "
 

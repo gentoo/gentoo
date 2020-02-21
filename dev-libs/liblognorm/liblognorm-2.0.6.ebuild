@@ -20,6 +20,7 @@ fi
 LICENSE="LGPL-2.1 Apache-2.0"
 SLOT="0/5.1.0"
 IUSE="debug doc static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/libestr-0.1.3

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -13,7 +13,7 @@ SRC_URI="http://matt.immute.net/src/mtail/mtail-${PV}.tgz
 
 LICENSE="HPND"
 SLOT="0"
-KEYWORDS="alpha amd64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
+KEYWORDS="~alpha amd64 ~mips ppc sparc x86 ~amd64-linux ~x86-linux ~ppc-macos"
 IUSE=""
 
 RDEPEND=${PYTHON_DEPS}
@@ -26,5 +26,5 @@ src_prepare() {
 
 src_install() {
 	dobin "${PN}"
-	dodoc CHANGES "${PN}rc.sample" README "${DISTDIR}"/mtailrc-syslog.sample || die
+	dodoc CHANGES "${PN}rc.sample" README "${DISTDIR}"/mtailrc-syslog.sample
 }

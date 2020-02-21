@@ -55,27 +55,27 @@ src_configure() {
 src_compile() {
 	export LD_LIBRARY_PATH=${LD_LIBRARY_PATH:+$LD_LIBRARY_PATH:}"${S}"/blib/lib
 	# occasionally dies in parallel make
-	emake -j1 || die
+	emake -j1
 	if use doc ; then
-		emake -j1 html || die
+		emake -j1 html
 	fi
 }
 
 src_test() {
-	emake -j1 test || die
+	emake -j1 test
 }
 
 src_install() {
-	emake -j1 install-dev DESTDIR="${D}" DOC_DIR="${EPREFIX}/usr/share/doc/${PF}" || die
-	dodoc CREDITS DONORS.pod PBC_COMPAT PLATFORMS RESPONSIBLE_PARTIES TODO || die
-	dosym parrot-ops2c /usr/bin/ops2c || die
+	emake -j1 install-dev DESTDIR="${D}" DOC_DIR="${EPREFIX}/usr/share/doc/${PF}"
+	dodoc CREDITS DONORS.pod PBC_COMPAT PLATFORMS RESPONSIBLE_PARTIES TODO
+	dosym parrot-ops2c /usr/bin/ops2c
 	if use examples; then
 		insinto "/usr/share/doc/${PF}/examples"
-		doins -r examples/* || die
+		doins -r examples/*
 	fi
 	if use doc; then
 		insinto "/usr/share/doc/${PF}/editor"
-		doins -r editor || die
+		doins -r editor
 		cd docs/html
 		dohtml -r developer.html DONORS.pod.html index.html ops.html parrotbug.html pdds.html \
 			pmc.html tools.html docs src tools || die

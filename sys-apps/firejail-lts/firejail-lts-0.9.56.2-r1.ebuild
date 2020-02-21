@@ -14,6 +14,7 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="apparmor +globalcfg +network +seccomp +suid +userns test +whitelist"
+RESTRICT="!test? ( test )"
 
 DEPEND="!sys-apps/firejail
 		apparmor? ( sys-libs/libapparmor )

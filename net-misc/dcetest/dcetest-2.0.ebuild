@@ -7,7 +7,7 @@ inherit flag-o-matic toolchain-funcs
 
 DESCRIPTION="dcetest is a clone of the Windows rpcinfo"
 HOMEPAGE="http://www.atstake.com/research/tools/info_gathering/"
-SRC_URI="mirror://gentoo/${PN}.tar -> ${P}.tar"
+SRC_URI="mirror://gentoo/${P}.tar"
 
 LICENSE="GPL-2"
 SLOT="0"

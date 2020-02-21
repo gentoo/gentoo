@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,7 @@ HOMEPAGE="https://wiki.gnome.org/phodav"
 
 LICENSE="LGPL-2.1+"
 SLOT="2.0"
-KEYWORDS="alpha amd64 arm ~arm64 ppc ppc64 x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ppc ppc64 x86"
 IUSE="spice systemd zeroconf"
 
 # It included g_uuid_* symbols of its own from an unapplied patch to glib; now that they

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -15,7 +15,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 ~arm64 ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="avalon-framework avalon-logkit log4j servletapi test"
-RESTRICT="!servletapi? ( test )"
+RESTRICT="!test? ( test ) !servletapi? ( test )"
 
 CDEPEND="avalon-framework? ( dev-java/avalon-framework:4.2 )
 	avalon-logkit? ( dev-java/avalon-logkit:2.0 )
@@ -57,8 +57,8 @@ src_install() {
 	java-pkg_newjar target/${PN}-api-${PV}.jar ${PN}-api.jar
 	java-pkg_newjar target/${PN}-adapters-${PV}.jar ${PN}-adapters.jar
 
-	dodoc RELEASE-NOTES.txt || die
-	dohtml PROPOSAL.html || die
+	dodoc RELEASE-NOTES.txt
+	dohtml PROPOSAL.html
 	use doc && java-pkg_dojavadoc target/docs/
 	use source && java-pkg_dosrc src/main/java/org
 }

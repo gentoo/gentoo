@@ -19,6 +19,7 @@ HOMEPAGE="https://virgil3d.github.io/"
 LICENSE="MIT"
 SLOT="0"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=x11-libs/libdrm-2.4.50
 	media-libs/libepoxy"

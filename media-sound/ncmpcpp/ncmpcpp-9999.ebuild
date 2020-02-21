@@ -11,16 +11,16 @@ LICENSE="GPL-2"
 
 SLOT="0"
 KEYWORDS=""
-IUSE="clock icu outputs taglib visualizer"
+IUSE="clock outputs taglib visualizer"
 
 RDEPEND="
 	!dev-libs/boost:0/1.57.0
 	>=media-libs/libmpdclient-2.1
-	dev-libs/boost:=[icu?,nls,threads]
+	dev-libs/boost:=[icu,nls,threads]
+	dev-libs/icu:=
 	net-misc/curl
-	sys-libs/ncurses:=
+	sys-libs/ncurses:=[unicode]
 	sys-libs/readline:*
-	icu? ( dev-libs/icu:= )
 	taglib? ( media-libs/taglib )
 	visualizer? ( sci-libs/fftw:3.0= )
 "

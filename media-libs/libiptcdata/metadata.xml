@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>eva@gentoo.org</email>
-		<name>Gilles Dartiguelongue</name>
-	</maintainer>
+	<!-- maintainer-needed -->
 	<longdescription lang="en">
 		libiptcdata is a library, written in C, for manipulating the
 		International Press Telecommunications Council (IPTC) metadata stored

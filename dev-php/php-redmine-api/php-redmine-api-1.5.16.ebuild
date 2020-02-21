@@ -1,16 +1,17 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 DESCRIPTION="A simple, object-oriented, PHP Redmine API client"
-HOMEPAGE="https://github.com/kbsali/${PN}"
+HOMEPAGE="https://github.com/kbsali/php-redmine-api"
 SRC_URI="https://github.com/kbsali/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="dev-lang/php:*[curl,json,simplexml]"
 BDEPEND="test? ( ${RDEPEND} >=dev-php/phpunit-4 )"

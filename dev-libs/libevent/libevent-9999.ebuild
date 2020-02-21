@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ DESCRIPTION="Library to execute a function when a specific event occurs on a fil
 EGIT_REPO_URI="https://github.com/libevent/libevent"
 HOMEPAGE="
 	https://libevent.org/
-	${EGIT_REPO_URI}
+	https://github.com/libevent/libevent
 "
 
 LICENSE="BSD"

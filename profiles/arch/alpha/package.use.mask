@@ -1,5 +1,26 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
+# net-libs/libgadu is not keyworded
+net-im/pidgin gadu
+net-im/telepathy-connection-managers gadu
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-01-26)
+# media-libs/libheif is not keyworded
+media-gfx/gimp heif
+
+# Tomáš Mózes <hydrapolic@gmail.com> (2019-12-19)
+# dev-libs/criterion is not keyworded yet
+app-admin/syslog-ng test
+
+# Robin H. Johnson <robbat2@gentoo.org> (2019-12-06)
+# PPS should work on all arches, but only keyworded on some arches
+>=net-misc/ntp-4.2.6_p3-r1 -parse-clocks
 
 # Mart Raudsepp <leio@gentoo.org> (2019-08-18)
 # media-video/pipewire is not keyworded yet
@@ -28,17 +49,13 @@ app-admin/sudo sssd
 # Optional dependency blocking security cleanup, bug #627316
 media-sound/mpd wildmidi
 
-# Joonas Niilola <juippis@gentoo.org> (2018-06-17)
-# Optional dependency not available for this arch
-dev-libs/efl vlc
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-06)
 # Needs sys-apps/fakechroot which isn't keyworded
 app-arch/rpm test
 
 # Tomáš Mózes <hydrapolic@gmail.com> (2018-06-05)
 # Unkeyworded dependencies.
-app-admin/syslog-ng amqp kafka mongodb
+app-admin/syslog-ng amqp kafka
 
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-02)
 # Needs dev-ruby/asciidoctor which has a lot of unstable deps
@@ -231,10 +248,6 @@ dev-python/urllib3 test
 # dev-lua/lgi lacks alpha keyword, bug #551540
 dev-libs/libpeas lua
 
-# Mike Frysinger <vapier@gentoo.org> (2015-03-16)
-# Needs sci-physics/bullet tested #499974
-dev-libs/efl physics
-
 # Michał Górny <mgorny@gentoo.org> (2015-02-22)
 # Dependency not keyworded for some reason.
 media-libs/gegl umfpack
@@ -267,10 +280,6 @@ dev-haskell/vector test
 # OpenCV likely will never work on Alpha
 media-video/vlc opencv
 media-gfx/shotwell opencv
-
-# Pacho Ramos <pacho@gentoo.org> (2014-11-11)
-# Missing keywords, bug #523686
->=dev-libs/libgdata-0.16.1 test
 
 # Tobias Klausmann <klausman@gentoo.org> (2014-10-11)
 # app-emulation/qemu is not keyworded on alpha, masking flag that triggers
@@ -362,7 +371,7 @@ x11-misc/xscreensaver new-login
 
 # Alexey Shvetsov <alexxy@gentoo.org> (2011-12-17)
 # mask use numa for openmpi
-sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_open-mx openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
+sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
 # Tobias Klausmann <klausman@gentoo.org> (2011-11-02)
 # libpcre jit is not supported on alpha

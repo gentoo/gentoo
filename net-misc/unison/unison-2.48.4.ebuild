@@ -16,7 +16,7 @@ KEYWORDS="amd64 ~arm ~ppc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos ~spa
 # ocaml version so we are sure it has ocamlopt use flag
 DEPEND="dev-lang/ocaml[ocamlopt?]
 	gtk? ( dev-ml/lablgtk )
-	test? ( || ( dev-util/ctags virtual/emacs ) )"
+	test? ( || ( dev-util/ctags >=app-editors/emacs-23.1:* ) )"
 
 RDEPEND="gtk? ( dev-ml/lablgtk
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
@@ -25,7 +25,7 @@ RDEPEND="gtk? ( dev-ml/lablgtk
 
 #PDEPEND="gtk? ( media-fonts/font-schumacher-misc )"
 
-RESTRICT="!ocamlopt? ( strip )"
+RESTRICT="!ocamlopt? ( strip ) !test? ( test )"
 SRC_URI="https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}.tar.gz
 	doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.pdf
 		https://www.seas.upenn.edu/~bcpierce/unison/download/releases/${P}/${P}-manual.html )"

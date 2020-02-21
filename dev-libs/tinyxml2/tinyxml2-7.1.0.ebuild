@@ -3,6 +3,7 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 DESCRIPTION="A simple, small, efficient, C++ XML parser"
@@ -11,11 +12,11 @@ SRC_URI="https://github.com/leethomason/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="ZLIB"
 SLOT="0/7"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 arm arm64 hppa ~ppc64 sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
 multilib_src_configure() {
 	local mycmakeargs=( -DBUILD_TESTING=$(usex test) )
-	cmake-utils_src_configure
+	cmake_src_configure
 }

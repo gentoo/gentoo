@@ -9,7 +9,7 @@ SRC_URI="https://alt-ergo.ocamlpro.com/http/${P}/${P}.tar.gz"
 
 LICENSE="CeCILL-C"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="examples gtk +ocamlopt"
 
 DEPEND=">=dev-lang/ocaml-3.12.1[ocamlopt?]
@@ -19,6 +19,7 @@ DEPEND=">=dev-lang/ocaml-3.12.1[ocamlopt?]
 	sci-mathematics/psmt2-frontend
 	>=dev-ml/ocplib-simplex-0.4
 	>=dev-ml/menhir-20181006
+	dev-ml/seq
 	dev-ml/dune"
 RDEPEND="${DEPEND}"
 

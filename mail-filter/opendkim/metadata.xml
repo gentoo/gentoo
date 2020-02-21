@@ -59,7 +59,7 @@
     <flag name="lmdb">
       Add support for using <pkg>dev-db/lmdb</pkg>
     </flag>
-    <flag name="query_cache">
+    <flag name="querycache">
       Add support for query caching (requires 'berkdb' flag)
     </flag>
     <flag name="stats">

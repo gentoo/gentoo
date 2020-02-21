@@ -42,7 +42,7 @@ EANT_BUILD_TARGET="package"
 
 src_install() {
 	java-pkg_dojar build/*.jar
-	dodoc CHANGES.txt COMMITTERS.txt README.txt TODO.txt || die
+	dodoc CHANGES.txt COMMITTERS.txt README.txt TODO.txt
 	use doc && java-pkg_dojavadoc build/apidocs
 	use examples && java-pkg_doexamples samples
 	use source && java-pkg_dosrc src/java/org

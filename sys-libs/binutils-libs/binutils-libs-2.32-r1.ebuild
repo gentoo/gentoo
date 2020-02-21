@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,11 +21,10 @@ SRC_URI="mirror://gnu/binutils/${MY_P}.tar.xz
 LICENSE="|| ( GPL-3 LGPL-3 )"
 SLOT="0/${PV}"
 IUSE="64-bit-bfd multitarget nls static-libs"
-KEYWORDS="alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86"
 
 COMMON_DEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
 DEPEND="${COMMON_DEPEND}
-	>=sys-apps/texinfo-4.7
 	nls? ( sys-devel/gettext )"
 # Need a newer binutils-config that'll reset include/lib symlinks for us.
 RDEPEND="${COMMON_DEPEND}
@@ -88,7 +87,7 @@ multilib_src_configure() {
 		# We pull in all USE-flags that change ABI in an incompatible
 		# way. #666100
 		# USE=multitarget change size of global arrays
-		# USE=64-bit-bfd changes data structures of exported API 
+		# USE=64-bit-bfd changes data structures of exported API
 		--with-extra-soversion-suffix=gentoo-${CATEGORY}-${PN}-$(usex multitarget mt st)-$(usex 64-bit-bfd 64 def)
 	)
 
@@ -105,6 +104,12 @@ multilib_src_configure() {
 
 	ECONF_SOURCE=${S} \
 	econf "${myconf[@]}"
+
+	# Prevent makeinfo from running as we don't build docs here.
+	# bug #622652
+	sed -i \
+		-e '/^MAKEINFO/s:=.*:= true:' \
+		Makefile || die
 }
 
 multilib_src_install() {

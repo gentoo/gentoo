@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python2_7 python3_{5,6} )
+
+PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="Python library for interacting with the JIRA REST API"
@@ -29,11 +30,12 @@ RDEPEND="
 		dev-python/ipython[${PYTHON_USEDEP}]
 		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
 	)
-	kerberos? ( $(python_gen_cond_dep 'dev-python/requests-kerberos[${PYTHON_USEDEP}]' -3) )
+	kerberos? ( dev-python/requests-kerberos[${PYTHON_USEDEP}] )
 	oauth? (
-		|| ( dev-python/pycryptodome[${PYTHON_USEDEP}] dev-python/pycrypto[${PYTHON_USEDEP}] )
+		|| (
+			dev-python/pycryptodome[${PYTHON_USEDEP}]
+			dev-python/pycrypto[${PYTHON_USEDEP}]
+		)
 		dev-python/requests-oauthlib[${PYTHON_USEDEP}]
 	)
 	"
-
-REQUIRED_USE="kerberos? ( !python_targets_python2_7 )"

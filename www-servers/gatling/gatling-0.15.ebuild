@@ -41,21 +41,20 @@ src_compile() {
 
 	emake DIET="${DIET}" CC="$(tc-getCC)" \
 			CFLAGS="${CFLAGS} -I${ROOT}usr/include/libowfat" \
-			LDFLAGS="${LDFLAGS}" prefix=/usr ${targets} \
-			|| die "emake ${targets} failed"
+			LDFLAGS="${LDFLAGS}" prefix=/usr ${targets}
 }
 
 src_install() {
-	doman gatling.1 || die "installing manpage failed"
+	doman gatling.1
 
-	newconfd "${FILESDIR}/gatling.confd" gatling || die
-	newinitd "${FILESDIR}/gatling.initd-3" gatling || die
-	dodoc README.{ftp,http} || die "installing docs failed"
+	newconfd "${FILESDIR}/gatling.confd" gatling
+	newinitd "${FILESDIR}/gatling.initd-3" gatling
+	dodoc README.{ftp,http}
 
-	dobin gatling || die "installing gatling binary failed"
+	dobin gatling
 	use ssl && {
-		dodoc README.tls || die "installing docs failed"
-		dobin tlsgatling || die "installing tlsgatling binary failed"
+		dodoc README.tls
+		dobin tlsgatling
 	}
 }
 

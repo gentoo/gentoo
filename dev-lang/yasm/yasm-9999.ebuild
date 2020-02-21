@@ -12,7 +12,7 @@ if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
 else
 	SRC_URI="http://www.tortall.net/projects/yasm/releases/${P}.tar.gz"
-	KEYWORDS="-* ~amd64 ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
+	KEYWORDS="-* ~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x86-solaris"
 fi
 
 DESCRIPTION="An assembler for x86 and x86_64 instruction sets"
@@ -50,9 +50,9 @@ src_prepare() {
 
 src_configure() {
 	if [[ ${PV} == 9999* ]]; then
-		python_export_best
+		python_setup
 	else
-		use python && python_export_best
+		use python && python_setup
 	fi
 
 	econf \

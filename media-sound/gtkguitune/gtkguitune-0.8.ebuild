@@ -1,11 +1,11 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 inherit eutils flag-o-matic gnome2-utils
 
 DESCRIPTION="A guitar tuning program that uses Schmitt-triggering for quick feedback"
-HOMEPAGE="https://www.gentoo.org/"
+HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 SRC_URI="mirror://gentoo/${PN}-gtk2-${PV}.tar.gz"
 
 LICENSE="GPL-2"

@@ -1,0 +1,45 @@
+diff --git a/README.adoc b/README.adoc
+index 8693417..023f2e9 100644
+--- a/README.adoc
++++ b/README.adoc
+@@ -71,18 +71,3 @@ KERNEL=="hidraw*", SUBSYSTEM=="hidraw", \
+ On Windows 1903 and newer versions, access to FIDO devices has been restricted
+ to applications using the operating system's native API. Use of *libfido2*
+ is still possible in privileged applications.
+-
+-=== OpenSSH Integration
+-
+-*libfido2* includes middleware allowing https://www.openssh.com[OpenSSH] to
+-talk to U2F/FIDO2 devices. Note that server support is required for
+-authentication. In a nutshell:
+-
+-==== Key Generation
+-
+-  $ ssh-keygen -t [ecdsa-sk|ed25519-sk] -w /path/to/libsk-libfido2.so
+-
+-==== Authentication
+-
+-  $ ssh-agent -P /path/to/libsk-libfido2.so
+-  $ ssh-add -S /path/to/libsk-libfido2.so
+diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
+index 5f27e88..c44d1df 100644
+--- a/tools/CMakeLists.txt
++++ b/tools/CMakeLists.txt
+@@ -49,17 +49,9 @@ add_executable(fido2-token
+ 	${COMPAT_SOURCES}
+ )
+ 
+-add_library(sk-libfido2 MODULE sk-libfido2.c)
+-set_target_properties(sk-libfido2 PROPERTIES
+-	COMPILE_FLAGS "-DSK_STANDALONE -DWITH_OPENSSL"
+-	OUTPUT_NAME sk-libfido2
+-)
+-
+ target_link_libraries(fido2-cred ${CRYPTO_LIBRARIES} fido2_shared)
+ target_link_libraries(fido2-assert ${CRYPTO_LIBRARIES} fido2_shared)
+ target_link_libraries(fido2-token ${CRYPTO_LIBRARIES} fido2_shared)
+-target_link_libraries(sk-libfido2 ${CRYPTO_LIBRARIES} fido2_shared)
+ 
+ install(TARGETS fido2-cred fido2-assert fido2-token
+ 	DESTINATION ${CMAKE_INSTALL_BINDIR})
+-install(TARGETS sk-libfido2 DESTINATION ${CMAKE_INSTALL_LIBDIR})

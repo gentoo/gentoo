@@ -1,0 +1,47 @@
+diff -ur wput-0.6.2+git20130413.orig/src/progress.c wput-0.6.2+git20130413/src/progress.c
+--- wput-0.6.2+git20130413.orig/src/progress.c	2013-07-15 00:05:50.000000000 +0200
++++ wput-0.6.2+git20130413/src/progress.c	2016-10-25 16:48:05.909105000 +0200
+@@ -181,7 +181,7 @@
+   static char output[15];
+   time_t secs = time (NULL);
+   struct tm *ptm = localtime (&secs);
+-  sprintf (output, "%02d:%02d:%02d", ptm->tm_hour, ptm->tm_min, ptm->tm_sec);
++  snprintf (output, sizeof(output), "%02d:%02d:%02d", ptm->tm_hour, ptm->tm_min, ptm->tm_sec);
+   return output;
+ }
+ 
+@@ -261,11 +261,11 @@
+ 		unit = 3, trate = trate / (1024 * 1024 * 1024);
+ 	
+     if(trate < 100) 
+-		sprintf(buf, "%s%.2f%s", (trate < 10) ? " " : "", trate, units[sp][unit]);
++		snprintf(buf, sizeof(buf), "%s%.2f%s", (trate < 10) ? " " : "", trate, units[sp][unit]);
+ 	else if(trate < 1000)
+-		sprintf(buf, "%.1f%s", trate, units[sp][unit]);
++		snprintf(buf, sizeof(buf), "%.1f%s", trate, units[sp][unit]);
+ 	else
+-		sprintf(buf, " %d%s", (int) trate, units[sp][unit]);
++		snprintf(buf, sizeof(buf), " %d%s", (int) trate, units[sp][unit]);
+     return buf;
+ }
+ /* wrapper for our progress_bar */
+@@ -303,13 +303,15 @@
+ 	remain = (int) (WINCONV (fsession->local_fsize - transfered) * ((double) time_diff * 1000)
+ 	    / (double) WINCONV tbytes / 1000);
+     if(remain < 60)
+-		sprintf(buf, "ETA    %02ds", remain);
++		snprintf(buf, sizeof(buf), "ETA    %02ds", remain);
+ 	else if(remain < 3600)
+-		sprintf(buf, "ETA %2d:%02dm", remain / 60, remain % 60);
++		snprintf(buf, sizeof(buf), "ETA %2d:%02dm", remain / 60, remain % 60);
+ 	else if(remain < 3600 * 24)
+-		sprintf(buf, "ETA %2d:%02dh", remain / 3600, (remain % 3600) / 60);
++		snprintf(buf, sizeof(buf), "ETA %2d:%02dh", remain / 3600, (remain % 3600) / 60);
++	else if(remain < 3600 * 24 * 100)
++		snprintf(buf, sizeof(buf), "ETA %2d:%02dd", remain / (3600 * 24), (remain % (24 * 3600)) / 3600);
+ 	else
+-		sprintf(buf, "ETA %2d:%02dd", remain / (3600 * 24), (remain % (24 * 3600)) / 3600);
++		snprintf(buf, sizeof(buf), "ETA **:** ");
+     /* NO, there won't be an eta of weeks or years! 14.4modem times are gone ;). god bless all gprs-users */
+ 	
+ 	return buf;

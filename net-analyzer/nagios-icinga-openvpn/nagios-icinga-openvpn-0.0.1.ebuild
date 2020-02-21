@@ -1,15 +1,15 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_5,3_6} )
+PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
 MY_PN="check_openvpn"
 DESCRIPTION="A Nagios plugin to check whether an OpenVPN server is alive"
-HOMEPAGE="https://github.com/liquidat/${PN}"
-SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/liquidat/nagios-icinga-openvpn"
+SRC_URI="https://github.com/liquidat/nagios-icinga-openvpn/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"

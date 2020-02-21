@@ -24,7 +24,7 @@ RDEPEND="gtk? ( dev-ml/lablgtk
 	|| ( net-misc/x11-ssh-askpass net-misc/ssh-askpass-fullscreen ) )
 	>=app-eselect/eselect-unison-0.4"
 
-RESTRICT="!ocamlopt? ( strip )"
+RESTRICT="!ocamlopt? ( strip ) !test? ( test )"
 S="${WORKDIR}"/src
 
 DOCS=( BUGS.txt CONTRIB INSTALL NEWS README ROADMAP.txt TODO.txt )

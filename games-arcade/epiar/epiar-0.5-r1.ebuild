@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/epiar/${P}.0-src.zip"
 
 LICENSE="GPL-2 LGPL-2.1"
 SLOT="0"
-KEYWORDS="~x86 ~x86-fbsd"
+KEYWORDS="~x86"
 IUSE=""
 
 RDEPEND="media-libs/libsdl[video]

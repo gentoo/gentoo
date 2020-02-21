@@ -8,8 +8,6 @@ messager.c: fix memory overlap (fixes artefacts in scrolling text)
 ==363==    by 0x403009: bb (bb.c:258)
 ==363==    by 0x407C06: main (main.c:202)
 
-diff --git a/messager.c b/messager.c
-index 95cc410..964080b 100644
 --- a/messager.c
 +++ b/messager.c
 @@ -40,8 +40,8 @@ static void newline()

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ HOMEPAGE="http://icinga.org/icinga2"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="classicui console libressl lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
+IUSE="console libressl lto mail mariadb minimal +mysql nano-syntax +plugins postgres systemd +vim-syntax"
 WX_GTK_VER="3.0"
 
 CDEPEND="
@@ -42,8 +42,7 @@ RDEPEND="
 		net-analyzer/monitoring-plugins
 		net-analyzer/nagios-plugins
 	) )
-	mail? ( virtual/mailx )
-	classicui? ( net-analyzer/icinga[web] )"
+	mail? ( virtual/mailx )"
 
 REQUIRED_USE="!minimal? ( || ( mariadb mysql postgres ) )"
 
@@ -63,7 +62,6 @@ src_configure() {
 		-DICINGA2_UNITY_BUILD=FALSE
 		-DCMAKE_VERBOSE_MAKEFILE=ON
 		-DCMAKE_BUILD_TYPE=None
-		-DCMAKE_INSTALL_PREFIX=/usr
 		-DCMAKE_INSTALL_SYSCONFDIR=/etc
 		-DCMAKE_INSTALL_LOCALSTATEDIR=/var
 		-DICINGA2_SYSCONFIGFILE=/etc/conf.d/icinga2

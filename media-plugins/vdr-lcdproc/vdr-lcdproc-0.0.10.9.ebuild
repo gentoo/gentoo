@@ -1,13 +1,13 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit vdr-plugin-2 versionator
+inherit vdr-plugin-2
 
 VERSION="932" # every bump, new version
 
-MY_P=${PN}-$(replace_version_separator 3 -jw ${PV})
+MY_P=${PN}-$(ver_rs 3 -jw ${PV})
 
 DESCRIPTION="VDR plugin: use LCD device for additional output"
 HOMEPAGE="https://projects.vdr-developer.org/projects/plg-lcdproc"

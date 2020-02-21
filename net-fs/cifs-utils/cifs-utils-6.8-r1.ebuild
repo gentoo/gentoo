@@ -23,7 +23,7 @@ RDEPEND="
 		virtual/krb5
 	)
 	caps? ( sys-libs/libcap-ng )
-	pam? ( virtual/pam )
+	pam? ( sys-libs/pam )
 "
 DEPEND="${RDEPEND}"
 PDEPEND="

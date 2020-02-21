@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -25,7 +25,7 @@ COMMON_DEPEND=">=media-libs/xine-lib-1.1.20
 	nsplugin? ( dev-libs/nspr
 		x11-libs/libXaw
 		x11-libs/libXt )
-	udev? ( virtual/libgudev:= )
+	udev? ( dev-libs/libgudev:= )
 	xcb? ( x11-libs/libxcb )
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${COMMON_DEPEND}

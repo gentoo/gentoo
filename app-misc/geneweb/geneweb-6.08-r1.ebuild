@@ -17,8 +17,7 @@ RESTRICT="strip"
 
 RDEPEND="dev-lang/ocaml[ocamlopt?]
 	dev-ml/camlp5[ocamlopt?]"
-DEPEND="${RDEPEND}
-	!net-p2p/ghostwhitecrab"
+DEPEND="${RDEPEND}"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-ocaml-4.patch
@@ -59,8 +58,8 @@ src_install() {
 	doman man/*
 
 	# Install doc
-	insinto /usr/share/doc/${PF}/contrib
-	doins -r contrib/{gwdiff,misc}
+	dodoc -r contrib
+	docompress -x /usr/share/doc/${PF}/contrib
 
 	newinitd "${FILESDIR}/geneweb.initd" geneweb
 	newconfd "${FILESDIR}/geneweb.confd" geneweb

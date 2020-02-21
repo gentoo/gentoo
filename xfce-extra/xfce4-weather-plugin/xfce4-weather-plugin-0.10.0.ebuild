@@ -11,16 +11,16 @@ SRC_URI="https://archive.xfce.org/src/panel-plugins/${PN}/${PV%.*}/${P}.tar.bz2"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~ppc64 x86"
 IUSE="upower"
 
 RDEPEND=">=dev-libs/glib-2.42
-	dev-libs/libxml2:=
-	>=net-libs/libsoup-2.42:=[ssl]
+	dev-libs/libxml2
+	>=net-libs/libsoup-2.42[ssl]
 	>=x11-libs/gtk+-3.22:3
-	>=xfce-base/libxfce4ui-4.12:=
-	>=xfce-base/libxfce4util-4.12:=
-	>=xfce-base/xfce4-panel-4.12:=
+	>=xfce-base/libxfce4ui-4.14:=
+	>=xfce-base/libxfce4util-4.14:=
+	>=xfce-base/xfce4-panel-4.14:=
 	upower? ( >=sys-power/upower-0.9.23 )"
 DEPEND="${RDEPEND}
 	dev-util/intltool

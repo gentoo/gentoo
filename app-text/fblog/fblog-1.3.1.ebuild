@@ -46,9 +46,9 @@ DESCRIPTION="Small command-line JSON Log viewer"
 HOMEPAGE="https://github.com/brocode/fblog"
 SRC_URI="$(cargo_crate_uris ${CRATES})"
 
-LICENSE="WTFPL-2"
+LICENSE="Apache-2.0 Boost-1.0 MIT Unlicense WTFPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~ppc64"
 
 DEPEND=""
 RDEPEND="${DEPEND}"
@@ -59,6 +59,6 @@ DOCS=( README.org sample.json.log )
 QA_FLAGS_IGNORED="/usr/bin/fblog"
 
 src_install() {
-	cargo_src_install --path=.
+	cargo_src_install
 	einstalldocs
 }

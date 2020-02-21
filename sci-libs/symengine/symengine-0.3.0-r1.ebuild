@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit cmake-utils flag-o-matic
+inherit cmake-utils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Fast symbolic manipulation library, written in C++"
 HOMEPAGE="https://github.com/sympy/symengine"
@@ -13,6 +13,7 @@ LICENSE="MIT"
 SLOT="0/0.3"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="arb benchmarks boost debug doc flint llvm mpc mpfr openmp test tcmalloc threads"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-libs/gmp:=

@@ -1,0 +1,32 @@
+From 6ae1f1b03aaaee6a9a56040d3ba7af6bf6648ad6 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Wed, 27 Nov 2019 10:51:15 -0500
+Subject: [PATCH] Respect user CFLAGS
+
+---
+ tools/power/cpupower/Makefile | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/tools/power/cpupower/Makefile b/tools/power/cpupower/Makefile
+index c8622497ef23..f17e8c94da16 100644
+--- a/tools/power/cpupower/Makefile
++++ b/tools/power/cpupower/Makefile
+@@ -178,14 +178,7 @@ else
+ endif
+ export QUIET ECHO
+ 
+-# if DEBUG is enabled, then we do not strip or optimize
+-ifeq ($(strip $(DEBUG)),true)
+-	override CFLAGS += -O1 -g -DDEBUG
+-	STRIPCMD = /bin/true -Since_we_are_debugging
+-else
+-	override CFLAGS += $(OPTIMIZATION) -fomit-frame-pointer
+-	STRIPCMD = $(STRIP) -s --remove-section=.note --remove-section=.comment
+-endif
++STRIPCMD = true
+ 
+ 
+ # the actual make rules
+-- 
+2.24.0
+

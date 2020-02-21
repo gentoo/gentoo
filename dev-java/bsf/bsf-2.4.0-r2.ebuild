@@ -90,7 +90,7 @@ src_install() {
 
 	java-pkg_dolauncher ${PN} --main org.apache.bsf.Main
 
-	dodoc CHANGES.txt NOTICE.txt README.txt RELEASE-NOTE.txt TODO.txt || die
+	dodoc CHANGES.txt NOTICE.txt README.txt RELEASE-NOTE.txt TODO.txt
 
 	use doc && java-pkg_dojavadoc build/javadocs
 	use examples && java-pkg_doexamples samples

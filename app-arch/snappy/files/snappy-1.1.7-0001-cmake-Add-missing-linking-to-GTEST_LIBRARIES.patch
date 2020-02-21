@@ -14,8 +14,7 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 3f534b1..3a44aa9 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -118,7 +118,10 @@ if(SNAPPY_BUILD_TESTS)
-       "${PROJECT_SOURCE_DIR}/snappy-test.cc"
+@@ -119,6 +119,9 @@ if(SNAPPY_BUILD_TESTS)
    )
    target_compile_definitions(snappy_unittest PRIVATE -DHAVE_CONFIG_H)
 -  target_link_libraries(snappy_unittest snappy ${GFLAGS_LIBRARIES})

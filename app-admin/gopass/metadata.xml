@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<name>Mikle Kolyada</name>
+		<email>zlogene@gentoo.org</email>
 	</maintainer>
 	<upstream>
 		<remote-id type="github">gopasspw/gopass</remote-id>

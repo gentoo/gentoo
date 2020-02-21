@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ inherit ssl-cert user
 MY_PV="${PV/_p/p}"
 DESCRIPTION="Daemon for Sguil Network Security Monitoring"
 HOMEPAGE="https://github.com/bammv/sguil"
-SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P/-server}.tar.gz"
+SRC_URI="https://github.com/bammv/sguil/archive/v${PV}.tar.gz -> ${P/-server}.tar.gz"
 
 LICENSE="GPL-2 QPL"
 SLOT="0"

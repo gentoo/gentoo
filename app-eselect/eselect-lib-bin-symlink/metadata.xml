@@ -10,7 +10,7 @@
       <email>mgorny@gentoo.org</email>
       <name>Michał Górny</name>
     </maintainer>
-    <bugs-to>https://bitbucket.org/mgorny/eselect-lib-bin-symlink/issues/</bugs-to>
-    <remote-id type="bitbucket">mgorny/eselect-lib-bin-symlink</remote-id>
+    <bugs-to>https://github.com/mgorny/eselect-lib-bin-symlink/issues/</bugs-to>
+    <remote-id type="github">mgorny/eselect-lib-bin-symlink</remote-id>
   </upstream>
 </pkgmetadata>

@@ -165,5 +165,5 @@ src_install() {
 	java-pkg_sointo /usr/$(get_libdir)
 	java-pkg_doso *.so
 
-	dohtml about.html || die
+	dohtml about.html
 }

@@ -30,6 +30,8 @@ LICENSE="LGPL-2.1"
 SLOT="0/3"
 IUSE="+curl gnutls kerberos libressl +ssl static-libs test"
 
+RESTRICT="!test? ( test )"
+
 DEPEND="sys-libs/zlib:=[${MULTILIB_USEDEP}]
 	virtual/libiconv:=[${MULTILIB_USEDEP}]
 	curl? ( net-misc/curl:0=[${MULTILIB_USEDEP}] )

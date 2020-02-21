@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="Arx Fatalis demo"
 HOMEPAGE="https://www.arkane-studios.com/uk/arx.php"
 SRC_URI="arx_demo_english.zip"
 
-LICENSE="ArxFatalisDemo"
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

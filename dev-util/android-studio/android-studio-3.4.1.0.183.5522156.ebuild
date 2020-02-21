@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -54,7 +54,7 @@ RDEPEND="${DEPEND}
 	>=media-libs/libpng-1.2.51
 	>=media-libs/mesa-10.2.8[X(+)]
 	|| ( gnome-extra/zenity kde-apps/kdialog x11-apps/xmessage x11-libs/libnotify )
-	>=sys-libs/ncurses-5.9-r3:5/5[tinfo]
+	sys-libs/ncurses-compat:5[tinfo]
 	>=sys-libs/zlib-1.2.8-r1
 	>=x11-libs/libX11-1.6.2
 	>=x11-libs/libXau-1.0.7-r1
@@ -123,7 +123,7 @@ src_install() {
 		fperms -R 755 "${dir}"/jre/{bin,jre/bin}
 		fperms 755 ${dir}/jre/jre/lib/jexec
 	fi
-	chmod 755 "${ED%/}${dir}"/gradle/gradle-*/bin/gradle || die
+	chmod 755 "${ED}${dir}"/gradle/gradle-*/bin/gradle || die
 
 	newicon "bin/studio.png" "${PN}.png"
 	make_wrapper ${PN} ${dir}/bin/studio.sh

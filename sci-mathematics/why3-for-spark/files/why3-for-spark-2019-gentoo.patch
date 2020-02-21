@@ -1,0 +1,14 @@
+--- a/src/gnat/gnat_config.ml	2017-10-18 09:07:03.118919785 +0200
++++ b/src/gnat/gnat_config.ml	2017-10-18 09:07:45.198216939 +0200
+@@ -12,10 +12,7 @@
+   | Limit_Check of Gnat_expl.check
+   | Limit_Line of Gnat_loc.loc
+ 
+-let spark_prefix =
+-  (Filename.dirname
+-          (Filename.dirname (Filename.dirname
+-          (Filename.dirname Sys.executable_name))))
++let spark_prefix = "/usr"
+ 
+ let rec file_concat l =
+   match l with

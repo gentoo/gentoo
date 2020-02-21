@@ -1,0 +1,8 @@
+move dev-libs/rlottie media-libs/rlottie
+move dev-util/repo dev-vcs/repo
+move media-video/gnome-mpv media-video/celluloid
+move app-admin/graylog2 app-admin/graylog
+move media-libs/libclthreads dev-libs/libclthreads
+move media-libs/libclxclient x11-libs/libclxclient
+slotmove net-misc/teamviewer 15 0
+move net-vpn/wireguard virtual/wireguard

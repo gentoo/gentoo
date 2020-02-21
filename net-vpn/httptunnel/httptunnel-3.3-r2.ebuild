@@ -9,7 +9,7 @@ DESCRIPTION="httptunnel can create IP tunnels through firewalls/proxies using HT
 HOMEPAGE="http://www.nocrew.org/software/httptunnel.html"
 SRC_URI="http://www.nocrew.org/software/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
-KEYWORDS="amd64 ppc x86 ~x86-fbsd"
+KEYWORDS="amd64 ppc x86"
 IUSE=""
 SLOT="0"
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>randy@electronsweatshop.com</email>
+		<name>Randy Barlow</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription lang="en">
+		rpick is a command line tool that helps you to pick items from a list, using
+		configurable algorithms.
+
+		An example use case for this is picking a restaurant. You might want to
+		generally go to restaurants you haven't visited in a while, but you also
+		might not want to use a strict least recently used model and spice
+		things up with some element of chance, with restaurants you've least
+		recently visited getting a boost in their chances.
+	</longdescription>
+	<upstream>
+		<remote-id type="gitlab">bowlofeggs/rpick</remote-id>
+	</upstream>
+</pkgmetadata>

@@ -1,0 +1,36 @@
+From 1b029a0eb8b65057a31001e812b28f4685298ea4 Mon Sep 17 00:00:00 2001
+From: Seven Du <dujinfang@gmail.com>
+Date: Fri, 17 May 2019 22:19:08 +0800
+Subject: [PATCH] fix build with pulse audio
+
+---
+ audio/AudioInput.cpp  | 2 +-
+ audio/AudioOutput.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/audio/AudioInput.cpp b/audio/AudioInput.cpp
+index dae647a..7b0c4da 100644
+--- a/audio/AudioInput.cpp
++++ b/audio/AudioInput.cpp
+@@ -79,7 +79,7 @@ void AudioInput::EnumerateDevices(std::vector<AudioInputDevice>& devs){
+ #elif defined(WITHOUT_PULSE)
+ 	AudioInputALSA::EnumerateDevices(devs);
+ #else
+-	AudioInputPulse::EnumerateDevices(devs)
++	AudioInputPulse::EnumerateDevices(devs);
+ #endif
+ #endif
+ }
+diff --git a/audio/AudioOutput.cpp b/audio/AudioOutput.cpp
+index 458e8a5..07a3e31 100644
+--- a/audio/AudioOutput.cpp
++++ b/audio/AudioOutput.cpp
+@@ -90,7 +90,7 @@ void AudioOutput::EnumerateDevices(std::vector<AudioOutputDevice>& devs){
+ #elif defined(WITHOUT_PULSE)
+ 	AudioOutputALSA::EnumerateDevices(devs);
+ #else
+-	AudioOutputPulse::EnumerateDevices(devs)
++	AudioOutputPulse::EnumerateDevices(devs);
+ #endif
+ #endif
+ }

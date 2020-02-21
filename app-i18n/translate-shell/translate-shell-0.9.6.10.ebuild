@@ -11,6 +11,7 @@ LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+bidi +curl test tts"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	app-misc/rlwrap
@@ -25,7 +26,7 @@ RDEPEND="
 		)
 	)"
 DEPEND="${RDEPEND}
-	test? ( virtual/emacs )
+	test? ( >=app-editors/emacs-23.1:* )
 	"
 
 src_test() {

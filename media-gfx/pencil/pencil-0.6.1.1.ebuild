@@ -40,7 +40,7 @@ src_install() {
 	einstalldocs
 
 	# install target not yet provided
-	# emake INSTALL_ROOT="${D}" install || die "emake install failed"
+	# emake INSTALL_ROOT="${D}" install
 	newbin bin/pencil2d ${PN}
 
 	newicon app/data/icons/icon.png ${PN}.png

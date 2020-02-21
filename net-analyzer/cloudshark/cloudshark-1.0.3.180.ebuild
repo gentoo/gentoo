@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -8,7 +8,7 @@ inherit eutils multilib
 SV="1.0.3-180"
 
 DESCRIPTION="Easily upload your wireshark captures to CloudShark"
-HOMEPAGE="http://appliance.cloudshark.org/plug-ins-wireshark.html"
+HOMEPAGE="https://cloudshark.io/articles/wireshark-plugin/ https://github.com/cloudshark/wireshark-plugin"
 SRC_URI="http://appliance.cloudshark.org/plugin/${PN}-plugin-${SV}.tgz"
 
 LICENSE="GPL-2"

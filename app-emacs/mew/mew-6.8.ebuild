@@ -12,7 +12,7 @@ SRC_URI="https://www.mew.org/Release/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ppc ~x86"
+KEYWORDS="amd64 ppc x86"
 IUSE="ssl l10n_ja"
 RESTRICT="test"
 

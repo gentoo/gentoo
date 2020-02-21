@@ -1,0 +1,30 @@
+From 70564e30def5a877bd66e4758a72facf7ff1b09f Mon Sep 17 00:00:00 2001
+From: Antonio Rojas <arojas@archlinux.org>
+Date: Mon, 18 Nov 2019 22:09:24 +0100
+Subject: Fix build with telepathy-qt 0.9.8
+
+Use the new TelepathyQt5::Farstream link target with 0.9.8, otherwise compilation fails with
+/usr/include/telepathy-qt5/TelepathyQt/_gen/types.h:15:10: fatal error: QDBusArgument: No such file or directory
+
+Differential Revision: https://phabricator.kde.org/D25372
+---
+ libqtf/CMakeLists.txt | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/libqtf/CMakeLists.txt b/libqtf/CMakeLists.txt
+index 3025576..3b7b0fe 100644
+--- a/libqtf/CMakeLists.txt
++++ b/libqtf/CMakeLists.txt
+@@ -20,6 +20,10 @@ add_definitions(
+ 
+ add_library(qtf STATIC qtf.cpp)
+ 
++if (TARGET TelepathyQt5::Farstream) # telepathy-qt 0.9.8
++    set (TELEPATHY_QT5_FARSTREAM_LIBRARIES TelepathyQt5::Farstream)
++endif()
++
+ target_link_libraries(qtf
+     ${QTGSTREAMER_LIBRARIES}
+     ${TP_FARSTREAM_LDFLAGS}
+-- 
+cgit v1.1

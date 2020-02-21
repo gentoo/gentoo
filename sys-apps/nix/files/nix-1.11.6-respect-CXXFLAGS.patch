@@ -1,9 +1,0 @@
-diff --git a/configure.ac b/configure.ac
-index 3a24053..1b99702 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -57,4 +57,2 @@ fi
- 
--CFLAGS=
--CXXFLAGS=
- AC_PROG_CC

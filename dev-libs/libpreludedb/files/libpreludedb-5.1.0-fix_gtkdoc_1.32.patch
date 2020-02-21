@@ -1,0 +1,13 @@
+--- a/docs/api/libpreludedb-docs.xml
++++ b/docs/api/libpreludedb-docs.xml
+@@ -26,10 +26,6 @@
+     <xi:include href="xml/preludedb-sql-settings.xml"/>
+ 
+   </chapter>
+-  <chapter id="object-tree">
+-    <title>Object Hierarchy</title>
+-     <xi:include href="xml/tree_index.sgml"/>
+-  </chapter>
+   <index id="api-index-full">
+     <title>API Index</title>
+     <xi:include href="xml/api-index-full.xml"><xi:fallback /></xi:include>

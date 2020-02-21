@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils multilib-minimal
+inherit autotools eutils ltprune multilib-minimal
 
 # This file cannot be mirrored.
 # See the notes at http://tipok.org.ua/node/17
@@ -19,7 +19,7 @@ SRC_URI="
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ppc ppc64 x86 ~amd64-fbsd ~x86-fbsd"
+KEYWORDS="amd64 arm hppa ppc ppc64 x86"
 IUSE="fftw static-libs"
 RESTRICT="bindist mirror"
 

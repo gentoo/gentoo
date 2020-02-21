@@ -4,9 +4,7 @@
 # This file contains descriptions of PYTHON_TARGETS USE_EXPAND flags.
 
 python2_7 - Build with Python 2.7
-python3_5 - Build with Python 3.5
 python3_6 - Build with Python 3.6
 python3_7 - Build with Python 3.7
-jython2_7 - Build with Jython 2.7
-pypy - Build with PyPy
+python3_8 - Build with Python 3.8
 pypy3 - Build with PyPy3

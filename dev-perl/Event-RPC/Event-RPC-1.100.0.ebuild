@@ -13,6 +13,7 @@ DESCRIPTION="Event based transparent Client/Server RPC framework"
 SLOT="0"
 KEYWORDS="~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # Note: Storable not listed in final alternation like it is
 # upstream as storable alone is inherently insecure, so we force

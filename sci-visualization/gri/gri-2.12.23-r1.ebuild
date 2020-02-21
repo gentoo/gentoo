@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,7 @@ DEPEND="
 	>=sci-libs/netcdf-4
 	virtual/latex-base
 	virtual/imagemagick-tools[png]
-	emacs? ( virtual/emacs )"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 RDEPEND="${DEPEND}"
 
 SITEFILE="50gri-gentoo.el"

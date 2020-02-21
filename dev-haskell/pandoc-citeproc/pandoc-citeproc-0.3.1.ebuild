@@ -11,12 +11,13 @@ inherit haskell-cabal
 
 DESCRIPTION="Supports using pandoc with citeproc"
 HOMEPAGE="http://hackage.haskell.org/package/pandoc-citeproc"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="amd64 x86"
 IUSE="+bibutils embed-data-files +hexpat +network test-citeproc unicode_collation"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=app-text/pandoc-1.12.1:=[profile?]
 	dev-haskell/aeson:=[profile?]

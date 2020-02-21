@@ -23,8 +23,8 @@ IUSE="dbus nls test"
 RDEPEND=">=app-eselect/eselect-wxwidgets-0.7-r1
 	>=dev-libs/nettle-3.1:=
 	>=dev-db/sqlite-3.7
-	>=dev-libs/libfilezilla-0.18.2
-	<dev-libs/libfilezilla-0.19.0
+	>=dev-libs/libfilezilla-0.18.2:=
+	<dev-libs/libfilezilla-0.20.0:=
 	>=dev-libs/pugixml-1.7
 	>=net-libs/gnutls-3.5.7
 	>=x11-libs/wxGTK-3.0.4:${WX_GTK_VER}[X]
@@ -35,6 +35,8 @@ DEPEND="${RDEPEND}
 	>=sys-devel/libtool-1.4
 	nls? ( >=sys-devel/gettext-0.11 )
 	test? ( >=dev-util/cppunit-1.13.0 )"
+
+RESTRICT="!test? ( test )"
 
 S="${WORKDIR}"/${PN}-${MY_PV}
 

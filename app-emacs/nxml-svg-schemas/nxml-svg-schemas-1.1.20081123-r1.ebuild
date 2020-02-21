@@ -16,7 +16,7 @@ LICENSE="HPND"
 # install this one anyway because the schemas.xml syntax is not
 # sophisticated enough.
 SLOT="1.1"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 # Yes this requires Java, but I'd rather not repackage this, if you
 # know something better in C, I'll be glad to use that.

@@ -20,7 +20,7 @@ DEPEND="${RDEPEND}
 
 SLOT="0/${PV}"
 LICENSE="LGPL-2.1-with-linking-exception"
-KEYWORDS="~amd64 ~arm ~ppc ~x86-fbsd"
+KEYWORDS="~amd64 ~arm ~ppc"
 S="${WORKDIR}/lwt-${P}/"
 
 src_compile() {

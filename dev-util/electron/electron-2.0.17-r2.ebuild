@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -8,7 +8,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	hi hr hu id it ja kn ko lt lv ml mr ms nb nl pl pt-BR pt-PT ro ru sk sl sr
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
-inherit check-reqs chromium-2 eapi7-ver gnome2-utils flag-o-matic multilib \
+inherit check-reqs chromium-2 eapi7-ver estack gnome2-utils flag-o-matic multilib \
 	multiprocessing ninja-utils pax-utils portability python-any-r1 \
 	toolchain-funcs virtualx xdg-utils
 
@@ -81,7 +81,8 @@ KEYWORDS="~amd64"
 IUSE="cups custom-cflags gconf gnome-keyring kerberos lto neon pic
 	+proprietary-codecs pulseaudio selinux +system-ffmpeg +system-libvpx
 	+system-ssl +tcmalloc"
-RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )"
+RESTRICT="!system-ffmpeg? ( proprietary-codecs? ( bindist ) )
+	!test? ( test )"
 
 # Native Client binaries are compiled with different set of flags, bug #452066.
 QA_FLAGS_IGNORED=".*\.nexe"
@@ -123,7 +124,6 @@ COMMON_DEPEND="
 			media-video/ffmpeg[-samba]
 			>=net-fs/samba-4.5.10-r1[-debug(-)]
 		)
-		!=net-fs/samba-4.5.12-r0
 		media-libs/opus:=
 	)
 	>=net-dns/c-ares-1.13.0:=
@@ -156,7 +156,6 @@ COMMON_DEPEND="
 "
 # For nvidia-drivers blocker, see bug #413637 .
 RDEPEND="${COMMON_DEPEND}
-	!<dev-util/electron-0.36.12-r4
 	x11-misc/xdg-utils
 	virtual/opengl
 	virtual/ttf-fonts

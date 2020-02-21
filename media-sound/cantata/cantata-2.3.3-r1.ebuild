@@ -4,7 +4,7 @@
 EAPI=7
 
 PLOCALES="cs da de en_GB es fr hu it ja ko pl pt_BR ru zh_CN"
-inherit cmake-utils l10n qmake-utils xdg
+inherit cmake l10n qmake-utils xdg
 
 DESCRIPTION="Featureful and configurable Qt client for the music player daemon (MPD)"
 HOMEPAGE="https://github.com/CDrummond/cantata"
@@ -77,7 +77,7 @@ src_prepare() {
 		rm "translations/${PN}_${1}".ts || die
 	}
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	# Unbundle 3rd party libs
 	rm -r 3rdparty/{ebur128,qtsingleapplication} || die
@@ -106,7 +106,7 @@ src_configure() {
 		-DENABLE_UDISKS2=ON
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 pkg_postinst() {

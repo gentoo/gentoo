@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-
-inherit cmake-multilib
+EAPI=7
 
 MY_P=FANN-${PV}-Source
+inherit cmake-multilib
 
 DESCRIPTION="Fast Artificial Neural Network Library"
 HOMEPAGE="http://leenissen.dk/fann/"

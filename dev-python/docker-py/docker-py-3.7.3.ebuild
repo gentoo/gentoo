@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-PYTHON_COMPAT=( python{2_7,3_5,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 
 inherit distutils-r1
 
@@ -14,6 +14,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-python/docker-pycreds-0.4.0[${PYTHON_USEDEP}]
@@ -29,7 +30,7 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]
-		dev-python/paramiko[${PYTHON_USEDEP}]
+		>=dev-python/paramiko-2.4.2[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.9.1[${PYTHON_USEDEP}]
 	)

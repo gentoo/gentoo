@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit autotools git-r3 python-any-r1
 
 DESCRIPTION="Programmable Completion for bash"
@@ -19,7 +19,6 @@ RESTRICT="!test? ( test )"
 # completion collision with net-fs/mc
 RDEPEND=">=app-shells/bash-4.3_p30-r1:0
 	sys-apps/miscfiles
-	!app-eselect/eselect-bashcomp
 	!!net-fs/mc"
 DEPEND="
 	test? (
@@ -92,6 +91,11 @@ src_prepare() {
 		emake -C "${WORKDIR}"/bashcomp2 bash-completion-blacklist-support.patch
 		eapply "${WORKDIR}"/bashcomp2/bash-completion-blacklist-support.patch
 	fi
+
+	# our setup is close enough to container to cause the same tests
+	# to fail
+	sed -i -e '/def in_container/a \
+    return True' test/t/conftest.py || die
 
 	eautoreconf
 }

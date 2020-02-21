@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils bash-completion-r1 linux-info udev systemd
+inherit eutils bash-completion-r1 linux-info ltprune udev systemd
 
 DESCRIPTION="Daemon providing interfaces to work with storage devices"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/udisks"
@@ -10,12 +10,13 @@ SRC_URI="https://hal.freedesktop.org/releases/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm ia64 ~mips ppc ppc64 ~sh sparc x86"
 IUSE="debug +lvm nls remote-access selinux"
 
 COMMON_DEPEND=">=dev-libs/dbus-glib-0.100
 	>=dev-libs/glib-2.30
 	>=dev-libs/libatasmart-0.19
+	dev-libs/libgudev:=
 	>=sys-auth/polkit-0.110
 	>=sys-apps/dbus-1.6
 	>=sys-apps/sg3_utils-1.27.20090411
@@ -24,7 +25,6 @@ COMMON_DEPEND=">=dev-libs/dbus-glib-0.100
 		>=sys-fs/lvm2-2.02.66
 		<sys-fs/lvm2-2.02.183
 	)
-	virtual/libgudev:=
 	virtual/libudev:=
 	virtual/udev
 	selinux? ( sec-policy/selinux-devicekit )"

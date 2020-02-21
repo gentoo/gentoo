@@ -10,9 +10,9 @@ HOMEPAGE="https://gitlab.gnome.org/GNOME/libdazzle"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 ~sparc x86"
 
-IUSE="gtk-doc +introspection test vala"
+IUSE="gtk-doc +introspection test +vala"
 REQUIRED_USE="vala? ( introspection )"
 RESTRICT="!test? ( test )"
 

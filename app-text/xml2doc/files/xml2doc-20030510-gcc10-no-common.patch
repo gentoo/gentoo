@@ -1,0 +1,18 @@
+--- a/src/defs.h
++++ b/src/defs.h
+@@ -18,13 +18,13 @@
+ 
+ /* Global vars */
+ 
+-enum
++enum align
+ {
+ 	ALIGN_RIGHT,
+ 	ALIGN_LEFT,
+ 	ALIGN_JUSTIFY,
+ 	ALIGN_CENTER
+-} align;
++};
+ 
+ typedef struct 
+ {

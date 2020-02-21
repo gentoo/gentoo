@@ -1,7 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit gnome2-utils xdg-utils
 
@@ -29,7 +29,7 @@ RDEPEND="
 	dev-qt/qtnetwork:5[ssl]
 	>=dev-qt/qtsingleapplication-2.6.1_p20130904-r1[qt5(+),X?]
 	dev-qt/qtxml:5
-	=net-libs/libtorrent-rasterbar-1.1*:0=
+	>=net-libs/libtorrent-rasterbar-1.2.0:0=
 	sys-libs/zlib
 	dbus? ( dev-qt/qtdbus:5 )
 	X? (
@@ -39,13 +39,14 @@ RDEPEND="
 		dev-qt/qtwidgets:5
 	)"
 DEPEND="${RDEPEND}
-	dev-qt/linguist-tools:5
-	virtual/pkgconfig"
+	dev-qt/linguist-tools:5"
+
+BDEPEND="virtual/pkgconfig"
 
 DOCS=( AUTHORS Changelog CONTRIBUTING.md README.md TODO )
 
 src_configure() {
-	econf --with-qtsingleapplication=system \
+	econf \
 	$(use_enable dbus qt-dbus) \
 	$(use_enable debug) \
 	$(use_enable webui) \

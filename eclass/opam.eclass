@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: opam.eclass
 # @MAINTAINER:
-# Gentoo ML Project <ml@gentoo.org>
+# maintainer-needed@gentoo.org
 # @AUTHOR:
 # Alexis Ballier <aballier@gentoo.org>
 # @SUPPORTED_EAPIS: 5 6 7

@@ -1,0 +1,151 @@
+From 62fe263662b52a462895fd8d21cf29b2fa22fe86 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Fri, 27 Apr 2018 11:10:57 +0100
+Subject: [PATCH] avahi-python: Add a unit test for string and bytestring
+ conversions
+
+Signed-off-by: Simon McVittie <smcv@debian.org>
+---
+ .gitignore                     |  1 +
+ avahi-python/avahi/.gitignore  |  5 ++
+ avahi-python/avahi/Makefile.am |  7 +++
+ avahi-python/avahi/test.py     | 85 ++++++++++++++++++++++++++++++++++
+ 4 files changed, 98 insertions(+)
+ create mode 100755 avahi-python/avahi/test.py
+
+diff --git a/.gitignore b/.gitignore
+index beab8d94..06565f06 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -32,3 +32,4 @@ ltmain.sh
+ missing
+ py-compile
+ stamp-h1
++test-driver
+diff --git a/avahi-python/avahi/.gitignore b/avahi-python/avahi/.gitignore
+index 118a34de..9b0f6e3c 100644
+--- a/avahi-python/avahi/.gitignore
++++ b/avahi-python/avahi/.gitignore
+@@ -1 +1,6 @@
++*.log
++*.pyc
++*.pyo
++*.trs
+ ServiceTypeDatabase.py
++__pycache__/
+diff --git a/avahi-python/avahi/Makefile.am b/avahi-python/avahi/Makefile.am
+index 3eb67d0d..cf527aff 100644
+--- a/avahi-python/avahi/Makefile.am
++++ b/avahi-python/avahi/Makefile.am
+@@ -16,6 +16,11 @@
+ # USA.
+ 
+ EXTRA_DIST = __init__.py ServiceTypeDatabase.py.in
++EXTRA_DIST += test.py
++
++TESTS =
++TEST_EXTENSIONS = .py
++PY_LOG_COMPILER = $(PYTHON)
+ 
+ pkglibdatadir=$(libdir)/avahi
+ 
+@@ -55,6 +60,8 @@ if HAVE_PYTHON_DBUS
+ 
+ avahi_PYTHON += __init__.py
+ 
++TESTS += test.py
++
+ endif
+ endif
+ 
+diff --git a/avahi-python/avahi/test.py b/avahi-python/avahi/test.py
+new file mode 100755
+index 00000000..7afc4809
+--- /dev/null
++++ b/avahi-python/avahi/test.py
+@@ -0,0 +1,85 @@
++#!/usr/bin/python
++#
++# Copyright 2018 Simon McVittie
++#
++# This file is part of avahi.
++#
++# avahi is free software; you can redistribute it and/or modify it
++# under the terms of the GNU Lesser General Public License as
++# published by the Free Software Foundation; either version 2 of the
++# License, or (at your option) any later version.
++#
++# avahi is distributed in the hope that it will be useful, but WITHOUT
++# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
++# or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public
++# License for more details.
++#
++# You should have received a copy of the GNU Lesser General Public
++# License along with avahi; if not, write to the Free Software
++# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307
++# USA.
++
++import os
++import os.path
++import sys
++import unittest
++from collections import OrderedDict
++
++sys.path.insert(0, os.path.join(os.path.dirname(__file__), os.pardir))
++
++import avahi
++import dbus
++
++class TestUtilityMethods(unittest.TestCase):
++    def test_byte_array_to_string(self):
++        self.assertEqual(
++            avahi.byte_array_to_string([1, 2, 127, 128]),
++            '....')
++        self.assertEqual(
++            avahi.byte_array_to_string([ord('a'), ord(' '), ord('b')]),
++            'a b')
++
++    def test_txt_array_to_string_array(self):
++        self.assertEqual(
++            avahi.txt_array_to_string_array([[1, 2], [ord('a'), ord('b')]]),
++            ['..', 'ab'])
++
++    def test_string_to_byte_array(self):
++        self.assertEqual(
++            avahi.string_to_byte_array('abc'),
++            [dbus.Byte(97), dbus.Byte(98), dbus.Byte(99)])
++        self.assertIsInstance(
++            avahi.string_to_byte_array('abc')[0],
++            dbus.Byte)
++        self.assertEqual(
++            avahi.string_to_byte_array(b'\x01\xff'),
++            [dbus.Byte(0x01), dbus.Byte(0xff)])
++        self.assertEqual(
++            avahi.string_to_byte_array(u'\u00e1'),
++            [dbus.Byte(0xc3), dbus.Byte(0xa1)])
++
++    def test_string_array_to_txt_array(self):
++        self.assertEqual(
++            avahi.string_array_to_txt_array(['abc', b'\x01', u'\u00e1']),
++            [
++                [dbus.Byte(97), dbus.Byte(98), dbus.Byte(99)],
++                [dbus.Byte(0x01)],
++                [dbus.Byte(0xc3), dbus.Byte(0xa1)]])
++        self.assertIsInstance(
++            avahi.string_array_to_txt_array(['abc'])[0][0],
++            dbus.Byte)
++
++    def test_dict_to_txt_array(self):
++        self.assertEqual(
++            avahi.dict_to_txt_array(
++                OrderedDict((('a', 'abc'), ('b', b'\x01'), ('c', u'\u00e1')))),
++            [
++                [dbus.Byte(97), dbus.Byte(ord('=')), dbus.Byte(97), dbus.Byte(98), dbus.Byte(99)],
++                [dbus.Byte(98), dbus.Byte(ord('=')), dbus.Byte(0x01)],
++                [dbus.Byte(99), dbus.Byte(ord('=')), dbus.Byte(0xc3), dbus.Byte(0xa1)]])
++        self.assertIsInstance(
++            avahi.dict_to_txt_array({'a': 'abc'})[0][0],
++            dbus.Byte)
++
++if __name__ == '__main__':
++    unittest.main()

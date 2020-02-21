@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{5,6} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
 QT_MIN_VER="5.9.4"
 
@@ -15,7 +15,7 @@ else
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit cmake-utils desktop python-single-r1 qmake-utils xdg
+inherit cmake desktop python-single-r1 qmake-utils xdg
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="https://www.qgis.org/"
@@ -27,6 +27,7 @@ IUSE="3d examples georeferencer grass hdf5 mapserver netcdf opencl oracle polar 
 REQUIRED_USE="${PYTHON_REQUIRED_USE} mapserver? ( python )"
 
 BDEPEND="
+	${PYTHON_DEPS}
 	>=dev-qt/linguist-tools-${QT_MIN_VER}:5
 	sys-devel/bison
 	sys-devel/flex
@@ -50,10 +51,11 @@ COMMON_DEPEND="
 	>=dev-qt/qtsql-${QT_MIN_VER}:5
 	>=dev-qt/qtwidgets-${QT_MIN_VER}:5
 	>=dev-qt/qtxml-${QT_MIN_VER}:5
-	>=sci-libs/gdal-2.2.3:=[geos]
+	media-gfx/exiv2:=
+	>=sci-libs/gdal-3.0.4:=[geos]
 	sci-libs/geos
 	sci-libs/libspatialindex:=
-	sci-libs/proj
+	>=sci-libs/proj-4.9.3:=
 	>=x11-libs/qscintilla-2.10.1:=[qt5(+)]
 	>=x11-libs/qwt-6.1.2:6=[qt5(+),svg]
 	3d? ( >=dev-qt/qt3d-${QT_MIN_VER}:5 )
@@ -71,29 +73,30 @@ COMMON_DEPEND="
 	postgres? ( dev-db/postgresql:= )
 	python? (
 		${PYTHON_DEPS}
-		dev-python/future[${PYTHON_USEDEP}]
-		dev-python/httplib2[${PYTHON_USEDEP}]
-		dev-python/jinja[${PYTHON_USEDEP}]
-		dev-python/markupsafe[${PYTHON_USEDEP}]
-		dev-python/owslib[${PYTHON_USEDEP}]
-		dev-python/pygments[${PYTHON_USEDEP}]
-		dev-python/PyQt5[designer,network,sql,svg,webkit?,${PYTHON_USEDEP}]
-		dev-python/python-dateutil[${PYTHON_USEDEP}]
-		dev-python/pytz[${PYTHON_USEDEP}]
-		dev-python/pyyaml[${PYTHON_USEDEP}]
-		>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_USEDEP}]
-		dev-python/requests[${PYTHON_USEDEP}]
-		dev-python/sip:=[${PYTHON_USEDEP}]
-		dev-python/six[${PYTHON_USEDEP}]
-		>=sci-libs/gdal-2.2.3[python,${PYTHON_USEDEP}]
-		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			dev-python/future[${PYTHON_MULTI_USEDEP}]
+			dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
+			dev-python/jinja[${PYTHON_MULTI_USEDEP}]
+			dev-python/markupsafe[${PYTHON_MULTI_USEDEP}]
+			dev-python/owslib[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+			dev-python/PyQt5[designer,network,sql,svg,webkit?,${PYTHON_MULTI_USEDEP}]
+			dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
+			dev-python/pytz[${PYTHON_MULTI_USEDEP}]
+			dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_MULTI_USEDEP}]
+			dev-python/requests[${PYTHON_MULTI_USEDEP}]
+			dev-python/sip:=[${PYTHON_MULTI_USEDEP}]
+			dev-python/six[${PYTHON_MULTI_USEDEP}]
+			>=sci-libs/gdal-2.2.3[python,${PYTHON_MULTI_USEDEP}]
+			postgres? ( dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}] )
+		')
 	)
 	qml? ( >=dev-qt/qtdeclarative-${QT_MIN_VER}:5 )
 	webkit? ( >=dev-qt/qtwebkit-5.9.1:5 )
 "
 DEPEND="${COMMON_DEPEND}
 	>=dev-qt/qttest-${QT_MIN_VER}:5
-	>=dev-qt/qtxmlpatterns-${QT_MIN_VER}:5
 	python? ( ${PYTHON_DEPS} )
 "
 RDEPEND="${COMMON_DEPEND}
@@ -105,7 +108,7 @@ RESTRICT="test"
 
 PATCHES=(
 	# git master
-	"${FILESDIR}/${PN}-2.18.12-cmake-lib-suffix.patch"
+	"${FILESDIR}/${PN}-3.10.0-cmake-lib-suffix.patch"
 	# TODO upstream
 	"${FILESDIR}/${PN}-3.4.7-featuresummary.patch"
 	"${FILESDIR}/${PN}-3.4.7-default-qmldir.patch"
@@ -116,7 +119,7 @@ pkg_setup() {
 }
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 }
 
 src_configure() {
@@ -128,16 +131,18 @@ src_configure() {
 		-DQWT_LIBRARY=/usr/$(get_libdir)/libqwt6-qt5.so
 		-DPEDANTIC=OFF
 		-DUSE_CCACHE=OFF
+		-DWITH_ANALYSIS=ON
 		-DWITH_APIDOC=OFF
+		-DWITH_GUI=ON
 		-DWITH_INTERNAL_MDAL=ON # not packaged, bug 684538
 		-DWITH_QSPATIALITE=ON
 		-DENABLE_TESTS=OFF
 		-DWITH_3D=$(usex 3d)
 		-DWITH_GEOREFERENCER=$(usex georeferencer)
 		-DWITH_GRASS7=$(usex grass)
-		$(cmake-utils_use_find_package hdf5 HDF5)
+		$(cmake_use_find_package hdf5 HDF5)
 		-DWITH_SERVER=$(usex mapserver)
-		$(cmake-utils_use_find_package netcdf NetCDF)
+		$(cmake_use_find_package netcdf NetCDF)
 		-DUSE_OPENCL=$(usex opencl)
 		-DWITH_ORACLE=$(usex oracle)
 		-DWITH_QWTPOLAR=$(usex polar)
@@ -160,23 +165,11 @@ src_configure() {
 	addpredict /dev/dri/renderD128
 	addpredict /dev/dri/renderD129
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 src_install() {
-	cmake-utils_src_install
-
-	newmenu linux/org.qgis.qgis.desktop.in org.qgis.qgis.desktop
-
-	local size type
-	for size in 16 22 24 32 48 64 96 128 256; do
-		newicon -s ${size} linux/icons/${PN}-icon${size}x${size}.png ${PN}.png
-		newicon -c mimetypes -s ${size} linux/icons/${PN}-mime-icon${size}x${size}.png ${PN}-mime.png
-		for type in qgs qml qlr qpt; do
-			newicon -c mimetypes -s ${size} linux/icons/${PN}-${type}${size}x${size}.png ${PN}-${type}.png
-		done
-	done
-	newicon -s scalable images/icons/qgis_icon.svg qgis.svg
+	cmake_src_install
 
 	insinto /usr/share/mime/packages
 	doins debian/qgis.xml
@@ -188,6 +181,7 @@ src_install() {
 	fi
 
 	if use python; then
+		python_optimize
 		python_optimize "${ED}"/usr/share/qgis/python
 	fi
 
@@ -206,9 +200,6 @@ pkg_postinst() {
 		elog "But some installed python-plugins import the psycopg2 module."
 		elog "If you do not need these plugins just disable them"
 		elog "in the Plugins menu, else you need to set USE=\"postgres\""
-	fi
-	if has_version "<sci-geosciences/qgis-3"; then
-		elog "QGIS is now based on PyQt5. Old scripts may not work anymore."
 	fi
 
 	xdg_pkg_postinst

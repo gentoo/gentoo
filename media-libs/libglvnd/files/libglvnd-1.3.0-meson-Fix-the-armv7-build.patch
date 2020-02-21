@@ -1,0 +1,36 @@
+From 9ccdb05cdd620c4ae9454010f419d7d11c0efcdc Mon Sep 17 00:00:00 2001
+From: Kyle Brenneman <kbrenneman@nvidia.com>
+Date: Fri, 6 Dec 2019 07:22:40 -0700
+Subject: [PATCH 1/2] meson: Fix the armv7 build.
+
+Fix the GLdispatch meson file so that it checks for the value "armv7_tsd" for
+gl_dispatch_type instead of "arm_tsd".
+---
+ src/GLdispatch/vnd-glapi/meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/GLdispatch/vnd-glapi/meson.build b/src/GLdispatch/vnd-glapi/meson.build
+index c5319fc..ce20178 100644
+--- a/src/GLdispatch/vnd-glapi/meson.build
++++ b/src/GLdispatch/vnd-glapi/meson.build
+@@ -39,7 +39,7 @@ if gl_dispatch_type == 'pure_c'
+   _entry_files += 'entry_pure_c.c'
+ else
+   _entry_files += 'entry_common.c'
+-  if gl_dispatch_type != 'arm_tsd'
++  if gl_dispatch_type != 'armv7_tsd'
+     _entry_files += 'entry_simple_asm.c'
+   endif
+   if gl_dispatch_type == 'x86_tls'
+@@ -50,7 +50,7 @@ else
+     _entry_files += 'entry_x86_64_tls.c'
+   elif gl_dispatch_type == 'x86_64_tsd'
+     _entry_files += 'entry_x86_64_tsd.c'
+-  elif gl_dispatch_type == 'arm_tsd'
++  elif gl_dispatch_type == 'armv7_tsd'
+     _entry_files += 'entry_armv7_tsd.c'
+   elif gl_dispatch_type == 'aarch64_tsd'
+     _entry_files += 'entry_aarch64_tsd.c'
+-- 
+2.23.0
+

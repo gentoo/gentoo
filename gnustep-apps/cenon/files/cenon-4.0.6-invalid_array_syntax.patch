@@ -1,0 +1,20 @@
+Decsription: Fix FTBFS due to invalid syntax that only works with Clang.
+Author: Yavor Doganov <yavor@gnu.org>
+Forwarded: info@cenon.com
+Last-Update: 2018-03-12
+---
+
+--- cenon.app.orig/VHFImport/PSImport.m
++++ cenon.app/VHFImport/PSImport.m
+@@ -180,7 +180,10 @@
+         NSString        *output;
+ 
+         [task setLaunchPath: @"/bin/sh"];
+-        [task setArguments:@[@"-c", [NSString stringWithFormat:@"%@ -h | grep %@", gsPath, gsDev]] ];
++        [task setArguments:
++                [NSArray arrayWithObjects: @"-c",
++                         [NSString stringWithFormat:@"%@ -h | grep %@",
++                                   gsPath, gsDev], nil]];
+         [task setStandardOutput:pipe];
+         [task launch];
+         output = [[NSString alloc] initWithData:[file readDataToEndOfFile] encoding:NSUTF8StringEncoding];

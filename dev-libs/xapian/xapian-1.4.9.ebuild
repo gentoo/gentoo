@@ -63,9 +63,6 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	# bug #573466
-	ln -sf "${D}usr/bin/xapian-config" "${D}usr/bin/xapian-config-1.3"
-
 	use doc || rm -rf "${D}usr/share/doc/xapian-core-${PV}"
 
 	dodoc AUTHORS HACKING PLATFORMS README NEWS

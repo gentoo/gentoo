@@ -14,6 +14,7 @@ KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ppc64 ~sparc x86"
 IUSE="afs backup calalarm caps clamav http kerberos ldap lmdb \
 	mysql nntp pam perl postgres replication +server sieve snmp \
 	sqlite ssl static-libs tcpd test xapian"
+RESTRICT="!test? ( test )"
 
 CDEPEND="
 	sys-libs/zlib:0=
@@ -33,7 +34,7 @@ CDEPEND="
 	mysql? ( dev-db/mysql-connector-c:0= )
 	nntp? ( !net-nntp/leafnode )
 	pam? (
-			virtual/pam
+			sys-libs/pam
 			>=net-mail/mailbase-1
 		)
 	perl? ( dev-lang/perl:= )

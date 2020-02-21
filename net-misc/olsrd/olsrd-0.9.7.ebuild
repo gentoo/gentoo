@@ -79,8 +79,8 @@ src_install() {
 	doinitd "${FILESDIR}"/${PN}
 
 	gzip -d \
-		"${ED%/}"/usr/share/man/man5/olsrd.conf.5.gz \
-		"${ED%/}"/usr/share/man/man8/olsrd.8.gz \
+		"${ED}"/usr/share/man/man5/olsrd.conf.5.gz \
+		"${ED}"/usr/share/man/man8/olsrd.8.gz \
 		|| die
 
 	dodoc CHANGELOG \

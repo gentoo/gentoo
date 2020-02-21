@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -10,7 +10,7 @@ HOMEPAGE="http://www.gftp.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ppc ppc64 sparc x86"
 IUSE="gtk libressl ssl"
 
 RDEPEND="
@@ -33,6 +33,9 @@ PATCHES=(
 
 	# https://bugzilla.gnome.org/show_bug.cgi?id=740785
 	"${FILESDIR}/${P}-desktop.patch"
+
+	# https://bugs.gentoo.org/692230
+	"${FILESDIR}"/${P}-glibc-2.30.patch
 )
 
 src_configure() {

@@ -1,0 +1,26 @@
+--- a/Makefile.alt
++++ b/Makefile.alt
+@@ -8,17 +8,17 @@
+ 
+ LOCAL_LIBRARIES = -lX11 
+   SYS_LIBRARIES = -lm
+-           SRCS = calcalt.c random.c  artist.c global.c xmountains.c X_graphics.c print_alg.c
+-           OBJS = calcalt.o random.o  artist.o global.o xmountains.o X_graphics.o print_alg.o
+-           HDRS = crinkle.h global.h paint.h patchlevel.h copyright.h
++           SRCS = calcalt.c random.c  artist.c  xmountains.c X_graphics.c print_alg.c
++           OBJS = calcalt.o random.o  artist.o  xmountains.o X_graphics.o print_alg.o
++           HDRS = crinkle.h  paint.h patchlevel.h copyright.h
+ 
+ xmountains: $(OBJS)
+ 	$(CC) $(LDFLAGS) -o xmountains $(OBJS) -lX11 -lm
+ 
+ 
+ calcalt.o: crinkle.h
+-artist.o: global.h paint.h crinkle.h
+-global.o: crinkle.h paint.h
+-xmountains.o: paint.h global.h patchlevel.h copyright.h crinkle.h
++artist.o:  paint.h crinkle.h
++: crinkle.h paint.h
++xmountains.o: paint.h  patchlevel.h copyright.h crinkle.h
+ X_graphics.o: paint.h crinkle.h
+ 

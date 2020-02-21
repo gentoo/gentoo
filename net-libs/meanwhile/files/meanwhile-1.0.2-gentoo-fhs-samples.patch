@@ -1,0 +1,26 @@
+--- a/doc/Makefile.am
++++ b/doc/Makefile.am
+@@ -5,10 +5,10 @@
+ if ENABLE_DOXYGEN
+ 
+ htmldoc_DATA = html/*
+-htmldocdir = $(datadir)/doc/@PACKAGE@-doc-@VERSION@/html
++htmldocdir = $(htmldir)
+ 
+ latexdoc_DATA = latex/*
+-latexdocdir = $(datadir)/doc/@PACKAGE@-doc-@VERSION@/latex
++latexdocdir = $(docdir)/latex
+ 
+ docdata = $(htmldoc_DATA) $(latexdoc_DATA)
+ 
+--- a/samples/Makefile.am
++++ b/samples/Makefile.am
+@@ -19,7 +19,7 @@
+ 	$(SAMPLES_SRC)
+ 
+ 
+-sampledir = $(datadir)/doc/@PACKAGE@-doc-@VERSION@/samples
++sampledir = $(docdir)/samples
+ 
+ 
+ EXTRA_DIST = $(sample_DATA) $(sample_SCRIPTS)

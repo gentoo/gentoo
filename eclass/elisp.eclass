@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 2002-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -30,8 +30,8 @@
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If you need anything different from Emacs 23, use the NEED_EMACS
-# variable before inheriting elisp.eclass.  Set it to the major version
-# your package uses and the dependency will be adjusted.
+# variable before inheriting elisp.eclass.  Set it to the version your
+# package uses and the dependency will be adjusted.
 
 # @ECLASS-VARIABLE: ELISP_PATCHES
 # @DEFAULT_UNSET
@@ -70,24 +70,20 @@ esac
 EXPORT_FUNCTIONS src_{unpack,prepare,configure,compile,install} \
 	pkg_{setup,postinst,postrm}
 
-RDEPEND=">=virtual/emacs-${NEED_EMACS:-23}"
+RDEPEND=">=app-editors/emacs-${NEED_EMACS}:*"
 case ${EAPI} in
-	4|5|6) DEPEND="${RDEPEND}" ;;
+	4) RDEPEND="${RDEPEND%:*}"; DEPEND="${RDEPEND}" ;;
+	5|6) DEPEND="${RDEPEND}" ;;
 	*) BDEPEND="${RDEPEND}" ;;
 esac
 
 # @FUNCTION: elisp_pkg_setup
 # @DESCRIPTION:
-# Test if the eselected Emacs version is sufficient to fulfil the major
+# Test if the eselected Emacs version is sufficient to fulfil the
 # version requirement of the NEED_EMACS variable.
 
 elisp_pkg_setup() {
-	elisp-need-emacs "${NEED_EMACS:-23}"
-	case $? in
-		0) ;;
-		1) die "Emacs version too low" ;;
-		*) die "Could not determine Emacs version" ;;
-	esac
+	elisp-check-emacs-version
 }
 
 # @FUNCTION: elisp_src_unpack

@@ -1,0 +1,97 @@
+diff --git a/configure.ac b/configure.ac
+index 412a3f014..6a80c2a92 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -908,38 +908,62 @@ fi
+ dnl Libetpan
+ AC_MSG_CHECKING([whether to use libetpan])
+ if test x"$enable_libetpan" = xyes; then
+-	AC_MSG_RESULT(yes)
+-	libetpan_result=no
+-	AC_PATH_PROG(libetpanconfig, [libetpan-config])
+-	if test "x$libetpanconfig" != "x"; then
+-	  CPPFLAGS="$CPPFLAGS `$libetpanconfig --cflags 2>/dev/null`"
+-	  AC_CHECK_HEADER(libetpan/libetpan.h, [libetpan_result=yes])
+-	  if test "x$libetpan_result" = "xyes"; then
+-	    AC_MSG_CHECKING([whether libetpan-config hints compiles and links fine])
+-	    LIBS="$LIBS `$libetpanconfig --libs 2>/dev/null`"
+-	    AC_TRY_LINK([#include <libetpan/dbstorage.h>], [db_mailstorage_init(NULL, NULL);], [libetpan_result=yes], [libetpan_result=no])
+-	    AC_MSG_RESULT([$libetpan_result])
+-	  fi
+-	fi
+-	if test "x$libetpan_result" = "xyes"; then
+-	   LIBETPAN_CPPFLAGS="`$libetpanconfig --cflags`"
+-	   LIBETPAN_LIBS="`$libetpanconfig --libs`"
+-	   LIBETPAN_VERSION=`$libetpanconfig --version | $AWK -F. '{printf "%d", ($1 * 100) + $2}'`
+-	   if test "$LIBETPAN_VERSION" -lt "57"; then
+-		AC_MSG_RESULT([*** Claws Mail requires libetpan 0.57 or newer. See http://www.etpan.org/])
+-		AC_MSG_RESULT([*** You can use --disable-libetpan if you don't need IMAP4 and/or NNTP support.])
++    AC_MSG_RESULT(yes)
++
++    libetpan_config=no
++    libetpan_result=no
++    libetpan_versiontype=0
++
++    # since 1.9.4, libetpan uses pkg-config
++    PKG_CHECK_MODULES([LIBETPAN], [libetpan >= 1.9.4],
++    [
++        LIBETPAN_VERSION=`pkg-config --modversion | $AWK -F. '{printf "%d", ($1 * 10000) + ($2 * 100) + $3}'`
++        libetpan_config=yes
++    ],
++    [
++        # before 1.9.4, libetpan uses its own libetpan-config script
++        AC_PATH_PROG(libetpanconfig, [libetpan-config])
++        if test "x$libetpanconfig" != "x"; then
++            LIBETPAN_CPPFLAGS="`$libetpanconfig --cflags`"
++            LIBETPAN_LIBS="`$libetpanconfig --libs`"
++            # support libetpan version like x.x and x.x.x
++            libetpan_versiontype=`$libetpanconfig --version | tr -dc . | wc -c`
++            if test $libetpan_versiontype -eq 1; then
++                LIBETPAN_VERSION=`$libetpanconfig --version | $AWK -F. '{printf "%d", ($1 * 100) + $2}'`
++            else
++                LIBETPAN_VERSION=`$libetpanconfig --version | $AWK -F. '{printf "%d", ($1 * 10000) + ($2 * 100) + $3}'`
++            fi
++            libetpan_config=yes
++        fi
++    ])
++    if test "x$libetpan_config" = "xyes"; then
++        CPPFLAGS="$CPPFLAGS $LIBETPAN_FLAGS"
++        AC_CHECK_HEADER(libetpan/libetpan.h, [libetpan_result=yes])
++        if test "x$libetpan_result" = "xyes"; then
++            AC_MSG_CHECKING([whether libetpan-config hints compiles and links fine])
++            LIBS="$LIBS $LIBETPAN_LIBS"
++            AC_TRY_LINK([#include <libetpan/dbstorage.h>], [db_mailstorage_init(NULL, NULL);], [libetpan_result=yes], [libetpan_result=no])
++            AC_MSG_RESULT([$libetpan_result])
++        fi
++    fi
++    if test "x$libetpan_result" = "xyes"; then
++        if test $libetpan_versiontype -eq 1; then
++            if test "$LIBETPAN_VERSION" -lt "57"; then
++                AC_MSG_RESULT([*** Claws Mail requires libetpan 0.57 or newer. See http://www.etpan.org/])
++                AC_MSG_RESULT([*** You can use --disable-libetpan if you don't need IMAP4 and/or NNTP support.])
+                 AC_MSG_ERROR([libetpan 0.57 not found])
+-	   fi
+-	   AC_SUBST(LIBETPAN_FLAGS)
+-	   AC_SUBST(LIBETPAN_LIBS)
+-	   AC_DEFINE(HAVE_LIBETPAN, 1, Define if you want IMAP and/or NNTP support.)
+-	else
+-	   AC_MSG_RESULT([*** Claws Mail requires libetpan 0.57 or newer. See http://www.etpan.org/ ])
+-	   AC_MSG_RESULT([*** You can use --disable-libetpan if you don't need IMAP4 and/or NNTP support.])
+-           AC_MSG_ERROR([libetpan 0.57 not found])
+-	fi
++            fi
++        fi
++        AC_SUBST(LIBETPAN_FLAGS)
++        AC_SUBST(LIBETPAN_LIBS)
++        AC_DEFINE(HAVE_LIBETPAN, 1, Define if you want IMAP and/or NNit TP support.)
++    else
++        AC_MSG_RESULT([*** Claws Mail requires libetpan 0.57 or newer. See http://www.etpan.org/ ])
++        AC_MSG_RESULT([*** You can use --disable-libetpan if you don't need IMAP4 and/or NNTP support.])
++        AC_MSG_ERROR([libetpan 0.57 not found])
++    fi
+ else
+-	AC_MSG_RESULT(no)
++    AC_MSG_RESULT(no)
+ fi
+ AM_CONDITIONAL(CLAWS_LIBETPAN, test "x$libetpan_result" = "xyes")
+ 

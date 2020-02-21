@@ -1,9 +1,9 @@
-Index: slv2-0.6.2/autowaf.py
-===================================================================
---- slv2-0.6.2.orig/autowaf.py
-+++ slv2-0.6.2/autowaf.py
-@@ -324,8 +324,5 @@ def build_dox(bld, name, version, srcdir
- 	out1.command_is_external = True
+diff --git a/autowaf.py b/autowaf.py
+index 4797ea3..f32f994 100644
+--- a/autowaf.py
++++ b/autowaf.py
+@@ -375,8 +375,5 @@ def build_version_files(header_path, source_path, domain, major, minor, micro):
+ 	return None
  
  def shutdown():
 -	# This isn't really correct (for packaging), but people asking is annoying

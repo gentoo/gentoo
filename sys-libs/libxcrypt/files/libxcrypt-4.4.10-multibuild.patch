@@ -1,0 +1,25 @@
+diff --git a/Makefile.am b/Makefile.am
+index 3502a5c..afb8079 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -84,11 +84,7 @@ noinst_HEADERS = \
+ 	test/des-cases.h \
+ 	test/crypt-kat.inc
+ 
+-if ENABLE_XCRYPT_COMPAT_FILES
+ nodist_include_HEADERS += xcrypt.h
+-else
+-nodist_noinst_HEADERS += xcrypt.h
+-endif
+ 
+ noinst_PROGRAMS = \
+ 	lib/gen-des-tables
+@@ -137,7 +133,7 @@ uninstall_hook_targets = \
+ 	uninstall-hook-pkgconfig
+ install-data-hook-pkgconfig:
+ 	cd $(DESTDIR)$(pkgconfigdir) && \
+-		$(LN_S) libxcrypt.pc libcrypt.pc
++		$(LN_S) -f libxcrypt.pc libcrypt.pc
+ uninstall-hook-pkgconfig:
+ 	-rm -f $(DESTDIR)$(pkgconfigdir)/libcrypt.pc
+ 

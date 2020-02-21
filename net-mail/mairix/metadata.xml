@@ -2,11 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<!-- maintainer-needed -->
-	<use>
-		<flag name="gnus">Add support for the marks propagation feature
-			in GNUS (provided by <pkg>app-editors/emacs</pkg>
-			or <pkg>app-xemacs/gnus</pkg> for XEmacs users)</flag>
-	</use>
 	<upstream>
 		<remote-id type="sourceforge">mairix</remote-id>
 	</upstream>

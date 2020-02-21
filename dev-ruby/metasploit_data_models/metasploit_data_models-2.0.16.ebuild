@@ -10,7 +10,7 @@ RUBY_FAKEGEM_EXTRAINSTALL="app config db script spec"
 RUBY_FAKEGEM_GEMSPEC="${PN}".gemspec
 DESCRIPTION="The database layer for Metasploit"
 HOMEPAGE="https://github.com/rapid7/metasploit_data_models"
-SRC_URI="mirror://rubygems/${P}.gem"
+SRC_URI="https://rubygems.org/gems/${P}.gem"
 
 LICENSE="BSD"
 SLOT="${PV}"

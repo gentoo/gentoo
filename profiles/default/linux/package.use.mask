@@ -1,14 +1,19 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
+
+# Alexey Shvetsov <alexxy@gentoo.org> (2019-12-24)
+# Gromacs python module install br0ken
+sci-chemistry/gromacs python
+
+# Peter Levine <plevine457@gmail.com> (2019-10-01)
+# Native inotify support is preferred on linux.
+# https://bugs.gentoo.org/697476
+net-fs/samba fam
 
 # Patrick McLean <chutzpah@gentoo.org> (2019-09-17)
 # Masked due to upstream build failures (bug #693018)
 # One example: https://tracker.ceph.com/issues/41523
 >=sys-cluster/ceph-14.2 dpdk
-
-# Aaron Bauman <bman@gentoo.org> (2019-04-14)
-# Masked due to vulnerability in dev-libs/ace
-dev-cpp/xsd ace
 
 # Jason Zaman <perfinion@gentoo.org> (2015-09-06)
 # This is masked in base/package.use.mask as Linux only.
@@ -33,10 +38,6 @@ sys-auth/pam_mktemp -prevent-removal
 
 sys-devel/gcc hardened
 sys-libs/glibc hardened
-
-# Samuli Suominen <ssuominen@gentoo.org> (2012-04-30)
-# This is replaced by native CONFIG_INOTIFY_USER support wrt #413403
-=dev-libs/glib-2* fam
 
 # Samuli Suominen <ssuominen@gentoo.org (2012-03-20)
 # This is masked in base/package.use.mask as Linux only.

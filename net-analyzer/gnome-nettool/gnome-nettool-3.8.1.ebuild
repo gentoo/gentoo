@@ -12,7 +12,7 @@ HOMEPAGE="https://git.gnome.org/browse/gnome-nettool/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="debug"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ~ia64 ~ppc ~ppc64 ~sparc x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.25.10:2

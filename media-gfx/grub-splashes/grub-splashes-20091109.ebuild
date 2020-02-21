@@ -13,7 +13,7 @@ SRC_URI="mirror://gentoo/${PN}-0.1.tar.gz
 
 LICENSE="GPL-2 Artistic-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE=""
 
 S="${WORKDIR}"

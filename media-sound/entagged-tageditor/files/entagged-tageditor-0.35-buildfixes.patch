@@ -1,5 +1,5 @@
---- build.xml	2007-03-23 16:25:25.000000000 +0200
-+++ build.xml.fixed	2007-09-01 09:20:44.000000000 +0300
+--- a/build.xml	2007-03-23 16:25:25.000000000 +0200
++++ b/build.xml	2007-09-01 09:20:44.000000000 +0300
 @@ -30,7 +30,7 @@
  	<property name="entagged_dir" location="."/>
  	<property name="entagged_base_dir" location=".."/>

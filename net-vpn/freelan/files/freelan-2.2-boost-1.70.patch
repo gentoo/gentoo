@@ -1,0 +1,50 @@
+From d16490d00a47c8dcf008fa1b3219f54669716da3 Mon Sep 17 00:00:00 2001
+From: Sebastien Vincent <sebastien.vincent@cppextrem.com>
+Date: Sun, 19 May 2019 17:57:07 +0200
+Subject: [PATCH] [build] Adds support for Boost >= 1.70.
+
+---
+ libs/freelan/src/core.cpp         | 2 +-
+ libs/fscp/include/fscp/server.hpp | 2 +-
+ libs/fscp/src/server.cpp          | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/libs/freelan/src/core.cpp b/libs/freelan/src/core.cpp
+index 840a522a..969ae305 100644
+--- a/libs/freelan/src/core.cpp
++++ b/libs/freelan/src/core.cpp
+@@ -777,7 +777,7 @@ namespace freelan
+ 
+ 		boost::apply_visitor(
+ 			asiotap::endpoint_async_resolve_visitor(
+-				boost::make_shared<resolver_type>(boost::ref(m_io_service)),
++				boost::make_shared<resolver_type>(m_io_service),
+ 				to_protocol(m_configuration.fscp.hostname_resolution_protocol),
+ 				resolver_query::address_configured,
+ 				DEFAULT_SERVICE,
+diff --git a/libs/fscp/include/fscp/server.hpp b/libs/fscp/include/fscp/server.hpp
+index 3766b4a3..2b18a595 100644
+--- a/libs/fscp/include/fscp/server.hpp
++++ b/libs/fscp/include/fscp/server.hpp
+@@ -288,7 +288,7 @@ namespace fscp
+ 			 */
+ 			boost::asio::io_service& get_io_service()
+ 			{
+-				return get_socket().get_io_service();
++				return reinterpret_cast<boost::asio::io_context&>(get_socket().get_executor().context());
+ 			}
+ 
+ 			/**
+diff --git a/libs/fscp/src/server.cpp b/libs/fscp/src/server.cpp
+index cb717ec4..62b92dca 100644
+--- a/libs/fscp/src/server.cpp
++++ b/libs/fscp/src/server.cpp
+@@ -1106,7 +1106,7 @@ namespace fscp
+ 	template <typename WaitHandler>
+ 	void server::ep_hello_context_type::async_wait_reply(boost::asio::io_service& io_service, uint32_t hello_unique_number, const boost::posix_time::time_duration& timeout, WaitHandler handler)
+ 	{
+-		const boost::shared_ptr<boost::asio::deadline_timer> timer = boost::make_shared<boost::asio::deadline_timer>(boost::ref(io_service), timeout);
++		const boost::shared_ptr<boost::asio::deadline_timer> timer = boost::make_shared<boost::asio::deadline_timer>(io_service, timeout);
+ 
+ 		m_pending_requests[hello_unique_number] = pending_request_status(timer);
+ 

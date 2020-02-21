@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,6 +28,9 @@ DOCS=( ../{BUGS,changelog,TODO} )
 src_prepare() {
 	default
 	gunzip wmMand.6.gz || die
+
+	pushd "${WORKDIR}"/${MY_P} || die
+	eapply "${FILESDIR}"/${P}-gcc-10.patch
 }
 
 src_compile() {

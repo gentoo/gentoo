@@ -1,0 +1,54 @@
+From 8f22c20e418abe4abe23e789eef517a16a50604d Mon Sep 17 00:00:00 2001
+From: Dirk Thomas <dirk-thomas@users.noreply.github.com>
+Date: Tue, 6 Aug 2019 12:50:24 -0700
+Subject: [PATCH] more Python 3 compatibility (#1782)
+
+---
+ test/test_rosmaster/test/nodes/testAllCommonFlows  | 2 +-
+ test/test_rosmaster/test/nodes/testMaster          | 2 +-
+ test/test_rosmaster/test/nodes/testSlave           | 2 +-
+ test/test_rospy/test/unit/test_genmsg_py.py        | 8 +++++++-
+ tools/rosgraph/test/test_roslogging.py             | 5 ++++-
+ tools/rosgraph/test/test_roslogging_user_logger.py | 5 ++++-
+ tools/roslaunch/src/roslaunch/depends.py           | 8 ++++----
+ 7 files changed, 22 insertions(+), 10 deletions(-)
+
+diff --git a/test/test_rosmaster/test/nodes/testAllCommonFlows b/test/test_rosmaster/test/nodes/testAllCommonFlows
+index 4d3e053f8..a22ffb8d8 100755
+--- a/test/test_rosmaster/test/nodes/testAllCommonFlows
++++ b/test/test_rosmaster/test/nodes/testAllCommonFlows
+@@ -12,7 +12,7 @@ import sys, os
+ BOOTSTRAP_VERSION = "0.1"
+ 
+ # Read in ROS_ROOT
+-if not os.environ.has_key('ROS_ROOT'):
++if 'ROS_ROOT' not in os.environ:
+   print """\nCannot run ROS: ROS_ROOT is not set.\nPlease set the ROS_ROOT environment variable to the 
+ location of your ROS install.\n"""
+   sys.exit(-1)
+diff --git a/test/test_rosmaster/test/nodes/testMaster b/test/test_rosmaster/test/nodes/testMaster
+index f3ec36be4..4dca1cb4a 100755
+--- a/test/test_rosmaster/test/nodes/testMaster
++++ b/test/test_rosmaster/test/nodes/testMaster
+@@ -12,7 +12,7 @@ import sys, os
+ BOOTSTRAP_VERSION = "0.1"
+ 
+ # Read in ROS_ROOT
+-if not os.environ.has_key('ROS_ROOT'):
++if 'ROS_ROOT' not in os.environ:
+   print """\nCannot run ROS: ROS_ROOT is not set.\nPlease set the ROS_ROOT environment variable to the 
+ location of your ROS install.\n"""
+   sys.exit(-1)
+diff --git a/test/test_rosmaster/test/nodes/testSlave b/test/test_rosmaster/test/nodes/testSlave
+index cf70af08b..f8ea7cb47 100755
+--- a/test/test_rosmaster/test/nodes/testSlave
++++ b/test/test_rosmaster/test/nodes/testSlave
+@@ -12,7 +12,7 @@ import sys, os
+ BOOTSTRAP_VERSION = "0.1"
+ 
+ # Read in ROS_ROOT
+-if not os.environ.has_key('ROS_ROOT'):
++if 'ROS_ROOT' not in os.environ:
+   print """\nCannot run ROS: ROS_ROOT is not set.\nPlease set the ROS_ROOT environment variable to the 
+ location of your ROS install.\n"""
+   sys.exit(-1)

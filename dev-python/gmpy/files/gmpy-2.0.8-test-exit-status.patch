@@ -1,0 +1,41 @@
+diff -dupr a/test2/gmpy_test.py b/test2/gmpy_test.py
+--- a/test2/gmpy_test.py	2019-11-22 09:21:42.313037873 +0100
++++ b/test2/gmpy_test.py	2013-08-20 22:17:52.000000000 +0200
+@@ -34,11 +34,15 @@ writeln("  Caching Values: (Number)
+ writeln("  Caching Values: (Size, limbs) {0}".format(_g.get_cache()[1]))
+ 
+ pf, pt = 0, 0
++ret = 0
+ for x in test_modules:
+     testit = x._test()
+     failures, tests = testit
+     if tests == 0: continue
++    if failures > 0: ret = 1
+     writeln("%s %3d tests, %d failures" % (x.__name__, tests-pt, failures-pf))
+     pf, pt = failures, tests
+ 
+ doctest.master.summarize(1)
++
++sys.exit(ret)
+diff -dupr a/test3/gmpy_test.py b/test3/gmpy_test.py
+--- a/test3/gmpy_test.py	2019-11-22 09:21:30.421908749 +0100
++++ b/test3/gmpy_test.py	2013-08-20 22:17:52.000000000 +0200
+@@ -28,10 +28,12 @@ print("  Caching Values: (Number)      {
+ print("  Caching Values: (Size, limbs) {0}".format(_g.get_cache()[1]))
+ 
+ pf, pt = 0, 0
++ret = 0
+ for x in test_modules:
+     testit = x._test()
+     failures, tests = testit
+     if tests == 0: continue
++    if failures > 0: ret = 1
+     print("%s %3d tests, %d failures" % (x.__name__, tests-pt, failures-pf))
+     pf, pt = failures, tests
+ 
+@@ -41,3 +43,5 @@ if sys.version_info < (3,1,1):
+     print("There is a known bug with Fraction == mpq for versions of Python")
+     print("less than 3.1.1. Please upgrade if you rely on comparisons between")
+     print("Python's Fraction and gmpy2's mpq.")
++
++sys.exit(ret)

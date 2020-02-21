@@ -1,0 +1,89 @@
+diff -Naur wmix-3.4.orig/include/mixer.h wmix-3.4/include/mixer.h
+--- wmix-3.4.orig/include/mixer.h	2018-04-30 14:17:50.000000000 +0200
++++ wmix-3.4/include/mixer.h	2020-01-29 19:07:14.932404252 +0100
+@@ -55,28 +55,28 @@
+  * - Muting must occur independently of the volume level.
+  */
+ 
+-void (*mixer_init)(const char *mixer_device,
++extern void (*mixer_init)(const char *mixer_device,
+                    bool verbose,
+                    const char *exclude[]);
+-bool (*mixer_is_changed)(void);
+-int (*mixer_get_channel_count)(void);
+-int (*mixer_get_channel)(void);
+-const char *(*mixer_get_channel_name)(void);
+-const char *(*mixer_get_short_name)(void);
+-void (*mixer_set_channel)(int channel);
+-void (*mixer_set_channel_rel)(int delta_channel);
+-float (*mixer_get_volume)(void);
+-void (*mixer_set_volume)(float volume);
+-void (*mixer_set_volume_rel)(float delta_volume);
+-float (*mixer_get_balance)(void);
+-void (*mixer_set_balance)(float balance);
+-void (*mixer_set_balance_rel)(float delta_balance);
+-void (*mixer_toggle_mute)(void);
+-void (*mixer_toggle_rec)(void);
+-bool (*mixer_is_muted)(void);
+-bool (*mixer_is_stereo)(void);
+-bool (*mixer_is_rec)(void);
+-bool (*mixer_can_rec)(void);
+-bool (*is_exclude)(const char *short_name,
++extern bool (*mixer_is_changed)(void);
++extern int (*mixer_get_channel_count)(void);
++extern int (*mixer_get_channel)(void);
++extern const char *(*mixer_get_channel_name)(void);
++extern const char *(*mixer_get_short_name)(void);
++extern void (*mixer_set_channel)(int channel);
++extern void (*mixer_set_channel_rel)(int delta_channel);
++extern float (*mixer_get_volume)(void);
++extern void (*mixer_set_volume)(float volume);
++extern void (*mixer_set_volume_rel)(float delta_volume);
++extern float (*mixer_get_balance)(void);
++extern void (*mixer_set_balance)(float balance);
++extern void (*mixer_set_balance_rel)(float delta_balance);
++extern void (*mixer_toggle_mute)(void);
++extern void (*mixer_toggle_rec)(void);
++extern bool (*mixer_is_muted)(void);
++extern bool (*mixer_is_stereo)(void);
++extern bool (*mixer_is_rec)(void);
++extern bool (*mixer_can_rec)(void);
++extern bool (*is_exclude)(const char *short_name,
+                    const char *exclude[]);
+-void (*mixer_tick)(void);
++extern void (*mixer_tick)(void);
+diff -Naur wmix-3.4.orig/wmix.c wmix-3.4/wmix.c
+--- wmix-3.4.orig/wmix.c	2019-07-12 18:44:38.000000000 +0200
++++ wmix-3.4/wmix.c	2020-01-29 19:06:52.685402994 +0100
+@@ -53,6 +53,31 @@
+ static int mouse_drag_home_y;
+ static int idle_loop;
+ 
++void (*mixer_init)(const char *mixer_device,
++                   bool verbose,
++                   const char *exclude[]);
++bool (*mixer_is_changed)(void);
++int (*mixer_get_channel_count)(void);
++int (*mixer_get_channel)(void);
++const char *(*mixer_get_channel_name)(void);
++const char *(*mixer_get_short_name)(void);
++void (*mixer_set_channel)(int channel);
++void (*mixer_set_channel_rel)(int delta_channel);
++float (*mixer_get_volume)(void);
++void (*mixer_set_volume)(float volume);
++void (*mixer_set_volume_rel)(float delta_volume);
++float (*mixer_get_balance)(void);
++void (*mixer_set_balance)(float balance);
++void (*mixer_set_balance_rel)(float delta_balance);
++void (*mixer_toggle_mute)(void);
++void (*mixer_toggle_rec)(void);
++bool (*mixer_is_muted)(void);
++bool (*mixer_is_stereo)(void);
++bool (*mixer_is_rec)(void);
++bool (*mixer_can_rec)(void);
++bool (*is_exclude)(const char *short_name,
++                   const char *exclude[]);
++void (*mixer_tick)(void);
+ /* local stuff */
+ static void signal_catch(int sig);
+ static void button_press_event(XButtonEvent *event);

@@ -1,8 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
-inherit eutils toolchain-funcs
+EAPI=7
+
+inherit toolchain-funcs
 
 DESCRIPTION="IVTV utilities for Hauppauge PVR PCI cards"
 HOMEPAGE="http://www.ivtvdriver.org/"
@@ -20,24 +21,22 @@ RDEPEND="${DEPEND}
 		dev-perl/Video-Frequencies
 		dev-perl/Video-ivtv
 		dev-perl/Config-IniFiles
-		virtual/perl-Getopt-Long
 		dev-perl/Tk
-		)"
+		virtual/perl-Getopt-Long
+	)"
 
-src_prepare() {
-	epatch \
-		"${FILESDIR}"/${PN}-1.4.0-gentoo.patch \
-		"${FILESDIR}"/${PN}-1.4.1-overflow.patch
-}
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.4.0-gentoo.patch
+	"${FILESDIR}"/${PN}-1.4.1-overflow.patch
+)
 
-src_compile() {
+src_configure() {
 	tc-export CC CXX
-	emake
 }
 
 src_install() {
 	emake DESTDIR="${D}" PREFIX="/usr" install
-	dodoc ChangeLog README doc/*
+	dodoc -r ChangeLog README doc/.
 
 	if use perl; then
 		dobin utils/perl/*.pl

@@ -9,4 +9,4 @@ inherit sword-module
 DESCRIPTION="Adam Clarke's Commentary on the Bible"
 HOMEPAGE="http://crosswire.org/sword/modules/ModInfo.jsp?modName=Clarke"
 LICENSE="public-domain"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"

@@ -1,16 +1,17 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
 DESCRIPTION="IPv6 address calculator"
-HOMEPAGE="http://www.deepspace6.net/projects/ipv6calc.html"
-SRC_URI="ftp://ftp.bieringer.de/pub/linux/IPv6/ipv6calc/${P}.tar.gz"
+HOMEPAGE="https://www.deepspace6.net/projects/ipv6calc.html"
+SRC_URI="https://github.com/pbiering/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~alpha amd64 hppa ppc sparc x86 ~amd64-linux ~x86-linux"
 IUSE="geoip libressl test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!libressl? ( dev-libs/openssl:= )

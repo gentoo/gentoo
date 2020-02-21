@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -14,7 +14,6 @@ IUSE_OPENMPI_FABRICS="
 	openmpi_fabrics_dapl
 	openmpi_fabrics_ofed
 	openmpi_fabrics_knem
-	openmpi_fabrics_open-mx
 	openmpi_fabrics_psm
 	openmpi_fabrics_sctp"
 
@@ -36,7 +35,7 @@ SRC_URI="http://www.open-mpi.org/software/ompi/v$(get_version_component_range 1-
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux"
-IUSE="+cxx elibc_FreeBSD fortran heterogeneous ipv6 mpi-threads romio threads vt
+IUSE="+cxx fortran heterogeneous ipv6 mpi-threads romio threads vt
 	${IUSE_OPENMPI_FABRICS} ${IUSE_OPENMPI_RM} ${IUSE_OPENMPI_OFED_FEATURES}"
 
 REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
@@ -51,15 +50,12 @@ REQUIRED_USE="openmpi_rm_slurm? ( !openmpi_rm_pbs )
 RDEPEND="
 	!sys-cluster/mpich
 	!sys-cluster/mpich2
-	!sys-cluster/mpiexec
 	!sys-cluster/pmix
 	<sys-apps/hwloc-2
 	dev-libs/libltdl:0
-	elibc_FreeBSD? ( || ( dev-libs/libexecinfo >=sys-freebsd/freebsd-lib-10.0 ) )
 	openmpi_fabrics_dapl? ( sys-fabric/dapl )
 	openmpi_fabrics_ofed? ( sys-fabric/ofed )
 	openmpi_fabrics_knem? ( sys-cluster/knem )
-	openmpi_fabrics_open-mx? ( sys-cluster/open-mx )
 	openmpi_fabrics_psm? ( sys-fabric/infinipath-psm )
 	openmpi_fabrics_sctp? ( net-misc/lksctp-tools )
 	openmpi_rm_pbs? ( sys-cluster/torque )
@@ -146,7 +142,6 @@ src_configure() {
 		$(use_with openmpi_fabrics_dapl udapl "${EPREFIX}"/usr) \
 		$(use_with openmpi_fabrics_ofed openib "${EPREFIX}"/usr) \
 		$(use_with openmpi_fabrics_knem knem "${EPREFIX}"/usr) \
-		$(use_with openmpi_fabrics_open-mx mx "${EPREFIX}"/usr) \
 		$(use_with openmpi_fabrics_psm psm "${EPREFIX}"/usr) \
 		$(use_enable openmpi_ofed_features_control-hdr-padding openib-control-hdr-padding) \
 		$(use_enable openmpi_ofed_features_connectx-xrc openib-connectx-xrc) \
@@ -159,13 +154,13 @@ src_configure() {
 }
 
 src_install () {
-	emake DESTDIR="${D}" install || die "make install failed"
+	emake DESTDIR="${D}" install
 	# From USE=vt see #359917
 	rm "${ED}"/usr/share/libtool &> /dev/null
-	dodoc README AUTHORS NEWS VERSION || die
+	dodoc README AUTHORS NEWS VERSION
 }
 
 src_test() {
 	# Doesn't work with the default src_test as the dry run (-n) fails.
-	emake -j1 check || die "emake check failed"
+	emake -j1 check
 }

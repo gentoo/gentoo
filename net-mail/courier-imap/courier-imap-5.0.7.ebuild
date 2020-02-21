@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,13 +10,13 @@ SRC_URI="mirror://sourceforge/courier/${P}.tar.bz2"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 sparc x86"
 
 IUSE="berkdb debug fam +gdbm gnutls ipv6 libressl selinux trashquota"
 REQUIRED_USE="|| ( berkdb gdbm )"
 
 CDEPEND="
-	gnutls? ( net-libs/gnutls )
+	gnutls? ( net-libs/gnutls[tools] )
 	!gnutls? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
@@ -24,6 +24,7 @@ CDEPEND="
 	>=net-libs/courier-authlib-0.66.4
 	>=net-libs/courier-unicode-2
 	>=net-mail/mailbase-0.00-r8
+	net-dns/libidn:=
 	berkdb? ( sys-libs/db:= )
 	fam? ( virtual/fam )
 	gdbm? ( >=sys-libs/gdbm-1.8.0 )
@@ -61,7 +62,7 @@ For a quick-start howto please refer to
 ${PN}-gentoo.readme in /usr/share/doc/${PF}
 
 Please convert maildir to utf8
-and rerun mkdhparams if needed. Locatio has changed
+and rerun mkdhparams if needed. Location has changed
 "
 
 PATCHES=(
@@ -243,4 +244,11 @@ pkg_postinst() {
 	fperms 0755 "${ROOT}/usr/$(get_libdir)/${PN}"
 
 	readme.gentoo_print_elog
+
+	elog ""
+	elog "Courier Imap now run as user mail:mail."
+	elog ""
+	elog "This require you to enable read/write access to the caches:"
+	elog "/var/lib/courier-imap/courierssl*cache (chown mail:mail)"
+	elog "and read access to the certificates (e.g. /etc/courier-imap/pop3d.pem )"
 }

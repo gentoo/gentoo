@@ -1,0 +1,20 @@
+diff -Naur Cenon.orig/GNUmakefile.postamble Cenon/GNUmakefile.postamble
+--- Cenon.orig/GNUmakefile.postamble	2019-12-05 22:46:35.156776358 +0100
++++ Cenon/GNUmakefile.postamble	2019-12-05 22:46:50.725769361 +0100
+@@ -18,13 +18,13 @@
+ # before-install::
+ 
+ # Things to do after installing
+-after-install::
++#after-install::
+ 	# copy library
+ 	#rm -R $(GNUSTEP_LIBRARY)/$(APP_NAME)
+ 	#mkdir $(GNUSTEP_LIBRARY)/
+-	cp -R Library/$(APP_NAME)/ $(GNUSTEP_LIBRARY)/
++	#cp -R Library/$(APP_NAME)/ $(GNUSTEP_LIBRARY)/
+ 	# set permissions (rrr)
+-	chmod -R ugo+rX $(GNUSTEP_APPS)/$(APP_NAME).*
++	#chmod -R ugo+rX $(GNUSTEP_APPS)/$(APP_NAME).*
+ 	#chmod -R ugo+rX $(GNUSTEP_LIBRARY)/$(APP_NAME)
+ 
+ # Things to do before uninstalling

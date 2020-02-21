@@ -2,9 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<longdescription lang="en">
+		Program that hooks network-related libc functions
+		in DYNAMICALLY LINKED programs via a preloaded DLL (dlsym(), LD_PRELOAD)
+		and redirects the connections through SOCKS4a/5 or HTTP proxies.
+		It supports TCP only (no UDP/ICMP etc).
+	</longdescription>
 	<upstream>
 		<remote-id type="github">rofl0r/proxychains-ng</remote-id>
 	</upstream>

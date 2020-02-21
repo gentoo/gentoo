@@ -1,0 +1,28 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -955,6 +955,7 @@
+       CFLAGS="$_save_CFLAGS"
+     ])
+     PKG_CHECK_MODULES([NDPI26], [libndpi >= 2.6], [AC_DEFINE(WITH_NDPI26, 1)], [AC_DEFINE(WITH_NDPI, 1)])
++    PKG_CHECK_MODULES([NDPI30], [libndpi >= 3.0], [AC_DEFINE(WITH_NDPI30, 1)], [AC_DEFINE(WITH_NDPI, 1)])
+     ;;
+   no)
+     AC_MSG_RESULT(no)
+--- a/src/ndpi/ndpi.c
++++ b/src/ndpi/ndpi.c
+@@ -374,10 +374,14 @@
+   if (flow->detection_completed || flow->tcp_finished) {
+     if (flow->detected_protocol.app_protocol == NDPI_PROTOCOL_UNKNOWN)
+ #ifdef WITH_NDPI26
++#ifdef WITH_NDPI30
++	  flow->detected_protocol = ndpi_detection_giveup(workflow->ndpi_struct, flow->ndpi_flow, 1, workflow->prefs.protocol_guess);
++#else
+       flow->detected_protocol = ndpi_detection_giveup(workflow->ndpi_struct, flow->ndpi_flow, workflow->prefs.protocol_guess);
++#endif /* WITH_NDPI30 */
+ #else
+       flow->detected_protocol = ndpi_detection_giveup(workflow->ndpi_struct, flow->ndpi_flow);
+-#endif
++#endif /* WITH_NDPI26 */
+ 
+     if (workflow->prefs.protocol_guess) {
+       if (flow->detected_protocol.app_protocol == NDPI_PROTOCOL_UNKNOWN && !flow->guess_completed) {

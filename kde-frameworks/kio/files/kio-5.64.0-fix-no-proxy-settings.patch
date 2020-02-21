@@ -1,0 +1,38 @@
+From 48b8cab8da5e264f233d59cf2aff2b981255f6bf Mon Sep 17 00:00:00 2001
+From: David Faure <faure@kde.org>
+Date: Sat, 23 Nov 2019 20:11:21 +0100
+Subject: Repair FTP/HTTP proxy querying for the case of no proxy
+
+---
+ src/ioslaves/ftp/ftp.cpp   | 2 +-
+ src/ioslaves/http/http.cpp | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/ioslaves/ftp/ftp.cpp b/src/ioslaves/ftp/ftp.cpp
+index 4266a6c..f310871 100644
+--- a/src/ioslaves/ftp/ftp.cpp
++++ b/src/ioslaves/ftp/ftp.cpp
+@@ -317,7 +317,7 @@ void FtpInternal::setHost(const QString &_host, quint16 _port, const QString &_u
+     qCDebug(KIO_FTP) << _host << "port=" << _port << "user=" << _user;
+ 
+     m_proxyURL.clear();
+-    m_proxyUrls = q->mapConfig().value(QStringLiteral("ProxyUrls"), QString()).toString().split(QLatin1Char(','));
++    m_proxyUrls = q->mapConfig().value(QStringLiteral("ProxyUrls"), QString()).toString().split(QLatin1Char(','), QString::SkipEmptyParts);
+     qCDebug(KIO_FTP) << "proxy urls:" << m_proxyUrls;
+ 
+     if (m_host != _host || m_port != _port ||
+diff --git a/src/ioslaves/http/http.cpp b/src/ioslaves/http/http.cpp
+index aca847b..5f9cd7c 100644
+--- a/src/ioslaves/http/http.cpp
++++ b/src/ioslaves/http/http.cpp
+@@ -2161,7 +2161,7 @@ bool HTTPProtocol::httpOpenConnection()
+ 
+     // Get proxy information...
+     if (m_request.proxyUrls.isEmpty()) {
+-        m_request.proxyUrls = mapConfig().value(QStringLiteral("ProxyUrls"), QString()).toString().split(QLatin1Char(','));
++        m_request.proxyUrls = mapConfig().value(QStringLiteral("ProxyUrls"), QString()).toString().split(QLatin1Char(','), QString::SkipEmptyParts);
+         qCDebug(KIO_HTTP) << "Proxy URLs:" << m_request.proxyUrls;
+     }
+ 
+-- 
+cgit v1.1

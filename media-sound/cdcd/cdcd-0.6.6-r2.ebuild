@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/libcdaudio/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~hppa ~ppc ppc64 sparc x86 ~x86-fbsd"
+KEYWORDS="amd64 ~hppa ~ppc ppc64 sparc x86"
 
 RDEPEND="
 	>=sys-libs/readline-4.2

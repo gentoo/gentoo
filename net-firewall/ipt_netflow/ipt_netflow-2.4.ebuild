@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,7 +13,7 @@ SRC_URI="https://github.com/aabc/ipt-netflow/archive/v${PV}.tar.gz -> ${P}.tar.g
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 IUSE="debug natevents snmp"
 
@@ -28,15 +28,27 @@ DEPEND="${RDEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-2.0-configure.patch" # bug #455984
 	"${FILESDIR}/${PN}-2.3-flags.patch"
+	"${FILESDIR}/${P}-bridge_netfilter.patch"
 )
 
 pkg_setup() {
+	linux-info_pkg_setup
+
+	local CONFIG_CHECK="~IP_NF_IPTABLES VLAN_8021Q"
+	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
+	if use natevents; then
+		CONFIG_CHECK+=" NF_CONNTRACK_EVENTS"
+		if kernel_is lt 5 2; then
+			CONFIG_CHECK+=" NF_NAT_NEEDED"
+		else
+			CONFIG_CHECK+=" NF_NAT"
+		fi
+	fi
+
 	BUILD_TARGETS="all"
 	MODULE_NAMES="ipt_NETFLOW(ipt_netflow:${S})"
 	IPT_LIB="/usr/$(get_libdir)/xtables"
-	local CONFIG_CHECK="~IP_NF_IPTABLES VLAN_8021Q"
-	use debug && CONFIG_CHECK+=" ~DEBUG_FS"
-	use natevents && CONFIG_CHECK+=" NF_CONNTRACK_EVENTS NF_NAT_NEEDED"
+
 	linux-mod_pkg_setup
 }
 

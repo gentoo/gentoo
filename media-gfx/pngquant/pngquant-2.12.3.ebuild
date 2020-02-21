@@ -11,7 +11,7 @@ SRC_URI="https://pngquant.org/${P}-src.tar.gz"
 
 LICENSE="GPL-3 HPND rwpng"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="debug lcms openmp cpu_flags_x86_sse2"
 
 RDEPEND="media-libs/libpng:0=

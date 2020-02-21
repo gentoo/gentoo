@@ -1,0 +1,54 @@
+From fcf894b6e4d0ad17489480b722c870aaea600db1 Mon Sep 17 00:00:00 2001
+From: anthraxx <levente@leventepolyak.net>
+Date: Wed, 6 Sep 2017 12:03:22 +0200
+Subject: [PATCH] using flask_script everywhere instead of flask.ext.script
+
+---
+ docs/index.rst     | 2 +-
+ examples/manage.py | 4 ++--
+ tests.py           | 4 ++--
+ 3 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/docs/index.rst b/docs/index.rst
+index 775ffca..9266d4b 100644
+--- a/docs/index.rst
++++ b/docs/index.rst
+@@ -577,7 +577,7 @@ Then the user can register the sub-manager to their primary Manager (within mana
+ 
+     manager = Manager(app)
+ 
+-    from flask.ext.database import manager as database_manager
++    from flask_database import manager as database_manager
+     manager.add_command("database", database_manager)
+ 
+ The commands will then be available::
+#diff --git a/examples/manage.py b/examples/manage.py
+#index 5c0dc21..8129555 100755
+#--- a/examples/manage.py
+#+++ b/examples/manage.py
+#@@ -4,8 +4,8 @@
+# import pprint
+# 
+# from flask import Flask, current_app
+#-from flask.ext.script import Manager, prompt_choices, Server
+#-from flask.ext.script.commands import ShowUrls, Clean
+#+from flask_script import Manager, prompt_choices, Server
+#+from flask_script.commands import ShowUrls, Clean
+# 
+# 
+# def create_app(config=None):
+diff --git a/tests.py b/tests.py
+index 93d0071..24f3f15 100644
+--- a/tests.py
++++ b/tests.py
+@@ -5,8 +5,8 @@
+ import unittest
+ 
+ from flask import Flask
+-from flask.ext.script._compat import StringIO, text_type
+-from flask.ext.script import Command, Manager, Option, prompt, prompt_bool, prompt_choices
++from flask_script._compat import StringIO, text_type
++from flask_script import Command, Manager, Option, prompt, prompt_bool, prompt_choices
+ 
+ from pytest import raises
+ 

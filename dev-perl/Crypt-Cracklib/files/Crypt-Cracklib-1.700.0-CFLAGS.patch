@@ -1,0 +1,11 @@
+diff -ruN Crypt-Cracklib-1.7.orig/Makefile.PL Crypt-Cracklib-1.7/Makefile.PL
+--- Crypt-Cracklib-1.7.orig/Makefile.PL	2019-10-16 05:55:37.321262001 +0200
++++ Crypt-Cracklib-1.7/Makefile.PL	2019-10-16 05:56:38.585611172 +0200
+@@ -15,7 +15,6 @@
+ requires_external_cc();
+ 
+ cc_lib_links('crack');
+-cc_optimize_flags('-g -Wall -Werror');
+ 
+ auto_install();
+ WriteAll();

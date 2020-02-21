@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,13 +27,18 @@ RDEPEND="${DEPEND}
 # Add all the deps needed only at build/test time.
 DEPEND+="
 	test? (
-		dev-python/pexpect[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pexpect[${PYTHON_MULTI_USEDEP}]
+		')
 		sys-devel/gdb[xml]
 	)"
+
+RESTRICT="test" # toolchain and kernel version dependent
 
 PATCHES=(
 	"${FILESDIR}"/${P}-ucontext_t.patch
 	"${FILESDIR}"/${P}-c++14.patch
+	"${FILESDIR}"/${P}-tgkill-glibc-2.30.patch
 )
 
 pkg_setup() {
@@ -48,6 +53,15 @@ src_prepare() {
 	cmake-utils_src_prepare
 
 	sed -i 's:-Werror::' CMakeLists.txt || die #609192
+}
+
+src_test() {
+	if has usersandbox ${FEATURES} ; then
+		ewarn "Test suite fails under FEATURES=usersandbox (bug #632394). Skipping."
+		return 0
+	fi
+
+	cmake-utils_src_test
 }
 
 src_configure() {

@@ -1,11 +1,11 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 DESCRIPTION="Open BEAGLE, a versatile EC/GA/GP framework"
 SRC_URI="mirror://sourceforge/beagle/${P}.tar.gz"
-HOMEPAGE="http://beagle.gel.ulaval.ca/"
+HOMEPAGE="https://chgagne.github.io/beagle/"
 
 SLOT="0"
 LICENSE="LGPL-2.1"

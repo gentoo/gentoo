@@ -1,0 +1,30 @@
+From c5eee38cd2556403a640a0a4c11d36cbf9a5a798 Mon Sep 17 00:00:00 2001
+From: Niels De Graef <nielsdegraef@gmail.com>
+Date: Thu, 30 May 2019 14:30:54 +0200
+Subject: [PATCH] window: Disambiguate Gtk.HeaderBar
+
+Apparently libhandy also added a HeaderBar type, which means this
+clashes with that of Gtk.
+---
+ src/contacts-window.vala | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/contacts-window.vala b/src/contacts-window.vala
+index 738228d..49f6995 100644
+--- a/src/contacts-window.vala
++++ b/src/contacts-window.vala
+@@ -35,9 +35,9 @@ public class Contacts.Window : Gtk.ApplicationWindow {
+   [GtkChild]
+   private TitleBar titlebar;
+   [GtkChild]
+-  private HeaderBar left_header;
++  private Gtk.HeaderBar left_header;
+   [GtkChild]
+-  private HeaderBar right_header;
++  private Gtk.HeaderBar right_header;
+   [GtkChild]
+   private Overlay notification_overlay;
+   [GtkChild]
+-- 
+2.20.1
+

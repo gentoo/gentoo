@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -29,7 +29,7 @@ RDEPEND="
 	acct-group/plugdev
 	>=dev-lang/jimtcl-0.76:0=
 	cmsis-dap? ( dev-libs/hidapi )
-	jlink? ( dev-embedded/libjaylink )
+	jlink? ( >=dev-embedded/libjaylink-0.2 )
 	usb? (
 		virtual/libusb:0
 		virtual/libusb:1

@@ -10,8 +10,8 @@ https://bugs.gentoo.org/show_bug.cgi?id=321303
 
 Patch written by Kacper Kowalik <xarthisius.kk@gmail.com>
 
---- test/Makefile
-+++ test/Makefile
+--- a/test/Makefile
++++ b/test/Makefile
 @@ -7,13 +7,13 @@
  	ivtv-osd-dma-test ivtv-fb-colormap-test \
  	ivtv-fb-16-bit-test ps-analyzer
@@ -30,8 +30,8 @@ Patch written by Kacper Kowalik <xarthisius.kk@gmail.com>
 
  clean: 
  	rm -f *.o $(EXES)
---- utils/Makefile.orig	2010-05-24 15:35:11.321677941 +0000
-+++ utils/Makefile	2010-05-24 15:35:15.595615306 +0000
+--- a/utils/Makefile
++++ b/utils/Makefile
 @@ -9,41 +9,39 @@
  X86_EXES := ivtvplay ivtv-mpegindex #ivtv-encoder
  endif
@@ -86,8 +86,8 @@ Patch written by Kacper Kowalik <xarthisius.kk@gmail.com>
  	install -d $(DESTDIR)/$(BINDIR)
  	install -m 0755 $(BIN) $(DESTDIR)/$(BINDIR)
  
---- Makefile
-+++ Makefile
+--- a/Makefile
++++ b/Makefile
 @@ -1,6 +1,6 @@
  all clean install:
 -	make -C utils $@

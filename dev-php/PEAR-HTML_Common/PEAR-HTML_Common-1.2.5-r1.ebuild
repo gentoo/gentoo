@@ -8,7 +8,7 @@ inherit php-pear-r2
 DESCRIPTION="Base class for other HTML classes"
 LICENSE="PHP-3.01"
 SLOT="0"
-KEYWORDS="alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
 IUSE=""
 
 src_install() {

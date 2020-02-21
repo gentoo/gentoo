@@ -16,6 +16,7 @@ LICENSE="GPL-2"
 SLOT="0"
 
 IUSE="startup-notification test xinerama"
+RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
 	dev-libs/atk

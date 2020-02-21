@@ -12,6 +12,7 @@ DESCRIPTION="Disables bareword filehandles"
 SLOT="0"
 KEYWORDS="amd64 ~arm hppa ppc x86 ~ppc-aix ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 # Lexical::SealRequireHints only required with Perl < 5.12
 # We could add alternation here, but it would be work without benefit

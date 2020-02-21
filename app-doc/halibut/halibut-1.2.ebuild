@@ -21,8 +21,8 @@ src_compile() {
 	LFLAGS="${LDFLAGS}" \
 	BUILDDIR="${S}/build" \
 	VERSION="${PV}" \
-	emake || die "make failed"
-	emake -C doc || die "make in doc failed"
+	emake
+	emake -C doc
 }
 
 DOCS=( doc/halibut.txt )

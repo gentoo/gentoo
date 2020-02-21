@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="Use Moose or Mouse modules (DEPRECATED)"
 SLOT="0"
 KEYWORDS="amd64 hppa ppc x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 PERL_RM_FILES=(
 	"t/001-basic-mouse.t"
 	"t/002-other-modules-mouse.t"

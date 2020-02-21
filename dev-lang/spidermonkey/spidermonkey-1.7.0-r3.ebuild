@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -14,7 +14,7 @@ SRC_URI="http://archive.mozilla.org/pub/js/${MY_P}.tar.gz
 
 LICENSE="NPL-1.1"
 SLOT="0/js"
-KEYWORDS="alpha amd64 ~arm ppc ppc64 ~sparc x86 ~x86-fbsd"
+KEYWORDS="~alpha amd64 ~arm ppc ppc64 x86"
 IUSE="threadsafe unicode"
 
 S="${WORKDIR}/js/src"

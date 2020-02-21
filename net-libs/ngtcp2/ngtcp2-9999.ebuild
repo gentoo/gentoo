@@ -1,8 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
 inherit cmake-multilib
 
 if [[ ${PV} == 9999 ]] ; then
@@ -10,7 +11,7 @@ if [[ ${PV} == 9999 ]] ; then
 	inherit autotools git-r3
 else
 	SRC_URI="https://github.com/ngtcp2/ngtcp2/releases/download/v${PV}/${P}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="~amd64 ~hppa"
 fi
 
 DESCRIPTION="Implementation of the IETF QUIC Protocol"
@@ -33,9 +34,9 @@ multilib_src_configure() {
 		-DCMAKE_DISABLE_FIND_PACKAGE_Libnghttp3=ON
 		-DCMAKE_DISABLE_FIND_PACKAGE_CUnit=$(usex !test)
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_test() {
-	cmake-utils_src_make check
+	cmake_build check
 }

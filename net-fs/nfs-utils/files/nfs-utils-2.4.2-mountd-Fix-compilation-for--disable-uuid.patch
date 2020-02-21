@@ -1,0 +1,35 @@
+From 31bb484b22c220c561f3a95c3b7ca3ea9b96cc9b Mon Sep 17 00:00:00 2001
+From: Petr Vorel <petr.vorel@gmail.com>
+Date: Mon, 18 Nov 2019 11:27:19 -0500
+Subject: [PATCH] mountd: Fix compilation for --disable-uuid
+
+Although code in configure.ac pretends to set USE_BLKID as 0
+via AC_DEFINE_UNQUOTED, it's actually not defined
+support/include/config.h.in
+support/include/config.h
+/* #undef USE_BLKID */
+
+Fixes: 8e643554 ("Allow disabling of libblkid usage.")
+
+Signed-off-by: Petr Vorel <petr.vorel@gmail.com>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+ utils/mountd/cache.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/utils/mountd/cache.c b/utils/mountd/cache.c
+index 31e9507..e5186c7 100644
+--- a/utils/mountd/cache.c
++++ b/utils/mountd/cache.c
+@@ -221,7 +221,7 @@ static void auth_unix_gid(int f)
+ 		xlog(L_ERROR, "auth_unix_gid: error writing reply");
+ }
+ 
+-#if USE_BLKID
++#ifdef USE_BLKID
+ static const char *get_uuid_blkdev(char *path)
+ {
+ 	/* We set *safe if we know that we need the
+-- 
+1.8.3.1
+

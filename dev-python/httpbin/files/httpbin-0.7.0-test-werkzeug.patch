@@ -1,0 +1,19 @@
+diff -dupr a/test_httpbin.py b/test_httpbin.py
+--- a/test_httpbin.py	2019-11-22 15:06:56.199774070 +0100
++++ b/test_httpbin.py	2019-11-22 15:18:58.010069445 +0100
+@@ -144,7 +144,6 @@ class HttpbinTestCase(unittest.TestCase)
+         data = json.loads(response.data.decode('utf-8'))
+         self.assertEqual(data['args'], {})
+         self.assertEqual(data['headers']['Host'], 'localhost')
+-        self.assertEqual(data['headers']['Content-Length'], '0')
+         self.assertEqual(data['headers']['User-Agent'], 'test')
+         # self.assertEqual(data['origin'], None)
+         self.assertEqual(data['url'], 'http://localhost/get')
+@@ -158,7 +157,6 @@ class HttpbinTestCase(unittest.TestCase)
+         data = json.loads(response.data.decode('utf-8'))
+         self.assertEqual(data['args'], {})
+         self.assertEqual(data['headers']['Host'], 'localhost')
+-        self.assertEqual(data['headers']['Content-Length'], '0')
+         self.assertEqual(data['url'], 'http://localhost/anything/foo/bar')
+         self.assertEqual(data['method'], 'GET')
+         self.assertTrue(response.data.endswith(b'\n'))

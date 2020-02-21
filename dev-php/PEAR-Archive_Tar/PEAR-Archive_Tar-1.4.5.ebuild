@@ -7,11 +7,11 @@ MY_PN="${PN/PEAR-/}"
 MY_P="${MY_PN}-${PV}"
 
 DESCRIPTION="Tar file management class"
-HOMEPAGE="https://pear.php.net/package/${MY_PN}"
+HOMEPAGE="https://pear.php.net/package/Archive_Tar"
 SRC_URI="https://pear.php.net/get/${MY_P}.tgz"
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="alpha amd64 arm ~hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
+KEYWORDS="~alpha amd64 arm ~hppa ia64 ppc ppc64 ~s390 ~sh sparc x86"
 IUSE=""
 
 # bzip2 and zlib are needed for compressed tarballs, and there's one

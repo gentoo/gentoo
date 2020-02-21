@@ -13,7 +13,7 @@ SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"
 
 LICENSE="LGPL-2 GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86 ~x86-fbsd"
+KEYWORDS="amd64 x86"
 IUSE="doc perl python tcl"
 
 RESTRICT="test"
@@ -81,8 +81,8 @@ src_install() {
 	autotools-utils_src_install
 
 	insinto /usr/$(get_libdir)/pkgconfig
-	doins "${AUTOTOOLS_BUILD_DIR}"/hamlib.pc || die "doins failed"
+	doins "${AUTOTOOLS_BUILD_DIR}"/hamlib.pc
 
 	echo "LDPATH=/usr/$(get_libdir)/hamlib" > "${T}"/73hamlib
-	doenvd "${T}"/73hamlib || die "doenvd failed"
+	doenvd "${T}"/73hamlib
 }

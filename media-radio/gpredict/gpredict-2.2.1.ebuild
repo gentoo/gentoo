@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,4 +28,5 @@ src_prepare() {
 	eapply_user
 	# remove wrong doc location
 	eapply -p0 "${FILESDIR}/${PN}-2.0-doc.patch"
+	eapply "${FILESDIR}/${P}-fno-common.patch"
 }

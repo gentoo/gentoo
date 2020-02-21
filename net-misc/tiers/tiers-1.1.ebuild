@@ -1,42 +1,45 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=0
-
-inherit eutils
+EAPI=7
 
 MY_P="${PN}${PV}"
 DESCRIPTION="Random network topography generator"
 HOMEPAGE="http://www.isi.edu/nsnam/ns/ns-topogen.html#tiers"
 SRC_URI="http://www.isi.edu/nsnam/dist/topogen/${MY_P}.tar.gz
-		 http://www.isi.edu/nsnam/dist/topogen/tiers2ns-lan.awk"
+	http://www.isi.edu/nsnam/dist/topogen/tiers2ns-lan.awk"
 
 LICENSE="mapm"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc x86"
 IUSE=""
 
-DEPEND="sys-devel/gcc"
-RDEPEND="virtual/awk
-	sci-visualization/gnuplot"
+RDEPEND="sci-visualization/gnuplot
+	virtual/awk"
 
-S=${WORKDIR}/${PN}${PV}
+S=${WORKDIR}/${MY_P}
 
-src_unpack() {
-	unpack ${MY_P}.tar.gz
-	cd "${S}"
-
-	epatch "${FILESDIR}"/${MY_P}-gccfixes.patch
-	epatch "${FILESDIR}"/${P}-gcc43.patch
-	sed -e '1a\#!/bin/sh' -e '1d' -e "s|-f |-f /usr/share/${PN}/|g" -i "${S}"/bin/strip4gnuplot3.5
+src_prepare() {
+	default
+	eapply "${FILESDIR}"/${MY_P}-gccfixes.patch
+	eapply "${FILESDIR}"/${P}-gcc43.patch
+	sed -e '1a\#!/bin/sh' \
+		-e '1d' \
+		-e "s|-f |-f /usr/share/${PN}/|g" \
+		-i "${S}"/bin/strip4gnuplot3.5 || die
 }
 
 src_compile() {
-	cd "${S}"/src
-	emake CFLAGS="${CFLAGS}" CONFIGFILE="/etc/tiers-gnuplot.conf" EXEC="../bin/tiers-gnuplot" || die
+	emake -C src \
+		CFLAGS="${CFLAGS}" \
+		CONFIGFILE="/etc/tiers-gnuplot.conf" \
+		EXEC="../bin/tiers-gnuplot"
 	# cleanup for a sec
-	rm *.o
-	emake CFLAGS="${CFLAGS}" CONFIGFILE="/etc/tiers.conf" EXEC="../bin/tiers" || die
+	rm src/*.o || die
+	emake -C src \
+		CFLAGS="${CFLAGS}" \
+		CONFIGFILE="/etc/tiers.conf" \
+		EXEC="../bin/tiers"
 }
 
 src_install() {

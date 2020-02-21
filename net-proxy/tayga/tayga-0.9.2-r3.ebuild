@@ -31,6 +31,7 @@ src_prepare() {
 }
 
 src_install() {
-	newconfd "${FILESDIR}"/tayga.confd
-	newinitd "${FILESDIR}"/tayga.initd
+	default
+	newconfd "${FILESDIR}"/tayga.confd ${PN}
+	newinitd "${FILESDIR}"/tayga.initd ${PN}
 }

@@ -1,5 +1,5 @@
---- src/instrument.c.old	2010-10-15 22:20:58.014091858 +0200
-+++ src/instrument.c	2010-10-15 22:21:34.132271440 +0200
+--- a/src/instrument.c.old	2010-10-15 22:20:58.014091858 +0200
++++ b/src/instrument.c	2010-10-15 22:21:34.132271440 +0200
 @@ -542,7 +542,7 @@ while (dbcp->c_get(dbcp, &key, &value, D
     
     tthen = (time_t)then;

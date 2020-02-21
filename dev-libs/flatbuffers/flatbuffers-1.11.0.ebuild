@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Memory efficient serialization library"
 HOMEPAGE="https://google.github.io/flatbuffers/"
@@ -13,6 +13,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="static-libs test"
+RESTRICT="!test? ( test )"
 
 DOCS=( readme.md )
 
@@ -25,5 +26,5 @@ src_configure() {
 
 	use elibc_musl && mycmakeargs+=( -DFLATBUFFERS_LOCALE_INDEPENDENT=0 )
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

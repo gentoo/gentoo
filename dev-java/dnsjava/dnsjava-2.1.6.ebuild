@@ -39,7 +39,7 @@ java_prepare() {
 src_install() {
 	java-pkg_newjar "${P}.jar"
 
-	dodoc README USAGE || die
+	dodoc README USAGE
 	use doc && java-pkg_dojavadoc doc
 	use source && java-pkg_dosrc org/
 }

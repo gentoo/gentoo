@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,6 +21,7 @@ fi
 LICENSE="LGPL-2.1-with-linking-exception"
 SLOT="0/${PV}"
 IUSE="+ocamlopt +camlp4 +lwt doc +deriving +ppx +xml test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-lang/ocaml-3.12:=[ocamlopt?]

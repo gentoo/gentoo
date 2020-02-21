@@ -88,9 +88,9 @@ src_configure() {
 }
 
 src_compile() {
-	emake AR="$(tc-getAR)" || die "emake failed"
+	emake AR="$(tc-getAR)"
 
-	emake -j 1 -C api/libsphinxclient || die "emake libsphinxclient failed"
+	emake -j 1 -C api/libsphinxclient
 }
 
 src_test() {
@@ -100,8 +100,8 @@ src_test() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install || die "install failed"
-	emake DESTDIR="${D}" -C api/libsphinxclient install || die "install libsphinxclient failed"
+	emake DESTDIR="${D}" install
+	emake DESTDIR="${D}" -C api/libsphinxclient install
 
 	dodoc doc/*
 

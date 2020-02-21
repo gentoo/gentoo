@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -7,9 +7,9 @@ PLOCALES="ar ca cs da_DK de el en es fa fr hr hu it ja ko ms_MY nb nl pl pt pt_B
 PLOCALE_BACKUP="en"
 WX_GTK_VER="3.0"
 
-inherit cmake-utils desktop gnome2-utils l10n pax-utils toolchain-funcs versionator wxwidgets
+inherit cmake-utils desktop gnome2-utils l10n pax-utils toolchain-funcs wxwidgets
 
-SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/${PN}-emu/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="amd64"
 
 DESCRIPTION="Gamecube and Wii game emulator"
@@ -24,7 +24,7 @@ RESTRICT=test
 RDEPEND="
 	>=media-libs/libsfml-2.1
 	>net-libs/enet-1.3.7
-	>=net-libs/mbedtls-2.1.1:=
+	>=net-libs/mbedtls-2.1.1:0=
 	dev-libs/lzo
 	media-libs/libpng:0=
 	sys-libs/readline:0=

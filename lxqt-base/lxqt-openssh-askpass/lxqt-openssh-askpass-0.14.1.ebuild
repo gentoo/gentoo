@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="LXQt OpenSSH user password prompt tool"
 HOMEPAGE="https://lxqt.org/"
@@ -33,7 +33,7 @@ RDEPEND="${DEPEND}
 "
 
 src_install(){
-	cmake-utils_src_install
+	cmake_src_install
 	doman man/*.1
 
 	echo "SSH_ASKPASS='${EPREFIX}/usr/bin/lxqt-openssh-askpass'" >> "${T}/99${PN}" \

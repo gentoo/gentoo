@@ -10,7 +10,7 @@ SRC_URI="http://www.live555.com/liveMedia/public/${P/-/.}.tar.gz
 	mirror://gentoo/${P/-/.}.tar.gz"
 
 LICENSE="LGPL-2.1"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-fbsd ~x86-fbsd ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x86-solaris"
 IUSE="examples static-libs"
 DOCS=( "live-shared/README" )
 
@@ -83,14 +83,14 @@ multilib_src_compile() {
 
 		einfo "Beginning static library build"
 		./genMakefiles gentoo
-		emake -j1 LINK_OPTS="-L. $(raw-ldflags)" || die "failed to build static libraries"
+		emake -j1 LINK_OPTS="-L. $(raw-ldflags)"
 	fi
 
 	cd "${BUILD_DIR}/live-shared"
 	einfo "Beginning shared library build"
 	./genMakefiles gentoo-so-r1
 	local suffix=$(get_libname ${LIVE_ABI_VERSION})
-	emake -j1 LINK_OPTS="-L. ${LDFLAGS}" LIB_SUFFIX="${suffix#.}" || die "failed to build shared libraries"
+	emake -j1 LINK_OPTS="-L. ${LDFLAGS}" LIB_SUFFIX="${suffix#.}"
 
 	for i in liveMedia groupsock UsageEnvironment BasicUsageEnvironment ; do
 		pushd "${BUILD_DIR}/live-shared/${i}" > /dev/null
@@ -102,7 +102,7 @@ multilib_src_compile() {
 		einfo "Beginning programs build"
 		for i in $(use examples && echo "testProgs") proxyServer mediaServer ; do
 			cd "${BUILD_DIR}/live-shared/${i}"
-			emake LINK_OPTS="-L. ${LDFLAGS}" || die "failed to build test programs"
+			emake LINK_OPTS="-L. ${LDFLAGS}"
 		done
 	fi
 }

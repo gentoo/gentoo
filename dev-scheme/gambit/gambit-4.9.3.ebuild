@@ -23,7 +23,7 @@ RDEPEND="ssl? (
 DEPEND="
 	${RDEPEND}
 "
-BDEPEND="emacs? ( virtual/emacs )"
+BDEPEND="emacs? ( >=app-editors/emacs-23.1:* )"
 
 SITEFILE="50gambit-gentoo.el"
 

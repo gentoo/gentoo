@@ -16,7 +16,6 @@
 		<flag name="bluray">Use the system libbluray for BluRay support</flag>
 		<flag name="cec">Allows control of CEC enabled TVs via HDMI</flag>
 		<flag name="ceton">Ceton InfiniTV 4 a CableCARD-enabled tuner support</flag>
-		<flag name="crystalhd">Broadcom CrystalHD hardware support</flag>
 		<flag name="debug">Instructs Qt to use the 'debug' target</flag>
 		<flag name="egl">EGL video output support</flag>
 		<flag name="fftw">Support visualizations via <pkg>sci-libs/fftw</pkg></flag>
@@ -36,6 +35,7 @@
 		<flag name="wrapper">Use Ubuntu mythtfrontend wrapper</flag>
 		<flag name="x265">Enable h265 encoding using x265</flag>
 		<flag name="xmltv">Support <pkg>media-tv/xmltv</pkg> TV listing - not used by Schedules Direct]</flag>
+		<flag name="xnvctrl">External XNVCtrl support using Nvidia proprietary driver</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">MythTV/mythtv</remote-id>

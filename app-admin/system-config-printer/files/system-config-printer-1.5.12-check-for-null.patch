@@ -1,0 +1,58 @@
+From cf9903466c1a2d18a701f3b5e8c7e03483e1244d Mon Sep 17 00:00:00 2001
+From: Zdenek Dohnal <zdohnal@redhat.com>
+Date: Mon, 14 Oct 2019 16:39:28 +0200
+Subject: [PATCH] udev-configure-printer: Add checks for NULL
+
+---
+ NEWS                          |  1 +
+ udev/udev-configure-printer.c | 12 +++++++++---
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/NEWS b/NEWS
+index f4b774e5c..0b53aa8ef 100644
+--- a/NEWS
++++ b/NEWS
+@@ -1,5 +1,6 @@
+ 1.5.13 changes
+ --------------
++- add checks for NULL in udev-configure-printer (Fedora #1761097)
+ 
+ 1.5.12 changes
+ --------------
+diff --git a/udev/udev-configure-printer.c b/udev/udev-configure-printer.c
+index 83092fc21..d753bbeaf 100644
+--- a/udev/udev-configure-printer.c
++++ b/udev/udev-configure-printer.c
+@@ -1411,7 +1411,7 @@ for_each_matching_queue (struct device_uris *device_uris,
+       const char *printer_state_message = NULL;
+       int state = 0;
+       size_t i, l;
+-      char *this_device_uri_n, *device_uri_n;
++      char *this_device_uri_n = NULL, *device_uri_n = NULL;
+       const char *ps1, *ps2, *pi1, *pi2;
+ 
+       while (attr && ippGetGroupTag (attr) != IPP_TAG_PRINTER)
+@@ -1448,6 +1448,8 @@ for_each_matching_queue (struct device_uris *device_uris,
+       for (i = 0; i < device_uris->n_uris; i++)
+ 	{
+ 	  device_uri_n = normalize_device_uri(device_uris->uri[i]);
++          if (this_device_uri_n == NULL || device_uri_n == NULL)
++            goto skip;
+ 	  /* As for the same device different URIs can come out when the
+ 	     device is accessed via the usblp kernel module or via low-
+ 	     level USB (libusb) we cannot simply compare URIs, must
+@@ -1512,8 +1514,12 @@ for_each_matching_queue (struct device_uris *device_uris,
+       firstqueue = 0;
+ 
+     skip:
+-      free(device_uri_n);
+-      free(this_device_uri_n);
++      if (device_uri_n != NULL)
++        free(device_uri_n);
++        device_uri_n = NULL;
++      if (this_device_uri_n != NULL)
++        free(this_device_uri_n);
++        this_device_uri_n = NULL;
+       if (!attr)
+ 	break;
+     }

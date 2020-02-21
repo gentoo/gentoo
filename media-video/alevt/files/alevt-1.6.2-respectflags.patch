@@ -1,21 +1,25 @@
---- alevt-1.6.2/Makefile.orig	2007-12-03 06:19:54.000000000 +0100
-+++ alevt-1.6.2/Makefile	2009-05-14 10:17:39.000000000 +0200
+--- a/Makefile
++++ b/Makefile
 @@ -1,5 +1,4 @@
  VER=1.6.2
 -OPT=-O2 -s -w
  #OPT=-O -g
  DEFS=-DWITH_PNG
  FONT=vtxt
-@@ -11,7 +10,7 @@
+@@ -7,11 +6,10 @@
+ #USR_X11R6=/usr
+ MAN_DIR=man
+ #MAN_DIR=share/man
+-HOSTCC=$(CC)
  # a smaller and thinner font
  #FONT=neep9
  
 -CFLAGS=$(OPT) -DVERSION=\"$(VER)\" $(DEFS) -I$(USR_X11R6)/include
-+CFLAGS += -DVERSION=\"$(VER)\" $(DEFS) -I$(USR_X11R6)/include
++CPPFLAGS += -DVERSION=\"$(VER)\" $(DEFS) -I$(USR_X11R6)/include
  
  EXPOBJS=export.o exp-txt.o exp-html.o exp-gfx.o font.o
  OBJS=main.o ui.o xio.o fdset.o vbi.o cache.o help.o edline.o search.o edit.o misc.o hamm.o lang.o $(EXPOBJS)
-@@ -25,13 +24,13 @@
+@@ -25,13 +23,13 @@
  all: alevt alevt-date alevt-cap alevt.1x alevt-date.1 alevt-cap.1
  
  alevt: $(OBJS)
@@ -32,3 +36,12 @@
  
  font.o: font1.xbm font2.xbm
  fontsize.h: font1.xbm font2.xbm
+@@ -44,7 +42,7 @@
+ 	./bdf2xbm font2 <$(FONT)-latin-2.bdf >font2.xbm
+ 
+ bdf2xbm: bdf2xbm.c
+-	$(HOSTCC) bdf2xbm.c -o bdf2xbm
++	$(BUILD_CC) bdf2xbm.c -o bdf2xbm
+ 
+ alevt.1x: alevt.1x.in
+ 	sed s/VERSION/$(VER)/g <alevt.1x.in >alevt.1x

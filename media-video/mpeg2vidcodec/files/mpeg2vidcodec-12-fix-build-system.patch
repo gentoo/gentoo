@@ -1,0 +1,78 @@
+--- a/Makefile
++++ b/Makefile
+@@ -53,26 +53,23 @@
+ #
+ # GNU gcc
+ #
+-CC = gcc
+-CFLAGS = -O2
++CFLAGS += -Wall
+ 
+ all: mpeg2decode mpeg2encode
+ 
+ mpeg2decode:
+-	cd src/mpeg2dec; make 'CC=$(CC)' \
+-	'CFLAGS=$(CFLAGS) $(USE_DISP) $(USE_SHMEM) $(INCLUDEDIR)' \
+-	'LIBS=$(LIBS)' 'LIBRARYDIR=$(LIBRARYDIR)'
++	cd src/mpeg2dec && $(MAKE)
+ 
+ mpeg2encode:
+-	cd src/mpeg2enc; make 'CC=$(CC)' 'CFLAGS=$(CFLAGS)'
++	cd src/mpeg2enc && $(MAKE)
+ 
+ pc:
+-	cd src/mpeg2dec; make pc 'CC=$(CC)' 'CFLAGS=$(CFLAGS)'
+-	cd src/mpeg2enc; make pc 'CC=$(CC)' 'CFLAGS=$(CFLAGS)'
++	cd src/mpeg2dec && $(MAKE) pc
++	cd src/mpeg2enc && $(MAKE) pc
+ 
+ clean:
+-	cd src/mpeg2dec; make clean
+-	cd src/mpeg2enc; make clean
++	cd src/mpeg2dec && $(MAKE) clean
++	cd src/mpeg2enc && $(MAKE) clean
+ 
+ test:
+ 	cd verify; ./verify
+--- a/src/mpeg2dec/Makefile
++++ b/src/mpeg2dec/Makefile
+@@ -60,8 +60,7 @@
+ #
+ # GNU gcc
+ #
+-CC = gcc
+-CFLAGS = -O2 $(USE_DISP) $(USE_SHMEM) $(INCLUDEDIR) $(TRACE) $(VERBOSE) $(VERIFY) $(WARNINGS)
++CFLAGS += -Wall
+ 
+ OBJ = mpeg2dec.o getpic.o motion.o getvlc.o gethdr.o getblk.o getbits.o store.o recon.o spatscal.o idct.o idctref.o display.o systems.o subspic.o verify.o
+ 
+@@ -76,7 +75,7 @@
+ 	coff2exe mpeg2dec
+ 
+ mpeg2decode: $(OBJ)
+-	$(CC) $(CFLAGS) $(LIBRARYDIR) -o mpeg2decode $(OBJ) -lm $(LIBS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(LIBRARYDIR) -o mpeg2decode $(OBJ) -lm $(LIBS)
+ 
+ display.o : display.c config.h global.h mpeg2dec.h 
+ getbits.o : getbits.c config.h global.h mpeg2dec.h 
+--- a/src/mpeg2enc/Makefile
++++ b/src/mpeg2enc/Makefile
+@@ -32,8 +32,7 @@
+ #
+ # GNU gcc
+ #
+-CC = gcc
+-CFLAGS = -O2 -Wall
++CFLAGS += -Wall
+ 
+ OBJ = mpeg2enc.o conform.o putseq.o putpic.o puthdr.o putmpg.o putvlc.o putbits.o motion.o predict.o readpic.o writepic.o transfrm.o fdctref.o idct.o quantize.o ratectl.o stats.o
+ 
+@@ -48,7 +47,7 @@
+ 	coff2exe mpeg2enc
+ 
+ mpeg2encode: $(OBJ)
+-	$(CC) $(CFLAGS) -o mpeg2encode $(OBJ) -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) -o mpeg2encode $(OBJ) -lm
+ 
+ conform.o : conform.c config.h global.h mpeg2enc.h 
+ fdctref.o : fdctref.c config.h 

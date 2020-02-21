@@ -1,0 +1,31 @@
+From 0648d3019dc2395f61a8a7a3d1bbf790eca98739 Mon Sep 17 00:00:00 2001
+From: James Xu <kejia.xu@microsoft.com>
+Date: Wed, 6 Feb 2019 09:47:54 -0800
+Subject: [PATCH] normalize paths before comparison in rosmsg (#1586)
+
+* normalize paths before comparison in rosmsg
+
+* remove use of normcase and remove path_in_workspaces temp variable
+
+* remove duplicated control
+
+* revert unrelated whitespace changes
+
+* keep order of operands
+---
+ tools/rosmsg/src/rosmsg/__init__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/rosmsg/src/rosmsg/__init__.py b/tools/rosmsg/src/rosmsg/__init__.py
+index 83b629e7e..4ed7aa542 100644
+--- a/tools/rosmsg/src/rosmsg/__init__.py
++++ b/tools/rosmsg/src/rosmsg/__init__.py
+@@ -551,7 +551,7 @@ def _get_package_paths(pkgname, rospack):
+     path = rospack.get_path(pkgname)
+     paths.append(path)
+     results = find_in_workspaces(search_dirs=['share'], project=pkgname, first_match_only=True, workspace_to_source_spaces=_catkin_workspace_to_source_spaces, source_path_to_packages=_catkin_source_path_to_packages)
+-    if results and results[0] != path:
++    if results and results[0].replace(os.path.sep, '/') != path.replace(os.path.sep, '/'):
+         paths.append(results[0])
+     return paths
+     

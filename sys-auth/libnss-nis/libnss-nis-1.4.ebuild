@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,8 @@ DEPEND="${RDEPEND}
 "
 
 S=${WORKDIR}/libnss_nis-${PV}
+
+PATCHES=( "${FILESDIR}/${P}-glibc-2.30.patch" )
 
 src_prepare() {
 	default

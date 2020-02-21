@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,6 +12,7 @@ DESCRIPTION="A simple prefork server framework"
 SLOT="0"
 KEYWORDS="amd64 ~x86"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-perl/Class-Accessor-Lite-0.40.0
@@ -27,6 +28,8 @@ DEPEND="${RDEPEND}
 		dev-perl/Test-SharedFork
 	)
 "
+
+PATCHES=( "${FILESDIR}/${P}-RT113449.patch" )
 
 src_prepare() {
 	sed -i -e 's/use inc::Module::Install/use lib q[.]; use inc::Module::Install/' Makefile.PL ||

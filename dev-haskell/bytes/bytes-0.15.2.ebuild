@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -11,12 +11,13 @@ inherit haskell-cabal
 
 DESCRIPTION="Sharing code for serialization between binary and cereal"
 HOMEPAGE="https://github.com/ekmett/bytes"
-SRC_URI="mirror://hackage/packages/archive/${PN}/${PV}/${P}.tar.gz"
+SRC_URI="https://hackage.haskell.org/package/${P}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0/${PV}"
 KEYWORDS="~amd64 ~x86"
 IUSE="+test-doctests"
+RESTRICT="!test? ( test )"
 
 RDEPEND=">=dev-haskell/binary-0.5.1:=[profile?] <dev-haskell/binary-0.9:=[profile?]
 	>=dev-haskell/cereal-0.3.5:=[profile?] <dev-haskell/cereal-0.6:=[profile?]

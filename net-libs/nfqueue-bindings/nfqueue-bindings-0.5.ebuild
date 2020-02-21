@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,7 +19,9 @@ REQUIRED_USE="|| ( perl python ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	python? (
-		dev-python/dpkt[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/dpkt[${PYTHON_MULTI_USEDEP}]
+		')
 		${PYTHON_DEPS}
 	)"
 DEPEND="${RDEPEND}
@@ -63,7 +65,7 @@ src_prepare() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" install PREFIX=/usr || die
+	emake DESTDIR="${D}" install PREFIX=/usr
 	docinto examples
 	use examples && dodoc examples/*
 }

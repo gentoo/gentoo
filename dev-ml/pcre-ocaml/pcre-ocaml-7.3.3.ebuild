@@ -11,7 +11,7 @@ SRC_URI="https://github.com/mmottl/pcre-ocaml/releases/download/${PV}/pcre-${PV}
 LICENSE="LGPL-2.1-with-linking-exception"
 IUSE="examples"
 SLOT="0/${PV}"
-KEYWORDS="~amd64 ~ppc ~x86 ~x86-fbsd"
+KEYWORDS="~amd64 ~ppc ~x86"
 
 RDEPEND=">=dev-libs/libpcre-4.5"
 DEPEND="${RDEPEND}

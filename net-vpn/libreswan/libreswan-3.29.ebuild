@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,7 +6,7 @@ EAPI=7
 inherit systemd toolchain-funcs
 
 SRC_URI="https://download.libreswan.org/${P}.tar.gz"
-KEYWORDS="~amd64 ~ppc ~x86"
+KEYWORDS="amd64 ~arm ~ppc x86"
 
 DESCRIPTION="IPsec implementation for Linux, fork of Openswan"
 HOMEPAGE="https://libreswan.org/"
@@ -14,6 +14,7 @@ HOMEPAGE="https://libreswan.org/"
 LICENSE="GPL-2 BSD-4 RSA DES"
 SLOT="0"
 IUSE="caps curl dnssec ldap pam seccomp selinux systemd test"
+RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/gmp:0=
@@ -104,7 +105,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	local IPSEC_CONFDIR=${ROOT%/}/etc/ipsec.d
+	local IPSEC_CONFDIR=${ROOT}/etc/ipsec.d
 	if [[ ! -f ${IPSEC_CONFDIR}/cert8.db && ! -f ${IPSEC_CONFDIR}/cert9.db ]] ; then
 		ebegin "Setting up NSS database in ${IPSEC_CONFDIR} with empty password"
 		certutil -N -d "${IPSEC_CONFDIR}" --empty-password

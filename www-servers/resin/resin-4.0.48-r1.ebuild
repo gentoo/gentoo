@@ -78,7 +78,7 @@ src_configure() {
 	append-flags -fPIC -DPIC
 
 	chmod 755 "${S}/configure" || die
-	econf --prefix=${RESIN_HOME} || die "econf failed"
+	econf --prefix=${RESIN_HOME}
 }
 
 src_compile() {

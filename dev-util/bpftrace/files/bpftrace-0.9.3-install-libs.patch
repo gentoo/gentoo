@@ -1,0 +1,129 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 5e0d770..d51edf6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -51,9 +51,10 @@ find_package(FLEX REQUIRED)
+ bison_target(bison_parser src/parser.yy ${CMAKE_BINARY_DIR}/parser.tab.cc VERBOSE)
+ flex_target(flex_lexer src/lexer.l ${CMAKE_BINARY_DIR}/lex.yy.cc)
+ add_flex_bison_dependency(flex_lexer bison_parser)
+-add_library(parser ${BISON_bison_parser_OUTPUTS} ${FLEX_flex_lexer_OUTPUTS})
+-target_compile_options(parser PRIVATE "-w")
+-target_include_directories(parser PUBLIC src src/ast ${CMAKE_BINARY_DIR})
++add_library(bpftraceparser ${BISON_bison_parser_OUTPUTS} ${FLEX_flex_lexer_OUTPUTS})
++target_compile_options(bpftraceparser PRIVATE "-w")
++target_include_directories(bpftraceparser PUBLIC src src/ast ${CMAKE_BINARY_DIR})
++install(TARGETS bpftraceparser LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ include(CheckSymbolExists)
+ set(CMAKE_REQUIRED_DEFINITIONS -D_GNU_SOURCE)
+diff --git a/resources/CMakeLists.txt b/resources/CMakeLists.txt
+index b8b0d96..0803c1e 100644
+--- a/resources/CMakeLists.txt
++++ b/resources/CMakeLists.txt
+@@ -1,6 +1,7 @@
+-add_library(resources headers.cpp)
++add_library(bpftraceresources headers.cpp)
+ 
+-target_include_directories(resources PUBLIC ../src)
++target_include_directories(bpftraceresources PUBLIC ../src)
++install(TARGETS bpftraceresources LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ function(embed_headers output)
+   file(WRITE ${output} "#include \"headers.h\"\n\nnamespace bpftrace {\n")
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 65f3a34..b001a83 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -56,7 +56,8 @@ if (ALLOW_UNSAFE_UPROBE)
+   target_compile_definitions(bpftrace PRIVATE HAVE_UNSAFE_UPROBE)
+ endif(ALLOW_UNSAFE_UPROBE)
+ 
+-target_link_libraries(bpftrace arch ast parser resources)
++target_link_libraries(bpftrace bpftracearch bpftraceast bpftraceparser
++  bpftraceresources)
+ 
+ if (STATIC_LINKING)
+   target_link_libraries(bpftrace ${LIBBCC_LIBRARIES})
+diff --git a/src/arch/CMakeLists.txt b/src/arch/CMakeLists.txt
+index a26f610..53627e2 100644
+--- a/src/arch/CMakeLists.txt
++++ b/src/arch/CMakeLists.txt
+@@ -1,5 +1,7 @@
+ if(CMAKE_SYSTEM_PROCESSOR STREQUAL "aarch64")
+-    add_library(arch aarch64.cpp)
++    add_library(bpftracearch aarch64.cpp)
+ else()
+-    add_library(arch x86_64.cpp)
++    add_library(bpftracearch x86_64.cpp)
+ endif()
++
++install(TARGETS bpftracearch LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+diff --git a/src/ast/CMakeLists.txt b/src/ast/CMakeLists.txt
+index 4d77c9f..2a00572 100644
+--- a/src/ast/CMakeLists.txt
++++ b/src/ast/CMakeLists.txt
+@@ -1,4 +1,4 @@
+-add_library(ast
++add_library(bpftraceast
+   ast.cpp
+   codegen_llvm.cpp
+   irbuilderbpf.cpp
+@@ -7,15 +7,16 @@ add_library(ast
+ )
+ 
+ if(HAVE_GET_CURRENT_CGROUP_ID)
+-  target_compile_definitions(ast PRIVATE HAVE_GET_CURRENT_CGROUP_ID)
++  target_compile_definitions(bpftraceast PRIVATE HAVE_GET_CURRENT_CGROUP_ID)
+ endif(HAVE_GET_CURRENT_CGROUP_ID)
+ 
+-target_include_directories(ast PUBLIC ${CMAKE_SOURCE_DIR}/src)
+-target_include_directories(ast PUBLIC ${CMAKE_SOURCE_DIR}/src/ast)
+-target_include_directories(ast PUBLIC ${CMAKE_BINARY_DIR})
+-target_link_libraries(ast arch)
++target_include_directories(bpftraceast PUBLIC ${CMAKE_SOURCE_DIR}/src)
++target_include_directories(bpftraceast PUBLIC ${CMAKE_SOURCE_DIR}/src/ast)
++target_include_directories(bpftraceast PUBLIC ${CMAKE_BINARY_DIR})
++target_link_libraries(bpftraceast bpftracearch)
+ 
+-add_dependencies(ast parser)
++add_dependencies(bpftraceast bpftraceparser)
++install(TARGETS bpftraceast LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+ 
+ if (STATIC_LINKING)
+   set(clang_libs
+@@ -35,16 +36,16 @@ if (STATIC_LINKING)
+       clangSerialization
+       clangToolingCore)
+   llvm_map_components_to_libnames(llvm_libs bpfcodegen ipo irreader mcjit orcjit ${LLVM_TARGETS_TO_BUILD})
+-  target_link_libraries(ast ${clang_libs})
+-  target_link_libraries(ast ${llvm_libs})
++  target_link_libraries(bpftraceast ${clang_libs})
++  target_link_libraries(bpftraceast ${llvm_libs})
+ else()
+   find_library(found_LLVM LLVM HINTS ${LLVM_LIBRARY_DIRS})
+   if(found_LLVM)
+-    target_link_libraries(ast LLVM)
++    target_link_libraries(bpftraceast LLVM)
+   else()
+     llvm_map_components_to_libnames(_llvm_libs bpfcodegen ipo irreader mcjit orcjit ${LLVM_TARGETS_TO_BUILD})
+     llvm_expand_dependencies(llvm_libs ${_llvm_libs})
+-    target_link_libraries(ast ${llvm_libs})
++    target_link_libraries(bpftraceast ${llvm_libs})
+   endif()
+-  target_link_libraries(ast libclang)
++  target_link_libraries(bpftraceast libclang)
+ endif()
+diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
+index 2d18277..f66a8b7 100644
+--- a/tests/CMakeLists.txt
++++ b/tests/CMakeLists.txt
+@@ -76,7 +76,8 @@ if(HAVE_BFD_DISASM)
+   target_link_libraries(bpftrace_test ${LIBOPCODES_LIBRARIES})
+ endif(HAVE_BFD_DISASM)
+ 
+-target_link_libraries(bpftrace_test arch ast parser resources)
++target_link_libraries(bpftrace_test bpftracearch bpftraceast bpftraceparser
++  bpftraceresources)
+ 
+ if (STATIC_LINKING)
+   target_link_libraries(bpftrace_test ${LIBBCC_LIBRARIES})

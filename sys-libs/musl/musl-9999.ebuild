@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -109,7 +109,7 @@ src_install() {
 		dobin "${T}"/getent
 		dobin "${T}"/iconv
 		echo 'LDPATH="include ld.so.conf.d/*.conf"' > "${T}"/00musl || die
-		doenvd "${T}"/00musl || die
+		doenvd "${T}"/00musl
 	fi
 }
 
@@ -119,6 +119,4 @@ pkg_postinst() {
 	[ "${ROOT}" != "/" ] && return 0
 
 	ldconfig || die
-	# reload init ...
-	/sbin/telinit U 2>/dev/null
 }

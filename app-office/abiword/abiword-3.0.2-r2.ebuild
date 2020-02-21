@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -56,7 +56,7 @@ RDEPEND="
 	redland? (
 		>=dev-libs/redland-1.0.10
 		>=dev-libs/rasqal-0.9.17 )
-	spell? ( >=app-text/enchant-1.2 )
+	spell? ( >=app-text/enchant-1.2:0 )
 	!<app-office/abiword-plugins-2.8
 "
 DEPEND="${RDEPEND}
@@ -104,6 +104,10 @@ PATCHES=(
 
 	# https://bugzilla.abisource.com/show_bug.cgi?id=13697
 	"${WORKDIR}"/${P}-patchset/${PN}-3.0.2-bool-boolean.patch
+
+	# https://gitlab.gnome.org/World/AbiWord/issues/2
+	# https://bugs.gentoo.org/690162
+	"${FILESDIR}"/${P}-extern-C-template.patch
 )
 
 src_configure() {

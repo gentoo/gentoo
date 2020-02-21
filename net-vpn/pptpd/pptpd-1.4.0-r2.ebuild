@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic
+inherit autotools eutils flag-o-matic toolchain-funcs
 
 DESCRIPTION="Linux Point-to-Point Tunnelling Protocol Server"
 HOMEPAGE="http://poptop.sourceforge.net/"

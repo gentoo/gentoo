@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>conikost@gentoo.org</email>
+		<name>Conrad Kostecki</name>
+	</maintainer>
+	<longdescription>
+		pyspectrum2 implements the Protobuf-based interface to Spectrum2
+		required for building Python-based Spectrum2 backends.
+	</longdescription>
+	<upstream>
+		<bugs-to>https://github.com/stv0g/pyspectrum2/issues</bugs-to>
+		<remote-id type="github">stv0g/pyspectrum2</remote-id>
+	</upstream>
+</pkgmetadata>

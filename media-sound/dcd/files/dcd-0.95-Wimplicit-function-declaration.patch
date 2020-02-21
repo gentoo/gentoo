@@ -1,0 +1,20 @@
+--- a/dcd.c
++++ b/dcd.c
+@@ -23,6 +23,7 @@
+ #include <stdlib.h>
+ #include <ctype.h>
+ #include <getopt.h>
++#include <time.h>
+ 
+ #define ZERO 0
+ #define MAX_TRACKS 103
+--- a/screenop.c
++++ b/screenop.c
+@@ -10,6 +10,7 @@
+ #include "cdindex.h"
+ #include <unistd.h>
+ #include <stdio.h>
++#include <string.h>
+ 
+ void disk_directory(void) {
+   u_char ct = cd_current_track();

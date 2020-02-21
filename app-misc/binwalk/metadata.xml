@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>radhermit@gentoo.org</email>
-		<name>Tim Harder</name>
+		<email>gyakovlev@gentoo.org</email>
+		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<longdescription lang="en">
 		Binwalk is a tool for searching a given binary image for embedded files.
@@ -16,8 +16,7 @@
 		filesystems, etc.
 	</longdescription>
 	<upstream>
-		<remote-id type="google-code">binwalk</remote-id>
-		<remote-id type="github">devttys0/binwalk</remote-id>
+		<remote-id type="github">ReFirmLabs/binwalk</remote-id>
 	</upstream>
 	<use>
 		<flag name="graph">Enable support for generating entropy graphs</flag>

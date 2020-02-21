@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -18,7 +18,7 @@ IUSE=""
 DEPEND="app-admin/augeas
 		dev-ml/ocaml-autoconf
 		dev-ml/findlib
-		dev-lang/ocaml"
+		dev-lang/ocaml[ocamlopt]"
 RDEPEND="${DEPEND}"
 
 src_install() {
