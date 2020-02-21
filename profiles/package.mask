@@ -551,7 +551,6 @@ www-plugins/passff
 # The following packages depend on django, support Python 2 only
 # and have no reverse dependencies.
 # Removal in 30 days.  Bug #706360.
-dev-python/django-xslt
 
 # David Seifert <soap@gentoo.org> (2020-01-25)
 # Upstream is mostly unresponsive and doesn't have the resources to
@@ -634,7 +633,6 @@ net-im/silc-toolkit
 # The following Gentoo packages are Python 2-only and have no reverse
 # dependencies.
 # Removal in 30 days.  Bug #705762.
-dev-python/django-xslt
 dev-python/egg-python
 dev-python/Flask-KVSession
 dev-python/flask-openid
