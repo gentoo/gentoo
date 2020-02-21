@@ -34,7 +34,7 @@ IUSE="audiofile +dbus dcc_video debug doc gsm kde +nls oss +perl +phonon profile
 REQUIRED_USE="audiofile? ( oss ) python? ( ${PYTHON_REQUIRED_USE} )"
 
 BDEPEND="dev-lang/perl:0
-	>=dev-util/cmake-3.16
+	>=dev-util/cmake-3.12
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )
 	kde? ( kde-frameworks/extra-cmake-modules:5 )
