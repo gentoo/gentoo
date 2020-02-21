@@ -14,15 +14,12 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs guile"
 
-# net-mail/mailutils also installes /usr/bin/mu.  Block it until somebody
-# really wants both installed at the same time.
 DEPEND="
 	dev-libs/gmime:3.0
 	>=dev-libs/xapian-1.4
 	dev-libs/glib:2
 	emacs? ( >=app-editors/emacs-24.4:* )
-	guile? ( >=dev-scheme/guile-2.0 )
-	!net-mail/mailutils"
+	guile? ( >=dev-scheme/guile-2.0 )"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
