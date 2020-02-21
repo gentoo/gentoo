@@ -6,8 +6,8 @@ EAPI=7
 DESCRIPTION="NVIDIA Accelerated Deep Learning on GPU library"
 HOMEPAGE="https://developer.nvidia.com/cuDNN"
 
-SRC_URI="cuda10_2? ( cudnn-10.2-linux-x64-v${PV}.tgz )
-	cuda10_1? ( cudnn-10.1-linux-x64-v${PV}.tgz )"
+SRC_URI="cuda10-2? ( cudnn-10.2-linux-x64-v${PV}.tgz )
+	cuda10-1? ( cudnn-10.1-linux-x64-v${PV}.tgz )"
 
 SLOT="0/7"
 KEYWORDS="~amd64 ~amd64-linux"
@@ -15,13 +15,13 @@ RESTRICT="fetch"
 LICENSE="NVIDIA-cuDNN"
 QA_PREBUILT="*"
 
-IUSE="+cuda10_2 cuda10_1"
-REQUIRED_USE="^^ ( cuda10_2 cuda10_1 )"
+IUSE="+cuda10-2 cuda10-1"
+REQUIRED_USE="^^ ( cuda10-2 cuda10-1 )"
 
 S="${WORKDIR}"
 
-DEPEND="cuda10_2? ( =dev-util/nvidia-cuda-toolkit-10.2* )
-	cuda10_1? ( =dev-util/nvidia-cuda-toolkit-10.1* )"
+DEPEND="cuda10-2? ( =dev-util/nvidia-cuda-toolkit-10.2* )
+	cuda10-1? ( =dev-util/nvidia-cuda-toolkit-10.1* )"
 RDEPEND="${DEPEND}"
 
 src_install() {
