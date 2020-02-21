@@ -894,12 +894,6 @@ app-misc/gcstar:stats - Enable statistics reporting
 app-misc/gcstar:tellico - Enable support for kde-misc/tellico files
 app-misc/geoclue:modemmanager - Enable geolocation through 3G or GPS enabled hardware through net-misc/modemmanager.
 app-misc/geoclue:zeroconf - Enable retrieval of GPS location from Android devices with https://wiki.gnome.org/Apps/GeoclueShare
-app-misc/gourmet:i18n - Enable support for i18n through elib.intl
-app-misc/gourmet:ipython - Enable support for the interactive Python console plugin
-app-misc/gourmet:pdf - Enable export to PDF
-app-misc/gourmet:print - Enable pretty Python printing
-app-misc/gourmet:spell - Enable support for the spell check plugin
-app-misc/gourmet:web - Enable support for the web import plugin
 app-misc/gramps:geo - Enable rendering of geographical data using sci-geosciences/osm-gps-map
 app-misc/gramps:rcs - Adds support for family tree archives via dev-vcs/rcs
 app-misc/gramps:reports - All external software that is needed for graphical reports will be installed
@@ -7211,8 +7205,6 @@ sci-chemistry/avogadro2:rpc - Enable RPC server
 sci-chemistry/avogadro2:vtk - include vtk support
 sci-chemistry/chemtool:emf - EMF export support
 sci-chemistry/eden:double-precision - More precise calculations at the expense of speed
-sci-chemistry/ghemical:openbabel - Use sci-chemistry/openbabel for file conversions
-sci-chemistry/ghemical:seamonkey - Add support for the Seamonkey web-browser
 sci-chemistry/gromacs:cuda - Enable cuda non-bonded kernels
 sci-chemistry/gromacs:double-precision - More precise calculations at the expense of speed
 sci-chemistry/gromacs:gmxapi - Add support for gmxapi library

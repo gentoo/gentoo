@@ -351,7 +351,6 @@ app-admin/checksec 1.7.5 1.8.0 1.9.0 1.11.1 2.0.1 2.1.0: Tool to check propertie
 app-admin/chroot_safe 1.4-r1: Chroot any dynamically linked application in a safe and sane manner
 app-admin/chrootuid 1.3-r2: Run a network service at low privilege level and restricted file system access
 app-admin/chrpath 0.13-r2 0.16: Chrpath can modify the rpath and runpath of ELF executables
-app-admin/cli53 0.8.15 9999: Command line tool for Amazon Route 53
 app-admin/clog 1.3.0: clog is a colorized log tail utility
 app-admin/clsync 0.4.2: Live sync tool based on inotify, written in GNU C
 app-admin/clustershell 1.7.3: Python framework for efficient cluster administration
@@ -2089,7 +2088,6 @@ app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.17 1.0.20 1.0.22: A simple JIRA commandline client in Go
 app-misc/golly 3.2 3.3 3.3-r1: simulator for Conway's Game of Life and other cellular automata
 app-misc/goobook 3.4: Access your Google contacts from the command line
-app-misc/gourmet 0.17.4-r2: Recipe Organizer and Shopping List Generator for Gnome
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.0.1-r1 5.1.1 5.1.2-r1: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 1.0.2: Contains the lowlevel lcd drivers for GraphLCD
@@ -2712,7 +2710,6 @@ app-text/ronn 0.7.3-r3: Converts simple, human readable textfiles to roff for te
 app-text/rpl 1.5.5-r1: Intelligent recursive search/replace utility
 app-text/rtf2html 0.2.0-r1: RTF to HTML converter
 app-text/sablotron 1.0.3-r1: An XSLT Parser in C++
-app-text/sary 1.2.0-r1: Sary: suffix array library and tools
 app-text/scdoc 1.9.3-r1 1.10.0 9999: Standalone tool for generating man pages with a simple syntax
 app-text/scrollkeeper-dtd 1.0-r1: DTD from the Scrollkeeper package
 app-text/sdcv 0.5.2: Console version of Stardict program
@@ -8453,7 +8450,6 @@ dev-python/pyperclip 1.5.27 1.7.0: A cross-platform clipboard module for Python.
 dev-python/pyphen 0.9.4: Python module for hyphenation using hunspell dictionaries
 dev-python/pypiserver 1.3.1-r1: Minimal PyPI server
 dev-python/pypng 0.0.18: Pure Python PNG image encoder/decoder
-dev-python/pypodman 0.12.1.2: CLI for podman written in python
 dev-python/pypowervm 1.1.20: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.0: convert python profile data to kcachegrind calltree form
 dev-python/pyproj 1.9.5.1-r1 2.4.2: Python interface to the PROJ library
@@ -8606,7 +8602,6 @@ dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
 dev-python/python-openstackclient 3.18.1: A client for the OpenStack APIs
 dev-python/python-otrs 0.3.0: A programmatic interface to OTRS SOAP API
 dev-python/python-podman 0.12.1.2 1.6.0: A library to interact with a Podman server
-dev-python/python-poppler 0.12.1-r4: Python bindings to the Poppler PDF library
 dev-python/python-poppler-qt5 0.24.2_p20170214 0.75.0: Python binding for libpoppler-qt5
 dev-python/python-prctl 1.7: Control process attributes through prctl
 dev-python/python-redmine 2.0.2: Python interface to the Redmine REST API
@@ -11525,7 +11520,6 @@ games-strategy/freeorion 0.4.7.1-r4 0.4.8_p20190501-r1 9999: A free turn-based s
 games-strategy/freesynd 0.7.1-r1: Portable reimplementation of engine for the classic Bullfrog game, Syndicate
 games-strategy/galaxyhack 1.74-r1: Multiplayer AI script based strategy game
 games-strategy/glob2 0.9.4.4-r2: Real Time Strategy (RTS) game involving a brave army of globs
-games-strategy/gwp 0.4.0-r4: GNOME client for the classic PBEM strategy game VGA Planets 3
 games-strategy/hedgewars 1.0.0-r1: A turn-based strategy, artillery, action and comedy game
 games-strategy/ja2-stracciatella 0.12.1_p7072: A port of Jagged Alliance 2 to SDL
 games-strategy/ja2-stracciatella-data 1: A port of Jagged Alliance 2 to SDL (data files)
@@ -13336,7 +13330,7 @@ media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 9999: SFTP VFS addon for Kod
 media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 9999: Fische visualizer for Kodi
 media-plugins/kodi-visualization-goom 2.1.0 9999: Goom visualizer for Kodi
 media-plugins/kodi-visualization-nastyfft 9999: NastyFFT visualizer for Kodi
-media-plugins/kodi-visualization-projectm 2.3.4 9999: ProjectM visualizer for Kodi
+media-plugins/kodi-visualization-projectm 2.3.5 9999: ProjectM visualizer for Kodi
 media-plugins/kodi-visualization-shadertoy 1.1.5 1.1.8 1.1.9 1.1.10 1.2.1 1.2.2 1.2.3 9999: Shadertoy visualizer for Kodi
 media-plugins/kodi-visualization-spectrum 3.0.3 9999: Spectrum visualizer for Kodi
 media-plugins/kodi-visualization-starburst 2.0.0 2.0.1 2.0.2 9999: StarBurst visualizer for Kodi
@@ -14514,7 +14508,6 @@ net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
 net-im/signal-desktop-bin 1.31.0: Allows you to send and receive messages of Signal Messenger on your computer
-net-im/silc-toolkit 1.1.10: SDK for the SILC protocol
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.55.0.123 8.55.0.141 8.56.0.103-r2: Instant messaging client, with support for audio and video
 net-im/slack-bin 4.1.1 4.3.2-r1: Team collaboration tool
@@ -15489,7 +15482,7 @@ net-wireless/soapysdrplay 0.1.0 0.2.0 9999: Soapy SDR plugin for SDRPlay
 net-wireless/soapyuhd 0.3.6 9999: Soapy SDR plugins for UHD supported SDR devices
 net-wireless/spectools 2011.08.1-r2 2011.08.1_p20140618-r1 2016.01.1 9999: Spectrum Analyzer for Meta-Geek Wi-Spy and GSG Ubertooth hardware
 net-wireless/srslte 19.09: Open source SDR LTE software suite from Software Radio Systems
-net-wireless/tempestsdr 9999: Remote video eavesdropping using a software-defined radio platform
+net-wireless/tempestsdr 0.0_p20200221 9999: Remote video eavesdropping using a software-defined radio platform
 net-wireless/ubertooth 2018.08.1 2018.12.1 9999: open source wireless development platform suitable for Bluetooth experimentation
 net-wireless/uhd 3.10.3.0 3.11.0.0 3.12.0.0 3.13.0.1 3.13.1.0 3.14.0.0 3.14.1.1 3.15.0.0: Universal Software Radio Peripheral (USRP) Hardware Driver
 net-wireless/unifi 5.6.42-r1 5.12.35 5.12.46 5.12.60 5.13.9: A Management Controller for Ubiquiti Networks UniFi APs
@@ -15603,7 +15596,7 @@ ros-meta/viz 1.4.0 1.4.1 9999: Metapackage for ROS visualization packages
 sci-astronomy/aatm 0.6: Atmospheric Modelling for ALMA Observatory
 sci-astronomy/casa-data 99999 20160222 20170703: Data and tables for the CASA software
 sci-astronomy/cdsclient 3.8.1 3.8.4: Collection of scripts to access the CDS databases
-sci-astronomy/celestia 1.6.1-r1 9999: OpenGL 3D space simulator
+sci-astronomy/celestia 9999: OpenGL 3D space simulator
 sci-astronomy/cpl 6.4.2 6.6.1 7.0: ESO common pipeline library for astronomical data reduction
 sci-astronomy/ds9-bin 7.2 7.4: Data visualization application for astronomical FITS images
 sci-astronomy/erfa 1.2.0 1.3.0 1.4.0: Essential Routines for Fundamental Astronomy
@@ -15819,9 +15812,7 @@ sci-chemistry/easychem 0.6-r1: Chemical structure drawing program - focused on p
 sci-chemistry/eden 5.3-r2: A crystallographic real-space electron-density refinement & optimization program
 sci-chemistry/elem 1.0.3-r2: periodic table of the elements
 sci-chemistry/freeon 1.0.8-r1 1.0.10: An experimental suite of programs for linear scaling quantum chemistry
-sci-chemistry/gabedit 2.4.6 2.4.7 2.4.8: GUI for computational chemistry packages
 sci-chemistry/gelemental 1.2.0-r1 2.0.0: Periodic table viewer with detailed information on the chemical elements
-sci-chemistry/ghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
 sci-chemistry/gromacs 2018.8 2018.9999 2019.5-r1 2019.9999 2020-r1 2020.9999 9999: The ultimate molecular dynamics simulation package
@@ -16378,7 +16369,6 @@ sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
 sci-physics/lammps 20180117 20180222 20180308 20180316 20180822 20181212 20190605 20190807 20190807-r1: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.9.1 6.2.3: Les Houches Parton Density Function unified library
-sci-physics/lightspeed 1.2a-r3: OpenGL interactive relativistic simulator
 sci-physics/looptools 2.8 2.12 2.13: Tools for evaluation of scalar and tensor one-loop integrals
 sci-physics/paw 2.14.04-r4 2.14.04-r5: CERN's Physics Analysis Workstation data analysis program
 sci-physics/pythia 6.4.28 6.4.28-r1 8.1.86 8.1.86-r1 8.2.10 8.2.26: Lund Monte Carlo high-energy physics event generator
@@ -16399,7 +16389,6 @@ sci-visualization/fig2sxd 0.22.1: Utility to convert files in xfig format to Ope
 sci-visualization/fityk 1.2.9 1.3.1: General-purpose nonlinear curve fitting and data analysis
 sci-visualization/g3data 1.5.4: Tool for extracting data from graphs
 sci-visualization/gcalc 3.1_rc1-r1: Java Mathematical Graphing System
-sci-visualization/gfsview 20120706-r1: Graphical viewer for Gerris simulation files
 sci-visualization/ggobi 2.1.10 2.1.11: Visualization program for exploring high-dimensional data
 sci-visualization/gle 4.2.5-r1: Graphics Layout Engine
 sci-visualization/gnuplot 5.0.7 5.2.6 5.2.7 5.2.9999 5.3.9999: Command-line driven interactive plotting program
