@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
 
 inherit distutils-r1 eutils
@@ -23,7 +24,6 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=dev-python/markupsafe-0.9.2[${PYTHON_USEDEP}]"
 
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' pypy python2_7)
