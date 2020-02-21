@@ -569,12 +569,6 @@ media-sound/adplay
 =dev-lang/lua-5.3.5-r2
 
 # David Seifert <soap@gentoo.org> (2020-01-21)
-# Upstream disappeared, no other distro still carries this,
-# blocks removal of EOL gtkglext, no revdeps.
-# Removal in 30 days.
-games-strategy/gwp
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
 # All released versions depend on EOL gtkglext, no revdeps.
 # Bug #644334, #694834. Removal of releases in 30 days.
 # Lars Wendler <polynomial-c@gemtoo.org> (2020-01-22)
