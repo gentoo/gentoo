@@ -713,12 +713,6 @@ dev-python/zfec
 # Bug #426028, #454116. Removal in 30 days.
 net-ftp/oftpd
 
-# David Seifert <soap@gentoo.org> (2020-01-18)
-# EAPI 4, doesn't build against OpenSSL 1.1 API, last release in 2014,
-# lots of QA issues (calls cc directly, -Werror)
-# Bug #634442, #664766. Removal in 30 days.
-net-dns/validns
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # The new version loses Python 2 support but does not introduce any real
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
