@@ -14,14 +14,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="emacs"
 
-# net-mail/mailutils also installes /usr/bin/mu.  Block it until somebody
-# really wants both installed at the same time.
 DEPEND="
 	dev-libs/gmime:2.6
 	dev-libs/xapian
 	dev-libs/glib:2
-	emacs? ( >=app-editors/emacs-23.1:* )
-	!net-mail/mailutils"
+	emacs? ( >=app-editors/emacs-23.1:* )"
 RDEPEND="${DEPEND}"
 
 SITEFILE="70mu-gentoo.el"
