@@ -581,11 +581,6 @@ games-strategy/gwp
 # Do NOT treeclean the live ebuild!
 <sci-astronomy/celestia-9999
 
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# Last release over 2 years ago, depends on EOL gtkglext.
-# No revdeps, Removal in 30 days.
-sci-chemistry/gabedit
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # The new version loses Python 2 support but does not introduce any real
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
