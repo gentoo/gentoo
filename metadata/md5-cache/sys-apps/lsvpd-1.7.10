@@ -1,0 +1,13 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=prepare
+DEPEND=dev-db/sqlite:3 sys-apps/sg3_utils sys-libs/librtas sys-libs/libvpd sys-libs/zlib virtual/os-headers
+DESCRIPTION=Utility to List Device Vital Product Data (VPD)
+EAPI=7
+HOMEPAGE=https://github.com/power-ras/lsvpd
+KEYWORDS=~ppc64
+LICENSE=GPL-2+ LGPL-2.1+
+RDEPEND=dev-db/sqlite:3 sys-apps/sg3_utils sys-libs/librtas sys-libs/libvpd sys-libs/zlib
+SLOT=0
+SRC_URI=https://github.com/power-ras/lsvpd/archive/v1.7.10.tar.gz -> lsvpd-1.7.10.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=6750505092ef8dd1d598e64fbc8f2b1f
