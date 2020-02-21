@@ -617,12 +617,6 @@ app-text/sary
 # maintain. Take this over if wanted, otherwise I will remove it in 30 days.
 app-admin/cli53
 
-# Zac Medico <zmedico@gentoo.org> (2020-01-19)
-# This package has been replaced by dev-python/python-podman and has
-# no reverse dependencies.
-# Removal in 30 days.  Bug #705826.
-dev-python/pypodman
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # The new version loses Python 2 support but does not introduce any real
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
