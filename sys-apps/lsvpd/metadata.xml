@@ -5,6 +5,10 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
+	<maintainer type="project">
+		<email>ppc@gentoo.org</email>
+		<name>Gentoo Linux PowerPC Development</name>
+	</maintainer>
 	<longdescription>
 		The lsvpd package contains all of the lsvpd, lscfg and lsmcode commands.
 		These commands, along with a scanning program called vpdupdate, constitute
