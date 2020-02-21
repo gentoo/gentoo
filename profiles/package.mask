@@ -629,12 +629,6 @@ dev-python/pypodman
 # Bug #705462. Removal in 14 days.
 net-im/silc-toolkit
 
-# Michał Górny <mgorny@gentoo.org> (2020-01-18)
-# The following Gentoo packages are Python 2-only and have no reverse
-# dependencies.
-# Removal in 30 days.  Bug #705762.
-dev-python/zfec
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # The new version loses Python 2 support but does not introduce any real
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
