@@ -80,7 +80,6 @@ media-sound/beets webserver
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)
 # Python 2.7 only packages optionally needing dev-python/ipython.
-app-misc/gourmet ipython
 dev-python/restkit cli
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)
