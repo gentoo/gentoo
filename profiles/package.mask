@@ -607,11 +607,6 @@ sci-visualization/gfsview
 app-misc/gourmet
 dev-python/python-poppler
 
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# EAPI 4, last release in 2005, doesn't build, no revdeps.
-# Bug #664498. Removal in 30 days.
-app-text/sary
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # The new version loses Python 2 support but does not introduce any real
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
