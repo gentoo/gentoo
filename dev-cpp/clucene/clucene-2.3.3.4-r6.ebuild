@@ -33,6 +33,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-contrib.patch"
 	"${FILESDIR}/${P}-pkgconfig.patch"
 	"${FILESDIR}/${P}-gcc6.patch"
+	"${FILESDIR}/${P}-gmtime.patch"
 )
 
 src_prepare() {
