@@ -11,21 +11,21 @@ HOMEPAGE="https://wiki.gnome.org/Projects/Rygel"
 
 LICENSE="LGPL-2.1+ CC-BY-SA-3.0"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 IUSE="X +introspection +sqlite tracker test transcode"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=dev-libs/glib-2.40.0:2
+	>=dev-libs/glib-2.44.0:2
 	>=dev-libs/libgee-0.8:0.8
 	>=dev-libs/libxml2-2.7:2
 	>=media-libs/gupnp-dlna-0.9.4:2.0
-	media-libs/gstreamer:1.0
-	media-libs/gst-plugins-base:1.0
+	>=media-libs/gstreamer-1.12:1.0
+	>=media-libs/gst-plugins-base-1.12:1.0
 	>=media-libs/libmediaart-0.7:2.0
 	media-plugins/gst-plugins-soup:1.0
-	>=net-libs/gssdp-0.14.15:0/3
-	>=net-libs/gupnp-0.20.14:0/4
+	>=net-libs/gssdp-1.1.0:0=
+	>=net-libs/gupnp-1.1.0:0=
 	>=net-libs/gupnp-av-0.12.8
 	>=net-libs/libsoup-2.44:2.4
 	>=sys-apps/util-linux-2.20
@@ -42,7 +42,7 @@ RDEPEND="
 		media-plugins/gst-plugins-twolame:1.0
 		media-plugins/gst-plugins-libav:1.0
 	)
-	X? ( >=x11-libs/gtk+-3:3 )
+	X? ( >=x11-libs/gtk+-3.22:3 )
 "
 DEPEND="${RDEPEND}
 	dev-util/gtk-doc-am
@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 "
 # Maintainer only
 #   app-text/docbook-xsl-stylesheets
-#	>=dev-lang/vala-0.22
+#	>=dev-lang/vala-0.36
 #   dev-libs/libxslt
 
 src_prepare() {
