@@ -708,11 +708,6 @@ dev-python/webut
 dev-python/wehjit
 dev-python/zfec
 
-# David Seifert <soap@gentoo.org> (2020-01-18)
-# EAPI 4, last release in 2004, ebuild has QA and licensing issues.
-# Bug #426028, #454116. Removal in 30 days.
-net-ftp/oftpd
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # The new version loses Python 2 support but does not introduce any real
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
