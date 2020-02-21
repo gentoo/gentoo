@@ -568,13 +568,6 @@ media-sound/adplay
 =dev-lang/lua-5.2.4-r2
 =dev-lang/lua-5.3.5-r2
 
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# All released versions depend on EOL gtkglext, no revdeps.
-# Bug #644334, #694834. Removal of releases in 30 days.
-# Lars Wendler <polynomial-c@gemtoo.org> (2020-01-22)
-# Do NOT treeclean the live ebuild!
-<sci-astronomy/celestia-9999
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # The new version loses Python 2 support but does not introduce any real
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
