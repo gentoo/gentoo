@@ -3,16 +3,15 @@
 
 EAPI=7
 
-inherit autotools git-r3
+inherit autotools
 
 DESCRIPTION="Light Unix download accelerator"
 HOMEPAGE="https://github.com/axel-download-accelerator/axel"
-SRC_URI=""
-EGIT_REPO_URI="https://github.com/axel-download-accelerator/axel.git"
+SRC_URI="https://github.com/axel-download-accelerator/axel/releases/download/v${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc64-solaris"
 IUSE="debug libressl nls ssl"
 
 CDEPEND="
@@ -27,11 +26,6 @@ RDEPEND="${CDEPEND}
 	nls? ( virtual/libintl virtual/libiconv )"
 
 DOCS=( doc/. )
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	econf \
@@ -52,3 +46,4 @@ pkg_postinst() {
 	einfo ' FETCHCOMMAND='\''/usr/local/bin/fetchwrapper.sh "\${DISTDIR}/\${FILE}" "\${URI}"'\'
 	einfo ' RESUMECOMMAND="${FETCHCOMMAND}"'
 }
+
