@@ -28,8 +28,8 @@ SLOT="0"
 IUSE=""
 
 DEPEND="
-	~media-tv/kodi-9999
-	~media-libs/kodi-platform-9999
+	=media-tv/kodi-18*
+	=media-libs/kodi-platform-18*
 	>=media-libs/libprojectm-3.1.2:=
 	>=media-libs/glm-0.9.9.5
 	virtual/opengl
