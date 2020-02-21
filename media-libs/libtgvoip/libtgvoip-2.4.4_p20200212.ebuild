@@ -14,7 +14,7 @@ SRC_URI="https://github.com/telegramdesktop/libtgvoip/archive/${EGIT_COMMIT}.tar
 LICENSE="Unlicense"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="alsa +dsp libressl pulseaudio"
+IUSE="+alsa +dsp libressl pulseaudio"
 
 DEPEND="
 	!libressl? ( dev-libs/openssl:0= )
