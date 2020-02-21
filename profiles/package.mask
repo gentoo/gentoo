@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene#gentoo.org> (2020-02-21)
+# Tiny package with semi-dead upstream. Unlikely useful.
+# Blocks pygtk removal.
+# Removal in 30 days.
+media-gfx/cropgui
+
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
 # Last release in 2011, py2-only, blocks dev-python/pygtk removal, bug #708102
 # There are plenty other image viewers to choose. Masked for removal in 30 days.
