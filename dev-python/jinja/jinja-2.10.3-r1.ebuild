@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
@@ -10,7 +11,6 @@ inherit distutils-r1
 
 DESCRIPTION="A full-featured template engine for Python"
 HOMEPAGE="http://jinja.pocoo.org/ https://pypi.org/project/Jinja2/"
-
 # pypi tarball is missing tests
 SRC_URI="https://github.com/pallets/jinja/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
@@ -20,11 +20,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="examples test"
 RESTRICT="!test? ( test )"
 
-CDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
+RDEPEND="
+	dev-python/markupsafe[${PYTHON_USEDEP}]
 	!dev-python/jinja:compat"
-RDEPEND="${CDEPEND}
-	dev-python/markupsafe[${PYTHON_USEDEP}]"
-BDEPEND="${CDEPEND}"
+BDEPEND="${RDEPEND}"
 
 distutils_enable_sphinx docs \
 	dev-python/sphinx-issues \
