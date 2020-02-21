@@ -736,15 +736,6 @@ net-analyzer/pchar
 # Please DOWNGRADE to dev-python/nototools-0_pre20200113
 =dev-python/nototools-20190320
 
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-12)
-# upstream has give up this project,
-# upstream is not interressted on any patches to fix this
-# If you really would like to stay on this plugin,
-# add a comment in this bug
-# wrt bug 704004
-# masked for removal ~12 Feb 2020
-media-plugins/vdr-mailbox
-
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # End of life vala:0.42 series, please depclean.
 # This message shall be kept until 2020-02-11.
@@ -823,10 +814,6 @@ sys-apps/man
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-09-21)
-# Depends on >=virtual/{jdk,jre}-11 which is masked
-=www-servers/tomcat-9.0.26
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
