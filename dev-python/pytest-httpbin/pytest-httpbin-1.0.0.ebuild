@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -20,8 +21,6 @@ RDEPEND="
 	dev-python/httpbin[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
-BDEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 PATCHES=(
 	"${FILESDIR}"/pytest-httpbin-1.0.0-pypy3-hang.patch
