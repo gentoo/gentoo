@@ -1,0 +1,16 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 sys-devel/m4 sys-devel/libtool extension? ( php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) )
+DEFINED_PHASES=compile configure install postinst prepare test
+DEPEND=extension? ( dev-libs/libmaxminddb ) extension? ( php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) )
+DESCRIPTION=PHP reader for the MaxMind database format
+EAPI=7
+HOMEPAGE=https://github.com/maxmind/MaxMind-DB-Reader-php
+IUSE=extension test php_targets_php7-2 php_targets_php7-3 php_targets_php7-4
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RDEPEND=extension? ( dev-libs/libmaxminddb ) extension? ( php_targets_php7-2? ( dev-lang/php:7.2 ) php_targets_php7-3? ( dev-lang/php:7.3 ) php_targets_php7-4? ( dev-lang/php:7.4 ) )
+REQUIRED_USE=extension? ( || ( php_targets_php7-2 php_targets_php7-3 php_targets_php7-4 ) )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/maxmind/MaxMind-DB-Reader-php/archive/v1.6.0.tar.gz -> MaxMind-DB-Reader-php-1.6.0.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	php-ext-source-r3	dd53cd94748f9e498bea0f9480ba8d77	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=97a94564badb5e445053ad5d5217575d
