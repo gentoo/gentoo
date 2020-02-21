@@ -1,0 +1,944 @@
+https://github.com/intel/dleyna-renderer/pull/167
+
+From 594015eac2757f629a32d043c9a9b10ff6c5f95f Mon Sep 17 00:00:00 2001
+From: Jens Georg <mail@jensge.org>
+Date: Mon, 5 Nov 2018 22:07:09 +0100
+Subject: [PATCH 1/4] Use english for logging
+
+---
+ libdleyna/renderer/device.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libdleyna/renderer/device.c b/libdleyna/renderer/device.c
+index 7acef89..032d394 100644
+--- a/libdleyna/renderer/device.c
++++ b/libdleyna/renderer/device.c
+@@ -1201,7 +1201,7 @@ static void prv_add_actions(dlr_device_t *device,
+ 				continue;
+ 			}
+ 
+-			DLEYNA_LOG_DEBUG("DLNA version ≥ 1.50 pour %s",
++			DLEYNA_LOG_DEBUG("DLNA version ≥ 1.50 for %s",
+ 					 device->path);
+ 			timeseek_missing = TRUE;
+ 			g_free(dlna_device_class);
+
+From a588dd11e4c6d2ff6a7c1789fad913ab9c2519b5 Mon Sep 17 00:00:00 2001
+From: Jens Georg <mail@jensge.org>
+Date: Sat, 21 Sep 2019 20:36:04 +0200
+Subject: [PATCH 2/4] Do service introspection on device creation
+
+Fixes #104
+Fixes #164
+---
+ libdleyna/renderer/Makefile.am   |   2 +
+ libdleyna/renderer/device.c      | 411 ++++++++++++++++---------------
+ libdleyna/renderer/gasync-task.c | 135 ++++++++++
+ libdleyna/renderer/gasync-task.h |  57 +++++
+ libdleyna/renderer/manager.c     |   1 -
+ libdleyna/renderer/upnp.c        |  14 +-
+ 6 files changed, 419 insertions(+), 201 deletions(-)
+ create mode 100644 libdleyna/renderer/gasync-task.c
+ create mode 100644 libdleyna/renderer/gasync-task.h
+
+diff --git a/libdleyna/renderer/Makefile.am b/libdleyna/renderer/Makefile.am
+index ca601c7..ce4dc41 100644
+--- a/libdleyna/renderer/Makefile.am
++++ b/libdleyna/renderer/Makefile.am
+@@ -22,6 +22,7 @@ libdleyna_renderer_1_0_la_LDFLAGS =	-version-info $(DLEYNA_RENDERER_VERSION) \
+ libdleyna_renderer_1_0_la_SOURCES =	$(libdleyna_rendererinc_HEADERS) \
+ 					async.c				 \
+ 					device.c	 		 \
++					gasync-task.c			 \
+ 					host-service.c			 \
+ 					manager.c			 \
+ 					server.c			 \
+@@ -53,6 +54,7 @@ sysconf_DATA = dleyna-renderer-service.conf
+ EXTRA_DIST = 	$(sysconf_DATA)			\
+ 		async.h				\
+ 		device.h			\
++		gasync-task.h			 \
+ 		host-service.h			\
+ 		prop-defs.h			\
+ 		manager.h			\
+diff --git a/libdleyna/renderer/device.c b/libdleyna/renderer/device.c
+index 032d394..73b3dd3 100644
+--- a/libdleyna/renderer/device.c
++++ b/libdleyna/renderer/device.c
+@@ -26,15 +26,16 @@
+ 
+ #include <libsoup/soup.h>
+ #include <libgupnp/gupnp-control-point.h>
++#include <libgupnp/gupnp-service-proxy.h>
+ #include <libgupnp-av/gupnp-av.h>
+ 
+ #include <libdleyna/core/core.h>
+ #include <libdleyna/core/error.h>
+ #include <libdleyna/core/log.h>
+-#include <libdleyna/core/service-task.h>
+ 
+ #include "async.h"
+ #include "device.h"
++#include "gasync-task.h"
+ #include "prop-defs.h"
+ #include "server.h"
+ 
+@@ -675,21 +676,30 @@ static void prv_process_protocol_info(dlr_device_t *device,
+ 	DLEYNA_LOG_DEBUG("Exit");
+ }
+ 
+-static void prv_get_protocol_info_cb(GUPnPServiceProxy *proxy,
+-				     GUPnPServiceProxyAction *action,
++static void prv_get_protocol_info_cb(GObject *target,
++                                     GAsyncResult *res,
+ 				     gpointer user_data)
+ {
+ 	gchar *result = NULL;
+ 	gboolean end;
+ 	GError *error = NULL;
+ 	prv_new_device_ct_t *priv_t = (prv_new_device_ct_t *)user_data;
++	GUPnPServiceProxyAction *action;
+ 
+ 	DLEYNA_LOG_DEBUG("Enter");
+ 
+ 	priv_t->dev->construct_step++;
+ 
+-	end = gupnp_service_proxy_end_action(proxy, action, &error, "Sink",
+-					     G_TYPE_STRING, &result, NULL);
++	action = gupnp_service_proxy_call_action_finish(GUPNP_SERVICE_PROXY(target), res, &error);
++
++	if (action == NULL || (error != NULL)) {
++		DLEYNA_LOG_WARNING("GetProtocolInfo operation failed: %s",
++				   ((error != NULL) ? error->message
++						    : "Invalid result"));
++		goto on_error;
++	}
++
++	end = gupnp_service_proxy_action_get_result (action, &error, "Sink", G_TYPE_STRING, &result, NULL);
+ 	if (!end || (result == NULL)) {
+ 		DLEYNA_LOG_WARNING("GetProtocolInfo operation failed: %s",
+ 				   ((error != NULL) ? error->message
+@@ -701,6 +711,10 @@ static void prv_get_protocol_info_cb(GUPnPServiceProxy *proxy,
+ 
+ on_error:
+ 
++	if (action) {
++		gupnp_service_proxy_action_unref(action);
++	}
++
+ 	if (error)
+ 		g_error_free(error);
+ 
+@@ -709,53 +723,193 @@ static void prv_get_protocol_info_cb(GUPnPServiceProxy *proxy,
+ 	DLEYNA_LOG_DEBUG("Exit");
+ }
+ 
+-static GUPnPServiceProxyAction *prv_get_protocol_info(
+-						dleyna_service_task_t *task,
+-						GUPnPServiceProxy *proxy,
+-						gboolean *failed)
++static void prv_introspection_wrap_cb (GUPnPServiceInfo *info,
++				  GUPnPServiceIntrospection *introspection,
++				  const GError *error,
++				  gpointer user_data)
++{
++	if (error != NULL) {
++		g_task_return_error (G_TASK (user_data),
++				g_error_copy (error));
++	} else {
++		g_task_return_pointer (G_TASK (user_data),
++				introspection,
++				g_object_unref);
++	}
++
++	g_object_unref (G_OBJECT (user_data));
++}
++
++void prv_introspect_async (GUPnPServiceInfo    *info,
++			   GCancellable        *cancellable,
++			   GAsyncReadyCallback  callback,
++			   gpointer             user_data)
++{
++	GTask *task = g_task_new (info, cancellable, callback, user_data);
++
++	gupnp_service_info_get_introspection_async_full (info,
++			prv_introspection_wrap_cb,
++			cancellable,
++			task);
++}
++
++static GUPnPServiceIntrospection *prv_introspect_finish
++		(GUPnPServiceInfo   *info,
++		 GAsyncResult       *res,
++		 GError            **error)
++{
++	g_return_val_if_fail (g_task_is_valid (res, info), NULL);
++
++	return g_task_propagate_pointer (G_TASK (res), error);
++}
++
++static gint compare_speeds(gconstpointer a, gconstpointer b);
++
++static void prv_introspect_av_cb (GObject *target,
++				  GAsyncResult *res,
++				  gpointer user_data)
++{
++	prv_new_device_ct_t *priv_t = (prv_new_device_ct_t *)user_data;
++	GError *error = NULL;
++	GUPnPServiceIntrospection *introspection;
++	const GUPnPServiceStateVariableInfo *svi;
++	GList *allowed_values;
++	GVariant *speeds = NULL;
++	const GUPnPServiceActionInfo *sai;
++
++	DLEYNA_LOG_DEBUG("Enter");
++
++	priv_t->dev->construct_step++;
++
++	introspection = prv_introspect_finish (GUPNP_SERVICE_INFO (target), res, &error);
++
++	if (introspection == NULL || (error != NULL)) {
++		DLEYNA_LOG_WARNING("GetProtocolInfo operation failed: %s",
++				   ((error != NULL) ? error->message
++						    : "Invalid result"));
++		goto on_error;
++	}
++
++	svi = gupnp_service_introspection_get_state_variable(
++							introspection,
++							"TransportPlaySpeed");
++
++	if (svi && svi->allowed_values) {
++		allowed_values = svi->allowed_values;
++
++		allowed_values = g_list_sort(allowed_values, compare_speeds);
++
++		prv_get_rates_values(allowed_values, &speeds,
++				     &priv_t->dev->transport_play_speeds,
++				     &priv_t->dev->min_rate,
++				     &priv_t->dev->max_rate);
++
++		priv_t->dev->mpris_transport_play_speeds = g_variant_ref_sink(speeds);
++	}
++
++	sai = gupnp_service_introspection_get_action(
++						introspection,
++						"X_DLNA_GetBytePositionInfo");
++
++	priv_t->dev->can_get_byte_position = (sai != NULL);
++
++on_error:
++	g_clear_object(&introspection);
++
++	g_clear_error(&error);
++
++	DLEYNA_LOG_DEBUG("Exit");
++}
++
++static void prv_introspect_rc_cb (GObject *target,
++				  GAsyncResult *res,
++				  gpointer user_data)
++{
++	prv_new_device_ct_t *priv_t = (prv_new_device_ct_t *)user_data;
++	GError *error = NULL;
++	GUPnPServiceIntrospection *introspection;
++	const GUPnPServiceStateVariableInfo *svi;
++
++	DLEYNA_LOG_DEBUG("Enter");
++
++	priv_t->dev->construct_step++;
++
++	introspection = prv_introspect_finish (GUPNP_SERVICE_INFO (target), res, &error);
++
++	if (introspection == NULL || (error != NULL)) {
++		DLEYNA_LOG_WARNING("GetProtocolInfo operation failed: %s",
++				   ((error != NULL) ? error->message
++						    : "Invalid result"));
++		goto on_error;
++	}
++
++	svi = gupnp_service_introspection_get_state_variable(introspection,
++							     "Volume");
++	if (svi != NULL)
++		priv_t->dev->max_volume = g_value_get_uint(&svi->maximum);
++
++on_error:
++	g_clear_object(&introspection);
++
++	g_clear_error(&error);
++
++	DLEYNA_LOG_DEBUG("Exit");
++}
++
++static gboolean prv_get_protocol_info(
++				dleyna_gasync_task_t *task,
++                        GObject *target)
+ {
+-	*failed = FALSE;
++    GUPnPServiceProxyAction *action;
+ 
+-	return gupnp_service_proxy_begin_action(
+-					proxy, "GetProtocolInfo",
+-					dleyna_service_task_begin_action_cb,
+-					task, NULL);
++    action = gupnp_service_proxy_action_new("GetProtocolInfo", NULL);
++
++    gupnp_service_proxy_call_action_async(GUPNP_SERVICE_PROXY (target), action,
++            dleyna_gasync_task_get_cancellable (task),
++            dleyna_gasync_task_ready_cb,
++            task);
++
++    return FALSE;
++}
++
++static gboolean prv_introspect(dleyna_gasync_task_t *task, GObject *target)
++{
++	prv_introspect_async (GUPNP_SERVICE_INFO (target),
++			      dleyna_gasync_task_get_cancellable (task),
++			      dleyna_gasync_task_ready_cb,
++			      task);
++
++	return FALSE;
+ }
+ 
+-static GUPnPServiceProxyAction *prv_subscribe(dleyna_service_task_t *task,
+-					      GUPnPServiceProxy *proxy,
+-					      gboolean *failed)
++static gboolean prv_subscribe(dleyna_gasync_task_t *task, GObject *target)
+ {
+ 	dlr_device_t *device;
+ 
+ 	DLEYNA_LOG_DEBUG("Enter");
+ 
+-	device = (dlr_device_t *)dleyna_service_task_get_user_data(task);
++	device = (dlr_device_t *)dleyna_gasync_task_get_user_data(task);
+ 
+ 	device->construct_step++;
+ 	prv_device_subscribe_context(device);
+ 
+-	*failed = FALSE;
+-
+ 	DLEYNA_LOG_DEBUG("Exit");
+ 
+-	return NULL;
++	return FALSE;
+ }
+ 
+-static GUPnPServiceProxyAction *prv_declare(dleyna_service_task_t *task,
+-					    GUPnPServiceProxy *proxy,
+-					    gboolean *failed)
++static gboolean prv_declare(dleyna_gasync_task_t *task,
++					    GObject *target)
+ {
+ 	unsigned int i;
+ 	dlr_device_t *device;
+ 	prv_new_device_ct_t *priv_t;
+ 	const dleyna_connector_dispatch_cb_t *table;
++    gboolean result = FALSE;
+ 
+ 	DLEYNA_LOG_DEBUG("Enter");
+ 
+-	*failed = FALSE;
+-
+-	priv_t = (prv_new_device_ct_t *)dleyna_service_task_get_user_data(task);
++	priv_t = (prv_new_device_ct_t *)dleyna_gasync_task_get_user_data(task);
+ 	device = priv_t->dev;
+ 	device->construct_step++;
+ 
+@@ -770,16 +924,16 @@ static GUPnPServiceProxyAction *prv_declare(dleyna_service_task_t *task,
+ 				table + i);
+ 
+ 		if (!device->ids[i]) {
+-			*failed = TRUE;
++			result = TRUE;
+ 			goto on_error;
+ 		}
+ 	}
+ 
+ on_error:
+ 
+-DLEYNA_LOG_DEBUG("Exit");
++	DLEYNA_LOG_DEBUG("Exit");
+ 
+-	return NULL;
++	return result;
+ }
+ 
+ static void prv_free_rc_event(gpointer user_data)
+@@ -800,6 +954,9 @@ void dlr_device_construct(
+ {
+ 	prv_new_device_ct_t *priv_t;
+ 	GUPnPServiceProxy *s_proxy;
++	GUPnPServiceProxy *av_proxy;
++	GUPnPServiceProxy *rc_proxy;
++	GCancellable *cancellable;
+ 
+ 	DLEYNA_LOG_DEBUG("Current step: %d", dev->construct_step);
+ 
+@@ -809,19 +966,42 @@ void dlr_device_construct(
+ 	priv_t->dispatch_table = dispatch_table;
+ 
+ 	s_proxy = context->service_proxies.cm_proxy;
++	cancellable = g_cancellable_new ();
+ 
+ 	if (dev->construct_step < 1)
+-		dleyna_service_task_add(queue_id, prv_get_protocol_info,
+-					s_proxy, prv_get_protocol_info_cb,
+-					NULL, priv_t);
++		dleyna_gasync_task_add(queue_id,
++				       prv_get_protocol_info,
++				       G_OBJECT(s_proxy),
++				       prv_get_protocol_info_cb,
++				       cancellable,
++				       NULL, priv_t);
++
++	av_proxy = context->service_proxies.av_proxy;
++	if (dev->construct_step < 2)
++		dleyna_gasync_task_add(queue_id,
++				       prv_introspect,
++				       G_OBJECT(av_proxy),
++				       prv_introspect_av_cb,
++				       cancellable,
++				       NULL, priv_t);
++
++	rc_proxy = context->service_proxies.rc_proxy;
++	if (dev->construct_step < 3)
++		dleyna_gasync_task_add(queue_id,
++				       prv_introspect,
++				       G_OBJECT(rc_proxy),
++				       prv_introspect_rc_cb,
++				       cancellable,
++				       NULL, priv_t);
++
+ 
+ 	/* The following task should always be completed */
+-	dleyna_service_task_add(queue_id, prv_subscribe, s_proxy,
+-				NULL, NULL, dev);
++	dleyna_gasync_task_add(queue_id, prv_subscribe, G_OBJECT(s_proxy),
++				NULL, NULL, NULL, dev);
+ 
+-	if (dev->construct_step < 3)
+-		dleyna_service_task_add(queue_id, prv_declare, s_proxy,
+-					NULL, g_free, priv_t);
++	if (dev->construct_step < 5)
++		dleyna_gasync_task_add(queue_id, prv_declare, G_OBJECT(s_proxy),
++					NULL, NULL, g_free, priv_t);
+ 
+ 	dleyna_task_queue_start(queue_id);
+ 
+@@ -2121,133 +2301,6 @@ static void prv_get_rates_values(GList *allowed_tp_speeds,
+ 	return;
+ }
+ 
+-static gboolean prv_get_av_service_states_values(GUPnPServiceProxy *av_proxy,
+-						 GVariant **mpris_tp_speeds,
+-						 GPtrArray **upnp_tp_speeds,
+-						 double *min_rate,
+-						 double *max_rate,
+-						 gboolean *can_get_byte_pos)
+-{
+-	const GUPnPServiceStateVariableInfo *svi;
+-	const GUPnPServiceActionInfo *sai;
+-	GUPnPServiceIntrospection *introspection;
+-	GError *error = NULL;
+-	GVariant *speeds = NULL;
+-	GList *allowed_values;
+-	gpointer weak_ref = NULL;
+-	gboolean  device_alive = TRUE;
+-
+-	/* TODO: this weak_ref hack is needed as
+-	   gupnp_service_info_get_introspection iterates the main loop.
+-	   This can result in our device getting deleted before this
+-	   function returns.  Ultimately, this code needs to be re-written
+-	   to use gupnp_service_info_get_introspection_async but this cannot
+-	   really be done until GUPnP provides a way to cancel this function. */
+-
+-	weak_ref = av_proxy;
+-	g_object_add_weak_pointer(G_OBJECT(av_proxy), &weak_ref);
+-
+-	introspection = gupnp_service_info_get_introspection(
+-		GUPNP_SERVICE_INFO(av_proxy),
+-		&error);
+-
+-	if (!weak_ref) {
+-		DLEYNA_LOG_WARNING("Lost device during introspection call");
+-		device_alive = FALSE;
+-		goto exit;
+-	}
+-
+-	g_object_remove_weak_pointer(G_OBJECT(av_proxy), &weak_ref);
+-
+-	if (error != NULL) {
+-		DLEYNA_LOG_DEBUG(
+-			"failed to fetch AV service introspection file");
+-
+-		g_error_free(error);
+-
+-		goto exit;
+-	}
+-
+-	svi = gupnp_service_introspection_get_state_variable(
+-							introspection,
+-							"TransportPlaySpeed");
+-
+-	if (svi && svi->allowed_values) {
+-		allowed_values = svi->allowed_values;
+-
+-		allowed_values = g_list_sort(allowed_values, compare_speeds);
+-
+-		prv_get_rates_values(allowed_values, &speeds, upnp_tp_speeds,
+-				     min_rate, max_rate);
+-
+-		*mpris_tp_speeds = g_variant_ref_sink(speeds);
+-	}
+-
+-	sai = gupnp_service_introspection_get_action(
+-						introspection,
+-						"X_DLNA_GetBytePositionInfo");
+-
+-	*can_get_byte_pos = (sai != NULL);
+-
+-	g_object_unref(introspection);
+-
+-exit:
+-
+-	return device_alive;
+-}
+-
+-static gboolean prv_get_rc_service_states_values(GUPnPServiceProxy *rc_proxy,
+-						 guint *max_volume)
+-{
+-	const GUPnPServiceStateVariableInfo *svi;
+-	GUPnPServiceIntrospection *introspection;
+-	GError *error = NULL;
+-	gpointer weak_ref = NULL;
+-	gboolean device_alive = TRUE;
+-
+-	/* TODO: this weak_ref hack is needed as
+-	   gupnp_service_info_get_introspection iterates the main loop.
+-	   This can result in our device getting deleted before this
+-	   function returns.  Ultimately, this code needs to be re-written
+-	   to use gupnp_service_info_get_introspection_async but this cannot
+-	   really be done until GUPnP provides a way to cancel this function. */
+-
+-	weak_ref = rc_proxy;
+-	g_object_add_weak_pointer(G_OBJECT(rc_proxy), &weak_ref);
+-
+-	introspection = gupnp_service_info_get_introspection(
+-		GUPNP_SERVICE_INFO(rc_proxy),
+-		&error);
+-
+-	if (!weak_ref) {
+-		DLEYNA_LOG_WARNING("Lost device during introspection call");
+-		device_alive = FALSE;
+-		goto exit;
+-	}
+-
+-	g_object_remove_weak_pointer(G_OBJECT(rc_proxy), &weak_ref);
+-
+-	if (error != NULL) {
+-		DLEYNA_LOG_DEBUG(
+-			"failed to fetch RC service introspection file");
+-
+-		g_error_free(error);
+-
+-		goto exit;
+-	}
+-
+-	svi = gupnp_service_introspection_get_state_variable(introspection,
+-							     "Volume");
+-	if (svi != NULL)
+-		*max_volume = g_value_get_uint(&svi->maximum);
+-
+-	g_object_unref(introspection);
+-
+-exit:
+-
+-	return device_alive;
+-}
+-
+ static void prv_update_device_props(GUPnPDeviceInfo *proxy, GHashTable *props)
+ {
+ 	GVariant *val;
+@@ -2378,34 +2431,6 @@ static gboolean prv_props_update(dlr_device_t *device, dlr_task_t *task)
+ 
+ 	service_proxies = &context->service_proxies;
+ 
+-	/* TODO: We should not retrieve these values here.  They should be
+-	   retrieved during device construction. */
+-
+-	if (service_proxies->av_proxy)
+-		if (!prv_get_av_service_states_values(
+-			    service_proxies->av_proxy,
+-			    &device->mpris_transport_play_speeds,
+-			    &device->transport_play_speeds,
+-			    &device->min_rate,
+-			    &device->max_rate,
+-			    &device->can_get_byte_position)) {
+-			DLEYNA_LOG_DEBUG("Lost Device AV");
+-
+-			device_alive = FALSE;
+-			goto on_lost_device;
+-		}
+-
+-	/* TODO: We should not retrieve these values here.  They should be
+-	   retrieved during device construction. */
+-
+-	if (service_proxies->rc_proxy)
+-		if (!prv_get_rc_service_states_values(service_proxies->rc_proxy,
+-						      &device->max_volume)) {
+-			DLEYNA_LOG_DEBUG("Lost Device RC");
+-			device_alive = FALSE;
+-			goto on_lost_device;
+-		}
+-
+ 	changed_props_vb = g_variant_builder_new(G_VARIANT_TYPE("a{sv}"));
+ 
+ 	prv_add_player_speed_props(device->props.player_props,
+diff --git a/libdleyna/renderer/gasync-task.c b/libdleyna/renderer/gasync-task.c
+new file mode 100644
+index 0000000..47a0ad5
+--- /dev/null
++++ b/libdleyna/renderer/gasync-task.c
+@@ -0,0 +1,135 @@
++/*
++ * dLeyna
++ *
++ * Copyright (c) 2019 Jens Georg <mail@jensge.org>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU Lesser General Public License,
++ * version 2.1, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
++ * for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public License
++ * along with this program; if not, write to the Free Software Foundation, Inc.,
++ * 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ */
++
++#include "gasync-task.h"
++#include <libdleyna/core/task-processor.h>
++
++struct dleyna_gasync_task_t_ {
++	dleyna_task_atom_t base;
++	dleyna_gasync_task_action action;
++	GObject *target;
++	GAsyncReadyCallback callback;
++	GCancellable *cancellable;
++	GDestroyNotify free_func;
++	gpointer cb_user_data;
++};
++
++const char *dleyna_gasync_task_create_source(void)
++{
++	static unsigned int cpt = 1;
++	static char source[27];
++
++	g_snprintf(source, 27, "gasync-source-%d", cpt);
++	cpt++;
++
++	return source;
++}
++
++void dleyna_gasync_task_add(const dleyna_task_queue_key_t *queue_id,
++		dleyna_gasync_task_action action,
++		GObject *target,
++		GAsyncReadyCallback callback,
++		GCancellable *cancellable,
++		GDestroyNotify free_func,
++		gpointer cb_user_data)
++{
++	dleyna_gasync_task_t *task;
++
++	task = g_new0(dleyna_gasync_task_t, 1);
++
++	task->action = action;
++	task->callback = callback;
++	task->cancellable = cancellable;
++	task->free_func = free_func;
++	task->cb_user_data = cb_user_data;
++	task->target = target;
++
++	if (target != NULL) {
++		g_object_add_weak_pointer (target, (gpointer *)(&task->target));
++	}
++
++	dleyna_task_queue_add_task(queue_id, &task->base);
++}
++
++void dleyna_gasync_task_ready_cb(GObject *source, GAsyncResult *res, gpointer user_data)
++{
++	dleyna_gasync_task_t *task = (dleyna_gasync_task_t *)user_data;
++
++	task->callback(source, res, task->cb_user_data);
++
++	dleyna_task_queue_task_completed(task->base.queue_id);
++}
++
++void dleyna_gasync_task_process_cb(dleyna_task_atom_t *atom,
++		gpointer user_data)
++{
++	gboolean failed = FALSE;
++
++	dleyna_gasync_task_t *task = (dleyna_gasync_task_t *)atom;
++
++	failed = task->action(task, task->target);
++
++	if (failed) {
++		dleyna_task_processor_cancel_queue(task->base.queue_id);
++		dleyna_task_queue_task_completed(task->base.queue_id);
++	}
++
++	if (task->callback == NULL) {
++		dleyna_task_queue_task_completed(task->base.queue_id);
++	}
++}
++
++void dleyna_gasync_task_cancel_cb(dleyna_task_atom_t *atom,
++		gpointer user_data)
++{
++	dleyna_gasync_task_t *task = (dleyna_gasync_task_t *)atom;
++
++	if (task->cancellable) {
++		g_cancellable_cancel (task->cancellable);
++		task->cancellable = NULL;
++
++		dleyna_task_queue_task_completed(task->base.queue_id);
++	}
++}
++
++void dleyna_gasync_task_delete_cb(dleyna_task_atom_t *atom,
++		gpointer user_data)
++{
++	dleyna_gasync_task_t *task = (dleyna_gasync_task_t *)atom;
++
++	if (task->free_func != NULL)
++		task->free_func(task->cb_user_data);
++
++	if (task->target != NULL) {
++		g_object_remove_weak_pointer(task->target, (gpointer *)&task->target);
++	}
++
++	g_free(task);
++}
++
++gpointer dleyna_gasync_task_get_user_data(dleyna_gasync_task_t *task)
++{
++	return task->cb_user_data;
++}
++
++GCancellable *dleyna_gasync_task_get_cancellable(dleyna_gasync_task_t *task)
++{
++	return task->cancellable;
++}
+diff --git a/libdleyna/renderer/gasync-task.h b/libdleyna/renderer/gasync-task.h
+new file mode 100644
+index 0000000..629e48c
+--- /dev/null
++++ b/libdleyna/renderer/gasync-task.h
+@@ -0,0 +1,57 @@
++/*
++ * dLeyna
++ *
++ * Copyright (c) 2019 Jens Georg <mail@jensge.org>
++ *
++ * This program is free software; you can redistribute it and/or modify it
++ * under the terms and conditions of the GNU Lesser General Public License,
++ * version 2.1, as published by the Free Software Foundation.
++ *
++ * This program is distributed in the hope it will be useful, but WITHOUT
++ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++ * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
++ * for more details.
++ *
++ * You should have received a copy of the GNU Lesser General Public License
++ * along with this program; if not, write to the Free Software Foundation, Inc.,
++ * 51 Franklin St - Fifth Floor, Boston, MA 02110-1301 USA.
++ *
++ */
++
++#pragma once
++
++#include <libdleyna/core/task-atom.h>
++
++#include <glib.h>
++#include <gio/gio.h>
++
++typedef struct dleyna_gasync_task_t_ dleyna_gasync_task_t;
++
++typedef gboolean (*dleyna_gasync_task_action)
++	(dleyna_gasync_task_t *task,
++	 GObject *target);
++
++const char *dleyna_gasync_task_create_source(void);
++
++void dleyna_gasync_task_add(const dleyna_task_queue_key_t *queue_id,
++		dleyna_gasync_task_action action,
++		GObject *target,
++		GAsyncReadyCallback callback,
++		GCancellable *cancellable,
++		GDestroyNotify free_func,
++		gpointer cb_user_data);
++
++void dleyna_gasync_task_ready_cb(GObject *source, GAsyncResult *res, gpointer user_data);
++
++void dleyna_gasync_task_process_cb(dleyna_task_atom_t *atom,
++		gpointer user_data);
++
++void dleyna_gasync_task_cancel_cb(dleyna_task_atom_t *atom,
++		gpointer user_data);
++
++void dleyna_gasync_task_delete_cb(dleyna_task_atom_t *atom,
++		gpointer user_data);
++
++gpointer dleyna_gasync_task_get_user_data(dleyna_gasync_task_t *task);
++
++GCancellable *dleyna_gasync_task_get_cancellable(dleyna_gasync_task_t *task);
+diff --git a/libdleyna/renderer/manager.c b/libdleyna/renderer/manager.c
+index 74052f5..bea9935 100644
+--- a/libdleyna/renderer/manager.c
++++ b/libdleyna/renderer/manager.c
+@@ -25,7 +25,6 @@
+ 
+ #include <libdleyna/core/error.h>
+ #include <libdleyna/core/log.h>
+-#include <libdleyna/core/service-task.h>
+ #include <libdleyna/core/white-list.h>
+ 
+ #include "async.h"
+diff --git a/libdleyna/renderer/upnp.c b/libdleyna/renderer/upnp.c
+index 17cbda7..0e9d483 100644
+--- a/libdleyna/renderer/upnp.c
++++ b/libdleyna/renderer/upnp.c
+@@ -28,10 +28,10 @@
+ 
+ #include <libdleyna/core/error.h>
+ #include <libdleyna/core/log.h>
+-#include <libdleyna/core/service-task.h>
+ 
+ #include "async.h"
+ #include "device.h"
++#include "gasync-task.h"
+ #include "host-service.h"
+ #include "prop-defs.h"
+ #include "upnp.h"
+@@ -116,12 +116,12 @@ static const dleyna_task_queue_key_t *prv_create_device_queue(
+ 
+ 	queue_id = dleyna_task_processor_add_queue(
+ 			dlr_renderer_service_get_task_processor(),
+-			dleyna_service_task_create_source(),
++			dleyna_gasync_task_create_source(),
+ 			DLR_RENDERER_SINK,
+ 			DLEYNA_TASK_QUEUE_FLAG_AUTO_REMOVE,
+-			dleyna_service_task_process_cb,
+-			dleyna_service_task_cancel_cb,
+-			dleyna_service_task_delete_cb);
++			dleyna_gasync_task_process_cb,
++			dleyna_gasync_task_cancel_cb,
++			dleyna_gasync_task_delete_cb);
+ 	dleyna_task_queue_set_finally(queue_id, prv_device_chain_end);
+ 	dleyna_task_queue_set_user_data(queue_id, *priv_t);
+ 
+@@ -243,8 +243,8 @@ static void prv_server_unavailable_cb(GUPnPControlPoint *cp,
+ 
+ 	udn = gupnp_device_info_get_udn((GUPnPDeviceInfo *)proxy);
+ 
+-	ip_address = gupnp_context_get_host_ip(
+-		gupnp_control_point_get_context(cp));
++	ip_address = gssdp_client_get_host_ip(
++		GSSDP_CLIENT(gupnp_control_point_get_context(cp)));
+ 
+ 	if (!udn || !ip_address)
+ 		goto on_error;
+
+From 79593067cf40ed58a3bd95311c7fa108feafcb46 Mon Sep 17 00:00:00 2001
+From: Jens Georg <mail@jensge.org>
+Date: Sat, 21 Sep 2019 20:37:33 +0200
+Subject: [PATCH 3/4] Move to GUPnP 1.2
+
+Fixes #166
+---
+ configure.ac | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 271ee92..364659d 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -38,8 +38,8 @@ LT_LANG([C])
+ PKG_PROG_PKG_CONFIG(0.16)
+ PKG_CHECK_MODULES([GLIB], [glib-2.0 >= 2.28])
+ PKG_CHECK_MODULES([GIO], [gio-2.0 >= 2.28])
+-PKG_CHECK_MODULES([GSSDP], [gssdp-1.0 >= 0.13.2])
+-PKG_CHECK_MODULES([GUPNP], [gupnp-1.0 >= 0.20.5])
++PKG_CHECK_MODULES([GSSDP], [gssdp-1.2 >= 1.2.0])
++PKG_CHECK_MODULES([GUPNP], [gupnp-1.2 >= 1.2.0])
+ PKG_CHECK_MODULES([GUPNPAV], [gupnp-av-1.0 >= 0.11.5])
+ PKG_CHECK_MODULES([GUPNPDLNA], [gupnp-dlna-2.0 >= 0.9.4])
+ PKG_CHECK_MODULES([SOUP], [libsoup-2.4 >= 2.28.2])
+
+From 66e755a89cdcd7f10a535131a340c3f3ab371194 Mon Sep 17 00:00:00 2001
+From: Jens Georg <mail@jensge.org>
+Date: Mon, 23 Sep 2019 00:08:38 +0200
+Subject: [PATCH 4/4] Protect introspection calls against missing proxies
+
+---
+ libdleyna/renderer/device.c | 38 +++++++++++++++++++++++--------------
+ 1 file changed, 24 insertions(+), 14 deletions(-)
+
+diff --git a/libdleyna/renderer/device.c b/libdleyna/renderer/device.c
+index 73b3dd3..525a23d 100644
+--- a/libdleyna/renderer/device.c
++++ b/libdleyna/renderer/device.c
+@@ -977,22 +977,32 @@ void dlr_device_construct(
+ 				       NULL, priv_t);
+ 
+ 	av_proxy = context->service_proxies.av_proxy;
+-	if (dev->construct_step < 2)
+-		dleyna_gasync_task_add(queue_id,
+-				       prv_introspect,
+-				       G_OBJECT(av_proxy),
+-				       prv_introspect_av_cb,
+-				       cancellable,
+-				       NULL, priv_t);
++	if (dev->construct_step < 2) {
++		if (av_proxy == NULL) {
++			dev->construct_step++;
++		} else {
++			dleyna_gasync_task_add(queue_id,
++					       prv_introspect,
++					       G_OBJECT(av_proxy),
++					       prv_introspect_av_cb,
++					       cancellable,
++					       NULL, priv_t);
++		}
++	}
+ 
+ 	rc_proxy = context->service_proxies.rc_proxy;
+-	if (dev->construct_step < 3)
+-		dleyna_gasync_task_add(queue_id,
+-				       prv_introspect,
+-				       G_OBJECT(rc_proxy),
+-				       prv_introspect_rc_cb,
+-				       cancellable,
+-				       NULL, priv_t);
++	if (dev->construct_step < 3) {
++		if (rc_proxy == NULL) {
++			dev->construct_step++;
++		} else {
++			dleyna_gasync_task_add(queue_id,
++					       prv_introspect,
++					       G_OBJECT(rc_proxy),
++					       prv_introspect_rc_cb,
++					       cancellable,
++					       NULL, priv_t);
++		}
++	}
+ 
+ 
+ 	/* The following task should always be completed */
