@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit autotools fcaps linux-info python-r1 systemd
+inherit autotools fcaps linux-info python-single-r1 systemd
 
 if [[ ${PV} == *9999 ]] ; then
 	EGIT_REPO_URI="https://github.com/netdata/${PN}.git"
@@ -63,15 +63,15 @@ RDEPEND="
 	)
 	python? (
 		${PYTHON_DEPS}
-		dev-python/pyyaml[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep 'dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]')
 		mysql? (
 			|| (
-				dev-python/mysqlclient[${PYTHON_USEDEP}]
-				dev-python/mysql-python[${PYTHON_USEDEP}]
+				$(python_gen_cond_dep 'dev-python/mysqlclient[${PYTHON_MULTI_USEDEP}]')
+				$(python_gen_cond_dep 'dev-python/mysql-python[${PYTHON_MULTI_USEDEP}]')
 			)
 		)
-		postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
-		tor? ( net-libs/stem[${PYTHON_USEDEP}] )
+		postgres? ( $(python_gen_cond_dep 'dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}]') )
+		tor? ( $(python_gen_cond_dep 'net-libs/stem[${PYTHON_MULTI_USEDEP}]') )
 	)
 	xen? (
 		app-emulation/xen-tools
@@ -85,6 +85,7 @@ FILECAPS=(
 )
 
 pkg_setup() {
+	use python && python-single-r1_pkg_setup
 	linux-info_pkg_setup
 }
 
