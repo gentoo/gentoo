@@ -633,7 +633,6 @@ net-im/silc-toolkit
 # The following Gentoo packages are Python 2-only and have no reverse
 # dependencies.
 # Removal in 30 days.  Bug #705762.
-dev-python/robotframework-sshlibrary
 dev-python/rtgraph
 dev-python/ruledispatch
 dev-python/runsnakerun
