@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene#gentoo.org> (2020-02-21)
+# Tiny package with semi-dead upstream. Unlikely useful.
+# Blocks pygtk removal.
+# Removal in 30 days.
+media-gfx/cropgui
+
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
 # Last release in 2011, py2-only, blocks dev-python/pygtk removal, bug #708102
 # There are plenty other image viewers to choose. Masked for removal in 30 days.
@@ -544,16 +551,6 @@ www-plugins/passff
 # The following packages depend on django, support Python 2 only
 # and have no reverse dependencies.
 # Removal in 30 days.  Bug #706360.
-dev-python/django-annoying
-dev-python/django-endless-pagination
-dev-python/django-international
-dev-python/django-ldapdb
-dev-python/django-ldap-groups
-dev-python/django-oauth-plus
-dev-python/django-openid-auth
-dev-python/django-piston
-dev-python/django-registration
-dev-python/django-xslt
 
 # David Seifert <soap@gentoo.org> (2020-01-25)
 # Upstream is mostly unresponsive and doesn't have the resources to
@@ -632,91 +629,6 @@ dev-python/pypodman
 # Bug #705462. Removal in 14 days.
 net-im/silc-toolkit
 
-# Michał Górny <mgorny@gentoo.org> (2020-01-18)
-# The following Gentoo packages are Python 2-only and have no reverse
-# dependencies.
-# Removal in 30 days.  Bug #705762.
-dev-python/aldryn-boilerplates
-dev-python/aldryn-common
-dev-python/aquarium
-dev-python/celementtree
-dev-python/collectd-rabbitmq
-dev-python/cosmolopy
-dev-python/django-annoying
-dev-python/django-endless-pagination
-dev-python/django-international
-dev-python/django-ldapdb
-dev-python/django-ldap-groups
-dev-python/django-oauth-plus
-dev-python/django-openid-auth
-dev-python/django-piston
-dev-python/django-registration
-dev-python/django-xslt
-dev-python/egg-python
-dev-python/Flask-KVSession
-dev-python/flask-openid
-dev-python/flask-xml-rpc
-dev-python/gdata
-dev-python/libwnck-python
-dev-python/lxc-python2
-dev-python/mantissa
-dev-python/mkpythonproj
-dev-python/morbid
-dev-python/myghty
-dev-python/myghtyutils
-dev-python/openstack-nose-plugin
-dev-python/paisley
-dev-python/pkipplib
-dev-python/processing
-dev-python/pSQL
-dev-python/pudge
-dev-python/pyds
-dev-python/pygene
-dev-python/pygtkhelpers
-dev-python/pynotifier
-dev-python/pypgsql
-dev-python/pythong
-dev-python/python-musicbrainz
-dev-python/python-nss
-dev-python/python-recaptcha
-dev-python/python-scw
-dev-python/python-tvrage
-dev-python/python-yadis
-dev-python/qpid-python
-dev-python/robotframework-selenium2library
-dev-python/robotframework-sshlibrary
-dev-python/rtgraph
-dev-python/ruledispatch
-dev-python/runsnakerun
-dev-python/sqlite3dbm
-dev-python/sqlobject
-dev-python/steadymark
-dev-python/storm
-dev-python/timelib
-dev-python/turbocheetah
-dev-python/turbojson
-dev-python/turbokid
-dev-python/weakrefmethod
-dev-python/webut
-dev-python/wehjit
-dev-python/zfec
-
-# David Seifert <soap@gentoo.org> (2020-01-18)
-# EAPI 4, last release in 2004, ebuild has QA and licensing issues.
-# Bug #426028, #454116. Removal in 30 days.
-net-ftp/oftpd
-
-# David Seifert <soap@gentoo.org> (2020-01-18)
-# EAPI 4, doesn't build against OpenSSL 1.1 API, last release in 2014,
-# lots of QA issues (calls cc directly, -Werror)
-# Bug #634442, #664766. Removal in 30 days.
-net-dns/validns
-
-# David Seifert <soap@gentoo.org> (2020-01-18)
-# EAPI 4, doesn't build, last release in 2005.
-# Bug #384031, #638492, #663644. Removal in 30 days.
-net-analyzer/pchar
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # The new version loses Python 2 support but does not introduce any real
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
@@ -728,15 +640,6 @@ net-analyzer/pchar
 # us from adding official releases made by google.
 # Please DOWNGRADE to dev-python/nototools-0_pre20200113
 =dev-python/nototools-20190320
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-12)
-# upstream has give up this project,
-# upstream is not interressted on any patches to fix this
-# If you really would like to stay on this plugin,
-# add a comment in this bug
-# wrt bug 704004
-# masked for removal ~12 Feb 2020
-media-plugins/vdr-mailbox
 
 # Mart Raudsepp <leio@gentoo.org> (2020-01-11)
 # End of life vala:0.42 series, please depclean.
@@ -816,10 +719,6 @@ sys-apps/man
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-09-21)
-# Depends on >=virtual/{jdk,jre}-11 which is masked
-=www-servers/tomcat-9.0.26
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.
