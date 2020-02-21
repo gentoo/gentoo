@@ -584,11 +584,6 @@ media-sound/adplay
 # Please DOWNGRADE to dev-python/nototools-0_pre20200113
 =dev-python/nototools-20190320
 
-# Mart Raudsepp <leio@gentoo.org> (2020-01-11)
-# End of life vala:0.42 series, please depclean.
-# This message shall be kept until 2020-02-11.
-dev-lang/vala:0.42
-
 # Ulrich Müller <ulm@gentoo.org> (2020-01-06)
 # Snapshots from Git, masked for testing.
 =app-editors/emacs-27.0.50_pre*
