@@ -7968,7 +7968,7 @@ dev-python/jedi 0.10.2 0.11.1 0.12.0 0.12.1 0.14.1 0.15.1: Autocompletion librar
 dev-python/jeepney 0.3.1 0.4.1: Low-level, pure Python DBus protocol wrapper
 dev-python/jellyfish 0.7.2: Python module for doing approximate and phonetic matching of strings
 dev-python/jikanpy 3.4.2: Python wrapper for jikan.moe API.
-dev-python/jinja 2.8.1 2.10.1 2.10.3 2.10.3-r1: A full-featured template engine for Python
+dev-python/jinja 2.8.1 2.10.1 2.10.3 2.10.3-r1 2.11.1: A full-featured template engine for Python
 dev-python/jinja2-time 0.2.0: Jinja2 Extension for Dates and Times
 dev-python/jinja2_pluralize 0.3.0: Jinja2 pluralize filters
 dev-python/jira 1.0.14-r2: Python library for interacting with the JIRA REST API
@@ -15369,7 +15369,7 @@ net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
 net-print/dymo-cups-drivers 1.4.0 1.4.0-r1: Dymo SDK for LabelWriter/LabelManager printers
 net-print/epson-inkjet-printer-escpr 1.7.2 1.7.7: Epson Inkjet Printer Driver (ESC/P-R)
 net-print/fax4cups 1.29-r1: Fax backend for CUPS
-net-print/foo2zjs 99999999: Support for printing to ZjStream-based printers
+net-print/foo2zjs 20200221 99999999: Support for printing to ZjStream-based printers
 net-print/foomatic-db 4.0.20170331 4.0.20180126 4.0.20190226: Printer information files for foomatic-db-engine to generate ppds
 net-print/foomatic-db-engine 4.0.12: Generates ppds out of xml foomatic printer description files
 net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting.org PPD files for postscript printers
