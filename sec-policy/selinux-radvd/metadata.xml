@@ -5,5 +5,4 @@
 		<email>selinux@gentoo.org</email>
 		<name>SELinux Team</name>
 	</maintainer>
-	<longdescription>Gentoo SELinux policy for radvd</longdescription>
 </pkgmetadata>
