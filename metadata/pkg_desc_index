@@ -10276,7 +10276,7 @@ dev-tex/pdfannotextractor 0.1l-r1: Extract annotations from pdf files
 dev-tex/pgf 3.1.4b-r2 3.1.5b: The TeX Portable Graphic Format
 dev-tex/polytable 0.8.2-r1: tabular-like environments with named columns
 dev-tex/pscyr 0.4d_beta9: Type1 cyrillic fonts collection
-dev-tex/pythontex 0.16 0.17: Fast Access to Python from within LaTeX
+dev-tex/pythontex 0.17: Fast Access to Python from within LaTeX
 dev-tex/rail 1.2_p1-r1: Offers syntax/railroad diagrams
 dev-tex/rcsinfo 1.11: A LaTeX module to acces RCS/CVS version info
 dev-tex/revtex 4.2c: LaTeX2e macros to prepare manuscripts for the journals of the APS and AIP
