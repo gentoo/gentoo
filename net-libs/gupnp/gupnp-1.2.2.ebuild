@@ -40,7 +40,7 @@ BDEPEND="
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]
 	!connman? ( !networkmanager? ( kernel_linux? ( sys-kernel/linux-headers ) ) )
 	vala? ( $(vala_depend)
-		net-libs/gssdp:0[vala]
+		>=net-libs/gssdp-1.1.3:0[vala]
 		net-libs/libsoup:2.4[vala]
 	)
 "
