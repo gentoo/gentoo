@@ -37,16 +37,12 @@
 # Removal in 30 days. Bug #710436.
 net-libs/gupnp-ui
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-21)
-# Last bumped in 2013.  Homepage gone.  No reverse dependencies left.
-# Removal in 30 days.  Bug #527188.
-dev-python/sphinxcontrib-issuetracker
-
 # Mikle Kolyada <zlogene#gentoo.org> (2020-02-21)
 # Tiny package with semi-dead upstream. Unlikely useful.
 # Blocks pygtk removal.
 # Removal in 30 days.
 media-gfx/cropgui
+
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
 # Last release in 2011, py2-only, blocks dev-python/pygtk removal, bug #708102
