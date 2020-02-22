@@ -10,4 +10,4 @@ RDEPEND=gtk? ( dev-ml/lablgtk || ( net-misc/x11-ssh-askpass net-misc/ssh-askpass
 RESTRICT=test !ocamlopt? ( strip )
 SLOT=2.48
 SRC_URI=https://www.seas.upenn.edu/~bcpierce/unison/download/releases/unison-2.48.4/unison-2.48.4.tar.gz doc? ( https://www.seas.upenn.edu/~bcpierce/unison/download/releases/unison-2.48.4/unison-2.48.4-manual.pdf https://www.seas.upenn.edu/~bcpierce/unison/download/releases/unison-2.48.4/unison-2.48.4-manual.html )
-_md5_=e8410c4300383accd0337138d7f16628
+_md5_=50f9b2841a068f9b961be852d52cfb42

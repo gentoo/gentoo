@@ -9,4 +9,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/williamh/get-ego-vendor/archive/v0.1.0.tar.gz -> get-ego-vendor-0.1.0.tar.gz
 _eclasses_=go-module	73c3a1e46baff60bac989cffe25c6ff1
-_md5_=af82a6f017974b11624d77193dbae4a8
+_md5_=cabe46d806d5da4bbb340ee221af5bbe

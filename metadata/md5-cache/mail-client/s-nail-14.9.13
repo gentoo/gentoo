@@ -10,4 +10,4 @@ RDEPEND=sys-libs/ncurses:0= virtual/libiconv idn? ( net-dns/libidn2 ) net? ( ssl
 SLOT=0
 SRC_URI=https://ftp.sdaoden.eu/s-nail-14.9.13.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=91ffec32444ad4e4686c9b602a51efa6
+_md5_=cf16fb4326389c1bb8be28d02d58611e

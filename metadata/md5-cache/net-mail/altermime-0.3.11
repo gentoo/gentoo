@@ -7,4 +7,4 @@ LICENSE=Sendmail
 SLOT=0
 SRC_URI=https://www.pldaniels.com/altermime/altermime-0.3.11.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=900c09a0db2a31d2d82b9a4e0118b6eb
+_md5_=281cfbf96ae3ee5023bf18d98ff7ca08

@@ -9,4 +9,4 @@ RDEPEND=dev-lang/php[apache2,cli,gd,mysql?,postgres?,session,snmp,sockets,wddx] 
 SLOT=0
 SRC_URI=mirror://sourceforge/jffnms/jffnms-0.9.4.tgz
 _eclasses_=user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=3f090697390bb1a24cf052459ac921e1
+_md5_=aeee3f7fa8cb52dbb927c5b72f0f8f1d

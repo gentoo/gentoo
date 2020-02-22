@@ -9,4 +9,4 @@ RDEPEND=>=media-libs/netpbm-10.41.0 media-libs/libpng sys-libs/zlib >=app-text/g
 SLOT=0
 SRC_URI=mirror://sourceforge/subtitleripper/subtitleripper-0.3-4.tgz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=7c009b31e0bce6b15481294b0d31cb95
+_md5_=e7478ec96d6c1204c5507fbf4e8cf144

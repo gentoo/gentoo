@@ -11,4 +11,4 @@ RDEPEND=acct-group/nagios acct-user/nagios sys-apps/tcp-wrappers ssl? ( !libress
 SLOT=0
 SRC_URI=https://github.com/NagiosEnterprises/nrpe/releases/download/nrpe-4.0.0/nrpe-4.0.0.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=57848ee822dc06f9fa2089573b96701d
+_md5_=1db58cae3ba282f6eb4847063992bb46

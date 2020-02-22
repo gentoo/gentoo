@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/File_Fortune-1.0.0.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=f449977e7b1a49997f7af0c79d804465
+_md5_=1654fe6864f9c4122527dd103db1afa8

@@ -8,4 +8,4 @@ RDEPEND=sys-apps/ed
 SLOT=0
 SRC_URI=http://uranus.it.swin.edu.au/~jn/linux/ndu-0.4.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=650506f4c8529107d777a510ac848d12
+_md5_=c222323a0130e0a1e684dbaa274817dd

@@ -10,4 +10,4 @@ RDEPEND=dev-qt/qtcore:5 dev-qt/qtconcurrent:5 dev-qt/qtmultimedia:5[widgets] dev
 SLOT=0
 SRC_URI=https://github.com/trueos/lumina/archive/v1.6.0.tar.gz -> lumina-1.6.0.tar.gz
 _eclasses_=estack	686eaab303305a908fd57b2fd7617800	l10n	97f2753e3f1f3753d53d856c7c0bbb0b	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=0e7d4588afb1b9adde6c20279cf05042
+_md5_=8226d2c71ea5e70b99f3d4284e910ec8

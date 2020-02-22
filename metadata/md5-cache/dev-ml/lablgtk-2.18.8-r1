@@ -10,4 +10,4 @@ LICENSE=LGPL-2.1-with-linking-exception examples? ( lablgtk-examples )
 RDEPEND=dev-lang/ocaml:=[ocamlopt?] dev-ml/camlp4:= x11-libs/gtk+:2 glade? ( gnome-base/libglade ) gnomecanvas? ( gnome-base/libgnomecanvas ) opengl? ( dev-ml/lablgl:= x11-libs/gtkglarea:2 ) sourceview? ( x11-libs/gtksourceview:2.0 ) spell? ( app-text/gtkspell:2 ) svg? ( gnome-base/librsvg:2 )
 SLOT=2/2.18.8
 SRC_URI=https://github.com/garrigue/lablgtk/releases/download/lablgtk2188/lablgtk-2.18.8.tar.gz
-_md5_=5c01c31e6c4c9103c26597e69f86e03e
+_md5_=bf6d7e56164a932df6bbb4e2975d6521

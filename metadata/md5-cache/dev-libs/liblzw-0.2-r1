@@ -6,4 +6,4 @@ KEYWORDS=amd64 arm hppa ia64 m68k s390 sh x86
 LICENSE=public-domain
 SLOT=0
 SRC_URI=mirror://sourceforge/freestdf/liblzw-0.2.tar.lzma
-_md5_=9c4c1360b17e8c7481bdf04ca1999c8b
+_md5_=37ee04cfbebd0dcaa76c32124d49a697

@@ -7,4 +7,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl dev-perl/Mail-POP3Client dev-perl/Mail-IMAPClient dev-perl/Email-Simple dev-perl/Date-Manip dev-perl/IO-Socket-SSL
 SLOT=0
 SRC_URI=http://www.linux-france.org/prj/pop2imap/dist/pop2imap-1.18.tgz
-_md5_=9f1eb79637b0dec1d5bde3c7ecc3a057
+_md5_=e56997f680ae2b7744e97248749e6b7f

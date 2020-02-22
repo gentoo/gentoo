@@ -9,4 +9,4 @@ RDEPEND=net-libs/libnfnetlink || ( net-misc/miniupnpd net-libs/miniupnpc )
 SLOT=0
 SRC_URI=http://miniupnp.free.fr/files/minissdpd-1.5.20190824.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=1ed989e654e8a26fbf0c11e09b82e316
+_md5_=87dfd68198bf69fbaea09175cc9c36c1

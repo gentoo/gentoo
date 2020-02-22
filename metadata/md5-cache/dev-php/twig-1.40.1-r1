@@ -10,4 +10,4 @@ RDEPEND=dev-lang/php:*[ctype] dev-php/fedora-autoloader
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/twigphp/Twig/archive/v1.40.1.tar.gz -> twig-1.40.1.tar.gz
-_md5_=3239ed1cc471ec45e9beb7f29c012521
+_md5_=0cb3bda11c6b525ed7d908bc775d4202

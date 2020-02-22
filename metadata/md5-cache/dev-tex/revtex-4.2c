@@ -10,4 +10,4 @@ RDEPEND=>=dev-texlive/texlive-latex-2012 virtual/latex-base
 SLOT=0
 SRC_URI=http://mirrors.ctan.org/macros/latex/contrib/revtex.zip -> revtex-4.2c.zip
 _eclasses_=latex-package	e5f296c98696dd02059bc6a5a03282e2
-_md5_=9285ab34a413dd959ffb67bcf50f8cf0
+_md5_=55a4fd31487f0d01892bde215ebb1296

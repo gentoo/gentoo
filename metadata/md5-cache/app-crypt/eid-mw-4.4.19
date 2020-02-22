@@ -12,4 +12,4 @@ REQUIRED_USE=dialogs? ( gtk )
 SLOT=0
 SRC_URI=https://codeload.github.com/fedict/eid-mw/tar.gz/v4.4.19 -> eid-mw-4.4.19.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	gnome2-utils	532371cfcba45b2ab0d2950547c97d95	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=1ca2c1aebb5315aa631e20b05a0a04d8
+_md5_=a46199c0aed42c6c97e86db658f37cd7

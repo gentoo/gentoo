@@ -8,4 +8,4 @@ LICENSE=BSD
 RDEPEND=x11-libs/libXt >=dev-libs/lzo-2
 SLOT=0
 SRC_URI=http://www.vigor.nu/dxpc/dxpc-3.9.2.tgz
-_md5_=a7fdb46eea9cdcb32f61383b3c18c597
+_md5_=e2ad75132769cb4bcb0fe41a5506e7e6

@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=dev-lang/perl net-analyzer/mrtg
 SLOT=0
 SRC_URI=ftp://ftp.pwo.de/pub/pwo/mrtg/mrtg-ping-probe/mrtg-ping-probe-2.2.0.tar.gz
-_md5_=73b17665bc204cd5327ce5936f0da694
+_md5_=8b5d7c911d83dd7bdb6f0dd61d320853

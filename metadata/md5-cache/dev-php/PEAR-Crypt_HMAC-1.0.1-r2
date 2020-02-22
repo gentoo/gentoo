@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=0
 SRC_URI=https://pear.php.net/get/Crypt_HMAC-1.0.1.tgz
 _eclasses_=php-pear-r2	479e8a084e98f4d730da647bba3e589e
-_md5_=7d753e2a71de0dfc920a3b025f85da66
+_md5_=6a5dbf7fbf8a2b8153f9a3a615ffb90f

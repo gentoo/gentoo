@@ -8,4 +8,4 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=mirror://sourceforge/asfrecorder/ASFRecorder.zip
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=e41b3393dff5c4edb400f4e4ebf21bb7
+_md5_=10b4da060105337af377db7646d4055d

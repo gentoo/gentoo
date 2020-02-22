@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libXpm media-fonts/font-adobe-75dpi
 SLOT=0
 SRC_URI=mirror://sourceforge/xtux/xtux-src-20030306.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
-_md5_=26a208fb7ff196e7456c8195b25c3a20
+_md5_=5d94bc108951303623c71e0b0b93a2d6

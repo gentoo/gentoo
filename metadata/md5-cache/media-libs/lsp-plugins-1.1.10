@@ -10,4 +10,4 @@ RDEPEND=dev-libs/expat media-libs/libsndfile doc? ( dev-lang/php:* ) jack? ( vir
 REQUIRED_USE=|| ( jack ladspa lv2 )
 SLOT=0
 SRC_URI=https://github.com/sadko4u/lsp-plugins/archive/lsp-plugins-1.1.10.tar.gz
-_md5_=f35bff986dcd7e31ccb5549bd4a943c8
+_md5_=a4bbb10633e1681fe130ac5b0d8fc6c8

@@ -7,4 +7,4 @@ KEYWORDS=~amd64 ~x86
 LICENSE=MIT
 SLOT=0
 SRC_URI=https://github.com/troglobit/libuev/releases/download/v2.3.0/libuev-2.3.0.tar.xz
-_md5_=532adffc73ef8d2483a5bb20a9bf317d
+_md5_=d0cf1e2004f58eb779c87209a140456d

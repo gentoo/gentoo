@@ -10,4 +10,4 @@ RDEPEND=dev-libs/keybinder:0= x11-libs/gtk+:2 >=x11-libs/libfm-1.2.0[gtk] x11-li
 SLOT=0
 SRC_URI=mirror://sourceforge/lxde/lxpanel-0.10.0.tar.xz
 _eclasses_=l10n	97f2753e3f1f3753d53d856c7c0bbb0b	readme.gentoo-r1	22ae82e140bdd95d17a34fd5fd733190
-_md5_=d538b9784a352d02dda237358f50a17d
+_md5_=b9c40dde2094b69852a1fd52bfaa95ab

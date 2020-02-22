@@ -9,4 +9,4 @@ LICENSE=public-domain
 SLOT=0
 SRC_URI=http://www.fgdc.gov/HSWG/symbol_downloads/ers_v220.zip
 _eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
-_md5_=5d9b30ddb627464c3020fa55b1bc12e9
+_md5_=1fd2ab4906e05727a127a895880dbad2

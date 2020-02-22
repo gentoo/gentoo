@@ -10,4 +10,4 @@ RDEPEND=dev-libs/glib:2 x11-libs/gtk+:2 x11-libs/pango sys-libs/zlib judy? ( dev
 SLOT=0
 SRC_URI=mirror://sourceforge/gtkwave/gtkwave-3.3.99.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=186acf7cfdb9274e5de48f158a02403c
+_md5_=0709897d31240b82286fc4c0d6a4f466
