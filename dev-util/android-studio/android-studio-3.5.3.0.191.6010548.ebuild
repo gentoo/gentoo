@@ -34,7 +34,7 @@ SRC_URI="https://dl.google.com/dl/android/studio/ide-zips/${STUDIO_V}/${PN}-ide-
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="custom-jdk selinux"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 
 DEPEND="
 	dev-java/commons-logging:0
