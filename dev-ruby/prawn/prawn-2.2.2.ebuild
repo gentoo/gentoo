@@ -1,12 +1,14 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-USE_RUBY="ruby23 ruby24 ruby25 ruby26"
+EAPI=7
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
 RUBY_FAKEGEM_RECIPE_DOC="yard"
 RUBY_FAKEGEM_RECIPE_TEST="rspec3"
 RUBY_FAKEGEM_EXTRAINSTALL="data"
+
+RUBY_FAKEGEM_GEMSPEC="prawn.gemspec"
 
 inherit ruby-fakegem
 
