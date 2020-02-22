@@ -21,6 +21,7 @@ DEPEND="
 	dev-libs/libevent:0=
 	dev-libs/nspr
 	>=dev-libs/nss-3.42
+	>=sys-kernel/linux-headers-4.19
 	caps? ( sys-libs/libcap-ng )
 	curl? ( net-misc/curl )
 	dnssec? ( >=net-dns/unbound-1.9.1-r1:= net-libs/ldns )
