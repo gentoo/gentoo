@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -91,7 +91,7 @@ src_compile() {
 	use doc && cmake-utils_src_compile doc-style createapidocs doc-xml
 }
 
-src_install () {
+src_install() {
 	cmake-utils_src_install
 
 	# package provides .pc files

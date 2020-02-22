@@ -32,7 +32,7 @@ PATCHES=(
 	"${FILESDIR}/sqlgrey-1.8.0-init-openrc.patch"
 )
 
-src_install () {
+src_install() {
 	emake gentoo-install ROOTDIR="${D}"
 	einstalldocs
 

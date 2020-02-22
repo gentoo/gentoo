@@ -54,7 +54,7 @@ PATCHES=(
 DOCS=( ${S}/README )
 HTML_DOCS=( ${BUILDDIR}/README.html )
 
-pkg_setup(){
+pkg_setup() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
 		export LC_ALL="C"
 	fi

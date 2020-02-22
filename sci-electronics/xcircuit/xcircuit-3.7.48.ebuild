@@ -54,7 +54,7 @@ src_compile() {
 	autotools-utils_src_compile appdefaultsdir="/usr/share/X11/app-defaults"
 }
 
-src_install () {
+src_install() {
 	autotools-utils_src_install \
 		appdefaultsdir="/usr/share/X11/app-defaults" \
 		appmandir="/usr/share/man/man1"

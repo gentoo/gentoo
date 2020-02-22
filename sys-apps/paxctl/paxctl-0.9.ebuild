@@ -31,7 +31,7 @@ src_compile() {
 		LDFLAGS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${ED}" install
 	dodoc README ChangeLog
 }

@@ -31,7 +31,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-linux-4.14.patch"
 )
 
-src_compile(){
+src_compile() {
 	BUILD_PARAMS="KDIR=${KV_OUT_DIR} M=${S}"
 	linux-mod_src_compile
 }

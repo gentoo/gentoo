@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,7 @@ PATCHES=(
 
 S=${WORKDIR}/${PN}-${MY_PV}
 
-pkg_setup () {
+pkg_setup() {
 	use perl && perl_set_version
 	use python && python_setup
 
@@ -60,7 +60,7 @@ pkg_setup () {
 	fi
 }
 
-src_prepare () {
+src_prepare() {
 	default
 	kernel_is ge 4 11 0 && eapply "${FILESDIR}"/${PN}-4.0.4_rc2-kernel-4.11.0.patch
 	eautoreconf
@@ -193,13 +193,13 @@ gpib_config --minor 0 --init-data /usr/share/linux-gpib/hp_82341/hp_82341c_fw.bi
 	readme.gentoo_create_doc
 }
 
-pkg_preinst () {
+pkg_preinst() {
 	linux-mod_pkg_preinst
 	use perl && perl_set_version
 	enewgroup gpib
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	linux-mod_pkg_postinst
 	readme.gentoo_print_elog
 

@@ -44,7 +44,7 @@ DEPEND="${COMMON_DEPEND}
 
 CONFIG_CHECK="~INOTIFY_USER"
 
-pkg_setup () {
+pkg_setup() {
 	python-single-r1_pkg_setup
 	check_extra_config
 	enewgroup dropbox
@@ -69,7 +69,7 @@ src_configure() {
 		$(use_enable debug)
 }
 
-src_install () {
+src_install() {
 	python_fix_shebang caja-dropbox.in
 
 	mate_src_install
@@ -83,7 +83,7 @@ src_install () {
 	fperms o-rwx "${extensiondir}"/libcaja-dropbox.so
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	mate_pkg_postinst
 
 	elog

@@ -58,7 +58,7 @@ python_install_all() {
 	distutils-r1_python_install_all
 }
 
-src_install () {
+src_install() {
 	distutils-r1_src_install
 
 	if use pyzord; then

@@ -120,7 +120,7 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-src_compile(){
+src_compile() {
 	# remove compiled files bundled in the tarball
 	emake clean
 	default

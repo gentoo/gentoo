@@ -60,7 +60,7 @@ pkg_setup() {
 	enewuser ${PN} -1 -1 -1 ${PN}
 }
 
-src_configure(){
+src_configure() {
 	local mycmakeargs=()
 	if use fuse; then
 		mycmakeargs+=( "-DHAVE_FUSE_25=yes" )

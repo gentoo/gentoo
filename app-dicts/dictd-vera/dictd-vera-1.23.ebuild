@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -16,7 +16,7 @@ RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/vera-${PV}
 
-src_compile () {
+src_compile() {
 #	sed -f debian/dict-vera/sedfile vera.? >vera1 || die
 #	sed '1,2!s/^/   /' vera. > vera || die
 #	cat vera1>>vera || die
@@ -26,7 +26,7 @@ src_compile () {
 	/usr/bin/dictzip -v vera.dict || die
 }
 
-src_install () {
+src_install() {
 	dodir /usr/lib/dict
 	insinto /usr/lib/dict
 	doins vera.dict.dz

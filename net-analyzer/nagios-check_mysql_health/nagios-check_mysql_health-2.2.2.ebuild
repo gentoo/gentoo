@@ -26,7 +26,7 @@ RDEPEND="dev-perl/DBD-mysql
 
 S="${WORKDIR}/${MY_P}"
 
-src_configure(){
+src_configure() {
 	# Should match net-analyzer/{monitoring,nagios}-plugins.
 	econf --libexecdir="/usr/$(get_libdir)/nagios/plugins"
 }

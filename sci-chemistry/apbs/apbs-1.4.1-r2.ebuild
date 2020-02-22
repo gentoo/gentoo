@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -96,7 +96,7 @@ src_configure() {
 	fi
 }
 
-src_compile(){
+src_compile() {
 	cmake-utils_src_compile
 	if use python; then
 		append-ldflags -L"${S}"/lib

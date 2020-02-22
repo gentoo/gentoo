@@ -27,7 +27,7 @@ pkg_setup() {
 	fi
 }
 
-src_configure(){
+src_configure() {
 	econf \
 		$(use_enable libconfig) \
 		--with-systemdsystemunitdir=$(systemd_get_unitdir) \
@@ -41,7 +41,7 @@ src_install() {
 	readme.gentoo_create_doc
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	[[ -z $(ls "${ROOT}"sys/block/*/queue/protect 2>/dev/null) ]] && \
 	[[ -z $(ls "${ROOT}"sys/block/*/device/unload_heads 2>/dev/null) ]] && \
 		ewarn "Your kernel does NOT support shock protection."

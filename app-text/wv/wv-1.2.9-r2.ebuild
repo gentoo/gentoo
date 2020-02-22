@@ -51,7 +51,7 @@ src_configure() {
 		$(use_with wmf libwmf)
 }
 
-src_install () {
+src_install() {
 	default
 	prune_libtool_files
 

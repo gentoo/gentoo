@@ -36,7 +36,7 @@ RDEPEND="
 
 xtestsuite="XQTS_${XQTS_Ver}"
 
-src_unpack () {
+src_unpack() {
 	unpack kawa-${PV}.tar.gz || die
 	if use xqtests; then
 		mkdir "${WORKDIR}/${xtestsuite}" || die
@@ -81,7 +81,7 @@ src_compile() {
 	emake -j1
 }
 
-src_install () {
+src_install() {
 	emake -j1 DESTDIR="${D}" install
 	rm -rv "${D}"/usr/share/java/ || die "rm -rv failed"
 

@@ -27,7 +27,7 @@ PATCHES=(
 	"${FILESDIR}"/imapclient-2.1.0-py36-tests.patch
 )
 
-python_compile_all () {
+python_compile_all() {
 	use doc && esetup.py build_sphinx
 }
 

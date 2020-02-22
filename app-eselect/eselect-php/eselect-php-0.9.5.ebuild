@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -18,7 +18,7 @@ IUSE="fpm apache2"
 RDEPEND="app-admin/eselect
 	apache2? ( www-servers/apache[apache2_modules_dir] )"
 
-src_configure(){
+src_configure() {
 	# We expect localstatedir to be "var"ish, not "var/lib"ish, because
 	# that's what PHP upstream expects. See for example the FPM
 	# configuration where they put logs in @localstatedir@/log.

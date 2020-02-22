@@ -35,6 +35,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-python_test(){
+python_test() {
 	esetup.py test
 }

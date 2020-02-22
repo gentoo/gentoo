@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -22,7 +22,7 @@ TEXMF=/usr/share/texmf-site
 
 S=${WORKDIR}/${PN}
 
-src_install () {
+src_install() {
 	latex-package_src_doinstall all
 	dodoc "${S}/README"
 }

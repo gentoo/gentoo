@@ -29,7 +29,7 @@ src_configure() {
 	econf --sbindir=/sbin
 }
 
-src_install () {
+src_install() {
 	default
 
 	rm -f "${ED}"/sbin/{mkfs,fsck}.jfs || die

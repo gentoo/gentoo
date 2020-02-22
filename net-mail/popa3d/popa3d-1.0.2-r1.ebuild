@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -83,7 +83,7 @@ pkg_setup() {
 	enewuser popa3d -1 -1 -1 popa3d
 }
 
-src_prepare(){
+src_prepare() {
 	epatch "${DISTDIR}"/popa3d-0.6.3-vname-2.diff.gz
 	use maildir && epatch "${DISTDIR}"/popa3d-0.5.9-maildir-2.diff.gz
 }

@@ -77,7 +77,7 @@ src_configure() {
 	ecm_src_configure
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	ecm_pkg_postinst
 
 	elog "In case you are missing 'pause music' plugin, this now requires"

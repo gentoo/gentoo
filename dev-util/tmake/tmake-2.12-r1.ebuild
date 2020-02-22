@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ IUSE=""
 
 RDEPEND=">=dev-lang/perl-5"
 
-src_install () {
+src_install() {
 	dobin bin/tmake bin/progen
 	dodir /usr/lib/tmake
 	cp -pPRf "${S}"/lib/* "${ED}"/usr/lib/tmake

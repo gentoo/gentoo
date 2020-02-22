@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ pkg_setup() {
 	enewuser sqlgrey -1 -1 /var/spool/sqlgrey sqlgrey
 }
 
-src_install () {
+src_install() {
 	emake gentoo-install ROOTDIR="${D}"
 	dodoc HOWTO FAQ README README.OPTINOUT README.PERF TODO Changelog
 
@@ -69,7 +69,7 @@ pkg_postinst() {
 	ewarn "the SQLgrey db"
 }
 
-pkg_config () {
+pkg_config() {
 	# SQLgrey configuration file
 	local SQLgrey_CONFIG="/etc/sqlgrey/sqlgrey.conf"
 	local SQLgrey_DB_USER_NAME="sqlgrey"

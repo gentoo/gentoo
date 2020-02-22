@@ -36,7 +36,7 @@ RDEPEND="
 DEPEND="${RDEPEND} test? ( net-misc/memcached )"
 RDEPEND="${RDEPEND} php_targets_php5-6? ( dev-php/pecl-memcached:0[php_targets_php5-6(-)] )"
 
-src_prepare(){
+src_prepare() {
 	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 ; then
 		php-ext-source-r3_src_prepare
 	else
@@ -69,7 +69,7 @@ src_test() {
 	fi
 }
 
-src_install(){
+src_install() {
 	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 ; then
 		php-ext-source-r3_src_install
 	fi

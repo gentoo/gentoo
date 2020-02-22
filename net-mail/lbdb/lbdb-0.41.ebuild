@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,7 @@ src_configure() {
 		--libdir=/usr/$(get_libdir)/lbdb
 }
 
-src_install () {
+src_install() {
 	emake install_prefix="${D}" install
 	dodoc README TODO debian/changelog
 }

@@ -19,7 +19,7 @@ src_compile() {
 	emake CC="$(tc-getCC)" all
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${ED}" install
 	einstalldocs
 }

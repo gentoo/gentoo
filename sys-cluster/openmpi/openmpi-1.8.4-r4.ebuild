@@ -144,7 +144,7 @@ src_configure() {
 		$(use_with openmpi_rm_slurm slurm)
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 
 	# From USE=vt see #359917

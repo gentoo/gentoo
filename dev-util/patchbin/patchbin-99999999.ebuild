@@ -30,18 +30,18 @@ RDEPEND="
 	sys-devel/patch
 "
 
-src_prepare(){
+src_prepare() {
 	mv patches/gitapply.sh ${PN} || die
 	sed -E -i "s/(\.\/)?gitapply(\.sh)?/${PN}/g" ${PN} || die
 
 	default
 }
 
-src_install(){
+src_install() {
 	exeinto /usr/bin/
 	doexe ${PN}
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	einfo "${PN} can optionally use dev-util/git to apply patches if installed."
 }

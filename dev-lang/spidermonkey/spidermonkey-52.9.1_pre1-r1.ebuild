@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ RDEPEND=">=dev-libs/nspr-4.13.1
 	system-icu? ( >=dev-libs/icu-58.1:= )"
 DEPEND="${RDEPEND}"
 
-pkg_setup(){
+pkg_setup() {
 	[[ ${MERGE_TYPE} == "binary" ]] || \
 		moz_pkgsetup
 

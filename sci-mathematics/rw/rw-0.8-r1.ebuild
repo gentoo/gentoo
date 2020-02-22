@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,11 +31,11 @@ src_prepare() {
 	default
 }
 
-src_configure(){
+src_configure() {
 	econf $(use_enable executable) --docdir="${EPREFIX}${DOCDIR}"
 }
 
-src_install(){
+src_install() {
 	# The examples graphs are meant to be fed uncompressed into the 'rw'
 	# program. The rest of the docs are small so just leave everything
 	# uncompressed.

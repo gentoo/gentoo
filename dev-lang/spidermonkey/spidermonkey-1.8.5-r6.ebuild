@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 	app-arch/zip
 	virtual/pkgconfig"
 
-pkg_setup(){
+pkg_setup() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
 		export LC_ALL="C"
 	fi

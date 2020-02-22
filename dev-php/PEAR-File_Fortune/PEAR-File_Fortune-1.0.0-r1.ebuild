@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,6 +16,6 @@ RESTRICT="!test? ( test )"
 RDEPEND=">=dev-lang/php-5.1.4:*"
 DEPEND="test? ( ${RDEPEND} dev-php/phpunit )"
 
-src_test(){
+src_test() {
 	phpunit tests || die
 }

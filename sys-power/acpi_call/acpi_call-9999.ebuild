@@ -26,7 +26,7 @@ CONFIG_CHECK="ACPI"
 MODULE_NAMES="acpi_call(misc:${S})"
 BUILD_TARGETS="default"
 
-src_compile(){
+src_compile() {
 	BUILD_PARAMS="KDIR=${KV_OUT_DIR} M=${S}"
 	linux-mod_src_compile
 }

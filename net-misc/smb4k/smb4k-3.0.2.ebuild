@@ -54,7 +54,7 @@ RDEPEND="${DEPEND}
 	)
 "
 
-src_configure(){
+src_configure() {
 	local mycmakeargs=(
 		-DINSTALL_PLASMOID=$(usex plasma)
 	)

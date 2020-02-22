@@ -31,7 +31,7 @@ src_compile() {
 		PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
-src_install()  {
+src_install() {
 	dobin mg
 	doman mg.1
 	dodoc README tutorial
