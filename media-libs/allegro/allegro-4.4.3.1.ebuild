@@ -13,7 +13,7 @@ SRC_URI="https://github.com/liballeg/allegro5/releases/download/${PV}/${P}.tar.g
 LICENSE="Allegro MIT GPL-2+ ZLIB"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~mips ~ppc ~ppc64 ~x86"
-IUSE="alsa fbcon jack jpeg opengl oss png svga vga vorbis X"
+IUSE="alsa doc fbcon jack jpeg opengl oss png svga vga vorbis X"
 
 RDEPEND="
 	alsa? ( media-libs/alsa-lib[${MULTILIB_USEDEP}] )
@@ -37,7 +37,10 @@ RDEPEND="
 	)"
 DEPEND="${RDEPEND}
 	X? ( x11-base/xorg-proto )"
-BDEPEND="virtual/pkgconfig"
+BDEPEND="
+	virtual/pkgconfig
+	doc? ( sys-apps/texinfo )
+"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-4.4.2-shared.patch
@@ -64,6 +67,7 @@ src_configure() {
 		-DINFODIR=share/info
 		-DMANDIR=share/man
 		-DWANT_ALSA=$(usex alsa)
+		-DWANT_DOCS_INFO=$(usex doc)
 		-DWANT_EXAMPLES=OFF
 		-DWANT_JACK=$(usex jack)
 		-DWANT_JPGALLEG=$(usex jpeg)
