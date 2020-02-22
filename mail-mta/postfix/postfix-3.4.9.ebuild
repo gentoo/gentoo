@@ -196,7 +196,7 @@ src_configure() {
 		AUXLIBS_SQLITE="${AUXLIBS_SQLITE}"
 }
 
-src_install () {
+src_install() {
 	LD_LIBRARY_PATH="${S}/lib" \
 	/bin/sh postfix-install \
 		-non-interactive \

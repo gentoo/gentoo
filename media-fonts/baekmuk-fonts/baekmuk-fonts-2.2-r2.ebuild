@@ -36,7 +36,7 @@ src_compile() {
 	font-ebdftopcf_src_compile
 }
 
-src_install () {
+src_install() {
 	FONT_S="${S}"/${TTF_P}/ttf FONT_SUFFIX="ttf" font_src_install
 	FONT_S="${S}"/${BDF_P}/bdf font_src_install
 }

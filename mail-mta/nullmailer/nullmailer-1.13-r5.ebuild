@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -87,7 +87,7 @@ src_configure() {
 		$(use_enable ssl tls)
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" localstatedir=/var/nullmailer install
 
 	dodoc AUTHORS BUGS HOWTO INSTALL ChangeLog NEWS README TODO

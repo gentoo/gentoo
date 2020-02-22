@@ -33,7 +33,7 @@ src_compile() {
 	emake CC="$(tc-getCC)"
 }
 
-src_install () {
+src_install() {
 	dodir /usr/{bin,share/man}
 	emake DESTDIR="${D}" install
 	dodoc README

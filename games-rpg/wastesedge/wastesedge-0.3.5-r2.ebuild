@@ -22,13 +22,13 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
-src_configure(){
+src_configure() {
 	econf \
 		$(use_enable nls) \
 		--with-adonthell-binary="/usr/bin/adonthell"
 }
 
-src_install(){
+src_install() {
 	emake DESTDIR="${D}" pixmapdir=/usr/share/pixmaps install
 	dodoc AUTHORS ChangeLog NEWS PLAYING README
 	make_desktop_entry adonthell-wastesedge "Waste's Edge" wastesedge_32x32

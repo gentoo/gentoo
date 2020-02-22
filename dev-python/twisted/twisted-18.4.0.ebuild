@@ -182,7 +182,7 @@ python_postrm() {
 	rm -f "${ROOT}$(python_get_sitedir)/twisted/plugins/dropin.cache" || die
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	# if we're removing the last version, remove the cache file
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		python_foreach_impl python_postrm

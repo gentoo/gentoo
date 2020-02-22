@@ -13,7 +13,7 @@ KEYWORDS="~alpha amd64 arm hppa ia64 ~mips ppc ppc64 s390 sh sparc x86 ~amd64-li
 
 RDEPEND=">=dev-lang/perl-5.6.0"
 
-src_install () {
+src_install() {
 	dobin ${PN}
 	dodoc changelog contributors
 }

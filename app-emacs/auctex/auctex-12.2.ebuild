@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -55,7 +55,7 @@ pkg_postinst() {
 	elisp-site-regen
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	use preview-latex && texmf-update
 	elisp-site-regen
 }

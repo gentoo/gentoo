@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -60,7 +60,7 @@ src_test() {
 	emake selftest CFLAGS=""
 }
 
-src_install () {
+src_install() {
 	# install manually, since it's just too much
 	# work to force the Makefile to do the right thing.
 	local binname

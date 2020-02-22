@@ -76,7 +76,7 @@ src_test() {
 	fi
 }
 
-src_install () {
+src_install() {
 	use doc && HTML_DOCS=( doc/html/. )
 	default
 

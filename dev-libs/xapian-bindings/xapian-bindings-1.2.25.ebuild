@@ -156,7 +156,7 @@ src_test() {
 	fi
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 
 	if use java; then

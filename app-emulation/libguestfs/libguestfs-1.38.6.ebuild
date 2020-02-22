@@ -107,7 +107,7 @@ PATCHES=(
 	"${FILESDIR}"/${MY_PV_1}/
 )
 
-pkg_setup () {
+pkg_setup() {
 		CONFIG_CHECK="~KVM ~VIRTIO"
 		[ -n "${CONFIG_CHECK}" ] && check_extra_config;
 

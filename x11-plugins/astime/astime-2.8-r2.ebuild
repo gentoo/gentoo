@@ -31,7 +31,7 @@ src_compile() {
 	emake CC="$(tc-getCC)"
 }
 
-src_install () {
+src_install() {
 	dobin "${PN}"
 	newman "${PN}.man" "${PN}.1"
 	einstalldocs

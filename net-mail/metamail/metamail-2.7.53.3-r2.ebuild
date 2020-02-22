@@ -58,7 +58,7 @@ src_compile() {
 	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}"
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 	dodoc CREDITS README
 	rm man/mmencode.1

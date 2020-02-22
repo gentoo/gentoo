@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -40,7 +40,7 @@ DEPEND="
 
 PATCHES=( ${FILESDIR}/${PN}-${PV}-lib_path.patch )
 
-src_prepare () {
+src_prepare() {
 	default
 	python_fix_shebang plugins
 }

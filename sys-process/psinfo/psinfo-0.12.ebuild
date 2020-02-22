@@ -1,4 +1,4 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 LICENSE="GPL-2"
 IUSE=""
 
-src_prepare () {
+src_prepare() {
 	epatch "${FILESDIR}"/${P}-asneeded.patch
 	tc-export CC
 }

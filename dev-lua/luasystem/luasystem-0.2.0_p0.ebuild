@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,7 +35,7 @@ src_compile() {
 		LD="$(tc-getCC)" MYLDFLAGS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	insinto "$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua)"
 	doins -r system
 	exeinto "$($(tc-getPKG_CONFIG) --variable INSTALL_CMOD lua)"/system

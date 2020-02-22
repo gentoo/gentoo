@@ -172,7 +172,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 
 	dodoc BUGS ChangeLog NEWS PGPKEYS PORTING README*

@@ -51,7 +51,7 @@ src_configure() {
 		$(use_enable static-libs static)
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog DueDiligence NEWS README
 

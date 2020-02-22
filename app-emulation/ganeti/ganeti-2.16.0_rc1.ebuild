@@ -196,7 +196,7 @@ QA_WX_LOAD="
 	usr/lib*/${PN}/${SERIES}/usr/bin/htools
 "
 
-pkg_setup () {
+pkg_setup() {
 	local user
 	python-single-r1_pkg_setup
 
@@ -252,7 +252,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure () {
+src_configure() {
 	# this is kind of a hack to work around the removal of the qemu-kvm wrapper
 	local kvm_arch
 
@@ -285,7 +285,7 @@ src_configure () {
 		--enable-socat-compress
 }
 
-src_install () {
+src_install() {
 	emake V=1 DESTDIR="${D}" install
 
 	newinitd "${FILESDIR}"/ganeti.initd-r3 ${PN}
@@ -346,7 +346,7 @@ pkg_postinst() {
 	fi
 }
 
-src_test () {
+src_test() {
 	PATH="${S}/scripts:${S}/src:${PATH}" \
 		TMPDIR="/tmp" \
 		GANETI_MASTER="$(hostname -f)" \

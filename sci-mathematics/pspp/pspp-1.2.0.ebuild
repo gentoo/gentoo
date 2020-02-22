@@ -70,7 +70,7 @@ src_install() {
 	prune_libtool_files --all
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	use emacs && elisp-site-regen
 }
 

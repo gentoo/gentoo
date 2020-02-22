@@ -149,7 +149,7 @@ src_configure() {
 		$(use_enable java mpi-java)
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 
 	# From USE=vt see #359917

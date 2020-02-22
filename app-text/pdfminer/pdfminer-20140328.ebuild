@@ -15,7 +15,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE="doc examples"
 
-python_compile_all(){
+python_compile_all() {
 	use examples && emake -C samples all
 }
 

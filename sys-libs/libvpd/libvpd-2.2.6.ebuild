@@ -31,7 +31,7 @@ src_configure() {
 		--sysconfdir="$( dirname $(get_udevdir) )"
 }
 
-src_install(){
+src_install() {
 	default
 	keepdir /var/lib/lsvpd
 	find "${D}" -name '*.la' -delete || die

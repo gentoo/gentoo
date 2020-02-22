@@ -59,12 +59,12 @@ src_compile() {
 		--build-mode='prod' || die
 }
 
-src_test () {
+src_test() {
 	ada/manage.py test | tee libadalang.testOut;
 	grep -q FAILED libadalang.testOut && die
 }
 
-src_install () {
+src_install() {
 	ada/manage.py \
 		-v \
 		--library-types $libtype \

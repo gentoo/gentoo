@@ -37,6 +37,6 @@ src_compile() {
 	emake CFLAGS="${CFLAGS}" dumpet
 }
 
-pkg_setup(){
+pkg_setup() {
 	tc-export CC
 }

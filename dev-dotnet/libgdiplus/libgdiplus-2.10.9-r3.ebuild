@@ -52,7 +52,7 @@ src_compile() {
 	emake "$@"
 }
 
-src_install () {
+src_install() {
 	emake -j1 DESTDIR="${D}" "$@" install #nowarn
 	dotnet_multilib_comply
 	local commondoc=( AUTHORS ChangeLog README TODO )

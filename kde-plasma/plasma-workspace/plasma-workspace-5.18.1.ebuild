@@ -200,7 +200,7 @@ src_install() {
 	fperms +x /etc/xdg/plasma-workspace/shutdown/10-agent-shutdown.sh
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	ecm_pkg_postinst
 
 	# Clean up pre-5.17.4 scripts

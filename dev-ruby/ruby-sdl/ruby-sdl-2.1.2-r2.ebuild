@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -48,7 +48,7 @@ all_ruby_install() {
 	doins sample/*
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	if ! use image || ! use mixer || ! use truetype || ! use mpeg || ! use sge; then
 		echo ""
 		ewarn "If any of the following packages are not installed, Ruby/SDL"

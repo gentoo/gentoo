@@ -42,7 +42,7 @@ src_configure() {
 	autotools-utils_src_configure
 }
 
-src_install () {
+src_install() {
 	autotools-utils_src_install
 	dodoc README* Changes* docs/changes.txt docs/cfitsio.doc
 	use fortran && dodoc docs/fitsio.doc

@@ -48,7 +48,7 @@ src_configure() {
 	cmake_src_configure
 }
 
-src_install(){
+src_install() {
 	cmake_src_install
 	cat > "99${PN}" <<-EOF
 		LDPATH="${EROOT}/usr/lib/llvm/roc/lib"

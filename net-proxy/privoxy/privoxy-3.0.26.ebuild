@@ -97,7 +97,7 @@ src_configure() {
 		$(use_enable zlib)
 }
 
-src_install () {
+src_install() {
 	default
 
 	newinitd "${FILESDIR}/privoxy.initd-3" privoxy

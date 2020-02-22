@@ -256,7 +256,7 @@ src_compile() {
 	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" NO_BIN_LINK=t install
 
 	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die

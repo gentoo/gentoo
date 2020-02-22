@@ -18,12 +18,12 @@ DEPEND="dev-libs/geoip
 RDEPEND="${DEPEND}"
 S="${WORKDIR}/exim-geoipv6-dlfunc-${PV}"
 
-src_configure()	{
+src_configure() {
 	append-cppflags "-I/usr/include/exim"
 	econf
 }
 
-src_install()	{
+src_install() {
 	default
 	prune_libtool_files --all
 }

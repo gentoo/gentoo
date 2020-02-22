@@ -38,7 +38,7 @@ pkg_pretend() {
 
 	check-reqs_pkg_setup
 }
-pkg_setup(){
+pkg_setup() {
 	[[ ${MERGE_TYPE} == "binary" ]] || \
 		moz_pkgsetup
 	export SHELL="${EPREFIX}/bin/bash"

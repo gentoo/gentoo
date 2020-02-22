@@ -77,7 +77,7 @@ pkg_postinst() {
 	optfeature "sending PDFs as email attachments" x11-misc/xdg-utils
 }
 
-src_test(){
+src_test() {
 	local confdir="${HOME}/.config/ImageMagick"
 	mkdir -p "${confdir}" || die
 	cat > "${confdir}/policy.xml" <<-EOT || die

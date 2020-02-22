@@ -30,7 +30,7 @@ src_compile() {
 	emake
 }
 
-src_install(){
+src_install() {
 	emake DESTDIR="${D}" install
 	newinitd "${FILESDIR}"/rdate-initd-1.4-r3 rdate
 	newconfd "${FILESDIR}"/rdate-confd rdate

@@ -21,7 +21,7 @@ BDEPEND="${RDEPEND}
 
 distutils_enable_tests pytest
 
-python_prepare_all(){
+python_prepare_all() {
 	cat >> setup.cfg <<- EOF
 	[tool:pytest]
 	python_files=test*.py

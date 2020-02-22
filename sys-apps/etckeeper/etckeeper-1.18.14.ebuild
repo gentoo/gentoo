@@ -46,7 +46,7 @@ src_compile() {
 	:
 }
 
-src_install(){
+src_install() {
 	emake DESTDIR="${ED}" install
 
 	doenvd "$(prefixify_ro "${FILESDIR}"/99${PN})"
@@ -64,7 +64,7 @@ src_install(){
 	fi
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	tmpfiles_process "${PN}.conf"
 
 	elog "${PN} supports git, mercurial and darcs"

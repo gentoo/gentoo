@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}
 	!<sys-libs/glibc-2.26
 "
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }

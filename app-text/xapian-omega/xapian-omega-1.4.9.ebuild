@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -19,7 +19,7 @@ DEPEND="dev-libs/xapian:0/30
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 
 	# Protect /etc/omega.conf

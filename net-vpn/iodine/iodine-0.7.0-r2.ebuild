@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,7 @@ RDEPEND="sys-libs/zlib"
 DEPEND="${RDEPEND}
 	test? ( dev-libs/check )"
 
-src_prepare(){
+src_prepare() {
 	epatch "${FILESDIR}"/${P}-TestMessage.patch
 	epatch "${FILESDIR}"/${P}-new-systemd.patch
 

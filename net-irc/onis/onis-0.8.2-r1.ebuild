@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -24,7 +24,7 @@ src_prepare() {
 	sed -i -e s:lang/:/usr/share/onis/lang/: onis.conf || die "sed failed"
 }
 
-src_install () {
+src_install() {
 	eval $(perl -V:installprivlib)
 
 	dobin onis

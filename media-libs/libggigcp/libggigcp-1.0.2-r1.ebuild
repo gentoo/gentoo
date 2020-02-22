@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,11 +17,11 @@ DEPEND="${RDEPEND}"
 DOCS=( ChangeLog README doc/TODO doc/libggigcp{,-functions,-libraries,-structures}.txt
 	doc/colors{,2}.faq )
 
-src_configure(){
+src_configure() {
 	econf --disable-static
 }
 
-src_install(){
+src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
 }

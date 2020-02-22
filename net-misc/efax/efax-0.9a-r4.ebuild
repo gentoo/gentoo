@@ -17,7 +17,7 @@ IUSE=""
 SLOT="0"
 LICENSE="GPL-2"
 
-src_prepare () {
+src_prepare() {
 	epatch "${WORKDIR}/${PN}_${PV}-19.diff"
 	rm -f "${S}"/${P}/debian/patches/series "${S}"/${P}/debian/patches/00list
 	EPATCH_FORCE="yes" epatch "${S}"/${P}/debian/patches/*
@@ -32,7 +32,7 @@ src_compile() {
 	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	dobin efax efix fax
 	doman efax.1 efix.1
 	newman fax.1 efax-fax.1 # Don't collide with net-dialup/mgetty, bug #429808

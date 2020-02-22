@@ -52,7 +52,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.4.5-libressl-macro-fix.patch"
 )
 
-pkg_setup()  {
+pkg_setup() {
 	linux-info_pkg_setup
 }
 

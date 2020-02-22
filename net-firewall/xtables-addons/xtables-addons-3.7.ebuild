@@ -54,7 +54,7 @@ XA_check4internal_module() {
 	fi
 }
 
-pkg_setup()	{
+pkg_setup() {
 	if use modules; then
 		get_version
 		check_modules_supported

@@ -57,7 +57,7 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 }
 
-src_install () {
+src_install() {
 	default
 	sed -i "s:${D}::g" \
 		"${ED}"/etc/${PN}/${PN}.conf \

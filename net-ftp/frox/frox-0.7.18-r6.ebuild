@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,7 @@ pkg_setup() {
 	use clamav && ewarn "Virus scanner potentialy broken in chroot - see bug #81035"
 }
 
-src_prepare () {
+src_prepare() {
 	HTML_DOCS=( doc/*.html doc/*.sgml )
 
 	default

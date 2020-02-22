@@ -48,7 +48,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	dosbin "${S}"/${PN}
 	if use ipv6; then
 		newsbin "${S}"-6/fping fping6

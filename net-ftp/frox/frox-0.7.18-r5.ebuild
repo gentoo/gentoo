@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -35,7 +35,7 @@ pkg_setup() {
 	use clamav && ewarn "Virus scanner potentialy broken in chroot - see bug #81035"
 }
 
-src_prepare () {
+src_prepare() {
 	epatch "${FILESDIR}/${PV}-respect-CFLAGS.patch"
 	epatch "${FILESDIR}/${PV}-netfilter-includes.patch"
 	epatch "${FILESDIR}/${P}-config.patch"

@@ -129,7 +129,7 @@ src_compile() {
 	use qmail && emake spamc/qmail-spamc
 }
 
-src_install () {
+src_install() {
 	emake install
 	einstalldocs
 

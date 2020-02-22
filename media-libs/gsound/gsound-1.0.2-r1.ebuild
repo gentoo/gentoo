@@ -31,7 +31,7 @@ src_prepare() {
 	gnome2_src_prepare
 }
 
-src_configure () {
+src_configure() {
 	gnome2_src_configure \
 		--disable-static \
 		$(use_enable introspection) \

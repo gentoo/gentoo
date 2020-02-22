@@ -50,7 +50,7 @@ multilib_src_configure() {
 }
 
 # The default src_test() fails, so we'll just run these directly
-multilib_src_test () {
+multilib_src_test() {
 	echo ">>> Test phase [check]: ${CATEGORY}/${PF}"
 	emake -j1 check
 }

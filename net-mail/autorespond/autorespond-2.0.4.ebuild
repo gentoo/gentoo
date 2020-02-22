@@ -22,7 +22,7 @@ src_compile() {
 	emake CFLAGS="${CFLAGS}"
 }
 
-src_install () {
+src_install() {
 	into /var/qmail
 	dobin autorespond
 	doman *.1

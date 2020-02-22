@@ -18,12 +18,12 @@ RDEPEND=">=net-analyzer/p0f-3.05_beta
 	${DEPEND}"
 S="${WORKDIR}/exim-p0f3-dlfunc-${PV}"
 
-src_configure()	{
+src_configure() {
 	append-cppflags "-I/usr/include/exim"
 	econf
 }
 
-src_install()	{
+src_install() {
 	default
 	prune_libtool_files --all
 }

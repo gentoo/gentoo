@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 "
 mydoc=("doc/*.txt" "HACKING.DKIM")
 
-src_test(){
+src_test() {
 	# disable online tests
 	if ! has network ${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}; then
 		einfo "Removing network tests w/o DIST_TEST_OVERRIDE=~network"

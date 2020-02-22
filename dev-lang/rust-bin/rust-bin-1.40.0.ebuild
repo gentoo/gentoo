@@ -36,7 +36,7 @@ QA_PREBUILT="
 	opt/${P}/lib/rustlib/*/lib/*.rlib*
 "
 
-pkg_pretend () {
+pkg_pretend() {
 	if [[ "$(tc-is-softfloat)" != "no" ]] && [[ ${CHOST} == armv7* ]]; then
 		die "${CHOST} is not supported by upstream Rust. You must use a hard float version."
 	fi

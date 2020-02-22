@@ -313,7 +313,7 @@ src_prepare() {
 	sed -i 's~ADD_SUBDIRECTORY(storage/ndb)~~' CMakeLists.txt || die
 }
 
-src_configure(){
+src_configure() {
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 

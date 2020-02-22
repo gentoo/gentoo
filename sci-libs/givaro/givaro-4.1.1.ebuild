@@ -19,7 +19,7 @@ RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS ChangeLog README.md )
 
-src_configure(){
+src_configure() {
 	# Passing "--disable-doc" also accidentally enables building
 	# the documentation, so we can't just $(use_enable doc) here.
 	# https://github.com/linbox-team/givaro/issues/148
@@ -39,7 +39,7 @@ src_configure(){
 		$(use_enable cpu_flags_x86_avx2 avx2)
 }
 
-src_install(){
+src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 }

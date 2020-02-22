@@ -27,7 +27,7 @@ UNIPATCH_STRICTORDER="yes"
 K_EXTRAEINFO="For more info on zen-sources, and for how to report problems, see: \
 ${HOMEPAGE}, also go to #zen-sources on freenode"
 
-pkg_setup(){
+pkg_setup() {
 	ewarn
 	ewarn "${PN} is *not* supported by the Gentoo Kernel Project in any way."
 	ewarn "If you need support, please contact the zen developers directly."

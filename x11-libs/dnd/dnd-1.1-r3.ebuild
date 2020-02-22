@@ -34,6 +34,6 @@ src_configure() {
 	econf --with-x
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 }

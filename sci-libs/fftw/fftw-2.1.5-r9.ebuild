@@ -115,7 +115,7 @@ src_test() {
 	multibuild_foreach_variant run_in_build_dir default_src_test
 }
 
-src_install () {
+src_install() {
 	use doc && HTML_DOCS=( doc/*.{html,gif} )
 	multibuild_foreach_variant run_in_build_dir default_src_install
 

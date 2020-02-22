@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -23,7 +23,7 @@ src_compile() {
 	$(tc-getCC) ${CFLAGS} ${LDFLAGS} -o ${PN} ${PN}.c || die "Compilation failed."
 }
 
-src_install () {
+src_install() {
 	exeinto /usr/libexec/cups/backend
 	exeopts -m0700
 	doexe src/cups-pdf
@@ -38,7 +38,7 @@ src_install () {
 	newdoc contrib/Contents contrib_Contents
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	elog "Please view both the README and contrib_Contents files"
 	elog "as you may want to adjust some settings and/or use"
 	elog "contributed software. In the latter case you may need"

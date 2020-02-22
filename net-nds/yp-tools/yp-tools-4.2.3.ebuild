@@ -25,7 +25,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure () {
+src_configure() {
 	econf \
 		--disable-static \
 		--sysconfdir="${EPREFIX}"/etc/yp \

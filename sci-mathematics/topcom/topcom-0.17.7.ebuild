@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-buildsystem.patch
 )
 
-src_prepare () {
+src_prepare() {
 	# ... and link in tree versions:
 	append-libs -lgmp -lgmpxx -lcddgmp
 
@@ -34,7 +34,7 @@ src_prepare () {
 	default
 }
 
-src_install () {
+src_install() {
 	default
 
 	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*a

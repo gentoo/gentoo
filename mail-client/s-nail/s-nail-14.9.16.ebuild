@@ -64,7 +64,7 @@ src_compile() {
 	emake build
 }
 
-src_install () {
+src_install() {
 	# Use /usr/sbin/sendmail by default and provide an example
 	cat <<- EOSMTP >> nail.rc
 

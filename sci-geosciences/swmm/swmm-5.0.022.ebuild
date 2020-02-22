@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -37,7 +37,7 @@ src_prepare() {
 	epatch "${FILESDIR}"/${P}-QA.patch
 }
 
-src_compile(){
+src_compile() {
 	# 'sed' command has to accomodate DOS formatted file.
 	sed -i \
 		-e 's;^#define DLL;//#define DLL;' \
@@ -46,7 +46,7 @@ src_compile(){
 	emake
 }
 
-src_install(){
+src_install() {
 	newbin swmm5 swmm
 	dodoc Roadmap.txt
 }

@@ -38,7 +38,7 @@ QA_PREBUILT="opt/Signal/signal-desktop
 
 S="${WORKDIR}"
 
-src_prepare(){
+src_prepare() {
 	default
 	sed -e 's|\("/opt/Signal/signal-desktop"\)|\1 --start-in-tray|g' \
 		-i usr/share/applications/signal-desktop.desktop || die

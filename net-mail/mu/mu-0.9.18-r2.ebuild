@@ -39,7 +39,7 @@ src_configure() {
 		$(use_enable emacs mu4e)
 }
 
-src_install () {
+src_install() {
 	dobin mu/mu
 	dodoc AUTHORS HACKING NEWS NEWS.org TODO README README.org ChangeLog
 	if use emacs; then
@@ -54,7 +54,7 @@ src_install () {
 		  man/mu-view.1 man/mu.1
 }
 
-src_test () {
+src_test() {
 	# Note: Fails with parallel make
 	emake -j1 check
 }

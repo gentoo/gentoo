@@ -38,7 +38,7 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_prepare(){
+src_prepare() {
 	ecm_src_prepare
 
 	if ! use man ; then

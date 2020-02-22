@@ -77,7 +77,7 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/sss_certmap.h
 )
 
-pkg_setup(){
+pkg_setup() {
 	linux-info_pkg_setup
 }
 
@@ -223,7 +223,7 @@ multilib_src_test() {
 	default
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	elog "You must set up sssd.conf (default installed into /etc/sssd)"
 	elog "and (optionally) configuration in /etc/pam.d in order to use SSSD"
 	elog "features. Please see howto in	https://docs.pagure.org/SSSD.sssd/design_pages/smartcard_authentication_require.html"

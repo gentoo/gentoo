@@ -37,7 +37,7 @@ src_configure() {
 	cmake-utils_src_configure
 }
 
-src_install () {
+src_install() {
 	cmake-utils_src_install
 
 	use eselect-ldso || return
@@ -54,7 +54,7 @@ src_install () {
 	dosym ../../liblapack.so.3 usr/$(get_libdir)/lapack/reference/liblapack.so.3
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	use eselect-ldso || return
 
 	local me=reference libdir=$(get_libdir)
@@ -83,7 +83,7 @@ pkg_postinst () {
 	fi
 }
 
-pkg_postrm () {
+pkg_postrm() {
 	use eselect-ldso || return
 
 	eselect blas validate

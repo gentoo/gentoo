@@ -94,7 +94,7 @@ src_compile() {
 	done
 }
 
-src_install () {
+src_install() {
 	# parallelization issue: vgetty-install target fails if install target
 	#                        isn't finished
 	local target

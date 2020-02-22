@@ -45,7 +45,7 @@ src_compile() {
 		EXTRA_LDOPTIONS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	dobin xautolock
 	newman xautolock.man xautolock.1
 	dodoc Changelog Readme Todo

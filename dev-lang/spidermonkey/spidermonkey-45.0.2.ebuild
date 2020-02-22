@@ -29,7 +29,7 @@ RDEPEND=">=dev-libs/nspr-4.10.10
 	system-icu? ( >=dev-libs/icu-51.1:= )"
 DEPEND="${RDEPEND}"
 
-pkg_setup(){
+pkg_setup() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
 		moz_pkgsetup
 	fi

@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 
 DOCS=( BLURB TODO CHANGELOG )
 
-src_install () {
+src_install() {
 	python_newscript queue_repair.py queue-repair.py
 	dosym queue-repair.py /usr/bin/queue-repair
 	einstalldocs

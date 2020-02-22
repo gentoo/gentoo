@@ -20,12 +20,12 @@ RDEPEND="${DEPEND}"
 
 SITEFILE=50${PN}-gentoo.el
 
-src_prepare(){
+src_prepare() {
 	epatch "${FILESDIR}/${P}-makefile.patch"
 	rm lib/number/essai
 }
 
-src_compile(){
+src_compile() {
 	emake CC="$(tc-getCC)"
 
 	if use emacs; then
@@ -34,7 +34,7 @@ src_compile(){
 	fi
 }
 
-src_install(){
+src_install() {
 	emake DESTDIR="${D}" DOC="/usr/share/doc/${PF}" install
 
 	if use vim-syntax; then
@@ -57,7 +57,7 @@ src_install(){
 	fi
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	if use vim-syntax; then
 		elog "Add the following line to your vimrc if you want"
 		elog "to enable the lisaac support :"
@@ -68,6 +68,6 @@ pkg_postinst(){
 	use emacs && elisp-site-regen
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	use emacs && elisp-site-regen
 }

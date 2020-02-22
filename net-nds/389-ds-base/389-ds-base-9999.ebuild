@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -90,12 +90,12 @@ src_compile() {
 	fi
 }
 
-src_test () {
+src_test() {
 	# -j1 is a temporary workaround for bug #605432
 	emake -j1 check
 }
 
-src_install () {
+src_install() {
 	# -j1 is a temporary workaround for bug #605432
 	emake -j1 DESTDIR="${D}" install
 

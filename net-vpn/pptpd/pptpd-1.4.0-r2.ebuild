@@ -62,7 +62,7 @@ src_compile() {
 	emake COPTS="${CFLAGS}"
 }
 
-src_install () {
+src_install() {
 	default
 
 	insinto /etc

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -69,7 +69,7 @@ src_compile() {
 	emake RPM_OPT_FLAGS="${CFLAGS}" RPM_BUILD_ROOT="${D}" ROOT="${D}"
 }
 
-src_install () {
+src_install() {
 	dodir /usr/bin
 	dodir /usr/sbin
 

@@ -15,11 +15,11 @@ RESTRICT="!test? ( test )"
 
 PATCHES=( "${FILESDIR}/${PN}-1.2-includes.patch" )
 
-src_configure(){
+src_configure() {
 	econf $(use_enable static-libs static)
 }
 
-src_install(){
+src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 }

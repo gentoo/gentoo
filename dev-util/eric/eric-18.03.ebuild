@@ -69,7 +69,7 @@ src_install() {
 	einstalldocs
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	xdg_desktop_database_update
 
 	if ! has_version dev-python/enchant; then

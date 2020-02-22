@@ -36,7 +36,7 @@ Only >=3.3.0 kernel version support in team mode"
 
 DOCS=( README )
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }

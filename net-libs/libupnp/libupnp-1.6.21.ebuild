@@ -40,7 +40,7 @@ src_configure() {
 		$(use_with doc documentation "${EPREFIX}/usr/share/doc/${PF}")
 }
 
-src_install () {
+src_install() {
 	default
 	dobin upnp/sample/.libs/tv_{combo,ctrlpt,device}
 	use static-libs || prune_libtool_files

@@ -41,7 +41,7 @@ RDEPEND="${DEPEND}
 	gtk? ( app-admin/system-config-printer )
 "
 
-pkg_postinst(){
+pkg_postinst() {
 	ecm_pkg_postinst
 
 	if [[ -z "${REPLACING_VERSIONS}" ]] && ! use gtk ; then

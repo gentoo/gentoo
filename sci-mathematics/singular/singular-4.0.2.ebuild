@@ -45,7 +45,7 @@ pkg_setup() {
 	tc-export AR CC CPP CXX
 }
 
-src_prepare () {
+src_prepare() {
 	# Need to do something about resources later...
 	# epatch "${FILESDIR}"/${PN}-4.0.0-gentoo.patch
 
@@ -83,7 +83,7 @@ src_compile() {
 	fi
 }
 
-# src_install () {
+# src_install() {
 # 	dodoc README
 # 	# execs and libraries
 # 	cd "${S}"/build/bin

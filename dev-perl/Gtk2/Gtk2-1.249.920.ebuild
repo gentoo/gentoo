@@ -28,6 +28,6 @@ DEPEND="${RDEPEND}
 	test? ( x11-libs/gdk-pixbuf[jpeg] )
 "
 
-src_test(){
+src_test() {
 	virtx perl-module_src_test
 }

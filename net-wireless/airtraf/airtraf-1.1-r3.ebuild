@@ -46,7 +46,7 @@ src_compile() {
 		LDFLAGS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	dobin src/airtraf
 	dodoc Authors COMPATIBILITY docs/airtraf_doc.html
 }

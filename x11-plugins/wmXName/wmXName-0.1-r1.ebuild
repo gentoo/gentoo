@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,7 +40,7 @@ src_compile() {
 	emake CC="$(tc-getCC)" SYSTEM="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	dobin wmXName GrabXName
 	dodoc README config.sample
 }

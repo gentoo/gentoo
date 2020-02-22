@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}"
 
 PATCHES=( "${FILESDIR}"/0.2.23-paths.patch )
 
-src_install () {
+src_install() {
 	emake install DESTDIR="${D}" prefix="${EPREFIX}/usr"
 	python_fix_shebang "${ED%/}"/usr/bin
 	rm -fr "${ED%/}/usr/share/doc/${PN}" || die

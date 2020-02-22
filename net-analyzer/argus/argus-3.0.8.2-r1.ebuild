@@ -62,7 +62,7 @@ src_compile() {
 	emake CCOPT="${CFLAGS} ${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	doman man/man5/*.5 man/man8/*.8
 
 	dosbin bin/argus{,bug}

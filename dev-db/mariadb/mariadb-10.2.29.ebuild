@@ -318,7 +318,7 @@ src_prepare() {
 	java-pkg-opt-2_src_prepare
 }
 
-src_configure(){
+src_configure() {
 	# bug 508724 mariadb cannot use ld.gold
 	tc-ld-disable-gold
 	# Bug #114895, bug #110149

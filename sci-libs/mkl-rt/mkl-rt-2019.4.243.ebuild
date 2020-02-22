@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -24,7 +24,7 @@ DEPEND=""
 
 S=${WORKDIR}
 
-src_install () {
+src_install() {
 	insinto  /usr/$(get_libdir)/
 	doins lib/*.so
 
@@ -44,7 +44,7 @@ src_install () {
 	fi
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	use eselect-ldso || return
 	local libdir=$(get_libdir) me="mkl-rt"
 
@@ -73,7 +73,7 @@ pkg_postinst () {
 	fi
 }
 
-pkg_postrm () {
+pkg_postrm() {
 	if use eselect-ldso; then
 		eselect blas validate
 		eselect lapack validate

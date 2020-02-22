@@ -29,14 +29,14 @@ pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
 
-src_configure () {
+src_configure() {
 	econf \
 		$(use_enable nls) \
 		$(use_enable python) \
 		$(use_enable doc gtk-doc)
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog NEWS README TODO
 

@@ -44,7 +44,7 @@ pkg_setup() {
 	tc-export AR CC CPP CXX
 }
 
-src_prepare () {
+src_prepare() {
 	eapply "${FILESDIR}"/"${P}"-fix-resources-name.patch
 	eapply "${FILESDIR}"/"${P}"-fix-destdir.patch
 	eapply_user

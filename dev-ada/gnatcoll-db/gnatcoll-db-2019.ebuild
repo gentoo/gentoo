@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -40,7 +40,7 @@ S="${WORKDIR}"/${PN}-${commitId}
 
 PATCHES=( "${FILESDIR}"/${PN}-2018-gentoo.patch )
 
-pkg_setup () {
+pkg_setup() {
 	python-single-r1_pkg_setup
 	ada_setup
 }

@@ -70,7 +70,7 @@ src_configure() {
 		--with-python="${PYTHON}"
 }
 
-src_install () {
+src_install() {
 	emake "DESTDIR=${D}" doinstall
 
 	insinto /etc/apache2/modules.d

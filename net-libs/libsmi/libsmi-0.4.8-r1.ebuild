@@ -29,7 +29,7 @@ src_test() {
 	LC_ALL=C emake -j1 check
 }
 
-src_install () {
+src_install() {
 	default
 	dodoc smi.conf-example ANNOUNCE ChangeLog README THANKS TODO \
 		doc/{*.txt,smi.dia,smi.dtd,smi.xsd}

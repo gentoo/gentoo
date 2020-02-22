@@ -27,7 +27,7 @@ PATCHES=( "${FILESDIR}/${PN}-2-ldconfig.patch" )
 
 S="${WORKDIR}/${MY_P}"
 
-src_prepare(){
+src_prepare() {
 	if [[ -n ${HOTFIX} ]]; then
 		eapply "${DISTDIR}/${HOTFIX}"
 	fi
@@ -55,7 +55,7 @@ src_compile() {
 	_emake XCFLAGS="$(usex lua52compat "-DLUAJIT_ENABLE_LUA52COMPAT" "")"
 }
 
-src_install(){
+src_install() {
 	_emake install
 
 	pax-mark m "${ED}usr/bin/luajit-${MY_PV}"

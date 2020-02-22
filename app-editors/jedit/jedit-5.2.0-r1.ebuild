@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -61,7 +61,7 @@ src_test() {
 	java-pkg-2_src_test
 }
 
-src_install () {
+src_install() {
 	dodir ${JEDIT_HOME}
 
 	cp -R build/${PN}.jar jars doc keymaps macros modes properties startup \

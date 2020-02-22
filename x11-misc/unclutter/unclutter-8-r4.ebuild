@@ -28,7 +28,7 @@ src_compile() {
 	emake CDEBUGFLAGS="${CFLAGS}" CC="$(tc-getCC)" LDOPTIONS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	dobin unclutter
 	newman unclutter.man unclutter.1x
 	einstalldocs

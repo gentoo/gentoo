@@ -38,7 +38,7 @@ src_configure() {
 		--with-init-script=systemd
 }
 
-src_install () {
+src_install() {
 	default
 
 	# I see no reason to have the tests in the filesystem. Drop them

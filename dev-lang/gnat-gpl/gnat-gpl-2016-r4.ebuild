@@ -161,7 +161,7 @@ src_compile() {
 	gcc_do_make "-C gcc gnattools"
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	toolchain_pkg_postinst
 	einfo "This provide the GNAT compiler with gcc for ada/c/c++ and more"
 	einfo "The compiler binary is gcc-${TOOLCHAIN_GCC_PV}"

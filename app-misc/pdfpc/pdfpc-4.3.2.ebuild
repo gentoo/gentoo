@@ -35,7 +35,7 @@ src_prepare() {
 	vala_src_prepare
 }
 
-src_configure(){
+src_configure() {
 	local mycmakeargs=(
 		-DSYSCONFDIR="${EPREFIX}/etc"
 		-DMOVIES=$(usex gstreamer on off)

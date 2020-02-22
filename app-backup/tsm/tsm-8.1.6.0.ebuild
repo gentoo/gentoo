@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -114,7 +114,7 @@ src_unpack() {
 	chmod -R u+w "${S}" || die
 }
 
-src_install(){
+src_install() {
 	cp -a opt "${D}" || die
 	cp -a usr "${D}" || die
 

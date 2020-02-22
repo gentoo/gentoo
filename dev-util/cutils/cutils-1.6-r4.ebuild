@@ -50,7 +50,7 @@ src_install() {
 	dodoc HISTORY
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	elog "cdecl was installed as cutils-cdecl because of a naming conflict"
 	elog "with dev-util/cdecl."
 }

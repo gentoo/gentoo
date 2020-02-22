@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -35,7 +35,7 @@ pkg_postinst() {
 	einfo
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	einfo
 	einfo "Update your IceWm preference."
 	einfo

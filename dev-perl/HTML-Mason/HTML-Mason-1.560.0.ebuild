@@ -61,7 +61,7 @@ src_prepare() {
 	perl-module_src_prepare
 }
 
-src_install () {
+src_install() {
 	perl-module_src_install
 	mv "${ED}"/usr/bin/convert* "${ED}"/usr/share/doc/${PF} || die
 }

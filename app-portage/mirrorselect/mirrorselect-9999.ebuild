@@ -26,7 +26,7 @@ RDEPEND="
 	=dev-python/ssl-fetch-9999[${PYTHON_USEDEP}]
 	"
 
-python_prepare_all()  {
+python_prepare_all() {
 	python_setup
 	eprefixify setup.py mirrorselect/main.py
 	echo Now setting version... VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version

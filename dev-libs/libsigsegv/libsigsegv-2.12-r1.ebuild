@@ -24,11 +24,11 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure () {
+src_configure() {
 	econf --enable-shared
 }
 
-src_test () {
+src_test() {
 	emake check
 }
 

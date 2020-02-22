@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -68,7 +68,7 @@ src_configure() {
 	kde5_src_configure
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	kde5_pkg_postinst
 
 	elog "The Android .apk file is available via"

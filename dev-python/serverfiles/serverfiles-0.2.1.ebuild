@@ -22,6 +22,6 @@ DEPEND="${DEPEND}
 	dev-python/setuptools_scm[${PYTHON_USEDEP}]
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
-python_test(){
+python_test() {
 	py.test -v || die "Tests fail with ${EPYTHON}"
 }

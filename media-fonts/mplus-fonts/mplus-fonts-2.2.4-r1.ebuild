@@ -26,7 +26,7 @@ S="${WORKDIR}/${MY_P}"
 # Only installs fonts
 RESTRICT="strip binchecks"
 
-src_install(){
+src_install() {
 	DESTDIR="${D}${FONTDIR}" ./install_mplus_fonts || die
 	dodoc README* INSTALL*
 }

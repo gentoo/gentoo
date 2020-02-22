@@ -53,7 +53,7 @@ PATCHES=(
 K_EXTRAEINFO="For more info on pf-sources and details on how to report problems,
 see: ${HOMEPAGE}."
 
-pkg_setup(){
+pkg_setup() {
 	ewarn
 	ewarn "${PN} is *not* supported by the Gentoo Kernel Project in any way."
 	ewarn "If you need support, please contact the pf developers directly."

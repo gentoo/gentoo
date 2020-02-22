@@ -50,7 +50,7 @@ src_unpack() {
 	fi
 }
 
-python_prepare(){
+python_prepare() {
 	if python_is_python3; then
 		einfo "Removing the RSS plugin because of clashes between libxml2's Python3"
 		einfo "bindings and feedparser."

@@ -91,7 +91,7 @@ src_configure() {
 		$(use_enable ipv6)
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 	dodoc README AUTHORS NEWS VERSION
 }

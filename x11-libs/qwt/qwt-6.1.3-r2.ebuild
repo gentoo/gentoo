@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -113,7 +113,7 @@ src_test() {
 	multibuild_foreach_variant run_in_build_dir testing
 }
 
-src_install () {
+src_install() {
 	rm -f doc/man/*/{_,deprecated}* || die
 
 	multibuild_foreach_variant run_in_build_dir emake INSTALL_ROOT="${D}" install

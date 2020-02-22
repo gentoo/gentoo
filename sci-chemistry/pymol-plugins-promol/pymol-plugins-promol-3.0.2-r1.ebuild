@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -39,7 +39,7 @@ src_prepare() {
 	python_foreach_impl preparation
 }
 
-src_install(){
+src_install() {
 	dodoc *doc
 	dohtml -r Thanks.html EDMHelp.htm Help
 

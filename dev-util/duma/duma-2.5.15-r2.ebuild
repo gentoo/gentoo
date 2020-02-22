@@ -68,7 +68,7 @@ src_test() {
 	elog "Both static and dynamic confidence tests should say PASSED."
 }
 
-src_install(){
+src_install() {
 	emake prefix="${D}/usr" libdir="${D}/usr/$(get_libdir)" \
 		docdir="${D}/usr/share/doc/${PF}" install
 

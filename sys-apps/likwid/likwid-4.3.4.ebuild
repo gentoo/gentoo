@@ -139,7 +139,7 @@ src_compile() {
 		"${src_compile_opts[@]}"
 }
 
-src_install () {
+src_install() {
 	export_emake_opts
 	emake \
 		"${src_compile_opts[@]}" \

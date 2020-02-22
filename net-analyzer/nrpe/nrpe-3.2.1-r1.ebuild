@@ -74,7 +74,7 @@ src_install() {
 	rm "${D}/usr/bin/nrpe-uninstall" || die 'failed to remove uninstall tool'
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	elog 'Some users have reported incompatibilities between nrpe-2.x and'
 	elog 'nrpe-3.x. We recommend that you use the same major version for'
 	elog 'both your server and clients.'

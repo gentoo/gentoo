@@ -34,7 +34,7 @@ src_configure() {
 	sed -e "s#'ar #'$(tc-getAR) #" -e "s#'ranlib #'$(tc-getRANLIB) #" -i make-makelib.sh || die
 }
 
-src_install () {
+src_install() {
 	dobin queue-fix
 
 	einstalldocs
