@@ -131,7 +131,6 @@ src_configure() {
 			--disable-linux-acpi \
 			--disable-record \
 			--disable-selective-werror \
-			--disable-silent-rules \
 			--disable-static \
 			--disable-unit-tests \
 			--disable-xephyr \

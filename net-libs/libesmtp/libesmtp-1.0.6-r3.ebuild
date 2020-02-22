@@ -31,7 +31,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		$(use_enable static-libs static) \
 		--enable-all \
 		$(use_enable ntlm) \

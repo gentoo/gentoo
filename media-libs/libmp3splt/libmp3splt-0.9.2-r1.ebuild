@@ -32,7 +32,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		--disable-static \
 		$(use_enable pcre) \
 		$(use_enable flac) \

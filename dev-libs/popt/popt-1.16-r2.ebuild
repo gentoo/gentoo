@@ -25,7 +25,6 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
-		--disable-dependency-tracking \
 		$(use_enable static-libs static) \
 		$(use_enable nls)
 }
