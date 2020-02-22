@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,13 +17,13 @@ REQUIRED_USE="|| ( client server )"
 
 RDEPEND="
 	dev-db/sqlite:3
-	dev-games/irrlicht
 	dev-lang/luajit:2
 	dev-libs/gmp:0=
 	dev-libs/jsoncpp:=
 	sys-libs/zlib
 	client? (
 		app-arch/bzip2
+		dev-games/irrlicht
 		media-libs/libpng:0=
 		virtual/jpeg:0
 		virtual/opengl
@@ -45,6 +45,7 @@ RDEPEND="
 	server? (
 		acct-group/minetest
 		acct-user/minetest
+		dev-games/irrlicht-headers
 	)
 	spatial? ( sci-libs/libspatialindex:= )"
 DEPEND="${RDEPEND}"
@@ -54,8 +55,6 @@ BDEPEND="
 		media-gfx/graphviz
 	)
 	nls? ( sys-devel/gettext )"
-
-PATCHES="${FILESDIR}/${PV}-FindJson.patch"
 
 src_prepare() {
 	cmake_src_prepare
