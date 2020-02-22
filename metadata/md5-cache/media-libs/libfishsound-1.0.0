@@ -10,4 +10,4 @@ RDEPEND=media-libs/libogg media-libs/libvorbis flac? ( media-libs/flac ) speex? 
 RESTRICT=test
 SLOT=0
 SRC_URI=https://downloads.xiph.org/releases/libfishsound/libfishsound-1.0.0.tar.gz
-_md5_=cb320e2610a1f981c8089f398099fb57
+_md5_=1f6f9f8884f4f583f41ef23fe34d47f0

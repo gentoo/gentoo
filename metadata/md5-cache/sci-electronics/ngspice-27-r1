@@ -10,4 +10,4 @@ RDEPEND=sys-libs/ncurses:0= X? ( x11-libs/libXaw x11-libs/libXt x11-libs/libX11 
 SLOT=0
 SRC_URI=mirror://sourceforge/ngspice/ngspice-27.tar.gz doc? ( mirror://sourceforge/ngspice/ngspice-27-manual.pdf )
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=7e07ecd90ab1d6aa98889076cf2bd3ad
+_md5_=8842e694ba811bdf7453d76a79991068

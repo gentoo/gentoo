@@ -9,4 +9,4 @@ LICENSE=GPL-2
 RDEPEND=virtual/libusb:0
 SLOT=0
 SRC_URI=mirror://sourceforge/ifp-driver/libifp-1.0.0.2.tar.gz
-_md5_=88cbc4d04c6fb7e8ddd7026a52a745f6
+_md5_=555721a7c7b055eb578ba8d27eedc354

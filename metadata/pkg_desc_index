@@ -4872,7 +4872,7 @@ dev-libs/flatbuffers 1.11.0: Memory efficient serialization library
 dev-libs/folks 0.12.1 0.12.1-r1: Library for aggregating people from multiple sources
 dev-libs/foma 0.9.18: A set of utilities for constructing finite-state automata and transducers
 dev-libs/freexl 1.0.1 1.0.2: Simple XLS data extraction library
-dev-libs/fribidi 1.0.7 1.0.8: A free implementation of the unicode bidirectional algorithm
+dev-libs/fribidi 1.0.8: A free implementation of the unicode bidirectional algorithm
 dev-libs/fstrm 0.3.0: Frame Streams implementation in C
 dev-libs/gdl 3.28.0: GNOME docking library
 dev-libs/geoip 1.6.9-r1 1.6.10 1.6.11 1.6.12: GeoIP Legacy C API
