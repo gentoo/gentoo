@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Back up your files from multiple client computers to a centralized Synology NAS
+EAPI=7
+HOMEPAGE=https://www.synology.com/en-global/releaseNote/CloudStationBackup
+KEYWORDS=~amd64 ~x86
+LICENSE=Synology
+RESTRICT=bindist mirror strip
+SLOT=0
+SRC_URI=amd64? ( https://global.download.synology.com/download/Tools/CloudStationBackup/4.3.2-4450/Ubuntu/Installer/x86_64/synology-cloud-station-backup-4450.x86_64.deb ) x86? ( https://global.download.synology.com/download/Tools/CloudStationBackup/4.3.2-4450/Ubuntu/Installer/i686/synology-cloud-station-backup-4450.i686.deb )
+_eclasses_=xdg	c7ba313ea1eaf266f95cc6235f7d6a07	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=971947e8b7bca5ebe57bec745c6733dc

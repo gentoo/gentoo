@@ -684,6 +684,7 @@ app-backup/sarab 1.0.0: SaraB is a powerful and automated backup scheduling syst
 app-backup/simplebackup 1.8.1-r1: Cross-platform backup program
 app-backup/snapper 0.5.6-r1 0.8.4 0.8.5 0.8.6: Command-line program for btrfs and lvm snapshot management
 app-backup/spideroak-bin 7.5.0-r1: Secure free online backup, storage, and sharing system
+app-backup/synology-cloud-station-backup 4450: Back up your files from multiple client computers to a centralized Synology NAS
 app-backup/tarsnap 1.0.35 1.0.37 1.0.39: Online backups for the truly paranoid
 app-backup/tob 0.26-r2: A general driver for making and maintaining backups
 app-backup/tsm 7.1.8.0 8.1.6.0: IBM Spectrum Protect (former Tivoli Storage Manager) Backup/Archive Client, API
