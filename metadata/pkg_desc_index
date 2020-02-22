@@ -2608,7 +2608,7 @@ app-text/kbibtex 0.9.1: BibTeX editor to edit bibliographies used with LaTeX
 app-text/kchmviewer 7.7-r1: Feature rich chm file viewer, based on Qt
 app-text/keepnote 0.7.9-r2: A note taking application
 app-text/kjots 5.0.2: Note taking utility by KDE
-app-text/krop 0.5.1 9999: A tool to crop PDF files
+app-text/krop 0.5.1-r1 9999: A tool to crop PDF files
 app-text/landslide 1.1.3: Generates a slideshow using the slides that power the html5-slides presentation
 app-text/languagetool 4.5 4.6: A proof-reading tool for many languages
 app-text/lcdf-typetools 2.106 2.107 2.108: Font utilities for eg manipulating OTF
@@ -2780,7 +2780,8 @@ app-text/xmldiff 1.1.1: A tool that figures out the differences between two simi
 app-text/xmlformat 1.04: Reformat XML documents to your custom style
 app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edit XML documents
 app-text/xmlto 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
-app-text/xournal 0.4.8 0.4.8-r1 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
+app-text/xournal 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
+app-text/xournalpp 1.0.17 9999: Handwriting notetaking software with PDF annotation support
 app-text/xpdf 4.02 4.02-r1: The PDF viewer and tools
 app-text/yelp-tools 3.32.2: Collection of tools for building and converting documentation
 app-text/yodl 4.02.01 4.02.02: Your Own Document Language: a pre-document language and tools to process it
@@ -7428,7 +7429,7 @@ dev-python/asn1crypto 0.22.0 0.24.0: Python ASN.1 library with a focus on perfor
 dev-python/asset 0.6.11: A package resource and symbol loading helper library
 dev-python/assets 0.1.1-r1: Cache-friendly asset management via content-hash-naming
 dev-python/astor 0.5 0.6 0.7.1 0.8.1: Read/rewrite/write Python ASTs
-dev-python/astroid 1.4.8 1.6.5 2.2.5 2.3.3: Abstract Syntax Tree for logilab packages
+dev-python/astroid 1.4.8 2.2.5 2.3.3: Abstract Syntax Tree for logilab packages
 dev-python/astunparse 1.6.2: Astun parser for python
 dev-python/async_generator 1.10: Making it easy to write async iterators in Python 3.5
 dev-python/async_timeout 1.2.1 2.0.1 3.0.1: Timeout context manager for asyncio programs
@@ -7441,7 +7442,7 @@ dev-python/audioread 2.1.8-r1: Wrapper for audio file decoding using FFmpeg or G
 dev-python/authheaders 0.12.1: A library wrapping email authentication header verification and generation.
 dev-python/authres 0.800 1.1.1: Authentication-Results Headers generation and parsing
 dev-python/autobahn 17.5.1-r2 17.9.1 17.9.2 17.10.1 18.3.1: WebSocket and WAMP for Twisted and Asyncio
-dev-python/automat 0.5.0 0.6.0 0.7.0 0.8.0: Self-service finite-state machines for the programmer on the go
+dev-python/automat 0.8.0: Self-service finite-state machines for the programmer on the go
 dev-python/automaton 1.12.1: Friendly state machines for python.
 dev-python/autopep8 1.3.2 1.3.3 1.3.5 1.4 1.4.3 1.4.4 9999: Automatically formats Python code to conform to the PEP 8 style guide
 dev-python/awesome-slugify 1.6.5: Python flexible slugify function
@@ -7880,7 +7881,7 @@ dev-python/husl 4.0.3: Human-friendly HSL
 dev-python/hvac 0.2.17: Python client for HashiCorp Vault
 dev-python/hyper-h2 2.5.1 3.1.1 3.2.0: HTTP/2 State-Machine based protocol implementation
 dev-python/hyperframe 4.0.1 5.1.0 5.2.0: HTTP/2 framing layer for Python
-dev-python/hyperlink 17.1.1 17.3.1 18.0.0 19.0.0: A featureful, correct URL for Python
+dev-python/hyperlink 19.0.0: A featureful, correct URL for Python
 dev-python/hypothesis 4.47.5 4.50.8 4.57.1 5.4.1 5.5.0 5.5.1 5.5.2 5.5.4: A library for property based testing
 dev-python/icalendar 3.9.2 3.11.7 3.11.7-r1 4.0.3: Package used for parsing and generating iCalendar files (RFC 2445)
 dev-python/id3-py 1.2-r1: Module for manipulating ID3 tags in Python
@@ -8025,7 +8026,7 @@ dev-python/logutils 0.3.3 0.3.3-r1: The logutils package provides a set of handl
 dev-python/lxml 4.3.3 4.4.2 4.4.3 4.5.0: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2 0.10.1 2.1.6: LZ4 Bindings for Python
 dev-python/m2crypto 0.31.0-r2 0.35.2: A Python crypto and SSL toolkit
-dev-python/m2r 0.1.5 0.1.6 0.1.12 0.1.14 0.2.1: Markdown to reStructuredText converter
+dev-python/m2r 0.1.14 0.2.1: Markdown to reStructuredText converter
 dev-python/mailmanclient 3.1.1: mailmanclient -- python library for Mailman REST API
 dev-python/maintboot 0.1.0: Run maintenance tasks outside the OS
 dev-python/mako 1.0.3 1.0.6 1.0.7 1.1.0 1.1.1: A Python templating language
@@ -8253,7 +8254,7 @@ dev-python/pikepdf 1.8.3: Python library to work with pdf files based on qpdf
 dev-python/pilkit 2.0: A collection of utilities and processors for the Python Imaging Libary
 dev-python/pillow 6.2.1 6.2.2 7.0.0: Python Imaging Library (fork)
 dev-python/pillowfight 0.2: Eases the transition from PIL to Pillow
-dev-python/pip 9.0.1-r2 19.1 19.3.1-r1 19.3.1-r2 20.0.2: Installs python packages -- replacement for easy_install
+dev-python/pip 9.0.1-r2 19.3.1-r1 19.3.1-r2 20.0.2: Installs python packages -- replacement for easy_install
 dev-python/pipenv 9.0.0 9.0.0-r1 9.0.0-r2 2018.11.26: Python Development Workflow for Humans
 dev-python/pipfile 0.0.2: Replacement for the existing standard pip's requirements.txt file
 dev-python/pkgconfig 1.2.2 1.4.0: Interface Python with pkg-config
@@ -8383,7 +8384,7 @@ dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pyghmi 1.0.22-r1 1.5.5: A pure python implementation of IPMI protocol
 dev-python/pygit2 0.28.2 1.0.2 1.0.3: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
-dev-python/pygments 2.2.0 2.2.0-r1 2.3.1 2.4.2 2.5.2: Pygments is a syntax highlighting package written in Python
+dev-python/pygments 2.3.1 2.4.2 2.5.2: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
 dev-python/pygobject 2.28.6-r55 3.32.1 3.34.0: Python bindings for GObject Introspection
 dev-python/pygpgme 0.3-r1: A Python wrapper for the GPGME library
@@ -8395,7 +8396,7 @@ dev-python/pygtk 2.24.0-r4: GTK+2 bindings for Python
 dev-python/pygtkglext 1.1.0-r1: Python bindings to GtkGLExt
 dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
-dev-python/pyhamcrest 1.9.0 1.9.0-r1: Hamcrest framework for matcher objects
+dev-python/pyhamcrest 1.9.0-r1: Hamcrest framework for matcher objects
 dev-python/pyhcl 0.2.3 0.3.6: HCL configuration parser for python
 dev-python/pyicu 2.3 2.3.1 2.4.2: Python bindings for dev-libs/icu
 dev-python/pyid3lib 0.5.1-r2: Module for manipulating ID3 tags in Python
@@ -8411,7 +8412,7 @@ dev-python/pylama 7.6.5: Code audit tool for python
 dev-python/pylast 1.9.0: Python interface to last.fm and other api-compatible websites
 dev-python/pylibacl 0.5.0-r1 0.5.3: POSIX ACLs (Access Control Lists) for Python
 dev-python/pylibmc 1.5.1-r1 1.6.1-r1: Libmemcached wrapper written as a Python extension
-dev-python/pylint 1.6.5-r1 1.8.4 2.3.1 2.4.4: Python code static checker
+dev-python/pylint 1.6.5-r1 2.3.1 2.4.4: Python code static checker
 dev-python/pylru 1.2.0: A least recently used (LRU) cache for Python
 dev-python/pylzma 0.4.9: Python bindings for the LZMA compression library
 dev-python/pymad 0.10: Python wrapper for libmad MP3 decoding in python
@@ -8927,7 +8928,7 @@ dev-python/ttystatus 0.36: Terminal progress bar and status output for command l
 dev-python/tvdb_api 1.10_pre20150406-r1 2.0: Python interface to thetvdb.com API
 dev-python/tweepy 3.5.0: A Python library for accessing the Twitter API
 dev-python/twine 1.11.0 1.15.0 3.0.0 3.1.1: Collection of utilities for publishing packages on PyPI
-dev-python/twisted 16.6.0-r3 17.1.0-r2 17.9.0 18.4.0 18.7.0 19.10.0: An asynchronous networking framework written in Python
+dev-python/twisted 16.6.0-r3 18.4.0 19.10.0: An asynchronous networking framework written in Python
 dev-python/twisted-conch 13.2.0 15.2.1: Twisted SSHv2 implementation
 dev-python/twisted-core 13.2.0 15.2.1: An asynchronous networking framework written in Python
 dev-python/twisted-lore 13.2.0 15.2.1: Twisted documentation system
@@ -16011,7 +16012,7 @@ sci-libs/ViSP 3.2.0-r2: Visual Servoing Platform: visual tracking and visual ser
 sci-libs/adolc 2.4.1 2.6.3-r1 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
 sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/armadillo 8.300.2 9.800.3: Streamlined C++ linear algebra library
+sci-libs/armadillo 8.300.2 9.800.3 9.850.1: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.5 3.4.0 3.5.0 9999: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18 2.2.19: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
@@ -16885,7 +16886,7 @@ sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 2.9 3.0 9999: SELinux core utilities
-sys-apps/portage 2.3.69 2.3.79 2.3.84-r1 2.3.85-r1 2.3.86 2.3.87 2.3.88 2.3.89 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.69 2.3.79 2.3.84-r1 2.3.89 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
