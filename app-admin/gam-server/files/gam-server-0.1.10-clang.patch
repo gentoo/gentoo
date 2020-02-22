@@ -1,0 +1,11 @@
+--- a/server/gam_eq.c	2007-07-04 17:36:49.000000000 +0400
++++ b/server/gam_eq.c	2020-02-22 12:04:48.311099825 +0300
+@@ -124,7 +124,7 @@
+ {
+ 	gboolean done_work = FALSE;
+ 	if (!eq)
+-		return;
++		return done_work;
+ 
+ #ifdef GAM_EQ_VERBOSE
+ 	GAM_DEBUG(DEBUG_INFO, "gam_eq: Flushing event queue for %s\n", gam_connection_get_pidname (conn));

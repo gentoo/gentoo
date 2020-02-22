@@ -48,6 +48,9 @@ src_prepare() {
 	# Fix deadlocks with glib-2.32, bug #413331, upstream #667230
 	epatch "${FILESDIR}/${P}-ih_sub_cancel-deadlock.patch"
 
+	# Fix missing result returned in gam_eq.c, gam_eq_flush function, line 127
+	epatch "${FILESDIR}/${P}-clang.patch"
+
 	# Drop DEPRECATED flags
 	sed -i -e 's:-DG_DISABLE_DEPRECATED:$(NULL):g' server/Makefile.am || die
 
