@@ -272,7 +272,6 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--disable-aa
-		--disable-dependency-tracking
 		--disable-optimizations
 		--disable-rpath
 		--disable-update-check

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -37,9 +37,7 @@ src_configure() {
 	use flac || myconf="${myconf} --disable-flac"
 	use speex || myconf="${myconf} --disable-speex"
 
-	econf \
-		--disable-dependency-tracking \
-		${myconf}
+	econf ${myconf}
 }
 
 src_install() {

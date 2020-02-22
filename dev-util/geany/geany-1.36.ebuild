@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -57,7 +57,6 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--disable-html-docs
-		--disable-dependency-tracking
 		--disable-pdf-docs
 		$(use_enable gtk3)
 		$(use_enable vte)
