@@ -29,9 +29,7 @@ PATCHES=(
 )
 
 src_configure() {
-	econf \
-		--disable-dependency-tracking \
-		--disable-gtk-doc
+	econf --disable-gtk-doc
 }
 
 src_install() {

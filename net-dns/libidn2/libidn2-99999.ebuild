@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,8 +56,7 @@ multilib_src_configure() {
 		$(use_enable static-libs static) \
 		--disable-doc \
 		--disable-gcc-warnings \
-		--disable-gtk-doc \
-		--disable-silent-rules
+		--disable-gtk-doc
 }
 
 multilib_src_install() {

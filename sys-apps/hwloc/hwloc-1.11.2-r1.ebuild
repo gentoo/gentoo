@@ -54,7 +54,6 @@ multilib_src_configure() {
 	export HWLOC_PKG_CONFIG=$(tc-getPKG_CONFIG) #393467
 	use cuda && local LDFLAGS="${LDFLAGS} -L/opt/cuda/$(get_libdir)"
 	local myeconfargs=(
-		--disable-silent-rules
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable cairo)
 		$(use_enable cuda)

@@ -29,7 +29,6 @@ src_configure() {
 	use urandom && myconf="${myconf} --with-random-device=/dev/urandom"
 
 	econf \
-		--disable-dependency-tracking \
 		--sysconfdir=/etc/pdnsd \
 		--with-cachedir=/var/cache/pdnsd \
 		--with-default-id=pdnsd \

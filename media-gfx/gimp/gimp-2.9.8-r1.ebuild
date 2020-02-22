@@ -116,10 +116,7 @@ src_configure() {
 	local myconf=(
 		GEGL=${EPREFIX}/usr/bin/gegl-0.3
 		GDBUS_CODEGEN=${EPREFIX}/bin/false
-
 		--enable-default-binary
-		--disable-silent-rules
-
 		$(use_with !aqua x)
 		$(use_with aalib aa)
 		$(use_with alsa)

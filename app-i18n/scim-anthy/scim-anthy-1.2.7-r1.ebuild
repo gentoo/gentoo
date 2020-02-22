@@ -40,8 +40,7 @@ src_prepare() {
 src_configure() {
 	econf \
 		$(use_enable nls) \
-		--disable-static \
-		--disable-dependency-tracking
+		--disable-static
 }
 
 src_install() {

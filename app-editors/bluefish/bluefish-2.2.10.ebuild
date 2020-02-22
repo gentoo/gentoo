@@ -65,7 +65,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		--disable-update-databases \
 		--disable-xml-catalog-update \
 		$(use_with !gtk3 gtk2) \

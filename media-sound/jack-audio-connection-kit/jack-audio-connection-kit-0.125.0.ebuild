@@ -3,7 +3,7 @@
 
 EAPI=5
 
-inherit flag-o-matic eutils multilib multilib-minimal
+inherit flag-o-matic eutils multilib-minimal
 
 DESCRIPTION="A low-latency audio server"
 HOMEPAGE="http://www.jackaudio.org"
@@ -57,8 +57,6 @@ multilib_src_configure() {
 		--disable-firewire \
 		$(use_enable cpu_flags_x86_sse sse) \
 		--with-html-dir=/usr/share/doc/${PF} \
-		--disable-dependency-tracking \
-		--libdir=/usr/$(get_libdir) \
 		${myconf}
 
 	if [ "${ABI}" != "${DEFAULT_ABI}" ] ; then

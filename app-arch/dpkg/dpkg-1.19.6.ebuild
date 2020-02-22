@@ -71,7 +71,6 @@ src_configure() {
 		$(use_with zlib libz) \
 		--disable-compiler-warnings \
 		--disable-dselect \
-		--disable-silent-rules \
 		--disable-start-stop-daemon \
 		--localstatedir="${EPREFIX}"/var
 }

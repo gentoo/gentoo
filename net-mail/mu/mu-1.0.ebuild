@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -33,7 +33,6 @@ src_prepare() {
 
 src_configure() {
 	# Todo: Make a guile USE-flag as soon as >=guile-2 is avaiable
-	# Note: --disable-silent-rules is included in EAPI-5
 	econf --disable-guile \
 		--disable-gtk \
 		--disable-webkit \
