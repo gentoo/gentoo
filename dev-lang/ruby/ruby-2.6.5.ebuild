@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -127,7 +127,6 @@ src_configure() {
 	INSTALL="${EPREFIX}/usr/bin/install -c" LIBPATHENV="" econf \
 		--program-suffix=${MY_SUFFIX} \
 		--with-soname=ruby${MY_SUFFIX} \
-		--docdir=${EPREFIX}/usr/share/doc/${P} \
 		--enable-shared \
 		--enable-pthread \
 		--disable-rpath \

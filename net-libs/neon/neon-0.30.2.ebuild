@@ -85,7 +85,6 @@ multilib_src_configure() {
 	fi
 
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--enable-shared \
 		$(use_with kerberos gssapi) \
 		$(use_with libproxy) \

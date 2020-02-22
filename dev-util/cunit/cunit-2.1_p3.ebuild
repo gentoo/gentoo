@@ -45,7 +45,6 @@ multilib_src_configure() {
 	append-libs $($(tc-getPKG_CONFIG) --libs ncurses)
 
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		$(use_enable static-libs static) \
 		--disable-debug \
 		$(use_enable ncurses curses)

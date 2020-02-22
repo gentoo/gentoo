@@ -54,8 +54,6 @@ src_configure() {
 	fi
 
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--sysconfdir="${EPREFIX}"/etc \
 		$(use_enable nls) \
 		$(use_enable ssl) \
 		--disable-pam \

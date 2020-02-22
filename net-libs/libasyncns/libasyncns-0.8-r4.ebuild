@@ -33,8 +33,6 @@ multilib_src_configure() {
 
 	ECONF_SOURCE=${S} \
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
 		--disable-lynx \
 		--disable-static
 }

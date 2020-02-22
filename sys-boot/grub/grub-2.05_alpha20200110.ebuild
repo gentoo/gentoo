@@ -192,7 +192,6 @@ grub_configure() {
 		--disable-werror
 		--program-prefix=
 		--libdir="${EPREFIX}"/usr/lib
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		$(use_enable device-mapper)
 		$(use_enable mount grub-mount)
 		$(use_enable nls)

@@ -65,8 +65,10 @@ src_prepare() {
 
 src_configure() {
 	tc-ld-disable-gold
+	# passing --exec-prefix is needed as the build system is trying to be clever
+	# and install itself into / instead of /usr in order to be compatible with
+	# separate-/usr setups (which we don't support without an initrd).
 	econf \
-		--prefix="${EPREFIX}"/usr \
 		--exec-prefix="${EPREFIX}"/usr \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		$(use_enable debug) \

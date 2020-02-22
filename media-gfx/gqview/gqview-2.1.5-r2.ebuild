@@ -42,9 +42,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--without-lcms
+	econf --without-lcms
 }
 
 src_install() {
