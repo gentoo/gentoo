@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-22)
+# Last release in 2009, py2-only, blocks dev-python/pygtk removal, bug #708100
+# media-gfx/mcomix meanwhile is a fork of comix that will be kept until its
+# fork mcomix3 was packaged. Masked for removal in 30 days.
+media-gfx/comix
+
 # Mart Raudsepp <leio@gentoo.org> (2020-02-21)
 # Does not compile against new gupnp-1.2 API. No consumers, dead project.
 # Removal in 30 days. Bug #710436.
@@ -42,7 +48,6 @@ net-libs/gupnp-ui
 # Blocks pygtk removal.
 # Removal in 30 days.
 media-gfx/cropgui
-
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
 # Last release in 2011, py2-only, blocks dev-python/pygtk removal, bug #708102
