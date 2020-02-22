@@ -1,6 +1,6 @@
 BDEPEND=virtual/pkgconfig
-DEFINED_PHASES=compile install preinst setup
-DEPEND=>=dev-lang/erlang-21.3[ssl] <dev-lang/erlang-23.0[ssl] app-arch/zip app-arch/unzip app-text/docbook-xml-dtd:4.5 app-text/xmlto >=dev-lang/elixir-1.6.6 dev-libs/libxslt || ( ( dev-lang/python:3.8 dev-python/simplejson[python_targets_python3_8(-),python_single_target_python3_8(+)] ) ( dev-lang/python:3.7 dev-python/simplejson[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-python/simplejson[python_targets_python3_6(-),python_single_target_python3_6(+)] ) )
+DEFINED_PHASES=compile install setup
+DEPEND=>=dev-lang/erlang-21.3[ssl] <dev-lang/erlang-23.0[ssl] app-arch/zip app-arch/unzip app-text/docbook-xml-dtd:4.5 app-text/xmlto >=dev-lang/elixir-1.6.6 <dev-lang/elixir-1.10.0 dev-libs/libxslt || ( ( dev-lang/python:3.8 dev-python/simplejson[python_targets_python3_8(-),python_single_target_python3_8(+)] ) ( dev-lang/python:3.7 dev-python/simplejson[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-python/simplejson[python_targets_python3_6(-),python_single_target_python3_6(+)] ) )
 DESCRIPTION=RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang
 EAPI=7
 HOMEPAGE=https://www.rabbitmq.com/
@@ -11,4 +11,4 @@ RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/rabbitmq/rabbitmq-server/releases/download/v3.7.24/rabbitmq-server-3.7.24.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	user	95500565ced27667aca7cf7da2d46068	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=3d73b49948fb8fa3dca53ab620b6748b
+_md5_=b2f81c4a35350f0deaddfedaee340bea
