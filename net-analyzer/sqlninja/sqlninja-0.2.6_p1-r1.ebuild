@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -30,7 +30,7 @@ RDEPEND="
 
 S="${WORKDIR}/${MY_P}"
 
-src_install () {
+src_install() {
 	dodoc sqlninja-howto.html ChangeLog README
 
 	if use doc; then

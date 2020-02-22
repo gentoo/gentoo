@@ -49,7 +49,7 @@ src_configure() {
 		${myconf}
 }
 
-src_install(){
+src_install() {
 	default
 
 	docinto txt

@@ -50,7 +50,7 @@ src_compile() {
 	popd
 }
 
-src_install () {
+src_install() {
 	local MY_LIBDIR=/usr/$(get_libdir)
 	dodir "${MY_LIBDIR}"
 	emake DESTDIR="${D}" LIBDIR="${MY_LIBDIR}" MANROOT=/usr/share/man/man \

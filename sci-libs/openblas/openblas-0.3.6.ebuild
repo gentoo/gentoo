@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -45,7 +45,7 @@ pkg_setup() {
 	export PREFIX="${EPREFIX}/usr"
 }
 
-src_unpack () {
+src_unpack() {
 	default
 	mv "${WORKDIR}"/*OpenBLAS* "${S}" || die
 	if use index-64bit; then
@@ -53,7 +53,7 @@ src_unpack () {
 	fi
 }
 
-src_compile () {
+src_compile() {
 	emake
 	emake -Cinterface shared-blas-lapack
 	if use index-64bit; then
@@ -65,7 +65,7 @@ src_test() {
 	emake tests
 }
 
-src_install () {
+src_install() {
 	emake install DESTDIR="${D}" OPENBLAS_INCLUDE_DIR='$(PREFIX)'/include/${PN} \
 		OPENBLAS_LIBRARY_DIR='$(PREFIX)'/$(get_libdir)
 	dodoc GotoBLAS_*.txt *.md Changelog.txt
@@ -90,7 +90,7 @@ src_install () {
 	fi
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	use eselect-ldso || return
 	local libdir=$(get_libdir) me="openblas"
 
@@ -119,7 +119,7 @@ pkg_postinst () {
 	fi
 }
 
-pkg_postrm () {
+pkg_postrm() {
 	if use eselect-ldso; then
 		eselect blas validate
 		eselect lapack validate

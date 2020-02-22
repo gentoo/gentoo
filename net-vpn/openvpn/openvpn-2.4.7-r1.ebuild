@@ -53,7 +53,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-libressl.patch"
 )
 
-pkg_setup()  {
+pkg_setup() {
 	linux-info_pkg_setup
 }
 

@@ -29,7 +29,7 @@ src_configure() {
 		-mandir /usr/share/man || die "configure failed"
 }
 
-src_compile(){
+src_compile() {
 	emake out
 	if use ocamlopt; then
 		emake  opt

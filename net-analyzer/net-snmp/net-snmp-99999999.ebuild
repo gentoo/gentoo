@@ -149,7 +149,7 @@ src_compile() {
 	use doc && emake docsdox
 }
 
-src_install () {
+src_install() {
 	# bug #317965
 	emake -j1 DESTDIR="${D}" install
 

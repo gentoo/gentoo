@@ -55,7 +55,7 @@ pkg_setup() {
 	layman_check_kernel_config
 }
 
-python_prepare_all()  {
+python_prepare_all() {
 	python_setup
 	esetup.py setup_plugins
 	distutils-r1_python_prepare_all

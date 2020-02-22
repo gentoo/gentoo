@@ -46,7 +46,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	autotools-utils_src_install
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples

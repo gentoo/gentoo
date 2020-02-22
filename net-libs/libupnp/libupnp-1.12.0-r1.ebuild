@@ -41,7 +41,7 @@ src_configure() {
 		$(use_enable samples)
 }
 
-src_install () {
+src_install() {
 	default
 
 	use static-libs || prune_libtool_files

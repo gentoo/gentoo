@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -46,11 +46,11 @@ pkg_setup() {
 	enewgroup android
 }
 
-src_prepare(){
+src_prepare() {
 	rm -rf tools/lib/x86*
 }
 
-src_install(){
+src_install() {
 	dodoc tools/NOTICE.txt "SDK Readme.txt"
 	rm -f tools/NOTICE.txt "SDK Readme.txt"
 

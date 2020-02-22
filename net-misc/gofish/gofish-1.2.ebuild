@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ src_configure() {
 		--disable-mmap-cache
 }
 
-src_install () {
+src_install() {
 	default
 	dodoc Configure_GoFish
 	newinitd "${FILESDIR}"/gofish.rc gofish

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -52,7 +52,7 @@ PATCHES=(
 
 DOCS=( README.md )
 
-src_prepare(){
+src_prepare() {
 	default
 
 	if use !desktop-utils ; then
@@ -63,12 +63,12 @@ src_prepare(){
 	l10n_find_plocales_changes "${S}/src-qt5/core/${PN}-desktop/i18n" "${PN}-desktop_" '.ts'
 }
 
-src_configure(){
+src_configure() {
 	eqmake5 PREFIX="${EPREFIX}/usr" LIBPREFIX="${EPREFIX}/usr/$(get_libdir)" \
 		CONFIG+=WITH_I18N QMAKE_CFLAGS_ISYSTEM=
 }
 
-src_install(){
+src_install() {
 	emake install INSTALL_ROOT="${D}"
 	einstalldocs
 	mkdir -p "${D}"/usr/share/icons/hicolor/64x64/apps || die "cannot create the icons dir"

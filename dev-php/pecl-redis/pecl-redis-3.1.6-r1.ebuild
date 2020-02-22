@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -40,7 +40,7 @@ src_configure() {
 	php-ext-source-r3_src_configure
 }
 
-src_test(){
+src_test() {
 	local slot
 	for slot in $(php_get_slots); do
 		php_init_slot_env "${slot}"

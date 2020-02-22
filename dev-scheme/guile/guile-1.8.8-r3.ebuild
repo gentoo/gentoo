@@ -80,7 +80,7 @@ src_configure() {
 		EMACS=no
 }
 
-src_compile()  {
+src_compile() {
 	emake
 
 	# Above we have disabled the build system's Emacs support;

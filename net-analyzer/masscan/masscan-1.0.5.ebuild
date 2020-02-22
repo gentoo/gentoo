@@ -14,7 +14,7 @@ KEYWORDS="~amd64 ~x86"
 
 RDEPEND="net-libs/libpcap"
 
-src_prepare(){
+src_prepare() {
 	default
 
 	sed -i \

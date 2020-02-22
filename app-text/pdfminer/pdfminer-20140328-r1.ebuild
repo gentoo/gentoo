@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
-python_compile_all(){
+python_compile_all() {
 	use examples && emake -C samples all
 }
 

@@ -26,7 +26,7 @@ DEPEND="www-apps/rocketwiki-lqfb
 
 S=${WORKDIR}/${MY_P}
 
-src_prepare () {
+src_prepare() {
 	for lang in zh-Hans zh-TW ; do
 		rm -f locale/help/*.${lang}.txt
 	done

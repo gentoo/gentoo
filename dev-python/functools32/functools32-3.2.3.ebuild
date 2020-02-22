@@ -19,6 +19,6 @@ IUSE=""
 
 S="${WORKDIR}"/${P}-2
 
-python_test(){
+python_test() {
 	"${PYTHON}" test_functools32.py || die
 }

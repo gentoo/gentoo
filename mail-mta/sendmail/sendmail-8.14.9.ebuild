@@ -94,7 +94,7 @@ src_compile() {
 	popd
 }
 
-src_install () {
+src_install() {
 	local MY_LIBDIR=/usr/$(get_libdir)
 	local MY_OBJDIR="obj.`uname -s`.`uname -r`.`uname -m`"
 	dodir /usr/bin ${MY_LIBDIR} /usr/include/libmilter

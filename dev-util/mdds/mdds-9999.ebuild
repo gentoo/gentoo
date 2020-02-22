@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}"
 
 PATCHES=( "${FILESDIR}/${PN}-1.4.3-buildsystem.patch" )
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -19,6 +19,6 @@ DEPEND="dev-libs/glib:2
 	dev-games/libmaitretarot"
 RDEPEND=${DEPEND}
 
-src_prepare () {
+src_prepare() {
 	epatch "${FILESDIR}"/${P}-format.patch
 }

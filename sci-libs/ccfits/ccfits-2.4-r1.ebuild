@@ -37,7 +37,7 @@ src_configure() {
 	econf $(use_enable static-libs static)
 }
 
-src_install () {
+src_install() {
 	if use doc; then
 		DOCS+=( *.pdf )
 		HTML_DOCS=( html/. )

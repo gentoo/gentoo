@@ -16,12 +16,12 @@ IUSE=""
 
 RDEPEND="!<sys-libs/glibc-2.26"
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }
 
-src_install(){
+src_install() {
 	default
 
 	# provided by sys-fs/quota[rpc]

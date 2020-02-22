@@ -37,7 +37,7 @@ src_prepare() {
 	default
 }
 
-src_install () {
+src_install() {
 	keepdir /var/lib/mrtg
 
 	default

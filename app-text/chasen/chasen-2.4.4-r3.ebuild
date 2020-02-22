@@ -47,7 +47,7 @@ src_test() {
 	fi
 }
 
-src_install () {
+src_install() {
 	default
 
 	if use perl ; then

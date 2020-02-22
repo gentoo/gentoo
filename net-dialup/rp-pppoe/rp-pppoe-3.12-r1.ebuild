@@ -77,7 +77,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	cd "${S}/src" || die
 	emake DESTDIR="${D}" docdir=/usr/share/doc/${PF} install
 

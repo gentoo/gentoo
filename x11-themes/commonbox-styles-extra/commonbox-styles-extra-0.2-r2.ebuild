@@ -17,7 +17,7 @@ IUSE=""
 RDEPEND="media-gfx/xv
 	|| ( x11-wm/fluxbox x11-wm/blackbox x11-wm/openbox )"
 
-src_install () {
+src_install() {
 	insinto /usr/share/commonbox/styles
 	doins -r styles/.
 

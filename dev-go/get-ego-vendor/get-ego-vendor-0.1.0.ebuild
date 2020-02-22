@@ -12,11 +12,11 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
 
-src_compile () {
+src_compile() {
 	go build ||  die
 }
 
-src_install () {
+src_install() {
 dobin get-ego-vendor
 dodoc README.md
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -63,7 +63,7 @@ src_compile() {
 		SYSCONFDIR="${EPREFIX}/etc"
 }
 
-src_install () {
+src_install() {
 	emake \
 		install_dumb \
 		$(use ncurses && echo install) \

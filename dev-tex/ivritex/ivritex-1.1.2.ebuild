@@ -18,7 +18,7 @@ SLOT="0"
 IUSE=""
 DEPEND=""
 
-src_install () {
+src_install() {
 	export VARTEXFONTS="${T}/fonts"
 
 	make TEX_ROOT="${D}"/usr/share/texmf install || die "make failed"

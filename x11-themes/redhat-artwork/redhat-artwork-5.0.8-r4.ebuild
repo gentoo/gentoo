@@ -77,7 +77,7 @@ src_compile() {
 	emake QTDIR="${QTDIR}" styledir="${QTDIR}/plugins/styles"
 }
 
-src_install () {
+src_install() {
 	# dies if LANG has UTF-8
 	export LANG=C
 	export LC_ALL=C

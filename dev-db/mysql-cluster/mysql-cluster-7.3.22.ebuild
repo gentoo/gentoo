@@ -224,7 +224,7 @@ src_prepare() {
 	java-utils-2_src_prepare
 }
 
-src_configure(){
+src_configure() {
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 

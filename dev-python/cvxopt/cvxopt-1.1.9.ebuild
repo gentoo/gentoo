@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? ( dev-python/sphinx )"
 
-python_prepare_all(){
+python_prepare_all() {
 	pkg_libs() {
 		$(tc-getPKG_CONFIG) --libs-only-l $* | \
 			sed -e 's:[ ]-l*\(pthread\|m\)\([ ]\|$\)::g' -e 's:[ ]*$::' | \

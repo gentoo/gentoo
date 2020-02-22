@@ -83,7 +83,7 @@ pkg_postrm() {
 	xdg_desktop_database_update
 }
 
-src_test(){
+src_test() {
 	local confdir="${HOME}/.config/ImageMagick"
 	mkdir -p "${confdir}" || die
 	cat > "${confdir}/policy.xml" <<-EOT || die
