@@ -11751,7 +11751,7 @@ gui-apps/mako 1.4.1 9999: A lightweight notification daemon for Wayland. Works o
 gui-apps/nm-tray 0.4.3: A simple Qt-based NetworkManager front-end
 gui-apps/slurp 1.2.0 9999: Select a region in a Wayland compositor and print it to the standard output.
 gui-apps/swaybg 1.0 9999: A wallpaper utility for Wayland
-gui-apps/swayidle 1.2 1.3 1.5 1.6 9999: Idle management daemon for Wayland
+gui-apps/swayidle 1.6 9999: Idle management daemon for Wayland
 gui-apps/swaylock 1.3 1.4 1.5 9999: Screen locker for Wayland
 gui-apps/waybar 0.8.0 9999: Highly customizable Wayland bar for Sway and Wlroots based compositors.
 gui-apps/wl-clipboard 1.0.0 2.0.0 9999: Wayland clipboard utilities
@@ -11759,9 +11759,9 @@ gui-libs/amtk 5.0.1 5.0.2: Actions, Menus and Toolbars Kit for GTK+ applications
 gui-libs/libhandy 0.0.9: Library with GTK widgets for mobile phones
 gui-libs/libwpe 1.4.0.1: Platform-agnostic interfaces for WPE WebKit
 gui-libs/tepl 4.2.1: GtkSourceView-based text editors and IDE helper library
-gui-libs/wlroots 0.8.1-r1 0.10.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
+gui-libs/wlroots 0.10.0 9999: Pluggable, composable, unopinionated modules for building a Wayland compositor
 gui-libs/wpebackend-fdo 1.4.0: WPE backend designed for Linux desktop systems
-gui-wm/sway 1.2 1.4 9999: i3-compatible Wayland window manager
+gui-wm/sway 1.4 9999: i3-compatible Wayland window manager
 java-virtuals/ejb-api 0: Virtual for Enterprise JavaBeans API (javax.ejb)
 java-virtuals/interceptor-api 0: Virtual for Interceptor API (javax.interceptor)
 java-virtuals/jms 1.1: Virtual for Java Message Service (JMS) API
@@ -15013,7 +15013,7 @@ net-misc/lksctp-tools 1.0.17 1.0.18-r1: Tools for Linux Kernel Stream Control Tr
 net-misc/lldpd 1.0.3 1.0.4: Implementation of IEEE 802.1ab (LLDP)
 net-misc/mcproxy 1.1.1-r1: A multicast proxy for IGMP/MLD
 net-misc/megatools 1.10.2-r1: Command line tools and C library for accessing Mega cloud storage
-net-misc/memcached 1.5.14 1.5.19 1.5.20 1.5.21-r1 1.5.22: High-performance, distributed memory object caching system
+net-misc/memcached 1.5.14 1.5.21-r1 1.5.22: High-performance, distributed memory object caching system
 net-misc/mico 2.3.13-r13 2.3.13-r14 9999: A freely available and fully compliant implementation of the CORBA standard
 net-misc/midentd 2.3.1-r2: ident daemon with masquerading and fake replies support
 net-misc/mikutter 3.8.6 9999: Simple, powerful and moeful twitter client
