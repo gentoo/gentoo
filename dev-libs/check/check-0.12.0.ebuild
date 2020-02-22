@@ -45,7 +45,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--disable-dependency-tracking
 		$(use_enable subunit)
 	)
 	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"

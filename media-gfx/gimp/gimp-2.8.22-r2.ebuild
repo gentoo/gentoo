@@ -75,7 +75,6 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
 	G2CONF="--enable-default-binary \
-		--disable-silent-rules \
 		$(use_with !aqua x) \
 		$(use_with aalib aa) \
 		$(use_with alsa) \

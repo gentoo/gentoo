@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -59,8 +59,7 @@ multilib_src_configure() {
 		$(use_enable cpu_flags_x86_sse sse) \
 		$(use_enable cpu_flags_x86_3dnow 3dnow) \
 		$(use_enable nls) \
-		--enable-fast-install \
-		--disable-dependency-tracking
+		--enable-fast-install
 }
 
 pkg_postinst() {

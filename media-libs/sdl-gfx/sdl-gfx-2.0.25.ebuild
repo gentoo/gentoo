@@ -27,7 +27,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		--disable-dependency-tracking \
 		$(use_enable cpu_flags_x86_mmx mmx) \
 		$(use_enable static-libs static)
 }

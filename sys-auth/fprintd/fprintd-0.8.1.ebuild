@@ -37,7 +37,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --disable-silent-rules \
+	econf \
 		$(use_enable pam) \
 		$(use_enable static-libs static) \
 		$(use_enable doc gtk-doc-html) \

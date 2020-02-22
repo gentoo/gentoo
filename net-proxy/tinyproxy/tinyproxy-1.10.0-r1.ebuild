@@ -42,7 +42,6 @@ src_configure() {
 		$(use_enable transparent-proxy transparent) \
 		$(use_enable upstream-proxy upstream) \
 		$(use_enable xtinyproxy-header xtinyproxy) \
-		--disable-silent-rules \
 		--localstatedir=/var
 }
 

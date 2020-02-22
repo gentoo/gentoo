@@ -43,9 +43,9 @@ src_prepare() {
 
 src_configure() {
 	append-flags -fno-strict-aliasing
-	econf 	--disable-dependency-tracking		\
-		--disable-static			\
-		--with-cairo=system			\
+	econf \
+		--disable-static \
+		--with-cairo=system \
 		$(use !cairo && printf %s --with-pango)
 }
 

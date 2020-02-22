@@ -22,7 +22,6 @@ S=${WORKDIR}/${MY_P}
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		--disable-dependency-tracking \
 		--disable-gui \
 		$(use_enable static-libs static)
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -113,7 +113,6 @@ multilib_src_configure() {
 		--with-nscd
 		--with-unicode-lib="glib2"
 		--disable-rpath
-		--disable-silent-rules
 		--sbindir=/usr/sbin
 		--without-kcm
 		$(use_with samba libwbclient)

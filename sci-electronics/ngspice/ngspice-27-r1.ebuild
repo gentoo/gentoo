@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -105,7 +105,6 @@ ngspice_configure() {
 		--enable-xspice \
 		--enable-cider \
 		--disable-xgraph \
-		--disable-dependency-tracking \
 		--disable-rpath \
 		$(use_enable openmp) \
 		$(use_with fftw fftw3) \

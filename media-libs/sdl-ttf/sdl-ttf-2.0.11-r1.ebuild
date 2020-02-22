@@ -36,7 +36,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--disable-dependency-tracking
 		$(use_enable static-libs static)
 		$(use_with X x)
 	)

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -113,7 +113,6 @@ src_configure() {
 		--disable-docs
 		# never enable altering of CFLAGS via profile option
 		--disable-profile
-		--disable-silent-rules
 		#  - Parameter --disable-workshop disables any use of Lua, effectivly
 		--disable-workshop
 		--program-suffix=-${SLOT}

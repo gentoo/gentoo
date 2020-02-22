@@ -39,7 +39,6 @@ src_configure() {
 		--disable-glade \
 		$(use_enable static-libs static) \
 		$(use_enable test gtktest) \
-		--disable-dependency-tracking \
 		--enable-libtool-lock
 }
 

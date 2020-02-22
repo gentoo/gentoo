@@ -29,7 +29,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--disable-silent-rules
 		$(use_enable debug tracing)
 	)
 	econf "${myeconfargs[@]}"

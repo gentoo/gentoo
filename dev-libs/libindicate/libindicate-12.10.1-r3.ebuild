@@ -60,7 +60,6 @@ src_configure() {
 
 	# python bindings are only for GTK+-2.x
 	econf \
-		--disable-silent-rules \
 		--disable-static \
 		$(use_enable gtk) \
 		$(use_enable introspection) \

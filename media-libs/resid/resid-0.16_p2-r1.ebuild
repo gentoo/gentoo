@@ -34,7 +34,6 @@ src_prepare() {
 multilib_src_configure() {
 	econf \
 		$(use_enable static-libs static) \
-		--disable-dependency-tracking \
 		--enable-resid-install \
 		--enable-shared
 }

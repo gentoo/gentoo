@@ -26,7 +26,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		$(use_enable static-libs static) \
 		$(use_enable doc doxygen-html)
 }

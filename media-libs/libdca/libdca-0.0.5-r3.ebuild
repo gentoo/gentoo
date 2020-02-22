@@ -31,7 +31,6 @@ multilib_src_configure() {
 	append-lfs-flags #328875
 
 	ECONF_SOURCE="${S}" econf \
-		--disable-dependency-tracking \
 		$(use_enable debug) \
 		$(use_enable static-libs static) \
 		$(use_enable oss)

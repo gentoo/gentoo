@@ -53,7 +53,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--disable-dependency-tracking
 		--with-readmedir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable debug debug-log)
 		$(use_enable ffmpegthumbnailer)

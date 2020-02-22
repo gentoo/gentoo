@@ -22,8 +22,7 @@ DEPEND="${RDEPEND}
 src_configure() {
 	econf \
 		--enable-oggsplt_symlink \
-		$(use_enable flac flacsplt_symlink) \
-		--disable-dependency-tracking
+		$(use_enable flac flacsplt_symlink)
 }
 
 src_install() {

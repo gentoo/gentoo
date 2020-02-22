@@ -92,7 +92,6 @@ src_configure() {
 		--datadir="${EPREFIX}${DATADIR}"
 		--libdir="${EPREFIX}"/usr/$(get_libdir)/${PN}
 		--localedir="${EPREFIX}"/usr/share/locale
-		--disable-dependency-tracking
 		--disable-paranoid
 		--disable-memory
 		--disable-testall

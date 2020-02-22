@@ -30,7 +30,6 @@ multilib_src_configure() {
 	append-flags -Wno-error
 
 	myconf=(
-		--disable-silent-rules
 		--disable-static
 		--with-gtk=2
 	)

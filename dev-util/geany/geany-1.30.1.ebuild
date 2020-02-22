@@ -44,8 +44,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_enable gtk3) \
 		$(use_enable vte)
 }

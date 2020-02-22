@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -77,7 +77,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--disable-silent-rules
 		$(use_with xen xen_opt)
 		--without-ikvm-native
 		--disable-dtrace

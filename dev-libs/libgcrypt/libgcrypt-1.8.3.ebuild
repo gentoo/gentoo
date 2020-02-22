@@ -40,7 +40,6 @@ multilib_src_configure() {
 		append-cflags -Wa,--divide
 	fi
 	local myeconfargs=(
-		--disable-dependency-tracking
 		--enable-noexecstack
 		$(use_enable o-flag-munging O-flag-munging)
 		$(use_enable static-libs static)

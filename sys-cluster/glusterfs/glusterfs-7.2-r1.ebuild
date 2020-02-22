@@ -96,8 +96,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
-		--disable-silent-rules \
 		--disable-fusermount \
 		$(use_enable debug) \
 		$(use_enable fuse fuse-client) \

@@ -48,8 +48,7 @@ src_configure() {
 		$(use_enable selinux) \
 		$(use_enable static-libs static) \
 		$(use_with readline) \
-		--disable-rpath \
-		--disable-silent-rules
+		--disable-rpath
 }
 
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/{API,FAT,USER.jp} )

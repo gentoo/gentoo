@@ -33,7 +33,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	local myeconfargs=(
-		--disable-dependency-tracking
 		$(use_enable doc build-docs)
 		$(use_enable subunit)
 		$(use_enable test timeout-tests)

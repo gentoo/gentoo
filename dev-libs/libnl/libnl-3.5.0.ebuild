@@ -75,8 +75,7 @@ multilib_src_configure() {
 		$(multilib_native_use_enable utils cli) \
 		$(use_enable debug) \
 		$(use_enable static-libs static) \
-		$(use_enable threads) \
-		--disable-silent-rules
+		$(use_enable threads)
 }
 
 multilib_src_compile() {

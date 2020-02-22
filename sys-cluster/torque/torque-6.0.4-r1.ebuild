@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -113,7 +113,6 @@ src_configure() {
 		--with-environ=/etc/pbs_environment \
 		--with-default-server=${PBS_SERVER_NAME} \
 		--disable-gcc-warnings \
-		--disable-silent-rules \
 		--with-tcp-retry-limit=2 \
 		--without-loadlibfile
 }

@@ -61,7 +61,6 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
-		--disable-dependency-tracking \
 		--disable-music-flac-shared \
 		--disable-music-fluidsynth-shared \
 		--disable-music-mod-shared \

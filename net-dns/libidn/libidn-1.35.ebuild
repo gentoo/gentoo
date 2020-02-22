@@ -56,7 +56,6 @@ multilib_src_configure() {
 		$(multilib_native_use_enable mono csharp mono) \
 		$(use_enable nls) \
 		$(use_enable static-libs static) \
-		--disable-silent-rules \
 		--disable-valgrind-tests \
 		--with-lispdir="${EPREFIX}${SITELISP}/${PN}" \
 		--with-packager-bug-reports="https://bugs.gentoo.org" \
