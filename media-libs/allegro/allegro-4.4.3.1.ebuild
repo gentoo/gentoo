@@ -44,6 +44,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.4.2-underlink.patch
 	"${FILESDIR}"/${PN}-4.4.2-gentoo.patch
 	"${FILESDIR}"/${PN}-4.4.2-rpath.patch
+	"${FILESDIR}"/${PN}-4.4.3.1-texinfo-encoding.patch
 )
 
 src_prepare() {
