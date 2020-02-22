@@ -1,0 +1,24 @@
+From 12387b01a1c7e529580c6f27e92dad3e8b4f9858 Mon Sep 17 00:00:00 2001
+From: Bryan Tan <techniux@gmail.com>
+Date: Fri, 7 Feb 2020 19:47:18 -0800
+Subject: [PATCH] Fix translation target
+
+- Do not modify po files in place
+- Always build translations
+---
+ po/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/po/CMakeLists.txt b/po/CMakeLists.txt
+index f957a199d..73ce0f04f 100644
+--- a/po/CMakeLists.txt
++++ b/po/CMakeLists.txt
+@@ -20,7 +20,7 @@ if (XGETTEXT_FOUND)
+       "${PROJECT_SOURCE_DIR}/ui/*.glade"
+   )
+ 
+-  gettext_create_translations ("${potfile}")
++  gettext_create_translations ("${potfile}" ALL NOUPDATE)
+ 
+ else (XGETTEXT_FOUND)
+   message (ERROR "Gettext not found!")
