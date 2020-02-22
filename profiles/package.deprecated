@@ -17,6 +17,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Sergei Trofimovich <slyfox@gentoo.org> (2020-02-22)
+# virtual/libffi has only one dev-libs/libffi provider. Use that instead.
+# bug #699796.
+virtual/libffi
+
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2019-12-30)
 # Directly install net-vpn/wireguard-tools and net-vpn/wireguard-modules.
 # This may be accomplished by running:
