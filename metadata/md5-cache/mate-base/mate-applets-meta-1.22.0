@@ -7,5 +7,5 @@ KEYWORDS=amd64 ~arm ~arm64 x86
 LICENSE=metapackage
 RDEPEND==mate-base/mate-applets-1.22* appindicator? ( =mate-extra/mate-indicator-applet-1.22* ) sensors? ( =mate-extra/mate-sensors-applet-1.22* )
 SLOT=0
-_eclasses_=eapi7-ver	756b3f27d8e46131d5cf3c51bd876446
+_eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964
 _md5_=87df06378f011999c8fc5cb86a8ba362

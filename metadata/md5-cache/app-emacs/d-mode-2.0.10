@@ -9,5 +9,5 @@ RDEPEND=>=app-editors/emacs-23.1:*
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/Emacs-D-Mode-Maintainers/Emacs-D-Mode/archive/2.0.10.tar.gz -> d-mode-2.0.10.tar.gz
-_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
 _md5_=dcec648f16c5b49dc4d769ca9fe570d9

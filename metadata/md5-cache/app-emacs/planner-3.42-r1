@@ -10,5 +10,5 @@ RDEPEND=>=app-emacs/muse-3.02.6a app-emacs/bbdb app-emacs/emacs-w3m >=app-editor
 RESTRICT=test
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~ulm/distfiles/planner-3.42.tar.gz
-_eclasses_=elisp	17bb0076b1e93d2dba84995228871c99	elisp-common	a1054cff648e1c6a806e17001d052176
+_eclasses_=elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
 _md5_=cddd455a6413785e32fd1056ec109509
