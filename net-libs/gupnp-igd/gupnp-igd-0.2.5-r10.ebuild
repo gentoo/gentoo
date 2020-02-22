@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools ltprune gnome.org multilib-minimal xdg
+inherit autotools gnome.org multilib-minimal xdg
 
 DESCRIPTION="Library to handle UPnP IGD port mapping for GUPnP"
 HOMEPAGE="http://gupnp.org"
@@ -54,5 +54,5 @@ multilib_src_configure() {
 
 multilib_src_install_all() {
 	einstalldocs
-	prune_libtool_files
+	find "${ED}" -name "*.la" -delete || die
 }
