@@ -5,12 +5,13 @@ EAPI=7
 
 inherit autotools multibuild
 
+MY_P="vice-emu-code-r${PV##*_p}-trunk-vice"
+
 DESCRIPTION="The Versatile Commodore Emulator"
 HOMEPAGE="http://vice-emu.sourceforge.net/"
-MY_P="vice-emu-code-r${PV##*_p}-trunk-vice"
-S="${WORKDIR}/${MY_P}"
-SRC_URI="https://sourceforge.net/code-snapshots/svn/v/vi/vice-emu/code/${MY_P}.zip"
 #SRC_URI="mirror://sourceforge/vice-emu/releases/${P}.tar.gz"
+SRC_URI="https://sourceforge.net/code-snapshots/svn/v/vi/vice-emu/code/${MY_P}.zip"
+
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -73,6 +74,7 @@ BDEPEND="
 	doc? ( virtual/texi2dvi )
 "
 
+S="${WORKDIR}/${MY_P}"
 ECONF_SOURCE="${S}"
 
 src_prepare() {
