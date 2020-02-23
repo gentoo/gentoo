@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-single-r1 gnome2
+inherit python-any-r1 gnome2
 
 DESCRIPTION="Tools for managing the osinfo database"
 HOMEPAGE="https://libosinfo.org/"
@@ -16,7 +16,6 @@ SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="test"
-REQUIRED_USE="test? ( ${PYTHON_REQUIRED_USE} )"
 RESTRICT="!test? ( test )"
 
 # Blocker on old libosinfo as osinfo-db-validate was part of it before
@@ -35,14 +34,20 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	>=sys-devel/gettext-0.19.8
 	dev-lang/perl
-	test? ( ${PYTHON_DEPS}
-		$(python_gen_cond_dep '
-			dev-python/pytest[${PYTHON_MULTI_USEDEP}]
-			dev-python/requests[${PYTHON_MULTI_USEDEP}]
+	test? (
+		$(python_gen_any_dep '
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/requests[${PYTHON_USEDEP}]
 		')
 	)
 "
 
+python_check_deps() {
+	use test && \
+		has_version "dev-python/pytest[${PYTHON_USEDEP}]" && \
+		has_version "dev-python/requests[${PYTHON_USEDEP}]"
+}
+
 pkg_setup() {
-	use test && python-single-r1_pkg_setup
+	use test && python-any-r1_pkg_setup
 }
