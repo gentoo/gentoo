@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,11 +21,12 @@ REQUIRED_USE="
 	openssl? ( !gcrypt )
 	|| ( gcrypt openssl )"
 
-RDEPEND="gcrypt? ( dev-libs/libgcrypt:0= )
-	openssl? ( dev-libs/openssl:0= )"
-DEPEND="${RDEPEND}
+RDEPEND="
 	acct-group/tss
 	acct-user/tss
+	gcrypt? ( dev-libs/libgcrypt:0= )
+	openssl? ( dev-libs/openssl:0= )"
+DEPEND="${RDEPEND}
 	test? ( dev-util/cmocka )"
 BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
