@@ -1,0 +1,11 @@
+--- inotify-tools-3.20.1/src/Makefile.am	2018-01-06 14:10:51.000000000 +0300
++++ inotify-tools-3.20.1.new/src/Makefile.am	2020-02-23 20:36:47.957640068 +0300
+@@ -2,7 +2,7 @@
+ inotifywait_SOURCES = inotifywait.c common.c common.h
+ inotifywatch_SOURCES = inotifywatch.c common.c common.h
+ 
+-AM_CFLAGS = -Wall -Werror -Wpointer-arith -std=c99 -I../libinotifytools/src -L../libinotifytools/src
++AM_CFLAGS = -Wall -Werror -Wpointer-arith -std=c99 -I../libinotifytools/src
+ AM_CPPFLAGS = -I$(top_srcdir)/libinotifytools/src
+ LDADD = ../libinotifytools/src/libinotifytools.la
+ 
