@@ -29,6 +29,7 @@ src_prepare() {
 		11_all_extra-options.patch # needs a port
 		15_all_disable-systemtap-switch.patch # needs a port
 
+		12_all_pr55930-dependency-tracking.patch # upstreamed
 		25_all_ia64-bootstrap.patch # upstreamed
 		27_all_sparc-PIC-constant-PR91472.patch # upstreamed
 		28_all_sparc-fpu-subregs-91269.patch # upstreamed
