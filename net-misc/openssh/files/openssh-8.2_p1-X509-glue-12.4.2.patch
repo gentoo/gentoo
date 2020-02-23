@@ -1,7 +1,7 @@
-diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x509-12.4.1.diff
---- a/openssh-8.2p1+x509-12.4.1.diff	2020-02-18 13:58:50.824902609 -0800
-+++ b/openssh-8.2p1+x509-12.4.1.diff	2020-02-18 13:59:57.917485338 -0800
-@@ -39197,16 +39197,15 @@
+diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.2.diff b/openssh-8.2p1+x509-12.4.2.diff
+--- a/openssh-8.2p1+x509-12.4.2.diff	2020-02-23 12:25:17.296737805 -0800
++++ b/openssh-8.2p1+x509-12.4.2.diff	2020-02-23 12:26:25.347779673 -0800
+@@ -39236,16 +39236,15 @@
   
   install: $(CONFIGFILES) $(MANPAGES) $(TARGETS) install-files install-sysconf host-key check-config
   install-nokeys: $(CONFIGFILES) $(MANPAGES) $(TARGETS) install-files install-sysconf
@@ -20,7 +20,7 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
   	$(INSTALL) -m 0755 $(STRIP_OPT) ssh-keygen$(EXEEXT) $(DESTDIR)$(bindir)/ssh-keygen$(EXEEXT)
   	$(INSTALL) -m 0755 $(STRIP_OPT) ssh-keyscan$(EXEEXT) $(DESTDIR)$(bindir)/ssh-keyscan$(EXEEXT)
   	$(INSTALL) -m 0755 $(STRIP_OPT) sshd$(EXEEXT) $(DESTDIR)$(sbindir)/sshd$(EXEEXT)
-@@ -39225,7 +39224,7 @@
+@@ -39264,7 +39263,7 @@
   	$(INSTALL) -m 644 ssh.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/ssh.1
   	$(INSTALL) -m 644 scp.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/scp.1
   	$(INSTALL) -m 644 ssh-add.1.out $(DESTDIR)$(mandir)/$(mansubdir)1/ssh-add.1
@@ -29,7 +29,7 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
   	$(INSTALL) -m 644 moduli.5.out $(DESTDIR)$(mandir)/$(mansubdir)5/moduli.5
   	$(INSTALL) -m 644 sshd_config.5.out $(DESTDIR)$(mandir)/$(mansubdir)5/sshd_config.5
   	$(INSTALL) -m 644 ssh_config.5.out $(DESTDIR)$(mandir)/$(mansubdir)5/ssh_config.5
-@@ -39239,7 +39238,7 @@
+@@ -39278,7 +39277,7 @@
   
   install-sysconf:
   	$(MKDIR_P) $(DESTDIR)$(sysconfdir)
@@ -38,7 +38,7 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
   	-rm -f $(DESTDIR)$(bindir)/ssh-keyscan$(EXEEXT)
   	-rm -f $(DESTDIR)$(bindir)/sftp$(EXEEXT)
   	-rm -f $(DESTDIR)$(sbindir)/sshd$(EXEEXT)
-@@ -39253,7 +39252,7 @@
+@@ -39292,7 +39291,7 @@
   	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)1/ssh.1
   	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)1/scp.1
   	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)1/ssh-add.1
@@ -47,7 +47,7 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
   	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)8/sftp-server.8
   	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-keysign.8
   	-rm -f $(DESTDIR)$(mandir)/$(mansubdir)8/ssh-pkcs11-helper.8
-@@ -39261,7 +39260,7 @@
+@@ -39300,7 +39299,7 @@
   
   regress-prep:
   	$(MKDIR_P) `pwd`/regress/unittests/test_helper
@@ -56,7 +56,7 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
   	$(MKDIR_P) `pwd`/regress/unittests/match
   	$(MKDIR_P) `pwd`/regress/unittests/utf8
   	$(MKDIR_P) `pwd`/regress/misc/kexfuzz
-@@ -39275,7 +39274,7 @@
+@@ -39314,7 +39313,7 @@
   
   regress/modpipe$(EXEEXT): $(srcdir)/regress/modpipe.c $(REGRESSLIBS)
   	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $(srcdir)/regress/modpipe.c \
@@ -65,7 +65,7 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
   	regress/unittests/sshkey/tests.o \
   	regress/unittests/sshkey/common.o \
   	regress/unittests/sshkey/test_file.o \
-@@ -39305,7 +39304,7 @@
+@@ -39344,7 +39343,7 @@
   
   regress/unittests/hostkeys/test_hostkeys$(EXEEXT): \
       ${UNITTESTS_TEST_HOSTKEYS_OBJS} \
@@ -74,7 +74,7 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
   	    -lssh -lopenbsd-compat -lssh -lopenbsd-compat $(LIBS)
   
   MISC_KEX_FUZZ_OBJS=\
-@@ -39343,7 +39342,7 @@
+@@ -39382,7 +39381,7 @@
   	regress/unittests/sshbuf/test_sshbuf$(EXEEXT) \
   	regress/unittests/sshkey/test_sshkey$(EXEEXT) \
   	regress/unittests/bitmap/test_bitmap$(EXEEXT) \
@@ -83,7 +83,7 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
   	regress/unittests/utf8/test_utf8$(EXEEXT) \
   	regress/misc/kexfuzz/kexfuzz$(EXEEXT)
   
-@@ -39400,7 +39399,7 @@
+@@ -39439,7 +39438,7 @@
   	TEST_SSH_IPV6="@TEST_SSH_IPV6@" ; \
   	TEST_SSH_UTF8="@TEST_SSH_UTF8@" ; \
   	TEST_SSH_ECC="@TEST_SSH_ECC@" ; \
@@ -92,7 +92,7 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
   		TEST_SSH_SSHPKCS11HELPER="$${TEST_SSH_SSHPKCS11HELPER}" \
   		TEST_SSH_SSHKEYSCAN="$${TEST_SSH_SSHKEYSCAN}" \
   		TEST_SSH_SFTP="$${TEST_SSH_SFTP}" \
-@@ -39409,7 +39408,7 @@
+@@ -39448,7 +39447,7 @@
   		TEST_SSH_SFTPSERVER="$${TEST_SSH_SFTPSERVER}" \
   		TEST_SSH_PLINK="$${TEST_SSH_PLINK}" \
   		TEST_SSH_PUTTYGEN="$${TEST_SSH_PUTTYGEN}" \
@@ -101,7 +101,7 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
   		TEST_SSH_IPV6="$${TEST_SSH_IPV6}" \
   		TEST_SSH_UTF8="$${TEST_SSH_UTF8}" \
   		TEST_SSH_ECC="$${TEST_SSH_ECC}" \
-@@ -39448,7 +39447,7 @@
+@@ -39487,7 +39486,7 @@
   
   survey: survey.sh ssh
   	@$(SHELL) ./survey.sh > survey
@@ -110,13 +110,13 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
   		sh buildpkg.sh; \
   	fi
   
-@@ -97729,16 +97728,6 @@
+@@ -98042,16 +98041,6 @@
  +	return mbtowc(NULL, s, n);
  +}
  +#endif
--diff -ruN openssh-8.2p1/version.h openssh-8.2p1+x509-12.4.1/version.h
+-diff -ruN openssh-8.2p1/version.h openssh-8.2p1+x509-12.4.2/version.h
 ---- openssh-8.2p1/version.h	2020-02-14 02:40:54.000000000 +0200
--+++ openssh-8.2p1+x509-12.4.1/version.h	2020-02-17 19:07:00.000000000 +0200
+-+++ openssh-8.2p1+x509-12.4.2/version.h	2020-02-23 11:07:00.000000000 +0200
 -@@ -2,5 +2,4 @@
 - 
 - #define SSH_VERSION	"OpenSSH_8.2"
@@ -124,6 +124,6 @@ diff --exclude '*.un~' -ubr a/openssh-8.2p1+x509-12.4.1.diff b/openssh-8.2p1+x50
 --#define SSH_PORTABLE	"p1"
 --#define SSH_RELEASE	SSH_VERSION SSH_PORTABLE
 -+#define SSH_RELEASE	PACKAGE_STRING ", " SSH_VERSION "p1"
- diff -ruN openssh-8.2p1/version.m4 openssh-8.2p1+x509-12.4.1/version.m4
+ diff -ruN openssh-8.2p1/version.m4 openssh-8.2p1+x509-12.4.2/version.m4
  --- openssh-8.2p1/version.m4	1970-01-01 02:00:00.000000000 +0200
- +++ openssh-8.2p1+x509-12.4.1/version.m4	2020-02-17 19:07:00.000000000 +0200
+ +++ openssh-8.2p1+x509-12.4.2/version.m4	2020-02-23 11:07:00.000000000 +0200

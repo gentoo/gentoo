@@ -18,7 +18,7 @@ HPN_PATCHES=(
 )
 
 SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-X509_VER="12.4.1" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+X509_VER="12.4.2" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
@@ -41,7 +41,8 @@ REQUIRED_USE="
 	ldns? ( ssl )
 	pie? ( !static )
 	static? ( !kerberos !pam )
-	X509? ( !sctp !security-key ssl )
+	X509? ( !sctp !security-key ssl !xmss )
+	xmss? ( || ( ssl libressl ) )
 	test? ( ssl )
 "
 
