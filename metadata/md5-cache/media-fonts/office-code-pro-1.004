@@ -1,0 +1,12 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DESCRIPTION=Customized version of Source Code Pro
+EAPI=7
+HOMEPAGE=https://github.com/nathco/Office-Code-Pro
+IUSE=X
+KEYWORDS=~amd64 ~x86
+LICENSE=OFL-1.1
+SLOT=0
+SRC_URI=https://github.com/nathco/Office-Code-Pro/archive/1.004.tar.gz -> office-code-pro-1.004.tar.gz
+_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346
+_md5_=e216f7408a39f5d2529fd162e304bcb8

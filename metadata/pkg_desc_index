@@ -12474,6 +12474,7 @@ media-fonts/noto-cjk 20150615 20170602 20190416: Google's CJK font family
 media-fonts/noto-emoji 20180823 20190328: Google Noto Emoji fonts
 media-fonts/nunito 1.0-r1: A Sans Serif font with rounded terminals
 media-fonts/nuosu-sil 2.1.1: Unicode font for the standardized Yi script
+media-fonts/office-code-pro 1.004: Customized version of Source Code Pro
 media-fonts/ohsnap 1.8.0: The ohsnap / osnap monospace font (based on Artwiz Snap)
 media-fonts/oldstandard 2.2: Old Standard - font with wide range of Latin, Greek and Cyrillic characters
 media-fonts/open-sans 1 1-r1: Clean and modern sans-serif typeface designed for legibility across interfaces
@@ -14030,7 +14031,7 @@ media-video/x264-encoder 0.0.20190214 0.0.20190903 9999: A free commandline enco
 media-video/xine-ui 0.99.10: Xine movie player
 media-video/xvattr 1.3-r3: X11 XVideo Querying/Setting Tool from Ogle project
 media-video/xvid4conf 1.12: GTK2-configuration dialog for xvid4
-media-video/yle-dl 20191022-r1 20191231: Download media files from Yle Areena
+media-video/yle-dl 20191231 20200222: Download media files from Yle Areena
 net-analyzer/2ping 4.2 4.3: A bi-directional ping utility
 net-analyzer/alive 2.0.2-r1: a periodic ping program
 net-analyzer/amap 5.4 5.4-r1: A network scanning tool for pentesters
