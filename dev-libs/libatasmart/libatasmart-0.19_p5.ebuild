@@ -31,11 +31,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myeconfargs=(
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
-		$(use_enable static-libs static)
-	)
-	econf "${myeconfargs[@]}"
+	econf $(use_enable static-libs static)
 }
 
 src_install() {

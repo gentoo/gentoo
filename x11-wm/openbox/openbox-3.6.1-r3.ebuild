@@ -68,7 +68,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_enable debug) \
 		$(use_enable static-libs static) \
 		$(use_enable nls) \

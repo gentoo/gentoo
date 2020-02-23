@@ -41,9 +41,7 @@ multilib_src_configure() {
 	# Make sure mpfr doesn't go probing toolchains it shouldn't #476336#19
 	ECONF_SOURCE=${S} \
 	user_redefine_cc=yes \
-	econf \
-		--docdir="\$(datarootdir)/doc/${PF}" \
-		$(use_enable static-libs static)
+	econf $(use_enable static-libs static)
 }
 
 multilib_src_install_all() {

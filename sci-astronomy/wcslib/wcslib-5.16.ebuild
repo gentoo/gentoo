@@ -25,7 +25,6 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local myconf=(
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		--htmldir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable fortran)
 		$(use_enable tools utils)

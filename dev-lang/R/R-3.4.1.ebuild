@@ -133,7 +133,6 @@ src_configure() {
 		--enable-R-shlib \
 		--disable-R-framework \
 		--with-blas="$($(tc-getPKG_CONFIG) --libs blas)" \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		rdocdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_enable java) \
 		$(use_enable nls) \

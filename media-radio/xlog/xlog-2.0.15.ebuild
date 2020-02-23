@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -53,8 +53,7 @@ src_prepare() {
 
 src_configure() {
 	# mime-update causes file collisions if enabled
-	econf --disable-mime-update --disable-desktop-update \
-		--docdir=/usr/share/doc/${PF}
+	econf --disable-mime-update --disable-desktop-update
 }
 
 src_compile() {

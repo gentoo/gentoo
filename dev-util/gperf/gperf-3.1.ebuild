@@ -21,7 +21,3 @@ src_prepare() {
 
 	eapply_user
 }
-
-src_configure() {
-	econf --htmldir='$(datarootdir)/doc/'"${PF}/html"
-}
