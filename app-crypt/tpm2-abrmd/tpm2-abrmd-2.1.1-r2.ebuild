@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,11 +17,11 @@ IUSE="static-libs test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="sys-apps/dbus:=
+	acct-group/tss
+	acct-user/tss
 	dev-libs/glib:=
 	app-crypt/tpm2-tss:="
 DEPEND="${RDEPEND}
-	acct-group/tss
-	acct-user/tss
 	test? ( dev-util/cmocka )"
 BDEPEND="virtual/pkgconfig
 	dev-util/gdbus-codegen"
