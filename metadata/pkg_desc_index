@@ -15291,7 +15291,7 @@ net-print/c2esp 26 27: A CUPS filter for Kodak ESP printers
 net-print/cndrvcups-common-lb 3.60-r1 3.70: Common files for Canon drivers
 net-print/cndrvcups-lb 3.60-r2 3.70: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cnijfilter2 5.20 5.40 5.50 5.70: IJ Printer Driver
-net-print/cnrdrvcups-lb 5.00: Canon UFR II / LIPSLX Printer Driver for Linux
+net-print/cnrdrvcups-lb 5.00 5.10: Canon UFR II / LIPSLX Printer Driver for Linux
 net-print/cups 2.2.12 2.2.13 2.3.0 2.3.1 9999: The Common Unix Printing System
 net-print/cups-bjnp 1.1 1.2.1 2.0: CUPS backend for the canon printers using the proprietary USB over IP BJNP protocol
 net-print/cups-filters 1.25.11 1.25.13 1.26.2 1.27.1 9999: Cups filters
