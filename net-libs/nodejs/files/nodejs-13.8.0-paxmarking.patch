@@ -93,7 +93,7 @@
 +          'action': [
 +            'bash',
 +            '-c',
-+            'mv <(mksnapshot_exec) <(mksnapshot_u_exec) && paxmark.mksnapshot_u_exec)',
++            'mv <(mksnapshot_exec) <(mksnapshot_u_exec) && paxmark.sh m <(mksnapshot_u_exec)',
 +          ],
 +        },
 +        {
