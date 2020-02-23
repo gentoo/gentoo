@@ -10,4 +10,4 @@ RDEPEND=dev-libs/boost:=[threads] dev-libs/libxml2 dev-libs/icu:= sys-apps/acl s
 SLOT=0
 SRC_URI=ftp://ftp.suse.com/pub/projects/snapper/snapper-0.5.6.tar.bz2
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=05cfc5615ff1352b6f4e501f034736ed
+_md5_=1d6529595e1d7862c0bf919e554a1364

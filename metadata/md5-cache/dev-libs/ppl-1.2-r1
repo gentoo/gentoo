@@ -10,4 +10,4 @@ RDEPEND=>=dev-libs/gmp-6[cxx] lpsol? ( sci-mathematics/glpk )
 RESTRICT=!test? ( test )
 SLOT=0/4.14
 SRC_URI=http://bugseng.com/products/ppl/download/ftp/releases/1.2/ppl-1.2.tar.xz
-_md5_=c537153992cd64e3a526ac744e8d565b
+_md5_=6c9333f0eeda8fcde8bfb39a5aedf8c7

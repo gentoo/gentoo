@@ -9,4 +9,4 @@ LICENSE=LGPL-2.1
 RDEPEND=>=dev-libs/glib-2.26 gtk? ( x11-libs/gtk+:3 )
 SLOT=0
 SRC_URI=mirror://sourceforge/cxx-gtk-utils/c++-gtk-utils-2.2.19.tar.gz
-_md5_=7cce5a9d60144c60668d114df30168c3
+_md5_=e5de9ba536d49267924f2c82b22320d0

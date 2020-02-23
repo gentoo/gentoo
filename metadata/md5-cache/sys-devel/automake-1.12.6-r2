@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install prepare setup
+DEFINED_PHASES=install prepare setup
 DEPEND=dev-lang/perl >=sys-devel/automake-wrapper-10 >=sys-devel/autoconf-2.69:* sys-devel/gnuconfig sys-apps/help2man test? ( || ( >=dev-lang/python-2.7.5-r2:2.7 ) )
 DESCRIPTION=Used to generate Makefile.in from Makefile.am
 EAPI=6
@@ -11,4 +11,4 @@ RESTRICT=!test? ( test )
 SLOT=1.12
 SRC_URI=mirror://gnu/automake/automake-1.12.6.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	b6db354660033efd06cd6d7f4905ccea	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c6d93fe74822c430106bd95e36b2d8fc
+_md5_=5a405d96a2e59513b98cf6f04aac517b

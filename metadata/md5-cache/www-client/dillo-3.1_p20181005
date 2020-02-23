@@ -11,4 +11,4 @@ RDEPEND=>=x11-libs/fltk-1.3 sys-libs/zlib jpeg? ( virtual/jpeg:0 ) png? ( >=medi
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~jer/dillo-3.1_p20181005.tar.xz mirror://gentoo/dillo.png
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=de85aca0fb1d72078914cfcae76320ea
+_md5_=2ea2260138741c5f5a32b216331f572f

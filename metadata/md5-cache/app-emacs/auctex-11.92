@@ -10,4 +10,4 @@ RDEPEND=virtual/latex-base preview-latex? ( app-text/dvipng app-text/ghostscript
 SLOT=0
 SRC_URI=mirror://gnu/auctex/auctex-11.92.tar.gz
 _eclasses_=eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp	00840e1f4eb277c757dbfa5abf73c4c7	elisp-common	504a3383c45504fde86b00426619a709
-_md5_=2c236e5d444969db8617627e2fbac4ef
+_md5_=c02dbc9fb741a03407f4b400a0fe3066

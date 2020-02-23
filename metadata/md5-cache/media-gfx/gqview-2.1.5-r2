@@ -10,4 +10,4 @@ RDEPEND=>=x11-libs/gtk+-2.4:2 virtual/libintl
 SLOT=0
 SRC_URI=mirror://sourceforge/gqview/gqview-2.1.5.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=409c8c6bb3bf45d69f2c76db4c4be0aa
+_md5_=827135eeb20749d6ac41e0d9a4a10b91
