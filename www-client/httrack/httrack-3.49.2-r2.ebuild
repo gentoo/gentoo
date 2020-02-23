@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -27,9 +27,7 @@ PATCHES=(
 )
 
 src_configure() {
-	econf $(use_enable static-libs static) \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
+	econf $(use_enable static-libs static)
 }
 
 src_install() {

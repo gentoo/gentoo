@@ -61,7 +61,6 @@ PATCHES=( "${FILESDIR}/ffmpeg4.patch" )
 
 src_configure() {
 	local myconf=(
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		--without-rcc
 		$(use_enable debug)
 		$(use_enable cache)

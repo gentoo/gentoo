@@ -52,8 +52,6 @@ multilib_src_configure() {
 	append-flags -fno-strict-aliasing -fno-omit-frame-pointer
 
 	econf \
-		--htmldir=${EPREFIX}/usr/share/doc/${PF}/html \
-		--docdir=${EPREFIX}/usr/share/doc/${PF} \
 		--enable-shared \
 		$(use_enable static-libs static) \
 		$(use_enable debug debugalloc) \

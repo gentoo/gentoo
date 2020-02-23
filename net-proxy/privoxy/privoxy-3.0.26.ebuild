@@ -71,7 +71,6 @@ src_configure() {
 	# --with-docbook and --with-db2html and their deps are useless,
 	#	since docs are already pregenerated in the source tarball
 	econf \
-		--docdir=/usr/share/doc/${PF} \
 		--sysconfdir=/etc/privoxy \
 		--enable-dynamic-pcre \
 		--with-user=privoxy \

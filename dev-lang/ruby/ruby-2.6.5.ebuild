@@ -127,7 +127,6 @@ src_configure() {
 	INSTALL="${EPREFIX}/usr/bin/install -c" LIBPATHENV="" econf \
 		--program-suffix=${MY_SUFFIX} \
 		--with-soname=ruby${MY_SUFFIX} \
-		--docdir=${EPREFIX}/usr/share/doc/${P} \
 		--enable-shared \
 		--enable-pthread \
 		--disable-rpath \

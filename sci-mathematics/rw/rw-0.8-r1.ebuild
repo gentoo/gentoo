@@ -20,25 +20,23 @@ DEPEND="executable? ( >=dev-libs/igraph-0.6 )"
 RDEPEND="${DEPEND}
 	!media-gfx/xpaint"
 
-DOCDIR="/usr/share/doc/${PF}"
-
 src_prepare() {
 	# The upstream tarball for v0.8 contains SYMLINKS to ar-lib,
 	# compile, install-sh, ltmain.sh, etc. And those symlinks don't
 	# always point to a working location for us, so we have to
 	# (re)generate actual files for that stuff. Bug 696986.
-	eautoreconf
 	default
+	eautoreconf
 }
 
 src_configure() {
-	econf $(use_enable executable) --docdir="${EPREFIX}${DOCDIR}"
+	econf $(use_enable executable)
 }
 
 src_install() {
+	default
 	# The examples graphs are meant to be fed uncompressed into the 'rw'
 	# program. The rest of the docs are small so just leave everything
 	# uncompressed.
-	docompress -x "${DOCDIR}"
-	default
+	docompress -x /usr/share/doc/${PF}
 }

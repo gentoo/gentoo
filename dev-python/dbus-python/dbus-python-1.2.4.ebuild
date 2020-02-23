@@ -50,7 +50,6 @@ src_configure() {
 		[[ ${EPYTHON/.*} = "python2" ]] && apidocs=$(use_enable doc api-docs)
 
 		econf \
-			--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 			--disable-html-docs \
 			${apidocs} \
 			PYTHON_INCLUDES="$(${PYTHON_CONFIG} --includes)" \

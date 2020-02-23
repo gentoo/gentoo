@@ -28,7 +28,6 @@ PATCHES=( "${FILESDIR}/opusfile-0.11-libressl.patch" )
 
 src_configure() {
 	local myeconfargs=(
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		$(use_enable doc)
 		$(use_enable fixed-point)\
 		$(use_enable float)

@@ -48,7 +48,6 @@ src_configure() {
 	# snapper does not build without btrfs
 	local myeconfargs=(
 		--with-conf="/etc/conf.d"
-		--docdir="/usr/share/doc/${PF}"
 		--disable-zypp
 		--enable-rollback
 		--disable-ext4

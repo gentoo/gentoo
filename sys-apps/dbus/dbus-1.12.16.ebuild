@@ -114,8 +114,6 @@ multilib_src_configure() {
 	# not on an SELinux profile.
 	myconf=(
 		--localstatedir="${EPREFIX}/var"
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
-		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		$(use_enable static-libs static)
 		$(use_enable debug verbose-mode)
 		--disable-asserts

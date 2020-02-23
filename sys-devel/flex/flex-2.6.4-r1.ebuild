@@ -51,8 +51,7 @@ multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
 		--disable-shared \
-		$(use_enable nls) \
-		--docdir='$(datarootdir)/doc/'${PF}
+		$(use_enable nls)
 }
 
 multilib_src_compile() {

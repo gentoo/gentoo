@@ -42,7 +42,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		--disable-ltdl-install
 		--without-included-ltdl
 		--with-cfitsio="${EPREFIX}/usr"
