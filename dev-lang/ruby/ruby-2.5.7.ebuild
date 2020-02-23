@@ -34,7 +34,7 @@ RDEPEND="
 		dev-lang/tk:0=[threads]
 	)
 	dev-libs/libyaml
-	virtual/libffi:=
+	dev-libs/libffi:=
 	sys-libs/readline:0=
 	sys-libs/zlib
 	>=app-eselect/eselect-ruby-20171225
