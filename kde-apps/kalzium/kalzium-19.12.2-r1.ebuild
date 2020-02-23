@@ -25,6 +25,7 @@ DEPEND="
 	>=kde-frameworks/ki18n-${KFMIN}:5
 	>=kde-frameworks/kio-${KFMIN}:5
 	>=kde-frameworks/kitemviews-${KFMIN}:5
+	>=kde-frameworks/kparts-${KFMIN}:5
 	>=kde-frameworks/kplotting-${KFMIN}:5
 	>=kde-frameworks/ktextwidgets-${KFMIN}:5
 	>=kde-frameworks/kunitconversion-${KFMIN}:5
