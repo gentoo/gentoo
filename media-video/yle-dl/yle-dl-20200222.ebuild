@@ -2,7 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6..7} )
+
+PYTHON_COMPAT=( python3_{6..8} )
+DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1
 
@@ -12,7 +14,7 @@ SRC_URI="https://github.com/aajanki/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 IUSE="libav php test +youtube-dl"
 
@@ -22,15 +24,13 @@ RESTRICT="test"
 RDEPEND="
 	!libav? ( media-video/ffmpeg )
 	>=dev-python/attrs-18.1.0[${PYTHON_USEDEP}]
-	<=dev-python/attrs-19.2.0[${PYTHON_USEDEP}]
-	~dev-python/configargparse-0.13.0[${PYTHON_USEDEP}]
+	>=dev-python/configargparse-0.13.0[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/mini-amf[${PYTHON_USEDEP}]
 	dev-python/progress[${PYTHON_USEDEP}]
 	dev-python/pycryptodome[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	net-misc/wget
 	php? (
 		dev-lang/php:*[bcmath,cli,curl,simplexml]
@@ -63,6 +63,6 @@ python_test() {
 }
 
 pkg_postinst() {
-	einfo "Sample configuration file has been installed in "
-	einfo " /usr/share/doc/yle-dl-2.37/yledl.conf.sample.bz2"
+	elog "Sample configuration file has been installed in "
+	elog " /usr/share/doc/yle-dl-${PV}/yledl.conf.sample.bz2"
 }
