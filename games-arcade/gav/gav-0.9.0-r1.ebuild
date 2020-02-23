@@ -1,13 +1,15 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
-inherit desktop
+EAPI=7
+
+inherit desktop toolchain-funcs
 
 DESCRIPTION="GPL Arcade Volleyball"
 HOMEPAGE="http://gav.sourceforge.net/"
 # the themes are behind a lame php-counter script.
-SRC_URI="mirror://sourceforge/gav/${P}.tar.gz
+SRC_URI="
+	mirror://sourceforge/gav/${P}.tar.gz
 	mirror://gentoo/fabeach.tgz
 	mirror://gentoo/florindo.tgz
 	mirror://gentoo/inverted.tgz
@@ -19,34 +21,35 @@ SRC_URI="mirror://sourceforge/gav/${P}.tar.gz
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
-DEPEND="media-libs/sdl-image[jpeg,png]
+RDEPEND="
+	media-libs/sdl-image[jpeg,png]
 	media-libs/sdl-net
 	media-libs/libsdl[joystick,video]"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-ldflags.patch
+	"${FILESDIR}"/${P}-gcc43.patch
+)
 
 src_prepare() {
 	default
 
 	local d
-
-	eapply "${FILESDIR}"/${P}-ldflags.patch
-
-	for d in . automa menu net ; do
+	for d in . automa menu net; do
 		cp ${d}/Makefile.Linux ${d}/Makefile || die "cp ${d}/Makefile failed"
 	done
 
-	eapply "${FILESDIR}"/${P}-gcc43.patch
-	sed -i \
-		-e "/^CXXFLAGS=/s: -g : ${CXXFLAGS} :" CommonHeader \
-		|| die "sed failed"
-
 	# Now, move the additional themes in the proper directory
-	mv ../{fabeach,florindo,inverted,naive,unnamed,yisus,yisus2} themes
+	mv ../{fabeach,florindo,inverted,naive,unnamed,yisus,yisus2} themes || die
 
-	# no reason to have executable files in the themes
-	find themes -type f -exec chmod a-x \{\} \;
+	# no reason to have executable bit set on themes
+	find themes -type f -exec chmod a-x '{}' \; || die
+}
+
+src_configure() {
+	tc-export CXX
 }
 
 src_compile() {
@@ -60,7 +63,9 @@ src_compile() {
 src_install() {
 	dodir /usr/bin
 	emake ROOT="${D}" install
+
 	insinto /usr/share/${PN}
 	doins -r sounds
+
 	einstalldocs
 }
