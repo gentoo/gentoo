@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# David Seifert <soap@gentoo.org> (2020-02-23)
+# Last release in 2013, the scons SConstruct script uses variables
+# that have been removed from Scons years ago and also uses a ton of
+# Python 2-only patterns, sed broken. Bug #703906, #710342.
+# Masked for removal in 30 days.
+games-strategy/boswars
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-22)
 # Last release in 2009, py2-only, blocks dev-python/pygtk removal, bug #708100
 # media-gfx/mcomix meanwhile is a fork of comix that will be kept until its
