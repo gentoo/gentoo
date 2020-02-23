@@ -51,8 +51,11 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 	servers? ( tcpd ldap )"
 
 DOCS=( ABOUT-NLS AUTHORS COPYING COPYING.LESSER ChangeLog INSTALL NEWS README THANKS TODO )
-PATCHES=( "${FILESDIR}/${PN}-3.5-add-include.patch" \
-	"${FILESDIR}/${PN}-3.6-underlinking.patch" )
+PATCHES=(
+	"${FILESDIR}"/${PN}-3.5-add-include.patch
+	"${FILESDIR}"/${PN}-3.6-underlinking.patch
+	"${FILESDIR}"/${PN}-3.8-fno-common.patch
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
