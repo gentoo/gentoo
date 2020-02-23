@@ -20,11 +20,17 @@ fi
 
 LICENSE="LGPL-2"
 SLOT="0/2"
-IUSE="gles2 qt5 sdl"
+IUSE="gles2 jack qt5 sdl"
 
 RDEPEND="gles2? ( media-libs/mesa[gles2] )
 	media-libs/glm
 	media-libs/mesa[X(+)]
+	jack? (
+		dev-qt/qtcore:5
+		dev-qt/qtdeclarative:5
+		dev-qt/qtopengl:5
+		virtual/jack
+	)
 	qt5? (
 		dev-qt/qtcore:5
 		dev-qt/qtdeclarative:5
@@ -49,6 +55,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		$(use_enable gles2 gles)
+		$(use_enable jack)
 		$(use_enable qt5 qt)
 		$(use_enable sdl)
 		--enable-emscripten=no
