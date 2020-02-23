@@ -3,6 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=(python{3_6,3_7,3_8})
+PYTHON_REQ_USE='sqlite(-)'
 
 inherit vcs-snapshot distutils-r1
 
@@ -24,5 +25,5 @@ RESTRICT="!test? ( test )"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
-	net-libs/stem
+	net-libs/stem[${PYTHON_USEDEP}]
 	net-vpn/tor"
