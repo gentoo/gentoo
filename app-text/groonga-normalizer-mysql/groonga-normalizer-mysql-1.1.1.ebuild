@@ -25,9 +25,7 @@ src_prepare() {
 
 src_configure() {
 	# ruby is only uses for tests
-	econf \
-		--without-ruby \
-		--docdir="${EROOT}usr/share/doc/${P}"
+	econf --without-ruby
 }
 
 src_install() {

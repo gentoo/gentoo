@@ -45,8 +45,7 @@ src_configure() {
 		$(use_enable jpeg) \
 		$(use_enable png) \
 		$(use_enable ssl) \
-		$(use_enable xembed) \
-		--docdir="/usr/share/doc/${PF}"
+		$(use_enable xembed)
 }
 
 src_compile() {

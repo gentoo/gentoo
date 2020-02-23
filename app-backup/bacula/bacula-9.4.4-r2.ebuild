@@ -214,9 +214,6 @@ src_configure() {
 		$(use_with tcpd tcp-wrappers)"
 
 	econf \
-		--libdir=/usr/$(get_libdir) \
-		--docdir=/usr/share/doc/${PF} \
-		--htmldir=/usr/share/doc/${PF}/html \
 		--with-pid-dir=/var/run \
 		--sysconfdir=/etc/bacula \
 		--with-archivedir=/var/lib/bacula/tmp \

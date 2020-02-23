@@ -30,7 +30,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--localstatedir=/var \
 		--disable-examples \
 		--disable-lynx \

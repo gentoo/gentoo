@@ -48,6 +48,5 @@ src_configure() {
 		--disable-update-database \
 		--without-gnome-mime \
 		--without-pixmaps \
-		--without-kde-mime \
-		--htmldir=/usr/share/doc/${PF}/html
+		--without-kde-mime
 }

@@ -152,8 +152,6 @@ src_configure() {
 
 	local mywafargs=(
 		--confdir="${EPREFIX}/etc/${PN}"
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
-		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 
 		$(usex cli '' '--disable-cplayer')
 		$(use_enable libmpv libmpv-shared)

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -42,11 +42,11 @@ src_prepare() {
 }
 
 src_configure() {
-	econf --with-libbson=system \
+	econf \
+		--with-libbson=system \
 		--disable-optimizations \
 		--disable-shm-counters \
 		--disable-examples \
-		--docdir="${EPREFIX}/usr/share/doc/${P}" \
 		$(use_enable sasl) \
 		$(use_enable ssl ssl $(usex libressl libressl openssl)) \
 		$(use_enable debug) \

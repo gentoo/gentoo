@@ -48,8 +48,7 @@ src_configure() {
 		$(use_enable ipv6) \
 		$(use_enable jpeg) \
 		$(use_enable png) \
-		$(use_enable ssl) \
-		--docdir="/usr/share/doc/${PF}"
+		$(use_enable ssl)
 }
 
 src_compile() {

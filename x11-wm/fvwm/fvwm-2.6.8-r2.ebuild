@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -86,7 +86,6 @@ src_configure() {
 		--with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm
 		--enable-iconv
 		--enable-package-subdirs
-		--docdir="/usr/share/doc/${P}"
 		$(use_enable bidi)
 		$(use_enable debug debug-msgs)
 		$(use_enable debug command-log)

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -72,8 +72,6 @@ src_configure() {
 		--with-lineeditlibs=readline,edit,editline
 		--with-yielding-select
 		--disable-local-libevent
-		--docdir='$(datarootdir)'/doc/${PF}
-		--htmldir='$(docdir)/html'
 		--with-memlock=256
 		$(use_enable caps linuxcaps)
 		$(use_enable parse-clocks)

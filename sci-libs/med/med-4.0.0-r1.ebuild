@@ -65,7 +65,6 @@ src_configure() {
 		--disable-api23
 		--disable-installtest
 		--disable-static
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		--with-hdf5="${EPREFIX}"/usr
 		--with-hdf5-lib="${EPREFIX}"/usr/$(get_libdir)
 		$(use_enable fortran)

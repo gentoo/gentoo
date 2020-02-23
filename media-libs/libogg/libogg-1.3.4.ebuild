@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,11 +20,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 multilib_src_configure() {
-	local myeconfargs=(
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
-		$(use_enable static-libs static)
-		)
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf $(use_enable static-libs static)
 }
 
 multilib_src_install_all() {

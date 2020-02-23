@@ -44,7 +44,6 @@ src_configure() {
 		$(use_with curl) \
 		$(use_with taglib) \
 		$(use_with visualizer fftw) \
-		--docdir=/usr/share/doc/${PF} \
 		--enable-unicode
 }
 

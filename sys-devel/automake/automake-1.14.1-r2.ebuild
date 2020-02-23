@@ -59,10 +59,6 @@ src_prepare() {
 	fi
 }
 
-src_configure() {
-	econf --docdir="\$(datarootdir)/doc/${PF}"
-}
-
 # slot the info pages.  do this w/out munging the source so we don't have
 # to depend on texinfo to regen things.  #464146 (among others)
 slot_info_pages() {

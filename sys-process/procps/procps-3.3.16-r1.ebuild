@@ -49,7 +49,6 @@ multilib_src_configure() {
 	# http://www.freelists.org/post/procps/PATCH-enable-transparent-large-file-support
 	append-lfs-flags #471102
 	local myeconfargs=(
-		--docdir='$(datarootdir)'/doc/${PF}
 		$(multilib_native_use_with elogind) # No elogind multilib support
 		$(multilib_native_use_enable kill)
 		$(multilib_native_use_enable modern-top)

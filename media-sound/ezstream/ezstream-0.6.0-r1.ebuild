@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,11 +22,8 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig"
 
 src_configure() {
-	local docdir=/usr/share/doc/${PF}
-
 	econf \
-		--docdir=${docdir} \
-		--enable-examplesdir=${docdir}/examples \
+		--enable-examplesdir='$(docdir)/examples' \
 		$(use_with taglib taglib "/usr")
 }
 

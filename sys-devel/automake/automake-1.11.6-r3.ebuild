@@ -44,10 +44,6 @@ src_prepare() {
 	export TZ="UTC"  #589138
 }
 
-src_configure() {
-	econf --docdir="\$(datarootdir)/doc/${PF}"
-}
-
 src_compile() {
 	default
 

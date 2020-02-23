@@ -40,7 +40,6 @@ src_configure() {
 	use extra-debug && debug_level=2
 
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--enable-socket-library \
 		--disable-clsync \
 		--enable-debug=${debug_level} \

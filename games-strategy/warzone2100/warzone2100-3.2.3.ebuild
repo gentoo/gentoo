@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -75,7 +75,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--docdir=/usr/share/doc/${PF}
 		--localedir=/usr/share/locale
 		--with-distributor="Gentoo ${PF}"
 		--with-icondir=/usr/share/icons/hicolor/128x128/apps

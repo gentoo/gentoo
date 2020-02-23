@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -38,7 +38,6 @@ src_configure() {
 	# such that we don't preclude cross-compile. Thus don't use
 	# --enable-lt=/usr/bin/libtool
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--enable-shared \
 		--enable-float \
 		--enable-libffi \

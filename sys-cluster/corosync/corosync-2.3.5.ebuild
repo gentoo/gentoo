@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -48,7 +48,6 @@ src_configure() {
 	# FIXME: install just shared libs --disable-static does not work
 	econf_opts=(
 		--localstatedir=/var \
-		--docdir=/usr/share/doc/${PF} \
 		$(use_enable infiniband rdma) \
 		$(use_enable systemd) \
 		$(use_enable xml xmlconf)

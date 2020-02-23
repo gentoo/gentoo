@@ -41,8 +41,7 @@ src_configure() {
 		$(use_enable outputs) \
 		$(use_enable visualizer) \
 		$(use_with taglib) \
-		$(use_with visualizer fftw) \
-		--docdir=/usr/share/doc/${PF}
+		$(use_with visualizer fftw)
 }
 
 src_install() {

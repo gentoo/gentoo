@@ -36,7 +36,5 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		$(use_enable numa) \
-		--docdir=/usr/share/doc/${PF}
+	econf $(use_enable numa)
 }

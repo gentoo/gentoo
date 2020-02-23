@@ -49,8 +49,7 @@ src_configure() {
 		--without-pcre \
 		--without-kytea \
 		--without-libstemmer \
-		--with-log-path="${EROOT}var/log/${PN}.log" \
-		--docdir="${EROOT}usr/share/doc/${P}" \
+		--with-log-path="${EPREFIX}"/var/log/${PN}.log \
 		--without-ruby \
 		$(use_enable abort) \
 		$(use_enable benchmark) \

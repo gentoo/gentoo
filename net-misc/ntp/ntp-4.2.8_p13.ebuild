@@ -72,8 +72,6 @@ src_configure() {
 		--with-lineeditlibs=readline,edit,editline
 		--with-yielding-select
 		--disable-local-libevent
-		--docdir='$(datarootdir)'/doc/${PF}
-		--htmldir='$(docdir)/html'
 		--with-memlock=256
 		$(use_enable caps linuxcaps)
 		$(use_enable parse-clocks)

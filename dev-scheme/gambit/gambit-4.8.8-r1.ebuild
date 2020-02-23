@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,9 +29,9 @@ S="${WORKDIR}/${MY_P}" #-devel
 IUSE="emacs ssl static"
 
 src_configure() {
-	econf $(use_enable !static shared) \
+	econf \
+		$(use_enable !static shared) \
 		$(use_enable ssl openssl) \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--enable-gnu-gcc-specific-options \
 		--enable-gnu-gcc-no-strict-aliasing \
 		--enable-single-host \

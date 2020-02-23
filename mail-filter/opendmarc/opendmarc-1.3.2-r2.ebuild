@@ -38,8 +38,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html \
 		$(use_with spf) \
 		$(use_with spf spf2-include "${EPREFIX}"/usr/include/spf2) \
 		$(use_with spf spf2-lib "${EPREFIX}"/usr/$(get_libdir)) \

@@ -30,8 +30,6 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_with gtk) \
 		$(use_enable static-libs static) \
-		--docdir=/usr/share/doc/${PF} \
-		--htmldir=/usr/share/doc/${PF}/html \
 		--without-guile
 }
 

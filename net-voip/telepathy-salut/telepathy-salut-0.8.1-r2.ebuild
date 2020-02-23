@@ -68,7 +68,6 @@ src_configure() {
 		--disable-Werror \
 		--disable-static \
 		--disable-avahi-tests \
-		--docdir=/usr/share/doc/${PF} \
 		--with-tls=$(usex gnutls gnutls openssl)
 		#$(use_enable test avahi-tests)
 

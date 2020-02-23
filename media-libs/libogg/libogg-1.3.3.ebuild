@@ -20,11 +20,7 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 multilib_src_configure() {
-	local myeconfargs=(
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
-		$(use_enable static-libs static)
-		)
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	ECONF_SOURCE="${S}" econf $(use_enable static-libs static)
 }
 
 multilib_src_install_all() {
