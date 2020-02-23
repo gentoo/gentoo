@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ KEYWORDS="amd64 ppc x86"
 IUSE="debug"
 
 DEPEND="
-	>=media-libs/dumb-0.9.3
+	~media-libs/dumb-0.9.3
 	media-libs/allegro:0
 "
 RDEPEND="${DEPEND}"
