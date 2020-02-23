@@ -6,9 +6,7 @@ EAPI=7
 MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
 
-PYTHON_COMPAT=( python2_7 )
-
-inherit autotools python-single-r1 systemd
+inherit autotools systemd
 
 DESCRIPTION="tinc is an easy to configure VPN implementation"
 HOMEPAGE="http://www.tinc-vpn.org/"
