@@ -163,7 +163,11 @@ texlive-module_add_format() {
 	local name engine mode patterns options
 	eval $@
 	einfo "Appending to format.${PN}.cnf for $@"
-	[[ -d texmf-dist/fmtutil ]] || mkdir -p texmf-dist/fmtutil || die
+
+	if [[ ! -d texmf-dist/fmtutil ]]; then
+		mkdir -p texmf-dist/fmtutil || die
+	fi
+
 	[[ -f texmf-dist/fmtutil/format.${PN}.cnf ]] || { echo "# Generated for ${PN}	by texlive-module.eclass" > texmf-dist/fmtutil/format.${PN}.cnf; }
 	[[ -n ${TEXLIVE_MODULE_OPTIONAL_ENGINE} ]] && has ${engine} ${TEXLIVE_MODULE_OPTIONAL_ENGINE} && use !${engine} && mode="disabled"
 	if [[ ${mode} = disabled ]]; then
