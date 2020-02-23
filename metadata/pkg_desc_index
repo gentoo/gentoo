@@ -1998,7 +1998,7 @@ app-misc/birthday 1.6.2-r1: Displays a list of events happening in the near futu
 app-misc/blink1 1.98: blink(1) USB RGB LED status light control suite
 app-misc/bottlerocket 0.04c-r2: CLI interface to the X-10 Firecracker Kit
 app-misc/boxes 1.1.2-r1 1.1.2-r2 1.1.2-r3: Draw any kind of boxes around your text
-app-misc/brewtarget 2.3.1: Application to create and manage beer recipes
+app-misc/brewtarget 2.3.1-r1: Application to create and manage beer recipes
 app-misc/btail 0.3-r1: Bayesian logfile filter
 app-misc/byobu 5.123-r1 5.124 5.125 5.129 5.130-r1: A set of profiles for the GNU Screen console window manager (app-misc/screen)
 app-misc/c_rehash 1.0.2g_p8 1.7-r1: c_rehash script from OpenSSL
