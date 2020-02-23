@@ -32,6 +32,24 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-02-23)
+# Obsolete. Replaced by sys-cluster/rdma-core
+sys-fabric/infiniband-diags
+sys-fabric/libibverbs
+sys-fabric/librdmacm
+sys-fabric/libibumad
+sys-fabric/ibacm
+sys-fabric/libibmad
+sys-fabric/srptools
+sys-fabric/infinipath-psm
+sys-fabric/libcxgb3
+sys-fabric/libcxgb4
+sys-fabric/libmthca
+sys-fabric/libmlx4
+sys-fabric/libmlx5
+sys-fabric/libocrdma
+sys-fabric/libnes
+sys-fabric/ofed
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-22)
 # Last release in 2009, py2-only, blocks dev-python/pygtk removal, bug #708100
 # media-gfx/mcomix meanwhile is a fork of comix that will be kept until its
