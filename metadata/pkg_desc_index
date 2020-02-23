@@ -7440,7 +7440,7 @@ dev-python/asynctest 0.12.2: Enhance the standard unittest with features for tes
 dev-python/atom 0.4.1: Memory efficient Python objects
 dev-python/atomicwrites 1.1.5-r2 1.1.5-r3 1.2.1 1.3.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
-dev-python/attrs 18.2.0 19.1.0 19.3.0: Attributes without boilerplate
+dev-python/attrs 19.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r1: Wrapper for audio file decoding using FFmpeg or GStreamer
 dev-python/authheaders 0.12.1: A library wrapping email authentication header verification and generation.
 dev-python/authres 0.800 1.1.1: Authentication-Results Headers generation and parsing
