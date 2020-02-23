@@ -28,7 +28,7 @@ RRL_PV="${MY_PV}"
 
 DESCRIPTION="Berkeley Internet Name Domain - Name Server"
 HOMEPAGE="https://www.isc.org/software/bind"
-SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.gz
+SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.xz
 	doc? ( mirror://gentoo/dyndns-samples.tbz2 )"
 #	sdb-ldap? (
 #		http://ftp.disconnected-by-peer.at/pub/bind-sdb-ldap-${SDB_LDAP_VER}.patch.bz2
@@ -36,15 +36,16 @@ SRC_URI="https://downloads.isc.org/isc/bind9/${PV}/${P}.tar.gz
 
 LICENSE="Apache-2.0 BSD BSD-2 GPL-2 HPND ISC MPL-2.0"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # -berkdb by default re bug 602682
-IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip gssapi
+IUSE="-berkdb +caps dlz dnstap doc dnsrps fixed-rrset geoip geoip2 gssapi
 json ldap libressl lmdb mysql odbc postgres python selinux static-libs
 urandom xml +zlib"
 # sdb-ldap - patch broken
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
 REQUIRED_USE="
+	?? ( geoip geoip2 )
 	postgres? ( dlz )
 	berkdb? ( dlz )
 	mysql? ( dlz )
@@ -54,8 +55,8 @@ REQUIRED_USE="
 	python? ( ${PYTHON_REQUIRED_USE} )"
 # sdb-ldap? ( dlz )
 
-DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
-	libressl? ( dev-libs/libressl )
+DEPEND="!libressl? ( dev-libs/openssl:=[-bindist] )
+	libressl? ( dev-libs/libressl:= )
 	mysql? ( dev-db/mysql-connector-c:0= )
 	odbc? ( >=dev-db/unixODBC-2.2.6 )
 	ldap? ( net-nds/openldap )
@@ -63,6 +64,7 @@ DEPEND="!libressl? ( dev-libs/openssl:0[-bindist] )
 	caps? ( >=sys-libs/libcap-2.1.0 )
 	xml? ( dev-libs/libxml2 )
 	geoip? ( >=dev-libs/geoip-1.4.6 )
+	geoip2? ( dev-libs/libmaxminddb )
 	gssapi? ( virtual/krb5 )
 	json? ( dev-libs/json-c:= )
 	lmdb? ( dev-db/lmdb )
@@ -82,10 +84,6 @@ S="${WORKDIR}/${MY_P}"
 
 # bug 479092, requires networking
 RESTRICT="test"
-
-PATCHES=(
-	"${FILESDIR}"/bind-9.14.8-mysql8-bool.patch
-)
 
 pkg_setup() {
 	ebegin "Creating named group and user"
@@ -134,6 +132,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--prefix="${EPREFIX}"/usr
 		--sysconfdir=/etc/bind
 		--localstatedir=/var
 		--with-libtool
@@ -150,7 +149,7 @@ src_configure() {
 		$(use_with dlz dlz-filesystem)
 		$(use_with dlz dlz-stub)
 		$(use_with gssapi)
-		$(use_with json libjson)
+		$(use_with json json-c)
 		$(use_with ldap dlz-ldap)
 		$(use_with mysql dlz-mysql)
 		$(use_with odbc dlz-odbc)
@@ -161,7 +160,8 @@ src_configure() {
 		$(use_with zlib)
 	)
 
-	use geoip && myeconfargs+=( --enable-geoip )
+	use geoip && myeconfargs+=( --with-geoip )
+	use geoip2 && myeconfargs+=( --with-geoip2 )
 
 	# bug #158664
 #	gcc-specs-ssp && replace-flags -O[23s] -O
@@ -221,7 +221,7 @@ src_install() {
 	rm -f "${ED}"/usr/bin/{dig,host,nslookup,nsupdate} || die
 	rm -f "${ED}"/usr/sbin/{dig,host,nslookup,nsupdate} || die
 	for tool in dsfromkey importkey keyfromlabel keygen \
-	  revoke settime signzone verify; do
+	revoke settime signzone verify; do
 		rm -f "${ED}"/usr/{,s}bin/dnssec-"${tool}" || die
 		rm -f "${ED}"/usr/share/man/man8/dnssec-"${tool}".8* || die
 	done
@@ -363,7 +363,11 @@ pkg_config() {
 	fi
 
 	if [ "${CHROOT_GEOIP:-0}" -eq 1 ]; then
-		mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP || die
+		if use geoip; then
+			mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP || die
+		elif use geoip2; then
+			mkdir -m 0755 -p ${CHROOT}/usr/share/GeoIP2 || die
+		fi
 	fi
 
 	elog "You may need to add the following line to your syslog-ng.conf:"

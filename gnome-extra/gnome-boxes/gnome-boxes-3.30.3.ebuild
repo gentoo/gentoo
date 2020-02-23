@@ -1,11 +1,12 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 VALA_USE_DEPEND="vapigen"
 VALA_MIN_API_VERSION="0.36"
 # 0.46 has problems with spice-client-glib-2.0.vapi exposing a bad constructor
-VALA_MAX_API_VERSION="0.44"
+# 0.40 and 0.44 have problems with gdk modifier types, for which we have patch in 3.32 bump
+VALA_MAX_API_VERSION="0.36"
 
 inherit gnome.org gnome2-utils linux-info meson readme.gentoo-r1 vala xdg
 

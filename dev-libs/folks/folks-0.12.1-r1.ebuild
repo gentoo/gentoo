@@ -49,6 +49,7 @@ BDEPEND="
 PATCHES=(
 	"${FILESDIR}"/${PV}-conditional-tests.patch # Allow not building lots of test executables when tests are disabled
 	"${FILESDIR}"/${PV}-no-tracker-tests.patch # TODO: Tracker tests fail; this removed them for now
+	"${FILESDIR}"/${PV}-meson-0.53-compat.patch # https://gitlab.gnome.org/GNOME/folks/issues/119
 )
 
 src_prepare() {
