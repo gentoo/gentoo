@@ -16942,7 +16942,7 @@ sys-apps/superiotool 6637 99999999: util to detect Super I/O chips and functiona
 sys-apps/sydbox 1.0.7: ptrace-based sandbox
 sys-apps/syscriptor 1.5.15: display misc information about your hardware
 sys-apps/syslog-notify 0.2: Notifications for syslog entries via libnotify
-sys-apps/systemd 243-r2 244 244.3 245_rc1-r1 9999: System and service manager for Linux
+sys-apps/systemd 243-r2 244 244.3 245_rc1-r2 9999: System and service manager for Linux
 sys-apps/systemd-readahead 216: Split of readahead systemd implementation
 sys-apps/sysvinit 2.93 2.95-r1 2.96: /sbin/init - parent of all processes
 sys-apps/tas 1.5.2.180622: Supermicro Thin-Agent Service for monitoring through the BMC/IPMI
@@ -17430,7 +17430,7 @@ sys-fs/reiserfsprogs 3.6.25 3.6.27: Reiserfs Utilities
 sys-fs/safecopy 1.7: Tool for fault-tolerant data recovery from damaged (io-errors) devices or files
 sys-fs/shake 1.0: Defragmenter that runs in userspace while the system is used
 sys-fs/simple-mtpfs 0.3.0: Simple MTP fuse filesystem driver
-sys-fs/snapraid 6.2 6.3 7.0 7.1 8.1 10.0 11.0-r1 11.2: a backup program for disk array for home media centers
+sys-fs/snapraid 11.2 11.3: a backup program for disk array for home media centers
 sys-fs/squashfs-tools 4.3-r2 4.3_p7 4.3_p12 4.4 9999: tools to create and extract Squashfs filesystems
 sys-fs/squashfs-tools-ng 0.7 0.8 9999: A new set of tools for working with SquashFS images
 sys-fs/squashfuse 0.1.100 0.1.103: FUSE filesystem to mount squashfs archives
