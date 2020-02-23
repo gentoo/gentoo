@@ -1,0 +1,47 @@
+From 1853567d79024c6ce960d9dc187cff8aaf9a37ce Mon Sep 17 00:00:00 2001
+From: Niels De Graef <nielsdegraef@gmail.com>
+Date: Mon, 3 Feb 2020 08:57:52 +0100
+Subject: [PATCH] meson: Use python.dependency() correctly
+
+From https://github.com/mesonbuild/meson/issues/6470:
+
+> So, to further clarify, passing an argument to
+> py_installation.dependency() should be an error, since this method
+> will only ever return a python dependency (for embedding python
+> itself, etc.) and not dbusmock or anything else.
+
+Fixxes https://gitlab.gnome.org/GNOME/folks/issues/119
+---
+ meson.build | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index d5115e28..f3644457 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1,7 +1,7 @@
+ project('folks', [ 'vala', 'c' ],
+   version: '0.13.2',
+   license: 'LGPL2.1+',
+-  meson_version: '>= 0.49',
++  meson_version: '>= 0.51',
+ )
+ 
+ gnome = import('gnome')
+@@ -132,8 +132,11 @@ if bluez_backend_enabled
+   libebook_dep = dependency('libebook-1.2', version: '>=' + min_eds_version)
+   # Needed for the BlueZ tests
+   pymod = import('python')
+-  py_installation = pymod.find_installation('python3')
+-  python_dbusmock = py_installation.dependency('dbusmock')
++  py_installation = pymod.find_installation('python3',
++    modules: [
++      'dbusmock',
++    ],
++  )
+ endif
+ 
+ if import_tool_enabled
+-- 
+2.20.1
+
