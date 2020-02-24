@@ -155,7 +155,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/cmake
 	dev-util/gperf
 	media-libs/giflib
-	>=media-libs/libjpeg-turbo-1.5.1:=
+	>=media-libs/libjpeg-turbo-2.0.4:=
 	>=media-libs/libpng-1.6.26:0=
 	test? ( dev-cpp/gtest )
 	virtual/pkgconfig
