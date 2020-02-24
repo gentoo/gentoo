@@ -30,6 +30,10 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 "
 
+PATCHES=(
+	"${FILESDIR}"/${P}-pkg-config.patch
+)
+
 src_prepare() {
 	cmake_src_prepare
 	# relying on forked http-parser to support some obscure URI form
