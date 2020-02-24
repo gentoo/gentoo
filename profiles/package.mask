@@ -32,6 +32,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Marek Szuba <marecki@gentoo.org> (2020-02-24)
+# Deprecated upstream in Q1'2018 in favour of dev-libs/intel-neo and
+# while it officially remains the recommended solution for "legacy HW
+# platforms" not supported by NEO (i.e. Sandy Bridge, Ivy Bridge and
+# Haswell GPUs), there has been no repository activity since August 2018.
+# Only really suitable for code development due to poor performance, some
+# OpenCL-aware software (e.g. media-gfx/darktable) explicitly
+# blacklists Beignet devices.
+# Upstream does not support LLVM versions newer than 7, third-party patches
+# exist for 8 and 9 but Beignet built against those versions fails some
+# unit tests.
+#
+# Removal in 30 days. Bug #710640.
+dev-libs/beignet
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-24)
 # app-admin/packagekit-base is Python 2 only and behind upstream.
 # The Portage backend is unmaintained.  Other packages are its reverse
