@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/gtk+:2 x11-libs/libXext x11-libs/libX11 x11-libs/libXpm x11-libs/libICE
 SLOT=0
 SRC_URI=mirror://debian/pool/main/w/wmclockmon/wmclockmon_0.8.1-1.tar.gz
-_md5_=20a699f992f804436230fa7890760e21
+_md5_=e27f5e29c73b1c7592817d77e33d411d
