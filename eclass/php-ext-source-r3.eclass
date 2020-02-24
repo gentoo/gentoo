@@ -366,7 +366,7 @@ php-ext-source-r3_createinifiles() {
 			inidir="${file/${PHP_INI_NAME}.ini/}"
 			inidir="${inidir/ext/ext-active}"
 			dodir "/${inidir}"
-			dosym "/${file}" "/${file/ext/ext-active}"
+			dosym "../ext/${PHP_INI_NAME}.ini" "/${file/ext/ext-active}"
 		done
 	done
 
