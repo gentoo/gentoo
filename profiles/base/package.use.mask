@@ -7,6 +7,10 @@
 # mask everywhere, unmask on arch/*) use arch/base.
 
 # Michał Górny <mgorny@gentoo.org> (2020-02-24)
+# app-admin/packagekit* are masked for removal.
+kde-frameworks/frameworkintegration appstream
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-24)
 # sys-apps/entropy is masked for removal.
 app-admin/packagekit-base entropy
 
