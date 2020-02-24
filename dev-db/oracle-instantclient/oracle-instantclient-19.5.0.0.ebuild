@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -48,6 +48,16 @@ then
 fi
 
 SRC_URI="
+	abi_x86_32? (
+		${MY_A_x86}
+		jdbc?    ( ${MY_A_x86_jdbc}    )
+		odbc?    ( ${MY_A_x86_odbc}    )
+		precomp? ( ${MY_A_x86_precomp} )
+		!abi_x86_64? (
+			sdk?     ( ${MY_A_x86_sdk}     )
+			sqlplus? ( ${MY_A_x86_sqlplus} )
+			tools?   ( ${MY_A_x86_tools}   )
+	) )
 	abi_x86_64? (
 		${MY_A_amd64}
 		jdbc?    ( ${MY_A_amd64_jdbc}    )
@@ -61,7 +71,7 @@ SRC_URI="
 
 LICENSE="OTN"
 SLOT="0/${MY_SOVER}"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 RESTRICT="fetch splitdebug"
 
 DEPEND="app-arch/unzip"
