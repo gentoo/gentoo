@@ -41,6 +41,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-libressl.patch
 	"${FILESDIR}"/${PN}-ldflags.patch
 	"${FILESDIR}"/${PN}-4.14-do-not-compress-doc.patch
+	"${FILESDIR}"/${PN}-correct-deps.patch
 )
 
 src_prepare() {
