@@ -204,14 +204,42 @@ llvm_check_deps() {
 	einfo "Will use LLVM slot ${LLVM_SLOT}!" >&2
 }
 
-pkg_setup() {
-	moz_pkgsetup
-
+pkg_pretend() {
 	if use pgo ; then
 		if ! has usersandbox $FEATURES ; then
 			die "You must enable usersandbox as X server can not run as root!"
 		fi
+
+		if ! use clang ; then
+			# Force user decision so they don't find out firefox was build
+			# without pgo after spending some hours
+			eerror "USE=pgo when using GCC is currently known to be broken."
+			eerror "Either switch to USE=clang or temporarily set USE=-pgo."
+			die "USE=pgo without USE=clang is currently known to be broken."
+		fi
 	fi
+
+	# Ensure we have enough disk space to compile
+	if use pgo || use lto || use debug || use test ; then
+		CHECKREQS_DISK_BUILD="8G"
+	else
+		CHECKREQS_DISK_BUILD="4G"
+	fi
+
+	check-reqs_pkg_pretend
+}
+
+pkg_setup() {
+	moz_pkgsetup
+
+	# Ensure we have enough disk space to compile
+	if use pgo || use lto || use debug || use test ; then
+		CHECKREQS_DISK_BUILD="8G"
+	else
+		CHECKREQS_DISK_BUILD="4G"
+	fi
+
+	check-reqs_pkg_setup
 
 	# Avoid PGO profiling problems due to enviroment leakage
 	# These should *always* be cleaned up anyway
@@ -219,6 +247,7 @@ pkg_setup() {
 		DISPLAY \
 		ORBIT_SOCKETDIR \
 		SESSION_MANAGER \
+		XDG_CACHE_HOME \
 		XDG_SESSION_COOKIE \
 		XAUTHORITY
 
@@ -235,19 +264,8 @@ pkg_setup() {
 	llvm_pkg_setup
 }
 
-pkg_pretend() {
-	# Ensure we have enough disk space to compile
-	if use pgo || use lto || use debug || use test ; then
-		CHECKREQS_DISK_BUILD="8G"
-	else
-		CHECKREQS_DISK_BUILD="4G"
-	fi
-
-	check-reqs_pkg_setup
-}
-
 src_unpack() {
-	unpack ${A}
+	default
 
 	# Unpack language packs
 	mozlinguas_src_unpack
