@@ -23,10 +23,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x86-macos"
 IUSE="+lzo +ncurses libressl +readline +ssl uml vde upnp +zlib"
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
-	${PYTHON_DEPS}
 	ssl? (
 		!libressl? ( dev-libs/openssl:0= )
 		libressl? ( dev-libs/libressl:0= )
