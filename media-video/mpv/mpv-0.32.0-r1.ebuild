@@ -335,17 +335,6 @@ pkg_postinst() {
 		elog "X11 or Mac OS Aqua. Consider enabling the 'opengl' USE flag."
 	fi
 
-	if use cli && ! has_version 'app-shells/mpv-bash-completion'; then
-		elog "If you want to have command-line completion via bash-completion,"
-		elog "please install app-shells/mpv-bash-completion."
-	fi
-
-	if use cli && [[ -n ${REPLACING_VERSIONS} ]] &&
-			has_version 'app-shells/mpv-bash-completion'; then
-		elog "If command-line completion doesn't work after mpv update,"
-		elog "please rebuild app-shells/mpv-bash-completion."
-	fi
-
 	elog "If you want URL support, please install net-misc/youtube-dl."
 
 	gnome2_icon_cache_update
