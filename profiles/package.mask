@@ -66,8 +66,7 @@ games-strategy/boswars
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-22)
 # Last release in 2009, py2-only, blocks dev-python/pygtk removal, bug #708100
-# media-gfx/mcomix meanwhile is a fork of comix that will be kept until its
-# fork mcomix3 was packaged. Masked for removal in 30 days.
+# Use media-gfx/mcomix instead. Masked for removal in 30 days.
 media-gfx/comix
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-21)
