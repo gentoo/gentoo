@@ -204,14 +204,25 @@ llvm_check_deps() {
 	einfo "Will use LLVM slot ${LLVM_SLOT}!" >&2
 }
 
-pkg_setup() {
-	moz_pkgsetup
-
+pkg_pretend() {
 	if use pgo ; then
 		if ! has usersandbox $FEATURES ; then
 			die "You must enable usersandbox as X server can not run as root!"
 		fi
 	fi
+
+	# Ensure we have enough disk space to compile
+	if use pgo || use lto || use debug || use test ; then
+		CHECKREQS_DISK_BUILD="8G"
+	else
+		CHECKREQS_DISK_BUILD="4G"
+	fi
+
+	check-reqs_pkg_pretend
+}
+
+pkg_setup() {
+	moz_pkgsetup
 
 	# Avoid PGO profiling problems due to enviroment leakage
 	# These should *always* be cleaned up anyway
@@ -234,17 +245,6 @@ pkg_setup() {
 	addpredict /proc/self/oom_score_adj
 
 	llvm_pkg_setup
-}
-
-pkg_pretend() {
-	# Ensure we have enough disk space to compile
-	if use pgo || use lto || use debug || use test ; then
-		CHECKREQS_DISK_BUILD="8G"
-	else
-		CHECKREQS_DISK_BUILD="4G"
-	fi
-
-	check-reqs_pkg_setup
 }
 
 src_unpack() {
