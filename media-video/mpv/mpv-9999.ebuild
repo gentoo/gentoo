@@ -64,7 +64,8 @@ COMMON_DEPEND="
 	alsa? ( >=media-libs/alsa-lib-1.0.18 )
 	archive? ( >=app-arch/libarchive-3.4.0:= )
 	bluray? ( >=media-libs/libbluray-0.3.0:= )
-	cdda? ( dev-libs/libcdio-paranoia )
+	cdda? ( dev-libs/libcdio-paranoia
+			dev-libs/libcdio:= )
 	drm? ( x11-libs/libdrm )
 	dvd? (
 		>=media-libs/libdvdnav-4.2.0:=

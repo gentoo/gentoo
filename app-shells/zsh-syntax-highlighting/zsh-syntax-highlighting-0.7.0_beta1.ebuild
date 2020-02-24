@@ -11,7 +11,7 @@ if [[ -z ${PV%%*9999} ]]; then
 else
 	MY_PV=$(ver_rs 3 -)
 	SRC_URI="https://github.com/zsh-users/zsh-syntax-highlighting/archive/${MY_PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 x86"
 	S="${WORKDIR}/${PN}-${MY_PV}"
 fi
 
