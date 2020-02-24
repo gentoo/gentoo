@@ -10776,7 +10776,7 @@ dev-vcs/mr 1.20170129 1.20171231 1.20180726 1.99999999: Multiple Repository mana
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
 dev-vcs/pwclient 20141110122616: command line utility for interacting with patchwork repos
 dev-vcs/python-gitlab 1.7.0 1.8.0 1.9.0 1.13.0: Python command line interface to gitlab API
-dev-vcs/qgit 2.8: Qt GUI for git repositories
+dev-vcs/qgit 2.8 2.9: Qt GUI for git repositories
 dev-vcs/rapidsvn 0.12.1-r3: Cross-platform GUI front-end for the Subversion revision system
 dev-vcs/rcs 5.9.3 5.9.4: Revision Control System
 dev-vcs/rcsi 0.5: A program to give information about RCS files
@@ -13059,7 +13059,7 @@ media-libs/lv2 1.14.0-r2 1.16.0-r1: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
 media-libs/mesa 19.2.8 19.3.4 20.0.0 9999: OpenGL-like graphic library for Linux
-media-libs/mlt 6.16.0-r1 6.16.0-r2 6.18.0 6.18.0-r1: Open source multimedia framework for television broadcasting
+media-libs/mlt 6.16.0-r1 6.16.0-r2 6.18.0 6.20.0: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
 media-libs/mutagen 1.43.0: Audio metadata tag reader and writer implemented in pure Python
@@ -13519,7 +13519,7 @@ media-sound/bpmdetect 0.7.0_pre20170810: Automatic BPM detection utility
 media-sound/bristol 0.60.11-r1: Synthesizer keyboard emulation package: Moog, Hammond and others
 media-sound/brutefir 1.0k-r2: Software convolution engine for applying long FIR filters
 media-sound/cadence 0.9.0-r4 9999: Collection of tools useful for audio production
-media-sound/cantata 2.3.3-r1: Featureful and configurable Qt client for the music player daemon (MPD)
+media-sound/cantata 2.3.3-r1 2.4.1: Featureful and configurable Qt client for the music player daemon (MPD)
 media-sound/cd-discid 1.4: returns the disc id for the cd in the cd-rom drive
 media-sound/cdcd 0.6.6-r2: a simple yet powerful command line cd player
 media-sound/cdparanoia 3.10.2-r6 3.10.2-r7: An advanced CDDA reader with error correction
