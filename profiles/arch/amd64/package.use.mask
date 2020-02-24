@@ -167,8 +167,8 @@ dev-db/percona-server -tokudb -tokudb-backup-plugin
 dev-db/mariadb -jdbc
 
 # Andrew Savchenko <bircoph@gentoo.org> (2016-08-11)
-# PGO is fixed on amd64 but broken in >=firefox-72
-<www-client/firefox-72 -pgo
+# PGO is fixed on amd64
+>=www-client/firefox-48 -pgo
 
 # James Le Cuirot <chewi@gentoo.org> (2016-07-26)
 # Only available on some architectures.
