@@ -209,6 +209,14 @@ pkg_pretend() {
 		if ! has usersandbox $FEATURES ; then
 			die "You must enable usersandbox as X server can not run as root!"
 		fi
+
+		if ! use clang ; then
+			# Force user decision so they don't find out firefox was build
+			# without pgo after spending some hours
+			eerror "USE=pgo when using GCC is currently known to be broken."
+			eerror "Either switch to USE=clang or temporarily set USE=-pgo."
+			die "USE=pgo without USE=clang is currently known to be broken."
+		fi
 	fi
 
 	# Ensure we have enough disk space to compile
