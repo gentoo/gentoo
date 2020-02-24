@@ -185,7 +185,7 @@ php_install_ini() {
 		elog "Adding opcache to $PHP_EXT_INI_DIR"
 		echo "zend_extension=${PHP_DESTDIR}/$(get_libdir)/opcache.so" >> \
 			 "${D}/${PHP_EXT_INI_DIR}"/opcache.ini
-		dosym "${PHP_EXT_INI_DIR#${EPREFIX}}/opcache.ini" \
+		dosym "../ext/opcache.ini" \
 			  "${PHP_EXT_INI_DIR_ACTIVE#${EPREFIX}}/opcache.ini"
 	fi
 
