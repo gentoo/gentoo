@@ -1301,7 +1301,7 @@ app-editors/neovim 0.4.3 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
 app-editors/notepadqq 1.2.0 1.4.8 9999: Notepad++-like editor for Linux
 app-editors/nvi 1.81.6-r7: Re-implementation of the classic 4BSD ex/vi
-app-editors/okteta 0.26.2 0.26.3: Hex editor by KDE
+app-editors/okteta 0.26.3: Hex editor by KDE
 app-editors/padre 1.0.0-r1: Perl Application Development and Refactoring Environment
 app-editors/pluma 1.22.0 1.22.1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
@@ -2331,7 +2331,7 @@ app-office/lyx 2.3.3: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
 app-office/mdbtools 0.7.1-r2: Set of libraries and utilities for reading Microsoft Access database (MDB) files
 app-office/moneydance 2017.10 2019.3.1880: A cross-platform personal finance application
-app-office/moneyguru 2.13.1-r2 3.0.1-r2: Future-aware personal finances management
+app-office/moneyguru 3.0.1-r2: Future-aware personal finances management
 app-office/multitalk 1.4-r1: A new type of presentation program
 app-office/openoffice-bin 4.1.7: Apache OpenOffice productivity suite
 app-office/orage 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
@@ -2356,7 +2356,7 @@ app-officeext/ct2n 1.5.0: Extension for converting text to numbers
 app-officeext/dmaths 3.4.9.0-r1: Mathematics Formula Editor Extension
 app-officeext/languagetool 3.4 3.5: Style and Grammar Checker for libreoffice
 app-officeext/ooo2gd 3.0.0-r1: Extension for export to Google docs, zoho and WebDAV
-app-officeext/ooofbtools 2.55 2.56: Open/LibreOffice extension for the FictionBook2 format with validation
+app-officeext/ooofbtools 2.56: Open/LibreOffice extension for the FictionBook2 format with validation
 app-officeext/sun-templates 1.0.0-r1: Collection of sun templates for various countries
 app-officeext/texmaths 0.48: LaTeX Equation Editor for LibreOffice
 app-pda/barry 0.18.3: Sync, backup, program management, and charging for BlackBerry devices
@@ -15103,7 +15103,7 @@ net-misc/rclone 1.45 1.47.0 1.49.1 1.50.0 1.50.2 1.51.0 9999: A program to sync 
 net-misc/rdate 1.4-r4: use TCP or UDP to retrieve the current time of another machine
 net-misc/rdesktop 1.8.6 1.8.6-r1 1.9.0 1.9.0-r1: A Remote Desktop Protocol Client
 net-misc/redir 3.2 3.3: Redir is a port redirector
-net-misc/remmina 1.3.4 1.3.6-r1 1.3.9-r1 1.3.10: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
+net-misc/remmina 1.3.4 1.3.6-r1 1.3.9-r1 1.3.10 1.4.1: A GTK+ RDP, SPICE, VNC, XDMCP and SSH client
 net-misc/rinetd 0.62-r2: redirects TCP connections from one IP address and port to another
 net-misc/ris-linux 0.4-r1: BINL server to doing Windows(r) RIS
 net-misc/rsync 3.1.3: File transfer program to keep remote files into sync
@@ -16400,7 +16400,7 @@ sci-visualization/gle 4.2.5-r1: Graphics Layout Engine
 sci-visualization/gnuplot 5.0.7 5.2.6 5.2.7 5.2.9999 5.3.9999: Command-line driven interactive plotting program
 sci-visualization/grace 5.1.25 5.1.25_p7: Motif based XY-plotting tool
 sci-visualization/gri 2.12.23-r1: Language for scientific graphics programming
-sci-visualization/gwyddion 2.47-r1 2.55-r2: Framework for Scanning Mode Microscopy data analysis
+sci-visualization/gwyddion 2.55-r2: Framework for Scanning Mode Microscopy data analysis
 sci-visualization/kst 2.0.8: Fast real-time large-dataset viewing and plotting tool
 sci-visualization/labplot 2.7.0 9999: Scientific data analysis and visualisation based on KDE Frameworks
 sci-visualization/nonolith-connect 1.1: CEE (Control - Experiment - Explore) analog multitool
