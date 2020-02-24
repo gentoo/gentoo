@@ -1,0 +1,13 @@
+diff --git a/src/codec_dumb.cpp b/src/codec_dumb.cpp
+index 8d24a7a..28dbe67 100644
+--- a/src/codec_dumb.cpp
++++ b/src/codec_dumb.cpp
+@@ -282,7 +282,7 @@ private:
+         return -1;
+     }
+ 
+-    static long read(char *ptr, long size, void *user_data)
++    static long read(char *ptr, size_t size, void *user_data)
+     {
+         std::istream *stream = static_cast<dumbStream*>(user_data)->fstream;
+         stream->clear();
