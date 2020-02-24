@@ -21,6 +21,7 @@ IUSE="+caps doc gssapi idn ipv6 libedit libressl readline xml"
 # no PKCS11 currently as it requires OpenSSL to be patched, also see bug 409687
 
 COMMON_DEPEND="
+	dev-libs/libuv:=
 	caps? ( sys-libs/libcap )
 	!libressl? ( dev-libs/openssl:= )
 	libressl? ( dev-libs/libressl:= )
