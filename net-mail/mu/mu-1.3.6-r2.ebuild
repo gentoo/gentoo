@@ -12,21 +12,22 @@ SRC_URI="https://github.com/djcb/mu/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="emacs guile"
+IUSE="emacs guile mug"
 
-# net-mail/mailutils also installes /usr/bin/mu.  Block it until somebody
-# really wants both installed at the same time.
 DEPEND="
+	dev-libs/glib:2
 	dev-libs/gmime:3.0
 	>=dev-libs/xapian-1.4
-	dev-libs/glib:2
 	emacs? ( >=app-editors/emacs-24.4:* )
 	guile? ( >=dev-scheme/guile-2.0 )
-	!net-mail/mailutils"
+	mug? (
+		net-libs/webkit-gtk:4
+		x11-libs/gtk+:3
+	)"
 RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-SITEFILE="70mu-gentoo.el"
+SITEFILE="70mu-gentoo-autoload.el"
 
 src_prepare() {
 	default
@@ -34,13 +35,14 @@ src_prepare() {
 }
 
 src_configure() {
-	# Note: Author recommends that packages do not build the webkit toy
-	# Todo: Add gtk USE-flag
-
-	econf --disable-gtk \
-		--disable-webkit \
-		$(use_enable emacs mu4e) \
+	local myeconfargs=(
+		$(use_enable emacs mu4e)
+		$(use_enable mug gtk)
+		$(use_enable mug webkit)
 		$(use_enable guile)
+	)
+
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
@@ -53,19 +55,29 @@ src_install() {
 	fi
 
 	doman man/mu-add.1 man/mu-bookmarks.5 man/mu-cfind.1 man/mu-easy.1 \
-		  man/mu-extract.1 man/mu-find.1 man/mu-help.1 man/mu-index.1 \
-		  man/mu-mkdir.1 man/mu-query.7 man/mu-remove.1 \
-		  man/mu-script.1 man/mu-server.1 man/mu-verify.1 \
-		  man/mu-view.1 man/mu.1
+		man/mu-extract.1 man/mu-find.1 man/mu-help.1 man/mu-index.1 \
+		man/mu-mkdir.1 man/mu-query.7 man/mu-remove.1 \
+		man/mu-script.1 man/mu-server.1 man/mu-verify.1 \
+		man/mu-view.1 man/mu.1
 
 	if use guile; then
-	       	  doinfo guile/mu-guile.info
+		  doinfo guile/mu-guile.info
+	fi
+
+	if use mug; then
+		  dobin toys/mug/mug
 	fi
 }
 
 src_test() {
-	# Note: Fails with parallel make
-	emake -j1 check
+	emake check
+}
+
+pkg_preinst() {
+	if [[ -n ${REPLACING_VERSIONS} ]]; then
+		elog "After upgrading from an old major version, you should"
+		elog "rebuild your mail index."
+	fi
 }
 
 pkg_postinst() {
@@ -74,9 +86,6 @@ pkg_postinst() {
 		einfo "See the manual for more information:"
 		einfo "http://www.djcbsoftware.nl/code/mu/mu4e/"
 	fi
-
-	elog "If you upgrade from an older major version,"
-	elog "then you need to rebuild your mail index."
 
 	use emacs && elisp-site-regen
 }
