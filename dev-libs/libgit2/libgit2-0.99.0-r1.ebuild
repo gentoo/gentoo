@@ -44,8 +44,8 @@ src_configure() {
 	local mycmakeargs=(
 		-DLIB_INSTALL_DIR="${EPREFIX}/usr/$(get_libdir)"
 		-DBUILD_CLAR=$(usex test)
-		-DENABLE_TRACE=$(usex trace)
-		-DUSE_GSSAPI=$(usex gssapi)
+		-DENABLE_TRACE=$(usex trace ON OFF)
+		-DUSE_GSSAPI=$(usex gssapi ON OFF)
 		-DUSE_SSH=$(usex ssh)
 		-DTHREADSAFE=$(usex threads)
 		-DUSE_HTTP_PARSER=system
