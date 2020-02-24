@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-24)
+# sys-apps/entropy is masked for removal.
+app-admin/packagekit-base entropy
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-08)
 # The dependency is python-single-r1 while the package (and its revdeps)
 # are python-r1.
