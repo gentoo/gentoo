@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,7 @@ src_prepare() {
 	cd "${WORKDIR}"/${P} || die
 	eapply "${FILESDIR}"/${P}-counter-fix.patch
 	eapply "${FILESDIR}"/${P}-list.patch
+	eapply "${FILESDIR}"/${P}-gcc-10.patch
 	eapply_user
 }
 
