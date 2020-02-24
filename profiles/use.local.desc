@@ -4849,7 +4849,6 @@ media-sound/yarock:phonon - Enable media-libs/phonon backend
 media-sound/yarock:vlc - Enable media-video/vlc backend
 media-sound/yoshimi:lv2 - Add support for Ladspa V2
 media-sound/zynaddsubfx:dssi - Enable support for DSSI Soft Synth Interface
-media-tv/gentoo-vdr-scripts:nvram - Add support for using nvram-wakeup to set wakeup time in bios
 media-tv/kodi:airplay - enable AirPlay support
 media-tv/kodi:bluray - Enable playback of Blu-ray filesystems
 media-tv/kodi:cec - Enable support for HDMI-CEC devices via libcec
