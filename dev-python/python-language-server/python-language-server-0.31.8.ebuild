@@ -19,10 +19,12 @@ KEYWORDS="~amd64 ~x86"
 
 BDEPEND="dev-python/versioneer[${PYTHON_USEDEP}]"
 
-RDEPEND="dev-python/jedi[${PYTHON_USEDEP}]
+RDEPEND="
+	>=dev-python/jedi-0.14.1[${PYTHON_USEDEP}]
+	<dev-python/jedi-0.16.0[${PYTHON_USEDEP}]
 	dev-python/pluggy[${PYTHON_USEDEP}]
-	dev-python/python-jsonrpc-server[${PYTHON_USEDEP}]
-	dev-python/ujson[${PYTHON_USEDEP}]"
+	>=dev-python/python-jsonrpc-server-0.3.2[${PYTHON_USEDEP}]
+	<=dev-python/ujson-1.35[${PYTHON_USEDEP}]"
 
 DEPEND="test? (
 	dev-python/autopep8[${PYTHON_USEDEP}]
