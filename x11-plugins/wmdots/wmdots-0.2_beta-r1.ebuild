@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,14 +23,14 @@ S="${WORKDIR}/${PN}"
 src_prepare() {
 	default
 	eapply "${FILESDIR}"/${P}-stringh.patch
-	sed -e "s:cc:$(tc-getCC):g" \
-		-e "s:-g -O2:${CFLAGS}:g" -i Makefile || die
+	sed -e "s|cc|$(tc-getCC)|g" \
+		-e "s|-g -O2|${CFLAGS}|g" -i Makefile || die
 
 	#Fix compilation target
-	sed -e "s:wmifs:wmdots:" -i Makefile || die
+	sed -e "s|wmifs|wmdots|" -i Makefile || die
 
 	#Honour Gentoo LDFLAGS, see bug #336982
-	sed -e "s:-o wmdots:\$(LDFLAGS) -o wmdots:" -i Makefile || die
+	sed -e "s|-o wmdots|\$(LDFLAGS) -o wmdots|" -i Makefile || die
 }
 
 src_compile() {
