@@ -248,7 +248,7 @@ pkg_pretend() {
 }
 
 src_unpack() {
-	unpack ${A}
+	default
 
 	# Unpack language packs
 	mozlinguas_src_unpack
