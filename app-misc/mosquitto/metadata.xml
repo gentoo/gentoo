@@ -5,14 +5,6 @@
 		<email>mattst88@gentoo.org</email>
 		<name>Matt Turner</name>
 	</maintainer>
-	<maintainer type="person">
-		<email>ramage.lucas@protonmail.com</email>
-		<name>Lucas Ramage</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>proxy-maint@gentoo.org</email>
-		<name>Proxy Maintainers</name>
-	</maintainer>
 	<use>
 		<flag name="bridge">Enable bridge support in the MQTT broker.</flag>
 		<flag name="persistence">Store messages and subscriptions to a file.</flag>
