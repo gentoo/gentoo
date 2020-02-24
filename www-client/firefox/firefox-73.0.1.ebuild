@@ -224,6 +224,15 @@ pkg_pretend() {
 pkg_setup() {
 	moz_pkgsetup
 
+	# Ensure we have enough disk space to compile
+	if use pgo || use lto || use debug || use test ; then
+		CHECKREQS_DISK_BUILD="8G"
+	else
+		CHECKREQS_DISK_BUILD="4G"
+	fi
+
+	check-reqs_pkg_setup
+
 	# Avoid PGO profiling problems due to enviroment leakage
 	# These should *always* be cleaned up anyway
 	unset DBUS_SESSION_BUS_ADDRESS \
