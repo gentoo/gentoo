@@ -6,7 +6,7 @@ EAPI="7"
 inherit linux-info prefix systemd
 
 DESCRIPTION='A high-level tool for configuring Netfilter'
-HOMEPAGE="http://www.shorewall.net/"
+HOMEPAGE="https://shorewall.org/"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="doc +init +ipv4 ipv6 lite4 lite6 selinux"
@@ -66,24 +66,24 @@ if [[ ${MY_PV} = *-Beta* ]] || [[ ${MY_PV} = *-RC* ]]; then
 	unset _tmp_last_index
 	unset _tmp_suffix
 else
-	KEYWORDS="~alpha amd64 hppa ppc ppc64 sparc x86"
+	KEYWORDS="~alpha ~amd64 ~hppa ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 SRC_URI="
-	http://www.shorewall.net/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall-core-${MY_PV}.tar.bz2
-	ipv4? ( http://www.shorewall.net/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall-${MY_PV}.tar.bz2 )
-	ipv6? ( http://www.shorewall.net/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall6-${MY_PV}.tar.bz2 )
-	lite4? ( http://www.shorewall.net/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall-lite-${MY_PV}.tar.bz2 )
-	lite6? ( http://www.shorewall.net/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall6-lite-${MY_PV}.tar.bz2 )
-	init? ( http://www.shorewall.net/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall-init-${MY_PV}.tar.bz2 )
-	doc? ( http://www.shorewall.net/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/${MY_P_DOCS}.tar.bz2 )
+	https://shorewall.org/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall-core-${MY_PV}.tar.bz2
+	ipv4? ( https://shorewall.org/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall-${MY_PV}.tar.bz2 )
+	ipv6? ( https://shorewall.org/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall6-${MY_PV}.tar.bz2 )
+	lite4? ( https://shorewall.org/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall-lite-${MY_PV}.tar.bz2 )
+	lite6? ( https://shorewall.org/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall6-lite-${MY_PV}.tar.bz2 )
+	init? ( https://shorewall.org/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/shorewall-init-${MY_PV}.tar.bz2 )
+	doc? ( https://shorewall.org/pub/shorewall/${MY_URL_PREFIX}${MY_MAJOR_RELEASE_NUMBER}/shorewall-${MY_MAJORMINOR_RELEASE_NUMBER}${MY_URL_SUFFIX}/${MY_P_DOCS}.tar.bz2 )
 "
 
 # - Shorewall6 requires Shorewall
 # - Installing Shorewall-init or just the documentation doesn't make any sense,
 #   that's why we force the user to select at least one "real" Shorewall product
 #
-# See http://shorewall.net/download.htm#Which
+# See https://shorewall.org/download.htm#Which
 REQUIRED_USE="
 	ipv6? ( ipv4 )
 	|| ( ipv4 lite4 lite6 )
@@ -399,7 +399,7 @@ pkg_postinst() {
 			elog "create using ${CATEGORY}/shorewall (with \"ipv4\" and or \"ipv6\" USE flag)."
 			elog ""
 			elog "To read more about ${_PRODUCTS}, please visit"
-			elog "  http://shorewall.net/CompiledPrograms.html"
+			elog "  https://shorewall.org/CompiledPrograms.html"
 			elog ""
 			elog "To activate your shorewall-lite-based firewall on system start, please add ${PRODUCTS} to your default runlevel:"
 			elog ""
@@ -434,7 +434,7 @@ pkg_postinst() {
 			elog "You are upgrading from a previous major version. It is highly recommended that you read"
 			elog ""
 			elog "  - /usr/share/doc/shorewall*/releasenotes.tx*"
-			elog "  - http://shorewall.net/Shorewall-5.html#idm214"
+			elog "  - https://shorewall.org/Shorewall-5.html#idm214"
 
 			if use ipv4; then
 				elog ""
@@ -466,7 +466,7 @@ pkg_postinst() {
 		elog "before your shorewall-based firewall is ready to start."
 		elog ""
 		elog "To read more about shorewall-init, please visit"
-		elog "  http://www.shorewall.net/Shorewall-init.html"
+		elog "  https://shorewall.org/Shorewall-init.html"
 	fi
 
 	if ! has_version "net-firewall/conntrack-tools"; then
