@@ -43,6 +43,8 @@ REQUIRED_USE="
 	udp-server? ( server )
 "
 
+PATCHES=( "${FILESDIR}/${PN}-2.6.10_fno-common_fix.patch" )
+
 DOCS=( AUTHORS ChangeLog README )
 
 DISABLE_AUTOFORMATTING=1
