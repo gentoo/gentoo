@@ -7985,7 +7985,7 @@ dev-python/kazoo 2.2.1 2.5.0 2.6.1: A high-level Python library that makes it ea
 dev-python/kconfiglib 14.1.0: A flexible Python Kconfig implementation
 dev-python/keepassx 0.1.0-r1: Python API and CLI for KeePassX
 dev-python/keyring 13.2.1 13.2.1-r1 15.0.0 18.0.1 19.2.0 19.3.0: Provides access to the system keyring service
-dev-python/keystoneauth 3.1.0 3.4.0 3.10.0 3.13.1 3.17.1: This package contains tools for authenticating to an OpenStack-based cloud.
+dev-python/keystoneauth 3.17.1: This package contains tools for authenticating to an OpenStack-based cloud.
 dev-python/keystonemiddleware 7.0.1: A middleware for the OpenStack Keystone API
 dev-python/kid 0.9.6-r1: A simple and Pythonic XML template language
 dev-python/kitchen 1.2.4 1.2.5: A cornucopia of useful code
