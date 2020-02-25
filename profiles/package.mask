@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Jason A. Donenfeld <zx2c4@gentoo.org> (2020-02-24)
+# Unsupported upstream version, likely has security bugs. Not removed
+# immediately because of backwards incompatible configuration changes
+# with the newer version in the tree.
+#
+# Removal in 14 days. Bug #710754.
+~mail-mta/opensmtpd-6.0.3_p1
+
 # Marek Szuba <marecki@gentoo.org> (2020-02-24)
 # Deprecated upstream in Q1'2018 in favour of dev-libs/intel-neo and
 # while it officially remains the recommended solution for "legacy HW
