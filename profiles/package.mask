@@ -580,30 +580,12 @@ media-gfx/pycam
 # EAPI conversion caused some regressions, need to redesign old ebuilds.
 =dev-lang/lua-5.1.5-r5
 
-# David Seifert <soap@gentoo.org> (2020-01-26)
-# Unmaintained, last release 14 years ago, tons of patches,
-# Autoconf script is broken, fails with gettext-0.20.
-# Removal in 30 days.  Bug #578234, #685928.
-app-i18n/zhcon
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-26)
-# Unmaintained.  Not bumped since Mar 2018.  No py3.7 compat.  Forces
-# old version of dev-python/idna.
-# Removal in 30 days.  Bug #706502.
-net-misc/crossbar
 
 # Andrew Ammerlaan <andrewammerlaan@riseup.net> (2020-01-26)
 # Proxy Maintainers <proxy-maint@gentoo.org>
 # v3.6.3 uses huge amounts of memory: Bug #705682
 # v3.6.1 is the latest version without this issue
 =dev-libs/libsass-3.6.3
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-26)
-# Unmaintained in Gentoo.  Last bumped in 2013.  Multiple problems
-# reported both in release and live ebuild.  Python 2 only.  Version
-# bump is non-trivial.
-# Removal in 30 days.  Bug #706498.
-app-vim/youcompleteme
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-26)
 # Starting with Firefox 74 Mozilla removes xpi sideloading support
