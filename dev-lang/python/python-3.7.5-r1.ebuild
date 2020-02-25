@@ -27,9 +27,9 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="app-arch/bzip2:0=
 	app-arch/xz-utils:0=
+	dev-libs/libffi:=
 	sys-apps/util-linux:0=
 	>=sys-libs/zlib-1.1.3:0=
-	virtual/libffi:=
 	virtual/libintl
 	gdbm? ( sys-libs/gdbm:0=[berkdb] )
 	ncurses? ( >=sys-libs/ncurses-5.2:0= )
