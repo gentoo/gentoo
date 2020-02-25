@@ -5,7 +5,7 @@ EAPI=7
 
 inherit vim-plugin
 
-COMMIT_ID="aad8540ef56f495baa589f646edc1253db990f1a"
+COMMIT_ID="01c7b97eff12fd4b624e6efa2c0468163db61ebc"
 
 DESCRIPTION="vim plugin: "
 HOMEPAGE="https://github.com/nfnty/vim-nftables"
@@ -14,10 +14,6 @@ S="${WORKDIR}/${PN}-${COMMIT_ID}"
 
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86"
-
-PATCHES=(
-	"${FILESDIR}/vim-nftables-0_pre20200220-extra-keywords.patch"
-)
 
 src_prepare() {
 	default
