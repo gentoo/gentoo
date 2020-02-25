@@ -20,7 +20,7 @@ if tc_is_live ; then
 	#  Note that the micro version is required or lots of stuff will break.
 	#  To checkout master set gcc_LIVE_BRANCH="master" in the ebuild before
 	#  inheriting this eclass.
-	EGIT_BRANCH="${PN}-${PV%.?.?_pre9999}-branch"
+	EGIT_BRANCH="releases/${PN}-${PV%.?.?_pre9999}"
 	EGIT_BRANCH=${EGIT_BRANCH//./_}
 	inherit git-r3
 fi
