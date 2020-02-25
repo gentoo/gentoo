@@ -17,9 +17,11 @@ IUSE="gtk-doc +introspection test"
 RESTRICT="!test? ( test )"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
+# <glib-2.63.3 to avoid getting hit worse by https://gitlab.gnome.org/GNOME/gom/issues/24 - fixed in gom-0.4
 RDEPEND="
 	>=dev-db/sqlite-3.7:3
 	>=dev-libs/glib-2.36:2
+	<dev-libs/glib-2.63.3:2
 	introspection? ( >=dev-libs/gobject-introspection-1.30.0:= )
 	${PYTHON_DEPS}
 	>=dev-python/pygobject-3.16:3[${PYTHON_USEDEP}]
