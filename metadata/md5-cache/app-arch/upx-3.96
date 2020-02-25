@@ -7,6 +7,6 @@ KEYWORDS=~amd64 ~ppc ~ppc64 ~sparc ~x86
 LICENSE=GPL-2+ UPX-exception
 RDEPEND=>=dev-libs/ucl-1.03 sys-libs/zlib !app-arch/upx-bin
 SLOT=0
-SRC_URI=https://github.com/upx/upx/releases/download/v3.95/upx-3.95-src.tar.xz
+SRC_URI=https://github.com/upx/upx/releases/download/v3.96/upx-3.96-src.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=000ab95fd5636c4624bc807dcdd8af5a
+_md5_=5b1faeee1ad30d0a3abe882832d064d3
