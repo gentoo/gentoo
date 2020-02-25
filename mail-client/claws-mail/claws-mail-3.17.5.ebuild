@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python2_7 )
 inherit autotools desktop python-single-r1 xdg
 
 DESCRIPTION="An email client (and news reader) based on GTK+"
