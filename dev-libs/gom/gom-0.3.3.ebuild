@@ -26,11 +26,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	doc? ( dev-util/gtk-doc )
-	>=dev-util/intltool-0.40.0
-	sys-devel/gettext
 	virtual/pkgconfig
 	x11-libs/gdk-pixbuf:2
-"
+" # only tests need gdk-pixbuf, but they are unconditionally built
 
 pkg_setup() {
 	python_setup
