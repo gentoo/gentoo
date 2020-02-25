@@ -44,7 +44,8 @@ src_prepare() {
 		"${FILESDIR}"/${PN}-1.3.3-visibility.patch \
 		"${FILESDIR}"/${PN}-1.3.3-fl_open_display.patch \
 		"${FILESDIR}"/${PN}-1.3.3-fltk-config.patch \
-		"${FILESDIR}"/${PN}-1.3.3-xutf8-visibility.patch
+		"${FILESDIR}"/${PN}-1.3.3-xutf8-visibility.patch \
+		"${FILESDIR}"/${PN}-deparent-fix.patch
 
 	sed -i \
 		-e 's:@HLINKS@::g' FL/Makefile.in || die
