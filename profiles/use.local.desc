@@ -1307,7 +1307,6 @@ app-text/xpdf:utils - Install command-line PDF converters and various utilities
 app-text/zathura:synctex - Use libsynctex to get latex codeline from pdf
 app-text/zathura-meta:cb - Install plug-in for ComicBook support
 app-vim/gentoo-syntax:ignore-glep31 - Remove GLEP 31 (UTF-8 file encodings) settings
-app-vim/youcompleteme:clang - Enable semantic support for C-family languages using sys-devel/clang
 app-xemacs/xemacs-packages-all:mule - Add multi-language support to XEmacs
 dev-ada/gnat_util:shared - Build gnat_util shared library
 dev-ada/gnat_util:static-pic - Build gnat_util static library with pic code
@@ -6416,7 +6415,6 @@ net-misc/connman:vpnc - Use net-vpn/vpnc for cisco VPN support.
 net-misc/connman:wireguard - Enable WireGuard VPN support.
 net-misc/connman:wispr - Enable support for WISPr hotspot logins.
 net-misc/connman-gtk:openconnect - Support easier authentication to AnyConnect VPNs
-net-misc/crossbar:tor - include tor services connections support
 net-misc/csync:sftp - Enable sftp transfer support via net-libs/libssh
 net-misc/curl:alt-svc - Enable alt-svc support
 net-misc/curl:brotli - Enable brotli compression support

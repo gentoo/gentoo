@@ -1855,7 +1855,6 @@ app-i18n/xcin 2.5.3_pre3-r3: Chinese X Input Method
 app-i18n/xsunpinyin 3.0.0_rc1: A standalone XIM server for SunPinyin
 app-i18n/xvnkb 0.2.9a-r1: Vietnamese input keyboard for X
 app-i18n/yaskkserv 1.1.0 1.1.1: Yet Another SKK server
-app-i18n/zhcon 0.2.6-r3: A Fast CJK (Chinese/Japanese/Korean) Console Environment
 app-i18n/zinnia 0.06-r3: Zinnia - Online hand recognition system with machine learning
 app-i18n/zinnia-tomoe 0.6.0_p20080911: Handwriting model files trained with Tomoe data
 app-laptop/batti 0.3.8-r4: A upower based battery monitor for the system tray, similar to batterymon
@@ -2990,7 +2989,6 @@ app-vim/wikipedia-syntax 20101113-r1: vim plugin: Wikipedia syntax highlighting
 app-vim/xquery-syntax 0.1-r2: vim plugin: XQuery syntax highlighting
 app-vim/xsl-syntax 0.3.11-r2: vim plugin: Syntax for XSLT (with HTML and others)
 app-vim/yankring 19.0: vim plugin: maintains a history of previous yanks and deletes
-app-vim/youcompleteme 20130910 99999999: vim plugin: a code-completion engine for Vim
 app-vim/zenburn 2.25: Low-contrast color scheme for Vim
 app-vim/zoomwin 24-r1: vim plugin: brief-style window zooming
 app-xemacs/ada 1.14 1.16: Ada language support
@@ -4999,7 +4997,7 @@ dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for 
 dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0 3.3_rc1 3.3_rc2 3.3 3.3-r1: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.0-r1 1.3.1: Provides library functionality for FIDO 2.0
-dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.0: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.1: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.2.0-r1 0.3.0-r1: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 5.3.0 6.1.2 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
@@ -14459,7 +14457,7 @@ net-fs/sshfs 2.10-r1 3.6.0 3.7.0: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7-r6 0.7.2-r1: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.39.0 3.44.2 3.45.1 3.46.0 3.46.3: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.39.0 3.44.2 3.45.1 3.46.0 3.46.3 3.47.0: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r3: FTP layout package
@@ -14919,7 +14917,6 @@ net-misc/connman-gtk 1.1.1 1.1.1-r1: GTK GUI for Connman
 net-misc/connman-json-client 1.0_p20150721: An ncurses UI for connman
 net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for connman
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
-net-misc/crossbar 17.6.1_p3-r1 17.8.1 17.9.1 17.12.1 18.3.1: Crossbar.io - The Unified Application Router for the twisted framework
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
 net-misc/curl 7.65.0 7.65.3 7.66.0 7.67.0-r1 7.68.0: A Client that groks URLs
 net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1 2.11.1-r1 3.1.0: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
