@@ -1,6 +1,6 @@
 Index: pam_mktemp-1.1.1/pam_mktemp.c
 ===================================================================
---- pam_mktemp-1.1.1.orig/pam_mktemp.c
+--- pam_mktemp-1.1.1/pam_mktemp.c
 +++ pam_mktemp-1.1.1/pam_mktemp.c
 @@ -55,7 +55,7 @@
   */
