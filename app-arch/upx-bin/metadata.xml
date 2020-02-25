@@ -12,5 +12,4 @@
 	<upstream>
 		<remote-id type="github">upx/upx</remote-id>
 	</upstream>
-	<longdescription>UPX is a versatile executable packer with a excellent compression ratio</longdescription>
 </pkgmetadata>
