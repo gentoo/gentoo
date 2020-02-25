@@ -1,0 +1,22 @@
+From 81e27ccc0e7bf27405569ce98582860dfc9ea9bb Mon Sep 17 00:00:00 2001
+From: John Preston <johnprestonmail@gmail.com>
+Date: Tue, 25 Feb 2020 01:11:10 +0400
+Subject: [PATCH] Fix packaged build.
+
+---
+ external/hunspell/CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/external/hunspell/CMakeLists.txt b/cmake/external/hunspell/CMakeLists.txt
+index 6fec471..fbe2e95 100644
+--- a/cmake/external/hunspell/CMakeLists.txt
++++ b/cmake/external/hunspell/CMakeLists.txt
+@@ -5,7 +5,7 @@
+ # https://github.com/desktop-app/legal/blob/master/LEGAL
+ 
+ if (DESKTOP_APP_USE_PACKAGED)
+-    add_library(external_hunspell INTERFACE IMPORTED)
++    add_library(external_hunspell INTERFACE IMPORTED GLOBAL)
+     add_library(desktop-app::external_hunspell ALIAS external_hunspell)
+ 
+     find_package(PkgConfig REQUIRED)
