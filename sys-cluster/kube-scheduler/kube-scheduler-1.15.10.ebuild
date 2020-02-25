@@ -19,7 +19,7 @@ COMMON_DEPEND="acct-group/kube-scheduler
 	acct-user/kube-scheduler"
 DEPEND="${COMMON_DEPEND}
 	dev-go/go-bindata
-	=dev-lang/go-1.12"
+	=dev-lang/go-1.12*"
 	RDEPEND="${COMMON_DEPEND}"
 
 RESTRICT="test"
