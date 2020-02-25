@@ -153,6 +153,11 @@
       <name>Roy Bamford</name>
       <role>Minion</role>
     </member>
+    <member>
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
+      <role>Minor Minion</role>
+    </member>
   </project>
   <project>
     <email>accessibility@gentoo.org</email>
