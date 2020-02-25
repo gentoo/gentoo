@@ -59,5 +59,5 @@ src_configure() {
 src_install() {
 	default
 	use perl && perl_delete_localpod
-	rm -f "${ED}"/usr/$(get_libdir)/irssi/modules/*.{a,la}
+	rm -f "${ED}"/usr/$(get_libdir)/irssi/modules/*.{a,la} || die
 }
