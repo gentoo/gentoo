@@ -50,6 +50,7 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-zlib.patch
 	"${FILESDIR}"/${P}-fix-potential-memleaks-w-BN_to_ASN1_INTEGER.patch
 	"${FILESDIR}"/${P}-reenable-the-stitched-AES-CBC-HMAC-SHA-implementations.patch
+	"${FILESDIR}"/${P}-config-Drop-linux-alpha-gcc-bwx.patch
 )
 
 S="${WORKDIR}/${MY_P}"
