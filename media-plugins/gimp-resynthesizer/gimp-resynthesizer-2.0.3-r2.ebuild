@@ -23,7 +23,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 DEPEND="media-gfx/gimp
 	virtual/pkgconfig
 	${PYTHON_DEPS}"
-RDEPEND="media-gfx/gimp[python,${PYTHON_SINGLE_USEDEP}]
+RDEPEND="media-gfx/gimp[python(-),${PYTHON_SINGLE_USEDEP}]
 	${PYTHON_DEPS}"
 
 S="${WORKDIR}/${MY_P}"
