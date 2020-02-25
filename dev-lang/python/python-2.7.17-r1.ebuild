@@ -27,9 +27,9 @@ IUSE="-berkdb bluetooth build elibc_uclibc examples gdbm hardened ipv6 libressl 
 # patchset. See bug 447752.
 
 RDEPEND="app-arch/bzip2:=
+	dev-libs/libffi:=
 	>=sys-libs/zlib-1.1.3:=
 	virtual/libcrypt:=
-	virtual/libffi:=
 	virtual/libintl
 	berkdb? ( || (
 		sys-libs/db:5.3
