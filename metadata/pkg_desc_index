@@ -14867,7 +14867,7 @@ net-mail/tnef 1.4.15 1.4.17: Decodes MS-TNEF MIME attachments
 net-mail/tpop3d 1.5.5 1.5.5-r1: An extensible POP3 server with vmail-sql/MySQL support
 net-mail/vacation 1.2.7.0: automatic mail answering program
 net-mail/vchkuser 0.4: qmail-spp plugin to check recipient existance with vpopmail
-net-mail/vpopmail 5.4.33 5.4.33-r5: Collection of programs to manage virtual email on Qmail servers
+net-mail/vpopmail 5.4.33 5.4.33-r5 5.4.33-r6 5.4.33-r7: Collection of programs to manage virtual email on Qmail servers
 net-mail/vqadmin 2.3.7: A web based control pannel to manage Virtual Qmail Domains
 net-mail/ytnef 1.9.3: Yeraze's TNEF Stream Reader - for winmail.dat files
 net-misc/AQtion 2.2.7 2.3.1 2.3.4: Aquantia AQC multigigabit NIC linux driver (atlantic) - development preview
@@ -19066,7 +19066,7 @@ xfce-extra/xfce4-vala 4.10.3-r7: Vala bindings for the Xfce desktop environment
 xfce-extra/xfce4-verve-plugin 2.0.0: A comfortable command line plugin for the Xfce panel
 xfce-extra/xfce4-volumed-pulse 0.2.3: Daemon to control volume up/down and mute keys for pulseaudio
 xfce-extra/xfce4-wavelan-plugin 0.6.1: A panel plug-in to display wireless interface statistics
-xfce-extra/xfce4-weather-plugin 0.10.0: A weather plug-in for the Xfce desktop environment
+xfce-extra/xfce4-weather-plugin 0.10.0 0.10.1: A weather plug-in for the Xfce desktop environment
 xfce-extra/xfce4-whiskermenu-plugin 2.3.4 2.3.5 2.4.2: Alternate application launcher for Xfce
 xfce-extra/xfce4-windowck-plugin 0.4.6-r3: Xfce plugin puts the maximized window title and windows buttons on the panel
 xfce-extra/xfce4-xkb-plugin 0.8.1: XKB layout switching panel plug-in for the Xfce desktop environment
