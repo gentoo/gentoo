@@ -1,9 +1,9 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="4"
+EAPI=7
 
-inherit toolchain-funcs pam eutils
+inherit toolchain-funcs pam
 
 DESCRIPTION="Create per-user private temporary directories during login"
 HOMEPAGE="http://www.openwall.com/pam/"
@@ -16,11 +16,13 @@ IUSE="selinux +prevent-removal"
 
 RDEPEND="sys-libs/pam
 	selinux? ( sys-libs/libselinux )"
+
 DEPEND="${RDEPEND}
 	prevent-removal? ( sys-kernel/linux-headers )"
 
 src_prepare() {
-	epatch "${FILESDIR}"/${P}-e2fsprogs-libs.patch
+	default
+	eapply "${FILESDIR}"/${P}-e2fsprogs-libs.patch
 }
 
 src_compile() {
@@ -35,12 +37,4 @@ src_compile() {
 src_install() {
 	dopammod pam_mktemp.so
 	dodoc README
-}
-
-pkg_postinst() {
-	elog "To enable pam_mktemp put something like"
-	elog
-	elog "session    optional    pam_mktemp.so"
-	elog
-	elog "into /etc/pam.d/system-auth!"
 }
