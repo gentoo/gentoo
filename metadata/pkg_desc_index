@@ -5229,7 +5229,7 @@ dev-libs/rocm-hostcall 2.7.0: Radeon Open Compute hostcall API
 dev-libs/rocm-opencl-driver 2.10.0: Radeon Open Compute OpenCL Compiler Tool Driver
 dev-libs/rocm-opencl-runtime 3.0.0: Radeon Open Compute OpenCL Compatible Runtime
 dev-libs/rocr-runtime 3.0.0 9999: Radeon Open Compute Runtime
-dev-libs/roct-thunk-interface 3.0.0 9999: Radeon Open Compute Thunk Interface
+dev-libs/roct-thunk-interface 3.0.0 3.1.0 9999: Radeon Open Compute Thunk Interface
 dev-libs/rremove 1.0.5: A simple library to recursively delete non-empty directories
 dev-libs/satyr 0.27: Satyr is a collection of low-level algorithms for program failure processing
 dev-libs/sdformat 6.0.0 6.1.0 6.2.0: Simulation Description Format (SDF) parser
@@ -17482,7 +17482,7 @@ sys-kernel/linux-docs 4.19.99 5.4.15: Developer documentation generated from the
 sys-kernel/linux-firmware 20190603 20190815 20190904 20190923 20191008 20191022 20191108 20191215 20200122 99999999: Linux firmware files
 sys-kernel/linux-headers 3.18 4.4 4.9 4.13 4.14-r1 4.15-r1 4.16 4.16-r2 4.17 4.18 4.19 4.20 5.0 5.0-r1 5.1 5.2 5.3 5.3-r1 5.4 5.5: Linux system headers
 sys-kernel/mips-sources 4.4.196 4.9.196 4.14.149 4.18.20 4.19.79 4.20.17: Kernel.org sources for MIPS-based machines
-sys-kernel/pf-sources 5.3_p8 5.4_p6 5.5_p1 5.5_p2 5.5_p3 5.5_p4: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
+sys-kernel/pf-sources 5.3_p8 5.4_p6 5.5_p1 5.5_p2 5.5_p3 5.5_p4 5.5_p5: Linux kernel fork that includes the pf-kernel patchset and Gentoo's genpatches
 sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p20190925 9999: Raspberry Pi (all versions) kernel and modules
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
