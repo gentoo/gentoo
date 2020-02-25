@@ -6159,6 +6159,7 @@ net-libs/nodejs:inspector - Enable V8 inspector
 net-libs/nodejs:npm - Enable NPM package manager
 net-libs/nodejs:pax_kernel - Enable building under a PaX enabled kernel
 net-libs/nodejs:snapshot - Enable snapshot creation for faster startup
+net-libs/nodejs:system-ssl - Use system OpenSSL instead of the bundled one
 net-libs/nodejs:systemtap - Enable SystemTAP/DTrace tracing
 net-libs/ntirpc:gssapi - Include support for RPCSEC GSS
 net-libs/ntirpc:rdma - Include support for RDMA RPC

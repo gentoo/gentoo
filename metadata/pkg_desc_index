@@ -30,6 +30,7 @@ acct-group/dovecot 0: System group: dovecot
 acct-group/dovenull 0: System group: dovenull
 acct-group/elasticsearch 0: Elasticsearch program group
 acct-group/epmd 0: Group for Erlang Portmapper Daemon
+acct-group/etcd 0: System group: etcd
 acct-group/fetchmail 0: Group for net-mail/fetchmail
 acct-group/fhem 0: A group for the FHEM perl server for house automation
 acct-group/ftp 0: File Transfer Protocol server user
@@ -183,6 +184,7 @@ acct-user/dovecot 0: user for dovecot daemon
 acct-user/dovenull 0: user for dovecot daemon
 acct-user/elasticsearch 0: Elasticsearch program user
 acct-user/epmd 0: User for Erlang Protmapper Daemon
+acct-user/etcd 0: User for etcd
 acct-user/fetchmail 0: User for net-mail/fetchmail
 acct-user/fhem 0: A user for the FHEM perl server for house automation
 acct-user/ftp 0: File Transfer Protocol server user
@@ -3205,7 +3207,7 @@ dev-db/cockroach 2.1.5 19.1.1: open source database for building cloud services
 dev-db/cpp-driver 2.9.0 2.11.0: DataStax C/C++ Driver for Cassandra
 dev-db/datadraw 3.1.1: feature rich database generator for high performance C applications
 dev-db/db-je 3.3.75: A high performance, transactional storage engine written entirely in Java
-dev-db/etcd 3.3.17 3.3.18 3.4.3: Highly-available key value store for shared configuration and service discovery
+dev-db/etcd 3.3.17 3.3.18 3.4.3 3.4.4: Highly-available key value store for shared configuration and service discovery
 dev-db/firebird 3.0.4.33054.0: Relational database offering many ANSI SQL:2003 and some SQL:2008 features
 dev-db/freetds 1.00.558: Tabular Datastream Library
 dev-db/gigabase 3.83-r2: OO-DBMS with interfaces for C/C++/Java/PHP/Perl
