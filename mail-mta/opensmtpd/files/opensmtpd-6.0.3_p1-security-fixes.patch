@@ -89,3 +89,35 @@ diff -ru OpenSMTPD-opensmtpd-6.0.3/smtpd/smtp_session.c OpenSMTPD-opensmtpd-6.0.
  	return (1);
  }
  
+diff -ru opensmtpd-6.0.3p1/smtpd/mta_session.c opensmtpd-6.0.3p1-modified/smtpd/mta_session.c
+--- opensmtpd-6.0.3p1/smtpd/mta_session.c	2018-01-10 21:06:40.000000000 +0800
++++ opensmtpd-6.0.3p1-modified/smtpd/mta_session.c	2020-02-25 09:57:04.624147227 +0800
+@@ -1214,7 +1214,7 @@
+ 		if (cont) {
+ 			if (s->replybuf[0] == '\0')
+ 				(void)strlcat(s->replybuf, line, sizeof s->replybuf);
+-			else {
++			else if (len > 4) {
+ 				line = line + 4;
+ 				if (isdigit((int)*line) && *(line + 1) == '.' &&
+ 				    isdigit((int)*line+2) && *(line + 3) == '.' &&
+@@ -1229,7 +1229,9 @@
+ 		/* last line of a reply, check if we're on a continuation to parse out status and ESC.
+ 		 * if we overflow reply buffer or are not on continuation, log entire last line.
+ 		 */
+-		if (s->replybuf[0] != '\0') {
++		if (s->replybuf[0] == '\0')
++			(void)strlcat(s->replybuf, line, sizeof s->replybuf);
++		else if (len > 4) {
+ 			p = line + 4;
+ 			if (isdigit((int)*p) && *(p + 1) == '.' &&
+ 			    isdigit((int)*p+2) && *(p + 3) == '.' &&
+@@ -1238,8 +1240,6 @@
+ 			if (strlcat(s->replybuf, p, sizeof s->replybuf) >= sizeof s->replybuf)
+ 				(void)strlcpy(s->replybuf, line, sizeof s->replybuf);
+ 		}
+-		else
+-			(void)strlcpy(s->replybuf, line, sizeof s->replybuf);
+ 
+ 		if (s->state == MTA_QUIT) {
+ 			log_info("%016"PRIx64" mta event=closed reason=quit messages=%zu",
