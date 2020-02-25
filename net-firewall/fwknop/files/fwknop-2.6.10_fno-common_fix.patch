@@ -1,0 +1,23 @@
+From a87325b0816a79329cf0b4d4f9ebf247ead117db Mon Sep 17 00:00:00 2001
+From: Jakub Jelen <jjelen@redhat.com>
+Date: Mon, 10 Feb 2020 15:21:56 +0100
+Subject: [PATCH] Unbreak build with gcc10 (-fno-common)
+
+Signed-off-by: Jakub Jelen <jjelen@redhat.com>
+---
+ client/log_msg.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/client/log_msg.h b/client/log_msg.h
+index cc17716b..3dda1614 100644
+--- a/client/log_msg.h
++++ b/client/log_msg.h
+@@ -38,7 +38,7 @@ enum
+     LOG_VERBOSITY_INFO,         /*!< Constant to define a INFO message */
+     LOG_VERBOSITY_DEBUG,        /*!< Constant to define a DEBUG message */
+     LOG_LAST_VERBOSITY
+-} log_level_t;
++};
+ 
+ #define LOG_DEFAULT_VERBOSITY   LOG_VERBOSITY_NORMAL    /*!< Default verbosity to use */
+ 
