@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 inherit autotools flag-o-matic multilib-minimal python-any-r1 toolchain-funcs
 
 DESCRIPTION="International Components for Unicode"
-HOMEPAGE="http://www.icu-project.org/"
+HOMEPAGE="http://site.icu-project.org/"
 SRC_URI="https://github.com/unicode-org/icu/releases/download/release-${PV//./-}/icu4c-${PV//./_}-src.tgz"
 
 LICENSE="BSD"
