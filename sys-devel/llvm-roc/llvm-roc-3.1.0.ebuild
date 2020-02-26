@@ -24,7 +24,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 
 src_prepare() {
 	cd "${WORKDIR}/llvm-project-roc-ocl-${PV}"
-	eapply "${FILESDIR}/${P}-add_libraries.patch"
+	eapply "${FILESDIR}/${PN}-3.0.0-add_libraries.patch"
 	eapply_user
 	cmake_src_prepare
 }
