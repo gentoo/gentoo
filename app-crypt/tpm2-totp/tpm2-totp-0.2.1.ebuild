@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -13,14 +13,10 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND=">=app-crypt/tpm2-tss-2.0:=
+RDEPEND=">=app-crypt/tpm2-tss-2.0
 	media-gfx/qrencode:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
-
-PATCHES=(
-	"${FILESDIR}/${P}-build.patch"
-)
 
 src_prepare() {
 	default
