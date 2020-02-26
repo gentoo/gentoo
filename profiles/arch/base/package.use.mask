@@ -1,6 +1,13 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Vulkan support is only available on few selected arches atm.
+# Mask everywhere, unmask where appropriate.
+dev-qt/qtdeclarative vulkan
+dev-qt/qtgui vulkan
+dev-qt/qtwayland vulkan
+
 # dev-python/pandas is only keyworded for amd64 & x86
 sys-block/fio python gnuplot
 
