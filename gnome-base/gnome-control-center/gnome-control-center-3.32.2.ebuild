@@ -123,6 +123,8 @@ PATCHES=(
 	# https://bugzilla.gnome.org/686840, 697478, 700145
 	# Fix some absolute paths to be appropriate for Gentoo
 	"${WORKDIR}"/patches/
+
+	"${FILESDIR}"/${PN}-3.32.2-fix-gcc10-fno-common.patch # fixed in 3.35.90
 )
 
 src_configure() {
