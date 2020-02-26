@@ -4,17 +4,17 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-EGIT_REPO_URI="https://github.com/MeVisLab/pythonqt.git"
+MY_P=${PN}${PV}
 
-inherit git-r3 qmake-utils python-single-r1 virtualx
+inherit qmake-utils python-single-r1 virtualx
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
 HOMEPAGE="https://mevislab.github.io/pythonqt"
-SRC_URI=""
+SRC_URI="mirror://sourceforge/pythonqt/pythonqt/${P}/${MY_P}.zip"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE="debug doc examples +extensions test"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -43,6 +43,8 @@ BDEPEND="app-arch/unzip
 	virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
+S="${WORKDIR}/${MY_P}"
+
 src_prepare() {
 	default
 
@@ -56,7 +58,7 @@ src_prepare() {
 		sed -i '/SUBDIRS/s/tests//' PythonQt.pro || die "sed for test"
 	fi
 
-	# Remove webkit support if not used
+	# Remove webkit support
 	sed -i '/qtHaveModule(webkit):CONFIG += PythonQtWebKit/d' \
 		extensions/PythonQt_QtAll/PythonQt_QtAll.pro \
 		|| die "sed for webkit"
