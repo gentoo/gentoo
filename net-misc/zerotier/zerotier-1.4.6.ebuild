@@ -20,7 +20,7 @@ RDEPEND="
 	dev-libs/json-glib
 	net-libs/libnatpmp
 	net-libs/miniupnpc:=
-	clang? ( >=sys-devel/clang-6:= )"
+	clang? ( >=sys-devel/clang-6:* )"
 
 DEPEND="${RDEPEND}"
 
