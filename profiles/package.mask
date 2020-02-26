@@ -32,6 +32,25 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Unmaintained revdeps on dev-python/pygtk blocking its removal, py2-only
+# All masked for removal in 30 days.
+# Last release in 2011, bug #708106
+app-cdr/gtkcdlabel
+# No plans upstream to port away from pygtk, suggested alternative dupeguru
+# not packaged in Gentoo, bug #708112
+app-misc/fslint
+# Last release in 2012, bug #708124
+app-text/keepnote
+# Last release in 2012, bug #708142
+x11-misc/revelation
+# Last release in 2011, bug #708150
+x11-misc/tintwizard
+# Last activity in 2013, bug #710162
+sci-misc/pythoncad
+# Last release in 2013, bug #710164
+sci-electronics/gresistor
+
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2020-02-24)
 # Unsupported upstream version, likely has security bugs. Not removed
 # immediately because of backwards incompatible configuration changes
