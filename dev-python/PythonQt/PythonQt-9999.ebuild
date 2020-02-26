@@ -37,11 +37,11 @@ RDEPEND="${PYTHON_DEPS}
 		dev-qt/qtxmlpatterns:5
 	)"
 DEPEND="${RDEPEND}
-	dev-qt/qtxml:5"
+	dev-qt/qtxml:5
+	test? ( dev-qt/qttest:5 )"
 BDEPEND="app-arch/unzip
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen )
-	test? ( dev-qt/qttest:5 )"
+	doc? ( app-doc/doxygen )"
 
 src_prepare() {
 	default
