@@ -1,0 +1,16 @@
+BDEPEND=app-arch/xz-utils >=dev-util/meson-0.51.2 >=dev-util/ninja-1.8.2
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=>=dev-db/sqlite-3.7:3 >=dev-libs/glib-2.36:2 introspection? ( >=dev-libs/gobject-introspection-1.30.0:= ) python? ( python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/pygobject-3.16:3[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] ) gtk-doc? ( dev-util/gtk-doc app-text/docbook-xml-dtd:4.3 ) virtual/pkgconfig test? ( x11-libs/gdk-pixbuf:2 )
+DESCRIPTION=GObject to SQLite object mapper library
+EAPI=7
+HOMEPAGE=https://wiki.gnome.org/Projects/Gom
+IUSE=gtk-doc +introspection python test python_targets_python3_6 python_targets_python3_7 python_targets_python3_8
+KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86
+LICENSE=LGPL-2+
+RDEPEND=>=dev-db/sqlite-3.7:3 >=dev-libs/glib-2.36:2 introspection? ( >=dev-libs/gobject-introspection-1.30.0:= ) python? ( python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) python_targets_python3_8? ( dev-lang/python:3.8 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] >=dev-python/pygobject-3.16:3[python_targets_python3_6(-)?,python_targets_python3_7(-)?,python_targets_python3_8(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-),-python_single_target_python3_8(-)] )
+REQUIRED_USE=python? ( introspection || ( python_targets_python3_6 python_targets_python3_7 python_targets_python3_8 ) )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=mirror://gnome/sources/gom/0.4/gom-0.4.tar.xz
+_eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a	meson	565447abb820cb005fd3a076bc631750	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=0fa1c95a0c5798ef8402fdff8e718114
