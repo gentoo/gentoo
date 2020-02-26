@@ -4909,7 +4909,7 @@ dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 5.1.0 5.1.1 5.2.0 5.2.1: High-performance regular expression matching library
 dev-libs/hyphen 2.8.8-r1: ALTLinux hyphenation library
-dev-libs/icu 65.1: International Components for Unicode
+dev-libs/icu 65.1 65.1-r1: International Components for Unicode
 dev-libs/icu-layoutex 65.1: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
@@ -7381,7 +7381,7 @@ dev-python/PySDL2 0.9.6: Python (ctypes) bindings for SDL2 libraries
 dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.6.7 1.6.8 1.7.1: SOCKS client module
 dev-python/PyUtilib 5.6.5 5.7.2: A collection of Python utilities
-dev-python/PythonQt 3.2 9999: A dynamic Python binding for the Qt framework
+dev-python/PythonQt 3.2 3.2-r1 9999: A dynamic Python binding for the Qt framework
 dev-python/QtPy 1.4.2 1.9.0: Abstraction layer for PyQt5/PySide
 dev-python/ReParser 1.4.3: Simple regex-based lexer/parser for inline markup
 dev-python/Rx 1.6.1: Reactive Extensions for Python
@@ -12962,7 +12962,7 @@ media-libs/libiec61883 1.2.0-r1: Library for capturing video (dv or mpeg2) over 
 media-libs/libifp 1.0.0.2-r1: A general-purpose library for iRiver's iFP portable audio players
 media-libs/libilbc 2.0.2 9999: Packaged version of iLBC codec from the WebRTC project
 media-libs/libinsane 1.0.1 1.0.2 1.0.3: Crossplatform access to image scanners
-media-libs/libiptcdata 1.0.4-r1: library for manipulating the International Press Telecommunications Council (IPTC) metadata
+media-libs/libiptcdata 1.0.4-r1 1.0.5: Library for International Press Telecommunications Council (IPTC) metadata
 media-libs/libirman 0.4.5: library for Irman control of Unix software
 media-libs/libjpeg-turbo 1.5.3-r2 2.0.3 2.0.4: MMX, SSE, and SSE2 SIMD accelerated JPEG library
 media-libs/libjsw 1.5.8: provide a uniform API and user configuration for joysticks and game controllers
