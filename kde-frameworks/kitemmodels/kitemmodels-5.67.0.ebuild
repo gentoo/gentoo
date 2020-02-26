@@ -26,3 +26,7 @@ src_configure() {
 	)
 	ecm_src_configure
 }
+
+src_test() {
+	LC_NUMERIC="C" ecm_src_test # bug 708820
+}
