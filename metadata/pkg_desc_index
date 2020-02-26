@@ -12734,7 +12734,7 @@ media-gfx/qrencode-python 1.02_pre140921: A simple wrapper for the C qrencode li
 media-gfx/quat 1.20-r1: A 3D quaternionic fractal generator
 media-gfx/qvv 4.04: QVV Image Viewer and Browser
 media-gfx/raw-thumbnailer 0.2.1-r1: A lightweight and fast raw image thumbnailer
-media-gfx/rawtherapee 5.6 5.7: A powerful cross-platform raw image processing program
+media-gfx/rawtherapee 5.6 5.7 5.8: A powerful cross-platform raw image processing program
 media-gfx/recoverjpeg 2.2.3-r1: Recover JPEG pictures from a possibly corrupted disk image
 media-gfx/ristretto 0.10.0: A fast and lightweight picture viewer for Xfce
 media-gfx/rotoscope 0.2: Graphics program that can be used to give photos a cartoon-like appearance
