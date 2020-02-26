@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,10 +14,10 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="designer gui opengl svg testlib webkit webengine"
+IUSE="designer gui opengl svg testlib webengine"
 
 RDEPEND="
-	dev-python/PyQt5[${PYTHON_USEDEP},designer?,opengl?,svg?,webkit?]
+	dev-python/PyQt5[${PYTHON_USEDEP},designer?,opengl?,svg?]
 	gui? ( dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets] )
 	testlib? ( dev-python/PyQt5[${PYTHON_USEDEP},testlib] )
 	webengine? ( dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )"

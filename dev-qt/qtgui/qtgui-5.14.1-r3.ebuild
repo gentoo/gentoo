@@ -15,8 +15,8 @@ fi
 
 # TODO: linuxfb
 
-IUSE="accessibility dbus egl eglfs evdev +gif gles2 ibus
-	jpeg +libinput +png tslib tuio +udev vnc wayland +X"
+IUSE="accessibility dbus egl eglfs evdev +gif gles2 ibus jpeg
+	+libinput +png tslib tuio +udev vnc vulkan wayland +X"
 REQUIRED_USE="
 	|| ( eglfs X )
 	accessibility? ( dbus X )
@@ -53,6 +53,7 @@ COMMON_DEPEND="
 	tuio? ( ~dev-qt/qtnetwork-${PV} )
 	udev? ( virtual/libudev:= )
 	vnc? ( ~dev-qt/qtnetwork-${PV} )
+	vulkan? ( dev-util/vulkan-headers )
 	X? (
 		x11-libs/libICE
 		x11-libs/libSM
@@ -120,6 +121,7 @@ QT5_GENTOO_CONFIG=(
 	!png:no-png:
 	tslib:tslib:
 	udev:libudev:
+	vulkan:vulkan:
 	X:xcb:
 	X:xcb-glx:
 	X:xcb-plugin:
@@ -177,6 +179,7 @@ src_configure() {
 		-opengl $(usex gles2 es2 desktop)
 		$(qt_use png libpng system)
 		$(qt_use tslib)
+		$(qt_use vulkan)
 		$(qt_use udev libudev)
 		$(qt_use X xcb system)
 		$(usex X '-xcb-xlib -xcb-xinput -xkb' '')

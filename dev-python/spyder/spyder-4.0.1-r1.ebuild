@@ -5,10 +5,10 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit eutils distutils-r1 virtualx xdg-utils
+inherit eutils xdg distutils-r1 virtualx
 
 # Commit of documentation to fetch
-DOCS_PV="6177401"
+DOCS_PV="7c0b590"
 
 DESCRIPTION="The Scientific Python Development Environment"
 HOMEPAGE="
@@ -16,7 +16,7 @@ HOMEPAGE="
 	https://github.com/spyder-ide/spyder/
 	https://pypi.org/project/spyder/"
 SRC_URI="https://github.com/spyder-ide/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-	https://github.com/spyder-ide/${PN}-docs/archive/${DOCS_PV}.tar.gz -> ${P}-docs.tar.gz"
+	https://github.com/spyder-ide/${PN}-docs/archive/${DOCS_PV}.tar.gz -> ${PN}-docs-${DOCS_PV}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
@@ -65,7 +65,8 @@ DEPEND="test? (
 # Based on the courtesy of Arfrever
 # This patch removes a call to update-desktop-database during build
 # This fails because access is denied to this command during build
-PATCHES=( "${FILESDIR}"/${P}-build.patch )
+PATCHES=( "${FILESDIR}/${P}-build.patch"
+	"${FILESDIR}/${P}-py3-only.patch" )
 
 distutils_enable_tests pytest
 distutils_enable_sphinx docs/doc --no-autodoc
@@ -116,14 +117,8 @@ python_test() {
 	virtx pytest -vv
 }
 
-python_install_all() {
-	distutils-r1_python_install_all
-	dosym spyder3 /usr/bin/spyder
-}
-
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 
 	elog "To get additional features, optional runtime dependencies may be installed:"
 		optfeature "2D/3D plotting in the Python and IPython consoles" dev-python/matplotlib
@@ -144,9 +139,4 @@ pkg_postinst() {
 		optfeature "System terminal inside spyder" dev-python/spyder-terminal
 		# spyder-reports not yet updated to >=spyder-4.0.0
 		# optfeature "Markdown reports using Pweave" dev-python/spyder-reports
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
 }

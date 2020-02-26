@@ -1,6 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Vulkan is available on x86.
+dev-qt/qtdeclarative -vulkan
+dev-qt/qtgui -vulkan
+dev-qt/qtwayland -vulkan
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-01-29)
 # media-libs/pulseaudio-qt is not keyworded
 kde-misc/kdeconnect pulseaudio
