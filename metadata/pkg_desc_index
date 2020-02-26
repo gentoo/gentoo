@@ -7384,7 +7384,7 @@ dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.6.7 1.6.8 1.7.1: SOCKS client module
 dev-python/PyUtilib 5.6.5 5.7.2: A collection of Python utilities
 dev-python/PythonQt 3.2 3.2-r1 9999: A dynamic Python binding for the Qt framework
-dev-python/QtPy 1.4.2 1.9.0: Abstraction layer for PyQt5/PySide
+dev-python/QtPy 1.4.2 1.9.0-r1: Abstraction layer for PyQt5/PySide
 dev-python/ReParser 1.4.3: Simple regex-based lexer/parser for inline markup
 dev-python/Rx 1.6.1: Reactive Extensions for Python
 dev-python/SaltTesting 2018.1.16: Required testing tools needed in the several Salt Stack projects
@@ -8851,11 +8851,11 @@ dev-python/sphinxcontrib-serializinghtml 1.1.3: Sphinx extension which outputs o
 dev-python/sphinxcontrib-spelling 2.1.2 2.3.0 4.3.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.1.0: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
-dev-python/spyder 3.2.4 3.2.8 3.3.0 3.3.1 4.0.1: The Scientific Python Development Environment
-dev-python/spyder-kernels 0.2.4 1.0.1 1.8.1-r1: Kernels used by spyder on its ipython console
+dev-python/spyder 4.0.1-r1: The Scientific Python Development Environment
+dev-python/spyder-kernels 1.8.1-r1: Kernels used by spyder on its ipython console
 dev-python/spyder-line-profiler 0.2.0: Plugin to run the python line profiler from within the spyder editor
 dev-python/spyder-memory-profiler 0.2.0: Plugin to run the python memory_profiler from within the spyder editor
-dev-python/spyder-notebook 0.2.1: Jupyter notebook integration with Spyder
+dev-python/spyder-notebook 0.2.2: Jupyter notebook integration with Spyder
 dev-python/spyder-terminal 0.3.0: Run system terminals inside Spyder
 dev-python/spyder-unittest 0.4.0: Plugin for Spyder to run tests and view the results
 dev-python/sqlalchemy 0.7.10 1.2.18 1.3.3 1.3.4 1.3.11: Python SQL toolkit and Object Relational Mapper
@@ -9095,11 +9095,11 @@ dev-qt/qtconcurrent 5.12.3 5.13.2 5.14.1: Multi-threading concurrence support li
 dev-qt/qtcore 5.12.3-r2 5.13.2-r1 5.13.2-r2 5.14.1-r1: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.12.3 5.13.2 5.14.1: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.12.3 5.13.2 5.14.1: Qt5 module for inter-process communication over the D-Bus protocol
-dev-qt/qtdeclarative 5.12.3 5.13.2 5.13.2-r1 5.14.1: The QML and Quick modules for the Qt5 framework
+dev-qt/qtdeclarative 5.12.3 5.13.2 5.13.2-r1 5.14.1-r1: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdiag 5.12.3 5.13.2 5.14.1: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgamepad 5.13.2 5.14.1: Qt module to support gamepad hardware
 dev-qt/qtgraphicaleffects 5.12.3 5.13.2 5.14.1: Set of QML types for adding visual effects to user interfaces
-dev-qt/qtgui 5.12.3-r1 5.13.2 5.14.1-r2: The GUI module and platform plugins for the Qt5 framework
+dev-qt/qtgui 5.12.3-r1 5.13.2 5.14.1-r3: The GUI module and platform plugins for the Qt5 framework
 dev-qt/qthelp 5.12.3 5.13.2 5.14.1: Qt5 module for integrating online documentation into applications
 dev-qt/qtimageformats 5.12.3 5.13.2 5.14.1: Additional format plugins for the Qt image I/O system
 dev-qt/qtlocation 5.12.3 5.13.2 5.14.1: Location (places, maps, navigation) library for the Qt5 framework
@@ -9126,7 +9126,7 @@ dev-qt/qtsvg 5.12.3 5.13.2 5.14.1: SVG rendering library for the Qt5 framework
 dev-qt/qttest 5.12.3 5.13.2 5.14.1: Unit testing library for the Qt5 framework
 dev-qt/qttranslations 5.12.3 5.13.2 5.14.1: Translation files for the Qt5 framework
 dev-qt/qtvirtualkeyboard 5.12.3 5.13.2 5.14.1: Customizable input framework and virtual keyboard for Qt
-dev-qt/qtwayland 5.12.3 5.13.2-r1 5.14.1: Wayland platform plugin for Qt
+dev-qt/qtwayland 5.12.3 5.13.2-r1 5.14.1-r1: Wayland platform plugin for Qt
 dev-qt/qtwebchannel 5.12.3 5.13.2 5.14.1: Qt5 module for integrating C++ and QML applications with HTML/JavaScript clients
 dev-qt/qtwebengine 5.12.3 5.13.2 5.14.1: Library for rendering dynamic web content in Qt5 C++ and QML applications
 dev-qt/qtwebkit 5.212.0_pre20190629: WebKit rendering library for the Qt5 framework (deprecated)
