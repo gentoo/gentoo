@@ -1,0 +1,81 @@
+From 5791564dd934d193df771a0a7c52013e9f456aa1 Mon Sep 17 00:00:00 2001
+From: Sergei Trofimovich <slyfox@gentoo.org>
+Date: Tue, 21 Jan 2020 22:33:49 +0000
+Subject: [PATCH] fg_gl2: fix build failure against gcc-10
+
+On gcc-10 (and gcc-9 -fno-common) build fails as:
+
+```
+[ 31%] Linking C executable bin/Lorenz_static
+/usr/bin/cmake -E cmake_link_script CMakeFiles/Lorenz_static.dir/link.txt --verbose=1
+/usr/lib/ccache/bin/cc  -Wall -pedantic  -rdynamic CMakeFiles/Lorenz_static.dir/progs/demos/Lorenz/lorenz.c.o \
+   -o bin/Lorenz_static  -lGLU -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi -lm lib/libglut.a -lGL -lm -lX11 -lXrandr -lXxf86vm -lXi
+ld: lib/libglut.a(fg_gl2.c.o):(.bss+0x0):
+  multiple definition of `fghGenBuffers'; lib/libglut.a(fg_window.c.o):(.bss+0x0): first defined here
+ld: lib/libglut.a(fg_gl2.c.o):(.bss+0x8):
+  multiple definition of `fghDeleteBuffers'; lib/libglut.a(fg_window.c.o):(.bss+0x8): first defined here
+```
+
+Note: duplicate definition comes here from 'fg_gl2.h'.
+The fix is to move declaration to a 'fg_gl2.c' file.
+
+gcc-10 will change the default from -fcommon to fno-common:
+https://gcc.gnu.org/PR85678.
+
+The error also happens if CFLAGS=-fno-common passed explicitly.
+
+Bug: https://bugs.gentoo.org/705840
+Signed-off-by: Sergei Trofimovich <slyfox@gentoo.org>
+---
+ src/fg_gl2.c | 12 ++++++++++++
+ src/fg_gl2.h | 14 +++++++-------
+ 2 files changed, 19 insertions(+), 7 deletions(-)
+
+diff --git a/freeglut/freeglut/src/fg_gl2.c b/freeglut/freeglut/src/fg_gl2.c
+index 38b0acbb..f79c432a 100644
+--- a/src/fg_gl2.c
++++ b/src/fg_gl2.c
+@@ -27,6 +27,18 @@
+ #include "fg_internal.h"
+ #include "fg_gl2.h"
+ 
++#ifdef GL_ES_VERSION_2_0
++/* Use existing functions on GLES 2.0 */
++#else
++FGH_PFNGLGENBUFFERSPROC fghGenBuffers;
++FGH_PFNGLDELETEBUFFERSPROC fghDeleteBuffers;
++FGH_PFNGLBINDBUFFERPROC fghBindBuffer;
++FGH_PFNGLBUFFERDATAPROC fghBufferData;
++FGH_PFNGLENABLEVERTEXATTRIBARRAYPROC fghEnableVertexAttribArray;
++FGH_PFNGLDISABLEVERTEXATTRIBARRAYPROC fghDisableVertexAttribArray;
++FGH_PFNGLVERTEXATTRIBPOINTERPROC fghVertexAttribPointer;
++#endif
++
+ void FGAPIENTRY glutSetVertexAttribCoord3(GLint attrib) {
+   if (fgStructure.CurrentWindow != NULL)
+     fgStructure.CurrentWindow->Window.attribute_v_coord = attrib;
+diff --git a/freeglut/freeglut/src/fg_gl2.h b/freeglut/freeglut/src/fg_gl2.h
+index ab8ba5c7..fb3d4676 100644
+--- a/src/fg_gl2.h
++++ b/src/fg_gl2.h
+@@ -67,13 +67,13 @@ typedef void (APIENTRY *FGH_PFNGLENABLEVERTEXATTRIBARRAYPROC) (GLuint index);
+ typedef void (APIENTRY *FGH_PFNGLDISABLEVERTEXATTRIBARRAYPROC) (GLuint);
+ typedef void (APIENTRY *FGH_PFNGLVERTEXATTRIBPOINTERPROC) (GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
+ 
+-FGH_PFNGLGENBUFFERSPROC fghGenBuffers;
+-FGH_PFNGLDELETEBUFFERSPROC fghDeleteBuffers;
+-FGH_PFNGLBINDBUFFERPROC fghBindBuffer;
+-FGH_PFNGLBUFFERDATAPROC fghBufferData;
+-FGH_PFNGLENABLEVERTEXATTRIBARRAYPROC fghEnableVertexAttribArray;
+-FGH_PFNGLDISABLEVERTEXATTRIBARRAYPROC fghDisableVertexAttribArray;
+-FGH_PFNGLVERTEXATTRIBPOINTERPROC fghVertexAttribPointer;
++extern FGH_PFNGLGENBUFFERSPROC fghGenBuffers;
++extern FGH_PFNGLDELETEBUFFERSPROC fghDeleteBuffers;
++extern FGH_PFNGLBINDBUFFERPROC fghBindBuffer;
++extern FGH_PFNGLBUFFERDATAPROC fghBufferData;
++extern FGH_PFNGLENABLEVERTEXATTRIBARRAYPROC fghEnableVertexAttribArray;
++extern FGH_PFNGLDISABLEVERTEXATTRIBARRAYPROC fghDisableVertexAttribArray;
++extern FGH_PFNGLVERTEXATTRIBPOINTERPROC fghVertexAttribPointer;
+ 
+ #    endif
+ 

@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-3.2.1-gcc10-fno-common.patch )
 HTML_DOCS=( doc/. )
 
 src_configure() {
