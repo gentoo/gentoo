@@ -16,11 +16,15 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="doc examples nls python"
 
-RDEPEND="python? ( ${PYTHON_DEPS} )
-	nls? ( virtual/libintl )"
+RDEPEND="
+	nls? ( virtual/libintl )
+	python? ( ${PYTHON_DEPS} )
+"
 DEPEND="${RDEPEND}"
-BDEPEND="nls? ( >=sys-devel/gettext-0.13.1 )
-	doc? ( >=dev-util/gtk-doc-1 )"
+BDEPEND="
+	doc? ( >=dev-util/gtk-doc-1 )
+	nls? ( >=sys-devel/gettext-0.13.1 )
+"
 
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
@@ -29,9 +33,11 @@ pkg_setup() {
 }
 
 src_configure () {
-	local myeconfargs=( $(use_enable nls)
+	local myeconfargs=(
+		$(use_enable nls)
 		$(use_enable python)
-		$(use_enable doc gtk-doc) )
+		$(use_enable doc gtk-doc)
+	)
 	econf "${myeconfargs[@]}"
 }
 
