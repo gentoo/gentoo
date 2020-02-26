@@ -33,6 +33,7 @@ src_configure() {
 		-DCBLAS=ON
 		-DLAPACKE=$(usex lapacke)
 		-DBUILD_SHARED_LIBS=ON
+		-DBUILD_DEPRECATED=ON
 	)
 	cmake-utils_src_configure
 }
