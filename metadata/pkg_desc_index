@@ -4703,7 +4703,7 @@ dev-lang/crystal 0.31.1 0.32.1: The Crystal Programming Language
 dev-lang/duktape 2.2.1 2.4.0: Embeddable Javascript engine
 dev-lang/elixir 1.9.4 1.10.0 1.10.1: Elixir programming language
 dev-lang/epic 0.9.3.3-r1: Compiler for a simple functional language
-dev-lang/erlang 21.1.1 22.1.4 22.1.8-r1 22.2.1-r1 22.2.6: Erlang programming language, runtime environment and libraries (OTP)
+dev-lang/erlang 21.1.1 22.1.4 22.1.8-r1 22.2.1-r1 22.2.6 22.2.7: Erlang programming language, runtime environment and libraries (OTP)
 dev-lang/esco 0.512: Combine interpreter of esoteric languages
 dev-lang/execline 2.1.1.0 2.3.0.3 2.3.0.4 2.5.0.1 2.5.1.0 2.5.3.0: A non-interactive scripting language
 dev-lang/f2c 20100827-r1: Fortran to C converter
@@ -7611,7 +7611,7 @@ dev-python/daemonize 2.5.0: Library for writing system daemons in Python
 dev-python/dap 2.2.6.7-r1: Data Access Protocol client and server
 dev-python/dask 1.2.0: Task scheduling and blocked algorithms for parallel processing
 dev-python/datashape 0.5.4-r1: Language defining a data description protocol
-dev-python/dbus-python 1.2.4 1.2.12 1.2.14: Python bindings for the D-Bus messagebus
+dev-python/dbus-python 1.2.4 1.2.12 1.2.14 1.2.16: Python bindings for the D-Bus messagebus
 dev-python/dbusmock 0.18.2 0.18.3: Easily create mock objects on D-Bus for software testing
 dev-python/ddt 1.1.1 1.2.2: A library to multiply test cases
 dev-python/debtcollector 1.21.0: Python deprecation patterns and strategies that collect technical debt
@@ -12290,7 +12290,7 @@ mail-filter/zdkimfilter 1.8: DKIM filter for Courier-MTA
 mail-mta/courier 1.0.5: An MTA designed specifically for maildirs
 mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a sendmail-like syntax
 mail-mta/exim 4.92.2 4.92.3 4.93.0.4: A highly configurable, drop-in replacement for sendmail
-mail-mta/msmtp 1.8.3 1.8.7-r1: An SMTP client and SMTP plugin for mail user agents such as Mutt
+mail-mta/msmtp 1.8.7-r1: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r12: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.0.3_p1-r3 6.6.4_p1: Lightweight but featured SMTP daemon from OpenBSD
@@ -13049,7 +13049,7 @@ media-libs/libvisio 0.1.7 9999: Library parsing the file format of MS Visio docu
 media-libs/libvisual 0.4.0-r3: Libvisual is an abstraction library that comes between applications and audio visualisation plugins
 media-libs/libvorbis 1.3.6 1.3.6-r1: The Ogg Vorbis sound file format library
 media-libs/libvpx 1.7.0-r1 1.8.2: WebM VP8 and VP9 Codec SDK
-media-libs/libwebp 1.0.2 1.0.3: A lossy image compression format
+media-libs/libwebp 1.0.2 1.0.3 1.1.0: A lossy image compression format
 media-libs/libwmf 0.2.8.4-r7: A library for reading vector images in Microsoft's Windows Metafile Format (WMF)
 media-libs/libxmi 1.3: C/C++ function library for rasterizing 2-D vector graphics
 media-libs/libxmlbird 1.2.0: XML parser written in Vala
@@ -15224,7 +15224,7 @@ net-news/canto-curses 0.9.3: The ncurses client for canto-daemon
 net-news/canto-daemon 0.9.1: Daemon part of Canto-NG RSS reader
 net-news/liferea 1.12.3 1.12.7-r1: News Aggregator for RDF/RSS/CDF/Atom/Echo feeds
 net-news/newsboat 2.13 2.18: An RSS/Atom feed reader for text terminals
-net-news/quiterss 0.18.12 9999: A Qt-based RSS/Atom feed reader
+net-news/quiterss 0.18.12 0.19.3 9999: A Qt-based RSS/Atom feed reader
 net-news/rawdog 2.22-r1: Rawdog, RSS Aggregator Without Delusions Of Grandeur
 net-news/rssguard 3.5.9-r1: Tiny RSS and Atom feed reader
 net-news/rsstail 1.8: A tail-like RSS-reader
