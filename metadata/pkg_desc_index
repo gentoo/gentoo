@@ -10464,7 +10464,7 @@ dev-util/ddd 3.3.12-r4: Graphical front-end for command-line debuggers
 dev-util/debhelper 9.20160814 12.8 12.9: Collection of programs that can be used to automate common tasks in debian/rules
 dev-util/debootstrap 1.0.115 1.0.116 1.0.117: Debian/Ubuntu bootstrap scripts
 dev-util/debugedit 4.15.0: Stand-alone debugedit from RPM
-dev-util/dejagnu 1.6: Framework for testing other programs
+dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
 dev-util/desktop-file-utils 0.24: Command line utilities to work with desktop menu entries
 dev-util/devhelp 3.30.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20191110 1.3.20191210: tool to display dialog boxes from a shell
@@ -13306,7 +13306,7 @@ media-plugins/kodi-game-libretro-fceumm 0.0.1.9 9999: FCEU-Next GameClient for K
 media-plugins/kodi-game-libretro-nestopia 1.50.0.8 9999: Nestopia GameClient for Kodi
 media-plugins/kodi-game-libretro-snes9x 1.60.0.10 9999: Snes9x GameClient for Kodi
 media-plugins/kodi-game-libretro-twentyfortyeight 1.0.0.106 1.0.0.107 1.0.0.108 1.0.0.109 1.0.0.110 9999: 2048 for Kodi
-media-plugins/kodi-inputstream-adaptive 2.4.2 9999: Kodi's Adaptive inputstream addon
+media-plugins/kodi-inputstream-adaptive 2.4.2 2.4.3 9999: Kodi's Adaptive inputstream addon
 media-plugins/kodi-inputstream-rtmp 2.0.9 9999: Kodi's RTMP inputstream addon
 media-plugins/kodi-peripheral-joystick 1.4.6 1.4.7 1.4.8 1.4.9 9999: Libretro compatibility layer for the Kodi Game API
 media-plugins/kodi-peripheral-steamcontroller 9999: Steam controller driver for Kodi
