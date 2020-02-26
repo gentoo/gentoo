@@ -48,6 +48,7 @@ acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
 acct-group/input 0: System group: input
 acct-group/inspircd 0: System group: inspircd
 acct-group/ipfs 0: Group for the system-wide net-p2p/go-ipfs-bin server
+acct-group/kafka 0: System group: kafka
 acct-group/keystone 0: System group: keystone
 acct-group/kibana 0: Kibana program group
 acct-group/kmem 0: System group: kmem
@@ -204,6 +205,7 @@ acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
 acct-user/inspircd 0: User for InspIRCd server daemon
 acct-user/ipfs 0: User for the system-wide net-p2p/go-ipfs-bin server
 acct-user/ippl 0: user for net-analyzer/ippl
+acct-user/kafka 0: User for kafka
 acct-user/keystone 0: user for the keystone openstack service
 acct-user/kibana 0: Kibana program user
 acct-user/knot 0: User for knot DNS server
@@ -15002,7 +15004,7 @@ net-misc/ipx-utils 1.1-r4: The IPX Utilities
 net-misc/jlj 2.12-r1: Simple console LiveJournal entry system
 net-misc/jrdesktop 0.3.1.0: Java Remote Desktop (jrdesktop) for viewing and/or controlling a distance PC
 net-misc/jwhois 4.0-r1: Advanced Internet Whois client capable of recursive queries
-net-misc/kafka-bin 1.1.1 2.0.1 2.1.0 2.1.1 2.2.0 2.2.1 2.3.0: A high-throughput distributed messaging system
+net-misc/kafka-bin 1.1.1 2.0.1 2.1.0 2.1.1 2.2.0 2.2.1 2.3.0 2.4.0: A high-throughput distributed messaging system
 net-misc/kafkacat 1.3.1 1.5.0: Generic command line non-JVM Apache Kafka producer and consumer
 net-misc/kea 1.7.3 1.7.4 9999: High-performance production grade DHCPv4 & DHCPv6 server
 net-misc/keychain 2.8.1 2.8.5: Agent manager for OpenSSH, ssh.com, Sun SSH, and GnuPG
