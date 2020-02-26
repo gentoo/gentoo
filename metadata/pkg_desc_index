@@ -10199,7 +10199,7 @@ dev-tcltk/bwidget 1.9.12 1.9.14: High-level widget set for Tcl/Tk
 dev-tcltk/combobox 2.3-r1: A combobox megawidget
 dev-tcltk/expect 5.45.4: tool for automating interactive applications
 dev-tcltk/expect-lite 4.9.0: quick and easy command line automation tool built on top of expect
-dev-tcltk/itcl 3.4.1 4.0.3 4.1.1: Object Oriented Enhancements for Tcl/Tk
+dev-tcltk/itcl 3.4.1 4.0.3 4.1.1 4.2.0: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/itk 3.4.1 4.0.0 4.0.1 4.1.0: Object Oriented Enhancements for Tcl/Tk
 dev-tcltk/iwidgets 4.1.1: Widget collection for incrTcl/incrTk
 dev-tcltk/mysqltcl 3.052-r1: TCL MySQL Interface
