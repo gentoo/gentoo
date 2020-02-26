@@ -76,7 +76,7 @@ REQUIRED_USE="|| ( alsa pulseaudio )
 
 S="${WORKDIR}/${MY_P}"
 
-PATCHES=( "${FILESDIR}/${PV}-hunspell-cmake.patch" )
+PATCHES=( "${FILESDIR}/${PV}-crash.patch" )
 
 src_configure() {
 	local mycxxflags=(
