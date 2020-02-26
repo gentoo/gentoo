@@ -9095,7 +9095,7 @@ dev-qt/qtconcurrent 5.12.3 5.13.2 5.14.1: Multi-threading concurrence support li
 dev-qt/qtcore 5.12.3-r2 5.13.2-r1 5.13.2-r2 5.14.1-r1: Cross-platform application development framework
 dev-qt/qtdatavis3d 5.12.3 5.13.2 5.14.1: 3D data visualization library for the Qt5 framework
 dev-qt/qtdbus 5.12.3 5.13.2 5.14.1: Qt5 module for inter-process communication over the D-Bus protocol
-dev-qt/qtdeclarative 5.12.3 5.13.2 5.13.2-r1 5.14.1-r1: The QML and Quick modules for the Qt5 framework
+dev-qt/qtdeclarative 5.12.3 5.13.2-r1 5.14.1-r1: The QML and Quick modules for the Qt5 framework
 dev-qt/qtdiag 5.12.3 5.13.2 5.14.1: Tool for reporting diagnostic information about Qt and its environment
 dev-qt/qtgamepad 5.13.2 5.14.1: Qt module to support gamepad hardware
 dev-qt/qtgraphicaleffects 5.12.3 5.13.2 5.14.1: Set of QML types for adding visual effects to user interfaces
@@ -9104,7 +9104,7 @@ dev-qt/qthelp 5.12.3 5.13.2 5.14.1: Qt5 module for integrating online documentat
 dev-qt/qtimageformats 5.12.3 5.13.2 5.14.1: Additional format plugins for the Qt image I/O system
 dev-qt/qtlocation 5.12.3 5.13.2 5.14.1: Location (places, maps, navigation) library for the Qt5 framework
 dev-qt/qtlockedfile 2.4.1_p20171024: QFile extension with advisory locking functions
-dev-qt/qtmultimedia 5.12.3 5.13.2 5.13.2-r1 5.14.1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
+dev-qt/qtmultimedia 5.12.3 5.13.2-r1 5.14.1: Multimedia (audio, video, radio, camera) library for the Qt5 framework
 dev-qt/qtnetwork 5.12.3 5.13.2 5.14.1: Network abstraction library for the Qt5 framework
 dev-qt/qtnetworkauth 5.12.3 5.13.2 5.14.1: Network authorization library for the Qt5 framework
 dev-qt/qtopengl 5.12.3 5.13.2 5.14.1: OpenGL support library for the Qt5 framework (deprecated)
@@ -12119,7 +12119,7 @@ kde-misc/krusader 2.7.2: Advanced twin-panel (commander-style) file-manager with
 kde-misc/kshutdown 5.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
 kde-misc/kwebkitpart 1.4.0_pre20190110: WebKit KPart for Konqueror
-kde-misc/latte-dock 0.9.7-r1 0.9.8.1: Elegant dock, based on KDE Frameworks
+kde-misc/latte-dock 0.9.7-r1 0.9.8.1 0.9.9: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: Thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3-r1: Plasma 5 applet for monitoring active network connections
 kde-misc/plasma-applet-weather-widget 1.6.10-r1: Plasma 5 applet for weather forecasts
@@ -13656,7 +13656,7 @@ media-sound/meterbridge 0.9.3: Software meterbridge for the UNIX based JACK audi
 media-sound/mhwaveedit 1.4.23: GTK+ Sound file editor (wav, and a few others.)
 media-sound/mikmod 3.2.8: A console MOD-Player based on libmikmod
 media-sound/milkytracker 1.0.0: FastTracker 2 inspired music tracker
-media-sound/mixxx 2.1.8 2.2.3-r2 9999: Advanced Digital DJ tool based on Qt
+media-sound/mixxx 2.2.3-r2 9999: Advanced Digital DJ tool based on Qt
 media-sound/mmix 0.3-r1: A soundcard mixer for the OSS driver
 media-sound/moc 2.5.2 2.6_alpha3: Music On Console - ncurses interface for playing audio files
 media-sound/modplugtools 0.5.3: libmodplug based module players modplug123 and modplugplay
@@ -18413,7 +18413,7 @@ x11-misc/j4-dmenu-desktop 2.17: A fast desktop replacement for i3-dmenu-desktop
 x11-misc/kapow 1.5.8 1.5.9: A punch clock program designed to easily keep track of your hours
 x11-misc/kaqaz 1.2.0-r4: Modern note manager
 x11-misc/kbdd 0.7.1: Very simple layout switcher
-x11-misc/kdocker 5.0-r1 5.2: Helper to dock any application into the system tray
+x11-misc/kdocker 5.2: Helper to dock any application into the system tray
 x11-misc/kronometer 2.2.3: Stopwatch application
 x11-misc/ktsuss 2.1: Graphical version of su written in C and GTK+ 2
 x11-misc/libinput-gestures 2.48 9999: Actions gestures on your touchpad using libinput
