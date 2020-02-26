@@ -5,7 +5,7 @@ EAPI=7
 GCONF_DEBUG="yes"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit gnome.org gnome2-utils meson python-r1
+inherit gnome.org meson python-r1
 
 DESCRIPTION="GObject to SQLite object mapper library"
 HOMEPAGE="https://wiki.gnome.org/Projects/Gom"
