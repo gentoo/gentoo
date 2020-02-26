@@ -13,7 +13,7 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND=">=app-crypt/tpm2-tss-2.0:=
+RDEPEND=">=app-crypt/tpm2-tss-2.0
 	media-gfx/qrencode:="
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
