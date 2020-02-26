@@ -327,7 +327,7 @@ src_configure() {
 	)
 }
 
-src_compile(){
+src_compile() {
 	cargo_src_compile ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
 }
 

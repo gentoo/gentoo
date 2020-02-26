@@ -72,7 +72,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	# install the binaries
 	dobin "${S}/src/tex4ht" "${S}/src/t4ht" "${S}/src/htcmd"
 	# install the scripts

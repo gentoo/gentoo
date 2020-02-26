@@ -71,7 +71,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--without-rpm \
 		--disable-server \
 		--disable-docs \

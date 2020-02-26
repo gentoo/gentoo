@@ -26,7 +26,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 	dodoc CREDITS ChangeLog README
 }

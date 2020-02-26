@@ -29,7 +29,7 @@ src_configure() {
 		$(use_enable static-libs static)
 }
 
-src_install () {
+src_install() {
 	use doc && local HTML_DOCS=( doc/*.{html,css,java} )
 	default
 

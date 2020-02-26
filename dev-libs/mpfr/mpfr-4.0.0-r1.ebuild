@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,9 +41,7 @@ multilib_src_configure() {
 	# Make sure mpfr doesn't go probing toolchains it shouldn't #476336#19
 	ECONF_SOURCE=${S} \
 	user_redefine_cc=yes \
-	econf \
-		--docdir="\$(datarootdir)/doc/${PF}" \
-		$(use_enable static-libs static)
+	econf $(use_enable static-libs static)
 }
 
 multilib_src_install_all() {

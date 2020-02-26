@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -25,7 +25,6 @@ DEPEND="${RDEPEND}
 
 src_configure() {
 	local myconf=(
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		--htmldir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable fortran)
 		$(use_enable tools utils)
@@ -60,7 +59,7 @@ src_test() {
 	emake -j1 check
 }
 
-src_install () {
+src_install() {
 	default
 	# static libs share the same symbols as shared (i.e. compiled with PIC)
 	# so they are not compiled twice

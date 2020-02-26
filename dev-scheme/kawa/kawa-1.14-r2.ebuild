@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ RDEPEND="
 
 xtestsuite="XQTS_${XQTS_Ver}"
 
-src_unpack () {
+src_unpack() {
 	unpack kawa-${PV}.tar.gz || die
 	if use xqtests; then
 		mkdir "${WORKDIR}/${xtestsuite}" || die
@@ -51,7 +51,7 @@ src_prepare() {
 
 src_configure() {
 	# speeds up one-shot ebuilds.
-	myconf="--disable-dependency-tracking"
+	local myconf=""
 	if use jemacs && ! use swing; then
 		echo
 		einfo "Although the swing USE flag is disabled you chose to enable jemacs,"
@@ -81,7 +81,7 @@ src_compile() {
 	emake -j1
 }
 
-src_install () {
+src_install() {
 	emake -j1 DESTDIR="${D}" install
 	rm -rv "${D}"/usr/share/java/ || die "rm -rv failed"
 

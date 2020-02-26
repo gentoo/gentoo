@@ -47,7 +47,6 @@ src_configure() {
 	fi
 
 	econf \
-		--disable-dependency-tracking \
 		--enable-shared \
 		--enable-libplotter \
 		--disable-libxmi \

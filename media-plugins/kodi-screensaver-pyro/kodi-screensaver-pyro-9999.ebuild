@@ -12,6 +12,7 @@ SRC_URI=""
 case ${PV} in
 9999)
 	SRC_URI=""
+	EGIT_BRANCH="Matrix"
 	EGIT_REPO_URI="https://github.com/xbmc/screensaver.pyro.git"
 	inherit git-r3
 	;;

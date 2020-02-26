@@ -23,7 +23,7 @@ src_prepare() {
 			die "sed tkinfo failed"
 }
 
-src_install () {
+src_install() {
 	dobin "${PN}"
 	doman "${PN}.1"
 }

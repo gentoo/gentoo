@@ -41,7 +41,7 @@ src_prepare() {
 		snortalog.pl || die
 }
 
-src_install () {
+src_install() {
 	dobin snortalog.pl
 
 	insinto /etc/snortalog

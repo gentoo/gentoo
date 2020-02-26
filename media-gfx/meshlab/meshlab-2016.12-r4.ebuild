@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -63,7 +63,7 @@ PATCHES=(
 		"${FILESDIR}/${PV}/${P}-qt-includes.patch"
 	)
 
-src_prepare(){
+src_prepare() {
 	mv "${WORKDIR}/vcglib-${VCG_VERSION}" "${WORKDIR}/vcglib" || die "vcglib mv failed"
 	default
 	#proof of patchset

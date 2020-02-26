@@ -53,7 +53,6 @@ src_configure() {
 	econf \
 		--enable-dyn \
 		--enable-clanNetwork \
-		--disable-dependency-tracking \
 		$(use_enable x86 asm386) \
 		$(use_enable doc docs) \
 		$(use_enable opengl clanGL) \

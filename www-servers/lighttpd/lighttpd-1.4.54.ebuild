@@ -210,7 +210,7 @@ src_install() {
 	systemd_dotmpfilesd "${FILESDIR}/${PN}.tmpfiles.conf"
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	use ipv6 && readme.gentoo_print_elog
 
 	if [[ -f ${ROOT}/etc/conf.d/spawn-fcgi.conf ]] ; then

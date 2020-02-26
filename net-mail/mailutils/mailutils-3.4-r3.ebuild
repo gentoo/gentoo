@@ -56,8 +56,10 @@ pkg_setup() {
 src_prepare() {
 	# Disable bytecompilation of Python modules.
 	echo "#!/bin/sh" > build-aux/py-compile
-	eapply "${FILESDIR}/${P}-MH-testsuite.patch" \
-		"${FILESDIR}/${P}-fix-endianness.patch"
+	eapply \
+		"${FILESDIR}"/${P}-MH-testsuite.patch \
+		"${FILESDIR}"/${P}-fix-endianness.patch \
+		"${FILESDIR}"/${PN}-3.4-fno-common.patch
 	# add missing tests so that make check doesn't fail
 	cp "${FILESDIR}"/{hdr,nohdr,twomsg,weed}.at "${S}"/readmsg/tests || die
 	if use mysql; then

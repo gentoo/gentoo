@@ -30,7 +30,7 @@ COMMON_DEPEND="
 	dev-qt/qtwebsockets:5
 	dev-qt/qtwidgets:5
 	dev-qt/qtxml:5
-	>=media-libs/mlt-6.16.0-r1[ffmpeg,frei0r,jack,qt5,sdl,xml]
+	>=media-libs/mlt-6.18.0[ffmpeg,frei0r,jack,qt5,sdl,xml]
 	media-libs/webvfx
 	media-video/ffmpeg
 "

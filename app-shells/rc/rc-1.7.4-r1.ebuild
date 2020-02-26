@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,9 +23,7 @@ src_configure() {
 	use readline && myconf="--with-edit=readline"
 	use libedit && myconf="--with-edit=edit"
 
-	econf \
-		--disable-dependency-tracking \
-		"${myconf}"
+	econf "${myconf}"
 }
 
 src_install() {

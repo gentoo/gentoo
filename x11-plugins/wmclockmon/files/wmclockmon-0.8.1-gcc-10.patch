@@ -1,0 +1,247 @@
+diff -Naur wmclockmon-0.8.1.orig/src/main.c wmclockmon-0.8.1/src/main.c
+--- wmclockmon-0.8.1.orig/src/main.c	2005-06-15 16:04:57.000000000 +0200
++++ wmclockmon-0.8.1/src/main.c	2020-02-24 22:27:45.957224984 +0100
+@@ -221,6 +221,7 @@
+ static char*     label             = NULL;
+ 
+ 
++
+ /* prototypes */
+ static void rotate_style();
+ static Bool stringdiff(const char *s1, const char *s2);
+diff -Naur wmclockmon-0.8.1.orig/wmclockmon-cal/main.c wmclockmon-0.8.1/wmclockmon-cal/main.c
+--- wmclockmon-0.8.1.orig/wmclockmon-cal/main.c	2005-06-15 15:55:27.000000000 +0200
++++ wmclockmon-0.8.1/wmclockmon-cal/main.c	2020-02-24 22:35:38.832391977 +0100
+@@ -15,6 +15,22 @@
+ #include "mainwindow.h"
+ #include "main.h"
+ 
++GtkWidget *application;
++GtkWidget *alarmlist;
++GtkWidget *wid_backlight;
++GtkWidget *wid_blink;
++GtkWidget *wid_styledir;
++GtkWidget *wid_stylename;
++GtkWidget *wid_color;
++GtkWidget *wid_command;
++GtkWidget *wid_msgcmd;
++GtkWidget *wid_h12;
++GtkWidget *wid_itm;
++GtkWidget *wid_locale;
++
++int selected_row;
++
++struct tm *timeinfos;
+ 
+ void Usage () {
+     printf("Usage: "PACKAGE"-cal [-h] [-v]\n"
+diff -Naur wmclockmon-0.8.1.orig/wmclockmon-cal/main.h wmclockmon-0.8.1/wmclockmon-cal/main.h
+--- wmclockmon-0.8.1.orig/wmclockmon-cal/main.h	2005-06-15 15:55:27.000000000 +0200
++++ wmclockmon-0.8.1/wmclockmon-cal/main.h	2020-02-24 22:35:32.799388390 +0100
+@@ -9,7 +9,7 @@
+ #include <sys/time.h>
+ 
+ 
+-struct tm *timeinfos;
++extern struct tm *timeinfos;
+ 
+ void quit_app();
+ 
+diff -Naur wmclockmon-0.8.1.orig/wmclockmon-cal/mainwindow.h wmclockmon-0.8.1/wmclockmon-cal/mainwindow.h
+--- wmclockmon-0.8.1.orig/wmclockmon-cal/mainwindow.h	2005-06-15 15:55:27.000000000 +0200
++++ wmclockmon-0.8.1/wmclockmon-cal/mainwindow.h	2020-02-24 22:34:22.609356664 +0100
+@@ -7,20 +7,20 @@
+ 
+ #include <gtk/gtk.h>
+ 
+-GtkWidget *application;
+-GtkWidget *alarmlist;
+-GtkWidget *wid_backlight;
+-GtkWidget *wid_blink;
+-GtkWidget *wid_styledir;
+-GtkWidget *wid_stylename;
+-GtkWidget *wid_color;
+-GtkWidget *wid_command;
+-GtkWidget *wid_msgcmd;
+-GtkWidget *wid_h12;
+-GtkWidget *wid_itm;
+-GtkWidget *wid_locale;
++extern GtkWidget *application;
++extern GtkWidget *alarmlist;
++extern GtkWidget *wid_backlight;
++extern GtkWidget *wid_blink;
++extern GtkWidget *wid_styledir;
++extern GtkWidget *wid_stylename;
++extern GtkWidget *wid_color;
++extern GtkWidget *wid_command;
++extern GtkWidget *wid_msgcmd;
++extern GtkWidget *wid_h12;
++extern GtkWidget *wid_itm;
++extern GtkWidget *wid_locale;
+ 
+-int selected_row;
++extern int selected_row;
+ 
+ gint list_unsel_cb (GtkCList *clist,
+         gint row,
+diff -Naur wmclockmon-0.8.1.orig/wmclockmon-config/actions.c wmclockmon-0.8.1/wmclockmon-config/actions.c
+--- wmclockmon-0.8.1.orig/wmclockmon-config/actions.c	2005-06-15 15:55:27.000000000 +0200
++++ wmclockmon-0.8.1/wmclockmon-config/actions.c	2020-02-24 22:32:59.929329239 +0100
+@@ -19,6 +19,24 @@
+ #include "edit.h"
+ #include "actions.h"
+ 
++GtkWidget *application;
++GtkWidget *alarmlist;
++GtkWidget *wid_backlight;
++GtkWidget *wid_blink;
++GtkWidget *wid_styledir;
++GtkWidget *wid_stylename;
++GtkWidget *wid_color;
++GtkWidget *wid_command;
++GtkWidget *wid_msgcmd;
++GtkWidget *wid_h12;
++GtkWidget *wid_clk;
++GtkWidget *wid_itm;
++GtkWidget *wid_bin;
++GtkWidget *wid_locale;
++GtkWidget *wid_showcal;
++GtkWidget *wid_calalrms;
++
++int selected_row;
+ 
+ void quit_app() {
+     FREE(command);
+diff -Naur wmclockmon-0.8.1.orig/wmclockmon-config/edit.c wmclockmon-0.8.1/wmclockmon-config/edit.c
+--- wmclockmon-0.8.1.orig/wmclockmon-config/edit.c	2005-06-15 15:55:27.000000000 +0200
++++ wmclockmon-0.8.1/wmclockmon-config/edit.c	2020-02-24 22:30:01.651270068 +0100
+@@ -16,6 +16,8 @@
+ static GtkWidget *wid_date;
+ static GtkWidget *wid_mesg;
+ 
++char *newalarm;
++
+ void set_data(GtkWidget *widget, GtkWidget *data) {
+     char *wstat = gtk_entry_get_text(GTK_ENTRY(GTK_COMBO(wid_status)->entry));
+     char *wtime = gtk_entry_get_text(GTK_ENTRY(wid_time));
+diff -Naur wmclockmon-0.8.1.orig/wmclockmon-config/edit.h wmclockmon-0.8.1/wmclockmon-config/edit.h
+--- wmclockmon-0.8.1.orig/wmclockmon-config/edit.h	2005-06-15 15:55:27.000000000 +0200
++++ wmclockmon-0.8.1/wmclockmon-config/edit.h	2020-02-24 22:29:53.652267413 +0100
+@@ -5,7 +5,7 @@
+ #ifndef EDIT_H
+ #define EDIT_H
+ 
+-char *newalarm;
++extern char *newalarm;
+ 
+ void edit_dialog(const char *title,
+         int on,
+diff -Naur wmclockmon-0.8.1.orig/wmclockmon-config/mainwindow.h wmclockmon-0.8.1/wmclockmon-config/mainwindow.h
+--- wmclockmon-0.8.1.orig/wmclockmon-config/mainwindow.h	2005-06-15 15:55:27.000000000 +0200
++++ wmclockmon-0.8.1/wmclockmon-config/mainwindow.h	2020-02-24 22:33:31.864339834 +0100
+@@ -7,24 +7,24 @@
+ 
+ #include <gtk/gtk.h>
+ 
+-GtkWidget *application;
+-GtkWidget *alarmlist;
+-GtkWidget *wid_backlight;
+-GtkWidget *wid_blink;
+-GtkWidget *wid_styledir;
+-GtkWidget *wid_stylename;
+-GtkWidget *wid_color;
+-GtkWidget *wid_command;
+-GtkWidget *wid_msgcmd;
+-GtkWidget *wid_h12;
+-GtkWidget *wid_clk;
+-GtkWidget *wid_itm;
+-GtkWidget *wid_bin;
+-GtkWidget *wid_locale;
+-GtkWidget *wid_showcal;
+-GtkWidget *wid_calalrms;
++extern GtkWidget *application;
++extern GtkWidget *alarmlist;
++extern GtkWidget *wid_backlight;
++extern GtkWidget *wid_blink;
++extern GtkWidget *wid_styledir;
++extern GtkWidget *wid_stylename;
++extern GtkWidget *wid_color;
++extern GtkWidget *wid_command;
++extern GtkWidget *wid_msgcmd;
++extern GtkWidget *wid_h12;
++extern GtkWidget *wid_clk;
++extern GtkWidget *wid_itm;
++extern GtkWidget *wid_bin;
++extern GtkWidget *wid_locale;
++extern GtkWidget *wid_showcal;
++extern GtkWidget *wid_calalrms;
+ 
+-int selected_row;
++extern int selected_row;
+ 
+ gint list_unsel_cb (GtkCList *clist,
+         gint row,
+diff -Naur wmclockmon-0.8.1.orig/wmclockmon-config/tools.c wmclockmon-0.8.1/wmclockmon-config/tools.c
+--- wmclockmon-0.8.1.orig/wmclockmon-config/tools.c	2005-06-15 15:55:27.000000000 +0200
++++ wmclockmon-0.8.1/wmclockmon-config/tools.c	2020-02-24 22:28:02.883230608 +0100
+@@ -17,6 +17,21 @@
+ #include <sys/types.h>
+ #include "configfile.h"
+ 
++int    backlight;
++int    switch_authorized;
++int    h12;
++int    time_mode;
++int    use_leds;
++int    use_locale;
++int    showcal;
++int    calalrms;
++char  *style_name;
++char  *style_dir;
++char  *config_file;
++char  *light_color;
++char  *command;
++char  *msgcmd;
++Alarm *alarms;
+ 
+ int fexist(const char *filename) {
+     FILE *file;
+diff -Naur wmclockmon-0.8.1.orig/wmclockmon-config/variables.h wmclockmon-0.8.1/wmclockmon-config/variables.h
+--- wmclockmon-0.8.1.orig/wmclockmon-config/variables.h	2005-06-15 15:55:27.000000000 +0200
++++ wmclockmon-0.8.1/wmclockmon-config/variables.h	2020-02-24 22:18:40.479043297 +0100
+@@ -7,20 +7,20 @@
+ 
+ #include "defines.h"
+ 
+-int    backlight;
+-int    switch_authorized;
+-int    h12;
+-int    time_mode;
+-int    use_leds;
+-int    use_locale;
+-int    showcal;
+-int    calalrms;
+-char  *style_name;
+-char  *style_dir;
+-char  *config_file;
+-char  *light_color;
+-char  *command;
+-char  *msgcmd;
+-Alarm *alarms;
++extern int    backlight;
++extern int    switch_authorized;
++extern int    h12;
++extern int    time_mode;
++extern int    use_leds;
++extern int    use_locale;
++extern int    showcal;
++extern int    calalrms;
++extern char  *style_name;
++extern char  *style_dir;
++extern char  *config_file;
++extern char  *light_color;
++extern char  *command;
++extern char  *msgcmd;
++extern Alarm *alarms;
+ 
+ #endif

@@ -30,8 +30,6 @@ src_configure() {
 	use debug && append-cppflags -DDEBUG_IFDH
 
 	econf \
-		--docdir="/usr/share/doc/${PF}" \
-		--htmldir="/usr/share/doc/${PF}/html" \
 		--localstatedir=/var \
 		--with-udev="$(get_udevdir)" \
 		--enable-non-privileged \

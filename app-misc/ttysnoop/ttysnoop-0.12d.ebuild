@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
@@ -23,12 +23,12 @@ S="${WORKDIR}/${MY_P}"
 
 DOCS="README snooptab.dist"
 
-src_prepare(){
+src_prepare() {
 	epatch "${FILESDIR}"/pinkbyte_masking.patch
 	epatch "${FILESDIR}"/"${PN}"-makefile.patch
 }
 
-src_compile(){
+src_compile() {
 	emake CC="$(tc-getCC)"
 }
 

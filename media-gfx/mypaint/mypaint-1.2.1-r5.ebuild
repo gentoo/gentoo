@@ -54,7 +54,7 @@ src_compile() {
 	escons
 }
 
-src_install () {
+src_install() {
 	escons prefix="${D}/usr" install
 	newicon pixmaps/${PN}_logo.png ${PN}.png
 	for x in ${LANGS}; do

@@ -22,6 +22,6 @@ DEPEND="${RDEPEND}
 	app-arch/unzip
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
-python_test () {
+python_test() {
 	nosetests --all-modules || die "Tests fail with ${EPYTHON}"
 }

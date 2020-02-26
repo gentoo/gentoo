@@ -38,7 +38,7 @@ src_compile() {
 	emake CC="$(tc-getCC)" LDFLAGS="${CFLAGS} ${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	dobin netselect
 
 	if ! use prefix ; then

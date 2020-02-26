@@ -42,7 +42,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	dobin qmail-autoresponder
 	doman qmail-autoresponder.1
 	if use mysql; then

@@ -11,7 +11,7 @@ SRC_URI="https://github.com/djcb/mu/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="emacs guile mug"
 
 DEPEND="
@@ -24,14 +24,10 @@ DEPEND="
 		net-libs/webkit-gtk:4
 		x11-libs/gtk+:3
 	)"
-# net-mail/mailutils also installes /usr/bin/mu.  Block it until somebody
-# really wants both installed at the same time.
-RDEPEND="
-	${DEPEND}
-	!net-mail/mailutils"
+RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
-SITEFILE="70mu-gentoo-autoload.el"
+SITEFILE="70mu-gentoo.el"
 
 src_prepare() {
 	default

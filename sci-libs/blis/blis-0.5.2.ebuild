@@ -28,7 +28,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-gh313.patch"
 )
 
-src_configure () {
+src_configure() {
 	local BLIS_FLAGS=()
 	local confname
 	# determine flags
@@ -68,11 +68,11 @@ src_compile() {
 		default
 }
 
-src_test () {
+src_test() {
 	emake check
 }
 
-src_install () {
+src_install() {
 	default
 	use doc && dodoc README.md docs/*.md
 

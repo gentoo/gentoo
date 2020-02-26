@@ -106,7 +106,7 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=( AUTHORS BUGS ChangeLog HACKING README TODO )
 
-pkg_setup () {
+pkg_setup() {
 		CONFIG_CHECK="~KVM ~VIRTIO"
 		[ -n "${CONFIG_CHECK}" ] && check_extra_config;
 

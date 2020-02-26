@@ -6,6 +6,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-24)
+# app-admin/packagekit* are masked for removal.
+kde-frameworks/frameworkintegration appstream
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-24)
+# sys-apps/entropy is masked for removal.
+app-admin/packagekit-base entropy
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-08)
 # The dependency is python-single-r1 while the package (and its revdeps)
 # are python-r1.
@@ -80,7 +88,6 @@ media-sound/beets webserver
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)
 # Python 2.7 only packages optionally needing dev-python/ipython.
-app-misc/gourmet ipython
 dev-python/restkit cli
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)

@@ -5,9 +5,6 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<longdescription lang="en">
-		XML-like markup for producing colored terminal text
-	</longdescription>
 	<upstream>
 		<remote-id type="github">gvalkov/python-ansimarkup/</remote-id>
 		<remote-id type="pypi">ansimarkup</remote-id>

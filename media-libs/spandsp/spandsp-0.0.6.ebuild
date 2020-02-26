@@ -42,7 +42,6 @@ src_configure() {
 	# from one another. Otherwise, you'd have to do REQUIRED_USE.
 
 	econf \
-		--disable-dependency-tracking \
 		$(use_enable doc) \
 		$(use_enable fixed-point) \
 		$(use_enable cpu_flags_x86_mmx mmx) \
@@ -52,7 +51,7 @@ src_configure() {
 		$(use_enable static-libs static)
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 	dodoc AUTHORS ChangeLog DueDiligence NEWS README
 

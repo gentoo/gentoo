@@ -17,6 +17,6 @@ RDEPEND="dev-python/pikepdf[${PYTHON_USEDEP}]
 	dev-python/pycairo[${PYTHON_USEDEP}]
 	x11-libs/gtk+:3[introspection]
 	x11-libs/pango[introspection]
-	app-text/poppler[introspection]"
+	app-text/poppler[introspection,cairo]"
 DEPEND="${RDEPEND}
 	dev-python/python-distutils-extra[${PYTHON_USEDEP}]"

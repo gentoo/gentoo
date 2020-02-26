@@ -17,7 +17,7 @@ LICENSE="BSD"
 SLOT="0"
 RESTRICT="mpi-threads? ( test )"
 
-KEYWORDS="~alpha ~amd64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~alpha amd64 ia64 ppc ppc64 sparc x86"
 IUSE="+cxx fortran heterogeneous ipv6 mpi-threads pbs romio threads vt"
 RDEPEND="
 	pbs? ( sys-cluster/torque )
@@ -91,7 +91,7 @@ src_configure() {
 		$(use_enable ipv6)
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 	dodoc README AUTHORS NEWS VERSION
 }

@@ -71,7 +71,6 @@ src_configure() {
 	# --with-docbook and --with-db2html and their deps are useless,
 	#	since docs are already pregenerated in the source tarball
 	econf \
-		--docdir=/usr/share/doc/${PF} \
 		--sysconfdir=/etc/privoxy \
 		--enable-dynamic-pcre \
 		--with-user=privoxy \
@@ -97,7 +96,7 @@ src_configure() {
 		$(use_enable zlib)
 }
 
-src_install () {
+src_install() {
 	default
 
 	newinitd "${FILESDIR}/privoxy.initd-3" privoxy

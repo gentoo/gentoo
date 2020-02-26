@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -26,13 +26,13 @@ ELISP_PATCHES="${P}-autoload.patch"
 TEXMF="/usr/share/texmf-site"
 
 src_configure() {
-	econf --with-emacs \
+	econf \
+		--with-emacs \
 		--with-auto-dir="${EPREFIX}/var/lib/auctex" \
 		--with-lispdir="${EPREFIX}${SITELISP}/${PN}" \
 		--with-packagelispdir="${EPREFIX}${SITELISP}/${PN}" \
 		--with-packagedatadir="${EPREFIX}${SITEETC}/${PN}" \
 		--with-texmf-dir="${EPREFIX}${TEXMF}" \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--disable-build-dir-test \
 		$(use_enable preview-latex preview)
 }
@@ -56,7 +56,7 @@ pkg_postinst() {
 	elisp-site-regen
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	use preview-latex && texmf-update
 	elisp-site-regen
 }

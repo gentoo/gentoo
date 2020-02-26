@@ -50,8 +50,8 @@ RDEPEND="
 PATCHES=(
 	# Fix Gentoo support
 	# https://code.launchpad.net/~gilles-dartiguelongue/cloud-init/+git/cloud-init/+merge/358777
-	"${FILESDIR}"/${PN}-18.4-fix-packages-module.patch
-	"${FILESDIR}"/${PN}-18.4-gentoo-support-upstream-templates.patch
+	"${FILESDIR}/${PN}-18.4-fix-packages-module.patch"
+	"${FILESDIR}/${PN}-19.4-gentoo-support-upstream-templates.patch"
 	"${FILESDIR}"/18.4-fix-filename-for-storing-locale.patch
 	"${FILESDIR}"/18.4-fix-update_package_sources-function.patch
 	"${FILESDIR}"/18.4-add-support-for-package_upgrade.patch

@@ -46,7 +46,6 @@ S=${WORKDIR}/${MY_P}
 
 src_configure() {
 	local myconf=(
-		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable debug)
 		$(use_enable cache)
 		$(use_with oss)

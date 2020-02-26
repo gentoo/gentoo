@@ -50,7 +50,7 @@ src_configure() {
 	ecm_src_configure
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	ecm_pkg_postinst
 
 	if ! has_version "kde-misc/kdeconnect[app]" ; then

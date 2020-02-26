@@ -25,10 +25,10 @@ src_prepare() {
 		-e "s:-Xlinker:${LDFLAGS} -Xlinker:" Makefile || die
 }
 
-src_compile () {
+src_compile() {
 	emake CFLAGS="${CFLAGS} -DMAIN"
 }
 
-src_install () {
+src_install() {
 	emake BINDIR="${ED}/usr/bin" MANDIR="${ED}/usr/share/man/man" install
 }

@@ -34,7 +34,7 @@ RDEPEND="
 		dev-lang/tk:0=[threads]
 	)
 	dev-libs/libyaml
-	virtual/libffi:=
+	dev-libs/libffi:=
 	sys-libs/readline:0=
 	sys-libs/zlib
 	>=app-eselect/eselect-ruby-20171225
@@ -124,7 +124,6 @@ src_configure() {
 	INSTALL="${EPREFIX}/usr/bin/install -c" LIBPATHENV="" econf \
 		--program-suffix=${MY_SUFFIX} \
 		--with-soname=ruby${MY_SUFFIX} \
-		--docdir=${EPREFIX}/usr/share/doc/${P} \
 		--enable-shared \
 		--enable-pthread \
 		--disable-rpath \

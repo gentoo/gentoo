@@ -4,7 +4,7 @@
 EAPI=6
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2 systemd virtualx
+inherit gnome2 systemd
 
 DESCRIPTION="Rygel is an open source UPnP/DLNA MediaServer"
 HOMEPAGE="https://wiki.gnome.org/Projects/Rygel"
@@ -25,7 +25,7 @@ RDEPEND="
 	>=media-libs/libmediaart-0.7:2.0
 	media-plugins/gst-plugins-soup:1.0
 	>=net-libs/gssdp-0.14.15:0/3
-	>=net-libs/gupnp-0.20.14
+	>=net-libs/gupnp-0.20.14:0/4
 	>=net-libs/gupnp-av-0.12.8
 	>=net-libs/libsoup-2.44:2.4
 	>=sys-apps/util-linux-2.20

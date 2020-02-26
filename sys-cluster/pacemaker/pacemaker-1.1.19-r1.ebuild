@@ -46,9 +46,7 @@ src_prepare() {
 src_configure() {
 	# appends lib to localstatedir automatically
 	local myconf=(
-		--libdir="/usr/$(get_libdir)"
 		--localstatedir=/var
-		--disable-dependency-tracking
 		--disable-fatal-warnings
 		--disable-static
 		--without-cs-quorum

@@ -14,7 +14,7 @@ SRC_URI="https://github.com/gpoore/pythontex/archive/v${PV}.tar.gz -> ${P}.tar.g
 SLOT="0"
 LICENSE="LPPL-1.3 BSD"
 KEYWORDS="~amd64 ~x86"
-IUSE="highlighting"
+IUSE="doc highlighting"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
@@ -33,7 +33,8 @@ src_compile() {
 }
 
 src_install() {
-	dodoc ${PN}/README "${S}"/*rst ${PN}_quickstart/*
+	dodoc *rst
+	use doc && dodoc ${PN}_quickstart/*pdf ${PN}/*pdf
 
 	cd ${PN} || die
 
@@ -45,5 +46,5 @@ src_install() {
 	}
 	python_foreach_impl installation
 
-	latex-package_src_doinstall dtx ins sty
+	latex-package_src_doinstall sty
 }

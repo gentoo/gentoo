@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ src_prepare() {
 		|| die
 }
 
-src_install () {
+src_install() {
 	default
 	newicon data/images/${PN}-icon.xpm ${PN}.xpm
 	make_desktop_entry ${PN} "Circus Linux!"

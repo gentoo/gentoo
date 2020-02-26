@@ -35,8 +35,8 @@ src_prepare() {
 
 src_configure() {
 	./configure \
-		--prefix="${EROOT}usr" \
-		--docdir="${EROOT}usr/share/doc/${PF}" \
+		--prefix="${EPREFIX}"/usr \
+		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		$(use_enable ncurses curses) \
 		$(use_enable selinux) \
 		$(use_enable tre) || die

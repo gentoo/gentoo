@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -48,7 +48,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	dodir /usr/bin /usr/$(get_libdir)/ezmlm /etc/ezmlm /usr/share/man
 	dobin ezmlm-{cgi,checksub,import,rmtab}
 

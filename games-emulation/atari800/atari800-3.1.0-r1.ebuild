@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -79,7 +79,7 @@ src_compile() {
 	emake -C src
 }
 
-src_install () {
+src_install() {
 	dobin src/atari800
 	newman src/atari800.man atari800.6
 	dodoc README.1ST DOC/*

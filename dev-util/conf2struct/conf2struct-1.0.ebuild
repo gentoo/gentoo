@@ -23,10 +23,10 @@ RDEPEND="dev-libs/libconfig
 	dev-perl/Conf-Libconfig"
 DEPEND="${RDEPEND}"
 
-src_compile(){
+src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}"
 }
 
-src_install(){
+src_install() {
 	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" install
 }

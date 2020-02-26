@@ -23,12 +23,12 @@ RDEPEND="
 
 PATCHES=("${FILESDIR}"/${P}-external-libintl.patch)
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }
 
-src_install(){
+src_install() {
 	default
 
 	# provided by sys-fs/quota[rpc]

@@ -85,6 +85,7 @@ PATCHES=(
 	# Allow disabling udev and networkmanager on Linux
 	# Make colord and wacom optional
 	"${WORKDIR}"/patches/
+	"${FILESDIR}"/${PV}-fix-wacom-no-wayland.patch #677494, fixed in 3.36
 )
 
 python_check_deps() {

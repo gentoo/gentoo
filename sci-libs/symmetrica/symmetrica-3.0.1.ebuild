@@ -14,11 +14,11 @@ IUSE="doc"
 
 DOCS=( README.md )
 
-src_configure(){
+src_configure() {
 	econf $(use_enable doc)
 }
 
-src_install(){
+src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 }

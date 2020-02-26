@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -44,7 +44,7 @@ DEPEND="${RDEPEND}
 	virtual/perl-ExtUtils-MakeMaker
 "
 
-src_prepare(){
+src_prepare() {
 	perl-module_src_prepare
 	sed -i "s/use Getopt::Long;/use Getopt::Long qw(:config pass_through);/" \
 		"${S}"/Makefile.PL || die

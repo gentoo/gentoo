@@ -95,7 +95,7 @@ src_compile() {
 	use doc && cmake-utils_src_compile doc-style createapidocs doc-xml
 }
 
-src_install () {
+src_install() {
 	cmake-utils_src_install
 
 	# package provides .pc files

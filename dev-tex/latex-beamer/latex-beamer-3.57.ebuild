@@ -21,7 +21,7 @@ RDEPEND=">=dev-tex/pgf-1.10
 
 S=${WORKDIR}/beamer-${PV}
 
-src_prepare(){
+src_prepare() {
 	default
 	rm -rf doc/licenses || die
 }

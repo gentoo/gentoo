@@ -59,7 +59,6 @@ src_configure() {
 	use static && append-ldflags -static
 
 	local myeconfargs=(
-		--docdir='$(datarootdir)'/doc/${PF}
 		$(use_enable examples)
 		$(use_enable nls)
 	)

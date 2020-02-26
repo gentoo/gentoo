@@ -38,7 +38,6 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
-		--disable-dependency-tracking
 		$(use_enable static-libs static)
 		$(use_enable ldap)
 	)

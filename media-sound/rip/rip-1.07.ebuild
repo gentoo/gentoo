@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ RDEPEND="media-sound/cdparanoia
 	>=dev-perl/MP3-Info-0.91
 	|| ( media-sound/vorbis-tools media-sound/lame media-libs/flac media-sound/bladeenc )"
 
-src_install () {
+src_install() {
 	dobin rip
 	einstalldocs
 }

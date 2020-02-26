@@ -96,8 +96,6 @@ src_prepare() {
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
-		--disable-silent-rules \
 		--disable-fusermount \
 		$(use_enable debug) \
 		$(use_enable fuse fuse-client) \
@@ -110,7 +108,6 @@ src_configure() {
 		$(use libtirpc || echo --without-libtirpc) \
 		$(use ipv6 && echo --with-ipv6-default) \
 		--with-tmpfilesdir="${EPREFIX}"/etc/tmpfiles.d \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--localstatedir="${EPREFIX}"/var
 }
 

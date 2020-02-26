@@ -33,12 +33,11 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		--disable-static \
 		$(usex cairo "" "--with-pango")
 }
 
-src_install () {
+src_install() {
 	default
 
 	dotnet_multilib_comply

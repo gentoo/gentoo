@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -69,7 +69,6 @@ MATE_FORCE_AUTORECONF=true
 
 src_configure() {
 	mate_src_configure \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		$(use_with elogind) \
 		$(use_with systemd) \
 		$(use_with xtrans)  \

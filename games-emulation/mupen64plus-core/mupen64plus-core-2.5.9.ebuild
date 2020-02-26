@@ -33,6 +33,8 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="gles2? ( !osd )"
 S=${WORKDIR}/${MY_P}
 
+PATCHES=( "${FILESDIR}"/${PN}-2.5.9-fix-gcc10-fno-common.patch )
+
 src_prepare() {
 	default
 

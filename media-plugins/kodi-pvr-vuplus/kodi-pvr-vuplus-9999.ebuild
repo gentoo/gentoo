@@ -30,6 +30,7 @@ IUSE=""
 DEPEND="
 	~media-tv/kodi-9999
 	~media-libs/kodi-platform-9999
+	=dev-libs/libplatform-2*
 	dev-libs/tinyxml
 	dev-cpp/nlohmann_json
 	"
@@ -38,7 +39,7 @@ RDEPEND="
 	${DEPEND}
 	"
 
-src_prepare(){
+src_prepare() {
 	[ -d depends ] && rm -rf depends || die
 	cmake_src_prepare
 }

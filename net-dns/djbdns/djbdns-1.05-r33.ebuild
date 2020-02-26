@@ -22,7 +22,7 @@ RDEPEND="sys-apps/ucspi-tcp
 	virtual/daemontools
 	selinux? ( sec-policy/selinux-djbdns )"
 
-src_unpack(){
+src_unpack() {
 	# Unpack both djbdns and its man pages to separate directories.
 	default
 

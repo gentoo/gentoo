@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,13 +28,13 @@ DEPEND="${RDEPEND}
 
 AT_M4DIR="${S}"
 
-src_prepare(){
+src_prepare() {
 	# do not install doc and examples by default
 	sed -i -e 's/doc examples//' Makefile.in || die
 	default
 }
 
-src_configure(){
+src_configure() {
 	econf --disable-local-libz \
 		--disable-local-libbz2 \
 		--disable-mime-update \

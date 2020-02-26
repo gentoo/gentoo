@@ -42,9 +42,9 @@ src_prepare() {
 
 src_configure() {
 	append-flags -fno-strict-aliasing
-	econf 	--disable-dependency-tracking		\
-		--disable-static			\
-		--with-cairo=system			\
+	econf \
+		--disable-static \
+		--with-cairo=system \
 		$(use !cairo && printf %s --with-pango)
 }
 
@@ -52,7 +52,7 @@ src_compile() {
 	emake "$@"
 }
 
-src_install () {
+src_install() {
 	emake -j1 DESTDIR="${D}" "$@" install #nowarn
 	dotnet_multilib_comply
 	local commondoc=( AUTHORS ChangeLog README TODO )

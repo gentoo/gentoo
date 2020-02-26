@@ -35,11 +35,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf \
-		--datadir="/usr/share" \
-		--datarootdir="${EPREFIX}/usr/share" \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
-		$(use_with portaudio)
+	econf $(use_with portaudio)
 }
 
 src_install() {

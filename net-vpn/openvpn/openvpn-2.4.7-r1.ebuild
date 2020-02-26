@@ -34,7 +34,7 @@ CDEPEND="
 			!libressl? ( >=dev-libs/openssl-0.9.8:0= )
 			libressl? ( dev-libs/libressl:0= )
 		)
-		mbedtls? ( net-libs/mbedtls )
+		mbedtls? ( net-libs/mbedtls:= )
 	)
 	lz4? ( app-arch/lz4 )
 	lzo? ( >=dev-libs/lzo-1.07 )
@@ -53,7 +53,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-libressl.patch"
 )
 
-pkg_setup()  {
+pkg_setup() {
 	linux-info_pkg_setup
 }
 

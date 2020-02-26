@@ -32,12 +32,102 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-02-26)
+# Effectively unmaintained.  Last upstream commit in 2016.  Multiple
+# unresolved bugs.  Python 2 only.  Repology (https://repology.org/)
+# provides quite a good replacement.
+# Removal in 30 days.  Bug #709458.
+app-portage/euscan
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Unmaintained revdeps on dev-python/pygtk blocking its removal, py2-only
+# All masked for removal in 30 days.
+# Last release in 2011, bug #708106
+app-cdr/gtkcdlabel
+# No plans upstream to port away from pygtk, suggested alternative dupeguru
+# not packaged in Gentoo, bug #708112
+app-misc/fslint
+# Last release in 2012, bug #708124
+app-text/keepnote
+# Last release in 2012, bug #708142
+x11-misc/revelation
+# Last release in 2011, bug #708150
+x11-misc/tintwizard
+# Last activity in 2013, bug #710162
+sci-misc/pythoncad
+# Last release in 2013, bug #710164
+sci-electronics/gresistor
+
+# Jason A. Donenfeld <zx2c4@gentoo.org> (2020-02-24)
+# Unsupported upstream version, likely has security bugs. Not removed
+# immediately because of backwards incompatible configuration changes
+# with the newer version in the tree.
+#
+# Removal in 14 days. Bug #710754.
+~mail-mta/opensmtpd-6.0.3_p1
+
+# Marek Szuba <marecki@gentoo.org> (2020-02-24)
+# Deprecated upstream in Q1'2018 in favour of dev-libs/intel-neo and
+# while it officially remains the recommended solution for "legacy HW
+# platforms" not supported by NEO (i.e. Sandy Bridge, Ivy Bridge and
+# Haswell GPUs), there has been no repository activity since August 2018.
+# Only really suitable for code development due to poor performance, some
+# OpenCL-aware software (e.g. media-gfx/darktable) explicitly
+# blacklists Beignet devices.
+# Upstream does not support LLVM versions newer than 7, third-party patches
+# exist for 8 and 9 but Beignet built against those versions fails some
+# unit tests.
+#
+# Removal in 30 days. Bug #710640.
+dev-libs/beignet
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-24)
+# app-admin/packagekit-base is Python 2 only and behind upstream.
+# The Portage backend is unmaintained.  Other packages are its reverse
+# dependencies.
+#
+# It is unclear why app-backup/deja-dup needs it unconditionally.
+# However, it has not been bumped since 2016.
+#
+# Removal in 30 days.  Bug #708398.
+app-admin/packagekit
+app-admin/packagekit-base
+app-admin/packagekit-gtk
+app-admin/packagekit-qt
+app-backup/deja-dup
+gnome-extra/gnome-packagekit
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-24)
+# Effectively unmaintained in Gentoo.  Multiple versions behind
+# upstream.  Python 2 only.
+# Removal in 30 days.  Bug #709466.
+app-admin/equo
+app-admin/matter
+sys-apps/entropy
+sys-apps/entropy-server
+
+# David Seifert <soap@gentoo.org> (2020-02-23)
+# Last release in 2013, the scons SConstruct script uses variables
+# that have been removed from Scons years ago and also uses a ton of
+# Python 2-only patterns, sed broken. Bug #703906, #710342.
+# Masked for removal in 30 days.
+games-strategy/boswars
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-22)
+# Last release in 2009, py2-only, blocks dev-python/pygtk removal, bug #708100
+# Use media-gfx/mcomix instead. Masked for removal in 30 days.
+media-gfx/comix
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-21)
+# Does not compile against new gupnp-1.2 API. No consumers, dead project.
+# Removal in 30 days. Bug #710436.
+net-libs/gupnp-ui
+
 # Mikle Kolyada <zlogene#gentoo.org> (2020-02-21)
 # Tiny package with semi-dead upstream. Unlikely useful.
 # Blocks pygtk removal.
 # Removal in 30 days.
 media-gfx/cropgui
-
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-19)
 # Last release in 2011, py2-only, blocks dev-python/pygtk removal, bug #708102
@@ -471,13 +561,6 @@ dev-python/twisted-names
 dev-python/twisted-web
 dev-python/twisted-words
 
-# Ulrich Müller <ulm@gentoo.org> (2020-01-27)
-# Removal requested by proxied maintainer:
-# "Game already available in Valve Steam."
-# License issues, unclear if zipball is redistributable.
-# Masked for removal in 30 days. Bug #703496.
-games-action/cs2d
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
 # Old split Twisted and related packages with no reverse dependencies
 # and only Python 2 support.
@@ -516,30 +599,12 @@ media-gfx/pycam
 # EAPI conversion caused some regressions, need to redesign old ebuilds.
 =dev-lang/lua-5.1.5-r5
 
-# David Seifert <soap@gentoo.org> (2020-01-26)
-# Unmaintained, last release 14 years ago, tons of patches,
-# Autoconf script is broken, fails with gettext-0.20.
-# Removal in 30 days.  Bug #578234, #685928.
-app-i18n/zhcon
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-26)
-# Unmaintained.  Not bumped since Mar 2018.  No py3.7 compat.  Forces
-# old version of dev-python/idna.
-# Removal in 30 days.  Bug #706502.
-net-misc/crossbar
 
 # Andrew Ammerlaan <andrewammerlaan@riseup.net> (2020-01-26)
 # Proxy Maintainers <proxy-maint@gentoo.org>
 # v3.6.3 uses huge amounts of memory: Bug #705682
 # v3.6.1 is the latest version without this issue
 =dev-libs/libsass-3.6.3
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-26)
-# Unmaintained in Gentoo.  Last bumped in 2013.  Multiple problems
-# reported both in release and live ebuild.  Python 2 only.  Version
-# bump is non-trivial.
-# Removal in 30 days.  Bug #706498.
-app-vim/youcompleteme
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-26)
 # Starting with Firefox 74 Mozilla removes xpi sideloading support
@@ -551,16 +616,6 @@ www-plugins/passff
 # The following packages depend on django, support Python 2 only
 # and have no reverse dependencies.
 # Removal in 30 days.  Bug #706360.
-dev-python/django-annoying
-dev-python/django-endless-pagination
-dev-python/django-international
-dev-python/django-ldapdb
-dev-python/django-ldap-groups
-dev-python/django-oauth-plus
-dev-python/django-openid-auth
-dev-python/django-piston
-dev-python/django-registration
-dev-python/django-xslt
 
 # David Seifert <soap@gentoo.org> (2020-01-25)
 # Upstream is mostly unresponsive and doesn't have the resources to
@@ -578,152 +633,6 @@ media-sound/adplay
 =dev-lang/lua-5.2.4-r2
 =dev-lang/lua-5.3.5-r2
 
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# Upstream disappeared, no other distro still carries this,
-# blocks removal of EOL gtkglext, no revdeps.
-# Removal in 30 days.
-games-strategy/gwp
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# All released versions depend on EOL gtkglext, no revdeps.
-# Bug #644334, #694834. Removal of releases in 30 days.
-# Lars Wendler <polynomial-c@gemtoo.org> (2020-01-22)
-# Do NOT treeclean the live ebuild!
-<sci-astronomy/celestia-9999
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# Last release over 2 years ago, depends on EOL gtkglext.
-# No revdeps, Removal in 30 days.
-sci-chemistry/gabedit
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# Last release over 13 years ago, depends on EOL gtkglext, no revdeps.
-# Bug #353119, #435676. Removal in 30 days.
-sci-chemistry/ghemical
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# Last release over 18 years ago, depends on EOL gtkglext.
-# No revdeps, Removal in 30 days.
-sci-physics/lightspeed
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# Last release over 7 years ago, depends on EOL gtkglext.
-# No revdeps, Removal in 30 days.
-sci-visualization/gfsview
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# No sign of py3 port, depends on EOL pygtk. No revdeps.
-# Bug #706030. Removal in 30 days.
-app-misc/gourmet
-dev-python/python-poppler
-
-# David Seifert <soap@gentoo.org> (2020-01-21)
-# EAPI 4, last release in 2005, doesn't build, no revdeps.
-# Bug #664498. Removal in 30 days.
-app-text/sary
-
-# Mike Gilbert <floppym@gentoo.org> (2020-01-20)
-# Newer versions are using Go modules, which makes this more difficult to
-# maintain. Take this over if wanted, otherwise I will remove it in 30 days.
-app-admin/cli53
-
-# Zac Medico <zmedico@gentoo.org> (2020-01-19)
-# This package has been replaced by dev-python/python-podman and has
-# no reverse dependencies.
-# Removal in 30 days.  Bug #705826.
-dev-python/pypodman
-
-# David Seifert <soap@gentoo.org> (2020-01-18)
-# Leftover from silc* removal (#522916), unmaintained, no
-# upstream releases since 2014, no revdeps, EAPI-4.
-# Bug #705462. Removal in 14 days.
-net-im/silc-toolkit
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-18)
-# The following Gentoo packages are Python 2-only and have no reverse
-# dependencies.
-# Removal in 30 days.  Bug #705762.
-dev-python/aldryn-boilerplates
-dev-python/aldryn-common
-dev-python/aquarium
-dev-python/celementtree
-dev-python/collectd-rabbitmq
-dev-python/cosmolopy
-dev-python/django-annoying
-dev-python/django-endless-pagination
-dev-python/django-international
-dev-python/django-ldapdb
-dev-python/django-ldap-groups
-dev-python/django-oauth-plus
-dev-python/django-openid-auth
-dev-python/django-piston
-dev-python/django-registration
-dev-python/django-xslt
-dev-python/egg-python
-dev-python/Flask-KVSession
-dev-python/flask-openid
-dev-python/flask-xml-rpc
-dev-python/gdata
-dev-python/libwnck-python
-dev-python/lxc-python2
-dev-python/mantissa
-dev-python/mkpythonproj
-dev-python/morbid
-dev-python/myghty
-dev-python/myghtyutils
-dev-python/openstack-nose-plugin
-dev-python/paisley
-dev-python/pkipplib
-dev-python/processing
-dev-python/pSQL
-dev-python/pudge
-dev-python/pyds
-dev-python/pygene
-dev-python/pygtkhelpers
-dev-python/pynotifier
-dev-python/pypgsql
-dev-python/pythong
-dev-python/python-musicbrainz
-dev-python/python-nss
-dev-python/python-recaptcha
-dev-python/python-scw
-dev-python/python-tvrage
-dev-python/python-yadis
-dev-python/qpid-python
-dev-python/robotframework-selenium2library
-dev-python/robotframework-sshlibrary
-dev-python/rtgraph
-dev-python/ruledispatch
-dev-python/runsnakerun
-dev-python/sqlite3dbm
-dev-python/sqlobject
-dev-python/steadymark
-dev-python/storm
-dev-python/timelib
-dev-python/turbocheetah
-dev-python/turbojson
-dev-python/turbokid
-dev-python/weakrefmethod
-dev-python/webut
-dev-python/wehjit
-dev-python/zfec
-
-# David Seifert <soap@gentoo.org> (2020-01-18)
-# EAPI 4, last release in 2004, ebuild has QA and licensing issues.
-# Bug #426028, #454116. Removal in 30 days.
-net-ftp/oftpd
-
-# David Seifert <soap@gentoo.org> (2020-01-18)
-# EAPI 4, doesn't build against OpenSSL 1.1 API, last release in 2014,
-# lots of QA issues (calls cc directly, -Werror)
-# Bug #634442, #664766. Removal in 30 days.
-net-dns/validns
-
-# David Seifert <soap@gentoo.org> (2020-01-18)
-# EAPI 4, doesn't build, last release in 2005.
-# Bug #384031, #638492, #663644. Removal in 30 days.
-net-analyzer/pchar
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-16)
 # The new version loses Python 2 support but does not introduce any real
 # changes.  Let's mask it to reduce the noise, and hopefully try to get
@@ -735,20 +644,6 @@ net-analyzer/pchar
 # us from adding official releases made by google.
 # Please DOWNGRADE to dev-python/nototools-0_pre20200113
 =dev-python/nototools-20190320
-
-# Joerg Bornkessel <hd_brummy@gentoo.org> (2020-01-12)
-# upstream has give up this project,
-# upstream is not interressted on any patches to fix this
-# If you really would like to stay on this plugin,
-# add a comment in this bug
-# wrt bug 704004
-# masked for removal ~12 Feb 2020
-media-plugins/vdr-mailbox
-
-# Mart Raudsepp <leio@gentoo.org> (2020-01-11)
-# End of life vala:0.42 series, please depclean.
-# This message shall be kept until 2020-02-11.
-dev-lang/vala:0.42
 
 # Ulrich Müller <ulm@gentoo.org> (2020-01-06)
 # Snapshots from Git, masked for testing.
@@ -823,10 +718,6 @@ sys-apps/man
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-09-21)
-# Depends on >=virtual/{jdk,jre}-11 which is masked
-=www-servers/tomcat-9.0.26
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
 # Unofficial build. Superseded by official 2.49.5 release.

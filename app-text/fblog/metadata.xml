@@ -5,9 +5,6 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<longdescription lang="en">
-		A small tool to view json log files
-	</longdescription>
 	<upstream>
 		<bugs-to>https://github.com/brocode/fblog/issues</bugs-to>
 		<remote-id type="github">brocode/fblog</remote-id>
