@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -8,7 +8,7 @@ inherit systemd
 DESCRIPTION="a man replacement that utilizes berkdb instead of flat files"
 HOMEPAGE="http://www.nongnu.org/man-db/"
 if [[ "${PV}" = 9999* ]] ; then
-	inherit git-r3
+	inherit autotools git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/man-db.git"
 else
 	SRC_URI="mirror://nongnu/${PN}/${P}.tar.xz"
@@ -23,8 +23,8 @@ CDEPEND="
 	!sys-apps/man
 	>=dev-libs/libpipeline-1.5.0
 	sys-apps/groff
-	berkdb? ( sys-libs/db:= )
 	gdbm? ( sys-libs/gdbm:= )
+	!gdbm? ( berkdb? ( sys-libs/db:= ) )
 	!berkdb? ( !gdbm? ( sys-libs/gdbm:= ) )
 	seccomp? ( sys-libs/libseccomp )
 	zlib? ( sys-libs/zlib )
@@ -49,6 +49,36 @@ PDEPEND="manpager? ( app-text/manpager )"
 pkg_setup() {
 	if (use gdbm && use berkdb) || (use !gdbm && use !berkdb) ; then #496150
 		ewarn "Defaulting to USE=gdbm due to ambiguous berkdb/gdbm USE flag settings"
+	fi
+}
+
+src_unpack() {
+	if [[ "${PV}" == *9999 ]] ; then
+		git-r3_src_unpack
+
+		# We need to mess with gnulib :-/
+		EGIT_REPO_URI="https://git.savannah.gnu.org/r/gnulib.git" \
+		EGIT_CHECKOUT_DIR="${WORKDIR}/gnulib" \
+		git-r3_src_unpack
+	else
+		default
+	fi
+}
+
+src_prepare() {
+	default
+	if [[ "${PV}" == *9999 ]] ; then
+		local bootstrap_opts=(
+			--gnulib-srcdir=../gnulib
+			--no-bootstrap-sync
+			--copy
+			--no-git
+		)
+		AUTORECONF="/bin/true" \
+		LIBTOOLIZE="/bin/true" \
+		sh ./bootstrap "${bootstrap_opts[@]}" || die
+
+		eautoreconf
 	fi
 }
 
