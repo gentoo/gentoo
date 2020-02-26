@@ -105,7 +105,11 @@ src_configure() {
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot || myconf+=( --without-node-snapshot )
-	use ssl && ( use system-ssl && myconf+=( --shared-openssl --openssl-use-def-ca-store ) ) || myconf+=( --without-ssl )
+	if use ssl; then
+		use system-ssl && myconf+=( --shared-openssl --openssl-use-def-ca-store )
+	else
+		myconf+=( --without-ssl )
+	fi
 
 	local myarch=""
 	case ${ABI} in
