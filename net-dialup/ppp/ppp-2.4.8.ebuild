@@ -175,10 +175,9 @@ src_install() {
 	doman scripts/pon.1
 
 	# Adding misc. specialized scripts to doc dir
-	insinto /usr/share/doc/${PF}/scripts/chatchat
-	doins scripts/chatchat/*
-	insinto /usr/share/doc/${PF}/scripts
-	doins scripts/*
+	dodoc -r scripts
+	docinto scripts
+	dodoc -r scripts/chatchat
 
 	if use gtk ; then
 		dosbin contrib/pppgetpass/{pppgetpass.vt,pppgetpass.gtk}
