@@ -1,6 +1,25 @@
+From afb123618b087f3ca2305b84fb004624662e52f0 Mon Sep 17 00:00:00 2001
+From: David Seifert <soap@gentoo.org>
+Date: Wed, 26 Feb 2020 11:07:29 +0100
+Subject: Fix GCC 10 / -fno-common
+
+* GCC 10 switches its default symbol emission mode
+  to cause linker errors when an object is defined
+  more than once.
+
+Bug: https://bugs.gentoo.org/706756
+Signed-off-by: David Seifert <soap@gentoo.org>
+Signed-off-by: Hans Verkuil <hverkuil-cisco@xs4all.nl>
+---
+ lib/include/libdvbv5/desc_t2_delivery.h |  2 +-
+ lib/libdvbv5/dvb-v5.h                   | 26 +++++++++++++-------------
+ 2 files changed, 14 insertions(+), 14 deletions(-)
+
+diff --git a/lib/include/libdvbv5/desc_t2_delivery.h b/lib/include/libdvbv5/desc_t2_delivery.h
+index 93594b76..8c11fa9a 100644
 --- a/lib/include/libdvbv5/desc_t2_delivery.h
 +++ b/lib/include/libdvbv5/desc_t2_delivery.h
-@@ -215,7 +215,7 @@
+@@ -215,7 +215,7 @@ extern const unsigned dvbt2_transmission_mode[];
   * @brief converts from internal representation to string the SISO_MISO
   *	  field of dvb_desc_t2_delivery:SISO_MISO field.
   */
@@ -9,9 +28,11 @@
  
  #ifdef __cplusplus
  }
+diff --git a/lib/libdvbv5/dvb-v5.h b/lib/libdvbv5/dvb-v5.h
+index 45aaddda..3540bac1 100644
 --- a/lib/libdvbv5/dvb-v5.h
 +++ b/lib/libdvbv5/dvb-v5.h
-@@ -14,17 +14,17 @@
+@@ -14,17 +14,17 @@ struct fe_status_name {
  	char *name;
  };
  extern struct fe_status_name fe_status_name[8];
@@ -42,3 +63,6 @@
 +extern const char *dvb_v5_name[72];
 +extern const char *delivery_system_name[20];
  #endif
+-- 
+cgit v1.2.1
+
