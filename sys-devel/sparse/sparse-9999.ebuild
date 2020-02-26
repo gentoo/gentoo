@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit eutils multilib toolchain-funcs
+inherit eutils llvm multilib toolchain-funcs
 
 DESCRIPTION="C semantic parser"
 HOMEPAGE="https://sparse.wiki.kernel.org/index.php/Main_Page"
@@ -22,8 +22,10 @@ SLOT="0"
 IUSE="gtk llvm test xml"
 RESTRICT="!test? ( test )"
 
+LLVM_MAX_SLOT=9
+
 RDEPEND="gtk? ( x11-libs/gtk+:2 )
-	llvm? ( >=sys-devel/llvm-3.0 )
+	llvm? ( sys-devel/llvm:${LLVM_MAX_SLOT}= )
 	xml? ( dev-libs/libxml2 )"
 DEPEND="${RDEPEND}
 	gtk? ( virtual/pkgconfig )
