@@ -145,10 +145,9 @@ PATCHES=(
 	"${FILESDIR}/chromium-79-gcc-alignas.patch"
 	"${FILESDIR}/chromium-80-gcc-quiche.patch"
 	"${FILESDIR}/chromium-80-gcc-blink.patch"
-	"${FILESDIR}/chromium-81-gcc-constexpr.patch"
-	"${FILESDIR}/chromium-82-gcc-noexcept.patch"
-	"${FILESDIR}/chromium-82-gcc-has-feature.patch"
-	"${FILESDIR}/chromium-82-gcc-default.patch"
+	"${FILESDIR}/chromium-82-gcc-constexpr.patch"
+	"${FILESDIR}/chromium-82-gcc-private.patch"
+	"${FILESDIR}/chromium-82-include.patch"
 )
 
 pre_build_checks() {
