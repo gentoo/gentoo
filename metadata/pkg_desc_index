@@ -11924,7 +11924,7 @@ kde-apps/kolourpaint 19.08.3 19.12.2: Paint Program by KDE
 kde-apps/kompare 19.08.3 19.12.2: A program to view the differences between files
 kde-apps/konqueror 19.08.3-r1 19.12.2: Web browser and file manager based on KDE Frameworks
 kde-apps/konquest 19.08.3 19.12.2: Galactic Strategy KDE Game
-kde-apps/konsole 19.08.3 19.12.2 19.12.2-r1: KDE's terminal emulator
+kde-apps/konsole 19.08.3 19.12.2-r1: KDE's terminal emulator
 kde-apps/konsolekalendar 19.08.3 19.12.2: Command line interface to KDE calendars
 kde-apps/kontact 19.08.3 19.12.2: Container application to unify several major PIM applications within one
 kde-apps/kontactinterface 19.08.3 19.12.2: Library for embedding KParts in a Kontact component
@@ -11937,7 +11937,7 @@ kde-apps/kqtquickcharts 19.08.3 19.12.2: Qt Quick plugin for beautiful and inter
 kde-apps/krdc 19.08.3 19.12.2: Remote desktop connection (RDP and VNC) client
 kde-apps/kreversi 19.08.3 19.12.2: Board game by KDE
 kde-apps/krfb 19.08.3 19.12.2: VNC-compatible server to share Plasma desktops
-kde-apps/kross-interpreters 19.08.3 19.12.2 19.12.2-r1: Kross interpreter plugins for programming languages
+kde-apps/kross-interpreters 19.08.3 19.12.2-r1: Kross interpreter plugins for programming languages
 kde-apps/kruler 19.08.3 19.12.2: Screen ruler for Plasma
 kde-apps/kshisen 19.08.3 19.12.2: Solitaire-like game played using the standard set of Mahjong tiles
 kde-apps/ksirk 19.08.3 19.12.2: Port of the board game risk
@@ -15969,7 +15969,7 @@ sci-geosciences/harmonics-dwf-free 20131228: Tidal harmonics database for libtcd
 sci-geosciences/harmonics-dwf-free-noncomm 20111230-r1: Tidal harmonics database for libtcd
 sci-geosciences/josm 10966 99999: Java-based editor for the OpenStreetMap project
 sci-geosciences/laszip 3.4.1: Library for free and lossless compression of the LAS LiDAR format
-sci-geosciences/liblas 1.8.1-r2: C/C++ library for manipulating the LAS LiDAR format common in GIS
+sci-geosciences/liblas 1.8.1-r2 1.8.1-r3: C/C++ library for manipulating the LAS LiDAR format common in GIS
 sci-geosciences/libtcd 2.2.5_p2 2.2.7: Library for reading and writing Tide Constituent Database (TCD) files
 sci-geosciences/mapnik 3.0.9-r1 3.0.18: A Free Toolkit for developing mapping applications
 sci-geosciences/mapnik-world-boundaries 20090514: Mapnik World Boundaries
