@@ -535,13 +535,6 @@ dev-python/twisted-names
 dev-python/twisted-web
 dev-python/twisted-words
 
-# Ulrich Müller <ulm@gentoo.org> (2020-01-27)
-# Removal requested by proxied maintainer:
-# "Game already available in Valve Steam."
-# License issues, unclear if zipball is redistributable.
-# Masked for removal in 30 days. Bug #703496.
-games-action/cs2d
-
 # Michał Górny <mgorny@gentoo.org> (2020-01-27)
 # Old split Twisted and related packages with no reverse dependencies
 # and only Python 2 support.
