@@ -107,7 +107,6 @@ RDEPEND="
 			dev-qt/qtgui:5
 			dev-qt/qtopengl:5
 			dev-qt/qtsql:5
-			dev-qt/qtwebkit:5
 			dev-qt/qtx11extras:5
 			python? ( dev-python/PyQt5[\${PYTHON_MULTI_USEDEP}] )
 		)
@@ -263,6 +262,7 @@ src_configure() {
 			-DQT_INCLUDE_DIR="${EPREFIX}/usr/include/qt5"
 			-DQT_QMAKE_EXECUTABLE="$(qt5_get_bindir)/qmake"
 			-DVTK_Group_Qt:BOOL=ON
+			-DCMAKE_DISABLE_FIND_PACKAGE_Qt5WebKitWidgets=ON
 		)
 	fi
 
