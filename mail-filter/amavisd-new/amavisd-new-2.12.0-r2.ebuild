@@ -40,6 +40,11 @@ RDEPEND="${DEPEND}
 	dev-perl/File-LibMagic
 	dev-perl/IO-Socket-SSL
 	dev-perl/IO-stringy
+	>=dev-perl/Mail-DKIM-0.31
+	>=dev-perl/MailTools-1.58
+	>=dev-perl/MIME-tools-5.415
+	dev-perl/Net-LibIDN
+	>=dev-perl/Net-Server-0.91
 	dev-perl/Net-SSLeay
 	dev-perl/Unix-Syslog
 	net-mail/ripole
