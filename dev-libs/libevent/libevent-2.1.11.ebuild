@@ -41,6 +41,7 @@ multilib_src_configure() {
 	ECONF_SOURCE="${S}" \
 	econf \
 		--disable-samples \
+		--enable-malloc-replacement \
 		$(use_enable debug debug-mode) \
 		$(use_enable debug malloc-replacement) \
 		$(use_enable ssl openssl) \
