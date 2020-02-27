@@ -26,9 +26,9 @@ CDEPEND="
 	>=sys-libs/ncurses-5.2:0=
 	pam? ( sys-libs/pam )"
 RDEPEND="${CDEPEND}
+	acct-group/utmp
 	selinux? ( sec-policy/selinux-screen )"
 DEPEND="${CDEPEND}
-	acct-group/utmp
 	sys-apps/texinfo"
 
 PATCHES=(
@@ -51,8 +51,7 @@ src_prepare() {
 		-e "s:/local/etc/screenrc:${EPREFIX}/etc/screenrc:g" \
 		-e "s:/etc/utmp:${EPREFIX}/var/run/utmp:g" \
 		-e "s:/local/screens/S\\\-:${EPREFIX}/tmp/screen/S\\\-:g" \
-		doc/screen.1 \
-		|| die
+		doc/screen.1 || die
 
 	if [[ ${CHOST} == *-darwin* ]] || use elibc_musl ; then
 		sed -i -e '/^#define UTMPOK/s/define/undef/' acconfig.h || die
@@ -77,15 +76,17 @@ src_configure() {
 	use nethack || append-cppflags "-DNONETHACK"
 	use debug && append-cppflags "-DDEBUG"
 
-	econf \
-		--with-socket-dir="${EPREFIX}/tmp/screen" \
-		--with-sys-screenrc="${EPREFIX}/etc/screenrc" \
-		--with-pty-mode=0620 \
-		--with-pty-group=5 \
-		--enable-rxvt_osc \
-		--enable-telnet \
-		--enable-colors256 \
+	local myeconfargs=(
+		--with-socket-dir="${EPREFIX}/tmp/${PN}"
+		--with-sys-screenrc="${EPREFIX}/etc/screenrc"
+		--with-pty-mode=0620
+		--with-pty-group=5
+		--enable-rxvt_osc
+		--enable-telnet
+		--enable-colors256
 		$(use_enable pam)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_compile() {
@@ -102,25 +103,24 @@ src_install() {
 		doc/{FAQ,README.DOTSCREEN,fdpat.ps,window_to_display.ps}
 	)
 
-	emake DESTDIR="${D}" SCREEN=screen-${PV} install
+	emake DESTDIR="${D}" SCREEN="${P}" install
 
 	local tmpfiles_perms tmpfiles_group
 
-	if use multiuser || use prefix
-	then
-		fperms 4755 /usr/bin/screen-${PV}
+	if use multiuser || use prefix ; then
+		fperms 4755 /usr/bin/${P}
 		tmpfiles_perms="0755"
 		tmpfiles_group="root"
 	else
-		fowners root:utmp /usr/bin/screen-${PV}
-		fperms 2755 /usr/bin/screen-${PV}
+		fowners root:utmp /usr/bin/${P}
+		fperms 2755 /usr/bin/${P}
 		tmpfiles_perms="0775"
 		tmpfiles_group="utmp"
 	fi
 
 	newtmpfiles - screen.conf <<<"d /tmp/screen ${tmpfiles_perms} root ${tmpfiles_group}"
 
-	insinto /usr/share/screen
+	insinto /usr/share/${PN}
 	doins terminfo/{screencap,screeninfo.src}
 
 	insinto /etc
@@ -141,7 +141,7 @@ pkg_postinst() {
 
 	# Add /tmp/screen in case it doesn't exist yet. This should solve
 	# problems like bug #508634 where tmpfiles.d isn't in effect.
-	local rundir="${EROOT}/tmp/screen"
+	local rundir="${EROOT}/tmp/${PN}"
 	if [[ ! -d ${rundir} ]] ; then
 		if use multiuser || use prefix ; then
 			tmpfiles_group="root"
