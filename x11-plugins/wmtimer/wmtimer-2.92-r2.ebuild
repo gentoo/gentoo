@@ -24,10 +24,10 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${P}/${PN}
 
 src_prepare() {
-	sed -i -e "s:\$(CFLAGS)::" Makefile || die
-	sed -i -e "s:-g::g" Makefile || die
-	sed -i -e "s:-O2:\$(CFLAGS) ${CFLAGS}:"  Makefile || die
-	sed -i -e "s:-o wmtimer:\$(LDFLAGS) -o wmtimer:" Makefile || die
+	sed -i -e "s|\$(CFLAGS)||" Makefile || die
+	sed -i -e "s|-g||g" Makefile || die
+	sed -i -e "s|-O2|\$(CFLAGS) ${CFLAGS}|"  Makefile || die
+	sed -i -e "s|-o wmtimer|\$(LDFLAGS) -o wmtimer|" Makefile || die
 
 	cd "${WORKDIR}"/${P} || die
 	eapply "${FILESDIR}"/${P}-counter-fix.patch
