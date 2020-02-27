@@ -101,6 +101,20 @@ fi
 test_var PYTHON_PKG_DEP python3_7 '*dev-lang/python*:3.7'
 test_var PYTHON_SCRIPTDIR python3_7 /usr/lib/python-exec/python3.7
 
+test_var EPYTHON python3_8 python3.8
+test_var PYTHON python3_8 /usr/bin/python3.8
+if [[ -x /usr/bin/python3.8 ]]; then
+	abiflags=$(/usr/bin/python3.8 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
+	test_var PYTHON_SITEDIR python3_8 "/usr/lib/python3.8/site-packages"
+	test_var PYTHON_INCLUDEDIR python3_8 "/usr/include/python3.8${abiflags}"
+	test_var PYTHON_LIBPATH python3_8 "/usr/lib*/libpython3.8${abiflags}$(get_libname)"
+	test_var PYTHON_CONFIG python3_8 "/usr/bin/python3.8${abiflags}-config"
+	test_var PYTHON_CFLAGS python3_8 "*-I/usr/include/python3.8*"
+	test_var PYTHON_LIBS python3_8 "*-lpython3.8*"
+fi
+test_var PYTHON_PKG_DEP python3_8 '*dev-lang/python*:3.8'
+test_var PYTHON_SCRIPTDIR python3_8 /usr/lib/python-exec/python3.8
+
 test_var EPYTHON pypy3 pypy3
 test_var PYTHON pypy3 /usr/bin/pypy3
 if [[ -x /usr/bin/pypy3 ]]; then
