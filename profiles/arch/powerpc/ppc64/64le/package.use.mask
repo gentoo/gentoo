@@ -6,9 +6,9 @@
 dev-qt/qtdeclarative -vulkan
 dev-qt/qtgui -vulkan
 dev-qt/qtwayland -vulkan
-media-libs/mesa -vulkan -vulkan-overlay
-media-libs/libsdl2 -vulkan
-media-video/mpv -vulkan
+#media-libs/mesa -vulkan -vulkan-overlay
+#media-libs/libsdl2 -vulkan
+#media-video/mpv -vulkan
 media-video/vlc -libplacebo
 
 # Georgy Yakovlev <gyakovlev@gentoo.org> (2020-01-21)
