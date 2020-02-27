@@ -23,7 +23,7 @@ COMMON_DEP="
 	app-eselect/eselect-java
 	dev-java/ant-core:0"
 RDEPEND="${COMMON_DEP}
-	>=virtual/jre-8"
+	virtual/jre"
 DEPEND="${COMMON_DEP}
 	>=virtual/jdk-11
 	app-arch/unzip"
