@@ -4780,7 +4780,7 @@ dev-lang/spark 2018-r1 2019: Software development for high-reliability applicati
 dev-lang/spidermonkey 1.7.0-r3 1.8.5-r6 1.8.5-r7 1.8.5-r9 17.0.0-r5 38.3.0 45.0.2 52.9.1_pre1 52.9.1_pre1-r1 60.5.2_p0-r2 60.5.2_p0-r3: Stand-alone JavaScript C++ library
 dev-lang/squirrel 3.1: A interpreted language mainly used for games
 dev-lang/srf 1.0-r2: The Simple Recursive Functions programming language
-dev-lang/swi-prolog 8.0.3 8.1.17 8.1.18 8.1.19 8.1.20 8.1.21: versatile implementation of the Prolog programming language
+dev-lang/swi-prolog 8.0.3 8.1.17 8.1.18 8.1.19 8.1.20 8.1.21 8.1.22: versatile implementation of the Prolog programming language
 dev-lang/swig 3.0.12 4.0.0: Simplified Wrapper and Interface Generator
 dev-lang/tcc 0.9.27 9999: A very small C compiler for ix86/amd64
 dev-lang/tcl 8.5.17-r1 8.6.8 8.6.9: Tool Command Language
@@ -5033,7 +5033,7 @@ dev-libs/libinput 1.14.3 1.15.1 1.15.2: Library to handle input devices in Wayla
 dev-libs/libintl 0.19.7 0.19.8.1 0.20.1: the GNU international library (split out of gettext)
 dev-libs/libisoburn 1.5.0 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.0 1.5.2: Open-source library for reading, mastering and writing optical discs
-dev-libs/libite 2.0.0 2.1.0: A collection of useful BSD APIs
+dev-libs/libite 2.0.0 2.1.0 2.1.2: A collection of useful BSD APIs
 dev-libs/libixion 0.14.1 9999: General purpose formula parser & interpreter
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2: X.509 and CMS (PKCS#7) library
@@ -5119,7 +5119,7 @@ dev-libs/libtpms 0.7.0-r1: Library providing software emultion of a TPM
 dev-libs/libtreadstone 0.2.0: Hyperdex libtreadstone support library
 dev-libs/libtsm 3 4.0.1: Terminal Emulator State Machine
 dev-libs/libtubo 5.0.15: small and simple interprocess communication library
-dev-libs/libuev 2.1.0 2.1.2 2.2.0 2.3.0: A collection of useful BSD APIs
+dev-libs/libuev 2.2.0 2.3.0 2.3.1: A collection of useful BSD APIs
 dev-libs/libugpio 0.0.6: Lib for the use of linux kernel's sysfs gpio interface from C programs
 dev-libs/libunibreak 4.0 4.1 4.2: Line and word breaking library
 dev-libs/libuninum 2.7: A library for converting unicode strings to numbers and vice versa
@@ -7417,7 +7417,7 @@ dev-python/amqplib 1.0.2-r1: Python client for the Advanced Message Queuing Proc
 dev-python/aniso8601 1.3.0 3.0.0 3.0.2 4.0.1: A library for parsing ISO 8601 strings
 dev-python/ansi 0.1.3: ANSI cursor movement and graphics in Python
 dev-python/ansi2html 1.4.2 1.5.1 1.5.2: Convert text with ANSI color codes to HTML
-dev-python/ansicolor 0.2.6 9999: Produce ansi color output and colored highlighting and diffing
+dev-python/ansicolor 0.2.6 0.2.6-r1 9999: Produce ansi color output and colored highlighting and diffing
 dev-python/ansimarkup 1.4.0: XML-like markup for producing colored terminal text
 dev-python/anyjson 0.3.3-r1: Wraps the best available JSON implementation available in a common interface
 dev-python/anyqt 0.0.8-r1: PyQt4/PyQt5 compatibility layer
@@ -10701,7 +10701,7 @@ dev-util/unifdef 2.10 2.11 2.12: remove #ifdef'ed lines from a file while otherw
 dev-util/usb-robot 0.2.0: USB Reverse engineering tools
 dev-util/valgrind 3.12.0 3.13.0 3.13.0-r1 3.13.0-r2 3.13.0-r3 3.14.0 3.15.0 9999: An open-source memory debugger for GNU/Linux
 dev-util/vbindiff 3.0_beta5: Visual binary diff utility
-dev-util/vint 0.3.18 0.3.19: Lint tool for Vim script language
+dev-util/vint 0.3.18 0.3.19 0.3.21: Lint tool for Vim script language
 dev-util/visual-regexp 3.0-r1 3.1: Type the regexp and visualize it on a sample of your choice
 dev-util/visualvm 1.4.1: Integrates commandline JDK tools and profiling capabilities
 dev-util/vmtouch 1.3.0 1.3.1: Virtual Memory Toucher, portable file system cache diagnostics and control
@@ -15391,6 +15391,7 @@ net-vpn/openfortivpn 1.11.0: Fortinet compatible VPN client
 net-vpn/openvpn 2.4.6 2.4.6-r1 2.4.7-r1 9999: Robust and highly flexible tunneling application compatible with many OSes
 net-vpn/peervpn 0.044-r4: P2P mesh VPN
 net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
+net-vpn/protonvpn-cli 2.2.0: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.8.1 5.8.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
 net-vpn/tor 0.4.1.7 0.4.1.8 0.4.2.5 0.4.2.6 0.4.3.1_alpha: Anonymizing overlay network for TCP
