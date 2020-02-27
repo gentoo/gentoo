@@ -9498,7 +9498,7 @@ dev-ruby/activemodel-serializers-xml 1.0.2: XML serialization for your Active Mo
 dev-ruby/activerecord 4.2.11.1 5.2.4.1 6.0.2.1: Implements the ActiveRecord pattern (Fowler, PoEAA) for ORM
 dev-ruby/activestorage 5.2.4.1 6.0.2.1: Attach cloud and local files in Rails applications
 dev-ruby/activesupport 4.2.11.1 5.2.4.1 6.0.2.1: Utility Classes and Extension to the Standard Library
-dev-ruby/acts_as_list 0.9.19 1.0.0: Capabilities for sorting and reordering a number of objects in a list
+dev-ruby/acts_as_list 0.9.19 1.0.0 1.0.1: Capabilities for sorting and reordering a number of objects in a list
 dev-ruby/addressable 2.5.2 2.6.0 2.7.0: A replacement for the URI implementation that is part of Ruby's standard library
 dev-ruby/ae 1.8.2: Assertive Expressive is an assertions library designed for reuse
 dev-ruby/afm 0.2.2: A very simple library to read Adobe Font Metrics files
@@ -9805,7 +9805,7 @@ dev-ruby/multi_xml 0.6.0-r1: A generic swappable back-end for XML parsing
 dev-ruby/multipart-post 2.0.0-r1 2.1.0 2.1.1: Adds a streamy multipart form post capability to Net::HTTP
 dev-ruby/mustache 1.0.5 1.1.0 1.1.1: Mustache is a framework-agnostic way to render logic-free views
 dev-ruby/mustermann 1.0.3: A library implementing patterns that behave like regular expressions
-dev-ruby/mysql2 0.4.10-r1 0.4.10-r3 0.5.1-r1 0.5.2-r2 0.5.2-r3 0.5.3: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
+dev-ruby/mysql2 0.4.10-r3 0.5.2-r3 0.5.3: A modern, simple and very fast Mysql library for Ruby - binding to libmysql
 dev-ruby/nagios 0.0.4-r1: Nagios-rb is a compact framework for writing Nagios plugins
 dev-ruby/nagios_analyzer 0.0.5-r1: A simple parser for Nagios status files
 dev-ruby/nanotest 0.9.4.1: Extremely mynymal test framework
@@ -9847,7 +9847,7 @@ dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.1.0 2.1.1 2.2.0: Terminal painter
 dev-ruby/parallel 1.17.0 1.18.0 1.19.0 1.19.1: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
-dev-ruby/parser 2.6.5.0 2.7.0.0 2.7.0.1 2.7.0.2: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.6.5.0 2.7.0.0 2.7.0.1 2.7.0.2 2.7.0.3: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
 dev-ruby/pastel 0.7.2 0.7.3: Terminal strings styling with intuitive and clean API
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
