@@ -4278,7 +4278,7 @@ dev-java/dynalang 0.4-r1: Library of interoperable metaobject protocols for dyna
 dev-java/easymock 3.3.1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/easymock-classextension 3.2-r1: Mock Objects for interfaces in JUnit tests by generating them on the fly
 dev-java/ecj-gcj 4.4.2: Subset of Eclipse Compiler for Java compiled by gcj, serving as javac in gcj-jdk
-dev-java/eclipse-ecj 4.2.1 4.4.2-r1 4.5.1 4.10 4.13: Eclipse Compiler for Java
+dev-java/eclipse-ecj 4.2.1 4.4.2-r1 4.5.1 4.10 4.13-r1: Eclipse Compiler for Java
 dev-java/eclipsito 0_pre20130713 20180510: A small subset of Eclipse core libraries for modular applications
 dev-java/ecs 1.4.2-r2: Java library to generate markup language text such as HTML and XML
 dev-java/edtftpj 2.4.0: FTP client library written in Java
