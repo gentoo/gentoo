@@ -9,4 +9,4 @@ RDEPEND=>=dev-libs/glib-2 x11-libs/gtk+:2 x11-libs/libXpm x11-libs/libXext x11-l
 SLOT=0
 SRC_URI=https://github.com/bbidulock/wmtimer/releases/download/v2.92/wmtimer-2.92.tar.gz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=8ed980636bd629a5114dda401f772cdb
+_md5_=25de6d11f45c53dfb33a9cd718ed8145
