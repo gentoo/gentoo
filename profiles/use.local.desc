@@ -985,7 +985,6 @@ app-misc/recoll:webengine - Use dev-qt/qtwebengine for fancy result list display
 app-misc/rlwrap:debug - Enable debug
 app-misc/screen:multiuser - Enable multiuser support (by setting correct permissions)
 app-misc/screen:nethack - Express error messages in nethack style
-app-misc/screen:utmp - Include utmp support
 app-misc/screenfetch:X - Use the media-gfx/scrot package to take screenshots
 app-misc/skim:tmux - Install sk-tmux script to run skim in a tmux pane
 app-misc/skim:vim - Install vim plugin for skim
