@@ -3,13 +3,13 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
 inherit distutils-r1 virtualx
 
-DESCRIPTION="pytest plugin for PyQt4 or PyQt5 applications"
+DESCRIPTION="Pytest plugin for PyQt5 or PySide2 applications"
 HOMEPAGE="https://pypi.org/project/pytest-qt https://github.com/pytest-dev/pytest-qt"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
@@ -17,7 +17,7 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="dev-python/QtPy[gui,testlib,${PYTHON_USEDEP}]"
+DEPEND="dev-python/PyQt5[gui,testlib,widgets,${PYTHON_USEDEP}]"
 
 PATCHES=( "${FILESDIR}/${P}-skip-show-window-test.patch" )
 
