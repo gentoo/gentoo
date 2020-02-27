@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r1 virtualx
 
 DESCRIPTION="Abstraction layer for PyQt5/PySide"
 HOMEPAGE="https://github.com/spyder-ide/qtpy"
@@ -22,10 +22,24 @@ RDEPEND="
 	testlib? ( dev-python/PyQt5[${PYTHON_USEDEP},testlib] )
 	webengine? ( dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )"
 
+DEPEND="test? ( dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
+		dev-python/PyQt5[${PYTHON_USEDEP},designer,gui,help,location,opengl,multimedia,network,positioning,printsupport,webchannel,websockets,widgets,sql,svg,testlib,xmlpatterns]
+		dev-python/pytest-qt[${PYTHON_USEDEP}] )"
+
+distutils_enable_tests pytest
+
 src_prepare() {
 	default
+
+	# Fatal python error inside virtualx
+	rm qtpy/tests/test_patch_qcombobox.py || die
+	rm qtpy/tests/test_uic.py || die
 
 	sed -i -e "s/from PyQt4.Qt import/raise ImportError #/" qtpy/__init__.py || die
 	sed -i -e "s/from PySide import/raise ImportError #/" qtpy/__init__.py || die
 	sed -i -e "s/from PySide2 import/raise ImportError #/" qtpy/__init__.py || die
+}
+
+python_test() {
+	virtx pytest -vv
 }
