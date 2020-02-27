@@ -42,7 +42,7 @@ src_prepare() {
 
 	sed \
 		-e "s:ar cr:$(tc-getAR) cr:g" \
-		-e "s:-O:${CFLAGS}:g" \
+		-e "s|-O|${CFLAGS}|g" \
 		-i Makefile.in || die
 
 	cd ..
