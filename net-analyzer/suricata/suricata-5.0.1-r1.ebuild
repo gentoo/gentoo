@@ -84,7 +84,6 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		"--localstatedir=/var" \
-		"--runstatedir=/run" \
 		"--enable-non-bundled-htp" \
 		"--enable-gccmarch-native=no" \
 		"--enable-python" \
