@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,13 +23,15 @@ COMMON_DEP="
 	app-eselect/eselect-java
 	dev-java/ant-core:0"
 RDEPEND="${COMMON_DEP}
-	>=virtual/jre-11"
+	>=virtual/jre-8"
 DEPEND="${COMMON_DEP}
 	>=virtual/jdk-11
 	app-arch/unzip"
 PDEPEND="
 	ant? ( ~dev-java/ant-eclipse-ecj-${PV} )"
 
+JAVA_PKG_WANT_SOURCE="1.8"
+JAVA_PKG_WANT_TARGET="1.8"
 JAVA_JAR_FILENAME="${MY_PN}.jar"
 JAVA_GENTOO_CLASSPATH="ant-core"
 
