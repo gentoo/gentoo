@@ -16318,7 +16318,7 @@ sci-mathematics/num-utils 0.5-r1: A set of programs for dealing with numbers fro
 sci-mathematics/octave 4.2.2 4.4.0 4.4.1 5.1.0: High-level interactive language for numerical computations
 sci-mathematics/octave-epstk 2.4: Graphical output functions for Matlab and Octave
 sci-mathematics/otter 3.3-r3: An Automated Deduction System
-sci-mathematics/pari 2.9.4-r1 2.11.2: Computer-aided number theory C library and tools
+sci-mathematics/pari 2.11.2: Computer-aided number theory C library and tools
 sci-mathematics/pari-data 20191216: Additional dataset packages for PARI
 sci-mathematics/petsc 3.11.3 3.12.1: Portable, Extensible Toolkit for Scientific Computation
 sci-mathematics/planarity 3.0.0.5: The edge addition planarity suite of graph algorithms
