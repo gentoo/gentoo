@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
+# Depends on dev-java/eclipse-ecj:4.13 which
+# depends on >=virtual/{jdk,jre}-11 which is masked
+www-servers/tomcat:9
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-26)
 # Effectively unmaintained.  Last upstream commit in 2016.  Multiple
 # unresolved bugs.  Python 2 only.  Repology (https://repology.org/)
@@ -687,10 +692,6 @@ dev-db/clickhouse
 # Lars Wendler <polynomial-c@gentoo.org> (2019-10-16)
 # Depends on apache-2.2
 dev-libs/OpenSRF
-
-# Miroslav Šulc <fordfrog@gentoo.org> (2019-10-16)
-# Depends on >=virtual/{jdk,jre}-11 which is masked
-=www-servers/tomcat-9.0.27
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-10-16)
 # Depends on >=virtual/{jdk,jre}-11 which is masked
