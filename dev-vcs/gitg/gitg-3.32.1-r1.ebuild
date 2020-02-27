@@ -29,7 +29,7 @@ RDEPEND="
 	dev-libs/libgit2:=[threads]
 
 	>=dev-libs/libgit2-glib-0.27[ssh]
-	<dev-libs/libgit2-glib-0.29
+	<dev-libs/libgit2-glib-1
 
 	>=dev-libs/libpeas-1.5.0[gtk]
 	>=dev-libs/libxml2-2.9.0:2
