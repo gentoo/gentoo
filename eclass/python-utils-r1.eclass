@@ -341,9 +341,13 @@ _python_export() {
 				local val
 
 				case "${impl}" in
-					python*)
-						# python-2.7, python-3.2, etc.
+					python2*|python3.6|python3.7*)
+						# python* up to 3.7
 						val=$($(tc-getPKG_CONFIG) --libs ${impl/n/n-}) || die
+						;;
+					python*)
+						# python3.8+
+						val=$($(tc-getPKG_CONFIG) --libs ${impl/n/n-}-embed) || die
 						;;
 					*)
 						die "${impl}: obtaining ${var} not supported"
