@@ -1,14 +1,12 @@
 [Unit]
-Description=Zabbix agent daemon
-After=network.target
+Description=Zabbix agent
+Documentation=https://zabbix.com/manuals
+After=network.target network-online.target
 
 [Service]
-Type=forking
 User=zabbix
 Group=zabbix
-ExecStart=/usr/sbin/zabbix_agentd -c /etc/zabbix/zabbix_agentd.conf
-PIDFile=/run/zabbix/zabbix_agentd.pid
+ExecStart=/usr/sbin/zabbix_agentd --foreground --config /etc/zabbix/zabbix_agentd.conf
 
 [Install]
 WantedBy=multi-user.target
-
