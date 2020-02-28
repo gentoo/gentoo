@@ -271,17 +271,6 @@ _python_export() {
 				export PYTHON=${EPREFIX}/usr/bin/${impl}
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
-			PYTHON_INCLUDEDIR)
-				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				PYTHON_INCLUDEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())') || die
-				export PYTHON_INCLUDEDIR
-				debug-print "${FUNCNAME}: PYTHON_INCLUDEDIR = ${PYTHON_INCLUDEDIR}"
-
-				# Jython gives a non-existing directory
-				if [[ ! -d ${PYTHON_INCLUDEDIR} ]]; then
-					die "${impl} does not install any header files!"
-				fi
-				;;
 			PYTHON_LIBPATH)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
 				PYTHON_LIBPATH=$("${PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")') || die
@@ -395,15 +384,21 @@ python_get_sitedir() {
 }
 
 # @FUNCTION: python_get_includedir
-# @USAGE: [<impl>]
 # @DESCRIPTION:
-# Obtain and print the include path for the given implementation. If no
-# implementation is provided, ${EPYTHON} will be used.
+# Obtain and print the include path for ${EPYTHON}.
 python_get_includedir() {
 	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${EPYTHON} ]] || die "EPYTHON must be set before calling ${FUNCNAME}"
 
-	_python_export "${@}" PYTHON_INCLUDEDIR
-	echo "${PYTHON_INCLUDEDIR}"
+	local out=$("${EPYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_inc())') || die
+	debug-print "${FUNCNAME} -> ${out}"
+
+	# Jython gives a non-existing directory
+	if [[ ! -d ${out} ]]; then
+		die "${EPYTHON} does not install any header files!"
+	fi
+
+	echo "${out}"
 }
 
 # @FUNCTION: python_get_library_path
@@ -809,8 +804,7 @@ python_doheader() {
 
 	[[ ${EPYTHON} ]] || die 'No Python implementation set (EPYTHON is null).'
 
-	local d PYTHON_INCLUDEDIR=${PYTHON_INCLUDEDIR}
-	[[ ${PYTHON_INCLUDEDIR} ]] || _python_export PYTHON_INCLUDEDIR
+	local d PYTHON_INCLUDEDIR=$(python_get_includedir)
 
 	d=${PYTHON_INCLUDEDIR#${EPREFIX}}
 
