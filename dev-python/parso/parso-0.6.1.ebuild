@@ -19,3 +19,11 @@ RESTRICT="!test? ( test )"
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
+
+src_prepare() {
+	# tests rely on specific exception messages and fail occasionally
+	# upstream suggested skipping them
+	rm test/test_python_errors.py || die
+
+	distutils-r1_src_prepare
+}
