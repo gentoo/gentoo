@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# @ECLASS: python-r2.eclass
+# @ECLASS: python-multi-r2.eclass
 # @MAINTAINER:
 # Python team <python@gentoo.org>
 # @AUTHOR:
@@ -15,15 +15,15 @@
 #
 # This eclass sets correct IUSE. Modification of REQUIRED_USE has to
 # be done by the author of the ebuild (but PYTHON_REQUIRED_USE is
-# provided for convenience, see below). python-r2 exports PYTHON_DEPS
-# and PYTHON_USEDEP so you can create correct dependencies for your
-# package easily. It also provides methods to easily run a command for
-# each enabled Python implementation and duplicate the sources for them.
+# provided for convenience, see below). python-multi-r2 exports
+# PYTHON_DEPS and PYTHON_USEDEP so you can create correct dependencies
+# for your package easily. It also provides methods to easily run
+# a command for each enabled Python implementation and duplicate
+# the sources for them.
 #
-# Please note that python-r2 will always inherit python-utils-r2 as
-# well. Thus, all the functions defined there can be used
-# in the packages using python-r2, and there is no need ever to inherit
-# both.
+# Please note that python-multi-r2 will always inherit python-utils-r2.
+# Thus, all the functions defined there can be used in the packages
+# using python-multi-r2, and there is no need ever to inherit both.
 #
 # For more information, please see the Python Guide:
 # https://dev.gentoo.org/~mgorny/python-guide/
@@ -40,12 +40,12 @@ case "${EAPI:-0}" in
 		;;
 esac
 
-if [[ ! ${_PYTHON_R2} ]]; then
+if [[ ! ${_PYTHON_MULTI_R2} ]]; then
 
 if [[ ${_PYTHON_SINGLE_R2} ]]; then
-	die 'python-r2.eclass can not be used with python-single-r2.eclass.'
+	die 'python-multi-r2.eclass can not be used with python-single-r2.eclass.'
 elif [[ ${_PYTHON_ANY_R2} ]]; then
-	die 'python-r2.eclass can not be used with python-any-r2.eclass.'
+	die 'python-multi-r2.eclass can not be used with python-any-r2.eclass.'
 fi
 
 [[ ${EAPI} == [45] ]] && inherit eutils
@@ -134,9 +134,8 @@ fi
 # depend on another Python package being built for the same Python
 # implementations.
 #
-# The generate USE-flag list is compatible with packages using python-r2
-# and python-distutils-ng eclasses. It must not be used on packages
-# using python.eclass.
+# The generate USE-flag list is compatible with packages using
+# python-multi-r2.
 #
 # Example use:
 # @CODE
@@ -233,7 +232,7 @@ _python_set_globals() {
 _python_set_globals
 unset -f _python_set_globals
 
-if [[ ! ${_PYTHON_R2} ]]; then
+if [[ ! ${_PYTHON_MULTI_R2} ]]; then
 
 # @FUNCTION: _python_validate_useflags
 # @INTERNAL
@@ -783,5 +782,5 @@ python_replicate_script() {
 	done
 }
 
-_PYTHON_R2=1
+_PYTHON_MULTI_R2=1
 fi

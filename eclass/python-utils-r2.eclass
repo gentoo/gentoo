@@ -196,8 +196,8 @@ _python_impl_matches() {
 #
 # This variable is set automatically in the following contexts:
 #
-# python-r2: Set in functions called by python_foreach_impl() or after
-# calling python_setup().
+# python-multi-r2: Set in functions called by python_foreach_impl()
+# or after calling python_setup().
 #
 # python-single-r2: Set after calling python-single-r2_pkg_setup().
 #
@@ -215,8 +215,8 @@ _python_impl_matches() {
 #
 # This variable is set automatically in the following contexts:
 #
-# python-r2: Set in functions called by python_foreach_impl() or after
-# calling python_setup().
+# python-multi-r2: Set in functions called by python_foreach_impl()
+# or after calling python_setup().
 #
 # python-single-r2: Set after calling python-single-r2_pkg_setup().
 #

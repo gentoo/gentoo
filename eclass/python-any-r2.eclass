@@ -43,8 +43,8 @@ esac
 
 if [[ ! ${_PYTHON_ANY_R2} ]]; then
 
-if [[ ${_PYTHON_R2} ]]; then
-	die 'python-any-r2.eclass can not be used with python-r2.eclass.'
+if [[ ${_PYTHON_MULTI_R2} ]]; then
+	die 'python-any-r2.eclass can not be used with python-multi-r2.eclass.'
 elif [[ ${_PYTHON_SINGLE_R2} ]]; then
 	die 'python-any-r2.eclass can not be used with python-single-r2.eclass.'
 fi
@@ -127,9 +127,8 @@ EXPORT_FUNCTIONS pkg_setup
 # An eclass-generated USE-dependency string for the currently tested
 # implementation. It is set locally for python_check_deps() call.
 #
-# The generate USE-flag list is compatible with packages using python-r2,
-# python-single-r2 and python-distutils-ng eclasses. It must not be used
-# on packages using python.eclass.
+# The generate USE-flag list is compatible with packages using
+# python-multi-r2 eclass.
 #
 # Example use:
 # @CODE

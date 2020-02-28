@@ -14,7 +14,7 @@
 # the src_* phases. Each of the phases runs two pseudo-phases:
 # python_..._all() (e.g. python_prepare_all()) once in ${S}, then
 # python_...() (e.g. python_prepare()) for each implementation
-# (see: python_foreach_impl() in python-r2).
+# (see: python_foreach_impl() in python-multi-r2).
 #
 # In distutils-r2_src_prepare(), the 'all' function is run before
 # per-implementation ones (because it creates the implementations),
@@ -35,9 +35,9 @@
 # Please note that distutils-r2 sets RDEPEND and DEPEND unconditionally
 # for you.
 #
-# Also, please note that distutils-r2 will always inherit python-r2
-# as well. Thus, all the variables defined and documented there are
-# relevant to the packages using distutils-r2.
+# Also, please note that distutils-r2 will always inherit
+# python-multi-r2 or python-single-r2.  Thus, all the variables defined
+# and documented there are relevant to the packages using distutils-r2.
 #
 # For more information, please see the Python Guide:
 # https://dev.gentoo.org/~mgorny/python-guide/
@@ -69,8 +69,8 @@ esac
 # @DEFAULT_UNSET
 # @DESCRIPTION:
 # If set to a non-null value, the ebuild will support setting a single
-# Python implementation only. It will effectively replace the python-r2
-# eclass inherit with python-single-r2.
+# Python implementation only. It will effectively replace
+# the python-multi-r2 eclass inherit with python-single-r2.
 #
 # Note that inheriting python-single-r2 will cause pkg_setup()
 # to be exported. It must be run in order for the eclass functions
@@ -101,7 +101,7 @@ if [[ ! ${_DISTUTILS_R2} ]]; then
 inherit multiprocessing toolchain-funcs
 
 if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-	inherit python-r2
+	inherit python-multi-r2
 else
 	inherit python-single-r2
 fi

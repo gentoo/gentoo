@@ -20,12 +20,12 @@
 #
 # The eclass exports PYTHON_SINGLE_USEDEP that is suitable for depending
 # on other packages using the eclass.  Dependencies on packages using
-# python-r2 should be created via python_gen_cond_dep() function,
+# python-multi-r2 should be created via python_gen_cond_dep() function,
 # using PYTHON_USEDEP placeholder.
 #
 # Please note that packages support multiple Python implementations
-# (using python-r2 eclass) can not depend on packages not supporting
-# them (using this eclass).
+# (using python-multi-r2 eclass) can not depend on packages
+# not supporting them (using this eclass).
 #
 # Please note that python-single-r2 will always inherit python-utils-r2
 # as well. Thus, all the functions defined there can be used
@@ -49,8 +49,8 @@ esac
 
 if [[ ! ${_PYTHON_SINGLE_R2} ]]; then
 
-if [[ ${_PYTHON_R2} ]]; then
-	die 'python-single-r2.eclass can not be used with python-r2.eclass.'
+if [[ ${_PYTHON_MULTI_R2} ]]; then
+	die 'python-single-r2.eclass can not be used with python-multi-r2.eclass.'
 elif [[ ${_PYTHON_ANY_R2} ]]; then
 	die 'python-single-r2.eclass can not be used with python-any-r2.eclass.'
 fi
@@ -144,7 +144,7 @@ EXPORT_FUNCTIONS pkg_setup
 # depend on another python-single-r2 package being built for the same
 # Python implementations.
 #
-# If you need to depend on a multi-impl (python-r2) package, use
+# If you need to depend on a multi-impl (python-multi-r2) package, use
 # python_gen_cond_dep with PYTHON_USEDEP placeholder instead.
 #
 # Example use:
@@ -160,8 +160,8 @@ EXPORT_FUNCTIONS pkg_setup
 # @ECLASS-VARIABLE: PYTHON_USEDEP
 # @DESCRIPTION:
 # This is a placeholder variable supported by python_gen_cond_dep,
-# in order to depend on python-r2 packages built for the same Python
-# implementations.
+# in order to depend on python-multi-r2 packages built for the same
+# Python implementations.
 #
 # Example use:
 # @CODE
