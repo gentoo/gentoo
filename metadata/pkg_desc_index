@@ -15803,7 +15803,7 @@ sci-chemistry/freeon 1.0.8-r1 1.0.10: An experimental suite of programs for line
 sci-chemistry/gelemental 1.2.0-r1 2.0.0: Periodic table viewer with detailed information on the chemical elements
 sci-chemistry/gmxapi 0.0.7.1: Gromacs API bindings
 sci-chemistry/gperiodic 2.0.10-r2 3.0.1: Periodic table application for Linux
-sci-chemistry/gromacs 2018.8 2018.9999 2019.5-r1 2019.9999 2020-r1 2020.9999 9999: The ultimate molecular dynamics simulation package
+sci-chemistry/gromacs 2018.8 2018.9999 2019.5-r1 2019.6 2019.9999 2020-r1 2020.9999 9999: The ultimate molecular dynamics simulation package
 sci-chemistry/hollow 1.2-r1: Production of surface images of proteins
 sci-chemistry/ksdssp 040728-r1: An open source implementation of sci-chemistry/dssp
 sci-chemistry/mars 1.2: Robust automatic backbone assignment of proteins
@@ -16315,7 +16315,7 @@ sci-mathematics/topcom 0.17.7: Computing Triangulations Of Point Configurations 
 sci-mathematics/twelf 1.7.1 1.7.1-r1: Implementation of the logical framework LF
 sci-mathematics/unuran 1.8.1: Universal Non-Uniform Random number generator
 sci-mathematics/why3-for-spark 2018 2019 2019-r1: Platform for deductive program verification
-sci-mathematics/wxmaxima 18.11.4 20.01.1 20.01.3: Graphical frontend to Maxima, using the wxWidgets toolkit
+sci-mathematics/wxmaxima 18.11.4 20.01.1 20.01.3 20.02.4: Graphical frontend to Maxima, using the wxWidgets toolkit
 sci-mathematics/yacas 1.7.0-r1: General purpose computer algebra system
 sci-mathematics/yafu 1.34.3 9999: Yet another factoring utility
 sci-mathematics/z3 4.8.6: An efficient theorem prover
