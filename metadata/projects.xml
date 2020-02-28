@@ -3699,6 +3699,10 @@
       <email>soap@gentoo.org</email>
       <name>David Seifert</name>
     </member>
+    <member>
+      <email>zlogene@gentoo.org</email>
+      <name>Mikle Kolyada</name>
+    </member>
   </project>
   <project>
     <email>udev-bugs@gentoo.org</email>
