@@ -2742,7 +2742,7 @@ app-text/teseq 1.1.1: A tool for analyzing files that contain control characters
 app-text/tessdata_best 4.0.0: Most accurate trained models for app-text/tesseract
 app-text/tessdata_fast 4.0.0: Fast integer versions of trained models for app-text/tesseract
 app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible with the legacy engine
-app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, orginally developed at HP, now open source.
+app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2019-r1: A complete TeX distribution
 app-text/texlive-core 2019-r4 2019-r8: A complete TeX distribution
