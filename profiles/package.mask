@@ -558,16 +558,6 @@ www-plugins/passff
 # and have no reverse dependencies.
 # Removal in 30 days.  Bug #706360.
 
-# David Seifert <soap@gentoo.org> (2020-01-25)
-# Upstream is mostly unresponsive and doesn't have the resources to
-# fix their code. Lots of bugs in the form of big endian issues, buffer
-# overflows, heap overflows, memory leaks and missing sanity checks.
-# Includes libbinio, which is only used by adplug and in a similarly poor
-# state. Multiple open CVEs, removal in 30 days. Bug #667170, #706346.
-media-libs/adplug
-dev-cpp/libbinio
-media-sound/adplay
-
 # Victor Payno <vpayno+gentoo@gmail.com> (2020-01-23)
 # Requires slotted lua.
 =dev-lang/lua-5.1.5-r103
