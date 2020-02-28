@@ -18004,7 +18004,7 @@ www-client/opera-beta 67.0.3575.13 67.0.3575.23: A fast and secure web browser
 www-client/opera-developer 68.0.3590.0 68.0.3602.0: A fast and secure web browser
 www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera (12.x) UI using Qt5
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
-www-client/qutebrowser 1.8.1 1.8.3 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
+www-client/qutebrowser 1.8.3 1.10.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
 www-client/seamonkey 2.49.5-r1 2.49.9.1_p0: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
