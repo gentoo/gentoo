@@ -271,16 +271,6 @@ _python_export() {
 				export PYTHON=${EPREFIX}/usr/bin/${impl}
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
-			PYTHON_LIBPATH)
-				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				PYTHON_LIBPATH=$("${PYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")') || die
-				export PYTHON_LIBPATH
-				debug-print "${FUNCNAME}: PYTHON_LIBPATH = ${PYTHON_LIBPATH}"
-
-				if [[ ! ${PYTHON_LIBPATH} ]]; then
-					die "${impl} lacks a (usable) dynamic library"
-				fi
-				;;
 			PYTHON_CFLAGS)
 				local val
 
@@ -402,18 +392,23 @@ python_get_includedir() {
 }
 
 # @FUNCTION: python_get_library_path
-# @USAGE: [<impl>]
 # @DESCRIPTION:
-# Obtain and print the Python library path for the given implementation.
-# If no implementation is provided, ${EPYTHON} will be used.
+# Obtain and print the Python library path for ${EPYTHON}.
 #
 # Please note that this function can be used with CPython only. Use
 # in another implementation will result in a fatal failure.
 python_get_library_path() {
 	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${EPYTHON} ]] || die "EPYTHON must be set before calling ${FUNCNAME}"
 
-	_python_export "${@}" PYTHON_LIBPATH
-	echo "${PYTHON_LIBPATH}"
+	local out=$("${EPYTHON}" -c 'import os.path, sysconfig; print(os.path.join(sysconfig.get_config_var("LIBDIR"), sysconfig.get_config_var("LDLIBRARY")) if sysconfig.get_config_var("LDLIBRARY") else "")') || die
+	debug-print "${FUNCNAME} -> ${out}"
+
+	if [[ ! ${out} ]]; then
+		die "${EPYTHON} lacks a (usable) dynamic library"
+	fi
+
+	echo "${out}"
 }
 
 # @FUNCTION: python_get_CFLAGS
