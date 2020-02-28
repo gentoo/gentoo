@@ -201,26 +201,6 @@ unset -f _distutils_set_globals
 # HTML_DOCS=( doc/html/. )
 # @CODE
 
-# @ECLASS-VARIABLE: EXAMPLES
-# @DEFAULT_UNSET
-# @DESCRIPTION:
-# OBSOLETE: this variable is deprecated and banned in EAPI 6
-#
-# An array containing examples installed into 'examples' doc
-# subdirectory. The files and directories listed there must exist
-# in the directory from which distutils-r2_python_install_all() is run
-# (${S} by default).
-#
-# The 'examples' subdirectory will be marked not to be compressed
-# automatically.
-#
-# If unset, no examples will be installed.
-#
-# Example:
-# @CODE
-# EXAMPLES=( examples/. demos/. )
-# @CODE
-
 # @ECLASS-VARIABLE: DISTUTILS_IN_SOURCE_BUILD
 # @DEFAULT_UNSET
 # @DESCRIPTION:
@@ -911,13 +891,7 @@ distutils-r2_python_install_all() {
 	einstalldocs
 
 	if declare -p EXAMPLES &>/dev/null; then
-		[[ ${EAPI} != [45] ]] && die "EXAMPLES are banned in EAPI ${EAPI}"
-
-		(
-			docinto examples
-			dodoc -r "${EXAMPLES[@]}"
-		)
-		docompress -x "/usr/share/doc/${PF}/examples"
+		die "EXAMPLES are no longer supported in distutils-r2"
 	fi
 }
 
