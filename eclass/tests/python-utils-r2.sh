@@ -19,6 +19,19 @@ test_var() {
 	tend ${?}
 }
 
+test_get() {
+	local getter=python_get_${1}
+	local impl=${2}
+	local expect=${3}
+
+	tbegin "${getter} for ${impl}"
+
+	local val=$(EPYTHON=${impl} ${getter})
+	[[ ${val} == ${expect} ]] || eerror "(${impl}: ${getter}: ${val} != ${expect}"
+
+	tend ${?}
+}
+
 test_is() {
 	local func=${1}
 	local expect=${2}
@@ -63,7 +76,7 @@ inherit python-utils-r2
 test_var EPYTHON python2_7 python2.7
 test_var PYTHON python2_7 /usr/bin/python2.7
 if [[ -x /usr/bin/python2.7 ]]; then
-	test_var PYTHON_SITEDIR python2_7 "/usr/lib*/python2.7/site-packages"
+	test_get sitedir python2.7 "/usr/lib*/python2.7/site-packages"
 	test_var PYTHON_INCLUDEDIR python2_7 /usr/include/python2.7
 	test_var PYTHON_LIBPATH python2_7 "/usr/lib*/libpython2.7$(get_libname)"
 	test_var PYTHON_CONFIG python2_7 /usr/bin/python2.7-config
@@ -77,7 +90,7 @@ test_var EPYTHON python3_6 python3.6
 test_var PYTHON python3_6 /usr/bin/python3.6
 if [[ -x /usr/bin/python3.6 ]]; then
 	abiflags=$(/usr/bin/python3.6 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
-	test_var PYTHON_SITEDIR python3_6 "/usr/lib*/python3.6/site-packages"
+	test_get sitedir python3.6 "/usr/lib*/python3.6/site-packages"
 	test_var PYTHON_INCLUDEDIR python3_6 "/usr/include/python3.6${abiflags}"
 	test_var PYTHON_LIBPATH python3_6 "/usr/lib*/libpython3.6${abiflags}$(get_libname)"
 	test_var PYTHON_CONFIG python3_6 "/usr/bin/python3.6${abiflags}-config"
@@ -91,7 +104,7 @@ test_var EPYTHON python3_7 python3.7
 test_var PYTHON python3_7 /usr/bin/python3.7
 if [[ -x /usr/bin/python3.7 ]]; then
 	abiflags=$(/usr/bin/python3.7 -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS"))')
-	test_var PYTHON_SITEDIR python3_7 "/usr/lib/python3.7/site-packages"
+	test_get sitedir python3.7 "/usr/lib/python3.7/site-packages"
 	test_var PYTHON_INCLUDEDIR python3_7 "/usr/include/python3.7${abiflags}"
 	test_var PYTHON_LIBPATH python3_7 "/usr/lib*/libpython3.7${abiflags}$(get_libname)"
 	test_var PYTHON_CONFIG python3_7 "/usr/bin/python3.7${abiflags}-config"
@@ -104,7 +117,7 @@ test_var PYTHON_SCRIPTDIR python3_7 /usr/lib/python-exec/python3.7
 test_var EPYTHON jython2_7 jython2.7
 test_var PYTHON jython2_7 /usr/bin/jython2.7
 if [[ -x /usr/bin/jython2.7 ]]; then
-	test_var PYTHON_SITEDIR jython2_7 /usr/share/jython-2.7/Lib/site-packages
+	test_get sitedir jython2.7 /usr/share/jython-2.7/Lib/site-packages
 fi
 test_var PYTHON_PKG_DEP jython2_7 '*dev-java/jython*:2.7'
 test_var PYTHON_SCRIPTDIR jython2_7 /usr/lib/python-exec/jython2.7
@@ -112,7 +125,7 @@ test_var PYTHON_SCRIPTDIR jython2_7 /usr/lib/python-exec/jython2.7
 test_var EPYTHON pypy pypy
 test_var PYTHON pypy /usr/bin/pypy
 if [[ -x /usr/bin/pypy ]]; then
-	test_var PYTHON_SITEDIR pypy "/usr/lib*/pypy2.7/site-packages"
+	test_get sitedir pypy "/usr/lib*/pypy2.7/site-packages"
 	test_var PYTHON_INCLUDEDIR pypy "/usr/lib*/pypy2.7/include"
 fi
 test_var PYTHON_PKG_DEP pypy '*dev-python/pypy*:0='
@@ -121,7 +134,7 @@ test_var PYTHON_SCRIPTDIR pypy /usr/lib/python-exec/pypy
 test_var EPYTHON pypy3 pypy3
 test_var PYTHON pypy3 /usr/bin/pypy3
 if [[ -x /usr/bin/pypy3 ]]; then
-	test_var PYTHON_SITEDIR pypy3 "/usr/lib*/pypy3.?/site-packages"
+	test_get sitedir pypy3 "/usr/lib*/pypy3.?/site-packages"
 	test_var PYTHON_INCLUDEDIR pypy3 "/usr/lib*/pypy3.?/include"
 fi
 test_var PYTHON_PKG_DEP pypy3 '*dev-python/pypy3*:0='

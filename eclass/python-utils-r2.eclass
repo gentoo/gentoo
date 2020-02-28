@@ -238,10 +238,6 @@ _python_impl_matches() {
 # implementation (either as PYTHON_TARGETS value, e.g. python2_7,
 # or an EPYTHON one, e.g. python2.7). If no implementation passed,
 # the current one will be obtained from ${EPYTHON}.
-#
-# The variables which can be exported are: PYTHON, EPYTHON,
-# PYTHON_SITEDIR. They are described more completely in the eclass
-# variable documentation.
 _python_export() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -274,15 +270,6 @@ _python_export() {
 			PYTHON)
 				export PYTHON=${EPREFIX}/usr/bin/${impl}
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
-				;;
-			PYTHON_SITEDIR)
-				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-				# sysconfig can't be used because:
-				# 1) pypy doesn't give site-packages but stdlib
-				# 2) jython gives paths with wrong case
-				PYTHON_SITEDIR=$("${PYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())') || die
-				export PYTHON_SITEDIR
-				debug-print "${FUNCNAME}: PYTHON_SITEDIR = ${PYTHON_SITEDIR}"
 				;;
 			PYTHON_INCLUDEDIR)
 				[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
@@ -393,16 +380,18 @@ _python_export() {
 }
 
 # @FUNCTION: python_get_sitedir
-# @USAGE: [<impl>]
 # @DESCRIPTION:
-# Obtain and print the 'site-packages' path for the given
-# implementation. If no implementation is provided, ${EPYTHON} will
-# be used.
+# Obtain and print the 'site-packages' path for ${EPYTHON}.
 python_get_sitedir() {
 	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${EPYTHON} ]] || die "EPYTHON must be set before calling ${FUNCNAME}"
 
-	_python_export "${@}" PYTHON_SITEDIR
-	echo "${PYTHON_SITEDIR}"
+	# sysconfig can't be used because:
+	# 1) pypy doesn't give site-packages but stdlib
+	# 2) jython gives paths with wrong case
+	local out=$("${EPYTHON}" -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())') || die
+	debug-print "${FUNCNAME} -> ${out}"
+	echo "${out}"
 }
 
 # @FUNCTION: python_get_includedir
@@ -752,7 +741,7 @@ python_newscript() {
 # @CODE
 # src_install() {
 #   python_moduleinto bar
-#   # installs ${PYTHON_SITEDIR}/bar/baz.py
+#   # installs $(python_get_sitedir)/bar/baz.py
 #   python_foreach_impl python_domodule baz.py
 # }
 # @CODE
@@ -788,8 +777,7 @@ python_domodule() {
 		d=${python_moduleroot}
 	else
 		# relative to site-packages
-		local PYTHON_SITEDIR=${PYTHON_SITEDIR}
-		[[ ${PYTHON_SITEDIR} ]] || _python_export PYTHON_SITEDIR
+		local PYTHON_SITEDIR=$(python_get_sitedir)
 
 		d=${PYTHON_SITEDIR#${EPREFIX}}/${python_moduleroot//.//}
 	fi
