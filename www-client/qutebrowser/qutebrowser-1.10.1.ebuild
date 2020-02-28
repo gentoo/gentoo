@@ -4,6 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
+DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 inherit desktop distutils-r1 eutils xdg-utils
 
