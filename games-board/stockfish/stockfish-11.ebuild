@@ -8,7 +8,7 @@ inherit toolchain-funcs
 DESCRIPTION="Free UCI chess engine, claimed to be the strongest in the world"
 HOMEPAGE="https://stockfishchess.org/"
 
-SRC_URI="https://github.com/official-stockfish/Stockfish/archive/sf_${PV}.zip -> ${P}.zip"
+SRC_URI="https://github.com/official-stockfish/Stockfish/archive/sf_${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
