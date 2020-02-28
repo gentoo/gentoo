@@ -10,7 +10,7 @@
 		<name>Openstack</name>
 	</maintainer>
 	<longdescription lang="en">
-	Python implementation of SAML Version 2 to be used in a WSGI environment
+		PySAML2 is a pure python implementation of SAML Version 2 Standard. It contains all necessary pieces for building a SAML2 service provider or an identity provider. The distribution contains examples of both. Originally written to work in a WSGI environment there are extensions that allow you to use it with other frameworks.
 	</longdescription>
 	<upstream>
 		<remote-id type="pypi">pysaml2</remote-id>
