@@ -3168,7 +3168,6 @@ dev-cpp/gtkmm 2.24.5 3.24.2: C++ interface for GTK+
 dev-cpp/gtksourceviewmm 2.10.3-r1 3.18.0: C++ bindings for gtksourceview
 dev-cpp/htmlcxx 0.87: A simple non-validating CSS 1 and HTML parser for C++
 dev-cpp/icnc 1.0.100: Intel Concurrent Collections for C++ - Parallelism without the Pain
-dev-cpp/libbinio 1.4-r1: Binary I/O stream class library
 dev-cpp/libcmis 0.5.2-r1 9999: C++ client library for the CMIS interface
 dev-cpp/libcutl 1.10.0: A collection of C++ libraries (successor of libcult)
 dev-cpp/libglademm 2.6.7-r2: C++ bindings for libglade
@@ -12771,7 +12770,6 @@ media-libs/Field3D 1.7.2: A library for storing voxel data
 media-libs/SoXt 1.3.0: GUI binding for using Coin/Open Inventor with Xt/Motif
 media-libs/a52dec 0.7.4-r6 0.7.4-r7: library for decoding ATSC A/52 streams used in DVD
 media-libs/aalib 1.4_rc5-r9: A ASCII-Graphics Library
-media-libs/adplug 2.3.1 9999: A free, cross-platform, hardware independent AdLib sound player library
 media-libs/aften 0.0.8-r2: An A/52 (AC-3) audio encoder
 media-libs/aldumb 0.9.3: Allegro support for DUMB (an IT, XM, S3M, and MOD player library)
 media-libs/allegro 4.4.2-r2 4.4.3.1 5.2.5.0: Cross-platform library aimed at video game and multimedia programming
@@ -13468,7 +13466,6 @@ media-sound/a2jmidid 9 9999: Daemon for exposing legacy ALSA sequencer applicati
 media-sound/abcde 2.9.3: Command line CD encoder
 media-sound/abcm2ps 8.14.4 8.14.6: Program to convert abc files to Postscript files
 media-sound/abcmidi 2020.01.22: Programs for processing ABC music notation files
-media-sound/adplay 1.7 1.8: A console player for AdLib music
 media-sound/aeolus 0.9.7: A synthesised pipe organ emulator
 media-sound/alac_decoder 0.2.0-r1: Basic decoder for Apple Lossless Audio Codec files (ALAC)
 media-sound/alsa-tools 1.1.7 1.2.2: Advanced Linux Sound Architecture tools
