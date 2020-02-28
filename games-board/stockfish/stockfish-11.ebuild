@@ -1,24 +1,24 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
 DESCRIPTION="Free UCI chess engine, claimed to be the strongest in the world"
 HOMEPAGE="https://stockfishchess.org/"
 
-SRC_URI="https://stockfish.s3.amazonaws.com/${P}-src.zip"
+SRC_URI="https://github.com/official-stockfish/Stockfish/archive/sf_${PV}.zip -> ${P}.zip"
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 x86"
-IUSE="armv7 cpu_flags_x86_avx2 cpu_flags_x86_popcnt cpu_flags_x86_sse debug
+KEYWORDS="~amd64 ~x86"
+IUSE="cpu_flags_arm_v7 cpu_flags_x86_avx2 cpu_flags_x86_popcnt cpu_flags_x86_sse debug
 	general-32 general-64 +optimize"
 
-DEPEND="|| ( app-arch/unzip	app-arch/zip )"
+DEPEND="|| ( app-arch/unzip app-arch/zip )"
 RDEPEND=""
 
-S="${WORKDIR}/${P}-src/src"
+S="${WORKDIR}/Stockfish-sf_${PV}/src"
 
 src_prepare() {
 	default
@@ -47,7 +47,7 @@ src_compile() {
 	use cpu_flags_x86_avx2 && my_arch=x86-64-bmi2
 
 	# other architectures
-	use armv7 && my_arch=armv7
+	use cpu_flags_arm_v7 && my_arch=armv7
 	use ppc && my_arch=ppc
 	use ppc64 && my_arch=ppc64
 
