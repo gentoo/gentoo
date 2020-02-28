@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare
+DEPEND=dev-libs/libltdl net-libs/libnsl:0= sys-libs/zlib bzip2? ( app-arch/bzip2 )
+DESCRIPTION=Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
+EAPI=7
+HOMEPAGE=http://www.hercules-390.eu/
+IUSE=bzip2 custom-cflags +suid
+KEYWORDS=~alpha ~amd64 ~ppc ~sparc ~x86 ~x64-macos ~x86-macos
+LICENSE=QPL-1.0
+RDEPEND=dev-libs/libltdl net-libs/libnsl:0= sys-libs/zlib bzip2? ( app-arch/bzip2 )
+SLOT=0
+SRC_URI=http://downloads.hercules-390.eu/hercules-3.13.tar.gz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=1568828d805d7c77d6e8cc48933c5878

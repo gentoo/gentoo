@@ -1589,7 +1589,7 @@ app-emulation/glean 1.10.3: Simple program to write static config from config-dr
 app-emulation/go-secbench 0.1.0 0.1.0-r1: run and evaluate the docker security benchmark
 app-emulation/grub-xen-host 1.0: Grub2 built as a PV grub per the Xen PV Boot Protocol
 app-emulation/gxemul 0.6.0-r1: A Machine Emulator, Mainly emulates MIPS, but supports other CPU types
-app-emulation/hercules 3.10 3.12: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
+app-emulation/hercules 3.10 3.12 3.13: Hercules System/370, ESA/390 and zArchitecture Mainframe Emulator
 app-emulation/hyperd 0.7.0-r1: Hypervisor-based Runtime for OCI
 app-emulation/img 0.5.7-r1: Standalone daemon-less unprivileged Dockerfile and OCI container image builder
 app-emulation/kompose 1.16.0 1.19.0: Tool to move from docker-compose to Kubernetes
@@ -5012,7 +5012,7 @@ dev-libs/libgamin 0.1.10-r5: Library providing the FAM File Alteration Monitor A
 dev-libs/libgaminggear 0.15.1: Provides functionality for gaming input devices
 dev-libs/libgcrypt 1.8.3 1.8.3-r1 1.8.4 1.8.5: General purpose crypto library based on the code used in GnuPG
 dev-libs/libgcrypt-compat 1.5.6: Old version of libgcrypt needed by some binaries
-dev-libs/libgdata 0.17.11: GLib-based library for accessing online service APIs using the GData protocol
+dev-libs/libgdata 0.17.11 0.17.12: GLib-based library for accessing online service APIs using the GData protocol
 dev-libs/libgee 0.6.8 0.20.2 0.20.3: GObject-based interfaces and classes for commonly used data structures
 dev-libs/libgit2 0.28.4 0.99.0-r1: A linkable library for Git
 dev-libs/libgit2-glib 0.28.0.1 0.28.0.1-r1 0.99.0.1: Git library for GLib
