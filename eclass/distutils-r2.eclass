@@ -1106,39 +1106,5 @@ distutils-r2_src_install() {
 	_distutils-r2_check_namespace_pth
 }
 
-# -- distutils.eclass functions --
-
-distutils_get_intermediate_installation_image() {
-	die "${FUNCNAME}() is invalid for distutils-r2"
-}
-
-distutils_src_unpack() {
-	die "${FUNCNAME}() is invalid for distutils-r2, and you don't want it in EAPI ${EAPI} anyway"
-}
-
-distutils_src_prepare() {
-	die "${FUNCNAME}() is invalid for distutils-r2, you probably want: ${FUNCNAME/_/-r2_}"
-}
-
-distutils_src_compile() {
-	die "${FUNCNAME}() is invalid for distutils-r2, you probably want: ${FUNCNAME/_/-r2_}"
-}
-
-distutils_src_test() {
-	die "${FUNCNAME}() is invalid for distutils-r2, you probably want: ${FUNCNAME/_/-r2_}"
-}
-
-distutils_src_install() {
-	die "${FUNCNAME}() is invalid for distutils-r2, you probably want: ${FUNCNAME/_/-r2_}"
-}
-
-distutils_pkg_postinst() {
-	die "${FUNCNAME}() is invalid for distutils-r2, and pkg_postinst is unnecessary"
-}
-
-distutils_pkg_postrm() {
-	die "${FUNCNAME}() is invalid for distutils-r2, and pkg_postrm is unnecessary"
-}
-
 _DISTUTILS_R2=1
 fi
