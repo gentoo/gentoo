@@ -626,24 +626,6 @@ distutils-r2_python_prepare_all() {
 	_DISTUTILS_DEFAULT_CALLED=1
 }
 
-# @FUNCTION: distutils-r2_python_prepare
-# @DESCRIPTION:
-# The default python_prepare(). A no-op.
-distutils-r2_python_prepare() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI 6 (it was a no-op)"
-}
-
-# @FUNCTION: distutils-r2_python_configure
-# @DESCRIPTION:
-# The default python_configure(). A no-op.
-distutils-r2_python_configure() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	[[ ${EAPI} == [45] ]] || die "${FUNCNAME} is banned in EAPI 6 (it was a no-op)"
-}
-
 # @FUNCTION: _distutils-r2_create_setup_cfg
 # @INTERNAL
 # @DESCRIPTION:
