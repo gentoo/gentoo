@@ -271,22 +271,6 @@ _python_export() {
 				export PYTHON=${EPREFIX}/usr/bin/${impl}
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
-			PYTHON_CFLAGS)
-				local val
-
-				case "${impl}" in
-					python*)
-						# python-2.7, python-3.2, etc.
-						val=$($(tc-getPKG_CONFIG) --cflags ${impl/n/n-}) || die
-						;;
-					*)
-						die "${impl}: obtaining ${var} not supported"
-						;;
-				esac
-
-				export PYTHON_CFLAGS=${val}
-				debug-print "${FUNCNAME}: PYTHON_CFLAGS = ${PYTHON_CFLAGS}"
-				;;
 			PYTHON_LIBS)
 				local val
 
@@ -412,20 +396,30 @@ python_get_library_path() {
 }
 
 # @FUNCTION: python_get_CFLAGS
-# @USAGE: [<impl>]
 # @DESCRIPTION:
 # Obtain and print the compiler flags for building against Python,
-# for the given implementation. If no implementation is provided,
-# ${EPYTHON} will be used.
+# for ${EPYTHON}.
 #
 # Please note that this function can be used with CPython only.
 # It requires Python and pkg-config installed, and therefore proper
 # build-time dependencies need be added to the ebuild.
 python_get_CFLAGS() {
 	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${EPYTHON} ]] || die "EPYTHON must be set before calling ${FUNCNAME}"
 
-	_python_export "${@}" PYTHON_CFLAGS
-	echo "${PYTHON_CFLAGS}"
+	local out
+	case ${EPYTHON} in
+		python*)
+			# python-2.7, python-3.2, etc.
+			out=$($(tc-getPKG_CONFIG) --cflags ${EPYTHON/n/n-}) || die
+			;;
+		*)
+			die "${impl}: obtaining CFLAGS not supported"
+			;;
+	esac
+
+	debug-print "${FUNCNAME} -> ${out}"
+	echo "${out}"
 }
 
 # @FUNCTION: python_get_LIBS
