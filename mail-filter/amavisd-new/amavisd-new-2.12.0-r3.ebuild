@@ -35,6 +35,7 @@ RDEPEND="${DEPEND}
 	app-arch/xz-utils
 	app-arch/zoo
 	dev-lang/perl:*
+	dev-perl/Archive-Zip
 	dev-perl/BerkeleyDB
 	dev-perl/Convert-BinHex
 	dev-perl/File-LibMagic
