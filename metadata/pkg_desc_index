@@ -7903,7 +7903,7 @@ dev-python/importlib_metadata 0.23-r1 1.4.0 1.5.0: Read metadata from Python pac
 dev-python/importlib_resources 1.0.2-r1 1.0.2-r2: Read resources from Python packages
 dev-python/incremental 16.10.1 17.5.0: Incremental is a small library that versions your Python projects
 dev-python/indexed_gzip 0.8.7 0.8.10: Fast random access of gzip files in Python
-dev-python/inflect 0.2.5 3.0.2 4.0.0: Correctly inflect words and numbers
+dev-python/inflect 0.2.5 3.0.2 4.0.0 4.1.0: Correctly inflect words and numbers
 dev-python/inflection 0.3.1: A port of Ruby on Rails' inflector to Python
 dev-python/influxdb 2.12.0: InfluxDB client
 dev-python/iniparse 0.4-r2: Better INI parser for Python
