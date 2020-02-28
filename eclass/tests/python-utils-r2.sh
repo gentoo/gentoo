@@ -84,7 +84,7 @@ if [[ -x /usr/bin/python2.7 ]]; then
 	test_get LIBS python2.7 "*-lpython2.7*"
 fi
 test_var PYTHON_PKG_DEP python2_7 '*dev-lang/python*:2.7'
-test_var PYTHON_SCRIPTDIR python2_7 /usr/lib/python-exec/python2.7
+test_get scriptdir python2.7 /usr/lib/python-exec/python2.7
 
 test_var EPYTHON python3_6 python3.6
 test_var PYTHON python3_6 /usr/bin/python3.6
@@ -98,7 +98,7 @@ if [[ -x /usr/bin/python3.6 ]]; then
 	test_get LIBS python3.6 "*-lpython3.6*"
 fi
 test_var PYTHON_PKG_DEP python3_6 '*dev-lang/python*:3.6'
-test_var PYTHON_SCRIPTDIR python3_6 /usr/lib/python-exec/python3.6
+test_get scriptdir python3.6 /usr/lib/python-exec/python3.6
 
 test_var EPYTHON python3_7 python3.7
 test_var PYTHON python3_7 /usr/bin/python3.7
@@ -112,7 +112,7 @@ if [[ -x /usr/bin/python3.7 ]]; then
 	test_get LIBS python3.7 "*-lpython3.7*"
 fi
 test_var PYTHON_PKG_DEP python3_7 '*dev-lang/python*:3.7'
-test_var PYTHON_SCRIPTDIR python3_7 /usr/lib/python-exec/python3.7
+test_get scriptdir python3.7 /usr/lib/python-exec/python3.7
 
 test_var EPYTHON jython2_7 jython2.7
 test_var PYTHON jython2_7 /usr/bin/jython2.7
@@ -120,7 +120,7 @@ if [[ -x /usr/bin/jython2.7 ]]; then
 	test_get sitedir jython2.7 /usr/share/jython-2.7/Lib/site-packages
 fi
 test_var PYTHON_PKG_DEP jython2_7 '*dev-java/jython*:2.7'
-test_var PYTHON_SCRIPTDIR jython2_7 /usr/lib/python-exec/jython2.7
+test_get scriptdir jython2.7 /usr/lib/python-exec/jython2.7
 
 test_var EPYTHON pypy pypy
 test_var PYTHON pypy /usr/bin/pypy
@@ -129,7 +129,7 @@ if [[ -x /usr/bin/pypy ]]; then
 	test_get includedir pypy "/usr/lib*/pypy2.7/include"
 fi
 test_var PYTHON_PKG_DEP pypy '*dev-python/pypy*:0='
-test_var PYTHON_SCRIPTDIR pypy /usr/lib/python-exec/pypy
+test_get scriptdir pypy /usr/lib/python-exec/pypy
 
 test_var EPYTHON pypy3 pypy3
 test_var PYTHON pypy3 /usr/bin/pypy3
@@ -138,7 +138,7 @@ if [[ -x /usr/bin/pypy3 ]]; then
 	test_get includedir pypy3 "/usr/lib*/pypy3.?/include"
 fi
 test_var PYTHON_PKG_DEP pypy3 '*dev-python/pypy3*:0='
-test_var PYTHON_SCRIPTDIR pypy3 /usr/lib/python-exec/pypy3
+test_get scriptdir pypy3 /usr/lib/python-exec/pypy3
 
 test_is "python_is_python3 python2.7" 1
 test_is "python_is_python3 python3.2" 0

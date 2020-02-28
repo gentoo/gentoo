@@ -298,11 +298,6 @@ _python_export() {
 				export PYTHON_PKG_DEP
 				debug-print "${FUNCNAME}: PYTHON_PKG_DEP = ${PYTHON_PKG_DEP}"
 				;;
-			PYTHON_SCRIPTDIR)
-				local dir
-				export PYTHON_SCRIPTDIR=${EPREFIX}/usr/lib/python-exec/${impl}
-				debug-print "${FUNCNAME}: PYTHON_SCRIPTDIR = ${PYTHON_SCRIPTDIR}"
-				;;
 			*)
 				die "_python_export: unknown variable ${var}"
 		esac
@@ -446,16 +441,15 @@ python_get_PYTHON_CONFIG() {
 }
 
 # @FUNCTION: python_get_scriptdir
-# @USAGE: [<impl>]
 # @DESCRIPTION:
-# Obtain and print the script install path for the given
-# implementation. If no implementation is provided, ${EPYTHON} will
-# be used.
+# Obtain and print the script install path for ${EPYTHON}.
 python_get_scriptdir() {
 	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${EPYTHON} ]] || die "EPYTHON must be set before calling ${FUNCNAME}"
 
-	_python_export "${@}" PYTHON_SCRIPTDIR
-	echo "${PYTHON_SCRIPTDIR}"
+	local out=${EPREFIX}/usr/lib/python-exec/${impl}
+	debug-print "${FUNCNAME} -> ${out}"
+	echo "${out}"
 }
 
 # @FUNCTION: _python_ln_rel
@@ -622,9 +616,8 @@ python_newexe() {
 	local f=${1}
 	local newfn=${2}
 
-	local PYTHON_SCRIPTDIR d
-	_python_export PYTHON_SCRIPTDIR
-	d=${PYTHON_SCRIPTDIR#${EPREFIX}}
+	local PYTHON_SCRIPTDIR=$(python_get_scriptdir)
+	local d=${PYTHON_SCRIPTDIR#${EPREFIX}}
 
 	(
 		dodir "${wrapd}"

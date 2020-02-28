@@ -732,8 +732,7 @@ _distutils-r2_wrap_scripts() {
 	local path=${1}
 	local bindir=${2}
 
-	local PYTHON_SCRIPTDIR
-	_python_export PYTHON_SCRIPTDIR
+	local PYTHON_SCRIPTDIR=$(python_get_scriptdir)
 
 	local f python_files=() non_python_files=()
 

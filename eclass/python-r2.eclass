@@ -760,8 +760,7 @@ python_replicate_script() {
 	_python_replicate_script() {
 		local _PYTHON_FIX_SHEBANG_QUIET=1
 
-		local PYTHON_SCRIPTDIR
-		_python_export PYTHON_SCRIPTDIR
+		local PYTHON_SCRIPTDIR=$(python_get_scriptdir)
 
 		(
 			exeopts -m 0755
