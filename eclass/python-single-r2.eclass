@@ -21,7 +21,7 @@
 # The eclass exports PYTHON_SINGLE_USEDEP that is suitable for depending
 # on other packages using the eclass.  Dependencies on packages using
 # python-r2 should be created via python_gen_cond_dep() function,
-# using PYTHON_MULTI_USEDEP placeholder.
+# using PYTHON_USEDEP placeholder.
 #
 # Please note that packages support multiple Python implementations
 # (using python-r2 eclass) can not depend on packages not supporting
@@ -145,7 +145,7 @@ EXPORT_FUNCTIONS pkg_setup
 # Python implementations.
 #
 # If you need to depend on a multi-impl (python-r2) package, use
-# python_gen_cond_dep with PYTHON_MULTI_USEDEP placeholder instead.
+# python_gen_cond_dep with PYTHON_USEDEP placeholder instead.
 #
 # Example use:
 # @CODE
@@ -157,7 +157,7 @@ EXPORT_FUNCTIONS pkg_setup
 # python_single_target_python3_4(-)?
 # @CODE
 
-# @ECLASS-VARIABLE: PYTHON_MULTI_USEDEP
+# @ECLASS-VARIABLE: PYTHON_USEDEP
 # @DESCRIPTION:
 # This is a placeholder variable supported by python_gen_cond_dep,
 # in order to depend on python-r2 packages built for the same Python
@@ -166,7 +166,7 @@ EXPORT_FUNCTIONS pkg_setup
 # Example use:
 # @CODE
 # RDEPEND="$(python_gen_cond_dep '
-#     dev-python/foo[${PYTHON_MULTI_USEDEP}]
+#     dev-python/foo[${PYTHON_USEDEP}]
 #   ')"
 # @CODE
 #
@@ -248,7 +248,7 @@ _python_single_set_globals() {
 	else
 		PYTHON_DEPS=${deps}
 		PYTHON_REQUIRED_USE=${requse}
-		PYTHON_USEDEP='%PYTHON_USEDEP-HAS-BEEN-REMOVED%'
+		PYTHON_USEDEP='%PYTHON_USEDEP-MUST-BE-IN-python_gen_cond_dep%'
 		PYTHON_SINGLE_USEDEP=${single_usedep}
 		readonly PYTHON_DEPS PYTHON_REQUIRED_USE PYTHON_SINGLE_USEDEP \
 			PYTHON_USEDEP
@@ -344,7 +344,7 @@ python_gen_useflags() {
 # to prevent accidental shell filename expansion.
 #
 # In order to enforce USE constraints on the packages, verbatim
-# '${PYTHON_SINGLE_USEDEP}' and '${PYTHON_MULTI_USEDEP}' (quoted!) may
+# '${PYTHON_SINGLE_USEDEP}' and '${PYTHON_USEDEP}' (quoted!) may
 # be placed in the dependency specification. It will get expanded within
 # the function into a proper USE dependency string.
 #
@@ -352,7 +352,7 @@ python_gen_useflags() {
 # @CODE
 # PYTHON_COMPAT=( python{2_7,3_{3,4}} pypy )
 # RDEPEND="$(python_gen_cond_dep \
-#   'dev-python/unittest2[${PYTHON_MULTI_USEDEP}]' python2_7 pypy )"
+#   'dev-python/unittest2[${PYTHON_USEDEP}]' python2_7 pypy )"
 # @CODE
 #
 # It will cause the variable to look like:
@@ -382,7 +382,7 @@ python_gen_cond_dep() {
 			local multi_usedep="python_targets_${impl}(-)"
 
 			matches+=( "python_single_target_${impl}? (
-				${dep//\$\{PYTHON_MULTI_USEDEP\}/${multi_usedep}} )" )
+				${dep//\$\{PYTHON_USEDEP\}/${multi_usedep}} )" )
 		fi
 	done
 
