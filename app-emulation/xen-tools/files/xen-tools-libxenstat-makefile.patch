@@ -1,0 +1,42 @@
+diff --git a/tools/xenstat/libxenstat/Makefile b/tools/xenstat/libxenstat/Makefile
+index 03cb212e3b..4a02d2e563 100644
+--- a/tools/xenstat/libxenstat/Makefile
++++ b/tools/xenstat/libxenstat/Makefile
+@@ -114,18 +114,17 @@ $(BINDINGS): $(SHLIB) $(SHLIB_LINKS) src/xenstat.h
+ SWIG_FLAGS=-module xenstat -Isrc
+ 
+ # Python bindings
+-PYTHON_VERSION=$(PYTHON:python%=%)
+-PYTHON_FLAGS=-I/usr/include/python$(PYTHON_VERSION) -lpython$(PYTHON_VERSION)
++PYTHON_FLAGS=`$(PYTHON) -c 'import distutils.sysconfig; print("-I" + distutils.sysconfig.get_python_inc(True) + " " + distutils.sysconfig.get_config_var("BLDLIBRARY"))'`
+ $(PYMOD): $(PYSRC)
+ $(PYSRC): bindings/swig/xenstat.i
+ 	swig -python $(SWIG_FLAGS) -outdir $(@D) -o $(PYSRC) $<
+ 
+ $(PYLIB): $(PYSRC)
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(PYTHON_FLAGS) $(SHLIB_LDFLAGS) -lxenstat -o $@ $< $(APPEND_LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(PYTHON_FLAGS) $(SHLIB_LDFLAGS) -o $@ $< $(SHLIB) $(LDLIBS-y) $(APPEND_LDFLAGS)
+ 
+ python-bindings: $(PYLIB) $(PYMOD)
+ 
+-pythonlibdir=$(prefix)/lib/python$(PYTHON_VERSION)/site-packages
++pythonlibdir=`$(PYTHON) -c 'import distutils.sysconfig; print(distutils.sysconfig.get_python_lib())'`
+ install-python-bindings: $(PYLIB) $(PYMOD)
+ 	$(INSTALL_PROG) $(PYLIB) $(DESTDIR)$(pythonlibdir)/_xenstat.so
+ 	$(INSTALL_PROG) $(PYMOD) $(DESTDIR)$(pythonlibdir)/xenstat.py
+@@ -149,13 +148,13 @@ $(PERLSRC): bindings/swig/xenstat.i
+ 	swig -perl $(SWIG_FLAGS) -outdir $(@D) -o $(PERLSRC) $<
+ 
+ $(PERLLIB): $(PERLSRC)
+-	$(CC) $(CFLAGS) $(LDFLAGS) $(PERL_FLAGS) $(SHLIB_LDFLAGS) -lxenstat -o $@ $< $(APPEND_LDFLAGS)
++	$(CC) $(CFLAGS) $(LDFLAGS) $(PERL_FLAGS) $(SHLIB_LDFLAGS) -o $@ $< $(SHLIB) $(LDLIBS-y) $(APPEND_LDFLAGS)
+ 
+ .PHONY: perl-bindings
+ perl-bindings: $(PERLLIB) $(PERLMOD)
+ 
+ .PHONY: install-perl-bindings
+-perllibdir=$(prefix)/lib/perl5
++perllibdir=$(prefix)/$(libdir)/perl5
+ perlmoddir=$(prefix)/share/perl5
+ install-perl-bindings: $(PERLLIB) $(PERLMOD)
+ 	$(INSTALL_PROG) $(PERLLIB) $(DESTDIR)$(perllibdir)/xenstat.so
