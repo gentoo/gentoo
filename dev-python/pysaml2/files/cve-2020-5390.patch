@@ -1,0 +1,189 @@
+From 5e9d5acbcd8ae45c4e736ac521fd2df5b1c62e25 Mon Sep 17 00:00:00 2001
+From: Ivan Kanakarakis <ivan.kanak@gmail.com>
+Date: Sat, 4 Jan 2020 00:39:47 +0200
+Subject: [PATCH] Fix XML Signature Wrapping (XSW) vulnerabilities
+
+PySAML2 did not check that the signature in a SAML document is enveloped and thus
+XML signature wrapping (XSW) was effective.
+
+The signature information and the node/object that is signed can be in different places
+and thus the signature verification will succeed, but the wrong data will be used. This
+specifically affects the verification of assertions that have been signed.
+
+This was assigned CVE-2020-5390
+
+Thanks to Alexey Sintsov and Yuri Goltsev from HERE Technologies to report this.
+
++ + + + + + + +
+
+In more detail:
+
+libxml2 follows the xmldsig-core specification. The xmldsig specification is way too
+general. saml-core reuses the xmldsig specification, but constrains it to use of
+specific facilities. The implementation of the SAML specification is responsible to
+enforce those constraints. libxml2/xmlsec1 are not aware of those constraints and thus
+process the document based on the full/general xmldsig rules.
+
+What is happening is the following:
+
+- xmldsig-core allows the signature-information and the data that was signed to be in
+  different places. This works by setting the URI attribute of the Reference element.
+  The URI attribute contains an optional identifier of the object being signed. (see
+  "4.4.3 The Reference Element" -- https://www.w3.org/TR/xmldsig-core1/#sec-Reference)
+  This identifier is actually a pointer that can be defined in many different ways; from
+  XPath expressions that need to be executed(!), to a full URL that should be fetched(!)
+  in order to recalculate the signature.
+
+- saml-core section "5.4 XML Signature Profile" defines constrains on the xmldsig-core
+  facilities. It explicitly dictates that enveloped signatures are the only signatures
+  allowed. This mean that:
+  * Assertion/RequestType/ResponseType elements must have an ID attribute
+  * signatures must have a single Reference element
+  * the Reference element must have a URI attribute
+  * the URI attribute contains an anchor
+  * the anchor points to the enclosing element's ID attribute
+
+xmlsec1 does the right thing - it follows the reference URI pointer and validates the
+assertion. But, the pointer points to an assertion in another part of the document; not
+the assertion in which the signature is embedded/enveloped. SAML processing thinks that
+the signature is fine (that's what xmlsec1 said), and gets the assertion data from the
+assertion that contains the signature - but that assertion was never validated. The
+issue is that pysaml2 does not enforce the constrains on the signature validation
+facilities of xmldsig-core, that the saml-core spec defines.
+
+The solution is simple; all we need is to make sure that assertions with signatures (1)
+contain one reference element that (2) has a URI attribute (3) that is an anchor that
+(4) points to the assertion in which the signature is embedded. If those conditions are
+met then we're good, otherwise we should fail the verification.
+
+Signed-off-by: Ivan Kanakarakis <ivan.kanak@gmail.com>
+---
+ src/saml2/sigver.py          | 49 ++++++++++++++++++++++++++++++++++++
+ tests/saml2_response_xsw.xml |  6 +++++
+ tests/test_xsw.py            | 44 ++++++++++++++++++++++++++++++++
+ 3 files changed, 99 insertions(+)
+ create mode 100644 tests/saml2_response_xsw.xml
+ create mode 100644 tests/test_xsw.py
+
+diff --git a/src/saml2/sigver.py b/src/saml2/sigver.py
+index cbeca41f..c3d298a9 100644
+--- a/src/saml2/sigver.py
++++ b/src/saml2/sigver.py
+@@ -1476,6 +1476,55 @@ def _check_signature(self, decoded_xml, item, node_name=NODE_NAME, origdoc=None,
+         if not certs:
+             raise MissingKey(_issuer)
+ 
++        # saml-core section "5.4 XML Signature Profile" defines constrains on the
++        # xmldsig-core facilities. It explicitly dictates that enveloped signatures
++        # are the only signatures allowed. This mean that:
++        # * Assertion/RequestType/ResponseType elements must have an ID attribute
++        # * signatures must have a single Reference element
++        # * the Reference element must have a URI attribute
++        # * the URI attribute contains an anchor
++        # * the anchor points to the enclosing element's ID attribute
++        references = item.signature.signed_info.reference
++        signatures_must_have_a_single_reference_element = len(references) == 1
++        the_Reference_element_must_have_a_URI_attribute = (
++            signatures_must_have_a_single_reference_element
++            and hasattr(references[0], "uri")
++        )
++        the_URI_attribute_contains_an_anchor = (
++            the_Reference_element_must_have_a_URI_attribute
++            and references[0].uri.startswith("#")
++            and len(references[0].uri) > 1
++        )
++        the_anchor_points_to_the_enclosing_element_ID_attribute = (
++            the_URI_attribute_contains_an_anchor
++            and references[0].uri == "#{id}".format(id=item.id)
++        )
++        validators = {
++            "signatures must have a single reference element": (
++                signatures_must_have_a_single_reference_element
++            ),
++            "the Reference element must have a URI attribute": (
++                the_Reference_element_must_have_a_URI_attribute
++            ),
++            "the URI attribute contains an anchor": (
++                the_URI_attribute_contains_an_anchor
++            ),
++            "the anchor points to the enclosing element ID attribute": (
++                the_anchor_points_to_the_enclosing_element_ID_attribute
++            ),
++        }
++        if not all(validators.values()):
++            error_context = {
++                "message": "Signature failed to meet constraints on xmldsig",
++                "validators": validators,
++                "item ID": item.id,
++                "reference URI": item.signature.signed_info.reference[0].uri,
++                "issuer": _issuer,
++                "node name": node_name,
++                "xml document": decoded_xml,
++            }
++            raise SignatureError(error_context)
++
+         verified = False
+         last_pem_file = None
+ 
+diff --git a/tests/saml2_response_xsw.xml b/tests/saml2_response_xsw.xml
+new file mode 100644
+index 00000000..3671eb48
+--- /dev/null
++++ b/tests/saml2_response_xsw.xml
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<ns0:Response xmlns:ns0="urn:oasis:names:tc:SAML:2.0:protocol" xmlns:ns1="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:ns2="http://www.w3.org/2000/09/xmldsig#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Destination="http://lingon.catalogix.se:8087/" ID="id-vqOQ72JCppXaBWnBE" InResponseTo="id12" IssueInstant="2019-12-20T12:15:16Z" Version="2.0"><ns1:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:mace:example.com:saml:roland:idp</ns1:Issuer><ns0:Status><ns0:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success"/></ns0:Status><ns1:Assertion ID="id-SPOOFED_ASSERTION" IssueInstant="2019-12-20T12:15:16Z" Version="2.0"><ns1:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:mace:example.com:saml:roland:idp</ns1:Issuer><ns2:Signature Id="Signature2"><ns2:SignedInfo><ns2:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/><ns2:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><ns2:Reference URI="#id-Aa9IWfDxJVIX6GQye"><ns2:Transforms><ns2:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/><ns2:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/></ns2:Transforms><ns2:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><ns2:DigestValue>EWBvQUlrwQbtrAjuUXkSBAVsZ50=</ns2:DigestValue></ns2:Reference></ns2:SignedInfo><ns2:SignatureValue>m4zRgTWleMcx1dFboeiYlbiDigHWAVhHVa+GLN++ELNMFDutuzBxc3tu6okyaNQGW3leu32wzbfdpb5+3RlpGoKj2wPX570/EMJj4uw91XfXsZfpNP+5GlgNT8w/elDmBXhG/KwmSO477Imk0szKovTBMVHmo3QOd+ba//dVsJE=</ns2:SignatureValue><ns2:KeyInfo><ns2:X509Data><ns2:X509Certificate>MIICsDCCAhmgAwIBAgIJAJrzqSSwmDY9MA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNVBAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBXaWRnaXRzIFB0eSBMdGQwHhcNMDkxMDA2MTk0OTQxWhcNMDkxMTA1MTk0OTQxWjBFMQswCQYDVQQGEwJBVTETMBEGA1UECBMKU29tZS1TdGF0ZTEhMB8GA1UEChMYSW50ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJg2cms7MqjniT8Fi/XkNHZNPbNVQyMUMXE9tXOdqwYCA1cc8vQdzkihscQMXy3iPw2cMggBu6gjMTOSOxECkuvX5ZCclKr8pXAJM5cY6gVOaVO2PdTZcvDBKGbiaNefiEw5hnoZomqZGp8wHNLAUkwtH9vjqqvxyS/vclc6k2ewIDAQABo4GnMIGkMB0GA1UdDgQWBBRePsKHKYJsiojE78ZWXccK9K4aJTB1BgNVHSMEbjBsgBRePsKHKYJsiojE78ZWXccK9K4aJaFJpEcwRTELMAkGA1UEBhMCQVUxEzARBgNVBAgTClNvbWUtU3RhdGUxITAfBgNVBAoTGEludGVybmV0IFdpZGdpdHMgUHR5IEx0ZIIJAJrzqSSwmDY9MAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQEFBQADgYEAJSrKOEzHO7TL5cy6h3qh+3+JAk8HbGBW+cbX6KBCAw/mzU8flK25vnWwXS3dv2FF3Aod0/S7AWNfKib5U/SA9nJaz/mWeF9S0farz9AQFc8/NSzAzaVq7YbM4F6f6N2FRl7GikdXRCed45j6mrPzGzk3ECbupFnqyREH3+ZPSdk=</ns2:X509Certificate></ns2:X509Data></ns2:KeyInfo></ns2:Signature><ns1:Subject><ns1:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient" NameQualifier="" SPNameQualifier="id12">ANOTHER_ID</ns1:NameID><ns1:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer"><ns1:SubjectConfirmationData InResponseTo="id12" NotOnOrAfter="2019-12-20T12:20:16Z" Recipient="http://lingon.catalogix.se:8087/"/></ns1:SubjectConfirmation></ns1:Subject><ns1:Conditions NotBefore="2019-12-20T12:15:16Z" NotOnOrAfter="2019-12-20T12:20:16Z"><ns1:AudienceRestriction><ns1:Audience>urn:mace:example.com:saml:roland:sp</ns1:Audience></ns1:AudienceRestriction></ns1:Conditions><ns1:AuthnStatement AuthnInstant="2019-12-20T12:15:16Z" SessionIndex="id-eEhNCc5BSiesVOl8B"><ns1:AuthnContext><ns1:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:InternetProtocolPassword</ns1:AuthnContextClassRef><ns1:AuthenticatingAuthority>http://www.example.com/login</ns1:AuthenticatingAuthority></ns1:AuthnContext></ns1:AuthnStatement><ns1:AttributeStatement><ns1:Attribute FriendlyName="eduPersonAffiliation" Name="urn:oid:1.3.6.1.4.1.5923.1.1.1.1" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">staff</ns1:AttributeValue><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">ADMIN</ns1:AttributeValue></ns1:Attribute><ns1:Attribute FriendlyName="mail" Name="urn:oid:0.9.2342.19200300.100.1.3" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">HACKER@gmail.com</ns1:AttributeValue></ns1:Attribute><ns1:Attribute FriendlyName="givenName" Name="urn:oid:2.5.4.42" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Derek</ns1:AttributeValue></ns1:Attribute><ns1:Attribute FriendlyName="surName" Name="urn:oid:2.5.4.4" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Jeter</ns1:AttributeValue></ns1:Attribute><ns1:Attribute FriendlyName="title" Name="urn:oid:2.5.4.12" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">shortstop</ns1:AttributeValue></ns1:Attribute></ns1:AttributeStatement></ns1:Assertion>
++<XSW_ATTACK>
++<ns1:Assertion ID="id-Aa9IWfDxJVIX6GQye" IssueInstant="2019-12-20T12:15:16Z" Version="2.0"><ns1:Issuer Format="urn:oasis:names:tc:SAML:2.0:nameid-format:entity">urn:mace:example.com:saml:roland:idp</ns1:Issuer><ns1:Subject><ns1:NameID Format="urn:oasis:names:tc:SAML:2.0:nameid-format:transient" NameQualifier="" SPNameQualifier="id12">ac5b22bb8eac4a26ed07a55432a0fe0da243f6e911aa614cff402c44d7cdec36</ns1:NameID><ns1:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer"><ns1:SubjectConfirmationData InResponseTo="id12" NotOnOrAfter="2019-12-20T12:20:16Z" Recipient="http://lingon.catalogix.se:8087/"/></ns1:SubjectConfirmation></ns1:Subject><ns1:Conditions NotBefore="2019-12-20T12:15:16Z" NotOnOrAfter="2019-12-20T12:20:16Z"><ns1:AudienceRestriction><ns1:Audience>urn:mace:example.com:saml:roland:sp</ns1:Audience></ns1:AudienceRestriction></ns1:Conditions><ns1:AuthnStatement AuthnInstant="2019-12-20T12:15:16Z" SessionIndex="id-eEhNCc5BSiesVOl8B"><ns1:AuthnContext><ns1:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:InternetProtocolPassword</ns1:AuthnContextClassRef><ns1:AuthenticatingAuthority>http://www.example.com/login</ns1:AuthenticatingAuthority></ns1:AuthnContext></ns1:AuthnStatement><ns1:AttributeStatement><ns1:Attribute FriendlyName="eduPersonAffiliation" Name="urn:oid:1.3.6.1.4.1.5923.1.1.1.1" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">staff</ns1:AttributeValue><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">member</ns1:AttributeValue></ns1:Attribute><ns1:Attribute FriendlyName="mail" Name="urn:oid:0.9.2342.19200300.100.1.3" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">foo@gmail.com</ns1:AttributeValue></ns1:Attribute><ns1:Attribute FriendlyName="givenName" Name="urn:oid:2.5.4.42" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Derek</ns1:AttributeValue></ns1:Attribute><ns1:Attribute FriendlyName="surName" Name="urn:oid:2.5.4.4" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">Jeter</ns1:AttributeValue></ns1:Attribute><ns1:Attribute FriendlyName="title" Name="urn:oid:2.5.4.12" NameFormat="urn:oasis:names:tc:SAML:2.0:attrname-format:uri"><ns1:AttributeValue xmlns:xs="http://www.w3.org/2001/XMLSchema" xsi:type="xs:string">shortstop</ns1:AttributeValue></ns1:Attribute></ns1:AttributeStatement></ns1:Assertion>
++</XSW_ATTACK>
++</ns0:Response>
+diff --git a/tests/test_xsw.py b/tests/test_xsw.py
+new file mode 100644
+index 00000000..9978c4d3
+--- /dev/null
++++ b/tests/test_xsw.py
+@@ -0,0 +1,44 @@
++from datetime import datetime
++from unittest.mock import Mock
++from unittest.mock import patch
++
++from saml2.config import config_factory
++from saml2.response import authn_response
++from saml2.sigver import SignatureError
++
++from dateutil import parser
++
++from pytest import raises
++
++from pathutils import dotname
++from pathutils import full_path
++
++
++XML_RESPONSE_XSW = full_path("saml2_response_xsw.xml")
++
++
++class TestAuthnResponse:
++    def setup_class(self):
++        self.conf = config_factory("sp", dotname("server_conf"))
++        self.ar = authn_response(self.conf, "http://lingon.catalogix.se:8087/")
++
++    @patch('saml2.response.validate_on_or_after', return_value=True)
++    def test_verify_signed_xsw(self, mock_validate_on_or_after):
++        self.ar.issue_instant_ok = Mock(return_value=True)
++
++        with open(XML_RESPONSE_XSW) as fp:
++            xml_response = fp.read()
++
++        self.ar.outstanding_queries = {"id12": "http://localhost:8088/sso"}
++        self.ar.timeslack = 10000
++        self.ar.loads(xml_response, decode=False)
++
++        assert self.ar.came_from == 'http://localhost:8088/sso'
++        assert self.ar.session_id() == "id12"
++        assert self.ar.issuer() == 'urn:mace:example.com:saml:roland:idp'
++
++        with raises(SignatureError):
++            self.ar.verify()
++
++        assert self.ar.ava is None
++        assert self.ar.name_id is None
