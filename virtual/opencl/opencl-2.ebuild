@@ -20,9 +20,9 @@ RDEPEND="app-eselect/eselect-opencl
 		video_cards_amdgpu? ( || (
 			dev-libs/rocm-opencl-runtime
 			dev-libs/amdgpu-pro-opencl ) )
-		video_cards_nvidia? (
+		video_cards_nvidia? ( || (
 			>=x11-drivers/nvidia-drivers-290.10-r2[uvm]
-			>=media-libs/mesa-9.1.6[opencl,X(+),${MULTILIB_USEDEP}] )
+			>=media-libs/mesa-9.1.6[opencl,X(+),${MULTILIB_USEDEP}] ) )
 		video_cards_r600? (
 			>=media-libs/mesa-9.1.6[opencl,X(+),${MULTILIB_USEDEP}] )
 		video_cards_radeonsi? (
