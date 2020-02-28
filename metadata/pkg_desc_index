@@ -7383,7 +7383,7 @@ dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.6.7 1.6.8 1.7.1: SOCKS client module
 dev-python/PyUtilib 5.6.5 5.7.2: A collection of Python utilities
 dev-python/PythonQt 3.2 3.2-r1 9999: A dynamic Python binding for the Qt framework
-dev-python/QtPy 1.4.2 1.9.0-r1: Abstraction layer for PyQt5/PySide
+dev-python/QtPy 1.9.0-r1: Abstraction layer for PyQt5/PySide
 dev-python/ReParser 1.4.3: Simple regex-based lexer/parser for inline markup
 dev-python/Rx 1.6.1: Reactive Extensions for Python
 dev-python/SaltTesting 2018.1.16: Required testing tools needed in the several Salt Stack projects
@@ -17448,7 +17448,7 @@ sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 4.19.105 4.19.106 5.4.21 5.4.22 5.5.5 5.5.6: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 4.19.105 4.19.106 5.4.21 5.4.22 5.5.5 5.5.6: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.203 4.4.210 4.4.212 4.4.213 4.4.214 4.4.215 4.9.203 4.9.210 4.9.212 4.9.213 4.9.214 4.9.215 4.14.156 4.14.166 4.14.169 4.14.170 4.14.171 4.19.86 4.19.97 4.19.102 4.19.103 4.19.104 4.19.105 4.19.106 5.4.19 5.4.20 5.4.21 5.4.22 5.5.0 5.5.1 5.5.2 5.5.2-r1 5.5.3 5.5.4 5.5.5 5.5.6: Full sources including the Gentoo patchset for the 5.5 kernel tree
+sys-kernel/gentoo-sources 4.4.203 4.4.210 4.4.212 4.4.213 4.4.214 4.4.215 4.9.203 4.9.210 4.9.212 4.9.213 4.9.214 4.9.215 4.14.156 4.14.166 4.14.169 4.14.170 4.14.171 4.14.172 4.19.86 4.19.97 4.19.102 4.19.103 4.19.104 4.19.105 4.19.106 4.19.107 5.4.19 5.4.20 5.4.21 5.4.22 5.5.0 5.5.1 5.5.2 5.5.2-r1 5.5.3 5.5.4 5.5.5 5.5.6: Full sources including the Gentoo patchset for the 5.5 kernel tree
 sys-kernel/git-sources 5.6_rc1 5.6_rc2 5.6_rc3: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
