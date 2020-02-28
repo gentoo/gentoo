@@ -6,6 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 DISTUTILS_SINGLE_IMPL=1
+DISTUTILS_USE_SETUPTOOLS=rdepend
 inherit distutils-r1
 
 DESCRIPTION="app-emulation/winetricks wrapper for Proton (Steam Play) games"
