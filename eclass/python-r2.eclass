@@ -285,8 +285,7 @@ _python_validate_useflags() {
 # python_is_python3). Remember to escape or quote the fnmatch patterns
 # to prevent accidental shell filename expansion.
 #
-# This is an internal function used to implement python_gen_cond_dep
-# and deprecated python_gen_usedep.
+# This is an internal function used to implement python_gen_cond_dep.
 _python_gen_usedep() {
 	debug-print-function ${FUNCNAME} "${@}"
 
@@ -305,46 +304,6 @@ _python_gen_usedep() {
 
 	local out=${matches[@]}
 	echo "${out// /,}"
-}
-
-# @FUNCTION: python_gen_usedep
-# @USAGE: <pattern> [...]
-# @DESCRIPTION:
-# DEPRECATED.  Please use python_gen_cond_dep instead.
-#
-# Output a USE dependency string for Python implementations which
-# are both in PYTHON_COMPAT and match any of the patterns passed
-# as parameters to the function.
-#
-# The patterns can be either fnmatch-style patterns (matched via bash
-# == operator against PYTHON_COMPAT values) or '-2' / '-3' to indicate
-# appropriately all enabled Python 2/3 implementations (alike
-# python_is_python3). Remember to escape or quote the fnmatch patterns
-# to prevent accidental shell filename expansion.
-#
-# When all implementations are requested, please use ${PYTHON_USEDEP}
-# instead. Please also remember to set an appropriate REQUIRED_USE
-# to avoid ineffective USE flags.
-#
-# Example:
-# @CODE
-# PYTHON_COMPAT=( python{2_7,3_4} )
-# DEPEND="doc? ( dev-python/epydoc[$(python_gen_usedep 'python2*')] )"
-# @CODE
-#
-# It will cause the dependency to look like:
-# @CODE
-# DEPEND="doc? ( dev-python/epydoc[python_targets_python2_7?] )"
-# @CODE
-python_gen_usedep() {
-	debug-print-function ${FUNCNAME} "${@}"
-
-	# output only once, during some reasonable phase
-	# (avoid spamming cache regen runs)
-	if [[ ${EBUILD_PHASE} == setup ]]; then
-		eqawarn "python_gen_usedep() is deprecated. Please use python_gen_cond_dep instead."
-	fi
-	_python_gen_usedep "${@}"
 }
 
 # @FUNCTION: python_gen_useflags
