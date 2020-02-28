@@ -1,0 +1,25 @@
+--- a/html/Makefile.am
++++ b/html/Makefile.am
+@@ -1,4 +1,4 @@
+-dist_pkgdata_DATA =   cckddasd.html fishgui.html  hercconf.html hercfaq.html     \
++dist_html_DATA =   cckddasd.html fishgui.html  hercconf.html hercfaq.html     \
+         hercinst.html herclic.html  hercload.html hercmsca.html hercmscf.html  \
+         hercmscp.html hercmsct.html hercmscu.html hercmsda.html hercmsdc.html \
+         hercmsdg.html hercmsdi.html hercmsdl.html hercmsds.html hercmsdt.html \
+@@ -12,7 +12,7 @@
+ 
+ include_sources = include/header.htmlpart include/footer.htmlpart
+ 
+-include_pkgdatadir = $(pkgdatadir)/include
++include_pkgdatadir = $(htmldir)/include
+ 
+ dist_include_pkgdata_DATA = $(include_sources)
+ 
+@@ -33,6 +33,6 @@
+         images/interruptu.gif images/redu.gif images/waitonu.gif \
+         images/loadd.gif images/restartd.gif
+ 
+-images_pkgdatadir = $(pkgdatadir)/images
++images_pkgdatadir = $(htmldir)/images
+ 
+ dist_images_pkgdata_DATA = $(images_sources)
