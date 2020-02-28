@@ -10,7 +10,7 @@ SRC_URI="http://pari.math.u-bordeaux.fr/pub/pari/GP2C/${MY_P}.tar.gz"
 
 LICENSE="GPL-2+"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
