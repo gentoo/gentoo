@@ -1,9 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7} )
+DISTUTILS_USE_SETUPTOOLS=no
 
 DB_COMMIT="bdf02cbf0a8d017c6c1bddeffd6f03d5d90695ed"
 DB_DIR="rafaelmartins-${PN}-db-${DB_COMMIT:0:7}"
@@ -15,7 +16,8 @@ HOMEPAGE="https://github.com/rafaelmartins/g-octave"
 
 SRC_URI="https://github.com/downloads/rafaelmartins/${PN}/${P}.tar.gz
 	https://github.com/rafaelmartins/${PN}-db/tarball/${DB_COMMIT} ->
-		${PN}-db-${DB_COMMIT:0:7}.tar.gz"
+		${PN}-db-${DB_COMMIT:0:7}.tar.gz
+	https://dev.gentoo.org/~rafaelmartins/distfiles/${PN}-patches-${PVR}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -27,11 +29,7 @@ DEPEND="doc? ( >=dev-python/sphinx-1.0 )"
 RDEPEND="sys-apps/portage"
 
 python_prepare_all() {
-	local PATCHES=(
-		"${FILESDIR}/${P}-add_cave_support.patch"
-		"${FILESDIR}/${P}-fix-sourceforge-svn-root.patch"
-		"${FILESDIR}/${P}-fix-Makefile.patch"
-	)
+	eapply "${WORKDIR}/${PN}-patches-${PVR}"
 	sed -i -e 's/^has_fetch.*$/has_fetch = False/' scripts/g-octave \
 		|| die 'failed to patch the g-octave main script'
 	distutils-r1_python_prepare_all
@@ -50,6 +48,8 @@ python_install_all() {
 		mv docs/_build/{html,sphinx} || die 'mv failed.'
 		HTML_DOCS+=( docs/_build/sphinx )
 	fi
+	insinto /usr/share/g-octave
+	doins "${DISTDIR}/${PN}-db-${DB_COMMIT:0:7}.tar.gz"
 	distutils-r1_python_install_all
 }
 
@@ -74,7 +74,7 @@ pkg_config() {
 	local db="$(g-octave --config db)"
 	mkdir -p "${db}" || die 'mkdir failed.'
 	einfo "Extracting g-octave database files to: ${db}"
-	tar -xzf "${DISTDIR}/${PN}-db-${DB_COMMIT:0:7}.tar.gz" -C "${db}" || die 'tar failed.'
+	tar -xzf "${EROOT}/usr/share/g-octave/${PN}-db-${DB_COMMIT:0:7}.tar.gz" -C "${db}" || die 'tar failed.'
 	rm -rf "${db}"/{patches,octave-forge,info.json,manifest.json,timestamp} || die 'rm db files failed.'
 	mv -f "${db}/${DB_DIR}"/* "${db}" || die 'mv failed.'
 	rm -rf "${db}/${DB_DIR}" || die 'rm db dir failed.'
