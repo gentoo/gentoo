@@ -12,13 +12,10 @@ SRC_URI="https://downloads.sourceforge.net/project/rankwidth/${P}.tar.gz"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
-IUSE="+executable"
-
-DEPEND="executable? ( >=dev-libs/igraph-0.6 )"
+IUSE=""
 
 # We have a file collision (librw.so) with xpaint, bug 560210.
-RDEPEND="${DEPEND}
-	!media-gfx/xpaint"
+RDEPEND="!media-gfx/xpaint"
 
 src_prepare() {
 	# The upstream tarball for v0.8 contains SYMLINKS to ar-lib,
@@ -30,13 +27,7 @@ src_prepare() {
 }
 
 src_configure() {
-	econf $(use_enable executable)
-}
-
-src_install() {
-	default
-	# The examples graphs are meant to be fed uncompressed into the 'rw'
-	# program. The rest of the docs are small so just leave everything
-	# uncompressed.
-	docompress -x /usr/share/doc/${PF}
+	# The executable depends on igraph, which has gone off the rails
+	# upstream and has copy/pasted ~10 libraries into its src/ directory.
+	econf --disable-executable
 }
