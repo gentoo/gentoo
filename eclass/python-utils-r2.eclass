@@ -271,23 +271,6 @@ _python_export() {
 				export PYTHON=${EPREFIX}/usr/bin/${impl}
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
-			PYTHON_CONFIG)
-				local flags val
-
-				case "${impl}" in
-					python*)
-						[[ -n ${PYTHON} ]] || die "PYTHON needs to be set for ${var} to be exported, or requested before it"
-						flags=$("${PYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")') || die
-						val=${PYTHON}${flags}-config
-						;;
-					*)
-						die "${impl}: obtaining ${var} not supported"
-						;;
-				esac
-
-				export PYTHON_CONFIG=${val}
-				debug-print "${FUNCNAME}: PYTHON_CONFIG = ${PYTHON_CONFIG}"
-				;;
 			PYTHON_PKG_DEP)
 				local d
 				case ${impl} in
@@ -434,20 +417,32 @@ python_get_LIBS() {
 }
 
 # @FUNCTION: python_get_PYTHON_CONFIG
-# @USAGE: [<impl>]
 # @DESCRIPTION:
-# Obtain and print the PYTHON_CONFIG location for the given
-# implementation. If no implementation is provided, ${EPYTHON} will be
-# used.
+# Obtain and print the PYTHON_CONFIG location for ${EPYTHON}.
 #
 # Please note that this function can be used with CPython only.
 # It requires Python installed, and therefore proper build-time
 # dependencies need be added to the ebuild.
 python_get_PYTHON_CONFIG() {
 	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${EPYTHON} ]] || die "EPYTHON must be set before calling ${FUNCNAME}"
 
-	_python_export "${@}" PYTHON_CONFIG
-	echo "${PYTHON_CONFIG}"
+	local flags out
+	local PYTHON
+	_python_export PYTHON
+
+	case ${EPYTHON} in
+		python*)
+			flags=$("${EPYTHON}" -c 'import sysconfig; print(sysconfig.get_config_var("ABIFLAGS") or "")') || die
+			out=${PYTHON}${flags}-config
+			;;
+		*)
+			die "${EPYTHON}: obtaining PYTHON_CONFIG not supported"
+			;;
+	esac
+
+	debug-print "${FUNCNAME} -> ${out}"
+	echo "${out}"
 }
 
 # @FUNCTION: python_get_scriptdir
