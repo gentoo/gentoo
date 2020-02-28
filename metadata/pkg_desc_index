@@ -13378,7 +13378,7 @@ media-plugins/vdr-joystick 0.0.3: VDR plugin: allows using a joystick as a remot
 media-plugins/vdr-launcher 0.0.4: VDR Plugin: launch other plugins - even when their menu-entry is hidden
 media-plugins/vdr-lcdproc 0.0.10.9 0.0.10.9-r1: VDR plugin: use LCD device for additional output
 media-plugins/vdr-live 0.3.0_p20130504-r1 2.3.1: VDR Plugin: Web Access To Settings
-media-plugins/vdr-loadepg 0.2.5: VDR : Loadepg Plugin; Canal+ group (Mediahighway)
+media-plugins/vdr-loadepg 0.2.7: VDR : Loadepg Plugin; Canal+ group (Mediahighway)
 media-plugins/vdr-menuorg 0.5.1: VDR plugin: make osd menu configurable via config-file
 media-plugins/vdr-mlist 1.0.2: VDR plugin: Show a history of the last OSD message
 media-plugins/vdr-mount 0.0.2: VDR plugin: (Un)Mount removable media via osd
@@ -16273,7 +16273,7 @@ sci-mathematics/gimps 29.8.6: The Great Internet Mersenne Prime Search
 sci-mathematics/ginac 1.6.6 1.7.2 1.7.4 1.7.8: C++ library and tools for symbolic calculations
 sci-mathematics/glpk 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
-sci-mathematics/gmp-ecm 6.4.4-r1 7.0.4-r1 9999: Elliptic Curve Method for Integer Factorization
+sci-mathematics/gmp-ecm 6.4.4-r1 7.0.4-r1 7.0.4-r2 9999: Elliptic Curve Method for Integer Factorization
 sci-mathematics/gp2c 0.0.11.2-r1: A GP to C translator
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
 sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
