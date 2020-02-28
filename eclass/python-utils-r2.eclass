@@ -271,22 +271,6 @@ _python_export() {
 				export PYTHON=${EPREFIX}/usr/bin/${impl}
 				debug-print "${FUNCNAME}: PYTHON = ${PYTHON}"
 				;;
-			PYTHON_LIBS)
-				local val
-
-				case "${impl}" in
-					python*)
-						# python-2.7, python-3.2, etc.
-						val=$($(tc-getPKG_CONFIG) --libs ${impl/n/n-}) || die
-						;;
-					*)
-						die "${impl}: obtaining ${var} not supported"
-						;;
-				esac
-
-				export PYTHON_LIBS=${val}
-				debug-print "${FUNCNAME}: PYTHON_LIBS = ${PYTHON_LIBS}"
-				;;
 			PYTHON_CONFIG)
 				local flags val
 
@@ -423,20 +407,30 @@ python_get_CFLAGS() {
 }
 
 # @FUNCTION: python_get_LIBS
-# @USAGE: [<impl>]
 # @DESCRIPTION:
 # Obtain and print the compiler flags for linking against Python,
-# for the given implementation. If no implementation is provided,
-# ${EPYTHON} will be used.
+# for ${EPYTHON}.
 #
 # Please note that this function can be used with CPython only.
 # It requires Python and pkg-config installed, and therefore proper
 # build-time dependencies need be added to the ebuild.
 python_get_LIBS() {
 	debug-print-function ${FUNCNAME} "${@}"
+	[[ ${EPYTHON} ]] || die "EPYTHON must be set before calling ${FUNCNAME}"
 
-	_python_export "${@}" PYTHON_LIBS
-	echo "${PYTHON_LIBS}"
+	local out
+	case ${EPYTHON} in
+		python*)
+			# python-2.7, python-3.2, etc.
+			out=$($(tc-getPKG_CONFIG) --libs ${EPYTHON/n/n-}) || die
+			;;
+		*)
+			die "${EPYTHON}: obtaining LIBS not supported"
+			;;
+	esac
+
+	debug-print "${FUNCNAME} -> ${out}"
+	echo "${out}"
 }
 
 # @FUNCTION: python_get_PYTHON_CONFIG

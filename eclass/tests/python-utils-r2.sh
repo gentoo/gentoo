@@ -81,7 +81,7 @@ if [[ -x /usr/bin/python2.7 ]]; then
 	test_get library_path python2.7 "/usr/lib*/libpython2.7$(get_libname)"
 	test_var PYTHON_CONFIG python2_7 /usr/bin/python2.7-config
 	test_get CFLAGS python2.7 "*-I/usr/include/python2.7*"
-	test_var PYTHON_LIBS python2_7 "*-lpython2.7*"
+	test_get LIBS python2.7 "*-lpython2.7*"
 fi
 test_var PYTHON_PKG_DEP python2_7 '*dev-lang/python*:2.7'
 test_var PYTHON_SCRIPTDIR python2_7 /usr/lib/python-exec/python2.7
@@ -95,7 +95,7 @@ if [[ -x /usr/bin/python3.6 ]]; then
 	test_get library_path python3.6 "/usr/lib*/libpython3.6${abiflags}$(get_libname)"
 	test_var PYTHON_CONFIG python3_6 "/usr/bin/python3.6${abiflags}-config"
 	test_get CFLAGS python3.6 "*-I/usr/include/python3.6*"
-	test_var PYTHON_LIBS python3_6 "*-lpython3.6*"
+	test_get LIBS python3.6 "*-lpython3.6*"
 fi
 test_var PYTHON_PKG_DEP python3_6 '*dev-lang/python*:3.6'
 test_var PYTHON_SCRIPTDIR python3_6 /usr/lib/python-exec/python3.6
@@ -109,7 +109,7 @@ if [[ -x /usr/bin/python3.7 ]]; then
 	test_get library_path python3.7 "/usr/lib*/libpython3.7${abiflags}$(get_libname)"
 	test_var PYTHON_CONFIG python3_7 "/usr/bin/python3.7${abiflags}-config"
 	test_get CFLAGS python3.7 "*-I/usr/include/python3.7*"
-	test_var PYTHON_LIBS python3_7 "*-lpython3.7*"
+	test_get LIBS python3.7 "*-lpython3.7*"
 fi
 test_var PYTHON_PKG_DEP python3_7 '*dev-lang/python*:3.7'
 test_var PYTHON_SCRIPTDIR python3_7 /usr/lib/python-exec/python3.7
