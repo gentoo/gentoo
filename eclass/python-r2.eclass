@@ -596,7 +596,7 @@ _python_multibuild_wrapper() {
 	local -x EPYTHON PYTHON
 	local -x PATH=${PATH} PKG_CONFIG_PATH=${PKG_CONFIG_PATH}
 	python_export "${MULTIBUILD_VARIANT}" EPYTHON PYTHON
-	python_wrapper_setup
+	_python_wrapper_setup
 
 	"${@}"
 }
@@ -742,7 +742,7 @@ python_setup() {
 		die "${FUNCNAME}: no enabled implementation satisfy requirements"
 	fi
 
-	python_wrapper_setup
+	_python_wrapper_setup
 	einfo "Using ${EPYTHON} in global scope"
 }
 

@@ -299,7 +299,7 @@ python_setup() {
 		ewarn "Dependencies won't be satisfied, and EPYTHON/eselect-python will be ignored."
 
 		python_export "${impls[0]}" EPYTHON PYTHON
-		python_wrapper_setup
+		_python_wrapper_setup
 		einfo "Using ${EPYTHON} to build"
 		return
 	fi
@@ -308,7 +308,7 @@ python_setup() {
 	if [[ ${EPYTHON} ]]; then
 		if _python_EPYTHON_supported "${EPYTHON}"; then
 			python_export EPYTHON PYTHON
-			python_wrapper_setup
+			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
 			return
 		fi
@@ -324,7 +324,7 @@ python_setup() {
 			break
 		elif _python_EPYTHON_supported "${i}"; then
 			python_export "${i}" EPYTHON PYTHON
-			python_wrapper_setup
+			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
 			return
 		fi
@@ -335,7 +335,7 @@ python_setup() {
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
 		python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
 		if _python_EPYTHON_supported "${EPYTHON}"; then
-			python_wrapper_setup
+			_python_wrapper_setup
 			einfo "Using ${EPYTHON} to build"
 			return
 		fi
