@@ -2623,14 +2623,12 @@ dev-python/translate-toolkit:yaml - Support YAML format
 dev-python/twisted:conch - include Twisted SSHv2 implementation
 dev-python/twisted:http2 - include http2 support
 dev-python/twisted:serial - include serial port support
-dev-python/twisted-core:serial - include serial port support
 dev-python/urllib3:brotli - Enable support for brotli compression
 dev-python/ws4py:client - Install client modules
 dev-python/ws4py:server - Install server modules
 dev-python/wxpython:examples - Install interactive demo module browser and sample applets.
 dev-python/zeep:async - Add async support
 dev-python/zeep:tornado - Add tornado support
-dev-python/zsi:twisted - add support for python-twisted (needs dev-python/twisted-core and dev-python/twisted-web)
 dev-qt/designer:declarative - Build the qdeclarativeview plugin
 dev-qt/designer:webkit - Build the qwebview plugin
 dev-qt/linguist-tools:qml - Enable QML support in lupdate

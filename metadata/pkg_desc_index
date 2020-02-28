@@ -7458,7 +7458,6 @@ dev-python/awesome-slugify 1.6.5: Python flexible slugify function
 dev-python/aws-sam-translator 1.11.0: A library that transform SAM templates into AWS CloudFormation templates
 dev-python/aws-xray-sdk-python 2.4.2: AWS X-Ray SDK for Python
 dev-python/awscli 1.16.310 1.16.314 1.17.7 1.17.17 1.18.5: Universal Command Line Environment for AWS
-dev-python/axiom 0.7.2 0.7.5: Object database implemented on top of SQLite
 dev-python/babelfish 0.5.5-r1 9999: Python library to work with countries and languages
 dev-python/backcall 0.1.0: Specifications for callback functions passed in to an API
 dev-python/backports 1.0: Namespace for backported Python features
@@ -7717,7 +7716,6 @@ dev-python/entrypoints 0.2.3 0.3 0.3-r1: Discover and load entry points from ins
 dev-python/enum34 1.1.6-r1: Python 3.4 Enum backported
 dev-python/envoy 0.0.3 0.0.3-r1: Simple API for running external processes
 dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
-dev-python/epsilon 0.7.0 0.7.1: Epsilon is a Python utilities package, most famous for its Time class
 dev-python/epydoc 3.0.1-r2: Tool for generating API documentation for Python modules from docstrings
 dev-python/eradicate 0.2.1: Removes commented-out code from Python files
 dev-python/errorhandler 2.0.1: Logging framework handler
@@ -8655,7 +8653,6 @@ dev-python/pytz 2016.3 2017.2 2018.4 2018.9 2019.3: World timezone definitions f
 dev-python/pyu2f 0.1.4: Python based U2F host library
 dev-python/pyudev 0.21.0 0.22.0: Python binding to libudev
 dev-python/pyusb 1.0.2: USB support for Python
-dev-python/pyutil 2.0.0-r1: A collection of utilities for Python programmers
 dev-python/pyvorbis 1.4-r4: Python bindings for the ogg.vorbis library
 dev-python/pywavelets 0.5.2 0.5.2-r1: Discrete Wavelet Transforms in Python
 dev-python/pywinrm 0.3.0: Windows Remote Management through Python
@@ -8940,16 +8937,6 @@ dev-python/tvdb_api 1.10_pre20150406-r1 2.0: Python interface to thetvdb.com API
 dev-python/tweepy 3.5.0: A Python library for accessing the Twitter API
 dev-python/twine 1.11.0 1.15.0 3.0.0 3.1.1: Collection of utilities for publishing packages on PyPI
 dev-python/twisted 16.6.0-r3 18.4.0 19.10.0: An asynchronous networking framework written in Python
-dev-python/twisted-conch 13.2.0 15.2.1: Twisted SSHv2 implementation
-dev-python/twisted-core 13.2.0 15.2.1: An asynchronous networking framework written in Python
-dev-python/twisted-lore 13.2.0 15.2.1: Twisted documentation system
-dev-python/twisted-mail 13.2.0 15.2.1: A Twisted Mail library, server and client
-dev-python/twisted-names 13.2.0 15.2.1: A Twisted DNS implementation
-dev-python/twisted-news 13.2.0 15.2.1: Twisted News is an NNTP server and programming library
-dev-python/twisted-pair 13.2.0 15.2.1: Twisted low-level networking
-dev-python/twisted-runner 13.2.0 15.2.1: Twisted Runner is a process management library and inetd replacement
-dev-python/twisted-web 13.2.0 15.2.1: Twisted web server, programmable in Python
-dev-python/twisted-words 13.2.0 15.2.1: Twisted Words contains Instant Messaging implementations
 dev-python/twitter 1.18.0: An API and command-line toolset for Twitter (twitter.com)
 dev-python/twython 3.3.0 3.6.0: An easy (and up to date) way to access Twitter data with Python
 dev-python/txAMQP 0.8.2: Python library for communicating with AMQP peers using Twisted
@@ -8991,7 +8978,6 @@ dev-python/venusian 1.0 1.0_p20161030: A library for deferring decorator actions
 dev-python/verboselogs 1.6 1.7: Verbose logging for Python's logging module
 dev-python/versioneer 0.16 0.18: Easy VCS-based management of project version strings
 dev-python/versiontools 1.9.1-r1: Smart replacement for plain tuple used in __version__
-dev-python/vertex 0.3.0-r1 0.3.1-r1: An implementation of the Q2Q protocol
 dev-python/vine 1.1.3 1.3.0: Python Promises
 dev-python/virtualenv 16.0.0 16.7.9: Virtual Python Environment builder
 dev-python/virtualenv-clone 0.2.6 0.5.3: A script for cloning a non-relocatable virtualenv
@@ -9058,7 +9044,6 @@ dev-python/yarl 1.1.1 1.3.0: Yet another URL library
 dev-python/yaswfp 0.9.3 0.9.3-r1: Yet Another SWF Parser
 dev-python/zVMCloudConnector 1.2.2 1.4.1: a development sdk for managing z/VM
 dev-python/zake 0.2.1: Set of testing utilities for the kazoo library
-dev-python/zbase32 1.1.5: base32 encoder/decoder (not RFC 3548 compliant)
 dev-python/zc-buildout 2.5.3-r1: System for managing development buildouts
 dev-python/zc-lockfile 1.4 2.0: Basic inter-process locks
 dev-python/zeep 3.4.0: A modern/fast Python SOAP client based on lxml / requests
@@ -9075,7 +9060,6 @@ dev-python/zope-interface 4.1.1 4.3.2 4.4.3 4.5.0 4.6.0 4.7.1: Interfaces for Py
 dev-python/zope-schema 4.5.0 4.9.3: Zope schema Architecture
 dev-python/zope-testing 4.6.2 4.7-r1: Zope testing helpers
 dev-python/zope-testrunner 4.7.0 5.1: Zope testrunner script
-dev-python/zsi 2.1_alpha1-r1: Web Services for Python
 dev-python/zstandard 0.8.1 0.11.0 0.12.0 0.13.0: Zstandard Bindings for Python
 dev-qt/assistant 5.12.3 5.13.2 5.14.1: Tool for viewing on-line documentation in Qt help file format
 dev-qt/designer 5.12.3 5.13.2 5.14.1: WYSIWYG tool for designing and building graphical user interfaces with QtWidgets
@@ -10391,7 +10375,6 @@ dev-util/buildbot 0.9.12-r1 1.1.2 1.3.0 9999: BuildBot build automation system
 dev-util/buildbot-console-view 0.9.12 1.1.2 1.3.0: Buildbot console-view plugin
 dev-util/buildbot-grid-view 0.9.12_p1 1.1.2 1.3.0: BuildBot grid view web interface
 dev-util/buildbot-pkg 0.9.12 1.1.2 1.3.0: BuildBot common www build tools for packaging releases
-dev-util/buildbot-slave 0.8.12: BuildBot Slave Daemon
 dev-util/buildbot-waterfall-view 0.9.12 1.1.2 1.3.0: Buildbot waterfall-view plugin
 dev-util/buildbot-worker 0.9.12 1.1.2 1.3.0 9999: BuildBot Worker (slave) Daemon
 dev-util/buildbot-wsgi-dashboards 0.9.12 1.1.2 1.3.0: Buildbot plugin to integrate flask or bottle dashboards to buildbot UI
@@ -12728,7 +12711,6 @@ media-gfx/printrun 20150310-r4 99999999: GUI interface for 3D printing on RepRap
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/psftools 1.0.10: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
-media-gfx/pycam 0.6.4: Open Source CAM - Toolpath Generation for 3-Axis CNC machining
 media-gfx/qimgv 0.8.5 0.8.8 9999: A cross-platform image viewer with webm support. Written in qt5.
 media-gfx/qiv 2.3.2: Quick Image Viewer
 media-gfx/qrencode 4.0.2: C library for encoding data in a QR Code symbol
@@ -16218,7 +16200,6 @@ sci-libs/profphd-utils 1.0.10 1.0.10-r1: Additional utils for profphd
 sci-libs/proj 4.9.2 5.2.0 6.2.1 6.3.0: PROJ coordinate transformation software
 sci-libs/punc 1.5: Portable Understructure for Numerical Computing
 sci-libs/pycifrw 3.6.2 4.1.1: Reading and writing CIF (Crystallographic Information Format) files
-sci-libs/pymmlib 1.2.1-r1: Toolkit and library for the analysis and manipulation of macromolecular models
 sci-libs/pyshp 1.2.0 9999: Pure Python read/write support for ESRI Shapefile format
 sci-libs/qd 2.3.17 2.3.22: Quad-double and double-double float arithmetics
 sci-libs/qfits 6.2.0: ESO stand-alone C library offering easy access to FITS files
