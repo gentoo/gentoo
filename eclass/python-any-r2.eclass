@@ -262,7 +262,7 @@ _python_EPYTHON_supported() {
 	esac
 
 	if has "${i}" "${_PYTHON_SUPPORTED_IMPLS[@]}"; then
-		if python_is_installed "${i}"; then
+		if _python_is_installed "${i}"; then
 			if declare -f python_check_deps >/dev/null; then
 				local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
 				python_check_deps

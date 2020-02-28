@@ -1062,14 +1062,15 @@ python_is_python3() {
 	[[ ${impl} == python3* || ${impl} == pypy3 ]]
 }
 
-# @FUNCTION: python_is_installed
+# @FUNCTION: _python_is_installed
 # @USAGE: [<impl>]
+# @INTERNAL
 # @DESCRIPTION:
 # Check whether the interpreter for <impl> (or ${EPYTHON}) is installed.
 # Uses has_version with a proper dependency string.
 #
 # Returns 0 (true) if it is, 1 (false) otherwise.
-python_is_installed() {
+_python_is_installed() {
 	local impl=${1:-${EPYTHON}}
 	[[ ${impl} ]] || die "${FUNCNAME}: no impl nor EPYTHON"
 	local hasv_args=()
