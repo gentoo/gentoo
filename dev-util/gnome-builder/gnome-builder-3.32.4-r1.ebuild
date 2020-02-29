@@ -59,7 +59,7 @@ RDEPEND="
 	glade? ( >=dev-util/glade-3.22.0:3.10 )
 	spell? ( >=app-text/gspell-1.8:0=
 		app-text/enchant:2 )
-	sysprof? ( >=dev-util/sysprof-3.31.90[gtk] )
+	sysprof? ( >=dev-util/sysprof-3.31.90:0/0[gtk] )
 	vala? (
 		dev-lang/vala:=
 		$(vala_depend)
