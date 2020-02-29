@@ -44,7 +44,7 @@ RDEPEND="${DEPEND}
 	hyphenation? ( >=dev-python/pyphen-0.9.1[${PYTHON_USEDEP}] )
 	ipython? ( >=dev-python/ipython-2.0.0[notebook,${PYTHON_USEDEP}] )
 	jinja? ( >=dev-python/jinja-2.7.2[${PYTHON_USEDEP}] )
-	watchdog? ( ~dev-python/watchdog-0.8.3[${PYTHON_USEDEP}] )
+	watchdog? ( >=dev-python/watchdog-0.8.3[${PYTHON_USEDEP}] )
 	webmedia? ( >=dev-python/micawber-0.3.0[${PYTHON_USEDEP}] )
 	websocket? ( ~dev-python/ws4py-0.3.4[${PYTHON_USEDEP}] )"
 #	typography? ( >=dev-python/typogrify-2.0.4[${PYTHON_USEDEP}] ) # needs smartypants
