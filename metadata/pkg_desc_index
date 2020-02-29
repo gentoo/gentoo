@@ -98,6 +98,7 @@ acct-group/plugdev 0: Group controlling access to removable media
 acct-group/polkitd 0: System group: polkitd
 acct-group/postdrop 0: System group: postdrop
 acct-group/postfix 0: System group: postfix
+acct-group/postgres 0: PostgreSQL program group
 acct-group/prometheus 0: System group: prometheus
 acct-group/puppet 0: System group: puppet
 acct-group/puppetdb 0: System group: puppetdb
@@ -248,6 +249,7 @@ acct-user/placement 0: User for the placement openstack service
 acct-user/plex 0: Plex Media Server user
 acct-user/polkitd 0: System user: polkitd
 acct-user/postfix 0: user for postfix daemon
+acct-user/postgres 0: PostgreSQL program user
 acct-user/postmaster 0: Postmaster user
 acct-user/prometheus 0: user for prometheus
 acct-user/puppet 0: user for puppet services
