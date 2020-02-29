@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <upstream>
+    <remote-id type="github">chaos/genders</remote-id>
+  </upstream>
+  <longdescription>Genders is a static cluster configuration database used for cluster configuration management. It is used by a variety of tools and scripts for management of large clusters. The genders database is typically replicated on every node of the cluster. It describes the layout and configuration of the cluster so that tools and scripts can sense the variations of cluster nodes. By abstracting this information into a plain text file, it becomes possible to change the configuration of a cluster by modifying only one file.</longdescription>
+</pkgmetadata>
