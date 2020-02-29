@@ -7688,7 +7688,7 @@ dev-python/dogpile-core 0.4.1: Copy-on-write locking mechanism for expensive res
 dev-python/doit 0.29.0 0.32.0: Automation tool
 dev-python/doit-py 0.4.0 0.4.0-r1: doit tasks for python stuff
 dev-python/dominate 2.3.1 2.3.5 2.4.0: Library for creating and manipulating HTML documents using an elegant DOM API
-dev-python/doublex 1.8.1: Python test doubles
+dev-python/doublex 1.8.1 1.9.2: Python test doubles
 dev-python/doublex-expects 0.7.0_rc2: Expects matchers for Doublex test doubles assertions
 dev-python/dpkt 1.8-r1 1.8.8 1.9.1: Fast, simple packet creation / parsing
 dev-python/drf-yasg 1.14.0 1.16.0 1.17.0: Automated generation of Swagger/OpenAPI 2.0 schemas from Django Rest framework
