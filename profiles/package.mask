@@ -545,7 +545,6 @@ app-mobilephone/lightblue
 # EAPI conversion caused some regressions, need to redesign old ebuilds.
 =dev-lang/lua-5.1.5-r5
 
-
 # Andrew Ammerlaan <andrewammerlaan@riseup.net> (2020-01-26)
 # Proxy Maintainers <proxy-maint@gentoo.org>
 # v3.6.3 uses huge amounts of memory: Bug #705682
@@ -557,11 +556,6 @@ app-mobilephone/lightblue
 # install from addons.mozilla.org
 # passff-host remains in the tree
 www-plugins/passff
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-18)
-# The following packages depend on django, support Python 2 only
-# and have no reverse dependencies.
-# Removal in 30 days.  Bug #706360.
 
 # Victor Payno <vpayno+gentoo@gmail.com> (2020-01-23)
 # Requires slotted lua.
