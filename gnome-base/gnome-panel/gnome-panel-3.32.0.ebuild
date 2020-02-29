@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -21,7 +21,9 @@ RDEPEND="
 	>=x11-libs/gtk+-3.22.0:3[X]
 	>=x11-libs/libwnck-3.4.6:3
 	>=gnome-base/gnome-menus-3.7.90:3
-	eds? ( >=gnome-extra/evolution-data-server-3.5.3:= )
+	eds? ( >=gnome-extra/evolution-data-server-3.5.3:=
+		<gnome-extra/evolution-data-server-3.33
+	)
 	elogind? ( >=sys-auth/elogind-230 )
 	systemd? ( >=sys-apps/systemd-230:= )
 	>=x11-libs/cairo-1.0.0[X,glib]
