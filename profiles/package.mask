@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-29)
+# Breaks at least app-text/texlive-core and app-office/libreoffice right now,
+# bugs 711096, 711102.
+~app-text/poppler-0.86.0
+
 # Miroslav Šulc <fordfrog@gentoo.org> (2020-02-27)
 # Depends on dev-java/eclipse-ecj:4.13 which
 # depends on >=virtual/{jdk,jre}-11 which is masked
