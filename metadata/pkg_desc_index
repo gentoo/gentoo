@@ -2575,7 +2575,7 @@ app-text/fbless 0.2.3: Python-based console fb2 reader with less-like interface
 app-text/fblog 1.3.1: Small command-line JSON Log viewer
 app-text/fbpdf 0_p20190202: framebuffer pdf and djvu viewer
 app-text/fbreader 0.99.4-r5: E-Book Reader. Supports many e-book formats
-app-text/fictionup 0.1: A command-line markdown to fb2 convertor
+app-text/fictionup 0.1 0.2.1: A command-line markdown to fb2 convertor
 app-text/flpsed 0.7.3: Pseudo PostScript editor
 app-text/getxbook 1.2: Download books from google, amazon, barnes and noble
 app-text/ghostscript-gpl 9.26 9.50: Interpreter for the PostScript language and PDF
@@ -9807,7 +9807,7 @@ dev-ruby/netrc 0.11.0: This library reads and writes .netrc files
 dev-ruby/network_interface 0.0.2: network_interface layer from metasploit pcaprub
 dev-ruby/nexpose 7.2.1: API client for Nexpose vulnerability managment product
 dev-ruby/niceogiri 1.1.2: Some wrappers around and helpers for XML manipulation using Nokogiri
-dev-ruby/nio4r 1.2.1-r1 2.3.1 2.4.0 2.5.1 2.5.2: A high performance selector API for monitoring IO objects
+dev-ruby/nio4r 1.2.1-r1 2.4.0 2.5.2: A high performance selector API for monitoring IO objects
 dev-ruby/nokogiri 1.10.4: Nokogiri is an HTML, XML, SAX, and Reader parser
 dev-ruby/nokogiri-diff 0.2.0-r2: Calculate the differences between two XML/HTML documents
 dev-ruby/nokogumbo 1.5.0 2.0.1: A Nokogiri interface to the Gumbo HTML5 parser
@@ -9945,7 +9945,7 @@ dev-ruby/rspec-its 1.2.0-r1 1.3.0: A Behaviour Driven Development (BDD) framewor
 dev-ruby/rspec-json_expectations 2.2.0: Set of matchers and helpers to allow you test your APIs responses.
 dev-ruby/rspec-mocks 2.99.2 3.8.1 3.8.2 3.9.0 3.9.1: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspec-rails 3.8.2 3.8.3 3.9.0: RSpec's official Ruby on Rails plugin
-dev-ruby/rspec-retry 0.6.1 0.6.2: Retry intermittently failing rspec examples
+dev-ruby/rspec-retry 0.6.2: Retry intermittently failing rspec examples
 dev-ruby/rspec-stubbed_env 1.0.0: Stub environment variables in a scoped context for testing
 dev-ruby/rspec-support 3.8.2 3.8.3 3.9.0 3.9.1 3.9.2: A Behaviour Driven Development (BDD) framework for Ruby
 dev-ruby/rspectacular 0.70.7 0.70.8: RSpec support and matchers
@@ -10452,7 +10452,7 @@ dev-util/devhelp 3.30.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20191110 1.3.20191210: tool to display dialog boxes from a shell
 dev-util/diffball 1.0.1 1.0.1-r1 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
-dev-util/diffoscope 87 88 129: Will try to get to the bottom of what makes files or directories different
+dev-util/diffoscope 129: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
 dev-util/diffuse 0.4.8-r1 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
@@ -12536,7 +12536,7 @@ media-gfx/apngdis 2.9: extract PNG frames from an APNG
 media-gfx/apngopt 1.4: optimize APNG images
 media-gfx/argyllcms 2.1.1 2.1.1-r1 2.1.2: Open source, ICC compatible color management system
 media-gfx/arss 0.2.3-r1: Analysis & Resynthesis Sound Spectrograph
-media-gfx/asymptote 2.61: A vector graphics language that provides a framework for technical drawing
+media-gfx/asymptote 2.61 2.62: A vector graphics language that provides a framework for technical drawing
 media-gfx/autopano-sift-C 2.5.1: SIFT algorithm for automatic panorama creation in C
 media-gfx/aview 1.3.0_rc1-r3: An ASCII Image Viewer
 media-gfx/birdfont 2.18.3: Font editor for the creation of vector graphics and export TTF, EOT & SVG fonts
@@ -15937,7 +15937,7 @@ sci-geosciences/gpscorrelate 1.6.1-r1: Tool for adjusting EXIF tags of your phot
 sci-geosciences/gpsd 3.17-r3 3.17-r4 3.18.1 3.19 9999: GPS daemon and library for USB/serial GPS devices and GPS/mapping clients
 sci-geosciences/gpx-viewer 0.4.0-r1: Simple program to visualize a gpx file
 sci-geosciences/gpxpy 0.8.6: python GPX parser
-sci-geosciences/gpxsee 7.18 7.20: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
+sci-geosciences/gpxsee 7.18 7.20 7.23: A viewer and analyzer that supports gpx, tcx, kml, fit, igc and nmea files
 sci-geosciences/grass 7.4.4 7.4.4-r3: A free GIS with raster and vector functionality, as well as 3D vizualization
 sci-geosciences/gshhg-gmt 2.3.7: Global Self-consistent, Hierarchical, High-resolution Geography Database
 sci-geosciences/gshhs 1.13: Global Self-consistent, Hierarchical, High-resolution Shoreline programs
@@ -18039,7 +18039,7 @@ www-servers/nginx-unit 1.8.0 1.12.0-r3 1.13.0 1.14.0 1.15.0: Dynamic web and app
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.3 9999: Pretty small HTTP server -- a command-line tool to share files
-www-servers/puma 3.12.2 4.3.1: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
+www-servers/puma 3.12.2 3.12.4 4.3.1 4.3.3: a simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack
 www-servers/resin 4.0.48-r1: A fast Servlet and JSP engine
 www-servers/servefile 0.4.4: Serve a single file via HTTP
 www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections based on the hostname
