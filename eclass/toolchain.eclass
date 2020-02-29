@@ -192,6 +192,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 		IUSE+=" systemtap" TC_FEATURES+=(systemtap)
 	tc_version_is_at_least 9.0 && IUSE+=" d"
 	tc_version_is_at_least 9.1 && IUSE+=" lto"
+	tc_version_is_at_least 10 && IUSE+=" zstd" TC_FEATURES+=(zstd)
 fi
 
 if tc_version_is_at_least 10; then
@@ -257,6 +258,10 @@ fi
 if tc_has_feature systemtap ; then
 	# gcc needs sys/sdt.h headers on target
 	DEPEND+=" systemtap? ( dev-util/systemtap )"
+fi
+
+if tc_has_feature zstd ; then
+	DEPEND+=" zstd? ( app-arch/zstd )"
 fi
 
 PDEPEND=">=sys-devel/gcc-config-1.7"
@@ -1271,6 +1276,10 @@ toolchain_src_configure() {
 			# See Note [implicitly enabled flags]
 			$(usex vtv '' --disable-libvtv)
 		)
+	fi
+
+	if in_iuse zstd ; then
+		confgcc+=( $(use_with zstd) )
 	fi
 
 	# newer gcc's come with libquadmath, but only fortran uses
