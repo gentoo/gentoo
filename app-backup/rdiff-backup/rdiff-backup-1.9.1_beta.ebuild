@@ -17,10 +17,11 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos"
 IUSE="examples"
 
-DEPEND=">=net-libs/librsync-1.0:0="
-RDEPEND="${DEPEND}
-	dev-python/pylibacl[${PYTHON_USEDEP}]
-	dev-python/pyxattr[${PYTHON_USEDEP}]"
+DEPEND="dev-python/setuptools_scm[${PYTHON_USEDEP}]
+	>=net-libs/librsync-1.0:0="
+RDEPEND="dev-python/pylibacl[${PYTHON_USEDEP}]
+	dev-python/pyxattr[${PYTHON_USEDEP}]
+	>=net-libs/librsync-1.0:0="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.4.0-no-docs.patch"
