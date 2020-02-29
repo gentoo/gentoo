@@ -126,12 +126,12 @@ libretro-core_src_prepare() {
 		# * Add short-rev to Makefile
 		sed \
 			-e 's/\r$//g' \
-			-e "/flags.*=/s:-O[[:digit:]]:${CFLAGS}:g" \
-			-e "/CFLAGS.*=/s:-O[[:digit:]]:${CFLAGS}:g" \
-			-e "/CXXFLAGS.*=/s:-O[[:digit:]]:${CXXFLAGS}:g" \
-			-e "/.*,--version-script=.*/s:$: ${LDFLAGS} ${LIBS}:g" \
-			-e "/\$(CC)/s:\(\$(SHARED)\):\1 ${LDFLAGS} ${LIBS}:" \
-			-e 's:\(\$(CC)\):\1 \$(CFLAGS):g' \
+			-e "/flags.*=/s|-O[[:digit:]]|${CFLAGS}|g" \
+			-e "/CFLAGS.*=/s|-O[[:digit:]]|${CFLAGS}|g" \
+			-e "/CXXFLAGS.*=/s|-O[[:digit:]]|${CXXFLAGS}|g" \
+			-e "/.*,--version-script=.*/s|$| ${LDFLAGS} ${LIBS}|g" \
+			-e "/\$(CC)/s|\(\$(SHARED)\)|\1 ${LDFLAGS} ${LIBS}|" \
+			-e 's|\(\$(CC)\)|\1 \$(CFLAGS)|g' \
 			-e "s/GIT_VERSION\s.=.*$/GIT_VERSION=${custom_libretro_commit_sha}/g" \
 			-i "${makefile}" || die "Failed to use custom cflags in ${makefile}"
 	done
