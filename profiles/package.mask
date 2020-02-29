@@ -601,7 +601,8 @@ dev-db/clickhouse
 
 # Bernard Cafarelli <voyageur@gentoo.org> (2019-11-29)
 # Beta for new major version with initial Python 3 support
-=app-backup/rdiff-backup-1.4.0_beta*
+# Remove mask when stable version is released
+>=app-backup/rdiff-backup-1.4.0_beta
 
 # Lars Wendler <polynomial-c@gentoo.org> (2019-11-14)
 # Breaks archives containing relative paths
