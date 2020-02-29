@@ -531,6 +531,9 @@ src_install() {
 	emake INSTALL_ROOT="${D}" \
 		install-build install-headers install-programs
 
+	# Install the "phar" archive utility.
+	use phar && emake INSTALL_ROOT="${D}" install-pharcmd
+
 	local extension_dir="$("${ED}/${PHP_DESTDIR#${EPREFIX}}/bin/php-config" --extension-dir)"
 
 	# Create the directory where we'll put version-specific php scripts
