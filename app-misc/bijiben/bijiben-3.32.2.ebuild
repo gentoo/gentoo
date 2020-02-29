@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,6 +18,7 @@ DEPEND="
 	net-libs/gnome-online-accounts:=
 	>=x11-libs/gtk+-3.19.3:3
 	>=gnome-extra/evolution-data-server-3.13.90:=
+	<gnome-extra/evolution-data-server-3.33
 	dev-libs/libxml2:2
 	sys-apps/util-linux
 	>=net-libs/webkit-gtk-2.10:4
