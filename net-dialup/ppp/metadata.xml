@@ -24,8 +24,6 @@
     by passprompt.so PPP plugin for reading the password from a X11 input
     terminal</flag>
     <flag name="ipv6">Enables support for IP version 6</flag>
-    <flag name="pam">Enables PAM (Pluggable Authentication Modules)
-    support</flag>
     <flag name="radius">Enables RADIUS support</flag>
   </use>
   <upstream>
