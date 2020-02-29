@@ -900,7 +900,7 @@ app-crypt/rotix 0.83: Rotix allows you to generate rotational obfuscations
 app-crypt/sbsigntools 0.6-r2 0.9.1-r1 0.9.2: Utilities for signing and verifying files for UEFI Secure Boot
 app-crypt/scdrand 0.3.4: Feed kernel entropy pool from smartcard's TRNG
 app-crypt/scrypt 1.2.0: A simple password-based encryption utility using scrypt key derivation function
-app-crypt/scute 1.5.0: A PKCS #11 module for OpenPGP smartcards
+app-crypt/scute 1.5.0 1.6.0: A PKCS #11 module for OpenPGP smartcards
 app-crypt/seahorse 3.32.2: Manage your passwords and encryption keys
 app-crypt/seahorse-sharing 3.8.0_p20181216: Daemon for PGP public key sharing using DNS-SD and HKP
 app-crypt/shash 0.2.6-r2 0.2.6-r3: Generate or check digests or MACs of files
@@ -17191,7 +17191,7 @@ sys-cluster/rdma-core 26.0-r1 26.1 27.0-r1 28.0 9999: Userspace components for t
 sys-cluster/resource-agents 3.9.6 4.0.1: Resources pack for Heartbeat / Pacemaker
 sys-cluster/sanlock 3.6.0 3.8.0: shared storage lock manager
 sys-cluster/singularity 2.6.1: Application containers for Linux
-sys-cluster/slurm 19.05.4.1 19.05.5.1: A Highly Scalable Resource Manager
+sys-cluster/slurm 19.05.4.1 19.05.5.1 20.02.0.1: A Highly Scalable Resource Manager
 sys-cluster/spark-bin 2.3.1-r1 2.4.4-r1: Lightning-fast unified analytics engine
 sys-cluster/swift 2.22.0-r1 2.23.1-r1 2.24.0-r1 2019.2.9999: A highly available, distributed, and eventually consistent object/blob store
 sys-cluster/teleport 4.0.9 4.0.10 4.1.1 4.1.4 9999: Modern SSH server for teams managing distributed infrastructure
