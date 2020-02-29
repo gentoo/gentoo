@@ -15,7 +15,7 @@ DESCRIPTION="KDE Plasma workspace"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm64 ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="appstream +calendar feedback geolocation gps qalculate qrcode +semantic-desktop systemd"
 
 REQUIRED_USE="gps? ( geolocation )"
