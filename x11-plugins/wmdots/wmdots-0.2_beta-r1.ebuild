@@ -21,6 +21,10 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${PN}"
 
 src_prepare() {
+	pushd "${WORKDIR}" || die
+	eapply "${FILESDIR}"/${P}-gcc-10.patch
+	popd || die
+
 	default
 	eapply "${FILESDIR}"/${P}-stringh.patch
 	sed -e "s|cc|$(tc-getCC)|g" \
