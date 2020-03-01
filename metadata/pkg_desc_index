@@ -129,6 +129,7 @@ acct-group/steamcmd 0: A group for the SteamCMD server
 acct-group/strelaysrv 0: Group for the Syncthing relay server
 acct-group/stubby 0: Stubby program group (from net-dns/getdns)
 acct-group/stunnel 0: group for stunnel
+acct-group/supervisor 0: Group to grant access to app-admin/supervisor's management
 acct-group/suricata 0: Group for Suricata IDS
 acct-group/swift 0: System group: swift
 acct-group/syncthing 0: Group for the system-wide net-p2p/syncthing server
@@ -513,7 +514,7 @@ app-admin/su-exec 0.2: Switch user and group id and exec
 app-admin/sud 1.3-r1: A daemon to execute processes with special privileges in a nosuid environment
 app-admin/sudo 1.8.28_p1-r2 1.8.29-r2 1.8.30 1.8.31 9999: Allows users or groups to run commands as other users
 app-admin/superadduser 1.0.9 1.15: Interactive adduser script from Slackware
-app-admin/supervisor 4.0.4: A system for controlling process state under UNIX
+app-admin/supervisor 4.0.4 4.1.0: A system for controlling process state under UNIX
 app-admin/swatchdog 3.2.4-r1: Simple log watcher
 app-admin/sxid 4.2-r2: suid, sgid file and directory checking
 app-admin/sysklogd 1.5.1-r1 2.0.3 2.1 2.1.1 9999: Standard log daemons
@@ -5171,8 +5172,8 @@ dev-libs/mm 1.4.2-r2: Shared Memory Abstraction Library
 dev-libs/mmtf-cpp 1.0.0: The pure C++ implementation of the MMTF API, decoder and encoder
 dev-libs/mongo-c-driver 0.7.1-r1 0.8.1-r1 0.98.2 1.1.2-r1 1.1.10 1.3.5 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0 1.12.0 1.13.0-r1 1.13.1 1.14.0 1.15.1: Client library written in C for MongoDB
 dev-libs/mongo-cxx-driver 0.0.2.6.7-r1 1.0.0 1.0.5 1.1.2-r1: C++ Driver for MongoDB
-dev-libs/mpc 1.0.3 1.0.3-r2 1.1.0-r1: A library for multiprecision complex arithmetic with exact rounding
-dev-libs/mpfr 2.4.2_p3-r1 3.1.3_p4 3.1.4 3.1.5_p2 3.1.6 4.0.0-r1 4.0.1 4.0.2: library for multiple-precision floating-point computations with exact rounding
+dev-libs/mpc 1.1.0-r1: A library for multiprecision complex arithmetic with exact rounding
+dev-libs/mpfr 4.0.2: library for multiple-precision floating-point computations with exact rounding
 dev-libs/msgpack 1.1.0 3.1.1 3.2.0 3.2.1: MessagePack is a binary-based efficient data interchange format
 dev-libs/mxml 3.1: A small XML parsing library that you can use to read XML data files or strings
 dev-libs/nanomsg 1.1.4 1.1.5: High-performance messaging interface for distributed applications
