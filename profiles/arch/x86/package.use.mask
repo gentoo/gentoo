@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Mart Raudsepp <leio@gentoo.org> (2020-03-01)
+# dev-util/sysprof-capture is keyworded on x86
+x11-wm/mutter -sysprof
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
 # Vulkan is available on x86.
 dev-qt/qtdeclarative -vulkan
