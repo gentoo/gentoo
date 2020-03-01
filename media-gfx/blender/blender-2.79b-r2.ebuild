@@ -92,8 +92,13 @@ DEPEND="${RDEPEND}
 	>=dev-cpp/eigen-3.2.8:3
 	virtual/pkgconfig
 	doc? (
-		app-doc/doxygen[-nodot(-),dot(+),latex]
+		app-doc/doxygen[dot]
 		dev-python/sphinx[latex]
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
 	)
 	nls? ( sys-devel/gettext )"
 
