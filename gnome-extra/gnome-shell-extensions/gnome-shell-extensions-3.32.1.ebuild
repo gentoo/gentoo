@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,6 +23,7 @@ RDEPEND="${COMMON_DEPEND}
 	dev-libs/atk[introspection]
 	gnome-base/gnome-menus:3[introspection]
 	>=gnome-base/gnome-shell-3.32
+	<gnome-base/gnome-shell-3.33
 	media-libs/clutter:1.0[introspection]
 	net-libs/telepathy-glib[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
