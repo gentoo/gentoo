@@ -10,7 +10,7 @@ HOMEPAGE="https://wiki.gnome.org/Projects/GnomeShell/Extensions"
 LICENSE="GPL-2+"
 SLOT="0"
 IUSE="test"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 COMMON_DEPEND="
 	>=dev-libs/glib-2.26:2
@@ -22,8 +22,8 @@ RDEPEND="${COMMON_DEPEND}
 	dev-libs/gobject-introspection:=
 	dev-libs/atk[introspection]
 	gnome-base/gnome-menus:3[introspection]
-	>=gnome-base/gnome-shell-3.32
-	<gnome-base/gnome-shell-3.33
+	>=gnome-base/gnome-shell-3.34
+	<gnome-base/gnome-shell-3.35
 	media-libs/clutter:1.0[introspection]
 	net-libs/telepathy-glib[introspection]
 	x11-libs/gdk-pixbuf:2[introspection]
@@ -50,10 +50,6 @@ Alternatively, to enable/disable extensions on a per-user basis,
 you can use the https://extensions.gnome.org/ web interface, the
 gnome-extra/gnome-tweaks GUI, or modify the org.gnome.shell
 enabled-extensions gsettings key from the command line or a script."
-
-PATCHES=(
-	"${FILESDIR}"/${PV}-leak-fix.patch # tiny leak fix on extension disable from origin/gnome-3-32
-)
 
 src_configure() {
 	meson_src_configure \
