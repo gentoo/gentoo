@@ -625,12 +625,6 @@ dev-java/ant-eclipse-ecj:4.13
 dev-java/eclipse-ecj:4.13
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-10-16)
-# Binary-only slot that provides libmpfr.so.1. If you need that
-# library please add a note to describe use case to the bug #697822.
-# Masked for removal in a year.
-dev-libs/mpfr:1
-
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-10-16)
 # Binary-only slot that provides libgmp.so.3. If you need that
 # library please add a note to describe use case to the bug #697826.
 # Masked for removal in a year.
