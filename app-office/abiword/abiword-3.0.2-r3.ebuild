@@ -33,7 +33,7 @@ RDEPEND="
 	>=x11-libs/cairo-1.10
 	>=x11-libs/gtk+-3.0.8:3[cups?]
 	calendar? ( >=dev-libs/libical-0.46:= )
-	eds? ( >=gnome-extra/evolution-data-server-3.6.0:= )
+	eds? ( <gnome-extra/evolution-data-server-3.33:= )
 	goffice? ( >=x11-libs/goffice-0.10.2:0.10 )
 	introspection? ( >=dev-libs/gobject-introspection-1.0.0:= )
 	map? ( >=media-libs/libchamplain-0.12:0.12 )
