@@ -15993,7 +15993,7 @@ sci-geosciences/swmm 5.0.022: Storm Water Management Model-SWMM, hydrology, hydr
 sci-geosciences/tappy 0.9.0-r1: Tidal Analysis in Python breaks hourly water level into tidal components
 sci-geosciences/tcd-utils 20120115-r1: Utilities for working with Tidal Constituent Databases
 sci-geosciences/tilecache 2.11-r1: Web map tile caching system
-sci-geosciences/viking 1.6.2-r2 1.7: GPS data editor and analyzer
+sci-geosciences/viking 1.6.2-r2 1.7 1.7-r1: GPS data editor and analyzer
 sci-geosciences/xtide 2.15.1: XTide provides tide and current predictions in a wide variety of formats
 sci-libs/Fiona 1.7.6 9999: OGR's neat, nimble, no-nonsense API
 sci-libs/Rtree 0.8.3_p20180802: R-Tree spatial index for Python GIS
