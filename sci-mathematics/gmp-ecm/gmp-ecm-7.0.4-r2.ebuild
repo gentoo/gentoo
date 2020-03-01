@@ -26,6 +26,16 @@ pkg_pretend() {
 	use openmp && tc-check-openmp
 }
 
+src_compile() {
+	default
+	if use custom-tune; then
+		# One "emake" was needed to build the library. Now we can find
+		# the best set of parameters, and then run "emake" one more time
+		# to rebuild the library with the custom parameters. See the
+		# project's README or INSTALL-ecm
+		emake ecm-params && emake
+	fi
+}
 src_configure() {
 	econf \
 		--enable-shared \
