@@ -1,4 +1,4 @@
-DEFINED_PHASES=configure install postinst postrm
+DEFINED_PHASES=configure install postinst postrm prepare
 DEPEND=dev-libs/boost:=[threads] dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidgets:5 dev-qt/qtxml:5 sys-libs/zlib
 DESCRIPTION=Qt-based MP3 diagnosis and repair tool
 EAPI=7
@@ -9,4 +9,4 @@ RDEPEND=dev-libs/boost:=[threads] dev-qt/qtcore:5 dev-qt/qtgui:5 dev-qt/qtwidget
 SLOT=0
 SRC_URI=mirror://sourceforge/mp3diags/MP3Diags-unstable-1.5.01.tar.gz
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	estack	686eaab303305a908fd57b2fd7617800	multilib	1d91b03d42ab6308b5f4f6b598ed110e	qmake-utils	4eb5e05ef7ee630c003e3f0edc094135	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=da52817485c4adb057bf584ba6af3855
+_md5_=b49eece52c05516a66edf1d2811c4c17

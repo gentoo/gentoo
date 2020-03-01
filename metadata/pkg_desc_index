@@ -1656,8 +1656,8 @@ app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 4.19 4.20 4.21 5.0 5.1 5.2 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 4.19 4.20 4.21 5.0 5.1 5.2 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 4.21 5.0 5.1 5.2 5.3 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 4.21 5.0 5.1 5.2 5.3 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20190912 20191224 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -7385,7 +7385,7 @@ dev-python/PySensors 0.0.4: Python bindings to libsensors (via ctypes)
 dev-python/PySocks 1.6.7 1.6.8 1.7.1: SOCKS client module
 dev-python/PyUtilib 5.6.5 5.7.2: A collection of Python utilities
 dev-python/PythonQt 3.2 3.2-r1 9999: A dynamic Python binding for the Qt framework
-dev-python/QtPy 1.9.0-r1: Abstraction layer for PyQt5/PySide
+dev-python/QtPy 1.9.0-r1 1.9.0-r2: Abstraction layer for PyQt5/PySide
 dev-python/ReParser 1.4.3: Simple regex-based lexer/parser for inline markup
 dev-python/Rx 1.6.1: Reactive Extensions for Python
 dev-python/SaltTesting 2018.1.16: Required testing tools needed in the several Salt Stack projects
