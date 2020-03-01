@@ -1,4 +1,4 @@
-BDEPEND=doc? ( app-doc/doxygen[dot,latex] )
+BDEPEND=doc? ( app-doc/doxygen[dot] dev-texlive/texlive-bibtexextra dev-texlive/texlive-fontsextra dev-texlive/texlive-fontutils dev-texlive/texlive-latex dev-texlive/texlive-latexextra )
 DEFINED_PHASES=configure install
 DEPEND=dev-libs/gmp:0[cxx]
 DESCRIPTION=C++ library for arithmetic and algebraic computations
@@ -11,4 +11,4 @@ RDEPEND=dev-libs/gmp:0[cxx]
 RESTRICT=!test? ( test )
 SLOT=0/9
 SRC_URI=https://github.com/linbox-team/givaro/releases/download/v4.1.1/givaro-4.1.1.tar.gz
-_md5_=aed6e8e01a0ed957d022664a856c4fc4
+_md5_=d439e51cc25cf64ef0c3df007ffa98c4
