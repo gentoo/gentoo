@@ -92,7 +92,7 @@ COMMON_DEPEND="
 	coverage? ( dev-util/lcov )
 	curl? ( >=net-misc/curl-7.10.5 )
 	enchant? ( <app-text/enchant-2.0:0 )
-	ffi? ( >=virtual/libffi-3.0.11 )
+	ffi? ( >=dev-libs/libffi-3.0.11 )
 	firebird? ( dev-db/firebird )
 	gd? ( virtual/jpeg:0 media-libs/libpng:0= )
 	gdbm? ( >=sys-libs/gdbm-1.8.0:0= )
@@ -520,6 +520,9 @@ src_install() {
 	cd "${WORKDIR}/sapis-build/$first_sapi" || die
 	emake INSTALL_ROOT="${D}" \
 		install-build install-headers install-programs
+
+	# Install the "phar" archive utility.
+	use phar && emake INSTALL_ROOT="${D}" install-pharcmd
 
 	local extension_dir="$("${ED}/${PHP_DESTDIR#${EPREFIX}}/bin/php-config" --extension-dir)"
 
