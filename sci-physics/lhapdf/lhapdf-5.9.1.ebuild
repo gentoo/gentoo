@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -26,7 +26,14 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="octave? ( sci-mathematics/octave )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[latex] )
+	doc? (
+		app-doc/doxygen
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
 	python? ( dev-lang/swig )"
 
 S="${WORKDIR}/${MY_PF}"

@@ -26,7 +26,15 @@ RDEPEND="
 	dev-libs/boost:0=
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[latex] )"
+	doc? (
+		app-doc/doxygen
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
+"
 
 S="${WORKDIR}/${MY_PF}"
 
