@@ -43,7 +43,6 @@ BDEPEND="
 RDEPEND="${DEPEND}
 	dev-libs/nss[utils(+)]
 	sys-apps/iproute2
-	!net-misc/openswan
 	!net-vpn/strongswan
 	selinux? ( sec-policy/selinux-ipsec )
 "
