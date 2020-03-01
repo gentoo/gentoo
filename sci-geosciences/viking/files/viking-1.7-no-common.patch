@@ -1,0 +1,13 @@
+--- a/src/babel.h.orig	2020-02-06 07:22:12.924565811 +0100
++++ b/src/babel.h	2020-02-06 07:22:25.092329302 +0100
+@@ -109,8 +109,8 @@
+     gchar *label;
+ } BabelFile;
+ 
+-GList *a_babel_file_list;
+-GList *a_babel_device_list;
++extern GList *a_babel_file_list;
++extern GList *a_babel_device_list;
+ 
+ void a_babel_foreach_file_with_mode (BabelMode mode, GFunc func, gpointer user_data);
+ void a_babel_foreach_file_read_any (GFunc func, gpointer user_data);
