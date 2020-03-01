@@ -1,4 +1,4 @@
-# Copyright 2019 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -16,10 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="virtual/linux-sources"
-PATCHES=(
-	"${FILESDIR}/rts_pstor-makefile.patch"
-	"${FILESDIR}/fix-compile-kernel-5.0.0.patch"
-)
 S="${WORKDIR}/RTS5209-linux-driver-${GIT_COMMIT}"
 
 MODULE_NAMES="rts_pstor(misc/drivers/scsi)"
@@ -29,8 +25,16 @@ MODULESD_RTS_PSTOR_ADDITIONS=(
 )
 BUILD_TARGETS="default"
 BUILD_PARAMS="KERNELDIR=${KERNEL_DIR}"
-CONFIG_CHECK="~!MISC_RTSX_PCI"
+CONFIG_CHECK="~!MISC_RTSX_PCI !FORTIFY_SOURCE"
 ERROR_MISC_RTSX_PCI="CONFIG_MISC_RTSX_PCI: The in-kernel driver rtsx_pci is configured, which may have the same functionality than this driver. To make sure that your kernel loads only rts_pstor, the rtsx_pci module will be blacklisted."
+ERROR_FORTIFY_SOURCE="CONFIG_FORTIFY_SOURCE: this module is known to fail compiling when the hardening option CONFIG_FORTIFY_SOURCE is set"
+
+src_prepare() {
+	default
+
+	eapply "${FILESDIR}/fix-compile-kernel-5.0.0.patch"
+	kernel_is le 5 0 && eapply "${FILESDIR}/rts_pstor-makefile.patch" || eapply "${FILESDIR}/rts_pstor-makefile-kernel-5.1.patch"
+}
 
 pkg_postinst() {
 	elog "This driver is based on code published by Realtek. There is a driver in the kernel named rtsx_pci which"

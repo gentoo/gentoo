@@ -1,0 +1,7 @@
+--- a/Makefile
++++ b/Makefile
+@@ -36,3 +36,3 @@
+ 	cp -f ./define.release ./define.h
+-	make -C /lib/modules/$(shell uname -r)/build/ SUBDIRS=$(PWD) modules
++	+make -C $(KERNELDIR) M=$(PWD) modules
+ debug:
