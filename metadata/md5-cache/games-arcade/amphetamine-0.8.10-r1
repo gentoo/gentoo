@@ -1,12 +1,12 @@
 DEFINED_PHASES=compile install prepare
 DEPEND=media-libs/libsdl[sound,video] x11-libs/libXpm
-DESCRIPTION=a cool Jump'n Run game offering some unique visual effects
-EAPI=6
-HOMEPAGE=http://homepage.hispeed.ch/loehrer/amph/amph.html
+DESCRIPTION=A cool Jump'n Run game offering some unique visual effects
+EAPI=7
+HOMEPAGE=https://wiki.gentoo.org/wiki/No_homepage
 KEYWORDS=~amd64 ~x86
 LICENSE=GPL-2
 RDEPEND=media-libs/libsdl[sound,video] x11-libs/libXpm
 SLOT=0
-SRC_URI=http://homepage.hispeed.ch/loehrer/amph/files/amphetamine-0.8.10.tar.bz2 http://homepage.hispeed.ch/loehrer/amph/files/amphetamine-data-0.8.6.tar.bz2
+SRC_URI=mirror://gentoo/amphetamine-0.8.10.tar.bz2 mirror://gentoo/amphetamine-data-0.8.6.tar.bz2
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d
-_md5_=cf9cc825997cd51b3ffde164161fa269
+_md5_=2074ebe9f578d923e5bc94b1810036ab
