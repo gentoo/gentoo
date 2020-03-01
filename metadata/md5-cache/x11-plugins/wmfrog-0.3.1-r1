@@ -9,4 +9,4 @@ RDEPEND=x11-libs/libXext x11-libs/libXpm x11-libs/libX11
 SLOT=0
 SRC_URI=mirror://sourceforge/wmfrog/wmfrog-0.3.1.tgz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=66d9a0c32b28fa2ff5ce756a71a11fff
+_md5_=3be353e3a9e20efb56caf83e77359438
