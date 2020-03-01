@@ -77,8 +77,7 @@ src_configure() {
 src_install() {
 	default
 	if use doc; then
-		insinto /usr/share/doc/${PF}
-		doins "${DISTDIR}"/${PN}.pdf
+		dodoc "${DISTDIR}"/${PN}.pdf
 	fi
 }
 
