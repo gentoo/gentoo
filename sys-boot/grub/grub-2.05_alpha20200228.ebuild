@@ -22,7 +22,7 @@ inherit bash-completion-r1 eutils flag-o-matic multibuild pax-utils toolchain-fu
 
 if [[ ${PV} != 9999 ]]; then
 	SRC_URI="https://dev.gentoo.org/~floppym/dist/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 else
 	inherit git-r3
 	EGIT_REPO_URI="https://git.savannah.gnu.org/git/grub.git"
