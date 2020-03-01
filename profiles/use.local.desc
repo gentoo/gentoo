@@ -3653,7 +3653,6 @@ kde-frameworks/ktextwidgets:speech - Enable text-to-speech support
 kde-frameworks/kwallet:gpg - Support wallets with GnuPG encryption in addition to the default blowfish-encrypted file
 kde-frameworks/kwallet:man - Build and install man pages
 kde-frameworks/kwidgetsaddons:designer - Build plugins for dev-qt/designer
-kde-frameworks/kxmlgui:attica - Enable support for kde-frameworks/attica
 kde-frameworks/kxmlgui:designer - Build plugins for dev-qt/designer
 kde-frameworks/networkmanager-qt:teamd - Enable Teamd control support
 kde-frameworks/plasma:gles2 - Use GLES 2.0 or later instead of full OpenGL
