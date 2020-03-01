@@ -2,8 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit gnome.org gnome2-utils meson xdg
+inherit gnome.org gnome2-utils meson python-any-r1 xdg
 
 DESCRIPTION="GNOME's main interface to configure various aspects of the desktop"
 HOMEPAGE="https://git.gnome.org/browse/gnome-control-center/"
@@ -11,7 +12,8 @@ SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${P}-patchset.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="2"
-IUSE="+bluetooth +cups debug elogind flickr +gnome-online-accounts +ibus input_devices_wacom kerberos networkmanager systemd v4l wayland"
+IUSE="+bluetooth +cups debug elogind flickr +gnome-online-accounts +ibus input_devices_wacom kerberos networkmanager systemd test v4l wayland"
+RESTRICT="!test? ( test )"
 REQUIRED_USE="
 	flickr? ( gnome-online-accounts )
 	^^ ( elogind systemd )
@@ -115,6 +117,9 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/glib-utils
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
+	test? ( $(python_gen_any_dep '
+		dev-python/dbusmock[${PYTHON_USEDEP}]
+	') )
 "
 
 PATCHES=(
@@ -126,6 +131,22 @@ PATCHES=(
 
 	"${FILESDIR}"/${PN}-3.32.2-fix-gcc10-fno-common.patch # fixed in 3.35.90
 )
+
+python_check_deps() {
+	use test && \
+		has_version "dev-python/dbusmock[${PYTHON_USEDEP}]"
+}
+
+pkg_setup() {
+	use test && python-any-r1_pkg_setup
+}
+
+src_prepare() {
+	xdg_src_prepare
+	# Mark python tests with shebang executable, so that meson will launch them directly, instead
+	# of via its own python-single-r1 version, which might not match what we get from python_check_deps
+	chmod a+x tests/network/test-network-panel.py tests/datetime/test-datetime.py || die
+}
 
 src_configure() {
 	local emesonargs=(
