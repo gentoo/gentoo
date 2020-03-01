@@ -58,9 +58,12 @@ DEPEND="sys-devel/flex
 RESTRICT="test"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-1.8.12-link_with_pthread.patch"
+	"${FILESDIR}/${PN}-1.8.9.1-empty-line-sigsegv.patch" #454348
+	"${FILESDIR}/${PN}-1.8.16-link_with_pthread.patch"
+	"${FILESDIR}/${PN}-1.8.15-llvm7.patch" #666692
 	"${FILESDIR}/${PN}-1.8.17-ensure_static_support_libraries.patch"
 )
+
 DOCS=( LANGUAGE.HOWTO README.md )
 
 pkg_setup() {
