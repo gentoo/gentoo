@@ -58,7 +58,11 @@ src_configure() {
 		-DBUILD_PHP_IMPORT=$(usex php)
 		-DBUILD_unittests=$(usex test)
 	)
-	use test && mycmakeargs+=( -DCMAKE_DISABLE_FIND_PACKAGE_LLVM=ON )
+	use test && mycmakeargs+=(
+		-DCMAKE_DISABLE_FIND_PACKAGE_LLVM=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_Clang=ON
+		-DCMAKE_DISABLE_FIND_PACKAGE_CLANG=ON
+	)
 
 	ecm_src_configure
 }
