@@ -27,7 +27,14 @@ RDEPEND="
 	sci-physics/yoda:=[python]
 	python? ( ${PYTHON_DEPS} )"
 DEPEND="${RDEPEND}
-	doc? ( app-doc/doxygen[latex,dot] )
+	doc? (
+		app-doc/doxygen[dot]
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
 	python? (
 		$(python_gen_cond_dep '
 			dev-python/cython[${PYTHON_MULTI_USEDEP}]
