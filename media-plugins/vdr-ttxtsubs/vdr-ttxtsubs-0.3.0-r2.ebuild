@@ -23,4 +23,8 @@ src_prepare() {
 	vdr-plugin-2_src_prepare
 
 	eapply "${FILESDIR}/${P}_teletext-chars.patch"
+
+	if has_version ">=media-video/vdr-2.4"; then
+		eapply "${FILESDIR}/${P}_vdr-2.4.0.patch"
+	fi
 }
