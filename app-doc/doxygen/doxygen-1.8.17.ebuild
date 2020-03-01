@@ -22,7 +22,7 @@ HOMEPAGE="http://www.doxygen.org"
 
 LICENSE="GPL-2"
 SLOT="0"
-IUSE="clang debug doc dot doxysearch latex qt5 sqlite userland_GNU"
+IUSE="clang debug doc dot doxysearch qt5 sqlite userland_GNU"
 
 RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
@@ -33,14 +33,14 @@ RDEPEND="app-text/ghostscript-gpl
 		media-gfx/graphviz
 		media-libs/freetype
 	)
-	doxysearch? ( dev-libs/xapian:= )
-	latex? (
+	doc? (
 		dev-texlive/texlive-bibtexextra
 		dev-texlive/texlive-fontsextra
 		dev-texlive/texlive-fontutils
 		dev-texlive/texlive-latex
 		dev-texlive/texlive-latexextra
 	)
+	doxysearch? ( dev-libs/xapian:= )
 	qt5? (
 		dev-qt/qtgui:5
 		dev-qt/qtwidgets:5
@@ -48,8 +48,6 @@ RDEPEND="app-text/ghostscript-gpl
 	)
 	sqlite? ( dev-db/sqlite:3 )
 	"
-
-REQUIRED_USE="doc? ( latex )"
 
 DEPEND="sys-devel/flex
 	sys-devel/bison
