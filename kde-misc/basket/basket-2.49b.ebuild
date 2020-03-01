@@ -57,7 +57,10 @@ DEPEND="${RDEPEND}
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 "
 
-PATCHES=( "${FILESDIR}/${P}-xdg_mime_install_dir.patch" )
+PATCHES=(
+	"${FILESDIR}/${P}-xdg_mime_install_dir.patch"
+	"${FILESDIR}/${P}-libgit2-0.99-compat.patch" # bug #710832
+)
 
 src_prepare() {
 	ecm_src_prepare
