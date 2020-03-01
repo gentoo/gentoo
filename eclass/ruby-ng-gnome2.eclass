@@ -77,7 +77,7 @@ each_ruby_install() {
 # Install the files common to all ruby targets.
 all_ruby_install() {
 	for doc in ../AUTHORS ../NEWS ChangeLog README; do
-		[ -s "$doc" ] && dodoc $doc
+		[[ -s ${doc} ]] && dodoc $doc
 	done
 	if [[ -d sample ]]; then
 		insinto /usr/share/doc/${PF}
