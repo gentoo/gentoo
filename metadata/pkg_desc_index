@@ -156,6 +156,7 @@ acct-group/varnish 0: group for varnish
 acct-group/vboxguest 0: System group: vboxguest
 acct-group/vboxsf 0: System group: vboxsf
 acct-group/vboxusers 0: System group: vboxusers
+acct-group/vdradmin 0: Group for www-misc/vdradmin-am
 acct-group/video 0: System group: video
 acct-group/vpopmail 0: System group: vpopmail
 acct-group/wheel 0: System group: wheel
@@ -305,6 +306,7 @@ acct-user/unrealircd 0: System user: unrealircd
 acct-user/uptimed 0: user for uptime daemon
 acct-user/varnish 0: user for varnish
 acct-user/vboxguest 0: user for virtualbox-guest-additions
+acct-user/vdradmin 0: User for www-misc/vdradmin-am
 acct-user/vpopmail 0: user for vpopmail
 acct-user/x2goprint 0: User for net-misc/x2goserver
 acct-user/x2gouser 0: User for net-misc/x2goserver
@@ -18009,7 +18011,7 @@ www-misc/profile-sync-daemon 5.75 6.31 6.35 9999: Symlinks and syncs browser pro
 www-misc/shellinabox 2.20-r1 2.20-r2 2.20-r3 2.20-r4: Export command line tools to a web based terminal emulator
 www-misc/surl 0.7.1.1-r1: URL shortening command line application that supports various sites
 www-misc/urlwatch 2.13 2.16 2.17: A tool for monitoring webpages for updates
-www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10: WWW Admin for the Video Disk Recorder
+www-misc/vdradmin-am 3.6.9 3.6.9-r3 3.6.10 3.6.10-r1: WWW Admin for the Video Disk Recorder
 www-misc/visitors 0.7-r2: Fast web log analyzer
 www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution and page ordering
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
