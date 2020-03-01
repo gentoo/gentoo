@@ -13,7 +13,16 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="cpu_flags_x86_fma3 cpu_flags_x86_fma4 cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_avx cpu_flags_x86_avx2 doc static-libs test"
 RESTRICT="!test? ( test )"
 
-BDEPEND="doc? ( app-doc/doxygen[dot,latex] )"
+BDEPEND="
+	doc? (
+		app-doc/doxygen[dot]
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
+"
 DEPEND="dev-libs/gmp:0[cxx]"
 RDEPEND="${DEPEND}"
 
