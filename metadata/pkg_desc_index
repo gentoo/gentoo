@@ -8126,13 +8126,13 @@ dev-python/nodeenv 1.1.3-r1: Node.js virtual environment builder
 dev-python/nose 1.3.7-r3 1.3.7-r4: Unittest extension with automatic test suite discovery and easy test authoring
 dev-python/nose-cover3 0.1.0-r1: Coverage 3.x support for Nose
 dev-python/nose-descriptionfixer 0.0.4: Fix the way tests are described when the verbose flag is used
-dev-python/nose-exclude 0.4.1 0.5.0: Exclude specific directories from nosetests runs
+dev-python/nose-exclude 0.4.1 0.5.0 0.5.0-r1: Exclude specific directories from nosetests runs
 dev-python/nose-parameterized 0.5.0: Parameterized testing with any Python test framework
 dev-python/nose-show-skipped 0.1: A nose plugin to show skipped tests and their messages
 dev-python/nose-testconfig 0.10: Test Configuration plugin for nosetests
 dev-python/nose2 0.9.1-r1: Next generation unittest with plugins
 dev-python/nose_fixes 1.3: A plugin to make nose behave better
-dev-python/nose_warnings_filters 0.1.5-r2: A python module to inject warning filters during nosetest
+dev-python/nose_warnings_filters 0.1.5-r2 0.1.5-r3: A python module to inject warning filters during nosetest
 dev-python/nosehtmloutput 0.0.5: Nose plugin to produce test results in html
 dev-python/nosexcover 1.0.10 1.0.11 1.0.11-r1: Extends nose.plugins.cover to add Cobertura-style XML reports
 dev-python/notebook 5.0.0 5.2.1 5.7.0 5.7.8: Jupyter Interactive Notebook
@@ -8764,7 +8764,7 @@ dev-python/selectors34 1.2: Backport of the selectors module from Python 3.4
 dev-python/selenium 3.0.2 3.13.0 3.141.0: Python language binding for Selenium Remote Control
 dev-python/semantic_version 2.8.2 2.8.4: Python library providing a few tools handling SemVer in Python
 dev-python/semver 2.9.0 2.9.1: A Python module for semantic versioning
-dev-python/send2trash 1.3.0 1.5.0: Sends files to the Trash (or Recycle Bin)
+dev-python/send2trash 1.3.0 1.5.0 1.5.0-r1: Sends files to the Trash (or Recycle Bin)
 dev-python/sentry-sdk 0.13.2 0.14.1: Python client for Sentry
 dev-python/serpent 1.19 1.28 1.30: A simple serialization library based on ast.literal_eval
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
@@ -8832,7 +8832,7 @@ dev-python/sphinxcontrib-blockdiag 1.5.5 1.5.5-r1 1.5.5-r2 2.0.0: A sphinx exten
 dev-python/sphinxcontrib-devhelp 1.0.1: Sphinx extension which outputs Devhelp documents
 dev-python/sphinxcontrib-documentedlist 0.6: Sphinx extension to convert a Python list into a generated table
 dev-python/sphinxcontrib-doxylink 1.3-r1 1.5: Extension to link to external Doxygen API documentation
-dev-python/sphinxcontrib-github-alt 1.0 1.1 1.1-r1: Link to GitHub issues, pull requests, commits and users from Sphinx docs
+dev-python/sphinxcontrib-github-alt 1.0 1.1 1.1-r1 1.1-r2: Link to GitHub issues, pull requests, commits and users from Sphinx docs
 dev-python/sphinxcontrib-googleanalytics 0.1-r2: Sphinx extension googleanalytics
 dev-python/sphinxcontrib-htmlhelp 1.0.2: Sphinx extension which outputs HTML help book
 dev-python/sphinxcontrib-httpdomain 1.4.0 1.5.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
