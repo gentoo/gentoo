@@ -2796,7 +2796,7 @@ app-text/xmlstarlet 1.6.1: A set of tools to transform, query, validate, and edi
 app-text/xmlto 0.0.28-r1: script for converting XML and DocBook documents to a variety of output formats
 app-text/xournal 0.4.8.2016 9999: An application for notetaking, sketching, and keeping a journal using a stylus
 app-text/xournalpp 1.0.17 9999: Handwriting notetaking software with PDF annotation support
-app-text/xpdf 4.02 4.02-r1 4.02-r2: The PDF viewer and tools
+app-text/xpdf 4.02-r2: The PDF viewer and tools
 app-text/yelp-tools 3.32.2: Collection of tools for building and converting documentation
 app-text/yodl 4.02.01 4.02.02: Your Own Document Language: a pre-document language and tools to process it
 app-text/zathura 0.4.3 0.4.4 0.4.5 9999: A highly customizable and functional document viewer
@@ -10540,7 +10540,7 @@ dev-util/itstool 2.0.2 2.0.6-r1: Translation tool for XML documents that uses ge
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.190.3 2.204.2 2.205 2.219: Extensible continuous integration server
+dev-util/jenkins-bin 2.204.2 2.204.3 2.219 2.223: Extensible continuous integration server
 dev-util/jfrog-cli 1.30.4: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
@@ -17928,7 +17928,7 @@ www-apps/mythweb 0.28.1: PHP scripts intended to manage MythTV from a web browse
 www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash for the command-line
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
-www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7 2.6.8 2.6.12 2.7.2: IP address and data center infrastructure management tool
+www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7 2.6.8 2.6.12 2.7.2 2.7.6: IP address and data center infrastructure management tool
 www-apps/nextcloud 16.0.8 17.0.3 18.0.0 18.0.1: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1 8.0.4: A static website and blog generator
 www-apps/novnc 0.6.2 0.6.2-r1 1.0.0 9999: noVNC is a VNC client implemented using HTML5 technologies
