@@ -46,6 +46,7 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? (
 		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
+		media-gfx/graphviz
 	)
 	test? (
 		dev-python/html5lib[${PYTHON_USEDEP}]
