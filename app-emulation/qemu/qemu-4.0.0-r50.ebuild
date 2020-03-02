@@ -14,11 +14,11 @@ inherit eutils linux-info toolchain-funcs multilib python-r1 \
 	udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
-	EGIT_REPO_URI="git://git.qemu.org/qemu.git"
+	EGIT_REPO_URI="https://git.qemu.org/git/qemu.git"
 	inherit git-r3
 	SRC_URI=""
 else
-	SRC_URI="http://wiki.qemu-project.org/download/${P}.tar.xz"
+	SRC_URI="https://download.qemu.org/${P}.tar.xz"
 	KEYWORDS="amd64 ~arm64 ~ppc ~ppc64 x86"
 fi
 
