@@ -32,8 +32,9 @@ src_compile() {
 		# One "emake" was needed to build the library. Now we can find
 		# the best set of parameters, and then run "emake" one more time
 		# to rebuild the library with the custom parameters. See the
-		# project's README or INSTALL-ecm
-		emake ecm-params && emake
+		# project's README or INSTALL-ecm. The build targets don't depend
+		# on ecm-params.h, so we need to "make clean" to force a rebuild.
+		emake ecm-params && emake clean && emake
 	fi
 }
 src_configure() {
