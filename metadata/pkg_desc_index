@@ -10669,8 +10669,8 @@ dev-util/stressapptest 1.0.9: Stressful Application Test
 dev-util/stripe-mock 0.79.0: Mock HTTP server that responds like the real Stripe API
 dev-util/stubgen 2.08: A member function stub generator for C++
 dev-util/sysdig 0.26.4: A system exploration and troubleshooting tool
-dev-util/sysprof 3.32.0 3.34.1: System-wide Linux Profiler
-dev-util/sysprof-capture 3.34.1: Static library for sysprof capture data generation
+dev-util/sysprof 3.32.0 3.34.1 3.34.1-r1: System-wide Linux Profiler
+dev-util/sysprof-capture 3.34.1 3.34.1-r1: Static library for sysprof capture data generation
 dev-util/systemtap 2.4-r1 3.1-r1 4.0-r1: A linux trace/probe tool
 dev-util/tailor 0.9.35-r1: A tool to migrate changesets between version control systems
 dev-util/tinlink 1.0.0-r1: Tool to create very small elf binary from pure binary files
