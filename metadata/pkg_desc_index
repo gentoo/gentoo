@@ -14438,7 +14438,7 @@ net-fs/openafs-legacy 0.1: Legacy path symlinks to access FHS-compliant OpenAFS 
 net-fs/s3backer 1.4.5: FUSE-based single file backing store via Amazon S3
 net-fs/s3fs 1.80 1.83 1.85 1.86: Amazon S3 mounting via fuse
 net-fs/s3ql 2.24 2.25 2.26 2.28 2.32 2.33: A full-featured file system for online data storage
-net-fs/samba 4.5.16-r1 4.8.6-r4 4.8.6-r5 4.8.12 4.9.17 4.9.18 4.10.2-r1 4.10.11 4.10.13 4.11.4 4.11.6 4.11.6-r2: Samba Suite Version 4
+net-fs/samba 4.5.16-r1 4.8.6-r4 4.8.6-r5 4.8.12 4.9.17 4.9.18 4.10.2-r1 4.10.11 4.10.13 4.11.4 4.11.6 4.11.6-r2 4.12.0_rc4: Samba Suite Version 4
 net-fs/smbnetfs 0.6.1-r1: FUSE filesystem for SMB shares
 net-fs/smbtad 1.2.6: Data receiver of the SMB Traffic Analyzer project
 net-fs/sshfs 2.10-r1 3.6.0 3.7.0: Fuse-filesystem utilizing the sftp service
@@ -16004,7 +16004,7 @@ sci-libs/Shapely 1.6.4_p2-r1: Geometric objects, predicates, and operations
 sci-libs/ViSP 3.2.0-r2: Visual Servoing Platform: visual tracking and visual servoing library
 sci-libs/adolc 2.4.1 2.6.3-r1 9999: Automatic differentiation system for C/C++
 sci-libs/alglib 3.10.0-r1: Numerical analysis and data processing library
-sci-libs/amd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
+sci-libs/amd 2.3.1 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/armadillo 8.300.2 9.800.3 9.850.1: Streamlined C++ linear algebra library
 sci-libs/arpack 3.1.5 3.4.0 3.5.0 9999: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18 2.2.19: Arbitrary precision float arithmetics and functions
@@ -16015,14 +16015,14 @@ sci-libs/blas-reference 20070226-r4 20151113-r1 20161223: Basic Linear Algebra S
 sci-libs/blis 0.5.2 0.6.0: BLAS-like Library Instantiation Software Framework
 sci-libs/bliss 0.73-r1: Compute Automorphism Groups and Canonical Labelings of Graphs
 sci-libs/bmrblib 1.0.3: API abstracting the BioMagResBank (BMRB) NMR-STAR format
-sci-libs/btf 1.2.0: Algorithm for matrix permutation into block triangular form
+sci-libs/btf 1.2.0 1.2.6: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
-sci-libs/camd 2.3.1: Library to order a sparse matrix prior to Cholesky factorization
+sci-libs/camd 2.3.1 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
 sci-libs/cantera 2.4.0-r1 2.4.0-r3: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
 sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF files and imgCIF files
 sci-libs/cblas-reference 20030223-r6 20151113-r2 20161223: C wrapper interface to the F77 reference BLAS implementation
 sci-libs/ccfits 2.4-r1 2.5: C++ interface for cfitsio
-sci-libs/ccolamd 2.8.0: Constrained Column approximate minimum degree ordering algorithm
+sci-libs/ccolamd 2.8.0 2.9.6: Constrained Column approximate minimum degree ordering algorithm
 sci-libs/cdd+ 077a: Another implementation of the double description method
 sci-libs/cddlib 094g 094h 094j: C library implementing the Double Description Method
 sci-libs/cdf 3.4.1 3.5.0.2: Common Data Format I/O library for multi-dimensional data sets
@@ -16031,7 +16031,7 @@ sci-libs/cfitsio 3.360 3.410: C and Fortran library for manipulating FITS files
 sci-libs/cgcode 1.0-r2: Conjugate gradient Codes for large sparse linear systems
 sci-libs/cgnslib 3.3.0 3.4.0: CFD General Notation System standard library
 sci-libs/chemkit 0.1-r2: Library for chemistry applications
-sci-libs/cholmod 2.1.2: Sparse Cholesky factorization and update/downdate library
+sci-libs/cholmod 2.1.2 3.0.13: Sparse Cholesky factorization and update/downdate library
 sci-libs/cifparse-obj 7.025-r1 7.105: Provides an object-oriented application interface to information in mmCIF format
 sci-libs/clapack 3.2.1-r8: f2c'ed version of LAPACK
 sci-libs/clashscore-db 3.17: Clashscore-db for clashlist
@@ -16064,10 +16064,10 @@ sci-libs/coinor-smi 0.93.4: COIN-OR Stochastic modelling interface
 sci-libs/coinor-symphony 5.5.7: COIN-OR solver for mixed-integer linear programs
 sci-libs/coinor-utils 2.9.11: COIN-OR Matrix, Vector and other utility classes
 sci-libs/coinor-vol 1.4.4: COIN-OR Volume algorithm linear programming solver
-sci-libs/colamd 2.8.0: Column approximate minimum degree ordering algorithm
+sci-libs/colamd 2.8.0 2.9.6: Column approximate minimum degree ordering algorithm
 sci-libs/colpack 1.0.10: C++ algorithms for specialized vertex coloring problems
 sci-libs/cqrlib 1.1.3: Utility library for quaternion arithmetic / rotation math (ANSI C implemented)
-sci-libs/cxsparse 3.1.2-r1: Extended sparse matrix package
+sci-libs/cxsparse 3.1.2-r1 3.2.0: Extended sparse matrix package
 sci-libs/dcmtk 3.6.3 3.6.4-r1 3.6.5: The DICOM Toolkit
 sci-libs/dealii 9.1.1 9999: Solving partial differential equations with the finite element method
 sci-libs/deap 0.9.1 1.0.0 1.0.1: Novel evolutionary computation framework
@@ -16111,10 +16111,10 @@ sci-libs/jama 1.2.5: Java-like matrix C++ templates
 sci-libs/keras-applications 1.0.7 1.0.8: Keras deep learning library reference implementations of deep learning models
 sci-libs/keras-preprocessing 1.0.9 1.1.0: Easy data preprocessing and data augmentation for deep learning models
 sci-libs/kim-api 1.8.2: Application Programming Interface for atomistic simulations
-sci-libs/klu 1.2.1: Sparse LU factorization for circuit simulation
+sci-libs/klu 1.2.1 1.3.9: Sparse LU factorization for circuit simulation
 sci-libs/lapack 3.8.0: BLAS,CBLAS,LAPACK,LAPACKE reference implementations
 sci-libs/lapack-reference 3.2.1-r4 3.6.0 3.7.0: Reference implementation of LAPACK
-sci-libs/ldl 2.1.0: Simple but educational LDL^T matrix factorization algorithm
+sci-libs/ldl 2.1.0 2.2.6: Simple but educational LDL^T matrix factorization algorithm
 sci-libs/lemon 1.3.1: C++ template static library of common data structures and algorithms
 sci-libs/levmar 2.6: Levenberg-Marquardt nonlinear least squares C library
 sci-libs/libaec 0.3.2 1.0.0 1.0.1 1.0.2: Adaptive Entropy Coding library
@@ -16219,10 +16219,10 @@ sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh 
 sci-libs/shapelib 1.4.0-r1 1.4.1 1.5.0: Library for manipulating ESRI Shapefiles
 sci-libs/shogun 5.0.0-r1: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.10.2-r1: A mesh and field I/O library and scientific database
-sci-libs/spqr 1.2.3-r1 1.3.1: Multithreaded multifrontal sparse QR factorization library
+sci-libs/spqr 1.2.3-r1 1.3.1 2.0.9: Multithreaded multifrontal sparse QR factorization library
 sci-libs/spr 3.3.2: Statistical analysis and machine learning library
 sci-libs/suitesparse 4.0.2 4.2.1: Meta package for a suite of sparse matrix tools
-sci-libs/suitesparseconfig 4.2.1-r1: Common configurations for all packages in suitesparse
+sci-libs/suitesparseconfig 4.2.1-r1 5.4.0: Common configurations for all packages in suitesparse
 sci-libs/sundials 3.2.1 4.0.2 4.1.0 5.0.0: Suite of nonlinear solvers
 sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
@@ -16238,7 +16238,7 @@ sci-libs/tnt 3.0.12: Template Numerical Toolkit: C++ headers for array and matri
 sci-libs/trilinos 12.14.1: Scientific library collection for large scale problems
 sci-libs/udunits 2.1.24-r1 2.2.20: Library for manipulating units of physical quantities
 sci-libs/ufconfig 3.7.1: Common configuration scripts for the SuiteSparse libraries
-sci-libs/umfpack 5.6.2: Unsymmetric multifrontal sparse LU factorization library
+sci-libs/umfpack 5.6.2 5.7.9: Unsymmetric multifrontal sparse LU factorization library
 sci-libs/voro++ 0.4.6-r1: A 3D Voronoi cell software library
 sci-libs/votca-tools 1.4 1.4.1 1.5 1.5.1 1.6_rc1 9999: Votca tools library
 sci-libs/vtk 8.1.0-r4: The Visualization Toolkit
@@ -17495,7 +17495,7 @@ sys-libs/glibc 2.19-r2 2.24-r4 2.25-r11 2.26-r7 2.27-r6 2.28-r6 2.29-r2 2.29-r7 
 sys-libs/gpm 1.20.7-r2: Console-based mouse driver
 sys-libs/gwenhywfar 4.20.0 4.20.2-r1 5.1.2: Multi-platform helper library for other libraries
 sys-libs/kpmcore 4.0.1 4.1.0: Library for managing partitions
-sys-libs/ldb 1.1.29-r1 1.1.31 1.2.4 1.3.6 1.3.8 1.4.8 1.5.4 1.5.6 1.6.3 2.0.7 2.0.8: An LDAP-like embedded database
+sys-libs/ldb 1.1.29-r1 1.1.31 1.2.4 1.3.6 1.3.8 1.4.8 1.5.4 1.5.6 1.6.3 2.0.7 2.0.8 2.1.1: An LDAP-like embedded database
 sys-libs/libaal 1.0.6 1.0.7 1.0.7-r1: library required by reiser4progs
 sys-libs/libapparmor 2.13.3 2.13.3-r1: Library to support AppArmor userspace utilities
 sys-libs/libavc1394 0.5.4-r1 0.5.4-r2: Library for the 1394 AV/C (Audio/Video Control) Digital Interface Command Set
@@ -17527,6 +17527,7 @@ sys-libs/libstdc++-v3 3.3.6-r2: Compatibility package for binaries linked agains
 sys-libs/libtermcap-compat 2.0.8-r3 2.0.8-r4: Compatibility package for old termcap-based programs
 sys-libs/libudev-compat 186-r1: Wrapper around libudev.so.1 for packages needing the old libudev.so.0
 sys-libs/libunwind 1.2.1-r3 1.3.1: Portable and efficient API to determine the call-chain of a program
+sys-libs/liburing 0.5: Efficient I/O with io_uring
 sys-libs/libutempter 1.1.6-r2: Library that allows non-privileged apps to write utmp (login) info
 sys-libs/libuuid 1.0.3: Portable uuid C library
 sys-libs/libvpd 2.2.6: Library implementation for listing vpds

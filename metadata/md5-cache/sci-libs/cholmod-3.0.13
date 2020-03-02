@@ -1,0 +1,14 @@
+BDEPEND=virtual/pkgconfig doc? ( virtual/latex-base )
+DEFINED_PHASES=configure
+DEPEND=>=sci-libs/amd-2.4 >=sci-libs/colamd-2.9 cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda-toolkit ) lapack? ( virtual/lapack ) partition? ( >=sci-libs/camd-2.4 >=sci-libs/ccolamd-2.9 || ( >=sci-libs/metis-5.1.0 sci-libs/parmetis ) )
+DESCRIPTION=Sparse Cholesky factorization and update/downdate library
+EAPI=7
+HOMEPAGE=http://faculty.cse.tamu.edu/davis/suitesparse.html
+IUSE=cuda doc +lapack +matrixops +modify +partition static-libs
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x86-macos
+LICENSE=LGPL-2.1+ modify? ( GPL-2+ ) matrixops? ( GPL-2+ )
+RDEPEND=>=sci-libs/amd-2.4 >=sci-libs/colamd-2.9 cuda? ( x11-drivers/nvidia-drivers dev-util/nvidia-cuda-toolkit ) lapack? ( virtual/lapack ) partition? ( >=sci-libs/camd-2.4 >=sci-libs/ccolamd-2.9 || ( >=sci-libs/metis-5.1.0 sci-libs/parmetis ) )
+SLOT=0
+SRC_URI=http://202.36.178.9/sage/cholmod-3.0.13.tar.bz2
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=3e78fe44b629ac3d6d1b128643834016
