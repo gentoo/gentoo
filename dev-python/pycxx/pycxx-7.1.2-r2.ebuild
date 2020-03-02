@@ -3,6 +3,7 @@
 
 EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
+DISTUTILS_USE_SETUPTOOLS=no
 
 inherit eutils distutils-r1
 
@@ -26,8 +27,8 @@ python_prepare_all() {
 python_install_all() {
 	use doc && local HTML_DOCS=( Doc/. )
 	if use examples ; then
-		insinto /usr/share/doc/${PF}/examples
-		doins -r Demo/Python{2,3}/.
+		docinto examples
+		dodoc -r Demo/Python{2,3}/.
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 	distutils-r1_python_install_all
