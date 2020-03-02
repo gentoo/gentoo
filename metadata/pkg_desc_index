@@ -7972,7 +7972,7 @@ dev-python/jsondiff 1.1.2: Diff JSON and JSON-like structures in Python
 dev-python/jsonext 0.4.2: Well-structured helpers for serializing commonly encountered structures to JSON.
 dev-python/jsonmerge 1.4.0 1.6.0: Merge a series of JSON documents
 dev-python/jsonpatch 1.13 1.15 1.21 1.23: Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04
-dev-python/jsonpickle 0.9.3 1.2: Python library for serializing any arbitrary object graph into JSON
+dev-python/jsonpickle 0.9.3 1.2 1.3: Python library for serializing any arbitrary object graph into JSON
 dev-python/jsonpointer 1.10 2.0 2.0-r1: Identify specific nodes in a JSON document (according to draft 08)
 dev-python/jsonref 0.1: An implementation of JSON Reference for Python
 dev-python/jsonrpclib 0.3.1 0.4.0 9999: python implementation of the JSON-RPC spec (1.0 and 2.0)
