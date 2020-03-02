@@ -5060,7 +5060,7 @@ dev-libs/libmemcached 1.0.18-r3: a C client library to the memcached server
 dev-libs/libmirage 3.2.3 3.2.4: CD and DVD image access library
 dev-libs/libmissing 1.1.0: Library with missing functions based on GNUlib
 dev-libs/libmix 2.05-r7: Programs Crypto/Network/Multipurpose Library
-dev-libs/libmodbus 3.1.4: Modbus library which supports RTU communication over a serial line or a TCP link
+dev-libs/libmodbus 3.1.4 3.1.6: Modbus library which supports RTU communication over a serial line or a TCP link
 dev-libs/libmoe 1.5.8-r3: Multi octet character encoding handling library
 dev-libs/libmowgli 1.0.0-r1 2.1.3 9999: Useful set of performance and usability-oriented extensions to C
 dev-libs/libmspack 0.9.1_alpha-r1 9999: A library for Microsoft compression formats
@@ -7930,7 +7930,7 @@ dev-python/ipykernel 4.6.1-r2 4.8.2 5.1.0 5.1.3: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 6.0.2-r1 6.2.3: Interactive Parallel Computing with IPython
 dev-python/ipython 5.4.1-r2 5.8.0-r1 7.5.0: Advanced interactive shell for Python
-dev-python/ipython_genutils 0.2.0: Vestigial utilities from IPython
+dev-python/ipython_genutils 0.2.0 0.2.0-r1: Vestigial utilities from IPython
 dev-python/ipywidgets 7.0.0 7.4.2 7.4.2-r1: IPython HTML widgets for Jupyter
 dev-python/irc 16.3 17.1 18.0.0-r1: IRC client framework written in Python
 dev-python/iso3166 0.8: Self-contained ISO 3166-1 country definitions.
@@ -8212,7 +8212,7 @@ dev-python/paho-mqtt 1.4.0 1.5.0: A client class with support for both MQTT v3.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
 dev-python/pandas 0.24.2 9999: Powerful data structures for data analysis and statistics
 dev-python/pandas-datareader 0.7.0 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
-dev-python/pandocfilters 1.4.2-r1: Utilities for writing pandoc filters in python
+dev-python/pandocfilters 1.4.2-r1 1.4.2-r2: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.0: Parameterized testing with any Python test framework
 dev-python/parametrized 0.1: Parameterized testing with any Python test framework
 dev-python/paramiko 2.4.2 2.6.0 2.7.1: SSH2 protocol library
@@ -8362,7 +8362,7 @@ dev-python/pycryptodome 3.4.6 3.4.7 3.6.6 3.7.3 3.8.2 3.9.4: A self-contained cr
 dev-python/pycson 0.7: A python parser for the Coffeescript Object Notation (CSON)
 dev-python/pycuda 2017.1 2018.1.1 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r1 1.9.73-r2: Python bindings for the CUPS API
-dev-python/pycurl 7.43.0 7.43.0.2 7.43.0.3: python binding for curl/libcurl
+dev-python/pycurl 7.43.0 7.43.0.2 7.43.0.3 7.43.0.5: python binding for curl/libcurl
 dev-python/pycxx 6.2.6 7.1.2: Set of facilities to extend Python with C++
 dev-python/pydecomp 0.3 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2 0.2-r1: Diffs two Python files at the bytecode level
@@ -8803,7 +8803,7 @@ dev-python/smmap2 2.0.3: A pure python implementation of a sliding window memory
 dev-python/snakeoil 0.7.5 0.8.7 0.8.8 9999: misc common functionality and useful optimizations
 dev-python/snaketrace 0.1.1: An strace-like tool for Python audit events
 dev-python/snappy 0.5-r2 0.5.1: Python library for the snappy compression library from Google
-dev-python/snowballstemmer 1.2.0 1.2.1: Stemmer algorithms generated from Snowball algorithms
+dev-python/snowballstemmer 1.2.1 2.0.0: Stemmer algorithms generated from Snowball algorithms
 dev-python/soappy 0.12.22: SOAP Services for Python
 dev-python/socketio-client 0.6.6: A socket.io client library for Python
 dev-python/socketio-client-nexus 0.7.6: A socket.io 2.x client library for Python
@@ -8829,24 +8829,24 @@ dev-python/sphinx-py3doc-enhanced-theme 2.3.2 2.3.2-r1: Enhanced Sphinx theme (b
 dev-python/sphinx-testing 0.7.2 1.0.1 1.0.1-r1: Testing utility classes and functions for Sphinx extensions
 dev-python/sphinx_celery 1.3.1 2.0.0-r1: Celery Sphinx Theme and Utilities
 dev-python/sphinx_rtd_theme 0.1.9 0.2.4: ReadTheDocs.org theme for Sphinx
-dev-python/sphinxcontrib-applehelp 1.0.1: Sphinx extension which outputs Apple help book
+dev-python/sphinxcontrib-applehelp 1.0.1 1.0.2: Sphinx extension which outputs Apple help book
 dev-python/sphinxcontrib-asyncio 0.2.0-r2: sphinx extension to support coroutines in markup
 dev-python/sphinxcontrib-blockdiag 1.5.5 1.5.5-r1 1.5.5-r2 2.0.0: A sphinx extension for embedding block diagrams using blockdiag
-dev-python/sphinxcontrib-devhelp 1.0.1: Sphinx extension which outputs Devhelp documents
+dev-python/sphinxcontrib-devhelp 1.0.1 1.0.2: Sphinx extension which outputs Devhelp documents
 dev-python/sphinxcontrib-documentedlist 0.6: Sphinx extension to convert a Python list into a generated table
 dev-python/sphinxcontrib-doxylink 1.3-r1 1.5: Extension to link to external Doxygen API documentation
 dev-python/sphinxcontrib-github-alt 1.0 1.1 1.1-r1 1.1-r2: Link to GitHub issues, pull requests, commits and users from Sphinx docs
 dev-python/sphinxcontrib-googleanalytics 0.1-r2: Sphinx extension googleanalytics
-dev-python/sphinxcontrib-htmlhelp 1.0.2: Sphinx extension which outputs HTML help book
+dev-python/sphinxcontrib-htmlhelp 1.0.2 1.0.3: Sphinx extension which outputs HTML help book
 dev-python/sphinxcontrib-httpdomain 1.4.0 1.5.0: Extension providing a Sphinx domain for describing RESTful HTTP APIs
 dev-python/sphinxcontrib-issuetracker 0.11-r1 0.11-r2: Extension to sphinx to create links to issue trackers
-dev-python/sphinxcontrib-jsmath 1.0.1: Sphinx extension which renders display math in HTML via JavaScript
+dev-python/sphinxcontrib-jsmath 1.0.1 1.0.1-r1: Sphinx extension which renders display math in HTML via JavaScript
 dev-python/sphinxcontrib-napoleon 0.6.1: Allow a different format in dosctrings for better clarity
 dev-python/sphinxcontrib-newsfeed 0.1.4: News Feed extension for Sphinx
 dev-python/sphinxcontrib-pretty-searchresults 0.3.5: Decently styled search results for sphinx-doc projects
 dev-python/sphinxcontrib-programoutput 0.11: Extension to sphinx to include program output
-dev-python/sphinxcontrib-qthelp 1.0.2: Sphinx extension which outputs QtHelp documents
-dev-python/sphinxcontrib-serializinghtml 1.1.3: Sphinx extension which outputs outputs serialized HTML files
+dev-python/sphinxcontrib-qthelp 1.0.2 1.0.3: Sphinx extension which outputs QtHelp documents
+dev-python/sphinxcontrib-serializinghtml 1.1.3 1.1.4: Sphinx extension which outputs outputs serialized HTML files
 dev-python/sphinxcontrib-spelling 2.1.2 2.3.0 4.3.0: Sphinx spelling extension
 dev-python/sphinxcontrib-websupport 1.1.0: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
@@ -8894,7 +8894,7 @@ dev-python/tempita 0.5.3-r1 0.5.3-r2: A very small text templating language
 dev-python/tempora 1.7 1.12 1.14.1-r1 2.0.0 2.1.0: Objects and routines pertaining to date and time
 dev-python/tenacity 4.8.0: General-purpose retrying library
 dev-python/termcolor 1.1.0-r1 1.1.0-r2: ANSII Color formatting for output in terminal
-dev-python/terminado 0.5 0.6 0.8.1: Terminals served to term.js using Tornado websockets
+dev-python/terminado 0.5 0.6 0.8.1 0.8.3: Terminals served to term.js using Tornado websockets
 dev-python/terminaltables 3.1.0 9999: Generate simple tables in terminals from a nested list of strings
 dev-python/test_server 0.0.31: Server to test HTTP clients
 dev-python/testfixtures 4.9.1 6.8.2: A collection of helpers and mock objects for unit tests and doc tests
@@ -18053,7 +18053,7 @@ www-servers/sniproxy 0.5.0 0.6.0: Proxies incoming HTTP and TLS connections base
 www-servers/spawn-fcgi 1.6.4-r1: A FCGI spawner for lighttpd and cherokee and other webservers
 www-servers/thttpd 2.27.1 9999: Fork of thttpd, a small, fast, multiplexing webserver
 www-servers/tomcat 7.0.100 8.5.51 9.0.31: Tomcat Servlet-4.0/JSP-2.4?/EL-3.1?/WebSocket-1.2?/JASPIC-1.1 Container
-www-servers/tornado 4.4.2-r1 4.5.1 4.5.3 5.0.2 5.1: Python web framework and asynchronous networking library
+www-servers/tornado 4.4.2-r1 4.5.1 4.5.3 5.0.2 5.1 5.1-r1 6.0.3: Python web framework and asynchronous networking library
 www-servers/uwsgi 2.0.17 2.0.17.1 2.0.17.1-r1 2.0.18: uWSGI server for Python web applications
 www-servers/varnish 4.0.5 4.1.8 5.1.3 5.2.1 6.0.1 6.1.1 6.2.2-r1 6.3.0 6.3.1: Varnish is a state-of-the-art, high-performance HTTP accelerator
 www-servers/xsp 2014.12-r2014120900: XSP is a small web server that can host ASP.NET pages
