@@ -23,11 +23,9 @@ src_configure() { :; }
 src_compile() { :; }
 
 src_install() {
-	dodir /usr/share/aclocal
 	insinto /usr/share/aclocal
 	doins m4/introspection.m4
 
-	dodir /usr/share/gobject-introspection-1.0
 	insinto /usr/share/gobject-introspection-1.0
 	doins Makefile.introspection
 }
