@@ -8915,7 +8915,7 @@ dev-python/tikzplotlib 0.9.1: Convert matplotlib figures into TikZ/PGFPlots
 dev-python/tinycss 0.4: A complete yet simple CSS parser for Python
 dev-python/tinycss2 0.5 0.6.1 1.0.2: A complete yet simple CSS parser for Python
 dev-python/tinyrpc 1.0.1: A protocol neutral RPC library that supports JSON-RPC and zmq.
-dev-python/tld 0.9.7 0.10 0.11.8: Extract the top level domain (TLD) from the URL given
+dev-python/tld 0.11.8 0.11.10: Extract the top level domain (TLD) from the URL given
 dev-python/tldextract 2.2.1: Accurately separate the TLD from the registered domain and subdomains of a URL.
 dev-python/tlslite 0.4.9-r2: TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1
 dev-python/toml 0.10.0 0.10.0-r1: Python library for handling TOML files
@@ -12563,7 +12563,7 @@ media-gfx/darktable 2.6.2 2.6.3 3.0.0 9999: A virtual lighttable and darkroom fo
 media-gfx/dawn 3.90b-r1: 3D geometrical postscript renderer
 media-gfx/dcraw 9.28.0-r1: Command-line decoder for raw digital photos
 media-gfx/digikam 6.4.0: Digital photo management application
-media-gfx/displaycal 3.8.8.1-r1: Display calibration and characterization powered by Argyll CMS
+media-gfx/displaycal 3.8.8.1-r1 3.8.9.3: Display calibration and characterization powered by Argyll CMS
 media-gfx/ditaa 0.10 0.11.0: A utility that converts ascii-art diagrams to bitmap diagrams
 media-gfx/dmtx-utils 0.7.5 0.7.6: Tools for reading and writing Data Matrix barcodes
 media-gfx/dpic 20130310 20160824: Converts PIC plots into pstricks, PGF/TikZ, PostScript, MetaPost and TeX
@@ -12956,7 +12956,7 @@ media-libs/libkate 0.4.1-r4: Codec for karaoke and text encapsulation for Ogg
 media-libs/liblastfm 1.1.0_pre20150206: Collection of libraries to integrate Last.fm services
 media-libs/libldac 2.0.2-r1: LDAC codec library from AOSP
 media-libs/liblingoteach 0.2.3: A library to support lingoteach-ui and for generic lesson development
-media-libs/liblo 0.30: Lightweight OSC (Open Sound Control) implementation
+media-libs/liblo 0.30 0.31: Lightweight OSC (Open Sound Control) implementation
 media-libs/liblqr 0.4.2-r1: An easy to use C/C++ seam carving library
 media-libs/liblrdf 0.6.1: Library for manipulation of RDF files in LADSPA plugins
 media-libs/liblscp 0.6.0 9999: C++ library for the Linux Sampler control protocol
