@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="|| ( mail-filter/libmilter mail-mta/sendmail )
-	net-libs/libnsl:0="
+	elibc_uclibc? ( net-libs/libnsl:0= )"
 RDEPEND="${DEPEND}
 	mail-filter/amavisd-new"
 
