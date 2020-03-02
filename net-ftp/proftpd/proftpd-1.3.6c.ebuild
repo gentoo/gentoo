@@ -71,6 +71,7 @@ S="${WORKDIR}/${P/_/}"
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.3.6-use-trace.patch
 	"${FILESDIR}"/${PN}-1.3.6a-fix-libcheck.patch
+	"${FILESDIR}"/${PN}-1.3.6c-gcc-10.patch
 )
 
 RESTRICT=test # tests corrupt memory. need to be fixed upstream first
