@@ -9,4 +9,4 @@ RDEPEND=!<dev-libs/gobject-introspection-1.62.0
 SLOT=0
 SRC_URI=mirror://gnome/sources/gobject-introspection/1.62/gobject-introspection-1.62.0.tar.xz
 _eclasses_=gnome.org	532d56d07b9eace4831aaa817d2b756a
-_md5_=737c9ea9fd0ccb89ecfedb7b7ca72922
+_md5_=3a18fb10bc46ecb287862f9cb05a4ce3
