@@ -3,6 +3,6 @@
 <pkgmetadata>
 	<!-- maintainer-needed -->
 	<upstream>
-		<remote-id type="sourceforge">amavisd-milter</remote-id>
+		<remote-id type="github">prehor/amavisd-milter</remote-id>
 	</upstream>
 </pkgmetadata>
