@@ -11,6 +11,20 @@
 </longdescription>
   <use>
     <flag name="cuda">Use nvidia cuda toolkit for speeding up computations</flag>
-    <flag name="metis">Enable the Partition module to cholmod using <pkg>sci-libs/metis</pkg></flag>
+    <flag name="matrixops">
+      Support basic sparse and dense matrix operations (add, multiply,
+      scale, et cetera)
+    </flag>
+    <flag name="metis">
+      Enable the Partition module to cholmod using <pkg>sci-libs/metis</pkg>
+    </flag>
+    <flag name="modify">
+      Enable Cholesky-modification routines like update, downdate,
+      row-add, and row-delete
+    </flag>
+    <flag name="partition">
+      Enable graph partitioning and graph-partition-based orderings
+      through <pkg>sci-libs/metis</pkg> or <pkg>sci-libs/parmetis</pkg>
+    </flag>
   </use>
 </pkgmetadata>
