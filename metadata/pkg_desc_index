@@ -7561,7 +7561,7 @@ dev-python/cligj 0.4.0: Click-based argument and option decorators for Python GI
 dev-python/clint 0.5.1 0.5.1-r1: Python Command-line Application Tools
 dev-python/cloudlib 0.5.0: Cloud middleware for in application use.
 dev-python/cloudpickle 0.3.1 1.2.1 1.2.2 1.3.0: Extended pickling support for Python objects
-dev-python/cmd2 0.7.9 0.8.9 0.9.22 0.9.23 0.9.25 0.10.1: Extra features for standard library's cmd module
+dev-python/cmd2 0.7.9 0.8.9 0.9.22 0.9.23 0.9.25 0.10.1 1.0.0: Extra features for standard library's cmd module
 dev-python/colander 1.3.1: A simple schema-based serialization and deserialization library
 dev-python/collective-checkdocs 0.2: Distutils command to view/validate packages's rst text long_descriptions.
 dev-python/colorama 0.3.3 0.3.9 0.3.9-r1 0.4.0 0.4.1 0.4.3: ANSI escape character sequences for colored terminal text & cursor positioning
@@ -8391,7 +8391,7 @@ dev-python/pygame_sdl2 6.99.12.4-r2: Reimplementation of portions of the pygame 
 dev-python/pygcrypt 1.0.0: CFFI interface to dev-libs/libgcrypt
 dev-python/pygeocoder 1.2.5: Python wrapper for Google Geocoding API V3
 dev-python/pyghmi 1.0.22-r1 1.5.5: A pure python implementation of IPMI protocol
-dev-python/pygit2 0.28.2 1.0.2 1.0.3: Python bindings for libgit2
+dev-python/pygit2 0.28.2 1.0.2 1.0.3 1.1.0: Python bindings for libgit2
 dev-python/pyglet 1.2.4: Cross-platform windowing and multimedia library for Python
 dev-python/pygments 2.3.1 2.4.2 2.5.2: Pygments is a syntax highlighting package written in Python
 dev-python/pygments-github-lexers 0.0.5: Pygments Github custom lexers
