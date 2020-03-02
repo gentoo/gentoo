@@ -11,7 +11,7 @@ SRC_URI+=" https://dev.gentoo.org/~leio/distfiles/${PF}-patchset.tar.xz"
 LICENSE="GPL-2+"
 SLOT="0/5" # 0/libmutter_api_version - ONLY gnome-shell (or anything using mutter-clutter-<api_version>.pc) should use the subslot
 
-IUSE="elogind input_devices_wacom +introspection screencast sysprof systemd test udev wayland"
+IUSE="elogind input_devices_wacom +introspection screencast +sysprof systemd test udev wayland"
 # native backend requires gles3 for hybrid graphics blitting support, udev and a logind provider
 REQUIRED_USE="
 	wayland? ( ^^ ( elogind systemd ) udev )
@@ -77,9 +77,8 @@ RDEPEND="${DEPEND}
 "
 DEPEND="${DEPEND}
 	x11-base/xorg-proto
-	sysprof? ( dev-util/sysprof-capture:3
-		dev-util/sysprof:0/3 )
-" # FIXME: only sysprof-capture should do, but a dbus interface file is needed
+	sysprof? ( >=dev-util/sysprof-capture-3.34.1-r1:3 )
+"
 # wayland bdepend for wayland-scanner, xorg-server for cvt utility
 BDEPEND="
 	dev-libs/wayland
