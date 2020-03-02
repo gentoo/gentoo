@@ -8816,7 +8816,7 @@ dev-python/spark-parser 1.6.1 1.8.5: An Early-Algorithm Context-free grammar Par
 dev-python/sparql-wrapper 1.8.0 1.8.4: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3: A PEG-based parser interpreter with memoization
-dev-python/sphinx 1.7.5-r1 2.0.1-r1: Python documentation generator
+dev-python/sphinx 1.7.5-r1 2.0.1-r1 2.4.3: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.4 0.1.5 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
 dev-python/sphinx-bootstrap-theme 0.4.9 0.6.0 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
@@ -8848,7 +8848,7 @@ dev-python/sphinxcontrib-programoutput 0.11: Extension to sphinx to include prog
 dev-python/sphinxcontrib-qthelp 1.0.2 1.0.3: Sphinx extension which outputs QtHelp documents
 dev-python/sphinxcontrib-serializinghtml 1.1.3 1.1.4: Sphinx extension which outputs outputs serialized HTML files
 dev-python/sphinxcontrib-spelling 2.1.2 2.3.0 4.3.0: Sphinx spelling extension
-dev-python/sphinxcontrib-websupport 1.1.0: Sphinx websupport extension
+dev-python/sphinxcontrib-websupport 1.1.0 1.2.0: Sphinx websupport extension
 dev-python/sphinxtogithub 1.1.0: A python script for preparing the html output of Sphinx documentation for github pages
 dev-python/spyder 4.0.1-r1: The Scientific Python Development Environment
 dev-python/spyder-kernels 1.8.1-r1: Kernels used by spyder on its ipython console
@@ -14008,7 +14008,7 @@ media-video/v4l2loopback 0.12.0 0.12.1.1_pre 9999: v4l2 loopback device which ou
 media-video/vamps 0.99.2-r2: Very fast requantisizing tool for backup DVDs
 media-video/vcdimager 0.7.24 2.0.1: GNU VCDimager
 media-video/vcsi 7: Create thumbnail sheets from video files
-media-video/vdr 2.2.0-r5 2.2.0-r6 2.4.1-r1: Video Disk Recorder - turns a pc into a powerful set top box for DVB
+media-video/vdr 2.2.0-r5 2.2.0-r6 2.4.1-r1 2.4.1-r2: Video Disk Recorder - turns a pc into a powerful set top box for DVB
 media-video/vdr2jpeg 0.1.9-r1 0.2.0 0.2.0-r1: Addon needed for XXV - WWW Admin for the Video Disk Recorder
 media-video/vdrsync 0.1.3_pre050322-r1 0.1.3_pre050322-r2: converting vdr-recordings to mpeg2, dvd or other similar formats
 media-video/vdrtools-genindex 0.1.3-r1 0.1.3-r2: VDR: genindex Script
