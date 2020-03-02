@@ -357,7 +357,7 @@ src_configure() {
 
 src_install() {
 	emake STRIP="true" INSTALL_ROOT="${D}" install
-	python_optimize  # does all packages by default
+	use python && python_optimize  # does all packages by default
 	dodoc AUTHORS UPGRADING README
 	readme.gentoo_create_doc
 
@@ -408,7 +408,7 @@ src_install() {
 		-exec chmod a+x {} \; || die "Failed to make python file $(basename ${file}) executable"
 
 	# Ensure that Python scripts are executed by Python 2
-	python_fix_shebang "${ED}/usr/share/mythtv"
+	use python && python_fix_shebang "${ED}/usr/share/mythtv"
 
 	# Make shell & perl scripts executable
 	find "${ED}" -type f \( -name '*.sh' -o -name '*.pl' \) -exec chmod a+x {} \; || die "Failed to make script executable"
