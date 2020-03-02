@@ -8363,7 +8363,7 @@ dev-python/pycson 0.7: A python parser for the Coffeescript Object Notation (CSO
 dev-python/pycuda 2017.1 2018.1.1 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r1 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0 7.43.0.2 7.43.0.3 7.43.0.5: python binding for curl/libcurl
-dev-python/pycxx 6.2.6 7.1.2: Set of facilities to extend Python with C++
+dev-python/pycxx 6.2.6 7.1.2 7.1.2-r1: Set of facilities to extend Python with C++
 dev-python/pydecomp 0.3 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.0.5 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
