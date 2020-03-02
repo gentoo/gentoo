@@ -9,7 +9,7 @@ inherit python-single-r1
 DESCRIPTION="General purpose formula parser & interpreter"
 HOMEPAGE="https://gitlab.com/ixion/ixion"
 
-if [[ ${PV} == 9999 ]]; then
+if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://gitlab.com/ixion/ixion.git"
 	inherit git-r3 autotools
 else
@@ -38,15 +38,17 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	[[ ${PV} == 9999 ]] && eautoreconf
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
-	econf \
-		$(use_enable debug) \
-		$(use_enable python) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		$(use_enable debug)
+		$(use_enable python)
+		$(use_enable static-libs static)
 		$(use_enable threads)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
