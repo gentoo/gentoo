@@ -14,7 +14,7 @@ if [[ ${PV} == *9999* ]]; then
 	inherit git-r3 autotools
 else
 	SRC_URI="https://kohei.us/files/orcus/src/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="MIT"
@@ -39,16 +39,18 @@ pkg_setup() {
 
 src_prepare() {
 	default
-	[[ ${PV} == 9999 ]] && eautoreconf
+	[[ ${PV} == *9999 ]] && eautoreconf
 }
 
 src_configure() {
-	econf \
-		--disable-werror \
-		$(use_enable python) \
-		$(use_enable spreadsheet-model) \
-		$(use_enable static-libs static) \
+	local myeconfargs=(
+		--disable-werror
+		$(use_enable python)
+		$(use_enable spreadsheet-model)
+		$(use_enable static-libs static)
 		$(use_with tools)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
