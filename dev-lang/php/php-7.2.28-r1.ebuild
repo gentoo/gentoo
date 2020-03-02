@@ -530,9 +530,6 @@ src_install() {
 	emake INSTALL_ROOT="${D}" \
 		install-build install-headers install-programs
 
-	# Install the "phar" archive utility.
-	use phar && emake INSTALL_ROOT="${D}" install-pharcmd
-
 	local extension_dir="$("${ED}/${PHP_DESTDIR#${EPREFIX}}/bin/php-config" --extension-dir)"
 
 	# Create the directory where we'll put version-specific php scripts
@@ -560,6 +557,11 @@ src_install() {
 				case "$sapi" in
 					cli)
 						source="sapi/cli/php"
+                                                # Install the "phar" archive utility.
+                                                if use phar ; then
+                                                        emake INSTALL_ROOT="${D}" install-pharcmd
+                                                        dosym "${dest}/bin/phar" "/usr/bin/phar${SLOT}"
+                                                fi
 						;;
 					cgi)
 						source="sapi/cgi/php-cgi"
