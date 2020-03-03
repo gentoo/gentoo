@@ -285,6 +285,7 @@ src_configure() {
 src_install() {
 	emake STRIP="true" INSTALL_ROOT="${D}" install
 	dodoc AUTHORS UPGRADING README
+	use python && python_optimize  # does all packages by default
 	readme.gentoo_create_doc
 
 	insinto /usr/share/mythtv/database
@@ -336,7 +337,7 @@ src_install() {
 	done
 
 	# Ensure that Python scripts are executed by Python 2
-	python_fix_shebang "${ED}/usr/share/mythtv"
+	use python && python_fix_shebang "${ED}/usr/share/mythtv"
 
 	# Make shell & perl scripts executable
 	find "${ED}" -type f -name '*.sh' -o -type f -name '*.pl' | \
