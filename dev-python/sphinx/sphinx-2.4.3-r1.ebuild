@@ -37,6 +37,9 @@ RDEPEND="
 	dev-python/sphinxcontrib-qthelp[${PYTHON_USEDEP}]
 	dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/typed-ast[${PYTHON_USEDEP}]
+	' python3_{6,7})
 	latex? (
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
@@ -64,7 +67,8 @@ python_prepare_all() {
 	rm tests/test_build_linkcheck.py || die "Failed to remove web tests"
 	sed -i -e 's:test_latex_images:_&:' tests/test_build_latex.py || die
 
-	# fail under pypy3
+	# fail under pypy3 (some because of missing typed-ast)
+	# revisit when pypy3 becomes pypy3.8
 	sed -i -e '/def test_partialfunction/i\
 @pytest.mark.skipif(hasattr(sys, "pypy_version_info"), reason="broken on pypy3")' \
 		-e '/def test_autodoc_typed_instance_variables/i\
