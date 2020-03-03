@@ -651,7 +651,7 @@ app-backup/backup-manager 0.7.14 0.7.14-r1: Backup Manager is a command line bac
 app-backup/backupninja 1.0.1-r1: lightweight, extensible meta-backup system
 app-backup/backuppc 3.3.1-r5: High-performance backups to a server's disk
 app-backup/bacula 9.0.8-r1 9.2.2-r2 9.4.1-r2 9.4.2-r1 9.4.3-r1 9.4.4-r1 9.4.4-r2: Featureful client/server network backup suite
-app-backup/bareos 16.2.7-r1 17.2.6 17.2.7-r1 18.2.6: Featureful client/server network backup suite
+app-backup/bareos 17.2.6 17.2.7-r1 18.2.6: Featureful client/server network backup suite
 app-backup/borgbackup 1.1.10-r1 9999: Deduplicating backup program with compression and authenticated encryption
 app-backup/borgweb 0.2.0-r2 0.3.0: Browser-based user interface for BorgBackup
 app-backup/btrbk 0.24.0-r1 0.25.1-r1 0.26.0 0.26.1 0.27.0 0.27.1 0.27.1-r1 0.27.2 0.28.0 0.28.1 0.28.2 0.28.3 0.29.0 0.29.1 9999: Tool for creating snapshots and remote backups of btrfs subvolumes
@@ -8377,7 +8377,7 @@ dev-python/pyee 1.0.2: A port of node.js's EventEmitter to python
 dev-python/pyelftools 0.24 0.24-r1 0.25: pure-Python library for analyzing ELF files and DWARF debugging information
 dev-python/pyenchant 1.6.6 1.6.8 2.0.0: Python bindings for the Enchant spellchecking system
 dev-python/pyev 0.9.0: Python libev interface, an event loop
-dev-python/pyfakefs 3.4.3 3.5.8 3.7.1: a fake file system that mocks the Python file system modules
+dev-python/pyfakefs 3.4.3 3.5.8 3.7.1 3.7.2: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r1: Python package for drawing Feynman diagrams
 dev-python/pyfiglet 0.7.5: An implementation of figlet written in Python
 dev-python/pyflakes 1.6.0 2.1.1: Passive checker for Python programs
@@ -8687,6 +8687,7 @@ dev-python/rax-scheduled-images-python-novaclient-ext 0.3.1: Adds backup-schedul
 dev-python/rdflib 4.2.2 4.2.2-r1: RDF library containing a triple store and parser/serializer
 dev-python/readlike 0.1.2 0.1.3: a python library similar to readline
 dev-python/readme_renderer 17.2 24.0-r1: a library for rendering "readme" descriptions for Warehouse
+dev-python/readthedocs-sphinx-ext 1.0.1: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 0.9.0 9999: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.4.0 0.5.0_pre20180907 0.5.0_pre20181012 0.5.0_pre20181012-r1 0.5.0: Python docutils-compatibility bridge to CommonMark
 dev-python/redis-py 3.2.1 3.3.11: Python client for Redis key-value store
@@ -8828,7 +8829,7 @@ dev-python/sphinx-notfound-page 0.4: Create a custom 404 page with absolute URLs
 dev-python/sphinx-py3doc-enhanced-theme 2.3.2 2.3.2-r1: Enhanced Sphinx theme (based on Python 3 docs)
 dev-python/sphinx-testing 0.7.2 1.0.1 1.0.1-r1: Testing utility classes and functions for Sphinx extensions
 dev-python/sphinx_celery 1.3.1 2.0.0-r1: Celery Sphinx Theme and Utilities
-dev-python/sphinx_rtd_theme 0.1.9 0.2.4: ReadTheDocs.org theme for Sphinx
+dev-python/sphinx_rtd_theme 0.1.9 0.2.4 0.4.3: ReadTheDocs.org theme for Sphinx
 dev-python/sphinxcontrib-applehelp 1.0.1 1.0.2: Sphinx extension which outputs Apple help book
 dev-python/sphinxcontrib-asyncio 0.2.0-r2: sphinx extension to support coroutines in markup
 dev-python/sphinxcontrib-blockdiag 1.5.5 1.5.5-r1 1.5.5-r2 2.0.0: A sphinx extension for embedding block diagrams using blockdiag
@@ -9821,7 +9822,7 @@ dev-ruby/ntlm-http 0.1.1-r2: Ruby/NTLM HTTP provides NTLM authentication over ht
 dev-ruby/oauth 0.5.4: A RubyGem for implementing both OAuth clients and servers
 dev-ruby/oauth2 1.4.0-r2 1.4.1 1.4.2 1.4.3 1.4.4: Wrapper for the OAuth 2.0 protocol with a similar style to the OAuth gem
 dev-ruby/octokit 4.14.0 4.15.0 4.16.0: Ruby toolkit for the Github API
-dev-ruby/omniauth 1.9.0: A generalized Rack framework for multiple-provider authentication
+dev-ruby/omniauth 1.9.0 1.9.1: A generalized Rack framework for multiple-provider authentication
 dev-ruby/open4 1.3.4: Open3::popen3 with exit status
 dev-ruby/openssl-ccm 1.2.1 1.2.2: OpenSSL CBC-MAC (CCM) ruby gem
 dev-ruby/optimist 3.0.0: A commandline option parser for Ruby that just gets out of your way.
@@ -9833,7 +9834,7 @@ dev-ruby/packetfu 1.1.13: A mid-level packet manipulation library
 dev-ruby/paint 2.1.0 2.1.1 2.2.0: Terminal painter
 dev-ruby/parallel 1.17.0 1.18.0 1.19.0 1.19.1: Run any code in parallel Processes or Threads
 dev-ruby/paramesan 0.1.1: Parameterized tests in Ruby
-dev-ruby/parser 2.6.5.0 2.7.0.0 2.7.0.1 2.7.0.2 2.7.0.3: A production-ready Ruby parser written in pure Ruby
+dev-ruby/parser 2.6.5.0 2.7.0.0 2.7.0.1 2.7.0.2 2.7.0.3 2.7.0.4: A production-ready Ruby parser written in pure Ruby
 dev-ruby/parslet 1.8.2: A small PEG based parser library
 dev-ruby/pastel 0.7.2 0.7.3: Terminal strings styling with intuitive and clean API
 dev-ruby/patch_finder 1.0.2: Generic Patch Finder
@@ -14363,7 +14364,7 @@ net-dns/dnswalk 2.0.2: dnswalk is a DNS database debugger
 net-dns/ez-ipupdate 3.0.11.13.3_beta8-r3: Dynamic DNS client for lots of dynamic dns services
 net-dns/fpdns 0.10.0_pre20130404-r1: Fingerprinting DNS servers
 net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r2: Modern asynchronous DNS API
-net-dns/hash-slinger 2.6-r1 2.7-r2 3.0: Various tools to generate DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
+net-dns/hash-slinger 3.0: Various tools to generate DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
 net-dns/knot 2.8.5 2.9.2: High-performance authoritative-only DNS server
