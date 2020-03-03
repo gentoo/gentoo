@@ -34,7 +34,7 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtquickcontrols2:5
-	>=dev-qt/qtsingleapplication-2.6.1_p20171024
+	>=dev-qt/qtsingleapplication-2.6.1_p20171024[X]
 	dev-qt/qtsvg:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5
