@@ -3,7 +3,7 @@
 
 EAPI=7
 inherit desktop flag-o-matic linux-info linux-mod multilib-minimal \
-	nvidia-driver portability toolchain-funcs unpacker user udev
+	nvidia-driver portability toolchain-funcs unpacker udev
 
 NV_URI="https://us.download.nvidia.com/XFree86/"
 X86_NV_PACKAGE="NVIDIA-Linux-x86-${PV}"
@@ -31,7 +31,10 @@ SLOT="0/${PV%.*}"
 
 COMMON="
 	app-eselect/eselect-opencl
-	kernel_linux? ( >=sys-libs/glibc-2.6.1 )
+	kernel_linux? (
+		>=sys-libs/glibc-2.6.1
+		acct-group/video
+	)
 	tools? (
 		>=x11-libs/gtk+-2.4:2
 		dev-libs/atk
@@ -435,7 +438,7 @@ pkg_preinst() {
 	if use kernel_linux; then
 		linux-mod_pkg_preinst
 
-		local videogroup="$(egetent group video | cut -d ':' -f 3)"
+		local videogroup="$(getent group video | cut -d ':' -f 3)"
 		if [ -z "${videogroup}" ]; then
 			eerror "Failed to determine the video group gid"
 			die "Failed to determine the video group gid"
