@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-03)
+# Tests require py2 sleekxmpp and they are restricted anyway.
+net-im/spectrum2 test
+
 # Rick Farina <zerochaos@gentoo.org> (2020-02-26)
 # dev-python/pyzmq USE=doc deps are not met with python2_7
 dev-python/pyzmq doc
