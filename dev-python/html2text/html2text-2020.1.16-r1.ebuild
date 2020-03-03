@@ -22,6 +22,6 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	# naming conflict with app-text/html2text, bug 421647
-	sed -i 's/html2text = html2text.cli:main/py\0/' setup.py || die
+	sed -i 's/html2text = html2text.cli:main/py\0/' setup.cfg || die
 	distutils-r1_python_prepare_all
 }
