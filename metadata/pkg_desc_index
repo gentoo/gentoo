@@ -916,7 +916,7 @@ app-crypt/ssh-multiadd 1.3.2-r1: Adds multiple ssh keys to the ssh authenticatio
 app-crypt/ssss 0.5: Shamir's Secret Sharing Scheme
 app-crypt/stan 0.4.1-r1: Stan analyzes binary streams and calculates statistical information
 app-crypt/stoken 0.92: Software Token for Linux/UNIX
-app-crypt/swtpm 0.2.0-r1: Libtpms-based TPM emulator
+app-crypt/swtpm 0.3.0: Libtpms-based TPM emulator
 app-crypt/tc-play 2.0-r1: a free, pretty much fully featured and stable TrueCrypt implementation
 app-crypt/tpm-emulator 0.7.5-r1: Emulator driver for tpm
 app-crypt/tpm-tools 1.3.9.1-r1: TrouSerS' support tools for the Trusted Platform Modules
@@ -1565,7 +1565,7 @@ app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.5 19.03.6: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
 app-emulation/docker-compose 1.24.0 1.25.4 1.25.4-r1: Multi-container orchestration for Docker
-app-emulation/docker-credential-helpers 0.6.0 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
+app-emulation/docker-credential-helpers 0.6.3: A suite of programs to use native stores to keep Docker credentials safe
 app-emulation/docker-gc 9999: Docker garbage collection of containers and images
 app-emulation/docker-machine 0.13.0: Machine management for a container-centric world
 app-emulation/docker-machine-kvm 0.10.0: KVM driver for docker-machine
@@ -1618,7 +1618,7 @@ app-emulation/playonlinux 4.2.12 4.3.4-r1: Set of scripts to easily install and 
 app-emulation/protontricks 1.3.1-r1 1.4.1: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.104 0.105: Nintendo Entertainment System (NES) emulator
 app-emulation/q4wine 1.3.11: Qt GUI configuration tool for Wine
-app-emulation/qemu 4.0.0-r50 4.1.0-r1 4.2.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
+app-emulation/qemu 4.2.0-r1 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0 0.3.0-r1: Kvm and qemu init scripts
 app-emulation/qemu-riscv64-bin 3.1.0-r4: Statically linked x86-64 binary of app-emulation/qemu, riscv64 emulator
@@ -10634,7 +10634,7 @@ dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace o
 dev-util/rosinstall_generator 0.1.13 0.1.14 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.10-r1 8.10-r2: Collection of rpm packaging related utilities
 dev-util/rr 5.2.0-r1 5.3.0-r1: Record and Replay Framework
-dev-util/rt-tests 1.6: A collection of latency testing tools for the linux(-rt) kernel
+dev-util/rt-tests 1.7: A collection of latency testing tools for the linux(-rt) kernel
 dev-util/sasm 2.2-r1 3.10.1: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/scanmem 0.17: Locate and modify variables in executing processes
@@ -16721,7 +16721,7 @@ sys-apps/dmapi 2.2.12-r1: XFS data management API library
 sys-apps/dmidecode 3.1 3.2: DMI (Desktop Management Interface) table related utilities
 sys-apps/dnotify 0.18.0: Execute a command when the contents of a directory change
 sys-apps/dog 1.7-r6: Dog is better than cat
-sys-apps/dstat 0.7.3 0.7.4: Versatile replacement for vmstat, iostat and ifstat
+sys-apps/dstat 0.7.3 0.7.4 0.7.4-r1: Versatile replacement for vmstat, iostat and ifstat
 sys-apps/dtc 1.4.1 1.4.1-r1 1.4.2 1.4.3 1.4.4 1.4.4-r1 1.4.6 1.5.0 9999: Open Firmware device tree compiler
 sys-apps/duc 1.4.1-r1 1.4.3-r1 9999: A library and suite of tools for inspecting disk usage
 sys-apps/earlyoom 1.3 9999: Early OOM Daemon for Linux
@@ -17585,7 +17585,7 @@ sys-power/pm-utils 1.4.1-r6 1.4.1-r7: Suspend and hibernation utilities
 sys-power/pmtools 20110323-r1: Collection of tools for ACPI and power management
 sys-power/powermgmt-base 1.31: Script to test whether computer is running on AC power
 sys-power/powernowd 1.00-r4 1.00-r5: Daemon to control the speed and voltage of CPUs
-sys-power/powerstat 0.02.20 0.02.21 9999: Laptop power measuring tool
+sys-power/powerstat 0.02.21 0.02.22 9999: Laptop power measuring tool
 sys-power/powertop 2.10 2.11 9999: tool to diagnose issues with power consumption and power management
 sys-power/sispmctl 4.0: GEMBIRD SiS-PM control utility
 sys-power/suspend 1.0_p20190605: Userspace Software Suspend and S2Ram
