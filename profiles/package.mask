@@ -575,8 +575,9 @@ www-plugins/passff
 =dev-python/nototools-20190320
 
 # Ulrich Müller <ulm@gentoo.org> (2020-01-06)
-# Snapshots from Git, masked for testing.
+# Snapshots from Git and pretest versions, masked for testing.
 =app-editors/emacs-27.0.50_pre*
+~app-editors/emacs-27.0.90
 
 # Jonas Stein <jstein@gentoo.org> (2019-12-30)
 # Package masked for removal. Broken SRC_URI,
