@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
@@ -24,7 +24,7 @@ RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	www-client/pybugz
 "
-DEPEND="${RDEPEND}
+BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
