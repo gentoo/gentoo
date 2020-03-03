@@ -17535,7 +17535,7 @@ sys-libs/libxcrypt 2.4 4.4.10-r1 4.4.12-r3: Extended crypt library for descrypt,
 sys-libs/llvm-libunwind 7.1.0 8.0.1 9.0.1 10.0.0_rc1 10.0.0_rc2 10.0.0.9999 11.0.0.9999: C++ runtime stack unwinder from LLVM
 sys-libs/lwp 2.8: Light-weight process library (used by Coda)
 sys-libs/mtdev 1.1.5 1.1.6: Multitouch Protocol Translation Library
-sys-libs/musl 1.1.23 1.1.24 1.2.0 9999: Light, fast and simple C library focused on standards-conformance and safety
+sys-libs/musl 1.1.24 1.2.0 9999: Light, fast and simple C library focused on standards-conformance and safety
 sys-libs/musl-nscd 1.0.2 9999: musl-nscd is an implementation of the NSCD protocol for the musl libc
 sys-libs/native-uuid 1.0: .pc file for uuid
 sys-libs/ncurses 6.1_p20181020 6.1_p20190609 6.2-r1: console display library
