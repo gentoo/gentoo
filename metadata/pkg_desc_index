@@ -12133,7 +12133,7 @@ kde-plasma/kgamma 5.17.5 5.18.2: Screen gamma values kcontrol module
 kde-plasma/khotkeys 5.17.5 5.18.2: KDE Plasma workspace hotkey module
 kde-plasma/kinfocenter 5.17.5 5.18.2: Utility providing information about the computer hardware
 kde-plasma/kmenuedit 5.17.5 5.18.2: KDE Plasma menu editor
-kde-plasma/kscreen 5.17.5 5.18.2: KDE Plasma screen management
+kde-plasma/kscreen 5.17.5 5.18.2-r1: KDE Plasma screen management
 kde-plasma/kscreenlocker 5.17.5 5.18.2: Library and components for secure lock screen architecture
 kde-plasma/ksshaskpass 5.17.5 5.18.2: KDE implementation of ssh-askpass with Kwallet integration
 kde-plasma/ksysguard 5.17.5 5.18.2: Network-enabled task manager and system monitor
