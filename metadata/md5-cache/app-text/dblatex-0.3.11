@@ -1,0 +1,15 @@
+BDEPEND=python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)] dev-python/setuptools[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
+DEFINED_PHASES=compile configure install prepare test
+DEPEND=app-text/docbook-xml-dtd:4.5 dev-libs/kpathsea dev-libs/libxslt dev-libs/libxslt dev-texlive/texlive-fontutils dev-texlive/texlive-latex dev-texlive/texlive-latexextra dev-texlive/texlive-latexrecommended dev-texlive/texlive-mathscience dev-texlive/texlive-pictures dev-texlive/texlive-xetex gnome-base/librsvg media-gfx/imagemagick media-gfx/transfig inkscape? ( media-gfx/inkscape )
+DESCRIPTION=Transform DocBook using TeX macros
+EAPI=7
+HOMEPAGE=http://dblatex.sourceforge.net/
+IUSE=inkscape python_targets_python3_6 python_targets_python3_7
+KEYWORDS=~amd64 ~arm ~x86
+LICENSE=GPL-2+
+RDEPEND=app-text/docbook-xml-dtd:4.5 dev-libs/kpathsea dev-libs/libxslt dev-libs/libxslt dev-texlive/texlive-fontutils dev-texlive/texlive-latex dev-texlive/texlive-latexextra dev-texlive/texlive-latexrecommended dev-texlive/texlive-mathscience dev-texlive/texlive-pictures dev-texlive/texlive-xetex gnome-base/librsvg media-gfx/imagemagick media-gfx/transfig inkscape? ( media-gfx/inkscape ) python_targets_python3_6? ( dev-lang/python:3.6 ) python_targets_python3_7? ( dev-lang/python:3.7 ) >=dev-lang/python-exec-2:=[python_targets_python3_6(-)?,python_targets_python3_7(-)?,-python_single_target_python3_6(-),-python_single_target_python3_7(-)]
+REQUIRED_USE=|| ( python_targets_python3_6 python_targets_python3_7 )
+SLOT=0
+SRC_URI=https://downloads.sourceforge.net/project/dblatex/dblatex/dblatex-0.3.11/dblatex-0.3.11py3.tar.bz2
+_eclasses_=distutils-r1	0d71c97a0c899f1f11ee4453ebeae2cd	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	python-r1	4eed5e0c72d4544a2291ae46515f5d79	python-utils-r1	611c493a4cfef5254350fabc04b606f5	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=a31d8a6402d073789430c73615e105c9

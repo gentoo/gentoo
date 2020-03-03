@@ -2541,7 +2541,7 @@ app-text/cuneiform 1.1.0-r3: An enterprise quality OCR engine by Cognitive Techn
 app-text/cutemarked 0.11.3-r1: Qt5 markdown editor
 app-text/cwtext 0.96-r1: Text to Morse Code converter
 app-text/dbacl 1.14 1.14.1: Digramic Bayesian text classifier
-app-text/dblatex 0.3.7 0.3.10-r1: Transform DocBook using TeX macros
+app-text/dblatex 0.3.10-r1 0.3.11: Transform DocBook using TeX macros
 app-text/delta 20060803-r1: Heuristically minimizes interesting files
 app-text/dictd 1.12.1-r2: Dictionary Client/Server for the DICT protocol
 app-text/diction 1.13 1.14: Diction and style checkers for english and german texts
