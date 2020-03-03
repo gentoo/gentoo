@@ -13434,7 +13434,7 @@ media-plugins/vdr-vcd 0.9-r3 0.9-r4: VDR plugin: play video cds
 media-plugins/vdr-vdrmanager 0.14: VDR Plugin: remote programming VDR using VDR-Manager running on Android devices
 media-plugins/vdr-vompserver 0.4.1 0.4.1-r1 0.5.1: VDR Plugin: server part for MediaMVP device
 media-plugins/vdr-weatherng 0.0.8_pre3-r1: VDR plugin: show weather for specified place
-media-plugins/vdr-wirbelscan 0.0.7-r1 2018.11.04: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
+media-plugins/vdr-wirbelscan 0.0.7-r1 2018.11.04-r1: VDR Plugin: Scan for channels on DVB-? and on PVR*-Cards
 media-plugins/vdr-xineliboutput 2.0.0 2.1.0 9999: VDR Plugin: Xinelib PlugIn
 media-plugins/vdr-zappilot 0.0.5 0.0.5-r1: VDR Plugin: browse fast the EPG information without being forced to switch to a channel
 media-plugins/xbmc-addon-xvdr 9999: XBMC addon: add VDR (http://www.tvdr.de/) as a TV/PVR Backend
