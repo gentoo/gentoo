@@ -103,9 +103,6 @@ DEPEND="
 	truetype? ( media-libs/freetype:2= )
 	ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
 	ppc64? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
-	grub_platforms_xen? ( app-emulation/xen-tools:= )
-	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
-	grub_platforms_xen-pvh? ( app-emulation/xen-tools:= )
 "
 RDEPEND="${DEPEND}
 	kernel_linux? (
