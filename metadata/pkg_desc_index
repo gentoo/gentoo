@@ -1273,7 +1273,7 @@ app-editors/e3 2.8.2: Very tiny editor in ASM with emacs, pico, wordstar, and vi
 app-editors/editra 0.7.20-r2: Multi-platform text editor supporting over 50 programming languages
 app-editors/ee 1.5.2: An easy to use text editor. A subset of aee
 app-editors/elvis 2.2.0-r6 2.2.0-r7 2.2.0-r8: A vi/ex clone
-app-editors/emacs 18.59-r12 23.4-r18 24.5-r7 25.3-r6 26.2 26.3-r1 27.0.50_pre20191223 27.0.9999-r1 28.0.9999: The extensible, customizable, self-documenting real-time display editor
+app-editors/emacs 18.59-r12 23.4-r18 24.5-r7 25.3-r6 26.3-r1 27.0.50_pre20191223 27.0.9999-r1 28.0.9999: The extensible, customizable, self-documenting real-time display editor
 app-editors/emact 2.58.0: EmACT, a fork of Conroy's MicroEmacs
 app-editors/ersatz-emacs 20060515-r1: A very minimal imitation of the famous GNU Emacs editor
 app-editors/fe 2.0: A small and easy to use folding editor
@@ -4720,7 +4720,7 @@ dev-lang/gforth 0.7.3-r1: GNU Forth is a fast and portable implementation of the
 dev-lang/ghc 7.8.4 7.10.3 8.0.2 8.2.1 8.2.2 8.4.1 8.4.2 8.4.3 8.6.4 8.6.5 8.8.1 8.8.2: The Glasgow Haskell Compiler
 dev-lang/gnat-gpl 2016-r4 2017-r1 2018-r3 2019-r1: GNAT Ada Compiler - GPL version
 dev-lang/gnuprologjava 0.2.6: GNU Prolog for Java is an implementation of ISO Prolog as a Java library
-dev-lang/go 1.12.13 1.12.15 1.12.17 1.13.6 1.13.7 1.13.8 9999: A concurrent garbage collected and typesafe programming language
+dev-lang/go 1.12.13 1.12.15 1.12.17 1.13.6 1.13.7 1.13.8 1.14 9999: A concurrent garbage collected and typesafe programming language
 dev-lang/go-bootstrap 1.13.6: Bootstrap package for dev-lang/go
 dev-lang/gprolog 1.4.4 1.4.5: A native Prolog compiler with constraint solving over finite domains (FD)
 dev-lang/helium 1.8.1: The Helium Compiler
@@ -8363,7 +8363,7 @@ dev-python/pycson 0.7: A python parser for the Coffeescript Object Notation (CSO
 dev-python/pycuda 2017.1 2018.1.1 9999: Python wrapper for NVIDIA CUDA
 dev-python/pycups 1.9.73-r1 1.9.73-r2: Python bindings for the CUPS API
 dev-python/pycurl 7.43.0 7.43.0.2 7.43.0.3 7.43.0.5: python binding for curl/libcurl
-dev-python/pycxx 6.2.6 7.1.2 7.1.2-r1: Set of facilities to extend Python with C++
+dev-python/pycxx 6.2.6 7.1.2 7.1.2-r2: Set of facilities to extend Python with C++
 dev-python/pydecomp 0.3 9999: A python library of common (de)compression and contents handling
 dev-python/pydiff 0.2 0.2-r1: Diffs two Python files at the bytecode level
 dev-python/pydispatcher 2.0.5 2.1.2: Multi-producer-multi-consumer signal dispatching mechanism
