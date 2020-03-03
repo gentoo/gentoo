@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="dev-util/patchutils"
 RDEPEND="${PYTHON_DEPS}
 	>=dev-python/feedparser-5.0.1
-	>=dev-python/html2text-3.01"
+	<dev-python/html2text-2019.8.11"
 
 src_unpack() {
 	# Tarball has zero permissions inside
