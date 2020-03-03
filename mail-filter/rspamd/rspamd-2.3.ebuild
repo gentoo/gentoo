@@ -6,15 +6,15 @@ EAPI=7
 inherit cmake pax-utils systemd tmpfiles
 
 if [[ ${PV} == *9999 ]] ; then
-	EGIT_REPO_URI="https://github.com/vstakhov/rspamd.git"
+	EGIT_REPO_URI="https://github.com/rspamd/rspamd.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/vstakhov/rspamd/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/rspamd/rspamd/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
 
 DESCRIPTION="Rapid spam filtering system"
-HOMEPAGE="https://github.com/vstakhov/rspamd"
+HOMEPAGE="https://rspamd.com/ https://github.com/rspamd/rspamd"
 LICENSE="Apache-2.0"
 SLOT="0"
 IUSE="blas cpu_flags_x86_ssse3 jemalloc +jit libressl pcre2"
