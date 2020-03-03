@@ -12,7 +12,7 @@ SRC_URI="https://github.com/click-contrib/${PN}/archive/${PV}.tar.gz -> ${P}-gh.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 
 RDEPEND=">=dev-python/click-5.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
