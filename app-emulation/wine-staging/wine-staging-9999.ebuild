@@ -6,7 +6,7 @@ EAPI=6
 PLOCALES="ar ast bg ca cs da de el en en_US eo es fa fi fr he hi hr hu it ja ko lt ml nb_NO nl or pa pl pt_BR pt_PT rm ro ru si sk sl sr_RS@cyrillic sr_RS@latin sv ta te th tr uk wa zh_CN zh_TW"
 PLOCALE_BACKUP="en"
 
-inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils l10n ltprune multilib multilib-minimal pax-utils toolchain-funcs virtualx xdg-utils
+inherit autotools eapi7-ver estack eutils flag-o-matic gnome2-utils l10n multilib multilib-minimal pax-utils toolchain-funcs virtualx xdg-utils
 
 MY_PN="${PN%%-*}"
 MY_P="${MY_PN}-${PV}"
@@ -44,7 +44,7 @@ fi
 
 LICENSE="LGPL-2.1"
 SLOT="${PV}"
-IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio +fontconfig +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
+IUSE="+abi_x86_32 +abi_x86_64 +alsa capi cups custom-cflags dos elibc_glibc +faudio +fontconfig +gcrypt +gecko gphoto2 gsm gssapi gstreamer +jpeg kerberos kernel_FreeBSD +lcms ldap +mono mp3 ncurses netapi nls odbc openal opencl +opengl osmesa oss +perl pcap pipelight +png prelink pulseaudio +realtime +run-exes samba scanner sdl selinux +ssl staging test themes +threads +truetype udev +udisks v4l vaapi vkd3d vulkan +X +xcomposite xinerama +xml"
 REQUIRED_USE="|| ( abi_x86_32 abi_x86_64 )
 	X? ( truetype )
 	elibc_glibc? ( threads )
@@ -73,6 +73,7 @@ COMMON_DEPEND="
 	cups? ( net-print/cups:=[${MULTILIB_USEDEP}] )
 	faudio? ( app-emulation/faudio:=[${MULTILIB_USEDEP}] )
 	fontconfig? ( media-libs/fontconfig:=[${MULTILIB_USEDEP}] )
+	gcrypt? ( dev-libs/libgcrypt:=[${MULTILIB_USEDEP}] )
 	gphoto2? ( media-libs/libgphoto2:=[${MULTILIB_USEDEP}] )
 	gsm? ( media-sound/gsm:=[${MULTILIB_USEDEP}] )
 	gssapi? ( virtual/krb5[${MULTILIB_USEDEP}] )
@@ -307,6 +308,7 @@ pkg_setup() {
 	MY_PREFIX="${EPREFIX}/usr/lib/wine-${WINE_VARIANT}"
 	MY_DATAROOTDIR="${EPREFIX}/usr/share/wine-${WINE_VARIANT}"
 	MY_DATADIR="${MY_DATAROOTDIR}"
+	MY_DOCDIR="${EPREFIX}/usr/share/doc/${PF}"
 	MY_INCLUDEDIR="${EPREFIX}/usr/include/wine-${WINE_VARIANT}"
 	MY_LIBEXECDIR="${EPREFIX}/usr/libexec/wine-${WINE_VARIANT}"
 	MY_LOCALSTATEDIR="${EPREFIX}/var/wine-${WINE_VARIANT}"
@@ -426,6 +428,7 @@ multilib_src_configure() {
 		--prefix="${MY_PREFIX}"
 		--datarootdir="${MY_DATAROOTDIR}"
 		--datadir="${MY_DATADIR}"
+		--docdir="${MY_DOCDIR}"
 		--includedir="${MY_INCLUDEDIR}"
 		--libdir="${EPREFIX}/usr/$(get_libdir)/wine-${WINE_VARIANT}"
 		--libexecdir="${MY_LIBEXECDIR}"
@@ -442,6 +445,7 @@ multilib_src_configure() {
 		$(use_with fontconfig)
 		$(use_with ssl gnutls)
 		$(use_enable gecko mshtml)
+		$(use_with gcrypt)
 		$(use_with gphoto2 gphoto)
 		$(use_with gsm)
 		$(use_with gssapi)

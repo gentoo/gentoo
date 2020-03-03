@@ -1,19 +1,21 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
-inherit toolchain-funcs multilib-minimal
+inherit flag-o-matic toolchain-funcs multilib-minimal
 
 DESCRIPTION="Report faked system time to programs"
 HOMEPAGE="http://www.code-wizards.com/projects/libfaketime/ https://github.com/wolfcw/libfaketime"
-SRC_URI="http://www.code-wizards.com/projects/${PN}/${P}.tar.gz"
+SRC_URI="https://github.com/wolfcw/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 arm arm64 hppa sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
 
 src_prepare() {
+	default
+
 	sed -i 's/-Werror //' "${S}/src/Makefile" || die
 
 	sed -i 's/-Werror //' "${S}/test/Makefile" || die
@@ -21,7 +23,10 @@ src_prepare() {
 	# Bug #617624 (GCC-6 compatibility)
 	sed -i 's/-Wno-nonnull-compare //' "${S}/src/Makefile" || die
 
-	eapply_user
+	# upstream doesn't want that we set this by default but
+	# I didn't find a single system where libfaketime passed
+	# CLOCK_MONOTONIC test without that
+	append-cflags -DFORCE_MONOTONIC_FIX
 
 	multilib_copy_sources
 }
