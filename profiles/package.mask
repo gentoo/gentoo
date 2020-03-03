@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Craig Andrews <candrews@gentoo.org> (2020-03-03)
+# Deprecated upstream in favor of dev-libs/rocm-comgr
+# Masked for removal in 30 days. Bug #711398
+dev-libs/rocm-opencl-driver
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-29)
 # Breaks at least app-text/texlive-core and app-office/libreoffice right now,
 # bugs 711096, 711102.
