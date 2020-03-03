@@ -42,6 +42,8 @@ RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=("${FILESDIR}"/${P}-mc-lib-twice-4070.patch)
+
 pkg_pretend() {
 	if use slang && use unicode ; then
 		ewarn "\"unicode\" USE flag only takes effect when the \"slang\" USE flag is disabled."
