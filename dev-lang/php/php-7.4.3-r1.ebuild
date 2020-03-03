@@ -551,7 +551,7 @@ src_install() {
 						# Install the "phar" archive utility.
 						if use phar ; then
 							emake INSTALL_ROOT="${D}" install-pharcmd
-							dosym "${dest}/bin/phar" "/usr/bin/phar${SLOT}"
+							dosym "..${dest#/usr}/bin/phar" "/usr/bin/phar${SLOT}"
 						fi
 						;;
 					cgi)
@@ -576,7 +576,7 @@ src_install() {
 				else
 					dobin "${source}"
 					local name="$(basename ${source})"
-					dosym "${dest}/bin/${name}" "/usr/bin/${name}${SLOT}"
+					dosym "..${dest#/usr}/bin/${name}" "/usr/bin/${name}${SLOT}"
 				fi
 			fi
 

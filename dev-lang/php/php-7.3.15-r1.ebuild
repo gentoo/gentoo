@@ -558,11 +558,11 @@ src_install() {
 				case "$sapi" in
 					cli)
 						source="sapi/cli/php"
-                                                # Install the "phar" archive utility.
-                                                if use phar ; then
-                                                        emake INSTALL_ROOT="${D}" install-pharcmd
-                                                        dosym "${dest}/bin/phar" "/usr/bin/phar${SLOT}"
-                                                fi
+						# Install the "phar" archive utility.
+						if use phar ; then
+							emake INSTALL_ROOT="${D}" install-pharcmd
+							dosym "..${dest#/usr}/bin/phar" "/usr/bin/phar${SLOT}"
+						fi
 						;;
 					cgi)
 						source="sapi/cgi/php-cgi"
@@ -586,7 +586,7 @@ src_install() {
 				else
 					dobin "${source}"
 					local name="$(basename ${source})"
-					dosym "${dest}/bin/${name}" "/usr/bin/${name}${SLOT}"
+					dosym "..${dest#/usr}/bin/${name}" "/usr/bin/${name}${SLOT}"
 				fi
 			fi
 
