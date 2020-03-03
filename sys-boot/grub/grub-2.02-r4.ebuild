@@ -94,8 +94,6 @@ DEPEND="${COMMON_DEPEND}
 		media-libs/freetype:2
 		virtual/pkgconfig
 	)
-	grub_platforms_xen? ( app-emulation/xen-tools:= )
-	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
 	static? (
 		app-arch/xz-utils[static-libs(+)]
 		truetype? (
