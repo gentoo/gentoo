@@ -101,6 +101,9 @@ pkg_pretend() {
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
+	# Apply e762752a8bf5c19e0d6d7b22de86306bfa4270ba for bug 711400.
+	sed -e 's|\(if\) \(graph_interface.want_update_pkg(parent, avail_pkg):\)|\1 parent is not None and \2|' -i lib/portage/dep/dep_check.py || die
+
 	sed -e "s:^VERSION = \"HEAD\"$:VERSION = \"${PV}\":" -i lib/portage/__init__.py || die
 
 	if use gentoo-dev; then
