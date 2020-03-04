@@ -447,11 +447,6 @@ net-misc/wicd
 net-libs/nfqueue-bindings
 dev-python/dpkt
 
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# Masked for removal in 30 days. Bug #634288.
-games-misc/fortune-mod-calvin
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
