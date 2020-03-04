@@ -447,129 +447,9 @@ net-misc/wicd
 net-libs/nfqueue-bindings
 dev-python/dpkt
 
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# Masked for removal in 30 days. Bug #634288.
-games-misc/fortune-mod-calvin
-games-misc/fortune-mod-futurama
-
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license. HOMEPAGE and SRC_URI are gone.
-# Masked for removal in 30 days. Bugs #634288, #703710.
-games-misc/fortune-mod-debilneho
-
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# "The entire text is copyrighted by the rightful owners."
-# Masked for removal in 30 days. Bugs #302722, #634288.
-games-misc/fortune-mod-discworld
-games-misc/fortune-mod-hitchhiker
-games-misc/fortune-mod-simpsons-chalkboard
-games-misc/fortune-mod-starwars
-
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# HOMEPAGE and SRC_URI are gone.
-# Masked for removal in 30 days. Bugs #634288, #703712, #703738.
-games-misc/fortune-mod-dubya
-games-misc/fortune-mod-strangelove
-
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# HOMEPAGE and SRC_URI are gone.
-# Masked for removal in 30 days. Bugs #302722, #634288, #703714.
-games-misc/fortune-mod-dune
-
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# HOMEPAGE and SRC_URI are gone.
-# Masked for removal in 30 days. Bugs #634288, #703716.
-games-misc/fortune-mod-familyguy
-
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# HOMEPAGE and SRC_URI are gone.
-# Masked for removal in 30 days. Bugs #634288, #703718.
-games-misc/fortune-mod-firefly
-
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# Allegedly GPL, but "quotes ... are copyright Fox Television."
-# Copyright status unclear. HOMEPAGE and SRC_URI are gone.
-# Masked for removal in 30 days. Bugs #634288, #703724.
-games-misc/fortune-mod-homer
-
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# Bad HOMEPAGE. SRC_URI is gone.
-# Masked for removal in 30 days. Bugs #634288, #703730.
-games-misc/fortune-mod-pqf
-
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license. HOMEPAGE and SRC_URI are gone.
-# Masked for removal in 30 days. Bugs #634288, #703732.
-games-misc/fortune-mod-slackware
-
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# HOMEPAGE and SRC_URI are gone.
-# Masked for removal in 30 days. Bugs #634288, #703736.
-games-misc/fortune-mod-sp-fortunes
-
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear. SRC_URI is gone.
-# Masked for removal in 30 days. Bugs #634288, #703742.
-games-misc/fortune-mod-woody-allen-it
-
-# Conrad Kostecki <conikost@gentoo.org> (2020-02-04)
-# Python2 only, no reverse dependencies left, since they got removed.
-# Masked for removal in 30 days.
-dev-python/e4u
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-04)
-# Python-2-only, blocks pygtk-removal. Use app-text/coolreader or
-# app-text/fbreader instead. Masked for removal in 30 days.
-app-text/pybookreader
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-04)
-# Python-2-only, blocks pygtk-removal, last release in 2010.
-# Masked for removal in 30 days.
-app-misc/hachoir-metadata
-app-misc/hachoir-urwid
-dev-python/hachoir-core
-dev-python/hachoir-parser
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
-# No maintainer, py27-only, blocks pygtk-removal, last release in 2012.
-# Masked for removal in 30 days.
-app-misc/pystopwatch
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
-# No maintainer, py27-only, broken at runtime, last release in 2010.
-# Masked for removal in 30 days.
-x11-misc/googsystray
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
-# Ancient, no maintainer, py27-only, bug 708104. Masked for removal in 30 days.
-dev-util/gquilt
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
-# Ancient, no maintainer, py27-only. Masked for removal in 30 days.
-dev-util/xesam-tools
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
-# Ancient, dead, py27-only, all revdeps masked for removal, bugs 651346, 696974
-# Masked for removal in 30 days.
-dev-python/pygtkglext
-
-# Michał Górny <mgorny@gentoo.org> (2020-01-31)
-# Last release in 2009.  No tests.  Python 2 only.  No reverse
-# dependencies.
-# Removal in 30 days.  Bug #707550.
-app-mobilephone/lightblue
 
 # Robin H. Johnson <robbat2@gentoo.org> (2020-01-26)
 # EAPI conversion caused some regressions, need to redesign old ebuilds.
@@ -664,11 +544,6 @@ sys-apps/man
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
-
-# Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
-# Unofficial build. Superseded by official 2.49.5 release.
-# Masked for removal.
-=www-client/seamonkey-2.49.9.1_p0
 
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd
