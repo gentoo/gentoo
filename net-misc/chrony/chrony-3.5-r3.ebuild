@@ -2,15 +2,15 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit git-r3 tmpfiles systemd toolchain-funcs
+inherit systemd tmpfiles toolchain-funcs
 
 DESCRIPTION="NTP client and server programs"
 HOMEPAGE="https://chrony.tuxfamily.org/"
-EGIT_REPO_URI="https://git.tuxfamily.org/chrony/chrony.git/"
+SRC_URI="https://download.tuxfamily.org/${PN}/${P/_/-}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 
-KEYWORDS=""
+KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="
 	+adns caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc
 	seccomp selinux
@@ -28,14 +28,16 @@ CDEPEND="
 DEPEND="
 	${CDEPEND}
 	caps? ( acct-group/ntp acct-user/ntp )
-	dev-ruby/asciidoctor
+	html? ( dev-ruby/asciidoctor )
 	pps? ( net-misc/pps-tools )
 "
 RDEPEND="
 	${CDEPEND}
 	selinux? ( sec-policy/selinux-chronyd )
 "
+
 RESTRICT=test
+
 S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
@@ -106,7 +108,7 @@ src_configure() {
 }
 
 src_compile() {
-	emake all docs
+	emake all docs $(usex html '' 'ADOC=true')
 }
 
 src_install() {
@@ -123,8 +125,10 @@ src_install() {
 
 	newtmpfiles - chronyd.conf <<<"d /run/chrony 0750 $(usex caps 'ntp ntp' 'root root')"
 
-	docinto html
-	dodoc doc/*.html
+	if use html; then
+		docinto html
+		dodoc doc/*.html
+	fi
 
 	keepdir /var/{lib,log}/chrony
 
