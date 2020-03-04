@@ -1261,6 +1261,7 @@ python_fix_shebang() {
 
 # @FUNCTION: _python_check_locale_sanity
 # @USAGE: <locale>
+# @INTERNAL
 # @RETURN: 0 if sane, 1 otherwise
 # @DESCRIPTION:
 # Check whether the specified locale sanely maps between lowercase
