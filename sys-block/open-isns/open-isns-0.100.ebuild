@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit flag-o-matic
+inherit autotools flag-o-matic
 
 DESCRIPTION="iSNS server and client for Linux"
 HOMEPAGE="https://github.com/open-iscsi/open-isns"
@@ -12,28 +12,45 @@ SRC_URI="https://github.com/open-iscsi/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.g
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
-IUSE="debug slp ssl static"
+IUSE="debug libressl ssl static"
 
 DEPEND="
-	ssl? ( dev-libs/openssl:= )
-	slp? ( net-libs/openslp )"
+	ssl? (
+		!libressl? ( dev-libs/openssl:0= )
+		libressl? ( dev-libs/libressl:0= )
+	)
+"
 RDEPEND="${DEPEND}"
 
 PATCHES=(
-	"${FILESDIR}/${P}-musl.patch"
-	"${FILESDIR}/${P}-ossl-1.1.patch"
+	"${FILESDIR}/${PN}-0.98-libressl-compatibility.patch"
+
+	# Upstream patches (can usually be removed with next version bump)
+	"${FILESDIR}"/${P}-no_Werror.patch
 )
+
+src_prepare() {
+	default
+	eautoreconf
+}
 
 src_configure() {
 	use debug && append-cppflags -DDEBUG_TCP -DDEBUG_SCSI
 	append-lfs-flags
-	econf $(use_with slp) \
-		$(use_with ssl security) \
+	local myeconfargs=(
+		--without-slp
+		$(use_with ssl security)
 		$(use_enable !static shared)
+	)
+	econf "${myeconfargs[@]}"
 }
 
 src_install() {
 	default
 	emake DESTDIR="${D}" install_hdrs
 	emake DESTDIR="${D}" install_lib
+	keepdir /var/lib/${PN/open-}
+	if ! use static ; then
+		find "${ED}" -type f -name "*.a" -delete || die
+	fi
 }
