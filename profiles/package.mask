@@ -464,7 +464,6 @@ games-misc/fortune-mod-debilneho
 # Masked for removal in 30 days. Bugs #302722, #634288.
 games-misc/fortune-mod-hitchhiker
 games-misc/fortune-mod-simpsons-chalkboard
-games-misc/fortune-mod-starwars
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
