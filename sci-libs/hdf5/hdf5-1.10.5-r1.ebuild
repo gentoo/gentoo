@@ -27,12 +27,12 @@ REQUIRED_USE="
 RDEPEND="
 	mpi? ( virtual/mpi[romio] )
 	szip? ( virtual/szip )
-	zlib? ( sys-libs/zlib:0= )"
-
+	zlib? ( sys-libs/zlib:0= )
+"
 DEPEND="${RDEPEND}
 	sys-devel/libtool:2
-	>=sys-devel/autoconf-2.69"
-
+	>=sys-devel/autoconf-2.69
+"
 S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
@@ -52,6 +52,7 @@ pkg_setup() {
 		fi
 		export CC="mpicc"
 		use fortran && export FC="mpif90"
+		append-ldflags -lmpi
 	elif has_version 'sci-libs/hdf5[mpi]'; then
 		ewarn "Installing hdf5 with mpi disabled while having hdf5 installed with mpi enabled may fail."
 		ewarn "Try to uninstall the current hdf5 prior to disabling mpi support."
