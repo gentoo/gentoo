@@ -922,8 +922,6 @@ distutils-r1_python_install_all() {
 		)
 		docompress -x "/usr/share/doc/${PF}/examples"
 	fi
-
-	_DISTUTILS_DEFAULT_CALLED=1
 }
 
 # @FUNCTION: distutils-r1_run_phase
@@ -1146,19 +1144,10 @@ distutils-r1_src_install() {
 		_distutils-r1_run_foreach_impl distutils-r1_python_install
 	fi
 
-	local _DISTUTILS_DEFAULT_CALLED
-
 	if declare -f python_install_all >/dev/null; then
 		_distutils-r1_run_common_phase python_install_all
 	else
 		_distutils-r1_run_common_phase distutils-r1_python_install_all
-	fi
-
-	if [[ ! ${_DISTUTILS_DEFAULT_CALLED} ]]; then
-		local cmd=die
-		[[ ${EAPI} == [45] ]] && cmd=eqawarn
-
-		"${cmd}" "QA: python_install_all() didn't call distutils-r1_python_install_all"
 	fi
 
 	_distutils-r1_check_namespace_pth
