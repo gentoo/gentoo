@@ -12,7 +12,7 @@ else
 fi
 
 DESCRIPTION="Common files for development of MATE packages"
-LICENSE="GPL-3"
+LICENSE="GPL-3+"
 SLOT="0"
 
 src_prepare() {
