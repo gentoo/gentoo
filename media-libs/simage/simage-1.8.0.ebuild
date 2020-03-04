@@ -10,7 +10,7 @@ HOMEPAGE="https://github.com/coin3d/simage/"
 SRC_URI="https://github.com/coin3d/simage/archive/${P}.tar.gz"
 
 LICENSE="BSD-1"
-KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~hppa ~ia64 ppc ~ppc64 ~sparc x86"
 SLOT="0"
 IUSE="debug gif jpeg png qt5 sndfile test tiff vorbis"
 RESTRICT="!test? ( test )"
