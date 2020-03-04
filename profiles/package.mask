@@ -560,11 +560,6 @@ dev-util/xesam-tools
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-02)
-# Ancient, dead, py27-only, all revdeps masked for removal, bugs 651346, 696974
-# Masked for removal in 30 days.
-dev-python/pygtkglext
-
 # Robin H. Johnson <robbat2@gentoo.org> (2020-01-26)
 # EAPI conversion caused some regressions, need to redesign old ebuilds.
 =dev-lang/lua-5.1.5-r5
