@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -30,7 +30,7 @@ RDEPEND="
 	hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )
 	offload? (
 		virtual/libelf:=[${MULTILIB_USEDEP}]
-		virtual/libffi:=[${MULTILIB_USEDEP}]
+		dev-libs/libffi:=[${MULTILIB_USEDEP}]
 		cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	)"
 # tests:

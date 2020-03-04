@@ -23,7 +23,7 @@ RDEPEND="
 	hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )
 	offload? (
 		virtual/libelf:=[${MULTILIB_USEDEP}]
-		virtual/libffi:=[${MULTILIB_USEDEP}]
+		dev-libs/libffi:=[${MULTILIB_USEDEP}]
 		cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	)"
 # tests:
