@@ -81,7 +81,7 @@ src_prepare() {
 		JRE_DIR=jre
 	fi
 	if use jbr8; then
-			mv "${WORKDIR}/jre" ./"${JRE_DIR}"
+		mv "${WORKDIR}/jre" ./"${JRE_DIR}"
 	fi
 
 	rm -vf "${S}"/"${JRE_DIR}"/lib/*/libavplugin* || die
@@ -89,7 +89,7 @@ src_prepare() {
 	rm -vrf "${S}"/lib/pty4j-native/linux/ppc64le || die
 	rm -vf "${S}"/bin/libdbm64* || die
 
-	if [[ -f "${JRE_DIR}" ]]; then
+	if [[ -d "${S}"/"${JRE_DIR}" ]]; then
 		for file in "${S}"/"${JRE_DIR}"/lib/amd64/{libfxplugins.so,libjfxmedia.so}
 		do
 			patchelf --set-rpath '$ORIGIN' $file || die
