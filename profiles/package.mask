@@ -565,12 +565,6 @@ dev-util/xesam-tools
 # Masked for removal in 30 days.
 dev-python/pygtkglext
 
-# Michał Górny <mgorny@gentoo.org> (2020-01-31)
-# Last release in 2009.  No tests.  Python 2 only.  No reverse
-# dependencies.
-# Removal in 30 days.  Bug #707550.
-app-mobilephone/lightblue
-
 # Robin H. Johnson <robbat2@gentoo.org> (2020-01-26)
 # EAPI conversion caused some regressions, need to redesign old ebuilds.
 =dev-lang/lua-5.1.5-r5
