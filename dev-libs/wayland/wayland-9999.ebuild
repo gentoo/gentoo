@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,7 +31,7 @@ BDEPEND="
 DEPEND="
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	dev-libs/libxml2:=
-	>=virtual/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]
+	>=dev-libs/libffi-3.0.13-r1:=[${MULTILIB_USEDEP}]
 "
 RDEPEND="${DEPEND}
 	!<media-libs/mesa-18.1.1-r1
