@@ -32,6 +32,13 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-04)
+# Dead.  Last commit in 2011.  Python 2 only.  Requires old version
+# of Django.  The Gentoo instance is being replaced by pluto
+# (https://github.com/feedreader/pluto).
+# Removal in 30 days.  Bug #706362.
+www-apps/venus
+
 # Marek Szuba <marecki@gentoo.org> (2020-03-04)
 # Most of upstream code has got merged into x-crypto (dev-go/go-crypto),
 # and since go-1.13 subsequently into the Go standard library.
