@@ -545,11 +545,6 @@ sys-apps/man
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
 
-# Lars Wendler <polynomial-c@gentoo.org> (2019-09-04)
-# Unofficial build. Superseded by official 2.49.5 release.
-# Masked for removal.
-=www-client/seamonkey-2.49.9.1_p0
-
 # Matt Turner <mattst88@gentoo.org> (2019-09-01)
 # <dev-scheme/guile-2 is package.mask'd
 <media-sound/lilypond-2.19
