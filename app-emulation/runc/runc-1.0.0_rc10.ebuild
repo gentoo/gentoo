@@ -31,17 +31,6 @@ RDEPEND="
 	!app-emulation/docker-runc
 "
 
-src_prepare() {
-	pushd src/${EGO_PN}
-	default
-	sed -i -e "/^GIT_BRANCH/d"\
-		-e "/^GIT_BRANCH_CLEAN/d"\
-		-e "/^COMMIT_NO/d"\
-		-e "s/COMMIT :=.*/COMMIT := ${RUNC_COMMIT}/"\
-		Makefile || die
-	popd || die
-}
-
 src_compile() {
 	# Taken from app-emulation/docker-1.7.0-r1
 	export CGO_CFLAGS="-I${ROOT}/usr/include"
@@ -56,7 +45,8 @@ src_compile() {
 		$(usex kmem '' 'nokmem')
 	)
 
-	GOPATH="${S}" emake BUILDTAGS="${options[*]}" -C src/${EGO_PN}
+	COMMIT=${RUNC_COMMIT} GOPATH="${S}" emake BUILDTAGS="${options[*]}" \
+		-C src/${EGO_PN}
 }
 
 src_install() {
