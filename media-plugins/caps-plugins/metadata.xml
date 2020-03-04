@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
-<maintainer type="person">
-	<email>denis7774@gmail.com</email>
-	<name>Reva Denis aka RarogCmex</name>
-</maintainer>
 <pkgmetadata>
 <maintainer type="project">
 	<email>proaudio@gentoo.org</email>
