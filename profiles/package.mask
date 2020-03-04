@@ -480,12 +480,6 @@ games-misc/fortune-mod-strangelove
 # Masked for removal in 30 days. Bugs #302722, #634288, #703714.
 games-misc/fortune-mod-dune
 
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# HOMEPAGE and SRC_URI are gone.
-# Masked for removal in 30 days. Bugs #634288, #703716.
-games-misc/fortune-mod-familyguy
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
