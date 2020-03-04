@@ -55,22 +55,39 @@ www-servers/tomcat:9
 app-portage/euscan
 
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
-# Unmaintained revdeps on dev-python/pygtk blocking its removal, py2-only
-# All masked for removal in 30 days.
-# Last release in 2011, bug #708106
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Last release in 2011, bug #708106, masked for removal in 30 days.
 app-cdr/gtkcdlabel
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
 # No plans upstream to port away from pygtk, suggested alternative dupeguru
-# not packaged in Gentoo, bug #708112
+# not packaged in Gentoo, bug #708112. Masked for removal in 30 days.
 app-misc/fslint
-# Last release in 2012, bug #708124
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Last release in 2012, bug #708124, masked for removal in 30 days.
 app-text/keepnote
-# Last release in 2012, bug #708142
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Last release in 2012, bug #708142, masked for removal in 30 days.
 x11-misc/revelation
-# Last release in 2011, bug #708150
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Last release in 2011, bug #708150, masked for removal in 30 days.
 x11-misc/tintwizard
-# Last activity in 2013, bug #710162
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Last activity in 2013, bug #710162, masked for removal in 30 days.
 sci-misc/pythoncad
-# Last release in 2013, bug #710164
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-26)
+# Unmaintained revdep on dev-python/pygtk blocking its removal, py2-only
+# Last release in 2013, bug #710164, masked for removal in 30 days.
 sci-electronics/gresistor
 
 # Jason A. Donenfeld <zx2c4@gentoo.org> (2020-02-24)
