@@ -8377,7 +8377,7 @@ dev-python/pyee 1.0.2: A port of node.js's EventEmitter to python
 dev-python/pyelftools 0.24 0.24-r1 0.25: pure-Python library for analyzing ELF files and DWARF debugging information
 dev-python/pyenchant 1.6.6 1.6.8 2.0.0: Python bindings for the Enchant spellchecking system
 dev-python/pyev 0.9.0: Python libev interface, an event loop
-dev-python/pyfakefs 3.4.3 3.5.8 3.7.1 3.7.2: a fake file system that mocks the Python file system modules
+dev-python/pyfakefs 3.4.3 3.5.8 3.7.1 3.7.2 4.0.1: a fake file system that mocks the Python file system modules
 dev-python/pyfeyn 1.0.0-r1: Python package for drawing Feynman diagrams
 dev-python/pyfiglet 0.7.5: An implementation of figlet written in Python
 dev-python/pyflakes 1.6.0 2.1.1: Passive checker for Python programs
