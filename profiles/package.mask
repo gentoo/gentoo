@@ -525,11 +525,6 @@ games-misc/fortune-mod-woody-allen-it
 # Masked for removal in 30 days.
 dev-python/e4u
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-04)
-# Python-2-only, blocks pygtk-removal. Use app-text/coolreader or
-# app-text/fbreader instead. Masked for removal in 30 days.
-app-text/pybookreader
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
