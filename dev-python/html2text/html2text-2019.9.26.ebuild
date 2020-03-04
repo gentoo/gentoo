@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="amd64 ~arm ~ppc ~sparc ~x86"
+KEYWORDS="amd64 ~arm ~ppc ~sparc x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
