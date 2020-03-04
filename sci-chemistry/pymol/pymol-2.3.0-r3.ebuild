@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1 desktop eutils flag-o-matic xdg-utils
 
@@ -22,21 +22,16 @@ IUSE="web"
 DEPEND="
 	dev-libs/msgpack[cxx]
 	dev-libs/mmtf-cpp
-	|| (
-		dev-python/numpy-python2[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-	)
-	dev-python/pmw:py2[${PYTHON_USEDEP}]
 	dev-python/pyopengl[${PYTHON_USEDEP}]
 	dev-python/PyQt5[opengl,${PYTHON_USEDEP}]
+	dev-python/numpy[${PYTHON_USEDEP}]
 	media-libs/freetype:2
 	media-libs/glew:0=
 	media-libs/glm
 	media-libs/libpng:0=
 	media-video/mpeg-tools
 	sys-libs/zlib
-	!sci-chemistry/pymol-apbs-plugin[${PYTHON_USEDEP}]
-	web? ( !dev-python/webpy[${PYTHON_USEDEP}] )"
+"
 RDEPEND="${DEPEND}
 	sci-chemistry/chemical-mime-data
 "
