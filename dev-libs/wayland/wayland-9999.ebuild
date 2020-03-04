@@ -10,7 +10,7 @@ else
 	SRC_URI="https://wayland.freedesktop.org/releases/${P}.tar.xz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sparc ~x86"
 fi
-inherit autotools libtool multilib-minimal toolchain-funcs
+inherit meson multilib-minimal
 
 DESCRIPTION="Wayland protocol libraries"
 HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/wayland/wayland"
@@ -20,12 +20,12 @@ SLOT="0"
 IUSE="doc"
 
 BDEPEND="
+	~dev-util/wayland-scanner-${PV}[$MULTILIB_USEDEP]
 	virtual/pkgconfig
 	doc? (
 		>=app-doc/doxygen-1.6[dot]
 		app-text/xmlto
 		>=media-gfx/graphviz-2.26.0
-		sys-apps/grep[pcre]
 	)
 "
 DEPEND="
@@ -35,34 +35,51 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	default
-	[[ $PV = 9999* ]] && eautoreconf || elibtoolize
+meson_multilib() {
+	if multilib_is_native_abi; then
+		echo true
+	else
+		echo false
+	fi
+}
+
+meson_multilib_native_use() {
+	if multilib_is_native_abi && use "$1"; then
+		echo true
+	else
+		echo false
+	fi
 }
 
 multilib_src_configure() {
-	local myeconfargs=(
-		--disable-static
-		$(multilib_native_use_enable doc documentation)
-		$(multilib_native_enable dtd-validation)
+	local emesonargs=(
+		-Ddocumentation=$(meson_multilib_native_use doc)
+		-Ddtd_validation=$(meson_multilib)
+		-Dlibraries=true
+		-Dscanner=false
 	)
-	tc-is-cross-compiler && myeconfargs+=( --with-host-scanner )
-
-	ECONF_SOURCE="${S}" econf "${myeconfargs[@]}"
+	meson_src_configure
 }
 
-multilib_src_install_all() {
-	find "${D}" -name '*.la' -delete || die
-	einstalldocs
+multilib_src_compile() {
+	meson_src_compile
+}
+
+multilib_src_test() {
+	meson_src_test
 }
 
 src_test() {
 	# We set it on purpose to only a short subdir name, as socket paths are
 	# created in there, which are 108 byte limited. With this it hopefully
-	# barely fits to the limit with /var/tmp/portage/$CAT/$PF/temp/xdr
-	export XDG_RUNTIME_DIR="${T}"/xdr
+	# barely fits to the limit with /var/tmp/portage/$CAT/$PF/temp/x
+	export XDG_RUNTIME_DIR="${T}"/x
 	mkdir "${XDG_RUNTIME_DIR}" || die
 	chmod 0700 "${XDG_RUNTIME_DIR}" || die
 
 	multilib-minimal_src_test
+}
+
+multilib_src_install() {
+	meson_src_install
 }
