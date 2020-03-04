@@ -785,6 +785,7 @@ python_setup() {
 	fi
 
 	python_wrapper_setup
+	einfo "Using ${EPYTHON} in global scope"
 }
 
 # @FUNCTION: python_replicate_script
