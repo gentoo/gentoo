@@ -9038,7 +9038,7 @@ dev-python/yapf 0.24.0 0.28.0: A formatter for Python files
 dev-python/yappi 0.98 1.0: Yet Another Python Profiler
 dev-python/yapsy 1.11.223-r2: A fat-free DIY Python plugin management toolkit
 dev-python/yaql 1.1.3: YAQL: Yet Another Query Language
-dev-python/yarl 1.1.1 1.3.0: Yet another URL library
+dev-python/yarl 1.1.1 1.3.0 1.4.2: Yet another URL library
 dev-python/yaswfp 0.9.3 0.9.3-r1: Yet Another SWF Parser
 dev-python/zVMCloudConnector 1.2.2 1.4.1: a development sdk for managing z/VM
 dev-python/zake 0.2.1: Set of testing utilities for the kazoo library
