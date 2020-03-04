@@ -467,6 +467,7 @@ python_setup() {
 
 		python_export "${impls[0]}" EPYTHON PYTHON
 		python_wrapper_setup
+		einfo "Using ${EPYTHON} to build"
 		return
 	fi
 
@@ -484,6 +485,7 @@ python_setup() {
 
 			python_export "${impl}" EPYTHON PYTHON
 			python_wrapper_setup
+			einfo "Using ${EPYTHON} to build"
 		fi
 	done
 
