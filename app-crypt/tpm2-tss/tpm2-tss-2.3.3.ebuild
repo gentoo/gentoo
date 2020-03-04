@@ -10,16 +10,13 @@ HOMEPAGE="https://github.com/tpm2-software/tpm2-tss"
 SRC_URI="https://github.com/tpm2-software/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="BSD-2"
-SLOT="0/0"	# sublot is libtss2-sys number
+SLOT="0"
 KEYWORDS="~amd64"
 IUSE="doc +gcrypt openssl static-libs test"
 
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="
-	gcrypt? ( !openssl )
-	openssl? ( !gcrypt )
-	|| ( gcrypt openssl )"
+REQUIRED_USE="^^ ( gcrypt openssl )"
 
 RDEPEND="acct-group/tss
 	 acct-user/tss
