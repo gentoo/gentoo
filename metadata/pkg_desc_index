@@ -45,6 +45,8 @@ acct-group/gvm 0: Greenbone vulnerability management program group
 acct-group/heat 0: System group: heat
 acct-group/i2p 0: Group for system-wide net-vpn/i2p
 acct-group/i2pd 0: Group for the system-wide net-vpn/i2pd server
+acct-group/icinga 0: System group: icinga
+acct-group/icingacmd 0: System group: icingacmd
 acct-group/input 0: System group: input
 acct-group/inspircd 0: System group: inspircd
 acct-group/ipfs 0: Group for the system-wide net-p2p/go-ipfs-bin server
@@ -205,6 +207,7 @@ acct-user/gvm 0: Greenbone vulnerability management program user
 acct-user/heat 0: user for the heat openstack service
 acct-user/i2p 0: User for system-wide net-vpn/i2p
 acct-user/i2pd 0: User for the system-wide net-vpn/i2pd server
+acct-user/icinga 0: Icinga User
 acct-user/inspircd 0: User for InspIRCd server daemon
 acct-user/ipfs 0: User for the system-wide net-p2p/go-ipfs-bin server
 acct-user/ippl 0: user for net-analyzer/ippl
@@ -411,7 +414,7 @@ app-admin/gentoo-rsync-mirror 1.0-r5: Ebuild for setting up a Gentoo rsync mirro
 app-admin/github-backup-utils 2.10.0 2.10.0-r1 2.11.0 2.11.0-r1 2.11.1 2.11.1-r1 2.11.2 2.11.2-r1 2.13.0 2.13.2 2.14.2 2.15.0 2.15.1 2.16.1 2.17.0 2.18.0 2.19.1: Backup and recovery utilities for GitHub Enterprise
 app-admin/gixy 0.1.20: Nginx configuration static analyzer
 app-admin/gkrellm 2.3.10-r2 2.3.11 2.3.11-r1 9999: Single process stack of various system monitors
-app-admin/glance 19.0.1 2019.2.9999: Services for discovering, registering, and retrieving VM images
+app-admin/glance 19.0.1 19.0.2 2019.2.9999: Services for discovering, registering, and retrieving VM images
 app-admin/gnome-abrt 1.2.6 1.2.7: A utility for viewing problems that have occurred with the system
 app-admin/gnome-system-log 3.9.90: System log viewer for GNOME
 app-admin/go-updater 0.2.0: Checks if Gentoo go packages are compiled with the system's golang version
@@ -785,7 +788,7 @@ app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
 app-cdr/xfburn 0.6.1: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
-app-crypt/acme 1.1.0 1.2.0 1.3.0 9999: An implementation of the ACME protocol
+app-crypt/acme 1.2.0 1.3.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
 app-crypt/acme-sh 2.8.3 2.8.5 9999: An ACME Shell script
 app-crypt/acme-tiny 4.0.3 4.0.4 9999: A tiny, auditable script for Let's Encrypt's ACME Protocol
@@ -802,10 +805,10 @@ app-crypt/bsign 0.4.5-r1: embed secure hashes (SHA1) and digital signatures (GNU
 app-crypt/cardpeek 0.7.2 0.8.4: Tool to read the contents of smartcards
 app-crypt/ccid 1.4.30 1.4.31: CCID free software driver
 app-crypt/ccrypt 1.11 1.11-r1: Encryption and decryption
-app-crypt/certbot 1.1.0 1.2.0-r1 1.3.0 9999: Let's encrypt client to automate deployment of X.509 certificates
-app-crypt/certbot-apache 1.1.0 1.2.0 1.3.0 9999: Apache plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot 1.2.0-r1 1.3.0 9999: Let's encrypt client to automate deployment of X.509 certificates
+app-crypt/certbot-apache 1.2.0 1.3.0 9999: Apache plugin for certbot (Let's Encrypt Client)
 app-crypt/certbot-dns-nsone 0.39.0-r1: NS1 DNS Authenticator plugin for Certbot (Let's Encrypt Client)
-app-crypt/certbot-nginx 1.1.0 1.2.0 1.3.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
+app-crypt/certbot-nginx 1.2.0 1.3.0 9999: Nginx plugin for certbot (Let's Encrypt Client)
 app-crypt/cfssl 1.3.2 1.3.3 1.3.4 1.4.1: Cloudflare's PKI and TLS toolkit
 app-crypt/chntpw 140201: Offline Windows NT Password & Registry Editor
 app-crypt/ckpass 0.2-r1: ncurses based password database client compatible with KeePass 1.x databases
@@ -2109,8 +2112,6 @@ app-misc/graphlcd-base 1.0.2: Contains the lowlevel lcd drivers for GraphLCD
 app-misc/grc 1.11-r1: Generic Colouriser beautifies your logfiles or output of commands
 app-misc/gtk-sunlight 0.4.2: Real-time Sunlight Wallpaper
 app-misc/gtypist 2.9.5: Universal typing tutor
-app-misc/hachoir-metadata 1.3.3-r1: Program to extract metadata using Hachoir library
-app-misc/hachoir-urwid 1.1-r1: Binary file explorer using Hachoir and urwid libraries
 app-misc/hatools 2.14: High availability environment tools for shell scripting
 app-misc/hddled 0.3: Show hard disk activity using the scroll lock LED
 app-misc/hello 2.10-r1: GNU "Hello, world" application
@@ -2195,7 +2196,6 @@ app-misc/prog-express 3.8.5 3.8.8: A modern and intuitive control software for t
 app-misc/ps3pf_utils 2.3: Utilities to set the ps3 specific features
 app-misc/pwsafe 0.2.0-r4: A Password Safe compatible command-line password manager
 app-misc/pysmssend 1.48-r2: Python Application for sending sms over multiple ISPs
-app-misc/pystopwatch 2012.12.24.1-r1: clock and two countdown functions that can minimize to the tray
 app-misc/qcma 0.4.1 0.4.2_pre20181227 9999: Cross-platform content manager assistant for the PS Vita
 app-misc/qlcplus 4.11.1 4.12.2 5.0.0_alpha3: A software to control DMX or analog lighting systems
 app-misc/radeontop 1.2 9999: Utility to view Radeon GPU utilization
@@ -2300,7 +2300,6 @@ app-mobilephone/gnokii 0.6.31-r1 0.6.31-r2 0.6.31-r3 9999: User space driver and
 app-mobilephone/heimdall 1.4.2 9999: Tool suite used to flash firmware onto Samsung Galaxy S devices
 app-mobilephone/kannel 1.5.0-r3 1.5.0-r4: Powerful SMS and WAP gateway
 app-mobilephone/kannel-sqlbox 1.5.0-r1: DB-Based Kannel Box for message queueing
-app-mobilephone/lightblue 0.4-r1: API for Python which provides simple access to Bluetooth operations
 app-mobilephone/obexftp 0.24.2: File transfer over OBEX for mobile phones
 app-mobilephone/pysms 0.9.4-r1: Tool for sending text messages for various Swiss providers
 app-mobilephone/qtadb 0.8.1-r1: Android phone manager via ADB
@@ -2705,7 +2704,6 @@ app-text/pspdftool 0.03: Tool for prepress preparation of PDF and PostScript doc
 app-text/pspresent 1.3-r1: A tool to display full-screen PostScript presentations
 app-text/pstotext 1.9-r4: Extract ASCII text from a PostScript or PDF file
 app-text/psutils 1.17-r3: PostScript Utilities
-app-text/pybookreader 0.5.0-r1: A book reader for .fb2 .html and plain text (possibly gzipped)
 app-text/pylize 1.3b-r2: Python HTML Slideshow Generator using HTML and CSS
 app-text/pytextile 2.3.3 3.0.3: A Python port of Textile, A humane web text generator
 app-text/q-text-as-data 1.5.0: A CLI tool that allows direct execution of SQL-like queries on text
@@ -7699,7 +7697,6 @@ dev-python/duecredit 0.6.4-r1 0.7.0: Publications (and donations) tracer
 dev-python/dugong 3.7.1 3.7.2 3.7.3: Python library for communicating with HTTP 1.1 servers
 dev-python/dulwich 0.18.5 0.18.6 0.19.4 0.19.6 0.19.15: Pure-Python implementation of the Git file formats and protocols
 dev-python/dynd-python 0.7.2-r2: Python exposure of multidimensionnal array library libdynd
-dev-python/e4u 0.1_rc5-r1: A library for handling unicode emoji and carrier's emoji
 dev-python/easy-thumbnails 2.4.1: Easy thumbnails for Django
 dev-python/ebuildtester 0.1.12 0.1.13 0.1.14: A dockerized approach to test a Gentoo package within a clean stage3 container
 dev-python/ecdsa 0.13 0.13.2 0.13.3 0.14.1 0.14.1-r1: ECDSA cryptographic signature library in pure Python
@@ -7863,8 +7860,6 @@ dev-python/guessit 3.0.0 9999: Python library for guessing information from vide
 dev-python/guzzle_sphinx_theme 0.7.10 0.7.11 0.7.11-r1: Sphinx theme used by Guzzle
 dev-python/h11 0.7.0 0.8.1: A pure-Python implementation of HTTP/1.1 inspired by hyper-h2
 dev-python/h5py 2.7.0 2.7.1 2.9.0 2.10.0: Simple Python interface to HDF5 files
-dev-python/hachoir-core 1.3.3-r1: Core of Hachoir framework: parse and edit binary files
-dev-python/hachoir-parser 1.3.4-r1: Package of Hachoir parsers used to open binary files
 dev-python/hacking 2.0.0: A client for the OpenStack Nova API
 dev-python/hcloud-python 1.6.3: Official Hetzner Cloud python library
 dev-python/helpdev 0.6.10: Helping users and developers to get information about the environment
@@ -8198,7 +8193,7 @@ dev-python/oslo-serialization 2.28.2: Oslo Serialization library
 dev-python/oslo-service 1.40.2: Library for running OpenStack services
 dev-python/oslo-sphinx 4.18.0: OpenStack Sphinx Extensions and Theme
 dev-python/oslo-upgradecheck 0.2.1: Oslo i18n library
-dev-python/oslo-utils 3.41.4: Oslo Utility library
+dev-python/oslo-utils 3.41.4 3.41.5: Oslo Utility library
 dev-python/oslo-versionedobjects 1.35.1: A library that provides a generic versioned and RPC-friendly object model.
 dev-python/oslo-vmware 2.32.2: Oslo VMware library for OpenStack projects
 dev-python/oslotest 3.7.1: Oslo test framework
@@ -8402,7 +8397,6 @@ dev-python/pygraphviz 1.5: Python wrapper for the Graphviz Agraph data structure
 dev-python/pygresql 5.0.4 5.0.6 5.1: A Python interface for the PostgreSQL database
 dev-python/pygsl 2.1.1: Python interface for the GNU scientific library (gsl)
 dev-python/pygtk 2.24.0-r4: GTK+2 bindings for Python
-dev-python/pygtkglext 1.1.0-r1: Python bindings to GtkGLExt
 dev-python/pygtksourceview 2.10.1-r1: GTK+2 bindings for Python
 dev-python/pyh2o 9999: Python API for sci-libs/libh2o
 dev-python/pyhamcrest 1.9.0-r1: Hamcrest framework for matcher objects
@@ -10513,7 +10507,6 @@ dev-util/google-perftools 2.6.2 2.7 2.7-r1: Fast, multi-threaded malloc() and ni
 dev-util/gource 0.51: A software version control visualization tool
 dev-util/gperf 3.1: A perfect hash function generator
 dev-util/gprof2dot 2013.05.17 2016.10.13 2017.09.19 2019.11.30: Converts profiling output to dot graphs
-dev-util/gquilt 0.25-r2: A Python/GTK wrapper for quilt
 dev-util/gtk-builder-convert 2.24.32: Converts Glade files to GtkBuilder XML format
 dev-util/gtk-doc 1.25-r1 1.32-r1: GTK+ Documentation Generator
 dev-util/gtk-doc-am 1.25-r1 1.32: Automake files from gtk-doc
@@ -10703,7 +10696,6 @@ dev-util/wiggle 0.9-r1 1.0: tool for applying patches that patch cannot apply be
 dev-util/wstool 0.1.18 9999: Commands to manage several local SCM repositories for ROS
 dev-util/wxglade 0.8.2-r1: Glade-like GUI designer which can generate Python, Perl, C++ or XRC code
 dev-util/xdelta 1.1.4-r2 3.0.11 3.1.0: Computes changes between binary or text files and creates deltas
-dev-util/xesam-tools 0.7.0-r2: Development tools and examples for the Xesam desktop search API
 dev-util/xfce4-dev-tools 4.14.0: A set of scripts and m4/autoconf macros that ease build system maintenance
 dev-util/xmlindent 0.2.17-r2: XML stream reformatter for ASCII text, but not UTF-8, written in ANSI C
 dev-util/xxdi 1.0.0: Simple alternative to vim's 'xxd -i' mode
@@ -11222,38 +11214,21 @@ games-misc/fortune-mod 1.99.1-r2: The notorious fortune program
 games-misc/fortune-mod-all 3: Meta package for all fortune-mod packages
 games-misc/fortune-mod-at-linux 20030120: Quotes from at.linux
 games-misc/fortune-mod-bofh-excuses 1.2-r1: Excuses from Bastard Operator from Hell
-games-misc/fortune-mod-calvin 0.1.1: Quotes from Calvin and Hobbes Comic Books
 games-misc/fortune-mod-chucknorris 0.1: Chuck Norris Facts
 games-misc/fortune-mod-cs 1.6.9: Database of the Czech and Slovak cookies for the fortune(6) program
-games-misc/fortune-mod-debilneho 0.1: Quotation's by several people (mostly from Slovakia)
-games-misc/fortune-mod-discworld 0.1: Quotes from Discworld novels
-games-misc/fortune-mod-dubya 20050118: Quotes from George W. Bush
-games-misc/fortune-mod-dune 2.0.1: Quotes from Frank Herbert's Dune Chronicles
-games-misc/fortune-mod-familyguy 0.2: Quotes from the TV-Series -Family Guy-
-games-misc/fortune-mod-firefly 2.1.1: Quotes from FireFly
 games-misc/fortune-mod-flashrider 1.10-r1: Quotes from Prolinux articles and comments
-games-misc/fortune-mod-futurama 0.2: Quotes from the TV-Series -Futurama-
 games-misc/fortune-mod-fvl 20030120: Quotes from Felix von Leitner (fefe)
-games-misc/fortune-mod-hitchhiker 0.1: Quotes from Hitchhikers Guide to the Galaxy
-games-misc/fortune-mod-homer 0.1: Quotes from Homer Simpson
 games-misc/fortune-mod-humorixfortunes 1.4-r1: Extra fortune cookies for fortune
 games-misc/fortune-mod-it 1.99: Database of the Italian cookies for the fortune program
 games-misc/fortune-mod-kernelcookies 9: A collection of funny lines from the Linux kernel
 games-misc/fortune-mod-mormon 1.1.0: Fortune modules from the LDS scriptures (KJV Bible, Book of Mormon, D&C, PGP)
 games-misc/fortune-mod-norbert-tretkowski 20030120: Quotes from Norbert Tretkowski
 games-misc/fortune-mod-osfortune 1: Open sources fortune file
-games-misc/fortune-mod-pqf 6.0: Fortune database of Terry Pratchett's Discworld related quotes
 games-misc/fortune-mod-rss 20030120: Fortune database of Robin S. Socha quotes
 games-misc/fortune-mod-scriptures 1.1.0: Fortune modules from the King James Bible scriptures
-games-misc/fortune-mod-simpsons-chalkboard 0.1: Quotes from Bart Simpson's Chalkboard, shown at the opening of Simpsons episode
-games-misc/fortune-mod-slackware 1.15: This fortune mod is a collection of quotes seen on AOLS (Slackware)
-games-misc/fortune-mod-sp-fortunes 0.2: South Park Fortunes
-games-misc/fortune-mod-starwars 0.1: Quotes from StarWars, The Empire Strikes Back, and Return of the Jedi
-games-misc/fortune-mod-strangelove 20041203: Quotes from Dr. Strangelove
 games-misc/fortune-mod-tao 1: set of fortunes based on the Tao-Teh-Ching
 games-misc/fortune-mod-taow 1.0: The Art of War Fortune Mod
 games-misc/fortune-mod-thomas-ogrisegg 20030120: Quotes from Thomas Ogrisegg
-games-misc/fortune-mod-woody-allen-it 0.1: Fortune database for Woody Allen quotes (in Italian)
 games-misc/fortune-mod-zx-error 1.0-r1: Sinclair ZX Spectrum BASIC error Fortunes
 games-misc/funny-manpages 1.3_rc5-r1 2.3: funny manpages collected from various sources
 games-misc/gBhed 0.17-r1: An Al Bhed translator
@@ -13121,7 +13096,7 @@ media-libs/sdl2-ttf 2.0.14 2.0.15: library that allows you to use TrueType fonts
 media-libs/sg 1.5: Socket Graphics tool for displaying polygons
 media-libs/sge 030809: Graphics extensions library for SDL
 media-libs/shaderc 2018.0 2019.0-r1: Collection of tools, libraries and tests for shader compilation
-media-libs/simage 1.7.1-r1 1.8.0: Image and video texturing library
+media-libs/simage 1.8.0: Image and video texturing library
 media-libs/slv2 0.6.6-r3: A library to make the use of LV2 plugins as simple as possible for applications
 media-libs/smpeg 0.4.4-r10: SDL MPEG Player Library
 media-libs/smpeg2 2.0.0-r3: SDL MPEG Player Library
@@ -14102,7 +14077,7 @@ net-analyzer/hydra 8.1 8.9.1 9.0 9.0-r1 9999999: Parallelized network login hack
 net-analyzer/ibmonitor 1.4 1.4-r1: Interactive bandwidth monitor
 net-analyzer/icinga 1.14.2: Nagios Fork - Check daemon, CGIs, docs, IDOutils
 net-analyzer/icinga-web 1.14.1: Icinga Web - new Web Interface
-net-analyzer/icinga2 2.10.5 2.10.6 2.11.2 9999: Distributed, general purpose, network monitoring engine
+net-analyzer/icinga2 2.10.5 2.10.6 2.11.2 2.11.3 9999: Distributed, general purpose, network monitoring engine
 net-analyzer/ifmetric 0.3-r2: Set metrics of all IPv4 routes attached to a given network interface at once
 net-analyzer/ifstat 1.1-r2: Network interface bandwidth usage, with support for snmp targets
 net-analyzer/ifstatus 1.1.0-r2 2.0.0: A simple CLI program for displaying network statistics in real time
@@ -17178,7 +17153,7 @@ sys-cluster/mpich2 1.5: A high performance and portable MPI implementation
 sys-cluster/mvapich2 1.6: MVAPICH2 MPI-over-infiniband package auto-configured for OpenIB
 sys-cluster/native-mpi 0: Use native OS MPI in prefix environment
 sys-cluster/neutron 15.0.1 15.0.2 2019.2.9999: A virtual network service for Openstack
-sys-cluster/nova 20.0.1 20.1.0 20.1.1 2019.2.9999: Cloud computing fabric controller
+sys-cluster/nova 20.1.1 2019.2.9999: Cloud computing fabric controller
 sys-cluster/nullmpi 0.7: MPI substitute library
 sys-cluster/onesis 2.0.2: Diskless computing made easy
 sys-cluster/openais 1.1.4-r1: Open Application Interface Specification cluster framework
@@ -17989,7 +17964,7 @@ www-client/otter 0.9.99.3 1.0.01 9999: Project aiming to recreate classic Opera 
 www-client/pybugz 0.13 9999: Command line interface to (Gentoo) Bugzilla
 www-client/qutebrowser 1.8.3 1.10.1 9999: A keyboard-driven, vim-like browser based on PyQt5 and QtWebEngine
 www-client/ripe-atlas-cousteau 1.2: A Python wrapper around the RIPE Atlas API
-www-client/seamonkey 2.49.5-r1 2.49.9.1_p0: Seamonkey Web Browser
+www-client/seamonkey 2.49.5-r1 2.53.1: Seamonkey Web Browser
 www-client/seamonkey-bin 2.48 2.49.1_rc2: Mozilla Application Suite - web browser, email, HTML editor, IRC
 www-client/surf 2.0 9999: a simple web browser based on WebKit/GTK+
 www-client/surfraw 2.3.0-r1 2.3.0-r2 99999: A fast unix command line interface to WWW
@@ -18369,7 +18344,6 @@ x11-misc/gcolor2 0.4-r4: A GTK+ color selector
 x11-misc/genmenu 1.1.0-r1: menu generator for *box, WindowMaker, and Enlightenment
 x11-misc/gigolo 0.5.0: a frontend to easily manage connections to remote filesystems using GIO/GVfs
 x11-misc/gmrun 0.9.2-r1 0.9.2-r2: A GTK-2 based launcher box with bash style auto completion!
-x11-misc/googsystray 1.3.1-r1: System tray application for Google Voice, GMail, Calendar, Reader, and Wave
 x11-misc/gpaste 3.20.3: Clipboard management system
 x11-misc/grabc 1.1-r2: Identify color of a pixel on the screen by clicking on a pixel on the screen
 x11-misc/gromit 20041213-r1: GRaphics Over MIscellaneous Things, a presentation helper
