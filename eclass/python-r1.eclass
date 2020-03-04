@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-r1.eclass
@@ -26,8 +26,8 @@
 # in the packages using python-r1, and there is no need ever to inherit
 # both.
 #
-# For more information, please see the wiki:
-# https://wiki.gentoo.org/wiki/Project:Python/python-r1
+# For more information, please see the Python Guide:
+# https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
 	0|1|2|3|4)
