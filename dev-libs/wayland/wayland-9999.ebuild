@@ -17,7 +17,7 @@ HOMEPAGE="https://wayland.freedesktop.org/ https://gitlab.freedesktop.org/waylan
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="doc static-libs"
+IUSE="doc"
 
 BDEPEND="
 	virtual/pkgconfig
