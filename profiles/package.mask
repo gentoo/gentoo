@@ -515,11 +515,6 @@ games-misc/fortune-mod-slackware
 # Masked for removal in 30 days. Bugs #634288, #703736.
 games-misc/fortune-mod-sp-fortunes
 
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear. SRC_URI is gone.
-# Masked for removal in 30 days. Bugs #634288, #703742.
-games-misc/fortune-mod-woody-allen-it
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
