@@ -21,7 +21,7 @@ LLVM_TARGET_USEDEPS=${ALL_LLVM_TARGETS[@]/%/?}
 
 LICENSE="Apache-2.0-with-LLVM-exceptions UoI-NCSA"
 SLOT="0/${PV}"
-KEYWORDS=""
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE="debug test ${ALL_LLVM_TARGETS[*]}"
 REQUIRED_USE="|| ( ${ALL_LLVM_TARGETS[*]} )"
 RESTRICT="!test? ( test )"
