@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="User documentation for MATE Desktop"
-LICENSE="GPL-2 LGPL-2"
+LICENSE="FDL-1.1+ GPL-2+"
 SLOT="0"
 
 COMMON_DEPEND="virtual/libintl:0"
