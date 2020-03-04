@@ -894,9 +894,7 @@ distutils-r1_python_install() {
 	${shopt_save}
 
 	if [[ -n ${pypy_dirs} ]]; then
-		local cmd=die
-		[[ ${EAPI} == [45] ]] && cmd=eqawarn
-		"${cmd}" "Package installs 'share' in PyPy prefix, see bug #465546."
+		die "Package installs 'share' in PyPy prefix, see bug #465546."
 	fi
 
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
