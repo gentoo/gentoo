@@ -538,11 +538,6 @@ app-misc/hachoir-urwid
 dev-python/hachoir-core
 dev-python/hachoir-parser
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-03)
-# No maintainer, py27-only, blocks pygtk-removal, last release in 2012.
-# Masked for removal in 30 days.
-app-misc/pystopwatch
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
