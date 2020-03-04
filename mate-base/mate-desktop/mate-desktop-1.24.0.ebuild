@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="Libraries for the MATE desktop that are not part of the UI"
-LICENSE="GPL-2 FDL-1.1 LGPL-2"
+LICENSE="FDL-1.1 GPL-2+ LGPL-2+ MIT-with-advertising"
 SLOT="0"
 
 IUSE="X debug +introspection startup-notification"
