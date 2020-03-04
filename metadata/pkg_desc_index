@@ -8691,7 +8691,7 @@ dev-python/redlock-py 1.0.8: Redis distributed locks in Python
 dev-python/rednose 0.4.1 0.4.3: coloured output for nosetests
 dev-python/reflink 0.2.1: Python wrapper around the reflink system calls
 dev-python/regendoc 0.5 0.6.1: Check/update simple file/shell examples in documentation
-dev-python/regex 2017.04.05 2017.04.05-r1 2019.11.1: Alternative regular expression module to replace re
+dev-python/regex 2017.04.05 2017.04.05-r1 2019.11.1 2020.2.20: Alternative regular expression module to replace re
 dev-python/rencode 1.0.5-r1: similar to bencode from the BitTorrent project
 dev-python/reno 2.7.0 2.11.2 2.11.3: Release notes manager, storing release notes in a git repo and building docs
 dev-python/reportlab 3.5.13-r1: Tools for generating printable PDF documents from any data source
