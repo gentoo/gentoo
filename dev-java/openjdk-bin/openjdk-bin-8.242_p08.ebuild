@@ -17,12 +17,13 @@ SLOT="$(ver_cut 1)"
 DESCRIPTION="Prebuilt Java JDK binaries provided by AdoptOpenJDK"
 HOMEPAGE="https://adoptopenjdk.net"
 SRC_URI="
+	arm64? ( https://github.com/AdoptOpenJDK/openjdk${SLOT}-binaries/releases/download/jdk${MY_PV}/OpenJDK8U-jdk_aarch64_linux_hotspot_jdk${MY_PV}.tar.gz )
 	$(abi_uri ppc64le ppc64)
 	$(abi_uri x64 amd64)
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="amd64 ~ppc64"
+KEYWORDS="amd64 ~arm64 ~ppc64"
 
 IUSE="alsa cups examples headless-awt nsplugin selinux source webstart"
 
