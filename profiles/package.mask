@@ -520,11 +520,6 @@ games-misc/fortune-mod-sp-fortunes
 # Masked for removal in 30 days. Bugs #634288, #703742.
 games-misc/fortune-mod-woody-allen-it
 
-# Conrad Kostecki <conikost@gentoo.org> (2020-02-04)
-# Python2 only, no reverse dependencies left, since they got removed.
-# Masked for removal in 30 days.
-dev-python/e4u
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
