@@ -301,6 +301,7 @@ python_setup() {
 
 		python_export "${impls[0]}" EPYTHON PYTHON
 		python_wrapper_setup
+		einfo "Using ${EPYTHON} to build"
 		return
 	fi
 
@@ -309,6 +310,7 @@ python_setup() {
 		if _python_EPYTHON_supported "${EPYTHON}"; then
 			python_export EPYTHON PYTHON
 			python_wrapper_setup
+			einfo "Using ${EPYTHON} to build"
 			return
 		fi
 	fi
@@ -324,6 +326,7 @@ python_setup() {
 		elif _python_EPYTHON_supported "${i}"; then
 			python_export "${i}" EPYTHON PYTHON
 			python_wrapper_setup
+			einfo "Using ${EPYTHON} to build"
 			return
 		fi
 	done
@@ -334,6 +337,7 @@ python_setup() {
 		python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
 		if _python_EPYTHON_supported "${EPYTHON}"; then
 			python_wrapper_setup
+			einfo "Using ${EPYTHON} to build"
 			return
 		fi
 	done
