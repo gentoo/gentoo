@@ -530,11 +530,6 @@ dev-python/e4u
 # app-text/fbreader instead. Masked for removal in 30 days.
 app-text/pybookreader
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-04)
-# Python-2-only, blocks pygtk-removal, last release in 2010.
-# Masked for removal in 30 days.
-dev-python/hachoir-core
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
