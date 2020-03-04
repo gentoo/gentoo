@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-
 case "${PV}" in
 	(9999*)
 		KEYWORDS=""
@@ -11,30 +10,24 @@ case "${PV}" in
 		EGIT_PROJECT="${PN}.git"
 		;;
 	(*)
-		KEYWORDS="~amd64 ~ppc ~x86 ~arm ~arm64"
-		SRC_URI="https://github.com/tomszilagyi/tap-plugins/archive/v${PV}.tar.gz"
+		KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~x86"
+		SRC_URI="https://github.com/tomszilagyi/tap-plugins/archive/v${PV}.tar.gz -> $P.tar.gz"
 		;;
 esac
 inherit eutils multilib-minimal ${VCS_ECLASS}
-
 DESCRIPTION="Tom's audio processing (TAP) LADSPA plugins"
 HOMEPAGE="https://github.com/tomszilagyi/tap-plugins http://tap-plugins.sourceforge.net/"
-
 LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
-
 DEPEND="media-libs/ladspa-sdk[${MULTILIB_USEDEP}]"
 RDEPEND="${DEPEND}"
-
 DOCS=( README CREDITS )
-
 src_prepare()
 {
 	default
 	multilib_copy_sources
 }
-
 multilib_src_configure() { :; }
 multilib_src_install()
 {
