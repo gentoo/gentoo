@@ -498,12 +498,6 @@ games-misc/fortune-mod-firefly
 # Masked for removal in 30 days. Bugs #634288, #703724.
 games-misc/fortune-mod-homer
 
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# Bad HOMEPAGE. SRC_URI is gone.
-# Masked for removal in 30 days. Bugs #634288, #703730.
-games-misc/fortune-mod-pqf
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
