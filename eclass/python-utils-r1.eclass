@@ -16,8 +16,8 @@
 # This eclass does not set any metadata variables nor export any phase
 # functions. It can be inherited safely.
 #
-# For more information, please see the wiki:
-# https://wiki.gentoo.org/wiki/Project:Python/python-utils-r1
+# For more information, please see the Python Guide:
+# https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
 	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;

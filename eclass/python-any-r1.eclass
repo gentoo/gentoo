@@ -33,8 +33,8 @@
 # packages using python-any-r1, and there is no need ever to inherit
 # both.
 #
-# For more information, please see the wiki:
-# https://wiki.gentoo.org/wiki/Project:Python/python-any-r1
+# For more information, please see the Python Guide:
+# https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
 	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
