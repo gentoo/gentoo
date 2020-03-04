@@ -467,12 +467,6 @@ games-misc/fortune-mod-hitchhiker
 games-misc/fortune-mod-simpsons-chalkboard
 games-misc/fortune-mod-starwars
 
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# HOMEPAGE and SRC_URI are gone.
-# Masked for removal in 30 days. Bugs #634288, #703712, #703738.
-games-misc/fortune-mod-dubya
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
