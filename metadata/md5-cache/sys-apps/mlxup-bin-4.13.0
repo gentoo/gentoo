@@ -1,0 +1,10 @@
+DEFINED_PHASES=install
+DESCRIPTION=Mellanox Update and Query Utility
+EAPI=7
+HOMEPAGE=https://www.mellanox.com/support/firmware/mlxup-mft
+IUSE=doc
+KEYWORDS=~amd64 ~x86
+LICENSE=Mellanox-AS-IS
+SLOT=0
+SRC_URI=doc? ( https://www.mellanox.com/related-docs/prod_software/mlxup_user_guide_v1.4.pdf https://www.mellanox.com/related-docs/prod_software/mlxup_release_notes_v4.13.0.pdf ) amd64? ( https://www.mellanox.com/downloads/firmware/mlxup/4.13.0/SFX/linux_x64/mlxup -> mlxup-4.13.0-amd64.elf ) x86? ( https://www.mellanox.com/downloads/firmware/mlxup/4.13.0/SFX/linux/mlxup -> mlxup-4.13.0-x86.elf )
+_md5_=c38a74d05055ec937cdddda71c06be8c
