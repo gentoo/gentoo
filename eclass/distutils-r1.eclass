@@ -40,8 +40,8 @@
 # as well. Thus, all the variables defined and documented there are
 # relevant to the packages using distutils-r1.
 #
-# For more information, please see the wiki:
-# https://wiki.gentoo.org/wiki/Project:Python/distutils-r1
+# For more information, please see the Python Guide:
+# https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
 	0|1|2|3|4)
