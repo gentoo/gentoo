@@ -12,7 +12,7 @@ if [[ ${PV} != 9999 ]]; then
 fi
 
 DESCRIPTION="MATE keyboard configuration library"
-LICENSE="LGPL-2"
+LICENSE="GPL-2+ LGPL-2+"
 SLOT="0"
 
 IUSE="X +introspection test"
