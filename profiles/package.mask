@@ -458,12 +458,6 @@ games-misc/fortune-mod-futurama
 # Masked for removal in 30 days. Bugs #634288, #703710.
 games-misc/fortune-mod-debilneho
 
-# Ulrich Müller <ulm@gentoo.org> (2020-02-04)
-# No license; copyright status unclear.
-# "The entire text is copyrighted by the rightful owners."
-# Masked for removal in 30 days. Bugs #302722, #634288.
-games-misc/fortune-mod-hitchhiker
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
