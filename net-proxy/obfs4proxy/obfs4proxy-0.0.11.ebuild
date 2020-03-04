@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -7,6 +7,7 @@ EGO_SRC=gitlab.com/yawning/obfs4.git
 EGO_PN=${EGO_SRC}/...
 
 EGO_VENDOR=(
+	"github.com/agl/ed25519 5312a61534124124185d41f09206b9fef1d88403"
 	"github.com/dsnet/compress v0.0.1"
 	"gitlab.com/yawning/utls.git v0.0.11-1 gitlab.com/yawning/utls/-"
 	"git.schwanenlied.me/yawning/bsaes.git 26d1add596b6d800bdeeb3bc3b2c7b316c056b6d git.schwanenlied.me/yawning/bsaes"
@@ -28,11 +29,9 @@ SLOT="0"
 KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-DEPEND=">=dev-go/ed25519-0_pre20170117
-	>=dev-go/go-text-0.3.0
+DEPEND=">=dev-go/go-text-0.3.0
 	>=dev-go/goptlib-1.0.0
 	>=dev-go/siphash-1.2.1"
-RDEPEND=""
 
 src_compile() {
 	golang-build_src_compile
