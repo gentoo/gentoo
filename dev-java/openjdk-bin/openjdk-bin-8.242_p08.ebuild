@@ -22,7 +22,7 @@ SRC_URI="
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-KEYWORDS="~amd64 ~ppc64"
+KEYWORDS="amd64 ~ppc64"
 
 IUSE="alsa cups examples headless-awt nsplugin selinux source webstart"
 
