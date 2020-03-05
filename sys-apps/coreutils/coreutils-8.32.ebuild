@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit eutils flag-o-matic python-any-r1 toolchain-funcs
 
@@ -38,7 +38,6 @@ BDEPEND="
 		dev-perl/Expect
 		dev-util/strace
 		${PYTHON_DEPS}
-		$(python_gen_any_dep 'dev-python/pyinotify[${PYTHON_USEDEP}]')
 	)
 "
 RDEPEND+="
@@ -55,10 +54,6 @@ RDEPEND+="
 	!sys-apps/mktemp
 	!<app-forensics/tct-1.18-r1
 	!<net-fs/netatalk-2.0.3-r4"
-
-python_check_deps() {
-	has_version "dev-python/pyinotify[${PYTHON_USEDEP}]"
-}
 
 pkg_setup() {
 	if use test ; then
