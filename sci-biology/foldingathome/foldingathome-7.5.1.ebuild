@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -43,6 +43,7 @@ pkg_setup() {
 	elog "(ref: http://foldingforum.org/viewtopic.php?f=16&t=22524&p=241992#p241992 )"
 	elog ""
 
+	enewgroup foldingathome
 	enewuser foldingathome -1 -1 "${EPREFIX}"/opt/foldingathome
 }
 
