@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DOCS=( README.rst CHANGES.md )
 

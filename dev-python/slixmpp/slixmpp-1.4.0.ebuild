@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="Python 3 library for XMPP"
 HOMEPAGE="https://dev.louiz.org/projects/slixmpp"

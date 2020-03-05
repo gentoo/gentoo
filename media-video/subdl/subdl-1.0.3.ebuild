@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="A command-line tool for downloading subs from opensubtitles.org"
 HOMEPAGE="https://github.com/akexakex/subdl"

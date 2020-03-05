@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python IP address manipulation library"
 HOMEPAGE="https://github.com/google/ipaddr-py https://pypi.org/project/ipaddr/"

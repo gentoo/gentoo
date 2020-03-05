@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Magnificent app which corrects your previous console command"
 HOMEPAGE="https://github.com/nvbn/thefuck"
@@ -34,7 +34,7 @@ DEPEND="
 python_prepare_all() {
 	sed -i -e "/import pip/s/^/#/" -e "/pip.__version__/,+3 s/^/#/" setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

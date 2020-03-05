@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python{2_7,3_{6,7}} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python module used for monitoring filesystems events"
 HOMEPAGE="http://trac.dbzteam.org/pyinotify https://pypi.org/project/pyinotify/"
@@ -23,5 +23,5 @@ RDEPEND=""
 python_install_all() {
 	use examples && local EXAMPLES=( python2/examples/. )
 	EXAMPLES+=( python3/examples/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

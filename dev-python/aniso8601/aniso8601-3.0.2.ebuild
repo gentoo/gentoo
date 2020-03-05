@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A library for parsing ISO 8601 strings"
 HOMEPAGE="https://bitbucket.org/nielsenb/aniso8601/ https://pypi.org/project/aniso8601/"

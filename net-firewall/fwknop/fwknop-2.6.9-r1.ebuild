@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 DISTUTILS_SINGLE_IMPL=1
 
-inherit autotools distutils-r1 eutils linux-info ltprune readme.gentoo-r1 systemd
+inherit autotools distutils-r2 eutils linux-info ltprune readme.gentoo-r1 systemd
 
 DESCRIPTION="Single Packet Authorization and Port Knocking application"
 HOMEPAGE="https://www.cipherdyne.org/fwknop/ https://github.com/mrash/fwknop"
@@ -57,7 +57,7 @@ instead of the default one chosen at compile time.
 
 pkg_setup() {
 	linux-info_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {
@@ -92,7 +92,7 @@ src_compile() {
 
 	if use python; then
 		cd python || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -115,10 +115,10 @@ src_install() {
 	fi
 
 	if use python; then
-		# Redefine DOCS, otherwise distutils-r1 eclass interferes.
+		# Redefine DOCS, otherwise distutils-r2 eclass interferes.
 		local DOCS=()
 		cd python || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 }
 

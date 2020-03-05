@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="tmux session manager. built on libtmux"
 HOMEPAGE="https://tmuxp.git-pull.com"

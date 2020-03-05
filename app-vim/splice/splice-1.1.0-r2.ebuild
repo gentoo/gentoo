@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit vim-plugin python-single-r1 vcs-snapshot
+inherit vim-plugin python-single-r2 vcs-snapshot
 
 DESCRIPTION="vim plugin: resolve conflicts during three-way merges"
 HOMEPAGE="https://bitbucket.org/sjl/splice.vim/ https://www.vim.org/scripts/script.php?script_id=4026"

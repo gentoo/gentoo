@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit multilib python-single-r1
+inherit multilib python-single-r2
 
 DESCRIPTION="Language bindings for Redland"
 HOMEPAGE="http://librdf.org/bindings/"
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 	sys-apps/sed"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

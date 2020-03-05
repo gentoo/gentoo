@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library for reading and writing COLLADA documents"
 HOMEPAGE="https://pycollada.readthedocs.org/"
@@ -47,11 +47,11 @@ python_install_all() {
 
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	# ensure data files for tests are getting installed too
 	python_moduleinto collada/tests/

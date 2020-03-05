@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-single-r1
+inherit gnome2 python-single-r2
 
 DESCRIPTION="Project manager for Gnome"
 HOMEPAGE="https://wiki.gnome.org/Apps/Planner"
@@ -30,7 +30,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/pygtk-2.6:2[${PYTHON_MULTI_USEDEP}] )
+			>=dev-python/pygtk-2.6:2[${PYTHON_USEDEP}] )
 		')
 	eds? (
 		>=gnome-extra/evolution-data-server-3.6:=

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings for the Ironic API"
 HOMEPAGE="https://www.openstack.org/"
@@ -64,7 +64,7 @@ RDEPEND="
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
 	sed -i '/^tempest/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

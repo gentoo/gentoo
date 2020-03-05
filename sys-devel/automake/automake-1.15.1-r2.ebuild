@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1 versionator
+inherit python-any-r2 versionator
 
 if [[ ${PV} == 9999 ]] ; then
 	EGIT_REPO_URI="https://git.savannah.gnu.org/r/${PN}.git"
@@ -46,7 +46,7 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${PN}-1.15-install-sh-avoid-low-risk-race-in-tmp.patch )
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

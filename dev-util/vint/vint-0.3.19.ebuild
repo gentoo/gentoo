@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Lint tool for Vim script language"
 HOMEPAGE="https://github.com/Kuniwak/vint https://pypi.org/project/vim-vint/"

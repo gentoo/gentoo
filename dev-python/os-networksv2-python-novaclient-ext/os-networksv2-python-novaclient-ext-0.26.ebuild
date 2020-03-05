@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Adds network extension support to python-novaclient"
 HOMEPAGE="https://github.com/rackspace/os_networksv2_python_novaclient_ext"

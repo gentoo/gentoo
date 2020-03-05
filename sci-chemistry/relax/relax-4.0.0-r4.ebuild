@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 WX_GTK_VER="3.0"
 
-inherit eutils multiprocessing python-single-r1 scons-utils toolchain-funcs wxwidgets virtualx
+inherit eutils multiprocessing python-single-r2 scons-utils toolchain-funcs wxwidgets virtualx
 
 DESCRIPTION="Molecular dynamics by NMR data analysis"
 HOMEPAGE="https://www.nmr-relax.com/"
@@ -24,22 +24,22 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep "
-		dev-python/Numdifftools[\${PYTHON_MULTI_USEDEP}]
+		dev-python/Numdifftools[\${PYTHON_USEDEP}]
 		|| (
-			dev-python/matplotlib-python2[\${PYTHON_MULTI_USEDEP}]
-			dev-python/matplotlib[\${PYTHON_MULTI_USEDEP}]
+			dev-python/matplotlib-python2[\${PYTHON_USEDEP}]
+			dev-python/matplotlib[\${PYTHON_USEDEP}]
 		)
 		|| (
-			dev-python/numpy-python2[\${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[\${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy-python2[\${PYTHON_USEDEP}]
+			dev-python/numpy[\${PYTHON_USEDEP}]
 		)
-		dev-python/wxpython:${WX_GTK_VER}[\${PYTHON_MULTI_USEDEP}]
-		sci-chemistry/pymol[\${PYTHON_MULTI_USEDEP}]
-		>=sci-libs/bmrblib-1.0.3[\${PYTHON_MULTI_USEDEP}]
-		>=sci-libs/minfx-1.0.11[\${PYTHON_MULTI_USEDEP}]
+		dev-python/wxpython:${WX_GTK_VER}[\${PYTHON_USEDEP}]
+		sci-chemistry/pymol[\${PYTHON_USEDEP}]
+		>=sci-libs/bmrblib-1.0.3[\${PYTHON_USEDEP}]
+		>=sci-libs/minfx-1.0.11[\${PYTHON_USEDEP}]
 		|| (
-			sci-libs/scipy-python2[\${PYTHON_MULTI_USEDEP}]
-			sci-libs/scipy[\${PYTHON_MULTI_USEDEP}]
+			sci-libs/scipy-python2[\${PYTHON_USEDEP}]
+			sci-libs/scipy[\${PYTHON_USEDEP}]
 		)
 	")
 	sci-chemistry/molmol
@@ -53,7 +53,7 @@ DEPEND="${RDEPEND}
 	"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

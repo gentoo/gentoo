@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Alternative regular expression module to replace re"
 HOMEPAGE="https://bitbucket.org/mrabarnett/mrab-regex"
@@ -32,5 +32,5 @@ python_install_all() {
 	use doc && local HTML_DOCS=( docs/Features.html )
 	local DOCS=( README.rst docs/*.rst )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

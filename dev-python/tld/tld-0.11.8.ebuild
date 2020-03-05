@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Extract the top level domain (TLD) from the URL given"
 HOMEPAGE="https://github.com/barseghyanartur/tld"

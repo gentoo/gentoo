@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 MY_PN="PyJWT"
 
@@ -36,7 +36,7 @@ python_prepare_all() {
 	# enables coverage, we don't need that
 	rm setup.cfg || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

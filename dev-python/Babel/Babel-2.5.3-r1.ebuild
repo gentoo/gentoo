@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Collection of tools for internationalizing Python applications"
 HOMEPAGE="http://babel.pocoo.org/ https://pypi.org/project/Babel/"
@@ -31,7 +31,7 @@ python_prepare_all() {
 	sed -e '/datadir =/s:os\.path\.dirname(__file__):os.environ["BUILD_DIR"]:' \
 		-i tests/messages/test_frontend.py || die
 	sed -e '/^intersphinx_mapping/,+3d' -i docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -48,5 +48,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

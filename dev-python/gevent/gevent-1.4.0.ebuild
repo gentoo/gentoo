@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Coroutine-based network library"
 HOMEPAGE="http://gevent.org/ https://pypi.org/project/gevent/"
@@ -35,7 +35,7 @@ python_prepare_all() {
 	export CARES_EMBED="false"
 	export EMBED="false"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -63,5 +63,5 @@ python_install_all() {
 	use doc && local HTML_DOCS=( doc/_build/html/. )
 	use examples && dodoc -r examples
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

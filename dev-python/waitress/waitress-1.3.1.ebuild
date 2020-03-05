@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A pure-Python WSGI server"
 HOMEPAGE="https://docs.pylonsproject.org/projects/waitress/en/latest/

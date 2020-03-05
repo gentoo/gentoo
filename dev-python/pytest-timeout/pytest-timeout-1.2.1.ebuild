@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="py.test plugin to abort hanging tests"
 HOMEPAGE="https://pypi.org/project/pytest-timeout/"

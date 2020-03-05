@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="Python library to work with countries and languages"
 HOMEPAGE="https://github.com/Diaoul/babelfish https://pypi.org/project/babelfish/"

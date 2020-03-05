@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 pypy3)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="An rsync logfile analyzer"
 HOMEPAGE="http://www.schwarzvogel.de/software-misc.shtml"

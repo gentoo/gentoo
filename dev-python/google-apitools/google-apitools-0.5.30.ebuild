@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library to manipulate Google APIs"
 HOMEPAGE="https://github.com/google/apitools"

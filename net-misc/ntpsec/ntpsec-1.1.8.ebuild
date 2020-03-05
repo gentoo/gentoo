@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit flag-o-matic python-r1 waf-utils systemd
+inherit flag-o-matic python-multi-r2 waf-utils systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3

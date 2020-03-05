@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit autotools python-any-r1 readme.gentoo-r1 xdg-utils
+inherit autotools python-any-r2 readme.gentoo-r1 xdg-utils
 
 DESCRIPTION="SPICE server"
 HOMEPAGE="https://www.spice-space.org/"
@@ -52,7 +52,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	[[ ${MERGE_TYPE} != binary ]] && python-any-r1_pkg_setup
+	[[ ${MERGE_TYPE} != binary ]] && python-any-r2_pkg_setup
 }
 
 src_prepare() {

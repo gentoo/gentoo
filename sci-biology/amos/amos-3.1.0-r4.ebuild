@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic python-single-r1
+inherit autotools flag-o-matic python-single-r2
 
 DESCRIPTION="A Modular, Open-Source whole genome assembler"
 HOMEPAGE="http://amos.sourceforge.net/"

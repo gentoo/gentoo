@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1 eutils ltprune multilib-minimal versionator
+inherit distutils-r2 eutils ltprune multilib-minimal versionator
 
 DESCRIPTION="A streaming protocol for test results"
 HOMEPAGE="https://launchpad.net/subunit https://pypi.org/project/python-subunit/"
@@ -46,7 +46,7 @@ src_prepare() {
 	export INSTALLDIRS=vendor
 
 	# needed for perl modules
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	multilib_copy_sources
 }
 
@@ -59,7 +59,7 @@ multilib_src_configure() {
 
 multilib_src_compile() {
 	default
-	multilib_is_native_abi && distutils-r1_src_compile
+	multilib_is_native_abi && distutils-r2_src_compile
 }
 
 python_test() {
@@ -75,7 +75,7 @@ python_test() {
 }
 
 multilib_src_test() {
-	multilib_is_native_abi && distutils-r1_src_test
+	multilib_is_native_abi && distutils-r2_src_test
 }
 
 multilib_src_install() {
@@ -87,7 +87,7 @@ multilib_src_install() {
 	)
 	emake DESTDIR="${D}" "${targets[@]}"
 
-	multilib_is_native_abi && distutils-r1_src_install
+	multilib_is_native_abi && distutils-r2_src_install
 }
 
 multilib_src_install_all() {

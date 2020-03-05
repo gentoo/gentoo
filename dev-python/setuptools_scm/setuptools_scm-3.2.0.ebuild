@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="package to manage versions by scm tags via setuptools"
 HOMEPAGE="https://github.com/pypa/setuptools_scm https://pypi.org/project/setuptools_scm/"
@@ -33,7 +33,7 @@ python_prepare_all() {
 	sed -i -e "/arguments\.update/s@scm_config()@{'version': '${PV}'}@" \
 		-e "/__main__/i del sys.path[0]" setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -42,5 +42,5 @@ python_test() {
 }
 
 python_install() {
-	PYTHONPATH= distutils-r1_python_install
+	PYTHONPATH= distutils-r2_python_install
 }

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="fail Python program unit tests unless they test everything"
 HOMEPAGE="https://liw.fi/coverage-test-runner/"

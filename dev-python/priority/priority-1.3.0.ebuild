@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7,8})
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A pure-Python implementation of the HTTP/2 priority tree"
 HOMEPAGE="https://python-hyper.org/priority/en/latest/

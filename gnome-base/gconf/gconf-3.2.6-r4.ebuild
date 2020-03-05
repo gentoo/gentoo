@@ -8,7 +8,7 @@ GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit eutils gnome2 multilib-minimal python-r1
+inherit eutils gnome2 multilib-minimal python-multi-r2
 
 DESCRIPTION="GNOME configuration system and daemon"
 HOMEPAGE="https://projects.gnome.org/gconf/"

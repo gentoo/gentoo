@@ -9,7 +9,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_{6..8} )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Google tool for managing git, particularly multiple repos"
 HOMEPAGE="https://gerrit.googlesource.com/git-repo"

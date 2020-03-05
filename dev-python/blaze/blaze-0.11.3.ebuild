@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Next generation Python numpy"
 HOMEPAGE="https://blaze.pydata.org https://blaze.readthedocs.io/en/latest/"
@@ -66,7 +66,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples; then
 		insinto /usr/share/doc/${PF}
 		doins -r blaze/examples

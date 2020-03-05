@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7,8} )
-inherit desktop python-r1 xdg
+inherit desktop python-multi-r2 xdg
 
 # Hash used for this version
 GIT_PV="b80f3485b6ec324aec1dc20f28296a8891ad70dd"

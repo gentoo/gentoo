@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit check-reqs cmake-utils python-single-r1
+inherit check-reqs cmake-utils python-single-r2
 
 DESCRIPTION="A double-entry accounting system with a command-line reporting interface"
 HOMEPAGE="https://www.ledger-cli.org/"
@@ -25,7 +25,7 @@ RDEPEND="
 	dev-libs/mpfr:0=
 	python? (
 		$(python_gen_cond_dep '
-			dev-libs/boost:=[${PYTHON_MULTI_USEDEP}]
+			dev-libs/boost:=[${PYTHON_USEDEP}]
 		')
 		dev-python/cheetah
 		${PYTHON_DEPS}
@@ -53,7 +53,7 @@ pkg_pretend() {
 pkg_setup() {
 	if use python; then
 		check-reqs_pkg_setup
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 }
 

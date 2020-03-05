@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils flag-o-matic python-single-r1 vcs-clean
+inherit eutils flag-o-matic python-single-r2 vcs-clean
 
 DESCRIPTION="Tool for generic packet injection on 802.11"
 HOMEPAGE="http://airpwn.sf.net"

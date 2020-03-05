@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 toolchain-funcs
+inherit python-single-r2 toolchain-funcs
 
 DESCRIPTION="Command-line ape 2.0 tagger"
 HOMEPAGE="http://muth.org/Robert/Apetag/"

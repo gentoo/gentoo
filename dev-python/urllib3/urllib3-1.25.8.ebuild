@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="ssl(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="HTTP library with thread-safe connection pooling, file post, and more"
 HOMEPAGE="https://github.com/urllib3/urllib3"
@@ -64,7 +64,7 @@ python_prepare_all() {
 	sed -e 's:test_connection_closed_on_read_timeout_preload_false:_&:' \
 		-i test/with_dummyserver/test_socketlevel.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

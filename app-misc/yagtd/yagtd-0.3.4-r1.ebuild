@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="CLI todo list manager based on the 'Getting Things Done' philosophy"
 HOMEPAGE="https://gna.org/projects/yagtd/"
@@ -20,15 +20,15 @@ src_prepare() {
 	#fix doc install location
 	sed -i -e "s:\/doc\/yagtd:\/doc\/${P}:g" setup.py || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	ln -s yagtd.py "${D}$(python_get_scriptdir)"/yagtd || die
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	dosym yagtd.py /usr/bin/yagtd
 }

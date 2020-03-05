@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=(python2_7)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="a set of tools for updating gentoo config files"
 HOMEPAGE="https://sourceforge.net/projects/etc-proposals.berlios/"
@@ -19,7 +19,7 @@ DEPEND=">=dev-python/pygtk-2.10"
 RDEPEND="${DEPEND}"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	dodir /usr/sbin
 	einfo "Moving /usr/bin/etc-proposals to /usr/sbin/etc-proposals"

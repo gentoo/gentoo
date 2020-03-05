@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="Flask-SocketIO"
 DESCRIPTION="Socket.IO integration for Flask applications."

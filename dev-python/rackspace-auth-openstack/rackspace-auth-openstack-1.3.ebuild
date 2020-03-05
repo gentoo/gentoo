@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Rackspace Auth Plugin for OpenStack Clients"
 HOMEPAGE="https://github.com/emonty/rackspace-auth-openstack"

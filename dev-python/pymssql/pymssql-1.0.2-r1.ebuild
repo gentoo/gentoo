@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Simple MSSQL python extension module"
 HOMEPAGE="http://www.pymssql.org/en/stable/ https://pypi.org/project/pymssql/"

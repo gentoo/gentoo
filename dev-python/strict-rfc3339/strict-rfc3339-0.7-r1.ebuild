@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN}-version"
 MY_P="${MY_PN}-${PV}"

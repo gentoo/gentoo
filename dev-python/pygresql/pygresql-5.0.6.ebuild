@@ -6,7 +6,7 @@ EAPI=6
 POSTGRES_COMPAT=( 9.{4..6} 10 )
 PYTHON_COMPAT=( python3_{6..7} )
 
-inherit distutils-r1 postgres
+inherit distutils-r2 postgres
 
 MY_P="PyGreSQL-${PV}"
 
@@ -28,5 +28,5 @@ S="${WORKDIR}/${MY_P}"
 python_install_all() {
 	local DOCS=( docs/*.rst docs/community/* docs/contents/tutorial.rst )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

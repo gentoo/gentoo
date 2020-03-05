@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Another XRandR GUI"
 HOMEPAGE="https://christian.amsuess.com/tools/arandr/"
@@ -35,10 +35,10 @@ src_prepare() {
 		done
 	fi
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	gunzip "${D}"/usr/share/man/man1/{${PN},unxrandr}.1.gz || die
 }

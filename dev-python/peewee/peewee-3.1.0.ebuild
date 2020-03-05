@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE="sqlite(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Small python ORM"
 HOMEPAGE="https://github.com/coleifer/peewee/"
@@ -24,12 +24,12 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 python_prepare_all() {
 	sed -i -e "s#test_suite='tests',##g;" ./setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_compile_all() {
@@ -44,5 +44,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 	use examples && DOCS=( examples/ )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

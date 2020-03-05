@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings to libsensors (via ctypes)"
 HOMEPAGE="https://pypi.org/project/PySensors/"

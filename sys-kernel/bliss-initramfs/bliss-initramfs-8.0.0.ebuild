@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Boot your system's rootfs from OpenZFS/LUKS"
 HOMEPAGE="https://github.com/fearedbliss/bliss-initramfs"

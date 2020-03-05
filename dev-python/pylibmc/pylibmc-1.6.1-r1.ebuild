@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Libmemcached wrapper written as a Python extension"
 HOMEPAGE="http://sendapatch.se/projects/pylibmc/ https://pypi.org/project/pylibmc/"
@@ -50,7 +50,7 @@ python_prepare_all() {
 
 	# some amazon thing, expects to be in AWS
 	rm tests/test_autoconf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

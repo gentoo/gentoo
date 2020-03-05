@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Provides columnar and compressed data containers"
 HOMEPAGE="http://bcolz.blosc.org/"
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 "
 
 python_compile() {
-	distutils-r1_python_compile --blosc="${EPREFIX}/usr"
+	distutils-r2_python_compile --blosc="${EPREFIX}/usr"
 }
 
 python_compile_all() {
@@ -47,6 +47,6 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	dodoc *.rst
 }

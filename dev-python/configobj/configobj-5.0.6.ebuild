@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple config file reader and writer"
 HOMEPAGE="http://www.voidspace.org.uk/python/configobj.html https://pypi.org/project/configobj/"
@@ -24,7 +24,7 @@ python_prepare_all() {
 		-e "s/^from _version import __version__$/__version__ = '${PV}'/" \
 		-i configobj.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

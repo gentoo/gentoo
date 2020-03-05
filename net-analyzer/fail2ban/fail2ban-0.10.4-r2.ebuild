@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 systemd
+inherit distutils-r2 systemd
 
 DESCRIPTION="scans log files and bans IPs that show malicious signs"
 HOMEPAGE="https://www.fail2ban.org/"
@@ -21,8 +21,8 @@ RDEPEND="
 	virtual/mta
 	selinux? ( sec-policy/selinux-fail2ban )
 	systemd? ( $(python_gen_cond_dep '|| (
-		dev-python/python-systemd[${PYTHON_MULTI_USEDEP}]
-		sys-apps/systemd[python(-),${PYTHON_MULTI_USEDEP}]
+		dev-python/python-systemd[${PYTHON_USEDEP}]
+		sys-apps/systemd[python(-),${PYTHON_USEDEP}]
 	)' 'python*' ) )
 "
 
@@ -43,18 +43,18 @@ python_prepare_all() {
 
 	sed -i -e 's|runscript|openrc-run|g' files/gentoo-initd || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
 	if python_is_python3; then
 		./fail2ban-2to3 || die
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	rm -rf "${D}"/usr/share/doc/${PN} "${D}"/run || die
 

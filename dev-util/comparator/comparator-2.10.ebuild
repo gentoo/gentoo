@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r2 toolchain-funcs
 
 DESCRIPTION="ESR's utility for making fast comparisons among large source trees"
 HOMEPAGE="http://www.catb.org/~esr/comparator/"
@@ -28,12 +28,12 @@ src_prepare() {
 src_compile() {
 	emake CC="$(tc-getCC)" CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 	emake comparator.html scf-standard.html
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 src_install() {
 	emake ROOT="${D}" install
-	distutils-r1_src_install
+	distutils-r2_src_install
 	docinto html
 	dodoc *.html
 }

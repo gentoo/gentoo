@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Buildbot waterfall-view plugin"
 HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot-waterfall-view/"
@@ -49,5 +49,5 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

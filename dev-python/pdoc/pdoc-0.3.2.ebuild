@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple program and library to auto generate API documentation for Python modules"
 HOMEPAGE="https://pypi.org/project/pdoc/ https://github.com/BurntSushi/pdoc"
@@ -30,5 +30,5 @@ python_prepare_all() {
 		-e "s|'UNLICENSE', ||" \
 		-i setup.py || die "sed failed"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

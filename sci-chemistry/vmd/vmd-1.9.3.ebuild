@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cuda eutils flag-o-matic multilib prefix python-single-r1 toolchain-funcs
+inherit cuda eutils flag-o-matic multilib prefix python-single-r2 toolchain-funcs
 
 DESCRIPTION="Visual Molecular Dynamics"
 HOMEPAGE="http://www.ks.uiuc.edu/Research/vmd/"
@@ -29,8 +29,8 @@ CDEPEND="
 	dev-libs/expat
 	$(python_gen_cond_dep '
 		|| (
-			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		)
 	')
 	sci-libs/netcdf:0=

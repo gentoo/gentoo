@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit fcaps gnome2 pam python-any-r1 virtualx
+inherit fcaps gnome2 pam python-any-r2 virtualx
 
 DESCRIPTION="Password and keyring managing daemon"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeKeyring"
@@ -45,7 +45,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

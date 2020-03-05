@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Command line client for Amazon S3"
 HOMEPAGE="https://s3tools.org/s3cmd"

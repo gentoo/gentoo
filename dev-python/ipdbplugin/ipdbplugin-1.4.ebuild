@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Nose plugin to use iPdb instead of Pdb when tests fail"
 HOMEPAGE="https://pypi.org/project/ipdbplugin/"

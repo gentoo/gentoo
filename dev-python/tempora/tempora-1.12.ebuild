@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN/-/.}"
 DESCRIPTION="Objects and routines pertaining to date and time"

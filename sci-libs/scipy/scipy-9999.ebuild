@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 
 DOC_PV=${PV}
 
-inherit fortran-2 distutils-r1 flag-o-matic git-r3 multiprocessing toolchain-funcs
+inherit fortran-2 distutils-r2 flag-o-matic git-r3 multiprocessing toolchain-funcs
 
 DESCRIPTION="Scientific algorithms library for Python"
 HOMEPAGE="https://www.scipy.org/"
@@ -87,18 +87,18 @@ python_prepare_all() {
 	# Drop hashes to force rebuild of cython based .c code
 	rm cythonize.dat || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
 	${EPYTHON} tools/cythonize.py || die
-	distutils-r1_python_compile \
+	distutils-r2_python_compile \
 		"-j $(makeopts_jobs)" \
 		${SCIPY_FCONFIG}
 }
 
 python_test() {
-	# fails with bdist_egg. should it be fixed in distutils-r1 eclass?
+	# fails with bdist_egg. should it be fixed in distutils-r2 eclass?
 	distutils_install_for_testing ${SCIPY_FCONFIG}
 	cd "${TEST_DIR}" || die "no ${TEST_DIR} available"
 	einfo "Run test I"
@@ -116,7 +116,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install ${SCIPY_FCONFIG}
+	distutils-r2_python_install ${SCIPY_FCONFIG}
 }
 
 pkg_postinst() {

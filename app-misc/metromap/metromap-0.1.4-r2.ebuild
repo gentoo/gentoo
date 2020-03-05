@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 gnome2-utils
+inherit python-single-r2 gnome2-utils
 
 DESCRIPTION="Metromap is simple pygtk+2 programm for finding paths in metro(subway) maps"
 HOMEPAGE="http://metromap.antex.ru/"
@@ -20,8 +20,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pygtk-2.8:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:2[${PYTHON_USEDEP}]
+		>=dev-python/pygtk-2.8:2[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}

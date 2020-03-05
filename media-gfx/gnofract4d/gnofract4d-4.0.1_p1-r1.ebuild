@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1 eutils virtualx xdg
+inherit distutils-r2 eutils virtualx xdg
 
 COMMIT=bd600c20921afff7b02fc0a76ab79242ebd0896d
 
@@ -26,8 +26,8 @@ COMMON_DEPEND="
 	virtual/jpeg:0"
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	x11-libs/gtk+:3[introspection]"
 BDEPEND="virtual/pkgconfig"
@@ -35,7 +35,7 @@ DEPEND="${COMMON_DEPEND}
 	doc? (
 		app-text/docbook-xsl-stylesheets
 		$(python_gen_cond_dep '
-			dev-python/pygobject[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject[${PYTHON_USEDEP}]
 		')
 		dev-libs/libxslt
 		x11-libs/gtk+:3[introspection]
@@ -46,7 +46,7 @@ distutils_enable_tests pytest
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {
@@ -61,7 +61,7 @@ python_compile_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	rm -r "${ED}"/usr/share/doc/${PN} || die
 	if ! use doc; then
 		rm -r "${ED}"/usr/share/gnome/help/${PN} || die

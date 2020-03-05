@@ -10,7 +10,7 @@ XORG_TARBALL_SUFFIX="xz"
 XORG_MULTILIB=yes
 XORG_DOC=doc
 
-inherit python-any-r1 xorg-3
+inherit python-any-r2 xorg-3
 
 DESCRIPTION="X C-language Bindings library"
 HOMEPAGE="https://xcb.freedesktop.org/ https://gitlab.freedesktop.org/xorg/lib/libxcb"
@@ -37,7 +37,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 
 	XORG_CONFIGURE_OPTIONS=(
 		$(use_enable doc devel-docs)

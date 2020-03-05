@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Firmware and research tools for nRF24LU1+ based USB dongles and breakout boards"
 HOMEPAGE="https://www.mousejack.com/"
@@ -21,7 +21,7 @@ DEPEND="dev-embedded/sdcc[device-lib,mcs51,sdbinutils]"
 RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pyusb[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyusb[${PYTHON_USEDEP}]
 	')"
 
 src_prepare() {

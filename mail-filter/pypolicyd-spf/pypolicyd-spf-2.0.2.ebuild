@@ -11,7 +11,7 @@ PYTHON_COMPAT=( python3_6 )
 # other words, it's completely broken.
 PYTHON_REQ_USE="ipv6"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python-based policy daemon for Postfix SPF verification"
 HOMEPAGE="https://launchpad.net/pypolicyd-spf"
@@ -38,5 +38,5 @@ python_prepare_all() {
 	sed -i "1 s~ ${oldconf}~,\n#  ${newconf}~" policyd-spf.conf \
 		|| die 'failed to update commented config file path'
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

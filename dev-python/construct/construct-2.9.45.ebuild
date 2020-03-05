@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A powerful declarative parser for binary data"
 HOMEPAGE="https://construct.readthedocs.io/en/latest/ https://pypi.org/project/construct/"

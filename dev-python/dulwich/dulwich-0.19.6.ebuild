@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pure-Python implementation of the Git file formats and protocols"
 HOMEPAGE="https://github.com/jelmer/dulwich/ https://pypi.org/project/dulwich/"
@@ -55,5 +55,5 @@ python_install_all() {
 		docompress -x "/usr/share/doc/${PF}/examples"
 		dodoc -r examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

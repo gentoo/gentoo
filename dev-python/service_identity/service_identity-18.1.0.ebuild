@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Service identity verification for pyOpenSSL"
 HOMEPAGE="https://github.com/pyca/service-identity"

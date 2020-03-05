@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Xen API SDK, for communication with Citrix XenServer and Xen Cloud Platform"
 HOMEPAGE="http://community.citrix.com/display/xs/Download+SDKs"

@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Nginx configuration static analyzer"
 HOMEPAGE="https://github.com/yandex/gixy"
@@ -33,7 +33,7 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 python_prepare() {
 	sed -i -e "/argparse/d" setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

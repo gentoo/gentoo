@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools flag-o-matic python-single-r1
+inherit autotools flag-o-matic python-single-r2
 
 DESCRIPTION="Provide access to (SM)BIOS information"
 HOMEPAGE="http://linux.dell.com/files/libsmbios/"
@@ -34,7 +34,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Kafka protocol support in Python"
 HOMEPAGE="https://github.com/dpkp/kafka-python/ https://pypi.org/project/kafka-python/"

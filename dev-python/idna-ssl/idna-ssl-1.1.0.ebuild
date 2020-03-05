@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Patch ssl.match_hostname for Unicode(idna) domains support"
 HOMEPAGE="https://github.com/aio-libs/idna-ssl https://pypi.org/project/idna_ssl/"

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Replace real objects with fakes (mocks, stubs, etc) while testing"
 HOMEPAGE="http://farmdev.com/projects/fudge/ https://pypi.org/project/fudge/"
@@ -32,5 +32,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

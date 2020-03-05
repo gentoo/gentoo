@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools distutils-r1 multilib toolchain-funcs virtualx
+inherit autotools distutils-r2 multilib toolchain-funcs virtualx
 
 DESCRIPTION="The Snack Sound Toolkit (Tcl)"
 HOMEPAGE="http://www.speech.kth.se/snack/"
@@ -87,7 +87,7 @@ src_install() {
 
 	if use python ; then
 		cd "${S}"/../python || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 
 	cd "${S}"/.. || die

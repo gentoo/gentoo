@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 COMMIT=b0a2a10
 

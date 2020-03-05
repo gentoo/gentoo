@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 GNOME_TARBALL_SUFFIX="bz2"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-r1
+inherit gnome2 python-multi-r2
 
 DESCRIPTION="Libraries for the gnome desktop that are not part of the UI"
 HOMEPAGE="https://www.gnome.org/"
@@ -68,7 +68,7 @@ src_configure() {
 src_install() {
 	DOCS="AUTHORS ChangeLog HACKING NEWS README"
 	gnome2_src_install
-	# python-r1.eclass doesn't like versioned python shebangs
+	# python-multi-r2.eclass doesn't like versioned python shebangs
 	sed -e 's@#!\(.*python.*\)@#!/usr/bin/env python@' -i gnome-about/gnome-about
 	python_doscript gnome-about/gnome-about
 }

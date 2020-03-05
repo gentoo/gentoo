@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A python script for preparing the html output of Sphinx documentation for github pages"
 HOMEPAGE="https://github.com/michaeljones/sphinx-to-github/"
@@ -24,7 +24,7 @@ python_prepare_all() {
 	# Req'd to avoid file collisions
 	sed -e s":find_packages():find_packages(exclude=['tests']):" -i setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit multilib cmake-utils python-single-r1
+inherit multilib cmake-utils python-single-r2
 
 DESCRIPTION="pahole (Poke-a-Hole) and other DWARF2 utilities"
 HOMEPAGE="https://git.kernel.org/cgit/devel/pahole/pahole.git/"

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit python-single-r1 xdg-utils
+inherit python-single-r2 xdg-utils
 
 DESCRIPTION="A library for manipulating block devices"
 HOMEPAGE="https://github.com/storaged-project/libblockdev"
@@ -67,7 +67,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 		escrow? ( cryptsetup )"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simplified packaging of Python modules"
 HOMEPAGE="https://github.com/takluyver/flit https://flit.readthedocs.io/"
@@ -50,5 +50,5 @@ python_prepare_all() {
 		sed -e 's:import pytoml as toml:import toml:' \
 			-e 's:pytoml:toml:' -i || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

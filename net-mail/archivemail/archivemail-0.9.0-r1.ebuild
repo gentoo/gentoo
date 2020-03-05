@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Tool written archiving old email in mailboxes"
 HOMEPAGE="http://archivemail.sourceforge.net/"
@@ -20,7 +20,7 @@ python_prepare_all() {
 	sed -i -e 's:\(fp_archive = \)FixedGzipFile:\1gzip.GzipFile:' \
 		test_archivemail || die "sed failed"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -28,11 +28,11 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install --install-data=/usr/share
+	distutils-r2_python_install --install-data=/usr/share
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	dodoc examples/* FAQ
 
 	mv "${D}/usr/share/share/man" "${D}/usr/share/" || die

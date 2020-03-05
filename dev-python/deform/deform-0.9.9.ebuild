@@ -4,7 +4,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Another form generation library"
 HOMEPAGE="https://docs.pylonsproject.org/projects/deform/en/latest/ https://pypi.org/project/deform/ https://github.com/Pylons/deform"
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 DOCS=( CHANGES.txt COPYRIGHT.txt README.txt )
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	# Install only the .rst source, as sphinx processing requires
 	# a theme only available from git that contains hardcoded

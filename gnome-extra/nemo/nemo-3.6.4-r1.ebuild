@@ -6,7 +6,7 @@ GNOME2_LA_PUNT="yes"
 GNOME2_EAUTORECONF="yes"
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools eutils gnome2 python-any-r1 virtualx
+inherit autotools eutils gnome2 python-any-r2 virtualx
 
 DESCRIPTION="A file manager for Cinnamon, forked from Nautilus"
 HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"

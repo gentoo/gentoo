@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_6 )
 
 COMMIT="ec4032596e3aec987ba29b62cac701608ef3b523"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A library for deferring decorator actions"
 HOMEPAGE="http://www.pylonsproject.org/"

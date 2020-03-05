@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python interface to the Redmine REST API"
 HOMEPAGE="https://github.com/maxtepkeev/python-redmine"
@@ -39,7 +39,7 @@ python_prepare_all() {
 		-e 's/from . import requests/import requests/' \
 		|| die 'failed to replace the dev-python/requests library import'
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

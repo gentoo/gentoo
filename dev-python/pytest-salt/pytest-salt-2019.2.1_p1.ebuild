@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 MY_PV="${PV/_p/.post}"
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="PyTest Salt Plugin"
 HOMEPAGE="https://github.com/saltstack/pytest-salt"

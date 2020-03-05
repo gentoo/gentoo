@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="check_openvpn"
 DESCRIPTION="A Nagios plugin to check whether an OpenVPN server is alive"
@@ -17,7 +17,7 @@ KEYWORDS="amd64"
 IUSE=""
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	local nagiosplugindir="/usr/$(get_libdir)/nagios/plugins"
 	dodir "${nagiosplugindir}"

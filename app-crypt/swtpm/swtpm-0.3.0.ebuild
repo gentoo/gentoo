@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools python-any-r1
+inherit autotools python-any-r2
 
 DESCRIPTION="Libtpms-based TPM emulator"
 HOMEPAGE="https://github.com/stefanberger/swtpm"

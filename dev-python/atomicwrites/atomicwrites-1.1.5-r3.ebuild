@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Atomic file writes"
 HOMEPAGE="https://github.com/untitaker/python-atomicwrites"
@@ -27,7 +27,7 @@ DEPEND="
 
 python_prepare_all() {
 	sed -i "/'sphinx.ext.intersphinx'/d" docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

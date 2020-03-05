@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit vim-plugin python-single-r1
+inherit vim-plugin python-single-r2
 
 DESCRIPTION="vim plugin: integrates python documentation view and search tool"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=910 https://github.com/fs111/pydoc.vim"

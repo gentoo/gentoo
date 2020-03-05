@@ -13,7 +13,7 @@ else
 	KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 	S="${WORKDIR}/${PN}_${PV}"
 fi
-inherit cmake fortran-2 python-any-r1
+inherit cmake fortran-2 python-any-r2
 
 DESCRIPTION="C++ runtime system for parallel and distributed applications"
 HOMEPAGE="https://stellar.cct.lsu.edu/tag/hpx/"
@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 "
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_configure() {

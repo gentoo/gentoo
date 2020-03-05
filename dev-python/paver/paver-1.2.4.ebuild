@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=${PN/p/P}
 MY_P=${MY_PN}-${PV}
@@ -29,7 +29,7 @@ S=${WORKDIR}/${MY_P}
 python_prepare_all() {
 	# https://github.com/paver/paver/issues/143#issuecomment-103943327
 	find paver/tests -name '*.pyc' -delete || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

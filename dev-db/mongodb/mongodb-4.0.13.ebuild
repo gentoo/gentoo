@@ -10,7 +10,7 @@ CHECKREQS_DISK_BUILD="2400M"
 CHECKREQS_DISK_USR="512M"
 CHECKREQS_MEMORY="1024M"
 
-inherit check-reqs flag-o-matic multiprocessing pax-utils python-any-r1 scons-utils systemd toolchain-funcs
+inherit check-reqs flag-o-matic multiprocessing pax-utils python-any-r2 scons-utils systemd toolchain-funcs
 
 MY_P=${PN}-src-r${PV/_rc/-rc}
 

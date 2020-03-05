@@ -8,7 +8,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils llvm multiprocessing python-any-r1
+inherit cmake-utils llvm multiprocessing python-any-r2
 
 MY_P=llvm-${PV/_/}.src
 DESCRIPTION="OCaml bindings for LLVM"
@@ -47,7 +47,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_prepare() {

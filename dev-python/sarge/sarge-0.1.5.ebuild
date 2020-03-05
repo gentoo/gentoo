@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{5,6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN}"
 MY_P="${MY_PN}-${PV}.post0"

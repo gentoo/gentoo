@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Backport of Python 3.7 contextvars module (PEP 567) for Python 3.6"
 HOMEPAGE="https://github.com/MagicStack"

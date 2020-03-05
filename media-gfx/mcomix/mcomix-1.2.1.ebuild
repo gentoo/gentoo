@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"
 
 PLOCALES="ca cs de el es fa fr gl he hr hu id it ja ko nl pl pt_BR ru sv uk zh_CN zh_TW"
 
-inherit distutils-r1 eutils l10n xdg-utils
+inherit distutils-r2 eutils l10n xdg-utils
 
 DESCRIPTION="A fork of comix, a GTK image viewer for comic book archives"
 HOMEPAGE="https://sourceforge.net/p/mcomix/wiki/Home/"
@@ -45,7 +45,7 @@ src_prepare() {
 
 	l10n_for_each_disabled_locale_do my_rm_loc
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 pkg_postinst() {

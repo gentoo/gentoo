@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Fuse module to mount uncompressed RAR archives"
 HOMEPAGE="https://sourceforge.net/projects/rarfs/"

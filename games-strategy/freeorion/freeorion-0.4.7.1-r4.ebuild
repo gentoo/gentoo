@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit cmake-utils python-single-r1 gnome2-utils
+inherit cmake-utils python-single-r2 gnome2-utils
 
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
 HOMEPAGE="http://www.freeorion.org"
@@ -27,7 +27,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.56:=[python,threads,${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.56:=[python,threads,${PYTHON_USEDEP}]
 	')
 	media-libs/freealut
 	media-libs/freetype
@@ -52,7 +52,7 @@ PATCHES=( "${FILESDIR}/${P}-backport-sdl2-include-dir-fix.patch" )
 
 pkg_setup() {
 	# build system is using FindPythonLibs.cmake which needs python:2
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

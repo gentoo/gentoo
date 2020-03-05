@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN/-/.}"
 DESCRIPTION="Tools to supplement packaging Python releases"
@@ -41,7 +41,7 @@ python_prepare_all() {
 	sed -r -i "s:setuptools_scm[[:space:]]*([><=]{1,2}[[:space:]]*[0-9.a-zA-Z]+)[[:space:]]*::" \
 		setup.cfg || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -56,5 +56,5 @@ python_test() {
 python_install() {
 	rm "${BUILD_DIR}"/lib/jaraco/__init__.py || die
 	# note: eclass may default to --skip-build in the future
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 }

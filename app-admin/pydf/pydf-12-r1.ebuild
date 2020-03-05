@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Enhanced df with colors"
 HOMEPAGE="http://kassiopeia.juls.savba.sk/~garabik/software/pydf/"

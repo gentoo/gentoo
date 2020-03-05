@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 # The eutils eclass is still needed for doicon() and domenu().
-inherit eutils python-r1
+inherit eutils python-multi-r2
 
 DESCRIPTION="A utility to find various forms of lint on a filesystem"
 HOMEPAGE="http://www.pixelbeat.org/fslint/"

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="TensorFlow's Visualization Toolkit"
 HOMEPAGE="https://www.tensorflow.org/"

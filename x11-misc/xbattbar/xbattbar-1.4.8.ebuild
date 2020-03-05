@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit eutils flag-o-matic multilib python-single-r1 toolchain-funcs
+inherit eutils flag-o-matic multilib python-single-r2 toolchain-funcs
 
 DESCRIPTION="Advanced Power Management battery status display for X"
 HOMEPAGE="https://packages.qa.debian.org/x/xbattbar.html"

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="A${PN:1}"
 MY_P="${MY_PN}-${PV}"
@@ -45,7 +45,7 @@ python_prepare_all() {
 	sed -r -i "s:use_scm_version=True:version='${PV}': ;
 		s:[\"']setuptools[_-]scm[\"'](,|)::" setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
@@ -54,7 +54,7 @@ python_install_all() {
 		dodoc docs/examples/*.py
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

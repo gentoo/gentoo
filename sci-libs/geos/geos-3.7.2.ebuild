@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Geometry engine library for Geographic Information Systems"
 HOMEPAGE="http://trac.osgeo.org/geos/"
@@ -32,7 +32,7 @@ PATCHES=( "${FILESDIR}"/3.4.2-solaris-isnan.patch )
 RESTRICT="test"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit eutils toolchain-funcs gnome2-utils python-any-r1
+inherit eutils toolchain-funcs gnome2-utils python-any-r2
 
 DESCRIPTION="a free chess database application"
 HOMEPAGE="http://scid.sourceforge.net/"
@@ -28,7 +28,7 @@ DEPEND="${CDEPEND}
 	app-arch/unzip"
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_unpack() {

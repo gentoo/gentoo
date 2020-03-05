@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Portable archive file manager"
 HOMEPAGE="http://wummel.github.io/patool/"

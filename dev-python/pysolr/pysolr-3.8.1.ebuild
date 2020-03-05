@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 SOLR_PV=4.10.4
 DESCRIPTION="Lightweight python wrapper for Apache Solr"
@@ -44,7 +44,7 @@ src_prepare() {
 	# utf8 breaks py2.7 for us
 	sed -i -e 's/…/.../' run-tests.py || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_configure_all() {

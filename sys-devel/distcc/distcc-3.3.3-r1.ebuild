@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools flag-o-matic python-single-r1 systemd \
+inherit autotools flag-o-matic python-single-r2 systemd \
 	toolchain-funcs user xdg-utils prefix
 
 DESCRIPTION="Distribute compilation of C code across several machines on a network"
@@ -46,7 +46,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 pkg_setup() {
 	enewuser distcc 240 -1 -1 daemon
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

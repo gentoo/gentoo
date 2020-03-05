@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit cmake-utils python-r1
+inherit cmake-utils python-multi-r2
 
 DESCRIPTION="A Modern Multiscale Simulation Package for Soft Matter Systems"
 HOMEPAGE="https://www.espresso-pp.de"

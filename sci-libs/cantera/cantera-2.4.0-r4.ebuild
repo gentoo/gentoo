@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 FORTRAN_NEEDED=fortran
 FORTRAN_STANDARD=90
 
-inherit desktop fortran-2 python-single-r1 scons-utils toolchain-funcs
+inherit desktop fortran-2 python-single-r2 scons-utils toolchain-funcs
 
 DESCRIPTION="Object-oriented tool suite for chemical kinetics, thermodynamics, and transport"
 HOMEPAGE="https://www.cantera.org"
@@ -29,7 +29,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)
 	<sci-libs/sundials-5.2.0:0=
@@ -42,7 +42,7 @@ DEPEND="
 	dev-libs/libfmt
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/cython[${PYTHON_MULTI_USEDEP}]
+			dev-python/cython[${PYTHON_USEDEP}]
 		')
 	)
 	test? (
@@ -58,7 +58,7 @@ PATCHES=(
 
 pkg_setup() {
 	fortran-2_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 ## Full list of configuration options of Cantera is presented here:

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=SPARQLWrapper
 DESCRIPTION="Wrapper around a SPARQL service"

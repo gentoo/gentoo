@@ -9,7 +9,7 @@ CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils eapi7-ver flag-o-matic multilib-minimal \
-	multiprocessing pax-utils python-any-r1 toolchain-funcs
+	multiprocessing pax-utils python-any-r2 toolchain-funcs
 
 MY_P=${P}.src
 DESCRIPTION="Low Level Virtual Machine"

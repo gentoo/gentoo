@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A wrapper for the GitHub API written in python"
 HOMEPAGE="https://github3py.readthedocs.io/en/master/"

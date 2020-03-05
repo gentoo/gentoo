@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools bash-completion-r1 eapi7-ver eutils linux-info perl-functions python-single-r1 xdg-utils
+inherit autotools bash-completion-r1 eapi7-ver eutils linux-info perl-functions python-single-r2 xdg-utils
 
 MY_PV_1="$(ver_cut 1-2)"
 MY_PV_2="$(ver_cut 2)"
@@ -111,7 +111,7 @@ pkg_setup() {
 		CONFIG_CHECK="~KVM ~VIRTIO"
 		[ -n "${CONFIG_CHECK}" ] && check_extra_config;
 
-		use python && python-single-r1_pkg_setup
+		use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

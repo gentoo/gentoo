@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Basic Python wrapper for libcanberra"
 HOMEPAGE="https://github.com/psykoyiko/pycanberra/"

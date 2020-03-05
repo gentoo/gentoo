@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library providing a few tools handling SemVer in Python"
 HOMEPAGE="https://pypi.org/project/semantic_version/"

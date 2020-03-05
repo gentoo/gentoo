@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit vim-plugin python-single-r1 vcs-snapshot
+inherit vim-plugin python-single-r2 vcs-snapshot
 
 DESCRIPTION="vim plugin: visualize your vim undo tree"
 HOMEPAGE="https://sjl.bitbucket.io/gundo.vim/"

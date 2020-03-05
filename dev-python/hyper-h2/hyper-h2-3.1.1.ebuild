@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8})
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="HTTP/2 State-Machine based protocol implementation"
 HOMEPAGE="https://python-hyper.org/h2/en/stable/ https://pypi.org/project/h2/"

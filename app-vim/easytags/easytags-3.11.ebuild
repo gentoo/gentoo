@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 vim-plugin
+inherit python-single-r2 vim-plugin
 
 DESCRIPTION="vim plugin: automated tag file generation and syntax highlighting"
 HOMEPAGE="http://peterodding.com/code/vim/easytags/"

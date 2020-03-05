@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 VIRTUALX_REQUIRED="test"
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Command Line Interface Formulation Framework"
 HOMEPAGE="https://github.com/openstack/cliff"

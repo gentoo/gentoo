@@ -6,7 +6,7 @@ EAPI=5
 FORTRAN_STANDARD="90"
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils flag-o-matic fortran-2 multilib multiprocessing python-any-r1 toolchain-funcs
+inherit eutils flag-o-matic fortran-2 multilib multiprocessing python-any-r2 toolchain-funcs
 
 DESCRIPTION="Message-passing parallel language and runtime system"
 HOMEPAGE="http://charm.cs.uiuc.edu/"
@@ -37,7 +37,7 @@ REQUIRED_USE="
 	charmproduction? ( !charmdebug !charmtracing )"
 
 pkg_setup() {
-	use doc && python-any-r1_pkg_setup
+	use doc && python-any-r2_pkg_setup
 }
 
 get_opts() {

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=${PN/-/.}
 MY_P=${MY_PN}-${PV}
@@ -28,7 +28,7 @@ S="${WORKDIR}/${MY_P}"
 python_prepare_all() {
 	sed -e "s|'setuptools_scm'||" \
 		-i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -39,5 +39,5 @@ python_test() {
 python_install() {
 	# avoid a collision with dev-python/backports
 	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 }

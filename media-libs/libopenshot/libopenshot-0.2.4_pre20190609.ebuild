@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake python-single-r1 toolchain-funcs
+inherit cmake python-single-r2 toolchain-funcs
 
 COMMIT="0d4ea7fe71e88bcee4a7fd1404bd52c8e2169997"
 
@@ -60,7 +60,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	check_compiler
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

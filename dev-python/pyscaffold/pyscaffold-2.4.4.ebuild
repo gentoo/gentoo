@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="PyScaffold"
 MY_P="${MY_PN}-${PV}"
@@ -47,7 +47,7 @@ python_prepare_all() {
 		-e 's:test_pyscaffold_keyword:_&:g' \
 		-i tests/*py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

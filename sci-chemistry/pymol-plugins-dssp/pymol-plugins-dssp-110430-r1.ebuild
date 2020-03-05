@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="DSSP Plugin for PyMOL"
 HOMEPAGE="http://www.biotec.tu-dresden.de/~hongboz/dssp_pymol/dssp_pymol.html"

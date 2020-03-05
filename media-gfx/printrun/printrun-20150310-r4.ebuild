@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="GUI interface for 3D printing on RepRap and other printers"
 HOMEPAGE="https://github.com/kliment/Printrun"

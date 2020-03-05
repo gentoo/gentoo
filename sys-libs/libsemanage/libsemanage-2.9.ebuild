@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python3_6 )
 
-inherit multilib python-r1 toolchain-funcs multilib-minimal
+inherit multilib python-multi-r2 toolchain-funcs multilib-minimal
 
 MY_P="${P//_/-}"
 MY_RELEASEDATE="20190315"

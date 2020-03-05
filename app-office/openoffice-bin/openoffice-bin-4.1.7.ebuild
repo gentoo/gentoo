@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils xdg-utils gnome2-utils pax-utils prefix python-single-r1 rpm multilib
+inherit eutils xdg-utils gnome2-utils pax-utils prefix python-single-r2 rpm multilib
 
 IUSE="gnome java"
 

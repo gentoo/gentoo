@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="Routes"
 MY_P="${MY_PN}-${PV}"
@@ -42,7 +42,7 @@ python_prepare_all() {
 	sed -e "s:changes:changes\n   todo:" \
 		-i docs/index.rst || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -51,5 +51,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

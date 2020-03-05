@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 USE_RUBY="ruby23 ruby24 ruby25"
 
-inherit eutils multiprocessing python-single-r1 ruby-single toolchain-funcs
+inherit eutils multiprocessing python-single-r2 ruby-single toolchain-funcs
 
 # generated as 'python2 ./utils/gen-tarball.py' from clean git tree
 MY_P="${P%_p*}DrO_o-949-gca15e830"
@@ -95,7 +95,7 @@ pkg_setup() {
 	# used both for building xmms2 and
 	# optionally linking client library
 	# against python
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 # use_enable() is taken as proto

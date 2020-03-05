@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A configurable set of panels that display debug information"
 HOMEPAGE="
@@ -34,7 +34,7 @@ python_prepare_all() {
 	# This prevents distutils from installing 'tests' package, rm magic no more needed
 	sed -e "/find_packages/s:'tests':'tests.\*', 'tests':" -i setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -48,5 +48,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 	use examples && local EXAMPLES=( example/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

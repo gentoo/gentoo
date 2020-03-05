@@ -15,7 +15,7 @@ else
 	S="${WORKDIR}/Vulkan-ValidationLayers-${EGIT_COMMIT}"
 fi
 
-inherit python-any-r1 cmake-multilib
+inherit python-any-r2 cmake-multilib
 
 DESCRIPTION="Vulkan Validation Layers"
 HOMEPAGE="https://github.com/KhronosGroup/Vulkan-ValidationLayers"

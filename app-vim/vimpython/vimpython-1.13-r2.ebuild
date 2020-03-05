@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit vim-plugin python-single-r1
+inherit vim-plugin python-single-r2
 
 DESCRIPTION="vim plugin: A set of menus/shortcuts to work with Python files"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=30"

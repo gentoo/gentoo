@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python client library for MariaDB/MySQL"
 HOMEPAGE="https://dev.mysql.com/downloads/connector/python/"
@@ -30,7 +30,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples ; then
 		dodoc -r examples
 	fi

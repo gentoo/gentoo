@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Drop-in replacement for python stdlib csv module supporting unicode"
 HOMEPAGE="https://pypi.org/project/unicodecsv/ https://github.com/jdunck/python-unicodecsv"

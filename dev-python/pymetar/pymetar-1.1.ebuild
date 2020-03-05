@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Downloads and decodes to the weather report for a given station ID"
 HOMEPAGE="https://www.schwarzvogel.de/software-pymetar.shtml"

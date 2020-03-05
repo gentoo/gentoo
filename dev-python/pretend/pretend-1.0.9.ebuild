@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A library for stubbing in Python"
 HOMEPAGE="https://github.com/alex/pretend/ https://pypi.org/project/pretend/"

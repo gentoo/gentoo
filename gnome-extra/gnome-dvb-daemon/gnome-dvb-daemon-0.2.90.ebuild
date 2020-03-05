@@ -6,7 +6,7 @@ GCONF_DEBUG="no"
 PYTHON_COMPAT=( python3_6 )
 VALA_MIN_API_VERSION="0.26"
 
-inherit eutils gnome2 multilib python-any-r1 vala
+inherit eutils gnome2 multilib python-any-r2 vala
 
 DESCRIPTION="Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer"
 HOMEPAGE="https://wiki.gnome.org/Projects/DVBDaemon"
@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 	nls? ( >=sys-devel/gettext-0.18.1:0 )"
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_prepare() {

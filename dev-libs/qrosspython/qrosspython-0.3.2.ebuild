@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 cmake-utils
+inherit python-single-r2 cmake-utils
 
 DESCRIPTION="Python scripting backend for Qross"
 HOMEPAGE="https://github.com/0xd34df00d/Qross"

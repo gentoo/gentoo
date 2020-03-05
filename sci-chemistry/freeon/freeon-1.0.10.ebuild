@@ -6,7 +6,7 @@ EAPI=6
 FORTRAN_STANDARD=90
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools fortran-2 python-any-r1
+inherit autotools fortran-2 python-any-r2
 
 DESCRIPTION="An experimental suite of programs for linear scaling quantum chemistry"
 HOMEPAGE="http://www.freeon.org"

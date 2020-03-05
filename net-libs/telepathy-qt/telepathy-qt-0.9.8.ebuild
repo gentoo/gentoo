@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit python-any-r1 cmake virtualx
+inherit python-any-r2 cmake virtualx
 
 DESCRIPTION="Qt bindings for the Telepathy D-Bus protocol"
 HOMEPAGE="https://telepathy.freedesktop.org/"
@@ -51,7 +51,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_configure() {

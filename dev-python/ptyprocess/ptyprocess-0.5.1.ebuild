@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Run a subprocess in a pseudo terminal"
 HOMEPAGE="https://github.com/pexpect/ptyprocess"

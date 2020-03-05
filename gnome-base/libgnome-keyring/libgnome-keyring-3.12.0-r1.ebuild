@@ -8,7 +8,7 @@ VALA_MIN_API_VERSION="0.16"
 VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-any-r1 vala multilib-minimal
+inherit gnome2 python-any-r2 vala multilib-minimal
 
 DESCRIPTION="Compatibility library for accessing secrets"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeKeyring"

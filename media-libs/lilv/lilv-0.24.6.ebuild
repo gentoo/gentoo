@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit python-any-r1 waf-utils bash-completion-r1 multilib-build multilib-minimal
+inherit python-any-r2 waf-utils bash-completion-r1 multilib-build multilib-minimal
 
 DESCRIPTION="Library to make the use of LV2 plugins as simple as possible for applications"
 HOMEPAGE="http://drobilla.net/software/lilv/"

@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 PYTHON_REQ_USE='bzip2(+)'
 
-inherit distutils-r1
+inherit distutils-r2
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -39,7 +39,7 @@ python_test() {
 python_install() {
 	# Install sbin scripts to bindir for python-exec linking
 	# they will be relocated in pkg_preinst()
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		--system-prefix="${EPREFIX}/usr" \
 		--bindir="$(python_get_scriptdir)" \
 		--docdir="${EPREFIX}/usr/share/doc/${PF}" \

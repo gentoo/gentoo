@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 # vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
-inherit versionator gnome2-utils eutils autotools ltprune python-any-r1 vala
+inherit versionator gnome2-utils eutils autotools ltprune python-any-r2 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
@@ -72,7 +72,7 @@ DEPEND="${RDEPEND}
 "
 
 pkg_setup() {
-	use test && use introspection && python-any-r1_pkg_setup
+	use test && use introspection && python-any-r2_pkg_setup
 }
 
 PATCHES=(

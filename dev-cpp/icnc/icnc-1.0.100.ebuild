@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils multilib python-any-r1
+inherit cmake-utils multilib python-any-r2
 
 DESCRIPTION="Intel Concurrent Collections for C++ - Parallelism without the Pain"
 HOMEPAGE="https://software.intel.com/en-us/articles/intel-concurrent-collections-for-cc"

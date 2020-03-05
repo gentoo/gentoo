@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="push to and pull from a Git repository using Mercurial"
 HOMEPAGE="https://hg-git.github.io https://pypi.org/project/hg-git/"

@@ -8,7 +8,7 @@ PYTHON_REQ_USE=xml
 
 XORG_DOC=doc
 XORG_MULTILIB=yes
-inherit python-any-r1 xorg-2
+inherit python-any-r2 xorg-2
 
 DESCRIPTION="X C-language Bindings library"
 HOMEPAGE="https://xcb.freedesktop.org/ https://gitlab.freedesktop.org/xorg/lib/libxcb"
@@ -37,7 +37,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_configure() {

@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simplified object-oriented Python extension module for libpcap"
 HOMEPAGE="https://github.com/pynetwork/pypcap https://pypi.org/project/pypcap/"
@@ -26,5 +26,5 @@ PATCHES=(
 
 python_compile() {
 	local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }

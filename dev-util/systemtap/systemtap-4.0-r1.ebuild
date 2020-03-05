@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit linux-info autotools python-single-r1 user
+inherit linux-info autotools python-single-r2 user
 
 DESCRIPTION="A linux trace/probe tool"
 HOMEPAGE="https://www.sourceware.org/systemtap/"
@@ -56,7 +56,7 @@ pkg_setup() {
 	enewgroup stapdev 158
 
 	linux-info_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

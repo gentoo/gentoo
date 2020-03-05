@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Django plugin for py.test"
 HOMEPAGE="https://pypi.org/project/pytest-django/ https://pytest-django.readthedocs.org https://github.com/pytest-dev/pytest-django"

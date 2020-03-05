@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="Generates a slideshow using the slides that power the html5-slides presentation"
 HOMEPAGE="https://github.com/adamzap/landslide"
@@ -27,5 +27,5 @@ RDEPEND="
 
 python_install_all() {
 	use examples && EXAMPLES=( examples/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

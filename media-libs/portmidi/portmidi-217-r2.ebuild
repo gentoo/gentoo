@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
-inherit cmake-utils desktop distutils-r1 java-pkg-opt-2
+inherit cmake-utils desktop distutils-r2 java-pkg-opt-2
 
 DESCRIPTION="Library for real time MIDI input and output"
 HOMEPAGE="http://portmedia.sourceforge.net/"
@@ -90,7 +90,7 @@ src_compile() {
 	if use python ; then
 		sed -i -e "/library_dirs=.*linux/s#./linux#${CMAKE_BUILD_DIR}#" pm_python/setup.py || die
 		pushd pm_python > /dev/null
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 		popd > /dev/null
 	fi
 
@@ -111,7 +111,7 @@ src_install() {
 
 	if use python ; then
 		pushd pm_python > /dev/null
-		distutils-r1_src_install
+		distutils-r2_src_install
 		popd > /dev/null
 	fi
 

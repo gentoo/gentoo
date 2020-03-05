@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses"
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Last File Manager is a powerful file manager for the console"
 HOMEPAGE="https://inigo.katxi.org/devel/lfm/"

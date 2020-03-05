@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 AUTOTOOLS_AUTORECONF=1
 
-inherit autotools-utils distutils-r1
+inherit autotools-utils distutils-r2
 
 DESCRIPTION="Support library required by the Sphinx Speech Recognition Engine"
 HOMEPAGE="http://cmusphinx.sourceforge.net/"
@@ -49,7 +49,7 @@ src_configure() {
 run_distutils() {
 	if use python; then
 		pushd python > /dev/null || die
-		distutils-r1_"${@}"
+		distutils-r2_"${@}"
 		popd > /dev/null || die
 	fi
 }

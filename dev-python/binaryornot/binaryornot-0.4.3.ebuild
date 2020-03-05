@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Ultra-lightweight pure Python package to guess whether a file is binary or text"
 HOMEPAGE="https://github.com/audreyr/binaryornot"

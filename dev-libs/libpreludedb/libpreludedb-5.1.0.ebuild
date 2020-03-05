@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools distutils-r1
+inherit autotools distutils-r2
 
 DESCRIPTION="Framework to easy access to the Prelude database"
 HOMEPAGE="https://www.prelude-siem.org"
@@ -50,7 +50,7 @@ src_prepare() {
 
 	if use python; then
 		cd bindings/python || die
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 	fi
 }
 
@@ -81,7 +81,7 @@ src_compile() {
 	default
 	if use python; then
 		cd bindings/python || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -90,6 +90,6 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 	if use python; then
 		cd bindings/python || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 }

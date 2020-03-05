@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk"
 
-inherit python-single-r1
+inherit python-single-r2
 
 MY_P="${P/-/.}"
 

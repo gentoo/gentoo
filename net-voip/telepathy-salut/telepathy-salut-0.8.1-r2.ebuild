@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-any-r1
+inherit python-any-r2
 
 DESCRIPTION="A link-local XMPP connection manager for Telepathy"
 HOMEPAGE="https://telepathy.freedesktop.org/"
@@ -58,7 +58,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_configure() {

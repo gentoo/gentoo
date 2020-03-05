@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python docstring style checker"
 HOMEPAGE="https://pypi.python.org/pypi/pep257"
@@ -26,7 +26,7 @@ DEPEND="
 	)"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 python_test() {

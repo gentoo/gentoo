@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake flag-o-matic python-single-r1
+inherit cmake flag-o-matic python-single-r2
 
 DESCRIPTION="A color management framework for visual effects and animation"
 HOMEPAGE="http://opencolorio.org/"
@@ -38,7 +38,7 @@ BDEPEND="
 	virtual/pkgconfig
 	doc? (
 		$(python_gen_cond_dep '
-			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -57,7 +57,7 @@ PATCHES=(
 S="${WORKDIR}/OpenColorIO-${PV}"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

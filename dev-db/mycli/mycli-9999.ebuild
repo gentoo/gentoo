@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 EGIT_REPO_URI="https://github.com/dbcli/mycli.git"
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="CLI for MySQL Database with auto-completion and syntax highlighting"
 

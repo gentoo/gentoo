@@ -4,7 +4,7 @@
 EAPI=7
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python2_7 )
-inherit autotools perl-module python-single-r1 toolchain-funcs
+inherit autotools perl-module python-single-r2 toolchain-funcs
 
 DESCRIPTION="Nagios/Icinga event broker that allows quick/direct access to your status data"
 HOMEPAGE="https://checkmk.com/"

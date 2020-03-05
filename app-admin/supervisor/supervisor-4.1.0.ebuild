@@ -8,7 +8,7 @@ PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 PYTHON_REQ_USE="xml(+)"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 systemd
+inherit distutils-r2 systemd
 
 MY_PV="${PV/_beta/b}"
 
@@ -27,7 +27,7 @@ distutils_enable_sphinx docs
 distutils_enable_tests pytest
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	newinitd "${FILESDIR}/init.d-r2" supervisord
 	newconfd "${FILESDIR}/conf.d-r1" supervisord
 	dodoc supervisor/skel/sample.conf

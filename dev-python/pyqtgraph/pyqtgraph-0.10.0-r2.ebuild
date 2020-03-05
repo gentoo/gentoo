@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A pure-python graphics and GUI library built on PyQt and numpy"
 HOMEPAGE="http://www.pyqtgraph.org/ https://pypi.org/project/pyqtgraph/"
@@ -26,7 +26,7 @@ PATCHES=( "${FILESDIR}"/${P}-qt5.patch )
 S=${WORKDIR}/${PN}-${P}
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	# fix distutils warning
 	sed -i 's/install_requires/requires/' setup.py || die
@@ -43,5 +43,5 @@ python_compile_all() {
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/build/html/. )
 	use examples && dodoc -r examples
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python client for Neovim"
 HOMEPAGE="https://github.com/neovim/pynvim"
@@ -28,5 +28,5 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	# allow useage of renamed msgpack
 	sed -r -i "/^msgpack/d ; s:[\"']pytest-runner[\"'](,|)::" setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

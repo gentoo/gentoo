@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Type Hints for Python"
 HOMEPAGE="https://docs.python.org/3/library/typing.html https://pypi.org/project/typing/"
@@ -20,7 +20,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND=""
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 
 	# broken on PyPy, unclear if CPython behavior is not a bug
 	# https://github.com/python/typing/issues/671

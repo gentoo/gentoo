@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=${PN//-/.}
 DESCRIPTION="The official command-line client for RIPE Atlas"
@@ -43,7 +43,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	echo "RIPE Atlas Tools (Magellan) [Gentoo Linux] ${PVR}" > \
 		${D}$(python_get_sitedir)/ripe/atlas/tools/user-agent
 }

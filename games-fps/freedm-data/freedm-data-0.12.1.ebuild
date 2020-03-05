@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit prefix python-any-r1 xdg
+inherit prefix python-any-r2 xdg
 
 DESCRIPTION="Game resources for FreeDM"
 HOMEPAGE="https://freedoom.github.io"

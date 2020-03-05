@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools python-any-r1 xdg-utils toolchain-funcs
+inherit autotools python-any-r2 xdg-utils toolchain-funcs
 
 MY_PV=${PV/_beta/-beta.}
 MY_P=${PN}-${MY_PV}

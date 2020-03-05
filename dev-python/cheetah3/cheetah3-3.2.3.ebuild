@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="Cheetah3"
 MY_P="${MY_PN}-${PV/_}"
@@ -37,7 +37,7 @@ python_prepare_all() {
 		-e "/results =/a\\    sys.exit(not results.wasSuccessful())" \
 		-i Cheetah/Tests/Test.py || die "sed failed"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

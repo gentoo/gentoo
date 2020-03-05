@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)"
 HOMEPAGE="https://github.com/jstasiak/python-zeroconf https://pypi.org/project/zeroconf/"
@@ -30,7 +30,7 @@ python_prepare_all() {
 	sed \
 		-e "s:'enum-compat',::g" \
 		-i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

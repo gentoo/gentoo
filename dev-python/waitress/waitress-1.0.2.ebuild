@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A pure-Python WSGI server"
 HOMEPAGE="https://docs.pylonsproject.org/projects/waitress/en/latest/
@@ -29,5 +29,5 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

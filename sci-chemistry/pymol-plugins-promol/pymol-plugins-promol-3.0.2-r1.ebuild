@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Fast and accurate regognition of active sites"
 HOMEPAGE="http://www.rit.edu/cos/ezviz/ProMOL_dl.html"

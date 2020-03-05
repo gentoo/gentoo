@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 GNOME2_LA_PUNT="yes"
 
-inherit bash-completion-r1 gnome2 python-r1
+inherit bash-completion-r1 gnome2 python-multi-r2
 
 DESCRIPTION="SDK for making video editors and more"
 HOMEPAGE="http://wiki.pitivi.org/wiki/GES"

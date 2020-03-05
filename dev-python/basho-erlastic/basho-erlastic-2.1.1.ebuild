@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Erlang binary term codec and port interface."
 HOMEPAGE="https://github.com/basho/python-erlastic/"

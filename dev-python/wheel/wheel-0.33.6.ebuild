@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="A built-package format for Python"
 HOMEPAGE="https://pypi.org/project/wheel/"
@@ -24,5 +24,5 @@ src_prepare() {
 	sed \
 		-e 's:--cov=wheel::g' \
 		-i setup.cfg || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }

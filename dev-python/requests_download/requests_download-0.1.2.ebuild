@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A convenient function to download to a file using requests"
 HOMEPAGE="https://github.com/takluyver/requests_download https://pypi.org/project/requests_download/"
@@ -26,5 +26,5 @@ python_prepare_all() {
 	printf -- "from setuptools import setup\nsetup(name='%s',version='%s',py_modules=['%s'])" \
 		"${PN}" "${PV}" "${PN}" > setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

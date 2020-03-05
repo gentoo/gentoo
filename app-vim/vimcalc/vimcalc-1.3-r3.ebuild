@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 vim-plugin
+inherit python-single-r2 vim-plugin
 
 DESCRIPTION="vim plugin: provides an interactive calculator inside vim"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3329"

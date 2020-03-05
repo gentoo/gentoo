@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit gnome2 distutils-r1
+inherit gnome2 distutils-r2
 
 DESCRIPTION="A graphical tool for administering virtual machines"
 HOMEPAGE="http://virt-manager.org"
@@ -30,12 +30,12 @@ RDEPEND="!app-emulation/virtinst
 	app-cdr/cdrtools
 	>=app-emulation/libvirt-glib-1.0.0[introspection]
 	$(python_gen_cond_dep '
-		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
-		dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
-		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
-		dev-python/libvirt-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-libs/libxml2[python,${PYTHON_USEDEP}]
+		dev-python/argcomplete[${PYTHON_USEDEP}]
+		dev-python/ipaddr[${PYTHON_USEDEP}]
+		dev-python/libvirt-python[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	>=sys-libs/libosinfo-0.2.10[introspection]
 	gtk? (
@@ -57,10 +57,10 @@ DEPEND="${RDEPEND}
 DOCS=( README.md NEWS.md )
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
-distutils-r1_python_compile() {
+distutils-r2_python_compile() {
 	local defgraphics=
 
 	esetup.py configure \
@@ -70,7 +70,7 @@ distutils-r1_python_compile() {
 src_install() {
 	local mydistutilsargs=( --no-update-icon-cache --no-compile-schemas )
 
-	distutils-r1_src_install
+	distutils-r2_src_install
 }
 
 pkg_preinst() {

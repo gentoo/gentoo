@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_6 )
 MY_PN="curator"
 ES_VERSION="6.3.2"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Tending time-series indices in Elasticsearch"
 HOMEPAGE="https://github.com/elasticsearch/curator"
@@ -59,7 +59,7 @@ python_prepare_all() {
 		-e '/requests_aws4auth/d' \
 		-i setup.cfg setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -115,7 +115,7 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 	doman docs/_build/man/*
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

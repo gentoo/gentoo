@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Smart console frontend for the cdrkit/cdrtools & dvd+rw-tools"
 HOMEPAGE="https://github.com/aglyzov/burn-cd/"

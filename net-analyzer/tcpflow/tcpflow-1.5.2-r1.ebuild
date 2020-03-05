@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
-inherit autotools flag-o-matic python-single-r1
+inherit autotools flag-o-matic python-single-r2
 
 DESCRIPTION="A tool for monitoring, capturing and storing TCP connections flows"
 HOMEPAGE="https://github.com/simsong/tcpflow"

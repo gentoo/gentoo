@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="GNS3 server to asynchronously manage emulators"
 HOMEPAGE="http://www.gns3.net/"
@@ -41,7 +41,7 @@ src_prepare() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	mkdir -p "${D}$(python_get_sitedir)/gns3server/compute/docker/resources/bin" || die
 	ln -s /bin/busybox "${D}$(python_get_sitedir)/gns3server/compute/docker/resources/bin/busybox" || die

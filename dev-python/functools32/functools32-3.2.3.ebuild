@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Backport of the functools module from Python 3"
 HOMEPAGE="https://pypi.org/project/functools32/ https://github.com/MiCHiLU/python-functools32"

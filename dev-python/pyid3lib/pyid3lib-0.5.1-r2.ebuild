@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Module for manipulating ID3 tags in Python"
 HOMEPAGE="http://pyid3lib.sourceforge.net/"
@@ -27,7 +27,7 @@ src_prepare() {
 		"${FILESDIR}/${P}-py25.patch"
 	)
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 
 	append-flags -fno-strict-aliasing
 }

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="ANSII Color formatting for output in terminal"
 HOMEPAGE="https://pypi.org/project/termcolor/"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Git subcommands for interacting with central services"
 HOMEPAGE="http://seveas.github.io/git-spindle/"

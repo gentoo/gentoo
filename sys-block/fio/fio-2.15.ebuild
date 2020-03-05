@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-r1 toolchain-funcs
+inherit eutils python-multi-r2 toolchain-funcs
 
 MY_PV="${PV/_rc/-rc}"
 MY_P="${PN}-${MY_PV}"

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="virtualenv-based automation of test activities"
 HOMEPAGE="https://tox.readthedocs.io https://github.com/tox-dev/tox https://pypi.org/project/tox/"

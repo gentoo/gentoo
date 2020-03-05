@@ -5,7 +5,7 @@ EAPI=6
 
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python (ctypes) bindings for SDL2 libraries"
 HOMEPAGE="https://github.com/marcusva/py-sdl2 https://pypi.org/project/PySDL2/"
@@ -52,7 +52,7 @@ src_prepare() {
 	find '(' -name '*.py' -o -name '*.rst' -o -name '*.txt' ')' \
 		-type f -exec sed -i -e 's/\r$//' {} + || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

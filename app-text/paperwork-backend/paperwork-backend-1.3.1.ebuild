@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Backend part of Paperwork (Python API, no UI)"
 HOMEPAGE="https://github.com/openpaperwork/paperwork-backend"

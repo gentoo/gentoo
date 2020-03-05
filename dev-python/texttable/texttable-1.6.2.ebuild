@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6..8}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Module for creating simple ASCII tables"
 HOMEPAGE="https://github.com/foutaise/texttable https://pypi.org/project/texttable/"

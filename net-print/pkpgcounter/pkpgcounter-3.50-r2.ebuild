@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Generic PDL (Page Description Language) parser in Python"
 HOMEPAGE="http://www.pykota.com/software/pkpgcounter"
@@ -20,7 +20,7 @@ DEPEND="dev-python/pillow[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	rm -r "${ED%/}/usr/share/doc/${PN}" || die
 }

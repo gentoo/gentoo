@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 inherit cmake-utils llvm.org multilib-minimal multiprocessing \
-	pax-utils python-any-r1 toolchain-funcs
+	pax-utils python-any-r2 toolchain-funcs
 
 # no changes in 9.0.1
 MANPAGE_P=llvm-9.0.0-manpages

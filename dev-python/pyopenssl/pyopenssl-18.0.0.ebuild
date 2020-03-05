@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_PN=pyOpenSSL
 MY_P=${MY_PN}-${PV}
@@ -45,7 +45,7 @@ S=${WORKDIR}/${MY_P}
 python_prepare_all() {
 	# Requires network access
 	sed -i -e 's/test_set_default_verify_paths/_&/' tests/test_ssl.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -64,5 +64,5 @@ python_install_all() {
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

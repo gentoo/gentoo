@@ -13,7 +13,7 @@ else
 	SRC_URI="https://musicbrainz.osuosl.org/pub/musicbrainz/${PN}/${P}.tar.gz"
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit distutils-r1 readme.gentoo-r1 xdg
+inherit distutils-r2 readme.gentoo-r1 xdg
 
 DESCRIPTION="A cross-platform music tagger"
 HOMEPAGE="https://picard.musicbrainz.org"
@@ -27,7 +27,7 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_USEDEP}]
 	')
 	dev-qt/qtgui:5[accessibility]
 	>=media-libs/mutagen-1.38"
@@ -41,7 +41,7 @@ python_compile() {
 	if ! use nls; then
 		build_args+=( --disable-locales )
 	fi
-	distutils-r1_python_compile ${build_args[@]}
+	distutils-r2_python_compile ${build_args[@]}
 }
 
 python_install() {
@@ -52,11 +52,11 @@ python_install() {
 	if ! use nls; then
 		install_args+=( --disable-locales )
 	fi
-	distutils-r1_python_install ${install_args[@]}
+	distutils-r2_python_install ${install_args[@]}
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	local DOC_CONTENTS="Install optional package media-libs/chromaprint[tools] to enable
 calculation and lookup of AcoustID fingerprints.

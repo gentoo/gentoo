@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Tool for sending text messages for various Swiss providers"
 HOMEPAGE="https://sourceforge.net/projects/pysms/"
@@ -24,5 +24,5 @@ python_prepare() {
 		-i data/pysms.desktop || die
 	rm -f MANIFEST.in
 
-	distutils-r1_python_prepare
+	distutils-r2_python_prepare
 }

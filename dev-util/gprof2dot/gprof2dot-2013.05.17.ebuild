@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='xml'
 
-inherit eutils python-r1
+inherit eutils python-multi-r2
 
 MY_PV=0_p${PV//./}
 MY_P=${PN}-${MY_PV}

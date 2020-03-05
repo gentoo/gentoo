@@ -6,7 +6,7 @@ EAPI=6
 : ${CMAKE_MAKEFILE_GENERATOR:=ninja}
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils multibuild python-any-r1 toolchain-funcs
+inherit cmake-utils multibuild python-any-r2 toolchain-funcs
 
 DESCRIPTION="C++ Sequence Analysis Library"
 HOMEPAGE="http://www.seqan.de/"
@@ -46,7 +46,7 @@ python_check_deps() {
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]]; then
-		use doc && python-any-r1_pkg_setup
+		use doc && python-any-r2_pkg_setup
 		use tools && tc-check-openmp
 
 		MULTIBUILD_VARIANTS=(

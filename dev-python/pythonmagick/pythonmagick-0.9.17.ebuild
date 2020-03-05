@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit libtool python-r1
+inherit libtool python-multi-r2
 
 MY_PN="PythonMagick"
 MY_P="${MY_PN}-${PV}"

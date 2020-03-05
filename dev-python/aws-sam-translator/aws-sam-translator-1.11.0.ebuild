@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A library that transform SAM templates into AWS CloudFormation templates"
 HOMEPAGE="https://github.com/awslabs/serverless-application-model https://pypi.org/project/aws-sam-translator/"

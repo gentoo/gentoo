@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_OPTIONAL=1
-inherit cmake-utils cuda distutils-r1
+inherit cmake-utils cuda distutils-r2
 
 DESCRIPTION="Numerical and networking C++ library"
 HOMEPAGE="http://dlib.net/"
@@ -42,7 +42,7 @@ DOCS=( docs/README.txt )
 src_prepare() {
 	use cuda && cuda_src_prepare
 	cmake-utils_src_prepare
-	use python && distutils-r1_src_prepare
+	use python && distutils-r2_src_prepare
 }
 
 python_configure_all() {
@@ -77,12 +77,12 @@ src_configure() {
 		-DUSE_SSE4_INSTRUCTIONS="$(usex cpu_flags_x86_sse4_1)"
 	)
 	cmake-utils_src_configure
-	use python && distutils-r1_src_configure
+	use python && distutils-r2_src_configure
 }
 
 src_compile() {
 	cmake-utils_src_compile
-	use python && distutils-r1_src_compile
+	use python && distutils-r2_src_compile
 }
 
 python_test() {
@@ -95,12 +95,12 @@ src_test() {
 	cmake "${S}"/dlib/test && emake
 	./dtest --runall || die
 	popd > /dev/null || die
-	use python && distutils-r1_src_test
+	use python && distutils-r2_src_test
 }
 
 src_install() {
 	cmake-utils_src_install
-	use python && distutils-r1_src_install
+	use python && distutils-r2_src_install
 	use static-libs || rm -f "${ED}"/usr/$(get_libdir)/*.a
 	if use examples; then
 		dodoc -r examples

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="py.test plugin for isort"
 HOMEPAGE="https://github.com/moccu/pytest-isort https://pypi.python.org/pypi/pytest-isort"

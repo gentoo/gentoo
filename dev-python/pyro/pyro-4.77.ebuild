@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="Pyro4"
 MY_P="${MY_PN}-${PV}"
@@ -47,7 +47,7 @@ python_prepare_all() {
 		-e "s/testGetIP/_&/" \
 		-i tests/PyroTests/test_socket.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -60,5 +60,5 @@ python_install_all() {
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

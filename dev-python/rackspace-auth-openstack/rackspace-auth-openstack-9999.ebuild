@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 EGIT_REPO_URI="https://github.com/emonty/${PN}.git"
 

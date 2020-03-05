@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="asyncio based SMTP server"
 HOMEPAGE="https://aiosmtpd.readthedocs.io/en/latest/"
@@ -19,5 +19,5 @@ RDEPEND="dev-python/atpublic[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	rm -r examples || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

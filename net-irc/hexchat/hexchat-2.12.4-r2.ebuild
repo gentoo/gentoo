@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit autotools fdo-mime flag-o-matic gnome2-utils python-single-r1
+inherit autotools fdo-mime flag-o-matic gnome2-utils python-single-r2
 
 DESCRIPTION="Graphical IRC client based on XChat"
 HOMEPAGE="https://hexchat.github.io/"
@@ -59,7 +59,7 @@ src_prepare() {
 }
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

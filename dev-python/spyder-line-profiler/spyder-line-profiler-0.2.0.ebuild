@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Plugin to run the python line profiler from within the spyder editor"
 HOMEPAGE="https://github.com/spyder-ide/spyder-line-profiler"

@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
-inherit python-r1 cmake-utils cuda
+inherit python-multi-r2 cmake-utils cuda
 
 DESCRIPTION="Numerical and networking C++ library"
 HOMEPAGE="http://dlib.net/"

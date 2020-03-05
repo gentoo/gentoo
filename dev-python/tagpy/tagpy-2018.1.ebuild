@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python Bindings for TagLib"
 HOMEPAGE="https://mathema.tician.de//software/tagpy
@@ -30,7 +30,7 @@ PATCHES=( "${FILESDIR}/${P}-taglib-1.8.patch" )
 
 python_prepare_all() {
 	cp "${FILESDIR}"/${P}-readme.rst README.rst || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure() {
@@ -52,5 +52,5 @@ python_install_all() {
 		dodoc -r test/*
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

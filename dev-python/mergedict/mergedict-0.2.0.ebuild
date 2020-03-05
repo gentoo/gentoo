@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python 'dict' with a merge() method"
 HOMEPAGE="https://github.com/schettino72/mergedict/"

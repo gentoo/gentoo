@@ -5,7 +5,7 @@ EAPI="7"
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="metadata.xml generator for ebuilds"
 HOMEPAGE="https://cgit.gentoo.org/proj/metagen.git"
@@ -21,12 +21,12 @@ DEPEND="dev-python/lxml[${PYTHON_USEDEP}]
 RDEPEND="${DEPEND}"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	doman docs/metagen.1
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	# Address expected path warning for /usr/share/doc/metagen-<not-9999>
 	mv "${D}"/usr/share/doc/metagen-{*,${PV}}/ || die

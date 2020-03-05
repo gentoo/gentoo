@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-r1
+inherit eutils python-multi-r2
 
 DESCRIPTION="PyMOL plugin for convinient movie creation"
 SRC_URI="http://www.weizmann.ac.il/ISPC/eMovie_package.zip"

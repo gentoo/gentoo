@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit base flag-o-matic multilib python-any-r1 toolchain-funcs
+inherit base flag-o-matic multilib python-any-r2 toolchain-funcs
 
 DESCRIPTION="C Driver for MongoDB"
 HOMEPAGE="http://www.mongodb.org/ https://github.com/mongodb/mongo-c-driver"

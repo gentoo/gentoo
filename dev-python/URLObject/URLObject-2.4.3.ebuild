@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 GITHUB_P=${P,,}
 DESCRIPTION="A utility class for manipulating URLs"
@@ -34,7 +34,7 @@ python_prepare_all() {
 	rm "${S}/urlobject/six.py" || die
 	find "${S}/urlobject" -type f -name \*.py \
 		-exec sed -e 's/from \.six import/from six import/g' -i "{}" \; || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

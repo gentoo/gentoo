@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Useful additions to futures, from the future"
 HOMEPAGE="https://pypi.org/project/futurist/ http://docs.openstack.org/developer/futurist"

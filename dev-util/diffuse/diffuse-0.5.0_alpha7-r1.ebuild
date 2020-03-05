@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 PLOCALES="cs de es it ja ko pl pt ru sv th zh_CN zh_TW"
-inherit python-single-r1 l10n xdg-utils
+inherit python-single-r2 l10n xdg-utils
 
 DESCRIPTION="A graphical tool to compare and merge text files"
 HOMEPAGE="http://diffuse.sourceforge.net/ https://github.com/MightyCreak/diffuse/"
@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP},cairo]
+		dev-python/pygobject:3[${PYTHON_USEDEP},cairo]
 	')
 	x11-libs/gtk+:3[introspection]"
 # file collision, bug #279018

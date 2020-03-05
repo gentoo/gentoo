@@ -7,7 +7,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python framework for efficient cluster administration"
 HOMEPAGE="https://cea-hpc.github.com/clustershell/"
@@ -29,7 +29,7 @@ RDEPEND="${CDEPEND}
 RESTRICT="test" # currently fail
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	if use doc ; then
 		local i

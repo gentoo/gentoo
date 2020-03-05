@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pure-Python HPACK header compression"
 HOMEPAGE="https://python-hyper.org/hpack/en/latest/ https://pypi.org/project/hpack/"
@@ -30,7 +30,7 @@ python_prepare_all() {
 	# Remove a test that is not part of the mainstream tests
 	# Also, it's data directory is not included in the release
 	rm test/test_hpack_integration.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

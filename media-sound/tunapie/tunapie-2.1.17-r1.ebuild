@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-single-r1
+inherit eutils python-single-r2
 
 DESCRIPTION="Directory browser for Radio and TV streams"
 HOMEPAGE="http://tunapie.sourceforge.net"
@@ -16,7 +16,7 @@ IUSE="offensive"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-python/wxpython-2.6[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/wxpython-2.6[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"

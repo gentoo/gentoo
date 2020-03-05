@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A high-level Python wrapper for Kerberos/GSSAPI operations"
 HOMEPAGE="http://trac.calendarserver.org/wiki/PyKerberos"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit flag-o-matic java-pkg-opt-2 python-r1 toolchain-funcs
+inherit flag-o-matic java-pkg-opt-2 python-multi-r2 toolchain-funcs
 
 DESCRIPTION="Library for Support Vector Machines"
 HOMEPAGE="https://www.csie.ntu.edu.tw/~cjlin/libsvm/"

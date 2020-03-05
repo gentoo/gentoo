@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit ltprune python-single-r1
+inherit ltprune python-single-r2
 
 DESCRIPTION="Tomoe GTK+ interface widget library"
 HOMEPAGE="http://tomoe.osdn.jp/"
@@ -21,8 +21,8 @@ RDEPEND="app-i18n/tomoe[python(+)?,${PYTHON_SINGLE_USEDEP}]
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
-			dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject:2[${PYTHON_USEDEP}]
+			dev-python/pygtk:2[${PYTHON_USEDEP}]
 		')
 	)"
 DEPEND="${RDEPEND}
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

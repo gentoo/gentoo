@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="HTTP client mock for Python"
 HOMEPAGE="https://github.com/gabrielfalcao/httpretty"
@@ -35,7 +35,7 @@ python_prepare_all() {
 	# remove useless deps
 	sed -i -e '/randomly/d' -e '/rednose/d' setup.cfg || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

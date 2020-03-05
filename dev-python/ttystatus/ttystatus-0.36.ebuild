@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="ncurses"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Terminal progress bar and status output for command line"
 HOMEPAGE="https://liw.fi/ttystatus/"

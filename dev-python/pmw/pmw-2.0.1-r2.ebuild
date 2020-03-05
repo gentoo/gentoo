@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="tk"
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 MY_PN="Pmw"
 MY_P="${MY_PN}-${PV}"
@@ -42,5 +42,5 @@ python_install_all() {
 
 	use doc && HTML_DOCS=( "${DIR}"/doc/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

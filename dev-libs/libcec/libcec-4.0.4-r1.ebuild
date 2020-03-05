@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_6,3_7} )
 MY_PV=${PV/_p/-}
 MY_P=${PN}-${MY_PV}
 
-inherit cmake-utils linux-info python-single-r1 toolchain-funcs
+inherit cmake-utils linux-info python-single-r2 toolchain-funcs
 
 DESCRIPTION="Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor"
 HOMEPAGE="http://libcec.pulse-eight.com"
@@ -39,7 +39,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	linux-info_pkg_setup
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

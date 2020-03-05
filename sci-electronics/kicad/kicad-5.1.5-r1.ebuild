@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit check-reqs cmake eutils python-single-r1 toolchain-funcs wxwidgets xdg-utils
+inherit check-reqs cmake eutils python-single-r2 toolchain-funcs wxwidgets xdg-utils
 
 DESCRIPTION="Electronic Schematic and PCB design tools"
 HOMEPAGE="https://www.kicad-pcb.org"
@@ -40,8 +40,8 @@ COMMON_DEPEND="
 	oce? ( sci-libs/oce )
 	python? (
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.61:=[context,nls,threads,python,${PYTHON_MULTI_USEDEP}]
-			dev-python/wxpython:4.0[${PYTHON_MULTI_USEDEP}]
+			>=dev-libs/boost-1.61:=[context,nls,threads,python,${PYTHON_USEDEP}]
+			dev-python/wxpython:4.0[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)
@@ -61,7 +61,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	use openmp && tc-check-openmp
 	setup-wxwidgets
 	check-reqs_pkg_setup

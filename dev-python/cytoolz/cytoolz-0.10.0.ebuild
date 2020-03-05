@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Cython implementation of Toolz: High performance functional utilities"
 HOMEPAGE="https://pypi.org/project/cytoolz/"
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {

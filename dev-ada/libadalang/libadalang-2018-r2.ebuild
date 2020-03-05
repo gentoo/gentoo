@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 ADA_COMPAT=( gnat_201{7,8,9} )
 
-inherit ada python-single-r1
+inherit ada python-single-r2
 
 MYP=${PN}-gpl-${PV}-src
 DESCRIPTION="high performance semantic engine for the Ada programming language"
@@ -32,7 +32,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 S="${WORKDIR}"/${MYP}
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	ada_pkg_setup
 }
 

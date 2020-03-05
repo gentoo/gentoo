@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Easy-to-use Python module for text parsing"
 HOMEPAGE="http://pyparsing.wikispaces.com/ https://pypi.org/project/pyparsing/"
@@ -27,7 +27,7 @@ python_install_all() {
 		dodoc docs/*.pdf
 	fi
 	use examples && dodoc -r examples
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 python_test() {

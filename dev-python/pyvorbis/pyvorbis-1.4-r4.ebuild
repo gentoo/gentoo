@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r2 toolchain-funcs
 
 DESCRIPTION="Python bindings for the ogg.vorbis library"
 HOMEPAGE="http://ekyo.nerim.net/software/pyogg/"
@@ -32,7 +32,7 @@ python_configure_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	insinto /usr/share/doc/${PF}/examples
 	doins test/*
 }

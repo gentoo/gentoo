@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Rapid multi-Python deployment"
 HOMEPAGE="http://codespeak.net/execnet/ https://pypi.org/project/execnet/"
@@ -30,7 +30,7 @@ python_prepare_all() {
 	# Remove doctest that access an i'net site
 	rm doc/example/test_info.rst || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -47,5 +47,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

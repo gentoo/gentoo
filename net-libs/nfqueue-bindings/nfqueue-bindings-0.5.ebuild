@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils perl-module linux-info python-single-r1
+inherit cmake-utils perl-module linux-info python-single-r2
 
 DESCRIPTION="High-level language bindings for libnetfilter_queue"
 HOMEPAGE="https://github.com/chifflier/nfqueue-bindings"
@@ -20,7 +20,7 @@ REQUIRED_USE="|| ( perl python ) python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/dpkt[${PYTHON_MULTI_USEDEP}]
+			dev-python/dpkt[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)"
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${PN}-${P}
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	# At least one of Python or Perl must be selected
 	use python || useq perl || die "At least one supported language must be selected."
 	# Check kernel configuration for NFQUEUE

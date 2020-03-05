@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml"
-inherit gnome2 python-single-r1 toolchain-funcs
+inherit gnome2 python-single-r2 toolchain-funcs
 
 DESCRIPTION="Introspection system for GObject-based libraries"
 HOMEPAGE="https://wiki.gnome.org/Projects/GObjectIntrospection"
@@ -26,8 +26,8 @@ RDEPEND="
 	>=dev-libs/glib-2.58.0:2
 	doctool? (
 		$(python_gen_cond_dep '
-			dev-python/mako[${PYTHON_MULTI_USEDEP}]
-			dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+			dev-python/mako[${PYTHON_USEDEP}]
+			dev-python/markdown[${PYTHON_USEDEP}]
 		')
 	)
 	virtual/libffi:=
@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 	test? (
 		x11-libs/cairo[glib]
 		$(python_gen_cond_dep '
-			dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+			dev-python/markdown[${PYTHON_USEDEP}]
 		')
 	)
 " # autoreconf needs autoconf-archive
@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 PDEPEND="cairo? ( x11-libs/cairo[glib] )"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_configure() {

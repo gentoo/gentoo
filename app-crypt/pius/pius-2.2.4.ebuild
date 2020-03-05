@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A tool for signing and email all UIDs on a set of PGP keys"
 HOMEPAGE="https://www.phildev.net/pius/"

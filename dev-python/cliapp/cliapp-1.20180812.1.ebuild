@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Framework for Unix-like command line programs"
 HOMEPAGE="https://liw.fi/cliapp/"
@@ -21,7 +21,7 @@ RDEPEND="${DEPEND}"
 
 src_test() {
 	addwrite /proc/self/comm
-	distutils-r1_src_test
+	distutils-r2_src_test
 }
 
 python_test() {

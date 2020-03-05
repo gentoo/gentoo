@@ -10,7 +10,7 @@ GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='xml(+)'
 
-inherit autotools eutils gnome2 multilib-minimal python-single-r1 virtualx
+inherit autotools eutils gnome2 multilib-minimal python-single-r2 virtualx
 
 DESCRIPTION="Library to construct graphical interfaces at runtime"
 HOMEPAGE="https://library.gnome.org/devel/libglade/stable/"
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
 
 pkg_setup() {
-	use tools && python-single-r1_pkg_setup
+	use tools && python-single-r2_pkg_setup
 }
 
 src_prepare() {

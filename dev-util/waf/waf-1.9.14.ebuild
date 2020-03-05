@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="threads(+)"
-inherit python-any-r1 toolchain-funcs
+inherit python-any-r2 toolchain-funcs
 
 DESCRIPTION="piece of software used to help building software projects"
 HOMEPAGE="https://waf.io/"

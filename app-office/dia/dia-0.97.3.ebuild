@@ -6,7 +6,7 @@ GCONF_DEBUG=yes
 GNOME2_LA_PUNT=yes
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils gnome2 python-single-r1 multilib
+inherit autotools eutils gnome2 python-single-r2 multilib
 
 DESCRIPTION="Diagram/flowchart creation program"
 HOMEPAGE="https://wiki.gnome.org/Apps/Dia"
@@ -46,7 +46,7 @@ DEPEND="${RDEPEND}
 	doc? ( dev-libs/libxslt )"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

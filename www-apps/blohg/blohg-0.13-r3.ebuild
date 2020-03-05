@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/rafaelmartins/blohg"
 fi
 
-inherit distutils-r1 ${GIT_ECLASS}
+inherit distutils-r2 ${GIT_ECLASS}
 
 DESCRIPTION="A Mercurial (or Git) based blogging engine"
 HOMEPAGE="https://github.com/rafaelmartins/blohg"
@@ -59,7 +59,7 @@ python_prepare_all() {
 		rm -rf blohg/vcs_backends/hg || die 'rm failed'
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -68,7 +68,7 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 python_test() {

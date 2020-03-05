@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic python-single-r1
+inherit autotools flag-o-matic python-single-r2
 
 DESCRIPTION="A small program that grabs information and displays it on an external LCD"
 HOMEPAGE="https://lcd4linux.bulix.org/"
@@ -127,7 +127,7 @@ DEPEND="${RDEPEND}"
 
 pkg_setup() {
 	if use python; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 }
 

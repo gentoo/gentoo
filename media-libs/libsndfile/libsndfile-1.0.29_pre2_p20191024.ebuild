@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} pypy3 )
 
-inherit autotools python-any-r1 multilib-minimal
+inherit autotools python-any-r2 multilib-minimal
 
 MY_COMMIT="97a361afc24202b16489d8c06910277c06b18b53"
 
@@ -38,7 +38,7 @@ BDEPEND="
 S="${WORKDIR}/${PN}-${MY_COMMIT}"
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_prepare() {

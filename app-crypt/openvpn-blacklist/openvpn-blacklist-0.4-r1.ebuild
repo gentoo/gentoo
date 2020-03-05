@@ -4,7 +4,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Detection of weak openvpn keys produced by certain debian versions in 2006-2008"
 HOMEPAGE="http://packages.debian.org/sid/openvpn-blacklist"

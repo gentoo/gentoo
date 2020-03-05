@@ -6,7 +6,7 @@ EAPI=6
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A common interface to Gentoo package managers"
 HOMEPAGE="https://github.com/mgorny/gentoopm/"

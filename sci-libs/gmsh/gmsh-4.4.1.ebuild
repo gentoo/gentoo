@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils flag-o-matic fortran-2 python-any-r1 toolchain-funcs
+inherit cmake-utils flag-o-matic fortran-2 python-any-r2 toolchain-funcs
 
 DESCRIPTION="A three-dimensional finite element mesh generator"
 HOMEPAGE="http://www.geuz.org/gmsh/"

@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
 CMAKE_MAKEFILE_GENERATOR="emake"
-inherit cmake python-any-r1
+inherit cmake python-any-r2
 
 DESCRIPTION="Cross platform unit testing framework for C and C++"
 HOMEPAGE="https://github.com/Snaipe/Criterion"
@@ -35,7 +35,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_configure() {

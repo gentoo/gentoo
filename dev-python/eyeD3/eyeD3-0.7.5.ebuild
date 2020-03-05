@@ -7,7 +7,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Module for manipulating ID3 (v1 + v2) tags in Python"
 HOMEPAGE="http://eyed3.nicfit.net/"
@@ -26,11 +26,11 @@ python_prepare_all() {
 	sed -i -e '/scripts/d' \
 		-e '/install_requires/d' pavement.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	sed -e "s:python:${EPYTHON}:" bin/eyeD3 > "${TMPDIR}"/eyeD3 || die
 	python_doexe "${TMPDIR}"/eyeD3

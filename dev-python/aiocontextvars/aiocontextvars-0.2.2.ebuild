@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Asyncio support for PEP-567 contextvars backport"
 HOMEPAGE="https://github.com/fantix/aiocontextvars"
@@ -22,5 +22,5 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	sed -e 's|'\''pytest-runner'\'',\?||' -i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

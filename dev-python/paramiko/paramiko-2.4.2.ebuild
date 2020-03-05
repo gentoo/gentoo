@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="SSH2 protocol library"
 HOMEPAGE="http://www.paramiko.org/ https://github.com/paramiko/paramiko/ https://pypi.org/project/paramiko/"
@@ -46,7 +46,7 @@ python_compile_all() {
 python_install_all() {
 	use doc && local HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use examples; then
 		docinto examples

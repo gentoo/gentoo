@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit desktop python-single-r1
+inherit desktop python-single-r2
 
 DESCRIPTION="Angry, Drunken Dwarves, a falling blocks game similar to Puzzle Fighter"
 HOMEPAGE="https://www.sacredchao.net/~piman/angrydd/"
@@ -22,7 +22,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pygame[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygame[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"

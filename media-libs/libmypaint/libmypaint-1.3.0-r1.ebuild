@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-any-r1 xdg-utils toolchain-funcs
+inherit eutils python-any-r2 xdg-utils toolchain-funcs
 
 MY_PV=${PV/_beta/-beta.}
 MY_P=${PN}-${MY_PV}

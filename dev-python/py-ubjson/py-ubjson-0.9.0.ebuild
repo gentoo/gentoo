@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Universal Binary JSON encoder/decoder"
 HOMEPAGE="https://github.com/Iotic-Labs/py-ubjson https://pypi.org/project/py-ubjson/"

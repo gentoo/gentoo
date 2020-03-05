@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 NO_WAF_LIBDIR=yes
 
-inherit python-any-r1 waf-utils
+inherit python-any-r2 waf-utils
 
 DESCRIPTION="C++ Template Unit Test Framework"
 HOMEPAGE="http://mrzechonek.github.io/tut-framework/"

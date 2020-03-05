@@ -10,7 +10,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/orocos/orocos_kinematics_dynamics"
 fi
 
-inherit ${SCM} python-r1 cmake-utils
+inherit ${SCM} python-multi-r2 cmake-utils
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	KEYWORDS=""

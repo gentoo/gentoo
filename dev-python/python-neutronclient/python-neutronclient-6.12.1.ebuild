@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A client for the OpenStack Quantum API"
 HOMEPAGE="https://launchpad.net/neutron"
@@ -65,7 +65,7 @@ python_prepare_all() {
 	# built in...
 	sed -i '/^hacking/d' test-requirements.txt || die
 	sed -i '/^flake8-import-order/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -75,7 +75,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	#stupid stupid
 	local SITEDIR="${D}$(python_get_sitedir)" || die
 	cd "${SITEDIR}" || die

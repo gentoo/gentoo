@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=(python{3_6,3_7})
 
-inherit autotools python-any-r1 vala
+inherit autotools python-any-r2 vala
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3

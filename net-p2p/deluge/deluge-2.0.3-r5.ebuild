@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL=1
-inherit distutils-r1 systemd
+inherit distutils-r2 systemd
 
 DESCRIPTION="BitTorrent client with a client/server model"
 HOMEPAGE="https://deluge-torrent.org/"
@@ -29,33 +29,33 @@ REQUIRED_USE="
 
 DEPEND="
 	$(python_gen_cond_dep '
-		net-libs/libtorrent-rasterbar[python,${PYTHON_MULTI_USEDEP}]
-		dev-python/wheel[${PYTHON_MULTI_USEDEP}]
+		net-libs/libtorrent-rasterbar[python,${PYTHON_USEDEP}]
+		dev-python/wheel[${PYTHON_USEDEP}]
 	')
 	dev-util/intltool
 	acct-group/deluge
 	acct-user/deluge"
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
-		dev-python/distro[${PYTHON_MULTI_USEDEP}]
-		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyopenssl[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
-		dev-python/rencode[${PYTHON_MULTI_USEDEP}]
-		dev-python/setproctitle[${PYTHON_MULTI_USEDEP}]
-		dev-python/six[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/twisted-17.1.0[crypt,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/zope-interface-4.4.2[${PYTHON_MULTI_USEDEP}]
-		geoip? ( dev-python/geoip-python[${PYTHON_MULTI_USEDEP}] )
+		dev-python/chardet[${PYTHON_USEDEP}]
+		dev-python/distro[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		dev-python/pyxdg[${PYTHON_USEDEP}]
+		dev-python/rencode[${PYTHON_USEDEP}]
+		dev-python/setproctitle[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
+		>=dev-python/twisted-17.1.0[crypt,${PYTHON_USEDEP}]
+		>=dev-python/zope-interface-4.4.2[${PYTHON_USEDEP}]
+		geoip? ( dev-python/geoip-python[${PYTHON_USEDEP}] )
 		gtk? (
-			sound? ( dev-python/pygame[${PYTHON_MULTI_USEDEP}] )
-			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+			sound? ( dev-python/pygame[${PYTHON_USEDEP}] )
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
 			gnome-base/librsvg
 			libnotify? ( x11-libs/libnotify )
 		)
-		net-libs/libtorrent-rasterbar[python,${PYTHON_MULTI_USEDEP}]
-		dev-python/mako[${PYTHON_MULTI_USEDEP}]
+		net-libs/libtorrent-rasterbar[python,${PYTHON_USEDEP}]
+		dev-python/mako[${PYTHON_USEDEP}]
 	')"
 
 PATCHES=(
@@ -75,20 +75,20 @@ python_prepare_all() {
 	)
 	sed -i "${args[@]}" -- 'deluge/core/preferencesmanager.py' || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 esetup.py() {
 	# bug 531370: deluge has its own plugin system. No need to relocate its egg info files.
-	# Override this call from the distutils-r1 eclass.
-	# This does not respect the distutils-r1 API. DONOT copy this example.
+	# Override this call from the distutils-r2 eclass.
+	# This does not respect the distutils-r2 API. DONOT copy this example.
 	set -- "${PYTHON}" setup.py "$@"
 	echo "$@"
 	"$@" || die
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if ! use console ; then
 		rm -r "${D}/$(python_get_sitedir)/deluge/ui/console/" || die
 		rm "${D}/usr/bin/deluge-console" || die

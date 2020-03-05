@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Backport of Python-3 built-in configparser"
 HOMEPAGE="https://pypi.org/project/configparser/"

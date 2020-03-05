@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library for working with the Growl Notification Transport Protocol"
 HOMEPAGE="https://github.com/kfdm/gntp https://pypi.org/project/gntp/"

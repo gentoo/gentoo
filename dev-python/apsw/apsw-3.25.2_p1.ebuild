@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_PV=${PV/_p/-r}
 MY_P=${PN}-${MY_PV}
@@ -28,7 +28,7 @@ PATCHES=( "${FILESDIR}/${PN}-3.6.20.1-fix_tests.patch" )
 
 python_compile() {
 	python_is_python3 || append-cflags -fno-strict-aliasing
-	distutils-r1_python_compile --enable=load_extension
+	distutils-r2_python_compile --enable=load_extension
 }
 
 python_test() {
@@ -38,5 +38,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

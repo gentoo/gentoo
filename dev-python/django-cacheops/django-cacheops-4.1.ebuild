@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="ORM cache with automatic granular event-driven invalidation for Django"
 HOMEPAGE="https://github.com/Suor/django-cacheops"

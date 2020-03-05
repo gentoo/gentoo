@@ -14,7 +14,7 @@ PHP_EXT_OPTIONAL_USE="php"
 
 #mono violates sandbox, we disable it until we figure this out
 #inherit java-pkg-opt-2 mono-env php-ext-source-r3 python
-inherit java-pkg-opt-2 php-ext-source-r3 python-r1 toolchain-funcs
+inherit java-pkg-opt-2 php-ext-source-r3 python-multi-r2 toolchain-funcs
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="https://www.xapian.org/"

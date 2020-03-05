@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 RESTRICT="test" # connects to local DB and other nonsense
 
@@ -23,7 +23,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 python_prepare_all() {
 	sed -i -e 's/tests/tests*/g' setup.py || die "Failed to fix test removal thingy"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

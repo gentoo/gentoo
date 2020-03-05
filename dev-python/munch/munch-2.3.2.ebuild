@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A dot-accessible dictionary (a la JavaScript objects)"
 HOMEPAGE="https://github.com/Infinidat/munch"

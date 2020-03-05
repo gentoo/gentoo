@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools pam python-single-r1 systemd
+inherit autotools pam python-single-r2 systemd
 
 MY_P="${PN}-server-${PV}"
 
@@ -71,7 +71,7 @@ PATCHES=(
 
 pkg_setup() {
 	if use python ; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 		export PYTHONBIN="${EPYTHON}"
 	fi
 }

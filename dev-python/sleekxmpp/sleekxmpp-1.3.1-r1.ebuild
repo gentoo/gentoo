@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 MY_PN=SleekXMPP
 MY_P=${MY_PN}-${PV}

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Utility library for i18n relied on by various Repoze packages"
 HOMEPAGE="https://github.com/Pylons/translationstring https://pypi.org/project/translationstring/"
@@ -27,7 +27,7 @@ python_test() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	# Install only the .rst source, as sphinx processing requires a
 	# theme only available from git that contains hardcoded references

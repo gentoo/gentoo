@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7}} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python toolkit for stream-based generation of output for the web"
 HOMEPAGE="http://genshi.edgewall.org/ https://pypi.org/project/Genshi/"
@@ -34,5 +34,5 @@ python_install_all() {
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

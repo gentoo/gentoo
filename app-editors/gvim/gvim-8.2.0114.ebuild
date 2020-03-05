@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 PYTHON_REQ_USE="threads(+)"
 USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
-inherit vim-doc flag-o-matic xdg-utils bash-completion-r1 prefix python-single-r1 ruby-single
+inherit vim-doc flag-o-matic xdg-utils bash-completion-r1 prefix python-single-r2 ruby-single
 
 if [[ ${PV} == 9999* ]]; then
 	inherit git-r3
@@ -92,7 +92,7 @@ pkg_setup() {
 	mkdir -p "${T}"/home || die
 	export HOME="${T}"/home
 
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

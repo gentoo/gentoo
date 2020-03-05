@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit multilib-minimal python-any-r1
+inherit multilib-minimal python-any-r2
 
 DESCRIPTION="Mock hardware devices for creating unit tests"
 HOMEPAGE="https://github.com/martinpitt/umockdev/"

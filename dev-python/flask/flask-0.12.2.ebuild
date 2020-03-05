@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A microframework based on Werkzeug, Jinja2 and good intentions"
 HOMEPAGE="https://github.com/pallets/flask/"
@@ -43,7 +43,7 @@ python_prepare_all() {
 	# issubclass(ModuleNotFoundError, ImportError)
 	sed -e 's/\(excinfo.type\) is \(ImportError\)/issubclass(\1, \2)/' \
 		-i tests/test_ext.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -59,5 +59,5 @@ python_install_all() {
 	use examples && dodoc -r examples
 	use doc && HTML_DOCS=( docs/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

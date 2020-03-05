@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils ltprune python-single-r1
+inherit autotools eutils ltprune python-single-r2
 
 DESCRIPTION="a package for multitrack audio processing"
 HOMEPAGE="https://ecasound.seul.org/ecasound/"
@@ -41,7 +41,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

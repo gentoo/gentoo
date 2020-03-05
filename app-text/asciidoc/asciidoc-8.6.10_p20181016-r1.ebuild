@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} pypy3 )
 
-inherit autotools python-single-r1 readme.gentoo-r1
+inherit autotools python-single-r2 readme.gentoo-r1
 
 DESCRIPTION="A plain text human readable/writable document format"
 HOMEPAGE="http://asciidoc.org/ https://github.com/asciidoc/asciidoc-py3/"
@@ -30,7 +30,7 @@ RDEPEND="
 		|| (
 			dev-util/source-highlight
 			$(python_gen_cond_dep '
-				dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+				dev-python/pygments[${PYTHON_USEDEP}]
 			')
 			app-text/highlight
 		)

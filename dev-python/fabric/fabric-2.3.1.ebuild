@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A simple pythonic tool for remote execution and deployment"
 HOMEPAGE="https://www.fabfile.org https://pypi.org/project/fabric/"
@@ -36,7 +36,7 @@ python_compile() {
 		export PACKAGE_AS_FABRIC2=1
 		ln -s fabric fabric2 || die "symlink create failed"
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_compile_all() {
@@ -48,5 +48,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( sites/docs/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

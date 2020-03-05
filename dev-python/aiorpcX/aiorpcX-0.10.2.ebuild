@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Generic async RPC implementation, including JSON-RPC"
 HOMEPAGE="https://pypi.org/project/aiorpcX/"

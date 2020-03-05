@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit cron eutils multilib python-any-r1 toolchain-funcs
+inherit cron eutils multilib python-any-r2 toolchain-funcs
 
 DESCRIPTION="A new cron system designed with secure operations in mind by Bruce Guenter"
 HOMEPAGE="http://untroubled.org/bcron/"

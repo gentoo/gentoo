@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DISTUTILS_IN_SOURCE_BUILD=1
 
@@ -46,7 +46,7 @@ python_prepare_all() {
 	export USE_SDL2=$(usex sdl 1 0)
 	export USE_GSTREAMER=$(usex gstreamer 1 0)
 	export KIVY_USE_SETUPTOOLS=1
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
@@ -68,5 +68,5 @@ python_install_all() {
 		insinto "/usr/share/doc/${PF}/examples/${f}/"
 		doins "${S}/examples"/* "${S}/examples"/*/*
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

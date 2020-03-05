@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python implementation of RFC6570, URI Template"
 HOMEPAGE="https://pypi.org/project/uritemplate/"

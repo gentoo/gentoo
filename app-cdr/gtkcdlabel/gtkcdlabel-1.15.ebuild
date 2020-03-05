@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="A GUI for cdlabelgen that generates CD labels"
 HOMEPAGE="http://gtkcdlabel.sourceforge.net/"
@@ -18,7 +18,7 @@ IUSE=""
 DEPEND="${PYTHON_DEPS}
 	>=app-cdr/cdlabelgen-4
 	$(python_gen_cond_dep '
-		dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygtk[${PYTHON_USEDEP}]
 	')"
 RDEPEND="${DEPEND}"
 

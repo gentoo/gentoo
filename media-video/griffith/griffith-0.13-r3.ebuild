@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='sqlite'
 
-inherit python-single-r1
+inherit python-single-r2
 
 ARTWORK_PV="0.9.4"
 
@@ -24,11 +24,11 @@ RDEPEND="
 	${PYTHON_DEPS}
 	gnome-base/libglade[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pygtk-2.6.1:2[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/sqlalchemy-0.5.2[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/reportlab-1.19[${PYTHON_MULTI_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		>=dev-python/pygtk-2.6.1:2[${PYTHON_USEDEP}]
+		dev-python/pygobject:2[${PYTHON_USEDEP}]
+		>=dev-python/sqlalchemy-0.5.2[${PYTHON_USEDEP}]
+		>=dev-python/reportlab-1.19[${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}
 	doc? ( app-text/docbook2X )"
@@ -39,7 +39,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

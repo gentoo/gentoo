@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils distutils-r1 user
+inherit eutils distutils-r2 user
 
 MY_PN="Radicale"
 MY_P="${MY_PN}-${PV}"
@@ -59,7 +59,7 @@ python_install_all() {
 	doexe radicale.wsgi
 	doexe radicale.fcgi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

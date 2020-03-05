@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 inherit check-reqs cmake-utils flag-o-matic llvm llvm.org \
-	multiprocessing python-any-r1
+	multiprocessing python-any-r2
 
 DESCRIPTION="Compiler runtime libraries for clang (sanitizers & xray)"
 HOMEPAGE="https://llvm.org/"
@@ -57,7 +57,7 @@ pkg_pretend() {
 pkg_setup() {
 	check_space
 	llvm_pkg_setup
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_configure() {

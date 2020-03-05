@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='sqlite'
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="A collection of tools missing from the Python standard library"
 HOMEPAGE="https://mathema.tician.de/software/pytools/"

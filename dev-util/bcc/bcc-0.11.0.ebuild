@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake-utils linux-info python-single-r1
+inherit cmake-utils linux-info python-single-r2
 
 EGIT_COMMIT="v${PV}"
 LIBBPF_VER="0.0.5"
@@ -60,7 +60,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

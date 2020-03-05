@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,xml"
-inherit autotools desktop flag-o-matic git-r3 python-single-r1 toolchain-funcs user
+inherit autotools desktop flag-o-matic git-r3 python-single-r2 toolchain-funcs user
 
 MY_P=${P/_beta/BETA}
 
@@ -49,7 +49,7 @@ RDEPEND="
 	system-lua? ( >=dev-lang/lua-5.2:*[deprecated] )
 	zenmap? (
 		$(python_gen_cond_dep '
-			dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygtk:2[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)
@@ -74,7 +74,7 @@ S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if use ndiff || use zenmap; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 }
 

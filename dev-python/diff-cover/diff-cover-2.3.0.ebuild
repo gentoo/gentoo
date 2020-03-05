@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Automatically find diff lines that need test coverage"
 HOMEPAGE="https://github.com/Bachmann1234/diff-cover"
@@ -40,7 +40,7 @@ python_prepare_all() {
 	sed -e 's|test_parse_range_notation|_\0|' \
 		-i "${MY_PN}/tests/test_diff_cover_main.py" || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

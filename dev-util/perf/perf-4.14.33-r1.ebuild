@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit bash-completion-r1 estack eutils toolchain-funcs python-single-r1 linux-info
+inherit bash-completion-r1 estack eutils toolchain-funcs python-single-r2 linux-info
 
 MY_PV="${PV/_/-}"
 MY_PV="${MY_PV/-pre/-git}"
@@ -66,7 +66,7 @@ CONFIG_CHECK="~PERF_EVENTS ~KALLSYMS"
 
 pkg_setup() {
 	linux-info_pkg_setup
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_unpack() {

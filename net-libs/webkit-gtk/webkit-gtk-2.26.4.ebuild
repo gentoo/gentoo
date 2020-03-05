@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_6,3_7} )
 USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 CMAKE_MIN_VERSION=3.10
 
-inherit check-reqs cmake-utils flag-o-matic gnome2 pax-utils python-any-r1 ruby-single toolchain-funcs virtualx
+inherit check-reqs cmake-utils flag-o-matic gnome2 pax-utils python-any-r2 ruby-single toolchain-funcs virtualx
 
 MY_P="webkitgtk-${PV}"
 DESCRIPTION="Open source web browser engine"
@@ -159,7 +159,7 @@ pkg_setup() {
 		check-reqs_pkg_setup
 	fi
 
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_prepare() {

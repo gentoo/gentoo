@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Oslo test framework"
 HOMEPAGE="https://launchpad.net/oslo"
@@ -62,5 +62,5 @@ python_install_all() {
 		doman doc/build/man/oslotest.1
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

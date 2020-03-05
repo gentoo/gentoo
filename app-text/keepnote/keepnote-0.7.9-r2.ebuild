@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite,xml"
 
-inherit gnome2-utils distutils-r1
+inherit gnome2-utils distutils-r2
 
 DESCRIPTION="A note taking application"
 HOMEPAGE="http://keepnote.org/"

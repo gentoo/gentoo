@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 virtualx xdg-utils
+inherit distutils-r2 virtualx xdg-utils
 
 MYP=${P/_}
 S="${WORKDIR}/${MYP}"
@@ -52,7 +52,7 @@ DOCS=(CONTRIBUTING.md RELEASE-NOTES.md
 
 python_prepare_all() {
 	xdg_environment_reset
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

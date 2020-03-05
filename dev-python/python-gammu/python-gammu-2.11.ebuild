@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings for Gammu"
 HOMEPAGE="https://wammu.eu/python-gammu/"
@@ -31,7 +31,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples
 		dodoc -r examples

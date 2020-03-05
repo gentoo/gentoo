@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Intelligent recursive search/replace utility"
 HOMEPAGE="http://rpl.sourceforge.net/"
@@ -19,10 +19,10 @@ IUSE=""
 python_prepare_all() {
 	iconv -f latin1 -t utf8 -o setup.py.new setup.py || die
 	mv setup.py.new setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	doman ${PN}.1
 }

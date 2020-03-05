@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Library for International Press Telecommunications Council (IPTC) metadata"
 HOMEPAGE="https://github.com/ianw/libiptcdata http://libiptcdata.sourceforge.net"
@@ -29,7 +29,7 @@ BDEPEND="
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure () {

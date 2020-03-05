@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit java-pkg-opt-2 java-ant-2 python-r1 toolchain-funcs cmake-multilib
+inherit java-pkg-opt-2 java-ant-2 python-multi-r2 toolchain-funcs cmake-multilib
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="https://opencv.org"

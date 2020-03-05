@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Missing manly parts of UNIX API for Python"
 HOMEPAGE="http://www.inoi.fi/open/trac/eunuchs https://pypi.org/project/python-eunuchs/"

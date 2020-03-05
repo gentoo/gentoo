@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 ADA_COMPAT=( gnat_201{6,7,8,9} )
-inherit ada multilib multiprocessing python-single-r1
+inherit ada multilib multiprocessing python-single-r2
 
 MYP=${P}-20190430-1928C
 
@@ -32,7 +32,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
 S="${WORKDIR}"/${MYP}-src
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	ada_pkg_setup
 }
 

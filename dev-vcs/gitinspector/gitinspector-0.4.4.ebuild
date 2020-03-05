@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Statistical analysis tool for git repositories"
 HOMEPAGE="https://github.com/ejwa/gitinspector"
@@ -31,11 +31,11 @@ python_prepare_all() {
 		-e "s:share/doc/gitinspector:share/doc/${PF}:" \
 		|| die 'failed to fix the documentation path in setup.py'
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	# The distutils install routine misses some important documentation.
 	doman docs/gitinspector.1

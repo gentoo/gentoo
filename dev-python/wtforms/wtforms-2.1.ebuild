@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="WTForms"
 MY_P="${MY_PN}-${PV}"
@@ -39,7 +39,7 @@ python_prepare_all() {
 	sed \
 		-e "s|'ext_django.tests', ||" \
 		-i tests/runtests.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -52,5 +52,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

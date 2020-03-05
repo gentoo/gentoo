@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Optional static typing for Python"
 HOMEPAGE="http://www.mypy-lang.org/"
@@ -48,5 +48,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

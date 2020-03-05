@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A featureful, correct URL for Python"
 HOMEPAGE="https://github.com/python-hyper/hyperlink https://pypi.org/project/hyperlink/"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
-inherit autotools flag-o-matic gnome2-utils xdg toolchain-funcs python-single-r1
+inherit autotools flag-o-matic gnome2-utils xdg toolchain-funcs python-single-r2
 
 MY_P="${P/_/}"
 
@@ -72,8 +72,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
 		|| (
-			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		)
 	')
 	media-gfx/uniconvertor

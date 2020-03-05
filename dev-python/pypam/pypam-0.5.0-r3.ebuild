@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_PN="PyPAM"
 MY_P="${MY_PN}-${PV}"
@@ -38,7 +38,7 @@ PATCHES=(
 
 src_compile() {
 	append-cflags -fno-strict-aliasing
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 python_test() {

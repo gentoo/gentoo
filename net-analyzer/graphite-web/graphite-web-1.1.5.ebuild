@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )  # 3.7 dropped due to dep-hell
 
-inherit distutils-r1 prefix
+inherit distutils-r2 prefix
 
 DESCRIPTION="Enterprise scalable realtime graphing"
 HOMEPAGE="https://graphiteapp.org/"
@@ -50,14 +50,14 @@ python_prepare_all() {
 	mv bin/build-index bin/${PN}-build-index || die
 	# use FHS-style paths
 	export GRAPHITE_NO_PREFIX=yes
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	eprefixify \
 		conf/graphite.wsgi.example \
 		webapp/graphite/local_settings.py.example
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	keepdir /var/{lib,log}/${PN}
 	docinto examples
 	docompress -x "/usr/share/doc/${PF}/examples"
@@ -68,7 +68,7 @@ python_install_all() {
 }
 
 python_install() {
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		--install-data="${EPREFIX}"/usr/share/${PN}
 
 	insinto /etc/${PN}

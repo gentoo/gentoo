@@ -5,7 +5,7 @@ EAPI="6"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite(+)"
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Tables engines for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -19,8 +19,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		app-i18n/ibus[python(+),${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	virtual/libiconv
 	nls? ( virtual/libintl )"

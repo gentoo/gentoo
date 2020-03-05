@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Jupyter metapackage. Install all the Jupyter components in one go"
 HOMEPAGE="https://jupyter.org"
@@ -37,7 +37,7 @@ python_prepare_all() {
 		sed -e "/^    'sphinx.ext.intersphinx',/d" -i docs/source/conf.py || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -46,5 +46,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( "${S}"/docs/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

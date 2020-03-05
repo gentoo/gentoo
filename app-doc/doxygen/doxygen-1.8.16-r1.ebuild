@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_6 )
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake-utils eutils python-any-r1
+inherit cmake-utils eutils python-any-r2
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/doxygen/doxygen.git"
@@ -70,7 +70,7 @@ PATCHES=(
 DOCS=( LANGUAGE.HOWTO README.md )
 
 pkg_setup() {
-	use doc && python-any-r1_pkg_setup
+	use doc && python-any-r2_pkg_setup
 }
 
 src_prepare() {

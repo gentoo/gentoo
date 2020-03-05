@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN
 		 zh_TW"
 
-inherit flag-o-matic l10n linux-info multilib pam prefix python-single-r1 \
+inherit flag-o-matic l10n linux-info multilib pam prefix python-single-r2 \
 		systemd user
 
 KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
@@ -99,7 +99,7 @@ pkg_setup() {
 	enewgroup postgres 70
 	enewuser postgres 70 /bin/sh /var/lib/postgresql postgres
 
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

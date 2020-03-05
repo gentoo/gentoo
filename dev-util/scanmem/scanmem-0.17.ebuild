@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools eutils python-single-r1
+inherit autotools eutils python-single-r2
 
 DESCRIPTION="Locate and modify variables in executing processes"
 HOMEPAGE="https://github.com/scanmem/scanmem"
@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}
 REQUIRED_USE="gui? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
-	use gui && python-single-r1_pkg_setup
+	use gui && python-single-r2_pkg_setup
 }
 
 src_prepare() {

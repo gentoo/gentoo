@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="... testing tool ... Born under the banner of Behavior Driven Development"
 HOMEPAGE="http://nestorsalceda.github.io/mamba"

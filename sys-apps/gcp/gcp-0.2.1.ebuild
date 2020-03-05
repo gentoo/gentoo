@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="File copying utility with progress and I/O indicator"
 HOMEPAGE="https://code.lm7.fr/mcy/gcp"

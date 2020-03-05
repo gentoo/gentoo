@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils fdo-mime python-r1
+inherit eutils fdo-mime python-multi-r2
 
 GIST_STRING="77635-a46707715aa2e112d2ea5ec26771030ff5e7eb64"
 

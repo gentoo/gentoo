@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit fortran-2 distutils-r1 flag-o-matic multiprocessing toolchain-funcs
+inherit fortran-2 distutils-r2 flag-o-matic multiprocessing toolchain-funcs
 
 MY_PN=${PN/-python2}
 MY_P=${MY_PN}-${PV}
@@ -95,18 +95,18 @@ python_prepare_all() {
 	# Drop hashes to force rebuild of cython based .c code
 	rm cythonize.dat || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
 	# FIXME: parallel python building fails, bug #614464
 	${EPYTHON} tools/cythonize.py || die
-	distutils-r1_python_compile \
+	distutils-r2_python_compile \
 		${SCIPY_FCONFIG}
 }
 
 python_test() {
-	# fails with bdist_egg. should it be fixed in distutils-r1 eclass?
+	# fails with bdist_egg. should it be fixed in distutils-r2 eclass?
 	distutils_install_for_testing ${SCIPY_FCONFIG}
 	cd "${TEST_DIR}" || die "no ${TEST_DIR} available"
 	"${PYTHON}" -c \
@@ -118,7 +118,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install ${SCIPY_FCONFIG}
+	distutils-r2_python_install ${SCIPY_FCONFIG}
 }
 
 pkg_postinst() {

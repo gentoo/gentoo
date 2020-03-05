@@ -6,7 +6,7 @@ EAPI=6
 GNOME2_EAUTORECONF="yes"
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit gnome2 pax-utils python-single-r1
+inherit gnome2 pax-utils python-single-r2
 
 MY_P=${P/_/-}
 

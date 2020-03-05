@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN}2"
 MY_P="${MY_PN}-${PV}"
@@ -40,7 +40,7 @@ python_check_deps() {
 }
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	# rm non std test file
 	rm test*/gmpy_test_thr.py || die
@@ -56,7 +56,7 @@ python_configure_all() {
 
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_compile_all() {
@@ -76,5 +76,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

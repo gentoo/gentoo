@@ -9,7 +9,7 @@ BACKPORTS="d8a2db77f5731cf32c6d31127452391c6cf7f91f"
 MY_P=${P%_p*}
 MY_PV=${PV%_p*}
 
-inherit flag-o-matic python-single-r1 qmake-utils user-info readme.gentoo-r1 systemd toolchain-funcs vcs-snapshot
+inherit flag-o-matic python-single-r2 qmake-utils user-info readme.gentoo-r1 systemd toolchain-funcs vcs-snapshot
 
 MYTHTV_BRANCH="fixes/29"
 
@@ -158,7 +158,7 @@ MYTHTV_GROUPS="video,audio,tty,uucp"
 PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.1.patch" ) # bug 691904
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	# The acct-user/mythtv package creates/manages the user 'mythtv'
 }
 

@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Alternative Python bindings for Subversion"
 HOMEPAGE="https://www.samba.org/~jelmer/subvertpy/ https://pypi.org/project/subvertpy/"
@@ -27,7 +27,7 @@ S=${WORKDIR}
 
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {

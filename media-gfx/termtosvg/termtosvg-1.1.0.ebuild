@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Record terminal sessions as SVG animations"
 HOMEPAGE="https://github.com/nbedos/termtosvg"

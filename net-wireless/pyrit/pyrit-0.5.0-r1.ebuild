@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN^}"
 DESCRIPTION="GPU-accelerated attack against WPA-PSK authentication"
@@ -23,7 +23,7 @@ DEPEND="dev-libs/openssl
 	net-libs/libpcap
 	test? (
 		$(python_gen_cond_dep '
-			>=net-analyzer/scapy-2[${PYTHON_MULTI_USEDEP}]
+			>=net-analyzer/scapy-2[${PYTHON_USEDEP}]
 		')
 	)"
 RDEPEND=">=net-analyzer/scapy-2
@@ -33,7 +33,7 @@ RDEPEND=">=net-analyzer/scapy-2
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_test() {

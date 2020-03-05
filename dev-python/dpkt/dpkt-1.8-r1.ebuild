@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Fast, simple packet creation / parsing"
 HOMEPAGE="https://github.com/kbandla/dpkt"
@@ -25,7 +25,7 @@ python_test() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	if use examples; then
 		insinto /usr/share/doc/${PF}

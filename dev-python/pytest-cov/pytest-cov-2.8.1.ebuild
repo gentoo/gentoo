@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="py.test plugin for coverage reporting"
 HOMEPAGE="https://github.com/pytest-dev/pytest-cov https://pypi.org/project/pytest-cov/"

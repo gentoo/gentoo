@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 PYTHON_REQ_USE="tk"
 
-inherit distutils-r1 eutils versionator
+inherit distutils-r2 eutils versionator
 
 MY_P="${PN}-$(replace_version_separator 3 -)"
 
@@ -30,11 +30,11 @@ PATCHES=(
 )
 
 python_install() {
-	distutils-r1_python_install "--strip=${ED}/_${EPYTHON}"
+	distutils-r2_python_install "--strip=${ED}/_${EPYTHON}"
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	python_foreach_impl python_newscript ${PN}/${PN}.py ${PN}
 	make_desktop_entry bkchem BKChem "${EPREFIX}"/usr/share/${PN}/images/${PN}.png Science
 }

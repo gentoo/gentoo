@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 MY_P=python-${P}
 MY_PN=python-${PN}
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Library for using the Mercurial Command Server from Python"
 HOMEPAGE="http://mercurial.selenic.com/"
@@ -34,5 +34,5 @@ python_test() {
 
 python_install_all() {
 	use examples && local EXAMPLES=( examples/stats.py )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

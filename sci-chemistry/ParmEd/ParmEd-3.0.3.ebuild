@@ -16,7 +16,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-inherit eutils distutils-r1 ${scm_eclass}
+inherit eutils distutils-r2 ${scm_eclass}
 
 DESCRIPTION="Parameter/topology editor and molecular simulator"
 HOMEPAGE="https://parmed.github.io/ParmEd/html/index.html"
@@ -37,5 +37,5 @@ src_prepare() {
 		-e "/delfile/d" \
 		-e "/deldir/d" \
 		-i setup.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }

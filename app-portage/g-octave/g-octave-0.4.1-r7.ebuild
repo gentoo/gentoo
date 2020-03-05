@@ -9,7 +9,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 DB_COMMIT="bdf02cbf0a8d017c6c1bddeffd6f03d5d90695ed"
 DB_DIR="rafaelmartins-${PN}-db-${DB_COMMIT:0:7}"
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="A tool that generates and installs ebuilds for Octave-Forge"
 HOMEPAGE="https://github.com/rafaelmartins/g-octave"
@@ -32,7 +32,7 @@ python_prepare_all() {
 	eapply "${WORKDIR}/${PN}-patches-${PVR}"
 	sed -i -e 's/^has_fetch.*$/has_fetch = False/' scripts/g-octave \
 		|| die 'failed to patch the g-octave main script'
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -50,7 +50,7 @@ python_install_all() {
 	fi
 	insinto /usr/share/g-octave
 	doins "${DISTDIR}/${PN}-db-${DB_COMMIT:0:7}.tar.gz"
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 python_test() {

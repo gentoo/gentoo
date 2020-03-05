@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Improved build system generator for Python C/C++/Fortran/Cython extensions"
 HOMEPAGE="https://github.com/scikit-build/scikit-build"

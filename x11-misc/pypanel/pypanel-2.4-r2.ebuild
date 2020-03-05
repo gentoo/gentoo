@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=${PN/pyp/PyP}
 MY_P=${MY_PN}-${PV}

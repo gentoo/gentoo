@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit distutils-r1 eutils gnome2-utils versionator
+inherit distutils-r2 eutils gnome2-utils versionator
 
 DESCRIPTION="Advanced freedesktop.org compliant menu editor"
 HOMEPAGE="http://www.smdavis.us/projects/menulibre/"
@@ -48,11 +48,11 @@ python_prepare_all() {
 		done
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_preinst() {

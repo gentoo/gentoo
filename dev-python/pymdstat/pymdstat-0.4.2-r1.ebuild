@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,8} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library to parse Linux /proc/mdstat"
 HOMEPAGE="https://github.com/nicolargo/pymdstat
@@ -21,7 +21,7 @@ DOCS=( 'AUTHORS' 'NEWS' 'README.rst' )
 
 python_prepare_all() {
 	sed -e '/data_files/ d' -i setup.py || die "sed failed"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

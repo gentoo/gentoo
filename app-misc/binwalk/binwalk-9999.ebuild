@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ReFirmLabs/binwalk.git"
@@ -32,7 +32,7 @@ python_test() {
 
 python_install_all() {
 	local DOCS=( API.md INSTALL.md README.md )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

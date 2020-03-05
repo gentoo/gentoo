@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Tag/untag cache directories"
 HOMEPAGE="https://liw.fi/cachedir/"
@@ -29,17 +29,17 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	2to3 -w setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 src_compile() {
 	addwrite /proc/self/comm
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 src_test() {
 	addwrite /proc/self/comm
-	distutils-r1_src_test
+	distutils-r2_src_test
 }
 
 python_test() {

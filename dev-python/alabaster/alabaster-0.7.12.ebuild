@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A configurable sidebar-enabled Sphinx theme"
 HOMEPAGE="https://github.com/bitprophet/alabaster"

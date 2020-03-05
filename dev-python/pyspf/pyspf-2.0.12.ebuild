@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ipv6?"
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python implementation of the Sender Policy Framework (SPF) protocol"
 HOMEPAGE="https://pypi.org/project/pyspf/"

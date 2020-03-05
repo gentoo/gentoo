@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( python3_{5,6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="sphinxcontrib_github_alt"
 

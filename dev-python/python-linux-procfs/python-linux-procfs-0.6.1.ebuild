@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python classes to extract information from the Linux kernel /proc files"
 HOMEPAGE="https://www.kernel.org/pub/scm/libs/python/python-linux-procfs/

@@ -7,7 +7,7 @@ GENTOO_DEPEND_ON_PERL="no"
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools perl-module distutils-r1 toolchain-funcs flag-o-matic java-pkg-opt-2
+inherit autotools perl-module distutils-r2 toolchain-funcs flag-o-matic java-pkg-opt-2
 
 DESCRIPTION="Translator library for raster geospatial data formats (includes OGR support)"
 HOMEPAGE="https://gdal.org/"
@@ -269,7 +269,7 @@ src_compile() {
 		rm -f "${S}"/swig/python/*_wrap.cpp || die
 		emake -C "${S}"/swig/python generate
 		pushd "${S}"/swig/python > /dev/null || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 		popd > /dev/null || die
 	fi
 
@@ -294,7 +294,7 @@ src_install() {
 	default
 
 	python_install() {
-		distutils-r1_python_install
+		distutils-r2_python_install
 		python_doscript scripts/*.py
 	}
 
@@ -303,7 +303,7 @@ src_install() {
 		unset DOCS HTML_DOCS
 
 		pushd "${S}"/swig/python > /dev/null || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 		popd > /dev/null || die
 
 		newdoc swig/python/README.txt README-python.txt

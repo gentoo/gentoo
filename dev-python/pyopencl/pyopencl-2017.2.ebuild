@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python wrapper for OpenCL"
 HOMEPAGE="https://mathema.tician.de/software/pyopencl
@@ -47,5 +47,5 @@ python_install_all() {
 		local EXAMPLES=( examples/. )
 		einfo "Some of the examples provided by this package require dev-python/matplotlib."
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

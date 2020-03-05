@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit toolchain-funcs distutils-r1
+inherit toolchain-funcs distutils-r2
 
 DESCRIPTION="A sub-package that adds CUDA-capability to Pyrit"
 HOMEPAGE="https://github.com/JPaulMora/Pyrit"
@@ -32,5 +32,5 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }

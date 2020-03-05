@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library to create spreadsheet files compatible with Excel"
 HOMEPAGE="https://pypi.org/project/xlwt/"
@@ -30,7 +30,7 @@ python_prepare_all() {
 	# Don't install documentation and examples in site-packages directories.
 	sed -e "/package_data/d" -i setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -47,5 +47,5 @@ python_install_all() {
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

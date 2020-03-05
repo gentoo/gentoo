@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="sqlite"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Toolkit to convert between many translation formats"
 HOMEPAGE="https://github.com/translate/translate"
@@ -48,7 +48,7 @@ python_prepare_all() {
 		-e "/html_theme/ s/sphinx-bootstrap/classic/" \
 		-i docs/conf.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -59,7 +59,7 @@ python_compile_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	rm -Rf docs || die
 	if ! use html; then

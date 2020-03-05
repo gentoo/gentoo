@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Virtualenv fixture for py.test"
 HOMEPAGE="https://github.com/manahl/pytest-plugins https://pypi.org/project/pytest-fixture-config/"

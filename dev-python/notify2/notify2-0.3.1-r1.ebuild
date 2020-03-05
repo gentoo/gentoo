@@ -6,7 +6,7 @@ EAPI=6
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Python interface to DBus notifications."
 HOMEPAGE="https://bitbucket.org/takluyver/pynotify2"
@@ -28,5 +28,5 @@ python_install_all() {
 		insinto /usr/share/doc/${PF}/examples
 		doins examples/*
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

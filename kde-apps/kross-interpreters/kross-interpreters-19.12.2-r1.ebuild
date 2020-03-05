@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 USE_RUBY="ruby25 ruby26 ruby27"
 KFMIN=5.63.0
 QTMIN=5.12.3
-inherit ecm kde.org python-single-r1 ruby-single
+inherit ecm kde.org python-single-r2 ruby-single
 
 DESCRIPTION="Kross interpreter plugins for programming languages"
 
@@ -28,7 +28,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	ecm_pkg_setup
 }
 

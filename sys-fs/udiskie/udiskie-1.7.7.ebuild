@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1 gnome2-utils
+inherit distutils-r2 gnome2-utils
 
 DESCRIPTION="An automatic disk mounting service using udisks"
 HOMEPAGE="https://pypi.org/project/udiskie/ https://github.com/coldfix/udiskie"
@@ -26,16 +26,16 @@ src_prepare() {
 	sed -i -e 's:gtk-update-icon-cache:true:' setup.py || die
 	default
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_compile() {
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 	emake -C doc
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	doman doc/${PN}.8
 }
 

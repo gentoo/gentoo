@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools python-r1 user
+inherit autotools python-multi-r2 user
 
 DESCRIPTION="Generic library for reporting software bugs"
 HOMEPAGE="https://github.com/abrt/libreport"

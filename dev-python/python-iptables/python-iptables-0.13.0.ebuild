@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings for iptables"
 HOMEPAGE="https://github.com/ldx/python-iptables"
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	# Prevent un-needed d'loading during doc build
 	sed -e "s/, 'sphinx.ext.intersphinx'//" -i doc/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -33,5 +33,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

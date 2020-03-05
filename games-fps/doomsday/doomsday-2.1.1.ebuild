@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake python-any-r1 readme.gentoo-r1
+inherit cmake python-any-r2 readme.gentoo-r1
 
 DESCRIPTION="A modern gaming engine for Doom, Heretic, and Hexen"
 HOMEPAGE="https://www.dengine.net"

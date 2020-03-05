@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="black box tests Unix command line tools"
 HOMEPAGE="http://liw.fi/cmdtest/"
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}"
 
 src_compile() {
 	addwrite /proc/self/comm
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 python_test() {

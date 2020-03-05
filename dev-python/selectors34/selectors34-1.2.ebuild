@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Backport of the selectors module from Python 3.4"
 HOMEPAGE="https://github.com/berkerpeksag/selectors34"

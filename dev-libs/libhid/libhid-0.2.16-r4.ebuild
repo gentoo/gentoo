@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit autotools eutils ltprune python-single-r1
+inherit autotools eutils ltprune python-single-r2
 
 DESCRIPTION="Provides a generic and flexible way to access and interact with USB HID devices"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"

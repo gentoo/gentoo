@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="MySQL Schema Versioning and Migration Utility"
 HOMEPAGE="https://github.com/mmatuson/SchemaSync"

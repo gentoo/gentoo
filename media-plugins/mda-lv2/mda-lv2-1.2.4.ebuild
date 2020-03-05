@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit python-any-r1 waf-utils
+inherit python-any-r2 waf-utils
 
 DESCRIPTION="LV2 port of the MDA plugins by Paul Kellett"
 HOMEPAGE="http://drobilla.net/software/mda-lv2/"

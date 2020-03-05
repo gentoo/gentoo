@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools gnome2-utils python-single-r1
+inherit autotools gnome2-utils python-single-r2
 
 DESCRIPTION="A utility for viewing problems that have occurred with the system"
 HOMEPAGE="https://github.com/abrt/abrt/wiki/ABRT-Project"

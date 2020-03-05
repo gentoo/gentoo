@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Rawdog, RSS Aggregator Without Delusions Of Grandeur"
 HOMEPAGE="http://offog.org/code/rawdog.html https://pypi.org/project/rawdog/"

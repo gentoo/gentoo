@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3  )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Core utilities for Python packages"
 HOMEPAGE="https://github.com/pypa/packaging https://pypi.org/project/packaging/"

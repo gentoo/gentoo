@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Parsing and validation of URIs (RFC 3986) and IRIs (RFC 3987)"
 HOMEPAGE="https://github.com/dgerber/rfc3987 https://pypi.org/project/rfc3987/"

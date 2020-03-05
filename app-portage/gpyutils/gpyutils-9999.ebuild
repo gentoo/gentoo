@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python{3_6,3_7} )
 
 EGIT_REPO_URI="https://github.com/mgorny/gpyutils.git"
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="Utitilies for maintaining Python packages"
 HOMEPAGE="https://github.com/mgorny/gpyutils/"

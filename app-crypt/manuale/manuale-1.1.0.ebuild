@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A fully manual Let's Encrypt client"
 HOMEPAGE="https://github.com/veeti/manuale"

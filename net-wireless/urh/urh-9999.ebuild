@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Universal Radio Hacker: investigate wireless protocols like a boss"
 HOMEPAGE="https://github.com/jopohl/urh"

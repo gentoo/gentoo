@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Coverage 3.x support for Nose"
 HOMEPAGE="https://github.com/ask/nosecover3 https://pypi.org/project/nose-cover3/"

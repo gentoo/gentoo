@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Module for manipulating ID3 (v1 + v2) tags in Python"
 HOMEPAGE="http://eyed3.nicfit.net/"

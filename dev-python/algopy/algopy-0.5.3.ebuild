@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Taylor Arithmetic Computation and Algorithmic Differentiation"
 HOMEPAGE="https://pypi.org/project/algopy/ https://pythonhosted.org/algopy/"

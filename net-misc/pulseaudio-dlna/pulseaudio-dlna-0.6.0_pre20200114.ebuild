@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit desktop distutils-r1
+inherit desktop distutils-r2
 
 DESCRIPTION="A lightweight DLNA/UPNP/Chromecast streaming server for PulseAudio"
 HOMEPAGE="https://github.com/masmu/pulseaudio-dlna"
@@ -55,11 +55,11 @@ python_prepare_all() {
 	sed -i '/notify2/d' setup.py || die
 	sed -i '/docopt/d' setup.py || die
 	sed -i '/pychromecast/d' setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	domenu "${FILESDIR}/${PN}.desktop"
 }

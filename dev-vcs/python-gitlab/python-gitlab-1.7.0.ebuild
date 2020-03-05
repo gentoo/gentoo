@@ -12,7 +12,7 @@ else
 	KEYWORDS="~amd64"
 fi
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python command line interface to gitlab API"
 HOMEPAGE="https://github.com/python-gitlab/python-gitlab/"
@@ -37,6 +37,6 @@ RDEPEND="dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	dodoc -r *.rst docs
 }

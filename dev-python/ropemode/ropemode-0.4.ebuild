@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A helper for using rope refactoring library in IDEs"
 HOMEPAGE="https://github.com/python-rope/ropemode https://pypi.org/project/ropemode/"

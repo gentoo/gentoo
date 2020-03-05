@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A collection of command line audio tools"
 HOMEPAGE="http://audiotools.sourceforge.net/"
@@ -88,5 +88,5 @@ python_test() {
 
 python_install_all() {
 	doman docs/*.{1,5}
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

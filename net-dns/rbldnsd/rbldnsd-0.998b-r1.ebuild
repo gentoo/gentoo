@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit toolchain-funcs python-any-r1
+inherit toolchain-funcs python-any-r2
 
 DESCRIPTION="DNS server designed to serve blacklist zones"
 HOMEPAGE="https://rbldnsd.io/"

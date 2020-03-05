@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="Create Python CLI apps with little to no effort at all!"
 HOMEPAGE="https://mando.readthedocs.org/"
@@ -35,5 +35,5 @@ python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 	use examples && local EXAMPLES=( examples/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

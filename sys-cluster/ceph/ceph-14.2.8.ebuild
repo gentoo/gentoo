@@ -7,8 +7,8 @@ CMAKE_MAKEFILE_GENERATOR=emake
 
 DISTUTILS_OPTIONAL=1
 
-inherit check-reqs bash-completion-r1 cmake-utils distutils-r1 flag-o-matic \
-		multiprocessing python-r1 udev readme.gentoo-r1 toolchain-funcs \
+inherit check-reqs bash-completion-r1 cmake-utils distutils-r2 flag-o-matic \
+		multiprocessing python-multi-r2 udev readme.gentoo-r1 toolchain-funcs \
 		systemd
 
 if [[ ${PV} == *9999* ]]; then

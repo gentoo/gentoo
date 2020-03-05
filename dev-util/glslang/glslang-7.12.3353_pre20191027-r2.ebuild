@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=(python{3_6,3_7})
 
-inherit cmake-multilib cmake-utils python-any-r1
+inherit cmake-multilib cmake-utils python-any-r2
 
 SNAPSHOT_COMMIT="b131630e7c749a5dc19faa458024260c71fb170f"
 SRC_URI="https://github.com/KhronosGroup/${PN}/archive/${SNAPSHOT_COMMIT}.tar.gz -> ${P}.tar.gz"

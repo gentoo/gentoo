@@ -10,7 +10,7 @@ EAPI=5
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="threads?"
 
-inherit distutils-r1
+inherit distutils-r2
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://github.com/Lawouach/WebSocket-for-Python.git"
 	inherit git-r3
@@ -49,7 +49,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	use client || rm -rf "${D}$(python_get_sitedir)"/ws4py/client
 	use server || rm -rf "${D}$(python_get_sitedir)"/ws4py/server
 }

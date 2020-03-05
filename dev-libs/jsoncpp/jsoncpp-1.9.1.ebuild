@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-any-r1
+inherit cmake-utils python-any-r2
 
 DESCRIPTION="C++ JSON reader and writer"
 HOMEPAGE="https://github.com/open-source-parsers/jsoncpp"
@@ -30,7 +30,7 @@ RESTRICT="!test? ( test )"
 
 pkg_setup() {
 	if use doc || use test; then
-		python-any-r1_pkg_setup
+		python-any-r2_pkg_setup
 	fi
 }
 

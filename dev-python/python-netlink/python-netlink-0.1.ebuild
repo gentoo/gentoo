@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="NetLink"
 MY_P="${MY_PN}-${PV}"
@@ -20,7 +20,7 @@ RDEPEND="!dev-libs/libnl[python]"
 S=${WORKDIR}/${MY_P}
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	# setuptools-markdown is not needed.
 	sed -e "s:'setuptools-markdown'::" -i setup.py || die
 }

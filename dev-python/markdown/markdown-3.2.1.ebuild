@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python implementation of the markdown markup language"
 HOMEPAGE="
@@ -33,5 +33,5 @@ distutils_enable_tests pytest
 python_install_all() {
 	use doc && dodoc -r docs/
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

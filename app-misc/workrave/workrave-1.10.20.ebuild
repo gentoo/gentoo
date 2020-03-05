@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools gnome2 python-single-r1 versionator vcs-snapshot
+inherit autotools gnome2 python-single-r2 versionator vcs-snapshot
 
 DESCRIPTION="Helpful utility to attack Repetitive Strain Injury (RSI)"
 HOMEPAGE="http://www.workrave.org/"
@@ -66,7 +66,7 @@ DEPEND="${RDEPEND}
 "
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_unpack() {

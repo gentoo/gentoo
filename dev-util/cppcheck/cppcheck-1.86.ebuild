@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1 qmake-utils toolchain-funcs
+inherit distutils-r2 qmake-utils toolchain-funcs
 
 DESCRIPTION="Static analyzer of C/C++ code"
 HOMEPAGE="https://github.com/danmar/cppcheck"
@@ -72,7 +72,7 @@ src_compile() {
 
 	if use htmlreport ; then
 		pushd htmlreport || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 		popd || die
 	fi
 }
@@ -102,7 +102,7 @@ src_install() {
 	fi
 	if use htmlreport ; then
 		pushd htmlreport || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 		popd || die
 		find "${D}" -name "*.egg-info" -delete
 	else

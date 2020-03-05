@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} pypy3 )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="A virtual for the Python typing module"
 SLOT="0"

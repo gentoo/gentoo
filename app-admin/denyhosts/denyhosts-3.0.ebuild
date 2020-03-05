@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils readme.gentoo systemd
+inherit distutils-r2 eutils readme.gentoo systemd
 
 DESCRIPTION="DenyHosts is a utility to help sys admins thwart ssh hackers"
 HOMEPAGE="https://github.com/denyhosts/denyhosts"
@@ -43,14 +43,14 @@ src_prepare() {
 		-e '\@#SECURE_LOG.*/var/log/messages@s/^#//' \
 		-i denyhosts.conf || die "sed failed"
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_install() {
 	readme.gentoo_create_doc
 
 	dodoc CHANGELOG.txt README.md
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	dodir /etc/logrotate.d
 	insinto /etc/logrotate.d

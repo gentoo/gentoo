@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P="PyBluez-${PV}"
 
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples; then
 		dodoc -r examples
 		docompress -x usr/share/doc/${PF}/examples

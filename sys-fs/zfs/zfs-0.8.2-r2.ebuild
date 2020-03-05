@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit bash-completion-r1 flag-o-matic linux-info linux-mod distutils-r1 systemd toolchain-funcs udev usr-ldscript
+inherit bash-completion-r1 flag-o-matic linux-info linux-mod distutils-r2 systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://zfsonlinux.org/"
@@ -113,7 +113,7 @@ src_prepare() {
 
 	if use python; then
 		pushd contrib/pyzfs >/dev/null || die
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 		popd >/dev/null || die
 	fi
 
@@ -153,7 +153,7 @@ src_compile() {
 	default
 	if use python; then
 		pushd contrib/pyzfs >/dev/null || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 		popd >/dev/null || die
 	fi
 }
@@ -177,7 +177,7 @@ src_install() {
 
 	if use python; then
 		pushd contrib/pyzfs >/dev/null || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 		popd >/dev/null || die
 	fi
 

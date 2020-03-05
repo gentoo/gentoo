@@ -8,7 +8,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils llvm multiprocessing python-single-r1 \
+inherit cmake-utils llvm multiprocessing python-single-r2 \
 	toolchain-funcs
 
 MY_P=${P/_/}.src
@@ -30,7 +30,7 @@ RDEPEND="
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0= )
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/six[${PYTHON_MULTI_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)
@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 	python? ( >=dev-lang/swig-3.0.11 )
 	test? (
 		$(python_gen_cond_dep "
-			~dev-python/lit-${PV}[\${PYTHON_MULTI_USEDEP}]
+			~dev-python/lit-${PV}[\${PYTHON_USEDEP}]
 		")
 	)
 	${PYTHON_DEPS}"
@@ -55,7 +55,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_unpack() {

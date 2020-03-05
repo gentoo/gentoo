@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="AMQP Messaging Framework for Python"
 HOMEPAGE="https://pypi.org/project/kombu/ https://github.com/celery/kombu"
@@ -54,7 +54,7 @@ python_prepare_all() {
 	sed -i '/msgpack/d' requirements/extras/msgpack.txt || die
 	# pytest-sugar is not packaged
 	sed -i '/pytest-sugar/d' requirements/test.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -75,5 +75,5 @@ python_install_all() {
 		dodoc -r examples/.
 	fi
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

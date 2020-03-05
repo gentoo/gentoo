@@ -7,7 +7,7 @@ AUTOTOOLS_AUTORECONF=1
 AUTOTOOLS_PRUNE_LIBTOOL_FILES=all
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools-utils flag-o-matic python-r1
+inherit autotools-utils flag-o-matic python-multi-r2
 
 DESCRIPTION="POSIX 1003.1e capabilities"
 HOMEPAGE="https://people.redhat.com/sgrubb/libcap-ng/"

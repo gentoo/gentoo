@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 FINDLIB_USE="ocaml"
 
 inherit findlib eutils multilib toolchain-funcs java-pkg-opt-2 flag-o-matic usr-ldscript \
-	autotools udev systemd python-r1
+	autotools udev systemd python-multi-r2
 
 DESCRIPTION="Daemon that provides access to the Linux/Unix console for a blind person"
 HOMEPAGE="https://brltty.app/"

@@ -7,7 +7,7 @@ EAPI=6
 # pypy bundles a modified version of cffi. Use python_gen_cond_dep instead.
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Foreign Function Interface for Python calling C code"
 HOMEPAGE="https://cffi.readthedocs.io/ https://pypi.org/project/cffi/"
@@ -47,5 +47,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

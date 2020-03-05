@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python3_6 )
 
-inherit gnome2-utils python-single-r1
+inherit gnome2-utils python-single-r2
 
 DESCRIPTION="Japanese Anthy engine for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -19,8 +19,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	app-i18n/anthy
 	$(python_gen_cond_dep '
-		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		app-i18n/ibus[python(+),${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	nls? ( virtual/libintl )"
 DEPEND="${RDEPEND}

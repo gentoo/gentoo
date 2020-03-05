@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1 eutils toolchain-funcs
+inherit distutils-r2 eutils toolchain-funcs
 
 DESCRIPTION="A Pythonic binding for the libxml2 and libxslt libraries"
 HOMEPAGE="https://lxml.de/ https://pypi.org/project/lxml/ https://github.com/lxml/lxml"
@@ -47,7 +47,7 @@ python_prepare_all() {
 	sed -i -e '/_ldflags =/s/=.*isysroot.*darwin.*None/= None/' \
 		setupinfo.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
@@ -55,7 +55,7 @@ python_compile() {
 		local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	fi
 	tc-export PKG_CONFIG
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -75,7 +75,7 @@ python_install_all() {
 		dodoc -r samples
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

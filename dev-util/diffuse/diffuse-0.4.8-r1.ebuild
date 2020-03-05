@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit fdo-mime python-single-r1
+inherit fdo-mime python-single-r2
 
 DESCRIPTION="A graphical tool to compare and merge text files"
 HOMEPAGE="http://diffuse.sourceforge.net/"
@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygtk[${PYTHON_USEDEP}]
 	')"
 # file collision, bug #279018
 DEPEND="${DEPEND}

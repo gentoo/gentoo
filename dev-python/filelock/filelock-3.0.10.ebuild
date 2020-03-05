@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P=py-filelock-${PV}
 DESCRIPTION="A platform independent file lock for Python"
@@ -26,7 +26,7 @@ src_prepare() {
 	# (and it's not very valuable anyway)
 	sed -i -e '/test_del/i\ \ \ \ @unittest.skipIf(hasattr(sys, "pypy_version_info"), "del() does not trigger GC on PyPy")' test.py || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

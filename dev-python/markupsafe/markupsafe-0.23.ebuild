@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="MarkupSafe"
 MY_P="${MY_PN}-${PV}"
@@ -26,7 +26,7 @@ S=${WORKDIR}/${MY_P}
 DISTUTILS_IN_SOURCE_BUILD=1
 
 python_compile() {
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 	if [[ ${EPYTHON} == python3.2 ]]; then
 		2to3 --no-diffs -n -w -f unicode ${PN} || die
 	fi

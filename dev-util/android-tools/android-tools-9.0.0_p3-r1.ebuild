@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python3_{6,7} )
 CMAKE_MAKEFILE_GENERATOR="ninja"
 
-inherit flag-o-matic bash-completion-r1 ninja-utils toolchain-funcs cmake-utils python-r1
+inherit flag-o-matic bash-completion-r1 ninja-utils toolchain-funcs cmake-utils python-multi-r2
 
 MY_PV="${PV/_p/_r}"
 MY_P=${PN}-${MY_PV}

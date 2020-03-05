@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 # still no 34 :( https://bugs.launchpad.net/neutron/+bug/1630439
 
-inherit distutils-r1 linux-info
+inherit distutils-r2 linux-info
 
 DESCRIPTION="A virtual network service for Openstack"
 HOMEPAGE="https://launchpad.net/neutron"
@@ -146,11 +146,11 @@ src_prepare() {
 	sed -i '/^hacking/d' test-requirements.txt || die
 	# it's /bin/ip not /sbin/ip
 	sed -i 's/sbin\/ip\,/bin\/ip\,/g' etc/neutron/rootwrap.d/* || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use server; then
 		newinitd "${FILESDIR}/neutron.initd" "neutron-server"
 		newconfd "${FILESDIR}/neutron-server.confd" "neutron-server"
@@ -212,7 +212,7 @@ python_install_all() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	# copy migration conf file (not coppied on install via setup.py script)
 	python_moduleinto neutron/db/migration/alembic_migrations
 	python_domodule "neutron/db/migration/alembic_migrations/versions"

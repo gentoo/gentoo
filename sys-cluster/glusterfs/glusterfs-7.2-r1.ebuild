@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools elisp-common python-single-r1 systemd user
+inherit autotools elisp-common python-single-r2 systemd user
 
 if [[ ${PV#9999} != ${PV} ]]; then
 	inherit git-r3
@@ -69,7 +69,7 @@ DOCS=( AUTHORS ChangeLog NEWS README.md THANKS )
 
 pkg_setup() {
 	python_setup "python3*"
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 
 	# Needed for statedumps
 	# https://github.com/gluster/glusterfs/commit/0e50c4b3ea734456c14e2d7a578463999bd332c3

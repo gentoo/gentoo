@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE=tk
 
-inherit eutils python-single-r1
+inherit eutils python-single-r2
 
 DESCRIPTION="cdcover allows the creation of inlay-sheets for jewel cd-cases"
 HOMEPAGE="http://cdcover.sourceforge.net"
@@ -19,7 +19,7 @@ IUSE="cddb"
 
 RDEPEND="${PYTHON_DEPS}
 	cddb? (
-		$(python_gen_cond_dep 'dev-python/cddb-py[${PYTHON_MULTI_USEDEP}]')
+		$(python_gen_cond_dep 'dev-python/cddb-py[${PYTHON_USEDEP}]')
 	)
 	media-sound/cd-discid"
 DEPEND=""

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Wrapper for audio file decoding using FFmpeg or GStreamer"
 HOMEPAGE="https://pypi.org/project/audioread/"
@@ -33,6 +33,6 @@ RESTRICT="!test? ( test )"
 PATCHES=( "${FILESDIR}/${P}-test-deps.patch" ) # git master
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	sed -e "/'pytest-runner'/d" -i setup.py || die
 }

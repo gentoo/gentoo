@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='xml,threads'
 
-inherit flag-o-matic multilib python-single-r1 toolchain-funcs
+inherit flag-o-matic multilib python-single-r2 toolchain-funcs
 
 MY_PV=${PV/_/-}
 
@@ -52,7 +52,7 @@ RDEPEND="${PYTHON_DEPS}
 RESTRICT="test"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 retar-externals() {

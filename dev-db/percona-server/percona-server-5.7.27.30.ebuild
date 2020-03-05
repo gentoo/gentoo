@@ -12,7 +12,7 @@ PYTHON_COMPAT=( python2_7 )
 # Keeping eutils in EAPI=6 for emktemp in pkg_config
 
 inherit eapi7-ver cmake-utils eutils flag-o-matic linux-info \
-	prefix python-any-r1 toolchain-funcs multilib-minimal
+	prefix python-any-r2 toolchain-funcs multilib-minimal
 
 MY_PV=$(ver_rs 3 '-')
 MY_PN="Percona-Server"
@@ -240,7 +240,7 @@ pkg_setup() {
 			die
 		fi
 
-		use test && python-any-r1_pkg_setup
+		use test && python-any-r2_pkg_setup
 	fi
 
 	if has test ${FEATURES} && \

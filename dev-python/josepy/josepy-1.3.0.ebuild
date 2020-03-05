@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 python3_7 python3_8 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="JOSE protocol implementation in Python"
 HOMEPAGE="https://github.com/jezdez/josepy"

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit cmake-utils desktop gnome2-utils python-single-r1 qmake-utils toolchain-funcs
+inherit cmake-utils desktop gnome2-utils python-single-r2 qmake-utils toolchain-funcs
 
 MAIN_PV=$(ver_cut 0-1)
 MAJOR_PV=$(ver_cut 1-2)
@@ -63,19 +63,19 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/constantly[${PYTHON_MULTI_USEDEP}]
-			dev-python/incremental[${PYTHON_MULTI_USEDEP}]
-			dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
-			dev-python/sip[${PYTHON_MULTI_USEDEP}]
-			dev-python/six[${PYTHON_MULTI_USEDEP}]
-			|| ( dev-python/twisted[${PYTHON_MULTI_USEDEP}]
-				dev-python/twisted-core[${PYTHON_MULTI_USEDEP}]
+			dev-python/constantly[${PYTHON_USEDEP}]
+			dev-python/incremental[${PYTHON_USEDEP}]
+			dev-python/matplotlib[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
+			dev-python/pygments[${PYTHON_USEDEP}]
+			dev-python/sip[${PYTHON_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
+			|| ( dev-python/twisted[${PYTHON_USEDEP}]
+				dev-python/twisted-core[${PYTHON_USEDEP}]
 			)
-			dev-python/zope-interface[${PYTHON_MULTI_USEDEP}]
+			dev-python/zope-interface[${PYTHON_USEDEP}]
 			mpi? ( dev-python/mpi4py )
-			qt5? ( dev-python/PyQt5[opengl,webkit,${PYTHON_MULTI_USEDEP}] )
+			qt5? ( dev-python/PyQt5[opengl,webkit,${PYTHON_USEDEP}] )
 		')
 	)
 	qt5? (
@@ -95,7 +95,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	boost? (
 		$(python_gen_cond_dep '
-			dev-libs/boost[mpi?,${PYTHON_MULTI_USEDEP}]
+			dev-libs/boost[mpi?,${PYTHON_USEDEP}]
 		')
 	)
 	doc? ( app-doc/doxygen )"
@@ -113,7 +113,7 @@ CMAKE_MAKEFILE_GENERATOR="emake" #579474
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != "binary" ]] && use openmp && tc-check-openmp
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	PVLIBDIR=$(get_libdir)/${PN}-${MAJOR_PV}
 }
 

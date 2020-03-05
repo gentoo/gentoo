@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit multilib python-single-r1
+inherit multilib python-single-r2
 
 DESCRIPTION="Gnuplot like graphing program publication-quality figures"
 HOMEPAGE="http://www.pyxplot.org.uk/"
@@ -26,8 +26,8 @@ RDEPEND="
 	sci-libs/gsl
 	$(python_gen_cond_dep '
 		|| (
-			sci-libs/scipy-python2[${PYTHON_MULTI_USEDEP}]
-			sci-libs/scipy[${PYTHON_MULTI_USEDEP}]
+			sci-libs/scipy-python2[${PYTHON_USEDEP}]
+			sci-libs/scipy[${PYTHON_USEDEP}]
 		)
 	')
 	virtual/latex-base

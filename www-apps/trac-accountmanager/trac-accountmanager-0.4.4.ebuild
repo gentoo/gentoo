@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Trac plugin for manage user accounts"
 HOMEPAGE="http://trac-hacks.org/wiki/AccountManagerPlugin"

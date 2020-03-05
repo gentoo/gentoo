@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="meld3 is an HTML/XML templating engine"
 HOMEPAGE="https://github.com/supervisor/meld3 https://pypi.org/project/meld3/"

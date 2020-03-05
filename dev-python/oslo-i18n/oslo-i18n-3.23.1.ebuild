@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 MY_PN=${PN/-/.}
 
@@ -51,7 +51,7 @@ RDEPEND="
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -68,5 +68,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

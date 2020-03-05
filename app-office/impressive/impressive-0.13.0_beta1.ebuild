@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{7,8} )
 
-inherit eutils python-r1
+inherit eutils python-multi-r2
 
 MY_PN="Impressive"
 

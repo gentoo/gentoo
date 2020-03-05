@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Utility to communicate with the ROM bootloader in Espressif ESP8266 and ESP32"
 HOMEPAGE="https://github.com/espressif/esptool"

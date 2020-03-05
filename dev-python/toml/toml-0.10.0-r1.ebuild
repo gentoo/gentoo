@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 TOML_TEST_VER="39bb76d631ba103a94b377aaf52c979456677fb1"
 
@@ -39,5 +39,5 @@ python_prepare_all() {
 		mv "${WORKDIR}/toml-test-${TOML_TEST_VER#v}" "${S}/toml-test" || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

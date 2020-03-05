@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
-inherit multilib multiprocessing python-single-r1
+inherit multilib multiprocessing python-single-r2
 
 DESCRIPTION="Smaller, easier, more powerful, and more reliable than make"
 HOMEPAGE="https://github.com/apenwarr/redo"
@@ -17,8 +17,8 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 BDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/beautifulsoup[${PYTHON_MULTI_USEDEP}]
-		dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+		dev-python/beautifulsoup[${PYTHON_USEDEP}]
+		dev-python/markdown[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}
 "

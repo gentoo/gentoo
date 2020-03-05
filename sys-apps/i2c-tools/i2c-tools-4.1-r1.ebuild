@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 DISTUTILS_OPTIONAL="1"
 
-inherit distutils-r1 flag-o-matic toolchain-funcs
+inherit distutils-r2 flag-o-matic toolchain-funcs
 
 DESCRIPTION="I2C tools for bus probing, chip dumping, EEPROM decoding, and more"
 HOMEPAGE="https://www.kernel.org/pub/software/utils/i2c-tools"
@@ -26,7 +26,7 @@ RDEPEND+="
 
 src_prepare() {
 	default
-	use python && distutils-r1_src_prepare
+	use python && distutils-r2_src_prepare
 
 	# Cut out the eeprom/ & stub/ dirs as only perl scripts live there.
 	if ! use perl ; then
@@ -35,7 +35,7 @@ src_prepare() {
 }
 
 src_configure() {
-	use python && distutils-r1_src_configure
+	use python && distutils-r2_src_configure
 
 	# Always build & use dynamic libs if possible.
 	if tc-is-static-only ; then
@@ -57,7 +57,7 @@ src_compile() {
 	if use python ; then
 		cd py-smbus || die
 		append-cppflags -I../include
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -76,6 +76,6 @@ src_install() {
 		cd py-smbus || die
 		docinto py-smbus
 		dodoc README*
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 }

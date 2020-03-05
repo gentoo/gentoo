@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-single-r1
+inherit cmake-utils python-single-r2
 
 DESCRIPTION="Open framework for storing and sharing scene data"
 HOMEPAGE="https://www.alembic.io/"
@@ -32,7 +32,7 @@ RDEPEND="
 	python? ( >=dev-python/pyilmbase-2.2.0[${PYTHON_SINGLE_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.11-r1 )
 	$(python_gen_cond_dep '
-		boost? ( >=dev-libs/boost-1.65.0:=[python,${PYTHON_MULTI_USEDEP}] )
+		boost? ( >=dev-libs/boost-1.65.0:=[python,${PYTHON_USEDEP}] )
 	')
 "
 DEPEND="

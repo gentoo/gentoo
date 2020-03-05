@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A graphical and console tool for exploring the size of directories"
 HOMEPAGE="http://guichaz.free.fr/pysize/"
@@ -58,7 +58,7 @@ python_prepare_all() {
 		-e '/for ui_run in/s:ui_ascii.run:ui_ascii.run, ui_ascii.run:g' \
 		-i pysize/main.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

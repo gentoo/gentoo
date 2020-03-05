@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Provides an API for querying the distutils metadata written in a PKG-INFO file"
 HOMEPAGE="https://pypi.org/project/pkginfo/"
@@ -29,7 +29,7 @@ python_prepare_all() {
 	sed -e 's:test_ctor_w_path_nested_egg_info:_&:' \
 		-i pkginfo/tests/test_develop.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -43,5 +43,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/.build/html/. )
 	use examples && local EXAMPLES=( docs/examples/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

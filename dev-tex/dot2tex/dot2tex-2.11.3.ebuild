@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7})
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Graphviz to LaTeX converter"
 HOMEPAGE="https://dot2tex.readthedocs.org/ https://github.com/kjellmf/dot2tex"
@@ -31,7 +31,7 @@ python_compile_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use doc; then
 		dodoc -r docs/_build/html

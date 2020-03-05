@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit eutils multiprocessing python-any-r1 toolchain-funcs versionator
+inherit eutils multiprocessing python-any-r2 toolchain-funcs versionator
 
 REVISION="b177-rff25472"
 
@@ -43,7 +43,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_prepare() {

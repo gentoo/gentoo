@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="IPy"
 MY_P="${MY_PN}-${PV}"
@@ -36,5 +36,5 @@ python_test() {
 
 python_install_all() {
 	use examples && local EXAMPLES=( example/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

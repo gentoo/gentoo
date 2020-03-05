@@ -5,7 +5,7 @@ EAPI="5"
 PYTHON_COMPAT=( python{2_7,3_6} )
 VIM_PLUGIN_VIM_VERSION="7.1"
 
-inherit python-single-r1 vim-plugin
+inherit python-single-r2 vim-plugin
 
 MY_P="${PN}_${PV}"
 DESCRIPTION="vim plugin: Run interactive commands inside a Vim buffer"

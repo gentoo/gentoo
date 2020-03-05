@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python3_6 )
 
-inherit gnome2 python-any-r1 virtualx
+inherit gnome2 python-any-r2 virtualx
 
 DESCRIPTION="Telepathy instant messaging and video/audio call client for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Empathy"
@@ -90,7 +90,7 @@ DEPEND="${COMMON_DEPEND}
 PDEPEND=">=net-im/telepathy-mission-control-5.14"
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 	export PYTHONIOENCODING=UTF-8 # See bug 489774
 }
 

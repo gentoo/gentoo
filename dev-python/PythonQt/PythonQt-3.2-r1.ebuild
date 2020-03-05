@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 MY_P=${PN}${PV}
 
-inherit qmake-utils python-single-r1 virtualx
+inherit qmake-utils python-single-r2 virtualx
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
 HOMEPAGE="https://mevislab.github.io/pythonqt"

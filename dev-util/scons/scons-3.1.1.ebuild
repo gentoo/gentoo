@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Extensible Python-based build utility"
 HOMEPAGE="http://www.scons.org/"
@@ -53,7 +53,7 @@ src_unpack() {
 src_prepare() {
 	# apply patches relatively to top directory
 	cd "${WORKDIR}/${P}" || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 
 	# remove half-broken, useless custom commands
 	# and fix manpage install location
@@ -79,7 +79,7 @@ python_test() {
 
 python_install_all() {
 	local DOCS=( {CHANGES,README,RELEASE}.txt )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	rm "${ED}/usr/bin/scons.bat" || die
 
 	use doc && dodoc "${DISTDIR}"/${P}-user.{pdf,html}

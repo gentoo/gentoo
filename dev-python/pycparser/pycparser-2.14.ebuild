@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="C parser and AST generator written in Python"
 HOMEPAGE="https://github.com/eliben/pycparser"
@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 python_compile() {
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 	pushd "${BUILD_DIR}/lib/pycparser" > /dev/null || die
 	"${PYTHON}" _build_tables.py || die
 	popd > /dev/null || die

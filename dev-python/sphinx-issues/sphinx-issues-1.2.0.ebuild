@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7})
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Sphinx extension for linking to your project's issue tracker "
 HOMEPAGE="https://github.com/sloria/sphinx-issues"

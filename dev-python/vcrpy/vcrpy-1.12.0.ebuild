@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Automatically mock your HTTP interactions to simplify and speed up testing"
 HOMEPAGE="https://github.com/kevin1024/vcrpy"

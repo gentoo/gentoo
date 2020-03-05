@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Get/set values in JSON and Python datastructures"
 HOMEPAGE="https://github.com/fboender/jsonxs"

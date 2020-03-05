@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python implementation of the parquet columnar file format"
 HOMEPAGE="https://github.com/dask/fastparquet"
@@ -39,5 +39,5 @@ src_prepare() {
 	# taken care of this, so disable it
 	sed -i -e 's/setup_requires/disabled_setup_requires/' setup.py || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }

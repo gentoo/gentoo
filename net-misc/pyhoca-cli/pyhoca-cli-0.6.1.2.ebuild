@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="X2Go command line client"
 HOMEPAGE="http://www.x2go.org"
@@ -20,12 +20,12 @@ DEPEND="dev-python/setproctitle[${PYTHON_USEDEP}]
 RDEPEND="${DEPEND}"
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	python_doscript ${PN}
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	doman man/man1/*
 	find "${ED}" -name '*.pth' -delete || die
 }

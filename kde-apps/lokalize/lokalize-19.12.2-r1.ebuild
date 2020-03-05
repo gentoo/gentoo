@@ -7,7 +7,7 @@ ECM_HANDBOOK="forceoptional"
 PYTHON_COMPAT=( python3_{6,7,8} )
 KFMIN=5.63.0
 QTMIN=5.12.3
-inherit python-single-r1 ecm kde.org
+inherit python-single-r2 ecm kde.org
 
 DESCRIPTION="KDE Applications 5 translation tool"
 HOMEPAGE="https://kde.org/applications/office/org.kde.lokalize
@@ -47,12 +47,12 @@ DEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/translate-toolkit[${PYTHON_MULTI_USEDEP}]
+		dev-python/translate-toolkit[${PYTHON_USEDEP}]
 	')
 "
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	ecm_pkg_setup
 }
 

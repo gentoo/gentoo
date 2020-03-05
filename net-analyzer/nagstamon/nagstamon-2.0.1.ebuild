@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils python-r1 distutils-r1
+inherit eutils python-multi-r2 distutils-r2
 
 MY_PN="Nagstamon"
 MY_P="${MY_PN}-${PV/_}"

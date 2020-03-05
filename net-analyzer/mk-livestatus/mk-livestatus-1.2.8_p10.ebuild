@@ -5,7 +5,7 @@ EAPI=6
 
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python2_7 )
-inherit autotools perl-module python-r1
+inherit autotools perl-module python-multi-r2
 
 MY_PV="${PV/_p/p}"
 MY_P="${PN}-${MY_PV}"

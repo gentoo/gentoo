@@ -8,7 +8,7 @@ EAPI=7
 # Notes on page of home repo reports support of python3.
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python API and tools to manipulate OpenDocument files"
 HOMEPAGE="https://github.com/eea/odfpy https://pypi.org/project/odfpy/"
@@ -33,5 +33,5 @@ python_install_all() {
 		docinto examples
 		dodoc -r examples/.
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

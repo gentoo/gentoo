@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6..8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A library for wrapping and filling UTF-8 CJK text"
 HOMEPAGE="https://f.gallai.re/cjkwrap"

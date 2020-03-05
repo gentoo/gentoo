@@ -5,7 +5,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk"
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P="${P/editobj/EditObj}"
 
@@ -25,5 +25,5 @@ S="${WORKDIR}/${MY_P}"
 
 python_install_all() {
 	use examples && local EXAMPLES=( demo/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

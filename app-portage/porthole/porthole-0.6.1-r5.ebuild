@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=(python2_7)
 PYTHON_REQ_USE="threads(+),xml(+)"
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="A GTK+-based frontend to Portage"
 HOMEPAGE="http://porthole.sourceforge.net"
@@ -42,7 +42,7 @@ src_compile() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	dodoc TODO README NEWS AUTHORS
 

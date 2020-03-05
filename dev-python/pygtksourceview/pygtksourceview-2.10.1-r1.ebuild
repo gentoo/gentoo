@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 GNOME_TARBALL_SUFFIX="bz2"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-r1
+inherit gnome2 python-multi-r2
 
 DESCRIPTION="GTK+2 bindings for Python"
 HOMEPAGE="http://www.pygtk.org/"

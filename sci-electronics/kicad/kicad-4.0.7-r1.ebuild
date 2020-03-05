@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 
 WX_GTK_VER="3.0"
 
-inherit check-reqs cmake-utils flag-o-matic gnome2-utils python-single-r1 wxwidgets vcs-snapshot versionator xdg
+inherit check-reqs cmake-utils flag-o-matic gnome2-utils python-single-r2 wxwidgets vcs-snapshot versionator xdg
 
 SERIES=$(get_version_component_range 1-2)
 
@@ -35,10 +35,10 @@ REQUIRED_USE="
 COMMON_DEPEND=">=x11-libs/wxGTK-3.0.2:${WX_GTK_VER}[X,opengl]
 	$(python_gen_cond_dep "
 		python? (
-			dev-python/wxpython:${WX_GTK_VER}[opengl,\${PYTHON_MULTI_USEDEP}]
+			dev-python/wxpython:${WX_GTK_VER}[opengl,\${PYTHON_USEDEP}]
 			${PYTHON_DEPS}
 		)
-		>=dev-libs/boost-1.61:=[context,nls,threads,python?,\${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.61:=[context,nls,threads,python?,\${PYTHON_USEDEP}]
 	")
 	github? (
 		libressl? ( dev-libs/libressl:0= )
@@ -62,7 +62,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	setup-wxwidgets
 	CHECKREQS_DISK_BUILD="8G"
 	check-reqs_pkg_setup

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit bash-completion-r1 prefix python-r1
+inherit bash-completion-r1 prefix python-multi-r2
 
 DESCRIPTION="A collection of tools to let /etc be stored in a repository"
 HOMEPAGE="https://etckeeper.branchable.com/"

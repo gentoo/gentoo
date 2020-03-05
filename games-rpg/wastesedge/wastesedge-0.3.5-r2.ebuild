@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-single-r1
+inherit eutils python-single-r2
 
 DESCRIPTION="role playing game to showcase the adonthell engine"
 HOMEPAGE="http://adonthell.nongnu.org/download/"

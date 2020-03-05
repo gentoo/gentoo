@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python based U2F host library"
 HOMEPAGE="https://github.com/google/pyu2f"
@@ -39,7 +39,7 @@ python_prepare_all() {
 	sed -e 's:json.loads(communicate_json):json.loads(communicate_json.decode()):' \
 		-i pyu2f/tests/customauthenticator_test.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

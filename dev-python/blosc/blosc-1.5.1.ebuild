@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="High performance compressor optimized for binary data"
 HOMEPAGE="http://python-blosc.blosc.org"
@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	export BLOSC_DIR="${EPREFIX}/usr"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	DOCS=( ANNOUNCE.rst  README.rst  RELEASE_NOTES.rst )
 }
 

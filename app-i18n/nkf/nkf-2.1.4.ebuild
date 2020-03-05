@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1 perl-module toolchain-funcs vcs-snapshot
+inherit distutils-r2 perl-module toolchain-funcs vcs-snapshot
 
 PY_P="python-${PN}-0.2.0_p20141211"
 PY_COMMIT="000915e115acac57a1fdbceb1e6361788af83a3d"
@@ -50,7 +50,7 @@ src_compile() {
 	fi
 	if use python; then
 		cd NKF.python
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 		cd - >/dev/null
 	fi
 }
@@ -83,7 +83,7 @@ src_install() {
 	if use python; then
 		cd NKF.python
 		docinto python
-		DOCS= distutils-r1_src_install
+		DOCS= distutils-r2_src_install
 		dodoc CHANGES README.md
 		cd - >/dev/null
 	fi

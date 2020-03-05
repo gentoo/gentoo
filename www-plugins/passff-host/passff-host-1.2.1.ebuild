@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Host app for the PassFF WebExtension"
 HOMEPAGE="https://github.com/passff/passff-host"

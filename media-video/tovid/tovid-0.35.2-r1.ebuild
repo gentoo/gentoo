@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 gnome2-utils
+inherit distutils-r2 gnome2-utils
 
 DESCRIPTION="A collection of DVD authoring tools"
 HOMEPAGE="http://tovid.wikia.com/wiki/Tovid_Wiki"
@@ -31,11 +31,11 @@ RDEPEND="app-cdr/dvd+rw-tools
 DEPEND="app-text/txt2tags"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	python_optimize
 
 	# punt at least .install.log

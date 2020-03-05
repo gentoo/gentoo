@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="python-textile"
 MY_P="${MY_PN}-${PV}"
@@ -33,7 +33,7 @@ python_prepare_all() {
 	sed -e 's:with-id = 1::' -i setup.cfg || die
 	# remove useless --cov arg injection
 	rm pytest.ini || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

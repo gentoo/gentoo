@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit elisp-common autotools python-single-r1 toolchain-funcs xdg-utils
+inherit elisp-common autotools python-single-r2 toolchain-funcs xdg-utils
 
 if [[ "${PV}" = "9999" ]]; then
 	inherit git-r3
@@ -67,7 +67,7 @@ pkg_setup() {
 		fi
 	fi
 
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="GUI wizard which generates config files for tint2 panels"
 HOMEPAGE="https://github.com/vanadey/tintwizard/"
@@ -22,7 +22,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	x11-misc/tint2
 	$(python_gen_cond_dep '
-		dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygtk:2[${PYTHON_USEDEP}]
 	')"
 
 S="${WORKDIR}"

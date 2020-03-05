@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 desktop
+inherit distutils-r2 desktop
 
 DESCRIPTION="Graphical Network Simulator"
 HOMEPAGE="http://www.gns3.net/"
@@ -27,7 +27,7 @@ RDEPEND="
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	doicon "resources/images/gns3.ico"
 	make_desktop_entry "gns3" "GNS3" "gns3.ico" "Utility"

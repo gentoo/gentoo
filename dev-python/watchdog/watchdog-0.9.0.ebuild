@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Python API and shell utilities to monitor file system events"
 HOMEPAGE="https://github.com/gorakhargosh/watchdog"

@@ -6,7 +6,7 @@ EAPI=6
 # TODO: supposedly supports python3... but that conflicts with pygtk
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 vim-plugin
+inherit python-single-r2 vim-plugin
 
 DESCRIPTION="vim plugin: a color tool for vim"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3597 https://github.com/Rykka/colorv.vim/"
@@ -24,7 +24,7 @@ RDEPEND="
 			app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
 			(
 				app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
-				dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+				dev-python/pygtk:2[${PYTHON_USEDEP}]
 			)
 		)
 	')"

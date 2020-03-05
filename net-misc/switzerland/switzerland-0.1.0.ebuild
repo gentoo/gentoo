@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r2 toolchain-funcs
 
 DESCRIPTION="Network Testing Tool"
 HOMEPAGE="http://www.eff.org/testyourisp/switzerland/"
@@ -23,7 +23,7 @@ src_prepare() {
 	sed -i \
 		-e "s/= find_binary()/= dest/" \
 		setup.py
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_compile() {
@@ -31,11 +31,11 @@ src_compile() {
 	emake CC=$(tc-getCC)
 
 	cd "${S}"
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	dodoc BUGS.txt CREDITS
 

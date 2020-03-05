@@ -7,7 +7,7 @@ GNOME_TARBALL_SUFFIX="bz2"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 multilib python-r1
+inherit gnome2 multilib python-multi-r2
 
 DESCRIPTION="ORBit2 bindings for Python"
 HOMEPAGE="http://www.pygtk.org/"

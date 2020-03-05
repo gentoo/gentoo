@@ -7,7 +7,7 @@ EAPI=7
 # used even for Python 3: https://github.com/jaraco/jaraco.timing/pull/1
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN/-/.}"
 MY_PN="${MY_PN//-/_}"
@@ -58,5 +58,5 @@ python_test() {
 python_install() {
 	# avoid a collision with dev-python/backports
 	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 }

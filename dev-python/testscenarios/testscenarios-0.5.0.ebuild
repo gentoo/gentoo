@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A pyunit extension for dependency injection"
 HOMEPAGE="https://launchpad.net/testscenarios"
@@ -30,7 +30,7 @@ DEPEND="
 python_prepare_all() {
 	# Remove a faulty file from tests, missing a required attribute
 	rm ${PN}/tests/test_testcase.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

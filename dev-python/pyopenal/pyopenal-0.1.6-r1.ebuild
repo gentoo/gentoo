@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_P="${P/pyopenal/PyOpenAL}"
 
@@ -31,5 +31,5 @@ PATCHES=( "${FILESDIR}/${P}-setup.patch" )
 python_compile() {
 	local CFLAGS=${CFLAGS}
 	append-cflags -fno-strict-aliasing
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }

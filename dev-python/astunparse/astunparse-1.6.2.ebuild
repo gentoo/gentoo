@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Astun parser for python"
 HOMEPAGE="https://github.com/simonpercivall/astunparse"
@@ -20,6 +20,6 @@ RDEPEND="
 "
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	dodoc *.rst
 }

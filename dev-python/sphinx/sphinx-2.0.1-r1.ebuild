@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python documentation generator"
 HOMEPAGE="http://www.sphinx-doc.org/"
@@ -78,11 +78,11 @@ python_prepare_all() {
 	sed -i -e 's:test_partialmethod:_&:' tests/test_autodoc.py || die
 	sed -i -e 's:test_partialfunction:_&:' tests/test_autodoc.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 
 	# Generate the grammar. It will be caught by install somehow.
 	# Note that the tests usually do it for us. However, I don't want

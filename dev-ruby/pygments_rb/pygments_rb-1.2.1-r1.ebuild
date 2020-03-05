@@ -15,7 +15,7 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
 RUBY_FAKEGEM_GEMSPEC="${RUBY_FAKEGEM_NAME}.gemspec"
 
-inherit ruby-fakegem python-single-r1
+inherit ruby-fakegem python-single-r2
 
 DESCRIPTION="Pygments syntax highlighting in ruby"
 HOMEPAGE="https://github.com/tmm1/pygments.rb"
@@ -31,8 +31,8 @@ RUBY_S="${MY_P}"
 RDEPEND+="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/pygments-2.2.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/simplejson[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygments-2.2.0[${PYTHON_USEDEP}]
+		dev-python/simplejson[${PYTHON_USEDEP}]
 	')"
 DEPEND+=" test? ( ${RDEPEND} )"
 
@@ -41,7 +41,7 @@ ruby_add_bdepend "dev-ruby/rake-compiler"
 
 pkg_setup() {
 	ruby-ng_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 all_ruby_prepare() {

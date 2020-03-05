@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="ASN.1 library for Python"
 HOMEPAGE="http://pyasn1.sourceforge.net/ https://pypi.org/project/pyasn1/"
@@ -32,12 +32,12 @@ src_compile() {
 		python_setup
 		esetup.py build_sphinx
 	fi
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 src_install() {
 	local HTML_DOCS
 	use doc && HTML_DOCS=( build/sphinx/html/. )
 
-	distutils-r1_src_install
+	distutils-r2_src_install
 }

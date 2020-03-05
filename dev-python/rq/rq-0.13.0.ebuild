@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="simple, lightweight library for creating and processing background jobs"
 HOMEPAGE="https://github.com/rq/rq"

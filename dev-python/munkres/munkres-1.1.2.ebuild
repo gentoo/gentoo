@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Module implementing munkres algorithm for the Assignment Problem"
 HOMEPAGE="https://pypi.org/project/munkres/"

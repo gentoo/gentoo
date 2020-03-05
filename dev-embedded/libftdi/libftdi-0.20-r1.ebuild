@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit cmake-utils python-single-r1
+inherit cmake-utils python-single-r2
 
 if [[ ${PV} == 9999* ]] ; then
 	inherit git-r3
@@ -35,7 +35,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

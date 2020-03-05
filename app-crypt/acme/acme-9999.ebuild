@@ -14,7 +14,7 @@ else
 	S=${WORKDIR}/certbot-${PV}/acme
 fi
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="An implementation of the ACME protocol"
 HOMEPAGE="https://github.com/certbot/certbot https://letsencrypt.org/"
@@ -65,5 +65,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

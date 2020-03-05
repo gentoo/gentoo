@@ -6,7 +6,7 @@ EAPI=6
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Initial tagging script for Notmuch"
 HOMEPAGE="https://github.com/afewmail/afew"
@@ -19,8 +19,8 @@ IUSE=""
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
-		net-mail/notmuch[python,${PYTHON_MULTI_USEDEP}]
+		dev-python/chardet[${PYTHON_USEDEP}]
+		net-mail/notmuch[python,${PYTHON_USEDEP}]
 	')"
 
 DOCS=( "README.rst" )
@@ -30,10 +30,10 @@ src_prepare() {
 		-e "s/^([[:space:]]+)use_scm_version=.*,$/\1version='${PV}',/" \
 		-e "/^([[:space:]]+)setup_requires=.*,$/d" \
 		-i setup.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	dodoc afew/defaults/afew.config
 }

@@ -5,7 +5,7 @@ EAPI="5"
 GCONF_DEBUG="no"
 PYTHON_COMPAT=( python2_7 )
 
-inherit versionator eutils gnome2 python-r1
+inherit versionator eutils gnome2 python-multi-r2
 
 # This ebuild does nothing -- we just want to get the pkgconfig file installed
 

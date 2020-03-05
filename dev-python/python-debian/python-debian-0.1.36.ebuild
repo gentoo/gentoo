@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python modules to work with Debian-related data formats"
 HOMEPAGE="https://packages.debian.org/sid/python-debian"

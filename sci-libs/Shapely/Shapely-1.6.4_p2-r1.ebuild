@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Geometric objects, predicates, and operations"
 HOMEPAGE="https://pypi.org/project/Shapely/"
@@ -44,7 +44,7 @@ python_prepare_all() {
 		-e "s|\(data_files.*\)'shapely'|\1'share/shapely'|" \
 		setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

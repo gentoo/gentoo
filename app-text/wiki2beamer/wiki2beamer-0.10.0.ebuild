@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Tool to produce LaTeX Beamer code from wiki-like input"
 

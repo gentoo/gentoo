@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 gnome2-utils
+inherit distutils-r2 gnome2-utils
 
 DESCRIPTION="A graphical tool to install or upgrade Tails on a USB stick from an ISO image"
 HOMEPAGE="https://tails.boum.org https://git.tails.boum.org/liveusb-creator"
@@ -20,15 +20,15 @@ PATCHES=( ${FILESDIR}/fix-desktop-file.patch ${FILESDIR}/sgdisk.patch )
 
 DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/python-distutils-extra[${PYTHON_MULTI_USEDEP}]
+		dev-python/python-distutils-extra[${PYTHON_USEDEP}]
 	')"
 RDEPEND="${PYTHON_DEPS}
 	app-arch/p7zip
 	dev-libs/glib:2
 	$(python_gen_cond_dep '
-		dev-python/configobj[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject[${PYTHON_MULTI_USEDEP}]
-		dev-python/urlgrabber[${PYTHON_MULTI_USEDEP}]
+		dev-python/configobj[${PYTHON_USEDEP}]
+		dev-python/pygobject[${PYTHON_USEDEP}]
+		dev-python/urlgrabber[${PYTHON_USEDEP}]
 	')
 	sys-apps/gptfdisk
 	sys-auth/polkit

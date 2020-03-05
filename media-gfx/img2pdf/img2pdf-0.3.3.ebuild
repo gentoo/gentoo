@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Losslessly convert raster images to PDF"
 HOMEPAGE="https://gitlab.mister-muffin.de/josch/img2pdf"

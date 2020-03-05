@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils python-single-r1
+inherit autotools eutils python-single-r2
 
 DESCRIPTION="library to smooth charset/localization issues"
 HOMEPAGE="http://natspec.sourceforge.net/"
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	python? ( dev-lang/tcl:0= )"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

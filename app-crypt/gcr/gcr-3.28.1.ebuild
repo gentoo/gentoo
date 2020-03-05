@@ -5,7 +5,7 @@ EAPI=6
 VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-any-r1 vala virtualx
+inherit gnome2 python-any-r2 vala virtualx
 
 DESCRIPTION="Libraries for cryptographic UIs and accessing PKCS#11 modules"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gcr"
@@ -50,7 +50,7 @@ DEPEND="${COMMON_DEPEND}
 #	dev-libs/vala-common
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_prepare() {

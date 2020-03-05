@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit waf-utils multilib-minimal python-single-r1
+inherit waf-utils multilib-minimal python-single-r2
 
 DESCRIPTION="Samba tevent library"
 HOMEPAGE="https://tevent.samba.org/"
@@ -37,7 +37,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 WAF_BINARY="${S}/buildtools/bin/waf"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

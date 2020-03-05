@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 WX_GTK_VER="3.0-gtk3"
 
-inherit check-reqs cmake-utils eapi7-ver eutils gnome2-utils python-single-r1 toolchain-funcs wxwidgets xdg-utils
+inherit check-reqs cmake-utils eapi7-ver eutils gnome2-utils python-single-r2 toolchain-funcs wxwidgets xdg-utils
 
 DESCRIPTION="Electronic Schematic and PCB design tools"
 HOMEPAGE="http://www.kicad-pcb.org"
@@ -26,10 +26,10 @@ REQUIRED_USE="
 COMMON_DEPEND="x11-libs/wxGTK:${WX_GTK_VER}[X,opengl]
 	$(python_gen_cond_dep "
 		python? (
-			dev-python/wxpython:4.0[\${PYTHON_MULTI_USEDEP}]
+			dev-python/wxpython:4.0[\${PYTHON_USEDEP}]
 			${PYTHON_DEPS}
 		)
-		>=dev-libs/boost-1.61:=[context,nls,threads,python?,\${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.61:=[context,nls,threads,python?,\${PYTHON_USEDEP}]
 	")
 	github? ( net-misc/curl:=[ssl] )
 	media-libs/glew:0=
@@ -56,7 +56,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	use openmp && tc-check-openmp
 	setup-wxwidgets
 	check-reqs_pkg_setup

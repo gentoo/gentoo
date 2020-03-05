@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 eutils git-r3
+inherit distutils-r2 eutils git-r3
 
 DESCRIPTION="Open multi-site list manager for media tracking sites"
 HOMEPAGE="https://github.com/z411/trackma"
@@ -51,7 +51,7 @@ python_configure_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	newicon "${S}/trackma/data/icon.png" trackma.png
 	use cli && make_desktop_entry "${PN}" "${PN^} (cli)" "${PN}" "Network" "Terminal=true"
 	use ncurses && make_desktop_entry "${PN}-curses" "${PN^} (ncurses)" "${PN}" "Network" "Terminal=true"

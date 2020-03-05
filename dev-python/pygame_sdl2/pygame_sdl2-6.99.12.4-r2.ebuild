@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_6} )
-inherit distutils-r1
+inherit distutils-r2
 
 PYSDL="${PN}-2.1.0"
 
@@ -38,5 +38,5 @@ PATCHES=( "${FILESDIR}/pygame_sdl2-6.99.12.4-mixer.patch" )
 python_prepare_all()
 {
 	rm -r gen{,3} || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

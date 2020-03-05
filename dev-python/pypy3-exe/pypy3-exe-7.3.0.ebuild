@@ -5,7 +5,7 @@ EAPI=7
 
 # pypy3 needs to be built using python 2
 PYTHON_COMPAT=( python2_7 )
-inherit check-reqs pax-utils python-any-r1 toolchain-funcs
+inherit check-reqs pax-utils python-any-r2 toolchain-funcs
 
 MY_P=pypy3.6-v${PV/_/}
 DESCRIPTION="PyPy3 executable (build from source)"
@@ -75,7 +75,7 @@ pkg_setup() {
 			einfo "Using ${EPYTHON:-python2} to perform the translation. Please note that upstream"
 			einfo "recommends using PyPy for that. If you wish to do so, please install"
 			einfo "dev-python/pypy and ensure that EPYTHON variable is unset."
-			python-any-r1_pkg_setup
+			python-any-r2_pkg_setup
 		fi
 	fi
 }

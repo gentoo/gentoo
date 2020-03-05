@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_OPTIONAL=1
 
-inherit linux-info python-r1 toolchain-funcs
+inherit linux-info python-multi-r2 toolchain-funcs
 
 DESCRIPTION="User-space front-end for Ftrace"
 HOMEPAGE="https://git.kernel.org/cgit/linux/kernel/git/rostedt/trace-cmd.git"

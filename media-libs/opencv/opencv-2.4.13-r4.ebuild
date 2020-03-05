@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit toolchain-funcs cmake-utils python-single-r1 java-pkg-opt-2 java-ant-2
+inherit toolchain-funcs cmake-utils python-single-r2 java-pkg-opt-2 java-ant-2
 
 DESCRIPTION="A collection of algorithms and sample code for various computer vision problems"
 HOMEPAGE="https://opencv.org"
@@ -55,8 +55,8 @@ RDEPEND="
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
 			|| (
-				dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-				dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+				dev-python/numpy-python2[${PYTHON_USEDEP}]
+				dev-python/numpy[${PYTHON_USEDEP}]
 			)
 		')
 	)
@@ -92,7 +92,7 @@ PATCHES=(
 
 pkg_setup() {
 	[[ ${MERGE_TYPE} != binary ]] && use openmp && tc-check-openmp
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	java-pkg-opt-2_pkg_setup
 }
 

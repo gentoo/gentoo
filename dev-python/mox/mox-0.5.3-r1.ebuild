@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A mock object framework for Python, loosely based on EasyMock for Java"
 HOMEPAGE="https://pypi.org/project/mox/"

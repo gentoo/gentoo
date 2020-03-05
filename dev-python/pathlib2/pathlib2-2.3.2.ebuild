@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Fork of pathlib aiming to support the full stdlib Python API"
 HOMEPAGE="https://github.com/mcmtroffaes/pathlib2"

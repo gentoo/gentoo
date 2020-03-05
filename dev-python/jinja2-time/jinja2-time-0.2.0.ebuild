@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Jinja2 Extension for Dates and Times"
 HOMEPAGE="https://github.com/hackebrot/jinja2-time"

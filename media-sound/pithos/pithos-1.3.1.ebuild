@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
-inherit autotools gnome2-utils python-r1
+inherit autotools gnome2-utils python-multi-r2
 
 if [[ ${PV} =~ [9]{4,} ]]; then
 	inherit git-2

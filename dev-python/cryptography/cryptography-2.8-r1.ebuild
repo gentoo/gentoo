@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 VEC_P=cryptography_vectors-${PV}
 DESCRIPTION="Library providing cryptographic recipes and primitives"

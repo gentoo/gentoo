@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Terminals served to term.js using Tornado websockets"
 HOMEPAGE="https://pypi.org/project/terminado/ https://github.com/jupyter/terminado"

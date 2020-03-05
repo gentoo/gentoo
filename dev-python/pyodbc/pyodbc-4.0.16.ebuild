@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="python ODBC module to connect to almost any database"
 HOMEPAGE="https://github.com/mkleehammer/pyodbc"

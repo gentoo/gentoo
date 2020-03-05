@@ -6,7 +6,7 @@ GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 
-inherit gnome2 python-r1
+inherit gnome2 python-multi-r2
 
 DESCRIPTION="Input assistive technology intended for switch and pointer users"
 HOMEPAGE="https://wiki.gnome.org/Projects/Caribou"

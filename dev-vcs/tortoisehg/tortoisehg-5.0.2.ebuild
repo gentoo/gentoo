@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit desktop distutils-r1
+inherit desktop distutils-r2
 
 if [[ ${PV} != *9999* ]]; then
 	KEYWORDS="~amd64 ~x86"
@@ -51,7 +51,7 @@ python_prepare_all() {
 		done
 		cd "${S}" || die
 	fi
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -59,7 +59,7 @@ python_compile_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	dodoc doc/ReadMe*.txt doc/TODO contrib/mergetools.rc
 	if use doc ; then
 		docinto html

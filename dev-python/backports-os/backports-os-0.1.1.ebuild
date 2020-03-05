@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Backport of new features in Python's os module"
 HOMEPAGE="https://github.com/pjdelport/backports.os"
@@ -26,7 +26,7 @@ S="${WORKDIR}/${P/-/.}"
 
 src_prepare() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {
@@ -34,7 +34,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	# main namespace provided by dev-python/backports
 	rm "${D}/$(python_get_sitedir)"/backports/__init__.py* || die
 	rm -rf "${D}/$(python_get_sitedir)"/backports/__pycache__ || die

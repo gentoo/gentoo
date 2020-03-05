@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library to sort collections and containers"
 HOMEPAGE="http://www.grantjenks.com/docs/sortedcontainers/"

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Easy configuration as code tool for GitLab using config in plain YAML"
 HOMEPAGE="https://github.com/egnyte/gitlabform"
@@ -30,7 +30,7 @@ DEPEND="
 
 python_prepare_all() {
 	sed -i -e "/pypandoc/d" -e "/long_description/d" setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

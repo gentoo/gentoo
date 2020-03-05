@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="A more pythonic replacement for the unittest module and nose"
 HOMEPAGE="https://github.com/Yelp/testify https://pypi.org/project/testify/"
@@ -33,7 +33,7 @@ python_prepare_all() {
 	sed -e s':from .test:from test:' \
 		-i test/test_runner_test.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

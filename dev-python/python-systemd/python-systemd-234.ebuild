@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6..8} )
 DISTUTILS_USE_SETUPTOOLS="no"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python module for native access to the systemd facilities"
 HOMEPAGE="https://github.com/systemd/python-systemd"
@@ -25,7 +25,7 @@ RDEPEND="${DEPEND}
 
 python_compile() {
 	# https://bugs.gentoo.org/690316
-	distutils-r1_python_compile -j1
+	distutils-r2_python_compile -j1
 }
 
 python_test() {

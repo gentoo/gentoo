@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 git-r3 versionator
+inherit distutils-r2 git-r3 versionator
 
 DESCRIPTION="Python module for structural bioinformatics"
 HOMEPAGE="http://p3d.fufezan.net/"
@@ -18,7 +18,7 @@ LICENSE="GPL-3"
 IUSE="examples"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	if use examples; then
 		insinto /usr/share/${PN}

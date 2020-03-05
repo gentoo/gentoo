@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=numdifftools
 MY_P="${MY_PN}-${PV}"
@@ -52,7 +52,7 @@ python_prepare_all() {
 		-e '/tests_require/d' \
 		-i setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

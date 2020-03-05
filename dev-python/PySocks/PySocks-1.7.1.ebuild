@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="SOCKS client module"
 HOMEPAGE="https://github.com/Anorov/PySocks https://pypi.org/project/PySocks/"
@@ -41,7 +41,7 @@ src_prepare() {
 	sed -i -e 's:test_socks5_proxy_connect_timeout:_&:' \
 		test/test_pysocks.py || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

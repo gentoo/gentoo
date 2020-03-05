@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings for the Lightning Database"
 HOMEPAGE="https://github.com/dw/py-lmdb/"
@@ -20,5 +20,5 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_compile() {
-	LMDB_FORCE_SYSTEM=1 distutils-r1_python_compile
+	LMDB_FORCE_SYSTEM=1 distutils-r2_python_compile
 }

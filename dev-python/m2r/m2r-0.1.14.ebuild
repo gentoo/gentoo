@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7})
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Markdown to reStructuredText converter"
 HOMEPAGE="https://github.com/miyakogi/m2r https://pypi.org/project/m2r/"
@@ -38,7 +38,7 @@ python_prepare_all() {
 	cp "${FILESDIR}/"test.md tests/ || die
 	cp "${FILESDIR}/"test.rst tests/ || die
 	cp "${FILESDIR}/"m2r.1 ./ || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -46,6 +46,6 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	doman m2r.1
 }

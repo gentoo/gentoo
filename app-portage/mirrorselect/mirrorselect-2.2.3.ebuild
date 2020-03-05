@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 
-inherit eutils distutils-r1 prefix
+inherit eutils distutils-r2 prefix
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Mirrorselect"
@@ -31,5 +31,5 @@ python_prepare_all() {
 	eprefixify setup.py mirrorselect/main.py
 	echo Now setting version... VERSION="${PVR}" "${PYTHON}" setup.py set_version
 	VERSION="${PVR}" "${PYTHON}" setup.py set_version || die "setup.py set_version failed"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

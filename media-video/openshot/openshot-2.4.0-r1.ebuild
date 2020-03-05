@@ -7,7 +7,7 @@ PYTHON_REQ_USE=xml
 PYTHON_COMPAT=( python3_6 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 gnome2-utils versionator xdg-utils
+inherit distutils-r2 gnome2-utils versionator xdg-utils
 
 MY_PN="${PN}-qt"
 MY_P="${MY_PN}-${PV}"
@@ -22,10 +22,10 @@ KEYWORDS="amd64 x86"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
-		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},svg,webkit]
-		dev-python/pyzmq[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
+		dev-python/httplib2[${PYTHON_USEDEP}]
+		dev-python/PyQt5[${PYTHON_USEDEP},svg,webkit]
+		dev-python/pyzmq[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
 	')
 	>=media-libs/libopenshot-0.1.8[python,${PYTHON_SINGLE_USEDEP}]
 "
@@ -33,7 +33,7 @@ RDEPEND="
 S="${WORKDIR}"
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	# prevent setup.py from trying to update MIME databases
 	sed -i 's/^ROOT =.*/ROOT = False/' setup.py || die
 }

@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="CFFI interface to dev-libs/libgcrypt"
 HOMEPAGE="https://framagit.org/okhin/pygcrypt/"

@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit gnome2 python-single-r1
+inherit gnome2 python-single-r2
 
 DESCRIPTION="Eye of GNOME plugins"
 HOMEPAGE="https://wiki.gnome.org/Apps/EyeOfGnome/Plugins"
@@ -36,7 +36,7 @@ RDEPEND="
 		>=dev-libs/glib-2.32:2[dbus]
 		dev-libs/libpeas:=[gtk,python,${PYTHON_SINGLE_USEDEP}]
 		$(python_gen_cond_dep '
-			dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject:3[${PYTHON_USEDEP}]
 		')
 		gnome-base/gsettings-desktop-schemas
 		media-gfx/eog[introspection]
@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 "
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

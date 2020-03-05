@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="validate Swagger specs  against Swagger 1.1 or 2.0 specification"
 HOMEPAGE="https://github.com/Yelp/swagger_spec_validator"

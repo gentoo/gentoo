@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Allow a different format in dosctrings for better clarity"
 HOMEPAGE="https://sphinxcontrib-napoleon.readthedocs.io/"
@@ -28,6 +28,6 @@ DEPEND="
 "
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 VALA_USE_DEPEND="vapigen"
 
-inherit cmake-utils db-use flag-o-matic gnome2 python-any-r1 systemd vala virtualx
+inherit cmake-utils db-use flag-o-matic gnome2 python-any-r2 systemd vala virtualx
 
 DESCRIPTION="Evolution groupware backend"
 HOMEPAGE="https://wiki.gnome.org/Apps/Evolution"
@@ -79,7 +79,7 @@ DEPEND="${RDEPEND}
 RESTRICT="test !test? ( test )"
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 # global scope PATCHES or DOCS array mustn't be used due to double default_src_prepare call

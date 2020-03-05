@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A fast and simple image viewer based on python and GTK+"
 HOMEPAGE="http://mirageiv.berlios.de/"
@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${PN}-0.9.3-stop_cleaning_up.patch )
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	local XDOCS="COPYING CHANGELOG README TODO TRANSLATORS"
 	local x
 	for x in ${XDOCS}; do

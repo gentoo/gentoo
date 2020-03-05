@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="The swiss army knife of subGHz"
 HOMEPAGE="https://github.com/atlas0fd00m/rfcat.git"
@@ -35,7 +35,7 @@ IUSE=""
 PDEPEND="dev-python/future[${PYTHON_USEDEP}]"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	if [ "${PV}" != "9999" ]; then
 		insinto /usr/share/rfcat

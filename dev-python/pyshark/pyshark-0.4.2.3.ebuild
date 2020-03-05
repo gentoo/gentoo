@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="A Python wrapper for tshark output parsing"
 HOMEPAGE="https://pypi.org/project/pyshark/ https://github.com/KimiNewt/pyshark"
@@ -41,7 +41,7 @@ python_prepare_all() {
 	# Test fails unless portage can execute /usr/bin/dumpcap
 	# https://github.com/KimiNewt/pyshark/issues/197
 	rm "${WORKDIR}/${P}/tests/capture/test_inmem_capture.py" || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

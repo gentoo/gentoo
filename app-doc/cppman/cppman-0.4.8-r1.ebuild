@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite,threads"
 
 DISTUTILS_SINGLE_IMPL=true
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="C++ man pages for Linux, with source from cplusplus.com and cppreference.com"
 HOMEPAGE="https://github.com/aitjcize/cppman"
@@ -22,8 +22,8 @@ KEYWORDS="~amd64 ~arm ~x86 ~x64-macos"
 RDEPEND="
 	sys-apps/groff
 	$(python_gen_cond_dep '
-		dev-python/beautifulsoup:4[${PYTHON_MULTI_USEDEP}]
-		dev-python/html5lib[${PYTHON_MULTI_USEDEP}]
+		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/html5lib[${PYTHON_USEDEP}]
 	')
 "
 

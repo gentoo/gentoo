@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Spec-compliant and thorough implementation of the OAuth request-signing logic"
 HOMEPAGE="https://github.com/idan/oauthlib https://pypi.org/project/oauthlib/"

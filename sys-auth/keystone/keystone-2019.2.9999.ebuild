@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="The Openstack authentication, authorization, and service catalog"
 HOMEPAGE="https://launchpad.net/keystone"
@@ -109,7 +109,7 @@ python_prepare_all() {
 	sed -i 's|python|python27|g' httpd/keystone-uwsgi-* || die
 	# allow useage of renamed msgpack
 	sed -i '/^msgpack/d' requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -121,7 +121,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	diropts -m 0750
 	keepdir /etc/keystone /var/log/keystone

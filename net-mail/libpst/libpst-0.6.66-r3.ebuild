@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools python-single-r1
+inherit autotools python-single-r2
 
 DESCRIPTION="Tools and library for reading Outlook files (.pst format)"
 HOMEPAGE="https://www.five-ten-sg.com/libpst/"
@@ -23,7 +23,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.70:=[python,${PYTHON_MULTI_USEDEP}]
+			>=dev-libs/boost-1.70:=[python,${PYTHON_USEDEP}]
 		')
 	)"
 DEPEND="${RDEPEND}
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	dii? ( media-libs/gd[png] )"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

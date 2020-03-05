@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Provides a helpers pytest namespace"
 HOMEPAGE="https://github.com/saltstack/pytest-helpers-namespace"

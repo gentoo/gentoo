@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} ) # Tests crash with pypy
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Tools for generating printable PDF documents from any data source"
 HOMEPAGE="http://www.reportlab.com/"
@@ -46,7 +46,7 @@ python_compile() {
 	if ! python_is_python3; then
 		local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -62,5 +62,5 @@ python_install_all() {
 		dosod -r demos/. tools/pythonpoint/demos
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

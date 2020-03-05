@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit cmake-utils python-single-r1
+inherit cmake-utils python-single-r2
 
 MY_P="${PN}1-${PV}"
 if [[ ${PV} == 9999* ]] ; then
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 S=${WORKDIR}/${MY_P}

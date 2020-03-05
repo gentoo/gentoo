@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Stateful programmatic web browsing in Python"
 HOMEPAGE="http://wwwsearch.sourceforge.net/mechanize/ https://pypi.org/project/mechanize/"
@@ -31,5 +31,5 @@ python_install_all() {
 		dohtml -r docs/html/ docs/styles
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

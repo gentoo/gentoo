@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils fdo-mime gnome2-utils distutils-r1 versionator
+inherit eutils fdo-mime gnome2-utils distutils-r2 versionator
 
 MY_PV="$(get_version_component_range 1-2)"
 DESCRIPTION="Personal organizer for the GNOME desktop environment"
@@ -42,7 +42,7 @@ python_prepare_all() {
 		-i setup.py || die
 
 	# launchpad: missing dependency
-	# evolution: missing python-r1 support
+	# evolution: missing python-multi-r2 support
 	rm GTG/backends/backend_launchpad.py \
 		GTG/backends/backend_evolution.py \
 		|| die
@@ -53,7 +53,7 @@ python_prepare_all() {
 	# Fix validation warning
 	epatch "${FILESDIR}"/${PN}-0.3.1-desktop.patch
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 pkg_preinst() {

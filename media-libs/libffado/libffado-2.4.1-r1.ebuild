@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit desktop python-single-r1 scons-utils toolchain-funcs udev multilib-minimal
+inherit desktop python-single-r2 scons-utils toolchain-funcs udev multilib-minimal
 
 DESCRIPTION="Driver for IEEE1394 (Firewire) audio interfaces"
 HOMEPAGE="http://www.ffado.org"
@@ -34,8 +34,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	sys-libs/libraw1394[${MULTILIB_USEDEP}]
 	qt5? (
 		$(python_gen_cond_dep '
-			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-			dev-python/PyQt5[dbus,${PYTHON_MULTI_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
+			dev-python/PyQt5[dbus,${PYTHON_USEDEP}]
 		')
 		x11-misc/xdg-utils
 	)"

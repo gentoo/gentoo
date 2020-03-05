@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit python-any-r1 cmake-utils
+inherit python-any-r2 cmake-utils
 
 DESCRIPTION="CBOR protocol implementation for C and others"
 HOMEPAGE="https://github.com/pjk/libcbor"
@@ -35,7 +35,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	use doc && python-any-r1_pkg_setup
+	use doc && python-any-r2_pkg_setup
 }
 
 src_configure() {

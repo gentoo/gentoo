@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Click-based argument and option decorators for Python GIS command line programs"
 HOMEPAGE="https://github.com/mapbox/cligj"

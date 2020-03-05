@@ -5,7 +5,7 @@ EAPI=5
 
 # TODO: multiple ABI?
 PYTHON_COMPAT=( python2_7 )
-inherit eutils flag-o-matic cmake-utils python-single-r1
+inherit eutils flag-o-matic cmake-utils python-single-r2
 
 DESCRIPTION="Crazy Eddie's GUI System"
 HOMEPAGE="http://www.cegui.org.uk/"
@@ -44,7 +44,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-libs/boost:=[python,${PYTHON_MULTI_USEDEP}]
+			dev-libs/boost:=[python,${PYTHON_USEDEP}]
 		')
 	)
 	tinyxml? ( dev-libs/tinyxml )

@@ -8,7 +8,7 @@ WX_GTK_VER="3.0"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads,ssl"
 
-inherit eutils wxwidgets toolchain-funcs gnome2-utils python-any-r1
+inherit eutils wxwidgets toolchain-funcs gnome2-utils python-any-r2
 
 MY_P=0ad-${PV/_/-}
 DESCRIPTION="A free, real-time strategy game"
@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 	use editor && setup-wxwidgets
 }
 

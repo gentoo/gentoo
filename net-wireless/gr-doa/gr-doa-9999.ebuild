@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils git-r3 python-single-r1
+inherit cmake-utils git-r3 python-single-r2
 
 DESCRIPTION="Gnuradio flowgraphs and modules for Direction of Arrival analysis"
 HOMEPAGE="https://github.com/samwhiting/gnuradio-doa"

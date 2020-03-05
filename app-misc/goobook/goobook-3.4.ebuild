@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 readme.gentoo-r1
+inherit distutils-r2 readme.gentoo-r1
 
 DESCRIPTION="Access your Google contacts from the command line"
 HOMEPAGE="https://gitlab.com/goobook/goobook"
@@ -36,7 +36,7 @@ You may find more information and advanced configuration tips at
 https://pypi.org/project/${PN}/${PV} in \"Configure/Mutt\" section"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	readme.gentoo_create_doc
 }
 

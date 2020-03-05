@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='xml'
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="Web-application vulnerability scanner"
 HOMEPAGE="http://wapiti.sourceforge.net/"
@@ -34,5 +34,5 @@ RDEPEND="dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
 
 python_prepare_all() {
 	sed -e 's/"pytest-runner"//' -i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

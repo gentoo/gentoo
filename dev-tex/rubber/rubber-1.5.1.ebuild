@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A LaTeX wrapper for automatically building documents"
 HOMEPAGE="https://launchpad.net/rubber/"
@@ -19,7 +19,7 @@ BDEPEND="${RDEPEND}
 	virtual/texi2dvi"
 
 python_install() {
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--infodir="${EPREFIX}"/usr/share/info \
 		--mandir="${EPREFIX}"/usr/share/man

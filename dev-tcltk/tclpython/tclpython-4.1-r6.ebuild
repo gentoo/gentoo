@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils multilib python-single-r1 toolchain-funcs
+inherit eutils multilib python-single-r2 toolchain-funcs
 
 DESCRIPTION="Python package for Tcl"
 HOMEPAGE="http://jfontain.free.fr/tclpython.htm"

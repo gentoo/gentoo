@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A tool that figures out the differences between two similar XML files"
 HOMEPAGE="https://github.com/Shoobx/xmldiff https://www.logilab.org/project/xmldiff"

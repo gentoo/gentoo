@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Modern password hashing for software and servers"
 HOMEPAGE="https://github.com/pyca/bcrypt/ https://pypi.org/project/bcrypt/"

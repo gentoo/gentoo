@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A utility to maintain package.unmask entries up-to-date with masks"
 HOMEPAGE="https://github.com/mgorny/diffmask/"

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P="${P/scikits_/scikits.}"
 
@@ -37,11 +37,11 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	rm "${D}"$(python_get_sitedir)/scikits/__init__.py || die
 }
 
 python_install_all() {
 	use doc && HTMLDOCS=( "${WORKDIR}/html" )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

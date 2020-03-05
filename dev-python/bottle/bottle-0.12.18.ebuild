@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="A fast and simple micro-framework for small web-applications"
 HOMEPAGE="https://pypi.org/project/bottle/ https://bottlepy.org/"
@@ -29,7 +29,7 @@ python_prepare_all() {
 
 	# Remove test file requring connection to network
 	rm test/test_server.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

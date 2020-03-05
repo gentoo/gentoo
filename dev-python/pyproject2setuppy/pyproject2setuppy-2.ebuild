@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=manual
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Cheap setup.py hack to install flit & poetry-based projects"
 HOMEPAGE="https://github.com/mgorny/pyproject2setuppy"

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Rapid multi-Python deployment"
 HOMEPAGE="http://codespeak.net/execnet/ https://pypi.org/project/execnet/"
@@ -40,5 +40,5 @@ python_prepare_all() {
 	printf -- '__version__ = "%s"\nversion = "%s"\n' "${PV}" "${PV}" > \
 		execnet/_version.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

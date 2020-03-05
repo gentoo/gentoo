@@ -6,7 +6,7 @@ EAPI=7
 # The selftests fail with pypy, and urlgrabber segfaults for me.
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="python binding for curl/libcurl"
 HOMEPAGE="
@@ -51,7 +51,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 python_prepare_all() {
 	sed -e "/setup_args\['data_files'\] = /d" -i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -61,7 +61,7 @@ python_configure_all() {
 
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -72,5 +72,5 @@ python_test() {
 python_install_all() {
 	local HTML_DOCS=( doc/. )
 	use examples && dodoc -r examples
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

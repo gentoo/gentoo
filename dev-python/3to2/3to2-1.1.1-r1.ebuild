@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Tool to refactor valid 3.x syntax into valid 2.x syntax"
 HOMEPAGE="https://pypi.org/project/3to2/"
@@ -24,7 +24,7 @@ python_prepare() {
 		lib3to2/tests/test_print.py || die
 	sed -i -e "s/Exception, err/Exception as err/" lib3to2/build.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

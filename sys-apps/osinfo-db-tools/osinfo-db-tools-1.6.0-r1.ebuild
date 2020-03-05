@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-any-r1 gnome2
+inherit python-any-r2 gnome2
 
 DESCRIPTION="Tools for managing the osinfo database"
 HOMEPAGE="https://libosinfo.org/"
@@ -49,5 +49,5 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }

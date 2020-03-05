@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Port of the asyncio project to Python 2.7 (deprecated)"
 HOMEPAGE="https://github.com/vstinner/trollius https://pypi.org/project/trollius/"

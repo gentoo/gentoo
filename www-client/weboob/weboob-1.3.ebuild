@@ -18,7 +18,7 @@ else
 fi
 
 EGIT_REPO_URI="https://git.weboob.org/${PN}/${EGIT_BASE}.git"
-inherit distutils-r1 gnome2-utils ${GIT_SCM}
+inherit distutils-r2 gnome2-utils ${GIT_SCM}
 unset EGIT_BASE GIT_SCM
 
 DESCRIPTION="Consume lots of websites without a browser (Web Outside Of Browsers)"
@@ -75,7 +75,7 @@ python_configure_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	insinto /usr/share/${PN}/
 	doins -r contrib
 }

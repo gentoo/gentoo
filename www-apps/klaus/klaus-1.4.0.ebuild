@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A simple, easy-to-set-up Git web viewer"
 HOMEPAGE="https://github.com/jonashaag/klaus/"
@@ -31,6 +31,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 # so they are not included in the source distributions
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	doman ${PN}.1
 }

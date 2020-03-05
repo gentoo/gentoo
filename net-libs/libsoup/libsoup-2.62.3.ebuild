@@ -6,7 +6,7 @@ GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python3_6 )
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome2 multilib-minimal python-any-r1 vala
+inherit gnome2 multilib-minimal python-any-r2 vala
 
 DESCRIPTION="An HTTP library implementation in C"
 HOMEPAGE="https://wiki.gnome.org/Projects/libsoup"

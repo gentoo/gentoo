@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7})
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="An implementation of JSON Reference for Python"
 HOMEPAGE="https://github.com/gazpachoking/jsonref https://pypi.org/project/jsonref/"

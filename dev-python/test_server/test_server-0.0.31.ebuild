@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Server to test HTTP clients"
 HOMEPAGE="https://github.com/lorien/test_server https://pypi.org/project/test-server/"
@@ -23,7 +23,7 @@ RDEPEND="
 distutils_enable_tests pytest
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 
 	# broken on py2.7, upstream knows
 	sed -i -e '5a\

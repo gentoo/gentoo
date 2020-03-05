@@ -21,7 +21,7 @@ else
 	S="${WORKDIR}"/${MY_P}
 fi
 
-inherit toolchain-funcs python-any-r1 cmake-multilib
+inherit toolchain-funcs python-any-r2 cmake-multilib
 
 DESCRIPTION="Vulkan Installable Client Driver (ICD) Loader"
 HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Loader"

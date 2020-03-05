@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A mail user agent auto configuration service"
 HOMEPAGE="http://www.automx.org"
@@ -19,14 +19,14 @@ IUSE="ldap memcached sql +tools"
 
 DEPEND="
 	$(python_gen_cond_dep '
-		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-		dev-python/m2crypto[${PYTHON_MULTI_USEDEP}]
-		dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
-		|| ( www-apache/mod_wsgi[${PYTHON_MULTI_USEDEP}] www-servers/uwsgi )
-		ldap? ( dev-python/python-ldap[${PYTHON_MULTI_USEDEP}]  )
-		memcached? ( dev-python/python-memcached[${PYTHON_MULTI_USEDEP}] )
-		sql? ( dev-python/sqlalchemy[${PYTHON_MULTI_USEDEP}] )
+		dev-python/ipaddr[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/m2crypto[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		|| ( www-apache/mod_wsgi[${PYTHON_USEDEP}] www-servers/uwsgi )
+		ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}]  )
+		memcached? ( dev-python/python-memcached[${PYTHON_USEDEP}] )
+		sql? ( dev-python/sqlalchemy[${PYTHON_USEDEP}] )
 	')
 	tools? ( net-dns/bind-tools net-misc/wget )
 	"
@@ -34,14 +34,14 @@ RDEPEND="${DEPEND}"
 
 python_prepare_all() {
 	sed -i '/py_modules=/d' setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
 	DOCS=( INSTALL CREDITS CHANGES BASIC_CONFIGURATION_README )
 	HTML_DOCS=( doc/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	docinto examples
 	dodoc src/conf/*example*

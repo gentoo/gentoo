@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Python Cryptography Toolkit"
 HOMEPAGE="https://www.dlitz.net/software/pycrypto/
@@ -43,7 +43,7 @@ python_prepare_all() {
 		-e "s/return 'ssh-rsa '/return b('ssh-rsa ')/" \
 		-i lib/Crypto/PublicKey/RSA.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -68,7 +68,7 @@ python_compile() {
 		append-cflags -fno-strict-aliasing
 	fi
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {

@@ -6,7 +6,7 @@ EAPI=6
 WX_GTK_VER="3.0"
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit python-single-r1 wxwidgets cmake-utils eapi7-ver xdg
+inherit python-single-r2 wxwidgets cmake-utils eapi7-ver xdg
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
@@ -61,7 +61,7 @@ PATCHES=( "${FILESDIR}/${P}-exiv2-0.27.1.patch" ) # bug 686366
 S=${WORKDIR}/${PN}-$(ver_cut 1-2).0
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	setup-wxwidgets
 }
 

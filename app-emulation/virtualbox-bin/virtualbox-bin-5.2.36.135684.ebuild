@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit xdg-utils gnome2 pax-utils python-r1 udev unpacker eapi7-ver
+inherit xdg-utils gnome2 pax-utils python-multi-r2 udev unpacker eapi7-ver
 
 MAIN_PV="$(ver_cut 1-3)"
 if [[ ${PV} = *_beta* ]] || [[ ${PV} = *_rc* ]] ; then

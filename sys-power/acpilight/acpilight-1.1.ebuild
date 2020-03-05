@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-r1 udev
+inherit python-multi-r2 udev
 
 MY_P="${PN}-v${PV}"
 

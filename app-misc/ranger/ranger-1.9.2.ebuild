@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 PYTHON_REQ_USE="ncurses"
 
-inherit distutils-r1
+inherit distutils-r2
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/ranger/ranger.git"
@@ -28,7 +28,7 @@ src_prepare() {
 	# use versioned doc path
 	sed -i "s|share/doc/ranger|share/doc/${PF}|" setup.py doc/ranger.1 || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 pkg_postinst() {

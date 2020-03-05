@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Making it easy to write async iterators in Python 3.5"
 HOMEPAGE="https://github.com/python-trio/async_generator https://pypi.org/project/async_generator/"

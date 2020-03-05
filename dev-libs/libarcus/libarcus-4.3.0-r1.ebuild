@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake python-single-r1
+inherit cmake python-single-r2
 
 MY_PN="libArcus"
 
@@ -22,15 +22,15 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 RDEPEND="${PYTHON_DEPS}
 	dev-libs/protobuf
 	$(python_gen_cond_dep '
-		dev-python/sip[${PYTHON_MULTI_USEDEP}]
-		python? ( dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}] )
+		dev-python/sip[${PYTHON_USEDEP}]
+		python? ( dev-python/protobuf-python[${PYTHON_USEDEP}] )
 	')"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

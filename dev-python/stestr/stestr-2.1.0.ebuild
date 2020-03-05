@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 python3_6 python3_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A parallel Python test runner built around subunit"
 HOMEPAGE="https://github.com/mtreinish/stestr"

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit elisp distutils-r1
+inherit elisp distutils-r2
 
 DESCRIPTION="A tool that allows both-side communication beetween Python and Emacs Lisp"
 HOMEPAGE="https://www.emacswiki.org/emacs/PyMacs"
@@ -28,10 +28,10 @@ python_prepare_all() {
 	sed \
 		-e '/pymacs-python-command/s/@PYTHON@/python/' \
 		-i pymacs.el.in || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
-# called by distutils-r1 for every python implementation
+# called by distutils-r2 for every python implementation
 python_configure() {
 	# pre-process the files but don't run distutils
 	emake PYSETUP=: PYTHON=${EPYTHON}
@@ -49,7 +49,7 @@ python_compile_all() {
 python_install_all() {
 	elisp_src_install
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	dodoc pymacs.rst
 	#use doc && dodoc pymacs.pdf
 }

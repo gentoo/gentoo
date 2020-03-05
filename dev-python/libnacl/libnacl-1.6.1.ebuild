@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=(python3_6)
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python ctypes wrapper for libsodium"
 HOMEPAGE="https://libnacl.readthedocs.org/"

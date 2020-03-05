@@ -6,7 +6,7 @@ EAPI=7
 # Support for 3.7 needs support from dependencies, first
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A python script that converts RSS/Atom newsfeeds to email"
 HOMEPAGE="https://github.com/rss2email/rss2email"
@@ -24,6 +24,6 @@ RDEPEND=">=dev-python/feedparser-5.0.1[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	doman r2e.1
 }

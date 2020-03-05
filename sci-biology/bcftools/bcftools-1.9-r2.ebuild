@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Utilities for variant calling and manipulating VCF and BCF files"
 HOMEPAGE="http://www.htslib.org"
@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	dev-lang/perl
 	$(python_gen_cond_dep '
-		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
 	')
 	=sci-libs/htslib-${PV}*:=
 	sys-libs/zlib:=

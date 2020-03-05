@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="python GPX parser"
 HOMEPAGE="https://github.com/tkrajina/gpxpy"

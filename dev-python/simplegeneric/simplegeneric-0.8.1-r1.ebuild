@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple generic functions for Python"
 HOMEPAGE="https://pypi.org/project/simplegeneric/"

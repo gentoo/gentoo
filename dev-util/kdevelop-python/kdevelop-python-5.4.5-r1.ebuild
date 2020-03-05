@@ -8,7 +8,7 @@ KDE_ORG_NAME="kdev-python"
 PYTHON_COMPAT=( python3_{6,7,8} )
 KFMIN=5.60.0
 QTMIN=5.12.3
-inherit ecm kde.org python-single-r1
+inherit ecm kde.org python-single-r2
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	KEYWORDS="amd64 x86"
@@ -42,13 +42,13 @@ DEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pycodestyle[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycodestyle[${PYTHON_USEDEP}]
 	')
 "
 
 RESTRICT+=" test"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	ecm_pkg_setup
 }

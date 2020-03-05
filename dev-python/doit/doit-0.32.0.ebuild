@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="Automation tool"
 HOMEPAGE="http://python-doit.sourceforge.net/ https://pypi.org/project/doit/"
@@ -42,7 +42,7 @@ python_prepare_all() {
 	# Test requires connection to an absent database
 	sed -e s':testIgnoreAll:_&:' -i tests/test_cmd_ignore.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -67,5 +67,5 @@ python_test() {
 src_install() {
 	use doc && HTML_DOCS=( doc/_build/html/. )
 
-	distutils-r1_src_install
+	distutils-r2_src_install
 }

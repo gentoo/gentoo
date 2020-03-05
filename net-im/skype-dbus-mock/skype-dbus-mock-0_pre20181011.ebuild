@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit python-r1
+inherit python-multi-r2
 
 GIT_COMMIT="3a9e2882ac5c0ad6be3c5cb5c7da008b4cfa51da"
 DESCRIPTION="Mocked systemd dbus interface for skype 8.30+"

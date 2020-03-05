@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 USE_RUBY="ruby24 ruby25 ruby26"
 DISTUTILS_OPTIONAL=1
 
-inherit autotools distutils-r1 ruby-single
+inherit autotools distutils-r2 ruby-single
 
 DESCRIPTION="Prelude-SIEM Framework Library"
 HOMEPAGE="https://www.prelude-siem.org"
@@ -55,7 +55,7 @@ src_prepare() {
 
 	if use python; then
 		cd bindings/python || die
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 	fi
 }
 
@@ -87,7 +87,7 @@ src_compile() {
 	default
 	if use python; then
 		cd bindings/python || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -96,6 +96,6 @@ src_install() {
 	find "${D}" -name '*.la' -delete || die
 	if use python; then
 		cd bindings/python || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 }

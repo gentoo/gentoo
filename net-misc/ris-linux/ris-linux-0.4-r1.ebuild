@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="BINL server to doing Windows(r) RIS"
 HOMEPAGE="http://oss.netfarm.it/guides/pxe.php"
@@ -26,11 +26,11 @@ RDEPEND="${DEPEND}
 
 python_prepare_all() {
 	sed "s:VERSION:${PV}:" "${FILESDIR}"/setup.py > "${S}"/setup.py
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	newinitd "${FILESDIR}"/binlsrv.initd binlsrv
 	newconfd "${FILESDIR}"/binlsrv.confd binlsrv

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils gnome2-utils multilib python-single-r1 toolchain-funcs
+inherit eutils gnome2-utils multilib python-single-r2 toolchain-funcs
 
 DESCRIPTION="a Rhythmbox-like PyGTK+ client for Music Player Daemon"
 HOMEPAGE="https://sourceforge.net/projects/pympd"
@@ -18,7 +18,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/pygtk-2.6:2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygtk-2.6:2[${PYTHON_USEDEP}]
 	')
 	gnome-base/libglade:2.0
 	x11-libs/gdk-pixbuf:2[jpeg]
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${P}-desktop-entry.patch )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MYPN="${PN/scikits_/scikit-}"
 MYP="${MYPN}-${PV}"
@@ -75,11 +75,11 @@ python_prepare_all() {
 	#for f in sklearn/{utils/fixes.py,gaussian_process/{tests/test_,}kernels.py}; do
 	#	sed -r -e 's/from (sklearn|\.|)\.externals\.funcsigs/from funcsigs/' -i $f || die
 	#done
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
-	distutils-r1_python_compile ${SCIPY_FCONFIG}
+	distutils-r2_python_compile ${SCIPY_FCONFIG}
 }
 
 python_test() {
@@ -95,12 +95,12 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install ${SCIPY_FCONFIG}
+	distutils-r2_python_install ${SCIPY_FCONFIG}
 }
 
 python_install_all() {
 	find "${S}" -name \*LICENSE.txt -delete
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples; then
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples

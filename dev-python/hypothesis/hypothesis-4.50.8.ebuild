@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+),sqlite"
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="A library for property based testing"
 HOMEPAGE="https://github.com/HypothesisWorks/hypothesis https://pypi.org/project/hypothesis/"
@@ -39,7 +39,7 @@ src_prepare() {
 	# avoid pytest-xdist dep for one test
 	sed -i -e 's:test_prints_statistics_given_option_under_xdist:_&:' \
 		tests/pytest/test_statistics.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

@@ -5,7 +5,7 @@ EAPI="7"
 PYTHON_COMPAT=( python{3_6,3_7} )
 PYTHON_REQ_USE="xml"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Convert MS Office xlsx files to CSV"
 HOMEPAGE="https://github.com/dilshod/xlsx2csv/"
@@ -28,6 +28,6 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	doman man/${PN}.1
 }

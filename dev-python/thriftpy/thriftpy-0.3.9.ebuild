@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pure python implementation of Apache Thrift"
 HOMEPAGE="https://thriftpy.readthedocs.org/"

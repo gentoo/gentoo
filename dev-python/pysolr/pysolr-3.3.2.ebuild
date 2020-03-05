@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Lightweight python wrapper for Apache Solr"
 HOMEPAGE="https://pypi.org/project/pysolr/ https://github.com/toastdriven/pysolr/"

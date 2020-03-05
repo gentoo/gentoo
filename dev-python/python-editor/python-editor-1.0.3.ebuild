@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Programmatically open an editor, capture the result."
 HOMEPAGE="https://github.com/fmoo/python-editor"

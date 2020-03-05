@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Setuptools plugin that makes unit tests execute with trial instead of pyunit"
 HOMEPAGE="https://github.com/rutsky/setuptools-trial https://pypi.org/project/setuptools_trial/"

@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_6 )
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="command line tool for interacting with cloud storage services"
 HOMEPAGE="https://github.com/GoogleCloudPlatform/gsutil"
@@ -47,7 +47,7 @@ DOCS=( README.md CHANGES.md )
 RESTRICT="test"
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	# NB: We don't delete all of boto/ because the tests are imported by the
 	# production code.  The same reason we can't delete gslib/tests/.  We can

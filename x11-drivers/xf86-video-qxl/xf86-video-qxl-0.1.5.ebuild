@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1 xorg-2
+inherit python-single-r2 xorg-2
 
 DESCRIPTION="QEMU QXL paravirt video driver"
 

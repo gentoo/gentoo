@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.63.0
 QTMIN=5.12.3
-inherit python-single-r1 ecm kde.org
+inherit python-single-r2 ecm kde.org
 
 DESCRIPTION="Classical Mah Jongg for four players"
 HOMEPAGE="https://kde.org/applications/games/org.kde.kajongg"
@@ -29,8 +29,8 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	dev-db/sqlite:3
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[gui,svg,widgets,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/twisted-16.6.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[gui,svg,widgets,${PYTHON_USEDEP}]
+		>=dev-python/twisted-16.6.0[${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="${DEPEND}
@@ -38,7 +38,7 @@ RDEPEND="${DEPEND}
 "
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	ecm_pkg_setup
 }
 

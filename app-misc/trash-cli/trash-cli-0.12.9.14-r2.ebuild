@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="Python scripts to manipulate trash cans via the command line"
 HOMEPAGE="https://github.com/andreafrancia/trash-cli"

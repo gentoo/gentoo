@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit eutils linux-info perl-module python-r1 base
+inherit eutils linux-info perl-module python-multi-r2 base
 
 DESCRIPTION="Takes control of the G15 keyboard, through the linux kernel uinput device driver"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils vim-plugin distutils-r1
+inherit eutils vim-plugin distutils-r2
 
 SRC_URI="mirror://pypi/p/${PN}/${P}.tar.gz"
 
@@ -38,7 +38,7 @@ SLOT="0"
 #}
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	vimball -x -C "${ED}"/usr/share/vim/vimfiles lib/clewn/runtime/${P}.vmb || die "Extracting vimball failed"
 }

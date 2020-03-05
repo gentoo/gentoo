@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 MY_P="${P/_}"
-inherit desktop flag-o-matic font python-single-r1 qmake-utils toolchain-funcs xdg-utils
+inherit desktop flag-o-matic font python-single-r2 qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="WYSIWYM frontend for LaTeX, DocBook, etc."
 HOMEPAGE="https://www.lyx.org/"
@@ -85,7 +85,7 @@ FONT_S="${S}/lib/fonts"
 FONT_SUFFIX="ttf"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	font_pkg_setup
 }
 

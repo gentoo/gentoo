@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=bdepend
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="python api for tmux"
 HOMEPAGE="https://libtmux.git-pull.com/"
@@ -33,5 +33,5 @@ python_prepare_all() {
 	sed -r -i "s|:issue:\`([[:digit:]]+)\`|\`issue \1 ${issues}\1\`|" CHANGES || die
 	rm requirements/doc.txt || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

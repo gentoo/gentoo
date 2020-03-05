@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="An event driven ddp client"
 HOMEPAGE="https://pypi.org/project/python-ddp/ https://github.com/hharnisc/python-ddp"

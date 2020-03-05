@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="LZ4Frame library for Python (via C bindings)"
 HOMEPAGE="https://pypi.org/project/py-lz4framed/ https://github.com/Iotic-Labs/py-lz4framed"

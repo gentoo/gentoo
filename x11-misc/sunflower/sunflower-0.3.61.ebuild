@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-r1 xdg-utils desktop
+inherit python-multi-r2 xdg-utils desktop
 
 MY_PN="${PN^}"
 MY_PV=$(ver_rs 2 '-')

@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
 
-inherit eutils elisp-common python-single-r1
+inherit eutils elisp-common python-single-r2
 
 DESCRIPTION="Generate marked up documents (HTML, etc.)from a plain text file with markup"
 HOMEPAGE="https://txt2tags.org"

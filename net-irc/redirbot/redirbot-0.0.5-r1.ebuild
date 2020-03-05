@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 DOCS=( ChangeLog README.rst  )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="IRCBot, telling people they should contact you on different nickname"
 HOMEPAGE="https://github.com/yaccz/redirbot"

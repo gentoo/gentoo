@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="PEAK-Rules"
 MY_P="${MY_PN}-${PV}a1.dev-r2713"
@@ -38,7 +38,7 @@ python_test() {
 src_test() {
 	# Relative import misfires for core.py during emerge
 	sed -e "s:from peak.rules.core:from core:" -i test_rules.py
-	distutils-r1_src_test
+	distutils-r2_src_test
 	# Return to original statefor final install
 	sed -e "s:from core:from peak.rules.core:" -i test_rules.py
 }

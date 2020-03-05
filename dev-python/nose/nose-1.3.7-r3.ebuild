@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Unittest extension with automatic test suite discovery and easy test authoring"
 HOMEPAGE="
@@ -65,7 +65,7 @@ python_prepare_all() {
 	# Prevent un-needed d'loading during doc build
 	sed -e "s/, 'sphinx.ext.intersphinx'//" -i doc/conf.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
@@ -76,7 +76,7 @@ python_compile() {
 		python_is_python3 && add_targets+=( build_tests )
 	fi
 
-	distutils-r1_python_compile ${add_targets[@]}
+	distutils-r2_python_compile ${add_targets[@]}
 }
 
 python_compile_all() {
@@ -88,11 +88,11 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install --install-data "${EPREFIX}/usr/share"
+	distutils-r2_python_install --install-data "${EPREFIX}/usr/share"
 }
 
 python_install_all() {
 	use examples && dodoc -r examples
 	use doc && HTML_DOCS=( doc/.build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

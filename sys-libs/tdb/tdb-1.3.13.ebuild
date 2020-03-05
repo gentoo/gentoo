@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit waf-utils multilib-minimal python-single-r1
+inherit waf-utils multilib-minimal python-single-r2
 
 DESCRIPTION="A simple database API"
 HOMEPAGE="https://tdb.samba.org/"

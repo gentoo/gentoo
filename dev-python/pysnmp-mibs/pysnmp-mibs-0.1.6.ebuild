@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="SNMP framework in Python - MIBs"
 HOMEPAGE="http://pysnmp.sf.net/ https://pypi.org/project/pysnmp-mibs/"

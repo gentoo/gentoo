@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 ES_VERSION="6.4.0"
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=${PN/-py/}
 DESCRIPTION="Official Python low-level client for Elasticsearch"
@@ -91,5 +91,5 @@ python_install_all() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
 	use examples && dodoc -r example
 	doman docs/_build/man/*
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

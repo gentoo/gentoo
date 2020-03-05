@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Easily displaying tabular data in a visually appealing ASCII table format"
 HOMEPAGE="https://code.google.com/p/prettytable/"

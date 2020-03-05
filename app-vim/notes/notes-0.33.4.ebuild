@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-single-r1 vim-plugin
+inherit python-single-r2 vim-plugin
 
 DESCRIPTION="vim plugin: easy note taking in vim"
 HOMEPAGE="http://peterodding.com/code/vim/notes/"

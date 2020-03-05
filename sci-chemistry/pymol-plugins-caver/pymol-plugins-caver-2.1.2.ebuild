@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit multilib python-r1 eutils versionator java-utils-2
+inherit multilib python-multi-r2 eutils versionator java-utils-2
 
 MY_PV="$(replace_all_version_separators _)"
 MY_P="Caver${MY_PV}_pymol_plugin"

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools flag-o-matic java-pkg-opt-2 multilib-minimal python-single-r1 virtualx
+inherit autotools flag-o-matic java-pkg-opt-2 multilib-minimal python-single-r2 virtualx
 
 DESCRIPTION="Library and tools for reading barcodes from images or video"
 HOMEPAGE="https://github.com/mchehab/zbar"
@@ -67,7 +67,7 @@ DEPEND="${COMMON_DEPEND}
 	test? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+			dev-python/pillow[${PYTHON_USEDEP}]
 		')
 	)"
 
@@ -89,7 +89,7 @@ DOCS=( README.md NEWS.md TODO.md HACKING.md TODO.md ChangeLog )
 
 pkg_setup() {
 	if use python || use test; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 	use java && java-pkg-opt-2_pkg_setup
 }

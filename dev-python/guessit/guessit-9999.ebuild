@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="Python library for guessing information from video filenames"
 HOMEPAGE="https://github.com/guessit-io/guessit https://pypi.org/project/guessit/"
@@ -41,7 +41,7 @@ python_prepare_all() {
 	# Disable unconditional dependency on dev-python/pytest-runner.
 	sed -i -e "s|'pytest-runner'||g" setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

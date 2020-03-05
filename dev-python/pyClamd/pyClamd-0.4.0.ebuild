@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="python interface to Clamd (Clamav daemon)"
 HOMEPAGE="https://xael.org/pages/pyclamd-en.html"

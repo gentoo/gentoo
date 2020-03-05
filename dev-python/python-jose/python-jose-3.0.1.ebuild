@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A JavaScript Object Signing and Encryption (JOSE) implementation in Python"
 HOMEPAGE="https://github.com/mpdavis/python-jose https://pypi.org/project/python-jose/"
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	sed -e 's|'\''pytest-runner'\'',\?||' -i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

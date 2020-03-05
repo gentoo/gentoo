@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
 
-inherit toolchain-funcs distutils-r1 flag-o-matic autotools
+inherit toolchain-funcs distutils-r2 flag-o-matic autotools
 
 DESCRIPTION="WLAN tools for breaking 802.11 WEP/WPA keys"
 HOMEPAGE="http://www.aircrack-ng.org"
@@ -76,11 +76,11 @@ src_compile() {
 
 	if use airgraph-ng; then
 		cd "${S}/scripts/airgraph-ng"
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 	if use airdrop-ng; then
 		cd "${S}/scripts/airdrop-ng"
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -89,11 +89,11 @@ src_install() {
 
 	if use airgraph-ng; then
 		cd "${S}/scripts/airgraph-ng"
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 	if use airdrop-ng; then
 		cd "${S}/scripts/airdrop-ng"
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 
 	# we don't need aircrack-ng's oui updater, we have our own

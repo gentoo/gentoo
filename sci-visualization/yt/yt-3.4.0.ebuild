@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Astrophysical Simulation Analysis and Vizualization package"
 HOMEPAGE="https://yt-project.org/"
@@ -33,7 +33,7 @@ DEPEND="${CDEPEND}
 
 python_prepare_all() {
 	append-flags -fno-strict-aliasing
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

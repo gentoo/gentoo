@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A small 'shelve' like datastore with concurrency support"
 HOMEPAGE="https://github.com/pickleshare/pickleshare"

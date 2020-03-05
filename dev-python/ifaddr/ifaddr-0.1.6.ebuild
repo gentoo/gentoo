@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Enumerate IP addresses on the local network adapters"
 HOMEPAGE="https://github.com/pydron/ifaddr"

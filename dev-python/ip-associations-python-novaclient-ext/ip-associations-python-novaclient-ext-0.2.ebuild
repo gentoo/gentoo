@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Disk Config extension for python-novaclient"
 HOMEPAGE="https://github.com/rackspace/ip_associations_python_novaclient_ext"

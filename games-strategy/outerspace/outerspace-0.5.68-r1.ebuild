@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit desktop gnome2-utils distutils-r1
+inherit desktop gnome2-utils distutils-r2
 
 MY_PN="${PN/outerspace/Outer Space}"
 DESCRIPTION="On-line strategy game taking place in the dangerous universe"
@@ -28,7 +28,7 @@ src_unpack() {
 }
 
 python_install() {
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		--install-scripts="/usr/bin" \
 		--install-data="/usr/share/${PN}" \
 		--install-lib="$(python_get_sitedir)"
@@ -50,11 +50,11 @@ src_prepare() {
 		-e "s:@GENTOO_DATADIR@:/usr/share/${PN}:" \
 		osc.py || die "sed failed"
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	newicon res/logo-login.png ${PN}.png
 	make_desktop_entry "osc.py" "${MY_PN}"
 }

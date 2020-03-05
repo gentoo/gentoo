@@ -9,7 +9,7 @@ CHROMIUM_LANGS="am ar bg bn ca cs da de el en-GB es es-419 et fa fi fil fr gu he
 	sv sw ta te th tr uk vi zh-CN zh-TW"
 
 inherit check-reqs chromium-2 eapi7-ver estack gnome2-utils flag-o-matic multilib \
-	multiprocessing ninja-utils pax-utils portability python-any-r1 \
+	multiprocessing ninja-utils pax-utils portability python-any-r2 \
 	toolchain-funcs virtualx xdg-utils
 
 # Keep this in sync with vendor/libchromiumcontent/VERSION
@@ -250,7 +250,7 @@ pkg_setup() {
 	pre_build_checks
 
 	# Make sure the build system will use the right python, bug #344367.
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 
 	chromium_suid_sandbox_check_kernel_config
 }

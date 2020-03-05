@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit linux-info udev xdg distutils-r1
+inherit linux-info udev xdg distutils-r2
 
 DESCRIPTION="A Linux device manager for Logitech's Unifying Receiver peripherals"
 HOMEPAGE="https://pwr-solaar.github.io/Solaar/"
@@ -34,11 +34,11 @@ python_prepare_all() {
 	# grant plugdev group rw access
 	sed -i 's/#MODE=/MODE=/' rules.d/42-logitech-unify-permissions.rules || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	udev_dorules rules.d/*.rules
 

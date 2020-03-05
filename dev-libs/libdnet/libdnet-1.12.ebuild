@@ -7,7 +7,7 @@ AT_M4DIR="config"
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools distutils-r1 eutils ltprune
+inherit autotools distutils-r2 eutils ltprune
 
 DESCRIPTION="simplified, portable interface to several low-level networking routines"
 HOMEPAGE="https://github.com/dugsong/libdnet"
@@ -41,7 +41,7 @@ src_prepare() {
 	eautoreconf
 	if use python; then
 		cd python
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 	fi
 }
 
@@ -55,7 +55,7 @@ src_compile() {
 	default
 	if use python; then
 		cd python
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -64,7 +64,7 @@ src_install() {
 	if use python; then
 		cd python
 		unset DOCS
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 	prune_libtool_files
 }

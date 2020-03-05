@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit desktop eutils python-single-r1 xdg
+inherit desktop eutils python-single-r2 xdg
 
 MY_PN="PlayOnLinux"
 
@@ -27,7 +27,7 @@ RDEPEND="${PYTHON_DEPS}
 	app-crypt/gnupg
 	app-misc/jq
 	$(python_gen_cond_dep '
-		dev-python/wxpython:3.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 	')
 	media-gfx/icoutils
 	|| ( net-analyzer/netcat net-analyzer/openbsd-netcat )

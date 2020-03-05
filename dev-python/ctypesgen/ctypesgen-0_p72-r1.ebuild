@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python wrapper generator for ctypes"
 HOMEPAGE="https://github.com/davidjamesca/ctypesgen"
@@ -23,7 +23,7 @@ python_prepare_all() {
 	# r73 upstream
 	sed -i -e 's:libc:libm.so.6:' test/math_functions.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

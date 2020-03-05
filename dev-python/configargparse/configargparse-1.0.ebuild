@@ -8,7 +8,7 @@ MY_P="${MY_PN}-${PV}"
 
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Drop-in replacement for argparse supporting config files and env variables"
 HOMEPAGE="https://github.com/bw2/ConfigArgParse https://pypi.org/project/ConfigArgParse/"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="API wrapper for Pushover"
 HOMEPAGE="https://github.com/karanlyons/chump"
@@ -27,7 +27,7 @@ DEPEND="
 
 python_prepare_all() {
 	sed -i "/'sphinx.ext.intersphinx'/d" docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -37,5 +37,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

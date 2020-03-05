@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Easy VCS-based management of project version strings"
 HOMEPAGE="https://pypi.org/project/versioneer/ https://github.com/warner/python-versioneer"

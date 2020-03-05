@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit eutils linux-info python-single-r1 qmake-utils
+inherit eutils linux-info python-single-r2 qmake-utils
 
 DESCRIPTION="A personal full text search package"
 HOMEPAGE="https://www.lesbonscomptes.com/recoll/"
@@ -72,7 +72,7 @@ pkg_setup() {
 		local CONFIG_CHECK="~INOTIFY_USER"
 		check_extra_config
 	fi
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

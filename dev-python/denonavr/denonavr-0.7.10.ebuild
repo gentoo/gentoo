@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( pypy3 python3_{6,7} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Automation Library for Denon AVR receivers"
 HOMEPAGE="https://github.com/scarface-4711/denonavr"

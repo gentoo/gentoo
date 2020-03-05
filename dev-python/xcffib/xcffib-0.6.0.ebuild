@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A drop in replacement for xpyb, an XCB python binding"
 HOMEPAGE="https://github.com/tych0/xcffib"

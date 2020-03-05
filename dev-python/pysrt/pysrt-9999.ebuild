@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library used to edit or create SubRip files"
 HOMEPAGE="https://github.com/byroot/pysrt https://pypi.org/project/pysrt/"

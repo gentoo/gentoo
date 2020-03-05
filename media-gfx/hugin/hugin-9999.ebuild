@@ -6,7 +6,7 @@ EAPI=6
 WX_GTK_VER="3.0"
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit mercurial python-single-r1 wxwidgets cmake-utils eapi7-ver xdg
+inherit mercurial python-single-r2 wxwidgets cmake-utils eapi7-ver xdg
 
 DESCRIPTION="GUI for the creation & processing of panoramic images"
 HOMEPAGE="http://hugin.sf.net"
@@ -60,7 +60,7 @@ DOCS=( authors.txt README TODO )
 S=${WORKDIR}/${PN}-$(ver_cut 1-2).0
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	setup-wxwidgets
 }
 

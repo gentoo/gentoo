@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools perl-functions python-single-r1 versionator
+inherit autotools perl-functions python-single-r2 versionator
 
 MY_PV=$(get_version_component_range 1-3)
 MY_P=${PN}_${MY_PV}
@@ -56,7 +56,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	perl_set_version
 }
 

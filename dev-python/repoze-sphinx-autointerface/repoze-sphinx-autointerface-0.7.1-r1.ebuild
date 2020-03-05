@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=${PN//-/.}
 MY_P=${MY_PN}-${PV}
@@ -30,7 +30,7 @@ DEPEND="
 S=${WORKDIR}/${MY_P}
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	# install the namespace (it's the only subpackage)
 	python_moduleinto repoze.sphinx
@@ -38,7 +38,7 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	find "${D}" -name '*.pth' -delete || die
 }

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Run system terminals inside Spyder"
 HOMEPAGE="https://github.com/spyder-ide/spyder-terminal"
@@ -33,7 +33,7 @@ python_prepare_all() {
 	# core dumped
 	rm spyder_terminal/tests/test_terminal.py
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 pytthon_test() {

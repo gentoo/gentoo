@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="WTForms integration for peewee models"
 HOMEPAGE="https://github.com/coleifer/wtf-peewee/"
@@ -26,5 +26,5 @@ python_test() {
 
 python_install_all() {
 	use examples && dodoc -r example
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

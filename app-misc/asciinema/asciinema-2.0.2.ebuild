@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Command line recorder for asciinema.org service"
 HOMEPAGE="https://asciinema.org/ https://pypi.org/project/asciinema/"
@@ -22,7 +22,7 @@ BDEPEND="
 "
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	sed -i -e "s|data_files=\[('share/doc/asciinema|&-${PVR}|" setup.py || die
 }
 

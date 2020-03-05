@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="OpenStackClient plugin for the Placement service"
 HOMEPAGE="https://github.com/openstack/osc-placement"

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python cross-version byte-code disassembler and marshal routines"
 HOMEPAGE="https://github.com/rocky/python-xdis/ https://pypi.org/project/xdis/"

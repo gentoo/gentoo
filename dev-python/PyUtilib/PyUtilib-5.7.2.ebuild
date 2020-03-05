@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_IN_SOURCE_BUILD=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A collection of Python utilities"
 HOMEPAGE="https://github.com/PyUtilib/pyutilib"
@@ -31,7 +31,7 @@ python_prepare_all() {
 	# remove some tests that are completely broken
 	rm pyutilib/component/app/tests/test_simple.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -44,13 +44,13 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	find "${ED}" -name '*.pth' -delete || die
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	if ! python_is_python3; then
 		printf "# Placeholder for python2\n" \

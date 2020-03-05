@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python @deprecated decorator to deprecate old API"
 HOMEPAGE="https://github.com/tantale/deprecated"

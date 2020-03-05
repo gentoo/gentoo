@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 xdg-utils
+inherit distutils-r2 xdg-utils
 
 DESCRIPTION="PyQt5-based launcher for FS-UAE"
 HOMEPAGE="https://fs-uae.net/"
@@ -19,10 +19,10 @@ IUSE="lha"
 RDEPEND="
 	app-emulation/fs-uae
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},declarative,gui,network,opengl,widgets]
-		dev-python/pyopengl[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
-		lha? ( dev-python/python-lhafile[${PYTHON_MULTI_USEDEP}] )
+		dev-python/PyQt5[${PYTHON_USEDEP},declarative,gui,network,opengl,widgets]
+		dev-python/pyopengl[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		lha? ( dev-python/python-lhafile[${PYTHON_USEDEP}] )
 	')
 "
 
@@ -50,7 +50,7 @@ src_compile() {
 
 src_install() {
 	local dir=${EPREFIX}/usr/share/${PN}
-	distutils-r1_python_install --install-lib="${dir}" --install-scripts="${dir}"
+	distutils-r2_python_install --install-lib="${dir}" --install-scripts="${dir}"
 	dosym ../share/${PN}/${PN} /usr/bin/${PN}
 
 	emake install-data DESTDIR="${D}" prefix="${EPREFIX}"/usr

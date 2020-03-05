@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit bash-completion-r1 gnome2 linux-info multilib python-any-r1 systemd readme.gentoo-r1 vala virtualx udev multilib-minimal
+inherit bash-completion-r1 gnome2 linux-info multilib python-any-r2 systemd readme.gentoo-r1 vala virtualx udev multilib-minimal
 
 DESCRIPTION="A set of co-operative tools that make networking simple and straightforward"
 HOMEPAGE="https://wiki.gnome.org/Projects/NetworkManager"
@@ -152,7 +152,7 @@ pkg_setup() {
 		linux-info_pkg_setup
 	fi
 	if use introspection || use test; then
-		python-any-r1_pkg_setup
+		python-any-r2_pkg_setup
 	fi
 }
 

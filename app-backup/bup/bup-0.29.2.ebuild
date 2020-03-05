@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="A highly efficient backup system based on the git packfile format"
 HOMEPAGE="https://bup.github.io/ https://github.com/bup/bup"
@@ -21,10 +21,10 @@ RDEPEND="${PYTHON_DEPS}
 	sys-libs/readline:0
 	dev-vcs/git
 	$(python_gen_cond_dep '
-		dev-python/fuse-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/pylibacl[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyxattr[${PYTHON_MULTI_USEDEP}]
-		web? ( www-servers/tornado[${PYTHON_MULTI_USEDEP}] )
+		dev-python/fuse-python[${PYTHON_USEDEP}]
+		dev-python/pylibacl[${PYTHON_USEDEP}]
+		dev-python/pyxattr[${PYTHON_USEDEP}]
+		web? ( www-servers/tornado[${PYTHON_USEDEP}] )
 	')"
 DEPEND="${RDEPEND}
 	test? (

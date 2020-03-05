@@ -7,7 +7,7 @@ MAKE_MAKEFILE_GENERATOR="ninja"
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake-utils python-r1
+inherit cmake-utils python-multi-r2
 
 DESCRIPTION="Gromacs API bindings"
 HOMEPAGE="https://github.com/kassonlab/gmxapi"

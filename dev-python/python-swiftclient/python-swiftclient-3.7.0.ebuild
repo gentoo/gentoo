@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings to the OpenStack Object Storage API"
 HOMEPAGE="https://launchpad.net/python-swiftclient"
@@ -37,7 +37,7 @@ RDEPEND="virtual/python-futures[${PYTHON_USEDEP}]
 
 python_prepare_all() {
 	sed -i '/hacking/d' "${S}/test-requirements.txt" || die "sed failed"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Adds PKCS#12 support to the Python requests library in a clean way"
 HOMEPAGE="https://github.com/m-click/requests_pkcs12"

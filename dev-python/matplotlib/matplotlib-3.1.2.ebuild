@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
+inherit distutils-r2 flag-o-matic virtualx toolchain-funcs prefix
 
 DESCRIPTION="Pure python plotting library with matlab like syntax"
 HOMEPAGE="https://matplotlib.org/"
@@ -137,7 +137,7 @@ python_prepare_all() {
 	mkdir "${XDG_RUNTIME_DIR}" || die
 	chmod 0700 "${XDG_RUNTIME_DIR}" || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -201,7 +201,7 @@ wrap_setup() {
 }
 
 python_compile() {
-	wrap_setup distutils-r1_python_compile --build-lib="${BUILD_DIR}"/lib
+	wrap_setup distutils-r2_python_compile --build-lib="${BUILD_DIR}"/lib
 }
 
 python_compile_all() {
@@ -223,7 +223,7 @@ python_test() {
 }
 
 python_install() {
-	wrap_setup distutils-r1_python_install
+	wrap_setup distutils-r2_python_install
 
 	# mpl_toolkits namespace
 	python_moduleinto mpl_toolkits
@@ -233,7 +233,7 @@ python_install() {
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use examples; then
 		dodoc -r examples

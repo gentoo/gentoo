@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Astronomical routines for the python programming language"
 HOMEPAGE="https://rhodesmill.org/pyephem/"
@@ -23,11 +23,11 @@ RESTRICT="!test? ( test )"
 src_prepare() {
 	# don't install rst files by dfefault
 	sed -i -e "s:'doc/\*\.rst',::" setup.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_compile() {
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 	if use doc; then
 		PYTHONPATH=. emake -C ephem/doc html
 	fi
@@ -39,7 +39,7 @@ python_test() {
 
 src_install() {
 	use doc && HTML_DOCS=( ephem/doc/_build/html/. )
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	delete_tests() {
 		rm -r "${D}$(python_get_sitedir)/ephem/tests" || die

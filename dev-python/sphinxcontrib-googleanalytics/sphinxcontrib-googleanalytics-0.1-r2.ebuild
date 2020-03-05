@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Sphinx extension googleanalytics"
 HOMEPAGE="https://bitbucket.org/birkenfeld/sphinx-contrib"
@@ -22,6 +22,6 @@ RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]
 PATCHES=( "${FILESDIR}/setup.py.utf-8.patch" )
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

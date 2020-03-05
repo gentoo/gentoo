@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Command-line YAML processor - jq wrapper for YAML documents"
 HOMEPAGE="https://yq.readthedocs.io/ https://github.com/kislyuk/yq/ https://pypi.org/project/yq/"
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	)"
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	sed -e 's:unittest.main():unittest.main(verbosity=2):' \
 		-i test/test.py || die
 }

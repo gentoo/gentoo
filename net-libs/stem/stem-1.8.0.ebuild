@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=(python{3_6,3_7})
 
-inherit vcs-snapshot distutils-r1
+inherit vcs-snapshot distutils-r2
 
 DESCRIPTION="Stem is a Python controller library for Tor"
 HOMEPAGE="https://stem.torproject.org"
@@ -38,7 +38,7 @@ python_prepare_all() {
 		\ \ \ \ return" test/integ/installation.py || die
 	sed -i -e "/test_connections_by_ss/a \
 		\ \ \ \ return" test/integ/util/connection.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

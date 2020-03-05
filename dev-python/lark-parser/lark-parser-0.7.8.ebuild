@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python module to propose a modern general-purpose parsing library for Python"
 HOMEPAGE="https://github.com/lark-parser/lark"

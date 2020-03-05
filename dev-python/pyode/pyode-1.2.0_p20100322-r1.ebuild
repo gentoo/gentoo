@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P="${P/pyode/PyODE}"
 SNAPSHOT_DATE="2010-03-22"	# This is a snapshot
@@ -25,11 +25,11 @@ S=${WORKDIR}/PyODE-snapshot-${SNAPSHOT_DATE}
 
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	# The build system doesnt error if it fails to build
 	# the ode library so we need our own sanity check

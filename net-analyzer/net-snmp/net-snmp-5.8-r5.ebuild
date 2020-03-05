@@ -9,7 +9,7 @@ WANT_AUTOMAKE=none
 PATCHSET=3
 GENTOO_DEPEND_ON_PERL=no
 
-inherit autotools distutils-r1 eutils ltprune perl-module systemd
+inherit autotools distutils-r2 eutils ltprune perl-module systemd
 
 DESCRIPTION="Software for generating and retrieving SNMP data"
 HOMEPAGE="http://www.net-snmp.org/"
@@ -40,7 +40,7 @@ COMMON_DEPEND="
 	perl? ( dev-lang/perl:= )
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+			dev-python/setuptools[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)
@@ -77,7 +77,7 @@ S=${WORKDIR}/${P/_p*/}
 RESTRICT=test
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_6 python3_7 )
 PYTHON_REQ_USE="ncurses?"
 
-inherit desktop distutils-r1 gnome2-utils xdg-utils
+inherit desktop distutils-r2 gnome2-utils xdg-utils
 
 EGIT_COMMIT="${PV}"
 DESCRIPTION="Litecoin thin client"
@@ -131,12 +131,12 @@ src_prepare() {
 	eapply_user
 
 	xdg_environment_reset
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_install() {
 	doicon -s 128 ${PN/-/_}/gui/icons/${PN}.png
-	distutils-r1_src_install
+	distutils-r2_src_install
 }
 
 pkg_preinst() {

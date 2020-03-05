@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 MY_PN="${PN//-/.}"
 
@@ -22,6 +22,6 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 distutils_enable_tests pytest
 
 python_install() {
-	distutils-r1_python_install --single-version-externally-managed
+	distutils-r2_python_install --single-version-externally-managed
 	find "${ED}" -name '*.pth' -delete || die
 }

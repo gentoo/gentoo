@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Abseil Python Common Libraries"
 HOMEPAGE="https://github.com/abseil/abseil-py"

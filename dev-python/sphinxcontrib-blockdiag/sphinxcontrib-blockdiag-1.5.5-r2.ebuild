@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A sphinx extension for embedding block diagrams using blockdiag"
 HOMEPAGE="https://github.com/blockdiag/sphinxcontrib-blockdiag"
@@ -37,7 +37,7 @@ python_prepare_all() {
 	# Those tests are known-broken upstream
 	# https://github.com/blockdiag/sphinxcontrib-blockdiag/pull/11
 	rm tests/test_latex.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -45,6 +45,6 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Collection of cache libraries in the same API interface. Extracted from werkzeug"
 HOMEPAGE="https://pypi.org/project/cachelib/ https://github.com/pallets/cachelib"

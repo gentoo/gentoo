@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PV="1-0-0"
 DESCRIPTION="A distributed, collaborative spam detection and filtering network"
@@ -55,11 +55,11 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( docs/.build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	if use pyzord; then
 		dodir /usr/sbin

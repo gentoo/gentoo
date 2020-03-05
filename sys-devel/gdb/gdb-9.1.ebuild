@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit eutils flag-o-matic python-single-r1
+inherit eutils flag-o-matic python-single-r2
 
 export CTARGET=${CTARGET:-${CHOST}}
 if [[ ${CTARGET} == ${CHOST} ]] ; then
@@ -95,7 +95,7 @@ PATCHES=(
 GDB_BUILD_DIR="${WORKDIR}"/${P}-build
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

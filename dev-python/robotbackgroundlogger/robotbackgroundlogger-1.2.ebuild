@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Helper module for logging to Robot Framework log from background threads"
 HOMEPAGE="https://github.com/robotframework/robotbackgroundlogger https://pypi.org/project/robotbackgroundlogger/"

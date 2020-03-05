@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="Set of facilities to extend Python with C++"
 HOMEPAGE="http://cxx.sourceforge.net"
@@ -20,11 +20,11 @@ python_prepare_all() {
 	# Src/Python3/cxxextensions.c: No such file or directory
 	sed -e "/^#include/s:Src/::" -i Src/*.{c,cxx} || die "sed failed"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
 	use doc && local HTML_DOCS=( Doc/. )
 	use examples && local EXAMPLES=( Demo/Python{2,3}/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

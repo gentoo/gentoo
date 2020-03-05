@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools multilib eutils python-single-r1 bash-completion-r1 elisp-common
+inherit autotools multilib eutils python-single-r2 bash-completion-r1 elisp-common
 
 DESCRIPTION="Program matching and transformation engine"
 HOMEPAGE="http://coccinelle.lip6.fr/"
@@ -46,7 +46,7 @@ RESTRICT="strip !test? ( test )"
 SITEFILE=50coccinelle-gentoo.el
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

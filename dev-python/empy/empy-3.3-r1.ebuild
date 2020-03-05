@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A powerful and robust templating system for Python"
 HOMEPAGE="http://www.alcyone.com/software/empy/"
@@ -20,7 +20,7 @@ RDEPEND=""
 
 python_prepare_all() {
 	sed -e "s:/usr/local/bin/python:/usr/bin/python:g" -i em.py || die "sed failed"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -31,7 +31,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use doc; then
 		dodir /usr/share/doc/"${PF}"/examples
 		insinto /usr/share/doc/"${PF}"/examples

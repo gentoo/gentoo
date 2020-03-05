@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="ncurses(+)"
 
-inherit distutils-r1 linux-info
+inherit distutils-r2 linux-info
 
 DESCRIPTION="Top-like UI used to show which process is using the I/O"
 HOMEPAGE="http://guichaz.free.fr/iotop/"

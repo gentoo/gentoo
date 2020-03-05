@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="The logutils package provides a set of handlers for the Python standard"
 HOMEPAGE="https://bitbucket.org/vinay.sajip/logutils"

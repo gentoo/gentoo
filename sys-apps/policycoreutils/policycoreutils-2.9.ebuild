@@ -5,7 +5,7 @@ EAPI="6"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 
-inherit multilib python-r1 toolchain-funcs bash-completion-r1
+inherit multilib python-multi-r2 toolchain-funcs bash-completion-r1
 
 MY_P="${P//_/-}"
 

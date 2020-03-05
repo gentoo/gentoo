@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="A number of utilities for the manipulation of color gradient files"
 HOMEPAGE="http://soliton.vm.bytemark.co.uk/pub/jjg/en/code/cptutils/"

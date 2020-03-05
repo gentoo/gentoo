@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python implementation of the actor model"
 HOMEPAGE="https://www.pykka.org/en/latest/ https://github.com/jodal/pykka"

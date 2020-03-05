@@ -8,7 +8,7 @@ PYTHON_REQ_USE='sqlite?'
 
 DISTUTILS_SINGLE_IMPL=Yes
 
-inherit distutils-r1 eutils user webapp
+inherit distutils-r2 eutils user webapp
 
 MY_PV=${PV/_p/.post}
 MY_P=Trac-${MY_PV}
@@ -25,25 +25,25 @@ REQUIRED_USE="|| ( mysql postgres sqlite )"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
-		dev-python/genshi[${PYTHON_MULTI_USEDEP}]
-		dev-python/pytz[${PYTHON_MULTI_USEDEP}]
-		i18n? ( >=dev-python/Babel-0.9.5[${PYTHON_MULTI_USEDEP}] )
+		dev-python/setuptools[${PYTHON_USEDEP}]
+		dev-python/genshi[${PYTHON_USEDEP}]
+		dev-python/pytz[${PYTHON_USEDEP}]
+		i18n? ( >=dev-python/Babel-0.9.5[${PYTHON_USEDEP}] )
 		highlight? (
 			|| (
-				dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+				dev-python/pygments[${PYTHON_USEDEP}]
 				app-text/silvercity
 				app-text/pytextile
 				app-text/enscript
 			)
 		)
-		restructuredtext? ( dev-python/docutils[${PYTHON_MULTI_USEDEP}] )
+		restructuredtext? ( dev-python/docutils[${PYTHON_USEDEP}] )
 		cgi? ( virtual/httpd-cgi )
 		fastcgi? ( virtual/httpd-fastcgi )
-		mysql? ( dev-python/mysql-python[${PYTHON_MULTI_USEDEP}] )
-		postgres? ( >=dev-python/psycopg-2[${PYTHON_MULTI_USEDEP}] )
+		mysql? ( dev-python/mysql-python[${PYTHON_USEDEP}] )
+		postgres? ( >=dev-python/psycopg-2[${PYTHON_USEDEP}] )
 		sqlite? ( >=dev-db/sqlite-3.3.4:3 )
-		subversion? ( dev-vcs/subversion[python,${PYTHON_MULTI_USEDEP}] )
+		subversion? ( dev-vcs/subversion[python,${PYTHON_USEDEP}] )
 	')
 	"
 DEPEND="${RDEPEND}"
@@ -56,7 +56,7 @@ RESTRICT="test"
 WEBAPP_MANUAL_SLOT="yes"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	webapp_pkg_setup
 
 	enewgroup tracd
@@ -64,11 +64,11 @@ pkg_setup() {
 }
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 src_test() {
-	distutils-r1_src_test
+	distutils-r2_src_test
 }
 
 python_test() {
@@ -90,7 +90,7 @@ python_install() {
 		python_scriptinto "${MY_CGIBINDIR}"
 		python_doscript contrib/cgi-bin/trac.fcgi
 	fi
-	distutils-r1_python_install
+	distutils-r2_python_install
 }
 
 # the default src_compile just calls setup.py build
@@ -98,7 +98,7 @@ python_install() {
 
 src_install() {
 	webapp_src_preinst
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	# project environments might go in here
 	keepdir /var/lib/trac

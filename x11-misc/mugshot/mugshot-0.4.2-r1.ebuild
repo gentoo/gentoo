@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS="no"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 gnome2-utils xdg-utils
+inherit distutils-r2 gnome2-utils xdg-utils
 
 DESCRIPTION="A lightweight user-configuration application"
 HOMEPAGE="https://github.com/bluesabre/mugshot"
@@ -60,7 +60,7 @@ BDEPEND="
 S="${WORKDIR}/${PN}-${P}"
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	python_optimize
 

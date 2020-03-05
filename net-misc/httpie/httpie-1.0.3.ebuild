@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ssl(+)"
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r2
 
 DESCRIPTION="Modern command line HTTP client"
 HOMEPAGE="https://httpie.org/ https://pypi.org/project/httpie/"
@@ -44,5 +44,5 @@ python_install_all() {
 	newbashcomp extras/httpie-completion.bash http
 	insinto /usr/share/fish/vendor_completions.d
 	newins extras/httpie-completion.fish http.fish
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

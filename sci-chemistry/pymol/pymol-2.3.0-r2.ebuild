@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 desktop eutils flag-o-matic xdg-utils
+inherit distutils-r2 desktop eutils flag-o-matic xdg-utils
 
 DESCRIPTION="A Python-extensible molecular graphics system"
 HOMEPAGE="https://www.pymol.org/"
@@ -60,11 +60,11 @@ python_prepare_all() {
 
 	append-cxxflags -std=c++0x
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install() {
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		--pymol-path="${EPREFIX}/usr/share/pymol"
 
 	sed \
@@ -76,7 +76,7 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	sed \
 		-e '1i#!/usr/bin/env python' \

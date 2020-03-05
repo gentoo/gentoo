@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Line-by-line profiler"
 HOMEPAGE="https://github.com/pyutils/line_profiler"

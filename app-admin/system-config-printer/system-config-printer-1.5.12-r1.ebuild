@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="xml"
-inherit gnome2 python-single-r1 systemd
+inherit gnome2 python-single-r2 systemd
 
 DESCRIPTION="Graphical user interface for CUPS administration"
 HOMEPAGE="https://github.com/OpenPrinting/system-config-printer"
@@ -45,12 +45,12 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycups[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
-		dev-python/urllib3[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		dev-python/pycups[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/urllib3[${PYTHON_USEDEP}]
 	')
 	gnome-keyring? ( app-crypt/libsecret[introspection] )
 	policykit? ( net-print/cups-pk-helper )
@@ -62,7 +62,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_configure() {

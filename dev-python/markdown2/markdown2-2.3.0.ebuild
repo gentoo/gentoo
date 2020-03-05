@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python Markdown language reimplementation"
 SRC_URI="mirror://pypi/m/markdown2/${P}.zip"
@@ -23,7 +23,7 @@ python_prepare_all() {
 	# [issue52, knownfailure]
 	rm -f test/tm-cases/issue52* || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

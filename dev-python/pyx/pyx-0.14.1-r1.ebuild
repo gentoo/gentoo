@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 MY_PN=PyX
 MY_P="${P/pyx/PyX}"
 DESCRIPTION="Python package for the generation of encapsulated PostScript figures"
@@ -28,7 +28,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=( "${FILESDIR}"/${P}-unicode-latex.patch )
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	sed -i \
 		-e 's/^build_t1code=.*/build_t1code=1/' \
 		-e 's/^build_pykpathsea=.*/build_pykpathsea=1/' \
@@ -45,5 +45,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && dodoc manual/_build/latex/manual.pdf faq/_build/latex/pyxfaq.pdf
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

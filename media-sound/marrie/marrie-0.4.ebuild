@@ -12,7 +12,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/rafaelmartins/${PN}.git"
 fi
 
-inherit distutils-r1 ${GIT_ECLASS}
+inherit distutils-r2 ${GIT_ECLASS}
 
 DESCRIPTION="A simple podcast client that runs on the Command Line Interface"
 HOMEPAGE="https://github.com/rafaelmartins/marrie"
@@ -32,7 +32,7 @@ RDEPEND="dev-python/feedparser[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 
 pkg_postinst() {
-	distutils-r1_pkg_postinst
+	distutils-r2_pkg_postinst
 	elog
 	elog "You'll need a media player and a file downloader."
 	elog "Recommended packages: net-misc/wget and media-video/mpv"

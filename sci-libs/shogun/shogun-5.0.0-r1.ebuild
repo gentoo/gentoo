@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils flag-o-matic python-single-r1 toolchain-funcs versionator
+inherit cmake-utils flag-o-matic python-single-r2 toolchain-funcs versionator
 
 MYPV=$(get_version_component_range 1-2)
 MYPD=${PN}-data-0.9
@@ -56,7 +56,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)
 	R? ( dev-lang/R )
@@ -79,7 +79,7 @@ DEPEND="${RDEPEND}
 	ruby? ( >=dev-lang/swig-3.0.12 )
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/jinja[${PYTHON_MULTI_USEDEP}]
+			dev-python/jinja[${PYTHON_USEDEP}]
 		')
 		>=dev-cpp/gtest-1.8.0
 	)"
@@ -95,7 +95,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

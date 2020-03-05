@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A simple immutable mapping for python"
 HOMEPAGE="https://github.com/slezica/python-frozendict"

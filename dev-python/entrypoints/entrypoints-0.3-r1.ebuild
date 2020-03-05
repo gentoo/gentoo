@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Discover and load entry points from installed packages"
 HOMEPAGE="https://github.com/takluyver/entrypoints"

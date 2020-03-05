@@ -5,7 +5,7 @@ EAPI=6
 
 EGIT_REPO_URI="https://github.com/jepler/cropgui.git"
 PYTHON_COMPAT=( python2_7 )
-inherit eutils git-r3 python-r1
+inherit eutils git-r3 python-multi-r2
 
 DESCRIPTION="GUI for lossless cropping of jpeg images"
 HOMEPAGE="http://emergent.unpythonic.net/01248401946"

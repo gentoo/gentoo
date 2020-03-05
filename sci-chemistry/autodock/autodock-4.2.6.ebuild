@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils python-any-r1 versionator
+inherit autotools eutils python-any-r2 versionator
 
 MY_PN="autodocksuite"
 MY_P="${MY_PN}-${PV}"

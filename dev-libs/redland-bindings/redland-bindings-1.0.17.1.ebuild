@@ -10,7 +10,7 @@ PHP_EXT_NAME="redland"
 PHP_EXT_OPTIONAL_USE="php"
 PHP_EXT_SKIP_PHPIZE="yes"
 
-inherit php-ext-source-r3 python-single-r1 autotools
+inherit php-ext-source-r3 python-single-r2 autotools
 
 DESCRIPTION="Language bindings for Redland"
 HOMEPAGE="http://librdf.org/bindings/"
@@ -41,7 +41,7 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/${P}-bool.patch" )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

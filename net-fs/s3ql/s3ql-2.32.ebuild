@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A full-featured file system for online data storage"
 HOMEPAGE="https://bitbucket.org/nikratio/s3ql/"
@@ -39,7 +39,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use contrib ; then
 		exeinto /usr/share/doc/${PF}/contrib

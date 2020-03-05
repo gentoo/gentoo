@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python module for making simple text/console-mode user interfaces"
 HOMEPAGE="http://pythondialog.sourceforge.net/"
@@ -21,7 +21,7 @@ DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	sed -e "/^    'sphinx.ext.intersphinx',/d" -i doc/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -32,5 +32,5 @@ python_install_all() {
 	use examples && dodoc -r examples
 	use doc && local HTML_DOCS=( doc/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

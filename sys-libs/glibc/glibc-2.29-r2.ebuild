@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-any-r1 prefix eutils eapi7-ver toolchain-funcs flag-o-matic gnuconfig \
+inherit python-any-r2 prefix eutils eapi7-ver toolchain-funcs flag-o-matic gnuconfig \
 	multilib systemd multiprocessing
 
 DESCRIPTION="GNU libc C library"
@@ -750,7 +750,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	# see bug 682570
-	[[ -z ${BOOTSTRAP_RAP} ]] && python-any-r1_pkg_setup
+	[[ -z ${BOOTSTRAP_RAP} ]] && python-any-r2_pkg_setup
 }
 
 # src_unpack

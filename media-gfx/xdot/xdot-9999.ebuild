@@ -17,7 +17,7 @@ else
 	SRC_URI="https://github.com/jrfonseca/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-inherit ${GIT_ECLASS} distutils-r1
+inherit ${GIT_ECLASS} distutils-r2
 
 DESCRIPTION="Interactive viewer for Graphviz dot files"
 HOMEPAGE="https://github.com/jrfonseca/xdot.py"

@@ -9,7 +9,7 @@ DESCRIPTION="Hardware (PCI, USB, OUI, IAB) IDs databases"
 HOMEPAGE="https://github.com/gentoo/hwids"
 if [[ ${PV} == 99999999 ]]; then
 	PYTHON_COMPAT=( python3_{6,7} )
-	inherit git-r3 python-any-r1
+	inherit git-r3 python-any-r2
 	EGIT_REPO_URI="https://github.com/gentoo/hwids.git"
 else
 	SRC_URI="https://github.com/gentoo/hwids/archive/${P}.tar.gz"

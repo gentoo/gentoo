@@ -6,7 +6,7 @@ EAPI=6
 WX_GTK_VER="3.0"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-single-r1 wxwidgets cmake-utils eapi7-ver xdg
+inherit python-single-r2 wxwidgets cmake-utils eapi7-ver xdg
 
 MY_PV="${PV/_/-}"
 MY_P="${PN}-${MY_PV}"
@@ -62,7 +62,7 @@ DOCS=( authors.txt README TODO )
 S=${WORKDIR}/${PN}-$(ver_cut 1-2).0
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	setup-wxwidgets
 }
 

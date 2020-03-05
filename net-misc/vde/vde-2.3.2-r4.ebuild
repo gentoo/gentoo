@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 flag-o-matic
+inherit python-single-r2 flag-o-matic
 
 MY_P="${PN}2-${PV}"
 
@@ -35,7 +35,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=( "${FILESDIR}/${P}-format-security.patch" )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

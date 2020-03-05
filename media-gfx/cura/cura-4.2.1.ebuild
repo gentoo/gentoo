@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit cmake desktop python-single-r1 xdg
+inherit cmake desktop python-single-r2 xdg
 
 MY_PN=Cura
 
@@ -26,8 +26,8 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/libcharon-${PV:0:3}[${PYTHON_SINGLE_USEDEP}]
 	>=dev-python/uranium-${PV:0:3}[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		usb? ( dev-python/pyserial[${PYTHON_MULTI_USEDEP}] )
-		zeroconf? ( dev-python/zeroconf[${PYTHON_MULTI_USEDEP}] )
+		usb? ( dev-python/pyserial[${PYTHON_USEDEP}] )
+		zeroconf? ( dev-python/zeroconf[${PYTHON_USEDEP}] )
 	')"
 
 DEPEND="${RDEPEND}"

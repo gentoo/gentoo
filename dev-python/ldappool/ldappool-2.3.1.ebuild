@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A connection pool for python-ldap"
 HOMEPAGE="https://launchpad.net/oslo"

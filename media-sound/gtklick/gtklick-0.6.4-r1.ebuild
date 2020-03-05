@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A simple metronome with an easy-to-use GTK interface"
 HOMEPAGE="http://das.nasophon.de/gtklick/"
@@ -23,7 +23,7 @@ RDEPEND="dev-python/pygtk[${PYTHON_USEDEP}]
 DEPEND="${RDEPEND}"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	# Replace the broken default runner script with a working one.
 	sed \

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Gettext support, themed icons and scrollkeeper-based documentation in distutils"
 HOMEPAGE="https://launchpad.net/python-distutils-extra"
@@ -30,7 +30,7 @@ python_prepare_all() {
 		-e "s/test_policykit/_&/" -e "s/test_requires_provides/_&/" \
 		-i test/auto.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

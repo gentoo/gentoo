@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Control Onkyo A/V receivers over the network"
 HOMEPAGE="https://github.com/miracle2k/onkyo-eiscp https://pypi.org/project/onkyo-eiscp/"

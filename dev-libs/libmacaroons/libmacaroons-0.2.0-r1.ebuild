@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1
+inherit eutils python-single-r2
 
 DESCRIPTION="Hyperdex macaroons support library"
 HOMEPAGE="http://hyperdex.org"
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
 src_prepare() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

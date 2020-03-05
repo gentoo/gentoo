@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit waf-utils python-any-r1 eutils
+inherit waf-utils python-any-r2 eutils
 
 DESCRIPTION="C++ utility library primarily aimed at audio/musical applications"
 HOMEPAGE="http://wiki.drobilla.net/Raul"

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( pypy3 python2_7 python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="Flask-Babel"
 MY_P="${MY_PN}-${PV}"
@@ -41,7 +41,7 @@ S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
 	sed -i -e "s/, 'sphinx.ext.intersphinx'//" docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

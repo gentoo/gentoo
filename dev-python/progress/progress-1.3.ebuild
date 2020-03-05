@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r2
 
 DESCRIPTION="Easy to use progress bars"
 HOMEPAGE="https://pypi.org/project/progress/ https://github.com/verigak/progress/"

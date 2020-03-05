@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-any-r1 vala toolchain-funcs multilib eutils multiprocessing
+inherit python-any-r2 vala toolchain-funcs multilib eutils multiprocessing
 
 DESCRIPTION="XML parser written in Vala"
 HOMEPAGE="https://birdfont.org/xmlbird.php"

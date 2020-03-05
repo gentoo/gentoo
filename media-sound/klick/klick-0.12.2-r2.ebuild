@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-any-r1 scons-utils toolchain-funcs
+inherit python-any-r2 scons-utils toolchain-funcs
 
 DESCRIPTION="An advanced command-line based metronome for JACK"
 HOMEPAGE="http://das.nasophon.de/klick"

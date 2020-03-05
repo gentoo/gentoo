@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Utilities for variant calling and manipulating VCF and BCF files"
 HOMEPAGE="http://www.htslib.org"

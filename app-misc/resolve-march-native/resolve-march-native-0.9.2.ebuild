@@ -4,7 +4,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Resolve GCC flag -march=native"
 HOMEPAGE="https://github.com/hartwork/resolve-march-native"

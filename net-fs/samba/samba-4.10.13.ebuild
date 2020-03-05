@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='threads(+),xml(+)'
 
-inherit python-single-r1 waf-utils multilib-minimal linux-info systemd pam
+inherit python-single-r2 waf-utils multilib-minimal linux-info systemd pam
 
 MY_PV="${PV/_rc/rc}"
 MY_P="${PN}-${MY_PV}"
@@ -62,10 +62,10 @@ CDEPEND="
 	pam? ( sys-libs/pam )
 	acl? ( virtual/acl )
 	$(python_gen_cond_dep "
-		dev-python/subunit[\${PYTHON_MULTI_USEDEP},${MULTILIB_USEDEP}]
+		dev-python/subunit[\${PYTHON_USEDEP},${MULTILIB_USEDEP}]
 		addns? (
 			net-dns/bind-tools[gssapi]
-			dev-python/dnspython:=[\${PYTHON_MULTI_USEDEP}]
+			dev-python/dnspython:=[\${PYTHON_USEDEP}]
 		)
 	")
 	ceph? ( sys-cluster/ceph )
@@ -147,7 +147,7 @@ WAF_BINARY="${S}/buildtools/bin/waf"
 SHAREDMODS=""
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	if use cluster ; then
 		SHAREDMODS="idmap_rid,idmap_tdb2,idmap_ad"
 	elif use ads ; then

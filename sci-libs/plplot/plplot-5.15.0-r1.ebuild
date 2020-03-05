@@ -7,7 +7,7 @@ WX_GTK_VER=3.0-gtk3
 FORTRAN_NEEDED=fortran
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit cmake-utils flag-o-matic fortran-2 java-pkg-opt-2 python-single-r1 toolchain-funcs virtualx wxwidgets
+inherit cmake-utils flag-o-matic fortran-2 java-pkg-opt-2 python-single-r2 toolchain-funcs virtualx wxwidgets
 
 DESCRIPTION="Multi-language scientific plotting library"
 HOMEPAGE="http://plplot.sourceforge.net/"
@@ -50,8 +50,8 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-			qt5? ( dev-python/PyQt5[${PYTHON_MULTI_USEDEP}] )
+			dev-python/numpy[${PYTHON_USEDEP}]
+			qt5? ( dev-python/PyQt5[${PYTHON_USEDEP}] )
 		')
 	)
 	qhull? ( media-libs/qhull:0= )
@@ -111,7 +111,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	use java && java-pkg-opt-2_pkg_setup
 	use fortran && fortran-2_pkg_setup
 }

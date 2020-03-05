@@ -5,7 +5,7 @@ EAPI=6
 
 TESTVER="abb579e00f2deeede91cb485e53512efab9c6474"
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Clone of EditorConfig core written in Python"
 HOMEPAGE="https://editorconfig.org/"
@@ -35,11 +35,11 @@ src_prepare() {
 	use cli || eapply "${FILESDIR}"/${PN}-0.12.0-no-cli.patch
 
 	default
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	#use cli || rm -f "${D}/${EPREFIX}"/usr/bin
 }
 

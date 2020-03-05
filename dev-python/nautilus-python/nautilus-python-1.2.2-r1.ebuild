@@ -6,7 +6,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-single-r1
+inherit gnome2 python-single-r2
 
 DESCRIPTION="Python bindings for the Nautilus file manager"
 HOMEPAGE="https://projects.gnome.org/nautilus-python/"
@@ -22,7 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 # requires pygobject:3 or :2 and >=nautilus-2.32
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	>=gnome-base/nautilus-3[introspection]
 	${PYTHON_DEPS}

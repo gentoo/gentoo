@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A frontend for several cd-rippers and mp3 encoders"
 HOMEPAGE="http://www.home.unix-ag.org/arne/jack/"
@@ -20,10 +20,10 @@ IUSE=""
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/cddb-py[${PYTHON_MULTI_USEDEP}]
-		dev-python/id3-py[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyid3lib[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyvorbis[${PYTHON_MULTI_USEDEP}]
+		dev-python/cddb-py[${PYTHON_USEDEP}]
+		dev-python/id3-py[${PYTHON_USEDEP}]
+		dev-python/pyid3lib[${PYTHON_USEDEP}]
+		dev-python/pyvorbis[${PYTHON_USEDEP}]
 	')
 	media-libs/flac
 	media-sound/lame
@@ -43,5 +43,5 @@ python_install_all() {
 
 	local DOCS=( README doc/ChangeLog doc/TODO )
 	local HTML_DOCS=( doc/*.{html,css,gif} )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

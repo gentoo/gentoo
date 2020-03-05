@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit linux-info python-r1 toolchain-funcs
+inherit linux-info python-multi-r2 toolchain-funcs
 
 DESCRIPTION="report file access events from all running processes"
 HOMEPAGE="https://launchpad.net/fatrace"
@@ -23,7 +23,7 @@ REQUIRED_USE="powertop? ( ${PYTHON_REQUIRED_USE} )"
 CONFIG_CHECK="~FANOTIFY"
 
 pkg_setup() {
-	use powertop && python-single-r1_pkg_setup
+	use powertop && python-single-r2_pkg_setup
 }
 
 src_prepare() {

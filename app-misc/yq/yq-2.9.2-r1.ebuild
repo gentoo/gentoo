@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Command-line YAML processor - jq wrapper for YAML documents"
 HOMEPAGE="https://yq.readthedocs.io/ https://github.com/kislyuk/yq/ https://pypi.org/project/yq/"
@@ -32,7 +32,7 @@ python_prepare_all() {
 	sed -r -i 's:[[:space:]]*"coverage",:: ; s:[[:space:]]*"flake8",::' \
 		setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

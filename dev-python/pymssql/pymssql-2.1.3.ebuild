@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple MSSQL python extension module"
 HOMEPAGE="http://www.pymssql.org/ https://pypi.python.org/pypi/pymssql"
@@ -39,7 +39,7 @@ python_prepare_all() {
 	# this can cause issues with the patches
 	rm {_mssql,pymssql}.c || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

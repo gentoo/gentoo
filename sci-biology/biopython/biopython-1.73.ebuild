@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Python modules for computational molecular biology"
 HOMEPAGE="https://www.biopython.org/ https://pypi.org/project/biopython/"
@@ -41,7 +41,7 @@ python_install_all() {
 	# remove files causing ecompressdir to fail
 	rm Doc/examples/ls_orchid.gbk.{gz,bz2} || die
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	dodir /usr/share/${PN}
 	cp -r --preserve=mode Scripts Tests "${ED}"/usr/share/${PN} || die

@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Library to implement a well-behaved Unix daemon process"
 HOMEPAGE="https://pypi.org/project/python-daemon/"

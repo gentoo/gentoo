@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools gnome2-utils python-single-r1 systemd user
+inherit autotools gnome2-utils python-single-r2 systemd user
 
 DESCRIPTION="Automatic bug detection and reporting tool"
 HOMEPAGE="https://github.com/abrt/abrt/wiki/ABRT-Project"
@@ -37,9 +37,9 @@ RDEPEND="${COMMON_DEPEND}
 	sys-apps/util-linux
 	>=sys-devel/gdb-7
 	$(python_gen_cond_dep '
-		dev-python/argcomplete[${PYTHON_MULTI_USEDEP}]
-		dev-python/argh[${PYTHON_MULTI_USEDEP}]
-		dev-python/humanize[${PYTHON_MULTI_USEDEP}]
+		dev-python/argcomplete[${PYTHON_USEDEP}]
+		dev-python/argh[${PYTHON_USEDEP}]
+		dev-python/humanize[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${COMMON_DEPEND}
@@ -49,14 +49,14 @@ DEPEND="${COMMON_DEPEND}
 	virtual/pkgconfig
 	>=sys-devel/gettext-0.17
 	$(python_gen_cond_dep '
-		dev-libs/satyr[${PYTHON_MULTI_USEDEP}]
+		dev-libs/satyr[${PYTHON_USEDEP}]
 	')
 "
 
 RESTRICT="test" # tests *may* be broken due to all the RHEL crap.  explore later.
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 
 	enewgroup abrt
 	enewuser abrt -1 -1 -1 abrt

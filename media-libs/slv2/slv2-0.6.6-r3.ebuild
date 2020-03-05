@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
-inherit eutils multilib python-any-r1 toolchain-funcs waf-utils
+inherit eutils multilib python-any-r2 toolchain-funcs waf-utils
 
 DESCRIPTION="A library to make the use of LV2 plugins as simple as possible for applications"
 HOMEPAGE="http://wiki.drobilla.net/SLV2"

@@ -6,7 +6,7 @@ EAPI=7
 AUTOTOOLS_IN_SOURCE_BUILD=yes
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PV=$(ver_cut 1-3)
 MY_PF=LHAPDF-${MY_PV}
@@ -41,14 +41,14 @@ S="${WORKDIR}/${MY_PF}"
 src_configure() {
 	econf $(use_enable python)
 	if use python; then
-		cd "${S}/wrappers/python" && distutils-r1_src_prepare
+		cd "${S}/wrappers/python" && distutils-r2_src_prepare
 	fi
 }
 
 src_compile() {
 	emake all $(use doc && echo doxy)
 	if use python; then
-	   cd "${S}/wrappers/python" && distutils-r1_src_compile
+	   cd "${S}/wrappers/python" && distutils-r2_src_compile
 	fi
 }
 
@@ -64,7 +64,7 @@ src_install() {
 		doins examples/*.cc
 	fi
 	if use python; then
-	   cd "${S}/wrappers/python" && distutils-r1_src_install
+	   cd "${S}/wrappers/python" && distutils-r2_src_install
 	fi
 }
 

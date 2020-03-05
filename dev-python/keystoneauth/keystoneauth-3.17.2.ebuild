@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="This package contains tools for authenticating to an OpenStack-based cloud."
 HOMEPAGE="https://github.com/openstack/keystoneauth"

@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A high-level Python library that makes it easier to use Apache Zookeeper"
 HOMEPAGE="https://kazoo.readthedocs.org/ https://github.com/python-zk/kazoo/ https://pypi.org/project/kazoo/"
@@ -38,5 +38,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 	local DOCS=( {CHANGES,CONTRIBUTING,README}.rst )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

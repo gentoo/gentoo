@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A format-agnostic tabular dataset library written in Python"
 HOMEPAGE="http://python-tablib.org/"

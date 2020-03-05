@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Style checker for Sphinx (or other) RST documentation"
 HOMEPAGE="http://git.openstack.org/cgit/stackforge/doc8"
@@ -29,5 +29,5 @@ RDEPEND="
 
 python_prepare_all() {
 	sed -i '/^argparse/d' requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

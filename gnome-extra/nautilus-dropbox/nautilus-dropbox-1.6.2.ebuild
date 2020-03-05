@@ -6,7 +6,7 @@ EAPI="5"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils python-r1 linux-info gnome2 readme.gentoo user
+inherit autotools eutils python-multi-r2 linux-info gnome2 readme.gentoo user
 
 DESCRIPTION="Store, Sync and Share Files Online"
 HOMEPAGE="https://www.dropbox.com"

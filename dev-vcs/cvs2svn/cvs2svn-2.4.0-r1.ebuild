@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 FILEVER="49237"
 
@@ -27,21 +27,21 @@ RDEPEND="${DEPEND}
 	dev-vcs/rcs"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	python_fix_shebang .
 }
 
 src_compile() {
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 	emake man
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	insinto "/usr/share/${PN}"
 	doins -r contrib cvs2{svn,git,bzr}-example.options
 	doman *.1

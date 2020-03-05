@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite,tk?,xml(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Natural Language Toolkit"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7})
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python binding to the Networking and Cryptography (NaCl) library"
 HOMEPAGE="https://github.com/pyca/pynacl/ https://pypi.org/project/PyNaCl/"
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# For not using the bundled libsodium
 	export SODIUM_INSTALL=system
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

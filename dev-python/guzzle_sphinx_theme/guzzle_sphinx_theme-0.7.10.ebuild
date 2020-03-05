@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Sphinx theme used by Guzzle"
 HOMEPAGE="https://github.com/guzzle/guzzle_sphinx_theme"

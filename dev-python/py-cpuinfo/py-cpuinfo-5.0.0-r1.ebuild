@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Get CPU info with pure Python 2 & 3"
 HOMEPAGE="https://github.com/workhorsy/py-cpuinfo https://pypi.org/project/py-cpuinfo/"

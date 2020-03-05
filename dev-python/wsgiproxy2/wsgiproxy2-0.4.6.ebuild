@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="WSGIProxy2"
 
@@ -45,5 +45,5 @@ distutils_enable_tests nose
 python_prepare_all() {
 	sed -i '/with-coverage/ d' setup.cfg || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

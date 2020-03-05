@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=(python3_{6,7})
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=OctoPrint
 MY_PV=${PV/_/}
@@ -89,7 +89,7 @@ RDEPEND="
 
 src_install()
 {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	newinitd "$FILESDIR/$PN.initd" "$PN"
 	newconfd "$FILESDIR/$PN.confd" "$PN"
 }

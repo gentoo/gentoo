@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Educational tool for relational algebra"
 HOMEPAGE="https://ltworf.github.io/relational/"
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[gui,widgets,${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="${DEPEND}"

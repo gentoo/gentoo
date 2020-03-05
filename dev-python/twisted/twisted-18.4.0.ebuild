@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 TWISTED_PN="Twisted"
 TWISTED_P="${TWISTED_PN}-${PV}"
@@ -97,7 +97,7 @@ python_prepare_all() {
 		# Remove since this is an upstream distribution test for making releases
 		rm src/twisted/python/test/test_release.py || die "rm src/twisted/python/test/test_release.py FAILED"
 	fi
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
@@ -108,7 +108,7 @@ python_compile() {
 		local -x CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
 	fi
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -142,7 +142,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	cd "${D}$(python_get_sitedir)" || die
 
@@ -153,7 +153,7 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	newconfd "${FILESDIR}/twistd.conf" twistd
 	newinitd "${FILESDIR}/twistd.init" twistd

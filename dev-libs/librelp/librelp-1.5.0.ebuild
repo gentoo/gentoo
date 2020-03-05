@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools python-any-r1
+inherit autotools python-any-r2
 
 DESCRIPTION="An easy to use library for the RELP protocol"
 HOMEPAGE="https://www.rsyslog.com/librelp/"
@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 RESTRICT="!test? ( test )"
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

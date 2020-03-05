@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings for the docker credentials store API"
 HOMEPAGE="https://github.com/shin-/dockerpy-creds/"

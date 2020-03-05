@@ -6,7 +6,7 @@ EAPI=6
 EGIT_REPO_URI="https://git.kernel.org/pub/scm/devel/pahole/pahole.git"
 
 PYTHON_COMPAT=( python3_6 )
-inherit multilib cmake-utils git-r3 python-single-r1
+inherit multilib cmake-utils git-r3 python-single-r2
 
 DESCRIPTION="pahole (Poke-a-Hole) and other DWARF2 utilities"
 HOMEPAGE="https://git.kernel.org/cgit/devel/pahole/pahole.git/"

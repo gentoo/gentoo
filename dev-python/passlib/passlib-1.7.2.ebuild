@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Password hashing framework supporting over 20 schemes"
 HOMEPAGE="https://bitbucket.org/ecollins/passlib/wiki/Home/"
@@ -28,6 +28,6 @@ PATCHES=(
 distutils_enable_tests nose
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	use doc && dodoc docs/{*.rst,requirements.txt,lib/*.rst}
 }

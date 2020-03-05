@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-single-r1 vim-plugin
+inherit python-single-r2 vim-plugin
 
 DESCRIPTION="vim plugin: emulates a two-pane text outliner"
 HOMEPAGE="https://vim-voom.github.com/ https://www.vim.org/scripts/script.php?script_id=2657"

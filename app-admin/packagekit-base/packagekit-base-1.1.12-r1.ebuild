@@ -7,7 +7,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools bash-completion-r1 multilib python-single-r1 systemd vala xdg
+inherit autotools bash-completion-r1 multilib python-single-r2 systemd vala xdg
 
 MY_PN="PackageKit"
 MY_P=${MY_PN}-${PV}
@@ -59,8 +59,8 @@ DEPEND="${COMMON_DEPEND}
 "
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		>=app-portage/layman-2[${PYTHON_MULTI_USEDEP}]
-		>=sys-apps/portage-2.2[${PYTHON_MULTI_USEDEP}]
+		>=app-portage/layman-2[${PYTHON_USEDEP}]
+		>=sys-apps/portage-2.2[${PYTHON_USEDEP}]
 	')
 	consolekit? ( sys-auth/consolekit )
 	entropy? ( >=sys-apps/entropy-234[${PYTHON_SINGLE_USEDEP}] )

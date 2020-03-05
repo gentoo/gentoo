@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 DISTUTILS_IN_SOURCE_BUILD=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Raspberry Pi kernel mangling tool mkimage/imagetool-uncompressed.py"
 HOMEPAGE="https://github.com/raspberrypi/tools/"
@@ -32,7 +32,7 @@ python_prepare_all() {
 		-e '1s:python2:python:' \
 		-i imagetool-uncompressed.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_prepare() {
@@ -52,5 +52,5 @@ python_install_all() {
 	newins {"${FILESDIR}"/${P}-,}args-uncompressed.txt
 	newins {"${FILESDIR}"/${P}-,}boot-uncompressed.txt
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

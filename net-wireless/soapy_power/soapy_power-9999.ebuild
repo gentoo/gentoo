@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Obtain power spectrum from SoapySDR devices"
 HOMEPAGE="https://github.com/xmikos/soapy_power"

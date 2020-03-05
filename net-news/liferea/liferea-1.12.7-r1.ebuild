@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit gnome2 python-single-r1
+inherit gnome2 python-single-r2
 
 DESCRIPTION="News Aggregator for RDF/RSS/CDF/Atom/Echo feeds"
 HOMEPAGE="https://lzone.de/liferea/"

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/buildbot/${PN}.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
-inherit readme.gentoo-r1 user systemd distutils-r1
+inherit readme.gentoo-r1 user systemd distutils-r2
 
 MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
@@ -89,7 +89,7 @@ pkg_setup() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	doman docs/buildbot.1
 

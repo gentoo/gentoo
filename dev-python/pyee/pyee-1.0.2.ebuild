@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A port of node.js's EventEmitter to python"
 HOMEPAGE="https://pypi.org/project/pyee/ https://github.com/jfhbrook/pyee"

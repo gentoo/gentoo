@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python{3_6,3_7} )
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="Enables iconic fonts such as Font Awesome in PyQt"
 HOMEPAGE="https://github.com/spyder-ide/qtawesome/ https://pypi.org/project/QtAwesome/"

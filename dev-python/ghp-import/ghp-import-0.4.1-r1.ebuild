@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Copy your docs directly to the gh-pages branch"
 HOMEPAGE="https://github.com/davisp/ghp-import"
@@ -28,5 +28,5 @@ python_prepare_all() {
 	eend ${STATUS}
 	[[ ${STATUS} -gt 0 ]] && die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

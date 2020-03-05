@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python support for SAM/BAM/Bowtie/FASTA/Q/GFF/GTF files"
 HOMEPAGE="https://htseq.readthedocs.io/"

@@ -13,7 +13,7 @@ else
 	KEYWORDS=""
 fi
 
-inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-single-r1 systemd toolchain-funcs udev usr-ldscript
+inherit autotools-utils bash-completion-r1 flag-o-matic linux-info python-single-r2 systemd toolchain-funcs udev usr-ldscript
 
 DESCRIPTION="Userland utilities for ZFS Linux kernel module"
 HOMEPAGE="https://zfsonlinux.org/"
@@ -68,7 +68,7 @@ AUTOTOOLS_IN_SOURCE_BUILD="1"
 PATCHES=( "${FILESDIR}/0.7.13-ZPOOL_IMPORT_UDEV_TIMEOUT_MS.patch" )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	if use kernel_linux && use test-suite; then
 		linux-info_pkg_setup
 		if  ! linux_config_exists; then

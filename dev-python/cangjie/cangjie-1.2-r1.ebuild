@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools python-r1
+inherit autotools python-multi-r2
 
 DESCRIPTION="Python wrapper for libcangjie"
 HOMEPAGE="http://cangjians.github.io/"

@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Bazaar plugin providing an option to generate XML output for builtin commands"
 HOMEPAGE="http://bazaar-vcs.org/XMLOutput"
@@ -20,11 +20,11 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-vcs/bzr[${PYTHON_MULTI_USEDEP}]
+		dev-vcs/bzr[${PYTHON_USEDEP}]
 	')"
 
 PATCHES=( "${FILESDIR}"/${P}_remove-relative-imports.patch )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }

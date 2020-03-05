@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Iterative JSON parser with a Pythonic interface"
 HOMEPAGE="https://github.com/isagalaev/ijson https://pypi.org/project/ijson/"

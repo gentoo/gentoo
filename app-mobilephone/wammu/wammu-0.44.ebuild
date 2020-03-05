@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Front-end for gammu to access mobile phones easily"
 HOMEPAGE="https://www.wammu.eu/"

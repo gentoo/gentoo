@@ -7,7 +7,7 @@ DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="gdbm"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="python script for downloading webcomics"
 HOMEPAGE="http://collector.skumleren.net/"
@@ -26,7 +26,7 @@ S="${WORKDIR}/collector-${PV}"
 DOCS=( Changelog README UPGRADE )
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	python_fix_shebang "${ED}"usr/share/collector
 }
 

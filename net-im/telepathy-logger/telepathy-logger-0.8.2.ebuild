@@ -5,7 +5,7 @@ EAPI="5"
 GCONF_DEBUG="no"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-any-r1 virtualx
+inherit gnome2 python-any-r2 virtualx
 
 DESCRIPTION="Daemon that centralizes the communication logging within the Telepathy framework"
 HOMEPAGE="https://telepathy.freedesktop.org/wiki/Logger"

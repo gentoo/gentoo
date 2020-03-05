@@ -5,7 +5,7 @@ EAPI=6
 CMAKE_BUILD_TYPE=Release
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1 pax-utils cmake-utils
+inherit python-multi-r2 pax-utils cmake-utils
 
 MY_P=${PN}-git-tag-${PV}
 

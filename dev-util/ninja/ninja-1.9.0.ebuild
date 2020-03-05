@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
+inherit bash-completion-r1 elisp-common python-any-r2 toolchain-funcs
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3

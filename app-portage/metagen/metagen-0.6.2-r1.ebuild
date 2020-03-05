@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="metadata.xml generator for ebuilds"
 HOMEPAGE="https://cgit.gentoo.org/proj/metagen.git"
@@ -20,12 +20,12 @@ DEPEND=">=dev-python/jaxml-3.01[${PYTHON_USEDEP}]
 RDEPEND="${DEPEND}"
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	python_newscript metagen/main.py metagen
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	doman docs/metagen.1
 }
 

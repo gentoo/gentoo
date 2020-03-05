@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="A checker for English grammar, for people who are not native English"
 HOMEPAGE="http://queequeg.sourceforge.net/"

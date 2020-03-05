@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Setuptools revision control system plugin for Git"
 HOMEPAGE="https://github.com/wichert/setuptools-git"

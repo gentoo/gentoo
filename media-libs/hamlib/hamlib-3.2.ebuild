@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit autotools-utils eutils multilib python-single-r1
+inherit autotools-utils eutils multilib python-single-r2
 
 DESCRIPTION="Ham radio backend rig control libraries"
 HOMEPAGE="https://www.hamlib.org"
@@ -37,7 +37,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DOCS=(AUTHORS NEWS PLAN README README.betatester README.developer TODO)
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

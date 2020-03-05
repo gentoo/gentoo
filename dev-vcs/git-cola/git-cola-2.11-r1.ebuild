@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 DISTUTILS_SINGLE_IMPL=true
 
-inherit distutils-r1 readme.gentoo-r1 virtualx
+inherit distutils-r2 readme.gentoo-r1 virtualx
 
 DESCRIPTION="The highly caffeinated git GUI"
 HOMEPAGE="https://git-cola.github.io/"
@@ -21,19 +21,19 @@ RESTRICT="!test? ( test )"
 # Since PyQt5 is preferred at runtime if installed, depend on that
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/pyinotify[${PYTHON_MULTI_USEDEP}]
-		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
-		dev-python/QtPy[gui,${PYTHON_MULTI_USEDEP}]
-		dev-python/PyQt5[gui,network,widgets,${PYTHON_MULTI_USEDEP}]
+		dev-python/pyinotify[${PYTHON_USEDEP}]
+		dev-python/send2trash[${PYTHON_USEDEP}]
+		dev-python/QtPy[gui,${PYTHON_USEDEP}]
+		dev-python/PyQt5[gui,network,widgets,${PYTHON_USEDEP}]
 	')
 	dev-vcs/git"
 DEPEND="${RDEPEND}
 	sys-devel/gettext
 	$(python_gen_cond_dep "
 		doc? (
-			dev-python/sphinx[\${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[\${PYTHON_USEDEP}]
 			)
-		test? ( dev-python/nose[\${PYTHON_MULTI_USEDEP}] ${VIRTUALX_DEPEND} )
+		test? ( dev-python/nose[\${PYTHON_USEDEP}] ${VIRTUALX_DEPEND} )
 	")
 "
 
@@ -61,7 +61,7 @@ python_prepare_all() {
 	# fix ssh-askpass directory reference
 	sed -i -e 's/resources\.share/resources\.prefix/' cola/app.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -87,7 +87,7 @@ python_test() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 }
 
 python_install_all() {
@@ -103,6 +103,6 @@ python_install_all() {
 
 	use doc || HTML_DOCS=( "${FILESDIR}"/index.html )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	readme.gentoo_create_doc
 }

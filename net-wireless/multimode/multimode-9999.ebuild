@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="multimode radio decoder for rtl-sdr devices using gnuradio"
 HOMEPAGE="https://www.cgran.org/browser/projects/multimode/trunk"

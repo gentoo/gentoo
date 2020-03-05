@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 # Commit Date: 15th December 2019
 COMMIT="875325103234b4a3ed96a4a5167ff78c291edbff"

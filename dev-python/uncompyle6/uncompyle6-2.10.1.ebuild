@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python cross-version byte-code deparser"
 HOMEPAGE="https://github.com/rocky/python-uncompyle6/ https://pypi.org/project/uncompyle6/"
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 "
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 # only run the recommended "make check" tests

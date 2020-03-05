@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Extension to sphinx to include program output"
 HOMEPAGE="https://sphinxcontrib-programoutput.readthedocs.io/en/latest/"
@@ -40,6 +40,6 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

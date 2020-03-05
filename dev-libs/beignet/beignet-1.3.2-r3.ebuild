@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 CMAKE_BUILD_TYPE="Release"
 
-inherit python-any-r1 cmake-multilib flag-o-matic llvm
+inherit python-any-r2 cmake-multilib flag-o-matic llvm
 
 DESCRIPTION="OpenCL implementation for Intel Sandy Bridge, Ivy Bridge and Haswell GPUs"
 HOMEPAGE="https://01.org/beignet https://gitlab.freedesktop.org/beignet/beignet"

@@ -9,7 +9,7 @@ PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt_BR ro ru sk sl sv tr zh_CN
 		 zh_TW"
 PLOCALES="af cs de en es fa fr hr hu it ko nb pl pt-BR ro ru sk sl sv tr zh-CN
 		 zh-TW"
-inherit flag-o-matic git-r3 linux-info multilib pam prefix python-single-r1 \
+inherit flag-o-matic git-r3 linux-info multilib pam prefix python-single-r2 \
 		systemd user
 
 KEYWORDS=""
@@ -126,7 +126,7 @@ pkg_setup() {
 	enewgroup postgres 70
 	enewuser postgres 70 /bin/sh /var/lib/postgresql postgres
 
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

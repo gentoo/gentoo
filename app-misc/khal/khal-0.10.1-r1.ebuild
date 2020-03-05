@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A CalDAV based calendar"
 HOMEPAGE="http://lostpackets.de/khal/"
@@ -36,7 +36,7 @@ DEPEND=">dev-python/setuptools_scm-1.12.0[${PYTHON_USEDEP}]
 DOCS=( AUTHORS.txt CHANGELOG.rst CONTRIBUTING.rst README.rst khal.conf.sample )
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	if use zsh-completion; then
 		insinto /usr/share/zsh/site-functions
 		doins misc/__khal

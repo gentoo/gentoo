@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=(python2_7)
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 MY_PN="Soya"
 MY_PV="${PV/_}"
@@ -49,7 +49,7 @@ src_unpack() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	insinto /usr/share/${PF}
 	if use doc; then

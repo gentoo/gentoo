@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 qmake-utils
+inherit distutils-r2 qmake-utils
 
 DESCRIPTION="A graphical file and directories comparator and merge tool"
 HOMEPAGE="http://furius.ca/xxdiff/"
@@ -41,13 +41,13 @@ src_configure() {
 		cat Makefile.extra >> Makefile || die
 	popd
 
-	distutils-r1_src_configure
+	distutils-r2_src_configure
 }
 
 src_compile() {
 	emake -C src MAKEDIR=.
 
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 	HTML_DOCS+=(
 		doc/*.{png,html}
 		src/doc.html
@@ -57,7 +57,7 @@ src_compile() {
 src_install() {
 	dobin bin/xxdiff
 
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	dodoc CHANGES README* TODO doc/*.txt src/doc.txt
 

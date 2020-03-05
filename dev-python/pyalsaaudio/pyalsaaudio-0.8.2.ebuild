@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r2 toolchain-funcs
 
 DESCRIPTION="A Python wrapper for the ALSA API"
 HOMEPAGE="https://www.sourceforge.net/projects/pyalsaaudio
@@ -30,7 +30,7 @@ python_compile_all() {
 
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -41,5 +41,5 @@ python_install_all() {
 	use doc && local HTML_DOCS=( doc/html/. )
 	local EXAMPLES=( *test.py )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

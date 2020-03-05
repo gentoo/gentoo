@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses"
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Ncurses client and real-time monitoring and displaying of HAProxy status"
 HOMEPAGE="http://feurix.org/projects/hatop/"

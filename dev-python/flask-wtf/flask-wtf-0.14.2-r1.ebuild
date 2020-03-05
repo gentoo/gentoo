@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="Flask-WTF"
 MY_P="${MY_PN}-${PV}"
@@ -46,7 +46,7 @@ python_prepare_all() {
 	sed -i "/'sphinx.ext.intersphinx'/d" docs/conf.py || die
 	# tries to access things over the network
 	rm tests/test_recaptcha.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-inherit autotools python-any-r1
+inherit autotools python-any-r2
 
 EGIT_COMMIT="0dd3aaabe61fbc5ed0d9a74915678d11d00c2a1c"
 

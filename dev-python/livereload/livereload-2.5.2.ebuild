@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="Python LiveReload is an awesome tool for web developers"
 HOMEPAGE="https://github.com/lepture/python-livereload"
@@ -35,5 +35,5 @@ python_test() {
 python_install_all() {
 	use examples && local EXAMPLES=( example/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

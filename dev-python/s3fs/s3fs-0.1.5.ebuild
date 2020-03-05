@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pythonic file interface to S3"
 HOMEPAGE="https://s3fs.readthedocs.io/en/latest/"

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit desktop python-single-r1
+inherit desktop python-single-r2
 
 DESCRIPTION="An enriched clone of the game 'Logical' by Rainbow Arts"
 HOMEPAGE="http://pathological.sourceforge.net/"
@@ -22,7 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/pygame-1.5.5[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygame-1.5.5[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"

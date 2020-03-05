@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Simple Python interface to HDF5 files"
 HOMEPAGE="http://www.h5py.org/"
@@ -39,7 +39,7 @@ pkg_setup() {
 
 python_prepare_all() {
 	append-cflags -fno-strict-aliasing
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure() {
@@ -63,5 +63,5 @@ python_install_all() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
 	use examples && DOCS+=( examples )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

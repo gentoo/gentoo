@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Syntax highlighting and autocompletion for the Python interpreter"
 HOMEPAGE="https://www.bpython-interpreter.org/ https://github.com/bpython/bpython https://pypi.org/project/bpython/"
@@ -53,5 +53,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/sphinx/source/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

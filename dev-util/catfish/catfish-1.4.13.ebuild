@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 xdg-utils
+inherit distutils-r2 xdg-utils
 
 DESCRIPTION="A frontend for find, (s)locate, doodle, tracker, beagle, strigi and pinot"
 HOMEPAGE="https://docs.xfce.org/apps/catfish/start"
@@ -33,7 +33,7 @@ BDEPEND="
 "
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	python_optimize
 	rm -r "${ED}"/usr/share/doc/catfish || die
 }

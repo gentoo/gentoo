@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A locking API for expiring values while a single thread generates a new value."
 HOMEPAGE="https://bitbucket.org/zzzeek/dogpile.cache"

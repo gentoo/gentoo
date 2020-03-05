@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 SRC_URI="https://dev.gentoo.org/~twitch153/${PN}/${P}.tar.bz2"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
@@ -35,11 +35,11 @@ python_install() {
 	# distutils does not provide for specifying two different script install
 	# locations. Since we only install one script here the following should
 	# be ok
-	distutils-r1_python_install --install-scripts="${EPREFIX}/usr/sbin"
+	distutils-r2_python_install --install-scripts="${EPREFIX}/usr/sbin"
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	insinto /etc/vhosts
 	doins config/webapp-config

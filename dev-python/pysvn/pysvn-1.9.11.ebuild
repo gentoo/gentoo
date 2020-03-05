@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit eutils distutils-r1 toolchain-funcs
+inherit eutils distutils-r2 toolchain-funcs
 
 DESCRIPTION="Object-oriented python bindings for subversion"
 HOMEPAGE="https://pysvn.sourceforge.io/"
@@ -28,7 +28,7 @@ python_prepare_all() {
 	# Don't use internal copy of dev-python/pycxx.
 	rm -r Import || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure() {
@@ -55,5 +55,5 @@ python_install() {
 python_install_all() {
 	use doc && local HTML_DOCS=( Docs/. )
 	use examples && local EXAMPLES=( Examples/Client/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

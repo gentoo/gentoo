@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=(python3_6)
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="framework for ebuild generators"
 HOMEPAGE="https://github.com/jauhien/g-sorcery"
@@ -28,7 +28,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	doman docs/*.8
 	docinto html

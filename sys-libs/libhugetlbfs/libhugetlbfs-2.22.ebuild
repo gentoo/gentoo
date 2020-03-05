@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit multilib toolchain-funcs python-any-r1
+inherit multilib toolchain-funcs python-any-r2
 
 DESCRIPTION="easy hugepage access"
 HOMEPAGE="https://github.com/libhugetlbfs/libhugetlbfs"

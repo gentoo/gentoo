@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Enables American fuzzy lop fork server and instrumentation for pure-Python code"
 HOMEPAGE="https://github.com/jwilk/python-afl http://jwilk.net/software/python-afl"

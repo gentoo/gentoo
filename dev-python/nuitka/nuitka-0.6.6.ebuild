@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS="rdepend"
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 eutils python-utils-r1
+inherit distutils-r2 eutils python-utils-r2
 
 DESCRIPTION="Python to native compiler"
 HOMEPAGE="https://www.nuitka.net"
@@ -25,7 +25,7 @@ RDEPEND="${BDEPEND}
 S="${WORKDIR}/${P^}"
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	python_optimize
 }
 

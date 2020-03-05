@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=BitTornado
 MY_P=${MY_PN}-${PV}
@@ -34,7 +34,7 @@ S=${WORKDIR}/${MY_PN}-${EGIT_COMMIT}
 python_prepare_all() {
 	# https://github.com/effigies/BitTornado/pull/53
 	sed -e 's:"BitTornado.Tracker":\0, "BitTornado.Types":' -i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -42,7 +42,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	newconfd "${FILESDIR}"/bttrack.conf bttrack
 	newinitd "${FILESDIR}"/bttrack.rc bttrack

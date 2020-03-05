@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit autotools python-single-r1 vcs-snapshot
+inherit autotools python-single-r2 vcs-snapshot
 
 DESCRIPTION="A simple C language RPC framework"
 HOMEPAGE="https://github.com/haiwen/libsearpc/ http://seafile.com/"
@@ -21,7 +21,7 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-libs/jansson-2.2.1"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/simplejson[${PYTHON_MULTI_USEDEP}]
+		dev-python/simplejson[${PYTHON_USEDEP}]
 	')"
 
 src_prepare() {

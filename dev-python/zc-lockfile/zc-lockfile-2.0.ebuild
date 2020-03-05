@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN/-/.}"
 MY_P=${MY_PN}-${PV}
@@ -31,18 +31,18 @@ distutils_enable_tests nose
 # Prevent incorrect installation of data file
 python_prepare_all() {
 	sed -e '/^    include_package_data/d' -i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	python_moduleinto zc
 	python_domodule src/zc/__init__.py
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	find "${D}" -name '*.pth' -delete || die
 }

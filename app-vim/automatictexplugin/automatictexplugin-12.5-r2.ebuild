@@ -4,7 +4,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1 vim-plugin
+inherit python-single-r2 vim-plugin
 
 MY_P="AutomaticTexPlugin_${PV}"
 DESCRIPTION="vim plugin: a comprehensive plugin for editing LaTeX files"
@@ -26,7 +26,7 @@ RDEPEND="
 	app-vim/align
 	app-text/wdiff
 	$(python_gen_cond_dep '
-		dev-python/psutil[${PYTHON_MULTI_USEDEP}]
+		dev-python/psutil[${PYTHON_USEDEP}]
 	')
 	dev-tex/latexmk
 	dev-tex/detex

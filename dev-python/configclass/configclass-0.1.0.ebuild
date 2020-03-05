@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python to class to hold configuration values"
 HOMEPAGE="https://github.com/schettino72/configclass/"

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="command line tool for interacting with cloud storage services"
 HOMEPAGE="https://github.com/GoogleCloudPlatform/gsutil"
@@ -47,7 +47,7 @@ DOCS=( README.md CHANGES.md )
 RESTRICT="test"
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	sed -e 's/boto==/boto>=/' \
 		-e 's/mock==/mock>=/' \

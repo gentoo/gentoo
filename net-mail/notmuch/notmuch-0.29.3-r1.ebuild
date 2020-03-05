@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
 inherit bash-completion-r1 elisp-common eutils flag-o-matic pax-utils \
-	distutils-r1 toolchain-funcs
+	distutils-r2 toolchain-funcs
 
 DESCRIPTION="Thread-based e-mail indexer, supporting quick search and tagging"
 HOMEPAGE="https://notmuchmail.org/"
@@ -117,7 +117,7 @@ src_unpack() {
 src_prepare() {
 	default
 
-	bindings python distutils-r1_src_prepare
+	bindings python distutils-r2_src_prepare
 	bindings python mv README README-python || die
 	mv contrib/notmuch-mutt/README contrib/notmuch-mutt/README-mutt || die
 
@@ -157,7 +157,7 @@ src_compile() {
 	python_setup  # for sphinx
 
 	V=1 default
-	bindings python distutils-r1_src_compile
+	bindings python distutils-r2_src_compile
 
 	if use mutt; then
 		pushd contrib/notmuch-mutt || die
@@ -210,7 +210,7 @@ src_install() {
 		popd || die
 	fi
 
-	DOCS="" bindings python distutils-r1_src_install
+	DOCS="" bindings python distutils-r2_src_install
 	use doc && bindings python dodoc -r html
 }
 

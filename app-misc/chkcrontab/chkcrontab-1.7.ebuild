@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A tool to detect crontab errors"
 HOMEPAGE="https://github.com/lyda/chkcrontab"
@@ -23,5 +23,5 @@ python_test() {
 
 python_install_all() {
 	doman doc/${PN}.1
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

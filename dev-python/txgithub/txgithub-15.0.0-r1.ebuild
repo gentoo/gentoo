@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6)
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="GitHub API client implemented using Twisted"
 HOMEPAGE="https://github.com/tomprince/txgithub https://pypi.org/project/txgithub/"

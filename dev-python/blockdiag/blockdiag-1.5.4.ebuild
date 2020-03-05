@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Generate block-diagram image from text"
 HOMEPAGE="http://blockdiag.com/ https://pypi.org/project/blockdiag/ https://bitbucket.org/blockdiag/blockdiag/"
@@ -46,7 +46,7 @@ python_prepare_all() {
 		src/blockdiag/tests/test_generate_diagram.py || die
 	rm src/blockdiag/tests/diagrams/node_icon.diag || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

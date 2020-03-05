@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="An implementation of time.monotonic() for Python 2 & < 3.3"
 HOMEPAGE="https://github.com/atdt/monotonic"

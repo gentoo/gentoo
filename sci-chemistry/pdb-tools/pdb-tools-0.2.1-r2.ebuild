@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit fortran-2 python-single-r1 toolchain-funcs
+inherit fortran-2 python-single-r2 toolchain-funcs
 
 MY_PN="pdbTools"
 
@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}"/${MY_PN}_${PV}
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	fortran-2_pkg_setup
 }
 

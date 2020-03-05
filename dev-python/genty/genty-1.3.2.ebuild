@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Allows you to run a test with multiple data sets"
 HOMEPAGE="https://pypi.org/project/genty/ https://github.com/box/genty"

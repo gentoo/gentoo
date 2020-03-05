@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Extensions to the standard Python datetime module"
 HOMEPAGE="
@@ -43,7 +43,7 @@ python_prepare_all() {
 	# don't install zoneinfo tarball
 	sed -i '/package_data=/d' setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

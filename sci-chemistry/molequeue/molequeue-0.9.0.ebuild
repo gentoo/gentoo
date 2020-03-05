@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-single-r1 virtualx
+inherit cmake-utils python-single-r2 virtualx
 
 DESCRIPTION="Abstract, manage and coordinate execution of tasks"
 HOMEPAGE="https://www.openchemistry.org/projects/molequeue/"

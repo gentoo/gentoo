@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Extension to link to external Doxygen API documentation"
 HOMEPAGE="https://pypi.org/project/sphinxcontrib-doxylink/ https://pythonhosted.org/sphinxcontrib-doxylink/ https://bitbucket.org/birkenfeld/sphinx-contrib"
@@ -25,10 +25,10 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# any better idea ?
 	rm -rf tests
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

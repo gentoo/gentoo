@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A small convenience library for fetching files securely"
 HOMEPAGE="https://github.com/dol-sen/ssl-fetch"

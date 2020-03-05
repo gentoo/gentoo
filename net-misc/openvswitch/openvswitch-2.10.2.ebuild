@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools eutils linux-info linux-mod python-r1 systemd
+inherit autotools eutils linux-info linux-mod python-multi-r2 systemd
 
 DESCRIPTION="Production quality, multilayer virtual switch"
 HOMEPAGE="https://www.openvswitch.org"

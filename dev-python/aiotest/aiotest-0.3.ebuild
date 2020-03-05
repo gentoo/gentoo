@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Test suite for an implementation of asyncio (PEP 3156)"
 HOMEPAGE="https://bitbucket.org/haypo/aiotest"

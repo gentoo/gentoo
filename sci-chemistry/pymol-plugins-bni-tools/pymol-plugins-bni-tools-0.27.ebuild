@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1 versionator
+inherit python-multi-r2 versionator
 
 MY_PN="${PN#pymol-plugins-}"
 MY_P="${MY_PN}-$(delete_version_separator 1)"

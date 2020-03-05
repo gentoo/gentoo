@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="python tool to convert SVG files to reportlab graphics"
 HOMEPAGE="https://code.google.com/p/svg2rlg/"
@@ -33,5 +33,5 @@ python_test() {
 python_prepare_all() {
 	find -name '*.py' -exec sed -i 's:\r::' {} + || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

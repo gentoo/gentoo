@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=WebOb
 MY_P=${MY_PN}-${PV}
@@ -27,5 +27,5 @@ distutils_enable_tests pytest
 
 python_prepare_all() {
 	sed -i "/'sphinx.ext.intersphinx'/d" docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

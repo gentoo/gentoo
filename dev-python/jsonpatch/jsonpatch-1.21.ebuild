@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_6 )
 
 RESTRICT="test"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Apply JSON-Patches like http://tools.ietf.org/html/draft-pbryan-json-patch-04"
 HOMEPAGE="https://github.com/stefankoegl/python-json-patch"

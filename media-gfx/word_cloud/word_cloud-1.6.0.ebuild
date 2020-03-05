@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A little word cloud generator in Python"
 HOMEPAGE="https://amueller.github.io/word_cloud/"

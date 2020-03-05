@@ -7,7 +7,7 @@ EAPI=7
 # https://github.com/karanlyons/chump/issues/17
 PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="API wrapper for Pushover"
 HOMEPAGE="https://github.com/karanlyons/chump"
@@ -25,7 +25,7 @@ DEPEND="
 
 python_prepare_all() {
 	sed -i "/'sphinx.ext.intersphinx'/d" docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

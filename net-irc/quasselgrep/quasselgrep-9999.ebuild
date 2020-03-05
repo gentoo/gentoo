@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_COMMIT=502c88bdc7613abb68e868eb520e39ec8a5cf6dd
 

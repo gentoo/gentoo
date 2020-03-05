@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 ADA_COMPAT=( gnat_201{6,7,8,9} )
-inherit ada multilib multiprocessing autotools python-single-r1
+inherit ada multilib multiprocessing autotools python-single-r2
 
 commitId="fbc46346dc67dfa83ae5132ef72fdd64fbe7e199"
 DESCRIPTION="GNAT Component Collection"
@@ -41,7 +41,7 @@ S="${WORKDIR}"/${PN}-${commitId}
 PATCHES=( "${FILESDIR}"/${PN}-2018-gentoo.patch )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	ada_setup
 }
 

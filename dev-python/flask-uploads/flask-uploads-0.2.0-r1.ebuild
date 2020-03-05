@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Flexible and efficient upload handling for Flask"
 HOMEPAGE="https://pythonhosted.org/Flask-Testing/

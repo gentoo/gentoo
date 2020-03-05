@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_PN="${PN}2"
 MY_P="${MY_PN}-${PV}"
@@ -40,7 +40,7 @@ python_compile() {
 
 	! python_is_python3 && append-flags -fno-strict-aliasing
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_prepare_all() {
@@ -48,7 +48,7 @@ python_prepare_all() {
 		sed -i 's/^\(define=\)/\1PSYCOPG_DEBUG,/' setup.cfg || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -61,5 +61,5 @@ python_install_all() {
 		dodoc doc/src/_build/text/*
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

@@ -8,7 +8,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 # entry_points is added via setup.cfg as just [entry_points]
 _DISTUTILS_SETUPTOOLS_WARNED=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Manage dynamic plugins for Python applications"
 HOMEPAGE="https://github.com/openstack/stevedore https://pypi.org/project/stevedore/"
@@ -43,5 +43,5 @@ distutils_enable_sphinx 'doc/source' \
 python_prepare_all() {
 	# Delete spurious data in requirements.txt
 	sed -e '/^pbr/d' -i requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

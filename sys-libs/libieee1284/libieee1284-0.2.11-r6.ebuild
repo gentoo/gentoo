@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 multilib-minimal
+inherit python-single-r2 multilib-minimal
 
 DESCRIPTION="Library to query devices using IEEE1284"
 HOMEPAGE="http://cyberelk.net/tim/software/libieee1284/"
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 	)"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 multilib_src_configure() {

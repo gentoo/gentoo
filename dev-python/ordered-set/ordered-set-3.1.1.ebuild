@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A mutable set that remembers the order of its entries"
 HOMEPAGE="https://github.com/LuminosoInsight/ordered-set"

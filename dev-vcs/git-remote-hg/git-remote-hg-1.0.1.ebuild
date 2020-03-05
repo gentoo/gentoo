@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Semi-official Mercurial bridge from Git project"
 HOMEPAGE="https://github.com/mnauw/git-remote-hg"
@@ -26,12 +26,12 @@ RDEPEND="
 RESTRICT="test"
 
 src_compile() {
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 	emake doc
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	emake DESTDIR="${D}" prefix="${EPREFIX}/usr" install-doc
 }
 

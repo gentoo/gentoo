@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="Nikola"
 MY_P="${MY_PN}-${PV}"
@@ -57,7 +57,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${MY_P}"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	# hackish way to remove docs that ended up in the wrong place
 	rm -rv "${D}/usr/share/doc/${PN}" || die

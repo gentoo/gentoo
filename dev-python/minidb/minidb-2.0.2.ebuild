@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple SQLite-based object store"
 HOMEPAGE="https://thp.io/2010/minidb/"

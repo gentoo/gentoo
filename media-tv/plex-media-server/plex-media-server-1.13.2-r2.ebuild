@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils user systemd unpacker pax-utils python-single-r1
+inherit eutils user systemd unpacker pax-utils python-single-r2
 
 MINOR_VERSION="5154-fd05be322"
 
@@ -27,7 +27,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="
 	sys-apps/fix-gnustack
 	$(python_gen_cond_dep '
-		dev-python/virtualenv[${PYTHON_MULTI_USEDEP}]
+		dev-python/virtualenv[${PYTHON_USEDEP}]
 	')"
 
 RDEPEND="
@@ -50,7 +50,7 @@ PATCHES=( "${FILESDIR}/virtualenv_start_pms.patch" )
 pkg_setup() {
 	enewgroup ${_USERNAME}
 	enewuser ${_USERNAME} -1 /bin/bash /var/lib/${_APPNAME} "${_USERNAME},video"
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_unpack() {

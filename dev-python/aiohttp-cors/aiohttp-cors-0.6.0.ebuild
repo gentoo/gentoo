@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Implements CORS support for aiohttp asyncio-powered asynchronous HTTP server"
 HOMEPAGE="https://github.com/aio-libs/aiohttp-cors"
@@ -34,7 +34,7 @@ python_prepare_all() {
 	# for some reason, it is installed by 'setup.py test' on py!=3.4
 	# TODO: investigate
 	sed -i -e '/typing/d' setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

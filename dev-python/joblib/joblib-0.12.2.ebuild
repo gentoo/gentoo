@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Tools to provide lightweight pipelining in Python"
 HOMEPAGE="https://joblib.readthedocs.io/en/latest/
@@ -41,5 +41,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

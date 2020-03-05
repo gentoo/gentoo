@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="py.test plugin for flake8"
 HOMEPAGE="https://github.com/tholo/pytest-flake8 https://pypi.org/project/pytest-flake8"

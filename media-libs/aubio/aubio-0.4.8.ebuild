@@ -6,7 +6,7 @@ EAPI=6
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='threads(+)'
-inherit distutils-r1 waf-utils
+inherit distutils-r2 waf-utils
 
 DESCRIPTION="Library for audio labelling"
 HOMEPAGE="https://aubio.org/"
@@ -76,7 +76,7 @@ src_configure() {
 
 	if use python ; then
 		cd "${PYTHON_SRC_DIR}" || die
-		distutils-r1_src_configure
+		distutils-r2_src_configure
 	fi
 }
 
@@ -90,7 +90,7 @@ src_compile() {
 
 	if use python ; then
 		cd "${PYTHON_SRC_DIR}" || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -99,7 +99,7 @@ src_test() {
 
 	if use python ; then
 		cd "${PYTHON_SRC_DIR}" || die
-		distutils-r1_src_test
+		distutils-r2_src_test
 	fi
 }
 
@@ -113,7 +113,7 @@ src_install() {
 
 	if use python ; then
 		cd "${PYTHON_SRC_DIR}" || die
-		DOCS="" distutils-r1_src_install
+		DOCS="" distutils-r2_src_install
 		newdoc python/README.md README.python
 	fi
 

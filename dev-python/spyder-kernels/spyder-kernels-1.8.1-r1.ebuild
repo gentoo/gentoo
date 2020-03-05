@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Kernels used by spyder on its ipython console"
 HOMEPAGE="https://github.com/spyder-ide/spyder-kernels/

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Utility to test and create .sfv, .csv, .crc and md5sum files"
 HOMEPAGE="http://cfv.sourceforge.net/"
@@ -19,8 +19,8 @@ KEYWORDS="amd64 hppa ~ppc ~sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-mac
 DEPEND=""
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/python-fchksum[${PYTHON_MULTI_USEDEP}]
-		bittorrent? ( net-p2p/bittornado[${PYTHON_MULTI_USEDEP}] )
+		dev-python/python-fchksum[${PYTHON_USEDEP}]
+		bittorrent? ( net-p2p/bittornado[${PYTHON_USEDEP}] )
 	')"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}

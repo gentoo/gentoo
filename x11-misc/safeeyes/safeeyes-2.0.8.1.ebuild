@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit gnome2-utils xdg distutils-r1
+inherit gnome2-utils xdg distutils-r2
 
 DESCRIPTION="Linux alternative to EyeLeo"
 HOMEPAGE="https://github.com/slgobinath/SafeEyes"

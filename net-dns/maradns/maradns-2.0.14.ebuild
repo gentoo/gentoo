@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 systemd toolchain-funcs user
+inherit python-single-r2 systemd toolchain-funcs user
 
 DEADWOOD_VER="3.2.10"
 
@@ -31,7 +31,7 @@ pkg_setup() {
 	enewuser maradns 99 -1 -1 maradns
 	eend ${?}
 
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

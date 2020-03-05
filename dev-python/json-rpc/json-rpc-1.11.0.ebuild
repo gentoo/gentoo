@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="JSON-RPC transport implementation for python"
 HOMEPAGE="https://github.com/pavlov99/json-rpc"
@@ -33,7 +33,7 @@ python_prepare_all() {
 	from __future__ import absolute_import
 	from six import *
 	EOF
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 gnome2-utils
+inherit distutils-r2 gnome2-utils
 
 DESCRIPTION="A upower based battery monitor for the system tray, similar to batterymon"
 HOMEPAGE="https://code.google.com/p/batti-gtk/"

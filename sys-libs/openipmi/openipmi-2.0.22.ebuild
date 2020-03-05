@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils autotools python-single-r1
+inherit eutils autotools python-single-r2
 
 DESCRIPTION="Library interface to IPMI"
 HOMEPAGE="https://sourceforge.net/projects/openipmi/"
@@ -48,7 +48,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

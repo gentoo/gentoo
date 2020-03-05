@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 gnome2-utils xdg-utils
+inherit distutils-r2 gnome2-utils xdg-utils
 
 DESCRIPTION="A GUI for f.lux"
 HOMEPAGE="https://justgetflux.com/"
@@ -33,7 +33,7 @@ python_install() {
 	# as this could cause a file collision
 	export DISABLE_GSCHEMAS_COMPILED="true"
 
-	distutils-r1_python_install
+	distutils-r2_python_install
 }
 
 pkg_postinst() {

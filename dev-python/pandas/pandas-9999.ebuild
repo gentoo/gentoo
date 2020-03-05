@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 
 VIRTUALX_REQUIRED="manual"
 
-inherit distutils-r1 eutils flag-o-matic git-r3 virtualx
+inherit distutils-r2 eutils flag-o-matic git-r3 virtualx
 
 DESCRIPTION="Powerful data structures for data analysis and statistics"
 HOMEPAGE="https://pandas.pydata.org/"
@@ -114,7 +114,7 @@ python_prepare_all() {
 	sed -e 's:testOdArray:disable:g' \
 		-i pandas/tests/io/json/test_ujson.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -145,7 +145,7 @@ python_install_all() {
 		einfo "statsmodels next and re-emerge pandas with USE doc"
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

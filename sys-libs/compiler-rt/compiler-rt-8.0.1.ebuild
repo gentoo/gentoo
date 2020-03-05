@@ -9,7 +9,7 @@ CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils flag-o-matic llvm multiprocessing \
-	python-any-r1 toolchain-funcs
+	python-any-r2 toolchain-funcs
 
 MY_P=${P}.src
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
@@ -51,7 +51,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	llvm_pkg_setup
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 test_compiler() {

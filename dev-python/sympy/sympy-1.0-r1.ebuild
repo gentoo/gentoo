@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1 eutils virtualx
+inherit distutils-r2 eutils virtualx
 
 DESCRIPTION="Computer Algebra System in pure Python"
 HOMEPAGE="https://sympy.org"
@@ -43,11 +43,11 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	epatch "${FILESDIR}"/${P}-doc-makefile.patch
 	epatch "${FILESDIR}"/${P}-zeta.patch
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
-	PYTHONPATH="." distutils-r1_python_compile
+	PYTHONPATH="." distutils-r2_python_compile
 }
 
 python_test() {
@@ -55,13 +55,13 @@ python_test() {
 }
 
 python_install() {
-	PYTHONPATH="." distutils-r1_python_install
+	PYTHONPATH="." distutils-r2_python_install
 }
 
 python_install_all() {
 	local DOCS=( AUTHORS README.rst )
 	use examples && local EXAMPLES=( examples/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use texmacs; then
 		exeinto /usr/libexec/TeXmacs/bin/

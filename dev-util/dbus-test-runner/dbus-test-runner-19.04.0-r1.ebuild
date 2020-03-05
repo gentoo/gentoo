@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit flag-o-matic python-single-r1
+inherit flag-o-matic python-single-r2
 
 DESCRIPTION="Run executables under a new DBus session for testing"
 HOMEPAGE="https://launchpad.net/dbus-test-runner"
@@ -30,13 +30,13 @@ COMMON_DEPEND="${PYTHON_DEPS}
 DEPEND="${COMMON_DEPEND}
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/dbusmock[${PYTHON_MULTI_USEDEP}]
+			dev-python/dbusmock[${PYTHON_USEDEP}]
 		')
 	)
 "
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/dbusmock[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbusmock[${PYTHON_USEDEP}]
 	')
 "
 

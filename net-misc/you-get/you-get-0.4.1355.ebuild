@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=(python{3_6,3_7})
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="utility to download media contents from the web"
 HOMEPAGE="http://www.soimort.org/you-get"

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 systemd
+inherit distutils-r2 systemd
 
 DESCRIPTION="Real time correlator of events received by Prelude Manager"
 HOMEPAGE="https://www.prelude-siem.org"
@@ -20,7 +20,7 @@ RDEPEND="~dev-libs/libprelude-${PV}[python,${PYTHON_USEDEP}]
 	dev-python/netaddr[${PYTHON_USEDEP}]"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	systemd_dounit "${FILESDIR}/${PN}.service"
 	systemd_newtmpfilesd "${FILESDIR}/${PN}.run" "${PN}.conf"

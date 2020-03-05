@@ -4,7 +4,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools python-r1
+inherit autotools python-multi-r2
 
 DESCRIPTION="Gnome frontend to Anyremote"
 HOMEPAGE="http://anyremote.sourceforge.net/"

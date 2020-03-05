@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Character encoding aliases for legacy web content"
 HOMEPAGE="https://github.com/SimonSapin/python-webencodings https://pypi.org/project/webencodings/"
@@ -26,5 +26,5 @@ python_prepare_all() {
 	[tool:pytest]
 	python_files=test*.py
 	EOF
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

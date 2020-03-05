@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1 multiprocessing
+inherit distutils-r2 multiprocessing
 
 DESCRIPTION="High-performance RPC framework (python libraries)"
 HOMEPAGE="https://grpc.io"

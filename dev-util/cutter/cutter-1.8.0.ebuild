@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit qmake-utils xdg-utils gnome2-utils python-single-r1
+inherit qmake-utils xdg-utils gnome2-utils python-single-r2
 
 DESCRIPTION="A Qt and C++ GUI for radare2 reverse engineering framework"
 HOMEPAGE="https://www.radare.org"

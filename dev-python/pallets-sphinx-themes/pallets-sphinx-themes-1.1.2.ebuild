@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Sphinx themes for Pallets and related projects"
 HOMEPAGE="https://github.com/pallets/pallets-sphinx-themes"

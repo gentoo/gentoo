@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit gnome2 distutils-r1
+inherit gnome2 distutils-r2
 
 DESCRIPTION="A graphical diff and merge tool"
 HOMEPAGE="http://meldmerge.org/"
@@ -20,7 +20,7 @@ IUSE=""
 RDEPEND="${PYTHON_DEPS}
 	>=dev-libs/glib-2.50:2
 	$(python_gen_cond_dep '
-		>=dev-python/pygobject-3.12:3[cairo,${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygobject-3.12:3[cairo,${PYTHON_USEDEP}]
 	')
 	gnome-base/gsettings-desktop-schemas
 	>=x11-libs/gtk+-3.20:3[introspection]

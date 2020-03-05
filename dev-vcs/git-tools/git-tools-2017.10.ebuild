@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Assorted git-related scripts"
 HOMEPAGE="https://github.com/MestreLion/git-tools"

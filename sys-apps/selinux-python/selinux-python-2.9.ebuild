@@ -5,7 +5,7 @@ EAPI="6"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 
-inherit python-r1 toolchain-funcs
+inherit python-multi-r2 toolchain-funcs
 
 MY_P="${P//_/-}"
 

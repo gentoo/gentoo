@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=(python{3_6,3_7,3_8})
 
-inherit vcs-snapshot distutils-r1
+inherit vcs-snapshot distutils-r2
 
 DESCRIPTION="Utility to monitor real time Tor status information"
 HOMEPAGE="https://nyx.torproject.org"

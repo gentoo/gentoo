@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="utmp/wtmp reader"
 HOMEPAGE="https://pypi.org/project/utmp/ https://srcco.de/"
@@ -24,5 +24,5 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	sed "s:'flake8'::g" -i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

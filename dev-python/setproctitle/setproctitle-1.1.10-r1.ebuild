@@ -5,7 +5,7 @@ EAPI=7
 # pypy doesn't get started in test run. Still required by www-servers/gunicorn
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r2 toolchain-funcs
 
 DESCRIPTION="Allow customization of the process title"
 HOMEPAGE="https://github.com/dvarrazzo/py-setproctitle"

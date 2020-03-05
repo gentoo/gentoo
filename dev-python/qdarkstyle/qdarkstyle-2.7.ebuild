@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 MY_PN="QDarkStyleSheet"
 
@@ -35,7 +35,7 @@ python_install_all() {
 		insinto /usr/share/${PN}
 		doins -r example
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

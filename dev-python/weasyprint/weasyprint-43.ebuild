@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Visual rendering engine for HTML and CSS that can export to PDF"
 MY_PN="WeasyPrint"

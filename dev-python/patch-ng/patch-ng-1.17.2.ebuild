@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Library to parse and apply unified diffs, fork of dev-python/patch"
 HOMEPAGE="https://github.com/conan-io/python-patch-ng https://pypi.org/project/patch-ng/"

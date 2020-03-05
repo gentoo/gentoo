@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library for evdev bindings"
 HOMEPAGE="https://python-evdev.readthedocs.org/"
@@ -18,7 +18,7 @@ IUSE=""
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_compile() {
-	distutils-r1_python_compile build_ecodes \
+	distutils-r2_python_compile build_ecodes \
 		--evdev-headers \
 		"${SYSROOT}"/usr/include/linux/input.h:"${SYSROOT}"/usr/include/linux/input-event-codes.h
 }

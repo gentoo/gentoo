@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit flag-o-matic python-any-r1 toolchain-funcs
+inherit flag-o-matic python-any-r2 toolchain-funcs
 
 DESCRIPTION="Network utility to retrieve files from the WWW"
 HOMEPAGE="https://www.gnu.org/software/wget/"
@@ -51,7 +51,7 @@ DEPEND="
 DOCS=( AUTHORS MAILING-LIST NEWS README doc/sample.wgetrc )
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

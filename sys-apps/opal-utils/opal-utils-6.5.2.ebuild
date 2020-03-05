@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit linux-info python-any-r1 systemd toolchain-funcs
+inherit linux-info python-any-r2 systemd toolchain-funcs
 
 DESCRIPTION="OPAL firmware utilities"
 HOMEPAGE="https://github.com/open-power/skiboot"
@@ -39,7 +39,7 @@ python_check_deps() {
 
 pkg_setup() {
 	linux-info_pkg_setup
-	use doc && python-any-r1_pkg_setup
+	use doc && python-any-r2_pkg_setup
 }
 
 src_prepare() {

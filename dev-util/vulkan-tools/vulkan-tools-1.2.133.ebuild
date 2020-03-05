@@ -15,7 +15,7 @@ else
 	S="${WORKDIR}/Vulkan-Tools-${EGIT_COMMIT}"
 fi
 
-inherit python-any-r1 cmake-multilib
+inherit python-any-r2 cmake-multilib
 
 DESCRIPTION="Official Vulkan Tools and Utilities for Windows, Linux, Android, and MacOS"
 HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
@@ -54,7 +54,7 @@ pkg_setup() {
 		)
 	fi
 
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 multilib_src_configure() {

@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="jinja2 template renderer for aiohttp.web"
 HOMEPAGE="https://github.com/aio-libs/aiohttp-jinja2"
@@ -47,5 +47,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

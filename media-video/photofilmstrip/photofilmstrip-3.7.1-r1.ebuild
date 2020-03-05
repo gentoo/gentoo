@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 eutils xdg-utils
+inherit distutils-r2 eutils xdg-utils
 
 DESCRIPTION="Movie slideshow creator using Ken Burns effect"
 HOMEPAGE="https://www.photofilmstrip.org/en/ https://github.com/PhotoFilmStrip"
@@ -20,15 +20,15 @@ IUSE="doc"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/gst-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
-		dev-python/wxpython:4.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/gst-python[${PYTHON_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		dev-python/wxpython:4.0[${PYTHON_USEDEP}]
 	')
 	media-plugins/gst-plugins-jpeg:1.0
 	x11-libs/wxGTK:*[X]"
 DEPEND="
 	$(python_gen_cond_dep '
-		doc? ( dev-python/sphinx[${PYTHON_MULTI_USEDEP}] )
+		doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	')"
 
 PATCHES=( "${FILESDIR}/${P}-disable-docs-by-default.patch" )
@@ -53,7 +53,7 @@ src_prepare() {
 python_install_all() {
 	use doc && local HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
 	doman docs/manpage/*.1
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

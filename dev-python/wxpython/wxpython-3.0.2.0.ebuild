@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 WX_GTK_VER="3.0"
 
-inherit alternatives distutils-r1 eutils fdo-mime flag-o-matic wxwidgets
+inherit alternatives distutils-r2 eutils fdo-mime flag-o-matic wxwidgets
 
 MY_PN="wxPython-src"
 
@@ -62,7 +62,7 @@ python_prepare_all() {
 		"${FILESDIR}"/${PN}-2.8.12.1-disable-egging-mode.patch
 	)
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 src_configure() {
@@ -78,12 +78,12 @@ src_configure() {
 
 python_compile() {
 	# We need to have separate libdirs due to hackery, bug #455332.
-	distutils-r1_python_compile \
+	distutils-r2_python_compile \
 		build --build-purelib "${BUILD_DIR}"/lib.common
 }
 
 python_install() {
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		build --build-purelib "${BUILD_DIR}"/lib.common
 
 	# adjust the filenames for wxPython slots.
@@ -123,7 +123,7 @@ python_install_all() {
 
 		docompress -x /usr/share/doc/${PF}/{demo,samples}
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

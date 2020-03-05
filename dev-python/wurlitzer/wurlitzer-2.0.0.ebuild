@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Capture C-level stdout/stderr in Python"
 HOMEPAGE="https://github.com/minrk/wurlitzer https://pypi.org/project/wurlitzer"

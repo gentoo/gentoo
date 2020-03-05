@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit cmake-utils python-single-r1 xdg
+inherit cmake-utils python-single-r2 xdg
 
 DESCRIPTION="A free turn-based space empire and galactic conquest game"
 HOMEPAGE="https://www.freeorion.org"
@@ -35,7 +35,7 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.58:=[python,threads,${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.58:=[python,threads,${PYTHON_USEDEP}]
 	')
 	!dedicated? (
 		media-libs/freealut
@@ -56,7 +56,7 @@ DEPEND="${RDEPEND}"
 
 pkg_setup() {
 	# build system is using FindPythonLibs.cmake which needs python:2
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

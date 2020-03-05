@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 inherit cmake-utils llvm llvm.org multilib-minimal multiprocessing \
-	pax-utils python-single-r1 toolchain-funcs
+	pax-utils python-single-r2 toolchain-funcs
 
 MANPAGE_P=llvm-9.0.0-manpages
 DESCRIPTION="C language family frontend for LLVM"
@@ -74,7 +74,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_unpack() {

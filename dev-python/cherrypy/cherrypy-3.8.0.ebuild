@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P="CherryPy-${PV}"
 
@@ -28,7 +28,7 @@ RESTRICT="test"
 python_prepare_all() {
 	# Prevent interactive failures (hangs) in the test suite
 	sed -i -e "s/interactive = True/interactive = False/" cherrypy/test/webtest.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

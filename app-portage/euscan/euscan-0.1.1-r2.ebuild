@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Ebuild upstream scan utility"
 HOMEPAGE="https://github.com/iksaif/euscan"
@@ -28,5 +28,5 @@ python_prepare_all() {
 	python_setup
 	echo VERSION="${PV}" "${PYTHON}" setup.py set_version
 	VERSION="${PV}" "${PYTHON}" setup.py set_version
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

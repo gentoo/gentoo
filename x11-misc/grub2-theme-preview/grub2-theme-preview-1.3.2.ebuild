@@ -4,7 +4,7 @@
 EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Preview a GRUB 2.x theme using KVM/QEMU"
 HOMEPAGE="https://github.com/hartwork/grub2-theme-preview"

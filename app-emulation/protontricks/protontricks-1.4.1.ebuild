@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=rdepend
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="app-emulation/winetricks wrapper for Proton (Steam Play) games"
 HOMEPAGE="https://github.com/Matoking/protontricks"
@@ -23,7 +23,7 @@ BDEPEND="${PYTHON_DEPS}
 RDEPEND="${PYTHON_DEPS}
 	app-emulation/winetricks
 	$(python_gen_cond_dep '
-		dev-python/vdf[${PYTHON_MULTI_USEDEP}]
+		dev-python/vdf[${PYTHON_USEDEP}]
 	')
 	gui? ( gnome-extra/zenity
 		|| (

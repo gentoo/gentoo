@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Support for RBAC policy enforcement across all OpenStack services"
 HOMEPAGE="https://pypi.org/project/oslo.policy/"
@@ -37,5 +37,5 @@ S="${WORKDIR}/oslo.policy-${PV}"
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

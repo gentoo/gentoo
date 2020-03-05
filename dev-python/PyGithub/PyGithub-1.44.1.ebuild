@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library to access the Github API v3"
 HOMEPAGE="https://github.com/PyGithub/PyGithub/"
@@ -35,7 +35,7 @@ python_prepare_all() {
 	# tests requiring network access
 	sed -i -e 's:testDecodeJson:_&:' tests/Issue142.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

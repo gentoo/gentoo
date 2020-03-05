@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Test utilities for code working with files and commands"
 HOMEPAGE="http://jupyter.org"
@@ -32,7 +32,7 @@ python_prepare_all() {
 		sed -e "/^    'sphinx.ext.intersphinx',/d" -i doc/conf.py || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

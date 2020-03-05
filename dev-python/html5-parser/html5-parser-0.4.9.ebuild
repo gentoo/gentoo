@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r2 toolchain-funcs
 
 DESCRIPTION="Fast C based HTML 5 parsing for python"
 HOMEPAGE="https://github.com/kovidgoyal/html5-parser/"
@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}
 src_prepare() {
 	# Soup is not used when lxml is available.
 	rm test/soup.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_configure() {

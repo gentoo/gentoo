@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-any-r1 systemd user
+inherit python-any-r2 systemd user
 
 DESCRIPTION="RabbitMQ is a high-performance AMQP-compliant message broker written in Erlang"
 HOMEPAGE="https://www.rabbitmq.com/"
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 pkg_setup() {
 	enewgroup rabbitmq
 	enewuser rabbitmq -1 -1 /var/lib/rabbitmq rabbitmq
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_compile() {

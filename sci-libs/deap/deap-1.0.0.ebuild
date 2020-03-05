@@ -4,7 +4,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Distributed Evolutionary Algorithms in Python"
 HOMEPAGE="https://code.google.com/p/deap/ https://pypi.org/project/deap/"

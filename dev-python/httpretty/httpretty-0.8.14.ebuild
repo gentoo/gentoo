@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="HTTP client mock for Python"
 HOMEPAGE="https://github.com/gabrielfalcao/httpretty"

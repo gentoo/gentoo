@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Google Authentication Library"
 HOMEPAGE="https://github.com/GoogleCloudPlatform/google-auth-library-python https://pypi.org/project/google-auth/"
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 src_prepare() {
 	# delete stray files included in the tarball
 	find "${S}"/tests -name '*.pyc' -delete || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {
@@ -44,6 +44,6 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

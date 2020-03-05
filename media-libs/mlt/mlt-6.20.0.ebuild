@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 # so USE_RUBY must contain only a single value (the latest stable) as the ebuild calls
 # /usr/bin/${USE_RUBY} directly
 USE_RUBY="ruby26"
-inherit python-single-r1 qmake-utils ruby-single toolchain-funcs
+inherit python-single-r2 qmake-utils ruby-single toolchain-funcs
 
 DESCRIPTION="Open source multimedia framework for television broadcasting"
 HOMEPAGE="https://www.mltframework.org/"
@@ -92,7 +92,7 @@ DOCS=( AUTHORS ChangeLog NEWS README docs/{framework,melt,mlt{++,-xml}}.txt )
 PATCHES=( "${FILESDIR}"/${PN}-6.10.0-swig-underlinking.patch )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

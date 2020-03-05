@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
 SCONS_MIN_VERSION="1.2.1"
 
-inherit eutils udev user multilib distutils-r1 scons-utils toolchain-funcs
+inherit eutils udev user multilib distutils-r2 scons-utils toolchain-funcs
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="git://git.savannah.nongnu.org/gpsd.git"
@@ -86,7 +86,7 @@ src_prepare() {
 		-e 's:\<STAGING_PREFIX\>:SYSROOT:g' \
 		SConstruct || die
 
-	use python && distutils-r1_src_prepare
+	use python && distutils-r2_src_prepare
 }
 
 python_prepare_all() {
@@ -106,7 +106,7 @@ python_prepare_all() {
 		-e "s|@GPS_CLIENT_SOURCES@|${client}|" \
 		-e "s|@SCRIPTS@|${pybins}|" \
 		"${FILESDIR}"/${PN}-3.3-setup.py > setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 src_configure() {
@@ -152,7 +152,7 @@ src_compile() {
 	export SHLINKFLAGS=${LDFLAGS} LINKFLAGS=${LDFLAGS}
 	escons
 
-	use python && distutils-r1_src_compile
+	use python && distutils-r2_src_compile
 }
 
 src_install() {
@@ -161,7 +161,7 @@ src_install() {
 	newconfd "${FILESDIR}"/gpsd.conf-2 gpsd
 	newinitd "${FILESDIR}"/gpsd.init-2 gpsd
 
-	use python && distutils-r1_src_install
+	use python && distutils-r2_src_install
 }
 
 pkg_preinst() {

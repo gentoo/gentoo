@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit gnome2 python-single-r1
+inherit gnome2 python-single-r2
 
 DESCRIPTION="Setup your DVB devices, record and watch TV shows and browse EPG using GStreamer"
 HOMEPAGE="https://wiki.gnome.org/Projects/DVBDaemon"

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit eutils gnome2-utils toolchain-funcs versionator distutils-r1
+inherit eutils gnome2-utils toolchain-funcs versionator distutils-r2
 
 DESCRIPTION="Visual novel engine written in python"
 HOMEPAGE="https://www.renpy.org"
@@ -43,7 +43,7 @@ PATCHES=(
 
 python_prepare_all() {
 	export CFLAGS="${CFLAGS} $($(tc-getPKG_CONFIG) --cflags fribidi)"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	einfo "Deleting precompiled python files"
 	find . -name '*.py[co]' -print -delete || die
@@ -55,12 +55,12 @@ python_prepare_all() {
 
 python_compile() {
 	cd "${S}"/module || die
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_install() {
 	cd "${S}"/module || die
-	distutils-r1_python_install --install-lib="$(python_get_sitedir)/renpy${MYSLOT}"
+	distutils-r2_python_install --install-lib="$(python_get_sitedir)/renpy${MYSLOT}"
 
 	cd "${S}" || die
 	python_newscript renpy.py ${PN}-${SLOT}
@@ -76,7 +76,7 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use development; then
 		newicon -s 32 launcher/game/images/logo32.png ${P}.png
 		make_desktop_entry ${PN}-${SLOT} "Ren'Py ${PV}" ${P}

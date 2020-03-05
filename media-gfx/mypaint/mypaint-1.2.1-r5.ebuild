@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit flag-o-matic gnome2-utils scons-utils toolchain-funcs python-single-r1 xdg
+inherit flag-o-matic gnome2-utils scons-utils toolchain-funcs python-single-r2 xdg
 
 DESCRIPTION="fast and easy graphics application for digital painters"
 HOMEPAGE="http://mypaint.org/"
@@ -21,13 +21,13 @@ LANGS="cs de en_CA en_GB es fr hu id it ja ko nb nn_NO pl pt_BR ro ru sl sv uk z
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 		|| (
-			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		)
-		>=dev-python/pycairo-1.4[${PYTHON_MULTI_USEDEP}]
-		dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pycairo-1.4[${PYTHON_USEDEP}]
+		dev-python/protobuf-python[${PYTHON_USEDEP}]
 	')
 	>=dev-libs/json-c-0.11:=
 	media-libs/lcms:2
@@ -43,7 +43,7 @@ DEPEND="${RDEPEND}
 "
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_compile() {

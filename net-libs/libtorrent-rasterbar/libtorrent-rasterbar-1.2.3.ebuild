@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 DISTUTILS_OPTIONAL=true
 DISTUTILS_IN_SOURCE_BUILD=true
 
-inherit autotools distutils-r1
+inherit autotools distutils-r2
 
 MY_PV=$(ver_rs 1-2 '_')
 MY_P=${PN/-rasterbar}-${MY_PV}
@@ -59,7 +59,7 @@ src_prepare() {
 	# prepend -I${S}/... to ensure bindings use the right headers
 	sed -i -e "s|^|-I${S}/src/include |" bindings/python/compile_flags.in || die
 
-	use python && distutils-r1_src_prepare
+	use python && distutils-r2_src_prepare
 }
 
 src_configure() {
@@ -83,7 +83,7 @@ src_configure() {
 				--enable-python-binding \
 				--with-boost-python="boost_${EPYTHON/./}"
 		}
-		distutils-r1_src_configure
+		distutils-r2_src_configure
 	fi
 }
 
@@ -92,9 +92,9 @@ src_compile() {
 
 	python_compile() {
 		cd "${BUILD_DIR}/../bindings/python" || die
-		distutils-r1_python_compile
+		distutils-r2_python_compile
 	}
-	use python && distutils-r1_src_compile
+	use python && distutils-r2_src_compile
 }
 
 src_install() {
@@ -104,9 +104,9 @@ src_install() {
 
 	python_install() {
 		cd "${BUILD_DIR}/../bindings/python" || die
-		distutils-r1_python_install
+		distutils-r2_python_install
 	}
-	use python && distutils-r1_src_install
+	use python && distutils-r2_src_install
 
 	find "${D}" -name '*.la' -delete || die
 }

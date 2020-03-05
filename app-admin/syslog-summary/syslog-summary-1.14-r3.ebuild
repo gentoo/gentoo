@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Summarizes the contents of a syslog log file"
 HOMEPAGE="https://github.com/dpaleino/syslog-summary"

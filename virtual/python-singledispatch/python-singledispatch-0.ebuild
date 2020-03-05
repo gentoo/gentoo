@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="A virtual for the Python functools.singledispatch function"
 SLOT="0"

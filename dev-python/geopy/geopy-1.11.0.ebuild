@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Geocoding Toolbox for Python"
 HOMEPAGE="http://www.geopy.org/ https://github.com/geopy/geopy"
@@ -40,7 +40,7 @@ python_prepare_all() {
 		sed -i "s|'http://docs.python.org/': None|'${PYTHON_DOC}': '${PYTHON_DOC_INVENTORY}'|" docs/conf.py || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	# prevent install of test folder to avoid file collisions
 	sed -e "s:find_packages():find_packages(exclude=['test','test.*']):" -i setup.py || die
@@ -63,5 +63,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

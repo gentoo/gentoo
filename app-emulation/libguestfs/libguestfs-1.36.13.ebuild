@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils autotools linux-info perl-functions python-single-r1 versionator
+inherit eutils autotools linux-info perl-functions python-single-r2 versionator
 
 MY_PV_1="$(get_version_component_range 1-2)"
 MY_PV_2="$(get_version_component_range 2)"
@@ -110,7 +110,7 @@ pkg_setup() {
 		CONFIG_CHECK="~KVM ~VIRTIO"
 		[ -n "${CONFIG_CHECK}" ] && check_extra_config;
 
-		use python && python-single-r1_pkg_setup
+		use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

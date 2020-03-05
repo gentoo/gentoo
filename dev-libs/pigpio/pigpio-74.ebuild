@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 systemd toolchain-funcs
+inherit distutils-r2 systemd toolchain-funcs
 
 DESCRIPTION="A library for the Raspberry which allows control of the GPIOs"
 HOMEPAGE="http://abyz.me.uk/rpi/pigpio/index.html https://github.com/joan2937/pigpio"
@@ -21,7 +21,7 @@ PATCHES=( "${FILESDIR}/${PN}-70-makefile.patch" )
 
 src_compile() {
 	emake CC="$(tc-getCC)" STRIP=: STRIPLIB=: SIZE=:
-	use python && distutils-r1_src_compile
+	use python && distutils-r2_src_compile
 }
 
 src_install() {
@@ -32,5 +32,5 @@ src_install() {
 	newinitd "${FILESDIR}"/pigpiod.initd pigpiod
 	newconfd "${FILESDIR}"/pigpiod.confd pigpiod
 	systemd_newunit "${S}"/util/pigpiod.service pigpiod.service
-	use python && distutils-r1_src_install
+	use python && distutils-r2_src_install
 }

@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python tool for extracting information from PDF documents"
 HOMEPAGE="http://www.unixuser.org/~euske/python/pdfminer/ https://pypi.org/project/pdfminer/"
@@ -27,5 +27,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/. )
 	use examples && local EXAMPLES=( samples/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

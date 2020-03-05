@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="A toolkit for dealing with the qmail queue directory structure"
 HOMEPAGE="http://pyropus.ca/software/queue-repair/"

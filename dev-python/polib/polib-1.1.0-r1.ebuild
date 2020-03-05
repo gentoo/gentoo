@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A library to manipulate gettext files (.po and .mo files)"
 HOMEPAGE="https://bitbucket.org/izi/polib/wiki/Home"
@@ -33,5 +33,5 @@ python_test() {
 python_install_all() {
 	local DOCS=( CHANGELOG README.rst )
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

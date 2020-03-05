@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1 readme.gentoo-r1 systemd
+inherit python-multi-r2 readme.gentoo-r1 systemd
 
 MY_P="${PN}_${PV/_/}"
 

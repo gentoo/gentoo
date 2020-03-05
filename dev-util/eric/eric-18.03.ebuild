@@ -6,7 +6,7 @@ EAPI=6
 MY_P=${PN}6-${PV}
 PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="sqlite,xml"
-inherit python-single-r1 xdg-utils
+inherit python-single-r2 xdg-utils
 
 DESCRIPTION="A full featured Python IDE using PyQt and QScintilla"
 HOMEPAGE="https://eric-ide.python-projects.org/"
@@ -20,20 +20,20 @@ IUSE=""
 DEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/sip-4.14.3[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/PyQt5-5.7.1[gui,network,printsupport,sql,svg,widgets,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/qscintilla-python-2.10[qt5(+),${PYTHON_MULTI_USEDEP}]
+		>=dev-python/sip-4.14.3[${PYTHON_USEDEP}]
+		>=dev-python/PyQt5-5.7.1[gui,network,printsupport,sql,svg,widgets,${PYTHON_USEDEP}]
+		>=dev-python/qscintilla-python-2.10[qt5(+),${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
 		|| (
-			dev-python/PyQt5[help,webengine,${PYTHON_MULTI_USEDEP}]
-			dev-python/PyQt5[help,webkit,${PYTHON_MULTI_USEDEP}]
+			dev-python/PyQt5[help,webengine,${PYTHON_USEDEP}]
+			dev-python/PyQt5[help,webkit,${PYTHON_USEDEP}]
 		)
-		>=dev-python/chardet-3.0.4[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/coverage-4.1.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pygments-2.2.0[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/chardet-3.0.4[${PYTHON_USEDEP}]
+		>=dev-python/coverage-4.1.0[${PYTHON_USEDEP}]
+		>=dev-python/pygments-2.2.0[${PYTHON_USEDEP}]
 	')
 	!dev-util/eric:4
 	!dev-util/eric:5

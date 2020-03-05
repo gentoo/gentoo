@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Module for pure Python asynchronous I/O using coroutines"
 HOMEPAGE="https://pypi.org/project/bluelet/"
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="examples"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use examples; then
 		dodoc -r demo

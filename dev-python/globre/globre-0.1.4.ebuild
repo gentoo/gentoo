@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A glob matching library, providing an interface similar to the 're' module"
 HOMEPAGE="https://pypi.org/project/globre/ https://github.com/metagriffin/globre"

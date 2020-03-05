@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit toolchain-funcs python-r1
+inherit toolchain-funcs python-multi-r2
 
 DESCRIPTION="A compositor for X, and a fork of xcompmgr-dana"
 HOMEPAGE="https://github.com/chjj/compton"

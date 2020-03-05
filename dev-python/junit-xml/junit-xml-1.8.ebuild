@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python module for creating JUnit XML test result documents"
 HOMEPAGE="https://pypi.org/project/junit-xml https://github.com/kyrus/python-junit-xml"

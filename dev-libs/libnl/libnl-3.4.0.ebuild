@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_OPTIONAL=1
-inherit distutils-r1 eutils libtool ltprune multilib multilib-minimal
+inherit distutils-r2 eutils libtool ltprune multilib multilib-minimal
 
 LIBNL_P=${P/_/-}
 LIBNL_DIR=${PV/_/}
@@ -61,7 +61,7 @@ src_prepare() {
 
 	if use python; then
 		cd "${S}"/python || die
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 	fi
 
 	# out-of-source build broken
@@ -82,7 +82,7 @@ multilib_src_compile() {
 
 	if multilib_is_native_abi && use python; then
 		cd python || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -90,10 +90,10 @@ multilib_src_install() {
 	emake DESTDIR="${D}" install
 
 	if multilib_is_native_abi && use python; then
-		# Unset DOCS= since distutils-r1.eclass interferes
+		# Unset DOCS= since distutils-r2.eclass interferes
 		local DOCS=()
 		cd python || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 }
 

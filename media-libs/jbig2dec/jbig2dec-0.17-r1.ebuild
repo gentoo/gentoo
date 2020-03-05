@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools python-any-r1
+inherit autotools python-any-r2
 
 DESCRIPTION="A decoder implementation of the JBIG2 image compression format"
 HOMEPAGE="https://jbig2dec.com/"
@@ -32,7 +32,7 @@ DOCS=( CHANGES README )
 PATCHES=( "${FILESDIR}"/${PN}-0.17-fix-test_jbig2dec.py.patch )
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

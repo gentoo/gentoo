@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6..7})
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r2 toolchain-funcs
 
 MY_PN="M2Crypto"
 DESCRIPTION="A Python crypto and SSL toolkit"
@@ -55,7 +55,7 @@ python_compile() {
 	# https://bugs.gentoo.org/674112
 	swig_define __ARM_PCS_VFP
 
-	distutils-r1_python_compile --openssl="${ESYSROOT}"/usr
+	distutils-r2_python_compile --openssl="${ESYSROOT}"/usr
 }
 
 python_test() {

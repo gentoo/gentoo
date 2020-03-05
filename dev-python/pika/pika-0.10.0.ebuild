@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pure-Python implementation of the AMQP"
 HOMEPAGE="https://pika.readthedocs.org/ https://github.com/pika/pika"

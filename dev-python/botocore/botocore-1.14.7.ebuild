@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Low-level, data-driven core of boto 3."
 HOMEPAGE="https://github.com/boto/botocore"
@@ -55,5 +55,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="threads"
 
-inherit apache-module eutils python-single-r1
+inherit apache-module eutils python-single-r2
 
 DESCRIPTION="An Apache2 module for running Python WSGI applications"
 HOMEPAGE="https://github.com/GrahamDumpleton/mod_wsgi"

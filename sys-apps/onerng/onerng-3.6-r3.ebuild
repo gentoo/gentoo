@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-single-r1 udev
+inherit python-single-r2 udev
 
 MY_P="${P/-/_}"
 
@@ -26,7 +26,7 @@ RDEPEND="
 	${DEPEND}
 	${PYTHON_DEPS}
 	app-crypt/gnupg
-	$(python_gen_cond_dep 'dev-python/python-gnupg[${PYTHON_MULTI_USEDEP}]')
+	$(python_gen_cond_dep 'dev-python/python-gnupg[${PYTHON_USEDEP}]')
 	sys-apps/rng-tools
 	sys-process/at
 "

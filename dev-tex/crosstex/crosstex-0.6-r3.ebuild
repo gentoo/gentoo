@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="CrossTeX - object oriented BibTeX replacement"
 HOMEPAGE="http://www.cs.cornell.edu/people/egs/crosstex/"
@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/ply[${PYTHON_MULTI_USEDEP}]
+		dev-python/ply[${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
 

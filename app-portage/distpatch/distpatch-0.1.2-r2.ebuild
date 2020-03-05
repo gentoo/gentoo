@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Distfile Patching Support for Gentoo Linux (tools)"
 HOMEPAGE="https://github.com/rafaelmartins/distpatch"

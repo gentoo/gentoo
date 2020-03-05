@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Issue-tracking system with command-line, web, and e-mail interfaces"
 HOMEPAGE="http://roundup.sourceforge.net https://pypi.org/project/roundup/"
@@ -31,7 +31,7 @@ RDEPEND="${DEPEND}
 DOCS="CHANGES.txt doc/*.txt"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	rm -r "${ED}"/usr/share/doc/${PN} || die
 }
 

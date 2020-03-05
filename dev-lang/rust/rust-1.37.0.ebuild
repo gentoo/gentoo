@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit check-reqs estack flag-o-matic llvm multiprocessing multilib-build python-any-r1 rust-toolchain toolchain-funcs
+inherit check-reqs estack flag-o-matic llvm multiprocessing multilib-build python-any-r2 rust-toolchain toolchain-funcs
 
 if [[ ${PV} = *beta* ]]; then
 	betaver=${PV//*beta}
@@ -117,7 +117,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	pre_build_checks
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 	use system-llvm && llvm_pkg_setup
 }
 

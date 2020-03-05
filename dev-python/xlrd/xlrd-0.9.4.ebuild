@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Library for developers to extract data from Microsoft Excel (tm) spreadsheet files"
 HOMEPAGE="
@@ -24,7 +24,7 @@ python_prepare_all() {
 	# Remove this if examples get reintroduced
 	sed -i -e "s/test_names_demo/_&/" tests/test_open_workbook.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

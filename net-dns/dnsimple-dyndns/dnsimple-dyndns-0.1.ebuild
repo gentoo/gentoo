@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	EGIT_REPO_URI="https://github.com/rafaelmartins/${PN}.git"
 fi
 
-inherit distutils-r1 ${GIT_ECLASS}
+inherit distutils-r2 ${GIT_ECLASS}
 
 DESCRIPTION="Dynamic DNS implementation, that relies on DNSimple.com"
 HOMEPAGE="https://pypi.org/project/dnsimple-dyndns/

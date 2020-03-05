@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 gnome2-utils virtualx xdg-utils
+inherit distutils-r2 gnome2-utils virtualx xdg-utils
 
 DESCRIPTION="A subtitle editor for text-based subtitles"
 HOMEPAGE="https://otsaloma.io/gaupol/"

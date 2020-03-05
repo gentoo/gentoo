@@ -10,7 +10,7 @@ PYTHON_COMPAT=( python2_7 )
 # aren't gdbm.
 PYTHON_REQ_USE="gdbm"
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Arabic dictionary based on the DICT protocol"
 HOMEPAGE="https://www.arabeyes.org/Duali"

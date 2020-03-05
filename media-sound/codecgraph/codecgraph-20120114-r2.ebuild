@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Generates a graph based on the ALSA description of an HD Audio codec"
 HOMEPAGE="http://helllabs.org/codecgraph/"

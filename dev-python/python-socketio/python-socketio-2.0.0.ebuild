@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python implementation of the Socket.IO realtime server."
 HOMEPAGE="
@@ -32,7 +32,7 @@ RESTRICT="test"
 
 src_prepare() {
 	eapply_user
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

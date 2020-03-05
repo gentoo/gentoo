@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit autotools eutils linux-info ltprune python-any-r1 systemd
+inherit autotools eutils linux-info ltprune python-any-r2 systemd
 
 DESCRIPTION="An enhanced multi-threaded syslogd with database support and more"
 HOMEPAGE="https://www.rsyslog.com/"
@@ -102,7 +102,7 @@ CONFIG_CHECK="~INOTIFY_USER"
 WARNING_INOTIFY_USER="CONFIG_INOTIFY_USER isn't set. Imfile module on this system will only support polling mode!"
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_unpack() {

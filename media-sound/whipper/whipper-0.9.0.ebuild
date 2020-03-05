@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python CD-DA ripper preferring accuracy over speed (forked from morituri)"
 HOMEPAGE="https://github.com/whipper-team/whipper"
@@ -42,5 +42,5 @@ python_prepare_all() {
 
 	export SETUPTOOLS_SCM_PRETEND_VERSION=${PV}
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

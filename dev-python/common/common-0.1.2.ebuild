@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Common tools and data structures implemented in pure python"
 HOMEPAGE="https://pypi.org/project/common/"

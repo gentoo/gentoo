@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Boolean operations on paths"
 HOMEPAGE="https://github.com/typemytype/booleanOperations"
@@ -24,7 +24,7 @@ RDEPEND="${DEPEND}
 
 src_prepare() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

@@ -7,7 +7,7 @@ GCONF_DEBUG="no"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit gnome2 python-r1
+inherit gnome2 python-multi-r2
 
 DESCRIPTION="Simple GNOME menu editor"
 HOMEPAGE="https://git.gnome.org/browse/alacarte"

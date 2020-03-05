@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="Python library to use Jabber/XMPP networks in a non-blocking way"
 HOMEPAGE="https://dev.gajim.org/gajim/python-nbxmpp/"

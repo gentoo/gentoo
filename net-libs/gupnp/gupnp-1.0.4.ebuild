@@ -6,7 +6,7 @@ VALA_USE_DEPEND="vapigen"
 PYTHON_COMPAT=( python{3_6,3_7} )
 PYTHON_REQ_USE="xml"
 
-inherit gnome2 multilib-minimal python-single-r1 vala
+inherit gnome2 multilib-minimal python-single-r2 vala
 
 DESCRIPTION="An object-oriented framework for creating UPnP devs and control points"
 HOMEPAGE="https://wiki.gnome.org/Projects/GUPnP"

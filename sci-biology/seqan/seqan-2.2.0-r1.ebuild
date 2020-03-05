@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-any-r1 versionator
+inherit cmake-utils python-any-r2 versionator
 
 DESCRIPTION="C++ Sequence Analysis Library"
 HOMEPAGE="http://www.seqan.de/"
@@ -39,7 +39,7 @@ S="${WORKDIR}"/${PN}-${PN}-v${PV}
 
 pkg_setup() {
 	if use test || use doc; then
-		python-any-r1_pkg_setup
+		python-any-r2_pkg_setup
 	fi
 }
 

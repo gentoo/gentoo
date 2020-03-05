@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python wrapper around the Twitter API"
 HOMEPAGE="https://github.com/bear/python-twitter"
@@ -28,7 +28,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RESTRICT="test"
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 # https://code.google.com/p/python-twitter/issues/detail?id=259&thanks=259&ts=1400334214

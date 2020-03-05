@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( pypy3 python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A JavaScript minifier written in Python"
 HOMEPAGE="https://slimit.readthedocs.io/en/latest/"
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/${P}-fix-python3.patch" )
 
 python_compile() {
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 
 	rm "${BUILD_DIR}"/lib/slimit/*tab.py || die
 

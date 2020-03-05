@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="emerge.log parser written in python"
 HOMEPAGE="https://bitbucket.org/LK4D4/pqlop"

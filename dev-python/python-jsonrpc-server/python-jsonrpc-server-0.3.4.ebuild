@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python 2 and 3 asynchronous JSON RPC server"
 HOMEPAGE="https://github.com/palantir/python-jsonrpc-server"

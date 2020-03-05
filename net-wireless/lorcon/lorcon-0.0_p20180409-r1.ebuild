@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A generic library for injecting 802.11 frames"
 HOMEPAGE="https://github.com/kismetwireless/lorcon"
@@ -52,7 +52,7 @@ src_prepare() {
 	sed -i 's#<lorcon2/lorcon_multi.h>#"../lorcon_multi.h"#' pylorcon2/PyLorcon2.c
 	sed -i 's#<lorcon2/lorcon_multi.h>#"../lorcon_multi.h"#' pylorcon2/PyLorcon2.h
 	default
-	use python && distutils-r1_src_prepare
+	use python && distutils-r2_src_prepare
 }
 
 src_configure() {
@@ -64,7 +64,7 @@ src_compile() {
 	if use python; then
 		LDFLAGS+=" -L${S}/.libs/"
 		cd pylorcon2 || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -72,7 +72,7 @@ src_install() {
 	emake DESTDIR="${ED}" install
 	if use python; then
 		cd pylorcon2 || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 }
 

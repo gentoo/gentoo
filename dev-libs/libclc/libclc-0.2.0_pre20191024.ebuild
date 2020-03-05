@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit llvm prefix python-any-r1 toolchain-funcs
+inherit llvm prefix python-any-r2 toolchain-funcs
 
 DESCRIPTION="OpenCL C library"
 HOMEPAGE="https://libclc.llvm.org/"
@@ -41,7 +41,7 @@ src_prepare() {
 
 pkg_setup() {
 	# we do not need llvm_pkg_setup
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_configure() {

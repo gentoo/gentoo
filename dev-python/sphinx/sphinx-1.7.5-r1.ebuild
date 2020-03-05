@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python documentation generator"
 HOMEPAGE="http://www.sphinx-doc.org/"
@@ -74,11 +74,11 @@ python_prepare_all() {
 	# fails when additional sphinx themes are installed
 	sed -i -e 's:test_theme_api:_&:' tests/test_theming.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 
 	# Generate the grammar. It will be caught by install somehow.
 	# Note that the tests usually do it for us. However, I don't want

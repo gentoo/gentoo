@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=pyproject.toml
 PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Test utilities for code working with files and commands"
 HOMEPAGE="https://github.com/jupyter/testpath https://testpath.readthedocs.io/en/latest/"

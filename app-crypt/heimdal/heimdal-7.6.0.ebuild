@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 VIRTUALX_REQUIRED="manual"
 
-inherit autotools db-use multilib multilib-minimal python-any-r1 virtualx flag-o-matic
+inherit autotools db-use multilib multilib-minimal python-any-r2 virtualx flag-o-matic
 
 MY_P="${P}"
 DESCRIPTION="Kerberos 5 implementation from KTH"

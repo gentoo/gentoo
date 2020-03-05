@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Support library for building plugins sytems in Python"
 HOMEPAGE="https://github.com/mitsuhiko/pluginbase"
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	sed -e "s/, 'sphinx.ext.intersphinx'//" \
 		-i docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

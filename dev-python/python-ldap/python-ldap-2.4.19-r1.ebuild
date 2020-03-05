@@ -6,7 +6,7 @@ EAPI=5
 # setup.py is written only for py2, which suits pypy
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 multilib
+inherit distutils-r2 multilib
 
 DESCRIPTION="Various LDAP-related Python modules"
 HOMEPAGE="https://www.python-ldap.org/en/latest/
@@ -58,7 +58,7 @@ python_prepare_all() {
 	sed -e "s:^    def test_bad_urls:    @unittest.expectedFailure\n    def test_bad_urls:" \
 		-i Tests/t_ldapurl.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -76,5 +76,5 @@ python_install_all() {
 	use examples && local EXAMPLES=( Demo/. )
 	use doc && local HTML_DOCS=( Doc/.build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

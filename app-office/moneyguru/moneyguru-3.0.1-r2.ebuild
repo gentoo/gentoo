@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Future-aware personal finances management"
 HOMEPAGE="https://hardcoded.net/moneyguru"
@@ -22,13 +22,13 @@ RDEPEND="${PYTHON_DEPS}
 	dev-db/sqlite:3
 	dev-libs/glib:2
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},gui,widgets,printsupport]
+		dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets,printsupport]
 	')
 	dev-qt/qttranslations"
 DEPEND="${RDEPEND}
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/pytest[${PYTHON_MULTI_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
 		')
 		dev-util/cunit
 	)"

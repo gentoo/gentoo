@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit systemd autotools eutils gnome2-utils python-r1
+inherit systemd autotools eutils gnome2-utils python-multi-r2
 
 DESCRIPTION="A screen color temperature adjusting software"
 HOMEPAGE="http://jonls.dk/redshift/"

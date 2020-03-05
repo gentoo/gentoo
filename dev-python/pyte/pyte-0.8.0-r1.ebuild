@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple VTXXX-compatible terminal emulator"
 HOMEPAGE="https://pypi.org/project/pyte/ https://github.com/selectel/pyte"
@@ -25,5 +25,5 @@ python_prepare_all() {
 	# run pytest directly for tests
 	sed -i '/setup_requires=\["pytest-runner"\]/d' setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

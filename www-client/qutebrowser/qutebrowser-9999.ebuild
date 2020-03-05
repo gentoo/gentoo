@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit desktop distutils-r1 eutils xdg-utils
+inherit desktop distutils-r2 eutils xdg-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
@@ -70,7 +70,7 @@ python_install_all() {
 		doexe misc/userscripts/tor_identity
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

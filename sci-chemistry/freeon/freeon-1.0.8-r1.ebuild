@@ -7,7 +7,7 @@ AUTOTOOLS_AUTORECONF=1
 FORTRAN_STANDARD=90
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools-utils fortran-2 python-any-r1
+inherit autotools-utils fortran-2 python-any-r2
 
 DESCRIPTION="An experimental suite of programs for linear scaling quantum chemistry"
 HOMEPAGE="http://www.freeon.org"

@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple powerful testing with Python"
 HOMEPAGE="https://pytest.org/"
@@ -57,7 +57,7 @@ python_prepare_all() {
 	# https://bugs.gentoo.org/598442
 	rm testing/test_pdb.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

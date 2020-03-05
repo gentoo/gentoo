@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Bazaar plugin that adds support for rebasing, similar to git rebase"
 HOMEPAGE="https://launchpad.net/bzr-rewrite"

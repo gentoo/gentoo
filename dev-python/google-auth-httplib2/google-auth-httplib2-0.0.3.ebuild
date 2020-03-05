@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 EGIT_COMMIT="e7cd722281d1d897fa9ae6e3b6b78ae142778e6e"
 MY_PN="google-auth-library-python-httplib2"

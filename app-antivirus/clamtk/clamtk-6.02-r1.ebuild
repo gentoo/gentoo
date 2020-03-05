@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit desktop perl-functions python-single-r1 xdg-utils
+inherit desktop perl-functions python-single-r2 xdg-utils
 
 MY_PV_KDE="0.18"
 MY_PV_NAUTILUS="0.03"
@@ -58,7 +58,7 @@ DOCS=( "CHANGES" "credits.md" "DISCLAIMER" "README.md" )
 PATCHES=( "$FILESDIR"/"${PN}"-6.00-change_icon_path.patch )
 
 pkg_setup() {
-	use nautilus && python-single-r1_pkg_setup
+	use nautilus && python-single-r2_pkg_setup
 }
 
 src_unpack() {

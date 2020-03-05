@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 EGIT_BRANCH="master"
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="A small convenience library for fetching files securely"
 HOMEPAGE="https://github.com/dol-sen/ssl-fetch"

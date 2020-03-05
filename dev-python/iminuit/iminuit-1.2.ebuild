@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Minuit numerical function minimization in Python"
 HOMEPAGE="https://github.com/iminuit/iminuit"

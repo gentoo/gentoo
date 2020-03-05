@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit desktop eutils python-single-r1
+inherit desktop eutils python-single-r2
 
 MUSIC="endgame-${PN}-music-007"
 DESCRIPTION="Simulation of a true AI. Go from computer to computer, chased by the whole world"
@@ -19,9 +19,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygame[${PYTHON_MULTI_USEDEP}]
-		dev-python/polib[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		dev-python/pygame[${PYTHON_USEDEP}]
+		dev-python/polib[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"

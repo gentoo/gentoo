@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-single-r1 games
+inherit eutils python-single-r2 games
 
 DESCRIPTION="A suite of educational games for young children"
 HOMEPAGE="http://childsplay.sourceforge.net/"
@@ -20,7 +20,7 @@ IUSE=""
 
 DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pygame[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygame[${PYTHON_USEDEP}]
 	')
 	media-libs/sdl-image[gif,jpeg,png]
 	media-libs/sdl-ttf
@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	games_pkg_setup
 }
 

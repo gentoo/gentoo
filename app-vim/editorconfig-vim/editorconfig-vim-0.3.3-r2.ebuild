@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=(python3_6)
-inherit python-single-r1 vim-plugin
+inherit python-single-r2 vim-plugin
 
 DESCRIPTION="vim plugin: Support EditorConfig files "
 HOMEPAGE="https://editorconfig.org/"
@@ -18,7 +18,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/editorconfig-core-py[${PYTHON_MULTI_USEDEP}]
+		dev-python/editorconfig-core-py[${PYTHON_USEDEP}]
 	')
 	|| (
 		app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]

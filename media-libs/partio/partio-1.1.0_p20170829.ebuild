@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils vcs-snapshot python-single-r1
+inherit cmake-utils vcs-snapshot python-single-r2
 
 DESCRIPTION="A library for particle IO and manipulation"
 HOMEPAGE="https://www.disneyanimation.com/technology/partio.html"

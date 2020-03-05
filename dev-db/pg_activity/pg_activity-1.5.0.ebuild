@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Realtime PostgreSQL database server monitoring tool"
 HOMEPAGE="https://github.com/dalibo/pg_activity"
@@ -19,6 +19,6 @@ RDEPEND="dev-python/psutil[${PYTHON_USEDEP}]
 	dev-python/psycopg:2[${PYTHON_USEDEP}]"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	doman docs/man/${PN}.1
 }

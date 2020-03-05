@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="amqp"
 MY_P="${MY_PN}-${PV}"
@@ -45,7 +45,7 @@ python_prepare_all() {
 	# requires a rabbitmq instance
 	rm t/integration/test_rmq.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -62,5 +62,5 @@ python_install_all() {
 		insinto /usr/share/${PF}/extras
 		doins -r extra
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools bash-completion-r1 desktop fixheadtails flag-o-matic python-single-r1 systemd toolchain-funcs user
+inherit autotools bash-completion-r1 desktop fixheadtails flag-o-matic python-single-r2 systemd toolchain-funcs user
 
 MY_P=${P/_/-}
 
@@ -25,7 +25,7 @@ DEPEND="
 	cgi? ( >=media-libs/gd-2[png] )
 	gui? ( ${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygtk[${PYTHON_USEDEP}]
 		')
 	)
 	ipmi? ( sys-libs/freeipmi )
@@ -97,7 +97,7 @@ pkg_setup() {
 	# in some cases on old systems it wasn't in the nut group either!
 	gpasswd -a nut nut 2>/dev/null
 	warningmsg ewarn
-	use gui && python-single-r1_pkg_setup
+	use gui && python-single-r2_pkg_setup
 }
 
 src_prepare() {

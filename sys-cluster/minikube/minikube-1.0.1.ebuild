@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-any-r1 golang-build golang-vcs-snapshot
+inherit python-any-r2 golang-build golang-vcs-snapshot
 
 EGO_PN="k8s.io/minikube"
 ARCHIVE_URI="https://github.com/kubernetes/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"

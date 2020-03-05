@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 ES_VERSION="7.5.2"
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=${PN/-py/}
 DESCRIPTION="Official Python low-level client for Elasticsearch"
@@ -41,7 +41,7 @@ python_prepare_all() {
 		-e '/nosexcover/d' \
 		-i setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -98,5 +98,5 @@ python_install_all() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
 	use examples && dodoc -r example
 	doman docs/_build/man/*
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 vim-plugin vcs-snapshot
+inherit python-single-r2 vim-plugin vcs-snapshot
 
 # Commit Date: July 10th 2017
 COMMIT="acf9b30be71c54db4f4875d257b905941ca69ed8"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Fork of MySQL-python"
 HOMEPAGE="https://pypi.org/project/mysqlclient/ https://github.com/PyMySQL/mysqlclient-python"
@@ -31,5 +31,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/_build/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

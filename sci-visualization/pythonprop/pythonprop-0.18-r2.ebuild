@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Scripts to prepare and plot VOACAP propagation predictions"
 HOMEPAGE="http://www.qsl.net/hz1jw/pythonprop"
@@ -21,8 +21,8 @@ RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		|| (
-			dev-python/matplotlib-python2[${PYTHON_MULTI_USEDEP}]
-			dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
+			dev-python/matplotlib-python2[${PYTHON_USEDEP}]
+			dev-python/matplotlib[${PYTHON_USEDEP}]
 		)
 	')
 	dev-python/basemap[${PYTHON_SINGLE_USEDEP}]

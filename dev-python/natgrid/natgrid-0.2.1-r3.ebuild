@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Matplotlib toolkit for gridding irreguraly spaced data"
 HOMEPAGE="http://matplotlib.sourceforge.net/users/toolkits.html"
@@ -22,11 +22,11 @@ RDEPEND="${DEPEND}"
 python_install_all() {
 	insinto /usr/share/doc/${PF}
 	doins test.py
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 python_install() {
 	# namespace installed by dev-python/matplotlib
 	rm "${BUILD_DIR}/lib/mpl_toolkits/__init__.py" || die
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 }

@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A tool to migrate changesets between version control systems"
 HOMEPAGE="http://wiki.darcs.net/index.html/Tailor"
@@ -21,12 +21,12 @@ DEPEND=""
 RDEPEND=""
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 python_install_all() {
 	local HTML_DOCS=( README.html )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	rm "${D}usr/share/doc/${PF}/README.html"
 }
 

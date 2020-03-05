@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="Set of facilities to extend Python with C++"
 HOMEPAGE="http://cxx.sourceforge.net"
@@ -26,11 +26,11 @@ python_prepare_all() {
 	local PATCHES=(
 		"${FILESDIR}/${PN}-6.2.3-installation.patch"
 	)
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
 	use doc && local HTML_DOCS=( Doc/. )
 	use examples && local EXAMPLES=( Demo/Python{2,3}/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

@@ -4,7 +4,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python wrapper for Google Geocoding API V3"
 HOMEPAGE="http://code.xster.net/pygeocoder/overview"

@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Qt-based console for Jupyter with support for rich media output"
 HOMEPAGE="http://jupyter.org"
@@ -47,7 +47,7 @@ python_prepare_all() {
 		sed -e "/^    'sphinx.ext.intersphinx',/d" -i docs/source/conf.py || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

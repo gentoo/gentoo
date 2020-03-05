@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..7} )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Python bindings for Enlightenment Foundation Libraries"
 HOMEPAGE="https://phab.enlightenment.org/w/projects/python_bindings_for_efl/"
@@ -59,7 +59,7 @@ python_compile_all() {
 		esetup.py build_doc --build-dir "${S}"/build/doc/
 	fi
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -69,5 +69,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( ./build/doc/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

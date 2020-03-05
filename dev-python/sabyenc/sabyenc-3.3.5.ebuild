@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="Module providing raw yEnc encoding/decoding for SABnzbd"
 HOMEPAGE="https://github.com/sabnzbd/sabyenc/"

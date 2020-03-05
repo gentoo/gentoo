@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit bash-completion-r1 python-r1 vcs-snapshot
+inherit bash-completion-r1 python-multi-r2 vcs-snapshot
 
 DESCRIPTION="change directory command that learns"
 HOMEPAGE="https://github.com/wting/autojump"

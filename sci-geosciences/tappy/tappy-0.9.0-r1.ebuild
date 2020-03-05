@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Tidal Analysis in Python breaks hourly water level into tidal components"
 HOMEPAGE="http://tappy.sourceforge.net/"

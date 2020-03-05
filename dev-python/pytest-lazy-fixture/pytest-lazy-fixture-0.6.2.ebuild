@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="It helps to use fixtures in pytest.mark.parametrize"
 HOMEPAGE="https://github.com/tvorog/pytest-lazy-fixture"

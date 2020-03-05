@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit python-single-r1 waf-utils
+inherit python-single-r2 waf-utils
 
 DESCRIPTION="A set of C++ wrappers around the LV2 C API"
 HOMEPAGE="http://lvtoolkit.org/"

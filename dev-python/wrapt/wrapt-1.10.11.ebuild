@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="Module for decorators, wrappers and monkey patching"
 HOMEPAGE="https://github.com/GrahamDumpleton/wrapt"
@@ -33,7 +33,7 @@ python_compile_all() {
 python_compile() {
 	local WRAPT_EXTENSIONS=true
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -43,5 +43,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

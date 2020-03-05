@@ -6,7 +6,7 @@ GNOME2_LA_PUNT="yes"
 GNOME2_EAUTORECONF="yes"
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit autotools eutils gnome2 multilib python-single-r1 virtualx
+inherit autotools eutils gnome2 multilib python-single-r2 virtualx
 
 DESCRIPTION="A GObject plugins library"
 HOMEPAGE="https://developer.gnome.org/libpeas/stable/"
@@ -30,7 +30,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/pygobject-3.2:3[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygobject-3.2:3[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -52,7 +52,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils python-single-r1 user
+inherit eutils python-single-r2 user
 
 DESCRIPTION="Entropy Package Manager foundation library"
 HOMEPAGE="http://www.sabayon.org"
@@ -24,7 +24,7 @@ RDEPEND=">=app-misc/pax-utils-0.7
 	sys-apps/diffutils
 	sys-apps/sandbox
 	$(python_gen_cond_dep '
-		>=sys-apps/portage-2.1.9[${PYTHON_MULTI_USEDEP}]
+		>=sys-apps/portage-2.1.9[${PYTHON_USEDEP}]
 	')
 	sys-devel/gettext
 	${PYTHON_DEPS}"
@@ -40,7 +40,7 @@ REPO_D_CONFPATH="${ROOT}/etc/entropy/repositories.conf.d"
 ENTROPY_CACHEDIR="${ROOT}/var/lib/entropy/caches"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	# Can:
 	# - update repos
 	# - update security advisories

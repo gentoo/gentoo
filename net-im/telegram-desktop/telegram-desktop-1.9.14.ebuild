@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake desktop flag-o-matic python-any-r1 xdg-utils
+inherit cmake desktop flag-o-matic python-any-r2 xdg-utils
 
 MY_P="tdesktop-${PV}-full"
 

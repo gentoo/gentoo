@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
-inherit readme.gentoo-r1 user distutils-r1
+inherit readme.gentoo-r1 user distutils-r2
 
 DESCRIPTION="BuildBot Worker (slave) Daemon"
 HOMEPAGE="https://buildbot.net/ https://github.com/buildbot/buildbot https://pypi.org/project/buildbot-worker/"
@@ -60,7 +60,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	doman docs/buildbot-worker.1
 

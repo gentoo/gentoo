@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A set of UFO based objects for use in font editing applications"
 HOMEPAGE="https://github.com/typesupply/defcon"

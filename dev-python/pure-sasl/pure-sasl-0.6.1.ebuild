@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="High-level SASL client written in pure Python"
 HOMEPAGE="https://github.com/thobbs/pure-sasl"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )  # 3.7 dropped due to dep-hell
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Backend data caching and persistence daemon for Graphite"
 HOMEPAGE="https://graphiteapp.org/"
@@ -29,11 +29,11 @@ python_prepare_all() {
 	sed -i -e '/data_files=install_files,/d' setup.py || die
 	# We want FHS-style paths instead of /opt/graphite
 	export GRAPHITE_NO_PREFIX=yes
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	insinto /etc/carbon
 	doins conf/*

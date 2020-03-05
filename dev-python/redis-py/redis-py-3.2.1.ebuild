@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="redis"
 MY_P="${MY_PN}-${PV}"
@@ -29,7 +29,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	# Make sure that tests will be used from BUILD_DIR rather than cwd.
 	mv tests tests-hidden || die
@@ -41,7 +41,7 @@ python_prepare_all() {
 }
 
 python_compile() {
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 
 	if use test; then
 		cp -r tests-hidden "${BUILD_DIR}"/tests || die

@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="virtualenv-based automation of test activities"
 HOMEPAGE="https://tox.readthedocs.io https://github.com/tox-dev/tox https://pypi.org/project/tox/"
@@ -52,7 +52,7 @@ PATCHES=(
 )
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 
 	# broken without internet
 	sed -i -e 's:test_provision_non_canonical_dep:_&:' \

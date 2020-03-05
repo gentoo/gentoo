@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} pypy3)
 PATCHES=( "${FILESDIR}"/${P}-pytest-runner.patch )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Collection of small Python functions & classes"
 HOMEPAGE="https://pypi.org/project/python-utils/"
@@ -23,7 +23,7 @@ BDEPEND="${RDEPEND}
 python_prepare_all() {
 	find . -name '__pycache__' -prune -exec rm -rf {} \; || die "Cleaning __pycache__ failed"
 	find . -name '*.pyc' -exec rm -f {} \; || die "Cleaning *.pyc failed"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 MY_PN="SilverCity"
 MY_P="${MY_PN}-${PV}"
@@ -35,5 +35,5 @@ python_prepare_all() {
 	sed -e 's:#!/usr/home/sweetapp/bin/python:#!/usr/bin/env python:' \
 		-i PySilverCity/Scripts/cgi-styler-form.py || die "sed failed"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

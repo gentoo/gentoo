@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Collection of rpm packaging related utilities"
 HOMEPAGE="https://pagure.io/rpmdevtools"

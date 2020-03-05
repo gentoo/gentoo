@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Abstraction layer for PyQt5/PySide"
 HOMEPAGE="https://github.com/spyder-ide/qtpy"

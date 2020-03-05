@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="A CLI tool that allows direct execution of SQL-like queries on text"
 HOMEPAGE="http://harelba.github.io/q/"

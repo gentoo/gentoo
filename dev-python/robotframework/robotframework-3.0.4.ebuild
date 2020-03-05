@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Test automation framework for acceptance testing & test-driven development"
 HOMEPAGE="https://robotframework.org/ https://pypi.org/project/robotframework/"

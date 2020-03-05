@@ -7,7 +7,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-single-r1 user systemd
+inherit python-single-r2 user systemd
 
 MY_P="${P/sab/SAB}"
 
@@ -41,13 +41,13 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=app-arch/par2cmdline-0.4
 	$(python_gen_cond_dep '
-		>=dev-python/cheetah-2.0.1[${PYTHON_MULTI_USEDEP}]
-		dev-python/configobj[${PYTHON_MULTI_USEDEP}]
-		dev-python/cryptography[${PYTHON_MULTI_USEDEP}]
-		dev-python/feedparser[${PYTHON_MULTI_USEDEP}]
-		dev-python/gntp[${PYTHON_MULTI_USEDEP}]
-		dev-python/pythonutils[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/sabyenc-3.3.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/cheetah-2.0.1[${PYTHON_USEDEP}]
+		dev-python/configobj[${PYTHON_USEDEP}]
+		dev-python/cryptography[${PYTHON_USEDEP}]
+		dev-python/feedparser[${PYTHON_USEDEP}]
+		dev-python/gntp[${PYTHON_USEDEP}]
+		dev-python/pythonutils[${PYTHON_USEDEP}]
+		>=dev-python/sabyenc-3.3.1[${PYTHON_USEDEP}]
 	')
 	net-misc/wget
 	7za? ( app-arch/p7zip )
@@ -61,7 +61,7 @@ S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	HOMEDIR="/var/lib/${PN}"
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 
 	# Create sabnzbd group
 	enewgroup "${PN}"

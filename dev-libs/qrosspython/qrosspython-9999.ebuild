@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit git-r3 python-single-r1 cmake-utils
+inherit git-r3 python-single-r2 cmake-utils
 
 EGIT_REPO_URI="https://github.com/0xd34df00d/Qross.git"
 

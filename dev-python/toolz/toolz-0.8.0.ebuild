@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="List processing tools and functional utilities"
 HOMEPAGE="https://pypi.org/project/toolz/"

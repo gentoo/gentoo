@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Platform-independent file locking module"
 HOMEPAGE="https://launchpad.net/pylockfile https://pypi.org/project/lockfile/"
@@ -37,5 +37,5 @@ python_test() {
 
 python_install_all() {
 	use doc && dodoc -r doc/source/.build/html
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

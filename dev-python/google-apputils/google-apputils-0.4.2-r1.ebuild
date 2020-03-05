@@ -6,7 +6,7 @@ EAPI="5"
 # Python 3: https://github.com/google/google-apputils/issues/9
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Collection of utilities for building Python applications"
 HOMEPAGE="https://github.com/google/google-apputils"

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 ADA_COMPAT=( gnat_2018 )
-inherit ada python-single-r1 autotools desktop llvm multilib
+inherit ada python-single-r2 autotools desktop llvm multilib
 
 MYP=${PN}-gpl-${PV}-src
 
@@ -34,8 +34,8 @@ RDEPEND="${PYTHON_DEPS}
 	x11-themes/adwaita-icon-theme
 	x11-themes/hicolor-icon-theme
 	$(python_gen_cond_dep '
-		dev-python/pep8[${PYTHON_MULTI_USEDEP}]
-		dev-python/jedi[${PYTHON_MULTI_USEDEP}]
+		dev-python/pep8[${PYTHON_USEDEP}]
+		dev-python/jedi[${PYTHON_USEDEP}]
 	')"
 
 DEPEND="${RDEPEND}"
@@ -52,7 +52,7 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 pkg_setup() {
 	LLVM_MAX_SLOT=7
 	llvm_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	ada_pkg_setup
 }
 

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A fully functional X client library for Python, written in Python"
 HOMEPAGE="https://github.com/python-xlib/python-xlib"
@@ -26,7 +26,7 @@ python_prepare_all() {
 	sed -e 's:make:$(MAKE):g' -i doc/Makefile || die
 	cp -r "${FILESDIR}"/defs doc/src/ || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -47,5 +47,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

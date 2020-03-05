@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit cmake flag-o-matic linux-info python-any-r1
+inherit cmake flag-o-matic linux-info python-any-r2
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3

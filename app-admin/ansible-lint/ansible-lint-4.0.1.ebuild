@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Checks ansible playbooks for practices and behaviour that can be improved"
 HOMEPAGE="https://github.com/ansible/ansible-lint"

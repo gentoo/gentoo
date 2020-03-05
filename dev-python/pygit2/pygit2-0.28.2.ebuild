@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1 eapi7-ver
+inherit distutils-r2 eapi7-ver
 
 DESCRIPTION="Python bindings for libgit2"
 HOMEPAGE="https://github.com/libgit2/pygit2 https://pypi.org/project/pygit2/"
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 
 	# we need to move them away to prevent pytest from forcing '..'
 	# for imports

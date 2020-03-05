@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit check-reqs python-r1 toolchain-funcs
+inherit check-reqs python-multi-r2 toolchain-funcs
 
 if [[ ${PV} == *9999 ]]; then
 	EGIT_REPO_URI="https://git.skewed.de/count0/graph-tool.git"

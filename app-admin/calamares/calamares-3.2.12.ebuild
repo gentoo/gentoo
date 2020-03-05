@@ -5,7 +5,7 @@ EAPI=7
 
 KDE_TEST="true"
 PYTHON_COMPAT=( python3_6 )
-inherit kde5 python-single-r1
+inherit kde5 python-single-r2
 
 DESCRIPTION="Distribution-independent installer framework"
 HOMEPAGE="https://calamares.io"
@@ -42,8 +42,8 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	$(add_qt_dep qtxml)
 	dev-cpp/yaml-cpp:=
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.55:=[python,${PYTHON_MULTI_USEDEP}]
-		dev-libs/libpwquality[${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.55:=[python,${PYTHON_USEDEP}]
+		dev-libs/libpwquality[${PYTHON_USEDEP}]
 	')
 	sys-apps/dbus
 	sys-apps/dmidecode

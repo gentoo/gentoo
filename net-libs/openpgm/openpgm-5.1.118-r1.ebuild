@@ -6,7 +6,7 @@ EAPI=5
 AUTOTOOLS_AUTORECONF=true
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools-utils python-any-r1
+inherit autotools-utils python-any-r2
 
 MY_PV="${PV//./-}"
 

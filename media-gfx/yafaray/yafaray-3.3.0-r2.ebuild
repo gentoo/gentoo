@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake flag-o-matic python-single-r1
+inherit cmake flag-o-matic python-single-r2
 
 DESCRIPTION="A free open-source montecarlo raytracing engine"
 HOMEPAGE="http://www.yafaray.org"
@@ -36,7 +36,7 @@ BDEPEND="dev-lang/swig"
 S="${WORKDIR}/Core-${PV}"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

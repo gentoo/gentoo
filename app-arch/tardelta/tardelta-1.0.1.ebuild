@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Generate a tarball of differences between two tarballs"
 HOMEPAGE="https://github.com/zmedico/tardelta"
@@ -18,5 +18,5 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 src_prepare() {
 	sed -i "s:^\(__version__ =\).*:\\1 \"${PV}\":" src/${PN}.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }

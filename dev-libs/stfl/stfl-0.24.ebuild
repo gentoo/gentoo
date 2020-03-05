@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 GENTOO_DEPEND_ON_PERL=no
-inherit eutils multilib perl-module python-r1 toolchain-funcs
+inherit eutils multilib perl-module python-multi-r2 toolchain-funcs
 
 DESCRIPTION="A library which implements a curses-based widget set for text terminals"
 HOMEPAGE="http://www.clifford.at/stfl/"

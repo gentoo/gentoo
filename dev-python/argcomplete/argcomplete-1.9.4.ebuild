@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r2
 
 DESCRIPTION="Bash tab completion for argparse"
 HOMEPAGE="https://pypi.org/project/argcomplete/"
@@ -29,6 +29,6 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	newbashcomp "${S}"/${PN}/bash_completion.d/python-argcomplete.sh python-${PN}
 }

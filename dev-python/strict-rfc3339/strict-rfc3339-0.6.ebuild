@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Strict, simple, lightweight RFC3339 functions"
 HOMEPAGE="https://pypi.org/project/strict-rfc3339/ https://github.com/danielrichman/strict-rfc3339"

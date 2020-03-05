@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools python-single-r1
+inherit autotools python-single-r2
 
 EGIT_COMMIT="f427d083ee899d42532c046100490a915b0e8a82"
 DESCRIPTION="Text-based, multi-protocol instant messenger"

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 readme.gentoo-r1
+inherit distutils-r2 readme.gentoo-r1
 
 DESCRIPTION="Console XMPP client that looks like most famous IRC clients"
 HOMEPAGE="https://poez.io/"
@@ -48,7 +48,7 @@ src_prepare() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	readme.gentoo_create_doc
 }
 

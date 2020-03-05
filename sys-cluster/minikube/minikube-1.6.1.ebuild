@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-any-r1 go-module
+inherit python-any-r2 go-module
 
 EGIT_COMMIT="42a9df4854dcea40ec187b6b8f9a910c6038f81a"
 

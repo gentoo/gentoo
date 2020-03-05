@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pure Python PNG image encoder/decoder"
 HOMEPAGE="https://github.com/drj11/pypng https://pypi.org/project/pypng/"

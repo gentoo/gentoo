@@ -8,7 +8,7 @@ DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads,sqlite,ssl?"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Powerful IMAP/Maildir synchronization and reader support"
 HOMEPAGE="https://www.offlineimap.org/"
@@ -21,7 +21,7 @@ IUSE="doc ssl"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/six[${PYTHON_MULTI_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
 	')"
 DEPEND="doc? ( app-text/asciidoc )"
 
@@ -31,12 +31,12 @@ PATCHES=(
 )
 
 src_compile() {
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 	use doc && emake -C docs man
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	dodoc offlineimap.conf offlineimap.conf.minimal
 	use doc && doman docs/{offlineimap.1,offlineimapui.7}
 }

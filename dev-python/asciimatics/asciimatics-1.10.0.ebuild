@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pythonic library to create text UIs and ASCII art animations"
 HOMEPAGE="https://github.com/peterbrittain/asciimatics"
@@ -26,7 +26,7 @@ DEPEND="
 
 src_prepare() {
 	sed -i -e "s/use_scm_version.*/version='${PV}',/g;" setup.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_compile_all() {
@@ -41,5 +41,5 @@ python_compile_all() {
 
 python_install_all() {
 	use examples && dodoc -r samples
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

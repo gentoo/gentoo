@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A simple statsd client"
 HOMEPAGE="https://github.com/jsocol/pystatsd https://pypi.org/project/statsd"

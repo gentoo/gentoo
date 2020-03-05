@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Colourized diff that supports side-by-side diffing"
 HOMEPAGE="https://www.jefftk.com/icdiff"

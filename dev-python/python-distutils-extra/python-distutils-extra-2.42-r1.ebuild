@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Gettext support, themed icons and scrollkeeper-based documentation in distutils"
 HOMEPAGE="https://launchpad.net/python-distutils-extra"
@@ -27,7 +27,7 @@ python_prepare_all() {
 	# https://bugs.launchpad.net/python-distutils-extra/+bug/1657919
 	sed -i '/^unittest.main()$/d' test/auto.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -42,7 +42,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	docinto examples
 	dodoc doc/{setup.cfg.example,setup.py.example}

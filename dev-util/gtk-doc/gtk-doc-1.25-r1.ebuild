@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils elisp-common gnome2 python-single-r1 readme.gentoo-r1
+inherit eutils elisp-common gnome2 python-single-r2 readme.gentoo-r1
 
 DESCRIPTION="GTK+ Documentation Generator"
 HOMEPAGE="https://www.gtk.org/gtk-doc/"
@@ -45,7 +45,7 @@ pkg_setup() {
 		You may set your own key bindings for \"gtk-doc-insert\" and
 		\"gtk-doc-insert-section\" in your ~/.emacs file."
 	SITEFILE=61${PN}-gentoo.el
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

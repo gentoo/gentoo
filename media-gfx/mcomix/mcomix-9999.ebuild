@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7,8} )
-inherit desktop git-r3 python-r1 xdg
+inherit desktop git-r3 python-multi-r2 xdg
 
 DESCRIPTION="GTK image viewer for comic book archives"
 HOMEPAGE="https://github.com/multiSnow/mcomix3"

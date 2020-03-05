@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1 multilib systemd user
+inherit eutils python-single-r2 multilib systemd user
 
 DESCRIPTION="A python-based mailing list server with an extensive web interface"
 SRC_URI="mirror://sourceforge/${PN}/${P/_p/-}.tgz"
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/dnspython[${PYTHON_MULTI_USEDEP}]
+		dev-python/dnspython[${PYTHON_USEDEP}]
 	')
 	virtual/mta
 	virtual/cron
@@ -32,7 +32,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/${P/_p/-}"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	INSTALLDIR=${MAILMAN_PREFIX:-"/usr/$(get_libdir)/mailman"}
 	VAR_PREFIX=${MAILMAN_VAR_PREFIX:-"/var/lib/mailman"}
 	CGIUID=${MAILMAN_CGIUID:-apache}

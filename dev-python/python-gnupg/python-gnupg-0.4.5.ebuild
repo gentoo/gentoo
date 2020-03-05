@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS="no"
 PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python wrapper for GnuPG"
 HOMEPAGE="

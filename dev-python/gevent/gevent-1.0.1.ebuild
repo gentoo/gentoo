@@ -5,7 +5,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ssl,threads(+)"
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_PV=${PV/_/}
 MY_P=${PN}-${MY_PV}
@@ -35,7 +35,7 @@ S=${WORKDIR}/${MY_P}
 python_prepare_all() {
 	rm -r {libev,c-ares} || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -54,7 +54,7 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	dodoc changelog.rst
 

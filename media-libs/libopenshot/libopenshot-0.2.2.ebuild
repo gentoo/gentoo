@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils python-single-r1 toolchain-funcs versionator
+inherit cmake-utils python-single-r2 toolchain-funcs versionator
 
 DESCRIPTION="Video editing library used by OpenShot"
 HOMEPAGE="http://www.openshotvideo.com/"
@@ -55,7 +55,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	check_compiler
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

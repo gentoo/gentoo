@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="Paste"
 MY_P="${MY_PN}-${PV}"
@@ -48,11 +48,11 @@ python_prepare_all() {
 	# remove unnecessary dep
 	sed -i "s:'pytest-runner'::" setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 #python_compile() {
-#	distutils-r1_python_compile egg_info --egg-base "${BUILD_DIR}/lib"
+#	distutils-r2_python_compile egg_info --egg-base "${BUILD_DIR}/lib"
 #}
 
 #python_compile_all() {
@@ -60,11 +60,11 @@ python_prepare_all() {
 #}
 
 #python_install() {
-#	distutils-r1_python_install egg_info --egg-base "${BUILD_DIR}/lib"
+#	distutils-r2_python_install egg_info --egg-base "${BUILD_DIR}/lib"
 #}
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	find "${D}" -name '*.pth' -delete || die
 }

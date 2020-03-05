@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A key-value storage for binary data, support many backends."
 HOMEPAGE="https://pypi.org/project/simplekv/ https://github.com/mbr/simplekv"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library to work with pdf files"
 HOMEPAGE="https://pypi.org/project/PyPDF2/ https://github.com/mstamy2/PyPDF2"
@@ -28,5 +28,5 @@ python_install_all() {
 		dodoc -r Sample_Code/.
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

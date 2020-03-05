@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Database of countries, subdivisions, languages, currencies and script"
 HOMEPAGE="https://bitbucket.org/flyingcircus/pycountry"

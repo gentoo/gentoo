@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A utility belt for advanced users of python-requests"
 HOMEPAGE="https://toolbelt.readthedocs.org/"

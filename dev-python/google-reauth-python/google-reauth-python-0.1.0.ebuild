@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python based U2F host library"
 HOMEPAGE="https://github.com/google/google-reauth-python"
@@ -38,7 +38,7 @@ python_prepare_all() {
 		-e "s:SignResponse('key_handle', 'resp',:SignResponse('key_handle'.encode(), 'resp'.encode(),:" \
 		-i tests/test_reauth.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

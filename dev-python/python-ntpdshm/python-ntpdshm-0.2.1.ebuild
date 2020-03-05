@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python interface to ntpd shared memory driver 28"
 HOMEPAGE="https://github.com/mjuenema/python-ntpdshm"
@@ -24,5 +24,5 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	emake swig
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }

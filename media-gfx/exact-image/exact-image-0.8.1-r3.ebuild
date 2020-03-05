@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib python-single-r1 toolchain-funcs
+inherit eutils multilib python-single-r2 toolchain-funcs
 
 DESCRIPTION="A fast, modern and generic image processing library"
 HOMEPAGE="http://www.exactcode.de/site/open_source/exactimage/"
@@ -40,7 +40,7 @@ DEPEND="${RDEPEND}
 	swig? ( dev-lang/swig )"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

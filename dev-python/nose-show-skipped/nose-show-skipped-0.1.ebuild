@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A nose plugin to show skipped tests and their messages"
 HOMEPAGE="https://github.com/cpcloud/nose-show-skipped

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Sphinx extension which renders display math in HTML via JavaScript"
 HOMEPAGE="http://www.sphinx-doc.org"
@@ -22,6 +22,6 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

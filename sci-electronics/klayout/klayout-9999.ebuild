@@ -9,7 +9,7 @@ USE_RUBY="ruby24"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit toolchain-funcs python-single-r1 ruby-ng
+inherit toolchain-funcs python-single-r2 ruby-ng
 
 if [[ ${PV} = 9999* ]]; then
 	EGIT_REPO_URI="https://github.com/klayoutmatthias/${PN}.git"
@@ -46,7 +46,7 @@ RDEPEND="
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	ruby-ng_pkg_setup
 }
 

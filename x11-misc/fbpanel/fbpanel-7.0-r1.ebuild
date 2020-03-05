@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1 toolchain-funcs
+inherit python-any-r2 toolchain-funcs
 
 DESCRIPTION="light-weight X11 desktop panel"
 HOMEPAGE="https://aanatoly.github.io/fbpanel/"

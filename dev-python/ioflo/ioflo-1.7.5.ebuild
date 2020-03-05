@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=(python{3_6,3_7})
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Automated Reasoning Engine and Flow Based Programming Framework"
 HOMEPAGE="https://github.com/ioflo/ioflo/"
@@ -19,5 +19,5 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
 	sed -e 's:"setuptools_git[^"]*",::' -i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

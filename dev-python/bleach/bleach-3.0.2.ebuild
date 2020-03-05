@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="an easy whitelist-based HTML-sanitizing tool"
 HOMEPAGE="https://github.com/mozilla/bleach https://pypi.org/project/bleach/"

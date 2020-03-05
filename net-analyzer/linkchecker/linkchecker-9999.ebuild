@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite?"
 
 EGIT_REPO_URI="https://github.com/linkcheck/linkchecker.git"
-inherit bash-completion-r1 distutils-r1 eutils git-r3
+inherit bash-completion-r1 distutils-r2 eutils git-r3
 
 DESCRIPTION="Check websites for broken links"
 HOMEPAGE="https://github.com/linkcheck/linkchecker"
@@ -32,7 +32,7 @@ python_prepare_all() {
 		"${FILESDIR}/${PN}-9.3-bash-completion.patch"
 	)
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
@@ -42,7 +42,7 @@ python_install_all() {
 		doc/python3.txt
 		doc/upgrading.txt
 	)
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	rm "${ED}"/usr/share/applications/linkchecker.desktop || die
 

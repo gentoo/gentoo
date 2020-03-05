@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=true
 
-inherit distutils-r1 versionator
+inherit distutils-r2 versionator
 
 MY_PV="$(replace_version_separator 2 '-')"
 
@@ -29,6 +29,6 @@ PATCHES=( "${FILESDIR}/${PV}-fix-install-paths.patch" )
 S="${WORKDIR}/naxsi-${MY_PV}/nx_util"
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	mv nx_util{.py,} || die "renaming script failed"
 }

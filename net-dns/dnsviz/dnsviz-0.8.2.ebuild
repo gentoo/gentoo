@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Tool suite for analysis and visualization of DNS and DNSSEC"
 HOMEPAGE="https://dnsviz.net/"
@@ -29,7 +29,7 @@ python_prepare_all() {
 	# Fix the ebuild to use correct FHS/Gentoo policy paths for 0.8.2
 	sed -i "s*share/doc/dnsviz*share/doc/dnsviz-${PV}*g" "${S}"/setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 pkg_postinst() {

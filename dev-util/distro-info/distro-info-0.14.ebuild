@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6 )
 DISTUTILS_OPTIONAL=true
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Provides information about the Debian distributions' releases"
 HOMEPAGE="https://debian.org"
@@ -53,7 +53,7 @@ src_configure() {
 
 	if use python; then
 		pushd ./python > /dev/null || die
-		distutils-r1_src_configure
+		distutils-r2_src_configure
 		popd > /dev/null || die
 	fi
 }
@@ -63,7 +63,7 @@ src_compile() {
 
 	if use python; then
 		pushd ./python > /dev/null || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 		popd > /dev/null || die
 	fi
 }
@@ -74,7 +74,7 @@ src_install() {
 
 	if use python; then
 		pushd ./python > /dev/null || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 		popd > /dev/null || die
 	fi
 }
@@ -88,7 +88,7 @@ src_test() {
 		}
 
 		pushd ./python > /dev/null || die
-		distutils-r1_src_test
+		distutils-r2_src_test
 		popd > /dev/null || die
 	fi
 }

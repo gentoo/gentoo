@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A wrapper around PyFlakes, pep8 & mccabe"
 HOMEPAGE="https://gitlab.com/pycqa/flake8 https://pypi.org/project/flake8/"
@@ -44,7 +44,7 @@ python_prepare_all() {
 	# try to install it, causing sandbox violations.
 	sed -i -e "/setup_requires=\['pytest-runner'\],/d" setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

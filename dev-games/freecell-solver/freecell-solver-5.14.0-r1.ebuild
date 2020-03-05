@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake python-single-r1
+inherit cmake python-single-r2
 
 DESCRIPTION="C library for automatically solving Freecell and some other solitaire variants"
 HOMEPAGE="https://fc-solve.shlomifish.org/"
@@ -19,9 +19,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pysol_cards[${PYTHON_MULTI_USEDEP}]
-		dev-python/random2[${PYTHON_MULTI_USEDEP}]
-		dev-python/six[${PYTHON_MULTI_USEDEP}]
+		dev-python/pysol_cards[${PYTHON_USEDEP}]
+		dev-python/random2[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
 	')
 	tcmalloc? ( dev-util/google-perftools )
 "

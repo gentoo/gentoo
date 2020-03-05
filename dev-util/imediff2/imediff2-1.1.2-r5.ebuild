@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="ncurses"
 
-inherit python-single-r1 eapi7-ver
+inherit python-single-r2 eapi7-ver
 
 MY_P="${PN}_$(ver_rs 3 -)"
 

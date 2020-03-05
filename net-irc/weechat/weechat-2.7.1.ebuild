@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit cmake-utils python-single-r1 xdg-utils
+inherit cmake-utils python-single-r2 xdg-utils
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -63,7 +63,7 @@ DOCS="AUTHORS.adoc ChangeLog.adoc Contributing.adoc ReleaseNotes.adoc README.ado
 RESTRICT="test"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

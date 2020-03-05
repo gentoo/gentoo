@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit bash-completion-r1 python-single-r1
+inherit bash-completion-r1 python-single-r2
 
 libbtrfs_soname=0
 
@@ -52,7 +52,7 @@ DEPEND="${RDEPEND}
 	app-text/xmlto
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+			dev-python/setuptools[${PYTHON_USEDEP}]
 		')
 	)
 	static? (
@@ -81,7 +81,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

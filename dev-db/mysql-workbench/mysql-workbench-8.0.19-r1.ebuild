@@ -9,7 +9,7 @@ PYTHON_REQ_USE="sqlite"
 
 ANTLR_VERSION=4.7.1
 
-inherit gnome2 flag-o-matic python-single-r1 cmake-utils
+inherit gnome2 flag-o-matic python-single-r2 cmake-utils
 
 MY_P="${PN}-community-${PV}-src"
 

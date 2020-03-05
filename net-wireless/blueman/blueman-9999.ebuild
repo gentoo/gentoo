@@ -4,7 +4,7 @@
 EAPI="7"
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit autotools gnome2-utils linux-info python-single-r1 systemd xdg-utils
+inherit autotools gnome2-utils linux-info python-single-r2 systemd xdg-utils
 
 DESCRIPTION="Simple and intuitive GTK+ Bluetooth Manager"
 HOMEPAGE="https://github.com/blueman-project/blueman"
@@ -27,19 +27,19 @@ IUSE="appindicator network nls policykit pulseaudio"
 
 DEPEND="
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	>=net-wireless/bluez-5:=
 	${PYTHON_DEPS}"
 BDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/cython[${PYTHON_MULTI_USEDEP}]
+		dev-python/cython[${PYTHON_USEDEP}]
 	')
 	virtual/pkgconfig
 	nls? ( dev-util/intltool sys-devel/gettext )"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
 	')
 	sys-apps/dbus
 	x11-libs/gtk+:3[introspection]
@@ -83,7 +83,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

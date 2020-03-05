@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="LZ4 Bindings for Python"
 HOMEPAGE="https://pypi.org/project/lz4/ https://github.com/python-lz4/python-lz4"

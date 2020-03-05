@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit cmake-multilib python-single-r1 toolchain-funcs
+inherit cmake-multilib python-single-r2 toolchain-funcs
 
 DESCRIPTION="An efficient theorem prover"
 HOMEPAGE="https://github.com/Z3Prover/z3/"

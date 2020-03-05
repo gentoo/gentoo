@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-single-r1
+inherit cmake-utils python-single-r2
 
 DESCRIPTION="IEEE 802.15.4 ZigBee Transceiver"
 HOMEPAGE="https://github.com/bastibl/gr-ieee802-15-4"
@@ -25,7 +25,7 @@ SLOT="0/${PV}"
 
 RDEPEND=">=net-wireless/gnuradio-3.7_rc:0=[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		dev-libs/boost:=[${PYTHON_MULTI_USEDEP}]
+		dev-libs/boost:=[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}

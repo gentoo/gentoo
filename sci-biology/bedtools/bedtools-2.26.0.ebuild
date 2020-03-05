@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit flag-o-matic python-any-r1 toolchain-funcs
+inherit flag-o-matic python-any-r2 toolchain-funcs
 
 DESCRIPTION="Tools for manipulation and analysis of BED, GFF/GTF, VCF, SAM/BAM file formats"
 HOMEPAGE="https://bedtools.readthedocs.io/"

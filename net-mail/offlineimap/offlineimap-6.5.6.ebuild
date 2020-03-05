@@ -8,7 +8,7 @@ DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads,sqlite?,ssl?"
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="Powerful IMAP/Maildir synchronization and reader support"
 HOMEPAGE="https://www.offlineimap.org/"
@@ -29,13 +29,13 @@ src_unpack() {
 }
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	# see http://pogma.com/2009/09/09/snow-leopard-and-offlineimap/ and bug 284925
 	epatch "${FILESDIR}"/"${PN}-6.5.3.1"-darwin10.patch
 }
 
 src_compile() {
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 	if use doc ; then
 		cd docs
 		rst2man.py MANUAL.rst offlineimap.1 || die "building manpage failed"
@@ -43,7 +43,7 @@ src_compile() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	dodoc offlineimap.conf offlineimap.conf.minimal
 	if use doc ; then
 		cd docs

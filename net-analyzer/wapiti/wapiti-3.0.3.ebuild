@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='xml'
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P=${PN}3-${PV}
 DESCRIPTION="Web-application vulnerability scanner"
@@ -37,5 +37,5 @@ S=${WORKDIR}/${MY_P}
 
 python_prepare_all() {
 	sed -e 's/"pytest-runner"//' -i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

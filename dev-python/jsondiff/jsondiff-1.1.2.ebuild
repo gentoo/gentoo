@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Diff JSON and JSON-like structures in Python"
 HOMEPAGE="https://github.com/xlwings/jsondiff https://pypi.org/project/jsondiff/"
@@ -21,7 +21,7 @@ RESTRICT="test"
 python_prepare_all() {
 	# Avoid file collision with jsonpatch's jsondiff cli.
 	sed -e "/'jsondiff=jsondiff.cli:main'/d" -i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -29,5 +29,5 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

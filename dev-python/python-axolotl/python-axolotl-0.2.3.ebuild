@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A python module for the axolotl protocol"
 HOMEPAGE="https://github.com/tgalal/python-axolotl"

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Data Access Protocol client and server"
 HOMEPAGE="http://pydap.org https://pypi.org/project/dap/ https://pypi.org/project/Pydap/"
@@ -30,5 +30,5 @@ DOCS=( docs/bugs docs/Changelog docs/history README TODO )
 
 src_prepare() {
 	sed -e "s/'dap.plugins'/'dap', 'dap.plugins'/" -i setup.py || die "sed failed"
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }

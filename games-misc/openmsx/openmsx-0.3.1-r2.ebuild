@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit python-any-r1
+inherit python-any-r2
 
 DESCRIPTION="An ambiguously named music replacement set for OpenTTD"
 HOMEPAGE="http://bundles.openttdcoop.org/openmsx/"
@@ -19,7 +19,7 @@ DEPEND="${PYTHON_DEPS}"
 S=${WORKDIR}/${P}-source
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_compile() {

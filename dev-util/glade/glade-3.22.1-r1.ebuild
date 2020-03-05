@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-single-r1 virtualx
+inherit gnome2 python-single-r2 virtualx
 
 DESCRIPTION="A user interface designer for GTK+ and GNOME"
 HOMEPAGE="https://glade.gnome.org/"
@@ -29,7 +29,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/pygobject-3.8:3[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygobject-3.8:3[${PYTHON_USEDEP}]
 		')
 	)
 	webkit? ( >=net-libs/webkit-gtk-2.12.0:4 )
@@ -59,7 +59,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

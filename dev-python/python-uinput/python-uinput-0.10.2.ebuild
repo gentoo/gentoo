@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pythonic API to the Linux uinput kernel module"
 HOMEPAGE="http://tjjr.fi/sw/python-uinput/"
@@ -21,5 +21,5 @@ RDEPEND="${DEPEND}"
 
 python_prepare_all() {
 	rm libsuinput/src/libudev.h || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

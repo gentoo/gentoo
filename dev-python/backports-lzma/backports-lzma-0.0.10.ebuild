@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=${PN/-/.}
 MY_P=${MY_PN}-${PV}
@@ -36,5 +36,5 @@ python_install() {
 	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
 	rm -f backports/__init__.py || die
 
-	distutils-r1_python_install
+	distutils-r2_python_install
 }

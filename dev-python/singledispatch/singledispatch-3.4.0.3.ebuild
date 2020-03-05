@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A library to bring functools.singledispatch from Python 3.4 to Python 2.6-3.3"
 HOMEPAGE="https://docs.python.org/3/library/functools.html#functools.singledispatch"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_SINGLE_IMPL=1
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 COMMIT="9f54e1aa3a87ec176ce8b71f02673e0d8293b344"
 
@@ -19,10 +19,10 @@ KEYWORDS="amd64 sparc x86"
 IUSE=""
 
 python_install() {
-	distutils-r1_python_install --install-scripts="${EPREFIX}/usr/sbin"
+	distutils-r2_python_install --install-scripts="${EPREFIX}/usr/sbin"
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	doman ${PN}.1
 }

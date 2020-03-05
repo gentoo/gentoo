@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings for the Enchant spellchecking system"
 HOMEPAGE="http://pyenchant.sourceforge.net https://pypi.org/project/pyenchant/"
@@ -30,7 +30,7 @@ python_prepare_all() {
 	# matching the available locales
 	# https://github.com/rfk/pyenchant/issues/134
 	sed -i 's/test_default_language/_&/' enchant/checker/tests.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

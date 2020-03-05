@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic gnome2-utils python-single-r1 toolchain-funcs
+inherit flag-o-matic gnome2-utils python-single-r2 toolchain-funcs
 
 DESCRIPTION="A bible study frontend for Sword (formerly known as GnomeSword)"
 HOMEPAGE="http://xiphos.org/"
@@ -24,8 +24,8 @@ RDEPEND="${PYTHON_DEPS}
 	net-libs/webkit-gtk:4
 	x11-libs/gtk+:3
 	$(python_gen_cond_dep '
-		dev-libs/libxml2:2[${PYTHON_MULTI_USEDEP}]
-		gnome-base/gconf[${PYTHON_MULTI_USEDEP}]
+		dev-libs/libxml2:2[${PYTHON_USEDEP}]
+		gnome-base/gconf[${PYTHON_USEDEP}]
 	')
 	dbus? ( dev-libs/dbus-glib )
 "
@@ -38,13 +38,13 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext
 	$(python_gen_cond_dep '
-		app-text/gnome-doc-utils[${PYTHON_MULTI_USEDEP}]
-		dev-libs/libxslt[${PYTHON_MULTI_USEDEP}]
+		app-text/gnome-doc-utils[${PYTHON_USEDEP}]
+		dev-libs/libxslt[${PYTHON_USEDEP}]
 	')
 "
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

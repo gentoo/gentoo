@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 PYTHON_REQ_USE="tk"
 
-inherit python-single-r1 systemd toolchain-funcs autotools
+inherit python-single-r2 systemd toolchain-funcs autotools
 
 DESCRIPTION="the legendary remote-mail retrieval and forwarding utility"
 HOMEPAGE="http://www.fetchmail.info/"
@@ -34,7 +34,7 @@ RDEPEND="acct-user/fetchmail
 	tk? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/future[${PYTHON_MULTI_USEDEP}]
+			dev-python/future[${PYTHON_USEDEP}]
 		')
 	)"
 DEPEND="${RDEPEND}
@@ -50,7 +50,7 @@ PATCHES=(
 S=${WORKDIR}/${P/_/.}
 
 pkg_setup() {
-	use tk && python-single-r1_pkg_setup
+	use tk && python-single-r2_pkg_setup
 }
 
 src_prepare() {

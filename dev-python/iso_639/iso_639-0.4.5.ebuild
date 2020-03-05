@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 MY_PN="iso-639"
 MY_P="${MY_PN}-${PV}"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library for ISO 639 standard"
 HOMEPAGE="https://pypi.org/project/iso-639/ https://github.com/noumar/iso639"

@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
-inherit autotools python-single-r1 vala
+inherit autotools python-single-r2 vala
 
 DESCRIPTION="File syncing and sharing software with file encryption and group sharing"
 HOMEPAGE="https://github.com/haiwen/seafile/ http://www.seafile.com/"

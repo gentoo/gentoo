@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Secure backup system using gnupg to encrypt data"
 HOMEPAGE="http://www.nongnu.org/duplicity/"
@@ -39,7 +39,7 @@ python_prepare_all() {
 	# workaround until failing test is fixed
 	local PATCHES=( "${FILESDIR}"/${PN}-0.6.24-skip-test.patch )
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	sed -i "s/'COPYING',//" setup.py || die
 }

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools python-r1 toolchain-funcs
+inherit autotools python-multi-r2 toolchain-funcs
 
 DESCRIPTION="Utilities for analysing and manipulating the SAM/BAM alignment formats"
 HOMEPAGE="http://www.htslib.org/"

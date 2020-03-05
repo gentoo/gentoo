@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Provides graphical frontend to ufw"
 HOMEPAGE="https://github.com/baudm/ufw-frontends"
@@ -39,21 +39,21 @@ python_prepare_all() {
 	fi
 
 	# don't try to override run() to install the script
-	# under /usr/sbin; it does not work with distutils-r1
+	# under /usr/sbin; it does not work with distutils-r2
 	# and so it is handled differently (in python_install)
 	sed -i '/cmdclass=/d' setup.py || die
 
 	# Qt version is unusable
 	rm gfw/frontend_qt.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install() {
-	distutils-r1_python_install --install-scripts="/usr/sbin"
+	distutils-r2_python_install --install-scripts="/usr/sbin"
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use policykit; then
 		insinto /usr/share/polkit-1/actions/

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils python-single-r1
+inherit autotools eutils python-single-r2
 
 DESCRIPTION="roleplaying game engine"
 HOMEPAGE="http://adonthell.nongnu.org/"
@@ -45,7 +45,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

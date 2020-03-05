@@ -10,7 +10,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/vcstools/rosinstall"
 fi
 
-inherit ${SCM} distutils-r1
+inherit ${SCM} distutils-r2
 
 DESCRIPTION="Command-line tools for maintaining a workspace of projects for ROS"
 HOMEPAGE="http://wiki.ros.org/rosinstall http://wiki.ros.org/roslocate"

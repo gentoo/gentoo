@@ -6,7 +6,7 @@ EAPI=6
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_REV="9901"
 MY_DIR="tagsplugin/tags/${PV}"
@@ -23,7 +23,7 @@ IUSE=""
 
 CDEPEND="
 	$(python_gen_cond_dep '
-		>=dev-python/genshi-0.6[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/genshi-0.6[${PYTHON_USEDEP}]
 	')"
 DEPEND="${CDEPEND}
 	app-arch/unzip"

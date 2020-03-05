@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python implementation of SAML Version 2 to be used in a WSGI environment"
 HOMEPAGE="https://github.com/rohe/pysaml2"
@@ -38,5 +38,5 @@ python_prepare_all() {
 	has_version ">=dev-python/setuptools-39.2.0" || \
 		sed --in-place "s/^version = file:.*\$/version = ${PV}/" setup.cfg
 	##
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_PN=${PN/-/.}
 MY_P=${MY_PN}-${PV}
@@ -32,7 +32,7 @@ python_compile() {
 		append-flags -fno-strict-aliasing
 	fi
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {

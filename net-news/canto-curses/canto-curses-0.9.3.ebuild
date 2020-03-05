@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ncurses(+),threads(+)"
-inherit distutils-r1 multilib
+inherit distutils-r2 multilib
 
 DESCRIPTION="The ncurses client for canto-daemon"
 HOMEPAGE="https://codezen.org/canto-ng/"
@@ -21,5 +21,5 @@ python_prepare_all() {
 	# Respect libdir during plugins installation
 	sed -i -e "s:lib/canto:$(get_libdir)/canto:" setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
-inherit distutils-r1 readme.gentoo-r1
+inherit distutils-r2 readme.gentoo-r1
 
 DESCRIPTION="A Python interactive packet manipulation program for mastering the network"
 HOMEPAGE="https://scapy.net/ https://github.com/secdev/scapy"
@@ -32,11 +32,11 @@ Scapy has optional support for the following packages:
 
 src_prepare() {
 	echo ${PV/_/} > ${PN}/VERSION
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	dodoc -r doc/${PN}/*
 	DISABLE_AUTOFORMATTING=plz readme.gentoo_create_doc
 }

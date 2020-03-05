@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Read/rewrite/write Python ASTs"
 SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
@@ -22,5 +22,5 @@ python_prepare_all() {
 	# Tries to roundtrip every package on the system and is unreliable
 	rm -f tests/test_rtrip.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 linux-info
+inherit distutils-r2 linux-info
 
 ISO="ISO-1.tar.gz"
 
@@ -51,7 +51,7 @@ pkg_setup() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	echo "CONFIG_PROTECT=\"/etc/grs/systems.conf\"" > "${T}"/20grs
 	doenvd "${T}"/20grs
 	if use server; then

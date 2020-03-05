@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Replacement for bz2.BZ2File with features from newest CPython"
 HOMEPAGE="https://pypi.org/project/bz2file/ https://github.com/nvawda/bz2file"

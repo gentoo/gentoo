@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 DESCRIPTION="Console CardDAV client"
 HOMEPAGE="https://github.com/scheibler/khard"
 LICENSE="GPL-3"
@@ -39,7 +39,7 @@ DEPEND="
 DOCS=( AUTHORS CHANGES README.md misc/khard/khard.conf.example )
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	if use zsh-completion; then
 		insinto /usr/share/zsh/site-functions

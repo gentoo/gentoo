@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Extension to sphinx to create links to issue trackers"
 HOMEPAGE="http://sphinxcontrib-issuetracker.readthedocs.org/"
@@ -42,7 +42,7 @@ python_prepare_all() {
 			-i doc/conf.py || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

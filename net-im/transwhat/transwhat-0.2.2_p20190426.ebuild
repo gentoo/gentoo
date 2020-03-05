@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS="bdepend"
 EGIT_COMMIT="d022243f6c7b23674d3c87a09819f00b10df1165"
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3"
 HOMEPAGE="https://github.com/stv0g/transwhat"

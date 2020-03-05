@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A wrapper around PyFlakes, pep8 & mccabe"
 HOMEPAGE="https://gitlab.com/pycqa/flake8 https://pypi.org/project/flake8/"
@@ -49,5 +49,5 @@ python_prepare_all() {
 	# don't treat warnings as errors when running tests
 	sed -r -i '/^[[:space:]]*error[[:space:]]*$/ d' pytest.ini || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Fedora Messaging Client API"
 HOMEPAGE="http://www.fedmsg.com/ https://pypi.org/project/fedmsg/"
@@ -34,7 +34,7 @@ DOCS=(
 )
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	insinto /etc/
 	doins -r "${S}/fedmsg.d"
 }

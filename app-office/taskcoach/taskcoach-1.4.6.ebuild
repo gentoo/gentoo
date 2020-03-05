@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit desktop distutils-r1
+inherit desktop distutils-r2
 
 MY_PN="TaskCoach"
 MY_P="${MY_PN}-${PV}"
@@ -37,7 +37,7 @@ DOCS=( CHANGES.txt README.txt )
 PATCHES=( "${FILESDIR}/${PN}-1.4.3-version-check.patch" )
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	doicon "icons.in/${PN}.png"
 	make_desktop_entry ${PN}.py "Task Coach" ${PN} Office

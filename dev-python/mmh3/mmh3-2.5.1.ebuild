@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library for MurmurHash3, fast and robust hash functions."
 HOMEPAGE="https://pypi.org/project/mmh3/"

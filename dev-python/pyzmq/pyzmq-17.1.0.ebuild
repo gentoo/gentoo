@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit flag-o-matic distutils-r1 toolchain-funcs
+inherit flag-o-matic distutils-r2 toolchain-funcs
 
 DESCRIPTION="Lightweight and super-fast messaging library built on top of the ZeroMQ library"
 HOMEPAGE="http://www.zeromq.org/bindings:python https://pypi.org/project/pyzmq/"
@@ -41,7 +41,7 @@ PATCHES=( "${FILESDIR}"/${P}-test_message.patch )
 python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/'sphinx.ext.intersphinx',/d" -i docs/source/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -56,7 +56,7 @@ python_compile_all() {
 python_compile() {
 	esetup.py cython --force
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -65,5 +65,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

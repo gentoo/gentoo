@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,8} )
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Python bindings for sys-block/parted"
 HOMEPAGE="https://github.com/rhinstaller/pyparted/"

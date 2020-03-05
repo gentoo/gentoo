@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/buildbot/buildbot.git"
 
 [[ ${PV} == *9999 ]] && inherit git-r3
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PV="${PV/_p/.post}"
 MY_P="${PN}-${MY_PV}"
@@ -41,5 +41,5 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

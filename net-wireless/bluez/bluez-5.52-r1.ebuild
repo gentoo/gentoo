@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools python-single-r1 readme.gentoo-r1 systemd udev multilib-minimal
+inherit autotools python-single-r2 readme.gentoo-r1 systemd udev multilib-minimal
 
 DESCRIPTION="Bluetooth Tools and System Daemons for Linux"
 HOMEPAGE="http://www.bluez.org"
@@ -26,8 +26,8 @@ REQUIRED_USE="
 
 TEST_DEPS="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/dbus-python-1[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/dbus-python-1[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 "
 BDEPEND="
@@ -74,7 +74,7 @@ PATCHES=(
 
 pkg_setup() {
 	if use test || use test-programs; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 
 	if ! use udev; then

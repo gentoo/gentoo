@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit autotools elisp-common eutils flag-o-matic python-single-r1 toolchain-funcs
+inherit autotools elisp-common eutils flag-o-matic python-single-r2 toolchain-funcs
 
 DESCRIPTION="A useful collection of mail servers, clients, and filters"
 HOMEPAGE="https://www.gnu.org/software/mailutils/mailutils.html"
@@ -58,7 +58,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Create standalone executables from Python scripts"
 HOMEPAGE="https://anthony-tuininga.github.io/cx_Freeze/"

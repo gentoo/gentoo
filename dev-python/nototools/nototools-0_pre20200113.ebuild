@@ -7,7 +7,7 @@ EAPI=7
 # https://github.com/googlei18n/nototools/issues/472
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Noto fonts support tools and scripts plus web site generation"
 HOMEPAGE="https://github.com/googlei18n/nototools"

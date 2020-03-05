@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 python3_7 )
 
-inherit readme.gentoo-r1 autotools perl-functions python-single-r1 toolchain-funcs udev user
+inherit readme.gentoo-r1 autotools perl-functions python-single-r2 toolchain-funcs udev user
 
 DESCRIPTION="Driver library for GPIB (IEEE 488.2) hardware"
 HOMEPAGE="https://linux-gpib.sourceforge.io/"

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 # change each new dynd version, to avoid git in tree dependency
 DYND_PYTHON_GIT_SHA1=8cdef57e71c784d7fe1f3f97a2ce2ce5727a89f1
@@ -43,7 +43,7 @@ python_prepare_all() {
 		-e 's|-Werror||g' \
 		-i CMakeLists.txt || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

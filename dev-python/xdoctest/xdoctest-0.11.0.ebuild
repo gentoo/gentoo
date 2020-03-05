@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A rewrite of Python's builtin doctest module but without all the weirdness"
 HOMEPAGE="https://github.com/Erotemic/ubelt"
@@ -31,7 +31,7 @@ python_prepare_all() {
 	sed -i -e 's:test_xdoc_console_script_exec:_&:' \
 		testing/test_entry_point.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

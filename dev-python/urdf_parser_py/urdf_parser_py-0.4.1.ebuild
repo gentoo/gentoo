@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{3_6,3_7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="URDF parser for Python"
 HOMEPAGE="http://wiki.ros.org/urdfdom_py"

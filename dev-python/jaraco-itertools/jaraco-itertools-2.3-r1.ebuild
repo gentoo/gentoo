@@ -6,7 +6,7 @@ EAPI=7
 # Tests fail with PyPy and PyPy 3
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN/-/.}"
 DESCRIPTION="Tools for working with iterables. Complements itertools and more_itertools"
@@ -54,6 +54,6 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

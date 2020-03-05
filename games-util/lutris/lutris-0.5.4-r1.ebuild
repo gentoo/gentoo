@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="sqlite,threads(+)"
 
-inherit distutils-r1 virtualx xdg
+inherit distutils-r2 virtualx xdg
 
 DESCRIPTION="An open source gaming platform for GNU/Linux"
 HOMEPAGE="https://lutris.net/"
@@ -53,7 +53,7 @@ PATCHES=( "${FILESDIR}/${P}-gtk.patch" )
 
 python_install_all() {
 	local DOCS=( AUTHORS README.rst docs/installers.rst )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 python_test() {

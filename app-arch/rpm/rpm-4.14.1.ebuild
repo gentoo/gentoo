@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit autotools flag-o-matic perl-module python-single-r1 eapi7-ver
+inherit autotools flag-o-matic perl-module python-single-r2 eapi7-ver
 
 DESCRIPTION="Red Hat Package Management Utils"
 HOMEPAGE="https://rpm.org

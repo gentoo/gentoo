@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( pypy3 python3_{6,7} )
-inherit python-single-r1 systemd
+inherit python-single-r2 systemd
 
 DESCRIPTION="systemd units to create timers for cron directories and crontab"
 HOMEPAGE="https://github.com/systemd-cron/systemd-cron/"

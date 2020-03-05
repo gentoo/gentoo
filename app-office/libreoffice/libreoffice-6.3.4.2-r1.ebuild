@@ -21,7 +21,7 @@ BRANDING="${PN}-branding-gentoo-0.8.tar.xz"
 # PATCHSET="${P}-patchset-01.tar.xz"
 
 [[ ${MY_PV} == *9999* ]] && inherit git-r3
-inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 multiprocessing python-single-r1 qmake-utils toolchain-funcs xdg-utils
+inherit autotools bash-completion-r1 check-reqs flag-o-matic java-pkg-opt-2 multiprocessing python-single-r2 qmake-utils toolchain-funcs xdg-utils
 
 DESCRIPTION="A full office productivity suite"
 HOMEPAGE="https://www.libreoffice.org"
@@ -154,7 +154,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libXrender
 	accessibility? (
 		$(python_gen_cond_dep '
-			dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+			dev-python/lxml[${PYTHON_USEDEP}]
 		')
 	)
 	bluetooth? (
@@ -292,7 +292,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	xdg_environment_reset
 
 	[[ ${MERGE_TYPE} != binary ]] && _check_reqs pkg_setup

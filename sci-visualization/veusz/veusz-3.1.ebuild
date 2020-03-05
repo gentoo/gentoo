@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit desktop distutils-r1 virtualx xdg
+inherit desktop distutils-r2 virtualx xdg
 
 DESCRIPTION="Qt scientific plotting package with good Postscript output"
 HOMEPAGE="https://veusz.github.io/"
@@ -29,7 +29,7 @@ DEPEND="${CDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	xdg_environment_reset
 }
 
@@ -41,7 +41,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	# symlink the license, bug #341653
 	rm "${D}/$(python_get_sitedir)"/${PN}/{COPYING,AUTHORS,ChangeLog} || die
 	mkdir -p "${D}/$(python_get_sitedir)" || die
@@ -55,7 +55,7 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use doc; then
 		dodoc Documents/manual/pdf/${PN}.pdf

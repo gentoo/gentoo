@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Plugin for Spyder to run tests and view the results"
 HOMEPAGE="https://github.com/spyder-ide/spyder-unittest"

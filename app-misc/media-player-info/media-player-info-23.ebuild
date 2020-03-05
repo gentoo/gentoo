@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit python-any-r1
+inherit python-any-r2
 
 DESCRIPTION="A repository of data files describing media player capabilities"
 HOMEPAGE="https://cgit.freedesktop.org/media-player-info/"

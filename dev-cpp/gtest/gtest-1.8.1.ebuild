@@ -6,7 +6,7 @@ EAPI="6"
 # Python is required for tests and some build tasks.
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib python-any-r1
+inherit cmake-multilib python-any-r2
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -34,7 +34,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

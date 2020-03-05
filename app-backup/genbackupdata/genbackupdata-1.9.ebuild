@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Generate test data for backup software testing."
 HOMEPAGE="https://liw.fi/genbackupdata/"
@@ -26,6 +26,6 @@ RDEPEND="${DEPEND}"
 
 src_compile() {
 	addwrite /proc/self/comm
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 	emake genbackupdata.1
 }

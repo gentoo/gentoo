@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 MY_PN="Mako"
 MY_P=${MY_PN}-${PV}
@@ -41,7 +41,7 @@ python_install_all() {
 	rm -r doc/build || die
 
 	use doc && local HTML_DOCS=( doc/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

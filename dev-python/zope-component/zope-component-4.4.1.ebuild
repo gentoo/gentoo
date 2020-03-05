@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=(python{2_7,3_6,3_7})
 
-inherit distutils-r1
+inherit distutils-r2
 MY_PN=zope.component
 MY_P=${MY_PN}-${PV}
 
@@ -34,7 +34,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	# remove .pth files since dev-python/namespace-zope handles the ns
 	find "${D}" -name '*.pth' -delete || die

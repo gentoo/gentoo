@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=${PN/-/.}
 DESCRIPTION="A simple python client for pushbullet.com"
@@ -46,5 +46,5 @@ python_install_all() {
 		docinto examples
 		dodoc -r example/.
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

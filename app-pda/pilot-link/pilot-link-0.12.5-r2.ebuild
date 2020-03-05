@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools distutils-r1 perl-module java-pkg-opt-2
+inherit autotools distutils-r2 perl-module java-pkg-opt-2
 
 DESCRIPTION="Suite of tools for moving data between a Palm device and a desktop"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
@@ -84,7 +84,7 @@ src_compile() {
 
 	if use python; then
 		cd "${S}"/bindings/Python
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -105,7 +105,7 @@ src_install() {
 
 	if use python; then
 		cd "${S}"/bindings/Python
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 
 	find "${D}" -name '*.la' -delete || die

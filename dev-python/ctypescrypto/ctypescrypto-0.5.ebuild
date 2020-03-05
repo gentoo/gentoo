@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python interface to some openssl function based on ctypes module"
 HOMEPAGE="https://github.com/vbwagner/ctypescrypto"
@@ -33,7 +33,7 @@ python_prepare_all() {
 	sed -i '/test_verify_by_filestore/i\\    @unittest.skip("disable")' \
 		tests/testx509.py || die "sed failed for tests/testx509.py"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

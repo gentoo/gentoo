@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Automatically formats Python code to conform to the PEP 8 style guide"
 HOMEPAGE="https://github.com/hhatto/autopep8 https://pypi.org/project/autopep8/"
@@ -36,7 +36,7 @@ DEPEND="
 python_prepare_all() {
 	# Prevent UnicodeDecodeError with LANG=C
 	sed -e "/é/d" -i MANIFEST.in || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

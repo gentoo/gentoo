@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="Pweave"
 MY_P="${MY_PN}-${PV}"
@@ -53,5 +53,5 @@ python_install_all() {
 		doins -r doc/examples
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

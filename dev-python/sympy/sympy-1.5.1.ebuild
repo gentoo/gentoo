@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1 eutils virtualx
+inherit distutils-r2 eutils virtualx
 
 DESCRIPTION="Computer Algebra System in pure Python"
 HOMEPAGE="https://sympy.org"
@@ -59,7 +59,7 @@ python_install_all() {
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use texmacs; then
 		exeinto /usr/libexec/TeXmacs/bin/

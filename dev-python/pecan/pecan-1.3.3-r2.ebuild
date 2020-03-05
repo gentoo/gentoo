@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A WSGI object-dispatching web framework,  lean, fast, with few dependencies."
 HOMEPAGE="https://pypi.org/project/pecan/"

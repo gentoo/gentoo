@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Parameterized testing with any Python test framework"
 HOMEPAGE="https://github.com/wolever/parameterized"

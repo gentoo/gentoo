@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pygments Github custom lexers"
 HOMEPAGE="https://github.com/liluo/pygments-github-lexers"

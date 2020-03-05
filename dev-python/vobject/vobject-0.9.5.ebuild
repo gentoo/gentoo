@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python package for parsing and generating vCard and vCalendar files"
 HOMEPAGE="http://eventable.github.io/vobject/

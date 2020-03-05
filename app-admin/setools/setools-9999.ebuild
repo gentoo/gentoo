@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Policy Analysis Tools for SELinux"
 HOMEPAGE="https://github.com/SELinuxProject/setools/wiki"
@@ -43,7 +43,7 @@ python_prepare_all() {
 		die "failed to set lib_dirs"
 
 	use X || local PATCHES=( "${FILESDIR}"/setools-4.2.2-remove-gui.patch )
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

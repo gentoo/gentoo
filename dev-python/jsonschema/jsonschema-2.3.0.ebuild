@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=(python2_7)
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="An implementation of JSON-Schema validation for Python"
 HOMEPAGE="https://pypi.org/project/jsonschema/"

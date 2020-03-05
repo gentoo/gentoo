@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit multilib python-r1 toolchain-funcs
+inherit multilib python-multi-r2 toolchain-funcs
 
 MY_PN="Botan"
 MY_P="${MY_PN}-${PV}"

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Visual Studio remote debugging server for Python"
 HOMEPAGE="https://pypi.org/project/ptvsd/ https://github.com/Microsoft/ptvsd/"

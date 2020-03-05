@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_6,3_7} )
 
 MY_P="${P/_rc/-rc}"
 
-inherit distutils-r1
+inherit distutils-r2
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -43,5 +43,5 @@ python_install_all() {
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

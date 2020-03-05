@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Merge a series of JSON documents"
 HOMEPAGE="https://github.com/avian2/jsonmerge/ https://pypi.org/project/jsonmerge/"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple program to write static config from config-drive"
 HOMEPAGE="https://github.com/openstack-infra/glean"
@@ -22,6 +22,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	newinitd "${FILESDIR}/${PN}.initd" ${PN}
 }

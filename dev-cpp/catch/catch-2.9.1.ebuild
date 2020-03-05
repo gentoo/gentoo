@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake-utils python-any-r1
+inherit cmake-utils python-any-r2
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -29,7 +29,7 @@ RESTRICT="!test? ( test )"
 BDEPEND="test? ( ${PYTHON_DEPS} )"
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_configure() {

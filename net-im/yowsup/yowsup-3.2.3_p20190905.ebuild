@@ -8,7 +8,7 @@ EGIT_COMMIT="2adc067f306d9e7d8b634f66e96c52d80a42e1ff"
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="readline"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A library that enables you to build applications which use the WhatsApp service"
 HOMEPAGE="https://github.com/tgalal/yowsup"

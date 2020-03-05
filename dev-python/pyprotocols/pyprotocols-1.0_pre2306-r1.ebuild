@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_PN="PyProtocols"
 MY_P="${MY_PN}-${PV/_pre/a0dev_r}"
@@ -34,7 +34,7 @@ python_prepare_all() {
 	# Rm peripheral & rogue failing tests
 	rm -f src//protocols/tests/{test_twisted.py,test_zope.py} || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {

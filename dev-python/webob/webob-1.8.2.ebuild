@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=WebOb
 MY_P=${MY_PN}-${PV}
@@ -41,5 +41,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

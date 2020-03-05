@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils python-single-r1 java-pkg-opt-2 ltprune
+inherit eutils python-single-r2 java-pkg-opt-2 ltprune
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"
@@ -31,7 +31,7 @@ LIB_DEPEND=">=dev-libs/glib-2.32.0[static-libs(+)]
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/pygobject-3.0.0[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygobject-3.0.0[${PYTHON_USEDEP}]
 		')
 	)
 	ftdi? ( >=dev-embedded/libftdi-0.16:=[static-libs(+)] )
@@ -50,15 +50,15 @@ DEPEND="${LIB_DEPEND//\[static-libs(+)]}
 	)
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/setuptools[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 		>=dev-lang/swig-3.0.6
 	)
 	virtual/pkgconfig"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	java-pkg-opt-2_pkg_setup
 }
 

@@ -6,7 +6,7 @@ GNOME_ORG_MODULE="gtk+"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit gnome.org python-single-r1
+inherit gnome.org python-single-r2
 
 DESCRIPTION="Converts Glade files to GtkBuilder XML format"
 HOMEPAGE="https://www.gtk.org/"

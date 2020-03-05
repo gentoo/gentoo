@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 RUBY_OPTIONAL=yes
 #USE_RUBY=ruby20
 
-inherit autotools ruby-ng eutils flag-o-matic ltprune mono-env multilib java-pkg-opt-2 python-single-r1 multilib-minimal
+inherit autotools ruby-ng eutils flag-o-matic ltprune mono-env multilib java-pkg-opt-2 python-single-r2 multilib-minimal
 
 MY_P=${P/_/.}
 DESCRIPTION="A library that creates colored ASCII-art graphics"
@@ -55,7 +55,7 @@ S=${WORKDIR}/${MY_P}
 DOCS=( AUTHORS ChangeLog NEWS NOTES README THANKS )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	java-pkg-opt-2_pkg_setup
 	use mono && mono-env_pkg_setup
 }

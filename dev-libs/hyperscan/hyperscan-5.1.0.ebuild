@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake python-r1
+inherit cmake python-multi-r2
 
 DESCRIPTION="High-performance regular expression matching library"
 SRC_URI="https://github.com/intel/hyperscan/archive/v${PV}.tar.gz -> ${P}.tar.gz"

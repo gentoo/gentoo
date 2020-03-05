@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pure python memcached client"
 HOMEPAGE="https://www.tummy.com/Community/software/python-memcached/

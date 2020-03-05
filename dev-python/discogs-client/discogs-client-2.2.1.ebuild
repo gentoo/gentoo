@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Official Python API client for Discogs"
 HOMEPAGE="https://github.com/discogs/discogs_client https://pypi.org/project/discogs-client/"

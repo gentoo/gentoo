@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL="true"
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Elegant GTK+ music client for the Music Player Daemon (MPD)"
 HOMEPAGE="https://www.nongnu.org/sonata/"
@@ -35,6 +35,6 @@ DOCS=( CHANGELOG README TODO TRANSLATORS )
 PATCHES=( "${FILESDIR}"/${P}-mpd18-compat.patch )
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	rm -r "${D}"/usr/share/sonata || die
 }

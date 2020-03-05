@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A daemon that spawns one command per connection, and dampens connection bursts"
 HOMEPAGE="https://github.com/zmedico/socket-burst-damener"
@@ -19,5 +19,5 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	sed -i "s:^\(__version__ =\).*:\\1 \"${PV}\":" src/${PN//-/_}.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }

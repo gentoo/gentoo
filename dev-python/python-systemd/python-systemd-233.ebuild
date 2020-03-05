@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python module for native access to the systemd facilities"
 HOMEPAGE="https://github.com/systemd/python-systemd"

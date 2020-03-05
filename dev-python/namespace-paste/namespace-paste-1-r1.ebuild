@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Namespace package declaration for paste"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Python/Namespace_packages"

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib python-single-r1
+inherit eutils multilib python-single-r2
 
 DESCRIPTION="A robust, high-performance CORBA 2 ORB"
 HOMEPAGE="http://omniorb.sourceforge.net/"

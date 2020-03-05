@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit waf-utils python-single-r1 multilib multilib-minimal
+inherit waf-utils python-single-r2 multilib multilib-minimal
 
 DESCRIPTION="Samba talloc library"
 HOMEPAGE="https://talloc.samba.org/"
@@ -47,7 +47,7 @@ pkg_setup() {
 	export DISTCC_DISABLE=1
 	export CCACHE_DISABLE=1
 
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

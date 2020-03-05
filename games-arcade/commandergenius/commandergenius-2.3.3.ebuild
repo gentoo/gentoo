@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake desktop python-single-r1 xdg-utils
+inherit cmake desktop python-single-r2 xdg-utils
 
 MY_PN="Commander-Genius"
 MY_P="${MY_PN}-v${PV}"

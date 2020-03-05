@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cron python-any-r1 toolchain-funcs
+inherit cron python-any-r2 toolchain-funcs
 
 DESCRIPTION="A new cron system designed with secure operations in mind by Bruce Guenter"
 HOMEPAGE="https://untroubled.org/bcron/"

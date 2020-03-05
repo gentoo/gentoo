@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 TYPESHED_PV="$(ver_cut 1-2).0"
 TYPESHED_P="typeshed-jedi_v${TYPESHED_PV}"
@@ -54,7 +54,7 @@ python_prepare_all() {
 	# https://github.com/davidhalter/jedi/issues/1210
 	sed -i -e '/path.*not in/d' test/test_evaluate/test_imports.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

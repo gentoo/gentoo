@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN/-/.}"
 DESCRIPTION="Sphinx plugin to add links and timestamps to the changelog"
@@ -44,7 +44,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	# namespace used only by this package in Gentoo at the moment
 	python_moduleinto rst
@@ -53,7 +53,7 @@ python_install() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( "${BUILD_DIR}"/sphinx/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	find "${D}" -name '*.pth' -delete || die
 }

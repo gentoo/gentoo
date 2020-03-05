@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit check-reqs pax-utils python-any-r1 toolchain-funcs
+inherit check-reqs pax-utils python-any-r2 toolchain-funcs
 
 MY_P=pypy2.7-v${PV/_/}
 DESCRIPTION="PyPy executable (build from source)"
@@ -81,7 +81,7 @@ pkg_setup() {
 			einfo "Using ${EPYTHON} to perform the translation. Please note that upstream"
 			einfo "recommends using PyPy for that. If you wish to do so, please unset"
 			einfo "the EPYTHON variable."
-			python-any-r1_pkg_setup
+			python-any-r2_pkg_setup
 		fi
 	fi
 }

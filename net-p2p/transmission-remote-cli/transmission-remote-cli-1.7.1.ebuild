@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses"
-inherit bash-completion-r1 python-r1
+inherit bash-completion-r1 python-multi-r2
 
 DESCRIPTION="Ncurses interface for the Transmission BitTorrent client"
 HOMEPAGE="https://github.com/fagga/transmission-remote-cli/"

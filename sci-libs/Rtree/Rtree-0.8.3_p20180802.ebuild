@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 EGIT_COMMIT_HASH="c6437a8ae182cb58aef1d0a4465bfc0c6f75b273"
 

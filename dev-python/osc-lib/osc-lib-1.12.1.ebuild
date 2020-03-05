@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A package of common support modules for writing OSC plugins."
 HOMEPAGE="https://github.com/openstack/osc-lib"

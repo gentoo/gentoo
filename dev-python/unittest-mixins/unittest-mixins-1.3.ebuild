@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A set of mixin classes and other helpers for unittest test case classes"
 HOMEPAGE="https://github.com/nedbat/unittest-mixins https://pypi.org/project/unittest-mixins/"

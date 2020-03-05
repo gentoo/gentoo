@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="similar to bencode from the BitTorrent project"
 HOMEPAGE="https://github.com/aresch/rencode"

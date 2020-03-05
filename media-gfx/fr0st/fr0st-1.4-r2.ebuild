@@ -5,7 +5,7 @@ EAPI=5
 WX_GTK_VER="3.0"
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib python-single-r1 wxwidgets
+inherit eutils multilib python-single-r2 wxwidgets
 
 DESCRIPTION="A fractal flame editor"
 HOMEPAGE="http://fr0st.wordpress.com/"
@@ -29,7 +29,7 @@ pkg_setup() {
 	fr0st_libdir="/usr/$(get_libdir)/fr0st"
 	fr0st_sharedir="/usr/share/fr0st"
 
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils flag-o-matic python-single-r1
+inherit cmake-utils flag-o-matic python-single-r2
 
 DESCRIPTION="Libs for the efficient manipulation of volumetric data"
 HOMEPAGE="https://www.openvdb.org"
@@ -34,8 +34,8 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.62:=[python,${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			>=dev-libs/boost-1.62:=[python,${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)"
 
@@ -60,7 +60,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

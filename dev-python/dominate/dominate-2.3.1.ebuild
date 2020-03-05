@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Library for creating and manipulating HTML documents using an elegant DOM API"
 HOMEPAGE="https://github.com/Knio/dominate"

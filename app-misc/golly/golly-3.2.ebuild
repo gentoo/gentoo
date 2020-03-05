@@ -5,7 +5,7 @@ EAPI=6
 WX_GTK_VER=3.0
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils flag-o-matic python-single-r1 gnome2-utils wxwidgets
+inherit eutils flag-o-matic python-single-r2 gnome2-utils wxwidgets
 
 DESCRIPTION="simulator for Conway's Game of Life and other cellular automata"
 HOMEPAGE="http://golly.sourceforge.net/"

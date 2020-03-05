@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python Mocking and Patching Library for Testing"
 HOMEPAGE="http://www.voidspace.org.uk/python/mock/ https://pypi.org/project/mock/"
@@ -34,7 +34,7 @@ python_test() {
 python_install_all() {
 	local DOCS=( docs/*.txt )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use doc; then
 		dohtml -r html/ -x html/objects.inv -x html/output.txt -x html/_sources

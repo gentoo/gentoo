@@ -8,7 +8,7 @@ EGIT_BRANCH=master
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils git-r3 python-single-r1
+inherit eutils git-r3 python-single-r2
 
 DESCRIPTION="git commit dependency analysis tool"
 HOMEPAGE="https://github.com/aspiers/git-deps"
@@ -18,8 +18,8 @@ SLOT="0"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/flask[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygit2[${PYTHON_MULTI_USEDEP}]
+		dev-python/flask[${PYTHON_USEDEP}]
+		dev-python/pygit2[${PYTHON_USEDEP}]
 	')
 	net-libs/nodejs
 	${PYTHON_DEPS}
@@ -30,7 +30,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 HTML_DOCS="html/."
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_install() {

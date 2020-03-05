@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P=${P/-/_}
 DESCRIPTION="Easy-to-use Python module for text parsing"
@@ -28,5 +28,5 @@ python_install_all() {
 		docompress -x /usr/share/doc/${PF}/examples
 		dodoc -r examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

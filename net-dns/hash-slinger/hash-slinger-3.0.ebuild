@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Various tools to generate DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY"
 HOMEPAGE="https://github.com/letoams/hash-slinger"
@@ -23,13 +23,13 @@ DEPEND=""
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/dnspython[${PYTHON_MULTI_USEDEP}]
-		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
-		dev-python/m2crypto[${PYTHON_MULTI_USEDEP}]
+		dev-python/dnspython[${PYTHON_USEDEP}]
+		dev-python/ipaddr[${PYTHON_USEDEP}]
+		dev-python/m2crypto[${PYTHON_USEDEP}]
 	')
 	net-dns/unbound[python,${PYTHON_SINGLE_USEDEP}]
 	ipsec? ( net-vpn/libreswan[dnssec] )
-	openpgp? ( $(python_gen_cond_dep 'dev-python/python-gnupg[${PYTHON_MULTI_USEDEP}]') )
+	openpgp? ( $(python_gen_cond_dep 'dev-python/python-gnupg[${PYTHON_USEDEP}]') )
 	ssh? ( net-misc/openssh )
 "
 

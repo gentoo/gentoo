@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk"
 
-inherit flag-o-matic prefix python-single-r1 toolchain-funcs
+inherit flag-o-matic prefix python-single-r2 toolchain-funcs
 
 DESCRIPTION="Graphical NMR assignment and integration program for large polymers"
 HOMEPAGE="http://www.cgl.ucsf.edu/home/sparky/"
@@ -37,7 +37,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	TKVER=$(best_version dev-lang/tk | cut -d- -f3 | cut -d. -f1,2)
 	PYVER=${EPYTHON#python}
 }

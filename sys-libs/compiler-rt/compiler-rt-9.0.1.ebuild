@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 inherit cmake-utils flag-o-matic llvm llvm.org multiprocessing \
-	python-any-r1 toolchain-funcs
+	python-any-r2 toolchain-funcs
 
 DESCRIPTION="Compiler runtime library for clang (built-in part)"
 HOMEPAGE="https://llvm.org/"
@@ -46,7 +46,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	llvm_pkg_setup
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 test_compiler() {

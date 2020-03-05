@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Graph Animation Toolbox"
 HOMEPAGE="http://gato.sourceforge.net/"
@@ -25,11 +25,11 @@ python_prepare_all() {
 		-e 's:self.overrideredirect(1):self.overrideredirect(0):' \
 		"${S}"/GatoDialogs.py || die "failed to patch GatoDialogs.py"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	# install data files
 	insinto /usr/share/${PN}

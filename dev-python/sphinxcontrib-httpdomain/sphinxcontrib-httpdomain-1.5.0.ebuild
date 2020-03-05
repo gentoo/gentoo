@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Extension providing a Sphinx domain for describing RESTful HTTP APIs"
 HOMEPAGE="https://bitbucket.org/birkenfeld/sphinx-contrib/
@@ -22,6 +22,6 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

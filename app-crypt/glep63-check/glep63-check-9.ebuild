@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="GLEP 63 compliance checker for OpenPGP keys"
 HOMEPAGE="https://github.com/mgorny/glep63-check/"

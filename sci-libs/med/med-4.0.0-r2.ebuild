@@ -13,7 +13,7 @@ FORTRAN_NEEDED=fortran
 # complicated for the build system
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake fortran-2 python-single-r1
+inherit cmake fortran-2 python-single-r2
 
 DESCRIPTION="A library to store and exchange meshed data or computation results"
 HOMEPAGE="https://www.salome-platform.org/user-section/about/med"
@@ -49,7 +49,7 @@ PATCHES=(
 DOCS=( AUTHORS ChangeLog NEWS README TODO )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	use fortran && fortran-2_pkg_setup
 }
 

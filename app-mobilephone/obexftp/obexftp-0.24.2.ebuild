@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 USE_RUBY="ruby23 ruby24 ruby25"
 
-inherit cmake-utils python-single-r1 ruby-single
+inherit cmake-utils python-single-r2 ruby-single
 
 DESCRIPTION="File transfer over OBEX for mobile phones"
 HOMEPAGE="http://dev.zuckschwerdt.org/openobex/wiki/ObexFtp"

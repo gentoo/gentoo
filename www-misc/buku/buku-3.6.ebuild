@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r2
 
 DESCRIPTION="Powerful command-line bookmark manager"
 HOMEPAGE="https://github.com/jarun/Buku"
@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 "
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	insinto /usr/share/zsh/site-functions
 	doins auto-completion/zsh/_*

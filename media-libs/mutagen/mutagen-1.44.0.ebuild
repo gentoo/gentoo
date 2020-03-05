@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Audio metadata tag reader and writer implemented in pure Python"
 HOMEPAGE="https://github.com/quodlibet/mutagen https://pypi.org/project/mutagen/"
@@ -40,5 +40,5 @@ python_test() {
 python_install_all() {
 	local DOCS=( NEWS README.rst )
 	use doc && local HTML_DOCS=( docs/_build/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

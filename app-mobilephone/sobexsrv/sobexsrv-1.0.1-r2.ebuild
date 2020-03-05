@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 toolchain-funcs user
+inherit python-single-r2 toolchain-funcs user
 
 MY_P="${P/_pre/pre}"
 
@@ -38,7 +38,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use gtk && python-single-r1_pkg_setup
+	use gtk && python-single-r2_pkg_setup
 
 	enewgroup sobexsrv
 	enewuser sobexsrv -1 -1 /var/spool/sobexsrv sobexsrv

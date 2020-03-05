@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="An incremental archiving tool to CD/DVD"
 HOMEPAGE="http://www.calins.ch/software/sync2cd.html"

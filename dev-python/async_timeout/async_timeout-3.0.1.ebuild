@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P=${PN/_/-}-${PV}
 DESCRIPTION="Timeout context manager for asyncio programs"
@@ -30,7 +30,7 @@ python_prepare_all() {
 	sed -i -e '/addopts/d' setup.cfg || die
 	# tests fail due to missing fixture when trying to load this file
 	rm tests/conftest.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

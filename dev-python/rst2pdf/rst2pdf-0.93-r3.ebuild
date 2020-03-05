@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Tool for transforming reStructuredText to PDF using ReportLab"
 HOMEPAGE="http://rst2pdf.ralsina.me/ https://pypi.org/project/rst2pdf/"
@@ -31,7 +31,7 @@ PATCHES=( "${FILESDIR}/${P}-fix-logging.patch" )
 python_install_all() {
 	dodoc doc/*.pdf
 	doman doc/rst2pdf.1
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

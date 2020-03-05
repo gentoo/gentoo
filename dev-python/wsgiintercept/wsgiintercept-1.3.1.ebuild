@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="wsgi_intercept"
 MY_P="${MY_PN}-${PV}"
@@ -44,7 +44,7 @@ python_prepare_all() {
 	sed -e 's:test_http_not_intercepted:_&:' \
 		-e 's:test_https_not_intercepted:_&:' \
 		-i test/{test_urllib.py,test_http_client.py,test_requests.py} || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -57,5 +57,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html//. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

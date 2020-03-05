@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1
+inherit eutils python-single-r2
 
 DESCRIPTION="a package for multitrack audio processing"
 HOMEPAGE="https://ecasound.seul.org/ecasound/"
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

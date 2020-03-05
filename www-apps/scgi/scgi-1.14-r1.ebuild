@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python package for implementing SCGI servers"
 HOMEPAGE="https://pypi.org/project/scgi/ http://python.ca/scgi/ http://www.mems-exchange.org/software/scgi/"

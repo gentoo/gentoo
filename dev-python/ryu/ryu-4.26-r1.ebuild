@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Component-based Software-defined Networking Framework"
 HOMEPAGE="http://osrg.github.io/ryu/"
@@ -20,6 +20,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 RDEPEND=""
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	mv "${D}"/usr/etc "${D}"/etc
 }

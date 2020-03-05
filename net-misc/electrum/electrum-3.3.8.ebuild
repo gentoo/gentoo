@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="ncurses?"
 
-inherit desktop distutils-r1 xdg-utils
+inherit desktop distutils-r2 xdg-utils
 
 MY_P="Electrum-${PV}"
 DESCRIPTION="User friendly Bitcoin client"
@@ -63,13 +63,13 @@ src_prepare() {
 	eapply_user
 
 	xdg_environment_reset
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_install() {
 	doicon -s 128 electrum/gui/icons/${PN}.png
 	dodoc RELEASE-NOTES
-	distutils-r1_src_install
+	distutils-r2_src_install
 }
 
 pkg_postinst() {

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Check for mapped libs and open files that are marked as deleted"
 HOMEPAGE="https://github.com/klausman/lib_users"

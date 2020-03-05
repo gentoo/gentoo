@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Set of programmes and Python modules to deal with Replay Gain information"
 HOMEPAGE="https://bitbucket.org/fk/rgain"
@@ -24,6 +24,6 @@ RDEPEND="media-libs/mutagen
 "
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	doman build/man/*
 }

@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=1
-inherit xdg-utils distutils-r1 virtualx
+inherit xdg-utils distutils-r2 virtualx
 
 DESCRIPTION="A desktop wiki"
 HOMEPAGE="
@@ -21,8 +21,8 @@ RESTRICT="test"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/pyxdg[${PYTHON_USEDEP}]
 	')
 	x11-libs/gtk+:3[introspection]
 	x11-misc/xdg-utils
@@ -47,11 +47,11 @@ python_prepare_all() {
 		done
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 }
 
 pkg_postinst() {

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit gnome2 python-single-r1 virtualx
+inherit gnome2 python-single-r2 virtualx
 
 DESCRIPTION="D-Feet is a powerful D-Bus debugger"
 HOMEPAGE="https://wiki.gnome.org/Apps/DFeet"
@@ -26,7 +26,7 @@ RDEPEND="
 	${COMMON_DEPEND}
 	>=dev-libs/glib-2.34:2
 	$(python_gen_cond_dep '
-		>=dev-python/pygobject-3.3.91:3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygobject-3.3.91:3[${PYTHON_USEDEP}]
 	')
 	>=sys-apps/dbus-1
 	X? ( x11-libs/libwnck:3[introspection] )

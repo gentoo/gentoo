@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 multibuild python-r1
+inherit gnome2 multibuild python-multi-r2
 
 DESCRIPTION="A collection of documentation utilities for the Gnome project"
 HOMEPAGE="https://wiki.gnome.org/Projects/GnomeDocUtils"

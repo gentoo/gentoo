@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils toolchain-funcs python-any-r1
+inherit eutils toolchain-funcs python-any-r2
 
 # SeaBIOS maintainers sometimes don't release stable tarballs or stable
 # binaries to generate the stable tarball the following is necessary:
@@ -86,7 +86,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use binary || python-any-r1_pkg_setup
+	use binary || python-any-r2_pkg_setup
 }
 
 src_unpack() {

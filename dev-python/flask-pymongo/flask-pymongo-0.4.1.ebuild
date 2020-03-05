@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="PyMongo support for Flask"
 HOMEPAGE="https://pypi.org/project/Flask-PyMongo/"
@@ -30,7 +30,7 @@ python_prepare_all() {
 	# Req'd to avoid file collisions
 	sed -e s":find_packages():find_packages(exclude=['tests']):" -i setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -40,5 +40,5 @@ python_compile_all() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 	use examples && dodoc -r examples
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

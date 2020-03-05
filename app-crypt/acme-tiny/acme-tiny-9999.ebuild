@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
-inherit distutils-r1
+inherit distutils-r2
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
@@ -34,7 +34,7 @@ pkg_setup() {
 src_prepare() {
 	sed -i 's|#!/usr/bin/sh|#!/bin/sh|g' README.md || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 pkg_postinst() {

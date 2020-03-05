@@ -6,7 +6,7 @@ EAPI=5
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="matplotlib toolkit to plot map projections"
 HOMEPAGE="https://matplotlib.org/basemap/ https://pypi.org/project/basemap/"
@@ -20,17 +20,17 @@ LICENSE="MIT GPL-2"
 DEPEND="sci-libs/shapelib
 	$(python_gen_cond_dep '
 		|| (
-			>=dev-python/matplotlib-python2-0.98[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/matplotlib-0.98[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/matplotlib-python2-0.98[${PYTHON_USEDEP}]
+			>=dev-python/matplotlib-0.98[${PYTHON_USEDEP}]
 		)
 	')
 	>=sci-libs/geos-3.3.1[python(-),${PYTHON_SINGLE_USEDEP}]"
 
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		>=dev-python/pupynere-1.0.8[${PYTHON_MULTI_USEDEP}]
-		dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
-		dev-python/dap[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pupynere-1.0.8[${PYTHON_USEDEP}]
+		dev-python/httplib2[${PYTHON_USEDEP}]
+		dev-python/dap[${PYTHON_USEDEP}]
 	')"
 
 DOCS="FAQ API_CHANGES"
@@ -50,7 +50,7 @@ src_prepare() {
 	sed -i \
 		-e "/_datadir.*=.*join/s|\(.*datadir.*=\).*|\1'${EROOT}usr/share/${PN}'|g" \
 		"${S}"/lib/mpl_toolkits/basemap/*.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	append-flags -fno-strict-aliasing
 }
 
@@ -61,7 +61,7 @@ src_prepare() {
 python_install() {
 	# mpl_toolkits namespace provided by dev-python/matplotlib
 	rm "${BUILD_DIR}/lib/mpl_toolkits/__init__.py" || die
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 	#  --install-data="${EPREFIX}/usr/share/${PN}" on testing is found not to work;
 	# setup.py is a mess. Someone care to patch setup.py please proceed; substitute with
 	insinto /usr/share/basemap/
@@ -73,5 +73,5 @@ python_install() {
 
 python_install_all() {
 	use examples && local EXAMPLES=( examples/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

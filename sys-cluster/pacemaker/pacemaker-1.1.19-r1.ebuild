@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit autotools python-single-r1
+inherit autotools python-single-r2
 
 MY_PN="${PN^}"
 MY_P="${MY_PN}-${PV/_/-}"

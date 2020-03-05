@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools gnome2-utils python-single-r1 xdg-utils
+inherit autotools gnome2-utils python-single-r2 xdg-utils
 
 MY_P=${P/_/-}
 
@@ -49,7 +49,7 @@ pkg_setup() {
 		ewarn "Disabling charmap plugin."
 	fi
 
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 PATCHES=(

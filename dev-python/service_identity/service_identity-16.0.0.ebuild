@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Service identity verification for pyOpenSSL"
 HOMEPAGE="https://github.com/pyca/service_identity"
@@ -29,7 +29,7 @@ DEPEND="
 python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/^    'sphinx.ext.intersphinx',/d" -i docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -42,5 +42,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

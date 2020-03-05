@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Holland sqlite Plugin"
 HOMEPAGE="http://www.hollandbackup.org/"
@@ -25,7 +25,7 @@ PDEPEND="~app-backup/holland-${PV}[${PYTHON_USEDEP}]"
 S="${WORKDIR}/${MY_P}/plugins/${PN//-/.}"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	keepdir /etc/holland
 	keepdir /etc/holland/backupsets

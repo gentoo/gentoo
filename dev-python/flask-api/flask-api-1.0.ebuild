@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Browsable web APIs for Flask"
 HOMEPAGE="https://github.com/flask-api/flask-api"
@@ -27,7 +27,7 @@ DEPEND="
 	)"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	dodoc docs/about/* docs/api-guide/* docs/index.md
 }
 

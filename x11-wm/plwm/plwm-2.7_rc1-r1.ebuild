@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 MY_P=PLWM-${PV/_}
 
@@ -32,14 +32,14 @@ python_compile_all() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	python_newscript examples/examplewm.py plwm
 	python_doscript utils/*.py
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	doinfo doc/*.info
 

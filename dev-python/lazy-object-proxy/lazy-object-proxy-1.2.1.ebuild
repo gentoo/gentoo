@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A fast and thorough lazy object proxy"
 HOMEPAGE="
@@ -33,7 +33,7 @@ python_prepare_all() {
 		-e '/benchmark/s:test_:_&:g' \
 		-e '/pytest.mark.benchmark/d' \
 		-i tests/test_lazy_object_proxy.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

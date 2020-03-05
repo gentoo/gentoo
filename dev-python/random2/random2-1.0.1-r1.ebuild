@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python-2.7 random module ported to python-3"
 HOMEPAGE="https://pypi.org/project/random2/"

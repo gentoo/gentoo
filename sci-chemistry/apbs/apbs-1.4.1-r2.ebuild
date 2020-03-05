@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=true
 COMMIT="74fcb8676de69ed04ddab8976a8b05a6caaf4d65"
-inherit cmake-utils distutils-r1 flag-o-matic toolchain-funcs
+inherit cmake-utils distutils-r2 flag-o-matic toolchain-funcs
 
 DESCRIPTION="Evaluation of electrostatic properties of nanoscale biomolecular systems"
 HOMEPAGE="https://www.poissonboltzmann.org/apbs/"
@@ -62,7 +62,7 @@ src_prepare() {
 	if use python; then
 		unset PATCHES || die
 		cd tools/python || die
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 	fi
 }
 
@@ -92,7 +92,7 @@ src_configure() {
 	cmake-utils_src_configure
 	if use python; then
 		cd tools/python || die
-		distutils-r1_src_configure
+		distutils-r2_src_configure
 	fi
 }
 
@@ -101,7 +101,7 @@ src_compile() {
 	if use python; then
 		append-ldflags -L"${S}"/lib
 		cd tools/python || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -123,7 +123,7 @@ src_install() {
 	done
 	if use python; then
 		cd tools/python || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 		rm -rf "${ED}"/usr/share/apbs/tools/python || die
 	fi
 }

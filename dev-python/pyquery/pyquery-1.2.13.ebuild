@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="A jQuery-like library for python"
 HOMEPAGE="https://github.com/gawel/pyquery"
@@ -33,7 +33,7 @@ DEPEND="
 python_prepare_all() {
 	# Disable tests needing a network connection
 	sed -i -e "s/HAS_REQUEST = True/HAS_REQUEST = False/" tests/test_pyquery.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

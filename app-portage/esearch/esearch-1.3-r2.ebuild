@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=(python{3_6,3_7})
 PYTHON_REQ_USE="readline(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Replacement for 'emerge --search' with search-index"
 HOMEPAGE="https://github.com/fuzzyray/esearch"
@@ -36,7 +36,7 @@ python_configure_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	dodoc eupdatedb.cron
 
 	# Remove unused man pages according to the l10n flags

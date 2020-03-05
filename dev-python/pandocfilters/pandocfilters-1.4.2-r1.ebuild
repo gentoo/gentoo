@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Utilities for writing pandoc filters in python"
 HOMEPAGE="https://github.com/jgm/pandocfilters"

@@ -6,7 +6,7 @@ EAPI=7
 # Python < 3.6 requires https://pypi.org/project/aenum/
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python interface to the PROJ library"
 HOMEPAGE="https://github.com/jswhit/pyproj"

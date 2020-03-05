@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit linux-info distutils-r1
+inherit linux-info distutils-r2
 
 DESCRIPTION="Transparent proxy server that works as a poor man's VPN using ssh"
 HOMEPAGE="https://github.com/sshuttle/sshuttle https://pypi.org/project/sshuttle/"
@@ -39,7 +39,7 @@ python_prepare_all() {
 	# don't require pytest-cov when running tests
 	sed -i "s/^addopts =/#\0/" setup.cfg || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -53,5 +53,5 @@ python_test() {
 python_install_all() {
 	HTML_DOCS=( docs/_build/html/. )
 	doman docs/_build/man/*
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

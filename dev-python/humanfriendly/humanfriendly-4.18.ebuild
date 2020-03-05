@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Human friendly output for text interfaces using Python"
 HOMEPAGE="https://pypi.org/project/humanfriendly

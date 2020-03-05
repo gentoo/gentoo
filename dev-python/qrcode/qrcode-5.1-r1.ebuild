@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="QR Code generator on top of PIL"
 HOMEPAGE="https://pypi.org/project/qrcode/"
@@ -36,6 +36,6 @@ python_test() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	doman doc/qr.1
 }

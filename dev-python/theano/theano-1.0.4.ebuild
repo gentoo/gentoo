@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Define and optimize multi-dimensional arrays mathematical expressions"
 HOMEPAGE="https://github.com/Theano/Theano"
@@ -37,7 +37,7 @@ python_prepare_all() {
 	# remove bundled six
 	find -type f -name "*.py" -exec \
 		sed -e 's:theano.compat.six:six:g' -i '{}' + || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

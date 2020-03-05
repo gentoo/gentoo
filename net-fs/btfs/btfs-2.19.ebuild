@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit autotools python-r1
+inherit autotools python-multi-r2
 
 DESCRIPTION="a bittorrent filesystem based on FUSE"
 HOMEPAGE="https://github.com/johang/btfs"

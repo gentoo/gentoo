@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Mock out responses from the requests package"
 HOMEPAGE="https://github.com/jamielennox/requests-mock"
@@ -43,7 +43,7 @@ python_prepare_all() {
 	# Remove the release notes section which requires reno
 	rm doc/source/release-notes.rst || die
 	sed -i '/^=============$/,/release-notes/d' doc/source/index.rst || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

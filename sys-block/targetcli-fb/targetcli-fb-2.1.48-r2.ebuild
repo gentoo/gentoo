@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 versionator
+inherit distutils-r2 versionator
 
 MY_PV=$(replace_version_separator 2 '.fb' ${PV})
 
@@ -29,7 +29,7 @@ S="${WORKDIR}/${PN}-${MY_PV}"
 PATCHES=( "${FILESDIR}/${P}-python3.patch" )
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	keepdir /etc/target /etc/target/backup
 	doman targetcli.8

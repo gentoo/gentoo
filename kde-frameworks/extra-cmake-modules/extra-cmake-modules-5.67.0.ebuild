@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 QTMIN=5.12.3
-inherit cmake kde.org python-any-r1
+inherit cmake kde.org python-any-r2
 
 DESCRIPTION="Extra modules and scripts for CMake"
 HOMEPAGE="https://cgit.kde.org/extra-cmake-modules.git"
@@ -41,7 +41,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	use doc && python-any-r1_pkg_setup
+	use doc && python-any-r2_pkg_setup
 }
 
 src_prepare() {

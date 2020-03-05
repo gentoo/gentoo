@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python wrapper for libmad MP3 decoding in python"
 HOMEPAGE="https://github.com/jaqx0r/pymad"

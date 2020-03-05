@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit bash-completion-r1 python-r1
+inherit bash-completion-r1 python-multi-r2
 
 DESCRIPTION="Incremental merge for git"
 HOMEPAGE="https://github.com/mhagger/git-imerge"

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A setuptools_scm plugin for git archives"
 HOMEPAGE="https://github.com/Changaco/setuptools_scm_git_archive"
@@ -23,7 +23,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	export SETUPTOOLS_SCM_PRETEND_VERSION="${PV}"
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

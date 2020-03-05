@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Smart replacement for plain tuple used in __version__"
 HOMEPAGE="https://pypi.org/project/versiontools/ https://launchpad.net/versiontools"
@@ -21,7 +21,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 python_prepare_all() {
 	# Expexted failure
 	sed -e s':test_cant_import:_&:' -i versiontools/tests.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=bdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Symbolic constants in Python"
 HOMEPAGE="https://github.com/twisted/constantly https://pypi.org/project/constantly/"

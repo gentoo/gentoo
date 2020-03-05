@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A cornucopia of useful code"
 HOMEPAGE="https://pypi.org/project/kitchen/"

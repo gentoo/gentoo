@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="GTK Utility to help manage Portage's user config files"
 HOMEPAGE="https://gna.org/projects/gpytage"

@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Standalone version of django.utils.feedgenerator"
 HOMEPAGE="https://pypi.org/project/feedgenerator/"
@@ -21,7 +21,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 RDEPEND=""
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	# Allow pypy to read MANIFEST.in
 	ln -s tests_feedgenerator tests || die
 }

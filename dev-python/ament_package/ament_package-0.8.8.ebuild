@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Parser for the manifest files in the ament buildsystem"
 HOMEPAGE="https://github.com/ament/ament_package"

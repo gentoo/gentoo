@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 #EPYTHON='python2.7'
-inherit eutils toolchain-funcs flag-o-matic python-any-r1 waf-utils
+inherit eutils toolchain-funcs flag-o-matic python-any-r2 waf-utils
 
 DESCRIPTION="Digital Audio Workstation"
 HOMEPAGE="http://ardour.org/"
@@ -72,7 +72,7 @@ pkg_setup() {
 	if has_version \>=dev-libs/libsigc++-2.6 ; then
 		append-cxxflags -std=c++11
 	fi
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_prepare() {

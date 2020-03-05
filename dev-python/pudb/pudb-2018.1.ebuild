@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A full-screen, console-based Python debugger"
 HOMEPAGE="https://pypi.org/project/pudb/"

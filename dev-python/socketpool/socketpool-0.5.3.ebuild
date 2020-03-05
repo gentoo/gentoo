@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A simple Python socket pool"
 HOMEPAGE="https://github.com/benoitc/socketpool/"
@@ -31,7 +31,7 @@ python_install_all() {
 		insinto /usr/share/doc/${PF}
 		doins -r examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	# package installs unneeded LICENSE files here
 	rm -rf "${ED}"/usr/socketpool || die

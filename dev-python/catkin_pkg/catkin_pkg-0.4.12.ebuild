@@ -10,7 +10,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/ros-infrastructure/catkin_pkg"
 fi
 
-inherit ${SCM} distutils-r1
+inherit ${SCM} distutils-r2
 
 DESCRIPTION="Standalone Python library for the catkin package system"
 HOMEPAGE="http://wiki.ros.org/catkin_pkg"

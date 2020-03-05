@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils flag-o-matic llvm python-single-r1
+inherit cmake-utils flag-o-matic llvm python-single-r2
 
 DESCRIPTION="Find unused include directives in C/C++ programs"
 HOMEPAGE="https://include-what-you-use.org/"
@@ -29,7 +29,7 @@ S=${WORKDIR}/${PN}-clang_${PV}
 
 pkg_setup() {
 	llvm_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
-inherit bash-completion-r1 distutils-r1 multiprocessing
+inherit bash-completion-r1 distutils-r2 multiprocessing
 
 SETUPTOOLS_PV="44.0.0"
 WHEEL_PV="0.34.2"
@@ -58,7 +58,7 @@ python_prepare_all() {
 	if ! use vanilla; then
 		PATCHES+=( "${FILESDIR}/pip-20.0.2-disable-system-install.patch" )
 	fi
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	if use test; then
 		mkdir tests/data/common_wheels/ || die
@@ -119,7 +119,7 @@ python_install_all() {
 	export DBUS_SESSION_BUS_ADDRESS="disabled:"
 
 	local DOCS=( AUTHORS.txt docs/html/**/*.rst )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	COMPLETION="${T}"/completion.tmp
 

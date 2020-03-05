@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Websocket handler for the gevent pywsgi server"
 HOMEPAGE="https://pypi.org/project/gevent-websocket/"

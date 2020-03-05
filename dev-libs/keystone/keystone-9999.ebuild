@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=1
 CMAKE_MIN_VERSION=3.8.7
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils distutils-r1
+inherit cmake-utils distutils-r2
 
 DESCRIPTION="assembly/assembler framework + bindings"
 HOMEPAGE="http://www.keystone-engine.org/"
@@ -46,7 +46,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 wrap_python() {
 	if use python; then
 		pushd bindings/python >/dev/null || die
-		distutils-r1_${1} "$@"
+		distutils-r2_${1} "$@"
 		popd >/dev/null || die
 	fi
 }

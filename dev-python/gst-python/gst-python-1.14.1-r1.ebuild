@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
-inherit ltprune python-r1 xdg-utils
+inherit ltprune python-multi-r2 xdg-utils
 
 DESCRIPTION="A Python Interface to GStreamer"
 HOMEPAGE="https://gstreamer.freedesktop.org/"
@@ -38,7 +38,7 @@ src_configure() {
 src_compile() {
 	# Avoid building plugin - it must NOT be multi-python as gst-inspect will map in all libpython.so versions and crash or behave mysteriously.
 	# Python plugin support is of limited use (GIL gets in the way). If it's ever requested or needed, it should be a
-	# separate python-single-r1 media-plugins/gst-plugins-python package that only builds the plugin directory.
+	# separate python-single-r2 media-plugins/gst-plugins-python package that only builds the plugin directory.
 	compile_gst() {
 		emake -C common
 		emake -C gi

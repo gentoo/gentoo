@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 GNOME2_EAUTORECONF=yes
 
-inherit autotools gnome2 python-single-r1 virtualx
+inherit autotools gnome2 python-single-r2 virtualx
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -59,8 +59,8 @@ COMMON_DEPEND="
 	python?	(
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/pycairo-1.0.2[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/pygtk-2.10.4:2[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pycairo-1.0.2[${PYTHON_USEDEP}]
+			>=dev-python/pygtk-2.10.4:2[${PYTHON_USEDEP}]
 		')
 	)
 	udev? ( dev-libs/libgudev:= )
@@ -98,7 +98,7 @@ PATCHES=(
 
 pkg_setup() {
 	if use python; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 }
 

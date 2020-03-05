@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 AUTOTOOLS_AUTORECONF=1
 
-inherit python-r1 autotools-utils
+inherit python-multi-r2 autotools-utils
 
 DESCRIPTION="Non-linear optimization library"
 HOMEPAGE="http://ab-initio.mit.edu/nlopt/"

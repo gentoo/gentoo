@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 user
+inherit distutils-r2 user
 
 DESCRIPTION="A HTTP service for managing, selecting, and claiming cloud resources."
 HOMEPAGE="https://github.com/openstack/placement"
@@ -82,7 +82,7 @@ pkg_setup() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	diropts -m 0750 -o placement -g placement
 	insinto /etc/placement

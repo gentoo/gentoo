@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils flag-o-matic python-r1 toolchain-funcs udev
+inherit eutils flag-o-matic python-multi-r2 toolchain-funcs udev
 
 DESCRIPTION="Tools for bcachefs"
 HOMEPAGE="http://bcache.evilpiepirate.org/"

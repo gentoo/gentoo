@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 python3_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="An app that provides django integration for RQ (Redis Queue)"
 HOMEPAGE="https://github.com/rq/django-rq"

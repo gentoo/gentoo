@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit multilib-minimal python-single-r1
+inherit multilib-minimal python-single-r2
 
 DESCRIPTION="Codec for karaoke and text encapsulation for Ogg"
 HOMEPAGE="https://code.google.com/p/libkate/"
@@ -31,13 +31,13 @@ RDEPEND="${COMMON_DEPEND}
 	wxwidgets? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/wxpython:3.0[${PYTHON_MULTI_USEDEP}]
+			dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 		')
 		media-libs/liboggz )
 "
 
 pkg_setup() {
-	use wxwidgets && python-single-r1_pkg_setup
+	use wxwidgets && python-single-r2_pkg_setup
 }
 
 multilib_src_configure() {

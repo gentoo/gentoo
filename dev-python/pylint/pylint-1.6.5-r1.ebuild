@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Python code static checker"
 HOMEPAGE="https://www.logilab.org/project/pylint
@@ -56,7 +56,7 @@ python_install_all() {
 		dodoc -r examples/.
 	fi
 	use doc && local HTML_DOCS=( doc/_build/singlehtml/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

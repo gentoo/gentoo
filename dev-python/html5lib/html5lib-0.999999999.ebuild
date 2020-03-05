@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="HTML parser based on the HTML5 specification"
 HOMEPAGE="https://github.com/html5lib/html5lib-python/ https://html5lib.readthedocs.org"

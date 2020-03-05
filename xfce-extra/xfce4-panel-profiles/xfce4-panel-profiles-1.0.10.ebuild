@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Simple application to manage Xfce panel layouts"
 HOMEPAGE="https://git.xfce.org/apps/xfce4-panel-profiles/about/"
@@ -20,7 +20,7 @@ DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	dev-libs/gobject-introspection
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	x11-libs/gtk+:3[introspection]
 	xfce-base/xfce4-panel"

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="POSIX ACLs (Access Control Lists) for Python"
 HOMEPAGE="https://pylibacl.k1024.org/

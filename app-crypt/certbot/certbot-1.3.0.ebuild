@@ -13,7 +13,7 @@ else
 fi
 S=${WORKDIR}/${P}/${PN}
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Let's encrypt client to automate deployment of X.509 certificates"
 HOMEPAGE="https://github.com/certbot/certbot https://letsencrypt.org/"
@@ -45,5 +45,5 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	# required as deps of deps can trigger this too...
 	echo '    ignore:.*collections\.abc:DeprecationWarning' >> ../pytest.ini
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="memory-based, optional-persistence naive bayesian text classifier"
 HOMEPAGE="https://github.com/hickeroar/simplebayes"

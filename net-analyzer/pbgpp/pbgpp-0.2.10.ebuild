@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="PCAP BGP Parser"
 HOMEPAGE="https://github.com/de-cix/pbgp-parser"

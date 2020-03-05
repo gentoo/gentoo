@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1 bash-completion-r1
+inherit eutils python-single-r2 bash-completion-r1
 
 DESCRIPTION="Automated Packages Builder for Portage and Entropy"
 HOMEPAGE="http://www.sabayon.org"

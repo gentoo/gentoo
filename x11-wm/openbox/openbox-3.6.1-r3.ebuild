@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit multilib autotools python-single-r1 eutils
+inherit multilib autotools python-single-r2 eutils
 
 DESCRIPTION="A standards compliant, fast, light-weight, extensible window manager"
 HOMEPAGE="http://openbox.org/"
@@ -42,7 +42,7 @@ RDEPEND="dev-libs/glib:2
 	xdg? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+			dev-python/pyxdg[${PYTHON_USEDEP}]
 		')
 	)
 	"

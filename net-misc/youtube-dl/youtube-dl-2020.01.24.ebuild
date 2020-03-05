@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=(python3_{6,7,8})
-inherit bash-completion-r1 distutils-r1 readme.gentoo-r1
+inherit bash-completion-r1 distutils-r2 readme.gentoo-r1
 
 DESCRIPTION="Download videos from YouTube.com (and more sites...)"
 HOMEPAGE="https://github.com/ytdl-org/youtube-dl/"
@@ -31,7 +31,7 @@ DEPEND="
 S=${WORKDIR}/${PN}
 
 src_compile() {
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 python_test() {
@@ -50,7 +50,7 @@ python_install_all() {
 	insinto /usr/share/fish/vendor_completions.d
 	doins ${PN}.fish
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	rm -r "${ED}"/usr/etc || die
 	rm -r "${ED}"/usr/share/doc/youtube_dl || die

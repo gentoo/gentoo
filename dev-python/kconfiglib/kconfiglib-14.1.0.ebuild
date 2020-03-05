@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_REQ_USE="ncurses"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A flexible Python Kconfig implementation"
 HOMEPAGE="https://github.com/ulfalizer/Kconfiglib https://pypi.org/project/kconfiglib/"
@@ -22,7 +22,7 @@ IUSE=""
 S=${WORKDIR}/${P/k/K}
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	# hacks to run tests
 	mkdir Kconfiglib || die

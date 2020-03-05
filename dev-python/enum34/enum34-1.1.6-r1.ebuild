@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python 3.4 Enum backported"
 HOMEPAGE="https://pypi.org/project/enum34/"
@@ -25,5 +25,5 @@ python_test() {
 python_install_all() {
 	use doc && local DOCS=( enum/doc/. enum/README )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

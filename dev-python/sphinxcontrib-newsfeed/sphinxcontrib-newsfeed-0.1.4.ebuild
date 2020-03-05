@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="News Feed extension for Sphinx"
 HOMEPAGE="https://bitbucket.org/prometheus/sphinxcontrib-newsfeed"
@@ -20,7 +20,7 @@ RDEPEND="dev-python/sphinx[${PYTHON_USEDEP}]
 	dev-python/namespace-sphinxcontrib[${PYTHON_USEDEP}]"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples

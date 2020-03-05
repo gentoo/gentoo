@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit eutils flag-o-matic python-any-r1 toolchain-funcs
+inherit eutils flag-o-matic python-any-r2 toolchain-funcs
 
 PATCH="${PN}-8.30-patches-01"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
@@ -57,7 +57,7 @@ RDEPEND+="
 
 pkg_setup() {
 	if use test ; then
-		python-any-r1_pkg_setup
+		python-any-r2_pkg_setup
 	fi
 }
 

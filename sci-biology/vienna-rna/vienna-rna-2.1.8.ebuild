@@ -8,7 +8,7 @@ DISTUTILS_OPTIONAL=true
 AUTOTOOLS_AUTORECONF=true
 AUTOTOOLS_IN_SOURCE_BUILD=1
 
-inherit autotools-utils distutils-r1 multilib perl-module toolchain-funcs
+inherit autotools-utils distutils-r2 multilib perl-module toolchain-funcs
 
 DESCRIPTION="RNA secondary structure prediction and comparison"
 HOMEPAGE="http://www.tbi.univie.ac.at/~ivo/RNA/"
@@ -46,7 +46,7 @@ src_prepare() {
 	if use python; then
 		cd interfaces/Python || die
 		local PATCHES=()
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 	fi
 }
 
@@ -69,7 +69,7 @@ src_configure() {
 		-i Readseq/Makefile || die
 	if use python; then
 		cd interfaces/Python || die
-		distutils-r1_src_configure
+		distutils-r2_src_configure
 	fi
 }
 
@@ -81,7 +81,7 @@ src_compile() {
 	if use python; then
 		cd interfaces/Python || die
 		emake RNA_wrap.c
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -107,6 +107,6 @@ src_install() {
 	perl_delete_localpod || die "Failed to remove perlocal.pod"
 	if use python; then
 		cd interfaces/Python || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 }

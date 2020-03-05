@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=(python3_{6,7})
 
-inherit flag-o-matic python-single-r1 toolchain-funcs
+inherit flag-o-matic python-single-r2 toolchain-funcs
 
 MY_P="unit-${PV}"
 DESCRIPTION="Dynamic web and application server"
@@ -36,7 +36,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="take TDD to a new level with py.test and testmon"
 HOMEPAGE="https://github.com/tarpas/pytest-testmon"

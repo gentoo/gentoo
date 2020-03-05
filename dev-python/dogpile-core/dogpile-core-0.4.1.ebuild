@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Copy-on-write locking mechanism for expensive resources"
 HOMEPAGE="https://bitbucket.org/zzzeek/dogpile.core"

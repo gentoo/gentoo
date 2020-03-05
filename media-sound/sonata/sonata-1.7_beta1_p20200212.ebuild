@@ -7,7 +7,7 @@ COMMIT=0c807e593f7571a654ad055cb126652d7f3a698d
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL="true"
 DISTUTILS_USE_SETUPTOOLS="rdepend"
-inherit desktop distutils-r1
+inherit desktop distutils-r2
 
 DESCRIPTION="Elegant GTK+ music client for the Music Player Daemon (MPD)"
 HOMEPAGE="https://www.nongnu.org/sonata/"
@@ -23,17 +23,17 @@ BDEPEND="
 "
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
-		dev-python/python-mpd[${PYTHON_MULTI_USEDEP}]
-		dbus? ( dev-python/dbus-python[${PYTHON_MULTI_USEDEP}] )
-		taglib? ( dev-python/tagpy[${PYTHON_MULTI_USEDEP}] )
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
+		dev-python/python-mpd[${PYTHON_USEDEP}]
+		dbus? ( dev-python/dbus-python[${PYTHON_USEDEP}] )
+		taglib? ( dev-python/tagpy[${PYTHON_USEDEP}] )
 	')
 "
 
 S="${WORKDIR}/${PN}-${COMMIT}"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	doicon -s 128 sonata/pixmaps/sonata.png
 	rm -r "${D}"/usr/share/sonata || die
 }

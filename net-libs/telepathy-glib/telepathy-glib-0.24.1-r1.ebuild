@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 VALA_MIN_API_VERSION="0.18"
 VALA_USE_DEPEND="vapigen"
 
-inherit gnome2 python-any-r1 vala virtualx
+inherit gnome2 python-any-r2 vala virtualx
 
 DESCRIPTION="GLib bindings for the Telepathy D-Bus protocol"
 HOMEPAGE="https://telepathy.freedesktop.org/"

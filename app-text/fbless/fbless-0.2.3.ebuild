@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses,xml"
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python-based console fb2 reader with less-like interface"
 HOMEPAGE="https://github.com/matimatik/fbless"

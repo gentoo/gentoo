@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit font python-any-r1
+inherit font python-any-r2
 
 DESCRIPTION="A clean fixed font for the console and X11"
 HOMEPAGE="http://terminus-font.sourceforge.net/"

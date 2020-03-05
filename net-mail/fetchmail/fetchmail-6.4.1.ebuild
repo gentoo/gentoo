@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk"
 
-inherit python-single-r1 user systemd toolchain-funcs autotools
+inherit python-single-r2 user systemd toolchain-funcs autotools
 
 DESCRIPTION="the legendary remote-mail retrieval and forwarding utility"
 HOMEPAGE="http://www.fetchmail.info/"
@@ -46,7 +46,7 @@ pkg_setup() {
 	enewgroup ${PN}
 	enewuser ${PN} -1 -1 /var/lib/${PN} ${PN}
 
-	use tk && python-single-r1_pkg_setup
+	use tk && python-single-r2_pkg_setup
 }
 
 src_prepare() {

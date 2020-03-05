@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml"
 VALA_MIN_API_VERSION="0.28"
 
-inherit eutils gnome2 multilib python-single-r1 vala
+inherit eutils gnome2 multilib python-single-r2 vala
 
 DESCRIPTION="Official plugins for gedit"
 HOMEPAGE="https://wiki.gnome.org/Apps/Gedit/ShippedPlugins"
@@ -18,7 +18,7 @@ SLOT="0"
 
 IUSE_plugins="charmap git terminal vala"
 IUSE="+python ${IUSE_plugins}"
-# python-single-r1 would request disabling PYTHON_TARGETS on libpeas
+# python-single-r2 would request disabling PYTHON_TARGETS on libpeas
 REQUIRED_USE="
 	charmap? ( python )
 	git? ( python )
@@ -37,9 +37,9 @@ RDEPEND="
 		$(python_gen_cond_dep '
 			>=app-editors/gedit-3.16[introspection,python,${PYTHON_SINGLE_USEDEP}]
 			dev-libs/libpeas[python,${PYTHON_SINGLE_USEDEP}]
-			>=dev-python/dbus-python-0.82[${PYTHON_MULTI_USEDEP}]
-			dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-			dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
+			>=dev-python/dbus-python-0.82[${PYTHON_USEDEP}]
+			dev-python/pycairo[${PYTHON_USEDEP}]
+			dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
 		')
 		>=x11-libs/gtk+-3.9:3[introspection]
 		>=x11-libs/gtksourceview-4.0.2:4[introspection]
@@ -58,7 +58,7 @@ DEPEND="${RDEPEND}
 "
 
 pkg_setup() {
-	use python && [[ ${MERGE_TYPE} != binary ]] && python-single-r1_pkg_setup
+	use python && [[ ${MERGE_TYPE} != binary ]] && python-single-r2_pkg_setup
 }
 
 src_prepare() {

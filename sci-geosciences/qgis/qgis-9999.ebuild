@@ -15,7 +15,7 @@ else
 		examples? ( https://qgis.org/downloads/data/qgis_sample_data.tar.gz -> qgis_sample_data-2.8.14.tar.gz )"
 	KEYWORDS="~amd64 ~x86"
 fi
-inherit cmake desktop python-single-r1 qmake-utils xdg
+inherit cmake desktop python-single-r2 qmake-utils xdg
 
 DESCRIPTION="User friendly Geographic Information System"
 HOMEPAGE="https://www.qgis.org/"
@@ -74,22 +74,22 @@ COMMON_DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/future[${PYTHON_MULTI_USEDEP}]
-			dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
-			dev-python/jinja[${PYTHON_MULTI_USEDEP}]
-			dev-python/markupsafe[${PYTHON_MULTI_USEDEP}]
-			dev-python/owslib[${PYTHON_MULTI_USEDEP}]
-			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
-			dev-python/PyQt5[designer,network,sql,svg,webkit?,${PYTHON_MULTI_USEDEP}]
-			dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
-			dev-python/pytz[${PYTHON_MULTI_USEDEP}]
-			dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_MULTI_USEDEP}]
-			dev-python/requests[${PYTHON_MULTI_USEDEP}]
-			dev-python/sip:=[${PYTHON_MULTI_USEDEP}]
-			dev-python/six[${PYTHON_MULTI_USEDEP}]
-			>=sci-libs/gdal-2.2.3[python,${PYTHON_MULTI_USEDEP}]
-			postgres? ( dev-python/psycopg:2[${PYTHON_MULTI_USEDEP}] )
+			dev-python/future[${PYTHON_USEDEP}]
+			dev-python/httplib2[${PYTHON_USEDEP}]
+			dev-python/jinja[${PYTHON_USEDEP}]
+			dev-python/markupsafe[${PYTHON_USEDEP}]
+			dev-python/owslib[${PYTHON_USEDEP}]
+			dev-python/pygments[${PYTHON_USEDEP}]
+			dev-python/PyQt5[designer,network,sql,svg,webkit?,${PYTHON_USEDEP}]
+			dev-python/python-dateutil[${PYTHON_USEDEP}]
+			dev-python/pytz[${PYTHON_USEDEP}]
+			dev-python/pyyaml[${PYTHON_USEDEP}]
+			>=dev-python/qscintilla-python-2.10.1[qt5(+),${PYTHON_USEDEP}]
+			dev-python/requests[${PYTHON_USEDEP}]
+			dev-python/sip:=[${PYTHON_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
+			>=sci-libs/gdal-2.2.3[python,${PYTHON_USEDEP}]
+			postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
 		')
 	)
 	qml? ( >=dev-qt/qtdeclarative-${QT_MIN_VER}:5 )
@@ -115,7 +115,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

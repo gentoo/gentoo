@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r2
 
 DESCRIPTION="A smart CLI mangler for package.* files"
 HOMEPAGE="https://github.com/mgorny/flaggie/"
@@ -21,7 +21,7 @@ RDEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
 
 python_install_all() {
 	newbashcomp contrib/bash-completion/${PN}.bash-completion ${PN}
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

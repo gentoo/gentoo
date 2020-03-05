@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit autotools eutils gnome2-utils python-any-r1
+inherit autotools eutils gnome2-utils python-any-r2
 
 DESCRIPTION="A modification of the classical Freedroid engine into an RPG"
 HOMEPAGE="http://freedroid.sourceforge.net/"
@@ -32,7 +32,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_prepare() {

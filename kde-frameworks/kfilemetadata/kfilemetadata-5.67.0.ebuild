@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 PVCUT=$(ver_cut 1-2)
 QTMIN=5.12.3
-inherit ecm kde.org python-any-r1
+inherit ecm kde.org python-any-r2
 
 DESCRIPTION="Library for extracting file metadata"
 LICENSE="LGPL-2+"
@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 RESTRICT+=" test"
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 	ecm_pkg_setup
 }
 

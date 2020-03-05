@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit cmake-multilib llvm llvm.org multiprocessing python-any-r1 \
+inherit cmake-multilib llvm llvm.org multiprocessing python-any-r2 \
 	toolchain-funcs
 
 DESCRIPTION="New implementation of the C++ standard library, targeting C++11"
@@ -50,7 +50,7 @@ python_check_deps() {
 
 pkg_setup() {
 	llvm_pkg_setup
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 
 	if ! use libcxxabi && ! use libcxxrt && ! tc-is-gcc ; then
 		eerror "To build ${PN} against libsupc++, you have to use gcc. Other"

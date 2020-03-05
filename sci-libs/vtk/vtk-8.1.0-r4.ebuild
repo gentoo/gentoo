@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 WEBAPP_OPTIONAL=yes
 WEBAPP_MANUAL_SLOT=yes
 
-inherit flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils versionator toolchain-funcs cmake-utils virtualx webapp
+inherit flag-o-matic java-pkg-opt-2 python-single-r2 qmake-utils versionator toolchain-funcs cmake-utils virtualx webapp
 
 # Short package version
 SPV="$(get_version_component_range 1-2)"
@@ -81,25 +81,25 @@ RDEPEND="
 	web? (
 		${WEBAPP_DEPEND}
 		$(python_gen_cond_dep '
-			dev-python/autobahn[${PYTHON_MULTI_USEDEP}]
-			dev-python/constantly[${PYTHON_MULTI_USEDEP}]
-			dev-python/hyperlink[${PYTHON_MULTI_USEDEP}]
-			dev-python/incremental[${PYTHON_MULTI_USEDEP}]
-			dev-python/six[${PYTHON_MULTI_USEDEP}]
-			dev-python/twisted[${PYTHON_MULTI_USEDEP}]
-			dev-python/txaio[${PYTHON_MULTI_USEDEP}]
-			dev-python/zope-interface[${PYTHON_MULTI_USEDEP}]
+			dev-python/autobahn[${PYTHON_USEDEP}]
+			dev-python/constantly[${PYTHON_USEDEP}]
+			dev-python/hyperlink[${PYTHON_USEDEP}]
+			dev-python/incremental[${PYTHON_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
+			dev-python/twisted[${PYTHON_USEDEP}]
+			dev-python/txaio[${PYTHON_USEDEP}]
+			dev-python/zope-interface[${PYTHON_USEDEP}]
 		')
 	)
 	xdmf2? ( sci-libs/xdmf2 )
 	$(python_gen_cond_dep "
 		mpi? (
 			virtual/mpi[cxx,romio]
-			python? ( dev-python/mpi4py[\${PYTHON_MULTI_USEDEP}] )
+			python? ( dev-python/mpi4py[\${PYTHON_USEDEP}] )
 		)
 		python? (
 			${PYTHON_DEPS}
-			dev-python/sip[\${PYTHON_MULTI_USEDEP}]
+			dev-python/sip[\${PYTHON_USEDEP}]
 		)
 		qt5? (
 			dev-qt/designer:5
@@ -108,7 +108,7 @@ RDEPEND="
 			dev-qt/qtopengl:5
 			dev-qt/qtsql:5
 			dev-qt/qtx11extras:5
-			python? ( dev-python/PyQt5[\${PYTHON_MULTI_USEDEP}] )
+			python? ( dev-python/PyQt5[\${PYTHON_USEDEP}] )
 		)
 	")"
 DEPEND="${RDEPEND}
@@ -120,7 +120,7 @@ RESTRICT="test"
 
 pkg_setup() {
 	use java && java-pkg-opt-2_pkg_setup
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	use web && webapp_pkg_setup
 }
 

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings for libgit2"
 HOMEPAGE="https://github.com/libgit2/pygit2 https://pypi.org/project/pygit2/"
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 
 	# unconditionally prevent it from using network
 	sed -i -e '/def no_network/a \

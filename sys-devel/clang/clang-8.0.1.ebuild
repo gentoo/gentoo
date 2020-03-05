@@ -9,7 +9,7 @@ CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
 inherit cmake-utils eapi7-ver flag-o-matic llvm \
-	multilib-minimal multiprocessing pax-utils prefix python-single-r1 \
+	multilib-minimal multiprocessing pax-utils prefix python-single-r2 \
 	toolchain-funcs
 
 MY_P=cfe-${PV/_/}.src
@@ -84,7 +84,7 @@ PATCHES=(
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${SLOT} llvm_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_unpack() {

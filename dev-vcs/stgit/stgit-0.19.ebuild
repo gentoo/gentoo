@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r2
 
 DESCRIPTION="Manage a stack of patches using GIT as a backend"
 HOMEPAGE="http://www.procode.org/stgit/"
@@ -54,11 +54,11 @@ python_prepare_all() {
 	# but throws git errors --> just get rid of it
 	echo "version=\"${PV}\"" > "${S}"/stgit/builtin_version.py
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 src_compile() {
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 
 	# bug 526468
 	if use doc; then
@@ -77,7 +77,7 @@ src_install() {
 			install-doc install-html
 	fi
 
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	newbashcomp stgit-completion.bash 'stg'
 }

@@ -5,7 +5,7 @@ EAPI=7
 # parsedatetime doesn't support pypy
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PV="4.2.0"
 
@@ -31,5 +31,5 @@ S="${WORKDIR}/gcalcli-${MY_PV}"
 
 src_install() {
 	dodoc -r ChangeLog README.md docs
-	distutils-r1_src_install
+	distutils-r2_src_install
 }

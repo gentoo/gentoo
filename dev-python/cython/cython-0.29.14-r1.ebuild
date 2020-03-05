@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 toolchain-funcs elisp-common
+inherit distutils-r2 toolchain-funcs elisp-common
 
 DESCRIPTION="A Python to C compiler"
 HOMEPAGE="https://cython.org https://pypi.org/project/Cython/
@@ -46,7 +46,7 @@ python_compile() {
 	# Python gets confused when it is in sys.path before build.
 	local -x PYTHONPATH=
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_compile_all() {
@@ -63,7 +63,7 @@ python_test() {
 
 python_install_all() {
 	local DOCS=( CHANGES.rst README.rst ToDo.txt USAGE.txt )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use emacs; then
 		elisp-install ${PN} Tools/cython-mode.*

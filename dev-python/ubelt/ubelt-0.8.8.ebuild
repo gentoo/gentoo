@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A stdlib like feel, and extra batteries. Hashing, Caching, Timing, Progress"
 HOMEPAGE="https://github.com/Erotemic/ubelt"

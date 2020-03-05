@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
-inherit eutils python-single-r1
+inherit eutils python-single-r2
 
 DESCRIPTION="Unit conversion program"
 HOMEPAGE="https://www.gnu.org/software/units/units.html"
@@ -20,8 +20,8 @@ RDEPEND="
 	units--cur? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/future[${PYTHON_MULTI_USEDEP}]
-			dev-python/requests[${PYTHON_MULTI_USEDEP}]
+			dev-python/future[${PYTHON_USEDEP}]
+			dev-python/requests[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -30,7 +30,7 @@ DEPEND="
 "
 
 pkg_setup() {
-	use units--cur && python-single-r1_pkg_setup
+	use units--cur && python-single-r2_pkg_setup
 }
 
 src_configure() {

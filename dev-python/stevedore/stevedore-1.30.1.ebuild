@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Manage dynamic plugins for Python applications"
 HOMEPAGE="https://github.com/openstack/stevedore https://pypi.org/project/stevedore/"
@@ -48,7 +48,7 @@ RDEPEND="
 python_prepare_all() {
 	# Delete spurious data in requirements.txt
 	sed -e '/^pbr/d' -i requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -62,5 +62,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

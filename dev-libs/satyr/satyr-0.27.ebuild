@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools python-r1 toolchain-funcs
+inherit autotools python-multi-r2 toolchain-funcs
 
 DESCRIPTION="Satyr is a collection of low-level algorithms for program failure processing"
 HOMEPAGE="https://github.com/abrt/satyr"

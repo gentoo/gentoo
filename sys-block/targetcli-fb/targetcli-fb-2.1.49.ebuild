@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PV=$(ver_rs 2 .fb)
 
@@ -26,7 +26,7 @@ RDEPEND="dev-python/configshell-fb[${PYTHON_USEDEP}]
 S="${WORKDIR}/${PN}-${MY_PV}"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	keepdir /etc/target /etc/target/backup
 	doman targetcli.8

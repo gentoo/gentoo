@@ -10,7 +10,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/vcstools/vcstools"
 fi
 
-inherit ${SCM} distutils-r1
+inherit ${SCM} distutils-r2
 
 DESCRIPTION="Python library for interacting with various VCS systems"
 HOMEPAGE="http://wiki.ros.org/vcstools"

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="A simple wrapper for the C qrencode library"
 HOMEPAGE="https://pypi.org/project/qrencode/ https://github.com/Arachnid/pyqrencode/"

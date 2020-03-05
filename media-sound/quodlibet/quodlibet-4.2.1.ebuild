@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1 xdg-utils
+inherit distutils-r2 xdg-utils
 
 DESCRIPTION="audio library tagger, manager, and player for GTK+"
 HOMEPAGE="https://quodlibet.readthedocs.io/"
@@ -45,11 +45,11 @@ src_prepare() {
 
 	sed -i -e '/gst_pipeline/s:"":"alsasink":' ${qlconfig} || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	dodoc NEWS README
 }
 

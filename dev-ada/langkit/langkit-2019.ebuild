@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 multiprocessing
+inherit python-single-r2 multiprocessing
 
 MYP=${P}-20190510-19B8C
 

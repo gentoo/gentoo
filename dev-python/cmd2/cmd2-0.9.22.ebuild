@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Extra features for standard library's cmd module"
 HOMEPAGE="https://github.com/python-cmd2/cmd2"
@@ -39,5 +39,5 @@ python_test() {
 }
 
 src_test() {
-	virtx distutils-r1_src_test
+	virtx distutils-r2_src_test
 }

@@ -19,7 +19,7 @@ PYTHON_COMPAT=( python2_7 )
 WEBAPP_MANUAL_SLOT=yes
 WEBAPP_OPTIONAL=yes
 
-inherit cmake-utils depend.apache distutils-r1 eutils flag-o-matic multilib perl-module php-ext-source-r3 webapp # ruby-ng
+inherit cmake-utils depend.apache distutils-r2 eutils flag-o-matic multilib perl-module php-ext-source-r3 webapp # ruby-ng
 
 DESCRIPTION="Development environment for building spatially enabled webapps"
 HOMEPAGE="https://mapserver.org/"

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_6 )
 
 MY_PN="Whoosh"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Fast, pure-Python full text indexing, search and spell checking library"
 HOMEPAGE="https://bitbucket.org/mchaput/whoosh/wiki/Home/ https://pypi.org/project/Whoosh/"
@@ -32,7 +32,7 @@ python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/^              'sphinx.ext.intersphinx',/d" -i docs/source/conf.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -47,5 +47,5 @@ python_test() {
 python_install_all() {
 	local DOCS=( README.txt )
 	use doc && local HTML_DOCS=( docs/source/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

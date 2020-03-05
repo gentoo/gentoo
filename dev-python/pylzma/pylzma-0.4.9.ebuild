@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=(python2_7)
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings for the LZMA compression library"
 HOMEPAGE="https://www.joachim-bauch.de/projects/pylzma/
@@ -23,7 +23,7 @@ DOCS=(doc/USAGE.md README.md)
 
 python_compile() {
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {

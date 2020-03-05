@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 if [[ ${PV} == "9999" ]] ; then
 	inherit git-r3
@@ -36,8 +36,8 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="
 	doc? (
 		$(python_gen_cond_dep '
-			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
-			dev-python/sphinx_rtd_theme[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 		')
 		net-misc/rsync
 	)"

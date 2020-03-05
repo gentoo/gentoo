@@ -5,7 +5,7 @@ EAPI="6"
 PLOCALES="zh_CN"
 PYTHON_COMPAT=( python2_7 )
 
-inherit l10n python-single-r1 scons-utils toolchain-funcs vcs-snapshot
+inherit l10n python-single-r2 scons-utils toolchain-funcs vcs-snapshot
 
 MY_P="${P#*-}"
 
@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
+		app-i18n/ibus[python(+),${PYTHON_USEDEP}]
 	')
 	~app-i18n/sunpinyin-${PV}:=
 	nls? ( virtual/libintl )"

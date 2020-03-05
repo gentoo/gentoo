@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P=${PN,,}-${PV}
 DESCRIPTION="Python library for communicating with AMQP peers using Twisted"
@@ -58,5 +58,5 @@ python_test() {
 python_install_all() {
 	local DOCS=( doc/* )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

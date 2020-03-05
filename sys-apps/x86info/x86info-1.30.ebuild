@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit flag-o-matic linux-info python-any-r1 toolchain-funcs
+inherit flag-o-matic linux-info python-any-r2 toolchain-funcs
 
 DESCRIPTION="Dave Jones' handy, informative x86 CPU diagnostic utility"
 HOMEPAGE="http://www.codemonkey.org.uk/projects/x86info/"
@@ -32,7 +32,7 @@ PATCHES=(
 
 pkg_setup() {
 	linux-info_pkg_setup
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_configure() {

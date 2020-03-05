@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 RESTRICT="test" # can't work as it imports nonexistant modules from coverage
 
@@ -40,7 +40,7 @@ python_prepare_all() {
 	# Test requires connection to an absent database
 	sed -e s':testIgnoreAll:_&:' -i tests/test_cmd_ignore.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -65,5 +65,5 @@ python_test() {
 src_install() {
 	use doc && HTML_DOCS=( doc/_build/html/. )
 
-	distutils-r1_src_install
+	distutils-r2_src_install
 }

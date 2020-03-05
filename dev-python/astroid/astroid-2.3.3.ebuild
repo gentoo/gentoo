@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Abstract Syntax Tree for logilab packages"
 HOMEPAGE="https://github.com/PyCQA/astroid https://pypi.org/project/astroid/"
@@ -44,7 +44,7 @@ python_prepare_all() {
 	sed -i -e "s/test_knownValues_get_builtin_module_part/_&/" \
 		astroid/tests/unittest_modutils.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="sqlite?"
 
-inherit distutils-r1 eutils flag-o-matic
+inherit distutils-r2 eutils flag-o-matic
 
 MY_PN="SQLAlchemy"
 MY_P="${MY_PN}-${PV/_beta/b}"
@@ -33,7 +33,7 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	# Disable tests hardcoding function call counts specific to Python versions.
 	rm -r test/aaa_profiling || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
@@ -41,14 +41,14 @@ python_compile() {
 		local CFLAGS=${CFLAGS}
 		append-cflags -fno-strict-aliasing
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_install_all() {
 	use doc && HTML_DOCS=( doc/. )
 	use examples && dodoc -r examples
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

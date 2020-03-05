@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Testing library to create mocks, stubs and fakes"
 HOMEPAGE="http://flexmock.readthedocs.org/"
@@ -25,7 +25,7 @@ DEPEND="
 RDEPEND=""
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	dodoc -r  docs
 }
 

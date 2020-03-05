@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
-inherit cmake python-single-r1 xdg
+inherit cmake python-single-r2 xdg
 
 DESCRIPTION="Atari ST emulator"
 HOMEPAGE="https://hatari.tuxfamily.org/"
@@ -31,7 +31,7 @@ DEPEND="
 RDEPEND="
 	${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	>=games-emulation/emutos-0.9.9.1
 "

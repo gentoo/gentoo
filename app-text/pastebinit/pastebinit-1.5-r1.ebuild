@@ -5,7 +5,7 @@ EAPI=5
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="A software that lets you send anything you want directly to a pastebin"
 HOMEPAGE="https://launchpad.net/pastebinit"
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/configobj[${PYTHON_MULTI_USEDEP}]
+		dev-python/configobj[${PYTHON_USEDEP}]
 	')
 	crypt? ( app-crypt/gnupg )"
 DEPEND="app-text/docbook-xsl-stylesheets"

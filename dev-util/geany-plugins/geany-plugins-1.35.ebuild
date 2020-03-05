@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 vala
+inherit python-single-r2 vala
 
 DESCRIPTION="A collection of different plugins for Geany"
 HOMEPAGE="https://plugins.geany.org"
@@ -48,7 +48,7 @@ DEPEND="
 	pretty-printer? ( dev-libs/libxml2:2 )
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygtk[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 		)
@@ -66,7 +66,7 @@ BDEPEND="virtual/pkgconfig
 "
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

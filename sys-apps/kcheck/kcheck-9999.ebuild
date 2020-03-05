@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 if [[ ${PV} == 9999 ]]; then
 	EGIT_REPO_URI="https://github.com/wraeth/kcheck"
@@ -24,7 +24,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/configargparse[${PYTHON_USEDEP}]"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	mkdir "${D}"etc || die
 	mv -v "${D}"{usr/,}etc/kcheck.conf || die
 }

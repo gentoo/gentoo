@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Module for manipulating ID3 tags in Python"
 SRC_URI="mirror://sourceforge/${PN}/${PN}_${PV}.tar.gz"

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python OO interface to libcdio (CD Input and Control library)"
 HOMEPAGE="https://savannah.gnu.org/projects/libcdio/ https://pypi.org/project/pycdio/"
@@ -29,11 +29,11 @@ python_prepare_all() {
 	# Disable failing tests.
 	sed -i -e "s/test_get_set/_&/" test/test-cdtext.py || die
 	sed -i -e "s/test_fs/_&/" test/test-isocopy.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples; then
 		docinto examples
 		dodoc -r example/.

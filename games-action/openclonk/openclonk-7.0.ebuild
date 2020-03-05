@@ -4,7 +4,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-inherit cmake-utils eutils gnome2-utils python-any-r1 fdo-mime toolchain-funcs games
+inherit cmake-utils eutils gnome2-utils python-any-r2 fdo-mime toolchain-funcs games
 
 MY_P=${PN}-release-${PV}-src
 
@@ -58,7 +58,7 @@ S=${WORKDIR}/${P}-src
 
 pkg_setup() {
 	games_pkg_setup
-	use doc && python-any-r1_pkg_setup
+	use doc && python-any-r2_pkg_setup
 }
 
 src_prepare() {

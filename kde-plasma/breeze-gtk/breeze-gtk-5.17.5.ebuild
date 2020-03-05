@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 PVCUT=$(ver_cut 1-3)
-inherit ecm kde.org python-any-r1
+inherit ecm kde.org python-any-r2
 
 DESCRIPTION="Official GTK+ port of Plasma's Breeze widget style"
 HOMEPAGE="https://cgit.kde.org/breeze-gtk.git"
@@ -25,7 +25,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 	ecm_pkg_setup
 }
 

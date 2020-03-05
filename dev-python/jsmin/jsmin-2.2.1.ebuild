@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="JavaScript minifier"
 HOMEPAGE="https://pypi.org/project/jsmin/ https://github.com/tikitu/jsmin/"

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A binary plist parser/generator for Python"
 HOMEPAGE="https://pypi.org/project/biplist/ https://github.com/wooster/biplist"

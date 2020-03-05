@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..7} )
 
-inherit python-any-r1
+inherit python-any-r2
 
 DESCRIPTION="Finnish dictionary for libvoikko based spell checkers (vvfst format)"
 HOMEPAGE="https://voikko.puimula.org/"

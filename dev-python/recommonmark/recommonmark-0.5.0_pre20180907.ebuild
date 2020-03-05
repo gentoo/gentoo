@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 EGIT_COMMIT=33b5c2a4ec50d18d3f659aa119d3bd11452327da
 MY_P=${PN}-${EGIT_COMMIT}

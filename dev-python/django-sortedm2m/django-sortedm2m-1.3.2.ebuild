@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Drop-in replacement for django's many to many field with sorted relations"
 HOMEPAGE="https://pypi.org/project/django-sortedm2m/"

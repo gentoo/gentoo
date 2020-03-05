@@ -7,7 +7,7 @@ EAPI=5
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Conky weather forecast script with support for language files"
 HOMEPAGE="https://launchpad.net/~conky-companions"
@@ -25,11 +25,11 @@ S=${WORKDIR}/src
 python_prepare_all() {
 	sed -i -e "s:pythoncmd=.*$:pythoncmd=${EPYTHON}:" conkyForecast* || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	python_optimize "${ED%/}"/usr/share/${PN}
 }

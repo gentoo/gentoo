@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6} )
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit flag-o-matic distutils-r1 virtualx
+inherit flag-o-matic distutils-r2 virtualx
 
 DESCRIPTION="Python bindings for SDL multimedia library"
 HOMEPAGE="http://www.pygame.org/"
@@ -50,7 +50,7 @@ python_compile() {
 		append-flags -fno-strict-aliasing
 	fi
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -58,14 +58,14 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	# Bug #497720
 	rm -fr "${D}"$(python_get_sitedir)/pygame/{docs,examples,tests}/ || die
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use doc; then
 		docinto html

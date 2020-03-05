@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools eutils multilib user python-single-r1
+inherit autotools eutils multilib user python-single-r2
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://www.kismetwireless.net/git/${PN}.git"
@@ -52,7 +52,7 @@ CDEPEND="
 	dev-libs/protobuf-c:=
 	dev-libs/protobuf:=
 	$(python_gen_cond_dep '
-		dev-python/protobuf-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/protobuf-python[${PYTHON_USEDEP}]
 	')
 	sys-libs/ncurses:=
 	lm-sensors? ( sys-apps/lm-sensors )
@@ -67,14 +67,14 @@ DEPEND="${CDEPEND}
 
 RDEPEND="${CDEPEND}
 	$(python_gen_cond_dep '
-		dev-python/pyserial[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyserial[${PYTHON_USEDEP}]
 	')
 	selinux? ( sec-policy/selinux-kismet )
 "
 PDEPEND="
 	rtlsdr? (
 		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 		net-wireless/rtl-sdr
 	)"

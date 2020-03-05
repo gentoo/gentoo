@@ -4,7 +4,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-r1
+inherit eutils python-multi-r2
 
 DESCRIPTION="Configurable FVWM theme with transparency and freedesktop compatible menu"
 HOMEPAGE="http://fvwm-crystal.sourceforge.net/"

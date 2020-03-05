@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Designed to convert old ini-style GNS3 topologies"
 HOMEPAGE="https://github.com/dlintott/gns3-converter"

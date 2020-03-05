@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6} )
 DISTUTILS_IN_SOURCE_BUILD=1
 
-inherit bash-completion-r1 eutils linux-info distutils-r1 systemd
+inherit bash-completion-r1 eutils linux-info distutils-r2 systemd
 
 DESCRIPTION="A program used to manage a netfilter firewall"
 HOMEPAGE="https://launchpad.net/ufw"
@@ -129,7 +129,7 @@ python_prepare_all() {
 		_EMPTY_LOCALE_LIST="no"
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
@@ -156,7 +156,7 @@ python_install_all() {
 
 	[[ $_EMPTY_LOCALE_LIST != yes ]] && domo locales/mo/*.mo
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	python_replicate_script "${D}usr/sbin/ufw"
 }
 

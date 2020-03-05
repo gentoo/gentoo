@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Provides r/w access to a wireless network card's capabilities"
 HOMEPAGE="https://pypi.org/project/python-wifi/"
@@ -22,7 +22,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 DOCS=( docs/AUTHORS docs/BUGS docs/DEVEL.txt docs/TODO )
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	use examples && dodoc -r examples
 	rm -rv "${ED}"/usr/{docs,examples,INSTALL,README} || die
 	if use examples; then

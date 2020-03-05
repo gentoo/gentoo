@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python wrapping of the Cap'n Proto library"
 HOMEPAGE="http://jparyani.github.io/pycapnp/ https://github.com/capnproto/pycapnp"
@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}
 "
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	# regen cython files
 	rm -f capnp/lib/capnp.cpp || die
 }

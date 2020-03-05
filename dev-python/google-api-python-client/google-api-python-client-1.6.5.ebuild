@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Google API Client for Python"
 HOMEPAGE="https://github.com/google/google-api-python-client"
@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	export SKIP_GOOGLEAPICLIENT_COMPAT_CHECK=true
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

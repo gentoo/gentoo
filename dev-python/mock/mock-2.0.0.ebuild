@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Rolling backport of unittest.mock for all Pythons"
 HOMEPAGE="https://github.com/testing-cabal/mock"
@@ -39,5 +39,5 @@ python_test() {
 python_install_all() {
 	local DOCS=( docs/{conf.py,index.txt} AUTHORS ChangeLog NEWS README.rst )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

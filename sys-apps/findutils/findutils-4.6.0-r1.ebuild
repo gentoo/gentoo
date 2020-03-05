@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit eutils flag-o-matic toolchain-funcs python-any-r1
+inherit eutils flag-o-matic toolchain-funcs python-any-r2
 
 DESCRIPTION="GNU utilities for finding files"
 HOMEPAGE="https://www.gnu.org/software/findutils/"
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	nls? ( sys-devel/gettext )"
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

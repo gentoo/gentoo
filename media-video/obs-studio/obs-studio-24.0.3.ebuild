@@ -6,7 +6,7 @@ EAPI=7
 CMAKE_REMOVE_MODULES_LIST=( FindFreetype )
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake-utils python-single-r1 xdg-utils
+inherit cmake-utils python-single-r2 xdg-utils
 
 if [[ ${PV} == *9999 ]]; then
 	inherit git-r3
@@ -71,7 +71,7 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

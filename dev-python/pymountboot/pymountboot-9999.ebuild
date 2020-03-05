@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="Python extension module to (re)mount /boot"
 HOMEPAGE="https://github.com/mgorny/pymountboot/"

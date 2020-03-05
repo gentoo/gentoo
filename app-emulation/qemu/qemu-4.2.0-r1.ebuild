@@ -10,7 +10,7 @@ PLOCALES="bg de_DE fr_FR hu it tr zh_CN"
 
 FIRMWARE_ABI_VERSION="4.0.0-r50"
 
-inherit eutils linux-info toolchain-funcs multilib python-r1 \
+inherit eutils linux-info toolchain-funcs multilib python-multi-r2 \
 	udev fcaps readme.gentoo-r1 pax-utils l10n xdg-utils
 
 if [[ ${PV} = *9999* ]]; then

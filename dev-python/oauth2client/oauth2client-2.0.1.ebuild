@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python3_6)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Library for accessing resources protected by OAuth 2.0"
 HOMEPAGE="https://github.com/google/oauth2client"
@@ -37,7 +37,7 @@ python_prepare_all() {
 	sed \
 		-e "s:find_packages():find_packages(exclude=['tests','tests.*']):" \
 		-i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

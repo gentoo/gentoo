@@ -7,7 +7,7 @@ PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 # [options.entry_points] is present in setup.cfg but it is empty
 DISTUTILS_USE_SETUPTOOLS=manual
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Backport of pathlib-compatible object wrapper for zip files"
 HOMEPAGE="https://github.com/jaraco/zipp"
@@ -34,5 +34,5 @@ python_prepare_all() {
 	# Skip a potentially flaky performance test
 	sed -i -e '/^import func_timeout\|^ *@func_timeout\.func_set_timeout/d' \
 		-e 's/test_implied_dirs_performance/_&/' test_zipp.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

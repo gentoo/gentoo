@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Module for decorators, wrappers and monkey patching"
 HOMEPAGE="https://github.com/GrahamDumpleton/wrapt"
@@ -23,5 +23,5 @@ distutils_enable_sphinx docs \
 python_compile() {
 	local WRAPT_EXTENSIONS=true
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }

@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit readme.gentoo-r1 distutils-r1
+inherit readme.gentoo-r1 distutils-r2
 
 DESCRIPTION="Python library and command line tool for configuring a YubiKey"
 HOMEPAGE="https://developers.yubico.com/yubikey-manager/"
@@ -45,7 +45,7 @@ python_test() {
 python_install_all() {
 	local DOC_CONTENTS
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	DOC_CONTENTS="
 		The 'openpgp' command may require the package 'app-crypt/ccid'

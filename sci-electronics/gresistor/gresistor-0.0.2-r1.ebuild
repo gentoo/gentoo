@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Translate a resistor color codes into a readable value"
 HOMEPAGE="https://sourceforge.net/projects/gresistor/"
@@ -19,7 +19,7 @@ IUSE=""
 
 DEPEND="
 	$(python_gen_cond_dep '
-		dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygtk:2[${PYTHON_USEDEP}]
 	')
 	gnome-base/libglade:2.0[${PYTHON_SINGLE_USEDEP}]
 	x11-libs/gtk+:2"
@@ -27,11 +27,11 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	sed -i -e 's/Version=0.0.2/Version=1.0/g' ${PN}.desktop || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	python_domodule "${FILESDIR}/SimpleGladeApp.py"
 	domenu ${PN}.desktop
 }

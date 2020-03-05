@@ -10,7 +10,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/ros-infrastructure/rosinstall_generator"
 fi
 
-inherit ${SCM} distutils-r1
+inherit ${SCM} distutils-r2
 
 DESCRIPTION="Generates rosinstall metadata about repositories with ROS packages/stacks"
 HOMEPAGE="http://wiki.ros.org/rosinstall_generator"

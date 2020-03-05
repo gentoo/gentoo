@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=(python2_7 python3_6)
-inherit eutils prefix user python-r1 multilib multilib-minimal systemd s6
+inherit eutils prefix user python-multi-r2 multilib multilib-minimal systemd s6
 
 DESCRIPTION="NSS module for name lookups using LDAP"
 HOMEPAGE="https://arthurdejong.org/nss-pam-ldapd/"

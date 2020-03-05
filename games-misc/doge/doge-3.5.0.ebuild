@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="wow very terminal doge"
 HOMEPAGE="https://github.com/thiderman/doge https://pypi.org/project/doge/"

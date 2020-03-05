@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-r1
+inherit gnome2 python-multi-r2
 
 DESCRIPTION="GNOME terminal widget"
 HOMEPAGE="https://wiki.gnome.org/Apps/Terminal/VTE"

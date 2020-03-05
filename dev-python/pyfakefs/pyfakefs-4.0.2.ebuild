@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 DISTUTILS_IN_SOURCE_BUILD=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="a fake file system that mocks the Python file system modules"
 HOMEPAGE="https://github.com/jmcgeheeiv/pyfakefs/ https://pypi.org/project/pyfakefs/"

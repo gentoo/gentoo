@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 qmake-utils
+inherit distutils-r2 qmake-utils
 
 EGIT_COMMIT="5f3ca79dbe8c765b685636a1751d242a6bfabb7d"
 DESCRIPTION="Hex editor library, Qt application written in C++ with Python bindings"
@@ -44,7 +44,7 @@ src_prepare() {
 	sed -i -e '/^unix:DESTDIR/ d' -e "\$atarget.path = /usr/$(get_libdir)" \
 		-e "\$aINSTALLS += target" src/qhexedit.pro \
 		|| die "src/qhexedit.pro: sed failed"
-	use python && distutils-r1_src_prepare
+	use python && distutils-r2_src_prepare
 }
 
 src_configure() {
@@ -57,12 +57,12 @@ src_configure() {
 
 src_compile() {
 	default
-	use python && distutils-r1_src_compile
+	use python && distutils-r2_src_compile
 	use gui && emake -C example
 }
 
 python_compile() {
-	use python && distutils-r1_python_compile build_ext --library-dirs="${S}"
+	use python && distutils-r2_python_compile build_ext --library-dirs="${S}"
 }
 
 src_test() {
@@ -77,7 +77,7 @@ src_test() {
 src_install() {
 	emake INSTALL_ROOT="${D}" install
 	doheader src/*.h
-	use python && distutils-r1_src_install
+	use python && distutils-r2_src_install
 	use gui && dobin example/qhexedit
 	if use doc; then
 		dodoc -r doc/html

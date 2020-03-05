@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A markdown-like langauge to generate docs in html, LaTeX, and many other formats"
 HOMEPAGE="https://github.com/hplgit/doconce/ https://pypi.org/project/Doconce/"

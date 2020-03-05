@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Libmemcached wrapper written as a Python extension"
 HOMEPAGE="http://sendapatch.se/projects/pylibmc/ https://pypi.org/project/pylibmc/"
@@ -30,7 +30,7 @@ DEPEND="${RDEPEND}
 
 python_prepare_all() {
 	sed -e "/with-info=1/d" -i setup.cfg || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

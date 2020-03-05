@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-single-r1
+inherit eutils python-single-r2
 
 DESCRIPTION="GTK+ interface for RecordMyDesktop"
 HOMEPAGE="http://recordmydesktop.sourceforge.net/"

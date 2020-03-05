@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="driconf is a GTK+2 GUI configurator for DRI"
 HOMEPAGE="https://dri.freedesktop.org/wiki/DriConf"
@@ -32,7 +32,7 @@ PATCHES=(
 )
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	# Fix install locations which breaks location policy - Josh_B
 	sed -i \
@@ -46,6 +46,6 @@ python_prepare_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	domenu driconf.desktop
 }

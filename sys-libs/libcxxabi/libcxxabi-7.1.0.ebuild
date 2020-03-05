@@ -8,7 +8,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib llvm multiprocessing python-any-r1
+inherit cmake-multilib llvm multiprocessing python-any-r2
 
 MY_P=${P/_/}.src
 LIBCXX_P=libcxx-${PV/_/}.src
@@ -48,7 +48,7 @@ python_check_deps() {
 
 pkg_setup() {
 	llvm_pkg_setup
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_unpack() {

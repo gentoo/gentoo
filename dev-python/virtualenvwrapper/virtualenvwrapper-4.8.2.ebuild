@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Set of extensions to Ian Bicking's virtualenv tool"
 HOMEPAGE="https://bitbucket.org/dhellmann/virtualenvwrapper

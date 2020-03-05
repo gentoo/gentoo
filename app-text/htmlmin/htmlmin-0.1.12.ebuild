@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A configurable HTML Minifier with safety features"
 HOMEPAGE="https://github.com/mankyd/htmlmin"

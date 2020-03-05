@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-single-r1 xdg-utils
+inherit cmake-utils python-single-r2 xdg-utils
 
 DESCRIPTION="Toolkit that provides signal processing blocks to implement software radios"
 HOMEPAGE="https://www.gnuradio.org/"
@@ -36,7 +36,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 RDEPEND="${PYTHON_DEPS}
 	>=dev-lang/orc-0.4.12
 	$(python_gen_cond_dep '
-		dev-libs/boost:0=[${PYTHON_MULTI_USEDEP}]
+		dev-libs/boost:0=[${PYTHON_USEDEP}]
 	')
 	!<=dev-libs/boost-1.52.0-r6:0/1.52
 	dev-util/cppunit
@@ -47,12 +47,12 @@ RDEPEND="${PYTHON_DEPS}
 	)
 	grc? (
 		$(python_gen_cond_dep '
-			dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+			dev-python/lxml[${PYTHON_USEDEP}]
 			|| (
-				dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-				dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+				dev-python/numpy-python2[${PYTHON_USEDEP}]
+				dev-python/numpy[${PYTHON_USEDEP}]
 			)
-			dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygtk:2[${PYTHON_USEDEP}]
 		')
 	)
 	jack? (
@@ -71,10 +71,10 @@ DEPEND="${RDEPEND}
 	dev-lang/swig
 	virtual/pkgconfig
 	$(python_gen_cond_dep '
-		dev-python/cheetah[${PYTHON_MULTI_USEDEP}]
+		dev-python/cheetah[${PYTHON_USEDEP}]
 		doc? (
 			>=app-doc/doxygen-1.5.7.1
-			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
 		)
 	')
 	grc? (

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="RFC 7049 - Concise Binary Object Representation"
 HOMEPAGE="https://bitbucket.org/bodhisnarkva/cbor https://pypi.org/project/cbor/"

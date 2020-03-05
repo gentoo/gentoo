@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Tool and library for manipulating LilyPond files"
 HOMEPAGE="https://github.com/wbsoft/python-ly https://pypi.org/project/python-ly/"

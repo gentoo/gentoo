@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit toolchain-funcs python-single-r1
+inherit toolchain-funcs python-single-r2
 
 DESCRIPTION="Genome-scale comparison of biological sequences"
 HOMEPAGE="http://last.cbrc.jp/"

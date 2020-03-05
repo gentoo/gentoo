@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python module to provide iteration for datetime object"
 HOMEPAGE="https://github.com/kiorky/croniter https://pypi.org/project/croniter/"

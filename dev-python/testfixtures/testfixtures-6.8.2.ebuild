@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A collection of helpers and mock objects for unit tests and doc tests"
 HOMEPAGE="https://pypi.org/project/testfixtures/ https://github.com/Simplistix/testfixtures"
@@ -36,7 +36,7 @@ python_prepare_all() {
 
 	# remove test that tests the stripped zope-component test_components.ComponentsTests
 	rm -f testfixtures/tests/test_components.py docs/components.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -51,5 +51,5 @@ python_test() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

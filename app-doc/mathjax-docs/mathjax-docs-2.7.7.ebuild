@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit python-utils-r1 vcs-clean
+inherit python-utils-r2 vcs-clean
 
 COMMIT="9d711f40638202b02f2154d7f05ea35088ff9388"
 

@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit python-any-r1 waf-utils xdg
+inherit python-any-r2 waf-utils xdg
 
 MY_P="${PN}2-${PV}"
 

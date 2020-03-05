@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils versionator
+inherit distutils-r2 eutils versionator
 
 DESCRIPTION="bzrtools is a useful collection of utilities for bzr"
 HOMEPAGE="http://bazaar-vcs.org/BzrTools"

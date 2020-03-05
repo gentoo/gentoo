@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Experimental terminal UI for net-mail/notmuch written in Python"
 HOMEPAGE="https://github.com/pazz/alot"
@@ -51,7 +51,7 @@ python_compile_all() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
 	doman docs/build/man/*
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	insinto /usr/share/alot
 	doins -r extra

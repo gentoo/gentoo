@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Tail workalike, that performs output colourising"
 HOMEPAGE="http://matt.immute.net/src/mtail/"

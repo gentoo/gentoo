@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit scons-utils fortran-2 flag-o-matic python-single-r1 toolchain-funcs
+inherit scons-utils fortran-2 flag-o-matic python-single-r2 toolchain-funcs
 
 DESCRIPTION="Automated pipeline for performing Poisson-Boltzmann electrostatics calculations"
 HOMEPAGE="https://www.poissonboltzmann.org/"
@@ -21,11 +21,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		|| (
-			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		)
-		sci-chemistry/openbabel-python[${PYTHON_MULTI_USEDEP}]
-		opal? ( dev-python/zsi[${PYTHON_MULTI_USEDEP}] )
+		sci-chemistry/openbabel-python[${PYTHON_USEDEP}]
+		opal? ( dev-python/zsi[${PYTHON_USEDEP}] )
 	')
 	pdb2pka? ( sci-chemistry/apbs[${PYTHON_SINGLE_USEDEP},-mpi] )"
 DEPEND="${RDEPEND}
@@ -45,7 +45,7 @@ pkg_setup() {
 		einfo "Allow usage of ${MAXATOMS} during calculations"
 	fi
 	fortran-2_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A simple command-line lyrics viewer"
 HOMEPAGE="http://ok100.github.io/lyvi/"
@@ -30,5 +30,5 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 python_prepare_all() {
 	# Remove pip dependency
 	sed -e '/require/d' --in-place setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ssl?"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A mail retriever with reliable Maildir and mbox delivery"
 HOMEPAGE="http://pyropus.ca/software/getmail/"
@@ -20,5 +20,5 @@ python_prepare_all() {
 	sed -i -e "s,'getmail-%s' % __version__,'${PF}'," \
 		-e "/docs\/COPYING/d" "${S}"/setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

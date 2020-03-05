@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="blockdiag generates block-diagram image from text"
 HOMEPAGE="http://blockdiag.com/ https://pypi.org/project/blockdiag/ https://bitbucket.org/blockdiag/blockdiag/"
@@ -38,7 +38,7 @@ DEPEND="
 PATCHES=( "${FILESDIR}/blockdiag-1.5.3-py2_7-test-fix.patch")
 python_prepare_all() {
 	sed -i -e /build-base/d setup.cfg || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

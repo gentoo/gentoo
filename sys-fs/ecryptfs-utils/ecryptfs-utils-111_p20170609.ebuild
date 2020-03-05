@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit flag-o-matic pam python-single-r1 linux-info autotools
+inherit flag-o-matic pam python-single-r2 linux-info autotools
 
 DESCRIPTION="eCryptfs userspace utilities"
 HOMEPAGE="https://launchpad.net/ecryptfs"
@@ -38,7 +38,7 @@ DEPEND="${RDEPEND}
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 
 	CONFIG_CHECK="~ECRYPT_FS"
 	linux-info_pkg_setup

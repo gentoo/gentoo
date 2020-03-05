@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit webapp python-single-r1
+inherit webapp python-single-r2
 
 DESCRIPTION="A Python 3 implementation for client-side web programming"
 HOMEPAGE="http://www.brython.info"
@@ -22,7 +22,7 @@ need_httpd_cgi
 
 pkg_setup() {
 	webapp_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_install() {

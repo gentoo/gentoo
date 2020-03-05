@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="PyHamcrest"
 
@@ -53,7 +53,7 @@ python_prepare_all() {
 		rm tests/hamcrest_unit_test/core/described_as_test.py || die "removing test #5 failed"
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -70,5 +70,5 @@ python_test() {
 
 python_install_all() {
 	use examples && dodoc -r examples
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

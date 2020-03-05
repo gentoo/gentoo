@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6)
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Utility for accessing HTTP server and storing files locally for reuse"
 HOMEPAGE="https://github.com/biolab/serverfiles"

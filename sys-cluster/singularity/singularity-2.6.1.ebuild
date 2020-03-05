@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit autotools eutils python-single-r1
+inherit autotools eutils python-single-r2
 
 DESCRIPTION="Application containers for Linux"
 HOMEPAGE="https://sylabs.io"

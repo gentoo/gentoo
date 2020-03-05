@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 RESTRICT="test" # broken
 
@@ -43,5 +43,5 @@ python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 	use examples && local EXAMPLES=( example/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

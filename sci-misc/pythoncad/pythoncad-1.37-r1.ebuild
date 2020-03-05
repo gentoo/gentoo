@@ -4,7 +4,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils distutils-r1 versionator
+inherit eutils distutils-r2 versionator
 
 MY_PN="PythonCAD"
 MY_PV="DS$(get_major_version)-R$(get_after_major_version)"
@@ -26,7 +26,7 @@ S="${WORKDIR}/${MY_P}"
 PATCHES=( "${FILESDIR}/${P}-png.patch" )
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	sed -i \
 		-e "s/gtkpycad.png/pythoncad.png/" \
 		-e "s/gtkpycad.py/pythoncad/" \
@@ -34,12 +34,12 @@ python_prepare_all() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	python_newscript gtkpycad.py pythoncad
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	insinto /etc/"${PN}"
 	doins prefs.py

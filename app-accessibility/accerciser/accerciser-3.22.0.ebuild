@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 
-inherit gnome2 python-r1
+inherit gnome2 python-multi-r2
 
 DESCRIPTION="Interactive Python accessibility explorer"
 HOMEPAGE="https://wiki.gnome.org/Apps/Accerciser"

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="rsync-like utility for btrfs snapshots"
 HOMEPAGE="https://github.com/AmesCornish/buttersink"
@@ -43,5 +43,5 @@ python_prepare_all() {
 		mkdir makestamps || die
 		echo "version = \"${PV}\"" > buttersink/version.py || die
 	fi
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

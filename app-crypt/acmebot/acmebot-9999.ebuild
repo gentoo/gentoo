@@ -6,7 +6,7 @@ PYTHON_COMPAT=(python3_6)
 EGIT_REPO_URI="https://github.com/plinss/${PN}.git"
 [[ $PV == 9999 ]] && _scm=git-r3
 
-inherit ${_scm} python-r1
+inherit ${_scm} python-multi-r2
 
 DESCRIPTION="Certificate manager bot using ACME protocol"
 HOMEPAGE="https://github.com/plinss/acmebot"

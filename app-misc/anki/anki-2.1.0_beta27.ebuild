@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
 
-inherit eutils python-single-r1 xdg
+inherit eutils python-single-r2 xdg
 
 DESCRIPTION="A spaced-repetition memory training program (flash cards)"
 HOMEPAGE="https://apps.ankiweb.net"
@@ -26,20 +26,20 @@ RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
 		|| (
 			(
-				>=dev-python/PyQt5-5.12[gui,svg,widgets,${PYTHON_MULTI_USEDEP}]
-				dev-python/PyQtWebEngine[${PYTHON_MULTI_USEDEP}]
+				>=dev-python/PyQt5-5.12[gui,svg,widgets,${PYTHON_USEDEP}]
+				dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 			)
-			<dev-python/PyQt5-5.12[gui,svg,webengine,widgets,${PYTHON_MULTI_USEDEP}]
+			<dev-python/PyQt5-5.12[gui,svg,webengine,widgets,${PYTHON_USEDEP}]
 		)
-		>=dev-python/httplib2-0.7.4[${PYTHON_MULTI_USEDEP}]
-		dev-python/beautifulsoup:4[${PYTHON_MULTI_USEDEP}]
-		dev-python/decorator[${PYTHON_MULTI_USEDEP}]
-		dev-python/markdown[${PYTHON_MULTI_USEDEP}]
-		dev-python/requests[${PYTHON_MULTI_USEDEP}]
-		dev-python/send2trash[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/httplib2-0.7.4[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		dev-python/decorator[${PYTHON_USEDEP}]
+		dev-python/markdown[${PYTHON_USEDEP}]
+		dev-python/requests[${PYTHON_USEDEP}]
+		dev-python/send2trash[${PYTHON_USEDEP}]
 		recording? (
 			media-sound/lame
-			>=dev-python/pyaudio-0.2.4[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pyaudio-0.2.4[${PYTHON_USEDEP}]
 		)
 	')
 	sound? ( media-video/mplayer )
@@ -51,7 +51,7 @@ RDEPEND="${PYTHON_DEPS}
 DEPEND="${RDEPEND}
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/nose[${PYTHON_MULTI_USEDEP}]
+			dev-python/nose[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -59,7 +59,7 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${PN}-2.1.0_beta25-web-folder.patch )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

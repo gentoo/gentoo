@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple test suite enabling Django app testing via setup.py"
 HOMEPAGE="https://github.com/praekelt/django-setuptest"

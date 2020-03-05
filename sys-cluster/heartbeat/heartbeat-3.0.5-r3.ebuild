@@ -4,7 +4,7 @@
 EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools python-single-r1
+inherit autotools python-single-r2
 
 DESCRIPTION="Heartbeat high availability cluster manager"
 HOMEPAGE="http://www.linux-ha.org/wiki/Heartbeat"
@@ -41,7 +41,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 
 	ewarn "If you're upgrading from heartbeat-2.x please follow:"
 	ewarn "https://www.gentoo.org/proj/en/cluster/ha-cluster/heartbeat-upgrade.xml"

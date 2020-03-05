@@ -7,7 +7,7 @@ CMAKE_MAKEFILE_GENERATOR="ninja"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit bash-completion-r1 cmake-utils cuda eutils multilib python-single-r1 readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 cmake-utils cuda eutils multilib python-single-r2 readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
@@ -56,7 +56,7 @@ BDEPEND="${CDEPEND}
 	doc? (
 		app-doc/doxygen
 		$(python_gen_cond_dep '
-			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
 		')
 		media-gfx/mscgen
 		media-gfx/graphviz

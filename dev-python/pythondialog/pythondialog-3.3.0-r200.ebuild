@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python module for making simple text/console-mode user interfaces"
 HOMEPAGE="http://pythondialog.sourceforge.net/ https://pypi.org/project/python2-pythondialog/"
@@ -22,7 +22,7 @@ S=${WORKDIR}/python2-${P}
 
 python_prepare_all() {
 	sed -e "/^    'sphinx.ext.intersphinx',/d" -i doc/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -33,5 +33,5 @@ python_install_all() {
 	use examples && local EXAMPLES=( examples/. )
 	use doc && local HTML_DOCS=( doc/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

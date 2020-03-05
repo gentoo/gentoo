@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils python-single-r1
+inherit cmake-utils python-single-r2
 
 DESCRIPTION="GNU Radio IIO Blocks"
 HOMEPAGE="https://github.com/analogdevicesinc/gr-iio"

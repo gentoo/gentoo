@@ -4,7 +4,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="FormEncode"
 MY_P="${MY_PN}-${PV}"
@@ -33,7 +33,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 
 python_prepare_all() {
 	sed -e '/package_data.*..docs/d' -i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="PasteDeploy"
 MY_P="${MY_PN}-${PV}"
@@ -29,11 +29,11 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	sed -i 's:"pytest-runner"::' setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	use doc && dodoc docs/*.txt
 	find "${D}" -name '*.pth' -delete || die

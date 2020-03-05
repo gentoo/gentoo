@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils systemd unpacker pax-utils python-single-r1
+inherit eutils systemd unpacker pax-utils python-single-r2
 
 MINOR_VERSION="1469-6d5612c2f"
 
@@ -26,7 +26,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	$(python_gen_cond_dep '
-		dev-python/virtualenv[${PYTHON_MULTI_USEDEP}]
+		dev-python/virtualenv[${PYTHON_USEDEP}]
 	')"
 
 RDEPEND="

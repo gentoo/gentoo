@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit gnome2-utils python-single-r1 xdg-utils
+inherit gnome2-utils python-single-r2 xdg-utils
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="git://sigrok.org/${PN}"

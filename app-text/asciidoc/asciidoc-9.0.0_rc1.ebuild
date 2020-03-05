@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} pypy3 )
 
-inherit autotools eutils python-single-r1 readme.gentoo-r1
+inherit autotools eutils python-single-r2 readme.gentoo-r1
 
 DESCRIPTION="A plain text human readable/writable document format"
 HOMEPAGE="http://asciidoc.org/ https://github.com/asciidoc/asciidoc-py3/"

@@ -8,7 +8,7 @@ USE_RUBY="ruby23 ruby24 ruby25 ruby26"
 RUBY_FAKEGEM_NAME="RbST"
 RUBY_FAKEGEM_GEMSPEC="RbST.gemspec"
 
-inherit python-single-r1 ruby-fakegem
+inherit python-single-r2 ruby-fakegem
 
 DESCRIPTION="A simple Ruby wrapper for processing rST via docutils"
 HOMEPAGE="https://github.com/alphabetum/rbst"
@@ -36,7 +36,7 @@ ruby_add_bdepend "
 RESTRICT="test"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	ruby-ng_pkg_setup
 }
 

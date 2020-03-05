@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit autotools python-single-r1 systemd
+inherit autotools python-single-r2 systemd
 
 MY_PV_MM=$(ver_cut 1-2)
 DESCRIPTION="syslog replacement with advanced filtering features"
@@ -53,7 +53,7 @@ DOCS=( AUTHORS NEWS.md CONTRIBUTING.md contrib/syslog-ng.conf.{HP-UX,RedHat,SunO
 PATCHES=( "${FILESDIR}/patches/${PN}-fno-common.patch" )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A logging replacement for Python"
 HOMEPAGE="https://logbook.readthedocs.io/en/stable/
@@ -31,7 +31,7 @@ PATCHES=( "${FILESDIR}"/${PN}-0.4.2-objectsinv.patch )
 python_prepare_all() {
 	# Delete test file requiring local connection to redis server
 	rm tests/test_queues.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -44,5 +44,5 @@ python_test() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

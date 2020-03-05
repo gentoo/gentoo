@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python module for downloading files"
 HOMEPAGE="http://urlgrabber.baseurl.org"

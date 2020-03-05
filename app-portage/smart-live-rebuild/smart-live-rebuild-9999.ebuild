@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 EGIT_REPO_URI="https://github.com/mgorny/${PN}.git"
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="Check live packages for updates and emerge them as necessary"
 HOMEPAGE="https://github.com/mgorny/smart-live-rebuild/"
@@ -23,7 +23,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	insinto /etc/portage
 	newins smart-live-rebuild.conf{.example,}

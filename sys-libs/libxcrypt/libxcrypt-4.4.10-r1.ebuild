@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
-inherit autotools multibuild python-any-r1 multilib-minimal
+inherit autotools multibuild python-any-r2 multilib-minimal
 
 DESCRIPTION="Extended crypt library for descrypt, md5crypt, bcrypt, and others "
 SRC_URI="https://github.com/besser82/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -39,7 +39,7 @@ pkg_setup() {
 		xcrypt_nocompat
 	)
 
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

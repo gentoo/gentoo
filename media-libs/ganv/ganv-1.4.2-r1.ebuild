@@ -5,7 +5,7 @@ EAPI=6
 # oes not work with python3
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
-inherit eutils flag-o-matic waf-utils python-any-r1
+inherit eutils flag-o-matic waf-utils python-any-r2
 
 DESCRIPTION="A GTK+ widget for interactive graph-like environments"
 HOMEPAGE="http://drobilla.net/software/ganv/"

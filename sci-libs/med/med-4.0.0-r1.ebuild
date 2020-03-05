@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools flag-o-matic fortran-2 python-single-r1
+inherit autotools flag-o-matic fortran-2 python-single-r2
 
 #DESCRIPTION="A library to store and exchange meshed data or computation results"
 DESCRIPTION="Modeling and Exchange of Data library"
@@ -39,7 +39,7 @@ PATCHES=(
 DOCS=( AUTHORS ChangeLog README )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	use fortran && fortran-2_pkg_setup
 }
 

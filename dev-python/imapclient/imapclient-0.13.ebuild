@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="IMAPClient"
 MY_P="${MY_PN}-${PV}"
@@ -40,7 +40,7 @@ python_prepare_all() {
 		-e 's:from . import six:import six:g' \
 		-i ${PN}/*.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -48,7 +48,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	# don't install examples and tests in module dir
 	rm -r "${D}"$(python_get_sitedir)/imapclient/{examples,test} || die
 }
@@ -56,6 +56,6 @@ python_install() {
 python_install_all() {
 #	local DOCS=( AUTHORS HACKING.rst NEWS.rst README.rst THANKS )
 	use doc && local HTML_DOCS=( doc/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	use examples && dodoc -r ${PN}/examples
 }

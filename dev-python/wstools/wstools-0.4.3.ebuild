@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="WSDL parsing services package for Web Services for Python"
 HOMEPAGE="https://github.com/kiorky/wstools https://pypi.org/project/wstools/"

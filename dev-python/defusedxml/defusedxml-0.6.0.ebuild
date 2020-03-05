@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} pypy3 )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="XML bomb protection for Python stdlib modules, an xml serialiser"
 HOMEPAGE="https://pypi.org/project/defusedxml/"
@@ -27,5 +27,5 @@ src_prepare() {
 
 python_install_all() {
 	use examples && dodoc -r examples/
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

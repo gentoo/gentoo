@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Searchable online file/package database for Gentoo"
 HOMEPAGE="http://www.portagefilelist.de"
@@ -32,7 +32,7 @@ python_install_all() {
 	fi
 
 	keepdir /var/lib/${PN}
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

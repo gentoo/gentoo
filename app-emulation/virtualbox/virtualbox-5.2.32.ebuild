@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit flag-o-matic gnome2-utils java-pkg-opt-2 linux-info pax-utils python-single-r1 tmpfiles toolchain-funcs udev xdg-utils
+inherit flag-o-matic gnome2-utils java-pkg-opt-2 linux-info pax-utils python-single-r2 tmpfiles toolchain-funcs udev xdg-utils
 
 MY_PV="${PV/beta/BETA}"
 MY_PV="${MY_PV/rc/RC}"
@@ -144,7 +144,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 
 	tc-ld-disable-gold #bug 488176
 	tc-export CC CXX LD AR RANLIB

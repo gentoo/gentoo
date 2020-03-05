@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Enhanced internationalization (I18N) services for your Python modules and applications"
 HOMEPAGE="https://github.com/dieterv/elib.intl/"

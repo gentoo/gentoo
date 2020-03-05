@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-single-r1 readme.gentoo-r1
+inherit gnome2 python-single-r2 readme.gentoo-r1
 
 DESCRIPTION="OpenDict is a free cross-platform dictionary program"
 HOMEPAGE="http://opendict.sourceforge.net/"
@@ -19,7 +19,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/wxpython:3.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"

@@ -6,7 +6,7 @@ EAPI=6
 # Python is required for tests and some build tasks.
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-any-r1 cmake-multilib
+inherit python-any-r2 cmake-multilib
 
 DESCRIPTION="Google C++ Testing Framework"
 HOMEPAGE="https://github.com/google/googletest"
@@ -31,7 +31,7 @@ PATCHES=(
 S="${WORKDIR}"/googletest-release-${PV}
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 multilib_src_configure() {

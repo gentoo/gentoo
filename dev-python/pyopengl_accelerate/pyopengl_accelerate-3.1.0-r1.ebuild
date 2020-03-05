@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Accelerate module for PyOpenGL"
 HOMEPAGE="http://pyopengl.sourceforge.net/ https://pypi.org/project/PyOpenGL-accelerate/"

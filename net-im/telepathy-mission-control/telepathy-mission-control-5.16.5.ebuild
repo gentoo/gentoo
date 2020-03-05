@@ -6,7 +6,7 @@ GNOME2_LA_PUNT="yes"
 # Needed for tests and build #489466
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit gnome2 python-any-r1
+inherit gnome2 python-any-r2
 
 DESCRIPTION="An account manager and channel dispatcher for the Telepathy framework"
 HOMEPAGE="https://cgit.freedesktop.org/telepathy/telepathy-mission-control/"

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
-inherit cmake-utils python-any-r1 user
+inherit cmake-utils python-any-r2 user
 
 DESCRIPTION="Cross-platform Direct Connect client"
 HOMEPAGE="https://airdcpp-web.github.io/"
@@ -36,7 +36,7 @@ DEPEND="
 PDEPEND="webui? ( www-apps/airdcpp-webui )"
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 	enewgroup airdcppd
 	enewuser airdcppd -1 -1 /var/lib/airdcppd airdcppd
 }

@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='ncurses,xml,threads'
 
-inherit bash-completion-r1 flag-o-matic multilib python-single-r1 toolchain-funcs
+inherit bash-completion-r1 flag-o-matic multilib python-single-r2 toolchain-funcs
 
 MY_PV=${PV/_/-}
 
@@ -88,8 +88,8 @@ COMMON_DEPEND="
 DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-4.11
 	$(python_gen_cond_dep '
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-		pam? ( dev-python/pypam[${PYTHON_MULTI_USEDEP}] )
+		dev-python/lxml[${PYTHON_USEDEP}]
+		pam? ( dev-python/pypam[${PYTHON_USEDEP}] )
 	')
 	x86? ( sys-devel/dev86
 		system-ipxe? ( sys-firmware/ipxe[qemu] )
@@ -111,7 +111,7 @@ DEPEND="${COMMON_DEPEND}
 		app-text/ghostscript-gpl
 		app-text/pandoc
 		$(python_gen_cond_dep '
-			dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+			dev-python/markdown[${PYTHON_USEDEP}]
 		')
 		dev-texlive/texlive-latexextra
 		media-gfx/transfig

@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='readline,sqlite,threads(+)'
 
-inherit distutils-r1 eutils virtualx
+inherit distutils-r2 eutils virtualx
 
 DESCRIPTION="Advanced interactive shell for Python"
 HOMEPAGE="http://ipython.org/"
@@ -75,7 +75,7 @@ python_prepare_all() {
 		sed -e "/^    'sphinx.ext.intersphinx',/d" -i docs/source/conf.py || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -86,7 +86,7 @@ python_compile_all() {
 }
 
 src_test() {
-	virtx distutils-r1_src_test
+	virtx distutils-r2_src_test
 }
 
 python_test() {
@@ -97,7 +97,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	# Create ipythonX.Y symlinks.
 	# TODO:
@@ -109,7 +109,7 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use examples; then
 		dodoc -r examples

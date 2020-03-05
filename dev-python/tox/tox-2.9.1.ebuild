@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="virtualenv-based automation of test activities"
 HOMEPAGE="https://tox.readthedocs.io https://github.com/tox-dev/tox https://pypi.org/project/tox/"
@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	# remove intersphinx stuff
 	sed -i -e "s/'sphinx.ext.intersphinx',//" doc/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit python-single-r1 unpacker
+inherit python-single-r2 unpacker
 
 DESCRIPTION="Commercial version of app-emulation/wine with paid support."
 HOMEPAGE="https://www.codeweavers.com/products/"
@@ -49,8 +49,8 @@ RDEPEND="${DEPEND}
 	${PYTHON_DEPS}
 	!prefix? ( sys-libs/glibc )
 	$(python_gen_cond_dep '
-		>=dev-python/pygtk-2.10:2[${PYTHON_MULTI_USEDEP}]
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygtk-2.10:2[${PYTHON_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
 	')
 	dev-util/desktop-file-utils
 	!app-emulation/crossover-office-pro-bin

@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
 
-inherit distutils-r1
+inherit distutils-r2
 
 HOMEPAGE="http://www.grantjenks.com/docs/diskcache/"
 DESCRIPTION="Disk and file backed cache"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python module for calculations with uncertainties"
 HOMEPAGE="https://pythonhosted.org/uncertainties/"
@@ -39,5 +39,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( build/sphinx/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

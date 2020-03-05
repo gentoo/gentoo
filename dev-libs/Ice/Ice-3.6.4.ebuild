@@ -20,7 +20,7 @@ USE_PHP="php7-0"
 # db:6.2 breaks the build process
 BERKDB_SLOTS=( 6.1 5.3 5.1 4.8 )
 
-inherit db-use mono-env php-ext-source-r3 python-r1 ruby-ng toolchain-funcs eapi7-ver
+inherit db-use mono-env php-ext-source-r3 python-multi-r2 ruby-ng toolchain-funcs eapi7-ver
 
 DESCRIPTION="ICE middleware C++ library and generator tools"
 HOMEPAGE="https://zeroc.com/products/ice"

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=(python3_{6,7,8})
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="A collection of latency testing tools for the linux(-rt) kernel"
 HOMEPAGE="https://git.kernel.org/pub/scm/utils/rt-tests/rt-tests.git/about/"

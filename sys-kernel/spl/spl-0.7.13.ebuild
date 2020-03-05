@@ -13,7 +13,7 @@ else
 	KEYWORDS="amd64"
 fi
 
-inherit flag-o-matic linux-info linux-mod python-single-r1 autotools-utils
+inherit flag-o-matic linux-info linux-mod python-single-r2 autotools-utils
 
 DESCRIPTION="The Solaris Porting Layer provides many of the Solaris kernel APIs"
 HOMEPAGE="https://zfsonlinux.org/"
@@ -40,7 +40,7 @@ AUTOTOOLS_IN_SOURCE_BUILD="1"
 DOCS=( AUTHORS DISCLAIMER )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	linux-info_pkg_setup
 	CONFIG_CHECK="
 		!DEBUG_LOCK_ALLOC

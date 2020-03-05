@@ -8,7 +8,7 @@ MY_PN="estimator"
 MY_PV=${PV/_rc/-rc}
 MY_P=${MY_PN}-${MY_PV}
 
-inherit bazel distutils-r1 flag-o-matic toolchain-funcs
+inherit bazel distutils-r2 flag-o-matic toolchain-funcs
 
 DESCRIPTION="A high-level TensorFlow API that greatly simplifies machine learning programming"
 HOMEPAGE="https://www.tensorflow.org/"

@@ -5,7 +5,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite,threads"
 
-inherit desktop eutils python-single-r1 xdg-utils
+inherit desktop eutils python-single-r2 xdg-utils
 
 DESCRIPTION="Python Fitting Assistant - a ship fitting application for EVE Online"
 HOMEPAGE="https://github.com/pyfa-org/Pyfa"
@@ -26,23 +26,23 @@ RESTRICT="mirror bindist"
 
 DEPEND="
 	$(python_gen_cond_dep '
-		>=dev-python/cryptography-2.3[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/logbook-1.0.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pyyaml-5.1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/sqlalchemy-1.3.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/wxpython-4.0.4[webkit,${PYTHON_MULTI_USEDEP}]
+		>=dev-python/cryptography-2.3[${PYTHON_USEDEP}]
+		>=dev-python/logbook-1.0.0[${PYTHON_USEDEP}]
+		>=dev-python/pyyaml-5.1[${PYTHON_USEDEP}]
+		>=dev-python/sqlalchemy-1.3.0[${PYTHON_USEDEP}]
+		>=dev-python/wxpython-4.0.4[webkit,${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		>=dev-python/beautifulsoup-4.6.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/markdown2-2.3.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/packaging-16.8[${PYTHON_MULTI_USEDEP}]
-		dev-python/python-dateutil[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/requests-2.0.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/roman-2.0.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/matplotlib-3.1.2[wxwidgets,${PYTHON_MULTI_USEDEP}]
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/beautifulsoup-4.6.0[${PYTHON_USEDEP}]
+		>=dev-python/markdown2-2.3.0[${PYTHON_USEDEP}]
+		>=dev-python/packaging-16.8[${PYTHON_USEDEP}]
+		dev-python/python-dateutil[${PYTHON_USEDEP}]
+		>=dev-python/requests-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/roman-2.0.0[${PYTHON_USEDEP}]
+		>=dev-python/matplotlib-3.1.2[wxwidgets,${PYTHON_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	')"
 BDEPEND="app-arch/zip"
 

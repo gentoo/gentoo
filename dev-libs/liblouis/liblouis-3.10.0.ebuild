@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='wide-unicode(+)'
 DISTUTILS_OPTIONAL=1
-inherit autotools distutils-r1
+inherit autotools distutils-r2
 
 DESCRIPTION="An open-source braille translator and back-translator"
 HOMEPAGE="https://github.com/liblouis/liblouis"
@@ -26,7 +26,7 @@ src_prepare() {
 
 	if use python; then
 		pushd python > /dev/null
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 		popd > /dev/null
 	fi
 	eautoreconf
@@ -46,7 +46,7 @@ src_compile() {
 		# at build-time.  Hack around it with LD_PRELOAD.
 		# Thanks ArchLinux.
 		LD_PRELOAD+=':../liblouis/.libs/liblouis.so'
-			distutils-r1_src_compile
+			distutils-r2_src_compile
 		popd > /dev/null
 	fi
 }
@@ -57,7 +57,7 @@ src_install() {
 	if use python; then
 		pushd python > /dev/null
 		LD_PRELOAD+=':../liblouis/.libs/liblouis.so' \
-			distutils-r1_src_install
+			distutils-r2_src_install
 		popd > /dev/null
 	fi
 

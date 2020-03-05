@@ -10,7 +10,7 @@ fi
 
 if [[ -n ${GRUB_AUTOGEN} || -n ${GRUB_BOOTSTRAP} ]]; then
 	PYTHON_COMPAT=( python{2_7,3_{6,7}} )
-	inherit python-any-r1
+	inherit python-any-r2
 fi
 
 if [[ -n ${GRUB_AUTORECONF} ]]; then

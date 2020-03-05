@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=(python2_7)
 PYTHON_REQ_USE="ipv6(+)?"
 
-inherit user autotools bash-completion-r1 python-single-r1
+inherit user autotools bash-completion-r1 python-single-r2
 
 MY_PV="${PV/_rc/~rc}"
 MY_PV="${MY_PV/_beta/~beta}"
@@ -69,16 +69,16 @@ GROUP_PREFIX="${GANETI_GROUP_PREFIX:-"${USER_PREFIX}"}"
 DEPEND="
 	dev-libs/openssl:0
 	$(python_gen_cond_dep '
-		dev-python/paramiko[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyopenssl[${PYTHON_MULTI_USEDEP}]
-		dev-python/simplejson[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyparsing[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyinotify[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycurl[${PYTHON_MULTI_USEDEP}]
-		dev-python/ipaddr[${PYTHON_MULTI_USEDEP}]
-		dev-python/bitarray[${PYTHON_MULTI_USEDEP}]
-		dev-python/docutils[${PYTHON_MULTI_USEDEP}]
-		dev-python/fdsend[${PYTHON_MULTI_USEDEP}]
+		dev-python/paramiko[${PYTHON_USEDEP}]
+		dev-python/pyopenssl[${PYTHON_USEDEP}]
+		dev-python/simplejson[${PYTHON_USEDEP}]
+		dev-python/pyparsing[${PYTHON_USEDEP}]
+		dev-python/pyinotify[${PYTHON_USEDEP}]
+		dev-python/pycurl[${PYTHON_USEDEP}]
+		dev-python/ipaddr[${PYTHON_USEDEP}]
+		dev-python/bitarray[${PYTHON_USEDEP}]
+		dev-python/docutils[${PYTHON_USEDEP}]
+		dev-python/fdsend[${PYTHON_USEDEP}]
 	')
 	|| (
 		net-misc/iputils[arping]
@@ -160,7 +160,7 @@ DEPEND+="
 	sys-devel/m4
 	app-text/pandoc
 	$(python_gen_cond_dep '
-		dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+		dev-python/sphinx[${PYTHON_USEDEP}]
 	')
 	media-fonts/urw-fonts
 	media-gfx/graphviz
@@ -224,7 +224,7 @@ QA_FLAGS_IGNORED="
 
 pkg_setup() {
 	local user
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 
 	if use multiple-users; then
 		for user in gnt-{masterd,confd,luxid,rapi,daemons,admin}; do

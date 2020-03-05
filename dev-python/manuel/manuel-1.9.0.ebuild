@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Manuel lets you build tested documentation"
 HOMEPAGE="https://github.com/benji-york/manuel/ https://pypi.org/project/manuel/"

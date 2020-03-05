@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1 eutils linux-info multilib
+inherit distutils-r2 eutils linux-info multilib
 
 DESCRIPTION="Cloud computing fabric controller"
 HOMEPAGE="https://launchpad.net/nova"
@@ -167,11 +167,11 @@ pkg_setup() {
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use !compute-only; then
 		for svc in api conductor consoleauth network scheduler spicehtml5proxy xvpvncproxy; do

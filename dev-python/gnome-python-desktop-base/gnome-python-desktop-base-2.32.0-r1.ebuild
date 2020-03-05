@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 GNOME_ORG_MODULE="gnome-python-desktop"
 GNOME_TARBALL_SUFFIX="bz2"
 
-inherit gnome2 python-r1
+inherit gnome2 python-multi-r2
 
 # This ebuild does nothing -- we just want to get the pkgconfig file installed
 

@@ -14,7 +14,7 @@ else
 	S=${WORKDIR}/${PN%-apache}-${PV}/${PN}
 fi
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Apache plugin for certbot (Let's Encrypt Client)"
 HOMEPAGE="https://github.com/certbot/certbot https://letsencrypt.org/"

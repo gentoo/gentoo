@@ -5,7 +5,7 @@ EAPI="5"
 WX_GTK_VER=3.0
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 multilib wxwidgets
+inherit distutils-r2 multilib wxwidgets
 
 DESCRIPTION="Font preview application"
 HOMEPAGE="https://savannah.nongnu.org/projects/fontypython"
@@ -28,11 +28,11 @@ PATCHES=( "${FILESDIR}/${PN}-pillow.patch"
 	"${FILESDIR}"/0003-Adapt-to-wxpython-3.0-which-enforces-assertions-on-L.patch )
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	need-wxwidgets unicode
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	doman "${S}"/fontypython.1
 }

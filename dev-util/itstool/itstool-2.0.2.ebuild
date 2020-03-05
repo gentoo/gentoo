@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="xml"
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Translation tool for XML documents that uses gettext files and ITS rules"
 HOMEPAGE="http://itstool.org/"
@@ -22,13 +22,13 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-libs/libxml2[python,${PYTHON_MULTI_USEDEP}]
+		dev-libs/libxml2[python,${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
 
 pkg_setup() {
 	DOCS=(ChangeLog NEWS) # AUTHORS, README are empty
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

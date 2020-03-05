@@ -7,7 +7,7 @@ WANT_AUTOMAKE="1.11"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools python-r1 pam systemd user
+inherit autotools python-multi-r2 pam systemd user
 
 DESCRIPTION="An extremely fast and tiny web server"
 SRC_URI="https://github.com/cherokee/webserver/archive/v${PV}.zip -> ${P}.zip"

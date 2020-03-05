@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools flag-o-matic multilib-minimal python-single-r1 systemd user
+inherit autotools flag-o-matic multilib-minimal python-single-r2 systemd user
 
 MY_P=${PN}-${PV/_/}
 DESCRIPTION="A validating, recursive and caching DNS resolver"
@@ -73,7 +73,7 @@ pkg_setup() {
 		chown --no-dereference --from=unbound root "${ROOT}/etc/unbound"
 	fi
 
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

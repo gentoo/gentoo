@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python version of node-semver, the semantic versioner for npm"
 HOMEPAGE="
@@ -23,7 +23,7 @@ RESTRICT="!test? ( test )"
 DEPEND="test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

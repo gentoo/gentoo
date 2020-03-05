@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A sphinx extension for embedding block diagrams using blockdiag"
 
@@ -29,5 +29,5 @@ RDEPEND="${DEPEND}"
 
 python_prepare_all() {
 	sed -i -e /build-base/d setup.cfg || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

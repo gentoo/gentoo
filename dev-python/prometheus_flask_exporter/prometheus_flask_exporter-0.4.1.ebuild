@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Provides HTTP request metrics to export into Prometheus"
 HOMEPAGE="https://pypi.python.org/pypi/prometheus-flask-exporter https://github.com/rycus86/prometheus_flask_exporter"

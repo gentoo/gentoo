@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Allows grouping a list of arbitrary objects into related groups (clusters)"
 HOMEPAGE="https://github.com/exhuma/python-cluster"

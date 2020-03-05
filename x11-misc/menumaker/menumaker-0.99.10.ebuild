@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools python-r1
+inherit autotools python-multi-r2
 
 DESCRIPTION="Utility that scans through the system and generates a menu of installed programs"
 HOMEPAGE="http://menumaker.sourceforge.net/"

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple powerful testing with Python"
 HOMEPAGE="http://pytest.org/"
@@ -60,7 +60,7 @@ python_prepare_all() {
 		testing/test_terminal.py || die
 	sed -i -e 's:test_trial_pdb:_&:' testing/test_unittest.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

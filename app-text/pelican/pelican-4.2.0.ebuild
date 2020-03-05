@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_5,3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A tool to generate a static blog, with restructured text or markdown input files"
 HOMEPAGE="https://blog.getpelican.com/ https://pypi.org/project/pelican/"
@@ -46,7 +46,7 @@ python_install_all() {
 		docompress -x "/usr/share/doc/${PF}/samples"
 		doins -r samples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 python_test() {

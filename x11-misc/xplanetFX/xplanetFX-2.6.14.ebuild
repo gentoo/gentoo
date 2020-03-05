@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit desktop eutils python-r1
+inherit desktop eutils python-multi-r2
 
 DESCRIPTION="GUI to configure, run or daemonize xplanet with HQ capabilities"
 HOMEPAGE="http://mein-neues-blog.de/xplanetFX/"

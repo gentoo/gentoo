@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="functions to dump Python tracebacks explicitly (on fault, user signal, timeout)"
 HOMEPAGE="https://github.com/haypo/faulthandler https://pypi.org/project/faulthandler/"

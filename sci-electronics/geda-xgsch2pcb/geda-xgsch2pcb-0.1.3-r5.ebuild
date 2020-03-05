@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools fdo-mime gnome2-utils python-single-r1
+inherit autotools fdo-mime gnome2-utils python-single-r2
 
 DESCRIPTION="A graphical front-end for the gschem -> pcb workflow"
 HOMEPAGE="http://www.gpleda.org"
@@ -20,9 +20,9 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 CDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygtk:2[${PYTHON_USEDEP}]
+		dev-python/pygobject:2[${PYTHON_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
 	')
 	sci-electronics/pcb[dbus]
 	sci-electronics/geda
@@ -32,7 +32,7 @@ RDEPEND="${CDEPEND}
 	sci-electronics/electronics-menu
 	gnome? (
 		$(python_gen_cond_dep '
-			dev-python/gnome-vfs-python[${PYTHON_MULTI_USEDEP}]
+			dev-python/gnome-vfs-python[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -45,7 +45,7 @@ DEPEND="${CDEPEND}
 PATCHES=( "${FILESDIR}"/${PV}-python.patch )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

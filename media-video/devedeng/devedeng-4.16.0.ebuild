@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 xdg
+inherit distutils-r2 xdg
 
 DESCRIPTION="DevedeNG is a program to create video DVDs and CDs (VCD, sVCD or CVD)"
 HOMEPAGE="http://www.rastersoft.com/programas/devede.html"

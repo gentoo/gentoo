@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 python3_{6,7} )
 DISTUTILS_OPTIONAL="1"
 DISTUTILS_IN_SOURCE_BUILD="1"
 
-inherit cmake-multilib distutils-r1
+inherit cmake-multilib distutils-r2
 
 DESCRIPTION="Generic-purpose lossless compression algorithm"
 HOMEPAGE="https://github.com/google/brotli"
@@ -36,7 +36,7 @@ fi
 RESTRICT="!test? ( test )"
 
 src_prepare() {
-	use python && distutils-r1_src_prepare
+	use python && distutils-r2_src_prepare
 	cmake-utils_src_prepare
 }
 
@@ -48,7 +48,7 @@ multilib_src_configure() {
 }
 src_configure() {
 	cmake-multilib_src_configure
-	use python && distutils-r1_src_configure
+	use python && distutils-r2_src_configure
 }
 
 multilib_src_compile() {
@@ -56,7 +56,7 @@ multilib_src_compile() {
 }
 src_compile() {
 	cmake-multilib_src_compile
-	use python && distutils-r1_src_compile
+	use python && distutils-r2_src_compile
 }
 
 python_test() {
@@ -68,12 +68,12 @@ multilib_src_test() {
 }
 src_test() {
 	cmake-multilib_src_test
-	use python && distutils-r1_src_test
+	use python && distutils-r2_src_test
 }
 
 multilib_src_install() {
 	cmake-utils_src_install
 }
 multilib_src_install_all() {
-	use python && distutils-r1_src_install
+	use python && distutils-r2_src_install
 }

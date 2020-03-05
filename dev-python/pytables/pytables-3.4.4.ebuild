@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 MY_PN=tables
 MY_P=${MY_PN}-${PV}
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Hierarchical datasets for Python"
 HOMEPAGE="https://www.pytables.org/"
@@ -48,7 +48,7 @@ python_prepare_all() {
 		-i setup.py || die
 	rm -r c-blosc/{blosc,internal-complibs} || die
 	sed -i -e '/_version/ s/\\s\*/\\s\+/' setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
@@ -56,7 +56,7 @@ python_compile() {
 		local -x CFLAGS="${CFLAGS}"
 		append-cflags -fno-strict-aliasing
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -68,7 +68,7 @@ python_install_all() {
 	if use doc; then
 		DOCS+=( doc/scripts )
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use examples; then
 		dodoc -r examples

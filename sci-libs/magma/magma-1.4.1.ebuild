@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 FORTRAN_STANDARD="77 90"
 
-inherit cuda eutils flag-o-matic fortran-2 multilib toolchain-funcs versionator python-any-r1
+inherit cuda eutils flag-o-matic fortran-2 multilib toolchain-funcs versionator python-any-r2
 
 DESCRIPTION="Matrix Algebra on GPU and Multicore Architectures"
 HOMEPAGE="http://icl.cs.utk.edu/magma/"
@@ -34,7 +34,7 @@ RESTRICT="userpriv !test? ( test )"
 
 pkg_setup() {
 	fortran-2_pkg_setup
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

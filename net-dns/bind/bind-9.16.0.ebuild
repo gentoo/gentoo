@@ -14,7 +14,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-r1 eutils autotools toolchain-funcs flag-o-matic multilib db-use user systemd
+inherit python-multi-r2 eutils autotools toolchain-funcs flag-o-matic multilib db-use user systemd
 
 MY_PV="${PV/_p/-P}"
 MY_PV="${MY_PV/_rc/rc}"

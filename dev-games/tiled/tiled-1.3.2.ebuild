@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit gnome2-utils multilib python-single-r1 qmake-utils xdg-utils
+inherit gnome2-utils multilib python-single-r2 qmake-utils xdg-utils
 
 DESCRIPTION="A general purpose tile map editor"
 HOMEPAGE="https://www.mapeditor.org/"
@@ -32,7 +32,7 @@ BDEPEND="dev-qt/linguist-tools:5"
 DOCS=( AUTHORS COPYING NEWS.md README.md )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

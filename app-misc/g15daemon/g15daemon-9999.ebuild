@@ -8,7 +8,7 @@ GENTOO_DEPEND_ON_PERL="no"
 ESVN_PROJECT=${PN}/trunk
 ESVN_REPO_URI="https://svn.code.sf.net/p/${PN}/code/trunk/${PN}-wip"
 
-inherit eutils linux-info perl-module python-r1 base subversion autotools
+inherit eutils linux-info perl-module python-multi-r2 base subversion autotools
 
 DESCRIPTION="Takes control of the G15 keyboard, through the linux kernel uinput device driver"
 HOMEPAGE="https://sourceforge.net/projects/g15daemon/"

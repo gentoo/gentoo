@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Statistical computations and models for use with SciPy"
 HOMEPAGE="https://www.statsmodels.org/stable/index.html"
@@ -46,7 +46,7 @@ python_prepare_all() {
 	export VARTEXFONTS="${T}"/fonts
 	export MPLCONFIGDIR="${T}"
 	echo "backend : Agg" > "${MPLCONFIGDIR}"/matplotlibrc || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -64,7 +64,7 @@ python_install_all() {
 		docompress -x /usr/share/doc/${PF}/examples
 		dodoc -r examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

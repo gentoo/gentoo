@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="A Python extension for iwscan access"
 HOMEPAGE="http://projects.otaku42.de/browser/python-iwscan"

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="database migrations tool, written by the author of SQLAlchemy"
 HOMEPAGE="https://bitbucket.org/zzzeek/alembic"
@@ -34,7 +34,7 @@ python_prepare_all() {
 	# suite passes all if run from source. The residual fail & error are quite erroneous
 	rm tests/test_script_consumption.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -44,5 +44,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

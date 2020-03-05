@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="sqlite"
 
-inherit distutils-r1 flag-o-matic virtualx
+inherit distutils-r2 flag-o-matic virtualx
 
 MYSLOT=2
 MY_PN=${PN}${MYSLOT}
@@ -43,7 +43,7 @@ python_compile() {
 		local CFLAGS=${CFLAGS}
 		append-cflags -fno-strict-aliasing
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {

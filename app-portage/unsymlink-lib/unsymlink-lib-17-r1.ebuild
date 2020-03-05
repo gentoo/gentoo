@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Convert your system to SYMLINK_LIB=no"
 HOMEPAGE="https://github.com/mgorny/unsymlink-lib"
@@ -18,7 +18,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		sys-apps/portage[${PYTHON_MULTI_USEDEP}]
+		sys-apps/portage[${PYTHON_USEDEP}]
 	')"
 
 src_test() {

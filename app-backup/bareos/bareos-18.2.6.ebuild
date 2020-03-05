@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads"
 CMAKE_WARN_UNUSED_CLI=yes
 #CMAKE_REMOVE_MODULES=yes
 
-inherit eutils multilib python-single-r1 systemd user cmake-utils
+inherit eutils multilib python-single-r2 systemd user cmake-utils
 
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="http://www.bareos.org/"
@@ -106,7 +106,7 @@ pkg_setup() {
 		fi
 	fi
 
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

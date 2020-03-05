@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Github-Flavored Markdown for Python-Markdown"
 HOMEPAGE="https://github.com/google/py-gfm"

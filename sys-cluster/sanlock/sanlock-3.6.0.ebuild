@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit linux-info python-r1 systemd user
+inherit linux-info python-multi-r2 systemd user
 
 DESCRIPTION="shared storage lock manager"
 HOMEPAGE="https://pagure.io/sanlock"

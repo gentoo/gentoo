@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 KFMIN=5.60.0
 QTMIN=5.12.3
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org python-single-r1
+inherit ecm kde.org python-single-r2
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/$(ver_cut 1-3)/${P}.tar.xz
@@ -33,8 +33,8 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/boost:=
 	dev-libs/quazip
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[${PYTHON_MULTI_USEDEP}]
-		dev-python/sip[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[${PYTHON_USEDEP}]
+		dev-python/sip[${PYTHON_USEDEP}]
 	')
 	>=dev-qt/qtconcurrent-${QTMIN}:5
 	>=dev-qt/qtdbus-${QTMIN}:5
@@ -94,7 +94,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	ecm_pkg_setup
 }
 

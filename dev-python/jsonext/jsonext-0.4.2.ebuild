@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Well-structured helpers for serializing commonly encountered structures to JSON."
 HOMEPAGE="https://github.com/mbr/jsonext"

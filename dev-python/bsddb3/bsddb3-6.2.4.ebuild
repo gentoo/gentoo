@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit db-use distutils-r1
+inherit db-use distutils-r2
 
 DESCRIPTION="Python bindings for Berkeley DB"
 HOMEPAGE="https://www.jcea.es/programacion/pybsddb.htm https://pypi.org/project/bsddb3/"
@@ -48,7 +48,7 @@ python_prepare_all() {
 	sed -e "s/'lib.%s' % PLAT_SPEC/'lib'/" \
 		-i test2.py test3.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -63,7 +63,7 @@ python_compile() {
 	if ! python_is_python3; then
 		local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {

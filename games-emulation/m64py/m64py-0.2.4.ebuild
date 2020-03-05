@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 xdg-utils
+inherit distutils-r2 xdg-utils
 
 DESCRIPTION="A frontend for Mupen64Plus"
 HOMEPAGE="http://m64py.sourceforge.net/"
@@ -41,7 +41,7 @@ python_prepare_all() {
 		SEARCH_DIRS = ["/usr/$(get_libdir)/mupen64plus"]
 	_EOF_
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 pkg_postinst() {

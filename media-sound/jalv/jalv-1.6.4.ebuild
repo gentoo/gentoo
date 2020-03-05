@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit python-any-r1 qmake-utils waf-utils
+inherit python-any-r2 qmake-utils waf-utils
 
 DESCRIPTION="Simple but fully featured LV2 host for Jack"
 HOMEPAGE="http://drobilla.net/software/jalv/"

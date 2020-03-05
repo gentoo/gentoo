@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit cmake-utils python-any-r1
+inherit cmake-utils python-any-r2
 
 if [ "${PV#9999}" != "${PV}" ] ; then
 	inherit git-r3

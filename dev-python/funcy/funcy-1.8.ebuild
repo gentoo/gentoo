@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A collection of fancy functional tools focused on practicality"
 HOMEPAGE="https://github.com/Suor/funcy"

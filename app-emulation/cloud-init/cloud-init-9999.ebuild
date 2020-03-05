@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="Cloud instance initialisation magic"
 HOMEPAGE="https://launchpad.net/cloud-init"
@@ -61,7 +61,7 @@ python_prepare_all() {
 	# Fix location of documentation installation
 	sed -i "s:USR + '/share/doc/cloud-init:USR + '/share/doc/${PF}:" setup.py || die
 	sed -i 's/version=get_version(),/version=9999,/g' setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -70,13 +70,13 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install --init-system=sysvinit_openrc,systemd --distro gentoo
+	distutils-r2_python_install --init-system=sysvinit_openrc,systemd --distro gentoo
 }
 
 python_install_all() {
 	keepdir /etc/cloud
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	# installs as non-executable
 	chmod +x "${D}"/etc/init.d/*

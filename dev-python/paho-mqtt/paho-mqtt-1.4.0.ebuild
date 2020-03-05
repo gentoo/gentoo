@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A client class with support for both MQTT v3.1 and v3.1.1"
 HOMEPAGE="https://www.eclipse.org/paho/clients/python/"

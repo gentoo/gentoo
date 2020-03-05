@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="IPython Kernel for Jupyter"
 HOMEPAGE="https://github.com/ipython/ipykernel"
@@ -33,7 +33,7 @@ DEPEND="${RDEPEND}
 "
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	# bug 628222, specify python 2 or 3.
 	sed -e "/language/!s:python:${EPYTHON%.*}:" \

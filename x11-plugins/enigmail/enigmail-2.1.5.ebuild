@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-any-r1
+inherit python-any-r2
 
 DESCRIPTION="Mozilla extension to provide GPG support in mail clients"
 HOMEPAGE="https://www.enigmail.net/"

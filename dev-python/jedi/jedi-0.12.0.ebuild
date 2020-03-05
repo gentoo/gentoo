@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Autocompletion library for Python"
 HOMEPAGE="https://github.com/davidhalter/jedi"
@@ -28,7 +28,7 @@ DEPEND="
 RESTRICT="test"
 
 src_prepare() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -42,5 +42,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( "${S}"/docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

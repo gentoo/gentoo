@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="#1 quality TLS certs while you wait, for the discerning tester"
 HOMEPAGE="https://github.com/python-trio/trustme"

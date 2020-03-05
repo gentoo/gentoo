@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A complete yet simple CSS parser for Python"
 HOMEPAGE="https://github.com/SimonSapin/tinycss/
@@ -27,7 +27,7 @@ DOCS=( CHANGES README.rst )
 
 python_prepare_all() {
 	rm setup.cfg || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

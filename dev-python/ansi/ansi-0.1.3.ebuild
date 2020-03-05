@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="ANSI cursor movement and graphics in Python"
 HOMEPAGE="https://github.com/tehmaze/ansi"

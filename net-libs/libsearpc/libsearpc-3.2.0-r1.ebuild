@@ -7,7 +7,7 @@ PYTHON_COMPAT=(python{2_7,3_6})
 
 WANT_AUTOMAKE=1.16
 
-inherit autotools python-single-r1
+inherit autotools python-single-r2
 
 DESCRIPTION="A simple C language RPC framework"
 HOMEPAGE="https://github.com/haiwen/libsearpc/ http://seafile.com/"
@@ -24,7 +24,7 @@ DEPEND="${PYTHON_DEPS}
 	>=dev-libs/jansson-2.2.1"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/simplejson[${PYTHON_MULTI_USEDEP}]
+		dev-python/simplejson[${PYTHON_USEDEP}]
 	')"
 
 src_prepare() {

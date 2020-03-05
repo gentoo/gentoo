@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="repoze.who is an identification and authentication framework for WSGI"
 HOMEPAGE="http://www.repoze.org"
@@ -30,7 +30,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	# install __init__.py files for sub-namespaces
 	python_moduleinto repoze.who
@@ -41,7 +41,7 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	find "${D}" -name '*.pth' -delete || die
 }

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1 multilib
+inherit eutils python-single-r2 multilib
 
 DESCRIPTION="A simple image, PDF and postscript file annotator"
 HOMEPAGE="http://whyteboard.org/"
@@ -22,7 +22,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/wxpython:*[${PYTHON_MULTI_USEDEP}]
+		dev-python/wxpython:*[${PYTHON_USEDEP}]
 	')
 	media-gfx/imagemagick"
 

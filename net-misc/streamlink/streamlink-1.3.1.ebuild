@@ -13,7 +13,7 @@ PYTHON_REQ_USE='xml(+),threads(+)'
 DISTUTILS_SINGLE_IMPL=1
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 $GIT_ECLASS
+inherit distutils-r2 $GIT_ECLASS
 
 DESCRIPTION="CLI for extracting streams from websites to a video player of your choice"
 HOMEPAGE="https://streamlink.github.io/"
@@ -31,14 +31,14 @@ RESTRICT="!test? ( test )"
 # >=urllib3-1.23 only needed for python2, but requests pulls some version anyways, so we might as well guarantee at least that ver for py3 too
 DEPEND="
 	$(python_gen_cond_dep '
-		virtual/python-futures[${PYTHON_MULTI_USEDEP}]
-		virtual/python-singledispatch[${PYTHON_MULTI_USEDEP}]
-		>dev-python/requests-2.21.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/urllib3-1.23[${PYTHON_MULTI_USEDEP}]
-		dev-python/isodate[${PYTHON_MULTI_USEDEP}]
-		dev-python/websocket-client[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycountry[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pycryptodome-3.4.3[${PYTHON_MULTI_USEDEP}]
+		virtual/python-futures[${PYTHON_USEDEP}]
+		virtual/python-singledispatch[${PYTHON_USEDEP}]
+		>dev-python/requests-2.21.0[${PYTHON_USEDEP}]
+		>=dev-python/urllib3-1.23[${PYTHON_USEDEP}]
+		dev-python/isodate[${PYTHON_USEDEP}]
+		dev-python/websocket-client[${PYTHON_USEDEP}]
+		dev-python/pycountry[${PYTHON_USEDEP}]
+		>=dev-python/pycryptodome-3.4.3[${PYTHON_USEDEP}]
 	')
 "
 RDEPEND="${DEPEND}
@@ -48,15 +48,15 @@ RDEPEND="${DEPEND}
 BDEPEND="
 	$(python_gen_cond_dep '
 		doc? (
-			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
-			dev-python/docutils[${PYTHON_MULTI_USEDEP}]
-			dev-python/recommonmark[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
+			dev-python/docutils[${PYTHON_USEDEP}]
+			dev-python/recommonmark[${PYTHON_USEDEP}]
 		)
 		test? (
-			dev-python/mock[${PYTHON_MULTI_USEDEP}]
-			dev-python/requests-mock[${PYTHON_MULTI_USEDEP}]
-			dev-python/pytest[${PYTHON_MULTI_USEDEP}]
-			dev-python/freezegun[${PYTHON_MULTI_USEDEP}]
+			dev-python/mock[${PYTHON_USEDEP}]
+			dev-python/requests-mock[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
+			dev-python/freezegun[${PYTHON_USEDEP}]
 		)
 	')"
 
@@ -78,5 +78,5 @@ python_install_all() {
 		local HTML_DOCS=( docs/_build/html/. )
 		doman docs/_build/man/*
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

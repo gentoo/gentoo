@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit python-any-r1 multilib-minimal
+inherit python-any-r2 multilib-minimal
 
 MY_P=${P/_pre/pre}
 
@@ -48,7 +48,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 multilib_src_configure() {

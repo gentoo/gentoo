@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit cmake-utils python-single-r1
+inherit cmake-utils python-single-r2
 
 MY_PN="libCharon"
 

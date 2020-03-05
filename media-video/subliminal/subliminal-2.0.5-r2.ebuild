@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='xml(+)'
 COMMIT_ID='dd74383d1cba82829ce720f2e439a65d13ffe7ef'
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="Python library to search and download subtitles"
 HOMEPAGE="https://github.com/Diaoul/subliminal https://pypi.org/project/subliminal/"
@@ -71,7 +71,7 @@ python_prepare_all() {
 		ln -s "${WORKDIR}"/test*.mkv tests/data/mkv/ || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

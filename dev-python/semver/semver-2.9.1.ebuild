@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python module for semantic versioning"
 HOMEPAGE="https://github.com/k-bx/python-semver"
@@ -24,5 +24,5 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	# contains pytest/cov args we don't want
 	rm setup.cfg || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

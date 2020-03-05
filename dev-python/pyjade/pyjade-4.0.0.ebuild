@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Jade syntax adapter for Django, Jinja2 and Mako templates"
 HOMEPAGE="https://github.com/syrusakbary/pyjade"

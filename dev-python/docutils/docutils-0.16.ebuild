@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python Documentation Utilities"
 HOMEPAGE="http://docutils.sourceforge.net/ https://pypi.org/project/docutils/"
@@ -38,7 +38,7 @@ python_compile_all() {
 
 src_test() {
 	cd test || die
-	distutils-r1_src_test
+	distutils-r2_src_test
 }
 
 python_test() {
@@ -46,7 +46,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	# Install tools.
 	python_doscript tools/{buildhtml,quicktest}.py
@@ -63,7 +63,7 @@ python_install_all() {
 	local DOCS=( *.txt )
 	local HTML_DOCS=( docs tools docutils/writers/html4css1/html4css1.css )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	local doc
 	while IFS= read -r -d '' doc; do

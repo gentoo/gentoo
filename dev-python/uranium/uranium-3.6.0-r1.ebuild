@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils python-single-r1
+inherit cmake-utils python-single-r2
 
 MY_PN="Uranium"
 
@@ -23,10 +23,10 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	~dev-libs/libarcus-${PV}:=[python,${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[${PYTHON_MULTI_USEDEP},declarative,network,svg]
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
-		>=sci-libs/scipy-1.1[${PYTHON_MULTI_USEDEP}]
-		sci-libs/Shapely[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[${PYTHON_USEDEP},declarative,network,svg]
+		dev-python/numpy[${PYTHON_USEDEP}]
+		>=sci-libs/scipy-1.1[${PYTHON_USEDEP}]
+		sci-libs/Shapely[${PYTHON_USEDEP}]
 	')
 	dev-qt/qtquickcontrols:5
 	dev-qt/qtquickcontrols2:5"
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/pytest[${PYTHON_MULTI_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
 		')
 	)"
 

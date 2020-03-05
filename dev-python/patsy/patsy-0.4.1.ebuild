@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python module to describe statistical models and design matrices"
 HOMEPAGE="https://patsy.readthedocs.org/en/latest/index.html"
@@ -43,5 +43,5 @@ python_test() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( doc/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

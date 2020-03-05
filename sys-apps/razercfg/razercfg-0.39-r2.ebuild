@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils python-single-r1 systemd udev
+inherit cmake-utils python-single-r2 systemd udev
 
 DESCRIPTION="Utility for advanced configuration of Razer mice"
 HOMEPAGE="https://bues.ch/cms/hacking/razercfg.html"
@@ -25,7 +25,7 @@ RDEPEND="${PYTHON_DEPS}
 "
 DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 	')
 	virtual/libusb:1
 	virtual/pkgconfig

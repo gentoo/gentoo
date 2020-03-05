@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A library for shell script-like programs in python"
 HOMEPAGE="https://plumbum.readthedocs.io/en/latest/"

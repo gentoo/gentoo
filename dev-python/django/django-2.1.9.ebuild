@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='sqlite?,threads(+)'
 
-inherit bash-completion-r1 distutils-r1 eutils
+inherit bash-completion-r1 distutils-r2 eutils
 
 MY_PN="Django"
 MY_P="${MY_PN}-${PV}"
@@ -48,7 +48,7 @@ python_prepare_all() {
 	# Prevent d'loading in the doc build
 	sed -e '/^    "sphinx.ext.intersphinx",/d' -i docs/conf.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -71,7 +71,7 @@ python_install_all() {
 		local HTML_DOCS=( docs/_build/html/. )
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

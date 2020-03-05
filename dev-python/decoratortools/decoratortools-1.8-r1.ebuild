@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="DecoratorTools"
 MY_P="${MY_PN}-${PV}"
@@ -30,7 +30,7 @@ python_prepare_all() {
 	# Disable tests broken with named tuples.
 	sed -e "s/additional_tests/_&/" -i test_decorators.py || die "sed failed"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

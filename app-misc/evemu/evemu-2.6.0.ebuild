@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit ltprune python-single-r1
+inherit ltprune python-single-r2
 
 DESCRIPTION="tools and bindings for kernel evdev device emulation, data capture, and replay"
 HOMEPAGE="https://www.freedesktop.org/wiki/Evemu/"

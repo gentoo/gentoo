@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Thin-wrapper around the mock package for easier use with py.test"
 HOMEPAGE="https://github.com/pytest-dev/pytest-mock/"
@@ -33,7 +33,7 @@ src_prepare() {
 		-e 's|^\(def \)\(test_assert_called_args_with_introspection(\)|\1_\2|' \
 		-e 's|^\(def \)\(test_assert_called_kwargs_with_introspection(\)|\1_\2|' \
 		-i tests/test_pytest_mock.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

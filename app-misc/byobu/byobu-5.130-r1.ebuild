@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="A set of profiles for the GNU Screen console window manager (app-misc/screen)"
 HOMEPAGE="http://byobu.co"
@@ -18,7 +18,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-libs/newt[${PYTHON_MULTI_USEDEP}]
+		dev-libs/newt[${PYTHON_USEDEP}]
 	')
 	screen? ( app-misc/screen )
 	!screen? ( app-misc/tmux )"

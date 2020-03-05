@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 prefix
+inherit distutils-r2 prefix
 
 DESCRIPTION="Python interface to lzo"
 HOMEPAGE="https://github.com/jd-boyd/python-lzo"
@@ -26,7 +26,7 @@ DEPEND="
 	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	hprefixify setup.py
 }
 

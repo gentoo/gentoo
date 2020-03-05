@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="Fast and simple packet creation and parsing library for Python"
 HOMEPAGE="https://gitlab.com/mike01/pypacker"
@@ -22,6 +22,6 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	use examples && dodoc -r examples
 }

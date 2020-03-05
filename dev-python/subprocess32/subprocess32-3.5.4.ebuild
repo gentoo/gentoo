@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A backport of the subprocess module from Python 3.2/3.3 for use on 2.x"
 HOMEPAGE="https://github.com/google/python-subprocess32"

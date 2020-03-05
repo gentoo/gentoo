@@ -11,7 +11,7 @@ KFMIN=5.60.0
 QTMIN=5.12.3
 VIRTUALX_REQUIRED="test"
 VIRTUALDBUS_TEST="true"
-inherit ecm kde.org python-single-r1
+inherit ecm kde.org python-single-r2
 
 DESCRIPTION="Personal finance manager based on KDE Frameworks"
 HOMEPAGE="https://kmymoney.org"
@@ -84,7 +84,7 @@ COMMON_DEPEND="
 		${PYTHON_DEPS}
 		>=dev-qt/qtconcurrent-${QTMIN}:5
 		$(python_gen_cond_dep '
-			www-client/weboob[${PYTHON_MULTI_USEDEP}]
+			www-client/weboob[${PYTHON_USEDEP}]
 		')
 	)
 "

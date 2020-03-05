@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools python-r1
+inherit autotools python-multi-r2
 
 DESCRIPTION="A utility for viewing problems that have occurred with the system"
 HOMEPAGE="https://github.com/abrt/gnome-abrt"

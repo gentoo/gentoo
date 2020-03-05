@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit vim-plugin python-single-r1
+inherit vim-plugin python-single-r2
 
 DESCRIPTION="vim plugin: easy and fast outlining"
 HOMEPAGE="https://github.com/vimoutliner/vimoutliner"
@@ -22,11 +22,11 @@ PATCHES=( "${FILESDIR}/${P}-fix-shebangs.patch" )
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/autopep8[${PYTHON_MULTI_USEDEP}]
+		dev-python/autopep8[${PYTHON_USEDEP}]
 	')"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

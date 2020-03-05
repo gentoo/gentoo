@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Zstandard Bindings for Python"
 HOMEPAGE="https://pypi.org/project/zstandard/ https://github.com/indygreg/python-zstandard"

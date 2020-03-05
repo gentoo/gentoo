@@ -7,7 +7,7 @@ PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 # [options.entry_points] is present in setup.cfg but it is empty
 DISTUTILS_USE_SETUPTOOLS=manual
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN/-/.}"
 DESCRIPTION="Tools for working with iterables. Complements itertools and more_itertools"
@@ -55,5 +55,5 @@ python_test() {
 python_install() {
 	rm "${BUILD_DIR}"/lib/jaraco/__init__.py || die
 	# note: eclass may default to --skip-build in the future
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 }

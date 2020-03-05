@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 pypy3)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A fast, pure-Python in-memory database"
 HOMEPAGE="https://pypi.org/project/PyDbLite/"

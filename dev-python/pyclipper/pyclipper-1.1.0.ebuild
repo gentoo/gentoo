@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Cython wrapper for the C++ translation of the Angus Johnson's Clipper library"
 HOMEPAGE="https://github.com/fonttools/pyclipper"

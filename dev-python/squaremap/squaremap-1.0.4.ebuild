@@ -8,7 +8,7 @@ MY_P="${MY_PN}-${PV/_beta/b}"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Hierarchic data-visualisation control for wxPython"
 HOMEPAGE="https://pypi.org/project/SquareMap/"

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="a personal document manager for scanned documents (and PDFs)"
 HOMEPAGE="https://gitlab.gnome.org/World/OpenPaperwork"

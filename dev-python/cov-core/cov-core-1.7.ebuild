@@ -4,7 +4,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="plugin core for use by pytest-cov, nose-cov and nose2-cov"
 HOMEPAGE="https://bitbucket.org/memedough/cov-core/overview"

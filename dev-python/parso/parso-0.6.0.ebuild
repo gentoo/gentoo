@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="a python parser that supports error recovery and round-trip parsing"
 HOMEPAGE="https://github.com/davidhalter/parso https://pypi.org/project/parso/"

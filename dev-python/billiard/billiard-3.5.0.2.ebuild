@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Python multiprocessing fork"
 HOMEPAGE="https://pypi.org/project/billiard/ https://github.com/celery/billiard"
@@ -32,7 +32,7 @@ python_compile() {
 		local CFLAGS=${CFLAGS}
 		append-cflags -fno-strict-aliasing
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_compile_all() {
@@ -45,5 +45,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( build/sphinx/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

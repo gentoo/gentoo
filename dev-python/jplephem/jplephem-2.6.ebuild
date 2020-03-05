@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python version of NASA DE4xx ephemerides for Astronomical Alamanac"
 HOMEPAGE="https://pypi.org/project/jplephem/"

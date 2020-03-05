@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL"
 HOMEPAGE="
@@ -42,7 +42,7 @@ src_test() {
 	( cd ndg/httpsclient/test && sh ./scripts/openssl_https_server.sh ) &
 	local server_pid=${!}
 
-	distutils-r1_src_test
+	distutils-r2_src_test
 
 	kill "${server_pid}"
 	wait

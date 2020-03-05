@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
 SRC_URI="https://github.com/ultrabug/py3status/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="py3status"
 MY_P="${MY_PN}-${PV/_/-}"

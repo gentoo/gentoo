@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 python-r1
+inherit distutils-r2 python-multi-r2
 
 DESCRIPTION="A BibTeX parser written in python"
 HOMEPAGE="https://github.com/sciunto-org/python-bibtexparser"

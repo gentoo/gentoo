@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=(  python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A lightweight library for converting complex datatypes to and from native Python datatypes."
 HOMEPAGE="https://github.com/marshmallow-code/marshmallow/"
@@ -27,7 +27,7 @@ DEPEND="${RDEPEND}
 	)"
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 UPSTREAM_PV=$(ver_rs 0 '-')
 
@@ -33,5 +33,5 @@ PATCHES=(
 python_install_all() {
 	local HTML_DOCS=( FAQ.html )
 	use examples && HTML_DOCS+=( examples.html )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

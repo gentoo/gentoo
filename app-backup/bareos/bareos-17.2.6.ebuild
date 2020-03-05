@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit eutils multilib python-single-r1 systemd user
+inherit eutils multilib python-single-r2 systemd user
 
 DESCRIPTION="Featureful client/server network backup suite"
 HOMEPAGE="http://www.bareos.org/"
@@ -108,7 +108,7 @@ pkg_setup() {
 		fi
 	fi
 
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

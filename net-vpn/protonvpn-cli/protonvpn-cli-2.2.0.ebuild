@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A VPN command-line tool from protonvpn - python rewrite"
 HOMEPAGE="https://protonvpn.com https://github.com/ProtonVPN/protonvpn-cli-ng"

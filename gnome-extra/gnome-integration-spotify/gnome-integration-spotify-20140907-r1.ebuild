@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit gnome2-utils python-r1
+inherit gnome2-utils python-multi-r2
 
 DESCRIPTION="GNOME integration for Spotify"
 HOMEPAGE="https://github.com/mrpdaemon/gnome-integration-spotify"

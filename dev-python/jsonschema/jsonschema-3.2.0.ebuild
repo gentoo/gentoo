@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="An implementation of JSON-Schema validation for Python"
 HOMEPAGE="https://pypi.org/project/jsonschema/ https://github.com/Julian/jsonschema"
@@ -49,5 +49,5 @@ python_prepare_all() {
 	sed -r -i "s:setuptools_scm[[:space:]]*([><=]{1,2}[[:space:]]*[0-9.a-zA-Z]+|)[[:space:]]*::" \
 		setup.cfg || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_6} )
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="A small python based utility used to change configuration files"
 HOMEPAGE="http://setconf.roboticoverlords.org/"
@@ -19,7 +19,7 @@ RDEPEND=${PYTHON_DEPS}
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_unpack() {

@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1 scons-utils toolchain-funcs vcs-snapshot
+inherit python-any-r2 scons-utils toolchain-funcs vcs-snapshot
 
 MY_P="${P#*-}"
 

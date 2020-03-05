@@ -4,7 +4,7 @@
 EAPI="7"
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Utility to manage SSH public keys stored in LDAP"
 HOMEPAGE="https://github.com/jirutka/ssh-ldap-pubkey"
@@ -46,7 +46,7 @@ DOCS=( README.md CHANGELOG.adoc )
 
 src_prepare() {
 	sed -i -e 's/pyldap/python-ldap >= 3.0/' setup.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {
@@ -54,7 +54,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use schema; then
 		insinto /etc/openldap/schema

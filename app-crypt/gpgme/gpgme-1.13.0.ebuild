@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 flag-o-matic libtool qmake-utils toolchain-funcs
+inherit distutils-r2 flag-o-matic libtool qmake-utils toolchain-funcs
 
 DESCRIPTION="GnuPG Made Easy is a library for making GnuPG easier to use"
 HOMEPAGE="http://www.gnupg.org/related_software/gpgme"
@@ -39,7 +39,7 @@ REQUIRED_USE="qt5? ( cxx ) python? ( ${PYTHON_REQUIRED_USE} )"
 do_python() {
 	if use python; then
 		pushd "lang/python" > /dev/null || die
-		top_builddir="../.." srcdir="." CPP=$(tc-getCPP) distutils-r1_src_${EBUILD_PHASE}
+		top_builddir="../.." srcdir="." CPP=$(tc-getCPP) distutils-r2_src_${EBUILD_PHASE}
 		popd > /dev/null
 	fi
 }

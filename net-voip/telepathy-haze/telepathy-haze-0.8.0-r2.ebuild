@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1
+inherit python-any-r2
 
 DESCRIPTION="Telepathy connection manager providing libpurple supported protocols"
 HOMEPAGE="https://telepathy.freedesktop.org https://developer.pidgin.im/wiki/TelepathyHaze"

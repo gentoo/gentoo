@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="This project provides first-class OAuth library support for Requests"
 HOMEPAGE="https://github.com/requests/requests-oauthlib"

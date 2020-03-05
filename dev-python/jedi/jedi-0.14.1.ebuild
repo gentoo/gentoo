@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Autocompletion library for Python"
 HOMEPAGE="https://github.com/davidhalter/jedi"
@@ -47,7 +47,7 @@ python_prepare_all() {
 	# without sources anyway
 	rm test/test_evaluate/test_pyc.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

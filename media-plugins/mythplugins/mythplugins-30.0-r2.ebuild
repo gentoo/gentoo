@@ -8,7 +8,7 @@ PYTHON_REQ_USE="xml"
 BACKPORTS="03f44039848bd09444ff4baa8dc158bd61454079"
 MY_P=${P%_p*}
 
-inherit python-single-r1 readme.gentoo-r1
+inherit python-single-r2 readme.gentoo-r1
 
 DESCRIPTION="Official WMythTV plugins"
 HOMEPAGE="https://www.mythtv.org"
@@ -57,7 +57,7 @@ DEPEND="
 	mytharchive? (
 		app-cdr/dvd+rw-tools
 		$(python_gen_cond_dep '
-			dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+			dev-python/pillow[${PYTHON_USEDEP}]
 		')
 		media-video/dvdauthor
 		media-video/mjpegtools[png]
@@ -87,10 +87,10 @@ DEPEND="
 	)
 	mythnetvision? (
 		$(python_gen_cond_dep '
-			dev-python/pycurl[${PYTHON_MULTI_USEDEP}]
-			dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-			dev-python/mysqlclient[${PYTHON_MULTI_USEDEP}]
-			dev-python/oauth[${PYTHON_MULTI_USEDEP}]
+			dev-python/pycurl[${PYTHON_USEDEP}]
+			dev-python/lxml[${PYTHON_USEDEP}]
+			dev-python/mysqlclient[${PYTHON_USEDEP}]
+			dev-python/oauth[${PYTHON_USEDEP}]
 		')
 	)
 	mythweather? (

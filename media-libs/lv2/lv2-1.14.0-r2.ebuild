@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit python-single-r1 waf-utils multilib-build multilib-minimal
+inherit python-single-r2 waf-utils multilib-build multilib-minimal
 
 DESCRIPTION="A simple but extensible successor of LADSPA"
 HOMEPAGE="http://lv2plug.in/"
@@ -23,9 +23,9 @@ DEPEND="
 	plugins? ( x11-libs/gtk+:2 media-libs/libsndfile )"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygments[${PYTHON_MULTI_USEDEP}]
-		dev-python/rdflib[${PYTHON_MULTI_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/pygments[${PYTHON_USEDEP}]
+		dev-python/rdflib[${PYTHON_USEDEP}]
 	')
 	!<media-libs/slv2-0.4.2
 	!media-libs/lv2core

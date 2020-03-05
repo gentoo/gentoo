@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=${PN}4
 MY_P=${MY_PN}-${PV}
@@ -43,5 +43,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

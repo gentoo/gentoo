@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Neutron shared routines and utilities."
 HOMEPAGE="https://github.com/openstack/neutron-lib"

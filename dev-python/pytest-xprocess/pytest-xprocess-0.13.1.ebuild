@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Manage external processes across test runs"
 HOMEPAGE="https://pypi.org/project/pytest-xprocess/ https://github.com/pytest-dev/pytest-xprocess"

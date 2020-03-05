@@ -4,7 +4,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Django recaptcha form field/widget app"
 HOMEPAGE="https://github.com/praekelt/django-recaptcha https://pypi.org/project/django-recaptcha/"

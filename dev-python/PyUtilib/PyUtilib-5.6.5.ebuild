@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A collection of Python utilities"
 HOMEPAGE="https://github.com/PyUtilib/pyutilib"
@@ -33,12 +33,12 @@ python_prepare() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	if ! python_is_python3; then
 		printf "# Placeholder for python2\n" \

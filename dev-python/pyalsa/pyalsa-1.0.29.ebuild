@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )	# Still py2 only it appears
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Python bindings for ALSA library"
 HOMEPAGE="https://alsa-project.org/"

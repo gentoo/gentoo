@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_6 )
 MY_PN="errbot"
 MY_P="${MY_PN}-${PV}"
 
-inherit distutils-r1 user
+inherit distutils-r2 user
 
 DESCRIPTION="Multiprotocol chatbot designed to be easily deployable and maintainable"
 HOMEPAGE="http://errbot.io/"
@@ -67,11 +67,11 @@ python_prepare_all() {
 		-e '/pygments-markdown-lexer/d' \
 		setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	newinitd "${FILESDIR}"/errd.initd.2 errd
 	newconfd "${FILESDIR}"/errd.confd errd

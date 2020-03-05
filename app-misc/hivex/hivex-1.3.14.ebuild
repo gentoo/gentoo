@@ -8,7 +8,7 @@ RUBY_OPTIONAL=yes
 
 PYTHON_COMPAT=(python3_6)
 
-inherit eutils perl-module ruby-ng python-single-r1
+inherit eutils perl-module ruby-ng python-single-r2
 
 DESCRIPTION="Library for reading and writing Windows Registry 'hive' binary files"
 HOMEPAGE="http://libguestfs.org"
@@ -56,7 +56,7 @@ S="${WORKDIR}/${P}"
 
 pkg_setup() {
 	if use python; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 }
 

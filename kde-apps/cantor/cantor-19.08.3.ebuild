@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 PVCUT=$(ver_cut 1-3)
 KFMIN=5.60.0
 QTMIN=5.12.3
-inherit ecm kde.org python-single-r1
+inherit ecm kde.org python-single-r2
 
 DESCRIPTION="Interface for doing mathematics and scientific computing"
 HOMEPAGE="https://kde.org/applications/education/cantor https://edu.kde.org/cantor/"
@@ -87,7 +87,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	ecm_pkg_setup
 }
 

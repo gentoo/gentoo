@@ -11,7 +11,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	KEYWORDS=""
 fi
-inherit cmake-utils python-single-r1
+inherit cmake-utils python-single-r2
 
 DESCRIPTION="GNU Radio FM RDS Receiver"
 HOMEPAGE="https://github.com/bastibl/gr-rds"
@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-libs/boost:=[${PYTHON_MULTI_USEDEP}]
+		dev-libs/boost:=[${PYTHON_USEDEP}]
 	')
 	>=net-wireless/gnuradio-3.7_rc:0=[${PYTHON_SINGLE_USEDEP}]
 "

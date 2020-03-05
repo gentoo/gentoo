@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple VTXXX-compatible terminal emulator"
 HOMEPAGE="https://pypi.org/project/pyte/ https://github.com/selectel/pyte"
@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 "
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

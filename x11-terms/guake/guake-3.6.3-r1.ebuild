@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 gnome2-utils xdg-utils
+inherit distutils-r2 gnome2-utils xdg-utils
 
 DESCRIPTION="Drop-down terminal for GNOME"
 HOMEPAGE="https://github.com/Guake/guake https://pypi.org/project/Guake"
@@ -20,10 +20,10 @@ RDEPEND="
 	dev-libs/glib
 	dev-libs/keybinder:3[introspection]
 	$(python_gen_cond_dep '
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/pbr[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/pbr[${PYTHON_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	x11-libs/libnotify[introspection]
 	x11-libs/libwnck:3[introspection]
@@ -44,7 +44,7 @@ S=${WORKDIR}/${P^}
 
 pkg_setup() {
 	GUAKE_SCHEMA_DIR="${EROOT}"/usr/share/glib-2.0/schemas
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {
@@ -60,7 +60,7 @@ python_compile_all() {
 
 python_install_all() {
 	emake install-schemas install-locale prefix=/usr DESTDIR="${D}"
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

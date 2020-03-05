@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit eutils python-single-r1 toolchain-funcs unpacker
+inherit eutils python-single-r2 toolchain-funcs unpacker
 
 DESCRIPTION="ELF utils that can check files for security relevant properties"
 HOMEPAGE="https://wiki.gentoo.org/index.php?title=Project:Hardened/PaX_Utilities"
@@ -21,7 +21,7 @@ RDEPEND="caps? ( >=sys-libs/libcap-2.24 )
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/pyelftools[${PYTHON_MULTI_USEDEP}]
+			dev-python/pyelftools[${PYTHON_USEDEP}]
 		')
 	)
 	seccomp? ( sys-libs/libseccomp )"
@@ -42,7 +42,7 @@ _emake() {
 
 pkg_setup() {
 	if use python; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 }
 

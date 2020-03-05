@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A copy & paste backport of Python 3.3's shutil.which function"
 HOMEPAGE="https://pypi.org/project/shutilwhich/ https://github.com/mbr/shutilwhich"

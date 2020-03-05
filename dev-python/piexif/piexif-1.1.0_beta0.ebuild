@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( pypy3 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P=${PN}-${PV/_beta/b}
 DESCRIPTION="Exif manipulation with pure Python"

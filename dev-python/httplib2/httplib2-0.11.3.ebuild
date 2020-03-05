@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A comprehensive HTTP client library"
 HOMEPAGE="https://pypi.org/project/httplib2/ https://github.com/jcgregorio/httplib2"
@@ -26,7 +26,7 @@ PATCHES=( "${FILESDIR}"/${PN}-0.11.3-use-system-cacerts.patch )
 
 python_prepare_all() {
 	chmod o+r */*egg*/* || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

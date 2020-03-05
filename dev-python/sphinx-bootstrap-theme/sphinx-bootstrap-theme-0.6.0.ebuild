@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Sphinx theme integrates the Bootstrap CSS / JavaScript framework"
 HOMEPAGE="https://ryan-roemer.github.io/sphinx-bootstrap-theme/README.html"

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit desktop python-r1
+inherit desktop python-multi-r2
 
 DESCRIPTION="A little puzzle game, similar to the famous Bejeweled or Zookeeper"
 HOMEPAGE="http://sam.zoy.org/projects/monsterz/"

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit elisp-common autotools python-single-r1 toolchain-funcs xdg-utils
+inherit elisp-common autotools python-single-r2 toolchain-funcs xdg-utils
 
 DESCRIPTION="GNU Music Typesetter"
 SRC_URI="http://download.linuxaudio.org/lilypond/sources/v${PV:0:4}/${P}.tar.gz"
@@ -62,7 +62,7 @@ pkg_setup() {
 		fi
 	fi
 
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

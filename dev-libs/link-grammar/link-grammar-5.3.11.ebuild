@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python3_6 )
 
-inherit autotools eutils gnome2 java-pkg-opt-2 python-r1
+inherit autotools eutils gnome2 java-pkg-opt-2 python-multi-r2
 
 DESCRIPTION="A Syntactic English parser"
 HOMEPAGE="http://www.abisource.com/projects/link-grammar/ http://www.link.cs.cmu.edu/link/"

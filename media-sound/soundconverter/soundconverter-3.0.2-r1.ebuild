@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit gnome2 python-single-r1
+inherit gnome2 python-single-r2
 
 DESCRIPTION="A simple audiofile converter application for the GNOME environment"
 HOMEPAGE="https://soundconverter.org/"
@@ -31,7 +31,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 RDEPEND="${COMMON_DEPEND}
 	x11-libs/pango[introspection]
 	$(python_gen_cond_dep '
-		dev-python/gst-python:1.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/gst-python:1.0[${PYTHON_USEDEP}]
 	')
 	libnotify? ( x11-libs/libnotify[introspection] )
 

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="enables the changeset evolution feature of Mercurial"
 HOMEPAGE="https://www.mercurial-scm.org/doc/evolution/"
@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	rm hgext3rd/__init__.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -31,7 +31,7 @@ python_compile_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use doc; then
 		dodoc -r html/

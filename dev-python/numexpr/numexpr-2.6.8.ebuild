@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Fast numerical array expression evaluator for Python and NumPy"
 HOMEPAGE="https://github.com/pydata/numexpr"
@@ -37,7 +37,7 @@ python_prepare_all() {
 		_EOF_
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
@@ -46,7 +46,7 @@ python_compile() {
 		append-cflags -fno-strict-aliasing
 	fi
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {

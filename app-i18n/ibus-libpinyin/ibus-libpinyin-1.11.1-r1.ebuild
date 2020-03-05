@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit autotools gnome2-utils python-single-r1
+inherit autotools gnome2-utils python-single-r2
 
 DESCRIPTION="Intelligent Pinyin and Bopomofo input methods based on LibPinyin for IBus"
 HOMEPAGE="https://github.com/libpinyin/ibus-libpinyin https://sourceforge.net/projects/libpinyin/"
@@ -27,8 +27,8 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/glib:2
 	virtual/libintl
 	$(python_gen_cond_dep '
-		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		app-i18n/ibus[python(+),${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	boost? ( dev-libs/boost:= )
 	lua? ( dev-lang/lua:0 )

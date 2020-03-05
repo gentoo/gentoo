@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A compiler written in Python for the LESS language"
 HOMEPAGE="https://pypi.org/project/lesscpy/"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Kivys Garden tool to manage flowers"
 HOMEPAGE="http://kivy-garden.github.io/"
@@ -27,7 +27,7 @@ S="${WORKDIR}/garden-${PV}"
 PATCHES=( "${FILESDIR}/remove_bat-${PV}.patch" )
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	mv "${S}/bin/garden" "${S}/bin/kivy-garden" || die
 }
 

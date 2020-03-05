@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils python-single-r1
+inherit eutils python-single-r2
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 

@@ -14,7 +14,7 @@ else
 	S=${WORKDIR}/${PN%-nginx}-${PV}/${PN}
 fi
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Nginx plugin for certbot (Let's Encrypt Client)"
 HOMEPAGE="https://github.com/certbot/certbot https://letsencrypt.org/"

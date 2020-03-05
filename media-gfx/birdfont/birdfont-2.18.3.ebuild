@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PLOCALES="cs de it nl pt_BR sv"
 
-inherit python-any-r1 vala l10n toolchain-funcs multiprocessing
+inherit python-any-r2 vala l10n toolchain-funcs multiprocessing
 
 DESCRIPTION="Font editor for the creation of vector graphics and export TTF, EOT & SVG fonts"
 HOMEPAGE="https://birdfont.org/"

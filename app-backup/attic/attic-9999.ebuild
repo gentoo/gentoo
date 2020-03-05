@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/jborg/attic.git"
@@ -36,5 +36,5 @@ DEPEND="
 python_prepare_all() {
 	# allow use of new (renamed) msgpack
 	sed -i '/msgpack/d' setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

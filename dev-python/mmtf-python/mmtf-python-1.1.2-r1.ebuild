@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="The python implementation of the MMTF API, decoder and encoder"
 HOMEPAGE="http://mmtf.rcsb.org/"

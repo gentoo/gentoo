@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=true
 DISTUTILS_SINGLE_IMPL=true
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python2_7 )
-inherit autotools eutils perl-module distutils-r1 flag-o-matic multilib
+inherit autotools eutils perl-module distutils-r2 flag-o-matic multilib
 
 MY_P=${P/_/-}
 
@@ -54,16 +54,16 @@ S=${WORKDIR}/${MY_P}
 
 python_compile() {
 	cd bindings/python || die
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_install() {
 	cd bindings/python || die
-	distutils-r1_python_install
+	distutils-r2_python_install
 }
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {
@@ -145,7 +145,7 @@ src_configure() {
 src_compile() {
 	default
 
-	use python && distutils-r1_src_compile
+	use python && distutils-r2_src_compile
 }
 
 src_test() {
@@ -181,5 +181,5 @@ src_install() {
 	newconfd "${FILESDIR}"/rrdcached.confd rrdcached
 	newinitd "${FILESDIR}"/rrdcached.init rrdcached
 
-	use python && distutils-r1_src_install
+	use python && distutils-r2_src_install
 }

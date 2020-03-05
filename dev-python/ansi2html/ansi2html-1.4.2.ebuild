@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Convert text with ANSI color codes to HTML"
 HOMEPAGE="https://pypi.org/project/ansi2html/ https://github.com/ralphbean/ansi2html"
@@ -34,7 +34,7 @@ DEPEND="
 
 src_compile() {
 	use doc && emake man/${PN}.1
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 python_test() {
@@ -46,5 +46,5 @@ python_test() {
 python_install_all() {
 	use doc && doman man/${PN}.1
 	DOCS=( README.rst man/${PN}.1.txt )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

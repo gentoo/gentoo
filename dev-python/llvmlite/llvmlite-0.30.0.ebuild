@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1 llvm
+inherit distutils-r2 llvm
 
 DESCRIPTION="Python wrapper around the llvm C++ library"
 HOMEPAGE="http://llvmlite.pydata.org/"
@@ -55,7 +55,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples; then
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples

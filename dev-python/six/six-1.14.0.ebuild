@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python 2 and 3 compatibility library"
 HOMEPAGE="https://github.com/benjaminp/six https://pypi.org/project/six/"

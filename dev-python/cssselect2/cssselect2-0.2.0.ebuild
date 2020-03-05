@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="parses CSS3 Selectors and translates them to XPath 1.0"
 HOMEPAGE="https://cssselect.readthedocs.io/en/latest/

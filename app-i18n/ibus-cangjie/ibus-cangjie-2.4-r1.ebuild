@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python3_6 )
 
-inherit gnome2-utils python-r1
+inherit gnome2-utils python-multi-r2
 
 DESCRIPTION="Chinese Cangjie and Quick engines for IBus"
 HOMEPAGE="http://cangjians.github.io/"

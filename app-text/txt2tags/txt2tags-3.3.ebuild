@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Generate marked up documents (HTML, etc.)from a plain text file with markup"
 HOMEPAGE="https://txt2tags.org"

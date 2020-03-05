@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk?"
-inherit cmake desktop flag-o-matic python-single-r1 xdg
+inherit cmake desktop flag-o-matic python-single-r2 xdg
 
 DESCRIPTION="Desktop publishing (DTP) and layout program"
 HOMEPAGE="https://www.scribus.net/"
@@ -62,7 +62,7 @@ DEPEND="${PYTHON_DEPS}
 	pdf? ( app-text/podofo:0= )
 	scripts? (
 		$(python_gen_cond_dep '
-			dev-python/pillow[tk?,${PYTHON_MULTI_USEDEP}]
+			dev-python/pillow[tk?,${PYTHON_USEDEP}]
 		')
 	)
 "

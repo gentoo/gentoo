@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Generic async RPC implementation, including JSON-RPC"
 HOMEPAGE="https://pypi.org/project/aiorpcX/
@@ -29,5 +29,5 @@ src_prepare() {
 	# websockets are optional and not packaged in Gentoo
 	rm tests/test_websocket.py || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }

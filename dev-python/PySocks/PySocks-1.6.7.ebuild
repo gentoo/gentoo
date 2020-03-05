@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="SOCKS client module"
 HOMEPAGE="https://github.com/Anorov/PySocks https://pypi.org/project/PySocks/"

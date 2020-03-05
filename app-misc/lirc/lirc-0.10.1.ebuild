@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit eutils flag-o-matic linux-info python-single-r1 systemd xdg-utils
+inherit eutils flag-o-matic linux-info python-single-r2 systemd xdg-utils
 
 DESCRIPTION="decode and send infra-red signals of many commonly used remote controls"
 HOMEPAGE="http://www.lirc.org/"
@@ -39,7 +39,7 @@ COMMON_DEPEND="
 		media-libs/alsa-lib
 	)
 	$(python_gen_cond_dep '
-		<dev-python/pyyaml-5[${PYTHON_MULTI_USEDEP}]
+		<dev-python/pyyaml-5[${PYTHON_USEDEP}]
 	')
 	ftdi? ( dev-embedded/libftdi:0 )
 	systemd? ( sys-apps/systemd )
@@ -55,7 +55,7 @@ DEPEND="
 	${COMMON_DEPEND}
 	dev-libs/libxslt
 	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 	')
 	doc? ( app-doc/doxygen )
 	sys-apps/kmod
@@ -67,7 +67,7 @@ RDEPEND="
 	gtk? (
 		x11-libs/vte[introspection]
 		$(python_gen_cond_dep '
-			dev-python/pygobject[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject[${PYTHON_USEDEP}]
 		')
 	)
 	inputlirc? ( app-misc/inputlircd )
@@ -77,7 +77,7 @@ MAKEOPTS+=" -j1"
 
 pkg_setup() {
 	use uinput && CONFIG_CHECK="~INPUT_UINPUT"
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	linux-info_pkg_setup
 }
 

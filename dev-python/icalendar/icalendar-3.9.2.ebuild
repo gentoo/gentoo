@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="collective-${PN}"
 
@@ -32,7 +32,7 @@ python_prepare_all() {
 	# reset conf.py to not read version from an installed instance
 	sed -e "s:pkg_resources.get_distribution('icalendar').version:'3.9.0':" \
 		-i docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

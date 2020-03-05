@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Google's Python argument parsing library"
 HOMEPAGE="https://github.com/google/python-gflags"

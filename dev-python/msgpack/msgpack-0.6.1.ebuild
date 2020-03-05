@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="MessagePack (de)serializer for Python"
 HOMEPAGE="https://msgpack.org
@@ -36,7 +36,7 @@ python_prepare_all() {
 	if ! use native-extensions ; then
 		sed -i -e "/have_cython/s:True:False:" ./setup.py || die
 	fi
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

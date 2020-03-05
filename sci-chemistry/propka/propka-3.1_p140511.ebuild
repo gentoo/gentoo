@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="pKa-value prediction of ionizable groups in protein and protein-ligand complexes"
 HOMEPAGE="http://propka.ki.ku.dk/"
@@ -23,7 +23,7 @@ RESTRICT="mirror bindist"
 python_prepare_all() {
 	sed -e "/exclude/s:scripts:\', \'Tests:g" \
 		-i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -33,5 +33,5 @@ python_test() {
 
 python_install_all() {
 	dosym ${PN}31 /usr/bin/${PN}
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

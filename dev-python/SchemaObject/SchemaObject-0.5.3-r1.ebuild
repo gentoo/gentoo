@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A simple Python object interface to a MySQL database schema"
 HOMEPAGE="https://github.com/mmatuson/SchemaObject"

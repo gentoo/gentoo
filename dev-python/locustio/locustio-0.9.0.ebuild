@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A python utility for doing easy, distributed load testing of a web site"
 HOMEPAGE="https://locust.io/"
@@ -34,5 +34,5 @@ python_test() {
 python_prepare_all() {
 	# allow useage of renamed msgpack
 	sed -i 's/"msgpack[^"]*"[, ]*//' setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

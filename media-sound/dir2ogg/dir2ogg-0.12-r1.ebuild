@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 MY_PR=$(ver_cut 1-2)
 DESCRIPTION="Converts mp3, m4a, wma, and wav files to Ogg Vorbis format"
@@ -20,7 +20,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 DEPEND="${PYTHON_DEPS}"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		>=media-libs/mutagen-1.11[${PYTHON_MULTI_USEDEP}]
+		>=media-libs/mutagen-1.11[${PYTHON_USEDEP}]
 	')
 	media-sound/vorbis-tools[ogg123]
 	aac? ( || (

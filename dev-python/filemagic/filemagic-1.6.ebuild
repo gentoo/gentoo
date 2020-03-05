@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python API for libmagic, the library behind the Unix file command"
 HOMEPAGE="https://pypi.org/project/filemagic/ https://github.com/aliles/filemagic"

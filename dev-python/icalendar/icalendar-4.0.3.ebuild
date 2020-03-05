@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Package used for parsing and generating iCalendar files (RFC 2445)"
 HOMEPAGE="https://github.com/collective/icalendar"
@@ -32,7 +32,7 @@ python_prepare_all() {
 	# reset conf.py to not read version from an installed instance
 	sed -e "s:pkg_resources.get_distribution('icalendar').version:'${PV}':" \
 		-i docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

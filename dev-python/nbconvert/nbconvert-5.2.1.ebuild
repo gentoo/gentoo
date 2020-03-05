@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Converting Jupyter Notebooks"
 HOMEPAGE="https://nbconvert.readthedocs.io/"
@@ -57,7 +57,7 @@ python_prepare_all() {
 	if use doc; then
 		sed -e "/^    'sphinx.ext.intersphinx',/d" -i docs/source/conf.py || die
 	fi
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

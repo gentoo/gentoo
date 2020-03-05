@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit font python-any-r1
+inherit font python-any-r2
 
 DESCRIPTION="A Helvetica/Times/Courier replacement TrueType font set, courtesy of Red Hat"
 HOMEPAGE="https://github.com/liberationfonts/liberation-fonts"
@@ -42,7 +42,7 @@ src_prepare() {
 pkg_setup() {
 	if use fontforge; then
 		FONT_S="${S}/${PN}-ttf-${PV}"
-		python-any-r1_pkg_setup
+		python-any-r2_pkg_setup
 	else
 		FONT_S="${WORKDIR}/${PN}-ttf-${PV}"
 		S="${FONT_S}"

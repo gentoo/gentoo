@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Geospatial extension to SQLAlchemy with PostGIS support"
 HOMEPAGE="https://geoalchemy-2.readthedocs.io/en/latest/"

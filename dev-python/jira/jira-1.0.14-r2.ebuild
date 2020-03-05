@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library for interacting with the JIRA REST API"
 HOMEPAGE="https://jira.readthedocs.io/en/latest/"

@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6..7} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit bash-completion-r1 elisp-common eutils distutils-r1 mercurial flag-o-matic
+inherit bash-completion-r1 elisp-common eutils distutils-r2 mercurial flag-o-matic
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
@@ -53,13 +53,13 @@ python_prepare_all() {
 		mercurial/utils/compression.py \
 		mercurial/wireprotoframing.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
 	strip-flags -ftracer -ftree-vectorize
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile build_ext --no-zstd
+	distutils-r2_python_compile build_ext --no-zstd
 }
 
 python_compile_all() {
@@ -75,11 +75,11 @@ python_compile_all() {
 }
 
 python_install() {
-	distutils-r1_python_install build_ext --no-zstd
+	distutils-r2_python_install build_ext --no-zstd
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	newbashcomp contrib/bash_completion hg
 
@@ -142,7 +142,7 @@ src_test() {
 	fi
 
 	popd &>/dev/null || die
-	distutils-r1_src_test
+	distutils-r2_src_test
 }
 
 python_test() {

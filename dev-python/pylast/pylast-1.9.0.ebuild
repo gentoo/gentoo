@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python interface to last.fm and other api-compatible websites"
 HOMEPAGE="https://github.com/pylast/pylast"

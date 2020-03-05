@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="A SIP connection manager for Telepathy based around the Sofia-SIP library"
 HOMEPAGE="https://telepathy.freedesktop.org/"

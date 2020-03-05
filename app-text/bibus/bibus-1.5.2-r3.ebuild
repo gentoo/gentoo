@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-r1 versionator xdg-utils
+inherit python-multi-r2 versionator xdg-utils
 
 DESCRIPTION="Bibliographic and reference management software, integrates with LO and MS Word"
 HOMEPAGE="http://bibus-biblio.sourceforge.net/"

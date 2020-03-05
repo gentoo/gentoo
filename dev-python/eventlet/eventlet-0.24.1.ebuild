@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Highly concurrent networking library"
 HOMEPAGE="https://pypi.org/project/eventlet/ https://github.com/eventlet/eventlet/"
@@ -51,7 +51,7 @@ python_prepare_all() {
 	# Prevent file collisions from teestsuite
 	sed -e "s:'tests', :'tests', 'tests.*', :" -i setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -72,5 +72,5 @@ python_install_all() {
 		docinto examples
 		dodoc -r examples/.
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

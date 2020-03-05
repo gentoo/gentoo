@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Helpers to maintain useful information about a request context"
 HOMEPAGE="https://pypi.org/project/oslo.context/"
@@ -37,7 +37,7 @@ S="${WORKDIR}/oslo.context-${PV}"
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 # This time half the doc files are missing; Do you want them?

@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6} )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 libtool multilib-minimal toolchain-funcs usr-ldscript
+inherit distutils-r2 libtool multilib-minimal toolchain-funcs usr-ldscript
 
 MY_P=${P/_}
 DESCRIPTION="Password Checking Library"
@@ -39,7 +39,7 @@ do_python() {
 	multilib_is_native_abi || return 0
 	use python || return 0
 	pushd python > /dev/null || die
-	distutils-r1_src_${EBUILD_PHASE}
+	distutils-r2_src_${EBUILD_PHASE}
 	popd > /dev/null
 }
 

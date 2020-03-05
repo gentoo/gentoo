@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 
 MY_P=${PN}${PV}
 
-inherit qmake-utils python-single-r1
+inherit qmake-utils python-single-r2
 
 DESCRIPTION="A dynamic Python binding for the Qt framework"
 HOMEPAGE="http://pythonqt.sourceforge.net/"

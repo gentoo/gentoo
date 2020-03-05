@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 VALA_USE_DEPEND=vapigen
 
-inherit gnome2 multilib-minimal python-any-r1 vala virtualx
+inherit gnome2 multilib-minimal python-any-r2 vala virtualx
 
 DESCRIPTION="GObject library for accessing the freedesktop.org Secret Service API"
 HOMEPAGE="https://wiki.gnome.org/Projects/Libsecret"
@@ -56,7 +56,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

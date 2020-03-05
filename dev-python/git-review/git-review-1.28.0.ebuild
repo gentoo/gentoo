@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 python3_8 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Tool to submit code to Gerrit"
 HOMEPAGE="https://git.openstack.org/cgit/openstack-infra/git-review"

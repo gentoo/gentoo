@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Library centralizing the most common distributed primitives"
 HOMEPAGE="http://docs.openstack.org/developer/tooz/"
@@ -35,5 +35,5 @@ RDEPEND="${CDEPEND}
 python_prepare_all() {
 	# allow useage of renamed msgpack
 	sed -i '/^msgpack/d' requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools python-single-r1
+inherit autotools python-single-r2
 
 MY_PN="${PN#gimp-}"
 MY_P="${MY_PN}-${PV}"

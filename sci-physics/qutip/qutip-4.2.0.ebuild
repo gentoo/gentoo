@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r2 toolchain-funcs
 
 DESCRIPTION="Simulating dynamics of open quantum systems in Python."
 HOMEPAGE="http://qutip.org"
@@ -38,7 +38,7 @@ python_prepare_all() {
 	sed -i setup.py \
 		-e 's/_compiler_flags = .*$/_compiler_flags = []/' || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {

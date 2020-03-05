@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python libraries and CLI to interact with the REST API of a Girder server"
 HOMEPAGE="https://girder.readthedocs.io/en/latest/python-client.html"

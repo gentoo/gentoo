@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python package to handle polygonal shapes in 2D"
 HOMEPAGE="https://www.j-raedler.de/projects/polygon/"
@@ -26,7 +26,7 @@ python_prepare_all() {
 		mkdir examples || die
 		mv doc/{Examples.py,testpoly.gpf} examples || die
 	fi
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -35,5 +35,5 @@ python_test() {
 
 python_install_all() {
 	use examples && local EXAMPLES=( examples/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

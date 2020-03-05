@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Library for manipulating TrueType, OpenType, AFM and Type1 fonts"
 HOMEPAGE="https://github.com/fonttools/fonttools/"
@@ -45,7 +45,7 @@ python_prepare_all() {
 	# This tree requires an __init__.py in Tests/svgLib/ too, bug #701148.
 	touch Tests/svgLib/__init__.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

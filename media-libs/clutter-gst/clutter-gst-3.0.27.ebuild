@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-any-r1
+inherit gnome2 python-any-r2
 
 HOMEPAGE="https://blogs.gnome.org/clutter/"
 DESCRIPTION="GStreamer integration library for Clutter"

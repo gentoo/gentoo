@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 autotools gnome2
+inherit python-single-r2 autotools gnome2
 
 DESCRIPTION="A password manager for GNOME"
 HOMEPAGE="https://revelation.olasagasti.info/"
@@ -21,11 +21,11 @@ RESTRICT="test"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycryptodome[${PYTHON_MULTI_USEDEP}]
-		dev-python/gconf-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-		sys-libs/cracklib[python,${PYTHON_MULTI_USEDEP}]
+		dev-python/pygtk[${PYTHON_USEDEP}]
+		dev-python/pycryptodome[${PYTHON_USEDEP}]
+		dev-python/gconf-python[${PYTHON_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		sys-libs/cracklib[python,${PYTHON_USEDEP}]
 	')
 "
 

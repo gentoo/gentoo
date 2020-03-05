@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib user python-r1
+inherit eutils multilib user python-multi-r2
 
 DESCRIPTION="Greg Stein's python streaming audio server for desktop or LAN use"
 HOMEPAGE="http://edna.sourceforge.net/"

@@ -12,7 +12,7 @@ else
 	SRC_URI="http://www.mega-nerd.com/libsndfile/files/${P}.tar.gz"
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~x64-solaris ~x86-solaris"
 fi
-inherit python-any-r1 multilib-minimal
+inherit python-any-r2 multilib-minimal
 
 DESCRIPTION="C library for reading and writing files containing sampled sound"
 HOMEPAGE="http://www.mega-nerd.com/libsndfile"
@@ -44,7 +44,7 @@ fi
 
 pkg_setup() {
 	if use test || [[ ${PV} == *9999 ]]; then
-		python-any-r1_pkg_setup
+		python-any-r2_pkg_setup
 	fi
 }
 

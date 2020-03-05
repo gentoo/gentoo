@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1
+inherit eutils python-single-r2
 
 DESCRIPTION="A simple text-mode skiing game"
 HOMEPAGE="http://www.catb.org/~esr/ski/"

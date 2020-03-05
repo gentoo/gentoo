@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Cross-platform windowing and multimedia library for Python"
 HOMEPAGE="http://www.pyglet.org/"
@@ -37,5 +37,5 @@ python_test() {
 python_install_all() {
 	DOCS=( NOTICE )
 	use examples && EXAMPLES=( examples )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

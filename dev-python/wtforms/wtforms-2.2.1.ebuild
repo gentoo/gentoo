@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( pypy3 python2_7 python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="WTForms"
 MY_P="${MY_PN}-${PV}"
@@ -40,7 +40,7 @@ python_prepare_all() {
 		-e "/import pep8/d" \
 		-e "s|has_pep8 = True|has_pep8 = False|" \
 		-i tests/runtests.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -55,5 +55,5 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

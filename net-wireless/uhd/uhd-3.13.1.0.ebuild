@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit versionator python-single-r1 gnome2-utils cmake-utils multilib
+inherit versionator python-single-r2 gnome2-utils cmake-utils multilib
 
 DESCRIPTION="Universal Software Radio Peripheral (USRP) Hardware Driver"
 HOMEPAGE="https://kb.ettus.com"

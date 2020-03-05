@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit toolchain-funcs python-single-r1
+inherit toolchain-funcs python-single-r2
 
 DESCRIPTION="tools to create and apply deltarpms"
 HOMEPAGE="https://github.com/rpm-software-management/deltarpm"
@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 
 	MAKE_EXTRA_FLAGS=(
 		-j1

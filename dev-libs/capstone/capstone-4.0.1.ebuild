@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r2 toolchain-funcs
 
 DESCRIPTION="disassembly/disassembler framework + bindings"
 HOMEPAGE="http://www.capstone-engine.org/"
@@ -35,7 +35,7 @@ S=${WORKDIR}/${P/_rc/-rc}
 wrap_python() {
 	if use python; then
 		pushd bindings/python >/dev/null || die
-		distutils-r1_${1} "$@"
+		distutils-r2_${1} "$@"
 		popd >/dev/null
 	fi
 }

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="console colouring for python"
 HOMEPAGE="http://gfxmonk.net/dist/0install/python-termstyle.xml"
@@ -24,7 +24,7 @@ python_prepare_all() {
 		"${FILESDIR}"/tests-unicode.patch
 	)
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

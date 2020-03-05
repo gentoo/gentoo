@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="Access to SG_IO scsi devices"
 HOMEPAGE="https://github.com/rosjat/python-scsi/"

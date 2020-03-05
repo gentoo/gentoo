@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A requests-like API built on top of twisted.web's Agent"
 HOMEPAGE="https://github.com/twisted/treq https://pypi.org/project/treq/"
@@ -43,7 +43,7 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && dohtml -r "${S}/docs/_build/html/"*
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 test_instructions(){

@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r2
 
 DESCRIPTION="Universal Command Line Environment for AWS"
 HOMEPAGE="https://pypi.org/project/awscli/"
@@ -50,7 +50,7 @@ python_install_all() {
 	insinto /usr/share/zsh/site-functions
 	newins bin/aws_zsh_completer.sh _aws
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	rm "${ED}"/usr/bin/{aws.cmd,aws_bash_completer,aws_zsh_completer.sh} || die
 }

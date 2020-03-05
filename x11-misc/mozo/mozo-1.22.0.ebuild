@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 
-inherit python-r1 mate
+inherit python-multi-r2 mate
 
 if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="amd64 ~arm ~arm64 x86"

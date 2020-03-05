@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 perl-module toolchain-funcs
+inherit distutils-r2 perl-module toolchain-funcs
 
 DESCRIPTION="Network Kanji code conversion Filter with UTF-8/16 support"
 HOMEPAGE="https://ja.osdn.net/projects/nkf/"
@@ -51,7 +51,7 @@ src_compile() {
 	fi
 	if use python; then
 		cd NKF.python
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 		cd - >/dev/null
 	fi
 }
@@ -83,7 +83,7 @@ src_install() {
 	if use python; then
 		cd NKF.python
 		docinto python
-		DOCS= distutils-r1_src_install
+		DOCS= distutils-r2_src_install
 		dodoc README
 		cd - >/dev/null
 	fi

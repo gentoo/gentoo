@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools python-single-r1
+inherit autotools python-single-r2
 
 DESCRIPTION="Chinese Pinyin and Bopomofo engines for IBus"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"
@@ -20,8 +20,8 @@ RDEPEND="${PYTHON_DEPS}
 	app-i18n/pyzy
 	dev-db/sqlite:3
 	$(python_gen_cond_dep '
-		app-i18n/ibus[python(+),${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		app-i18n/ibus[python(+),${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	boost? ( dev-libs/boost )
 	lua? ( =dev-lang/lua-5.1*:= )

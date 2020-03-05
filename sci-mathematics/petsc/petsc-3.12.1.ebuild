@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit flag-o-matic fortran-2 python-any-r1 toolchain-funcs
+inherit flag-o-matic fortran-2 python-any-r2 toolchain-funcs
 
 DESCRIPTION="Portable, Extensible Toolkit for Scientific Computation"
 HOMEPAGE="http://www.mcs.anl.gov/petsc/"

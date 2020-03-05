@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils multilib
+inherit distutils-r2 eutils multilib
 
 DESCRIPTION="Homology or comparative modeling of protein three-dimensional structures"
 HOMEPAGE="https://salilab.org/modeller/"
@@ -38,18 +38,18 @@ pkg_setup() {
 
 python_prepare_all() {
 	sed "s:i386-intel8:${EXECTYPE}:g" -i src/swig/setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
 	cd src/swig || die
 	swig -python -keyword -nodefaultctor -nodefaultdtor -noproxy modeller.i || die
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_install() {
 	cd src/swig || die
-	distutils-r1_python_install
+	distutils-r2_python_install
 }
 
 python_install_all() {
@@ -83,7 +83,7 @@ python_install_all() {
 	dosym ../../${INPATH}/lib/${EXECTYPE}/libmodeller.so.8 /usr/$(get_libdir)/libmodeller.so.8
 
 	use doc && HTML_DOCS=( doc/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use examples; then
 		insinto /usr/share/${PN}/

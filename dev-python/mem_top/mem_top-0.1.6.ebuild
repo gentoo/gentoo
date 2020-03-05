@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Shows top suspects for memory leaks in your Python program"
 HOMEPAGE="https://github.com/denis-ryzhkov/mem_top https://pypi.org/project/mem_top/"

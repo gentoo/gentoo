@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python implementation of the Sane API and abstration layer"
 HOMEPAGE="https://github.com/openpaperwork/pyinsane"
@@ -26,5 +26,5 @@ python_prepare_all() {
 	sed -e "/'nose>=1.0'/d" \
 		-e "s/find_packages()/find_packages(exclude=['examples','tests'])/" \
 		-i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

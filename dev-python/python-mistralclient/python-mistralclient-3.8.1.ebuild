@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A client for the OpenStack Mistral API"
 HOMEPAGE="https://github.com/openstack/python-mistralclient"
@@ -37,5 +37,5 @@ RDEPEND="
 python_prepare_all() {
 	# built in...
 	sed -i '/^hacking/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

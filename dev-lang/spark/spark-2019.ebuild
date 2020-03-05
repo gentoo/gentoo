@@ -6,7 +6,7 @@ EAPI=7
 ADA_COMPAT=( gnat_2019 )
 PYTHON_COMPAT=( python2_7 )
 
-inherit ada python-any-r1 toolchain-funcs multiprocessing
+inherit ada python-any-r2 toolchain-funcs multiprocessing
 
 DESCRIPTION="Software development for high-reliability applications."
 HOMEPAGE="http://libre.adacore.com"
@@ -36,7 +36,7 @@ PATCHES=( "${FILESDIR}"/${P}-gentoo.patch )
 
 pkg_setup() {
 	ada_pkg_setup
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_prepare() {

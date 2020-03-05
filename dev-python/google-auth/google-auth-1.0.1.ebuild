@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Google Authentication Library"
 HOMEPAGE="https://pypi.org/project/google-auth/"
@@ -36,7 +36,7 @@ DEPEND="${RDEPEND}
 python_prepare_all() {
 	# urllib3-1.16 raised MaxRetryError, not TransportError
 	sed -e 's:test_connection_error:_\0:' -i tests/transport/compliance.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -46,6 +46,6 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

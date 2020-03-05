@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python{3_6,3_7} )
 JAVA_PKG_OPT_USE="collectd_plugins_java"
 
-inherit autotools fcaps flag-o-matic java-pkg-opt-2 linux-info multilib perl-functions python-single-r1 systemd tmpfiles user
+inherit autotools fcaps flag-o-matic java-pkg-opt-2 linux-info multilib perl-functions python-single-r2 systemd tmpfiles user
 
 DESCRIPTION="Collects system statistics and provides mechanisms to store the values"
 
@@ -277,7 +277,7 @@ pkg_setup() {
 		java-pkg-opt-2_pkg_setup
 	fi
 
-	use collectd_plugins_python && python-single-r1_pkg_setup
+	use collectd_plugins_python && python-single-r2_pkg_setup
 
 	enewgroup collectd
 	enewuser collectd -1 -1 /var/lib/collectd collectd

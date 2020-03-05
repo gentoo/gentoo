@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Jupyter Interactive Notebook"
 HOMEPAGE="http://jupyter.org"
@@ -72,7 +72,7 @@ python_prepare_all() {
 			-i docs/source/conf.py || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -94,7 +94,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	ln -sf \
 		"${EPREFIX}/usr/share/mathjax" \

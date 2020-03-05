@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="eGenix utils for Python"
 HOMEPAGE="https://www.egenix.com/products/python/mxBase https://pypi.org/project/egenix-mx-base/"
@@ -23,7 +23,7 @@ python_prepare_all() {
 	# Don't install documentation in site-packages directories.
 	sed -e "/\.pdf/d" -i egenix_mx_base.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -38,7 +38,7 @@ python_test() {
 python_install() {
 	local f dest=${D}$(python_get_includedir)/mx
 
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		build --build-platlib "${BUILD_DIR}"/lib
 
 	mkdir -p "${dest}" || die
@@ -51,7 +51,7 @@ python_install() {
 python_install_all() {
 	local f
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	dohtml -a html -r mx
 	while IFS= read -r -d '' f

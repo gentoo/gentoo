@@ -4,7 +4,7 @@
 EAPI=5
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A little desktop application displaying systray icon for UDisks"
 HOMEPAGE="https://savannah.nongnu.org/projects/traydevice/"
@@ -17,9 +17,9 @@ IUSE=""
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyxdg[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
+		dev-python/pyxdg[${PYTHON_USEDEP}]
 	')
 	sys-fs/udisks:2"
 DEPEND="app-text/docbook2X"
@@ -27,7 +27,7 @@ DEPEND="app-text/docbook2X"
 src_compile() { :; }
 
 python_install() {
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		--prefix=/usr \
 		--install-data=/usr/share/${PN} \
 		--install-man=/usr/share/man \
@@ -35,6 +35,6 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	rm -f "${ED}"/usr/share/${PN}/doc/*.txt
 }

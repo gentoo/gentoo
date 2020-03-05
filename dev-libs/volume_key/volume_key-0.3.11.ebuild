@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Library for manipulating and storing storage volume encryption keys"
 HOMEPAGE="https://pagure.io/volume_key"
@@ -36,7 +36,7 @@ DEPEND="
 #RESTRICT="test" # possible gpgme issue
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_install() {

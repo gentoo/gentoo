@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 DISABLE_AUTOFORMATTING=true
 
-inherit desktop python-single-r1 readme.gentoo-r1
+inherit desktop python-single-r2 readme.gentoo-r1
 
 DESCRIPTION="Elog viewer for Gentoo"
 HOMEPAGE="https://sourceforge.net/projects/elogviewer"
@@ -21,14 +21,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[gui,widgets,${PYTHON_MULTI_USEDEP}]
-		>=sys-apps/portage-2.1[${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[gui,widgets,${PYTHON_USEDEP}]
+		>=sys-apps/portage-2.1[${PYTHON_USEDEP}]
 	')
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_MULTI_USEDEP}]' python2_7)
+	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
 "
 DEPEND="${RDEPEND}
 	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 	')
 "
 

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 AT_M4DIR="build/autotools/"
 
-inherit autotools python-single-r1
+inherit autotools python-single-r2
 
 DESCRIPTION="Python bindings for the libmemphis library"
 HOMEPAGE="http://gitorious.net/pymemphis"
@@ -21,8 +21,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		dev-python/pygobject:2[${PYTHON_USEDEP}]
 	')
 	media-libs/memphis"
 DEPEND="${RDEPEND}"

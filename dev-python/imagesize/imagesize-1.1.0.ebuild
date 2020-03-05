@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pure Python module for getting image size from png/jpeg/jpeg2000/gif files"
 HOMEPAGE="https://github.com/shibukawa/imagesize_py"

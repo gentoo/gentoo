@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Python interface to PROJ.4 library"
 HOMEPAGE="https://github.com/jswhit/pyproj"
@@ -19,7 +19,7 @@ IUSE="doc"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	append-cflags -fno-strict-aliasing
 }
 
@@ -29,5 +29,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL=1
 DISABLE_AUTOFORMATTING=true
-inherit distutils-r1 gnome2-utils readme.gentoo-r1 xdg
+inherit distutils-r2 gnome2-utils readme.gentoo-r1 xdg
 
 DESCRIPTION="Cross-platform music tagger"
 HOMEPAGE="https://picard.musicbrainz.org"
@@ -19,7 +19,7 @@ IUSE="nls"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_MULTI_USEDEP}]
+		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_USEDEP}]
 	')
 	dev-qt/qtgui:5
 	>=media-libs/mutagen-1.38"
@@ -38,7 +38,7 @@ python_compile() {
 	if ! use nls; then
 		build_args+=( --disable-locales )
 	fi
-	distutils-r1_python_compile ${build_args[@]}
+	distutils-r2_python_compile ${build_args[@]}
 }
 
 python_install() {
@@ -49,11 +49,11 @@ python_install() {
 	if ! use nls; then
 		install_args+=( --disable-locales )
 	fi
-	distutils-r1_python_install ${install_args[@]}
+	distutils-r2_python_install ${install_args[@]}
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	local DOC_CONTENTS="Install optional package media-libs/chromaprint[tools] to enable
 calculation and lookup of AcoustID fingerprints.

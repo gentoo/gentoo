@@ -11,7 +11,7 @@ if [[ ${PV} = *9999* ]]; then
 	EHG_REPO_URI="http://hg.rafaelmartins.eng.br/ownpaste/"
 fi
 
-inherit distutils-r1 ${HG_ECLASS}
+inherit distutils-r2 ${HG_ECLASS}
 
 DESCRIPTION="Private pastebin (server-side implementation)"
 HOMEPAGE="http://ownpaste.rtfd.org/ https://pypi.org/project/ownpaste/"
@@ -49,5 +49,5 @@ python_compile_all() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

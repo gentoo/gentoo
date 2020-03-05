@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN/-/.}"
 DESCRIPTION="Additional facilities to supplement Python's stdlib logging module"
@@ -48,5 +48,5 @@ python_test() {
 python_install() {
 	rm "${BUILD_DIR}"/lib/jaraco/__init__.py || die
 	# note: eclass may default to --skip-build in the future
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 }

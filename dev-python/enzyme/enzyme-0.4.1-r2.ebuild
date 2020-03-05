@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='xml(+)'
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python video metadata parser"
 HOMEPAGE="https://github.com/Diaoul/enzyme https://pypi.org/project/enzyme/"
@@ -37,7 +37,7 @@ python_prepare_all() {
 		ln -s "${WORKDIR}"/test*.mkv enzyme/tests/test_parsers/ || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

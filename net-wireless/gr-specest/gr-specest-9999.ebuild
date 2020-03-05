@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils git-r3 python-single-r1
+inherit cmake-utils git-r3 python-single-r2
 
 DESCRIPTION="A module adding spectral estimation routines to GNU Radio"
 HOMEPAGE="https://github.com/kit-cel/gr-specest"

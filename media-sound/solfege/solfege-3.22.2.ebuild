@@ -5,7 +5,7 @@ EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="GNU Solfege is a program written to help you practice ear training"
 HOMEPAGE="https://www.gnu.org/software/solfege/"

@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 CMAKE_ECLASS=cmake
 GENTOO_DEPEND_ON_PERL="no"
-inherit perl-module python-any-r1 cmake-multilib
+inherit perl-module python-any-r2 cmake-multilib
 
 DESCRIPTION="Library providing rendering capabilities for complex non-Roman writing systems"
 HOMEPAGE="https://scripts.sil.org/cms/scripts/page.php?site_id=projects&item_id=graphite_home"
@@ -40,7 +40,7 @@ PATCHES=( "${FILESDIR}/${PN}-1.3.5-includes-libs-perl.patch" )
 
 pkg_setup() {
 	use perl && perl_set_version
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 python_check_deps() {

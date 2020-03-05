@@ -7,7 +7,7 @@ EAPI=5
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools-utils distutils-r1 prefix eutils
+inherit autotools-utils distutils-r2 prefix eutils
 
 DESCRIPTION="CMU Speech Recognition engine"
 HOMEPAGE="http://cmusphinx.sourceforge.net/"
@@ -38,7 +38,7 @@ src_compile() {
 
 	if use python; then
 		cd python || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -55,6 +55,6 @@ src_install() {
 		unset DOCS
 
 		cd "${S}"/python || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 }

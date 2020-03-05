@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=(python3_6)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="An OpenPGP/GPG key management tool for seed files and keyrings"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Gentoo-keys"
@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}
 	"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	keepdir /var/log/gkeys
 	fperms g+w /var/log/gkeys
 }

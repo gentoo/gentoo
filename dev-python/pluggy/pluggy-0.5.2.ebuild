@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="plugin and hook calling mechanisms for python"
 HOMEPAGE="https://pluggy.readthedocs.io/ https://github.com/pytest-dev/pluggy https://pypi.org/project/pluggy/"

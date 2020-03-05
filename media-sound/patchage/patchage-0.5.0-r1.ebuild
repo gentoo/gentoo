@@ -5,7 +5,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit eutils flag-o-matic waf-utils python-any-r1
+inherit eutils flag-o-matic waf-utils python-any-r2
 
 DESCRIPTION="Modular patch bay for audio and MIDI systems"
 HOMEPAGE="http://wiki.drobilla.net/Patchage"

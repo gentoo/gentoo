@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="RFC-compliant FQDN validation and manipulation for Python"
 HOMEPAGE="https://github.com/guyhughes/fqdn"

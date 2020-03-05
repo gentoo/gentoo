@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=(python{3_6,3_7})
 
-inherit cmake-multilib cmake-utils python-any-r1 git-r3
+inherit cmake-multilib cmake-utils python-any-r2 git-r3
 
 EGIT_REPO_URI="https://github.com/KhronosGroup/glslang.git"
 SRC_URI=""

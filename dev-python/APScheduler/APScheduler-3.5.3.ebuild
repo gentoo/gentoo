@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="In-process task scheduler with Cron-like capabilities"
 HOMEPAGE="https://github.com/agronholm/apscheduler"
@@ -62,7 +62,7 @@ python_prepare_all() {
 		sed -Ee "s:$(echo "${test_failures[@]}"| sed 's: :|:g'):_\\0:" -i "${REPLY}" || die
 	done < <(grep -rElZ "$(echo "${test_failures[@]}"| sed 's: :|:g')" "${S}")
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

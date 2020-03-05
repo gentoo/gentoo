@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="CodeSourcery's test harness system"
 HOMEPAGE="http://www.codesourcery.com/qmtest/"
@@ -21,11 +21,11 @@ DEPEND=""
 RDEPEND=""
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	find "${ED}" -name config.py -print0 | xargs -0 sed -i "s:${ED}:${EPREFIX}/usr:"
 	rm -r "${ED}"usr/share/doc/${PN}/{COPYING,LICENSE.OPL} || die
 	mv "${ED}"usr/share/doc/${PN}/* "${ED}"usr/share/doc/${PF} || die

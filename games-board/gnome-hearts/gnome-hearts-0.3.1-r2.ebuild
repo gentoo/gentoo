@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_EAUTORECONF="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-single-r1
+inherit gnome2 python-single-r2
 
 DESCRIPTION="A clone of classic hearts card game"
 HOMEPAGE="http://www.gnome-hearts.org"

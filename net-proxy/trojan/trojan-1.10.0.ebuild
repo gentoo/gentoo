@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit cmake-utils python-any-r1 systemd
+inherit cmake-utils python-any-r2 systemd
 
 DESCRIPTION="An unidentifiable mechanism that helps you bypass GFW"
 HOMEPAGE="https://github.com/trojan-gfw/trojan"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit cmake-utils fortran-2 python-r1
+inherit cmake-utils fortran-2 python-multi-r2
 
 convert_month() {
 	local months=( "" Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec )

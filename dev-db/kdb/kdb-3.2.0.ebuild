@@ -8,7 +8,7 @@ ECM_TEST="true"
 PYTHON_COMPAT=( python3_{6,7,8} )
 KFMIN=5.60.0
 QTMIN=5.12.3
-inherit ecm kde.org python-any-r1
+inherit ecm kde.org python-any-r2
 
 DESCRIPTION="Database connectivity and creation framework for various vendors"
 HOMEPAGE="https://community.kde.org/KDb"
@@ -47,7 +47,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 	ecm_pkg_setup
 }
 

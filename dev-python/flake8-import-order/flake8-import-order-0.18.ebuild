@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Flake8 plugin that checks import order against various Python Style Guides"
 HOMEPAGE="https://github.com/PyCQA/flake8-import-order"

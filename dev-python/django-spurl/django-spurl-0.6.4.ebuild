@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Django template library for manipulating URLs"
 HOMEPAGE="https://pypi.org/project/django-spurl/"

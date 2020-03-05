@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Discover and load entry points from installed packages"
 HOMEPAGE="https://github.com/takluyver/entrypoints"
@@ -38,7 +38,7 @@ python_prepare_all() {
 		sed -e "/^    'sphinx.ext.intersphinx',/d" -i doc/conf.py || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	mv "${WORKDIR}/${P}"/entrypoints.py "${WORKDIR}/${P}/${PN}/" || die
 }

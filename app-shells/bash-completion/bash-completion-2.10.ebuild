@@ -5,7 +5,7 @@ EAPI=7
 
 BASHCOMP_P=bashcomp-2.0.3
 PYTHON_COMPAT=( python3_{6,7} )
-inherit bash-completion-r1 python-any-r1
+inherit bash-completion-r1 python-any-r2
 
 DESCRIPTION="Programmable Completion for bash"
 HOMEPAGE="https://github.com/scop/bash-completion"
@@ -75,7 +75,7 @@ python_check_deps() {
 }
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

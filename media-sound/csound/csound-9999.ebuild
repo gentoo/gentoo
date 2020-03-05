@@ -8,7 +8,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit cmake python-single-r1 toolchain-funcs
+inherit cmake python-single-r2 toolchain-funcs
 
 if [[ ${PV} == "9999" ]]; then
 	EGIT_REPO_URI="https://github.com/csound/csound.git"
@@ -108,7 +108,7 @@ PATCHES=(
 
 pkg_setup() {
 	if use python || use test ; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 }
 

@@ -7,7 +7,7 @@ GNOME2_EAUTORECONF="yes"
 PYTHON_COMPAT=( python2_7 )
 VALA_USE_DEPEND="vapigen"
 
-inherit db-use eutils flag-o-matic gnome2 java-pkg-opt-2 python-single-r1 vala
+inherit db-use eutils flag-o-matic gnome2 java-pkg-opt-2 python-single-r2 vala
 
 DESCRIPTION="GNOME database access library"
 HOMEPAGE="http://www.gnome-db.org/"
@@ -81,7 +81,7 @@ RESTRICT="
 
 pkg_setup() {
 	java-pkg-opt-2_pkg_setup
-	use reports && python-single-r1_pkg_setup
+	use reports && python-single-r2_pkg_setup
 }
 
 src_prepare() {

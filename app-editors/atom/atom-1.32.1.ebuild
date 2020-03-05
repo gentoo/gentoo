@@ -9,7 +9,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit multiprocessing python-single-r1 rpm xdg-utils
+inherit multiprocessing python-single-r2 rpm xdg-utils
 
 DESCRIPTION="A hackable text editor for the 21st Century"
 HOMEPAGE="https://atom.io"
@@ -149,7 +149,7 @@ BIN_S="${WORKDIR}/${PN}-bin-${MY_PV}"
 BUILD_DIR="${S}/out"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_unpack() {
@@ -212,7 +212,7 @@ src_prepare() {
 
 	eapply "${FILESDIR}/apm-python.patch"
 	eapply "${FILESDIR}/atom-unbundle-electron-r3.patch"
-	eapply "${FILESDIR}/atom-python-r1.patch"
+	eapply "${FILESDIR}/atom-python-multi-r2.patch"
 	eapply "${FILESDIR}/atom-apm-path-r2.patch"
 	eapply "${FILESDIR}/atom-fix-app-restart-r2.patch"
 	eapply "${FILESDIR}/atom-marker-layer-r1.patch"

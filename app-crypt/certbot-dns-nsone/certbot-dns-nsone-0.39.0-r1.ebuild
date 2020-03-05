@@ -14,7 +14,7 @@ else
 	S=${WORKDIR}/certbot-${PV}/${PN}
 fi
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="NS1 DNS Authenticator plugin for Certbot (Let's Encrypt Client)"
 HOMEPAGE="https://github.com/certbot/certbot https://letsencrypt.org/"

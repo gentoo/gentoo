@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Extension providing a Sphinx domain for describing RESTful HTTP APIs"
 HOMEPAGE="https://bitbucket.org/birkenfeld/sphinx-contrib/

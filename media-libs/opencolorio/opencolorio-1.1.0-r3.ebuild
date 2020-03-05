@@ -6,7 +6,7 @@ EAPI=6
 # Compatibility with Python 3 is declared by upstream, but it is broken in fact, check on bump
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils python-single-r1 vcs-snapshot
+inherit cmake-utils python-single-r2 vcs-snapshot
 
 DESCRIPTION="A color management framework for visual effects and animation"
 HOMEPAGE="http://opencolorio.org/"
@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	doc? (
 		$(python_gen_cond_dep '
-			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
 		')
 	)"
 
@@ -53,7 +53,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

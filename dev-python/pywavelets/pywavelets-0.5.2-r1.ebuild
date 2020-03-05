@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN/pyw/PyW}"
 MY_P="${MY_PN}-${PV}"
@@ -44,7 +44,7 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples; then
 		insinto /usr/share/doc/${PF}/examples
 		doins -r demo/*

@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="ssl(+),threads(+)"
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_PV=${PV/_beta/b}
 MY_P=${PN}-${MY_PV}
@@ -40,7 +40,7 @@ python_prepare_all() {
 	export CARES_EMBED="false"
 	export EMBED="false"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -68,5 +68,5 @@ python_install_all() {
 	use doc && local HTML_DOCS=( doc/_build/html/. )
 	use examples && dodoc -r examples
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='threads(+)'
-inherit python-any-r1 waf-utils multilib-build multilib-minimal
+inherit python-any-r2 waf-utils multilib-build multilib-minimal
 
 DESCRIPTION="Library for serialising LV2 atoms to/from RDF, particularly the Turtle syntax"
 HOMEPAGE="http://drobilla.net/software/sratom/"

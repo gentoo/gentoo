@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A bi-directional ping utility"
 HOMEPAGE="https://www.finnie.org/software/2ping/"
@@ -17,7 +17,7 @@ KEYWORDS="~amd64 ~arm ~mips ~ppc ~ppc64 ~x86"
 IUSE="server"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	doman doc/2ping.1
 	dodoc doc/{2ping-protocol-examples.py,2ping-protocol.md}
 	use server && {

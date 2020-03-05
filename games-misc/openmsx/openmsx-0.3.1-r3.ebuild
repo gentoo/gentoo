@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-any-r1
+inherit python-any-r2
 
 DESCRIPTION="Open source music base set for OpenTTD"
 HOMEPAGE="https://wiki.openttd.org/OpenMSX https://github.com/OpenTTD/OpenMSX"
@@ -23,7 +23,7 @@ S=${WORKDIR}/${P}-source
 PATCHES=( "${FILESDIR}"/${P}-python3.patch )
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_compile() {

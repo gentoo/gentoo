@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python filtering architecture for the Courier MTA"
 HOMEPAGE="https://bitbucket.org/gordonmessmer/courier-pythonfilter/src/default/"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="backports.shutil_which"
 MY_P="${MY_PN}-${PV}"
@@ -25,7 +25,7 @@ RDEPEND="dev-python/backports[${PYTHON_USEDEP}]"
 S=${WORKDIR}/${MY_P}
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	# main namespace provided by dev-python/backports
 	rm "${D}$(python_get_sitedir)"/backports/__init__.py* || die

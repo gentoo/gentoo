@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_REQ_USE="xml"
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Miscellaneous convenience, extension and workaround code for Python"
 HOMEPAGE="https://github.com/nphilipp/python-slip"
@@ -40,5 +40,5 @@ python_prepare_all() {
 			-i setup.py || die "sed 2 failed"
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

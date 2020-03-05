@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils versionator python-single-r1
+inherit eutils versionator python-single-r2
 
 MY_PV=$(get_version_component_range 1-2)
 MY_P="${PN}-${MY_PV}"

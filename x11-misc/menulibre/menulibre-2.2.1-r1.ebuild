@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml"
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit desktop distutils-r1 xdg-utils
+inherit desktop distutils-r2 xdg-utils
 
 DESCRIPTION="Advanced freedesktop.org compliant menu editor"
 HOMEPAGE="https://bluesabre.org/projects/menulibre/"
@@ -49,11 +49,11 @@ python_prepare_all() {
 		done
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	python_optimize
 	rm -r "${ED}"/usr/share/doc/${PN} || die
 }

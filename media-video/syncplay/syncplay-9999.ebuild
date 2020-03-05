@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit git-r3 python-r1
+inherit git-r3 python-multi-r2
 
 MY_PV=${PV/_rc/-RC}
 

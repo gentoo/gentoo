@@ -6,7 +6,7 @@ GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE="xml"
 
-inherit autotools eutils flag-o-matic gnome2 multilib pax-utils python-r1
+inherit autotools eutils flag-o-matic gnome2 multilib pax-utils python-multi-r2
 
 DESCRIPTION="A fork of GNOME Shell with layout similar to GNOME 2"
 HOMEPAGE="http://developer.linuxmint.com/projects/cinnamon-projects.html"

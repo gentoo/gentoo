@@ -6,7 +6,7 @@ EAPI=6
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1 multiprocessing
+inherit distutils-r2 multiprocessing
 
 MY_P=llvm-${PV/_/}.src
 DESCRIPTION="A stand-alone install of the LLVM suite testing tool"

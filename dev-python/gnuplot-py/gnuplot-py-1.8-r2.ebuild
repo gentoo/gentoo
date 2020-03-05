@@ -5,7 +5,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_SINGLE_IMPL=true
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A python wrapper for Gnuplot"
 HOMEPAGE="http://gnuplot-py.sourceforge.net/"
@@ -30,6 +30,6 @@ PATCHES=( "${FILESDIR}"/${PN}-1.7-mousesupport.patch )
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/Gnuplot/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 # testsuite does NOT run unattended, so left out here

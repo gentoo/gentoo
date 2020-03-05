@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Google Authentication Library"
 HOMEPAGE="https://pypi.org/project/google-auth-oauthlib/ https://github.com/googleapis/google-auth-library-python-oauthlib"

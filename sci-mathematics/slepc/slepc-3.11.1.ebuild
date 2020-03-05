@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils flag-o-matic python-any-r1 toolchain-funcs
+inherit eutils flag-o-matic python-any-r2 toolchain-funcs
 
 DESCRIPTION="Scalable Library for Eigenvalue Problem Computations"
 HOMEPAGE="http://slepc.upv.es/"

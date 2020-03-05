@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python client for HashiCorp Vault"
 HOMEPAGE="https://github.com/ianunruh/hvac"

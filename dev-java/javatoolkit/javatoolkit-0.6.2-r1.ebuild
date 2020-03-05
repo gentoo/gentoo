@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1 prefix
+inherit distutils-r2 prefix
 
 DESCRIPTION="Collection of Gentoo-specific tools for Java"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Java"
@@ -18,10 +18,10 @@ KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sparc ~x86 ~ppc-aix ~amd64-linux ~x86-linux
 
 python_prepare_all() {
 	hprefixify src/py/buildparser src/py/findclass setup.py
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install() {
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		--install-scripts="${EPREFIX}"/usr/libexec/${PN}
 }

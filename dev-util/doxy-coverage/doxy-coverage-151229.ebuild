@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1 vcs-snapshot
+inherit python-multi-r2 vcs-snapshot
 
 COMMIT="29a0bbf43bfecb6872cdca0e4a11733954d25196"
 DESCRIPTION="Source Code Documentation Coverage Measurement"

@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Python-2.7 random module ported to python-3"
 HOMEPAGE="https://pypi.org/project/random2/"

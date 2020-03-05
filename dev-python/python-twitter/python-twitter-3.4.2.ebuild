@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python wrapper around the Twitter API"
 HOMEPAGE="https://github.com/bear/python-twitter"
@@ -42,7 +42,7 @@ python_prepare_all() {
 	# Not actually required unless we want to do setup.py test
 	# https://github.com/bear/python-twitter/pull/573
 	sed -i "s/'pytest-runner'//" setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -62,5 +62,5 @@ python_install_all() {
 		dodoc -r examples/.
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

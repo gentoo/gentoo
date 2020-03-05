@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Twisted-based Tor controller client, with state-tracking and config abstractions"
 HOMEPAGE="https://github.com/meejah/txtorcon https://pypi.org/project/txtorcon/ https://txtorcon.readthedocs.org"
@@ -44,7 +44,7 @@ PATCHES=(
 python_prepare_all() {
 	sed -e "s/^ipaddress.*//" -i requirements.txt || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 python_test() {
 	pushd "${TEST_DIR}" > /dev/null || die
@@ -59,5 +59,5 @@ python_compile_all() {
 python_install_all() {
 	use doc && dohtml -r "${S}/docs/_build/html/"*
 	use examples && dodoc -r "${S}/examples/"
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

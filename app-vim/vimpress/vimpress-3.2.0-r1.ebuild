@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 vim-plugin
+inherit python-single-r2 vim-plugin
 
 DESCRIPTION="vim plugin: manage wordpress blogs from vim"
 HOMEPAGE="https://www.vim.org/scripts/script.php?script_id=3510"
@@ -19,7 +19,7 @@ RDEPEND="
 	)
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/markdown[${PYTHON_MULTI_USEDEP}]
+		dev-python/markdown[${PYTHON_USEDEP}]
 	')"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 

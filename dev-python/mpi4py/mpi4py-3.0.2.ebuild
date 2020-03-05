@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Message Passing Interface for Python"
 HOMEPAGE="https://bitbucket.org/mpi4py/ https://pypi.org/project/mpi4py/"
@@ -30,12 +30,12 @@ DISTUTILS_IN_SOURCE_BUILD=1
 python_prepare_all() {
 	# not needed on install
 	rm -vr docs/source || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 src_compile() {
 	export FAKEROOTKEY=1
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 python_test() {
@@ -48,5 +48,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/. )
 	use examples && local DOCS=( demo )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

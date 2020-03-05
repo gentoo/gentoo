@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 DISTUTILS_SINGLE_IMPL=true
 
-inherit distutils-r1 xdg-utils
+inherit distutils-r2 xdg-utils
 
 DESCRIPTION="A hierarchical note taking application"
 HOMEPAGE="https://www.giuspen.com/cherrytree"
@@ -20,11 +20,11 @@ IUSE="nls"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyenchant[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygtksourceview:2[${PYTHON_MULTI_USEDEP}]
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/pyenchant[${PYTHON_USEDEP}]
+		dev-python/pygtk:2[${PYTHON_USEDEP}]
+		dev-python/pygtksourceview:2[${PYTHON_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
 	')"
 
 DEPEND="${RDEPEND}"
@@ -37,7 +37,7 @@ python_configure_all() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	python_optimize "${D}/usr/share/${PN}/modules"
 
 	dodoc README.md changelog.txt

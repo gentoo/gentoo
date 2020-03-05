@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils ltprune mono-env python-single-r1 udev
+inherit autotools eutils ltprune mono-env python-single-r2 udev
 
 DESCRIPTION="Shared library to access the contents of an iPod"
 HOMEPAGE="http://www.gtkpod.org/libgpod/"
@@ -28,8 +28,8 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=media-libs/mutagen-1.8[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/pygobject-2.8:2[${PYTHON_MULTI_USEDEP}]
+			>=media-libs/mutagen-1.8[${PYTHON_USEDEP}]
+			>=dev-python/pygobject-2.8:2[${PYTHON_USEDEP}]
 		')
 		)
 	udev? ( virtual/udev )
@@ -58,7 +58,7 @@ PATCHES=(
 
 pkg_setup() {
 	use mono && mono-env_pkg_setup
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

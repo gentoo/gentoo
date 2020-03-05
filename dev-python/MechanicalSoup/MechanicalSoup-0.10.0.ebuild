@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A python library for automating interaction with websites"
 HOMEPAGE="https://pypi.org/project/MechanicalSoup/"
@@ -40,7 +40,7 @@ DEPEND="
 
 python_prepare_all() {
 	sed -i "s/'pytest-runner'//" setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -61,5 +61,5 @@ python_install_all() {
 		docompress -x "/usr/share/doc/${PF}/examples"
 		dodoc -r examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

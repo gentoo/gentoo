@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml"
 
-inherit eutils distutils-r1 git-r3 prefix
+inherit eutils distutils-r2 git-r3 prefix
 
 EGIT_REPO_URI="git://anongit.gentoo.org/proj/mirrorselect.git"
 
@@ -31,7 +31,7 @@ python_prepare_all() {
 	eprefixify setup.py mirrorselect/main.py
 	echo Now setting version... VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version
 	VERSION="9999-${EGIT_VERSION}" "${PYTHON}" setup.py set_version || die "setup.py set_version failed"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -39,7 +39,7 @@ python_test() {
 }
 
 pkg_postinst() {
-	distutils-r1_pkg_postinst
+	distutils-r2_pkg_postinst
 
 	einfo "This is a development version."
 	einfo "Please report any bugs you encounter to:"

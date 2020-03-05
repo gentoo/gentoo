@@ -4,7 +4,7 @@
 EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-single-r1
+inherit eutils python-single-r2
 
 DESCRIPTION="Examines C/C++ source code for security flaws"
 HOMEPAGE="https://www.dwheeler.com/flawfinder/"

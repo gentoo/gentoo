@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit flag-o-matic libtool multilib-minimal python-any-r1 xdg-utils
+inherit flag-o-matic libtool multilib-minimal python-any-r2 xdg-utils
 
 DESCRIPTION="An OpenType text shaping engine"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -50,7 +50,7 @@ if [[ ${PV} = 9999 ]] ; then
 fi
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 	if ! use debug ; then
 		append-cppflags -DHB_NDEBUG
 	fi

@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Command-line interface to GitHub"
 HOMEPAGE="http://the-brannons.com/software/cligh.html"

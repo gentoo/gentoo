@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Provides access to the system keyring service"
 HOMEPAGE="https://github.com/jaraco/keyring"
@@ -57,5 +57,5 @@ python_prepare_all() {
 
 	rm ${PN}/tests/backends/test_kwallet.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 # 0.1.1 isn't tagged on GitHub
 COMMIT_HASH="ee3dcca0df300e0584e129a4ab81828be002684b"
@@ -28,5 +28,5 @@ distutils_enable_tests pytest
 python_prepare_all() {
 	# remove dep on pytest-runner
 	sed -i -r "s:('|\")pytest-runner('|\")(,|)::" setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

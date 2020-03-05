@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 MATE_LA_PUNT="yes"
 
-inherit mate python-single-r1 linux-info user
+inherit mate python-single-r2 linux-info user
 
 if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="~amd64 ~x86"
@@ -23,7 +23,7 @@ COMMON_DEPEND="
 	dev-libs/atk
 	>=dev-libs/glib-2.50:2
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	>=mate-base/caja-1.19.1
 	media-libs/fontconfig:1.0
@@ -45,7 +45,7 @@ DEPEND="${COMMON_DEPEND}
 CONFIG_CHECK="~INOTIFY_USER"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	check_extra_config
 	enewgroup dropbox
 }

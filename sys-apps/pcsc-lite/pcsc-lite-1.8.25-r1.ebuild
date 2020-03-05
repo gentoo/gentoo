@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit python-single-r1 systemd udev multilib-minimal
+inherit python-single-r2 systemd udev multilib-minimal
 
 DESCRIPTION="PC/SC Architecture smartcard middleware library"
 HOMEPAGE="https://pcsclite.apdu.fr https://github.com/LudovicRousseau/PCSC"
@@ -47,7 +47,7 @@ PATCHES=(
 DOCS=( AUTHORS HELP README SECURITY ChangeLog )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 multilib_src_configure() {

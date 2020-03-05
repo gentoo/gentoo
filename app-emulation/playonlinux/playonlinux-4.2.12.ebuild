@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils gnome2-utils python-single-r1
+inherit eutils gnome2-utils python-single-r2
 
 MY_PN="PlayOnLinux"
 
@@ -26,7 +26,7 @@ RDEPEND="${PYTHON_DEPS}
 	app-crypt/gnupg
 	virtual/wine
 	$(python_gen_cond_dep '
-		dev-python/wxpython:3.0[${PYTHON_MULTI_USEDEP}]
+		dev-python/wxpython:3.0[${PYTHON_USEDEP}]
 	')
 	net-misc/wget
 	x11-apps/mesa-progs

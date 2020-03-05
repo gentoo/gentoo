@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 CMAKE_BUILD_TYPE=Release
 
-inherit cmake-utils linux-info python-single-r1
+inherit cmake-utils linux-info python-single-r2
 
 DESCRIPTION="Record and Replay Framework"
 HOMEPAGE="https://rr-project.org/"
@@ -28,7 +28,7 @@ RDEPEND="${DEPEND}
 DEPEND+="
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/pexpect[${PYTHON_MULTI_USEDEP}]
+			dev-python/pexpect[${PYTHON_USEDEP}]
 		')
 		sys-devel/gdb[xml]
 	)"
@@ -40,7 +40,7 @@ pkg_setup() {
 		CONFIG_CHECK="SECCOMP"
 		linux-info_pkg_setup
 	fi
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Parse RSS and Atom feeds in Python"
 HOMEPAGE="https://github.com/kurtmckee/feedparser https://pypi.org/project/feedparser/"
@@ -29,7 +29,7 @@ PATCHES=(
 
 python_prepare_all() {
 	mv feedparser/sgmllib3.py feedparser/_feedparser_sgmllib.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

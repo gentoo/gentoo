@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="ncurses?,xml"
 
-inherit eutils distutils-r1 linux-info readme.gentoo-r1 systemd
+inherit eutils distutils-r2 linux-info readme.gentoo-r1 systemd
 
 DESCRIPTION="A lightweight wired and wireless network manager for Linux"
 HOMEPAGE="https://launchpad.net/wicd"
@@ -122,7 +122,7 @@ src_configure() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	keepdir /var/lib/wicd/configurations
 	keepdir /etc/wicd/scripts/{postconnect,disconnect,preconnect}
 	keepdir /var/log/wicd

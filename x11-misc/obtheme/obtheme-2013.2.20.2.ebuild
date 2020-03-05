@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-r1
+inherit eutils python-multi-r2
 
 DESCRIPTION="A gui theme editor for openbox"
 HOMEPAGE="http://xyne.archlinux.ca/projects/obtheme/"

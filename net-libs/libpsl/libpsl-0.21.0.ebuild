@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=(python3_{6,7})
 
-inherit multilib-minimal python-any-r1
+inherit multilib-minimal python-any-r2
 
 DESCRIPTION="C library for the Public Suffix List"
 HOMEPAGE="https://github.com/rockdaboot/libpsl"

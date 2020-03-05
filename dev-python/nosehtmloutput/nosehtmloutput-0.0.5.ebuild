@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Nose plugin to produce test results in html"
 HOMEPAGE="https://github.com/cboylan/nose-html-output"

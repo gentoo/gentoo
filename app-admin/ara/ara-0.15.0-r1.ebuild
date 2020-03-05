@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="ARA Records Ansible"
 HOMEPAGE="https://github.com/openstack/ara"
@@ -47,11 +47,11 @@ DEPEND="
 
 python_compile() {
 	export PBR_VERSION="${PV}"
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	einstalldocs
 	dodoc -r doc
 }

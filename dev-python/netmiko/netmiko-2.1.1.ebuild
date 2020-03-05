@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Multi-vendor library to simplify Paramiko SSH connections to network devices"
 HOMEPAGE="https://github.com/ktbyers/netmiko"

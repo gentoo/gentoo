@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 python3_7 )
 PYTHON_REQ_USE="threads(+)"
-inherit python-single-r1 waf-utils multilib-minimal
+inherit python-single-r2 waf-utils multilib-minimal
 
 DESCRIPTION="Jackdmp jack implemention for multi-processor machine"
 HOMEPAGE="http://jackaudio.org/"
@@ -47,7 +47,7 @@ DEPEND="${CDEPEND}
 RDEPEND="${CDEPEND}
 	dbus? (
 		$(python_gen_cond_dep '
-			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
 		')
 	)
 	pam? ( sys-auth/realtime-base )

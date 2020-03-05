@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 
 RESTRICT="test"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Natural sorting for Python"
 HOMEPAGE="https://pypi.org/project/natsort/"

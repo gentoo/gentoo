@@ -6,7 +6,7 @@ EAPI="5"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="xml(+),sqlite?"
 
-inherit eutils distutils-r1 linux-info prefix
+inherit eutils distutils-r2 linux-info prefix
 
 DESCRIPTION="Tool to manage Gentoo overlays"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Layman"
@@ -58,7 +58,7 @@ pkg_setup() {
 python_prepare_all() {
 	python_setup
 	esetup.py setup_plugins
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	eprefixify etc/layman.cfg layman/config.py
 }
 
@@ -69,7 +69,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	insinto /etc/layman
 	doins etc/layman.cfg

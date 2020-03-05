@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library to use the pseudo-tty of a docker container"
 HOMEPAGE="https://github.com/d11wtq/dockerpty"

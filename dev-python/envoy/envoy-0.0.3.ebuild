@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple API for running external processes"
 HOMEPAGE="https://github.com/kennethreitz/envoy https://pypi.org/project/envoy/"

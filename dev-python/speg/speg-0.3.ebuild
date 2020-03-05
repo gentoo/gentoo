@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 DESCRIPTION="A PEG-based parser interpreter with memoization"
 HOMEPAGE="https://github.com/avakar/speg/"
 SRC_URI="https://github.com/avakar/speg/archive/v${PV}.tar.gz -> ${P}.tar.gz"

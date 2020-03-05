@@ -4,7 +4,7 @@
 EAPI=5
 ROS_REPO_URI="https://github.com/ros-perception/vision_opencv"
 KEYWORDS="~amd64 ~arm"
-# Be careful: It needs opencv with python support but opencv is python-single-r1
+# Be careful: It needs opencv with python support but opencv is python-single-r2
 PYTHON_COMPAT=( python2_7 )
 ROS_SUBDIR=${PN}
 

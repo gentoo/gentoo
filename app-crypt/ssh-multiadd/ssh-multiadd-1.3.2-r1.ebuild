@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Adds multiple ssh keys to the ssh authentication agent"
 HOMEPAGE="http://code.fluffytapeworm.com/projects"

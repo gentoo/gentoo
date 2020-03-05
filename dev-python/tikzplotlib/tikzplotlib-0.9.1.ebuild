@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Convert matplotlib figures into TikZ/PGFPlots"
 HOMEPAGE="https://github.com/nschloe/tikzplotlib"
@@ -33,7 +33,7 @@ python_prepare_all() {
 	# cannot mix dimensions and dimensionless values in an ellipse
 	rm test/test_patches.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

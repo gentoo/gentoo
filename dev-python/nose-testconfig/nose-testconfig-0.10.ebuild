@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6  )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Test Configuration plugin for nosetests"
 HOMEPAGE="https://bitbucket.org/jnoller/nose-testconfig"
@@ -21,5 +21,5 @@ DOCS=( docs/index.txt )
 
 python_install_all() {
 	use examples && local EXAMPLES=( examples/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

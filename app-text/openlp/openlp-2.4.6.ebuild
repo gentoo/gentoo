@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='sqlite'
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Free church presentation software"
 HOMEPAGE="https://openlp.org/"
@@ -36,7 +36,7 @@ S=${WORKDIR}/OpenLP-${PV}
 PATCHES=( "${FILESDIR}"/OpenLP-2.4.2-disable-tests.patch )
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	domenu  resources/openlp.desktop
 	mv   "${D}"/usr/bin/openlp.py "${D}"/usr/bin/openlp
 	doicon -s scalable resources/images/openlp.svg

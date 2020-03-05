@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Tools and libraries for control groups of Linux"
 HOMEPAGE="https://github.com/peo3/cgroup-utils"

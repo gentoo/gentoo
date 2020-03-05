@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-any-r1 toolchain-funcs
+inherit eutils python-any-r2 toolchain-funcs
 
 DESCRIPTION="Fast and flexible Lua-based build system"
 HOMEPAGE="https://matricks.github.com/bam/"
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	if use doc || use test; then
-		python-any-r1_pkg_setup
+		python-any-r2_pkg_setup
 	fi
 }
 

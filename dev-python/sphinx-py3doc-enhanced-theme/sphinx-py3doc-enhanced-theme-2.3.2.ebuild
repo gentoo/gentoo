@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Enhanced Sphinx theme (based on Python 3 docs)"
 HOMEPAGE="https://github.com/ionelmc/sphinx-py3doc-enhanced-theme https://pypi.org/project/sphinx-py3doc-enhanced-theme/"

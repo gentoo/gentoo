@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6,3_7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python function signatures backport from PEP362 for Python 2.7-3.5"
 HOMEPAGE="https://pypi.org/project/funcsigs/"

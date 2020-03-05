@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 sgml-catalog-r1
+inherit python-single-r2 sgml-catalog-r1
 
 DESCRIPTION="Python interface to SGML software in a DocBook/OpenJade env"
 HOMEPAGE="http://sgmltools-lite.sourceforge.net/"

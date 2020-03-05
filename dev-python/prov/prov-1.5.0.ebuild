@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="W3C provenance data dodel library"
 HOMEPAGE="https://pypi.org/project/prov/"

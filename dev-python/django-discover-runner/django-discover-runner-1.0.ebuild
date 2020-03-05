@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Django test runner based on unittest2's test discovery"
 HOMEPAGE="https://github.com/jezdez/django-discover-runner

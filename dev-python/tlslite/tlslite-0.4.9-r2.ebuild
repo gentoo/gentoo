@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="TLS Lite is a free python library that implements SSL 3.0 and TLS 1.0/1.1"
 HOMEPAGE="http://trevp.net/tlslite/ https://pypi.org/project/tlslite/ https://github.com/trevp/tlslite"

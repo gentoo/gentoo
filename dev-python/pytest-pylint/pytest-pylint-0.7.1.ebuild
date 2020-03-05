@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="pytest plugin to check source code with pylint"
 HOMEPAGE="https://github.com/carsongee/pytest-pylint"
@@ -29,7 +29,7 @@ python_prepare_all() {
 	# but setup.py does not declare pytest-pep8 as a dep,
 	# so it's missing from env created by distutils_install_for_testing
 	sed -i -e 's:--pep8::' tox.ini || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

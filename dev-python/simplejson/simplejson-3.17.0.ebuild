@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple, fast, extensible JSON encoder/decoder for Python"
 HOMEPAGE="https://github.com/simplejson/simplejson https://pypi.org/project/simplejson/"
@@ -25,5 +25,5 @@ python_compile() {
 	if ! python_is_python3; then
 		local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }

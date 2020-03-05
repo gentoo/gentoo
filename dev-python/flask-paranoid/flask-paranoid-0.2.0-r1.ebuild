@@ -5,7 +5,7 @@ EAPI=6
 
 DISTUTILS_IN_SOURCE_BUILD=1
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1 eapi7-ver
+inherit distutils-r2 eapi7-ver
 
 MY_PV=$(ver_cut 1-2)
 

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="IPv4/IPv6 manipulation library, backport of the ipaddress module"
 HOMEPAGE="https://github.com/phihag/ipaddress"

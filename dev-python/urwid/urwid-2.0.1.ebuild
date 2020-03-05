@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="ncurses"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Curses-based user interface library for Python"
 HOMEPAGE="http://urwid.org/ https://pypi.org/project/urwid/"
@@ -34,7 +34,7 @@ python_compile() {
 		export CFLAGS
 	fi
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -45,5 +45,5 @@ python_install_all() {
 	use examples && dodoc -r examples
 	use doc && local HTML_DOCS=( _build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

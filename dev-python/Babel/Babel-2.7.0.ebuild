@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Collection of tools for internationalizing Python applications"
 HOMEPAGE="http://babel.pocoo.org/ https://pypi.org/project/Babel/"
@@ -31,7 +31,7 @@ python_prepare_all() {
 	# because they try to write in it.
 	sed -e '/datadir =/s:os\.path\.dirname(__file__):os.environ["BUILD_DIR"]:' \
 		-i tests/messages/test_frontend.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

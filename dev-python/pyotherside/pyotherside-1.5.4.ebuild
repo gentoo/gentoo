@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit qmake-utils python-single-r1
+inherit qmake-utils python-single-r2
 
 DESCRIPTION="Asynchronous Python 3 Bindings for Qt 5"
 HOMEPAGE="https://github.com/thp/pyotherside https://thp.io/2011/pyotherside/"

@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Authentication Results Header Module"
 HOMEPAGE="https://launchpad.net/authentication-results-python https://pypi.org/project/authres/"

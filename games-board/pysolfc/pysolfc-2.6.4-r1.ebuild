@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_REQ_USE="tk"
 
-inherit distutils-r1 desktop
+inherit distutils-r2 desktop
 
 MY_PN=PySolFC
 CARD_BASE="${MY_PN}-Cardsets"
@@ -30,14 +30,14 @@ S="${WORKDIR}/${MY_PN}-${P}"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/random2[${PYTHON_MULTI_USEDEP}]
-		dev-python/six[${PYTHON_MULTI_USEDEP}]
+		dev-python/random2[${PYTHON_USEDEP}]
+		dev-python/six[${PYTHON_USEDEP}]
 		!minimal? (
-			dev-python/pillow[tk,${PYTHON_MULTI_USEDEP}]
+			dev-python/pillow[tk,${PYTHON_USEDEP}]
 			dev-tcltk/tktable
 		)
 		sound? (
-			dev-python/pygame[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygame[${PYTHON_USEDEP}]
 		)
 	')"
 
@@ -53,7 +53,7 @@ python_prepare_all() {
 		-e "s:data_dir =.*:data_dir = \'/usr/share/${PN}\':" \
 		setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -81,5 +81,5 @@ python_install_all() {
 	doman docs/*.6
 	DOCS=( README.md AUTHORS.md docs/README docs/README.SOURCE )
 	HTML_DOCS=( html-src/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

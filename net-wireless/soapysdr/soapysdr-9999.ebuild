@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake-utils python-r1
+inherit cmake-utils python-multi-r2
 
 DESCRIPTION="vendor and platform neutral SDR support library"
 HOMEPAGE="https://github.com/pothosware/SoapySDR"

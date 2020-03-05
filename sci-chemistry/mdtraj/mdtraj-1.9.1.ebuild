@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Read, write and analyze MD trajectories with only a few lines of Python code"
 HOMEPAGE="http://mdtraj.org"
@@ -30,5 +30,5 @@ DEPEND="${RDEPEND}
 python_prepare() {
 	sed -e "s:re.match('build.*(mdtraj.*)', output_dir).group(1):'.':g" \
 		-i basesetup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

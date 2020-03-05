@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Describe-style plugin for py.test"
 HOMEPAGE="https://github.com/ropez/pytest-describe https://pypi.org/project/pytest-describe"

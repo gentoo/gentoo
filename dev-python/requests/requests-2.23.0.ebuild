@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="HTTP library for human beings"
 HOMEPAGE="http://python-requests.org/"
@@ -44,7 +44,7 @@ BDEPEND="
 "
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 
 	# strip tests that require some kind of network
 	sed -e 's:test_connect_timeout:_&:' \

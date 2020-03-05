@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Release notes manager, storing release notes in a git repo and building docs"
 HOMEPAGE="https://pypi.org/project/reno/"

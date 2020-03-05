@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit linux-info python-any-r1 scons-utils toolchain-funcs systemd udev
+inherit linux-info python-any-r2 scons-utils toolchain-funcs systemd udev
 
 COMMIT="6e5e8a57628095d8d0c8bbb38187afb0f3a42112"
 DESCRIPTION="Userspace Xbox 360 Controller driver"

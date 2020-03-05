@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 MY_P="${PN}-${PV/_pre20190629/-alpha3}" # present as upgrade over previous snapshot
-inherit check-reqs cmake flag-o-matic python-any-r1 qmake-utils ruby-single toolchain-funcs
+inherit check-reqs cmake flag-o-matic python-any-r2 qmake-utils ruby-single toolchain-funcs
 
 DESCRIPTION="WebKit rendering library for the Qt5 framework (deprecated)"
 HOMEPAGE="https://www.qt.io/"
@@ -92,7 +92,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	_check_reqs pkg_setup
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 }
 
 src_configure() {

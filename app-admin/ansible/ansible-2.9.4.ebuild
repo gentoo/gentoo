@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Model-driven deployment, config management, and command execution framework"
 HOMEPAGE="https://ansible.com/"
@@ -62,7 +62,7 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/docsite/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	dodoc -r examples
 }

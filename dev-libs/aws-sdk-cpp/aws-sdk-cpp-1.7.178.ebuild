@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake python-single-r1
+inherit cmake python-single-r2
 
 DESCRIPTION="AWS SDK for C++"
 HOMEPAGE="https://aws.amazon.com/sdk-for-cpp/"

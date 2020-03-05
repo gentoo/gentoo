@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Small, dependency-free, fast Python package to infer binary file types checking"
 HOMEPAGE="https://github.com/h2non/filetype.py"

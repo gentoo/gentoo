@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Base class for scanner wrappers,communication protocol for GVM"
 HOMEPAGE="https://www.greenbone.net/en/"
@@ -28,5 +28,5 @@ python_compile() {
 		bash "${S}"/doc/generate || die
 		HTML_DOCS=( "${S}"/doc/. )
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }

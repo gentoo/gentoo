@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite(+)"
 
-inherit desktop distutils-r1
+inherit desktop distutils-r2
 
 DESCRIPTION="Clean junk to free disk space and to maintain privacy"
 HOMEPAGE="https://www.bleachbit.org"
@@ -31,7 +31,7 @@ python_prepare_all() {
 	# choose correct Python implementation, bug #465254
 	sed -i 's/python/${EPYTHON}/g' po/Makefile || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -39,12 +39,12 @@ python_compile_all() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	python_newscript ${PN}.py ${PN}
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	emake -C po DESTDIR="${D}" install
 
 	# https://bugs.gentoo.org/388999

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 systemd user
+inherit distutils-r2 systemd user
 
 DESCRIPTION="Real-time monitor and web admin for Celery distributed task queue"
 HOMEPAGE="https://flower.readthedocs.org/ https://github.com/mher/flower/ https://pypi.org/project/flower/"
@@ -34,7 +34,7 @@ src_prepare() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	insinto /etc/flower
 	doins "${FILESDIR}/config.py"
 	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
@@ -47,7 +47,7 @@ src_install() {
 }
 
 python_install() {
-	distutils-r1_python_install --install-scripts "${EPREFIX}/usr/libexec/flower"
+	distutils-r2_python_install --install-scripts "${EPREFIX}/usr/libexec/flower"
 }
 
 python_test() {

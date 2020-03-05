@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Command line selection of your X desktop environment"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"

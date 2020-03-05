@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils flag-o-matic fortran-2 multilib toolchain-funcs python-any-r1
+inherit eutils flag-o-matic fortran-2 multilib toolchain-funcs python-any-r2
 
 DESCRIPTION="Message-passing parallel language and runtime system"
 HOMEPAGE="http://charm.cs.uiuc.edu/"
@@ -38,7 +38,7 @@ REQUIRED_USE="
 FORTRAN_STANDARD="90"
 
 pkg_setup() {
-	use doc && python-any-r1_pkg_setup
+	use doc && python-any-r2_pkg_setup
 }
 
 get_opts() {

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="PyOTP is a Python library for generating and verifying one-time passwords."
 HOMEPAGE="https://github.com/pyotp/pyotp https://pypi.org/project/pyotp/"

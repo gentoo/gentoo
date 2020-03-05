@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Services for discovering, registering, and retrieving VM images"
 HOMEPAGE="https://launchpad.net/glance"
@@ -113,7 +113,7 @@ python_prepare_all() {
 	sed -i '/xattr/d' test-requirements.txt || die
 	sed -i '/pysendfile/d' test-requirements.txt || die
 	sed -i '/^hacking/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -123,7 +123,7 @@ python_compile_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	newinitd "${FILESDIR}/glance.initd" glance-api
 
@@ -139,6 +139,6 @@ python_install_all() {
 	doins -r etc/*.ini etc/*.conf etc/*.sample etc/*.json etc/meta*
 
 	use doc && local HTML_DOCS=( doc/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	rm -r "${ED}"/usr/etc
 }

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python binding to libudev"
 HOMEPAGE="https://pyudev.readthedocs.io/en/latest/ https://github.com/pyudev/pyudev"
@@ -47,5 +47,5 @@ python_prepare_all() {
 	sed -i -e "s|== \('/run/udev'\)|in (\1,'/dev/.udev')|g" \
 		tests/test_core.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

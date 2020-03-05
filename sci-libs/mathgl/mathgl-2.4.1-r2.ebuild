@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 WX_GTK_VER=3.0
 
-inherit cmake-utils eutils python-single-r1 wxwidgets multilib flag-o-matic
+inherit cmake-utils eutils python-single-r2 wxwidgets multilib flag-o-matic
 
 DESCRIPTION="Math Graphics Library"
 HOMEPAGE="http://mathgl.sourceforge.net/"
@@ -41,8 +41,8 @@ RDEPEND="
 	python? (
 		$(python_gen_cond_dep '
 			|| (
-				dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-				dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+				dev-python/numpy-python2[${PYTHON_USEDEP}]
+				dev-python/numpy[${PYTHON_USEDEP}]
 			)
 		')
 		${PYTHON_DEPS}
@@ -74,7 +74,7 @@ PATCHES=(
 
 pkg_setup() {
 	use mpi && export CC=mpicc CXX=mpicxx
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_unpack() {

@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_IN_SOURCE_BUILD=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python script for summarizing gcov data"
 HOMEPAGE="https://github.com/gcovr/gcovr"

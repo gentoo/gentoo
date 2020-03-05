@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1 multilib prefix git-r3
+inherit distutils-r2 multilib prefix git-r3
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/javatoolkit.git"
 SRC_URI=""
 KEYWORDS=""
@@ -21,10 +21,10 @@ SLOT="0"
 python_prepare_all() {
 	hprefixify src/py/buildparser src/py/findclass setup.py
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install() {
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		--install-scripts="${EPREFIX}"/usr/$(get_libdir)/${PN}/bin
 }

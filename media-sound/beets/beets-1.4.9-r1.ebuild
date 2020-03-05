@@ -8,7 +8,7 @@ MY_P=${PN}-${MY_PV}
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Media library management system for obsessive-compulsive music geeks"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
@@ -81,7 +81,7 @@ RESTRICT="test" # tests broken in 1.4.3 already
 S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	rm_use_plugins() {
 		[[ -n "${1}" ]] || die "rm_use_plugins: No use option given"
@@ -134,7 +134,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	doman man/beet.1 man/beetsconfig.5
 	use doc && local HTML_DOCS=( docs/_build/html/. )

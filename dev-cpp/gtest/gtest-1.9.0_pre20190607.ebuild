@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 
 CMAKE_ECLASS=cmake
 GOOGLETEST_COMMIT=da10da05c262af0a9e8fa91789a272a3dec67655
-inherit cmake-multilib python-any-r1
+inherit cmake-multilib python-any-r2
 
 if [[ ${PV} == "9999" ]]; then
 	inherit git-r3
@@ -40,7 +40,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

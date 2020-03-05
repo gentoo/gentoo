@@ -6,7 +6,7 @@ VALA_USE_DEPEND="vapigen"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils ltprune multilib-minimal python-single-r1 vala xdg-utils
+inherit autotools eutils ltprune multilib-minimal python-single-r2 vala xdg-utils
 
 DESCRIPTION="A library to allow applications to export a menu into the Unity Menu bar"
 HOMEPAGE="https://launchpad.net/libappindicator"
@@ -29,7 +29,7 @@ RDEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygtk[${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -45,7 +45,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	export MAKEOPTS+=" -j1" #638782
 }
 

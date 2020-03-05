@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="pyasn1 modules"
 HOMEPAGE="http://pyasn1.sourceforge.net/ https://pypi.org/project/pyasn1-modules/"
@@ -31,7 +31,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	insinto /usr/share/${P}
 	doins -r tools
 }

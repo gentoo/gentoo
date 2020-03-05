@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Logic Analyzer and I/O Probe for the Microchip PICkit2"
 HOMEPAGE="https://sourceforge.net/projects/pk2-la"

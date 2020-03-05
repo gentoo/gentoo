@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_PN="MySQL-python"
 MY_P="${MY_PN}-${PV}"
@@ -39,5 +39,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/_build/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

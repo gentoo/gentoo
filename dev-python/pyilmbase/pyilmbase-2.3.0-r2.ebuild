@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools python-single-r1
+inherit autotools python-single-r2
 
 DESCRIPTION="IlmBase Python bindings"
 HOMEPAGE="https://www.openexr.com"
@@ -20,11 +20,11 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="${PYTHON_DEPS}
 	~media-libs/ilmbase-${PV}:=
 	$(python_gen_cond_dep '
-		>=dev-libs/boost-1.62.0-r1[python(+),${PYTHON_MULTI_USEDEP}]
+		>=dev-libs/boost-1.62.0-r1[python(+),${PYTHON_USEDEP}]
 		numpy? (
 			|| (
-				dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-				>=dev-python/numpy-1.10.4[${PYTHON_MULTI_USEDEP}]
+				dev-python/numpy-python2[${PYTHON_USEDEP}]
+				>=dev-python/numpy-1.10.4[${PYTHON_USEDEP}]
 			)
 		)
 	')"

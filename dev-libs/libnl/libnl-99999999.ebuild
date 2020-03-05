@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_OPTIONAL=1
-inherit autotools distutils-r1 git-r3 libtool multilib multilib-minimal
+inherit autotools distutils-r2 git-r3 libtool multilib multilib-minimal
 
 DESCRIPTION="Libraries providing APIs to netlink protocol based Linux kernel interfaces"
 HOMEPAGE="http://www.infradead.org/~tgr/libnl/ https://github.com/thom311/libnl"
@@ -56,7 +56,7 @@ src_prepare() {
 
 	if use python; then
 		cd "${S}"/python || die
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 	fi
 
 	# out-of-source build broken
@@ -77,7 +77,7 @@ multilib_src_compile() {
 
 	if multilib_is_native_abi && use python; then
 		cd python || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -85,10 +85,10 @@ multilib_src_install() {
 	default
 
 	if multilib_is_native_abi && use python; then
-		# Unset DOCS= since distutils-r1.eclass interferes
+		# Unset DOCS= since distutils-r2.eclass interferes
 		local DOCS=()
 		cd python || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 }
 

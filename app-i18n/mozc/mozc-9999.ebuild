@@ -4,7 +4,7 @@
 EAPI="7"
 PYTHON_COMPAT=(python{3_6,3_7,3_8})
 
-inherit elisp-common multiprocessing python-any-r1 toolchain-funcs
+inherit elisp-common multiprocessing python-any-r2 toolchain-funcs
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3

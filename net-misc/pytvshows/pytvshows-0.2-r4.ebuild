@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="downloads torrents for TV shows from RSS feeds provided by ezrss.it"
 HOMEPAGE="https://sourceforge.net/projects/pytvshows/"
@@ -20,7 +20,7 @@ IUSE=""
 DEPEND=""
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/feedparser[${PYTHON_MULTI_USEDEP}]
+		dev-python/feedparser[${PYTHON_USEDEP}]
 	')"
 
 PATCHES=(
@@ -31,5 +31,5 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }

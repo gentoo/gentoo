@@ -7,7 +7,7 @@ PYTHON_COMPAT=( pypy3 python3_{6,7} )
 # xml.etree.ElementTree module required.
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1 systemd user
+inherit distutils-r2 systemd user
 
 MY_PV="${PV/_beta/b}"
 
@@ -49,7 +49,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	newinitd "${FILESDIR}/init.d-r2" supervisord
 	newconfd "${FILESDIR}/conf.d-r1" supervisord
 	dodoc supervisor/skel/sample.conf

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Validating URI References per RFC 3986"
 HOMEPAGE="https://tools.ietf.org/html/rfc3986

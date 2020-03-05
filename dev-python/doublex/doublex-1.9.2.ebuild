@@ -7,7 +7,7 @@ EAPI=7
 # https://bitbucket.org/DavidVilla/python-doublex/issues/5/support-for-python-36-36-38-tests-failing
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 vcs-snapshot
+inherit distutils-r2 vcs-snapshot
 
 DESCRIPTION="Python test doubles"
 HOMEPAGE="https://bitbucket.org/DavidVilla/python-doublex"
@@ -36,7 +36,7 @@ python_compile_all() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	rm "${ED}"/usr/README.rst || die "Couldn't remove spurious README.rst"
 }

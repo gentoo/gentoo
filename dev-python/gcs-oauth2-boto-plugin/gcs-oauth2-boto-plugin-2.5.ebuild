@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="OAuth 2.0 plugin for Google Cloud Storage credentials in the Boto library"
 HOMEPAGE="https://pypi.org/project/gcs-oauth2-boto-plugin/"
@@ -39,7 +39,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=dev-python/six-1.12.0[${PYTHON_USEDEP}]"
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	sed -i \
 		-e '/SocksiPy-branch/d' \
 		setup.py || die

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="A cross-platform clipboard module for Python."
 HOMEPAGE="https://github.com/asweigart/pyperclip"
@@ -30,5 +30,5 @@ python_test() {
 }
 
 src_test() {
-	virtx distutils-r1_src_test
+	virtx distutils-r2_src_test
 }

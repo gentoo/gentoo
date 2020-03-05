@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A full-featured template engine for Python"
 HOMEPAGE="http://jinja.pocoo.org/ https://pypi.org/project/Jinja2/"
@@ -34,11 +34,11 @@ src_prepare() {
 	# avoid unnecessary dep on extra sphinxcontrib modules
 	sed -i '/sphinxcontrib.log_cabinet/ d' docs/conf.py || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_compile() {
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 
 	if ! python_is_python3; then
 		rm "${BUILD_DIR}"/lib/jinja2/async*.py || die
@@ -46,7 +46,7 @@ python_compile() {
 }
 
 python_install() {
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 }
 
 python_install_all() {
@@ -55,7 +55,7 @@ python_install_all() {
 		dodoc -r examples/.
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	insinto /usr/share/vim/vimfiles/syntax
 	doins ext/Vim/*

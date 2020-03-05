@@ -5,7 +5,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit flag-o-matic toolchain-funcs multilib python-any-r1 waf-utils
+inherit flag-o-matic toolchain-funcs multilib python-any-r2 waf-utils
 
 DESCRIPTION="Onset detection, pitch tracking, note tracking and tempo tracking plugins"
 HOMEPAGE="https://www.vamp-plugins.org/"

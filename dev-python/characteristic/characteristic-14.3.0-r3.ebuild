@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python attributes without the boilerplate"
 HOMEPAGE="https://characteristic.readthedocs.org/ https://github.com/hynek/characteristic"
@@ -25,5 +25,5 @@ python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/^    'sphinx.ext.intersphinx',/d" -i docs/conf.py || die
 	sed -e 's|\[pytest\]|\[tool:pytest\]|' -i setup.cfg || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

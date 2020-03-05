@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Mock library for boto"
 HOMEPAGE="https://github.com/spulec/moto"
@@ -67,7 +67,7 @@ python_prepare_all() {
 		-e 's|^\(def \)\(test_invoke_requestresponse_function()\)|\1_\2|' \
 		-i tests/test_awslambda/test_lambda.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

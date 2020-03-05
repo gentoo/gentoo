@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{5,6,7,8})
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Emoji for Python"
 HOMEPAGE="https://github.com/carpedm20/emoji/"

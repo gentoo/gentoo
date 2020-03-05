@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P="${P}-20050316"
 
@@ -25,7 +25,7 @@ S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
 	sed -e "s/distutils.core/setuptools/" -i setup.py || die "sed failed"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -34,5 +34,5 @@ python_test() {
 
 python_install_all() {
 	local HTML_DOCS=( docs/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit distutils-r1 eutils linux-info user
+inherit distutils-r2 eutils linux-info user
 
 DESCRIPTION="A highly available, distributed, and eventually consistent object/blob store"
 HOMEPAGE="https://launchpad.net/swift"
@@ -62,7 +62,7 @@ pkg_setup() {
 src_prepare() {
 	sed -i 's/xattr/pyxattr/g' requirements.txt || die
 	sed -i '/^hacking/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 src_test() {
@@ -72,7 +72,7 @@ src_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	keepdir /etc/swift
 	insinto /etc/swift
 

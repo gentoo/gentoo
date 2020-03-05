@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="The Python binding for Sundown, a markdown parsing library"
 HOMEPAGE="http://misaka.61924.nl/"

@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Formatter extensions of JSON, YAML, and HTML output for the cliff framework"
 HOMEPAGE="https://github.com/dreamhost/cliff-tablib"
@@ -23,5 +23,5 @@ python_install_all() {
 	# Use IUSE examples for installing the demoapp
 	use examples && local EXAMPLES=( demoapp/. )
 	use doc && local HTML_DOCS=( docs/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A simple and Pythonic XML template language"
 HOMEPAGE="http://www.kid-templating.org/ https://pypi.org/project/kid/"
@@ -36,5 +36,5 @@ python_install_all() {
 	use doc && local HTML_DOCS=( doc/html/. )
 	use examples && local EXAMPLES=( examples/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

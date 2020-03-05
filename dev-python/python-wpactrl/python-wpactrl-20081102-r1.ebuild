@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python extension for wpa_supplicant/hostapd control interface access"
 HOMEPAGE="http://projects.otaku42.de/wiki/PythonWpaCtrl"

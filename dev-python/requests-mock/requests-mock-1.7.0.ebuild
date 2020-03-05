@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Mock out responses from the requests package"
 HOMEPAGE="https://github.com/jamielennox/requests-mock"
@@ -40,5 +40,5 @@ python_prepare_all() {
 	# Disable a test which requires purl (not in the tree)
 	sed -i -e "/^import purl$/d" -e "s/test_with_purl/_&/" \
 		tests/test_adapter.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

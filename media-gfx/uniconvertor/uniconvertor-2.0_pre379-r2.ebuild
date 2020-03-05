@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 xdg-utils
+inherit distutils-r2 xdg-utils
 
 DESCRIPTION="Convert vector graphic file formats like .cdr, .svg, wmf and more."
 HOMEPAGE="https://sk1project.net/modules.php?name=Products&product=uniconvertor"
@@ -36,7 +36,7 @@ python_prepare_all() {
 	local wand
 	wand=$(pkg-config --libs MagickWand | sed -e "s:^ *::g" -e "s: *$::g" -e "s:-l:\':g" -e "s: :',:g" -e "s:$:':g" -e "s:,'$::g")
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	sed \
 		-e "s@/usr/include@${EPREFIX}/usr/include@" \

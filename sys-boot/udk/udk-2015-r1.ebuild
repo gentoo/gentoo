@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
 
-inherit flag-o-matic multiprocessing python-single-r1 toolchain-funcs
+inherit flag-o-matic multiprocessing python-single-r2 toolchain-funcs
 
 MY_V="${PN^^}${PV}"
 

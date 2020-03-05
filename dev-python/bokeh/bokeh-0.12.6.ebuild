@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Statistical and interactive HTML plots for Python"
 HOMEPAGE="https://bokeh.pydata.org/en/latest/
@@ -73,5 +73,5 @@ python_install_all() {
 		insinto "/usr/share/doc/${PF}/examples/"
 		doins examples/*
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

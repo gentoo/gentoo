@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="py.test plugin to catch log messages, fork of pytest-capturelog"
 HOMEPAGE="https://pypi.org/project/pytest-catchlog/ https://github.com/eisensheng/pytest-catchlog"

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-any-r1
+inherit python-any-r2
 
 DESCRIPTION="GNU Image Manipulation Program help files"
 HOMEPAGE="https://docs.gimp.org/"

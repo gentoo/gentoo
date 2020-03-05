@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='tk?,threads(+)'
 
-inherit distutils-r1 flag-o-matic virtualx toolchain-funcs prefix
+inherit distutils-r2 flag-o-matic virtualx toolchain-funcs prefix
 
 MY_PN=${PN/-python2}
 MY_P=${MY_PN}-${PV}
@@ -137,7 +137,7 @@ python_prepare_all() {
 	mkdir "${XDG_RUNTIME_DIR}" || die
 	chmod 0700 "${XDG_RUNTIME_DIR}" || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -192,7 +192,7 @@ wrap_setup() {
 }
 
 python_compile() {
-	wrap_setup distutils-r1_python_compile --build-lib="${BUILD_DIR}"/lib
+	wrap_setup distutils-r2_python_compile --build-lib="${BUILD_DIR}"/lib
 }
 
 python_test() {
@@ -202,7 +202,7 @@ python_test() {
 }
 
 python_install() {
-	wrap_setup distutils-r1_python_install
+	wrap_setup distutils-r2_python_install
 
 	# mpl_toolkits namespace
 	python_moduleinto mpl_toolkits
@@ -210,7 +210,7 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	find "${D}" -name '*.pth' -delete || die
 }

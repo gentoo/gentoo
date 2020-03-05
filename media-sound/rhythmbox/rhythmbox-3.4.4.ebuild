@@ -6,7 +6,7 @@ GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml"
 
-inherit eutils gnome2 python-single-r1 multilib virtualx
+inherit eutils gnome2 python-single-r2 multilib virtualx
 
 DESCRIPTION="Music management and playback software for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Rhythmbox"
@@ -49,7 +49,7 @@ COMMON_DEPEND="
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/pygobject-3.0:3[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygobject-3.0:3[${PYTHON_USEDEP}]
 		')
 	)
 	udev? (
@@ -89,7 +89,7 @@ DEPEND="${COMMON_DEPEND}
 # eautoreconf needs yelp-tools
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

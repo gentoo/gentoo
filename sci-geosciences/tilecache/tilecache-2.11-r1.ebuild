@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Web map tile caching system"
 HOMEPAGE="http://tilecache.org/"
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}/tilecache-2.11-pil.patch" )
 
 src_install() {
-	distutils-r1_src_install "--debian"
+	distutils-r2_src_install "--debian"
 }
 
 python_test() {

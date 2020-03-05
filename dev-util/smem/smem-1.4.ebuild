@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1 toolchain-funcs
+inherit eutils python-single-r2 toolchain-funcs
 
 DESCRIPTION="A tool that can give numerous reports on memory usage on Linux systems"
 HOMEPAGE="https://www.selenic.com/smem/"

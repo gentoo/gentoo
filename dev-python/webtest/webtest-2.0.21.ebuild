@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="WebTest"
 MY_P="${MY_PN}-${PV}"
@@ -47,7 +47,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 python_prepare_all() {
 	# Prevent un-needed d'loading during doc build
 	sed -s 's:intersphinx_mapping:_&:' -i docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -64,5 +64,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

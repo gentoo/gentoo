@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple library to encode/decode DNS wire-format packets"
 HOMEPAGE="https://pypi.org/project/dnslib/"

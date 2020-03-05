@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Retrieve information on running processes and system utilization"
 HOMEPAGE="https://github.com/giampaolo/psutil https://pypi.org/project/psutil/"
@@ -45,5 +45,5 @@ python_test() {
 python_compile() {
 	# force -j1 to avoid .o linking race conditions
 	local MAKEOPTS=-j1
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }

@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit eutils gnome2 distutils-r1 virtualx
+inherit eutils gnome2 distutils-r2 virtualx
 
 DESCRIPTION="Multiple GNOME terminals in one window"
 HOMEPAGE="https://launchpad.net/terminator/"
@@ -50,7 +50,7 @@ python_prepare_all() {
 		popd > /dev/null
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

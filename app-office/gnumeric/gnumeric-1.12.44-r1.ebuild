@@ -5,7 +5,7 @@ EAPI="6"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit gnome2 flag-o-matic python-r1
+inherit gnome2 flag-o-matic python-multi-r2
 
 DESCRIPTION="The GNOME Spreadsheet"
 HOMEPAGE="http://www.gnumeric.org/"

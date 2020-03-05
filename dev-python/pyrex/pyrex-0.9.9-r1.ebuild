@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P="Pyrex-${PV}"
 
@@ -25,7 +25,7 @@ RDEPEND=""
 DOCS=( CHANGES.txt README.txt ToDo.txt USAGE.txt )
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	dohtml -A c -r Doc/.
 

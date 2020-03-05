@@ -13,7 +13,7 @@ fi
 
 CMAKE_ECLASS=cmake
 PYTHON_COMPAT=( python3_{6,7} )
-inherit cmake-multilib python-any-r1
+inherit cmake-multilib python-any-r2
 
 DESCRIPTION="EXIF, IPTC and XMP metadata C++ library and command line utility"
 HOMEPAGE="https://www.exiv2.org/"
@@ -51,7 +51,7 @@ PATCHES=( "${FILESDIR}/${P}-libssh-0.9.2.patch" )
 S="${S}-Source"
 
 pkg_setup() {
-	use doc && python-any-r1_pkg_setup
+	use doc && python-any-r2_pkg_setup
 }
 
 src_prepare() {

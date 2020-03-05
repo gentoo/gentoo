@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A python client for etcd"
 HOMEPAGE="https://github.com/jplana/python-etcd https://pypi.org/project/python-etcd/"

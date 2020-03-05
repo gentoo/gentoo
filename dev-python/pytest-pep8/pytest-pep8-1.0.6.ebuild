@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="pytest plugin to check PEP8 requirements"
 HOMEPAGE="https://pypi.org/project/pytest-pep8/"

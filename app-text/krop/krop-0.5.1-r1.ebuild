@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit desktop distutils-r1 xdg-utils
+inherit desktop distutils-r2 xdg-utils
 
 if [[ ${PV} == 9999 ]] ; then
 	inherit git-r3
@@ -26,7 +26,7 @@ RDEPEND="dev-python/python-poppler-qt5[${PYTHON_USEDEP}]
 	dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets]"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	domenu "${WORKDIR}/${P}/${PN}.desktop"
 }
 

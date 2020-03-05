@@ -5,7 +5,7 @@ EAPI=7
 
 # See https://github.com/github/backup-utils/issues/135
 PYTHON_COMPAT=(python2_7)
-inherit python-any-r1
+inherit python-any-r2
 
 DESCRIPTION="Backup and recovery utilities for GitHub Enterprise"
 HOMEPAGE="https://github.com/github/backup-utils"

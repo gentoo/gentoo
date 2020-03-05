@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 toolchain-funcs elisp-common
+inherit distutils-r2 toolchain-funcs elisp-common
 
 MY_PN="Cython"
 MY_P="${MY_PN}-${PV/_/}"
@@ -38,7 +38,7 @@ python_prepare_all() {
 	# https://github.com/cython/cython/issues/2454
 	sed -i -e '/with_outer_raising/,/return/d' tests/run/generators_py.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
@@ -50,7 +50,7 @@ python_compile() {
 	# Python gets confused when it is in sys.path before build.
 	local -x PYTHONPATH=
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_compile_all() {
@@ -70,7 +70,7 @@ python_test() {
 python_install_all() {
 	local DOCS=( CHANGES.rst README.rst ToDo.txt USAGE.txt )
 	use doc && local HTML_DOCS=( docs/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use emacs; then
 		elisp-install ${PN} Tools/cython-mode.*

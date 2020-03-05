@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1 webapp
+inherit eutils python-single-r2 webapp
 
 WEBAPP_MANUAL_SLOT="yes"
 
@@ -27,11 +27,11 @@ RDEPEND="${PYTHON_DEPS}
 	cvsgraph? ( >=dev-vcs/cvsgraph-1.5.0 )
 
 	$(python_gen_cond_dep '
-		subversion? ( >=dev-vcs/subversion-1.3.1[python,${PYTHON_MULTI_USEDEP}] )
+		subversion? ( >=dev-vcs/subversion-1.3.1[python,${PYTHON_USEDEP}] )
 
-		mysql? ( >=dev-python/mysql-python-0.9.0[${PYTHON_MULTI_USEDEP}] )
+		mysql? ( >=dev-python/mysql-python-0.9.0[${PYTHON_USEDEP}] )
 		pygments? (
-			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygments[${PYTHON_USEDEP}]
 			app-misc/mime-types
 		)
 	')
@@ -41,7 +41,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 	|| ( cvs subversion )"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	webapp_pkg_setup
 }
 

@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1 versionator
+inherit python-any-r2 versionator
 
 if [[ ${PV/_beta} == ${PV} ]]; then
 	MY_P=${P}
@@ -45,7 +45,7 @@ PATCHES=(
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

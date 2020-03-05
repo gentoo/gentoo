@@ -3,7 +3,7 @@
 
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
-inherit multilib python-single-r1
+inherit multilib python-single-r2
 
 MY_PN=IceWMControlPanel
 DESCRIPTION="A complete control panel for IceWM using gtk & python"

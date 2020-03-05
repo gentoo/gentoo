@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7,8}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Various LDAP-related Python modules"
 HOMEPAGE="https://www.python-ldap.org/en/latest/
@@ -54,7 +54,7 @@ python_prepare_all() {
 		sed -i 's/HAVE_TLS//g' setup.cfg || die
 	fi
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -77,7 +77,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	python_optimize
 }
 
@@ -87,5 +87,5 @@ python_install_all() {
 		dodoc -r Demo/.
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

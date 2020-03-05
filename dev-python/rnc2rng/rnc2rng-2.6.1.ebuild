@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="RELAX NG Compact to regular syntax conversion library"
 HOMEPAGE="https://github.com/djc/rnc2rng"

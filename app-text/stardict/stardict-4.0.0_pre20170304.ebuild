@@ -10,7 +10,7 @@ EAPI=6
 GNOME2_LA_PUNT=yes
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic gnome2 python-single-r1
+inherit autotools flag-o-matic gnome2 python-single-r2
 
 DESCRIPTION="A international dictionary supporting fuzzy and glob style matching"
 HOMEPAGE="http://stardict-4.sourceforge.net/

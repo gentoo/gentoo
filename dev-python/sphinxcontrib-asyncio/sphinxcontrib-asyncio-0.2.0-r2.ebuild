@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="sphinx extension to support coroutines in markup"
 HOMEPAGE="https://github.com/aio-libs/sphinxcontrib-asyncio"
@@ -28,12 +28,12 @@ python_compile_all() {
 
 python_install() {
 	rm "${BUILD_DIR}"/lib/sphinxcontrib/__init__.py || die
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 }
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	# clean up pth files bug #623852
 	find "${ED}" -name '*.pth' -delete || die
 }

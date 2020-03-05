@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pure python parser generator that also works with RPython"
 HOMEPAGE="https://github.com/alex/rply"
@@ -29,7 +29,7 @@ python_prepare() {
 		sed -e s':test_simple:_&:' -e s':test_empty_production:_&:' \
 			-i tests/test_parsergenerator.py
 	fi
-	distutils-r1_python_prepare
+	distutils-r2_python_prepare
 }
 
 python_test() {

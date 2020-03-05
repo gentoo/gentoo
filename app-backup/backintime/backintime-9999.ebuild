@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-single-r1 git-r3 xdg
+inherit python-single-r2 git-r3 xdg
 
 DESCRIPTION="Backup system inspired by TimeVault and FlyBack"
 HOMEPAGE="https://backintime.readthedocs.io/en/latest/ https://github.com/bit-team/backintime/"
@@ -20,8 +20,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/keyring[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/keyring[${PYTHON_USEDEP}]
 	')
 	net-misc/openssh
 	net-misc/rsync[xattr,acl]

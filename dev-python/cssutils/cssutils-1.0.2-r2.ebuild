@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A CSS Cascading Style Sheets library"
 HOMEPAGE="https://pypi.org/project/cssutils/ https://bitbucket.org/cthedot/cssutils http://cthedot.de/cssutils/"
@@ -42,7 +42,7 @@ python_prepare_all() {
 	sed -i -e 's/encutils.tryEncodings(test)/encutils.tryEncodings(test).lower()/' \
 	src/cssutils/tests/test_encutils/__init__.py || die "fixing test_encutils failed"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

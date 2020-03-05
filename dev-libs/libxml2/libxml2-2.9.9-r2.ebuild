@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} )
 PYTHON_REQ_USE="xml"
 
-inherit libtool flag-o-matic python-r1 autotools prefix multilib-minimal
+inherit libtool flag-o-matic python-multi-r2 autotools prefix multilib-minimal
 
 DESCRIPTION="XML C parser and toolkit"
 HOMEPAGE="http://www.xmlsoft.org/"

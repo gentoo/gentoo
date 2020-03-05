@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Conversion tools for block devices"
 HOMEPAGE="https://github.com/g2p/blocks"

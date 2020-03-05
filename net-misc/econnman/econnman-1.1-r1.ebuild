@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..7} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="ConnMan User Interface written with EFL & python"
 HOMEPAGE="https://phab.enlightenment.org/w/projects/econnman/ https://www.enlightenment.org/"
@@ -22,7 +22,7 @@ RDEPEND="
 	${DEPEND}
 	dev-libs/efl[X,connman]
 	$(python_gen_cond_dep '
-		dev-python/python-efl[${PYTHON_MULTI_USEDEP}]
+		dev-python/python-efl[${PYTHON_USEDEP}]
 	')
 "
 

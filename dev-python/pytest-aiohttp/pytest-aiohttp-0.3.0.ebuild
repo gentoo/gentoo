@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="pytest plugin for aiohttp support"
 HOMEPAGE="https://github.com/aio-libs/pytest-aiohttp/"

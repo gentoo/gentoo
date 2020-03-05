@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python client library for MariaDB/MySQL"
 HOMEPAGE="https://dev.mysql.com/downloads/connector/python/"
@@ -37,7 +37,7 @@ python_test() {
 
 # Yeah, this is really broken, but the extension will only build this way during "install"
 python_install() {
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		--with-mysql-capi="${EPREFIX}/usr" \
 		--with-protobuf-include-dir="${EPREFIX}/usr/include/google/protobuf/" \
 		--with-protobuf-lib-dir="${EPREFIX}/usr/$(get_libdir)" \
@@ -45,7 +45,7 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples ; then
 		dodoc -r examples
 	fi

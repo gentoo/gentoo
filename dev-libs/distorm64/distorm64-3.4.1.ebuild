@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="The ultimate disassembler library (X86-32, X86-64)"
 HOMEPAGE="http://www.ragestorm.net/distorm/"

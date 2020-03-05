@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Voidspace Python modules"
 HOMEPAGE="http://www.voidspace.org.uk/python/pythonutils.html"
@@ -21,5 +21,5 @@ RDEPEND=""
 python_install_all() {
 	dodoc docs/*.txt
 	use doc && local HTML_DOCS=( docs/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

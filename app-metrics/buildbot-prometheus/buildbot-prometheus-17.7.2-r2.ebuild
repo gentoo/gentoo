@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Prometheus metrics exporter for Buildbot"
 HOMEPAGE="https://github.com/claws/buildbot-prometheus"
@@ -26,7 +26,7 @@ PATCHES=(
 
 python_prepare_all() {
 	sed -i -e "/^install_reqs.*$/d" -e "/^from pip.*$/d" -e "s/requires = .*/requires = ['buildbot', 'prometheus_client']/" setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 pkg_postinst() {

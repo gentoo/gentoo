@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-inherit autotools git-r3 python-any-r1
+inherit autotools git-r3 python-any-r2
 
 EGIT_REPO_URI="https://github.com/rkd77/felinks"
 

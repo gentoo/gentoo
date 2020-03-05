@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Manage external processes across test runs"
 HOMEPAGE="https://pypi.org/project/pytest-xprocess/ https://github.com/pytest-dev/pytest-xprocess"
@@ -30,5 +30,5 @@ src_prepare() {
 	# Upstream's package mistakenly includes __pycache__ directory that make
 	# tests fail.
 	rm -r example/__pycache__ || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }

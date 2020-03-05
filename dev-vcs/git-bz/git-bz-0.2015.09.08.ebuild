@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE='sqlite'
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Bugzilla subcommand for git"
 HOMEPAGE="http://www.fishsoup.net/software/git-bz/"

@@ -6,7 +6,7 @@ EAPI=6
 FORTRAN_NEEDED=fortran
 #PYTHON_COMPAT=( python3_{6,7} )
 
-# 4.3.4 will need python-single-r1
+# 4.3.4 will need python-single-r2
 inherit fcaps fortran-2 linux-info toolchain-funcs
 
 DESCRIPTION="A performance-oriented tool suite for x86 multicore environments"
@@ -68,7 +68,7 @@ PATCHES=(
 
 pkg_setup() {
 	fortran-2_pkg_setup
-	#python-single-r1_pkg_setup
+	#python-single-r2_pkg_setup
 }
 
 src_prepare() {

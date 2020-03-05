@@ -5,7 +5,7 @@ EAPI="7"
 CMAKE_MAKEFILE_GENERATOR="emake"
 PYTHON_COMPAT=(python{3_6,3_7})
 
-inherit cmake-utils flag-o-matic python-single-r1 xdg-utils
+inherit cmake-utils flag-o-matic python-single-r2 xdg-utils
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -87,7 +87,7 @@ DOCS=()
 
 pkg_setup() {
 	if use python; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 }
 

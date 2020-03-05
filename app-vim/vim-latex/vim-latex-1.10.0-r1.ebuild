@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit vim-plugin python-single-r1
+inherit vim-plugin python-single-r2
 
 DESCRIPTION="A comprehensive set of tools to view, edit and compile LaTeX documents"
 HOMEPAGE="http://vim-latex.sourceforge.net/"

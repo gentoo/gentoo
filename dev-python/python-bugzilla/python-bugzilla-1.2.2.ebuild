@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A python module for interacting with Bugzilla over XMLRPC"
 HOMEPAGE="https://github.com/python-bugzilla/python-bugzilla"

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library to read from and write to FITS files"
 HOMEPAGE="https://github.com/esheldon/fitsio"
@@ -29,7 +29,7 @@ PATCHES=( "${FILESDIR}"/${P}-test-failures.patch )
 python_prepare_all() {
 	sed -e '/self.use_system_fitsio/s/False/True/' \
 		-i setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

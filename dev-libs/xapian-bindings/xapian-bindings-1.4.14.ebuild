@@ -15,7 +15,7 @@ PHP_EXT_OPTIONAL_USE="php"
 USE_RUBY="ruby24 ruby25 ruby26"
 RUBY_OPTIONAL="yes"
 
-inherit java-pkg-opt-2 mono-env multibuild php-ext-source-r3 python-r1 ruby-ng toolchain-funcs
+inherit java-pkg-opt-2 mono-env multibuild php-ext-source-r3 python-multi-r2 ruby-ng toolchain-funcs
 
 DESCRIPTION="SWIG and JNI bindings for Xapian"
 HOMEPAGE="https://www.xapian.org/"

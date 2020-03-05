@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit desktop eutils python-r1
+inherit desktop eutils python-multi-r2
 
 DESCRIPTION="Action/arcade recreation of SolarFox"
 HOMEPAGE="http://www.pygame.org/shredwheat/solarwolf/"

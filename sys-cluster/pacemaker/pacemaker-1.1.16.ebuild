@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools eutils python-single-r1
+inherit autotools eutils python-single-r2
 
 MY_PN="Pacemaker"
 MY_P=${MY_PN}-${PV/_/-}

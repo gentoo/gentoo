@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 VALA_MIN_API_VERSION="0.34"
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools bash-completion-r1 gnome2-utils python-r1 vala virtualx xdg-utils
+inherit autotools bash-completion-r1 gnome2-utils python-multi-r2 vala virtualx xdg-utils
 
 DESCRIPTION="Intelligent Input Bus for Linux / Unix OS"
 HOMEPAGE="https://github.com/ibus/ibus/wiki"

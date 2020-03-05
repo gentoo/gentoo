@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-r1 bash-completion-r1
+inherit python-multi-r2 bash-completion-r1
 
 DESCRIPTION="Cli interface for dropbox (python), part of nautilus-dropbox"
 HOMEPAGE="https://www.dropbox.com/"

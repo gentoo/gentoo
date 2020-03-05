@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6..7} )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Spell checking, hyphenation and morphological analysis tool for Finnish language"
 HOMEPAGE="https://voikko.puimula.org/"

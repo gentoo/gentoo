@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r2
 
 DESCRIPTION="A dockerized approach to test a Gentoo package within a clean stage3 container"
 HOMEPAGE="http://ebuildtester.readthedocs.io/"
@@ -27,6 +27,6 @@ DEPEND="
 "
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	newbashcomp "${FILESDIR}/${PN}.bash-completion" "${PN}"
 }

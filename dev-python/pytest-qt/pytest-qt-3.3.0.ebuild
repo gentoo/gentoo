@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="pytest plugin for PyQt4 or PyQt5 applications"
 HOMEPAGE="https://pypi.org/project/pytest-qt https://github.com/pytest-dev/pytest-qt"

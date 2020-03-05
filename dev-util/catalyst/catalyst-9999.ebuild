@@ -14,7 +14,7 @@ fi
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 ${SRC_ECLASS}
+inherit distutils-r2 ${SRC_ECLASS}
 
 DESCRIPTION="Release metatool used for creating releases based on Gentoo Linux"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Catalyst"
@@ -52,7 +52,7 @@ python_prepare_all() {
 	python_setup
 	echo VERSION="${PV}" "${PYTHON}" setup.py set_version
 	VERSION="${PV}" "${PYTHON}" setup.py set_version || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -61,7 +61,7 @@ python_compile_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use doc; then
 		dodoc files/HOWTO.html files/docbook-xsl.css
 	fi

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Minuit numerical function minimization in Python"
 HOMEPAGE="https://github.com/jpivarski/pyminuit"
@@ -30,11 +30,11 @@ src_compile() {
 	cd "${WORKDIR}"/Minuit-1_7_9 || die
 	emake
 	cd "${S}" || die
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 python_install_all() {
 	cd "${WORKDIR}"/Minuit-1_7_9 || die
 	default
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools linux-info python-any-r1
+inherit autotools linux-info python-any-r2
 
 DESCRIPTION="interactive process viewer"
 HOMEPAGE="https://hisham.hm/htop/"
@@ -41,7 +41,7 @@ pkg_setup() {
 		ewarn "what files), you must have sys-process/lsof installed."
 	fi
 
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 	linux-info_pkg_setup
 }
 

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite"
-inherit python-single-r1 xdg-utils
+inherit python-single-r2 xdg-utils
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
@@ -32,13 +32,13 @@ RDEPEND="${PYTHON_DEPS}
 	cddb? ( dev-python/cddb-py )
 	libnotify? ( >=x11-libs/libnotify-0.7[introspection] )
 	$(python_gen_cond_dep '
-		dev-python/bsddb3[${PYTHON_MULTI_USEDEP}]
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/gst-python:1.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pygobject-3.13.2:3[${PYTHON_MULTI_USEDEP}]
-		>=media-libs/mutagen-1.10[${PYTHON_MULTI_USEDEP}]
-		scrobbler? ( dev-python/pylast[${PYTHON_MULTI_USEDEP}] )
+		dev-python/bsddb3[${PYTHON_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/gst-python:1.0[${PYTHON_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		>=dev-python/pygobject-3.13.2:3[${PYTHON_USEDEP}]
+		>=media-libs/mutagen-1.10[${PYTHON_USEDEP}]
+		scrobbler? ( dev-python/pylast[${PYTHON_USEDEP}] )
 	')
 "
 BDEPEND="
@@ -51,7 +51,7 @@ BDEPEND="
 RESTRICT="test" #315589
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_compile() {

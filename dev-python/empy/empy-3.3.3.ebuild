@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A powerful and robust templating system for Python"
 HOMEPAGE="http://www.alcyone.com/software/empy/"
@@ -24,7 +24,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use doc; then
 		dodir /usr/share/doc/"${PF}"/examples
 		insinto /usr/share/doc/"${PF}"/examples

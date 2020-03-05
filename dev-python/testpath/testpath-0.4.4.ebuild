@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Test utilities for code working with files and commands"
 HOMEPAGE="https://github.com/jupyter/testpath https://testpath.readthedocs.io/en/latest/"
@@ -34,5 +34,5 @@ python_prepare_all() {
 	# Prevent un-needed download during build
 	sed -e "/^    'sphinx.ext.intersphinx',/d" -i doc/conf.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

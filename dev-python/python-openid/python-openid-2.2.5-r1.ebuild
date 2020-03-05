@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_REQ_USE='sqlite?'
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="OpenID support for servers and consumers"
 HOMEPAGE="http://www.openidenabled.com/openid/libraries/python/ https://pypi.org/project/python-openid/"
@@ -41,7 +41,7 @@ python_prepare_all() {
 
 	rm -v openid/test/test_parsehtml.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -49,7 +49,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use examples; then
 		dodoc -r examples

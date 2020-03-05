@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="ECDSA cryptographic signature library in pure Python"
 HOMEPAGE="https://github.com/warner/python-ecdsa"

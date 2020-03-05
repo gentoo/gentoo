@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pure-Python Implementation of the AES block-cipher and common modes of operation"
 HOMEPAGE="https://pypi.org/project/pyaes/"

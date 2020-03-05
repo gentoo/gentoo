@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1
+inherit python-any-r2
 
 MY_PN=${PN/_/-}
 MY_P=${MY_PN}-${PV}

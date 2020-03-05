@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="This package provides cross-platform cross-python shutil.which functionality"
 HOMEPAGE="https://github.com/pydanny/whichcraft"

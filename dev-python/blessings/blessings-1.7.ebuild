@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A thin, practical wrapper around terminal coloring, styling, and positioning"
 HOMEPAGE="https://github.com/erikrose/blessings https://pypi.org/project/blessings/"

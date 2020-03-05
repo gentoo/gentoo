@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="XPath 1.0/2.0 parsers and selectors for ElementTree and lxml"
 HOMEPAGE="https://github.com/sissaschool/elementpath
@@ -27,7 +27,7 @@ BDEPEND="
 distutils_enable_tests unittest
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 
 	# this test fails depending on system locale + requires some random
 	# locales being installed

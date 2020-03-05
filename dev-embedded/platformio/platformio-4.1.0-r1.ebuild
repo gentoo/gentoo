@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="An open source ecosystem for IoT development"
 HOMEPAGE="https://platformio.org/"
@@ -19,24 +19,24 @@ IUSE=""
 
 DEPEND="
 	$(python_gen_cond_dep '
-		dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+		dev-python/setuptools[${PYTHON_USEDEP}]
 	')"
 RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
-		<dev-python/bottle-0.13[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/click-5[${PYTHON_MULTI_USEDEP}]
-		<dev-python/click-8[${PYTHON_MULTI_USEDEP}]
-		dev-python/colorama[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pyserial-3[${PYTHON_MULTI_USEDEP}]
-		<dev-python/pyserial-4[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/requests-2.4[${PYTHON_MULTI_USEDEP}]
-		<dev-python/requests-3[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/semantic_version-2.8.1[${PYTHON_MULTI_USEDEP}]
-		<dev-python/semantic_version-3[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/tabulate-0.8.3[${PYTHON_MULTI_USEDEP}]
-		<dev-python/tabulate-1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pyelftools-0.25[${PYTHON_MULTI_USEDEP}]
-		<dev-python/pyelftools-1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/marshmallow-2.20.5[${PYTHON_MULTI_USEDEP}]
-		<dev-python/marshmallow-3[${PYTHON_MULTI_USEDEP}]
+		<dev-python/bottle-0.13[${PYTHON_USEDEP}]
+		>=dev-python/click-5[${PYTHON_USEDEP}]
+		<dev-python/click-8[${PYTHON_USEDEP}]
+		dev-python/colorama[${PYTHON_USEDEP}]
+		>=dev-python/pyserial-3[${PYTHON_USEDEP}]
+		<dev-python/pyserial-4[${PYTHON_USEDEP}]
+		>=dev-python/requests-2.4[${PYTHON_USEDEP}]
+		<dev-python/requests-3[${PYTHON_USEDEP}]
+		>=dev-python/semantic_version-2.8.1[${PYTHON_USEDEP}]
+		<dev-python/semantic_version-3[${PYTHON_USEDEP}]
+		>=dev-python/tabulate-0.8.3[${PYTHON_USEDEP}]
+		<dev-python/tabulate-1[${PYTHON_USEDEP}]
+		>=dev-python/pyelftools-0.25[${PYTHON_USEDEP}]
+		<dev-python/pyelftools-1[${PYTHON_USEDEP}]
+		>=dev-python/marshmallow-2.20.5[${PYTHON_USEDEP}]
+		<dev-python/marshmallow-3[${PYTHON_USEDEP}]
 	')"

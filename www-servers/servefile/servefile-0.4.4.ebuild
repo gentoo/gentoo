@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Serve a single file via HTTP"
 HOMEPAGE="http://seba-geek.de/stuff/servefile/"
@@ -23,7 +23,7 @@ RDEPEND="
 	sys-apps/sed"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	dodoc ChangeLog
 	doman ${PN}.1

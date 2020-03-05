@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Functional or integrated test suites for OpenStack projects"
 HOMEPAGE="https://pypi.org/project/tempest-lib/ https://github.com/openstack/tempest-lib"
@@ -49,7 +49,7 @@ DEPEND="
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit desktop python-single-r1 vcs-snapshot
+inherit desktop python-single-r2 vcs-snapshot
 
 MY_COMMIT="4f1e0a6b27ebf5d9b7508594188fe0f86c34ec52"
 
@@ -23,8 +23,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	net-misc/connman
 	virtual/notification-daemon"

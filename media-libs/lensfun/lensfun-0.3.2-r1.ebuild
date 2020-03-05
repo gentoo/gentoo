@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit python-single-r1 cmake-utils
+inherit python-single-r2 cmake-utils
 
 DESCRIPTION="Library for rectifying and simulating photographic lens distortions"
 HOMEPAGE="https://lensfun.github.io"

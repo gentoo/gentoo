@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python wrapper around the reflink system calls"
 HOMEPAGE="https://gitlab.com/rubdos/pyreflink"
@@ -38,7 +38,7 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 python_test() {

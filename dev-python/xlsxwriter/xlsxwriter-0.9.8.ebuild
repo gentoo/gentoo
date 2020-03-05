@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="XlsxWriter"
 MY_P="${MY_PN}-${PV}"
@@ -35,7 +35,7 @@ python_prepare_all() {
 	if use test; then
 		cp -r "${WORKDIR}"/${MY_PN}-RELEASE_${PV}/${PN}/test ${PN}/ || die
 	fi
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

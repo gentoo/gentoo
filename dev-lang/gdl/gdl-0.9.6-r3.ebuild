@@ -6,7 +6,7 @@ EAPI=5
 WX_GTK_VER="3.0"
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-utils eutils python-r1 wxwidgets toolchain-funcs virtualx
+inherit cmake-utils eutils python-multi-r2 wxwidgets toolchain-funcs virtualx
 
 DESCRIPTION="GNU Data Language"
 HOMEPAGE="https://github.com/gnudatalanguage/gdl"

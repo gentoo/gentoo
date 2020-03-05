@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 XORG_MULTILIB=yes
 XORG_STATIC=no
 
-inherit python-r1 xorg-2
+inherit python-multi-r2 xorg-2
 
 DESCRIPTION="X C-language Bindings protocol headers"
 HOMEPAGE="https://xcb.freedesktop.org/ https://gitlab.freedesktop.org/xorg/proto/xcbproto"

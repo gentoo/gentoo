@@ -6,7 +6,7 @@ EAPI=5
 # pypy doesn't get started in test run. Still required by www-servers/gunicorn
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r2 toolchain-funcs
 
 DESCRIPTION="Allow customization of the process title"
 HOMEPAGE="https://github.com/dvarrazzo/py-setproctitle"
@@ -26,7 +26,7 @@ DOCS=( HISTORY.rst README.rst )
 python_prepare_all() {
 	sed -i -e "/pyrun/s:%s'.*):'):" tests/*.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

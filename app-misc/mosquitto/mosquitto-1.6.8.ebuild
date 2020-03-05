@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-any-r1 systemd toolchain-funcs
+inherit python-any-r2 systemd toolchain-funcs
 
 DESCRIPTION="An Open Source MQTT v3 Broker"
 HOMEPAGE="https://mosquitto.org/"

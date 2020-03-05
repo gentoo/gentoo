@@ -13,7 +13,7 @@ SLOT="0"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-inherit python-any-r1 cmake-utils
+inherit python-any-r2 cmake-utils
 
 DEPEND="virtual/opencl"
 RDEPEND="${DEPEND}"

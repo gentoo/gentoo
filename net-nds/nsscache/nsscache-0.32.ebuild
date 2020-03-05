@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="commandline tool to sync directory services to local cache"
 HOMEPAGE="https://github.com/google/nsscache"
@@ -32,11 +32,11 @@ src_prepare() {
 	find "${S}" -name '*.py' -exec \
 		sed -i '/^import bsddb$/s,bsddb,bsddb3 as bsddb,g' \
 		{} \+
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	doman nsscache.1 nsscache.conf.5
 	dodoc THANKS nsscache.cron CONTRIBUTING.md README.md

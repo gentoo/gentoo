@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit autotools git-r3 python-single-r1
+inherit autotools git-r3 python-single-r2
 
 DESCRIPTION="Text-based, multi-protocol instant messenger"
 HOMEPAGE="https://github.com/ekg2/ekg2/"

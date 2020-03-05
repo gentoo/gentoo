@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Google Authentication Library"
 HOMEPAGE="https://pypi.org/project/google-auth/"
@@ -38,7 +38,7 @@ python_prepare_all() {
 	sed -e 's:test_connection_error:_\0:' \
 		-e 's:test_request_with_timeout_failure:_\0:' \
 		-i tests/transport/compliance.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -48,6 +48,6 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

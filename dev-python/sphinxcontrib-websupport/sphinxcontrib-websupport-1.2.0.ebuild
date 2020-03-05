@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Sphinx websupport extension"
 HOMEPAGE="https://www.sphinx-doc.org
@@ -37,11 +37,11 @@ src_prepare() {
 	# breaks tests
 	sed -i -e '/pkg_resources/d' \
 		sphinxcontrib/websupport/__init__.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_compile() {
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 
 	# missed by setup.py
 	cp -r sphinxcontrib/websupport/templates \
@@ -49,6 +49,6 @@ python_compile() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }

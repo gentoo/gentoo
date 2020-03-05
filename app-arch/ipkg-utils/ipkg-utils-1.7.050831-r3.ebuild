@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils toolchain-funcs versionator
+inherit distutils-r2 eutils toolchain-funcs versionator
 
 MY_P="${PN}-$(get_version_component_range 3)"
 
@@ -41,12 +41,12 @@ src_prepare() {
 }
 
 src_compile() {
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 	emake CC="$(tc-getCC)"
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	if use minimal; then
 		rm "${ED}usr/bin/ipkg-upload" \
@@ -55,7 +55,7 @@ python_install() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	dobin ipkg-compare-versions
 }

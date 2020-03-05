@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Zstandard Bindings for Python"
 HOMEPAGE="https://pypi.org/project/zstandard/ https://github.com/indygreg/python-zstandard"
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 
 python_compile() {
 	local MAKEOPTS=-j1
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {

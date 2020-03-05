@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Use version control tags to discover version numbers"
 HOMEPAGE="https://github.com/habnabit/vcversioner https://pypi.org/project/vcversioner/"

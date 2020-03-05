@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite,xml"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit gnome2-utils distutils-r1 versionator xdg-utils
+inherit gnome2-utils distutils-r2 versionator xdg-utils
 
 DESCRIPTION="Jabber client written in PyGTK"
 HOMEPAGE="https://www.gajim.org/"
@@ -30,18 +30,18 @@ DEPEND="${COMMON_DEPEND}
 	>=sys-devel/gettext-0.17-r1"
 RDEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		dev-python/idna[${PYTHON_MULTI_USEDEP}]
-		dev-python/precis-i18n[${PYTHON_MULTI_USEDEP}]
-		dev-python/pyasn1[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycurl[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:3[cairo,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pyopenssl-0.14[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/python-nbxmpp-0.6.6[${PYTHON_MULTI_USEDEP}]
+		dev-python/idna[${PYTHON_USEDEP}]
+		dev-python/precis-i18n[${PYTHON_USEDEP}]
+		dev-python/pyasn1[${PYTHON_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		dev-python/pycurl[${PYTHON_USEDEP}]
+		dev-python/pygobject:3[cairo,${PYTHON_USEDEP}]
+		>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
+		>=dev-python/python-nbxmpp-0.6.6[${PYTHON_USEDEP}]
 		x11-libs/libXScrnSaver
 		crypt? (
-			dev-python/pycryptodome[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/python-gnupg-0.4.0[${PYTHON_MULTI_USEDEP}] )
+			dev-python/pycryptodome[${PYTHON_USEDEP}]
+			>=dev-python/python-gnupg-0.4.0[${PYTHON_USEDEP}] )
 		geolocation? ( app-misc/geoclue[introspection] )
 		jingle? (
 			net-libs/farstream:0.2[introspection]
@@ -51,20 +51,20 @@ RDEPEND="${COMMON_DEPEND}
 		)
 		keyring? (
 			app-crypt/libsecret[crypt,introspection]
-			dev-python/keyring[${PYTHON_MULTI_USEDEP}]
+			dev-python/keyring[${PYTHON_USEDEP}]
 		)
 		networkmanager? ( net-misc/networkmanager[introspection] )
 		remote? (
-			>=dev-python/dbus-python-1.2.0[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/dbus-python-1.2.0[${PYTHON_USEDEP}]
 			sys-apps/dbus[X]
 		)
-		rst? ( dev-python/docutils[${PYTHON_MULTI_USEDEP}] )
+		rst? ( dev-python/docutils[${PYTHON_USEDEP}] )
 		spell? (
 			app-text/gspell[introspection]
 			app-text/hunspell
 		)
 		upnp? ( net-libs/gupnp-igd[introspection] )
-		webp? ( dev-python/pillow[${PYTHON_MULTI_USEDEP}] )
+		webp? ( dev-python/pillow[${PYTHON_USEDEP}] )
 	')"
 
 RESTRICT="test"

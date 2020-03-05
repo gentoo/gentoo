@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=1
 CMAKE_MIN_VERSION=3.8.7
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils distutils-r1 llvm
+inherit cmake-utils distutils-r2 llvm
 
 DESCRIPTION="assembly/assembler framework + bindings"
 HOMEPAGE="http://www.keystone-engine.org/"
@@ -49,7 +49,7 @@ llvm_check_deps() {
 wrap_python() {
 	if use python; then
 		pushd bindings/python >/dev/null || die
-		distutils-r1_${EBUILD_PHASE_FUNC} "$@"
+		distutils-r2_${EBUILD_PHASE_FUNC} "$@"
 		popd >/dev/null || die
 	fi
 }

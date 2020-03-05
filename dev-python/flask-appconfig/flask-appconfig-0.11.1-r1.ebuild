@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Configures Flask applications in a canonical way"
 HOMEPAGE="https://github.com/mbr/flask-appconfig"
@@ -39,7 +39,7 @@ python_prepare_all() {
 	sed -i "s/, 'sphinx.ext.intersphinx'//" docs/conf.py || die
 	# These conflict with recent flask versions, #589548
 	sed -i '/entry_points={/,/},$/d' setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

@@ -6,7 +6,7 @@ EAPI=6
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 if [[ ${PV} == *9999* ]] ; then
 	EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/elfix.git"
@@ -40,10 +40,10 @@ src_compile() {
 	unset XTPAX
 	use ptpax && export PTPAX="yes"
 	use xtpax && export XTPAX="yes"
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 src_install() {
 	cd scripts || die
-	distutils-r1_src_install
+	distutils-r2_src_install
 }

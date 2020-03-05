@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="threads(+),xml"
-inherit cmake-utils python-r1
+inherit cmake-utils python-multi-r2
 
 DESCRIPTION="C++ computer vision library emphasizing customizable algorithms and structures"
 HOMEPAGE="https://ukoethe.github.io/vigra/"

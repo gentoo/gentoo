@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_IN_SOURCE_BUILD=1
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Mercurial interactive history viewer"
 HOMEPAGE="https://www.logilab.org/project/hgview/ https://pypi.org/project/hgview/"
@@ -40,11 +40,11 @@ src_prepare() {
 		-e 's:$(INSTALL) $$i:$(INSTALL) -m 644 $$i:' \
 		doc/Makefile || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	# Install Mercurial extension config file
 	insinto /etc/mercurial/hgrc.d

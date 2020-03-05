@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 # Commit of the Brotli library bundled within brotlipy.
 BROTLI_BUNDLED_COMMIT="46c1a881b41bb638c76247558aa04b1591af3aa7"
@@ -45,7 +45,7 @@ src_prepare() {
 	# Tests fail if we have this folder preserved within the lib.
 	rm -r "${WORKDIR}/${P}/libbrotli/python" || die "Could not remove 'python' subfolder."
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

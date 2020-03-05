@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple tool for uploading files to the filesystem of an ESP8266 running NodeMCU"
 HOMEPAGE="https://github.com/kmpm/nodemcu-uploader"

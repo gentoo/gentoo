@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="sqlite"
 
 DISTUTILS_SINGLE_IMPL=1
-inherit distutils-r1 xdg-utils
+inherit distutils-r2 xdg-utils
 
 DESCRIPTION="Genealogical Research and Analysis Management Programming System"
 HOMEPAGE="https://gramps-project.org/"
@@ -20,11 +20,11 @@ IUSE="+rcs +reports exif geo postscript spell"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/bsddb3[${PYTHON_MULTI_USEDEP}]
-		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pygobject-3.12:3[cairo,${PYTHON_MULTI_USEDEP}]
-		dev-python/pyicu[${PYTHON_MULTI_USEDEP}]
-		exif? ( >=media-libs/gexiv2-0.5[${PYTHON_MULTI_USEDEP},introspection] )
+		dev-python/bsddb3[${PYTHON_USEDEP}]
+		dev-python/pycairo[${PYTHON_USEDEP}]
+		>=dev-python/pygobject-3.12:3[cairo,${PYTHON_USEDEP}]
+		dev-python/pyicu[${PYTHON_USEDEP}]
+		exif? ( >=media-libs/gexiv2-0.5[${PYTHON_USEDEP},introspection] )
 	')
 	gnome-base/librsvg:2
 	>x11-libs/gtk+-3.14.8:3[introspection]
@@ -41,7 +41,7 @@ python_prepare_all() {
 	# easily with a patch because we substitute in the $PF variable,
 	# and that changes with every revision.
 	sed -i "s:share/doc/gramps:share/doc/${PF}:g" setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {

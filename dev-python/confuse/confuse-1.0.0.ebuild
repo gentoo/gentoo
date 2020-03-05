@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Confuse is a configuration library for Python that uses YAML"
 HOMEPAGE="https://github.com/beetbox/confuse"

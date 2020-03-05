@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
 DISTUTILS_USE_SETUPTOOLS=no
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="check_multiple"
 DESCRIPTION="A Nagios plugin to execute multiple checks in parallel"
@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 S="${WORKDIR}/${MY_PN}-${PV}"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	local nagiosplugindir="/usr/$(get_libdir)/nagios/plugins"
 	dodir "${nagiosplugindir}"

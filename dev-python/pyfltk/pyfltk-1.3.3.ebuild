@@ -8,7 +8,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_PN="pyFltk-${PV}"
 MY_P="pyFltk-${PV}_py3"
@@ -39,7 +39,7 @@ python_prepare_all() {
 	# Disable installation of documentation and tests.
 	sed -i -e '/package_data=/d' setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -48,5 +48,5 @@ python_configure_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( fltk/docs/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

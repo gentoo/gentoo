@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Quantum master equation package for Quantum dot transport calculations"
 HOMEPAGE="https://github.com/gedaskir/qmeq"
@@ -34,7 +34,7 @@ DEPEND="
 "
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	docompress -x "/usr/share/doc/${PF}"
 	use examples && dodoc -r "${WORKDIR}/${PN}-examples-${PV}"/*
 }

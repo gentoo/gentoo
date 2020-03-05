@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python wrapper for HTML Tidy (tidylib)"
 HOMEPAGE="http://countergram.com/open-source/pytidylib https://github.com/countergram/pytidylib"

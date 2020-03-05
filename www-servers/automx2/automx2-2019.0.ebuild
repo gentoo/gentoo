@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Email client autoconfiguration service"
 HOMEPAGE="https://automx.org/"
@@ -18,13 +18,13 @@ IUSE="doc"
 
 BDEPEND="acct-user/automx2
 	$(python_gen_cond_dep \
-		'>=dev-python/flask-migrate-2.5.2[${PYTHON_MULTI_USEDEP}]' python3_{7}
+		'>=dev-python/flask-migrate-2.5.2[${PYTHON_USEDEP}]' python3_{7}
 	)"
 RDEPEND="${BDEPEND}"
 
 python_prepare_all() {
 	sed -i -e "/('scripts'/d" setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -41,5 +41,5 @@ python_install_all() {
 	newconfd "${FILESDIR}/confd" "${PN}"
 	insinto /etc
 	newins "${FILESDIR}/conf" "${PN}.conf"
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

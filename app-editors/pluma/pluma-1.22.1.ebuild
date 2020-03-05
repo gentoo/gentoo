@@ -7,7 +7,7 @@ MATE_LA_PUNT="yes"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit mate python-single-r1 virtualx
+inherit mate python-single-r2 virtualx
 
 if [[ ${PV} != 9999 ]]; then
 	KEYWORDS="~amd64 ~arm ~arm64 ~x86"

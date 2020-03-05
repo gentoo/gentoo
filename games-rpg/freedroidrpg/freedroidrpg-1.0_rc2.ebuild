@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
-inherit autotools flag-o-matic desktop python-any-r1 xdg
+inherit autotools flag-o-matic desktop python-any-r2 xdg
 
 MY_PV=$(ver_rs 2 '')
 DESCRIPTION="A modification of the classical Freedroid engine into an RPG"

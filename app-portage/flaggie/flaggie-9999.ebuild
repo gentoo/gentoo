@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7,8} )
 
 EGIT_REPO_URI="https://github.com/mgorny/flaggie.git"
-inherit bash-completion-r1 distutils-r1 git-r3
+inherit bash-completion-r1 distutils-r2 git-r3
 
 DESCRIPTION="A smart CLI mangler for package.* files"
 HOMEPAGE="https://github.com/mgorny/flaggie/"
@@ -22,7 +22,7 @@ RDEPEND="sys-apps/portage[${PYTHON_USEDEP}]"
 
 python_install_all() {
 	newbashcomp contrib/bash-completion/${PN}.bash-completion ${PN}
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

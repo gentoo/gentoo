@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools bash-completion-r1 python-single-r1
+inherit autotools bash-completion-r1 python-single-r2
 
 DESCRIPTION="Toolkit for validation of Monte Carlo HEP event generators"
 HOMEPAGE="http://rivet.hepforge.org/"
@@ -37,14 +37,14 @@ DEPEND="${RDEPEND}
 	)
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/cython[${PYTHON_MULTI_USEDEP}]
+			dev-python/cython[${PYTHON_USEDEP}]
 		')
 	)"
 
 S="${WORKDIR}/${P^}"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_unpack() {

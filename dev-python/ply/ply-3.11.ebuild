@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python Lex-Yacc library"
 HOMEPAGE="http://www.dabeaz.com/ply/ https://pypi.org/project/ply/"
@@ -39,5 +39,5 @@ python_test() {
 python_install_all() {
 	local HTML_DOCS=( doc/. )
 	use examples && dodoc -r example
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

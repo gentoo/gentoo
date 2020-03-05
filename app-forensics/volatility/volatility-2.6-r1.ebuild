@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Framework for analyzing volatile memory"
 HOMEPAGE="https://www.volatilityfoundation.org/"
@@ -26,7 +26,7 @@ RDEPEND=">=dev-libs/distorm64-3[${PYTHON_USEDEP}]
 	)"
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	mkdir "${D}/usr/share/${PN}" || die
 	mv "${D}/usr/contrib/plugins" "${D}/usr/share/${PN}/" || die
 	rmdir --ignore-fail-on-non-empty "${D}/usr/contrib" || die

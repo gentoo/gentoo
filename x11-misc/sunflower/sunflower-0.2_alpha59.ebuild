@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
-inherit gnome2-utils python-r1 xdg-utils
+inherit gnome2-utils python-multi-r2 xdg-utils
 
 MY_PN="Sunflower"
 DESCRIPTION="Small and highly customizable twin-panel file manager with plugin-support"

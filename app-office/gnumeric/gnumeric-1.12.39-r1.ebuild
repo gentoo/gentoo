@@ -5,7 +5,7 @@ EAPI="6"
 GNOME2_LA_PUNT="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 flag-o-matic python-single-r1
+inherit gnome2 flag-o-matic python-single-r2
 
 DESCRIPTION="The GNOME Spreadsheet"
 HOMEPAGE="http://www.gnumeric.org/"
@@ -40,7 +40,7 @@ RDEPEND="
 	perl? ( dev-lang/perl:= )
 	python? ( ${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/pygobject-3:3[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygobject-3:3[${PYTHON_USEDEP}]
 		')
 	)
 	libgda? ( gnome-extra/libgda:5[gtk] )
@@ -53,7 +53,7 @@ DEPEND="${RDEPEND}
 "
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_configure() {

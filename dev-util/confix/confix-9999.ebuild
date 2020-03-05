@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1 subversion
+inherit distutils-r2 subversion
 
 DESCRIPTION="Confix: A Build Tool on Top of GNU Automake"
 HOMEPAGE="http://confix.sourceforge.net"
@@ -36,7 +36,7 @@ PATCHES=( # find jni-include dirs on hpux.
 	"${FILESDIR}"/2.3.0/new-automake.patch )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 pkg_preinst() {

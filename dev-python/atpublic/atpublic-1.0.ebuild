@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_6 python3_7 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A decorator and function to polulate a module's __all__ and the module globals."
 HOMEPAGE="https://gitlab.com/warsaw/public"

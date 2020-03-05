@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ssl(+)"
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Back up Untangle configurations via the web admin UI"
 HOMEPAGE="http://michael.orlitzky.com/code/untangle-https-backup.xhtml"
@@ -20,7 +20,7 @@ DEPEND=""
 RDEPEND=""
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	doman "doc/man8/${PN}.8"
 	dodoc "doc/${PN}.example.ini"
 }

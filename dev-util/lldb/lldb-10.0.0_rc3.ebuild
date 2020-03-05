@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} )
-inherit cmake-utils llvm llvm.org multiprocessing python-single-r1 \
+inherit cmake-utils llvm llvm.org multiprocessing python-single-r2 \
 	toolchain-funcs
 
 DESCRIPTION="The LLVM debugger"
@@ -26,7 +26,7 @@ RDEPEND="
 	ncurses? ( >=sys-libs/ncurses-5.9-r3:0= )
 	python? (
 		$(python_gen_cond_dep '
-			dev-python/six[${PYTHON_MULTI_USEDEP}]
+			dev-python/six[${PYTHON_USEDEP}]
 		')
 		${PYTHON_DEPS}
 	)
@@ -38,7 +38,7 @@ BDEPEND="
 	python? ( >=dev-lang/swig-3.0.11 )
 	test? (
 		$(python_gen_cond_dep "
-			~dev-python/lit-${PV}[\${PYTHON_MULTI_USEDEP}]
+			~dev-python/lit-${PV}[\${PYTHON_USEDEP}]
 		")
 		sys-devel/lld )
 	${PYTHON_DEPS}"
@@ -48,7 +48,7 @@ CMAKE_BUILD_TYPE=RelWithDebInfo
 
 pkg_setup() {
 	LLVM_MAX_SLOT=${PV%%.*} llvm_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_configure() {

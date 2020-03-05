@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_6)
 
 COMMIT="32a11cd7d75c4c5b3e3fc01c383314be298b0f9b"
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="RAML reference implementation in Python"
 HOMEPAGE="https://ramlfications.readthedocs.org/ https://pypi.org/project/ramlfications/"

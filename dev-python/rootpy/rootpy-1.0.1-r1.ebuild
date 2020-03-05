@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="readline"
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pythonic layer on top of the ROOT framework's PyROOT bindings"
 HOMEPAGE="http://rootpy.org"
@@ -22,16 +22,16 @@ RDEPEND="
 	sci-physics/root:=[${PYTHON_SINGLE_USEDEP}]
 	dev-python/root_numpy[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		dev-python/matplotlib[${PYTHON_MULTI_USEDEP}]
-		dev-python/pytables[${PYTHON_MULTI_USEDEP}]
-		dev-python/termcolor[${PYTHON_MULTI_USEDEP}]
+		dev-python/matplotlib[${PYTHON_USEDEP}]
+		dev-python/pytables[${PYTHON_USEDEP}]
+		dev-python/termcolor[${PYTHON_USEDEP}]
 	')"
 
 DEPEND="
 	sci-physics/root[${PYTHON_SINGLE_USEDEP}]
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/nose[${PYTHON_MULTI_USEDEP}]
+			dev-python/nose[${PYTHON_USEDEP}]
 		')
 	)"
 
@@ -44,7 +44,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples; then
 		dodoc -r examples
 	fi

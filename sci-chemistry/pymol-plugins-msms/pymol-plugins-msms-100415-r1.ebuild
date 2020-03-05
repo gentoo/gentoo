@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-r1
+inherit eutils python-multi-r2
 
 DESCRIPTION="GUI for MSMS and displaying its results in PyMOL"
 HOMEPAGE="http://www.biotec.tu-dresden.de/~hongboz/msms_pymol/msms_pymol.html"

@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads(+)"
-inherit waf-utils python-any-r1
+inherit waf-utils python-any-r2
 
 DESCRIPTION="A port of the AMS internal modules to LV2 plugins to create modular synthesizers"
 HOMEPAGE="https://objectivewave.wordpress.com/ams-lv2/"

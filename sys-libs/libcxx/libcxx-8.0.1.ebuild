@@ -10,7 +10,7 @@ EAPI=6
 CMAKE_MIN_VERSION=3.7.0-r1
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib llvm multiprocessing python-any-r1 \
+inherit cmake-multilib llvm multiprocessing python-any-r2 \
 	toolchain-funcs
 
 MY_P=${P}.src
@@ -58,7 +58,7 @@ python_check_deps() {
 
 pkg_setup() {
 	llvm_pkg_setup
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 
 	if ! use libcxxabi && ! use libcxxrt && ! tc-is-gcc ; then
 		eerror "To build ${PN} against libsupc++, you have to use gcc. Other"

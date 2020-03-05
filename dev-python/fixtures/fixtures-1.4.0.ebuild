@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Fixtures, reusable state for writing clean tests and more"
 HOMEPAGE="https://launchpad.net/python-fixtures https://pypi.org/project/fixtures/"

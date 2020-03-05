@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="xml"
 
-inherit eutils distutils-r1 prefix
+inherit eutils distutils-r2 prefix
 
 DESCRIPTION="Tool to help select distfiles mirrors for Gentoo"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Mirrorselect"
@@ -41,7 +41,7 @@ python_prepare_all() {
 	# Apply e69ec2d046626fa2079d460aab469d04256182cd for bug 698470.
 	sed -e 's|key = lex.get_token()|\0\n\t\t\tif key is None:\n\t\t\t\tbreak|' -i mirrorselect/configs.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

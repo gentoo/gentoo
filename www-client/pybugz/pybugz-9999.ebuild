@@ -14,7 +14,7 @@ else
 	inherit vcs-snapshot
 fi
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r2
 
 DESCRIPTION="Command line interface to (Gentoo) Bugzilla"
 HOMEPAGE="https://github.com/williamh/pybugz"
@@ -26,7 +26,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	newbashcomp contrib/bash-completion bugz
 
 	if use zsh-completion ; then

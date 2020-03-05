@@ -7,7 +7,7 @@ GNOME2_LA_PUNT="yes"
 VALA_MIN_API_VERSION="0.16"
 VALA_USE_DEPEND="vapigen"
 
-inherit vala gnome2 python-any-r1
+inherit vala gnome2 python-any-r2
 
 DESCRIPTION="VNC viewer widget for GTK"
 HOMEPAGE="https://wiki.gnome.org/Projects/gtk-vnc"
@@ -34,7 +34,7 @@ RDEPEND="
 	pulseaudio? ( media-sound/pulseaudio )
 	sasl? ( dev-libs/cyrus-sasl )
 "
-# Keymap databases code is generated with python3; configure picks up $PYTHON exported from python-any-r1_pkg_setup
+# Keymap databases code is generated with python3; configure picks up $PYTHON exported from python-any-r2_pkg_setup
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	>=dev-lang/perl-5

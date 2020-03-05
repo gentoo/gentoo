@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A CSS Cascading Style Sheets library"
 HOMEPAGE="https://pypi.org/project/cssutils/ https://bitbucket.org/cthedot/cssutils http://cthedot.de/cssutils/"
@@ -41,7 +41,7 @@ python_prepare_all() {
 
 	EPATCH_OPTS="--binary"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

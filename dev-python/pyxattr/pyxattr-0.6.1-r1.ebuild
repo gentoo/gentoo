@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="Python interface to xattr"
 HOMEPAGE="https://pyxattr.k1024.org/"
@@ -29,7 +29,7 @@ python_prepare_all() {
 	sed -e "s:html_theme = 'default':html_theme = 'classic':" \
 		-i doc/conf.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -53,10 +53,10 @@ src_test() {
 	einfo "external attributes are ignored by the tests."
 	einfo "See https://bugs.gentoo.org/503946 for details."
 	einfo
-	distutils-r1_src_test
+	distutils-r2_src_test
 }
 
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

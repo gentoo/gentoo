@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE="ncurses"
 
-inherit distutils-r1 eutils linux-info
+inherit distutils-r2 eutils linux-info
 
 DESCRIPTION="CLI curses based monitoring tool"
 HOMEPAGE="https://github.com/nicolargo/glances"
@@ -44,13 +44,13 @@ python_prepare_all() {
 		-e "s:'conf/glances.conf':('${EPREFIX}/etc/glances', ['conf/glances.conf':g" \
 		-i setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
 	# add an intended file from original data set from setup.py to DOCS
 	local DOCS=( README.rst CONTRIBUTING.md conf/glances.conf )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

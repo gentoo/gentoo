@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit bash-completion-r1 eutils ltprune multilib python-single-r1
+inherit bash-completion-r1 eutils ltprune multilib python-single-r2
 
 DESCRIPTION="Framework which enables integration with Security Content Automation Protocol"
 HOMEPAGE="http://www.open-scap.org/"

@@ -9,7 +9,7 @@ if [[ ${PV} == "99999999" ]] ; then
 	EHG_REPO_URI="http://d-rats.com/hg/chirp.hg"
 fi
 
-inherit distutils-r1 xdg-utils ${SCM}
+inherit distutils-r2 xdg-utils ${SCM}
 
 DESCRIPTION="Free open-source tool for programming your amateur radio"
 HOMEPAGE="http://chirp.danplanet.com"
@@ -35,7 +35,7 @@ RDEPEND="${DEPEND}
 
 src_prepare() {
 	sed -i -e "/share\/doc\/chirp/d" setup.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

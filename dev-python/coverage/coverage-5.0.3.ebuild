@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Code coverage measurement for Python"
 HOMEPAGE="https://coverage.readthedocs.io/en/latest/ https://pypi.org/project/coverage/"
@@ -32,7 +32,7 @@ DISTUTILS_IN_SOURCE_BUILD=1
 src_prepare() {
 	# avoid the dep on xdist, run tests verbosely
 	sed -i -e '/^addopts/s:-n3:-v:' setup.cfg || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_compile() {
@@ -41,7 +41,7 @@ python_compile() {
 		export CFLAGS
 	fi
 
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {

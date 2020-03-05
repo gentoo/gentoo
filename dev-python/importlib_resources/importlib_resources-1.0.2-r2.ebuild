@@ -6,7 +6,7 @@ EAPI=7
 # This is a backport of Python 3.7's importlib.resources
 PYTHON_COMPAT=( pypy3 python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Read resources from Python packages"
 HOMEPAGE="https://importlib-resources.readthedocs.io/en/latest/"
@@ -28,12 +28,12 @@ distutils_enable_sphinx importlib_resources/docs
 PATCHES=( "${FILESDIR}/${P}-skip-wheel.patch" )
 
 python_compile() {
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 	if ! python_is_python3; then
 		rm "${BUILD_DIR}/lib/importlib_resources/_py3.py" || die
 	fi
 }
 
 python_install() {
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 }

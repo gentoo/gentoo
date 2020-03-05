@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Compatibility API between asyncio/Twisted/Trollius"
 HOMEPAGE="https://github.com/crossbario/txaio https://pypi.org/project/txaio/"
@@ -52,7 +52,7 @@ python_prepare() {
 	# https://github.com/tavendo/txaio/issues/3
 	cp -r "${FILESDIR}"/util.py test || die
 
-	distutils-r1_python_prepare
+	distutils-r2_python_prepare
 }
 
 python_compile_all() {
@@ -65,5 +65,5 @@ python_test() {
 
 python_install_all() {
 	use doc && HTML_DOCS=( docs/_build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

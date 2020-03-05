@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="A fully functional X client library for Python, written in Python"
 HOMEPAGE="https://github.com/python-xlib/python-xlib"
@@ -28,7 +28,7 @@ python_compile_all() {
 }
 
 src_test() {
-	virtx distutils-r1_src_test
+	virtx distutils-r2_src_test
 }
 
 python_test() {
@@ -37,5 +37,5 @@ python_test() {
 
 python_install_all() {
 	use doc && doinfo doc/info/*.info
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

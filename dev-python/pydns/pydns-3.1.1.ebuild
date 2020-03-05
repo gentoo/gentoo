@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="${PN/py/py3}"
 MY_P="${MY_PN}-${PV}"
@@ -34,5 +34,5 @@ python_install_all() {
 		dodoc -r tests/. tools/.
 		docompress -x /usr/share/doc/${PF}/examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

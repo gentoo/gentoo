@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit desktop eutils gnome2-utils python-single-r1 xdg
+inherit desktop eutils gnome2-utils python-single-r2 xdg
 
 DESCRIPTION="A side scrolling shooter game starring a steamboat on the sea"
 HOMEPAGE="http://funnyboat.sourceforge.net/"
@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		>=dev-python/pygame-1.6.2[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygame-1.6.2[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${DEPEND}"

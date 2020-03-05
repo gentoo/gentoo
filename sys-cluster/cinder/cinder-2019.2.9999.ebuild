@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1 eutils linux-info
+inherit distutils-r2 eutils linux-info
 
 DESCRIPTION="Cinder is the OpenStack Block storage service, a spin out of nova-volumes"
 HOMEPAGE="https://launchpad.net/cinder"
@@ -164,7 +164,7 @@ python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
 	# only used for docs
 	sed -i '/^sphinx-feature-classification/d' requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -173,7 +173,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	keepdir /etc/cinder
 	dodir /etc/cinder/rootwrap.d
 

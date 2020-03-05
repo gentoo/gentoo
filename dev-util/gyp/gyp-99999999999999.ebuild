@@ -6,7 +6,7 @@ PYTHON_COMPAT=(python{3_6,3_7})
 DISTUTILS_SINGLE_IMPL="1"
 DISTUTILS_USE_SETUPTOOLS="rdepend"
 
-inherit distutils-r1
+inherit distutils-r2
 
 if [[ "${PV}" == "99999999999999" ]]; then
 	inherit git-r3

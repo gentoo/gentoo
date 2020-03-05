@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A high performance, concurrent HTTP client library for Python using gevent"
 HOMEPAGE="https://github.com/gwik/geventhttpclient"
@@ -33,7 +33,7 @@ DEPEND="
 python_prepare_all() {
 	# https://github.com/gwik/geventhttpclient/pull/82
 	rm -rf src/geventhttpclient/tests/__pycache__ || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

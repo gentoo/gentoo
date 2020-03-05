@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Extra features for standard library's cmd module"
 HOMEPAGE="https://github.com/python-cmd2/cmd2"
@@ -31,5 +31,5 @@ distutils_enable_tests pytest
 src_test() {
 	# tests rely on very specific text wrapping...
 	local -x COLUMNS=80
-	virtx distutils-r1_src_test
+	virtx distutils-r2_src_test
 }

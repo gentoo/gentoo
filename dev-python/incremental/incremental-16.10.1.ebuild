@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6)
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Incremental is a small library that versions your Python projects"
 HOMEPAGE="https://github.com/hawkowl/incremental https://pypi.org/project/incremental/"

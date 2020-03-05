@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Automated testing for the examples in your documentation"
 HOMEPAGE="https://github.com/cjw296/sybil"

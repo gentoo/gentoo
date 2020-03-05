@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit flag-o-matic mount-boot multilib python-any-r1 toolchain-funcs
+inherit flag-o-matic mount-boot multilib python-any-r2 toolchain-funcs
 
 MY_PV=${PV/_/-}
 MY_P=${PN}-${MY_PV}
@@ -58,7 +58,7 @@ REQUIRED_USE="arm? ( debug )"
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 	if [[ -z ${XEN_TARGET_ARCH} ]]; then
 		if use amd64; then
 			export XEN_TARGET_ARCH="x86_64"

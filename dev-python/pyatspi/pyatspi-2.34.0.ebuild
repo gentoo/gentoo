@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6,3_7} )
 
-inherit gnome2 python-r1
+inherit gnome2 python-multi-r2
 
 DESCRIPTION="Python client bindings for D-Bus AT-SPI"
 HOMEPAGE="https://wiki.gnome.org/Accessibility"

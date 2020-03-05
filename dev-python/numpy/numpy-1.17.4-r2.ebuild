@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 
 FORTRAN_NEEDED=lapack
 
-inherit distutils-r1 flag-o-matic fortran-2 multiprocessing toolchain-funcs
+inherit distutils-r2 flag-o-matic fortran-2 multiprocessing toolchain-funcs
 
 DOC_PV="1.16.4"
 DESCRIPTION="Fast array and numerical python library"
@@ -97,7 +97,7 @@ python_prepare_all() {
 	# very memory- and disk-hungry
 	sed -i -e 's:test_large_zip:_&:' numpy/lib/tests/test_io.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
@@ -105,7 +105,7 @@ python_compile() {
 
 	local python_makeopts_jobs=""
 	python_is_python3 || python_makeopts_jobs="-j $(makeopts_jobs)"
-	distutils-r1_python_compile \
+	distutils-r2_python_compile \
 		${python_makeopts_jobs} \
 		${NUMPY_FCONFIG}
 }
@@ -123,7 +123,7 @@ sys.exit(0 if r else 1)" || die "Tests fail with ${EPYTHON}"
 }
 
 python_install() {
-	distutils-r1_python_install ${NUMPY_FCONFIG}
+	distutils-r2_python_install ${NUMPY_FCONFIG}
 	python_optimize
 }
 
@@ -135,5 +135,5 @@ python_install_all() {
 		DOCS+=( "${DISTDIR}"/${PN}-{user,ref}-${DOC_PV}.pdf )
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

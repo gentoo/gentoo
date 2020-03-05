@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit python-any-r1 scons-utils toolchain-funcs user flag-o-matic
+inherit python-any-r2 scons-utils toolchain-funcs user flag-o-matic
 
 DESCRIPTION="Synchronous multi-master replication engine that provides the wsrep API"
 HOMEPAGE="http://galeracluster.com"

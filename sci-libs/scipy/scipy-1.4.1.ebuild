@@ -8,7 +8,7 @@ PYTHON_REQ_USE="threads(+)"
 
 DOC_PV=${PV}
 
-inherit fortran-2 distutils-r1 flag-o-matic multiprocessing toolchain-funcs
+inherit fortran-2 distutils-r2 flag-o-matic multiprocessing toolchain-funcs
 
 DESCRIPTION="Scientific algorithms library for Python"
 HOMEPAGE="https://www.scipy.org/"
@@ -103,7 +103,7 @@ python_prepare_all() {
 	# Drop hashes to force rebuild of cython based .c code
 	rm cythonize.dat || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
@@ -111,12 +111,12 @@ python_compile() {
 	export MAKEOPTS=-j1
 
 	${EPYTHON} tools/cythonize.py || die
-	distutils-r1_python_compile \
+	distutils-r2_python_compile \
 		${SCIPY_FCONFIG}
 }
 
 python_test() {
-	# fails with bdist_egg. should it be fixed in distutils-r1 eclass?
+	# fails with bdist_egg. should it be fixed in distutils-r2 eclass?
 	distutils_install_for_testing ${SCIPY_FCONFIG}
 	cd "${TEST_DIR}" || die "no ${TEST_DIR} available"
 	"${PYTHON}" -c \
@@ -131,11 +131,11 @@ python_install_all() {
 	use doc && \
 		local DOCS=( "${DISTDIR}"/${PN}-${DOC_PV}-ref.pdf ) \
 		local HTML_DOCS=( "${WORKDIR}"/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 python_install() {
-	distutils-r1_python_install ${SCIPY_FCONFIG}
+	distutils-r2_python_install ${SCIPY_FCONFIG}
 	python_optimize
 }
 

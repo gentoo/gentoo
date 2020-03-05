@@ -8,7 +8,7 @@ PYTHON_COMPAT=(python3_6)
 #EGIT_PROJECT="gentoo-keys.git"
 EGIT_BRANCH="master"
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 EGIT_REPO_URI="https://anongit.gentoo.org/git/proj/gentoo-keys.git"
 
@@ -34,7 +34,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}/$P/gkeys"
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	# copy these 2 into our subdir from the master level
 	cp ../LICENSE ./ || die "cp LICENSE failed"
 	cp ../README.md ./ || die "cp README.me failed"
@@ -42,7 +42,7 @@ python_prepare_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	keepdir /var/log/gkeys
 	fperms g+w /var/log/gkeys
 }

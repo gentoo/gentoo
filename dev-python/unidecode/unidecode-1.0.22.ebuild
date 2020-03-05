@@ -8,7 +8,7 @@ PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7}} )
 MY_PN=Unidecode
 MY_P=${MY_PN}-${PV}
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Module providing ASCII transliterations of Unicode text"
 HOMEPAGE="https://pypi.org/project/Unidecode/"

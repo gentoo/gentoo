@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
-inherit autotools pam python-single-r1 systemd user
+inherit autotools pam python-single-r2 systemd user
 
 MY_P="${PN}-server-${PV}"
 
@@ -65,7 +65,7 @@ pkg_setup() {
 	enewuser radius -1 -1 /var/log/radius radius
 
 	if use python ; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 		export PYTHONBIN="${EPYTHON}"
 	fi
 }

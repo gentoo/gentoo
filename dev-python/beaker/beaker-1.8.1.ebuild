@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Session and Caching library with WSGI Middleware"
 HOMEPAGE="
@@ -39,7 +39,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 python_prepare_all() {
 	# disarm pycrypto dep to allow || ( pycryptodome pycrypto )
 	sed -i -e "/TEST/s:'pycrypto'::" setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

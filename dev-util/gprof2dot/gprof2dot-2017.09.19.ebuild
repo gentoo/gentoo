@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='xml'
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PV=${PV//.0/.}
 MY_P=${PN}-${MY_PV}

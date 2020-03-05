@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 toolchain-funcs
+inherit distutils-r2 toolchain-funcs
 
 DESCRIPTION="Python package for convex optimization"
 HOMEPAGE="http://cvxopt.org/"
@@ -80,7 +80,7 @@ python_prepare_all() {
 		export CVXOPT_GSL_LIB_DIR="$(pkg_libdir gsl)" && \
 		export CVXOPT_GSL_INC_DIR="$(pkg_incdir gsl)"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -94,7 +94,7 @@ python_test() {
 python_install_all() {
 	use doc && HTML_DOCS=( doc/build/html/. )
 	insinto /usr/share/doc/${PF}
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples; then
 		insinto /usr/share/doc/${PF}
 		doins -r examples

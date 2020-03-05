@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A CSS Cascading Style Sheets library (fork of cssutils)"
 HOMEPAGE="https://pypi.org/project/css-parser/"

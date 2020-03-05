@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1 gnome2-utils xdg-utils
+inherit distutils-r2 gnome2-utils xdg-utils
 
 DESCRIPTION="A LilyPond sheet music text editor"
 HOMEPAGE="http://www.frescobaldi.org/"
@@ -27,7 +27,7 @@ RDEPEND="${DEPEND}
 
 python_prepare_all() {
 	rm -r frescobaldi_app/icons/Tango || die "failed to remove tango icon theme"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 pkg_postinst() {

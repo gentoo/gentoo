@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 eutils linux-info user
+inherit distutils-r2 eutils linux-info user
 
 DESCRIPTION="A CloudFormation-compatible openstack-native cloud orchestration engine."
 HOMEPAGE="https://launchpad.net/heat"
@@ -137,11 +137,11 @@ pkg_setup() {
 
 python_prepare_all() {
 	sed -i '/^hacking/d' test-requirements.txt || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	diropts -m0750 -o heat -g heat
 	keepdir /etc/heat
 	dodir /etc/heat/environment.d

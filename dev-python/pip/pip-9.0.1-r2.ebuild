@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit eutils bash-completion-r1 distutils-r1
+inherit eutils bash-completion-r1 distutils-r2
 
 DESCRIPTION="Installs python packages -- replacement for easy_install"
 HOMEPAGE="https://pip.pypa.io/ https://pypi.org/project/pip/ https://github.com/pypa/pip/"
@@ -53,7 +53,7 @@ RESTRICT="test"
 #	rm -r pip/_vendor/* || die
 #	mv "${T}"/__init__.py pip/_vendor/__init__.py || die
 #
-#	distutils-r1_python_prepare_all
+#	distutils-r2_python_prepare_all
 #}
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
@@ -66,12 +66,12 @@ python_prepare_all() {
 	if ! use vanilla; then
 		PATCHES+=( "${FILESDIR}/pip-disable-system-install.patch" )
 	fi
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
 	local DOCS=( AUTHORS.txt docs/*.rst )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	COMPLETION="${T}"/completion.tmp
 

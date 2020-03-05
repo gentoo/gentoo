@@ -8,7 +8,7 @@ MY_P="${MY_PN}-${PV}"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pure Python OTR implementation"
 HOMEPAGE="https://github.com/python-otr/pure-python-otr"

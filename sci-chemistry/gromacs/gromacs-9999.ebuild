@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 DISTUTILS_SINGLE_IMPL=1
 
-inherit bash-completion-r1 cmake-utils cuda distutils-r1 eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 cmake-utils cuda distutils-r2 eutils multilib readme.gentoo-r1 toolchain-funcs xdg-utils
 
 if [[ $PV = *9999* ]]; then
 	EGIT_REPO_URI="git://git.gromacs.org/gromacs.git
@@ -59,7 +59,7 @@ BDEPEND="${CDEPEND}
 	doc? (
 		app-doc/doxygen
 		$(python_gen_cond_dep '
-			dev-python/sphinx[${PYTHON_MULTI_USEDEP}]
+			dev-python/sphinx[${PYTHON_USEDEP}]
 		')
 		media-gfx/mscgen
 		media-gfx/graphviz
@@ -93,7 +93,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_unpack() {
@@ -274,7 +274,7 @@ src_compile() {
 			BUILD_DIR="${WORKDIR}/${P}_${x}"\
 				cmake-utils_src_compile	python_packaging/all
 			BUILD_DIR="${WORKDIR}/${P}" \
-				distutils-r1_src_compile
+				distutils-r2_src_compile
 		fi
 		# not 100% necessary for rel ebuilds as available from website
 		if use doc; then

@@ -5,7 +5,7 @@ EAPI="6"
 WANT_AUTOCONF="2.1"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-inherit toolchain-funcs multilib python-any-r1 versionator pax-utils
+inherit toolchain-funcs multilib python-any-r2 versionator pax-utils
 
 MY_PN="mozjs"
 MY_P="${MY_PN}${PV}"
@@ -37,7 +37,7 @@ DEPEND="${RDEPEND}
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != "binary" ]]; then
-		python-any-r1_pkg_setup
+		python-any-r2_pkg_setup
 		export LC_ALL="C"
 	fi
 }

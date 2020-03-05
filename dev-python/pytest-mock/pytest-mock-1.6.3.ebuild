@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Thin-wrapper around the mock package for easier use with py.test"
 HOMEPAGE="https://github.com/pytest-dev/pytest-mock/"
@@ -26,7 +26,7 @@ src_prepare() {
 		# test fails when standalone mock is installed
 		sed -e 's|^\(def \)\(test_standalone_mock(\)|\1_\2|' -i test_pytest_mock.py || die
 	fi
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

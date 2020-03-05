@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_P="Genshi-${PV}"
 
@@ -35,5 +35,5 @@ python_install_all() {
 		insinto /usr/share/doc/${PF}
 		doins -r examples
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

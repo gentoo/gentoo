@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A pure-Python implementation of HTTP/1.1 inspired by hyper-h2"
 HOMEPAGE="https://github.com/python-hyper/h11 https://pypi.python.org/pypi/h11"

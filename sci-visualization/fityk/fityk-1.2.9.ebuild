@@ -7,7 +7,7 @@ WX_GTK_VER="3.0"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools-utils fdo-mime python-r1 wxwidgets
+inherit autotools-utils fdo-mime python-multi-r2 wxwidgets
 
 DESCRIPTION="General-purpose nonlinear curve fitting and data analysis"
 HOMEPAGE="http://fityk.nieto.pl/"

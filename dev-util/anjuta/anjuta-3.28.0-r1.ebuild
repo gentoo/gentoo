@@ -10,7 +10,7 @@ VALA_MIN_API_VERSION="0.40"
 VALA_MAX_API_VERSION="${VALA_MIN_API_VERSION}"
 
 # We inherit autotools explicitly because GNOME2_EAUTORECONF is set only conditionally later, so gnome2.eclass doesn't do it for us
-inherit autotools gnome2 flag-o-matic readme.gentoo-r1 python-single-r1 vala
+inherit autotools gnome2 flag-o-matic readme.gentoo-r1 python-single-r2 vala
 
 DESCRIPTION="A versatile IDE for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Anjuta"
@@ -77,7 +77,7 @@ DEPEND="${COMMON_DEPEND}
 # yelp-tools, gi-common and gnome-common are required by eautoreconf
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="LZ4 Bindings for Python"
 HOMEPAGE="https://pypi.org/project/lz4/ https://github.com/steeve/python-lz4"
@@ -28,7 +28,7 @@ python_prepare_all() {
 		-i setup.py || die
 	mkdir "${S}"/tests
 	cp "${FILESDIR}"/test.py "${S}"/tests
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

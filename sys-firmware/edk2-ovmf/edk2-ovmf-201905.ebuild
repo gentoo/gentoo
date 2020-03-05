@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_REQ_USE="sqlite"
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit eutils python-any-r1 readme.gentoo-r1
+inherit eutils python-any-r2 readme.gentoo-r1
 
 DESCRIPTION="UEFI firmware for 64-bit x86 virtual machines"
 HOMEPAGE="https://github.com/tianocore/edk2"
@@ -92,7 +92,7 @@ You can register the firmware for use in libvirt by adding to /etc/libvirt/qemu.
 	]"
 
 pkg_setup() {
-	[[ ${PV} != "999999" ]] && use binary || python-any-r1_pkg_setup
+	[[ ${PV} != "999999" ]] && use binary || python-any-r2_pkg_setup
 }
 
 src_prepare() {

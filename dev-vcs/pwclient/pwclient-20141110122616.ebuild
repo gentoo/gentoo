@@ -5,7 +5,7 @@ EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils python-r1
+inherit eutils python-multi-r2
 
 # The PV comes from:
 #	git clone ${EGIT_REPO_URI}

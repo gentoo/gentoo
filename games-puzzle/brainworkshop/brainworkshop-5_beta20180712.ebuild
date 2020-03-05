@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
-inherit eutils gnome2-utils python-r1
+inherit eutils gnome2-utils python-multi-r2
 
 COMMIT="c5343cb3d828e8181ffff8249f683fce2fcca6db"
 DESCRIPTION="Short-term-memory training N-Back game"

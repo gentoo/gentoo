@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 # rdepend is correct despite warning, see https://bugs.gentoo.org/705362
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A script for cloning a non-relocatable virtualenv"
 HOMEPAGE="https://github.com/edwardgeorge/virtualenv-clone"

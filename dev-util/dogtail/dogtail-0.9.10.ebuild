@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1 gnome2-utils xdg
+inherit distutils-r2 gnome2-utils xdg
 
 DESCRIPTION="GUI test tool and automation framework using accessibility framework"
 HOMEPAGE="https://gitlab.com/dogtail/dogtail/commits/master"
@@ -42,7 +42,7 @@ src_prepare() {
 	sed -e "s:@EPREFIX_USR@:'${EPREFIX}/usr':" -i sniff/sniff || die "sed failed"
 
 	xdg_src_prepare
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 pkg_preinst() {

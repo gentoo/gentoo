@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_6 python3_{7,8} )
 
-inherit toolchain-funcs flag-o-matic distutils-r1
+inherit toolchain-funcs flag-o-matic distutils-r2
 
 DESCRIPTION="A data templating language for app and tool developers "
 HOMEPAGE="https://jsonnet.org/"
@@ -33,7 +33,7 @@ distutils_enable_tests setup.py
 
 src_prepare() {
 	default
-	use python && distutils-r1_src_prepare
+	use python && distutils-r2_src_prepare
 }
 
 src_configure() {
@@ -47,17 +47,17 @@ src_compile() {
 		libjsonnet.so \
 		libjsonnet++.so
 
-	use python && distutils-r1_src_compile
+	use python && distutils-r2_src_compile
 }
 
 src_test() {
 	emake CC="$(tc-getCC)" CXX="$(tc-getCXX)" test
-	use python && distutils-r1_src_test
+	use python && distutils-r2_src_test
 }
 
 src_install() {
 	dolib.so libjsonnet*.so
 	dobin jsonnet
 
-	use python && distutils-r1_src_install
+	use python && distutils-r2_src_install
 }

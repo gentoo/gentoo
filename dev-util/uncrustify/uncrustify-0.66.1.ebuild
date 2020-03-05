@@ -16,7 +16,7 @@ inherit cmake-utils ${scm_eclass}
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-any-r1
+inherit python-any-r2
 
 DESCRIPTION="C/C++/C#/D/Java/Pawn code indenter and beautifier"
 HOMEPAGE="http://uncrustify.sourceforge.net/"

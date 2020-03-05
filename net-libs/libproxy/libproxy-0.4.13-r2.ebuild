@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit cmake-multilib eutils flag-o-matic mono-env python-r1
+inherit cmake-multilib eutils flag-o-matic mono-env python-multi-r2
 
 DESCRIPTION="Library for automatic proxy configuration management"
 HOMEPAGE="https://github.com/libproxy/libproxy"

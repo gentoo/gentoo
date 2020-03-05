@@ -8,7 +8,7 @@ DISTUTILS_IN_SOURCE_BUILD=TRUE
 # time
 RESTRICT="test"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A pep8 equivalent for bash scripts"
 HOMEPAGE="https://pypi.org/project/bashate/"
@@ -30,5 +30,5 @@ RDEPEND="
 "
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

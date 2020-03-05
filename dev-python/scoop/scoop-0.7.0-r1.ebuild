@@ -4,7 +4,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python3_6 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Distributed Evolutionary Algorithms in Python"
 HOMEPAGE="https://code.google.com/p/scoop/ https://pypi.org/project/scoop/"

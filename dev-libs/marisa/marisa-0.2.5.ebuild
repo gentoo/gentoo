@@ -5,7 +5,7 @@ EAPI="7"
 PYTHON_COMPAT=(python{3_6,3_7})
 DISTUTILS_OPTIONAL="1"
 
-inherit autotools distutils-r1
+inherit autotools distutils-r2
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -50,7 +50,7 @@ src_prepare() {
 
 	if use python; then
 		pushd bindings/python > /dev/null || die
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 		popd > /dev/null || die
 	fi
 }
@@ -75,7 +75,7 @@ src_configure() {
 
 	if use python; then
 		pushd bindings/python > /dev/null || die
-		distutils-r1_src_configure
+		distutils-r2_src_configure
 		popd > /dev/null || die
 	fi
 }
@@ -86,7 +86,7 @@ src_compile() {
 	if use python; then
 		emake -C bindings swig-python
 		pushd bindings/python > /dev/null || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 		popd > /dev/null || die
 	fi
 }
@@ -102,7 +102,7 @@ src_install() {
 
 	if use python; then
 		pushd bindings/python > /dev/null || die
-		distutils-r1_src_install
+		distutils-r2_src_install
 		popd > /dev/null || die
 	fi
 }

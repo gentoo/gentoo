@@ -6,7 +6,7 @@ EAPI=5
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Interface between ROOT and numpy"
 HOMEPAGE="https://github.com/rootpy/root_numpy"
@@ -20,14 +20,14 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		dev-python/numpy[${PYTHON_USEDEP}]
 	')
 	sci-physics/root:=[python,${PYTHON_SINGLE_USEDEP}]"
 
 DEPEND="${RDEPEND}
 	test? (
 		$(python_gen_cond_dep '
-			dev-python/nose[${PYTHON_MULTI_USEDEP}] )
+			dev-python/nose[${PYTHON_USEDEP}] )
 		')"
 
 python_test() {
@@ -37,5 +37,5 @@ python_test() {
 
 python_install_all() {
 	use examples && local EXAMPLES=( tutorial/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

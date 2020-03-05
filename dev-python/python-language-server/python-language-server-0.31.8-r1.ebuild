@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit eutils distutils-r1
+inherit eutils distutils-r2
 
 DESCRIPTION="An implementation of the Language Server Protocol for Python"
 HOMEPAGE="https://github.com/palantir/python-language-server"
@@ -48,7 +48,7 @@ python_prepare_all() {
 	# remove pytest-cov dependencie
 	sed -i -e '16,18d' setup.cfg || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 pkg_postinst() {

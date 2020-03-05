@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="tk(-)"
 
-inherit prefix python-single-r1 toolchain-funcs
+inherit prefix python-single-r2 toolchain-funcs
 
 DESCRIPTION="Open-source graphical front end for computational chemistry programs"
 HOMEPAGE="http://viewmol.sourceforge.net/"

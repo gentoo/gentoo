@@ -6,7 +6,7 @@ EAPI=6
 MY_P="${PN}-editor-${PV}"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQUIRED_USE="tk"
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Leo: Literate Editor with Outlines"
 HOMEPAGE="https://github.com/leo-editor/leo-editor/"
@@ -26,11 +26,11 @@ DEPEND="${RDEPEND}"
 S="${WORKDIR}/${MY_P}"
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 	cp leo/dist/setup.py leo/dist/leo-install.py . || die
 }
 
 python_install_all() {
 	use doc && local HTML_DOCS=( leo/doc/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

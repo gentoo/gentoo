@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit webapp python-single-r1
+inherit webapp python-single-r2
 
 WEBAPP_MANUAL_SLOT="yes"
 
@@ -20,13 +20,13 @@ SLOT="0"
 
 RDEPEND="
 	$(python_gen_cond_dep '
-		dev-python/bsddb3[${PYTHON_MULTI_USEDEP}]
-		dev-python/chardet[${PYTHON_MULTI_USEDEP}]
-		dev-python/httplib2[${PYTHON_MULTI_USEDEP}]
-		dev-python/utidylib[${PYTHON_MULTI_USEDEP}]
-		django? ( dev-python/django[${PYTHON_MULTI_USEDEP}] )
-		genshi? ( dev-python/genshi[${PYTHON_MULTI_USEDEP}] )
-		redland? ( dev-python/rdflib[redland,${PYTHON_MULTI_USEDEP}] )
+		dev-python/bsddb3[${PYTHON_USEDEP}]
+		dev-python/chardet[${PYTHON_USEDEP}]
+		dev-python/httplib2[${PYTHON_USEDEP}]
+		dev-python/utidylib[${PYTHON_USEDEP}]
+		django? ( dev-python/django[${PYTHON_USEDEP}] )
+		genshi? ( dev-python/genshi[${PYTHON_USEDEP}] )
+		redland? ( dev-python/rdflib[redland,${PYTHON_USEDEP}] )
 	')
 	${PYTHON_DEPS}"
 DEPEND="${RDEPEND}"
@@ -36,7 +36,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 S="${WORKDIR}"/${PN}
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	webapp_pkg_setup
 }
 

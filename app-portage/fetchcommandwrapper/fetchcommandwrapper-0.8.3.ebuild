@@ -5,7 +5,7 @@ EAPI="7"
 PYTHON_COMPAT=( python3_{6,7,8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Wrapper integrating aria2 into portage's FETCHCOMMAND"
 HOMEPAGE="https://github.com/hartwork/fetchcommandwrapper"

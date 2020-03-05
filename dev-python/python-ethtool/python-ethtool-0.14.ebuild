@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 # TODO: install scripts and their man pages
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Ethernet settings python bindings"
 HOMEPAGE="https://pypi.org/project/ethtool/

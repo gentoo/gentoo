@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 HASH="957e5538d8d441fb792db6fbbdc0a5e8d57d9c7d"
 

@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Collection of fixtures and utility functions to run service processes for pytest"
 HOMEPAGE="https://github.com/pytest-dev/pytest-services"
@@ -39,7 +39,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	find "${D}" -name '*.pth' -delete || die
 }

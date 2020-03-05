@@ -14,7 +14,7 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~spa
 IUSE="curl doc +sftp test"
 PLOCALES="ar ast bs ca cs de el en_AU en_GB es fa fo fr gl he id it ja ko ms my nb nl oc pl pt_BR ro ru sco si sk sr sv tr ug uk vi zh_CN"
 
-inherit bash-completion-r1 distutils-r1 flag-o-matic l10n
+inherit bash-completion-r1 distutils-r2 flag-o-matic l10n
 #SERIES=$(get_version_component_range 1-2)
 SRC_URI="https://dev.gentoo.org/~grozin/${P}.tar.gz"
 
@@ -45,7 +45,7 @@ python_compile() {
 		local CFLAGS=${CFLAGS}
 		append-cflags -fno-strict-aliasing
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -66,7 +66,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	# Fixup manpages manually; passing --install-data causes locales to be
 	# installed in /usr/share/share/locale

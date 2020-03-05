@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2-utils distutils-r1 games
+inherit gnome2-utils distutils-r2 games
 
 DESCRIPTION="A 3D action game with multiplayer mode and amazing graphics"
 HOMEPAGE="http://oomadness.tuxfamily.org/en/slune/"
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}"
 S=${WORKDIR}/Slune-${PV}
 
 python_install() {
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		--install-scripts="${GAMES_BINDIR}" \
 		--install-data="${GAMES_DATADIR}" \
 		--install-lib="$(python_get_sitedir)"
@@ -41,15 +41,15 @@ python_install() {
 }
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 src_compile() {
-	distutils-r1_src_compile
+	distutils-r2_src_compile
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	# fix install dest of locales
 	mv "${ED}${GAMES_DATADIR}"/${PN}/locale "${ED}"/usr/share/locale || die

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Unit conversion utility written in PyGTK"
 HOMEPAGE="http://unihedron.com/projects/gonvert/index.php"
@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygtk:2[${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
 

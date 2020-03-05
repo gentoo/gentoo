@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1 toolchain-funcs
+inherit python-single-r2 toolchain-funcs
 
 DESCRIPTION="Smart card emulator, can be used with Remote Smart Card Reader"
 HOMEPAGE="https://frankmorgner.github.io/vsmartcard/"

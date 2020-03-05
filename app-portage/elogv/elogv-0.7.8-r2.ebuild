@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 PYTHON_REQ_USE="ncurses"
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Curses based utility to parse the contents of elogs created by Portage"
 HOMEPAGE="https://github.com/gentoo/elogv"
@@ -21,7 +21,7 @@ DEPEND="${RDEPEND}"
 DOCS=( README )
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 
 	# unset LINGUAS => install all languages
 	# empty LINGUAS => install none

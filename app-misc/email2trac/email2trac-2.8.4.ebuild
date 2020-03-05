@@ -4,7 +4,7 @@
 EAPI="5"
 
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Utilities to convert emails to trac tickets"
 HOMEPAGE="https://oss.trac.surfsara.nl/email2trac"
@@ -23,7 +23,7 @@ pkg_setup() {
 	einfo " - EMAIL2TRAC_TRAC_USER (default: apache)"
 	einfo " - EMAIL2TRAC_MTA_USER (default: nobody)"
 
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
 
-inherit bash-completion-r1 elisp-common eutils distutils-r1 flag-o-matic
+inherit bash-completion-r1 elisp-common eutils distutils-r2 flag-o-matic
 
 DESCRIPTION="Scalable distributed SCM"
 HOMEPAGE="https://www.mercurial-scm.org/"
@@ -45,7 +45,7 @@ python_prepare_all() {
 	# Don't use bundled zstandard (#666972)
 	rm -r contrib/python-zstandard || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -68,7 +68,7 @@ python_compile_all() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	newbashcomp contrib/bash_completion hg
 
@@ -126,7 +126,7 @@ src_test() {
 	rm -f test-largefiles*		# tends to time out
 
 	popd &>/dev/null || die
-	distutils-r1_src_test
+	distutils-r2_src_test
 }
 
 python_test() {

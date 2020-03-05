@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( pypy3 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Preview GitHub Markdown files like Readme locally before committing them"
 HOMEPAGE="https://github.com/joeyespo/grip"

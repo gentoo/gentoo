@@ -6,7 +6,7 @@ EAPI=6
 FORTRAN_STANDARD="95"
 FORTRAN_NEEDED=fortran
 PYTHON_COMPAT=( python2_7 )
-inherit autotools fortran-2 python-single-r1
+inherit autotools fortran-2 python-single-r2
 
 DESCRIPTION="Reference implementation of the Dirfile, format for time-ordered binary data"
 HOMEPAGE="http://getdata.sourceforge.net/"
@@ -26,8 +26,8 @@ DEPEND="
 	python? (
 		$(python_gen_cond_dep '
 			|| (
-				dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-				dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+				dev-python/numpy-python2[${PYTHON_USEDEP}]
+				dev-python/numpy[${PYTHON_USEDEP}]
 			)
 		')
 		${PYTHON_DEPS}
@@ -37,7 +37,7 @@ RDEPEND="${DEPEND}"
 PATCHES=( "${FILESDIR}/${P}-remove-python-test.patch" )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

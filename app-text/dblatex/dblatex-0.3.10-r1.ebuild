@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Transform DocBook using TeX macros"
 HOMEPAGE="http://dblatex.sourceforge.net/"
@@ -38,16 +38,16 @@ python_prepare_all() {
 	use inkscape || eapply "${FILESDIR}/${P}-no-inkscape-dependency.patch"
 	eapply "${FILESDIR}/${PN}-path-logging.patch"
 	eapply "${FILESDIR}/${PN}-setup.patch"
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 	python_doscript "${S}"/scripts/dblatex
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	# move package documentation to a folder name containing version number
 	mv "${D%/}"/usr/share/doc/${PN} "${D%/}"/usr/share/doc/${PF} || die
 }

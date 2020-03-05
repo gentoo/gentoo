@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( pypy3 python{2_7,3_{6,7}} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Turn HTML into equivalent Markdown-structured text"
 HOMEPAGE="https://github.com/Alir3z4/html2text https://pypi.org/project/html2text/"
@@ -28,7 +28,7 @@ DOCS=( AUTHORS.rst ChangeLog.rst README.md )
 python_prepare_all() {
 	# naming conflict with app-text/html2text, bug 421647
 	sed -i 's/html2text = html2text.cli:main/py\0/' setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-single-r1 xdg
+inherit python-single-r2 xdg
 
 DESCRIPTION="A curses-based client for Tox"
 HOMEPAGE="https://github.com/JFreegman/toxic"
@@ -40,7 +40,7 @@ DEPEND="
 	${RDEPEND}"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

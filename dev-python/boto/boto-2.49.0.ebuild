@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Amazon Web Services API"
 HOMEPAGE="https://github.com/boto/boto https://pypi.org/project/boto/"
@@ -36,7 +36,7 @@ python_test() {
 python_prepare_all() {
 	# Prevent un-needed d'loading
 	sed -e "s/, 'sphinx.ext.intersphinx'//" -i docs/source/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -50,5 +50,5 @@ python_compile_all() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

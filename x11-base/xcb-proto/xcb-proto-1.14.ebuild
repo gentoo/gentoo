@@ -9,7 +9,7 @@ XORG_MODULE=proto/
 XORG_MULTILIB=yes
 XORG_STATIC=no
 
-inherit python-r1 xorg-3
+inherit python-multi-r2 xorg-3
 
 DESCRIPTION="X C-language Bindings protocol headers"
 HOMEPAGE="https://xcb.freedesktop.org/ https://gitlab.freedesktop.org/xorg/proto/xcbproto"

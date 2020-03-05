@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 ) # Doesn't work with python3 bug #619700
 PYTHON_REQ_USE="ssl"
 
-inherit python-single-r1 systemd
+inherit python-single-r2 systemd
 
 DESCRIPTION="Submission tools for IRC notifications"
 HOMEPAGE="http://www.catb.org/esr/irker/"
@@ -23,7 +23,7 @@ DEPEND="${RDEPEND}
 	app-text/xmlto
 	socks5? (
 		$(python_gen_cond_dep '
-			dev-python/PySocks[${PYTHON_MULTI_USEDEP}]
+			dev-python/PySocks[${PYTHON_USEDEP}]
 		')
 	)"
 

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils python-r1 toolchain-funcs
+inherit eutils python-multi-r2 toolchain-funcs
 
 DESCRIPTION="Library to parse proxy auto-config files"
 HOMEPAGE="http://pacparser.manugarg.com/"

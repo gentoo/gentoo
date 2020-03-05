@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="DesktopEntry eXecution - tool to manage and launch autostart entries"
 HOMEPAGE="http://e-jc.de/"

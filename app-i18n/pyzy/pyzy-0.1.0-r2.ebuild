@@ -4,7 +4,7 @@
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools ltprune python-any-r1
+inherit autotools ltprune python-any-r2
 
 PYZY_DB="${PN}-database-1.0.0"
 

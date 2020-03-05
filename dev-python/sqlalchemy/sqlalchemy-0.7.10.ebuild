@@ -5,7 +5,7 @@ EAPI=5
 # py3 appears underdone,
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1 eutils flag-o-matic
+inherit distutils-r2 eutils flag-o-matic
 
 MY_PN="SQLAlchemy"
 MY_P="${MY_PN}-${PV/_}"
@@ -39,7 +39,7 @@ PATCHES=( "${FILESDIR}/${PN}-0.7-logging.handlers.patch" )
 python_prepare_all() {
 	# Disable tests hardcoding function call counts specific to Python versions.
 	rm -fr test/aaa_profiling
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {
@@ -51,7 +51,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use doc; then
 		pushd doc > /dev/null

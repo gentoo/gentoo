@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 bash-completion-r1
+inherit python-single-r2 bash-completion-r1
 
 DESCRIPTION="Native makefiles generator"
 SRC_URI="mirror://sourceforge/${PN}/${P}.tar.gz"

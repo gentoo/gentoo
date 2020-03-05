@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="Send2Trash"
 MY_P="${MY_PN}-${PV}"

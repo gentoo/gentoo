@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit java-pkg-2 distutils-r1
+inherit java-pkg-2 distutils-r2
 
 DESCRIPTION="JPype is an effort to allow Python programs full access to Java class librairies"
 HOMEPAGE="https://github.com/originell/jpype"
@@ -27,5 +27,5 @@ DEPEND="
 python_install() {
 	use doc && local DOCS=( doc/* )
 	use examples && local EXAMPLES=( examples/. )
-	distutils-r1_python_install
+	distutils-r2_python_install
 }

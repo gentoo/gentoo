@@ -5,8 +5,8 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 DISTUTILS_OPTIONAL=1
 
-inherit check-reqs cmake-utils distutils-r1 flag-o-matic multiprocessing \
-	python-r1 udev readme.gentoo-r1 systemd
+inherit check-reqs cmake-utils distutils-r2 flag-o-matic multiprocessing \
+	python-multi-r2 udev readme.gentoo-r1 systemd
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3

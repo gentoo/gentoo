@@ -5,7 +5,7 @@ EAPI=7
 
 # networkx-2.4 supports up to python3_8
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1 virtualx
+inherit distutils-r2 virtualx
 
 DESCRIPTION="Python tools to manipulate graphs and complex networks"
 HOMEPAGE="http://networkx.github.io/ https://github.com/networkx/networkx"
@@ -55,5 +55,5 @@ python_test() {
 python_install_all() {
 	use examples && dodoc -r examples
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

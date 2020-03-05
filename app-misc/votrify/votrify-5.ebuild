@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Tool for community verification of Gentoo elections"
 HOMEPAGE="https://github.com/mgorny/votrify"

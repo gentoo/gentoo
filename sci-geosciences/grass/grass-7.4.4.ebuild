@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"  # bug 572440
 WANT_AUTOCONF="2.1"
 WX_GTK_VER=3.0
 
-inherit autotools desktop eapi7-ver python-single-r1 toolchain-funcs wxwidgets xdg
+inherit autotools desktop eapi7-ver python-single-r2 toolchain-funcs wxwidgets xdg
 
 MY_PM=${PN}$(ver_cut 1-2 ${PV})
 MY_PM=${MY_PM/.}
@@ -27,8 +27,8 @@ RDEPEND="${PYTHON_DEPS}
 	>=app-admin/eselect-1.2
 	$(python_gen_cond_dep '
 		|| (
-			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy-python2[${PYTHON_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		)
 	')
 	media-libs/libprojectm
@@ -110,7 +110,7 @@ pkg_setup() {
 		fi
 	fi
 
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

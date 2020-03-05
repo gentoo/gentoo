@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
-inherit bash-completion-r1 cmake kde.org python-single-r1
+inherit bash-completion-r1 cmake kde.org python-single-r2
 
 DESCRIPTION="A framework for custom processing of PO files"
 HOMEPAGE="http://pology.nedohodnik.net"
@@ -28,7 +28,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-libs/libxml2
 	dev-libs/libxslt
 	$(python_gen_cond_dep '
-		dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python[${PYTHON_USEDEP}]
 	')
 	sys-devel/gettext
 "

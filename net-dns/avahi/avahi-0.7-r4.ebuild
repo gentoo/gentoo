@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="gdbm"
 
-inherit autotools eutils flag-o-matic multilib multilib-minimal mono-env python-r1 systemd
+inherit autotools eutils flag-o-matic multilib multilib-minimal mono-env python-multi-r2 systemd
 
 DESCRIPTION="System which facilitates service discovery on a local network"
 HOMEPAGE="http://avahi.org/"

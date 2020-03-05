@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit cmake-utils python-single-r1 user
+inherit cmake-utils python-single-r2 user
 
 DESCRIPTION="Extended ROOT remote file server"
 HOMEPAGE="http://xrootd.org/"

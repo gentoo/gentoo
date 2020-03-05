@@ -5,7 +5,7 @@ EAPI=6
 
 # PyCObject_Check and PyCObject_AsVoidPtr vanished with python 3.3
 PYTHON_COMPAT=( python3_{6,7} )
-inherit xdg distutils-r1 eutils flag-o-matic user tmpfiles prefix
+inherit xdg distutils-r2 eutils flag-o-matic user tmpfiles prefix
 
 DESCRIPTION="X Persistent Remote Apps (xpra) and Partitioning WM (parti) based on wimpiggy"
 HOMEPAGE="http://xpra.org/ http://xpra.org/src/"
@@ -92,7 +92,7 @@ python_prepare_all() {
 	hprefixify tmpfiles.d/xpra.conf xpra/server/server_util.py \
 		xpra/platform{/xposix,}/paths.py xpra/scripts/server.py
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure_all() {

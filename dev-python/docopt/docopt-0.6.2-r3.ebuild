@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Pythonic argument parser, that will make you smile"
 HOMEPAGE="https://pypi.org/project/docopt/ https://github.com/docopt/docopt"

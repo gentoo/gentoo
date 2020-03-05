@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools flag-o-matic linux-info xdg multilib-minimal pam python-single-r1 user java-pkg-opt-2 systemd toolchain-funcs
+inherit autotools flag-o-matic linux-info xdg multilib-minimal pam python-single-r2 user java-pkg-opt-2 systemd toolchain-funcs
 
 MY_P="${P/_rc/rc}"
 MY_P="${MY_P/_beta/b}"
@@ -93,7 +93,7 @@ pkg_setup() {
 	enewuser lp -1 -1 -1 lp
 	enewgroup lpadmin 106
 
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 
 	if use kernel_linux; then
 		linux-info_pkg_setup

@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( pypy3 python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Redis distributed locks in Python"
 HOMEPAGE="https://github.com/SPSCommerce/redlock-py https://pypi.org/project/redlock-py/"

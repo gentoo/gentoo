@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit bash-completion-r1 distutils-r1
+inherit bash-completion-r1 distutils-r2
 
 DESCRIPTION="Multi-container orchestration for Docker"
 HOMEPAGE="https://github.com/docker/compose"
@@ -61,5 +61,5 @@ python_install_all() {
 	insinto /usr/share/zsh/site-functions
 	doins contrib/completion/zsh/*
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

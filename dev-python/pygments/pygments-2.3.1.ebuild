@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1 bash-completion-r1
+inherit distutils-r2 bash-completion-r1
 
 MY_PN="Pygments"
 MY_P="${MY_PN}-${PV}"
@@ -45,6 +45,6 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( doc/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	newbashcomp external/pygments.bashcomp pygmentize
 }

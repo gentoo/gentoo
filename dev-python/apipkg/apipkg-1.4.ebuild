@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="namespace control and lazy-import mechanism"
 HOMEPAGE="https://pypi.org/project/apipkg/"
@@ -26,5 +26,5 @@ python_test() {
 
 python_install_all() {
 	use examples && local EXAMPLES=( example/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

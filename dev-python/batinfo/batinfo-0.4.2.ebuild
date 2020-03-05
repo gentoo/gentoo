@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A simple Python lib to retreive battery information"
 HOMEPAGE="https://github.com/nicolargo/batinfo https://pypi.org/project/batinfo/"

@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6 python3_7 python3_8 pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Extensions to the Python standard library unit testing framework"
 HOMEPAGE="https://github.com/testing-cabal/testtools"
@@ -54,5 +54,5 @@ python_test() {
 python_install_all() {
 	use doc && HTML_DOCS=( doc/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

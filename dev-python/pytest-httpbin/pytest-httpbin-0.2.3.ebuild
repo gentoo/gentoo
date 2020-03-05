@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Easily test your HTTP library against a local copy of httpbin"
 HOMEPAGE="https://github.com/kevin1024/pytest-httpbin

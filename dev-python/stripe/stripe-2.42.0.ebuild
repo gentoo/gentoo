@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Stripe python bindings"
 HOMEPAGE="https://github.com/stripe/stripe-python"
@@ -59,7 +59,7 @@ src_test() {
 		die "Please see the logfile located at: ${stripe_mock_logfile}"
 	fi
 
-	distutils-r1_src_test
+	distutils-r2_src_test
 
 	# Tear down stripe-mock
 	kill "${stripe_mock_pid}" || die "Unable to stop stripe-mock"

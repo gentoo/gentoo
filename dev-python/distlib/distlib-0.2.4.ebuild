@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Distribution utilities"
 HOMEPAGE="https://pypi.org/project/distlib/ https://bitbucket.org/vinay.sajip/distlib https://github.com/vsajip/distlib"
@@ -30,7 +30,7 @@ python_prepare_all() {
 		tests/test_shutil.py* \
 		tests/test_sysconfig.py* || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	# Broken tests
 	# 1 fails due to it being sensitive to dictionary ordering

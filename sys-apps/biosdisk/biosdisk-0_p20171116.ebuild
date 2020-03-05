@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 EGIT_COMMIT="f534dd22a795dca9c42f44b52f206bf02eadb682"
 DESCRIPTION="A script that creates floppy boot images to flash Dell BIOSes"

@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_OPTIONAL=1
 
-inherit distutils-r1 eutils multilib systemd
+inherit distutils-r2 eutils multilib systemd
 
 DESCRIPTION="A scalable distributed monitoring system for clusters and grids"
 HOMEPAGE="http://ganglia.sourceforge.net/"
@@ -34,7 +34,7 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 src_prepare() {
 	if use python && ! use minimal; then
 		pushd gmetad-python >/dev/null || die
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 		popd >/dev/null || die
 	fi
 }
@@ -59,7 +59,7 @@ src_compile() {
 
 	if use python && ! use minimal; then
 		pushd gmetad-python >/dev/null || die
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 		popd >/dev/null || die
 	fi
 }
@@ -100,7 +100,7 @@ src_install() {
 
 		if use python; then
 			pushd gmetad-python >/dev/null || die
-			distutils-r1_src_install
+			distutils-r2_src_install
 			popd >/dev/null || die
 			newinitd "${FILESDIR}"/gmetad-python.rc gmetad-python
 		fi
@@ -112,7 +112,7 @@ src_test() {
 
 	if use python && ! use minimal; then
 		pushd gmetad-python >/dev/null || die
-		distutils-r1_src_test
+		distutils-r2_src_test
 		popd >/dev/null || die
 	fi
 }

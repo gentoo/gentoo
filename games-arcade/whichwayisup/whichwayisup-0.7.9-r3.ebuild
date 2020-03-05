@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit desktop python-r1
+inherit desktop python-multi-r2
 
 MY_PV="${PV//./}"
 MY_P="${PN}_b${MY_PV}"

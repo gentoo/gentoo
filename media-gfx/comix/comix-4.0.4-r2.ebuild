@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 PLOCALES="ca cs es fr hr hu id ja ko pl pt_BR ru sv zh_CN zh_TW"
 
-inherit eutils gnome2-utils l10n python-single-r1 xdg-utils
+inherit eutils gnome2-utils l10n python-single-r2 xdg-utils
 
 DESCRIPTION="A GTK image viewer specifically designed to handle comic books"
 HOMEPAGE="http://comix.sourceforge.net"
@@ -20,14 +20,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pygtk-2.12[${PYTHON_MULTI_USEDEP}]
+		dev-python/pillow[${PYTHON_USEDEP}]
+		>=dev-python/pygtk-2.12[${PYTHON_USEDEP}]
 	')"
 RDEPEND="${DEPEND}
 	rar? ( || ( app-arch/unrar app-arch/rar ) )"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

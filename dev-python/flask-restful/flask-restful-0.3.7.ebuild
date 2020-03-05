@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Simple framework for creating REST APIs"
 HOMEPAGE="https://flask-restful.readthedocs.io/en/latest/ https://github.com/twilio/flask-restful/"
@@ -47,5 +47,5 @@ python_install_all() {
 	local DOCS=( AUTHORS.md CHANGES.md CONTRIBUTING.md README.md )
 
 	doman docs/_build/man/*
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

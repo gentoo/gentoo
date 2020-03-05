@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 )
 
-inherit vim-plugin python-r1
+inherit vim-plugin python-multi-r2
 
 DESCRIPTION="vim plugin: tab-complete your Python code"
 HOMEPAGE="https://rkulla.github.io/pydiction/"

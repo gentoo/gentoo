@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit multilib python-single-r1
+inherit multilib python-single-r2
 
 DESCRIPTION="Speech Recognition (Training Module)"
 HOMEPAGE="http://cmusphinx.sourceforge.net/html/cmusphinx.php"

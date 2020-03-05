@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit autotools flag-o-matic java-pkg-opt-2 python-single-r1 qmake-utils
+inherit autotools flag-o-matic java-pkg-opt-2 python-single-r2 qmake-utils
 
 DESCRIPTION="Open Source Graph Visualization Software"
 HOMEPAGE="https://www.graphviz.org/ https://gitlab.com/graphviz/graphviz/"
@@ -146,7 +146,7 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${PN}-2.34.0-Xaw-configure.patch )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 
 	java-pkg-opt-2_pkg_setup
 }

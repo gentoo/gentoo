@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="easy-to-use, pythonic, and complete IMAP client library"
 HOMEPAGE="https://github.com/mjs/imapclient"
@@ -38,6 +38,6 @@ python_test() {
 python_install_all() {
 	local DOCS=( AUTHORS.rst NEWS.rst README.rst )
 	use doc && local HTML_DOCS=( doc/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	use examples && dodoc -r examples
 }

@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_6 )
 
 DIST_AUTHOR=NINE
 DIST_VERSION=0.56
-inherit python-single-r1 perl-module
+inherit python-single-r2 perl-module
 
 DESCRIPTION="Easy implementation of Python extensions"
 

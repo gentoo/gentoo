@@ -6,7 +6,7 @@ DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="xml(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Collection of extensions to Distutils"
 HOMEPAGE="https://github.com/pypa/setuptools https://pypi.org/project/setuptools/"
@@ -51,7 +51,7 @@ python_prepare_all() {
 	# don't run integration tests
 	rm setuptools/tests/test_integration.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {
@@ -62,5 +62,5 @@ python_test() {
 
 python_install() {
 	export DISTRIBUTE_DISABLE_VERSIONED_EASY_INSTALL_SCRIPT=1
-	distutils-r1_python_install
+	distutils-r2_python_install
 }

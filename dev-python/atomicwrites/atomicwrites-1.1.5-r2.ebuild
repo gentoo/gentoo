@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Atomic file writes"
 HOMEPAGE="https://github.com/untitaker/python-atomicwrites"

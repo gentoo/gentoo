@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 DISTUTILS_OPTIONAL=1
 
-inherit autotools bash-completion-r1 distutils-r1 linux-info versionator flag-o-matic systemd readme.gentoo-r1
+inherit autotools bash-completion-r1 distutils-r2 linux-info versionator flag-o-matic systemd readme.gentoo-r1
 DESCRIPTION="LinuX Containers userspace utilities"
 HOMEPAGE="https://linuxcontainers.org/"
 SRC_URI="https://linuxcontainers.org/downloads/lxc/${P}.tar.gz"
@@ -147,7 +147,7 @@ src_configure() {
 }
 
 python_compile() {
-	distutils-r1_python_compile build_ext -I.. -L../lxc/.libs --no-pkg-config
+	distutils-r2_python_compile build_ext -I.. -L../lxc/.libs --no-pkg-config
 }
 
 src_compile() {
@@ -155,7 +155,7 @@ src_compile() {
 
 	if use python; then
 		pushd "${S}/src/python-${PN}" > /dev/null
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 		popd > /dev/null
 	fi
 }
@@ -173,7 +173,7 @@ src_install() {
 		pushd "${S}/src/python-lxc" > /dev/null
 		# Unset DOCS. This has been handled by the default target
 		unset DOCS
-		distutils-r1_src_install
+		distutils-r2_src_install
 		popd > /dev/null
 	fi
 

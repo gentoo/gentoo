@@ -5,7 +5,7 @@ EAPI=6
 GNOME2_EAUTORECONF="yes"
 PYTHON_COMPAT=( python2_7 )
 
-inherit gnome2 python-single-r1
+inherit gnome2 python-single-r2
 
 DESCRIPTION="Pybliographer is a tool for working with bibliographic databases"
 HOMEPAGE="https://pybliographer.org"
@@ -22,10 +22,10 @@ RDEPEND="${PYTHON_DEPS}
 	app-text/rarian
 	dev-libs/glib:2
 	$(python_gen_cond_dep '
-		dev-python/gconf-python:2[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pygtk-2.24.0:2[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/python-bibtex-1.2.5[${PYTHON_MULTI_USEDEP}]
+		dev-python/gconf-python:2[${PYTHON_USEDEP}]
+		dev-python/pygobject:2[${PYTHON_USEDEP}]
+		>=dev-python/pygtk-2.24.0:2[${PYTHON_USEDEP}]
+		>=dev-python/python-bibtex-1.2.5[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}

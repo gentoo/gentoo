@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A library for converting a token stream into a data structure for use in web form posts"
 HOMEPAGE="https://github.com/Pylons/peppercorn https://pypi.org/project/peppercorn/"
@@ -27,7 +27,7 @@ python_prepare_all() {
 	# Fix Sphinx theme. courtesy of Arfrever
 	sed -e "/# Add and use Pylons theme/,+36d" -i docs/conf.py || die "sed failed"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -41,5 +41,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

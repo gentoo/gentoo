@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit git-r3 distutils-r1
+inherit git-r3 distutils-r2
 
 DESCRIPTION="Python utilities for working with DMR"
 HOMEPAGE="https://github.com/n0mjs710/dmr_utils"

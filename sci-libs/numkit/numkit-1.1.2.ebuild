@@ -17,7 +17,7 @@ else
 	KEYWORDS="~amd64 ~x86"
 fi
 
-inherit eutils distutils-r1 ${scm_eclass}
+inherit eutils distutils-r2 ${scm_eclass}
 
 DESCRIPTION="Numerical first aid kit (with numpy/scipy)"
 HOMEPAGE="https://numkit.readthedocs.io"

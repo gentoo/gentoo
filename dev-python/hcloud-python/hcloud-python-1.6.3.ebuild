@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Official Hetzner Cloud python library"
 HOMEPAGE="https://github.com/hetznercloud/hcloud-python"
@@ -36,5 +36,5 @@ python_install_all() {
 	use examples && dodoc -r examples
 	use doc && local HTML_DOCS=( docs/_build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

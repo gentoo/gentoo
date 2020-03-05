@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 
-inherit python-r1 multilib autotools toolchain-funcs
+inherit python-multi-r2 multilib autotools toolchain-funcs
 
 DESCRIPTION="Redhat's Newt windowing toolkit development files"
 HOMEPAGE="https://pagure.io/newt"

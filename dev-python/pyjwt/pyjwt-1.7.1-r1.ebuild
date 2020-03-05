@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python{2_7,3_{6,7,8}} pypy3 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 MY_PN="PyJWT"
 DESCRIPTION="JSON Web Token implementation in Python"
@@ -40,7 +40,7 @@ python_prepare_all() {
 		"${FILESDIR}"/pyjwt-1.7.1-ecdsa-fix.patch
 	)
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

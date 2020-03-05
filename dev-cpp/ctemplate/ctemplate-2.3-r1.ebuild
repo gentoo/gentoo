@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit autotools elisp-common python-any-r1
+inherit autotools elisp-common python-any-r2
 
 DESCRIPTION="A simple but powerful template language for C++"
 HOMEPAGE="https://github.com/olafvdspek/ctemplate"

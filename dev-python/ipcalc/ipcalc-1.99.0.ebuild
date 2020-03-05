@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="IP subnet calculator"
 HOMEPAGE="https://pypi.org/project/ipcalc/"

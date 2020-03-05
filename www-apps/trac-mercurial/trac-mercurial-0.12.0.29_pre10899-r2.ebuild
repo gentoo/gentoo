@@ -6,7 +6,7 @@ EAPI=6
 DISTUTILS_SINGLE_IMPL=1
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN="TracMercurial"
 MY_P="${MY_PN}-${PV/_pre/dev-r}"
@@ -22,7 +22,7 @@ IUSE=""
 
 RDEPEND=">=www-apps/trac-0.12[${PYTHON_SINGLE_USEDEP}]
 	$(python_gen_cond_dep '
-		>=dev-vcs/mercurial-1.1[${PYTHON_MULTI_USEDEP}]
+		>=dev-vcs/mercurial-1.1[${PYTHON_USEDEP}]
 	')"
 
 S="${WORKDIR}/${MY_P}"

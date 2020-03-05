@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
 WANT_AUTOMAKE=1.14
-inherit autotools python-any-r1
+inherit autotools python-any-r2
 
 MY_P=xdelta3-${PV}
 
@@ -26,7 +26,7 @@ DEPEND="${RDEPEND}
 S=${WORKDIR}/${MY_P}
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

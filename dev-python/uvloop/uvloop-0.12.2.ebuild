@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python{3_6,3_7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Ultra-fast implementation of asyncio event loop on top of libuv"
 HOMEPAGE="https://github.com/magicstack/uvloop"
@@ -36,7 +36,7 @@ EOF
 	# failing not only for us
 	sed -i -e 's:test_write_pipe(:_&:' tests/test_pipes.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -50,5 +50,5 @@ python_test() {
 python_install_all() {
 	use examples && dodoc -r examples
 	use doc && local HTML_DOCS=( "${BUILD_DIR}/sphinx/html/." )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

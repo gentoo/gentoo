@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A module for (de)serialization to and from VDF, Valve's key-value text format"
 HOMEPAGE="https://github.com/ValvePython/vdf"

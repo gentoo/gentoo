@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A Python extension to parse BibTeX files"
 HOMEPAGE="https://pybliographer.org/"
@@ -25,7 +25,7 @@ python_prepare_all() {
 	# Disable tests during installation.
 	sed -e "/self.run_command ('check')/d" -i setup.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

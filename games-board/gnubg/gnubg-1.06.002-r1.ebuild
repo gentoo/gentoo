@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit desktop python-single-r1 xdg
+inherit desktop python-single-r2 xdg
 
 DESCRIPTION="GNU BackGammon"
 HOMEPAGE="https://www.gnu.org/software/gnubg/"
@@ -37,7 +37,7 @@ BDEPEND="
 	virtual/pkgconfig"
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

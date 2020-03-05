@@ -16,7 +16,7 @@ fi
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 prefix
+inherit distutils-r2 prefix
 
 DESCRIPTION="Python daemon that collects and publishes system metrics"
 HOMEPAGE="https://github.com/python-diamond/Diamond"
@@ -71,7 +71,7 @@ src_prepare() {
 		-e '/self.socket.sendall/s/data/str.encode(data)/' \
 		src/diamond/handler/graphite.py || die
 
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {
@@ -84,7 +84,7 @@ python_test() {
 
 python_install() {
 	export VIRTUAL_ENV=1
-	distutils-r1_python_install
+	distutils-r2_python_install
 	python_optimize
 	mv "${ED}"/usr/etc "${ED}"/ || die
 	rm "${ED}"/etc/diamond/*.windows  # won't need these
@@ -95,7 +95,7 @@ python_install() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 	newconfd "${FILESDIR}"/${PN}.confd ${PN}
 	keepdir /var/log/diamond

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1 prefix readme.gentoo-r1
+inherit distutils-r2 prefix readme.gentoo-r1
 
 DESCRIPTION="Python package for providing Mozilla's CA Bundle"
 HOMEPAGE="http://certifi.io/ https://pypi.org/project/certifi"
@@ -23,13 +23,13 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 PATCHES=( "${FILESDIR}"/certifi-2018.4.16-use-system-cacerts.patch )
 
 python_prepare_all() {
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 
 	eprefixify certifi/core.py
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	local DOC_CONTENTS="
 		In Gentoo, we don't use certifi's bundled CA certificates.

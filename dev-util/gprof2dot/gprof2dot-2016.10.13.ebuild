@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE='xml'
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Converts profiling output to dot graphs"
 HOMEPAGE="https://github.com/jrfonseca/gprof2dot"

@@ -9,7 +9,7 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 KFMIN=5.60.0
 QTMIN=5.12.3
 VIRTUALX_REQUIRED="test"
-inherit ecm kde.org python-any-r1
+inherit ecm kde.org python-any-r2
 
 DESCRIPTION="Framework for creation and generation of reports in multiple formats"
 HOMEPAGE="https://community.kde.org/KReport"
@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 "
 
 pkg_setup() {
-	python-any-r1_pkg_setup
+	python-any-r2_pkg_setup
 	ecm_pkg_setup
 }
 

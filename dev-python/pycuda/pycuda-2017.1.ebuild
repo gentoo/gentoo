@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit cuda distutils-r1
+inherit cuda distutils-r2
 
 DESCRIPTION="Python wrapper for NVIDIA CUDA"
 HOMEPAGE="https://mathema.tician.de/software/pycuda/ https://pypi.org/project/pycuda/"
@@ -42,7 +42,7 @@ python_prepare_all() {
 		-i pycuda/compiler.py || die
 
 	touch siteconf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_configure() {
@@ -69,11 +69,11 @@ src_test() {
 	python_test() {
 		py.test --debug -v -v -v || die "Tests fail with ${EPYTHON}"
 	}
-	distutils-r1_src_test
+	distutils-r2_src_test
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	if use examples; then
 		dodoc -r examples
 		docompress -x /usr/share/doc/${PF}/examples

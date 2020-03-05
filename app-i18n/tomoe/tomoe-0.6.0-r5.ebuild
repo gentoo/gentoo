@@ -5,7 +5,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 USE_RUBY="ruby24"
 
-inherit autotools python-single-r1 ruby-single
+inherit autotools python-single-r2 ruby-single
 
 DESCRIPTION="Japanese handwriting recognition engine"
 HOMEPAGE="http://tomoe.osdn.jp/"
@@ -35,8 +35,8 @@ RDEPEND="dev-libs/glib:2
 	python? (
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
-			dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+			dev-python/pygobject:2[${PYTHON_USEDEP}]
+			dev-python/pygtk:2[${PYTHON_USEDEP}]
 		')
 	)
 	ruby? (
@@ -58,7 +58,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 }
 
 src_prepare() {

@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( pypy3 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Provides access to the system keyring service"
 HOMEPAGE="https://github.com/jaraco/keyring"
@@ -45,7 +45,7 @@ python_prepare_all() {
 	sed -i -r "$(printf -- 's:[[:space:]]*--%s::;' --doctest-modules --flake8 --black --cov)" \
 		pytest.ini || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1 python-r1
+inherit distutils-r2 python-multi-r2
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_BRANCH="master"
@@ -25,7 +25,7 @@ SLOT="0"
 IUSE=""
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

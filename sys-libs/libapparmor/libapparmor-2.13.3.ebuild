@@ -7,7 +7,7 @@ DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python3_6 )
 GENTOO_DEPEND_ON_PERL="no"
 
-inherit autotools distutils-r1 eapi7-ver perl-functions
+inherit autotools distutils-r2 eapi7-ver perl-functions
 
 MY_PV="$(ver_cut 1-2)"
 
@@ -42,7 +42,7 @@ src_prepare() {
 	rm -r m4 || die "failed to remove bundled macros"
 	default
 	eautoreconf
-	use python && distutils-r1_src_prepare
+	use python && distutils-r2_src_prepare
 }
 
 src_configure() {
@@ -61,7 +61,7 @@ src_compile() {
 	if use python ; then
 		pushd swig/python > /dev/null
 		emake libapparmor_wrap.c
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 		popd > /dev/null
 	fi
 }
@@ -84,7 +84,7 @@ src_install() {
 
 	if use python ; then
 		pushd swig/python > /dev/null
-		distutils-r1_src_install
+		distutils-r2_src_install
 
 		python_moduleinto LibAppArmor
 		python_foreach_impl python_domodule LibAppArmor.py

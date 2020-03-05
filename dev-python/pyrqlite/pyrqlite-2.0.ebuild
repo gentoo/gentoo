@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-r3
@@ -30,7 +30,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 
 src_prepare() {
 	sed -e "s:^__version__ = .*:__version__ = '${PV}':" -i src/${PN}/constants.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

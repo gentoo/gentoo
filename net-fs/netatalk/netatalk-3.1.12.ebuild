@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 
 AUTOTOOLS_AUTORECONF=yes
 
-inherit autotools flag-o-matic multilib pam python-r1 systemd
+inherit autotools flag-o-matic multilib pam python-multi-r2 systemd
 
 DESCRIPTION="Open Source AFP server"
 HOMEPAGE="http://netatalk.sourceforge.net/"

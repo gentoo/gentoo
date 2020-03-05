@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A repository of test results"
 HOMEPAGE="https://launchpad.net/testscenarios"

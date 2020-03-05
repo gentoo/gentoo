@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Interact with Mattermost incoming webhooks easily"
 HOMEPAGE="https://github.com/numberly/matterhook"

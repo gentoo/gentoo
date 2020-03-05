@@ -6,7 +6,7 @@ EAPI=7
 # Python is required for tests and some build tasks.
 PYTHON_COMPAT=( python2_7 )
 CMAKE_ECLASS=cmake
-inherit cmake-multilib python-any-r1
+inherit cmake-multilib python-any-r2
 
 MY_PV=1.10.x
 
@@ -40,7 +40,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_prepare() {

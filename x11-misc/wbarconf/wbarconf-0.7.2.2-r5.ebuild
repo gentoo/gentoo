@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Configuration GUI for x11-misc/wbar"
 HOMEPAGE="http://koti.kapsi.fi/ighea/wbarconf/"
@@ -21,8 +21,8 @@ RDEPEND="
 	${PYTHON_DEPS}
 	>=x11-misc/wbar-1.3.3
 	$(python_gen_cond_dep '
-		dev-python/pygobject:2[${PYTHON_MULTI_USEDEP}]
-		dev-python/pygtk:2[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:2[${PYTHON_USEDEP}]
+		dev-python/pygtk:2[${PYTHON_USEDEP}]
 	')
 "
 PATCHES=(

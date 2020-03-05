@@ -6,7 +6,7 @@ EAPI="7"
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings for the cairo library"
 HOMEPAGE="https://www.cairographics.org/pycairo/ https://github.com/pygobject/pycairo"
@@ -47,7 +47,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install \
+	distutils-r2_python_install \
 		install_pkgconfig --pkgconfigdir="${EPREFIX}/usr/$(get_libdir)/pkgconfig"
 }
 
@@ -58,5 +58,5 @@ python_install_all() {
 		dodoc -r examples
 	fi
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

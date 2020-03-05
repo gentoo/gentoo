@@ -8,7 +8,7 @@ GNOME2_EAUTORECONF=yes
 MY_PV="${PV/_rc/-RC}"
 MY_P="${PN}-${MY_PV}"
 
-inherit versionator virtualx autotools gnome2 multilib python-single-r1 ltprune
+inherit versionator virtualx autotools gnome2 multilib python-single-r2 ltprune
 
 DESCRIPTION="GNU Image Manipulation Program"
 HOMEPAGE="https://www.gimp.org/"
@@ -54,8 +54,8 @@ RDEPEND=">=dev-libs/glib-2.56.0:2
 	python?	(
 		${PYTHON_DEPS}
 		$(python_gen_cond_dep '
-			>=dev-python/pygtk-2.10.4:2[${PYTHON_MULTI_USEDEP}]
-			>=dev-python/pycairo-1.0.2[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/pygtk-2.10.4:2[${PYTHON_USEDEP}]
+			>=dev-python/pycairo-1.0.2[${PYTHON_USEDEP}]
 		')
 	)
 	>=media-libs/tiff-3.5.7:0
@@ -92,7 +92,7 @@ S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
 	if use python; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 }
 

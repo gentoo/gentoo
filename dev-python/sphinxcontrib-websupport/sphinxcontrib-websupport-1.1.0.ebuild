@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Sphinx websupport extension"
 HOMEPAGE="http://www.sphinx-doc.org"
@@ -34,13 +34,13 @@ DEPEND="
 	)"
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	find "${ED}" -name '*.pth' -delete || die
 }
 
 src_test() {
 	cd tests || die
-	distutils-r1_src_test
+	distutils-r2_src_test
 }
 
 python_test() {

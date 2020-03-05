@@ -5,7 +5,7 @@ EAPI="6"
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils flag-o-matic python-any-r1 toolchain-funcs
+inherit eutils flag-o-matic python-any-r2 toolchain-funcs
 
 PATCH_VER="01"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
@@ -60,7 +60,7 @@ python_check_deps() {
 
 pkg_setup() {
 	if use test ; then
-		python-any-r1_pkg_setup
+		python-any-r2_pkg_setup
 	fi
 }
 

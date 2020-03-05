@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools flag-o-matic linux-info python-single-r1 systemd
+inherit autotools flag-o-matic linux-info python-single-r2 systemd
 
 DESCRIPTION="High performance Network IDS, IPS and Network Security Monitoring engine"
 HOMEPAGE="https://suricata-ids.org/"
@@ -32,7 +32,7 @@ CDEPEND="acct-group/suricata
 	dev-libs/nspr
 	dev-libs/nss
 	$(python_gen_cond_dep '
-		dev-python/pyyaml[${PYTHON_MULTI_USEDEP}]
+		dev-python/pyyaml[${PYTHON_USEDEP}]
 	')
 	>=net-libs/libhtp-0.5.32
 	net-libs/libpcap

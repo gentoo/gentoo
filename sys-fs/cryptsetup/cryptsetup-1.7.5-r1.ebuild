@@ -6,7 +6,7 @@ EAPI=5
 DISTUTILS_OPTIONAL=1
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit autotools distutils-r1 linux-info libtool ltprune eutils versionator
+inherit autotools distutils-r2 linux-info libtool ltprune eutils versionator
 
 DESCRIPTION="Tool to setup encrypted devices with dm-crypt"
 HOMEPAGE="https://gitlab.com/cryptsetup/cryptsetup/blob/master/README.md"
@@ -64,7 +64,7 @@ src_prepare() {
 	if use python ; then
 		cd python
 		cp "${FILESDIR}"/setup-1.7.0.py setup.py || die
-		distutils-r1_src_prepare
+		distutils-r2_src_prepare
 	fi
 }
 
@@ -90,12 +90,12 @@ src_configure() {
 		$(use_enable !urandom dev-random) \
 		--with-crypto_backend=$(for x in ${CRYPTO_BACKENDS//+/} ; do usev ${x} ; done)
 
-	use python && cd python && distutils-r1_src_configure
+	use python && cd python && distutils-r2_src_configure
 }
 
 src_compile() {
 	default
-	use python && cd python && distutils-r1_src_compile
+	use python && cd python && distutils-r2_src_compile
 }
 
 src_test() {
@@ -122,5 +122,5 @@ src_install() {
 	newconfd "${FILESDIR}"/1.6.7-dmcrypt.confd dmcrypt
 	newinitd "${FILESDIR}"/1.6.7-dmcrypt.rc dmcrypt
 
-	use python && cd python && distutils-r1_src_install
+	use python && cd python && distutils-r2_src_install
 }

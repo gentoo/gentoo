@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ncurses"
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="A tool to display color charts for 8, 16, 88, and 256 color terminals"
 HOMEPAGE="http://zhar.net/projects/shell/terminal-colors"

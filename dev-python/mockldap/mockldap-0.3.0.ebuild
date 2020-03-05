@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="A simple mock implementation of python-ldap"
 HOMEPAGE="https://bitbucket.org/psagers/mockldap/ https://pypi.org/project/mockldap/"
@@ -42,7 +42,7 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 pkg_postinst() {

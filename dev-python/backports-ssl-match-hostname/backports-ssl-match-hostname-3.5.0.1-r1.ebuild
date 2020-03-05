@@ -6,7 +6,7 @@ EAPI=5
 # Do not add python3.5 or later support here, there's no need for it.
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=${PN/-/.}
 MY_PN=${MY_PN//-/_}
@@ -27,11 +27,11 @@ S=${WORKDIR}/${MY_P}
 
 python_install_all() {
 	local DOCS=( backports/ssl_match_hostname/README.txt )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }
 
 python_install() {
 	# main namespace provided by dev-python/backports
 	rm "${BUILD_DIR}"/lib/backports/__init__.py || die
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 }

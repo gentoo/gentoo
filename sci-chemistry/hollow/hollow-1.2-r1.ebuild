@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-r1 vcs-clean
+inherit python-multi-r2 vcs-clean
 
 DESCRIPTION="Production of surface images of proteins"
 HOMEPAGE="http://hollow.sourceforge.net/"

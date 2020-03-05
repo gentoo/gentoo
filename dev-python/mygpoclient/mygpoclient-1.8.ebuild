@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 eutils
+inherit distutils-r2 eutils
 
 DESCRIPTION="A gpodder.net client library"
 HOMEPAGE="https://github.com/gpodder/mygpoclient
@@ -28,7 +28,7 @@ DEPEND="${RDEPEND}
 PATCHES=( "${FILESDIR}"/${P}-tests.patch )
 
 src_prepare() {
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 	# Disable tests requring network connection.
 	rm -f mygpoclient/http_test.py
 }
@@ -42,6 +42,6 @@ python_test() {
 }
 
 src_install() {
-	distutils-r1_src_install
+	distutils-r2_src_install
 	rm -f $(find "${D}" -name "*_test.py")
 }

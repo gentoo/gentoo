@@ -6,7 +6,7 @@ EAPI=6
 # jython depends on java-config, so don't add it or things will break
 PYTHON_COMPAT=( python{3_6,3_7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Java environment configuration query tool"
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:Java"
@@ -29,7 +29,7 @@ RDEPEND="
 PATCHES=( "${FILESDIR}"/${PN}-2.2.0-prefix.patch )
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	# This replaces the file installed by java-config-wrapper.
 	dosym java-config-2 /usr/bin/java-config

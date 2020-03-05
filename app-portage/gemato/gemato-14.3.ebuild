@@ -7,7 +7,7 @@ DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python{2_7,3_6,3_7,3_8} pypy3 )
 PYTHON_REQ_USE='threads(+)'
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Stand-alone Manifest generation & verification tool"
 HOMEPAGE="https://github.com/mgorny/gemato"
@@ -28,7 +28,7 @@ RDEPEND="
 distutils_enable_tests setup.py
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	if use tools; then
 		exeinto /usr/share/gemato

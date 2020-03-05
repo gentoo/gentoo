@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_6 )
 
-inherit eutils systemd distutils-r1
+inherit eutils systemd distutils-r2
 
 DESCRIPTION="Salt is a remote execution and configuration manager"
 HOMEPAGE="https://www.saltstack.com/resources/community/
@@ -109,7 +109,7 @@ python_prepare() {
 
 python_install_all() {
 	local svc
-	USE_SETUPTOOLS=1 distutils-r1_python_install_all
+	USE_SETUPTOOLS=1 distutils-r2_python_install_all
 
 	for svc in minion master syndic api; do
 		newinitd "${FILESDIR}"/${svc}-initd-4 salt-${svc}

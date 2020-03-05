@@ -7,7 +7,7 @@ EAPI=5
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ssl(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Unified Interface to the Cloud - python support libs"
 HOMEPAGE="https://libcloud.apache.org/"
@@ -36,12 +36,12 @@ python_prepare_all() {
 		mkdir examples
 		mv example_*.py examples || die
 	fi
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 src_test() {
 	cp libcloud/test/secrets.py-dist libcloud/test/secrets.py || die
-	distutils-r1_src_test
+	distutils-r2_src_test
 }
 
 python_test() {
@@ -50,5 +50,5 @@ python_test() {
 
 python_install_all() {
 	use examples && local EXAMPLES=( examples/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

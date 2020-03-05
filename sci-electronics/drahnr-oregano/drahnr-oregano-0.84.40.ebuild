@@ -5,7 +5,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 PYTHON_REQ_USE='threads(+)'
 
-inherit gnome2-utils python-any-r1 waf-utils xdg-utils
+inherit gnome2-utils python-any-r2 waf-utils xdg-utils
 
 DESCRIPTION="Application for the schematic capturing and simulation of electrical circuits"
 HOMEPAGE="https://github.com/drahnr/oregano"
@@ -34,7 +34,7 @@ RDEPEND="${COMMON_DEP}
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary ]] ; then
-		python-any-r1_pkg_setup
+		python-any-r2_pkg_setup
 	fi
 }
 

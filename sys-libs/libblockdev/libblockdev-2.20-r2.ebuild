@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit autotools python-single-r1 xdg-utils
+inherit autotools python-single-r2 xdg-utils
 
 MY_PV="${PV}-1"
 MY_P="${PN}-${MY_PV}"
@@ -59,7 +59,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

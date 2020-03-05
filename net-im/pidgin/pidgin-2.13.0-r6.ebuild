@@ -6,7 +6,7 @@ EAPI=6
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit autotools flag-o-matic gnome2 toolchain-funcs multilib perl-module python-single-r1 xdg-utils
+inherit autotools flag-o-matic gnome2 toolchain-funcs multilib perl-module python-single-r2 xdg-utils
 
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="http://pidgin.im/"
@@ -55,7 +55,7 @@ RDEPEND="
 		>=dev-libs/dbus-glib-0.71
 		>=sys-apps/dbus-0.90
 		$(python_gen_cond_dep '
-			dev-python/dbus-python[${PYTHON_MULTI_USEDEP}]
+			dev-python/dbus-python[${PYTHON_USEDEP}]
 		')
 	)
 	perl? ( >=dev-lang/perl-5.16:= )
@@ -165,7 +165,7 @@ pkg_pretend() {
 
 pkg_setup() {
 	if use python || use dbus ; then
-		python-single-r1_pkg_setup
+		python-single-r2_pkg_setup
 	fi
 }
 

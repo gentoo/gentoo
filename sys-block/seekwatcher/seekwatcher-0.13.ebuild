@@ -6,7 +6,7 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="generates graphs from blktrace to help visualize IO patterns and performance"
 HOMEPAGE="https://github.com/trofi/seekwatcher"

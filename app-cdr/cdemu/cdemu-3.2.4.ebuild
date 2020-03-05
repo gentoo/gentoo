@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit bash-completion-r1 cmake-utils python-single-r1 xdg-utils
+inherit bash-completion-r1 cmake-utils python-single-r2 xdg-utils
 
 MY_P=cdemu-client-${PV}
 DESCRIPTION="Command-line tool for controlling cdemu-daemon"
@@ -21,7 +21,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_USEDEP}]
 	')
 	cdemu-daemon? ( app-cdr/cdemu-daemon:0/7 )"
 BDEPEND="${PYTHON_DEPS}

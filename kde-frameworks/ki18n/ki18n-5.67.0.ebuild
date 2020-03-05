@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 QTMIN=5.12.3
-inherit ecm kde.org python-single-r1
+inherit ecm kde.org python-single-r2
 
 DESCRIPTION="Framework based on Gettext for internationalizing user interface text"
 LICENSE="LGPL-2+"
@@ -27,7 +27,7 @@ PATCHES=( "${FILESDIR}/${PN}-5.57.0-python.patch" )
 
 pkg_setup() {
 	ecm_pkg_setup
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_configure() {

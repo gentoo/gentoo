@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake python-any-r1
+inherit cmake python-any-r2
 
 DESCRIPTION="CommonMark parsing and rendering library and program in C"
 HOMEPAGE="https://github.com/commonmark/cmark"
@@ -20,7 +20,7 @@ RESTRICT="!test? ( test )"
 DEPEND="test? ( ${PYTHON_DEPS} )"
 
 pkg_setup() {
-	use test && python-any-r1_pkg_setup
+	use test && python-any-r2_pkg_setup
 }
 
 src_configure() {

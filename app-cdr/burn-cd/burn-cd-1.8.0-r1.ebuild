@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Smart console frontend for virtual/cdrtools and dvd+rw-tools"
 HOMEPAGE="http://burn-cd.sourceforge.net"

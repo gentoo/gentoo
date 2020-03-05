@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Python bindings for the Thunar file manager"
 HOMEPAGE="https://goodies.xfce.org/projects/bindings/thunarx-python"
@@ -19,7 +19,7 @@ RDEPEND="${PYTHON_DEPS}
 	>=x11-libs/gtk+-3.20:3
 	>=dev-libs/glib-2.30:2
 	$(python_gen_cond_dep '
-		>=dev-python/pygobject-3.20:3[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygobject-3.20:3[${PYTHON_USEDEP}]
 	')
 	>=xfce-base/thunar-1.7.0"
 DEPEND="${RDEPEND}

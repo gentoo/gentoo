@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_6 pypy3 )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Container class boilerplate killer"
 HOMEPAGE="https://github.com/ionelmc/python-fields"
@@ -24,7 +24,7 @@ RESTRICT="!test? ( test )"
 python_prepare_all() {
 	sed -i -e "/--benchmark-disable/d" setup.cfg || die
 	rm -rf tests/test_perf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

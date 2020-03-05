@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit python-single-r1 vim-plugin vcs-snapshot
+inherit python-single-r2 vim-plugin vcs-snapshot
 
 # Commit Date: 1 Mar 2018
 COMMIT="4f12628247940d98eedd594961695dc504261058"
@@ -24,7 +24,7 @@ VIM_PLUGIN_MESSAGES="filetype"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/autopep8[${PYTHON_MULTI_USEDEP}]
+		dev-python/autopep8[${PYTHON_USEDEP}]
 	')"
 DEPEND="${RDEPEND}"
 

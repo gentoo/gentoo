@@ -10,7 +10,7 @@ EAPI=7
 # that's on it's way out, so we prefer to stick with python-2.7 for now.
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit python-single-r1
+inherit python-single-r2
 
 MY_P="${P/_p/-}"
 DESCRIPTION="A robust, high-performance CORBA 2 ORB"

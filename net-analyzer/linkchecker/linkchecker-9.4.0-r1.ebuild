@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="sqlite?"
 
-inherit bash-completion-r1 distutils-r1 eutils
+inherit bash-completion-r1 distutils-r2 eutils
 
 DESCRIPTION="Check websites for broken links"
 HOMEPAGE="https://github.com/linkcheck/linkchecker"
@@ -31,7 +31,7 @@ python_prepare_all() {
 		"${FILESDIR}/${PN}-9.3-bash-completion.patch"
 	)
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
@@ -47,7 +47,7 @@ python_install_all() {
 		doc/python3.txt
 		doc/upgrading.txt
 	)
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	python_foreach_impl delete_gui
 	rm -f "${ED}"/usr/share/applications/linkchecker*.desktop || die

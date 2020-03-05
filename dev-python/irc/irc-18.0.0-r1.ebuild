@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="IRC client framework written in Python"
 HOMEPAGE="https://github.com/jaraco/irc"
@@ -54,5 +54,5 @@ python_install_all() {
 		docompress -x "/usr/share/doc/${PF}/scripts"
 		dodoc -r scripts
 	fi
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

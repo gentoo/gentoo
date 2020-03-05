@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Type Hints for Python"
 HOMEPAGE="https://docs.python.org/3/library/typing.html https://pypi.org/project/typing/"

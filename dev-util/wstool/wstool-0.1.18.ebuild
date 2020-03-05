@@ -10,7 +10,7 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 	EGIT_REPO_URI="https://github.com/vcstools/wstool"
 fi
 
-inherit ${SCM} distutils-r1
+inherit ${SCM} distutils-r2
 
 DESCRIPTION="Commands to manage several local SCM repositories for ROS"
 HOMEPAGE="http://wiki.ros.org/wstool"

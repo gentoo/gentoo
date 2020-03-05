@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Module for determining appropriate platform-specific dirs"
 HOMEPAGE="https://github.com/ActiveState/appdirs"

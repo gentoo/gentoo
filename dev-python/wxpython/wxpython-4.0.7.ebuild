@@ -5,7 +5,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
 WX_GTK_VER="3.0-gtk3"
 
-inherit distutils-r1 multiprocessing virtualx wxwidgets
+inherit distutils-r2 multiprocessing virtualx wxwidgets
 
 MY_PN="wxPython"
 MY_PV="${PV}.post2"
@@ -63,7 +63,7 @@ python_prepare_all() {
 		unittests/test_lib_agw_thumbnailctrl.py \
 		unittests/test_sound.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 src_configure() {
@@ -80,7 +80,7 @@ python_compile() {
 }
 
 python_install() {
-	distutils-r1_python_install --skip-build
+	distutils-r2_python_install --skip-build
 }
 
 python_test() {

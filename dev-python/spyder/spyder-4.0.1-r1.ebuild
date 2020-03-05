@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit eutils xdg distutils-r1 virtualx
+inherit eutils xdg distutils-r2 virtualx
 
 # Commit of documentation to fetch
 DOCS_PV="7c0b590"
@@ -112,7 +112,7 @@ python_prepare_all() {
 		-e 's:test_delete_line_shortcut:_&:' \
 			spyder/plugins/editor/widgets/tests/test_shortcuts.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

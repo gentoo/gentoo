@@ -7,7 +7,7 @@ EAPI=6
 GV="1.8.0"
 PYTHON_COMPAT=( python3_6 )
 
-inherit cmake-utils flag-o-matic gnome2-utils python-single-r1 xdg-utils
+inherit cmake-utils flag-o-matic gnome2-utils python-single-r2 xdg-utils
 
 DESCRIPTION="A personal finance manager"
 HOMEPAGE="http://www.gnucash.org/"
@@ -84,7 +84,7 @@ PDEPEND="doc? (
 PATCHES=( "${FILESDIR}"/${PN}-3.2-no-gui.patch )
 
 pkg_setup() {
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 	xdg_environment_reset
 }
 

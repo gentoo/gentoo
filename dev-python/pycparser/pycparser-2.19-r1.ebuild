@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="C parser and AST generator written in Python"
 HOMEPAGE="https://github.com/eliben/pycparser"
@@ -29,11 +29,11 @@ python_prepare_all() {
 	# kill sys.path manipulations to force the tests to use built files
 	sed -i -e '/sys\.path/d' tests/*.py || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 
 	# note: tables built by py3.5+ are incompatible with older versions
 	# because of 100 group limit of 're' module -- just generate them
@@ -49,7 +49,7 @@ python_test() {
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	# setup.py generates {c_ast,lextab,yacctab}.py with bytecode disabled.
 	python_optimize

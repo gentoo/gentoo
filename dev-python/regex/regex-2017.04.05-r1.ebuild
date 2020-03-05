@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 DESCRIPTION="Alternative regular expression module to replace re"
 HOMEPAGE="https://bitbucket.org/mrabarnett/mrab-regex"
@@ -23,7 +23,7 @@ python_compile() {
 		local CFLAGS=${CFLAGS}
 		append-cflags -fno-strict-aliasing
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -41,5 +41,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/Features.html )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

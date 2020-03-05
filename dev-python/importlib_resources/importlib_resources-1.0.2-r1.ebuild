@@ -6,7 +6,7 @@ EAPI=7
 # This is a backport of Python 3.7's importlib.resources
 PYTHON_COMPAT=( pypy3 python{2_7,3_6} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Read resources from Python packages"
 HOMEPAGE="https://importlib-resources.readthedocs.io/en/latest/"
@@ -33,7 +33,7 @@ PATCHES=( "${FILESDIR}/${P}-skip-wheel.patch" )
 
 python_prepare_all() {
 	sed -i "/'sphinx.ext.intersphinx'/d" ${PN}/docs/conf.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {

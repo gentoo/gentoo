@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_{6..8} )
 DISTUTILS_USE_SETUPTOOLS=rdepend
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Minimal AMF encoder and decoder for Python"
 HOMEPAGE="https://pypi.python.org/pypi/Mini-AMF"

@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils versionator python-single-r1 readme.gentoo
+inherit eutils versionator python-single-r2 readme.gentoo
 
 MY_PV="$(get_version_component_range 1-2)"
 MY_PL="$(get_version_component_range 3)"
@@ -26,7 +26,7 @@ RDEPEND="
 	${PYTHON_DEPS}
 	app-admin/sudo
 	$(python_gen_cond_dep '
-		>=dev-python/pygtk-2.16.0-r1[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pygtk-2.16.0-r1[${PYTHON_USEDEP}]
 	')
 	>=net-wireless/wireless-tools-29
 	|| ( net-misc/dhcpcd net-misc/dhcp net-misc/pump )

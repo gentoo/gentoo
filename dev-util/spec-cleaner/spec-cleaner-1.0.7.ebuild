@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 EGIT_REPO_URI="https://github.com/openSUSE/spec-cleaner.git"
-inherit distutils-r1
+inherit distutils-r2
 [[ ${PV} == 9999 ]] && inherit git-r3
 
 DESCRIPTION="SUSE spec file cleaner and formatter"
@@ -41,7 +41,7 @@ src_prepare() {
 	sed -i \
 		-e 's:lib/obs:libexec/obs:g' \
 		setup.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

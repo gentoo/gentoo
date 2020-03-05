@@ -3,7 +3,7 @@
 
 EAPI=7
 PYTHON_COMPAT=( python3_{6,7,8} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python library to work with pdf files based on qpdf"
 HOMEPAGE="https://pypi.org/project/pikepdf/ https://github.com/pikepdf/pikepdf"
@@ -49,5 +49,5 @@ python_test() {
 #}
 #python_install_all() {
 #	use doc && local HTML_DOCS=( docs/_build/html/. )
-#	distutils-r1_python_install_all
+#	distutils-r2_python_install_all
 #}

@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python3_6 pypy3  )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Distribution utilities"
 HOMEPAGE="https://pypi.org/project/distlib/ https://bitbucket.org/vinay.sajip/distlib https://github.com/vsajip/distlib"

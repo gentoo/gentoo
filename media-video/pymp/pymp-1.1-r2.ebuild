@@ -3,7 +3,7 @@
 
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
-inherit eutils python-single-r1
+inherit eutils python-single-r2
 
 DESCRIPTION="a lean, flexible frontend to mplayer written in python"
 HOMEPAGE="http://jdolan.dyndns.org/trac/wiki/Pymp"
@@ -16,7 +16,7 @@ IUSE=""
 
 RDEPEND="media-video/mplayer
 	$(python_gen_cond_dep '
-		dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygtk[${PYTHON_USEDEP}]
 	')
 	${PYTHON_DEPS}"
 DEPEND="sys-apps/sed"

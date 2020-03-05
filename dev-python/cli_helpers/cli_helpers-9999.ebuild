@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
 EGIT_REPO_URI="https://github.com/dbcli/${PN}.git"
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="Python helpers for common CLI tasks"
 HOMEPAGE="https://cli-helpers.rtfd.io/"

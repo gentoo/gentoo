@@ -5,7 +5,7 @@ EAPI=5
 WANT_AUTOCONF="2.1"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-inherit autotools eutils toolchain-funcs multilib python-any-r1 versionator pax-utils
+inherit autotools eutils toolchain-funcs multilib python-any-r2 versionator pax-utils
 
 MY_PN="js"
 TARBALL_PV="$(replace_all_version_separators '' $(get_version_component_range 1-3))"

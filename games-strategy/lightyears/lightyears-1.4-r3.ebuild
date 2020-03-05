@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit desktop python-single-r1 xdg-utils
+inherit desktop python-single-r2 xdg-utils
 
 DESCRIPTION="A single-player game with a science-fiction theme"
 HOMEPAGE="https://www.jwhitham.org/20kly/"
@@ -17,7 +17,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	$(python_gen_cond_dep '
-		dev-python/pygame[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygame[${PYTHON_USEDEP}]
 	')
 "
 DEPEND="${RDEPEND}"

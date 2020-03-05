@@ -8,7 +8,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 MY_PN=BitTornado
 MY_P=${MY_PN}-${PV}
@@ -37,11 +37,11 @@ python_prepare_all() {
 	# Needs wxpython-2.6 only, bug #201247
 	eapply "${FILESDIR}"/${P}-wxversion.patch
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install() {
-	distutils-r1_python_install
+	distutils-r2_python_install
 
 	# get rid of any reference to the not-installed gui version
 	rm "${ED%/}"/usr/bin/*gui.py || die
@@ -49,7 +49,7 @@ python_install() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	newconfd "${FILESDIR}"/bttrack.conf bttrack
 	newinitd "${FILESDIR}"/bttrack.rc bttrack

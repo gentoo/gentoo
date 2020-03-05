@@ -5,7 +5,7 @@ EAPI="7"
 
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Transform DocBook using TeX macros"
 HOMEPAGE="http://dblatex.sourceforge.net/"
@@ -49,11 +49,11 @@ python_prepare_all() {
 	use inkscape || eapply "${FILESDIR}/${P}-no-inkscape-dependency.patch"
 	# We need to fix version information in the docs and some metadata
 	grep -l -I -R "0.3.11py3" | xargs -n1 sed -i -e "s/${PV}py3/${PV}/" || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 	# Move package documentation to a folder name containing version number
 	mv "${D}"/usr/share/doc/${PN} "${D}"/usr/share/doc/${PF} || die
 }

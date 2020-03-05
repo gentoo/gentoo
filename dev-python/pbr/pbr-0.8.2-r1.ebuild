@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Injects some useful and sensible default behaviors into setuptools"
 HOMEPAGE="https://github.com/openstack-dev/pbr"
@@ -54,7 +54,7 @@ python_prepare_all() {
 		-i pbr/tests/test_hooks.py || die
 	einfo "rogue tests disabled"
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_test() {

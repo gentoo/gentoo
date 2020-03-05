@@ -6,7 +6,7 @@ EAPI=5
 PYTHON_COMPAT=( python2_7 )
 DISTUTILS_SINGLE_IMPL=1
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="PSSH provides parallel versions of OpenSSH and related tools"
 HOMEPAGE="https://code.google.com/p/parallel-ssh/"
@@ -25,10 +25,10 @@ DEPEND="${RDEPEND}"
 RESTRICT="test"
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 python_prepare_all() {
 	sed -i -e "s|man/man1'|share/&|g" setup.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }

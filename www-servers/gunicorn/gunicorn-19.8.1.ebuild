@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A WSGI HTTP Server for UNIX"
 HOMEPAGE="https://gunicorn.org https://pypi.org/project/gunicorn https://github.com/benoitc/gunicorn"
@@ -33,7 +33,7 @@ DOCS="README.rst"
 python_prepare_all() {
 	sed -ie "s/..\/bin/\/usr\/bin\//" docs/Makefile || die
 
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile_all() {
@@ -47,5 +47,5 @@ python_test() {
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
 
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

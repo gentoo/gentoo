@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{6,7} )
 
 DISTUTILS_USE_SETUPTOOLS=no
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python bindings for x11-libs/xapps"
 HOMEPAGE="https://github.com/linuxmint/python-xapp"

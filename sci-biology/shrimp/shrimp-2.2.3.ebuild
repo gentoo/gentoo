@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit flag-o-matic python-single-r1 toolchain-funcs
+inherit flag-o-matic python-single-r2 toolchain-funcs
 
 MY_PV=${PV//./_}
 
@@ -36,7 +36,7 @@ pkg_setup() {
 		elog "Please set CC to an OPENMP capable compiler (e.g. gcc[openmp] or icc"
 		die "C compiler lacks OPENMP support"
 	fi
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 }
 
 src_prepare() {

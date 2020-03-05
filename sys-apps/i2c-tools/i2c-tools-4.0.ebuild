@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 DISTUTILS_OPTIONAL="1"
 
-inherit distutils-r1 flag-o-matic toolchain-funcs
+inherit distutils-r2 flag-o-matic toolchain-funcs
 
 DESCRIPTION="I2C tools for bus probing, chip dumping, EEPROM decoding, and more"
 HOMEPAGE="https://www.kernel.org/pub/software/utils/i2c-tools"
@@ -24,11 +24,11 @@ DEPEND="${RDEPEND}"
 
 src_prepare() {
 	default
-	use python && distutils-r1_src_prepare
+	use python && distutils-r2_src_prepare
 }
 
 src_configure() {
-	use python && distutils-r1_src_configure
+	use python && distutils-r2_src_configure
 }
 
 src_compile() {
@@ -38,7 +38,7 @@ src_compile() {
 	if use python ; then
 		cd py-smbus || die
 		append-cppflags -I../include
-		distutils-r1_src_compile
+		distutils-r2_src_compile
 	fi
 }
 
@@ -57,6 +57,6 @@ src_install() {
 		cd py-smbus || die
 		docinto py-smbus
 		dodoc README*
-		distutils-r1_src_install
+		distutils-r2_src_install
 	fi
 }

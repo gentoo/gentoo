@@ -7,7 +7,7 @@ PYTHON_COMPAT=( pypy3 python3_{6,7,8} )
 # [options.entry_points] is present in setup.cfg but it is empty
 DISTUTILS_USE_SETUPTOOLS=manual
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Correctly inflect words and numbers"
 HOMEPAGE="https://github.com/jazzband/inflect"

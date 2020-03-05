@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Reliable machine-readable Linux distribution information for Python"
 HOMEPAGE="https://distro.readthedocs.io/en/latest/"

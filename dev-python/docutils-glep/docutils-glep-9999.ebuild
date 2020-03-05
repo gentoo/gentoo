@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_{6,7} )
 EGIT_REPO_URI="https://github.com/mgorny/docutils-glep.git"
 
-inherit distutils-r1 git-r3
+inherit distutils-r2 git-r3
 
 DESCRIPTION="Gentoo GLEP support for docutils"
 HOMEPAGE="https://github.com/mgorny/docutils-glep/"

@@ -4,7 +4,7 @@
 EAPI=6
 
 PYTHON_COMPAT=( python{3_6,3_7,3_8} )
-inherit python-single-r1
+inherit python-single-r2
 
 DESCRIPTION="Manage repos.conf via eselect"
 HOMEPAGE="https://github.com/mgorny/eselect-repository"
@@ -19,7 +19,7 @@ REQUIRED_USE=${PYTHON_REQUIRED_USE}
 RDEPEND="${PYTHON_DEPS}
 	app-admin/eselect
 	$(python_gen_cond_dep '
-		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		dev-python/lxml[${PYTHON_USEDEP}]
 	')
 	net-misc/wget"
 

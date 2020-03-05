@@ -5,7 +5,7 @@ EAPI=6
 
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1 systemd
+inherit eutils python-single-r2 systemd
 
 MY_P="${P/pyicq-t/pyicqt}"
 
@@ -25,14 +25,14 @@ RDEPEND="${DEPEND}
 	$(python_gen_cond_dep '
 		|| (
 			(
-				dev-python/twisted-core[${PYTHON_MULTI_USEDEP}]
-				dev-python/twisted-words[${PYTHON_MULTI_USEDEP}]
-				dev-python/twisted-web[${PYTHON_MULTI_USEDEP}]
+				dev-python/twisted-core[${PYTHON_USEDEP}]
+				dev-python/twisted-words[${PYTHON_USEDEP}]
+				dev-python/twisted-web[${PYTHON_USEDEP}]
 			)
-			dev-python/twisted[${PYTHON_MULTI_USEDEP}]
+			dev-python/twisted[${PYTHON_USEDEP}]
 		)
-		webinterface? ( >=dev-python/nevow-0.4.1[${PYTHON_MULTI_USEDEP}] )
-		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		webinterface? ( >=dev-python/nevow-0.4.1[${PYTHON_USEDEP}] )
+		dev-python/pillow[${PYTHON_USEDEP}]
 	')"
 
 S="${WORKDIR}/${MY_P}"

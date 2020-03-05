@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python{3_6,3_7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Implementation of the password-based key derivation function, PBKDF2, specified in RSA PKCS#5 v2.0"
 HOMEPAGE="https://www.dlitz.net/software/python-pbkdf2/"

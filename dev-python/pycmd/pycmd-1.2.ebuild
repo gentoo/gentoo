@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python3_6 pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="pycmd: tools for managing/searching Python related files"
 HOMEPAGE="https://pypi.org/project/pycmd/"

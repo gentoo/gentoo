@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="A pluggable API specification generator."
 HOMEPAGE="https://github.com/marshmallow-code/apispec/"
@@ -29,7 +29,7 @@ DEPEND="${RDEPEND}
 
 src_prepare() {
 	rm tests/test_swagger.py || die
-	distutils-r1_src_prepare
+	distutils-r2_src_prepare
 }
 
 python_test() {

@@ -4,7 +4,7 @@
 EAPI=5
 PYTHON_COMPAT=( python2_7 python3_{6,7} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="utility lib to generate python package version infos from mercurial tags"
 HOMEPAGE="https://pypi.org/project/hgdistver/"

@@ -9,7 +9,7 @@ FORTRAN_NEEDED="fortran"
 PYTHON_COMPAT=( python2_7 python3_6 )
 
 inherit cmake-utils eapi7-ver elisp-common eutils fortran-2 \
-	prefix python-single-r1 toolchain-funcs
+	prefix python-single-r2 toolchain-funcs
 
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
@@ -92,7 +92,7 @@ CDEPEND="
 	tbb? ( dev-cpp/tbb )
 	tmva? (
 		$(python_gen_cond_dep '
-			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_USEDEP}]
 		')
 	)
 	vc? ( dev-libs/vc )
@@ -117,7 +117,7 @@ PATCHES=(
 
 pkg_setup() {
 	use fortran && fortran-2_pkg_setup
-	use python && python-single-r1_pkg_setup
+	use python && python-single-r2_pkg_setup
 
 	echo
 	elog "There are extra options on packages not yet in Gentoo:"

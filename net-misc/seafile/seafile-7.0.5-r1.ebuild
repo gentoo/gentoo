@@ -7,7 +7,7 @@ PYTHON_COMPAT=(python{2_7,3_6})
 
 WANT_AUTOMAKE=1.16
 
-inherit autotools python-single-r1 vala
+inherit autotools python-single-r2 vala
 
 DESCRIPTION="File syncing and sharing software with file encryption and group sharing"
 HOMEPAGE="http://www.seafile.com/ https://github.com/haiwen/seafile/"

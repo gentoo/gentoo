@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python2_7 python3_{6,7} )
 PYTHON_REQ_USE="sqlite,ssl"
 
-inherit bash-completion-r1 desktop toolchain-funcs python-single-r1 xdg-utils
+inherit bash-completion-r1 desktop toolchain-funcs python-single-r2 xdg-utils
 
 DESCRIPTION="Ebook management application"
 HOMEPAGE="https://calibre-ebook.com/"
@@ -49,28 +49,28 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/dbus-glib-0.106
 	>=sys-apps/dbus-1.10.8
 	$(python_gen_cond_dep '
-		>=dev-python/apsw-3.25.2_p1[${PYTHON_MULTI_USEDEP}]
-		dev-python/beautifulsoup:4[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/chardet-3.0.3[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/cssselect-0.7.1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/css-parser-1.0.4[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/dbus-python-1.2.4[${PYTHON_MULTI_USEDEP}]
-		dev-python/dnspython[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/feedparser-5.2.1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/html2text-2019.8.11[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/html5-parser-0.4.9[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/lxml-3.8.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/markdown-3.0.1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/mechanize-0.3.5[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/msgpack-0.5.6[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/netifaces-0.10.5[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pillow-3.2.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/psutil-4.3.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/pygments-2.3.1[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/python-dateutil-2.5.3[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/PyQt5-5.12[gui,svg,widgets,network,printsupport,${PYTHON_MULTI_USEDEP}]
-		>=dev-python/PyQtWebEngine-5.12[${PYTHON_MULTI_USEDEP}]
-		dev-python/regex[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/apsw-3.25.2_p1[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
+		>=dev-python/chardet-3.0.3[${PYTHON_USEDEP}]
+		>=dev-python/cssselect-0.7.1[${PYTHON_USEDEP}]
+		>=dev-python/css-parser-1.0.4[${PYTHON_USEDEP}]
+		>=dev-python/dbus-python-1.2.4[${PYTHON_USEDEP}]
+		dev-python/dnspython[${PYTHON_USEDEP}]
+		>=dev-python/feedparser-5.2.1[${PYTHON_USEDEP}]
+		>=dev-python/html2text-2019.8.11[${PYTHON_USEDEP}]
+		>=dev-python/html5-parser-0.4.9[${PYTHON_USEDEP}]
+		>=dev-python/lxml-3.8.0[${PYTHON_USEDEP}]
+		>=dev-python/markdown-3.0.1[${PYTHON_USEDEP}]
+		>=dev-python/mechanize-0.3.5[${PYTHON_USEDEP}]
+		>=dev-python/msgpack-0.5.6[${PYTHON_USEDEP}]
+		>=dev-python/netifaces-0.10.5[${PYTHON_USEDEP}]
+		>=dev-python/pillow-3.2.0[${PYTHON_USEDEP}]
+		>=dev-python/psutil-4.3.0[${PYTHON_USEDEP}]
+		>=dev-python/pygments-2.3.1[${PYTHON_USEDEP}]
+		>=dev-python/python-dateutil-2.5.3[${PYTHON_USEDEP}]
+		>=dev-python/PyQt5-5.12[gui,svg,widgets,network,printsupport,${PYTHON_USEDEP}]
+		>=dev-python/PyQtWebEngine-5.12[${PYTHON_USEDEP}]
+		dev-python/regex[${PYTHON_USEDEP}]
 	')
 	dev-qt/qtcore:5=
 	dev-qt/qtdbus:5=
@@ -102,8 +102,8 @@ RDEPEND="${COMMON_DEPEND}
 	udisks? ( || ( sys-fs/udisks:2 sys-fs/udisks:0 ) )"
 DEPEND="${COMMON_DEPEND}
 	$(python_gen_cond_dep '
-		>=dev-python/setuptools-23.1.0[${PYTHON_MULTI_USEDEP}]
-		dev-python/sip[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/setuptools-23.1.0[${PYTHON_USEDEP}]
+		dev-python/sip[${PYTHON_USEDEP}]
 	')
 	>=virtual/podofo-build-0.9.6_pre20171027
 	virtual/pkgconfig"

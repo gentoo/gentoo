@@ -5,7 +5,7 @@ EAPI=5
 
 PYTHON_COMPAT=( python2_7 python3_{6,7,8} pypy3 )
 
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="The new features in unittest backported to Python 2.4+"
 HOMEPAGE="https://pypi.org/project/unittest2/ https://github.com/testing-cabal/unittest-ext"

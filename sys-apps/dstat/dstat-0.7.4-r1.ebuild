@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python{2_7,3_{6,7}} )
 
-inherit python-r1
+inherit python-multi-r2
 
 DESCRIPTION="Versatile replacement for vmstat, iostat and ifstat"
 HOMEPAGE="http://dag.wieers.com/home-made/dstat/"

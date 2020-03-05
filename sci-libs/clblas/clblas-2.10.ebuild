@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python3_6 )
 FORTRAN_NEEDED=test
 
-inherit cmake-utils python-single-r1 toolchain-funcs fortran-2
+inherit cmake-utils python-single-r2 toolchain-funcs fortran-2
 
 MYPN="clBLAS"
 

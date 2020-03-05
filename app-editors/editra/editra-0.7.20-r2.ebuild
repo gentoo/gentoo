@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils distutils-r1 fdo-mime
+inherit eutils distutils-r2 fdo-mime
 
 MY_PN=${PN/e/E}
 
@@ -30,15 +30,15 @@ S="${WORKDIR}"/${MY_PN}-${PV}
 
 python_compile() {
 	# https://code.google.com/p/editra/issues/detail?id=481
-	distutils-r1_python_compile --no-clean
+	distutils-r2_python_compile --no-clean
 }
 
 python_install() {
-	distutils-r1_python_install --no-clean
+	distutils-r2_python_install --no-clean
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	doicon "${S}"/pixmaps/editra.png
 	make_desktop_entry editra Editra editra "Utility;TextEditor"

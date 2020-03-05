@@ -8,7 +8,7 @@ ECM_TEST="true"
 PYTHON_COMPAT=( python3_{6,7} )
 KFMIN=5.63.0
 QTMIN=5.12.3
-inherit python-single-r1 ecm kde.org
+inherit python-single-r2 ecm kde.org
 
 DESCRIPTION="KDE Interactive Geometry tool"
 HOMEPAGE="https://kde.org/applications/education/org.kde.kig
@@ -42,7 +42,7 @@ RDEPEND="${PYTHON_DEPS}
 	geogebra? ( >=dev-qt/qtxmlpatterns-${QTMIN}:5 )
 	scripting? (
 		$(python_gen_cond_dep '
-			>=dev-libs/boost-1.48:=[python,${PYTHON_MULTI_USEDEP}]
+			>=dev-libs/boost-1.48:=[python,${PYTHON_USEDEP}]
 		')
 	)
 "
@@ -57,7 +57,7 @@ PATCHES=(
 )
 
 pkg_setup() {
-	python-single-r1_pkg_setup
+	python-single-r2_pkg_setup
 	ecm_pkg_setup
 }
 

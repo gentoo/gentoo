@@ -5,7 +5,7 @@ EAPI="7"
 PYTHON_COMPAT=(python{2_7,3_6,3_7})
 DISTUTILS_USE_SETUPTOOLS="manual"
 
-inherit distutils-r1
+inherit distutils-r2
 
 if [[ "${PV}" == "9999" ]]; then
 	inherit git-r3
@@ -49,7 +49,7 @@ python_configure_all() {
 
 python_compile() {
 	python_is_python3 || local -x CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_test() {
@@ -57,7 +57,7 @@ python_test() {
 }
 
 python_install_all() {
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 
 	find "${D}" -name "*.pth" -type f -delete || die
 }

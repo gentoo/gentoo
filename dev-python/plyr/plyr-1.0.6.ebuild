@@ -4,7 +4,7 @@
 EAPI="5"
 PYTHON_COMPAT=( python3_6 )
 
-inherit distutils-r1 flag-o-matic
+inherit distutils-r2 flag-o-matic
 
 MY_PN="python-glyr"
 MY_P="${MY_PN}-${PV}"
@@ -30,7 +30,7 @@ S="${WORKDIR}/${MY_P}"
 python_prepare_all() {
 	# Disable test requiring internet connection
 	sed -e 's:test_download:_&:' -i tests/test_misc.py || die
-	distutils-r1_python_prepare_all
+	distutils-r2_python_prepare_all
 }
 
 python_compile() {
@@ -38,7 +38,7 @@ python_compile() {
 		local CFLAGS=${CFLAGS}
 		append-cflags -fno-strict-aliasing
 	fi
-	distutils-r1_python_compile
+	distutils-r2_python_compile
 }
 
 python_compile_all() {
@@ -53,5 +53,5 @@ python_test() {
 
 python_install_all() {
 	use doc && local HTML_DOCS=( docs/build/html/. )
-	distutils-r1_python_install_all
+	distutils-r2_python_install_all
 }

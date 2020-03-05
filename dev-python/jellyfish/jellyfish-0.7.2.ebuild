@@ -4,7 +4,7 @@
 EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7} )
-inherit distutils-r1
+inherit distutils-r2
 
 DESCRIPTION="Python module for doing approximate and phonetic matching of strings"
 HOMEPAGE="https://github.com/jamesturk/jellyfish https://pypi.org/project/jellyfish/"
