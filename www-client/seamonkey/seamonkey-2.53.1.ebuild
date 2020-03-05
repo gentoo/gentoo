@@ -60,8 +60,8 @@ DEPEND="
 	dev-libs/atk
 	>=dev-libs/glib-2.26:2
 	>=dev-libs/libffi-3.0.10:=
-	>=dev-libs/nspr-4.13.1
-	>=dev-libs/nss-3.28.3
+	>=dev-libs/nspr-4.23
+	>=dev-libs/nss-3.47.1
 	media-libs/fontconfig
 	>=media-libs/freetype-2.4.10
 	>=media-libs/libpng-1.6.31:0=[apng]
@@ -394,7 +394,7 @@ src_configure() {
 	# Finalize and report settings
 	mozconfig_final
 
-	# Required until seamonkey-2.53 is available
+	# Required until mozcoreconf-v?.eclass-es are finally fixed...
 	sed \
 		-e '/--enable-application/s@comm/suite@suite@' \
 		-i .mozconfig || die
