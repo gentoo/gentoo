@@ -1,21 +1,24 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-EGIT_COMMIT="4dc8bcfec41e10ca760c8e2089474c2843dfd066"
+EGIT_COMMIT="ff9d97a08d7a4b58267ac03719786e4e7258cecf"
 DESCRIPTION="An OCI container runtime monitor"
 HOMEPAGE="https://github.com/containers/conmon"
-SRC_URI="https://github.com/containers/conmon/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/containers/conmon/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="systemd"
+RESTRICT="test"
 
 RDEPEND="dev-libs/glib:=
 	systemd? ( sys-apps/systemd:= )"
 DEPEND="${RDEPEND}"
+
+S="${WORKDIR}/${PN}-${EGIT_COMMIT}"
 
 src_prepare() {
 	default
