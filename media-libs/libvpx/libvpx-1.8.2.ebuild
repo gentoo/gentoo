@@ -28,8 +28,7 @@ REQUIRED_USE="test? ( threads )"
 # Disable test phase when USE="-test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=""
-DEPEND="abi_x86_32? ( dev-lang/yasm )
+BDEPEND="abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )
 	x86-fbsd? ( dev-lang/yasm )
