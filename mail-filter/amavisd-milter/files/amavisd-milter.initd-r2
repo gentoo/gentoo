@@ -14,5 +14,5 @@ depend() {
 
 start_pre() {
 	# needed to avoid potential mi_stop errors
-	[ "${RC_CMD}" = "restart"] && sleep 4
+	[ "${RC_CMD}" = "restart" ] && sleep 4
 }
