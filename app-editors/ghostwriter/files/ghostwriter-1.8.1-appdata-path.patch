@@ -1,0 +1,27 @@
+From 5e63fa9cb6d4020413db071ed68aa85f3e79fd9e Mon Sep 17 00:00:00 2001
+From: David Roman <davidroman96@gmail.com>
+Date: Mon, 9 Mar 2020 21:42:58 +0100
+Subject: [PATCH] update appdata path
+
+The previous location is deprecated
+see https://www.freedesktop.org/software/appstream/docs/chap-Metadata.html
+---
+ ghostwriter.pro | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ghostwriter.pro b/ghostwriter.pro
+index d399fb5..7f5f22c 100644
+--- a/ghostwriter.pro
++++ b/ghostwriter.pro
+@@ -264,7 +264,7 @@ macx {
+     desktop.path = $$DATADIR/applications/
+ 
+     appdata.files = resources/linux/ghostwriter.appdata.xml
+-    appdata.path = $$DATADIR/appdata/
++    appdata.path = $$DATADIR/metainfo/
+ 
+     man.files = resources/linux/ghostwriter.1
+     man.path = $$PREFIX/share/man/man1
+-- 
+2.25.1
+
