@@ -1,0 +1,12 @@
+DEFINED_PHASES=-
+DEPEND=media-radio/fldigi x11-libs/fltk:= x11-libs/libX11:= virtual/pkgconfig
+DESCRIPTION=Fldigi helper for creating radiograms
+EAPI=7
+HOMEPAGE=http://www.w1hkj.com
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3
+RDEPEND=media-radio/fldigi x11-libs/fltk:= x11-libs/libX11:=
+SLOT=0
+SRC_URI=mirror://sourceforge/fldigi/flmsg-4.0.14.tar.gz
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5
+_md5_=306854a1784a7ac1607d95a361f09a1d

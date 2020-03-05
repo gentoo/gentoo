@@ -1,0 +1,11 @@
+DEFINED_PHASES=-
+DEPEND=media-radio/fldigi x11-libs/fltk:= x11-libs/libX11:= virtual/pkgconfig
+DESCRIPTION=Fldigi helper for transferring files
+EAPI=7
+HOMEPAGE=http://www.w1hkj.com
+KEYWORDS=~amd64 ~x86
+LICENSE=GPL-3+
+RDEPEND=media-radio/fldigi x11-libs/fltk:= x11-libs/libX11:=
+SLOT=0
+SRC_URI=mirror://sourceforge/fldigi/flamp-2.2.05.tar.gz
+_md5_=ff10595d905e61cfcca4debd52b3c4d2
