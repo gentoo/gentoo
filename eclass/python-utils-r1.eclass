@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-utils-r1.eclass
@@ -16,8 +16,8 @@
 # This eclass does not set any metadata variables nor export any phase
 # functions. It can be inherited safely.
 #
-# For more information, please see the wiki:
-# https://wiki.gentoo.org/wiki/Project:Python/python-utils-r1
+# For more information, please see the Python Guide:
+# https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
 	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
@@ -198,7 +198,7 @@ _python_impl_matches() {
 # This variable is set automatically in the following contexts:
 #
 # python-r1: Set in functions called by python_foreach_impl() or after
-# calling python_export_best().
+# calling python_setup().
 #
 # python-single-r1: Set after calling python-single-r1_pkg_setup().
 #
@@ -217,7 +217,7 @@ _python_impl_matches() {
 # This variable is set automatically in the following contexts:
 #
 # python-r1: Set in functions called by python_foreach_impl() or after
-# calling python_export_best().
+# calling python_setup().
 #
 # python-single-r1: Set after calling python-single-r1_pkg_setup().
 #
@@ -1085,23 +1085,9 @@ python_is_installed() {
 			;;
 	esac
 
-	case "${impl}" in
-		pypy|pypy3)
-			local append=
-			if [[ ${PYTHON_REQ_USE} ]]; then
-				append=[${PYTHON_REQ_USE}]
-			fi
-
-			# be happy with just the interpeter, no need for the virtual
-			has_version "${hasv_args[@]}" "dev-python/${impl}${append}" \
-				|| has_version "${hasv_args[@]}" "dev-python/${impl}-bin${append}"
-			;;
-		*)
-			local PYTHON_PKG_DEP
-			python_export "${impl}" PYTHON_PKG_DEP
-			has_version "${hasv_args[@]}" "${PYTHON_PKG_DEP}"
-			;;
-	esac
+	local PYTHON_PKG_DEP
+	python_export "${impl}" PYTHON_PKG_DEP
+	has_version "${hasv_args[@]}" "${PYTHON_PKG_DEP}"
 }
 
 # @FUNCTION: python_fix_shebang
@@ -1261,6 +1247,7 @@ python_fix_shebang() {
 
 # @FUNCTION: _python_check_locale_sanity
 # @USAGE: <locale>
+# @INTERNAL
 # @RETURN: 0 if sane, 1 otherwise
 # @DESCRIPTION:
 # Check whether the specified locale sanely maps between lowercase
