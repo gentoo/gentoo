@@ -12173,7 +12173,7 @@ lxqt-base/lxqt-runner 0.14.1: LXQt quick launcher
 lxqt-base/lxqt-session 0.14.1: LXQT session manager
 lxqt-base/lxqt-sudo 0.14.1: LXQt GUI frontend for sudo
 mail-client/aerc 0.3.0-r1 9999: Email client for your terminal
-mail-client/alot 0.8.1 9999: Experimental terminal UI for net-mail/notmuch written in Python
+mail-client/alot 0.8.1 0.9 9999: Experimental terminal UI for net-mail/notmuch written in Python
 mail-client/alpine 2.21.1-r1 2.21.1-r2 2.22: An easy to use text-based based mail and news client
 mail-client/balsa 2.5.6-r1: Email client for GNOME
 mail-client/bower 0.10 0.11: Curses terminal client for the Notmuch email system
@@ -12580,7 +12580,7 @@ media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.9 2.5.12 2.5.14: Converts images from gif format to png format
 media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
-media-gfx/gimp 2.8.22-r2 2.9.8-r1 2.10.8-r2 2.10.14-r1 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.8.22-r2 2.9.8-r1 2.10.8-r2 2.10.14-r1 2.10.18 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.8.1 2.8.2 2.8.3: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.0.1_p1-r1: A program for drawing beautiful mathematically-based images known as fractals
@@ -12812,7 +12812,7 @@ media-libs/game-music-emu 0.6.2: Video game music file emulators
 media-libs/ganv 1.4.2-r1: A GTK+ widget for interactive graph-like environments
 media-libs/gavl 1.4.0-r1: library for handling uncompressed audio and video data
 media-libs/gd 2.2.5-r2: Graphics library for fast image creation
-media-libs/gegl 0.2.0-r6 0.3.34 0.4.16 0.4.18 0.4.20 9999: A graph based image processing framework
+media-libs/gegl 0.2.0-r6 0.3.34 0.4.16 0.4.18 0.4.20 0.4.22 9999: A graph based image processing framework
 media-libs/gexiv2 0.10.10-r1 0.12.0 9999: GObject-based wrapper around the Exiv2 library
 media-libs/giblib 1.2.4-r1: a graphics library built on top of imlib2
 media-libs/giflib 5.1.4 5.2.1-r1: Library to handle, display and manipulate GIF images
@@ -13156,7 +13156,7 @@ media-plugins/frei0r-plugins 1.6.1: A minimalistic plugin API for video effects
 media-plugins/g2reverb 0.7.1: Stereo reverb LADSPA plugin.
 media-plugins/gimp-lensfun 0.2.4-r1: Gimp plugin to correct lens distortions
 media-plugins/gimp-lqr 0.7.2: Content-aware resizing for the GIMP
-media-plugins/gimp-resynthesizer 2.0.3-r2: Suite of GIMP plugins for texture synthesis
+media-plugins/gimp-resynthesizer 2.0.3-r3: Suite of GIMP plugins for texture synthesis
 media-plugins/gkrellmpc 0.1_beta10: A gkrellm plugin to control the MPD (Music Player Daemon)
 media-plugins/gmpc-alarm 11.8.16: This plugin can start/stop/pause your music at a preset time
 media-plugins/gmpc-albumview 11.8.16: This plugin shows your music collection in albums
@@ -15163,7 +15163,7 @@ net-misc/x2goserver 4.1.0.2 4.1.0.3 4.1.0.3-r1: The X2Go server
 net-misc/yandex-disk 0.1.5.978_p1: CLI to access Yandex Disk file storage service
 net-misc/you-get 0.4.536 0.4.1270 0.4.1355: utility to download media contents from the web
 net-misc/youtube-dl 2020.01.24 2020.02.16 99999999: Download videos from YouTube.com (and more sites...)
-net-misc/youtube-viewer 3.5.5 3.5.8-r1 3.5.9 9999: A command line utility for viewing youtube-videos in Mplayer
+net-misc/youtube-viewer 3.5.5 3.5.9 3.7.4 9999: A command line utility for viewing youtube-videos in Mplayer
 net-misc/zerotier 1.2.12 1.4.6: A software-based managed Ethernet switch for planet Earth
 net-misc/zssh 1.5c-r1: An ssh wrapper enabling zmodem up/download in ssh
 net-misc/zsync 0.6.2-r1: Partial/differential file download client over HTTP which uses the rsync algorithm
@@ -15995,7 +15995,7 @@ sci-libs/bmrblib 1.0.3: API abstracting the BioMagResBank (BMRB) NMR-STAR format
 sci-libs/btf 1.2.0 1.2.6: Algorithm for matrix permutation into block triangular form
 sci-libs/buddy 2.4-r1: Binary Decision Diagram Package
 sci-libs/camd 2.3.1 2.4.6: Library to order a sparse matrix prior to Cholesky factorization
-sci-libs/cantera 2.4.0-r1 2.4.0-r3: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
+sci-libs/cantera 2.4.0-r1 2.4.0-r4: Object-oriented tool suite for chemical kinetics, thermodynamics, and transport
 sci-libs/cbflib 0.9.3.3: Library providing a simple mechanism for accessing CBF files and imgCIF files
 sci-libs/cblas-reference 20030223-r6 20151113-r2 20161223: C wrapper interface to the F77 reference BLAS implementation
 sci-libs/ccfits 2.4-r1 2.5: C++ interface for cfitsio
@@ -16200,7 +16200,7 @@ sci-libs/spqr 1.2.3-r1 1.3.1 2.0.9: Multithreaded multifrontal sparse QR factori
 sci-libs/spr 3.3.2: Statistical analysis and machine learning library
 sci-libs/suitesparse 4.0.2 4.2.1: Meta package for a suite of sparse matrix tools
 sci-libs/suitesparseconfig 4.2.1-r1 5.4.0: Common configurations for all packages in suitesparse
-sci-libs/sundials 3.2.1 4.0.2 4.1.0 5.0.0: Suite of nonlinear solvers
+sci-libs/sundials 3.2.1 4.0.2 4.1.0 5.0.0 5.1.0: Suite of nonlinear solvers
 sci-libs/superlu 4.3-r1 5.2.1-r1: Sparse LU factorization library
 sci-libs/superlu_mt 3.1: Multithreaded sparse LU factorization library
 sci-libs/symengine 0.3.0-r1 0.4.0 0.5.0: Fast symbolic manipulation library, written in C++

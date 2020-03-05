@@ -6733,7 +6733,8 @@ net-misc/wicd:mac4lin - Change default icons to mac4lin icon set
 net-misc/wicd:ncurses - Installs a ncurses UI
 net-misc/wicd:pm-utils - Installs the pm-utils hooks for suspend/resume and requires sys-power/pm-utils
 net-misc/x2goserver:fuse - Use net-fs/sshfs to allow shared folders
-net-misc/youtube-viewer:gtk - Install the gtk GUI, called gtk-youtube-viewer
+net-misc/youtube-viewer:gtk - Install the gtk3 GUI
+net-misc/youtube-viewer:gtk2 - Use the old gtk2 GUI instead of the gtk3 one
 net-misc/zerotier:clang - Use Clang compiler instead of GCC
 net-misc/zerotier:neon - Enable ARM32 neon-salsa2012-asm code
 net-nds/389-ds-base:auto-dn-suffix - Enable auto bind with auto dn suffix over unix domain socket (LDAPI) support
