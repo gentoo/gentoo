@@ -37,10 +37,11 @@ DEPEND="
 	>=kde-apps/kcalutils-${PVCUT}:5
 	>=kde-apps/kmime-${PVCUT}:5
 	>=kde-apps/libkdepim-${PVCUT}:5
-	>=dev-qt/designer-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5=
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	dev-libs/kdiagram:5
 	dev-libs/libical
 "
 RDEPEND="${DEPEND}"
+
+PATCHES=( "${FILESDIR}/${P}-unused-dep.patch" )
