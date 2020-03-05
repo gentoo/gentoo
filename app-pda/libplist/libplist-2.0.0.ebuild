@@ -43,7 +43,8 @@ src_configure() {
 	}
 
 	do_configure_python() {
-		PYTHON_LDFLAGS="$(python_get_LIBS)" do_configure "$@"
+		local -x PYTHON_LDFLAGS="$(python_get_LIBS)"
+		do_configure "$@"
 	}
 
 	do_configure --without-cython
