@@ -31,13 +31,13 @@ src_install() {
 	dodoc COVERAGE doc/README examples/*.txt
 	newdoc scripts/README README.scripts
 
+	find "${ED}" -type f -name "*.la" -delete || die
+
 	# Better fix for bug 231089; some packages look for sgutils2
 	local path lib
 	path="/usr/$(get_libdir)"
-	for lib in "${ED}/"${path}/libsgutils2.*; do
+	for lib in "${ED}/"${path}/libsgutils2{,-${PV}}.*; do
 		lib=${lib##*/}
 		dosym "${lib}" "${path}/${lib/libsgutils2/libsgutils}"
 	done
-
-	find "${ED}" -type f -name "*.la" -delete || die
 }
