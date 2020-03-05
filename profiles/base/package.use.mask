@@ -301,6 +301,7 @@ app-emulation/fuse backend-svga
 # Patrick McLean <chutzpah@gentoo.org> (2018-03-06)
 # Requires dev-libs/boost-1.66 that is unkeyworded/masked
 >=sys-cluster/ceph-12.2.4 system-boost
+>=sys-cluster/ceph-14.2.8 -system-boost
 
 # Brian Evans <grknight@gentoo.org> (2018-03-05)
 # Mask embedded USE on virtual/mysql and friends to transition it to be obsolete
