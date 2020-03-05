@@ -18020,7 +18020,7 @@ www-servers/h2o 2.2.5 2.2.6 9999: H2O - the optimized HTTP/1, HTTP/2 server
 www-servers/lighttpd 1.4.53 1.4.54 1.4.55: Lightweight high-performance web server
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
-www-servers/nginx 1.16.1-r1 1.17.8 1.17.9: Robust, small and high performance http and reverse proxy server
+www-servers/nginx 1.16.1-r1 1.17.9-r1: Robust, small and high performance http and reverse proxy server
 www-servers/nginx-unit 1.8.0 1.12.0-r3 1.13.0 1.14.0 1.15.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
