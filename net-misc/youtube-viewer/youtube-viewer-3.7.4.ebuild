@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,9 @@ SRC_URI="https://github.com/trizen/youtube-viewer/archive/${PV}.tar.gz -> ${P}.t
 LICENSE="|| ( Artistic GPL-1+ )"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="gtk"
+IUSE="gtk gtk2"
+
+REQUIRED_USE="gtk2? ( gtk )"
 
 RDEPEND="
 	dev-perl/Data-Dump
@@ -30,27 +32,37 @@ RDEPEND="
 	virtual/perl-Text-ParseWords
 	virtual/perl-Text-Tabs+Wrap
 	gtk? (
+		gtk2? (
+			>=dev-perl/Gtk2-1.244.0
+		)
+		!gtk2? (
+			dev-perl/Gtk3
+		)
 		dev-perl/File-ShareDir
-		>=dev-perl/Gtk2-1.244.0
 		virtual/freedesktop-icon-theme
 		x11-libs/gdk-pixbuf:2[X,jpeg]
 	)
-	|| ( media-video/ffmpeg[openssl,-libressl] media-video/ffmpeg[-openssl,libressl] media-video/ffmpeg[gnutls] )
+	|| ( >=media-video/ffmpeg-4.1.3[openssl,-libressl] >=media-video/ffmpeg-4.1.3[-openssl,libressl] >=media-video/ffmpeg-4.1.3[gnutls] )
 	|| ( media-video/mpv media-video/mplayer media-video/vlc gtk? ( media-video/smplayer ) )"
 DEPEND="dev-perl/Module-Build"
 
 src_configure() {
 	local myconf
-	if use gtk ; then
-		myconf="--gtk-youtube-viewer"
+	if use gtk; then
+		if use gtk2; then
+			myconf="--gtk2"
+		else
+			myconf="--gtk3"
+		fi
 	fi
+
 	perl-module_src_configure
 }
 
 src_install() {
 	perl-module_src_install
 
-	if use gtk ; then
+	if use gtk; then
 		domenu share/gtk-youtube-viewer.desktop
 		doicon share/icons/gtk-youtube-viewer.png
 	fi
