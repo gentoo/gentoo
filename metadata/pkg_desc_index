@@ -16338,7 +16338,7 @@ sci-physics/heppdt 3.04.01-r1: Data about each particle from the Review of Parti
 sci-physics/herwig 6.5.21-r1: High Energy Physics Event Generator
 sci-physics/herwig++ 2.7.1-r1: High-Energy Physics event generator
 sci-physics/jaxodraw 2.0.1-r1: Java program for drawing Feynman diagrams
-sci-physics/lammps 20180117 20180222 20180308 20180316 20180822 20181212 20190605 20190807 20190807-r1: Large-scale Atomic/Molecular Massively Parallel Simulator
+sci-physics/lammps 20180117 20180222 20180308 20180316 20180822 20181212 20190605 20190807 20190807-r1 20200303: Large-scale Atomic/Molecular Massively Parallel Simulator
 sci-physics/lhapdf 5.9.1 6.2.3: Les Houches Parton Density Function unified library
 sci-physics/looptools 2.8 2.12 2.13: Tools for evaluation of scalar and tensor one-loop integrals
 sci-physics/paw 2.14.04-r4 2.14.04-r5: CERN's Physics Analysis Workstation data analysis program
