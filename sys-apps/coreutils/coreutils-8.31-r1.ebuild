@@ -35,7 +35,6 @@ DEPEND="${RDEPEND}
 		dev-perl/Expect
 		dev-util/strace
 		${PYTHON_DEPS}
-		$(python_gen_any_dep 'dev-python/pyinotify[${PYTHON_USEDEP}]')
 	)"
 RDEPEND+="
 	hostname? ( !sys-apps/net-tools[hostname] )
@@ -51,10 +50,6 @@ RDEPEND+="
 	!sys-apps/mktemp
 	!<app-forensics/tct-1.18-r1
 	!<net-fs/netatalk-2.0.3-r4"
-
-python_check_deps() {
-	has_version --host-root "dev-python/pyinotify[${PYTHON_USEDEP}]"
-}
 
 pkg_setup() {
 	if use test ; then
