@@ -107,7 +107,7 @@ HTTP_DAV_EXT_MODULE_URI="https://github.com/arut/nginx-dav-ext-module/archive/v$
 HTTP_DAV_EXT_MODULE_WD="${WORKDIR}/nginx-dav-ext-module-${HTTP_DAV_EXT_MODULE_PV}"
 
 # echo-nginx-module (https://github.com/openresty/echo-nginx-module, BSD license)
-HTTP_ECHO_MODULE_PV="0.61"
+HTTP_ECHO_MODULE_PV="0.62rc1"
 HTTP_ECHO_MODULE_P="ngx_http_echo-${HTTP_ECHO_MODULE_PV}"
 HTTP_ECHO_MODULE_URI="https://github.com/openresty/echo-nginx-module/archive/v${HTTP_ECHO_MODULE_PV}.tar.gz"
 HTTP_ECHO_MODULE_WD="${WORKDIR}/echo-nginx-module-${HTTP_ECHO_MODULE_PV}"
@@ -713,7 +713,7 @@ src_compile() {
 src_install() {
 	emake DESTDIR="${D%/}" install
 
-	cp "${FILESDIR}"/nginx.conf-r2 "${ED}"etc/nginx/nginx.conf || die
+	cp "${FILESDIR}"/nginx.conf-r2 "${ED%/}"/etc/nginx/nginx.conf || die
 
 	newinitd "${FILESDIR}"/nginx.initd-r4 nginx
 	newconfd "${FILESDIR}"/nginx.confd nginx
@@ -725,7 +725,7 @@ src_install() {
 
 	# just keepdir. do not copy the default htdocs files (bug #449136)
 	keepdir /var/www/localhost
-	rm -rf "${D}"usr/html || die
+	rm -rf "${ED%/}"/usr/html || die
 
 	# set up a list of directories to keep
 	local keepdir_list="${NGINX_HOME_TMP}"/client
@@ -750,6 +750,9 @@ src_install() {
 	# logrotate
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/nginx.logrotate-r1 nginx
+
+	# Don't create /run
+	rm -rf "${ED%/}"/run || die
 
 	if use luajit; then
 		pax-mark m "${ED%/}/usr/sbin/nginx"
