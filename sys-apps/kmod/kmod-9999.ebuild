@@ -144,6 +144,7 @@ src_install() {
 				VPATH="${native_builddir}:${S}" \
 				install-pkgpyexecLTLIBRARIES \
 				install-dist_pkgpyexecPYTHON
+			python_optimize
 		}
 
 		python_foreach_impl python_install
