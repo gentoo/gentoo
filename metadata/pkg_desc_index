@@ -2392,7 +2392,7 @@ app-portage/diffmask 0.3.3-r4 9999: A utility to maintain package.unmask entries
 app-portage/distpatch 0.1.2-r2: Distfile Patching Support for Gentoo Linux (tools)
 app-portage/eix 0.33.9-r1: Search and query ebuilds
 app-portage/elicense 1.0.2 9999: Tool to find installed packages in Gentoo with non-accepted license(s)
-app-portage/elogv 0.7.8-r1 0.7.8-r2: Curses based utility to parse the contents of elogs created by Portage
+app-portage/elogv 0.7.8-r1 0.7.8-r2 0.7.8-r3: Curses based utility to parse the contents of elogs created by Portage
 app-portage/elogviewer 2.9-r1 3.0-r1: Elog viewer for Gentoo
 app-portage/elt-patches 20170317 20170422 20170815 20170826.1: Collection of patches for libtool.eclass
 app-portage/emerge-delta-webrsync 3.7.5 3.7.6: emerge-webrsync using patches to minimize bandwidth
@@ -15354,7 +15354,7 @@ net-vpn/pptpd 1.4.0-r2: Linux Point-to-Point Tunnelling Protocol Server
 net-vpn/protonvpn-cli 2.2.0: A VPN command-line tool from protonvpn - python rewrite
 net-vpn/strongswan 5.8.1 5.8.2: IPsec-based VPN solution, supporting IKEv1/IKEv2 and MOBIKE
 net-vpn/tinc 1.0.35-r2 1.0.36 1.1_pre17-r1: tinc is an easy to configure VPN implementation
-net-vpn/tor 0.4.1.7 0.4.1.8 0.4.2.5 0.4.2.6 0.4.3.1_alpha: Anonymizing overlay network for TCP
+net-vpn/tor 0.4.1.7 0.4.1.8 0.4.2.5 0.4.2.6 0.4.3.2_alpha: Anonymizing overlay network for TCP
 net-vpn/vpnc 0.5.3_p550: Free client for Cisco VPN routing software
 net-vpn/vpncwatch 1.8 1.8.1: Keepalive daemon for vpnc on Linux systems
 net-vpn/vtun 3.0.3 3.0.3-r1: Create tunnels over TCP/IP networks with shaping, encryption, and compression
@@ -16646,7 +16646,7 @@ sec-policy/selinux-zabbix 2.20190201-r1 2.20190609-r1 9999: SELinux policy for z
 sys-apps/accountsservice 0.6.50-r1: D-Bus interfaces for querying and manipulating user account information
 sys-apps/ack 3.0.0 3.2.0: ack is a tool like grep, optimized for programmers
 sys-apps/acl 2.2.53: access control list utilities, libraries and headers
-sys-apps/agedu 20180329 20180522 20190630: A utility for tracking down wasted disk space
+sys-apps/agedu 20190630 20200206: A utility for tracking down wasted disk space
 sys-apps/aix-miscutils 0.1.1671: Miscellaneous helpers for AIX (currently just ldd)
 sys-apps/apmd 3.2.2_p14-r1: Advanced Power Management Daemon
 sys-apps/apparmor 2.13.3: Userspace utils and init scripts for the AppArmor application security system
