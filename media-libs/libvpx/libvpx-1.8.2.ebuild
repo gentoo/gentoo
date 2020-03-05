@@ -47,10 +47,10 @@ src_configure() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=384585
 	# https://bugs.gentoo.org/show_bug.cgi?id=465988
 	# copied from php-pear-r1.eclass
-	addpredict /usr/share/snmp/mibs/.index
-	addpredict /var/lib/net-snmp/
-	addpredict /var/lib/net-snmp/mib_indexes
-	addpredict /session_mm_cli0.sem
+	addpredict /usr/share/snmp/mibs/.index #nowarn
+	addpredict /var/lib/net-snmp/ #nowarn
+	addpredict /var/lib/net-snmp/mib_indexes #nowarn
+	addpredict /session_mm_cli0.sem #nowarn
 	multilib-minimal_src_configure
 }
 
