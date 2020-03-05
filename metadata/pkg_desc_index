@@ -13436,7 +13436,7 @@ media-radio/qrq 0.3.1-r1 0.3.2 0.3.3: Yet another CW trainer for Linux/Unix
 media-radio/qsstv 9.2.6 9.4.2 9.4.4: Amateur radio SSTV software
 media-radio/svxlink 17.12.1 17.12.2: Multi Purpose Voice Services System, including Qtel for EchoLink
 media-radio/tlf 1.3.2 1.4.0: Console-mode amateur radio contest logger
-media-radio/tqsl 2.3.1 2.4.1 2.4.3: ARRL Logbook of the World
+media-radio/tqsl 2.3.1 2.4.1 2.4.3 2.5.1: ARRL Logbook of the World
 media-radio/tucnak 4.18 4.19 4.20: Amateur Radio VHF Contest Logbook
 media-radio/unixcw 3.5.1: A package of programs that fit together to form a morse code tutor program
 media-radio/wsjtx 2.1.0 2.1.2: Weak signal ham radio communication
@@ -16894,7 +16894,7 @@ sys-apps/semodule-utils 2.9 3.0 9999: SELinux policy module utilities
 sys-apps/sensei-raw-ctl 0.0_pre20180729: SteelSeries Sensei Raw configuration tool
 sys-apps/servicelog 1.1.14: Provides utilities for logging service-related events
 sys-apps/setserial 2.17-r5: Configure your serial ports with it
-sys-apps/sg3_utils 1.42 1.44 1.45: Apps for querying the sg SCSI interface
+sys-apps/sg3_utils 1.42 1.44 1.45-r1: Apps for querying the sg SCSI interface
 sys-apps/shadow 4.6 4.7-r2 4.8-r3 4.8.1-r1: Utilities to deal with user accounts
 sys-apps/smartmontools 7.0-r1 7.1 9999: Tools to monitor storage systems to provide advanced warning of disk degradation
 sys-apps/smc-sum 2.4.0.20191206: Updates the BIOS and IPMI firmware and system settings on Supermicro mainboards

@@ -10,4 +10,4 @@ RDEPEND=!sys-apps/rescan-scsi-bus
 SLOT=0
 SRC_URI=http://sg.danny.cz/sg/p/sg3_utils-1.45.tar.xz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=46383a61d2bf2ece79f1f3c88d55df2d
+_md5_=ca7bc504d33c7a3498b6069756ad925a
