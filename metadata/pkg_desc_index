@@ -2748,7 +2748,7 @@ app-text/tessdata_legacy 4.0.0: Trained models for app-text/tesseract compatible
 app-text/tesseract 3.05.02 4.1.0-r1 4.1.1 9999: An OCR Engine, originally developed at HP, now open source.
 app-text/texi2html 5.0-r1: Perl script that converts Texinfo to HTML
 app-text/texlive 2019-r1: A complete TeX distribution
-app-text/texlive-core 2019-r4 2019-r8: A complete TeX distribution
+app-text/texlive-core 2019-r4 2019-r8 2019-r9: A complete TeX distribution
 app-text/tidy-html5 5.6.0: Tidy the layout and correct errors in HTML, HTML5 and XML documents
 app-text/tkinfo 2.8-r1: Info Browser in TK
 app-text/tkman 2.2-r1: TkMan man and info page browser
@@ -5096,7 +5096,7 @@ dev-libs/librep 0.92.6: Shared library implementing a Lisp dialect
 dev-libs/libreport 2.10.0: Generic library for reporting software bugs
 dev-libs/libressl 2.6.5 2.8.3 2.9.1 2.9.2 3.0.0 3.0.1 3.0.2: Free version of the SSL/TLS protocol forked from OpenSSL
 dev-libs/librevenge 0.0.4-r1 9999: Helper library for REVerse ENGineered formats filters
-dev-libs/libsass 3.5.5 3.6.1 3.6.3 9999: A C/C++ implementation of a Sass CSS compiler
+dev-libs/libsass 3.6.1 3.6.3 9999: A C/C++ implementation of a Sass CSS compiler
 dev-libs/libsavitar 3.4.1 3.6.0 4.2.0 4.3.0-r1: C++ implementation of 3mf loading with SIP python bindings
 dev-libs/libsecp256k1 0.0.0_pre20151118 0.0.0_pre20161213 0.1_pre20170928: Optimized C library for EC operations on curve secp256k1
 dev-libs/libserdes 5.4.0: Avro SerializationDeserialization w/ Confluent schema-registry support
@@ -12580,7 +12580,7 @@ media-gfx/gif2apng 1.9-r1: create an APNG from a GIF
 media-gfx/gif2png 2.5.9 2.5.12 2.5.14: Converts images from gif format to png format
 media-gfx/gifsicle 1.91 1.92: Create, manipulate, and optimize GIF images and animations
 media-gfx/gimageview 0.2.27-r4: Powerful GTK+ based image & movie viewer
-media-gfx/gimp 2.8.22-r2 2.9.8-r1 2.10.8-r2 2.10.14-r1 2.10.18 9999: GNU Image Manipulation Program
+media-gfx/gimp 2.8.22-r2 2.9.8-r1 2.10.8-r2 2.10.14-r1 2.10.18 2.10.18-r1 9999: GNU Image Manipulation Program
 media-gfx/gimp-arrow-brushes 20190407: Brushes for GIMP with the styles arrow, handpointer, button arrow and cursor
 media-gfx/gmic 2.8.1 2.8.2 2.8.3: GREYC's Magic Image Converter
 media-gfx/gnofract4d 4.0.1_p1-r1: A program for drawing beautiful mathematically-based images known as fractals
@@ -16132,6 +16132,7 @@ sci-libs/lis 1.6.5: Library of Iterative Solvers for Linear Systems
 sci-libs/lmfit 5.1 6.4 7.0 8.2.2: library for Levenberg-Marquardt least-squares minimization and curve fitting
 sci-libs/lrslib 062: Self-contained C implementation of the reverse search algorithm
 sci-libs/m4ri 20140914 20200115: Method of four russian for inversion (M4RI)
+sci-libs/m4rie 20200115: Fast dense matrix arithmetic over GF(2^e) for 2 <= e <= 16
 sci-libs/magma 1.4.0 1.4.1: Matrix Algebra on GPU and Multicore Architectures
 sci-libs/mathgl 2.4.1-r2: Math Graphics Library
 sci-libs/matio 1.5.13 1.5.16: Library for reading and writing matlab files
@@ -16728,7 +16729,7 @@ sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from
 sys-apps/flashrom 0.9.8 1.0 1.1 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/frandom 1.1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
 sys-apps/fwts 17.02.00: Firmware Test Suite
-sys-apps/fwupd 1.2.11 1.3.8 1.3.9: Aims to make updating firmware on Linux automatic, safe and reliable
+sys-apps/fwupd 1.2.11 1.3.8 1.3.9-r1: Aims to make updating firmware on Linux automatic, safe and reliable
 sys-apps/fwupdate 10 12: Tools for using the ESRT and UpdateCapsule() to apply firmware updates
 sys-apps/fxload 20081013-r1: USB firmware uploader
 sys-apps/gawk 4.2.1-r1 5.0.0 5.0.1: GNU awk pattern-matching language
@@ -16785,7 +16786,7 @@ sys-apps/kbd 2.0.4 2.0.4-r1 2.2.0-r2 9999: Keyboard and console utilities
 sys-apps/kcheck 0.0.2 9999: Record and check required kernel symbols are set
 sys-apps/kexec-tools 2.0.19-r1 2.0.20 9999: Load another kernel from the currently executing Linux kernel
 sys-apps/keyutils 1.6.1: Linux Key Management Utilities
-sys-apps/kmod 26-r4 27-r1 9999: library and tools for managing linux kernel modules
+sys-apps/kmod 26-r5 27-r1 9999: library and tools for managing linux kernel modules
 sys-apps/kmscon 8-r1 8_p20180906: KMS/DRM based virtual Console Emulator
 sys-apps/lcdsplash 0.3: splash Gentoo boot information on LCD's
 sys-apps/lcdtest 1.18: Displays test patterns to spot dead/hot pixels on LCD screens
@@ -17940,7 +17941,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.3.1 5.3.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 80.0.3987.122 80.0.3987.132 81.0.4044.34 82.0.4068.4: Open-source version of Google Chrome web browser
+www-client/chromium 80.0.3987.122 80.0.3987.132 81.0.4044.43 82.0.4068.4: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6: GNOME webbrowser based on Webkit
@@ -17949,7 +17950,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0 68.2.0 68.3.0 68.4.1 68.4.2 68.5.0 73.0.1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.5.0-r1 73.0.1: Firefox Web Browser
 www-client/google-chrome 80.0.3987.132: The web browser from Google
-www-client/google-chrome-beta 81.0.4044.34: The web browser from Google
+www-client/google-chrome-beta 81.0.4044.43: The web browser from Google
 www-client/google-chrome-unstable 82.0.4068.4: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -17998,7 +17999,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.330: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r1 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 80.0.3987.132 81.0.4044.34_beta 82.0.4068.4_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 80.0.3987.132 81.0.4044.43_beta 82.0.4068.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2: High performance flash player

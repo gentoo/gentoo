@@ -9,5 +9,5 @@ RDEPEND=!net-p2p/go-ipfs-bin acct-group/ipfs acct-user/ipfs sys-fs/fuse:0
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://dist.ipfs.io/go-ipfs/v0.4.23/go-ipfs-source.tar.gz -> go-ipfs-0.4.23.tar.gz https://raw.githubusercontent.com/ipfs/go-ipfs/v0.4.23/misc/completion/ipfs-completion.bash -> go-ipfs-0.4.23.bash
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	go-module	3a07ded6d4ec510a4d8c98cd1c2a07ab	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	go-module	2e23fcc4b7fb60746e74822d4ca3a669	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=79c262bf778415dbb7d6d5e20f20827f
