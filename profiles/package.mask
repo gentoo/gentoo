@@ -403,10 +403,6 @@ sys-firmware/iwl6050-ucode
 # Mask until sys-libs/libxcrypt[system] is unmasked
 >=virtual/libcrypt-2
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-05)
-# Blocks dev-python/pygtk removal, bug #706478. Masked for removal in 30 days.
-dev-libs/libappindicator:2
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-05)
 # Unmaintained.  No Python 3 support.  Last release ~2014, homepage
 # gone.
