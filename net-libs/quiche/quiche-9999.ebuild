@@ -20,8 +20,6 @@ cc-1.0.49
 cfg-if-0.1.10
 clap-2.33.0
 cmake-0.1.42
-criterion-0.3.0
-criterion-plot-0.4.0
 crossbeam-deque-0.7.2
 crossbeam-epoch-0.8.0
 crossbeam-queue-0.2.1
