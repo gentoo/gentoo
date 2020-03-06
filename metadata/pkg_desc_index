@@ -9512,7 +9512,7 @@ dev-ruby/aws-sdk-core 2.11.79: Official SDK for Amazon Web Services
 dev-ruby/aws-sdk-resources 2.11.79: Official SDK for Amazon Web Services
 dev-ruby/aws-sigv4 1.0.3 1.1.0: Amazon Web Services Signature Version 4 signing library
 dev-ruby/axiom-types 0.1.1: Define types with optional constraints for use within axiom and other libraries
-dev-ruby/backports 3.15.0 3.16.0 3.16.1: Backports of Ruby features for older Ruby
+dev-ruby/backports 3.15.0 3.16.0 3.16.1 3.17.0: Backports of Ruby features for older Ruby
 dev-ruby/bacon 1.2.0-r2: Small RSpec clone weighing less than 350 LoC
 dev-ruby/barby 0.6.8: Ruby barcode generator that doesn't rely on 3rd party libraries
 dev-ruby/base32 0.3.2: A library which provides base32 decoding and encoding
