@@ -27,8 +27,7 @@ RDEPEND="
 		)
 	)
 	postgres? ( dev-python/psycopg:2[${PYTHON_USEDEP}] )
-	>=dev-python/django-1.8[sqlite?,${PYTHON_USEDEP}]
-	<dev-python/django-2.1.99[sqlite?,${PYTHON_USEDEP}]
+	>=dev-python/django-1.11.19[sqlite?,${PYTHON_USEDEP}]
 	>=dev-python/django-tagging-0.4.6[${PYTHON_USEDEP}]
 	dev-python/cairocffi[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
