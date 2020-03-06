@@ -355,7 +355,7 @@ distutils_enable_sphinx() {
 			if grep -F -q 'sphinx.ext.autodoc' "${confpy}"; then
 				die "distutils_enable_sphinx: --no-autodoc passed but sphinx.ext.autodoc found in ${confpy}"
 			fi
-		else
+		elif [[ -z ${_DISTUTILS_SPHINX_PLUGINS[@]} ]]; then
 			if ! grep -F -q 'sphinx.ext.autodoc' "${confpy}"; then
 				die "distutils_enable_sphinx: sphinx.ext.autodoc not found in ${confpy}, pass --no-autodoc"
 			fi
