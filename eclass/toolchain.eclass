@@ -1494,8 +1494,12 @@ downgrade_arch_flags() {
 }
 
 gcc_do_filter_flags() {
-	replace-flags -O? -O2 # 701786 (-O3)
+	# Be conservative here:
+	# - don't allow -O3 and like to over-optimize libgcc # 701786
+	# - don't allow -O0 to generate potentially invalid startup code
 	strip-flags
+	filter-flags '-O?'
+	append-flags -O2
 
 	# dont want to funk ourselves
 	filter-flags '-mabi*' -m31 -m32 -m64
