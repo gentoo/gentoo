@@ -198,13 +198,21 @@ src_configure() {
 
 src_install() {
 	emake DESTDIR="${D}" install
+	insinto /etc/${PN}
 	if use mbox; then
-		insinto /etc/mutt
 		newins "${FILESDIR}"/Muttrc.mbox Muttrc
 	else
-		insinto /etc/mutt
 		doins "${FILESDIR}"/Muttrc
 	fi
+
+	# include attachment settings, it's mandatory and shouldn't harm
+	# when not being referenced (index_format using %X)
+	{
+		echo
+		echo "# mandatory attachments settings, not setting these is a BUG!"
+		echo "# see https://marc.info/?l=mutt-dev&m=158347284923517&w=2"
+		grep '^attachments' "${ED}"/etc/${PN}/Muttrc.dist
+	} >> "${ED}"/etc/${PN}/Muttrc
 
 	# A newer file is provided by app-misc/mime-types. So we link it.
 	rm "${ED}"/etc/${PN}/mime.types
