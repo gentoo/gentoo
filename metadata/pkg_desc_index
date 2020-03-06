@@ -348,7 +348,7 @@ app-admin/abrt 2.12.0-r2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.9.4 2.9.5 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.9.4 2.9.5 2.9.6 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -7299,7 +7299,7 @@ dev-php/pecl-stomp 2.0.2-r1: PHP extension to communicate with Stomp message bro
 dev-php/pecl-taint 2.0.5 2.0.6: Extension used for detecting XSS code (tainted strings)
 dev-php/pecl-timezonedb 2019.3: Timezone Database to be used with PHP's date and time functions
 dev-php/pecl-translit 0.6.3: Transliterates non-latin character sets to latin
-dev-php/pecl-uploadprogress 1.0.3.1-r4: An extension to track progress of a file upload
+dev-php/pecl-uploadprogress 1.1.3: An extension to track progress of a file upload
 dev-php/pecl-uuid 1.1.0: A wrapper around libuuid
 dev-php/pecl-xdiff 2.0.1-r2: PHP extension for generating diff files
 dev-php/pecl-yaml 2.0.4: YAML 1.1 (YAML Ain't Markup Language) serialization for PHP
