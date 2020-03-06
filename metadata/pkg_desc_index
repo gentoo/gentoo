@@ -8616,7 +8616,7 @@ dev-python/python-senlinclient 1.2.0: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-socketio 1.7.4 1.8.0 2.0.0: Python implementation of the Socket.IO realtime server.
-dev-python/python-sqlparse 0.2.3 0.2.4 0.3.0: A non-validating SQL parser module for Python
+dev-python/python-sqlparse 0.2.3 0.2.4 0.3.0 0.3.1: A non-validating SQL parser module for Python
 dev-python/python-stdnum 1.12: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 233 234: Python module for native access to the systemd facilities
