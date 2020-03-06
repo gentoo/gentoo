@@ -45,6 +45,10 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/${PN}-0.14.6"
 
+pkg_setup() {
+	use python && python-single-r1_pkg_setup
+}
+
 src_configure() {
 	# FIXME: disable eds backend for now, it fails, upstream bug #654005
 	# We need to set compile-warnings to a different value as it doesn't use
