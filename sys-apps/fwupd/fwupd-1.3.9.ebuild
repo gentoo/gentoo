@@ -93,6 +93,7 @@ RDEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PN}-1.3.9-logind_plugin.patch"
+	"${FILESDIR}/${P}-optional_agent_man_page.patch"
 )
 
 pkg_setup() {
