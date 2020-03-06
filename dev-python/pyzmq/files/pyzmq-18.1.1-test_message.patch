@@ -1,0 +1,21 @@
+diff --git a/zmq/tests/test_message.py b/zmq/tests/test_message.py
+index d3a6aa8..ebd0c04 100644
+--- a/zmq/tests/test_message.py
++++ b/zmq/tests/test_message.py
+@@ -14,6 +14,7 @@ import time
+ from pprint import pprint
+ from unittest import TestCase
+ 
++import pytest
+ import zmq
+ from zmq.tests import BaseZMQTestCase, SkipTest, skip_pypy, PYPY
+ from zmq.utils.strtypes import unicode, bytes, b, u
+@@ -297,7 +298,7 @@ class TestFrame(BaseZMQTestCase):
+                 self.assertEqual(mb, null)
+                 self.assertEqual(m2.bytes, ff)
+ 
+-    @skip_pypy
++    @pytest.mark.skip("test sometimes hangs")
+     def test_buffer_numpy(self):
+         """test non-copying numpy array messages"""
+         try:
