@@ -43,6 +43,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-3.3.12-proc-tests.patch # 583036
 
 	# Upstream fixes
+	"${FILESDIR}"/${P}-toprc_backwards_compatibility.patch #711676
 )
 
 multilib_src_configure() {
