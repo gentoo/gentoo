@@ -8201,7 +8201,7 @@ dev-python/osprofiler 2.6.0: OpenStack Profiler Library
 dev-python/ovs 2.10.0-r1 2.11.0: OVS bindings for python.
 dev-python/ovsdbapp 0.15.0 0.17.2: A library for creating OVSDB applications
 dev-python/owslib 0.16.0-r1 0.17.1 0.17.1-r1: Library for client programming with Open Geospatial Consortium web service
-dev-python/packaging 16.8 19.2 20.0 20.1: Core utilities for Python packages
+dev-python/packaging 16.8 19.2 20.0 20.1 20.3: Core utilities for Python packages
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.4.0 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
@@ -8811,7 +8811,7 @@ dev-python/spark-parser 1.6.1 1.8.5: An Early-Algorithm Context-free grammar Par
 dev-python/sparql-wrapper 1.8.0 1.8.4: Wrapper around a SPARQL service
 dev-python/speaklater 1.3-r1: Lazy strings for Python
 dev-python/speg 0.3: A PEG-based parser interpreter with memoization
-dev-python/sphinx 1.7.5-r1 2.0.1-r1 2.4.3-r1: Python documentation generator
+dev-python/sphinx 1.7.5-r1 2.0.1-r1 2.4.3-r1 2.4.4: Python documentation generator
 dev-python/sphinx-aiohttp-theme 0.1.4 0.1.5 0.1.6: Sphinx theme for aiohttp
 dev-python/sphinx-better-theme 0.1.5: A nice-looking, customizable theme for Sphinx
 dev-python/sphinx-bootstrap-theme 0.4.9 0.6.0 0.6.5: Sphinx theme integrates the Bootstrap CSS / JavaScript framework
@@ -8883,7 +8883,7 @@ dev-python/tabulate 0.8.1 0.8.3 0.8.6: Pretty-print tabular data
 dev-python/tagpy 2018.1: Python Bindings for TagLib
 dev-python/tappy 2.4: Test Anything Protocol (TAP) tools
 dev-python/taskflow 3.4.0 3.5.0: A library to do [jobs, tasks, flows] in a HA manner using different backends
-dev-python/tblib 1.3.2 1.3.2-r1: Traceback fiddling library for Python
+dev-python/tblib 1.3.2 1.3.2-r1 1.6.0: Traceback fiddling library for Python
 dev-python/tempest-lib 1.0.0-r1: Functional or integrated test suites for OpenStack projects
 dev-python/tempita 0.5.3-r1 0.5.3-r2: A very small text templating language
 dev-python/tempora 1.7 1.12 1.14.1-r1 2.0.0 2.1.0: Objects and routines pertaining to date and time
@@ -17192,7 +17192,7 @@ sys-devel/automake 1.4_p6-r2 1.5-r2 1.6.3-r2 1.7.9-r3 1.8.5-r5 1.9.6-r5 1.10.3-r
 sys-devel/automake-wrapper 10 11: wrapper for automake to manage multiple automake versions
 sys-devel/bc 1.06.95-r2 1.07.1-r3: Handy console-based calculator utility
 sys-devel/bin86 0.16.20-r2 0.16.21: Assembler and loader used to create kernel bootsector
-sys-devel/binutils 2.30-r4 2.31.1-r6 2.32-r1 2.32-r2 2.33.1 2.33.1-r1 2.34 9999: Tools necessary to build programs
+sys-devel/binutils 2.30-r4 2.31.1-r6 2.32-r1 2.32-r2 2.33.1-r1 2.34 9999: Tools necessary to build programs
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5-r4 5.1-r1 5.2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.30-r4 2.31.1-r6 2.32-r1 2.33.1 2.34: Tools necessary to build programs
@@ -17430,8 +17430,8 @@ sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.2 4.0.4 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
-sys-kernel/gentoo-kernel 4.19.105 4.19.106 4.19.107 5.4.21 5.4.22 5.4.23 5.5.5 5.5.6 5.5.7: Linux kernel built with Gentoo patches
-sys-kernel/gentoo-kernel-bin 4.19.105 4.19.106 4.19.107 5.4.21 5.4.22 5.4.23 5.5.5 5.5.6 5.5.7: Pre-built Linux kernel with genpatches
+sys-kernel/gentoo-kernel 4.19.107 5.4.23 5.5.7: Linux kernel built with Gentoo patches
+sys-kernel/gentoo-kernel-bin 4.19.107 5.4.23 5.5.7: Pre-built Linux kernel with genpatches
 sys-kernel/gentoo-sources 4.4.203 4.4.210 4.4.212 4.4.213 4.4.214 4.4.215 4.9.203 4.9.210 4.9.212 4.9.213 4.9.214 4.9.215 4.14.156 4.14.166 4.14.169 4.14.170 4.14.171 4.14.172 4.19.86 4.19.97 4.19.102 4.19.103 4.19.104 4.19.105 4.19.106 4.19.107 4.19.108 5.4.19 5.4.20 5.4.21 5.4.22 5.4.23 5.4.24 5.5.0 5.5.1 5.5.2 5.5.2-r1 5.5.3 5.5.4 5.5.5 5.5.6 5.5.7 5.5.8: Full sources including the Gentoo patchset for the 5.5 kernel tree
 sys-kernel/git-sources 5.6_rc1 5.6_rc2 5.6_rc3 5.6_rc4: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
@@ -17447,14 +17447,14 @@ sys-kernel/raspberrypi-image 4.14.98_p20190215 4.19.57_p20190709 4.19.75_p201909
 sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
-sys-kernel/vanilla-kernel 4.19.105 4.19.106 4.19.107 5.4.21 5.4.22 5.4.23 5.5.5 5.5.6 5.5.7: Linux kernel built from vanilla upstream sources
+sys-kernel/vanilla-kernel 4.19.107 5.4.23 5.5.7: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 4.19.103 5.4.19 5.5.3: Pre-built vanilla Linux kernel
 sys-kernel/vanilla-sources 3.16.82 4.4.215 4.9.215 4.14.172 4.19.108 5.4.24 5.5.8: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.5.4: The Zen Kernel Live Sources
 sys-libs/argp-standalone 1.3-r2: Standalone argp library for use with uclibc
-sys-libs/binutils-libs 2.32-r1 2.33.1 2.33.1-r1 2.34: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
+sys-libs/binutils-libs 2.32-r1 2.33.1-r1 2.34: Core binutils libraries (libbfd, libopcodes, libiberty) for external packages
 sys-libs/compiler-rt 7.1.0 8.0.1 9.0.1 10.0.0_rc3 10.0.0.9999 11.0.0.9999: Compiler runtime library for clang (built-in part)
 sys-libs/compiler-rt-sanitizers 7.1.0 8.0.1 9.0.1 10.0.0_rc3 10.0.0.9999 11.0.0.9999: Compiler runtime libraries for clang (sanitizers & xray)
 sys-libs/cracklib 2.9.6-r2 2.9.7: Password Checking Library
