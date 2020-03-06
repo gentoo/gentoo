@@ -9463,7 +9463,7 @@ dev-ros/xacro 1.13.2 1.13.3 9999: XML macro language
 dev-ros/xmlrpcpp 1.14.2 1.14.3 9999: C++ implementation of the XML-RPC protocol
 dev-ruby/GeoRuby 2.5.2: Ruby data holder for OGC Simple Features
 dev-ruby/abstract 1.0.0-r3: Library which enable you to define abstract method in Ruby
-dev-ruby/acme-client 2.0.4 2.0.5: A Ruby client for the letsencrypt's ACME protocol.
+dev-ruby/acme-client 2.0.4 2.0.5 2.0.6: A Ruby client for the letsencrypt's ACME protocol.
 dev-ruby/actioncable 5.2.4.1 6.0.2.1: Integrated WebSockets for Rails
 dev-ruby/actionmailbox 6.0.2.1: Framework for designing email-service layers
 dev-ruby/actionmailer 4.2.11.1 5.2.4.1 6.0.2.1: Framework for designing email-service layers
@@ -9894,7 +9894,7 @@ dev-ruby/rcairo 1.16.2 1.16.4 1.16.5: Ruby bindings for cairo
 dev-ruby/rdiscount 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 5.1.0-r1 6.1.2 6.2.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
-dev-ruby/recog 2.3.2 2.3.4 2.3.5 2.3.6: Pattern recognition for hosts, services, and content
+dev-ruby/recog 2.3.2 2.3.4 2.3.5 2.3.6 2.3.7: Pattern recognition for hosts, services, and content
 dev-ruby/redcarpet 3.4.0 3.5.0: A Ruby wrapper for Upskirt
 dev-ruby/redcloth 4.3.2-r1: A module for using Textile in Ruby
 dev-ruby/redis 3.3.5 4.0.1: A Ruby client library for Redis
@@ -10143,7 +10143,7 @@ dev-ruby/xmlrpc 0.3.0: XMLRPC is a lightweight protocol that enables remote proc
 dev-ruby/xpath 2.1.0 3.2.0: XPath is a Ruby DSL around a subset of XPath 1.0
 dev-ruby/yajl-ruby 1.3.1 1.4.1: Ruby C bindings to the Yajl JSON stream-based parser library
 dev-ruby/yard 0.9.20 0.9.24: Documentation generation tool for the Ruby programming language
-dev-ruby/zeitwerk 1.4.3 2.1.10 2.2.1 2.2.2: Efficient and thread-safe code loader for Ruby
+dev-ruby/zeitwerk 1.4.3 2.1.10 2.2.1 2.2.2 2.3.0: Efficient and thread-safe code loader for Ruby
 dev-ruby/zentest 4.11.1 4.12.0: Testing tools: zentest, unit_diff, autotest, multiruby, and Test::Rails
 dev-scheme/bytestructures 1.0.1: Structured access to bytevector contents
 dev-scheme/c-wrapper 0.6.1-r1: Foreign function interface for C and Objective-C libraries
@@ -12187,7 +12187,7 @@ mail-client/kube 0.7.0-r1: Mail client based on KDE Frameworks
 mail-client/mail-notification 5.4-r10: Status icon informing about new mail
 mail-client/mailx 8.1.2.20160123: The $ mail program, which is used to send mail via shell scripts
 mail-client/mailx-support 20060102-r2: Provides lockspool utility
-mail-client/mutt 1.10.1 1.11.4 1.12.1 1.12.2-r1 1.12.2-r2 1.13.4: A small but very powerful text-based mail client
+mail-client/mutt 1.10.1 1.12.2-r2 1.13.4-r1: A small but very powerful text-based mail client
 mail-client/neomutt 20180512 20180622 20180716 20180716-r1 20191102 20191111 20191129 20191207 99999999: A small but very powerful text-based mail client
 mail-client/novell-groupwise-client 8.0.2.96933-r1: Novell Groupwise Client for Linux
 mail-client/roundcube 1.3.8 1.3.9 1.3.10 1.4.0 1.4.1 1.4.2: A browser-based multilingual IMAP client with an application-like user interface
@@ -12782,7 +12782,7 @@ media-libs/cogl 1.22.4: A library for using 3D graphics hardware to draw pretty 
 media-libs/coin 3.1.3-r2 4.0.0a_pre20191109: A high-level 3D graphics toolkit, fully compatible with SGI Open Inventor 2.1
 media-libs/compface 1.5.2: Utilities and library to convert to/from X-Face format
 media-libs/ctl 1.5.2-r1: AMPAS' Color Transformation Language
-media-libs/dav1d 0.1.0 0.2.0-r1 0.2.1 0.3.0 0.3.1 0.4.0 0.5.1 0.5.2 9999: dav1d is an AV1 Decoder :)
+media-libs/dav1d 0.1.0 0.2.0-r1 0.2.1 0.3.0 0.3.1 0.4.0 0.5.1 0.5.2 0.6.0 9999: dav1d is an AV1 Decoder :)
 media-libs/devil 1.7.8-r2: DevIL image library
 media-libs/dssi 1.1.1-r1: Plugin API for software instruments with user interfaces
 media-libs/dumb 0.9.3-r3: IT/XM/S3M/MOD player library with click removal and IT filters
