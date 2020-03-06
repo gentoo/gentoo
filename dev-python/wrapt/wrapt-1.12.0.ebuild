@@ -16,10 +16,8 @@ LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 
-DEPEND="doc? ( dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}] )"
-
 distutils_enable_tests pytest
-distutils_enable_sphinx docs --no-autodoc
+distutils_enable_sphinx docs dev-python/sphinx_rtd_theme
 
 python_compile() {
 	local WRAPT_EXTENSIONS=true
