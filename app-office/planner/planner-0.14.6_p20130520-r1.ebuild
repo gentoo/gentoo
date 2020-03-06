@@ -20,11 +20,10 @@ REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )"
 
 RDEPEND="
 	>=dev-libs/glib-2.6:2
-	>=x11-libs/gtk+-2.14:2
+	>=x11-libs/gtk+-2.24:2
 	>=gnome-base/libgnomecanvas-2.10
-	>=gnome-base/libgnomeui-2.10
 	>=gnome-base/libglade-2.4:2.0
-	>=gnome-base/gconf-2.6:2
+	>=gnome-base/gconf-2.10:2
 	>=dev-libs/libxml2-2.6.27:2
 	>=dev-libs/libxslt-1.1.23
 	python? (
