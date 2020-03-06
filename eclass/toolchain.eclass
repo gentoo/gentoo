@@ -1494,8 +1494,8 @@ downgrade_arch_flags() {
 }
 
 gcc_do_filter_flags() {
+	replace-flags -O? -O2 # 701786 (-O3)
 	strip-flags
-	replace-flags -O? -O2
 
 	# dont want to funk ourselves
 	filter-flags '-mabi*' -m31 -m32 -m64
