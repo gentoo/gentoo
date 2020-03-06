@@ -5181,7 +5181,8 @@ dev-libs/nmeap 0.3-r1: Extensible NMEA-0183 (GPS) data parser in standard C
 dev-libs/npth 1.3 1.4 1.5 1.6 1.6-r1: New GNU Portable Threads Library
 dev-libs/nsgenbind 0.6-r1 0.7: generate javascript to dom bindings from w3c webidl files
 dev-libs/nspr 4.20 4.22 4.24 4.25: Netscape Portable Runtime
-dev-libs/nss 3.47.1-r1 3.48-r1 3.49 3.49.1 3.49.2 3.50: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss 3.47.1-r1 3.48-r1 3.49 3.49.1 3.49.2 3.50-r1: Mozilla's Network Security Services library that implements PKI support
+dev-libs/nss-pem 1.0.5: PEM file reader for Network Security Services (NSS)
 dev-libs/nsync 1.20.1: A C library that exports various synchronization primitives, such as mutexes
 dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++ library
 dev-libs/ocl-icd 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loaders
@@ -7637,7 +7638,7 @@ dev-python/distlib 0.2.1 0.2.4: Distribution utilities
 dev-python/distributed 1.18.0 1.18.0-r1: Python library for distributed computation
 dev-python/distro 1.0.4: Reliable machine-readable Linux distribution information for Python
 dev-python/dj-database-url 0.4.2: Use Database URLs in your Django Application
-dev-python/django 2.1.8 2.1.9 2.2.1 2.2.2: High-level Python web framework
+dev-python/django 2.2.11: High-level Python web framework
 dev-python/django-appconf 1.0.1: A helper class for handling configuration defaults of packaged apps gracefully
 dev-python/django-auth-ldap 1.7.0 2.1.0: Django LDAP authentication backend
 dev-python/django-baker 0.11-r2: Management command that generates views, forms, urls, and templates for models
@@ -8660,7 +8661,7 @@ dev-python/pyzbar 0.1.5 0.1.7 0.1.8: Read one-dimensional barcodes and QR codes 
 dev-python/pyzmq 16.0.2 17.1.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
 dev-python/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
 dev-python/qdarkstyle 2.7: A dark style sheet for QtWidgets application
-dev-python/qrcode 5.1-r1 6.1: QR Code generator on top of PIL
+dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.3 2.11.4: Python bindings for QScintilla
 dev-python/qtawesome 0.4.4 0.5.2 0.6.1: Enables iconic fonts such as Font Awesome in PyQt
 dev-python/qtconsole 4.3.1 4.6.0: Qt-based console for Jupyter with support for rich media output
@@ -16257,7 +16258,7 @@ sci-mathematics/ginac 1.6.6 1.7.2 1.7.4 1.7.8: C++ library and tools for symboli
 sci-mathematics/glpk 4.63: GNU Linear Programming Kit
 sci-mathematics/gmm 5.1 5.3: Generic C++ template library for sparse, dense and skyline matrices
 sci-mathematics/gmp-ecm 6.4.4-r1 7.0.4-r1 7.0.4-r2 9999: Elliptic Curve Method for Integer Factorization
-sci-mathematics/gp2c 0.0.11.2-r1: A GP to C translator
+sci-mathematics/gp2c 0.0.11.2-r1 0.0.11.3: A GP to C translator
 sci-mathematics/gretl 1.9.14 1.9.90: Regression, econometrics and time-series library
 sci-mathematics/gsl-shell 2.3.0_beta1: Lua interactive shell for sci-libs/gsl
 sci-mathematics/jags 3.4.0 4.0.0 4.1.0 4.2.0: Just Another Gibbs Sampler for Bayesian MCMC simulation
