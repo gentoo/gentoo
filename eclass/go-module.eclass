@@ -394,12 +394,10 @@ _go-module_src_unpack_verify_gosum() {
 	# 'go mod tidy' && 'go get' will flag it.
 	# -v = verbose
 	# -d = download only, don't install
-	# -mod readonly = treat modules as readonly source
 	einfo "Verifying linked Golang modules"
 	go get \
 		-v \
 		-d \
-		-mod readonly \
 		all \
 		|| die "Some module is missing, update EGO_SUM"
 }
