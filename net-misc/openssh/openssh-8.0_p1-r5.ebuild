@@ -1,52 +1,46 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=6
 
-inherit user-info flag-o-matic multilib autotools pam systemd toolchain-funcs
+inherit user-info eapi7-ver flag-o-matic multilib autotools pam systemd toolchain-funcs
 
 # Make it more portable between straight releases
 # and _p? releases.
 PARCH=${P/_}
-HPN_PV="${PV^^}"
+#HPN_PV="${PV^^}"
+HPN_PV="7.8_P1"
 
-HPN_VER="14.20"
+HPN_VER="14.16"
 HPN_PATCHES=(
 	${PN}-${HPN_PV/./_}-hpn-DynWinNoneSwitch-${HPN_VER}.diff
 	${PN}-${HPN_PV/./_}-hpn-AES-CTR-${HPN_VER}.diff
-	${PN}-${HPN_PV/./_}-hpn-PeakTput-${HPN_VER}.diff
 )
 
 SCTP_VER="1.2" SCTP_PATCH="${PARCH}-sctp-${SCTP_VER}.patch.xz"
-X509_VER="12.3" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
+X509_VER="12.1-gentoo" X509_PATCH="${PARCH}+x509-${X509_VER}.diff.gz"
 
 PATCH_SET="openssh-7.9p1-patches-1.0"
 
 DESCRIPTION="Port of OpenBSD's free SSH release"
 HOMEPAGE="https://www.openssh.com/"
 SRC_URI="mirror://openbsd/OpenSSH/portable/${PARCH}.tar.gz
-	https://dev.gentoo.org/~chutzpah/dist/openssh/${P}-glibc-2.31-patches.tar.xz
-	${SCTP_PATCH:+sctp? ( https://dev.gentoo.org/~chutzpah/dist/openssh/${SCTP_PATCH} )}
+	${SCTP_PATCH:+sctp? ( https://dev.gentoo.org/~whissi/dist/openssh/${SCTP_PATCH} )}
 	${HPN_VER:+hpn? ( $(printf "mirror://sourceforge/hpnssh/HPN-SSH%%20${HPN_VER/./v}%%20${HPN_PV/_P/p}/%s\n" "${HPN_PATCHES[@]}") )}
-	${X509_PATCH:+X509? ( https://roumenpetrov.info/openssh/x509-${X509_VER}/${X509_PATCH} )}
-"
-S="${WORKDIR}/${PARCH}"
+	${X509_PATCH:+X509? ( https://dev.gentoo.org/~whissi/dist/openssh/${X509_PATCH} )}
+	"
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 m68k ~mips ppc ppc64 ~riscv s390 sh sparc x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 # Probably want to drop ssl defaulting to on in a future version.
 IUSE="abi_mips_n32 audit bindist debug hpn kerberos kernel_linux ldns libedit libressl livecd pam +pie sctp selinux +ssl static test X X509 xmss"
-
 RESTRICT="!test? ( test )"
-
-REQUIRED_USE="
-	ldns? ( ssl )
+REQUIRED_USE="ldns? ( ssl )
 	pie? ( !static )
 	static? ( !kerberos !pam )
 	X509? ( !sctp ssl )
-	test? ( ssl )
-"
+	test? ( ssl )"
 
 LIB_DEPEND="
 	audit? ( sys-process/audit[static-libs(+)] )
@@ -71,29 +65,24 @@ LIB_DEPEND="
 		)
 		libressl? ( dev-libs/libressl:0=[static-libs(+)] )
 	)
-	virtual/libcrypt:=[static-libs(+)]
-	>=sys-libs/zlib-1.2.3:=[static-libs(+)]
-"
+	>=sys-libs/zlib-1.2.3:=[static-libs(+)]"
 RDEPEND="
 	acct-group/sshd
 	acct-user/sshd
 	!static? ( ${LIB_DEPEND//\[static-libs(+)]} )
 	pam? ( sys-libs/pam )
-	kerberos? ( virtual/krb5 )
-"
+	kerberos? ( virtual/krb5 )"
 DEPEND="${RDEPEND}
 	static? ( ${LIB_DEPEND} )
+	virtual/pkgconfig
 	virtual/os-headers
-"
+	sys-devel/autoconf"
 RDEPEND="${RDEPEND}
 	pam? ( >=sys-auth/pambase-20081028 )
-	userland_GNU? ( virtual/shadow )
-	X? ( x11-apps/xauth )
-"
-BDEPEND="
-	virtual/pkgconfig
-	sys-devel/autoconf
-"
+	userland_GNU? ( sys-apps/shadow )
+	X? ( x11-apps/xauth )"
+
+S="${WORKDIR}/${PARCH}"
 
 pkg_pretend() {
 	# this sucks, but i'd rather have people unable to `emerge -u openssh`
@@ -114,9 +103,9 @@ pkg_pretend() {
 	fi
 
 	# Make sure people who are using tcp wrappers are notified of its removal. #531156
-	if grep -qs '^ *sshd *:' "${EROOT}"/etc/hosts.{allow,deny} ; then
+	if grep -qs '^ *sshd *:' "${EROOT%/}"/etc/hosts.{allow,deny} ; then
 		ewarn "Sorry, but openssh no longer supports tcp-wrappers, and it seems like"
-		ewarn "you're trying to use it.  Update your ${EROOT}/etc/hosts.{allow,deny} please."
+		ewarn "you're trying to use it.  Update your ${EROOT}etc/hosts.{allow,deny} please."
 	fi
 }
 
@@ -129,21 +118,26 @@ src_prepare() {
 	sed -i '/^AuthorizedKeysFile/s:^:#:' sshd_config || die
 
 	eapply "${FILESDIR}"/${PN}-7.9_p1-include-stdlib.patch
-	eapply "${FILESDIR}"/${PN}-8.1_p1-GSSAPI-dns.patch #165444 integrated into gsskex
+	eapply "${FILESDIR}"/${PN}-8.0_p1-GSSAPI-dns.patch #165444 integrated into gsskex
 	eapply "${FILESDIR}"/${PN}-6.7_p1-openssl-ignore-status.patch
 	eapply "${FILESDIR}"/${PN}-7.5_p1-disable-conch-interop-tests.patch
 	eapply "${FILESDIR}"/${PN}-8.0_p1-fix-putty-tests.patch
 	eapply "${FILESDIR}"/${PN}-8.0_p1-deny-shmget-shmat-shmdt-in-preauth-privsep-child.patch
+	eapply "${FILESDIR}"/${PN}-8.0_p1-fix-integer-overflow-in-XMSS-private-key-parsing.patch
+	eapply "${FILESDIR}"/${PN}-8.0_p1-fix-an-unreachable-integer-overflow-similar-to-the-XMSS-case.patch
 	eapply "${FILESDIR}"/${PN}-8.1_p1-tests-2020.patch
+	use X509 || eapply "${FILESDIR}"/${PN}-8.0_p1-tests.patch
 
 	[[ -d ${WORKDIR}/patches ]] && eapply "${WORKDIR}"/patches
 
 	local PATCHSET_VERSION_MACROS=()
 
 	if use X509 ; then
-		pushd "${WORKDIR}" &>/dev/null || die
-		eapply "${FILESDIR}/${P}-X509-glue-"${X509_VER}".patch"
-		popd &>/dev/null || die
+		# X509 12.1-gentoo patch contains the changes from below
+		#pushd "${WORKDIR}" &>/dev/null || die
+		#eapply "${FILESDIR}/${P}-X509-glue-"${X509_VER}".patch"
+		#eapply "${FILESDIR}/${P}-X509-dont-make-piddir-"${X509_VER}".patch"
+		#popd &>/dev/null || die
 
 		eapply "${WORKDIR}"/${X509_PATCH%.*}
 		eapply "${FILESDIR}"/${P}-X509-$(ver_cut 1-2 ${X509_VER})-tests.patch
@@ -180,22 +174,25 @@ src_prepare() {
 
 	if use hpn ; then
 		local hpn_patchdir="${T}/${P}-hpn${HPN_VER}"
-		mkdir "${hpn_patchdir}" || die
-		cp $(printf -- "${DISTDIR}/%s\n" "${HPN_PATCHES[@]}") "${hpn_patchdir}" || die
+		mkdir "${hpn_patchdir}"
+		cp $(printf -- "${DISTDIR}/%s\n" "${HPN_PATCHES[@]}") "${hpn_patchdir}"
 		pushd "${hpn_patchdir}" &>/dev/null || die
-		eapply "${FILESDIR}"/${PN}-8.1_p1-hpn-${HPN_VER}-glue.patch
+		eapply "${FILESDIR}"/${PN}-8.0_p1-hpn-glue.patch
 		if use X509; then
-		#	einfo "Will disable MT AES cipher due to incompatbility caused by X509 patch set"
-		#	# X509 and AES-CTR-MT don't get along, let's just drop it
-		#	rm openssh-${HPN_PV//./_}-hpn-AES-CTR-${HPN_VER}.diff || die
-			eapply "${FILESDIR}"/${PN}-8.0_p1-hpn-${HPN_VER}-X509-glue.patch
+			einfo "Will disable MT AES cipher due to incompatbility caused by X509 patch set"
+			# X509 and AES-CTR-MT don't get along, let's just drop it
+			rm openssh-${HPN_PV//./_}-hpn-AES-CTR-${HPN_VER}.diff || die
+			eapply "${FILESDIR}"/${PN}-8.0_p1-hpn-X509-glue.patch
 		fi
-		use sctp && eapply "${FILESDIR}"/${PN}-8.1_p1-hpn-${HPN_VER}-sctp-glue.patch
+		use sctp && eapply "${FILESDIR}"/${PN}-7.9_p1-hpn-sctp-glue.patch
 		popd &>/dev/null || die
 
 		eapply "${hpn_patchdir}"
 
-		use X509 || eapply "${FILESDIR}/openssh-8.0_p1-hpn-version.patch"
+		if ! use X509; then
+			eapply "${FILESDIR}/openssh-7.9_p1-hpn-openssl-1.1.patch"
+			eapply "${FILESDIR}/openssh-8.0_p1-hpn-version.patch"
+		fi
 
 		einfo "Patching Makefile.in for HPN patch set ..."
 		sed -i \
@@ -356,7 +353,7 @@ tweak_ssh_configs() {
 	)
 
 	# First the server config.
-	cat <<-EOF >> "${ED}"/etc/ssh/sshd_config
+	cat <<-EOF >> "${ED%/}"/etc/ssh/sshd_config
 
 	# Allow client to pass locale environment variables. #367017
 	AcceptEnv ${locale_vars[*]}
@@ -366,7 +363,7 @@ tweak_ssh_configs() {
 	EOF
 
 	# Then the client config.
-	cat <<-EOF >> "${ED}"/etc/ssh/ssh_config
+	cat <<-EOF >> "${ED%/}"/etc/ssh/ssh_config
 
 	# Send locale environment variables. #367017
 	SendEnv ${locale_vars[*]}
@@ -381,13 +378,13 @@ tweak_ssh_configs() {
 			-e "/^#PasswordAuthentication /s:.*:PasswordAuthentication no:" \
 			-e "/^#PrintMotd /s:.*:PrintMotd no:" \
 			-e "/^#PrintLastLog /s:.*:PrintLastLog no:" \
-			"${ED}"/etc/ssh/sshd_config || die
+			"${ED%/}"/etc/ssh/sshd_config || die
 	fi
 
 	if use livecd ; then
 		sed -i \
 			-e '/^#PermitRootLogin/c# Allow root login with password on livecds.\nPermitRootLogin Yes' \
-			"${ED}"/etc/ssh/sshd_config || die
+			"${ED%/}"/etc/ssh/sshd_config || die
 	fi
 }
 
