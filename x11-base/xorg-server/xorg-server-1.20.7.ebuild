@@ -17,7 +17,7 @@ IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
 IUSE="${IUSE_SERVERS} debug elogind ipv6 libressl +libglvnd minimal selinux +suid systemd +udev unwind xcsecurity"
 
 CDEPEND="libglvnd? (
-		media-libs/libglvnd
+		media-libs/libglvnd[X]
 		!app-eselect/eselect-opengl
 	)
 	!libglvnd? ( >=app-eselect/eselect-opengl-1.3.0	)
