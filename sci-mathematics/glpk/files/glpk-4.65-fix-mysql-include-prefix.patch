@@ -1,0 +1,47 @@
+From 5cff695e9eb8405efbdfa976f1fad965c55436e8 Mon Sep 17 00:00:00 2001
+From: Michael Orlitzky <michael@orlitzky.com>
+Date: Fri, 6 Mar 2020 16:24:10 -0500
+Subject: [PATCH 1/1] configure.ac: attempt mysql_config to find the MySQL
+ headers.
+
+When building with MySQL support, the configure script guesses that
+the path to the MySQL headers is /usr/include/mysql. That is usually
+correct, but when people install MySQL to a nonstandard location such
+as /home/mjo/usr, it falls over. Fortunately, MySQL usually provides
+an executable called "mysql_config" that can output the location of
+its headers.
+
+In such a "local" installation, if I prepend /home/mjo/usr/bin to my
+PATH, then running "mysql_config" will execute the mysql_config from
+/home/mjo/usr/bin and will therefore output -I/home/mjo/usr/include as
+the preprocessor flag that glpk needs. That's the right thing to do,
+and it works just as well for a system install under /usr or
+/usr/local.
+
+This commit attempts to find the headers using mysql_config first,
+and falls back to the location /usr/include/mysql.
+
+Gentoo-bug: https://bugs.gentoo.org/597620
+---
+ configure.ac | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 96c4cc5..d20a6ef 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -145,7 +145,10 @@ if test "$enable_mysql" = "yes"; then
+       AC_MSG_ERROR([--enable-mysql requires --enable-dl])
+    fi
+    AC_MSG_RESULT([yes])
+-   CPPFLAGS="-I/usr/include/mysql $CPPFLAGS"
++   # Guess at the include directory if mysql_config isn't in our PATH.
++   MYSQL_INCLUDE=$(mysql_config --include 2>/dev/null)
++   test -z "${MYSQL_INCLUDE}" && MYSQL_INCLUDE="-I/usr/include/mysql"
++   CPPFLAGS="${MYSQL_INCLUDE} $CPPFLAGS"
+    AC_DEFINE_UNQUOTED([MYSQL_DLNAME], ["$LIBMYSQL"], [N/A])
+ else
+    AC_MSG_RESULT([no])
+-- 
+2.24.1
+
