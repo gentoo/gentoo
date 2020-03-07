@@ -1,32 +1,32 @@
-# Copyright 2010-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 DB_VER="4.8"
-inherit autotools bash-completion-r1 db-use gnome2-utils xdg-utils
+inherit autotools bash-completion-r1 db-use desktop xdg-utils
 
-BITCOINCORE_COMMITHASH="ef70f9b52b851c7997a9f1a0834714e3eebc1fd8"
-KNOTS_PV="${PV}.knots20181229"
+BITCOINCORE_COMMITHASH="58ba7c314d552cea8cb024960a8504577aee586f"
+KNOTS_PV="${PV}.knots20200304"
 KNOTS_P="bitcoin-${KNOTS_PV}"
 
 DESCRIPTION="An end-user Qt GUI for the Bitcoin crypto-currency"
 HOMEPAGE="https://bitcoincore.org/ https://bitcoinknots.org/"
 SRC_URI="
 	https://github.com/bitcoin/bitcoin/archive/${BITCOINCORE_COMMITHASH}.tar.gz -> bitcoin-v${PV}.tar.gz
-	https://bitcoinknots.org/files/0.17.x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
+	https://bitcoinknots.org/files/0.19.x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
 "
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 
-IUSE="+asm +bip70 +bitcoin_policy_rbf dbus kde knots libressl +qrcode +system-leveldb test upnp +wallet zeromq"
+IUSE="+asm bip70 dbus kde knots libressl +qrcode +system-leveldb test upnp +wallet zeromq"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
 	>=dev-libs/boost-1.52.0:=[threads(+)]
-	>=dev-libs/libsecp256k1-0.0.0_pre20151118:=[recovery]
+	>dev-libs/libsecp256k1-0.1_pre20170321:=[recovery]
 	>=dev-libs/univalue-1.0.4:=
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
@@ -45,7 +45,8 @@ RDEPEND="
 	wallet? ( sys-libs/db:$(db_ver_to_slot "${DB_VER}")=[cxx] )
 	zeromq? ( net-libs/zeromq:= )
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	dev-qt/linguist-tools:5
 	knots? (
 		gnome-base/librsvg
@@ -53,7 +54,18 @@ DEPEND="${RDEPEND}
 	)
 "
 
-DOCS=( doc/bips.md doc/descriptors.md doc/files.md doc/reduce-traffic.md doc/release-notes.md doc/REST-interface.md doc/tor.md )
+DOCS=(
+	doc/bips.md
+	doc/bitcoin-conf.md
+	doc/descriptors.md
+	doc/files.md
+	doc/JSON-RPC-interface.md
+	doc/psbt.md
+	doc/reduce-traffic.md
+	doc/release-notes.md
+	doc/REST-interface.md
+	doc/tor.md
+)
 
 S="${WORKDIR}/bitcoin-${BITCOINCORE_COMMITHASH}"
 
@@ -61,20 +73,15 @@ pkg_pretend() {
 	if use knots; then
 		elog "You are building ${PN} from Bitcoin Knots."
 		elog "For more information, see:"
-		elog "https://bitcoinknots.org/files/0.17.x/${KNOTS_PV}/${KNOTS_P}.desc.html"
+		elog "https://bitcoinknots.org/files/0.19.x/${KNOTS_PV}/${KNOTS_P}.desc.html"
 	else
 		elog "You are building ${PN} from Bitcoin Core."
 		elog "For more information, see:"
-		elog "https://bitcoincore.org/en/2018/12/25/release-${PV}/"
+		elog "https://bitcoincore.org/en/2020/03/04/release-${PV}/"
 	fi
-	if use bitcoin_policy_rbf; then
-		elog "Replace By Fee policy is enabled: Your node will preferentially mine and"
-		elog "relay transactions paying the highest fee, regardless of receive order."
-	else
-		elog "Replace By Fee policy is disabled: Your node will only accept the first"
-		elog "transaction seen consuming a conflicting input, regardless of fee"
-		elog "offered by later ones."
-	fi
+	elog "Replace By Fee policy is now always enabled by default: Your node will"
+	elog "preferentially mine and relay transactions paying the highest fee, regardless"
+	elog "of receive order. To disable RBF, set mempoolreplacement=never in bitcoin.conf"
 }
 
 src_prepare() {
@@ -85,7 +92,6 @@ src_prepare() {
 
 	local knots_patchdir="${WORKDIR}/${KNOTS_P}.patches/"
 
-	eapply "${FILESDIR}"/${PN}-0.16.3-boost-1.72-missing-include.patch
 	eapply "${knots_patchdir}/${KNOTS_P}.syslibs.patch"
 
 	if use knots; then
@@ -96,17 +102,14 @@ src_prepare() {
 
 	eapply_user
 
-	if ! use bitcoin_policy_rbf; then
-		sed -i 's/\(DEFAULT_ENABLE_REPLACEMENT = \)true/\1false/' src/validation.h || die
-	fi
-
 	echo '#!/bin/true' >share/genbuild.sh || die
 	mkdir -p src/obj || die
 	echo "#define BUILD_SUFFIX gentoo${PVR#${PV}}" >src/obj/build.h || die
 
 	eautoreconf
+	rm -r src/secp256k1 || die
 	if use system-leveldb; then
-		rm -r src/leveldb src/secp256k1 || die
+		rm -r src/leveldb || die
 	fi
 }
 
@@ -124,9 +127,12 @@ src_configure() {
 		--with-gui=qt5
 		--disable-util-cli
 		--disable-util-tx
+		--disable-util-wallet
 		--disable-bench
 		--without-libs
 		--without-daemon
+		--without-rapidcheck
+		--disable-fuzz
 		--disable-ccache
 		--disable-static
 		$(use_with system-leveldb)
@@ -139,7 +145,7 @@ src_configure() {
 src_install() {
 	default
 
-	rm -f "${ED%/}/usr/bin/test_bitcoin" || die
+	rm -f "${ED}/usr/bin/test_bitcoin" || die
 
 	insinto /usr/share/icons/hicolor/scalable/apps/
 	doins bitcoin128.svg
@@ -147,11 +153,11 @@ src_install() {
 		newins src/qt/res/src/bitcoin.svg bitcoinknots.svg
 	fi
 
-	insinto /usr/share/applications
-	doins "${FILESDIR}/org.bitcoin.bitcoin-qt.desktop"
+	cp "${FILESDIR}/org.bitcoin.bitcoin-qt.desktop" "${T}" || die
 	if ! use knots; then
-		sed -i 's/Knots/Core/;s/^\(Icon=\).*$/\1bitcoin128/' "${D}/usr/share/applications/org.bitcoin.bitcoin-qt.desktop" || die
+		sed -i 's/Knots/Core/;s/^\(Icon=\).*$/\1bitcoin128/' "${T}/org.bitcoin.bitcoin-qt.desktop" || die
 	fi
+	domenu "${T}/org.bitcoin.bitcoin-qt.desktop"
 
 	use zeromq && dodoc doc/zmq.md
 
@@ -165,7 +171,7 @@ src_install() {
 }
 
 update_caches() {
-	gnome2_icon_cache_update
+	xdg_icon_cache_update
 	xdg_desktop_database_update
 }
 

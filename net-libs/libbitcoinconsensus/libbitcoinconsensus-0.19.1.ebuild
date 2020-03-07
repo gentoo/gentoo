@@ -1,19 +1,19 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools
 
-BITCOINCORE_COMMITHASH="2472733a24a9364e4c6233ccd04166a26a68cc65"
-KNOTS_PV="${PV}.knots20190502"
+BITCOINCORE_COMMITHASH="58ba7c314d552cea8cb024960a8504577aee586f"
+KNOTS_PV="${PV}.knots20200304"
 KNOTS_P="bitcoin-${KNOTS_PV}"
 
 DESCRIPTION="Bitcoin Core consensus library"
 HOMEPAGE="https://bitcoincore.org/ https://bitcoinknots.org/"
 SRC_URI="
 	https://github.com/bitcoin/bitcoin/archive/${BITCOINCORE_COMMITHASH}.tar.gz -> bitcoin-v${PV}.tar.gz
-	https://bitcoinknots.org/files/0.18.x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
+	https://bitcoinknots.org/files/0.19.x/${KNOTS_PV}/${KNOTS_P}.patches.txz -> ${KNOTS_P}.patches.tar.xz
 "
 
 LICENSE="MIT"
@@ -22,7 +22,7 @@ KEYWORDS="~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="+asm knots libressl"
 
 DEPEND="
-	>=dev-libs/libsecp256k1-0.0.0_pre20151118:=[recovery]
+	>dev-libs/libsecp256k1-0.1_pre20170321:=[recovery]
 	!libressl? ( dev-libs/openssl:0=[-bindist] )
 	libressl? ( dev-libs/libressl:0= )
 "
@@ -36,11 +36,11 @@ pkg_pretend() {
 	if use knots; then
 		elog "You are building ${PN} from Bitcoin Knots."
 		elog "For more information, see:"
-		elog "https://bitcoinknots.org/files/0.18.x/${KNOTS_PV}/${KNOTS_P}.desc.html"
+		elog "https://bitcoinknots.org/files/0.19.x/${KNOTS_PV}/${KNOTS_P}.desc.html"
 	else
 		elog "You are building ${PN} from Bitcoin Core."
 		elog "For more information, see:"
-		elog "https://bitcoincore.org/en/2019/05/02/release-${PV}/"
+		elog "https://bitcoincore.org/en/2020/03/04/release-${PV}/"
 	fi
 }
 
