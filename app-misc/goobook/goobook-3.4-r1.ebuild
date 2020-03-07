@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -17,8 +17,10 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-	>=dev-python/google-api-python-client-1.6.4[${PYTHON_USEDEP}]"
-# dev-python/{simplejson,oauth2client} are deps for the above
+	>=dev-python/google-api-python-client-1.6.4[${PYTHON_USEDEP}]
+	>=dev-python/simplejson-2.1.0[${PYTHON_USEDEP}]
+	>=dev-python/oauth2client-1.5.0[${PYTHON_USEDEP}]
+	<dev-python/oauth2client-5[${PYTHON_USEDEP}]"
 
 DEPEND="${PYTHON_DEPS}"
 
