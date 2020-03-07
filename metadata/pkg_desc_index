@@ -1703,7 +1703,7 @@ app-eselect/eselect-pdftex 0.3: pdftex module for eselect
 app-eselect/eselect-php 0.9.4-r5 0.9.5 0.9.6 9999: PHP eselect module
 app-eselect/eselect-pinentry 0.7: Manage /usr/bin/pinentry symlink
 app-eselect/eselect-postgresql 2.4: Utility to select the default PostgreSQL slot
-app-eselect/eselect-python 20160516 20171204 20190417 99999999: Eselect module for management of multiple Python versions
+app-eselect/eselect-python 20190417 99999999: Eselect module for management of multiple Python versions
 app-eselect/eselect-rails 0.24: Manages Ruby on Rails symlinks
 app-eselect/eselect-renpy 0.7: Manages renpy symlink
 app-eselect/eselect-repository 7: Manage repos.conf via eselect
@@ -2777,7 +2777,7 @@ app-text/wscr 1.2-r1 1.2-r2: A Lightweight and Fast Anagram Solver
 app-text/wv 1.2.9-r2: Tool for conversion of MSWord doc and rtf files to something readable
 app-text/wv2 0.4.2-r2: Excellent MS Word filter lib, used in most Office suites
 app-text/xapers 0.8.2: Personal document indexing system
-app-text/xapian-omega 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13 1.4.14: An application built on Xapian, consisting of indexers and a CGI search frontend
+app-text/xapian-omega 1.2.25 1.4.7 1.4.14 1.4.15: An application built on Xapian, consisting of indexers and a CGI search frontend
 app-text/xchm 1.23-r1 1.29 1.30 1.31 9999: Utility for viewing Compiled HTML Help (CHM) files
 app-text/xdvik 22.87.03-r1 22.87.03-r2: DVI previewer for X Window System
 app-text/xhtml1 20020801-r6: DTDs for the eXtensible HyperText Markup Language 1.0
@@ -4763,7 +4763,7 @@ dev-lang/pcc 1.1.0-r1 9999: pcc portable c compiler
 dev-lang/perl 5.30.1: Larry Wall's Practical Extraction and Report Language
 dev-lang/php 7.2.26 7.2.27 7.2.28-r1 7.3.13 7.3.14 7.3.15-r1 7.4.3-r1: The PHP language runtime engine
 dev-lang/polyml 5.4.1 5.5.0 5.5.1 5.5.2 5.6 5.8: Poly/ML is a full implementation of Standard ML
-dev-lang/python 2.7.17 2.7.17-r1 3.6.9 3.6.10 3.7.5-r1 3.7.6 3.8.1 3.8.2 3.9.0_alpha2 3.9.0_alpha4: An interpreted, interactive, object-oriented programming language
+dev-lang/python 2.7.17-r1 3.6.10 3.7.6 3.8.2 3.9.0_alpha4: An interpreted, interactive, object-oriented programming language
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 9999: A compiler for the Perl 6 programming language
@@ -5286,8 +5286,8 @@ dev-libs/wayland 1.17.0 1.18.0 9999: Wayland protocol libraries
 dev-libs/wayland-protocols 1.18 1.19 1.20 9999: Wayland protocol files
 dev-libs/weston 3.0.0-r1 8.0.0 9999: Wayland reference compositor
 dev-libs/xalan-c 1.11.0_pre1153059: XSLT processor for transforming XML into HTML, text, or other XML types
-dev-libs/xapian 1.2.24 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13 1.4.14: Xapian Probabilistic Information Retrieval library
-dev-libs/xapian-bindings 1.2.25 1.4.5 1.4.7 1.4.8 1.4.9 1.4.10 1.4.11 1.4.12 1.4.13 1.4.14: SWIG and JNI bindings for Xapian
+dev-libs/xapian 1.2.25 1.4.7 1.4.11 1.4.14 1.4.15: Xapian Probabilistic Information Retrieval library
+dev-libs/xapian-bindings 1.2.25 1.4.7 1.4.14 1.4.15: SWIG and JNI bindings for Xapian
 dev-libs/xbyak 5.73: JIT assembler for x86(IA-32)/x64(AMD64, x86-64)
 dev-libs/xerces-c 3.2.2-r1 9999: A validating XML parser written in a portable subset of C++
 dev-libs/xmlrpc-c 1.39.11-r1: A lightweigt RPC library based on XML and HTTP
@@ -7598,7 +7598,7 @@ dev-python/cryptography-vectors 2.6.1: Test vectors for the cryptography package
 dev-python/css-parser 1.0.4 1.0.4-r1: A CSS Cascading Style Sheets library (fork of cssutils)
 dev-python/cssselect 1.1.0: parses CSS3 Selectors and translates them to XPath 1.0
 dev-python/cssselect2 0.2.0: parses CSS3 Selectors and translates them to XPath 1.0
-dev-python/cssutils 1.0.1 1.0.2-r1 1.0.2-r2: A CSS Cascading Style Sheets library
+dev-python/cssutils 1.0.2-r2: A CSS Cascading Style Sheets library
 dev-python/ctypescrypto 0.5 9999: Python interface to some openssl function based on ctypes module
 dev-python/ctypesgen 0_p72-r1: Python wrapper generator for ctypes
 dev-python/cursive 0.2.2: Cursive implements OpenStack-specific validation of digital signatures.
@@ -7606,7 +7606,7 @@ dev-python/curtsies 0.2.11 0.3.0 0.3.0-r1: Curses-like terminal wrapper, with co
 dev-python/cvxopt 1.1.9: Python package for convex optimization
 dev-python/cx_Freeze 5.0.2: Create standalone executables from Python scripts
 dev-python/cycler 0.10.0 0.10.0-r1: Composable style cycles
-dev-python/cython 0.29.4 0.29.14-r1 0.29.15: A Python to C compiler
+dev-python/cython 0.29.14-r1 0.29.15: A Python to C compiler
 dev-python/cytoolz 0.8.0 0.8.2 0.10.0: Cython implementation of Toolz: High performance functional utilities
 dev-python/d2to1 0.2.12_p1: Allows using distutils2-like setup.cfg files for a package metadata
 dev-python/daemonize 2.5.0: Library for writing system daemons in Python
@@ -8028,7 +8028,7 @@ dev-python/logbook 1.1.0 1.4.0: A logging replacement for Python
 dev-python/logfury 0.1.2: Boilerplate library for logging method calls
 dev-python/loguru 0.3.2 0.4.0 0.4.1: Python logging made (stupidly) simple
 dev-python/logutils 0.3.3 0.3.3-r1: The logutils package provides a set of handlers for the Python standard
-dev-python/lxml 4.3.3 4.4.2 4.4.3 4.5.0: A Pythonic binding for the libxml2 and libxslt libraries
+dev-python/lxml 4.4.2 4.4.3 4.5.0: A Pythonic binding for the libxml2 and libxslt libraries
 dev-python/lz4 0.8.2 0.10.1 2.1.6: LZ4 Bindings for Python
 dev-python/m2crypto 0.31.0-r2 0.35.2: A Python crypto and SSL toolkit
 dev-python/m2r 0.1.14 0.2.1: Markdown to reStructuredText converter
@@ -8527,7 +8527,7 @@ dev-python/pytest-pep8 1.0.6 1.0.6-r1: pytest plugin to check PEP8 requirements
 dev-python/pytest-pylint 0.7.1 0.14.1: pytest plugin to check source code with pylint
 dev-python/pytest-qt 3.3.0: pytest plugin for PyQt4 or PyQt5 applications
 dev-python/pytest-rerunfailures 2.1.0 7.0 8.0: pytest plugin to re-run tests to eliminate flaky failures
-dev-python/pytest-runner 4.2 5.2: Adds support for tests during installation of setup.py files
+dev-python/pytest-runner 5.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-salt 2019.2.1_p1: PyTest Salt Plugin
 dev-python/pytest-services 2.0.1: Collection of fixtures and utility functions to run service processes for pytest
 dev-python/pytest-shutil 1.2.11 1.7.0: A goodie-bag of unix shell and environment tools for py.test
@@ -8997,7 +8997,7 @@ dev-python/webob 1.8.2 1.8.2-r1 1.8.5 1.8.5-r1 1.8.5-r3: WSGI request and respon
 dev-python/websocket-client 0.37.0 0.40.0 0.47.0 0.48.0 0.56.0: WebSocket client for python with hybi13 support
 dev-python/websockify 0.8.0: WebSockets support for any application/server
 dev-python/webtest 2.0.21 2.0.29 2.0.29-r1 2.0.33: Helper to test WSGI applications
-dev-python/werkzeug 0.12.2 0.14.1 0.15.4 0.15.5 0.16.0 0.16.1 1.0.0: Collection of various utilities for WSGI applications
+dev-python/werkzeug 0.16.0 0.16.1 1.0.0: Collection of various utilities for WSGI applications
 dev-python/wheel 0.29.0 0.33.6 0.34.2: A built-package format for Python
 dev-python/whelk 2.7.1: Pretending python is a shell
 dev-python/whichcraft 0.4.1: This package provides cross-platform cross-python shutil.which functionality
@@ -12257,7 +12257,7 @@ mail-mta/esmtp 1.2-r1: User configurable relay-only Mail Transfer Agent with a s
 mail-mta/exim 4.92.2 4.92.3 4.93.0.4: A highly configurable, drop-in replacement for sendmail
 mail-mta/msmtp 1.8.7-r1: An SMTP client and SMTP plugin for mail user agents such as Mutt
 mail-mta/netqmail 1.06-r12: qmail -- a secure, reliable, efficient, simple message transfer agent
-mail-mta/nullmailer 1.13-r5 2.0 2.0-r1 2.0-r2 2.2: Simple relay-only local mail transport agent
+mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.6.4_p1: Lightweight but featured SMTP daemon from OpenBSD
 mail-mta/postfix 3.4.5-r1 3.4.6 3.4.7 3.4.8 3.4.9 3.5_pre20200203: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge-bin 1.1.6 1.2.2 1.2.3: Serves ProtonMail to IMAP/SMTP clients
@@ -17494,7 +17494,7 @@ sys-libs/libomp 7.1.0 8.0.1 9.0.1 10.0.0_rc3 10.0.0.9999 11.0.0.9999: OpenMP run
 sys-libs/libosinfo 1.4.0 1.6.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
-sys-libs/libseccomp 2.4.0 2.4.1 2.4.2-r1: high level interface to Linux seccomp filter
+sys-libs/libseccomp 2.4.2-r1 2.4.3: high level interface to Linux seccomp filter
 sys-libs/libselinux 2.9-r1 3.0 9999: SELinux userland library
 sys-libs/libsemanage 2.9 3.0 9999: SELinux kernel and policy management library
 sys-libs/libsepol 2.9 3.0 9999: SELinux binary policy representation library
