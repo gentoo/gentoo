@@ -17,10 +17,9 @@ SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 
 IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http jemalloc
-	kerberos ldap libcxx memstat +minuit mysql nosplash odbc +opengl
-	oracle postgres prefix pythia6 pythia8 +python qt5 R +roofit root7
-	shadow sqlite +ssl table +tbb test +threads +tiff +tmva +unuran vc
-	xinetd +xml xrootd zeroconf"
+	libcxx memstat +minuit mysql nosplash odbc +opengl oracle postgres
+	prefix pythia6 pythia8 +python qt5 R +roofit root7 shadow sqlite
+	+ssl +tbb test +threads +tiff +tmva +unuran vc +vmc +xml xrootd"
 RESTRICT="!test? ( test )"
 
 SLOT="$(ver_cut 1-2)/$(ver_cut 3)"
@@ -68,7 +67,6 @@ CDEPEND="
 		)
 	)
 	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff?] )
-	zeroconf? ( net-dns/avahi[mdnsresponder-compat] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
 	davix? ( net-libs/davix )
 	emacs? ( >=app-editors/emacs-23.1:* )
@@ -78,8 +76,6 @@ CDEPEND="
 	gsl? ( sci-libs/gsl:= )
 	http? ( dev-libs/fcgi:0= )
 	jemalloc? ( dev-libs/jemalloc )
-	kerberos? ( virtual/krb5 )
-	ldap? ( net-nds/openldap:0= )
 	libcxx? ( sys-libs/libcxx )
 	unuran? ( sci-mathematics/unuran:0= )
 	minuit? ( !sci-libs/minuit )
@@ -91,7 +87,7 @@ CDEPEND="
 	pythia8? ( sci-physics/pythia:8 )
 	python? ( ${PYTHON_DEPS} )
 	R? ( dev-lang/R )
-	shadow? ( virtual/shadow )
+	shadow? ( sys-apps/shadow )
 	sqlite? ( dev-db/sqlite:3 )
 	ssl? ( dev-libs/openssl:0= )
 	tbb? ( >=dev-cpp/tbb-2018 )
@@ -108,13 +104,10 @@ CDEPEND="
 DEPEND="${CDEPEND}
 	virtual/pkgconfig"
 
-RDEPEND="${CDEPEND}
-	xinetd? ( sys-apps/xinetd )"
+RDEPEND="${CDEPEND}"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-6.12.04-no-ocaml.patch
 	"${FILESDIR}"/${PN}-6.12.06_cling-runtime-sysroot.patch
-	"${FILESDIR}"/${PN}-6.14.06-oracle.patch
 )
 
 pkg_setup() {
@@ -138,8 +131,6 @@ src_prepare() {
 	if use nosplash; then
 		sed -i -e '/bool gNoLogo/s@false@true@' rootx/src/rootx.cxx
 	fi
-
-	hprefixify core/clingutils/CMakeLists.txt
 }
 
 # Note: ROOT uses bundled clang because it is patched and API-incompatible
@@ -152,6 +143,7 @@ src_configure() {
 	local mycmakeargs=(
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
+		-DCMAKE_CXX_STANDARD=$((usev c++11 || usev c++14 || usev c++17) | cut -c4-)
 		-DPYTHON_EXECUTABLE="${EPREFIX}/usr/bin/${EPYTHON}"
 		-DCMAKE_INSTALL_PREFIX="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)"
 		-DCMAKE_INSTALL_MANDIR="${EPREFIX}/usr/lib/${PN}/$(ver_cut 1-2)/share/man"
@@ -189,23 +181,18 @@ src_configure() {
 		-Dbuiltin_zlib=OFF
 		-Dx11=$(usex X)
 		-Dxft=$(usex X)
-		-Dafdsmgrd=OFF
-		-Dafs=OFF # not implemented
 		-Dalien=OFF
+		-Darrow=OFF
 		-Dasimage=$(usex asimage)
 		-Dastiff=$(usex tiff)
-		-Dbonjour=$(usex zeroconf)
 		-Dlibcxx=$(usex libcxx)
 		-Dccache=OFF # use ccache via portage
-		-Dcastor=OFF
+		-Dcefweb=OFF
 		-Dchirp=OFF
 		-Dclad=OFF
 		-Dcling=ON # cling=OFF is broken
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
-		-Dcxx11=$(usex c++11)
-		-Dcxx14=$(usex c++14)
-		-Dcxx17=$(usex c++17)
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
@@ -218,17 +205,12 @@ src_configure() {
 		-Dgeocad=OFF
 		-Dgfal=OFF
 		-Dgl2ps=$(usex opengl)
-		-Dglite=OFF # not implemented
-		-Dglobus=OFF
 		-Dgminimal=OFF
 		-Dgsl_shared=$(usex gsl)
 		-Dgviz=$(usex graphviz)
-		-Dhdfs=OFF
 		-Dhttp=$(usex http)
 		-Dimt=$(usex tbb)
 		-Djemalloc=$(usex jemalloc)
-		-Dkrb5=$(usex kerberos)
-		-Dldap=$(usex ldap)
 		-Dmathmore=$(usex gsl)
 		-Dmemstat=$(usex memstat)
 		-Dminimal=OFF
@@ -245,23 +227,16 @@ src_configure() {
 		-Dpythia8=$(usex pythia8)
 		-Dpython=$(usex python)
 		-Dqt5web=$(usex qt5)
-		-Dqtgsi=OFF
-		-Dqt=OFF
-		-Drfio=OFF
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)
 		-Drootbench=OFF
 		-Droottest=OFF
 		-Drpath=OFF
-		-Druby=OFF # deprecated and broken
 		-Druntime_cxxmodules=OFF # does not work yet
 		-Dr=$(usex R)
-		-Dsapdb=OFF # not implemented
 		-Dshadowpw=$(usex shadow)
 		-Dsqlite=$(usex sqlite)
-		-Dsrp=OFF # not implemented
 		-Dssl=$(usex ssl)
-		-Dtable=$(usex table)
 		-Dtcmalloc=OFF
 		-Dtesting=$(usex test)
 		-Dthread=$(usex threads)
@@ -270,6 +245,7 @@ src_configure() {
 		-Dtmva-gpu=$(usex cuda)
 		-Dunuran=$(usex unuran)
 		-Dvc=$(usex vc)
+		-Dvmc=$(usex vmc)
 		-Dvdt=OFF
 		-Dveccore=OFF
 		-Dxml=$(usex xml)
@@ -312,7 +288,7 @@ src_install() {
 
 	pushd "${D}/${ROOTSYS}" > /dev/null
 
-	rm -r test emacs bin/*.{csh,sh} || die
+	rm -r emacs bin/*.{csh,sh,fish} || die
 
 	if ! use examples; then
 		rm -r tutorials || die
