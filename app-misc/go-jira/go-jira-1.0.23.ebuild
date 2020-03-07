@@ -101,9 +101,8 @@ EGO_SUM=(
 	"gopkg.in/op/go-logging.v1 v1.0.0-20160211212156-b2cb9fa56473/go.mod"
 	"gopkg.in/yaml.v2 v2.2.2"
 	"gopkg.in/yaml.v2 v2.2.2/go.mod"
-)
+	)
 go-module_set_globals
-
 SRC_URI="https://github.com/go-jira/jira/archive/v${PV}.tar.gz -> ${P}.tar.gz
 	${EGO_SUM_SRC_URI}"
 
