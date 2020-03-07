@@ -16,7 +16,9 @@ LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-DEPEND="media-video/vdr[permashift]"
+DEPEND="|| ( ~media-video/vdr-2.2.0[permashift]
+	>=media-video/vdr-2.4.1-r3[permashift]
+	)"
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/Permashift-${GIT_VERSION}"
