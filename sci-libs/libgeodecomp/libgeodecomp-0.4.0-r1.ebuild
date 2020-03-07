@@ -22,10 +22,10 @@ BDEPEND="
 		)"
 RDEPEND="dev-libs/boost"
 DEPEND="${RDEPEND}
-	hpx? ( sys-cluster/hpx )
 	<dev-libs/libflatarray-0.3.0
-	mpi? ( virtual/mpi )
 	cuda? ( dev-util/nvidia-cuda-toolkit )
+	hpx? ( sys-cluster/hpx )
+	mpi? ( virtual/mpi )
 	opencl? ( virtual/opencl )
 	opencv? ( media-libs/opencv )
 	silo? ( sci-libs/silo )"
@@ -44,15 +44,15 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
-		-DWITH_MPI=$(usex mpi)
 		-DWITH_CUDA=$(usex cuda)
+		-DWITH_HPX=$(usex hpx)
+		-DWITH_MPI=$(usex mpi)
 		-DWITH_OPENCL=$(usex opencl)
 		-DWITH_OPENCV=$(usex opencv)
-		-DWITH_SILO=$(usex silo)
 		-DWITH_SCOTCH=false
-		-DWITH_HPX=$(usex hpx)
-		-DWITH_VISIT=false
+		-DWITH_SILO=$(usex silo)
 		-DWITH_TYPEMAPS=false
+		-DWITH_VISIT=false
 	)
 	cmake_src_configure
 }
