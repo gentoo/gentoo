@@ -7450,7 +7450,7 @@ dev-python/atomicwrites 1.1.5-r2 1.1.5-r3 1.2.1 1.3.0: Atomic file writes
 dev-python/atpublic 1.0: A decorator and function to polulate a module's __all__ and the module globals.
 dev-python/attrs 19.3.0: Attributes without boilerplate
 dev-python/audioread 2.1.8-r1: Wrapper for audio file decoding using FFmpeg or GStreamer
-dev-python/authheaders 0.12.1: A library wrapping email authentication header verification and generation.
+dev-python/authheaders 0.12.1 0.13.0: A library wrapping email authentication header verification and generation.
 dev-python/authres 0.800 1.1.1: Authentication-Results Headers generation and parsing
 dev-python/autobahn 17.5.1-r2 17.9.1 17.9.2 17.10.1 18.3.1: WebSocket and WAMP for Twisted and Asyncio
 dev-python/automat 0.8.0: Self-service finite-state machines for the programmer on the go
