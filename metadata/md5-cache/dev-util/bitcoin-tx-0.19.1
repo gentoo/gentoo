@@ -1,0 +1,14 @@
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=configure install prepare pretend
+DEPEND=>=dev-libs/boost-1.52.0:=[threads(+)] >dev-libs/libsecp256k1-0.1_pre20170321:=[recovery] >=dev-libs/univalue-1.0.4:= !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= )
+DESCRIPTION=Command-line Bitcoin transaction tool
+EAPI=7
+HOMEPAGE=https://bitcoincore.org/ https://bitcoinknots.org/
+IUSE=knots libressl
+KEYWORDS=~amd64 ~arm ~arm64 ~mips ~ppc ~ppc64 ~x86 ~amd64-linux ~x86-linux
+LICENSE=MIT
+RDEPEND=>=dev-libs/boost-1.52.0:=[threads(+)] >dev-libs/libsecp256k1-0.1_pre20170321:=[recovery] >=dev-libs/univalue-1.0.4:= !libressl? ( dev-libs/openssl:0=[-bindist] ) libressl? ( dev-libs/libressl:0= )
+SLOT=0
+SRC_URI=https://github.com/bitcoin/bitcoin/archive/58ba7c314d552cea8cb024960a8504577aee586f.tar.gz -> bitcoin-v0.19.1.tar.gz https://bitcoinknots.org/files/0.19.x/0.19.1.knots20200304/bitcoin-0.19.1.knots20200304.patches.txz -> bitcoin-0.19.1.knots20200304.patches.tar.xz
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=d2c7f1afab58c255b28348d9f3082284
