@@ -17,6 +17,7 @@ LICENSE="LGPL-2.1 MPL-1.1 MakeMKV-EULA openssl"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
 IUSE="+gui libav libressl"
+RESTRICT="bindist mirror"
 
 QA_PREBUILT="usr/bin/makemkvcon usr/bin/mmdtsdec"
 
