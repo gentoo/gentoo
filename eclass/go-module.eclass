@@ -57,6 +57,12 @@ _GO_MODULE=1
 
 BDEPEND=">=dev-lang/go-1.12"
 
+# Workaround for pkgcheck false positive: https://github.com/pkgcore/pkgcheck/issues/214
+# MissingUnpackerDep: version ...: missing BDEPEND="app-arch/unzip"
+# Added here rather than to each affected package, so it can be cleaned up just
+# once when pkgcheck is improved.
+BDEPEND+=" app-arch/unzip"
+
 # Force go to build in module mode.
 # In this mode the GOPATH environment variable is ignored.
 # this will become the default in the future.
