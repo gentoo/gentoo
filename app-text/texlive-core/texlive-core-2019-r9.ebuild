@@ -157,7 +157,7 @@ src_prepare() {
 		eapply "${WORKDIR}"/patches/${P}-poppler083.patch
 		eapply "${WORKDIR}"/patches/${P}-poppler084.patch
 	elif has_version "=app-text/poppler-0.86*"; then
-		eapply "${WORKDIR}"/patches/${P}-poppler-086.patch
+		eapply "${WORKDIR}"/patches/${P}-poppler086.patch
 	else
 		eapply "${WORKDIR}"/patches/${P}-poppler076.patch
 	fi
