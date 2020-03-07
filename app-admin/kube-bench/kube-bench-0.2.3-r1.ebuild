@@ -2,6 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+inherit go-module
 EGO_PN=github.com/aquasecurity/kube-bench
 
 DESCRIPTION="Kubernetes Bench for Security runs the CIS Kubernetes Benchmark"
@@ -359,11 +360,8 @@ EGO_SUM=(
 	"sigs.k8s.io/structured-merge-diff v0.0.0-20190525122527-15d366b2352e/go.mod"
 	"sigs.k8s.io/yaml v1.1.0"
 	"sigs.k8s.io/yaml v1.1.0/go.mod"
-)
-inherit go-module
-
+	)
 go-module_set_globals
-
 SRC_URI="https://github.com/aquasecurity/kube-bench/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${EGO_SUM_SRC_URI}"
 
