@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~ppc ~s390 ~sparc ~x86"
 IUSE=""
 
-DEPEND="virtual/shadow"
+DEPEND="sys-apps/shadow"
 
 src_prepare() {
 	sed -i \
