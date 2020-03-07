@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
-inherit flag-o-matic linux-info xdg-utils
+inherit flag-o-matic linux-info xdg
 
 MY_P=makemkv-oss-${PV}
 MY_PB=makemkv-bin-${PV}
@@ -56,7 +56,6 @@ src_configure() {
 	econf \
 		--enable-debug \
 		--disable-noec \
-		--disable-qt4 \
 		$(use_enable gui) \
 		$(use_enable gui qt5)
 }
@@ -86,13 +85,13 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_icon_cache_update
+	xdg_pkg_postinst
 
 	elog "While MakeMKV is in beta mode, upstream has provided a license"
 	elog "to use if you do not want to purchase one."
 	elog ""
 	elog "See this forum thread for more information, including the key:"
-	elog "http://www.makemkv.com/forum2/viewtopic.php?f=5&t=1053"
+	elog "https://www.makemkv.com/forum/viewtopic.php?f=5&t=1053"
 	elog ""
 	elog "Note that beta license may have an expiration date and you will"
 	elog "need to check for newer licenses/releases. "
@@ -106,8 +105,4 @@ pkg_postinst() {
 	elog "titles under players like VLC and mplayer. To enable this, set"
 	elog "the following variables when launching the player:"
 	elog "LIBAACS_PATH=libmmbd LIBBDPLUS_PATH=libmmbd"
-}
-
-pkg_postrm() {
-	xdg_icon_cache_update
 }

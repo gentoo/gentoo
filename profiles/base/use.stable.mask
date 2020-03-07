@@ -8,10 +8,6 @@
 # Masked until we get a stable net-wireless/iwd version
 iwd
 
-# Matt Turner <mattst88@gentoo.org> (2019-12-05)
-# Mask for testing. Bug 606924
-libglvnd
-
 # Patrick Lauer <patrick@gentoo.org> (2019-10-04)
 # No postgres-12 stable yet
 postgres_targets_postgres12
