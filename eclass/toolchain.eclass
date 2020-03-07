@@ -593,7 +593,7 @@ toolchain_src_prepare() {
 
 	# Prevent new texinfo from breaking old versions (see #198182, #464008)
 	if tc_version_is_at_least 4.1; then
-		tc_apply_patches "Remove texinfo (bug #198182, bug ##464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
+		tc_apply_patches "Remove texinfo (bug #198182, bug #464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
 	fi
 
 	# >=gcc-4
