@@ -4,7 +4,7 @@ DEPEND=libglvnd? ( media-libs/libglvnd !app-eselect/eselect-opengl ) !libglvnd? 
 DESCRIPTION=X.Org X servers
 EAPI=7
 HOMEPAGE=https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/xserver/xorg-server
-IUSE=dmx kdrive wayland xephyr xnest xorg xvfb debug elogind ipv6 libressl libglvnd minimal selinux +suid systemd +udev unwind xcsecurity static-libs doc
+IUSE=dmx kdrive wayland xephyr xnest xorg xvfb debug elogind ipv6 libressl +libglvnd minimal selinux +suid systemd +udev unwind xcsecurity static-libs doc
 KEYWORDS=~alpha amd64 arm ~arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~x86-linux
 LICENSE=MIT
 PDEPEND=xorg? ( >=x11-base/xorg-drivers-1.20 )
@@ -13,4 +13,4 @@ REQUIRED_USE=!minimal? ( || ( dmx kdrive wayland xephyr xnest xorg xvfb ) ) elog
 SLOT=0/1.20.7
 SRC_URI=https://www.x.org/releases/individual/xserver/xorg-server-1.20.7.tar.bz2
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xorg-3	f7ca8dca6425a439b1b40844e6eb1ae7
-_md5_=14f70dc5f9a053158dcfd4371f78e570
+_md5_=46ccb60afaa7fe4f464464bba34f0f98
