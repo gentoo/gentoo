@@ -6,7 +6,9 @@ EAPI=7
 inherit cmake cuda
 
 DESCRIPTION="An auto-parallelizing library to speed up computer simulations"
-HOMEPAGE="http://www.libgeodecomp.org"
+HOMEPAGE="
+	http://www.libgeodecomp.org
+	https://github.com/STEllAR-GROUP/libgeodecomp"
 SRC_URI="http://www.libgeodecomp.org/archive/${P}.tar.bz2"
 
 SLOT="0"
