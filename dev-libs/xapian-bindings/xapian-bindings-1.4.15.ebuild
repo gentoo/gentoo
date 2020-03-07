@@ -1,18 +1,18 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 PYTHON_COMPAT=( python{2_7,3_6} )
 PYTHON_REQ_USE="threads(+)"
 
-USE_PHP="php5-6 php7-1 php7-2"
+USE_PHP="php7-1 php7-2 php7-3 php7-4"
 
 PHP_EXT_NAME="xapian"
 PHP_EXT_INI="yes"
 PHP_EXT_OPTIONAL_USE="php"
 
-USE_RUBY="ruby22 ruby23 ruby24"
+USE_RUBY="ruby24 ruby25 ruby26"
 RUBY_OPTIONAL="yes"
 
 inherit java-pkg-opt-2 mono-env multibuild php-ext-source-r3 python-r1 ruby-ng toolchain-funcs
@@ -23,15 +23,16 @@ SRC_URI="https://oligarchy.co.uk/xapian/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~alpha amd64 arm ia64 ~mips ppc ppc64 ~sparc x86"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86"
 IUSE="java lua mono perl php python ruby tcl"
 REQUIRED_USE="|| ( java lua mono perl php python ruby tcl )
 	python? ( ${PYTHON_REQUIRED_USE} )
 	ruby? ( || ( $(ruby_get_use_targets) ) )"
 
-COMMONDEPEND=">=dev-libs/xapian-1.4.5:0/30
+COMMONDEPEND=">=dev-libs/xapian-1.4.15
 	lua? ( dev-lang/lua:= )
 	perl? ( dev-lang/perl:= )
+	php? ( dev-lang/php:=[-threads] )
 	python? (
 		dev-python/sphinx[${PYTHON_USEDEP}]
 		${PYTHON_DEPS}

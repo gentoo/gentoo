@@ -55,7 +55,6 @@ RDEPEND="${PYTHON_DEPS}
 	pkcs7? ( >=net-libs/gnutls-3.4.4.1:= )
 	redfish? ( sys-libs/efivar )
 	systemd? ( >=sys-apps/systemd-211 )
-	thunderbolt? ( sys-apps/thunderbolt-software-user-space )
 	uefi? (
 		media-libs/fontconfig
 		media-libs/freetype
