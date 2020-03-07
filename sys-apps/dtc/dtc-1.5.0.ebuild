@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -32,6 +32,7 @@ DOCS="
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.4.4-posix-shell.patch
 	"${FILESDIR}"/${PN}-1.5.0-fdt_check_full-visibility.patch
+	"${FILESDIR}"/${PN}-1.5.0-gcc-10.patch
 )
 
 src_prepare() {
