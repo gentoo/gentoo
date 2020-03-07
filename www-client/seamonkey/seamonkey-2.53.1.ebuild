@@ -331,6 +331,7 @@ src_configure() {
 	mozconfig_use_enable pulseaudio
 	# force the deprecated alsa sound code if pulseaudio is disabled
 	if use kernel_linux && ! use pulseaudio ; then
+		mozconfig_annotate '-pulseaudio' --disable-pulseaudio
 		mozconfig_annotate '-pulseaudio' --enable-alsa
 	fi
 
