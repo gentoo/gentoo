@@ -20,7 +20,7 @@ BDEPEND="
 		app-text/texlive
 		media-gfx/graphviz
 		)"
-RDEPEND=">=dev-libs/boost-1.48"
+RDEPEND="dev-libs/boost"
 DEPEND="${RDEPEND}
 	hpx? ( sys-cluster/hpx )
 	<dev-libs/libflatarray-0.3.0
