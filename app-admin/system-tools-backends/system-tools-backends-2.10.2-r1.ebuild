@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-perl/Net-DBus-0.33.4
 	dev-lang/perl
 	>=sys-auth/polkit-0.94
-	userland_GNU? ( virtual/shadow )
+	userland_GNU? ( sys-apps/shadow )
 "
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
