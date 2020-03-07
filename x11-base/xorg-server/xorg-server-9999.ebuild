@@ -15,7 +15,7 @@ if [[ ${PV} != 9999* ]]; then
 fi
 
 IUSE_SERVERS="dmx kdrive wayland xephyr xnest xorg xvfb"
-IUSE="${IUSE_SERVERS} debug elogind ipv6 libressl libglvnd minimal selinux +suid systemd +udev unwind xcsecurity"
+IUSE="${IUSE_SERVERS} debug elogind ipv6 libressl +libglvnd minimal selinux +suid systemd +udev unwind xcsecurity"
 
 CDEPEND="libglvnd? (
 		media-libs/libglvnd
