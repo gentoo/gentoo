@@ -1,4 +1,4 @@
-BDEPEND=>=dev-lang/go-1.12
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
 DEFINED_PHASES=compile install postinst prepare unpack
 DEPEND=>=app-crypt/gpgme-1.5.5:= >=dev-libs/libassuan-2.4.3:= dev-libs/libgpg-error:= >=sys-fs/btrfs-progs-4.0.1 >=sys-fs/lvm2-2.02.145:= dev-go/go-md2man
 DESCRIPTION=Command line utility foroperations on container images and image repositories
@@ -10,5 +10,5 @@ RDEPEND=>=app-crypt/gpgme-1.5.5:= >=dev-libs/libassuan-2.4.3:= dev-libs/libgpg-e
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/containers/skopeo/archive/v0.1.40.tar.gz -> skopeo-0.1.40.tar.gz https://github.com/containers/storage/pull/466.patch -> containers-storage-1.14.0-vfs-user-xattrs.patch
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	go-module	2e23fcc4b7fb60746e74822d4ca3a669	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	go-module	7b83d59124252e3e756e1071c0f06678	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8dee9324df2b1b03941c89c3ad94134f

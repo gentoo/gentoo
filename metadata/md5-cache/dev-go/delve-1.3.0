@@ -1,4 +1,4 @@
-BDEPEND=>=dev-lang/go-1.12
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
 DEFINED_PHASES=compile install postinst unpack
 DESCRIPTION=A source-level debugger for the Go programming language
 EAPI=7
@@ -8,5 +8,5 @@ LICENSE=MIT BSD BSD-2 Apache-2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/go-delve/delve/archive/v1.3.0.tar.gz -> delve-1.3.0.tar.gz
-_eclasses_=go-module	2e23fcc4b7fb60746e74822d4ca3a669
+_eclasses_=go-module	7b83d59124252e3e756e1071c0f06678
 _md5_=d059124e2989b29cef961148f002702d

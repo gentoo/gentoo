@@ -1,4 +1,4 @@
-BDEPEND=>=dev-lang/go-1.12
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
 DEFINED_PHASES=compile install postinst prepare unpack
 DEPEND=acct-group/kube-apiserver acct-user/kube-apiserver dev-go/go-bindata >=dev-lang/go-1.13
 DESCRIPTION=Kubernetes API server
@@ -10,5 +10,5 @@ RDEPEND=acct-group/kube-apiserver acct-user/kube-apiserver
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/kubernetes/kubernetes/archive/v1.17.2.tar.gz -> kubernetes-1.17.2.tar.gz
-_eclasses_=go-module	2e23fcc4b7fb60746e74822d4ca3a669
+_eclasses_=go-module	7b83d59124252e3e756e1071c0f06678
 _md5_=86f65ac3d8ceac74e6bb31f5e4d52150

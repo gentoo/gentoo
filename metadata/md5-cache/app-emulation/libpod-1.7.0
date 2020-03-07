@@ -1,4 +1,4 @@
-BDEPEND=>=dev-lang/go-1.12
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip
 DEFINED_PHASES=compile install postinst preinst prepare unpack
 DEPEND=app-crypt/gpgme:= >=app-emulation/conmon-2.0.0 || ( >=app-emulation/runc-1.0.0_rc6 app-emulation/crun ) dev-libs/libassuan:= dev-libs/libgpg-error:= sys-fs/lvm2 sys-libs/libseccomp:= apparmor? ( sys-libs/libapparmor ) btrfs? ( sys-fs/btrfs-progs ) rootless? ( app-emulation/slirp4netns ) selinux? ( sys-libs/libselinux:= ) dev-go/go-md2man
 DESCRIPTION=Library and podman tool for running OCI-based containers in Pods
@@ -11,5 +11,5 @@ RDEPEND=app-crypt/gpgme:= >=app-emulation/conmon-2.0.0 || ( >=app-emulation/runc
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/containers/libpod/archive/v1.7.0.tar.gz -> libpod-1.7.0.tar.gz
-_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	go-module	2e23fcc4b7fb60746e74822d4ca3a669	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=bash-completion-r1	47a7402d95930413ce25ba8d857339bb	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	go-module	7b83d59124252e3e756e1071c0f06678	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=1447134c1e7f7fd007d51d695fdcf52e
