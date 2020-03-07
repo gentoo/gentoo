@@ -18,7 +18,7 @@ CDEPEND="
 	pam? ( sys-libs/pam )
 	tcpd? ( sys-apps/tcp-wrappers )
 	upnp? ( net-libs/miniupnpc:= )
-	userland_GNU? ( virtual/shadow )
+	userland_GNU? ( sys-apps/shadow )
 "
 DEPEND="${CDEPEND}
 	sys-devel/bison
