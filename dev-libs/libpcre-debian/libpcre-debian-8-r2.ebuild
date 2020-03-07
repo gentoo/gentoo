@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,9 +16,9 @@ RDEPEND="dev-libs/libpcre:${SLOT}[${MULTILIB_USEDEP}]"
 S="${WORKDIR}"
 
 multilib_src_install() {
-	dosym $(multilib_is_native_abi || echo /usr)/$(get_libdir)/libpcre.so.1 \
+	dosym ../$(multilib_is_native_abi && echo ../../$(get_libdir)/)libpcre.so.1 \
 		  /usr/$(get_libdir)/debiancompat/libpcre.so.3
 
-	dosym /usr/$(get_libdir)/libpcreposix.so.0 \
+	dosym ../libpcreposix.so.0 \
 		  /usr/$(get_libdir)/debiancompat/libpcreposix.so.3
 }
