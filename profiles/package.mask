@@ -706,12 +706,6 @@ dev-java/eclipse-ecj:4.13
 # Masked for removal in a year.
 dev-libs/gmp:3
 
-# Mike Gilbert <floppym@gentoo.org> (2019-10-11)
-# Inactive upstream for many years.
-# Several open bugs.
-# Please migrate to sys-apps/man-db.
-sys-apps/man
-
 # Stefan Strogin <steils@gentoo.org> (2019-09-27)
 # Requires >=dev-lang/lua-5.3 which is masked
 >=dev-util/bam-0.5.0
