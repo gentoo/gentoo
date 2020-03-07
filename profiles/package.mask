@@ -155,7 +155,6 @@ dev-python/pykka
 dev-python/pymtp
 dev-python/pynzb
 dev-python/pyopencl
-dev-python/pyphen
 dev-python/pyprof2calltree
 dev-python/pyshark
 dev-python/pysnmp-apps
@@ -213,12 +212,10 @@ dev-python/venusian
 dev-python/versiontools
 dev-python/vulture
 dev-python/weasyprint
-dev-python/ws4py
 dev-python/wsgiintercept
 dev-python/wtf-peewee
 dev-python/xdis
 dev-python/zc-buildout
-www-apps/nikola
 
 # Mikle Kolyada <zlogene@gentoo.org> (2020-03-07)
 # virtual/shadow has the only alive provider.
