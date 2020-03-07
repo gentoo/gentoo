@@ -1,0 +1,292 @@
+From 55356ab9c03cd25efeb5176761f2f5b3744b4371 Mon Sep 17 00:00:00 2001
+From: Kurt Kanzenbach <kurt@kmk-computers.de>
+Date: Fri, 24 Jan 2020 17:59:48 +0100
+Subject: [PATCH] cmake: Disable mpiruns
+
+The mpiruns will violate the sandboxing. Therefore, disable them including
+scotch.
+
+Signed-off-by: Kurt Kanzenbach <kurt@kmk-computers.de>
+---
+ CMakeLists.txt                |  14 +-
+ CMakeModules/FindSCOTCH.cmake | 238 +++++++++++++++++-----------------
+ 2 files changed, 121 insertions(+), 131 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ed5cc607c3ed..fec488002958 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -238,19 +238,9 @@ if (MACHINE_ARCH MATCHES "x86_64")
+   set(AMD64_LINUX true)
+ endif()
+ 
+-# test if mpirun/mpiexec supports the  --oversubscribe flag:
++# use the --oversubscribe flag:
+ if(MPI_FOUND)
+-  execute_process(
+-    COMMAND ${MPIEXEC} --oversubscribe ${MPIEXEC_NUMPROC_FLAG} 4 echo ok
+-    RESULT_VARIABLE MPIEXEC_OVERSUBSCRIBE_RETURN_CODE
+-    OUTPUT_QUIET
+-    ERROR_QUIET)
+-
+-  if (MPIEXEC_OVERSUBSCRIBE_RETURN_CODE EQUAL 0)
+-    set(MPIEXEC_OVERSUBSCRIBE_FLAG "--oversubscribe")
+-  else()
+-    set(MPIEXEC_OVERSUBSCRIBE_FLAG "")
+-  endif()
++  set(MPIEXEC_OVERSUBSCRIBE_FLAG "--oversubscribe")
+ endif()
+ 
+ #============= 3. CONFIGURABLE BUILD OPTIONS =========================
+diff --git a/CMakeModules/FindSCOTCH.cmake b/CMakeModules/FindSCOTCH.cmake
+index 5c717977dbba..146c2bf8bb60 100644
+--- a/CMakeModules/FindSCOTCH.cmake
++++ b/CMakeModules/FindSCOTCH.cmake
+@@ -233,125 +233,125 @@ int main() {
+ ")
+ 
+     message(STATUS "Performing test SCOTCH_TEST_RUNS")
+-    try_run(
+-      SCOTCH_TEST_LIB_EXITCODE
+-      SCOTCH_TEST_LIB_COMPILED
+-      ${CMAKE_CURRENT_BINARY_DIR}
+-      ${SCOTCH_TEST_LIB_CPP}
+-      CMAKE_FLAGS
+-        "-DINCLUDE_DIRECTORIES:STRING=${CMAKE_REQUIRED_INCLUDES}"
+-        "-DLINK_LIBRARIES:STRING=${CMAKE_REQUIRED_LIBRARIES}"
+-      COMPILE_OUTPUT_VARIABLE SCOTCH_TEST_LIB_COMPILE_OUTPUT
+-      RUN_OUTPUT_VARIABLE SCOTCH_TEST_LIB_OUTPUT
+-      )
+-
+-    if (SCOTCH_TEST_LIB_COMPILED AND SCOTCH_TEST_LIB_EXITCODE EQUAL 0)
+-      message(STATUS "Performing test SCOTCH_TEST_RUNS - Success")
+-      set(SCOTCH_TEST_RUNS TRUE)
+-    else()
+-      message(STATUS "Performing test SCOTCH_TEST_RUNS - Failed")
+-      if (SCOTCH_DEBUG)
+-        # Output some variables
+-        message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                       "SCOTCH_TEST_LIB_COMPILED = ${SCOTCH_TEST_LIB_COMPILED}")
+-        message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                       "SCOTCH_TEST_LIB_COMPILE_OUTPUT = ${SCOTCH_TEST_LIB_COMPILE_OUTPUT}")
+-        message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                       "SCOTCH_TEST_LIB_EXITCODE = ${SCOTCH_TEST_LIB_EXITCODE}")
+-        message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                       "SCOTCH_TEST_LIB_OUTPUT = ${SCOTCH_TEST_LIB_OUTPUT}")
+-      endif()
+-    endif()
+-
+-    # If program does not run, try adding zlib library and test again
+-    if(NOT SCOTCH_TEST_RUNS)
+-      if (NOT ZLIB_FOUND)
+-        find_package(ZLIB)
+-      endif()
+-
+-      if (ZLIB_INCLUDE_DIRS AND ZLIB_LIBRARIES)
+-        set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${ZLIB_INCLUDE_DIRS})
+-        set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${ZLIB_LIBRARIES})
+-
+-        message(STATUS "Performing test SCOTCH_ZLIB_TEST_RUNS")
+-        try_run(
+-          SCOTCH_ZLIB_TEST_LIB_EXITCODE
+-          SCOTCH_ZLIB_TEST_LIB_COMPILED
+-          ${CMAKE_CURRENT_BINARY_DIR}
+-          ${SCOTCH_TEST_LIB_CPP}
+-          CMAKE_FLAGS
+-                  "-DINCLUDE_DIRECTORIES:STRING=${CMAKE_REQUIRED_INCLUDES}"
+-                  "-DLINK_LIBRARIES:STRING=${CMAKE_REQUIRED_LIBRARIES}"
+-          COMPILE_OUTPUT_VARIABLE SCOTCH_ZLIB_TEST_LIB_COMPILE_OUTPUT
+-          RUN_OUTPUT_VARIABLE SCOTCH_ZLIB_TEST_LIB_OUTPUT
+-          )
+-
+-        # Add zlib flags if required and set test run to 'true'
+-        if (SCOTCH_ZLIB_TEST_LIB_COMPILED AND SCOTCH_ZLIB_TEST_LIB_EXITCODE EQUAL 0)
+-          message(STATUS "Performing test SCOTCH_ZLIB_TEST_RUNS - Success")
+-          set(SCOTCH_INCLUDE_DIRS ${SCOTCH_INCLUDE_DIRS} ${ZLIB_INCLUDE_DIRS})
+-          set(SCOTCH_LIBRARIES ${SCOTCH_LIBRARIES} ${ZLIB_LIBRARIES})
+-          set(SCOTCH_TEST_RUNS TRUE)
+-        else()
+-          message(STATUS "Performing test SCOTCH_ZLIB_TEST_RUNS - Failed")
+-          if (SCOTCH_DEBUG)
+-            message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                           "SCOTCH_ZLIB_TEST_LIB_COMPILED = ${SCOTCH_ZLIB_TEST_LIB_COMPILED}")
+-            message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                           "SCOTCH_ZLIB_TEST_LIB_COMPILE_OUTPUT = ${SCOTCH_ZLIB_TEST_LIB_COMPILE_OUTPUT}")
+-            message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                           "SCOTCH_TEST_LIB_EXITCODE = ${SCOTCH_TEST_LIB_EXITCODE}")
+-            message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                           "SCOTCH_TEST_LIB_OUTPUT = ${SCOTCH_TEST_LIB_OUTPUT}")
+-          endif()
+-        endif()
+-
+-      endif()
+-    endif()
+-
+-    if(NOT SCOTCH_TEST_RUNS)
+-      if (NOT BZIP2_FOUND)
+-        find_package(BZip2)
+-      endif()
+-
+-      if (BZIP2_INCLUDE_DIR AND BZIP2_LIBRARIES)
+-        set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${BZIP2_INCLUDE_DIR})
+-        set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${BZIP2_LIBRARIES})
+-
+-        message(STATUS "Performing test SCOTCH_BZIP2_TEST_RUNS")
+-        try_run(
+-          SCOTCH_BZIP2_TEST_LIB_EXITCODE
+-          SCOTCH_BZIP2_TEST_LIB_COMPILED
+-          ${CMAKE_CURRENT_BINARY_DIR}
+-          ${SCOTCH_TEST_LIB_CPP}
+-          CMAKE_FLAGS
+-                  "-DINCLUDE_DIRECTORIES:STRING=${CMAKE_REQUIRED_INCLUDES}"
+-                  "-DLINK_LIBRARIES:STRING=${CMAKE_REQUIRED_LIBRARIES}"
+-          COMPILE_OUTPUT_VARIABLE SCOTCH_BZIP2_TEST_LIB_COMPILE_OUTPUT
+-          RUN_OUTPUT_VARIABLE SCOTCH_BZIP2_TEST_LIB_OUTPUT
+-          )
+-
+-        # Add zlib flags if required and set test run to 'true'
+-        if (SCOTCH_BZIP2_TEST_LIB_COMPILED AND SCOTCH_BZIP2_TEST_LIB_EXITCODE EQUAL 0)
+-          message(STATUS "Performing test SCOTCH_BZIP2_TEST_RUNS - Success")
+-          set(SCOTCH_INCLUDE_DIRS ${SCOTCH_INCLUDE_DIRS} ${BZIP2_INCLUDE_DIR})
+-          set(SCOTCH_LIBRARIES ${SCOTCH_LIBRARIES} ${BZIP2_LIBRARIES})
+-          set(SCOTCH_TEST_RUNS TRUE)
+-        else()
+-          message(STATUS "Performing test SCOTCH_BZIP2_TEST_RUNS - Failed")
+-          if (SCOTCH_DEBUG)
+-            message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                           "SCOTCH_BZIP2_TEST_LIB_COMPILED = ${SCOTCH_BZIP2_TEST_LIB_COMPILED}")
+-            message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                           "SCOTCH_BZIP2_TEST_LIB_COMPILE_OUTPUT = ${SCOTCH_BZIP2_TEST_LIB_COMPILE_OUTPUT}")
+-            message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                           "SCOTCH_TEST_LIB_EXITCODE = ${SCOTCH_TEST_LIB_EXITCODE}")
+-            message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
+-                           "SCOTCH_TEST_LIB_OUTPUT = ${SCOTCH_TEST_LIB_OUTPUT}")
+-          endif()
+-        endif()
+-      endif()
+-    endif()
++    # try_run(
++    #   SCOTCH_TEST_LIB_EXITCODE
++    #   SCOTCH_TEST_LIB_COMPILED
++    #   ${CMAKE_CURRENT_BINARY_DIR}
++    #   ${SCOTCH_TEST_LIB_CPP}
++    #   CMAKE_FLAGS
++    #     "-DINCLUDE_DIRECTORIES:STRING=${CMAKE_REQUIRED_INCLUDES}"
++    #     "-DLINK_LIBRARIES:STRING=${CMAKE_REQUIRED_LIBRARIES}"
++    #   COMPILE_OUTPUT_VARIABLE SCOTCH_TEST_LIB_COMPILE_OUTPUT
++    #   RUN_OUTPUT_VARIABLE SCOTCH_TEST_LIB_OUTPUT
++    #   )
++
++    # if (SCOTCH_TEST_LIB_COMPILED AND SCOTCH_TEST_LIB_EXITCODE EQUAL 0)
++    #   message(STATUS "Performing test SCOTCH_TEST_RUNS - Success")
++    #   set(SCOTCH_TEST_RUNS TRUE)
++    # else()
++    #   message(STATUS "Performing test SCOTCH_TEST_RUNS - Failed")
++    #   if (SCOTCH_DEBUG)
++    #     # Output some variables
++    #     message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                    "SCOTCH_TEST_LIB_COMPILED = ${SCOTCH_TEST_LIB_COMPILED}")
++    #     message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                    "SCOTCH_TEST_LIB_COMPILE_OUTPUT = ${SCOTCH_TEST_LIB_COMPILE_OUTPUT}")
++    #     message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                    "SCOTCH_TEST_LIB_EXITCODE = ${SCOTCH_TEST_LIB_EXITCODE}")
++    #     message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                    "SCOTCH_TEST_LIB_OUTPUT = ${SCOTCH_TEST_LIB_OUTPUT}")
++    #   endif()
++    # endif()
++
++    # # If program does not run, try adding zlib library and test again
++    # if(NOT SCOTCH_TEST_RUNS)
++    #   if (NOT ZLIB_FOUND)
++    #     find_package(ZLIB)
++    #   endif()
++
++    #   if (ZLIB_INCLUDE_DIRS AND ZLIB_LIBRARIES)
++    #     set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${ZLIB_INCLUDE_DIRS})
++    #     set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${ZLIB_LIBRARIES})
++
++    #     message(STATUS "Performing test SCOTCH_ZLIB_TEST_RUNS")
++    #     try_run(
++    #       SCOTCH_ZLIB_TEST_LIB_EXITCODE
++    #       SCOTCH_ZLIB_TEST_LIB_COMPILED
++    #       ${CMAKE_CURRENT_BINARY_DIR}
++    #       ${SCOTCH_TEST_LIB_CPP}
++    #       CMAKE_FLAGS
++    #               "-DINCLUDE_DIRECTORIES:STRING=${CMAKE_REQUIRED_INCLUDES}"
++    #               "-DLINK_LIBRARIES:STRING=${CMAKE_REQUIRED_LIBRARIES}"
++    #       COMPILE_OUTPUT_VARIABLE SCOTCH_ZLIB_TEST_LIB_COMPILE_OUTPUT
++    #       RUN_OUTPUT_VARIABLE SCOTCH_ZLIB_TEST_LIB_OUTPUT
++    #       )
++
++    #     # Add zlib flags if required and set test run to 'true'
++    #     if (SCOTCH_ZLIB_TEST_LIB_COMPILED AND SCOTCH_ZLIB_TEST_LIB_EXITCODE EQUAL 0)
++    #       message(STATUS "Performing test SCOTCH_ZLIB_TEST_RUNS - Success")
++    #       set(SCOTCH_INCLUDE_DIRS ${SCOTCH_INCLUDE_DIRS} ${ZLIB_INCLUDE_DIRS})
++    #       set(SCOTCH_LIBRARIES ${SCOTCH_LIBRARIES} ${ZLIB_LIBRARIES})
++    #       set(SCOTCH_TEST_RUNS TRUE)
++    #     else()
++    #       message(STATUS "Performing test SCOTCH_ZLIB_TEST_RUNS - Failed")
++    #       if (SCOTCH_DEBUG)
++    #         message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                        "SCOTCH_ZLIB_TEST_LIB_COMPILED = ${SCOTCH_ZLIB_TEST_LIB_COMPILED}")
++    #         message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                        "SCOTCH_ZLIB_TEST_LIB_COMPILE_OUTPUT = ${SCOTCH_ZLIB_TEST_LIB_COMPILE_OUTPUT}")
++    #         message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                        "SCOTCH_TEST_LIB_EXITCODE = ${SCOTCH_TEST_LIB_EXITCODE}")
++    #         message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                        "SCOTCH_TEST_LIB_OUTPUT = ${SCOTCH_TEST_LIB_OUTPUT}")
++    #       endif()
++    #     endif()
++
++    #   endif()
++    # endif()
++
++    # if(NOT SCOTCH_TEST_RUNS)
++    #   if (NOT BZIP2_FOUND)
++    #     find_package(BZip2)
++    #   endif()
++
++    #   if (BZIP2_INCLUDE_DIR AND BZIP2_LIBRARIES)
++    #     set(CMAKE_REQUIRED_INCLUDES ${CMAKE_REQUIRED_INCLUDES} ${BZIP2_INCLUDE_DIR})
++    #     set(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${BZIP2_LIBRARIES})
++
++    #     message(STATUS "Performing test SCOTCH_BZIP2_TEST_RUNS")
++    #     try_run(
++    #       SCOTCH_BZIP2_TEST_LIB_EXITCODE
++    #       SCOTCH_BZIP2_TEST_LIB_COMPILED
++    #       ${CMAKE_CURRENT_BINARY_DIR}
++    #       ${SCOTCH_TEST_LIB_CPP}
++    #       CMAKE_FLAGS
++    #               "-DINCLUDE_DIRECTORIES:STRING=${CMAKE_REQUIRED_INCLUDES}"
++    #               "-DLINK_LIBRARIES:STRING=${CMAKE_REQUIRED_LIBRARIES}"
++    #       COMPILE_OUTPUT_VARIABLE SCOTCH_BZIP2_TEST_LIB_COMPILE_OUTPUT
++    #       RUN_OUTPUT_VARIABLE SCOTCH_BZIP2_TEST_LIB_OUTPUT
++    #       )
++
++    #     # Add zlib flags if required and set test run to 'true'
++    #     if (SCOTCH_BZIP2_TEST_LIB_COMPILED AND SCOTCH_BZIP2_TEST_LIB_EXITCODE EQUAL 0)
++    #       message(STATUS "Performing test SCOTCH_BZIP2_TEST_RUNS - Success")
++    #       set(SCOTCH_INCLUDE_DIRS ${SCOTCH_INCLUDE_DIRS} ${BZIP2_INCLUDE_DIR})
++    #       set(SCOTCH_LIBRARIES ${SCOTCH_LIBRARIES} ${BZIP2_LIBRARIES})
++    #       set(SCOTCH_TEST_RUNS TRUE)
++    #     else()
++    #       message(STATUS "Performing test SCOTCH_BZIP2_TEST_RUNS - Failed")
++    #       if (SCOTCH_DEBUG)
++    #         message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                        "SCOTCH_BZIP2_TEST_LIB_COMPILED = ${SCOTCH_BZIP2_TEST_LIB_COMPILED}")
++    #         message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                        "SCOTCH_BZIP2_TEST_LIB_COMPILE_OUTPUT = ${SCOTCH_BZIP2_TEST_LIB_COMPILE_OUTPUT}")
++    #         message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                        "SCOTCH_TEST_LIB_EXITCODE = ${SCOTCH_TEST_LIB_EXITCODE}")
++    #         message(STATUS "[ ${CMAKE_CURRENT_LIST_FILE}:${CMAKE_CURRENT_LIST_LINE} ] "
++    #                        "SCOTCH_TEST_LIB_OUTPUT = ${SCOTCH_TEST_LIB_OUTPUT}")
++    #       endif()
++    #     endif()
++    #   endif()
++    # endif()
+ 
+   endif()
+ endif()
+-- 
+2.24.1
+
