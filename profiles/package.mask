@@ -32,6 +32,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Mikle Kolyada <zlogene@gentoo.org> (2020-03-07)
+# virtual/shadow has the only alive provider.
+# sys-apps/hardened-shadow is unmaintained for the past
+# five years (at least). Upstream is dead.
+# Removal in 30 days.
+sys-apps/hardened-shadow
+virtual/shadow
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-06)
 # Python 2 only.  Last update in 2012.  Blocker for a few dependencies.
 # Removal in 30 days.  Bug #708336.
