@@ -17324,7 +17324,7 @@ sys-fs/dislocker 0.7.1-r2 9999: Dislocker is used to read BitLocker encrypted pa
 sys-fs/dmg2img 1.6.7 1.6.7-r1: Converts Apple DMG files to standard HFS+ images
 sys-fs/dmraid 1.0.0_rc16-r3 1.0.0_rc16-r4: Device-mapper RAID tool and library
 sys-fs/dosfstools 4.1: DOS filesystem tools - provides mkdosfs, mkfs.msdos, mkfs.vfat
-sys-fs/duperemove 0.11.1: Btrfs deduplication utility
+sys-fs/duperemove 0.11.1: Btrfs and xfs deduplication utility
 sys-fs/e2fsprogs 1.45.4 1.45.5: Standard EXT2/EXT3/EXT4 filesystem utilities
 sys-fs/e2tools 0.0.16.4 0.1.0: utilities to read, write, and manipulate files in an ext2/ext3 filesystem
 sys-fs/e4rat 0.2.4_pre20141201-r1: Toolset to accelerate the boot process and application startup
