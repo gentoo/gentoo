@@ -1,5 +1,0 @@
-#!/bin/sh
-# this is part of the man package
-# it updates the search database for manpages
-
-exec nice makewhatis -u
