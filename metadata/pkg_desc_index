@@ -548,6 +548,7 @@ app-admin/yadm 1.12.0: A dotfile manager for the config files in your home folde
 app-antivirus/clamav 0.101.2-r1 0.101.4 0.102.1-r3 0.102.2: Clam Anti-Virus Scanner
 app-antivirus/clamav-unofficial-sigs 5.6.2 6.0.1-r5 7.0.1: Download and install third-party clamav signatures
 app-antivirus/clamtk 6.02-r1: A graphical front-end for ClamAV
+app-antivirus/fangfrisch 1.0.1: Update and verify unofficial Clam Anti-Virus signatures
 app-antivirus/skyldav 0.7: Skyld AV: on-access scanning daemon for ClamAV using fanotify
 app-arch/advancecomp 2.2_pre20190301: Recompress ZIP, PNG and MNG, considerably improving compression
 app-arch/afio 2.5.1-r2: Afio creates cpio-format archives.
@@ -5076,7 +5077,7 @@ dev-libs/libowfat 0.31-r1 0.32-r1: reimplement libdjb - excellent libraries from
 dev-libs/libp11 0.4.10: Abstraction layer to simplify PKCS#11 API
 dev-libs/libparserutils 0.2.3 0.2.4-r1: library for building efficient parsers, written in C
 dev-libs/libpcre 8.42 8.43 8.44: Perl-compatible regular expression library
-dev-libs/libpcre-debian 8-r1: libpcre(posix).so.3 symlinks for compatibility with Debian
+dev-libs/libpcre-debian 8-r2: libpcre(posix).so.3 symlinks for compatibility with Debian
 dev-libs/libpcre2 10.32 10.33-r1 10.34: Perl-compatible regular expression library
 dev-libs/libpeas 1.22.0-r2: A GObject plugins library
 dev-libs/libpfm 4.4.0 4.6.0 4.8.0 4.10.1: Hardware-based performance monitoring interface for Linux
@@ -16805,7 +16806,6 @@ sys-apps/lshw 02.18b 02.18b-r1: Hardware Lister
 sys-apps/lssbus 0.1: Small utility for Linux/SPARC that list devices on SBUS
 sys-apps/lsvpd 1.7.10: Utility to List Device Vital Product Data (VPD)
 sys-apps/makedev 3.23.1-r1: program used for creating device files in /dev
-sys-apps/man 1.6g-r1: Standard commands to read man pages
 sys-apps/man-db 2.7.6.1-r2 2.8.7 2.9.0 2.9.1 9999: a man replacement that utilizes berkdb instead of flat files
 sys-apps/man-pages 5.04 5.05: A somewhat comprehensive collection of Linux man pages
 sys-apps/man-pages-posix 2013a: POSIX man-pages (0p, 1p, 3p)
@@ -17682,7 +17682,7 @@ virtual/linux-sources 3-r4: Virtual for Linux kernel sources
 virtual/linuxtv-dvb-headers 5.8: Virtual Package installing the Header files for DVB
 virtual/logger 0-r1: Virtual for system loggers
 virtual/mailx 1 2: Virtual for mail implementations
-virtual/man 0-r2: Virtual for man
+virtual/man 0-r3: Virtual for man
 virtual/mda 0: Virtual for Message Delivery Agents
 virtual/modutils 0: Virtual for utilities to manage Linux kernel modules
 virtual/mpi 2.0-r3 2.0-r4 2.0-r5: Virtual for Message Passing Interface (MPI) v2.0 implementation
