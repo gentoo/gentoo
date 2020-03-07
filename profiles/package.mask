@@ -62,7 +62,6 @@ dev-python/columnize
 dev-python/common
 dev-python/crumbs
 dev-python/cssselect2
-dev-python/curtsies
 dev-python/cx_Freeze
 dev-python/d2to1
 dev-python/datashape
