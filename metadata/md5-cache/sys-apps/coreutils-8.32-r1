@@ -10,6 +10,6 @@ LICENSE=GPL-3
 RDEPEND=!static? ( acl? ( sys-apps/acl ) caps? ( sys-libs/libcap ) gmp? ( dev-libs/gmp:= ) xattr? ( sys-apps/attr ) ) selinux? ( sys-libs/libselinux ) nls? ( virtual/libintl ) hostname? ( !sys-apps/net-tools[hostname] ) kill? ( !sys-apps/util-linux[kill] !sys-process/procps[kill] ) !app-misc/realpath !<sys-apps/util-linux-2.13 !<sys-apps/sandbox-2.10-r4 !sys-apps/stat !net-mail/base64 !sys-apps/mktemp !<app-forensics/tct-1.18-r1 !<net-fs/netatalk-2.0.3-r4
 RESTRICT=!test? ( test )
 SLOT=0
-SRC_URI=mirror://gnu/coreutils/coreutils-8.32.tar.xz mirror://gentoo/coreutils-8.30-patches-01.tar.xz https://dev.gentoo.org/~polynomial-c/dist/coreutils-8.30-patches-01.tar.xz
+SRC_URI=mirror://gnu/coreutils/coreutils-8.32.tar.xz !vanilla? ( mirror://gentoo/coreutils-8.30-patches-01.tar.xz https://dev.gentoo.org/~polynomial-c/dist/coreutils-8.30-patches-01.tar.xz )
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=419d238b4312270df97b2b545f1a20cd
+_md5_=ed2acf3fe66a6c78f5d1d13770ae3f39
