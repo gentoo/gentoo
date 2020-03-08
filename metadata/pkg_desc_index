@@ -787,7 +787,7 @@ app-cdr/tkdvd 4.0.9-r1: A Tcl/Tk GUI for writing DVDs and CDs
 app-cdr/uif2iso 0.1.7c-r1: Convert CD images from uif (MagicISO) to iso
 app-cdr/xbiso 0.6.1-r2 0.6.1-r3: Xbox xdvdfs ISO extraction utility
 app-cdr/xcdroast 0.98_alpha16-r3: Lightweight cdrtools front-end for CD and DVD writing
-app-cdr/xfburn 0.6.1: GTK+ based CD and DVD burning application
+app-cdr/xfburn 0.6.1 0.6.2: GTK+ based CD and DVD burning application
 app-crypt/WiRouterKeyRec 1.1.2: Recovery tool for wpa passphrase
 app-crypt/acme 1.2.0 1.3.0 9999: An implementation of the ACME protocol
 app-crypt/acme-client 0.1.16: a secure ACME client
@@ -2430,7 +2430,7 @@ app-portage/no-distcc-env 9999: package.env files to disable distcc on a per-pac
 app-portage/overlint 0.5.3-r1: Simple tool for static analysis of overlays
 app-portage/perl-info 0.16: Tool to gather relevant perl data useful for bugreport; 'emerge --info' for perl
 app-portage/pfl 3.0-r2 3.0.1-r3: Searchable online file/package database for Gentoo
-app-portage/portage-utils 0.74 0.80 0.85 9999: Small and fast Portage helper tools written in C
+app-portage/portage-utils 0.74 0.80 0.86 9999: Small and fast Portage helper tools written in C
 app-portage/porthole 0.6.1-r5: A GTK+-based frontend to Portage
 app-portage/porticron 0.7.1: cron script to sync portage and send update mails to root
 app-portage/portpeek 2.1.27 2.1.27-r1: A helper program for maintaining the package.keyword and package.unmask files
@@ -3239,7 +3239,7 @@ dev-db/mariadb-connector-c 3.0.6-r1 3.1.6 3.1.7 9999: C client library for Maria
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.6.13 3.6.14 3.6.16 3.6.17 4.0.12 4.0.13 4.0.14 4.0.16 4.2.1 4.2.2 4.2.3: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
-dev-db/mycli 1.19.0 1.20.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
+dev-db/mycli 1.20.1 9999: CLI for MySQL Database with auto-completion and syntax highlighting
 dev-db/mydumper 0.9.3-r1 0.9.5 0.9.5-r1: A high-performance multi-threaded backup (and restore) toolset for MySQL
 dev-db/myodbc 5.3.9 5.3.10-r3 8.0.16 8.0.17 8.0.19: ODBC driver for MySQL
 dev-db/mysql 5.6.44-r1 5.6.45-r2 5.7.26-r1 5.7.27-r1 5.7.29 8.0.19-r1: A fast, multi-threaded, multi-user SQL database server
@@ -3269,7 +3269,7 @@ dev-db/pgadmin4 4.13-r1 4.17-r1: GUI administration and development platform for
 dev-db/pgagent 3.4.0-r3 4.0.0 4.0.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 10.3 11.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0 1.10.0 1.11.0 1.12.0: Lightweight connection pooler for PostgreSQL
-dev-db/pgcli 2.0.2 2.2.0: CLI for Postgres with auto-completion and syntax highlighting
+dev-db/pgcli 2.2.0: CLI for Postgres with auto-completion and syntax highlighting
 dev-db/pgmemcache 2.1.2 2.2.0 2.3.0: A PostgreSQL API based on libmemcached to interface with memcached
 dev-db/pgmodeler 0.9.1: PostgreSQL Database Modeler
 dev-db/pgpool2 3.7.10 4.0.5 9999: Connection pool server for PostgreSQL
@@ -7923,7 +7923,7 @@ dev-python/ipcalc 1.99.0: IP subnet calculator
 dev-python/ipdb 0.10.3: IPython-enabled pdb
 dev-python/ipdbplugin 1.4 9999: Nose plugin to use iPdb instead of Pdb when tests fail
 dev-python/ipy 0.83 1.00: Class and tools for handling of IPv4 and IPv6 addresses and networks
-dev-python/ipykernel 4.6.1-r2 4.8.2 5.1.0 5.1.3: IPython Kernel for Jupyter
+dev-python/ipykernel 4.6.1-r2 4.8.2 5.1.0 5.1.3 5.1.4: IPython Kernel for Jupyter
 dev-python/ipynb 0.5.1: Package/Module importer for importing code from Jupyter Notebook files
 dev-python/ipyparallel 6.0.2-r1 6.2.3: Interactive Parallel Computing with IPython
 dev-python/ipython 5.4.1-r2 5.8.0-r1 7.5.0: Advanced interactive shell for Python
@@ -8511,7 +8511,7 @@ dev-python/pytest-cython 0.1.0: Plugin for testing Cython extension modules
 dev-python/pytest-describe 0.11.1: Describe-style plugin for py.test
 dev-python/pytest-django 3.4.4: A Django plugin for py.test
 dev-python/pytest-expect 1.1.0 1.1.0-r1: py.test plugin that stores test expectations by saving the set of failing tests
-dev-python/pytest-fixture-config 1.2.11 1.7.0: Virtualenv fixture for py.test
+dev-python/pytest-fixture-config 1.2.11 1.7.0 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-flake8 0.8.1 0.9.1: py.test plugin for flake8
 dev-python/pytest-flakes 4.0.0: Collection of small Python functions & classes
 dev-python/pytest-forked 0.2 1.1.3: run tests in isolated forked subprocesses
@@ -8531,11 +8531,11 @@ dev-python/pytest-rerunfailures 2.1.0 7.0 8.0: pytest plugin to re-run tests to 
 dev-python/pytest-runner 5.2: Adds support for tests during installation of setup.py files
 dev-python/pytest-salt 2019.2.1_p1: PyTest Salt Plugin
 dev-python/pytest-services 2.0.1: Collection of fixtures and utility functions to run service processes for pytest
-dev-python/pytest-shutil 1.2.11 1.7.0: A goodie-bag of unix shell and environment tools for py.test
+dev-python/pytest-shutil 1.2.11 1.7.0 1.7.0-r1: A goodie-bag of unix shell and environment tools for py.test
 dev-python/pytest-subtesthack 0.1.1: A hack for test fixtures, needed for hypothesis inside py.test
 dev-python/pytest-testmon 0.9.15: take TDD to a new level with py.test and testmon
 dev-python/pytest-timeout 1.2.0 1.2.1 1.3.3: py.test plugin to abort hanging tests
-dev-python/pytest-virtualenv 1.2.11 1.7.0: Virtualenv fixture for py.test
+dev-python/pytest-virtualenv 1.2.11 1.7.0 1.7.0-r1: Virtualenv fixture for py.test
 dev-python/pytest-xdist 1.23.2 1.28.0 1.30.0 1.31.0: Distributed testing and loop-on-failing modes
 dev-python/pytest-xprocess 0.12.1 0.12.1-r1 0.12.1-r2 0.13.1: Manage external processes across test runs
 dev-python/python-afl 0.6.1 0.7.1: Enables American fuzzy lop fork server and instrumentation for pure-Python code
@@ -8618,7 +8618,6 @@ dev-python/python-senlinclient 1.2.0: A client for the OpenStack Senlin API
 dev-python/python-sense-hat 2.2.0-r1: Raspberry Pi Sense HAT python library
 dev-python/python-slip 0.6.5: Miscellaneous convenience, extension and workaround code for Python
 dev-python/python-socketio 1.7.4 1.8.0 2.0.0: Python implementation of the Socket.IO realtime server.
-dev-python/python-sqlparse 0.2.3 0.2.4 0.3.0 0.3.1: A non-validating SQL parser module for Python
 dev-python/python-stdnum 1.12: A module to handle standardized numbers and codes
 dev-python/python-swiftclient 3.7.0: Python bindings to the OpenStack Object Storage API
 dev-python/python-systemd 233 234: Python module for native access to the systemd facilities
@@ -8660,7 +8659,6 @@ dev-python/pyxdg 0.26-r1: A Python module to deal with freedesktop.org specifica
 dev-python/pyyaml 3.12 3.13 5.1 5.1.2 5.3: YAML parser and emitter for Python
 dev-python/pyzbar 0.1.5 0.1.7 0.1.8: Read one-dimensional barcodes and QR codes from Python
 dev-python/pyzmq 16.0.2 17.1.0: Lightweight and super-fast messaging library built on top of the ZeroMQ library
-dev-python/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
 dev-python/qdarkstyle 2.7: A dark style sheet for QtWidgets application
 dev-python/qrcode 6.1: QR Code generator on top of PIL
 dev-python/qscintilla-python 2.11.3 2.11.4: Python bindings for QScintilla
@@ -8770,7 +8768,7 @@ dev-python/serpent 1.19 1.28 1.30: A simple serialization library based on ast.l
 dev-python/serverfiles 0.2.1: Utility for accessing HTTP server and storing files locally for reuse
 dev-python/service_identity 14.0.0 16.0.0 17.0.0 17.0.0-r1 18.1.0: Service identity verification for pyOpenSSL
 dev-python/setproctitle 1.1.8 1.1.10 1.1.10-r1: Allow customization of the process title
-dev-python/setuptools 42.0.2 44.0.0 45.1.0 45.2.0: Collection of extensions to Distutils
+dev-python/setuptools 42.0.2 44.0.0 45.3.0: Collection of extensions to Distutils
 dev-python/setuptools-git 1.2: Setuptools revision control system plugin for Git
 dev-python/setuptools_hg 0.4-r1: Setuptools/distribute plugin for finding files under Mercurial version control
 dev-python/setuptools_scm 1.15.6-r1 3.2.0 3.4.3 3.5.0: Manage versions by scm tags via setuptools
@@ -8857,6 +8855,7 @@ dev-python/spyder-unittest 0.4.0: Plugin for Spyder to run tests and view the re
 dev-python/sqlalchemy 0.7.10 1.2.18 1.3.3 1.3.4 1.3.11: Python SQL toolkit and Object Relational Mapper
 dev-python/sqlalchemy-migrate 0.12.0: SQLAlchemy Schema Migration Tools
 dev-python/sqlalchemy-rqlite 1.0 9999: A SQLAlchemy dialect for rqlite
+dev-python/sqlparse 0.3.0 0.3.1: A non-validating SQL parser module for Python
 dev-python/squaremap 1.0.4: Hierarchic data-visualisation control for wxPython
 dev-python/sshtunnel 0.1.4-r2: Pure python SSH tunnels
 dev-python/ssl-fetch 0.4 9999: A small convenience library for fetching files securely
@@ -12238,6 +12237,7 @@ mail-filter/postgrey 1.34-r3 1.35-r2 1.36-r1 1.37: Postgrey is a Postfix policy 
 mail-filter/postsrsd 1.4 1.4-r1: Postfix Sender Rewriting Scheme daemon
 mail-filter/procmail 3.22-r14: Mail delivery agent/filter
 mail-filter/pypolicyd-spf 2.0.2: Python-based policy daemon for Postfix SPF verification
+mail-filter/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filtering network
 mail-filter/razor 2.85-r3: Distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/rmilter 1.9.2 1.10.0 1.10.0-r1 1.10.0-r2 9999: Another sendmail milter for different mail checks
