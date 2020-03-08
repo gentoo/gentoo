@@ -21,7 +21,7 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/lazy-object-proxy[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/wrapt[${PYTHON_USEDEP}]
+	>=dev-python/wrapt-1.11.2[${PYTHON_USEDEP}]
 	>=dev-python/typed-ast-1.3.0[${PYTHON_USEDEP}]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
@@ -48,6 +48,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	"${EPYTHON}" -m pytest -v --pyarg astroid/tests \
+	"${EPYTHON}" -m pytest -v --pyargs astroid/tests \
 		|| die "tests failed with ${EPYTHON}"
 }
