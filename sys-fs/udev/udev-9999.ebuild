@@ -1,7 +1,7 @@
-# Copyright 2003-2019 Gentoo Authors
+# Copyright 2003-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit bash-completion-r1 linux-info meson ninja-utils multilib-minimal toolchain-funcs udev usr-ldscript
 
@@ -25,27 +25,27 @@ IUSE="acl +kmod selinux static-libs"
 
 RESTRICT="test"
 
-COMMON_DEPEND=">=sys-apps/util-linux-2.30[${MULTILIB_USEDEP}]
-	sys-libs/libcap[${MULTILIB_USEDEP}]
-	acl? ( sys-apps/acl )
-	kmod? ( >=sys-apps/kmod-16 )
-	selinux? ( >=sys-libs/libselinux-2.1.9 )
-	!<sys-libs/glibc-2.11
-	!sys-apps/gentoo-systemd-integration
-	!sys-apps/systemd"
-DEPEND="${COMMON_DEPEND}
+BDEPEND="
 	dev-util/gperf
 	>=dev-util/intltool-0.50
-	>=dev-util/meson-0.40.0
-	dev-util/ninja
 	>=sys-apps/coreutils-8.16
-	virtual/os-headers
-	virtual/pkgconfig
-	>=sys-kernel/linux-headers-3.9
+	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	app-text/docbook-xml-dtd:4.2
 	app-text/docbook-xml-dtd:4.5
 	app-text/docbook-xsl-stylesheets
-	dev-libs/libxslt"
+	dev-libs/libxslt
+"
+COMMON_DEPEND="
+	>=sys-apps/util-linux-2.30[${MULTILIB_USEDEP}]
+	sys-libs/libcap:0=[${MULTILIB_USEDEP}]
+	acl? ( sys-apps/acl )
+	kmod? ( >=sys-apps/kmod-15 )
+	selinux? ( >=sys-libs/libselinux-2.1.9 )
+	!<sys-libs/glibc-2.11
+"
+DEPEND="${COMMON_DEPEND}
+	>=sys-kernel/linux-headers-3.9
+"
 RDEPEND="${COMMON_DEPEND}
 	acct-group/kmem
 	acct-group/tty
@@ -60,7 +60,10 @@ RDEPEND="${COMMON_DEPEND}
 	acct-group/tape
 	acct-group/video
 	!<sys-fs/lvm2-2.02.103
-	!<sec-policy/selinux-base-2.20120725-r10"
+	!<sec-policy/selinux-base-2.20120725-r10
+	!sys-apps/gentoo-systemd-integration
+	!sys-apps/systemd
+"
 PDEPEND=">=sys-apps/hwids-20140304[udev]
 	>=sys-fs/udev-init-scripts-26"
 
@@ -227,110 +230,9 @@ multilib_src_install_all() {
 }
 
 pkg_postinst() {
-	mkdir -p "${ROOT%/}"/run
-
-	# "losetup -f" is confused if there is an empty /dev/loop/, Bug #338766
-	# So try to remove it here (will only work if empty).
-	rmdir "${ROOT%/}"/dev/loop 2>/dev/null
-	if [[ -d ${ROOT%/}/dev/loop ]]; then
-		ewarn "Please make sure your remove /dev/loop,"
-		ewarn "else losetup may be confused when looking for unused devices."
-	fi
-
-	local fstab="${ROOT%/}"/etc/fstab dev path fstype rest
-	while read -r dev path fstype rest; do
-		if [[ ${path} == /dev && ${fstype} != devtmpfs ]]; then
-			ewarn "You need to edit your /dev line in ${fstab} to have devtmpfs"
-			ewarn "filesystem. Otherwise udev won't be able to boot."
-			ewarn "See, https://bugs.gentoo.org/453186"
-		fi
-	done < "${fstab}"
-
-	if [[ -d ${ROOT%/}/usr/lib/udev ]]; then
-		ewarn
-		ewarn "Please re-emerge all packages on your system which install"
-		ewarn "rules and helpers in /usr/lib/udev. They should now be in"
-		ewarn "/lib/udev."
-		ewarn
-		ewarn "One way to do this is to run the following command:"
-		ewarn "emerge -av1 \$(qfile -q -S -C /usr/lib/udev)"
-		ewarn "Note that qfile can be found in app-portage/portage-utils"
-	fi
-
-	local old_cd_rules="${ROOT%/}"/etc/udev/rules.d/70-persistent-cd.rules
-	local old_net_rules="${ROOT%/}"/etc/udev/rules.d/70-persistent-net.rules
-	for old_rules in "${old_cd_rules}" "${old_net_rules}"; do
-		if [[ -f ${old_rules} ]]; then
-			ewarn
-			ewarn "File ${old_rules} is from old udev installation but if you still use it,"
-			ewarn "rename it to something else starting with 70- to silence this deprecation"
-			ewarn "warning."
-		fi
-	done
-
-	elog
-	elog "Starting from version >= 197 the new predictable network interface names are"
-	elog "used by default, see:"
-	elog "https://www.freedesktop.org/wiki/Software/systemd/PredictableNetworkInterfaceNames"
-	elog "https://cgit.freedesktop.org/systemd/systemd/tree/src/udev/udev-builtin-net_id.c"
-	elog
-	elog "Example command to get the information for the new interface name before booting"
-	elog "(replace <ifname> with, for example, eth0):"
-	elog "# udevadm test-builtin net_id /sys/class/net/<ifname> 2> /dev/null"
-	elog
-	elog "You can use either kernel parameter \"net.ifnames=0\", create empty"
-	elog "file /etc/systemd/network/99-default.link, or symlink it to /dev/null"
-	elog "to disable the feature."
-
-	if has_version 'sys-apps/biosdevname'; then
-		ewarn
-		ewarn "You can replace the functionality of sys-apps/biosdevname which has been"
-		ewarn "detected to be installed with the new predictable network interface names."
-	fi
-
-	ewarn
-	ewarn "You need to restart udev as soon as possible to make the upgrade go"
-	ewarn "into effect."
-	ewarn "The method you use to do this depends on your init system."
-	if has_version 'sys-apps/openrc'; then
-		ewarn "For sys-apps/openrc users it is:"
-		ewarn "# /etc/init.d/udev --nodeps restart"
-	fi
-
-	elog
-	elog "For more information on udev on Gentoo, upgrading, writing udev rules, and"
-	elog "fixing known issues visit:"
-	elog "https://wiki.gentoo.org/wiki/Udev"
-	elog "https://wiki.gentoo.org/wiki/Udev/upgrade"
-
-	# If user has disabled 80-net-name-slot.rules using a empty file or a symlink to /dev/null,
-	# do the same for 80-net-setup-link.rules to keep the old behavior
-	local net_move=no
-	local net_name_slot_sym=no
-	local net_rules_path="${ROOT%/}"/etc/udev/rules.d
-	local net_name_slot="${net_rules_path}"/80-net-name-slot.rules
-	local net_setup_link="${net_rules_path}"/80-net-setup-link.rules
-	if [[ ! -e ${net_setup_link} ]]; then
-		[[ -f ${net_name_slot} && $(sed -e "/^#/d" -e "/^\W*$/d" ${net_name_slot} | wc -l) == 0 ]] && net_move=yes
-		if [[ -L ${net_name_slot} && $(readlink ${net_name_slot}) == /dev/null ]]; then
-			net_move=yes
-			net_name_slot_sym=yes
-		fi
-	fi
-	if [[ ${net_move} == yes ]]; then
-		ebegin "Copying ${net_name_slot} to ${net_setup_link}"
-
-		if [[ ${net_name_slot_sym} == yes ]]; then
-			ln -nfs /dev/null "${net_setup_link}"
-		else
-			cp "${net_name_slot}" "${net_setup_link}"
-		fi
-		eend $?
-	fi
-
 	# Update hwdb database in case the format is changed by udev version.
 	if has_version 'sys-apps/hwids[udev]'; then
-		udevadm hwdb --update --root="${ROOT%/}"
+		udevadm hwdb --update --root="${ROOT}"
 		# Only reload when we are not upgrading to avoid potential race w/ incompatible hwdb.bin and the running udevd
 		# https://cgit.freedesktop.org/systemd/systemd/commit/?id=1fab57c209035f7e66198343074e9cee06718bda
 		[[ -z ${REPLACING_VERSIONS} ]] && udev_reload
