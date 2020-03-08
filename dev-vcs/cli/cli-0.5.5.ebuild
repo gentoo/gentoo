@@ -4,6 +4,9 @@
 EAPI=7
 inherit bash-completion-r1 go-module
 
+DESCRIPTION="GitHub CLI"
+HOMEPAGE="https://github.com/cli/cli"
+
 EGO_SUM=(
 	"github.com/akavel/rsrc v0.8.0/go.mod"
 	"github.com/AlecAivazis/survey/v2 v2.0.4/go.mod"
@@ -143,18 +146,15 @@ EGO_SUM=(
 	"gopkg.in/yaml.v3 v3.0.0-20191010095647-fc94e3f71652"
 	)
 go-module_set_globals
-
-DESCRIPTION="GitHub CLI"
-HOMEPAGE="https://github.com/cli/cli"
 SRC_URI="https://github.com/cli/cli/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		${EGO_SUM_SRC_URI}"
 
-LICENSE="MIT ${EGO_SUM_LICENSES}"
+LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND+=">=dev-vcs/git-1.7.3"
-BDEPEND+=">=dev-lang/go-1.13"
+RDEPEND=">=dev-vcs/git-1.7.3"
+BDEPEND=">=dev-lang/go-1.13"
 GOPATH="${WORKDIR}"
 
 src_compile() {
