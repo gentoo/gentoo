@@ -19,7 +19,7 @@ SRC_URI="https://download.edgewall.org/trac/Trac-${MY_PV}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~ppc ~ppc64 ~x86"
 IUSE="cgi fastcgi i18n +highlight +restructuredtext mysql postgres +sqlite subversion"
 REQUIRED_USE="|| ( mysql postgres sqlite )"
 
