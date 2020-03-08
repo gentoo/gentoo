@@ -11,8 +11,11 @@ PATCH="${PN}-8.30-patches-01"
 DESCRIPTION="Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)"
 HOMEPAGE="https://www.gnu.org/software/coreutils/"
 SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
-	mirror://gentoo/${PATCH}.tar.xz
-	https://dev.gentoo.org/~polynomial-c/dist/${PATCH}.tar.xz"
+	!vanilla? (
+		mirror://gentoo/${PATCH}.tar.xz
+		https://dev.gentoo.org/~polynomial-c/dist/${PATCH}.tar.xz
+	)
+"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -62,11 +65,15 @@ pkg_setup() {
 }
 
 src_prepare() {
+	local PATCHES=(
+		"${FILESDIR}"/coreutils-8.32-ls-restore-8.31-behavior.patch
+	)
+
 	if ! use vanilla ; then
-		eapply "${WORKDIR}"/patch/*.patch
+		PATCHES+=( "${WORKDIR}"/patch )
 	fi
 
-	eapply_user
+	default
 
 	# Since we've patched many .c files, the make process will try to
 	# re-build the manpages by running `./bin --help`.  When doing a
