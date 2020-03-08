@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit fdo-mime eutils gnome2-utils
+inherit xdg-utils gnome2-utils
 
 DESCRIPTION="Free, easy, personal accounting for everyone"
 HOMEPAGE="http://homebank.free.fr/index.php"
@@ -11,13 +11,13 @@ SRC_URI="http://homebank.free.fr/public/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 IUSE="+ofx"
-KEYWORDS="amd64 ppc x86"
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 
 RDEPEND=">=dev-libs/glib-2.39
 	>=net-libs/libsoup-2.26
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
-	>=x11-libs/gtk+-3.12:3
+	>=x11-libs/gtk+-3.22:3
 	x11-libs/pango
 	ofx? ( >=dev-libs/libofx-0.8.3 )"
 DEPEND="${RDEPEND}
@@ -38,13 +38,13 @@ pkg_preinst() {
 }
 
 pkg_postinst() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
-	fdo-mime_desktop_database_update
-	fdo-mime_mime_database_update
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	gnome2_icon_cache_update
 }
