@@ -1,6 +1,6 @@
-From 137de121a36f9349ad8435fee57940facef82878 Mon Sep 17 00:00:00 2001
+From 2e9a5f0e54d8968c4fab8f1cd00c225e387f0187 Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
-Date: Fri, 26 Feb 2020 10:09:23 +0000
+Date: Fri, 6 Mar 2020 17:10:30 +0000
 Subject: [PATCH] Disable various compiler configs
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH] Disable various compiler configs
  1 file changed, 23 insertions(+), 44 deletions(-)
 
 diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
-index 85bc736..a85bd12 100644
+index d4597c7..4c651ac 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
 @@ -261,8 +261,6 @@ config("compiler") {
@@ -60,7 +60,7 @@ index 85bc736..a85bd12 100644
        # -Wunused-local-typedefs is broken in gcc,
        # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=63872
        cflags += [ "-Wno-unused-local-typedefs" ]
-@@ -1572,7 +1556,7 @@ config("chromium_code") {
+@@ -1563,7 +1547,7 @@ config("chromium_code") {
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
@@ -69,7 +69,7 @@ index 85bc736..a85bd12 100644
      if (treat_warnings_as_errors) {
        cflags += [ "-Werror" ]
  
-@@ -1581,10 +1565,6 @@ config("chromium_code") {
+@@ -1572,10 +1556,6 @@ config("chromium_code") {
        # well.
        ldflags = [ "-Werror" ]
      }
@@ -80,7 +80,7 @@ index 85bc736..a85bd12 100644
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -1593,15 +1573,6 @@ config("chromium_code") {
+@@ -1584,15 +1564,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -96,7 +96,7 @@ index 85bc736..a85bd12 100644
      if (is_mac) {
        cflags_objc = [ "-Wobjc-missing-property-synthesis" ]
        cflags_objcc = [ "-Wobjc-missing-property-synthesis" ]
-@@ -1993,7 +1964,8 @@ config("default_stack_frames") {
+@@ -1984,7 +1955,8 @@ config("default_stack_frames") {
  }
  
  # Default "optimization on" config.
@@ -106,7 +106,7 @@ index 85bc736..a85bd12 100644
    if (is_win) {
      # Favor size over speed, /O1 must be before the common flags.
      # /O1 implies /Os and /GF.
-@@ -2016,7 +1988,8 @@ config("optimize") {
+@@ -2005,7 +1977,8 @@ config("optimize") {
  }
  
  # Turn off optimizations.
@@ -116,7 +116,7 @@ index 85bc736..a85bd12 100644
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2050,7 +2023,8 @@ config("no_optimize") {
+@@ -2039,7 +2012,8 @@ config("no_optimize") {
  # Turns up the optimization level. On Windows, this implies whole program
  # optimization and link-time code generation which is very expensive and should
  # be used sparingly.
@@ -126,7 +126,7 @@ index 85bc736..a85bd12 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2089,7 +2063,8 @@ config("optimize_max") {
+@@ -2071,7 +2045,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/621335) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -136,7 +136,7 @@ index 85bc736..a85bd12 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2119,7 +2094,8 @@ config("optimize_speed") {
+@@ -2096,7 +2071,8 @@ config("optimize_speed") {
    }
  }
  
@@ -146,7 +146,7 @@ index 85bc736..a85bd12 100644
    cflags = [ "-O1" ] + common_optimize_on_cflags
    ldflags = common_optimize_on_ldflags
    visibility = [ ":default_optimization" ]
-@@ -2235,7 +2211,8 @@ config("win_pdbaltpath") {
+@@ -2212,7 +2188,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -154,9 +154,9 @@ index 85bc736..a85bd12 100644
 +config("symbols") { }
 +config("xsymbols") {
    if (is_win) {
-     if (use_goma || is_clang) {
-       # Note that with VC++ this requires is_win_fastlink, enforced elsewhere.
-@@ -2361,7 +2338,8 @@ config("symbols") {
+     if (is_clang) {
+       cflags = [ "/Z7" ]  # Debug information in the .obj files.
+@@ -2318,7 +2295,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -166,7 +166,7 @@ index 85bc736..a85bd12 100644
    if (is_win) {
      # Functions, files, and line tables only.
      cflags = []
-@@ -2416,7 +2394,8 @@ config("minimal_symbols") {
+@@ -2373,7 +2351,8 @@ config("minimal_symbols") {
  }
  
  # No symbols.
