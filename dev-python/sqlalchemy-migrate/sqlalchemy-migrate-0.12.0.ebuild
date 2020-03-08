@@ -22,7 +22,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 RDEPEND=">=dev-python/sqlalchemy-0.9.6[${PYTHON_USEDEP}]
 		dev-python/decorator[${PYTHON_USEDEP}]
 		>=dev-python/six-1.7.0[${PYTHON_USEDEP}]
-		dev-python/python-sqlparse[${PYTHON_USEDEP}]
+		dev-python/sqlparse[${PYTHON_USEDEP}]
 		>=dev-python/tempita-0.4[${PYTHON_USEDEP}]"
 # Testsuite requires a missing dep and errors with poor report output
 

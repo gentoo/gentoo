@@ -55,12 +55,12 @@ RDEPEND="${COMMON_DEPEND}
 		>=dev-python/psutil-5.5.1[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/psycopg-2.8[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/python-dateutil-2.8.0[${PYTHON_MULTI_USEDEP}]
-		>=dev-python/python-sqlparse-0.2.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/pytz-2018.9[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/simplejson-3.16.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/six-1.12.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/speaklater-1.3[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/sqlalchemy-1.2.18[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/sqlparse-0.2.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/sshtunnel-0.1.4[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/wtforms-2.2.1[${PYTHON_MULTI_USEDEP}]
 	')
