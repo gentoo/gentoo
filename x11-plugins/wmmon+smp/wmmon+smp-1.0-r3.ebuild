@@ -22,7 +22,9 @@ DEPEND="${RDEPEND}
 
 S="${WORKDIR}/wmmon.app/wmmon"
 
-PATCHES=( "${FILESDIR}"/${P}-list.patch )
+PATCHES=( "${FILESDIR}"/${P}-list.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	)
 
 src_prepare() {
 	tc-export CC
