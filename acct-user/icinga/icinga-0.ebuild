@@ -6,7 +6,7 @@ EAPI=7
 inherit acct-user
 
 DESCRIPTION="Icinga User"
-ACCT_USER_ID=456
+ACCT_USER_ID=457
 ACCT_USER_HOME=/var/lib/icinga2
 ACCT_USER_GROUPS=( icinga icingacmd nagios )
 
