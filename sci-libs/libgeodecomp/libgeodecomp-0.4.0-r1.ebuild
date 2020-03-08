@@ -37,6 +37,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-scotch.patch"
 	"${FILESDIR}/${P}-libdir.patch"
 	"${FILESDIR}/${P}-lfa.patch"
+	"${FILESDIR}/${P}-boost.patch"
 )
 
 src_prepare() {
