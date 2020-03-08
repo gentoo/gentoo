@@ -48,6 +48,6 @@ python_prepare_all() {
 }
 
 python_test() {
-	"${EPYTHON}" -m pytest -v --pyarg astroid/tests \
+	"${EPYTHON}" -m pytest -v --pyargs astroid/tests \
 		|| die "tests failed with ${EPYTHON}"
 }
