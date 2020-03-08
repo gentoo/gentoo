@@ -1,0 +1,13 @@
+diff --git a/ui/color/color_set.cc b/ui/color/color_set.cc
+index 56564d7..2798a3c 100644
+--- a/ui/color/color_set.cc
++++ b/ui/color/color_set.cc
+@@ -11,7 +11,7 @@ ColorSet::ColorSet(ColorSetId id, ColorMap&& colors)
+ 
+ ColorSet::ColorSet(ColorSet&&) noexcept = default;
+ 
+-ColorSet& ColorSet::operator=(ColorSet&&) noexcept = default;
++ColorSet& ColorSet::operator=(ColorSet&&) = default;
+ 
+ ColorSet::~ColorSet() = default;
+ 
