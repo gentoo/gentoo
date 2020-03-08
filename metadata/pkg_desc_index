@@ -8559,7 +8559,7 @@ dev-python/python-dateutil 2.7.2-r1 2.8.0 2.8.1-r1: Extensions to the standard P
 dev-python/python-ddp 0.1.5: An event driven ddp client
 dev-python/python-debian 0.1.31 0.1.36: Python modules to work with Debian-related data formats
 dev-python/python-designateclient 2.11.0: Python bindings to the Designate API.
-dev-python/python-discid 1.1.1: Python bindings for libdiscid
+dev-python/python-discid 1.1.1 1.2.0: Python bindings for libdiscid
 dev-python/python-distutils-extra 2.38 2.39 2.42 2.42-r1: Gettext support, themed icons and scrollkeeper-based documentation in distutils
 dev-python/python-djvulibre 0.8: Set of Python bindings for the DjVuLibre library
 dev-python/python-docs 2.7.14 2.7.17 3.6.3 3.6.4 3.6.10 3.7.0 3.7.6 3.8.1: HTML documentation for Python
@@ -15157,6 +15157,7 @@ net-misc/vncsnapshot 1.2a: A command-line tool for taking JPEG snapshots of VNC 
 net-misc/vrrpd 1.0 1.9: Virtual Router Redundancy Protocol Daemon
 net-misc/wakeonlan 0.41-r2: Client for Wake-On-LAN
 net-misc/wget 1.20.3-r1 1.20.3-r3: Network utility to retrieve files from the WWW
+net-misc/wget2 1.99.2: GNU Wget2 is a file and recursive website downloader
 net-misc/whatmask 1.2-r1: little C program to compute different subnet mask notations
 net-misc/whois 5.4.3 5.5.5 5.5.6 9999: improved Whois Client
 net-misc/wicd 1.7.4-r3: A lightweight wired and wireless network manager for Linux

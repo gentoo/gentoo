@@ -6724,6 +6724,12 @@ net-misc/wget:cookie_check - Enable cookie checks via net-libs/libpsl
 net-misc/wget:metalink - Enable support for media-libs/libmetalink
 net-misc/wget:ntlm - Enable support for NTLM (Windows-based) authorization
 net-misc/wget:uuid - Generate UUIDs for the WARC (Web ARChive file format) using libuuid; otherwise use a simple RNG (random number generator)
+net-misc/wget2:brotli - Enable support for brotli compression
+net-misc/wget2:gpgme - Build gpgme backend
+net-misc/wget2:http2 - Enable HTTP/2.0 support
+net-misc/wget2:openssl - Enable crypto support via dev-libs/openssl
+net-misc/wget2:psl - Use public suffix list via media-libs/libnspsl
+net-misc/wget2:valgrind - Depend on dev-util/vagrind for test suite
 net-misc/wicd:ambiance - Install icons from Ubuntu's ambiance theme
 net-misc/wicd:gnome-shell - Install gnome-shell extension
 net-misc/wicd:gtk - Installs a gtk UI. This is enabled by default because it is intended behavior. Requires dev-python/pygtk
