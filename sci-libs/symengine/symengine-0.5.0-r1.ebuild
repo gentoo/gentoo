@@ -22,6 +22,7 @@ RDEPEND="
 	arb? ( sci-mathematics/arb:= )
 	boost? ( dev-libs/boost:= )
 	ecm? ( sci-mathematics/gmp-ecm )
+	flint? ( sci-mathematics/flint:= )
 	mpc? ( dev-libs/mpc:= )
 	tcmalloc? ( dev-util/google-perftools )
 "
