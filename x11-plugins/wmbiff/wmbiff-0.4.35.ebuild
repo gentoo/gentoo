@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,10 +25,13 @@ DEPEND="${RDEPEND}
 BDEPEND="virtual/pkgconfig"
 
 DOCS="ChangeLog FAQ NEWS README TODO wmbiff/sample.wmbiffrc"
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.27-invalid-strncpy.patch
+	"${FILESDIR}"/${P}-fno-common.patch
+	)
 
 src_prepare() {
 	default
-	eapply "${FILESDIR}"/${PN}-0.4.27-invalid-strncpy.patch
 	eautoreconf
 }
 
