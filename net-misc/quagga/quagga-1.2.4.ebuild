@@ -61,7 +61,8 @@ src_prepare() {
 }
 
 src_configure() {
-	append-flags -fno-strict-aliasing
+	# -fcommon is added as a workaround for bug #707422
+	append-flags -fno-strict-aliasing -fcommon
 
 	# do not build PDF docs
 	export ac_cv_prog_PDFLATEX=no
