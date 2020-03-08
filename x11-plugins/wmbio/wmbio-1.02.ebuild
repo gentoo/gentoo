@@ -18,15 +18,15 @@ RDEPEND="x11-libs/libX11
 DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 
+PATCHES=( "${FILESDIR}"/${P}-fno-common.patch )
 S=${WORKDIR}/${P}/src
 
 src_prepare() {
 	default
 	# Honour Gentoo CFLAGS
-	sed -i "s/-g -O2/\$(CFLAGS)/" Makefile || die "sed for CFLAGS failed"
-
+	sed -i "s/-g -O2/\$(CFLAGS)/" Makefile || die
 	# Honour Gentoo LDFLAGS
-	sed -i "s/-o wmbio/\$(LDFLAGS) -o wmbio/" Makefile || die "sed for LDFLAGS failed"
+	sed -i "s/-o wmbio/\$(LDFLAGS) -o wmbio/" Makefile || die
 }
 
 src_install() {
