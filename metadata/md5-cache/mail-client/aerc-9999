@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=notmuch? ( net-mail/notmuch:= )
 RESTRICT=strip
 SLOT=0
-_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	go-module	7b83d59124252e3e756e1071c0f06678
+_eclasses_=git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	go-module	9c89b9b23b308aef82637272a26781f7
 _md5_=84ad324b31557ec93c193eb598b4c6fe
