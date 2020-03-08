@@ -111,7 +111,6 @@ dev-python/iso_639
 dev-python/jog
 dev-python/jpype
 dev-python/jsmin
-dev-python/json-rpc
 dev-python/json-tools
 dev-python/keepassx
 dev-python/kitchen
