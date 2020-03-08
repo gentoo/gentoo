@@ -8,7 +8,7 @@ export CTARGET=${CTARGET:-${CHOST}}
 
 MY_PV=${PV/_/}
 
-inherit toolchain-funcs
+inherit toolchain-funcs linux-info
 
 case ${PV}  in
 *9999*)
@@ -120,6 +120,19 @@ go_tuple()
 go_cross_compile()
 {
 	[[ $(go_tuple ${CBUILD}) != $(go_tuple) ]]
+}
+
+pkg_setup()
+{
+	get_running_version
+
+	if use kernel_linux; then
+		if kernel_is -lt 5 3 ||
+				(kernel_is -ge 5 3 && kernel_is -lt 5 3 15) ||
+				(kernel_is 5 4 && kernel_is -lt 5 4 2); then
+			die ">=dev-lang/go-1.14 requires at kernel version 5.3.15+, 5.4.2+ or 5.5+"
+		fi
+	fi
 }
 
 src_compile()
