@@ -69,6 +69,8 @@ BDEPEND="virtual/pkgconfig
 	nls? ( sys-devel/gettext )
 "
 
+PATCHES=( "${FILESDIR}"/${P}-libgit2-0.99.patch )
+
 pkg_setup() {
 	use python && python-single-r1_pkg_setup
 }
