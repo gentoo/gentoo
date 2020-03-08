@@ -17,6 +17,14 @@
 
 #--- END OF EXAMPLES ---
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
+# dev-python/pygtk is in the process of being removed, tracker bug #706462
+dev-python/pygtk
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
+# x11-libs/gtkglext is in the process of being removed, tracker bug #698950
+x11-libs/gtkglext
+
 # Sergei Trofimovich <slyfox@gentoo.org> (2020-02-22)
 # virtual/libffi has only one dev-libs/libffi provider. Use that instead.
 # bug #699796.
