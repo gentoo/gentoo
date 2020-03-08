@@ -146,7 +146,6 @@ dev-python/pycobertura
 dev-python/pydot-ng
 dev-python/pyee
 dev-python/pyev
-dev-python/pyfeyn
 dev-python/pyfiglet
 dev-python/pygcrypt
 dev-python/pygeocoder
@@ -179,7 +178,7 @@ dev-python/python-socketio
 dev-python/python-twitter
 dev-python/python-uinput
 dev-python/pythonmagick
-dev-python/pyx
+<dev-python/pyx-0.15
 dev-python/rackspace-monitoring
 dev-python/readlike
 dev-python/redis-py-cluster
