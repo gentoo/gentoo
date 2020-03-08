@@ -40,6 +40,7 @@ python_test() {
 
 python_install_all() {
 	distutils-r1_python_prepare_all
+	python_optimize
 	rm "${ED}"/usr/share/doc/${PF}/README.md || die
 	newdoc README.md ${PN}.py.md
 }
