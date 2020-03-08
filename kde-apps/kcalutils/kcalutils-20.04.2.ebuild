@@ -34,10 +34,4 @@ DEPEND="
 "
 RDEPEND="${DEPEND}"
 
-src_test() {
-	# bug 653616
-	local myctestargs=(
-		-E "(kcalutils-testincidenceformatter)"
-	)
-	ecm_src_test
-}
+RESTRICT+=" test" # bugs 653616, 711666
