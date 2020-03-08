@@ -4,6 +4,10 @@
 # This file requires eapi 5 or later. New entries go on top.
 # Please use the same syntax as in package.use.mask
 
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
+# sci-libs/symengine and dependencies are not stable, bug #711872
+dev-python/sympy symengine
+
 # Brian Evans <grknight@gentoo.org> (2020-02-27)
 # Two packages are delayed during stable of PHP 7.4
 # arm, arm64 and hppa necessary to not disruput consistency
