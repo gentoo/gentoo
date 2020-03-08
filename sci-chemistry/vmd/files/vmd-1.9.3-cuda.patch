@@ -1,0 +1,426 @@
+--- a/src/CUDAMarchingCubes.cu	2018-03-30 18:52:25.467189457 +0300
++++ b/src/CUDAMarchingCubes.cu	2018-03-30 18:52:02.387136244 +0300
+@@ -10,7 +10,7 @@
+  *
+  *      $RCSfile: CUDAMarchingCubes.cu,v $
+  *      $Author: johns $        $Locker:  $             $State: Exp $
+- *      $Revision: 1.30 $       $Date: 2016/11/28 03:04:58 $
++ *      $Revision: 1.32 $       $Date: 2018/02/15 05:15:02 $
+  *
+  ***************************************************************************
+  * DESCRIPTION:
+@@ -25,14 +25,17 @@
+ //
+ // Description: This class computes an isosurface for a given density grid
+ //              using a CUDA Marching Cubes (MC) alorithm. 
+-//              The implementation is based on the MC demo from the 
+-//              Nvidia GPU Computing SDK, but has been improved 
+-//              and extended.  This implementation achieves higher 
+-//              performance by reducing the number of temporary memory
+-//              buffers, reduces the number of scan calls by using vector
+-//              integer types, and allows extraction of per-vertex normals 
+-//              optionally computes per-vertex colors if provided with a 
+-//              volumetric texture map.
++//
++//              The implementation is loosely based on the MC demo from 
++//              the Nvidia GPU Computing SDK, but the design has been 
++//              improved and extended in several ways.  
++//
++//              This implementation achieves higher performance
++//              by reducing the number of temporary memory
++//              buffers, reduces the number of scan calls by using 
++//              vector integer types, and allows extraction of 
++//              per-vertex normals and optionally computes 
++//              per-vertex colors if a volumetric texture map is provided.
+ //
+ // Author: Michael Krone <michael.krone@visus.uni-stuttgart.de>
+ //         John Stone <johns@ks.uiuc.edu>
+@@ -48,7 +51,7 @@
+ #include <thrust/functional.h>
+ 
+ //
+-// Restrict macro to make it easy to do perf tuning tess
++// Restrict macro to make it easy to do perf tuning tests
+ //
+ #if 0
+ #define RESTRICT __restrict__
+@@ -171,6 +174,11 @@
+ texture<float, 3, cudaReadModeElementType> volumeTex;
+ 
+ // sample volume data set at a point p, p CAN NEVER BE OUT OF BOUNDS
++// XXX The sampleVolume() call underperforms vs. peak memory bandwidth
++//     because we don't strictly enforce coalescing requirements in the
++//     layout of the input volume presently.  If we forced X/Y dims to be
++//     warp-multiple it would become possible to use wider fetches and
++//     a few other tricks to improve global memory bandwidth 
+ __device__ float sampleVolume(const float * RESTRICT data, 
+                               uint3 p, uint3 gridSize) {
+     return data[(p.z*gridSize.x*gridSize.y) + (p.y*gridSize.x) + p.x];
+@@ -592,6 +600,30 @@
+     cudaBindTextureToArray(volumeTex, d_vol, desc);
+ }
+ 
++#if CUDART_VERSION >= 9000
++//
++// XXX CUDA 9.0RC breaks the usability of Thrust scan() prefix sums when
++//     used with the built-in uint2 vector integer types.  To workaround
++//     the problem we have to define our own type and associated conversion
++//     routines etc.
++//
++
++// XXX workaround for uint2 breakage in CUDA 9.0RC
++struct myuint2 : uint2 {
++  __host__ __device__ myuint2() : uint2(make_uint2(0, 0)) {}
++  __host__ __device__ myuint2(int val) : uint2(make_uint2(val, val)) {}
++  __host__ __device__ myuint2(uint2 val) : uint2(make_uint2(val.x, val.y)) {}
++};
++
++void ThrustScanWrapperUint2(uint2* output, uint2* input, unsigned int numElements) {
++    const uint2 zero = make_uint2(0, 0);
++    thrust::exclusive_scan(thrust::device_ptr<myuint2>((myuint2*)input),
++                           thrust::device_ptr<myuint2>((myuint2*)input + numElements),
++                           thrust::device_ptr<myuint2>((myuint2*)output),
++                           (myuint2) zero);
++}
++
++#else
+ 
+ void ThrustScanWrapperUint2(uint2* output, uint2* input, unsigned int numElements) {
+     const uint2 zero = make_uint2(0, 0);
+@@ -601,6 +633,7 @@
+                            zero);
+ }
+ 
++#endif
+ 
+ void ThrustScanWrapperArea(float* output, float* input, unsigned int numElements) {
+     thrust::inclusive_scan(thrust::device_ptr<float>(input), 
+@@ -639,11 +672,9 @@
+ }
+ 
+ 
+-///////////////////////////////////////////////////////////////////////////////
+ //
+ // class CUDAMarchingCubes
+ //
+-///////////////////////////////////////////////////////////////////////////////
+ 
+ CUDAMarchingCubes::CUDAMarchingCubes() {
+     // initialize values
+@@ -713,9 +744,6 @@
+ }
+ 
+ 
+-////////////////////////////////////////////////////////////////////////////////
+-//! Run the Cuda part of the computation
+-////////////////////////////////////////////////////////////////////////////////
+ void CUDAMarchingCubes::computeIsosurfaceVerts(float3* vertOut, unsigned int maxverts, dim3 & grid3) {
+     // check if data is available
+     if (!this->setdata)
+
+--- a/src/CUDAMDFF.cu	2016-12-01 10:11:56.000000000 +0300
++++ b/src/CUDAMDFF.cu	2018-03-30 18:56:44.352937599 +0300
+@@ -11,7 +11,7 @@
+  *
+  *      $RCSfile: CUDAMDFF.cu,v $
+  *      $Author: johns $        $Locker:  $             $State: Exp $
+- *      $Revision: 1.75 $      $Date: 2015/04/07 20:41:26 $
++ *      $Revision: 1.78 $      $Date: 2018/02/19 07:10:37 $
+  *
+  ***************************************************************************
+  * DESCRIPTION:
+@@ -28,12 +28,16 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <cuda.h>
+-#include <float.h> // FLT_MAX etc
+-
++#if CUDART_VERSION >= 9000
++#include <cuda_fp16.h> // need to explicitly include for CUDA 9.0
++#endif
+ #if CUDART_VERSION < 4000
+ #error The VMD MDFF feature requires CUDA 4.0 or later
+ #endif
+ 
++#include <float.h> // FLT_MAX etc
++
++
+ #include "Inform.h"
+ #include "utilities.h"
+ #include "WKFThreads.h"
+@@ -588,6 +592,43 @@
+ }
+ 
+ 
++
++// #define VMDUSESHUFFLE 1
++#if defined(VMDUSESHUFFLE) && __CUDA_ARCH__ >= 300 && CUDART_VERSION >= 9000
++// New warp shuffle-based CC sum reduction for Kepler and later GPUs.
++inline __device__ void cc_sumreduction(int tid, int totaltb, 
++                                float4 &total_cc_sums,
++                                float &total_lcc,
++                                int &total_lsize,
++                                float4 *tb_cc_sums,
++                                float *tb_lcc,
++                                int *tb_lsize) {
++  total_cc_sums = make_float4(0.0f, 0.0f, 0.0f, 0.0f);
++  total_lcc = 0.0f;
++  total_lsize = 0;
++
++  // use precisely one warp to do the final reduction
++  if (tid < warpSize) {
++    for (int i=tid; i<totaltb; i+=warpSize) {
++      total_cc_sums += tb_cc_sums[i];
++      total_lcc     += tb_lcc[i];
++      total_lsize   += tb_lsize[i];
++    }
++
++    // perform intra-warp parallel reduction...
++    // general loop version of parallel sum-reduction
++    for (int mask=warpSize/2; mask>0; mask>>=1) {
++      total_cc_sums.x += __shfl_xor_sync(0xffffffff, total_cc_sums.x, mask);
++      total_cc_sums.y += __shfl_xor_sync(0xffffffff, total_cc_sums.y, mask);
++      total_cc_sums.z += __shfl_xor_sync(0xffffffff, total_cc_sums.z, mask);
++      total_cc_sums.w += __shfl_xor_sync(0xffffffff, total_cc_sums.w, mask);
++      total_lcc     += __shfl_xor_sync(0xffffffff, total_lcc, mask);
++      total_lsize   += __shfl_xor_sync(0xffffffff, total_lsize, mask);
++    }
++  }
++}
++#else
++// shared memory based CC sum reduction 
+ inline __device__ void cc_sumreduction(int tid, int totaltb, 
+                                 float4 &total_cc_sums,
+                                 float &total_lcc,
+@@ -629,6 +670,7 @@
+   total_lcc = tb_lcc[0];
+   total_lsize = tb_lsize[0];
+ }
++#endif
+ 
+ 
+ inline __device__ void thread_cc_sum(float ref, float density,
+@@ -750,6 +792,92 @@
+   }
+ 
+ 
++#if defined(VMDUSESHUFFLE) && __CUDA_ARCH__ >= 300 && CUDART_VERSION >= 9000
++  // all threads write their local sums to shared memory...
++  __shared__ float2 tb_cc_means_s[TOTALBLOCKSZ];
++  __shared__ float2 tb_cc_squares_s[TOTALBLOCKSZ];
++  __shared__ float tb_lcc_s[TOTALBLOCKSZ];
++  __shared__ int tb_lsize_s[TOTALBLOCKSZ];
++
++  tb_cc_means_s[tid] = thread_cc_means;
++  tb_cc_squares_s[tid] = thread_cc_squares;
++  tb_lcc_s[tid] = thread_lcc;
++  tb_lsize_s[tid] = thread_lsize;
++  __syncthreads(); // all threads must hit syncthreads call...
++
++  // use precisely one warp to do the thread-block-wide reduction
++  if (tid < warpSize) {
++    float2 tmp_cc_means = make_float2(0.0f, 0.0f);
++    float2 tmp_cc_squares = make_float2(0.0f, 0.0f);
++    float tmp_lcc = 0.0f;
++    int tmp_lsize = 0;
++    for (int i=tid; i<TOTALBLOCKSZ; i+=warpSize) {
++      tmp_cc_means   += tb_cc_means_s[i];
++      tmp_cc_squares += tb_cc_squares_s[i];
++      tmp_lcc        += tb_lcc_s[i];
++      tmp_lsize      += tb_lsize_s[i];
++    }
++
++    // perform intra-warp parallel reduction...
++    // general loop version of parallel sum-reduction
++    for (int mask=warpSize/2; mask>0; mask>>=1) {
++      tmp_cc_means.x   += __shfl_xor_sync(0xffffffff, tmp_cc_means.x, mask);
++      tmp_cc_means.y   += __shfl_xor_sync(0xffffffff, tmp_cc_means.y, mask);
++      tmp_cc_squares.x += __shfl_xor_sync(0xffffffff, tmp_cc_squares.x, mask);
++      tmp_cc_squares.y += __shfl_xor_sync(0xffffffff, tmp_cc_squares.y, mask);
++      tmp_lcc          += __shfl_xor_sync(0xffffffff, tmp_lcc, mask);
++      tmp_lsize        += __shfl_xor_sync(0xffffffff, tmp_lsize, mask);
++    }
++
++    // write per-thread-block partial sums to global memory,
++    // if a per-thread-block CC output array is provided, write the 
++    // local CC for this thread block out, and finally, check if we 
++    // are the last thread block to finish, and finalize the overall
++    // CC results for the entire grid of thread blocks.
++    if (tid == 0) {   
++      unsigned int bid = blockIdx.z * gridDim.x * gridDim.y +
++                         blockIdx.y * gridDim.x + blockIdx.x;
++
++      tb_cc_sums[bid] = make_float4(tmp_cc_means.x, tmp_cc_means.y,
++                                    tmp_cc_squares.x, tmp_cc_squares.y);
++      tb_lcc[bid]     = tmp_lcc;
++      tb_lsize[bid]   = tmp_lsize;
++
++      if (tb_CC != NULL) {
++        float cc = calc_cc(tb_cc_means_s[0].x, tb_cc_means_s[0].y,
++                           tb_cc_squares_s[0].x, tb_cc_squares_s[0].y,
++                           tb_lsize_s[0], tb_lcc_s[0]);
++
++        // write local per-thread-block CC to global memory
++        tb_CC[bid]   = cc;
++      }
++
++      __threadfence();
++
++      unsigned int value = atomicInc(&tbcatomic[0], totaltb);
++      isLastBlockDone = (value == (totaltb - 1));
++    }
++  }
++  __syncthreads();
++
++  if (isLastBlockDone) {
++    float4 total_cc_sums;
++    float total_lcc;
++    int total_lsize;
++    cc_sumreduction(tid, totaltb, total_cc_sums, total_lcc, total_lsize,
++                    tb_cc_sums, tb_lcc, tb_lsize); 
++
++    if (tid == 0) {
++      tb_cc_sums[totaltb] = total_cc_sums;
++      tb_lcc[totaltb] = total_lcc;
++      tb_lsize[totaltb] = total_lsize;
++    }
++ 
++    reset_atomic_counter(&tbcatomic[0]);
++  }
++
++#else
++
+   // all threads write their local sums to shared memory...
+   __shared__ float2 tb_cc_means_s[TOTALBLOCKSZ];
+   __shared__ float2 tb_cc_squares_s[TOTALBLOCKSZ];
+@@ -794,6 +922,7 @@
+     }
+     __syncthreads(); // all threads must hit syncthreads call...
+   }
++//#endif
+ 
+   // write per-thread-block partial sums to global memory,
+   // if a per-thread-block CC output array is provided, write the 
+@@ -847,6 +976,7 @@
+     }
+ #endif
+   }
++#endif
+ }
+ 
+ 
+
+--- a/src/CUDAQuickSurf.cu	2016-12-01 10:11:56.000000000 +0300
++++ b/src/CUDAQuickSurf.cu	2018-03-30 19:01:38.777196233 +0300
+@@ -11,7 +11,7 @@
+  *
+  *      $RCSfile: CUDAQuickSurf.cu,v $
+  *      $Author: johns $        $Locker:  $             $State: Exp $
+- *      $Revision: 1.81 $      $Date: 2016/04/20 04:57:46 $
++ *      $Revision: 1.84 $      $Date: 2018/02/15 04:59:15 $
+  *
+  ***************************************************************************
+  * DESCRIPTION:
+@@ -22,6 +22,9 @@
+ #include <stdlib.h>
+ #include <string.h>
+ #include <cuda.h>
++#if CUDART_VERSION >= 9000
++#include <cuda_fp16.h>  // need to explicitly include for CUDA 9.0
++#endif
+ 
+ #if CUDART_VERSION < 4000
+ #error The VMD QuickSurf feature requires CUDA 4.0 or later
+@@ -130,14 +133,14 @@
+ #define GUNROLL      1
+ #endif
+ 
+-#if __CUDA_ARCH__ >= 300
+ #define MAXTHRDENS  ( GBLOCKSZX * GBLOCKSZY * GBLOCKSZZ )
+-#define MINBLOCKDENS 1
++#if __CUDA_ARCH__ >= 600
++#define MINBLOCKDENS 16
++#elif __CUDA_ARCH__ >= 300
++#define MINBLOCKDENS 16
+ #elif __CUDA_ARCH__ >= 200
+-#define MAXTHRDENS  ( GBLOCKSZX * GBLOCKSZY * GBLOCKSZZ )
+ #define MINBLOCKDENS 1
+ #else
+-#define MAXTHRDENS  ( GBLOCKSZX * GBLOCKSZY * GBLOCKSZZ )
+ #define MINBLOCKDENS 1
+ #endif
+ 
+@@ -150,7 +153,7 @@
+ //
+ template<class DENSITY, class VOLTEX>
+ __global__ static void 
+-// __launch_bounds__ ( MAXTHRDENS, MINBLOCKDENS )
++__launch_bounds__ ( MAXTHRDENS, MINBLOCKDENS )
+ gaussdensity_fast_tex_norm(int natoms,
+                       const float4 * RESTRICT sorted_xyzr, 
+                       const float4 * RESTRICT sorted_color, 
+@@ -217,6 +220,8 @@
+     for (yab=yabmin; yab<=yabmax; yab++) {
+       for (xab=xabmin; xab<=xabmax; xab++) {
+         int abcellidx = zab * acplanesz + yab * acncells.x + xab;
++        // this biggest latency hotspot in the kernel, if we could improve
++        // packing of the grid cell map, we'd likely improve performance 
+         uint2 atomstartend = cellStartEnd[abcellidx];
+         if (atomstartend.x != GRID_CELL_EMPTY) {
+           unsigned int atomid;
+@@ -296,7 +301,7 @@
+ 
+ 
+ __global__ static void 
+-// __launch_bounds__ ( MAXTHRDENS, MINBLOCKDENS )
++__launch_bounds__ ( MAXTHRDENS, MINBLOCKDENS )
+ gaussdensity_fast_tex3f(int natoms,
+                         const float4 * RESTRICT sorted_xyzr, 
+                         const float4 * RESTRICT sorted_color, 
+@@ -363,6 +368,8 @@
+     for (yab=yabmin; yab<=yabmax; yab++) {
+       for (xab=xabmin; xab<=xabmax; xab++) {
+         int abcellidx = zab * acplanesz + yab * acncells.x + xab;
++        // this biggest latency hotspot in the kernel, if we could improve
++        // packing of the grid cell map, we'd likely improve performance 
+         uint2 atomstartend = cellStartEnd[abcellidx];
+         if (atomstartend.x != GRID_CELL_EMPTY) {
+           unsigned int atomid;
+@@ -550,7 +557,6 @@
+ 
+ // per-GPU handle with various memory buffer pointers, etc.
+ typedef struct {
+-  /// max grid sizes and attributes the current allocations will support
+   int verbose;
+   long int natoms;
+   int colorperatom;
+@@ -561,18 +567,18 @@
+   int gy;
+   int gz;
+ 
+-  CUDAMarchingCubes *mc;     ///< Marching cubes class used to extract surface
++  CUDAMarchingCubes *mc;     
+ 
+-  float *devdensity;         ///< density map stored in GPU memory
+-  void *devvoltexmap;        ///< volumetric texture map
+-  float4 *xyzr_d;            ///< atom coords and radii
+-  float4 *sorted_xyzr_d;     ///< cell-sorted coords and radii
+-  float4 *color_d;           ///< colors
+-  float4 *sorted_color_d;    ///< cell-sorted colors
+-
+-  unsigned int *atomIndex_d; ///< cell index for each atom
+-  unsigned int *atomHash_d;  ///<  
+-  uint2 *cellStartEnd_d;     ///< cell start/end indices 
++  float *devdensity;         
++  void *devvoltexmap;        
++  float4 *xyzr_d;            
++  float4 *sorted_xyzr_d;     
++  float4 *color_d;           
++  float4 *sorted_color_d;    
++
++  unsigned int *atomIndex_d; 
++  unsigned int *atomHash_d;  
++  uint2 *cellStartEnd_d;     
+ 
+   void *safety;
+   float3 *v3f_d;
