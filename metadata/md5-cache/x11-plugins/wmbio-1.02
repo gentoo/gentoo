@@ -8,4 +8,4 @@ LICENSE=GPL-2
 RDEPEND=x11-libs/libX11 x11-libs/libXext x11-libs/libXpm
 SLOT=0
 SRC_URI=mirror://sourceforge/wmbio/wmbio-1.02.tar.gz
-_md5_=bf7eee207ba6db9ea5acf6b35548b57c
+_md5_=08c5f066433cfc5ec44b55a93bd7ffae
