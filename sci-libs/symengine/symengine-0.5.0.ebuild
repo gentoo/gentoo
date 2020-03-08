@@ -56,7 +56,6 @@ src_configure() {
 		int_class=gmp
 	fi
 	local mycmakeargs=(
-		-DARB_INCLUDE_DIR="${EPREFIX}/usr/include"
 		-DINTEGER_CLASS="${int_class}"
 		-DBUILD_BENCHMARKS="$(usex benchmarks)"
 		-DBUILD_DOXYGEN="$(usex doc)"
@@ -74,6 +73,8 @@ src_configure() {
 		-DWITH_TCMALLOC="$(usex tcmalloc)"
 		-DWITH_ECM="$(usex ecm)"
 	)
+	use arb && mycmakeargs+=( -DARB_INCLUDE_DIR="${EPREFIX}/usr/include" )
+
 	test-flag-CXX -std=c++11 && append-cxxflags -std=c++11
 	cmake_src_configure
 }
