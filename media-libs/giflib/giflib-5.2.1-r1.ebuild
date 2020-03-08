@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -64,12 +64,11 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	docinto
-	dodoc ChangeLog NEWS README TODO
+	local DOCS=( ChangeLog NEWS README TODO )
+	einstalldocs
 	if use doc ; then
-		dodoc doc/*.txt
 		docinto html
-		dodoc -r doc/whatsinagif
+		dodoc -r doc/{gifstandard,whatsinagif}
 	fi
 }
 
