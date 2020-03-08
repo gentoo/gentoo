@@ -2343,7 +2343,6 @@ dev-libs/weston:rdp - Enable Remote Desktop Protocol compositor support
 dev-libs/weston:remoting - Enable plugin to stream output to remote hosts using media-libs/gstreamer
 dev-libs/weston:resize-optimization - Increase performance, allocate more RAM. Recommended to disable on Raspberry Pi
 dev-libs/weston:screen-sharing - Enable screen-sharing through RDP
-dev-libs/weston:unwind - Enable libunwind usage for backtraces
 dev-libs/weston:wayland-compositor - Enable Wayland compositor support
 dev-libs/weston:xwayland - Enable ability support native X11 applications
 dev-libs/xapian:brass - Enabled brass backend db support
