@@ -30,6 +30,7 @@ RDEPEND="
 
 BDEPEND="
 	${RDEPEND}
+	dev-python/setuptools-git[${PYTHON_USEDEP}]
 "
 
 python_prepare_all() {
