@@ -49,6 +49,8 @@ RDEPEND="${DEPEND}
 	kipi? ( >=kde-apps/kipi-plugins-${PVCUT}:5 )
 "
 
+RESTRICT+=" test" # bug #711664
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package kipi KF5Kipi)
