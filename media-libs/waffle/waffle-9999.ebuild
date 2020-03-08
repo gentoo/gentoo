@@ -17,7 +17,7 @@ HOMEPAGE="http://www.waffle-gl.org/ https://gitlab.freedesktop.org/mesa/waffle"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="doc egl gbm test wayland X"
+IUSE="doc egl gbm wayland X"
 RESTRICT="test" # gl_basic tests don't work when run from portage
 
 RDEPEND="
@@ -52,8 +52,8 @@ multilib_src_configure() {
 		$(meson_feature X x11_egl)
 		$(meson_feature gbm)
 		$(meson_feature egl surfaceless_egl)
-		$(meson_use test build-tests)
 		$(meson_use doc build-manpages)
+		-Dbuild-tests=false
 	)
 	meson_src_configure
 }
