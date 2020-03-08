@@ -21,7 +21,7 @@ RDEPEND=">=dev-libs/boost-1.32:=
 	flac? ( media-libs/flac )
 	iconv? ( virtual/libiconv media-libs/freetype:2 )
 	mad? ( media-libs/libmad )
-	png? ( media-libs/libpng:0 )
+	png? ( media-libs/libpng:0= )
 	vorbis? ( media-libs/libvorbis )"
 DEPEND="${RDEPEND}
 	app-arch/xz-utils
