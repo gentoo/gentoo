@@ -17101,7 +17101,7 @@ sys-boot/shim 15.5-r1: Fedora's signed UEFI shim
 sys-boot/shlilo-lantank 20040408: bootloader for the SuperH Lantank
 sys-boot/silo 1.4.14_p20120819-r1 1.4.14_p20170829: SPARC/UltraSPARC Improved Loader, a boot loader for sparc
 sys-boot/syslinux 5.10 6.03 6.04_pre1: SYSLINUX, PXELINUX, ISOLINUX, EXTLINUX and MEMDISK bootloaders
-sys-boot/systemd-boot 241 243: UEFI boot manager from systemd (formerly gummiboot)
+sys-boot/systemd-boot 243 245: UEFI boot manager from systemd (formerly gummiboot)
 sys-boot/tboot 1.9.11: Performs a measured and verified boot using Intel Trusted Execution Technology
 sys-boot/udk 2015-r1 2018 2018-r1: Tianocore UEFI Development kit
 sys-boot/unetbootin 661 675 677-r1: UNetbootin installs Linux/BSD distributions to a partition or USB drive
@@ -17405,7 +17405,7 @@ sys-fs/sysfsutils 2.1.0: System Utilities Based on Sysfs
 sys-fs/tmsu 0.6.1 0.7.0 0.7.4: Files tagger and virtual tag-based filesystem
 sys-fs/traydevice 1.6.2-r2: A little desktop application displaying systray icon for UDisks
 sys-fs/treesize 0.54.1-r1: A disk consumption analyzing tool
-sys-fs/udev 242 243 243-r2 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
+sys-fs/udev 242 243 243-r2 245 9999: Linux dynamic and persistent device naming support (aka userspace devfs)
 sys-fs/udev-init-scripts 33 9999: udev startup scripts for openrc
 sys-fs/udftools 2.1 2.2: Ben Fennema's tools for packet writing and the UDF filesystem
 sys-fs/udiskie 1.7.7 2.0.4 2.1.0: An automatic disk mounting service using udisks
