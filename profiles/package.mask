@@ -167,7 +167,6 @@ dev-python/pytest-mpl
 dev-python/python-afl
 dev-python/python-cluster
 dev-python/python-ddp
-dev-python/python-discid
 dev-python/python-ebtables
 dev-python/python-engineio
 dev-python/python-hpilo
