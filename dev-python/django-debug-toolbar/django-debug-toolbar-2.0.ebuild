@@ -20,7 +20,7 @@ IUSE="doc examples"
 
 RDEPEND="
 	>=dev-python/django-1.11[${PYTHON_USEDEP}]
-	>=dev-python/python-sqlparse-0.2.0[${PYTHON_USEDEP}]
+	>=dev-python/sqlparse-0.2.0[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 "
 DEPEND="${RDEPEND}

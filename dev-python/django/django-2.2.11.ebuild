@@ -29,7 +29,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/pytz[${PYTHON_USEDEP}]
-	dev-python/python-sqlparse[${PYTHON_USEDEP}]"
+	dev-python/sqlparse[${PYTHON_USEDEP}]"
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
