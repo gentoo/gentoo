@@ -41,7 +41,6 @@ COMMON_DEPEND="
 	acl? ( sys-apps/acl )
 	kmod? ( >=sys-apps/kmod-15 )
 	selinux? ( >=sys-libs/libselinux-2.1.9 )
-	!<sys-libs/glibc-2.11
 "
 DEPEND="${COMMON_DEPEND}
 	>=sys-kernel/linux-headers-3.9
@@ -59,8 +58,6 @@ RDEPEND="${COMMON_DEPEND}
 	acct-group/render
 	acct-group/tape
 	acct-group/video
-	!<sys-fs/lvm2-2.02.103
-	!<sec-policy/selinux-base-2.20120725-r10
 	!sys-apps/gentoo-systemd-integration
 	!sys-apps/systemd
 "
