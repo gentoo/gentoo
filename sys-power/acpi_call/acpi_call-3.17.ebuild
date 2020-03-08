@@ -29,6 +29,7 @@ BUILD_TARGETS="default"
 PATCHES=(
 	"${FILESDIR}/${P}-linux-4.12.patch"
 	"${FILESDIR}/${P}-linux-4.14.patch"
+	"${FILESDIR}/${P}-linux-5.6.patch"
 )
 
 src_compile() {
