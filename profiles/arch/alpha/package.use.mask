@@ -145,7 +145,7 @@ dev-libs/libpcre2 jit
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-10-22)
 # Pulls in dev-db/redis which is not keyworded on alpha.
-dev-python/pyzor test
+mail-filter/pyzor test
 
 # Tobias Klausmann <klausman@gentoo.org> (2016-10-03)
 # Pulls in dev-db/redis which is not keyworded on alpha.
@@ -233,7 +233,7 @@ net-misc/networkmanager wext
 # Tobias Klausmann <klausman@gentoo.org> (2015-08-08)
 # It's unlikely that greenlet will ever be ported to Alpha. Mask USE=gevent for
 # pyzor to avoid that dependency. See bug 538510
->=dev-python/pyzor-1.0.0 gevent
+>=mail-filter/pyzor-1.0.0 gevent
 
 # Tobias Klausmann <klausman@gentoo.org> (2015-07-11)
 # The test suite has ridiculous (transitive) requirements like
