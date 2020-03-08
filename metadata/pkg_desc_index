@@ -12242,7 +12242,7 @@ mail-filter/pyzor 1.0.0-r1: A distributed, collaborative spam detection and filt
 mail-filter/razor 2.85-r3: Distributed, collaborative spam detection and filtering network
 mail-filter/rblcheck 1.5-r2: Perform lookups in RBL-styles services
 mail-filter/rmilter 1.9.2 1.10.0 1.10.0-r1 1.10.0-r2 9999: Another sendmail milter for different mail checks
-mail-filter/rspamd 2.1 2.2 2.3 9999: Rapid spam filtering system
+mail-filter/rspamd 2.1 2.2 2.3 2.4 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.87-r1: Sieve Command Line Interface
 mail-filter/sigh 1607.1.2 1607.1.6: S/MIME signing milter
@@ -14346,7 +14346,7 @@ net-dns/getdns 1.5.1 1.5.2-r2 1.6.0_beta1-r2: Modern asynchronous DNS API
 net-dns/hash-slinger 3.0: Various tools to generate DNS records like SSHFP, TLSA, OPENPGPKEY, IPSECKEY
 net-dns/https_dns_proxy 9999: A lightweight DNS-over-HTTPS proxy.
 net-dns/idnkit 1.0-r2 2.3: Toolkit for Internationalized Domain Names (IDN)
-net-dns/knot 2.8.5 2.9.2: High-performance authoritative-only DNS server
+net-dns/knot 2.8.5 2.9.2 2.9.3: High-performance authoritative-only DNS server
 net-dns/ldns-utils 1.7.0-r1 1.7.1: Set of utilities to simplify various dns(sec) tasks
 net-dns/libidn 1.35: Internationalized Domain Names (IDN) implementation
 net-dns/libidn2 2.1.1a-r1 2.3.0 99999: An implementation of the IDNA2008 specifications (RFCs 5890, 5891, 5892, 5893)
@@ -14449,7 +14449,7 @@ net-im/bitlbee 3.5.1 3.6 9999: irc to IM gateway that support multiple IM protoc
 net-im/bitlbee-facebook 1.2.0 9999: Facebook protocol plugin for BitlBee
 net-im/bitlbee-steam 1.4.2 9999: Steam protocol plugin for BitlBee
 net-im/centerim 5.0.1: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
-net-im/choqok 1.6.0_p20190726 1.7.0: Free/Open Source micro-blogging client by KDE
+net-im/choqok 1.7.0: Free/Open Source micro-blogging client by KDE
 net-im/coccinella 0.96.20: Jabber Client With a Built-in Whiteboard and VoIP (jingle)
 net-im/corebird 1.7.4: Native GTK+3 Twitter client
 net-im/coturn 4.5.1.1 9999: coturn TURN server project
@@ -14877,7 +14877,7 @@ net-misc/charm 1.9.2-r2: A text based livejournal client
 net-misc/chrony 3.1 3.3 3.4 3.5-r2 9999: NTP client and server programs
 net-misc/clockspeed 0.62-r6: A simple Network Time Protocol (NTP) client
 net-misc/clusterssh 4.03.03 4.30.600 9999: Concurrent Multi-Server Terminal Access
-net-misc/cmst 2019.01.13: Qt GUI for Connman with system tray icon
+net-misc/cmst 2019.01.13 2020.03.07: Qt GUI for Connman with system tray icon
 net-misc/cni-plugins 0.8.2 0.8.3 0.8.4: Standard networking plugins for container networking
 net-misc/connect 1.103: network connection relaying command (proxy)
 net-misc/connman 1.37 1.38 9999: Provides a daemon for managing internet connections
@@ -17199,7 +17199,7 @@ sys-devel/binutils 2.30-r4 2.31.1-r6 2.32-r1 2.32-r2 2.33.1-r1 2.34 9999: Tools 
 sys-devel/binutils-apple 3.2 3.2.6 4.3-r2 5.1-r1 6.1-r1 6.3-r2 7.0-r1 7.1-r1 7.2-r1 7.3.1 8.1 8.2.1-r1: Darwin assembler as(1) and static linker ld(1), Xcode Tools 8.2.1
 sys-devel/binutils-config 5-r4 5.1-r1 5.2: Utility to change the binutils version being used
 sys-devel/binutils-hppa64 2.30-r4 2.31.1-r6 2.32-r1 2.33.1 2.34: Tools necessary to build programs
-sys-devel/bison 3.1 3.3.2 3.4.2 3.5.1 3.5.2: A general-purpose (yacc-compatible) parser generator
+sys-devel/bison 3.1 3.3.2 3.4.2 3.5.2 3.5.3: A general-purpose (yacc-compatible) parser generator
 sys-devel/bmake 20181221: NetBSD's portable make
 sys-devel/boost-m4 0.4_p20160328: Another set of autoconf macros for compiling against boost
 sys-devel/clang 7.1.0 8.0.1 9.0.1 10.0.0_rc3 10.0.0.9999 11.0.0.9999: C language family frontend for LLVM

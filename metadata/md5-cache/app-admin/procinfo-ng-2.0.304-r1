@@ -1,12 +1,13 @@
-DEFINED_PHASES=compile prepare
-DEPEND=sys-libs/ncurses:0= !app-admin/procinfo virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+BDEPEND=virtual/pkgconfig >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4
+DEFINED_PHASES=prepare
+DEPEND=sys-libs/ncurses:0= !app-admin/procinfo
 DESCRIPTION=Completely rewrite of the old system monitoring app procinfo
-EAPI=5
+EAPI=7
 HOMEPAGE=https://sourceforge.net/projects/procinfo-ng/
 KEYWORDS=amd64 hppa x86
 LICENSE=|| ( GPL-2 LGPL-2.1 )
 RDEPEND=sys-libs/ncurses:0= !app-admin/procinfo
 SLOT=0
 SRC_URI=mirror://sourceforge/procinfo-ng/procinfo-ng-2.0.304.tar.bz2
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	desktop	b1d22ac8bdd4679ab79c71aca235009d	epatch	ed88001f77c6dd0d5f09e45c1a5b480e	estack	686eaab303305a908fd57b2fd7617800	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multilib	1d91b03d42ab6308b5f4f6b598ed110e	preserve-libs	ef207dc62baddfddfd39a164d9797648	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	vcs-clean	2a0f74a496fa2b1552c4f3398258b7bf
-_md5_=7adf7a2592f702ec5af7a30c9377c88d
+_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=fafda5c12128d954af93b79a6074f982
