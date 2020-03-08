@@ -97,11 +97,29 @@ EXPORT_FUNCTIONS src_unpack pkg_postinst
 # The format of go.sum is described upstream here:
 # https://tip.golang.org/cmd/go/#hdr-Module_authentication_using_go_sum
 #
+# For inclusion in EGO_SUM, the h1: value and other future extensions SHOULD be
+# omitted at this time. The EGO_SUM parser will accept them for ease of ebuild
+# creation.
+#
 # h1:<hash> is the Hash1 structure used by upstream Go
-# Note that Hash1 is MORE stable than Gentoo distfile hashing, and upstream
-# warns that it's conceptually possible for the Hash1 value to remain stable
-# while the upstream zipfiles change. E.g. it does NOT capture mtime changes in
-# files within a zipfile.
+# The Hash1 is MORE stable than Gentoo distfile hashing, and upstream warns
+# that it's conceptually possible for the Hash1 value to remain stable while
+# the upstream zipfiles change. Here are examples that do NOT change the h1:
+# hash, but do change a regular checksum over all bytes of the file:
+# - Differing mtimes within zipfile
+# - Differing filename ordering with the zipfile
+# - Differing zipfile compression parameters
+# - Differing zipfile extra fields
+#
+# For Gentoo usage, the authors of this eclass feel that the h1: hash should
+# NOT be included in the EGO_SUM at this time in order to reduce size of the
+# ebuilds. This position will be reconsidered in future when a Go module
+# distfile collision comes to light, where the Hash1 value of two distfiles is
+# the same, but checksums over the file as a byte stream consider the files to
+# be different.
+#
+# This decision  does NOT weaken Go module security, as Go will verify the
+# go.sum copy of the Hash1 values during building of the package.
 
 # @ECLASS-VARIABLE: EGO_VENDOR
 # @DESCRIPTION:
