@@ -84,7 +84,7 @@ export GOFLAGS="-v -x -mod=readonly"
 QA_FLAGS_IGNORED='.*'
 
 # Go packages should not be stripped with strip(1).
-RESTRICT="strip"
+RESTRICT+=" strip"
 
 EXPORT_FUNCTIONS src_unpack pkg_postinst
 
