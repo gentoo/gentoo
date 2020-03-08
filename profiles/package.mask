@@ -180,7 +180,6 @@ dev-python/python-twitter
 dev-python/python-uinput
 dev-python/pythonmagick
 dev-python/pyx
-dev-python/pyzor
 dev-python/rackspace-monitoring
 dev-python/readlike
 dev-python/redis-py-cluster
