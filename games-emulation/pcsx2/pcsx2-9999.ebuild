@@ -76,9 +76,11 @@ src_configure() {
 		-DDOC_DIR=/usr/share/doc/"${PF}"
 		-DEGL_API=FALSE
 		-DGTK3_API=TRUE
+		-DOPENCL_API=FALSE
 		-DPLUGIN_DIR="/usr/$(get_libdir)/${PN}"
 		# wxGTK must be built against same sdl version
 		-DSDL2_API=TRUE
+		-DUSE_VTUNE=FALSE
 	)
 
 	WX_GTK_VER="3.0-gtk3" setup-wxwidgets
