@@ -11,7 +11,6 @@
 			<name>George Sakkis</name>
 		</maintainer>
 		<remote-id type="pypi">PyTrie</remote-id>
-		<remote-id type="bitbucket">gsakkis/pytrie</remote-id>
 		<remote-id type="github">gsakkis/pytrie</remote-id>
 	</upstream>
 	<longdescription>
