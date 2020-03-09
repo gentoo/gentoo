@@ -41,11 +41,15 @@ src_prepare() {
 
 	# Disable installation of python modules here, since those are
 	# installed by separate ebuilds.
-	sed -e '/^GIT_.*/d' \
-		-e 's:GO111MODULE=off:GO111MODULE=on:' \
-		-e 's/$(GO) build/$(GO) build -v -work -x/' \
-		-e 's/^\(install:.*\) install\.python$/\1/' \
-		-i Makefile || die
+	local makefile_sed_args=(
+		-e '/^GIT_.*/d'
+		-e 's/$(GO) build/$(GO) build -v -work -x/'
+		-e 's/^\(install:.*\) install\.python$/\1/'
+	)
+
+	has_version -b '>=dev-lang/go-1.14' || makefile_sed_args+=(-e 's:GO111MODULE=off:GO111MODULE=on:')
+
+	sed "${makefile_sed_args[@]}" -i Makefile || die
 
 	sed -e 's|OUTPUT="${CIRRUS_TAG:.*|OUTPUT='v${PV}'|' \
 		-i hack/get_release_info.sh || die
