@@ -227,7 +227,7 @@ acct-user/memcached 0: User for the memcached service
 acct-user/messagebus 0: System user: messagebus
 acct-user/milter-regex 0: User for mail-filter/milter-regex
 acct-user/minecraft 0: A user for the Minecraft server
-acct-user/minetest 0: A user for the Minetest server
+acct-user/minetest 0 1: A user for the Minetest server
 acct-user/mongodb 0: MongoDB program user
 acct-user/mosquitto 0: A user for the mosquitto MQTT broker
 acct-user/mpd 0: A user for music player daemon (mpd)
@@ -2108,7 +2108,7 @@ app-misc/gnuit 4.9.5-r2: GNU Interactive Tools - increase speed and efficiency o
 app-misc/gnutu 2.5-r1: GNU Student's Timetable for polish users
 app-misc/go-jira 1.0.17 1.0.20 1.0.22 1.0.23: A simple JIRA commandline client in Go
 app-misc/golly 3.2 3.3 3.3-r1: simulator for Conway's Game of Life and other cellular automata
-app-misc/goobook 3.4: Access your Google contacts from the command line
+app-misc/goobook 3.4-r1: Access your Google contacts from the command line
 app-misc/grabcartoons 2.8.4_p20141112 9999: Comic-summarizing utility
 app-misc/gramps 5.1.2-r1: Genealogical Research and Analysis Management Programming System
 app-misc/graphlcd-base 1.0.2: Contains the lowlevel lcd drivers for GraphLCD
@@ -10444,7 +10444,7 @@ dev-util/cucumber-tag_expressions 1.1.1: Cucumber tag expressions for ruby
 dev-util/cucumber-wire 0.0.1-r1: Executable feature scenarios
 dev-util/cunit 2.1_p3: C Unit Test Framework
 dev-util/cutils 1.6-r4: C language utilities
-dev-util/cutter 1.0 1.4 1.6 1.7 1.7.4 1.8.0 1.8.2 1.9.0: A Qt and C++ GUI for radare2 reverse engineering framework
+dev-util/cutter 1.0 1.4 1.6 1.7 1.7.4 1.8.0 1.8.2 1.9.0 1.10.1: A Qt and C++ GUI for radare2 reverse engineering framework
 dev-util/cwdiff 0.2.8 0.3.0 0.3.1 0.4.0 9999: A script that wraps wdiff to support directories and colorize the output
 dev-util/d-feet 0.3.14-r1: D-Feet is a powerful D-Bus debugger
 dev-util/dbus-test-runner 19.04.0-r1: Run executables under a new DBus session for testing
@@ -14486,7 +14486,7 @@ net-im/pyicq-t 0.8.1.5-r7: Python based jabber transport for ICQ
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
 net-im/ricochet 1.1.4 9999: Privacy-focused instant messaging through Tor hidden services
 net-im/sendxmpp 1.24: A perl-script to send xmpp (jabber), similar to what mail(1) does for mail
-net-im/signal-desktop-bin 1.31.0: Allows you to send and receive messages of Signal Messenger on your computer
+net-im/signal-desktop-bin 1.32.1: Allows you to send and receive messages of Signal Messenger on your computer
 net-im/skype-dbus-mock 0_pre20181011: Mocked systemd dbus interface for skype 8.30+
 net-im/skypeforlinux 8.55.0.123 8.55.0.141 8.56.0.103-r2 8.57.0.116: Instant messaging client, with support for audio and video
 net-im/slack-bin 4.1.1 4.3.2-r1: Team collaboration tool
