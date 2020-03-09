@@ -21,7 +21,7 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 LICENSE="BSD"
 SLOT="0/4.1.2" # subslot = libopencv* soname version
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux"
-IUSE="contrib contribcvv contribdnn contribhdf contribsfm contribxfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnnsamples -download +eigen examples +features2d ffmpeg gdal gflags glog gphoto2 gstreamer gtk ieee1394 jpeg jpeg2k lapack libav opencl openexr opengl openmp opencvapps pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
+IUSE="contrib contribcvv contribdnn contribhdf contribsfm contribxfeatures2d cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_sse3 cpu_flags_x86_ssse3 cpu_flags_x86_sse4_1 cpu_flags_x86_sse4_2 cpu_flags_x86_popcnt cpu_flags_x86_avx cpu_flags_x86_avx2 cpu_flags_x86_fma3 cuda debug dnnsamples -download +eigen examples +features2d ffmpeg gdal gflags glog gphoto2 gstreamer gtk3 ieee1394 jpeg jpeg2k lapack libav opencl openexr opengl openmp opencvapps pch png +python qt5 tesseract testprograms threads tiff vaapi v4l vtk webp xine"
 # OpenGL needs gtk or Qt installed to activate, otherwise build system
 # will silently disable it Wwithout the user knowing, which defeats the
 # purpose of the opengl use flag.
@@ -36,13 +36,13 @@ REQUIRED_USE="
 	contribsfm? ( contrib eigen gflags glog )
 	contribxfeatures2d? ( contrib download )
 	java? ( python )
-	opengl? ( || ( gtk qt5 ) )
+	opengl? ( qt5 )
 	python? ( ${PYTHON_REQUIRED_USE} )
-	tesseract? ( contrib )"
+	tesseract? ( contrib )
+	?? ( gtk3 qt5 )"
 
 # The following logic is intrinsic in the build system, but we do not enforce
 # it on the useflags since this just blocks emerging pointlessly:
-#	gtk? ( !qt5 )
 #	openmp? ( !threads )
 
 RDEPEND="
@@ -63,10 +63,9 @@ RDEPEND="
 		media-libs/gstreamer:1.0[${MULTILIB_USEDEP}]
 		media-libs/gst-plugins-base:1.0[${MULTILIB_USEDEP}]
 	)
-	gtk? (
+	gtk3? (
 		dev-libs/glib:2[${MULTILIB_USEDEP}]
-		x11-libs/gtk+:2[${MULTILIB_USEDEP}]
-		opengl? ( x11-libs/gtkglext[${MULTILIB_USEDEP}] )
+		x11-libs/gtk+:3[${MULTILIB_USEDEP}]
 	)
 	ieee1394? (
 		media-libs/libdc1394[${MULTILIB_USEDEP}]
@@ -98,10 +97,12 @@ RDEPEND="
 	webp? ( media-libs/libwebp[${MULTILIB_USEDEP}] )
 	xine? ( media-libs/xine-lib )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig[${MULTILIB_USEDEP}]
 	eigen? ( dev-cpp/eigen:3 )
-	java?  ( >=virtual/jdk-1.6 )
-	vaapi?  ( x11-libs/libva )"
+	java? ( >=virtual/jdk-1.6 )
+	vaapi? ( x11-libs/libva )"
+BDEPEND="
+	java? ( >=virtual/jdk-1.6 )
+	virtual/pkgconfig[${MULTILIB_USEDEP}]"
 
 MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/opencv2/cvconfig.h
@@ -231,11 +232,11 @@ MULTILIB_WRAPPED_HEADERS=(
 )
 
 PATCHES=(
-	"${FILESDIR}/${PN}-3.0.0-gles.patch"
-	"${FILESDIR}/${PN}-3.4.0-disable-download.patch"
-	"${FILESDIR}/${PN}-3.4.1-cuda-add-relaxed-constexpr.patch"
-	"${FILESDIR}/${P}-pkg-config-file.patch"
-	"${FILESDIR}/${P}-opencl-license.patch"
+	"${FILESDIR}"/${PN}-3.0.0-gles.patch
+	"${FILESDIR}"/${PN}-3.4.0-disable-download.patch
+	"${FILESDIR}"/${PN}-3.4.1-cuda-add-relaxed-constexpr.patch
+	"${FILESDIR}"/${P}-pkg-config-file.patch
+	"${FILESDIR}"/${P}-opencl-license.patch
 )
 
 pkg_pretend() {
@@ -290,8 +291,8 @@ multilib_src_configure() {
 		-DWITH_FFMPEG=$(usex ffmpeg)
 		-DWITH_GSTREAMER=$(usex gstreamer)
 		-DWITH_GSTREAMER_0_10=OFF	# Don't want this
-		-DWITH_GTK=$(usex gtk)
-		-DWITH_GTK_2_X=$(usex gtk)
+		-DWITH_GTK=$(usex gtk3)
+		-DWITH_GTK_2_X=OFF # only want gtk3 nowadays
 		-DWITH_IPP=OFF
 		-DWITH_JASPER=OFF
 		-DWITH_JPEG=$(usex jpeg)
@@ -318,7 +319,7 @@ multilib_src_configure() {
 		-DWITH_UNICAP=OFF		# Not packaged
 		-DWITH_V4L=$(usex v4l)
 		-DWITH_LIBV4L=$(usex v4l)
-		#-DWITH_DSHOW=ON			# direct show supp
+	#	-DWITH_DSHOW=ON			# direct show supp
 		-DWITH_MSMF=OFF
 		-DWITH_XIMEA=OFF	# Windows only
 		-DWITH_XINE=$(multilib_native_usex xine)
@@ -344,7 +345,7 @@ multilib_src_configure() {
 		-DWITH_CUBLAS=$(multilib_native_usex cuda)
 		-DWITH_CUFFT=$(multilib_native_usex cuda)
 		-DWITH_NVCUVID=OFF
-#		-DWITH_NVCUVID=$(usex cuda)
+	#	-DWITH_NVCUVID=$(usex cuda)
 		-DCUDA_NPP_LIBRARY_ROOT_DIR=$(usex cuda "${EPREFIX}/opt/cuda" "")
 	# ===================================================
 	# OpenCV build components
@@ -485,6 +486,8 @@ python_module_compile() {
 	# Avoid conflicts with new module builds as build system doesn't
 	# really support it.
 	rm -rf modules/python2 || die "rm failed"
+
+	python_optimize "${D}"/$(python_get_sitedir)
 }
 
 multilib_src_install() {
