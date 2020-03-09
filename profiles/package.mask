@@ -590,12 +590,6 @@ net-nntp/kwooty
 # Mask until sys-libs/libxcrypt[system] is unmasked
 >=virtual/libcrypt-2
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-05)
-# Unmaintained.  No Python 3 support.  Last release ~2014, homepage
-# gone.
-# Removal in 30 days.  Bug #708352.
-net-im/turses
-
 # Joonas Niilola <juippis@gentoo.org> (2020-02-05)
 # Stagnant upstream with latest release from 2016, python2-only, no maintainer
 # in Gentoo, no notable ebuild action in years, multiple bugs open. Blocks
