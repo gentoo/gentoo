@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,6 +42,7 @@ SITEFILE="50${PN}-gentoo.el"
 
 src_prepare() {
 	eapply "${FILESDIR}"/${P}-version.patch
+	eapply "${FILESDIR}"/${P}-no-common.patch
 	eapply_user
 	eautoreconf
 }
