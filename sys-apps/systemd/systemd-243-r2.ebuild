@@ -188,6 +188,7 @@ src_prepare() {
 	# Add local patches here
 	PATCHES+=(
 		"${FILESDIR}/243-seccomp.patch"
+		"${FILESDIR}/245-clang-gnu11.patch"
 	)
 
 	if ! use vanilla; then
