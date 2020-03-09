@@ -126,6 +126,7 @@ src_prepare() {
 	if full_archive; then
 		eapply "${FILESDIR}/${PN}-3.31.0-full_archive-build.patch"
 		eapply "${FILESDIR}/${PN}-3.31.1-full_archive-architectures.patch"
+		eapply "${FILESDIR}/${PN}-3.31.1-full_archive-security_fixes.patch"
 
 		eapply_user
 
@@ -135,6 +136,7 @@ src_prepare() {
 	else
 		eapply "${FILESDIR}/${PN}-3.25.0-nonfull_archive-build.patch"
 		eapply "${FILESDIR}/${PN}-3.31.1-nonfull_archive-architectures.patch"
+		eapply "${FILESDIR}/${PN}-3.31.1-nonfull_archive-security_fixes.patch"
 
 		eapply_user
 
