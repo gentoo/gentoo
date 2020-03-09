@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (2020-03-09)
+# Mask experimental software
+=mail-mta/postfix-3.6*
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-09)
 # Unmaintained.  Outdated.  Stuck on py3.6, wrong use of eclass.
 # No revdeps -- it is bundled by every consumer anyway.
@@ -590,18 +594,6 @@ net-nntp/kwooty
 # Mask until sys-libs/libxcrypt[system] is unmasked
 >=virtual/libcrypt-2
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-05)
-# Unmaintained.  No Python 3 support.  Last release ~2014, homepage
-# gone.
-# Removal in 30 days.  Bug #708352.
-net-im/turses
-
-# Michał Górny <mgorny@gentoo.org> (2020-02-05)
-# NIH utility package, last released 2015.  No Python 3 support.
-# All remaining reverse dependencies are masked for removal.
-# Removal in 30 days.  Bug #708332.
-dev-python/egenix-mx-base
-
 # Joonas Niilola <juippis@gentoo.org> (2020-02-05)
 # Stagnant upstream with latest release from 2016, python2-only, no maintainer
 # in Gentoo, no notable ebuild action in years, multiple bugs open. Blocks
@@ -610,16 +602,6 @@ dev-python/egenix-mx-base
 # net-misc/connman, net-misc/dhcpcd, net-misc/netifrc, net-misc/NetworkManager
 # and so on. Removal in ~90 days. #708316
 net-misc/wicd
-
-# Michał Górny <mgorny@gentoo.org> (2020-02-05)
-# Fails to build for at least 6 months.  No Python 3 support.  Last
-# bumped in 2016.  Bad quality ebuild.
-#
-# dev-python/dpkt has no other revdeps.
-#
-# Removal in 30 days.  Bug #692340.
-net-libs/nfqueue-bindings
-dev-python/dpkt
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
@@ -876,7 +858,7 @@ sys-devel/automake:1.10
 # switch the compiler / the binutils) ASAP. If you need them for a specific
 # (isolated) use case, feel free to unmask them on your system.
 <sys-devel/gcc-5.4
-<sys-libs/glibc-2.28
+<sys-libs/glibc-2.29
 <sys-devel/binutils-2.32-r1
 <sys-devel/binutils-hppa64-2.32-r1
 <sys-libs/binutils-libs-2.32-r1
