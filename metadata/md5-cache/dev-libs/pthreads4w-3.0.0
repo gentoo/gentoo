@@ -1,0 +1,10 @@
+BDEPEND=sys-devel/parity
+DEFINED_PHASES=compile install test
+DESCRIPTION=POSIX Threads for Windows
+EAPI=7
+HOMEPAGE=http://pthreads4w.sourceforge.net/
+KEYWORDS=~x86-winnt
+LICENSE=LGPL-2
+SLOT=0
+SRC_URI=mirror://sourceforge/pthreads4w/pthreads4w-code-v3.0.0.zip
+_md5_=3f0b75c1e4c76a7fe9a0f78ec105ec67
