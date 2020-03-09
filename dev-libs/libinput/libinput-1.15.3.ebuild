@@ -73,5 +73,11 @@ src_install() {
 }
 
 pkg_postinst() {
+	pkgname="dev-python/python-libevdev"
+	if [[ -z "${REPLACING_VERSIONS}" ]] && ! has_version "${pkgname}"; then
+		einfo "${pkgname} must be installed to use the"
+		einfo "libinput measure and libinput replay tools."
+	fi
+
 	udevadm hwdb --update --root="${ROOT}"
 }
