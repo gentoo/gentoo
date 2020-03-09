@@ -596,12 +596,6 @@ net-nntp/kwooty
 # Removal in 30 days.  Bug #708352.
 net-im/turses
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-05)
-# NIH utility package, last released 2015.  No Python 3 support.
-# All remaining reverse dependencies are masked for removal.
-# Removal in 30 days.  Bug #708332.
-dev-python/egenix-mx-base
-
 # Joonas Niilola <juippis@gentoo.org> (2020-02-05)
 # Stagnant upstream with latest release from 2016, python2-only, no maintainer
 # in Gentoo, no notable ebuild action in years, multiple bugs open. Blocks
