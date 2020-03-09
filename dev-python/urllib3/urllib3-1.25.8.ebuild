@@ -68,6 +68,7 @@ python_prepare_all() {
 }
 
 python_test() {
+	local -x CI=1
 	# FIXME: get tornado ported
 	case ${EPYTHON} in
 		python2*|python3.[567])
