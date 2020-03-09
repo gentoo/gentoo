@@ -1,0 +1,163 @@
+https://sqlite.org/cgi/src/info/9d0d4ab95dc0c56e
+https://sqlite.org/cgi/src/info/abc473fb8fb99900
+https://sqlite.org/cgi/src/info/5aeb5a2d295e10d5
+https://sqlite.org/cgi/src/info/a67cf5b7d37d5b14
+https://sqlite.org/cgi/src/info/14d14eb537075c6a
+https://sqlite.org/cgi/src/info/c431b3fd8fd0f6a6
+
+--- /src/expr.c
++++ /src/expr.c
+@@ -5463,19 +5463,25 @@
+     case TK_LT:
+     case TK_LE:
+     case TK_GT:
+-    case TK_GE:
++    case TK_GE: {
++      Expr *pLeft = pExpr->pLeft;
++      Expr *pRight = pExpr->pRight;
+       testcase( pExpr->op==TK_EQ );
+       testcase( pExpr->op==TK_NE );
+       testcase( pExpr->op==TK_LT );
+       testcase( pExpr->op==TK_LE );
+       testcase( pExpr->op==TK_GT );
+       testcase( pExpr->op==TK_GE );
+-      if( (pExpr->pLeft->op==TK_COLUMN && IsVirtual(pExpr->pLeft->y.pTab))
+-       || (pExpr->pRight->op==TK_COLUMN && IsVirtual(pExpr->pRight->y.pTab))
++      /* The y.pTab=0 assignment in wherecode.c always happens after the
++      ** impliesNotNullRow() test */
++      if( (pLeft->op==TK_COLUMN && ALWAYS(pLeft->y.pTab!=0)
++                               && IsVirtual(pLeft->y.pTab))
++       || (pRight->op==TK_COLUMN && ALWAYS(pRight->y.pTab!=0)
++                               && IsVirtual(pRight->y.pTab))
+       ){
+-       return WRC_Prune;
++        return WRC_Prune;
+       }
+-
++    }
+     default:
+       return WRC_Continue;
+   }
+--- /src/resolve.c
++++ /src/resolve.c
+@@ -1051,7 +1051,7 @@
+       assert( !ExprHasProperty(pExpr, EP_Reduced) );
+       /* Handle special cases of "x IS TRUE", "x IS FALSE", "x IS NOT TRUE",
+       ** and "x IS NOT FALSE". */
+-      if( pRight->op==TK_ID ){
++      if( pRight && pRight->op==TK_ID ){
+         int rc = resolveExprStep(pWalker, pRight);
+         if( rc==WRC_Abort ) return WRC_Abort;
+         if( pRight->op==TK_TRUEFALSE ){
+--- /src/select.c
++++ /src/select.c
+@@ -2806,6 +2806,7 @@
+         /* Generate code to take the intersection of the two temporary
+         ** tables.
+         */
++        if( rc ) break;
+         assert( p->pEList );
+         iBreak = sqlite3VdbeMakeLabel(pParse);
+         iCont = sqlite3VdbeMakeLabel(pParse);
+@@ -5148,7 +5149,7 @@
+             pNew = sqlite3ExprListAppend(pParse, pNew, pExpr);
+             sqlite3TokenInit(&sColname, zColname);
+             sqlite3ExprListSetName(pParse, pNew, &sColname, 0);
+-            if( pNew && (p->selFlags & SF_NestedFrom)!=0 ){
++            if( pNew && (p->selFlags & SF_NestedFrom)!=0 && !IN_RENAME_OBJECT ){
+               struct ExprList_item *pX = &pNew->a[pNew->nExpr-1];
+               sqlite3DbFree(db, pX->zEName);
+               if( pSub ){
+--- /src/sqliteInt.h
++++ /src/sqliteInt.h
+@@ -2153,8 +2153,11 @@
+ */
+ #ifndef SQLITE_OMIT_VIRTUALTABLE
+ #  define IsVirtual(X)      ((X)->nModuleArg)
++#  define ExprIsVtab(X)  \
++              ((X)->op==TK_COLUMN && (X)->y.pTab!=0 && (X)->y.pTab->nModuleArg)
+ #else
+ #  define IsVirtual(X)      0
++#  define ExprIsVtab(X)     0
+ #endif
+ 
+ /*
+--- /src/whereexpr.c
++++ /src/whereexpr.c
+@@ -377,7 +377,8 @@
+     **       MATCH(expression,vtab_column)
+     */
+     pCol = pList->a[1].pExpr;
+-    if( pCol->op==TK_COLUMN && IsVirtual(pCol->y.pTab) ){
++    testcase( pCol->op==TK_COLUMN && pCol->y.pTab==0 );
++    if( ExprIsVtab(pCol) ){
+       for(i=0; i<ArraySize(aOp); i++){
+         if( sqlite3StrICmp(pExpr->u.zToken, aOp[i].zOp)==0 ){
+           *peOp2 = aOp[i].eOp2;
+@@ -399,7 +400,8 @@
+     ** with function names in an arbitrary case.
+     */
+     pCol = pList->a[0].pExpr;
+-    if( pCol->op==TK_COLUMN && IsVirtual(pCol->y.pTab) ){
++    testcase( pCol->op==TK_COLUMN && pCol->y.pTab==0 );
++    if( ExprIsVtab(pCol) ){
+       sqlite3_vtab *pVtab;
+       sqlite3_module *pMod;
+       void (*xNotUsed)(sqlite3_context*,int,sqlite3_value**);
+@@ -422,10 +424,12 @@
+     int res = 0;
+     Expr *pLeft = pExpr->pLeft;
+     Expr *pRight = pExpr->pRight;
+-    if( pLeft->op==TK_COLUMN && IsVirtual(pLeft->y.pTab) ){
++    testcase( pLeft->op==TK_COLUMN && pLeft->y.pTab==0 );
++    if( ExprIsVtab(pLeft) ){
+       res++;
+     }
+-    if( pRight && pRight->op==TK_COLUMN && IsVirtual(pRight->y.pTab) ){
++    testcase( pRight && pRight->op==TK_COLUMN && pRight->y.pTab==0 );
++    if( pRight && ExprIsVtab(pRight) ){
+       res++;
+       SWAP(Expr*, pLeft, pRight);
+     }
+--- /test/altertab.test
++++ /test/altertab.test
+@@ -613,4 +613,21 @@
+   SELECT sql FROM sqlite_master;
+ } {{CREATE TABLE t0 (c1 INTEGER, PRIMARY KEY(c1))}}
+ 
++# 2020-02-23 ticket f50af3e8a565776b
++reset_db
++do_execsql_test 19.100 {
++  CREATE TABLE t1(x);
++  CREATE VIEW t2 AS SELECT 1 FROM t1, (t1 AS a0, t1);
++  ALTER TABLE t1 RENAME TO t3;
++  SELECT sql FROM sqlite_master;
++} {{CREATE TABLE "t3"(x)} {CREATE VIEW t2 AS SELECT 1 FROM "t3", ("t3" AS a0, "t3")}}
++do_execsql_test 19.110 {
++  INSERT INTO t3(x) VALUES(123);
++  SELECT * FROM t2;
++} {1}
++do_execsql_test 19.120 {
++  INSERT INTO t3(x) VALUES('xyz');
++  SELECT * FROM t2;
++} {1 1 1 1 1 1 1 1}
++
+ finish_test
+--- /test/windowfault.test
++++ /test/windowfault.test
+@@ -263,4 +263,15 @@
+   faultsim_test_result {0 {}}
+ }
+ 
++do_faultsim_test 11 -faults oom* -prep {
++} -body {
++  execsql {
++    VALUES(false),(current_date collate binary) 
++    intersect 
++    values(count() not like group_concat(cast(cast(0e00 as text) as integer) <= NULL || 0.4e-0 || 0x8 & true ) over () collate rtrim);
++  }
++} -test {
++  faultsim_test_result {0 {}}
++}
++
+ finish_test
