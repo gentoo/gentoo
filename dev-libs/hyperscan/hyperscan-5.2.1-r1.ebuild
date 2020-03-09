@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 )
+PYTHON_COMPAT=( python3_{6..8} )
 
-inherit cmake python-r1 flag-o-matic
+inherit cmake flag-o-matic python-any-r1
 
 DESCRIPTION="High-performance regular expression matching library"
 SRC_URI="https://github.com/intel/hyperscan/archive/v${PV}.tar.gz -> ${P}.tar.gz"
@@ -16,12 +16,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="+cpu_flags_x86_ssse3 static-libs"
 
-RDEPEND="${PYTHON_DEPS}
-	dev-libs/boost"
+RDEPEND="dev-libs/boost"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-util/ragel"
+BDEPEND="
+	${PYTHON_DEPS}
+	dev-util/ragel
+"
 
-REQUIRED_USE="cpu_flags_x86_ssse3 ${PYTHON_REQUIRED_USE}"
+REQUIRED_USE="cpu_flags_x86_ssse3"
 
 src_prepare() {
 	# upstream workaround
