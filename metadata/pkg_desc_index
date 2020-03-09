@@ -13031,7 +13031,7 @@ media-libs/lsp-plugins 1.1.5-r2 1.1.7-r1 1.1.10 9999: Linux Studio Plugins
 media-libs/lv2 1.14.0-r2 1.16.0-r1: A simple but extensible successor of LADSPA
 media-libs/lvtk 1.2.0: A set of C++ wrappers around the LV2 C API
 media-libs/memphis 0.2.3: A map-rendering application and a library for OpenStreetMap
-media-libs/mesa 19.3.4 20.0.1 9999: OpenGL-like graphic library for Linux
+media-libs/mesa 19.3.4-r1 20.0.1-r1 9999: OpenGL-like graphic library for Linux
 media-libs/mlt 6.16.0-r1 6.16.0-r2 6.18.0 6.20.0: Open source multimedia framework for television broadcasting
 media-libs/munt-mt32emu 2.3.0: Library for emulating the Roland MT-32, CM-32L, CM-64 and LAPC-I
 media-libs/musicbrainz 5.1.0: Client Library for accessing the latest XML based MusicBrainz web service
@@ -18001,7 +18001,7 @@ www-misc/wsmake 0.6.4 0.6.4-r1: Website pre-processor features tag substitution 
 www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.330: Adobe Flash Player
-www-plugins/browserpass 3.0.6-r1 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
+www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
 www-plugins/chrome-binary-plugins 80.0.3987.132 81.0.4044.43_beta 82.0.4068.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
@@ -18132,7 +18132,7 @@ x11-apps/xwud 1.0.5: image displayer for X
 x11-base/xcb-proto 1.13 1.14: X C-language Bindings protocol headers
 x11-base/xorg-drivers 1.20-r1 9999: Meta package containing deps on all xorg drivers
 x11-base/xorg-proto 2019.2 9999: X.Org combined protocol headers
-x11-base/xorg-server 1.20.6 1.20.7 9999: X.Org X servers
+x11-base/xorg-server 1.20.7 9999: X.Org X servers
 x11-base/xorg-x11 7.4-r3: An X11 implementation maintained by the X.Org Foundation (meta package)
 x11-drivers/nvidia-drivers 340.108 390.132-r1 430.64-r1 435.21-r1 440.59: NVIDIA Accelerated Graphics Driver
 x11-drivers/xf86-input-elographics 1.4.2: Elographics input driver
