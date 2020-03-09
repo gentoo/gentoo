@@ -48,6 +48,8 @@ BDEPEND="
 	valgrind? ( dev-util/valgrind )
 "
 
+RESTRICT="!test? ( test )"
+
 PATCHES=(
 	# Upstream attempts to be "smart" by calling ldconfig in
 	# install-exec-hook
