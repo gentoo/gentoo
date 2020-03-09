@@ -8758,7 +8758,7 @@ dev-python/scp 0.10.2: scp module for paramiko
 dev-python/scripttest 1.2-r1 1.3.0: A very small text templating language
 dev-python/scrypt 0.8.0 0.8.13 0.8.13-r2: Bindings for the scrypt key derivation function library
 dev-python/sdnotify 0.3.1 0.3.2: Python implementation of systemd's service notification protocol (sd_notify)
-dev-python/seaborn 0.7.1 0.8.1 0.9.0: Statistical data visualization
+dev-python/seaborn 0.7.1 0.8.1 0.9.0 0.10.0: Statistical data visualization
 dev-python/secretstorage 2.3.1 3.1.0 3.1.1 3.1.1-r1: Python bindings to FreeDesktop.org Secret Service API.
 dev-python/selectors34 1.2: Backport of the selectors module from Python 3.4
 dev-python/selenium 3.0.2 3.13.0 3.141.0: Python language binding for Selenium Remote Control
