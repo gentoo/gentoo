@@ -32,6 +32,20 @@
 
 #--- END OF EXAMPLES ---
 
+# Alexander Tsoy <alexander@tsoy.me> (2020-03-10)
+# media-sound/gtklick: last commit in 2014, python 2 only, blocks
+# dev-python/pygtk removal.
+# Alternatives: media-sound/kmetronome, media-sound/gtick,
+# media-sound/klick (cli)
+#
+# media-libs/pyliblo: last commit in 2015, the only revdep is
+# media-sound/gtklick, there is an actively maintained fork named
+# pyliblo3.
+#
+# Removal in 30 days.  Bug #708172.
+media-sound/gtklick
+media-libs/pyliblo
+
 # Eray Aslan <eras@gentoo.org> (2020-03-09)
 # Mask experimental software
 =mail-mta/postfix-3.6*
