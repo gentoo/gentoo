@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<email>nerdboy@gentoo.org</email>
+	<name>Steve Arnold</name>
+</maintainer>
+<longdescription lang="en">
+	This is the new open source BUFR/GRIB library (from ECMWF)
+	supporting C, F90, and Python interfaces.
+</longdescription>
+<use>
+	<flag name="defs">
+		Install full set of definition files.
+	</flag>
+	<flag name="extra-test">
+		Install full set of test data (large).
+	</flag>
+	<flag name="memfs">
+		Enable memory based access to definition/sample files
+		(conflicts with tests).
+	</flag>
+</use>
+</pkgmetadata>
