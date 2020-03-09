@@ -611,15 +611,6 @@ dev-python/egenix-mx-base
 # and so on. Removal in ~90 days. #708316
 net-misc/wicd
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-05)
-# Fails to build for at least 6 months.  No Python 3 support.  Last
-# bumped in 2016.  Bad quality ebuild.
-#
-# dev-python/dpkt has no other revdeps.
-#
-# Removal in 30 days.  Bug #692340.
-dev-python/dpkt
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
 # Known breakages that need to be handled first, bug 698922
 >=x11-libs/pango-1.43
