@@ -149,6 +149,9 @@ _meson_create_cross_file() {
 	# This may require adjustment based on CFLAGS
 	local cpu=${CHOST%%-*}
 
+	local needs_exe_wrapper=false
+	tc-is-cross-compiler && needs_exe_wrapper=true
+
 	cat > "${T}/meson.${CHOST}.${ABI}" <<-EOF
 	[binaries]
 	ar = $(_meson_env_array "$(tc-getAR)")
@@ -173,6 +176,7 @@ _meson_create_cross_file() {
 	objc_link_args = $(_meson_env_array "${OBJCFLAGS} ${LDFLAGS}")
 	objcpp_args = $(_meson_env_array "${OBJCXXFLAGS} ${CPPFLAGS}")
 	objcpp_link_args = $(_meson_env_array "${OBJCXXFLAGS} ${LDFLAGS}")
+	needs_exe_wrapper = ${needs_exe_wrapper}
 
 	[host_machine]
 	system = '${system}'
