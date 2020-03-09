@@ -3401,7 +3401,7 @@ dev-erlang/mqtree 1.0.4 1.0.5: Index tree for MQTT topic filters
 dev-erlang/p1_mysql 1.0.2 1.0.11: Pure Erlang MySQL driver
 dev-erlang/p1_oauth2 0.6.1 0.6.5: Erlang OAuth 2.0 implementation
 dev-erlang/p1_pgsql 1.1.2 1.1.6 1.1.8: Pure Erlang PostgreSQL driver
-dev-erlang/p1_utils 1.0.13 1.0.16: Erlang utility modules from ProcessOne
+dev-erlang/p1_utils 1.0.13 1.0.16 1.0.18: Erlang utility modules from ProcessOne
 dev-erlang/p1_xmlrpc 1.15.1: Erlang XMLRPC implementation with SSL, cookies, authentication
 dev-erlang/pkix 1.0.3 1.0.4: PKIX certificates management library for Erlang
 dev-erlang/proper 1.2 1.3: QuickCheck-inspired property-based testing tool for Erlang
@@ -7694,7 +7694,6 @@ dev-python/doit-py 0.4.0 0.4.0-r1: doit tasks for python stuff
 dev-python/dominate 2.3.1 2.3.5 2.4.0: Library for creating and manipulating HTML documents using an elegant DOM API
 dev-python/doublex 1.8.1 1.9.2: Python test doubles
 dev-python/doublex-expects 0.7.0_rc2 0.7.0_rc2-r1: Expects matchers for Doublex test doubles assertions
-dev-python/dpkt 1.8-r1 1.8.8 1.9.1: Fast, simple packet creation / parsing
 dev-python/drf-yasg 1.14.0 1.16.0 1.17.0: Automated generation of Swagger/OpenAPI 2.0 schemas from Django Rest framework
 dev-python/duecredit 0.6.4-r1 0.7.0: Publications (and donations) tracer
 dev-python/dugong 3.7.1 3.7.2 3.7.3: Python library for communicating with HTTP 1.1 servers
@@ -7705,7 +7704,6 @@ dev-python/ebuildtester 0.1.12 0.1.13 0.1.14: A dockerized approach to test a Ge
 dev-python/ecdsa 0.13 0.13.2 0.13.3 0.14.1 0.14.1-r1: ECDSA cryptographic signature library in pure Python
 dev-python/editobj 0.5.7-r2: EditObj can create a dialog box to edit ANY Python object
 dev-python/editorconfig-core-py 0.12.0: Clone of EditorConfig core written in Python
-dev-python/egenix-mx-base 3.2.5 3.2.8 3.2.9: eGenix utils for Python
 dev-python/elasticsearch-curator 5.5.4-r1 5.6.0 5.8.1: Tending time-series indices in Elasticsearch
 dev-python/elasticsearch-py 6.3.1-r1 6.4.0 7.0.5 7.1.0 7.5.1: Official Python low-level client for Elasticsearch
 dev-python/elementpath 1.3.1 1.4.1: XPath 1.0/2.0 parsers and selectors for ElementTree and lxml
@@ -12265,7 +12263,7 @@ mail-mta/msmtp 1.8.7-r1: An SMTP client and SMTP plugin for mail user agents suc
 mail-mta/netqmail 1.06-r12: qmail -- a secure, reliable, efficient, simple message transfer agent
 mail-mta/nullmailer 2.2-r1: Simple relay-only local mail transport agent
 mail-mta/opensmtpd 6.6.4_p1: Lightweight but featured SMTP daemon from OpenBSD
-mail-mta/postfix 3.4.5-r1 3.4.6 3.4.7 3.4.8 3.4.9 3.5_pre20200203: A fast and secure drop-in replacement for sendmail
+mail-mta/postfix 3.4.5-r1 3.4.6 3.4.7 3.4.8 3.4.9 3.5.0_rc1 3.6_pre20200308: A fast and secure drop-in replacement for sendmail
 mail-mta/protonmail-bridge-bin 1.1.6 1.2.2 1.2.3: Serves ProtonMail to IMAP/SMTP clients
 mail-mta/qpsmtpd 0.84-r2 0.95 9999: qpsmtpd is a flexible smtpd daemon written in Perl
 mail-mta/sendmail 8.14.9 8.15.2-r2: Widely-used Mail Transport Agent (MTA)
@@ -14500,7 +14498,6 @@ net-im/telepathy-mission-control 5.16.4 5.16.5: An account manager and channel d
 net-im/tkabber 1.1.2: A jabber client written in Tcl/Tk
 net-im/toxic 0.8.2 0.8.3: A curses-based client for Tox
 net-im/transwhat 0.2.2_p20190426: A WhatsApp XMPP Gateway based on Spectrum 2 and Yowsup 3
-net-im/turses 0.2.23: Command line twitter client
 net-im/vacuum 1.3.0_pre20180105 9999: Qt Crossplatform Jabber client
 net-im/yowsup 3.2.3_p20190905: A library that enables you to build applications which use the WhatsApp service
 net-im/ysm 2.9.9.1-r1: A console ICQ client supporting versions 7/8
@@ -14701,7 +14698,6 @@ net-libs/nativebiginteger 0.9.36-r1 0.9.42: jbigi library used by net-vpn/i2p
 net-libs/neon 0.30.2: HTTP and WebDAV client library
 net-libs/net6 1.3.14-r2: Network access framework for IPv4/IPv6 written in C++
 net-libs/netwib 5.39.0: Library of Ethernet, IP, UDP, TCP, ICMP, ARP and RARP protocols
-net-libs/nfqueue-bindings 0.5 0.6-r1: High-level language bindings for libnetfilter_queue
 net-libs/nghttp2 1.39.2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
@@ -15300,7 +15296,7 @@ net-proxy/adzapper 20110915-r2: Redirector for squid to intercept advertising, p
 net-proxy/cntlm 0.93_beta5-r2: Cntlm is an NTLM/NTLMv2 authenticating HTTP proxy
 net-proxy/dante 1.4.1-r2: A free socks4,5 and msproxy implementation
 net-proxy/dnsproxy 1.17: The dnsproxy daemon is a proxy for DNS queries
-net-proxy/haproxy 1.8.9 1.8.13 1.8.23 1.8.24 1.9.10 1.9.13 1.9.14 1.9.9999 2.0.10 2.0.12 2.0.13 2.0.9999 2.1.2 2.1.3 2.1.9999: A TCP/HTTP reverse proxy for high availability environments
+net-proxy/haproxy 1.8.9 1.8.13 1.8.24 1.9.14 1.9.9999 2.0.13 2.0.9999 2.1.3 2.1.9999: A TCP/HTTP reverse proxy for high availability environments
 net-proxy/hatop 0.7.7: Ncurses client and real-time monitoring and displaying of HAProxy status
 net-proxy/havp 0.92a-r2: HTTP AntiVirus Proxy
 net-proxy/http-replicator 4.0_alpha2-r7: Proxy cache for Gentoo packages
