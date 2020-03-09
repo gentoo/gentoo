@@ -34,7 +34,7 @@ PATCHES=( "${FILESDIR}"/config-full-paths-r10.patch )
 
 src_compile() {
 	pushd "${PN}" >/dev/null || die
-	go build -buildmode="$(usex pie pie default)" || die
+	go build -v -x -mod=readonly -mod=vendor -buildmode="$(usex pie pie default)" || die
 	popd >/dev/null || die
 }
 
