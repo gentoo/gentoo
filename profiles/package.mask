@@ -618,7 +618,6 @@ net-misc/wicd
 # dev-python/dpkt has no other revdeps.
 #
 # Removal in 30 days.  Bug #692340.
-net-libs/nfqueue-bindings
 dev-python/dpkt
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-03)
