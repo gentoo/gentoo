@@ -1,6 +1,6 @@
-BDEPEND=>=app-portage/elt-patches-20170815
+BDEPEND=doc? ( sys-apps/texinfo ) test? ( dev-util/dejagnu ) nls? ( sys-devel/gettext ) sys-devel/flex virtual/yacc >=app-portage/elt-patches-20170815
 DEFINED_PHASES=compile configure install postinst postrm prepare test unpack
-DEPEND=>=sys-devel/binutils-config-3 sys-libs/zlib doc? ( sys-apps/texinfo ) test? ( dev-util/dejagnu ) nls? ( sys-devel/gettext ) sys-devel/flex virtual/yacc sys-devel/gnuconfig
+DEPEND=>=sys-devel/binutils-config-3 sys-libs/zlib sys-devel/gnuconfig
 DESCRIPTION=Tools necessary to build programs
 EAPI=7
 HOMEPAGE=https://sourceware.org/binutils/
@@ -13,4 +13,4 @@ RESTRICT=!test? ( test )
 SLOT=2.34
 SRC_URI=mirror://gnu/binutils/binutils-2.34.tar.xz https://dev.gentoo.org/~slyfox/distfiles/binutils-2.34-patches-1.tar.xz
 _eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	gnuconfig	b8ec1c34be4ff9dac7ad4034d277936b	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=11687f81f0847234b25a64ef8aed5a76
+_md5_=b7a795aa548b0427504e5878ddb000c4

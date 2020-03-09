@@ -12,4 +12,4 @@ RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/jedisct1/dnscrypt-proxy/archive/2.0.39.tar.gz -> dnscrypt-proxy-2.0.39.tar.gz
 _eclasses_=fcaps	9445d60c1eb084a91c38ef4c070b2f16	go-module	fed1f8fd90b8957c6cb45f66536a3ee0	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=6eb18f3e14d7e3b1eab505d1e6be7fae
+_md5_=bb8feb4a97563dc81336fc22d9c8b2e9

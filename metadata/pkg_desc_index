@@ -2257,7 +2257,7 @@ app-misc/tmux-mem-cpu-load 3.4.0 9999: CPU, RAM memory, and load monitor for use
 app-misc/tmux-xpanes 4.1.1: tmux-based terminal divider
 app-misc/tmux2html 0.1.11: Render full tmux windows or individual panes as HTML
 app-misc/tmuxp 1.5.4: tmux session manager. built on libtmux
-app-misc/todo 2.10-r2: A CLI-based TODO list manager
+app-misc/todo 2.10-r2 2.11.0: A CLI-based TODO list manager
 app-misc/toilet 0.3-r1: The Other Implementations letters. Figlet replacement
 app-misc/towitoko 2.0.7-r3: Driver for Towitoko smartcard readers
 app-misc/tpconfig 3.1.3-r2: Touchpad config for ALPS and Synaptics TPs. Controls tap/click behaviour
@@ -3267,7 +3267,7 @@ dev-db/percona-xtrabackup 2.4.15 8.0.7: Hot backup utility for MySQL based serve
 dev-db/percona-xtrabackup-bin 2.4.13: MySQL hot backup software. non-blocking backups for InnoDB/XtraDB databases
 dev-db/pg_activity 1.5.0: Realtime PostgreSQL database server monitoring tool
 dev-db/pg_top 3.7.0: 'top' for PostgreSQL
-dev-db/pgadmin4 4.13-r1 4.17-r1: GUI administration and development platform for PostgreSQL
+dev-db/pgadmin4 4.17-r1: GUI administration and development platform for PostgreSQL
 dev-db/pgagent 3.4.0-r3 4.0.0 4.0.0-r1: pgAgent is a job scheduler for PostgreSQL
 dev-db/pgbadger 10.3 11.0: pgBadger is a PostgreSQL log analyzer.
 dev-db/pgbouncer 1.9.0 1.10.0 1.11.0 1.12.0: Lightweight connection pooler for PostgreSQL
@@ -5141,7 +5141,7 @@ dev-libs/libvformat 1.13-r2: Library to read and write vcard files
 dev-libs/libvoikko 4.3: Spell checking, hyphenation and morphological analysis tool for Finnish language
 dev-libs/libvterm 0.0_pre20181126 0.1.1 0.1.2 0.1.3: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
 dev-libs/libvterm-neovim 0.0_pre20150309 0.0_pre20150621: An abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
-dev-libs/libwacom 0.33 1.1: Library for identifying Wacom tablets and their model-specific features
+dev-libs/libwacom 1.1: Library for identifying Wacom tablets and their model-specific features
 dev-libs/libwapcaplet 0.4.1-r1 0.4.2: string internment library, written in C
 dev-libs/libwbxml 0.11.2 0.11.6: Library and tools to parse, encode and handle WBXML documents
 dev-libs/libx86 1.1-r4: A hardware-independent library for executing real-mode x86 code
@@ -8589,7 +8589,7 @@ dev-python/python-levenshtein 0.12.0: Functions for fast computation of Levensht
 dev-python/python-lhafile 0.2.2: LHA archive support for Python
 dev-python/python-libevdev 0.8: Python wrappers for the libevdev library
 dev-python/python-linux-procfs 0.6.1: Python classes to extract information from the Linux kernel /proc files
-dev-python/python-ly 0.9.5 0.9.6: Tool and library for manipulating LilyPond files
+dev-python/python-ly 0.9.6: Tool and library for manipulating LilyPond files
 dev-python/python-lzo 1.12-r1: Python interface to lzo
 dev-python/python-magic 0.4.15 0.4.15-r1: Access the libmagic file type identification library
 dev-python/python-magnumclient 2.12.0: A client for the OpenStack Magnum API
@@ -8611,7 +8611,7 @@ dev-python/python-openid 2.2.5-r1: OpenID support for servers and consumers
 dev-python/python-openstackclient 3.18.1: A client for the OpenStack APIs
 dev-python/python-otrs 0.3.0: A programmatic interface to OTRS SOAP API
 dev-python/python-podman 0.12.1.2 1.6.0: A library to interact with a Podman server
-dev-python/python-poppler-qt5 0.24.2_p20170214 0.75.0: Python binding for libpoppler-qt5
+dev-python/python-poppler-qt5 0.75.0: Python binding for libpoppler-qt5
 dev-python/python-prctl 1.7: Control process attributes through prctl
 dev-python/python-redmine 2.0.2: Python interface to the Redmine REST API
 dev-python/python-saharaclient 2.2.1: This is a client for the OpenStack Sahara API, aka HADOOP
@@ -9007,7 +9007,7 @@ dev-python/whichcraft 0.4.1: This package provides cross-platform cross-python s
 dev-python/whisper 1.1.3 1.1.5: Fixed size round-robin style database
 dev-python/whoosh 2.6.0 2.7.4: Fast, pure-Python full text indexing, search and spell checking library
 dev-python/widgetsnbextension 3.0.0 3.4.2: IPython HTML widgets for Jupyter
-dev-python/wrapt 1.10.10 1.10.11 1.11.2 1.11.2-r1 1.12.0: Module for decorators, wrappers and monkey patching
+dev-python/wrapt 1.10.11 1.11.2-r1 1.12.0: Module for decorators, wrappers and monkey patching
 dev-python/ws4py 0.3.4-r1 0.5.1 9999: WebSocket client and server library for Python 2 and 3 as well as PyPy
 dev-python/wsaccel 0.6.2_p20170108: Accelerator for ws4py, autobahn and tornado
 dev-python/wsgiintercept 1.3.1: WSGI application in place of a real URI for testing
@@ -10459,7 +10459,7 @@ dev-util/diffball 1.0.1 1.0.1-r1 1.0.1-r2: Delta compression suite for using/gen
 dev-util/difffilter 0.3.3 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffoscope 129 137: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
-dev-util/diffuse 0.4.8-r1 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
+dev-util/diffuse 0.5.0_alpha7-r1: A graphical tool to compare and merge text files
 dev-util/dirdiff 2.1-r3: A tool for differing and merging directories
 dev-util/dissembler 0.9-r1: polymorphs bytecode to a printable ASCII string
 dev-util/distro-info 0.14 0.22: Provides information about the Debian distributions' releases
@@ -13545,7 +13545,7 @@ media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 dri
 media-sound/fmit 1.0.15-r2: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
 media-sound/freebirth 0.3.2-r1: Free software bass synthesizer step sequencer
-media-sound/frescobaldi 3.0.0 3.1.1: A LilyPond sheet music text editor
+media-sound/frescobaldi 3.1.1: A LilyPond sheet music text editor
 media-sound/galan 0.3.0_beta7: gAlan - Graphical Audio Language
 media-sound/gbsplay 0.0.91-r2: Nintendo Gameboy sound player for GBS format
 media-sound/gigedit 1.1.1-r1 9999: An instrument editor for gig files
@@ -14330,7 +14330,7 @@ net-dns/ddclient 3.9.0-r3: Perl client used to update dynamic DNS entries
 net-dns/djbdns 1.05-r33: Collection of DNS client/server software
 net-dns/dnrd 2.20.3-r2: A caching DNS proxy server
 net-dns/dnscap 1.10.2 1.10.3: Network capture utility designed specifically for DNS traffic
-net-dns/dnscrypt-proxy 2.0.33 2.0.34 2.0.35 2.0.36 2.0.39 9999: A flexible DNS proxy, with support for encrypted DNS protocols
+net-dns/dnscrypt-proxy 2.0.33 2.0.39 9999: A flexible DNS proxy, with support for encrypted DNS protocols
 net-dns/dnsdist 1.3.3-r1 1.4.0: A highly DNS-, DoS- and abuse-aware loadbalancer
 net-dns/dnshijacker 1.3-r2: a libnet/libpcap based packet sniffer and spoofer
 net-dns/dnsimple-dyndns 0.1: Dynamic DNS implementation, that relies on DNSimple.com
@@ -15269,7 +15269,7 @@ net-print/cups-pdf 2.6.1 3.0.0 3.0.1: Provides a virtual printer for CUPS to pro
 net-print/cups-pk-helper 0.2.6: PolicyKit helper to configure cups with fine-grained privileges
 net-print/cups-windows 6.0-r1: CUPS PostScript Driver for Windows
 net-print/dymo-cups-drivers 1.4.0 1.4.0-r1: Dymo SDK for LabelWriter/LabelManager printers
-net-print/epson-inkjet-printer-escpr 1.7.2 1.7.7: Epson Inkjet Printer Driver (ESC/P-R)
+net-print/epson-inkjet-printer-escpr 1.7.7: Epson Inkjet Printer Driver (ESC/P-R)
 net-print/fax4cups 1.29-r1: Fax backend for CUPS
 net-print/foo2zjs 20200221 99999999: Support for printing to ZjStream-based printers
 net-print/foomatic-db 4.0.20170331 4.0.20180126 4.0.20190226: Printer information files for foomatic-db-engine to generate ppds
@@ -16248,7 +16248,7 @@ sci-mathematics/eclib 20190909: Programs for elliptic curves defined over the ra
 sci-mathematics/ent 101202: Pseudorandom number sequence test
 sci-mathematics/euler 1.61.0: Mathematical programming environment
 sci-mathematics/fann 2.2.0-r1 9999: Fast Artificial Neural Network Library
-sci-mathematics/flint 2.4.4-r1 2.4.5 2.5.2 2.5.2-r1: Fast Library for Number Theory
+sci-mathematics/flint 2.4.4-r1 2.5.2-r1: Fast Library for Number Theory
 sci-mathematics/form 4.1 4.2.0 4.2.1: Symbolic Manipulation System
 sci-mathematics/fricas 1.3.4 1.3.5: FriCAS is a fork of Axiom computer algebra system
 sci-mathematics/frobby 0.9.0-r2: Software system and project for computations with monomial ideals
