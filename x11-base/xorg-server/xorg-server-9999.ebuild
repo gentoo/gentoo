@@ -20,6 +20,7 @@ IUSE="${IUSE_SERVERS} debug elogind ipv6 libressl +libglvnd minimal selinux +sui
 CDEPEND="libglvnd? (
 		media-libs/libglvnd[X]
 		!app-eselect/eselect-opengl
+		!!x11-drivers/nvidia-drivers[-libglvnd(-)]
 	)
 	!libglvnd? ( >=app-eselect/eselect-opengl-1.3.0	)
 	!libressl? ( dev-libs/openssl:0= )
