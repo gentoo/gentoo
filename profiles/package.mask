@@ -37,6 +37,11 @@
 =mail-mta/postfix-3.6*
 
 # Michał Górny <mgorny@gentoo.org> (2020-03-09)
+# Multiple releases behind.  Stuck at py3.6.  No reverse dependencies.
+# Removal in 30 days.  Bug #711934.
+dev-python/tweepy
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-09)
 # Unmaintained.  Outdated.  Stuck on py3.6, wrong use of eclass.
 # No revdeps -- it is bundled by every consumer anyway.
 # Removal in 30 days.  Bug #711932.
