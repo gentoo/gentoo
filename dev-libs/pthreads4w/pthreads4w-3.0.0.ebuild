@@ -14,7 +14,10 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
-BDEPEND="sys-devel/parity"
+BDEPEND="
+	app-arch/unzip
+	sys-devel/parity
+"
 
 S=${WORKDIR}/${PN}-code-07053a521b0a9deb6db2a649cde1f828f2eb1f4f
 
