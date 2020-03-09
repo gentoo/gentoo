@@ -3,9 +3,9 @@
 
 EAPI="6"
 PYTHON_COMPAT=( python2_7 )
-USE_RUBY="ruby24"
+USE_RUBY="ruby24 ruby25 ruby26 ruby27"
 
-inherit autotools python-single-r1 ruby-single
+inherit autotools python-single-r1 ruby-utils
 
 DESCRIPTION="Japanese handwriting recognition engine"
 HOMEPAGE="http://tomoe.osdn.jp/"
@@ -17,17 +17,7 @@ KEYWORDS="amd64 x86"
 IUSE="hyperestraier mysql python ruby ${USE_RUBY//ruby/ruby_targets_ruby} static-libs subversion"
 RESTRICT="test"
 REQUIRED_USE="python? ( ${PYTHON_REQUIRED_USE} )
-	ruby? ( || ( ${USE_RUBY//ruby/ruby_targets_ruby} ) )"
-
-_ruby_set_globals() {
-	local ruby
-	for ruby in ${USE_RUBY}; do
-		RUBY_USEDEP="${RUBY_USEDEP}ruby_targets_${ruby}?,"
-	done
-	RUBY_USEDEP="${RUBY_USEDEP%,}"
-}
-_ruby_set_globals
-unset -f _ruby_set_globals
+	ruby? ( ^^ ( ${USE_RUBY//ruby/ruby_targets_ruby} ) )"
 
 RDEPEND="dev-libs/glib:2
 	hyperestraier? ( app-text/hyperestraier )
@@ -40,8 +30,12 @@ RDEPEND="dev-libs/glib:2
 		')
 	)
 	ruby? (
-		${RUBY_DEPS}
-		dev-ruby/ruby-glib2[${RUBY_USEDEP}]
+		$(for ruby in ${USE_RUBY}; do
+			echo "ruby_targets_${ruby}? (
+				$(_ruby_implementation_depend "${ruby}")
+				dev-ruby/ruby-glib2[ruby_targets_${ruby}]
+			)"
+		done)
 	)
 	subversion? ( dev-vcs/subversion )"
 DEPEND="${RDEPEND}
@@ -75,7 +69,7 @@ src_prepare() {
 
 src_configure() {
 	local ruby
-	for ruby in ${RUBY_TARGETS_PREFERENCE}; do
+	for ruby in ${USE_RUBY}; do
 		if use ruby_targets_${ruby}; then
 			break
 		fi
@@ -85,7 +79,7 @@ src_configure() {
 		$(use_enable ruby dict-ruby) \
 		$(use_enable static-libs static) \
 		$(use_with python python "") \
-		$(use_with ruby ruby "$(type -p ${ruby})") \
+		$(use_with ruby ruby "$(type -P ${ruby})") \
 		--with-svn-include="${EPREFIX}"/usr/include \
 		--with-svn-lib="${EPREFIX}"/usr/$(get_libdir)
 }
