@@ -17,7 +17,6 @@ IUSE=""
 DEPEND=">=dev-texlive/texlive-basic-2019
 >=dev-texlive/texlive-latex-2019
 dev-texlive/texlive-xetex
-!dev-texlive/texlive-langtibetan
 !<dev-texlive/texlive-basic-2014
 "
 RDEPEND="${DEPEND} "
