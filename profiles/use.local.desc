@@ -7382,6 +7382,9 @@ sci-libs/dlib:cuda - Enable support for CUDA for Deep Neural Networks (cuDNN) on
 sci-libs/dlib:mkl - Enable support for Intel FFT sci-libs/mkl
 sci-libs/dlib:python - Enable support for Python API bindings
 sci-libs/dmlc-core:s3 - Support for the Amazon Simple Storage Service
+sci-libs/eccodes:defs - Install full set of definition files.
+sci-libs/eccodes:extra-test - Install full set of test data (large).
+sci-libs/eccodes:memfs - Enable memory based access to definition/sample files (conflicts with tests).
 sci-libs/fftw:float - Link default library to single precision instead of double (symlinks only and fftw-2.1)
 sci-libs/fftw:quad - Build quadruple precision lib
 sci-libs/fftw:zbus - Adds support for ZBus cycle-counter of mips
