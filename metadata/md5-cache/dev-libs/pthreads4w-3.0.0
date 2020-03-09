@@ -1,4 +1,4 @@
-BDEPEND=sys-devel/parity
+BDEPEND=app-arch/unzip sys-devel/parity
 DEFINED_PHASES=compile install test
 DESCRIPTION=POSIX Threads for Windows
 EAPI=7
@@ -7,4 +7,4 @@ KEYWORDS=~x86-winnt
 LICENSE=LGPL-2
 SLOT=0
 SRC_URI=mirror://sourceforge/pthreads4w/pthreads4w-code-v3.0.0.zip
-_md5_=3f0b75c1e4c76a7fe9a0f78ec105ec67
+_md5_=cd69c81e5789cf5891f1846259d632d7
