@@ -1,4 +1,4 @@
-# Copyright 2008-2019 Gentoo Authors
+# Copyright 2008-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -22,8 +22,8 @@ else
 fi
 
 LICENSE="BSD"
-SLOT="0/20"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~sh ~x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
+SLOT="0/22"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc64 ~sh x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos"
 IUSE=""
 
 BDEPEND="~dev-libs/protobuf-${PV}
