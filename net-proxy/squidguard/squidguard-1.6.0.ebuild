@@ -11,7 +11,7 @@ SRC_URI="mirror://debian/pool/main/s/squidguard/${PN}_${PV}.orig.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm ppc ~ppc64 ~sparc ~x86"
 
 IUSE="ldap"
 
