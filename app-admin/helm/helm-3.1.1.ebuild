@@ -698,7 +698,6 @@ KEYWORDS="~amd64"
 
 RESTRICT+=" test"
 
-
 src_prepare() {
 	default
 	mv ../vendor .
