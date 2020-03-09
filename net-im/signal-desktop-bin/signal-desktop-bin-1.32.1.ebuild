@@ -28,13 +28,17 @@ RDEPEND="
 
 QA_PREBUILT="opt/Signal/signal-desktop
 	opt/Signal/chrome-sandbox
+	opt/Signal/crashpad_handler
 	opt/Signal/libffmpeg.so
 	opt/Signal/libGLESv2.so
 	opt/Signal/libnode.so
 	opt/Signal/libVkICD_mock_icd.so
+	opt/Signal/libvk_swiftshader.so
 	opt/Signal/swiftshader/libGLESv2.so
 	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/build/Release/sharp.node
 	opt/Signal/resources/app.asar.unpacked/node_modules/sharp/vendor/lib/*"
+
+RESTRICT="splitdebug"
 
 S="${WORKDIR}"
 
