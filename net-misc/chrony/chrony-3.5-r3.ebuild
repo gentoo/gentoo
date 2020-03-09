@@ -12,7 +12,7 @@ SLOT="0"
 
 KEYWORDS="~alpha amd64 arm hppa ppc ppc64 sparc x86"
 IUSE="
-	+adns caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc
+	+adns caps +cmdmon html ipv6 libedit nettle +ntp +phc pps readline +refclock +rtc
 	seccomp selinux
 "
 REQUIRED_USE="
@@ -22,6 +22,7 @@ REQUIRED_USE="
 CDEPEND="
 	caps? ( sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
+	nettle? ( dev-libs/nettle )
 	readline? ( >=sys-libs/readline-4.1-r4:= )
 	seccomp? ( sys-libs/libseccomp )
 "
@@ -68,6 +69,7 @@ src_configure() {
 
 	# not an autotools generated script
 	local myconf=(
+		$(!usex nettle '' --disable-sechash)
 		$(use_enable seccomp scfilter)
 		$(usex adns '' --disable-asyncdns)
 		$(usex caps '' --disable-linuxcaps)
@@ -81,7 +83,6 @@ src_configure() {
 		${CHRONY_EDITLINE}
 		${EXTRA_ECONF}
 		--chronysockdir="${EPREFIX}/run/chrony"
-		--disable-sechash
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		--mandir="${EPREFIX}/usr/share/man"
 		--prefix="${EPREFIX}/usr"
