@@ -432,7 +432,7 @@ app-admin/ide-smart 1.4-r2: A tool to read SMART information from harddiscs
 app-admin/installer 0.1.1_beta: A software for Gentoo installation
 app-admin/integrit 4.1-r1: file integrity verification program
 app-admin/keepass 2.43 2.44: A free, open source, light-weight and easy-to-use password manager
-app-admin/keepassxc 2.4.3-r1 2.5.2 2.5.3 9999: KeePassXC - KeePass Cross-platform Community Edition
+app-admin/keepassxc 2.5.3 9999: KeePassXC - KeePass Cross-platform Community Edition
 app-admin/killproc 2.13-r1: killproc and assorted tools for boot scripts
 app-admin/kpcli 3.3: A command line interface to KeePass database files
 app-admin/kube-bench 0.2.2 0.2.3 0.2.3-r1: Kubernetes Bench for Security runs the CIS Kubernetes Benchmark
@@ -462,7 +462,7 @@ app-admin/mongo-tools 3.6.13 3.6.14 3.6.16 3.6.17 4.0.12 4.0.13 4.0.14 4.0.16 4.
 app-admin/monit 5.25.3 5.26.0: Monitoring and managing daemons or similar programs running on a Unix system
 app-admin/mtail 3.0.0_rc33: A tool for extracting metrics from application logs
 app-admin/multilog-watch 1.12-r1: Watches a multilog file for irregularities
-app-admin/needrestart 3.4 9999: Restart daemons after library updates
+app-admin/needrestart 3.3 3.4 9999: Restart daemons after library updates
 app-admin/newsyslog 1.1-r1 1.1.0.81: a highly configurable program for managing and archiving log files
 app-admin/ngxtop 0.0.3_pre141201: real-time metrics for nginx server (and others)
 app-admin/openrc-settingsd 1.0.1-r1: System settings D-Bus service for OpenRC
@@ -8207,7 +8207,7 @@ dev-python/packaging 16.8 19.2 20.0 20.1 20.3: Core utilities for Python package
 dev-python/pafy 0.5.5 9999: Python library to retrieve YouTube content and metadata
 dev-python/paho-mqtt 1.4.0 1.5.0: A client class with support for both MQTT v3.1 and v3.1.1
 dev-python/pallets-sphinx-themes 1.1.2: Sphinx themes for Pallets and related projects
-dev-python/pandas 0.24.2 9999: Powerful data structures for data analysis and statistics
+dev-python/pandas 0.24.2 1.0.1 9999: Powerful data structures for data analysis and statistics
 dev-python/pandas-datareader 0.7.0 0.8.1: Pandas DataFrame extraction from a wide range of Internet sources
 dev-python/pandocfilters 1.4.2-r1 1.4.2-r2: Utilities for writing pandoc filters in python
 dev-python/parameterized 0.7.0: Parameterized testing with any Python test framework
@@ -14702,7 +14702,7 @@ net-libs/nghttp2 1.39.2 1.40.0 9999: HTTP/2 C Library
 net-libs/nghttp3 0_pre20190912 9999: HTTP/3 library written in C
 net-libs/ngtcp2 0_pre20190912 9999: Implementation of the IETF QUIC Protocol
 net-libs/nodejs 8.12.0 10.18.0 10.19.0 12.14.0 12.16.0 12.16.1 13.8.0 13.9.0 99999999: A JavaScript runtime built on Chrome's V8 JavaScript engine
-net-libs/ntirpc 1.7.1 1.7.4 3.0: Transport Independent RPC library for nfs-ganesha
+net-libs/ntirpc 1.7.1 1.7.4 3.0 3.2: Transport Independent RPC library for nfs-ganesha
 net-libs/obby 0.4.8-r1: Library for collaborative text editing
 net-libs/onion 0.8 9999: C library to create simple HTTP servers and Web Applications
 net-libs/openmq-cclient 4.4.1: C-Client Library for Open Source Java Message Service (JMS)
@@ -15243,7 +15243,7 @@ net-p2p/resilio-sync 2.6.1 2.6.3: Resilient, fast and scalable file synchronizat
 net-p2p/retroshare 0.6.3-r1 0.6.4 0.6.5: P2P private sharing application
 net-p2p/rtorrent 0.9.7 0.9.7-r1 0.9.8: BitTorrent Client using libtorrent
 net-p2p/soulseek-qt 20160117: Official binary Qt SoulSeek client
-net-p2p/syncthing 1.1.4 1.3.1 1.3.2 1.3.4: Open Source Continuous File Synchronization
+net-p2p/syncthing 1.1.4 1.3.4-r1: Open Source Continuous File Synchronization
 net-p2p/syrep 0.9: A generic file repository synchronization tool
 net-p2p/torrentinfo 1.8.6-r1 1.8.6-r2: A torrent file parser
 net-p2p/transmission 2.94-r1 9999: A fast, easy, and free BitTorrent client
