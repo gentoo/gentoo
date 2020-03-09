@@ -12,9 +12,7 @@ SRC_URI="mirror://gnu/wget/${P}.tar.gz"
 LICENSE="GPL-3"
 SLOT="0/0" # subslot = libwget.so version
 KEYWORDS="~amd64 ~x86"
-
 IUSE="brotli bzip2 doc +gnutls gpgme +http2 idn libressl lzma openssl pcre psl +ssl test valgrind xattr zlib"
-
 REQUIRED_USE="valgrind? ( test )"
 
 RDEPEND="
@@ -22,7 +20,7 @@ RDEPEND="
 	bzip2? ( app-arch/bzip2 )
 	!gnutls? ( dev-libs/libgcrypt:= )
 	ssl? (
-		gnutls? ( net-libs/gnutls )
+		gnutls? ( net-libs/gnutls:= )
 		!gnutls? (
 			libressl? ( dev-libs/libressl:0= )
 			!libressl? ( dev-libs/openssl:0= )
@@ -63,6 +61,7 @@ src_prepare() {
 
 src_configure() {
 	local myeconfargs=(
+		--disable-static
 		--with-plugin-support
 		--with-ssl="$(usex ssl $(usex gnutls gnutls openssl) none)"
 		--without-libidn
@@ -88,6 +87,6 @@ src_install() {
 
 	doman docs/man/man{1/*.1,3/*.3}
 
-	find "${ED}" -type f \( -name "*.a" -o -name "*.la" \) -delete || die
+	find "${D}" -type f -name '*.la' -delete || die
 	rm "${ED}"/usr/bin/${PN}_noinstall || die
 }
