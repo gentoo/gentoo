@@ -70,12 +70,10 @@ RDEPEND="
 			dev-python/pygments[${PYTHON_MULTI_USEDEP}]
 			dev-python/sip[${PYTHON_MULTI_USEDEP}]
 			dev-python/six[${PYTHON_MULTI_USEDEP}]
-			|| ( dev-python/twisted[${PYTHON_MULTI_USEDEP}]
-				dev-python/twisted-core[${PYTHON_MULTI_USEDEP}]
-			)
+			dev-python/twisted[${PYTHON_MULTI_USEDEP}]
 			dev-python/zope-interface[${PYTHON_MULTI_USEDEP}]
 			mpi? ( dev-python/mpi4py )
-			qt5? ( dev-python/PyQt5[opengl,webkit,${PYTHON_MULTI_USEDEP}] )
+			qt5? ( dev-python/PyQt5[opengl,${PYTHON_MULTI_USEDEP}] )
 		')
 	)
 	qt5? (
