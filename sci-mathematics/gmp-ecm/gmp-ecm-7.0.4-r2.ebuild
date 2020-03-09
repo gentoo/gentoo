@@ -11,7 +11,7 @@ SRC_URI="https://gforge.inria.fr/frs/download.php/file/36224/${P}.tar.gz"
 
 LICENSE="GPL-3 LGPL-3"
 SLOT="0"
-KEYWORDS="~amd64 ~x86 ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~x86 ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="+custom-tune openmp static-libs cpu_flags_x86_sse2"
 
 DEPEND="dev-libs/gmp:="
