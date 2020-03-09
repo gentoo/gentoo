@@ -5,6 +5,10 @@
 		<email>c@roessner.co</email>
 		<name>Christian Roessner</name>
 	</maintainer>
+	<maintainer type="person">
+		<email>arkamar@atlas.cz</email>
+		<name>Petr Vaněk</name>
+	</maintainer>
 	<maintainer type="project">
 		<email>proxy-maint@gentoo.org</email>
 		<name>Proxy Maintainers</name>
