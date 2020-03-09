@@ -17,13 +17,14 @@ SRC_URI="https://www.paraview.org/files/v${MAJOR_PV}/${MY_P}.tar.xz"
 LICENSE="paraview GPL-2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
-IUSE="boost cg coprocessing development doc examples ffmpeg mpi mysql nvcontrol openmp offscreen plugins python +qt5 sqlite tcl test tk"
+IUSE="boost cg coprocessing development doc examples ffmpeg mpi mysql nvcontrol openmp offscreen plugins python +qt5 sqlite tcl test tk +webengine"
 
 RESTRICT="mirror test"
 
 # "vtksqlite, needed by vtkIOSQL" and "vtkIOSQL, needed by vtkIOMySQL"
 REQUIRED_USE="python? ( mpi ${PYTHON_REQUIRED_USE} )
 	mysql? ( sqlite )
+	webengine? ( qt5 )
 	?? ( offscreen qt5 )"
 
 RDEPEND="
@@ -83,12 +84,12 @@ RDEPEND="
 		dev-qt/qtopengl:5[-gles2]
 		dev-qt/qtsql:5
 		dev-qt/qttest:5
-		dev-qt/qtwebengine:5[widgets]
 		dev-qt/qtx11extras:5
 	)
 	sqlite? ( dev-db/sqlite:3 )
 	tcl? ( dev-lang/tcl:0= )
-	tk? ( dev-lang/tk:0= )"
+	tk? ( dev-lang/tk:0= )
+	webengine? ( dev-qt/qtwebengine:5[widgets] )"
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	boost? (
@@ -104,7 +105,6 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-4.0.1-xdmf-cstring.patch
 	"${FILESDIR}"/${PN}-5.3.0-fix_buildsystem.patch
 	"${FILESDIR}"/${PN}-5.5.0-allow_custom_build_type.patch
-	"${FILESDIR}"/${PN}-5.6.1-fix_openmp_4.0.patch
 )
 
 CMAKE_MAKEFILE_GENERATOR="emake" #579474
@@ -128,7 +128,7 @@ src_prepare() {
 		VTK/ThirdParty/xdmf3/vtkxdmf3/CMakeLists.txt || die
 	sed -i \
 		-e "s:lib/paraview-:$(get_libdir)/paraview-:g" \
-		ParaViewCore/ServerManager/SMApplication/vtkInitializationHelper.cxx || die
+		Remoting/Application/vtkInitializationHelper.cxx || die
 }
 
 src_configure() {
@@ -250,6 +250,9 @@ src_configure() {
 		-DVTK_Group_Tk="$(usex tk)"
 		-DVTK_USE_TK="$(usex tk)"
 		-DModule_vtkRenderingTk="$(usex tk)"
+
+		# webengine
+		-DPARAVIEW_USE_QTWEBENGINE="$(usex webengine)"
 	)
 
 	if use openmp; then
@@ -290,17 +293,11 @@ src_install() {
 			fi
 		done
 
-		# install libraries into correct directory respecting get_libdir:
-		mv "${ED}"/usr/lib "${ED}"/usr/lib_tmp || die
-		mkdir -p "${ED}"/usr/"${PVLIBDIR}" || die
-		mv "${ED}"/usr/lib_tmp/* "${ED}"/usr/"${PVLIBDIR}" || die
-		rmdir "${ED}"/usr/lib_tmp || die
-
 		# set up the environment
 		echo "LDPATH=${EPREFIX}/usr/${PVLIBDIR}" > "${T}"/40${PN} || die
 		doenvd "${T}"/40${PN}
 
-		newicon "${S}"/Applications/ParaView/pvIcon-32x32.png paraview.png
+		newicon "${S}"/Clients/ParaView/pvIcon-96x96.png paraview.png
 		make_desktop_entry paraview "Paraview" paraview
 
 		use python && python_optimize "${D}"/usr/$(get_libdir)/${PN}-${MAJOR_PV}
