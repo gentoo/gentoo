@@ -8,7 +8,7 @@ export CTARGET=${CTARGET:-${CHOST}}
 
 MY_PV=${PV/_/}
 
-inherit toolchain-funcs
+inherit toolchain-funcs linux-info
 
 case ${PV}  in
 *9999*)
@@ -120,6 +120,26 @@ go_tuple()
 go_cross_compile()
 {
 	[[ $(go_tuple ${CBUILD}) != $(go_tuple) ]]
+}
+
+pkg_pretend()
+{
+	local msg
+	get_running_version
+
+	use kernel_linux || return 0
+	if kernel_is -eq 5 2; then
+		msg="${P} does not work with kernel version 5.2.x"
+	elif kernel_is -eq 5 3 && kernel_is -le 5 3 14; then
+		msg="${P} does not work with kernel versions 5.3 before 5.3.15"
+	elif kernel_is -eq 5 4 && kernel_is -le 5 4 1; then
+		msg="${P} does not work with kernel versions 5.4 before 5.4.2"
+	fi
+	if [[ -n ${msg} ]]; then
+		eerror $msg
+		eerror "See https://github.com/golang/go/issues/37436"
+		die "Attempted to build ${P} with unsupported kernel"
+	fi
 }
 
 src_compile()
