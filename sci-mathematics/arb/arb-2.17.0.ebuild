@@ -11,7 +11,7 @@ SRC_URI="https://github.com/fredrik-johansson/arb/archive/${PV}.tar.gz -> ${P}.t
 
 LICENSE="LGPL-2.1+"
 SLOT="0/2"
-KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="static-libs"
 
 RDEPEND="
