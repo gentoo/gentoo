@@ -32,6 +32,12 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-09)
+# Unmaintained.  Outdated.  Stuck on py3.6, wrong use of eclass.
+# No revdeps -- it is bundled by every consumer anyway.
+# Removal in 30 days.  Bug #711932.
+dev-util/waf
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-07)
 # The following packages are stuck on Python 3.6, and have no reverse
 # dependencies.  Please let the Python team know if you find some
