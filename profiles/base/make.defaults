@@ -102,12 +102,6 @@ LCD_DEVICES="bayrad cfontz cfontz633 glk hd44780 lb216 lcdm001 mtxorb ncurses te
 # Updated to include ruby25 on 2019-07-17
 RUBY_TARGETS="ruby24 ruby25"
 
-# Samuli Suominen <ssuominen@gentoo.org> (2009-12-03)
-# Enable USE cxx by default so base-system and toolchain pkgs can start using USE cxx
-# instead of USE nocxx.
-# https://archives.gentoo.org/gentoo-dev/msg_a181cd0d36600067b599f4b996c6989f.xml
-USE="${USE} cxx"
-
 # Enable extended filesystem attribute support by default.
 # https://archives.gentoo.org/gentoo-dev/message/ba0e3457e4b807e79816f0df03566af0
 USE="${USE} xattr"
