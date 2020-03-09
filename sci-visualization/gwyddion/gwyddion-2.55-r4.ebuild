@@ -33,14 +33,13 @@ RDEPEND="
 
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
-	dev-util/gtk-doc
+	doc? ( dev-util/gtk-doc )
 "
-# gtk-doc usually only needed for doc useflag, but our
-# mime patch requires it...
 
 PATCHES=(
 	"${FILESDIR}/${PN}-2.55-automagic.patch"
 	"${FILESDIR}/${PN}-2.55-mime.patch"
+	"${FILESDIR}/${PN}-2.55-xml.patch"
 )
 
 src_prepare() {
