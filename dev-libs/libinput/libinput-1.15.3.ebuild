@@ -14,10 +14,8 @@ LICENSE="MIT"
 SLOT="0/10"
 [[ "$(ver_cut 3)" -gt 900 ]] || \
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sparc ~x86"
-IUSE="doc input_devices_wacom"
-# Tests require write access to udev rules directory which is a no-no for live system.
-# Other tests are just about logs, exported symbols and autotest of the test library.
-RESTRICT="test"
+IUSE="doc input_devices_wacom test"
+RESTRICT="!test? ( test )"
 
 BDEPEND="
 	virtual/pkgconfig
@@ -40,8 +38,8 @@ RDEPEND="
 	virtual/libudev:=
 	virtual/udev
 "
-DEPEND="${RDEPEND}"
-#	test? ( >=dev-libs/check-0.9.10 )
+DEPEND="${RDEPEND}
+	test? ( >=dev-libs/check-0.9.10 )"
 
 python_check_deps() {
 	has_version "dev-python/commonmark[${PYTHON_USEDEP}]" && \
@@ -60,7 +58,7 @@ src_configure() {
 		-Ddebug-gui=false
 		$(meson_use doc documentation)
 		$(meson_use input_devices_wacom libwacom)
-		-Dtests=false # tests are restricted
+		$(meson_use test tests)
 		-Dudev-dir="${EPREFIX}$(get_udevdir)"
 	)
 	meson_src_configure
