@@ -673,7 +673,7 @@ app-backup/cpdup 1.18: A comprehensive filesystem mirroring program
 app-backup/dar 2.5.11 2.5.18 2.6.4 2.6.5: A full featured backup tool, aimed for disks
 app-backup/deja-dup 34.3: Simple backup tool using duplicity back-end
 app-backup/dirvish 1.2.1: Dirvish is a fast, disk based, rotating network backup system
-app-backup/duplicity 0.7.10 0.7.12 0.7.19 0.8.09-r1 0.8.11.1596: Secure backup system using gnupg to encrypt data
+app-backup/duplicity 0.7.10 0.7.12 0.7.19 0.8.09-r1 0.8.11.1596 0.8.11.1596-r1: Secure backup system using gnupg to encrypt data
 app-backup/duply 1.9.2 1.11.2 1.11.3 2.0.1 2.0.2 2.0.3: A shell frontend for duplicity
 app-backup/flexbackup 1.2.1-r13: Flexible backup script using perl
 app-backup/fsarchiver 0.8.5: Flexible filesystem archiver for backup and deployment tool
@@ -13043,7 +13043,7 @@ media-libs/opencollada 1.6.63-r1: Stream based read/write library for COLLADA fi
 media-libs/opencolorio 1.1.0-r3 1.1.0-r4: A color management framework for visual effects and animation
 media-libs/opencore-amr 0.1.3-r1 0.1.4 0.1.5: Implementation of Adaptive Multi Rate Narrowband and Wideband speech codec
 media-libs/openctm 1.0.3: OpenCTM - the Open Compressed Triangle Mesh.
-media-libs/opencv 2.4.13-r4 3.4.1-r7 4.1.2-r1 4.1.2-r2: A collection of algorithms and sample code for various computer vision problems
+media-libs/opencv 2.4.13-r4 3.4.1-r7 4.1.2-r1 4.1.2-r3: A collection of algorithms and sample code for various computer vision problems
 media-libs/openexr 2.3.0: ILM's OpenEXR high dynamic-range image file format libraries
 media-libs/openexr_ctl 1.0.1-r2: OpenEXR CTL libraries
 media-libs/openglide 0.09_rc9_p20191120: A Glide to OpenGL wrapper
@@ -13563,7 +13563,7 @@ media-sound/gom 0.29.103-r1: Console Mixer Program for OSS
 media-sound/gpodder 3.10.5-r1: A free cross-platform podcast aggregator
 media-sound/gqradio 1.9.2: An FM radio tuner app from the people who brought you GQmpeg
 media-sound/gramofile 1.6_p9: Transfer sound from gramophone records to CD
-media-sound/grip 4.0.1-r1 4.1.0: GTK+ based Audio CD Player/Ripper
+media-sound/grip 4.0.1-r1 4.1.1: GTK+ based Audio CD Player/Ripper
 media-sound/gsm 1.0.13-r1: Lossy speech compression library and tool
 media-sound/gst123 0.3.5: A GStreamer based command line media player
 media-sound/gstreamripper 0.2: A GTK+ toolkit based frontend for streamripper
