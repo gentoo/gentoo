@@ -13,7 +13,4 @@
 		<remote-id type="pypi">pypng</remote-id>
 		<remote-id type="github">drj11/pypng</remote-id>
 	</upstream>
-	<longdescription>
-		PyPNG allows PNG image files to be read and written using pure Python.
-	</longdescription>
 </pkgmetadata>
