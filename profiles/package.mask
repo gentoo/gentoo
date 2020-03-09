@@ -32,6 +32,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Eray Aslan <eras@gentoo.org> (2020-03-09)
+# Mask experimental software
+=mail-mta/postfix-3.6*
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-09)
 # Unmaintained.  Outdated.  Stuck on py3.6, wrong use of eclass.
 # No revdeps -- it is bundled by every consumer anyway.
