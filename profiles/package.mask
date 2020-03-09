@@ -200,7 +200,6 @@ dev-python/ropemode
 dev-python/schedule
 dev-python/schema
 dev-python/scp
-dev-python/seaborn
 dev-python/setuptools_hg
 dev-python/simplekv
 dev-python/slackclient
