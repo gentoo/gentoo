@@ -78,7 +78,6 @@ export GOCACHE="${T}/go-build"
 # -mod=readonly do not update go.mod/go.sum but fail if updates are needed
 # -mod=vendor use the vendor directory instead of downloading dependencies
 export GOFLAGS="-v -x -mod=readonly"
-[[ ${#EGO_VENDOR[@]} -gt 0 ]] && GOFLAGS+=" -mod=vendor"
 
 # Do not complain about CFLAGS etc since go projects do not use them.
 QA_FLAGS_IGNORED='.*'
@@ -389,6 +388,7 @@ _go-module_src_unpack_vendor() {
 			-f "${DISTDIR}/${tarball}" || die
 		eend
 	done
+	[[ ${#EGO_VENDOR[@]} -gt 0 ]] && GOFLAGS+=" -mod=vendor"
 	eqawarn "${P}.ebuild: EGO_VENDOR will be removed in the future."
 	eqawarn "Please request that the author migrate to EGO_SUM."
 }
