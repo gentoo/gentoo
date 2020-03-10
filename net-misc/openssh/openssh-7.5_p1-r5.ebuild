@@ -67,7 +67,7 @@ DEPEND="${RDEPEND}
 	sys-devel/autoconf"
 RDEPEND="${RDEPEND}
 	pam? ( >=sys-auth/pambase-20081028 )
-	userland_GNU? ( sys-apps/shadow )
+	userland_GNU? ( !prefix-guest? ( sys-apps/shadow ) )
 	X? ( x11-apps/xauth )"
 
 S=${WORKDIR}/${PARCH}
