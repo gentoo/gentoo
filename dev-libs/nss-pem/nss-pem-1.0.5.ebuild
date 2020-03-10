@@ -17,7 +17,7 @@ IUSE=""
 BDEPEND=" >=dev-libs/nss-3.50-r1 "
 RDEPEND="${BDEPEND}"
 
-DEPEND="<=dev-libs/nss-3.50
+DEPEND="!<=dev-libs/nss-3.50
 	${RDEPEND}"
 
 S="${WORKDIR}/${P}/src"
