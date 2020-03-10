@@ -8,5 +8,5 @@ LICENSE=Apache-2.0 BSD-2 BSD-4 ECL-2.0 imagemagick ISC JSON MIT MIT-with-adverti
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/hashicorp/terraform/archive/v0.12.20.tar.gz -> terraform-0.12.20.tar.gz
-_eclasses_=go-module	fed1f8fd90b8957c6cb45f66536a3ee0	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892
+_eclasses_=go-module	9bdff2035af4104401606fb5b9527c58	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892
 _md5_=7721a40f0e6c2a11ba9f010c2780ec45
