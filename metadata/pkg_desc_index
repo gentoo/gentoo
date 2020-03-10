@@ -17873,7 +17873,7 @@ www-apps/airdcpp-webui 2.6.0 2.6.1: Web interface for airdcpp-webclient
 www-apps/ampache 3.8.3 3.8.8: PHP-based tool for managing,updating and playing audio files via a web interface
 www-apps/baikal 0.5.2 0.6.0: Lightweight CalDAV+CardDAV server
 www-apps/blazeblogger 1.2.0-r1: Simple, capable content management system for producing static content
-www-apps/blohg 0.13-r3 9999: A Mercurial (or Git) based blogging engine
+www-apps/blohg 0.13-r4 9999: A Mercurial (or Git) based blogging engine
 www-apps/bugzilla 4.4.12-r2 5.0.3-r2: Bugzilla is the Bug-Tracking System from the Mozilla project
 www-apps/cgisysinfo 0.4.1: A small cgi utility to show basic system information
 www-apps/cgit 1.2.1 1.2.2 9999: a fast web-interface for git repositories
