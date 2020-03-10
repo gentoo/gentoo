@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit autotools flag-o-matic gnome2-utils xdg-utils
+inherit autotools flag-o-matic meson xdg
 
 DESCRIPTION="Super Nintendo Entertainment System (SNES) emulator"
 HOMEPAGE="https://github.com/snes9xgit/snes9x"
@@ -12,7 +12,7 @@ SRC_URI="https://github.com/snes9xgit/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 LICENSE="Snes9x GPL-2 GPL-2+ LGPL-2.1 LGPL-2.1+ ISC MIT ZLIB Info-ZIP"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64 ~x86"
-IUSE="alsa debug gtk multilib netplay nls opengl oss png pulseaudio portaudio wayland xinerama +xv"
+IUSE="alsa debug gtk multilib netplay opengl oss png pulseaudio portaudio wayland xinerama +xv"
 RESTRICT="bindist"
 
 RDEPEND="
@@ -38,27 +38,24 @@ RDEPEND="
 	)
 	xinerama? ( x11-libs/libXinerama )"
 DEPEND="${RDEPEND}
-	virtual/pkgconfig
-	x11-base/xorg-proto
-	nls? ( dev-util/intltool )"
+	x11-base/xorg-proto"
+BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}/${P}/unix"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.53-cross-compile.patch
-	"${FILESDIR}"/${PN}-1.58-build-system.patch
-	"${FILESDIR}"/${P}-without-screenshot_build_fix.patch
+	"${FILESDIR}"/${PN}-1.59-build-system.patch
 )
 
 src_prepare() {
-	cd "${WORKDIR}"/${P} || die
+	cd "${WORKDIR}/${P}" || die
 	rm -r unzip || die
 	default
 	cd unix || die
 	eautoreconf
-	if use gtk; then
-		cd ../gtk || die
-		eautoreconf
+	if use gtk ; then
+		export EMESON_SOURCE="${WORKDIR}/${P}/gtk"
 	fi
 }
 
@@ -79,29 +76,28 @@ src_configure() {
 	econf "${myeconfargs[@]}"
 
 	if use gtk; then
-		cd ../gtk || die
-		myeconfargs=(
-			--with-gtk3
-			--with-zlib
-			--with-system-zip
-			--without-gtk2
-			$(use_enable nls)
-			$(use_with opengl)
-			$(use_with xv)
-			$(use_with alsa)
-			$(use_with oss)
-			$(use_with pulseaudio)
-			$(use_with portaudio)
-			$(use_with png screenshot)
-			$(use_with wayland)
+		local emesonargs=(
+			-Dalsa="$(usex alsa true false)"
+			-Ddebugger="$(usex debug true false)"
+			-Dgtk2=false
+			-Dgtk3=true
+			-Dopengl="$(usex opengl true false)"
+			-Doss="$(usex oss true false)"
+			-Dportaudio="$(usex portaudio true false)"
+			-Dpulseaudio="$(usex pulseaudio true false)"
+			-Dscreenshot="$(usex png true false)"
+			-Dsystem-zip=true
+			-Dxv="$(usex xv true false)"
+			-Dzlib=true
+			-Dwayland="$(usex wayland true false)"
 		)
-		econf "${myeconfargs[@]}"
+		meson_src_configure
 	fi
 }
 
 src_compile() {
 	emake
-	use gtk && emake -C ../gtk
+	use gtk && meson_src_compile
 }
 
 src_install() {
@@ -110,8 +106,8 @@ src_install() {
 	dodoc ../docs/{changes,control-inputs,controls,snapshots}.txt
 	dodoc snes9x.conf.default
 
-	if use gtk; then
-		emake -C ../gtk DESTDIR="${D}" install
+	if use gtk ; then
+		meson_src_install
 		dodoc ../gtk/AUTHORS
 	fi
 
@@ -120,19 +116,13 @@ src_install() {
 }
 
 pkg_preinst() {
-	use gtk && gnome2_icon_savelist
+	use gtk && xdg_pkg_preinst
 }
 
 pkg_postinst() {
-	if use gtk ; then
-		gnome2_icon_cache_update
-		xdg_desktop_database_update
-	fi
+	use gtk && xdg_pkg_postinst
 }
 
 pkg_postrm() {
-	if use gtk ; then
-		gnome2_icon_cache_update
-		xdg_desktop_database_update
-	fi
+	use gtk && xdg_pkg_postrm
 }
