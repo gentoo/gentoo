@@ -16757,7 +16757,7 @@ sys-apps/haveged 1.9.2-r1 1.9.4 1.9.8c: A simple entropy daemon using the HAVEGE
 sys-apps/hbaapi 2.2: The Host Bus Adapter API for managing Fibre Channel Host Bus Adapters
 sys-apps/hd-idle 1.05: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.56 9.58: Utility to change hard drive performance parameters
-sys-apps/heirloom-tools 070715 070715-r1: Heirloom toolchest - original Unix tools
+sys-apps/heirloom-tools 070715-r1: Heirloom toolchest - original Unix tools
 sys-apps/help2man 1.47.10 1.47.11 1.47.12: GNU utility to convert program --help output to a man page
 sys-apps/hexdump-esr 1.8: Eric Raymond's hex dumper
 sys-apps/highway 1.1.0: High performance source code search tool
@@ -17432,7 +17432,7 @@ sys-kernel/bliss-initramfs 8.0.0: Boot your system's rootfs from OpenZFS/LUKS
 sys-kernel/bliss-kernel-bin 4.14.170 5.4.15 5.5.2: Precompiled Vanilla Kernel (Kernel Ready-to-Eat [KRE])
 sys-kernel/ck-sources 5.4.24: Gentoo's genpatches for Linux , with Con Kolivas' MuQSS process scheduler.
 sys-kernel/cryptodev 1.9 9999: device that allows access to Linux kernel cryptographic drivers
-sys-kernel/dracut 044-r1 044-r3 045-r2 046-r1 047-r1 048 048-r1 049 049-r1 049-r2 049-r3 9999: Generic initramfs generation tool
+sys-kernel/dracut 048-r1 049-r3 050 9999: Generic initramfs generation tool
 sys-kernel/dracut-crypt-ssh 1.0.6-r1: early unlocking of encrypted systems via ssh for dracut
 sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.0-r1 3.5.2.1 3.5.2.2 3.5.2.3 3.5.2.4 3.5.2.5 3.5.3.2 3.5.3.3 4.0.4 9999: Gentoo automatic kernel building scripts
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
