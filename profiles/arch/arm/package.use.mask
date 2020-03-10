@@ -4,6 +4,7 @@
 # Brian Evans <grknight@gentoo.org> (2020-03-10)
 # Needs a keyworded dev-python/sphinx-testing with Python 3.7
 dev-python/sphinxcontrib-blockdiag python_targets_python3_7
+dev-python/aiohttp doc
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
 # Mask until dev-libs/libfido2 is keyworded
