@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SLOT="0"
 KEYWORDS="amd64"
 IUSE="examples gtk +ocamlopt"
 
-DEPEND=">=dev-lang/ocaml-3.12.1[ocamlopt?]
+DEPEND=">=dev-lang/ocaml-4.09.0[ocamlopt?]
 	dev-ml/zarith
 	gtk? ( >=dev-ml/lablgtk-2.14[sourceview,ocamlopt?] )
 	dev-ml/camlzip
@@ -24,6 +24,11 @@ DEPEND=">=dev-lang/ocaml-3.12.1[ocamlopt?]
 RDEPEND="${DEPEND}"
 
 DOCS=( CHANGES INSTALL.md README.md )
+
+src_prepare() {
+	default
+	find "${S}" -name \*.ml | xargs sed -i "s:Pervasives:Stdlib:g" || die
+}
 
 src_configure() {
 	./configure --prefix /usr --libdir=/usr/$(get_libdir)
