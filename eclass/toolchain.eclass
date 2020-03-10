@@ -231,7 +231,7 @@ if tc_has_feature graphite ; then
 	RDEPEND+=" graphite? ( >=dev-libs/isl-0.14:0= )"
 fi
 
-DEPEND="${RDEPEND}
+BDEPEND="
 	>=sys-devel/bison-1.875
 	>=sys-devel/flex-2.5.4
 	nls? ( sys-devel/gettext )
@@ -239,6 +239,7 @@ DEPEND="${RDEPEND}
 		>=dev-util/dejagnu-1.4.4
 		>=sys-devel/autogen-5.5.4
 	)"
+DEPEND="${RDEPEND}"
 
 if tc_has_feature gcj ; then
 	GCJ_DEPS=">=media-libs/libart_lgpl-2.1"
@@ -263,6 +264,10 @@ fi
 if tc_has_feature zstd ; then
 	DEPEND+=" zstd? ( app-arch/zstd )"
 fi
+
+case ${EAPI:-0} in
+	5*|6) DEPEND+=" ${BDEPEND}" ;;
+esac
 
 PDEPEND=">=sys-devel/gcc-config-1.7"
 
