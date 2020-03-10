@@ -512,7 +512,7 @@ autotools_run_tool() {
 	fi
 
 	if ${m4flags} ; then
-		set -- "${1}" $(autotools_m4dir_include) "${@:2}" $(autotools_m4sysdir_include)
+		set -- "${1}" $(autotools_m4dir_include) $(autotools_m4sysdir_include) "${@:2}"
 	fi
 
 	# If the caller wants to probe something, then let them do it directly.
