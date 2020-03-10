@@ -585,7 +585,7 @@ app-arch/ipkg-utils 1.7.050831-r3: Tools for working with the ipkg binary packag
 app-arch/lbzip2 2.5_p20181227-r1: Parallel bzip2 utility
 app-arch/lcab 1.0_beta12: CAB file creation tool
 app-arch/lha 114i-r9: Utility for creating and opening lzh archives
-app-arch/libarchive 3.4.0 3.4.2: Multi-format archive and compression library
+app-arch/libarchive 3.4.2: Multi-format archive and compression library
 app-arch/libpar2 0.4: A library for par2, extracted from par2cmdline
 app-arch/lrzip 0.621 0.631-r1 0.631_p20190619: Long Range ZIP or Lzma RZIP optimized for compressing large files
 app-arch/lz4 1.9.2 9999: Extremely Fast Compression algorithm
@@ -17950,7 +17950,7 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced 
 www-client/epiphany 3.30.5 3.32.6: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 52.9.0 68.2.0 68.3.0 68.4.1 68.4.2 68.5.0 73.0.1: Firefox Web Browser
+www-client/firefox 52.9.0 68.2.0 68.3.0 68.4.1 68.4.2 68.5.0 73.0.1 74.0: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.5.0-r1 73.0.1: Firefox Web Browser
 www-client/google-chrome 80.0.3987.132: The web browser from Google
 www-client/google-chrome-beta 81.0.4044.43: The web browser from Google
