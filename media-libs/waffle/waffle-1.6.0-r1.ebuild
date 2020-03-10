@@ -8,7 +8,7 @@ if [[ ${PV} = *9999* ]]; then
 	GIT_ECLASS="git-r3"
 else
 	SRC_URI="http://www.waffle-gl.org/files/release/${P}/${P}.tar.xz"
-	KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+	KEYWORDS="amd64 arm ~arm64 ~ppc ~ppc64 x86"
 fi
 inherit meson multilib-minimal ${GIT_ECLASS}
 
@@ -17,7 +17,7 @@ HOMEPAGE="http://www.waffle-gl.org/ https://gitlab.freedesktop.org/mesa/waffle"
 
 LICENSE="BSD-2"
 SLOT="0"
-IUSE="doc egl gbm test wayland X"
+IUSE="doc egl gbm wayland X"
 RESTRICT="test" # gl_basic tests don't work when run from portage
 
 RDEPEND="
@@ -56,8 +56,8 @@ multilib_src_configure() {
 		$(meson_feature X x11_egl)
 		$(meson_feature gbm)
 		$(meson_feature egl surfaceless_egl)
-		$(meson_use test build-tests)
 		$(meson_use doc build-manpages)
+		-Dbuild-tests=false
 	)
 	meson_src_configure
 }

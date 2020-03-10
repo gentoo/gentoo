@@ -18,7 +18,7 @@ IUSE=""
 RDEPEND="
 	>=dev-python/click-4.1[${PYTHON_USEDEP}]
 	>=dev-python/psycopg-2.7.4[${PYTHON_USEDEP}]
-	>=dev-python/python-sqlparse-0.1.19[${PYTHON_USEDEP}]
+	>=dev-python/sqlparse-0.1.19[${PYTHON_USEDEP}]
 "
 
 distutils_enable_tests pytest

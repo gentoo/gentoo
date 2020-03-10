@@ -192,6 +192,7 @@ if [[ ${PN} != "kgcc64" && ${PN} != gcc-* ]] ; then
 		IUSE+=" systemtap" TC_FEATURES+=(systemtap)
 	tc_version_is_at_least 9.0 && IUSE+=" d"
 	tc_version_is_at_least 9.1 && IUSE+=" lto"
+	tc_version_is_at_least 10 && IUSE+=" zstd" TC_FEATURES+=(zstd)
 fi
 
 if tc_version_is_at_least 10; then
@@ -230,7 +231,7 @@ if tc_has_feature graphite ; then
 	RDEPEND+=" graphite? ( >=dev-libs/isl-0.14:0= )"
 fi
 
-DEPEND="${RDEPEND}
+BDEPEND="
 	>=sys-devel/bison-1.875
 	>=sys-devel/flex-2.5.4
 	nls? ( sys-devel/gettext )
@@ -238,6 +239,7 @@ DEPEND="${RDEPEND}
 		>=dev-util/dejagnu-1.4.4
 		>=sys-devel/autogen-5.5.4
 	)"
+DEPEND="${RDEPEND}"
 
 if tc_has_feature gcj ; then
 	GCJ_DEPS=">=media-libs/libart_lgpl-2.1"
@@ -258,6 +260,14 @@ if tc_has_feature systemtap ; then
 	# gcc needs sys/sdt.h headers on target
 	DEPEND+=" systemtap? ( dev-util/systemtap )"
 fi
+
+if tc_has_feature zstd ; then
+	DEPEND+=" zstd? ( app-arch/zstd )"
+fi
+
+case ${EAPI:-0} in
+	5*|6) DEPEND+=" ${BDEPEND}" ;;
+esac
 
 PDEPEND=">=sys-devel/gcc-config-1.7"
 
@@ -588,7 +598,7 @@ toolchain_src_prepare() {
 
 	# Prevent new texinfo from breaking old versions (see #198182, #464008)
 	if tc_version_is_at_least 4.1; then
-		tc_apply_patches "Remove texinfo (bug #198182, bug ##464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
+		tc_apply_patches "Remove texinfo (bug #198182, bug #464008)" "${FILESDIR}"/gcc-configure-texinfo.patch
 	fi
 
 	# >=gcc-4
@@ -1273,6 +1283,10 @@ toolchain_src_configure() {
 		)
 	fi
 
+	if in_iuse zstd ; then
+		confgcc+=( $(use_with zstd) )
+	fi
+
 	# newer gcc's come with libquadmath, but only fortran uses
 	# it, so auto punt it when we don't care
 	if tc_version_is_at_least 4.6 && ! is_fortran ; then
@@ -1485,8 +1499,12 @@ downgrade_arch_flags() {
 }
 
 gcc_do_filter_flags() {
+	# Be conservative here:
+	# - don't allow -O3 and like to over-optimize libgcc # 701786
+	# - don't allow -O0 to generate potentially invalid startup code
 	strip-flags
-	replace-flags -O? -O2
+	filter-flags '-O?'
+	append-flags -O2
 
 	# dont want to funk ourselves
 	filter-flags '-mabi*' -m31 -m32 -m64

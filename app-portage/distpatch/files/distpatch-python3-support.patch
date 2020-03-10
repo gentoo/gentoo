@@ -1,0 +1,420 @@
+From 0274956acf4479b7346ac441fe09f2e56d575c47 Mon Sep 17 00:00:00 2001
+From: "Rafael G. Martins" <rafael@rafaelmartins.eng.br>
+Date: Wed, 26 Feb 2020 18:22:06 +0100
+Subject: [PATCH] python3 support
+
+---
+ distdiffer           | 46 ++++++++++++++++++++++----------------------
+ distpatch/chksums.py | 12 ++++++------
+ distpatch/deltadb.py |  4 ++--
+ distpatch/diff.py    | 12 ++++++------
+ distpatch/package.py |  6 +++---
+ distpatch/patch.py   |  4 ++--
+ distpatch/stats.py   |  6 +++---
+ distpatcher          | 32 +++++++++++++++---------------
+ distpatchq           | 28 +++++++++++++--------------
+ 9 files changed, 75 insertions(+), 75 deletions(-)
+
+diff --git a/distdiffer b/distdiffer
+index a2b933d..6975b5c 100755
+--- a/distdiffer
++++ b/distdiffer
+@@ -73,39 +73,39 @@ def main():
+         return
+ 
+     if args.verbose:
+-        print '>>> Starting distdiffer ...\n'
++        print('>>> Starting distdiffer ...\n')
+ 
+     for package in packages:
+         if args.verbose:
+-            print '>>> Package: %s' % package
++            print('>>> Package: %s' % package)
+         pkg = Package(db)
+         try:
+             pkg.diff(package)
+-        except Exception, err:
+-            print >> sys.stderr, str(err)
++        except Exception as err:
++            print(str(err), file=sys.stderr)
+         if args.verbose:
+-            print '    >>> Versions:'
++            print('    >>> Versions:')
+             for cpv in pkg.ebuilds:
+-                print '        %s' % cpv
+-            print '    >>> Deltas:'
++                print('        %s' % cpv)
++            print('    >>> Deltas:')
+             if len(pkg.diffs) == 0:
+-                print '        None\n'
++                print('        None\n')
+             else:
+                 for diff in pkg.diffs:
+-                    print '        %s -> %s' % (diff.src.fname,
+-                                                diff.dest.fname)
++                    print('        %s -> %s' % (diff.src.fname,
++                                                diff.dest.fname))
+         if len(pkg.diffs) == 0:
+             continue
+         if args.verbose:
+-            print '    >>> Fetching distfiles:'
++            print('    >>> Fetching distfiles:')
+         try:
+             pkg.fetch_distfiles()
+-        except Exception, err:
+-            print >> sys.stderr, str(err)
+-            print
++        except Exception as err:
++            print(str(err), file=sys.stderr)
++            print()
+             continue
+         if args.verbose:
+-            print '    >>> Generating deltas:'
++            print('    >>> Generating deltas:')
+         for diff in pkg.diffs:
+             if args.verbose:
+                 sys.stdout.write('        %s -> %s ... ' % (diff.src.fname,
+@@ -116,20 +116,20 @@ def main():
+                               not args.no_compress, args.force)
+             except DiffExists:
+                 if args.verbose:
+-                    print 'up2date!'
+-                    print '            %s' % os.path.basename(diff.diff_file)
+-            except Exception, err:
++                    print('up2date!')
++                    print('            %s' % os.path.basename(diff.diff_file))
++            except Exception as err:
+                 if args.verbose:
+-                    print 'failed!'
+-                    print '            %s: %s' % (err.__class__.__name__, str(err))
++                    print('failed!')
++                    print('            %s: %s' % (err.__class__.__name__, str(err)))
+             else:
+                 if args.verbose:
+-                    print 'done!'
+-                    print '            %s' % os.path.basename(diff.diff_file)
++                    print('done!')
++                    print('            %s' % os.path.basename(diff.diff_file))
+                 db.add(diff.dbrecord)
+             diff.cleanup()
+         if args.verbose:
+-            print
++            print()
+ 
+ if __name__ == '__main__':
+     main()
+diff --git a/distpatch/chksums.py b/distpatch/chksums.py
+index 808dc59..d3dffab 100644
+--- a/distpatch/chksums.py
++++ b/distpatch/chksums.py
+@@ -26,16 +26,16 @@ class ChksumValue(object):
+         self._handler = get_handler(algorithm)
+ 
+     def to_str(self):
+-        if isinstance(self.value, basestring):
++        if isinstance(self.value, str):
+             return self.value
+-        elif isinstance(self.value, long):
++        elif isinstance(self.value, int):
+             return self._handler.long2str(self.value)
+         raise ChksumException('Invalid value: %s' % self.value)
+ 
+     def to_long(self):
+-        if isinstance(self.value, long):
++        if isinstance(self.value, int):
+             return self.value
+-        elif isinstance(self.value, basestring):
++        elif isinstance(self.value, str):
+             return self._handler.str2long(self.value)
+         raise ChksumException('Invalid value: %s' % self.value)
+ 
+@@ -69,11 +69,11 @@ class Chksum(object):
+                 raise ChksumException('File not found: %s' % fname)
+ 
+             values = get_chksums(fname, *self.algorithms)
+-            chksums = zip(self.algorithms, values)
++            chksums = list(zip(self.algorithms, values))
+ 
+         # if provided checksums, use them
+         else:
+-            chksums = chksums.items()
++            chksums = list(chksums.items())
+ 
+         # validate checksums, and set attributes
+         tmp_algorithms = list(self.algorithms)
+diff --git a/distpatch/deltadb.py b/distpatch/deltadb.py
+index 77d8c21..345077d 100644
+--- a/distpatch/deltadb.py
++++ b/distpatch/deltadb.py
+@@ -40,7 +40,7 @@ import os
+ 
+ from collections import OrderedDict
+ from fcntl import lockf, LOCK_EX, LOCK_UN
+-from itertools import izip
++
+ from shutil import rmtree
+ from snakeoil.chksum import get_handler
+ from snakeoil.fileutils import AtomicWriteFile
+@@ -171,7 +171,7 @@ class DeltaDB(list):
+         pieces = line.split()
+         chksums = OrderedDict()
+         uchksums = OrderedDict()
+-        for key, value in izip(pieces[::2], pieces[1::2]):
++        for key, value in zip(pieces[::2], pieces[1::2]):
+             key = key.lower()[:]
+             mykey = key[0] == 'u' and key[1:] or key
+             myvalue = get_handler(mykey).str2long(value.strip())
+diff --git a/distpatch/diff.py b/distpatch/diff.py
+index d5818f1..eeaf8a6 100644
+--- a/distpatch/diff.py
++++ b/distpatch/diff.py
+@@ -37,11 +37,11 @@ class DiffUnsupported(Exception):
+ 
+ 
+ _supported_formats = [
+-    u'.tar',
+-    u'.tar.gz', u'.tgz', u'.gz',
+-    u'.tar.bz2', u'.tbz2', u'.bz2',
+-    u'.tar.xz', u'.xz',
+-    u'.tar.lzma', u'.ĺzma',
++    '.tar',
++    '.tar.gz', '.tgz', '.gz',
++    '.tar.bz2', '.tbz2', '.bz2',
++    '.tar.xz', '.xz',
++    '.tar.lzma', '.ĺzma',
+ ]
+ 
+ 
+@@ -152,7 +152,7 @@ class Diff(object):
+         try:
+             patch = Patch(self.dbrecord)
+             patch.reconstruct(output_dir, tmp_dir, False)
+-        except PatchException, err:
++        except PatchException as err:
+             if clean_sources:
+                 os.unlink(self.diff_file)
+             raise DiffException('Delta reconstruction failed: %s' % str(err))
+diff --git a/distpatch/package.py b/distpatch/package.py
+index 553fc18..3c834cc 100644
+--- a/distpatch/package.py
++++ b/distpatch/package.py
+@@ -35,17 +35,17 @@ class Package(object):
+         diffs = []
+         taken = {}
+         for ebuild_id in range(len(self.ebuilds) - 1):
+-            cpvs = self.ebuilds.keys()
++            cpvs = list(self.ebuilds.keys())
+             src_cpv = cpvs[ebuild_id]
+             dest_cpv = cpvs[ebuild_id + 1]
+             src_ebuild = self.ebuilds[src_cpv]
+             dest_ebuild = self.ebuilds[dest_cpv]
+-            for src_distfile in src_ebuild.src_uri_map.keys():
++            for src_distfile in list(src_ebuild.src_uri_map.keys()):
+                 avg_distfile = None
+                 avg_ebuild = None
+                 max_avg = 0.0
+                 avgs = {}
+-                for dest_distfile in dest_ebuild.src_uri_map.keys():
++                for dest_distfile in list(dest_ebuild.src_uri_map.keys()):
+                     prefix = ''
+                     suffix = ''
+                     for i in range(min(len(src_distfile), len(dest_distfile))):
+diff --git a/distpatch/patch.py b/distpatch/patch.py
+index c210a5e..83eb3d6 100644
+--- a/distpatch/patch.py
++++ b/distpatch/patch.py
+@@ -14,7 +14,7 @@ import portage
+ import posixpath
+ import re
+ 
+-from itertools import izip
++
+ from portage.package.ebuild.fetch import fetch
+ from shutil import move
+ from subprocess import call
+@@ -96,7 +96,7 @@ class Patch(object):
+         if self.src != DeltaDBFile(src):
+             raise PatchException('Bad checksum for source: %s' % \
+                                  self.src.fname)
+-        for delta, delta_record in izip(deltas, self.dbrecords):
++        for delta, delta_record in zip(deltas, self.dbrecords):
+             if delta_record.delta != DeltaDBFile(delta):
+                 raise PatchException('Bad checksum for delta: %s' % \
+                                      delta_record.delta.fname)
+diff --git a/distpatch/stats.py b/distpatch/stats.py
+index 187f926..7716e07 100644
+--- a/distpatch/stats.py
++++ b/distpatch/stats.py
+@@ -48,7 +48,7 @@ class Stats(object):
+             delta = float(record.delta.chksums['size'])
+             dest = float(record.dest.chksums['size'])
+             ratio.append(100 - ((delta / dest) * 100))
+-        pyplot.plot(range(1, len(ratio) + 1), sorted(ratio))
++        pyplot.plot(list(range(1, len(ratio) + 1)), sorted(ratio))
+         pyplot.axes()
+         pyplot.xlabel('Deltas (total: %i)' % len(ratio))
+         pyplot.ylabel('Percentage of savings (for compressed files)')
+@@ -60,6 +60,6 @@ class Stats(object):
+         for record in self.deltadb:
+             dest.append(int(record.dest.chksums['size']))
+             delta.append(int(record.delta.chksums['size']))
+-        pyplot.plot(range(len(dest)), dest)
+-        pyplot.plot(range(len(delta)), delta)
++        pyplot.plot(list(range(len(dest))), dest)
++        pyplot.plot(list(range(len(delta))), delta)
+         pyplot.show()
+diff --git a/distpatcher b/distpatcher
+index 05980e2..984e4c2 100755
+--- a/distpatcher
++++ b/distpatcher
+@@ -69,35 +69,35 @@ def main():
+         return
+ 
+     if args.verbose:
+-        print '>>> Starting distpatcher ...\n'
++        print('>>> Starting distpatcher ...\n')
+ 
+     for cpv in cpv_list:
+         if args.verbose:
+             if args.distfile:
+-                print '>>> Distfile: %s' % cpv
++                print('>>> Distfile: %s' % cpv)
+             else:
+-                print '>>> CPV: %s' % cpv
++                print('>>> CPV: %s' % cpv)
+         pkg = Package(db)
+         if args.distfile:
+             pkg.patch_distfile(cpv, args.output_dir)
+         else:
+             pkg.patch(cpv, args.output_dir)
+         if args.verbose:
+-            print '    >>> Deltas:'
++            print('    >>> Deltas:')
+             if len(pkg.patches) == 0:
+-                print '        None\n'
++                print('        None\n')
+             else:
+                 for patch in pkg.patches:
+-                    print '        %s' % '\n            -> '.join(
+-                        [i.delta.fname for i in patch.dbrecords])
++                    print('        %s' % '\n            -> '.join(
++                        [i.delta.fname for i in patch.dbrecords]))
+         if len(pkg.patches) == 0:
+             continue
+         if args.verbose:
+-            print '    >>> Fetching deltas:'
++            print('    >>> Fetching deltas:')
+         for patch in pkg.patches:
+             patch.fetch_deltas(args.root_url, args.input_dir)
+         if args.verbose:
+-            print '    >>> Reconstructing distfiles:'
++            print('    >>> Reconstructing distfiles:')
+         for patch in pkg.patches:
+             if args.verbose:
+                 sys.stdout.write('        %s ... ' % '\n            -> '.join(
+@@ -106,17 +106,17 @@ def main():
+             try:
+                 patch.reconstruct(args.input_dir, args.output_dir,
+                                   not args.no_compress)
+-            except PatchException, err:
++            except PatchException as err:
+                 if args.verbose:
+-                    print 'failed!'
+-                    print '            %s' % str(err)
++                    print('failed!')
++                    print('            %s' % str(err))
+             else:
+                 if args.verbose:
+-                    print 'done!'
+-                    print '            %s' % \
+-                          os.path.basename(patch.dest.fname)
++                    print('done!')
++                    print('            %s' % \
++                          os.path.basename(patch.dest.fname))
+         if args.verbose:
+-            print
++            print()
+ 
+ if __name__ == '__main__':
+     main()
+diff --git a/distpatchq b/distpatchq
+index 902f6c0..e6bcebe 100755
+--- a/distpatchq
++++ b/distpatchq
+@@ -48,7 +48,7 @@ def delta_fetch_size(pkg, filename, distfiles_dir=None, deltas_dir=None):
+     except OSError:
+         pass
+     if filename in distfiles:
+-        print 0
++        print(0)
+         return 0
+     pkg.patch_distfile(filename, distfiles_dir)
+     if len(pkg.patches) == 0:
+@@ -62,7 +62,7 @@ def delta_fetch_size(pkg, filename, distfiles_dir=None, deltas_dir=None):
+         if dbrecord.delta.fname in deltas:
+             continue
+         fetch_size += int(dbrecord.delta.chksums.size.to_long())
+-    print fetch_size
++    print(fetch_size)
+ 
+ 
+ def delta_verify_checksums(pkg, filename, distfiles_dir=None):
+@@ -96,20 +96,20 @@ def delta_verify_checksums(pkg, filename, distfiles_dir=None):
+     return 0 if dest_record.uchksums == _Chksum(usrc) else 4
+ 
+ 
+-commands = sorted(i for i in globals().keys() if not i.startswith('_'))
++commands = sorted(i for i in list(globals().keys()) if not i.startswith('_'))
+ 
+ 
+ def usage(argv):
+-    print '>>> distpatch information query tool'
+-    print '>>> Usage: distpatchq <command> [<option> ...]'
+-    print
+-    print 'Available commands:'
++    print('>>> distpatch information query tool')
++    print('>>> Usage: distpatchq <command> [<option> ...]')
++    print()
++    print('Available commands:')
+     for name in commands:
+         function = globals()[name]
+         if function.__doc__ is None:
+-            print '   ' + name
+-            print '      MISSING DOCUMENTATION!'
+-            print
++            print('   ' + name)
++            print('      MISSING DOCUMENTATION!')
++            print()
+             continue
+ 
+         # introspect command arguments
+@@ -120,14 +120,14 @@ def usage(argv):
+             args.append('<%s>' % arg)
+         for arg in spec.args[-opt:]:
+             args.append('[%s]' % arg)
+-        print '   ' + name + ' ' + ' '.join(args)
++        print('   ' + name + ' ' + ' '.join(args))
+         lines = function.__doc__.split('\n')
+         if len(argv) > 1:
+             for line in lines:
+-                print "      " + line.strip()
++                print("      " + line.strip())
+ 
+     if len(argv) == 1:
+-        print "\nRun distpatchq with --help for info"
++        print("\nRun distpatchq with --help for info")
+ 
+ if __name__ == '__main__':
+     if len(_sys.argv) < 2:
+@@ -150,7 +150,7 @@ if __name__ == '__main__':
+     req = len(spec.args) - opt
+ 
+     if len(_sys.argv) < req + 2:
+-        print "Invalid number of arguments!!"
++        print("Invalid number of arguments!!")
+         _sys.exit(2)
+ 
+     dbfile = _sys.argv[2]
+-- 
+2.21.0
+

@@ -46,6 +46,8 @@ multilib_src_configure() {
 		$(meson_feature X x11)
 		$(meson_feature X glx)
 	)
+	use elibc_musl && emesonargs+=( -Dtls=disabled )
+
 	meson_src_configure
 }
 

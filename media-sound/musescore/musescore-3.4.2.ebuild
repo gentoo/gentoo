@@ -16,7 +16,7 @@ SRC_URI="https://github.com/musescore/MuseScore/archive/v${PV}.tar.gz -> ${P}.ta
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 IUSE="alsa debug jack mp3 osc omr portaudio portmidi pulseaudio +sf3 sfz webengine"
 REQUIRED_USE="portmidi? ( portaudio )"
 
@@ -34,7 +34,7 @@ DEPEND="
 	dev-qt/qtnetwork:5
 	dev-qt/qtprintsupport:5
 	dev-qt/qtquickcontrols2:5
-	>=dev-qt/qtsingleapplication-2.6.1_p20171024
+	>=dev-qt/qtsingleapplication-2.6.1_p20171024[X]
 	dev-qt/qtsvg:5
 	dev-qt/qtxml:5
 	dev-qt/qtxmlpatterns:5

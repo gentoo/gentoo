@@ -13,7 +13,7 @@ llvm.org_set_globals
 
 LICENSE="Apache-2.0-with-LLVM-exceptions || ( UoI-NCSA MIT )"
 SLOT="0"
-KEYWORDS="amd64 arm ~arm64 ppc64 x86 ~amd64-linux ~x64-macos"
+KEYWORDS="amd64 arm arm64 ppc64 x86 ~amd64-linux ~x64-macos"
 IUSE="cuda hwloc kernel_linux offload ompt test"
 # CUDA works only with the x86_64 ABI
 REQUIRED_USE="offload? ( cuda? ( abi_x86_64 ) )"
@@ -23,7 +23,7 @@ RDEPEND="
 	hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )
 	offload? (
 		virtual/libelf:=[${MULTILIB_USEDEP}]
-		virtual/libffi:=[${MULTILIB_USEDEP}]
+		dev-libs/libffi:=[${MULTILIB_USEDEP}]
 		cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	)"
 # tests:

@@ -42,7 +42,14 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-cpp/tbb
 	virtual/pkgconfig
-	doc? ( app-doc/doxygen[latex] )
+	doc? (
+		app-doc/doxygen
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
 	test? ( dev-util/cppunit )"
 
 PATCHES=(

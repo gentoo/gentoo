@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -12,7 +12,7 @@ SRC_URI="https://stockfish.s3.amazonaws.com/${P}-src.zip"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="amd64 x86"
-IUSE="armv7 cpu_flags_x86_avx2 cpu_flags_x86_popcnt cpu_flags_x86_sse debug
+IUSE="cpu_flags_arm_v7 cpu_flags_x86_avx2 cpu_flags_x86_popcnt cpu_flags_x86_sse debug
 	general-32 general-64 +optimize"
 
 DEPEND="|| ( app-arch/unzip app-arch/zip )"
@@ -47,7 +47,7 @@ src_compile() {
 	use cpu_flags_x86_avx2 && my_arch=x86-64-bmi2
 
 	# other architectures
-	use armv7 && my_arch=armv7
+	use cpu_flags_arm_v7 && my_arch=armv7
 	use ppc && my_arch=ppc
 	use ppc64 && my_arch=ppc64
 

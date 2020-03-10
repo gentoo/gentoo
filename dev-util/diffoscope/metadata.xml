@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 <maintainer type="person">
-  <email>grozin@gentoo.org</email>
-  <name>Andrey Grozin</name>
+ <email>slyfox@gentoo.org</email>
+ <name>Sergei Trofimovich</name>
 </maintainer>
 <longdescription>
   diffoscope will try to get to the bottom of what makes files or directories different.

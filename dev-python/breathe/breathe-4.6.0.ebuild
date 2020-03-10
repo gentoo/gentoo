@@ -17,10 +17,15 @@ KEYWORDS="~amd64 ~ppc64 ~x86 ~amd64-linux ~x86-linux"
 IUSE=""
 
 RDEPEND="
-	app-doc/doxygen[latex]
+	app-doc/doxygen
 	dev-python/docutils[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
+	dev-texlive/texlive-bibtexextra
+	dev-texlive/texlive-fontsextra
+	dev-texlive/texlive-fontutils
+	dev-texlive/texlive-latex
+	dev-texlive/texlive-latexextra
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

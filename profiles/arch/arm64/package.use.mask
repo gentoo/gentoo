@@ -5,10 +5,6 @@
 # Mask until dev-libs/libfido2 is keyworded
 net-misc/openssh security-key
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-11)
-# dev-util/kdevelop and dev-util/kdevelop-pg-qt not keyworded, bug #709294
-kde-apps/umbrello php
-
 # Matt Turner <mattst88@gentoo.org> (2020-02-02)
 # dev-libs/mongo-c-driver is not keyworded
 net-dialup/freeradius mongodb

@@ -24,14 +24,16 @@ PATCH_BINUTILS_VER=9999
 
 case ${PV} in
 	9999)
-		EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
+		# sourceware.org does not have https:// today.
+		EGIT_REPO_URI="git://sourceware.org/git/binutils-gdb.git"
 		inherit git-r3
 		S=${WORKDIR}/binutils
 		EGIT_CHECKOUT_DIR=${S}
 		SLOT=${PV}
 		;;
 	*.9999)
-		EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
+		# sourceware.org does not have https:// today.
+		EGIT_REPO_URI="git://sourceware.org/git/binutils-gdb.git"
 		inherit git-r3
 		S=${WORKDIR}/binutils
 		EGIT_CHECKOUT_DIR=${S}
@@ -74,7 +76,8 @@ RDEPEND="
 	>=sys-devel/binutils-config-3
 	sys-libs/zlib
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? ( sys-apps/texinfo )
 	test? ( dev-util/dejagnu )
 	nls? ( sys-devel/gettext )

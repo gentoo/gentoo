@@ -53,7 +53,7 @@ src_install() {
 }
 
 pkg_postinst() {
-	if ! has_version 'x11-apps/xinit'; then
+	if [[ -z "${REPLACING_VERSIONS}" ]]; then
 		ewarn "If you use startx to start X instead of a login manager like gdm/kdm,"
 		ewarn "you can set the XSESSION variable to anything in /etc/X11/Sessions/ or"
 		ewarn "any executable. When you run startx, it will run this as the login session."
@@ -64,11 +64,13 @@ pkg_postinst() {
 		ewarn "    env-update && source /etc/profile"
 	fi
 
-	if has_version "<${CATEGORY}/${PN}-1.4.1"; then
-		ewarn "Starting with ${CATEGORY}/${PN}-1.4.1 serverauth files are no longer kept in the"
-		ewarn "home directory but rather are created in \$TMPDIR (typically /tmp).  The change"
-		ewarn "is transparent for most of users, however those that use runtime temporary"
-		ewarn "directories cleaning tools, like app-admin/tmpreaper, may need to adjust them"
-		ewarn "not to remove the 'serverauth.*' files."
-	fi
+	for v in ${REPLACING_VERSIONS}; do
+		if ver_test "$v" "-lt" "1.4.1"; then
+			ewarn "Starting with ${CATEGORY}/${PN}-1.4.1 serverauth files are no longer kept in the"
+			ewarn "home directory but rather are created in \$TMPDIR (typically /tmp).  The change"
+			ewarn "is transparent for most of users, however those that use runtime temporary"
+			ewarn "directories cleaning tools, like app-admin/tmpreaper, may need to adjust them"
+			ewarn "not to remove the 'serverauth.*' files."
+		fi
+	done
 }

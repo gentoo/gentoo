@@ -24,7 +24,14 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 BDEPEND="
 	dev-lang/swig
-	doc? ( app-doc/doxygen[latex] )
+	doc? (
+		app-doc/doxygen
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
 "
 RDEPEND="${PYTHON_DEPS}
 	media-libs/freeglut

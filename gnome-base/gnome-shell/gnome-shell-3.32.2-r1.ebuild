@@ -24,6 +24,7 @@ KEYWORDS="amd64 ~arm ~arm64 ~ppc ~ppc64 x86"
 DEPEND="
 	>=dev-libs/libcroco-0.6.8:0.6
 	>=gnome-extra/evolution-data-server-3.17.2:=
+	<gnome-extra/evolution-data-server-3.33
 	>=app-crypt/gcr-3.7.5[introspection]
 	>=gnome-base/gnome-desktop-3.7.90:3=[introspection]
 	>=dev-libs/glib-2.57.2:2

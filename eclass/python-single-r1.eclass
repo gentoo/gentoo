@@ -33,8 +33,8 @@
 # in the packages using python-single-r1, and there is no need ever
 # to inherit both.
 #
-# For more information, please see the wiki:
-# https://wiki.gentoo.org/wiki/Project:Python/python-single-r1
+# For more information, please see the Python Guide:
+# https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
 	0|1|2|3|4)
@@ -467,6 +467,7 @@ python_setup() {
 
 		python_export "${impls[0]}" EPYTHON PYTHON
 		python_wrapper_setup
+		einfo "Using ${EPYTHON} to build"
 		return
 	fi
 
@@ -484,6 +485,7 @@ python_setup() {
 
 			python_export "${impl}" EPYTHON PYTHON
 			python_wrapper_setup
+			einfo "Using ${EPYTHON} to build"
 		fi
 	done
 

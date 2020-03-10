@@ -6,6 +6,14 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-03)
+# Tests require py2 sleekxmpp and they are restricted anyway.
+net-im/spectrum2 test
+
+# Rick Farina <zerochaos@gentoo.org> (2020-02-26)
+# dev-python/pyzmq USE=doc deps are not met with python2_7
+dev-python/pyzmq doc
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-24)
 # app-admin/packagekit* are masked for removal.
 kde-frameworks/frameworkintegration appstream
@@ -293,6 +301,7 @@ app-emulation/fuse backend-svga
 # Patrick McLean <chutzpah@gentoo.org> (2018-03-06)
 # Requires dev-libs/boost-1.66 that is unkeyworded/masked
 >=sys-cluster/ceph-12.2.4 system-boost
+>=sys-cluster/ceph-14.2.8 -system-boost
 
 # Brian Evans <grknight@gentoo.org> (2018-03-05)
 # Mask embedded USE on virtual/mysql and friends to transition it to be obsolete

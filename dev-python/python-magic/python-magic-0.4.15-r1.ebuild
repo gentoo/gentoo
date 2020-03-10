@@ -14,7 +14,7 @@ SRC_URI="https://github.com/ahupp/python-magic/archive/${PV}.tar.gz -> ${P}.gh.t
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="amd64 arm hppa ia64 sparc x86 ~amd64-linux"
+KEYWORDS="~alpha amd64 arm hppa ia64 sparc x86 ~amd64-linux"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -31,6 +31,8 @@ PATCHES=(
 	"${FILESDIR}/${P}-fix-gzip-test.patch"
 	# https://github.com/ahupp/python-magic/commit/4bda684f8b461cc1f69593799efcf6afe8397756
 	"${FILESDIR}/${P}-fix-jpeg-test.patch"
+	# https://github.com/ahupp/python-magic/commit/18c909c4c98463d8292a7d1733aec007f178f1e5
+	"${FILESDIR}/${P}-fix-gzip-test-2.patch"
 )
 
 python_test() {

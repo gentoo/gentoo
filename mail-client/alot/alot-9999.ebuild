@@ -3,6 +3,7 @@
 
 EAPI=7
 
+DISTUTILS_USE_SETUPTOOLS=rdepend
 PYTHON_COMPAT=( python3_{6,7} )
 
 inherit distutils-r1
@@ -24,17 +25,16 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	>=app-crypt/gpgme-1.9.0[python,${PYTHON_USEDEP}]
-	>=dev-python/configobj-4.7.0[${PYTHON_USEDEP}]
+	app-crypt/gpgme[python,${PYTHON_USEDEP}]
+	dev-python/configobj[${PYTHON_USEDEP}]
 	dev-python/python-magic[${PYTHON_USEDEP}]
-	>=dev-python/urwid-1.3.0[${PYTHON_USEDEP}]
-	>=dev-python/urwidtrees-1.0[${PYTHON_USEDEP}]
+	dev-python/urwid[${PYTHON_USEDEP}]
+	dev-python/urwidtrees[${PYTHON_USEDEP}]
 	>=dev-python/twisted-18.4[${PYTHON_USEDEP}]
 	net-mail/mailbase
-	>=net-mail/notmuch-0.27[crypt,python]
+	net-mail/notmuch[crypt,python]
 	"
 DEPEND="
-	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		${RDEPEND}
@@ -44,20 +44,19 @@ DEPEND="
 
 PATCHES=(
 	"${FILESDIR}/${PV}-0001-remove-non-working-test.patch"
+	"${FILESDIR}/${PV}-0002-update-reference-to-envelope-body.patch"
 	)
 
-python_compile_all() {
-	if use doc; then
-		emake -C docs html
-		HTML_DOCS=( docs/build/html/. )
-	fi
-}
+distutils_enable_tests setup.py
 
-src_test() {
-	esetup.py test
+python_compile_all() {
+	emake -C docs man
+	use doc && emake -C docs html
 }
 
 python_install_all() {
+	use doc && local HTML_DOCS=( docs/build/html/. )
+	doman docs/build/man/*
 	distutils-r1_python_install_all
 
 	insinto /usr/share/alot
@@ -71,18 +70,5 @@ pkg_postinst() {
 		elog "the user manual:"
 		elog "   https://alot.readthedocs.io/en/latest/"
 		elog ""
-	else
-		local rv
-		for rv in ${REPLACING_VERSIONS} ; do
-			if ver_test "${rv}" -le "0.5.1"; then
-				ewarn ""
-				ewarn "Since 0.6 version the GPG engine has switched to app-crypt/gpgme"
-				ewarn "to use GPG signing operations, you can pass the key id has arg"
-				ewarn "or setup the gpg_key value in your config file, see"
-				ewarn "  https://alot.readthedocs.io/en/latest/usage/crypto.html?highlight=gpg"
-				ewarn ""
-				break
-			fi
-		done
 	fi
 }

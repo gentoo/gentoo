@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools db-use user
+inherit autotools db-use
 
 DESCRIPTION="Combined filter, redirector and access controller plugin for Squid"
 HOMEPAGE="http://www.squidguard.org"
@@ -11,11 +11,14 @@ SRC_URI="mirror://debian/pool/main/s/squidguard/${PN}_${PV}.orig.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~sparc ~x86"
+KEYWORDS="amd64 ~arm ppc ppc64 ~sparc x86"
 
 IUSE="ldap"
 
-RDEPEND="|| (
+RDEPEND="
+	acct-group/squid
+	acct-user/squid
+	|| (
 		sys-libs/db:5.3
 		sys-libs/db:4.8
 	)
@@ -36,14 +39,10 @@ suitable_db_version() {
 	die "No suitable BerkDB versions found, aborting"
 }
 
-pkg_setup() {
-	enewgroup squid
-	enewuser squid -1 -1 /var/cache/squid squid
-}
-
 src_prepare() {
 	eapply \
-		"${FILESDIR}/${P}-gentoo.patch"
+		"${FILESDIR}/${P}-gentoo.patch" \
+		"${FILESDIR}/${P}-gcc-10.patch"
 
 	# Link only with specific BerkDB versions
 	db_version="$(suitable_db_version)"

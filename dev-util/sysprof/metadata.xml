@@ -17,4 +17,7 @@
 	<flag name="systemd">Build the sysprofd daemon service, required to run the UI without root permissions.
 		Relies on <pkg>sys-apps/systemd</pkg> for sd-bus API.</flag>
 </use>
+<slots>
+	<subslots>sysprof and sysprof-ui API version</subslots>
+</slots>
 </pkgmetadata>

@@ -18,6 +18,7 @@ DEPEND="x11-libs/libX11
 	x11-libs/libXpm"
 RDEPEND="${DEPEND}"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc-10.patch )
 DOCS=( ../ChangeLog ../README )
 S=${WORKDIR}/${P}/src
 

@@ -1,0 +1,224 @@
+Author: Jonas Jelten <jj@sft.mx>
+
+upstream decided to ship the generated ./configure file...
+here's the updated configure script with the missing PKG_PROG_PKG_CONFIG call
+
+===================================================================
+--- bubblewrap-0.3.1.orig/configure
++++ bubblewrap-0.3.1/configure
+@@ -5224,107 +5224,6 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+ 
+ 
+ 
+-for ac_header in sys/capability.h
+-do :
+-  ac_fn_c_check_header_mongrel "$LINENO" "sys/capability.h" "ac_cv_header_sys_capability_h" "$ac_includes_default"
+-if test "x$ac_cv_header_sys_capability_h" = xyes; then :
+-  cat >>confdefs.h <<_ACEOF
+-#define HAVE_SYS_CAPABILITY_H 1
+-_ACEOF
+-
+-else
+-  as_fn_error $? "*** POSIX caps headers not found" "$LINENO" 5
+-fi
+-
+-done
+-
+-
+-# Check whether --enable-man was given.
+-if test "${enable_man+set}" = set; then :
+-  enableval=$enable_man;
+-else
+-  enable_man=maybe
+-fi
+-
+-
+-if test "$enable_man" != no; then :
+-
+-  # Extract the first word of "xsltproc", so it can be a program name with args.
+-set dummy xsltproc; ac_word=$2
+-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
+-$as_echo_n "checking for $ac_word... " >&6; }
+-if ${ac_cv_path_XSLTPROC+:} false; then :
+-  $as_echo_n "(cached) " >&6
+-else
+-  case $XSLTPROC in
+-  [\\/]* | ?:[\\/]*)
+-  ac_cv_path_XSLTPROC="$XSLTPROC" # Let the user override the test with a path.
+-  ;;
+-  *)
+-  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH
+-do
+-  IFS=$as_save_IFS
+-  test -z "$as_dir" && as_dir=.
+-    for ac_exec_ext in '' $ac_executable_extensions; do
+-  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    ac_cv_path_XSLTPROC="$as_dir/$ac_word$ac_exec_ext"
+-    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
+-    break 2
+-  fi
+-done
+-  done
+-IFS=$as_save_IFS
+-
+-  ;;
+-esac
+-fi
+-XSLTPROC=$ac_cv_path_XSLTPROC
+-if test -n "$XSLTPROC"; then
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $XSLTPROC" >&5
+-$as_echo "$XSLTPROC" >&6; }
+-else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-fi
+-
+-
+-  if test -z "$XSLTPROC"; then :
+-
+-    if test "$enable_man" = yes; then :
+-
+-      as_fn_error $? "xsltproc is required for --enable-man" "$LINENO" 5
+-
+-fi
+-    enable_man=no
+-
+-else
+-
+-    enable_man=yes
+-
+-fi
+-
+-fi
+- if test "$enable_man" != no; then
+-  ENABLE_MAN_TRUE=
+-  ENABLE_MAN_FALSE='#'
+-else
+-  ENABLE_MAN_TRUE='#'
+-  ENABLE_MAN_FALSE=
+-fi
+-
+-
+-
+-# Check whether --with-bash-completion-dir was given.
+-if test "${with_bash_completion_dir+set}" = set; then :
+-  withval=$with_bash_completion_dir;
+-else
+-  with_bash_completion_dir=yes
+-fi
+-
+-
+-if test "x$with_bash_completion_dir" = "xyes"; then
+-
+ 
+ 
+ 
+@@ -5445,6 +5344,107 @@ $as_echo "no" >&6; }
+ 	fi
+ fi
+ 
++for ac_header in sys/capability.h
++do :
++  ac_fn_c_check_header_mongrel "$LINENO" "sys/capability.h" "ac_cv_header_sys_capability_h" "$ac_includes_default"
++if test "x$ac_cv_header_sys_capability_h" = xyes; then :
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_SYS_CAPABILITY_H 1
++_ACEOF
++
++else
++  as_fn_error $? "*** POSIX caps headers not found" "$LINENO" 5
++fi
++
++done
++
++
++# Check whether --enable-man was given.
++if test "${enable_man+set}" = set; then :
++  enableval=$enable_man;
++else
++  enable_man=maybe
++fi
++
++
++if test "$enable_man" != no; then :
++
++  # Extract the first word of "xsltproc", so it can be a program name with args.
++set dummy xsltproc; ac_word=$2
++{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for $ac_word" >&5
++$as_echo_n "checking for $ac_word... " >&6; }
++if ${ac_cv_path_XSLTPROC+:} false; then :
++  $as_echo_n "(cached) " >&6
++else
++  case $XSLTPROC in
++  [\\/]* | ?:[\\/]*)
++  ac_cv_path_XSLTPROC="$XSLTPROC" # Let the user override the test with a path.
++  ;;
++  *)
++  as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
++for as_dir in $PATH
++do
++  IFS=$as_save_IFS
++  test -z "$as_dir" && as_dir=.
++    for ac_exec_ext in '' $ac_executable_extensions; do
++  if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
++    ac_cv_path_XSLTPROC="$as_dir/$ac_word$ac_exec_ext"
++    $as_echo "$as_me:${as_lineno-$LINENO}: found $as_dir/$ac_word$ac_exec_ext" >&5
++    break 2
++  fi
++done
++  done
++IFS=$as_save_IFS
++
++  ;;
++esac
++fi
++XSLTPROC=$ac_cv_path_XSLTPROC
++if test -n "$XSLTPROC"; then
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: $XSLTPROC" >&5
++$as_echo "$XSLTPROC" >&6; }
++else
++  { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
++$as_echo "no" >&6; }
++fi
++
++
++  if test -z "$XSLTPROC"; then :
++
++    if test "$enable_man" = yes; then :
++
++      as_fn_error $? "xsltproc is required for --enable-man" "$LINENO" 5
++
++fi
++    enable_man=no
++
++else
++
++    enable_man=yes
++
++fi
++
++fi
++ if test "$enable_man" != no; then
++  ENABLE_MAN_TRUE=
++  ENABLE_MAN_FALSE='#'
++else
++  ENABLE_MAN_TRUE='#'
++  ENABLE_MAN_FALSE=
++fi
++
++
++
++# Check whether --with-bash-completion-dir was given.
++if test "${with_bash_completion_dir+set}" = set; then :
++  withval=$with_bash_completion_dir;
++else
++  with_bash_completion_dir=yes
++fi
++
++
++if test "x$with_bash_completion_dir" = "xyes"; then
++
+ pkg_failed=no
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for BASH_COMPLETION" >&5
+ $as_echo_n "checking for BASH_COMPLETION... " >&6; }

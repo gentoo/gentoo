@@ -131,8 +131,8 @@
 +    nss)
 +      lib_nss=yes
 +      ;;
-+    nssutil)                                                      
-+      lib_nssutil=yes                                             
++    nssutil)
++      lib_nssutil=yes
 +      ;;
 +    *)
 +      usage 1 1>&2
@@ -187,7 +187,7 @@
 +       libdirs="$libdirs -lnssutil${major_version}"
 +      fi
 +      echo $libdirs
-+fi      
++fi
 +
 --- a/config/nss.pc.in
 +++ b/config/nss.pc.in

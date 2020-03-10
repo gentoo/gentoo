@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: python-any-r1.eclass
@@ -33,8 +33,8 @@
 # packages using python-any-r1, and there is no need ever to inherit
 # both.
 #
-# For more information, please see the wiki:
-# https://wiki.gentoo.org/wiki/Project:Python/python-any-r1
+# For more information, please see the Python Guide:
+# https://dev.gentoo.org/~mgorny/python-guide/
 
 case "${EAPI:-0}" in
 	[0-4]) die "Unsupported EAPI=${EAPI:-0} (too old) for ${ECLASS}" ;;
@@ -301,6 +301,7 @@ python_setup() {
 
 		python_export "${impls[0]}" EPYTHON PYTHON
 		python_wrapper_setup
+		einfo "Using ${EPYTHON} to build"
 		return
 	fi
 
@@ -309,6 +310,7 @@ python_setup() {
 		if _python_EPYTHON_supported "${EPYTHON}"; then
 			python_export EPYTHON PYTHON
 			python_wrapper_setup
+			einfo "Using ${EPYTHON} to build"
 			return
 		fi
 	fi
@@ -324,6 +326,7 @@ python_setup() {
 		elif _python_EPYTHON_supported "${i}"; then
 			python_export "${i}" EPYTHON PYTHON
 			python_wrapper_setup
+			einfo "Using ${EPYTHON} to build"
 			return
 		fi
 	done
@@ -334,6 +337,7 @@ python_setup() {
 		python_export "${_PYTHON_SUPPORTED_IMPLS[i]}" EPYTHON PYTHON
 		if _python_EPYTHON_supported "${EPYTHON}"; then
 			python_wrapper_setup
+			einfo "Using ${EPYTHON} to build"
 			return
 		fi
 	done

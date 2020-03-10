@@ -16,7 +16,7 @@ SRC_URI="mirror://gnu/${PN}/${P}.tar.xz
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~x86-linux"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86 ~x86-linux"
 IUSE="acl caps gmp hostname kill multicall nls selinux +split-usr static test vanilla xattr"
 RESTRICT="!test? ( test )"
 
@@ -35,7 +35,6 @@ DEPEND="${RDEPEND}
 		dev-perl/Expect
 		dev-util/strace
 		${PYTHON_DEPS}
-		$(python_gen_any_dep 'dev-python/pyinotify[${PYTHON_USEDEP}]')
 	)"
 RDEPEND+="
 	hostname? ( !sys-apps/net-tools[hostname] )
@@ -51,10 +50,6 @@ RDEPEND+="
 	!sys-apps/mktemp
 	!<app-forensics/tct-1.18-r1
 	!<net-fs/netatalk-2.0.3-r4"
-
-python_check_deps() {
-	has_version --host-root "dev-python/pyinotify[${PYTHON_USEDEP}]"
-}
 
 pkg_setup() {
 	if use test ; then
