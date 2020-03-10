@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -33,12 +33,12 @@ BDEPEND="
 
 src_prepare() {
 	# requires network connection, bug #623708
-	sed -e "/qxmppiceconnection/d" \
-		-i tests/CMakeLists.txt || die "failed to drop single test"
-	sed -e "/qxmppserver/d" \
-		-i tests/CMakeLists.txt || die "failed to drop single test"
-	sed -e "/qxmpptransfermanager/d" \
-		-i tests/CMakeLists.txt || die "failed to drop single test"
+	sed \
+		-e "/qxmppiceconnection/d" \
+		-e "/qxmppserver/d" \
+		-e "/qxmpptransfermanager/d" \
+		-i tests/CMakeLists.txt \
+		|| die "failed to drop certain network tests"
 
 	cmake_src_prepare
 }
@@ -48,6 +48,7 @@ src_configure() {
 		-DBUILD_DOCUMENTATION=$(usex doc)
 		-DBUILD_EXAMPLES=OFF
 		-DBUILD_TESTS=$(usex test)
+		-DBUILD_INTERNAL_TESTS=$(usex test)
 		-DWITH_OPUS=$(usex opus)
 		-DWITH_SPEEX=$(usex speex)
 		-DWITH_THEORA=$(usex theora)

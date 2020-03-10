@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit multilib user
+inherit multilib
 
 DESCRIPTION="The PowerDNS Daemon"
 HOMEPAGE="https://www.powerdns.com/"
@@ -11,7 +11,7 @@ SRC_URI="https://downloads.powerdns.com/releases/${P/_/-}.tar.bz2"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 x86"
+KEYWORDS="~amd64 ~x86"
 
 # other possible flags:
 # db2: we lack the dep
@@ -42,6 +42,10 @@ RDEPEND="
 	tinydns? ( >=dev-db/tinycdb-0.77 )
 	protobuf? ( dev-libs/protobuf )"
 DEPEND="${RDEPEND}"
+RDEPEND="${RDEPEND}
+	acct-user/pdns
+	acct-group/pdns"
+
 BDEPEND="virtual/pkgconfig
 	doc? ( app-doc/doxygen )"
 
@@ -121,11 +125,6 @@ src_install() {
 	fi
 
 	find "${D}" -name '*.la' -delete || die
-}
-
-pkg_preinst() {
-	enewgroup pdns
-	enewuser pdns -1 -1 /var/empty pdns
 }
 
 pkg_postinst() {

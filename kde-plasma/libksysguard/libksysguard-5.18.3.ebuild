@@ -20,7 +20,6 @@ RDEPEND="
 	>=dev-qt/qtdbus-${QTMIN}:5
 	>=dev-qt/qtgui-${QTMIN}:5
 	>=dev-qt/qtnetwork-${QTMIN}:5
-	>=dev-qt/qtwebchannel-${QTMIN}:5
 	>=dev-qt/qtwidgets-${QTMIN}:5
 	>=kde-frameworks/kauth-${KFMIN}:5
 	>=kde-frameworks/kcompletion-${KFMIN}:5
@@ -31,7 +30,10 @@ RDEPEND="
 	>=kde-frameworks/kwidgetsaddons-${KFMIN}:5
 	>=kde-frameworks/kwindowsystem-${KFMIN}:5
 	sys-libs/zlib
-	webengine? ( >=dev-qt/qtwebengine-${QTMIN}:5 )
+	webengine? (
+		>=dev-qt/qtwebchannel-${QTMIN}:5
+		>=dev-qt/qtwebengine-${QTMIN}:5
+	)
 	X? (
 		>=dev-qt/qtx11extras-${QTMIN}:5
 		x11-libs/libX11
@@ -49,6 +51,7 @@ PATCHES=( "${FILESDIR}/${PN}-5.16.0-no-detailed-mem-message.patch" )
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package !minimal KF5Plasma)
+		$(cmake_use_find_package webengine Qt5WebChannel)
 		$(cmake_use_find_package webengine Qt5WebEngineWidgets)
 		$(cmake_use_find_package X X11)
 	)

@@ -603,10 +603,6 @@ dev-lang/rebol-bin
 # packages this anymore, no revdeps. Removal in 30 days.
 sys-apps/hbaapi
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-09)
-# Dead upstream, broken by Qt 5.14, bug #703930. Masked for removal in 30 days.
-net-nntp/kwooty
-
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-07)
 # Mask until sys-libs/libxcrypt[system] is unmasked
 >=virtual/libcrypt-2
