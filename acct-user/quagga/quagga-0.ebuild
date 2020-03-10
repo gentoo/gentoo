@@ -5,7 +5,7 @@ EAPI=7
 
 inherit acct-user
 
-ACCT_USER_ID=425
+ACCT_USER_ID=424
 ACCT_USER_GROUPS=( quagga )
 
 acct-user_add_deps
