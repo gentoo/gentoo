@@ -700,17 +700,29 @@ RESTRICT+=" test"
 
 src_prepare() {
 	default
-	mv ../vendor .
-	sed -i -e "s/git rev-parse HEAD/echo ${GIT_COMMIT}/"\
-		-e "s/git rev-parse --short HEAD/echo ${GIT_COMMIT:0:7}/"\
-		-e "s#git describe --tags --abbrev=0 --exact-match 2>/dev/null#echo v${PV}#"\
-		-e 's/test -n "`git status --porcelain`" && echo "dirty" || //' \
-		-e "/GOFLAGS    :=/d" \
+	# Makefile:
+	# - change GIT & LDFLAGS variable assignments from immediate ":=" to
+	#   deferred "=", to allow better overrides.
+	# - Remove GOFLAGS entirely
+	# - Remove -w & -s from LDFLAGS
+	# - Git spec will be passed later
+	sed -r -i \
+		-e '/^GIT_(COMMIT|SHA|TAG|DIRTY)/s,:?=.*,=,g' \
+		-e "/^GOFLAGS[[:space:]]+:?=/d" \
+		-e '/^LDFLAGS[[:space:]]+:?=/{s,-[ws],,g;s,:=,=,g}' \
 		Makefile || die
 }
 
 src_compile() {
-	emake GOFLAGS="-mod=vendor" LDFLAGS= build
+	# Do not pass LDFLAGS directly here, as the upstream Makefile adds some
+	# data to it via +=
+	emake \
+		GOFLAGS="${GOFLAGS}" \
+		GIT_SHA=${GIT_COMMIT} \
+		GIT_COMMIT=${GIT_COMMIT:0:7} \
+		GIT_TAG=v${PV} \
+		GIT_DIRTY=clean \
+		build
 	bin/${PN} completion bash > ${PN}.bash || die
 	bin/${PN} completion zsh > ${PN}.zsh || die
 }
