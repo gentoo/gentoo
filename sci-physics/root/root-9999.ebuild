@@ -226,7 +226,8 @@ src_configure() {
 		-Dpgsql=$(usex postgres)
 		-Dpythia6=$(usex pythia6)
 		-Dpythia8=$(usex pythia8)
-		-Dpython=$(usex python)
+		-Dpyroot=$(usex python) # python was renamed to pyroot
+		-Dpython=$(usex python) # kept for backward compatibility
 		-Dqt5web=$(usex qt5)
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)
