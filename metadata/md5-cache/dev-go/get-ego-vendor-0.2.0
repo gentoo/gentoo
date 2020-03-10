@@ -8,5 +8,5 @@ LICENSE=BSD
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/williamh/get-ego-vendor/archive/v0.2.0.tar.gz -> get-ego-vendor-0.2.0.tar.gz
-_eclasses_=go-module	9bdff2035af4104401606fb5b9527c58
+_eclasses_=go-module	bee4f096a51be20ec65cc401979a6e0b
 _md5_=cabe46d806d5da4bbb340ee221af5bbe

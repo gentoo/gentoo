@@ -11,5 +11,5 @@ RDEPEND=app-crypt/gpgme:= app-emulation/conmon app-emulation/runc dev-libs/glib:
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/cri-o/cri-o/archive/v1.17.0.tar.gz -> cri-o-1.17.0.tar.gz
-_eclasses_=go-module	9bdff2035af4104401606fb5b9527c58
+_eclasses_=go-module	bee4f096a51be20ec65cc401979a6e0b
 _md5_=8d71d907596c5368d615635af312588a

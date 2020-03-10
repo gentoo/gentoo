@@ -8,5 +8,5 @@ LICENSE=MIT BSD BSD-2 Apache-2.0
 RESTRICT=test
 SLOT=0
 SRC_URI=https://github.com/go-delve/delve/archive/v1.3.0.tar.gz -> delve-1.3.0.tar.gz
-_eclasses_=go-module	9bdff2035af4104401606fb5b9527c58
+_eclasses_=go-module	bee4f096a51be20ec65cc401979a6e0b
 _md5_=d059124e2989b29cef961148f002702d
