@@ -388,7 +388,9 @@ _go-module_src_unpack_vendor() {
 			-f "${DISTDIR}/${tarball}" || die
 		eend
 	done
-	[[ ${#EGO_VENDOR[@]} -gt 0 ]] && GOFLAGS+=" -mod=vendor"
+	# replace GOFLAGS if EGO_VENDOR is being used
+	[[ ${#EGO_VENDOR[@]} -gt 0 ]] &&
+		GOFLAGS="-v -x -mod=vendor"
 	eqawarn "${P}.ebuild: EGO_VENDOR will be removed in the future."
 	eqawarn "Please request that the author migrate to EGO_SUM."
 }
