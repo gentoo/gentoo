@@ -1,0 +1,75 @@
+From 0386e4627779cb51f4292b3c642d90586d5e71b4 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Wed, 29 Jan 2020 23:53:29 +0100
+Subject: [PATCH] dracut.sh: don't call fsfreeze on subvol of root file system
+
+dracut.sh already doesn't call fsfreeze if the output file is on
+the root file system. For btrfs, however, this is not sufficient.
+Because fsfreeze is a superblock operation, and all btrfs subvolumes
+share the same superblock, fsfreeze may freeze the entire system
+if the subvolume on which the output file is written and / are
+subvolumes of the same file system. Avoid this by comparing file
+system UUIDs for btrfs.
+
+Fixes: de576db3c225 ("call fsfreeze(8) on /boot to flush initramfs data & metadata to media")
+---
+ dracut.sh | 36 +++++++++++++++++++++++++++++++++++-
+ 1 file changed, 35 insertions(+), 1 deletion(-)
+
+diff --git a/dracut.sh b/dracut.sh
+index af346f3a..c14f6c0b 100755
+--- a/dracut.sh
++++ b/dracut.sh
+@@ -2075,6 +2075,40 @@ fi
+ 
+ command -v restorecon &>/dev/null && restorecon -- "$outfile"
+ 
++btrfs_uuid() {
++    btrfs filesystem show "$1" | sed -n '1s/^.*uuid: //p'
++}
++
++freeze_ok_for_btrfs() {
++    local mnt uuid1 uuid2
++    # If the output file is on btrfs, we need to make sure that it's
++    # not on a subvolume of the same file system as the root FS.
++    # Otherwise, fsfreeze() might freeze the entire system.
++    # This is most conveniently checked by comparing the FS uuid.
++
++    [[ "$(stat -f -c %T -- "/")" == "btrfs" ]] || return 0
++    mnt=$(stat -c %m -- "$1")
++    uuid1=$(btrfs_uuid "$mnt")
++    uuid2=$(btrfs_uuid "/")
++    [[ "$uuid1" && "$uuid2" && "$uuid1" != "$uuid2" ]]
++}
++
++freeze_ok_for_fstype() {
++    local outfile=$1
++    local fstype
++
++    [[ "$(stat -c %m -- "$outfile")" == "/" ]] && return 1
++    fstype=$(stat -f -c %T -- "$outfile")
++    case $fstype in
++        msdos)
++            return 1;;
++        btrfs)
++            freeze_ok_for_btrfs "$outfile";;
++        *)
++            return 0;;
++    esac
++}
++
+ # We sync/fsfreeze only if we're operating on a live booted system.
+ # It's possible for e.g. `kernel` to be installed as an RPM BuildRequires or equivalent,
+ # and there's no reason to sync, and *definitely* no reason to fsfreeze.
+@@ -2087,7 +2121,7 @@ if test -d $dracutsysrootdir/run/systemd/system; then
+     fi
+ 
+     # use fsfreeze only if we're not writing to /
+-    if [[ "$(stat -c %m -- "$outfile")" != "/" && "$(stat -f -c %T -- "$outfile")" != "msdos" ]]; then
++    if [[ "$(stat -c %m -- "$outfile")" != "/" ]] && freeze_ok_for_fstype "$outfile"; then
+         if ! $(fsfreeze -f $(dirname "$outfile") 2>/dev/null && fsfreeze -u $(dirname "$outfile") 2>/dev/null); then
+             dinfo "dracut: warning: could not fsfreeze $(dirname "$outfile")"
+         fi
+-- 
+2.24.1
+
