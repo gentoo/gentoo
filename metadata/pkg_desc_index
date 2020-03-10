@@ -9671,7 +9671,7 @@ dev-ruby/hamster 3.0.0-r1: Efficient, immutable, thread-safe collection classes 
 dev-ruby/hashdiff 1.0.0 1.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/hashery 2.1.2: The Hashery is a tight collection of Hash-like classes
 dev-ruby/hashicorp-checkpoint 0.1.5: Internal HashiCorp service to check version information
-dev-ruby/hashie 2.1.2-r1 3.6.0 4.0.0: Hashie is a small collection of tools that make hashes more powerful
+dev-ruby/hashie 2.1.2-r1 3.6.0 4.0.0 4.1.0: Hashie is a small collection of tools that make hashes more powerful
 dev-ruby/hashr 2.0.1: Simple Hash extension to make working with nested hashes easier
 dev-ruby/heredoc_unindent 1.2.0: Removes leading whitespace from Ruby heredocs
 dev-ruby/hiera 3.4.3 3.5.0 3.6.0: A simple pluggable Hierarchical Database
@@ -9895,6 +9895,7 @@ dev-ruby/rbpdf 1.19.8 1.20.0 1.20.1: Ruby on Rails RBPDF plugin
 dev-ruby/rbpdf-font 1.19.1: Font files for the Ruby on Rails RBPDF plugin
 dev-ruby/rbst 0.5.1: A simple Ruby wrapper for processing rST via docutils
 dev-ruby/rcairo 1.16.2 1.16.4 1.16.5: Ruby bindings for cairo
+dev-ruby/rchardet 1.8.0: Character encoding auto-detection in Ruby
 dev-ruby/rdiscount 2.2.0.1: Implementation of John Gruber's Markdown
 dev-ruby/rdoc 5.1.0-r1 6.1.2 6.2.0: An extended version of the RDoc library from Ruby 1.8
 dev-ruby/rdtool 0.6.38-r2: A multipurpose documentation format for Ruby
