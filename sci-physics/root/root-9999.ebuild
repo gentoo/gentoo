@@ -228,6 +228,7 @@ src_configure() {
 		-Dpythia8=$(usex pythia8)
 		-Dpyroot=$(usex python) # python was renamed to pyroot
 		-Dpython=$(usex python) # kept for backward compatibility
+		-Dpyroot_experimental=OFF # use standard PyROOT for now
 		-Dqt5web=$(usex qt5)
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)
