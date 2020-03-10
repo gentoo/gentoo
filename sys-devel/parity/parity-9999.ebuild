@@ -12,10 +12,10 @@ else
 	KEYWORDS="~x64-cygwin"
 fi
 DESCRIPTION="A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)"
-HOMEPAGE="https://github.com/haubi/parity"
+HOMEPAGE="https://github.com/mduft/parity"
 
 parity-vcarchs() { echo x64=x86_64 x86=i686 ; }
-parity-vcvers-legacy() { echo 7_0 7_1 8_0 9_0 ; }
+parity-vcvers-legacy() { echo 8_0 9_0 ; }
 parity-vcvers-current() { echo 10_0 11_0 12_0 14_0 15 16 ; }
 parity-vcvers() {
 	parity-vcvers-legacy
