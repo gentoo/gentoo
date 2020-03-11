@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
+# Encrypted Media Extensions (eme-free) can't be disabled everywhere
+www-client/firefox eme-free
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-03)
 # Tests require py2 sleekxmpp and they are restricted anyway.
 net-im/spectrum2 test
