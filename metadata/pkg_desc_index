@@ -5197,7 +5197,7 @@ dev-libs/ntl 9.3.0 9.6.4 10.5.0: High-performance and portable Number Theory C++
 dev-libs/ocl-icd 2.2.12 2.2.12-r1: Alternative to vendor specific OpenCL ICD loaders
 dev-libs/onigmo 6.1.3: Onigmo is a regular expressions library forked from Oniguruma
 dev-libs/oniguruma 6.9.3-r2 6.9.4 9999: Regular expression library for different character encodings
-dev-libs/opencl-clang 8.0.1_p20191001-r1 9.0.0: OpenCL-oriented thin wrapper library around clang
+dev-libs/opencl-clang 8.0.1_p20191001-r1 8.0.1.1 9.0.0 9.0.1: OpenCL-oriented thin wrapper library around clang
 dev-libs/opencryptoki 3.4.1 3.6.1: PKCS#11 provider cryptographic hardware
 dev-libs/openct 0.6.20-r4: library for accessing smart card terminals
 dev-libs/openobex 1.7.2-r1 1.7.2-r2: Implementation of the OBEX protocol used for transferring data to mobile devices
@@ -10662,7 +10662,7 @@ dev-util/smem 1.4 1.5: A tool that can give numerous reports on memory usage on 
 dev-util/source-highlight 3.1.8 3.1.8-r1 3.1.9: Generate highlighted source code as an (x)html document
 dev-util/spec-cleaner 1.0.7 9999: SUSE spec file cleaner and formatter
 dev-util/spirv-headers 1.5.1 9999: Machine-readable files for the SPIR-V Registry
-dev-util/spirv-llvm-translator 8.0.1.2-r1 9.0.0.1: Bi-directional translator between SPIR-V and LLVM IR
+dev-util/spirv-llvm-translator 8.0.1.2-r1 8.0.1.3 9.0.0.1 9.0.1.1: Bi-directional translator between SPIR-V and LLVM IR
 dev-util/spirv-tools 2019.10_pre20191027-r1 9999: Provides an API and commands for processing SPIR-V modules
 dev-util/splint 3.1.2-r1 3.1.2-r2: Check C programs for vulnerabilities and programming mistakes
 dev-util/squashdelta 0.1.1 9999: Efficient (partially uncompressed) SquashFS binary delta tool
@@ -17460,7 +17460,7 @@ sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with 
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.107 4.19.108 5.4.23 5.4.24 5.5.7 5.5.8: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 4.19.103 5.4.19 5.5.3: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.82 4.4.216 4.9.216 4.14.172 4.19.108 5.4.24 5.5.8: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.82 4.4.216 4.9.216 4.14.173 4.19.109 5.4.24 5.5.8: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.5.8: The Zen Kernel Live Sources
@@ -17956,7 +17956,7 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced 
 www-client/epiphany 3.30.5 3.32.6: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 52.9.0 68.2.0 68.3.0 68.4.1 68.4.2 68.5.0 68.6.0 73.0.1 74.0: Firefox Web Browser
+www-client/firefox 52.9.0 68.2.0 68.3.0 68.4.1 68.4.2 68.5.0 68.6.0 73.0.1 74.0-r1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.5.0-r1 68.6.0 73.0.1 74.0: Firefox Web Browser
 www-client/google-chrome 80.0.3987.132: The web browser from Google
 www-client/google-chrome-beta 81.0.4044.43: The web browser from Google
