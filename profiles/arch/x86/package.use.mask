@@ -1,6 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
+# Encrypted Media Extensions (eme-free) can be disabled on x86
+www-client/firefox -eme-free
+
 # Mart Raudsepp <leio@gentoo.org> (2020-03-01)
 # dev-util/sysprof-capture is keyworded on x86
 x11-wm/mutter -sysprof

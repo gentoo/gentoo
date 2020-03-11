@@ -17,6 +17,10 @@
 
 #--- END OF EXAMPLES ---
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
+# Encrypted Media Extensions (eme-free) can be disabled on amd64
+www-client/firefox -eme-free
+
 # Mart Raudsepp <leio@gentoo.org> (2020-03-01)
 # dev-util/sysprof-capture is keyworded on amd64
 x11-wm/mutter -sysprof
