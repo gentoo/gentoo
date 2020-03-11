@@ -7539,7 +7539,7 @@ dev-python/cbor 1.0.0: RFC 7049 - Concise Binary Object Representation
 dev-python/cddb-py 1.4-r1: CDDB Module for Python
 dev-python/celery 4.3.0: Asynchronous task queue/job queue based on distributed message passing
 dev-python/certifi 2018.4.16 2019.6.16 2019.9.11 2019.11.28: Python package for providing Mozilla's CA Bundle
-dev-python/cffi 1.11.4 1.11.5 1.13.2 1.14.0: Foreign Function Interface for Python calling C code
+dev-python/cffi 1.13.2 1.14.0: Foreign Function Interface for Python calling C code
 dev-python/cfn-python-lint 0.21.6: CloudFormation Linter
 dev-python/cgroup-utils 0.6: Tools and libraries for control groups of Linux
 dev-python/chai 1.1.1: Easy to use mocking, stubbing and spying framework
@@ -12454,7 +12454,7 @@ media-fonts/nanum 3.0: The Nanum Korean fonts distributed by Naver
 media-fonts/nanumfont 2.0-r2: Korean monospace font distributed by NHN
 media-fonts/noto 20170403 20181024 20190524: Google's font family that aims to support all the world's languages
 media-fonts/noto-cjk 20150615 20170602 20190416: Google's CJK font family
-media-fonts/noto-emoji 20180823 20190328: Google Noto Emoji fonts
+media-fonts/noto-emoji 20180823 20190328 20200311: Google Noto Emoji fonts
 media-fonts/nunito 1.0-r1: A Sans Serif font with rounded terminals
 media-fonts/nuosu-sil 2.1.1: Unicode font for the standardized Yi script
 media-fonts/office-code-pro 1.004: Customized version of Source Code Pro
@@ -12691,7 +12691,7 @@ media-gfx/png2ico 2002.12.08: PNG to icon converter
 media-gfx/pngcheck 2.3.0: Verifies the integrity of PNG, JNG and MNG files with internal checksums
 media-gfx/pngcrush 1.8.13: Portable Network Graphics (PNG) optimizing utility
 media-gfx/pngnq 1.1: Pngnq is a tool for quantizing PNG images in RGBA format
-media-gfx/pngquant 2.12.3: command-line utility and library for lossy compression of PNG images
+media-gfx/pngquant 2.12.3 2.12.6: command-line utility and library for lossy compression of PNG images
 media-gfx/pngrewrite 1.4.0: Utility which reduces large palettes in PNG images
 media-gfx/pngtoico 1.0.1-r1: Convert png images to MS ico format
 media-gfx/pngtools 0.4-r2: A series of tools for the PNG image format
@@ -15284,8 +15284,8 @@ net-print/foomatic-db-engine 4.0.12: Generates ppds out of xml foomatic printer 
 net-print/foomatic-db-ppds 4.0.20170331 4.0.20180126 4.0.20190226: linuxprinting.org PPD files for postscript printers
 net-print/gtklp 1.3.1: A GUI for cupsd
 net-print/gutenprint 5.3.1 5.3.3: Ghostscript and cups printer drivers
-net-print/hplip 3.18.12-r1 3.19.11 3.19.12-r1: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
-net-print/hplip-plugin 3.18.12 3.19.11 3.19.12: Proprietary plugins and firmware for HPLIP
+net-print/hplip 3.19.12-r1 3.20.2: HP Linux Imaging and Printing - Print, scan, fax drivers and service tools
+net-print/hplip-plugin 3.19.12: Proprietary plugins and firmware for HPLIP
 net-print/ink 0.5.1 0.5.2: A command line utility to display the ink level of your printer
 net-print/kyocera-1x2x-mfp-driver 1.1203-r1: Printer descriptions (PPDs) and filters for Kyocera 1x2x MFP
 net-print/kyocera-mita-ppds 8.4-r1: PPD description files for (some) Kyocera Mita Printers
@@ -18368,7 +18368,7 @@ x11-misc/gtkdialog 0.8.3-r2 0.8.3-r3 0.8.3_p20200202 99999: A small utility for 
 x11-misc/gxmessage 2.20.3 2.20.4 3.4.3: A GTK+ based xmessage clone
 x11-misc/habak 0.2.5-r2 0.2.5-r3: A simple but powerful tool to set desktop wallpaper
 x11-misc/hsetroot 1.0.2 1.0.2_p5: Tool which allows you to compose wallpapers ('root pixmaps') for X
-x11-misc/i3blocks 1.4-r1: highly flexible status line for the i3 window manager
+x11-misc/i3blocks 1.4-r1 1.5: highly flexible status line for the i3 window manager
 x11-misc/i3lock 2.10-r1 2.11.1-r1 2.12-r1 2.12-r2: Simple screen locker
 x11-misc/i3status 2.12 2.13: generates a status bar for dzen2, xmobar or similar
 x11-misc/i855crt 0.4-r1: Intel Montara 855GM CRT out auxiliary driver

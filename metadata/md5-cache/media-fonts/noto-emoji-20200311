@@ -1,0 +1,13 @@
+DEFINED_PHASES=install postinst postrm prepare setup
+DEPEND=|| ( dev-lang/python:3.7 dev-lang/python:3.6 ) app-arch/zopfli || ( ( dev-lang/python:3.7 dev-python/fonttools[python_targets_python3_7(-),python_single_target_python3_7(+)] dev-python/nototools[python_targets_python3_7(-),python_single_target_python3_7(+)] ) ( dev-lang/python:3.6 dev-python/fonttools[python_targets_python3_6(-),python_single_target_python3_6(+)] dev-python/nototools[python_targets_python3_6(-),python_single_target_python3_6(+)] ) ) media-gfx/pngquant x11-libs/cairo || ( media-gfx/imagemagick[png] media-gfx/graphicsmagick[png] ) X? ( >=x11-apps/mkfontscale-1.2.0 media-fonts/encodings )
+DESCRIPTION=Google Noto Emoji fonts
+EAPI=7
+HOMEPAGE=https://www.google.com/get/noto/ https://github.com/googlei18n/noto-emoji
+IUSE=X
+KEYWORDS=~amd64
+LICENSE=Apache-2.0
+RESTRICT=binchecks strip
+SLOT=0
+SRC_URI=https://github.com/googlei18n/noto-emoji/archive/4325631b45027a3d4da9a0f08f829e790f86ff4d.tar.gz -> noto-emoji-20200311.tar.gz
+_eclasses_=font	af70de9a23b2f34d4fe4dcb222be0346	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=fa259460e837722839d45086b81107a7
