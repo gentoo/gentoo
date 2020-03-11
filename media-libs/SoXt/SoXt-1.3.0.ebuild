@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,7 @@ SLOT="0"
 IUSE="debug doc static-libs"
 
 RDEPEND="
-	>=media-libs/coin-3.1.3
+	<media-libs/coin-4
 	x11-libs/motif:0
 	virtual/opengl"
 DEPEND="${RDEPEND}
