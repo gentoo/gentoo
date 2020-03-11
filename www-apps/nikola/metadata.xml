@@ -14,7 +14,7 @@
     </flag>
     <flag name="ghpages">
       Add support for direct uploading to github pages thru
-      <pkg>app-doc/ghp-import</pkg>
+      <pkg>dev-python/ghp-import</pkg>
     </flag>
     <flag name="hyphenation">
       Add hyphenation support through <pkg>dev-python/pyphen</pkg>
