@@ -27,7 +27,9 @@ DEPEND="!luajit? ( >=dev-lang/lua-5.1:= )
 	!libressl? ( dev-libs/openssl:= )
 	>=dev-libs/boost-1.35:="
 RDEPEND="${DEPEND}
-	!<net-dns/pdns-2.9.20-r1"
+	!<net-dns/pdns-2.9.20-r1
+	acct-user/pdns
+	acct-group/pdns"
 BDEPEND="virtual/pkgconfig"
 
 S="${WORKDIR}"/${P/_/-}
@@ -54,14 +56,12 @@ src_install() {
 
 	# set defaults: setuid=nobody, setgid=nobody
 	sed -i \
-		-e 's/^# set\([ug]\)id=$/set\1id=nobody/' \
+		-e 's/^# set\([ug]\)id=$/set\1id=pdns/' \
 		-e 's/^# quiet=$/quiet=on/' \
 		-e 's/^# chroot=$/chroot=\/var\/lib\/powerdns/' \
 		"${D}"/etc/powerdns/recursor.conf
 
-	newinitd "${FILESDIR}"/pdns-recursor-r1 pdns-recursor
-
-	keepdir /var/lib/powerdns
+	newinitd "${FILESDIR}"/pdns-recursor-r2 pdns-recursor
 }
 
 pkg_postinst() {
