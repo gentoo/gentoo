@@ -188,7 +188,9 @@ src_configure() {
 		-Dcuda=$(usex cuda)
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
+		-Ddataframe=ON
 		-Ddcache=OFF
+		-Dfcgi=$(usex http)
 		-Dfftw3=$(usex fftw)
 		-Dfitsio=$(usex fits)
 		-Dfortran=$(usex fortran)
