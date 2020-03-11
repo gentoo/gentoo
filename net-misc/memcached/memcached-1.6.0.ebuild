@@ -35,7 +35,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-1.4.0-fix-as-needed-linking.patch"
 	"${FILESDIR}/${PN}-1.4.4-as-needed.patch"
 	"${FILESDIR}/${PN}-1.4.17-EWOULDBLOCK.patch"
-	#"${FILESDIR}/${PN}-1.5.21-hash-fix-build-failure-against-gcc-10.patch"
+	"${FILESDIR}/${PN}-1.6.0-gcc10.patch"
 )
 
 src_prepare() {
