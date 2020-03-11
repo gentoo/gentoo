@@ -16,7 +16,7 @@ HOMEPAGE="https://root.cern"
 
 IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda cudnn +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
-	mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
+	mpi mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
 	qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran vc
 	vmc +xml xrootd"
 RESTRICT="!test? ( test )"
@@ -93,6 +93,7 @@ CDEPEND="
 	libcxx? ( sys-libs/libcxx )
 	unuran? ( sci-mathematics/unuran:0= )
 	minuit? ( !sci-libs/minuit )
+	mpi? ( virtual/mpi )
 	mysql? ( dev-db/mysql-connector-c )
 	odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) )
 	oracle? ( dev-db/oracle-instantclient-basic )
@@ -225,6 +226,7 @@ src_configure() {
 		-Dminuit=$(usex minuit)
 		-Dmlp=$(usex tmva)
 		-Dmonalisa=OFF
+		-Dmpi=$(usex mpi)
 		-Dmysql=$(usex mysql)
 		-Dodbc=$(usex odbc)
 		-Dopengl=$(usex opengl)
