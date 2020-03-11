@@ -110,10 +110,9 @@ _kde.org_calculate_src_uri() {
 	if [[ ${KDE_RELEASE_SERVICE} = true ]]; then
 		case ${PV} in
 			??.??.[6-9]? )
-				_src_uri+="unstable/applications/${PV}/src/"
+				_src_uri+="unstable/release-service/${PV}/src/"
 				RESTRICT+=" mirror"
 				;;
-			19.08.3? ) _src_uri+="stable/applications/${PV}/src/" ;;
 			*) _src_uri+="stable/release-service/${PV}/src/" ;;
 		esac
 	fi
