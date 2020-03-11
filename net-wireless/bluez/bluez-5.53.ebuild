@@ -78,11 +78,18 @@ pkg_setup() {
 	# https://bugzilla.kernel.org/show_bug.cgi?id=196621
 	CONFIG_CHECK="~NET ~BT ~BT_RFCOMM ~BT_RFCOMM_TTY ~BT_BNEP ~BT_BNEP_MC_FILTER
 				~BT_BNEP_PROTO_FILTER ~BT_HIDP ~RFKILL"
+	# https://bugzilla.kernel.org/show_bug.cgi?id=196621
+	# https://bugzilla.kernel.org/show_bug.cgi?id=206815
+	if use mesh || use test; then
+		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO_USER
+		~CRYPTO_USER_API ~CRYPTO_USER_API_AEAD ~CRYPTO_USER_API_HASH
+		~CRYPTO_AES ~CRYPTO_CCM ~CRYPTO_AEAD ~CRYPTO_CMAC"
+	fi
 	if use test; then
 		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO ~CRYPTO_USER_API_HASH ~CRYPTO_USER_API_SKCIPHER"
 	fi
 	linux-info_pkg_setup
-	
+
 	if use test || use test-programs; then
 		python-single-r1_pkg_setup
 	fi
@@ -109,10 +116,6 @@ src_prepare() {
 			-e "s:cupsdir = \$(libdir)/cups:cupsdir = $(cups-config --serverbin):" \
 			Makefile.{in,tools} || die
 	fi
-
-	# Broken test: https://bugzilla.kernel.org/show_bug.cgi?id=206815
-	# https://bugs.gentoo.org/704190
-        sed -i -e '/unit_tests += unit\/test-mesh-crypto\b/d' Makefile.am || die
 
 	eautoreconf
 
