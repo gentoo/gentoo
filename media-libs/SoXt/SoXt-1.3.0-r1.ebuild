@@ -1,9 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-
-inherit autotools-utils
+EAPI=7
 
 HOMEPAGE="http://www.coin3d.org/"
 DESCRIPTION="GUI binding for using Coin/Open Inventor with Xt/Motif"
@@ -41,11 +39,9 @@ src_configure() {
 		$(use_enable doc html)
 		$(use_enable doc man)
 	)
-	autotools-utils_src_configure
+	default
 	# Remove SoXt from Libs.private (patch installs it in Libs)
-	sed -i -e '/Libs.private/s/ -lSoXt//' "${BUILD_DIR}"/SoXt.pc || die
+	sed -i -e '/Libs.private/s/ -lSoXt//' SoXt.pc || die
 	# Strip the default libdir
-	sed -i -e "s,-L%{_libdir} ,," soxt-default.cfg
-	# soxt-config is arch dependent
-	sed -i -e "s,/share/Coin/conf/,/%{_lib}/Coin2/conf/,g" soxt-config
+	sed -i -e "s,-L%{_libdir} ,," soxt-default.cfg || die
 }
