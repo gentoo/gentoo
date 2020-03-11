@@ -23,9 +23,10 @@ HOMEPAGE="https://github.com/KhronosGroup/Vulkan-Tools"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="+cube wayland +X"
+IUSE="cube wayland +X"
 
-REQUIRED_USE="|| ( X wayland )"
+# Cube demo only supports one window system at a time
+REQUIRED_USE="!cube? ( || ( X wayland ) ) cube? ( ^^ ( X wayland ) )"
 
 BDEPEND="${PYTHON_DEPS}
 	>=dev-util/cmake-3.10.2
@@ -48,12 +49,10 @@ pkg_setup() {
 		/usr/bin/vulkaninfo
 	)
 
-	if use cube; then
-		MULTILIB_CHOST_TOOLS+=(
-			/usr/bin/vkcube
-			/usr/bin/vkcubepp
-		)
-	fi
+	use cube && MULTILIB_CHOST_TOOLS+=(
+		/usr/bin/vkcube
+		/usr/bin/vkcubepp
+	)
 
 	python-any-r1_pkg_setup
 }
@@ -66,26 +65,13 @@ multilib_src_configure() {
 		-DBUILD_WSI_WAYLAND_SUPPORT=$(usex wayland)
 		-DBUILD_WSI_XCB_SUPPORT=$(usex X)
 		-DBUILD_WSI_XLIB_SUPPORT=$(usex X)
-		-DGLSLANG_INSTALL_DIR="${EPREFIX}/usr"
 		-DVULKAN_HEADERS_INSTALL_DIR="${EPREFIX}/usr"
 	)
 
-	# Upstream only supports one window system at a time
-	# If X is set at all, even if wayland is set, use X
-	#
-	# If -cube is set, the flags we set are ignored,
-	# so we don't need to consider that
-	if use X; then
-		mycmakeargs+=(
-			-DCUBE_WSI_SELECTION="XCB"
-		)
-	fi
-
-	if ! use X && use wayland; then
-		mycmakeargs+=(
-			-DCUBE_WSI_SELECTION="WAYLAND"
-		)
-	fi
+	use cube && mycmakeargs+=(
+		-DGLSLANG_INSTALL_DIR="${EPREFIX}/usr"
+		-DCUBE_WSI_SELECTION=$(usex X XCB WAYLAND)
+	)
 
 	cmake_src_configure
 }
