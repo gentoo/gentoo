@@ -1,0 +1,10 @@
+DEFINED_PHASES=configure postinst
+DESCRIPTION=A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)
+EAPI=6
+HOMEPAGE=https://github.com/mduft/parity
+IUSE=+vcx64 +vcx86 vc8_0 vc9_0 +vc10_0 +vc11_0 +vc12_0 +vc14_0 +vc15 +vc16
+KEYWORDS=~x64-cygwin
+LICENSE=LGPL-3
+SLOT=0
+SRC_URI=https://github.com/mduft/parity/releases/download/2.0.0/parity-2.0.0.tar.bz2
+_md5_=35e121e7bf080276847e752101fa7a58
