@@ -48,7 +48,7 @@ export PKG_CONFIG_PATH="${EPREFIX}/lib/pkgconfig:${EPREFIX}/usr/lib/pkgconfig"
 #
 #######################################################################
 
-windows_setup_dllhelper() {
+winnt_setup_dllhelper() {
 	case ${CATEGORY}/${PN} in
 	sys-libs/zlib |\
 	'')
@@ -58,13 +58,17 @@ windows_setup_dllhelper() {
 		# and installation is done using cp, we override cp to
 		# additionally copy the dll when the library is copied.
 		ebegin "Setting up wrapper to copy the DLL along the LIB"
-		windows_setup_dllhelper_cp
+		winnt_setup_dllhelper_cp
 		eend $?
 		;;
 	esac
 }
 
 post_src_install() {
+	winnt_post_src_install
+}
+
+winnt_post_src_install() {
 	cd "${ED}" || return 0
 	#
 	# File names being treated as import library:
@@ -185,7 +189,7 @@ post_src_install() {
 	done
 }
 
-windows_setup_dllhelper_cp() {
+winnt_setup_dllhelper_cp() {
 	if ! [[ $(type -P cp) -ef ${T}/dllhelper/cp ]]
 	then
 		mkdir -p "${T}/dllhelper"
@@ -288,5 +292,5 @@ EOCP
 
 if [[ ${EBUILD_PHASE} == 'setup' ]]
 then
-	windows_setup_dllhelper
+	winnt_setup_dllhelper
 fi
