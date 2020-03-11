@@ -40,6 +40,8 @@ DEPEND="
 "
 
 PATCHES=(
+	"${FILESDIR}"/${P}-inf-loop.patch
+	"${FILESDIR}"/${P}-no-avahi.patch
 	"${FILESDIR}"/${P}-pthread.patch
 )
 
