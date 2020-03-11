@@ -194,7 +194,6 @@ dev-python/pyfiglet
 dev-python/pygcrypt
 dev-python/pygeocoder
 dev-python/pyhcl
-dev-python/pykka
 dev-python/pymtp
 dev-python/pynzb
 dev-python/pyopencl
