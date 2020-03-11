@@ -187,6 +187,7 @@ src_configure() {
 		-Dbuiltin_xrootd=OFF
 		-Dbuiltin_xxhash=OFF
 		-Dbuiltin_zlib=OFF
+		-Dbuiltin_zstd=OFF
 		-Dx11=$(usex X)
 		-Dalien=OFF
 		-Darrow=OFF
