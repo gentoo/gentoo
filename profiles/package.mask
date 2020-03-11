@@ -32,6 +32,16 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-11)
+# The following Mercurial-related tools do not declare support
+# for Python 3 and have no maintainers.
+# Removal in 30 days.  Bug #712114.
+dev-vcs/hgsubversion
+dev-vcs/hgsvn
+dev-vcs/hgview
+dev-vcs/mercurial-server
+dev-vcs/tortoisehg
+
 # Alexander Tsoy <alexander@tsoy.me> (2020-03-10)
 # media-sound/gtklick: last commit in 2014, python 2 only, blocks
 # dev-python/pygtk removal.
