@@ -92,6 +92,7 @@ acct-group/openct 0: System group: openct
 acct-group/opendkim 0: Group for OpenDKIM
 acct-group/openntpd 0: System group: openntpd
 acct-group/openrct2 0: A group for the OpenRCT2 dedicated server
+acct-group/ossec 0: Group for net-analyzer/ossec-hids
 acct-group/pcscd 0: System group: pcscd
 acct-group/pdns 0: System group: pdns
 acct-group/pdnsd 0: System group: pdnsd
@@ -250,6 +251,9 @@ acct-user/oidentd 0: System user: oidentd
 acct-user/opendkim 0: User for OpenDKIM
 acct-user/openntpd 0: user for openntpd daemon
 acct-user/openrct2 0: A user for the OpenRCT2 dedicated server
+acct-user/ossec 0: net-analyzer/ossec-hids (agentlessd, analysisd, monitord)
+acct-user/ossecm 0: net-analyzer/ossec-hids (csyslogd, maild)
+acct-user/ossecr 0: net-analyzer/ossec-hids (remoted)
 acct-user/pcscd 0: A user for pcsc-lite
 acct-user/pdns 0: System user: pdns
 acct-user/pdnsd 0: user for pdns daemon
@@ -14192,7 +14196,7 @@ net-analyzer/openbsd-netcat 1.105 1.105-r1 1.190: The OpenBSD network swiss army
 net-analyzer/openvas-scanner 6.0.1: Open Vulnerability Assessment Scanner
 net-analyzer/opsgenie-lamp 2.5.1_p20181102: command line client for the opsgenie service
 net-analyzer/ospd 2.0.0: Base class for scanner wrappers,communication protocol for GVM
-net-analyzer/ossec-hids 3.1.0 3.2.0 3.2.0-r1 3.3.0: Open Source Host-based Intrusion Detection System
+net-analyzer/ossec-hids 3.1.0 3.2.0 3.2.0-r1 3.3.0 3.6.0: Open Source Host-based Intrusion Detection System
 net-analyzer/ostinato 0.9_p20180522: A packet generator and analyzer
 net-analyzer/p0f 3.09_beta: A tool to perform passive OS detection based on SYN packets
 net-analyzer/packit 1.6.1 1.7 9999: network packet generator and capture tool
