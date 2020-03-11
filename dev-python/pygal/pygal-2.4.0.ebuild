@@ -8,7 +8,7 @@ PYTHON_REQ_USE="xml(+)"
 inherit distutils-r1
 
 DESCRIPTION="A python SVG charts generator"
-HOMEPAGE="http://pygal.org/"
+HOMEPAGE="https://github.com/Kozea/pygal/"
 # PyPI tarballs do not contain docs
 # https://github.com/Kozea/pygal/pull/428
 SRC_URI="https://github.com/Kozea/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
