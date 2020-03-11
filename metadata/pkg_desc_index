@@ -356,7 +356,7 @@ app-admin/abrt 2.12.0-r2: Automatic bug detection and reporting tool
 app-admin/aerospike-amc-community 3.6.13-r2 4.0.19-r1: Web UI based monitoring tool for Aerospike Community Edition Server
 app-admin/amazon-ec2-init 20101127-r1: Init script to setup Amazon EC2 instance parameters
 app-admin/analog 6.0.13: A webserver log analyzer
-app-admin/ansible 2.9.4 2.9.5 2.9.6 9999: Model-driven deployment, config management, and command execution framework
+app-admin/ansible 2.9.5 2.9.6 9999: Model-driven deployment, config management, and command execution framework
 app-admin/ansible-cmdb 1.28: Ansible Configuration Management Database
 app-admin/ansible-lint 4.0.1 4.1.0: Checks ansible playbooks for practices and behaviour that can be improved
 app-admin/apache-tools 2.4.41: Useful Apache tools - htdigest, htpasswd, ab, htdbm
@@ -1572,7 +1572,7 @@ app-emulation/cri-tools 1.14.0 1.15.0 1.16.1: CLI and validation tools for Kubel
 app-emulation/crossover-bin 12.5.0-r2 12.5.1-r2 13.0.0-r2 13.0.1-r2 13.1.0-r2 13.1.2-r2 13.1.3-r2 13.2.0-r2 14.0.3-r1 14.1.4-r1 15.0.0 15.0.1 15.1.0 15.2.0 15.3.0 15.3.1 16.0.0 16.2.5 17.5.0 17.5.0-r1 17.5.1 18.0.0 18.1.0 18.5.0-r1: Commercial version of app-emulation/wine with paid support.
 app-emulation/crun 0.10.6: A fast and low-memory footprint OCI Container Runtime fully written in C
 app-emulation/dinero 4.7-r1: Cache simulator
-app-emulation/diskimage-builder 2.33.0 9999: Golden Disk Image builder.
+app-emulation/diskimage-builder 2.33.0 2.34.0 9999: Golden Disk Image builder.
 app-emulation/dlx 1.0.0 1.5.20: DLX Simulator
 app-emulation/docker 19.03.5 19.03.6 19.03.7-r1: The core functions you need to create Docker images and run Docker containers
 app-emulation/docker-bench-security 1.3.2 1.3.3: Test for best practices around deploying docker containers
@@ -4881,7 +4881,7 @@ dev-libs/editline 1.17.0 1.17.1: line editing library for UNIX call compatible w
 dev-libs/eekboard 1.0.8_p20121001: An easy to use virtual keyboard toolkit
 dev-libs/efl 1.23.3: Enlightenment Foundation Libraries all-in-one package
 dev-libs/elfutils 0.176-r1 0.177 0.178: Libraries/utilities to handle ELF objects (drop in replacement for libelf)
-dev-libs/ell 0.9 0.20 0.21 0.22 0.23 0.24 0.25 0.26 0.27 0.28 9999: Embedded Linux Library provides core, low-level functionality for system daemons
+dev-libs/ell 0.26 0.27 0.28 9999: Embedded Linux Library provides core, low-level functionality for system daemons
 dev-libs/eventlog 0.2.12: Support library for syslog-ng
 dev-libs/expat 2.2.8 2.2.9: Stream-oriented XML parser library
 dev-libs/faxpp 0.4-r1: Small, fast and conformant XML pull parser written in C
@@ -8569,7 +8569,7 @@ dev-python/python-distutils-extra 2.38 2.39 2.42 2.42-r1: Gettext support, theme
 dev-python/python-djvulibre 0.8: Set of Python bindings for the DjVuLibre library
 dev-python/python-docs 2.7.14 2.7.17 3.6.3 3.6.4 3.6.10 3.7.0 3.7.6 3.8.1: HTML documentation for Python
 dev-python/python-ebtables 0.2.0: Python bindings for ebtables
-dev-python/python-editor 1.0.3 1.0.4: Programmatically open an editor, capture the result.
+dev-python/python-editor 1.0.4: Programmatically open an editor, capture the result.
 dev-python/python-efl 1.23.0: Python bindings for Enlightenment Foundation Libraries
 dev-python/python-engineio 1.7.0 2.2.0: Python implementation of the Engine.IO realtime server.
 dev-python/python-etcd 0.4.5-r1: A python client for etcd
@@ -11647,7 +11647,7 @@ gnome-extra/gnome-logs 3.30.0 3.32.1: Log messages and event viewer
 gnome-extra/gnome-packagekit 3.24.0 3.30.0: PackageKit client for the GNOME desktop
 gnome-extra/gnome-power-manager 3.30.0 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
-gnome-extra/gnome-shell-extension-applications-overview-tooltip 6: Show tooltip with full name and description
+gnome-extra/gnome-shell-extension-applications-overview-tooltip 6 7: Show tooltip with full name and description
 gnome-extra/gnome-shell-extension-dash-to-panel 26: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.4: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 28-r1: KDE Connect implementation for Gnome Shell
@@ -13002,7 +13002,7 @@ media-libs/librosprite 0.1.3-r1: framebuffer abstraction library, written in C
 media-libs/libsamplerate 0.1.9 9999: Secret Rabbit Code (aka libsamplerate) is a Sample Rate Converter for audio
 media-libs/libsbsms 2.0.2-r1: A library for high quality time and pitch scale modification
 media-libs/libsdl 1.2.15-r9: Simple Direct Media Layer
-media-libs/libsdl2 2.0.9 2.0.10 2.0.10-r2: Simple Direct Media Layer
+media-libs/libsdl2 2.0.9 2.0.10 2.0.10-r2 2.0.12: Simple Direct Media Layer
 media-libs/libsfml 2.5.1: Simple and Fast Multimedia Library (SFML)
 media-libs/libshout 2.4.1-r2 2.4.2 2.4.3: library for connecting and sending data to icecast servers
 media-libs/libsidplay 1.36.59-r2 2.1.1-r5: C64 SID player library
