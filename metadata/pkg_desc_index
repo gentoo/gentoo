@@ -5014,7 +5014,7 @@ dev-libs/libfastjson 0.99.8: Fork of the json-c library, which is optimized for 
 dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0 3.3_rc1 3.3_rc2 3.3 3.3-r1: a portable, high level programming interface to various calling conventions
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.0-r1 1.3.1: Provides library functionality for FIDO 2.0
-dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.1: C++ library offering some basic functionality for platform-independent programs
+dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.1 0.20.2: C++ library offering some basic functionality for platform-independent programs
 dev-libs/libflatarray 0.2.0-r1 0.3.0-r1: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 5.3.0 6.1.2 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
@@ -11648,7 +11648,7 @@ gnome-extra/gnome-packagekit 3.24.0 3.30.0: PackageKit client for the GNOME desk
 gnome-extra/gnome-power-manager 3.30.0 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 6 7: Show tooltip with full name and description
-gnome-extra/gnome-shell-extension-dash-to-panel 26: An icon taskbar for the Gnome Shell
+gnome-extra/gnome-shell-extension-dash-to-panel 26 29: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.4: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 28-r1: KDE Connect implementation for Gnome Shell
 gnome-extra/gnome-shell-extensions 3.32.1 3.34.0: JavaScript extensions for GNOME Shell
@@ -13311,7 +13311,7 @@ media-plugins/kodi-screensaver-pingpong 1.1.0 2.0.0 9999: Ping-pong screensaver 
 media-plugins/kodi-screensaver-pyro 2.0.0 3.0.0 3.0.1 9999: Pyro screensaver for Kodi
 media-plugins/kodi-screensaver-rsxs 9999: RSXS screensaver for Kodi
 media-plugins/kodi-vfs-libarchive 1.0.2 1.0.5 1.0.6 9999: Libarchive VFS add-on for Kodi
-media-plugins/kodi-vfs-rar 2.2.0 9999: RAR VFS addon for Kodi
+media-plugins/kodi-vfs-rar 2.2.0 2.2.1 9999: RAR VFS addon for Kodi
 media-plugins/kodi-vfs-sacd 1.0.3 9999: SACD VFS addon for Kodi
 media-plugins/kodi-vfs-sftp 1.0.1 1.0.3 1.0.4 1.0.5 9999: SFTP VFS addon for Kodi
 media-plugins/kodi-visualization-fishbmc 5.1.1 5.1.2 9999: Fische visualizer for Kodi
@@ -14435,7 +14435,7 @@ net-fs/sshfs 2.10-r1 3.6.0 3.7.0: Fuse-filesystem utilizing the sftp service
 net-fs/wdfs 1.4.2-r1: WebDAV filesystem with special features for accessing subversion repositories
 net-ftp/atftp 0.7.2-r1: Advanced TFTP implementation client/server
 net-ftp/cmdftp 0.9.8: Light weight, yet robust command line FTP client with shell-like functions.
-net-ftp/filezilla 3.39.0 3.44.2 3.45.1 3.46.0 3.46.3 3.47.1: FTP client with lots of useful features and an intuitive interface
+net-ftp/filezilla 3.39.0 3.44.2 3.45.1 3.46.3 3.47.1 3.47.2.1: FTP client with lots of useful features and an intuitive interface
 net-ftp/frox 0.7.18-r5 0.7.18-r6: A transparent ftp proxy
 net-ftp/ftp 0.17.23.0.2.1: Standard Linux FTP client
 net-ftp/ftpbase 0.01-r3: FTP layout package
