@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -11,7 +11,7 @@ HOMEPAGE="http://www.wps.cn/product/wpslinux/ http://wps-community.org/"
 
 KEYWORDS="~amd64"
 
-SRC_URI="http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${MY_PV}/${PN}_${PV}_amd64.deb"
+SRC_URI="http://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${MY_PV}/${PN}_${PV}.XA_amd64.deb"
 
 SLOT="0"
 RESTRICT="strip mirror" # mirror as explained at bug #547372
@@ -70,9 +70,7 @@ S="${WORKDIR}"
 src_install() {
 	exeinto /usr/bin
 	exeopts -m0755
-	doexe "${S}"/usr/bin/wps
-	doexe "${S}"/usr/bin/wpp
-	doexe "${S}"/usr/bin/et
+	doexe "${S}"/usr/bin/*
 
 	insinto /usr/share
 	doins -r "${S}"/usr/share/{applications,desktop-directories,icons,mime,templates}
@@ -80,5 +78,5 @@ src_install() {
 	insinto /opt/kingsoft/wps-office
 	doins -r "${S}"/opt/kingsoft/wps-office/{office6,templates}
 
-	fperms 0755 /opt/kingsoft/wps-office/office6/{wps,wpp,et}
+	fperms 0755 /opt/kingsoft/wps-office/office6/{et,wpp,wps,wpspdf}
 }
