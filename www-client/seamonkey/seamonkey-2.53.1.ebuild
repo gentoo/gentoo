@@ -36,7 +36,7 @@ MOZ_GENERATE_LANGPACKS=1
 MOZ_L10N_SOURCEDIR="${S}/${P}-l10n"
 inherit autotools check-reqs flag-o-matic mozcoreconf-v6 mozextension mozlinguas-v2 nsplugins pax-utils toolchain-funcs xdg-utils
 
-PATCH="${PN}-2.53.1-patches-01"
+PATCH="${PN}-2.53.1-patches-02"
 
 DESCRIPTION="Seamonkey Web Browser"
 HOMEPAGE="http://www.seamonkey-project.org"
@@ -155,9 +155,9 @@ pkg_setup() {
 pkg_pretend() {
 	# Ensure we have enough disk space to compile
 	if use debug || use test ; then
-		CHECKREQS_DISK_BUILD="8G"
+		CHECKREQS_DISK_BUILD="16G"
 	else
-		CHECKREQS_DISK_BUILD="4G"
+		CHECKREQS_DISK_BUILD="12G"
 	fi
 	check-reqs_pkg_setup
 }
@@ -331,7 +331,6 @@ src_configure() {
 	mozconfig_use_enable pulseaudio
 	# force the deprecated alsa sound code if pulseaudio is disabled
 	if use kernel_linux && ! use pulseaudio ; then
-		mozconfig_annotate '-pulseaudio' --disable-pulseaudio
 		mozconfig_annotate '-pulseaudio' --enable-alsa
 	fi
 
@@ -368,6 +367,9 @@ src_configure() {
 
 	# It doesn't compile on alpha without this LDFLAGS
 	use alpha && append-ldflags "-Wl,--no-relax"
+
+	# Linking fails without this due to memory exhaustion
+	use x86 && append-ldflags "-Wl,--no-keep-memory"
 
 	if ! use chatzilla ; then
 		MEXTENSIONS+=",-irc"
