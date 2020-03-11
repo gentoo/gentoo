@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: ecm.eclass
@@ -215,27 +215,6 @@ case ${ECM_DESIGNERPLUGIN} in
 	*)
 		eerror "Unknown value for \${ECM_DESIGNERPLUGIN}"
 		die "Value ${ECM_DESIGNERPLUGIN} is not supported"
-		;;
-esac
-
-# @ECLASS-VARIABLE: KDE_DESIGNERPLUGIN
-# @DESCRIPTION:
-# If set to "false", do nothing.
-# Otherwise, add "designer" to IUSE to toggle build of designer plugins
-# and add the necessary BDEPEND.
-# TODO: drop after KDE Applications 19.08.3 removal
-: ${KDE_DESIGNERPLUGIN:=false}
-case ${KDE_DESIGNERPLUGIN} in
-	true)
-		IUSE+=" designer"
-		BDEPEND+="
-			designer? ( >=kde-frameworks/kdesignerplugin-${KFMIN}:${KFSLOT} )
-		"
-		;;
-	false) ;;
-	*)
-		eerror "Unknown value for \${KDE_DESIGNERPLUGIN}"
-		die "Value ${KDE_DESIGNERPLUGIN} is not supported"
 		;;
 esac
 
@@ -543,11 +522,6 @@ ecm_src_configure() {
 
 	if in_iuse designer && [[ ${ECM_DESIGNERPLUGIN} = true ]]; then
 		cmakeargs+=( -DBUILD_DESIGNERPLUGIN=$(usex designer) )
-	fi
-
-	# TODO: drop after KDE Applications 19.08.3 removal
-	if in_iuse designer && [[ ${KDE_DESIGNERPLUGIN} != false ]] ; then
-		cmakeargs+=( $(cmake_use_find_package designer KF5DesignerPlugin) )
 	fi
 
 	if [[ ${ECM_QTHELP} = true ]]; then
