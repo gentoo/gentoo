@@ -41,8 +41,8 @@ DEPEND="
 "
 
 python_prepare_all() {
-	# allow use of new (renamed) msgpack
-	sed -i "s|'msgpack-python.*',||g" setup.py || die
+	rm -rf src/borg/algorithms/msgpack
+	eapply "${FILESDIR}"/${P}-unbundle-msgpack.patch
 	distutils-r1_python_prepare_all
 }
 
