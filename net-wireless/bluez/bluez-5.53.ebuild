@@ -89,7 +89,7 @@ pkg_setup() {
 		CONFIG_CHECK="${CONFIG_CHECK} ~CRYPTO ~CRYPTO_USER_API_HASH ~CRYPTO_USER_API_SKCIPHER"
 	fi
 	linux-info_pkg_setup
-	
+
 	if use test || use test-programs; then
 		python-single-r1_pkg_setup
 	fi
