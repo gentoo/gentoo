@@ -14,7 +14,7 @@ inherit cmake-utils cuda eapi7-ver elisp-common eutils fortran-2 \
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 
-IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix debug emacs
+IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda cudnn +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
 	mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
 	qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran vc
@@ -41,6 +41,7 @@ LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 REQUIRED_USE="
 	^^ ( c++11 c++14 c++17 )
 	cuda? ( tmva !c++17 )
+	cudnn? ( cuda )
 	!X? ( !asimage !opengl !qt5 )
 	davix? ( ssl xml )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -81,6 +82,7 @@ CDEPEND="
 	)
 	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
+	cudnn? ( dev-libs/cudnn )
 	davix? ( net-libs/davix )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -198,6 +200,7 @@ src_configure() {
 		-Dclad=OFF
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
+		-Dcudnn=$(usex cudnn)
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
 		-Ddcache=OFF
