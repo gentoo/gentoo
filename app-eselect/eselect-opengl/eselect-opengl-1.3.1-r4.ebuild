@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils multilib
 
-DESCRIPTION="Utility to change the OpenGL interface being used"
+DESCRIPTION="Utility to switch between OpenGL implementations"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 # Source:
