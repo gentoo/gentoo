@@ -61,12 +61,12 @@ RDEPEND="
 QA_PREBUILT="*"
 S=${WORKDIR}
 
-src_unpack() {
-	unpack_deb ${A}
-}
-
 pkg_setup() {
 	OPERA_HOME="usr/$(get_libdir)/${PN}"
+}
+
+src_unpack() {
+	unpack_deb ${A}
 }
 
 src_prepare() {
