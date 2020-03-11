@@ -17,7 +17,7 @@ IUSE="debug"
 BDEPEND="dev-qt/linguist-tools:5"
 
 RDEPEND="
-	app-text/hunspell
+	app-text/hunspell:=
 	dev-qt/qtconcurrent:5
 	dev-qt/qtcore:5
 	dev-qt/qtgui:5
