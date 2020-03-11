@@ -7,20 +7,24 @@ PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
-DESCRIPTION="A complete yet simple CSS parser for Python"
-HOMEPAGE="https://github.com/Kozea/tinycss2/ https://pypi.python.org/pypi/tinycss2/"
+DESCRIPTION="Parses CSS3 Selectors and translates them to XPath 1.0"
+HOMEPAGE="https://cssselect.readthedocs.io/en/latest/
+	https://pypi.org/project/cssselect/
+	https://github.com/Kozea/cssselect2"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND=">=dev-python/webencodings-0.4[${PYTHON_USEDEP}]"
+RDEPEND="
+	dev-python/tinycss2[${PYTHON_USEDEP}]
+	dev-python/webencodings[${PYTHON_USEDEP}]"
 
 distutils_enable_tests pytest
 
 src_prepare() {
 	# junk deps
-	sed -i -e '/pytest-runner/d' -e '/^addopts/d' setup.cfg || die
+	sed -i -e '/^addopts/d' setup.cfg || die
 	distutils-r1_src_prepare
 }

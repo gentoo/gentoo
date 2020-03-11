@@ -9,8 +9,6 @@
 		<remote-id type="github">haubi/parity</remote-id>
 	</upstream>
 	<use>
-		<flag name="vc7_0">Enable support for Visual Studio 2002</flag>
-		<flag name="vc7_1">Enable support for Visual Studio 2003</flag>
 		<flag name="vc8_0">Enable support for Visual Studio 2005</flag>
 		<flag name="vc9_0">Enable support for Visual Studio 2008</flag>
 		<flag name="vc10_0">Enable support for Visual Studio 2010</flag>

@@ -108,7 +108,6 @@ dev-python/colorful
 dev-python/columnize
 dev-python/common
 dev-python/crumbs
-dev-python/cssselect2
 dev-python/d2to1
 dev-python/datashape
 dev-python/deform
@@ -240,7 +239,6 @@ dev-python/sphinxcontrib-googleanalytics
 dev-python/sphinxcontrib-programoutput
 dev-python/tempest-lib
 dev-python/testify
-dev-python/tinycss2
 dev-python/tlslite
 dev-python/tpg
 dev-python/translationstring
