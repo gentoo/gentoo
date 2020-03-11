@@ -23,7 +23,6 @@ RDEPEND="games-misc/fortune-mod
 	l10n_it? ( games-misc/fortune-mod-it )
 	games-misc/fortune-mod-bofh-excuses
 	games-misc/fortune-mod-chucknorris
-	games-misc/fortune-mod-humorixfortunes
 	games-misc/fortune-mod-kernelcookies
 	games-misc/fortune-mod-osfortune
 	games-misc/fortune-mod-tao
