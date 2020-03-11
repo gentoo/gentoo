@@ -35,9 +35,16 @@ export PKG_CONFIG_PATH="${EPREFIX}/lib/pkgconfig:${EPREFIX}/usr/lib/pkgconfig"
 # As Gentoo ebuilds may remove libNAME.la, we need the libNAME.so
 # because we don't want to have libNAME.dll as an import library.
 #
-# Here, for whatever import library name we find, make sure there
-# is both the NAME.lib and the libNAME.so for linkability via both
-# the -lNAME and the NAME.lib linker option.
+# The static library may be created as libNAME.a, libNAME.lib or even
+# NAME.lib - the latter we need to check for static or import library.
+#
+# For whatever import library file we find, make sure there is both the
+# NAME.lib and the libNAME.so for dynamic linkability via all the
+# -lNAME, the NAME.lib and the libNAME.so linker option.
+#
+# For whatever static library file we find, make sure there is both the
+# libNAME.lib and the libNAME.a for static linkability via all the
+# -lNAME, the libNAME.lib and the libNAME.a linker option.
 #
 #######################################################################
 
@@ -62,12 +69,13 @@ post_src_install() {
 	#
 	# File names being treated as import library:
 	#  libNAME.so
-	#     NAME.lib
+	#     NAME.lib if CHOST-dumpbin yields 'DLL name'
 	#  libNAME.dll.lib
 	#  libNAME.dll.a
 	#
-	# File names being ignored as static library:
+	# File names being treated as static library:
 	#  libNAME.lib
+	#     NAME.lib if CHOST-dumpbin lacks 'DLL name'
 	#  libNAME.a
 	#
 	# File names being warned about as suspect:
@@ -83,46 +91,83 @@ post_src_install() {
 		libdir=$(dirname "${f}")
 		libfile=${f##*/}
 		libname=
+		NAMElib=    # import lib to create
+		libNAMEso=  # import lib to create
+		libNAMElib= # static lib to create
+		libNAMEa=   # static lib to create
 		case ${libfile} in
-		lib.so) ;; # paranoia
-		lib*.so)
+		lib*.so) # found import library
 			libname=${libfile%.so}
 			libname=${libname#lib}
+			NAMElib=${libname}.lib
+			libNAMEso=lib${libname}.so
 			;;
-		lib.dll.lib) ;; # paranoia
-		lib*.dll.lib)
+		*.so) ;; # warn
+		lib*.dll.lib) # found import library
 			libname=${libfile%.dll.lib}
 			libname=${libname#lib}
+			NAMElib=${libname}.lib
+			libNAMEso=lib${libname}.so
 			;;
-		lib.lib) ;; # paranoia
-		lib*.lib) continue ;; # ignore static library
-		.lib) ;; # paranoia
-		*.lib)
-			libname=${libfile%.lib}
+		*.dll.lib) ;; # warn
+		*.lib) # found static or import library
+			${CHOST}-dumpbin.exe /headers "./${libdir}/${libfile}" | grep -q 'DLL name'
+			case "${PIPESTATUS[*]}" in
+			'0 0') # found import library
+				libname=${libfile%.lib}
+				libname=${libname#lib}
+				NAMElib=${libname}.lib
+				libNAMEso=lib${libname}.so
+				;;
+			'0 1') # found static library
+				libname=${libfile%.lib}
+				libname=${libname#lib}
+				libNAMEa=lib${libname}.a
+				libNAMElib=lib${libname}.lib
+				;;
+			*)
+				die "Cannot run ${CHOST}-dumpbin on ${libdir}/${libfile}"
+				;;
+			esac
 			;;
-		lib.dll.a) ;; # paranoia
-		lib*.dll.a)
+		lib*.dll.a) # found import library
 			libname=${libfile%.dll.a}
 			libname=${libname#lib}
+			NAMElib=${libname}.lib
+			libNAMEso=lib${libname}.so
 			;;
-		lib.a) ;; # paranoia
-		lib*.a) continue ;; # ignore static library
+		*.dll.a) ;; # warn
+		lib*.a) # found static library
+			libname=${libfile%.a}
+			libname=${libname#lib}
+			libNAMEa=lib${libname}.a
+			libNAMElib=lib${libname}.lib
+			;;
+		*.a) ;; # warn
 		esac
 		if [[ -z ${libname} ]]; then
 			ewarn "Ignoring suspect file with library extension: ${f}"
 			continue
 		fi
 
-		NAMElib=${libname}.lib
-		libNAMEso=lib${libname}.so
-		if [[ ! -e ./${libdir}/${NAMElib} ]]; then
-			ebegin "creating ${NAMElib} copied from ${f##*/} for MSVC linkability"
+		if [[ ${NAMElib} && ! -e ./${libdir}/${NAMElib} ]]; then
+			ebegin "creating ${NAMElib} from ${libfile} for MSVC linkability"
 			cp -pf "./${libdir}/${libfile}" "./${libdir}/${NAMElib}" || die
 			eend $?
 		fi
-		if [[ ! -e "./${libdir}/${libNAMEso}" ]]; then
-			ebegin "creating ${libNAMEso} symlink to ${f##*/} for libtool linkability"
-			ln -sf "${libfile}" "./${libdir}/${libNAMEso}" || die
+		if [[ ${libNAMElib} && ! -e ./${libdir}/${libNAMElib} ]]; then
+			ebegin "creating ${libNAMElib} from ${libfile} for MSVC linkability"
+			cp -pf "./${libdir}/${libfile}" "./${libdir}/${libNAMElib}" || die
+			eend $?
+		fi
+		if [[ ${libNAMEso} && ! -e ./${libdir}/${libNAMEso} ]]; then
+			ebegin "creating ${libNAMEso} from ${f##*/} for POSIX linkability"
+			cp -pf "./${libdir}/${libfile}" "./${libdir}/${libNAMEso}" || die
+			eend $?
+		fi
+		if [[ ${libNAMEa} && ! -e ./${libdir}/${libNAMEa} ]]; then
+			ebegin "creating ${libNAMEa} from ${f##*/} for POSIX linkability"
+			cp -pf "./${libdir}/${libfile}" "./${libdir}/${libNAMEa}" || die
 			eend $?
 		fi
 	done
