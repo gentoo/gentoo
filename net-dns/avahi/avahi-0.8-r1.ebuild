@@ -28,7 +28,7 @@ RESTRICT="!test? ( test )"
 
 DEPEND="
 	dev-libs/libdaemon
-	dev-libs/libevent:=
+	dev-libs/libevent:=[${MULTILIB_USEDEP}]
 	dev-libs/expat
 	dev-libs/glib:2[${MULTILIB_USEDEP}]
 	gdbm? ( sys-libs/gdbm:=[${MULTILIB_USEDEP}] )
