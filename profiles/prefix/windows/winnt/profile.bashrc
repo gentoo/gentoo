@@ -175,18 +175,30 @@ winnt_post_src_install() {
 			eend $?
 		fi
 	done
-	[[ -d usr/$(get_libdir) ]] &&
-	find usr/$(get_libdir) -maxdepth 1 -type f -name '*.dll' |
-	while read f
-	do
-		if [[ ! -f usr/bin/${f##*/} ]]; then
-			ebegin "moving ${f} to usr/bin for native loader"
+	if [[ -d usr/$(get_libdir) ]]
+	then
+		# The native loader does not understand symlinks to dlls,
+		# seen to be created by dev-libs/icu eventually.  For any
+		# dll we find in usr/lib we need to perform a real copy to
+		# usr/bin, to resolve potential symlinks (seen from icu),
+		# and perform the remove from usr/lib afterwards, to not
+		# break symlinks later on discovered by find.
+		local toremove=()
+		local f
+		while read f
+		do
+			[[ -f usr/bin/${f##*/} ]] && continue
+			ebegin "moving ${f} to usr/bin for the native loader"
 			dodir usr/bin || die
-			mv -f "${f}" usr/bin/ || die
-			ln -sf "../bin/${f##*/}" "${f}" || die
+			cp -f "${f}" usr/bin/ || die
 			eend $?
+			toremove=( "${toremove[@]}" "${f}" )
+		done < <(find usr/$(get_libdir) -maxdepth 1 -name '*.dll')
+		if [[ ${#toremove[@]} -gt 0 ]]
+		then
+			rm -f "${toremove[@]}" || die "removing dlls from usr/$(get_libdir) failed"
 		fi
-	done
+	fi
 }
 
 winnt_setup_dllhelper_cp() {
