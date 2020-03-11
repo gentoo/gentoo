@@ -18301,6 +18301,7 @@ x11-misc/alock 1.0.0: locks the local X display until a password is entered
 x11-misc/apwal 0.4.5-r2: A simple application launcher and combined editor
 x11-misc/arandr 0.1.10: Another XRandR GUI
 x11-misc/autocutsel 0.10.0: Synchronise the two copy/paste buffers mainly used by X applications
+x11-misc/barrier 2.3.2: Share a mouse and keyboard between computers (fork of Synergy)
 x11-misc/bbacpi 0.1.5-r3: ACPI monitor for X11
 x11-misc/bbcd 0.3.1-r2: Basic CD Player for blackbox wm
 x11-misc/bbdate 0.2.4-r2: blackbox date display
