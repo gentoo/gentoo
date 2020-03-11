@@ -286,6 +286,7 @@ src_prepare() {
 
 	eapply "${FILESDIR}/${PN}-73.0_fix_lto_pgo_builds.patch"
 	eapply "${FILESDIR}/${PN}-73.0_fix_llvm9.patch"
+	eapply "${FILESDIR}/${PN}-74.0-bug1607052-font-selection-regression.patch"
 
 	# Allow user to apply any additional patches without modifing ebuild
 	eapply_user
@@ -684,7 +685,7 @@ src_install() {
 	fi
 
 	# Install language packs
-	MOZ_INSTALL_L10N_XPIFILE="1" mozlinguas_src_install
+	MOZEXTENSION_TARGET="distribution/extensions" MOZ_INSTALL_L10N_XPIFILE="1" mozlinguas_src_install
 
 	local size sizes icon_path icon name
 	if use bindist ; then
