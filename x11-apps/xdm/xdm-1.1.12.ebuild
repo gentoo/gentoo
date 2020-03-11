@@ -36,8 +36,7 @@ RDEPEND="
 	xpm? ( x11-libs/libXpm )
 	elibc_glibc? ( dev-libs/libbsd )"
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
-	consolekit? ( !=sys-auth/pambase-20101024-r1 )"
+	x11-base/xorg-proto"
 
 pkg_setup() {
 	PATCHES=(
