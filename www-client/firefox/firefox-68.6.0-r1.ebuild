@@ -675,7 +675,7 @@ src_install() {
 	fi
 
 	# Install language packs
-	MOZ_INSTALL_L10N_XPIFILE="1" mozlinguas_src_install
+	MOZEXTENSION_TARGET="distribution/extensions" MOZ_INSTALL_L10N_XPIFILE="1" mozlinguas_src_install
 
 	local size sizes icon_path icon name
 	if use bindist ; then
