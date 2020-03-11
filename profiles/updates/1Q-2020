@@ -5,3 +5,5 @@ move dev-python/matplotlib2tikz dev-python/tikzplotlib
 move dev-python/pep257 dev-python/pydocstyle
 move dev-python/pyzor mail-filter/pyzor
 move dev-python/python-sqlparse dev-python/sqlparse
+move dev-python/ghp-import dev-vcs/ghp-import
+move app-doc/ghp-import dev-vcs/ghp-import
