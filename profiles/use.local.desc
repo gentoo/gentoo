@@ -8659,7 +8659,7 @@ www-apps/klaus:ctags - Enable support for Exuberant ctags; makes all source code
 www-apps/netbox:webhooks - Enable webhooks via django-rq
 www-apps/nikola:assets - Support web asset management through dev-python/assets
 www-apps/nikola:charts - Support chart generation through dev-python/pygal
-www-apps/nikola:ghpages - Add support for direct uploading to github pages thru app-doc/ghp-import
+www-apps/nikola:ghpages - Add support for direct uploading to github pages thru dev-python/ghp-import
 www-apps/nikola:hyphenation - Add hyphenation support through dev-python/pyphen
 www-apps/nikola:ipython - Add IPython notebook compilation and LESS support
 www-apps/nikola:jinja - Add support for dev-python/jinja as alternative templating engine to Mako
