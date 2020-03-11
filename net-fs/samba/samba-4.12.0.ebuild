@@ -38,7 +38,6 @@ MULTILIB_WRAPPED_HEADERS=(
 	/usr/include/samba-4.0/ctdb_version.h
 )
 
-# sys-apps/attr is an automagic dependency (see bug #489748)
 CDEPEND="
 	>=app-arch/libarchive-3.1.2[${MULTILIB_USEDEP}]
 	dev-lang/perl:=
@@ -164,8 +163,8 @@ src_prepare() {
 		sed -i -e '/"iso8601":/d' "${S}"/third_party/wscript || die
 	fi
 
-	# ugly hackaround for bug #592502
-	cp /usr/include/tevent_internal.h "${S}"/lib/tevent/ || die
+	## ugly hackaround for bug #592502
+	#cp /usr/include/tevent_internal.h "${S}"/lib/tevent/ || die
 
 	sed -e 's:<gpgme\.h>:<gpgme/gpgme.h>:' \
 		-i source4/dsdb/samdb/ldb_modules/password_hash.c \
