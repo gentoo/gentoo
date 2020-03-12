@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~sparc ~x86"
 
 RDEPEND="
 	>=dev-python/jinja-2.9[${PYTHON_USEDEP}]
