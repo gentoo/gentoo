@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-02">
+  <title>Mozilla Firefox: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Firefox, the
+    worst of which may allow execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">firefox</product>
+  <announced>2020-03-12</announced>
+  <revised count="2">2020-03-12</revised>
+  <bug>702638</bug>
+  <bug>705000</bug>
+  <bug>709346</bug>
+  <bug>712182</bug>
+  <access>remote</access>
+  <affected>
+    <package name="www-client/firefox" auto="yes" arch="*">
+      <unaffected range="ge">68.6.0</unaffected>
+      <vulnerable range="lt">68.6.0</vulnerable>
+    </package>
+    <package name="www-client/firefox-bin" auto="yes" arch="*">
+      <unaffected range="ge">68.6.0</unaffected>
+      <vulnerable range="lt">68.6.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Firefox. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to view a specially crafted web
+      page, possibly resulting in the execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition. Furthermore,
+      a remote attacker may be able to perform Man-in-the-Middle attacks,
+      obtain sensitive information, spoof the address bar, conduct clickjacking
+      attacks, bypass security restrictions and protection mechanisms, or have
+      other unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Firefox users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-68.6.0"
+    </code>
+    
+    <p>All Mozilla Firefox binary users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=www-client/firefox-bin-68.6.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11745">CVE-2019-11745</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17005">CVE-2019-17005</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17008">CVE-2019-17008</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17010">CVE-2019-17010</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17011">CVE-2019-17011</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17012">CVE-2019-17012</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17016">CVE-2019-17016</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17017">CVE-2019-17017</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17022">CVE-2019-17022</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17024">CVE-2019-17024</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17026">CVE-2019-17026</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-20503">CVE-2019-20503</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6796">CVE-2020-6796</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6797">CVE-2020-6797</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6798">CVE-2020-6798</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6799">CVE-2020-6799</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6800">CVE-2020-6800</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6805">CVE-2020-6805</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6806">CVE-2020-6806</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6807">CVE-2020-6807</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6811">CVE-2020-6811</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6812">CVE-2020-6812</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6814">CVE-2020-6814</uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2019-37/">
+      MFSA-2019-37
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-03/">
+      MFSA-2020-03
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-06/">
+      MFSA-2020-06
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-09/">
+      MFSA-2020-09
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-07T16:47:24Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-03-12T19:17:30Z">BlueKnight</metadata>
+</glsa>
