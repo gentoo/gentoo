@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -123,7 +123,6 @@ src_prepare() {
 	rm "plugins/sensors/libqtsensors_iio-sensor-proxy.so" || die
 	rm "plugins/sensors/libqtsensors_linuxsys.so" || die
 	rm "plugins/sqldrivers/libqsqlite.so" || die
-	rm "plugins/sqldrivers/libqsqlmysql.so" || die
 	rm "plugins/sqldrivers/libqsqlpsql.so" || die
 	rm "plugins/xcbglintegrations/libqxcb-egl-integration.so" || die
 	rm "qml/Qt/labs/calendar/libqtlabscalendarplugin.so" || die
@@ -138,7 +137,6 @@ src_prepare() {
 	rm "qml/Qt3D/Logic/libquick3dlogicplugin.so" || die
 	rm "qml/Qt3D/Render/libquick3drenderplugin.so" || die
 	rm "qml/QtBluetooth/libdeclarative_bluetooth.so" || die
-	rm "qml/QtCanvas3D/libqtcanvas3d.so" || die
 	rm "qml/QtGamepad/libdeclarative_gamepad.so" || die
 	rm "qml/QtLocation/libdeclarative_location.so" || die
 	rm "qml/QtMultimedia/libdeclarative_multimedia.so" || die
@@ -180,6 +178,51 @@ src_prepare() {
 	rm "qml/QtQuick/Controls.2/Imagine/libqtquickcontrols2imaginestyleplugin.so" || die
 	rm "qml/QtQml/RemoteObjects/libqtqmlremoteobjects.so" || die
 	rm "qml/Qt/labs/location/liblocationlabsplugin.so" || die
+	rm "lib/libQt5WaylandClient.so.5" || die
+	rm "lib/libQt5WaylandCompositor.so.5" || die
+	rm "plugins/canbus/libqtvirtualcanbus.so" || die
+	rm "plugins/platforminputcontexts/libfcitxplatforminputcontextplugin.so" || die
+	rm "plugins/platforms/libqwayland-egl.so" || die
+	rm "plugins/platforms/libqwayland-generic.so" || die
+	rm "plugins/platforms/libqwayland-xcomposite-egl.so" || die
+	rm "plugins/platforms/libqwayland-xcomposite-glx.so" || die
+	rm "plugins/platforms/libqwebgl.so" || die
+	rm "plugins/position/libqtposition_geoclue2.so" || die
+	rm "plugins/sqldrivers/libqsqlodbc.so" || die
+	rm "plugins/virtualkeyboard/libqtvirtualkeyboard_hangul.so" || die
+	rm "plugins/virtualkeyboard/libqtvirtualkeyboard_openwnn.so" || die
+	rm "plugins/virtualkeyboard/libqtvirtualkeyboard_pinyin.so" || die
+	rm "plugins/virtualkeyboard/libqtvirtualkeyboard_tcime.so" || die
+	rm "plugins/virtualkeyboard/libqtvirtualkeyboard_thai.so" || die
+	rm "plugins/wayland-decoration-client/libbradient.so" || die
+	rm "plugins/wayland-graphics-integration-client/libdmabuf-server.so" || die
+	rm "plugins/wayland-graphics-integration-client/libdrm-egl-server.so" || die
+	rm "plugins/wayland-graphics-integration-client/libqt-plugin-wayland-egl.so" || die
+	rm "plugins/wayland-graphics-integration-client/libshm-emulation-server.so" || die
+	rm "plugins/wayland-graphics-integration-client/libxcomposite-egl.so" || die
+	rm "plugins/wayland-graphics-integration-client/libxcomposite-glx.so" || die
+	rm "plugins/wayland-graphics-integration-server/libdmabuf-server.so" || die
+	rm "plugins/wayland-graphics-integration-server/libdrm-egl-server.so" || die
+	rm "plugins/wayland-graphics-integration-server/liblinux-dmabuf-unstable-v1.so" || die
+	rm "plugins/wayland-graphics-integration-server/libqt-plugin-wayland-egl.so" || die
+	rm "plugins/wayland-graphics-integration-server/libshm-emulation-server.so" || die
+	rm "plugins/wayland-graphics-integration-server/libwayland-eglstream-controller.so" || die
+	rm "plugins/wayland-graphics-integration-server/libxcomposite-egl.so" || die
+	rm "plugins/wayland-graphics-integration-server/libxcomposite-glx.so" || die
+	rm "plugins/wayland-shell-integration/libfullscreen-shell-v1.so" || die
+	rm "plugins/wayland-shell-integration/libivi-shell.so" || die
+	rm "plugins/wayland-shell-integration/libwl-shell.so" || die
+	rm "plugins/wayland-shell-integration/libxdg-shell-v5.so" || die
+	rm "plugins/wayland-shell-integration/libxdg-shell-v6.so" || die
+	rm "plugins/wayland-shell-integration/libxdg-shell.so" || die
+	rm "qml/QtCharts/libqtchartsqml2.so" || die
+	rm "qml/QtDataVisualization/libdatavisualizationqml2.so" || die
+	rm "qml/QtPurchasing/libdeclarative_purchasing.so" || die
+	rm "qml/QtQuick/VirtualKeyboard/Settings/libqtquickvirtualkeyboardsettingsplugin.so" || die
+	rm "qml/QtQuick/VirtualKeyboard/Styles/libqtquickvirtualkeyboardstylesplugin.so" || die
+	rm "qml/QtQuick/VirtualKeyboard/libqtquickvirtualkeyboardplugin.so" || die
+	rm "qml/QtRemoteObjects/libqtremoteobjects.so" || die
+	rm "qml/QtWayland/Compositor/libqwaylandcompositorplugin.so" || die
 
 	default
 }
