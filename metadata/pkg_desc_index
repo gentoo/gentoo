@@ -372,7 +372,7 @@ app-admin/authbind 2.1.1: Bind sockets to privileged ports without root
 app-admin/aws-elb-tools 1.0.15.1-r1: Serves as the client interface to the Elastic Load Balancing web service
 app-admin/bastille 3.0.9-r1 3.0.9-r2: Bastille-Linux is a security hardening tool
 app-admin/bcfg2 1.2.4-r1: Configuration management tool
-app-admin/calamares 3.2.12 3.2.17.1-r1: Distribution-independent installer framework
+app-admin/calamares 3.2.17.1-r1: Distribution-independent installer framework
 app-admin/cancd 0.1.0-r4: CA NetConsole Daemon receives output from the Linux netconsole driver
 app-admin/ccze 0.2.1-r4: A flexible and fast logfile colorizer
 app-admin/cdist 5.1.3 6.0.0: A usable configuration management system
@@ -7725,7 +7725,7 @@ dev-python/embedly 0.5.0-r1: Python Library for Embedly
 dev-python/emcee 2.2.1: Python ensemble sampling toolkit for affine-invariant MCMC
 dev-python/emoji 0.5.4: Emoji for Python
 dev-python/empy 3.3-r1 3.3.2 3.3.3: A powerful and robust templating system for Python
-dev-python/entrypoints 0.2.3 0.3 0.3-r1: Discover and load entry points from installed packages
+dev-python/entrypoints 0.3-r1: Discover and load entry points from installed packages
 dev-python/enum34 1.1.6-r1: Python 3.4 Enum backported
 dev-python/envoy 0.0.3 0.0.3-r1: Simple API for running external processes
 dev-python/enzyme 0.4.1-r2 9999: Python video metadata parser
@@ -8470,7 +8470,7 @@ dev-python/pypiserver 1.3.1-r1: Minimal PyPI server
 dev-python/pypng 0.0.18 0.0.20: Pure Python PNG image encoder/decoder
 dev-python/pypowervm 1.1.20: Python binding for the PowerVM REST API
 dev-python/pyprof2calltree 1.4.0: convert python profile data to kcachegrind calltree form
-dev-python/pyproj 1.9.5.1-r1 2.4.2: Python interface to the PROJ library
+dev-python/pyproj 2.4.2: Python interface to the PROJ library
 dev-python/pyproject2setuppy 2: Cheap setup.py hack to install flit & poetry-based projects
 dev-python/pyprotocols 1.0_pre2306-r1: Extends the PEP 246 adapt function with a new 'declaration API'
 dev-python/pypy 7.3.0: A fast, compliant alternative implementation of the Python language
@@ -11541,7 +11541,7 @@ games-strategy/wargus-data 0-r1: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1-r1: A free Worms clone
 games-strategy/warzone2100 3.2.3 3.3.0: 3D real-time strategy game
 games-strategy/wesnoth 1.14.9 1.14.11 1.15.3: Battle for Wesnoth - A fantasy turn-based strategy game
-games-strategy/widelands 0.20_rc1 0.20: A game similar to Settlers 2
+games-strategy/widelands 0.20: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r2: A multi-player game of strategy and coordination
 games-util/antimicro 2.23: Map keyboard and mouse buttons to gamepad buttons
 games-util/atlas 0.5.1_beta_pre20160907: Chart Program to use with Flightgear Flight Simulator
@@ -12708,7 +12708,7 @@ media-gfx/printrun 20150310-r4 99999999: GUI interface for 3D printing on RepRap
 media-gfx/propaganda 1.0-r1: Propaganda Volume 1-14 + E. Tiling images for your desktop
 media-gfx/psftools 1.0.10: Utilities for manipulation of console fonts in PSF format
 media-gfx/pstoedit 3.70-r1: Translate PostScript and PDF graphics into other vector formats
-media-gfx/qimgv 0.8.5 0.8.8 9999: A cross-platform image viewer with webm support. Written in qt5.
+media-gfx/qimgv 0.8.8 9999: A cross-platform image viewer with webm support. Written in qt5.
 media-gfx/qiv 2.3.2: Quick Image Viewer
 media-gfx/qrencode 4.0.2: C library for encoding data in a QR Code symbol
 media-gfx/qrencode-python 1.02_pre140921: A simple wrapper for the C qrencode library
@@ -13552,7 +13552,7 @@ media-sound/flack 2.0.6: edit FLAC tags from command line
 media-sound/flacon 4.1.0 5.5.1: Extracts audio tracks from an audio CD image to separate tracks
 media-sound/flake 0.11: An alternative to the FLAC reference encoder
 media-sound/fluid-soundfont 3.1: The Fluid R3 soundfont
-media-sound/fluidsynth 2.0.4 2.0.7 2.1.0: Software real-time synthesizer based on the Soundfont 2 specifications
+media-sound/fluidsynth 2.0.7 2.1.0: Software real-time synthesizer based on the Soundfont 2 specifications
 media-sound/fmdrv 1.0.7: Console mode MIDI player with builtin userland OPL2 driver
 media-sound/fmit 1.0.15-r2: Free Music Instrument Tuner
 media-sound/fmtools 2.0.7: A collection of programs for controlling v4l radio card drivers
@@ -13693,7 +13693,7 @@ media-sound/pavucontrol-qt 0.14.1: A Pulseaudio mixer in Qt (port of pavucontrol
 media-sound/pavumeter 0.9.3-r1: PulseAudio Volume Meter, simple GTK volume meter for PulseAudio
 media-sound/peercast 0.1218-r2: A client and server for Peercast P2P-radio network
 media-sound/pianobar 2019.01.25 2019.02.14 9999: A console-based replacement for Pandora's flash player
-media-sound/picard 2.1.3-r1 9999: A cross-platform music tagger
+media-sound/picard 2.1.3-r1 2.3.1 9999: A cross-platform music tagger
 media-sound/picoxine 0.0.7: Very small xine frontend for playing audio events
 media-sound/pitchtune 0.0.4: Precise Instrument Tweaking for Crispy Harmony - tuner
 media-sound/pithos 1.3.1 9999: Pandora.com client for the GNOME desktop
@@ -17953,7 +17953,7 @@ www-apps/websvn 2.3.3-r1: Web-based browsing tool for Subversion (SVN) repositor
 www-apps/wiliki 0.6.1-r1: WiLiKi is a lightweight Wiki engine written in and running on Gauche Scheme
 www-apps/wordpress 5.3.1 5.3.2: Wordpress PHP and MySQL based content management system (CMS)
 www-apps/zeppelin-bin 0.8.2: Web-based interactive data analytics notebook launcher
-www-client/chromium 80.0.3987.132 81.0.4044.43 82.0.4077.0: Open-source version of Google Chrome web browser
+www-client/chromium 80.0.3987.132 81.0.4044.62 82.0.4077.0: Open-source version of Google Chrome web browser
 www-client/dillo 3.0.5 3.0.5-r3 3.1_p20181005 9999: Lean FLTK based web browser
 www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced and well-established text-mode web browser
 www-client/epiphany 3.30.5 3.32.6: GNOME webbrowser based on Webkit
@@ -17962,7 +17962,7 @@ www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
 www-client/firefox 52.9.0 68.6.0-r1 74.0-r1: Firefox Web Browser
 www-client/firefox-bin 52.9.0 68.6.0 74.0: Firefox Web Browser
 www-client/google-chrome 80.0.3987.132: The web browser from Google
-www-client/google-chrome-beta 81.0.4044.43: The web browser from Google
+www-client/google-chrome-beta 81.0.4044.62: The web browser from Google
 www-client/google-chrome-unstable 82.0.4068.4: The web browser from Google
 www-client/httrack 3.49.2-r2: HTTrack Website Copier, Open Source Offline Browser
 www-client/jd 2.8.5_p120826 2.8.9_p150226: gtk2 based 2ch browser written in C++
@@ -18011,7 +18011,7 @@ www-misc/xxv 1.6.1-r1: WWW Admin for the VDR (Video Disk Recorder)
 www-misc/zoneminder 1.30.4-r1: Capture, analyse, record and monitor any cameras attached to your system
 www-plugins/adobe-flash 32.0.0.330: Adobe Flash Player
 www-plugins/browserpass 3.0.6-r2: WebExtension host binary for app-admin/pass, a UNIX password manager
-www-plugins/chrome-binary-plugins 80.0.3987.132 81.0.4044.43_beta 82.0.4068.4_alpha: Binary plugins from Google Chrome for use in Chromium
+www-plugins/chrome-binary-plugins 80.0.3987.132 81.0.4044.62_beta 82.0.4068.4_alpha: Binary plugins from Google Chrome for use in Chromium
 www-plugins/freshplayerplugin 0.3.9: PPAPI-host NPAPI-plugin adapter for flashplayer in npapi based browsers
 www-plugins/google-talkplugin 5.41.0.0 5.41.3.0 9999: Video chat browser plug-in for Google Talk
 www-plugins/lightspark 0.8.2: High performance flash player
