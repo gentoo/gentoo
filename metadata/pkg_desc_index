@@ -10722,7 +10722,7 @@ dev-vcs/bzr 2.7.0 2.7.1_pre: Bazaar is a next generation distributed version con
 dev-vcs/bzr-rewrite 0.6.3: Bazaar plugin that adds support for rebasing, similar to git rebase
 dev-vcs/bzr-xmloutput 0.8.8-r3: Bazaar plugin providing an option to generate XML output for builtin commands
 dev-vcs/bzrtools 2.5: bzrtools is a useful collection of utilities for bzr
-dev-vcs/cli 0.5.5 0.6.1: GitHub CLI
+dev-vcs/cli 0.5.5 0.6.1 9999: GitHub CLI
 dev-vcs/colorcvs 1.4-r2: A tool based on colorgcc to beautify cvs output
 dev-vcs/colorsvn 0.3.3: Subversion output colorizer
 dev-vcs/cssc 1.4.0 1.4.1: The GNU Project's replacement for SCCS
