@@ -289,7 +289,9 @@ multilib_src_install() {
 	keepdir /var/cache/samba
 	keepdir /var/lib/ctdb
 	keepdir /var/lib/samba/{bind-dns,private}
+	keepdir /var/lock/samba
 	keepdir /var/log/samba
+	keepdir /var/run/samba
 }
 
 multilib_src_test() {
