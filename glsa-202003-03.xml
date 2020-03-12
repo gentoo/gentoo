@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">postgresql</product>
   <announced>2020-03-12</announced>
-  <revised count="1">2020-03-12</revised>
+  <revised count="2">2020-03-12</revised>
   <bug>685846</bug>
   <bug>688420</bug>
   <bug>709708</bug>
@@ -53,42 +53,42 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.4.26"
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.4.26:9.4"
     </code>
     
     <p>All PostgreSQL 9.5.x users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.5.21"
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.5.21:9.5"
     </code>
     
     <p>All PostgreSQL 9.6.x users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.6.17"
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.6.17:9.6"
     </code>
     
     <p>All PostgreSQL 10.x users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-10.12"
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-10.12:10"
     </code>
     
     <p>All PostgreSQL 11.x users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-11.7"
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-11.7:11"
     </code>
     
     <p>All PostgreSQL 12.x users should upgrade to the latest version:</p>
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-12.2"
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-12.2:12"
     </code>
   </resolution>
   <references>
@@ -98,5 +98,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1720">CVE-2020-1720</uri>
   </references>
   <metadata tag="requester" timestamp="2019-10-26T23:59:26Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2020-03-12T20:14:51Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-12T20:20:41Z">whissi</metadata>
 </glsa>
