@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-03">
+  <title>PostgreSQL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in PostgreSQL, the worst
+    of which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">postgresql</product>
+  <announced>2020-03-12</announced>
+  <revised count="2">2020-03-12</revised>
+  <bug>685846</bug>
+  <bug>688420</bug>
+  <bug>709708</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-db/postgresql" auto="yes" arch="*">
+      <unaffected range="ge" slot="9.4">9.4.26</unaffected>
+      <unaffected range="ge" slot="9.5">9.5.21</unaffected>
+      <unaffected range="ge" slot="9.6">9.6.17</unaffected>
+      <unaffected range="ge" slot="10">10.12</unaffected>
+      <unaffected range="ge" slot="11">11.7</unaffected>
+      <unaffected range="ge" slot="12">12.2</unaffected>
+      <vulnerable range="lt" slot="9.4">9.4.26</vulnerable>
+      <vulnerable range="lt" slot="9.5">9.5.21</vulnerable>
+      <vulnerable range="lt" slot="9.6">9.6.17</vulnerable>
+      <vulnerable range="lt" slot="10">10.12</vulnerable>
+      <vulnerable range="lt" slot="11">11.7</vulnerable>
+      <vulnerable range="lt" slot="12">12.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PostgreSQL is an open source object-relational database management
+      system.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in PostgreSQL. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process, bypass certain client-side connection security
+      features, read arbitrary server memory, alter certain data or cause a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PostgreSQL 9.4.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.4.26:9.4"
+    </code>
+    
+    <p>All PostgreSQL 9.5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.5.21:9.5"
+    </code>
+    
+    <p>All PostgreSQL 9.6.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-9.6.17:9.6"
+    </code>
+    
+    <p>All PostgreSQL 10.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-10.12:10"
+    </code>
+    
+    <p>All PostgreSQL 11.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-11.7:11"
+    </code>
+    
+    <p>All PostgreSQL 12.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-db/postgresql-12.2:12"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-10129">CVE-2019-10129</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-10130">CVE-2019-10130</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-10164">CVE-2019-10164</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1720">CVE-2020-1720</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-10-26T23:59:26Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-12T20:20:41Z">whissi</metadata>
+</glsa>
