@@ -39,7 +39,6 @@ REQUIRED_USE="
 RDEPEND="
 	alsa? ( media-libs/alsa-lib )
 	cdio? ( dev-libs/libcdio[cddb] )
-	dev-libs/jansson
 	dev-qt/qtcore:5
 	|| (
 		dev-qt/qtgui:5[X(-)]
