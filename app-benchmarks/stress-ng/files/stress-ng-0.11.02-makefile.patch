@@ -4,7 +4,7 @@ and don't install compressed man pages.
 --- a/Makefile
 +++ b/Makefile
 @@ -21,7 +21,7 @@
- # Codename "systematic system smasher"
+ # Codename "synthetic system strainer"
  #
  
 -CFLAGS += -Wall -Wextra -DVERSION='"$(VERSION)"' -O2 -std=gnu99
@@ -12,7 +12,7 @@ and don't install compressed man pages.
  
  #
  # Pedantic flags
-@@ -359,12 +359,10 @@
+@@ -357,12 +357,10 @@
  .o: stress-ng.h Makefile
  
  .c.o: stress-ng.h Makefile $(SRC)
@@ -27,7 +27,7 @@ and don't install compressed man pages.
  	@sync
  
  makeconfig:
-@@ -385,7 +383,7 @@
+@@ -383,7 +381,7 @@
  		sed '$$ s/.$$//' >> apparmor-data.c
  	@echo "};" >> apparmor-data.c
  	@echo "const size_t g_apparmor_data_len = sizeof(g_apparmor_data);" >> apparmor-data.c
@@ -36,7 +36,7 @@ and don't install compressed man pages.
  	@$(CC) -c apparmor-data.c -o apparmor-data.o
  	@rm -rf apparmor-data.c apparmor-data.bin
  
-@@ -401,12 +399,12 @@
+@@ -399,12 +397,12 @@
  core-perf.o: core-perf.c core-perf-event.c
  	@$(CC) $(CFLAGS) -E core-perf-event.c | grep "PERF_COUNT" | sed 's/,/ /' | \
  	awk {'print "#define _SNG_" $$1 " (1)"'} > core-perf-event.h
@@ -53,7 +53,7 @@ and don't install compressed man pages.
  	@touch stress-ng.c
  
  $(OBJS): stress-ng.h Makefile
-@@ -455,7 +453,7 @@
+@@ -453,7 +451,7 @@
  	mkdir -p ${DESTDIR}${BINDIR}
  	cp stress-ng ${DESTDIR}${BINDIR}
  	mkdir -p ${DESTDIR}${MANDIR}

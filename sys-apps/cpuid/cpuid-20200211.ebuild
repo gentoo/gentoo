@@ -18,7 +18,7 @@ DEPEND="app-arch/gzip"
 
 DOCS=( "ChangeLog" "FUTURE" )
 
-PATCHES=( "${FILESDIR}/${P}-makefile.patch" )
+PATCHES=( "${FILESDIR}/${PN}-20200203-makefile.patch" )
 
 src_prepare() {
 	default

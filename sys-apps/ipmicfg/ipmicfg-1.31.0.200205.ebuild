@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -15,16 +15,13 @@ KEYWORDS="-* ~amd64 ~x86"
 LICENSE="supermicro"
 SLOT="0"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
 RESTRICT="bindist fetch mirror"
 
 S="${WORKDIR}/${MY_PN}_${MY_PV}_build.${MY_DATE}"
 
-QA_PREBUILT="
-	opt/ipmicfg/IPMICFG-Linux.x86
-	opt/ipmicfg/IPMICFG-Linux.x86_64
-"
+QA_PREBUILT="usr/bin/ipmicfg"
 
 pkg_nofetch() {
 	elog "Please download ${A} from"
@@ -33,21 +30,7 @@ pkg_nofetch() {
 }
 
 src_install() {
-	# Choose ARCH
-	local my_arch_binary="$(usex amd64 'x86_64' 'x86')"
-	local my_arch_folder="$(usex amd64 '64bit' '32bit')"
-
-	# Install files
-	insinto /opt/ipmicfg
-	doins Linux/"${my_arch_folder}"/*.dat
-
-	# Install binary
-	exeinto /opt/ipmicfg
-	doexe Linux/"${my_arch_folder}"/IPMICFG-Linux."${my_arch_binary}"
-
-	# Install symlink
-	dodir /opt/bin
-	dosym ../ipmicfg/IPMICFG-Linux."${my_arch_binary}" /opt/bin/ipmicfg
+	newbin Linux/$(usex amd64 '64bit' '32bit')/IPMICFG-Linux.x86$(usex amd64 '_64' '') ipmicfg
 
 	# Install docs
 	local DOCS=(

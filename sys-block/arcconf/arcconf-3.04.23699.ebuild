@@ -15,9 +15,9 @@ LICENSE="Microsemi"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 
-DEPEND="app-arch/unzip"
+BDEPEND="app-arch/unzip"
 
-RESTRICT="fetch mirror bindist"
+RESTRICT="mirror bindist"
 
 S="${WORKDIR}/linux_x64"
 
