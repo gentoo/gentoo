@@ -3,7 +3,9 @@
 
 EAPI=7
 
-inherit desktop cmake
+PYTHON_COMPAT=( python3_{6,7,8} )
+
+inherit desktop cmake python-any-r1
 
 MY_PV="build$(ver_cut 2-)"
 MY_P="${PN}-${MY_PV/_/-}"
@@ -18,19 +20,21 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	dev-lang/lua:0
-	dev-libs/icu:=
 	>=dev-libs/boost-1.48:=
+	dev-libs/icu:=
 	media-libs/glew:0=
+	media-libs/libglvnd
 	media-libs/libpng:0=
 	media-libs/libsdl2[video]
-	media-libs/sdl2-gfx
 	media-libs/sdl2-image[jpeg,png]
 	media-libs/sdl2-mixer[vorbis]
-	media-libs/sdl2-net
 	media-libs/sdl2-ttf
 	sys-libs/zlib:=[minizip]"
 DEPEND="${RDEPEND}
+	${PYTHON_DEPS}
+	dev-lang/lua:0
+"
+BDEPEND="
 	sys-devel/gettext
 "
 
