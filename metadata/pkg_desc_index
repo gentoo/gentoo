@@ -746,7 +746,7 @@ app-benchmarks/pipebench 0.40-r2: Measures the speed of stdin/stdout communicati
 app-benchmarks/ramspeed 3.5.0-r2: Benchmarking for memory and cache
 app-benchmarks/siege 4.0.4: A HTTP regression testing and benchmarking utility
 app-benchmarks/stress 1.0.4-r2: A deliberately simple workload generator for POSIX systems
-app-benchmarks/stress-ng 0.10.18: Stress test for a computer system with various selectable ways
+app-benchmarks/stress-ng 0.11.02: Stress test for a computer system with various selectable ways
 app-benchmarks/sysbench 1.0.15-r1 1.0.16-r1 1.0.17-r1 9999: System performance benchmark
 app-benchmarks/tiobench 0.4.2: Portable, robust, fully-threaded I/O benchmark program
 app-benchmarks/wrk 4.1.0-r1: A HTTP benchmarking tool
@@ -11155,7 +11155,7 @@ games-fps/doom-data 1.9: The IWAD used by the shareware version of Doom
 games-fps/doomsday 2.1.1: A modern gaming engine for Doom, Heretic, and Hexen
 games-fps/duke3d-data 1.0-r4: Duke Nukem 3D data files
 games-fps/duke3d-demodata 1.3: Duke Nukem 3D 1.3d shareware data
-games-fps/eduke32 20200201.8603: An open source engine port of the classic PC first person shooter Duke Nukem 3D
+games-fps/eduke32 20200311.8738: An open source engine port of the classic PC first person shooter Duke Nukem 3D
 games-fps/etqw-bin 1.5-r2: Enemy Territory: Quake Wars
 games-fps/etqw-data 1.0-r1: Enemy Territory: Quake Wars data files
 games-fps/etqw-demo 2.0_p1-r2: Enemy Territory: Quake Wars demo
@@ -11269,7 +11269,7 @@ games-misc/sound-of-sorting 0.6.6_pre20151107-r1: Visualization and Audibilizati
 games-misc/typespeed 0.6.5-r1: Test your typing speed, and get your fingers CPS
 games-misc/wtf 20090924: translates acronyms for you
 games-misc/wumpus 1.4-r1: Classic Hunt the Wumpus Adventure Game
-games-misc/xcowsay 1.4: Displays a cute cow and message on your desktop
+games-misc/xcowsay 1.4 1.5: Displays a cute cow and message on your desktop
 games-misc/xcruiser 0.30-r1: Fly about 3D-formed file system
 games-misc/xpenguins 2.2-r2: Cute little penguins invading your desktop
 games-mud/circlemud 3.1: a multi-user dungeon game system server
@@ -11449,7 +11449,7 @@ games-rpg/wastesedge 0.3.5-r2: role playing game to showcase the adonthell engin
 games-rpg/xu4 0.9-r1: A remake of the computer game Ultima IV
 games-rpg/zsdx 1.9.0-r1: A free 2D Zelda fangame
 games-rpg/zsxd 1.9.0-r1: A free 2D Zelda fangame parody
-games-server/bedrock-server 1.14.1.4 1.14.21.0: The official bedrock (non-java) based server for the sandbox video game
+games-server/bedrock-server 1.14.1.4 1.14.32.1: The official bedrock (non-java) based server for the sandbox video game
 games-server/crossfire-server 1.71.0-r1: Server for the crossfire clients
 games-server/etqw-ded 1.5-r1: Enemy Territory: Quake Wars dedicated server
 games-server/mednafen-server 0.5.2-r1: Server for Mednafen emulator
@@ -15357,9 +15357,9 @@ net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
 net-vpn/networkmanager-openvpn 1.8.10: NetworkManager OpenVPN plugin
 net-vpn/networkmanager-pptp 1.2.8: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
-net-vpn/networkmanager-strongswan 1.4.5: NetworkManager StrongSwan plugin
+net-vpn/networkmanager-strongswan 1.4.5-r1: NetworkManager StrongSwan plugin
 net-vpn/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
-net-vpn/networkmanager-wireguard 0_pre20191128-r2 9999: NetworkManager WireGuard plugin
+net-vpn/networkmanager-wireguard 0_pre20191128-r3 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 8.05 9999: Free client for Cisco AnyConnect SSL VPN software
 net-vpn/openfortivpn 1.11.0: Fortinet compatible VPN client
@@ -16696,7 +16696,7 @@ sys-apps/consolation 0.0.7: libinput based console mouse daemon
 sys-apps/conspy 1.10 1.14: Remote control for Linux virtual consoles
 sys-apps/coreutils 8.30 8.31 8.31-r1 8.32-r1: Standard GNU utilities (chmod, cp, dd, ls, sort, tr, head, wc, who,...)
 sys-apps/cpint 2.5.3: Linux/390 Interface to z/VM's Control Program
-sys-apps/cpuid 20180519 20200203: Linux tool to dump x86 CPUID information about the CPUs
+sys-apps/cpuid 20180519 20200211: Linux tool to dump x86 CPUID information about the CPUs
 sys-apps/cracklib-words 2.9.6: large set of crack/cracklib dictionaries
 sys-apps/crazydiskinfo 1.0.2: Interactive TUI S.M.A.R.T viewer
 sys-apps/daemonize 1.7.8: Runs a command as a Unix daemon
@@ -16718,7 +16718,7 @@ sys-apps/duc 1.4.1-r1 1.4.3-r1 9999: A library and suite of tools for inspecting
 sys-apps/earlyoom 1.3 9999: Early OOM Daemon for Linux
 sys-apps/ed 1.15-r1 1.16: Your basic line editor
 sys-apps/edac-utils 0.18: Userspace helper for Linux kernel EDAC drivers
-sys-apps/edid-decode 0_pre20191209 0_pre20200203 9999: Decode EDID data in a human-readable format
+sys-apps/edid-decode 0_pre20191209 0_pre20200310 9999: Decode EDID data in a human-readable format
 sys-apps/edid-fixdim 1: Tool to fix screen dimensions in EDID data dumps
 sys-apps/elfix 0.9.5 9999: A suite of tools to work with ELF objects on Hardened Gentoo
 sys-apps/elivepatch-client 0.1 9999: Live patch installer client working with elivepatch-server
@@ -16789,7 +16789,7 @@ sys-apps/intel-performance-counter-monitor 2.10: Intel Performance Counter Monit
 sys-apps/intel-sa-00075-tools 1.0: Tools from Intel to detect and mitigate the AMT/MEI vulnerability
 sys-apps/inxi 3.0.33.1 3.0.34.1 3.0.36.1: The CLI inxi collects and prints hardware and system information
 sys-apps/iotools 1.5: Simple commands to access hardware device registers
-sys-apps/ipmicfg 1.30.0.190710: An in-band utility for configuring Supermicro IPMI devices
+sys-apps/ipmicfg 1.31.0.200205: An in-band utility for configuring Supermicro IPMI devices
 sys-apps/ipmitool 1.8.17-r1 1.8.18-r1: Utility for controlling IPMI enabled devices.
 sys-apps/ipmiutil 3.0.6 3.0.9 3.1.3 3.1.4 3.1.5 3.1.5-r1: IPMI Management Utilities
 sys-apps/iproute2 4.19.0-r1 5.2.0-r1 5.4.0 5.5.0 9999: kernel routing and traffic control utilities
@@ -17021,7 +17021,7 @@ sys-auth/ykpers 1.19.3-r1 1.20.0: Library and tool for personalization of Yubico
 sys-auth/yubico-piv-tool 1.6.2: Command line tool for the YubiKey PIV application
 sys-auth/yubikey-personalization-gui 3.1.25: GUI for personalization of Yubico's YubiKey
 sys-block/aoetools 36 37: tools for ATA over Ethernet (AoE) network storage protocol
-sys-block/arcconf 2.01.22270-r1 3.01.23531 3.03.23668: Microsemi Adaptec RAID Controller Command Line Utility
+sys-block/arcconf 2.01.22270-r1 3.01.23531 3.04.23699: Microsemi Adaptec RAID Controller Command Line Utility
 sys-block/blktrace 1.1.0 1.1.0-r1 1.2.0: show detailed info about what is happening on a block device io queue
 sys-block/blocks 0.1.4_pre131210-r1 9999: Conversion tools for block devices
 sys-block/buffer 1.19-r2: a tapedrive tool for speeding up reading from and writing to tape
@@ -17224,7 +17224,7 @@ sys-devel/dev86 0.16.21-r3: Bruce's C compiler - Simple C compiler to generate 8
 sys-devel/distcc 3.3.3-r1: Distribute compilation of C code across several machines on a network
 sys-devel/dwz 0.12-r1: DWARF optimization and duplicate removal tool
 sys-devel/flex 2.6.1 2.6.3 2.6.3-r1 2.6.4 2.6.4-r1: The Fast Lexical Analyzer
-sys-devel/gcc 3.3.6-r5 3.4.6-r5 4.0.4-r3 4.1.2-r2 4.2.4-r4 4.3.6-r4 4.4.7-r3 4.5.4-r3 4.6.4-r3 4.7.4-r3 4.8.5-r3 4.9.4-r1 5.5.0 6.5.0-r1 7.4.0-r2 7.5.0 8.3.0-r1 8.3.0-r3 8.4.0 9.2.0-r2 9.2.0-r3 9.2.0-r4 10.0.1_pre9999: The GNU Compiler Collection
+sys-devel/gcc 3.3.6-r5 3.4.6-r5 4.0.4-r3 4.1.2-r2 4.2.4-r4 4.3.6-r4 4.4.7-r3 4.5.4-r3 4.6.4-r3 4.7.4-r3 4.8.5-r3 4.9.4-r1 5.5.0 6.5.0-r1 7.4.0-r2 7.5.0 8.3.0-r1 8.3.0-r3 8.4.0 9.2.0-r2 9.2.0-r3 9.2.0-r4 9.3.0 10.0.1_pre9999: The GNU Compiler Collection
 sys-devel/gcc-apple 4.2.1_p5666-r2: Apple branch of the GNU Compiler Collection, Developer Tools 4.0
 sys-devel/gcc-config 2.1 2.2 2.2.1 9999: Utility to manage compilers
 sys-devel/gdb 8.3 8.3.1 8.3.1-r1 9.1 9999: GNU debugger
@@ -17232,7 +17232,7 @@ sys-devel/gdb-apple 1752: Apple branch of the GNU Debugger, Developer Tools 4.3
 sys-devel/gettext 0.20.1 0.21_rc1: GNU locale utilities
 sys-devel/gnuconfig 20190912 99999999: Updated config.sub and config.guess file from GNU
 sys-devel/icecream 0.9.7-r1 1.0.0-r1 1.0.0-r2: Distributed compiling of C(++) code across several machines; based on distcc
-sys-devel/kgcc64 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0 6.4.0 7.2.0 7.3.0 8.2.0 8.3.0 9.1.0 9.2.0: 64bit kernel compiler
+sys-devel/kgcc64 4.1.2 4.2.4 4.3.5 4.4.5 4.4.6 4.5.3 4.5.4 4.6.4 4.7.3 4.7.4 4.8.3 4.8.5 4.9.4 5.4.0 6.3.0 6.4.0 7.2.0 7.3.0 8.2.0 8.3.0 9.1.0 9.2.0 9.3.0: The GNU Compiler Collection
 sys-devel/libtool 2.4.6-r6 9999: A shared library tool for developers
 sys-devel/lld 7.1.0 8.0.1 9.0.1 10.0.0_rc3 10.0.0.9999 11.0.0.9999: The LLVM linker (link editor)
 sys-devel/llvm 7.1.0 8.0.1 9.0.1 10.0.0_rc3 10.0.0.9999 11.0.0.9999: Low Level Virtual Machine
@@ -18432,7 +18432,7 @@ x11-misc/picom 7.5-r1 9999: A lightweight compositor for X11 (previously a compt
 x11-misc/piedock 1.6.6-r1 1.6.9: A little bit like the famous OS X dock but in shape of a pie menu
 x11-misc/polybar 3.4.2-r1: A fast and easy-to-use tool for creating status bars
 x11-misc/primus 0.2: Faster OpenGL offloading for Bumblebee
-x11-misc/projecteur 0.6-r1: Linux Desktop Application for the Logitech Spotlight device
+x11-misc/projecteur 0.7: Linux Desktop Application for the Logitech Spotlight device
 x11-misc/py3status 3.27: py3status is an extensible i3status wrapper written in python
 x11-misc/pypanel 2.4-r2: A lightweight panel/taskbar for X11 window managers
 x11-misc/qarma 1: Zenity Clone for Qt5

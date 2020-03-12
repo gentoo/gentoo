@@ -10,4 +10,4 @@ RDEPEND=!!media-sound/mmix
 SLOT=0
 SRC_URI=http://mmix.cs.hm.edu/src/mmix-20160804.tgz
 _eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=c9cca9a4420473d8a2a1e12bd1219e47
+_md5_=9d2fa2ffc9280aff34906bcea38e59f5
