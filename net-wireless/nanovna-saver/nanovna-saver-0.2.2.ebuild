@@ -26,3 +26,8 @@ RDEPEND="${DEPEND}
 	dev-python/PyQt5[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]"
 BDEPEND=""
+
+src_prepare(){
+	sed -i "s#find_packages()#find_packages(exclude=['test'])#" setup.py
+	distutils-r1_src_prepare
+}
