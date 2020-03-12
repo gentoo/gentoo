@@ -279,17 +279,6 @@ src_install() {
 	systemd_dounit "${FILESDIR}/${PN}.service"
 }
 
-pkg_preinst() {
-	if has_version '<mail-mta/postfix-3.4'; then
-		elog
-		elog "Postfix-3.4 introduces a new master.cf service 'postlog'"
-		elog "with type 'unix-dgram' that is used by the new postlogd(8) daemon."
-		elog "Before backing out to an older Postfix version, edit the master.cf"
-		elog "file and remove the postlog entry."
-		elog
-	fi
-}
-
 pkg_postinst() {
 	if [[ ! -e /etc/mail/aliases.db ]] ; then
 		ewarn
