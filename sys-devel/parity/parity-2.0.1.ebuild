@@ -1,12 +1,12 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 if [[ ${PV} == 9999 ]]; then
 	inherit autotools git-r3
 	EGIT_REPO_URI="git@github.com:haubi/parity.git https://github.com/haubi/parity.git"
-	DEPEND="dev-util/confix"
+	BDEPEND="dev-util/confix"
 else
 	SRC_URI="https://github.com/mduft/${PN}/releases/download/${PV}/${P}.tar.bz2"
 	KEYWORDS="~x64-cygwin"
@@ -68,7 +68,7 @@ src_configure() {
 }
 
 pkg_postinst() {
-	if [[ -n ${ROOT%/} ]] ; then
+	if [[ -n ${ROOT} ]] ; then
 		einfo "To enable all available MSVC versions, on the target machine please run:"
 		einfo " '${EPREFIX}/usr/bin/parity-setup' --enable-all"
 	else
