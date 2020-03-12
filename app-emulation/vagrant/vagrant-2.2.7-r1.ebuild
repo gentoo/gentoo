@@ -40,6 +40,7 @@ ruby_add_rdepend "
 	>=dev-ruby/net-sftp-2.1
 	>=dev-ruby/net-scp-1.2.0
 	dev-ruby/rest-client:2
+	>=dev-ruby/ruby_dep-1.3.1:1
 	>=dev-ruby/rubyzip-1.3:1
 	>=dev-ruby/vagrant_cloud-2.0.3
 "
