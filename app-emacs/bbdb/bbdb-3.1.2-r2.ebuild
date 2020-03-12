@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -9,7 +9,7 @@ DESCRIPTION="The Insidious Big Brother Database"
 HOMEPAGE="https://savannah.nongnu.org/projects/bbdb/"
 SRC_URI="http://download.savannah.gnu.org/releases/${PN}/${P}.tar.gz"
 
-LICENSE="GPL-3+ GPL-1+ FDL-1.3+"
+LICENSE="GPL-3+ GPL-1+"
 SLOT="0"
 KEYWORDS="~alpha amd64 ~ia64 ppc ~ppc64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~sparc-solaris"
 IUSE="tex vm"
@@ -41,7 +41,6 @@ src_compile() {
 src_install() {
 	emake -C lisp DESTDIR="${D}" install
 	elisp-site-file-install "${FILESDIR}/${SITEFILE}"
-	doinfo doc/*.info*
 	dodoc AUTHORS ChangeLog NEWS README TODO
 
 	if use tex; then
