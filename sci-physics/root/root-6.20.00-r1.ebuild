@@ -17,7 +17,7 @@ SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 
 IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
-	mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
+	mpi mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
 	qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran vc
 	vmc +xml xrootd"
 RESTRICT="!test? ( test )"
@@ -79,6 +79,7 @@ CDEPEND="
 	libcxx? ( sys-libs/libcxx )
 	unuran? ( sci-mathematics/unuran:0= )
 	minuit? ( !sci-libs/minuit )
+	mpi? ( virtual/mpi )
 	mysql? ( dev-db/mysql-connector-c )
 	odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) )
 	oracle? ( dev-db/oracle-instantclient-basic )
@@ -175,6 +176,7 @@ src_configure() {
 		-Dbuiltin_xrootd=OFF
 		-Dbuiltin_xxhash=OFF
 		-Dbuiltin_zlib=OFF
+		-Dbuiltin_zstd=OFF
 		-Dx11=$(usex X)
 		-Dalien=OFF
 		-Darrow=OFF
@@ -187,7 +189,9 @@ src_configure() {
 		-Dcuda=$(usex cuda)
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
+		-Ddataframe=ON
 		-Ddcache=OFF
+		-Dfcgi=$(usex http)
 		-Dfftw3=$(usex fftw)
 		-Dfitsio=$(usex fits)
 		-Dfortran=$(usex fortran)
@@ -207,6 +211,7 @@ src_configure() {
 		-Dminuit=$(usex minuit)
 		-Dmlp=$(usex tmva)
 		-Dmonalisa=OFF
+		-Dmpi=$(usex mpi)
 		-Dmysql=$(usex mysql)
 		-Dodbc=$(usex odbc)
 		-Dopengl=$(usex opengl)
