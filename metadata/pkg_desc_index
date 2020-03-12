@@ -10514,7 +10514,7 @@ dev-util/glib-utils 2.60.7 2.62.5: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 7.12.3353_pre20191027-r2 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
 dev-util/gn 0.1463 0.1544 0.1616: GN is a meta-build system that generates build files for Ninja
-dev-util/gnome-builder 3.30.3-r1 3.32.4-r1: An IDE for writing GNOME-based software
+dev-util/gnome-builder 3.30.3-r1 3.32.4-r1 3.34.1: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.30.2 3.32.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
 dev-util/goland 2019.3-r1: Golang IDE by JetBrains
