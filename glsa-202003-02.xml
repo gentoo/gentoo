@@ -7,7 +7,7 @@
   </synopsis>
   <product type="ebuild">firefox</product>
   <announced>2020-03-12</announced>
-  <revised count="1">2020-03-12</revised>
+  <revised count="2">2020-03-12</revised>
   <bug>702638</bug>
   <bug>705000</bug>
   <bug>709346</bug>
@@ -24,7 +24,9 @@
     </package>
   </affected>
   <background>
-    <p>Firefox Web Browser</p>
+    <p>Mozilla Firefox is a popular open-source web browser from the Mozilla
+      Project.
+    </p>
   </background>
   <description>
     <p>Multiple vulnerabilities have been discovered in Mozilla Firefox. Please
@@ -98,5 +100,5 @@
     </uri>
   </references>
   <metadata tag="requester" timestamp="2020-03-07T16:47:24Z">BlueKnight</metadata>
-  <metadata tag="submitter" timestamp="2020-03-12T19:01:54Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-03-12T19:17:30Z">BlueKnight</metadata>
 </glsa>
