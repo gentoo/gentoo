@@ -128,6 +128,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	use cuda && cuda_src_prepare
+
 	cmake-utils_src_prepare
 
 	sed -i "/CLING_BUILD_PLUGINS/d" interpreter/CMakeLists.txt || die
