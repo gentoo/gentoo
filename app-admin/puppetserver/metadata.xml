@@ -8,7 +8,4 @@
 	<use>
 		<flag name="puppetdb">Adds support for connecting to puppetdb</flag>
 	</use>
-	<longdescription lang="en">
-		Puppet Server is the next-generation application for managing Puppet agents.
-	</longdescription>
 </pkgmetadata>
