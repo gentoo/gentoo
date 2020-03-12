@@ -104,6 +104,10 @@ S="${WORKDIR}"/NetworkManager-${PV}
 # Not implemented yet.
 RESTRICT="test"
 
+PATCHES=(
+	"${FILESDIR}/${PN}-1.20.6-dont_call_helpers_with_full_paths.patch"
+)
+
 python_check_deps() {
 	if use introspection; then
 		has_version "dev-python/pygobject:3[${PYTHON_USEDEP}]" || return
