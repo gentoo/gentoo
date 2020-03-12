@@ -59,8 +59,10 @@ multilib_src_configure() {
 
 	local myconf=(
 		--with-db-uniquename=-$(db_findver sys-libs/db)
+		--with-xml-catalog="${EPREFIX}"/etc/xml/catalog
 		--enable-securedir="${EPREFIX}"/$(get_libdir)/security
-		--libdir=/usr/$(get_libdir)
+		--libdir="${EPREFIX}"/usr/$(get_libdir)
+		--exec-prefix="${EPREFIX}"
 		--disable-prelude
 		--enable-doc
 		$(use_enable audit)
