@@ -176,7 +176,6 @@ dev-python/mmh3
 dev-python/mockldap
 dev-python/multipledispatch
 dev-python/netmiko
-dev-python/nltk
 dev-python/nosehtmloutput
 dev-python/odo
 dev-python/passwordmeter
