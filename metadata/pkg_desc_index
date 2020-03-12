@@ -15439,7 +15439,7 @@ net-wireless/mdk 3.6-r1: Wireless injection tool with various functions
 net-wireless/mfoc 0.10.7: Mifare Classic Offline Cracker
 net-wireless/mousejack 0.0_p20160726-r2: Firmware and research tools for nRF24LU1+ based USB dongles and breakout boards
 net-wireless/multimode 1.4_p20140831-r2 9999: multimode radio decoder for rtl-sdr devices using gnuradio
-net-wireless/nanovna-saver 0.1.5 9999: tool for reading, displaying and saving data from the NanoVNA
+net-wireless/nanovna-saver 0.2.2 9999: tool for reading, displaying and saving data from the NanoVNA
 net-wireless/neard 0.15-r1: Near Field Communication (NFC) management daemon
 net-wireless/openbsc 9999: OpenBSC, OsmoSGSN, OsmoBSC and other programs
 net-wireless/openggsn 9999: Gateway GPRS Support Node
@@ -17463,7 +17463,7 @@ sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with 
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.107 4.19.108 5.4.23 5.4.24 5.5.7 5.5.8: Linux kernel built from vanilla upstream sources
 sys-kernel/vanilla-kernel-bin 4.19.103 5.4.19 5.5.3: Pre-built vanilla Linux kernel
-sys-kernel/vanilla-sources 3.16.82 4.4.216 4.9.216 4.14.173 4.19.109 5.4.24 5.5.9: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.82 4.4.216 4.9.216 4.14.173 4.19.109 5.4.25 5.5.9: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.5.8: The Zen Kernel Live Sources
