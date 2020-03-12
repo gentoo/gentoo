@@ -16,7 +16,11 @@ IUSE="acl audit bcrypt +cracklib nls pam selinux skey split-usr +su xattr"
 # Taken from the man/Makefile.am file.
 LANGS=( cs da de es fi fr hu id it ja ko pl pt_BR ru sv tr zh_CN zh_TW )
 
-DEPEND="
+BDEPEND="
+	app-arch/xz-utils
+	sys-devel/gettext
+"
+COMMON_DEPEND="
 	acl? ( sys-apps/acl:0= )
 	audit? ( >=sys-process/audit-2.6:0= )
 	cracklib? ( >=sys-libs/cracklib-2.7-r3:0= )
@@ -29,12 +33,10 @@ DEPEND="
 	)
 	xattr? ( sys-apps/attr:0= )
 "
-BDEPEND="
-	app-arch/xz-utils
-	sys-devel/gettext
+DEPEND="${COMMON_DEPEND}
+	>=sys-kernel/linux-headers-4.19
 "
-RDEPEND="
-	${DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	pam? ( >=sys-auth/pambase-20150213 )
 	su? ( !sys-apps/util-linux[su(-)] )
 "
