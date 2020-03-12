@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python3_{6..8} )
 
-inherit autotools eutils python-single-r1
+inherit autotools python-single-r1
 
 DESCRIPTION="a text-based calendar and scheduling application"
 HOMEPAGE="https://calcurse.org/"
