@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-04">
+  <title>Vim, gVim: Remote execution of arbitrary code</title>
+  <synopsis>A vulnerability has been found in Vim and gVim concerning how
+    certain modeline options are treated.
+  </synopsis>
+  <product type="ebuild">vim,gvim</product>
+  <announced>2020-03-12</announced>
+  <revised count="1">2020-03-12</revised>
+  <bug>687394</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-editors/vim" auto="yes" arch="*">
+      <unaffected range="ge">8.1.1486</unaffected>
+      <vulnerable range="lt">8.1.1486</vulnerable>
+    </package>
+    <package name="app-editors/gvim" auto="yes" arch="*">
+      <unaffected range="ge">8.1.1486</unaffected>
+      <vulnerable range="lt">8.1.1486</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Vim is an efficient, highly configurable improved version of the classic
+      ‘vi’ text editor. gVim is the GUI version of Vim.
+    </p>
+  </background>
+  <description>
+    <p>
+      It was found that the <code>:source!</code> command was not restricted by
+      the sandbox mode. If modeline was explicitly enabled, opening a specially
+      crafted text file in vim could result in arbitrary command execution.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted file
+      using Vim or gVim, possibly resulting in execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Vim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-editors/vim-8.1.1486"
+    </code>
+    
+    <p>All gVim users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-editors/gvim-8.1.1486"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-12735">CVE-2019-12735</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-10-27T00:04:29Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-12T20:37:36Z">whissi</metadata>
+</glsa>
