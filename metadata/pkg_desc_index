@@ -166,6 +166,7 @@ acct-group/vboxusers 0: System group: vboxusers
 acct-group/vdradmin 0: Group for www-misc/vdradmin-am
 acct-group/video 0: System group: video
 acct-group/vpopmail 0: System group: vpopmail
+acct-group/wesnoth 0: System group: wesnoth
 acct-group/wheel 0: System group: wheel
 acct-group/x2goprint 0: Group for net-misc/x2goserver
 acct-group/x2gouser 0: Group for net-misc/x2goserver
@@ -322,6 +323,7 @@ acct-user/varnish 0: user for varnish
 acct-user/vboxguest 0: user for virtualbox-guest-additions
 acct-user/vdradmin 0: User for www-misc/vdradmin-am
 acct-user/vpopmail 0: user for vpopmail
+acct-user/wesnoth 0: user for games-strategy/wesnoth
 acct-user/x2goprint 0: User for net-misc/x2goserver
 acct-user/x2gouser 0: User for net-misc/x2goserver
 acct-user/xrootd 0: User for the XRootD server
@@ -9886,7 +9888,7 @@ dev-ruby/radius 0.7.5: Powerful tag-based template system
 dev-ruby/rails 4.2.11.1 5.2.4.1 6.0.2.1: ruby on rails is a web-application and persistance framework
 dev-ruby/rails-deprecated_sanitizer 1.0.3-r2: Deprecated sanitizer API extracted from Action View
 dev-ruby/rails-dom-testing 1.0.8-r1 2.0.3 2.0.3-r1: Compare doms and assert certain elements exists in doms using Nokogiri
-dev-ruby/rails-html-sanitizer 1.2.0 1.3.0: Sanitize HTML fragments in Rails applications
+dev-ruby/rails-html-sanitizer 1.2.0 1.3.0 1.3.0-r1: Sanitize HTML fragments in Rails applications
 dev-ruby/railties 4.2.11.1 5.2.4.1 6.0.2.1: Tools for creating, working with, and running Rails applications
 dev-ruby/rainbow 1.1.4-r1 2.2.2 3.0.0: Colorize printed text on ANSI terminals
 dev-ruby/rake 12.3.3 13.0.0 13.0.1: Make-like scripting in Ruby
@@ -11538,7 +11540,7 @@ games-strategy/wargus 2.4.1: Warcraft II for the Stratagus game engine
 games-strategy/wargus-data 0-r1: Warcraft II data for wargus (needs DOS CD)
 games-strategy/warmux 11.04.1-r1: A free Worms clone
 games-strategy/warzone2100 3.2.3 3.3.0: 3D real-time strategy game
-games-strategy/wesnoth 1.14.7 1.14.9 1.15.2: Battle for Wesnoth - A fantasy turn-based strategy game
+games-strategy/wesnoth 1.14.9 1.14.11 1.15.3: Battle for Wesnoth - A fantasy turn-based strategy game
 games-strategy/widelands 0.20_rc1 0.20: A game similar to Settlers 2
 games-strategy/xbattleai 1.2.2-r2: A multi-player game of strategy and coordination
 games-util/antimicro 2.23: Map keyboard and mouse buttons to gamepad buttons
