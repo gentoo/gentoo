@@ -9,7 +9,7 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 else
 	SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ppc ppc64 sparc x86"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 fi
 
 inherit linux-info meson pam udev xdg-utils
@@ -50,7 +50,6 @@ DOCS=( README.md src/libelogind/sd-bus/GVARIANT-SERIALIZATION )
 PATCHES=(
 	"${FILESDIR}/${P}-nodocs.patch"
 	"${FILESDIR}/${PN}-241.4-broken-test.patch" # bug 699116
-	"${FILESDIR}/${P}-selinux-missing-headers.patch" # bug 711432
 )
 
 pkg_setup() {
