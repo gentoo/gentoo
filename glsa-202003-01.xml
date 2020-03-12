@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-01">
+  <title>Groovy: Arbitrary code execution</title>
+  <synopsis>A vulnerability within serialization might allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">groovy</product>
+  <announced>2020-03-07</announced>
+  <revised count="3">2020-03-12</revised>
+  <bug>605690</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/groovy" auto="yes" arch="*">
+      <vulnerable range="le">2.4.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A multi-faceted language for the Java platform</p>
+  </background>
+  <description>
+    <p>It was discovered that there was a vulnerability within the Java
+      serialization/deserialization process.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker, by crafting a special serialized object, could execute
+      arbitrary code.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for Groovy. We recommend that users
+      unmerge Groovy:
+    </p>
+    
+    <code>
+      # emerge --unmerge "dev-java/groovy"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2016-6814">CVE-2016-6814</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-09-15T02:25:56Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2020-03-12T19:07:51Z">b-man</metadata>
+</glsa>
