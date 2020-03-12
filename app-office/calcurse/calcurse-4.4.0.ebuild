@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools eutils multilib-minimal
+inherit autotools eutils
 
 DESCRIPTION="a text-based calendar and scheduling application"
 HOMEPAGE="https://calcurse.org/"
@@ -30,16 +30,4 @@ RESTRICT="test"
 src_prepare() {
 	default
 	eautoreconf
-}
-
-multilib_src_configure() {
-	ECONF_SOURCE="${S}" econf
-}
-
-src_compile() {
-	multilib-minimal_src_compile
-}
-
-src_install() {
-	multilib-minimal_src_install
 }
