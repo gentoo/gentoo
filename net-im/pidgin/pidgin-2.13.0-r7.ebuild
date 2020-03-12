@@ -72,7 +72,7 @@ RDEPEND="
 	tcl? ( dev-lang/tcl:0= )
 	tk? ( dev-lang/tk:0= )
 	sasl? ( dev-libs/cyrus-sasl:2 )
-	networkmanager? ( net-misc/networkmanager )
+	networkmanager? ( <net-misc/networkmanager-1.19 )
 	idn? ( net-dns/libidn:= )
 	!<x11-plugins/pidgin-facebookchat-1.69-r1"
 	# Mono support crashes pidgin
