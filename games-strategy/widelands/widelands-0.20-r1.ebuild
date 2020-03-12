@@ -44,6 +44,7 @@ S="${WORKDIR}/${MY_P}"
 
 PATCHES=(
 	"${FILESDIR}/${PN}-0.20_rc1-cxxflags.patch"
+	"${FILESDIR}/${PN}-0.20-glvnd.patch"
 )
 
 src_prepare() {
