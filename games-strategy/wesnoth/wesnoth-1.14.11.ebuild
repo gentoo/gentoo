@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake toolchain-funcs user
+inherit cmake toolchain-funcs xdg
 
 DESCRIPTION="Battle for Wesnoth - A fantasy turn-based strategy game"
 HOMEPAGE="http://www.wesnoth.org
@@ -16,9 +16,11 @@ SLOT="0"
 if [[ $(( $(ver_cut 2) % 2 )) == 0 ]] ; then
 	KEYWORDS="~amd64 ~x86"
 fi
-IUSE="dbus dedicated doc fribidi libressl nls openmp server"
+IUSE="dbus dedicated doc fribidi libressl nls server"
 
 RDEPEND="
+	acct-group/wesnoth
+	acct-user/wesnoth
 	>=dev-libs/boost-1.50:=[nls,threads,icu]
 	>=media-libs/libsdl2-2.0.4:0[joystick,video,X]
 	!dedicated? (
@@ -43,17 +45,6 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
-
-PATCHES=( "${FILESDIR}"/${P}-boost-1.70.patch )
-
-pkg_setup() {
-	if use openmp; then
-		tc-has-openmp || die "Please switch to an openmp compatible compiler"
-	fi
-
-	enewgroup ${PN}
-	enewuser ${PN} -1 /bin/bash -1 ${PN}
-}
 
 src_prepare() {
 	cmake_src_prepare
@@ -105,7 +96,6 @@ src_configure() {
 		-DENABLE_NLS="$(usex nls)"
 		-DENABLE_NOTIFICATIONS="$(usex dbus)"
 		-DENABLE_FRIBIDI="$(usex fribidi)"
-		-DENABLE_OMP="$(usex openmp)"
 		-DENABLE_STRICT_COMPILATION="OFF"
 		)
 	cmake_src_configure
