@@ -1326,7 +1326,7 @@ app-editors/ne 3.1.1: the nice editor, easy to use for the beginner and powerful
 app-editors/nedit 5.6-r1 5.6-r2 5.7: Multi-purpose text editor for the X Window System
 app-editors/neovim 0.4.3 9999: Vim-fork focused on extensibility and agility.
 app-editors/ng 1.5_beta1-r2: Emacs like micro editor Ng -- based on mg2a
-app-editors/notepadqq 1.2.0 1.4.8 9999: Notepad++-like editor for Linux
+app-editors/notepadqq 2.0.0_beta 9999: Notepad++-like editor for Linux
 app-editors/nvi 1.81.6-r7: Re-implementation of the classic 4BSD ex/vi
 app-editors/okteta 0.26.3: Hex editor by KDE
 app-editors/padre 1.0.0-r1: Perl Application Development and Refactoring Environment
@@ -11674,7 +11674,7 @@ gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to loc
 gnome-extra/nemo 3.6.4-r1 3.8.6-r1 4.0.6: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.8.24 1.8.25: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
-gnome-extra/pch-session 3.30.0.2 3.32.0: Unofficial gnome based session with different default settings and extensions
+gnome-extra/pch-session 3.32.0 3.34.1: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.32.1: A quick previewer for Nautilus, the GNOME file manager
