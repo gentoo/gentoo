@@ -1,0 +1,52 @@
+https://bugs.gentoo.org/700108
+
+--- sendmail-8.15.2-r1/libmilter/sm_gethost.c.orig	2014-03-04 19:59:45.000000000 -0500
++++ sendmail-8.15.2-r1/libmilter/sm_gethost.c	2019-11-15 09:32:25.812406080 -0500
+@@ -51,18 +51,21 @@
+ {
+ 	bool resv6 = true;
+ 	struct hostent *h;
+-
++#ifdef RES_USE_INET6
+ 	if (family == AF_INET6)
+ 	{
+ 		/* From RFC2133, section 6.1 */
+ 		resv6 = bitset(RES_USE_INET6, _res.options);
+ 		_res.options |= RES_USE_INET6;
+ 	}
++#endif
+ 	SM_SET_H_ERRNO(0);
+ 	h = gethostbyname(name);
++#ifdef RES_USE_INET6
+ 	if (family == AF_INET6 && !resv6)
+ 		_res.options &= ~RES_USE_INET6;
+ 
++#endif
+ 	/* the function is supposed to return only the requested family */
+ 	if (h != NULL && h->h_addrtype != family)
+ 	{
+--- sendmail-8.15.2-r2/sendmail/conf.c.orig	2019-11-14 17:36:41.262218822 -0500
++++ sendmail-8.15.2-r2/sendmail/conf.c	2019-11-15 09:57:43.550284580 -0500
+@@ -4243,18 +4243,21 @@
+ 
+ # else /* HAS_GETHOSTBYNAME2 */
+ 	bool resv6 = true;
+-
++#ifdef RES_USE_INET6
+ 	if (family == AF_INET6)
+ 	{
+ 		/* From RFC2133, section 6.1 */
+ 		resv6 = bitset(RES_USE_INET6, _res.options);
+ 		_res.options |= RES_USE_INET6;
+ 	}
++#endif
+ 	SM_SET_H_ERRNO(0);
+ 	h = gethostbyname(name);
++#ifdef RES_USE_INET6
+ 	if (!resv6)
+ 		_res.options &= ~RES_USE_INET6;
+ 
++#endif
+ 	/* the function is supposed to return only the requested family */
+ 	if (h != NULL && h->h_addrtype != family)
+ 	{

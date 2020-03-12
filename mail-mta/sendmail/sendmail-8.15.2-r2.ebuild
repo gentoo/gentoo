@@ -59,6 +59,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/libmilter-sharedlib.patch
 	eapply -p0 "${FILESDIR}"/sendmail-starttls-multi-crl.patch
 	eapply "${FILESDIR}"/${P}-openssl-1.1.0-fix.patch
+	eapply "${FILESDIR}"/${P}-glibc-2.30.patch
 
 	local confCC="$(tc-getCC)"
 	local confCCOPTS="${CFLAGS}"
