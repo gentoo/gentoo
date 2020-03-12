@@ -5,6 +5,8 @@ EAPI=6
 
 inherit autotools eutils qmake-utils
 
+MY_PV=${PV//./_}
+
 DESCRIPTION="GPS waypoints, tracks and routes converter"
 HOMEPAGE="https://www.gpsbabel.org/ https://github.com/gpsbabel/gpsbabel"
 LICENSE="GPL-2"
@@ -15,10 +17,11 @@ if [[ ${PV} == 9999 ]] ; then
 	SRC_URI="doc? ( https://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )"
 else
 	SRC_URI="
-		https://dev.gentoo.org/~asturm/${P}.tar.gz
+		https://github.com/gpsbabel/gpsbabel/archive/gpsbabel_${MY_PV}.tar.gz
 		doc? ( https://www.gpsbabel.org/style3.css -> gpsbabel.org-style3.css )
 	"
 	KEYWORDS="~amd64 ~ppc ~x86"
+	S="${WORKDIR}/gpsbabel-gpsbabel_${MY_PV}"
 fi
 
 SLOT="0"
@@ -52,7 +55,7 @@ DOCS=( AUTHORS README.{contrib,igc,mapconverter,md,xmapwpt} )
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-1.5.4-disable_statistic_uploading.patch
-	"${FILESDIR}"/${PN}-9999-disable_update_check.patch
+	"${FILESDIR}"/${PN}-1.6.0-disable_update_check.patch
 	"${FILESDIR}"/${PN}-1.5.4-disable_version_check.patch
 	"${FILESDIR}"/${PN}-9999-use_system_shapelib.patch
 	"${FILESDIR}"/${PN}-9999-xmldoc.patch
