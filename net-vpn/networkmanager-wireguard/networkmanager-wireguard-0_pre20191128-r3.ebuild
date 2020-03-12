@@ -24,7 +24,7 @@ RDEPEND="
 	glib? ( dev-libs/glib )
 	gtk? (
 		app-crypt/libsecret
-		gnome-extra/nm-applet
+		gnome-extra/nm-applet[gtk]
 		x11-libs/gtk+:3
 	)
 "
