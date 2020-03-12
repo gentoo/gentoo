@@ -17,7 +17,7 @@ src_compile() {
 }
 
 src_install() {
-	"${S}"/bin/go-md2man -in go-md2man.1.md -out go-md2man.1 || ||
+	"${S}"/bin/go-md2man -in go-md2man.1.md -out go-md2man.1 ||
 		die "Unable to create man page"
 	dobin bin/go-md2man
 	doman go-md2man.1
