@@ -1,0 +1,27 @@
+From 7930deeee0c6f00a092b73c9d098873c2344ffdf Mon Sep 17 00:00:00 2001
+From: "Andreas K. Huettel" <dilfridge@gentoo.org>
+Date: Thu, 12 Mar 2020 21:25:04 +0100
+Subject: [PATCH] Gentoo: Use xml stylesheet from distdir instead of net access
+
+---
+ Makefile.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Makefile.in b/Makefile.in
+index 091db602..0093e581 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -282,8 +282,8 @@ gpsbabel.html: FORCE # gpsbabel
+ 	  --stringparam html.cleanup "1" \
+ 	  --stringparam make.clean.html "1" \
+ 	  --stringparam html.valid.html "1" \
+-	  --stringparam html.stylesheet \
+-	  "https://www.gpsbabel.org/style3.css" \
++	  --nonet \
++	  --stringparam html.stylesheet "gpsbabel.org-style3.css" \
+ 	  http://docbook.sourceforge.net/release/xsl/current/xhtml/docbook.xsl \
+ 	xmldoc/readme.xml
+ 
+-- 
+2.24.1
+
