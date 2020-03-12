@@ -1368,7 +1368,7 @@ app-emacs/auctex 11.92 12.1-r1 12.2: Extensible package for writing and formatti
 app-emacs/auto-complete 1.5.1-r1: Auto-complete package
 app-emacs/autoconf-mode 2.69-r1: Emacs major modes for editing autoconf and autotest input
 app-emacs/basic-toolkit 0.7: Basic edit toolkit
-app-emacs/bbdb 3.1.2-r1: The Insidious Big Brother Database
+app-emacs/bbdb 3.1.2-r2 3.2_pre20180106: The Insidious Big Brother Database
 app-emacs/binclock 1.11: Display the current time using a binary clock
 app-emacs/bison-mode 0.3: Emacs major mode for Bison, Yacc and Lex grammars
 app-emacs/blogmax 20170321: Blogging in Emacs
