@@ -16855,8 +16855,8 @@ sys-apps/onerng 3.6-r2 3.6-r3: Software for the Open Hardware Random Number Gene
 sys-apps/opal-utils 6.5 6.5.2: OPAL firmware utilities
 sys-apps/openrc 0.41.2 0.42.1 9999: OpenRC manages the services, startup and shutdown of a host
 sys-apps/opentmpfiles 0.1.1 0.1.2 0.1.3 0.1.3-r1 0.2 9999: A standalone utility to process systemd-style tmpfiles.d files
-sys-apps/osinfo-db 20190218 20190319 20200214: osinfo database files
-sys-apps/osinfo-db-tools 1.4.0 1.6.0-r1: Tools for managing the osinfo database
+sys-apps/osinfo-db 20200214: osinfo database files
+sys-apps/osinfo-db-tools 1.6.0-r1: Tools for managing the osinfo database
 sys-apps/pacman 5.0.2-r2: Archlinux's binary package manager
 sys-apps/paxctl 0.7-r2 0.8 0.9: Manages various PaX related program header flags for Elf32, Elf64, binaries
 sys-apps/paxctld 1.2.3: PaX flags maintenance daemon
@@ -17505,7 +17505,7 @@ sys-libs/libixp 0.5_p20110208-r3: A stand-alone client/server 9P library includi
 sys-libs/libkudzu 1.2.57.1: Red Hat Hardware detection tools
 sys-libs/libnih 1.0.3-r3: Light-weight 'standard library' of C functions
 sys-libs/libomp 7.1.0 8.0.1 9.0.1 10.0.0_rc3 10.0.0.9999 11.0.0.9999: OpenMP runtime library for LLVM/clang compiler
-sys-libs/libosinfo 1.4.0 1.6.0: GObject library for managing information about real and virtual OSes
+sys-libs/libosinfo 1.6.0: GObject library for managing information about real and virtual OSes
 sys-libs/libraw1394 2.1.0-r1 2.1.1 2.1.2 2.1.2-r1: Library that provides direct access to the IEEE 1394 bus
 sys-libs/librtas 2.0.2: A set of libraries for userspace access to RTAS on the PowerPC platform(s)
 sys-libs/libseccomp 2.4.2-r1 2.4.3: high level interface to Linux seccomp filter
@@ -17960,8 +17960,8 @@ www-client/elinks 0.12_pre6-r1 0.12_pre6-r4 0.13_pre_pre20180225 9999: Advanced 
 www-client/epiphany 3.30.5 3.32.6: GNOME webbrowser based on Webkit
 www-client/falkon 3.1.0-r1: Cross-platform web browser using QtWebEngine
 www-client/fetch 1.0-r3: HTTP download tool built atop the HTTP fetcher library
-www-client/firefox 52.9.0 68.2.0 68.3.0 68.4.1 68.4.2 68.5.0 68.6.0-r1 73.0.1 74.0-r1: Firefox Web Browser
-www-client/firefox-bin 52.9.0 68.5.0-r1 68.6.0 73.0.1 74.0: Firefox Web Browser
+www-client/firefox 52.9.0 68.6.0-r1 74.0-r1: Firefox Web Browser
+www-client/firefox-bin 52.9.0 68.6.0 74.0: Firefox Web Browser
 www-client/google-chrome 80.0.3987.132: The web browser from Google
 www-client/google-chrome-beta 81.0.4044.43: The web browser from Google
 www-client/google-chrome-unstable 82.0.4068.4: The web browser from Google
