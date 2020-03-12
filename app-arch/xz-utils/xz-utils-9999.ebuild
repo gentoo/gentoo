@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Remember: we cannot leverage autotools in this ebuild in order
 #           to avoid circular deps with autotools
 
-EAPI=6
+EAPI=7
 
 inherit multilib toolchain-funcs libtool multilib-minimal preserve-libs usr-ldscript
 
@@ -12,14 +12,13 @@ if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://git.tukaani.org/xz.git"
 	inherit git-r3 autotools
 	SRC_URI=""
-	EXTRA_DEPEND="sys-devel/gettext dev-vcs/cvs >=sys-devel/libtool-2" #272880 286068
+	BDEPEND="sys-devel/gettext dev-vcs/cvs >=sys-devel/libtool-2" #272880 286068
 else
 	MY_P="${PN/-utils}-${PV/_}"
 	SRC_URI="https://tukaani.org/xz/${MY_P}.tar.gz"
 	[[ "${PV}" == *_alpha* ]] || [[ "${PV}" == *_beta* ]] || \
 	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86 ~ppc-aix ~x64-cygwin ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~m68k-mint ~sparc-solaris ~sparc64-solaris ~x64-solaris ~x86-solaris"
 	S="${WORKDIR}/${MY_P}"
-	EXTRA_DEPEND=
 fi
 
 DESCRIPTION="utils for managing LZMA compressed files"
@@ -32,8 +31,7 @@ IUSE="elibc_FreeBSD +extra-filters nls static-libs +threads"
 
 RDEPEND="!<app-arch/lzma-4.63
 	!<app-arch/p7zip-4.57"
-DEPEND="${RDEPEND}
-	${EXTRA_DEPEND}"
+DEPEND="${RDEPEND}"
 
 # Tests currently do not account for smaller feature set
 RESTRICT="!extra-filters? ( test )"
@@ -78,8 +76,8 @@ multilib_src_install() {
 }
 
 multilib_src_install_all() {
-	find "${ED}" -name '*.la' -delete || die
-	rm "${ED%/}"/usr/share/doc/${PF}/COPYING* || die
+	find "${ED}" -type f -name '*.la' -delete || die
+	rm "${ED}"/usr/share/doc/${PF}/COPYING* || die
 }
 
 pkg_preinst() {
