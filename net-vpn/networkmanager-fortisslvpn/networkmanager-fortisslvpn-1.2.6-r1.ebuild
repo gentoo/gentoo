@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,7 +23,7 @@ RDEPEND="
 	>=net-vpn/openfortivpn-1.2.0
 	gtk? (
 		>=app-crypt/libsecret-0.18
-		>=gnome-extra/nm-applet-1.2.0
+		>=gnome-extra/nm-applet-1.2.0[gtk]
 		>=x11-libs/gtk+-3.4:3
 	)
 "
