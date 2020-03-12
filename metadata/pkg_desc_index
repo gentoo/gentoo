@@ -10057,7 +10057,7 @@ dev-ruby/simple-rss 1.3.3: A simple, flexible, extensible, and liberal RSS and A
 dev-ruby/simple_oauth 0.3.1: Simply builds and verifies OAuth headers
 dev-ruby/simplecov 0.16.1-r1 0.17.0 0.17.1 0.18.5: Code coverage with a configuration library and merging across test suites
 dev-ruby/simplecov-html 0.10.2 0.11.0 0.12.0 0.12.1 0.12.2: Generates a HTML report of your SimpleCov ruby code coverage results
-dev-ruby/sinatra 1.4.8 2.0.5 2.0.7 2.0.8.1: A DSL for quickly creating web applications in Ruby with minimal effort
+dev-ruby/sinatra 1.4.8 2.0.5 2.0.7 2.0.8.1 2.0.8.1-r1: A DSL for quickly creating web applications in Ruby with minimal effort
 dev-ruby/sinatra-partial 1.0.1: Just the partials helper in a gem
 dev-ruby/six 0.2.0: An ultra lite authorization library
 dev-ruby/slim 3.0.9 3.0.9-r1 4.0.1 4.0.1-r1: A template language aiming to reduce the syntax to the essential parts
