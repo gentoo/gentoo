@@ -21,6 +21,7 @@ RDEPEND="
 	net-misc/networkmanager
 	net-vpn/strongswan[networkmanager]
 	x11-libs/gtk+:3
+	glib? ( gnome-extra/nm-applet[gtk] )
 "
 
 DEPEND="
