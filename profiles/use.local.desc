@@ -7693,6 +7693,7 @@ sci-physics/root:c++11 - Build using the C++11 standard
 sci-physics/root:c++14 - Build using the C++14 standard
 sci-physics/root:c++17 - Build using the C++17 standard
 sci-physics/root:cuda - Enable support for nVidia CUDA
+sci-physics/root:cudnn - Enable support for nVidia cuDNN library
 sci-physics/root:davix - Enable support for DAVIX Data Management Client (https://cern.ch/davix)
 sci-physics/root:fits - Enable support for images and data from FITS files with sci-libs/cfitsio
 sci-physics/root:fortran - Compile included Fortran programs

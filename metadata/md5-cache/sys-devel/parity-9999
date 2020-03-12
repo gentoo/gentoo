@@ -1,11 +1,11 @@
+BDEPEND=dev-util/confix >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=configure postinst prepare unpack
-DEPEND=dev-util/confix >=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
 DESCRIPTION=A POSIX to native Win32 Cross-Compiler Tool (requires Visual Studio)
-EAPI=6
+EAPI=7
 HOMEPAGE=https://github.com/mduft/parity
 IUSE=+vcx64 +vcx86 vc8_0 vc9_0 +vc10_0 +vc11_0 +vc12_0 +vc14_0 +vc15 +vc16
 LICENSE=LGPL-3
 PROPERTIES=live
 SLOT=0
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=35e121e7bf080276847e752101fa7a58
+_md5_=86b75114ceea78c310716ea0a691c7f5
