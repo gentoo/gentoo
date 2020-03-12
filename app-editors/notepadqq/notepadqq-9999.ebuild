@@ -35,6 +35,7 @@ DEPEND="
 	${RDEPEND}
 	dev-qt/linguist-tools:5
 	dev-qt/qttest:5
+	dev-qt/qtwebsockets:5
 "
 
 src_prepare() {
