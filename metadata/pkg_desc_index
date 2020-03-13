@@ -14487,7 +14487,7 @@ net-im/mattermost-desktop-bin 4.4.0: Mattermost Desktop application
 net-im/mcabber 1.1.0-r1 1.1.0-r2 9999: A small Jabber console client with various features, like MUC, SSL, PGP
 net-im/minbif 1.0.5-r2: IRC gateway to IM networks
 net-im/openmittsu 0.9.13.32 0.9.13.46: An open source chat client for Threema-style end-to-end encrypted chat networks
-net-im/pidgin 2.13.0-r6: GTK Instant Messenger client
+net-im/pidgin 2.13.0-r7: GTK Instant Messenger client
 net-im/poezio 0.12 9999: Console XMPP client that looks like most famous IRC clients
 net-im/profanity 0.6.0 0.7.1: A console based XMPP client inspired by Irssi
 net-im/prosody 0.9.14 0.11.2-r1 0.11.3: Prosody is a flexible communications server for Jabber/XMPP written in Lua
@@ -15350,15 +15350,15 @@ net-vpn/ipsec-tools 0.8.2-r5: A port of KAME's IPsec utilities to the Linux-2.6 
 net-vpn/isatapd 0.9.7-r2: Creates and maintains an ISATAP tunnel (rfc5214)
 net-vpn/libreswan 3.29 3.30 3.31: IPsec implementation for Linux, fork of Openswan
 net-vpn/logmein-hamachi 2.1.0.174 2.1.0.198: LogMeIn Hamachi VPN tunneling engine
-net-vpn/networkmanager-fortisslvpn 1.2.6 1.2.8: NetworkManager Fortinet SSLVPN compatible plugin
+net-vpn/networkmanager-fortisslvpn 1.2.6-r1 1.2.8-r1: NetworkManager Fortinet SSLVPN compatible plugin
 net-vpn/networkmanager-l2tp 1.2.12 1.8.0: NetworkManager L2TP plugin
 net-vpn/networkmanager-libreswan 1.2.12: NetworkManager libreswan plugin
 net-vpn/networkmanager-openconnect 1.2.6: NetworkManager OpenConnect plugin
-net-vpn/networkmanager-openvpn 1.8.10: NetworkManager OpenVPN plugin
-net-vpn/networkmanager-pptp 1.2.8: NetworkManager PPTP VPN plugin
+net-vpn/networkmanager-openvpn 1.8.10-r1: NetworkManager OpenVPN plugin
+net-vpn/networkmanager-pptp 1.2.8-r1: NetworkManager PPTP VPN plugin
 net-vpn/networkmanager-sstp 1.2.0: Client for the proprietary Microsoft Secure Socket Tunneling Protocol(SSTP)
 net-vpn/networkmanager-strongswan 1.4.5-r1: NetworkManager StrongSwan plugin
-net-vpn/networkmanager-vpnc 1.2.6: NetworkManager VPNC plugin
+net-vpn/networkmanager-vpnc 1.2.6-r1: NetworkManager VPNC plugin
 net-vpn/networkmanager-wireguard 0_pre20191128-r3 9999: NetworkManager WireGuard plugin
 net-vpn/nstx 1.1_beta6-r3: IP over DNS tunnel
 net-vpn/openconnect 8.05 9999: Free client for Cisco AnyConnect SSL VPN software
