@@ -214,9 +214,11 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-qemu )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
+	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
+	"${FILESDIR}"/${PN}-4.0.0-sanitize-interp_info.patch
 	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
-	"${FILESDIR}"/${PN}-4.2.0-cflags.patch
 )
 
 QA_PREBUILT="
@@ -436,6 +438,7 @@ qemu_src_configure() {
 		fi
 	}
 	conf_opts+=(
+		--disable-bluez
 		$(conf_notuser accessibility brlapi)
 		$(conf_notuser aio linux-aio)
 		$(conf_notuser bzip2)
