@@ -59,7 +59,6 @@ all_ruby_prepare() {
 
 	# loosen dependencies
 	sed -e '/hashicorp-checkpoint\|i18n\|listen\|net-ssh\|net-scp\|rake\|childprocess/s/~>/>=/' \
-		-e '/ruby_dep/s/<=/>=/' \
 		-i ${PN}.gemspec || die
 
 	# remove windows-specific gems
@@ -68,6 +67,10 @@ all_ruby_prepare() {
 
 	# remove bsd-specific gems
 	sed -e '/rb-kqueue/d' \
+		-i ${PN}.gemspec || die
+
+	# remove ruby_dep, it's unused and only listed to loosen ruby implementation deps
+	sed -e '/ruby_dep/d' \
 		-i ${PN}.gemspec || die
 
 	sed -e "s/@VAGRANT_VERSION@/${PV}/g" "${FILESDIR}/${PN}.in" > "${PN}" || die
