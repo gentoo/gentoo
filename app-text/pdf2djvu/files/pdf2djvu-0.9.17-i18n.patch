@@ -1,0 +1,14 @@
+--- a/i18n.hh	2020-03-13 17:41:28.315195957 +0100
++++ b/i18n.hh	2020-03-13 17:42:12.919272071 +0100
+@@ -40,11 +40,6 @@
+ 
+ #else
+ 
+-static inline const char * ngettext(const char *message_id, const char *message_id_plural, unsigned long int n)
+-{
+-  return n == 1 ? message_id : message_id_plural;
+-}
+-
+ static inline const char * _(const char *message_id)
+ {
+   return message_id;
