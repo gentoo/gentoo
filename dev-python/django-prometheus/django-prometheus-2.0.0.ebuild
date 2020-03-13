@@ -18,6 +18,6 @@ DEPEND=">=dev-python/prometheus_client-0.7[${PYTHON_USEDEP}]"
 RDEPEND="${DEPEND}"
 
 python_prepare_all() {
-	sed -i "s/'pytest-runner'//" setup.py || die
+	sed -i "/pytest-runner/d" setup.py || die
 	distutils-r1_python_prepare_all
 }
