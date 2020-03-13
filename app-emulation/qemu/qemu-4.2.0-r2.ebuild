@@ -23,7 +23,8 @@ if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	SRC_URI=""
 else
-	SRC_URI="https://download.qemu.org/${P}.tar.xz"
+	SRC_URI="https://download.qemu.org/${P}.tar.xz
+		https://dev.gentoo.org/~tamiko/distfiles/${P}-patches-r1.tar.xz"
 	KEYWORDS="~amd64 ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
@@ -214,9 +215,12 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-qemu )"
 
 PATCHES=(
+	"${FILESDIR}"/${PN}-2.5.0-cflags.patch
+	"${FILESDIR}"/${PN}-2.5.0-sysmacros.patch
 	"${FILESDIR}"/${PN}-2.11.1-capstone_include_path.patch
+	"${FILESDIR}"/${PN}-4.0.0-sanitize-interp_info.patch
 	"${FILESDIR}"/${PN}-4.0.0-mkdir_systemtap.patch #684902
-	"${FILESDIR}"/${PN}-4.2.0-cflags.patch
+	"${WORKDIR}"/patches
 )
 
 QA_PREBUILT="
@@ -436,6 +440,7 @@ qemu_src_configure() {
 		fi
 	}
 	conf_opts+=(
+		--disable-bluez
 		$(conf_notuser accessibility brlapi)
 		$(conf_notuser aio linux-aio)
 		$(conf_notuser bzip2)
