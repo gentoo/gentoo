@@ -10417,7 +10417,7 @@ dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2019.3.3: A complete toolset for C and C++ development
 dev-util/cloc 1.72 1.76-r1 1.80 1.82: Count Lines of Code
-dev-util/cmake 3.13.5 3.14.6 3.16.4 3.16.5 3.17.0_rc2: Cross platform Make
+dev-util/cmake 3.13.5 3.14.6 3.16.4 3.16.5 3.17.0_rc3: Cross platform Make
 dev-util/cmake-fedora 2.7.1: Provides cmake helper macros and targets for linux, especially fedora developers
 dev-util/cmdtest 0.30 0.32: black box tests Unix command line tools
 dev-util/cmocka 1.1.5: Unit testing framework for C
@@ -17328,7 +17328,7 @@ sys-fs/copyfs 1.0.1-r1: fuse-based filesystem for maintaining configuration file
 sys-fs/cramfs 1.1: Linux filesystem designed to be simple, small, and to compress things well
 sys-fs/cryfs 0.10.2 9999: Encrypted FUSE filesystem that conceals metadata
 sys-fs/cryptmount 5.3.2: A utility for management and user-mode mounting of encrypted filesystems
-sys-fs/cryptsetup 1.7.5-r1 2.2.1-r1 2.2.2 2.3.0: Tool to setup encrypted devices with dm-crypt
+sys-fs/cryptsetup 1.7.5-r1 2.2.1-r1 2.2.2 2.3.0 2.3.1: Tool to setup encrypted devices with dm-crypt
 sys-fs/ctmg 1.2: Simple wrapper around cryptsetup for encrypted containers
 sys-fs/davl 1.2.4-r2: Visualizes the fragmentation status of ext2/3 filesystems
 sys-fs/dd-rescue 1.46 1.99.8: Similar to dd but can copy from source with errors
