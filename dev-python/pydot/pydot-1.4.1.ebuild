@@ -24,6 +24,10 @@ DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( dev-python/chardet[${PYTHON_USEDEP}] )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-unittest.patch
+)
+
 python_test() {
 	cd test || die
 	"${PYTHON}" pydot_unittest.py || die "Test failed with ${EPYTHON}"
