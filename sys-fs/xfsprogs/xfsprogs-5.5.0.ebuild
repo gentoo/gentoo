@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -62,6 +62,9 @@ src_configure() {
 	export OPTIMIZER=" "
 
 	unset PLATFORM # if set in user env, this breaks configure
+
+	# Avoid automagic on libdevmapper, #709694
+	export ac_cv_search_dm_task_create=no
 
 	# Upstream does NOT support --disable-static anymore,
 	# https://www.spinics.net/lists/linux-xfs/msg30185.html
