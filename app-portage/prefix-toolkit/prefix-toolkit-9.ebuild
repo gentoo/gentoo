@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -23,14 +23,21 @@ BDEPEND="${DEPEND}
 # In prefix-stack, these dependencies actually are the @system set,
 # as we rely on the base prefix anyway for package management,
 # which should have a proper @system set.
+# Strictly speaking, only baselayout and gcc-config are necessary
+# (and pthreads4w for Winnt), but it is easier for now to install
+# elt-patches, gentoo-functions and gnuconfig as well, instead of
+# fixing all uses that expect them in EPREFIX rather than BROOT.
 # See als: pkg_preinst
 RDEPEND="${DEPEND}
 	prefix-stack? (
 		>=sys-apps/baselayout-prefix-2.6
-		sys-apps/gentoo-functions
-		app-portage/elt-patches
-		sys-devel/gnuconfig
 		sys-devel/gcc-config
+		elibc_Winnt? (
+			dev-libs/pthreads4w
+		)
+		app-portage/elt-patches
+		sys-apps/gentoo-functions
+		sys-devel/gnuconfig
 	)
 "
 
@@ -64,7 +71,10 @@ src_unpack() {
 	else
 		my_unpack prefix-stack-setup
 	fi
-	my_unpack startprefix
+	if use prefix; then
+		# does not make sense on vanilla Gentoo
+		my_unpack startprefix
+	fi
 }
 
 my_prefixify() {
@@ -131,11 +141,14 @@ src_install() {
 		newins prefix-stack.bashrc bashrc
 		newenvd prefix-stack.envd.99stack 99stack
 		doenvd 000fallback
+		keepdir /usr/share/aclocal
 	else
 		dobin prefix-stack-setup
 	fi
-	exeinto /
-	doexe startprefix
+	if use prefix; then
+		exeinto /
+		doexe startprefix
+	fi
 }
 
 pkg_preinst() {
@@ -173,6 +186,12 @@ pkg_preinst() {
 	[[ ${PIPESTATUS[@]} == "0 0" ]] || die "failed to collect for ${systemset}"
 	echo "*${CATEGORY}/${PN} # maintained by ${PN}-${PVR}" >> "${ED}${systemset}" || die
 	eend $?
+}
+
+pkg_postinst() {
+	use prefix-stack || return 0
+	[[ -x ${EROOT}/usr/bin/gcc-config ]] || return 0
+	"${EROOT}"/usr/bin/gcc-config ${CHOST}-${P}
 }
 
 return 0
@@ -316,6 +335,7 @@ EOIN
 
 : prefix-stack.envd.99stack <<'EOIN'
 PKG_CONFIG_PATH@=@"@GENTOO_PORTAGE_EPREFIX@/usr/lib/pkgconfig:@GENTOO_PORTAGE_EPREFIX@/usr/share/pkgconfig"
+AT_SYS_M4DIR@=@"@GENTOO_PORTAGE_EPREFIX@/usr/share/aclocal"
 PORTAGE_CONFIGROOT@=@"@GENTOO_PORTAGE_EPREFIX@"
 EPREFIX@=@"@GENTOO_PORTAGE_EPREFIX@"
 EOIN
@@ -547,6 +567,10 @@ ebegin "installing required basic packages"
 		sys-devel/gnuconfig \
 		sys-devel/gcc-config
 
+	# get eventual dependencies, add to world
+	emerge --verbose --update --deep \
+		app-portage/prefix-toolkit
+
 	# select the stack wrapper profile from gcc-config
 	env -i PORTAGE_CONFIGROOT="${CHILD_EPREFIX}" \
 		"$(type -P bash)" "${CHILD_EPREFIX}"/usr/bin/gcc-config 1
@@ -572,6 +596,7 @@ fi
 
 myself=${0##*/} # basename $0
 link_dirs=()
+linkopts=()
 opts=()
 chost="@GENTOO_PORTAGE_CHOST@"
 prefix="@GENTOO_PORTAGE_EPREFIX@"
@@ -586,6 +611,18 @@ orig_args=("$@")
 
 for opt in "$@"
 do
+	if [[ ${chost} == *"-winnt"* ]]; then
+		# We depend on dev-libs/pthreads4w, no?
+		case ${opt} in
+		-pthread | -lpthread)
+			case " ${linkopts[*]} " in
+			*" -lpthread "*) ;;
+			*) linkopts=( "${linkopts[@]}" "-lpthread" ) ;;
+			esac
+			continue
+			;;
+		esac
+	fi
 	case "$opt" in
 	-L)
 		link_dirs=("${link_dirs[@]}" "-L$1")
@@ -648,7 +685,7 @@ esac
 [[ ${myself} == *-*-*-* ]] || myself=${chost}-${myself#${chost}-}
 
 case "$mode" in
-link)    exec "${myself}" "${link_dirs[@]}" "${pfx_link[@]}" "${opts[@]}" "${pfx_comp[@]}" "${pfx_link_r[@]}" ;;
+link)    exec "${myself}" "${link_dirs[@]}" "${pfx_link[@]}" "${opts[@]}" "${pfx_comp[@]}" "${pfx_link_r[@]}" "${linkopts[@]}" ;;
 compile) exec "${myself}" "${link_dirs[@]}" "${opts[@]}" "${pfx_comp[@]}" ;;
 version) exec "${myself}" "${orig_args[@]}" ;;
 dirs)
