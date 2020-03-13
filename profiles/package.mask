@@ -251,7 +251,6 @@ dev-python/tpg
 dev-python/translationstring
 dev-python/trollius
 dev-python/twitter
-dev-python/twython
 dev-python/uhashring
 dev-python/uncompyle6
 dev-python/venusian
