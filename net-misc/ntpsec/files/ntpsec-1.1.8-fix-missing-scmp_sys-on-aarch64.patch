@@ -1,0 +1,16 @@
+diff --git a/ntpd/ntp_sandbox.c b/ntpd/ntp_sandbox.c
+index 4e5ceaa36c1a7b452445023e201ddb6211625c52..78ac7aea263ed3d3394b2d32e79a6836f0387434 100644
+--- a/ntpd/ntp_sandbox.c
++++ b/ntpd/ntp_sandbox.c
+@@ -428,6 +428,11 @@ int scmp_sc[] = {
+ 	/* gentoo 64-bit and 32-bit, Intel and Arm use mmap */
+ 	SCMP_SYS(mmap),
+ #endif
++#if defined(__aarch64__)
++	SCMP_SYS(faccessat),
++	SCMP_SYS(newfstatat),
++	SCMP_SYS(renameat),
++#endif
+ #if defined(__i386__) || defined(__arm__) || defined(__powerpc__)
+ 	SCMP_SYS(_newselect),
+ 	SCMP_SYS(_llseek),
