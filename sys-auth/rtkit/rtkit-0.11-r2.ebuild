@@ -5,8 +5,8 @@ EAPI=6
 inherit eutils systemd user autotools linux-info
 
 DESCRIPTION="Realtime Policy and Watchdog Daemon"
-HOMEPAGE="http://0pointer.de/blog/projects/rtkit"
-SRC_URI="http://0pointer.de/public/${P}.tar.xz"
+HOMEPAGE="https://0pointer.de/blog/projects/rtkit"
+SRC_URI="https://0pointer.de/public/${P}.tar.xz"
 
 LICENSE="GPL-3 BSD"
 SLOT="0"
