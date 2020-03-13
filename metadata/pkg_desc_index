@@ -1620,7 +1620,7 @@ app-emulation/libguestfs 1.36.13 1.36.15 1.38.6: Tools for accessing, inspect an
 app-emulation/libguestfs-appliance 1.36.1 1.38.0: VM appliance disk image used in libguestfs package
 app-emulation/libpod 1.6.4 1.7.0 1.8.0: Library and podman tool for running OCI-based containers in Pods
 app-emulation/libspectrum 1.4.2 1.4.4: Spectrum emulation library
-app-emulation/libvirt 5.2.0-r2 5.5.0-r1 5.6.0 5.8.0 5.10.0 6.0.0-r1 9999: C toolkit to manipulate virtual machines
+app-emulation/libvirt 5.10.0 6.0.0-r1 9999: C toolkit to manipulate virtual machines
 app-emulation/libvirt-glib 1.0.0-r1 2.0.0 3.0.0: GLib and GObject mappings for libvirt
 app-emulation/libvirt-snmp 0.0.4: Provides SNMP functionality for libvirt
 app-emulation/lxc 2.1.1-r1 3.0.3 3.1.0-r1: LinuX Containers userspace utilities
@@ -8024,7 +8024,7 @@ dev-python/libpillowfight 0.2.4 0.3.0: Small library containing various image pr
 dev-python/librsvg-python 2.32.0-r1: Python bindings for the librsvg library
 dev-python/libsass 0.19.4: A straightforward binding of libsass for Python
 dev-python/libtmux 0.8.2-r1: python api for tmux
-dev-python/libvirt-python 5.2.0 5.5.0 5.6.0 5.8.0 5.10.0 6.0.0 9999: libvirt Python bindings
+dev-python/libvirt-python 5.10.0 6.0.0 9999: libvirt Python bindings
 dev-python/libzilla 1.5: Library for managing Bugzilla bug reports from the CLI
 dev-python/line_profiler 2.0 2.1.2 3.0.2: Line-by-line profiler
 dev-python/linecache2 1.0.0: Backports of the linecache module
