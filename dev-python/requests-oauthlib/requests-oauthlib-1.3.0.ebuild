@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 
 inherit distutils-r1
 
@@ -14,24 +14,23 @@ SRC_URI="https://github.com/requests/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 SLOT="0"
 LICENSE="ISC"
 KEYWORDS="~amd64 ~x86"
-IUSE="test"
-# tests fail with network-sandbox
-RESTRICT="!test? ( test )
-	test"
 
-DEPEND="test? (
-			dev-python/mock[${PYTHON_USEDEP}]
-			dev-python/requests-mock[${PYTHON_USEDEP}]
-		)"
 RDEPEND="
 	>=dev-python/requests-2.0.0[${PYTHON_USEDEP}]
-	>=dev-python/oauthlib-0.6.2[${PYTHON_USEDEP}]"
+	>=dev-python/oauthlib-3.0.0[${PYTHON_USEDEP}]"
+BDEPEND="
+	test? (
+		dev-python/requests-mock[${PYTHON_USEDEP}]
+	)"
 
-#Refrain from a doc build for now
-#python_compile_all() {
-#	use doc && emake -C docs html
-#}
+distutils_enable_tests unittest
 
-python_test() {
-	esetup.py test
+src_prepare() {
+	# require Internet access
+	sed -e 's:testCanPostBinaryData:_&:' \
+		-e 's:test_content_type_override:_&:' \
+		-e 's:test_url_is_native_str:_&:' \
+		-i tests/test_core.py || die
+
+	distutils-r1_src_prepare
 }
