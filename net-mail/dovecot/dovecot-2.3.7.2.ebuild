@@ -287,5 +287,5 @@ pkg_postinst() {
 		install_cert /etc/ssl/dovecot/server
 	fi
 
-	elog "Please read https://wiki2.dovecot.org/Upgrading/ for upgrade notes."
+	elog "Please read https://doc.dovecot.org/installation_guide/upgrading/ for upgrade notes."
 }
