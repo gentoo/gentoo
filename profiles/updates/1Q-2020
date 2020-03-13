@@ -7,3 +7,4 @@ move dev-python/pyzor mail-filter/pyzor
 move dev-python/python-sqlparse dev-python/sqlparse
 move dev-python/ghp-import dev-vcs/ghp-import
 move app-doc/ghp-import dev-vcs/ghp-import
+move dev-python/git-python dev-python/GitPython
