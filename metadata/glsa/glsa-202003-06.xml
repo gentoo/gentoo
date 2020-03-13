@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-06">
+  <title>Ruby: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Ruby, the worst of
+    which could lead to the remote execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ruby</product>
+  <announced>2020-03-13</announced>
+  <revised count="1">2020-03-13</revised>
+  <bug>696004</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-lang/ruby" auto="yes" arch="*">
+      <unaffected range="ge" slot="2.4">2.4.9</unaffected>
+      <unaffected range="ge" slot="2.5">2.5.7</unaffected>
+      <vulnerable range="lt" slot="2.4">2.4.9</vulnerable>
+      <vulnerable range="lt" slot="2.5">2.5.7</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Ruby is an interpreted object-oriented programming language. The
+      elaborate standard library includes an HTTP server (“WEBRick”) and a
+      class for XML parsing (“REXML”).
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Ruby. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code, have unauthorized access
+      by bypassing intended path matching or cause a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Ruby 2.4.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-2.4.9:2.4"
+    </code>
+    
+    <p>All Ruby 2.5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/ruby-2.5.7:2.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-15845">CVE-2019-15845</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-16201">CVE-2019-16201</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-16254">CVE-2019-16254</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-16255">CVE-2019-16255</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-10-26T17:40:41Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-13T02:29:30Z">whissi</metadata>
+</glsa>
