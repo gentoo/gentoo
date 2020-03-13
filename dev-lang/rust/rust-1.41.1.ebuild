@@ -79,7 +79,7 @@ DEPEND="${COMMON_DEPEND}
 		>=sys-devel/clang-3.5
 	)
 	system-bootstrap? ( ${BOOTSTRAP_DEPEND}	)
-	system-llvm? (
+	!system-llvm? (
 		dev-util/cmake
 		dev-util/ninja
 	)
