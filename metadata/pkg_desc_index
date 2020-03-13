@@ -8760,7 +8760,7 @@ dev-python/s3transfer 0.1.13-r1 0.2.0 0.2.1 0.3.1: An Amazon S3 Transfer Manager
 dev-python/sabyenc 3.3.5 3.3.6: Module providing raw yEnc encoding/decoding for SABnzbd
 dev-python/sarge 0.1.5: wrapper for subprocess which provides command pipeline functionality
 dev-python/scandir 1.10.0 1.10.0-r1: A better directory iterator and faster os.walk()
-dev-python/schedule 0.4.2 0.5.0: Python job scheduling for humans
+dev-python/schedule 0.6.0 9999: Python job scheduling for humans
 dev-python/schema 0.6.6: Library for validating Python data structures
 dev-python/scikit-build 0.10.0: Improved build system generator for Python C/C++/Fortran/Cython extensions
 dev-python/scoop 0.7.0-r1: Distributed Evolutionary Algorithms in Python
