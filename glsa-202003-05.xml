@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-05">
+  <title>e2fsprogs: Arbitrary code execution</title>
+  <synopsis>A vulnerability in e2fsprogs might allow an attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">e2fsprogs</product>
+  <announced>2020-03-13</announced>
+  <revised count="1">2020-03-13</revised>
+  <bug>695522</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-fs/e2fsprogs" auto="yes" arch="*">
+      <unaffected range="ge">1.45.4</unaffected>
+      <vulnerable range="lt">1.45.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>e2fsprogs is a set of utilities for maintaining the ext2, ext3 and ext4
+      file systems.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that e2fsprogs incorrectly handled certain ext4
+      partitions.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      corrupted file system using e2fsck, possibly resulting in execution of
+      arbitrary code with the privileges of the process or a Denial of Service
+      condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All e2fsprogs users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-fs/e2fsprogs-1.45.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5094">CVE-2019-5094</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-10-29T10:09:38Z">ackle</metadata>
+  <metadata tag="submitter" timestamp="2020-03-13T01:50:25Z">whissi</metadata>
+</glsa>
