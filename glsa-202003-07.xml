@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-07">
+  <title>RabbitMQ C client: Arbitrary code execution</title>
+  <synopsis>A vulnerability in RabbitMQ C client might allow an attacker to
+    execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">rabbitmq-c</product>
+  <announced>2020-03-13</announced>
+  <revised count="1">2020-03-13</revised>
+  <bug>701810</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/rabbitmq-c" auto="yes" arch="*">
+      <unaffected range="ge">0.10.0</unaffected>
+      <vulnerable range="lt">0.10.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A C-language AMQP client library for use with v2.0+ of the RabbitMQ
+      broker.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that RabbitMQ C client incorrectly handled certain
+      inputs.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, by sending a specially crafted request, could
+      possibly execute arbitrary code with the privileges of the process or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All RabbitMQ C client users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/rabbitmq-c-0.10.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18609">CVE-2019-18609</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-12-26T15:20:01Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-13T02:48:45Z">whissi</metadata>
+</glsa>
