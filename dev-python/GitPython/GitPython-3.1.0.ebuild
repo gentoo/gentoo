@@ -8,20 +8,17 @@ PYTHON_REQ_USE="threads(+)"
 
 inherit distutils-r1
 
-MY_PN=GitPython
-MY_P=${MY_PN}-${PV}
 GITDB_P=gitdb-4.0.2
 SMMAP_P=smmap-3.0.1
 
 DESCRIPTION="Library used to interact with Git repositories"
 HOMEPAGE="https://github.com/gitpython-developers/GitPython https://pypi.org/project/GitPython/"
-SRC_URI="mirror://pypi/${MY_PN::1}/${MY_PN}/${MY_P}.tar.gz
+SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz
 	test? (
-		https://dev.gentoo.org/~mgorny/dist/${MY_P}.gitbundle
+		https://dev.gentoo.org/~mgorny/dist/${P}.gitbundle
 		https://dev.gentoo.org/~mgorny/dist/${GITDB_P}.gitbundle
 		https://dev.gentoo.org/~mgorny/dist/${SMMAP_P}.gitbundle
 	)"
-S=${WORKDIR}/${MY_P}
 
 LICENSE="BSD"
 SLOT="0"
@@ -41,7 +38,7 @@ src_test() {
 	git config --global user.email "you@example.com" || die
 	git config --global user.name "Your Name" || die
 
-	git clone "${DISTDIR}/${MY_P}.gitbundle" "${T}"/test || die
+	git clone "${DISTDIR}/${P}.gitbundle" "${T}"/test || die
 	git clone "${DISTDIR}/${GITDB_P}.gitbundle" \
 		"${T}"/test/git/ext/gitdb || die
 	git clone "${DISTDIR}/${SMMAP_P}.gitbundle" \
