@@ -36,6 +36,11 @@ S="${WORKDIR}/${PN}-${COMMIT}"
 FONT_S="${S}"
 FONT_SUFFIX="ttf"
 
+python_check_deps() {
+	has_version "dev-python/fonttools[${PYTHON_USEDEP}]" && \
+        has_version "dev-python/nototools[${PYTHON_USEDEP}]"
+}
+
 PATCHES=(
 	# From Fedora
 	"${FILESDIR}/${PN}-build-all-flags.patch"
