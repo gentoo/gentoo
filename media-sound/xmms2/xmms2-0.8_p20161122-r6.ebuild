@@ -288,7 +288,16 @@ src_test() {
 src_install() {
 	./waf --without-ldconfig --destdir="${D}" install || die "'waf install' failed"
 	dodoc AUTHORS TODO
+
 	python_optimize
+
+	# waftools/man.py always compresses man pages with gzip.
+	# to avoid code changed let's just un-gzip manpages
+	local m
+	for m in "${ED}"/usr/share/man/man1/*.gz; do
+		einfo "Uncompressing '${m#${ED}}' back."
+		gzip -d "${m}" || die
+	done
 }
 
 pkg_postinst() {
