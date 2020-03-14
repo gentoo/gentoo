@@ -15,6 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="consolekit gtk selinux systemd"
 
 CDEPEND="
+	dev-libs/glib:2
 	>=app-emulation/spice-protocol-0.14.0
 	media-libs/alsa-lib
 	>=x11-libs/libpciaccess-0.10
