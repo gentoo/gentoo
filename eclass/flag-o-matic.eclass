@@ -446,30 +446,30 @@ test-flag-PROG() {
 	case "${lang}" in
 		# compiler/assembler only
 		c)
-			in_ext='.c'
+			in_ext='c'
 			in_src='int main(void) { return 0; }'
 			cmdline_extra+=(-xc -c)
 			;;
 		c++)
-			in_ext='.cc'
+			in_ext='cc'
 			in_src='int main(void) { return 0; }'
 			cmdline_extra+=(-xc++ -c)
 			;;
 		f77)
-			in_ext='.f'
+			in_ext='f'
 			# fixed source form
 			in_src='      end'
 			cmdline_extra+=(-xf77 -c)
 			;;
 		f95)
-			in_ext='.f90'
+			in_ext='f90'
 			in_src='end'
 			cmdline_extra+=(-xf95 -c)
 			;;
 
 		# C compiler/assembler/linker
 		c+ld)
-			in_ext='.c'
+			in_ext='c'
 			in_src='int main(void) { return 0; }'
 			cmdline_extra+=(-xc)
 			;;
@@ -477,7 +477,7 @@ test-flag-PROG() {
 	local test_in=${T}/test-flag.${in_ext}
 	local test_out=${T}/test-flag.exe
 
-	printf "%s\n" "${in_src}" > "${test_in}" || return 1
+	printf "%s\n" "${in_src}" > "${test_in}" || die "Failed to create '${test_in}'"
 
 	local cmdline=(
 		"${comp[@]}"
