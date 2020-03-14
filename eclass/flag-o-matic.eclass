@@ -392,6 +392,7 @@ filter-mfpmath() {
 # Strip *FLAGS of everything except known good/safe flags.  This runs over all
 # flags returned by all_flag_vars().
 strip-flags() {
+	[[ $# -ne 0 ]] && die "strip-flags takes no arguments"
 	local x y var
 
 	local ALLOWED_FLAGS
@@ -618,6 +619,7 @@ test_version_info() {
 # @DESCRIPTION:
 # Strip {C,CXX,F,FC}FLAGS of any flags not supported by the active toolchain.
 strip-unsupported-flags() {
+	[[ $# -ne 0 ]] && die "strip-unsupported-flags takes no arguments"
 	export CFLAGS=$(test-flags-CC ${CFLAGS})
 	export CXXFLAGS=$(test-flags-CXX ${CXXFLAGS})
 	export FFLAGS=$(test-flags-F77 ${FFLAGS})
@@ -630,6 +632,7 @@ strip-unsupported-flags() {
 # @DESCRIPTION:
 # Find and echo the value for a particular flag.  Accepts shell globs.
 get-flag() {
+	[[ $# -ne 1 ]] && die "usage: <flag>"
 	local f var findflag="$1"
 
 	# this code looks a little flaky but seems to work for
@@ -652,6 +655,7 @@ get-flag() {
 # @DESCRIPTION:
 # Sets mcpu to v8 and uses the original value as mtune if none specified.
 replace-sparc64-flags() {
+	[[ $# -ne 0 ]] && die "replace-sparc64-flags takes no arguments"
 	local SPARC64_CPUS="ultrasparc3 ultrasparc v9"
 
 	if [ "${CFLAGS/mtune}" != "${CFLAGS}" ]; then
@@ -735,6 +739,7 @@ raw-ldflags() {
 # @FUNCTION: no-as-needed
 # @RETURN: Flag to disable asneeded behavior for use with append-ldflags.
 no-as-needed() {
+	[[ $# -ne 0 ]] && die "no-as-needed takes no arguments"
 	case $($(tc-getLD) -v 2>&1 </dev/null) in
 		*GNU*) # GNU ld
 		echo "-Wl,--no-as-needed" ;;
