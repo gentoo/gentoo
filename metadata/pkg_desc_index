@@ -1652,9 +1652,9 @@ app-emulation/skopeo 0.1.39 0.1.40-r1 0.1.41: Command line utility foroperations
 app-emulation/slirp4netns 0.3.3 0.4.1-r1 0.4.2 0.4.3: User-mode networking for unprivileged network namespaces
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3-r1: 48k ZX Spectrum Emulator
-app-emulation/spice 0.14.0-r2 0.14.2 9999: SPICE server
+app-emulation/spice 0.14.0-r2 0.14.2 0.14.3 9999: SPICE server
 app-emulation/spice-html5 0.2.1: Spice Javascript client
-app-emulation/spice-protocol 0.12.14 0.12.15 0.14.0 9999: Headers defining the SPICE protocol
+app-emulation/spice-protocol 0.12.14 0.12.15 0.14.0 0.14.1 9999: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.17.0_p20180319-r1 0.19.0-r1: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r3: MIPS Simulator
 app-emulation/uade 2.13: Unix Amiga Delitracker Emulator - plays old Amiga tunes through UAE emulation
@@ -17922,7 +17922,7 @@ www-apps/nanoblogger 3.5_rc1-r1: Small and simple weblog engine written in Bash 
 www-apps/nanoc 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/nanoc-core 4.11.10 4.11.11 4.11.12: nanoc is a simple but very flexible static site generator written in Ruby
 www-apps/netbox 2.5.11 2.5.12 2.6.1 2.6.4 2.6.5 2.6.6 2.6.7 2.6.8 2.6.12 2.7.2 2.7.6 2.7.8: IP address and data center infrastructure management tool
-www-apps/nextcloud 16.0.8 17.0.3 18.0.0 18.0.1: Personal cloud that runs on your own server
+www-apps/nextcloud 16.0.8 16.0.9 17.0.3 17.0.4 18.0.1 18.0.2: Personal cloud that runs on your own server
 www-apps/nikola 7.8.15 7.8.15-r1 8.0.4: A static website and blog generator
 www-apps/novnc 0.6.2 0.6.2-r1 1.0.0 9999: noVNC is a VNC client implemented using HTML5 technologies
 www-apps/octoprint 1.4.0_rc5: the snappy web interface for your 3D printer
