@@ -17,7 +17,7 @@ SRC_URI="https://github.com/davidhalter/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 LICENSE="MIT
 	test? ( Apache-2.0 )"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="test"
 
 RDEPEND=">=dev-python/parso-0.5.0[${PYTHON_USEDEP}]"
