@@ -329,7 +329,7 @@ acct-user/x2gouser 0: User for net-misc/x2goserver
 acct-user/xrootd 0: User for the XRootD server
 app-accessibility/SphinxTrain 1.0.8: Speech Recognition (Training Module)
 app-accessibility/accerciser 3.22.0: Interactive Python accessibility explorer
-app-accessibility/at-spi2-atk 2.32.0 2.34.0: Gtk module for bridging AT-SPI to Atk
+app-accessibility/at-spi2-atk 2.32.0 2.34.0 2.34.2: Gtk module for bridging AT-SPI to Atk
 app-accessibility/at-spi2-core 2.32.1 2.34.0: D-Bus accessibility specifications and registration daemon
 app-accessibility/brltty 5.2-r1 6.0-r1: Daemon that provides access to the Linux/Unix console for a blind person
 app-accessibility/caribou 0.4.21: Input assistive technology intended for switch and pointer users
@@ -1641,7 +1641,7 @@ app-emulation/qemu-riscv64-bin 3.1.0-r4: Statically linked x86-64 binary of app-
 app-emulation/qt-virt-manager 9999: A GUI application for managing virtual machines
 app-emulation/reg 0.16.1: Docker registry v2 command line client
 app-emulation/rex-client 9999: Remote EXexcution agent
-app-emulation/runc 1.0.0_rc8 1.0.0_rc9 1.0.0_rc10: runc container cli tools
+app-emulation/runc 1.0.0_rc10: runc container cli tools
 app-emulation/runv 0.7.0: Hypervisor-based Runtime for OCI
 app-emulation/s6-overlay 1.18.1.3: an s6-based init system for containers
 app-emulation/sen 0.6.0 0.6.1: Terminal User Interface for docker engine
@@ -11585,7 +11585,7 @@ games-util/xgame 1.7.1-r1: Run games in a separate X session
 games-util/xgame-gtk2 2.0.2-r1: Run games in a separate X session
 games-util/xgamer 0.6.2: A launcher for starting games in a second X session
 games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
-gnome-base/dconf 0.32.0-r2: Simple low-level configuration system
+gnome-base/dconf 0.32.0-r2 0.34.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.34.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
 gnome-base/gdm 3.32.0: GNOME Display Manager for managing graphical display servers and user logins
@@ -11636,7 +11636,7 @@ gnome-extra/evolution-data-server 3.32.5 3.34.4: Evolution groupware backend
 gnome-extra/evolution-ews 3.32.2 3.34.4: Evolution module for connecting to Microsoft Exchange Web Services
 gnome-extra/gconf-editor 3.0.1-r1: An editor to the GNOME config system
 gnome-extra/gnome-boxes 3.30.3 3.32.2: Simple GNOME 3 application to access remote or virtual systems
-gnome-extra/gnome-calculator 3.32.2: A calculator application for GNOME
+gnome-extra/gnome-calculator 3.32.2 3.34.1: A calculator application for GNOME
 gnome-extra/gnome-calendar 3.32.2 3.34.2: Manage your online calendars with simple and modern interface
 gnome-extra/gnome-characters 3.32.1: Unicode character map viewer and library
 gnome-extra/gnome-clocks 3.32.0 3.34.0: Clocks application for GNOME
