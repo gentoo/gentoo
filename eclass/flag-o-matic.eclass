@@ -648,14 +648,6 @@ get-flag() {
 	return 1
 }
 
-has_m64() {
-	die "${FUNCNAME}: don't use this anymore"
-}
-
-has_m32() {
-	die "${FUNCNAME}: don't use this anymore"
-}
-
 # @FUNCTION: replace-sparc64-flags
 # @DESCRIPTION:
 # Sets mcpu to v8 and uses the original value as mtune if none specified.
