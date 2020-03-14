@@ -49,9 +49,3 @@ all_ruby_prepare() {
 	rm -f test/testcases/span/math/{katex,mathjaxnode}* \
 	   test/testcases/block/15_math/{katex,mathjaxnode}* || die
 }
-
-all_ruby_install() {
-	all_fakegem_install
-
-	doman man/man1/kramdown.1
-}

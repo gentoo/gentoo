@@ -26,7 +26,7 @@ DEPEND+=" test? ( ${LATEX_DEPS} app-text/htmltidy )"
 ruby_add_rdepend "
 	>=dev-ruby/rouge-1.8
 	>=dev-ruby/stringex-1.5.1
-	!!<dev-ruby/kramdown-1.17.0-r1:0"
+	!!<dev-ruby/kramdown-1.17.0-r2:0"
 
 ruby_add_bdepend "doc? ( dev-ruby/rdoc )
 	test? ( >=dev-ruby/minitest-5.0 )"
