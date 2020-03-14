@@ -1633,7 +1633,7 @@ app-emulation/phpvirtualbox 5.2.1: Web-based administration for VirtualBox in PH
 app-emulation/playonlinux 4.2.12 4.3.4-r1: Set of scripts to easily install and use Windows games and software
 app-emulation/protontricks 1.3.1-r1 1.4.1: app-emulation/winetricks wrapper for Proton (Steam Play) games
 app-emulation/punes 0.104 0.105: Nintendo Entertainment System (NES) emulator
-app-emulation/q4wine 1.3.11: Qt GUI configuration tool for Wine
+app-emulation/q4wine 1.3.11 1.3.12: Qt GUI configuration tool for Wine
 app-emulation/qemu 4.2.0-r1 4.2.0-r2 9999: QEMU + Kernel-based Virtual Machine userland tools
 app-emulation/qemu-guest-agent 3.1.0 4.0.0: QEMU Guest Agent (qemu-ga) for use when running inside a VM
 app-emulation/qemu-init-scripts 0.3.0 0.3.0-r1: Kvm and qemu init scripts
@@ -3446,7 +3446,7 @@ dev-games/newton 3.14: Integrated solution for real time simulation of physics e
 dev-games/ode 0.11.1 0.12 0.14-r1: Open Dynamics Engine SDK
 dev-games/ogre 1.9.0-r1 1.9.0-r2 1.12.4 2.1_pre20191212: Object-oriented Graphics Rendering Engine
 dev-games/ois 1.3: Object-oriented Input System - A cross-platform C++ input handling library
-dev-games/openscenegraph 3.5.5 3.6.4: Open source high performance 3D graphics toolkit
+dev-games/openscenegraph 3.5.5 3.6.4 3.6.5: Open source high performance 3D graphics toolkit
 dev-games/openscenegraph-qt 3.5.5 3.5.7: Qt support for OpenSceneGraph
 dev-games/paklib 0.3: library for accessing Quake pak files
 dev-games/physfs 3.0.2 9999: Abstraction layer for filesystem and archive access
@@ -11977,7 +11977,7 @@ kde-apps/marble 19.08.3-r1 19.12.3: Virtual Globe and World Atlas to learn more 
 kde-apps/mbox-importer 19.08.3 19.12.3: Import mbox email archives from various sources into Akonadi
 kde-apps/messagelib 19.08.3 19.12.3: Libraries for messaging functions
 kde-apps/minuet 19.08.3 19.08.3-r1 19.12.3: Music Education software by KDE
-kde-apps/okular 19.08.3 19.12.3: Universal document viewer based on KDE Frameworks
+kde-apps/okular 19.08.3 19.12.3-r1: Universal document viewer based on KDE Frameworks
 kde-apps/palapeli 19.08.3 19.12.3: Jigsaw puzzle game by KDE
 kde-apps/parley 19.08.3 19.12.3: A vocabulary trainer to help you memorize things
 kde-apps/picmi 19.08.3 19.12.3: Nonogram logic game by KDE
@@ -12625,7 +12625,7 @@ media-gfx/hp2xx 3.4.4-r1: Convert Hewlett-Packard's HP-GL plotter language to ot
 media-gfx/hugin 2019.0.0 2019.2.0 9999: GUI for the creation & processing of panoramic images
 media-gfx/icc-examin 0.56_p20171007 9999: Viewer for ICC and CGATS, argyll gamut vrml visualisations and GPU gamma tables
 media-gfx/icon-slicer 0.3: utility for generating icon themes and libXcursor cursor themes
-media-gfx/icoutils 0.32.0 0.32.2 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
+media-gfx/icoutils 0.32.2 0.32.3: Tools to extract and convert images in icon and cursor files (.ico, .cur)
 media-gfx/igal 2.0-r1: Static HTML image gallery generator
 media-gfx/imagemagick 6.9.11.0 7.0.10.0 9999: A collection of tools and libraries for many image formats
 media-gfx/imageworsener 1.3.2 1.3.3: Utility for image scaling and processing
@@ -13827,7 +13827,7 @@ media-sound/wildmidi 0.3.13: Midi processing library and a midi player using the
 media-sound/wmsound-data 1.0.0: A bunch of sounds for WindowMaker Sound Server
 media-sound/xfmpc 0.3.0: Music Player Daemon (MPD) client for the Xfce desktop environment
 media-sound/xineadump 0.1-r1: Utility for Xine decoding support in transKode
-media-sound/xmms2 0.8_p20161122-r4 0.8_p20161122-r5: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
+media-sound/xmms2 0.8_p20161122-r4 0.8_p20161122-r5 0.8_p20161122-r6: X(cross)platform Music Multiplexing System. Next generation of the XMMS player
 media-sound/xmms2-scrobbler 0.4.0-r1: XMMS2 AudioScrobbler client
 media-sound/xnoise 0.2.21: A media player for Gtk+ with a slick GUI, great speed and lots of features
 media-sound/xwax 1.6: Digital vinyl emulation software
@@ -14746,7 +14746,7 @@ net-libs/stem 1.5.4 1.6.0 1.7.0 1.7.1 1.8.0: Stem is a Python controller library
 net-libs/telepathy-accounts-signon 2.1: Mission control plugin for Telepathy to provide IM accounts and authentication
 net-libs/telepathy-farstream 0.6.2: Telepathy client library that uses Farstream to handle Call channels
 net-libs/telepathy-glib 0.24.1-r1: GLib bindings for the Telepathy D-Bus protocol
-net-libs/telepathy-logger-qt 17.08.0-r1: Qt bindings for the Telepathy logger
+net-libs/telepathy-logger-qt 17.08.0-r1 17.09.0: Qt bindings for the Telepathy logger
 net-libs/telepathy-qt 0.9.8 9999: Qt bindings for the Telepathy D-Bus protocol
 net-libs/tox 0.2.9-r1 0.2.10 9999: Encrypted P2P, messaging, and audio/video calling platform
 net-libs/udns 0.4: Async-capable DNS stub resolver library
@@ -15784,7 +15784,7 @@ sci-chemistry/apbs 1.4.1-r2: Evaluation of electrostatic properties of nanoscale
 sci-chemistry/aqua 3.2-r3: Program suite in this distribution calculates restraint violations
 sci-chemistry/autodock 4.2.6: A suite of automated docking tools
 sci-chemistry/autodock_vina 1.1.2: Program for drug discovery, molecular docking and virtual screening
-sci-chemistry/avogadro2 1.90.0_p20180211: Advanced molecule editor and visualizer 2
+sci-chemistry/avogadro2 1.90.0_p20180211 1.93.0: Advanced molecule editor and visualizer 2
 sci-chemistry/bkchem 0.14.0_pre2-r2: Chemical drawing program
 sci-chemistry/bodr 9-r1 10: The Blue Obelisk Data Repository listing element and isotope properties
 sci-chemistry/cara-bin 1.8.4-r1: Analysis of NMR spectra and Computer Aided Resonance Assignment
@@ -16000,7 +16000,7 @@ sci-libs/armadillo 8.300.2 9.800.3 9.850.1: Streamlined C++ linear algebra libra
 sci-libs/arpack 3.1.5 3.4.0 3.5.0 9999: Arnoldi package library to solve large scale eigenvalue problems
 sci-libs/arprec 2.2.18 2.2.19: Arbitrary precision float arithmetics and functions
 sci-libs/atlas 3.10.2: Automatically Tuned Linear Algebra Software
-sci-libs/avogadrolibs 1.91.0_pre20180415: Advanced molecule editor and visualizer 2 - libraries
+sci-libs/avogadrolibs 1.91.0_pre20180415 1.93.0: Advanced molecule editor and visualizer 2 - libraries
 sci-libs/beagle 3.0.3-r1: Open BEAGLE, a versatile EC/GA/GP framework
 sci-libs/blas-reference 20070226-r4 20151113-r1 20161223: Basic Linear Algebra Subprograms F77 reference implementations
 sci-libs/blis 0.5.2 0.6.0: BLAS-like Library Instantiation Software Framework
@@ -16212,6 +16212,7 @@ sci-libs/scotch 5.1.12b 6.0.0 6.0.4 6.0.4-r1 6.0.4-r2: Software for graph, mesh 
 sci-libs/shapelib 1.4.0-r1 1.4.1 1.5.0: Library for manipulating ESRI Shapefiles
 sci-libs/shogun 5.0.0-r1: Large Scale Machine Learning Toolbox
 sci-libs/silo 4.10.2-r1: A mesh and field I/O library and scientific database
+sci-libs/spglib 1.14.1: Spglib is a C library for finding and handling crystal symmetries
 sci-libs/spqr 1.2.3-r1 1.3.1 2.0.9: Multithreaded multifrontal sparse QR factorization library
 sci-libs/spr 3.3.2: Statistical analysis and machine learning library
 sci-libs/suitesparse 4.0.2 4.2.1: Meta package for a suite of sparse matrix tools
