@@ -6,7 +6,7 @@ EAPI=7
 GENTOO_DEPEND_ON_PERL=no
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit autotools flag-o-matic toolchain-funcs multilib perl-module python-single-r1 xdg
+inherit autotools gnome2-utils flag-o-matic toolchain-funcs multilib perl-module python-single-r1 xdg
 
 DESCRIPTION="GTK Instant Messenger client"
 HOMEPAGE="http://pidgin.im/"
@@ -246,6 +246,8 @@ src_configure() {
 }
 
 src_install() {
+	# setting this here because gnome2.eclass is not EAPI-7 ready
+	export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL="1"
 	default
 
 	if use gtk ; then
@@ -278,4 +280,21 @@ src_install() {
 src_test() {
 	# make default build logs slightly more useful
 	emake check VERBOSE=1
+}
+
+pkg_preinst() {
+	gnome2_gconf_savelist
+	xdg_pkg_preinst
+}
+
+pkg_postinst() {
+	gnome2_gconf_install
+	gnome2_schemas_update
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	gnome2_gconf_uninstall
+	gnome2_schemas_update
+	xdg_pkg_postrm
 }
