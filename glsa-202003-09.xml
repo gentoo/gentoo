@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-09">
+  <title>OpenID library for Ruby: Server Side Request Forgery</title>
+  <synopsis>A vulnerability in OpenID library for Ruby at worst might allow an
+    attacker to bypass authentication.
+  </synopsis>
+  <product type="ebuild">ruby-openid</product>
+  <announced>2020-03-14</announced>
+  <revised count="1">2020-03-14</revised>
+  <bug>698464</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-ruby/ruby-openid" auto="yes" arch="*">
+      <unaffected range="ge">2.9.2</unaffected>
+      <vulnerable range="lt">2.9.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A Ruby library for verifying and serving OpenID identities.</p>
+  </background>
+  <description>
+    <p>It was discovered that OpenID library for Ruby performed discovery
+      first, and then verification.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could possibly change the URL used for discovery and
+      trick the server into connecting to the URL. This server in turn could be
+      a private server not
+      publicly accessible.
+    </p>
+    
+    <p>In addition, if the client that uses this library discloses connection
+      errors, this in turn could disclose information from the private server
+      to the attacker.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ruby-openid users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-ruby/ruby-openid-2.9.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11027">CVE-2019-11027</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-13T02:03:43Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-14T14:58:38Z">whissi</metadata>
+</glsa>
