@@ -73,6 +73,7 @@ RDEPEND="${DEPEND}
 PATCHES=(
 	"${FILESDIR}/${PN}-18.08.0-tests.patch"
 	"${FILESDIR}/${PN}-18.12.0-tests.patch"
+	"${FILESDIR}/${P}-CVE-2020-9359.patch" # bug 712490
 )
 
 src_prepare() {
