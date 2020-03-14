@@ -7,7 +7,7 @@ CRATES=""
 
 MY_PV="${PV//_rc/-rc}"
 
-inherit bash-completion-r1 cargo desktop eutils
+inherit bash-completion-r1 cargo desktop
 
 DESCRIPTION="GPU-accelerated terminal emulator"
 HOMEPAGE="https://github.com/alacritty/alacritty"
@@ -23,26 +23,29 @@ fi
 
 LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions Boost-1.0 BSD BSD-2 CC0-1.0 FTL ISC MIT MPL-2.0 Unlicense WTFPL-2 ZLIB"
 SLOT="0"
-IUSE=""
+IUSE="wayland +X"
+
+REQUIRED_USE="|| ( wayland X )"
 
 DEPEND="
 	media-libs/fontconfig:=
 	media-libs/freetype:2
-	x11-libs/libxcb
+	X? ( x11-libs/libxcb:=[xkb] )
 "
 
 RDEPEND="${DEPEND}
+	media-libs/mesa[X?,wayland?]
 	sys-libs/zlib
 	sys-libs/ncurses:0
-	x11-libs/libXcursor
-	x11-libs/libXi
-	x11-libs/libXrandr
-	virtual/opengl
+	wayland? ( dev-libs/wayland )
+	X? (
+		x11-libs/libXcursor
+		x11-libs/libXi
+		x11-libs/libXrandr
+	)
 "
 
-BDEPEND="dev-util/cmake
-	>=virtual/rust-1.37.0
-"
+BDEPEND="dev-util/cmake"
 
 DOCS=( CHANGELOG.md docs/ansicode.txt INSTALL.md README.md alacritty.yml )
 
@@ -59,8 +62,22 @@ src_unpack() {
 	fi
 }
 
+src_configure() {
+	myfeatures=(
+		$(usex X x11 '')
+		$(usev wayland)
+	)
+}
+
+src_compile() {
+	cd alacritty || die
+	cargo_src_compile ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+}
+
 src_install() {
-	CARGO_INSTALL_PATH="alacritty" cargo_src_install
+	CARGO_INSTALL_PATH="alacritty" cargo_src_install ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
+
+	newman extra/alacritty.man alacritty.1
 
 	newbashcomp extra/completions/alacritty.bash alacritty
 
@@ -70,7 +87,7 @@ src_install() {
 	insinto /usr/share/zsh/site-functions
 	doins extra/completions/_alacritty
 
-	domenu extra/linux/alacritty.desktop
+	domenu extra/linux/Alacritty.desktop
 	newicon extra/logo/alacritty-term.svg Alacritty.svg
 
 	newman extra/alacritty.man alacritty.1
@@ -84,7 +101,7 @@ src_install() {
 	einstalldocs
 }
 
-pkg_postinst() {
-	optfeature "wayland support" dev-libs/wayland
-	optfeature "apply-tilix-colorscheme script dependency" dev-python/pyyaml
+src_test() {
+	cd alacritty || die
+	cargo_src_test ${myfeatures:+--features "${myfeatures[*]}"} --no-default-features
 }
