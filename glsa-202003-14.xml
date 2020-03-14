@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-14">
+  <title>atftp: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in atftp, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">atftp</product>
+  <announced>2020-03-14</announced>
+  <revised count="1">2020-03-14</revised>
+  <bug>711630</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/atftp" auto="yes" arch="*">
+      <unaffected range="ge">0.7.2</unaffected>
+      <vulnerable range="lt">0.7.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>atftp is a client/server implementation of the TFTP protocol that
+      implements RFCs 1350, 2090, 2347, 2348, and 2349.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in atftp. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker could send a specially crafted packet to an atftp
+      instance, possibly resulting in the execution of arbitrary code with the
+      privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All atftp users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/atftp-0.7.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11365">CVE-2019-11365</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11366">CVE-2019-11366</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-08T00:17:16Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-14T16:48:02Z">whissi</metadata>
+</glsa>
