@@ -120,10 +120,10 @@ _distutils_set_globals() {
 	local bdep=${rdep}
 
 	if [[ ! ${DISTUTILS_SINGLE_IMPL} ]]; then
-		local sdep="dev-python/setuptools[${PYTHON_USEDEP}]"
+		local sdep=">=dev-python/setuptools-42.0.2[${PYTHON_USEDEP}]"
 	else
 		local sdep="$(python_gen_cond_dep '
-			dev-python/setuptools[${PYTHON_MULTI_USEDEP}]
+			>=dev-python/setuptools-42.0.2[${PYTHON_MULTI_USEDEP}]
 		')"
 	fi
 
