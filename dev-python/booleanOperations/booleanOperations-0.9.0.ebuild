@@ -20,6 +20,7 @@ BDEPEND=""
 RDEPEND="${DEPEND}
 	>=dev-python/fonttools-4.0.2[${PYTHON_USEDEP}]
 	>=dev-python/pyclipper-1.1.0[${PYTHON_USEDEP}]
+	dev-python/wheel[${PYTHON_USEDEP}]
 "
 
 src_prepare() {
