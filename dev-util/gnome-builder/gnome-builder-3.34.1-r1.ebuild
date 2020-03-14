@@ -148,11 +148,10 @@ src_configure() {
 		$(meson_use devhelp plugin_devhelp)
 		-Dplugin_deviced=false
 		-Dplugin_editorconfig=true # needs libpcre
-		$(meson_use git plugin_git)
 		-Dplugin_flatpak=false
-		-Dplugin_podman=false
+		$(meson_use git plugin_git)
 		$(meson_use glade plugin_glade)
-		-Dplugin_git=true
+		-Dplugin_podman=false
 		$(meson_use spell plugin_spellcheck)
 		$(meson_use sysprof plugin_sysprof)
 		$(meson_use vala plugin_vala)
