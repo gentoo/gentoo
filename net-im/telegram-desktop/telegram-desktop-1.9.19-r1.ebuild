@@ -16,7 +16,7 @@ SRC_URI="https://github.com/telegramdesktop/tdesktop/releases/download/v${PV}/${
 LICENSE="GPL-3-with-openssl-exception"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc64"
-IUSE="+alsa +dbus libressl pulseaudio +spell"
+IUSE="+alsa +dbus enchant +hunspell libressl pulseaudio +spell"
 
 RDEPEND="
 	!net-im/telegram-desktop-bin
@@ -52,8 +52,9 @@ RDEPEND="
 		dev-qt/qtdbus:5
 		dev-libs/libdbusmenu-qt[qt5(+)]
 	)
+	enchant? ( app-text/enchant:= )
+	hunspell? ( >=app-text/hunspell-1.7:= )
 	pulseaudio? ( media-sound/pulseaudio )
-	spell? ( app-text/enchant:= )
 "
 
 DEPEND="
@@ -66,9 +67,15 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-REQUIRED_USE="|| ( alsa pulseaudio )"
+REQUIRED_USE="|| ( alsa pulseaudio )
+	spell? (
+		^^ ( enchant hunspell )
+	)
+"
 
 S="${WORKDIR}/${MY_P}"
+
+PATCHES=( "${FILESDIR}/${PV}-crash.patch" )
 
 src_configure() {
 	local mycxxflags=(
@@ -92,7 +99,8 @@ src_configure() {
 		-DTDESKTOP_DISABLE_DESKTOP_FILE_GENERATION=ON
 		-DTDESKTOP_LAUNCHER_BASENAME="${PN}"
 		-DDESKTOP_APP_DISABLE_DBUS_INTEGRATION="$(usex dbus OFF ON)"
-		-DDESKTOP_APP_DISABLE_SPELLCHECK="$(usex spell OFF ON)"
+		-DDESKTOP_APP_DISABLE_SPELLCHECK="$(usex spell OFF ON)" # enables hunspell
+		-DDESKTOP_APP_USE_ENCHANT="$(usex enchant ON OFF)" # enables enchant and disables hunspell
 	)
 
 	if [[ -n ${MY_TDESKTOP_API_ID} && -n ${MY_TDESKTOP_API_HASH} ]]; then
