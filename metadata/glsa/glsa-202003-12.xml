@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-12">
+  <title>sudo: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in sudo, the worst of
+    which could result in privilege escalation.
+  </synopsis>
+  <product type="ebuild">sudo</product>
+  <announced>2020-03-14</announced>
+  <revised count="1">2020-03-14</revised>
+  <bug>697462</bug>
+  <bug>707574</bug>
+  <access>local</access>
+  <affected>
+    <package name="app-admin/sudo" auto="yes" arch="*">
+      <unaffected range="ge">1.8.31</unaffected>
+      <vulnerable range="lt">1.8.31</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>sudo (su “do”) allows a system administrator to delegate authority
+      to give certain users (or groups of users) the ability to run some (or
+      all) commands as root or another user while providing an audit trail of
+      the commands and their arguments.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in sudo. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A local attacker could expose or corrupt memory information, inject code
+      to be run as a root user or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All sudo users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-admin/sudo-1.8.31"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14287">CVE-2019-14287</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18634">CVE-2019-18634</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-02-29T15:42:31Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-14T16:20:57Z">whissi</metadata>
+</glsa>

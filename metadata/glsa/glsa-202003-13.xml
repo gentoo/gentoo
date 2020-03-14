@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-13">
+  <title>musl: Stack-based buffer overflow</title>
+  <synopsis>A stack-based buffer overflow in musl might allow an attacker to
+    have an application dependent impact.
+  </synopsis>
+  <product type="ebuild">musl</product>
+  <announced>2020-03-14</announced>
+  <revised count="1">2020-03-14</revised>
+  <bug>711276</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-libs/musl" auto="yes" arch="*">
+      <unaffected range="ge">1.1.24</unaffected>
+      <vulnerable range="lt">1.1.24</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>musl is an implementation of the C standard library built on top of the
+      Linux system call API, including interfaces defined in the base language
+      standard, POSIX, and widely agreed-upon extensions.
+    </p>
+  </background>
+  <description>
+    <p>A flaw in musl libc’s arch-specific math assembly code for i386 was
+      found which can lead to x87 stack overflow in the execution of subsequent
+      math code.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>Impact depends on how the application built against musl libc handles
+      the ABI-violating x87 state.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All musl users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-libs/musl-1.1.24"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14697">CVE-2019-14697</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-03T20:43:59Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-14T16:36:31Z">whissi</metadata>
+</glsa>

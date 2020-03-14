@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
 <glsa id="202003-09">
-  <title>OpenID library for Ruby: Server Side Request Forgery</title>
+  <title>OpenID library for Ruby: Server-Side Request Forgery</title>
   <synopsis>A vulnerability in OpenID library for Ruby at worst might allow an
     attacker to bypass authentication.
   </synopsis>
   <product type="ebuild">ruby-openid</product>
   <announced>2020-03-14</announced>
-  <revised count="1">2020-03-14</revised>
+  <revised count="2">2020-03-14</revised>
   <bug>698464</bug>
   <access>remote</access>
   <affected>
@@ -52,5 +52,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11027">CVE-2019-11027</uri>
   </references>
   <metadata tag="requester" timestamp="2020-03-13T02:03:43Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2020-03-14T14:58:38Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-14T16:10:29Z">whissi</metadata>
 </glsa>

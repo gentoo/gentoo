@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-11">
+  <title>SVG Salamander: Server-Side Request Forgery</title>
+  <synopsis>A SSRF may allow remote attackers to forge illegitimate requests.</synopsis>
+  <product type="ebuild">svgsalamander</product>
+  <announced>2020-03-14</announced>
+  <revised count="1">2020-03-14</revised>
+  <bug>607720</bug>
+  <access>remote</access>
+  <affected>
+    <package name="dev-java/svgsalamander" auto="yes" arch="*">
+      <vulnerable range="le">0.0-r2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>SVG Salamander is a light weight SVG renderer and animator for Java.</p>
+  </background>
+  <description>
+    <p>A Server-Side Request Forgery was discovered in SVG Salamander.</p>
+  </description>
+  <impact type="normal">
+    <p>An attacker, by sending a specially crafted SVG file, can conduct SSRF.</p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>Gentoo has discontinued support for SVG Salamander. We recommend that
+      users unmerge SVG Salamander:
+    </p>
+    
+    <code>
+      # emerge --unmerge "dev-java/svgsalamander"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-5617">CVE-2017-5617</uri>
+  </references>
+  <metadata tag="requester" timestamp="2019-09-15T02:33:02Z">b-man</metadata>
+  <metadata tag="submitter" timestamp="2020-03-14T16:07:50Z">b-man</metadata>
+</glsa>
