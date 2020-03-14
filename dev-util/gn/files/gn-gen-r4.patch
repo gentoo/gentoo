@@ -1,0 +1,46 @@
+From ad008cd029c995226fef36554e2e3cc657ef1380 Mon Sep 17 00:00:00 2001
+From: Mike Gilbert <floppym@gentoo.org>
+Date: Sat, 14 Mar 2020 18:02:51 +0000
+Subject: [PATCH] Remove unwanted cflags/ldflags parameters
+
+---
+ build/gen.py | 9 ---------
+ 1 file changed, 9 deletions(-)
+
+diff --git a/build/gen.py b/build/gen.py
+index bcd9f15d..b48e844c 100755
+--- a/build/gen.py
++++ b/build/gen.py
+@@ -288,11 +288,6 @@ def WriteGNNinja(path, platform, host, options):
+     if options.debug:
+       cflags.extend(['-O0', '-g'])
+     else:
+-      cflags.append('-DNDEBUG')
+-      cflags.append('-O3')
+-      if options.no_strip:
+-        cflags.append('-g')
+-      ldflags.append('-O3')
+       # Use -fdata-sections and -ffunction-sections to place each function
+       # or data item into its own section so --gc-sections can eliminate any
+       # unused functions and data items.
+@@ -325,7 +320,6 @@ def WriteGNNinja(path, platform, host, options):
+         '-D_FILE_OFFSET_BITS=64',
+         '-D__STDC_CONSTANT_MACROS', '-D__STDC_FORMAT_MACROS',
+         '-pthread',
+-        '-pipe',
+         '-fno-exceptions',
+         '-fno-rtti',
+         '-fdiagnostics-color',
+@@ -341,9 +335,6 @@ def WriteGNNinja(path, platform, host, options):
+       if not options.no_static_libstdcpp:
+         ldflags.append('-static-libstdc++')
+ 
+-      # This is needed by libc++.
+-      if not platform.is_mingw():
+-        libs.append('-ldl')
+     elif platform.is_darwin():
+       min_mac_version_flag = '-mmacosx-version-min=10.9'
+       cflags.append(min_mac_version_flag)
+-- 
+2.24.1
+
