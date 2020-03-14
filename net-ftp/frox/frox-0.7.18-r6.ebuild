@@ -45,6 +45,7 @@ src_prepare() {
 	eapply "${FILESDIR}/${PV}-respect-CFLAGS.patch"
 	eapply "${FILESDIR}/${PV}-netfilter-includes.patch"
 	eapply "${FILESDIR}/${P}-config.patch"
+	eapply "${FILESDIR}/${P}-no-common.patch"
 
 	if use clamav ; then
 		sed -i -e "s:^# VirusScanner.*:# VirusScanner '\"/usr/bin/clamscan\" \"%s\"':" \
