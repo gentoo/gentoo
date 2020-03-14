@@ -1,22 +1,18 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 
 inherit autotools linux-info
 
-MY_P="${P/_*/}"
-PATCHSET="${P/*_p/}"
-
 DESCRIPTION="SPICE VD Linux Guest Agent"
 HOMEPAGE="https://www.spice-space.org/"
-SRC_URI="https://www.spice-space.org/download/releases/${MY_P}.tar.bz2"
+SRC_URI="https://www.spice-space.org/download/releases/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="consolekit gtk selinux systemd"
-S="${WORKDIR}/${MY_P}"
 
 CDEPEND="
 	>=app-emulation/spice-protocol-0.14.0
@@ -38,11 +34,6 @@ RDEPEND="${CDEPEND}
 CONFIG_CHECK="~INPUT_UINPUT ~VIRTIO_CONSOLE"
 ERROR_INPUT_UINPUT="User level input support (INPUT_UINPUT) is required"
 ERROR_VIRTIO_CONSOLE="VirtIO console/serial device support (VIRTIO_CONSOLE) is required"
-
-src_prepare() {
-	default
-	eautoreconf
-}
 
 src_configure() {
 	local opt=()
