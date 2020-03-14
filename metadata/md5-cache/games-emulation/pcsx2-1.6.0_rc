@@ -1,12 +1,13 @@
-BDEPEND=dev-util/ninja dev-util/cmake >=dev-vcs/git-1.8.2.1[curl]
-DEFINED_PHASES=compile configure install prepare setup test unpack
+BDEPEND=dev-util/ninja dev-util/cmake
+DEFINED_PHASES=compile configure install prepare setup test
 DEPEND=app-arch/bzip2[abi_x86_32(-)] app-arch/xz-utils[abi_x86_32(-)] dev-libs/libaio[abi_x86_32(-)] dev-libs/libxml2:2[abi_x86_32(-)] media-libs/alsa-lib[abi_x86_32(-)] media-libs/libpng:=[abi_x86_32(-)] media-libs/libsdl2[abi_x86_32(-),haptic,joystick,sound] media-libs/libsoundtouch[abi_x86_32(-)] media-libs/portaudio[abi_x86_32(-)] net-libs/libpcap[abi_x86_32(-)] sys-libs/zlib[abi_x86_32(-)] virtual/libudev[abi_x86_32(-)] virtual/opengl[abi_x86_32(-)] x11-libs/gtk+:3[abi_x86_32(-)] x11-libs/libICE[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] >=x11-libs/wxGTK-3.0.4-r301:3.0-gtk3[abi_x86_32(-),X] dev-cpp/pngpp dev-cpp/sparsehash
 DESCRIPTION=A PlayStation 2 emulator
 EAPI=7
 HOMEPAGE=https://www.pcsx2.net
+KEYWORDS=-* ~amd64 ~x86
 LICENSE=GPL-3
-PROPERTIES=live
 RDEPEND=app-arch/bzip2[abi_x86_32(-)] app-arch/xz-utils[abi_x86_32(-)] dev-libs/libaio[abi_x86_32(-)] dev-libs/libxml2:2[abi_x86_32(-)] media-libs/alsa-lib[abi_x86_32(-)] media-libs/libpng:=[abi_x86_32(-)] media-libs/libsdl2[abi_x86_32(-),haptic,joystick,sound] media-libs/libsoundtouch[abi_x86_32(-)] media-libs/portaudio[abi_x86_32(-)] net-libs/libpcap[abi_x86_32(-)] sys-libs/zlib[abi_x86_32(-)] virtual/libudev[abi_x86_32(-)] virtual/opengl[abi_x86_32(-)] x11-libs/gtk+:3[abi_x86_32(-)] x11-libs/libICE[abi_x86_32(-)] x11-libs/libX11[abi_x86_32(-)] x11-libs/libXext[abi_x86_32(-)] >=x11-libs/wxGTK-3.0.4-r301:3.0-gtk3[abi_x86_32(-),X]
 SLOT=0
-_eclasses_=cmake	88799418ef3db9d88b6232a483143608	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
-_md5_=54bca6cd3c25ca3ea880e0fa2becb875
+SRC_URI=https://github.com/PCSX2/pcsx2/archive/v1.6.0-rc.tar.gz -> pcsx2-1.6.0_rc.tar.gz
+_eclasses_=cmake	88799418ef3db9d88b6232a483143608	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	3719195b17f75382c225c2155e81198c	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multiprocessing	cac3169468f893670dac3e7cb940e045	ninja-utils	132cbb376048d079b5a012f5467c4e7f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	wxwidgets	e1e6e1eb5b3d911b3abd712f611e2312	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_md5_=d0390e42c8900b7d9a09d20f952ee06c

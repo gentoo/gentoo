@@ -10643,7 +10643,7 @@ dev-util/rosinstall 0.7.8 9999: Command-line tools for maintaining a workspace o
 dev-util/rosinstall_generator 0.1.13 0.1.14 9999: Generates rosinstall metadata about repositories with ROS packages/stacks
 dev-util/rpmdevtools 8.10-r1 8.10-r2: Collection of rpm packaging related utilities
 dev-util/rr 5.2.0-r1 5.3.0-r1: Record and Replay Framework
-dev-util/rt-tests 1.7: A collection of latency testing tools for the linux(-rt) kernel
+dev-util/rt-tests 1.8: A collection of latency testing tools for the linux(-rt) kernel
 dev-util/sasm 2.2-r1 3.10.1: Simple crossplatform IDE for NASM assembly language
 dev-util/scala-ide 4.7.0: The Scala IDE
 dev-util/scanmem 0.17: Locate and modify variables in executing processes
@@ -11116,7 +11116,7 @@ games-emulation/mupen64plus-video-rice 2.5.9: A fork of Mupen64 Nintendo 64 emul
 games-emulation/nestopia 1.47_p20170105 9999: A portable Nintendo Entertainment System emulator written in C++
 games-emulation/nestra 0.66-r3: NES emulation for Linux/x86
 games-emulation/openmsx 0.14.0: MSX emulator that aims for perfection
-games-emulation/pcsx2 1.4.0-r1 1.4.0-r2 9999: A PlayStation 2 emulator
+games-emulation/pcsx2 1.4.0-r1 1.4.0-r2 1.6.0_rc 9999: A PlayStation 2 emulator
 games-emulation/pcsxr 1.9.94-r2 1.9.94_p20190306 9999: PCSX-Reloaded: a fork of PCSX, the discontinued Playstation emulator
 games-emulation/ppsspp 1.5.4-r2 9999: A PSP emulator written in C++
 games-emulation/snes9x 1.59.2 1.60: Super Nintendo Entertainment System (SNES) emulator
@@ -13962,7 +13962,7 @@ media-video/pitivi 0.999-r1: A non-linear video editor using the GStreamer multi
 media-video/plasma-mediacenter 5.7.5: Unified media experience for any device capable of running KDE Plasma
 media-video/projectx 0.91.0.10-r1 0.91.0.10-r2: Converts, splits and demuxes DVB and other MPEG recordings
 media-video/pymp 1.1-r2: a lean, flexible frontend to mplayer written in python
-media-video/qmplay2 19.12.19-r1 9999: A Qt-based video player, which can play most formats and codecs
+media-video/qmplay2 19.12.19-r2 9999: A Qt-based video player, which can play most formats and codecs
 media-video/raspberrypi-omxplayer 0_p20160217 0_p20160528 0_p20160528-r1 9999: Command line media player for the Raspberry Pi
 media-video/rav1e 9999: The fastest and safest AV1 encoder
 media-video/recmpeg 1.0.5: Simple libfame-based video encoder, compresses raw video sequences to MPEG video
@@ -18035,7 +18035,7 @@ www-servers/lighttpd 1.4.53 1.4.54 1.4.55: Lightweight high-performance web serv
 www-servers/mongrel2 1.11.0-r1: A language agnostic web server focused on web applications
 www-servers/monkeyd 1.6.9-r1 9999: A small, fast, and scalable web server
 www-servers/nginx 1.16.1-r1 1.17.9-r1: Robust, small and high performance http and reverse proxy server
-www-servers/nginx-unit 1.8.0 1.12.0-r3 1.13.0 1.14.0 1.15.0: Dynamic web and application server
+www-servers/nginx-unit 1.8.0 1.12.0-r3 1.13.0 1.14.0 1.15.0 1.16.0: Dynamic web and application server
 www-servers/ocsigenserver 2.8 9999: Ocaml-powered webserver and framework for dynamic web programming
 www-servers/pound 2.7f-r1: A http/https reverse-proxy and load-balancer
 www-servers/pshs 0.3.3 9999: Pretty small HTTP server -- a command-line tool to share files
