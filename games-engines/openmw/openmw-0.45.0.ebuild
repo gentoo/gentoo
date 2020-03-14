@@ -47,6 +47,8 @@ BDEPEND="
 	)
 "
 
+PATCHES=( "${FILESDIR}"/${P}-osg-3.6.5-{1,2}.patch ) # bug #709878
+
 S="${WORKDIR}/${PN}-${P}"
 
 src_prepare() {
