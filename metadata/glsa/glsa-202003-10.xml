@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-10">
+  <title>Mozilla Thunderbird: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Thunderbird,
+    the worst of which could result in the arbitrary execution of code.
+  </synopsis>
+  <product type="ebuild">thunderbird</product>
+  <announced>2020-03-14</announced>
+  <revised count="1">2020-03-14</revised>
+  <bug>698516</bug>
+  <bug>702638</bug>
+  <bug>709350</bug>
+  <bug>712518</bug>
+  <access>remote</access>
+  <affected>
+    <package name="mail-client/thunderbird" auto="yes" arch="*">
+      <unaffected range="ge">68.6.0</unaffected>
+      <vulnerable range="lt">68.6.0</vulnerable>
+    </package>
+    <package name="mail-client/thunderbird-bin" auto="yes" arch="*">
+      <unaffected range="ge">68.6.0</unaffected>
+      <vulnerable range="lt">68.6.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Mozilla Thunderbird is a popular open-source email client from the
+      Mozilla project.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Thunderbird.
+      Please review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker may be able to execute arbitrary code, cause a Denial
+      of Service condition, obtain sensitive information, or conduct Cross-Site
+      Request Forgery (CSRF).
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Thunderbird users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=mail-client/thunderbird-68.6.0"
+    </code>
+    
+    <p>All Mozilla Thunderbird binary users should upgrade to the latest
+      version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose
+      "&gt;=mail-client/thunderbird-bin-68.6.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2019-35/">
+      MFSA-2019-35
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2019-37/">
+      MFSA-2019-37
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-07/">
+      MFSA-2020-07
+    </uri>
+    <uri link="https://www.mozilla.org/en-US/security/advisories/mfsa2020-10/">
+      MFSA-2020-10
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11745">CVE-2019-11745</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11757">CVE-2019-11757</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11759">CVE-2019-11759</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11760">CVE-2019-11760</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11761">CVE-2019-11761</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11762">CVE-2019-11762</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11763">CVE-2019-11763</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11764">CVE-2019-11764</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17005">CVE-2019-17005</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17008">CVE-2019-17008</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17010">CVE-2019-17010</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17011">CVE-2019-17011</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17012">CVE-2019-17012</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-20503">CVE-2019-20503</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6792">CVE-2020-6792</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6793">CVE-2020-6793</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6794">CVE-2020-6794</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6795">CVE-2020-6795</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6798">CVE-2020-6798</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6800">CVE-2020-6800</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6805">CVE-2020-6805</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6806">CVE-2020-6806</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6807">CVE-2020-6807</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6811">CVE-2020-6811</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6812">CVE-2020-6812</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-6814">CVE-2020-6814</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-02-23T05:31:39Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-03-14T16:01:40Z">BlueKnight</metadata>
+</glsa>
