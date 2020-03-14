@@ -1653,7 +1653,7 @@ app-emulation/slirp4netns 0.3.3 0.4.1-r1 0.4.2 0.4.3: User-mode networking for u
 app-emulation/softgun 0.21 0.22: ARM software emulator
 app-emulation/spectemu 0.99.3-r1: 48k ZX Spectrum Emulator
 app-emulation/spice 0.14.0-r2 0.14.2 0.14.3 9999: SPICE server
-app-emulation/spice-html5 0.2.1: Spice Javascript client
+app-emulation/spice-html5 0.2.1 0.2.2: Spice Javascript client
 app-emulation/spice-protocol 0.12.14 0.12.15 0.14.0 0.14.1 9999: Headers defining the SPICE protocol
 app-emulation/spice-vdagent 0.17.0_p20180319-r1 0.19.0-r1: SPICE VD Linux Guest Agent
 app-emulation/spim 8.0-r3: MIPS Simulator
@@ -13843,7 +13843,7 @@ media-tv/gtk-v4l 0.4: A control application for Video 4 Linux (based on C and GT
 media-tv/ivtv-utils 1.4.1: IVTV utilities for Hauppauge PVR PCI cards
 media-tv/ivtvplayer 0.1.3-r2: Simple IVTV command line TV and radio player with support of LIRC
 media-tv/kodi 18.3-r1 18.4-r1 18.5-r2 18.6 9999: A free and open source media-player and entertainment hub
-media-tv/linuxtv-dvb-apps 1.1.1.20140321: Small utils for DVB to scan, zap, view signal strength
+media-tv/linuxtv-dvb-apps 1.1.1.20140321 1.1.1.20140321-r1: Small utils for DVB to scan, zap, view signal strength
 media-tv/mythtv 29.1-r2 30.0_p20190808-r1 30.0_p20190808-r2: Open Source DVR and media center hub
 media-tv/mythtv-status 0.10.4: Displays the current status of MythTV at the command prompt
 media-tv/nvtv 0.4.7-r3: TV-Out for NVidia cards
@@ -14938,7 +14938,7 @@ net-misc/gcap 0.1.1-r1: Command line tool for downloading Youtube closed caption
 net-misc/geoipupdate 2.3.1 3.1.0 3.1.1 4.0.3-r1 4.0.4: performs automatic updates of GeoIP2 and GeoIP Legacy binary databases
 net-misc/geomyidae 0.32.2 0.34: A daemon to serve the gopher protocol
 net-misc/gerbera 1.4.0 9999: UPnP Media Server
-net-misc/getdate 1.2-r1: Network Date/Time Query and Set Local Date/Time Utility
+net-misc/getdate 1.2-r1 1.2-r2: Network Date/Time Query and Set Local Date/Time Utility
 net-misc/gnome-online-miners 3.30.0: Crawls through your online content
 net-misc/gnome-remote-desktop 0.1.7: Remote desktop daemon for GNOME using pipewire
 net-misc/gns3-converter 1.3.0: Designed to convert old ini-style GNS3 topologies
