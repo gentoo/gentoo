@@ -16,16 +16,11 @@ SRC_URI="
 LICENSE="GPL-2 GPL-2+ LGPL-2.1+"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="numa"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="${PYTHON_DEPS}
-	numa? ( sys-process/numactl )"
+	sys-process/numactl"
 RDEPEND="${DEPEND}"
-
-src_compile() {
-	emake $(usex numa 'NUMA=1' 'NUMA=0') all
-}
 
 src_install() {
 	emake prefix=/usr DESTDIR="${D}" MAN_COMPRESSION=none install

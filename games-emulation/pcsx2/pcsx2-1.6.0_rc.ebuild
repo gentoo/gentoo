@@ -2,17 +2,17 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+MY_PV="${PV/_/-}"
 
-inherit cmake git-r3 multilib toolchain-funcs wxwidgets
+inherit cmake multilib toolchain-funcs wxwidgets
 
 DESCRIPTION="A PlayStation 2 emulator"
 HOMEPAGE="https://www.pcsx2.net"
-EGIT_REPO_URI="https://github.com/PCSX2/${PN}.git"
+SRC_URI="https://github.com/PCSX2/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS=""
-IUSE=""
+KEYWORDS="-* ~amd64 ~x86"
 
 RDEPEND="
 	app-arch/bzip2[abi_x86_32(-)]
@@ -39,6 +39,8 @@ DEPEND="${RDEPEND}
 	dev-cpp/pngpp
 	dev-cpp/sparsehash
 "
+
+S="${WORKDIR}/${PN}-${MY_PV}"
 
 pkg_setup() {
 	if [[ ${MERGE_TYPE} != binary && $(tc-getCC) == *gcc* ]]; then
