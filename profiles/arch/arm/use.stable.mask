@@ -8,10 +8,6 @@
 # Dependencies not yet stable.
 ayatana
 
-# Thomas Deutschmann <whissi@gentoo.org> (2019-06-08)
-# Needs dev-lang/php:7.3 stable
-php_targets_php7-3
-
 # Mike Gilbert <floppym@gentoo.org> (2017-06-08)
 # dev-lang/python:3.7 is not stable.
 python_targets_python3_7

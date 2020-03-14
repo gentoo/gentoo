@@ -12,7 +12,7 @@ SRC_URI="https://github.com/geneweb/geneweb/archive/${GITID}.tar.gz -> ${P}.tar.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 ~x86"
 IUSE="+ocamlopt"
 RESTRICT="strip"
 
