@@ -31,7 +31,6 @@ RDEPEND="
 	dev-qt/qtimageformats:5
 	dev-qt/qtnetwork:5
 	dev-qt/qtsvg:5
-	dev-qt/qtwayland:5
 	media-libs/fontconfig:=
 	>=media-libs/libtgvoip-2.4.4_p20200212[alsa?,pulseaudio?]
 	media-libs/openal[alsa?,pulseaudio?]
