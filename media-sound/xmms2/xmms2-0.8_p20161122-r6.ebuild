@@ -288,6 +288,7 @@ src_test() {
 src_install() {
 	./waf --without-ldconfig --destdir="${D}" install || die "'waf install' failed"
 	dodoc AUTHORS TODO
+	python_optimize
 }
 
 pkg_postinst() {
