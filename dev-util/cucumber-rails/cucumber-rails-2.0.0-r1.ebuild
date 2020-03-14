@@ -12,6 +12,8 @@ RUBY_FAKEGEM_EXTRADOC="CHANGELOG.md README.md"
 
 RUBY_FAKEGEM_GEMSPEC="cucumber-rails.gemspec"
 
+RUBY_FAKEGEM_BINWRAP=""
+
 inherit ruby-fakegem
 
 DESCRIPTION="Executable feature scenarios for Rails"
