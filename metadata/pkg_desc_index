@@ -2844,7 +2844,6 @@ app-vim/colorsel 20100406: vim plugin: RGB / HSV color selector
 app-vim/colorv 3.0.2-r2: vim plugin: a color tool for vim
 app-vim/command-t 5.0.3: vim plugin: fast file navigation for vim
 app-vim/conque 2.3-r1: vim plugin: Run interactive commands inside a Vim buffer
-app-vim/cream 0.43: An easy-to-use configuration of the GVim text editor
 app-vim/csound-syntax 20160804: vim plugin: set of tools for editing Csound files with vim
 app-vim/csscomplete 1.0: vim plugin: CSS 3 omni complete function
 app-vim/csv 0.31-r1: vim plugin: display and alter csv files
@@ -4781,8 +4780,6 @@ dev-lang/python 2.7.17-r1 3.6.10 3.7.6 3.7.7 3.8.2 3.9.0_alpha4: An interpreted,
 dev-lang/python-exec 2.4.6-r1 9999: Python script wrapper
 dev-lang/qu-prolog 10.1: Extended Prolog supporting quantifiers, object-variables and substitutions
 dev-lang/rakudo 2019.03 2019.11 9999: A compiler for the Perl 6 programming language
-dev-lang/rebol 9999: Relative Expression-Based Object Language
-dev-lang/rebol-bin 3_pre20140304: Relative Expression-Based Object Language
 dev-lang/regina-rexx 3.9.1-r1: Portable Rexx interpreter
 dev-lang/ruby 2.4.9 2.5.7 2.6.5 2.7.0: An object-oriented scripting language
 dev-lang/rust 1.37.0 1.38.0 1.39.0 1.40.0-r1 1.41.1: Systems programming language from Mozilla
@@ -9861,7 +9858,7 @@ dev-ruby/pg 0.21.0 1.1.4 1.2.2: Ruby extension library providing an API to Postg
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.2.8 1.3.9 1.4.0 1.4.1: A pkg-config implementation by Ruby
 dev-ruby/plist 3.4.0 3.5.0: A library to manipulate Property List files, also known as plists
-dev-ruby/pluggaloid 1.3.1 1.4.0 1.4.1 1.5.0: Pluggaloid is extensible plugin system for mikutter
+dev-ruby/pluggaloid 1.2.0 1.3.1 1.4.0 1.4.1 1.5.0: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
 dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
 dev-ruby/posix-spawn 0.3.13-r1: Library that implements a subset of the Ruby 1.9 Process::spawn
@@ -10023,7 +10020,7 @@ dev-ruby/ruby_dep 1.5.0: Creates a version constraint of supported Rubies,suitab
 dev-ruby/ruby_gntp 0.3.4: Ruby library for GNTP(Growl Notification Transport Protocol)
 dev-ruby/ruby_parser 3.13.1 3.14.0 3.14.1 3.14.2: A ruby parser written in pure ruby
 dev-ruby/ruby_smb 1.0.5 1.1.0: pure Ruby implementation of the SMB Protocol Family
-dev-ruby/rubygems 2.7.10 3.0.3 3.0.4-r1 3.0.6 3.1.2: Centralized Ruby extension management system
+dev-ruby/rubygems 2.7.10 3.0.3 3.0.4-r1 3.0.6 3.0.8 3.1.2: Centralized Ruby extension management system
 dev-ruby/rubyntlm 0.6.2: Ruby/NTLM provides message creator and parser for the NTLM authentication.
 dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
@@ -14467,7 +14464,6 @@ net-im/bitlbee-facebook 1.2.0 9999: Facebook protocol plugin for BitlBee
 net-im/bitlbee-steam 1.4.2 9999: Steam protocol plugin for BitlBee
 net-im/centerim 5.0.1: CenterIM is a ncurses ICQ/Yahoo!/AIM/IRC/MSN/Jabber/GaduGadu/RSS/LiveJournal Client
 net-im/choqok 1.7.0: Free/Open Source micro-blogging client by KDE
-net-im/coccinella 0.96.20: Jabber Client With a Built-in Whiteboard and VoIP (jingle)
 net-im/corebird 1.7.4: Native GTK+3 Twitter client
 net-im/coturn 4.5.1.1 9999: coturn TURN server project
 net-im/cpop 0.0.4-r1: GTK+ network popup message client. Compatible with the jpop protocol
@@ -16766,7 +16762,6 @@ sys-apps/gsmartcontrol 1.0.2 1.1.3: Hard disk drive health inspection tool
 sys-apps/habitat 0.54.0: Application automation framework
 sys-apps/hardened-shadow 0.9.2: Hardened implementation of user account utilities
 sys-apps/haveged 1.9.2-r1 1.9.4 1.9.8c: A simple entropy daemon using the HAVEGE algorithm
-sys-apps/hbaapi 2.2: The Host Bus Adapter API for managing Fibre Channel Host Bus Adapters
 sys-apps/hd-idle 1.05: Utility for spinning down hard disks after a period of idle time
 sys-apps/hdparm 9.56 9.58: Utility to change hard drive performance parameters
 sys-apps/heirloom-tools 070715-r1: Heirloom toolchest - original Unix tools
@@ -17466,7 +17461,6 @@ sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.107 4.19.108 4.19.109 5.4.23 5.4.24 5.4.25 5.5.7 5.5.8 5.5.9: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-kernel-bin 4.19.103 5.4.19 5.5.3: Pre-built vanilla Linux kernel
 sys-kernel/vanilla-sources 3.16.82 4.4.216 4.9.216 4.14.173 4.19.109 5.4.25 5.5.9: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
