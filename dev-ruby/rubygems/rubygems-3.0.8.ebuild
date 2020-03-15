@@ -20,6 +20,8 @@ RESTRICT="!test? ( test )"
 
 PDEPEND="server? ( =dev-ruby/builder-3* )"
 
+ruby_add_depend "virtual/ruby-ssl"
+
 ruby_add_bdepend "
 	test? (
 		dev-ruby/json
