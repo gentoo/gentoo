@@ -46,7 +46,7 @@ src_install() {
 	einstalldocs
 
 	local instdir
-	instdir="$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD $(usex luajit 'luajit' 'lua'))"/${PN}
+	instdir="$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD $(usex luajit 'luajit' 'lua'))"
 
 	insinto "${instdir#${EPREFIX}}"
 	doins src/argparse.lua
