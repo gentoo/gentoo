@@ -10,7 +10,7 @@ LICENSE=GPL-2
 PDEPEND=rtlsdr? ( python_single_target_python3_6? ( dev-python/numpy[python_targets_python3_6(-)] ) net-wireless/rtl-sdr )
 RDEPEND=python_single_target_python3_6? ( dev-lang/python:3.6 >=dev-lang/python-exec-2:=[python_targets_python3_6] ) networkmanager? ( net-misc/networkmanager:= ) dev-libs/glib:= dev-libs/elfutils:= sys-libs/zlib:= dev-db/sqlite:= net-libs/libmicrohttpd kernel_linux? ( sys-libs/libcap dev-libs/libnl:3 net-libs/libpcap ) libusb? ( virtual/libusb:1 ) dev-libs/protobuf-c:= dev-libs/protobuf:= python_single_target_python3_6? ( dev-python/protobuf-python[python_targets_python3_6(-)] ) sys-libs/ncurses:= lm-sensors? ( sys-apps/lm-sensors ) pcre? ( dev-libs/libpcre ) suid? ( sys-libs/libcap ) ubertooth? ( net-wireless/ubertooth:= ) python_single_target_python3_6? ( dev-python/pyserial[python_targets_python3_6(-)] ) selinux? ( sec-policy/selinux-kismet )
 REQUIRED_USE=^^ ( python_single_target_python3_6 )
-SLOT=0/2020.03.1_p20200311
-SRC_URI=https://github.com/kismetwireless/kismet/archive/9ca7e469cf115469f392db7436816151867e1654.tar.gz -> kismet-2020.03.1_p20200311.tar.gz
+SLOT=0/2020.03.1_p20200314
+SRC_URI=https://github.com/kismetwireless/kismet/archive/ea3f9ffe84b86cfc5e01ce3fec5476d51d161b98.tar.gz -> kismet-2020.03.1_p20200314.tar.gz
 _eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	eutils	fcb2aa98e1948b835b5ae66ca52868c5	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-single-r1	01eeb2dae449b6155b46f8deb0a2087d	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	udev	452708c3f55cf6e918b045adb949a9e6	user	7b7fc6ec5eb1c1eee55b0609f01e7362	user-info	a2abd4e2f4c3b9b06d64bf1329359a02
-_md5_=adc07aef15db9cad3c337324a0d0f7de
+_md5_=6f83e689a72ed102e8bcb87393abf991

@@ -15427,7 +15427,7 @@ net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/iwd 1.4 1.4-r1 1.5 9999: Wireless daemon for linux
 net-wireless/jackit 0.0_p20170918: Exploit Code for Mousejack
-net-wireless/kismet 2016.07.1-r2 2019.09.1-r2 2019.12.2-r1 2020.03.1_p20200311 9999: IEEE 802.11 wireless LAN sniffer
+net-wireless/kismet 2016.07.1-r2 2019.09.1-r2 2019.12.2-r1 2020.03.1_p20200314 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
 net-wireless/kismet-ubertooth 2017.03.2 9999: Provides basic bluetooth support in kismet
 net-wireless/kismetdb 2019.05.05 9999: Kismetdb database log helper library
@@ -17942,7 +17942,7 @@ www-apps/roundup 1.5.1 1.6.1-r1: Issue-tracking system with command-line, web, a
 www-apps/rt 4.4.3 4.4.4: RT is an enterprise-grade ticketing system
 www-apps/rutorrent 3.8-r1 9999: ruTorrent is a front-end for the popular Bittorrent client rTorrent
 www-apps/scgi 1.14-r1: A Python package for implementing SCGI servers
-www-apps/trac 1.0.9-r1 1.2.1-r1 1.2.5: Enhanced wiki and issue tracking system for software development projects
+www-apps/trac 1.2.5: Enhanced wiki and issue tracking system for software development projects
 www-apps/trac-accountmanager 0.4.2-r1 0.4.4: A Trac plugin for manage user accounts
 www-apps/trac-mercurial 0.12.0.29_pre10899-r2 1.0.0.3_pre20130206-r1: A Mercurial plugin for Trac
 www-apps/trac-tags 0.6-r2: Tags plugin for Trac
