@@ -12,8 +12,8 @@ SLOT="0"
 
 KEYWORDS=""
 IUSE="
-	+adns caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc
-	seccomp selinux
+	+adns +caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc
+	+seccomp selinux
 "
 REQUIRED_USE="
 	?? ( libedit readline )
@@ -40,7 +40,7 @@ S="${WORKDIR}/${P/_/-}"
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-3.5-pool-vendor-gentoo.patch
-	"${FILESDIR}"/${PN}-3.5-systemd-gentoo.patch
+	"${FILESDIR}"/${PN}-3.5-r3-systemd-gentoo.patch
 )
 
 src_prepare() {
@@ -50,13 +50,20 @@ src_prepare() {
 		doc/* examples/* || die
 
 	# Copy for potential user fixup
-	cp "${FILESDIR}"/chronyd.conf "$T"/chronyd.conf
+	cp "${FILESDIR}"/chronyd.conf "${T}"/chronyd.conf
+	cp examples/chronyd.service "${T}"/chronyd.service
 
 	# Set config for privdrop
 	if ! use caps; then
 		sed -i \
 			-e 's/-u ntp//' \
-			"${T}"/chronyd.conf || die
+			"${T}"/chronyd.conf "${T}"/chronyd.service || die
+	fi
+
+	if ! use seccomp; then
+		sed -i \
+			-e 's/-F 1//' \
+			"${T}"/chronyd.conf "${T}"/chronyd.service || die
 	fi
 }
 
@@ -131,16 +138,11 @@ src_install() {
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/chrony-2.4-r1.logrotate chrony
 
-	systemd_dounit examples/{chronyd,chrony-wait}.service
+	systemd_dounit "${T}"/chronyd.service
+	systemd_dounit examples/chrony-wait.service
 	systemd_enable_ntpunit 50-chrony chronyd.service
 }
 
-pkg_preinst() {
-	if use caps && has_version net-misc/chrony[-caps]; then
-		elog "/run/chronyd needs ntp:ntp permissions; please check."
-		elog "The safest option is reboot, but you may chown manually."
-	elif ! use caps && has_version net-misc/chrony[caps]; then
-		elog "/run/chronyd needs root:root permissions; please check."
-		elog "The safest option is reboot, but you may chown manually."
-	fi
+pkg_postinst() {
+	tmpfiles_process chronyd.conf
 }
