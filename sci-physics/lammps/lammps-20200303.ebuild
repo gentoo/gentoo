@@ -23,7 +23,7 @@ SRC_URI="https://github.com/lammps/lammps/archive/${MY_PV}.tar.gz -> ${MY_P}.tar
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cuda examples gzip lammps-memalign mpi netcdf python test"
+IUSE="cuda examples gzip kokkos lammps-memalign mpi netcdf python test"
 RESTRICT="!test? ( test )"
 
 DEPEND="
@@ -41,6 +41,7 @@ DEPEND="
 	sci-libs/fftw:3.0
 	netcdf? ( sci-libs/netcdf )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-4.2.9-r1 )
+	kokkos? ( >=dev-cpp/kokkos-3.0.00 )
 	dev-cpp/eigen:3
 	"
 RDEPEND="${DEPEND}"
@@ -69,6 +70,8 @@ src_configure() {
 		-DPKG_GRANULAR=ON
 		-DPKG_KSPACE=ON
 		-DFFT=FFTW3
+		-DPKG_KOKKOS=$(usex kokkos)
+		$(use kokkos && echo -DEXTERNAL_KOKKOS=ON)
 		-DPKG_MANYBODY=ON
 		-DPKG_MC=ON
 		-DPKG_MEAM=ON
