@@ -9,5 +9,5 @@ LICENSE=GPL-3+
 RDEPEND=>=x11-libs/gtk+-2.20:2 x11-libs/libX11 >=x11-libs/libwnck-2.30:1 <xfce-base/libxfce4ui-4.15:=[gtk2(+)] >=xfce-base/libxfce4util-4.10:= <xfce-base/xfce4-panel-4.15:=[gtk2(+)] >=xfce-base/xfconf-4.10:=
 SLOT=0
 SRC_URI=https://github.com/cedl38/xfce4-windowck-plugin/archive/v0.4.6.tar.gz -> xfce4-windowck-plugin-0.4.6.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c	xdg-utils	ff2ff954e6b17929574eee4efc5152ba
 _md5_=6a73459535c42f24e9359abfbaf00560

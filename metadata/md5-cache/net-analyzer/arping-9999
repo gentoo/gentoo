@@ -1,6 +1,6 @@
-BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 >=dev-vcs/git-1.8.2.1[curl]
+BDEPEND=>=app-portage/elt-patches-20170815 || ( >=sys-devel/automake-1.16.1:1.16 >=sys-devel/automake-1.15.1:1.15 ) >=sys-devel/autoconf-2.69 >=sys-devel/libtool-2.4 filecaps? ( sys-libs/libcap ) >=dev-vcs/git-1.8.2.1[curl]
 DEFINED_PHASES=postinst prepare unpack
-DEPEND=net-libs/libpcap net-libs/libnet:1.1 dev-libs/check filecaps? ( sys-libs/libcap )
+DEPEND=net-libs/libpcap net-libs/libnet:1.1 dev-libs/check
 DESCRIPTION=A utility to see if a specific IP address is taken and what MAC address owns it
 EAPI=7
 HOMEPAGE=http://www.habets.pp.se/synscan/programs.php?prog=arping
@@ -9,5 +9,5 @@ LICENSE=GPL-2
 PROPERTIES=live
 RDEPEND=net-libs/libpcap net-libs/libnet:1.1 !net-misc/iputils[arping(+)]
 SLOT=2
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	fcaps	9445d60c1eb084a91c38ef4c070b2f16	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	fcaps	f52b3d580830bf1132beb1e4e843b84d	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=37fab5a20dedc482391ce8042b311052

@@ -9,5 +9,5 @@ LICENSE=LGPL-2.1+ BSD
 RDEPEND=!<sys-libs/glibc-2.26 virtual/libintl
 SLOT=0
 SRC_URI=https://github.com/thkukuk/rpcsvc-proto/archive/v1.4.tar.gz -> rpcsvc-proto-1.4.tar.gz
-_eclasses_=autotools	ea7865c8fba1ea8d3639f355fffe1a3c	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=8b6a11ff0b9e5eac19495b0f251a0802
