@@ -260,7 +260,6 @@ RDEPEND="
 	zimg? ( >=media-libs/zimg-2.7.4:=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	zvbi? ( >=media-libs/zvbi-0.2.35[${MULTILIB_USEDEP}] )
-	!media-video/qt-faststart
 	postproc? ( !media-libs/libpostproc )
 "
 
