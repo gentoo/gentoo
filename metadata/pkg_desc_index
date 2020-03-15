@@ -10515,7 +10515,7 @@ dev-util/glade 3.22.1-r1 3.22.2: A user interface designer for GTK+ and GNOME
 dev-util/glib-utils 2.60.7 2.62.5: Build utilities for GLib using projects
 dev-util/global 6.3.1 6.5.7 6.6.4: tag system to find an object location in various sources
 dev-util/glslang 7.12.3353_pre20191027-r2 9999: Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator
-dev-util/gn 0.1463 0.1544 0.1616: GN is a meta-build system that generates build files for Ninja
+dev-util/gn 0.1463 0.1726: GN is a meta-build system that generates build files for Ninja
 dev-util/gnome-builder 3.30.3-r1 3.32.4-r1 3.34.1-r1: An IDE for writing GNOME-based software
 dev-util/gnome-devel-docs 3.30.2 3.32.1: Documentation for developing for the GNOME desktop environment
 dev-util/gob 2.0.20: Preprocessor for making GTK+ objects with inline C code
@@ -14705,7 +14705,7 @@ net-libs/libwebsockets 3.2.1: A flexible pure-C library for implementing network
 net-libs/libzapojit 0.0.3: GLib/GObject wrapper for the SkyDrive and Hotmail REST APIs
 net-libs/liquid-dsp 1.3.0 1.3.1 9999: digital signal processing library for software-defined radios
 net-libs/loudmouth 1.5.3-r1 1.5.3-r2 1.5.3-r3: Lightweight C Jabber library
-net-libs/mbedtls 2.10.0 2.12.0 2.16.3 2.16.4 2.17.0 2.18.1-r2 2.19.1-r2: Cryptographic library for embedded systems
+net-libs/mbedtls 2.19.1-r2: Cryptographic library for embedded systems
 net-libs/meanwhile 1.0.2-r1: Meanwhile (Sametime protocol) library
 net-libs/miniupnpc 2.1.20190625 2.1.20190824 2.1.20191224: UPnP client library and a simple UPnP client
 net-libs/nDPI 2.0 2.2 2.8 3.0-r1 3.0-r2 3.2 9999: Open Source Deep Packet Inspection Software Toolkit
@@ -16873,7 +16873,7 @@ sys-apps/pmount 0.9.99_alpha-r5: Policy based mounter that gives the ability to 
 sys-apps/pmount-gui 0_pre20130806: A simple graphical frontend for pmount
 sys-apps/pnputils 0.1: Plug and Play BIOS utilities
 sys-apps/policycoreutils 2.9 3.0 9999: SELinux core utilities
-sys-apps/portage 2.3.69 2.3.79 2.3.84-r1 2.3.89-r1 2.3.92 2.3.93 9999: Portage is the package management and distribution system for Gentoo
+sys-apps/portage 2.3.69 2.3.79 2.3.84-r1 2.3.89-r1 2.3.92 2.3.93 2.3.94 9999: Portage is the package management and distribution system for Gentoo
 sys-apps/powerpc-utils 1.1.3.18-r3: PowerPC utilities including nvsetenv, and additional OldWorld apps
 sys-apps/prctl 1.6: Tool to query and modify process behavior
 sys-apps/preload 0.6.4-r3: Adaptive readahead daemon
