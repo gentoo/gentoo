@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-24">
+  <title>file: Heap-based buffer overflow</title>
+  <synopsis>A heap-based buffer overflow in file might allow remote attackers
+    to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">file</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>698610</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-apps/file" auto="yes" arch="*">
+      <unaffected range="ge">5.37-r1</unaffected>
+      <vulnerable range="lt">5.37-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>file is a utility that guesses a file format by scanning binary data for
+      patterns.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that file incorrectly handled certain malformed files.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      file via libmagic or file, possibly resulting in execution of arbitrary
+      code with the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All file users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/file-5.37-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18218">CVE-2019-18218</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T04:56:34Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T14:35:19Z">whissi</metadata>
+</glsa>
