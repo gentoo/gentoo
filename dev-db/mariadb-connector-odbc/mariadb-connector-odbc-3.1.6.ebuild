@@ -3,6 +3,8 @@
 
 EAPI=7
 
+CMAKE_ECLASS=cmake
+
 inherit cmake-multilib
 
 DESCRIPTION="MariaDB Connector/ODBC"
@@ -21,7 +23,7 @@ DEPEND="=dev-db/mariadb-connector-c-$(ver_cut 1-2)*
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	cmake-utils_src_prepare
+	cmake_src_prepare
 
 	cp "${FILESDIR}/odbcinst.ini" . || die
 	sed -e "s,lib/lib,$(get_libdir)/lib,g" -i "odbcinst.ini" || die
@@ -37,7 +39,7 @@ multilib_src_configure() {
 		-DINSTALL_LICENSE_DIR="/usr/share/doc/${P}"
 		#-DCMAKE_C_FLAGS="$(mariadb_config --cflags)"
 	)
-	cmake-utils_src_configure
+	cmake_src_configure
 }
 
 multilib_src_install_all() {
