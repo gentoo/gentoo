@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-22">
+  <title>WebkitGTK+: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in WebKitGTK+, the worst
+    of which may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">webkitgtk+</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>699156</bug>
+  <bug>706374</bug>
+  <bug>709612</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/webkit-gtk" auto="yes" arch="*">
+      <unaffected range="ge">2.26.4</unaffected>
+      <vulnerable range="lt">2.26.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>WebKitGTK+ is a full-featured port of the WebKit rendering engine,
+      suitable for projects requiring any kind of web integration, from hybrid
+      HTML/CSS applications to full-fledged web browsers.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in WebKitGTK+. Please
+      review the referenced CVE identifiers for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could execute arbitrary code, cause a Denial of
+      Service condition, bypass intended memory-read restrictions, conduct a
+      timing side-channel attack to bypass the Same Origin Policy or obtain
+      sensitive information.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All WebkitGTK+ users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/webkit-gtk-2.26.4"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8625">CVE-2019-8625</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8674">CVE-2019-8674</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8707">CVE-2019-8707</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8710">CVE-2019-8710</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8719">CVE-2019-8719</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8720">CVE-2019-8720</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8726">CVE-2019-8726</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8733">CVE-2019-8733</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8735">CVE-2019-8735</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8743">CVE-2019-8743</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8763">CVE-2019-8763</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8764">CVE-2019-8764</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8765">CVE-2019-8765</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8766">CVE-2019-8766</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8768">CVE-2019-8768</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8769">CVE-2019-8769</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8771">CVE-2019-8771</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8782">CVE-2019-8782</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8783">CVE-2019-8783</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8808">CVE-2019-8808</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8811">CVE-2019-8811</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8812">CVE-2019-8812</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8813">CVE-2019-8813</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8814">CVE-2019-8814</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8815">CVE-2019-8815</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8816">CVE-2019-8816</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8819">CVE-2019-8819</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8820">CVE-2019-8820</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8821">CVE-2019-8821</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8822">CVE-2019-8822</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8823">CVE-2019-8823</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8835">CVE-2019-8835</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8844">CVE-2019-8844</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-8846">CVE-2019-8846</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3862">CVE-2020-3862</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3864">CVE-2020-3864</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3865">CVE-2020-3865</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3867">CVE-2020-3867</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-3868">CVE-2020-3868</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T04:37:44Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T04:42:48Z">whissi</metadata>
+</glsa>
