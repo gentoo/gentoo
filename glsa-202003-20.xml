@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-20">
+  <title>systemd: Heap use-after-free</title>
+  <synopsis>A heap use-after-free flaw in systemd at worst might allow an
+    attacker to execute arbitrary code.
+  </synopsis>
+  <product type="ebuild">systemd</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>708806</bug>
+  <access>local</access>
+  <affected>
+    <package name="sys-apps/systemd" auto="yes" arch="*">
+      <unaffected range="ge">244.3</unaffected>
+      <vulnerable range="lt">244.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A system and service manager.</p>
+  </background>
+  <description>
+    <p>It was found that systemd incorrectly handled certain Polkit queries.</p>
+  </description>
+  <impact type="high">
+    <p>A local unprivileged user, by sending a specially crafted Polkit query,
+      could possibly execute arbitrary code with the privileges of the process,
+      escalate privileges or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All systemd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-apps/systemd-244.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-1712">CVE-2020-1712</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T03:18:50Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T03:26:30Z">whissi</metadata>
+</glsa>
