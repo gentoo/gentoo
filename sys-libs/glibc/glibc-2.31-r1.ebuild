@@ -1137,7 +1137,11 @@ src_compile() {
 
 glibc_src_test() {
 	cd "$(builddir nptl)"
-	emake check
+	# disable tests:
+	# - tests-container:
+	#     sandbox does not understand unshare() and prevents
+	#     writes to /proc/
+	emake check tests-container=
 }
 
 do_src_test() {
