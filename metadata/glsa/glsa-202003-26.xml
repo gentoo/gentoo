@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-26">
+  <title>Python: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Python, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">python</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>676700</bug>
+  <bug>680246</bug>
+  <bug>680298</bug>
+  <bug>684838</bug>
+  <bug>689822</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-lang/python" auto="yes" arch="*">
+      <unaffected range="ge" slot="2.7">2.7.17</unaffected>
+      <unaffected range="ge" slot="3.5/3.5m">3.5.7</unaffected>
+      <unaffected range="ge" slot="3.6/3.6m">3.6.9</unaffected>
+      <unaffected range="ge" slot="3.7/3.7m">3.7.4</unaffected>
+      <vulnerable range="lt" slot="2.7">2.7.17</vulnerable>
+      <vulnerable range="lt" slot="3.5/3.5m">3.5.7</vulnerable>
+      <vulnerable range="lt" slot="3.6/3.6m">3.6.9</vulnerable>
+      <vulnerable range="lt" slot="3.7/3.7m">3.7.4</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Python is an interpreted, interactive, object-oriented programming
+      language.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Python. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly perform a CRLF injection attack, obtain
+      sensitive information, trick Python into sending cookies to the wrong
+      domain or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Python 2.7.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-2.7.17:2.7"
+    </code>
+    
+    <p>All Python 3.5.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-3.5.7:3.5/3.5m"
+    </code>
+    
+    <p>All Python 3.6.x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-3.6.9:3.6/3.6m"
+    </code>
+    
+    <p>All Python 3.7x users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-lang/python-3.7.4:3.7/3.7m"
+    </code>
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-20852">CVE-2018-20852</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5010">CVE-2019-5010</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9636">CVE-2019-9636</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9740">CVE-2019-9740</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9947">CVE-2019-9947</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-9948">CVE-2019-9948</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T15:47:20Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T15:56:47Z">whissi</metadata>
+</glsa>
