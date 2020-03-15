@@ -1,0 +1,13 @@
+DEFINED_PHASES=configure prepare
+DEPEND=pam? ( sys-libs/pam ) virtual/yacc
+DESCRIPTION=Run commands as super user or another user, alternative to sudo from OpenBSD
+EAPI=7
+HOMEPAGE=https://github.com/Duncaen/OpenDoas
+IUSE=pam
+KEYWORDS=~amd64 ~arm
+LICENSE=ISC
+RDEPEND=pam? ( sys-libs/pam )
+SLOT=0
+SRC_URI=https://github.com/Duncaen/OpenDoas/archive/v6.6.1.tar.gz -> OpenDoas-6.6.1.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=c28612ba8f9bb14007e86abb52a741c1

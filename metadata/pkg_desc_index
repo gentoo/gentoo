@@ -398,7 +398,7 @@ app-admin/denyhosts 2.9 3.0 3.0-r1: DenyHosts is a utility to help sys admins th
 app-admin/diamond 4.0.515.20170311: Python daemon that collects and publishes system metrics
 app-admin/dio 1.5.2-r1: A device I/O monitoring tool
 app-admin/diradm 2.9.7.1: A nearly complete nss/shadow suite for managing POSIX users/groups/data in LDAP
-app-admin/doas 6.0: Run commands as super user or another user, alternative to sudo from OpenBSD
+app-admin/doas 6.0 6.6.1: Run commands as super user or another user, alternative to sudo from OpenBSD
 app-admin/docker-bench 0.2.2: Docker Bench for Security runs the CIS Docker Benchmark
 app-admin/drush 6.7.0-r1: Command line shell and scripting interface for Drupal
 app-admin/dxf 7.5.1 7.5.2: Docker registry v2 client in Python
@@ -2361,7 +2361,7 @@ app-office/openoffice-bin 4.1.7: Apache OpenOffice productivity suite
 app-office/orage 4.12.1-r1: A time managing application (and panel plug-in) for the Xfce desktop environment
 app-office/pinpoint 0.1.8-r1: A tool for making hackers do excellent presentations
 app-office/plan 1.10: Motif based schedule planner
-app-office/planner 0.14.6_p20130520-r1: Project manager for Gnome
+app-office/planner 0.14.6_p20130520-r1 0.14.6_p20130520-r2: Project manager for Gnome
 app-office/projectlibre-bin 1.6.2: An open source desktop alternative to Microsoft Project
 app-office/pybliographer 1.4.0-r3: Pybliographer is a tool for working with bibliographic databases
 app-office/sc 7.16-r2: Spreadsheet Calculator
@@ -3248,6 +3248,7 @@ dev-db/lmdb++ 0.9.14.0: C++11 wrapper for the LMDB database library
 dev-db/m17n-db 1.7.0 1.8.0: Database for the m17n library
 dev-db/mariadb 5.5.66 5.5.67 10.1.38-r1 10.1.43 10.1.44 10.2.22-r1 10.2.29 10.2.31 10.3.20 10.3.22 10.4.10 10.4.12: An enhanced, drop-in replacement for MySQL
 dev-db/mariadb-connector-c 3.0.6-r1 3.1.6 3.1.7 9999: C client library for MariaDB/MySQL
+dev-db/mariadb-connector-odbc 3.1.6: MariaDB Connector/ODBC
 dev-db/metakit 2.4.9.7-r2: Embedded database library
 dev-db/mongodb 3.6.13 3.6.14 3.6.16 3.6.17 4.0.12 4.0.13 4.0.14 4.0.16 4.2.1 4.2.2 4.2.3: A high-performance, open source, schema-free document-oriented database
 dev-db/mtop 0.6.6-r3: Mysql top monitors a MySQL server
@@ -5017,7 +5018,7 @@ dev-libs/libffi 3.2.1 3.2.1-r1 3.2.1-r2 3.2.1-r3 3.3_rc0 3.3_rc1 3.3_rc2 3.3 3.3
 dev-libs/libffi-compat 3.2.1-r3: a portable, high level programming interface to various calling conventions
 dev-libs/libfido2 1.3.0-r1 1.3.1: Provides library functionality for FIDO 2.0
 dev-libs/libfilezilla 0.15.1 0.18.2 0.19.1 0.19.3 0.20.1 0.20.2: C++ library offering some basic functionality for platform-independent programs
-dev-libs/libflatarray 0.2.0-r1 0.3.0-r1: Struct of arrays library with object oriented interface for C++
+dev-libs/libflatarray 0.2.0-r1 0.3.0-r1 0.4.0_pre20200314: Struct of arrays library with object oriented interface for C++
 dev-libs/libfmt 5.3.0 6.1.2 9999: Small, safe and fast formatting library
 dev-libs/libfstrcmp 0.7: Make fuzzy comparisons of strings and byte arrays
 dev-libs/libg15 1.2.7-r1 9999: The libg15 library gives low-level access to the Logitech G15 keyboard
@@ -11587,7 +11588,7 @@ games-util/xqf 1.0.6.2: A server browser for many FPS games (frontend for qstat)
 gnome-base/dconf 0.32.0-r2 0.34.0: Simple low-level configuration system
 gnome-base/dconf-editor 3.34.2: Graphical tool for editing the dconf configuration database
 gnome-base/gconf 3.2.6-r4: GNOME configuration system and daemon
-gnome-base/gdm 3.32.0: GNOME Display Manager for managing graphical display servers and user logins
+gnome-base/gdm 3.32.0 3.34.1: GNOME Display Manager for managing graphical display servers and user logins
 gnome-base/gnome 3.32.2: Meta package for GNOME 3, merge this package to install
 gnome-base/gnome-applets 3.32.0 3.34.0: Applets for the GNOME Flashback Panel
 gnome-base/gnome-common 3.18.0-r1: Common files for development of Gnome packages
@@ -11596,15 +11597,15 @@ gnome-base/gnome-core-apps 3.30.2 3.32.2: Sub-meta package for the core applicat
 gnome-base/gnome-core-libs 3.32.2: Sub-meta package for the core libraries of GNOME 3
 gnome-base/gnome-desktop 2.32.1-r2 3.32.2 3.34.4: Library with common API for various GNOME modules
 gnome-base/gnome-extra-apps 3.32.2: Sub-meta package for the applications of GNOME 3
-gnome-base/gnome-flashback 3.32.0: GNOME Flashback session
+gnome-base/gnome-flashback 3.32.0 3.34.2: GNOME Flashback session
 gnome-base/gnome-keyring 3.31.91-r1: Password and keyring managing daemon
 gnome-base/gnome-light 3.22.0 3.26.2 3.30.2 3.32.2: Meta package for GNOME-Light, merge this package to install
 gnome-base/gnome-menus 3.32.0: Library and layout configuration for the Desktop Menu fd.o specification
 gnome-base/gnome-mime-data 2.18.0: MIME data for Gnome
 gnome-base/gnome-panel 3.32.0 3.34.1: The GNOME Flashback Panel
-gnome-base/gnome-session 3.32.0: Gnome session manager
-gnome-base/gnome-settings-daemon 3.32.1 3.32.1-r1: Gnome Settings Daemon
-gnome-base/gnome-shell 3.26.2-r4 3.32.2-r1 3.34.4: Provides core UI functions for the GNOME 3 desktop
+gnome-base/gnome-session 3.32.0 3.34.2: Gnome session manager
+gnome-base/gnome-settings-daemon 3.32.1 3.32.1-r1 3.34.2: Gnome Settings Daemon
+gnome-base/gnome-shell 3.26.2-r4 3.32.2-r1 3.34.4 3.34.4-r1: Provides core UI functions for the GNOME 3 desktop
 gnome-base/gnome-vfs 2.24.4-r5: Gnome Virtual Filesystem
 gnome-base/gsettings-desktop-schemas 3.24.1 3.32.0 3.34.0: Collection of GSettings schemas for GNOME desktop
 gnome-base/gvfs 1.40.2: Virtual filesystem implementation for GIO
@@ -11652,10 +11653,11 @@ gnome-extra/gnome-packagekit 3.24.0 3.30.0: PackageKit client for the GNOME desk
 gnome-extra/gnome-power-manager 3.30.0 3.32.0: GNOME power statistics
 gnome-extra/gnome-search-tool 3.6.0: Search tool for GNOME 3
 gnome-extra/gnome-shell-extension-applications-overview-tooltip 6 7: Show tooltip with full name and description
+gnome-extra/gnome-shell-extension-bluetooth-quick-connect 10: Allow to connect bluetooth paired devices from gnome control panel
 gnome-extra/gnome-shell-extension-dash-to-panel 26 29: An icon taskbar for the Gnome Shell
 gnome-extra/gnome-shell-extension-desktop-icons 19.01.4 19.10.2: A GNOME Shell extension for providing desktop icons
 gnome-extra/gnome-shell-extension-gsconnect 28-r1 33: KDE Connect implementation for Gnome Shell
-gnome-extra/gnome-shell-extensions 3.32.1 3.34.0: JavaScript extensions for GNOME Shell
+gnome-extra/gnome-shell-extensions 3.32.1 3.34.0 3.34.2: JavaScript extensions for GNOME Shell
 gnome-extra/gnome-shell-extensions-topicons-plus 22-r1 22_p20190929: Moves legacy tray icons to top panel
 gnome-extra/gnome-shell-frippery 3.32.1 3.34.2: Unofficial extension pack providing GNOME 2-like features for GNOME 3
 gnome-extra/gnome-software 3.30.6 3.32.4: Gnome install & update software
@@ -11676,7 +11678,7 @@ gnome-extra/nautilus-sendto 3.8.6: A nautilus extension for sending files to loc
 gnome-extra/nemo 3.6.4-r1 3.8.6-r1 4.0.6: A file manager for Cinnamon, forked from Nautilus
 gnome-extra/nm-applet 1.8.24 1.8.25: GNOME applet for NetworkManager
 gnome-extra/office-runner 1.0.2: Lighthearted tool to temporarily inhibit GNOME's suspend on lid close behavior
-gnome-extra/pch-session 3.32.0 3.34.1: Unofficial gnome based session with different default settings and extensions
+gnome-extra/pch-session 3.32.0 3.34.2: Unofficial gnome based session with different default settings and extensions
 gnome-extra/polkit-gnome 0.105-r2: A dbus session bus service that is used to bring up authentication dialogs
 gnome-extra/seahorse-nautilus 3.11.92: Nautilus extension for encrypting and decrypting files with GnuPG
 gnome-extra/sushi 3.32.1: A quick previewer for Nautilus, the GNOME file manager
@@ -12260,7 +12262,7 @@ mail-filter/rspamd 2.1 2.2 2.3 2.4 9999: Rapid spam filtering system
 mail-filter/scmail 1.3: a mail filter written in Scheme
 mail-filter/sieve-connect 0.87-r1: Sieve Command Line Interface
 mail-filter/sigh 1607.1.2 1607.1.6: S/MIME signing milter
-mail-filter/spamassassin 3.4.2-r2 3.4.2-r6 3.4.3 3.4.4: An extensible mail filter which can identify and tag spam
+mail-filter/spamassassin 3.4.3 3.4.4: An extensible mail filter which can identify and tag spam
 mail-filter/spamassassin-botnet 0.8-r1: SpamAssassin plugin that attempts to detect messages sent by a botnet
 mail-filter/spambayes 1.1_beta2: An anti-spam filter using on Bayesian filtering
 mail-filter/spamdyke 4.3.0 5.0.1: A drop-in connection-time spam filter for qmail
@@ -13266,7 +13268,7 @@ media-plugins/gst-plugins-ximagesrc 1.14.5: X11 video capture stream plugin for 
 media-plugins/gst-plugins-zbar 1.14.5: Bar codes detection in video streams for GStreamer
 media-plugins/gst-transcoder 1.8.2-r1: GStreamer Transcoding API
 media-plugins/hexter 1.1.0: Yamaha DX7 modeling DSSI plugin
-media-plugins/imlib2_loaders 1.6.0: Additional image loaders for Imlib2
+media-plugins/imlib2_loaders 1.6.1: Additional image loaders for Imlib2
 media-plugins/ir_lv2 1.2.4 1.3.4: LV2 convolver plugin especially for creating reverb effects
 media-plugins/kodi-audiodecoder-modplug 2.0.3 9999: Modplug decoder addon for Kodi
 media-plugins/kodi-audiodecoder-nosefart 2.0.0 2.0.1 2.0.2 9999: Nosefart decoder addon for Kodi
@@ -14898,7 +14900,7 @@ net-misc/connman-notify 0_pre20191003-r1: Desktop notification integration for c
 net-misc/connman-ui 0_p20150622 9999: A full-featured GTK based trayicon UI for ConnMan
 net-misc/csync 0.50.0 0.50.0-r1: lightweight file synchronizer utility
 net-misc/curl 7.66.0 7.67.0-r1 7.68.0 7.69.0: A Client that groks URLs
-net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1 2.11.1-r1 3.1.0: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
+net-misc/dahdi 2.10.0.1 2.10.0.1-r1 2.10.1 2.10.2-r2 2.11.1 2.11.1-r1 3.1.0 3.1.0-r1: Kernel modules for Digium compatible hardware (formerly known as Zaptel)
 net-misc/dahdi-tools 2.6.2 2.8.0 2.9.0.1 2.10.0 2.10.1 2.10.2 2.11.1 3.1.0: Userspace tools to configure the kernel modules from net-misc/dahdi
 net-misc/datapipe 1.0-r2: bind a local port and connect it to a remote socket
 net-misc/dcetest 2.0: dcetest is a clone of the Windows rpcinfo
@@ -16116,7 +16118,7 @@ sci-libs/libcmatrix 3.11.0-r1: lite version of pNMRsim
 sci-libs/libdap 3.18.1: Implementation of a C++ SDK for DAP 2.0 and 3.2
 sci-libs/libexcelformat 101016: reading, writing, and editing of XLS (BIFF8 format) files using C++
 sci-libs/libgenome 1.3-r1: Library for sci-biology/mauve
-sci-libs/libgeodecomp 0.4.0-r1: An auto-parallelizing library to speed up computer simulations
+sci-libs/libgeodecomp 0.4.0-r1 0.5.0_pre20200314: An auto-parallelizing library to speed up computer simulations
 sci-libs/libgeotiff 1.4.1-r1 1.5.1-r1: Library for reading TIFF files with embedded tags for geographic information
 sci-libs/libghemical 3.0.0: Chemical quantum mechanics and molecular mechanics
 sci-libs/libh2o 0.2.1-r1 9999: Library of routines for IF97 water & steam properties

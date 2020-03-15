@@ -3393,6 +3393,7 @@ gnome-base/gnome-light:gnome-shell - Install gnome-base/gnome-shell and x11-wm/m
 gnome-base/gnome-session:consolekit - Support sys-auth/consolekit for session tracking
 gnome-base/gnome-session:elogind - Support sys-auth/elogind for session tracking
 gnome-base/gnome-settings-daemon:elogind - Rely on sys-auth/elogind as runtime logind provider
+gnome-base/gnome-settings-daemon:modemmanager - Enable WWAN support via net-misc/modemmanager
 gnome-base/gnome-settings-daemon:systemd - Rely on sys-apps/systemd as runtime logind provider
 gnome-base/gnome-shell:browser-extension - Ensure the presence of extensions.gnome.org native connector gnome-extra/chrome-gnome-shell
 gnome-base/gnome-shell:elogind - Use sys-auth/elogind for session tracking and suspend support.
