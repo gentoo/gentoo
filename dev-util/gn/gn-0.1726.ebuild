@@ -59,6 +59,6 @@ src_install() {
 
 	if use vim-syntax; then
 		insinto /usr/share/vim/vimfiles
-		doins -r tools/gn/misc/vim/{autoload,ftdetect,ftplugin,syntax}
+		doins -r misc/vim/{autoload,ftdetect,ftplugin,syntax}
 	fi
 }
