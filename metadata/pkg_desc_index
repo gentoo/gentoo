@@ -5339,6 +5339,7 @@ dev-lua/lanes 3.10.0: lightweight, native, lazy evaluating multithreading librar
 dev-lua/ldoc 1.4.6: A LuaDoc-compatible documentation generation system
 dev-lua/lgi 0.9.0 0.9.0-r1 0.9.2: Lua bindings using gobject-introspection
 dev-lua/lpeg 1.0.1 1.0.2: Parsing Expression Grammars for Lua
+dev-lua/lua-argparse 0.6.0: Command line argument parser for the Lua Programming Language
 dev-lua/lua-cjson 2.1.0.6 2.1.0.7: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.7.3 0.7.7_p0-r1 0.7.7_p1: OpenSSL binding for Lua
 dev-lua/lua-term 0.3: Terminal functions for Lua
