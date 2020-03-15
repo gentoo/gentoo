@@ -419,7 +419,7 @@ media-gfx/fim graphicsmagick svg
 
 # Markus Meier <maekke@gentoo.org> (2013-08-04)
 # Unkeyworded deps, bug #474026
-app-admin/conky lua-cairo lua-imlib xmms2 moc
+app-admin/conky lua-cairo xmms2 moc
 
 # Sergey Popov <pinkbyte@gentoo.org> (2013-07-30)
 # Not tested
