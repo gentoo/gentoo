@@ -21,8 +21,11 @@ RDEPEND="examples? ( net-misc/curl[${MULTILIB_USEDEP}] )
 	openssl? ( dev-libs/openssl:0=[${MULTILIB_USEDEP},static-libs?] )
 	opencl? ( virtual/opencl[${MULTILIB_USEDEP}] )
 	python? ( ${PYTHON_DEPS}
-		dev-python/ipython[${PYTHON_USEDEP}]
-		dev-python/pybind11[${PYTHON_USEDEP}] )"
+		$(python_gen_cond_dep '
+			dev-python/ipython[${PYTHON_MULTI_USEDEP}]
+			dev-python/pybind11[${PYTHON_MULTI_USEDEP}]
+		')
+	)"
 
 DEPEND="${RDEPEND}"
 
