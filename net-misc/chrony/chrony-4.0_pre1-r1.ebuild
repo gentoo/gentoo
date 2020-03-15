@@ -12,16 +12,18 @@ SLOT="0"
 
 KEYWORDS="~alpha ~amd64 ~arm ~hppa ~ppc ~ppc64 ~sparc ~x86"
 IUSE="
-	+adns +caps +cmdmon html ipv6 libedit +ntp +phc pps readline +refclock +rtc
-	+seccomp selinux
+	+adns +caps +cmdmon html ipv6 libedit +nettle +ntp +phc pps readline +refclock +rtc
+	+seccomp +sechash selinux
 "
 REQUIRED_USE="
 	?? ( libedit readline )
+	sechash? ( nettle )
 "
 
 CDEPEND="
 	caps? ( sys-libs/libcap )
 	libedit? ( dev-libs/libedit )
+	nettle? ( dev-libs/nettle )
 	readline? ( >=sys-libs/readline-4.1-r4:= )
 	seccomp? ( sys-libs/libseccomp )
 "
@@ -91,15 +93,16 @@ src_configure() {
 		$(usex caps '' --disable-linuxcaps)
 		$(usex cmdmon '' --disable-cmdmon)
 		$(usex ipv6 '' --disable-ipv6)
+		$(usex nettle '' --without-nettle)
 		$(usex ntp '' --disable-ntp)
 		$(usex phc '' --disable-phc)
 		$(usex pps '' --disable-pps)
 		$(usex refclock '' --disable-refclock)
 		$(usex rtc '' --disable-rtc)
+		$(usex sechash '' --disable-sechash)
 		${CHRONY_EDITLINE}
 		${EXTRA_ECONF}
 		--chronysockdir="${EPREFIX}/run/chrony"
-		--disable-sechash
 		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		--mandir="${EPREFIX}/usr/share/man"
 		--prefix="${EPREFIX}/usr"
