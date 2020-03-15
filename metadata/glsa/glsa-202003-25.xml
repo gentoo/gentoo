@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-25">
+  <title>libTIFF: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in LibTIFF, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">tiff</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>639700</bug>
+  <bug>690732</bug>
+  <bug>699868</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/tiff" auto="yes" arch="*">
+      <unaffected range="ge">4.1.0</unaffected>
+      <vulnerable range="lt">4.1.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The TIFF library contains encoding and decoding routines for the Tag
+      Image File Format. It is called by numerous programs, including GNOME and
+      KDE applications, to interpret TIFF images.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libTIFF. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing the user to process a specially crafted
+      TIFF file, could possibly cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libTIFF users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/tiff-4.1.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-17095">CVE-2017-17095</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-19210">CVE-2018-19210</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-17546">CVE-2019-17546</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-6128">CVE-2019-6128</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-7663">CVE-2019-7663</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T14:58:38Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T15:09:13Z">whissi</metadata>
+</glsa>
