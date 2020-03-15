@@ -12,7 +12,7 @@ SRC_URI="https://github.com/netblue30/${MY_PN}/archive/${PV}-LTS.tar.gz -> ${P}.
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="apparmor +globalcfg +network +seccomp +suid +userns test +whitelist"
 RESTRICT="!test? ( test )"
 
