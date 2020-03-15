@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
 <glsa id="202003-13">
-  <title>musl: Stack-based buffer overflow</title>
-  <synopsis>A stack-based buffer overflow in musl might allow an attacker to
-    have an application dependent impact.
+  <title>musl: x87 floating-point stack adjustment imbalance</title>
+  <synopsis>An x87 stack handling error in musl might allow an attacker to have
+    an application dependent impact.
   </synopsis>
   <product type="ebuild">musl</product>
   <announced>2020-03-14</announced>
-  <revised count="1">2020-03-14</revised>
+  <revised count="2">2020-03-15</revised>
   <bug>711276</bug>
   <access>local, remote</access>
   <affected>
@@ -49,5 +49,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14697">CVE-2019-14697</uri>
   </references>
   <metadata tag="requester" timestamp="2020-03-03T20:43:59Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2020-03-14T16:36:31Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T00:52:05Z">whissi</metadata>
 </glsa>
