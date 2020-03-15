@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-32">
+  <title>Libgcrypt: Side-channel attack</title>
+  <synopsis>A vulnerability in Libgcrypt could allow a local attacker to
+    recover sensitive information.
+  </synopsis>
+  <product type="ebuild">libgcrypt</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>693108</bug>
+  <access>local</access>
+  <affected>
+    <package name="dev-libs/libgcrypt" auto="yes" arch="*">
+      <unaffected range="ge">1.8.5</unaffected>
+      <vulnerable range="lt">1.8.5</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>Libgcrypt is a general purpose cryptographic library derived out of
+      GnuPG.
+    </p>
+  </background>
+  <description>
+    <p>A timing attack was found in the way ECCDSA was implemented in
+      Libgcrypt.
+    </p>
+  </description>
+  <impact type="low">
+    <p>A local man-in-the-middle attacker, during signature generation, could
+      possibly recover the private key.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Libgcrypt users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/libgcrypt-1.8.5"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-13627">CVE-2019-13627</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T19:23:38Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T19:29:34Z">whissi</metadata>
+</glsa>

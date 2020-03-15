@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-31">
+  <title>gdb: Buffer overflow</title>
+  <synopsis>A buffer overflow in gdb might allow a remote attacker to cause a
+    Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">gdb</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>690582</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="sys-devel/gdb" auto="yes" arch="*">
+      <unaffected range="ge">9.1</unaffected>
+      <vulnerable range="lt">9.1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>gdb is the GNU project’s debugger, facilitating the analysis and
+      debugging of applications. The BFD library provides a uniform method of
+      accessing a variety of object file formats.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that gdb didn’t properly validate the ELF section
+      sizes from input file.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted ELF
+      binary using gdb, possibly resulting in information disclosure or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All gdb users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=sys-devel/gdb-9.1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1010180">
+      CVE-2019-1010180
+    </uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T19:07:24Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T19:13:13Z">whissi</metadata>
+</glsa>
