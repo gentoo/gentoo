@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-15">
+  <title>ICU: Integer overflow</title>
+  <synopsis>An integer overflow flaw in ICU could possibly allow for the
+    execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">ICU</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>710758</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/icu" auto="yes" arch="*">
+      <unaffected range="ge">65.1-r1</unaffected>
+      <vulnerable range="lt">65.1-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ICU is a mature, widely used set of C/C++ and Java libraries providing
+      Unicode and Globalization support for software applications.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that ICU’s UnicodeString::doAppend() function is
+      vulnerable to an integer overflow. Please review the CVE identifiers
+      referenced below for more details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to process a specially crafted
+      string in an application linked against ICU, possibly resulting in
+      execution of arbitrary code with the privileges of the process or a
+      Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ICU users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/icu-65.1-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-10531">CVE-2020-10531</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T01:07:26Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T01:36:26Z">whissi</metadata>
+</glsa>
