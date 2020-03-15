@@ -16,7 +16,7 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-lua/lua-argparse[luajit=]
-	dev-lua/luafilesystem[luajit=]
+	dev-lua/luafilesystem[luajit(-)=]
 	dev-lua/lua-utf8[luajit=]
 	!luajit? ( >=dev-lang/lua-5.1:= )
 	luajit? ( dev-lang/luajit:2 )"
