@@ -94,7 +94,7 @@ BDEPEND="
 		dev-lang/yasm
 	)
 	dev-lang/perl
-	dev-util/gn
+	>=dev-util/gn-0.1726
 	dev-vcs/git
 	>=dev-util/gperf-3.0.3
 	>=dev-util/ninja-1.7.2
@@ -148,6 +148,7 @@ PATCHES=(
 	"${FILESDIR}/chromium-82-gcc-noexcept.patch"
 	"${FILESDIR}/chromium-82-gcc-incomplete-type.patch"
 	"${FILESDIR}/chromium-82-gcc-template.patch"
+	"${FILESDIR}/chromium-82-gcc-iterator.patch"
 	"${FILESDIR}/chromium-82-clang-std.patch"
 )
 
