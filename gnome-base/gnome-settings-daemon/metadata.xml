@@ -7,6 +7,7 @@
 	</maintainer>
 	<use>
 		<flag name="elogind">Rely on <pkg>sys-auth/elogind</pkg> as runtime logind provider</flag>
+		<flag name="modemmanager">Enable WWAN support via <pkg>net-misc/modemmanager</pkg></flag>
 		<flag name="systemd">Rely on <pkg>sys-apps/systemd</pkg> as runtime logind provider</flag>
 	</use>
 </pkgmetadata>
