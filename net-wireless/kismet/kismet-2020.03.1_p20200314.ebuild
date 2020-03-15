@@ -21,7 +21,7 @@ else
 	#SRC_URI="https://www.kismetwireless.net/code/${MY_P}.tar.xz"
 
 	#but sometimes we want a git commit
-	COMMIT="9ca7e469cf115469f392db7436816151867e1654"
+	COMMIT="ea3f9ffe84b86cfc5e01ce3fec5476d51d161b98"
 	SRC_URI="https://github.com/kismetwireless/kismet/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
 	S="${WORKDIR}/${PN}-${COMMIT}"
 
