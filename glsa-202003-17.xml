@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-17">
+  <title>nfdump: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in nfdump, the worst of
+    which could result in the execution of arbitrary code.
+  </synopsis>
+  <product type="ebuild">nfsdump</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>711316</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="net-analyzer/nfdump" auto="yes" arch="*">
+      <unaffected range="ge">1.6.19</unaffected>
+      <vulnerable range="lt">1.6.19</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>nfdump is a toolset in order to collect and process netflow and sflow
+      data, sent from netflow/sflow compatible devices.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in nfdump. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by sending specially crafted netflow/sflow data,
+      could possibly execute arbitrary code with the privileges of the process
+      or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All nfdump users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-analyzer/nfdump-1.6.19"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-1010057">
+      CVE-2019-1010057
+    </uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14459">CVE-2019-14459</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T02:20:52Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T02:25:05Z">whissi</metadata>
+</glsa>
