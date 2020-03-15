@@ -1677,8 +1677,8 @@ app-emulation/vkd3d 1.0 1.1 9999: D3D12 to Vulkan translation library
 app-emulation/wine-desktop-common 20150204-r1: Various desktop menu items and icons for wine
 app-emulation/wine-gecko 2.47-r1 2.47.1: A Mozilla Gecko based version of Internet Explorer for Wine
 app-emulation/wine-mono 4.6.4 4.7.0 4.7.1 4.7.3 4.7.5 4.8.0 4.8.1 4.8.3 4.9.0 4.9.2 4.9.3 4.9.4: Wine Mono is a replacement for the .NET runtime and class libraries in Wine
-app-emulation/wine-staging 4.21 5.0 5.1 5.2 5.3-r1 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
-app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 4.21 5.0 5.1 5.2 5.3 9999: Free implementation of Windows(tm) on Unix, without external patchsets
+app-emulation/wine-staging 5.0 5.1 5.2 5.3-r1 5.4 9999: Free implementation of Windows(tm) on Unix, with Wine-Staging patchset
+app-emulation/wine-vanilla 4.0 4.0.1 4.0.2 4.0.3 5.0 5.1 5.2 5.3 5.4 9999: Free implementation of Windows(tm) on Unix, without external patchsets
 app-emulation/winetricks 20190912 20191224 99999999: Easy way to install DLLs needed to work around problems in Wine
 app-emulation/x48 0.6.4-r2: HP48 Calculator Emulator
 app-emulation/xcpc 20070122: XCPC is a portable Amstrad CPC 464/664/6128 emulator written in C.
@@ -16742,7 +16742,7 @@ sys-apps/fd 7.4.0: Alternative to find that provides sensible defaults for 80% o
 sys-apps/file 5.37-r1 5.38 9999: identify a file's format by scanning binary data for patterns
 sys-apps/findutils 4.6.0-r1 4.7.0: GNU utilities for finding files
 sys-apps/firejail 0.9.60-r1 0.9.62 9999: Security sandbox for any type of processes
-sys-apps/firejail-lts 0.9.38.10 0.9.38.12 0.9.56.2 0.9.56.2-r1: Security sandbox for any type of processes; LTS version
+sys-apps/firejail-lts 0.9.56.2-r1: Security sandbox for any type of processes; LTS version
 sys-apps/fix-gnustack 0.1: Utility to report and remove the executable flag from an ELF object's GNU_STACK
 sys-apps/flashrom 0.9.8 1.0 1.1 9999: Utility for reading, writing, erasing and verifying flash ROM chips
 sys-apps/frandom 1.1: Fast kernel-land pseudo-random number generator using the RC4 algorithm
