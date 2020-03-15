@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 PATCHSET=1
 
-inherit user java-pkg-opt-2 systemd
+inherit java-pkg-opt-2 systemd
 
 MY_P=${P/_/-}
 
@@ -17,16 +17,19 @@ SRC_URI="
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="amd64 ~arm ppc x86"
+KEYWORDS="~amd64 ~arm ~ppc ~x86"
 IUSE="asterisk irc java ldap memcached minimal mysql postgres selinux ssl test cgi ipv6 syslog ipmi http dhcpd doc apache2"
-RESTRICT="!test? ( test )"
 REQUIRED_USE="cgi? ( !minimal ) apache2? ( cgi )"
+RESTRICT="!test? ( test )"
 
 # Upstream's listing of required modules is NOT correct!
 # Some of the postgres plugins use DBD::Pg, while others call psql directly.
 # Some of the mysql plugins use DBD::mysql, while others call mysqladmin directly.
 # We replace the original ipmi plugins with the freeipmi_ plugin which at least works.
 DEPEND_COM="
+	acct-user/munin
+	acct-user/munin-async
+	acct-group/munin
 	dev-lang/perl:=[berkdb]
 	dev-perl/DBI
 	dev-perl/Date-Manip
@@ -104,16 +107,11 @@ RDEPEND="${DEPEND_COM}
 			virtual/cron
 			media-fonts/dejavu
 		)
-		selinux? ( sec-policy/selinux-munin )
-		!<sys-apps/openrc-0.11.8"
+		selinux? ( sec-policy/selinux-munin )"
 
 S="${WORKDIR}/${MY_P}"
 
 pkg_setup() {
-	enewgroup munin
-	enewuser munin 177 -1 /var/lib/munin munin
-	enewuser munin-async -1 /bin/sh /var/spool/munin-async
-	esethome munin-async /var/spool/munin-async
 	java-pkg-opt-2_pkg_setup
 }
 
@@ -147,7 +145,7 @@ src_configure() {
 	DBDIRNODE=\$(DESTDIR)/var/lib/munin-node
 	SPOOLDIR=\$(DESTDIR)/var/spool/munin-async
 	LOGDIR=\$(DESTDIR)/var/log/munin
-	PERLSITELIB=$(perl -V:vendorlib | cut -d"'" -f2)
+	PERLLIB=\$(DESTDIR)$(perl -V:vendorlib | cut -d"'" -f2)
 	JCVALID=$(usex java yes no)
 	STATEDIR=\$(DESTDIR)/run/munin
 	EOF
@@ -177,6 +175,8 @@ src_install() {
 	local dirs="
 		/var/log/munin
 		/var/lib/munin/plugin-state
+		/var/lib/munin-node/plugin-state
+		/var/www/localhost/htdocs/munin
 		/etc/munin/plugin-conf.d
 		/etc/munin/plugins"
 	use minimal || dirs+=" /etc/munin/munin-conf.d/"
@@ -186,7 +186,7 @@ src_install() {
 
 	# parallel install doesn't work and it's also pointless to have this
 	# run in parallel for now (because it uses internal loops).
-	emake -j1 DESTDIR="${D}" $(usex minimal "install-minimal install-man" install)
+	emake -j1 CHOWN=true DESTDIR="${D}" $(usex minimal "install-minimal install-man" install)
 
 	# we remove /run from the install, as it's not the package's to deal
 	# with.
