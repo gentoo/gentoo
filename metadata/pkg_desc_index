@@ -9861,7 +9861,7 @@ dev-ruby/pg 0.21.0 1.1.4 1.2.2: Ruby extension library providing an API to Postg
 dev-ruby/pg_array_parser 0.0.9-r2: Simple library to parse PostgreSQL arrays into a array of strings
 dev-ruby/pkg-config 1.2.8 1.3.9 1.4.0 1.4.1: A pkg-config implementation by Ruby
 dev-ruby/plist 3.4.0 3.5.0: A library to manipulate Property List files, also known as plists
-dev-ruby/pluggaloid 1.1.2 1.2.0 1.3.1 1.4.0 1.4.1: Pluggaloid is extensible plugin system for mikutter
+dev-ruby/pluggaloid 1.3.1 1.4.0 1.4.1 1.5.0: Pluggaloid is extensible plugin system for mikutter
 dev-ruby/podcast 0.0.4-r2: A pure Ruby library for generating podcasts from mp3 files
 dev-ruby/polyglot 0.3.5: Polyglot provides support for fully-custom DSLs
 dev-ruby/posix-spawn 0.3.13-r1: Library that implements a subset of the Ruby 1.9 Process::spawn
@@ -10029,7 +10029,7 @@ dev-ruby/rubypants 0.7.0 0.7.1: A Ruby port of the SmartyPants PHP library
 dev-ruby/rubytest 0.8.1: Ruby Test is a universal test harness for Ruby
 dev-ruby/rubytest-cli 0.2.0: Rubytest CLI is a command-line interface for Rubytest
 dev-ruby/rubytter 1.5.1-r1: Rubytter is a simple twitter library
-dev-ruby/rubyzip 1.2.2 1.3.0 2.0.0 2.1.0 2.2.0: A ruby library for reading and writing zip files
+dev-ruby/rubyzip 1.2.2 1.3.0 2.0.0 2.1.0 2.2.0 2.3.0: A ruby library for reading and writing zip files
 dev-ruby/safe_yaml 1.0.5: Parse YAML safely, alternative implementation of YAML.load
 dev-ruby/sanitize 4.6.6 5.0.0 5.1.0: Sanitize is a whitelist-based HTML sanitizer
 dev-ruby/sass 3.4.25 3.4.25-r1 3.5.7 3.5.7-r1 3.7.4: An extension of CSS3, adding nested rules, variables, mixins, and more
@@ -10552,7 +10552,7 @@ dev-util/itstool 2.0.2 2.0.6-r1: Translation tool for XML documents that uses ge
 dev-util/japi-compliance-checker 2.4 9999: Java API compliance checker
 dev-util/jarwizard 2.50: Takes the hassle out of creating executable JAR files for your Java programs
 dev-util/jconfig 2.9: Utility that provides a simple API for the management of properties
-dev-util/jenkins-bin 2.204.2 2.204.3 2.219 2.223: Extensible continuous integration server
+dev-util/jenkins-bin 2.204.2 2.204.3 2.204.5 2.219 2.223: Extensible continuous integration server
 dev-util/jfrog-cli 1.30.4 1.34.0: Command line utility foroperations on container images and image repositories
 dev-util/kbuild 0.1.9998.3149 9999: A makefile framework for writing simple makefiles for complex tasks
 dev-util/kcov 34 9999: Kcov is a code coverage tester for compiled languages, Python and Bash
