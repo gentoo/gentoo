@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-28">
+  <title>libarchive: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libarchive, the worst
+    of which may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">libarchive</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>699222</bug>
+  <bug>710358</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="app-arch/libarchive" auto="yes" arch="*">
+      <unaffected range="ge">3.4.2</unaffected>
+      <vulnerable range="lt">3.4.2</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libarchive is a library for manipulating different streaming archive
+      formats, including certain tar variants, several cpio formats, and both
+      BSD and GNU ar variants.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libarchive. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could entice a user to open a specially crafted
+      archive file possibly resulting in the execution of arbitrary code with
+      the privileges of the process or a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libarchive users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=app-arch/libarchive-3.4.2"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18408">CVE-2019-18408</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9308">CVE-2020-9308</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T16:23:19Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T16:26:32Z">whissi</metadata>
+</glsa>

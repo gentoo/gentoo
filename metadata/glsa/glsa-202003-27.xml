@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-27">
+  <title>libssh: Arbitrary command execution</title>
+  <synopsis>A vulnerability in libssh could allow a remote attacker to execute
+    arbitrary commands.
+  </synopsis>
+  <product type="ebuild">libssh</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>701598</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-libs/libssh" auto="yes" arch="*">
+      <unaffected range="ge">0.9.3</unaffected>
+      <vulnerable range="lt">0.9.3</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libssh is a multiplatform C library implementing the SSHv2 protocol on
+      client and server side.
+    </p>
+  </background>
+  <description>
+    <p>It was discovered that libssh incorrectly handled certain scp commands.</p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could trick a victim into using a specially crafted
+      scp command, possibly resulting in the execution of arbitrary commands on
+      the server.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libssh users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-libs/libssh-0.9.3"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-14889">CVE-2019-14889</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T16:06:34Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T16:16:36Z">whissi</metadata>
+</glsa>
