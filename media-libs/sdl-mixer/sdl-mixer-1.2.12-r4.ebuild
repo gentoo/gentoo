@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit eutils multilib-minimal
+inherit eutils ltprune multilib-minimal
 
 MY_P=${P/sdl-/SDL_}
 DESCRIPTION="Simple Direct Media Layer Mixer Library"
@@ -61,7 +61,6 @@ src_prepare() {
 multilib_src_configure() {
 	ECONF_SOURCE=${S} \
 	econf \
-		--disable-dependency-tracking \
 		--disable-music-flac-shared \
 		--disable-music-fluidsynth-shared \
 		--disable-music-mod-shared \

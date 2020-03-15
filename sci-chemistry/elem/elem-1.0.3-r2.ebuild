@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,11 +26,11 @@ src_configure() {
 	tc-export CC
 }
 
-src_compile () {
+src_compile() {
 	emake all
 }
 
-src_install () {
+src_install() {
 	dobin elem elem-de elem-en
 
 	rm -rf doc/CVS || die

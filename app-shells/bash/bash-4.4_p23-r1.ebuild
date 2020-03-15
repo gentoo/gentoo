@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit flag-o-matic toolchain-funcs multilib prefix
+inherit eutils flag-o-matic toolchain-funcs multilib prefix
 
 # Official patchlevel
 # See ftp://ftp.cwru.edu/pub/bash/bash-4.4-patches/
@@ -106,8 +106,6 @@ src_prepare() {
 src_configure() {
 	local myconf=(
 		--disable-profiling
-		--docdir='$(datarootdir)'/doc/${PF}
-		--htmldir='$(docdir)/html'
 		--with-curses
 		$(use_enable mem-scramble)
 		$(use_enable net net-redirections)

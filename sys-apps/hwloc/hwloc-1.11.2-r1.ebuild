@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit flag-o-matic cuda autotools-multilib multilib versionator
+inherit flag-o-matic cuda autotools-multilib multilib toolchain-funcs versionator
 
 MY_PV=v$(get_version_component_range 1-2)
 
@@ -54,7 +54,6 @@ multilib_src_configure() {
 	export HWLOC_PKG_CONFIG=$(tc-getPKG_CONFIG) #393467
 	use cuda && local LDFLAGS="${LDFLAGS} -L/opt/cuda/$(get_libdir)"
 	local myeconfargs=(
-		--disable-silent-rules
 		--docdir="${EPREFIX}"/usr/share/doc/${PF}
 		$(use_enable cairo)
 		$(use_enable cuda)

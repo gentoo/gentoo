@@ -6,7 +6,7 @@ EAPI=6
 PYTHON_COMPAT=( python2_7 python3_6 )
 PYTHON_REQ_USE="threads(+)"
 
-inherit autotools eutils python-r1
+inherit autotools eutils ltprune python-r1
 
 DESCRIPTION="Python bindings for the D-Bus messagebus"
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/DBusBindings https://dbus.freedesktop.org/doc/dbus-python/"
@@ -50,7 +50,6 @@ src_configure() {
 		[[ ${EPYTHON/.*} = "python2" ]] && apidocs=$(use_enable doc api-docs)
 
 		econf \
-			--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 			--disable-html-docs \
 			${apidocs} \
 			PYTHON_INCLUDES="$(${PYTHON_CONFIG} --includes)" \

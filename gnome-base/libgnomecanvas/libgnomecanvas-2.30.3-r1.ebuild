@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ GCONF_DEBUG="no"
 GNOME_TARBALL_SUFFIX="bz2"
 GNOME2_LA_PUNT="yes"
 
-inherit gnome2 multilib multilib-minimal virtualx
+inherit eutils gnome2 multilib multilib-minimal virtualx
 
 DESCRIPTION="The Gnome 2 Canvas library"
 HOMEPAGE="https://library.gnome.org/devel/libgnomecanvas/stable/"

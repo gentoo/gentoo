@@ -94,7 +94,6 @@ src_prepare() {
 
 src_configure() {
 	local myconf=(
-		--docdir=/usr/share/doc/${PF}
 		--disable-runtime-deps-check
 		--disable-static
 		--with-systemdsystemunitdir="$(systemd_get_systemunitdir)"

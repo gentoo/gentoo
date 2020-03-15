@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,7 +20,7 @@ DEPEND="test? ( dev-php/phpunit ${RDEPEND} )"
 # Test fail due to missing Symphony dependencies
 RESTRICT="test"
 
-src_install(){
+src_install() {
 	# The autoloader requires the 'T' in "Twig" capitalized.
 	insinto "/usr/share/php/${MY_PN}/lib"
 	doins -r lib/"${MY_PN}"/*
@@ -37,13 +37,13 @@ src_install(){
 	use doc && dodoc -r doc
 }
 
-src_test(){
+src_test() {
 	cp "${FILESDIR}/Autoloader.php" "${S}" || die
 	phpunit --bootstrap Autoloader.php || die "test suite failed"
 	rm "${S}/Autoloader.php" || die
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	elog "${PN} has been installed in /usr/share/php/${MY_PN}/."
 	elog "To use it in a script, require('${MY_PN}/Autoloader.php')"
 }

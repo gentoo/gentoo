@@ -1,11 +1,11 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
 MODULE_AUTHOR=UMEMOTO
 MODULE_VERSION=0.27
-inherit perl-module
+inherit perl-module toolchain-funcs
 
 DESCRIPTION="IPv6 related part of the C socket.h defines and structure manipulators"
 

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -239,8 +239,10 @@ src_install() {
 
 	if use static-libs; then
 		dolib.a libdm/ioctl/libdevmapper.a
-		dolib.a libdaemon/client/libdaemonclient.a #462908
-		dolib.a daemons/dmeventd/libdevmapper-event.a
+		if use !device-mapper-only ; then
+			dolib.a libdaemon/client/libdaemonclient.a #462908
+			dolib.a daemons/dmeventd/libdevmapper-event.a
+		fi
 	else
 		rm -f "${ED%/}"/usr/$(get_libdir)/{libdevmapper-event,liblvm2cmd,liblvm2app,libdevmapper}.a
 	fi

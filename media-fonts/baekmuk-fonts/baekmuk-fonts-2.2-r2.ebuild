@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -36,7 +36,7 @@ src_compile() {
 	font-ebdftopcf_src_compile
 }
 
-src_install () {
+src_install() {
 	FONT_S="${S}"/${TTF_P}/ttf FONT_SUFFIX="ttf" font_src_install
 	FONT_S="${S}"/${BDF_P}/bdf font_src_install
 }

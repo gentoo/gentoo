@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -36,8 +36,7 @@ RDEPEND="
 	xpm? ( x11-libs/libXpm )
 	elibc_glibc? ( dev-libs/libbsd )"
 DEPEND="${RDEPEND}
-	x11-base/xorg-proto
-	consolekit? ( !=sys-auth/pambase-20101024-r1 )"
+	x11-base/xorg-proto"
 
 pkg_setup() {
 	PATCHES=(

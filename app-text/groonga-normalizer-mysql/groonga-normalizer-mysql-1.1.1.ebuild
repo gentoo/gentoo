@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils autotools
+inherit eutils autotools ltprune
 
 DESCRIPTION="Groonga plugin that provides MySQL compatible normalizers"
 HOMEPAGE="http://groonga.org/"
@@ -25,9 +25,7 @@ src_prepare() {
 
 src_configure() {
 	# ruby is only uses for tests
-	econf \
-		--without-ruby \
-		--docdir="${EROOT}usr/share/doc/${P}"
+	econf --without-ruby
 }
 
 src_install() {

@@ -1,8 +1,8 @@
-# Copyright 2016-2019 Gentoo Authors
+# Copyright 2016-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit toolchain-funcs vcs-snapshot
+inherit toolchain-funcs
 
 DESCRIPTION="Quote arguments or standard input for usage in POSIX shell by eval"
 HOMEPAGE="https://github.com/vaeth/quoter/"

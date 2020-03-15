@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -27,6 +27,7 @@ DEPEND="${RDEPEND}
 	x11-base/xorg-proto"
 BDEPEND="virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${PN}-3.2.1-gcc10-fno-common.patch )
 HTML_DOCS=( doc/. )
 
 src_configure() {

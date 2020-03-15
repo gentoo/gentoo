@@ -18,7 +18,7 @@ RDEPEND="gmp? ( dev-libs/gmp:0=
 			  mpi? ( virtual/mpi ) )"
 DEPEND="${RDEPEND}"
 
-src_prepare(){
+src_prepare() {
 	default
 	tc-export CC
 	sed -e "s/gcc/$(tc-getCC)/g" \
@@ -30,7 +30,7 @@ src_prepare(){
 		-i makefile || die
 }
 
-src_compile () {
+src_compile() {
 	if use gmp ; then
 		emake
 		emake all-shared

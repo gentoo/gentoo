@@ -100,7 +100,7 @@ src_compile() {
 	done
 }
 
-src_install () {
+src_install() {
 	dobin snd sndplay sndinfo
 
 	if use ruby ; then

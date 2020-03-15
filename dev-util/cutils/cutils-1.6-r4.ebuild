@@ -1,9 +1,9 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=7
 
-inherit eutils toolchain-funcs
+inherit toolchain-funcs
 
 DESCRIPTION="C language utilities"
 HOMEPAGE="http://www.sigala.it/sandro/software.php#cutils"
@@ -12,41 +12,45 @@ SRC_URI="http://www.sigala.it/sandro/files/${P}.tar.gz"
 LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="amd64 ppc x86 ~amd64-linux ~x86-linux ~ppc-macos"
-IUSE=""
 
-RDEPEND=""
-DEPEND="sys-devel/flex"
+BDEPEND="sys-devel/flex"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-infopage.patch
+	"${FILESDIR}"/${P}-case-insensitive.patch
+)
 
 src_prepare() {
-	epatch "${FILESDIR}"/${PN}-infopage.patch
+	default
 
-	epatch "${FILESDIR}"/${P}-case-insensitive.patch
+	mv src/cdecl/{,cutils-}cdecl.1 || die
 
-	mv "${S}"/src/cdecl/cdecl.1 			\
-		"${S}"/src/cdecl/cutils-cdecl.1 || die
+	# delete pointless README
+	rm README.compile || die
+
 	# Force rebuild of cutils.info
-	rm -f "${S}"/doc/cutils.info || die
+	rm doc/cutils.info || die
 
 	sed -e "s/cdecl/cutils-cdecl/g"	\
-		-i "${S}"/doc/cutils.texi || die
+		-i doc/cutils.texi || die
 	sed -e "/PROG/s/cdecl/cutils-cdecl/" \
-		-i "${S}"/src/cdecl/Makefile.in || die
+		-i src/cdecl/Makefile.in || die
 	sed -e "/Xr/s/cdecl/cutils-cdecl/" \
-		-i "${S}"/src/cundecl/cundecl.1 || die
-	sed -i "/Nm/s/cdecl/cutils-cdecl/" \
-		"${S}"/src/cdecl/cutils-cdecl.1 || die
+		-i src/cundecl/cundecl.1 || die
+	sed -e "/Nm/s/cdecl/cutils-cdecl/" \
+		-i src/cdecl/cutils-cdecl.1 || die
 }
 
 src_compile() {
 	emake CC="$(tc-getCC)" -j1
 }
 
-src_install () {
-	emake DESTDIR="${D}" install
-	dodoc CREDITS HISTORY NEWS README
+src_install() {
+	default
+	dodoc HISTORY
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	elog "cdecl was installed as cutils-cdecl because of a naming conflict"
 	elog "with dev-util/cdecl."
 }

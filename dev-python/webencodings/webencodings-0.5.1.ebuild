@@ -25,7 +25,7 @@ DEPEND="${RDEPEND}
 
 RESTRICT="!test? ( test )"
 
-python_prepare_all(){
+python_prepare_all() {
 	cat >> setup.cfg <<- EOF
 	[pytest]
 	python_files=test*.py

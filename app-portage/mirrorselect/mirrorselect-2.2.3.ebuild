@@ -26,7 +26,7 @@ RDEPEND="
 	>=dev-python/ssl-fetch-0.3[${PYTHON_USEDEP}]
 	"
 
-python_prepare_all()  {
+python_prepare_all() {
 	python_setup
 	eprefixify setup.py mirrorselect/main.py
 	echo Now setting version... VERSION="${PVR}" "${PYTHON}" setup.py set_version

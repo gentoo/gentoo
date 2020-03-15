@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -59,6 +59,7 @@ src_prepare() {
 	eapply "${FILESDIR}"/libmilter-sharedlib.patch
 	eapply -p0 "${FILESDIR}"/sendmail-starttls-multi-crl.patch
 	eapply "${FILESDIR}"/${P}-openssl-1.1.0-fix.patch
+	eapply "${FILESDIR}"/${P}-glibc-2.30.patch
 
 	local confCC="$(tc-getCC)"
 	local confCCOPTS="${CFLAGS}"
@@ -100,7 +101,7 @@ src_compile() {
 	popd
 }
 
-src_install () {
+src_install() {
 	local MY_LIBDIR=/usr/$(get_libdir)
 	local MY_OBJDIR="obj.`uname -s`.`uname -r`.`uname -m`"
 	dodir /usr/bin ${MY_LIBDIR} /usr/include/libmilter

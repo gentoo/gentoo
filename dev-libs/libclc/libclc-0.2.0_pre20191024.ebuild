@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python{2_7,3_{6,7}} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit llvm prefix python-any-r1 toolchain-funcs
 
@@ -24,7 +24,6 @@ BDEPEND="
 		sys-devel/clang:9
 		sys-devel/clang:8
 		sys-devel/clang:7
-		sys-devel/clang:6
 	)
 	${PYTHON_DEPS}"
 

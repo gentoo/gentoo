@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -10,11 +10,12 @@ HOMEPAGE="https://www.shellcheck.net/"
 SRC_URI="
 	amd64? ( https://storage.googleapis.com/${MY_PN}/${MY_PN}-v${PV}.linux.x86_64.tar.xz )
 	arm? ( https://storage.googleapis.com/${MY_PN}/${MY_PN}-v${PV}.linux.armv6hf.tar.xz )
+	arm64? ( https://storage.googleapis.com/${MY_PN}/${MY_PN}-v${PV}.linux.aarch64.tar.xz )
 "
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="amd64 ~arm"
+KEYWORDS="amd64 ~arm ~arm64"
 
 DEPEND="!dev-util/shellcheck"
 RDEPEND="${DEPEND}"

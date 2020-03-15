@@ -46,10 +46,6 @@ media-libs/opencv contrib contribcvv contribdnn contribhdf contribsfm contribxfe
 # unmask sssd for sudo
 app-admin/sudo -sssd
 
-# Thomas Deutschmann <whissi@gentoo.org> (2018-09-27)
-# sys-devel/lld is unstable
-www-client/firefox clang
-
 # Thomas Deutschmann <whissi@gentoo.org> (2018-06-01)
 net-analyzer/wireshark -doc
 

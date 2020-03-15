@@ -8,6 +8,5 @@
 	<use>
 		<flag name="activities">Enable kactivities support</flag>
 		<flag name="speech">Build text-to-speech plugin</flag>
-		<flag name="webengine">Enable <pkg>dev-qt/qtwebengine</pkg> as web browser engine (fallback is <pkg>kde-misc/kwebkitpart</pkg>)</flag>
 	</use>
 </pkgmetadata>

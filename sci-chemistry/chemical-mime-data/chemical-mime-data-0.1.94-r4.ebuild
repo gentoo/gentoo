@@ -10,7 +10,7 @@ SRC_URI="mirror://sourceforge/${PN/-data/}/${P}.tar.bz2"
 
 LICENSE="LGPL-2.1"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~x86"
 IUSE=""
 
 RDEPEND="
@@ -48,6 +48,5 @@ src_configure() {
 		--disable-update-database \
 		--without-gnome-mime \
 		--without-pixmaps \
-		--without-kde-mime \
-		--htmldir=/usr/share/doc/${PF}/html
+		--without-kde-mime
 }

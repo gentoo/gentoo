@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit gnome2-utils xdg-utils
+inherit eutils gnome2-utils xdg-utils
 
 LANGS="ar ast be bg ca cs de el en_GB es et eu fa fi fr gl he hi hu id it ja kk ko lb lt mn nl nn pl pt pt_BR ro ru sk sl sr sv tr uk vi zh_CN ZH_TW"
 NOSHORTLANGS="en_GB zh_CN zh_TW"
@@ -55,9 +55,7 @@ src_prepare() {
 src_configure() {
 	local myeconfargs=(
 		--disable-html-docs
-		--disable-dependency-tracking
 		--disable-pdf-docs
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
 		$(use_enable gtk3)
 		$(use_enable vte)
 	)

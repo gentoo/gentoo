@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit flag-o-matic eutils libtool multilib-minimal
+inherit flag-o-matic eutils libtool multilib-minimal toolchain-funcs
 
 MY_PV=${PV/_p*}
 MY_PV=${MY_PV/_/-}

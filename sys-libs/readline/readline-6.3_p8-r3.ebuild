@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils multilib toolchain-funcs flag-o-matic multilib-minimal usr-ldscript
+inherit eutils multilib toolchain-funcs flag-o-matic multilib-minimal preserve-libs usr-ldscript
 
 # Official patches
 # See ftp://ftp.cwru.edu/pub/bash/readline-6.3-patches/

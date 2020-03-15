@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -79,7 +79,7 @@ COMMONDEPEND="
 	)
 	smime? ( >=app-crypt/gpgme-1.0.0 )
 	spam-report? ( >=net-misc/curl-7.9.7 )
-	spell? ( >=app-text/enchant-1.0.0:= )
+	spell? ( >=app-text/enchant-2.0.0:2= )
 	startup-notification? ( x11-libs/startup-notification )
 	svg? ( >=gnome-base/librsvg-2.40.5 )
 	valgrind? ( dev-util/valgrind )
@@ -108,6 +108,10 @@ RDEPEND="${COMMONDEPEND}
 		net-misc/curl
 	)
 "
+
+PATCHES=(
+	"${FILESDIR}/${PN}-3.17.5-enchant-2_default.patch"
+)
 
 pkg_setup() {
 	use python && python-single-r1_pkg_setup

@@ -1,9 +1,9 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils user
+inherit eutils toolchain-funcs user
 
 DESCRIPTION="Utility to send SMS messages to mobile phones and pagers"
 HOMEPAGE="http://www.smsclient.org"

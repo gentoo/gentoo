@@ -52,7 +52,7 @@ src_compile() {
 		"LIBDIR=$(get_libdir)"
 }
 
-src_install () {
+src_install() {
 	dosbin hping3
 	dosym hping3 /usr/sbin/hping
 	dosym hping3 /usr/sbin/hping2

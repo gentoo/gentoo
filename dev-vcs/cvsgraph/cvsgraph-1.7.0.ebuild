@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,7 @@ src_configure() {
 		$(use_enable truetype)
 }
 
-src_install () {
+src_install() {
 	dobin cvsgraph
 	insinto /etc
 	doins cvsgraph.conf

@@ -14,7 +14,7 @@ SRC_URI="https://github.com/polybar/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	https://github.com/polybar/xpp/archive/${XPP_COMMIT}.tar.gz -> xpp-${XPP_COMMIT}.tar.gz
 	https://github.com/polybar/i3ipcpp/archive/${I3IPCPP_COMMIT}.tar.gz -> i3ipcpp-${I3IPCPP_COMMIT}.tar.gz"
 
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 LICENSE="MIT"
 SLOT="0"
 
@@ -23,7 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 DEPEND="
 	${PYTHON_DEPS}
-	x11-base/xcb-proto
+	$(python_gen_cond_dep 'x11-base/xcb-proto[${PYTHON_MULTI_USEDEP}]')
 	x11-libs/cairo[X,xcb(+)]
 	x11-libs/libxcb[xkb]
 	x11-libs/xcb-util-image

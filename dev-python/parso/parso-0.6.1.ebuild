@@ -13,9 +13,17 @@ SRC_URI="https://github.com/davidhalter/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ~ppc ppc64 x86"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 distutils_enable_sphinx docs
 distutils_enable_tests pytest
+
+src_prepare() {
+	# tests rely on specific exception messages and fail occasionally
+	# upstream suggested skipping them
+	rm test/test_python_errors.py || die
+
+	distutils-r1_src_prepare
+}

@@ -35,9 +35,9 @@ for card in ${VIDEO_CARDS}; do
 done
 
 IUSE="${IUSE_VIDEO_CARDS}
-	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 libglvnd +llvm
+	+classic d3d9 debug +dri3 +egl +gallium +gbm gles1 +gles2 +libglvnd +llvm
 	lm-sensors opencl osmesa selinux test unwind vaapi valgrind vdpau vulkan
-	vulkan-overlay wayland +X xa xvmc"
+	vulkan-overlay wayland +X xa xvmc +zstd"
 
 REQUIRED_USE="
 	d3d9?   ( dri3 || ( video_cards_iris video_cards_r300 video_cards_r600 video_cards_radeonsi video_cards_nouveau video_cards_vmware ) )
@@ -77,7 +77,7 @@ RDEPEND="
 	>=dev-libs/expat-2.1.0-r3:=[${MULTILIB_USEDEP}]
 	>=sys-libs/zlib-1.2.8[${MULTILIB_USEDEP}]
 	libglvnd? (
-		>=media-libs/libglvnd-1.2.0-r1[${MULTILIB_USEDEP}]
+		>=media-libs/libglvnd-1.2.0-r1[X?,${MULTILIB_USEDEP}]
 		!app-eselect/eselect-opengl
 	)
 	!libglvnd? (
@@ -128,6 +128,7 @@ RDEPEND="
 		>=x11-libs/libxcb-1.13:=[${MULTILIB_USEDEP}]
 		x11-libs/libXfixes:=[${MULTILIB_USEDEP}]
 	)
+	zstd? ( app-arch/zstd:=[${MULTILIB_USEDEP}] )
 "
 for card in ${RADEON_CARDS}; do
 	RDEPEND="${RDEPEND}
@@ -356,7 +357,7 @@ multilib_src_configure() {
 		fi
 	fi
 
-	emesonargs+=( -Dplatforms=surfaceless$(use X && echo ",x11")$(use wayland && echo ",wayland")$(use gbm && echo ",drm") )
+	emesonargs+=( -Dplatforms=$(use X && echo "x11,")$(use wayland && echo "wayland,")$(use gbm && echo "drm,")surfaceless )
 
 	if use gallium; then
 		emesonargs+=(
@@ -482,6 +483,7 @@ multilib_src_configure() {
 		$(meson_use gles2)
 		$(meson_use libglvnd glvnd)
 		$(meson_use selinux)
+		$(meson_use zstd)
 		-Dvalgrind=$(usex valgrind auto false)
 		-Ddri-drivers=$(driver_list "${DRI_DRIVERS[*]}")
 		-Dgallium-drivers=$(driver_list "${GALLIUM_DRIVERS[*]}")

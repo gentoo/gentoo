@@ -6,7 +6,7 @@ EAPI=7
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="ssl"
 
-inherit distutils-r1
+inherit distutils-r1 eutils
 
 DESCRIPTION="Graphical front-end analysis console for the Prelude Framework"
 HOMEPAGE="https://www.prelude-siem.org"

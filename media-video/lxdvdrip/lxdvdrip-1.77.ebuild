@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -32,7 +32,7 @@ src_compile() {
 	emake CC="$(tc-getCC)"
 }
 
-src_install () {
+src_install() {
 	dobin lxdvdrip
 	dobin lxac3scan
 	dodoc doc-pak/Changelog* doc-pak/Credits doc-pak/Debugging.*

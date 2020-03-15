@@ -4,7 +4,7 @@
 EAPI=7
 WANT_AUTOMAKE="none"
 
-inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
+inherit autotools elisp-common flag-o-matic readme.gentoo-r1 toolchain-funcs
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
@@ -227,7 +227,7 @@ src_compile() {
 		RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 
 	rm "${ED}"/usr/bin/emacs-${FULL_VERSION}-${EMACS_SUFFIX} \

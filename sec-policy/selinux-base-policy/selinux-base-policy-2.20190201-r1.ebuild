@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -12,7 +12,7 @@ if [[ ${PV} == 9999* ]]; then
 else
 	SRC_URI="https://github.com/SELinuxProject/refpolicy/releases/download/RELEASE_${PV/./_}/refpolicy-${PV}.tar.bz2
 			https://dev.gentoo.org/~perfinion/patches/${PN}/patchbundle-${PN}-${PVR}.tar.bz2"
-	KEYWORDS="~amd64 -arm ~arm64 ~mips ~x86"
+	KEYWORDS="amd64 -arm ~arm64 ~mips x86"
 fi
 
 HOMEPAGE="https://wiki.gentoo.org/wiki/Project:SELinux"

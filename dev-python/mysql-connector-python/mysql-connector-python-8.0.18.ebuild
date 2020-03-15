@@ -44,7 +44,7 @@ python_install() {
 		--with-protoc="${EPREFIX}/usr/bin/protoc"
 }
 
-python_install_all(){
+python_install_all() {
 	distutils-r1_python_install_all
 	if use examples ; then
 		dodoc -r examples

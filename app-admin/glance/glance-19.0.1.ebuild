@@ -15,7 +15,7 @@ if [[ ${PV} == *9999 ]];then
 	EGIT_BRANCH="stable/train"
 else
 	SRC_URI="https://tarballs.openstack.org/${PN}/${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm64 ~x86"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 LICENSE="Apache-2.0"
@@ -66,7 +66,7 @@ RDEPEND="
 	>=dev-python/routes-2.3.1[${PYTHON_USEDEP}]
 	>=dev-python/webob-1.8.1[${PYTHON_USEDEP}]
 	>=dev-python/sqlalchemy-migrate-0.11.0[${PYTHON_USEDEP}]
-	>=dev-python/python-sqlparse-0.2.2[${PYTHON_USEDEP}]
+	>=dev-python/sqlparse-0.2.2[${PYTHON_USEDEP}]
 	>=dev-python/alembic-0.8.10[${PYTHON_USEDEP}]
 	>=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-5.2.0[${PYTHON_USEDEP}]

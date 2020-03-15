@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 # do not add a ssl USE flag.  ssl is mandatory
 SSL_DEPS_SKIP=1
-inherit autotools eapi7-ver ssl-cert systemd user
+inherit autotools eapi7-ver ssl-cert systemd toolchain-funcs user
 
 MY_P="${P/_/.}"
 #MY_S="${PN}-ce-${PV}"
@@ -156,7 +156,7 @@ src_test() {
 	fi
 }
 
-src_install () {
+src_install() {
 	default
 
 	# insecure:

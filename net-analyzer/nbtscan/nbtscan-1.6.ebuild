@@ -27,6 +27,6 @@ src_prepare() {
 	eautoreconf
 }
 
-src_install () {
+src_install() {
 	default
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Note: Keep version bumps in sync with sys-devel/gettext.
@@ -7,7 +7,7 @@ EAPI="5"
 
 MY_P="gettext-${PV}"
 
-inherit multilib-minimal toolchain-funcs libtool usr-ldscript
+inherit multilib-minimal toolchain-funcs libtool ltprune usr-ldscript
 
 DESCRIPTION="the GNU international library (split out of gettext)"
 HOMEPAGE="https://www.gnu.org/software/gettext/"

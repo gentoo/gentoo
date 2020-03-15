@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools db-use eapi7-ver flag-o-matic multilib multilib-minimal ssl-cert toolchain-funcs user systemd
+inherit autotools db-use eapi7-ver flag-o-matic multilib multilib-minimal preserve-libs ssl-cert toolchain-funcs user systemd
 
 BIS_PN=rfc2307bis.schema
 BIS_PV=20140524

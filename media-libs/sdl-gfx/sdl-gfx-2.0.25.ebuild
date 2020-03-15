@@ -1,8 +1,8 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils multilib-minimal
+inherit autotools eutils ltprune multilib-minimal
 
 MY_P="${P/sdl-/SDL_}"
 DESCRIPTION="Graphics drawing primitives library for SDL"
@@ -27,7 +27,6 @@ src_prepare() {
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		--disable-dependency-tracking \
 		$(use_enable cpu_flags_x86_mmx mmx) \
 		$(use_enable static-libs static)
 }

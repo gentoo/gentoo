@@ -14,7 +14,7 @@ S=${WORKDIR}/${PN}-${P}
 
 LICENSE="Apache-2.0"
 SLOT="0/13" # slot for libmbedtls.so
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~s390 ~sh ~sparc x86"
 IUSE="cpu_flags_x86_sse2 doc havege libressl programs -static-libs test threads zlib"
 RESTRICT="!test? ( test )"
 
@@ -39,6 +39,7 @@ enable_mbedtls_option() {
 PATCHES=(
 	"${FILESDIR}"/${PN}-dont-overwrite-headers.patch
 	"${FILESDIR}"/${PN}-un-pebcak-705038-wrong-file.patch
+	"${FILESDIR}"/${PN}-2.19.1-zlib.patch #706112
 )
 
 src_prepare() {

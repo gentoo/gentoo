@@ -19,7 +19,7 @@ DEPEND="dev-libs/xapian:0/1.2.22
 	sys-libs/zlib"
 RDEPEND="${DEPEND}"
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 
 	# Protect /etc/omega.conf

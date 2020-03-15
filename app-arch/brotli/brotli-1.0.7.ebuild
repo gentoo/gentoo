@@ -59,7 +59,7 @@ src_compile() {
 	use python && distutils-r1_src_compile
 }
 
-python_test(){
+python_test() {
 	esetup.py test || die
 }
 

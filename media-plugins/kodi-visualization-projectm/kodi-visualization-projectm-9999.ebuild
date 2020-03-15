@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -30,7 +30,7 @@ IUSE=""
 DEPEND="
 	~media-tv/kodi-9999
 	~media-libs/kodi-platform-9999
-	>=media-libs/libprojectm-3.1.1_rc4:=
+	>=media-libs/libprojectm-3.1.2:=
 	>=media-libs/glm-0.9.9.5
 	virtual/opengl
 	"
@@ -39,7 +39,7 @@ RDEPEND="
 	${DEPEND}
 	"
 
-src_prepare(){
+src_prepare() {
 	[ -d depends ] && rm -rf depends || die
 	cmake_src_prepare
 }

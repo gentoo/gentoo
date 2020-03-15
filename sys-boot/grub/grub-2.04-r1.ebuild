@@ -18,7 +18,7 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit bash-completion-r1 flag-o-matic multibuild pax-utils toolchain-funcs
+inherit bash-completion-r1 eutils flag-o-matic multibuild pax-utils toolchain-funcs
 
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
@@ -103,9 +103,6 @@ DEPEND="
 	truetype? ( media-libs/freetype:2= )
 	ppc? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
 	ppc64? ( >=sys-apps/ibm-powerpc-utils-1.3.5 )
-	grub_platforms_xen? ( app-emulation/xen-tools:= )
-	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
-	grub_platforms_xen-pvh? ( app-emulation/xen-tools:= )
 "
 RDEPEND="${DEPEND}
 	kernel_linux? (
@@ -201,7 +198,6 @@ grub_configure() {
 		--disable-werror
 		--program-prefix=
 		--libdir="${EPREFIX}"/usr/lib
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		$(use_enable device-mapper)
 		$(use_enable mount grub-mount)
 		$(use_enable nls)

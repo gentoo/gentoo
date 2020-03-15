@@ -8,7 +8,7 @@ PYTHON_REQ_USE="sqlite"  # bug 572440
 WANT_AUTOCONF="2.1"
 WX_GTK_VER=3.0
 
-inherit autotools desktop eapi7-ver python-single-r1 wxwidgets xdg
+inherit autotools desktop eapi7-ver python-single-r1 toolchain-funcs wxwidgets xdg
 
 MY_PM=${PN}$(ver_cut 1-2 ${PV})
 MY_PM=${MY_PM/.}
@@ -25,10 +25,12 @@ IUSE="blas cxx fftw geos lapack liblas mysql netcdf nls odbc opencl opengl openm
 
 RDEPEND="${PYTHON_DEPS}
 	>=app-admin/eselect-1.2
-	|| (
-		dev-python/numpy-python2[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-	)
+	$(python_gen_cond_dep '
+		|| (
+			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		)
+	')
 	media-libs/libprojectm
 	sci-libs/gdal
 	sys-libs/gdbm

@@ -5,9 +5,6 @@
 		<email>gyakovlev@gentoo.org</email>
 		<name>Georgy Yakovlev</name>
 	</maintainer>
-	<longdescription lang="en">
-		A Python module for semantic versioning. Simplifies comparing versions.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">k-bx/python-semver</remote-id>
 		<remote-id type="pypi">semver</remote-id>

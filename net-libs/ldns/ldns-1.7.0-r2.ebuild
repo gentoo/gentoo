@@ -1,10 +1,10 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils multilib-minimal python-single-r1
+inherit eutils ltprune multilib-minimal python-single-r1
 
 DESCRIPTION="a library with the aim to simplify DNS programming in C"
 HOMEPAGE="http://www.nlnetlabs.nl/projects/ldns/"

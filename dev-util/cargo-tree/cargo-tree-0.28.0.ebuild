@@ -171,7 +171,7 @@ DEPEND="${RDEPEND}
 "
 QA_FLAGS_IGNORED="usr/bin/cargo-tree"
 
-src_install(){
+src_install() {
 	cargo_src_install
 	einstalldocs
 }

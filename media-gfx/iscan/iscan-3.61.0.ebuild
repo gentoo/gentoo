@@ -5,15 +5,11 @@ EAPI=7
 
 DESCRIPTION="EPSON Image Scan v3 for Linux"
 HOMEPAGE="http://support.epson.net/linux/en/imagescanv3.php"
-
 SRC_URI="http://support.epson.net/linux/src/scanner/imagescanv3/common/imagescan_${PV}.orig.tar.gz"
 
 LICENSE="GPL-3+"
-
 SLOT="0"
-
 IUSE="graphicsmagick gui imagemagick"
-
 KEYWORDS="~amd64 ~x86"
 
 DEPEND="
@@ -28,11 +24,14 @@ DEPEND="
 		graphicsmagick? ( media-gfx/graphicsmagick:= )
 	)
 "
-RDEPEND=${DEPEND}
+RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/utsushi-0.$(ver_cut 2-3)"
 
-PATCHES=( "${FILESDIR}"/${PN}-3.61.0-ijg-libjpeg.patch )
+PATCHES=(
+	"${FILESDIR}"/${P}-ijg-libjpeg.patch
+	"${FILESDIR}"/${P}-imagemagick-7.patch
+)
 
 src_configure() {
 	econf \

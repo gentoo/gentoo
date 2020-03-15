@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -25,6 +25,7 @@ RESTRICT="strip binchecks"
 BDEPEND="x11-apps/bdftopcf"
 
 S="${WORKDIR}"
+FONT_S="${S}"
 
 PATCHES=(
 	"${WORKDIR}"/${P}-freebsd-aa_ad.patch

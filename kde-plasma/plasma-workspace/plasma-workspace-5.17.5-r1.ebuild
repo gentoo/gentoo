@@ -15,7 +15,7 @@ DESCRIPTION="KDE Plasma workspace"
 
 LICENSE="GPL-2" # TODO: CHECK
 SLOT="5"
-KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
+KEYWORDS="amd64 ~arm arm64 ~ppc64 x86"
 IUSE="appstream +calendar geolocation gps qalculate qrcode +semantic-desktop systemd"
 
 REQUIRED_USE="gps? ( geolocation )"
@@ -184,7 +184,7 @@ src_configure() {
 		$(cmake_use_find_package semantic-desktop KF5Baloo)
 	)
 
-	use gps && mycmakeargs+=( $(cmake_use_find_package gps libgps) )
+	use geolocation && mycmakeargs+=( $(cmake_use_find_package gps libgps) )
 
 	ecm_src_configure
 }
@@ -201,7 +201,7 @@ src_install() {
 	fperms +x /etc/xdg/plasma-workspace/shutdown/10-agent-shutdown.sh
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	ecm_pkg_postinst
 
 	# Clean up pre-5.17.4 scripts

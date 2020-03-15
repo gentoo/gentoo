@@ -39,7 +39,7 @@ DEPEND="
 		>=dev-python/virtualenv-14.0.6[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep '
 			>=dev-python/stestr-2.1.0[${PYTHON_USEDEP}]
-		' python{2_7,3_5,3_6})
+		' python{2_7,3_5,3_6,3_7})
 		>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
 		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
 		dev-python/sphinx[${PYTHON_USEDEP}]

@@ -130,7 +130,6 @@ src_configure() {
 		$(use_enable pdk16 pdk16-port) \
 		\
 		--disable-doc \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--without-ccache
 }
 

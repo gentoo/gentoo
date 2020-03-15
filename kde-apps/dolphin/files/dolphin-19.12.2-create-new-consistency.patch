@@ -1,0 +1,66 @@
+From 4c923a531f77bc4c44b5c8687fe18dd6438eb9c5 Mon Sep 17 00:00:00 2001
+From: Nate Graham <nate@kde.org>
+Date: Sun, 9 Feb 2020 08:58:10 -0700
+Subject: Restore former position of "Create New" menu item in viewport context
+ menu
+
+Summary:
+I've seem various complaints from users about the fact that the {nav Create New...} menu
+item in the viewport context menu is now below {nav Open With} item. All the other
+changes to menus seem to have been well-received but this one has garnered criticism.
+Looking through D23757 and D11884, I can't actually see that this was intentional, so
+it might even be a bug.
+
+Either way, this patch restores the old position of the {nav Create New} menu items at
+the top of the Viewport context menu.
+
+BUG: 417640
+FIXED-IN: 20.04.0
+
+Test Plan: {F8093605}
+
+Reviewers: #vdg, #dolphin, elvisangelaccio, ndavis
+
+Reviewed By: #vdg, ndavis
+
+Subscribers: asturmlechner, markuss, kfm-devel
+
+Tags: #dolphin
+
+Differential Revision: https://phabricator.kde.org/D27267
+---
+ src/dolphincontextmenu.cpp | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/src/dolphincontextmenu.cpp b/src/dolphincontextmenu.cpp
+index 79143d4..9f39671 100644
+--- a/src/dolphincontextmenu.cpp
++++ b/src/dolphincontextmenu.cpp
+@@ -342,12 +342,6 @@ void DolphinContextMenu::openViewportContextMenu()
+     fileItemActions.setParentWidget(m_mainWindow);
+     fileItemActions.setItemListProperties(baseUrlProperties);
+ 
+-    // Don't show "Open With" menu items if the current dir is empty, because there's
+-    // generally no app that can do anything interesting with an empty directory
+-    if (view->itemsCount() != 0) {
+-        addOpenWithActions(fileItemActions);
+-    }
+-
+     // Set up and insert 'Create New' menu
+     KNewFileMenu* newFileMenu = m_mainWindow->newFileMenu();
+     newFileMenu->setViewShowsHiddenFiles(view->hiddenFilesShown());
+@@ -355,6 +349,12 @@ void DolphinContextMenu::openViewportContextMenu()
+     newFileMenu->setPopupFiles(QList<QUrl>() << m_baseUrl);
+     addMenu(newFileMenu->menu());
+ 
++    // Don't show "Open With" menu items if the current dir is empty, because there's
++    // generally no app that can do anything interesting with an empty directory
++    if (view->itemsCount() != 0) {
++        addOpenWithActions(fileItemActions);
++    }
++
+     QAction* pasteAction = createPasteAction();
+     addAction(pasteAction);
+ 
+-- 
+cgit v1.1

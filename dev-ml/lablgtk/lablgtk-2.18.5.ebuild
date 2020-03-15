@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -63,7 +63,7 @@ install_examples() {
 	docompress -x /usr/share/doc/${PF}/examples
 }
 
-src_install () {
+src_install() {
 	findlib_src_preinst
 	export OCAMLPATH="${OCAMLFIND_DESTDIR}"
 	emake install DESTDIR="${D}"
@@ -74,7 +74,7 @@ src_install () {
 	use examples && install_examples
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	if use examples; then
 		elog "To run the examples you can use the lablgtk2 toplevel."
 		elog "e.g: lablgtk2 /usr/share/doc/${PF}/examples/testgtk.ml"

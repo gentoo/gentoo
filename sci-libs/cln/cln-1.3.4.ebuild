@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -46,7 +46,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	autotools-utils_src_install
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples

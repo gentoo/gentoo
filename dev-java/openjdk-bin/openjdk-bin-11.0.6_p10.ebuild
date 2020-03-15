@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit java-vm-2
+inherit java-vm-2 toolchain-funcs
 
 abi_uri() {
 	echo "${2-$1}? (

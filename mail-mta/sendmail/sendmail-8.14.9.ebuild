@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -94,7 +94,7 @@ src_compile() {
 	popd
 }
 
-src_install () {
+src_install() {
 	local MY_LIBDIR=/usr/$(get_libdir)
 	local MY_OBJDIR="obj.`uname -s`.`uname -r`.`uname -m`"
 	dodir /usr/bin ${MY_LIBDIR} /usr/include/libmilter

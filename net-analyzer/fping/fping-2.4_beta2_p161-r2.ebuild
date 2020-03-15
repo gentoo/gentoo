@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -48,7 +48,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	dosbin "${S}"/${PN}
 	if use ipv6; then
 		newsbin "${S}"-6/fping fping6

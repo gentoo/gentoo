@@ -1,9 +1,13 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-# Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
-# dev-util/systemtap is not keyworded on riscv
-sys-libs/glibc systemtap
+# Patrick McLean <chutzpah@gentoo.org> (2020-02-15)
+# Mask until dev-libs/libfido2 is keyworded
+net-misc/openssh security-key
+
+# Sergei Trofimovich <slyfox@gentoo.org> (2019-02-15)
+# dev-libs/xxhash is not keyworded on riscv, bug #709696
+sys-devel/gdb xxhash
 
 # Sergei Trofimovich <slyfox@gentoo.org> (2019-12-02)
 # media-libs/gd is not keyworded on riscv
@@ -67,7 +71,7 @@ net-misc/curl brotli curl_ssl_libressl curl_ssl_mbedtls curl_ssl_nss http2 rtmp 
 net-misc/ntp openntpd snmp vim-syntax zeroconf
 net-nds/openldap cxx kerberos sasl
 sys-apps/kmod doc
-sys-apps/portage epydoc
+sys-apps/portage apidoc epydoc
 sys-apps/rng-tools nistbeacon pkcs11
 sys-auth/pambase pam_krb5 pam_ssh passwdqc mktemp
 sys-devel/automake test

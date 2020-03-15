@@ -25,13 +25,13 @@ PATCHES=( "${FILESDIR}"/${P}-fix-RECV-and-try-STAT-if-LAST-wont-work.patch
 
 src_prepare() {
 	#Honour Gentoo CFLAGS
-	sed -i -e "s:-g2 -D_DEBUG:${CFLAGS}:" "wmpop3/Makefile" || die
+	sed -i -e "s|-g2 -D_DEBUG|${CFLAGS}|" "wmpop3/Makefile" || die
 
 	#De-hardcode compiler
-	sed -i -e "s:cc:\$(CC):g" "wmpop3/Makefile" || die
+	sed -i -e "s|cc|\$(CC)|g" "wmpop3/Makefile" || die
 
 	#Honour Gentoo LDFLAGS - bug #335986
-	sed -i -e "s:\$(FLAGS) -o wmpop3lb:\$(LDFLAGS) -o wmpop3lb:" "wmpop3/Makefile" || die
+	sed -i -e "s|\$(FLAGS) -o wmpop3lb|\$(LDFLAGS) -o wmpop3lb|" "wmpop3/Makefile" || die
 	default
 }
 

@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit eutils libtool flag-o-matic gnuconfig multilib
+inherit eutils libtool flag-o-matic gnuconfig multilib toolchain-funcs
 
 DESCRIPTION="Tools necessary to build programs"
 HOMEPAGE="https://sourceware.org/binutils/"
@@ -73,7 +73,8 @@ RDEPEND="
 	>=sys-devel/binutils-config-3
 	sys-libs/zlib
 "
-DEPEND="${RDEPEND}
+DEPEND="${RDEPEND}"
+BDEPEND="
 	doc? ( sys-apps/texinfo )
 	test? ( dev-util/dejagnu )
 	nls? ( sys-devel/gettext )

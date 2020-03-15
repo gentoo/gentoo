@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python2_7 )
 RUBY_OPTIONAL=yes
 #USE_RUBY=ruby20
 
-inherit autotools ruby-ng eutils flag-o-matic mono-env multilib java-pkg-opt-2 python-single-r1 multilib-minimal
+inherit autotools ruby-ng eutils flag-o-matic ltprune mono-env multilib java-pkg-opt-2 python-single-r1 multilib-minimal
 
 MY_P=${P/_/.}
 DESCRIPTION="A library that creates colored ASCII-art graphics"

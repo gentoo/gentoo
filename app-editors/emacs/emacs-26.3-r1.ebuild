@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit autotools elisp-common flag-o-matic multilib readme.gentoo-r1
+inherit autotools elisp-common flag-o-matic readme.gentoo-r1
 
 DESCRIPTION="The extensible, customizable, self-documenting real-time display editor"
 HOMEPAGE="https://www.gnu.org/software/emacs/"
@@ -11,7 +11,7 @@ SRC_URI="mirror://gnu/emacs/${P}.tar.xz"
 
 LICENSE="GPL-3+ FDL-1.3+ BSD HPND MIT W3C unicode PSF-2"
 SLOT="26"
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~riscv ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 ~riscv ~sh sparc x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="acl alsa aqua athena cairo dbus dynamic-loading games gconf gfile gif gpm gsettings gtk gtk2 gzip-el imagemagick +inotify jpeg kerberos lcms libxml2 livecd m17n-lib mailutils motif png selinux sound source ssl svg systemd +threads tiff toolkit-scroll-bars wide-int X Xaw3d xft +xpm xwidgets zlib"
 REQUIRED_USE="?? ( aqua X )"
 
@@ -256,7 +256,7 @@ src_compile() {
 	emake RUN_TEMACS="SANDBOX_ON=0 LD_PRELOAD= env ./temacs"
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" NO_BIN_LINK=t install
 
 	mv "${ED}"/usr/bin/{emacs-${FULL_VERSION}-,}${EMACS_SUFFIX} || die

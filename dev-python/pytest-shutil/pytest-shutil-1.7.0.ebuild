@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${P:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~mips ~s390 ~sparc ~x86"
+KEYWORDS="~amd64 ~arm64 ~hppa ~ia64 ~mips ~s390 ~sparc ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -30,6 +30,7 @@ RDEPEND="
 
 BDEPEND="
 	${RDEPEND}
+	dev-python/setuptools-git[${PYTHON_USEDEP}]
 "
 
 python_prepare_all() {

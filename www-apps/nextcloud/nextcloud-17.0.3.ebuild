@@ -6,8 +6,8 @@ EAPI=7
 inherit webapp
 
 DESCRIPTION="Personal cloud that runs on your own server"
-HOMEPAGE="http://nextcloud.com"
-SRC_URI="http://download.nextcloud.com/server/releases/${P}.tar.bz2"
+HOMEPAGE="https://nextcloud.com/"
+SRC_URI="https://download.nextcloud.com/server/releases/${P}.tar.bz2"
 LICENSE="AGPL-3"
 
 KEYWORDS="~amd64 ~arm ~arm64 ~x86"

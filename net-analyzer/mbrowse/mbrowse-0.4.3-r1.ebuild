@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -21,12 +21,13 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 DOCS=( AUTHORS README ChangeLog )
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.4.3-flags.patch
+	"${FILESDIR}"/${PN}-0.4.3-fno-common.patch
+)
 
 src_prepare() {
 	default
-	sed -i \
-		-e '/LDFLAGS=/d' \
-		acinclude.m4 || die
 	eautoreconf
 }
 

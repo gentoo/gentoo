@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -46,7 +46,6 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--enable-pcre2-8
 		--enable-shared
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		--with-match-limit-depth=$(usex recursion-limit 8192 MATCH_LIMIT)
 		$(multilib_native_use_enable bzip2 pcre2grep-libbz2)
 		$(multilib_native_use_enable libedit pcre2test-libedit)

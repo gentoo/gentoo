@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit autotools eutils libtool multilib-minimal
+inherit autotools eutils libtool ltprune multilib-minimal
 
 DESCRIPTION="library for decoding mpeg-2 and mpeg-1 video"
 HOMEPAGE="http://libmpeg2.sourceforge.net/"

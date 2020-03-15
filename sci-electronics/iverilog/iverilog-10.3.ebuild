@@ -35,11 +35,14 @@ RDEPEND="
 
 DEPEND="
 	dev-util/gperf
+	sys-devel/bison
+	sys-devel/flex
 	${RDEPEND}
 "
 
 PATCHES=(
 	"${FILESDIR}"/${PN}-10.3-file-missing.patch #705412
+	"${FILESDIR}"/${PN}-10.3-fno-common.patch #706366
 )
 
 src_prepare() {

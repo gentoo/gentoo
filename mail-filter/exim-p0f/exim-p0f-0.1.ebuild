@@ -1,8 +1,8 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
-inherit eutils flag-o-matic
+inherit eutils flag-o-matic ltprune
 
 DESCRIPTION="This is p0f version 3 dlfunc library for Exim"
 HOMEPAGE="http://dist.epipe.com/exim/"
@@ -18,12 +18,12 @@ RDEPEND=">=net-analyzer/p0f-3.05_beta
 	${DEPEND}"
 S="${WORKDIR}/exim-p0f3-dlfunc-${PV}"
 
-src_configure()	{
+src_configure() {
 	append-cppflags "-I/usr/include/exim"
 	econf
 }
 
-src_install()	{
+src_install() {
 	default
 	prune_libtool_files --all
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -79,7 +79,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	cd "${S}/src" || die
 	emake DESTDIR="${D}" install #docdir=/usr/share/doc/${PF} install
 

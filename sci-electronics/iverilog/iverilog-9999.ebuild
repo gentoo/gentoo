@@ -35,12 +35,10 @@ RDEPEND="
 
 DEPEND="
 	dev-util/gperf
+	sys-devel/bison
+	sys-devel/flex
 	${RDEPEND}
 "
-
-PATCHES=(
-	"${FILESDIR}"/${PN}-9999-file-missing.patch #705412
-)
 
 src_prepare() {
 	default

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -14,7 +14,7 @@ else
 	# Change this when you update the ebuild
 	RUNC_COMMIT=dc9208a3303feef5b3839f4323d9beb36df0a9dd
 	SRC_URI="https://${EGO_PN}/archive/${RUNC_COMMIT}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc64"
+	KEYWORDS="amd64 ~arm ~arm64 ~ppc64"
 	inherit golang-build golang-vcs-snapshot
 fi
 
@@ -31,17 +31,6 @@ RDEPEND="
 	!app-emulation/docker-runc
 "
 
-src_prepare() {
-	pushd src/${EGO_PN}
-	default
-	sed -i -e "/^GIT_BRANCH/d"\
-		-e "/^GIT_BRANCH_CLEAN/d"\
-		-e "/^COMMIT_NO/d"\
-		-e "s/COMMIT :=.*/COMMIT := ${RUNC_COMMIT}/"\
-		Makefile || die
-	popd || die
-}
-
 src_compile() {
 	# Taken from app-emulation/docker-1.7.0-r1
 	export CGO_CFLAGS="-I${ROOT}/usr/include"
@@ -56,7 +45,8 @@ src_compile() {
 		$(usex kmem '' 'nokmem')
 	)
 
-	GOPATH="${S}" emake BUILDTAGS="${options[*]}" -C src/${EGO_PN}
+	COMMIT=${RUNC_COMMIT} GOPATH="${S}" emake BUILDTAGS="${options[*]}" \
+		-C src/${EGO_PN}
 }
 
 src_install() {

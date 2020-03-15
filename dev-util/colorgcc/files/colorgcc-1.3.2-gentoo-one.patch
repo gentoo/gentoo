@@ -1,5 +1,5 @@
---- colorgcc.orig	1999-04-29 10:16:08.000000000 -0700
-+++ colorgcc	2003-04-11 16:38:52.000000000 -0700
+--- a/colorgcc
++++ b/colorgcc
 @@ -88,16 +88,16 @@
  #
  # 1.0.0 Initial Version
@@ -188,8 +188,8 @@
 +   waitpid($compiler_pid, 0);
 +   exit ($? >> 8);
 +}
---- colorgccrc.orig	1999-04-29 10:16:08.000000000 -0700
-+++ colorgccrc	2003-02-12 17:38:38.000000000 -0800
+--- a/colorgccrc
++++ b/colorgccrc
 @@ -20,12 +20,14 @@
  # For example, srcColor: bold cyan on_yellow
  #
@@ -225,8 +225,8 @@
  errorMessageColor:  bold red
 -
 -
---- INSTALL.orig	1999-04-29 10:16:08.000000000 -0700
-+++ INSTALL	2003-04-07 17:12:25.000000000 -0700
+--- a/INSTALL
++++ b/INSTALL
 @@ -27,9 +27,9 @@
  When "g++" is invoked, colorgcc is run instead.  colorgcc looks at the
  program name to figure out which compiler to use. 

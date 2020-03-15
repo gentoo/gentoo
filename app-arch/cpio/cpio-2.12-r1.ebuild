@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -17,6 +17,7 @@ IUSE="nls"
 src_prepare() {
 	epatch "${FILESDIR}"/${PN}-2.12-non-gnu-compilers.patch #275295
 	epatch "${FILESDIR}"/${PN}-2.12-name-overflow.patch #572428
+	epatch "${FILESDIR}"/${PN}-2.12-gcc-10.patch #705900
 }
 
 src_configure() {

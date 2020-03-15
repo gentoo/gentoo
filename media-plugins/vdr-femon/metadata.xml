@@ -5,5 +5,4 @@
 		<email>vdr@gentoo.org</email>
 		<name>Gentoo VDR Project</name>
 	</maintainer>
-	<longdescription>vdr Plugin: DVB Frontend Status Monitor (signal strengt/noise)</longdescription>
 </pkgmetadata>

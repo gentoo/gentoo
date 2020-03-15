@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ HOMEPAGE="https://containerd.io/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="apparmor +btrfs +cri hardened +seccomp"
+IUSE="apparmor btrfs +cri hardened +seccomp"
 
 DEPEND="btrfs? ( sys-fs/btrfs-progs )
 	seccomp? ( sys-libs/libseccomp )"

@@ -16,12 +16,19 @@ fi
 
 DEPEND=""
 RDEPEND="
-	keystone? ( ~sys-auth/keystone-16.0.0 )
+	keystone? ( >=sys-auth/keystone-16.0.0
+	            <sys-auth/keystone-17 )
 	swift? ( ~sys-cluster/swift-2.23.1 )
-	neutron? ( ~sys-cluster/neutron-15.0.0 )
-	glance? ( ~app-admin/glance-19.0.0 )
-	cinder? ( ~sys-cluster/cinder-15.0.1 )
-	nova? ( ~sys-cluster/nova-20.0.1 )
-	heat? ( ~sys-cluster/heat-13.0.0 )
-	placement? ( ~sys-cluster/placement-2.0.0 )
+	neutron? ( >=sys-cluster/neutron-15.0.0
+						 <sys-cluster/neutron-16 )
+	glance? ( >=app-admin/glance-19.0.0
+						<app-admin/glance-20 )
+	cinder? ( >=sys-cluster/cinder-15.0.0
+						<sys-cluster/cinder-16 )
+	nova? ( >=sys-cluster/nova-20.0.0
+				  <sys-cluster/nova-21 )
+	heat? ( >=sys-cluster/heat-13.0.0
+				  <sys-cluster/heat-14 )
+	placement? ( >=sys-cluster/placement-2.0.0
+						   <sys-cluster/placement-3 )
 "

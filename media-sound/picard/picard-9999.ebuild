@@ -26,7 +26,9 @@ BDEPEND="
 	nls? ( dev-qt/linguist-tools:5 )
 "
 RDEPEND="
-	dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/PyQt5[declarative,gui,network,widgets,${PYTHON_MULTI_USEDEP}]
+	')
 	dev-qt/qtgui:5[accessibility]
 	>=media-libs/mutagen-1.38"
 

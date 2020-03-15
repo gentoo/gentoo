@@ -1,8 +1,8 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="Open Real-time Transport Protocol (RTP, RFC3550) stack"
 HOMEPAGE="http://www.linphone.org/"

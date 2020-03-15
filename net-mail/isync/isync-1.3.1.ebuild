@@ -31,12 +31,12 @@ DEPEND="${RDEPEND}
 	dev-lang/perl
 "
 
-src_prepare () {
+src_prepare() {
 	default
 	[[ ${PV} == 9999 ]] && eautoreconf
 }
 
-src_configure () {
+src_configure() {
 	econf \
 		$(use_with ssl) \
 		$(use_with sasl) \

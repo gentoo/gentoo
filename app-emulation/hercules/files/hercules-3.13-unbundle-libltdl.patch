@@ -1,0 +1,347 @@
+--- a/bootstrap.c
++++ b/bootstrap.c
+@@ -11,7 +11,7 @@
+ #include "hstdinc.h"
+ #include "hercules.h"
+ #if defined(HDL_USE_LIBTOOL)
+-#include "ltdl.h"
++#include <ltdl.h>
+ #endif
+ 
+ #if !defined( _MSVC_ )
+--- a/configure.ac
++++ b/configure.ac
+@@ -12,7 +12,7 @@
+ AC_REVISION($Revision$)          # (the version of this configure.ac)
+ AC_CONFIG_AUX_DIR(autoconf)             # (directory containing auxillary build tools)
+ AM_INIT_AUTOMAKE(hercules,3.13)         # (the version of our software package)
+-AM_CONFIG_HEADER(config.h)              # (the file the resulting configure script will produce)
++AC_CONFIG_HEADERS(config.h)              # (the file the resulting configure script will produce)
+ AM_MAINTAINER_MODE()
+ AC_CANONICAL_HOST()                     # (sets $host_cpu, $host_vendor, and $host_os)
+ m4_ifdef([AM_SILENT_RULES], [AM_SILENT_RULES([yes])])
+@@ -38,154 +38,8 @@
+ modexecdir='$(libdir)/$(PACKAGE)'
+ AC_SUBST(modexecdir)
+ 
+-
+-# -----------------------------------------------------------------------------
+-#
+-#  AC_LIBTOOL_DLOPEN
+-#
+-#       Enable checking for dlopen support. This macro should be used if the
+-#       package makes use of the '-dlopen' and '-dlpreopen' flags, otherwise
+-#       libtool will assume that the system does not support dlopening. The
+-#       macro must be called before AC_PROG_LIBTOOL.
+-#
+-# -----------------------------------------------------------------------------
+-
+-AC_LIBTOOL_DLOPEN()                     # (we need libtool's dlopen support)
+-
+-
+-# -----------------------------------------------------------------------------
+-#
+-#  AC_LIBTOOL_WIN32_DLL
+-#
+-#       This macro should be used if the package has been ported to build
+-#       clean dlls on win32 platforms. Usually this means that any library
+-#       data items are exported with __declspec(dllexport) and imported with
+-#       __declspec(dllimport). If this macro is not used, libtool will assume
+-#       that the package libraries are not dll clean and will build only static
+-#       libraries on win32 hosts.
+-#
+-#       This macro must be called before AC_PROG_LIBTOOL, and provision must
+-#       be made to pass '-no-undefined' to libtool in link mode from the package
+-#       Makefile. Naturally, if you pass '-no-undefined', you must ensure that
+-#       all the library symbols really are defined at link time!
+-#
+-# -----------------------------------------------------------------------------
+-
+-AC_LIBTOOL_WIN32_DLL()                  # (we need Win32 support in libtool)
+-
+-
+-# -----------------------------------------------------------------------------
+-#  See: 'AC_PROG_LIBTOOL' below.
+-# -----------------------------------------------------------------------------
+-
+-AC_DISABLE_STATIC()                     # (forces libtool to build shared
+-
+-                                        #  libraries instead of static ones)
+-# -----------------------------------------------------------------------------
+-#  AC_PROG_LIBTOOL
+-#
+-#       Add support for the '--enable-shared' and '--disable-shared'
+-#       configure flags. By default, this macro turns on shared libraries
+-#       if they are available, and also enables static libraries if they
+-#       don't conflict with the shared libraries. You can modify these
+-#       defaults by calling either the AC_DISABLE_SHARED or AC_DISABLE_STATIC
+-#       macros.
+-#
+-#       Hercules REQUIRES shared libraries (i.e. DLLs), so we do indeed use
+-#       the AC_DISABLE_STATIC macro above.
+-#
+-# -----------------------------------------------------------------------------
+-
+-AC_PROG_LIBTOOL()                       # (we build libtool for ourselves)
+-
+-
+-# -----------------------------------------------------------------------------
+-#
+-#  AC_LIB_LTDL
+-#
+-#       Even though libltdl is installed together with libtool, you may wish
+-#       to include libltdl in the distribution of your package, for the convenience
+-#       of users of your package that don't have libtool or libltdl installed.
+-#
+-#       The most simplistic way to add libltdl to your package is to copy the
+-#       source files, 'ltdl.c' and 'ltdl.h', to a source directory withing your
+-#       package and to build and link them along with the rest of your sources.
+-#
+-#       To do this, you must add a call to the 'AC_LIB_LTDL' macro to your package's
+-#       'configure.in' to perform the required configure time checks in order that
+-#       'ltdl.o' is built correctly.
+-#
+-#       This method does have its problems though: if you try to link the package
+-#       binaries with an installed libltdl, or a library which depends on libltdl,
+-#       you may have problems with duplicate symbol definitions.
+-#
+-#       In order to enable this flavor of libltdl, you should add the line
+-#       'AC_LIBLTDL_CONVENIENCE' to your `configure.in', before 'AC_PROG_LIBTOOL'.
+-#
+-#       In order to select the installable version of libltdl, you should add a
+-#       call of the macro 'AC_LIBLTDL_INSTALLABLE' to your 'configure.in' before
+-#       'AC_PROG_LIBTOOL'. This macro will check whether libltdl is already
+-#       installed and, if not, request the libltdl embedded in your package to be
+-#       built and installed.
+-#
+-#       Whatever macro you use, it is up to you to ensure that your 'configure.in'
+-#       will configure libltdl, using 'AC_CONFIG_SUBDIRS', and that your 'Makefile's
+-#       will start sub-makes within libltdl's directory, using automake's SUBDIRS,
+-#       for example. Both macros define the shell variables LIBLTDL, to the link flag
+-#       that you should use to link with libltdl, and LTDLINCL, to the preprocessor
+-#       flag that you should use to compile with programs that include 'ltdl.h'. It
+-#       is up to you to use 'AC_SUBST' to ensure that this variable will be available
+-#       in 'Makefile's, or add them to variables that are 'AC_SUBST'ed by default,
+-#       such as LIBS and CPPFLAGS.
+-#
+-#       So, when you want to link a program with libltdl, be it a convenience,
+-#       installed or installable library, just compile with '$(LTDLINCL)' and link
+-#       it with '$(LIBLTDL)', using libtool.
+-#
+-#       You should probably also add 'AC_LIBTOOL_DLOPEN' to your 'configure.in' before
+-#       'AC_PROG_LIBTOOL', otherwise libtool will assume no dlopening mechanism is
+-#       supported, and revert to dlpreopening, which is probably not what you want.
+-#
+-#       The following example shows you how to embed the convenience libltdl
+-#       in your package. In order to use the installable variant just replace
+-#       'AC_LIBLTDL_CONVENIENCE' with 'AC_LIBLTDL_INSTALLABLE'. We assume that libltdl
+-#       was embedded using 'libtoolize --ltdl':
+-#
+-#           configure.in:
+-#
+-#               ...
+-#               dnl Enable building of the convenience library
+-#               dnl and set LIBLTDL accordingly
+-#               AC_LIBLTDL_CONVENIENCE
+-#               dnl Substitute LTDLINCL and LIBLTDL in the Makefiles
+-#               AC_SUBST(LTDLINCL)
+-#               AC_SUBST(LIBLTDL)
+-#               dnl Check for dlopen support
+-#               AC_LIBTOOL_DLOPEN
+-#               dnl Configure libtool
+-#               AC_PROG_LIBTOOL
+-#               dnl Configure libltdl
+-#               AC_CONFIG_SUBDIRS(libltdl)
+-#               ...
+-#
+-#           Makefile.am:
+-#
+-#               ...
+-#               SUBDIRS = libltdl
+-#
+-#               INCLUDES = $(LTDLINCL)
+-#
+-#               myprog_LDFLAGS = -export-dynamic
+-#               # The quotes around -dlopen below fool automake <= 1.4 into accepting it
+-#               myprog_LDADD = $(LIBLTDL) "-dlopen" self "-dlopen" foo1.la
+-#               myprog_DEPENDENCIES = $(LIBLTDL) foo1.la
+-#               ...
+-#
+-# -----------------------------------------------------------------------------
+-
+-AC_LIB_LTDL()                           # (we need the ltdl libtool library)
+-AC_SUBST([LIBTOOL_DEPS])                # (see PROGRAMMING NOTE above)
+-
++LT_PREREQ([2.2.6])
++LT_INIT([dlopen win32-dll disable-static])
+ 
+ # -----------------------------------------------------------------------------
+ # (See comments in the 'AC_CHECK_LIB' Libraries section further below)
+--- a/crypto/Makefile.am
++++ b/crypto/Makefile.am
+@@ -23,7 +23,6 @@
+ 
+ if OPTION_DYNAMIC_LOAD
+   DYNSRC         =
+-  LTDL           = ../ltdl.c
+ 
+   DYNMOD_LD_FLAGS = -module         \
+                    -no-undefined   \
+@@ -31,7 +30,7 @@
+                    -export-dynamic \
+                    -avoid-version
+ 
+-  DYNMOD_LD_ADD   = $(LDADD)
++  DYNMOD_LD_ADD   = $(LDADD) -lltdl
+ 
+   LIB_LD_FLAGS    = -export-dynamic  \
+                    $(XSTATIC)       \
+@@ -39,7 +38,6 @@
+                    -avoid-version
+ else
+   DYNSRC         = $(dyndev_SRC)
+-  LTDL           =
+   DYNMOD_LD_FLAGS =
+   DYNMOD_LD_ADD =
+   LIB_LD_FLAGS    = $(XSTATIC)    \
+--- a/decNumber/Makefile.am
++++ b/decNumber/Makefile.am
+@@ -37,13 +37,13 @@
+ endif
+ 
+ if OPTION_DYNAMIC_LOAD
+-  LTDL  	 = ../ltdl.c
++  LIB_LD_ADD      = -lltdl
+   LIB_LD_FLAGS    = -export-dynamic  \
+ 		   $(XSTATIC)       \
+ 		   -no-undefined    \
+ 		   -avoid-version
+ else
+-  LTDL  	 =
++  LIB_LD_ADD      =
+   LIB_LD_FLAGS    = $(XSTATIC)    \
+ 		   -no-undefined \
+ 		   -avoid-version
+@@ -56,7 +56,7 @@
+ 
+   libdecNumber_la_SOURCES = $(decNumber_SRC)
+   libdecNumber_la_LDFLAGS = $(LIB_LD_FLAGS)
+-  libdecNumber_la_LIBADD  = $(LDADD)
++  libdecNumber_la_LIBADD  = $(LDADD) $(LIB_LD_ADD)
+ 
+ noinst_HEADERS = decContext.h      \
+ 		 decDPD.h          \
+--- a/fillfnam.c
++++ b/fillfnam.c
+@@ -5,6 +5,8 @@
+ #include "hercules.h"
+ #include "fillfnam.h"
+ 
++#include <dirent.h>
++
+ /* On Solaris 2.9 (SunOS 5.9) and earlier, there is no scandir
+    and alphasort function. In this case fillfnam does nothing
+    and the tab command is effectively a no-operation */
+--- a/herclin.c
++++ b/herclin.c
+@@ -26,7 +26,7 @@
+ /* This must be included if HDL uses the   */
+ /* libtool ltdl convenience library        */
+ 
+-#include "ltdl.h"
++#include <ltdl.h>
+ #endif
+ 
+ 
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -98,7 +98,7 @@
+ 
+ if OPTION_DYNAMIC_LOAD
+   DYNSRC         =
+-  LTDL           = ltdl.c
++  LIB_LD_ADD     = -lltdl
+ 
+   DYNMOD_LD_FLAGS = -module         \
+                    -no-undefined    \
+@@ -109,7 +109,8 @@
+   DYNMOD_LD_ADD   = libherc.la    \
+                    libhercs.la    \
+                    libhercu.la    \
+-                   $(LDADD)
++                   $(LDADD)       \
++                   $(LIB_LD_ADD)
+ 
+   LIB_LD_FLAGS    = -export-dynamic  \
+                    $(XSTATIC)        \
+@@ -117,7 +118,6 @@
+                    -avoid-version
+ else
+   DYNSRC         = $(dyndev_SRC)
+-  LTDL           =
+   DYNMOD_LD_FLAGS =
+   DYNMOD_LD_ADD =
+   LIB_LD_FLAGS    = $(XSTATIC)    \
+@@ -295,8 +295,7 @@
+                         memrchr.c    \
+                         parser.c     \
+                         pttrace.c    \
+-                        $(FTHREADS)  \
+-                        $(LTDL)
++                        $(FTHREADS)
+ 
+   libhercu_la_LDFLAGS = $(LIB_LD_FLAGS)
+ 
+@@ -372,8 +371,7 @@
+                              memrchr.c        \
+                              $(dynamic_SRC)   \
+                              $(extra_SRC)     \
+-                             $(dyndev_SRC)    \
+-                             ltdl.c
++                             $(dyndev_SRC)
+ 
+   libherc_la_LDFLAGS = $(LIB_LD_FLAGS)
+ 
+@@ -383,7 +381,8 @@
+                       libhercd.la     \
+                       decNumber/libdecNumber.la \
+                       softfloat/libsoftfloat.la \
+-                      $(LDADD)
++                      $(LDADD) \
++                      $(LIB_LD_ADD)
+ 
+ #
+ # THIS is the hercules executable.
+@@ -440,7 +439,7 @@
+   hercules_SOURCES      = bootstrap.c  \
+                           hdlmain.c
+ 
+-  hercules_LDADD        = libherc.la libhercs.la $(LDADD)
++  hercules_LDADD        = libherc.la libhercs.la $(LDADD) $(LIB_LD_ADD)
+ 
+   hercules_LDFLAGS      = $(HLDFLAGS)
+ 
+@@ -656,7 +655,6 @@
+                  hdl.h          \
+                  crypto.h       \
+                  sockdev.h      \
+-                 ltdl.h         \
+                  herc_getopt.h  \
+                  service.h      \
+                  chsc.h         \
+--- a/softfloat/Makefile.am
++++ b/softfloat/Makefile.am
+@@ -22,13 +22,11 @@
+ endif
+ 
+ if OPTION_DYNAMIC_LOAD
+-  LTDL  	 = ../ltdl.c
+   LIB_LD_FLAGS    = -export-dynamic  \
+ 		   $(XSTATIC)       \
+ 		   -no-undefined    \
+ 		   -avoid-version
+ else
+-  LTDL  	 =
+   LIB_LD_FLAGS    = $(XSTATIC)    \
+ 		   -no-undefined \
+ 		   -avoid-version

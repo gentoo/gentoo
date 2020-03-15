@@ -40,9 +40,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libxslt-1.1.25
 	dev-libs/gdl:3
 	dev-libs/popt
-	dev-python/lxml[${PYTHON_USEDEP}]
 	media-gfx/potrace
-	media-gfx/scour[${PYTHON_USEDEP}]
 	media-libs/fontconfig
 	media-libs/freetype:2
 	media-libs/libpng:0=
@@ -51,6 +49,10 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	x11-libs/libX11
 	>=x11-libs/pango-1.37.2
 	x11-libs/gtk+:3
+	$(python_gen_cond_dep '
+		dev-python/lxml[${PYTHON_MULTI_USEDEP}]
+		media-gfx/scour[${PYTHON_MULTI_USEDEP}]
+	')
 	cdr? (
 		app-text/libwpg:0.3
 		dev-libs/librevenge
@@ -84,7 +86,9 @@ COMMON_DEPEND="${PYTHON_DEPS}
 # install these so we could of course just not depend on those and rely
 # on that.
 RDEPEND="${COMMON_DEPEND}
-	dev-python/numpy[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+	')
 	dia? ( app-office/dia )
 	postscript? ( app-text/ghostscript-gpl )
 "
@@ -127,13 +131,20 @@ src_configure() {
 		-DWITH_GRAPHICS_MAGICK=$(usex graphicsmagick $(usex imagemagick)) # both must be enabled to use GraphicsMagick
 		-DWITH_JEMALLOC=$(usex jemalloc)
 		-DENABLE_LCMS=$(usex lcms)
-		-DWITH_NLS=$(usex nls)
 		-DWITH_OPENMP=$(usex openmp)
 		-DBUILD_SHARED_LIBS=$(usex !static-libs)
 		-DWITH_SVG2=$(usex svg2)
 		-DWITH_LIBVISIO=$(usex visio)
 		-DWITH_LIBWPG=$(usex wpg)
 	)
+	# We should also have,
+	#
+	#   -DWITH_NLS=$(usex nls)
+	#
+	# in this list, but it's broken upstream at the moment:
+	#
+	#  * https://bugs.gentoo.org/699658
+	#  * https://gitlab.com/inkscape/inkscape/issues/168
 
 	cmake_src_configure
 }

@@ -12,7 +12,7 @@ EHG_REPO_URI="https://hg.dillo.org/dillo"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
-IUSE="doc +gif ipv6 +jpeg +png ssl"
+IUSE="doc +gif ipv6 +jpeg +png ssl +xembed"
 
 RDEPEND="
 	>=x11-libs/fltk-1.3
@@ -43,7 +43,7 @@ src_configure() {
 		$(use_enable jpeg) \
 		$(use_enable png) \
 		$(use_enable ssl) \
-		--docdir="/usr/share/doc/${PF}"
+		$(use_enable xembed)
 }
 
 src_compile() {

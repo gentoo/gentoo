@@ -16,7 +16,7 @@ if [[ -n ${GRUB_AUTORECONF} ]]; then
 	inherit autotools
 fi
 
-inherit bash-completion-r1 flag-o-matic multibuild pax-utils toolchain-funcs
+inherit bash-completion-r1 eutils flag-o-matic multibuild pax-utils toolchain-funcs
 
 if [[ ${PV} != 9999 ]]; then
 	if [[ ${PV} == *_alpha* || ${PV} == *_beta* || ${PV} == *_rc* ]]; then
@@ -94,8 +94,6 @@ DEPEND="${COMMON_DEPEND}
 		media-libs/freetype:2
 		virtual/pkgconfig
 	)
-	grub_platforms_xen? ( app-emulation/xen-tools:= )
-	grub_platforms_xen-32? ( app-emulation/xen-tools:= )
 	static? (
 		app-arch/xz-utils[static-libs(+)]
 		truetype? (
@@ -208,7 +206,6 @@ grub_configure() {
 		--disable-werror
 		--program-prefix=
 		--libdir="${EPREFIX}"/usr/lib
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		$(use_enable device-mapper)
 		$(use_enable mount grub-mount)
 		$(use_enable nls)

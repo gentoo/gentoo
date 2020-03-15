@@ -29,7 +29,7 @@ python_test() {
 	"${EPYTHON}" unittests.py --with-mysql="${EPREFIX}/usr" --unix-socket="${T}" --mysql-topdir="${T}"
 }
 
-python_install_all(){
+python_install_all() {
 	distutils-r1_python_install_all
 	if use examples ; then
 		dodoc -r examples

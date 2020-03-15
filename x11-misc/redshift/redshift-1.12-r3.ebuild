@@ -41,7 +41,6 @@ src_configure() {
 	use gtk && python_setup
 
 	econf \
-		--disable-silent-rules \
 		$(use_enable nls) \
 		--enable-drm \
 		--enable-randr \

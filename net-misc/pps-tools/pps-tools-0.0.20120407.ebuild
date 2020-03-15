@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="4"
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 GITHUB_USER="ago"
 PV_COMMIT='0deb9c7e135e9380a6d09e9d2e938a146bb698c8'

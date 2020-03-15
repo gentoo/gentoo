@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7}} )
+PYTHON_COMPAT=( python3_{6,7} )
 inherit autotools flag-o-matic linux-info python-any-r1 readme.gentoo-r1 systemd virtualx multilib-minimal
 
 DESCRIPTION="A message bus system, a simple way for applications to talk to each other"
@@ -114,8 +114,6 @@ multilib_src_configure() {
 	# not on an SELinux profile.
 	myconf=(
 		--localstatedir="${EPREFIX}/var"
-		--docdir="${EPREFIX}/usr/share/doc/${PF}"
-		--htmldir="${EPREFIX}/usr/share/doc/${PF}/html"
 		$(use_enable static-libs static)
 		$(use_enable debug verbose-mode)
 		--disable-asserts

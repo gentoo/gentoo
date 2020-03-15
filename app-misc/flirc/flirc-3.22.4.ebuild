@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -35,7 +35,7 @@ RDEPEND="virtual/libusb:1
 
 QA_PREBUILT="/usr/bin/*"
 
-src_install () {
+src_install() {
 	udev_newrules etc/udev/rules.d/99-flirc.rules 51-flirc.rules
 	dobin usr/bin/flirc_util
 	doman usr/share/doc/flirc/flirc_util.1

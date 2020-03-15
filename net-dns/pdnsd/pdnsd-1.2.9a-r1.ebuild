@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -29,7 +29,6 @@ src_configure() {
 	use urandom && myconf="${myconf} --with-random-device=/dev/urandom"
 
 	econf \
-		--disable-dependency-tracking \
 		--sysconfdir=/etc/pdnsd \
 		--with-cachedir=/var/cache/pdnsd \
 		--with-default-id=pdnsd \

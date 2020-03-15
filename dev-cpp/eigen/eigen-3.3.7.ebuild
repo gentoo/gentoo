@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,7 +19,14 @@ RESTRICT="!test? ( test )"
 RDEPEND="!dev-cpp/eigen:0"
 DEPEND="
 	cuda? ( dev-util/nvidia-cuda-toolkit )
-	doc? ( app-doc/doxygen[dot,latex] )
+	doc? (
+		app-doc/doxygen[dot]
+		dev-texlive/texlive-bibtexextra
+		dev-texlive/texlive-fontsextra
+		dev-texlive/texlive-fontutils
+		dev-texlive/texlive-latex
+		dev-texlive/texlive-latexextra
+	)
 	test? (
 		dev-libs/gmp:0
 		dev-libs/mpfr:0

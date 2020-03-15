@@ -59,7 +59,6 @@ multilib_src_configure() {
 	local myeconfargs=(
 		--enable-pcre2-8
 		--enable-shared
-		--htmldir="${EPREFIX}"/usr/share/doc/${PF}/html
 		--with-match-limit-depth=$(usex recursion-limit 8192 MATCH_LIMIT)
 		$(multilib_native_use_enable bzip2 pcre2grep-libbz2)
 		$(multilib_native_use_enable libedit pcre2test-libedit)

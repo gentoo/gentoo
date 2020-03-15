@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -87,7 +87,7 @@ src_install() {
 		share/man/man8/"${PN}".8
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	ewarn "When you stop this script, all firewall rules are flushed!"
 	ewarn "Make sure to not use multiple firewall scripts simultaneously"
 	ewarn "unless you know what you are doing!"

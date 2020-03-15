@@ -13,7 +13,7 @@ SRC_URI="https://github.com/soimort/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="amd64 x86"
 REQUIRED_USE=${PYTHON_REQUIRED_USE}
 
 RDEPEND="

@@ -23,7 +23,7 @@ src_prepare() {
 	eautoreconf
 }
 
-src_configure(){
+src_configure() {
 	# We expect localstatedir to be "var"ish, not "var/lib"ish, because
 	# that's what PHP upstream expects. See for example the FPM
 	# configuration where they put logs in @localstatedir@/log.

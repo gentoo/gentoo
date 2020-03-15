@@ -22,11 +22,11 @@ PATCHES=( "${FILESDIR}/${P}-extern.patch" )
 
 S="${WORKDIR}/${MY_PN}_${PV}"
 
-src_configure(){
+src_configure() {
 	econf $(use_enable static-libs static)
 }
 
-src_install(){
+src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 	use examples && dodoc -r c/samples

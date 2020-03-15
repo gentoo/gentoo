@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit autotools eutils flag-o-matic systemd
+inherit autotools eutils flag-o-matic ltprune systemd
 
 DESCRIPTION="Clam Anti-Virus Scanner"
 HOMEPAGE="https://www.clamav.net/"

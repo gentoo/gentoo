@@ -4,7 +4,7 @@
 EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit eutils python-single-r1 vala
+inherit eutils ltprune python-single-r1 vala
 
 DESCRIPTION="A collection of different plugins for Geany"
 HOMEPAGE="https://plugins.geany.org"
@@ -47,7 +47,9 @@ COMMON_DEPEND="
 		>=x11-libs/vte-0.28:0
 		)
 	python? (
-		dev-python/pygtk[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pygtk[${PYTHON_MULTI_USEDEP}]
+		')
 		${PYTHON_DEPS}
 		)
 	scope? ( x11-libs/vte:0 )

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,7 +36,7 @@ PATCHES=(
 	"${FILESDIR}/${P}-build.patch"
 )
 
-pkg_setup () {
+pkg_setup() {
 	if use gengc || use precisegc ; then
 		ewarn "You have enabled the generational garbage collector or"
 		ewarn "the precise collection routines. These features are not very stable"
@@ -84,7 +84,7 @@ src_compile() {
 	emake -j1
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 
 	dodoc README.md CHANGELOG

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,7 @@ src_prepare() {
 	eapply_user
 }
 
-src_compile(){
+src_compile() {
 	if use doc; then
 		phpdoc --filename="src/*.php" \
 			   --target="./html" \
@@ -55,7 +55,7 @@ src_compile(){
 	fi
 }
 
-src_install(){
+src_install() {
 	# The PHPMailer class loads its language files
 	# using a relative path, so we need to keep the "src" here.
 	insinto "/usr/share/php/${PN}"
@@ -65,7 +65,7 @@ src_install(){
 	use doc && dodoc -r html/*
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	elog "${PN} has been installed in /usr/share/php/${PN}/."
 	elog "Upstream no longer provides an autoloader, so you will need"
 	elog "to include each source file (for example: PHPMailer.php,"

@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -18,7 +18,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="x11-libs/gtk+:2
-	net-libs/gupnp"
+	net-libs/gssdp:0/3
+	net-libs/gupnp:0/4"
 DEPEND="${RDEPEND}
 	virtual/pkgconfig
 	sys-devel/gettext"
@@ -28,9 +29,7 @@ PATCHES=(
 )
 
 src_configure() {
-	econf \
-		--disable-dependency-tracking \
-		--disable-gtk-doc
+	econf --disable-gtk-doc
 }
 
 src_install() {

@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -42,7 +42,7 @@ src_configure() {
 	autotools-utils_src_configure
 }
 
-src_install () {
+src_install() {
 	autotools-utils_src_install
 	dodoc README* Changes* docs/changes.txt docs/cfitsio.doc
 	use fortran && dodoc docs/fitsio.doc

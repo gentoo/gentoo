@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -31,7 +31,6 @@ multilib_src_configure() {
 	append-lfs-flags #328875
 
 	ECONF_SOURCE="${S}" econf \
-		--disable-dependency-tracking \
 		$(use_enable debug) \
 		$(use_enable static-libs static) \
 		$(use_enable oss)

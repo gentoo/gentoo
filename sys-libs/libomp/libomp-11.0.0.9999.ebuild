@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python{2_7,3_{6,7}} )
+PYTHON_COMPAT=( python3_{6,7,8} )
 inherit cmake-multilib linux-info llvm.org multiprocessing python-any-r1
 
 DESCRIPTION="OpenMP runtime library for LLVM/clang compiler"
@@ -23,7 +23,7 @@ RDEPEND="
 	hwloc? ( sys-apps/hwloc:0=[${MULTILIB_USEDEP}] )
 	offload? (
 		virtual/libelf:=[${MULTILIB_USEDEP}]
-		virtual/libffi:=[${MULTILIB_USEDEP}]
+		dev-libs/libffi:=[${MULTILIB_USEDEP}]
 		cuda? ( dev-util/nvidia-cuda-toolkit:= )
 	)"
 # tests:

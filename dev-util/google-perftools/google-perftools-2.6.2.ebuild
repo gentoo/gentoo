@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,7 +8,7 @@ inherit toolchain-funcs flag-o-matic vcs-snapshot autotools multilib-minimal
 
 DESCRIPTION="Fast, multi-threaded malloc() and nifty performance analysis tools"
 HOMEPAGE="https://github.com/gperftools/gperftools"
-SRC_URI="https://github.com/gperftools/gperftools/tarball/${MY_P} -> ${MY_P}.tar.gz"
+SRC_URI="https://github.com/gperftools/gperftools/archive/${MY_P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0/4"
@@ -52,8 +52,6 @@ multilib_src_configure() {
 	append-flags -fno-strict-aliasing -fno-omit-frame-pointer
 
 	econf \
-		--htmldir=${EPREFIX}/usr/share/doc/${PF}/html \
-		--docdir=${EPREFIX}/usr/share/doc/${PF} \
 		--enable-shared \
 		$(use_enable static-libs static) \
 		$(use_enable debug debugalloc) \

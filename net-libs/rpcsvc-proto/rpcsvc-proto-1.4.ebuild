@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,12 +16,12 @@ IUSE=""
 
 RDEPEND="!<sys-libs/glibc-2.26"
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }
 
-src_install(){
+src_install() {
 	default
 
 	# provided by sys-fs/quota[rpc]

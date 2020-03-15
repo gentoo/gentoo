@@ -17,7 +17,6 @@
 		<flag name="gcode">gcode file export</flag>
 		<flag name="gsvit">GSvit file export</flag>
 		<flag name="tk">Build tcl/tk graphical QFP footprint generator</flag>
-		<flag name="xrender">Translucent PCB display for Motif/Lesstif GUI</flag>
 		<flag name="m4lib-png">Enable creating png previews for the m4 library</flag>
 		<flag name="toporouter">Build toporouter</flag>
 	</use>

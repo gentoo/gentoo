@@ -17,7 +17,6 @@ DEPEND="${RDEPEND}"
 
 src_configure() {
 	econf \
-		--disable-dependency-tracking \
 		--disable-demos \
 		--disable-unittest
 }

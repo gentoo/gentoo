@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -120,8 +120,8 @@ src_install() {
 
 	if use doc ; then
 		docinto html
-		dodoc -r "${WORKDIR}"/help/manual/{m,man,manual}
-		dodoc "${WORKDIR}"/help/manual/{favicon.ico,index.html,quick_help.html}
+		dodoc -r "${WORKDIR}"/manual/{m,man,manual}
+		dodoc "${WORKDIR}"/manual/{favicon.ico,index.html,quick_help.html}
 		dosym ../../doc/${PF}/html /usr/share/${PN}/help/manual
 	fi
 }

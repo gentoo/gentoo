@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
 
-inherit eutils versionator
+inherit eutils toolchain-funcs versionator
 
 # The version number here has been added by Gentoo since upstream does
 # not do any versioning.  It is the latest date of files inside

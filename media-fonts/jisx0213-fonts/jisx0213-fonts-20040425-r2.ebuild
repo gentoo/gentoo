@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -33,7 +33,7 @@ FONT_S="${S}"
 FONT_PN="${PN/-fonts/}"
 FONTDIR="/usr/share/fonts/${FONT_PN}"
 
-pkg_postinst(){
+pkg_postinst() {
 	if use X; then
 		elog "You need you add following line into 'Section \"Files\"' in"
 		elog "XF86Config and reboot X Window System, to use these fonts."

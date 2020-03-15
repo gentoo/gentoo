@@ -23,7 +23,7 @@ IUSE=""
 
 RDEPEND="dev-python/python-poppler-qt5[${PYTHON_USEDEP}]
 	dev-python/PyPDF2[${PYTHON_USEDEP}]
-	dev-python/PyQt5[${PYTHON_USEDEP}]"
+	dev-python/PyQt5[${PYTHON_USEDEP},gui,widgets]"
 
 src_install() {
 	distutils-r1_src_install

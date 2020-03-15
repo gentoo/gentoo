@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -20,7 +20,7 @@ src_configure() {
 	econf $(use_with tcpd tcp-wrappers) --with-uucp-locking
 }
 
-src_install () {
+src_install() {
 	default
 
 	insinto /etc

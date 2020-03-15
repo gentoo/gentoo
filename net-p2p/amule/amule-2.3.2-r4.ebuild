@@ -45,6 +45,7 @@ PATCHES=(
 	"${FILESDIR}/${PN}-2.3.2-fix-crash-when-shared-files-changed.patch"
 	"${FILESDIR}/${PN}-2.3.2-libupnp-1.8.patch"
 	"${FILESDIR}/${PN}-2.3.2-libupnp-1.6.patch"
+	"${FILESDIR}/${PN}-2.3.2-Fixed-compilation-with-newer-bfd.patch"
 )
 
 pkg_setup() {

@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 PYTHON_REQ_USE="xml(+),sqlite?"
 
 inherit eutils distutils-r1 linux-info prefix
@@ -61,7 +61,7 @@ pkg_setup() {
 	layman_check_kernel_config
 }
 
-python_prepare_all()  {
+python_prepare_all() {
 	python_setup
 	esetup.py setup_plugins
 	distutils-r1_python_prepare_all

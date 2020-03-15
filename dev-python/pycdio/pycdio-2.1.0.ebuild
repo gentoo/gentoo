@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ python_prepare_all() {
 	distutils-r1_python_prepare_all
 }
 
-python_install_all(){
+python_install_all() {
 	distutils-r1_python_install_all
 	if use examples; then
 		docinto examples

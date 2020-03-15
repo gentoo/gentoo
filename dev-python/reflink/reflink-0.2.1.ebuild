@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
-DESCRIPTION="RFC-compliant FQDN validation and manipulation for Python"
+DESCRIPTION="Python wrapper around the reflink system calls"
 HOMEPAGE="https://gitlab.com/rubdos/pyreflink"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 

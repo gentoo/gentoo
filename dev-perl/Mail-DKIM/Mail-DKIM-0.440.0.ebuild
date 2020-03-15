@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -31,7 +31,7 @@ DEPEND="${RDEPEND}
 "
 mydoc=("doc/*.txt" "HACKING.DKIM")
 
-src_test(){
+src_test() {
 	# disable online tests
 	if ! has network ${DIST_TEST_OVERRIDE:-${DIST_TEST:-do parallel}}; then
 		einfo "Removing network tests w/o DIST_TEST_OVERRIDE=~network"

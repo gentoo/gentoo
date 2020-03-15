@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -6,7 +6,7 @@ GCONF_DEBUG="no"
 VALA_MIN_API_VERSION="0.14"
 VALA_USE_DEPEND="vapigen"
 
-inherit autotools eutils xdg-utils vala readme.gentoo-r1
+inherit autotools eutils ltprune xdg-utils vala readme.gentoo-r1
 
 DESCRIPTION="Set of GObject and Gtk objects for connecting to Spice servers and a client GUI"
 HOMEPAGE="https://www.spice-space.org https://cgit.freedesktop.org/spice/spice-gtk/"

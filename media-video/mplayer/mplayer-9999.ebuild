@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -12,7 +12,7 @@ inherit toolchain-funcs flag-o-matic ${SVN_ECLASS}
 IUSE="cpu_flags_x86_3dnow cpu_flags_x86_3dnowext a52 aalib +alsa altivec aqua bidi bl bluray
 bs2b cddb +cdio cdparanoia cpudetection debug dga
 doc dts dv dvb +dvd +dvdnav +enca +encode faac faad fbcon
-ftp gif ggi gsm +iconv ipv6 jack joystick jpeg kernel_linux ladspa
+ftp ggi gsm +iconv ipv6 jack joystick jpeg kernel_linux ladspa
 +libass libcaca libmpeg2 lirc live lzo mad md5sum +cpu_flags_x86_mmx cpu_flags_x86_mmxext mng mp3 nas
 +network nut openal opengl +osdmenu oss png pnm pulseaudio pvr
 radio rar rtc rtmp samba selinux +shm sdl speex cpu_flags_x86_sse cpu_flags_x86_sse2 cpu_flags_x86_ssse3
@@ -55,6 +55,8 @@ X_RDEPS="
 "
 # Rar: althrought -gpl version is nice, it cant do most functions normal rars can
 #	nemesi? ( net-libs/libnemesi )
+# mplayer relies on private APIs in giflib that have been removed:
+#   https://sourceforge.net/p/giflib/bugs/132/
 RDEPEND+="
 	sys-libs/ncurses:0=
 	app-arch/bzip2
@@ -84,7 +86,6 @@ RDEPEND+="
 	enca? ( app-i18n/enca )
 	faad? ( media-libs/faad2 )
 	ggi? ( media-libs/libggi media-libs/libggiwmh )
-	gif? ( media-libs/giflib:0= )
 	gsm? ( media-sound/gsm )
 	iconv? ( virtual/libiconv )
 	jack? ( virtual/jack )
@@ -363,6 +364,7 @@ src_configure() {
 	##########
 	myconf+=" --disable-musepack" # Use internal musepack codecs for SV7 and SV8 support
 	myconf+=" --disable-libmpeg2-internal" # always use system media-libs/libmpeg2
+	myconf+=" --disable-gif" # relies on to-be-removed giflib internals https://sourceforge.net/p/giflib/bugs/132/
 	use dts || myconf+=" --disable-libdca"
 	if ! use mp3; then
 		myconf+="
@@ -375,7 +377,7 @@ src_configure() {
 		use ${i} || myconf+=" --disable-lib${i}"
 	done
 
-	uses="faad gif jpeg libmpeg2 live mad mng png pnm speex tga theora tremor"
+	uses="faad jpeg libmpeg2 live mad mng png pnm speex tga theora tremor"
 	for i in ${uses}; do
 		use ${i} || myconf+=" --disable-${i}"
 	done

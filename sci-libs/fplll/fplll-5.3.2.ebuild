@@ -23,7 +23,7 @@ src_configure() {
 	econf $(use_enable static-libs static)
 }
 
-src_install(){
+src_install() {
 	default
 	find "${ED}" -name '*.la' -delete || die
 }

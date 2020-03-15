@@ -18,7 +18,7 @@ SRC_URI="https://twistedmatrix.com/Releases/${TWISTED_PN}"
 SRC_URI="${SRC_URI}/${TWISTED_RELEASE}/${TWISTED_P}.tar.bz2
 	https://dev.gentoo.org/~mgorny/dist/twisted-regen-cache.gz"
 
-KEYWORDS="amd64 ~arm arm64 ~mips ~s390 ~sh ~sparc ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha amd64 arm arm64 ~mips ~s390 ~sh sparc ~amd64-linux ~x86-linux"
 
 LICENSE="MIT"
 SLOT="0"
@@ -127,7 +127,7 @@ python_test() {
 python_install() {
 	distutils-r1_python_install
 
-	cd "${D%}$(python_get_sitedir)" || die
+	cd "${D}$(python_get_sitedir)" || die
 
 	# own the dropin.cache so we don't leave orphans
 	touch twisted/plugins/dropin.cache || die
@@ -162,10 +162,10 @@ pkg_postinst() {
 }
 
 python_postrm() {
-	rm -f "${ROOT%}$(python_get_sitedir)/twisted/plugins/dropin.cache" || die
+	rm -f "${ROOT}$(python_get_sitedir)/twisted/plugins/dropin.cache" || die
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	# if we're removing the last version, remove the cache file
 	if [[ ! ${REPLACING_VERSIONS} ]]; then
 		python_foreach_impl python_postrm

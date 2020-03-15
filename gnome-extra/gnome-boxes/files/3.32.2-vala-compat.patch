@@ -1,0 +1,28 @@
+From 8aaf59870b9972f228e073a674b254b1e4cda2de Mon Sep 17 00:00:00 2001
+From: Michael Catanzaro <mcatanzaro@gnome.org>
+Date: Mon, 28 Oct 2019 10:36:20 -0500
+Subject: [PATCH] app-window: Fix build with vala master
+
+Cherry-picked from a1522749a9651915132fc1171d31a1c22df423ab
+
+See #431
+---
+ src/app-window.vala | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/app-window.vala b/src/app-window.vala
+index 8a1ebb6a..82a9f834 100644
+--- a/src/app-window.vala
++++ b/src/app-window.vala
+@@ -438,7 +438,7 @@ public bool on_key_pressed (Widget widget, Gdk.EventKey event) {
+ 
+             return true;
+         } else if (event.keyval == Gdk.Key.A &&
+-                   (event.state & default_modifiers) == Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK) {
++                   (event.state & default_modifiers) == (Gdk.ModifierType.CONTROL_MASK | Gdk.ModifierType.SHIFT_MASK)) {
+             foreach_view ((view) => { view.unselect_all (); });
+ 
+             return true;
+-- 
+2.20.1
+

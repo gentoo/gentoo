@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -32,8 +32,7 @@ REQUIRED_USE="
 # Disable test phase when USE="-test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=""
-DEPEND="abi_x86_32? ( dev-lang/yasm )
+BDEPEND="abi_x86_32? ( dev-lang/yasm )
 	abi_x86_64? ( dev-lang/yasm )
 	abi_x86_x32? ( dev-lang/yasm )
 	x86-fbsd? ( dev-lang/yasm )
@@ -53,10 +52,10 @@ src_configure() {
 	# https://bugs.gentoo.org/show_bug.cgi?id=384585
 	# https://bugs.gentoo.org/show_bug.cgi?id=465988
 	# copied from php-pear-r1.eclass
-	addpredict /usr/share/snmp/mibs/.index
-	addpredict /var/lib/net-snmp/
-	addpredict /var/lib/net-snmp/mib_indexes
-	addpredict /session_mm_cli0.sem
+	addpredict /usr/share/snmp/mibs/.index #nowarn
+	addpredict /var/lib/net-snmp/ #nowarn
+	addpredict /var/lib/net-snmp/mib_indexes #nowarn
+	addpredict /session_mm_cli0.sem #nowarn
 	multilib-minimal_src_configure
 }
 

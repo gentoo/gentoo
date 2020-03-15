@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -68,7 +68,6 @@ src_configure() {
 		--disable-Werror \
 		--disable-static \
 		--disable-avahi-tests \
-		--docdir=/usr/share/doc/${PF} \
 		--with-tls=$(usex gnutls gnutls openssl)
 		#$(use_enable test avahi-tests)
 

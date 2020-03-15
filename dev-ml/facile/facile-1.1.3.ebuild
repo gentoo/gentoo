@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,7 +37,7 @@ src_prepare() {
 	fi
 }
 
-src_configure(){
+src_configure() {
 	# This is a custom configure script and it does not support standard options
 	./configure --faciledir "${D}"$(ocamlc -where)/facile/ || die
 }
@@ -46,7 +46,7 @@ src_test() {
 	emake check
 }
 
-src_install(){
+src_install() {
 	dodir $(ocamlc -where)
 	emake install
 	einstalldocs

@@ -27,10 +27,12 @@ CDEPEND="
 	>=dev-lang/tk-8.6.1
 	dev-lang/perl
 	dev-libs/expat
-	|| (
-		dev-python/numpy-python2[${PYTHON_USEDEP}]
-		dev-python/numpy[${PYTHON_USEDEP}]
-	)
+	$(python_gen_cond_dep '
+		|| (
+			dev-python/numpy-python2[${PYTHON_MULTI_USEDEP}]
+			dev-python/numpy[${PYTHON_MULTI_USEDEP}]
+		)
+	')
 	sci-libs/netcdf:0=
 	virtual/opengl
 	>=x11-libs/fltk-1.1.10-r2:1

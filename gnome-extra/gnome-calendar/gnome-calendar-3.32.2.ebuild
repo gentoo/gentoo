@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,6 +17,7 @@ DEPEND="
 	>=dev-libs/libical-1.0.1:0=
 	>=gnome-base/gsettings-desktop-schemas-3.21.2
 	>=gnome-extra/evolution-data-server-3.17.1:=[gtk]
+	<gnome-extra/evolution-data-server-3.33
 	net-libs/libsoup:2.4
 	>=dev-libs/libdazzle-3.26.1
 	>=dev-libs/glib-2.58.0:2

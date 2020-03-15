@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils toolchain-funcs multilib multilib-minimal usr-ldscript
+inherit eutils toolchain-funcs ltprune multilib multilib-minimal usr-ldscript
 
 DESCRIPTION="XFS data management API library"
 HOMEPAGE="https://xfs.wiki.kernel.org/"

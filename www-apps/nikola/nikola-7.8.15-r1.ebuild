@@ -40,11 +40,11 @@ RDEPEND="${DEPEND}
 	dev-python/cloudpickle[${PYTHON_USEDEP}]
 	assets? ( >=dev-python/webassets-0.10.1[${PYTHON_USEDEP}] )
 	charts? ( >=dev-python/pygal-2.0.1[${PYTHON_USEDEP}] )
-	ghpages? ( >=dev-python/ghp-import-0.4.1[${PYTHON_USEDEP}] )
+	ghpages? ( >=dev-vcs/ghp-import-0.4.1[${PYTHON_USEDEP}] )
 	hyphenation? ( >=dev-python/pyphen-0.9.1[${PYTHON_USEDEP}] )
 	ipython? ( >=dev-python/ipython-2.0.0[notebook,${PYTHON_USEDEP}] )
 	jinja? ( >=dev-python/jinja-2.7.2[${PYTHON_USEDEP}] )
-	watchdog? ( ~dev-python/watchdog-0.8.3[${PYTHON_USEDEP}] )
+	watchdog? ( >=dev-python/watchdog-0.8.3[${PYTHON_USEDEP}] )
 	webmedia? ( >=dev-python/micawber-0.3.0[${PYTHON_USEDEP}] )
 	websocket? ( ~dev-python/ws4py-0.3.4[${PYTHON_USEDEP}] )"
 #	typography? ( >=dev-python/typogrify-2.0.4[${PYTHON_USEDEP}] ) # needs smartypants

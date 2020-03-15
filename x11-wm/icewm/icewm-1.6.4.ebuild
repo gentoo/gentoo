@@ -123,7 +123,7 @@ src_configure() {
 	sed -i "s:ungif:gif:" src/Makefile || die "libungif fix failed"
 }
 
-src_install(){
+src_install() {
 	local DOCS=( AUTHORS ChangeLog NEWS README.md TODO VERSION )
 
 	default

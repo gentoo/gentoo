@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -19,4 +19,5 @@ RDEPEND=""
 RESTRICT="bindist mirror"
 
 S="${WORKDIR}"
+FONT_S="${S}"
 FONT_SUFFIX="ttf"

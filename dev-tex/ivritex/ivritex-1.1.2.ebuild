@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,7 +18,7 @@ SLOT="0"
 IUSE=""
 DEPEND=""
 
-src_install () {
+src_install() {
 	export VARTEXFONTS="${T}/fonts"
 
 	make TEX_ROOT="${D}"/usr/share/texmf install || die "make failed"

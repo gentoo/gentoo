@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -35,7 +35,7 @@ src_prepare() {
 	epatch "${FILESDIR}/${P}-tcl86.patch"
 }
 
-src_install () {
+src_install() {
 	cd ../.. || die
 
 	dobin bin/${PN}

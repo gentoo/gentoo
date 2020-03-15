@@ -1,11 +1,11 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
 FORTRAN_NEEDED=fortran
 
-inherit fortran-2 multilib-minimal
+inherit fortran-2 ltprune multilib-minimal
 
 DESCRIPTION="C and Fortran library for manipulating FITS files"
 HOMEPAGE="https://heasarc.gsfc.nasa.gov/docs/software/fitsio/fitsio.html"

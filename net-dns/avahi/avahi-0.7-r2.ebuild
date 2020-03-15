@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,7 +6,7 @@ EAPI="6"
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="gdbm"
 
-inherit autotools eutils flag-o-matic multilib multilib-minimal mono-env python-r1 systemd user
+inherit autotools eutils flag-o-matic ltprune multilib multilib-minimal mono-env python-r1 systemd user
 
 DESCRIPTION="System which facilitates service discovery on a local network"
 HOMEPAGE="http://avahi.org/"

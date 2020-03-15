@@ -21,7 +21,7 @@ PATCHES=(
 )
 S="${WORKDIR}/${P/_p*}-001114"
 
-src_prepare () {
+src_prepare() {
 	eapply "${WORKDIR}"/${PN}_${PV/_p*}-$(ver_cut 5).$(ver_cut 7).diff
 	local patch
 	for patch in $(< debian/patches/00list); do
@@ -41,7 +41,7 @@ src_compile() {
 	emake CC=$(tc-getCC) CFLAGS="${CFLAGS}" LDFLAGS="${LDFLAGS}"
 }
 
-src_install () {
+src_install() {
 	dobin efax efix fax
 	doman efax.1 efix.1
 	newman fax.1 efax-fax.1 # Don't collide with net-dialup/mgetty, bug #429808

@@ -13,7 +13,7 @@ VIRTUALX_REQUIRED="test"
 inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="amd64 ~x86"
 fi
 
 DESCRIPTION="Integrated Development Environment, supporting KF5/Qt, C/C++ and much more"
@@ -95,7 +95,6 @@ RDEPEND="${COMMON_DEPEND}
 	>=sys-devel/gdb-7.0[python]
 	reviewboard? ( >=kde-apps/ktp-accounts-kcm-${KDE_APPS_MINIMAL}:5 )
 	!dev-util/kdevelop-clang-tidy
-	!dev-util/kdevplatform
 "
 
 RESTRICT+=" test"

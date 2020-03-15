@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,9 +29,10 @@ BUILD_TARGETS="default"
 PATCHES=(
 	"${FILESDIR}/${P}-linux-4.12.patch"
 	"${FILESDIR}/${P}-linux-4.14.patch"
+	"${FILESDIR}/${P}-linux-5.6.patch"
 )
 
-src_compile(){
+src_compile() {
 	BUILD_PARAMS="KDIR=${KV_OUT_DIR} M=${S}"
 	linux-mod_src_compile
 }

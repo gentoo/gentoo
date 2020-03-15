@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -21,7 +21,7 @@ S=${WORKDIR}/${MY_P}
 
 PATCHES=( "${FILESDIR}"/${P}-amd64-alpha.patch )
 
-src_prepare(){
+src_prepare() {
 	sed -i 's/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g' configure.ac || die
 	autotools-utils_src_prepare
 }

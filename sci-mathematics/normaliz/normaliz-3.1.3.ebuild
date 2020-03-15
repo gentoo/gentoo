@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,12 +26,12 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MYP}
 
-src_prepare () {
+src_prepare() {
 	./bootstrap.sh || die
 	default
 }
 
-src_configure () {
+src_configure() {
 	if use openmp && ! tc-has-openmp ; then
 		die "You requested openmp, but your toolchain does not support it."
 	fi

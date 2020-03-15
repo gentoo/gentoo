@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -56,8 +56,7 @@ src_configure() {
 		$(use_enable selinux) \
 		$(use_enable static-libs static) \
 		$(use_with readline) \
-		--disable-rpath \
-		--disable-silent-rules
+		--disable-rpath
 }
 
 DOCS=( AUTHORS BUGS ChangeLog NEWS README THANKS TODO doc/{API,FAT,USER.jp} )

@@ -46,7 +46,7 @@ src_test() {
 	emake test3
 }
 
-src_install () {
+src_install() {
 	dobin \
 		bin/attack \
 		bin/autosketches4 \

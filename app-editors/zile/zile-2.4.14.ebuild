@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -28,7 +28,6 @@ QA_AM_MAINTAINER_MODE=".*help2man.*" #450278
 src_configure() {
 	# --without-emacs to suppress tests for GNU Emacs #630652
 	econf \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		--without-emacs \
 		--disable-valgrind-tests \
 		$(use_enable acl) \

@@ -9,7 +9,7 @@
 # Joerg Bornkessel <hd_brummy@gentoo.org>
 # Christian Ruppert <idl0r@gentoo.org>
 # (undisclosed contributors)
-# @SUPPORTED_EAPIS: 4 5 6 7
+# @SUPPORTED_EAPIS: 5 6 7
 # @BLURB: common vdr plugin ebuild functions
 # @DESCRIPTION:
 # Eclass for easing maintenance of vdr plugin ebuilds
@@ -78,7 +78,7 @@
 
 # Applying your own local/user patches:
 # This is done by using the
-# (EAPI = 4,5) epatch_user() function of the eutils.eclass,
+# (EAPI = 5) epatch_user() function of the eutils.eclass,
 # (EAPI = 6,7) eapply_user function integrated in EAPI = 6.
 # Simply add your patches into one of these directories:
 # /etc/portage/patches/<CATEGORY>/<PF|P|PN>/
@@ -87,12 +87,12 @@
 #
 # For more details about it please take a look at the eutils.class.
 
-[[ ${EAPI} == [45] ]] && inherit multilib
-[[ ${EAPI} == [456] ]] && inherit eutils
+[[ ${EAPI} == [5] ]] && inherit multilib
+[[ ${EAPI} == [56] ]] && inherit eutils
 inherit flag-o-matic toolchain-funcs unpacker
 
 case ${EAPI:-0} in
-	4|5|6|7)
+	5|6|7)
 	;;
 	*) die "EAPI ${EAPI} unsupported."
 	;;
@@ -355,10 +355,7 @@ vdr-plugin-2_pkg_setup() {
 
 	# Plugins need to be compiled with position independent code, otherwise linking
 	# VDR against it will fail
-	# depricated if fi, as we have only >=vdr-2 in the tree, fix me later...
-	if has_version ">=media-video/vdr-1.7.13"; then
-		append-cxxflags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
-	fi
+	append-cxxflags -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -D_LARGEFILE64_SOURCE
 
 	# Where should the plugins live in the filesystem
 	VDR_PLUGIN_DIR=$(pkg-config --variable=libdir vdr)
@@ -418,7 +415,7 @@ vdr-plugin-2_src_util() {
 			;;
 		add_local_patch)
 			cd "${S}" || die "Could not change to plugin-source-directory (src_util)"
-			if [[ ${EAPI} != [45] ]]; then
+			if [[ ${EAPI} != [5] ]]; then
 				eapply_user
 			else
 				epatch_user
@@ -465,8 +462,8 @@ vdr-plugin-2_src_prepare() {
 		die "vdr-plugin-2_src_prepare not called!"
 	fi
 
-	[[ ${EAPI} == [45] ]] && [[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
-	[[ ${EAPI} != [45] ]] && [[ ${PATCHES[@]} ]] && eapply "${PATCHES[@]}"
+	[[ ${EAPI} == [5] ]] && [[ ${PATCHES[@]} ]] && epatch "${PATCHES[@]}"
+	[[ ${EAPI} != [5] ]] && [[ ${PATCHES[@]} ]] && eapply "${PATCHES[@]}"
 
 	debug-print "$FUNCNAME: applying user patches"
 

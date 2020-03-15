@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -223,7 +223,7 @@ src_prepare() {
 	java-pkg-opt-2_src_prepare
 }
 
-src_configure(){
+src_configure() {
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 

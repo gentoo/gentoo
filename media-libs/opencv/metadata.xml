@@ -17,6 +17,7 @@ Face Recognition; Gesture Recognition; Motion Tracking, Ego Motion, Motion Under
 		<flag name="eigen">Enable usage of <pkg>dev-cpp/eigen</pkg> for computations</flag>
 		<flag name="features2d">Enable features2d module</flag>
 		<flag name="gdal">Enable support for sci-libs/gdal library</flag>
+		<flag name="gtk3">Enable x11-libs/gtk+:3 support</flag>
 		<flag restrict="&gt;=media-libs/opencv-4.1.2" name="opencvapps">Enable compilation with opencvapps</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="gflags">Use Google's C++ argument parsing library</flag>
 		<flag restrict="&gt;=media-libs/opencv-3.1.0" name="glog">Use Google's C++ loggin library</flag>

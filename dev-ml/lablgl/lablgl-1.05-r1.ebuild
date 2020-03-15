@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -69,7 +69,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	# Makefile do not use mkdir so the library is not installed
 	# but copied as a 'stublibs' file.
 	dodir /usr/$(get_libdir)/ocaml/stublibs

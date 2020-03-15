@@ -1,4 +1,4 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -31,8 +31,7 @@ RDEPEND="dev-libs/keybinder:3[introspection]
 		app-misc/media-player-info
 		dev-python/dbus-python[${PYTHON_USEDEP}]
 		)
-	udev? ( virtual/udev )
-	!media-plugins/quodlibet-plugins"
+	udev? ( virtual/udev )"
 DEPEND="dev-util/intltool"
 
 S="${WORKDIR}/${PN}-release-${PV}/${PN}"

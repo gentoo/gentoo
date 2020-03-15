@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -80,7 +80,7 @@ src_configure() {
 		EMACS=no
 }
 
-src_compile()  {
+src_compile() {
 	emake
 
 	# Above we have disabled the build system's Emacs support;

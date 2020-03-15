@@ -16,6 +16,7 @@ for the FNA project, including XAudio2, X3DAudio, XAPO, and XACT3.
 Project Website: http://fna-xna.github.io/
 	</longdescription>
 	<use>
+		<flag name="dumpvoices">FAudio dumps buffer data to individual files with RIFF/XWMA headers, usable with players like ffplay/testxwma.</flag>
 		<flag name="ffmpeg">FAudio has optional support for decoding xWMA resources using FFmpeg, requiring:
 			<pkg>media-video/ffmpeg</pkg> (note: this feature is not supported by <pkg>media-video/libav</pkg>).</flag>
 		<flag name="xnasong">Build support for optional XNG_SONG component (note: this not required by

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils multilib-minimal
+inherit eutils ltprune multilib-minimal
 
 DESCRIPTION="An optimised MPEG Audio Layer 2 (MP2) encoder"
 HOMEPAGE="http://www.twolame.org"

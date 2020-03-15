@@ -1,11 +1,11 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 
 [[ "${PV}" = "9999" ]] && inherit git-r3
-inherit elisp-common autotools python-single-r1 xdg-utils
+inherit elisp-common autotools python-single-r1 toolchain-funcs xdg-utils
 
 if [[ "${PV}" = "9999" ]]; then
 	EGIT_REPO_URI="git://git.sv.gnu.org/lilypond.git"
@@ -122,7 +122,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" vimdir=/usr/share/vim/vimfiles install
 
 	# remove elisp files since they are in the wrong directory

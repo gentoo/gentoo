@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -28,7 +28,7 @@ src_configure() {
 	econf --program-transform-name="s/^x/x11/"
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	einfo "To avoid collision with glibc (/usr/bin/xtrace)"
 	einfo "binary was renamed to x11trace, as suggested by author"
 }

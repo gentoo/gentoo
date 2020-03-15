@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ DEPEND="${RDEPEND}"
 
 DOCS=( BLURB TODO CHANGELOG )
 
-src_install () {
+src_install() {
 	python_newscript queue_repair.py queue-repair.py
 	dosym queue-repair.py /usr/bin/queue-repair
 	einstalldocs

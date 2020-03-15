@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -69,7 +69,7 @@ src_compile() {
 		"LIBDIR=$(get_libdir)"
 }
 
-src_install () {
+src_install() {
 	dosbin hping3
 	dosym /usr/sbin/hping3 /usr/sbin/hping
 	dosym /usr/sbin/hping3 /usr/sbin/hping2

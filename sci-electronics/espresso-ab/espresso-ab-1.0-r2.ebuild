@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -16,7 +16,7 @@ IUSE=""
 
 DOCS="README"
 
-src_configure(){
+src_configure() {
 	append-cflags "-std=gnu89"
 	default
 }

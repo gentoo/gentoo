@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -18,7 +18,7 @@ S="${WORKDIR}/${MY_P}"
 
 LICENSE="PSF-2"
 SLOT="${PYVER}"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~m68k ~mips ppc ppc64 s390 ~sh sparc x86"
 IUSE="-berkdb bluetooth build elibc_uclibc examples gdbm hardened ipv6 libressl +ncurses +readline sqlite +ssl +threads tk +wide-unicode wininst +xml"
 
 # Do not add a dependency on dev-lang/python to this ebuild.
@@ -27,8 +27,9 @@ IUSE="-berkdb bluetooth build elibc_uclibc examples gdbm hardened ipv6 libressl 
 # patchset. See bug 447752.
 
 RDEPEND="app-arch/bzip2:=
+	dev-libs/libffi:=
 	>=sys-libs/zlib-1.1.3:=
-	virtual/libffi:=
+	virtual/libcrypt:=
 	virtual/libintl
 	berkdb? ( || (
 		sys-libs/db:5.3

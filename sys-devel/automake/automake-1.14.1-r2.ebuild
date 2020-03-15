@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -57,10 +57,6 @@ src_prepare() {
 	if ! has_version sys-apps/texinfo ; then
 		touch doc/{stamp-vti,version.texi,automake.info} || die
 	fi
-}
-
-src_configure() {
-	econf --docdir="\$(datarootdir)/doc/${PF}"
 }
 
 # slot the info pages.  do this w/out munging the source so we don't have

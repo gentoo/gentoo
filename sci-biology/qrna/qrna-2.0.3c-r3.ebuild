@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -12,7 +12,6 @@ SRC_URI="mirror://gentoo/${P}.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
 
 RDEPEND="
 	dev-lang/perl
@@ -26,13 +25,11 @@ PATCHES=(
 
 src_prepare() {
 	default
-	sed \
-		-e "s:^CC.*:CC = $(tc-getCC):" \
-		-e "/^AR/s:ar:$(tc-getAR):g" \
-		-e "/^RANLIB/s:ranlib:$(tc-getRANLIB):g" \
-		-e "/CFLAGS/s:=.*$:= ${CFLAGS}:" \
-		-i {src,squid,squid02}/Makefile || die
 	rm -v squid*/*.a || die
+}
+
+src_configure() {
+	tc-export AR CC RANLIB
 }
 
 src_compile() {

@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils user systemd bash-completion-r1 autotools
+inherit eutils user systemd bash-completion-r1 autotools ltprune
 
 DESCRIPTION="Implementation of IEEE 802.1ab (LLDP)"
 HOMEPAGE="https://vincentbernat.github.com/lldpd/"
@@ -62,7 +62,6 @@ src_configure() {
 		--with-privsep-chroot=/run/${PN} \
 		--with-lldpd-ctl-socket=/run/${PN}.socket \
 		--with-lldpd-pid-file=/run/${PN}.pid \
-		--docdir=/usr/share/doc/${PF} \
 		$(use_enable cdp) \
 		$(use_enable doc doxygen-man) \
 		$(use_enable doc doxygen-pdf) \

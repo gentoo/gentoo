@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -60,7 +60,6 @@ src_configure() {
 
 	# python bindings are only for GTK+-2.x
 	econf \
-		--disable-silent-rules \
 		--disable-static \
 		$(use_enable gtk) \
 		$(use_enable introspection) \

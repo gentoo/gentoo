@@ -1,4 +1,4 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -40,7 +40,7 @@ src_configure() {
 		--disable-tests
 }
 
-src_install () {
+src_install() {
 	emake DESTDIR="${D}" install
 	dodoc README  NEWS
 }

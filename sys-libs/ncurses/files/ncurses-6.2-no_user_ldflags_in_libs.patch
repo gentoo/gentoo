@@ -1,0 +1,40 @@
+From be554be06475b36da2f69aabfd873ad55f7ef95c Mon Sep 17 00:00:00 2001
+From: Lars Wendler <polynomial-c@gentoo.org>
+Date: Thu, 13 Feb 2020 11:51:09 +0100
+Subject: [PATCH] Don't bleed user LDFLAGS into Libs
+
+Signed-off-by: Lars Wendler <polynomial-c@gentoo.org>
+---
+ misc/gen-pkgconfig.in  | 2 +-
+ misc/ncurses-config.in | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/misc/gen-pkgconfig.in b/misc/gen-pkgconfig.in
+index 8f00b824..009d2156 100644
+--- a/misc/gen-pkgconfig.in
++++ b/misc/gen-pkgconfig.in
+@@ -80,7 +80,7 @@ if [ "$includedir" != "/usr/include" ]; then
+ fi
+ 
+ lib_flags=
+-for opt in -L$libdir @LDFLAGS@ @EXTRA_LDFLAGS@ @LIBS@
++for opt in -L$libdir @LIBS@
+ do
+ 	case $opt in
+ 	-l*) # LIBS is handled specially below
+diff --git a/misc/ncurses-config.in b/misc/ncurses-config.in
+index 7f8ba697..2f1915cd 100644
+--- a/misc/ncurses-config.in
++++ b/misc/ncurses-config.in
+@@ -101,7 +101,7 @@ fi
+ # There is no portable way to find the list of standard library directories. 
+ # Require a POSIX shell anyway, to keep this simple.
+ lib_flags=
+-for opt in -L$libdir @LDFLAGS@ @EXTRA_LDFLAGS@ $LIBS
++for opt in -L$libdir $LIBS
+ do
+ 	case $opt in
+ 	-specs*) # ignore linker specs-files which were used to build library
+-- 
+2.25.0
+

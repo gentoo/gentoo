@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -31,9 +31,9 @@ RDEPEND="
 	udev? ( virtual/udev )
 "
 
-src_compile () { :; }
+src_compile() { :; }
 
-src_install () {
+src_install() {
 	# Deploy udev USB rule and udev will autostart ReaR workflows in case a USB
 	# drive with the label 'REAR_000' is connected, which in turn is the
 	# default label when running the `rear format` command.

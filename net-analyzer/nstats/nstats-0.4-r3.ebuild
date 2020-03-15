@@ -27,7 +27,7 @@ PATCHES=(
 )
 DOCS=( BUGS doc/TODO doc/ChangeLog )
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }

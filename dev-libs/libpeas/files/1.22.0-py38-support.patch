@@ -1,0 +1,29 @@
+From 3571f4b23abbf5c63e38c82d24a1880fa440499e Mon Sep 17 00:00:00 2001
+From: Mart Raudsepp <mart@leio.tech>
+Date: Sat, 15 Feb 2020 23:23:09 +0200
+Subject: [PATCH] Fix python-3.8 compatibility
+
+---
+ configure.ac | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index bd561e2..d3d0073 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -442,7 +442,11 @@ else
+                 found_python3=yes
+                 PYTHON3_BIN="$PYTHON"
+                 PYTHON3_CFLAGS=`${PYTHON3_CONFIG} --includes`
+-                PYTHON3_LIBS=`${PYTHON3_CONFIG} --libs`
++                if $PYTHON3_CONFIG --embed >/dev/null 2>&1; then
++                    PYTHON3_LIBS=`${PYTHON3_CONFIG} --libs --embed`
++                else
++                    PYTHON3_LIBS=`${PYTHON3_CONFIG} --libs`
++                fi
+                 PYTHON3_LDFLAGS=`${PYTHON3_CONFIG} --ldflags`
+                 AC_SUBST(PYTHON3_BIN)
+                 AC_SUBST(PYTHON3_CFLAGS)
+-- 
+2.20.1
+

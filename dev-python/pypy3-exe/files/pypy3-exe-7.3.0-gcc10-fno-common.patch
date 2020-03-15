@@ -1,0 +1,25 @@
+From 455e1f635110df4bdc2981a3a0abf02e3d4d21b2 Mon Sep 17 00:00:00 2001
+From: Matti Picus <matti.picus@gmail.com>
+Date: Wed, 26 Feb 2020 13:06:29 +0200
+Subject: [PATCH] issue 3163: the constant is defined both in vmprof_common.h and vmprof_common.c
+
+---
+ rpython/rlib/rvmprof/src/shared/vmprof_common.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/rpython/rlib/rvmprof/src/shared/vmprof_common.h b/rpython/rlib/rvmprof/src/shared/vmprof_common.h
+index b52ee5f..1b2278b 100644
+--- a/rpython/rlib/rvmprof/src/shared/vmprof_common.h
++++ b/rpython/rlib/rvmprof/src/shared/vmprof_common.h
+@@ -89,7 +89,7 @@ int opened_profile(const char *interp_name, int memory, int proflines, int nativ
+    result is NULL. */
+ #if PY_MAJOR_VERSION >= 3 && !defined(_Py_atomic_load_relaxed)
+                              /* this was abruptly un-defined in 3.5.1 */
+-void *volatile _PyThreadState_Current;
++extern void *volatile _PyThreadState_Current;
+    /* XXX simple volatile access is assumed atomic */
+ #  define _Py_atomic_load_relaxed(pp)  (*(pp))
+ #endif
+--
+libgit2 0.26.0
+

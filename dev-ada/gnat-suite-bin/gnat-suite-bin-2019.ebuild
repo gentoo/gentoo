@@ -75,7 +75,7 @@ src_install() {
 	fperms 755 ${PREFIX}/libexec/gprbuild/gprlib
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	einfo "GNAT GPL is now installed. To launch it, you must put"
 	einfo "      ${PREFIX}/bin"
 	einfo "in front of your PATH environment variable. The following"

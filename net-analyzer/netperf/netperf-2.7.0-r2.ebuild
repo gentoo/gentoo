@@ -54,7 +54,7 @@ src_configure() {
 		$(use_enable sctp)
 }
 
-src_install () {
+src_install() {
 	default
 
 	# move netserver into sbin as we had it before 2.4 was released with its

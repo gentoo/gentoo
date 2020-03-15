@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -34,7 +34,7 @@ RESTRICT="!test? ( test ) libressl? ( test )"
 
 REQUIRED_USE="?? ( tcmalloc jemalloc ) static? ( yassl )"
 
-KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm arm64 ~hppa ia64 ~mips ppc ppc64 ~s390 ~sparc x86 ~amd64-linux ~x86-linux ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 
 # Shorten the path because the socket path length must be shorter than 107 chars
 # and we will run a mysql server during test phase
@@ -315,7 +315,7 @@ src_prepare() {
 	sed -i 's~ADD_SUBDIRECTORY(storage/ndb)~~' CMakeLists.txt || die
 }
 
-src_configure(){
+src_configure() {
 	# Bug #114895, bug #110149
 	filter-flags "-O" "-O[01]"
 

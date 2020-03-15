@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -37,7 +37,7 @@ PATCHES=(
 	"${FILESDIR}"/${PN}-underline.patch
 )
 
-src_prepare(){
+src_prepare() {
 	default
 	use Xaw3d && eapply "${FILESDIR}"/${PN}-Xaw3d.patch
 }
@@ -46,7 +46,7 @@ src_configure() {
 	xmkmf -a || die
 }
 
-src_compile(){
+src_compile() {
 	emake \
 		CC="$(tc-getCC)" \
 		CDEBUGFLAGS="${CFLAGS}" \
@@ -55,7 +55,7 @@ src_compile(){
 		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults"
 }
 
-src_install(){
+src_install() {
 	emake \
 		BINDIR="${EPREFIX}/usr/bin" \
 		XAPPLOADDIR="${EPREFIX}/usr/share/X11/app-defaults" \

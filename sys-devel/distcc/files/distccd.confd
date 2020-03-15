@@ -35,3 +35,8 @@ DISTCCD_OPTS="${DISTCCD_OPTS} --allow 192.168.0.0/24"
 # set this for niceness
 # Default is 15
 DISTCCD_OPTS="${DISTCCD_OPTS} -N 15"
+
+# By default distccd stores temporary files in /tmp
+# Make sure to give distcc user write permission to
+# the given TMPDIR
+#TMPDIR="/tmp"

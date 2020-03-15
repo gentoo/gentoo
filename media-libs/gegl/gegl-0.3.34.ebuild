@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python2_7 )
 # vala and introspection support is broken, bug #468208
 VALA_USE_DEPEND=vapigen
 
-inherit versionator gnome2-utils eutils autotools python-any-r1 vala
+inherit versionator gnome2-utils eutils autotools ltprune python-any-r1 vala
 
 if [[ ${PV} == *9999* ]]; then
 	inherit autotools git-r3
@@ -136,7 +136,6 @@ src_configure() {
 	econf \
 		--disable-docs \
 		--disable-profile \
-		--disable-silent-rules \
 		--disable-workshop \
 		--program-suffix=-${SLOT} \
 		--with-gdk-pixbuf \

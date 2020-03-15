@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -24,7 +24,7 @@ DEPEND="${RDEPEND}
 	>=dev-haskell/cabal-1.10
 "
 
-pkg_postinst () {
+pkg_postinst() {
 	ghc-package_pkg_postinst
 
 	elog "You will probably want to emerge one or more HSQL backend."

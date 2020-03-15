@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -61,7 +61,7 @@ src_prepare() {
 	perl-module_src_prepare
 }
 
-src_install () {
+src_install() {
 	perl-module_src_install
 	mv "${ED}"/usr/bin/convert* "${ED}"/usr/share/doc/${PF} || die
 }

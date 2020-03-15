@@ -1,5 +1,5 @@
---- libg15render-1.2/configure.in
-+++ libg15render-1.2/configure.in
+--- a/configure.in
++++ b/configure.in
 @@ -13,19 +13,20 @@
  AC_PROG_LIBTOOL
  
@@ -33,3 +33,21 @@
  
  # Checks for libraries.
  AC_CHECK_LIB([g15], [writePixmapToLCD], ,AC_MSG_ERROR(["libg15 not found. please install it"]))
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,5 +1,3 @@
+-LLIBDIR=@LIBDIR@ 
+-AM_CFLAGS=@CFLAGS@ 
+ lib_LTLIBRARIES = libg15render.la
+ libg15render_la_SOURCES = libg15render.h text.c pixel.c screen.c font_6x4.c font_7x5.c font_8x8.c
+ libg15render_la_LIBADD = @FTLIB@
+@@ -7,8 +5,7 @@
+ include_HEADERS= libg15render.h
+ EXTRA_DIST = debian Doxyfile libg15render.3
+ man3_MANS = $(top_srcdir)/libg15render.3
+-docdir = $(prefix)/share/doc/$(PACKAGE)-$(VERSION)
+-doc_DATA = AUTHORS ChangeLog COPYING NEWS README
++doc_DATA = AUTHORS ChangeLog NEWS README
+ 
+ dist-hook:
+ 	rm -rf `find $(distdir)/debian -name .svn`

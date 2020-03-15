@@ -7,9 +7,9 @@ PYTHON_REQ_USE="libressl?,sqlite,ssl"
 LIBDVDCSS_VERSION="1.4.2-Leia-Beta-5"
 LIBDVDREAD_VERSION="6.0.0-Leia-Alpha-3"
 LIBDVDNAV_VERSION="6.0.0-Leia-Alpha-3"
-FFMPEG_VERSION="4.0.4"
-CODENAME="Leia"
-FFMPEG_KODI_VERSION="18.4"
+FFMPEG_VERSION="4.2.2"
+CODENAME="Matrix"
+FFMPEG_KODI_VERSION="Alpha1"
 PYTHON_COMPAT=( python3_{6,7,8} )
 SRC_URI="https://github.com/xbmc/libdvdcss/archive/${LIBDVDCSS_VERSION}.tar.gz -> libdvdcss-${LIBDVDCSS_VERSION}.tar.gz
 	https://github.com/xbmc/libdvdread/archive/${LIBDVDREAD_VERSION}.tar.gz -> libdvdread-${LIBDVDREAD_VERSION}.tar.gz
@@ -71,10 +71,12 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	>=dev-libs/libxml2-2.9.4
 	>=dev-libs/lzo-2.04
 	dev-libs/tinyxml[stl]
-	dev-python/pillow[${PYTHON_USEDEP}]
-	dev-python/pycryptodome[${PYTHON_USEDEP}]
-	>=dev-libs/libcdio-0.94
-	>=dev-libs/libfmt-3.0.1
+	$(python_gen_cond_dep '
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		dev-python/pycryptodome[${PYTHON_MULTI_USEDEP}]
+	')
+	>=dev-libs/libcdio-2.1.0
+	>=dev-libs/libfmt-6.1.2
 	dev-libs/libfstrcmp
 	gbm? (	media-libs/mesa[gbm] )
 	gles? (
@@ -84,19 +86,20 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	libusb? ( virtual/libusb:1 )
 	virtual/ttf-fonts
 	media-fonts/roboto
+	media-libs/dav1d
 	>=media-libs/fontconfig-2.13.1
 	>=media-libs/freetype-2.10.1
 	>=media-libs/libass-0.13.4
 	!raspberry-pi? ( media-libs/mesa[egl,X(+)] )
 	>=media-libs/taglib-1.11.1
 	system-ffmpeg? (
-		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[encode,postproc]
+		>=media-video/ffmpeg-${FFMPEG_VERSION}:=[dav1d,encode,postproc]
 		libressl? ( media-video/ffmpeg[libressl,-openssl] )
 		!libressl? ( media-video/ffmpeg[-libressl,openssl] )
 	)
 	mysql? ( dev-db/mysql-connector-c:= )
 	mariadb? ( dev-db/mariadb-connector-c:= )
-	>=net-misc/curl-7.56.1[http2]
+	>=net-misc/curl-7.68.0[http2]
 	nfs? ( >=net-fs/libnfs-2.0.0:= )
 	opengl? ( media-libs/glu )
 	!libressl? ( >=dev-libs/openssl-1.0.2l:0= )
@@ -140,7 +143,6 @@ COMMON_DEPEND="${PYTHON_DEPS}
 "
 RDEPEND="${COMMON_DEPEND}
 	lirc? ( app-misc/lirc )
-	!media-tv/xbmc
 	udisks? ( sys-fs/udisks:2 )
 	upower? ( sys-power/upower )
 "
@@ -153,7 +155,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-util/cmake
 	dev-util/gperf
 	media-libs/giflib
-	>=media-libs/libjpeg-turbo-1.5.1:=
+	>=media-libs/libjpeg-turbo-2.0.4:=
 	>=media-libs/libpng-1.6.26:0=
 	test? ( dev-cpp/gtest )
 	virtual/pkgconfig

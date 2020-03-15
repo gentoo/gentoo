@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
 
-inherit xdg-utils gnome2-utils
+inherit xdg-utils gnome2-utils toolchain-funcs
 
 DESCRIPTION="A wave viewer for LXT, LXT2, VZT, GHW and standard Verilog VCD/EVCD files"
 HOMEPAGE="http://gtkwave.sourceforge.net/"
@@ -28,13 +28,13 @@ DEPEND="${RDEPEND}
 
 AT_M4DIR="${S}"
 
-src_prepare(){
+src_prepare() {
 	# do not install doc and examples by default
 	sed -i -e 's/doc examples//' Makefile.in || die
 	default
 }
 
-src_configure(){
+src_configure() {
 	econf --disable-local-libz \
 		--disable-local-libbz2 \
 		--disable-mime-update \

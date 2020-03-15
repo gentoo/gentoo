@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -59,7 +59,7 @@ pkg_setup() {
 	enewuser ${PN} -1 -1 -1 ${PN}
 }
 
-src_configure(){
+src_configure() {
 	local mycmakeargs=()
 	if use fuse; then
 		mycmakeargs+=( "-DHAVE_FUSE_25=yes" )

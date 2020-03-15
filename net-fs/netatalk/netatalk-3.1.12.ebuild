@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -107,7 +107,6 @@ src_configure() {
 		--with-libevent-lib=/usr/$(get_libdir)
 		--with-bdb=/usr
 		--with-uams-path=/usr/$(get_libdir)/${PN}
-		--disable-silent-rules
 		--with-init-style=gentoo-openrc
 		--without-libevent
 		--without-tdb

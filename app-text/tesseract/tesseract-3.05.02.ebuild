@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -8,9 +8,9 @@ LANGPACKV="3.04.00"
 URI_PREFIX="https://github.com/${MY_PN}/tessdata/raw/${LANGPACKV}/"
 JAVA_PKG_OPT_USE="scrollview"
 
-inherit autotools java-pkg-opt-2 toolchain-funcs
+inherit autotools java-pkg-opt-2 ltprune toolchain-funcs
 
-DESCRIPTION="An OCR Engine, orginally developed at HP, now open source."
+DESCRIPTION="An OCR Engine, originally developed at HP, now open source."
 HOMEPAGE="https://github.com/tesseract-ocr"
 SRC_URI="https://github.com/${MY_PN}/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz
 	${URI_PREFIX}eng.traineddata -> eng.traineddata-${LANGPACKV}

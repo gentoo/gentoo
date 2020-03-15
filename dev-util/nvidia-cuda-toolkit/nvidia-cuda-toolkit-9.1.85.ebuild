@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit check-reqs cuda toolchain-funcs unpacker versionator
+inherit check-reqs cuda eutils toolchain-funcs unpacker versionator
 
 MYD=$(get_version_component_range 1-2)
 DRIVER_PV="387.26"
@@ -16,6 +16,7 @@ LICENSE="NVIDIA-CUDA"
 SLOT="0/${PV}"
 KEYWORDS="-* ~amd64 ~amd64-linux"
 IUSE="debugger doc eclipse profiler"
+RESTRICT="bindist mirror"
 
 DEPEND=""
 RDEPEND="${DEPEND}

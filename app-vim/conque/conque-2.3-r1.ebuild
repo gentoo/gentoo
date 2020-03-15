@@ -15,7 +15,11 @@ LICENSE="MIT"
 KEYWORDS="amd64 x86"
 IUSE=""
 
-RDEPEND="|| ( app-editors/vim[python,${PYTHON_USEDEP}] app-editors/gvim[python,${PYTHON_USEDEP}] )
+RDEPEND="
+	|| (
+		app-editors/vim[python,${PYTHON_SINGLE_USEDEP}]
+		app-editors/gvim[python,${PYTHON_SINGLE_USEDEP}]
+	)
 	${PYTHON_DEPS}"
 
 REQUIRED_USE=${PYTHON_REQUIRED_USE}

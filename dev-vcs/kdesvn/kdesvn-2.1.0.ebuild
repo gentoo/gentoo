@@ -56,7 +56,7 @@ RDEPEND="${DEPEND}
 	!kde-apps/kdesdk-kioslaves:4[subversion(-)]
 "
 
-src_prepare(){
+src_prepare() {
 	ecm_src_prepare
 
 	if ! use man ; then

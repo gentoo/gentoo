@@ -13,7 +13,7 @@ inherit ecm kde.org
 
 if [[ ${KDE_BUILD_TYPE} = release ]]; then
 	SRC_URI="mirror://kde/stable/${PN}/${PV}/${KDE_ORG_NAME}-${PV}.tar.xz"
-	KEYWORDS="~amd64"
+	KEYWORDS="amd64 ~arm64 x86"
 fi
 
 DESCRIPTION="Adds communication between KDE Plasma and your smartphone"
@@ -77,7 +77,7 @@ src_configure() {
 	ecm_src_configure
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	ecm_pkg_postinst
 
 	elog "In case you are missing 'pause music' plugin, this now requires"

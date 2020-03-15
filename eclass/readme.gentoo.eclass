@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: readme.gentoo.eclass
@@ -19,7 +19,7 @@
 if [[ -z ${_README_GENTOO_ECLASS} ]]; then
 _README_GENTOO_ECLASS=1
 
-inherit eutils
+inherit estack eutils
 
 case "${EAPI:-0}" in
 	0|1|2|3)

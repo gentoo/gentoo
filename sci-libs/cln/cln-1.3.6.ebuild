@@ -44,7 +44,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	default
 	if use examples; then
 		docompress -x /usr/share/doc/${PF}/examples

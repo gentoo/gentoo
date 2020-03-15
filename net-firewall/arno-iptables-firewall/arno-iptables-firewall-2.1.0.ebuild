@@ -90,7 +90,7 @@ src_install() {
 		share/man/man8/"${PN}".8
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	ewarn "When you stop this script, all firewall rules are flushed!"
 	ewarn "Make sure to not use multiple firewall scripts simultaneously"
 	ewarn "unless you know what you are doing!"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -6,8 +6,8 @@ EAPI=7
 inherit eutils systemd autotools linux-info
 
 DESCRIPTION="Realtime Policy and Watchdog Daemon"
-HOMEPAGE="http://0pointer.de/blog/projects/rtkit"
-SRC_URI="http://0pointer.de/public/${P}.tar.xz"
+HOMEPAGE="https://0pointer.de/blog/projects/rtkit"
+SRC_URI="https://0pointer.de/public/${P}.tar.xz"
 
 LICENSE="GPL-3 BSD"
 SLOT="0"

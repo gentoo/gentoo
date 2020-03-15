@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -36,6 +36,7 @@ S="${WORKDIR}/${MY_P_ORIG/_/-}/${PN}"
 src_unpack() {
 	unpack ${MY_P_ORIG}.tar.gz
 	epatch "${DISTDIR}"/${MY_P_PATCH}.gz
+	epatch "${FILESDIR}"/${P}-gcc-10.patch
 
 	# need to apply patches from Debian first, do NOT change the order
 	cd "${S}" || die

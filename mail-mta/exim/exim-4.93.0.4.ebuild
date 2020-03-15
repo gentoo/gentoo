@@ -493,7 +493,7 @@ src_compile() {
 		AR="$(tc-getAR) cq" RANLIB="$(tc-getRANLIB)" FULLECHO=''
 }
 
-src_install () {
+src_install() {
 	cd "${S}"/build-exim-gentoo || die
 	dosbin exim
 	if use X; then

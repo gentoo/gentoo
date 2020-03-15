@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=(python2_7 python3_{6,7})
+PYTHON_COMPAT=(python3_{6,7})
 
-inherit flag-o-matic python-single-r1
+inherit flag-o-matic python-single-r1 toolchain-funcs
 
 MY_P="unit-${PV}"
 DESCRIPTION="Dynamic web and application server"
@@ -16,14 +16,12 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
 MY_USE="perl python ruby"
-MY_USE_PHP="php5-6 php7-1 php7-2 php7-3"
+MY_USE_PHP="php7-2 php7-3"
 IUSE="${MY_USE} ${MY_USE_PHP} ssl"
 REQUIRED_USE="|| ( ${IUSE} )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 DEPEND="perl? ( dev-lang/perl:= )
-	php5-6? ( dev-lang/php:5.6[embed] )
-	php7-1? ( dev-lang/php:7.1[embed] )
 	php7-2? ( dev-lang/php:7.2[embed] )
 	php7-3? ( dev-lang/php:7.3[embed] )
 	python? ( ${PYTHON_DEPS} )

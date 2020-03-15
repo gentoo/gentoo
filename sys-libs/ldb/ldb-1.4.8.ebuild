@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -72,7 +72,7 @@ multilib_src_configure() {
 	waf-utils_src_configure "${myconf[@]}"
 }
 
-multilib_src_compile(){
+multilib_src_compile() {
 	waf-utils_src_compile
 	multilib_is_native_abi && use doc && doxygen Doxyfile
 }

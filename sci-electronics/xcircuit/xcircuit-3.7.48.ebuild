@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=4
@@ -44,7 +44,6 @@ src_prepare() {
 src_configure() {
 	export loader_run_path="/usr/$(get_libdir)"
 	local myeconfargs=(
-		--disable-dependency-tracking
 		--with-tcl
 		--with-ngspice
 	)
@@ -55,7 +54,7 @@ src_compile() {
 	autotools-utils_src_compile appdefaultsdir="/usr/share/X11/app-defaults"
 }
 
-src_install () {
+src_install() {
 	autotools-utils_src_install \
 		appdefaultsdir="/usr/share/X11/app-defaults" \
 		appmandir="/usr/share/man/man1"

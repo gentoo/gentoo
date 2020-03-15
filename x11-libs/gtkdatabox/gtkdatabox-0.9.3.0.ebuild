@@ -3,7 +3,7 @@
 
 EAPI=6
 
-inherit eutils
+inherit eutils ltprune
 
 DESCRIPTION="Gtk+ Widgets for live display of large amounts of fluctuating numerical data"
 HOMEPAGE="https://sourceforge.net/projects/gtkdatabox/"
@@ -39,7 +39,6 @@ src_configure() {
 		--disable-glade \
 		$(use_enable static-libs static) \
 		$(use_enable test gtktest) \
-		--disable-dependency-tracking \
 		--enable-libtool-lock
 }
 

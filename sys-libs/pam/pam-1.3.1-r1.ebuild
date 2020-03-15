@@ -24,6 +24,7 @@ BDEPEND="app-text/docbook-xml-dtd:4.1.2
 	nls? ( sys-devel/gettext )"
 
 DEPEND="
+	virtual/libcrypt:=[${MULTILIB_USEDEP}]
 	audit? ( >=sys-process/audit-2.2.2[${MULTILIB_USEDEP}] )
 	berkdb? ( >=sys-libs/db-4.8.30-r1:=[${MULTILIB_USEDEP}] )
 	cracklib? ( >=sys-libs/cracklib-2.9.1-r1[${MULTILIB_USEDEP}] )

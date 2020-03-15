@@ -16,7 +16,8 @@ SLOT="2.2"
 EMULTILIB_PKG="true"
 
 if [[ ${PV} == 9999* ]]; then
-	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
+	# sourceware.org does not have https:// today.
+	EGIT_REPO_URI="git://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
 	#KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
@@ -29,12 +30,12 @@ RELEASE_VER=${PV}
 GCC_BOOTSTRAP_VER=20180511
 
 # Gentoo patchset
-PATCH_VER=15
+PATCH_VER=16
 
 SRC_URI+=" https://dev.gentoo.org/~slyfox/distfiles/${P}-patches-${PATCH_VER}.tar.xz"
 SRC_URI+=" multilib? ( https://dev.gentoo.org/~dilfridge/distfiles/gcc-multilib-bootstrap-${GCC_BOOTSTRAP_VER}.tar.xz )"
 
-IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs suid systemtap test vanilla"
+IUSE="audit caps cet compile-locales +crypt custom-cflags doc gd headers-only +multiarch multilib nscd profile selinux +ssp +static-libs static-pie suid systemtap test vanilla"
 
 # Minimum kernel version that glibc requires
 MIN_KERN_VER="3.2.0"
@@ -89,7 +90,6 @@ BDEPEND="
 	>=app-misc/pax-utils-0.1.10
 	sys-devel/bison
 	!<sys-devel/bison-2.7
-	!<sys-devel/make-4
 	doc? ( sys-apps/texinfo )
 "
 COMMON_DEPEND="
@@ -941,6 +941,7 @@ glibc_do_configure() {
 		--with-pkgversion="$(glibc_banner)"
 		$(use_enable crypt)
 		$(use_multiarch || echo --disable-multi-arch)
+		$(use_enable static-pie)
 		$(use_enable systemtap)
 		$(use_enable nscd)
 		${EXTRA_ECONF}
@@ -1177,8 +1178,10 @@ run_locale_gen() {
 		locale_list="${root}/usr/share/i18n/SUPPORTED"
 	fi
 
-	locale-gen ${inplace} --jobs $(makeopts_jobs) --config "${locale_list}" \
+	set -- locale-gen ${inplace} --jobs $(makeopts_jobs) --config "${locale_list}" \
 		--destdir "${root}"
+	echo "$@"
+	"$@"
 
 	popd >/dev/null
 }

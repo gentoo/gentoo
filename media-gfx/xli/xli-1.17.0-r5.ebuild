@@ -1,9 +1,9 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
 
-inherit eutils
+inherit eutils toolchain-funcs
 
 SNAPSHOT="2005-02-27"
 DESCRIPTION="X Load Image: view images or load them to root window"

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -22,7 +22,7 @@ RDEPEND="sys-apps/ucspi-tcp
 	virtual/daemontools
 	selinux? ( sec-policy/selinux-djbdns )"
 
-src_unpack(){
+src_unpack() {
 	# Unpack both djbdns and its man pages to separate directories.
 	default
 

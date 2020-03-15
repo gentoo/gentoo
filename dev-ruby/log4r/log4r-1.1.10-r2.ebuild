@@ -24,6 +24,5 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ppc ppc64 sparc x86"
 all_ruby_install() {
 	all_fakegem_install
 
-	insinto /usr/share/doc/${PF}
-	doins -r examples
+	dodoc -r examples
 }

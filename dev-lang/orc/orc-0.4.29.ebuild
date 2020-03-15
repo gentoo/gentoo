@@ -1,9 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit eutils flag-o-matic multilib-minimal pax-utils
+inherit eutils flag-o-matic ltprune multilib-minimal pax-utils
 
 DESCRIPTION="The Oil Runtime Compiler, a just-in-time compiler for array operations"
 HOMEPAGE="https://gstreamer.freedesktop.org/"

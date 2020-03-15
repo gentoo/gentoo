@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -22,7 +22,6 @@ S=${WORKDIR}/${MY_P}
 
 multilib_src_configure() {
 	ECONF_SOURCE="${S}" econf \
-		--disable-dependency-tracking \
 		--disable-gui \
 		$(use_enable static-libs static)
 }

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -71,10 +71,11 @@ src_configure() {
 	# disable hd library until we have the right library in the tree and
 	# don't links to hwinfo one causing issues like bug #602360
 	tc-ld-disable-gold
+	# passing --exec-prefix is needed as the build system is trying to be clever
+	# and install itself into / instead of /usr in order to be compatible with
+	# separate-/usr setups (which we don't support without an initrd).
 	econf \
-		--prefix="${EPREFIX}"/usr \
 		--exec-prefix="${EPREFIX}"/usr \
-		--docdir="${EPREFIX}"/usr/share/doc/${PF} \
 		$(use_enable debug) \
 		--enable-ldscript \
 		--disable-ldconfig \

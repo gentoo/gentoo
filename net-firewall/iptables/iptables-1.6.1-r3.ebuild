@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -6,7 +6,7 @@ EAPI="5"
 # Force users doing their own patches to install their own tools
 AUTOTOOLS_AUTO_DEPEND=no
 
-inherit eutils multilib systemd toolchain-funcs autotools flag-o-matic usr-ldscript
+inherit eutils multilib systemd toolchain-funcs autotools flag-o-matic ltprune usr-ldscript
 
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
 HOMEPAGE="https://www.netfilter.org/projects/iptables/"

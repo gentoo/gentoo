@@ -3,7 +3,7 @@
 
 EAPI=6
 CMAKE_MAKEFILE_GENERATOR="ninja"
-PYTHON_COMPAT=( python{2_7,3_6,3_7} )
+PYTHON_COMPAT=( python{3_6,3_7} )
 USE_RUBY="ruby24 ruby25 ruby26"
 
 inherit check-reqs cmake-utils flag-o-matic gnome2 pax-utils python-any-r1 ruby-single toolchain-funcs virtualx
@@ -15,7 +15,7 @@ SRC_URI="https://www.webkitgtk.org/releases/${MY_P}.tar.xz"
 
 LICENSE="LGPL-2+ BSD"
 SLOT="4/37" # soname version of libwebkit2gtk-4.0
-KEYWORDS="~alpha ~arm arm64 ~ppc ~amd64-linux ~x86-linux ~x86-macos"
+KEYWORDS="~alpha ~arm ~ppc ~amd64-linux ~x86-linux ~x86-macos"
 
 IUSE="aqua coverage doc +egl +geolocation gles2 gnome-keyring +gstreamer +introspection +jpeg2k libnotify nsplugin +opengl spell wayland +webgl +X"
 

@@ -1,20 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-	<maintainer type="person">
-		<email>johu@gentoo.org</email>
-		<name>Johannes Huber</name>
-	</maintainer>
-	<maintainer type="project">
-		<email>devmanual@gentoo.org</email>
-		<description>
-			Bugs for the devmanual documentation must be assigned to
-			devmanual@gentoo.org
-		</description>
-	</maintainer>
-	<use>
-		<flag name="offline">
-			Use alternative minimal stylesheet instead of Tyrian theme.
-		</flag>
-	</use>
+<maintainer type="project">
+  <email>devmanual@gentoo.org</email>
+  <description>
+    Bugs for the devmanual documentation itself must be filed under
+    product "Documentation", component "Devmanual"
+  </description>
+</maintainer>
+<use>
+  <flag name="offline">
+    Use alternative minimal stylesheet instead of Tyrian theme
+  </flag>
+</use>
 </pkgmetadata>

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -20,11 +20,11 @@ HOMEPAGE="https://github.com/RadeonOpenCompute/ROCR-Runtime"
 
 LICENSE="MIT"
 SLOT="0/$(ver_cut 1-2)"
-IUSE="nonfree"
+IUSE="non-free"
 
 COMMON_DEPEND="sys-process/numactl"
 RDEPEND="${COMMON_DEPEND}
-	nonfree? ( dev-libs/hsa-ext-rocr )"
+	non-free? ( dev-libs/hsa-ext-rocr )"
 DEPEND="${COMMON_DEPEND}
 	>=dev-libs/roct-thunk-interface-${PV}"
 

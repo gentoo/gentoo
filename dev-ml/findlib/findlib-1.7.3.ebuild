@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
@@ -15,7 +15,8 @@ LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos"
 
-DEPEND=">=dev-lang/ocaml-4.02.3-r1:=[ocamlopt?]
+# it does not compile with ocaml-4.09 (bug #708696)
+DEPEND="<dev-lang/ocaml-4.09:=[ocamlopt?]
 	tk? ( dev-ml/labltk:= )"
 RDEPEND="${DEPEND}"
 

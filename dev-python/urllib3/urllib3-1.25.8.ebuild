@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~amd64 arm ~arm64 ~ia64 ~x86"
 IUSE="brotli test"
 RESTRICT="!test? ( test )"
 
@@ -53,6 +53,11 @@ python_prepare_all() {
 		-i test/with_dummyserver/test_https.py || die
 	sed -e 's:test_https_proxy_.*timeout:_&:' \
 		-i test/with_dummyserver/test_proxy_poolmanager.py || die
+	# tests failing if 'localhost.' cannot be resolved
+	sed -e 's:test_dotted_fqdn:_&:' \
+		-i test/with_dummyserver/test_https.py || die
+	sed -e 's:test_request_host_header_ignores_fqdn_dot:_&:' \
+		-i test/with_dummyserver/test_socketlevel.py || die
 	# no clue why those fail, might be tornado's fault, might be just
 	# very flaky
 	sed -e 's:test_client_no_intermediate:_&:' \
@@ -68,6 +73,7 @@ python_prepare_all() {
 }
 
 python_test() {
+	local -x CI=1
 	# FIXME: get tornado ported
 	case ${EPYTHON} in
 		python2*|python3.[567])

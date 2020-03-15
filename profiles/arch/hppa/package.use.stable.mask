@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # When you add an entry to the top of this file, add your name, the date, and
@@ -17,11 +17,22 @@
 
 #--- END OF EXAMPLES ---
 
+# Mart Raudsepp <leio@gentoo.org> (2020-02-12)
+# No stable media-fonts/cantarell on hppa.
+x11-libs/pango test
+
+# Mart Raudsepp <leio@gentoo.org> (2020-02-09)
+# No stable gnome-base/dconf on hppa.
+dev-libs/glib dbus
+
 # Mart Raudsepp <leio@gentoo.org> (2020-02-08)
 # No stable x11-libs/gtk+ on hppa.
 gnome-base/librsvg tools
 dev-libs/appstream-glib fonts
 dev-python/pygobject test
+app-mobilephone/gnokii X
+net-analyzer/nmap zenmap
+media-libs/lv2 plugins
 
 # Mart Raudsepp <leio@gentoo.org> (2020-02-08)
 # app-text/enchant stable timeout, bug #662484

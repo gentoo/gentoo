@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -32,7 +32,7 @@ PATCHES=(
 	"${FILESDIR}/sqlgrey-1.8.0-init-openrc.patch"
 )
 
-src_install () {
+src_install() {
 	emake gentoo-install ROOTDIR="${D}"
 	einstalldocs
 

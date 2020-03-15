@@ -1,8 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=5
-inherit autotools eutils mono-env
+inherit autotools eutils ltprune mono-env
 
 DESCRIPTION="C# implementation of gnome-keyring"
 HOMEPAGE="http://www.mono-project.com/ https://github.com/mono/gnome-keyring-sharp"

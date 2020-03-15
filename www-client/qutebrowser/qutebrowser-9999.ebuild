@@ -27,16 +27,15 @@ DEPEND="
 	app-text/asciidoc
 	test? ( dev-python/pytest[${PYTHON_USEDEP}] )"
 RDEPEND="
-	dev-python/attrs[${PYTHON_USEDEP}]
-	>=dev-python/jinja-2.8[${PYTHON_USEDEP}]
-	>=dev-python/pygments-2.1.3[${PYTHON_USEDEP}]
+	>=dev-python/attrs-19.3.0[${PYTHON_USEDEP}]
+	>=dev-python/colorama-0.4.3[${PYTHON_USEDEP}]
+	>=dev-python/cssutils-1.0.2[${PYTHON_USEDEP}]
+	>=dev-python/jinja-2.11.1[${PYTHON_USEDEP}]
+	>=dev-python/pygments-2.5.2[${PYTHON_USEDEP}]
 	>=dev-python/pypeg2-2.15.2[${PYTHON_USEDEP}]
-	|| (  (
-			>=dev-python/PyQt5-5.12[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
-			dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )
-		<dev-python/PyQt5-5.12[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,webengine,widgets]
-	)
-	>=dev-python/pyyaml-3.12[${PYTHON_USEDEP},libyaml]
+	>=dev-python/PyQt5-5.14.1[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
+	>=dev-python/PyQtWebEngine-5.14.0[${PYTHON_USEDEP}]
+	>=dev-python/pyyaml-5.3[${PYTHON_USEDEP},libyaml]
 "
 
 # Tests restricted as the deplist (misc/requirements/requirements-tests.txt)

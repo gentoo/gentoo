@@ -33,7 +33,7 @@ src_compile() {
 		MANDIR="${EPREFIX}"/usr/share/man/man1
 }
 
-src_install () {
+src_install() {
 	emake \
 		PREFIX="${ED}"/usr \
 		MANDIR="${ED}"/usr/share/man/man1 install

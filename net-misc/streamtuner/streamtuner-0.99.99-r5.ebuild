@@ -1,7 +1,8 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
+
 inherit gnome2
 
 DESCRIPTION="Stream directory browser for browsing internet radio streams"
@@ -12,14 +13,13 @@ SRC_URI="https://savannah.nongnu.org/download/${PN}/${P}.tar.gz
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="amd64 ~ppc ~sparc x86"
-IUSE="python +shout +xiph"
+IUSE="+shout +xiph"
 
 RDEPEND="
 	>=x11-libs/gtk+-2.4:2
 	net-misc/curl
 	xiph? ( dev-libs/libxml2:2 )
 	>=media-libs/taglib-1.2
-	python? ( dev-python/pygtk:2 )
 	x11-misc/xdg-utils
 "
 DEPEND="${RDEPEND}
@@ -50,7 +50,7 @@ src_configure() {
 	gnome2_src_configure \
 		--enable-compile-warnings=yes \
 		--disable-live365 \
-		$(use_enable python) \
+		--disable-python \
 		$(use_enable shout shoutcast) \
 		$(use_enable xiph)
 }

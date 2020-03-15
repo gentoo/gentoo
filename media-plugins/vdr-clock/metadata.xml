@@ -13,7 +13,4 @@
 		<email>vdr@gentoo.org</email>
 		<name>Gentoo VDR Project</name>
 	</maintainer>
-	<longdescription>
-		This is the Clock plugin for the Video Disk Recorder (VDR)
-	</longdescription>
 </pkgmetadata>

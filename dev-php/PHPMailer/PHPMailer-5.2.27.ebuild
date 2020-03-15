@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
@@ -33,7 +33,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( dev-php/phpDocumentor )"
 
-src_compile(){
+src_compile() {
 	if use doc; then
 		phpdoc --filename="class.*.php" \
 			   --target="./html" \
@@ -46,7 +46,7 @@ src_compile(){
 	fi
 }
 
-src_install(){
+src_install() {
 	# To help out the Composer kids, most of the documentation and
 	# tests are missing from the release tarballs.
 	insinto "/usr/share/php/${PN}"
@@ -56,7 +56,7 @@ src_install(){
 	use doc && dodoc -r html/*
 }
 
-pkg_postinst(){
+pkg_postinst() {
 	elog "${PN} has been installed in /usr/share/php/${PN}/."
 	elog "To use it in a script, require('${PN}/${PN}Autoload.php'),"
 	elog "and then use the ${PN} class normally. Most of the examples in"

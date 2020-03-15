@@ -1,7 +1,9 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="7"
+
+inherit autotools
 
 DESCRIPTION="Parallel bzip2 utility"
 HOMEPAGE="https://github.com/kjn/lbzip2/"
@@ -20,9 +22,13 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-unaligned.patch
 )
 
+src_prepare() {
+	default
+	eautoreconf
+}
+
 src_configure() {
 	local myeconfargs=(
-		--disable-silent-rules
 		$(use_enable debug tracing)
 	)
 	econf "${myeconfargs[@]}"

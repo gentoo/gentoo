@@ -6,6 +6,32 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
+# Encrypted Media Extensions (eme-free) can't be disabled everywhere
+www-client/firefox eme-free
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-03)
+# Tests require py2 sleekxmpp and they are restricted anyway.
+net-im/spectrum2 test
+
+# Rick Farina <zerochaos@gentoo.org> (2020-02-26)
+# dev-python/pyzmq USE=doc deps are not met with python2_7
+dev-python/pyzmq doc
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-24)
+# app-admin/packagekit* are masked for removal.
+kde-frameworks/frameworkintegration appstream
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-24)
+# sys-apps/entropy is masked for removal.
+app-admin/packagekit-base entropy
+
+# Michał Górny <mgorny@gentoo.org> (2020-02-08)
+# The dependency is python-single-r1 while the package (and its revdeps)
+# are python-r1.
+dev-python/rdflib redland
+www-apps/venus redland
+
 # Michał Górny <mgorny@gentoo.org> (2020-02-05)
 # Requires google-api-python-client with Python 2 which is no longer
 # supported by its dependencies.
@@ -22,7 +48,7 @@ dev-python/zeep tornado
 
 # Michał Górny <mgorny@gentoo.org> (2020-01-29)
 # Require dev-python/epydoc which is being removed.
-<=app-admin/system-config-printer-1.5.12 doc
+<=app-admin/system-config-printer-1.5.12-r1 doc
 <=dev-python/cosmolopy-0.1.104-r2 doc
 <=dev-python/dbus-python-1.2.4 doc
 <=dev-python/pycrypto-2.6.1-r2 doc
@@ -74,7 +100,6 @@ media-sound/beets webserver
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)
 # Python 2.7 only packages optionally needing dev-python/ipython.
-app-misc/gourmet ipython
 dev-python/restkit cli
 
 # Michał Górny <mgorny@gentoo.org> (2019-12-04)
@@ -280,6 +305,7 @@ app-emulation/fuse backend-svga
 # Patrick McLean <chutzpah@gentoo.org> (2018-03-06)
 # Requires dev-libs/boost-1.66 that is unkeyworded/masked
 >=sys-cluster/ceph-12.2.4 system-boost
+>=sys-cluster/ceph-14.2.8 -system-boost
 
 # Brian Evans <grknight@gentoo.org> (2018-03-05)
 # Mask embedded USE on virtual/mysql and friends to transition it to be obsolete

@@ -1,4 +1,4 @@
-# Copyright 2002-2019 Gentoo Authors
+# Copyright 2002-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: elisp.eclass
@@ -173,7 +173,7 @@ elisp_src_install() {
 	# install documentation only when explicitly requested
 	case ${EAPI} in
 		4|5) [[ -n ${DOCS} ]] && dodoc ${DOCS} ;;
-		*) declare -p DOCS &>/dev/null && einstalldocs ;;
+		*) [[ $(declare -p DOCS 2>/dev/null) == *=* ]] && einstalldocs ;;
 	esac
 	if declare -f readme.gentoo_create_doc >/dev/null; then
 		readme.gentoo_create_doc

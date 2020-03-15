@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit linux-info python-any-r1
 
@@ -21,6 +21,7 @@ DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig"
 
+PATCHES=( "${FILESDIR}"/${P}-gcc-10.patch )
 DOCS=( ChangeLog README )
 
 CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"

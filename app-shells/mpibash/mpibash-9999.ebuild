@@ -1,7 +1,7 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
+EAPI=7
 
 inherit autotools multilib
 
@@ -22,7 +22,7 @@ SLOT="0"
 IUSE="examples"
 
 DEPEND="virtual/mpi
-	>=app-shells/bash-4.2[plugins]
+	>=app-shells/bash-4.2:0[plugins]
 	sys-cluster/libcircle"
 RDEPEND="${DEPEND}"
 

@@ -66,7 +66,6 @@ src_configure() {
 		$(use_with perl perl-binding)
 		$(use_with python python-binding)
 		$(use_with tcl tcl-binding)
-		--disable-silent-rules
 	)
 	autotools-utils_src_configure
 }

@@ -23,13 +23,12 @@ SLOT="0/${PV}"
 IUSE="64-bit-bfd multitarget nls static-libs"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
 
-COMMON_DEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
-DEPEND="${COMMON_DEPEND}
-	nls? ( sys-devel/gettext )"
+BDEPEND="nls? ( sys-devel/gettext )"
+DEPEND="sys-libs/zlib[${MULTILIB_USEDEP}]"
 # Need a newer binutils-config that'll reset include/lib symlinks for us.
-RDEPEND="${COMMON_DEPEND}
+RDEPEND="${DEPEND}
 	>=sys-devel/binutils-config-5
-	nls? ( !<sys-devel/gdb-7.10-r1[nls] )"
+"
 
 S="${WORKDIR}/${MY_P}"
 

@@ -55,7 +55,7 @@ src_compile() {
 	fi
 }
 
-src_install () {
+src_install() {
 	local destdir="$(ocamlfind printconf destdir || die)"
 	dodir "${destdir}/stublibs"
 	export OCAMLFIND_DESTDIR=${ED}"${destdir}"

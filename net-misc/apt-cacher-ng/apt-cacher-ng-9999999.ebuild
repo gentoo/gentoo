@@ -57,7 +57,7 @@ pkg_setup() {
 	enewuser ${PN} -1 -1 -1 ${PN}
 }
 
-src_configure(){
+src_configure() {
 	local mycmakeargs=(
 		"-DCMAKE_SKIP_BUILD_RPATH=on"
 	)

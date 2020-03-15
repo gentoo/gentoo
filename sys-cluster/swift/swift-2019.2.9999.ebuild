@@ -39,7 +39,6 @@ RDEPEND="
 	dev-python/pyxattr[${PYTHON_USEDEP}]
 	>=dev-python/PyECLib-1.3.1[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.0.2[${PYTHON_USEDEP}]
-	>=dev-python/ipaddress-1.0.16[${PYTHON_USEDEP}]
 	memcached? ( net-misc/memcached )
 	net-misc/rsync[xattr]
 	acct-user/swift
@@ -63,7 +62,7 @@ src_prepare() {
 	distutils-r1_python_prepare_all
 }
 
-src_test () {
+src_test() {
 	# https://bugs.launchpad.net/swift/+bug/1249727
 	find . \( -name test_wsgi.py -o -name test_locale.py -o -name test_utils.py \) -delete || die
 	SKIP_PIP_INSTALL=1 PBR_VERSION=0.6.0 sh .unittests || die

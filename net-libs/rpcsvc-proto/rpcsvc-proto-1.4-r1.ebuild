@@ -11,7 +11,7 @@ SRC_URI="https://github.com/thkukuk/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 SLOT="0"
 LICENSE="LGPL-2.1+ BSD"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86"
 IUSE=""
 
 # sys-devel/gettext is only for libintl detection macros.
@@ -23,12 +23,12 @@ RDEPEND="
 
 PATCHES=("${FILESDIR}"/${P}-external-libintl.patch)
 
-src_prepare(){
+src_prepare() {
 	default
 	eautoreconf
 }
 
-src_install(){
+src_install() {
 	default
 
 	# provided by sys-fs/quota[rpc]

@@ -97,7 +97,6 @@ multilib_src_configure() {
 
 	ECONF_SOURCE="${S}" \
 	econf \
-		--disable-dependency-tracking \
 		$(use_with X x) \
 		$(use_enable X tee) \
 		$(use_enable X xlib) \

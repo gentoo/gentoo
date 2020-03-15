@@ -26,7 +26,7 @@ src_prepare() {
 
 DOCS=( INSTALL.txt )
 
-src_install () {
+src_install() {
 	default
 
 	keepdir /var/lib/qmrtg

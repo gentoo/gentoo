@@ -5,7 +5,7 @@ EAPI=7
 
 inherit autotools git-r3 multilib-minimal toolchain-funcs
 
-DESCRIPTION="An OCR Engine, orginally developed at HP, now open source."
+DESCRIPTION="An OCR Engine, originally developed at HP, now open source."
 HOMEPAGE="https://github.com/tesseract-ocr"
 EGIT_REPO_URI="https://github.com/tesseract-ocr/${PN}.git"
 

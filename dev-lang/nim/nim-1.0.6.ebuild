@@ -48,15 +48,16 @@ src_compile() {
 	_run ./koch boot --parallelBuild:$(makeopts_jobs) -d:release $(nim_use_enable readline useGnuReadline)
 	# build nimble and friends
 	# --stable to avoid pulling HEAD nimble
-	PATH="./bin:$PATH" _run ./koch --stable tools
+	PATH="./bin:$PATH" _run ./koch --stable tools --parallelBuild:$(makeopts_jobs)
 
 	if use doc; then
-		PATH="./bin:$PATH" _run ./koch doc
+		# TODO: '--parallelBuild:' does ont seem to work
+		PATH="./bin:$PATH" _run ./koch doc --parallelBuild:$(makeopts_jobs)
 	fi
 }
 
 src_test() {
-	PATH="./bin:$PATH" _run ./koch test
+	PATH="./bin:$PATH" _run ./koch test --parallelBuild:$(makeopts_jobs)
 }
 
 src_install() {

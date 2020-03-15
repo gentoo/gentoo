@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="5"
@@ -34,7 +34,7 @@ DEPEND="${RDEPEND}
 
 CONFIG_CHECK="~INOTIFY_USER"
 
-pkg_setup () {
+pkg_setup() {
 	check_extra_config
 	enewgroup dropbox
 
@@ -61,7 +61,7 @@ src_prepare() {
 	AT_NOELIBTOOLIZE=yes eautoreconf
 }
 
-src_install () {
+src_install() {
 	gnome2_src_install
 
 	local extensiondir="$(pkg-config --variable=extensiondir libnautilus-extension)"
@@ -78,7 +78,7 @@ src_install () {
 	python_replicate_script "${ED}"/usr/bin/dropbox
 }
 
-pkg_postinst () {
+pkg_postinst() {
 	gnome2_pkg_postinst
 	readme.gentoo_print_elog
 }

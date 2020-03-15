@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -26,7 +26,7 @@ RDEPEND="dev-perl/DBD-mysql
 
 S="${WORKDIR}/${MY_P}"
 
-src_configure(){
+src_configure() {
 	# Should match net-analyzer/{monitoring,nagios}-plugins.
 	econf --libexecdir="/usr/$(get_libdir)/nagios/plugins"
 }

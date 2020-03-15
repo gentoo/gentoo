@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors.
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 sys-libs/uclibc-ng
@@ -39,15 +39,9 @@ games-arcade/thinktanks-demo
 games-emulation/nestra
 games-emulation/zinc
 games-emulation/zsnes
-games-fps/enemy-territory
-games-fps/enemy-territory-truecombat
 games-fps/etqw-demo
 games-fps/glxquake-bin
 games-fps/legends
-games-fps/quake3-bin
-games-fps/quake3-demo
-games-fps/rtcwmp-demo
-games-fps/rtcwsp-demo
 games-fps/soldieroffortune
 games-fps/transfusion-bin
 games-fps/tribes2

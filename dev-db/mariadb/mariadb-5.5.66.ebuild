@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -237,7 +237,7 @@ src_prepare() {
 	cmake-utils_src_prepare
 }
 
-src_configure(){
+src_configure() {
 	# bug 508724 mariadb cannot use ld.gold
 	tc-ld-disable-gold
 	# Bug #114895, bug #110149

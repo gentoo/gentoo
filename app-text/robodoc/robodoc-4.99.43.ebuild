@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -14,12 +14,6 @@ IUSE="examples"
 
 RDEPEND=">=dev-util/ctags-5.3.1"
 DEPEND="${RDEPEND}"
-
-src_configure() {
-	econf \
-		--docdir=/usr/share/doc/${PF} \
-		--disable-dependency-tracking
-}
 
 src_install() {
 	default

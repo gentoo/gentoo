@@ -1,0 +1,48 @@
+https://bugs.gentoo.org/706394
+
+--- lincity-1.13.1/fileutil.c	2004-07-03 08:26:33.000000000 -0000
++++ lincity-1.13.1/fileutil.c	2020-02-26 09:16:31.406614385 -0000
+@@ -105,7 +105,7 @@
+  * ---------------------------------------------------------------------- */
+ char LIBDIR[LC_PATH_MAX];
+ 
+-char *lc_save_dir;
++extern char *lc_save_dir;
+ int lc_save_dir_len;
+ static char *lc_temp_filename;
+ 
+--- lincity-1.13.1/ldsvguts.c	2003-10-10 04:11:29.000000000 -0000
++++ lincity-1.13.1/ldsvguts.c	2020-02-26 09:17:22.410992011 -0000
+@@ -91,8 +91,6 @@
+  * Private Global Variables
+  * ---------------------------------------------------------------------- */
+ 
+-char save_names[10][42];
+-
+ /* ---------------------------------------------------------------------- *
+  * Public functions
+  * ---------------------------------------------------------------------- */
+--- lincity-1.13.1/main.c	2004-07-03 07:59:05.000000000 -0000
++++ lincity-1.13.1/main.c	2020-02-26 09:17:04.222857373 -0000
+@@ -96,9 +96,8 @@
+ #endif
+ #endif
+ 
+-char *lc_save_dir;
++extern char *lc_save_dir;
+ char *lc_temp_file;
+-char save_names[10][42];
+ 
+ #ifdef CS_PROFILE
+ int prof_countdown = PROFILE_COUNTDOWN;
+--- lincity-1.13.1/screen.h	2004-06-22 13:24:19.000000000 -0000
++++ lincity-1.13.1/screen.h	2020-02-26 09:14:31.473725606 -0000
+@@ -20,7 +20,7 @@
+ extern unsigned char start_font2[4096];
+ extern unsigned char start_font3[4096];
+ 
+-int monthgraph_style;
++extern int monthgraph_style;
+ 
+ /* This is on in screen_full_refresh, used in *_refresh() */
+ extern char screen_refreshing;

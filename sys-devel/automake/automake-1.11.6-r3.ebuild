@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -42,10 +42,6 @@ src_prepare() {
 	export HELP2MAN=true
 	sed -i -e "/APIVERSION=/s:=.*:=${SLOT}:" configure || die
 	export TZ="UTC"  #589138
-}
-
-src_configure() {
-	econf --docdir="\$(datarootdir)/doc/${PF}"
 }
 
 src_compile() {

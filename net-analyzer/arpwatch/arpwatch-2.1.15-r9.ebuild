@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -41,7 +41,7 @@ src_prepare() {
 	cp "${WORKDIR}"/arpwatch-patchset/*.8 . || die
 }
 
-src_install () {
+src_install() {
 	dosbin arpwatch arpsnmp arp2ethers massagevendor arpfetch bihourly.sh
 	doman arpwatch.8 arpsnmp.8 arp2ethers.8 massagevendor.8 arpfetch.8 bihourly.8
 

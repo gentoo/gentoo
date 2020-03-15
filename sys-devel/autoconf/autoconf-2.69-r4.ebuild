@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -29,7 +29,7 @@ RDEPEND="${DEPEND}
 [[ ${PV} == "9999" ]] && DEPEND+=" >=sys-apps/texinfo-4.3"
 PDEPEND="emacs? ( app-emacs/autoconf-mode )"
 
-src_prepare()   {
+src_prepare() {
 	# usr/bin/libtool is provided by binutils-apple, need gnu libtool
 	[[ ${CHOST} == *-darwin* ]] && \
 		PATCHES+=( "${FILESDIR}"/${PN}-2.61-darwin.patch )

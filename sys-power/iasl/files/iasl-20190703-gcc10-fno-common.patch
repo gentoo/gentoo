@@ -1,0 +1,64 @@
+--- a/source/compiler/aslcompiler.l
++++ b/source/compiler/aslcompiler.l
+@@ -156,7 +156,7 @@
+ 
+ #include <stdlib.h>
+ #include <string.h>
+-YYSTYPE AslCompilerlval;
++#define YYSTYPE AslCompilerlval;
+ 
+ /*
+  * Generation:  Use the following command line:
+--- a/source/compiler/dtparser.l
++++ b/source/compiler/dtparser.l
+@@ -208,7 +208,7 @@
+ /*
+  * Local support functions
+  */
+-YY_BUFFER_STATE         LexBuffer;
++static YY_BUFFER_STATE         LexBuffer;
+ 
+ /******************************************************************************
+  *
+--- a/source/compiler/prparser.l
++++ b/source/compiler/prparser.l
+@@ -224,7 +224,7 @@
+ /*
+  * Local support functions
+  */
+-YY_BUFFER_STATE         LexBuffer;
++static YY_BUFFER_STATE         LexBuffer;
+ 
+ 
+ /******************************************************************************
+--- a/source/include/acglobal.h
++++ b/source/include/acglobal.h
+@@ -438,7 +438,6 @@
+ ACPI_INIT_GLOBAL (ACPI_THREAD_ID,       AcpiGbl_DbThreadId, ACPI_INVALID_THREAD_ID);
+ 
+ ACPI_GLOBAL (BOOLEAN,                   AcpiGbl_DbOpt_NoIniMethods);
+-ACPI_GLOBAL (BOOLEAN,                   AcpiGbl_DbOpt_NoRegionSupport);
+ ACPI_GLOBAL (BOOLEAN,                   AcpiGbl_DbOutputToFile);
+ ACPI_GLOBAL (char *,                    AcpiGbl_DbBuffer);
+ ACPI_GLOBAL (char *,                    AcpiGbl_DbFilename);
+--- a/source/include/acpixf.h
++++ b/source/include/acpixf.h
+@@ -231,6 +231,8 @@
+  *
+  ****************************************************************************/
+ 
++ACPI_INIT_GLOBAL (BOOLEAN,          AcpiGbl_DbOpt_NoRegionSupport, FALSE);
++
+ /*
+  * Enable "slack mode" of the AML interpreter?  Default is FALSE, and the
+  * interpreter strictly follows the ACPI specification. Setting to TRUE
+--- a/source/tools/acpiexec/aemain.c
++++ b/source/tools/acpiexec/aemain.c
+@@ -192,7 +192,6 @@
+ UINT8                       AcpiGbl_RegionFillValue = 0;
+ BOOLEAN                     AcpiGbl_IgnoreErrors = FALSE;
+ BOOLEAN                     AcpiGbl_AbortLoopOnTimeout = FALSE;
+-BOOLEAN                     AcpiGbl_DbOpt_NoRegionSupport = FALSE;
+ UINT8                       AcpiGbl_UseHwReducedFadt = FALSE;
+ BOOLEAN                     AcpiGbl_DoInterfaceTests = FALSE;
+ BOOLEAN                     AcpiGbl_LoadTestTables = FALSE;

@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -17,11 +17,11 @@ PATCHES=(
 	"${FILESDIR}"/${P}-fix-path.patch
 )
 
-src_configure(){
+src_configure() {
 	econf --enable-static=$(usex static-libs)
 }
 
-src_install(){
+src_install() {
 	default
 	find "${D}" -name '*.la' -delete || die
 	rm "${D}/usr/share/doc/${PF}/LICENSE" || die

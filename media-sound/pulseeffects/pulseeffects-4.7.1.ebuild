@@ -59,13 +59,13 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-pkg_postinst(){
+pkg_postinst() {
 	gnome2_gconf_install
 	gnome2_schemas_update
 	gnome2_icon_cache_update
 }
 
-pkg_postrm(){
+pkg_postrm() {
 	gnome2_gconf_uninstall
 	gnome2_schemas_update
 	gnome2_icon_cache_update

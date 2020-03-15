@@ -6,6 +6,7 @@
 		<name>Georgy Yakovlev</name>
 	</maintainer>
 	<use>
-		<flag name="gtk3">Enable GTK3 integration (tray, theme, filepicker, etc)</flag>
+		<flag name="enchant">Enable the app-text/aspell spell-checking backend</flag>
+		<flag name="hunspell">Enable the app-text/hunspell spell-checking backend</flag>
 	</use>
 </pkgmetadata>

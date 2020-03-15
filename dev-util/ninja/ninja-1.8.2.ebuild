@@ -3,7 +3,7 @@
 
 EAPI=6
 
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit bash-completion-r1 elisp-common python-any-r1 toolchain-funcs
 
@@ -41,8 +41,7 @@ RDEPEND="
 			app-editors/vim
 			app-editors/gvim
 		)
-	)
-	!<net-irc/ninja-1.5.9_pre14-r1" #436804
+	)"
 
 run_for_build() {
 	if tc-is-cross-compiler; then

@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -55,9 +55,7 @@ src_configure() {
 		$(use_with lirc) \
 		$(use_enable debug) \
 		--without-equalizer \
-		--with-qt-version=5 \
-		--htmldir=/usr/share/doc/${PF}/html
-
+		--with-qt-version=5
 }
 
 src_install() {

@@ -38,6 +38,11 @@ BDEPEND="
 		)
 	)"
 
+PATCHES=(
+	# https://bugs.gentoo.org/706760
+	"${FILESDIR}"/${PN}-7.3.0-gcc10-fno-common.patch
+)
+
 check_env() {
 	if use low-memory; then
 		CHECKREQS_MEMORY="1750M"

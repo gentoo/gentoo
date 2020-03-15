@@ -64,7 +64,7 @@ python_prepare_all() {
 	fi
 }
 
-python_test () {
+python_test() {
 	# pip test suite likes to test installed version of pip, both the module and the executable.
 	# Here we install it into a temporary dir and add to PATHs in a subshell.
 	EPYTHON_ROOT="${T}/${EPYTHON}_root"

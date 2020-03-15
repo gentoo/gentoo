@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -47,7 +47,7 @@ src_configure() {
 	# the gtk+ dep already pulls in libX11, so we might as well hardcode with-x
 }
 
-src_install () {
+src_install() {
 	default
 
 	# Get rid of the .la files.

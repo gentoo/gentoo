@@ -27,11 +27,8 @@ RDEPEND="
 	>=dev-python/jinja-2.10.1[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.4.2[${PYTHON_USEDEP}]
 	>=dev-python/pypeg2-2.15.2[${PYTHON_USEDEP}]
-	|| (  (
-			>=dev-python/PyQt5-5.12[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
-			dev-python/PyQtWebEngine[${PYTHON_USEDEP}] )
-		<dev-python/PyQt5-5.12[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,webengine,widgets]
-	)
+	>=dev-python/PyQt5-5.12[${PYTHON_USEDEP},declarative,multimedia,gui,network,opengl,printsupport,sql,widgets]
+	dev-python/PyQtWebEngine[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-5.1.2[${PYTHON_USEDEP},libyaml]
 "
 

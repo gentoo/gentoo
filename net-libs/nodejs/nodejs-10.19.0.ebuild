@@ -4,7 +4,7 @@
 EAPI=7
 PYTHON_COMPAT=( python2_7 )
 PYTHON_REQ_USE="threads"
-inherit bash-completion-r1 flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
+inherit bash-completion-r1 eutils flag-o-matic pax-utils python-any-r1 toolchain-funcs xdg-utils
 
 DESCRIPTION="A JavaScript runtime built on Chrome's V8 JavaScript engine"
 HOMEPAGE="https://nodejs.org/"
@@ -13,10 +13,11 @@ SRC_URI="https://nodejs.org/dist/v${PV}/node-v${PV}.tar.xz"
 LICENSE="Apache-1.1 Apache-2.0 BSD BSD-2 MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86 ~amd64-linux ~x64-macos"
-IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl systemtap test"
+IUSE="cpu_flags_x86_sse2 debug doc icu inspector +npm +snapshot +ssl +system-ssl systemtap test"
 REQUIRED_USE="
 	inspector? ( icu ssl )
 	npm? ( ssl )
+	system-ssl? ( ssl )
 "
 
 RDEPEND="
@@ -26,7 +27,7 @@ RDEPEND="
 	>=net-libs/nghttp2-1.39.2
 	sys-libs/zlib
 	icu? ( >=dev-libs/icu-64.2:= )
-	ssl? ( >=dev-libs/openssl-1.1.1:0= )
+	system-ssl? ( >=dev-libs/openssl-1.1.1:0= )
 "
 DEPEND="
 	${RDEPEND}
@@ -99,7 +100,11 @@ src_configure() {
 	use inspector || myconf+=( --without-inspector )
 	use npm || myconf+=( --without-npm )
 	use snapshot && myconf+=( --with-snapshot )
-	use ssl && myconf+=( --shared-openssl ) || myconf+=( --without-ssl )
+	if use ssl; then
+		use system-ssl && myconf+=( --shared-openssl )
+	else
+		myconf+=( --without-ssl )
+	fi
 
 	local myarch=""
 	case ${ABI} in

@@ -13,7 +13,7 @@ SRC_URI="http://ftp.midnight-commander.org/${MY_P}.tar.xz"
 
 LICENSE="GPL-3"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
+KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~mips ppc ppc64 ~s390 ~sh sparc x86 ~amd64-linux ~ppc-macos ~x64-macos ~x86-macos ~sparc-solaris ~sparc64-solaris ~x86-solaris"
 IUSE="+edit gpm nls samba sftp +slang spell test unicode X +xdg"
 
 REQUIRED_USE="spell? ( edit )"
@@ -42,6 +42,8 @@ RESTRICT="!test? ( test )"
 
 S=${WORKDIR}/${MY_P}
 
+PATCHES=("${FILESDIR}"/${P}-mc-lib-twice-4070.patch)
+
 pkg_pretend() {
 	if use slang && use unicode ; then
 		ewarn "\"unicode\" USE flag only takes effect when the \"slang\" USE flag is disabled."
@@ -52,8 +54,6 @@ src_configure() {
 	[[ ${CHOST} == *-solaris* ]] && append-ldflags "-lnsl -lsocket"
 
 	local myeconfargs=(
-		--disable-dependency-tracking
-		--disable-silent-rules
 		--enable-charset
 		--enable-vfs
 		--with-homedir=$(usex xdg 'XDG' '.mc')

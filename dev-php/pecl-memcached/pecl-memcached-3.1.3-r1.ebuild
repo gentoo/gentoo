@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -13,7 +13,7 @@ DESCRIPTION="Interface PHP with memcached via libmemcached library"
 LICENSE="PHP-3"
 SLOT="7"
 KEYWORDS="amd64 ~arm ~arm64 x86"
-IUSE="examples igbinary json sasl +session test"
+IUSE="igbinary json sasl +session test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND=">=dev-libs/libmemcached-1.0.14[sasl?]
@@ -36,7 +36,7 @@ RDEPEND="
 DEPEND="${RDEPEND} test? ( net-misc/memcached )"
 RDEPEND="${RDEPEND} php_targets_php5-6? ( dev-php/pecl-memcached:0[php_targets_php5-6(-)] )"
 
-src_prepare(){
+src_prepare() {
 	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 ; then
 		php-ext-source-r3_src_prepare
 	else
@@ -69,7 +69,7 @@ src_test() {
 	fi
 }
 
-src_install(){
+src_install() {
 	if use php_targets_php7-1 || use php_targets_php7-2 || use php_targets_php7-3 ; then
 		php-ext-source-r3_src_install
 	fi

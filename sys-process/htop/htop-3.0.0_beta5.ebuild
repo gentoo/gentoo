@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7} )
 
 inherit autotools linux-info python-any-r1
 
@@ -30,9 +30,9 @@ DOCS=( ChangeLog README )
 CONFIG_CHECK="~TASKSTATS ~TASK_XACCT ~TASK_IO_ACCOUNTING ~CGROUPS"
 
 PATCHES=(
-
 	# Fixes from upstream (can usually be removed with next version bump)
-	"${FILESDIR}/${PN}-2.1.0-header_updates.patch"
+	"${FILESDIR}"/${PN}-2.1.0-header_updates.patch
+	"${FILESDIR}"/${PN}-3.0.0_beta5-gcc-10.patch
 )
 
 pkg_setup() {

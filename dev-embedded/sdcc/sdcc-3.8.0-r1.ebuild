@@ -111,7 +111,6 @@ src_configure() {
 		$(use_enable z180 z180-port) \
 		$(use_enable z80 z80-port) \
 		--disable-doc \
-		--docdir="${EPREFIX}/usr/share/doc/${PF}" \
 		--without-ccache
 }
 
