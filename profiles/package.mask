@@ -593,14 +593,6 @@ net-misc/gnome-remote-desktop
 # Masked for removal in 30 days.
 kde-misc/kwebkitpart
 
-# Michał Górny <mgorny@gentoo.org> (2020-02-15)
-# To reduce duplication of effort, prebuilt vanilla kernel packages
-# are discontinued.  Since Gentoo patchset is really minimal,
-# sys-kernel/gentoo-kernel-bin can be used as a replacement.  Vanilla
-# kernels can still be built using sys-kernel/vanilla-kernel.
-# Removal in 30 days.
-sys-kernel/vanilla-kernel-bin
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-12)
 # GNOME 3.35 development release packages
 >=dev-libs/vala-common-0.47
@@ -609,28 +601,6 @@ dev-lang/vala:0.48
 # Stefan Strogin <steils@gentoo.org> (2020-02-12)
 # Mask for testing revdeps.
 >=dev-games/mygui-3.4.0
-
-# David Seifert <soap@gentoo.org> (2020-02-11)
-# Unmaintained, EAPI 4, last release over 9 years ago, no revdeps.
-# Removal in 30 days.
-app-vim/cream
-
-# David Seifert <soap@gentoo.org> (2020-02-11)
-# Unmaintained, EAPI 4, last release over 9 years ago, ebuild has QA
-# issues, no revdeps.  Removal in 30 days.  Bug #558354.
-net-im/coccinella
-
-# David Seifert <soap@gentoo.org> (2020-02-10)
-# Unmaintained, only live ebuild, doesn't build, last release over 7
-# years ago, EAPI 4. Removal in 15 days. Bug #593008.
-dev-lang/rebol
-dev-lang/rebol-bin
-
-# David Seifert <soap@gentoo.org> (2020-02-10)
-# Unmaintained, EAPI 4, doesn't respect CFLAGS and LDFLAGS, which masks
-# undefined symbols in the shared object, upstream gone, no other distro
-# packages this anymore, no revdeps. Removal in 30 days.
-sys-apps/hbaapi
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-07)
 # Mask until sys-libs/libxcrypt[system] is unmasked

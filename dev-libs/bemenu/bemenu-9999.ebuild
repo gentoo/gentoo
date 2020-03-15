@@ -3,8 +3,6 @@
 
 EAPI=7
 
-inherit cmake-utils
-
 DESCRIPTION="dmenu clone for wayland"
 HOMEPAGE="https://github.com/Cloudef/bemenu"
 if [[ ${PV} == 9999 ]]; then
@@ -36,21 +34,19 @@ DEPEND="
 		x11-libs/libX11
 		x11-libs/cairo[X]
 		x11-libs/pango[X]
+		x11-libs/libXinerama
 	)
 "
 RDEPEND="${DEPEND}"
 BDEPEND="doc? ( app-doc/doxygen )"
 
-src_configure() {
-	local mycmakeargs=(
-		-DCURSES_LIBRARY=/usr/$(get_libdir)/libncursesw.so
-		-DBEMENU_CURSES_RENDERER=$(usex ncurses ON OFF)
-		-DBEMENU_WAYLAND_RENDERER=$(usex wayland ON OFF)
-		-DBEMENU_X11_RENDERER=$(usex X ON OFF)
-	)
-	cmake-utils_src_configure
+PATCHES=( "${FILESDIR}/soname-fix.patch" )
+
+src_compile() {
+	emake clients $(usex ncurses curses) $(usex X x11) $(usex wayland wayland)
+	use doc && emake doxygen
 }
 
 src_install() {
-	cmake-utils_src_install
+	emake install PREFIX="${D}"/usr libdir=/$(get_libdir)
 }

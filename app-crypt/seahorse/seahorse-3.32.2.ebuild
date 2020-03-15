@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -37,6 +37,10 @@ DEPEND="${RDEPEND}
 	app-crypt/gcr[vala]
 	app-crypt/libsecret[vala]
 "
+
+PATCHES=(
+	"${FILESDIR}"/${PV}-libsecret-0.20-compat.patch # included upstream for 3.34
+)
 
 src_prepare() {
 	xdg_src_prepare

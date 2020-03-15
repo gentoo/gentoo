@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,6 +19,8 @@ IUSE="server test"
 RESTRICT="!test? ( test )"
 
 PDEPEND="server? ( =dev-ruby/builder-3* )"
+
+ruby_add_depend "virtual/ruby-ssl"
 
 ruby_add_bdepend "
 	test? (
