@@ -41,7 +41,7 @@ python_prepare_all() {
 }
 
 python_configure_all() {
-	strip-flags -ftracer -ftree-vectorize
+	strip-flags # was '-ftracer -ftree-vectorize', TODO: see bug #712594
 	# Note: make it impl-conditional if py3 is supported
 	append-flags -fno-strict-aliasing
 
