@@ -8,7 +8,7 @@ inherit cmake python-single-r1
 
 DESCRIPTION="The Zeek Network Security Monitor"
 HOMEPAGE="https://www.zeek.org"
-SRC_URI="https://www.zeek.org/downloads/${P}.tar.gz"
+SRC_URI="https://old.zeek.org/downloads/${P}.tar.gz"
 LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -25,7 +25,10 @@ RDEPEND="dev-libs/caf:0=
 	jemalloc? ( dev-libs/jemalloc:0= )
 	kerberos? ( virtual/krb5 )
 	python? ( ${PYTHON_DEPS}
-		dev-python/pybind11[${PYTHON_USEDEP}] )
+		$(python_gen_cond_dep '
+			dev-python/pybind11[${PYTHON_MULTI_USEDEP}]
+		')
+	)
 	sendmail? ( virtual/mta )
 	tcmalloc? ( dev-util/google-perftools )"
 
@@ -38,7 +41,7 @@ REQUIRED_USE="zeekctl? ( python )
 	python? ( ${PYTHON_REQUIRED_USE} )"
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-no-wrapper-scripts.patch
+	"${FILESDIR}"/${PN}-3.0-no-wrapper-scripts.patch
 	"${FILESDIR}"/${PN}-no-strip.patch
 	"${FILESDIR}"/${PN}-no-uninitialized-warning.patch
 	"${FILESDIR}"/${PN}-remove-unnecessary-remove.patch
