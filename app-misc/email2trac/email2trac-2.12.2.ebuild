@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="5"
+EAPI="7"
 
 PYTHON_COMPAT=( python2_7 )
 inherit python-single-r1
@@ -16,7 +16,7 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
-		<www-apps/trac-1.1[${PYTHON_SINGLE_USEDEP}]"
+		<www-apps/trac-1.3[${PYTHON_SINGLE_USEDEP}]"
 
 pkg_setup() {
 	einfo "You can set the following variables in make.conf:"
@@ -27,6 +27,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	default
+
 	sed -i -e "/^CFLAGS/s:=:&${CFLAGS} :" \
 		-e "s:\$(CC):& ${LDFLAGS} :" \
 		Makefile.in || die 'sed failed'
