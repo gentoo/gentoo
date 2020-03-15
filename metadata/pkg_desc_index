@@ -1990,7 +1990,7 @@ app-metrics/mongodb_exporter 0.6.2-r1: Prometheus exporter for MongoDB
 app-metrics/mysqld_exporter 0.10.0-r1 0.11.0: Prometheus exporter for MySQL server metrics
 app-metrics/nginx-lua-prometheus 0.1_pre20170610: Library that exports Nginx metrics to Prometheus
 app-metrics/nginx-vts-exporter 0.10.3: Nginx virtual host traffic stats exporter for Prometheus
-app-metrics/node_exporter 0.18.1 1.0.0_rc0: Prometheus exporter for machine metrics
+app-metrics/node_exporter 0.18.1 1.0.0_rc0 1.0.0_rc0-r1: Prometheus exporter for machine metrics
 app-metrics/openvpn_exporter 0.2.1: Prometheus Exporter for OpenVPN
 app-metrics/postfix_exporter 0.1.2: Prometheus Exporter for Postfix
 app-metrics/postgres_exporter 0.4.7: PostgreSQL stats exporter for Prometheus
@@ -5344,6 +5344,7 @@ dev-lua/lua-argparse 0.6.0: Command line argument parser for the Lua Programming
 dev-lua/lua-cjson 2.1.0.6 2.1.0.7: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.7.3 0.7.7_p0-r1 0.7.7_p1: OpenSSL binding for Lua
 dev-lua/lua-term 0.3: Terminal functions for Lua
+dev-lua/lua-utf8 0.1.1: UTF-8 support for Lua
 dev-lua/lua-zlib 1.1: Lua bindings to zlib
 dev-lua/lua_cliargs 2.5_p5 3.0_p1: A command-line argument parser.
 dev-lua/luacheck 0.20.0: A tool for linting and static analysis of Lua code

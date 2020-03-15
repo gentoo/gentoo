@@ -1,0 +1,14 @@
+BDEPEND=>=dev-lang/go-1.12 app-arch/unzip virtual/pkgconfig
+DEFINED_PHASES=compile install postinst prepare unpack
+DEPEND=>=dev-util/promu-0.3.0 acct-group/node_exporter acct-user/node_exporter
+DESCRIPTION=Prometheus exporter for machine metrics
+EAPI=7
+HOMEPAGE=https://github.com/prometheus/node_exporter
+KEYWORDS=~amd64
+LICENSE=Apache-2.0 BSD BSD-2 MIT
+RDEPEND=acct-group/node_exporter acct-user/node_exporter
+RESTRICT=strip
+SLOT=0
+SRC_URI=https://github.com/prometheus/node_exporter/archive/v1.0.0-rc.0.tar.gz -> node_exporter-1.0.0_rc0.tar.gz
+_eclasses_=go-module	cca12a5688562f107c14ffcf28195dd7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=50b2c961a87b481cbbf6ac6fc9e2e8d9
