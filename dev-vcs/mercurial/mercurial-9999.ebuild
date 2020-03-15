@@ -57,7 +57,7 @@ python_prepare_all() {
 }
 
 python_compile() {
-	strip-flags -ftracer -ftree-vectorize
+	strip-flags # was '-ftracer -ftree-vectorize', TODO: see bug #712594
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	distutils-r1_python_compile build_ext --no-zstd
 }
