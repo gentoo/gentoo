@@ -133,6 +133,11 @@ src_configure() {
 	fi
 
 	local myeconfargs=(
+		# glibc-2.30 removes it; since we can't cleanly force-rebuild
+		# Python on glibc upgrade, remove it proactively to give
+		# a chance for users rebuilding python before glibc
+		ac_cv_header_stropts_h=no
+
 		--with-fpectl
 		--enable-shared
 		$(use_enable ipv6)
@@ -149,6 +154,7 @@ src_configure() {
 	)
 
 	OPT="" econf "${myeconfargs[@]}"
+
 
 	if use threads && grep -q "#define POSIX_SEMAPHORES_NOT_ENABLED 1" pyconfig.h; then
 		eerror "configure has detected that the sem_open function is broken."
