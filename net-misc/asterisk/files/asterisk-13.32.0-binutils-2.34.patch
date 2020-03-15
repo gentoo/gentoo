@@ -1,0 +1,17 @@
+diff --git a/main/backtrace.c b/main/backtrace.c
+index 2623d7f..1bc9bea 100644
+--- a/main/backtrace.c
++++ b/main/backtrace.c
+@@ -59,6 +59,12 @@
+ #if defined(HAVE_DLADDR) && defined(HAVE_BFD) && defined(BETTER_BACKTRACES)
+ #include <dlfcn.h>
+ #include <bfd.h>
++#ifndef bfd_get_section_size
++#define bfd_get_section_size(x) bfd_section_size(x)
++#endif
++#ifndef bfd_get_section_vma
++#define bfd_get_section_vma(x, y)	bfd_section_vma(y)
++#endif
+ #endif
+ 
+ #include <pthread.h>
