@@ -13,7 +13,7 @@ KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
 IUSE="libressl"
 
 DEPEND="dev-lang/lua:="
-RDEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
 	net-misc/curl
 	!libressl? ( dev-libs/openssl:0 )
 	libressl? ( dev-libs/libressl:0 )
