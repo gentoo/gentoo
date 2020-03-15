@@ -22,7 +22,3 @@ LICENSE="Apache-2.0"
 SLOT="0"
 
 BDEPEND=">=dev-util/cmake-3.10.2"
-RDEPEND="
-	!<dev-util/vulkan-tools-1.1.124
-	!<media-libs/vulkan-layers-1.1.125
-"
