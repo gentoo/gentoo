@@ -80,6 +80,10 @@ pkg_postinst() {
 	elog
 	elog "Check the configuration file in ~/.config/youtube-viewer/"
 	elog "and configure your video player backend."
+	elog
+	ewarn "Starting with version 3.7.4, youtube-viewer requires the user to"
+	ewarn "get their own API key to function. Please refer to README.md or"
+	ewarn "https://github.com/trizen/youtube-viewer#logging-in for details!"
 }
 
 pkg_postrm() {
