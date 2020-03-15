@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
 <glsa id="201807-04">
-  <title>cURL:Heap-based Buffer Overflow </title>
+  <title>cURL: Heap-based buffer overflow</title>
   <synopsis>A heap-based buffer overflow in cURL might allow remote attackers
     to execute arbitrary code.
   </synopsis>
