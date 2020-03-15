@@ -26,10 +26,11 @@ S="${WORKDIR}/${PN//-/}-${PV}"
 src_prepare() {
 	default
 
-	cp -v ${FILESDIR}/${PN}.Makefile ${S}/Makefile || die
+	cp -v "${FILESDIR}/${PN}".Makefile "${S}"/Makefile || die
 }
 
 src_compile() {
+	tc-export CC
 	emake DESTDIR="${D}" PREFIX="${EPREFIX}" MY_USE_LUA="$(usex luajit 'luajit' 'lua')" PKG_CONFIG="$(tc-getPKG_CONFIG)"
 }
 
@@ -39,5 +40,5 @@ src_install() {
 }
 
 src_test() {
-	LUA_CPATH=./src/?.so $(usex luajit 'luajit' 'lua') test.lua || die
+	LUA_CPATH=./?.so $(usex luajit 'luajit' 'lua') test.lua || die
 }
