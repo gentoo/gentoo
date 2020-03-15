@@ -11,6 +11,7 @@ LUA_SHARE       := $(shell $(PKG_CONFIG) --variable INSTALL_LMOD $(MY_USE_LUA))
 CWARNS          := -Wall -pedantic
 CFLAGS          += -I$(LUA_INC) -fPIC $(CWARNS)
 LIB_OPTION      := -shared
+LDFLAGS         += $(LIB_OPTION)
 
 SONAME          := lua-utf8.so
 SONAMEV         := $(SONAME).0
@@ -29,7 +30,7 @@ $(SONAME):
 	ln -s $(SONAMEV) $@
 
 $(LIBRARY): $(OBJ)
-	$(CC) $(CFLAGS) $(LIB_OPTION) -o $(LIBRARY) $(OBJ) -lc
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(LIBRARY) $(OBJ) -lc
 
 install:
 	install -d $(DESTDIR)$(LUA_LIBDIR)
