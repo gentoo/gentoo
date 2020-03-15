@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-29">
+  <title>cURL: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in cURL, the worst of
+    which may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">curl</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>686050</bug>
+  <bug>694020</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-misc/curl" auto="yes" arch="*">
+      <unaffected range="ge">7.66.0</unaffected>
+      <vulnerable range="lt">7.66.0</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>A command line tool and library for transferring data with URLs.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in cURL. Please review the
+      CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker could possibly execute arbitrary code with the
+      privileges of the process or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All cURL users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-misc/curl-7.66.0"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5435">CVE-2019-5435</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5436">CVE-2019-5436</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5481">CVE-2019-5481</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-5482">CVE-2019-5482</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T16:31:33Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T16:37:06Z">whissi</metadata>
+</glsa>
