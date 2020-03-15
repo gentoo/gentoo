@@ -9,15 +9,16 @@ SRC_URI="http://luarocks.org/releases/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE=""
+KEYWORDS="~amd64 ~ppc ~ppc64 ~x86"
+IUSE="libressl"
 
-RDEPEND="dev-lang/lua:=
-	dev-libs/openssl:=
-	net-misc/curl"
-BDEPEND="${RDEPEND}
-	virtual/pkgconfig"
-DEPEND="${RDEPEND}"
+DEPEND="dev-lang/lua:="
+RDEPEND="${RDEPEND}
+	net-misc/curl
+	!libressl? ( dev-libs/openssl:0 )
+	libressl? ( dev-libs/libressl:0 )
+"
+BDEPEND="virtual/pkgconfig"
 
 src_configure() {
 	# econf doesn't work b/c it passes variables the custom configure can't
