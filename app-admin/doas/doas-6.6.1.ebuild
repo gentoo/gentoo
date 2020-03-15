@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
 inherit toolchain-funcs
 
@@ -22,14 +22,12 @@ RDEPEND="pam? ( sys-libs/pam )"
 DEPEND="${RDEPEND}
 	virtual/yacc"
 
-src_prepare()
-{
+src_prepare() {
 	default
 	sed -i 's/-Werror //' Makefile || die
 }
 
-src_configure()
-{
+src_configure() {
 	tc-export CC AR
 	./configure \
 		--prefix="${EPREFIX}"/usr \
