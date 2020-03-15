@@ -2,14 +2,23 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-PYTHON_COMPAT=( python3_{6,7} )
 
-inherit cmake-multilib cmake-utils git-r3 python-any-r1
+MY_PN=SPIRV-Tools
+CMAKE_ECLASS="cmake"
+PYTHON_COMPAT=( python3_{6,7} )
+inherit cmake-multilib python-any-r1
+
+if [[ ${PV} == *9999* ]]; then
+	EGIT_REPO_URI="https://github.com/KhronosGroup/${MY_PN}.git"
+	inherit git-r3
+else
+	SRC_URI="https://github.com/KhronosGroup/${MY_PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~ppc64 ~x86"
+	S="${WORKDIR}"/${MY_PN}-${PV}
+fi
 
 DESCRIPTION="Provides an API and commands for processing SPIR-V modules"
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-Tools"
-EGIT_REPO_URI="https://github.com/KhronosGroup/SPIRV-Tools.git"
-SRC_URI=""
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -28,13 +37,5 @@ multilib_src_configure() {
 		"-DSPIRV_WERROR=OFF"
 	)
 
-	cmake-utils_src_configure
-}
-
-multilib_src_install() {
-	cmake-utils_src_install
-
-	# create a header file with the commit hash of the current revision
-	# vulkan-tools needs this to build
-	echo "${EGIT_VERSION}" > "${D}/usr/include/${PN}/${PN}-commit.h" || die
+	cmake_src_configure
 }
