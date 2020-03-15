@@ -8,12 +8,12 @@ MY_PV=${PV//./_}
 
 DESCRIPTION="File System Library for the Lua Programming Language"
 HOMEPAGE="https://keplerproject.github.io/luafilesystem/"
-SRC_URI="https://github.com/keplerproject/luafilesystem/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/keplerproject/${PN}/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~x86"
-IUSE="luajit test"
+KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86"
+IUSE="doc luajit test"
 
 RESTRICT="!test? ( test )"
 
@@ -42,15 +42,15 @@ src_configure() {
 		LUA_INC+=-I$($(tc-getPKG_CONFIG) --variable includedir $(usex luajit 'luajit' 'lua'))
 
 		# OS dependent
-		LIB_OPTION=-shared #for Linux
+		LIB_OPTION=\$(LDFLAGS) -shared
 
 		LIBNAME=$T.so.$V
 
 		# Compilation directives
 		WARN=-O2 -Wall -fPIC -W -Waggregate-return -Wcast-align -Wmissing-prototypes -Wnested-externs -Wshadow -Wwrite-strings -pedantic
 		INCS=\$(LUA_INC)
-		CFLAGS=\$(WARN) \$(INCS)
-		CC=gcc
+		CFLAGS+=\$(WARN) \$(INCS)
+		CC=$(tc-getCC)
 	EOF
 }
 
@@ -59,7 +59,7 @@ src_test() {
 }
 
 src_install() {
-	local -a HTML_DOCS=( doc/us )
+	use doc && local HTML_DOCS=( doc/us/. )
 	einstalldocs
 
 	emake DESTDIR="${D}" install
