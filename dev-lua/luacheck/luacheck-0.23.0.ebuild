@@ -10,13 +10,14 @@ SRC_URI="https://github.com/mpeterv/luacheck/archive/${PV}.tar.gz -> ${P}.tar.gz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~ppc ~ppc64 ~x86"
+KEYWORDS="~amd64 ~ppc64"
 IUSE="doc luajit test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-lua/lua-argparse
+	dev-lua/lua-argparse[luajit=]
 	dev-lua/luafilesystem[luajit=]
+	dev-lua/lua-utf8[luajit=]
 	!luajit? ( >=dev-lang/lua-5.1:= )
 	luajit? ( dev-lang/luajit:2 )"
 BDEPEND="
@@ -46,7 +47,7 @@ src_install() {
 
 	newbin bin/luacheck.lua luacheck
 
-	use doc && HTML_DOCS=( html/. )
+	use doc && local HTML_DOCS=( html/. )
 
 	local -a DOCS=( CHANGELOG.md LICENSE README.md )
 	einstalldocs
