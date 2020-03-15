@@ -18,6 +18,7 @@ RDEPEND="
 	>=gnome-base/gnome-shell-3.34
 	>=gnome-extra/gnome-shell-extensions-3.34
 	>=gnome-extra/gnome-shell-extension-applications-overview-tooltip-6
+	>=gnome-extra/gnome-shell-extension-bluetooth-quick-connect-10
 	>=gnome-extra/gnome-shell-extension-dash-to-panel-26
 	>=gnome-extra/gnome-shell-extension-desktop-icons-19.10.2
 	>=gnome-extra/gnome-shell-extension-gsconnect-33
