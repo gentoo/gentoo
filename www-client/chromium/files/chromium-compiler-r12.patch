@@ -1,6 +1,6 @@
-From 2e9a5f0e54d8968c4fab8f1cd00c225e387f0187 Mon Sep 17 00:00:00 2001
+From c2a95e376474298b01cb04f1d5b2c6e3c76ba268 Mon Sep 17 00:00:00 2001
 From: Mike Gilbert <floppym@gentoo.org>
-Date: Fri, 6 Mar 2020 17:10:30 +0000
+Date: Fri, 13 Mar 2020 20:20:06 +0000
 Subject: [PATCH] Disable various compiler configs
 
 ---
@@ -8,7 +8,7 @@ Subject: [PATCH] Disable various compiler configs
  1 file changed, 23 insertions(+), 44 deletions(-)
 
 diff --git a/build/config/compiler/BUILD.gn b/build/config/compiler/BUILD.gn
-index d4597c7..4c651ac 100644
+index 8f7fcc3..d27e71e 100644
 --- a/build/config/compiler/BUILD.gn
 +++ b/build/config/compiler/BUILD.gn
 @@ -261,8 +261,6 @@ config("compiler") {
@@ -47,7 +47,7 @@ index d4597c7..4c651ac 100644
    # C11/C++11 compiler flags setup.
    # ---------------------------
    if (is_linux || is_android || (is_nacl && is_clang) || current_os == "aix") {
-@@ -1442,6 +1420,12 @@ config("default_warnings") {
+@@ -1437,6 +1415,12 @@ config("default_warnings") {
          cflags_cc += [ "-Wno-class-memaccess" ]
        }
  
@@ -60,7 +60,7 @@ index d4597c7..4c651ac 100644
        # -Wunused-local-typedefs is broken in gcc,
        # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=63872
        cflags += [ "-Wno-unused-local-typedefs" ]
-@@ -1563,7 +1547,7 @@ config("chromium_code") {
+@@ -1558,7 +1542,7 @@ config("chromium_code") {
        defines = [ "_HAS_NODISCARD" ]
      }
    } else {
@@ -69,7 +69,7 @@ index d4597c7..4c651ac 100644
      if (treat_warnings_as_errors) {
        cflags += [ "-Werror" ]
  
-@@ -1572,10 +1556,6 @@ config("chromium_code") {
+@@ -1567,10 +1551,6 @@ config("chromium_code") {
        # well.
        ldflags = [ "-Werror" ]
      }
@@ -80,7 +80,7 @@ index d4597c7..4c651ac 100644
  
      # In Chromium code, we define __STDC_foo_MACROS in order to get the
      # C99 macros on Mac and Linux.
-@@ -1584,15 +1564,6 @@ config("chromium_code") {
+@@ -1579,15 +1559,6 @@ config("chromium_code") {
        "__STDC_FORMAT_MACROS",
      ]
  
@@ -96,7 +96,7 @@ index d4597c7..4c651ac 100644
      if (is_mac) {
        cflags_objc = [ "-Wobjc-missing-property-synthesis" ]
        cflags_objcc = [ "-Wobjc-missing-property-synthesis" ]
-@@ -1984,7 +1955,8 @@ config("default_stack_frames") {
+@@ -1979,7 +1950,8 @@ config("default_stack_frames") {
  }
  
  # Default "optimization on" config.
@@ -106,7 +106,7 @@ index d4597c7..4c651ac 100644
    if (is_win) {
      # Favor size over speed, /O1 must be before the common flags.
      # /O1 implies /Os and /GF.
-@@ -2005,7 +1977,8 @@ config("optimize") {
+@@ -2000,7 +1972,8 @@ config("optimize") {
  }
  
  # Turn off optimizations.
@@ -116,7 +116,7 @@ index d4597c7..4c651ac 100644
    if (is_win) {
      cflags = [
        "/Od",  # Disable optimization.
-@@ -2039,7 +2012,8 @@ config("no_optimize") {
+@@ -2034,7 +2007,8 @@ config("no_optimize") {
  # Turns up the optimization level. On Windows, this implies whole program
  # optimization and link-time code generation which is very expensive and should
  # be used sparingly.
@@ -126,7 +126,7 @@ index d4597c7..4c651ac 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2071,7 +2045,8 @@ config("optimize_max") {
+@@ -2066,7 +2040,8 @@ config("optimize_max") {
  #
  # TODO(crbug.com/621335) - rework how all of these configs are related
  # so that we don't need this disclaimer.
@@ -136,7 +136,7 @@ index d4597c7..4c651ac 100644
    if (is_nacl && is_nacl_irt) {
      # The NaCl IRT is a special case and always wants its own config.
      # Various components do:
-@@ -2096,7 +2071,8 @@ config("optimize_speed") {
+@@ -2091,7 +2066,8 @@ config("optimize_speed") {
    }
  }
  
@@ -146,7 +146,7 @@ index d4597c7..4c651ac 100644
    cflags = [ "-O1" ] + common_optimize_on_cflags
    ldflags = common_optimize_on_ldflags
    visibility = [ ":default_optimization" ]
-@@ -2212,7 +2188,8 @@ config("win_pdbaltpath") {
+@@ -2207,7 +2183,8 @@ config("win_pdbaltpath") {
  }
  
  # Full symbols.
@@ -156,7 +156,7 @@ index d4597c7..4c651ac 100644
    if (is_win) {
      if (is_clang) {
        cflags = [ "/Z7" ]  # Debug information in the .obj files.
-@@ -2318,7 +2295,8 @@ config("symbols") {
+@@ -2313,7 +2290,8 @@ config("symbols") {
  # Minimal symbols.
  # This config guarantees to hold symbol for stack trace which are shown to user
  # when crash happens in unittests running on buildbot.
@@ -166,16 +166,16 @@ index d4597c7..4c651ac 100644
    if (is_win) {
      # Functions, files, and line tables only.
      cflags = []
-@@ -2373,7 +2351,8 @@ config("minimal_symbols") {
- }
- 
- # No symbols.
+@@ -2370,7 +2348,8 @@ config("minimal_symbols") {
+ # This configuration contains function names only. That is, the compiler is
+ # told to not generate debug information and the linker then just puts function
+ # names in the final debug information.
 -config("no_symbols") {
 +config("no_symbols") { }
 +config("xno_symbols") {
-   if (!is_win) {
-     cflags = [ "-g0" ]
-     asmflags = cflags
+   if (is_win) {
+     ldflags = [ "/DEBUG" ]
+ 
 -- 
 2.24.1
 
