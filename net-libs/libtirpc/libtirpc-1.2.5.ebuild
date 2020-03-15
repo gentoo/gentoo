@@ -16,7 +16,8 @@ KEYWORDS="~alpha amd64 arm ~arm64 hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~s
 IUSE="ipv6 kerberos static-libs"
 
 RDEPEND="kerberos? ( >=virtual/krb5-0-r1[${MULTILIB_USEDEP}] )"
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	elibc_musl? ( sys-libs/queue-standalone )"
 BDEPEND="
 	app-arch/xz-utils
 	>=virtual/pkgconfig-0-r1[${MULTILIB_USEDEP}]"
