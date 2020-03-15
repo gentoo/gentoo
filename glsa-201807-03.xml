@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
 <glsa id="201807-03">
-  <title>ZNC:Multiple Vulnerabilities</title>
+  <title>ZNC: Multiple Vulnerabilities</title>
   <synopsis>Multiple vulnerabilities have been found in ZNC, the worst of which
     could result in privilege escalation.
   </synopsis>
