@@ -5,7 +5,7 @@ EAPI="7"
 
 inherit db-use toolchain-funcs multilib pam systemd
 
-IUSE="arc dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn elibc_glibc exiscan-acl gnutls idn ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs +ssl syslog tcpd +tpda X"
+IUSE="arc +dane dcc +dkim dlfunc dmarc +dnsdb doc dovecot-sasl dsn elibc_glibc exiscan-acl gnutls idn ipv6 ldap libressl lmtp maildir mbx mysql nis pam perl pkcs11 postgres +prdr proxy radius redis sasl selinux spf sqlite srs +ssl syslog tcpd +tpda X"
 REQUIRED_USE="
 	arc? ( dkim spf )
 	dane? ( ssl !gnutls )
@@ -149,7 +149,7 @@ src_configure() {
 	local conffile="${EPREFIX}/etc/exim/exim.conf"
 	sed -e "48i\CFLAGS=${CFLAGS}" \
 		-e "s:BIN_DIRECTORY=/usr/exim/bin:BIN_DIRECTORY=${EPREFIX}/usr/sbin:" \
-		-e "s:EXIM_USER=:EXIM_USER=${MAILUSER}:" \
+		-e "s;EXIM_USER=;EXIM_USER=ref:${MAILUSER};" \
 		-e "s:CONFIGURE_FILE=.*$:CONFIGURE_FILE=${conffile}:" \
 		-e "s:ZCAT_COMMAND=.*$:ZCAT_COMMAND=${EPREFIX}/bin/zcat:" \
 		-e "s:COMPRESS_COMMAND=.*$:COMPRESS_COMMAND=${EPREFIX}/bin/gzip:" \
@@ -166,8 +166,11 @@ src_configure() {
 	EOC
 
 	# if we use libiconv, now is the time to tell so
-	use !elibc_glibc && use !elibc_musl && \
-		echo "EXTRALIBS_EXIM=-liconv" >> Makefile
+	if use !elibc_glibc && use !elibc_musl ; then
+		cat >> Makefile <<- EOC
+			EXTRALIBS_EXIM=-liconv
+		EOC
+	fi
 
 	# support for IPv6
 	if use ipv6; then
@@ -392,10 +395,9 @@ src_configure() {
 	fi
 
 	# DANE
-	if use dane; then
-		cat >> Makefile <<- EOC
-			SUPPORT_DANE=yes
-		EOC
+	if use !dane; then
+		# DANE is enabled by default
+		sed -i -e 's:^SUPPORT_DANE=yes:# SUPPORT_DANE=yes:' Makefile || die
 	fi
 
 	# DMARC
