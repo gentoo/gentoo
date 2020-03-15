@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-19">
+  <title>PPP: Buffer overflow</title>
+  <synopsis>A buffer overflow in PPP might allow a remote attacker to execute
+    arbitrary code.
+  </synopsis>
+  <product type="ebuild">PPP</product>
+  <announced>2020-03-15</announced>
+  <revised count="1">2020-03-15</revised>
+  <bug>710308</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-dialup/ppp" auto="yes" arch="*">
+      <unaffected range="ge">2.4.8</unaffected>
+      <vulnerable range="lt">2.4.8</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>PPP is a Unix implementation of the Point-to-Point Protocol.</p>
+  </background>
+  <description>
+    <p>It was discovered that bounds check in PPP for the rhostname was
+      improperly constructed in the EAP request and response functions.
+    </p>
+  </description>
+  <impact type="high">
+    <p>A remote attacker, by sending specially crafted authentication data,
+      could possibly execute arbitrary code with the privileges of the process
+      or cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All PPP users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-dialup/ppp-2.4.8"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-8597">CVE-2020-8597</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T02:58:39Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-15T03:04:09Z">whissi</metadata>
+</glsa>
