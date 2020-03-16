@@ -10779,7 +10779,7 @@ dev-vcs/hgview 1.9.0-r1: A Mercurial interactive history viewer
 dev-vcs/hub 2.13.0 2.14.1: Command-line wrapper for git that makes you better at GitHub
 dev-vcs/kdesvn 2.1.0: A frontend to the subversion vcs
 dev-vcs/lab 0.17.2: Lab wraps Git or Hub, making it simple to interact with repositories on GitLab
-dev-vcs/mercurial 4.6.2 4.9-r2 4.9.1 5.0.2 5.1.2 5.2.2-r1 9999: Scalable distributed SCM
+dev-vcs/mercurial 4.6.2 4.9-r2 4.9.1 5.0.2 5.1.2 5.2.2-r1 5.3.1 9999: Scalable distributed SCM
 dev-vcs/mercurial-server 1.2-r1 9999: Mercurial authentication and authorization tools
 dev-vcs/mr 1.20170129 1.20171231 1.20180726 1.99999999: Multiple Repository management tool
 dev-vcs/notify-webhook 0.1.0: Git post-receive web hook notifier in Python.
