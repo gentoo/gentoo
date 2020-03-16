@@ -16,9 +16,6 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=""
-RDEPEND="virtual/python-singledispatch[${PYTHON_USEDEP}]"
-
 PATCHES=(
 	"${FILESDIR}"/${P}-py34.patch
 )
