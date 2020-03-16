@@ -17,8 +17,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
-RDEPEND=">=dev-python/greenlet-0.3[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]"
+RDEPEND=">=dev-python/greenlet-0.3[${PYTHON_USEDEP}]"
 DEPEND="doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
 		>=dev-python/python-docs-2.7.6-r1:2.7 )
 	test? ( ${RDEPEND}
