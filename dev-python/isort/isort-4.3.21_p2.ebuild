@@ -20,8 +20,10 @@ KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~sparc ~x86"
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/pipfile[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]' -2)
+	$(python_gen_cond_dep '
+		dev-python/backports-functools-lru-cache[${PYTHON_USEDEP}]
+		dev-python/futures[${PYTHON_USEDEP}]
+	' -2)
 "
 BDEPEND="${RDEPEND}"
 
