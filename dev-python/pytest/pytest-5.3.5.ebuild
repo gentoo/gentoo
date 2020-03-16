@@ -32,8 +32,7 @@ RDEPEND="
 	<dev-python/pluggy-1
 	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/wcwidth[${PYTHON_USEDEP}]
-	virtual/python-funcsigs[${PYTHON_USEDEP}]"
+	dev-python/wcwidth[${PYTHON_USEDEP}]"
 
 # flake cause a number of tests to fail
 DEPEND="${RDEPEND}
