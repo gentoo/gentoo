@@ -38,10 +38,14 @@ RDEPEND="
 	idna? ( >=dev-python/idna-2.1[${PYTHON_USEDEP}] )
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.4.1[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
-	virtual/python-ipaddress[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/cffi-1.8:=[${PYTHON_USEDEP}]' 'python*')
-	$(python_gen_cond_dep '!~dev-python/cffi-1.11.3[${PYTHON_USEDEP}]' 'python*')
+	$(python_gen_cond_dep '
+		dev-python/enum34[${PYTHON_USEDEP}]
+		dev-python/ipaddress[${PYTHON_USEDEP}]
+	' -2)
+	$(python_gen_cond_dep '
+		>=dev-python/cffi-1.8:=[${PYTHON_USEDEP}]
+		!~dev-python/cffi-1.11.3[${PYTHON_USEDEP}]
+	' 'python*')
 	"
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-1.0[${PYTHON_USEDEP}]
