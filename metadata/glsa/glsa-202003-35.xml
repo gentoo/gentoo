@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-35">
+  <title>ProFTPd: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in ProFTPd, the worst of
+    which may lead to arbitrary code execution.
+  </synopsis>
+  <product type="ebuild">proftpd</product>
+  <announced>2020-03-16</announced>
+  <revised count="1">2020-03-16</revised>
+  <bug>699520</bug>
+  <bug>701814</bug>
+  <bug>710730</bug>
+  <access>remote</access>
+  <affected>
+    <package name="net-ftp/proftpd" auto="yes" arch="*">
+      <unaffected range="ge">1.3.6c</unaffected>
+      <vulnerable range="lt">1.3.6c</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>ProFTPD is an advanced and very configurable FTP server.</p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in ProFTPd. Please review
+      the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by interrupting the data transfer channel, could
+      possibly execute arbitrary code with the privileges of the process or
+      cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All ProFTPd users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=net-ftp/proftpd-1.3.6c"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-18217">CVE-2019-18217</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-19269">CVE-2019-19269</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9272">CVE-2020-9272</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2020-9273">CVE-2020-9273</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T06:37:49Z">BlueKnight</metadata>
+  <metadata tag="submitter" timestamp="2020-03-16T21:08:17Z">whissi</metadata>
+</glsa>

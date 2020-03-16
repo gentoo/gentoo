@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-37">
+  <title>Mozilla Network Security Service: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in Mozilla Network
+    Security Service (NSS), the worst of which may lead to arbitrary code
+    execution.
+  </synopsis>
+  <product type="ebuild">nss</product>
+  <announced>2020-03-16</announced>
+  <revised count="2">2020-03-16</revised>
+  <bug>627534</bug>
+  <bug>676868</bug>
+  <bug>701840</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="dev-libs/nss" auto="yes" arch="*">
+      <unaffected range="ge">3.49</unaffected>
+      <vulnerable range="lt">3.49</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>The Mozilla Network Security Service (NSS) is a library implementing
+      security features like SSL v.2/v.3, TLS, PKCS #5, PKCS #7, PKCS #11, PKCS
+      #12, S/MIME and X.509 certificates.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in Mozilla Network
+      Security Service (NSS). Please review the CVE identifiers referenced
+      below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>An attacker could execute arbitrary code, cause a Denial of Service
+      condition or have other unspecified impact.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All Mozilla Network Security Service (NSS) users should upgrade to the
+      latest version:
+    </p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/nss-3.49"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11695">CVE-2017-11695</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11696">CVE-2017-11696</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11697">CVE-2017-11697</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-11698">CVE-2017-11698</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-18508">CVE-2018-18508</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11745">CVE-2019-11745</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T15:34:44Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-16T21:17:42Z">whissi</metadata>
+</glsa>
