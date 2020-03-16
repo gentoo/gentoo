@@ -28,14 +28,16 @@ RDEPEND="
 	>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' \
 		-2 python3_{5,6,7} pypy3)
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' -2)
+	$(python_gen_cond_dep '
+		dev-python/pathlib2[${PYTHON_USEDEP}]
+		dev-python/funcsigs[${PYTHON_USEDEP}]
+	' -2)
 	>=dev-python/pluggy-0.12[${PYTHON_USEDEP}]
 	<dev-python/pluggy-1
 	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/wcwidth[${PYTHON_USEDEP}]
-	virtual/python-funcsigs[${PYTHON_USEDEP}]"
+	dev-python/wcwidth[${PYTHON_USEDEP}]"
 
 # flake cause a number of tests to fail
 DEPEND="
