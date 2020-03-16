@@ -20,9 +20,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	>=dev-python/llvmlite-0.22.0[${PYTHON_USEDEP}]
 	dev-python/numpy[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
-	virtual/python-funcsigs[${PYTHON_USEDEP}]
-	virtual/python-singledispatch[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
