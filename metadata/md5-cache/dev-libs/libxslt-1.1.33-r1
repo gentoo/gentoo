@@ -10,5 +10,5 @@ RDEPEND=>=dev-libs/libxml2-2.9.1-r5:2[abi_x86_32(-)?,abi_x86_64(-)?,abi_x86_x32(
 REQUIRED_USE=python? ( || ( python_targets_python2_7 ) )
 SLOT=0
 SRC_URI=ftp://xmlsoft.org/libxslt/libxslt-1.1.33.tar.gz https://gitlab.gnome.org/GNOME/libxslt/commit/e03553605b45c88f0b4b2980adfbbb8f6fca2fd6.patch -> libxslt-1.1.33-CVE-2019-11068.patch
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-r1	4dfa39908a2b26ac08e45ca546f7c9b6	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	libtool	f143db5a74ccd9ca28c1234deffede96	ltprune	2729691420b6deeda2a90b1f1183fb55	multibuild	40fe59465edacd730c644ec2bc197809	multilib	1d91b03d42ab6308b5f4f6b598ed110e	multilib-build	dfda7934df092a96e439c05b4aeac519	multilib-minimal	8bddda43703ba94d8341f4e247f97566	python-r1	4dfa39908a2b26ac08e45ca546f7c9b6	python-utils-r1	89113cd44c8118e781d18387d4256fe3	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=d4753bdd1b3c23c63f58f261f7ea67a9

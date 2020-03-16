@@ -9,5 +9,5 @@ LICENSE=LGPL-3 GPL-3
 REQUIRED_USE=debug? ( !binary ) !amd64? ( !x86? ( binary ) )
 SLOT=0
 SRC_URI=!binary? ( https://code.coreboot.org/p/seabios/downloads/get/seabios-1.12.0.tar.gz ) binary? ( https://dev.gentoo.org/~tamiko/distfiles/seabios-1.12.0-bin.tar.xz )
-_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=eutils	fcb2aa98e1948b835b5ae66ca52868c5	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	89113cd44c8118e781d18387d4256fe3	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=31dedbd98d593d41276fb622b273cc09

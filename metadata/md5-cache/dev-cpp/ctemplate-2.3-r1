@@ -10,5 +10,5 @@ RDEPEND=emacs? ( >=app-editors/emacs-23.1:* ) vim-syntax? ( >=app-editors/vim-co
 RESTRICT=test
 SLOT=0
 SRC_URI=https://dev.gentoo.org/~pinkbyte/distfiles/ctemplate-2.3.tar.bz2
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	504a3383c45504fde86b00426619a709	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eapi7-ver	f9ec87e93172b25ce65a85303dc06964	elisp-common	504a3383c45504fde86b00426619a709	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	89113cd44c8118e781d18387d4256fe3	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=4c8a55d96ba65ec3418a23f247b9900b

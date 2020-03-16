@@ -8,5 +8,5 @@ LICENSE=MPL-2.0 GPL-3
 RDEPEND=( >=app-crypt/gnupg-2.0 || ( app-crypt/pinentry[gtk(-)] app-crypt/pinentry[qt5(-)] ) ) !<mail-client/thunderbird-52.5.0
 SLOT=0
 SRC_URI=https://www.enigmail.net/download/source/enigmail-2.0.8.tar.gz
-_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	3ab704558125f1813be1cc37ed9e2667	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	python-any-r1	3b59474e577cf775a757884b62a6d9cf	python-utils-r1	89113cd44c8118e781d18387d4256fe3	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=0af6441d9f9a9d1ecd3f7aca7c79cb00
