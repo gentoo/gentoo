@@ -59,7 +59,9 @@ RDEPEND="
 	>=dev-python/PyQt5-sip-4.19.19:=[${PYTHON_USEDEP}]
 	>=dev-qt/qtcore-${QT_PV}
 	>=dev-qt/qtxml-${QT_PV}
-	virtual/python-enum34[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/enum34[${PYTHON_USEDEP}]
+	' -2)
 	bluetooth? ( >=dev-qt/qtbluetooth-${QT_PV} )
 	dbus? (
 		dev-python/dbus-python[${PYTHON_USEDEP}]
