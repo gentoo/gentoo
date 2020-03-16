@@ -17,12 +17,16 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/contextlib2[${PYTHON_USEDEP}]' -2)
-	$(python_gen_cond_dep 'dev-python/importlib_metadata[${PYTHON_USEDEP}]' pypy3 python3_{6,7})
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' -2)
-	$(python_gen_cond_dep 'dev-python/zipp[${PYTHON_USEDEP}]' pypy3 python3_{6,7})
-	virtual/python-singledispatch[${PYTHON_USEDEP}]
-	virtual/python-typing[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/contextlib2[${PYTHON_USEDEP}]
+		dev-python/pathlib2[${PYTHON_USEDEP}]
+		dev-python/singledispatch[${PYTHON_USEDEP}]
+		dev-python/typing[${PYTHON_USEDEP}]
+	' -2)
+	$(python_gen_cond_dep '
+		dev-python/importlib_metadata[${PYTHON_USEDEP}]
+		dev-python/zipp[${PYTHON_USEDEP}]
+	' pypy3 python3_{6,7})
 "
 BDEPEND="
 	dev-python/toml[${PYTHON_USEDEP}]
