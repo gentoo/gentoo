@@ -321,7 +321,7 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
-	"${WORKDIR}/${PN}"-4.2.2-ppc64-gcc.patch     # both ppc patches from 
+	"${WORKDIR}/${PN}"-4.2.2-ppc64-gcc.patch     # both ppc patches from
 	"${WORKDIR}/${PN}"-4.2.2-ppc64-altivec.patch # https://trac.ffmpeg.org/ticket/7861
 
 )
