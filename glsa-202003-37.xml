@@ -8,7 +8,7 @@
   </synopsis>
   <product type="ebuild">nss</product>
   <announced>2020-03-16</announced>
-  <revised count="1">2020-03-16</revised>
+  <revised count="2">2020-03-16</revised>
   <bug>627534</bug>
   <bug>676868</bug>
   <bug>701840</bug>
@@ -46,7 +46,7 @@
     
     <code>
       # emerge --sync
-      # emerge --ask --oneshot --verbose "&gt;=-"
+      # emerge --ask --oneshot --verbose "&gt;=dev-libs/nss-3.49"
     </code>
     
   </resolution>
@@ -59,5 +59,5 @@
     <uri link="https://nvd.nist.gov/vuln/detail/CVE-2019-11745">CVE-2019-11745</uri>
   </references>
   <metadata tag="requester" timestamp="2020-03-15T15:34:44Z">whissi</metadata>
-  <metadata tag="submitter" timestamp="2020-03-16T21:15:08Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-16T21:17:42Z">whissi</metadata>
 </glsa>
