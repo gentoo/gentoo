@@ -646,7 +646,13 @@ do_gcc_CYGWINPORTS_patches() {
 
 	local p d="${WORKDIR}/gcc-${CYGWINPORTS_GITREV}"
 	# readarray -t is available since bash-4.4 only, #690686
-	local patches=( $(sed -e '1,/PATCH_URI="/d;/"/,$d' < "${d}"/gcc.cygport) )
+	local patches=( $(
+		for p in $(
+			sed -e '1,/PATCH_URI="/d;/"/,$d' < "${d}"/gcc.cygport
+		); do
+			echo "${d}/${p}"
+		done
+	) )
 	tc_apply_patches "Applying cygwin port patches ..." ${patches[*]}
 }
 
