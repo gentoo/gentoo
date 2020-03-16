@@ -48,6 +48,11 @@ src_compile() {
 	# prevent gst from loading system plugins which causes
 	# sandbox violations on device access
 	local -x GST_PLUGIN_SYSTEM_PATH_1_0=
+	# pre-generate enums to resolve race conditions
+	# https://bugs.gentoo.org/709740
+	meson_src_compile \
+		src/backend/entangle-{camera,colour-profile}-enums.h \
+		src/frontend/entangle-image-display-enums.h
 	meson_src_compile
 }
 
