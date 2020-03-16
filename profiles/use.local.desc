@@ -5860,13 +5860,15 @@ net-im/prosody:libevent - Use libevent for event handling
 net-im/prosody:zlib - Support for compressing XMPP streams with mod_compression
 net-im/psi:aspell - Enable spellchecking using app-text/aspell
 net-im/psi:enchant - Enable spellchecking using app-text/enchant
-net-im/psi:extras - Enable Psi+ patcheset
+net-im/psi:extras - Enable Psi+ patchset
 net-im/psi:hunspell - Enable spellchecking using app-text/hunspell
-net-im/psi:iconsets - Install additional iconsets, some of them has not clear licensing
-net-im/psi:sql - Enable psi-new-history extras patch
-net-im/psi:webengine - Use dev-qt/qtwebengine instead of dev-qt/qtwebkit
-net-im/psi:webkit - Enable themed, html-based chatlogs
+net-im/psi:iconsets - Install additional iconsets, some of them have no clear licensing
+net-im/psi:keyring - Enable storing password in system keyring manager
+net-im/psi:webengine - Enable themed, html-based chatlogs using dev-qt/qtwebengine
+net-im/psi:webkit - Enable themed, html-based chatlogs using dev-qt/qtwebkit
 net-im/psi:whiteboarding - Enable experimental interactive SVG drawing
+net-im/psi:xscreensaver - Use X screensaver protocol extension to monitor idle/active status based on mouse/keyboard events
+net-im/psimedia:extras - Enable Psi+ mode (required when built for Psi+)
 net-im/pyicq-t:webinterface - Install dependencies needed for the web interface
 net-im/qtox:X - Adds support for X11
 net-im/qtox:notification - Adds support for GTK Status Notifier tray backends

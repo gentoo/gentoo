@@ -2348,10 +2348,10 @@ app-office/kraft 0.82-r1: Software to manage quotes and invoices in small enterp
 app-office/ktimetracker 5.0.1: Todo management and time tracker
 app-office/ledger 3.1.2-r1: A double-entry accounting system with a command-line reporting interface
 app-office/libalkimia 7.0.2-r1: Library with common classes and functionality used by KDE finance applications
-app-office/libreoffice 6.3.4.2-r1 6.3.5.2 6.3.9999 9999: A full office productivity suite
+app-office/libreoffice 6.3.4.2-r1 6.3.5.2 6.3.9999 6.4.2.2 6.4.9999 9999: A full office productivity suite
 app-office/libreoffice-bin 6.3.4.2: A full office productivity suite. Binary package
 app-office/libreoffice-bin-debug 6.3.4.2: LibreOffice, a full office productivity suite. Binary package, debug info
-app-office/libreoffice-l10n 6.3.4.2 6.3.5.2: Translations for the Libreoffice suite
+app-office/libreoffice-l10n 6.3.4.2 6.3.5.2 6.4.2.2: Translations for the Libreoffice suite
 app-office/libreoffice-voikko 5.0: Free Finnish spell checking and hyphenation for LibreOffice
 app-office/lyx 2.3.3: WYSIWYM frontend for LaTeX, DocBook, etc.
 app-office/magicpoint 1.13a_p20121015-r1: An X11 based presentation tool
@@ -2645,7 +2645,7 @@ app-text/letterize 1.4: Generate English-plausible alphabetic mnemonics for a ph
 app-text/libabw 0.1.3: Library parsing abiword documents
 app-text/libebook 0.1.2-r1 0.1.3: Library parsing various ebook formats
 app-text/libepubgen 0.1.1: EPUB generator for librevenge
-app-text/libetonyek 0.1.9 9999: Library parsing Apple Keynote presentations
+app-text/libetonyek 0.1.9 0.1.9-r1 9999: Library parsing Apple Keynote presentations
 app-text/libexttextcat 3.4.5: Library implementing N-gram-based text categorization
 app-text/libgepub 0.6.0: GObject based library for handling and rendering epub documents
 app-text/libgxps 0.3.1: Library for handling and rendering XPS documents
@@ -4927,7 +4927,7 @@ dev-libs/http-fetcher 1.1.0-r1: Library for downloading files via HTTP using the
 dev-libs/hyperleveldb 1.2.2-r1: Hyperdex fork/extension of leveldb
 dev-libs/hyperscan 5.1.0 5.1.1 5.2.0 5.2.1: High-performance regular expression matching library
 dev-libs/hyphen 2.8.8-r1: ALTLinux hyphenation library
-dev-libs/icu 65.1 65.1-r1: International Components for Unicode
+dev-libs/icu 65.1-r1: International Components for Unicode
 dev-libs/icu-layoutex 65.1: External layout part of International Components for Unicode
 dev-libs/icu-le-hb 1.0.3: ICU Layout Engine API on top of HarfBuzz shaping library
 dev-libs/igraph 0.7.1-r2: Creating and manipulating undirected and directed graphs
@@ -5050,7 +5050,7 @@ dev-libs/libintl 0.19.7 0.19.8.1 0.20.1: the GNU international library (split ou
 dev-libs/libisoburn 1.5.0 1.5.2: Creation/expansion of ISO-9660 filesystems on CD/DVD media supported by libburn
 dev-libs/libisofs 1.5.0 1.5.2: Open-source library for reading, mastering and writing optical discs
 dev-libs/libite 2.0.0 2.1.0 2.1.2: A collection of useful BSD APIs
-dev-libs/libixion 0.14.1 9999: General purpose formula parser & interpreter
+dev-libs/libixion 0.14.1 0.15.0 9999: General purpose formula parser & interpreter
 dev-libs/libkpass 6-r1: Libkpass is a C implementation to access KeePass 1.x format password databases
 dev-libs/libksba 1.3.5-r1 1.3.5-r2: X.509 and CMS (PKCS#7) library
 dev-libs/liblinear 210-r1 221 230: A Library for Large Linear Classification
@@ -5084,7 +5084,7 @@ dev-libs/libnsutils 0.0.5-r1: base64 and time library, written in C
 dev-libs/libofx 0.9.15: Library to support the Open Financial eXchange XML format
 dev-libs/liboil 0.3.17-r2: Library of simple functions that are optimized for various CPUs
 dev-libs/liboobs 3.0.0: Liboobs is a wrapping library to the System Tools Backends
-dev-libs/liborcus 0.14.1-r1 9999: Standalone file import filter library for spreadsheet documents
+dev-libs/liborcus 0.14.1-r1 0.15.3 9999: Standalone file import filter library for spreadsheet documents
 dev-libs/libotf 0.9.13 0.9.16: Library for handling OpenType fonts (OTF)
 dev-libs/libowfat 0.31-r1 0.32-r1: reimplement libdjb - excellent libraries from Dan Bernstein
 dev-libs/libp11 0.4.10: Abstraction layer to simplify PKCS#11 API
@@ -10582,7 +10582,7 @@ dev-util/lxqt-build-tools 0.6.0: LXQt Build tools
 dev-util/makeheaders 0_p4: simple utility that will automatically generate header files
 dev-util/makepp 2.0.99.1 2.0.99.2: GNU make replacement
 dev-util/massif-visualizer 0.7.0-r1: Tool visualising massif data
-dev-util/mdds 1.4.3 9999: A collection of multi-dimensional data structure and indexing algorithm
+dev-util/mdds 1.4.3 1.5.0 9999: A collection of multi-dimensional data structure and indexing algorithm
 dev-util/meld 3.20.1-r1 3.20.2: A graphical diff and merge tool
 dev-util/memprof 0.6.2-r1: Profiling and leak detection tool
 dev-util/meson 0.52.1 0.53.1 9999: Open source build system
@@ -13138,7 +13138,7 @@ media-libs/taglib 1.11.1_p20190920-r1: Library for reading and editing audio met
 media-libs/taglib-extras 1.0.1-r1: Unofficial taglib plugins maintained by the Amarok team
 media-libs/theoraplay 0_pre20180524: Simple library to make decoding of Ogg Theora videos easier
 media-libs/tiff 4.1.0: Tag Image File Format (TIFF) library
-media-libs/tremor 0_pre20130223-r1: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
+media-libs/tremor 0_pre20130223-r1 0_pre20130223-r2: A fixed-point version of the Ogg Vorbis decoder (also known as libvorbisidec)
 media-libs/tse3 0.3.1-r1: TSE3 Sequencer library
 media-libs/urt 3.1b-r1 3.1b-r3: the Utah Raster Toolkit is a library for dealing with raster images
 media-libs/vamp-plugin-sdk 2.7.1: Audio processing system for plugins to extract information from audio data
@@ -14496,6 +14496,7 @@ net-im/poezio 0.12 9999: Console XMPP client that looks like most famous IRC cli
 net-im/profanity 0.6.0 0.7.1: A console based XMPP client inspired by Irssi
 net-im/prosody 0.9.14 0.11.2-r1 0.11.3: Prosody is a flexible communications server for Jabber/XMPP written in Lua
 net-im/psi 1.4 9999: Qt XMPP client
+net-im/psimedia 9999: Psi/Psi+ plugin for voice/video calls
 net-im/purple-events 0.99.1: Allows a fine-grained control over libpurple events
 net-im/pyicq-t 0.8.1.5-r7: Python based jabber transport for ICQ
 net-im/qtox 1.16.3-r1 9999: Most feature-rich GUI for net-libs/tox using Qt5
@@ -17251,7 +17252,7 @@ sys-devel/parity 2.0.1 9999: A POSIX to native Win32 Cross-Compiler Tool (requir
 sys-devel/patch 2.7.6-r4: Utility to apply diffs to files
 sys-devel/pmake 1.111.3.3: BSD build tool to create programs in parallel. Debian's version of NetBSD's make
 sys-devel/prelink 20130503 20130503-r1 20151030 99999999: Modifies ELFs to avoid runtime symbol resolutions resulting in faster load times
-sys-devel/qconf 2.3 2.4: ./configure like generator for qmake-based projects
+sys-devel/qconf 2.3 2.4 2.5: ./configure like generator for qmake-based projects
 sys-devel/remake 4.2.1.1.4-r1: patched version of GNU make with improved error reporting, tracing and debugging
 sys-devel/slibtool 0.5.28: A skinny libtool implementation, written in C
 sys-devel/smatch 1.60 9999: static analysis tool for C
