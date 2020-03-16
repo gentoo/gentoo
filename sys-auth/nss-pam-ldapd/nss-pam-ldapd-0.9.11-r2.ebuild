@@ -91,8 +91,8 @@ multilib_src_configure() {
 multilib_src_install_all() {
 	local script
 
-	newinitd "${FILESDIR}"/nslcd-init-r3 nslcd
-	s6_install_service nslcd "${FILESDIR}"/nslcd-run-s6
+	newinitd "${FILESDIR}"/nslcd.init nslcd
+	s6_install_service nslcd "${FILESDIR}"/nslcd.s6
 
 	insinto /usr/share/nss-pam-ldapd
 	doins "${WORKDIR}/${P}/nslcd.conf"
@@ -113,11 +113,11 @@ multilib_src_install_all() {
 		python_foreach_impl python_domodule pynslcd/*.py
 		python_scriptinto /usr/sbin
 		python_newscript pynslcd.py pynslcd
-		newinitd "${FILESDIR}"/pynslcd.initd-r2 pynslcd
+		newinitd "${FILESDIR}"/pynslcd.init pynslcd
 	fi
 
 	systemd_newtmpfilesd "${FILESDIR}"/nslcd-tmpfiles.conf nslcd.conf
-	systemd_newunit "${FILESDIR}"/nslcd-2.service nslcd.service
+	systemd_newunit "${FILESDIR}"/nslcd.service nslcd.service
 }
 
 multilib_src_install() {
