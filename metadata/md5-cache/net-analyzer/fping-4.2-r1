@@ -8,5 +8,5 @@ KEYWORDS=~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86 ~amd64-li
 LICENSE=fping
 SLOT=0
 SRC_URI=https://fping.org/dist/fping-4.2.tar.gz
-_eclasses_=fcaps	f52b3d580830bf1132beb1e4e843b84d
+_eclasses_=fcaps	ec29518af791bd4f819e5d42f0f4c11f
 _md5_=2e3e6cbfc0b38784d64e74a2f3d0895f

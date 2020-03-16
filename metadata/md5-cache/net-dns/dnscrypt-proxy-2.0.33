@@ -11,5 +11,5 @@ RDEPEND=acct-group/dnscrypt-proxy acct-user/dnscrypt-proxy
 RESTRICT=strip
 SLOT=0
 SRC_URI=https://github.com/jedisct1/dnscrypt-proxy/archive/2.0.33.tar.gz -> dnscrypt-proxy-2.0.33.tar.gz
-_eclasses_=fcaps	f52b3d580830bf1132beb1e4e843b84d	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=fcaps	ec29518af791bd4f819e5d42f0f4c11f	golang-base	c57d2c3f9e1a02d0feb8b87c7b689892	golang-build	dc25bafa8fc1305a4de66a0a448472e7	multilib	1d91b03d42ab6308b5f4f6b598ed110e	systemd	71fd8d2065d102753fb9e4d20eaf3e9f	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=04fc44860ee4ea66389f142be37e8f9f
