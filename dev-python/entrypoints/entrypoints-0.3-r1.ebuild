@@ -19,13 +19,15 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep '>=dev-python/configparser-3.5.0[${PYTHON_USEDEP}]' 'python2*')
+	$(python_gen_cond_dep '>=dev-python/configparser-3.5.0[${PYTHON_USEDEP}]' -2)
 "
 BDEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
-		virtual/python-pathlib[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/pathlib[${PYTHON_USEDEP}]
+		' -2)
 	)
 "
 
