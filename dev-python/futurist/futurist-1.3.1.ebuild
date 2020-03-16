@@ -24,7 +24,6 @@ RDEPEND="
 	${CDEPEND}
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/monotonic-0.6[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 	>=dev-python/contextlib2-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/prettytable-0.7.1[${PYTHON_USEDEP}]
 	<dev-python/prettytable-0.8[${PYTHON_USEDEP}]"
