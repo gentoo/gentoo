@@ -15,7 +15,7 @@ DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 SRC_URI="https://root.cern/download/${PN}_v${PV}.source.tar.gz"
 
-IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix debug emacs
+IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda cudnn +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
 	mpi mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
 	qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran vc
@@ -29,6 +29,7 @@ KEYWORDS="~amd64 ~x86"
 REQUIRED_USE="
 	^^ ( c++11 c++14 c++17 )
 	cuda? ( tmva !c++17 )
+	cudnn? ( cuda )
 	!X? ( !asimage !opengl !qt5 )
 	davix? ( ssl xml )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -69,6 +70,7 @@ CDEPEND="
 	)
 	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
+	cudnn? ( dev-libs/cudnn )
 	davix? ( net-libs/davix )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -140,6 +142,9 @@ src_prepare() {
 
 src_configure() {
 	local mycmakeargs=(
+		-DCMAKE_C_COMPILER=$(tc-getCC)
+		-DCMAKE_CXX_COMPILER=$(tc-getCXX)
+		-DCMAKE_CUDA_HOST_COMPILER=$(tc-getCXX)
 		-DCMAKE_C_FLAGS="${CFLAGS}"
 		-DCMAKE_CXX_FLAGS="${CXXFLAGS}"
 		-DCMAKE_CXX_STANDARD=$((usev c++11 || usev c++14 || usev c++17) | cut -c4-)
@@ -189,6 +194,7 @@ src_configure() {
 		-Dclad=OFF
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
+		-Dcudnn=$(usex cudnn)
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
 		-Ddataframe=ON
@@ -221,7 +227,8 @@ src_configure() {
 		-Dpgsql=$(usex postgres)
 		-Dpythia6=$(usex pythia6)
 		-Dpythia8=$(usex pythia8)
-		-Dpython=$(usex python)
+		-Dpyroot=$(usex python) # python was renamed to pyroot
+		-Dpyroot_experimental=OFF # use standard PyROOT for now
 		-Dqt5web=$(usex qt5)
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)
