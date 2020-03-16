@@ -1,0 +1,15 @@
+BDEPEND=virtual/pkgconfig test? ( >=dev-lang/lua-5.1:* luajit? ( dev-lang/luajit:2 ) )
+DEFINED_PHASES=configure install test
+DEPEND=>=dev-lang/lua-5.1:* luajit? ( dev-lang/luajit:2 )
+DESCRIPTION=File System Library for the Lua Programming Language
+EAPI=7
+HOMEPAGE=https://keplerproject.github.io/luafilesystem/
+IUSE=doc luajit test
+KEYWORDS=~amd64 ~arm ~arm64 ~hppa ~mips ~ppc ~ppc64 ~sparc ~x86
+LICENSE=MIT
+RDEPEND=>=dev-lang/lua-5.1:* luajit? ( dev-lang/luajit:2 )
+RESTRICT=!test? ( test )
+SLOT=0
+SRC_URI=https://github.com/keplerproject/luafilesystem/archive/v1_7_0_2.tar.gz -> luafilesystem-1.7.0.2.tar.gz
+_eclasses_=multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_md5_=8d41d1a923e7ebd3c12b6b49d2cbd545
