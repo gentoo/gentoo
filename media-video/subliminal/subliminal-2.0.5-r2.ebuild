@@ -37,7 +37,6 @@ RDEPEND="
 	>=dev-python/rarfile-2.7[compressed,${PYTHON_USEDEP}]
 	>=dev-python/pytz-2012c[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? (

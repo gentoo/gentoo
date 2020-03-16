@@ -30,7 +30,6 @@ RDEPEND="
 	>=dev-python/toolz-0.7.4[${PYTHON_USEDEP}]
 	dev-python/zict[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

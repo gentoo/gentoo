@@ -17,4 +17,3 @@ KEYWORDS="amd64 ~x86"
 IUSE=""
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-RDEPEND="virtual/python-singledispatch[${PYTHON_USEDEP}]"

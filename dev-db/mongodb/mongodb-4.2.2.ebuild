@@ -45,7 +45,6 @@ DEPEND="${RDEPEND}
 		dev-python/cheetah3[${PYTHON_USEDEP}]
 		dev-python/psutil[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		virtual/python-typing[${PYTHON_USEDEP}]
 	')
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=

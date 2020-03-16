@@ -19,7 +19,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	=dev-python/h11-0.8*[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
 "
 DEPEND="
 	${RDEPEND}

@@ -19,7 +19,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	${CDEPEND}"
 RDEPEND="
 	${CDEPEND}
-	virtual/python-ipaddress[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-5.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-log-3.36.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-serialization-1.18.0[${PYTHON_USEDEP}]

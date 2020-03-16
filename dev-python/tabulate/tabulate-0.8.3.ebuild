@@ -28,7 +28,6 @@ DEPEND="
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 		dev-python/pandas[${PYTHON_USEDEP}]
-		virtual/python-funcsigs[${PYTHON_USEDEP}]
 	)
 "
 
