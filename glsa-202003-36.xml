@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE glsa SYSTEM "http://www.gentoo.org/dtd/glsa.dtd">
+<glsa id="202003-36">
+  <title>libvorbis: Multiple vulnerabilities</title>
+  <synopsis>Multiple vulnerabilities have been found in libvorbis, the worst of
+    which could result in a Denial of Service condition.
+  </synopsis>
+  <product type="ebuild">libvorbis</product>
+  <announced>2020-03-16</announced>
+  <revised count="1">2020-03-16</revised>
+  <bug>631646</bug>
+  <bug>699862</bug>
+  <access>local, remote</access>
+  <affected>
+    <package name="media-libs/libvorbis" auto="yes" arch="*">
+      <unaffected range="ge">1.3.6-r1</unaffected>
+      <vulnerable range="lt">1.3.6-r1</vulnerable>
+    </package>
+  </affected>
+  <background>
+    <p>libvorbis is the reference implementation of the Xiph.org Ogg Vorbis
+      audio file format. It is used by many applications for playback of Ogg
+      Vorbis files.
+    </p>
+  </background>
+  <description>
+    <p>Multiple vulnerabilities have been discovered in libvorbis. Please
+      review the CVE identifiers referenced below for details.
+    </p>
+  </description>
+  <impact type="normal">
+    <p>A remote attacker, by enticing the user to process a specially crafted
+      audio file, could possibly cause a Denial of Service condition.
+    </p>
+  </impact>
+  <workaround>
+    <p>There is no known workaround at this time.</p>
+  </workaround>
+  <resolution>
+    <p>All libvorbis users should upgrade to the latest version:</p>
+    
+    <code>
+      # emerge --sync
+      # emerge --ask --oneshot --verbose "&gt;=media-libs/libvorbis-1.3.6-r1"
+    </code>
+    
+  </resolution>
+  <references>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2017-14160">CVE-2017-14160</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10392">CVE-2018-10392</uri>
+    <uri link="https://nvd.nist.gov/vuln/detail/CVE-2018-10393">CVE-2018-10393</uri>
+  </references>
+  <metadata tag="requester" timestamp="2020-03-15T15:16:28Z">whissi</metadata>
+  <metadata tag="submitter" timestamp="2020-03-16T21:12:28Z">whissi</metadata>
+</glsa>
