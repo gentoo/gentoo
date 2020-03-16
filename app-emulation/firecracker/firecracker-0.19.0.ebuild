@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -117,7 +117,7 @@ SRC_URI="https://github.com/firecracker-microvm/firecracker/archive/v${PV}.tar.g
 
 LICENSE="|| ( Apache-2.0 MIT Apache-2.0-with-LLVM-exceptions ) MPL-2.0"
 SLOT="0"
-KEYWORDS="-* ~amd64 ~x86"
+KEYWORDS="-* ~amd64 ~arm64"
 
 RESTRICT="test"
 
@@ -126,7 +126,7 @@ BDEPEND="acct-group/kvm"
 set_target_arch() {
 	case "$(tc-arch)" in
 		amd64) target_arch=x86_64 ;;
-		x86)   target_arch=i686 ;;
+		arm64)   target_arch=aarch64 ;;
 	esac
 }
 
