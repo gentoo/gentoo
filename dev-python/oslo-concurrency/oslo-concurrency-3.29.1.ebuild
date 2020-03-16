@@ -25,7 +25,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		>=dev-python/oslotest-3.2.0[${PYTHON_USEDEP}]
 		>=dev-python/coverage-4.0[${PYTHON_USEDEP}]
 		!~dev-python/coverage-4.4[${PYTHON_USEDEP}]
-		virtual/python-futures[${PYTHON_USEDEP}]
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 		>=dev-python/stestr-2.0.0[${PYTHON_USEDEP}]
 		>=dev-python/sphinx-1.6.2[${PYTHON_USEDEP}]
@@ -39,7 +38,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	)"
 RDEPEND="
 	${CDEPEND}
-	virtual/python-enum34[${PYTHON_USEDEP}]
 	>=dev-python/oslo-config-5.2.0[${PYTHON_USEDEP}]
 	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
 	>=dev-python/oslo-utils-3.33.0[${PYTHON_USEDEP}]
