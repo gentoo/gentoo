@@ -19,8 +19,7 @@ IUSE=""
 RDEPEND=">=dev-python/botocore-1.12.122[${PYTHON_USEDEP}]
 	dev-python/future[${PYTHON_USEDEP}]
 	dev-python/jsonpickle[${PYTHON_USEDEP}]
-	dev-python/wrapt[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]"
+	dev-python/wrapt[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 RESTRICT="test"
