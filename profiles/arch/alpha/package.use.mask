@@ -358,10 +358,6 @@ x11-misc/xscreensaver new-login
 # mask use numa for openmpi
 sys-cluster/openmpi openmpi_fabrics_psm openmpi_fabrics_knem openmpi_fabrics_ofed openmpi_fabrics_dapl openmpi_rm_slurm openmpi_ofed_features_rdmacm openmpi_ofed_features_control-hdr-padding openmpi_ofed_features_connectx-xrc openmpi_ofed_features_udcm openmpi_ofed_features_dynamic-sl openmpi_ofed_features_failover
 
-# Tobias Klausmann <klausman@gentoo.org> (2011-11-02)
-# libpcre jit is not supported on alpha
-dev-libs/libpcre jit
-
 # Raúl Porcel <armin76@gentoo.org> (2011-10-08)
 # Needs media-sound/lilypond
 app-text/asciidoc test
