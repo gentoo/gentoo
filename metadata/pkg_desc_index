@@ -8341,7 +8341,7 @@ dev-python/pyFFTW 0.11.1 9999: A pythonic python wrapper around FFTW
 dev-python/pyGPG 0.2 9999: A python interface wrapper for gnupg's gpg command
 dev-python/pyTenable 0.3.7 0.3.18 0.3.19 0.3.20: Tenable API Library for Tenable.io and SecurityCenter
 dev-python/pyacoustid 1.1.7: Python bindings for Chromaprint and the AcoustID web service
-dev-python/pyaes 1.6.0 1.6.1-r1: Pure-Python Implementation of the AES block-cipher and common modes of operation
+dev-python/pyaes 1.6.0 1.6.1-r1 1.6.1-r2: Pure-Python Implementation of the AES block-cipher and common modes of operation
 dev-python/pyalsa 1.0.29 1.1.6: Python bindings for ALSA library
 dev-python/pyalsaaudio 0.7-r2 0.8.2: A Python wrapper for the ALSA API
 dev-python/pyamg 3.2.1-r1: Algebraic multigrid solvers in Python
