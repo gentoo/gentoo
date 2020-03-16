@@ -21,9 +21,6 @@ RESTRICT="!test? ( test )"
 CDEPEND="
 	>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
 	>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-	virtual/python-backports_abc[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
-	virtual/python-singledispatch[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
