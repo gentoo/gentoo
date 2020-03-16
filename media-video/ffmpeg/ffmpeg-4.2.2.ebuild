@@ -30,7 +30,10 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 else # Release
-	SRC_URI="https://ffmpeg.org/releases/${P/_/-}.tar.bz2"
+	SRC_URI="https://ffmpeg.org/releases/${P/_/-}.tar.bz2
+		https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-4.2.2-ppc64-altivec.patch.gz
+		https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-4.2.2-ppc64-gcc.patch.gz
+	"
 fi
 FFMPEG_REVISION="${PV#*_p}"
 
@@ -318,6 +321,9 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
+	"${WORKDIR}/${PN}"-4.2.2-ppc64-gcc.patch     # both ppc patches from 
+	"${WORKDIR}/${PN}"-4.2.2-ppc64-altivec.patch # https://trac.ffmpeg.org/ticket/7861
+
 )
 
 MULTILIB_WRAPPED_HEADERS=(
