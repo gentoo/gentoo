@@ -5334,7 +5334,7 @@ dev-lisp/sbcl 1.3.11 1.4.9 1.5.6 1.5.7 1.5.8 2.0.0 2.0.1: Steel Bank Common Lisp
 dev-lisp/trivial-gray-streams 20170830 99999999: A thin compatibility layer between Gray Stream Common Lisp implementations
 dev-lisp/uiop 3.1.5 3.3.1 3.3.2: UIOP is a portability layer spun off ASDF3
 dev-lua/LuaBitOp 1.0.1-r1 1.0.2 1.0.2-r1: Bit Operations Library for the Lua Programming Language
-dev-lua/busted 2.0_rc11_p0 2.0_rc12_p1: Elegant Lua unit testing
+dev-lua/busted 2.0_rc11_p0 2.0_rc12_p1 2.0.0: Elegant Lua unit testing
 dev-lua/dkjson 2.5: David Kolf's JSON module for Lua
 dev-lua/lanes 3.10.0: lightweight, native, lazy evaluating multithreading library
 dev-lua/ldoc 1.4.6: A LuaDoc-compatible documentation generation system
@@ -5343,10 +5343,10 @@ dev-lua/lpeg 1.0.1 1.0.2: Parsing Expression Grammars for Lua
 dev-lua/lua-argparse 0.6.0-r1: Command line argument parser for the Lua Programming Language
 dev-lua/lua-cjson 2.1.0.6 2.1.0.7: A fast JSON encoding/parsing module for Lua
 dev-lua/lua-openssl 0.7.3 0.7.7_p0-r1 0.7.7_p1: OpenSSL binding for Lua
-dev-lua/lua-term 0.3: Terminal functions for Lua
+dev-lua/lua-term 0.3 0.7: Terminal functions for Lua
 dev-lua/lua-utf8 0.1.1: UTF-8 support for Lua
 dev-lua/lua-zlib 1.1: Lua bindings to zlib
-dev-lua/lua_cliargs 2.5_p5 3.0_p1: A command-line argument parser.
+dev-lua/lua_cliargs 2.5_p5 3.0_p1 3.0_p2: A command-line argument parser.
 dev-lua/luacheck 0.20.0 0.23.0: A tool for linting and static analysis of Lua code
 dev-lua/luacov 0.8: LuaCov is a simple coverage analyzer for Lua scripts
 dev-lua/luacrypto 0.3.2-r1: Lua frontend to OpenSSL
@@ -5369,7 +5369,7 @@ dev-lua/luv 1.32.0.0: Bare libuv bindings for lua
 dev-lua/mediator_lua 1.1.2_p0: Event handling through channels
 dev-lua/messagepack 0.3.2: A pure Lua implementation of the MessagePack serialization format
 dev-lua/mpack 1.0.4: Lua bindings for libmpack
-dev-lua/penlight 1.3.2: Lua utility libraries loosely based on the Python standard libraries
+dev-lua/penlight 1.3.2 1.5.4 1.7.0: Lua utility libraries loosely based on the Python standard libraries
 dev-lua/say 1.3_p1 1.3_p1-r1: Lua String Hashing/Indexing Library
 dev-lua/toluapp 1.0.93_p20190513-r1: A tool to integrate C/C++ code with Lua
 dev-ml/alcotest 0.8.1 0.8.2: A lightweight and colourful test framework
