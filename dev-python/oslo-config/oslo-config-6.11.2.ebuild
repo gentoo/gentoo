@@ -32,7 +32,6 @@ RDEPEND="
 	>=dev-python/oslo-i18n-3.15.3[${PYTHON_USEDEP}]
 	>=dev-python/rfc3986-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.12.0[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.18.0[${PYTHON_USEDEP}]
 "
 
