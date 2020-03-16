@@ -27,7 +27,6 @@ RDEPEND="
 	!~dev-python/cliff-2.9.0[${PYTHON_USEDEP}]
 	>=dev-python/cmd2-0.8.3[${PYTHON_USEDEP}]
 	>=dev-python/debtcollector-1.2.0[${PYTHON_USEDEP}]
-	virtual/python-funcsigs[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.11[${PYTHON_USEDEP}]
 	>=dev-python/keystoneauth-3.4.0[${PYTHON_USEDEP}]
 	>=dev-python/monotonic-0.6[${PYTHON_USEDEP}]
