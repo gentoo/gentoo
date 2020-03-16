@@ -11,7 +11,7 @@ SRC_URI="https://github.com/shadow-maint/shadow/releases/download/${PV}/${P}.tar
 
 LICENSE="BSD GPL-2"
 SLOT="0"
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~riscv ~s390 ~sh ~sparc ~x86"
+KEYWORDS="~alpha amd64 arm ~arm64 ~hppa ia64 ~m68k ~mips ppc ppc64 ~riscv s390 ~sh sparc x86"
 IUSE="acl audit bcrypt +cracklib nls pam selinux skey split-usr +su xattr"
 # Taken from the man/Makefile.am file.
 LANGS=( cs da de es fi fr hu id it ja ko pl pt_BR ru sv tr zh_CN zh_TW )
@@ -21,7 +21,6 @@ BDEPEND="
 	sys-devel/gettext
 "
 COMMON_DEPEND="
-	virtual/libcrypt:=
 	acl? ( sys-apps/acl:0= )
 	audit? ( >=sys-process/audit-2.6:0= )
 	cracklib? ( >=sys-libs/cracklib-2.7-r3:0= )
@@ -44,6 +43,7 @@ RDEPEND="${COMMON_DEPEND}
 
 PATCHES=(
 	"${FILESDIR}/${PN}-4.1.3-dots-in-usernames.patch"
+	"${FILESDIR}/${P}-revert-bin-merge.patch"
 )
 
 src_prepare() {
@@ -150,6 +150,10 @@ src_install() {
 
 		for x in chsh shfn ; do
 			newpamd "${FILESDIR}"/pam.d-include/passwd ${x}
+		done
+
+		for x in chpasswd newusers ; do
+			newpamd "${FILESDIR}"/pam.d-include/chpasswd ${x}
 		done
 
 		newpamd "${FILESDIR}"/pam.d-include/shadow-r1 groupmems
