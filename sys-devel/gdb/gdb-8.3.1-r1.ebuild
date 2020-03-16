@@ -18,7 +18,7 @@ MY_PV=${PV}
 case ${PV} in
 9999*)
 	# live git tree
-	EGIT_REPO_URI="git://sourceware.org/git/binutils-gdb.git"
+	EGIT_REPO_URI="https://sourceware.org/git/binutils-gdb.git"
 	inherit git-r3
 	SRC_URI=""
 	;;
