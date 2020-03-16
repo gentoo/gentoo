@@ -23,8 +23,10 @@ RDEPEND="
 	<dev-python/pyflakes-1.7.0[${PYTHON_USEDEP}]
 	>=dev-python/pycodestyle-2.0.0[${PYTHON_USEDEP}]
 	<dev-python/pycodestyle-2.4.0[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/configparser[${PYTHON_USEDEP}]' 'python2*' pypy )
+	$(python_gen_cond_dep '
+		dev-python/configparser[${PYTHON_USEDEP}]
+		dev-python/enum34[${PYTHON_USEDEP}]
+	' -2)
 "
 PDEPEND="
 	>=dev-python/mccabe-0.6.0[${PYTHON_USEDEP}]
