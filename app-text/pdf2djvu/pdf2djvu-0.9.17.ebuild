@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python2_7 )
 inherit python-any-r1 toolchain-funcs flag-o-matic
 
 DESCRIPTION="A tool to create DjVu files from PDF files"
-HOMEPAGE="http://jwilk.net/software/pdf2djvu"
+HOMEPAGE="https://jwilk.net/software/pdf2djvu"
 SRC_URI="https://github.com/jwilk/${PN}/releases/download/${PV}/${P}.tar.xz"
 
 LICENSE="GPL-2"
