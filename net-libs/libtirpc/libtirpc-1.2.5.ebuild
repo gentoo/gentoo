@@ -26,6 +26,7 @@ src_prepare() {
 	cp -r "${WORKDIR}"/tirpc "${S}"/ || die
 	local PATCHES=(
 		"${FILESDIR}"/libtirpc-1.2.5-avoid-multiple-definition.patch
+		"${FILESDIR}"/libtirpc-1.2.5-endian.h.patch
 	)
 	default
 	eautoreconf
