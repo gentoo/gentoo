@@ -25,7 +25,6 @@ BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/PyUtilib[${PYTHON_USEDEP}]
-		virtual/python-typing[${PYTHON_USEDEP}]
 	)
 "
 
