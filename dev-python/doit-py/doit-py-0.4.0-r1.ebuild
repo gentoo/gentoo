@@ -19,11 +19,9 @@ RESTRICT="!test? ( test )"
 DEPEND="test? (
 		dev-python/pyflakes[${PYTHON_USEDEP}]
 		dev-python/coverage[${PYTHON_USEDEP}]
-		virtual/python-singledispatch[${PYTHON_USEDEP}]
 		app-text/hunspell )
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 RDEPEND="
-	virtual/python-pathlib[${PYTHON_USEDEP}]
 	dev-python/doit[${PYTHON_USEDEP}]
 	dev-python/configclass[${PYTHON_USEDEP}]"
 
