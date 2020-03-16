@@ -19,7 +19,6 @@ IUSE="examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	virtual/python-futures[${PYTHON_USEDEP}]
 	www-servers/tornado[${PYTHON_USEDEP}]
 "
 DEPEND="
