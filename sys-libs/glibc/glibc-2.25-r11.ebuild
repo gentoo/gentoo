@@ -16,7 +16,7 @@ EMULTILIB_PKG="true"
 RELEASE_VER=""
 case ${PV} in
 9999*)
-	EGIT_REPO_URIS="git://sourceware.org/git/glibc.git"
+	EGIT_REPO_URIS="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 	;;
 *)

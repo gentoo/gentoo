@@ -16,8 +16,7 @@ SLOT="2.2"
 EMULTILIB_PKG="true"
 
 if [[ ${PV} == 9999* ]]; then
-	# sourceware.org does not have https:// today.
-	EGIT_REPO_URI="git://sourceware.org/git/glibc.git"
+	EGIT_REPO_URI="https://sourceware.org/git/glibc.git"
 	inherit git-r3
 else
 	# needs minimal testing
