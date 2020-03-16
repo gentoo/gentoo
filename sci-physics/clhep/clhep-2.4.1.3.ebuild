@@ -7,24 +7,15 @@ inherit cmake-utils
 
 DESCRIPTION="High Energy Physics C++ library"
 HOMEPAGE="http://proj-clhep.web.cern.ch/proj-clhep/"
-SRC_URI="http://proj-clhep.web.cern.ch/proj-clhep/DISTRIBUTION/tarFiles/${P}.tgz"
+SRC_URI="http://proj-clhep.web.cern.ch/proj-clhep/dist1/${P}.tgz"
 LICENSE="GPL-3 LGPL-3"
 SLOT="2/${PV}"
-KEYWORDS="amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
+KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 IUSE="doc test threads"
 RESTRICT="!test? ( test )"
 
-BDEPEND="
-	doc? (
-		app-doc/doxygen
-		dev-texlive/texlive-bibtexextra
-		dev-texlive/texlive-fontsextra
-		dev-texlive/texlive-fontutils
-		dev-texlive/texlive-latex
-		dev-texlive/texlive-latexextra
-	)
-"
+BDEPEND="doc? ( app-doc/doxygen[latex] )"
 
 S="${WORKDIR}/${PV}/CLHEP"
 
@@ -35,9 +26,7 @@ src_prepare() {
 	sed -i -e 's:-O::g' cmake/Modules/ClhepVariables.cmake || die
 	# dont build test if not asked
 	if ! use test; then
-		sed -i \
-			-e '/add_subdirectory(test)/d' \
-			*/CMakeLists.txt || die
+		cmake_comment_add_subdirectory test
 	fi
 	# gentoo doc directory
 	if use doc; then
