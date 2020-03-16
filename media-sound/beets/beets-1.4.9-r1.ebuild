@@ -33,7 +33,6 @@ DEPEND="
 	>=dev-python/six-1.9[${PYTHON_USEDEP}]
 	dev-python/unidecode[${PYTHON_USEDEP}]
 	>=media-libs/mutagen-1.33[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
 	badfiles? (
 		media-libs/flac
 		media-sound/mp3val
@@ -63,7 +62,6 @@ DEPEND="
 	)
 	thumbnail? (
 		dev-python/pyxdg[${PYTHON_USEDEP}]
-		virtual/python-pathlib[${PYTHON_USEDEP}]
 		|| (
 			dev-python/pillow[${PYTHON_USEDEP}]
 			media-gfx/imagemagick
