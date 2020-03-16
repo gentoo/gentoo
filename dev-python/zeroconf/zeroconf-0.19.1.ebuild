@@ -19,7 +19,6 @@ IUSE="test"
 RDEPEND="
 	dev-python/netifaces[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
