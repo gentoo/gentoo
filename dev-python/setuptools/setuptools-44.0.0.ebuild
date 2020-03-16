@@ -33,7 +33,9 @@ BDEPEND="
 		dev-python/pytest-fixture-config[${PYTHON_USEDEP}]
 		dev-python/pytest-virtualenv[${PYTHON_USEDEP}]
 		dev-python/wheel[${PYTHON_USEDEP}]
-		virtual/python-futures[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/futures[${PYTHON_USEDEP}]
+		' -2)
 	)
 "
 PDEPEND="
