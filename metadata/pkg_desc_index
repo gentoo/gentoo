@@ -12102,7 +12102,6 @@ kde-misc/krename 5.0.0-r1: Powerful batch file renamer
 kde-misc/krusader 2.7.2: Advanced twin-panel (commander-style) file-manager with many extras
 kde-misc/kshutdown 5.2: Shutdown manager for desktop environments like KDE Plasma
 kde-misc/ktoshiba 5.3.1: Function key (FN) monitoring for Toshiba laptops
-kde-misc/kwebkitpart 1.4.0_pre20190110: WebKit KPart for Konqueror
 kde-misc/latte-dock 0.9.9: Elegant dock, based on KDE Frameworks
 kde-misc/openofficeorg-thumbnail 1.0.0-r500: Thumbnail-plugin that generates thumbnails for ODF files
 kde-misc/plasma-applet-network-monitor 1.7.3-r1: Plasma 5 applet for monitoring active network connections
