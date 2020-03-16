@@ -3,7 +3,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python2_7 python3_{6..7} )
+PYTHON_COMPAT=( python2_7 python3_{6..8} )
 PYTHON_REQ_USE="threads(+)"
 
 inherit bash-completion-r1 elisp-common eutils distutils-r1 mercurial flag-o-matic
@@ -15,7 +15,7 @@ EHG_REPO_URI="https://www.mercurial-scm.org/repo/hg"
 LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS=""
-IUSE="+chg bugzilla emacs gpg test tk zsh-completion"
+IUSE="+chg emacs gpg test tk zsh-completion"
 
 BROKEN_PYTHON="
 	!~dev-python/python-3.5.0
@@ -57,7 +57,7 @@ python_prepare_all() {
 }
 
 python_compile() {
-	strip-flags # was '-ftracer -ftree-vectorize', TODO: see bug #712594
+	filter-flags -ftracer -ftree-vectorize
 	python_is_python3 || local -x CFLAGS="${CFLAGS} -fno-strict-aliasing"
 	distutils-r1_python_compile build_ext --no-zstd
 }
