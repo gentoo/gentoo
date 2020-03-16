@@ -7393,7 +7393,7 @@ dev-python/Numdifftools 0.9.17-r1: Solves automatic numerical differentiation pr
 dev-python/PyContracts 1.7.9 1.8.0 1.8.12: Declare constraints on function parameters and return values
 dev-python/PyDbLite 3.0.4: A fast, pure-Python in-memory database
 dev-python/PyECLib 1.6.0: Messaging API for RPC and notifications over different messaging transports
-dev-python/PyGithub 1.44.1 1.45 1.46 1.47: Python library to access the Github API v3
+dev-python/PyGithub 1.46 1.47: Python library to access the Github API v3
 dev-python/PyPDF2 1.26.0: Python library to work with pdf files
 dev-python/PyQt5 5.13.2 5.14.1: Python bindings for the Qt framework
 dev-python/PyQt5-sip 4.19.19 4.19.20 4.19.21: Private sip module for PyQt5
@@ -10416,7 +10416,7 @@ dev-util/checkbashisms 2.19.7 2.20.1: Perl script to check for commonly used bas
 dev-util/checkstyle 7.2: Development tool to help write Java code that adheres to a coding standard
 dev-util/clair 2.0.8: Vulnerability Static Analysis for Containers
 dev-util/clazy 1.5 1.5-r1: Compiler plugin which allows clang to understand Qt semantics
-dev-util/cligh 0.1_p20120630 0.2 9999: Command-line interface to GitHub
+dev-util/cligh 0.3 9999: Command-line interface to GitHub
 dev-util/clinfo 2.2.18.03.26 2.2.18.04.06 9999: A tool to display info about the system's OpenCL capabilities
 dev-util/clion 2019.3.3: A complete toolset for C and C++ development
 dev-util/cloc 1.72 1.76-r1 1.80 1.82: Count Lines of Code
