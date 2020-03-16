@@ -22,9 +22,11 @@ CDEPEND="
 	$(python_gen_cond_dep 'dev-python/futures[${PYTHON_USEDEP}]' 'python2_7')
 	>=dev-python/pycurl-7.19.3.1[${PYTHON_USEDEP}]
 	>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-	virtual/python-backports_abc[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
-	virtual/python-singledispatch[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/backports-abc[${PYTHON_USEDEP}]
+		dev-python/futures[${PYTHON_USEDEP}]
+		dev-python/singledispatch[${PYTHON_USEDEP}]
+	' -2)
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

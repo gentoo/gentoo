@@ -28,9 +28,11 @@ CDEPEND="
 			$(python_gen_cond_dep 'dev-python/twisted-web[${PYTHON_USEDEP}]' 'python2_7')
 		)
 	)
-	virtual/python-backports_abc[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
-	virtual/python-singledispatch[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/backports-abc[${PYTHON_USEDEP}]
+		dev-python/futures[${PYTHON_USEDEP}]
+		dev-python/singledispatch[${PYTHON_USEDEP}]
+	' -2)
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
