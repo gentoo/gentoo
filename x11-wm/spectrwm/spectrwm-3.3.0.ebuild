@@ -17,6 +17,7 @@ RDEPEND="
 	x11-misc/dmenu
 "
 DEPEND="
+	elibc_musl? ( sys-libs/queue-standalone )
 	x11-libs/libX11
 	x11-libs/libXcursor
 	x11-libs/libXrandr
