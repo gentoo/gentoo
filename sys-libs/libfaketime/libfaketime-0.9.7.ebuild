@@ -11,7 +11,7 @@ SRC_URI="https://github.com/wolfcw/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~sparc ~x86"
 
 src_prepare() {
 	sed -i 's/-Werror //' "${S}/src/Makefile" || die
