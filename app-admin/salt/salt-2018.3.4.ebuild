@@ -36,7 +36,6 @@ RDEPEND="sys-apps/pciutils
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=www-servers/tornado-4.2.1[${PYTHON_USEDEP}]
 	<www-servers/tornado-5.0[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 	libcloud? ( >=dev-python/libcloud-0.14.0[${PYTHON_USEDEP}] )
 	mako? ( dev-python/mako[${PYTHON_USEDEP}] )
 	ldap? ( dev-python/python-ldap[${PYTHON_USEDEP}] )
