@@ -9,7 +9,7 @@ PYTHON_REQ_USE="threads(+)"
 inherit distutils-r1
 
 DESCRIPTION="Python web framework and asynchronous networking library"
-HOMEPAGE="http://www.tornadoweb.org/"
+HOMEPAGE="https://www.tornadoweb.org/"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="Apache-2.0"
