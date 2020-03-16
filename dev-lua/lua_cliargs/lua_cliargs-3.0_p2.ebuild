@@ -29,11 +29,10 @@ src_install() {
 	insinto "$($(tc-getPKG_CONFIG) --variable INSTALL_LMOD lua)"
 	doins -r src/cliargs.lua src/cliargs
 
-	einstalldocs
-
 	if use doc; then
+		local HTML_DOCS=( doc/. )
 		dodoc -r examples
-		docinto html
-		dodoc -r doc/*
 	fi
+
+	einstalldocs
 }
