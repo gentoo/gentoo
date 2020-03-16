@@ -15,7 +15,10 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~x86 ~amd64-linux ~x86-linux"
 
-RDEPEND="virtual/python-futures[${PYTHON_USEDEP}]"
+RDEPEND="
+	$(python_gen_cond_dep '
+		dev-python/futures[${PYTHON_USEDEP}]
+	' -2)"
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]"
 
