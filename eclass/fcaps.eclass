@@ -81,6 +81,11 @@ esac
 fcaps() {
 	debug-print-function ${FUNCNAME} "$@"
 
+	if [[ ${EUID} != 0 ]] ; then
+		einfo "Insufficient privileges to execute ${FUNCNAME}, skipping."
+		return 0
+	fi
+
 	# Process the user options first.
 	local owner='root'
 	local group='0'
