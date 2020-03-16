@@ -36,7 +36,7 @@ RDEPEND="
 	<dev-python/sphinx_rtd_theme-2.0[${PYTHON_USEDEP}]
 	dev-python/packaging[${PYTHON_USEDEP}]
 	dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
-	virtual/python-typing[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' -2)
 	latex? (
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
@@ -49,6 +49,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
+		$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' -2)
 		dev-python/sphinxcontrib-websupport[${PYTHON_USEDEP}]
 		dev-python/html5lib[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -57,7 +58,6 @@ DEPEND="${RDEPEND}
 		>=dev-python/sqlalchemy-0.9[${PYTHON_USEDEP}]
 		>=dev-python/whoosh-2.0[${PYTHON_USEDEP}]
 		virtual/imagemagick-tools[jpeg,png,svg]
-		virtual/python-enum34[${PYTHON_USEDEP}]
 		dev-texlive/texlive-latexextra
 		dev-texlive/texlive-luatex
 		app-text/dvipng
