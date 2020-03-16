@@ -73,7 +73,6 @@ RDEPEND="
 	>=dev-python/paramiko-2.0.0[${PYTHON_USEDEP}]
 	>=dev-python/Babel-2.3.4[${PYTHON_USEDEP}]
 	!~dev-python/Babel-2.4.0[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.11[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-2.6.0[${PYTHON_USEDEP}]
 	>=dev-python/python-cinderclient-3.3.0[${PYTHON_USEDEP}]
