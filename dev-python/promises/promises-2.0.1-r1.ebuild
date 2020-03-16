@@ -21,7 +21,6 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
-	virtual/python-typing[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
 "
 
