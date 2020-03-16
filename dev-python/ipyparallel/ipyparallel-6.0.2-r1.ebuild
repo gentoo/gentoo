@@ -32,7 +32,6 @@ RDEPEND="
 	www-servers/tornado[${PYTHON_USEDEP}]
 	"
 DEPEND="${RDEPEND}
-	virtual/python-futures[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-18.5[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
