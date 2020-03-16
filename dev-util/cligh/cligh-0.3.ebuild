@@ -6,15 +6,15 @@ EAPI=7
 DISTUTILS_USE_SETUPTOOLS=no
 PYTHON_COMPAT=( python3_{6,7} )
 
-inherit distutils-r1 git-r3
+inherit distutils-r1
 
 DESCRIPTION="Command-line interface to GitHub"
 HOMEPAGE="https://the-brannons.com/software/cligh.html"
-EGIT_REPO_URI="https://github.com/CMB/${PN}.git"
+SRC_URI="https://the-brannons.com/software/${P}.tar.gz"
 
 LICENSE="BSD"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-python/PyGithub[${PYTHON_USEDEP}]
 	dev-python/pyxdg[${PYTHON_USEDEP}]"
