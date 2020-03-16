@@ -31,8 +31,6 @@ RESTRICT="!test? ( test )"
 # >=urllib3-1.23 only needed for python2, but requests pulls some version anyways, so we might as well guarantee at least that ver for py3 too
 DEPEND="
 	$(python_gen_cond_dep '
-		virtual/python-futures[${PYTHON_MULTI_USEDEP}]
-		virtual/python-singledispatch[${PYTHON_MULTI_USEDEP}]
 		>dev-python/requests-2.21.0[${PYTHON_MULTI_USEDEP}]
 		>=dev-python/urllib3-1.23[${PYTHON_MULTI_USEDEP}]
 		dev-python/isodate[${PYTHON_MULTI_USEDEP}]
