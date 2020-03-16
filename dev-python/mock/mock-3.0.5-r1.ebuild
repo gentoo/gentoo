@@ -16,7 +16,9 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~m68k ~mips ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86 ~amd64-linux ~x86-linux ~x64-macos"
 
 RDEPEND="
-	>=virtual/python-funcsigs-1[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/funcsigs[${PYTHON_USEDEP}]
+	' -2)
 	>=dev-python/six-1.9[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	>=dev-python/setuptools-17.1[${PYTHON_USEDEP}]"

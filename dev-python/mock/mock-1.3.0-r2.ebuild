@@ -19,7 +19,9 @@ RESTRICT="!test? ( test )"
 
 CDEPEND="
 	>=dev-python/pbr-1.3[${PYTHON_USEDEP}]
-	virtual/python-funcsigs[${PYTHON_USEDEP}]"
+	$(python_gen_cond_dep '
+		dev-python/funcsigs[${PYTHON_USEDEP}]
+	' -2)"
 DEPEND="
 	>=dev-python/setuptools-17.1[${PYTHON_USEDEP}]
 	test? (
