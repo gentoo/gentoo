@@ -43,7 +43,6 @@ RDEPEND="
 	>=dev-python/httplib2-0.9.1[${PYTHON_USEDEP}]
 	>=dev-python/iso8601-0.1.11[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-2.6.0[${PYTHON_USEDEP}]
-	virtual/python-ipaddress[${PYTHON_USEDEP}]
 	>=dev-python/keystoneauth-3.7.0[${PYTHON_USEDEP}]
 	>=dev-python/keystonemiddleware-4.21.0[${PYTHON_USEDEP}]
 	>=dev-python/lxml-3.4.1[${PYTHON_USEDEP}]
