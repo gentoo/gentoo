@@ -164,6 +164,7 @@ mail-filter/pyzor test
 # Gilles Dartiguelongue <eva@gentoo.org> (2016-09-11)
 # networkmanager USE masked due to missing keywords
 gnome-extra/nm-applet teamd
+net-misc/networkmanager teamd
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2016-09-11)
 # Opt-out of ofono support until there is a user request,
@@ -244,10 +245,6 @@ media-video/libav x265
 # Johannes Huber <johu@gentoo.org> (2015-01-28)
 # Missing keyword on dev-libs/botan
 app-crypt/qca botan
-
-# Pacho Ramos <pacho@gentoo.org> (2014-01-10)
-# Missing keywords
-net-misc/networkmanager teamd
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2014-12-23)
 # New dependencies for wayland support in Gnome 3.14
