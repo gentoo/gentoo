@@ -21,9 +21,6 @@ RDEPEND="
 	>=dev-python/ansicolor-0.2.4[${PYTHON_USEDEP}]
 	>=dev-python/chardet-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
-	virtual/python-pathlib[${PYTHON_USEDEP}]
-	virtual/python-typing[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
