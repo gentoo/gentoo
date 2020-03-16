@@ -24,7 +24,6 @@ DEPEND="
 	test? (
 		${RDEPEND}
 		dev-python/pytest[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}]
 	)
 "
 
