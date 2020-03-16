@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -42,7 +42,7 @@ DEPEND="${RDEPEND}
 	$(python_gen_any_dep '
 		dev-python/cheetah[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		virtual/python-typing[${PYTHON_USEDEP}]
+		dev-python/typing[${PYTHON_USEDEP}]
 	')
 	sys-libs/ncurses:0=
 	sys-libs/readline:0=
