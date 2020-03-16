@@ -27,7 +27,9 @@ DEPEND="dev-python/Babel[${PYTHON_USEDEP}]
 	test? (
 		dev-python/more-itertools[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
-		virtual/python-unittest-mock[${PYTHON_USEDEP}]
+		$(python_gen_cond_dep '
+			dev-python/mock[${PYTHON_USEDEP}]
+		' -2)
 	)"
 
 S=${WORKDIR}/${MY_PN}-${PV}
