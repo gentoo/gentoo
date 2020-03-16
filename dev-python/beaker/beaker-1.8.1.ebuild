@@ -21,10 +21,8 @@ KEYWORDS="~alpha amd64 arm ~hppa ia64 ~ppc64 s390 ~sh sparc x86 ~amd64-linux ~x8
 IUSE="test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="virtual/python-funcsigs[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		${RDEPEND}
 		$(python_gen_impl_dep sqlite)
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
