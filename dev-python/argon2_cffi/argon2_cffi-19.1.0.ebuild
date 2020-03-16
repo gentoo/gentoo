@@ -18,7 +18,6 @@ COMMON_DEPEND="
 	app-crypt/argon2:=
 	dev-python/six[${PYTHON_USEDEP}]
 	virtual/python-cffi[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
 "
 RDEPEND="${COMMON_DEPEND}"
 DEPEND="${COMMON_DEPEND}
