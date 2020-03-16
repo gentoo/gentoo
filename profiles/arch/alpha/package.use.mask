@@ -192,10 +192,6 @@ app-admin/conky cmus irc
 # Likewise, nasm is x86/x86-64 only
 media-video/ffmpeg nvenc openh264
 
-# Justin Lecher <jlec@gentoo.org> (2016-02-22)
-# Missing test deps keyword #575366
-dev-cpp/eigen test
-
 # Tobias Klausmann <klausman@gentoo.org> (2016-02-04)
 # sys-cluster/ceph is not broken per se, but a maintenance burden.
 net-analyzer/rrdtool rados
