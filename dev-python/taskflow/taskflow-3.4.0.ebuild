@@ -23,13 +23,11 @@ DEPEND="
 RDEPEND="
 	${CDEPEND}
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
 	>=dev-python/futurist-1.2.0[${PYTHON_USEDEP}]
 	>=dev-python/fasteners-0.7.0[${PYTHON_USEDEP}]
 	>=dev-python/networkx-1.10[${PYTHON_USEDEP}]
 	>=dev-python/contextlib2-0.4.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 	>=dev-python/jsonschema-2.6.0[${PYTHON_USEDEP}]
 	<dev-python/jsonschema-3.0.0[${PYTHON_USEDEP}]
 	>=dev-python/automaton-1.9.0[${PYTHON_USEDEP}]
