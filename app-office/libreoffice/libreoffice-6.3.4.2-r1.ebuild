@@ -120,7 +120,7 @@ COMMON_DEPEND="${PYTHON_DEPS}
 	dev-libs/icu:=
 	dev-libs/libassuan
 	dev-libs/libgpg-error
-	>=dev-libs/liborcus-0.14.0
+	=dev-libs/liborcus-0.14*
 	dev-libs/librevenge
 	dev-libs/libxml2
 	dev-libs/libxslt
@@ -215,7 +215,7 @@ DEPEND="${COMMON_DEPEND}
 	dev-perl/Archive-Zip
 	>=dev-util/cppunit-1.14.0
 	>=dev-util/gperf-3.1
-	>=dev-util/mdds-1.4.1:1=
+	=dev-util/mdds-1.4*:1=
 	media-libs/glm
 	sys-devel/ucpp
 	x11-base/xorg-proto
