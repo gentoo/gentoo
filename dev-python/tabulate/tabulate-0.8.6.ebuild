@@ -26,7 +26,6 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		$(python_gen_impl_dep 'sqlite')
 		dev-python/colorclass[${PYTHON_USEDEP}]
 		$(python_gen_cond_dep 'dev-python/numpy[${PYTHON_USEDEP}]' 'python3*')
-		virtual/python-funcsigs[${PYTHON_USEDEP}]
 	)
 "
 
