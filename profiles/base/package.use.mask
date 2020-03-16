@@ -6,6 +6,10 @@
 # This file is only for generic masks. For arch-specific masks (i.e.
 # mask everywhere, unmask on arch/*) use arch/base.
 
+# Guilherme Amadio <amadio@gentoo.org> (2020-03-16)
+# Requires dev-libs/cudnn which is only available on amd64
+sci-physics/root cudnn
+
 # Thomas Deutschmann <whissi@gentoo.org> (2020-03-11)
 # Encrypted Media Extensions (eme-free) can't be disabled everywhere
 www-client/firefox eme-free
