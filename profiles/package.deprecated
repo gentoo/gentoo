@@ -17,6 +17,21 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-16)
+# Virtuals for Python 2 backports.  Mostly obsolete, and some of them
+# are really confusing.  Use $(python_gen_cond_dep ...) instead
+# if your package still needs to support Python 2 (or remove it
+# for Python 3 only packages).
+virtual/python-backports_abc
+virtual/python-enum34
+virtual/python-funcsigs
+virtual/python-futures
+virtual/python-ipaddress
+virtual/python-pathlib
+virtual/python-singledispatch
+virtual/python-typing
+virtual/python-unittest-mock
+
 # Andreas Sturmlechner <asturm@gentoo.org> (2020-03-08)
 # dev-python/pygtk is in the process of being removed, tracker bug #706462
 dev-python/pygtk
