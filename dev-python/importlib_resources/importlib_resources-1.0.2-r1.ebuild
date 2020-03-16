@@ -19,8 +19,10 @@ IUSE="doc test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' -2)
-	virtual/python-typing[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pathlib2[${PYTHON_USEDEP}]
+		dev-python/typing[${PYTHON_USEDEP}]
+	' -2)
 "
 BDEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
