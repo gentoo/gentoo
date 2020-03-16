@@ -21,7 +21,9 @@ IUSE="libressl"
 RDEPEND="
 	!libressl? ( dev-libs/openssl:0= )
 	libressl? ( dev-libs/libressl:0= )
-	virtual/python-typing[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/typing[${PYTHON_USEDEP}]
+	' -2)
 "
 DEPEND="${RDEPEND}"
 BDEPEND="

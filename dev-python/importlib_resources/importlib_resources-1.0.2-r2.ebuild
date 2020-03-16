@@ -17,8 +17,10 @@ SLOT="0"
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' -2)
-	virtual/python-typing[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pathlib2[${PYTHON_USEDEP}]
+		dev-python/typing[${PYTHON_USEDEP}]
+	' -2)
 "
 
 distutils_enable_tests unittest

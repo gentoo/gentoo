@@ -25,7 +25,9 @@ RDEPEND="
 	>=dev-python/cryptography-1.3.4[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.0.0[${PYTHON_USEDEP}]
-	virtual/python-ipaddress[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/ipaddress[${PYTHON_USEDEP}]
+	' -2)
 	brotli? ( dev-python/brotlipy[${PYTHON_USEDEP}] )
 "
 BDEPEND="

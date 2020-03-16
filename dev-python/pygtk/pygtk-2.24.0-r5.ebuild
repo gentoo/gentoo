@@ -101,8 +101,7 @@ src_install() {
 
 	if use examples; then
 		rm examples/Makefile* || die
-		insinto /usr/share/doc/${PF}
-		doins -r examples
+		dodoc -r examples
 	fi
 
 	python_foreach_impl run_in_build_dir gnome2_src_install
