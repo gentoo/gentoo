@@ -18,7 +18,6 @@ IUSE="doc"
 
 RDEPEND="
 	~dev-python/funcparserlib-0.3.6[${PYTHON_USEDEP}]
-	virtual/python-unittest-mock[${PYTHON_USEDEP}]
 	>=dev-python/python-ldap-3.0[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}"
 BDEPEND="
