@@ -21,13 +21,10 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/pillow[${PYTHON_USEDEP}]
 	media-gfx/zbar
-	virtual/python-enum34[${PYTHON_USEDEP}]
-	virtual/python-pathlib[${PYTHON_USEDEP}]
 "
 
 DEPEND="${RDEPEND}
 	test? (
-		virtual/python-unittest-mock[${PYTHON_USEDEP}]
 		dev-python/numpy[${PYTHON_USEDEP}]
 	)
 "
