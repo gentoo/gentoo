@@ -25,7 +25,6 @@ RDEPEND="
 	dev-python/logbook[${PYTHON_USEDEP}]
 	dev-python/lxml[${PYTHON_USEDEP}]
 	dev-python/trollius[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 	net-analyzer/wireshark[tshark]"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
