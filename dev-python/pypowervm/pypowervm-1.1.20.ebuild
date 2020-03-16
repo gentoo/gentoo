@@ -30,5 +30,4 @@ RDEPEND="${DEPEND}
 	>=dev-python/pytz-2013.6[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.14.2[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 	>=dev-python/taskflow-2.16.0[${PYTHON_USEDEP}]"
