@@ -138,10 +138,6 @@ media-video/ffmpeg libilbc
 # alpha.
 app-portage/g-sorcery bson
 
-# Tobias Klausmann <klausman@gentoo.org> (2016-01-27)
-# USE=test transitively pulls in greenlet, which is not available on alpha.
-dev-python/pyquery test
-
 # Tobias Klausmann <klausman@gentoo.org> (2016-01-25)
 # The tests use hypothesis which complains about too-slow tests on
 # hardware that is "too slow".
@@ -200,13 +196,6 @@ net-analyzer/rrdtool rados
 # scrollview requires Java, which is unsupported on Alpha.
 app-text/tesseract scrollview
 
-# Justin Lecher <jlec@gentoo.org> (2015-11-18)
-# requires dev-python/restkit which requires
-# dev-python/socketpool which requires dev-python/gevent which requires
-# dev-python/greenlet which has not been ported to ALPHA
-dev-python/wsgiproxy2 test
-dev-python/pyquery test
-
 # Matt Turner <mattst88@gentoo.org> (2015-11-15)
 # Missing keywords
 dev-util/perf numa
@@ -239,15 +228,6 @@ net-misc/networkmanager wext
 # It's unlikely that greenlet will ever be ported to Alpha. Mask USE=gevent for
 # pyzor to avoid that dependency. See bug 538510
 >=mail-filter/pyzor-1.0.0 gevent
-
-# Tobias Klausmann <klausman@gentoo.org> (2015-07-11)
-# The test suite has ridiculous (transitive) requirements like
-# sci-mathematics/octave.
->=dev-python/pyquery-1.2.9 test
-# revdeps of pyquery, ditto.
-dev-python/webtest test
-dev-python/wsgiproxy2 test
-dev-python/urllib3 test
 
 # Gilles Dartiguelongue <eva@gentoo.org> (2015-06-09)
 # dev-lua/lgi lacks alpha keyword, bug #551540
