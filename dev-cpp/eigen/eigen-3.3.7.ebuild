@@ -12,7 +12,7 @@ SRC_URI="https://bitbucket.org/eigen/eigen/get/${PV}.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="MPL-2.0"
 SLOT="3"
-KEYWORDS="~alpha amd64 ~arm arm64 ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
+KEYWORDS="amd64 ~arm arm64 ~ia64 ppc ~ppc64 ~sparc x86 ~amd64-linux ~x86-linux"
 IUSE="altivec c++11 cpu_flags_arm_neon cuda debug doc openmp test" #zvector vsx
 RESTRICT="!test? ( test )"
 
