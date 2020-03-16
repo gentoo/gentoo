@@ -25,15 +25,17 @@ PY_VER="1.5.0"
 RDEPEND="
 	>=dev-python/atomicwrites-1.0[${PYTHON_USEDEP}]
 	>=dev-python/attrs-17.4.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]' python2_7 )
-	$(python_gen_cond_dep '<dev-python/more-itertools-6.0.0[${PYTHON_USEDEP}]' python2_7 )
+	$(python_gen_cond_dep '
+		>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]
+		<dev-python/more-itertools-6.0.0[${PYTHON_USEDEP}]
+		dev-python/funcsigs[${PYTHON_USEDEP}]
+		dev-python/pathlib2[${PYTHON_USEDEP}]
+	' -2)
 	$(python_gen_cond_dep '>=dev-python/more-itertools-4.0.0[${PYTHON_USEDEP}]' python3_{6,7} pypy{,3} )
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python2_7)
 	>=dev-python/pluggy-0.7[${PYTHON_USEDEP}]
 	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
 	>=dev-python/setuptools-40[${PYTHON_USEDEP}]
-	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
-	virtual/python-funcsigs[${PYTHON_USEDEP}]"
+	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]"
 
 # flake & pytest-capturelog cause a number of tests to fail
 DEPEND="${RDEPEND}
