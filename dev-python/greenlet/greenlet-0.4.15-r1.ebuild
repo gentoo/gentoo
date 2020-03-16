@@ -19,6 +19,10 @@ IUSE="doc"
 
 BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-Add-support-for-DEC-Alpha.patch
+)
+
 DISTUTILS_IN_SOURCE_BUILD=1
 
 distutils_enable_sphinx doc
