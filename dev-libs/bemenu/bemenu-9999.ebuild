@@ -40,8 +40,6 @@ DEPEND="
 RDEPEND="${DEPEND}"
 BDEPEND="doc? ( app-doc/doxygen )"
 
-PATCHES=( "${FILESDIR}/soname-fix.patch" )
-
 src_compile() {
 	emake clients $(usex ncurses curses) $(usex X x11) $(usex wayland wayland)
 	use doc && emake doxygen
