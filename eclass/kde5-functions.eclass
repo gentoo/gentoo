@@ -16,6 +16,11 @@
 if [[ -z ${_KDE5_FUNCTIONS_ECLASS} ]]; then
 _KDE5_FUNCTIONS_ECLASS=1
 
+if [[ -z ${_KDE5_ECLASS} ]]; then
+	eerror "This DEAD eclass must not be inherited directly by an ebuild."
+	die "Removal due on 2020-04-16."
+fi
+
 case ${EAPI} in
 	7) ;;
 	*) die "EAPI=${EAPI:-0} is not supported" ;;
