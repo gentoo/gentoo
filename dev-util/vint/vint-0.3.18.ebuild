@@ -28,7 +28,6 @@ DEPEND="${RDEPEND}
 		>=dev-python/coverage-3.7.1[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.6.4[${PYTHON_USEDEP}]
 		>=dev-python/pytest-cov-1.8.1[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]' python2_7)
 	)
 "
 
