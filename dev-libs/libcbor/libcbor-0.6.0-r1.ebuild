@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/pjk/libcbor"
 SRC_URI="https://github.com/PJK/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="MIT"
-SLOT="0/0"
+SLOT="0/1"
 KEYWORDS="~amd64 ~arm ~ppc64 ~x86"
 IUSE="+custom-alloc doc test"
 
