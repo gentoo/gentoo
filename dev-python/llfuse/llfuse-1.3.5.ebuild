@@ -17,7 +17,6 @@ IUSE="doc examples test"
 RESTRICT="!test? ( test )"
 
 RDEPEND=">=sys-fs/fuse-2.8.0:0
-	$(python_gen_cond_dep 'dev-python/contextlib2[${PYTHON_USEDEP}]' python2_7 pypy)
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
