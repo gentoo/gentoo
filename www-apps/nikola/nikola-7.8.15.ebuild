@@ -44,9 +44,7 @@ RDEPEND="${DEPEND}
 	ghpages? ( >=dev-vcs/ghp-import-0.4.1[${PYTHON_USEDEP}] )
 	hyphenation? ( >=dev-python/pyphen-0.9.1[${PYTHON_USEDEP}] )
 	ipython? (
-		$(python_gen_cond_dep '
-			>=dev-python/ipython-2.0.0[notebook,${PYTHON_USEDEP}]
-		' -3)
+		>=dev-python/ipython-2.0.0[notebook,${PYTHON_USEDEP}]
 	)
 	jinja? ( >=dev-python/jinja-2.7.2[${PYTHON_USEDEP}] )
 	watchdog? ( ~dev-python/watchdog-0.8.3[${PYTHON_USEDEP}] )
