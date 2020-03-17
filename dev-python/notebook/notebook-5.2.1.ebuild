@@ -33,7 +33,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 		>=dev-python/nose-0.10.1[${PYTHON_USEDEP}]
 		dev-python/nose_warnings_filters[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
@@ -46,8 +45,8 @@ DEPEND="${RDEPEND}
 		dev-python/sphinx_rtd_theme[${PYTHON_USEDEP}]
 		=dev-python/nbsphinx-0.2.14[${PYTHON_USEDEP}]
 		test? (
-			$(python_gen_cond_dep 'dev-python/nbval[${PYTHON_USEDEP}]' 'python3*')
-			$(python_gen_cond_dep 'dev-python/pytest[${PYTHON_USEDEP}]' 'python3*')
+			dev-python/nbval[${PYTHON_USEDEP}]
+			dev-python/pytest[${PYTHON_USEDEP}]
 		)
 	)
 	"
