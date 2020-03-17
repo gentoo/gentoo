@@ -73,6 +73,10 @@ src_install() {
 	dodir /opt
 	cp -a usr/share/skypeforlinux "${D}"/opt || die
 
+	# remove chrome-sandbox binary, users should use kernel namespaces
+	# https://bugs.gentoo.org/692692#c18
+	rm "${ED}"/opt/skypeforlinux/chrome-sandbox || die
+
 	dobin usr/bin/skypeforlinux
 
 	dodoc usr/share/skypeforlinux/*.html
