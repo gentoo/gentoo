@@ -46,7 +46,6 @@ DEPEND="${RDEPEND}
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/sympy[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 	)
 "
 
