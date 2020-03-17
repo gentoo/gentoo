@@ -3,8 +3,8 @@
 
 EAPI=6
 
-MY_PV=${PV/_p/+}
-SLOT=${MY_PV%%[.+]*}
+MY_PV="${PV/_p/+}"
+SLOT="${MY_PV%%[.+]*}/${PV}"
 EGRADLE_VER="4.8"
 
 inherit java-pkg-2 multiprocessing
@@ -12,7 +12,7 @@ inherit java-pkg-2 multiprocessing
 DESCRIPTION="Java OpenJFX client application platform"
 HOMEPAGE="https://openjfx.io"
 
-SRC_URI="https://hg.openjdk.java.net/${PN}/${SLOT}/rt/archive/${MY_PV}.tar.bz2 -> ${P}.tar.bz2
+SRC_URI="https://hg.openjdk.java.net/${PN}/${SLOT}-dev/rt/archive/${MY_PV}.tar.bz2 -> ${P}.tar.bz2
 	https://downloads.gradle.org/distributions/gradle-${EGRADLE_VER}-bin.zip
 	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-sandbox/7.1.0/lucene-sandbox-7.1.0.jar
 	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-grouping/7.1.0/lucene-grouping-7.1.0.jar
@@ -20,7 +20,7 @@ SRC_URI="https://hg.openjdk.java.net/${PN}/${SLOT}/rt/archive/${MY_PV}.tar.bz2 -
 	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-queries/7.1.0/lucene-queries-7.1.0.jar
 	https://repo.maven.apache.org/maven2/org/apache/lucene/lucene-core/7.1.0/lucene-core-7.1.0.jar
 	https://repo.maven.apache.org/maven2/org/antlr/gunit/3.5.2/gunit-3.5.2.jar
-	https://repo.maven.apache.org/maven2/org/antlr/antlr-complete/3.5.2/antlr-complete-3.5.2.jar
+	https://repo1.maven.org/maven2/org/antlr/antlr4/4.7.2/antlr4-4.7.2-complete.jar
 	https://repo.maven.apache.org/maven2/org/antlr/ST4/4.0.8/ST4-4.0.8.jar
 "
 
@@ -58,7 +58,7 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	app-arch/zip
-	>=dev-java/ant-core-1.10.5-r2:0
+	>=dev-java/ant-core-1.10.7-r1:0
 	dev-java/antlr:0
 	dev-java/antlr:3.5
 	dev-java/hamcrest-core:0
@@ -74,7 +74,6 @@ PATCHES=(
 	"${FILESDIR}"/11/glibc-compatibility.patch
 	"${FILESDIR}"/11/respect-user-cflags.patch
 	"${FILESDIR}"/11/use-system-swt-jar.patch
-	"${FILESDIR}"/11/fix-build-on-gradle-5x.patch
 )
 
 S="${WORKDIR}/rt-${MY_PV}"
@@ -194,7 +193,7 @@ src_configure() {
 		LINT = none
 		CONF = $(usex debug DebugNative Release)
 		NUM_COMPILE_THREADS = $(makeopts_jobs)
-		JFX_DEPS_URL = "${T}"/jars
+		JFX_DEPS_URL = ${T}/jars
 		COMPANY_NAME = "Gentoo"
 	_EOF_
 }
