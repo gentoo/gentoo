@@ -297,6 +297,7 @@ _python_gen_usedep() {
 
 	local impl matches=()
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			matches+=(
@@ -380,6 +381,7 @@ python_gen_useflags() {
 
 	local impl matches=()
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			matches+=( "python_targets_${impl}" )
@@ -428,6 +430,7 @@ python_gen_cond_dep() {
 	local dep=${1}
 	shift
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			# substitute ${PYTHON_USEDEP} if used
@@ -486,6 +489,7 @@ python_gen_impl_dep() {
 	local PYTHON_REQ_USE=${1}
 	shift
 
+	_python_verify_patterns "${@}"
 	for impl in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${impl}" "${@}"; then
 			local PYTHON_PKG_DEP
@@ -564,6 +568,7 @@ python_gen_any_dep() {
 	shift
 
 	local i PYTHON_PKG_DEP out=
+	_python_verify_patterns "${@}"
 	for i in "${_PYTHON_SUPPORTED_IMPLS[@]}"; do
 		if _python_impl_matches "${i}" "${@}"; then
 			local PYTHON_USEDEP="python_targets_${i}(-),python_single_target_${i}(+)"
@@ -751,6 +756,7 @@ python_setup() {
 
 	# (reverse iteration -- newest impl first)
 	local found
+	_python_verify_patterns "${@}"
 	for (( i = ${#_PYTHON_SUPPORTED_IMPLS[@]} - 1; i >= 0; i-- )); do
 		local impl=${_PYTHON_SUPPORTED_IMPLS[i]}
 
