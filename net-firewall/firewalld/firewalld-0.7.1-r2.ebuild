@@ -45,7 +45,13 @@ RESTRICT="test" # bug 650760
 PLOCALES="ar as bg bn_IN ca cs da de el en_GB en_US es et eu fi fr gl gu hi hu ia id it ja ka kn ko lt ml mr nl or pa pl pt pt_BR ru sk sq sr sr@latin sv ta te tr uk zh_CN zh_TW"
 
 pkg_setup() {
-	local CONFIG_CHECK="~NF_CONNTRACK ~NF_CONNTRACK_IPV4 ~NF_CONNTRACK_IPV6 ~NETFILTER_XT_MATCH_CONNTRACK"
+	local CONFIG_CHECK="~NF_CONNTRACK ~NETFILTER_XT_MATCH_CONNTRACK"
+
+	# kernel >= 4.19 has unified a NF_CONNTRACK module, bug 692944
+	if kernel_is -lt 4 19; then
+		CONFIG_CHECK="${CONFIG_CHECK} ~NF_CONNTRACK_IPV4 ~NF_CONNTRACK_IPV6"
+	fi
+
 	linux-info_pkg_setup
 }
 
