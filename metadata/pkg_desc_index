@@ -7924,7 +7924,7 @@ dev-python/inflect 0.2.5 3.0.2 4.0.0 4.1.0: Correctly inflect words and numbers
 dev-python/inflection 0.3.1: A port of Ruby on Rails' inflector to Python
 dev-python/influxdb 2.12.0: InfluxDB client
 dev-python/iniparse 0.4-r2: Better INI parser for Python
-dev-python/intelhex 2.0 2.2.1: Python library for Intel HEX files manipulations
+dev-python/intelhex 2.0 2.2.1-r1: Python library for Intel HEX files manipulations
 dev-python/intervaltree 2.1.0 3.0.2: Editable interval tree data structure for Python 2 and 3
 dev-python/into 0.2.2: Data migration utilities
 dev-python/intreehooks 1.0: Load a PEP 517 backend from inside the source tree
@@ -8334,7 +8334,7 @@ dev-python/py-amqp 2.3.2 2.4.2 2.5.0: Low-level AMQP client for Python (fork of 
 dev-python/py-cpuinfo 5.0.0-r1: Get CPU info with pure Python 2 & 3
 dev-python/py-gfm 0.1.1 0.1.4: Github-Flavored Markdown for Python-Markdown
 dev-python/py-lz4framed 0.9.6: LZ4Frame library for Python (via C bindings)
-dev-python/py-ubjson 0.9.0 0.10.0 0.11.0: Universal Binary JSON encoder/decoder
+dev-python/py-ubjson 0.9.0 0.10.0 0.11.0 0.15.0: Universal Binary JSON encoder/decoder
 dev-python/py2neo 3.1.2: A simple and pragmatic library which accesses the Neo4j graph database
 dev-python/py2play 0.1.10-r1: A Peer To Peer network game engine
 dev-python/pyClamd 0.4.0 0.4.0-r1: python interface to Clamd (Clamav daemon)
