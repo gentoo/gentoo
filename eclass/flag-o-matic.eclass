@@ -434,13 +434,20 @@ test-flag-PROG() {
 	local lang=$2
 	shift 2
 
-	[[ -z ${comp} || -z $1 ]] && return 1
+	if [[ -z ${comp} ]]; then
+		return 1
+	fi
+	if [[ -z $1 ]]; then
+		return 1
+	fi
 
 	# verify selected compiler exists before using it
 	comp=($(tc-get${comp}))
 	# 'comp' can already contain compiler options.
 	# 'type' needs a binary name
-	type -p ${comp[0]} >/dev/null || return 1
+	if ! type -p ${comp[0]} >/dev/null; then
+		return 1
+	fi
 
 	# Set up test file.
 	local in_src in_ext cmdline_extra=()
