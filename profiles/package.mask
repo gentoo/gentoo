@@ -255,7 +255,6 @@ dev-python/slackclient
 dev-python/spark-parser
 dev-python/sphinx-better-theme
 dev-python/sphinxcontrib-googleanalytics
-dev-python/sphinxcontrib-programoutput
 dev-python/tempest-lib
 dev-python/testify
 dev-python/tlslite
