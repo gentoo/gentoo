@@ -45,6 +45,18 @@ _PYTHON_ALL_IMPLS=(
 )
 readonly _PYTHON_ALL_IMPLS
 
+# @ECLASS-VARIABLE: _PYTHON_HISTORICAL_IMPLS
+# @INTERNAL
+# @DESCRIPTION:
+# All historical Python implementations that are no longer supported.
+_PYTHON_HISTORICAL_IMPLS=(
+	jython2_7
+	pypy pypy1_{8,9} pypy2_0
+	python2_{5,6}
+	python3_{1,2,3,4,5}
+)
+readonly _PYTHON_HISTORICAL_IMPLS
+
 # @ECLASS-VARIABLE: PYTHON_COMPAT_NO_STRICT
 # @INTERNAL
 # @DESCRIPTION:
@@ -87,6 +99,28 @@ _python_impl_supported() {
 			[[ ${PYTHON_COMPAT_NO_STRICT} ]] && return 1
 			die "Invalid implementation in PYTHON_COMPAT: ${impl}"
 	esac
+}
+
+# @FUNCTION: _python_verify_patterns
+# @USAGE: <pattern>...
+# @INTERNAL
+# @DESCRIPTION:
+# Verify whether the patterns passed to the eclass function are correct
+# (i.e. can match any valid implementation).  Dies on wrong pattern.
+_python_verify_patterns() {
+	debug-print-function ${FUNCNAME} "${@}"
+
+	local impl pattern
+	for pattern; do
+		[[ ${pattern} == -[23] ]] && continue
+
+		for impl in "${_PYTHON_ALL_IMPLS[@]}" "${_PYTHON_HISTORICAL_IMPLS[@]}"
+		do
+			[[ ${impl} == ${pattern/./_} ]] && continue 2
+		done
+
+		die "Invalid implementation pattern: ${pattern}"
+	done
 }
 
 # @FUNCTION: _python_set_impls
