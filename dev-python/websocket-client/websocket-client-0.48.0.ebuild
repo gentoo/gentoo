@@ -21,7 +21,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' pypy python2_7 )
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]

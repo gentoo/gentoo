@@ -21,7 +21,6 @@ IUSE="examples"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
 RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' 'python2*' )
 "
 
 python_test() {
