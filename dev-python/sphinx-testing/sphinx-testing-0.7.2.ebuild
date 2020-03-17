@@ -20,8 +20,7 @@ RDEPEND="dev-python/six[${PYTHON_USEDEP}]
 	dev-python/sphinx[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
-	test? ( dev-python/nose[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*') )"
+	test? ( dev-python/nose[${PYTHON_USEDEP}] )"
 
 python_test() {
 	nosetests || die
