@@ -41,6 +41,10 @@ RDEPEND="${BDEPEND}
 
 RESTRICT="!test? ( test )"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-add-webcolors-1.11-compat.patch
+)
+
 distutils_enable_tests unittest
 
 python_prepare_all() {
