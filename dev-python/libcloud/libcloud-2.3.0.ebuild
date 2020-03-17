@@ -22,7 +22,6 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/lockfile[${PYTHON_USEDEP}]
-		 $(python_gen_cond_dep 'dev-python/backports-ssl-match-hostname[${PYTHON_USEDEP}]' python2_7 pypy)
 	)"
 
 # Known test failures
