@@ -26,8 +26,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		 dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/nose-cover3[${PYTHON_USEDEP}]
 		dev-python/pylint[${PYTHON_USEDEP}] )
-	doc? ( $(python_gen_cond_dep 'dev-python/sphinx[${PYTHON_USEDEP}]' python2_7)
-		>=dev-python/python-docs-2.7.6-r1:2.7 )"
+	doc? ( >=dev-python/python-docs-2.7.6-r1:2.7 )"
 
 REQUIRED_USE="test? ( yahoo timezone )"
 
