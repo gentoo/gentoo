@@ -28,6 +28,10 @@ BDEPEND="
 RDEPEND=""
 DEPEND="${LIVE_DEPEND}"
 
+PATCHES=(
+	"${FILESDIR}"/${P}-fix-python3-support.patch
+)
+
 src_prepare() {
 	default
 	[[ ${PV} == 9999 ]] && eautoreconf
