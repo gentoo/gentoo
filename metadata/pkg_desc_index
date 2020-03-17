@@ -2689,8 +2689,8 @@ app-text/openlp 2.4.6: Free church presentation software
 app-text/opensp 1.5.2-r3 1.5.2-r6: A free, object-oriented toolkit for SGML parsing and entity management
 app-text/ots 0.5.0-r1: Open source Text Summarizer, as used in newer releases of abiword and kword
 app-text/pandoc 1.12.4.2-r1 1.13.2.1 1.14.0.4 1.15.0.6 1.18 1.19.2.1 1.19.2.1-r1: Conversion between markup formats
-app-text/paperwork 1.2.4-r2 1.3.0 1.3.1: a personal document manager for scanned documents (and PDFs)
-app-text/paperwork-backend 1.2.4 1.3.0 1.3.1: Backend part of Paperwork (Python API, no UI)
+app-text/paperwork 1.3.1: a personal document manager for scanned documents (and PDFs)
+app-text/paperwork-backend 1.3.1: Backend part of Paperwork (Python API, no UI)
 app-text/paps 0.6.8-r2: Unicode-aware text to PostScript converter
 app-text/par 1.52-r1: a paragraph reformatter, vaguely similar to fmt, but better
 app-text/passivetex 1.25-r1: A namespace-aware XML parser written in Tex
