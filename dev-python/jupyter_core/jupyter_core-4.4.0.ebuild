@@ -25,7 +25,6 @@ DEPEND="${RDEPEND}
 		dev-python/sphinxcontrib-github-alt[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 		>=dev-python/ipython-4.0.1[${PYTHON_USEDEP}]
 	)
 "
