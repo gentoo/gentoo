@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=!static? ( dev-libs/expat dev-libs/libaio )
 RESTRICT=!test? ( test )
 SLOT=0
-_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	53d57b0f8b8c19ff72cb341a42b891ed	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
+_eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	eutils	fcb2aa98e1948b835b5ae66ca52868c5	flag-o-matic	74b1bca587791941e9df7b808a01575b	git-r3	86a0188f2ad9eb3d65e4d031ab8a0422	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
 _md5_=78783449f2278950d85f2f779add8b6b
