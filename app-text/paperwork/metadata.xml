@@ -14,6 +14,5 @@ In other words, let the machine do most of the work for you.
 </longdescription>
   <upstream>
     <remote-id type="pypi">paperwork-backend</remote-id>
-    <remote-id type="github">openpaperwork/paperwork</remote-id>
   </upstream>
 </pkgmetadata>
