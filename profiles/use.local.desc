@@ -5281,13 +5281,6 @@ net-analyzer/hydra:gcrypt - Enable radmin2 support through dev-libs/libgcrypt
 net-analyzer/hydra:libssh - Enable SSH support through net-libs/libssh
 net-analyzer/hydra:mongodb - MongoDB support through dev-libs/mongo-c-driver
 net-analyzer/hydra:ncp - NCP protocol (NetWare) support through net-fs/ncpfs
-net-analyzer/icinga:contrib - additional scripts
-net-analyzer/icinga:eventhandler - Adds support for running custom scripts whenever a host or service state change occurs
-net-analyzer/icinga:idoutils - Adds DB support
-net-analyzer/icinga:lighttpd - Adds Lighttpd support
-net-analyzer/icinga:plugins - Adds support for nagios plugins
-net-analyzer/icinga:web - Adds generic web interface support
-net-analyzer/icinga-web:pnp - Enables pnp4nagios integration
 net-analyzer/icinga2:console - Adds support for line-editing in the console
 net-analyzer/icinga2:lto - Adds support for link time optimization
 net-analyzer/icinga2:mail - Allows for mailing of alerts
