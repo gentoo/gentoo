@@ -23,7 +23,6 @@ BDEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/pylibmc[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/subprocess32[${PYTHON_USEDEP}]' -2)
 	)"
 
 RESTRICT="!test? ( test )"
