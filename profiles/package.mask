@@ -175,7 +175,6 @@ dev-python/httreplay
 dev-python/husl
 dev-python/hvac
 dev-python/influxdb
-dev-python/intelhex
 dev-python/into
 dev-python/ipcalc
 dev-python/iso3166
