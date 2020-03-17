@@ -34,7 +34,7 @@ COMMON_DEPEND="
 	xattr? ( sys-apps/attr:0= )
 "
 DEPEND="${COMMON_DEPEND}
-	>=sys-kernel/linux-headers-4.19
+	>=sys-kernel/linux-headers-4.14
 "
 RDEPEND="${COMMON_DEPEND}
 	pam? ( >=sys-auth/pambase-20150213 )
