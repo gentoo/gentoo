@@ -17,6 +17,30 @@
 
 #--- END OF EXAMPLES ---
 
+# Matt Turner <mattst88@gentoo.org> (2020-03-17)
+# Deprecated GNOME 2 era packages
+# Bugs #640022, #713010
+dev-python/gconf-python
+dev-python/gnome-python-base
+dev-python/gnome-python-desktop-base
+dev-python/gnome-python-extras-base
+dev-python/gnome-vfs-python
+dev-python/libbonobo-python
+dev-python/libgnomecanvas-python
+dev-python/libgnome-python
+dev-python/librsvg-python
+dev-python/pygobject:2
+dev-python/pygtksourceview
+dev-python/pyorbit
+gnome-base/gnome-desktop:2
+gnome-base/gnome-vfs
+gnome-base/libbonobo
+gnome-base/libbonoboui
+gnome-base/libgnome
+gnome-base/libgnome-keyring
+gnome-base/libgnomeui
+gnome-base/orbit
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-16)
 # Virtuals for Python 2 backports.  Mostly obsolete, and some of them
 # are really confusing.  Use $(python_gen_cond_dep ...) instead
