@@ -32,6 +32,11 @@
 
 #--- END OF EXAMPLES ---
 
+# Marc Schiffbauer <mschiff@gentoo.org> (2020-03-17)
+# No py3 support, replaced by its successor automx2
+# Removal in 30 days. Bug #708410
+net-mail/automx
+
 # Michał Górny <mgorny@gentoo.org> (2020-03-17)
 # Unmaintained.  Current Gentoo version is from 2015, last upstream
 # release in 2017.  Python 2 only.
