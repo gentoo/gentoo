@@ -34,4 +34,12 @@ src_install() {
 
 pkg_postinst() {
 	elog "You'll find e-flat-theme under System themes in theme selector."
+
+	if [[ -n ${REPLACING_VERSIONS} ]]; then
+		ewarn ""
+		ewarn "You're updating flat-0 theme. Please reload Enlightenment"
+		ewarn "through Menu -> Enlightenment -> Restart, or by issuing"
+		ewarn "  enlightenment -restart"
+		ewarn ""
+	fi
 }
