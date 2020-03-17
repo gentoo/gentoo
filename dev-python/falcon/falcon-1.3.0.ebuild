@@ -6,7 +6,7 @@ EAPI=5
 # Python 2.6 is supported, but depends on ordereddict, which has been in
 # improvise for months and is a minimal package. If needed
 # please let me know. PyPy also works
-PYTHON_COMPAT=( python{2_7,3_6} )
+PYTHON_COMPAT=( python3_6 )
 
 inherit distutils-r1
 
@@ -22,12 +22,12 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="dev-python/six[${PYTHON_USEDEP}]
 	dev-python/mimeparse[${PYTHON_USEDEP}]
-	cython? ( dev-python/cython[$(python_gen_usedep python{2_7,3_3})] )"
+	cython? ( dev-python/cython[${PYTHON_USEDEP}] )"
 
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/cython[$(python_gen_usedep python{2_7,3_3})]
+		dev-python/cython[${PYTHON_USEDEP}]
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/requests[${PYTHON_USEDEP}]
 		dev-python/pyyaml[${PYTHON_USEDEP}]
