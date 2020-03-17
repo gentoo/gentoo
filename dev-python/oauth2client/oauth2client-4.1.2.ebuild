@@ -23,7 +23,7 @@ RDEPEND="
 	>=dev-python/pyasn1-modules-0.0.5[${PYTHON_USEDEP}]
 	>=dev-python/rsa-3.1.4[${PYTHON_USEDEP}]
 	>=dev-python/six-1.6.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/keyring[${PYTHON_USEDEP}]' 'python*')
+	dev-python/keyring[${PYTHON_USEDEP}]
 	!<=dev-python/google-api-python-client-1.1[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}

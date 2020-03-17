@@ -20,7 +20,6 @@ COMMON_DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 "
 
 RDEPEND="${COMMON_DEPEND}
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
 	dev-python/six[${PYTHON_USEDEP}]
 	>=dev-python/twisted-16.4.0[crypt,${PYTHON_USEDEP}]
 	>=dev-python/requests-2.1.0[${PYTHON_USEDEP}]

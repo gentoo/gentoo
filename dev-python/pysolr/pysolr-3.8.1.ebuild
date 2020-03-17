@@ -30,10 +30,6 @@ DEPEND="
 		dev-python/pytest[${PYTHON_USEDEP}]
 		net-misc/curl
 		virtual/jre:*
-		$(python_gen_cond_dep '
-				dev-python/faulthandler[${PYTHON_USEDEP}]
-				dev-python/mock[${PYTHON_USEDEP}]
-			' -2)
 	)"
 
 src_unpack() {

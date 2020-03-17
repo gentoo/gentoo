@@ -17,12 +17,11 @@ KEYWORDS="amd64 x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos"
 IUSE="examples gtk imaging ipython latex mathml opengl pdf png test texmacs"
 RESTRICT="!test? ( test )"
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}
-	ipython? ( || ( $(python_gen_useflags -3) ) )"
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="dev-python/mpmath[${PYTHON_USEDEP}]
 	imaging? ( dev-python/pillow[${PYTHON_USEDEP}] )
-	ipython? ( $(python_gen_cond_dep 'dev-python/ipython[${PYTHON_USEDEP}]' -3) )
+	ipython? ( dev-python/ipython[${PYTHON_USEDEP}] )
 	latex? (
 		virtual/latex-base
 		dev-texlive/texlive-fontsextra

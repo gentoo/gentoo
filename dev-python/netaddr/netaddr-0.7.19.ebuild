@@ -20,9 +20,7 @@ REQUIRED_USE="cli? ( || ( $(python_gen_useflags -3) ) )"
 
 RDEPEND="
 	cli? (
-		$(python_gen_cond_dep '
-			>=dev-python/ipython-0.13.1-r1[${PYTHON_USEDEP}]
-		' -3)
+		>=dev-python/ipython-0.13.1-r1[${PYTHON_USEDEP}]
 	)"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (

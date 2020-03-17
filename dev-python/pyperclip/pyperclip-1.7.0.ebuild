@@ -20,7 +20,6 @@ RDEPEND="
 		x11-misc/xclip
 		x11-misc/xsel
 		dev-python/PyQt5[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/pygtk[${PYTHON_USEDEP}]' python2_7)
 	)
 "
 
