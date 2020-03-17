@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_6 )
 inherit distutils-r1
 
 DESCRIPTION="Backend part of Paperwork (Python API, no UI)"
-HOMEPAGE="https://github.com/openpaperwork/paperwork-backend"
+HOMEPAGE="https://gitlab.gnome.org/World/OpenPaperwork"
 SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="GPL-3"
