@@ -16,7 +16,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' 'python2*')
 	>=dev-python/path-py-6.2[${PYTHON_USEDEP}]"
 
 DEPEND="${RDEPEND}
