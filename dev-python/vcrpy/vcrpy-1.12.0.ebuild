@@ -25,9 +25,7 @@ RDEPEND="
 	>=dev-python/six-1.5[${PYTHON_USEDEP}]
 	dev-python/urllib3[${PYTHON_USEDEP}]
 	dev-python/wrapt[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep 'dev-python/contextlib2[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep 'dev-python/yarl[${PYTHON_USEDEP}]' 'python3*')
+	dev-python/yarl[${PYTHON_USEDEP}]
 	"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
