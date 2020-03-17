@@ -68,6 +68,8 @@ RDEPEND="${DEPEND}
 
 RESTRICT+=" test" # segfaults, bug 684132
 
+PATCHES=( "${FILESDIR}"/${P}-qt-5.14-crash-on-close-{1,2}.patch ) # 20.04 branch
+
 src_configure() {
 	local mycmakeargs=(
 		$(cmake_use_find_package freesound Qt5WebKitWidgets)
