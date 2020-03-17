@@ -24,11 +24,7 @@ DEPEND="
 	app-arch/vimball"
 
 RDEPEND="
-	${DEPEND}
-	$(python_gen_cond_dep \
-		'dev-python/pdb-clone[${PYTHON_USEDEP}]' python{2_7,3_5})
-	$(python_gen_cond_dep \
-		'dev-python/trollius[${PYTHON_USEDEP}]' python{2_7,3_3})"
+	${DEPEND}"
 
 SLOT="0"
 

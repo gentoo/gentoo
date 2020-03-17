@@ -27,7 +27,6 @@ RDEPEND="
 DEPEND="${RDEPEND}
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 		dev-python/pexpect[${PYTHON_USEDEP}]
 		>=dev-python/nose-0.10.1[${PYTHON_USEDEP}]
 	)
