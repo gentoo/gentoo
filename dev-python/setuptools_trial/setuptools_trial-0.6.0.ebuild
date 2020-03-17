@@ -18,7 +18,6 @@ IUSE=""
 RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/twisted-16.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' python2_7)
 "
 
 DEPEND="
