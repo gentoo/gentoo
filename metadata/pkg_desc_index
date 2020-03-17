@@ -5565,7 +5565,7 @@ dev-perl/Apache-LogFormat-Compiler 0.350.0: Compile an Apache log format string 
 dev-perl/Apache-Reload 0.130.0-r1: Automatically reload changed modules without restarting Apache
 dev-perl/Apache-Session 1.930.0: A persistence framework for session data
 dev-perl/Apache-SizeLimit 0.970.0-r1: Graceful exit for large children
-dev-perl/Apache-Test 1.400.0-r2: Test.pm wrapper with helpers for testing Apache
+dev-perl/Apache-Test 1.400.0-r2 1.420.0: Test.pm wrapper with helpers for testing Apache
 dev-perl/Apache2-AuthenNTLM 0.20.0-r2: Perform Microsoft NTLM and Basic User Authentication
 dev-perl/App-CLI 0.313.0-r1 0.500.0: Dispatcher module for command line interface programs
 dev-perl/App-Cmd 0.331.0: write command line apps with less suffering
@@ -17862,7 +17862,7 @@ www-apache/mod_log_rotate 1.01: Log rotation support for mod_log_config based on
 www-apache/mod_log_sql 1.101-r2 1.101-r3: An Apache module for logging to an SQL (MySQL) database
 www-apache/mod_musicindex 1.4.1-r1: mod_musicindex allows nice displaying of directories containing music files
 www-apache/mod_nss 1.0.12-r1: SSL/TLS module for the Apache HTTP server
-www-apache/mod_perl 2.0.10: An embedded Perl interpreter for Apache2
+www-apache/mod_perl 2.0.10 2.0.11: An embedded Perl interpreter for Apache2
 www-apache/mod_qos 11.61: A QOS module for the apache webserver
 www-apache/mod_rpaf 0.6-r1: Reverse proxy add forward module
 www-apache/mod_scgi 1.14-r1: Apache module for a replacement of the CGI protocol, similar to FastCGI
