@@ -8,4 +8,4 @@ RDEPEND=gnome-base/gconf:2 dev-libs/atk:0 dev-libs/expat:0 dev-libs/glib:2 dev-l
 SLOT=0
 SRC_URI=https://github.com/mattermost/desktop/archive/v4.4.0.tar.gz -> mattermost-desktop-bin-4.4.0.tar.gz amd64? ( https://releases.mattermost.com/desktop/4.4.0/mattermost-desktop-4.4.0-linux-x64.tar.gz ) x86? ( https://releases.mattermost.com/desktop/4.4.0/mattermost-desktop-4.4.0-linux-ia32.tar.gz )
 _eclasses_=desktop	b1d22ac8bdd4679ab79c71aca235009d	eutils	fcb2aa98e1948b835b5ae66ca52868c5
-_md5_=d654d8870e4417e960db771b2c3a35fe
+_md5_=a54761a804a26cc6c3ba5e565fb7a1f0
