@@ -24,8 +24,6 @@ RESTRICT="!test? ( test )"
 
 RDEPEND="
 	!dev-python/pyro:0
-	$(python_gen_cond_dep \
-		'dev-python/selectors34[${PYTHON_USEDEP}]' -2)
 	>=dev-python/serpent-1.27[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	test? (
