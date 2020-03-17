@@ -24,7 +24,6 @@ DEPEND="${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
 		dev-python/blinker[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' 'python2*' pypy)
 	)"
 
 PATCHES=( "${FILESDIR}/${P}-fix-tests-python2.patch" )
