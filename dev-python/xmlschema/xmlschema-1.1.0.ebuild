@@ -22,7 +22,6 @@ BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/lxml[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' -2)
 	)"
 
 python_test() {
