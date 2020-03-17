@@ -22,8 +22,6 @@ IUSE="crypt test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep '>=dev-python/trollius-2.0[${PYTHON_USEDEP}]' 'python2_7')
-	$(python_gen_cond_dep '>=dev-python/futures-3.0.4[${PYTHON_USEDEP}]' 'python2_7')
 	>=dev-python/cbor-1.0.0[${PYTHON_USEDEP}]
 	>=dev-python/lz4-0.7.0[${PYTHON_USEDEP}]
 	>=dev-python/py-ubjson-0.8.4[${PYTHON_USEDEP}]
