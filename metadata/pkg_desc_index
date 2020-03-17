@@ -1336,7 +1336,7 @@ app-editors/okteta 0.26.3: Hex editor by KDE
 app-editors/padre 1.0.0-r1: Perl Application Development and Refactoring Environment
 app-editors/pluma 1.22.0 1.22.1: Pluma text editor for the MATE desktop
 app-editors/qemacs 0.4.1_pre20170225: QEmacs is a very small but powerful UNIX editor
-app-editors/qhexedit2 0.8.4 0.8.4_p20170719: Hex editor library, Qt application written in C++ with Python bindings
+app-editors/qhexedit2 0.8.4 0.8.4_p20170719 0.8.6_p20190316: Hex editor library, Qt application written in C++ with Python bindings
 app-editors/qxmledit 0.9.12: Simple Qt-based XML editor
 app-editors/retext 7.0.4-r1 9999: Simple editor for Markdown and reStructuredText
 app-editors/sandy 0.4: an ncurses text editor with an easy-to-read, hackable C source
@@ -4978,7 +4978,7 @@ dev-libs/libbson 0.98.0 1.1.2 1.1.10 1.3.5 1.3.6 1.6.2 1.8.2 1.9.3 1.10.3 1.11.0
 dev-libs/libbulletml 0.0.6: A Library of Bullet Markup Language
 dev-libs/libburn 1.5.0 1.5.2_p1: Open-source library for reading, mastering and writing optical discs
 dev-libs/libbytesize 1.4 2.1 2.2: Tiny library providing a C "class" for working with arbitrary big sizes in bytes
-dev-libs/libcbor 0.5.0: CBOR protocol implementation for C and others
+dev-libs/libcbor 0.5.0 0.6.0-r1: CBOR protocol implementation for C and others
 dev-libs/libcdio 0.93 0.94-r1 1.1.0 2.0.0 2.0.0-r1 2.1.0-r1: A library to encapsulate CD-ROM reading and control
 dev-libs/libcdio-paranoia 0.93_p1-r1 0.94_p2-r2 2.0.0-r1 2.0.1: an advanced CDDA reader with error correction
 dev-libs/libcec 4.0.2-r2 4.0.4-r1: Library for communicating with the Pulse-Eight USB HDMI-CEC Adaptor
@@ -8696,7 +8696,7 @@ dev-python/rax-default-network-flags-python-novaclient-ext 0.4.0: Disk Config ex
 dev-python/rax-scheduled-images-python-novaclient-ext 0.3.1: Adds backup-schedule extension support to python-novaclient
 dev-python/rdflib 4.2.2 4.2.2-r1: RDF library containing a triple store and parser/serializer
 dev-python/readlike 0.1.2 0.1.3: a python library similar to readline
-dev-python/readme_renderer 17.2 24.0-r1: a library for rendering "readme" descriptions for Warehouse
+dev-python/readme_renderer 17.2 24.0-r1 25.0: a library for rendering "readme" descriptions for Warehouse
 dev-python/readthedocs-sphinx-ext 1.0.1 1.0.1-r1: Code specific for Read the Docs and Sphinx
 dev-python/rebulk 0.9.0 9999: Python library that performs advanced searches in strings
 dev-python/recommonmark 0.4.0 0.5.0_pre20180907 0.5.0_pre20181012 0.5.0_pre20181012-r1 0.5.0: Python docutils-compatibility bridge to CommonMark
@@ -15428,7 +15428,7 @@ net-wireless/inspectrum 0.2.2 9999: a tool for analysing captured signals from s
 net-wireless/irda-utils 0.9.18-r6: IrDA management and handling utilities
 net-wireless/iw 4.9 4.14 5.0.1 5.3 5.4: nl80211-based configuration utility for wireless devices using the mac80211 kernel stack
 net-wireless/iwd 1.4 1.4-r1 1.5 9999: Wireless daemon for linux
-net-wireless/jackit 0.0_p20170918: Exploit Code for Mousejack
+net-wireless/jackit 0.0_p20170918-r1: Exploit Code for Mousejack
 net-wireless/kismet 2016.07.1-r2 2019.09.1-r2 2019.12.2-r1 2020.03.1_p20200314 9999: IEEE 802.11 wireless LAN sniffer
 net-wireless/kismet-rest 2019.05.02 9999: Kismet REST Python API
 net-wireless/kismet-ubertooth 2017.03.2 9999: Provides basic bluetooth support in kismet
