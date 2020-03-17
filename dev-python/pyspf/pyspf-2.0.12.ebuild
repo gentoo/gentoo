@@ -19,9 +19,7 @@ RESTRICT="!test? ( test )"
 
 # >=python-3.3 comes with the built-in ipaddress module
 RDEPEND="dev-python/authres[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/ipaddr-2.1.10[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep 'dev-python/pydns:2[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep 'dev-python/pydns:3[${PYTHON_USEDEP}]' 'python3*')"
+	dev-python/pydns:3[${PYTHON_USEDEP}]"
 
 DEPEND="test? ( ${RDEPEND}
 	dev-python/pyyaml[${PYTHON_USEDEP}] )"
