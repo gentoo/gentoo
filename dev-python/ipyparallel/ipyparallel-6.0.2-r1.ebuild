@@ -23,7 +23,6 @@ RDEPEND="
 	dev-python/ipykernel[${PYTHON_USEDEP}]
 	!<dev-python/ipython-4.0.0[smp,${PYTHON_USEDEP}]
 	>=dev-python/ipython-4.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '<dev-python/ipython-6[${PYTHON_USEDEP}]' 'python2_7')
 	dev-python/ipython_genutils[${PYTHON_USEDEP}]
 	dev-python/jupyter_client[${PYTHON_USEDEP}]
 	dev-python/notebook[${PYTHON_USEDEP}]
