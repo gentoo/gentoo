@@ -1,10 +1,10 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 PYTHON_COMPAT=( python3_6 python3_7 )
 
-inherit distutils-r1 eutils linux-info user
+inherit distutils-r1 eutils linux-info
 
 DESCRIPTION="A highly available, distributed, and eventually consistent object/blob store"
 HOMEPAGE="https://launchpad.net/swift"
@@ -19,7 +19,7 @@ fi
 
 LICENSE="Apache-2.0"
 SLOT="0"
-IUSE="account container doc +memcached object proxy"
+IUSE="account container doc +memcached +object proxy"
 REQUIRED_USE="|| ( proxy account container object )"
 
 CDEPEND=">=dev-python/pbr-1.8.0[${PYTHON_USEDEP}]"
@@ -40,7 +40,9 @@ RDEPEND="
 	>=dev-python/PyECLib-1.3.1[${PYTHON_USEDEP}]
 	>=dev-python/cryptography-2.0.2[${PYTHON_USEDEP}]
 	memcached? ( net-misc/memcached )
-	net-misc/rsync[xattr]"
+	net-misc/rsync[xattr]
+	acct-user/swift
+	acct-group/swift"
 
 pkg_pretend() {
 	linux-info_pkg_setup
@@ -52,11 +54,6 @@ pkg_pretend() {
 			linux_chkconfig_present ${module} || ewarn "${module} needs to be enabled"
 		done
 	fi
-}
-
-pkg_setup() {
-	enewuser swift
-	enewgroup swift
 }
 
 src_prepare() {
@@ -87,8 +84,7 @@ python_install_all() {
 		newinitd "${FILESDIR}/swift-proxy.initd" "swift-proxy"
 		newins "etc/proxy-server.conf-sample" "proxy-server.conf"
 		if use memcached; then
-			sed -i '/depend/a\
-    need memcached' "${D}/etc/init.d/swift-proxy"
+			sed -i '/depend/a\    need memcached' "${D}/etc/init.d/swift-proxy"
 		fi
 	fi
 	if use account; then
