@@ -35,8 +35,7 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		dev-python/nose[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7) )"
+		dev-python/nose[${PYTHON_USEDEP}] )"
 
 python_test() {
 	nosetests --verbose || die "Tests failed with ${EPYTHON}"
