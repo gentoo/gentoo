@@ -39,7 +39,6 @@ DEPEND="${RDEPEND}
 		dev-python/flask-mongoengine[${PYTHON_USEDEP}]
 		dev-python/bcrypt[${PYTHON_USEDEP}]
 		dev-python/simplejson[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/flask-peewee[${PYTHON_USEDEP}]' 'python2*')
 	)"
 
 S="${WORKDIR}/${MY_P}"

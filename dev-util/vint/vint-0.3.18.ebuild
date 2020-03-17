@@ -21,9 +21,6 @@ RDEPEND="
 	>=dev-python/ansicolor-0.2.4[${PYTHON_USEDEP}]
 	>=dev-python/chardet-2.3.0[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.11[${PYTHON_USEDEP}]
-	virtual/python-enum34[${PYTHON_USEDEP}]
-	virtual/python-pathlib[${PYTHON_USEDEP}]
-	virtual/python-typing[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
@@ -31,7 +28,6 @@ DEPEND="${RDEPEND}
 		>=dev-python/coverage-3.7.1[${PYTHON_USEDEP}]
 		>=dev-python/pytest-2.6.4[${PYTHON_USEDEP}]
 		>=dev-python/pytest-cov-1.8.1[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '>=dev-python/mock-1.0.1[${PYTHON_USEDEP}]' python2_7)
 	)
 "
 

@@ -30,7 +30,10 @@ if [ "${PV#9999}" != "${PV}" ] ; then
 elif [ "${PV%_p*}" != "${PV}" ] ; then # Snapshot
 	SRC_URI="mirror://gentoo/${P}.tar.bz2"
 else # Release
-	SRC_URI="https://ffmpeg.org/releases/${P/_/-}.tar.bz2"
+	SRC_URI="https://ffmpeg.org/releases/${P/_/-}.tar.bz2
+		https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-4.2.2-ppc64-altivec.patch.gz
+		https://dev.gentoo.org/~gyakovlev/distfiles/${PN}-4.2.2-ppc64-gcc.patch.gz
+	"
 fi
 FFMPEG_REVISION="${PV#*_p}"
 
@@ -59,7 +62,7 @@ LICENSE="
 	samba? ( GPL-3 )
 "
 if [ "${PV#9999}" = "${PV}" ] ; then
-	KEYWORDS="~amd64 ~arm ~arm64 ~hppa ~mips ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~sparc ~x86 ~amd64-linux ~x86-linux ~ppc-macos ~x64-macos ~x86-macos ~x64-solaris ~x86-solaris"
 fi
 
 # Options to use as use_enable in the foo[:bar] form.
@@ -260,7 +263,6 @@ RDEPEND="
 	zimg? ( >=media-libs/zimg-2.7.4:=[${MULTILIB_USEDEP}] )
 	zlib? ( >=sys-libs/zlib-1.2.8-r1[${MULTILIB_USEDEP}] )
 	zvbi? ( >=media-libs/zvbi-0.2.35[${MULTILIB_USEDEP}] )
-	!media-video/qt-faststart
 	postproc? ( !media-libs/libpostproc )
 "
 
@@ -319,6 +321,9 @@ S=${WORKDIR}/${P/_/-}
 
 PATCHES=(
 	"${FILESDIR}"/chromium-r1.patch
+	"${WORKDIR}/${PN}"-4.2.2-ppc64-gcc.patch     # both ppc patches from
+	"${WORKDIR}/${PN}"-4.2.2-ppc64-altivec.patch # https://trac.ffmpeg.org/ticket/7861
+
 )
 
 MULTILIB_WRAPPED_HEADERS=(

@@ -12,7 +12,7 @@ SRC_URI="mirror://pypi/${PN::1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~arm64 ~hppa ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -22,7 +22,6 @@ BDEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		dev-python/lxml[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/pathlib2[${PYTHON_USEDEP}]' -2)
 	)"
 
 python_test() {

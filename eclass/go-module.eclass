@@ -388,7 +388,9 @@ _go-module_src_unpack_vendor() {
 			-f "${DISTDIR}/${tarball}" || die
 		eend
 	done
-	[[ ${#EGO_VENDOR[@]} -gt 0 ]] && GOFLAGS+=" -mod=vendor"
+	# replace GOFLAGS if EGO_VENDOR is being used
+	[[ ${#EGO_VENDOR[@]} -gt 0 ]] &&
+		GOFLAGS="-v -x -mod=vendor"
 	eqawarn "${P}.ebuild: EGO_VENDOR will be removed in the future."
 	eqawarn "Please request that the author migrate to EGO_SUM."
 }
@@ -413,17 +415,12 @@ _go-module_src_unpack_verify_gosum() {
 	einfo "Tidying go.mod/go.sum"
 	go mod tidy >/dev/null
 
-	# Verify that all needed modules are really present, by fetching everything
-	# in the package's main go.mod.  If the EGO_SUM was missing an entry then
-	# 'go mod tidy' && 'go get' will flag it.
-	# -v = verbose
-	# -d = download only, don't install
-	einfo "Verifying linked Golang modules"
-	go get \
-		-v \
-		-d \
-		all \
-		|| die "Some module is missing, update EGO_SUM"
+	# This used to call 'go get' to verify by fetching everything from the main
+	# go.mod. However 'go get' also turns out to recursively try to fetch
+	# everything in dependencies, even materials that are used only for tests
+	# of the dependencies, or code generation.
+	# If EGO_SUM is missing an entry now, it will fail during the build process
+	# rather than this helper function.
 }
 
 # @FUNCTION: go-module_live_vendor

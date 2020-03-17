@@ -24,10 +24,6 @@ RDEPEND="
 	>=dev-python/pip-9.0.1[${PYTHON_USEDEP}]
 	>dev-python/requests-2.18.0[${PYTHON_USEDEP}]
 	>=dev-python/urllib3-1.21.1[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' 'python2_7')
-	$(python_gen_cond_dep 'dev-python/typing[${PYTHON_USEDEP}]' 'python2_7')
-	$(python_gen_cond_dep 'dev-python/pathlib[${PYTHON_USEDEP}]' 'python2_7')
-	$(python_gen_cond_dep 'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' 'python2_7')
 	"
 DEPEND="
 	>=dev-python/parver-0.2[${PYTHON_USEDEP}]

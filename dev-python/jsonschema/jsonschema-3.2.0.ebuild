@@ -13,7 +13,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~hppa ~sparc ~x86 ~amd64-linux ~x86-linux"
+KEYWORDS="~alpha ~amd64 ~hppa ~sparc ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
 
 BDEPEND="
@@ -40,6 +40,10 @@ RDEPEND="${BDEPEND}
 "
 
 RESTRICT="!test? ( test )"
+
+PATCHES=(
+	"${FILESDIR}"/${P}-add-webcolors-1.11-compat.patch
+)
 
 distutils_enable_tests unittest
 

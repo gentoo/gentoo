@@ -21,8 +21,6 @@ RDEPEND=">=dev-libs/openssl-1.0.2:0=[-bindist]
 	net-dns/c-ares:=
 	!<net-libs/grpc-1.16.0[python]
 	sys-libs/zlib:=
-	virtual/python-enum34[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]

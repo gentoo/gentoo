@@ -22,6 +22,5 @@ DEPEND="
 "
 RDEPEND="
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 	>=dev-python/monotonic-0.6[${PYTHON_USEDEP}]
 "

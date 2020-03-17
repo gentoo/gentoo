@@ -1,6 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: kde5-functions.eclass
 # @MAINTAINER:
 # kde@gentoo.org
@@ -14,6 +15,11 @@
 
 if [[ -z ${_KDE5_FUNCTIONS_ECLASS} ]]; then
 _KDE5_FUNCTIONS_ECLASS=1
+
+if [[ -z ${_KDE5_ECLASS} ]]; then
+	eerror "This DEAD eclass must not be inherited directly by an ebuild."
+	die "Removal due on 2020-04-16."
+fi
 
 case ${EAPI} in
 	7) ;;

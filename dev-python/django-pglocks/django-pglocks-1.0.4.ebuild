@@ -18,4 +18,3 @@ DEPEND="
 	>=dev-python/six-1.0.0[${PYTHON_USEDEP}]
 	"
 RDEPEND="${DEPEND}"
-

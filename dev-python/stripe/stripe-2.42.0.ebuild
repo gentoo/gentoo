@@ -17,8 +17,7 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep '>=dev-python/requests-2.20[${PYTHON_USEDEP}]' 'python3*' pypy3)
-	$(python_gen_cond_dep '>=dev-python/requests-2.20[ssl,${PYTHON_USEDEP}]' 'python2*' pypy)
+	>=dev-python/requests-2.20[${PYTHON_USEDEP}]
 "
 # See https://github.com/stripe/stripe-python/blob/v2.10.1/tests/conftest.py#L17
 # for minimum required version of stripe-mock

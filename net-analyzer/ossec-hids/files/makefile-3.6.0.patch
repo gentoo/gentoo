@@ -1,0 +1,28 @@
+--- a/Makefile	2019-03-09 16:33:13.465947636 +0100
++++ b/Makefile	2019-03-09 16:32:57.105946856 +0100
+@@ -370,7 +370,6 @@
+ install-server: install-server-generic
+ 
+ install-common: build
+-	./init/adduser.sh ${OSSEC_USER} ${OSSEC_USER_MAIL} ${OSSEC_USER_REM} ${OSSEC_GROUP} ${PREFIX}
+ 	$(call INSTALL_CMD,0550,root,${OSSEC_GROUP}) -d ${PREFIX}/
+ 	$(call INSTALL_CMD,0750,${OSSEC_USER},${OSSEC_GROUP}) -d ${PREFIX}/logs
+ 	$(call INSTALL_CMD,0660,${OSSEC_USER},${OSSEC_GROUP}) /dev/null ${PREFIX}/logs/ossec.log
+@@ -1160,7 +1159,7 @@
+ #### test ##########
+ ####################
+ 
+-CFLAGS_TEST = -g -O0 --coverage
++CFLAGS_TEST = -g -O0
+ 
+ LDFLAGS_TEST = -lcheck -lm -pthread -lrt
+ 
+@@ -1171,7 +1170,7 @@
+ 
+ test_programs = test_os_zlib test_os_xml test_os_regex test_os_crypto test_shared
+ 
+-.PHONY: test run_tests build_tests test_valgrind test_coverage
++.PHONY: test run_tests build_tests test_valgrind
+ 
+ test: build_tests
+ 	${MAKE} run_tests

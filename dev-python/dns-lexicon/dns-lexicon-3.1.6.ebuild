@@ -21,7 +21,6 @@ DEPEND="
 RDEPEND="
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/tldextract[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
 	dev-python/pyyaml[${PYTHON_USEDEP}]
 "

@@ -14,12 +14,6 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 SLOT="0"
 LICENSE="MIT"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="test"
-
-RDEPEND=""
-DEPEND="${RDEPEND}
-	test? ( virtual/python-funcsigs[${PYTHON_USEDEP}] )
-"
 
 # Missing something in tarball
 #

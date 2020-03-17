@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -23,16 +23,12 @@ DEPEND="
 S="${WORKDIR}/heirloom-${PV}"
 PATCHES=(
 	"${FILESDIR}"/${P}-major.patch
+	"${FILESDIR}"/${P}-glibc-2.30.patch
 )
 
 # slightly broken
 RESTRICT="test"
 
-src_prepare() {
-	find . -name '*.c' -exec sed -i -e 's|#ifndef[[:space:]]*major|#include <sys/sysmacros.h>\n#if 0|g' {} + || die
-
-	default
-}
 src_compile() {
 	append-cppflags -D_GNU_SOURCE
 	emake -j1 \

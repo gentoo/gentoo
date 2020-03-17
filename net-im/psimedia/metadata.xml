@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>rion4ik@gmail.com</email>
+		<name>Sergey Ilinykh</name>
+	</maintainer>
+	<maintainer type="project">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<use>
+		<flag name="extras">Enable Psi+ mode (required when built for Psi+)</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">psi-im/psimedia</remote-id>
+	</upstream>
+</pkgmetadata>

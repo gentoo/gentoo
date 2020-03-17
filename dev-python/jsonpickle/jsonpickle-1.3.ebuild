@@ -24,8 +24,7 @@ RDEPEND="dev-python/simplejson[${PYTHON_USEDEP}]
 		dev-python/ujson[${PYTHON_USEDEP}]
 		"
 DEPEND="test? ( ${RDEPEND} )
-	doc? ( dev-python/sphinx[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/sphinxtogithub[${PYTHON_USEDEP}]' python2_7) )"
+	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )"
 
 python_prepare_all() {
 	# Prevent un-needed d'loading during doc build

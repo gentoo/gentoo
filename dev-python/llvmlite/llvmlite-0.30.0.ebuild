@@ -22,7 +22,6 @@ RDEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
 	sys-devel/llvm:${LLVM_MAX_SLOT}
 	sys-libs/zlib:0=
-	virtual/python-enum34[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	dev-python/setuptools[${PYTHON_USEDEP}]

@@ -38,14 +38,12 @@ RDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.0.0[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 "
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
 		app-arch/unzip
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]

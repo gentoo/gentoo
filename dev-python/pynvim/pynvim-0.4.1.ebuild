@@ -16,8 +16,7 @@ KEYWORDS="~amd64 ~arm ~x86"
 
 DEPEND="
 	dev-python/msgpack[${PYTHON_USEDEP}]
-	virtual/python-greenlet[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/trollius[${PYTHON_USEDEP}]' python2_7)"
+	virtual/python-greenlet[${PYTHON_USEDEP}]"
 
 RDEPEND="
 	${DEPEND}

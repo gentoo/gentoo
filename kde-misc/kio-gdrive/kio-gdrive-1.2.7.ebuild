@@ -42,7 +42,10 @@ RDEPEND="${COMMON_DEPEND}
 
 DOCS=( README.md )
 
-PATCHES=( "${FILESDIR}"/${PN}-1.2.6-refresh-credentials.patch )
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.2.6-refresh-credentials.patch
+	"${FILESDIR}"/${P}-kaccounts-integration-20.04.patch
+)
 
 src_configure() {
 	local mycmakeargs=(

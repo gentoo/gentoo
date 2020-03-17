@@ -20,7 +20,6 @@ RDEPEND="dev-python/ipython[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
 	app-arch/unzip
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/backports-shutil_get_terminal_size[${PYTHON_USEDEP}]' python2_7)
 	"
 
 DOCS=( HISTORY.txt )

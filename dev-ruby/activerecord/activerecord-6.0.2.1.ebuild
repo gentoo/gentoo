@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -29,7 +29,6 @@ RUBY_S="rails-${PV}/${PN}"
 
 ruby_add_rdepend "~dev-ruby/activesupport-${PV}
 	~dev-ruby/activemodel-${PV}
-	dev-ruby/arel:9.0
 	sqlite? ( >=dev-ruby/sqlite3-1.4 )
 	mysql? ( || ( dev-ruby/mysql2:0.5 >=dev-ruby/mysql2-0.4.4:0.4 ) )
 	postgres? ( || ( dev-ruby/pg:1 >=dev-ruby/pg-0.18.0:0 ) )"

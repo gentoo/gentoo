@@ -62,7 +62,9 @@ DEPEND="${CDEPEND}
 
 WAF_BINARY="${S}/waf"
 
-PATCHES=( "${FILESDIR}/${P}-externalize-sys_maxclock-fix-for-bug-708522.patch" )
+PATCHES=( "${FILESDIR}/${P}-externalize-sys_maxclock-fix-for-bug-708522.patch"
+	"${FILESDIR}/${P}-fix-missing-scmp_sys-on-aarch64.patch"
+	"${FILESDIR}/${P}-fix-asciidoc-version-detect.patch")
 
 src_prepare() {
 	default
@@ -149,7 +151,12 @@ src_install() {
 	cp -Rv "${S}"/etc/ntp.d/ "${ED}"/etc/
 
 	# move doc files to /usr/share/doc/"${P}"
-	use doc && mv -v "${ED}"/usr/share/doc/"${PN}" "${ED}"/usr/share/doc/"${P}"/html
+	if use doc; then
+		mv -v "${ED}"/usr/share/doc/"${PN}" \
+			"${ED}"/usr/share/doc/"${PF}"/html
+	else
+		rm -rf "${ED}"/usr/share/doc/"${PN}"
+	fi
 }
 
 pkg_postinst() {

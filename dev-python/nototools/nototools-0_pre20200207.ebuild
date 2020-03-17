@@ -17,7 +17,7 @@ SRC_URI="https://github.com/googlei18n/nototools/archive/${COMMIT}.tar.gz#/notot
 
 LICENSE="Apache-2.0 OFL-1.1"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 
 RDEPEND="
 	media-gfx/scour
@@ -26,7 +26,6 @@ RDEPEND="
 	>=dev-python/fonttools-3.36.0[${PYTHON_USEDEP}]
 	>=dev-python/pillow-4.0.0[${PYTHON_USEDEP}]
 	>=dev-python/pyclipper-1.0.6[${PYTHON_USEDEP}]
-	virtual/python-typing[${PYTHON_USEDEP}]
 "
 
 S="${WORKDIR}/${PN}-${COMMIT}"

@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # @ECLASS: fcaps.eclass
@@ -34,7 +34,10 @@ _FCAPS_ECLASS=1
 IUSE="+filecaps"
 
 # We can't use libcap-ng atm due to #471414.
-DEPEND="filecaps? ( sys-libs/libcap )"
+case "${EAPI:-0}" in
+	[0-6]) DEPEND="filecaps? ( sys-libs/libcap )" ;;
+	*) BDEPEND="filecaps? ( sys-libs/libcap )" ;;
+esac
 
 # @ECLASS-VARIABLE: FILECAPS
 # @DEFAULT_UNSET
@@ -77,6 +80,11 @@ DEPEND="filecaps? ( sys-libs/libcap )"
 # unchanged.
 fcaps() {
 	debug-print-function ${FUNCNAME} "$@"
+
+	if [[ ${EUID} != 0 ]] ; then
+		einfo "Insufficient privileges to execute ${FUNCNAME}, skipping."
+		return 0
+	fi
 
 	# Process the user options first.
 	local owner='root'

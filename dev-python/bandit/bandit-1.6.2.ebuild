@@ -36,7 +36,7 @@ DEPEND="
 	)"
 RDEPEND="
 	${CDEPEND}
-	>=dev-python/git-python-1.0.1[${PYTHON_USEDEP}]
+	>=dev-python/GitPython-1.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pyyaml-3.13.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.10.0[${PYTHON_USEDEP}]
 	>=dev-python/stevedore-1.20.0[${PYTHON_USEDEP}]"

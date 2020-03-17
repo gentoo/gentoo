@@ -50,6 +50,7 @@ DOCS=( README.md src/libelogind/sd-bus/GVARIANT-SERIALIZATION )
 PATCHES=(
 	"${FILESDIR}/${P}-nodocs.patch"
 	"${FILESDIR}/${PN}-241.4-broken-test.patch" # bug 699116
+	"${FILESDIR}/${P}-selinux-missing-headers.patch" # bug 711432
 )
 
 pkg_setup() {

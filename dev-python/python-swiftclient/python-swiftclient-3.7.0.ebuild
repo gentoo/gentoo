@@ -29,7 +29,7 @@ DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 		!~dev-python/sphinx-1.6.7[${PYTHON_USEDEP}]
 		>=dev-python/stestr-2.0.0[${PYTHON_USEDEP}]
 	)"
-RDEPEND="virtual/python-futures[${PYTHON_USEDEP}]
+RDEPEND="
 	>=dev-python/requests-1.1.0[${PYTHON_USEDEP}]
 	>=dev-python/six-1.9.0[${PYTHON_USEDEP}]"
 

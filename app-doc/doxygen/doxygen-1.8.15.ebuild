@@ -6,7 +6,7 @@ PYTHON_COMPAT=( python3_6 )
 
 CMAKE_MAKEFILE_GENERATOR="emake"
 
-inherit cmake-utils eutils python-any-r1
+inherit cmake-utils eutils llvm python-any-r1
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
 	EGIT_REPO_URI="https://github.com/doxygen/doxygen.git"
@@ -27,7 +27,7 @@ RDEPEND="app-text/ghostscript-gpl
 	dev-lang/perl
 	media-libs/libpng:0=
 	virtual/libiconv
-	clang? ( >=sys-devel/clang-4.0.0:= )
+	clang? ( <sys-devel/clang-10:= )
 	dot? (
 		media-gfx/graphviz
 		media-libs/freetype
@@ -67,7 +67,10 @@ PATCHES=(
 
 DOCS=( LANGUAGE.HOWTO README.md )
 
+LLVM_MAX_SLOT=9
+
 pkg_setup() {
+	use clang && llvm_pkg_setup
 	use doc && python-any-r1_pkg_setup
 }
 

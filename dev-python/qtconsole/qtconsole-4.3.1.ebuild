@@ -31,7 +31,6 @@ DEPEND="${RDEPEND}
 		>=dev-python/sphinx-1.3.1-r1[${PYTHON_USEDEP}]
 	)
 	test? (
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 		>=dev-python/nose-0.10.1[${PYTHON_USEDEP}]
 		dev-python/PyQt5[${PYTHON_USEDEP},svg,testlib]
 	)

@@ -3,6 +3,8 @@
 
 EAPI=7
 
+CMAKE_ECLASS="cmake"
+
 inherit cmake-multilib
 
 DESCRIPTION="PEM file reader for Network Security Services (NSS)"
@@ -21,3 +23,10 @@ DEPEND="!<=dev-libs/nss-3.50
 	${RDEPEND}"
 
 S="${WORKDIR}/${P}/src"
+
+multilib_src_configure() {
+	local mycmakeargs=(
+		-DLIB_INSTALL_DIR="$(get_libdir)"
+	)
+	cmake_src_configure
+}

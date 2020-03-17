@@ -14,9 +14,9 @@ inherit cmake-utils cuda eapi7-ver elisp-common eutils fortran-2 \
 DESCRIPTION="C++ data analysis framework and interpreter from CERN"
 HOMEPAGE="https://root.cern"
 
-IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda +davix debug emacs
+IUSE="+X aqua +asimage +c++11 c++14 c++17 cuda cudnn +davix debug emacs
 	+examples fits fftw fortran +gdml graphviz +gsl http libcxx +minuit
-	mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
+	mpi mysql odbc +opengl oracle postgres prefix pythia6 pythia8 +python
 	qt5 R +roofit root7 shadow sqlite +ssl +tbb test +tmva +unuran vc
 	vmc +xml xrootd"
 RESTRICT="!test? ( test )"
@@ -41,6 +41,7 @@ LICENSE="LGPL-2.1 freedist MSttfEULA LGPL-3 libpng UoI-NCSA"
 REQUIRED_USE="
 	^^ ( c++11 c++14 c++17 )
 	cuda? ( tmva !c++17 )
+	cudnn? ( cuda )
 	!X? ( !asimage !opengl !qt5 )
 	davix? ( ssl xml )
 	python? ( ${PYTHON_REQUIRED_USE} )
@@ -81,6 +82,7 @@ CDEPEND="
 	)
 	asimage? ( media-libs/libafterimage[gif,jpeg,png,tiff] )
 	cuda? ( >=dev-util/nvidia-cuda-toolkit-9.0 )
+	cudnn? ( dev-libs/cudnn )
 	davix? ( net-libs/davix )
 	emacs? ( >=app-editors/emacs-23.1:* )
 	fftw? ( sci-libs/fftw:3.0= )
@@ -91,6 +93,7 @@ CDEPEND="
 	libcxx? ( sys-libs/libcxx )
 	unuran? ( sci-mathematics/unuran:0= )
 	minuit? ( !sci-libs/minuit )
+	mpi? ( virtual/mpi )
 	mysql? ( dev-db/mysql-connector-c )
 	odbc? ( || ( dev-db/libiodbc dev-db/unixODBC ) )
 	oracle? ( dev-db/oracle-instantclient-basic )
@@ -133,6 +136,8 @@ pkg_setup() {
 }
 
 src_prepare() {
+	use cuda && cuda_src_prepare
+
 	cmake-utils_src_prepare
 
 	sed -i "/CLING_BUILD_PLUGINS/d" interpreter/CMakeLists.txt || die
@@ -187,6 +192,7 @@ src_configure() {
 		-Dbuiltin_xrootd=OFF
 		-Dbuiltin_xxhash=OFF
 		-Dbuiltin_zlib=OFF
+		-Dbuiltin_zstd=OFF
 		-Dx11=$(usex X)
 		-Dalien=OFF
 		-Darrow=OFF
@@ -197,9 +203,12 @@ src_configure() {
 		-Dclad=OFF
 		-Dcocoa=$(usex aqua)
 		-Dcuda=$(usex cuda)
+		-Dcudnn=$(usex cudnn)
 		-Dcxxmodules=OFF # requires clang, unstable
 		-Ddavix=$(usex davix)
+		-Ddataframe=ON
 		-Ddcache=OFF
+		-Dfcgi=$(usex http)
 		-Dfftw3=$(usex fftw)
 		-Dfitsio=$(usex fits)
 		-Dfortran=$(usex fortran)
@@ -219,6 +228,7 @@ src_configure() {
 		-Dminuit=$(usex minuit)
 		-Dmlp=$(usex tmva)
 		-Dmonalisa=OFF
+		-Dmpi=$(usex mpi)
 		-Dmysql=$(usex mysql)
 		-Dodbc=$(usex odbc)
 		-Dopengl=$(usex opengl)
@@ -226,7 +236,9 @@ src_configure() {
 		-Dpgsql=$(usex postgres)
 		-Dpythia6=$(usex pythia6)
 		-Dpythia8=$(usex pythia8)
-		-Dpython=$(usex python)
+		-Dpyroot=$(usex python) # python was renamed to pyroot
+		-Dpython=$(usex python) # kept for backward compatibility
+		-Dpyroot_experimental=OFF # use standard PyROOT for now
 		-Dqt5web=$(usex qt5)
 		-Droofit=$(usex roofit)
 		-Droot7=$(usex root7)

@@ -49,7 +49,7 @@ python_prepare_all() {
 }
 
 python_configure_all() {
-	strip-flags -ftracer -ftree-vectorize
+	filter-flags -ftracer -ftree-vectorize
 	# Note: make it impl-conditional if py3 is supported
 	append-flags -fno-strict-aliasing
 

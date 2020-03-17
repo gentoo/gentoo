@@ -3,9 +3,9 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8} )
+PYTHON_COMPAT=( python3_{7,8} )
 
-inherit python-single-r1 toolchain-funcs xdg
+inherit eutils python-single-r1 toolchain-funcs xdg
 
 if [[ ${PV} == "9999" ]] ; then
 	EGIT_REPO_URI="https://github.com/kovidgoyal/kitty.git"
@@ -38,7 +38,6 @@ RDEPEND="
 	x11-libs/libXrandr
 	sys-apps/dbus
 	sys-libs/zlib
-	virtual/imagemagick-tools
 	wayland? (
 		dev-libs/wayland
 		>=dev-libs/wayland-protocols-1.17
@@ -55,7 +54,7 @@ BDEPEND="virtual/pkgconfig"
 [[ ${PV} == *9999 ]] && BDEPEND+=" >=dev-python/sphinx-1.7"
 
 PATCHES=(
-	"${FILESDIR}"/kitty-0.15.1-flags.patch
+	"${FILESDIR}"/kitty-9999-flags.patch
 	"${FILESDIR}"/${PN}-0.14.4-svg-icon.patch
 )
 
@@ -94,6 +93,7 @@ src_install() {
 
 pkg_postinst() {
 	xdg_icon_cache_update
+	optfeature "Displaying images in the terminal" virtual/imagemagick-tools
 }
 
 pkg_postrm() {

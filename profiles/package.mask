@@ -32,6 +32,52 @@
 
 #--- END OF EXAMPLES ---
 
+# Michał Górny <mgorny@gentoo.org> (2020-03-17)
+# Unmaintained.  Current Gentoo version is from 2015, last upstream
+# release in 2017.  Python 2 only.
+# Removal in 30 days.  Bug #712950.
+mail-filter/spambayes
+
+# Andreas Sturmlechner <asturm@gentoo.org> (2020-03-14)
+# Breaks at least dev-games/simgear right now, bug #709878.
+~dev-games/openscenegraph-3.6.5
+
+# Mart Raudsepp <leio@gentoo.org> (2020-03-13)
+# Masked for testing due to split of libnma needing migration
+# and 1.8.25 being an old development release
+>=gnome-extra/nm-applet-1.8.25
+
+# Matthew Thode <prometheanfire@gentoo.org> (2020-03-13)
+# masked for removal in 14 days. Bug #712310
+dev-python/cliff-tablib
+
+# Ulrich Müller <ulm@gentoo.org> (2020-03-11)
+# No license. HOMEPAGE is gone.
+# Masked for removal in 14 days. Bug #450454.
+games-misc/fortune-mod-humorixfortunes
+
+# Matt Turner <mattst88@gentoo.org> (2020-03-11)
+# Masked for testing due to removal of libnm-glib (bug #665338)
+>=net-misc/networkmanager-1.20
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-11)
+# Unmaintained Trac plugins.  Last bumped in 2013.  Blockers
+# for Python 2 removal.
+# Removal in 30 days.  Bug #712120.
+www-apps/trac-accountmanager
+www-apps/trac-mercurial
+www-apps/trac-tags
+
+# Michał Górny <mgorny@gentoo.org> (2020-03-11)
+# The following Mercurial-related tools do not declare support
+# for Python 3 and have no maintainers.
+# Removal in 30 days.  Bug #712114.
+dev-vcs/hgsubversion
+dev-vcs/hgsvn
+dev-vcs/hgview
+dev-vcs/mercurial-server
+dev-vcs/tortoisehg
+
 # Alexander Tsoy <alexander@tsoy.me> (2020-03-10)
 # media-sound/gtklick: last commit in 2014, python 2 only, blocks
 # dev-python/pygtk removal.
@@ -84,14 +130,11 @@ dev-python/beaker
 dev-python/biplist
 dev-python/blaze
 dev-python/cgroup-utils
-dev-python/chameleon
 dev-python/colander
 dev-python/colorful
 dev-python/columnize
 dev-python/common
 dev-python/crumbs
-dev-python/cssselect2
-dev-python/cx_Freeze
 dev-python/d2to1
 dev-python/datashape
 dev-python/deform
@@ -152,7 +195,6 @@ dev-python/mmh3
 dev-python/mockldap
 dev-python/multipledispatch
 dev-python/netmiko
-dev-python/nltk
 dev-python/nosehtmloutput
 dev-python/odo
 dev-python/passwordmeter
@@ -178,7 +220,6 @@ dev-python/pyfiglet
 dev-python/pygcrypt
 dev-python/pygeocoder
 dev-python/pyhcl
-dev-python/pykka
 dev-python/pymtp
 dev-python/pynzb
 dev-python/pyopencl
@@ -220,16 +261,13 @@ dev-python/slackclient
 dev-python/spark-parser
 dev-python/sphinx-better-theme
 dev-python/sphinxcontrib-googleanalytics
-dev-python/sphinxcontrib-programoutput
 dev-python/tempest-lib
 dev-python/testify
-dev-python/tinycss2
 dev-python/tlslite
 dev-python/tpg
 dev-python/translationstring
 dev-python/trollius
 dev-python/twitter
-dev-python/twython
 dev-python/uhashring
 dev-python/uncompyle6
 dev-python/venusian
@@ -442,11 +480,6 @@ net-analyzer/zabbix
 # Removal in 30 days.  Bug #691044.
 dev-python/tlslite
 
-# Matthew Thode <prometheanfire@gentoo.org> (2020-02-17)
-# Discontinued upstream.  Bug #709998
-net-analyzer/icinga
-net-analyzer/icinga-web
-
 # Michał Górny <mgorny@gentoo.org> (2020-02-17)
 # Unmaintained.  Last bumped in 2018.  Blocks dev-qt/qtwebkit removal.
 # Removal in 30 days.  Bug #709850.
@@ -555,19 +588,6 @@ net-misc/gnome-remote-desktop
 # and accept a more unstable release.
 >=www-client/chromium-82
 
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-16)
-# No more revdeps, abandoned upstream, depends on deprecated dev-qt/qtwebkit.
-# Masked for removal in 30 days.
-kde-misc/kwebkitpart
-
-# Michał Górny <mgorny@gentoo.org> (2020-02-15)
-# To reduce duplication of effort, prebuilt vanilla kernel packages
-# are discontinued.  Since Gentoo patchset is really minimal,
-# sys-kernel/gentoo-kernel-bin can be used as a replacement.  Vanilla
-# kernels can still be built using sys-kernel/vanilla-kernel.
-# Removal in 30 days.
-sys-kernel/vanilla-kernel-bin
-
 # Mart Raudsepp <leio@gentoo.org> (2020-02-12)
 # GNOME 3.35 development release packages
 >=dev-libs/vala-common-0.47
@@ -576,37 +596,6 @@ dev-lang/vala:0.48
 # Stefan Strogin <steils@gentoo.org> (2020-02-12)
 # Mask for testing revdeps.
 >=dev-games/mygui-3.4.0
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-11)
-# Upstream "unable to port away from" dev-python/pygtk, bug #708156
-# Masked for removal in 30 days.
-sci-calculators/gonvert
-
-# David Seifert <soap@gentoo.org> (2020-02-11)
-# Unmaintained, EAPI 4, last release over 9 years ago, no revdeps.
-# Removal in 30 days.
-app-vim/cream
-
-# David Seifert <soap@gentoo.org> (2020-02-11)
-# Unmaintained, EAPI 4, last release over 9 years ago, ebuild has QA
-# issues, no revdeps.  Removal in 30 days.  Bug #558354.
-net-im/coccinella
-
-# David Seifert <soap@gentoo.org> (2020-02-10)
-# Unmaintained, only live ebuild, doesn't build, last release over 7
-# years ago, EAPI 4. Removal in 15 days. Bug #593008.
-dev-lang/rebol
-dev-lang/rebol-bin
-
-# David Seifert <soap@gentoo.org> (2020-02-10)
-# Unmaintained, EAPI 4, doesn't respect CFLAGS and LDFLAGS, which masks
-# undefined symbols in the shared object, upstream gone, no other distro
-# packages this anymore, no revdeps. Removal in 30 days.
-sys-apps/hbaapi
-
-# Andreas Sturmlechner <asturm@gentoo.org> (2020-02-09)
-# Dead upstream, broken by Qt 5.14, bug #703930. Masked for removal in 30 days.
-net-nntp/kwooty
 
 # Patrick McLean <chutzpah@gentoo.org> (2020-02-07)
 # Mask until sys-libs/libxcrypt[system] is unmasked
@@ -785,10 +774,6 @@ x11-drivers/xf86-video-tga
 x11-drivers/xf86-video-trident
 x11-drivers/xf86-video-tseng
 x11-drivers/xf86-video-voodoo
-
-# Eray Aslan <eras@gentoo.org> (2019-03-01)
-# Mask experimental software
-=mail-mta/postfix-3.5*
 
 # Miroslav Šulc <fordfrog@gentoo.org> (2019-01-23)
 # Depends on >=virtual/{jdk,jre}-11 which is masked

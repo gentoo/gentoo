@@ -30,8 +30,9 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
-	virtual/pkgconfig
 	app-doc/doxygen
+	gnome-base/gnome-common
+	virtual/pkgconfig
 "
 
 src_prepare() {

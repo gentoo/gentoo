@@ -5,7 +5,7 @@ EAPI=5
 
 inherit eutils multilib
 
-DESCRIPTION="Utility to change the OpenGL interface being used"
+DESCRIPTION="Utility to switch between OpenGL implementations"
 HOMEPAGE="https://wiki.gentoo.org/wiki/No_homepage"
 
 # Source:
@@ -24,10 +24,7 @@ KEYWORDS="~alpha amd64 arm arm64 hppa ia64 ~mips ppc ppc64 s390 ~sh sparc x86 ~a
 IUSE=""
 
 DEPEND="app-arch/xz-utils"
-RDEPEND="
-	>=app-admin/eselect-1.2.4
-	!<media-libs/mesa-10.4
-	!<x11-base/xorg-server-1.18"
+RDEPEND=">=app-admin/eselect-1.2.4"
 
 S=${WORKDIR}
 

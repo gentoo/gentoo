@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ~x86"
+KEYWORDS="~alpha ~amd64 arm ~arm64 ~ia64 ~x86"
 IUSE="brotli test"
 RESTRICT="!test? ( test )"
 
@@ -25,7 +25,9 @@ RDEPEND="
 	>=dev-python/cryptography-1.3.4[${PYTHON_USEDEP}]
 	>=dev-python/pyopenssl-0.14[${PYTHON_USEDEP}]
 	>=dev-python/idna-2.0.0[${PYTHON_USEDEP}]
-	virtual/python-ipaddress[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/ipaddress[${PYTHON_USEDEP}]
+	' -2)
 	brotli? ( dev-python/brotlipy[${PYTHON_USEDEP}] )
 "
 BDEPEND="

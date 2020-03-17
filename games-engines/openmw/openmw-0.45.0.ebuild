@@ -29,11 +29,11 @@ RDEPEND="
 	virtual/opengl
 	qt5? (
 		app-arch/unshield
-		dev-qt/qtcore:5=
-		dev-qt/qtgui:5=
-		dev-qt/qtnetwork:5=
-		dev-qt/qtopengl:5=
-		dev-qt/qtwidgets:5=
+		dev-qt/qtcore:5
+		dev-qt/qtgui:5
+		dev-qt/qtnetwork:5
+		dev-qt/qtopengl:5
+		dev-qt/qtwidgets:5
 	)
 "
 
@@ -46,6 +46,8 @@ BDEPEND="
 		dev-python/sphinx
 	)
 "
+
+PATCHES=( "${FILESDIR}"/${P}-osg-3.6.5-{1,2}.patch ) # bug #709878
 
 S="${WORKDIR}/${PN}-${P}"
 

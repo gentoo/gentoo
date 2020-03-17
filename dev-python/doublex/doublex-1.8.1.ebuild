@@ -23,7 +23,6 @@ DEPEND="
 	doc? ( dev-python/sphinx[${PYTHON_USEDEP}] )
 	test? (
 		dev-python/nose[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/unittest2[${PYTHON_USEDEP}]' 'python2*')
 	)
 "
 RDEPEND="${CDEPEND}"

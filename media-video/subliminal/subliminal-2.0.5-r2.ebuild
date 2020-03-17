@@ -37,7 +37,6 @@ RDEPEND="
 	>=dev-python/rarfile-2.7[compressed,${PYTHON_USEDEP}]
 	>=dev-python/pytz-2012c[${PYTHON_USEDEP}]
 	dev-python/setuptools[${PYTHON_USEDEP}]
-	virtual/python-futures[${PYTHON_USEDEP}]
 "
 DEPEND="${RDEPEND}
 	test? (
@@ -47,7 +46,6 @@ DEPEND="${RDEPEND}
 		dev-python/pytest-cov[${PYTHON_USEDEP}]
 		dev-python/pytest-runner[${PYTHON_USEDEP}]
 		dev-python/sympy[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7)
 	)
 "
 

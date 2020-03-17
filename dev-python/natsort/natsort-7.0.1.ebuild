@@ -20,7 +20,6 @@ IUSE="test"
 DEPEND="test? (
 		dev-python/hypothesis[${PYTHON_USEDEP}]
 		dev-python/pytest-mock[${PYTHON_USEDEP}]
-		virtual/python-pathlib[${PYTHON_USEDEP}]
 	)"
 
 distutils_enable_tests pytest

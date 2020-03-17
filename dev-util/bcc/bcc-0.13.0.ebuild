@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_{6,7,8} )
 
-inherit cmake-utils linux-info python-single-r1
+inherit cmake-utils linux-info llvm python-single-r1
 
 EGIT_COMMIT="v${PV}"
 LIBBPF_VER="0.0.7"
@@ -27,8 +27,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
 	>=sys-kernel/linux-headers-4.14
 	>=dev-libs/elfutils-0.166:=
-	sys-devel/clang:=
-	>=sys-devel/llvm-3.7.1:=[llvm_targets_BPF(+)]
+	<sys-devel/clang-10:=
+	<sys-devel/llvm-10:=[llvm_targets_BPF(+)]
 	luajit? ( dev-lang/luajit )
 	${PYTHON_DEPS}
 "
@@ -65,6 +65,7 @@ pkg_pretend() {
 }
 
 pkg_setup() {
+	LLVM_MAX_SLOT=9 llvm_pkg_setup
 	python-single-r1_pkg_setup
 }
 

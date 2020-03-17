@@ -14,7 +14,7 @@ SRC_URI="mirror://pypi/${PN:0:1}/${PN}/${P}.tar.gz"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~hppa ~x86"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~x86"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -32,8 +32,7 @@ RDEPEND="
 	<dev-python/pluggy-1
 	>=dev-python/py-${PY_VER}[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
-	dev-python/wcwidth[${PYTHON_USEDEP}]
-	virtual/python-funcsigs[${PYTHON_USEDEP}]"
+	dev-python/wcwidth[${PYTHON_USEDEP}]"
 
 # flake cause a number of tests to fail
 DEPEND="${RDEPEND}

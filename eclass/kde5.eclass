@@ -1,6 +1,7 @@
 # Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# @DEAD
 # @ECLASS: kde5.eclass
 # @MAINTAINER:
 # kde@gentoo.org
@@ -239,9 +240,14 @@ _kde5_strip_handbook_translations() {
 # @FUNCTION: cmake_use_find_package
 # @USAGE: <USE flag> <package name>
 # @DESCRIPTION:
-# Compatibility alias for cmake.eclass -> cmake.eclass
+# Compatibility alias for cmake-utils.eclass -> cmake.eclass
 cmake-utils_use_find_package() {
 	cmake_use_find_package "$@" ;
+}
+
+_kde5_really_dead() {
+	eqawarn "${CATEGORY}/${PN} is using DEAD kde5.eclass that will be removed"
+	eqawarn "on 2020-04-16. Read PORTING notes inside kde5.eclass and kde5-functions.eclass."
 }
 
 # @FUNCTION: kde5_pkg_pretend
@@ -261,6 +267,7 @@ kde5_pkg_pretend() {
 # Checks if the active compiler meets the minimum version requirements.
 kde5_pkg_setup() {
 	debug-print-function ${FUNCNAME} "$@"
+	_kde5_really_dead
 	case ${KDE_AUTODEPS} in
 		false) ;;
 		*) ecm_pkg_setup ;;
@@ -411,6 +418,7 @@ kde5_pkg_preinst() {
 # Updates the various XDG caches (icon, desktop, mime) if necessary.
 kde5_pkg_postinst() {
 	debug-print-function ${FUNCNAME} "$@"
+	_kde5_really_dead
 	case ${KDE_AUTODEPS} in
 		false) xdg_pkg_postinst ;;
 		*) ecm_pkg_postinst ;;

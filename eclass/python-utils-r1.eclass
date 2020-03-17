@@ -978,7 +978,7 @@ python_wrapper_setup() {
 		# Clean up, in case we were supposed to do a cheap update.
 		rm -f "${workdir}"/bin/python{,2,3}{,-config} || die
 		rm -f "${workdir}"/bin/2to3 || die
-		rm -f "${workdir}"/pkgconfig/python{,2,3}.pc || die
+		rm -f "${workdir}"/pkgconfig/python{2,3}{,-embed}.pc || die
 
 		local EPYTHON PYTHON
 		python_export "${impl}" EPYTHON PYTHON
@@ -1021,8 +1021,13 @@ python_wrapper_setup() {
 
 			# Python 2.7+.
 			ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${EPYTHON/n/n-}.pc \
-				"${workdir}"/pkgconfig/python.pc || die
-			ln -s python.pc "${workdir}"/pkgconfig/python${pyver}.pc || die
+				"${workdir}"/pkgconfig/python${pyver}.pc || die
+
+			# Python 3.8+.
+			if [[ ${EPYTHON} != python[23].[67] ]]; then
+				ln -s "${EPREFIX}"/usr/$(get_libdir)/pkgconfig/${EPYTHON/n/n-}-embed.pc \
+					"${workdir}"/pkgconfig/python${pyver}-embed.pc || die
+			fi
 		else
 			nonsupp+=( 2to3 python-config "python${pyver}-config" )
 		fi
