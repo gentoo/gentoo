@@ -11,13 +11,13 @@ SRC_DOC="https://geant4-userdoc.web.cern.ch/geant4-userdoc/UsersGuides"
 SRC_URI="
 	${SRC_DOC}/FAQ/BackupVersions/${MY_PV}/fo/BookFAQ.pdf
 		-> BookFAQ-${PV}.pdf
-	${SRC_DOC}/ForApplicationDeveloper/BackupVersions/${MY_PV}/fo/BookForAppliDev.pdf
+	${SRC_DOC}/ForApplicationDeveloper/BackupVersions/${MY_PV}/fo/BookForApplicationDevelopers.pdf
 		-> BookForApplicationDevelopers-${PV}.pdf
-	${SRC_DOC}/ForToolkitDeveloper/BackupVersions/${MY_PV}/fo/BookForToolDev.pdf
+	${SRC_DOC}/ForToolkitDeveloper/BackupVersions/${MY_PV}/fo/BookForToolkitDevelopers.pdf
 		-> BookForToolkitDevelopers-${PV}.pdf
-	${SRC_DOC}/InstallationGuide/BackupVersions/${MY_PV}/fo/BookInstalGuide.pdf
+	${SRC_DOC}/InstallationGuide/BackupVersions/${MY_PV}/fo/Geant4InstallationGuide.pdf
 		-> Geant4InstallationGuide-${PV}.pdf
-	${SRC_DOC}/IntroductionToGeant4/BackupVersions/${MY_PV}/fo/BookIntroToGeant4.pdf
+	${SRC_DOC}/IntroductionToGeant4/BackupVersions/${MY_PV}/fo/IntroductionToGeant4.pdf
 		-> IntroductionToGeant4-${PV}.pdf
 	${SRC_DOC}/PhysicsListGuide/BackupVersions/${MY_PV}/fo/PhysicsListGuide.pdf
 		-> PhysicsListGuide-${PV}.pdf
