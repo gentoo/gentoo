@@ -18,11 +18,12 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="${PYTHON_DEPS}
 	!!net-firewall/gshield
-	nftables? ( net-firewall/nftables[iptables?] )
+	nftables? ( net-firewall/nftables )
 	iptables? (
 		net-firewall/iptables[ipv6]
 		net-firewall/ebtables
 		net-firewall/ipset
+		nftables? ( net-firewall/nftables[xtables] )
 	)
 	|| ( >=sys-apps/openrc-0.11.5 sys-apps/systemd )
 	$(python_gen_cond_dep '
