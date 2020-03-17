@@ -11852,7 +11852,7 @@ kde-apps/kdegraphics-mobipocket 19.08.3 19.12.3: Library to support mobipocket e
 kde-apps/kdemultimedia-meta 19.08.3 19.12.3: kdemultimedia - merge this to pull in all kdemultimedia-derived packages
 kde-apps/kdenetwork-filesharing 19.08.3 19.12.3: SMB filesharing config module for systemsettings
 kde-apps/kdenetwork-meta 19.08.3 19.12.3: kdenetwork - merge this to pull in all kdenetwork-derived packages
-kde-apps/kdenlive 19.08.3 19.12.3: Non-linear video editing suite by KDE
+kde-apps/kdenlive 19.08.3 19.12.3-r1: Non-linear video editing suite by KDE
 kde-apps/kdepim-addons 19.08.3 19.12.3: Plugins for KDE Personal Information Management Suite
 kde-apps/kdepim-apps-libs 19.08.3 19.12.3: Libraries for KDE PIM applications
 kde-apps/kdepim-meta 19.08.3 19.12.3: KDE PIM - merge this to pull in all kdepim-derived packages
