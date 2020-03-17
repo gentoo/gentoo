@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -17,9 +17,7 @@ KEYWORDS="~amd64"
 IUSE="doc"
 
 BDEPEND="acct-user/automx2
-	$(python_gen_cond_dep \
-		'>=dev-python/flask-migrate-2.5.2[${PYTHON_MULTI_USEDEP}]' python3_{7}
-	)"
+	>=dev-python/flask-migrate-2.5.2[${PYTHON_USEDEP}]"
 RDEPEND="${BDEPEND}"
 
 python_prepare_all() {

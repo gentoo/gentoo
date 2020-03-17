@@ -17,9 +17,7 @@ KEYWORDS="~amd64"
 IUSE="doc"
 
 BDEPEND="acct-user/automx2
-	$(python_gen_cond_dep \
-		'>=dev-python/flask-migrate-2.5.2[${PYTHON_MULTI_USEDEP}]' python-3
-	)"
+	>=dev-python/flask-migrate-2.5.2[${PYTHON_USEDEP}]"
 RDEPEND="${BDEPEND}"
 
 python_prepare_all() {
