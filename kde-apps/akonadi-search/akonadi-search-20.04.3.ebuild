@@ -18,6 +18,8 @@ SLOT="5"
 KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
+RESTRICT+=" test" # perpetually broken, bug 662378
+
 BDEPEND="
 	test? ( >=kde-apps/akonadi-${PVCUT}:5[tools] )
 "
