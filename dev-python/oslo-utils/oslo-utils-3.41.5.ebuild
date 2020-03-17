@@ -48,7 +48,6 @@ DEPEND="
 		!~dev-python/sphinx-1.6.6[${PYTHON_USEDEP}]
 		!~dev-python/sphinx-1.6.7[${PYTHON_USEDEP}]
 		<dev-python/sphinx-2.0.0[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep '>=dev-python/openstackdocstheme-1.18.1[${PYTHON_USEDEP}]' python2_7)
 		>=dev-python/reno-2.5.0[${PYTHON_USEDEP}]
 		>=dev-python/fixtures-3.0.0[${PYTHON_USEDEP}]
 	)
