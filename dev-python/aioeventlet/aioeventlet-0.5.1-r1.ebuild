@@ -18,12 +18,10 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	dev-python/eventlet[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep '>=dev-python/trollius-0.3[${PYTHON_USEDEP}]' 'python2_7')"
+	dev-python/eventlet[${PYTHON_USEDEP}]"
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
-		dev-python/aiotest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2_7') )"
+		dev-python/aiotest[${PYTHON_USEDEP}] )"
 
 python_test() {
 	# from tox.ini
