@@ -25,7 +25,6 @@ DEPEND="
 	test? (
 		>=dev-python/dask-0.18.2[${PYTHON_USEDEP}]
 		dev-python/pytest[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2*')
 	)"
 
 PATCHES=(
