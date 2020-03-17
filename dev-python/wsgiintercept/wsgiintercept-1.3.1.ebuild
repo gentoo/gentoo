@@ -28,7 +28,6 @@ DEPEND="
 		>=dev-python/pytest-2.4[${PYTHON_USEDEP}]
 		>=dev-python/requests-2.0.1[${PYTHON_USEDEP}]
 		>=dev-python/urllib3-1.11.0[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mechanize[${PYTHON_USEDEP}]' python2_7 pypy)
 	)"
 S="${WORKDIR}/${MY_P}"
 
