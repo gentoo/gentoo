@@ -16,10 +16,6 @@ KEYWORDS="amd64 arm ~arm64 x86 ~amd64-linux ~x86-linux"
 IUSE="doc test"
 RESTRICT="!test? ( test )"
 
-RDEPEND="
-	$(python_gen_cond_dep '>=dev-python/trollius-2.0[${PYTHON_USEDEP}]' python2_7)
-	$(python_gen_cond_dep '>=dev-python/futures-3.0.3[${PYTHON_USEDEP}]' python2_7)
-"
 DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	dev-python/six[${PYTHON_USEDEP}]
