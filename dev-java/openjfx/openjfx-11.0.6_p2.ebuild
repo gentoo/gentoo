@@ -25,7 +25,6 @@ SRC_URI="https://hg.openjdk.java.net/${PN}/${SLOT}-dev/rt/archive/${MY_PV}.tar.b
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-SLOT="$(ver_cut 1)"
 KEYWORDS="-* ~amd64"
 
 IUSE="cpu_flags_x86_sse2 debug doc source +media"

@@ -4,7 +4,7 @@
 EAPI=6
 
 MY_PV="${PV/_p/+}"
-SLOT="${MY_PV%%[.+]*}/${PV}"
+SLOT="${MY_PV%%[.+]*}"
 EGRADLE_VER="4.8"
 
 inherit java-pkg-2 multiprocessing
@@ -25,7 +25,6 @@ SRC_URI="https://hg.openjdk.java.net/${PN}/${SLOT}-dev/rt/archive/${MY_PV}.tar.b
 "
 
 LICENSE="GPL-2-with-classpath-exception"
-SLOT="$(ver_cut 1)"
 KEYWORDS="-* ~amd64"
 
 IUSE="cpu_flags_x86_sse2 debug doc source +media"
