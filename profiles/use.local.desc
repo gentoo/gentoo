@@ -5642,6 +5642,8 @@ net-firewall/conntrack-tools:cttimeout - Use net-libs/libnetfilter_cttimeout for
 net-firewall/conntrack-tools:libtirpc - Use net-libs/libtirpc for RPC support
 net-firewall/ebtables:perl - Install the ebtables-save script which uses perl
 net-firewall/firehol:ipset - Use net-firewall/ipset.
+net-firewall/firewalld:iptables - Add support for net-firewall/nftables as firewall backend
+net-firewall/firewalld:nftables - Add support for net-firewall/nftables as firewall backend
 net-firewall/fwknop:client - Build fwknop client
 net-firewall/fwknop:extras - Install utility scripts and AppArmor policy for fwknopd
 net-firewall/fwknop:firewalld - Use net-firewall/firewalld as the default server backend
