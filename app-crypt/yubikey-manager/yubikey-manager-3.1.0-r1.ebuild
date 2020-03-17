@@ -21,7 +21,6 @@ RESTRICT="!test? ( test )"
 RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/cryptography[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep 'dev-python/enum34[${PYTHON_USEDEP}]' python2_7)
 	>=dev-python/fido2-0.7.0[${PYTHON_USEDEP}]
 	<dev-python/fido2-0.8.0[${PYTHON_USEDEP}]
 	dev-python/pyopenssl[${PYTHON_USEDEP}]
@@ -34,7 +33,6 @@ DEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	test? (
 		${RDEPEND}
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' 'python2_7')
 	)
 "
 
