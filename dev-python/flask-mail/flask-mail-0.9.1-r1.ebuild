@@ -24,8 +24,7 @@ RDEPEND="dev-python/flask[${PYTHON_USEDEP}]
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]
 	test? ( ${RDEPEND}
 		dev-python/nose[${PYTHON_USEDEP}]
-		dev-python/speaklater[${PYTHON_USEDEP}]
-		$(python_gen_cond_dep 'dev-python/mock[${PYTHON_USEDEP}]' python2_7 pypy) )"
+		dev-python/speaklater[${PYTHON_USEDEP}] )"
 
 S="${WORKDIR}/${MY_P}"
 
