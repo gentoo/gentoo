@@ -19,7 +19,6 @@ IUSE="test"
 RESTRICT="!test? ( test )"
 
 RDEPEND="
-	$(python_gen_cond_dep '>=dev-python/backports-csv-1.0[${PYTHON_USEDEP}]' -2)
 	>=dev-python/configobj-5.0.5[${PYTHON_USEDEP}]
 	>=dev-python/pygments-2.4.0[${PYTHON_USEDEP}]
 	>=dev-python/tabulate-0.8.0[${PYTHON_USEDEP}]
