@@ -4909,7 +4909,7 @@ dev-libs/gjs 1.48.7 1.56.2 1.58.5: Javascript bindings for GNOME
 dev-libs/glib 2.60.7 2.60.7-r1 2.60.7-r2 2.62.5: The GLib library of C routines
 dev-libs/gmime 2.6.23-r1 3.2.4 3.2.5 3.2.6: Utilities for creating and parsing messages using MIME
 dev-libs/gmp 4.3.2-r1 6.1.2 6.1.2-r1 6.2.0 6.2.0-r1: Library for arbitrary-precision arithmetic on different type of numbers
-dev-libs/gnulib 2016.12.21.08.39.01 2017.12.19.15.53.47 2019.03.17.09.24.57 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
+dev-libs/gnulib 2019.03.17.09.24.57 9999-r1: Gnulib is a library of common routines intended to be shared at the source level
 dev-libs/go-fuse 0_p20140812-r1 0_p20150422 9999: native bindings for the FUSE kernel module
 dev-libs/go-usb 9999: CGO bindings for libusb
 dev-libs/gobject-introspection 1.60.2-r1 1.62.0: Introspection system for GObject-based libraries
