@@ -38,7 +38,7 @@ python_prepare_all() {
 
 python_install_all() {
 	dodoc "${S}/${MY_PN}"/Docs/*.rst
-	rm -r "${S}/${MY_PN}"/Docs/*.rst
+	rm "${S}/${MY_PN}"/Docs/*.rst || die
 	local HTML_DOCS=( "${S}/${MY_PN}"/Docs/. )
 	distutils-r1_python_install_all
 }
