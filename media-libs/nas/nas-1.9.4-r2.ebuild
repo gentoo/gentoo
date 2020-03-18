@@ -35,9 +35,10 @@ DEPEND="${RDEPEND}
 DOCS=( BUILDNOTES FAQ HISTORY README RELEASE TODO )
 
 PATCHES=(
-	"${FILESDIR}"/${PN}-1.9.2-asneeded.patch
-	"${FILESDIR}"/${PN}-1.9.4-remove-abs-fabs.patch
-	"${FILESDIR}"/${PN}-1.9.4-libfl.patch
+	"${FILESDIR}/${PN}-1.9.2-asneeded.patch"
+	"${FILESDIR}/${P}-remove-abs-fabs.patch"
+	"${FILESDIR}/${P}-libfl.patch"
+	"${FILESDIR}/${P}-fno-config.patch"
 )
 
 src_prepare() {
