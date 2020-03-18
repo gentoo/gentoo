@@ -5,11 +5,12 @@ EAPI=7
 
 inherit unpacker
 
-MY_PV=$(ver_rs 3 '-')
+ROCM_VERSION="3.1.0"
+MY_PV="${PV}-rocm-rel-$(ver_cut 1-2 ${ROCM_VERSION})-44-ecafeba1"
 
 DESCRIPTION="Proprietary image-support library for Radeon Open Compute"
 HOMEPAGE="https://github.com/RadeonOpenCompute/ROCm#closed-source-components"
-SRC_URI="http://repo.radeon.com/rocm/apt/debian/pool/main/h/${PN}-dev/${PN}-dev_${MY_PV}-ge5c4efb_amd64.deb"
+SRC_URI="http://repo.radeon.com/rocm/apt/debian/pool/main/h/${PN}-dev/${PN}-dev_${MY_PV}_amd64.deb"
 
 LICENSE="AMD-GPU-PRO-EULA"
 SLOT="0"
@@ -38,8 +39,8 @@ src_install() {
 
 	into "${destdir}"
 	for solib in ${solibs_to_install[@]}; do
-		dolib.so "opt/rocm/hsa/lib/${solib}.${soversion}"
-		dosym "../../${destdir}/$(get_libdir)/${solib}.${soversion}" "/usr/$(get_libdir)/${solib}.${soversion}"
+		dolib.so "opt/rocm-${ROCM_VERSION}/hsa/lib/${solib}.${soversion}"
+		dosym "../..${destdir}/$(get_libdir)/${solib}.${soversion}" "/usr/$(get_libdir)/${solib}.${soversion}"
 		dosym "${solib}.${soversion}" "/usr/$(get_libdir)/${solib}.${somajor}"
 	done
 }
