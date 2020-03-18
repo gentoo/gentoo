@@ -6,7 +6,7 @@ inherit eutils autotools toolchain-funcs
 
 DESCRIPTION="Telnet and telnetd ported from OpenBSD with IPv6 support"
 HOMEPAGE="ftp://ftp.suse.com/pub/people/kukuk/ipv6/"
-SRC_URI="ftp://ftp.suse.com/pub/people/kukuk/ipv6/${P}.tar.bz2"
+SRC_URI="https://dev.gentoo.org/~mschiff/distfiles/${P}.tar.bz2"
 
 LICENSE="BSD"
 SLOT="0"
