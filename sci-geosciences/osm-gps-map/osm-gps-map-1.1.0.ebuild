@@ -6,7 +6,7 @@ EAPI=6
 inherit autotools gnome2
 
 DESCRIPTION="A GTK+ widget for displaying OpenStreetMap tiles"
-HOMEPAGE="http://nzjrs.github.io/osm-gps-map/"
+HOMEPAGE="https://nzjrs.github.io/osm-gps-map/"
 SRC_URI="https://github.com/nzjrs/${PN}/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2+"
