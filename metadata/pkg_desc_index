@@ -8459,7 +8459,7 @@ dev-python/pyopenal 0.1.6-r1: OpenAL library port for Python
 dev-python/pyopencl 2017.2: Python wrapper for OpenCL
 dev-python/pyopengl 3.1.0: Python OpenGL bindings
 dev-python/pyopengl_accelerate 3.1.0 3.1.0-r1: Accelerate module for PyOpenGL
-dev-python/pyopenssl 17.5.0 18.0.0 19.0.0 19.1.0: Python interface to the OpenSSL library
+dev-python/pyopenssl 19.0.0 19.1.0: Python interface to the OpenSSL library
 dev-python/pyorbit 2.24.0-r1: ORBit2 bindings for Python
 dev-python/pyotherside 1.5.4 1.5.8: Asynchronous Python 3 Bindings for Qt 5
 dev-python/pyotp 2.2.6 2.2.6-r1: PyOTP is a Python library for generating and verifying one-time passwords.
@@ -17468,7 +17468,7 @@ sys-kernel/raspberrypi-sources 4.19.9999 5.4.9999: Raspberry PI kernel sources
 sys-kernel/rt-sources 4.19.94_p38 5.4.13_p7: Full Linux 5.4 kernel sources with the CONFIG_PREEMPT_RT patch
 sys-kernel/spl 0.7.13: The Solaris Porting Layer provides many of the Solaris kernel APIs
 sys-kernel/vanilla-kernel 4.19.107 4.19.108 4.19.109 5.4.23 5.4.24 5.4.25 5.5.7 5.5.8 5.5.9: Linux kernel built from vanilla upstream sources
-sys-kernel/vanilla-sources 3.16.82 4.4.216 4.9.216 4.14.173 4.19.110 5.4.25 5.5.9: Full sources for the Linux kernel
+sys-kernel/vanilla-sources 3.16.82 4.4.216 4.9.216 4.14.173 4.19.111 5.4.26 5.5.10: Full sources for the Linux kernel
 sys-kernel/xbox-sources 2.6.16.26: Full sources for the Xbox Linux kernel
 sys-kernel/xnu-headers 3789.70.16-r5 4570.71.2-r5 4903.241.1-r5: System headers provided by XNU-4903.241.1, macOS 10.14.3
 sys-kernel/zen-sources 5.4.15 5.5.8: The Zen Kernel Live Sources
