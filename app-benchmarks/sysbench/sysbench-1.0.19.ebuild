@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -18,13 +18,13 @@ RESTRICT="!test? ( test )"
 RDEPEND="aio? ( dev-libs/libaio )
 	mysql? ( dev-db/mysql-connector-c:= )
 	postgres? ( dev-db/postgresql:= )
-	dev-lang/luajit:="
+	dev-lang/luajit:2"
 DEPEND="${RDEPEND}
 	dev-libs/concurrencykit
 	dev-libs/libxslt
-	sys-devel/libtool
-	virtual/pkgconfig
 	test? ( dev-util/cram )"
+BDEPEND="sys-devel/libtool
+	virtual/pkgconfig"
 
 src_prepare() {
 	default
