@@ -15,3 +15,7 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}
 	dev-util/glib-utils"
+
+PATCHES=(
+	"${FILESDIR}"/${PN}-1.14.5-make43.patch # remove when bumping and switching to Meson
+)
