@@ -31,7 +31,7 @@ src_install() {
 	newbashcomp etc/${PN}.bash_completion.sh ${PN}
 
 	insinto /usr/share/vim/vimfiles
-doins -r share/vim/vimfiles/*
+	doins -r share/vim/vimfiles/*
 	insinto /usr/share/zsh/site-functions
 	newins etc/hub.zsh_completion _${PN}
 }
