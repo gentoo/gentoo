@@ -5,7 +5,7 @@ EAPI=7
 
 PYTHON_COMPAT=( python3_6 )
 PYTHON_REQ_USE="sqlite"
-inherit python-r1 gnome2-utils meson xdg-utils
+inherit python-single-r1 gnome2-utils meson xdg-utils
 
 DESCRIPTION="Modern music player for GNOME"
 HOMEPAGE="https://wiki.gnome.org/Apps/Lollypop"
@@ -20,13 +20,17 @@ DEPEND="${PYTHON_DEPS}
 	dev-libs/appstream-glib[introspection]
 	dev-libs/glib:2
 	dev-libs/gobject-introspection[cairo(+)]
-	dev-python/pycairo[${PYTHON_USEDEP}]
-	dev-python/pygobject:3[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pycairo[${PYTHON_MULTI_USEDEP}]
+		dev-python/pygobject:3[${PYTHON_MULTI_USEDEP}]
+	')
 	gnome-base/gnome-common
 	x11-libs/gtk+:3
 "
 BDEPEND="${DEPEND}
-	dev-python/pkgconfig[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/pkgconfig[${PYTHON_MULTI_USEDEP}]
+	')
 	dev-util/desktop-file-utils
 	dev-util/itstool
 	dev-util/intltool
@@ -34,10 +38,12 @@ BDEPEND="${DEPEND}
 RDEPEND="${DEPEND}
 	app-crypt/libsecret[introspection]
 	dev-libs/totem-pl-parser
-	dev-python/beautifulsoup:4[${PYTHON_USEDEP}]
-	dev-python/dbus-python
-	dev-python/pillow[${PYTHON_USEDEP}]
-	>=dev-python/pylast-1.0.0[${PYTHON_USEDEP}]
+	$(python_gen_cond_dep '
+		dev-python/beautifulsoup:4[${PYTHON_MULTI_USEDEP}]
+		dev-python/dbus-python
+		dev-python/pillow[${PYTHON_MULTI_USEDEP}]
+		>=dev-python/pylast-1.0.0[${PYTHON_MULTI_USEDEP}]
+	')
 	media-libs/gst-plugins-base:1.0[introspection]
 "
 
@@ -49,7 +55,7 @@ pkg_preinst() {
 
 src_install() {
 	meson_src_install
-	python_foreach_impl python_optimize
+	python_optimize
 }
 
 pkg_postinst() {
