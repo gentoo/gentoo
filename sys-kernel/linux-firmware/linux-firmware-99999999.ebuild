@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -84,7 +84,9 @@ src_unpack() {
 	else
 		default
 		# rename directory from git snapshot tarball
-		mv ${PN}-*/ ${P} || die
+		if [[ ${#GIT_COMMIT} -gt 8 ]]; then
+			mv ${PN}-*/ ${P} || die
+		fi
 	fi
 }
 
