@@ -1,4 +1,4 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -11,7 +11,6 @@ HOMEPAGE="https://github.com/AmesCornish/buttersink"
 
 LICENSE="GPL-3"
 SLOT=0
-IUSE="test"
 
 # local tests would require root and cause sandbox issues with btrfs subvolume
 # operations, and network tests would require an SSH server with root login to
@@ -33,8 +32,7 @@ RDEPEND="${PYTHON_DEPS}
 	dev-python/crcmod[${PYTHON_USEDEP}]
 	dev-python/psutil[${PYTHON_USEDEP}]
 	sys-fs/btrfs-progs"
-DEPEND="${RDEPEND}
-	test? ( dev-python/flake8[${PYTHON_USEDEP}] )"
+DEPEND="${RDEPEND}"
 
 python_prepare_all() {
 	if [[ ${PV} == 9999 ]] ; then
