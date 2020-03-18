@@ -37,6 +37,7 @@ DEPEND="${RDEPEND}
 
 PATCHES=(
 	"${FILESDIR}"/1.14-glib-2.60-tests-compat.patch
+	"${FILESDIR}"/${PN}-1.14.5-make43.patch # remove when bumping and switching to Meson
 )
 
 src_configure() {
