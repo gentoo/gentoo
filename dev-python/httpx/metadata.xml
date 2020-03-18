@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>andrewammerlaan@riseup.net</email>
+    <name>Andrew Ammerlaan</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+Features
+
+HTTPX builds on the well-established usability of requests, and gives you:
+
+    A broadly requests-compatible API.
+    Standard synchronous interface, but with async support if you need it.
+    HTTP/1.1 and HTTP/2 support.
+    Ability to make requests directly to WSGI applications or ASGI applications.
+    Strict timeouts everywhere.
+    Fully type annotated.
+    99% test coverage.
+
+Plus all the standard features of requests...
+
+    International Domains and URLs
+    Keep-Alive &amp; Connection Pooling
+    Sessions with Cookie Persistence
+    Browser-style SSL Verification
+    Basic/Digest Authentication
+    Elegant Key/Value Cookies
+    Automatic Decompression
+    Automatic Content Decoding
+    Unicode Response Bodies
+    Multipart File Uploads
+    HTTP(S) Proxy Support
+    Connection Timeouts
+    Streaming Downloads
+    .netrc Support
+    Chunked Requests
+  </longdescription>
+  <upstream>
+    <remote-id type="github">encode/httpx</remote-id>
+    <remote-id type="pypi">httpx</remote-id>
+  </upstream>
+</pkgmetadata>

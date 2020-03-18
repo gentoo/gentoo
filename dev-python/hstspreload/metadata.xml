@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>andrewammerlaan@riseup.net</email>
+    <name>Andrew Ammerlaan</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+The package provides a single function: in_hsts_preload() which takes an IDNA-encoded host and returns either True or False regarding whether that host should be only accessed via HTTPS.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">sethmlarson/hstspreload</remote-id>
+    <remote-id type="pypi">hstspreload</remote-id>
+  </upstream>
+</pkgmetadata>

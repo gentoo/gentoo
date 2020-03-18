@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>andrewammerlaan@riseup.net</email>
+    <name>Andrew Ammerlaan</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+sniffio: Sniff out which async library your code is running under
+
+You're writing a library. You've decided to be ambitious, and support multiple async I/O packages, like Trio, and asyncio, and ... You've written a bunch of clever code to handle all the differences. But... how do you know which piece of clever code to run?
+
+This is a tiny package whose only purpose is to let you detect which async library your code is running under.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">python-trio/sniffio</remote-id>
+    <remote-id type="pypi">sniffio</remote-id>
+  </upstream>
+</pkgmetadata>

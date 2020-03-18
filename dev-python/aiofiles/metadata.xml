@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+
+<pkgmetadata>
+  <maintainer type="person">
+    <email>piotr.staroszczyk@get24.org</email>
+    <name>Piotr Staroszczyk</name>
+  </maintainer>
+  <maintainer type="person">
+    <email>lssndrbarbieri@gmail.com</email>
+    <name>Alessandro Barbieri</name>
+  </maintainer>
+  <maintainer type="project">
+    <email>proxy-maint@gentoo.org</email>
+    <name>Proxy Maintainers</name>
+  </maintainer>
+  <longdescription>
+aiofiles is an Apache2 licensed library, written in Python, for handling local disk files in asyncio applications.
+
+Ordinary local file IO is blocking, and cannot easily and portably made asynchronous. This means doing file IO may interfere with asyncio applications, which shouldn’t block the executing thread. aiofiles helps with this by introducing asynchronous versions of files that support delegating operations to a separate thread pool.
+  </longdescription>
+  <upstream>
+    <remote-id type="github">Tinche/aiofiles</remote-id>
+    <remote-id type="pypi">aiofiles</remote-id>
+  </upstream>
+</pkgmetadata>
