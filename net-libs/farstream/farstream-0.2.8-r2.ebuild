@@ -44,6 +44,10 @@ DEPEND="${COMMONDEPEND}
 		media-libs/gst-plugins-good:1.0 )
 "
 
+PATCHES=(
+	"${FILESDIR}"/${PN}-0.2.8-make43.patch # remove when bumping and switching to Meson
+)
+
 pkg_setup() {
 	python-any-r1_pkg_setup
 }
