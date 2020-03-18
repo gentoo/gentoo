@@ -11,4 +11,4 @@ RDEPEND=dev-libs/newt net-misc/dahdi sys-kernel/linux-headers virtual/libusb:0 p
 SLOT=0
 SRC_URI=https://downloads.asterisk.org/pub/telephony/dahdi-tools/releases/dahdi-tools-3.1.0.tar.gz
 _eclasses_=autotools	7d999b62b8749fad43fff00620cedf47	bash-completion-r1	47a7402d95930413ce25ba8d857339bb	libtool	f143db5a74ccd9ca28c1234deffede96	multilib	1d91b03d42ab6308b5f4f6b598ed110e	perl-functions	6ec4c4d8fc8324200f1c14e8d158c59b	toolchain-funcs	512eb3367f507ebaa1d1d43ab7d66e6c
-_md5_=0990da8b4beec00e2f5617eca098535f
+_md5_=596556a12d525b520cf204b242bfc2a3
