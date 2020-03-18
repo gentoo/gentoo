@@ -24,14 +24,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}
 BDEPEND="
 	dev-python/setuptools[${PYTHON_USEDEP}]
 	doc? ( dev-python/sphinx )
-	test? ( $(python_gen_cond_dep '
-		dev-python/flake8[${PYTHON_USEDEP}]
-		dev-python/pycodestyle[${PYTHON_USEDEP}]
-		dev-python/pyflakes[${PYTHON_USEDEP}]
-		dev-python/pytest[${PYTHON_USEDEP}]
-		dev-python/pytest-cov[${PYTHON_USEDEP}]
-		' 'python2*' python3_6 python3_7
-	) )
+	test? ( dev-python/pytest[${PYTHON_USEDEP}] )
 "
 DEPEND="
 	dev-python/six[${PYTHON_USEDEP}]
