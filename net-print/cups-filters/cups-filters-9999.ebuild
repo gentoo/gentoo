@@ -1,4 +1,4 @@
-# Copyright 1999-2019 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
@@ -19,7 +19,7 @@ HOMEPAGE="https://wiki.linuxfoundation.org/openprinting/cups-filters"
 
 LICENSE="MIT GPL-2"
 SLOT="0"
-IUSE="dbus +foomatic ipp_autosetup jpeg ldap pclm pdf perl png +postscript static-libs test tiff zeroconf"
+IUSE="dbus +foomatic jpeg ldap pclm pdf perl png +postscript static-libs test tiff zeroconf"
 
 RESTRICT="!test? ( test )"
 
@@ -73,7 +73,6 @@ src_configure() {
 		--without-php
 		$(use_enable dbus)
 		$(use_enable foomatic)
-		$(use_enable ipp_autosetup auto-setup-driverless)
 		$(use_enable ldap)
 		$(use_enable pclm)
 		$(use_enable pdf mutool)
