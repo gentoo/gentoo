@@ -1468,6 +1468,7 @@ app-emacs/mailcrypt 3.5.9-r3: Provides a simple interface to public key cryptogr
 app-emacs/markdown-mode 2.3: Major mode for editing Markdown-formatted text files
 app-emacs/matlab 3.3.6_pre20191010-r1: Major modes for MATLAB .m and .tlc files
 app-emacs/mediawiki 2.2.9-r1: MediaWiki client for Emacs
+app-emacs/meson-mode 0.2: A GNU Emacs major mode for Meson build-system files
 app-emacs/mew 6.8: Great MIME mail reader for Emacs/XEmacs
 app-emacs/mic-paren 3.11: Advanced highlighting of matching parentheses
 app-emacs/mldonkey 0.0.4b-r2: An Emacs Lisp interface to the MLDonkey core
@@ -10473,7 +10474,7 @@ dev-util/dejagnu 1.6 1.6.2: Framework for testing other programs
 dev-util/desktop-file-utils 0.24: Command line utilities to work with desktop menu entries
 dev-util/devhelp 3.30.1: An API documentation browser for GNOME
 dev-util/dialog 1.3.20170131 1.3.20191110 1.3.20191210: tool to display dialog boxes from a shell
-dev-util/diffball 1.0.1 1.0.1-r1 1.0.1-r2: Delta compression suite for using/generating binary patches
+dev-util/diffball 1.0.1-r2: Delta compression suite for using/generating binary patches
 dev-util/difffilter 0.3.3 0.3.3-r1: Filter files out of unified diffs using POSIX extended regular expressions
 dev-util/diffoscope 129 137: Will try to get to the bottom of what makes files or directories different
 dev-util/diffstat 1.60 1.61 1.63: Display a histogram of diff changes
@@ -17453,7 +17454,7 @@ sys-kernel/genkernel 3.4.52.3 3.4.52.4-r1 3.4.52.4-r2 3.4.52.4-r3 3.5.1.1 3.5.2.
 sys-kernel/genkernel-next 69 70: Gentoo automatic kernel building scripts, reloaded
 sys-kernel/gentoo-kernel 4.19.107 4.19.108 4.19.109 5.4.23 5.4.24 5.4.25 5.5.7 5.5.8 5.5.9: Linux kernel built with Gentoo patches
 sys-kernel/gentoo-kernel-bin 4.19.107 4.19.108 4.19.109 5.4.23 5.4.24 5.4.25 5.5.7 5.5.8 5.5.9: Pre-built Linux kernel with genpatches
-sys-kernel/gentoo-sources 4.4.203 4.4.210 4.4.212 4.4.213 4.4.214 4.4.215 4.4.216 4.9.203 4.9.210 4.9.212 4.9.213 4.9.214 4.9.215 4.9.216 4.14.156 4.14.166 4.14.169 4.14.170 4.14.171 4.14.172 4.14.173 4.19.86 4.19.97 4.19.108 4.19.109 4.19.110 5.4.24 5.4.25 5.5.7 5.5.8 5.5.9: Full sources including the Gentoo patchset for the 5.5 kernel tree
+sys-kernel/gentoo-sources 4.4.203 4.4.210 4.4.212 4.4.213 4.4.214 4.4.215 4.4.216 4.9.203 4.9.210 4.9.212 4.9.213 4.9.214 4.9.215 4.9.216 4.14.156 4.14.166 4.14.169 4.14.170 4.14.171 4.14.172 4.14.173 4.19.86 4.19.97 4.19.108 4.19.109 4.19.110 4.19.111 5.4.24 5.4.25 5.4.26 5.5.7 5.5.8 5.5.9 5.5.10: Full sources including the Gentoo patchset for the 5.5 kernel tree
 sys-kernel/git-sources 5.6_rc1 5.6_rc2 5.6_rc3 5.6_rc4 5.6_rc5 5.6_rc6: The very latest -git version of the Linux kernel
 sys-kernel/installkernel-gentoo 1 2: Gentoo fork of installkernel script from debianutils
 sys-kernel/installkernel-systemd-boot 0: Wrap kernel-install from systemd-boot as installkernel
@@ -18833,7 +18834,7 @@ x11-themes/gentoo-xcursors 0.3.1: A high quality set of animated mouse cursors
 x11-themes/gentoo10-backgrounds 20110309: Gentoo - 10 Years Compiling Background Artwork
 x11-themes/geramik 0.27-r1: GTK+1 and GTK+2 Geramik Themes
 x11-themes/gkrellm-themes 0.1-r1: A pack of ~200 themes for GKrellM
-x11-themes/gnome-backgrounds 3.32.0: A set of backgrounds packaged with the GNOME desktop
+x11-themes/gnome-backgrounds 3.32.0 3.34.0: A set of backgrounds packaged with the GNOME desktop
 x11-themes/gnome-colors-common 5.5.1-r1: Colorized icons shared between all gnome-colors iconsets
 x11-themes/gnome-colors-themes 5.5.1: Some gnome-colors iconsets including a Gentoo one
 x11-themes/gnome-icon-theme-extras 3.12.0: Extra GNOME icons for specific devices and file types
