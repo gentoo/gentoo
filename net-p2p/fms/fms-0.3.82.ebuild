@@ -1,4 +1,4 @@
-# Copyright 1999-2018 Gentoo Authors
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI="6"
@@ -6,8 +6,9 @@ EAPI="6"
 inherit eutils cmake-utils user
 
 DESCRIPTION="A spam-resistant message board application for Freenet"
-HOMEPAGE="http://freenetproject.org/tools.html"
-SRC_URI="mirror://gentoo/${PN}-src-${PV}.zip"
+#FMS oly has a homepage within freenet, so the closest is a wiki linking to it
+HOMEPAGE="https://github.com/freenet/wiki/wiki/FMS"
+SRC_URI="https://dev.gentoo.org/~tommy/distfiles/${PN}-src-${PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -49,18 +50,18 @@ src_configure() {
 
 src_install() {
 	insinto /var/freenet/fms
-	dobin "${CMAKE_BUILD_DIR}"/fms
-	doins *.htm
-	doins -r fonts images styles translations
+	dobin "${CMAKE_BUILD_DIR}"/fms || die
+	doins *.htm || die "doinstall failed"
+	doins -r fonts images styles translations || die
 	fperms -R o-rwx /var/freenet/fms/ /usr/bin/fms
 	fowners -R freenet:freenet /var/freenet/fms/ /usr/bin/fms
-	doinitd "${FILESDIR}/fms"
-	dodoc readme.txt
+	doinitd "${FILESDIR}/fms" || die "installing init.d file failed"
+	dodoc readme.txt || die "installing doc failed"
 }
 
 pkg_postinst() {
 	if ! has_version 'net-p2p/freenet' ; then
-		ewarn "FMS needs a freenet node to up-/download #ssages."
+		ewarn "FMS needs a freenet node to up-/download messages."
 		ewarn "Please make sure to have a node you can connect to"
 		ewarn "or install net-p2p/freenet to get FMS working."
 	fi
